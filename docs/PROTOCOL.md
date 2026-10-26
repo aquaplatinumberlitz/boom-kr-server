@@ -81,6 +81,14 @@ Golden codec cần oracle hàm KR thật hoặc capture, bao phủ size qua ranh
 theo consumer, blob raw/nén, checksum sai, seq rollover/reconnect, partial/coalesced frame. Parser server
 phải từ chối length/count vượt giới hạn trước allocation. Không fuzz client gốc bằng packet chưa có bounds.
 
+### Phần K2a đã kiểm
+
+[Emulation writer helpers](evidence/primitives/README.md) đã xác nhận plainBE16 `14A5B90`,
+XORBE16 `14A5C90` (`0xA569`) và byteXOR `14A5C80` (`0x5A`) trong image unpack có hash đã khóa.
+Các helper đạt hết miền input nhỏ và kiểm byte guard/return; **framing/seq/checksum vẫn unknown**.
+Review receiver ownership cũng sửa được cách gọi send guard: `13ADD10` dùng receiver từ `545E30`,
+packet nằm trên stack, nên không truy nhầm setter `packet+3C` để tìm socket/framer.
+
 ## 5. Authority và profile emulator
 
 Record cho từng hành vi: ai tạo sự kiện, ai mô phỏng, ai chấp nhận/loại, ai broadcast, state nào peer

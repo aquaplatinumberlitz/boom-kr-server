@@ -1,0 +1,38 @@
+{
+  "schema": "kre-primitive-verification-r1",
+  "captured_utc": "2026-10-26T07:32:52.155848+00:00",
+  "source": "kr_static",
+  "method": "controlled emulation of original helper bytes",
+  "binary_path": "/home/admin/boom/repos/boom-kr-server/local/research/dsh2/kr-full.exe",
+  "binary_sha256": "cf72da112308d9f1ca256df8089594c5f787875310933073bf6bd5ba6f70e63b",
+  "image_base": "0x400000",
+  "unicorn_version": "2.1.4",
+  "results": [
+    {
+      "name": "be16_plain",
+      "va": "0x14a5b90",
+      "cases": 65540,
+      "passed": true
+    },
+    {
+      "name": "be16_xor",
+      "va": "0x14a5c90",
+      "cases": 65540,
+      "passed": true
+    },
+    {
+      "name": "byte_xor",
+      "va": "0x14a5c80",
+      "cases": 260,
+      "passed": true
+    }
+  ],
+  "limitations": [
+    "Only isolated helper behavior is checked, not its selection or caller state.",
+    "Does not establish header, checksum, crypto, sequence, hello or socket semantics.",
+    "Does not execute the client bootstrap or observe a live KR connection."
+  ],
+  "raw_local_path": "local/research/codex/primitives-run1.json",
+  "raw_sha256": "0ccde1429a481129ed66608a48703e38b9da8467b84eb64594809001482ab976",
+  "verification_tool": "tools/verify_primitives.py"
+}
