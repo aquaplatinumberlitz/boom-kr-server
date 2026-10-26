@@ -9,7 +9,7 @@ Yêu cầu chủ dự án 26/10/2026: ưu tiên chạy bản copy KR bằng Wine
 | Đầu vào/đầu ra | SHA-256 |
 |---|---|
 | `modO.bin` — memory layout, base400000 | `a08950c833d3acab8281049def7b3dc96b221f107eeda01da3a548e34b91dce5` |
-| `kr-full.exe` — chỉ lấy PE header/TLS/resource | `cf72da112308d9f1ca256df8089594c5f787875310933073bf6bd5ba6f70e63b` |
+| `kr-full.exe` — chỉ lấy PE header, gồm directory metadata TLS/resource | `cf72da112308d9f1ca256df8089594c5f787875310933073bf6bd5ba6f70e63b` |
 | Candidate import metadata, private `wine-imports-r4.json` | `e5a618a3d1f6c8b29a5895f5354519a7a904a65a02c44abfb82449c2796aaf74` |
 | Bản copy chạy, `CA-wine.exe` | `a0c3b9867dae5fe2ff7c315cfe851117661c2cafead45196ce999329f67432f5` |
 
@@ -35,9 +35,13 @@ Memory `modO` và IAT `kr-full` thuộc run khác nhau; không trộn pointer.
   báo đúng slot. Phần ngoài đường chạy đã đo vẫn `candidate`, không coi là IAT đã phục hồi toàn bộ.
 - **`emu_choice`:** bỏ analytics load/send/shutdown và bốn API CrashReporter. Giữ parser `572600`;
   lookup property analytics trả unavailable. Chưa kiểm identity/session khi có launcher arguments.
+  Cụ thể, output assignment `nxgsmsid` được giữ nhưng nhánh `sessionid` cần analytics init thành công
+  hiện không thể tới lookup; cần phục hồi riêng trước K3. Giữ byte parser không bảo đảm session còn hoạt động.
   Không bỏ cả parser, không áp stdcall `ret N` cho wrapper cdecl.
 - Không patch nhánh trả thành công của `ProcessPatch`, không gửi hello giả. Binary cuối không có
   trampoline đánh dấu constructor/call dùng trong các thí nghiệm r11–r29.
+
+TLS/resource **content** lấy từ memory image `modO`; header `kr-full` chỉ cung cấp directory metadata.
 
 API module nội bộ là bẫy quan trọng: resolver từng thấy `GetProcAddressForCaller`,
 `RtlInitializeCriticalSectionEx`, `RtlSwitchedVVI`, `NtUserMapVirtualKeyEx`; call site thật yêu cầu
@@ -82,6 +86,9 @@ KR gốc. Listener chỉ accept/ghi byte, không trả lời; không có giả t
 `run.json`, log Winsock, fresh CALog, process tree, cửa sổ và ảnh đều trong output riêng. Capture TCP
 không gắn PID bằng ETW; attribution dựa namespace riêng, log connect của client và accept tương ứng.
 Cleanup bằng wineserver của prefix riêng và PID namespace, không kill Wine VN.
+`--trace-api` chỉ dành cho thăm dò có thời hạn: relay log chưa có giới hạn byte, có thể tăng nhanh.
+Recipe ba cold start không bật relay. Probe không phải sandbox filesystem tổng quát; binary chỉ chạy
+từ copy và vẫn có quyền file của user trong namespace. File command của winedbg cũng phải ở `local/`.
 
 ## Kết luận được phép
 

@@ -230,6 +230,27 @@
     "Wrong source rejected before outputs",
     "Existing binary preserved",
     "Host Wine prefix rejected",
-    "Direct --inside rejected before mounts/output"
-  ]
+    "Direct --inside rejected before mounts/output",
+    "Outside-local debug commands rejected before namespace/output",
+    "Invalid DNS name/port rejected before namespace/output",
+    "Prefix/output mutual containment rejected",
+    "Post-review harness smoke accepted loopback3838 with raw NSS/harness digests"
+  ],
+  "post_review_smoke": {
+    "raw_dir": "local/research/wine-verified/final-harness-smoke",
+    "sha256": "a0c3b9867dae5fe2ff7c315cfe851117661c2cafead45196ce999329f67432f5",
+    "harness_sha256": "b9bc76d56bd37424e2b499e4bd3bd3c2e4fe9c00cac139d70f5caef9a4821911",
+    "nsswitch_sha256": "c18e474cd61df8648ee02ac7a9c76b8d6c7782d8b212f925e6980f20af5cc838",
+    "host_resolution_files_only": true,
+    "accepted_ports": [
+      3838
+    ],
+    "prefix_fresh_copy": false,
+    "purpose": "Verify harness review fixes; not a fourth cold-start claim",
+    "files": {
+      "run.json": "ccfff96ef61aab7610eadd964809b50fa6b3e4a7de8ace4009ee42337077c497",
+      "client.log": "396c101557f2bf681b0f93b9ff95f84909bc5be745539b8dfa21c31cc634907d",
+      "CALog-run.txt": "d5f37c547f073de65289be1c96a9f5f8cf3ace14a813b7fa7ff69eec18b27e23"
+    }
+  }
 }

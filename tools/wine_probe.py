@@ -43,8 +43,18 @@ def main():
     local = Path(__file__).resolve().parent.parent / 'local'
     if any(not path.is_relative_to(local) for path in [args.game_dir,args.prefix,args.out]):
         parser.error('game, prefix and output must be copies under this repo local/')
-    if args.prefix == args.out or args.prefix.is_relative_to(args.game_dir) or args.out.is_relative_to(args.game_dir):
-        parser.error('prefix/output must be outside game directory')
+    paths=[args.game_dir,args.prefix,args.out]
+    if any(left.is_relative_to(right) for i,left in enumerate(paths) for j,right in enumerate(paths) if i!=j):
+        parser.error('game, prefix and output must be separate directory trees')
+    if args.commands:
+        args.commands=args.commands.resolve(strict=True)
+        if not args.debug or not args.commands.is_file() or not args.commands.is_relative_to(local):
+            parser.error('--commands requires --debug and a file under this repo local/')
+    for name in args.map_host:
+        if not name or any(c not in 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-.' for c in name):
+            parser.error('invalid DNS name')
+    if any(not 1 <= port <= 65535 for port in args.listen):
+        parser.error('invalid TCP port')
     if not args.inside:
         # UID mapping gives mount privileges only in this disposable user namespace.
         command = ['unshare', '--user', '--map-root-user', '--net', '--mount',
@@ -74,17 +84,15 @@ def main():
     subprocess.run(['mount', '-t', 'tmpfs', '-o', 'size=16m', 'tmpfs', '/run'], check=True)
     nss = args.out / 'nsswitch.conf'
     text = Path('/etc/nsswitch.conf').read_text()
-    nss.write_text('\n'.join('hosts: files' if line.startswith('hosts:') else line for line in text.splitlines())+'\n')
+    nss.write_text('\n'.join(line for line in text.splitlines() if not line.lstrip().startswith('hosts:'))+'\nhosts: files\n')
     subprocess.run(['mount', '--bind', str(nss), '/etc/nsswitch.conf'], check=True)
     subprocess.run(['ip', 'link', 'set', 'lo', 'up'], check=True)
     interfaces = socket.if_nameindex()
     if [name for _, name in interfaces] != ['lo']:
         raise RuntimeError('network namespace must contain only loopback')
-    for name in args.map_host:
-        if not name or any(c not in 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-.' for c in name):
-            parser.error('invalid DNS name')
-    if any(not 1 <= port <= 65535 for port in args.listen):
-        parser.error('invalid TCP port')
+    routes=Path('/proc/net/route').read_text()
+    if any(line.strip() for line in routes.splitlines()[1:]):
+        raise RuntimeError('network namespace must have no IPv4 routes')
     if args.map_host:
         hosts = args.out / 'hosts'
         hosts.write_text('127.0.0.1 localhost ' + ' '.join(args.map_host) + '\n::1 localhost\n')
@@ -100,18 +108,23 @@ def main():
                LIBGL_ALWAYS_SOFTWARE='1', MESA_LOADER_DRIVER_OVERRIDE='llvmpipe',
                GALLIUM_DRIVER='llvmpipe', XDG_RUNTIME_DIR=str(runtime), TMPDIR='/tmp', LANG='C.UTF-8')
     record = {'schema': 'kre-wine-probe-r1', 'exe': str(executable),
+              'harness_sha256': hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
               'sha256': hashlib.sha256(executable.read_bytes()).hexdigest(),
               'wine': subprocess.check_output(['wine', '--version'], env=env, text=True).strip(),
               'net_namespace': os.readlink('/proc/self/ns/net'), 'interfaces': interfaces,
-              'ipv4_routes': Path('/proc/net/route').read_text(),
+              'ipv4_routes': routes,
               'start_utc': time.strftime('%Y-%m-%dT%H:%M:%SZ', time.gmtime()),
               'start_monotonic_ns': time.monotonic_ns(), 'observations': []}
+    record['nsswitch_sha256']=hashlib.sha256(Path('/etc/nsswitch.conf').read_bytes()).hexdigest()
+    record['host_resolution_files_only']=[line.strip() for line in Path('/etc/nsswitch.conf').read_text().splitlines() if line.lstrip().startswith('hosts:')]==['hosts: files']
+    if not record['host_resolution_files_only']:
+        raise RuntimeError('files-only NSS was not installed')
     record['host_map'] = {name: '127.0.0.1' for name in args.map_host}
     record['host_resolution'] = {}
     for name in args.map_host:
         result = subprocess.run(['getent','hosts',name],text=True,stdout=subprocess.PIPE,stderr=subprocess.STDOUT,timeout=3)
         record['host_resolution'][name] = {'returncode':result.returncode,'output':result.stdout}
-        if result.returncode or any(line.split()[0]!='127.0.0.1' for line in result.stdout.splitlines()):
+        if result.returncode or not result.stdout.strip() or any(line.split()[0]!='127.0.0.1' for line in result.stdout.splitlines()):
             raise RuntimeError('loopback name resolution verification failed')
     record['tcp_events'] = []
     stop = threading.Event()
@@ -189,7 +202,7 @@ def main():
             env['WINEDEBUG'] += ',+relay'
         if args.debug:
             commands = args.out / 'debug-commands.txt'
-            commands.write_text(args.commands.read_text() if args.commands else 'cont\nbt\ninfo regs\nx /24x $esp\nx /8x 0x226d000\nquit\n')
+            commands.write_text(args.commands.read_text() if args.commands else 'cont\nbt\ninfo regs\nx /24x $esp\nquit\n')
             with commands.open() as input_file:
                 client = spawn(['wine', 'winedbg', str(executable)], 'client', cwd=args.game_dir, input_file=input_file)
         else:
