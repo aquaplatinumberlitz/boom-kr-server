@@ -135,7 +135,9 @@ tương thích. Design được dùng cho policy server mất nguồn sau khi cl
 
 Runtime dùng bản copy, chỉ network cục bộ; không sửa binary/pack/DB gốc. Linux giữ CI/build server.
 Theo chỉ đạo chủ dự án26/10, ưu tiên Wine cho bản copy unpack/patch: recipe đã vào ProcessPatch và
-connect listener loopback; xem [evidence Wine](evidence/wine/README.md). Windows VM cô lập giữ vai trò
+connect listener loopback; xem [evidence Wine](evidence/wine/README.md). Probe tiếp đã xác nhận
+ProcessPatch return1; hiện dừng import ngclient.aes #1, xem [bootstrap wire](evidence/bootstrap-wire/README.md).
+Windows VM cô lập giữ vai trò
 đối chứng nguyên bản; lỗi Wine không tự bác kết quả Windows. Không mở lại CI/đóng gói
 Windows/macOS của Rust. Patch offline theo KRE-D01, phạm vi triển khai vẫn theo từng task KRE.
 
@@ -170,9 +172,9 @@ transfer, không giữ hai bảng việc. Mỗi task có baseline, owner/reviewe
 | Task | Câu hỏi / đầu ra | Dependency | Owner đề xuất / reviewer |
 |---|---|---|---|
 | KRE-001 | Khóa target/copy/dump/DB, chạy control và manifest | — | Codex / dsh2 |
-| KRE-002 | NewPatcher: caller/config của manifest và contract với CA | KRE-001 | **dsh1** / Codex |
+| KRE-002 | CA ProcessPatch: response/caller/guard; bootstrap local và điểm chặn sau đó; NewPatcher là nhánh tham chiếu | KRE-001 | dsh1 RE; Codex code/runtime / dsh2 |
 | KRE-003 | KR socket→framer→reader/writer; constants và fixture độc lập | KRE-001; gate runtime cần KRE-002 | **dsh2** / Codex |
-| KRE-004 | Stub bootstrap/launcher local, qua K1 | KRE-002 | Codex / dsh1 |
+| KRE-004 | Wine unpack/patch copy + harness, issue6/PR7 đã xong trong scope tới local accept; chưa nghiệm thu toàn K1 | KRE-001/002 | Codex / dsh1+dsh2 |
 | KRE-005 | Probe server hello, version/mode/seq, qua K2 | KRE-003/004 | Codex / dsh2 |
 | KRE-006 | Login/channel/cache→lobby và K3 | KRE-005 | dsh1 RE; Codex code / dsh2 |
 | KRE-007 | Room/roster/map/spawn/loading và K4 | KRE-006 | dsh1 RE; Codex code / dsh2 |

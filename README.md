@@ -22,10 +22,10 @@ boom-kr-server/
 
 ## Đang làm
 
-K0 đã khóa artifact; bản copy unpack/patch chạy Wine tới `ProcessPatch` và kết nối listener local.
-[Recipe Wine và giới hạn](docs/evidence/wine/README.md). dsh1 nghiên cứu bootstrap/ProcessPatch,
-dsh2 nghiên cứu codec từ writer/reader KR. Chưa có hello KR hoặc demo chơi được; không dùng tiến độ
-36/37 của `boom-rs` để báo tiến độ project này.
+K0/K1 đang triển khai: bản copy KR unpack/patch đã chạy bằng Wine, nhận phản hồi bootstrap local
+và trả thành công từ `ProcessPatch`. Điểm chặn tiếp là import `ngclient.aes #1` chưa phục hồi.
+Xem [evidence bootstrap wire](docs/evidence/bootstrap-wire/README.md). Chưa có hello game/login hoặc
+demo chơi được; không dùng tiến độ `boom-rs` để báo tiến độ project này.
 
 Đích đầu: bootstrap offline → login cục bộ → sảnh/phòng → Battle → kết quả → hai client chơi hai
 trận liên tiếp. Bốn client và hardening sau đó. Chi tiết ở [PLAN](docs/PLAN.md).

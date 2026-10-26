@@ -25,8 +25,9 @@ def main():
     parser.add_argument('--commands', type=Path, help='Custom winedbg command file')
     parser.add_argument('--trace-api', action='store_true', help='Record Wine relay calls for this bounded run')
     parser.add_argument('--map-host', action='append', default=[], help='Resolve this DNS name to loopback inside the namespace')
-    parser.add_argument('--listen', type=int, action='append', default=[], help='Local TCP accept/capture port; sends no reply')
+    parser.add_argument('--listen', type=int, action='append', default=[], help='Local TCP accept/capture port; silent unless --bootstrap-reply is supplied')
     parser.add_argument('--bootstrap-local', action='store_true', help='Map observed KR bootstrap names and listen on candidate local ports3808..3998 step10')
+    parser.add_argument('--bootstrap-reply', type=Path, help='Send this local fixture once on the first bootstrap connection; max65536 bytes')
     parser.add_argument('--inside', action='store_true', help=argparse.SUPPRESS)
     args = parser.parse_args()
     if args.bootstrap_local:
@@ -55,6 +56,18 @@ def main():
             parser.error('invalid DNS name')
     if any(not 1 <= port <= 65535 for port in args.listen):
         parser.error('invalid TCP port')
+    reply = None
+    if args.bootstrap_reply:
+        try:
+            args.bootstrap_reply = args.bootstrap_reply.resolve(strict=True)
+        except OSError as error:
+            parser.error(f'invalid bootstrap reply: {error}')
+        if not args.bootstrap_local or not args.bootstrap_reply.is_file() or not args.bootstrap_reply.is_relative_to(local):
+            parser.error('--bootstrap-reply requires --bootstrap-local and a file under this repo local/')
+        with args.bootstrap_reply.open('rb') as source:
+            reply = source.read(65537)
+        if not 1 <= len(reply) <= 65536:
+            parser.error('bootstrap reply must be 1..65536 bytes')
     if not args.inside:
         # UID mapping gives mount privileges only in this disposable user namespace.
         command = ['unshare', '--user', '--map-root-user', '--net', '--mount',
@@ -68,6 +81,8 @@ def main():
             command.extend(['--commands', str(args.commands.resolve(strict=True))])
         if args.trace_api:
             command.append('--trace-api')
+        if args.bootstrap_reply:
+            command.extend(['--bootstrap-local', '--bootstrap-reply', str(args.bootstrap_reply)])
         for name in args.map_host:
             command.extend(['--map-host', name])
         for port in args.listen:
@@ -126,10 +141,14 @@ def main():
         record['host_resolution'][name] = {'returncode':result.returncode,'output':result.stdout}
         if result.returncode or not result.stdout.strip() or any(line.split()[0]!='127.0.0.1' for line in result.stdout.splitlines()):
             raise RuntimeError('loopback name resolution verification failed')
+    record['bootstrap_reply'] = {'path':str(args.bootstrap_reply), 'size':len(reply), 'sha256':hashlib.sha256(reply).hexdigest()} if reply else None
     record['tcp_events'] = []
+    reply_lock = threading.Lock()
+    reply_claimed = False
     stop = threading.Event()
     listeners = []
     def accept_loop(listener, port):
+        nonlocal reply_claimed
         with listener:
             while not stop.is_set():
                 try:
@@ -140,6 +159,17 @@ def main():
                 record['tcp_events'].append(event)
                 with connection:
                     connection.settimeout(0.2)
+                    with reply_lock:
+                        send_reply = reply is not None and not reply_claimed
+                        if send_reply:
+                            reply_claimed = True
+                    if send_reply:
+                        event['reply_attempt_monotonic_ns'] = time.monotonic_ns()
+                        try:
+                            connection.sendall(reply)
+                            event['reply_sent'] = {'hex':reply.hex(), 'monotonic_ns':time.monotonic_ns()}
+                        except OSError as error:
+                            event['reply_error'] = str(error)
                     size=0
                     while not stop.is_set() and size < 65536:
                         try:

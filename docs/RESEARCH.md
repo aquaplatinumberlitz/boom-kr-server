@@ -9,10 +9,11 @@ task và điểm dừng; [contract](PROTOCOL.md) giữ ma trận/nguồn.
 KRE-001/002/003 đang thực hiện: Codex giữ harness/runtime, dsh1 bootstrap, dsh2 codec tĩnh.
 Review plan nguồn đã xong; các câu hỏi dưới đây vẫn open cho tới khi có evidence trả lời.
 
-26/10: theo yêu cầu chạy copy bằng Wine, recipe `kre-wine-copy-r1` đã có ba cold start với
-prefix/game copy mới tới ProcessPatch và TCP accept loopback. Xem [evidence Wine](evidence/wine/README.md).
-Q-022 vẫn open: chưa có response bootstrap, hello, đối chứng Windows cùng modified artifact hoặc UI.
-Q-023 không được nâng trạng thái từ TCP accept; listener chưa trả byte và chưa biết framing.
+27/10: [recipe Wine](evidence/wine/README.md) đã có ba cold start tới local accept. Tiếp theo,
+[probe bootstrap](evidence/bootstrap-wire/README.md) gửi phản hồi local, debugger xác nhận
+`ProcessPatch` return1 tại1234875. Frame mode0/selector0, native oracle254 ca pass. KRE-004/Wine đã
+merge PR7; KRE-002/003 vẫn open. Q-022 tiếp tục ở trap `ngclient.aes #1`, slot16EA4C8; Q-023 chưa có
+hello game/C→S kế tiếp, mode/seq game hoặc đối chứng Windows. Không nâng gate từ return bootstrap.
 
 | ID / ưu tiên | Trạng thái | Owner / reviewer | Đã biết | Còn thiếu / bước đóng |
 |---|---|---|---|---|
