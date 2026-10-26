@@ -147,6 +147,7 @@ def main():
     reply_claimed = False
     stop = threading.Event()
     listeners = []
+    listener_sockets = []
     def accept_loop(listener, port):
         nonlocal reply_claimed
         with listener:
@@ -186,20 +187,9 @@ def main():
                         size+=len(data)
                     if size==65536:
                         event['byte_limit_reached']=True
-    for port in sorted(set(args.listen)):
-        listener=socket.socket()
-        listener.setsockopt(socket.SOL_SOCKET,socket.SO_REUSEADDR,1)
-        listener.bind(('127.0.0.1',port))
-        listener.listen(4)
-        listener.settimeout(0.2)
-        thread=threading.Thread(target=accept_loop,args=(listener,port),daemon=True)
-        thread.start()
-        listeners.append(thread)
     children, streams = [], []
     game_log = args.game_dir / 'CALog.log'
-    if game_log.exists():
-        (args.out / 'CALog-before.txt').write_bytes(game_log.read_bytes())
-        game_log.unlink()
+    game_log_prepared = False
 
     def spawn(command, name, cwd=None, pass_fds=(), input_file=None):
         stream = (args.out / (name + '.log')).open('w')
@@ -211,6 +201,20 @@ def main():
         return process
 
     try:
+        for port in sorted(set(args.listen)):
+            listener=socket.socket()
+            listener_sockets.append(listener)
+            listener.setsockopt(socket.SOL_SOCKET,socket.SO_REUSEADDR,1)
+            listener.bind(('127.0.0.1',port))
+            listener.listen(4)
+            listener.settimeout(0.2)
+            thread=threading.Thread(target=accept_loop,args=(listener,port),daemon=True)
+            thread.start()
+            listeners.append(thread)
+        if game_log.exists():
+            (args.out / 'CALog-before.txt').write_bytes(game_log.read_bytes())
+            game_log.unlink()
+        game_log_prepared = True
         read_fd, write_fd = os.pipe()
         spawn(['Xvfb', '-displayfd', str(write_fd), '-screen', '0', '1024x768x24',
                '-nolisten', 'tcp'], 'xvfb', pass_fds=(write_fd,))
@@ -261,7 +265,9 @@ def main():
         stop.set()
         for thread in listeners:
             thread.join(timeout=0.5)
-        if game_log.exists():
+        for listener in listener_sockets:
+            listener.close()
+        if game_log_prepared and game_log.exists():
             (args.out / 'CALog-run.txt').write_bytes(game_log.read_bytes())
         try:
             subprocess.run(['wineserver', '-k'], env=env, stdout=subprocess.DEVNULL,

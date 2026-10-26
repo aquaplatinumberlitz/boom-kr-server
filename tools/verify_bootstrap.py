@@ -19,6 +19,8 @@ def verify(binary):
     from unicorn import Uc, UC_ARCH_X86, UC_MODE_32, UC_HOOK_CODE
     from unicorn.x86_const import UC_X86_REG_EAX, UC_X86_REG_ECX, UC_X86_REG_ESP, UC_X86_REG_EIP
 
+    if importlib.metadata.version("unicorn") != "2.1.4":
+        raise ValueError("requires Unicorn2.1.4 for the recorded oracle recipe")
     data = binary.read_bytes()
     if hashlib.sha256(data).hexdigest() != TARGET_SHA:
         raise ValueError("requires the recorded modO memory image")
@@ -183,6 +185,10 @@ def main():
     parser.add_argument("--memory", type=Path, required=True)
     parser.add_argument("--out", type=Path, required=True)
     args = parser.parse_args()
+    local = Path(__file__).resolve().parent.parent / "local"
+    args.out = args.out.resolve()
+    if not args.out.is_relative_to(local):
+        parser.error("raw output must be under this repo local/")
     if args.out.exists() or not args.out.parent.is_dir():
         parser.error("choose a new output file in an existing directory")
     result = verify(args.memory)

@@ -79,6 +79,7 @@ python3 tools/wine_probe.py \
   --bootstrap-reply local/research/codex/bootstrap-reply-r1.bin
 ```
 
+Oracle yêu cầu Unicorn đúng2.1.4 và output dưới repo `local/`; sai version/path bị từ chối.
 File fixture tạo từ hex trên trong `local/`; raw path không có trong clone sạch. Output phải mới.
 `--bootstrap-reply` chỉ nhận file local 1..65536 byte và bắt buộc `--bootstrap-local`; gửi **một lần
 trên kết nối accept đầu tiên toàn run**, giữ socket để capture tối đa65536 byte C→S. Nếu send lỗi,
@@ -91,3 +92,9 @@ object/socket/SEH memory là input tổng hợp. Có guard byte quanh đích, wi
 byte, available0..15 và hai frame gộp. Không test allocation failure, string heap>15, mọi mode/seq,
 full ProcessPatch hoặc toàn bộ wire. Một-byte body selector2 chỉ kiểm copy, không phải packet hợp lệ.
 Metadata và digest raw: [verification.json](verification.json). Binary/decompile/capture vẫn local.
+
+Sửa sau review: listener setup nằm trong cleanup/finally; lỗi bind được ghi `run.json`, đóng các
+socket đã mở và không gán CALog cũ cho run chưa launch. Fault-injection ở listener thứ hai đã kiểm
+đường này trước khi khởi động client. Native tool từ chối version khác/nonlocal output.
+`reply-final/final-smoke` dùng harness sau sửa, reuse prefix, gửi đúng fixture và lặp trap2263878;
+không tính thêm cold start. Hash ở trường `post_review_smoke`/`review_fix_checks`.

@@ -23,7 +23,7 @@ boom-kr-server/
 ## Đang làm
 
 K0/K1 đang triển khai: bản copy KR unpack/patch đã chạy bằng Wine, nhận phản hồi bootstrap local
-và trả thành công từ `ProcessPatch`. Điểm chặn tiếp là import `ngclient.aes #1` chưa phục hồi.
+và được debugger xác nhận trả thành công từ `ProcessPatch`. Điểm chặn tiếp là import `ngclient.aes #1` chưa phục hồi.
 Xem [evidence bootstrap wire](docs/evidence/bootstrap-wire/README.md). Chưa có hello game/login hoặc
 demo chơi được; không dùng tiến độ `boom-rs` để báo tiến độ project này.
 
