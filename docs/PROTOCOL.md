@@ -2,7 +2,8 @@
 
 Revision `kr-legacy-contract-r0`, 26/10/2026. **Khung nghiên cứu, chưa có codec KR đã nghiệm thu**.
 Lộ trình và thứ tự task chỉ giữ ở [REWRITE_PLAN — KRE](PLAN.md).
-Không thay protocol mới của [ADR 0009](REFERENCES.md).
+Đây là contract của repo server KR. ADR0009 của bản viết lại là nguồn lịch sử để so sánh;
+vị trí tài liệu nguồn ghi trong [REFERENCES](REFERENCES.md), không phải giao thức dùng cho client KR gốc.
 
 ## 1. Định danh và nguồn chuẩn
 

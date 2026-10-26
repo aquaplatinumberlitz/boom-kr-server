@@ -3,7 +3,7 @@
 Server giả lập cho **client Crazy Arcade KR gốc build 00967**, dựa trên RE KR và kiến thức từ client
 VN VBNB_116. Đây là project độc lập với bản viết lại client/server Rust `boom-rs`.
 
-**Thư mục làm việc duy nhất:** `/home/admin/boom/repos/boom-kr-server`.
+**Thư mục làm việc hiện tại trên host:** `/home/admin/boom/repos/boom-kr-server`.
 Docs, tools, code và evidence mới đều ở đây. Không cần mở worktree của repo Rust cũ để làm project này.
 
 ```text
@@ -38,6 +38,10 @@ trận liên tiếp. Bốn client và hardening sau đó. Chi tiết ở [PLAN](
 python3 tools/check_docs.py
 python3 tools/artifacts.py verify
 ```
+
+`artifacts.py verify` dùng manifest **host-local** trong `docs/evidence/artifacts.json`; client/DB
+không nằm trong Git nên clone sạch trên máy khác chưa thể chạy lệnh này. Khi chuyển máy, dùng
+`--manifest /path/to/local-artifacts.json` với đường dẫn nguồn và hash đã xác nhận tại máy đó.
 
 Client nguồn giữ ở `/home/admin/boom/clients/kr-00967`; không sửa hoặc commit. Artifact và database
 đã unpack ở repo RE cũ chỉ là đầu vào tham chiếu; mỗi worker dùng bản copy riêng trong `local/`.
