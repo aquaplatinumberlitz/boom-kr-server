@@ -7,16 +7,21 @@ Yêu cầu 26/10: triển khai tiếp, code/tool/docs mới ở cùng repo này;
 ### Mục tiêu, baseline và phạm vi
 
 Yêu cầu chủ dự án 26/10/2026: dùng kiến thức RE VN `VBNB_116` để dựng server giả lập cho
-**chính `CA.exe` KR `00967`**. Đây là luồng bổ sung cho bản viết lại; quyết định “không cần tương thích
-client cũ” ở phần Rust vẫn áp dụng cho V1. Chỉ đạo không giao dsh crypto/auth legacy trong hàng đợi
-RE V1 bên dưới không hạn chế nghiên cứu có mục tiêu của nhánh KRE này.
+**chính `CA.exe` KR `00967`**. Đây là project độc lập `boom-kr-server`; không dùng scope, gate,
+registry hoặc tỷ lệ tiến độ V1 của bản viết lại `boom-rs` làm điều kiện của repo này.
 
 Revision kế hoạch **`KR-00967-EMU-1`**, trạng thái **đang triển khai K0/RE tĩnh, chưa có demo KR**.
-Baseline docs `boom-rs@dae5e1c717ad31b9e8d32a9b20a76d65942807eb`; tham chiếu
-`boom-re@9ac2075bbec0c16217741aaedea968cf685e39a9` và
-`boomkr-re@88e11ed30764c753a00f4f23a2f33dafadc4c890`. Hash client và ma trận tái sử dụng:
+Các mốc nguồn được phân biệt rõ:
+
+- **Tài liệu tham chiếu lịch sử:** `boom-rs@dae5e1c717ad31b9e8d32a9b20a76d65942807eb`.
+- **Plan KRE trước khi tách, đã review:** `boom-rs@1eee46d0ecf5c7f4eeedeadd7e258ef1cd64bf43`.
+- **Snapshot khởi tạo repo mới:** `boom-kr-server@a19c8f68af68b01844c92a7870aa2a22eebf5f5f`;
+  các sửa sau migration nằm trong lịch sử của chính repo này.
+- **Nguồn RE:** `boom-re@9ac2075bbec0c16217741aaedea968cf685e39a9` và
+  `boomkr-re@88e11ed30764c753a00f4f23a2f33dafadc4c890`.
+
+Hash client và ma trận tái sử dụng:
 [LEGACY_KR_PROTOCOL](PROTOCOL.md).
-Không thay `KR-00967-V1-scope-1`, registry, gate G1–G6 hoặc sổ generated của Rust.
 
 Đích đầu: bản copy client KR → bootstrap offline → đăng nhập identity cục bộ → một kênh/sảnh →
 tạo/vào phòng → ready/start → Battle thường hai client → kết quả → về phòng → trận thứ hai.

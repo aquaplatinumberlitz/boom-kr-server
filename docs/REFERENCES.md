@@ -18,7 +18,7 @@ review đường dẫn/scope sau migration; việc import không xác nhận run
 | Client VN gốc | `/home/admin/boom/clients/vn-116/ca.exe`, SHA `bce8644d4e783d1354ab4fc880e1ab9a4ab3325327028f37d99e5439e25f4bbd` | Định danh VN; khác artifact patched dùng cho runtime |
 | RE/server VN | `/home/admin/boom/repos/boom-re`, commit `9ac2075bbec0c16217741aaedea968cf685e39a9` | `docs/protocol.md`, `oc_d-login.md`, `lobby.md`, `oc_e-game.md`; `tools/boomproto.py`, `verify_emu.py`, `fakeserver.py`; `server/src` làm reference |
 | RE KR cũ | `/home/admin/boom/repos/boomkr-re`, commit `88e11ed30764c753a00f4f23a2f33dafadc4c890` | `docs/kr.md` §18–33, dump/native consumer, `out/kr-full.exe` và sourceDB |
-| Nghiên cứu dùng chung | `/home/admin/boom/repos/boom-rs`, docs baseline `dae5e1c717ad31b9e8d32a9b20a76d65942807eb` | `docs/research/findings/{VN_LEGACY_SERVER_REFERENCE,VN_BATTLE_RUNTIME_REFERENCE,KR_RE_FLAME_CHAIN,KR_RE_TRAP_TIMER,KR_RE_TRAPPED_SPEED,KR_RE_BOMBERATTR}.md`; ADR0002/0013 cho lịch sử nguồn |
+| Nghiên cứu dùng chung | `/home/admin/boom/repos/boom-rs`, docs baseline `dae5e1c717ad31b9e8d32a9b20a76d65942807eb` | `docs/research/findings/{VN_LEGACY_SERVER_REFERENCE,VN_BATTLE_RUNTIME_REFERENCE,KR_RE_FLAME_CHAIN,KR_RE_TRAP_TIMER,KR_RE_TRAPPED_SPEED,KR_RE_BOMBERATTR}.md`; `docs/decisions/0009-wire-protocol-input-snapshot-codec.md` là protocol **rewrite**, không phải KR wire; ADR0002/0013 cho lịch sử nguồn |
 | Archive | `/home/admin/boom/archive/2026-10-26` | RESUME/KNOWLEDGE/TOOLS/PROCESS là hồ sơ lịch sử; kết luận mới giữ trong repo này |
 
 `kr.md` là notebook nối tiếp: §31 sửa nhận định exitcode cũ thành một run alive-stall; §33 tách dialog
