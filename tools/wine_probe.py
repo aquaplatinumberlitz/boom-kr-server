@@ -25,8 +25,9 @@ def main():
     parser.add_argument('--commands', type=Path, help='Custom winedbg command file')
     parser.add_argument('--trace-api', action='store_true', help='Record Wine relay calls for this bounded run')
     parser.add_argument('--map-host', action='append', default=[], help='Resolve this DNS name to loopback inside the namespace')
-    parser.add_argument('--listen', type=int, action='append', default=[], help='Local TCP accept/capture port; sends no reply')
+    parser.add_argument('--listen', type=int, action='append', default=[], help='Local TCP accept/capture port; silent unless --bootstrap-reply is supplied')
     parser.add_argument('--bootstrap-local', action='store_true', help='Map observed KR bootstrap names and listen on candidate local ports3808..3998 step10')
+    parser.add_argument('--bootstrap-reply', type=Path, help='Send this local fixture once on the first bootstrap connection; max65536 bytes')
     parser.add_argument('--inside', action='store_true', help=argparse.SUPPRESS)
     args = parser.parse_args()
     if args.bootstrap_local:
@@ -55,6 +56,18 @@ def main():
             parser.error('invalid DNS name')
     if any(not 1 <= port <= 65535 for port in args.listen):
         parser.error('invalid TCP port')
+    reply = None
+    if args.bootstrap_reply:
+        try:
+            args.bootstrap_reply = args.bootstrap_reply.resolve(strict=True)
+        except OSError as error:
+            parser.error(f'invalid bootstrap reply: {error}')
+        if not args.bootstrap_local or not args.bootstrap_reply.is_file() or not args.bootstrap_reply.is_relative_to(local):
+            parser.error('--bootstrap-reply requires --bootstrap-local and a file under this repo local/')
+        with args.bootstrap_reply.open('rb') as source:
+            reply = source.read(65537)
+        if not 1 <= len(reply) <= 65536:
+            parser.error('bootstrap reply must be 1..65536 bytes')
     if not args.inside:
         # UID mapping gives mount privileges only in this disposable user namespace.
         command = ['unshare', '--user', '--map-root-user', '--net', '--mount',
@@ -68,6 +81,8 @@ def main():
             command.extend(['--commands', str(args.commands.resolve(strict=True))])
         if args.trace_api:
             command.append('--trace-api')
+        if args.bootstrap_reply:
+            command.extend(['--bootstrap-local', '--bootstrap-reply', str(args.bootstrap_reply)])
         for name in args.map_host:
             command.extend(['--map-host', name])
         for port in args.listen:
@@ -126,10 +141,15 @@ def main():
         record['host_resolution'][name] = {'returncode':result.returncode,'output':result.stdout}
         if result.returncode or not result.stdout.strip() or any(line.split()[0]!='127.0.0.1' for line in result.stdout.splitlines()):
             raise RuntimeError('loopback name resolution verification failed')
+    record['bootstrap_reply'] = {'path':str(args.bootstrap_reply), 'size':len(reply), 'sha256':hashlib.sha256(reply).hexdigest()} if reply else None
     record['tcp_events'] = []
+    reply_lock = threading.Lock()
+    reply_claimed = False
     stop = threading.Event()
     listeners = []
+    listener_sockets = []
     def accept_loop(listener, port):
+        nonlocal reply_claimed
         with listener:
             while not stop.is_set():
                 try:
@@ -140,6 +160,17 @@ def main():
                 record['tcp_events'].append(event)
                 with connection:
                     connection.settimeout(0.2)
+                    with reply_lock:
+                        send_reply = reply is not None and not reply_claimed
+                        if send_reply:
+                            reply_claimed = True
+                    if send_reply:
+                        event['reply_attempt_monotonic_ns'] = time.monotonic_ns()
+                        try:
+                            connection.sendall(reply)
+                            event['reply_sent'] = {'hex':reply.hex(), 'monotonic_ns':time.monotonic_ns()}
+                        except OSError as error:
+                            event['reply_error'] = str(error)
                     size=0
                     while not stop.is_set() and size < 65536:
                         try:
@@ -156,20 +187,9 @@ def main():
                         size+=len(data)
                     if size==65536:
                         event['byte_limit_reached']=True
-    for port in sorted(set(args.listen)):
-        listener=socket.socket()
-        listener.setsockopt(socket.SOL_SOCKET,socket.SO_REUSEADDR,1)
-        listener.bind(('127.0.0.1',port))
-        listener.listen(4)
-        listener.settimeout(0.2)
-        thread=threading.Thread(target=accept_loop,args=(listener,port),daemon=True)
-        thread.start()
-        listeners.append(thread)
     children, streams = [], []
     game_log = args.game_dir / 'CALog.log'
-    if game_log.exists():
-        (args.out / 'CALog-before.txt').write_bytes(game_log.read_bytes())
-        game_log.unlink()
+    game_log_prepared = False
 
     def spawn(command, name, cwd=None, pass_fds=(), input_file=None):
         stream = (args.out / (name + '.log')).open('w')
@@ -181,6 +201,20 @@ def main():
         return process
 
     try:
+        for port in sorted(set(args.listen)):
+            listener=socket.socket()
+            listener_sockets.append(listener)
+            listener.setsockopt(socket.SOL_SOCKET,socket.SO_REUSEADDR,1)
+            listener.bind(('127.0.0.1',port))
+            listener.listen(4)
+            listener.settimeout(0.2)
+            thread=threading.Thread(target=accept_loop,args=(listener,port),daemon=True)
+            thread.start()
+            listeners.append(thread)
+        if game_log.exists():
+            (args.out / 'CALog-before.txt').write_bytes(game_log.read_bytes())
+            game_log.unlink()
+        game_log_prepared = True
         read_fd, write_fd = os.pipe()
         spawn(['Xvfb', '-displayfd', str(write_fd), '-screen', '0', '1024x768x24',
                '-nolisten', 'tcp'], 'xvfb', pass_fds=(write_fd,))
@@ -231,7 +265,9 @@ def main():
         stop.set()
         for thread in listeners:
             thread.join(timeout=0.5)
-        if game_log.exists():
+        for listener in listener_sockets:
+            listener.close()
+        if game_log_prepared and game_log.exists():
             (args.out / 'CALog-run.txt').write_bytes(game_log.read_bytes())
         try:
             subprocess.run(['wineserver', '-k'], env=env, stdout=subprocess.DEVNULL,

@@ -1,0 +1,450 @@
+{
+  "schema": "kre-bootstrap-wire-evidence-r1",
+  "baseline": "fcf5dfbbade1fc9a451a22f69c3cc9f47a80ef96",
+  "date_jst": "2026-10-27",
+  "claims": [
+    {
+      "source": "kr_static",
+      "status": "confirmed",
+      "scope": "modO native mode0selector0 length/copy/receive/guard/readers; synthetic fields + sole allocator substitute; 254cases"
+    },
+    {
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "scope": "Modified Wine copy; debug return1234875 EAX1; next trap2263878. No game hello or vanilla equivalence."
+    },
+    {
+      "source": "emu_choice",
+      "status": "confirmed",
+      "scope": "15byte fixture accepted in this recipe; opaque zero/empty fields and prefix69 are probe choices, originalserversemantics unknown"
+    }
+  ],
+  "input": {
+    "path": "/home/admin/boom/repos/boomkr-re/out/modO.bin",
+    "bytes": 31858688,
+    "sha256": "a08950c833d3acab8281049def7b3dc96b221f107eeda01da3a548e34b91dce5"
+  },
+  "tools": [
+    {
+      "path": "tools/verify_bootstrap.py",
+      "bytes": 11740,
+      "sha256": "6356574e528252480c54d5ef2972fd3d88b94ba2658aa1814b8f0fc22f2deb74"
+    },
+    {
+      "path": "tools/wine_probe.py",
+      "bytes": 16512,
+      "sha256": "a1e7abeaaf4a4def11fe56845dc5d5d7c05d86813786f4024188d7902032e0fb"
+    },
+    {
+      "path": "local/research/codex/wine_probe-initial.py",
+      "bytes": 16075,
+      "sha256": "2cc9352cc4cb18a7cc455e5ebb15b21de6766e0b524cc725eb48a6727b4883a8"
+    },
+    {
+      "path": "local/research/codex/wine_probe-before-review.py",
+      "bytes": 16236,
+      "sha256": "36ce0cbc3dfae5fb10e7775326837e4fb53be8a45f63e971c550262197fc844b"
+    }
+  ],
+  "oracle": {
+    "path": "local/research/codex/bootstrap-native-reviewed.json",
+    "bytes": 42480,
+    "sha256": "098bf8f6893746a3837f841cf4e6f2d58366ae5e9122420d333205ad4421efc4"
+  },
+  "fixture": {
+    "path": "local/research/codex/bootstrap-reply-r1.bin",
+    "bytes": 15,
+    "sha256": "75be47b3067e2b1e9d2cf99b5a7eb7f949a074482409fb3eafc1a553cec53cd1"
+  },
+  "badguard_fixture": {
+    "path": "local/research/codex/bootstrap-reply-badguard.bin",
+    "bytes": 15,
+    "sha256": "589d1c406f1b13d78e2297d2b09e36c5bdd21ef77ee2c945637068c11925483b"
+  },
+  "cli_negative": {
+    "path": "local/research/codex/bootstrap-reply-cli-checks-final.json",
+    "bytes": 1270,
+    "sha256": "c79ce809bc6e955d462d235e5627cb4e015ccdea3a137f5bac9e089f8fb88635"
+  },
+  "static_raw": [
+    {
+      "path": "local/research/codex/wine-processpatch-next.asm",
+      "bytes": 9035,
+      "sha256": "bb94f4dac1c2380e165512842e75e4648fcf314c84d1342ce1fa19af90698fd6"
+    },
+    {
+      "path": "local/research/codex/bootstrap-frame-copy.asm",
+      "bytes": 7308,
+      "sha256": "f4959847482c253da1a569b81af889644576f15300367ad431bc85ac764f7a62"
+    },
+    {
+      "path": "local/research/codex/bootstrap-frame-copy-tail.asm",
+      "bytes": 342,
+      "sha256": "ce055b10a87a1d2f92eb4ec98a7e55a933319826d074f2ee6bc71678c3bd262c"
+    },
+    {
+      "path": "local/research/codex/bootstrap-response-setter.asm",
+      "bytes": 1071,
+      "sha256": "9a9ed14caffd901d6c52e6fb86618aeda4acff9f523e91acb65258cbbc846060"
+    },
+    {
+      "path": "local/research/codex/bootstrap-prefix-guard.asm",
+      "bytes": 1583,
+      "sha256": "cb0440e46dabc49c208406837d41e77fc4954874cd1bf561fcada83f2b8f525f"
+    },
+    {
+      "path": "local/research/codex/bootstrap-frame-width-extra.asm",
+      "bytes": 1442,
+      "sha256": "957f23ce222ee8fbcff6ef39650811e5198807bd15213a4ea014cae396e430bb"
+    }
+  ],
+  "runs": [
+    {
+      "run": "local/research/bootstrap-runtime/silent/run",
+      "cold_game_prefix_copy": true,
+      "start_utc": "2026-10-26T23:28:36Z",
+      "exe_sha256": "a0c3b9867dae5fe2ff7c315cfe851117661c2cafead45196ce999329f67432f5",
+      "harness_sha256": "2cc9352cc4cb18a7cc455e5ebb15b21de6766e0b524cc725eb48a6727b4883a8",
+      "ports": [
+        3848
+      ],
+      "sent_reply": false,
+      "raw": [
+        {
+          "path": "local/research/bootstrap-runtime/silent/run/run.json",
+          "bytes": 2081,
+          "sha256": "0185a2304c4cb4db47e218185861a0d15589e925cdcd88b29ee198d4907f4ccb"
+        },
+        {
+          "path": "local/research/bootstrap-runtime/silent/run/client.log",
+          "bytes": 238940,
+          "sha256": "9dd8b4d274ec3959724034ff1c7e60436bd755138ec1e75e3a6be05b6c617045"
+        },
+        {
+          "path": "local/research/bootstrap-runtime/silent/run/CALog-run.txt",
+          "bytes": 90,
+          "sha256": "d5f37c547f073de65289be1c96a9f5f8cf3ace14a813b7fa7ff69eec18b27e23"
+        },
+        {
+          "path": "local/research/bootstrap-runtime/silent/run/processes-00.txt",
+          "bytes": 2443,
+          "sha256": "771275e3a7e132ecb7274dd29958519f1618bf5a84854a78e8bf98ea3bf70005"
+        },
+        {
+          "path": "local/research/bootstrap-runtime/silent/run/windows-00.txt",
+          "bytes": 166,
+          "sha256": "28ae29836d791dcd3302b447a52a8f0fa3f9a192abbc33a27751e23d7ebe0d43"
+        },
+        {
+          "path": "local/research/bootstrap-runtime/silent/run/processes-05.txt",
+          "bytes": 2733,
+          "sha256": "3f3a90955683a23c9148eaf23a2e5189bd802cfa9bef3111c0b205ec43fa20d2"
+        },
+        {
+          "path": "local/research/bootstrap-runtime/silent/run/windows-05.txt",
+          "bytes": 1189,
+          "sha256": "4e81b2806a4ee2384d34f026151da17a9023312fc2066e6701fa56f91a6bc694"
+        }
+      ]
+    },
+    {
+      "run": "local/research/bootstrap-runtime/reply/run",
+      "cold_game_prefix_copy": true,
+      "start_utc": "2026-10-26T23:29:05Z",
+      "exe_sha256": "a0c3b9867dae5fe2ff7c315cfe851117661c2cafead45196ce999329f67432f5",
+      "harness_sha256": "2cc9352cc4cb18a7cc455e5ebb15b21de6766e0b524cc725eb48a6727b4883a8",
+      "ports": [
+        3868
+      ],
+      "sent_reply": true,
+      "raw": [
+        {
+          "path": "local/research/bootstrap-runtime/reply/run/run.json",
+          "bytes": 2449,
+          "sha256": "1eaf21958d43c71aa3ec8e6af22f33bb53ec251baee7ad59243a88772a5da045"
+        },
+        {
+          "path": "local/research/bootstrap-runtime/reply/run/client.log",
+          "bytes": 52566,
+          "sha256": "62267503c873ffb1027d1668c9536f92e05c55e335c5fcfded6fcebf7e4a9a8d"
+        },
+        {
+          "path": "local/research/bootstrap-runtime/reply/run/CALog-run.txt",
+          "bytes": 46,
+          "sha256": "1dd23e4b03452ed015c1477017fbed7718c0836710f693e445ebf2eb18015a12"
+        },
+        {
+          "path": "local/research/bootstrap-runtime/reply/run/processes-00.txt",
+          "bytes": 2558,
+          "sha256": "343a6839a50130406d504d614d992331bdd12ff19675029a7cee23252cb6fb97"
+        },
+        {
+          "path": "local/research/bootstrap-runtime/reply/run/windows-00.txt",
+          "bytes": 166,
+          "sha256": "28ae29836d791dcd3302b447a52a8f0fa3f9a192abbc33a27751e23d7ebe0d43"
+        },
+        {
+          "path": "local/research/bootstrap-runtime/reply/run/processes-05.txt",
+          "bytes": 3160,
+          "sha256": "80c05a4bfb21c78db552a98e25624f195303fa2eff2bfa912e2cc3153200ad1e"
+        },
+        {
+          "path": "local/research/bootstrap-runtime/reply/run/windows-05.txt",
+          "bytes": 1863,
+          "sha256": "0a1a5d870aae60bc1e292de0b7f3d6b85051322ca38400fc1f652c4756fb01c3"
+        }
+      ]
+    },
+    {
+      "run": "local/research/bootstrap-runtime/reply/debug-success",
+      "cold_game_prefix_copy": false,
+      "start_utc": "2026-10-26T23:29:42Z",
+      "exe_sha256": "a0c3b9867dae5fe2ff7c315cfe851117661c2cafead45196ce999329f67432f5",
+      "harness_sha256": "2cc9352cc4cb18a7cc455e5ebb15b21de6766e0b524cc725eb48a6727b4883a8",
+      "ports": [
+        3838
+      ],
+      "sent_reply": true,
+      "raw": [
+        {
+          "path": "local/research/bootstrap-runtime/reply/debug-success/run.json",
+          "bytes": 2150,
+          "sha256": "59a7a054f1947e414b8e4bbe8ad2859991e181413a28687910c1a962ac3752bf"
+        },
+        {
+          "path": "local/research/bootstrap-runtime/reply/debug-success/client.log",
+          "bytes": 38532,
+          "sha256": "5f0842f6d27e76a9637da230f54d1ab0f05dca9a27bdc55e06a6778337c58f0f"
+        },
+        {
+          "path": "local/research/bootstrap-runtime/reply/debug-success/CALog-run.txt",
+          "bytes": 46,
+          "sha256": "1dd23e4b03452ed015c1477017fbed7718c0836710f693e445ebf2eb18015a12"
+        },
+        {
+          "path": "local/research/bootstrap-runtime/reply/debug-success/processes-00.txt",
+          "bytes": 2682,
+          "sha256": "dc92aabc3ab29a6145bf436a5be7fc93f07281aab10347ab8a389581ce58cd71"
+        },
+        {
+          "path": "local/research/bootstrap-runtime/reply/debug-success/windows-00.txt",
+          "bytes": 166,
+          "sha256": "28ae29836d791dcd3302b447a52a8f0fa3f9a192abbc33a27751e23d7ebe0d43"
+        },
+        {
+          "path": "local/research/bootstrap-runtime/reply/debug-success/processes-01.txt",
+          "bytes": 3282,
+          "sha256": "4503cfc59574e530c98c6133813630209083ee96bbc83bebe5029e44be85fe43"
+        },
+        {
+          "path": "local/research/bootstrap-runtime/reply/debug-success/windows-01.txt",
+          "bytes": 1863,
+          "sha256": "0a1a5d870aae60bc1e292de0b7f3d6b85051322ca38400fc1f652c4756fb01c3"
+        },
+        {
+          "path": "local/research/bootstrap-runtime/reply/debug-success/debug-commands.txt",
+          "bytes": 82,
+          "sha256": "6397414cbac0c920c3e852751d9ea4d3aaf65daa06553fdef1803d30202bcfa3"
+        }
+      ]
+    },
+    {
+      "run": "local/research/bootstrap-runtime/reply/debug-return",
+      "cold_game_prefix_copy": false,
+      "start_utc": "2026-10-26T23:30:17Z",
+      "exe_sha256": "a0c3b9867dae5fe2ff7c315cfe851117661c2cafead45196ce999329f67432f5",
+      "harness_sha256": "2cc9352cc4cb18a7cc455e5ebb15b21de6766e0b524cc725eb48a6727b4883a8",
+      "ports": [
+        3858
+      ],
+      "sent_reply": true,
+      "raw": [
+        {
+          "path": "local/research/bootstrap-runtime/reply/debug-return/run.json",
+          "bytes": 2149,
+          "sha256": "a7d1244e3779dde3978c6d23b8efc2201a867c1f7e672544915973f9624e7fe5"
+        },
+        {
+          "path": "local/research/bootstrap-runtime/reply/debug-return/client.log",
+          "bytes": 37992,
+          "sha256": "dbe0ce8b7af9e521b48b8b3588ae0e4e0429ba98644c8908c6bf1a0270386d10"
+        },
+        {
+          "path": "local/research/bootstrap-runtime/reply/debug-return/CALog-run.txt",
+          "bytes": 46,
+          "sha256": "1dd23e4b03452ed015c1477017fbed7718c0836710f693e445ebf2eb18015a12"
+        },
+        {
+          "path": "local/research/bootstrap-runtime/reply/debug-return/processes-00.txt",
+          "bytes": 2680,
+          "sha256": "24ac930eabc7405477aeb2357dc99f82f338840fd61d5b9c00adb8285e964187"
+        },
+        {
+          "path": "local/research/bootstrap-runtime/reply/debug-return/windows-00.txt",
+          "bytes": 166,
+          "sha256": "28ae29836d791dcd3302b447a52a8f0fa3f9a192abbc33a27751e23d7ebe0d43"
+        },
+        {
+          "path": "local/research/bootstrap-runtime/reply/debug-return/processes-01.txt",
+          "bytes": 3280,
+          "sha256": "57bde9d0a8bad4a98f35aa51d18819bff9cedfa565ce2c5544d25289f84bf123"
+        },
+        {
+          "path": "local/research/bootstrap-runtime/reply/debug-return/windows-01.txt",
+          "bytes": 1863,
+          "sha256": "0a1a5d870aae60bc1e292de0b7f3d6b85051322ca38400fc1f652c4756fb01c3"
+        },
+        {
+          "path": "local/research/bootstrap-runtime/reply/debug-return/debug-commands.txt",
+          "bytes": 70,
+          "sha256": "7cffa55ed24884c8d244be98c595371eddde7c24f5d3e1abb6d8933edd187122"
+        }
+      ]
+    },
+    {
+      "run": "local/research/bootstrap-runtime/badguard/run",
+      "cold_game_prefix_copy": true,
+      "start_utc": "2026-10-26T23:30:45Z",
+      "exe_sha256": "a0c3b9867dae5fe2ff7c315cfe851117661c2cafead45196ce999329f67432f5",
+      "harness_sha256": "36ce0cbc3dfae5fb10e7775326837e4fb53be8a45f63e971c550262197fc844b",
+      "ports": [
+        3878
+      ],
+      "sent_reply": true,
+      "raw": [
+        {
+          "path": "local/research/bootstrap-runtime/badguard/run/run.json",
+          "bytes": 2381,
+          "sha256": "4fb396798685f236974c2ba2c033e15e3d4d52888bbcb5b89b9f1edf101853aa"
+        },
+        {
+          "path": "local/research/bootstrap-runtime/badguard/run/client.log",
+          "bytes": 209639,
+          "sha256": "c7647186d58f13a1fb74cddb87785eeb1167974d4e3d99711448354cea5882aa"
+        },
+        {
+          "path": "local/research/bootstrap-runtime/badguard/run/CALog-run.txt",
+          "bytes": 46,
+          "sha256": "1dd23e4b03452ed015c1477017fbed7718c0836710f693e445ebf2eb18015a12"
+        },
+        {
+          "path": "local/research/bootstrap-runtime/badguard/run/processes-00.txt",
+          "bytes": 2573,
+          "sha256": "e6dd12753be98aab52feed1ef8d59d135aa82615207731cf6b81374956be417b"
+        },
+        {
+          "path": "local/research/bootstrap-runtime/badguard/run/windows-00.txt",
+          "bytes": 166,
+          "sha256": "28ae29836d791dcd3302b447a52a8f0fa3f9a192abbc33a27751e23d7ebe0d43"
+        },
+        {
+          "path": "local/research/bootstrap-runtime/badguard/run/processes-04.txt",
+          "bytes": 2865,
+          "sha256": "8b9173d3c1c5b790e5c702817e0e44540136b3df8afefe864284b230787d21ce"
+        },
+        {
+          "path": "local/research/bootstrap-runtime/badguard/run/windows-04.txt",
+          "bytes": 1189,
+          "sha256": "4e81b2806a4ee2384d34f026151da17a9023312fc2066e6701fa56f91a6bc694"
+        }
+      ]
+    },
+    {
+      "run": "local/research/bootstrap-runtime/reply-final/run",
+      "cold_game_prefix_copy": true,
+      "start_utc": "2026-10-26T23:31:20Z",
+      "exe_sha256": "a0c3b9867dae5fe2ff7c315cfe851117661c2cafead45196ce999329f67432f5",
+      "harness_sha256": "36ce0cbc3dfae5fb10e7775326837e4fb53be8a45f63e971c550262197fc844b",
+      "ports": [
+        3888
+      ],
+      "sent_reply": true,
+      "raw": [
+        {
+          "path": "local/research/bootstrap-runtime/reply-final/run/run.json",
+          "bytes": 2381,
+          "sha256": "eed83abcea73e57f28df68dfccf44dca23cc7ee2ee0d4b06c553eefcf0a13cb1"
+        },
+        {
+          "path": "local/research/bootstrap-runtime/reply-final/run/client.log",
+          "bytes": 52875,
+          "sha256": "1af8d54821f7cdaa7636101a1a23d4219fffa291e257370a9b8fa57f6dfee4ad"
+        },
+        {
+          "path": "local/research/bootstrap-runtime/reply-final/run/CALog-run.txt",
+          "bytes": 46,
+          "sha256": "1dd23e4b03452ed015c1477017fbed7718c0836710f693e445ebf2eb18015a12"
+        },
+        {
+          "path": "local/research/bootstrap-runtime/reply-final/run/processes-00.txt",
+          "bytes": 2576,
+          "sha256": "36a652150002f3f7129a676a0abd638a7f4e0bd526923e7ae3e9033318e4a9a6"
+        },
+        {
+          "path": "local/research/bootstrap-runtime/reply-final/run/windows-00.txt",
+          "bytes": 166,
+          "sha256": "28ae29836d791dcd3302b447a52a8f0fa3f9a192abbc33a27751e23d7ebe0d43"
+        },
+        {
+          "path": "local/research/bootstrap-runtime/reply-final/run/processes-04.txt",
+          "bytes": 3184,
+          "sha256": "cb96d8e22e6cc30e829e9907a0f8f60d11db7ad2e9ab2a6e13479f2feb603ecd"
+        },
+        {
+          "path": "local/research/bootstrap-runtime/reply-final/run/windows-04.txt",
+          "bytes": 1863,
+          "sha256": "0a1a5d870aae60bc1e292de0b7f3d6b85051322ca38400fc1f652c4756fb01c3"
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "No original server capture",
+    "No full ProcessPatch emulation; actual return confirmed using debugger only",
+    "No K1/K2 completion or next client request",
+    "Only two positive plain copies, two debugger runs reuse same prefix",
+    "NSS files-only, only loopback and empty IPv4 routes per run; namespaces not general filesystem sandbox",
+    "Windows vanilla comparison remains open",
+    "CI not configured"
+  ],
+  "post_review_smoke": {
+    "run": "local/research/bootstrap-runtime/reply-final/final-smoke",
+    "cold_game_prefix_copy": false,
+    "purpose": "review fixes smoke only, not another cold start",
+    "harness_sha256": "a1e7abeaaf4a4def11fe56845dc5d5d7c05d86813786f4024188d7902032e0fb",
+    "raw": [
+      {
+        "path": "local/research/bootstrap-runtime/reply-final/final-smoke/run.json",
+        "bytes": 2308,
+        "sha256": "56aecd4f3370bc6c2a889be9afc2fe8cb0c8a90f80e3d7c7e0b401d28b20f4ef"
+      },
+      {
+        "path": "local/research/bootstrap-runtime/reply-final/final-smoke/client.log",
+        "bytes": 52875,
+        "sha256": "0b07668c62a9b737eaebcfed9841ea341ee789f394c63b923c999aeac5db72ee"
+      },
+      {
+        "path": "local/research/bootstrap-runtime/reply-final/final-smoke/CALog-run.txt",
+        "bytes": 46,
+        "sha256": "1dd23e4b03452ed015c1477017fbed7718c0836710f693e445ebf2eb18015a12"
+      }
+    ]
+  },
+  "review_fix_checks": [
+    {
+      "path": "local/research/codex/probe-bind-fault-fixed.py",
+      "bytes": 1239,
+      "sha256": "7012db759150ec2fc7503486550a21020f919eb46c152e316b0a969d71c4dcc8"
+    },
+    {
+      "path": "local/research/bootstrap-runtime/bind-fault-fixed/run.json",
+      "bytes": 1431,
+      "sha256": "c8b9a35201098a80d8668d0922801e8ab4b3fe66096fd8c94d32c4cb525f2c3f"
+    },
+    {
+      "path": "local/research/codex/bootstrap-native-negative-checks.json",
+      "bytes": 111,
+      "sha256": "b5aa355556056c88d0d8d24eac5cddb8535c340a41a7d430ce14139c207e2030"
+    }
+  ]
+}

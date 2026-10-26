@@ -20,8 +20,12 @@ header/checksum/crypto/seq hoặc mode selection của packet/socket đang chạ
 `build_wine_copy.py`: dựng đúng recipe KR copy đã đo, khóa SHA3 đầu vào và output, ghi before/after
 từng patch vào report local. Cần `pefile==2024.8.26`; candidate metadata là artifact host-local.
 `wine_probe.py`: chạy bounded trong namespace riêng, fresh CALog/window/screenshot/Winsock và accept
-TCP loopback không trả lời. Runtime paths chỉ nhận copy dưới `local/`; xem
+TCP loopback mặc định silent; `--bootstrap-reply` gửi fixture local một lần trên connection đầu tiên. Runtime paths chỉ nhận copy dưới `local/`; xem
 [recipe Wine](../docs/evidence/wine/README.md) để biết lệnh chạy và giới hạn.
 
 Harness/probe/bootstrap và codec mới đặt tại đây hoặc `server/`; không ghi vào tool repo VN/KR cũ.
 Raw output, bản copy client/DB và capture đặt trong `local/`, không commit.
+
+`verify_bootstrap.py`: native length/copy/receive/reader với modO SHA khóa, allocator tổng hợp,
+254 ca; không thực thi full ProcessPatch hoặc xác nhận hello game. Lệnh và giới hạn ở
+[bootstrap wire](../docs/evidence/bootstrap-wire/README.md).
