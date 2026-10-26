@@ -1,0 +1,27 @@
+[
+  {
+    "path": "/home/admin/boom/clients/kr-00967/CA.exe",
+    "bytes": 10141152,
+    "sha256": "a52545c14b1fea423de655c3163d6360b628d61c1cd472b46fdbc8a9ffe15f4e"
+  },
+  {
+    "path": "/home/admin/boom/clients/kr-00967/NewPatcher.exe",
+    "bytes": 730952,
+    "sha256": "b59e4dce9ad23c439a7632ce04ecb2eed3481585bd2454100b05c9d7527f5c02"
+  },
+  {
+    "path": "/home/admin/boom/repos/boomkr-re/out/kr-full.exe",
+    "bytes": 26074624,
+    "sha256": "cf72da112308d9f1ca256df8089594c5f787875310933073bf6bd5ba6f70e63b"
+  },
+  {
+    "path": "/home/admin/boom/repos/boomkr-re/out/kr-full.exe.i64",
+    "bytes": 410279595,
+    "sha256": "ab960c78a366845a117d1f3abfbe6e9e0e92fbf3a3ce14fb103794e02a355e27"
+  },
+  {
+    "path": "/home/admin/boom/repos/boomkr-re/out/modO.bin",
+    "bytes": 31858688,
+    "sha256": "a08950c833d3acab8281049def7b3dc96b221f107eeda01da3a548e34b91dce5"
+  }
+]

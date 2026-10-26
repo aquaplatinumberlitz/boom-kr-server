@@ -1,0 +1,218 @@
+{
+  "schema": "kr-compat-bootstrap-observations-r0",
+  "source": "kr_static",
+  "date": "2026-10-26",
+  "target": {
+    "path": "/home/admin/boom/clients/kr-00967/NewPatcher.exe",
+    "sha256": "b59e4dce9ad23c439a7632ce04ecb2eed3481585bd2454100b05c9d7527f5c02",
+    "image_base": "0x00400000"
+  },
+  "rea_version": "6.7.0",
+  "provider": {
+    "id": "ida",
+    "name": "IDA MCP adapter",
+    "version": "1"
+  },
+  "analysis_profile": {
+    "provider": {
+      "id": "ida",
+      "name": "IDA MCP adapter",
+      "version": "1"
+    },
+    "parameters": {
+      "version_scope": "rea-ida-adapter",
+      "engine_version": null,
+      "upstream_distribution_version": null,
+      "mode": "headless",
+      "compatibility_profile": "database-supervisor",
+      "database_revision": null,
+      "cache_policy": "live",
+      "registration_digest": "4947549681a25dd019d4cb7996bdd6af61f32041f911ba62c896798769554cf1"
+    },
+    "digest": "32d0a146a86fbd84a3d2d5b59b8688b04b75b5084eaeda3205d28c79831bcc73"
+  },
+  "strings": [
+    {
+      "query": "NGM",
+      "evidence_id": "ev_69687e86e909a37559d565778217fbfb720bc2365b3982de5802500482cd79d7",
+      "operation": "search_strings",
+      "matches": [
+        {
+          "address": "0x4677c4",
+          "value": ".?AUIAtlStringMgr@ATL@@"
+        },
+        {
+          "address": "0x4677e4",
+          "value": ".?AVCAfxStringMgr@@"
+        }
+      ]
+    },
+    {
+      "query": "ProcessPatch",
+      "evidence_id": "ev_146faa0cbdd33a0d0ddeeaeed08e15dd7984b11c76a5fbd397c57c1b9b995302",
+      "operation": "search_strings",
+      "matches": []
+    },
+    {
+      "query": "http",
+      "evidence_id": "ev_223f7f23db499653c5255cb80c2aab32436161f69f92b832426d95c9c6a52e24",
+      "operation": "search_strings",
+      "matches": [
+        {
+          "address": "0x4526ac",
+          "value": "http://club.nexon.com/nxsupport/NexonSupport.jsp"
+        },
+        {
+          "address": "0x4527ac",
+          "value": "http://www.nexon.com"
+        },
+        {
+          "address": "0x4528d0",
+          "value": "http://file.nx.com/ActiveX/MessengerNew/ConMsg"
+        },
+        {
+          "address": "0x452a88",
+          "value": "http://file.nx.com/image/setup/nexon_ani.gif"
+        },
+        {
+          "address": "0x453664",
+          "value": "http://www.nexon.com"
+        },
+        {
+          "address": "0x453fa0",
+          "value": "http://"
+        },
+        {
+          "address": "0x45629c",
+          "value": "NexonHttpClient"
+        },
+        {
+          "address": "0x4658cc",
+          "value": "HttpSendRequestA"
+        },
+        {
+          "address": "0x4658e0",
+          "value": "HttpOpenRequestA"
+        },
+        {
+          "address": "0x4658f4",
+          "value": "HttpQueryInfoA"
+        },
+        {
+          "address": "0x4660bc",
+          "value": "http://help.nexon.com/help/page/nx.aspx?url=faq/faq&n4FAQBoardSN=2&n4FAQArticleCategorySN=4"
+        },
+        {
+          "address": "0x4661c0",
+          "value": "http://help.nexon.com/help/page/nx.aspx?url=faq/faq&n4FAQBoardSN=2&n4FAQArticleCategorySN=4"
+        },
+        {
+          "address": "0x4662c4",
+          "value": "http://help.nexon.com/help/page/nx.aspx?url=faq/faq&n4FAQBoardSN=2&n4FAQArticleCategorySN=4"
+        },
+        {
+          "address": "0x4663c8",
+          "value": "http://help.nexon.com/help/page/nx.aspx?url=faq/faq&n4FAQBoardSN=2&n4FAQArticleCategorySN=4"
+        },
+        {
+          "address": "0x4664cc",
+          "value": "http://help.nexon.com/help/page/nx.aspx?url=faq/faq&n4FAQBoardSN=2&n4FAQArticleCategorySN=4"
+        },
+        {
+          "address": "0x4665d0",
+          "value": "http://help.nexon.com/help/page/nx.aspx?url=faq/faq&n4FAQBoardSN=2&n4FAQArticleCategorySN=4"
+        },
+        {
+          "address": "0x4666d4",
+          "value": "http://help.nexon.com/help/page/nx.aspx?url=faq/faq&n4FAQBoardSN=2&n4FAQArticleCategorySN=4"
+        },
+        {
+          "address": "0x4667d8",
+          "value": "http://help.nexon.com/help/page/nx.aspx?url=faq/faq&n4FAQBoardSN=2&n4FAQArticleCategorySN=4"
+        },
+        {
+          "address": "0x4668dc",
+          "value": "http://help.nexon.com/help/page/nx.aspx?url=faq/faq&n4FAQBoardSN=2&n4FAQArticleCategorySN=4"
+        },
+        {
+          "address": "0x4669e0",
+          "value": "http://help.nexon.com/help/page/nx.aspx?url=faq/faq&n4FAQBoardSN=2&n4FAQArticleCategorySN=4"
+        },
+        {
+          "address": "0x466ae4",
+          "value": "http://help.nexon.com/help/page/nx.aspx?url=faq/faq&n4FAQBoardSN=2&n4FAQArticleCategorySN=4"
+        },
+        {
+          "address": "0x466be8",
+          "value": "http://help.nexon.com/help/page/nx.aspx?url=faq/faq&n4FAQBoardSN=2&n4FAQArticleCategorySN=4"
+        },
+        {
+          "address": "0x466cec",
+          "value": "http://help.nexon.com/help/page/nx.aspx?url=faq/faq&n4FAQBoardSN=2&n4FAQArticleCategorySN=4"
+        }
+      ]
+    },
+    {
+      "query": "CA.exe",
+      "evidence_id": "ev_80b0c308c70de9368da08b2bf66084a9f3818d52727cae9c31fa7e4e1a9282b6",
+      "operation": "search_strings",
+      "matches": []
+    },
+    {
+      "query": "CreateProcess",
+      "evidence_id": "ev_8ec447b8bc2694350c092bb070b612391613d1424d56b324ad693a4baad866ba",
+      "operation": "search_strings",
+      "matches": [
+        {
+          "address": "0x4641c0",
+          "value": "CreateProcessA"
+        }
+      ]
+    },
+    {
+      "query": "manifest",
+      "evidence_id": "ev_15dd5285cf5cf8036c440e12b683423e37ac39fe452086a1a3a943d30b63b12f",
+      "operation": "search_strings",
+      "matches": [
+        {
+          "address": "0x4552c4",
+          "value": "files.nfo2"
+        },
+        {
+          "address": "0x4554dc",
+          "value": "%s\\files.nfo2"
+        }
+      ]
+    }
+  ],
+  "xrefs": {
+    "evidence_id": "ev_16adea90b5fd24a2ae6d95fb788a1d3753e8dc90da59a5c06e63019acd6b5587",
+    "address": "0x4552c4",
+    "result": [
+      "0x411af0",
+      "0x411d1d",
+      "0x414d6b"
+    ]
+  },
+  "procedure": {
+    "evidence_id": "ev_323b4d2fbc72067a30a2e6a59ca0eb523597742f58fa8d20a42fe21ba4913d0d",
+    "selector": "0x411af0",
+    "containing_procedure": "sub_4118E0",
+    "conclusion": "Manifest/download consumer distinguishes files.nfo/files.nfo2 from .gz and delta paths; caller, configuration and relation to CA bootstrap remain unknown."
+  },
+  "limitations": [
+    "Provider version identifies the REA IDA adapter. IDA engine and upstream distribution versions are unknown unless separately observed; MCP serverInfo is reported independently.",
+    "Results describe the current IDA analysis database. Input identity does not prove an unmodified database; patches, annotations, analysis completeness, and database revision remain unknown.",
+    "Live results are never replayed from analysis snapshots. Target checks before and after a request do not provide an atomic lock against external GUI changes.",
+    "Caller cancellation drains the in-flight MCP request before cleanup; it does not prove that IDA engine work was interrupted.",
+    "Headless workers are released through the upstream database lifecycle. Abrupt termination of REA, its proxy, or the supervisor cannot prove worker cleanup; inspect upstream inventory after an interrupted process.",
+    "Complete function body ranges, typed references, unresolved indirect calls, referenced data, and basic blocks are unavailable in this adapter. Empty unsupported dossier facets are unknown, not observed absence."
+  ],
+  "runtime_performed": false,
+  "original_target_modified": false,
+  "raw_local_path": "/home/admin/boom/repos/boom-kr-server/local/plan-origin/rea-newpatcher-evidence.json",
+  "raw_sha256": "6e8699621080db739176e59b1ca2897057106fa0f50bce3ee3dfe04be2c12c27",
+  "raw_bytes": 433299,
+  "raw_evidence_records": 8,
+  "original_raw_local_path": "/home/admin/boom/work/team/tmp/kr-emulator-plan-20261026/rea-newpatcher-evidence.json"
+}
