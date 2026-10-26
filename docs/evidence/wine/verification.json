@@ -1,0 +1,235 @@
+{
+  "schema": "kre-wine-verification-r1",
+  "recipe": "kre-wine-copy-r1",
+  "scope": "Modified KR offline copy bootstrap under measured Wine only",
+  "sources": [
+    {
+      "path": "/home/admin/boom/repos/boomkr-re/out/modO.bin",
+      "sha256": "a08950c833d3acab8281049def7b3dc96b221f107eeda01da3a548e34b91dce5"
+    },
+    {
+      "path": "/home/admin/boom/repos/boomkr-re/out/kr-full.exe",
+      "sha256": "cf72da112308d9f1ca256df8089594c5f787875310933073bf6bd5ba6f70e63b"
+    },
+    {
+      "path": "/home/admin/boom/repos/boom-kr-server/local/research/wine-imports-r4.json",
+      "sha256": "e5a618a3d1f6c8b29a5895f5354519a7a904a65a02c44abfb82449c2796aaf74"
+    }
+  ],
+  "output_sha256": "a0c3b9867dae5fe2ff7c315cfe851117661c2cafead45196ce999329f67432f5",
+  "imports_candidate": 449,
+  "unresolved_or_excluded_traps": 105,
+  "emu_choice_crash_stubs": 4,
+  "patch_report": {
+    "path": "local/research/wine-unpacked/rebuild-verified.json",
+    "sha256": "1e80904f53df23eedd693813bdc694d7bb5c75ad350601c64145f848ab3dfdb6"
+  },
+  "runs": [
+    {
+      "id": "wine-verified-cold-1",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "captured_utc": "2026-10-26T23:09:05Z",
+      "client_sha256": "a0c3b9867dae5fe2ff7c315cfe851117661c2cafead45196ce999329f67432f5",
+      "wine": "wine-10.0-20260425 (CachyOS)",
+      "prefix_fresh_copy": true,
+      "game_fresh_copy": true,
+      "debugger": false,
+      "raw_dir": "local/research/wine-verified/cold-1/run",
+      "files": {
+        "run.json": {
+          "bytes": 1737,
+          "sha256": "d35456843f46a92a8a6af67a26098b4acf86a9269b33e1c7942cd0ed03501ebe"
+        },
+        "client.log": {
+          "bytes": 76394,
+          "sha256": "0307729467022f54d545af042ae8f364683b131f4ebe158d10790ec02d03cf98"
+        },
+        "CALog-run.txt": {
+          "bytes": 46,
+          "sha256": "1dd23e4b03452ed015c1477017fbed7718c0836710f693e445ebf2eb18015a12"
+        },
+        "processes-02.txt": {
+          "bytes": 2717,
+          "sha256": "84261655e876a75d78a74e7717475c9e8e1dc5c5b35cb1d31ddf3b0e60f274af"
+        },
+        "windows-02.txt": {
+          "bytes": 874,
+          "sha256": "47ea4b95ac762ef0880e1478f0d63444c920bd9f43e2eadea682e14f1e7a290a"
+        },
+        "screen-02.png": {
+          "bytes": 233,
+          "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+        }
+      },
+      "connects": [
+        {
+          "wine_pid_hex": "01a4",
+          "wine_thread_hex": "01a8",
+          "port": 3868
+        }
+      ],
+      "accepted_ports": [
+        3868
+      ],
+      "application_bytes_received": 0,
+      "calog_lines": [
+        "967 : InitBeforePatch",
+        "967 : ProcessPatch..."
+      ],
+      "host_resolution_files_only": true,
+      "interfaces": [
+        [
+          1,
+          "lo"
+        ]
+      ],
+      "tcp_listener_sends_reply": false
+    },
+    {
+      "id": "wine-verified-cold-2",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "captured_utc": "2026-10-26T23:09:37Z",
+      "client_sha256": "a0c3b9867dae5fe2ff7c315cfe851117661c2cafead45196ce999329f67432f5",
+      "wine": "wine-10.0-20260425 (CachyOS)",
+      "prefix_fresh_copy": true,
+      "game_fresh_copy": true,
+      "debugger": false,
+      "raw_dir": "local/research/wine-verified/cold-2/run",
+      "files": {
+        "run.json": {
+          "bytes": 1735,
+          "sha256": "ad4ab6cc1d37a7808baf8a8ca0385a161fad496af86a0a533eeb9b5beb5e9bbc"
+        },
+        "client.log": {
+          "bytes": 239024,
+          "sha256": "f415800e23337605a71e025584e87e5d6868d422e838afb3eaa152ebae622659"
+        },
+        "CALog-run.txt": {
+          "bytes": 90,
+          "sha256": "d5f37c547f073de65289be1c96a9f5f8cf3ace14a813b7fa7ff69eec18b27e23"
+        },
+        "processes-02.txt": {
+          "bytes": 2524,
+          "sha256": "8bbb79337d138bfc4bfbabaa9b571bdb0e46edb15632ad87e9374b34dca6f837"
+        },
+        "windows-02.txt": {
+          "bytes": 872,
+          "sha256": "1b0f735083971a62671f19c515b3facaea42261d721edbd73779be71585104f8"
+        },
+        "screen-02.png": {
+          "bytes": 233,
+          "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+        }
+      },
+      "connects": [
+        {
+          "wine_pid_hex": "0174",
+          "wine_thread_hex": "0178",
+          "port": 3878
+        }
+      ],
+      "accepted_ports": [
+        3878
+      ],
+      "application_bytes_received": 0,
+      "calog_lines": [
+        "967 : InitBeforePatch",
+        "967 : ProcessPatch...",
+        "967 : ProcessPatch: RecvPatchInfo: Failed."
+      ],
+      "host_resolution_files_only": true,
+      "interfaces": [
+        [
+          1,
+          "lo"
+        ]
+      ],
+      "tcp_listener_sends_reply": false
+    },
+    {
+      "id": "wine-verified-cold-3",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "captured_utc": "2026-10-26T23:09:58Z",
+      "client_sha256": "a0c3b9867dae5fe2ff7c315cfe851117661c2cafead45196ce999329f67432f5",
+      "wine": "wine-10.0-20260425 (CachyOS)",
+      "prefix_fresh_copy": true,
+      "game_fresh_copy": true,
+      "debugger": false,
+      "raw_dir": "local/research/wine-verified/cold-3/run",
+      "files": {
+        "run.json": {
+          "bytes": 1737,
+          "sha256": "bfe327a049cf4d07c6d9d30d4c7476fc305de7f2d44db592cc9c410034ba9763"
+        },
+        "client.log": {
+          "bytes": 236005,
+          "sha256": "b2c4c7e9792e0793363904b9c506895bdb3795859852b64eaad65ac1600be0bd"
+        },
+        "CALog-run.txt": {
+          "bytes": 90,
+          "sha256": "d5f37c547f073de65289be1c96a9f5f8cf3ace14a813b7fa7ff69eec18b27e23"
+        },
+        "processes-02.txt": {
+          "bytes": 2717,
+          "sha256": "57727b4e64ba5e93e2b1fddc8a5fd80dc4b66ab884cf1a6791a344b4dcfdfa27"
+        },
+        "windows-02.txt": {
+          "bytes": 874,
+          "sha256": "47ea4b95ac762ef0880e1478f0d63444c920bd9f43e2eadea682e14f1e7a290a"
+        },
+        "screen-02.png": {
+          "bytes": 233,
+          "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+        }
+      },
+      "connects": [
+        {
+          "wine_pid_hex": "01a4",
+          "wine_thread_hex": "01a8",
+          "port": 3898
+        }
+      ],
+      "accepted_ports": [
+        3898
+      ],
+      "application_bytes_received": 0,
+      "calog_lines": [
+        "967 : InitBeforePatch",
+        "967 : ProcessPatch...",
+        "967 : ProcessPatch: RecvPatchInfo: Failed."
+      ],
+      "host_resolution_files_only": true,
+      "interfaces": [
+        [
+          1,
+          "lo"
+        ]
+      ],
+      "tcp_listener_sends_reply": false
+    }
+  ],
+  "claims": {
+    "bootstrap_to_local_tcp_accept": "confirmed for three fresh process/prefix/game copies",
+    "wire_schema_or_hello": "unknown",
+    "login_lobby_gameplay": "unknown",
+    "vanilla_equivalence": "unknown",
+    "windows_control": "not rerun for this modified artifact"
+  },
+  "limitations": [
+    "Only partial IAT exercised; most import names remain candidates.",
+    "No server reply and no captured application request; RecvPatchInfo can time out.",
+    "Early exploration before files-only NSS does not prove DNS isolation."
+  ],
+  "checks": [
+    "PE32 x86, two nonoverlapping sections, CRT entry1470E40",
+    "Independent pefile parses449 import descriptors/449 imports",
+    "572600 parser and1571A45 ctor loop retain original bytes",
+    "Wrong source rejected before outputs",
+    "Existing binary preserved",
+    "Host Wine prefix rejected",
+    "Direct --inside rejected before mounts/output"
+  ]
+}

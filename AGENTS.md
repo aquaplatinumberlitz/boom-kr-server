@@ -52,5 +52,6 @@ Không push binary/decompile/credential. Không đổi cấu hình cá nhân/IDA
 
 Docs: `python3 tools/check_docs.py` và `git diff --check`.
 Tool/codec/server: chạy kiểm phù hợp hành vi thay đổi; không mặc định phải build client Rust cũ.
-CI/build server hiện chỉ Linux. Windows VM là control runtime KR; Wine là nhánh có đối chứng sau đó.
+CI/build server hiện chỉ Linux. Theo yêu cầu26/10, ưu tiên Wine cho bản copy unpack/patch đã đo;
+Windows VM giữ vai trò đối chứng KR nguyên bản. Không suy modified Wine tương đương vanilla Windows.
 Bàn giao nêu commit/file, nguồn đã đọc, lệnh kiểm+kết quả, evidence và blocker/bước tiếp.

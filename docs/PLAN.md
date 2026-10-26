@@ -133,9 +133,10 @@ ghi entry/blocker, vùng đã tìm, dữ liệu runtime còn thiếu và thí ng
 hướng có bằng chứng. Bootstrap/codec đang unknown không được “giải” bằng design packet rồi đánh dấu
 tương thích. Design được dùng cho policy server mất nguồn sau khi client đã chấp nhận wire contract.
 
-Runtime dùng bản copy, chỉ network cục bộ; không sửa binary/pack/DB gốc. Linux giữ CI/build server;
-Windows VM cô lập giữ vai trò control bootstrap chính. Wine là nhánh tự động hóa sau khi có recipe
-và đối chứng cùng artifact; lỗi Wine không tự bác kết quả Windows. Không mở lại CI/đóng gói
+Runtime dùng bản copy, chỉ network cục bộ; không sửa binary/pack/DB gốc. Linux giữ CI/build server.
+Theo chỉ đạo chủ dự án26/10, ưu tiên Wine cho bản copy unpack/patch: recipe đã vào ProcessPatch và
+connect listener loopback; xem [evidence Wine](evidence/wine/README.md). Windows VM cô lập giữ vai trò
+đối chứng nguyên bản; lỗi Wine không tự bác kết quả Windows. Không mở lại CI/đóng gói
 Windows/macOS của Rust. Patch offline theo KRE-D01, phạm vi triển khai vẫn theo từng task KRE.
 
 ### Kiến trúc server đề xuất và mức tái sử dụng

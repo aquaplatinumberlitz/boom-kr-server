@@ -9,6 +9,11 @@ task và điểm dừng; [contract](PROTOCOL.md) giữ ma trận/nguồn.
 KRE-001/002/003 đang thực hiện: Codex giữ harness/runtime, dsh1 bootstrap, dsh2 codec tĩnh.
 Review plan nguồn đã xong; các câu hỏi dưới đây vẫn open cho tới khi có evidence trả lời.
 
+26/10: theo yêu cầu chạy copy bằng Wine, recipe `kre-wine-copy-r1` đã có ba cold start với
+prefix/game copy mới tới ProcessPatch và TCP accept loopback. Xem [evidence Wine](evidence/wine/README.md).
+Q-022 vẫn open: chưa có response bootstrap, hello, đối chứng Windows cùng modified artifact hoặc UI.
+Q-023 không được nâng trạng thái từ TCP accept; listener chưa trả byte và chưa biết framing.
+
 | ID / ưu tiên | Trạng thái | Owner / reviewer | Đã biết | Còn thiếu / bước đóng |
 |---|---|---|---|---|
 | Q-022 / KRE-P1 bootstrap | open | dsh1 / Codex | §31 có run alive-stall, log exitcode1 thuộc run cũ; §33 tách cửa sổ CA/NewPatcher; consumer `4118E0` confirmed chỉ trong phạm vi đọc tĩnh; KRE-D01 chốt quyền patch file offline có control | K1a ownership/control trên Windows local/effective token; K1b kiểm caller/config/IPC riêng CA và NewPatcher; K1c stub/patch theo evidence; gate ba cold start tới network attempt/state chờ hello, không lấy alive/không exit làm proof |

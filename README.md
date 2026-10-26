@@ -22,7 +22,8 @@ boom-kr-server/
 
 ## Đang làm
 
-K0 đang khóa artifact và chuẩn bị harness Windows VM; dsh1 nghiên cứu bootstrap/ProcessPatch,
+K0 đã khóa artifact; bản copy unpack/patch chạy Wine tới `ProcessPatch` và kết nối listener local.
+[Recipe Wine và giới hạn](docs/evidence/wine/README.md). dsh1 nghiên cứu bootstrap/ProcessPatch,
 dsh2 nghiên cứu codec từ writer/reader KR. Chưa có hello KR hoặc demo chơi được; không dùng tiến độ
 36/37 của `boom-rs` để báo tiến độ project này.
 
