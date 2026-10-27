@@ -1,7 +1,7 @@
 {
   "schema": "kre-checkpoints-v1",
-  "last_id": "CP006",
-  "completed_count": 6,
+  "last_id": "CP007",
+  "completed_count": 7,
   "audit_interval": 4,
   "last_periodic_audit": 4,
   "next_periodic_audit": "CP008",
@@ -2083,10 +2083,11 @@
         }
       ],
       "review": {
-        "status": "pending",
-        "as_of_utc": "2026-10-27T07:13:38.034267+00:00",
-        "reference": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/14",
-        "scope": "Independent review of grouped CP006 runtime, synthetic codec and copy patches required"
+        "status": "approved",
+        "as_of_utc": "2026-10-27T07:18:10Z",
+        "reference": "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/16#issuecomment-6436080188",
+        "scope": "Independent CP006 review, PR16 merged b28a6e94d5977864c63bc0ed4aced1420d809157",
+        "head": "74e7bf69d38cd7e1e8cd9cb11d29cf6861c02f22"
       },
       "docs_sync": [
         {
@@ -2118,6 +2119,581 @@
           "path": "docs/evidence/wcp-sequence/verification.json",
           "state": "updated",
           "reason": "Raw evidence size/hash and local paths."
+        }
+      ]
+    },
+    {
+      "id": "CP007",
+      "previous": "CP006",
+      "lifecycle": "complete",
+      "recorded_utc": "2026-10-27T07:32:36.840390+00:00",
+      "question": "Can a synthetic local identity and targeted reconstructed imports advance the offline Wine copy past NMCO, and what is the next concrete runtime blocker?",
+      "scope": "Grouped Wine runtime and targeted static tests for issue14; private copies only, no gate or login promotion.",
+      "context_commit": "b28a6e94d5977864c63bc0ed4aced1420d809157",
+      "artifacts": [
+        {
+          "name": "KR modO memory image",
+          "sha256": "a08950c833d3acab8281049def7b3dc96b221f107eeda01da3a548e34b91dce5"
+        },
+        {
+          "name": "local identity",
+          "sha256": "89cc8cd2fd5f3b70270e65f24e6b162159ec2affed5ce148da96dfcf23e4cdcd"
+        },
+        {
+          "name": "local identity no name",
+          "sha256": "07e9d1187a630811f35acad9a84ce07b9491b29d7c4e301f851c6d1fd85e3b67"
+        },
+        {
+          "name": "reset heap guards",
+          "sha256": "292bf54041d0d361af6c9d91a958874f66f0889770125fc72baebe21da11ae15"
+        },
+        {
+          "name": "no NMCO change-info",
+          "sha256": "d94e21aee54a44ada8022c7a292d05c8ba15e38609ec24c94916b42aa58be48e"
+        },
+        {
+          "name": "window imports",
+          "sha256": "8982bfd79fafc241033548926c6b5b1de04d8e87d8b5878baa4f63011bb0ecf5"
+        },
+        {
+          "name": "metrics import",
+          "sha256": "9ab6633f4033043b971277afcb1c86b6af5c128e6eee290a8eb516237fb3a16f"
+        },
+        {
+          "name": "overlay omitted",
+          "sha256": "88a9ae6a903073141ac82d0b71a7afcb55c0f99f9f9f15c54584a339557b78f1"
+        },
+        {
+          "name": "RECT candidate",
+          "sha256": "e544a38c6a11d1d59bf5233b1f4671888af33fbc6247e4d839350a2851b3b17b"
+        }
+      ],
+      "locators": [
+        "VA 13CA130/13CA139/13CA13F/13BE369/13CA1EA/19D8770/19D8790/4760E9/13CA3A4",
+        "VA 14E2DDB/14E2DE1/14E2E45/14E2E8C/14E2E99/806AF2/806AFD/80798F/807995/12382E7; RVA=VA-400000",
+        "runs debug,debug-heap,debug-heap-progress,debug-no-info,debug-host,debug-window,debug-metrics,debug-overlay,debug-clientrect,debug-null-audio, 2026-10-27"
+      ],
+      "owner": "Codex",
+      "reviewer": "Claude Sonnet 5.5 independent reviewer",
+      "findings": [
+        {
+          "summary": "Substituting local ID 0:1 in NMCOGetMyIdCode call reaches caller and next screen-name import",
+          "source": "kr_runtime",
+          "status": "confirmed",
+          "method": "runtime",
+          "limits": "Synthetic ID; modified Wine copy with synthetic responses, no account or original NMCO semantics.",
+          "canonical": "docs/RESEARCH.md#q-023",
+          "evidence": [
+            "E002",
+            "E031"
+          ]
+        },
+        {
+          "summary": "Screen-name failure and heap-guard reset allow patched copy to pass prior heap fault and reach NMCOChangeMyInfo trap",
+          "source": "kr_runtime",
+          "status": "candidate",
+          "method": "runtime",
+          "limits": "Separate runs and prefixes; heap guard causality and later NMCO side effects remain unproven.",
+          "canonical": "docs/evidence/nmco-identity/README.md",
+          "evidence": [
+            "E005",
+            "E008",
+            "E032",
+            "E033"
+          ]
+        },
+        {
+          "summary": "Candidate USER32 bindings for window style and screen dimensions return on modified copy; GetClientRect candidate returns 800x600 RECT",
+          "source": "kr_runtime",
+          "status": "confirmed",
+          "method": "runtime",
+          "limits": "Confirms chosen bindings returned with plausible values in Wine, not original import identities; HWND/RECT API remains candidate.",
+          "canonical": "docs/evidence/nmco-identity/README.md",
+          "evidence": [
+            "E017",
+            "E020",
+            "E026",
+            "E035",
+            "E036",
+            "E038"
+          ]
+        },
+        {
+          "summary": "Two omitted overlay calls allow execution to reach candidate RECT API; default and null-ALSA runs end at Wine mmdevapi assertion",
+          "source": "kr_runtime",
+          "status": "confirmed",
+          "method": "runtime",
+          "limits": "Different copy/prefix runs, debugger attached; root cause unknown. Overlay and NMCO side effects may matter later.",
+          "canonical": "docs/evidence/nmco-identity/README.md",
+          "evidence": [
+            "E023",
+            "E026",
+            "E029",
+            "E037",
+            "E043"
+          ]
+        },
+        {
+          "summary": "Oneclickuser/+E9C and valid local identity semantics remain unverified; synthetic identity and empty name are emulator choices",
+          "source": "emu_choice",
+          "status": "design",
+          "method": "design",
+          "limits": "Do not infer server contract or accepted login.",
+          "canonical": "docs/PROTOCOL.md#wcp",
+          "evidence": [
+            "E031",
+            "E032"
+          ]
+        }
+      ],
+      "verification": [
+        {
+          "check": "55 assertions over isolated runs, source hashes, exact patch changes and bounded breakpoint/log observations",
+          "result": "pass",
+          "evidence": [
+            "E045",
+            "E044"
+          ],
+          "limits": "Structural check cannot establish original protocol or semantic success."
+        }
+      ],
+      "evidence": [
+        {
+          "id": "E001",
+          "kind": "local",
+          "path": "local/research/codex/nmco-identity-r1/debug/run.json",
+          "bytes": 3263,
+          "sha256": "74abf17880667bba5655753226f19d0565bc560073a11569ec2a41f6e6daa19b"
+        },
+        {
+          "id": "E002",
+          "kind": "local",
+          "path": "local/research/codex/nmco-identity-r1/debug/client.log",
+          "bytes": 125863,
+          "sha256": "dd24e9a4a0ae55f07f77e4d34f2bfd74b88e68e89aeace3ee82860dc97cbb9af"
+        },
+        {
+          "id": "E003",
+          "kind": "local",
+          "path": "local/research/codex/nmco-identity-r1/debug/debug-commands.txt",
+          "bytes": 576,
+          "sha256": "b88f74a16c632cddf4267b803ceee3441d5d5338fe29f1ac9e0f87bc035aac10"
+        },
+        {
+          "id": "E004",
+          "kind": "local",
+          "path": "local/research/codex/nmco-identity-r1/debug-heap/run.json",
+          "bytes": 3270,
+          "sha256": "48bbc3769000fcc5ac2a2bf0cae536b3b9e5d694463c9b3951e23963adad9718"
+        },
+        {
+          "id": "E005",
+          "kind": "local",
+          "path": "local/research/codex/nmco-identity-r1/debug-heap/client.log",
+          "bytes": 76433,
+          "sha256": "ceaa038005d4601b5d145fdcf443496d6dbee626de369e6cfaa513f25e5a9646"
+        },
+        {
+          "id": "E006",
+          "kind": "local",
+          "path": "local/research/codex/nmco-identity-r1/debug-heap/debug-commands.txt",
+          "bytes": 148,
+          "sha256": "15280356b05c4fdce85f58f967b23b9dd28e4445016463f7dfc0f95f7426c3e5"
+        },
+        {
+          "id": "E007",
+          "kind": "local",
+          "path": "local/research/codex/nmco-identity-r1/debug-heap-progress/run.json",
+          "bytes": 3265,
+          "sha256": "243e45cf27bbb0268f6ff81a2dca7e6946b32372bdc5bee7aa50b40db253a5ba"
+        },
+        {
+          "id": "E008",
+          "kind": "local",
+          "path": "local/research/codex/nmco-identity-r1/debug-heap-progress/client.log",
+          "bytes": 69324,
+          "sha256": "af3336d673d92e2c90c60c34ee49f2717f1334ebff18696d5a92dbc52c7a33f5"
+        },
+        {
+          "id": "E009",
+          "kind": "local",
+          "path": "local/research/codex/nmco-identity-r1/debug-heap-progress/debug-commands.txt",
+          "bytes": 123,
+          "sha256": "b440b4cc3f470f7d3735d63dc8a51dfe6574834eec9240a9eda96460da2a8754"
+        },
+        {
+          "id": "E010",
+          "kind": "local",
+          "path": "local/research/codex/nmco-identity-r1/debug-no-info/run.json",
+          "bytes": 3265,
+          "sha256": "38c6cfab620c3af05f625dfa3e70cb00fa3241981ea3470064559f3d3c210f6c"
+        },
+        {
+          "id": "E011",
+          "kind": "local",
+          "path": "local/research/codex/nmco-identity-r1/debug-no-info/client.log",
+          "bytes": 78130,
+          "sha256": "a3d0ea359e68356c9a757b9ed111d2afa7fc7bc82fb4c5db1be69ff8ef963797"
+        },
+        {
+          "id": "E012",
+          "kind": "local",
+          "path": "local/research/codex/nmco-identity-r1/debug-no-info/debug-commands.txt",
+          "bytes": 174,
+          "sha256": "4e33e0109c3091f3478de03092e2a0f9a637ce0f9caa68e17ff13504cdba2029"
+        },
+        {
+          "id": "E013",
+          "kind": "local",
+          "path": "local/research/codex/nmco-identity-r1/debug-host/run.json",
+          "bytes": 3488,
+          "sha256": "7f0897b51317b3f3c169f29bb33f06e00a664c483527582150ecf99d8e4a949c"
+        },
+        {
+          "id": "E014",
+          "kind": "local",
+          "path": "local/research/codex/nmco-identity-r1/debug-host/client.log",
+          "bytes": 111384,
+          "sha256": "031da34d7fadd1e380efad7e2cf72a20ce53db735d39eb5815396bd7bb97c4f8"
+        },
+        {
+          "id": "E015",
+          "kind": "local",
+          "path": "local/research/codex/nmco-identity-r1/debug-host/debug-commands.txt",
+          "bytes": 191,
+          "sha256": "6a83850fcf3ffb9548b4860a41b57981d55a497fc525e997e21703fb9319a1f0"
+        },
+        {
+          "id": "E016",
+          "kind": "local",
+          "path": "local/research/codex/nmco-identity-r1/debug-window/run.json",
+          "bytes": 3490,
+          "sha256": "3ae5c792e812b30479f60853b7ff6302deff1fbe6e74a51b956be8786df83565"
+        },
+        {
+          "id": "E017",
+          "kind": "local",
+          "path": "local/research/codex/nmco-identity-r1/debug-window/client.log",
+          "bytes": 104836,
+          "sha256": "680b98ee26932b96a15a4436dd5397be8502ca15a07e824bb94d30a11e6aceda"
+        },
+        {
+          "id": "E018",
+          "kind": "local",
+          "path": "local/research/codex/nmco-identity-r1/debug-window/debug-commands.txt",
+          "bytes": 185,
+          "sha256": "99ed199cb68d1c212a1cea7537cf6eee8dd57ec9271c6c988e631554512cafd8"
+        },
+        {
+          "id": "E019",
+          "kind": "local",
+          "path": "local/research/codex/nmco-identity-r1/debug-metrics/run.json",
+          "bytes": 3491,
+          "sha256": "0c6ab9d6ea5c5f2e2e72217f8788b7fc22351515603afe92169b33253ca7b7e9"
+        },
+        {
+          "id": "E020",
+          "kind": "local",
+          "path": "local/research/codex/nmco-identity-r1/debug-metrics/client.log",
+          "bytes": 107679,
+          "sha256": "a4a295c36451bf6fd62586e4699fed53e07848d5257c55264772bf47b66329b4"
+        },
+        {
+          "id": "E021",
+          "kind": "local",
+          "path": "local/research/codex/nmco-identity-r1/debug-metrics/debug-commands.txt",
+          "bytes": 220,
+          "sha256": "146d2da2b22bad7df14a5eefd600832a00eba7bc93748fc716d2c75c6060dfff"
+        },
+        {
+          "id": "E022",
+          "kind": "local",
+          "path": "local/research/codex/nmco-identity-r1/debug-overlay/run.json",
+          "bytes": 3494,
+          "sha256": "bb6ddaec8e8ba3e7ff78cb90865c3f4546b56d65432dc316977c02d7e6f1a0bd"
+        },
+        {
+          "id": "E023",
+          "kind": "local",
+          "path": "local/research/codex/nmco-identity-r1/debug-overlay/client.log",
+          "bytes": 115955,
+          "sha256": "5a7b079127610475e7b48d50be29cd0286531980aedee46b009e89ba37b63777"
+        },
+        {
+          "id": "E024",
+          "kind": "local",
+          "path": "local/research/codex/nmco-identity-r1/debug-overlay/debug-commands.txt",
+          "bytes": 205,
+          "sha256": "6d67dcfed27841a4aa87bc3ad003ff09318f7c56c1f301bf52da24e21b08abac"
+        },
+        {
+          "id": "E025",
+          "kind": "local",
+          "path": "local/research/codex/nmco-identity-r1/debug-clientrect/run.json",
+          "bytes": 3494,
+          "sha256": "3ec86ea68e3b6b928e91068f16fdbc4b16df7086419def7ee3d00414f81d1702"
+        },
+        {
+          "id": "E026",
+          "kind": "local",
+          "path": "local/research/codex/nmco-identity-r1/debug-clientrect/client.log",
+          "bytes": 94144,
+          "sha256": "5c25961b46da6156cc8c791ca1c92b610b361730da7792f0ce20c7cee6d896ec"
+        },
+        {
+          "id": "E027",
+          "kind": "local",
+          "path": "local/research/codex/nmco-identity-r1/debug-clientrect/debug-commands.txt",
+          "bytes": 165,
+          "sha256": "d7cb52b08974e9a10426cc7947afa64272836897d1e63c2c27235d01bb30469a"
+        },
+        {
+          "id": "E028",
+          "kind": "local",
+          "path": "local/research/codex/nmco-identity-r1/debug-null-audio/run.json",
+          "bytes": 3494,
+          "sha256": "3070a8d362e057f6cd03bb20cb38eed335469885d5c9f3d181e9037af2b70282"
+        },
+        {
+          "id": "E029",
+          "kind": "local",
+          "path": "local/research/codex/nmco-identity-r1/debug-null-audio/client.log",
+          "bytes": 110463,
+          "sha256": "54a0852fef0ad601ea84bd2498de3ed990a55333682a0566775d2ca6219a65a3"
+        },
+        {
+          "id": "E030",
+          "kind": "local",
+          "path": "local/research/codex/nmco-identity-r1/debug-null-audio/debug-commands.txt",
+          "bytes": 165,
+          "sha256": "d7cb52b08974e9a10426cc7947afa64272836897d1e63c2c27235d01bb30469a"
+        },
+        {
+          "id": "E031",
+          "kind": "local",
+          "path": "local/research/codex/nmco-identity-r1/patch.json",
+          "bytes": 564,
+          "sha256": "908aae41d8f28a8d648564b39b6d9f274f3edd9b194dc4aea6df0077641dc622"
+        },
+        {
+          "id": "E032",
+          "kind": "local",
+          "path": "local/research/codex/nmco-identity-r1/no-name-patch.json",
+          "bytes": 575,
+          "sha256": "4f8cb5d8f8dbec6e06d5056ea7e7fa72c27625acb03bb5d4fdbe489538bda7df"
+        },
+        {
+          "id": "E033",
+          "kind": "local",
+          "path": "local/research/codex/nmco-identity-r1/heap-guards-patch.json",
+          "bytes": 739,
+          "sha256": "e283df2bde233378d92e8c2e5e0bb8d0de288fbb49ca1c8fdbfe3c127c5f2d61"
+        },
+        {
+          "id": "E034",
+          "kind": "local",
+          "path": "local/research/codex/nmco-identity-r1/no-info-patch.json",
+          "bytes": 533,
+          "sha256": "63ac3dc8793acf35675d2a6f1d2fe923183bd77a6b67cba587817172b20c270f"
+        },
+        {
+          "id": "E035",
+          "kind": "local",
+          "path": "local/research/codex/nmco-identity-r1/window-imports-patch.json",
+          "bytes": 598,
+          "sha256": "8b99ce2cf46873d0cb589a4b170d1f7cb49ae1d040deae79ed0b4af7b07311ba"
+        },
+        {
+          "id": "E036",
+          "kind": "local",
+          "path": "local/research/codex/nmco-identity-r1/metrics-import-patch.json",
+          "bytes": 513,
+          "sha256": "4bb43e30072fd49956fddb821c388124c5d983d1bc9d6fbeb6cc2f60c705524f"
+        },
+        {
+          "id": "E037",
+          "kind": "local",
+          "path": "local/research/codex/nmco-identity-r1/overlay-init-patch.json",
+          "bytes": 696,
+          "sha256": "be514580cff8fd0653b20dcea64f34c0abbf2d8fc06cd53a935f047dc215b8e4"
+        },
+        {
+          "id": "E038",
+          "kind": "local",
+          "path": "local/research/codex/nmco-identity-r1/clientrect-import-patch.json",
+          "bytes": 457,
+          "sha256": "fa060e75934fefe4f401c01ed9347fb4d5099418bd262258d0bb4900d4e38273"
+        },
+        {
+          "id": "E039",
+          "kind": "local",
+          "path": "local/research/codex/nmco-identity-r1/patch-window-imports.py",
+          "bytes": 2152,
+          "sha256": "3230917d1cdf07e0747410edb24c0ede2724f50d5503dd5966574841c93aec26"
+        },
+        {
+          "id": "E040",
+          "kind": "local",
+          "path": "local/research/codex/nmco-identity-r1/patch-metrics-import.py",
+          "bytes": 1784,
+          "sha256": "0426bd3aad74cf9d5454394824714802bb266e024e039da5cdc3c12b9a2d668e"
+        },
+        {
+          "id": "E041",
+          "kind": "local",
+          "path": "local/research/codex/nmco-identity-r1/patch-overlay-init.py",
+          "bytes": 1167,
+          "sha256": "5f40d4bb46495f6c7d89b6917c3e6044fd643b28c584947dfd141f62d8ffb4ef"
+        },
+        {
+          "id": "E042",
+          "kind": "local",
+          "path": "local/research/codex/nmco-identity-r1/patch-clientrect-import.py",
+          "bytes": 1730,
+          "sha256": "64bf009ac1d5da9e5d851e256b4e7930e507c5b9e0b367e9c64241480f7fb79a"
+        },
+        {
+          "id": "E043",
+          "kind": "local",
+          "path": "local/research/codex/nmco-identity-r1/alsa-null.conf",
+          "bytes": 27,
+          "sha256": "d4451aaf42879c7ace71e5262265e76943efe5179d9d4b62470486a1851a2cf7"
+        },
+        {
+          "id": "E044",
+          "kind": "local",
+          "path": "local/research/codex/nmco-identity-r1/verify-cp007.py",
+          "bytes": 3742,
+          "sha256": "53290d1a72ef6bd6ab1a2e43b9780f47c40601eabb265c1a931bd205c7e09b9b"
+        },
+        {
+          "id": "E045",
+          "kind": "local",
+          "path": "local/research/codex/nmco-identity-r1/verification.json",
+          "bytes": 2377,
+          "sha256": "64a6a36819710894e22c68272011236ead7a0dd06c1b103c77a3ecbd10b2e89f"
+        },
+        {
+          "id": "E046",
+          "kind": "local",
+          "path": "local/research/codex/nmco-identity-r1/13ca1a0.asm",
+          "bytes": 3126,
+          "sha256": "6415549900b752f97ba8ad25fbc7427fb7277406f0afb9c5d2f2345650cac500"
+        },
+        {
+          "id": "E047",
+          "kind": "local",
+          "path": "local/research/codex/nmco-identity-r1/13ca340.asm",
+          "bytes": 2022,
+          "sha256": "8bfad3b49e4e425f0cee710f36bf90847effa6ba1e45d7154ca310c030c107de"
+        },
+        {
+          "id": "E048",
+          "kind": "local",
+          "path": "local/research/codex/nmco-identity-r1/476040.asm",
+          "bytes": 3103,
+          "sha256": "28bb0787037e4112d2735772fd0c1a812bd7908e94005d62b60ad627460d0fe7"
+        },
+        {
+          "id": "E049",
+          "kind": "local",
+          "path": "local/research/codex/nmco-identity-r1/476490.asm",
+          "bytes": 3459,
+          "sha256": "a07becaeb56e7f2d08223b84b7c46649b172bdcc14904182970d97e994f024ea"
+        },
+        {
+          "id": "E050",
+          "kind": "local",
+          "path": "local/research/codex/wine_probe_wcp_next.py",
+          "bytes": 18064,
+          "sha256": "1b209968953551e8dd8a35ef4ba927d1ec8adda088daae539868b804a5ebdbe5"
+        },
+        {
+          "id": "E051",
+          "kind": "local",
+          "path": "local/research/codex/wine_probe_null_audio.py",
+          "bytes": 18183,
+          "sha256": "446eabcbfe98622c4eb54faa41b073ec7f7318a71324b9e0c7b0cb3584e38a21"
+        },
+        {
+          "id": "E052",
+          "kind": "repository",
+          "path": "docs/evidence/nmco-identity/verification.json",
+          "bytes": 180,
+          "sha256": "1e4a0a9c11bf93d8a6dd7ab5dbb8a5703fb663d9880749c10815396c5d0be852"
+        }
+      ],
+      "delta": {
+        "added": [
+          "Local ID/name experiments, heap guard comparison, USER32 candidates and Wine audio blocker with ALSA null comparison."
+        ],
+        "corrected": [
+          "CP006 NMCO identity trap is historical for its copy; current modified copy proceeds to Wine audio assertion.",
+          "CP001 zero C2S applies only to older run; PLAN row updated."
+        ],
+        "superseded": [
+          "NEXT-NMCO-IDENTITY initial local-ID test completed in part; messenger correctness and valid identity remain open under next step."
+        ]
+      },
+      "blockers": [
+        "Wine mmdevapi assertion during stream creation, still reproduced with ALSA null and debugger; cause unknown.",
+        "Original identity, name, NMCO callbacks and server initialization data remain unknown; no login/gameplay proof.",
+        "Oneclickuser/+E9C runtime and full codec/seq/reconnect remain open."
+      ],
+      "next_steps": [
+        {
+          "id": "NEXT-NMCO-IDENTITY",
+          "task": "KRE-005b",
+          "state": "superseded",
+          "action": "Local ID and caller tested; messenger semantics remain open in next step.",
+          "owner": "Codex",
+          "reviewer": "Claude Sonnet 5.5 independent reviewer"
+        },
+        {
+          "id": "NEXT-WINE-AUDIO",
+          "task": "KRE-005b",
+          "state": "active",
+          "action": "Diagnose mmdevapi assertion with isolated trace/backtrace and appropriate audio/Wine controls; continue client path and NMCO side-effect checks.",
+          "owner": "Codex",
+          "reviewer": "Claude Sonnet 5.5 independent reviewer"
+        }
+      ],
+      "review": {
+        "status": "pending",
+        "as_of_utc": "2026-10-27T07:32:36.840390+00:00",
+        "reference": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/14",
+        "scope": "Independent review of CP007 runtime, copy patches and limited conclusions"
+      },
+      "docs_sync": [
+        {
+          "path": "README.md",
+          "state": "updated",
+          "reason": "Current blocker and merge status."
+        },
+        {
+          "path": "docs/PLAN.md",
+          "state": "updated",
+          "reason": "Progress, stage map and next priority."
+        },
+        {
+          "path": "docs/PROTOCOL.md",
+          "state": "updated",
+          "reason": "Synthetic identity limits and historical blocker."
+        },
+        {
+          "path": "docs/RESEARCH.md",
+          "state": "updated",
+          "reason": "Next Wine audio test and remaining identity questions."
+        },
+        {
+          "path": "docs/evidence/nmco-identity/README.md",
+          "state": "updated",
+          "reason": "Run, patch and limitation metadata."
+        },
+        {
+          "path": "docs/evidence/nmco-identity/verification.json",
+          "state": "updated",
+          "reason": "Recorded verification summary."
         }
       ]
     }

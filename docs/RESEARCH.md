@@ -22,15 +22,19 @@ trong run copy đã kích hoạt setter `+E78`, tránh nhánh launcher và cho r
 đưa guard trả1; hai copy thử NMCO lần lượt tới import init, status và `NMCOGetMyIdCode`.
 Nguồn/giới hạn: [PROTOCOL](PROTOCOL.md#wcp), [evidence](evidence/wcp-sequence/README.md).
 
-Bước tiếp: Codex phân tích `13CA130`/`13BE369`, contract EDX:EAX và cách dùng identity;
-thiết kế phép thử identity local/đối chứng messenger trên copy và tìm điểm chờ sau đó. Không
-coi giá trị giả là ID server gốc; kiểm nội dung dữ liệu khởi tạo trước khi nói login thành công.
+CP007: copy thay identity EDX:EAX bằng `0:1`, screen name rỗng, sửa heap guard và thử các import
+cửa sổ; run đi tiếp đến Wine `mmdevapi` assertion khi tạo stream, kể cả với ALSA null. Các phép
+thử và giới hạn tại [evidence](evidence/nmco-identity/README.md); review theo manifest.
+
+Bước tiếp: Codex xác định nguyên nhân assertion audio bằng trace/backtrace trong namespace, thử
+đối chứng Wine/audio phù hợp rồi tiếp tục breakpoint đường client. Theo dõi các side effect NMCO
+và dữ liệu khởi tạo; không coi identity giả là ID server gốc hay cửa sổ là login thành công.
 Tiếp tục đo mode2/3 hai chiều, seq/reconnect và nguồn `oneclickuser` khi cần. Claude chỉ review.
 
 | ID / ưu tiên | Trạng thái | Owner / reviewer | Đã biết | Còn thiếu / bước đóng |
 |---|---|---|---|---|
 | Q-022 / KRE-P1 bootstrap | open | Codex RE / Claude reviewer độc lập | ProcessPatch local có debugger return1;recipe R2 đã merge;contract ở [PROTOCOL](PROTOCOL.md#wcp) | K1a ownership/control trên Windows local/effective token; K1b kiểm caller/config/IPC riêng CA và NewPatcher; K1c stub/patch theo evidence; gate ba cold start tới network attempt/state chờ hello, không lấy alive/không exit làm proof |
-| Q-023 / KRE-P1 codec | open | Codex RE / Claude reviewer độc lập | Primitive có [oracle](evidence/primitives/README.md);WCP có bằng chứng hẹp tại [PROTOCOL](PROTOCOL.md#wcp) | Đo NMCO identity theo Q-023;rồi codec hai chiều,checksum/seq/reset và gate K2 |
+| Q-023 / KRE-P1 codec | open | Codex RE / Claude reviewer độc lập | Primitive có [oracle](evidence/primitives/README.md);WCP có bằng chứng hẹp tại [PROTOCOL](PROTOCOL.md#wcp) | Gỡ blocker Wine audio theo Q-023; tiếp tục identity và codec hai chiều,checksum/seq/reset và gate K2 |
 | Q-024 / KRE-P1 login/kênh | open | Codex RE / Claude reviewer độc lập | VN có bootstrap-data, login/redirect/cache/kênh; các variant trong một binary đã khác layout | KR handler/field/order/encoding/local identity; cold/warm cache và keepalive vào sảnh K3; không gọi auth Nexon thật |
 | Q-025 / KRE-P1 room/load | open | Codex RE / Claude reviewer độc lập | Asset map KR và UI Ready có locator; VN có bẫy map tự gửi/spawn trước khi load | Wire KR create/join/host/slot/ready/start/roster/map/spawn/ack; K4 hai client thấy cùng phòng và spawn đúng |
 | Q-026 / KRE-P1 authority/trận | open | Codex RE / Claude reviewer độc lập | KR có consumer flame/chain, timer/send167/status184; VN mô hình lai | Phân quyền client/server/peer từng event; packet bom/pickup/trap/death/result/correction KR; K5 một chu kỳ hoàn chỉnh, không lấy packet183 ghost làm mover người sống |

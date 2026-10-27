@@ -1,0 +1,6 @@
+{
+  "schema": "kre-cp007-verification-v1",
+  "result": "pass",
+  "count": 55,
+  "limits": "Structural bounded assertions and selected outputs; no vanilla or gameplay inference."
+}
