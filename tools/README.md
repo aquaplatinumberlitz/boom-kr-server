@@ -18,7 +18,9 @@ Phạm vi bằng chứng: [writer primitive](../docs/evidence/primitives/README.
 header/checksum/crypto/seq hoặc mode selection của packet/socket đang chạy.
 
 `build_wine_copy.py`: dựng đúng recipe KR copy đã đo, khóa SHA3 đầu vào và output, ghi before/after
-từng patch vào report local. Cần `pefile==2024.8.26`; candidate metadata là artifact host-local.
+từng patch vào report local. --recipe bootstrap-r1 là mặc định, SHA output giữ nguyên;
+--recipe post-bootstrap-r2 là profile riêng đi tới cửa sổ/kết nối thứ hai theo
+[evidence R2](../docs/evidence/wine-r2/README.md). Cần `pefile==2024.8.26`; candidate metadata là artifact host-local.
 `wine_probe.py`: chạy bounded trong namespace riêng, fresh CALog/window/screenshot/Winsock và accept
 TCP loopback mặc định silent; `--bootstrap-reply` gửi fixture local một lần trên connection đầu tiên. Runtime paths chỉ nhận copy dưới `local/`; xem
 [recipe Wine](../docs/evidence/wine/README.md) để biết lệnh chạy và giới hạn.

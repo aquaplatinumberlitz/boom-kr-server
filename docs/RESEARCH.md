@@ -9,11 +9,12 @@ task và điểm dừng; [contract](PROTOCOL.md) giữ ma trận/nguồn.
 KRE-001/002/003 đang thực hiện: Codex giữ harness/runtime, dsh1 bootstrap, dsh2 codec tĩnh.
 Review plan nguồn đã xong; các câu hỏi dưới đây vẫn open cho tới khi có evidence trả lời.
 
-27/10: [recipe Wine](evidence/wine/README.md) đã có ba cold start tới local accept. Tiếp theo,
-[probe bootstrap](evidence/bootstrap-wire/README.md) gửi phản hồi local, debugger xác nhận
-`ProcessPatch` return1 tại1234875. Frame mode0/selector0, native oracle254 ca pass. KRE-004/Wine đã
-merge PR7; KRE-002/003 vẫn open. Q-022 tiếp tục ở trap `ngclient.aes #1`, slot16EA4C8; Q-023 chưa có
-hello game/C→S kế tiếp, mode/seq game hoặc đối chứng Windows. Không nâng gate từ return bootstrap.
+27/10: [bootstrap reply](evidence/bootstrap-wire/README.md) đã xác nhận ProcessPatch return1 bằng
+debugger. [Wine R2](evidence/wine-r2/README.md) bỏ init NGClient trên copy và phục hồi sáu import mới và sửa một import A/W;
+ba cold start cùng recipe tạo cửa sổ800×600 + kết nối local thứ hai. Socket hai silent/zero C→S;
+ca15s báo WCP/Login Failed, ca10s còn chờ. Q-022/023 còn mở: truy consumer WCP tại literal17A1A9C,
+xref13AD7D8, cần role/mode/reader/response của kết nối kế tiếp; không gửi lại fixture patch khi chưa
+biết contract. Windows vanilla control và hello game chưa nghiệm thu.
 
 | ID / ưu tiên | Trạng thái | Owner / reviewer | Đã biết | Còn thiếu / bước đóng |
 |---|---|---|---|---|

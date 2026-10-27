@@ -22,10 +22,10 @@ boom-kr-server/
 
 ## Đang làm
 
-K0/K1 đang triển khai: bản copy KR unpack/patch đã chạy bằng Wine, nhận phản hồi bootstrap local
-và được debugger xác nhận trả thành công từ `ProcessPatch`. Điểm chặn tiếp là import `ngclient.aes #1` chưa phục hồi.
-Xem [evidence bootstrap wire](docs/evidence/bootstrap-wire/README.md). Chưa có hello game/login hoặc
-demo chơi được; không dùng tiến độ `boom-rs` để báo tiến độ project này.
+Bản copy KR unpack/patch đã qua phản hồi ProcessPatch local (debugger xác nhận return1).
+Recipe Wine R2 mới tạo cửa sổ Crazy Arcade800×600 và mở kết nối TCP local thứ hai trong ba cold start.
+Kết nối hai chưa nhận reply; ca15s báo WCP/Login Failed, hai ca10s còn chờ. Xem
+[evidence Wine R2](docs/evidence/wine-r2/README.md). Chưa có hello game/login hoạt động hoặc gameplay.
 
 Đích đầu: bootstrap offline → login cục bộ → sảnh/phòng → Battle → kết quả → hai client chơi hai
 trận liên tiếp. Bốn client và hardening sau đó. Chi tiết ở [PLAN](docs/PLAN.md).
