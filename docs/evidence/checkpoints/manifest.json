@@ -1,7 +1,7 @@
 {
   "schema": "kre-checkpoints-v1",
-  "last_id": "CP001",
-  "completed_count": 1,
+  "last_id": "CP002",
+  "completed_count": 2,
   "audit_interval": 4,
   "last_periodic_audit": 0,
   "next_periodic_audit": "CP004",
@@ -328,6 +328,153 @@
           "path": "docs/evidence/primitives/README.md",
           "state": "updated",
           "reason": "Historical ownership/next-step source linked"
+        }
+      ]
+    },
+    {
+      "id": "CP002",
+      "previous": "CP001",
+      "lifecycle": "complete",
+      "recorded_utc": "2026-10-27T06:26:59.590653+00:00",
+      "question": "Does the durable checkpoint workflow detect measurable inconsistencies without inventing RE truth?",
+      "scope": "Checker/policy validation and recurring-audit counter; no new KR runtime or semantic gate",
+      "context_commit": "f2962bf0a9b8acc996d623f8bbc54556e047825a",
+      "artifacts": [
+        {
+          "name": "checkpoint checker source snapshot",
+          "sha256": "adec67c0fc6720f0e4f0a96ea66b6ae26e4bf94fbae24b8d871b1c61c5dec92a"
+        }
+      ],
+      "locators": [
+        "tools/check_checkpoints.py",
+        "tools/test_checkpoints.py",
+        "CP001/AUD001",
+        "Git first-parent manifest history"
+      ],
+      "owner": "Codex",
+      "reviewer": "Claude Sonnet 5.5 independent reviewer",
+      "findings": [
+        {
+          "summary": "Persistent schema/counter, docs-sync closure, measurable evidence links/hashes and explicit task status checks implemented",
+          "source": "design",
+          "status": "design",
+          "method": "design",
+          "limits": "Declared structure only; no semantic sync or gate truth inferred",
+          "canonical": "docs/evidence/checkpoints/README.md",
+          "evidence": [
+            "E001",
+            "E002"
+          ]
+        },
+        {
+          "summary": "10 schema/negative tests pass including already-committed reset and due periodic audit; CP001 host evidence available",
+          "source": "design",
+          "status": "confirmed",
+          "method": "documentation",
+          "limits": "Software consistency result only, not a KR protocol oracle; pending independent code review",
+          "canonical": "tools/README.md",
+          "evidence": [
+            "E003",
+            "E004"
+          ]
+        }
+      ],
+      "verification": [
+        {
+          "check": "10 unittest cases: Git reset/history, audit4CP, hash, sync, pending, unavailablelocal, path, task closure",
+          "result": "pass",
+          "evidence": [
+            "E003"
+          ],
+          "limits": "Synthetic documentation fixtures, no client or protocol test"
+        },
+        {
+          "check": "Host checker on committed CP001 with require-local and require-history",
+          "result": "pass",
+          "evidence": [
+            "E004"
+          ],
+          "limits": "CP001 had19 verified evidence files and explicit review-pending warning; this is pre-CP002 snapshot"
+        }
+      ],
+      "evidence": [
+        {
+          "id": "E001",
+          "kind": "local",
+          "path": "local/research/doc-workflow/snapshot-check_checkpoints.py",
+          "bytes": 18352,
+          "sha256": "adec67c0fc6720f0e4f0a96ea66b6ae26e4bf94fbae24b8d871b1c61c5dec92a"
+        },
+        {
+          "id": "E002",
+          "kind": "local",
+          "path": "local/research/doc-workflow/snapshot-test_checkpoints.py",
+          "bytes": 8747,
+          "sha256": "ae407f7c314e96318568c2c642034a85601f3a3e06066b3a37d3f85ca91230d1"
+        },
+        {
+          "id": "E003",
+          "kind": "local",
+          "path": "local/research/doc-workflow/workflow-tests.txt",
+          "bytes": 109,
+          "sha256": "62524da09646d205427f945b7888f49dc14eed76d75707112108106547d9fc41"
+        },
+        {
+          "id": "E004",
+          "kind": "local",
+          "path": "local/research/doc-workflow/cp001-checker.txt",
+          "bytes": 213,
+          "sha256": "49726bfe1de82fb37b3aab5ccc606a64633c721aba17a3e1f01405910c6365d5"
+        }
+      ],
+      "delta": {
+        "added": [
+          "Validated workflow checker and persistent audit cadence;next audit remainsCP004 afterinitialAUD001"
+        ],
+        "corrected": [],
+        "superseded": []
+      },
+      "blockers": [
+        "RE semantic correctness and manual reading cannot be established by checker",
+        "WCP scientific/integration gaps remain under Q-023, not solved by documentation tooling"
+      ],
+      "next_steps": [],
+      "review": {
+        "status": "pending",
+        "as_of_utc": "2026-10-27T06:26:59.590653+00:00",
+        "reference": "Issue12 / documentation-workflow PR",
+        "scope": "Policy/checker/tests and new WCP synthesis; exact-head independent review required"
+      },
+      "docs_sync": [
+        {
+          "path": "README.md",
+          "state": "unchanged",
+          "reason": "CP001 already links current status and durable manifest; no new RE/runtime"
+        },
+        {
+          "path": "docs/PLAN.md",
+          "state": "unchanged",
+          "reason": "Task/gate order unchanged; counter sourced only from manifest"
+        },
+        {
+          "path": "docs/PROTOCOL.md",
+          "state": "unchanged",
+          "reason": "No new contract claim from software tests"
+        },
+        {
+          "path": "docs/RESEARCH.md",
+          "state": "unchanged",
+          "reason": "Next WCP measurement remains same open question"
+        },
+        {
+          "path": "docs/evidence/checkpoints/README.md",
+          "state": "updated",
+          "reason": "Workflow/cadence/limitations documented with AGENTS requirement"
+        },
+        {
+          "path": "tools/README.md",
+          "state": "updated",
+          "reason": "Checker invocation and warning/verification limits documented"
         }
       ]
     }
