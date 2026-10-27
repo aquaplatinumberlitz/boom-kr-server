@@ -27,7 +27,8 @@ Probe riêng sau đó được debugger xác nhận nhận phản hồi WCP; v�
 MW_SEP(10)/Login Failed. **Chưa có login hoạt động hoặc gameplay.**
 Probe hai-reply vẫn là thí nghiệm riêng; review tài liệu theo [CP001](docs/evidence/checkpoints/manifest.json), tách khỏi R2 đã merge.
 Phạm vi từng recipe/bằng chứng ở [WCP](docs/evidence/wcp/README.md);
-điểm chặn và phép kiểm kế ở [Q-023](docs/RESEARCH.md#q-023).
+CP004–CP005 ghi error state 1/1958 từ dump trên bản R2 và nhánh launcher trong run bản
+copy thử; [trạng thái review](docs/evidence/checkpoints/manifest.json). Điểm chặn và phép kiểm kế ở [Q-023](docs/RESEARCH.md#q-023).
 
 Checkpoint bền vững: [manifest](docs/evidence/checkpoints/manifest.json).
 Quy trình ghi chép/review/audit: [checkpoint workflow](docs/evidence/checkpoints/README.md).
@@ -51,5 +52,5 @@ không nằm trong Git nên clone sạch trên máy khác chưa thể chạy l�
 `--manifest /path/to/local-artifacts.json` với đường dẫn nguồn và hash đã xác nhận tại máy đó.
 
 Client nguồn giữ ở `/home/admin/boom/clients/kr-00967`; không sửa hoặc commit. Artifact và database
-đã unpack ở repo RE cũ chỉ là đầu vào tham chiếu; mỗi worker dùng bản copy riêng trong `local/`.
+đã unpack ở repo RE cũ chỉ là đầu vào tham chiếu; mỗi phép thử dùng bản copy riêng trong `local/`.
 Nguồn/commit và giới hạn bằng chứng: [REFERENCES](docs/REFERENCES.md).
