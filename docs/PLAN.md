@@ -164,7 +164,7 @@ CA.exe KR (bản copy) ── TCP ── KrWire/PacketReader ── KrSession/St
 | `boom-core` | Ứng viên dùng sau audit authority: shadow validation trước; chỉ phát kết quả authoritative khi chứng minh client có đường nhận/correction phù hợp. Nếu không có, giữ mô hình lai để đạt demo tương thích và ghi rõ giới hạn. |
 | Content | Dùng reader pack/map/ODT đã có và inventory KR; map/item/character numeric ID có crosswalk theo build. Client gốc tự render/audio; không port renderer mới để giải wire. |
 
-### Task nhỏ và phân công hai session dsh
+### Task nhỏ và phân công worker
 
 Các task đang chạy nằm tại chính repo này: **KRE-001 [#1](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/1)**,
 **KRE-002 [#2](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/2)**,
@@ -173,27 +173,26 @@ transfer, không giữ hai bảng việc. Mỗi task có baseline, owner/reviewe
 
 | Task | Câu hỏi / đầu ra | Dependency | Owner đề xuất / reviewer |
 |---|---|---|---|
-| KRE-001 | Khóa target/copy/dump/DB, chạy control và manifest | — | Codex / dsh2 |
-| KRE-002 | CA ProcessPatch: response/caller/guard; bootstrap local và điểm chặn sau đó; NewPatcher là nhánh tham chiếu | KRE-001 | dsh1 RE; Codex code/runtime / dsh2 |
-| KRE-003 | KR socket→framer→reader/writer; constants và fixture độc lập | KRE-001; gate runtime cần KRE-002 | **dsh2** / Codex |
-| KRE-004 | Wine unpack/patch copy + harness, issue6/PR7 đã xong trong scope tới local accept; chưa nghiệm thu toàn K1 | KRE-001/002 | Codex / dsh1+dsh2 |
-| KRE-005 | Probe server hello, version/mode/seq, qua K2 | KRE-003/004 | Codex / dsh2 |
-| KRE-006 | Login/channel/cache→lobby và K3 | KRE-005 | dsh1 RE; Codex code / dsh2 |
-| KRE-007 | Room/roster/map/spawn/loading và K4 | KRE-006 | dsh1 RE; Codex code / dsh2 |
-| KRE-008 | Bomb/item/trap/result, authority map và K5 | KRE-007 | dsh2 RE; Codex code / dsh1 |
-| KRE-009 | UDP/peer hoặc relay, đồng bộ hai client và K6 | KRE-008; có thể RE static từ KRE-003 | dsh2 RE; Codex code / dsh1 |
-| KRE-010 | Race/disconnect, bốn client, Linux packaging và K7 | KRE-009 | Codex / dsh1+dsh2 |
+| KRE-001 | Khóa target/copy/dump/DB, chạy control và manifest | — | Codex / Claude reviewer độc lập |
+| KRE-002 | CA ProcessPatch: response/caller/guard; bootstrap local và điểm chặn sau đó; NewPatcher là nhánh tham chiếu | KRE-001 | Claude RE; Codex code/runtime / Claude reviewer độc lập |
+| KRE-003 | KR socket→framer→reader/writer; constants và fixture độc lập | KRE-001; gate runtime cần KRE-002 | Claude RE / Codex |
+| KRE-004 | Wine unpack/patch copy + harness, issue6/PR7 đã xong trong scope tới local accept; chưa nghiệm thu toàn K1 | KRE-001/002 | Codex / Claude reviewer độc lập |
+| KRE-005 | Probe server hello, version/mode/seq, qua K2 | KRE-003/004 | Codex / Claude reviewer độc lập |
+| KRE-006 | Login/channel/cache→lobby và K3 | KRE-005 | Claude RE; Codex code / Claude reviewer độc lập |
+| KRE-007 | Room/roster/map/spawn/loading và K4 | KRE-006 | Claude RE; Codex code / Claude reviewer độc lập |
+| KRE-008 | Bomb/item/trap/result, authority map và K5 | KRE-007 | Claude RE; Codex code / Claude reviewer độc lập |
+| KRE-009 | UDP/peer hoặc relay, đồng bộ hai client và K6 | KRE-008; có thể RE static từ KRE-003 | Claude RE; Codex code / Claude reviewer độc lập |
+| KRE-010 | Race/disconnect, bốn client, Linux packaging và K7 | KRE-009 | Codex / Claude reviewer độc lập |
 
-Ca khó báo checkpoint ngay cho Codex (câu hỏi hẹp, SHA/VA/RVA/evidence, cạnh đã thử, blocker và phép
-đo tiếp). Codex vào RE/đối chiếu cùng dsh; cần thêm góc nhìn thì gọi Claude theo quyền chủ dự án đã
-cấp. Một owner cho mỗi target/runtime, không mở phiên dsh thay thế hoặc để hai người đụng cùng DB.
+Theo chỉ đạo27/10, **Claude Sonnet5.5** thay dsh1/dsh2 đã hết token. Không gửi thêm task dsh.
+Codex giữ điều phối/code/runtime; Claude nhận RE bootstrap/login/codec/game/peer và review theo task
+hẹp. Khi gọi dùng model claude-sonnet-5-5, cwd repo này, baseline/target/hash/output/acceptance rõ;
+worker không tự chạy client/VM hoặc sửa tracked khi chỉ được giao RE/review.
+Ca khó báo checkpoint sớm (SHA/VA/RVA/evidence, cạnh đã thử, blocker và phép đo tiếp), Codex vào phụ.
+Một owner mỗi target/runtime và DB riêng; không để hai worker cùng ghi file/DB. Worker trả raw riêng
+trong local/ cho Codex tích hợp; reviewer phải khác tác giả claim/code. Report/approval dsh trước
+27/10 giữ nguyên như bằng chứng lịch sử, không gán thành review Claude.
 
-Dùng đúng session hiện có có **title `dsh1`** (`206fda5f…`) và **`dsh2`** (`1506e63f…`), qua kênh
-web `session/prompt`; không thay bằng session headless mới. Cwd ghi trong session còn đường dẫn cũ,
-prompt phải chỉ rõ migration. dsh1 giữ bootstrap/login/room, dsh2 giữ wire/game/peer; một owner runtime
-mỗi lúc, dùng DB riêng từng target. Codex tích hợp docs/code và review evidence. Worker không sửa chung
-PLAN/RESEARCH/profile của worker khác; trả evidence cho điều phối nhập. Khi reviewer là tác giả
-claim/code thì giao người còn lại review. Không mở thêm worker dsh; Claude được gọi khi cần theo quyền chủ dự án.
 
 Trong lượt lập kế hoạch này, sau khi mở quyền và sửa alias cwd cũ, hai session đã research/review độc
 lập. Findings vòng đầu đã được xử lý; **dsh1 và dsh2 APPROVE nội dung plan ở `5e9ebb64`** theo phạm vi
