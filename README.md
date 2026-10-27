@@ -30,9 +30,10 @@ Phạm vi từng recipe/bằng chứng ở [WCP](docs/evidence/wcp/README.md);
 CP004–CP005 ghi error state 1/1958 từ dump trên bản R2 và nhánh launcher trong run bản
 copy thử; [trạng thái review](docs/evidence/checkpoints/manifest.json). Điểm chặn và phép kiểm kế ở [Q-023](docs/RESEARCH.md#q-023).
 
-CP006: client copy với tham số local đã gửi request đầu tiên; stub thử đưa qua guard khởi tạo
-bằng nhiều response mode 2/3. Điểm chặn hiện tại là `NMCOGetMyIdCode`; chi tiết/giới hạn ở
-[evidence](docs/evidence/wcp-sequence/README.md), review theo manifest.
+CP006 đã review và merge qua PR16: client copy gửi request đầu và nhận chuỗi response thử.
+CP007–CP008 thử identity local và import cửa sổ. Run không gắn debugger đã chạy audio null và
+đi tiếp tới import chưa bind; assertion audio trước đó chỉ áp cho các run debug đã đo. Giá trị và
+patch chỉ là chẩn đoán; chi tiết và review ở [evidence](docs/evidence/nmco-identity/README.md).
 
 Checkpoint bền vững: [manifest](docs/evidence/checkpoints/manifest.json).
 Quy trình ghi chép/review/audit: [checkpoint workflow](docs/evidence/checkpoints/README.md).

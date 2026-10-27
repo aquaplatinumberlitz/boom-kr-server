@@ -1,0 +1,54 @@
+{
+  "id": "AUD003",
+  "trigger": "periodic",
+  "completed_through": "CP008",
+  "recorded_utc": "2026-10-27T07:52:04.460954+00:00",
+  "auditor": "Codex; independent PR review pending",
+  "read_files": [
+    "README.md",
+    "docs/PLAN.md",
+    "docs/PROTOCOL.md",
+    "docs/RESEARCH.md",
+    "docs/evidence/nmco-identity/README.md",
+    "docs/evidence/wcp-sequence/README.md",
+    "docs/evidence/checkpoints/manifest.json"
+  ],
+  "method": "Manual core docs read in order, evidence next; compare CP007 runtime logs, review report and newer plain-null-audio, plain-screenpoint, plain-windowrect logs/run metadata; verify isolation, trap bytes/slots and source hashes. No vanilla control.",
+  "findings": [
+    {
+      "id": "F1",
+      "stale": "CP007 run-specific audio assertion was described as current blocker despite plain null-audio run advancing to another trap",
+      "correction": "Distinguish debugger runs and plain runs, record later slot16EA638 and unknown causality",
+      "fixed_in": [
+        "README.md",
+        "docs/PLAN.md",
+        "docs/PROTOCOL.md",
+        "docs/RESEARCH.md",
+        "docs/evidence/nmco-identity/README.md"
+      ]
+    },
+    {
+      "id": "F2",
+      "stale": "CP007 initial 55 assertions could be read as verifying import patch bytes; existing slot IsZoomed replacement and unchanged users not disclosed",
+      "correction": "Bound CP007 verification to five specific patches, disclose replacement and use CP008 exact import diffs/parser checks",
+      "fixed_in": [
+        "docs/evidence/nmco-identity/README.md",
+        "docs/evidence/checkpoints/manifest.json"
+      ]
+    },
+    {
+      "id": "F3",
+      "stale": "Null-audio vs default debug runs had different harness trace and ALSA settings; description could imply matched audio control",
+      "correction": "Record ALSA_CONFIG_PATH/config and WINEDEBUG diff, default driver path unknown, and compare plain runs with proper limits",
+      "fixed_in": [
+        "docs/evidence/nmco-identity/README.md",
+        "docs/evidence/checkpoints/manifest.json"
+      ]
+    }
+  ],
+  "remaining": [
+    "CP007 and CP008 PR re-review pending; no gate has passed.",
+    "Plain and debug run prefixes/timing differ; audio assertion cause remains unknown.",
+    "Import identity, original NMCO semantics, login/gameplay, oneclickuser, seq/reconnect and source Windows behavior remain open."
+  ]
+}
