@@ -16,21 +16,21 @@ Cập nhật CP001: contract WCP ở [PROTOCOL](PROTOCOL.md#wcp),raw/review/inte
 KRE-004/issue6 đã đóng trong scope Wine r1;KRE-005a/issue9 còn mở cho bước sau.
 
 <a id="q-023"></a>
-Q-023, CP005 (review theo [manifest](evidence/checkpoints/manifest.json)): R2 đọc error1/msg1958 có sẵn trong image, dừng tại 12364A0; guard12349E0 chưa quan sát. Ở run copy thử với hai u32 bằng0, quan sát
-1232385, ba kết quả nhánh1/0/0, 12323BA→1258150, CALauncher khởi chạy và ghi error9/msg0x9a1;
-khi thoát gặp UD2 tại 226459C. Khác biệt kết quả giữa run là bằng chứng hẹp, chưa chứng minh
-quan hệ nhân quả riêng của patch. Xem [contract](PROTOCOL.md#wcp) và
-[evidence/giới hạn](evidence/wcp-guard/README.md). Chưa có proof cho nguyên nhân MW_SEP(10).
+Q-023, CP006 (review theo [manifest](evidence/checkpoints/manifest.json)): `multiserveridx:0`
+trong run copy đã kích hoạt setter `+E78`, tránh nhánh launcher và cho request đầu C→S;
+`oneclickuser` liên hệ setter `+E9C` mới chỉ static, chưa đo runtime. Tám fixture S→C mode2/3
+đưa guard trả1; hai copy thử NMCO lần lượt tới import init, status và `NMCOGetMyIdCode`.
+Nguồn/giới hạn: [PROTOCOL](PROTOCOL.md#wcp), [evidence](evidence/wcp-sequence/README.md).
 
-Bước tiếp: Codex truy nguồn và trạng thái khởi tạo hai giá trị qua 122AE50/122AF30 và 52A350;
-đối chiếu launcher path và điều kiện hợp lệ trước khi quyết định test copy tiếp. Không
-coi zero lỗi là fix sản phẩm hoặc giả định guard12349E0 đã được gọi. Nếu qua early exit mới đo
-guard và notification400/mode2/selector3; storage u32 cần oracle khác0. Claude chỉ review.
+Bước tiếp: Codex phân tích `13CA130`/`13BE369`, contract EDX:EAX và cách dùng identity;
+thiết kế phép thử identity local/đối chứng messenger trên copy và tìm điểm chờ sau đó. Không
+coi giá trị giả là ID server gốc; kiểm nội dung dữ liệu khởi tạo trước khi nói login thành công.
+Tiếp tục đo mode2/3 hai chiều, seq/reconnect và nguồn `oneclickuser` khi cần. Claude chỉ review.
 
 | ID / ưu tiên | Trạng thái | Owner / reviewer | Đã biết | Còn thiếu / bước đóng |
 |---|---|---|---|---|
 | Q-022 / KRE-P1 bootstrap | open | Codex RE / Claude reviewer độc lập | ProcessPatch local có debugger return1;recipe R2 đã merge;contract ở [PROTOCOL](PROTOCOL.md#wcp) | K1a ownership/control trên Windows local/effective token; K1b kiểm caller/config/IPC riêng CA và NewPatcher; K1c stub/patch theo evidence; gate ba cold start tới network attempt/state chờ hello, không lấy alive/không exit làm proof |
-| Q-023 / KRE-P1 codec | open | Codex RE / Claude reviewer độc lập | Primitive có [oracle](evidence/primitives/README.md);WCP có bằng chứng hẹp tại [PROTOCOL](PROTOCOL.md#wcp) | Đo nhánh launcher/early exit theo Q-023;rồi guard,codec2/3,checksum/seq/reset/request kế cho K2 |
+| Q-023 / KRE-P1 codec | open | Codex RE / Claude reviewer độc lập | Primitive có [oracle](evidence/primitives/README.md);WCP có bằng chứng hẹp tại [PROTOCOL](PROTOCOL.md#wcp) | Đo NMCO identity theo Q-023;rồi codec hai chiều,checksum/seq/reset và gate K2 |
 | Q-024 / KRE-P1 login/kênh | open | Codex RE / Claude reviewer độc lập | VN có bootstrap-data, login/redirect/cache/kênh; các variant trong một binary đã khác layout | KR handler/field/order/encoding/local identity; cold/warm cache và keepalive vào sảnh K3; không gọi auth Nexon thật |
 | Q-025 / KRE-P1 room/load | open | Codex RE / Claude reviewer độc lập | Asset map KR và UI Ready có locator; VN có bẫy map tự gửi/spawn trước khi load | Wire KR create/join/host/slot/ready/start/roster/map/spawn/ack; K4 hai client thấy cùng phòng và spawn đúng |
 | Q-026 / KRE-P1 authority/trận | open | Codex RE / Claude reviewer độc lập | KR có consumer flame/chain, timer/send167/status184; VN mô hình lai | Phân quyền client/server/peer từng event; packet bom/pickup/trap/death/result/correction KR; K5 một chu kỳ hoàn chỉnh, không lấy packet183 ghost làm mover người sống |

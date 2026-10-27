@@ -23,12 +23,16 @@ boom-kr-server/
 ## Đang làm
 
 Recipe Wine R2 đã review/merge, qua ProcessPatch và đạt cửa sổ800×600 + kết nối local thứ hai.
-Probe riêng sau đó được debugger xác nhận nhận phản hồi WCP; vẫn zero C→S và cuối run báo
+Probe trước CP006 được debugger xác nhận nhận phản hồi WCP; run đó zero C→S và cuối run báo
 MW_SEP(10)/Login Failed. **Chưa có login hoạt động hoặc gameplay.**
 Probe hai-reply vẫn là thí nghiệm riêng; review tài liệu theo [CP001](docs/evidence/checkpoints/manifest.json), tách khỏi R2 đã merge.
 Phạm vi từng recipe/bằng chứng ở [WCP](docs/evidence/wcp/README.md);
 CP004–CP005 ghi error state 1/1958 từ dump trên bản R2 và nhánh launcher trong run bản
 copy thử; [trạng thái review](docs/evidence/checkpoints/manifest.json). Điểm chặn và phép kiểm kế ở [Q-023](docs/RESEARCH.md#q-023).
+
+CP006: client copy với tham số local đã gửi request đầu tiên; stub thử đưa qua guard khởi tạo
+bằng nhiều response mode 2/3. Điểm chặn hiện tại là `NMCOGetMyIdCode`; chi tiết/giới hạn ở
+[evidence](docs/evidence/wcp-sequence/README.md), review theo manifest.
 
 Checkpoint bền vững: [manifest](docs/evidence/checkpoints/manifest.json).
 Quy trình ghi chép/review/audit: [checkpoint workflow](docs/evidence/checkpoints/README.md).
