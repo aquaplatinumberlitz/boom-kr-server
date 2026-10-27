@@ -38,6 +38,7 @@ trước `call 0x13ADD10`. Trong `13ADD10`, `13ADA90` và field `+0x3C` đọc t
 packet là argument `[ebp+8]` được chuyển tiếp tới virtual `+0x40`.
 
 **Confirmed trong call chain đã đọc:** `+0x3C` ở guard/delegate thuộc receiver từ `545E30`, không phải
-packet. Lớp receiver, writer của field và target virtual vẫn unknown. Không nối field `+0x3C` có
+packet. Writer field/socket trên route WCP về sau có tại [PROTOCOL](../../PROTOCOL.md#wcp);
+full send delegate/codec vẫn unknown. Không nối field `+0x3C` có
 cùng offset trong base constructor packet với receiver khác này. Raw giữ local trong
-`local/research/dsh2/codec-r1.asm` và `codec-r3.asm`; dsh2 đang sửa checkpoint trước khi đi tiếp.
+`local/research/dsh2/codec-r1.asm` và `codec-r3.asm`. Snapshot lịch sử;bước hiện hành ở [RESEARCH](../../RESEARCH.md#q-023).

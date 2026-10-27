@@ -1,0 +1,161 @@
+{
+  "schema": "kre-wcp-evidence-v1",
+  "recorded_utc": "2026-10-27T06:19:29.215223+00:00",
+  "context_commit": "616542a8bbaa86c631146fce0fd1a935959dbe57",
+  "checkpoint": "CP001",
+  "contract": "docs/PROTOCOL.md#wcp",
+  "raw": [
+    {
+      "path": "local/research/codex/wcp-next-checkpoint.json",
+      "bytes": 4548,
+      "sha256": "83c3cc3e3105120c111212c5296c5c0055cfe68e52c5d79c1a1b23b7737bc9ca"
+    },
+    {
+      "path": "local/research/codex/wcp-consumer-oracle-r1.json",
+      "bytes": 699,
+      "sha256": "108daaaada2bffd9a7ac286a7f9f4ed4fd158a97aec874d916d4cf70d730157b"
+    },
+    {
+      "path": "local/research/codex/wcp-consumer-oracle.py",
+      "bytes": 1513,
+      "sha256": "0fa671163c06e4039ec4675f5ad49966010345e8f523670cb102653855276701"
+    },
+    {
+      "path": "local/research/codex/wine_probe_wcp.py",
+      "bytes": 16570,
+      "sha256": "8c61e88f537f6dcfc995b64835f394923c517d7edd2b891b04eafecf249fc860"
+    },
+    {
+      "path": "local/research/codex/wcp-reply-experiment-r1.json",
+      "bytes": 1014,
+      "sha256": "a8bad0b608abe3204c3ae3879418cc085f41e387aebe3c9d025c4dfa0664d773"
+    },
+    {
+      "path": "local/research/claude/wcp/wcp-r1.md",
+      "bytes": 9855,
+      "sha256": "8d7f39b84fee3dd5a5c2b26245a8d4aeadf6ee9d2adc36524dc7ed3c3e83dbcc"
+    },
+    {
+      "path": "local/research/claude/wcp/wcp-r2.md",
+      "bytes": 6779,
+      "sha256": "46cfa286f83215cd937837f3091fd07cde6b654f4753b16acc08bf4664047e15"
+    },
+    {
+      "path": "local/research/wcp-probe/cold-1/run/run.json",
+      "bytes": 2974,
+      "sha256": "7ea693991ce856e52541d579674a0d71727809ea030ab9caa133975d1ef979b7"
+    },
+    {
+      "path": "local/research/wcp-probe/cold-1/run/client.log",
+      "bytes": 242472,
+      "sha256": "1777f342ce0d9cbe630164ee0a92c6a30c961653bfe7abfe62daed5605fd9d02"
+    },
+    {
+      "path": "local/research/wcp-probe/cold-1/run/CALog-run.txt",
+      "bytes": 46,
+      "sha256": "1dd23e4b03452ed015c1477017fbed7718c0836710f693e445ebf2eb18015a12"
+    },
+    {
+      "path": "local/research/wcp-probe/cold-1/debug/run.json",
+      "bytes": 2827,
+      "sha256": "07c411e832dfc9fdf88e1134ba183b6564ed3a0e88ab8727c4d8332dba7a30bc"
+    },
+    {
+      "path": "local/research/wcp-probe/cold-1/debug/client.log",
+      "bytes": 350236,
+      "sha256": "521adbcb89338b468b2fb8d531e89d95842ac7eec01fd440403579dd357d28b6"
+    },
+    {
+      "path": "local/research/wcp-probe/cold-1/debug/CALog-run.txt",
+      "bytes": 65,
+      "sha256": "5e234c309190b81be7af6b4c7d9f838f70ca90230075cf84b724c407d34af3d3"
+    },
+    {
+      "path": "local/research/wcp-probe/cold-1/debug/debug-commands.txt",
+      "bytes": 137,
+      "sha256": "a8bf3c5e9c02d66e7b94a6a89a8f37d6ebb97c123141320c1bad3921993f09af"
+    },
+    {
+      "path": "local/research/wcp-probe/cold-1/debug/windows-04.txt",
+      "bytes": 1273,
+      "sha256": "02c5faabae1aa9cfc3358cd5b627dc2e5337b406ef6dfe5b0cfdc477ab65c591"
+    },
+    {
+      "path": "local/research/claude/wcp/raw2/12322e0-after-connect.asm",
+      "bytes": 2644,
+      "sha256": "1fb6059360dd72c1b883c95e149fa6d782c44a1098dd2b61a64e04e37385284c"
+    },
+    {
+      "path": "local/research/claude/wcp/raw2/1232458-post-connect.asm",
+      "bytes": 4941,
+      "sha256": "c3a08fdcf727f34b7debe6931468ac8572b9ce67096a7105e776d0c47864ba79"
+    },
+    {
+      "path": "local/research/claude/wcp/raw2/1234e40-near.asm",
+      "bytes": 3377,
+      "sha256": "1d125cf897d28655be5dda624735366deebf81e7c8c103c714902ff5a0d98b4c"
+    },
+    {
+      "path": "local/research/claude/wcp/raw2/1255a20-tail.asm",
+      "bytes": 1259,
+      "sha256": "78f39f4f0f50d39ef496df784cdd14080046ac3aed72c591e128810cd76eec53"
+    },
+    {
+      "path": "local/research/claude/wcp/raw2/1255ac0-full.asm",
+      "bytes": 7240,
+      "sha256": "4ed35d65f4f8946dd9eedf97db8b96786b15f5387003a993622f0add8591ab89"
+    },
+    {
+      "path": "local/research/wcp-probe/cold-1/run/windows-01.txt",
+      "bytes": 1273,
+      "sha256": "05ab81573cc0d94e8d97cbd1c93505b76ab11e48967da0eb4e95686aff5569ab"
+    },
+    {
+      "path": "local/research/wcp-probe/cold-1/run/windows-07.txt",
+      "bytes": 1273,
+      "sha256": "05ab81573cc0d94e8d97cbd1c93505b76ab11e48967da0eb4e95686aff5569ab"
+    },
+    {
+      "path": "local/research/doc-workflow/claude-audit.md",
+      "bytes": 21660,
+      "sha256": "7e7da0476d895ad8d4966c4174c7a6b8ae4821b640d1989323933e9accf7d8c0"
+    }
+  ],
+  "artifacts": [
+    {
+      "path": "/home/admin/boom/repos/boomkr-re/out/modO.bin",
+      "bytes": 31858688,
+      "sha256": "a08950c833d3acab8281049def7b3dc96b221f107eeda01da3a548e34b91dce5"
+    }
+  ],
+  "review": {
+    "status_at_recording": "pending",
+    "scope": "WCP experiment and new contract synthesis; R2 alone reviewed/merged",
+    "reviewer": "Claude Sonnet 5.5 independent reviewer"
+  },
+  "integration": {
+    "r2": {
+      "state": "merged",
+      "pr": "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/10",
+      "commit": "2dbbf32fb1807ca7527cbdc469c04629c80e3137"
+    },
+    "worker_policy": {
+      "state": "merged",
+      "pr": "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/11",
+      "commit": "616542a8bbaa86c631146fce0fd1a935959dbe57"
+    },
+    "two_reply_harness": {
+      "state": "experiment_only",
+      "path": "local/research/codex/wine_probe_wcp.py"
+    }
+  },
+  "limitations": [
+    "No new runtime in documentation reconciliation",
+    "No C2S, working login, full mode2/selector3 codec or K1/K2 gate acceptance",
+    "Raw WCP r1 field mapping/caller corrected by r2; historical hashes retained",
+    "Live post-hello socket fields not read; globals/emulation differ",
+    "MW_SEP10 observed, root failing guard unknown",
+    "Zero seed input and zero socket baseline do not establish +48 as seed storage",
+    "1234E70 return1 does not imply WCP accepted; use direct consumer breakpoint"
+  ]
+}

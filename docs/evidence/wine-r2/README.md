@@ -42,10 +42,10 @@ từ cùng template đã khởi tạo; không phải ba cài Wine mới. Debug s
 tính cold start. Không lấy alive/absence of UD2 làm success login; mốc chỉ cửa sổ800×600 và attempt
 local thứ hai đã ghi. Hash/time ở [verification.json](verification.json).
 
-Probe gửi fixture một lần toàn run trên socket đầu; socket thứ hai vẫn silent,zero C→S.
-Chưa suy đó là socket game/auth hoặc endpoint gốc từ port; cần truy caller WCP để biết contract.
-Không gửi lại fixture patch lên socket hai khi chưa biết reader/mode. D3DX load có cả ở negative
-bootstrap trước đó, không dùng làm proof.
+Các run snapshot R2 này gửi fixture một lần lên socket đầu;socket hai silent/zero C→S.
+Đây không còn là thí nghiệm mới nhất:xem [probe WCP](../wcp/README.md).
+Contract hiện hành ở [PROTOCOL](../../PROTOCOL.md#wcp);không gán kết quả hai-reply cho R2.
+D3DX load có cả ở negative bootstrap trước đó,không dùng làm proof.
 
 Hai private run bootstrap-runtime/ngskip/run và ngskip/debug overlap prefix~1.16s: **loại khỏi
 đối chứng**. ngskip-recheck/run bản copy/prefix riêng thay control NGskip. Các run R2 trên đây tuần tự.
