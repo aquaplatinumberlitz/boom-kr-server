@@ -62,3 +62,7 @@ tools/wine_probe.py với game/prefix/out riêng, --exe CA-r2.exe --seconds 10 -
 Rollback chọn --recipe bootstrap-r1 hoặc bỏ flag; không sửa source hoặc ghi đè binary cũ.
 Verification cần rebuild độc lập đúng SHA,PE import count/API/patch exact,default-r1 regression,
 source hashes,docs/diff check và reviewer khác tác giả đúng commit. CI chưa cấu hình.
+
+Metadata connections giữ ordinal,listen_port,peer và timestamp; final-cold-2 có hai connection
+trên cùng listener3908, không phải hai port khác nhau. Report R2 dùng schema kre-wine-copy-r2,
+R1 vẫn schema cũ và output SHA cũ.

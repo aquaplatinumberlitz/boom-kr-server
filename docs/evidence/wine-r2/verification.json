@@ -6,8 +6,8 @@
   "exe_sha256": "7b3b435b5d8e110185359107376b736615ceabe9452cea8154d02c8628f44c29",
   "tool": {
     "path": "tools/build_wine_copy.py",
-    "bytes": 10643,
-    "sha256": "09cb3626405056ec093639706c1364633035892badebcf02f46d42c01ec8bdbc"
+    "bytes": 10700,
+    "sha256": "bd8b35b2922905660b16fb6dadd93d4b26a419c79de0080965956c677c743cc6"
   },
   "harness": {
     "path": "tools/wine_probe.py",
@@ -15,9 +15,9 @@
     "sha256": "a1e7abeaaf4a4def11fe56845dc5d5d7c05d86813786f4024188d7902032e0fb"
   },
   "report": {
-    "path": "local/research/codex/rebuild-r2-final.json",
+    "path": "local/research/codex/rebuild-r2-reviewed.json",
     "bytes": 92365,
-    "sha256": "22afffb9a19694797453c0c99dd363b972983b6d459171484bd023f855ffdfc6"
+    "sha256": "109272b47f2baf349ae6ad4967cebf7d5fd61b3bcf6d3ca497f5650f0244e3e8"
   },
   "r1_regression": {
     "path": "local/research/codex/rebuild-r1-final-regression.json",
@@ -173,6 +173,11 @@
       "path": "local/research/dsh2/window-class-rect-r3.md",
       "bytes": 3643,
       "sha256": "93ea745c180f76e708843be0b6fab1d112dc91a216429e183adddeef1cda3700"
+    },
+    {
+      "path": "local/research/dsh2/defproc-import-r1.md",
+      "bytes": 2677,
+      "sha256": "8e773cbf9a4e1d822421accc1426d0f6c3539e4f5842138b4ec76a18cca3a347"
     }
   ],
   "singleton_state": [
@@ -237,6 +242,30 @@
           "bytes": 2819,
           "sha256": "e11a49e7b92458f05087925093467dee8d9e51e54528b02a0f97db2be8c71b72"
         }
+      ],
+      "connections": [
+        {
+          "ordinal": 1,
+          "listen_port": 3888,
+          "peer": [
+            "127.0.0.1",
+            50804
+          ],
+          "accept_monotonic_ns": 1019973445289905,
+          "reply_sent": true,
+          "c2s_bytes": 0
+        },
+        {
+          "ordinal": 2,
+          "listen_port": 3898,
+          "peer": [
+            "127.0.0.1",
+            42670
+          ],
+          "accept_monotonic_ns": 1019973706625212,
+          "reply_sent": false,
+          "c2s_bytes": 0
+        }
       ]
     },
     {
@@ -283,6 +312,30 @@
           "bytes": 2831,
           "sha256": "517986a89bbdd8e96333a792e5f6647afaa0cc6b709e8166e14de31164e9cb34"
         }
+      ],
+      "connections": [
+        {
+          "ordinal": 1,
+          "listen_port": 3908,
+          "peer": [
+            "127.0.0.1",
+            43762
+          ],
+          "accept_monotonic_ns": 1020023930117364,
+          "reply_sent": true,
+          "c2s_bytes": 0
+        },
+        {
+          "ordinal": 2,
+          "listen_port": 3908,
+          "peer": [
+            "127.0.0.1",
+            43774
+          ],
+          "accept_monotonic_ns": 1020024195803844,
+          "reply_sent": false,
+          "c2s_bytes": 0
+        }
       ]
     },
     {
@@ -328,6 +381,30 @@
           "path": "local/research/wine-r2/final-cold-3/run/processes-04.txt",
           "bytes": 2638,
           "sha256": "ef1ae74ab008ed2b83d8b0dbd44e8704ee5bab75509af961e5f027ed6243f855"
+        }
+      ],
+      "connections": [
+        {
+          "ordinal": 1,
+          "listen_port": 3898,
+          "peer": [
+            "127.0.0.1",
+            56918
+          ],
+          "accept_monotonic_ns": 1020041126495133,
+          "reply_sent": true,
+          "c2s_bytes": 0
+        },
+        {
+          "ordinal": 2,
+          "listen_port": 3878,
+          "peer": [
+            "127.0.0.1",
+            33398
+          ],
+          "accept_monotonic_ns": 1020041396073248,
+          "reply_sent": false,
+          "c2s_bytes": 0
         }
       ]
     }

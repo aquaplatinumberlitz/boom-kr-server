@@ -164,7 +164,7 @@ def main():
     expected_sha = EXPECTED_SHA if args.recipe == 'bootstrap-r1' else POST_BOOTSTRAP_SHA
     if sha(result) != expected_sha:
         raise RuntimeError(f'rebuild differs from pinned {args.recipe}; computed SHA {sha(result)}; no output written')
-    report = {'schema':'kre-wine-copy-r1','output_sha256':sha(result),'entry_va':'0x1470e40', 'recipe':args.recipe,
+    report = {'schema':'kre-wine-copy-r1' if args.recipe == 'bootstrap-r1' else 'kre-wine-copy-r2','output_sha256':sha(result),'entry_va':'0x1470e40', 'recipe':args.recipe,
               'inputs':[{'path':str(path),'sha256':sha(data)} for path,data in zip(inputs,[raw,header_data,candidate_data])],
               'patches':patches,'imports':imports,'traps':traps,'stubs':stubs,
               'limitations':['Partial experimental reconstruction; imports outside exercised path remain candidates.',

@@ -10,7 +10,7 @@ KRE-001/002/003 đang thực hiện: Codex giữ harness/runtime, dsh1 bootstrap
 Review plan nguồn đã xong; các câu hỏi dưới đây vẫn open cho tới khi có evidence trả lời.
 
 27/10: [bootstrap reply](evidence/bootstrap-wire/README.md) đã xác nhận ProcessPatch return1 bằng
-debugger. [Wine R2](evidence/wine-r2/README.md) bỏ init NGClient trên copy và phục hồi bảy import;
+debugger. [Wine R2](evidence/wine-r2/README.md) bỏ init NGClient trên copy và phục hồi sáu import mới và sửa một import A/W;
 ba cold start cùng recipe tạo cửa sổ800×600 + kết nối local thứ hai. Socket hai silent/zero C→S;
 ca15s báo WCP/Login Failed, ca10s còn chờ. Q-022/023 còn mở: truy consumer WCP tại literal17A1A9C,
 xref13AD7D8, cần role/mode/reader/response của kết nối kế tiếp; không gửi lại fixture patch khi chưa
