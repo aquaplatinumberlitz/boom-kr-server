@@ -102,5 +102,7 @@ Không đánh dấu K2/login/gameplay hoàn thành. Gate K1 toàn project vẫn 
 và đối chứng Windows; bằng chứng này đóng đường tự động hóa Wine cho thí nghiệm bootstrap local.
 
 Recipe riêng tiếp theo [post-bootstrap-r2](../wine-r2/README.md) bỏ một call NGClient init và phục hồi
-bảy import Windows trên copy; đã tạo cửa sổ và attempt local thứ hai, còn WCP/Login Failed.
+sáu import mới và sửa một A/W import trên copy; đã tạo cửa sổ và attempt local thứ hai, còn WCP/Login Failed.
 R1 trong tài liệu này giữ binary SHA/recipe cũ; không tính kết quả R2 cho r1.
+
+Snapshot r1/r2 silent không phải trạng thái mới nhất;xem [WCP](../wcp/README.md) và [contract](../../PROTOCOL.md#wcp).

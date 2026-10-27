@@ -1,0 +1,94 @@
+{
+  "id": "AUD001",
+  "trigger": "initial_reconciliation",
+  "completed_through": "CP001",
+  "recorded_utc": "2026-10-27T06:24:42.869762+00:00",
+  "auditor": "Codex; independent evidence audit by Claude Sonnet 5.5",
+  "read_files": [
+    "README.md",
+    "docs/PLAN.md",
+    "docs/PROTOCOL.md",
+    "docs/RESEARCH.md",
+    "docs/evidence/wine/README.md",
+    "docs/evidence/bootstrap-wire/README.md",
+    "docs/evidence/wine-r2/README.md",
+    "docs/evidence/primitives/README.md",
+    "docs/evidence/wcp/README.md",
+    "docs/evidence/checkpoints/README.md"
+  ],
+  "method": "Read core docs in routing order; compare retained plain/debug run, breakpoint register/log, oracle and Claude r1/r2 selected raw2 ASM. No new RE/runtime. Claude raw audit report retained with SHA in CP001.",
+  "findings": [
+    {
+      "id": "F1",
+      "stale": "README/PLAN/RESEARCH said socket2 has no reply, WCP consumer unknown",
+      "correction": "Separate merged silent R2 snapshots from later private two-reply observations",
+      "fixed_in": [
+        "README.md",
+        "docs/PLAN.md",
+        "docs/RESEARCH.md",
+        "docs/evidence/wcp/README.md"
+      ]
+    },
+    {
+      "id": "F2",
+      "stale": "Protocol omitted WCP initial0/0, transition2/3 and actual caller",
+      "correction": "Canonical scoped static/emulation/runtime contract, role still candidate",
+      "fixed_in": [
+        "docs/PROTOCOL.md"
+      ]
+    },
+    {
+      "id": "F3",
+      "stale": "Raw WCP r1 field offset/caller and raw checkpoint PR11-pending obsolete",
+      "correction": "Supersede by CP001 without editing old raw; PR10/11 merge facts recorded",
+      "fixed_in": [
+        "docs/PROTOCOL.md",
+        "docs/evidence/wcp/verification.json"
+      ]
+    },
+    {
+      "id": "F4",
+      "stale": "u32=0 plus socket+48=0 described as seed storage",
+      "correction": "Remove storage inference; nonzero input/body/live field proof remains missing",
+      "fixed_in": [
+        "docs/PROTOCOL.md",
+        "docs/RESEARCH.md",
+        "docs/evidence/wcp/README.md"
+      ]
+    },
+    {
+      "id": "F5",
+      "stale": "Claude r2 inferred1234E70return1 implies WCP accepted",
+      "correction": "Only error1254D50zero implied; use13AD79CEAX1 as acceptance proof",
+      "fixed_in": [
+        "docs/PROTOCOL.md"
+      ]
+    },
+    {
+      "id": "F6",
+      "stale": "Historical evidence next NGClient trap and active dsh wording read as current",
+      "correction": "Date/scope historical recipe; link current contract/questions",
+      "fixed_in": [
+        "docs/evidence/bootstrap-wire/README.md",
+        "docs/evidence/primitives/README.md",
+        "docs/evidence/wine-r2/README.md"
+      ]
+    },
+    {
+      "id": "F7",
+      "stale": "No persistent CP/audit or docs-sync requirement",
+      "correction": "Manifest plus AGENTS/workflow, periodic CP004 unaffected by ad-hoc audit",
+      "fixed_in": [
+        "AGENTS.md",
+        "docs/evidence/checkpoints/README.md"
+      ]
+    }
+  ],
+  "remaining": [
+    "Full codec2/3, first C2S and login unknown; no new gate acceptance",
+    "Guard12349E0 is a hypothesis until runtime; MW_SEP10 cause unknown",
+    "No cross-run timing inference promoted; plain/direct debug distinguished",
+    "WCP synthesis and workflow implementation require independent exact-head review",
+    "Windows vanilla/control and unrelated gameplay authority remain open"
+  ]
+}

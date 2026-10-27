@@ -1,6 +1,7 @@
 # Phản hồi ProcessPatch KR dưới Wine
 
-27/10/2026 JST. KRE-002, baseline `fcf5dfb`; tiếp nối [recipe Wine](../wine/README.md).
+Snapshot lịch sử27/10/2026 JST,trước R2. Trạng thái mới ở [README](../../../README.md),
+contract hiện hành ở [PROTOCOL](../../PROTOCOL.md#wcp). KRE-002, baseline `fcf5dfb`; tiếp nối [recipe Wine](../wine/README.md).
 **Bản copy đã nhận phản hồi bootstrap local và trả thành công từ `ProcessPatch`.** Đây chưa phải
 hello game/login: client tiếp tục rồi dừng ở UD2 của import `ngclient.aes` ordinal1 chưa phục hồi.
 Binary vẫn SHA `a0c3b9867dae5fe2ff7c315cfe851117661c2cafead45196ce999329f67432f5`;
@@ -59,7 +60,8 @@ reuse prefix của ca reply và **không tính cold start**. Không có kết n�
 | `reply-final/run` | Final harness, accept3888, gửi fixture đúng; trap2263878 lặp lại | Plain copy riêng, 10s |
 
 Trap `2263878` thuộc slot `16EA4C8`, excluded `ngclient.aes #1` theo patch report cũ; debug stack có
-return `544EFD`, caller `12358EC→12314A7`. Đây là cạnh RE tiếp theo, chưa xác định ABI/return/side
+return `544EFD`, caller `12358EC→12314A7`. Đây là cạnh RE kế tại lúc run này;R2 về sau bỏ call init theo [evidence](../wine-r2/README.md).
+Trong snapshot này chưa xác định ABI/return/side
 effects để stub. D3DX load xuất hiện cả ca guard sai; **không dùng D3DX load chứng minh bootstrap pass**.
 Chưa có C→S tiếp theo, UI đăng nhập/kênh/sảnh, Windows control tương đương hoặc demo chơi được.
 Không nâng K1/K2 chỉ từ kết quả này; recipe reply chưa có ba cold start thành công tới hello tiếp theo.

@@ -35,6 +35,20 @@ sinh làm oracle, không dùng log emulator chứng minh client thực thi hoặ
 Chưa biết thì ghi unknown và bước kiểm; không bịa wire/default. Gate K0–K7 qua được khi có evidence,
 verification và reviewer độc lập. Duyệt plan không phải hoàn thành implementation/runtime.
 
+## Checkpoint và tài liệu RE bắt buộc
+
+Mỗi checkpoint phải đồng bộ docs bị ảnh hưởng trước khi complete;không chỉ giữ kiến thức trong
+hội thoại/report worker/checkpoint local. README current state,PLAN task/gate/thứ tự,PROTOCOL
+contract/limits,RESEARCH câu hỏi/phép kiểm tiếp,evidence metadata/recipe/hash; raw ở local.
+Tóm tắt delta và link nguồn chuẩn,không tạo plan/contract theo phiên.
+Theo [workflow](docs/evidence/checkpoints/README.md),lấy ID/counter tăng liên tục từ
+[manifest](docs/evidence/checkpoints/manifest.json),kể cả đổi phiên/compact/worker.
+Phân biệt source/status/loại kiểm với review/merge/gate;chưa review vẫn ghi pending/candidate.
+Không nâng gate từ alive,TCP accept,cửa sổ hoặc encoder tự sinh;không báo phần trăm thiếu bằng chứng.
+Mỗi 4 checkpoint complete audit thủ công README→PLAN→PROTOCOL→RESEARCH→evidence với raw mới,
+ghi audit/counter bền vững. Mâu thuẫn nghiêm trọng audit ngay,không reset lịch4 checkpoint.
+
+
 ## Làm việc nhóm
 
 Task là issue trong chính repo này, có KRE ID, baseline, owner/reviewer, dependency, file và acceptance.
@@ -45,14 +59,16 @@ Review phải độc lập với tác giả; các report dsh cũ vẫn giữ pro
 để Codex vào phụ, không tự quét vô hạn.
 Lượt RE mặc định tối đa8 request/4 thân hàm mới, hai lượt; mở tiếp khi có cạnh/thí nghiệm mới rõ.
 
-Code trên nhánh/worktree riêng của repo này; giữ thay đổi người khác, không reset/clean hoặc stage toàn
+Code trên nhánh/worktree riêng của repo này; giữ thay đổi người khác,  không reset/clean hoặc stage toàn
 repo. Commit task của mình và kiểm diff. Sau commit khởi tạo repo, tích hợp main qua PR, kiểm tra phù
 hợp và reviewer khác tác giả approve đúng head; không tự merge code chưa review.
 Không push binary/decompile/credential. Không đổi cấu hình cá nhân/IDA/MCP trong repo.
 
 ## Kiểm và bàn giao
 
-Docs: `python3 tools/check_docs.py` và `git diff --check`.
+Docs/checkpoint: chạy python3 tools/check_docs.py,python3 tools/check_checkpoints.py --require-local
+--require-history và git diff --check. Thiếu raw/pending/unsynced phải báo rõ;checker không tự xác nhận
+ngữ nghĩa hoặc đóng gate.
 Tool/codec/server: chạy kiểm phù hợp hành vi thay đổi; không mặc định phải build client Rust cũ.
 CI/build server hiện chỉ Linux. Theo yêu cầu26/10, ưu tiên Wine cho bản copy unpack/patch đã đo;
 Windows VM giữ vai trò đối chứng KR nguyên bản. Không suy modified Wine tương đương vanilla Windows.

@@ -22,10 +22,15 @@ boom-kr-server/
 
 ## Đang làm
 
-Bản copy KR unpack/patch đã qua phản hồi ProcessPatch local (debugger xác nhận return1).
-Recipe Wine R2 mới tạo cửa sổ Crazy Arcade800×600 và mở kết nối TCP local thứ hai trong ba cold start.
-Kết nối hai chưa nhận reply; ca15s báo WCP/Login Failed, hai ca10s còn chờ. Xem
-[evidence Wine R2](docs/evidence/wine-r2/README.md). Chưa có hello game/login hoạt động hoặc gameplay.
+Recipe Wine R2 đã review/merge, qua ProcessPatch và đạt cửa sổ800×600 + kết nối local thứ hai.
+Probe riêng sau đó được debugger xác nhận nhận phản hồi WCP; vẫn zero C→S và cuối run báo
+MW_SEP(10)/Login Failed. **Chưa có login hoạt động hoặc gameplay.**
+Probe hai-reply vẫn là thí nghiệm riêng; review tài liệu theo [CP001](docs/evidence/checkpoints/manifest.json), tách khỏi R2 đã merge.
+Phạm vi từng recipe/bằng chứng ở [WCP](docs/evidence/wcp/README.md);
+điểm chặn và phép kiểm kế ở [Q-023](docs/RESEARCH.md#q-023).
+
+Checkpoint bền vững: [manifest](docs/evidence/checkpoints/manifest.json).
+Quy trình ghi chép/review/audit: [checkpoint workflow](docs/evidence/checkpoints/README.md).
 
 Đích đầu: bootstrap offline → login cục bộ → sảnh/phòng → Battle → kết quả → hai client chơi hai
 trận liên tiếp. Bốn client và hardening sau đó. Chi tiết ở [PLAN](docs/PLAN.md).
@@ -37,6 +42,7 @@ trận liên tiếp. Bốn client và hardening sau đó. Chi tiết ở [PLAN](
 
 ```bash
 python3 tools/check_docs.py
+python3 tools/check_checkpoints.py --require-local --require-history
 python3 tools/artifacts.py verify
 ```
 

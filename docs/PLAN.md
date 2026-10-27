@@ -1,7 +1,7 @@
 # Kế hoạch server giả lập KR 00967
 
 Nguồn chuẩn của project `boom-kr-server`; bản nhập từ plan đã được dsh1/dsh2 review tại `1eee46d`.
-Yêu cầu 26/10: triển khai tiếp, code/tool/docs mới ở cùng repo này; K0 đang thực hiện.
+Cập nhật27/10 (CP001): triển khai K0/K1 và K2a từng phần;bảng gate là scope nghiệm thu,chưa phải checklist đã pass.
 
 
 ### Mục tiêu, baseline và phạm vi
@@ -10,7 +10,7 @@ Yêu cầu chủ dự án 26/10/2026: dùng kiến thức RE VN `VBNB_116` để
 **chính `CA.exe` KR `00967`**. Đây là project độc lập `boom-kr-server`; không dùng scope, gate,
 registry hoặc tỷ lệ tiến độ V1 của bản viết lại `boom-rs` làm điều kiện của repo này.
 
-Revision kế hoạch **`KR-00967-EMU-1`**, trạng thái **đang triển khai K0/RE tĩnh, chưa có demo KR**.
+Revision kế hoạch **`KR-00967-EMU-1`**, trạng thái **đang triển khai harness/bootstrap Wine và RE codec từng phần;chưa có demo chơi KR**.
 Các mốc nguồn được phân biệt rõ:
 
 - **Tài liệu tham chiếu lịch sử:** `boom-rs@dae5e1c717ad31b9e8d32a9b20a76d65942807eb`.
@@ -35,7 +35,24 @@ client; chưa ghép `boom-core` vào đường trận. VN có P2P và client t�
 KR đã có consumer nổ/trap ở client nhưng chưa có bản đồ authority đầy đủ. Một server mới chạy được
 với client Rust không chứng minh có thể điều khiển client KR bằng snapshot/command của ADR 0009.
 
-### Bằng chứng quyết định đường đi
+### Tiến độ hiện hành theo bằng chứng
+
+| Task/mốc | Trạng thái tại CP001 | Nguồn chuẩn |
+|---|---|---|
+| KRE-004/issue6 | Đã review/merge PR7 và đóng issue:recipe r1 đến local accept;không phải full K1 | [Wine r1](evidence/wine/README.md) |
+| Bootstrap reply | PR8 đã merge;debugger ProcessPatchreturn1,không ép success | [bootstrap evidence](evidence/bootstrap-wire/README.md) |
+| KRE-005a/issue9,R2 | PR10 đã merge:3 cold start cửa sổ/second accept;issue9 còn mở | [R2 evidence](evidence/wine-r2/README.md) |
+| WCP hai-reply | Harness vẫn thí nghiệm riêng;review tổng hợp theo CP001 manifest;static+emulation+debug hẹp,chưa C→S | [PROTOCOL](PROTOCOL.md#wcp),[WCP evidence](evidence/wcp/README.md) |
+| K0/K1 | Chưa nghiệm thu toàn gate;Windows vanilla/control ownership và các điều kiện còn thiếu giữ mở | Gate dưới,[Q-022](RESEARCH.md) |
+| K2a/K2 | Primitive/WCP từng phần;full codec,multipleframes,reconnect,request kế chưa pass | [PROTOCOL](PROTOCOL.md),[Q-023](RESEARCH.md#q-023) |
+| K3–K7 | Chưa đạt login/sảnh/phòng/trận/multiplayer | Không có phần trăm ước lượng |
+
+Thứ tự tiếp: đồng bộ checkpoint → đo guard sau WCP tại [Q-023](RESEARCH.md#q-023) →
+codec/request kế để xét K2 → identity/login K3. Không dựng lobby trước contract cần thiết.
+Chu kỳ docs/audit theo [workflow](evidence/checkpoints/README.md);
+counter ở [manifest](evidence/checkpoints/manifest.json). Không tạo plan theo phiên.
+
+### Bằng chứng lịch sử khi lập plan (26/10)
 
 - Tài liệu KR cũ chưa chứng minh qua `ProcessPatch`. §31 của `boomkr-re/docs/kr.md` ghi một run CA
   còn sống (45 thread/~75 MB), snapshot `netstat` không có kết nối; dòng `EndOfInit! exitcode=1` là
@@ -134,11 +151,9 @@ hướng có bằng chứng. Bootstrap/codec đang unknown không được “gi
 tương thích. Design được dùng cho policy server mất nguồn sau khi client đã chấp nhận wire contract.
 
 Runtime dùng bản copy, chỉ network cục bộ; không sửa binary/pack/DB gốc. Linux giữ CI/build server.
-Theo chỉ đạo chủ dự án26/10, ưu tiên Wine cho bản copy unpack/patch: recipe đã vào ProcessPatch và
-connect listener loopback; xem [evidence Wine](evidence/wine/README.md). Probe tiếp đã xác nhận
-ProcessPatch return1, xem [bootstrap wire](evidence/bootstrap-wire/README.md). Recipe riêng
-[Wine R2](evidence/wine-r2/README.md) đã tới cửa sổ800×600 và kết nối thứ hai trong ba cold start;
-chưa trả lời socket hai/WCP, chưa nghiệm thu hello/login.
+Theo chỉ đạo26/10,ưu tiên Wine;recipe/merge ở bảng hiện hành.
+Các run socket hai silent giữ trong evidence từng recipe;probe WCP sau đó có phạm vi riêng tại
+[PROTOCOL](PROTOCOL.md#wcp). Không ghi kết quả mới thành plan khác.
 Windows VM cô lập giữ vai trò
 đối chứng nguyên bản; lỗi Wine không tự bác kết quả Windows. Không mở lại CI/đóng gói
 Windows/macOS của Rust. Patch offline theo KRE-D01, phạm vi triển khai vẫn theo từng task KRE.
@@ -194,7 +209,7 @@ trong local/ cho Codex tích hợp; reviewer phải khác tác giả claim/code.
 27/10 giữ nguyên như bằng chứng lịch sử, không gán thành review Claude.
 
 
-Trong lượt lập kế hoạch này, sau khi mở quyền và sửa alias cwd cũ, hai session đã research/review độc
+Trong lượt lập kế hoạch26/10 (lịch sử), sau khi mở quyền và sửa alias cwd cũ, hai session đã research/review độc
 lập. Findings vòng đầu đã được xử lý; **dsh1 và dsh2 APPROVE nội dung plan ở `5e9ebb64`** theo phạm vi
 bootstrap và protocol/authority. Bằng chứng review xem [hồ sơ](evidence/bootstrap/README.md).
 Đây là duyệt kế hoạch, không phải đã chạy KR hoặc nghiệm thu gate K0–K7; lỗi điều phối ban đầu không
