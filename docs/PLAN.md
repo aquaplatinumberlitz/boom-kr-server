@@ -1,7 +1,7 @@
 # Kế hoạch server giả lập KR 00967
 
 Nguồn chuẩn của project `boom-kr-server`; bản nhập từ plan đã được dsh1/dsh2 review tại `1eee46d`.
-Cập nhật27/10 (CP009): triển khai K0/K1 và K2a từng phần;bảng gate là scope nghiệm thu,chưa phải checklist đã pass.
+Cập nhật28/10 JST (CP011): triển khai K0/K1 và K2a từng phần;bảng gate là scope nghiệm thu,chưa phải checklist đã pass.
 
 
 ### Mục tiêu, baseline và phạm vi
@@ -37,33 +37,34 @@ với client Rust không chứng minh có thể điều khiển client KR bằng
 
 ### Tiến độ hiện hành theo bằng chứng
 
-| Task/mốc | Trạng thái tại CP009 | Nguồn chuẩn |
+| Task/mốc | Trạng thái tại CP011 | Nguồn chuẩn |
 |---|---|---|
 | KRE-004/issue6 | Đã review/merge PR7 và đóng issue:recipe r1 đến local accept;không phải full K1 | [Wine r1](evidence/wine/README.md) |
 | Bootstrap reply | PR8 đã merge;debugger ProcessPatchreturn1,không ép success | [bootstrap evidence](evidence/bootstrap-wire/README.md) |
 | KRE-005a/issue9,R2 | PR10 đã merge:3 cold start cửa sổ/second accept;issue9 còn mở | [R2 evidence](evidence/wine-r2/README.md) |
 | WCP hai-reply | Run CP001 là lịch sử chưa C→S; CP006 đã đo request đầu trên copy tham số hóa | [PROTOCOL](PROTOCOL.md#wcp),[WCP evidence](evidence/wcp/README.md) |
-| KRE-005b/issue14 | CP006–008 đã merge; CP009 vẽ màn phân loại tuổi, sau đó lỗi ghi bộ nhớ trên copy; review theo manifest | [Q-023](RESEARCH.md#q-023), [evidence](evidence/nmco-identity/README.md) |
+| KRE-005b/issue14 | CP006–009 đã merge; CP010–011 có UI login trên copy, input/request mới chưa được chứng minh; review theo manifest | [Q-023](RESEARCH.md#q-023), [evidence](evidence/login-ui/README.md) |
 | K0/K1 | Chưa nghiệm thu toàn gate;Windows vanilla/control ownership và các điều kiện còn thiếu giữ mở | Gate dưới,[Q-022](RESEARCH.md) |
 | K2a/K2 | Primitive/WCP từng phần;full codec,multipleframes,reconnect,request kế chưa pass | [PROTOCOL](PROTOCOL.md),[Q-023](RESEARCH.md#q-023) |
 | K3–K7 | Chưa đạt login/sảnh/phòng/trận/multiplayer | Không có phần trăm ước lượng |
 
-Thứ tự tiếp: truy con trỏ lỗi `45E920` và theo dõi identity/NMCO tại [Q-023](RESEARCH.md#q-023) →
+Thứ tự tiếp: theo message đã đo tại DispatchMessage để truy handler UI/hit-test, rồi đường packet15 tại [Q-023](RESEARCH.md#q-023) →
 codec/request kế để xét K2 → identity/login K3. Không dựng lobby trước contract cần thiết.
 Chu kỳ docs/audit theo [workflow](evidence/checkpoints/README.md);
 counter ở [manifest](evidence/checkpoints/manifest.json). Không tạo plan theo phiên.
 
-### Bản đồ đường chạy, CP009
+### Bản đồ đường chạy, CP011
 
 | Bước | Quan sát/bước tiếp |
 |---|---|
 | Bootstrap | ProcessPatch có response local trong Wine copy; K1 còn thiếu đối chứng/gate. |
 | WCP → request đầu | Consumer chấp nhận fixture; một run debug và một run plain có C→S66 byte; xem [contract](PROTOCOL.md#wcp). |
 | Dữ liệu khởi tạo | Tám response tổng hợp đã dẫn tới guard trả1 trên copy; chưa chứng minh tài nguyên thật hay K2. |
-| Login → sảnh | Chưa đạt; copy vẽ màn phân loại tuổi rồi gặp lỗi ghi bộ nhớ, xem [Q-023](RESEARCH.md#q-023). |
+| Login → sảnh | UI login đã vẽ; message input tới DispatchMessage, custom handler và auth chưa xác nhận; xem [Q-023](RESEARCH.md#q-023). |
 | Phòng → trận | Chưa có runtime hay contract đủ để triển khai. |
 
-RE động là chính; gom phép đo thành checkpoint mốc/blocker, audit định kỳ và review vẫn theo workflow.
+RE động là chính; gom phép đo thành checkpoint mốc/blocker, audit định kỳ theo workflow.
+Review độc lập được chủ dự án miễn từ28/10; Codex tự kiểm, giữ PR và điều kiện bằng chứng của gate.
 
 ### Bằng chứng lịch sử khi lập plan (26/10)
 
@@ -101,7 +102,7 @@ flowchart LR
 |---|---|---|
 | **K0: identity/harness** | Manifest source/copy/dump/DB: SHA, image base, RVA, section hoặc memory-layout, patch và config; DB dùng copy/private workspace, không ghi DB nguồn/shared. Windows VM là control bootstrap chính: copy đầy đủ lên ổ local fixed, cwd cạnh exe/DLL, kiểm manifest `requireAdministrator` và effective token; không dùng share/UNC làm đường chạy control. Mỗi run ghi PID/parent/start-time/image SHA/command line, window owner/class/title, CALog mới, log/capture cùng run ID. | Khớp artifact KR/VN; không ghi vào `clients/`; không nhầm CA/NewPatcher/CAWH hoặc log run cũ. Không suy thiếu DLL chỉ từ dialog (inject từng gây cùng lỗi giả). Có lệnh tái tạo và cleanup chỉ PID thuộc run. |
 | **K1: bootstrap** | Ba bước K1a ownership/control → K1b contract/caller → K1c stub/patch có đối chứng, theo định nghĩa dưới bảng. NewPatcher manifest là một giả thuyết để kiểm, không phải route đã chốt. | Ba cold start của cùng recipe đi xa hơn điểm chặn được định danh, tới **network attempt local/state chờ hello**, có event API/capture gắn đúng PID; CALog marker mới nếu có. Không dùng alive/không exit/không còn dòng ProcessPatch làm proof. Màn login thuộc K3; không đòi server trả hello trước K2. |
-| **K2a: bước con RE tĩnh** | Tìm primitive reader/writer, framer, checksum/crypto/seq và mode/hello từ **KR**, dùng mỏ neo167/184/183 hoặc socket call graph. Fixture hàm KR thật (emulation nếu đủ context), kiểm cursor/endian/bounds, chiều/socket và reset; lưu phần chưa mở được. | Có oracle độc lập cho phần codec probe K2 cần; không lấy encoder tự sinh golden làm proof. Không đòi registry toàn game trước hello; nếu primitive cần thiết chưa có oracle thì K2 chưa mở, chuyển checkpoint Codex/Claude. |
+| **K2a: bước con RE tĩnh** | Tìm primitive reader/writer, framer, checksum/crypto/seq và mode/hello từ **KR**, dùng mỏ neo167/184/183 hoặc socket call graph. Fixture hàm KR thật (emulation nếu đủ context), kiểm cursor/endian/bounds, chiều/socket và reset; lưu phần chưa mở được. | Có oracle độc lập cho phần codec probe K2 cần; không lấy encoder tự sinh golden làm proof. Không đòi registry toàn game trước hello; nếu primitive cần thiết chưa có oracle thì K2 chưa mở, ghi checkpoint Codex. |
 | **K2: codec/hello** | RE `send/recv` → buffer/frame → primitive reader/writer → checksum/crypto/seq → callback hello/version; lập profile KR riêng theo từng kết nối và chiều. Fixture dùng hàm KR thật hoặc quan sát KR; probe server chỉ có accept/hello/log. | Client nhận hello, gửi request kế tiếp; parse đủ byte, checksum/seq đúng qua nhiều frame và reconnect. Kiểm boundary length, chia/gộp TCP, đổi mode sau hello và reset state. Golden do encoder tự sinh chỉ là regression. |
 | **K3: login/kênh/sảnh** | State machine bootstrap-data → identity local → auth result → redirect/chọn kênh → lobby. RE consumer cache/version và gói tối thiểu theo thứ tự; cấp ID ổn định giữa socket login/channel, ghi encoding chuỗi. Patch/game/redirect socket có codec state riêng theo lifecycle KR đã đo. | Cold cache, cache thiếu và warm cache đều có kết quả rõ; UI identity/kênh đúng, keepalive không timeout. Kiểm gửi đúng byte nhưng sai socket/stage bị từ chối có log; không gửi blob trước stage/cache-path init hoặc tái dùng seq của socket trước. Sai version/identity lỗi rõ. |
 | **K4: phòng/load** | RE room list/create/join/slot/host/ready/start; map name/id/spawn/roster/seed/placement; loading barrier và điều kiện chuyển scene. Mỗi field có provenance và ghi vào `kr-emu-dev`; không trộn KR native với `emu_choice`/`design` hoặc áp V1 Rust implicit. Mỗi request có reply/broadcast theo stage. | Hai client thấy cùng phòng/slot/host; map đúng payload KR; spawn khác nhau trên ô hợp lệ; một người chưa load không làm người kia vào trận sai state. Kiểm host rời, join/leave và start lặp; reviewer kiểm source/design của các field cần để load. |
@@ -131,7 +132,7 @@ chưa phải traffic đã tới server thật, nhưng run đó không được d
   giả thuyết NewPatcher nếu không nằm trên route đã quan sát. Không đoán patch schema từ literal NFO.
 - **K1c — thử nghiệm:** điều phối chọn stub local đúng contract trước; nếu không đủ thì patch bản copy
   theo KRE-D01. Giữ control plain, chỉ đổi một yếu tố mỗi ca, rồi kiểm gate ba cold start. Khi cả hai
-  lượt không có cạnh/observable mới, dừng nhánh và giao Codex/Claude phụ phân tích theo checkpoint.
+  lượt không có cạnh/observable mới, dừng nhánh và Codex ghi checkpoint để đổi phép đo.
 
 **Quyết định vận hành DESIGN KRE-D01 (26/10/2026):** theo quyền offline-preservation và chỉ đạo toàn
 quyền mới của chủ dự án, Codex được chọn stub launcher/patch service, loại bỏ/đổi tên thành phần AC
@@ -201,24 +202,23 @@ transfer, không giữ hai bảng việc. Mỗi task có baseline, owner/reviewe
 
 | Task | Câu hỏi / đầu ra | Dependency | Owner đề xuất / reviewer |
 |---|---|---|---|
-| KRE-001 | Khóa target/copy/dump/DB, chạy control và manifest | — | Codex / Claude reviewer độc lập |
-| KRE-002 | CA ProcessPatch: response/caller/guard; bootstrap local và điểm chặn sau đó; NewPatcher là nhánh tham chiếu | KRE-001 | Codex RE/code/runtime / Claude reviewer độc lập |
-| KRE-003 | KR socket→framer→reader/writer; constants và fixture độc lập | KRE-001; gate runtime cần KRE-002 | Codex RE / Claude reviewer độc lập |
-| KRE-004 | Wine unpack/patch copy + harness, issue6/PR7 đã xong trong scope tới local accept; chưa nghiệm thu toàn K1 | KRE-001/002 | Codex / Claude reviewer độc lập |
-| KRE-005 | Probe server hello, version/mode/seq, qua K2 | KRE-003/004 | Codex / Claude reviewer độc lập |
-| KRE-006 | Login/channel/cache→lobby và K3 | KRE-005 | Codex RE/code / Claude reviewer độc lập |
-| KRE-007 | Room/roster/map/spawn/loading và K4 | KRE-006 | Codex RE/code / Claude reviewer độc lập |
-| KRE-008 | Bomb/item/trap/result, authority map và K5 | KRE-007 | Codex RE/code / Claude reviewer độc lập |
-| KRE-009 | UDP/peer hoặc relay, đồng bộ hai client và K6 | KRE-008; có thể RE static từ KRE-003 | Codex RE/code / Claude reviewer độc lập |
-| KRE-010 | Race/disconnect, bốn client, Linux packaging và K7 | KRE-009 | Codex / Claude reviewer độc lập |
+| KRE-001 | Khóa target/copy/dump/DB, chạy control và manifest | — | Codex / tự kiểm (review miễn28/10) |
+| KRE-002 | CA ProcessPatch: response/caller/guard; bootstrap local và điểm chặn sau đó; NewPatcher là nhánh tham chiếu | KRE-001 | Codex RE/code/runtime / tự kiểm (review miễn28/10) |
+| KRE-003 | KR socket→framer→reader/writer; constants và fixture độc lập | KRE-001; gate runtime cần KRE-002 | Codex RE / tự kiểm (review miễn28/10) |
+| KRE-004 | Wine unpack/patch copy + harness, issue6/PR7 đã xong trong scope tới local accept; chưa nghiệm thu toàn K1 | KRE-001/002 | Codex / tự kiểm (review miễn28/10) |
+| KRE-005 | Probe server hello, version/mode/seq, qua K2 | KRE-003/004 | Codex / tự kiểm (review miễn28/10) |
+| KRE-006 | Login/channel/cache→lobby và K3 | KRE-005 | Codex RE/code / tự kiểm (review miễn28/10) |
+| KRE-007 | Room/roster/map/spawn/loading và K4 | KRE-006 | Codex RE/code / tự kiểm (review miễn28/10) |
+| KRE-008 | Bomb/item/trap/result, authority map và K5 | KRE-007 | Codex RE/code / tự kiểm (review miễn28/10) |
+| KRE-009 | UDP/peer hoặc relay, đồng bộ hai client và K6 | KRE-008; có thể RE static từ KRE-003 | Codex RE/code / tự kiểm (review miễn28/10) |
+| KRE-010 | Race/disconnect, bốn client, Linux packaging và K7 | KRE-009 | Codex / tự kiểm (review miễn28/10) |
 
-Không gửi thêm task dsh1/dsh2 đã hết token.
-Theo chỉ đạo mới nhất27/10, Codex làm RE chính cùng điều phối/code/runtime; Claude Sonnet5.5 chỉ
-review độc lập. Khi gọi dùng model claude-sonnet-5-5, cwd repo này, baseline/target/hash/output/acceptance rõ;
-reviewer không tự sửa tracked hoặc chạy client/VM khi được giao review.
-Ca khó báo checkpoint sớm (SHA/VA/RVA/evidence, cạnh đã thử, blocker và phép đo tiếp), Codex vào phụ.
-Một owner mỗi target/runtime và DB riêng; không để hai worker cùng ghi file/DB. Raw được giữ trong local/; reviewer phải khác tác giả claim/code. Report/approval dsh trước
-27/10 giữ nguyên như bằng chứng lịch sử, không gán thành review Claude.
+Từ chỉ đạo28/10, Codex solo RE/code/runtime và tự kiểm; không gọi dsh/Claude nữa.
+Review độc lập được chủ dự án miễn theo [nguồn](evidence/checkpoints/review-waiver.json).
+Các tiêu chí evidence/verification/gate và PR vẫn giữ; yêu cầu reviewer trong plan trước đây
+được thay bằng tự kiểm theo AGENTS, không tự coi gate đã pass. Report/approval cũ giữ provenance.
+Một owner mỗi target/runtime, DB riêng; raw giữ local và checkpoint theo mốc/blocker.
+
 
 
 Trong lượt lập kế hoạch26/10 (lịch sử), sau khi mở quyền và sửa alias cwd cũ, hai session đã research/review độc

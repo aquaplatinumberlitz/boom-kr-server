@@ -150,7 +150,7 @@ def validate(manifest, root=ROOT, require_local=False):
             warnings.append(f"{where}: INCOMPLETE; not a completed checkpoint")
         else:
             errors.append(f"{where}: invalid lifecycle")
-        if record.get("owner") == record.get("reviewer"):
+        if record.get("owner") == record.get("reviewer") and record.get("review", {}).get("status") != "waived":
             errors.append(f"{where}: reviewer must differ from owner")
         if not isinstance(record.get("context_commit"), str) or not COMMIT.fullmatch(record["context_commit"]):
             errors.append(f"{where}: invalid context commit")
@@ -197,9 +197,18 @@ def validate(manifest, root=ROOT, require_local=False):
         require_fields(delta, ("added", "corrected", "superseded"), where + ".delta", errors)
         review = record.get("review", {})
         require_fields(review, ("status", "as_of_utc", "reference", "scope"), where + ".review", errors)
-        if review.get("status") not in {"pending", "approved", "changes_requested"}:
+        if review.get("status") not in {"pending", "approved", "changes_requested", "waived"}:
             errors.append(f"{where}: invalid review status")
-        if review.get("status") != "approved":
+        if review.get("status") == "waived":
+            authorization = review.get("authorization", {})
+            if require_fields(authorization, ("by", "reference", "reason"), where + ".review.authorization", errors):
+                if authorization.get("by") != "project_owner":
+                    errors.append(f"{where}: review waiver requires declared project_owner authorization")
+                if not isinstance(authorization.get("reason"), str) or not authorization["reason"].strip():
+                    errors.append(f"{where}: review waiver requires a reason")
+                file_link(authorization.get("reference"), where + ".review.authorization")
+            warnings.append(f"{where}: REVIEW WAIVED; independent approval waived; see {review.get('reference')}")
+        elif review.get("status") != "approved":
             warnings.append(f"{where}: REVIEW {review.get('status')}; see {review.get('reference')}")
         elif not COMMIT.fullmatch(str(review.get("head", ""))):
             errors.append(f"{where}: approved review requires exact head")
@@ -306,6 +315,8 @@ def continuity(previous, current):
                 errors.append(f"{old.get('id')}: completed record changed; append a correction checkpoint")
             if old.get("review", {}).get("status") == "approved" and old.get("review") != new.get("review"):
                 errors.append(f"{old.get('id')}: approved review is immutable; append a correction checkpoint")
+            if old.get("review", {}).get("status") == "waived" and old.get("review") != new.get("review"):
+                errors.append(f"{old.get('id')}: waived review is immutable; append a correction checkpoint")
     old_audits, new_audits = previous.get("audits", []), current.get("audits", [])
     if old_audits != new_audits[:len(old_audits)]:
         errors.append("manual audit history deleted or changed")

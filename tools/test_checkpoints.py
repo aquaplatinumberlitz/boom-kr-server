@@ -86,6 +86,30 @@ class CheckpointsTest(unittest.TestCase):
         self.manifest["completed_count"] = 99
         self.assertTrue(any("completed_count" in e for e in self.errors()))
 
+    def test_owner_waiver_is_explicit_and_not_approval(self):
+        self.record["reviewer"] = self.record["owner"]
+        self.record["review"].update(status="waived", authorization={
+            "by": "project_owner", "reference": "docs/evidence/README.md", "reason": "Explicit owner instruction",
+        })
+        errors, warnings, _ = checker.validate(self.manifest, self.root, True)
+        self.assertEqual(errors, [])
+        self.assertTrue(any("REVIEW WAIVED" in w for w in warnings))
+        self.assertNotEqual(self.record["review"]["status"], "approved")
+        previous = copy.deepcopy(self.manifest)
+        self.record["review"]["status"] = "approved"
+        self.assertTrue(any("waived review is immutable" in e for e in checker.continuity(previous, self.manifest)))
+
+    def test_waiver_without_authorization_or_existing_reference_rejected(self):
+        self.record["review"].update(status="waived")
+        self.assertTrue(any("review.authorization" in e for e in self.errors()))
+        self.record["review"]["authorization"] = {
+            "by": "author", "reference": "docs/missing.md", "reason": "",
+        }
+        errors = self.errors()
+        self.assertTrue(any("project_owner authorization" in e for e in errors))
+        self.assertTrue(any("waiver requires a reason" in e for e in errors))
+        self.assertTrue(any("missing linked file" in e for e in errors))
+
     def test_complete_cannot_have_unsynced_or_missing_doc(self):
         self.record["docs_sync"][0]["state"] = "blocked"
         self.record["docs_sync"][1]["path"] = "docs/missing.md"

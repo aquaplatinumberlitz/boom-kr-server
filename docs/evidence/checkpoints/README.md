@@ -35,6 +35,12 @@ Correction khoa học là checkpoint tiếp,chỉ rõ claim cũ bị sửa;khôn
 Review/integration là snapshot có ngày;PR là nguồn trạng thái tích hợp hiện tại,checkpoint sau ghi
 merge khi có. Không tự gán commit của chính file đang viết hoặc tự approve.
 
+Từ chỉ đạo chủ dự án28/10, review độc lập được miễn theo [nguồn](review-waiver.json). Mốc mới hoặc
+review pending được đổi thành `waived`, có `authorization.by=project_owner`, reference tới file nguồn
+và reason rõ ràng. Codex tự kiểm, không đổi waiver thành `approved`; approval lịch sử vẫn bất biến.
+Waiver đã commit cũng bất biến; thay chính sách về sau ghi correction checkpoint. Checker chỉ kiểm
+khai báo/nguồn tồn tại, không tự xác thực tác giả hoặc cấp quyền miễn review. PR và kiểm tra vẫn giữ.
+
 Task_states là snapshot khai báo rõ các task liên quan,link PLAN/issue. Next-step cùng ID có thể
 đóng/supersede ở checkpoint sau,không viết lại lịch sử. Task closed không được có next-step active
 ở trạng thái cuối. Không tự đóng task/gate từ checker.
@@ -64,6 +70,7 @@ Không đọc GitHub để tự đoán task;người ghi cập nhật snapshot c
 Clone thiếu local/artifact: không flag báo UNVERIFIED+số thiếu,không tuyên bố hash đã kiểm.
 --require-local biến thiếu raw thành lỗi. Thiếu Git, chưa có manifest commit hoặc shallow history báo counter rollback UNVERIFIED;
 --require-history biến thành lỗi. Pending review hiện WARNING dù exit0.
+Waived review cũng hiện WARNING rõ là chưa review độc lập, không phải kiểm tra bị treo.
 Complete có blocked docs,lệchhash hoặc audit tới hạn đều exit1.
 
 Checker không đọc hiểu disassembly,suy diễn kiến thức,xác nhận ngữ nghĩa,đo runtime hoặc đóng gate.

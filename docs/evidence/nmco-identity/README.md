@@ -7,6 +7,8 @@ khẳng định client nguyên bản, identity hợp lệ, login, sảnh, gamepl
 [CP006](../wcp-sequence/README.md) đã được review và merge PR16; fixture WCP 15 byte và tám
 response tổng hợp 317 byte được giữ nguyên từ CP006. Raw packet/log chỉ lưu local.
 
+Đây là lịch sử CP007–009; kết quả mới và blocker hiện hành tại [CP010](../object-state/README.md).
+
 ## Phép thử nhóm
 
 - `debug`: patch call `13CA139`, giả lập `EDX:EAX=0:1`; debugger tại `13CA13F` thấy cặp này,

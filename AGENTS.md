@@ -32,8 +32,9 @@ và trạng thái (`confirmed`, `candidate`, `unknown`, `design`), hash/build, V
 VN confirmed dùng cho luật chung; opcode/key/layout/ID theo build phải kiểm KR. Không dùng golden tự
 sinh làm oracle, không dùng log emulator chứng minh client thực thi hoặc luật server gốc.
 
-Chưa biết thì ghi unknown và bước kiểm; không bịa wire/default. Gate K0–K7 qua được khi có evidence,
-verification và reviewer độc lập. Duyệt plan không phải hoàn thành implementation/runtime.
+Chưa biết thì ghi unknown và bước kiểm; không bịa wire/default. Gate K0–K7 vẫn cần evidence và
+verification; từ28/10 chủ dự án miễn review độc lập, Codex tự kiểm. Miễn review không tự đóng gate.
+Duyệt plan không phải hoàn thành implementation/runtime.
 
 ## Checkpoint và tài liệu RE bắt buộc
 
@@ -54,16 +55,17 @@ ghi audit/counter bền vững. Mâu thuẫn nghiêm trọng audit ngay,không r
 ## Làm việc nhóm
 
 Task là issue trong chính repo này, có KRE ID, baseline, owner/reviewer, dependency, file và acceptance.
-Một owner mỗi file/target/runtime. Theo chỉ đạo mới nhất27/10, Codex trực tiếp làm RE chính, điều phối/code/runtime; **Claude Sonnet5.5**
-chỉ review độc lập. Không giao thêm việc cho dsh1/dsh2 đã hết token. Khi gọi reviewer, chọn đúng
-model claude-sonnet-5-5 và chỉ rõ task/cwd/owner/output.
-Review phải độc lập với tác giả; các report dsh cũ vẫn giữ provenance lịch sử. Ca khó checkpoint sớm
-để Codex vào phụ, không tự quét vô hạn.
+Một owner mỗi file/target/runtime. Theo chỉ đạo mới nhất28/10, Codex solo RE/code/runtime và tự kiểm;
+Claude đã hết token, không gọi worker/reviewer nữa. Chủ dự án nói “claude hết token rồi nên mày tự solo đi ko cần review”;
+nguồn quyết định ở [review waiver](docs/evidence/checkpoints/review-waiver.json).
+Review/report cũ giữ nguyên provenance. Mốc mới ghi review `waived` kèm nguồn chủ dự án, không ghi
+`approved` hoặc giả người review. Các vấn đề chất lượng đã phát hiện vẫn cần sửa và ghi chép.
+Ca khó checkpoint theo mốc/blocker, không tự quét vô hạn.
 Lượt RE mặc định tối đa8 request/4 thân hàm mới, hai lượt; mở tiếp khi có cạnh/thí nghiệm mới rõ.
 
 Code trên nhánh/worktree riêng của repo này; giữ thay đổi người khác,  không reset/clean hoặc stage toàn
-repo. Commit task của mình và kiểm diff. Sau commit khởi tạo repo, tích hợp main qua PR, kiểm tra phù
-hợp và reviewer khác tác giả approve đúng head; không tự merge code chưa review.
+repo. Commit task của mình và kiểm diff. Tích hợp main qua PR sau kiểm tra phù hợp; theo miễn review
+28/10, Codex được tự merge trong phạm vi đã cấp quyền. Không gọi việc này là review độc lập.
 Không push binary/decompile/credential. Không đổi cấu hình cá nhân/IDA/MCP trong repo.
 
 ## Kiểm và bàn giao

@@ -22,18 +22,16 @@ boom-kr-server/
 
 ## Đang làm
 
-Recipe Wine R2 đã review/merge, qua ProcessPatch và đạt cửa sổ800×600 + kết nối local thứ hai.
-Probe trước CP006 được debugger xác nhận nhận phản hồi WCP; run đó zero C→S và cuối run báo
-MW_SEP(10)/Login Failed. **Chưa có login hoạt động hoặc gameplay.**
-Probe hai-reply vẫn là thí nghiệm riêng; review tài liệu theo [CP001](docs/evidence/checkpoints/manifest.json), tách khỏi R2 đã merge.
-Phạm vi từng recipe/bằng chứng ở [WCP](docs/evidence/wcp/README.md);
-CP004–CP005 ghi error state 1/1958 từ dump trên bản R2 và nhánh launcher trong run bản
-copy thử; [trạng thái review](docs/evidence/checkpoints/manifest.json). Điểm chặn và phép kiểm kế ở [Q-023](docs/RESEARCH.md#q-023).
+CP006–009 đã review/merge: bản copy Wine gửi request đầu và nhận chuỗi response thử.
+CP010–011 trên PR19 (chưa merge tại checkpoint) đưa copy tới UI đăng nhập đầy đủ;
+input qua xdotool chưa làm ô nhập đổi hoặc tạo request mới. Áp dụng cách GDB từ VN đã
+đo được message chuột/phím tại DispatchMessage của KR, thu hẹp điểm chặn về handler UI.
+**Chưa có đăng nhập thành công hoặc gameplay.**
 
-CP006 đã review và merge qua PR16: client copy gửi request đầu và nhận chuỗi response thử.
-CP007–CP008 đã review/merge; CP009 thử tiếp message loop và vẽ màn phân loại tuổi trên copy.
-Run mới gặp lỗi ghi bộ nhớ `45E920`; audio assertion trước đó chỉ áp cho các run debug đã đo.
-Giá trị và patch chỉ là chẩn đoán; chi tiết và review ở [evidence](docs/evidence/nmco-identity/README.md).
+Recipe, giới hạn và trạng thái review tại [evidence UI](docs/evidence/login-ui/README.md);
+phần đã áp dụng từ VN tại [VN→KR](docs/evidence/vn-reuse/README.md).
+Các run cũ giữ như lịch sử trong evidence; bước tiếp duy nhất ở [Q-023](docs/RESEARCH.md#q-023).
+Từ28/10, chủ dự án miễn review độc lập; Codex tự kiểm, giữ PR và các gate bằng chứng.
 
 Checkpoint bền vững: [manifest](docs/evidence/checkpoints/manifest.json).
 Quy trình ghi chép/review/audit: [checkpoint workflow](docs/evidence/checkpoints/README.md).

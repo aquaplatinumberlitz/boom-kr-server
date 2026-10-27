@@ -1,7 +1,7 @@
 {
   "schema": "kre-checkpoints-v1",
-  "last_id": "CP009",
-  "completed_count": 9,
+  "last_id": "CP011",
+  "completed_count": 11,
   "audit_interval": 4,
   "last_periodic_audit": 8,
   "next_periodic_audit": "CP012",
@@ -3284,10 +3284,11 @@
         }
       ],
       "review": {
-        "status": "pending",
-        "as_of_utc": "2026-10-27T08:04:23.062999+00:00",
-        "reference": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/14",
-        "scope": "Independent review CP009 runs, patches and screenshot required"
+        "status": "approved",
+        "as_of_utc": "2026-10-27T08:08:40Z",
+        "reference": "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/18#issuecomment-6436837691",
+        "scope": "Independent review CP009, PR18 merged7ec7f6674ba3aef8048370133ce19e36f5587176.",
+        "head": "ffdca5b7a812c7f19c32fde3e117dceb7e1c0149"
       },
       "docs_sync": [
         {
@@ -3314,6 +3315,1720 @@
           "path": "docs/evidence/nmco-identity/README.md",
           "state": "updated",
           "reason": "Run and diagnostic patch limits."
+        }
+      ]
+    },
+    {
+      "id": "CP010",
+      "previous": "CP009",
+      "lifecycle": "complete",
+      "recorded_utc": "2026-10-27T08:45:38.702326+00:00",
+      "question": "Where does the dump-derived object fault come from, what exception precedes cleanup on later copies, and which runtime edge blocks the copy next?",
+      "scope": "Grouped isolated Wine probes and targeted static interpretation under issue14; private copies and synthetic data; no gate/login promotion.",
+      "context_commit": "7ec7f6674ba3aef8048370133ce19e36f5587176",
+      "artifacts": [
+        {
+          "name": "KR modO unpack image",
+          "sha256": "a08950c833d3acab8281049def7b3dc96b221f107eeda01da3a548e34b91dce5"
+        },
+        {
+          "name": "tree-guard-patch",
+          "sha256": "222a8b2517b3c607959244a6093689a7adc458b746bf103ee641b4289eb6b899"
+        },
+        {
+          "name": "deletecs-patch",
+          "sha256": "d19cf5bc0a1f2b65c7e33d2ae320910a7fde59653d0ed3dfbf4557740ec02846"
+        },
+        {
+          "name": "sysparams-patch",
+          "sha256": "5374733fe343ad34d8bd3f8b4b8e91cbd3fd8ea7b953e27a0fc55d667cee470f"
+        },
+        {
+          "name": "inputhook-patch",
+          "sha256": "d4e1eeccfb1065268854ae2524d208fbfe7df0869ab613f641bbdeacf1d0d998"
+        },
+        {
+          "name": "inputhooks-entry-patch",
+          "sha256": "ccb1779f953ccefb6ca89afc79706fe3dd561c5f41473482158997f4322ee0fb"
+        },
+        {
+          "name": "globallock-patch",
+          "sha256": "376a9879fdd65b496d8f2e934b8e240786c4bf9d7790bd7d6656b67dedfa9e23"
+        },
+        {
+          "name": "globalunlock-patch",
+          "sha256": "4117b75a77ce322dc9f7033ec97173a3d56f2a9b4ac3410cc65a18b1e57621f7"
+        },
+        {
+          "name": "clipboard-patch",
+          "sha256": "2a3cf73322f78b181ff2ad91a82db15d7ec2be34f650e4473dc2b1ce31774d0c"
+        },
+        {
+          "name": "key-state-patch",
+          "sha256": "a209f44202bde732c4d36ecab3ad763c5d0955b86b5c750dd038c4d5b1c1d791"
+        },
+        {
+          "name": "stack-probe-patch",
+          "sha256": "cd30a3f306459db4217d2cc9bb9ca06e3d369638e537a255ebab783d1219ef2b"
+        },
+        {
+          "name": "stack-probe-throw-patch",
+          "sha256": "42e2bdb5cb489ea19d3df0b2667c7ac142e85a74fb0ef40cfc3927cc2828acaa"
+        }
+      ],
+      "locators": [
+        "VA19D8CFC pointer/19D8D0C guard; VA574480/5739A0; old fault45E920; RVA=VA-400000",
+        "Trap2262448/slot16EA2A4 return14F1280; trap226459C/slot16EA69C return1258D1D",
+        "Prethrow1525FEB return1104B86, throwinfo181F760; literal178870C/1788718; calls10FC3F4 and10FAE11",
+        "Slot16EA328/32C, replacement16EA5FC; slot16EA6A0 candidate; last trap22638CC/slot16EA4E8",
+        "runs tree-guard/tree-probe/deletecs/deletecs-probe/sysparams/dwk-big/throw-probe/no-inputhook/nohook-throw/no-inputhooks/globalhandles/clipboard/key-state 2026-10-27"
+      ],
+      "owner": "Codex",
+      "reviewer": "Claude Sonnet 5.5 independent reviewer",
+      "findings": [
+        {
+          "summary": "Resetting the guard on a copy reaches later traps; native snapshot shows the old tree pointer replaced and initialization epoch changed",
+          "source": "kr_runtime",
+          "status": "confirmed",
+          "method": "runtime",
+          "limits": "Separate prefixes/timing and modified copy; proves observed reinitialization, not full heap validity or exclusive cause of previous fault.",
+          "canonical": "docs/evidence/object-state/README.md",
+          "evidence": [
+            "E050",
+            "E040",
+            "E041",
+            "E073",
+            "E074"
+          ]
+        },
+        {
+          "summary": "Direct file recorder captures trap callers and a pre-throw CAppException from return1104B86 with error globals0/0",
+          "source": "kr_runtime",
+          "status": "confirmed",
+          "method": "runtime",
+          "limits": "Instrumentation changes timing and file output retains last invocation; bounded stack snapshot, no complete unwind. Earlier debugger attach probes failed at a separate thread.",
+          "canonical": "docs/evidence/object-state/README.md",
+          "evidence": [
+            "E040",
+            "E042",
+            "E045",
+            "E046",
+            "E047",
+            "E062"
+          ]
+        },
+        {
+          "summary": "The recovered throw site checks GetModuleHandleA(CAWH.sys) then constructs Cannot find hooking dll; same throw reached by a second caller after a single-call omission",
+          "source": "kr_static",
+          "status": "confirmed",
+          "method": "static",
+          "limits": "Static branch interpreted against runtime return and stack; does not establish cause of every older fault or original-client behavior.",
+          "canonical": "docs/evidence/object-state/README.md",
+          "evidence": [
+            "E075",
+            "E076",
+            "E047",
+            "E049"
+          ]
+        },
+        {
+          "summary": "Omitting the hook-install entry and trying targeted API bindings reaches EndOfInit exitcode0 log plus packet15 builder log, then overlay ordinal9 trap",
+          "source": "kr_runtime",
+          "status": "confirmed",
+          "method": "runtime",
+          "limits": "No new C2S beyond66 captured; builder log and marker are not login proof. Original API names remain candidates; input hook behavior and all unexercised slot users unknown.",
+          "canonical": "docs/PROTOCOL.md#wcp",
+          "evidence": [
+            "E054",
+            "E057",
+            "E058",
+            "E093",
+            "E094",
+            "E038",
+            "E037"
+          ]
+        },
+        {
+          "summary": "Copy-only omission of Windows input hooks, substitute API bindings and snapshot recorder are diagnostic emulator choices",
+          "source": "emu_choice",
+          "status": "design",
+          "method": "design",
+          "limits": "No vanilla equivalence; keep NMCO, oneclickuser, protocol and gameplay questions open.",
+          "canonical": "docs/RESEARCH.md#q-023",
+          "evidence": [
+            "E053",
+            "E054",
+            "E057"
+          ]
+        }
+      ],
+      "verification": [
+        {
+          "check": "370 bounded assertions over patch bytes/imports, copy/source hashes, snapshot fields, namespace isolation and66-byte captured requests",
+          "result": "pass",
+          "evidence": [
+            "E078",
+            "E079",
+            "E080",
+            "E081"
+          ],
+          "limits": "Byte-diff checks dominate count; not semantic progress. Native recorder semantics require independent review. CALog from overlapping two runs excluded."
+        }
+      ],
+      "evidence": [
+        {
+          "id": "E001",
+          "kind": "local",
+          "path": "local/research/codex/object-state-r1/tree-guard/run.json",
+          "bytes": 4305,
+          "sha256": "62c22183a0f5d38ed7c8f114fef019992e9ba4b59b36865465a634243d17862c"
+        },
+        {
+          "id": "E002",
+          "kind": "local",
+          "path": "local/research/codex/object-state-r1/tree-guard/client.log",
+          "bytes": 482972,
+          "sha256": "98790c7f32802fc8527f1b2aaa9cc9a421eecd5aef6fdd819c460eedc6fc7b9f"
+        },
+        {
+          "id": "E003",
+          "kind": "local",
+          "path": "local/research/codex/object-state-r1/tree-guard-recipe.json",
+          "bytes": 771,
+          "sha256": "fae836f2bf5cdc5282bdd59b048297c6f059f8143117a0076516c6340506db85"
+        },
+        {
+          "id": "E004",
+          "kind": "local",
+          "path": "local/research/codex/object-state-r1/tree-probe/run.json",
+          "bytes": 4083,
+          "sha256": "6fdafcb918c964214432068102a63f0904e84eba1e281a904784dd26c1043450"
+        },
+        {
+          "id": "E005",
+          "kind": "local",
+          "path": "local/research/codex/object-state-r1/tree-probe/client.log",
+          "bytes": 482045,
+          "sha256": "f701b7003db5f95a74d752875afe475fb2724aadcf28b9169ab5eea2c37b10a6"
+        },
+        {
+          "id": "E006",
+          "kind": "local",
+          "path": "local/research/codex/object-state-r1/tree-probe-recipe.json",
+          "bytes": 773,
+          "sha256": "07500a036c5796a0945eb7330f4e141db8f9ffbd000c6470d0708fcd9de5ecb3"
+        },
+        {
+          "id": "E007",
+          "kind": "local",
+          "path": "local/research/codex/object-state-r1/deletecs/run.json",
+          "bytes": 4151,
+          "sha256": "58e9578b3bd96e226f5dab3ca8a1be84ec1a60dac4bed86b1e771d28e670ea3f"
+        },
+        {
+          "id": "E008",
+          "kind": "local",
+          "path": "local/research/codex/object-state-r1/deletecs/client.log",
+          "bytes": 481377,
+          "sha256": "45410455810cbe0c91772808c92f425ecb2c68ba4f4410c4d516ec8f4a382b0e"
+        },
+        {
+          "id": "E009",
+          "kind": "local",
+          "path": "local/research/codex/object-state-r1/deletecs-recipe.json",
+          "bytes": 770,
+          "sha256": "0a9fb745fa71193e0868b37e9633ca605a3c5cb05fca8241f2d2f75758f8020c"
+        },
+        {
+          "id": "E010",
+          "kind": "local",
+          "path": "local/research/codex/object-state-r1/deletecs-probe/run.json",
+          "bytes": 4010,
+          "sha256": "0262c59f2779d951b667295578558aa85058b7a5dd18b8b09dcf9140694d3956"
+        },
+        {
+          "id": "E011",
+          "kind": "local",
+          "path": "local/research/codex/object-state-r1/deletecs-probe/client.log",
+          "bytes": 482304,
+          "sha256": "6aa364801371991f77ff700189cd5d78371a5f771fb87fc18d9fdf6d4766c511"
+        },
+        {
+          "id": "E012",
+          "kind": "local",
+          "path": "local/research/codex/object-state-r1/deletecs-probe-recipe.json",
+          "bytes": 784,
+          "sha256": "2a3c68225de973d949a8ac9e0b76fcea95afea9ea72bd6dcb4a722b94fef5d7a"
+        },
+        {
+          "id": "E013",
+          "kind": "local",
+          "path": "local/research/codex/object-state-r1/sysparams/run.json",
+          "bytes": 4309,
+          "sha256": "3d070e6fd5c3f34a4900baf58fd3fb88d39a9111f50567e149f705cc22f77672"
+        },
+        {
+          "id": "E014",
+          "kind": "local",
+          "path": "local/research/codex/object-state-r1/sysparams/client.log",
+          "bytes": 479392,
+          "sha256": "4625471702bea6180d62bb37e5a8b35b7e19c8fc8f9b7b0437bfab4595d03bc4"
+        },
+        {
+          "id": "E015",
+          "kind": "local",
+          "path": "local/research/codex/object-state-r1/sysparams-recipe.json",
+          "bytes": 773,
+          "sha256": "37fd750f001a76cf9165c70da49c0208e472e1c7b7d12fc77c31ef0adff5f811"
+        },
+        {
+          "id": "E016",
+          "kind": "local",
+          "path": "local/research/codex/object-state-r1/dwk-big/run.json",
+          "bytes": 4080,
+          "sha256": "f931f78586dc46eeddaa7e2267c24c53d340531a7a7b9178a3650172ff703680"
+        },
+        {
+          "id": "E017",
+          "kind": "local",
+          "path": "local/research/codex/object-state-r1/dwk-big/client.log",
+          "bytes": 479801,
+          "sha256": "e04928f44743c0e75a17b6d570abcf94f13e01d5b9d14913f59b9053eb47ff7e"
+        },
+        {
+          "id": "E018",
+          "kind": "local",
+          "path": "local/research/codex/object-state-r1/dwk-big-recipe.json",
+          "bytes": 764,
+          "sha256": "e7a01efd912bf5483302bac92dbefdc0616934235e96ebd7ab1c6750d3899bbc"
+        },
+        {
+          "id": "E019",
+          "kind": "local",
+          "path": "local/research/codex/object-state-r1/throw-probe/run.json",
+          "bytes": 4084,
+          "sha256": "ee6decc33c734fa486bb417f0d890732b5b57779b178d5a3c7be5c75ae51cfa8"
+        },
+        {
+          "id": "E020",
+          "kind": "local",
+          "path": "local/research/codex/object-state-r1/throw-probe/client.log",
+          "bytes": 479557,
+          "sha256": "bb388d52dd80d628b1c4059981ebe94a2b2bc75db9e1196981f4b080137c1c22"
+        },
+        {
+          "id": "E021",
+          "kind": "local",
+          "path": "local/research/codex/object-state-r1/throw-probe-recipe.json",
+          "bytes": 776,
+          "sha256": "581f44f32e068a30e16fbda60cb5124766cd07938660e1512a8bc495f78b2d7e"
+        },
+        {
+          "id": "E022",
+          "kind": "local",
+          "path": "local/research/codex/object-state-r1/no-inputhook/run.json",
+          "bytes": 4307,
+          "sha256": "b05ee0f8b73af72d8130f3605dfc5968103d0ff86cbfd22a0c82532534eff7c0"
+        },
+        {
+          "id": "E023",
+          "kind": "local",
+          "path": "local/research/codex/object-state-r1/no-inputhook/client.log",
+          "bytes": 479339,
+          "sha256": "919f380598c01f6568ce5528168e5837fbf084ab9ff75b3d828ec917179ea9b7"
+        },
+        {
+          "id": "E024",
+          "kind": "local",
+          "path": "local/research/codex/object-state-r1/no-inputhook-recipe.json",
+          "bytes": 777,
+          "sha256": "3e26043c34f1e581f5f634d8d469a4c16da3b2db8dc53ab7aa21cfc798f85b5c"
+        },
+        {
+          "id": "E025",
+          "kind": "local",
+          "path": "local/research/codex/object-state-r1/nohook-throw/run.json",
+          "bytes": 4085,
+          "sha256": "03bbe5892d024dc572614ed670b4dec6d9715c3569845a8cd5a5f640c8590f19"
+        },
+        {
+          "id": "E026",
+          "kind": "local",
+          "path": "local/research/codex/object-state-r1/nohook-throw/client.log",
+          "bytes": 478727,
+          "sha256": "876b41ad780974fcfb2711d2e00c7ecf6d07dab0b7fd0fec129f607d72cbaede"
+        },
+        {
+          "id": "E027",
+          "kind": "local",
+          "path": "local/research/codex/object-state-r1/nohook-throw-recipe.json",
+          "bytes": 779,
+          "sha256": "52bdd677177df64bd7e100f333c104f55c704a8174fb81b4d245ce2c2ea31160"
+        },
+        {
+          "id": "E028",
+          "kind": "local",
+          "path": "local/research/codex/object-state-r1/no-inputhooks/run.json",
+          "bytes": 4308,
+          "sha256": "58d584b014a4205c5c199cb8074b0336446c0cca931fc6a20449dbf0576ed18b"
+        },
+        {
+          "id": "E029",
+          "kind": "local",
+          "path": "local/research/codex/object-state-r1/no-inputhooks/client.log",
+          "bytes": 487112,
+          "sha256": "4ff574e8d2e4ab2e8fc114dc20de397b5f82a88523aa83a1b7d2051faa4c7bbb"
+        },
+        {
+          "id": "E030",
+          "kind": "local",
+          "path": "local/research/codex/object-state-r1/no-inputhooks-recipe.json",
+          "bytes": 780,
+          "sha256": "93f4ff7092c39bee20b47470be7c3f05993a742b861d7a7d4cfd83d18ac5d739"
+        },
+        {
+          "id": "E031",
+          "kind": "local",
+          "path": "local/research/codex/object-state-r1/globalhandles/run.json",
+          "bytes": 4308,
+          "sha256": "652674cac126b0f207efa838bdde8f4a3b08a14688f897167d905a14e9110447"
+        },
+        {
+          "id": "E032",
+          "kind": "local",
+          "path": "local/research/codex/object-state-r1/globalhandles/client.log",
+          "bytes": 487247,
+          "sha256": "98560f0c7d87a86592281755b7d88155a11fa5d19f995eea09eaadccc2e4b208"
+        },
+        {
+          "id": "E033",
+          "kind": "local",
+          "path": "local/research/codex/object-state-r1/globalhandles-recipe.json",
+          "bytes": 780,
+          "sha256": "f86fdad31546f9f1a58eeb3d350ed08282a95c39fd813a7be17692aaf59acb10"
+        },
+        {
+          "id": "E034",
+          "kind": "local",
+          "path": "local/research/codex/object-state-r1/clipboard/run.json",
+          "bytes": 4304,
+          "sha256": "9145965f15bcbda8048313d701f607d32dd2f64fbd4a7c08951238bf89658caa"
+        },
+        {
+          "id": "E035",
+          "kind": "local",
+          "path": "local/research/codex/object-state-r1/clipboard/client.log",
+          "bytes": 518947,
+          "sha256": "b48c4155192e8d5206f2f0697cbe5e2491933146b21ea0deef6ef60036f4d41d"
+        },
+        {
+          "id": "E036",
+          "kind": "local",
+          "path": "local/research/codex/object-state-r1/clipboard-recipe.json",
+          "bytes": 768,
+          "sha256": "ee7c917027ad53885c9ed6a34e7afe4a5f619b832aadf3ca2d2cb23e9df7ccb0"
+        },
+        {
+          "id": "E037",
+          "kind": "local",
+          "path": "local/research/codex/object-state-r1/key-state/run.json",
+          "bytes": 4303,
+          "sha256": "6c3121de986b54f145877908ea12e13e2e665b85a13566f44f7ac88bf2ac1703"
+        },
+        {
+          "id": "E038",
+          "kind": "local",
+          "path": "local/research/codex/object-state-r1/key-state/client.log",
+          "bytes": 531558,
+          "sha256": "0681e0e5604fde69e45db9c52f877905ca55509479d67d0fa5b8e2272dd63838"
+        },
+        {
+          "id": "E039",
+          "kind": "local",
+          "path": "local/research/codex/object-state-r1/key-state-recipe.json",
+          "bytes": 768,
+          "sha256": "947e951f9928ca2ca424899045e05ad1f9b34fa00a4fd4ef90229961d1913b21"
+        },
+        {
+          "id": "E040",
+          "kind": "local",
+          "path": "local/research/codex/object-state-r1/tree-probe/probe.bin",
+          "bytes": 768,
+          "sha256": "8271ef9a21762eeab65bc9ff0099bbad6cd8cc1e00fc35a4782a339b6ffee323"
+        },
+        {
+          "id": "E041",
+          "kind": "local",
+          "path": "local/research/codex/object-state-r1/tree-probe/probe.json",
+          "bytes": 882,
+          "sha256": "ccac270ee464e2a0cfa3a947c63de3d1d1eb10730e9c643bb67b17e49b07e116"
+        },
+        {
+          "id": "E042",
+          "kind": "local",
+          "path": "local/research/codex/object-state-r1/deletecs-probe/probe.bin",
+          "bytes": 768,
+          "sha256": "4eb725d087265facc6a46d001104a35855cc9b4cdd82a8deb97cd40b894d2474"
+        },
+        {
+          "id": "E043",
+          "kind": "local",
+          "path": "local/research/codex/object-state-r1/deletecs-probe/probe.json",
+          "bytes": 170,
+          "sha256": "62d0ec481b1215aac38a733a2b5902fe25c124c57a25af25d162587b6edcb57c"
+        },
+        {
+          "id": "E044",
+          "kind": "local",
+          "path": "local/research/codex/object-state-r1/dwk-big/probe.bin",
+          "bytes": 8960,
+          "sha256": "ceb2a148942eb8e2e7de7d235fb1178dc6cbf7e6226bf00ff12244bc257a9bed"
+        },
+        {
+          "id": "E045",
+          "kind": "local",
+          "path": "local/research/codex/object-state-r1/dwk-big/probe.json",
+          "bytes": 498,
+          "sha256": "950c93a38827d1015e84f791cf659342e67fbcaf84f7bbb6ae4ae5270e2d40f5"
+        },
+        {
+          "id": "E046",
+          "kind": "local",
+          "path": "local/research/codex/object-state-r1/throw-probe/probe.bin",
+          "bytes": 8960,
+          "sha256": "79a3b94c1713af011dc55e43b78df11b7a534418f5ec977978bc0f35e2371beb"
+        },
+        {
+          "id": "E047",
+          "kind": "local",
+          "path": "local/research/codex/object-state-r1/throw-probe/probe.json",
+          "bytes": 1213,
+          "sha256": "d24018ee6dccb2e4d14e80f609307fed108436df5c05d9e9776bd723b37da343"
+        },
+        {
+          "id": "E048",
+          "kind": "local",
+          "path": "local/research/codex/object-state-r1/nohook-throw/probe.bin",
+          "bytes": 8960,
+          "sha256": "d99315c53dbe906958a42567eb4039c100d0fabdc2bc225c9dc13fecab5cd5d9"
+        },
+        {
+          "id": "E049",
+          "kind": "local",
+          "path": "local/research/codex/object-state-r1/nohook-throw/probe.json",
+          "bytes": 606,
+          "sha256": "c36d2267823c4ae8c5215440f16167ffff4ab128ae1922876d177e4800073a25"
+        },
+        {
+          "id": "E050",
+          "kind": "local",
+          "path": "local/research/codex/object-state-r1/tree-guard-patch.json",
+          "bytes": 644,
+          "sha256": "8ca6f0f3bf4e8ff6dfa3f0f3744148f0a7fc5b352a9e315523af6a7239b7fa49"
+        },
+        {
+          "id": "E051",
+          "kind": "local",
+          "path": "local/research/codex/object-state-r1/deletecs-patch.json",
+          "bytes": 5165,
+          "sha256": "c304412ac6f61c678945de5956a1db4d20dd433eb47e085526a27902d092a58c"
+        },
+        {
+          "id": "E052",
+          "kind": "local",
+          "path": "local/research/codex/object-state-r1/sysparams-patch.json",
+          "bytes": 4994,
+          "sha256": "bae0252f2471d8f2c5de36cc3923a683b3c8488b25e8665c3de7760162d32a15"
+        },
+        {
+          "id": "E053",
+          "kind": "local",
+          "path": "local/research/codex/object-state-r1/inputhook-patch.json",
+          "bytes": 642,
+          "sha256": "1b678f1f1eb86a459d85cc36f9f5231f8ea9705b5ab2cb7bbc83b2d073895ea2"
+        },
+        {
+          "id": "E054",
+          "kind": "local",
+          "path": "local/research/codex/object-state-r1/inputhooks-entry-patch.json",
+          "bytes": 599,
+          "sha256": "3b6c556d7f152e6ce9f232a711db4fc86dc30b7e63310966ff5d09ae17530f71"
+        },
+        {
+          "id": "E055",
+          "kind": "local",
+          "path": "local/research/codex/object-state-r1/globallock-patch.json",
+          "bytes": 4233,
+          "sha256": "f4b0be4aca1d8ed0822f20faa982a3962650551f4f46ab91b27b7f28fa9b2f0e"
+        },
+        {
+          "id": "E056",
+          "kind": "local",
+          "path": "local/research/codex/object-state-r1/globalunlock-patch.json",
+          "bytes": 4400,
+          "sha256": "4be026c1366c7252ff3cb323d1b92ef21acb6fab97a09ab76fb264646a130b07"
+        },
+        {
+          "id": "E057",
+          "kind": "local",
+          "path": "local/research/codex/object-state-r1/clipboard-patch.json",
+          "bytes": 3576,
+          "sha256": "737075debeebc3eadfbd68c6035e79c9a2dacf947807d3ef755a259907cbbabc"
+        },
+        {
+          "id": "E058",
+          "kind": "local",
+          "path": "local/research/codex/object-state-r1/key-state-patch.json",
+          "bytes": 5673,
+          "sha256": "960b475c67b2f5949e42148518601995237d0a76c6267d0898bd8b3a576110a2"
+        },
+        {
+          "id": "E059",
+          "kind": "local",
+          "path": "local/research/codex/object-state-r1/stack-probe-patch.json",
+          "bytes": 768,
+          "sha256": "a629ac08b3468f597acd8deea6529c65ba9ec9d7872b595a3472b41637a04e08"
+        },
+        {
+          "id": "E060",
+          "kind": "local",
+          "path": "local/research/codex/object-state-r1/stack-probe-deletecs-patch.json",
+          "bytes": 771,
+          "sha256": "516b15bee76f70678c30b170a48689393542b1d910aafac8fa5e7d7b68eef8dd"
+        },
+        {
+          "id": "E061",
+          "kind": "local",
+          "path": "local/research/codex/object-state-r1/stack-probe-dwk-big-patch.json",
+          "bytes": 774,
+          "sha256": "c75092f7fa183fbeab620da64739e3de2ed01007ca4810f055105e4b244af38c"
+        },
+        {
+          "id": "E062",
+          "kind": "local",
+          "path": "local/research/codex/object-state-r1/stack-probe-throw-patch.json",
+          "bytes": 776,
+          "sha256": "674c3f951a75db2df074fb5a789541101b466c9d34fd51ab797c51c3e70295f4"
+        },
+        {
+          "id": "E063",
+          "kind": "local",
+          "path": "local/research/codex/object-state-r1/stack-probe-nohook-throw-patch.json",
+          "bytes": 774,
+          "sha256": "1eac36bf01d2bf40374b2a67c909ead3a89e413313d1069c3a35f5a25a024754"
+        },
+        {
+          "id": "E064",
+          "kind": "local",
+          "path": "local/research/codex/object-state-r1/patch-tree-guard.py",
+          "bytes": 1081,
+          "sha256": "3a174308c643d3ce6f90d9d9bc6ac7a4d9141b754f982dad90ae24d49083433e"
+        },
+        {
+          "id": "E065",
+          "kind": "local",
+          "path": "local/research/codex/object-state-r1/bind-import.py",
+          "bytes": 2592,
+          "sha256": "fd4183040cd74aea8a6f94bc7333d920538c9b2a6638e83c4a6d02a6ff9dcd32"
+        },
+        {
+          "id": "E066",
+          "kind": "local",
+          "path": "local/research/codex/object-state-r1/bind-import-replace.py",
+          "bytes": 2927,
+          "sha256": "589f9a1c0831e1bbcfdb81056e084c1ebbdd9727007023f3395f364ad92403a1"
+        },
+        {
+          "id": "E067",
+          "kind": "local",
+          "path": "local/research/codex/object-state-r1/build-stack-probe.py",
+          "bytes": 3495,
+          "sha256": "4e5abec537f7b7db6595aab29da136a23d22cb4c82569e19863bcafc9d5d3153"
+        },
+        {
+          "id": "E068",
+          "kind": "local",
+          "path": "local/research/codex/object-state-r1/build-stack-probe-generic.py",
+          "bytes": 3587,
+          "sha256": "7e7b0924e251680b4befef46c45ada469f9be054da95c782ce578ad894a160a3"
+        },
+        {
+          "id": "E069",
+          "kind": "local",
+          "path": "local/research/codex/object-state-r1/build-stack-probe-big.py",
+          "bytes": 3595,
+          "sha256": "eb8082877248581563a127b6b3cebb25581d409026454b5bdb056a0fc4c91353"
+        },
+        {
+          "id": "E070",
+          "kind": "local",
+          "path": "local/research/codex/object-state-r1/build-throw-probe.py",
+          "bytes": 3827,
+          "sha256": "3ecd31fbc4cb5e090d54461b6eeabea97f339cbf9c32bf1d97c4801343da290c"
+        },
+        {
+          "id": "E071",
+          "kind": "local",
+          "path": "local/research/codex/object-state-r1/patch-hook-call.py",
+          "bytes": 1133,
+          "sha256": "285447147d3d2da7beffb89fc4a7ffa538aa5f55c9a59cddb7aa119db0d31422"
+        },
+        {
+          "id": "E072",
+          "kind": "local",
+          "path": "local/research/codex/object-state-r1/run_probe.py",
+          "bytes": 883,
+          "sha256": "bf531dbfaf759541589d59db2761f60b49aa2862cdb1f31e0f1acdd982450a54"
+        },
+        {
+          "id": "E073",
+          "kind": "local",
+          "path": "local/research/codex/object-state-r1/guard.asm",
+          "bytes": 2908,
+          "sha256": "f963e8e03cdd7cbf0ef8f5ce867131c1c3d6347c6b38cff393d41c71724c96f5"
+        },
+        {
+          "id": "E074",
+          "kind": "local",
+          "path": "local/research/codex/object-state-r1/constructor.asm",
+          "bytes": 2887,
+          "sha256": "164102ed24340e7de8fcaf0b0060083dd48277142ac1e4c37a957e8290c6734d"
+        },
+        {
+          "id": "E075",
+          "kind": "local",
+          "path": "local/research/codex/object-state-r1/throw-caller.asm",
+          "bytes": 5370,
+          "sha256": "af2f5c533a46f05abbdc95038484b9310710d8ce8ba11113c631ca94ccbb7928"
+        },
+        {
+          "id": "E076",
+          "kind": "local",
+          "path": "local/research/codex/object-state-r1/hook-caller.asm",
+          "bytes": 5829,
+          "sha256": "cf905cda6c540ad9c2e80fa0973b46d5b497d8eadeadfb483ad3e340879a90bf"
+        },
+        {
+          "id": "E077",
+          "kind": "local",
+          "path": "local/research/codex/object-state-r1/next-import.asm",
+          "bytes": 1746,
+          "sha256": "cf9f4e856c0824f3ae8c0ad5467d82d4a81072451b26d832516b9d82e35fb38b"
+        },
+        {
+          "id": "E078",
+          "kind": "local",
+          "path": "local/research/codex/object-state-r1/verify.py",
+          "bytes": 5358,
+          "sha256": "57bc18254ba62dd9e3b27640e1f24b37843fa52020c08bf706b36c8a2997e512"
+        },
+        {
+          "id": "E079",
+          "kind": "local",
+          "path": "local/research/codex/object-state-r1/verification.json",
+          "bytes": 17650,
+          "sha256": "dcd4e2204ff212b6a4dd0388ebba36f80fd1b324703beed27b929a31405db46d"
+        },
+        {
+          "id": "E080",
+          "kind": "local",
+          "path": "local/research/codex/object-state-r1/patch-diffs.json",
+          "bytes": 59041,
+          "sha256": "c08a54c302d2ff85599658ff66ca3b1756d0e5f23436e97d44571c654d46b4d4"
+        },
+        {
+          "id": "E081",
+          "kind": "local",
+          "path": "local/research/codex/object-state-r1/source-verify.txt",
+          "bytes": 253,
+          "sha256": "649c6624aa6d317dfc1db5e16fea683cfbc9d9cf4dd3df11c0d70e57409054a0"
+        },
+        {
+          "id": "E082",
+          "kind": "local",
+          "path": "local/research/codex/object-state-r1/pr18-state.json",
+          "bytes": 174,
+          "sha256": "e1bef0d90f814c617650a983a92f474d98299a94a120e014caf0b9972f88a05e"
+        },
+        {
+          "id": "E083",
+          "kind": "local",
+          "path": "local/research/codex/object-state-r1/pr18-review.json",
+          "bytes": 137,
+          "sha256": "e82391d53b360fcda006bf631682ef76bfe806c5efa868e3517c80878fad2ed0"
+        },
+        {
+          "id": "E084",
+          "kind": "local",
+          "path": "local/research/codex/wine_probe_null_audio.py",
+          "bytes": 18183,
+          "sha256": "446eabcbfe98622c4eb54faa41b073ec7f7318a71324b9e0c7b0cb3584e38a21"
+        },
+        {
+          "id": "E085",
+          "kind": "local",
+          "path": "local/research/codex/wine_probe_stack_record.py",
+          "bytes": 18584,
+          "sha256": "21374cd35fe8e5de0281662b4b1bb35fb621ad913ae05e1a8ada17e8d35a8769"
+        },
+        {
+          "id": "E086",
+          "kind": "local",
+          "path": "local/research/codex/nmco-identity-r1/plain-thread/client.log",
+          "bytes": 474806,
+          "sha256": "6e03c0208748fce970551e95c1addfaa5fc11f22d32f245f54ba6c5ad1d0e52d"
+        },
+        {
+          "id": "E087",
+          "kind": "local",
+          "path": "local/research/codex/nmco-identity-r1/review3-report.md",
+          "bytes": 3381,
+          "sha256": "78672114e3c950cc28c74f8bd87c428605dcde6c2fee7804bded762862e5c5a7"
+        },
+        {
+          "id": "E088",
+          "kind": "local",
+          "path": "local/research/codex/nmco-identity-r1/early-fault/run.json",
+          "bytes": 3970,
+          "sha256": "b8324a13185e7301507afe4b1ec3250706122b58726f05462bf6302a128fce09"
+        },
+        {
+          "id": "E089",
+          "kind": "local",
+          "path": "local/research/codex/nmco-identity-r1/early-fault/late-debug.log",
+          "bytes": 3555,
+          "sha256": "bf8c099acc1fa244b383f4c0ae129e02908e741bf190c4f24169b118cdd2a704"
+        },
+        {
+          "id": "E090",
+          "kind": "local",
+          "path": "local/research/codex/nmco-identity-r1/late-fault/run.json",
+          "bytes": 3972,
+          "sha256": "76c44c283d8191ae630eac2a7c3fc1771765a2400668583a1822c94e645976b1"
+        },
+        {
+          "id": "E091",
+          "kind": "local",
+          "path": "local/research/codex/nmco-identity-r1/late-fault/late-debug.log",
+          "bytes": 3555,
+          "sha256": "fc511d14a354811a654af7fabd87cd4a2ac1d1bb8ce3c1e3f64acdccb40ba2b8"
+        },
+        {
+          "id": "E092",
+          "kind": "repository",
+          "path": "docs/evidence/object-state/verification.json",
+          "bytes": 143,
+          "sha256": "8d25437f219b599483e1279e332802455f852fb4a73d5a3594fcdcc82d7607b3"
+        },
+        {
+          "id": "E093",
+          "kind": "local",
+          "path": "local/research/codex/object-state-r1/clipboard/CALog-run.txt",
+          "bytes": 261,
+          "sha256": "bc35f0bae1f04dad383b3b35105e892eb283fc09eb1cdf11733aba7383f32146"
+        },
+        {
+          "id": "E094",
+          "kind": "local",
+          "path": "local/research/codex/object-state-r1/key-state/CALog-run.txt",
+          "bytes": 261,
+          "sha256": "bc35f0bae1f04dad383b3b35105e892eb283fc09eb1cdf11733aba7383f32146"
+        },
+        {
+          "id": "E095",
+          "kind": "local",
+          "path": "local/research/codex/object-state-r1/key-state/screen-04.png",
+          "bytes": 233,
+          "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+        }
+      ],
+      "delta": {
+        "added": [
+          "Direct stack recorder, observed object reinitialization, CAppException caller and module literal, targeted hook omission and clipboard/key-state candidate tests."
+        ],
+        "corrected": [
+          "CP009 pointer fault is no longer current in later copy; later traps include cleanup after CAppException, not all forward initialization.",
+          "Log EndOfInit0 and packet15 do not show new request bytes or login; no gate promotion.",
+          "CP009 review snapshot updated to actual exact-head approval and merge reference."
+        ],
+        "superseded": [
+          "NEXT-OBJECT-FAULT initial pointer tracing answered in bounded copy scope; object validity remains incomplete."
+        ]
+      },
+      "blockers": [
+        "Latest key-state copy reaches nxoverlay ordinal9 trap at slot16EA4E8; callback ABI and semantics unknown.",
+        "Logged general packet15 not observed as new C2S; trace send/socket/stage before contract claims.",
+        "Input after hook omission, NMCO side effects, oneclickuser runtime, full codec/reconnect and original behavior remain unverified."
+      ],
+      "next_steps": [
+        {
+          "id": "NEXT-OBJECT-FAULT",
+          "task": "KRE-005b",
+          "state": "superseded",
+          "action": "Initial dump pointer and later CAppException paths measured; continue through overlay and actual wire.",
+          "owner": "Codex",
+          "reviewer": "Claude Sonnet 5.5 independent reviewer"
+        },
+        {
+          "id": "NEXT-OVERLAY-PACKET15",
+          "task": "KRE-005b",
+          "state": "active",
+          "action": "Trace nxoverlay ordinal9 caller/ABI and packet15 builder-to-socket path, then choose bounded offline copy/stub experiment.",
+          "owner": "Codex",
+          "reviewer": "Claude Sonnet 5.5 independent reviewer"
+        }
+      ],
+      "review": {
+        "status": "waived",
+        "as_of_utc": "2026-10-27T23:40:31.784581+00:00",
+        "reference": "docs/evidence/checkpoints/review-waiver.json",
+        "scope": "Owner waived independent approval; Codex self-checks only. Preserve earlier independent report, fix its known provenance issue in CP011.",
+        "authorization": {
+          "by": "project_owner",
+          "reference": "docs/evidence/checkpoints/review-waiver.json",
+          "reason": "Explicit user instruction: claude hết token rồi nên mày tự solo đi ko cần review"
+        },
+        "prior_report": "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/19#issuecomment-6437700488",
+        "prior_head": "093fd416965a294e674d67483110a72ba7b80766"
+      },
+      "docs_sync": [
+        {
+          "path": "README.md",
+          "state": "updated",
+          "reason": "Current copy marker, no new wire and overlay blocker."
+        },
+        {
+          "path": "docs/PLAN.md",
+          "state": "updated",
+          "reason": "Path map and next task order."
+        },
+        {
+          "path": "docs/PROTOCOL.md",
+          "state": "updated",
+          "reason": "Packet15 log vs captured wire limit."
+        },
+        {
+          "path": "docs/RESEARCH.md",
+          "state": "updated",
+          "reason": "Overlay ABI, packet15 and input questions."
+        },
+        {
+          "path": "docs/evidence/nmco-identity/README.md",
+          "state": "updated",
+          "reason": "Historical CP009 boundary and link forward."
+        },
+        {
+          "path": "docs/evidence/object-state/README.md",
+          "state": "updated",
+          "reason": "Grouped run/recipe/result/limits."
+        },
+        {
+          "path": "docs/evidence/object-state/verification.json",
+          "state": "updated",
+          "reason": "Bounded validation summary."
+        }
+      ]
+    },
+    {
+      "id": "CP011",
+      "previous": "CP010",
+      "lifecycle": "complete",
+      "recorded_utc": "2026-10-27T23:40:31.784581+00:00",
+      "question": "Can the copy reach login UI, do injected inputs reach Windows dispatch, and which VN methods reduce the current KR input blocker? Correct CP010 static provenance.",
+      "scope": "Grouped offline Wine probes, targeted VN document/binary comparison and explicit owner review waiver; no auth, full-codec or gate promotion.",
+      "context_commit": "093fd416965a294e674d67483110a72ba7b80766",
+      "owner": "Codex",
+      "reviewer": "Codex",
+      "artifacts": [
+        {
+          "name": "KR UI diagnostic copy",
+          "sha256": "70708abab77ebd1cfd230a35f4997b8e84330f74442ed77b0b74c7b03180c82c"
+        },
+        {
+          "name": "VN patched reference",
+          "sha256": "bc875ba5765cc112e924f46e75d0ace112904c7801126e46bc0abb1c9cb576b1"
+        },
+        {
+          "name": "CAWH.sys host artifact, provenance unverified",
+          "sha256": "bcffd4f9e5f1618d4378b7ff47e6614109bfbefa2ebb9438302c060b34252f0b"
+        }
+      ],
+      "locators": [
+        "KR VA807B25 six-byte call omission; imagebase400000/RVA=VA-400000",
+        "GDB guard123246D EAX1; IAT16EA5A8 value7B49D500; HWND4003C in noaudio run; WM100/101/102/201/202",
+        "VN call8DCE84 slot16AD4AC vs KR12272D9 slot16EA6A0 candidate",
+        "Static provenance14F11DC→[16EA2B0],122E7E5→122EA40; CAWH export RVA1006",
+        "Runs no-overlay-tick/login-input/login-held/gdb-input/gdb-input-noaudio dated27/10 UTC; sources boom-re@9ac2075bbec0c16217741aaedea968cf685e39a9"
+      ],
+      "findings": [
+        {
+          "summary": "Copy with overlay tick call omitted renders full login UI; two xdotool input recipes do not visibly change fields or add C2S bytes",
+          "source": "kr_runtime",
+          "status": "confirmed",
+          "method": "runtime",
+          "canonical": "docs/evidence/login-ui/README.md",
+          "evidence": [
+            "E045",
+            "E042",
+            "E046",
+            "E052"
+          ],
+          "limits": "Copy-only diagnostic behavior; API mapping/overlay semantics remain candidates. No auth or original-client equivalence."
+        },
+        {
+          "summary": "VN GDB-proxy method applies to KR: two runs hit guard EAX1 and read dispatch IAT; noaudio run observes192 Windows input messages",
+          "source": "kr_runtime",
+          "status": "confirmed",
+          "method": "runtime",
+          "canonical": "docs/evidence/vn-reuse/README.md",
+          "evidence": [
+            "E059",
+            "E063",
+            "E062",
+            "E026"
+          ],
+          "limits": "API-entry observation only; custom UI handler/hit-test and field contents unknown. First run exits3 on audio assertion; noaudio private-prefix choice changes environment and debugger timing. C2S remains66."
+        },
+        {
+          "summary": "VN historical debugger/input and login/cache documents provide targeted hypotheses, not KR wire contracts",
+          "source": "vn_runtime",
+          "status": "candidate",
+          "method": "documentation",
+          "canonical": "docs/evidence/vn-reuse/README.md",
+          "evidence": [
+            "E027",
+            "E036",
+            "E035",
+            "E034",
+            "E033"
+          ],
+          "limits": "No VN runtime rerun; preserve historical claim scope. Opcode15 direction/stage differs; all KR fields/opcodes require KR evidence."
+        },
+        {
+          "summary": "VN static key-state call sites distinguish GetKeyState and GetAsyncKeyState; action path uses Async, so swapping KR binding based on no-input symptom is not justified",
+          "source": "vn_static",
+          "status": "confirmed",
+          "method": "static",
+          "canonical": "docs/evidence/vn-reuse/README.md",
+          "evidence": [
+            "E023",
+            "E022",
+            "E024"
+          ],
+          "limits": "Confirmed only for identified VN binary; selected compare ranges include unaligned context bytes, use exact call locations. Initial direct original-IAT scan misses fake-IAT calls; zero count is not absence. KR equivalence remains candidate."
+        },
+        {
+          "summary": "CP010 excluded import names and critical-section binding remain candidates; cleanup call target is a routine, not proven destructor",
+          "source": "kr_static",
+          "status": "candidate",
+          "method": "static",
+          "canonical": "docs/evidence/login-ui/README.md",
+          "evidence": [
+            "E014",
+            "E003",
+            "E073"
+          ],
+          "limits": "Full report and byte evidence added for prior review P2; no independent approval of corrections. CP010 raw/findings preserved; actor of older FFF40200 report unassigned."
+        },
+        {
+          "summary": "Overlay omission, disabled Wine audio in a disposable prefix and review waiver are explicit diagnostic/workflow choices",
+          "source": "emu_choice",
+          "status": "design",
+          "method": "design",
+          "canonical": "docs/evidence/login-ui/README.md",
+          "evidence": [
+            "E011",
+            "E062",
+            "E079"
+          ],
+          "limits": "Do not infer original behavior, login success, or gate completion; review waiver is not independent approval."
+        }
+      ],
+      "verification": [
+        {
+          "check": "24 bounded patch/runtime/static-provenance checks",
+          "result": "pass",
+          "evidence": [
+            "E016",
+            "E015"
+          ],
+          "limits": "Manual screenshot interpretation, command success is not event consumption."
+        },
+        {
+          "check": "21 bounded GDB/input/isolation/reference-hash checks",
+          "result": "pass",
+          "evidence": [
+            "E029",
+            "E028"
+          ],
+          "limits": "API input observed, no custom handler proof or gate promotion."
+        },
+        {
+          "check": "17 schema tests plus5 source artifact hashes",
+          "result": "pass",
+          "evidence": [
+            "E002",
+            "E013"
+          ],
+          "limits": "Tests validate measurable schema/waiver/continuity, not RE semantics."
+        }
+      ],
+      "evidence": [
+        {
+          "id": "E001",
+          "kind": "local",
+          "path": "local/research/codex/overlay-next-r1/cawh-export.json",
+          "bytes": 431,
+          "sha256": "3b1b38ad62ea79d7cef4c5776417d1a59ed36e785a360f5c472baa62727af284"
+        },
+        {
+          "id": "E002",
+          "kind": "local",
+          "path": "local/research/codex/overlay-next-r1/checkpoint-tests.json",
+          "bytes": 248,
+          "sha256": "3f179380ff0707807ec4fca61e957535d47e8982cb1409fde73ca9f6ca388fec"
+        },
+        {
+          "id": "E003",
+          "kind": "local",
+          "path": "local/research/codex/overlay-next-r1/critical-cleanup-proof.asm",
+          "bytes": 5289,
+          "sha256": "f8fffcde0a7e8015a79ac1c36cf86313701bb7c84930d0acae04884885bae094"
+        },
+        {
+          "id": "E004",
+          "kind": "local",
+          "path": "local/research/codex/overlay-next-r1/login-held-launcher.log",
+          "bytes": 4184,
+          "sha256": "ce26dbfbeb799409804367a62692a6f0ee77e8cadd0f53eff992ff3bd0065c2a"
+        },
+        {
+          "id": "E005",
+          "kind": "local",
+          "path": "local/research/codex/overlay-next-r1/login-held-recipe.json",
+          "bytes": 776,
+          "sha256": "df6e1950b538e40cb22b41286ded59d84067ce72c66e18171e887c98993d9a8f"
+        },
+        {
+          "id": "E006",
+          "kind": "local",
+          "path": "local/research/codex/overlay-next-r1/login-input-launcher.log",
+          "bytes": 4237,
+          "sha256": "56a0751e9d6cfd816508467288859af3ee6c47c6c6f5ff340647bb7230e6e147"
+        },
+        {
+          "id": "E007",
+          "kind": "local",
+          "path": "local/research/codex/overlay-next-r1/login-input-recipe.json",
+          "bytes": 779,
+          "sha256": "6eb46142fa16e7b247e0bb70c3ba85f37a49f091aaa1a2d35250a187b7f1e62a"
+        },
+        {
+          "id": "E008",
+          "kind": "local",
+          "path": "local/research/codex/overlay-next-r1/no-overlay-tick-launcher.log",
+          "bytes": 3518,
+          "sha256": "2154792532a9bd4dcc6dcdbe1a3c8b710dbb5723433af95bf5b77a2cf543002a"
+        },
+        {
+          "id": "E009",
+          "kind": "local",
+          "path": "local/research/codex/overlay-next-r1/no-overlay-tick-recipe.json",
+          "bytes": 786,
+          "sha256": "d77d89a67f3f6f6e3e6f246ad43da35bcc0b96d2dd8c20bdeab4027c2c0871e4"
+        },
+        {
+          "id": "E010",
+          "kind": "local",
+          "path": "local/research/codex/overlay-next-r1/ordinal9.asm",
+          "bytes": 2079,
+          "sha256": "376f6f4e6dfdf19695dbc44b52eb3df85846611594eede89034dd937ef3f531d"
+        },
+        {
+          "id": "E011",
+          "kind": "local",
+          "path": "local/research/codex/overlay-next-r1/patch.json",
+          "bytes": 598,
+          "sha256": "0b5f7e41074084a8792ba20a8cc843d56563bd543d84982b934a7b48e64b0d7a"
+        },
+        {
+          "id": "E012",
+          "kind": "local",
+          "path": "local/research/codex/overlay-next-r1/run_probe.py",
+          "bytes": 883,
+          "sha256": "37628e4e1a8a7567fa65443e8e58d604893f068bf1d754b925a677150e96d74f"
+        },
+        {
+          "id": "E013",
+          "kind": "local",
+          "path": "local/research/codex/overlay-next-r1/source-verify.json",
+          "bytes": 369,
+          "sha256": "4da25420cb889d1706d1a444c9979871662fa0ce9d78ac99f3e43012603fab45"
+        },
+        {
+          "id": "E014",
+          "kind": "local",
+          "path": "local/research/codex/overlay-next-r1/static-provenance.json",
+          "bytes": 1383,
+          "sha256": "1308956d852d342ae2bedc7fc802e0483f4e5f30a10da79842894bbc77c2042a"
+        },
+        {
+          "id": "E015",
+          "kind": "local",
+          "path": "local/research/codex/overlay-next-r1/verification.json",
+          "bytes": 989,
+          "sha256": "18d5bc904d675e383590f0ddfbe676452d5afa4d97d4aed5e2675eb81047c4e2"
+        },
+        {
+          "id": "E016",
+          "kind": "local",
+          "path": "local/research/codex/overlay-next-r1/verify.py",
+          "bytes": 2382,
+          "sha256": "16b74c2b25dd15ccee1f71f84e3dd775507a7b476bd61a1f9377cfed1d0591d5"
+        },
+        {
+          "id": "E017",
+          "kind": "local",
+          "path": "local/research/codex/vn-reuse-r1/gdb-input-launcher.log",
+          "bytes": 3047,
+          "sha256": "787c13cd5b982bbbb13cbcf5e78f07613ca7345f12906e60696473bfbae2cd73"
+        },
+        {
+          "id": "E018",
+          "kind": "local",
+          "path": "local/research/codex/vn-reuse-r1/gdb-input-noaudio-launcher.log",
+          "bytes": 6015,
+          "sha256": "318c743f10c10128dfcdd217a24baba3db432f1f5fe320340060b4a1848e0fb7"
+        },
+        {
+          "id": "E019",
+          "kind": "local",
+          "path": "local/research/codex/vn-reuse-r1/gdb-input-noaudio-recipe.json",
+          "bytes": 910,
+          "sha256": "31a7c784402dee262c71ad8d1d0a1e1cc3bbbedde7c6d606f17158c1581a253d"
+        },
+        {
+          "id": "E020",
+          "kind": "local",
+          "path": "local/research/codex/vn-reuse-r1/gdb-input-recipe.json",
+          "bytes": 886,
+          "sha256": "db81125e09f13220eb61659d2ec3ad14d32afd99d5d0e1a50860979326ccaf90"
+        },
+        {
+          "id": "E021",
+          "kind": "local",
+          "path": "local/research/codex/vn-reuse-r1/input-dispatch.gdb",
+          "bytes": 701,
+          "sha256": "1ba61dc456ab03c385132cbd40a894bbb288c1a39e3fc1a86292e1268b24ffd0"
+        },
+        {
+          "id": "E022",
+          "kind": "local",
+          "path": "local/research/codex/vn-reuse-r1/key-state-compare.asm",
+          "bytes": 5902,
+          "sha256": "b29463c10fe5f255614ee4694fc17336610402a19142b8cab85c07cb3e9b6287"
+        },
+        {
+          "id": "E023",
+          "kind": "local",
+          "path": "local/research/codex/vn-reuse-r1/key-state-import-calls.json",
+          "bytes": 950,
+          "sha256": "ab4625ec1ff36673ab7d95ca7cec94ae7709db68f1d82e7368519af6698ff71e"
+        },
+        {
+          "id": "E024",
+          "kind": "local",
+          "path": "local/research/codex/vn-reuse-r1/key-state-vn.json",
+          "bytes": 1278,
+          "sha256": "c3b44f2462c343710279debb1f0b569a2c5c35f7d2af945be3182d65bd8e7a64"
+        },
+        {
+          "id": "E025",
+          "kind": "local",
+          "path": "local/research/codex/vn-reuse-r1/run_probe.py",
+          "bytes": 970,
+          "sha256": "cc5312d4cec15e1bd26f1119386d5ca0f05964884d41c4f18e3b8e6e3f80d2df"
+        },
+        {
+          "id": "E026",
+          "kind": "local",
+          "path": "local/research/codex/vn-reuse-r1/runtime-summary.json",
+          "bytes": 552,
+          "sha256": "92ec372bfb5bbe082cc38023effb6a91eb7b522a3c00249d148415c173c14baf"
+        },
+        {
+          "id": "E027",
+          "kind": "local",
+          "path": "local/research/codex/vn-reuse-r1/sources.json",
+          "bytes": 3159,
+          "sha256": "a01b26be0c3451024cdb03ed976904b28d0dfb9b09a2f2c688be552c990c3be2"
+        },
+        {
+          "id": "E028",
+          "kind": "local",
+          "path": "local/research/codex/vn-reuse-r1/verification.json",
+          "bytes": 1395,
+          "sha256": "70f7661c2b696cd2737e5927943e0f4c00ed96f36641e0e345a05d1d6f699187"
+        },
+        {
+          "id": "E029",
+          "kind": "local",
+          "path": "local/research/codex/vn-reuse-r1/verify.py",
+          "bytes": 2079,
+          "sha256": "ae5231cd0d88d2e075d20a04f34dcb9dd4c605d879caedce19792356d21ae646"
+        },
+        {
+          "id": "E030",
+          "kind": "local",
+          "path": "local/research/codex/overlay-next-r1/validation-source/check_checkpoints.py",
+          "bytes": 20431,
+          "sha256": "9ccc9300d5015ca3ed46a58fcd9e71c7b76b73025601054e9389189c8506e578"
+        },
+        {
+          "id": "E031",
+          "kind": "local",
+          "path": "local/research/codex/overlay-next-r1/validation-source/test_checkpoints.py",
+          "bytes": 13260,
+          "sha256": "0fc89d90f13a36dac7172e8e8714aaea83dc3eaf256e21d08597b7d5b358fae4"
+        },
+        {
+          "id": "E032",
+          "kind": "local",
+          "path": "local/research/codex/vn-reuse-r1/references/decomp/iat_resolved.json",
+          "bytes": 54411,
+          "sha256": "2b7ab8be4a96c6f7a4af53847697fa8ba1727869992a0bed0ce57e11959cbe68"
+        },
+        {
+          "id": "E033",
+          "kind": "local",
+          "path": "local/research/codex/vn-reuse-r1/references/docs/lobby.md",
+          "bytes": 69790,
+          "sha256": "13bac46134fc2255c32ac539b7e0072b31cd78dcb71122996ba003d1a2256ca4"
+        },
+        {
+          "id": "E034",
+          "kind": "local",
+          "path": "local/research/codex/vn-reuse-r1/references/docs/oc_d-login.md",
+          "bytes": 17609,
+          "sha256": "55bfd55a684cbc3edc92bef07a72a07911b8bd3ba09b40294f682af124e3456a"
+        },
+        {
+          "id": "E035",
+          "kind": "local",
+          "path": "local/research/codex/vn-reuse-r1/references/docs/protocol.md",
+          "bytes": 14120,
+          "sha256": "b4152ebbb2303979b2926f53f1cfd9a2251dfac7931030bc3fd2633622a9d62c"
+        },
+        {
+          "id": "E036",
+          "kind": "local",
+          "path": "local/research/codex/vn-reuse-r1/references/docs/runtime.md",
+          "bytes": 12366,
+          "sha256": "09092623d8b9ef8bab3591bf7679ec465e86db1487f279f1a8790e2546591a64"
+        },
+        {
+          "id": "E037",
+          "kind": "local",
+          "path": "local/research/codex/vn-reuse-r1/references/tools/fix_iat.py",
+          "bytes": 22030,
+          "sha256": "fb22a5371fe76e8535b4d1cc09b70f8b2f054904ec205a79a73b137f47630622"
+        },
+        {
+          "id": "E038",
+          "kind": "local",
+          "path": "local/research/codex/vn-reuse-r1/references/tools/gdb/input_dispatch.gdb",
+          "bytes": 861,
+          "sha256": "35ab687205ee5afa04b6f23f47b5addff2e0be82094abd6025e84989ad1d373f"
+        },
+        {
+          "id": "E039",
+          "kind": "local",
+          "path": "local/research/codex/vn-reuse-r1/references/tools/gdb/input_gates.gdb",
+          "bytes": 773,
+          "sha256": "d11466a9e61da295da5ed1094075614686b0c790a45b12f4f2b7f70e378667f1"
+        },
+        {
+          "id": "E040",
+          "kind": "local",
+          "path": "local/research/codex/vn-reuse-r1/references/tools/wine_gdb.sh",
+          "bytes": 2422,
+          "sha256": "fd9e54082dab0a120af3cd3eb7747563f407b6d36ee95d0d041e65f9b3e8ee25"
+        },
+        {
+          "id": "E041",
+          "kind": "local",
+          "path": "local/research/codex/vn-reuse-r1/references/tools/xvfb_login.sh",
+          "bytes": 1314,
+          "sha256": "13ce1e49acf345bf514cf74dcb32a400b78fbdd6be0d7a6237cbecef6a3439f1"
+        },
+        {
+          "id": "E042",
+          "kind": "local",
+          "path": "local/research/codex/overlay-next-r1/no-overlay-tick/run.json",
+          "bytes": 4308,
+          "sha256": "2eab762a33f49ed560b27da4542e3916ed5035421286e0a74c9756b0b22e1798"
+        },
+        {
+          "id": "E043",
+          "kind": "local",
+          "path": "local/research/codex/overlay-next-r1/no-overlay-tick/client.log",
+          "bytes": 1226424,
+          "sha256": "abe67e25342c67d1bb6d9a304feac90ff8c6a33845538df5dff8ba93fc46566f"
+        },
+        {
+          "id": "E044",
+          "kind": "local",
+          "path": "local/research/codex/overlay-next-r1/no-overlay-tick/CALog-run.txt",
+          "bytes": 425,
+          "sha256": "ed0a0a67a42a6065d2450f1b580fec28b5aea9c47e1049ae0ad5cb55680e8abf"
+        },
+        {
+          "id": "E045",
+          "kind": "local",
+          "path": "local/research/codex/overlay-next-r1/no-overlay-tick/screen-06.png",
+          "bytes": 504243,
+          "sha256": "0ce95d8b3c1eef3300dd78d08b01a8379b1680c0194b28b87119cd542d7fe906"
+        },
+        {
+          "id": "E046",
+          "kind": "local",
+          "path": "local/research/codex/overlay-next-r1/login-input/run.json",
+          "bytes": 5313,
+          "sha256": "3a52d6d97c2004317fd48fc3eee4510197364c3c06775d591a7591c5935e9fc7"
+        },
+        {
+          "id": "E047",
+          "kind": "local",
+          "path": "local/research/codex/overlay-next-r1/login-input/client.log",
+          "bytes": 1631897,
+          "sha256": "e67f6a7ab96be33a86e1daea9422c34a8137d611e62c29e898843ba99e11dbfc"
+        },
+        {
+          "id": "E048",
+          "kind": "local",
+          "path": "local/research/codex/overlay-next-r1/login-input/CALog-run.txt",
+          "bytes": 507,
+          "sha256": "a8b2baa0e93d42a6412e0ebecb815ee7155cbc67028855bd33e856520ed7c173"
+        },
+        {
+          "id": "E049",
+          "kind": "local",
+          "path": "local/research/codex/overlay-next-r1/login-input/ui-before-confirm.png",
+          "bytes": 504833,
+          "sha256": "852bba58812598196c940ee465ee241ec0fedcfe79b542c2871a48189cc489f0"
+        },
+        {
+          "id": "E050",
+          "kind": "local",
+          "path": "local/research/codex/overlay-next-r1/login-input/ui-after-confirm.png",
+          "bytes": 504727,
+          "sha256": "d6158bcbc80e6cd51d62271ab863a8e870c1140ebf8966a05798f9794409d033"
+        },
+        {
+          "id": "E051",
+          "kind": "local",
+          "path": "local/research/codex/overlay-next-r1/login-input/screen-10.png",
+          "bytes": 504734,
+          "sha256": "9a78c0d6c02f03e388b120062ec4ab64a16d7d86c6e1cf010f7276ecb9b5b33e"
+        },
+        {
+          "id": "E052",
+          "kind": "local",
+          "path": "local/research/codex/overlay-next-r1/login-held/run.json",
+          "bytes": 5238,
+          "sha256": "566ad1054454d7b46ec95c95b8fd12e5f8142636c0b730b988fa173fe22a13a1"
+        },
+        {
+          "id": "E053",
+          "kind": "local",
+          "path": "local/research/codex/overlay-next-r1/login-held/client.log",
+          "bytes": 1623863,
+          "sha256": "4c08af8f1eacb7049ab478e01d33ab672f98d0337db5d34e41d2753798781421"
+        },
+        {
+          "id": "E054",
+          "kind": "local",
+          "path": "local/research/codex/overlay-next-r1/login-held/CALog-run.txt",
+          "bytes": 507,
+          "sha256": "a8b2baa0e93d42a6412e0ebecb815ee7155cbc67028855bd33e856520ed7c173"
+        },
+        {
+          "id": "E055",
+          "kind": "local",
+          "path": "local/research/codex/overlay-next-r1/login-held/ui-before-confirm.png",
+          "bytes": 504833,
+          "sha256": "852bba58812598196c940ee465ee241ec0fedcfe79b542c2871a48189cc489f0"
+        },
+        {
+          "id": "E056",
+          "kind": "local",
+          "path": "local/research/codex/overlay-next-r1/login-held/ui-after-confirm.png",
+          "bytes": 504499,
+          "sha256": "f7010068a3a02695348ae5a5de36fbc5a3db6ddc1fc93748aa165737e805b79c"
+        },
+        {
+          "id": "E057",
+          "kind": "local",
+          "path": "local/research/codex/overlay-next-r1/login-held/screen-10.png",
+          "bytes": 504716,
+          "sha256": "4850ff3aec6f7fcaad38a1dcc87e847b4b7a1dc03da21acea90d2ad3ae90f29e"
+        },
+        {
+          "id": "E058",
+          "kind": "local",
+          "path": "local/research/codex/vn-reuse-r1/gdb-input/run.json",
+          "bytes": 3639,
+          "sha256": "d897f2ad6b8323bca427b87f4c0a2d930c6311da8819cfa5b118ce935afa4ae0"
+        },
+        {
+          "id": "E059",
+          "kind": "local",
+          "path": "local/research/codex/vn-reuse-r1/gdb-input/client.log",
+          "bytes": 821812,
+          "sha256": "3cedc2ab6dae2291de61140b28914f5e0bf96eb5c2bd52c06e0c77b38a2c80c2"
+        },
+        {
+          "id": "E060",
+          "kind": "local",
+          "path": "local/research/codex/vn-reuse-r1/gdb-input/CALog-run.txt",
+          "bytes": 86,
+          "sha256": "ec0c9d15b149458d37c2eeba0e03b9e4cd95ce9dc4340d063716882ff1848cb4"
+        },
+        {
+          "id": "E061",
+          "kind": "local",
+          "path": "local/research/codex/vn-reuse-r1/gdb-input/debug-commands.txt",
+          "bytes": 701,
+          "sha256": "1ba61dc456ab03c385132cbd40a894bbb288c1a39e3fc1a86292e1268b24ffd0"
+        },
+        {
+          "id": "E062",
+          "kind": "local",
+          "path": "local/research/codex/vn-reuse-r1/gdb-input-noaudio/run.json",
+          "bytes": 7639,
+          "sha256": "6e44ffcc0a9f678a604982301f7dae8f5e90727029d1455ae7c7a3d346706d89"
+        },
+        {
+          "id": "E063",
+          "kind": "local",
+          "path": "local/research/codex/vn-reuse-r1/gdb-input-noaudio/client.log",
+          "bytes": 7675031,
+          "sha256": "f156faff40586d8fc1d3cdc004b65fe399602ed846f6d722346e5bfb46e93c2e"
+        },
+        {
+          "id": "E064",
+          "kind": "local",
+          "path": "local/research/codex/vn-reuse-r1/gdb-input-noaudio/CALog-run.txt",
+          "bytes": 671,
+          "sha256": "5ed677b5d8754e2885f5870ebcea23ab3648b0130e32e372b3f880c86a5a7de5"
+        },
+        {
+          "id": "E065",
+          "kind": "local",
+          "path": "local/research/codex/vn-reuse-r1/gdb-input-noaudio/debug-commands.txt",
+          "bytes": 701,
+          "sha256": "1ba61dc456ab03c385132cbd40a894bbb288c1a39e3fc1a86292e1268b24ffd0"
+        },
+        {
+          "id": "E066",
+          "kind": "local",
+          "path": "local/research/codex/vn-reuse-r1/gdb-input-noaudio/ui-after-confirm-1.png",
+          "bytes": 504499,
+          "sha256": "f7010068a3a02695348ae5a5de36fbc5a3db6ddc1fc93748aa165737e805b79c"
+        },
+        {
+          "id": "E067",
+          "kind": "local",
+          "path": "local/research/codex/vn-reuse-r1/gdb-input-noaudio/ui-after-confirm-2.png",
+          "bytes": 504499,
+          "sha256": "f7010068a3a02695348ae5a5de36fbc5a3db6ddc1fc93748aa165737e805b79c"
+        },
+        {
+          "id": "E068",
+          "kind": "local",
+          "path": "local/research/codex/vn-reuse-r1/gdb-input-noaudio/ui-after-confirm-3.png",
+          "bytes": 504499,
+          "sha256": "f7010068a3a02695348ae5a5de36fbc5a3db6ddc1fc93748aa165737e805b79c"
+        },
+        {
+          "id": "E069",
+          "kind": "local",
+          "path": "local/research/codex/vn-reuse-r1/gdb-input-noaudio/ui-before-confirm-1.png",
+          "bytes": 504857,
+          "sha256": "bb616818a5e9e40f1fb3a3568d4014294d9c39260fc2087b6b7968ffe44b997f"
+        },
+        {
+          "id": "E070",
+          "kind": "local",
+          "path": "local/research/codex/vn-reuse-r1/gdb-input-noaudio/ui-before-confirm-2.png",
+          "bytes": 504857,
+          "sha256": "bb616818a5e9e40f1fb3a3568d4014294d9c39260fc2087b6b7968ffe44b997f"
+        },
+        {
+          "id": "E071",
+          "kind": "local",
+          "path": "local/research/codex/vn-reuse-r1/gdb-input-noaudio/ui-before-confirm-3.png",
+          "bytes": 504857,
+          "sha256": "bb616818a5e9e40f1fb3a3568d4014294d9c39260fc2087b6b7968ffe44b997f"
+        },
+        {
+          "id": "E072",
+          "kind": "local",
+          "path": "local/research/codex/vn-reuse-r1/gdb-input-noaudio/windows-05.txt",
+          "bytes": 1311,
+          "sha256": "ae1e42672317584498a7acb9315285f1ade61278c558f6e2b77371ef61cea181"
+        },
+        {
+          "id": "E073",
+          "kind": "local",
+          "path": "local/research/codex/rebuild-r2-final.json",
+          "bytes": 92365,
+          "sha256": "22afffb9a19694797453c0c99dd363b972983b6d459171484bd023f855ffdfc6"
+        },
+        {
+          "id": "E074",
+          "kind": "local",
+          "path": "local/research/codex/object-state-r1/review-report.md",
+          "bytes": 6482,
+          "sha256": "74d3eb6c0bd267a99bb410c2ec0d3e29d98bd1592114ffe7dd8cb18bdd933d43"
+        },
+        {
+          "id": "E075",
+          "kind": "local",
+          "path": "local/research/codex/wine_probe_login_input.py",
+          "bytes": 20044,
+          "sha256": "bb7e586becd6dfebaa0950428d8772f6622cdcc12436118dc7fc86c3f512c526"
+        },
+        {
+          "id": "E076",
+          "kind": "local",
+          "path": "local/research/codex/wine_probe_login_held.py",
+          "bytes": 20608,
+          "sha256": "2713214b6d5c6d37dad63964ba24d4250d8a7aa8b646389469ff3a2e8efb828d"
+        },
+        {
+          "id": "E077",
+          "kind": "local",
+          "path": "local/research/codex/wine_probe_vn_gdb.py",
+          "bytes": 20900,
+          "sha256": "ef319ae26ffa93557efc4f63999f676d8781da5ff105aa60ac0d9205c8378476"
+        },
+        {
+          "id": "E078",
+          "kind": "local",
+          "path": "local/research/codex/wine_probe_vn_gdb_noaudio.py",
+          "bytes": 21411,
+          "sha256": "25ccfcedc1989380547f723c130f70f0347c731820ed8e8ba7efc24453b7808c"
+        },
+        {
+          "id": "E079",
+          "kind": "repository",
+          "path": "docs/evidence/checkpoints/review-waiver.json",
+          "bytes": 618,
+          "sha256": "2f49d79d748ec0e062dd7edee739b192eaf38f76e2f5f09709428cee07629dec"
+        },
+        {
+          "id": "E080",
+          "kind": "artifact",
+          "path": "/home/admin/boom/clients/kr-00967/CAWH.sys",
+          "bytes": 53248,
+          "sha256": "bcffd4f9e5f1618d4378b7ff47e6614109bfbefa2ebb9438302c060b34252f0b"
+        },
+        {
+          "id": "E081",
+          "kind": "artifact",
+          "path": "/home/admin/boom/repos/boom-re/wine/Boom/ca_fixed_patched.exe",
+          "bytes": 18904064,
+          "sha256": "bc875ba5765cc112e924f46e75d0ace112904c7801126e46bc0abb1c9cb576b1"
+        }
+      ],
+      "delta": {
+        "added": [
+          "Full UI observation, failed input recipes, VN reference snapshots and successful KR GDB/input API trace.",
+          "Explicit owner waiver recorded and checker accepts authorized waived status without inventing approval."
+        ],
+        "corrected": [
+          "CP010 cleanup/destructor label withdrawn; named exclusions remain candidates and full report/byte evidence supplied for review P2.",
+          "Unknown whether input reaches Windows dispatch is answered in modified noaudio GDB run; custom handler remains open."
+        ],
+        "superseded": [
+          "NEXT-OVERLAY-PACKET15 overlay trap no longer current on the diagnostic copy; packet15 actual wire still unproved."
+        ]
+      },
+      "blockers": [
+        "Message reaches DispatchMessage but custom input/hit-test/focus or initialization gate unknown; no visible field updates.",
+        "C2S remains66 bytes; no auth request, identity success, full codec or gameplay.",
+        "oneclickuser runtime and original/Windows controls remain unverified."
+      ],
+      "next_steps": [
+        {
+          "id": "NEXT-OVERLAY-PACKET15",
+          "task": "KRE-005b",
+          "state": "superseded",
+          "action": "Overlay diagnostic omission reaches UI; packet15 wire tracing continues after actual UI input handler.",
+          "owner": "Codex",
+          "reviewer": "Codex"
+        },
+        {
+          "id": "NEXT-UI-HANDLER",
+          "task": "KRE-005b",
+          "state": "active",
+          "action": "Follow observed input from DispatchMessage into KR WndProc/custom UI; measure focus-control and hit-test, then connect confirm handler to builder/send. Use KR handler conditional breakpoints to reduce GDB overhead.",
+          "owner": "Codex",
+          "reviewer": "Codex"
+        }
+      ],
+      "review": {
+        "status": "waived",
+        "as_of_utc": "2026-10-27T23:40:31.784581+00:00",
+        "reference": "docs/evidence/checkpoints/review-waiver.json",
+        "scope": "Owner waived independent approval; Codex self-checks only. Preserve earlier independent report, fix its known provenance issue in CP011.",
+        "authorization": {
+          "by": "project_owner",
+          "reference": "docs/evidence/checkpoints/review-waiver.json",
+          "reason": "Explicit user instruction: claude hết token rồi nên mày tự solo đi ko cần review"
+        }
+      },
+      "docs_sync": [
+        {
+          "path": "README.md",
+          "state": "updated",
+          "reason": "Current UI and dispatch observation; no auth; explicit PR/waiver status."
+        },
+        {
+          "path": "docs/PLAN.md",
+          "state": "updated",
+          "reason": "Order follows measured dispatch→UI handler, gates remain open."
+        },
+        {
+          "path": "docs/PROTOCOL.md",
+          "state": "updated",
+          "reason": "Reuse methods and build-specific limits linked; no new auth contract."
+        },
+        {
+          "path": "docs/RESEARCH.md",
+          "state": "updated",
+          "reason": "Replace API-arrival unknown with custom handler/hit-test question."
+        },
+        {
+          "path": "docs/evidence/login-ui/README.md",
+          "state": "updated",
+          "reason": "Grouped UI runs and CP010 provenance corrections."
+        },
+        {
+          "path": "docs/evidence/vn-reuse/README.md",
+          "state": "updated",
+          "reason": "VN sources, bounded KR application and next-stage hypotheses."
+        },
+        {
+          "path": "docs/evidence/object-state/README.md",
+          "state": "updated",
+          "reason": "Clarify candidates, cleanup routine and recorder/actor limitations."
+        },
+        {
+          "path": "docs/evidence/checkpoints/README.md",
+          "state": "updated",
+          "reason": "Explicit owner waiver workflow and warning semantics."
         }
       ]
     }

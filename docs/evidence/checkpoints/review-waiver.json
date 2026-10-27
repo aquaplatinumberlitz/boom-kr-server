@@ -1,0 +1,10 @@
+{
+  "schema": "kre-review-waiver-v1",
+  "recorded_utc": "2026-10-27T23:25:12.073096+00:00",
+  "effective_local_date": "2026-10-28",
+  "authorized_by": "project_owner",
+  "source": "Explicit user instruction in this conversation",
+  "instruction": "claude hết token rồi nên mày tự solo đi ko cần review",
+  "scope": "Codex solo RE/code/runtime and self-checks, no further worker or independent-review calls; PR integration and evidence/gate checks remain.",
+  "limits": "Waiver is not independent approval and does not validate findings or pass gates; preserve prior reports and fix known quality issues."
+}
