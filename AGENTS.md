@@ -38,9 +38,11 @@ verification và reviewer độc lập. Duyệt plan không phải hoàn thành 
 ## Làm việc nhóm
 
 Task là issue trong chính repo này, có KRE ID, baseline, owner/reviewer, dependency, file và acceptance.
-Một owner mỗi file/target/runtime. Codex điều phối/code/runtime; hai worker là đúng session **dsh1** và
-**dsh2** hiện có, không tạo phiên dsh thay thế. dsh1 bootstrap, dsh2 codec/game/peer; có thể đổi theo task.
-Ca khó checkpoint sớm để Codex vào phụ hoặc gọi Claude (chủ dự án đã cho phép), không tự quét vô hạn.
+Một owner mỗi file/target/runtime. Codex điều phối/code/runtime. Theo chỉ đạo chủ dự án27/10,
+**Claude Sonnet5.5** thay dsh1/dsh2 đã hết token cho các việc RE và review tiếp theo; không giao thêm
+việc cho hai dsh. Khi gọi worker, chọn đúng model claude-sonnet-5-5 và chỉ rõ task/cwd/owner/output.
+Review phải độc lập với tác giả; các report dsh cũ vẫn giữ provenance lịch sử. Ca khó checkpoint sớm
+để Codex vào phụ, không tự quét vô hạn.
 Lượt RE mặc định tối đa8 request/4 thân hàm mới, hai lượt; mở tiếp khi có cạnh/thí nghiệm mới rõ.
 
 Code trên nhánh/worktree riêng của repo này; giữ thay đổi người khác, không reset/clean hoặc stage toàn
