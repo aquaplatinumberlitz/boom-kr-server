@@ -961,10 +961,11 @@
         }
       ],
       "review": {
-        "status": "changes_requested",
-        "as_of_utc": "2026-10-27T06:52:01.810062+00:00",
-        "reference": "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/15#issuecomment-6435705460",
-        "scope": "Review b5a8740116f0490dd8de186dceb1c3744c091e58 requests direct static evidence links and narrower cross-run causality; CP005 corrects both."
+        "status": "approved",
+        "as_of_utc": "2026-10-27T06:53:30.732123+00:00",
+        "reference": "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/15#issuecomment-6435734079",
+        "scope": "Independent review of CP004 as corrected by CP005 and CP005 findings; no gate promotion",
+        "head": "bb2d2484807dfe99c82ec2f01d11744b8adacf43"
       },
       "docs_sync": [
         {
@@ -1287,10 +1288,11 @@
         }
       ],
       "review": {
-        "status": "pending",
-        "as_of_utc": "2026-10-27T06:52:01.810062+00:00",
-        "reference": "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/15",
-        "scope": "Independent review of CP005 observations, CP004 correction and exact full head required"
+        "status": "approved",
+        "as_of_utc": "2026-10-27T06:53:30.732123+00:00",
+        "reference": "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/15#issuecomment-6435734079",
+        "scope": "Independent review of CP004 as corrected by CP005 and CP005 findings; no gate promotion",
+        "head": "bb2d2484807dfe99c82ec2f01d11744b8adacf43"
       },
       "docs_sync": [
         {
