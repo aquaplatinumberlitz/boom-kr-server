@@ -1,4 +1,4 @@
-# CP007–CP008 — identity local và khởi tạo cửa sổ
+# CP007–CP009 — identity local và khởi tạo cửa sổ
 
 Codex RE ngày 27/10/2026, issue14; trạng thái review/integration và SHA từng raw file ở
 [manifest](../checkpoints/manifest.json). Các run là Wine 10 trên bản copy đã patch trong `local/`,
@@ -39,6 +39,13 @@ response tổng hợp 317 byte được giữ nguyên từ CP006. Raw packet/log
   `2263F94`, slot `16EA5CC`; bind tiếp candidate `GetWindowRect` đi tới trap `22642CC`, slot
   `16EA638` trong `plain-windowrect`. Các run khác prefix/thời gian; việc vượt trap là hành vi
   trên copy, chưa khẳng định tên import nguyên bản hay nguyên nhân assertion debug.
+- CP009: các copy thử lần lượt bind `PeekMessageA`, `TranslateMessage`, `GetCursorPos`,
+  `ScreenToClient`, `GetCurrentThread` theo call site; run plain đi tiếp qua các trap import.
+  `plain-screenclient` và `plain-thread` chụp được màn phân loại tuổi (ảnh/hash local trong
+  manifest). `plain-thread` sau đó gặp page fault ghi `02677C9C` tại `45E920`, EAX/ECX=`02677C98`;
+  chưa rõ caller/nguồn pointer. Audio vẫn có trace riêng; process/debug dialog còn sống không
+  chứng minh client còn tiến triển. Hai socket vẫn chỉ thu request 66 byte trước đó trong run này.
+  Không coi splash là login hoặc gameplay. Tên import còn là candidate; patch/fixture là emu_choice.
 
 Các patch identity, name, heap, NMCO và overlay ghi before/after, SHA source/target, rollback trong
 metadata local đã hash ở manifest. `verify-cp007.py` kiểm chính xác byte cho năm patch identity,

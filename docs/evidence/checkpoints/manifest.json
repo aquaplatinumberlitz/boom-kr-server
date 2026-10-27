@@ -1,7 +1,7 @@
 {
   "schema": "kre-checkpoints-v1",
-  "last_id": "CP008",
-  "completed_count": 8,
+  "last_id": "CP009",
+  "completed_count": 9,
   "audit_interval": 4,
   "last_periodic_audit": 8,
   "next_periodic_audit": "CP012",
@@ -2659,10 +2659,11 @@
         }
       ],
       "review": {
-        "status": "pending",
-        "as_of_utc": "2026-10-27T07:52:04.460954+00:00",
-        "reference": "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/17#issuecomment-6436416128",
-        "scope": "Initial dd73b2d review reported two P2 findings; corrected by CP008, independent re-review pending."
+        "status": "approved",
+        "as_of_utc": "2026-10-27T07:57:04Z",
+        "reference": "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/17#issuecomment-6436661958",
+        "scope": "Independent review CP007 corrections, CP008 and AUD003; PR17 merged 50c2327daa35317e9af3db5c02ba219b505e9ed3.",
+        "head": "bd057a926eb3adb105a24fd41a98f2742cf92141"
       },
       "docs_sync": [
         {
@@ -2924,10 +2925,11 @@
         }
       ],
       "review": {
-        "status": "pending",
-        "as_of_utc": "2026-10-27T07:52:04.460954+00:00",
-        "reference": "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/17",
-        "scope": "Independent review of CP007 corrections, CP008 observations and AUD003 required"
+        "status": "approved",
+        "as_of_utc": "2026-10-27T07:57:04Z",
+        "reference": "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/17#issuecomment-6436661958",
+        "scope": "Independent review CP007 corrections, CP008 and AUD003; PR17 merged 50c2327daa35317e9af3db5c02ba219b505e9ed3.",
+        "head": "bd057a926eb3adb105a24fd41a98f2742cf92141"
       },
       "docs_sync": [
         {
@@ -2959,6 +2961,359 @@
           "path": "docs/evidence/checkpoints/audits/AUD003.json",
           "state": "updated",
           "reason": "Periodic manual audit at CP008."
+        }
+      ]
+    },
+    {
+      "id": "CP009",
+      "previous": "CP008",
+      "lifecycle": "complete",
+      "recorded_utc": "2026-10-27T08:04:23.062999+00:00",
+      "question": "Do targeted reconstructed message-loop imports reach a meaningful client state, and what is the next concrete failure?",
+      "scope": "Targeted Wine plain runtime on isolated copies, synthetic WCP and identity; issue14 remains open; no login or gate promotion.",
+      "context_commit": "50c2327daa35317e9af3db5c02ba219b505e9ed3",
+      "artifacts": [
+        {
+          "name": "KR modO image",
+          "sha256": "a08950c833d3acab8281049def7b3dc96b221f107eeda01da3a548e34b91dce5"
+        },
+        {
+          "name": "candidate peekmessage",
+          "sha256": "65426075a85c3b252193630aa3f838ca2220804734c9956f417d7587bba4187d"
+        },
+        {
+          "name": "candidate translate",
+          "sha256": "737f8e25b2c93b4acf71e23d0151058362b9440edd4f6ca6c2bc423543dfa956"
+        },
+        {
+          "name": "candidate cursor",
+          "sha256": "ee3cd167542ceb04c93427b96fbc381ce20bbaca890021dc9de86ff609cb9c14"
+        },
+        {
+          "name": "candidate screenclient",
+          "sha256": "db33f2059547571008ff5815a56560cea9014db04c03d5cdc31514ee19bcf0b6"
+        },
+        {
+          "name": "candidate thread",
+          "sha256": "b4e2e835d5f35cf1b681a542feea355b3e3c837038ca08eb5807f82571ed8c39"
+        }
+      ],
+      "locators": [
+        "slots16EA638/16EA5A4/16EA660/16EA650/16EA124; static VA CD6655/1384C74/1504A9C/1503F7C/14FC73C; RVA=VA-400000",
+        "plain-thread fault VA45E920 write02677C9C, EAX/ECX02677C98; runs plain-peekmessage/plain-translate/plain-cursor/plain-screenclient/plain-thread 2026-10-27"
+      ],
+      "owner": "Codex",
+      "reviewer": "Claude Sonnet 5.5 independent reviewer",
+      "findings": [
+        {
+          "summary": "Five copied import bindings produce separate runs progressing through earlier traps and show Korean age-rating splash in two runs",
+          "source": "kr_runtime",
+          "status": "confirmed",
+          "method": "runtime",
+          "limits": "Patched copy with synthetic identity and fixtures, screenshots show startup only; call-site names are candidates, not original import proof.",
+          "canonical": "docs/evidence/nmco-identity/README.md",
+          "evidence": [
+            "E007",
+            "E008",
+            "E011",
+            "E009",
+            "E012",
+            "E027"
+          ]
+        },
+        {
+          "summary": "The plain-thread run reports a write access violation at 45E920, with EAX/ECX 02677C98 and target02677C9C",
+          "source": "kr_runtime",
+          "status": "confirmed",
+          "method": "runtime",
+          "limits": "Run scoped; source and validity of pointer and any causal relation to patches or prior state unknown. Audio/debugger subprocess may remain active after exception.",
+          "canonical": "docs/RESEARCH.md#q-023",
+          "evidence": [
+            "E009",
+            "E010",
+            "E013"
+          ]
+        },
+        {
+          "summary": "Prior CP007 and CP008 approved and merged at PR17 after independent exact-head review",
+          "source": "design",
+          "status": "confirmed",
+          "method": "documentation",
+          "limits": "Approval covers bd057a9; CP009 requires its own review.",
+          "canonical": "docs/evidence/checkpoints/manifest.json",
+          "evidence": [
+            "E026"
+          ]
+        }
+      ],
+      "verification": [
+        {
+          "check": "33 bounded assertions for exact import changes and hashes, isolated runs, fixture delivery, screenshot presence and fault trace",
+          "result": "pass",
+          "evidence": [
+            "E026",
+            "E025",
+            "E027"
+          ],
+          "limits": "Visual screenshot interpretation manually checked; no login or original import equivalence proof."
+        }
+      ],
+      "evidence": [
+        {
+          "id": "E001",
+          "kind": "local",
+          "path": "local/research/codex/nmco-identity-r1/plain-peekmessage/run.json",
+          "bytes": 4017,
+          "sha256": "b88cd7249c4d28f2b4ede25c29fd912a31785e7a896c6e28aca5da55631e03e0"
+        },
+        {
+          "id": "E002",
+          "kind": "local",
+          "path": "local/research/codex/nmco-identity-r1/plain-peekmessage/client.log",
+          "bytes": 157274,
+          "sha256": "4cb89158e7436aa122be968dc1cef79ef1e106c89a03bdc3b667af051336477b"
+        },
+        {
+          "id": "E003",
+          "kind": "local",
+          "path": "local/research/codex/nmco-identity-r1/plain-translate/run.json",
+          "bytes": 4088,
+          "sha256": "71cfb4ac89d6ac78024706f55ded24274e34b2c0746a8ec35ebc9260bbfee056"
+        },
+        {
+          "id": "E004",
+          "kind": "local",
+          "path": "local/research/codex/nmco-identity-r1/plain-translate/client.log",
+          "bytes": 475596,
+          "sha256": "c3b3db0af8f29c6530a14c5e09777146046a3fe7613e8c6c29480df40d3fca17"
+        },
+        {
+          "id": "E005",
+          "kind": "local",
+          "path": "local/research/codex/nmco-identity-r1/plain-cursor/run.json",
+          "bytes": 4084,
+          "sha256": "b19ed40d06209155d88f435193b6d5f7e5236c69fbf6ed9f7b812501bf2f139c"
+        },
+        {
+          "id": "E006",
+          "kind": "local",
+          "path": "local/research/codex/nmco-identity-r1/plain-cursor/client.log",
+          "bytes": 474058,
+          "sha256": "8398764a1278cbbcd267c4919a42a487e784b2cf0d242f209e15172d0ad32c66"
+        },
+        {
+          "id": "E007",
+          "kind": "local",
+          "path": "local/research/codex/nmco-identity-r1/plain-screenclient/run.json",
+          "bytes": 4091,
+          "sha256": "6722618cb7b394b6cd78c18bddc3213ff79b0008bc595637bd3f18e577592f6b"
+        },
+        {
+          "id": "E008",
+          "kind": "local",
+          "path": "local/research/codex/nmco-identity-r1/plain-screenclient/client.log",
+          "bytes": 473883,
+          "sha256": "21886823d690db53565cc23fdb922b64641039d86a2fcf71a91bdae14bcbb249"
+        },
+        {
+          "id": "E009",
+          "kind": "local",
+          "path": "local/research/codex/nmco-identity-r1/plain-thread/run.json",
+          "bytes": 4085,
+          "sha256": "e84296cf6f833daa551cd342eec516cd3c77c86049dc01b6cbc94a144e139c58"
+        },
+        {
+          "id": "E010",
+          "kind": "local",
+          "path": "local/research/codex/nmco-identity-r1/plain-thread/client.log",
+          "bytes": 474806,
+          "sha256": "6e03c0208748fce970551e95c1addfaa5fc11f22d32f245f54ba6c5ad1d0e52d"
+        },
+        {
+          "id": "E011",
+          "kind": "local",
+          "path": "local/research/codex/nmco-identity-r1/plain-screenclient/screen-03.png",
+          "bytes": 192711,
+          "sha256": "5c5c23014d57460a377147ce38096ac0eef7eede14b53232dd7f9195e2bfbcb7"
+        },
+        {
+          "id": "E012",
+          "kind": "local",
+          "path": "local/research/codex/nmco-identity-r1/plain-thread/screen-03.png",
+          "bytes": 192711,
+          "sha256": "5c5c23014d57460a377147ce38096ac0eef7eede14b53232dd7f9195e2bfbcb7"
+        },
+        {
+          "id": "E013",
+          "kind": "local",
+          "path": "local/research/codex/nmco-identity-r1/plain-thread/screen-06.png",
+          "bytes": 3815,
+          "sha256": "16187516d4a5b9ee54f65a805472cc8ab3cfbcef936043f7e35dbe0c1c0cae61"
+        },
+        {
+          "id": "E014",
+          "kind": "local",
+          "path": "local/research/codex/nmco-identity-r1/plain-thread/windows-06.txt",
+          "bytes": 2299,
+          "sha256": "0e56638a65978e0a1487d81c6a3a4d8dd48a52818d7ca32e584fed1ca91072cc"
+        },
+        {
+          "id": "E015",
+          "kind": "local",
+          "path": "local/research/codex/nmco-identity-r1/peekmessage-import-patch.json",
+          "bytes": 524,
+          "sha256": "f92b38d7df349a406990eddaf9421e36345a529ccdf435e18018d5c39435de72"
+        },
+        {
+          "id": "E016",
+          "kind": "local",
+          "path": "local/research/codex/nmco-identity-r1/translate-import-patch.json",
+          "bytes": 532,
+          "sha256": "3d3d0bce9eb1ec687192bf5f91a31e8e58d5d64e40e9bbf033c504909b9422a3"
+        },
+        {
+          "id": "E017",
+          "kind": "local",
+          "path": "local/research/codex/nmco-identity-r1/cursor-import-patch.json",
+          "bytes": 519,
+          "sha256": "be0d6f7c79a0fb2239b23f5cfb792fe80980fa2836ef3ed69e68b9e3e1062f17"
+        },
+        {
+          "id": "E018",
+          "kind": "local",
+          "path": "local/research/codex/nmco-identity-r1/screenclient-import-patch.json",
+          "bytes": 502,
+          "sha256": "92cbb9781bcba966e39c92cb933b6dbc39ae3f82fa87e1931557fdd5f96e5e51"
+        },
+        {
+          "id": "E019",
+          "kind": "local",
+          "path": "local/research/codex/nmco-identity-r1/thread-import-patch.json",
+          "bytes": 544,
+          "sha256": "fc00dbd342c14b70fba47f24a3bab4bb77a4733d4a428dc1ee131fd3adb6f558"
+        },
+        {
+          "id": "E020",
+          "kind": "local",
+          "path": "local/research/codex/nmco-identity-r1/patch-peekmessage-import.py",
+          "bytes": 1866,
+          "sha256": "4480d5eacc6f759cd2c40ba0d4e4688ac6094a40aa3c3cf277902e4de167f15b"
+        },
+        {
+          "id": "E021",
+          "kind": "local",
+          "path": "local/research/codex/nmco-identity-r1/patch-translate-import.py",
+          "bytes": 1807,
+          "sha256": "5abe270f31d74d0dfc9fe682c811f0806bb2c49ce95e4dd4c9a4fbd30bcc98d5"
+        },
+        {
+          "id": "E022",
+          "kind": "local",
+          "path": "local/research/codex/nmco-identity-r1/patch-cursor-import.py",
+          "bytes": 1784,
+          "sha256": "5ef1f56ec071e7977154e95f413ba531e313174266f73b409dcc6f609b2f8e1e"
+        },
+        {
+          "id": "E023",
+          "kind": "local",
+          "path": "local/research/codex/nmco-identity-r1/patch-screenclient-import.py",
+          "bytes": 1781,
+          "sha256": "2a984024135d26effe7af0d24a4e2b5e60cc4b378372f402de33d6a9edd4a316"
+        },
+        {
+          "id": "E024",
+          "kind": "local",
+          "path": "local/research/codex/nmco-identity-r1/patch-thread-import.py",
+          "bytes": 1815,
+          "sha256": "8e404e7dbce66c8a3cfd3e685cd407af4b293ae90d74e0a04a6b3fb13c359255"
+        },
+        {
+          "id": "E025",
+          "kind": "local",
+          "path": "local/research/codex/nmco-identity-r1/verify-cp009.py",
+          "bytes": 3041,
+          "sha256": "8a66974c5c80947b7a90a2e36d020a599eb1bfdc97d9a6779633044388ce8488"
+        },
+        {
+          "id": "E026",
+          "kind": "local",
+          "path": "local/research/codex/nmco-identity-r1/verification-cp009.json",
+          "bytes": 1171,
+          "sha256": "d8b8a5e88920a1d271739494ba149647c3787dd59e2a55217b8f2b202d71bb8c"
+        },
+        {
+          "id": "E027",
+          "kind": "local",
+          "path": "local/research/codex/nmco-identity-r1/import-diffs-cp009.json",
+          "bytes": 23919,
+          "sha256": "3a53968e973c2a31fae80fa96fccfc33dc771f83012715f463db1388250b9b62"
+        }
+      ],
+      "delta": {
+        "added": [
+          "Five candidate import bindings; age-rating splash screenshot; write AV at45E920; CP007–008 review/merge metadata."
+        ],
+        "corrected": [
+          "CP008 slot16EA638 trap describes an earlier copy; latest run proceeds to a distinct write fault."
+        ],
+        "superseded": [
+          "NEXT-WINDOW-IMPORT initial slot16EA638 tracing answered within static and diagnostic runtime scope."
+        ]
+      },
+      "blockers": [
+        "Write access violation at45E920, object pointer origin/validity unknown.",
+        "Local identity, NMCO side effects, oneclickuser and initialization payload semantics remain unknown; no login/gameplay.",
+        "Full KR codec/seq/reconnect and original Windows behavior remain unverified."
+      ],
+      "next_steps": [
+        {
+          "id": "NEXT-WINDOW-IMPORT",
+          "task": "KRE-005b",
+          "state": "superseded",
+          "action": "PeekMessageA candidate tried; multiple subsequent bindings move execution to write fault.",
+          "owner": "Codex",
+          "reviewer": "Claude Sonnet 5.5 independent reviewer"
+        },
+        {
+          "id": "NEXT-OBJECT-FAULT",
+          "task": "KRE-005b",
+          "state": "active",
+          "action": "Trace caller and ownership of faulting pointer at45E920, compare initialization and copy state; design controlled runtime measurement.",
+          "owner": "Codex",
+          "reviewer": "Claude Sonnet 5.5 independent reviewer"
+        }
+      ],
+      "review": {
+        "status": "pending",
+        "as_of_utc": "2026-10-27T08:04:23.062999+00:00",
+        "reference": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/14",
+        "scope": "Independent review CP009 runs, patches and screenshot required"
+      },
+      "docs_sync": [
+        {
+          "path": "README.md",
+          "state": "updated",
+          "reason": "Splash milestone and current failure."
+        },
+        {
+          "path": "docs/PLAN.md",
+          "state": "updated",
+          "reason": "Current route and failure priority."
+        },
+        {
+          "path": "docs/PROTOCOL.md",
+          "state": "updated",
+          "reason": "Link to current bounded evidence; no wire claim changed."
+        },
+        {
+          "path": "docs/RESEARCH.md",
+          "state": "updated",
+          "reason": "Write fault and next question."
+        },
+        {
+          "path": "docs/evidence/nmco-identity/README.md",
+          "state": "updated",
+          "reason": "Run and diagnostic patch limits."
         }
       ]
     }

@@ -31,9 +31,9 @@ CP004–CP005 ghi error state 1/1958 từ dump trên bản R2 và nhánh launche
 copy thử; [trạng thái review](docs/evidence/checkpoints/manifest.json). Điểm chặn và phép kiểm kế ở [Q-023](docs/RESEARCH.md#q-023).
 
 CP006 đã review và merge qua PR16: client copy gửi request đầu và nhận chuỗi response thử.
-CP007–CP008 thử identity local và import cửa sổ. Run không gắn debugger đã chạy audio null và
-đi tiếp tới import chưa bind; assertion audio trước đó chỉ áp cho các run debug đã đo. Giá trị và
-patch chỉ là chẩn đoán; chi tiết và review ở [evidence](docs/evidence/nmco-identity/README.md).
+CP007–CP008 đã review/merge; CP009 thử tiếp message loop và vẽ màn phân loại tuổi trên copy.
+Run mới gặp lỗi ghi bộ nhớ `45E920`; audio assertion trước đó chỉ áp cho các run debug đã đo.
+Giá trị và patch chỉ là chẩn đoán; chi tiết và review ở [evidence](docs/evidence/nmco-identity/README.md).
 
 Checkpoint bền vững: [manifest](docs/evidence/checkpoints/manifest.json).
 Quy trình ghi chép/review/audit: [checkpoint workflow](docs/evidence/checkpoints/README.md).
