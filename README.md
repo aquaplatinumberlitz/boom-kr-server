@@ -27,7 +27,8 @@ Probe riêng sau đó được debugger xác nhận nhận phản hồi WCP; v�
 MW_SEP(10)/Login Failed. **Chưa có login hoạt động hoặc gameplay.**
 Probe hai-reply vẫn là thí nghiệm riêng; review tài liệu theo [CP001](docs/evidence/checkpoints/manifest.json), tách khỏi R2 đã merge.
 Phạm vi từng recipe/bằng chứng ở [WCP](docs/evidence/wcp/README.md);
-điểm chặn và phép kiểm kế ở [Q-023](docs/RESEARCH.md#q-023).
+CP004 tìm được error state 1/1958 từ dump trên bản R2 và nhánh launcher kế tiếp trong bản
+copy thử; [trạng thái review](docs/evidence/checkpoints/manifest.json). Điểm chặn và phép kiểm kế ở [Q-023](docs/RESEARCH.md#q-023).
 
 Checkpoint bền vững: [manifest](docs/evidence/checkpoints/manifest.json).
 Quy trình ghi chép/review/audit: [checkpoint workflow](docs/evidence/checkpoints/README.md).

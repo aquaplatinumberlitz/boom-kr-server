@@ -1,0 +1,57 @@
+{
+  "id": "AUD002",
+  "trigger": "periodic",
+  "completed_through": "CP004",
+  "recorded_utc": "2026-10-27T06:47:35.235073+00:00",
+  "auditor": "Codex; independent PR review pending",
+  "read_files": [
+    "README.md",
+    "docs/PLAN.md",
+    "docs/PROTOCOL.md",
+    "docs/RESEARCH.md",
+    "docs/evidence/wcp/README.md",
+    "docs/evidence/wcp-guard/README.md",
+    "docs/evidence/wcp-guard/verification.json",
+    "docs/evidence/checkpoints/README.md"
+  ],
+  "method": "Manual read core docs in required order, then evidence; compare debug2/debug4/variant client logs, run JSON, byte-diff, disassembly and source hash verification. No vanilla run. Snapshot of docs read in local audit-doc-read.txt.",
+  "findings": [
+    {
+      "id": "F1",
+      "stale": "Q-023 next step still measures undetermined error/guard despite observed R2 error before guard",
+      "correction": "Record measured 1/1958, two zeroed fields experiment and newly observed launcher early exit; keep guard unresolved",
+      "fixed_in": [
+        "README.md",
+        "docs/PLAN.md",
+        "docs/PROTOCOL.md",
+        "docs/RESEARCH.md",
+        "docs/evidence/wcp/README.md",
+        "docs/evidence/wcp-guard/README.md"
+      ]
+    },
+    {
+      "id": "F2",
+      "stale": "Previous worker policy assigned RE to Claude despite latest user instruction",
+      "correction": "Codex primary RE/runtime; Claude Sonnet5.5 independent reviewer only; prior worker reports historical",
+      "fixed_in": [
+        "AGENTS.md",
+        "docs/PLAN.md",
+        "docs/RESEARCH.md"
+      ]
+    },
+    {
+      "id": "F3",
+      "stale": "Task snapshot DOC-WORKFLOW still open at CP003 before PR13 merged",
+      "correction": "Current task state closed as of merge; old completed records remain unchanged",
+      "fixed_in": [
+        "docs/evidence/checkpoints/manifest.json"
+      ]
+    }
+  ],
+  "remaining": [
+    "Review CP004 and audit pending at record time; review state maintained in checkpoint",
+    "No proof vanilla data initialization, why MW_SEP10 or UD2",
+    "Variant and baseline use reused/copied prefixes; narrow debug observations only",
+    "Launcher conditions, guard 12349E0, full codec and login remain open"
+  ]
+}

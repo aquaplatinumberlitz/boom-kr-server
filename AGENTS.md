@@ -52,9 +52,9 @@ ghi audit/counter bền vững. Mâu thuẫn nghiêm trọng audit ngay,không r
 ## Làm việc nhóm
 
 Task là issue trong chính repo này, có KRE ID, baseline, owner/reviewer, dependency, file và acceptance.
-Một owner mỗi file/target/runtime. Codex điều phối/code/runtime. Theo chỉ đạo chủ dự án27/10,
-**Claude Sonnet5.5** thay dsh1/dsh2 đã hết token cho các việc RE và review tiếp theo; không giao thêm
-việc cho hai dsh. Khi gọi worker, chọn đúng model claude-sonnet-5-5 và chỉ rõ task/cwd/owner/output.
+Một owner mỗi file/target/runtime. Theo chỉ đạo mới nhất27/10, Codex trực tiếp làm RE chính, điều phối/code/runtime; **Claude Sonnet5.5**
+chỉ review độc lập. Không giao thêm việc cho dsh1/dsh2 đã hết token. Khi gọi reviewer, chọn đúng
+model claude-sonnet-5-5 và chỉ rõ task/cwd/owner/output.
 Review phải độc lập với tác giả; các report dsh cũ vẫn giữ provenance lịch sử. Ca khó checkpoint sớm
 để Codex vào phụ, không tự quét vô hạn.
 Lượt RE mặc định tối đa8 request/4 thân hàm mới, hai lượt; mở tiếp khi có cạnh/thí nghiệm mới rõ.

@@ -1,7 +1,7 @@
 # Kế hoạch server giả lập KR 00967
 
 Nguồn chuẩn của project `boom-kr-server`; bản nhập từ plan đã được dsh1/dsh2 review tại `1eee46d`.
-Cập nhật27/10 (CP001): triển khai K0/K1 và K2a từng phần;bảng gate là scope nghiệm thu,chưa phải checklist đã pass.
+Cập nhật27/10 (CP004): triển khai K0/K1 và K2a từng phần;bảng gate là scope nghiệm thu,chưa phải checklist đã pass.
 
 
 ### Mục tiêu, baseline và phạm vi
@@ -37,17 +37,18 @@ với client Rust không chứng minh có thể điều khiển client KR bằng
 
 ### Tiến độ hiện hành theo bằng chứng
 
-| Task/mốc | Trạng thái tại CP001 | Nguồn chuẩn |
+| Task/mốc | Trạng thái tại CP004 | Nguồn chuẩn |
 |---|---|---|
 | KRE-004/issue6 | Đã review/merge PR7 và đóng issue:recipe r1 đến local accept;không phải full K1 | [Wine r1](evidence/wine/README.md) |
 | Bootstrap reply | PR8 đã merge;debugger ProcessPatchreturn1,không ép success | [bootstrap evidence](evidence/bootstrap-wire/README.md) |
 | KRE-005a/issue9,R2 | PR10 đã merge:3 cold start cửa sổ/second accept;issue9 còn mở | [R2 evidence](evidence/wine-r2/README.md) |
 | WCP hai-reply | Harness vẫn thí nghiệm riêng;review tổng hợp theo CP001 manifest;static+emulation+debug hẹp,chưa C→S | [PROTOCOL](PROTOCOL.md#wcp),[WCP evidence](evidence/wcp/README.md) |
+| KRE-005b/issue14 | CP004: đối chứng error state R2 và bản copy xóa state; review theo manifest | [Q-023](RESEARCH.md#q-023), [evidence](evidence/wcp-guard/README.md) |
 | K0/K1 | Chưa nghiệm thu toàn gate;Windows vanilla/control ownership và các điều kiện còn thiếu giữ mở | Gate dưới,[Q-022](RESEARCH.md) |
 | K2a/K2 | Primitive/WCP từng phần;full codec,multipleframes,reconnect,request kế chưa pass | [PROTOCOL](PROTOCOL.md),[Q-023](RESEARCH.md#q-023) |
 | K3–K7 | Chưa đạt login/sảnh/phòng/trận/multiplayer | Không có phần trăm ước lượng |
 
-Thứ tự tiếp: đồng bộ checkpoint → đo guard sau WCP tại [Q-023](RESEARCH.md#q-023) →
+Thứ tự tiếp: kiểm nhánh launcher/early exit và điều kiện để tới guard tại [Q-023](RESEARCH.md#q-023) →
 codec/request kế để xét K2 → identity/login K3. Không dựng lobby trước contract cần thiết.
 Chu kỳ docs/audit theo [workflow](evidence/checkpoints/README.md);
 counter ở [manifest](evidence/checkpoints/manifest.json). Không tạo plan theo phiên.
@@ -189,20 +190,20 @@ transfer, không giữ hai bảng việc. Mỗi task có baseline, owner/reviewe
 | Task | Câu hỏi / đầu ra | Dependency | Owner đề xuất / reviewer |
 |---|---|---|---|
 | KRE-001 | Khóa target/copy/dump/DB, chạy control và manifest | — | Codex / Claude reviewer độc lập |
-| KRE-002 | CA ProcessPatch: response/caller/guard; bootstrap local và điểm chặn sau đó; NewPatcher là nhánh tham chiếu | KRE-001 | Claude RE; Codex code/runtime / Claude reviewer độc lập |
-| KRE-003 | KR socket→framer→reader/writer; constants và fixture độc lập | KRE-001; gate runtime cần KRE-002 | Claude RE / Codex |
+| KRE-002 | CA ProcessPatch: response/caller/guard; bootstrap local và điểm chặn sau đó; NewPatcher là nhánh tham chiếu | KRE-001 | Codex RE/code/runtime / Claude reviewer độc lập |
+| KRE-003 | KR socket→framer→reader/writer; constants và fixture độc lập | KRE-001; gate runtime cần KRE-002 | Codex RE / Claude reviewer độc lập |
 | KRE-004 | Wine unpack/patch copy + harness, issue6/PR7 đã xong trong scope tới local accept; chưa nghiệm thu toàn K1 | KRE-001/002 | Codex / Claude reviewer độc lập |
 | KRE-005 | Probe server hello, version/mode/seq, qua K2 | KRE-003/004 | Codex / Claude reviewer độc lập |
-| KRE-006 | Login/channel/cache→lobby và K3 | KRE-005 | Claude RE; Codex code / Claude reviewer độc lập |
-| KRE-007 | Room/roster/map/spawn/loading và K4 | KRE-006 | Claude RE; Codex code / Claude reviewer độc lập |
-| KRE-008 | Bomb/item/trap/result, authority map và K5 | KRE-007 | Claude RE; Codex code / Claude reviewer độc lập |
-| KRE-009 | UDP/peer hoặc relay, đồng bộ hai client và K6 | KRE-008; có thể RE static từ KRE-003 | Claude RE; Codex code / Claude reviewer độc lập |
+| KRE-006 | Login/channel/cache→lobby và K3 | KRE-005 | Codex RE/code / Claude reviewer độc lập |
+| KRE-007 | Room/roster/map/spawn/loading và K4 | KRE-006 | Codex RE/code / Claude reviewer độc lập |
+| KRE-008 | Bomb/item/trap/result, authority map và K5 | KRE-007 | Codex RE/code / Claude reviewer độc lập |
+| KRE-009 | UDP/peer hoặc relay, đồng bộ hai client và K6 | KRE-008; có thể RE static từ KRE-003 | Codex RE/code / Claude reviewer độc lập |
 | KRE-010 | Race/disconnect, bốn client, Linux packaging và K7 | KRE-009 | Codex / Claude reviewer độc lập |
 
 Theo chỉ đạo27/10, **Claude Sonnet5.5** thay dsh1/dsh2 đã hết token. Không gửi thêm task dsh.
-Codex giữ điều phối/code/runtime; Claude nhận RE bootstrap/login/codec/game/peer và review theo task
-hẹp. Khi gọi dùng model claude-sonnet-5-5, cwd repo này, baseline/target/hash/output/acceptance rõ;
-worker không tự chạy client/VM hoặc sửa tracked khi chỉ được giao RE/review.
+Theo chỉ đạo mới nhất27/10, Codex làm RE chính cùng điều phối/code/runtime; Claude Sonnet5.5 chỉ
+review độc lập. Khi gọi dùng model claude-sonnet-5-5, cwd repo này, baseline/target/hash/output/acceptance rõ;
+reviewer không tự sửa tracked hoặc chạy client/VM khi được giao review.
 Ca khó báo checkpoint sớm (SHA/VA/RVA/evidence, cạnh đã thử, blocker và phép đo tiếp), Codex vào phụ.
 Một owner mỗi target/runtime và DB riêng; không để hai worker cùng ghi file/DB. Worker trả raw riêng
 trong local/ cho Codex tích hợp; reviewer phải khác tác giả claim/code. Report/approval dsh trước

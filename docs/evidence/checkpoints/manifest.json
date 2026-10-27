@@ -1,11 +1,11 @@
 {
   "schema": "kre-checkpoints-v1",
-  "last_id": "CP003",
-  "completed_count": 3,
+  "last_id": "CP004",
+  "completed_count": 4,
   "audit_interval": 4,
-  "last_periodic_audit": 0,
-  "next_periodic_audit": "CP004",
-  "last_manual_audit": "AUD001",
+  "last_periodic_audit": 4,
+  "next_periodic_audit": "CP008",
+  "last_manual_audit": "AUD002",
   "checkpoints": [
     {
       "id": "CP001",
@@ -651,6 +651,358 @@
           "reason": "Initial pending snapshot distinguished from current review state"
         }
       ]
+    },
+    {
+      "id": "CP004",
+      "previous": "CP003",
+      "lifecycle": "complete",
+      "recorded_utc": "2026-10-27T06:47:35.235073+00:00",
+      "question": "Why does the modified Wine client report login failure after WCP consumer acceptance, and which branch runs after a controlled diagnostic reset?",
+      "scope": "Issue14 narrow post-WCP debugging, static comparison and one private two-field diagnostic copy; mandatory periodic manual docs audit; no gate promotion",
+      "context_commit": "7bd5c3a8ddfa1dd7e1d0a5fe57affef8b07cafdd",
+      "artifacts": [
+        {
+          "name": "modO memory image base 0x400000",
+          "sha256": "a08950c833d3acab8281049def7b3dc96b221f107eeda01da3a548e34b91dce5"
+        },
+        {
+          "name": "Wine R2 baseline",
+          "sha256": "7b3b435b5d8e110185359107376b736615ceabe9452cea8154d02c8628f44c29"
+        },
+        {
+          "name": "private R2 error-field reset variant",
+          "sha256": "60e981698ed8c4adb3ca070a9612212d7cefa14d29453eb895513367cf197ce7"
+        }
+      ],
+      "locators": [
+        "VA 13AD79C,1234EAF,1234EF8,1234F00,12364A0,1236702; RVA=VA-0x400000",
+        "VA 1A3398C/1A33990; 1254CC0/1254D50/1254D60",
+        "VA 1232385,12323BA,12323EB,1258150,1254CF6,1254CFF,226459C",
+        "debug2/debug4/debug-variant runs 2026-10-27"
+      ],
+      "owner": "Codex",
+      "reviewer": "Claude Sonnet 5.5 independent reviewer",
+      "findings": [
+        {
+          "summary": "R2 two-reply consumer returned1 then getter returned error1/msg1958 and invoked 12364A0 before 12349E0; same pair present at initial debugger stop and in dump/R2 files",
+          "source": "kr_runtime",
+          "status": "confirmed",
+          "method": "runtime",
+          "limits": "Reused-prefix modified Wine/debug runs; initial stop after loader and no vanilla proof. Watchpoints have thread coverage limitations.",
+          "canonical": "docs/PROTOCOL.md#wcp",
+          "evidence": [
+            "E010",
+            "E013",
+            "E002",
+            "E006"
+          ]
+        },
+        {
+          "summary": "Reset of the two u32 in an otherwise byte-identical R2 copy reached 1232385, then launcher early-exit and wrote error9/0x9a1; later UD2",
+          "source": "kr_runtime",
+          "status": "confirmed",
+          "method": "runtime",
+          "limits": "One diagnostic debugger run; reused/copied prefixes not matched fresh controls; no login or original-client claim.",
+          "canonical": "docs/PROTOCOL.md#wcp",
+          "evidence": [
+            "E001",
+            "E016",
+            "E017",
+            "E007"
+          ]
+        },
+        {
+          "summary": "Static guard12349E0 invokes1238530; returns0 for two outcomes; none of these runs proves guard execution",
+          "source": "kr_static",
+          "status": "confirmed",
+          "method": "static",
+          "limits": "Guard body only; guard runtime unobserved; do not identify MW_SEP10 cause.",
+          "canonical": "docs/RESEARCH.md#q-023",
+          "evidence": [
+            "E004",
+            "E005"
+          ]
+        },
+        {
+          "summary": "Codex owns primary RE and runtime; Claude Sonnet5.5 only reviews according to latest user direction",
+          "source": "design",
+          "status": "design",
+          "method": "documentation",
+          "limits": "Does not retroactively change provenance of historical worker reports.",
+          "canonical": "docs/PLAN.md",
+          "evidence": [
+            "E023"
+          ]
+        }
+      ],
+      "verification": [
+        {
+          "check": "Independent scripted raw-log, byte-diff and network namespace assertions",
+          "result": "pass",
+          "evidence": [
+            "E022"
+          ],
+          "limits": "Single controlled variant and debug runs; no semantic or vanilla oracle."
+        },
+        {
+          "check": "Five source artifact identities unchanged",
+          "result": "pass",
+          "evidence": [
+            "E021"
+          ],
+          "limits": "Checks source hashes only, not runtime success."
+        },
+        {
+          "check": "Manual periodic audit README→PLAN→PROTOCOL→RESEARCH→evidence compared with raw",
+          "result": "observed",
+          "evidence": [
+            "E023",
+            "E022"
+          ],
+          "limits": "Auditor Codex; independent review pending."
+        }
+      ],
+      "evidence": [
+        {
+          "id": "E001",
+          "kind": "local",
+          "path": "local/research/codex/wcp-guard-r1/patch-experiment.json",
+          "bytes": 669,
+          "sha256": "a7ed2c7d8542a954f0035b030267adafd01b13468ce32824eb70b0f8b792ed8b"
+        },
+        {
+          "id": "E002",
+          "kind": "local",
+          "path": "local/research/codex/wcp-guard-r1/error-artifact-bytes.json",
+          "bytes": 597,
+          "sha256": "d5f3527f916d08fdfc7fb45102e52320d27a381f86bb9753bcdb3824e5d94166"
+        },
+        {
+          "id": "E003",
+          "kind": "local",
+          "path": "local/research/codex/wcp-guard-r1/rea-attempt.json",
+          "bytes": 1525,
+          "sha256": "b6af43bb0fd8df9c937eb18c2824bf08164a7e94474a268f2514db22eca12b15"
+        },
+        {
+          "id": "E004",
+          "kind": "local",
+          "path": "local/research/codex/wcp-guard-r1/12349e0.asm",
+          "bytes": 2522,
+          "sha256": "a3623e085e000f3f374fff39e9d9b8df575b8e778283b05725e5bbbdc3b203ee"
+        },
+        {
+          "id": "E005",
+          "kind": "local",
+          "path": "local/research/codex/wcp-guard-r1/1238530-window.asm",
+          "bytes": 5261,
+          "sha256": "7058d4a55d8d237e2985b4169071e9fbfb6b75a4dbf32fa6ac1f19b071f73f24"
+        },
+        {
+          "id": "E006",
+          "kind": "local",
+          "path": "local/research/codex/wcp-guard-r1/1254cc0-error-state.asm",
+          "bytes": 1663,
+          "sha256": "d17b75b428925d98a60a00b64e09793a9d7aa5674bfe1b680ec9bedb3df2ec8d"
+        },
+        {
+          "id": "E007",
+          "kind": "local",
+          "path": "local/research/codex/wcp-guard-r1/1258150-window.asm",
+          "bytes": 3772,
+          "sha256": "01b67d7d0bdb0e2a809df6261a8050752f6d2b7c4184acd21147fa17dc9baadf"
+        },
+        {
+          "id": "E008",
+          "kind": "local",
+          "path": "local/research/codex/wcp-guard-r1/1258d60-window.asm",
+          "bytes": 667,
+          "sha256": "ca5138be6acc7048c0dc35497e5413b39628bfd8d9d346c78748c5aca57a0f80"
+        },
+        {
+          "id": "E009",
+          "kind": "local",
+          "path": "local/research/codex/wcp-guard-r1/debug2/run.json",
+          "bytes": 3120,
+          "sha256": "3e65cb36a57b87b4dfe8efda1700b3d6d7d58391b1747eea50fbf437e8930fa3"
+        },
+        {
+          "id": "E010",
+          "kind": "local",
+          "path": "local/research/codex/wcp-guard-r1/debug2/client.log",
+          "bytes": 291248,
+          "sha256": "a8b62d914b9d21f5577f3e7c8daf8a47d14d042a46334390d68d1908d4174fbb"
+        },
+        {
+          "id": "E011",
+          "kind": "local",
+          "path": "local/research/codex/wcp-guard-r1/debug2/debug-commands.txt",
+          "bytes": 843,
+          "sha256": "cabede4199af6ad6ee88b2cfb876847eb222aeff386606ba9dd9a9f44dd6fd1f"
+        },
+        {
+          "id": "E012",
+          "kind": "local",
+          "path": "local/research/codex/wcp-guard-r1/debug4/run.json",
+          "bytes": 2902,
+          "sha256": "81a31720007848cb460895e315be606749a6c9ac844bcb280397a8736256aca9"
+        },
+        {
+          "id": "E013",
+          "kind": "local",
+          "path": "local/research/codex/wcp-guard-r1/debug4/client.log",
+          "bytes": 351978,
+          "sha256": "122fc2fbed57a7dc123c8d658ae91b34ef56a4601f7510dbcbf8e021e6dbf88e"
+        },
+        {
+          "id": "E014",
+          "kind": "local",
+          "path": "local/research/codex/wcp-guard-r1/debug4/debug-commands.txt",
+          "bytes": 549,
+          "sha256": "0eb8dc59bda1865b53c59c1eeaaf50093feb337f0208fc9ece4916c3a723f547"
+        },
+        {
+          "id": "E015",
+          "kind": "local",
+          "path": "local/research/codex/wcp-guard-r1/debug4/CALog-run.txt",
+          "bytes": 65,
+          "sha256": "5e234c309190b81be7af6b4c7d9f838f70ca90230075cf84b724c407d34af3d3"
+        },
+        {
+          "id": "E016",
+          "kind": "local",
+          "path": "local/research/codex/wcp-guard-r1/debug-variant/run.json",
+          "bytes": 2566,
+          "sha256": "3d122640701e6b926e6ba67c6c6a0369a4f6a1f757101a62d1bedaac4ca084da"
+        },
+        {
+          "id": "E017",
+          "kind": "local",
+          "path": "local/research/codex/wcp-guard-r1/debug-variant/client.log",
+          "bytes": 315661,
+          "sha256": "febadc074fca3aced6b5427d3ed295e2b98dc879be91be6f20c41476d0da13bd"
+        },
+        {
+          "id": "E018",
+          "kind": "local",
+          "path": "local/research/codex/wcp-guard-r1/debug-variant/debug-commands.txt",
+          "bytes": 1060,
+          "sha256": "cc6f30400b6e02aafbd31ebd35a8f370425bf291da7457828ded85ad741661dc"
+        },
+        {
+          "id": "E019",
+          "kind": "local",
+          "path": "local/research/codex/wcp-guard-r1/debug-variant/CALog-run.txt",
+          "bytes": 103,
+          "sha256": "d01f884fc902a3628e4848b82fbb0c806c74e8d82fed0eabd6ea190142aee339"
+        },
+        {
+          "id": "E020",
+          "kind": "local",
+          "path": "local/research/codex/wcp-guard-r1/debug-variant/windows-01.txt",
+          "bytes": 2188,
+          "sha256": "c55fd838a58d93c0ba9c9a86facbd69ed237fc0ceeca187d505f3dd1fbbd9e97"
+        },
+        {
+          "id": "E021",
+          "kind": "local",
+          "path": "local/research/codex/wcp-guard-r1/artifact-verification.txt",
+          "bytes": 253,
+          "sha256": "649c6624aa6d317dfc1db5e16fea683cfbc9d9cf4dd3df11c0d70e57409054a0"
+        },
+        {
+          "id": "E022",
+          "kind": "local",
+          "path": "local/research/codex/wcp-guard-r1/verification-assertions.json",
+          "bytes": 505,
+          "sha256": "ad3d5907f9089a44e6c1e62c976025183cd1e3150e0c84751214452782f67864"
+        },
+        {
+          "id": "E023",
+          "kind": "local",
+          "path": "local/research/codex/wcp-guard-r1/audit-doc-read.txt",
+          "bytes": 59422,
+          "sha256": "108b2d1ae6006b23b0bd42e972467e3412cb76a0289357830ec7fc836bf5f075"
+        }
+      ],
+      "delta": {
+        "added": [
+          "Runtime confirmation of pre-guard error path; diagnostic two-field copy reaches launcher early-exit; periodic AUD002."
+        ],
+        "corrected": [
+          "Previous Q-023 active step did not identify failure branch; current R2 runs show error1/1958 before guard.",
+          "DOC-WORKFLOW task snapshot closed after PR13 merged; owner/reviewer follows latest user direction."
+        ],
+        "superseded": [
+          "NEXT-WCP-GUARD measurement completed for current baseline path; guard itself remains unobserved."
+        ]
+      },
+      "blockers": [
+        "Error1/1958 comes from dump-backed image but vanilla initialization and meaning unknown.",
+        "Variant selects early launcher branch and writes9/0x9a1 then UD2; do not assume guard pass or login.",
+        "Full mode2/3, first request, MW_SEP10 cause remain unknown."
+      ],
+      "next_steps": [
+        {
+          "id": "NEXT-WCP-GUARD",
+          "task": "KRE-005a",
+          "state": "closed",
+          "action": "Baseline debugger measurement identified earlier error exit; further guard requires reaching it.",
+          "owner": "Codex",
+          "reviewer": "Claude Sonnet 5.5 independent reviewer"
+        },
+        {
+          "id": "NEXT-WCP-LAUNCHER",
+          "task": "KRE-005b",
+          "state": "active",
+          "action": "Measure d95cb0 and 122AE50/122AF30 leading to 12323BA and correlate launcher/initialization before selecting next offline-copy test; see Q-023.",
+          "owner": "Codex",
+          "reviewer": "Claude Sonnet 5.5 independent reviewer"
+        }
+      ],
+      "review": {
+        "status": "pending",
+        "as_of_utc": "2026-10-27T06:47:35.235073+00:00",
+        "reference": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/14",
+        "scope": "Independent review of CP004 RE, runtime evidence, audit and synced docs required"
+      },
+      "docs_sync": [
+        {
+          "path": "README.md",
+          "state": "updated",
+          "reason": "Current blocker and experiment scope linked to Q-023 and review."
+        },
+        {
+          "path": "docs/PLAN.md",
+          "state": "updated",
+          "reason": "KRE-005b, ordering and latest owner direction."
+        },
+        {
+          "path": "docs/PROTOCOL.md",
+          "state": "updated",
+          "reason": "Canonical scoped WCP error and diagnostic branch observations."
+        },
+        {
+          "path": "docs/RESEARCH.md",
+          "state": "updated",
+          "reason": "Measured branch, unresolved causes and next experiment with correct owner."
+        },
+        {
+          "path": "docs/evidence/wcp/README.md",
+          "state": "updated",
+          "reason": "Link historical guard uncertainty to later measurement."
+        },
+        {
+          "path": "docs/evidence/wcp-guard/README.md",
+          "state": "updated",
+          "reason": "Recipe, before/after, runs, hashes and limitations."
+        },
+        {
+          "path": "docs/evidence/wcp-guard/verification.json",
+          "state": "updated",
+          "reason": "Raw file hash metadata."
+        }
+      ]
     }
   ],
   "audits": [
@@ -658,6 +1010,11 @@
       "id": "AUD001",
       "path": "docs/evidence/checkpoints/audits/AUD001.json",
       "sha256": "ddb6fa489350375ef3589b5c8ce37de31878b03e7c2ab50c12c6910b35920c3e"
+    },
+    {
+      "id": "AUD002",
+      "path": "docs/evidence/checkpoints/audits/AUD002.json",
+      "sha256": "d5bbce4e72199e17605936e2b9501d2470fe3dcfa3ffc350ad4912a7199ff74d"
     }
   ],
   "task_states": [
@@ -675,9 +1032,15 @@
     },
     {
       "id": "DOC-WORKFLOW",
-      "state": "open",
+      "state": "closed",
       "canonical": "docs/PLAN.md",
       "reference": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/12"
+    },
+    {
+      "id": "KRE-005b",
+      "state": "open",
+      "canonical": "docs/PLAN.md",
+      "reference": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/14"
     }
   ]
 }

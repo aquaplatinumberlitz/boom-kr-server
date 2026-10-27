@@ -1,0 +1,119 @@
+{
+  "schema": "kre-wcp-guard-evidence-v1",
+  "checkpoint": "CP004",
+  "baseline_commit": "7bd5c3a8ddfa1dd7e1d0a5fe57affef8b07cafdd",
+  "raw": [
+    {
+      "path": "local/research/codex/wcp-guard-r1/patch-experiment.json",
+      "bytes": 669,
+      "sha256": "a7ed2c7d8542a954f0035b030267adafd01b13468ce32824eb70b0f8b792ed8b"
+    },
+    {
+      "path": "local/research/codex/wcp-guard-r1/error-artifact-bytes.json",
+      "bytes": 597,
+      "sha256": "d5f3527f916d08fdfc7fb45102e52320d27a381f86bb9753bcdb3824e5d94166"
+    },
+    {
+      "path": "local/research/codex/wcp-guard-r1/rea-attempt.json",
+      "bytes": 1525,
+      "sha256": "b6af43bb0fd8df9c937eb18c2824bf08164a7e94474a268f2514db22eca12b15"
+    },
+    {
+      "path": "local/research/codex/wcp-guard-r1/12349e0.asm",
+      "bytes": 2522,
+      "sha256": "a3623e085e000f3f374fff39e9d9b8df575b8e778283b05725e5bbbdc3b203ee"
+    },
+    {
+      "path": "local/research/codex/wcp-guard-r1/1238530-window.asm",
+      "bytes": 5261,
+      "sha256": "7058d4a55d8d237e2985b4169071e9fbfb6b75a4dbf32fa6ac1f19b071f73f24"
+    },
+    {
+      "path": "local/research/codex/wcp-guard-r1/1254cc0-error-state.asm",
+      "bytes": 1663,
+      "sha256": "d17b75b428925d98a60a00b64e09793a9d7aa5674bfe1b680ec9bedb3df2ec8d"
+    },
+    {
+      "path": "local/research/codex/wcp-guard-r1/1258150-window.asm",
+      "bytes": 3772,
+      "sha256": "01b67d7d0bdb0e2a809df6261a8050752f6d2b7c4184acd21147fa17dc9baadf"
+    },
+    {
+      "path": "local/research/codex/wcp-guard-r1/1258d60-window.asm",
+      "bytes": 667,
+      "sha256": "ca5138be6acc7048c0dc35497e5413b39628bfd8d9d346c78748c5aca57a0f80"
+    },
+    {
+      "path": "local/research/codex/wcp-guard-r1/debug2/run.json",
+      "bytes": 3120,
+      "sha256": "3e65cb36a57b87b4dfe8efda1700b3d6d7d58391b1747eea50fbf437e8930fa3"
+    },
+    {
+      "path": "local/research/codex/wcp-guard-r1/debug2/client.log",
+      "bytes": 291248,
+      "sha256": "a8b62d914b9d21f5577f3e7c8daf8a47d14d042a46334390d68d1908d4174fbb"
+    },
+    {
+      "path": "local/research/codex/wcp-guard-r1/debug2/debug-commands.txt",
+      "bytes": 843,
+      "sha256": "cabede4199af6ad6ee88b2cfb876847eb222aeff386606ba9dd9a9f44dd6fd1f"
+    },
+    {
+      "path": "local/research/codex/wcp-guard-r1/debug4/run.json",
+      "bytes": 2902,
+      "sha256": "81a31720007848cb460895e315be606749a6c9ac844bcb280397a8736256aca9"
+    },
+    {
+      "path": "local/research/codex/wcp-guard-r1/debug4/client.log",
+      "bytes": 351978,
+      "sha256": "122fc2fbed57a7dc123c8d658ae91b34ef56a4601f7510dbcbf8e021e6dbf88e"
+    },
+    {
+      "path": "local/research/codex/wcp-guard-r1/debug4/debug-commands.txt",
+      "bytes": 549,
+      "sha256": "0eb8dc59bda1865b53c59c1eeaaf50093feb337f0208fc9ece4916c3a723f547"
+    },
+    {
+      "path": "local/research/codex/wcp-guard-r1/debug4/CALog-run.txt",
+      "bytes": 65,
+      "sha256": "5e234c309190b81be7af6b4c7d9f838f70ca90230075cf84b724c407d34af3d3"
+    },
+    {
+      "path": "local/research/codex/wcp-guard-r1/debug-variant/run.json",
+      "bytes": 2566,
+      "sha256": "3d122640701e6b926e6ba67c6c6a0369a4f6a1f757101a62d1bedaac4ca084da"
+    },
+    {
+      "path": "local/research/codex/wcp-guard-r1/debug-variant/client.log",
+      "bytes": 315661,
+      "sha256": "febadc074fca3aced6b5427d3ed295e2b98dc879be91be6f20c41476d0da13bd"
+    },
+    {
+      "path": "local/research/codex/wcp-guard-r1/debug-variant/debug-commands.txt",
+      "bytes": 1060,
+      "sha256": "cc6f30400b6e02aafbd31ebd35a8f370425bf291da7457828ded85ad741661dc"
+    },
+    {
+      "path": "local/research/codex/wcp-guard-r1/debug-variant/CALog-run.txt",
+      "bytes": 103,
+      "sha256": "d01f884fc902a3628e4848b82fbb0c806c74e8d82fed0eabd6ea190142aee339"
+    },
+    {
+      "path": "local/research/codex/wcp-guard-r1/debug-variant/windows-01.txt",
+      "bytes": 2188,
+      "sha256": "c55fd838a58d93c0ba9c9a86facbd69ed237fc0ceeca187d505f3dd1fbbd9e97"
+    },
+    {
+      "path": "local/research/codex/wcp-guard-r1/artifact-verification.txt",
+      "bytes": 253,
+      "sha256": "649c6624aa6d317dfc1db5e16fea683cfbc9d9cf4dd3df11c0d70e57409054a0"
+    }
+  ],
+  "limitations": [
+    "modified Wine copy; no login/K1/K2 gate",
+    "review state tracked in checkpoint manifest",
+    "different reused prefix snapshots; not a fresh matched control",
+    "debug3 untyped watchpoint failed; incomplete plain-control excluded",
+    "cannot infer untouched vanilla startup or MW_SEP10 cause"
+  ]
+}

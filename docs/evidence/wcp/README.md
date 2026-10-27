@@ -21,7 +21,7 @@ u16 thứ hai không được chứng minh là version WCP chỉ vì fixture có
 |---|---|---|
 | run,2026-10-27T00:16:39Z,20s | Hai accept3858/3888,hai reply15 byte,zero C→S; CALog InitBeforePatch/ProcessPatch | Plain;Login Failed từ sample01,zero C→S20s;absence timeout riêng nó không chứng minh consumer |
 | debug,2026-10-27T06:02:03Z,15s | Break13AD782EAX1 sau poll và13AD79CEAX1 sau consumer; WSAAsyncSelect socket208,hWnd40044,msg400,mask21 status0;zero C→S | Debugger,reuse game/prefix; không cold start hoặc codec nhiều frame |
-| debug cuối | Login Failed; CALog mới [XRpt] MW_SEP(10) | Khác WCP timeout run silent cũ; guard thực gây lỗi chưa đo |
+| debug cuối | Login Failed; CALog mới [XRpt] MW_SEP(10) | Khác WCP timeout run silent cũ; trạng thái sau này xem [CP004](../wcp-guard/README.md) |
 
 Caller runtime:1255C73→1255A69→1234EAF→123235D→122E913→125407F.
 Oracle native14EF300→13AEFE0 dùng input tổng hợp, chỉ thay allocator14F5790:
@@ -36,7 +36,7 @@ R2 đã review/merge PR10 tại2dbbf32; các run silent cũ vẫn đúng cho rec
 Probe hai-reply và report Claude WCP r1/r2 chưa có review độc lập riêng tại CP001;
 Snapshot khi ghi CP001 là pending;review về sau xem [manifest](../checkpoints/manifest.json). Không coi thành gate K2/login.
 Report có erratum giữ hash cũ; contract mới trích correction, không sửa raw lịch sử.
-Zero C→S không chứng minh toàn client chắc chắn cần gói server tiếp; còn guard sau connect chưa đo.
+Zero C→S không chứng minh client chắc chắn cần gói server tiếp; đo sau này tại [CP004](../wcp-guard/README.md).
 Nguồn báo cáo/oracle/debug commands/run/log/digest ở [verification.json](verification.json).
 
 Audit CP001 không nhập suy luận thời gian dialog từ offset chéo run (raw audit F6) thành fact; cần timestamp/caller guard trực tiếp.
