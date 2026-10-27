@@ -31,15 +31,20 @@ CP009: thử tiếp message loop và thread import, client vẽ màn phân loạ
 gặp lỗi ghi tại `45E920` tới địa chỉ `02677C9C`. Pointer/caller và nguyên nhân chưa xác định.
 Chi tiết tại [evidence](evidence/nmco-identity/README.md).
 
-Bước tiếp: Codex truy caller/nguồn pointer lỗi, so sánh trạng thái heap/object trên copy và
-thiết kế đối chứng; đối chứng Wine audio/debug khi cần. Theo dõi các side effect NMCO
-và dữ liệu khởi tạo; không coi identity giả là ID server gốc hay cửa sổ là login thành công.
+CP010: guard của object chứa pointer cũ đã được thử reset; snapshot trực tiếp cho thấy pointer
+được khởi tạo lại. Pre-throw snapshot xác định nhánh yêu cầu `CAWH.sys`; thử bỏ hàm cài hook và
+các binding API tiếp theo đưa copy tới marker khởi tạo, rồi trap overlay ordinal9. Nguồn chuẩn
+cho run/recipe/giới hạn: [evidence object state](evidence/object-state/README.md).
+
+Bước tiếp: Codex truy call site/ABI của `nxoverlay.dll` ordinal9 (`16EA4E8`), đo đường send/log
+packet15 và lý do stub chưa thu thêm C→S. Tiếp tục kiểm input sau khi bỏ hook; theo dõi side effect
+NMCO và dữ liệu khởi tạo. Không coi marker hoặc identity giả là login thành công.
 Tiếp tục đo mode2/3 hai chiều, seq/reconnect và nguồn `oneclickuser` khi cần. Claude chỉ review.
 
 | ID / ưu tiên | Trạng thái | Owner / reviewer | Đã biết | Còn thiếu / bước đóng |
 |---|---|---|---|---|
 | Q-022 / KRE-P1 bootstrap | open | Codex RE / Claude reviewer độc lập | ProcessPatch local có debugger return1;recipe R2 đã merge;contract ở [PROTOCOL](PROTOCOL.md#wcp) | K1a ownership/control trên Windows local/effective token; K1b kiểm caller/config/IPC riêng CA và NewPatcher; K1c stub/patch theo evidence; gate ba cold start tới network attempt/state chờ hello, không lấy alive/không exit làm proof |
-| Q-023 / KRE-P1 codec | open | Codex RE / Claude reviewer độc lập | Primitive có [oracle](evidence/primitives/README.md);WCP có bằng chứng hẹp tại [PROTOCOL](PROTOCOL.md#wcp) | Truy lỗi ghi bộ nhớ theo Q-023; tiếp tục identity và codec hai chiều,checksum/seq/reset và gate K2 |
+| Q-023 / KRE-P1 codec | open | Codex RE / Claude reviewer độc lập | Primitive có [oracle](evidence/primitives/README.md);WCP có bằng chứng hẹp tại [PROTOCOL](PROTOCOL.md#wcp) | Truy overlay/packet15 theo Q-023; tiếp tục identity và codec hai chiều,checksum/seq/reset và gate K2 |
 | Q-024 / KRE-P1 login/kênh | open | Codex RE / Claude reviewer độc lập | VN có bootstrap-data, login/redirect/cache/kênh; các variant trong một binary đã khác layout | KR handler/field/order/encoding/local identity; cold/warm cache và keepalive vào sảnh K3; không gọi auth Nexon thật |
 | Q-025 / KRE-P1 room/load | open | Codex RE / Claude reviewer độc lập | Asset map KR và UI Ready có locator; VN có bẫy map tự gửi/spawn trước khi load | Wire KR create/join/host/slot/ready/start/roster/map/spawn/ack; K4 hai client thấy cùng phòng và spawn đúng |
 | Q-026 / KRE-P1 authority/trận | open | Codex RE / Claude reviewer độc lập | KR có consumer flame/chain, timer/send167/status184; VN mô hình lai | Phân quyền client/server/peer từng event; packet bom/pickup/trap/death/result/correction KR; K5 một chu kỳ hoàn chỉnh, không lấy packet183 ghost làm mover người sống |

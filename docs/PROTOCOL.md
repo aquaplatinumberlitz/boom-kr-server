@@ -116,12 +116,16 @@ consumer tiếp theo chờ opcode13. Tám response tổng hợp opcode `13,2,12,
 đã được consumer Wine xử lý đủ để guard `12349E0` trả1 trong một run debug; một số payload rỗng
 là `emu_choice`, không chứng minh tài nguyên/server gốc. Mode2/3 với header36 byte, XOR và CRC8
 được kiểm hẹp bằng native oracle cùng negative checksum/partial và runtime; không suy full codec,
-reconnect hay K2. Import NMCO identity chưa bind trên copy CP006; thử nghiệm tiếp và blocker
-hiện tại ở [CP007–009](evidence/nmco-identity/README.md). Không có login/gameplay.
+reconnect hay K2. Import NMCO identity chưa bind trên copy CP006; thử nghiệm tiếp
+CP007–009 ở [evidence identity](evidence/nmco-identity/README.md), còn blocker/kiểm hiện hành
+ở [CP010](evidence/object-state/README.md). Không có login/gameplay.
 
 CP007 dùng identity `1` và screen name rỗng như **emu_choice**, không bổ sung contract wire hay
 chứng minh identity server gốc. Các run chỉ chứng minh phạm vi đường chạy trên copy đã sửa;
 ngữ nghĩa login và nội dung khởi tạo vẫn unknown.
+
+CP010 có log tạo packet type15 sau marker khởi tạo trên copy; capture stub vẫn chỉ có 66 byte
+C→S trước đó. Chưa có wire/layout hoặc vai trò packet15 được khôi phục từ quan sát này.
 
 Fixture opaque/zero/empty và prefix69 là emu_choice đã được consumer chấp nhận trong phép thử,
 không phải byte server gốc. Nhánh flag1,codec frame mode2/selector3 ở phạm vi fixture CP006 có kiểm hẹp; seq/reconnect, semantics đầy đủ và
