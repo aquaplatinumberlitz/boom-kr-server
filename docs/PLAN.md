@@ -1,7 +1,7 @@
 # Kế hoạch server giả lập KR 00967
 
 Nguồn chuẩn của project `boom-kr-server`; bản nhập từ plan đã được dsh1/dsh2 review tại `1eee46d`.
-Cập nhật27/10 (CP007): triển khai K0/K1 và K2a từng phần;bảng gate là scope nghiệm thu,chưa phải checklist đã pass.
+Cập nhật27/10 (CP008): triển khai K0/K1 và K2a từng phần;bảng gate là scope nghiệm thu,chưa phải checklist đã pass.
 
 
 ### Mục tiêu, baseline và phạm vi
@@ -37,30 +37,30 @@ với client Rust không chứng minh có thể điều khiển client KR bằng
 
 ### Tiến độ hiện hành theo bằng chứng
 
-| Task/mốc | Trạng thái tại CP007 | Nguồn chuẩn |
+| Task/mốc | Trạng thái tại CP008 | Nguồn chuẩn |
 |---|---|---|
 | KRE-004/issue6 | Đã review/merge PR7 và đóng issue:recipe r1 đến local accept;không phải full K1 | [Wine r1](evidence/wine/README.md) |
 | Bootstrap reply | PR8 đã merge;debugger ProcessPatchreturn1,không ép success | [bootstrap evidence](evidence/bootstrap-wire/README.md) |
 | KRE-005a/issue9,R2 | PR10 đã merge:3 cold start cửa sổ/second accept;issue9 còn mở | [R2 evidence](evidence/wine-r2/README.md) |
 | WCP hai-reply | Run CP001 là lịch sử chưa C→S; CP006 đã đo request đầu trên copy tham số hóa | [PROTOCOL](PROTOCOL.md#wcp),[WCP evidence](evidence/wcp/README.md) |
-| KRE-005b/issue14 | CP006 đã merge; CP007 thử identity/import local tới blocker Wine audio, review theo manifest | [Q-023](RESEARCH.md#q-023), [evidence](evidence/nmco-identity/README.md) |
+| KRE-005b/issue14 | CP006 đã merge; CP007–008 thử identity/import local; run plain đi qua audio, tới import chưa bind; review theo manifest | [Q-023](RESEARCH.md#q-023), [evidence](evidence/nmco-identity/README.md) |
 | K0/K1 | Chưa nghiệm thu toàn gate;Windows vanilla/control ownership và các điều kiện còn thiếu giữ mở | Gate dưới,[Q-022](RESEARCH.md) |
 | K2a/K2 | Primitive/WCP từng phần;full codec,multipleframes,reconnect,request kế chưa pass | [PROTOCOL](PROTOCOL.md),[Q-023](RESEARCH.md#q-023) |
 | K3–K7 | Chưa đạt login/sảnh/phòng/trận/multiplayer | Không có phần trăm ước lượng |
 
-Thứ tự tiếp: xử lý blocker Wine audio và theo dõi identity/NMCO tại [Q-023](RESEARCH.md#q-023) →
+Thứ tự tiếp: truy import `16EA638` và theo dõi identity/NMCO tại [Q-023](RESEARCH.md#q-023) →
 codec/request kế để xét K2 → identity/login K3. Không dựng lobby trước contract cần thiết.
 Chu kỳ docs/audit theo [workflow](evidence/checkpoints/README.md);
 counter ở [manifest](evidence/checkpoints/manifest.json). Không tạo plan theo phiên.
 
-### Bản đồ đường chạy, CP007
+### Bản đồ đường chạy, CP008
 
 | Bước | Quan sát/bước tiếp |
 |---|---|
 | Bootstrap | ProcessPatch có response local trong Wine copy; K1 còn thiếu đối chứng/gate. |
 | WCP → request đầu | Consumer chấp nhận fixture; một run debug và một run plain có C→S66 byte; xem [contract](PROTOCOL.md#wcp). |
 | Dữ liệu khởi tạo | Tám response tổng hợp đã dẫn tới guard trả1 trên copy; chưa chứng minh tài nguyên thật hay K2. |
-| Login → sảnh | Chưa đạt; identity giả giúp đi tiếp trên copy; Wine audio hiện dừng run, xem [Q-023](RESEARCH.md#q-023). |
+| Login → sảnh | Chưa đạt; identity giả giúp đi tiếp trên copy; run plain hiện dừng tại import `16EA638`, xem [Q-023](RESEARCH.md#q-023). |
 | Phòng → trận | Chưa có runtime hay contract đủ để triển khai. |
 
 RE động là chính; gom phép đo thành checkpoint mốc/blocker, audit định kỳ và review vẫn theo workflow.

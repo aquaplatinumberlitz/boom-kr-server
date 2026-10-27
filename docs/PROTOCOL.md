@@ -117,7 +117,7 @@ consumer tiếp theo chờ opcode13. Tám response tổng hợp opcode `13,2,12,
 là `emu_choice`, không chứng minh tài nguyên/server gốc. Mode2/3 với header36 byte, XOR và CRC8
 được kiểm hẹp bằng native oracle cùng negative checksum/partial và runtime; không suy full codec,
 reconnect hay K2. Import NMCO identity chưa bind trên copy CP006; thử nghiệm tiếp và blocker
-hiện tại ở [CP007](evidence/nmco-identity/README.md). Không có login/gameplay.
+hiện tại ở [CP007–008](evidence/nmco-identity/README.md). Không có login/gameplay.
 
 CP007 dùng identity `1` và screen name rỗng như **emu_choice**, không bổ sung contract wire hay
 chứng minh identity server gốc. Các run chỉ chứng minh phạm vi đường chạy trên copy đã sửa;
