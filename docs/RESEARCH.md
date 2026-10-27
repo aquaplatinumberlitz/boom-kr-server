@@ -16,13 +16,14 @@ Cập nhật CP001: contract WCP ở [PROTOCOL](PROTOCOL.md#wcp),raw/review/inte
 KRE-004/issue6 đã đóng trong scope Wine r1;KRE-005a/issue9 còn mở cho bước sau.
 
 <a id="q-023"></a>
-Q-023, CP004 (review theo [manifest](evidence/checkpoints/manifest.json)): R2 đọc error1/msg1958 có sẵn trong image, gọi 12364A0 trước
-12349E0. Copy thử zero hai ô cho qua nhánh đó, sau đó đến 12323BA→1258150, chạy CALauncher
-và ghi error9/msg0x9a1; khi thoát gặp UD2 tại 226459C. Xem [contract](PROTOCOL.md#wcp) và
+Q-023, CP005 (review theo [manifest](evidence/checkpoints/manifest.json)): R2 đọc error1/msg1958 có sẵn trong image, dừng tại 12364A0; guard12349E0 chưa quan sát. Ở run copy thử với hai u32 bằng0, quan sát
+1232385, ba kết quả nhánh1/0/0, 12323BA→1258150, CALauncher khởi chạy và ghi error9/msg0x9a1;
+khi thoát gặp UD2 tại 226459C. Khác biệt kết quả giữa run là bằng chứng hẹp, chưa chứng minh
+quan hệ nhân quả riêng của patch. Xem [contract](PROTOCOL.md#wcp) và
 [evidence/giới hạn](evidence/wcp-guard/README.md). Chưa có proof cho nguyên nhân MW_SEP(10).
 
-Bước tiếp: Codex kiểm nguồn flag d95cb0 và các điều kiện 122AE50/122AF30 bằng phép đo hẹp;
-đối chiếu launcher path và điều kiện khởi tạo hợp lệ trước khi quyết định test copy tiếp. Không
+Bước tiếp: Codex truy nguồn và trạng thái khởi tạo hai giá trị qua 122AE50/122AF30 và 52A350;
+đối chiếu launcher path và điều kiện hợp lệ trước khi quyết định test copy tiếp. Không
 coi zero lỗi là fix sản phẩm hoặc giả định guard12349E0 đã được gọi. Nếu qua early exit mới đo
 guard và notification400/mode2/selector3; storage u32 cần oracle khác0. Claude chỉ review.
 

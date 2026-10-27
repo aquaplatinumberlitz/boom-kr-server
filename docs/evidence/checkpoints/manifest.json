@@ -1,7 +1,7 @@
 {
   "schema": "kre-checkpoints-v1",
-  "last_id": "CP004",
-  "completed_count": 4,
+  "last_id": "CP005",
+  "completed_count": 5,
   "audit_interval": 4,
   "last_periodic_audit": 4,
   "next_periodic_audit": "CP008",
@@ -961,10 +961,10 @@
         }
       ],
       "review": {
-        "status": "pending",
-        "as_of_utc": "2026-10-27T06:47:35.235073+00:00",
-        "reference": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/14",
-        "scope": "Independent review of CP004 RE, runtime evidence, audit and synced docs required"
+        "status": "changes_requested",
+        "as_of_utc": "2026-10-27T06:52:01.810062+00:00",
+        "reference": "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/15#issuecomment-6435705460",
+        "scope": "Review b5a8740116f0490dd8de186dceb1c3744c091e58 requests direct static evidence links and narrower cross-run causality; CP005 corrects both."
       },
       "docs_sync": [
         {
@@ -1001,6 +1001,327 @@
           "path": "docs/evidence/wcp-guard/verification.json",
           "state": "updated",
           "reason": "Raw file hash metadata."
+        }
+      ]
+    },
+    {
+      "id": "CP005",
+      "previous": "CP004",
+      "lifecycle": "complete",
+      "recorded_utc": "2026-10-27T06:52:01.810062+00:00",
+      "question": "Which measured conditions route the error-reset diagnostic copy to launcher, and what corrections follow independent CP004 review?",
+      "scope": "Q-023 narrow static and isolated Wine debugger measurement, additional baseline breakpoint control, CP004 review corrections; no gate promotion",
+      "context_commit": "b5a8740116f0490dd8de186dceb1c3744c091e58",
+      "artifacts": [
+        {
+          "name": "modO memory image base 0x400000",
+          "sha256": "a08950c833d3acab8281049def7b3dc96b221f107eeda01da3a548e34b91dce5"
+        },
+        {
+          "name": "Wine R2 baseline",
+          "sha256": "7b3b435b5d8e110185359107376b736615ceabe9452cea8154d02c8628f44c29"
+        },
+        {
+          "name": "private diagnostic error-reset variant",
+          "sha256": "60e981698ed8c4adb3ca070a9612212d7cefa14d29453eb895513367cf197ce7"
+        }
+      ],
+      "locators": [
+        "D95CB0,456AD0,122AE50,122AF30,529C60,57A870,52A350; RVA=VA-0x400000",
+        "123238D/12323A4/12323B4/12323BA,1234EF8/12364A0",
+        "wcp-launcher-r1/debug and debug-baseline 2026-10-27"
+      ],
+      "owner": "Codex",
+      "reviewer": "Claude Sonnet 5.5 independent reviewer",
+      "findings": [
+        {
+          "summary": "Variant debug run WCP consumer1 and branch return values1/0/0, then stop12323BA and launcher path",
+          "source": "kr_runtime",
+          "status": "confirmed",
+          "method": "runtime",
+          "limits": "One error-reset modified Wine run, copied reused prefix; no claim of original client or login; baseline differs in timing, breakpoint set and port.",
+          "canonical": "docs/RESEARCH.md#q-023",
+          "evidence": [
+            "E010",
+            "E009",
+            "E013"
+          ]
+        },
+        {
+          "summary": "Static D95CB0 calls 456AD0(0x9f), which returns AL0; the two tested getters invoke shared 52A350 through wrappers at +E78 and +E9C",
+          "source": "kr_static",
+          "status": "confirmed",
+          "method": "static",
+          "limits": "modO and diagnostic variant byte comparison only; field meaning and initialization unknown; 52A350 window partial.",
+          "canonical": "docs/RESEARCH.md#q-023",
+          "evidence": [
+            "E001",
+            "E002",
+            "E003",
+            "E004",
+            "E005",
+            "E006",
+            "E007",
+            "E008"
+          ]
+        },
+        {
+          "summary": "Independent review requires direct prior static branch evidence and qualified cross-run causation; canonical docs corrected, CP004 preserved",
+          "source": "design",
+          "status": "confirmed",
+          "method": "documentation",
+          "limits": "Review findings do not disprove observed stops; baseline negative breakpoint is run-bounded and not matched control.",
+          "canonical": "docs/evidence/wcp-launcher/README.md",
+          "evidence": [
+            "E018",
+            "E019",
+            "E020",
+            "E021",
+            "E015",
+            "E017"
+          ]
+        }
+      ],
+      "verification": [
+        {
+          "check": "Breakpoint values, hash/byte equivalence and private namespace assertions",
+          "result": "pass",
+          "evidence": [
+            "E013",
+            "E008",
+            "E017"
+          ],
+          "limits": "Single runs, no vanilla or matched-prefix comparison."
+        },
+        {
+          "check": "Prior CP004 independent review P2 documented and corrected in canonical docs",
+          "result": "observed",
+          "evidence": [
+            "E018"
+          ],
+          "limits": "New head pending re-review."
+        }
+      ],
+      "evidence": [
+        {
+          "id": "E001",
+          "kind": "local",
+          "path": "local/research/codex/wcp-launcher-r1/d95cb0.asm",
+          "bytes": 1072,
+          "sha256": "3b1a3cb6daf8dd169967359d85741e599fb018cf3cc7e1a514a7a54a9a8a64f4"
+        },
+        {
+          "id": "E002",
+          "kind": "local",
+          "path": "local/research/codex/wcp-launcher-r1/456ad0.asm",
+          "bytes": 2461,
+          "sha256": "aa46820efbbb4211c1ae15e1b97cac2229b2dbfb5651d1d94195ddcdaa7ad87b"
+        },
+        {
+          "id": "E003",
+          "kind": "local",
+          "path": "local/research/codex/wcp-launcher-r1/122ae50.asm",
+          "bytes": 2800,
+          "sha256": "b12cb837af163c381e550b9d477c9a8e2ebd7a897351e00e4b18ce909d1f7aea"
+        },
+        {
+          "id": "E004",
+          "kind": "local",
+          "path": "local/research/codex/wcp-launcher-r1/122af30.asm",
+          "bytes": 2555,
+          "sha256": "7e90741d362457c8c5249036eb6e68e6ba818ad4e19c14ff272948499e2121d7"
+        },
+        {
+          "id": "E005",
+          "kind": "local",
+          "path": "local/research/codex/wcp-launcher-r1/529c60.asm",
+          "bytes": 736,
+          "sha256": "46a128984208baf03ba58ae8ac8e62fadd6221105a68a0591ea8c12c2a0678d0"
+        },
+        {
+          "id": "E006",
+          "kind": "local",
+          "path": "local/research/codex/wcp-launcher-r1/57a870.asm",
+          "bytes": 841,
+          "sha256": "54fa2a220ae6729c8327ab0e79f77834acaeff6022dcd7cbb0a2872b52b4bde0"
+        },
+        {
+          "id": "E007",
+          "kind": "local",
+          "path": "local/research/codex/wcp-launcher-r1/52a350.asm",
+          "bytes": 3202,
+          "sha256": "163f557c2c6ec3b45cbd8f877ed316a5903fcaf17559bc8814dade4c580d33f2"
+        },
+        {
+          "id": "E008",
+          "kind": "local",
+          "path": "local/research/codex/wcp-launcher-r1/static-byte-compare.json",
+          "bytes": 1176,
+          "sha256": "dfa7ae2df1ddf88c2d815f9cddbb3288606035b71991cb38ed185292e91dac12"
+        },
+        {
+          "id": "E009",
+          "kind": "local",
+          "path": "local/research/codex/wcp-launcher-r1/debug/run.json",
+          "bytes": 2566,
+          "sha256": "44f80782e060d855ed52f6ea1e9ab07c76c3e842f7fa91f481e578553cb0cf69"
+        },
+        {
+          "id": "E010",
+          "kind": "local",
+          "path": "local/research/codex/wcp-launcher-r1/debug/client.log",
+          "bytes": 256462,
+          "sha256": "52d3b3430bcb595287fc55ea366efd26cc1f5ce13fb80ec31409d1c204013b6d"
+        },
+        {
+          "id": "E011",
+          "kind": "local",
+          "path": "local/research/codex/wcp-launcher-r1/debug/debug-commands.txt",
+          "bytes": 356,
+          "sha256": "d171972f7a83351cc3720d7435eea5ceb3778f8f0544764806f8d8b08c21ff28"
+        },
+        {
+          "id": "E012",
+          "kind": "local",
+          "path": "local/research/codex/wcp-launcher-r1/debug/CALog-run.txt",
+          "bytes": 103,
+          "sha256": "d01f884fc902a3628e4848b82fbb0c806c74e8d82fed0eabd6ea190142aee339"
+        },
+        {
+          "id": "E013",
+          "kind": "local",
+          "path": "local/research/codex/wcp-launcher-r1/assertions.json",
+          "bytes": 432,
+          "sha256": "fcbec435efc397d0b10e68781967914f90c3613fbee92df7bd2bc6057a2525c3"
+        },
+        {
+          "id": "E014",
+          "kind": "local",
+          "path": "local/research/codex/wcp-launcher-r1/debug-baseline/run.json",
+          "bytes": 2828,
+          "sha256": "bd593c43ec319ba3c85c2dab38bad7470f2623d8fd5fc9edc3ca9ed57cc7c0a8"
+        },
+        {
+          "id": "E015",
+          "kind": "local",
+          "path": "local/research/codex/wcp-launcher-r1/debug-baseline/client.log",
+          "bytes": 351668,
+          "sha256": "de57b8654d7323690fc9e4d82469a954b518313383865373b4591f11915cad05"
+        },
+        {
+          "id": "E016",
+          "kind": "local",
+          "path": "local/research/codex/wcp-launcher-r1/debug-baseline/debug-commands.txt",
+          "bytes": 281,
+          "sha256": "f3daf724dd89fad9dfda9d6a9170b98c1d6bc645a60c6beac0c7b0cb99b4e978"
+        },
+        {
+          "id": "E017",
+          "kind": "local",
+          "path": "local/research/codex/wcp-launcher-r1/baseline-assertions.json",
+          "bytes": 328,
+          "sha256": "4ea2d879aaf596c2e77314174346ed5b433cdbb4f4d2efe80c67b1cbbddb816a"
+        },
+        {
+          "id": "E018",
+          "kind": "local",
+          "path": "local/research/codex/wcp-guard-r1/review.md",
+          "bytes": 10208,
+          "sha256": "4067760b93561690c585d6f44894d14666ccb1f588369f2af08c87c563615736"
+        },
+        {
+          "id": "E019",
+          "kind": "local",
+          "path": "local/research/claude/wcp/raw2/12322e0-after-connect.asm",
+          "bytes": 2644,
+          "sha256": "1fb6059360dd72c1b883c95e149fa6d782c44a1098dd2b61a64e04e37385284c"
+        },
+        {
+          "id": "E020",
+          "kind": "local",
+          "path": "local/research/claude/wcp/raw2/1232458-post-connect.asm",
+          "bytes": 4941,
+          "sha256": "c3a08fdcf727f34b7debe6931468ac8572b9ce67096a7105e776d0c47864ba79"
+        },
+        {
+          "id": "E021",
+          "kind": "local",
+          "path": "local/research/claude/wcp/raw2/1234e40-near.asm",
+          "bytes": 3377,
+          "sha256": "1d125cf897d28655be5dda624735366deebf81e7c8c103c714902ff5a0d98b4c"
+        }
+      ],
+      "delta": {
+        "added": [
+          "Measured values1/0/0 and branch12323BA on diagnostic copy; additional baseline control; explicit static evidence references."
+        ],
+        "corrected": [
+          "CP004 wording implied zeroing caused all cross-run differences and guard order was directly observed; treat as run-scoped observations and static inference.",
+          "CP004 lacked direct evidence IDs for branch assembly; prior WCP r2 assembly now referenced."
+        ],
+        "superseded": [
+          "CP004 next measurement of d95cb0/122AE50/122AF30 performed; field meaning/initialization remains open."
+        ]
+      },
+      "blockers": [
+        "Variant enters launcher and then UD2; guard not reached.",
+        "Two fields and intended initialization not identified; not enough to choose legitimate next probe.",
+        "Full codec and login unproven."
+      ],
+      "next_steps": [
+        {
+          "id": "NEXT-WCP-LAUNCHER",
+          "task": "KRE-005b",
+          "state": "closed",
+          "action": "Measured flag and both getter returns for one variant run.",
+          "owner": "Codex",
+          "reviewer": "Claude Sonnet 5.5 independent reviewer"
+        },
+        {
+          "id": "NEXT-WCP-FIELDS",
+          "task": "KRE-005b",
+          "state": "active",
+          "action": "Trace initialization and provenance of fields +E78/+E9C and launcher decision; use Q-023 and matched control before further copy tests.",
+          "owner": "Codex",
+          "reviewer": "Claude Sonnet 5.5 independent reviewer"
+        }
+      ],
+      "review": {
+        "status": "pending",
+        "as_of_utc": "2026-10-27T06:52:01.810062+00:00",
+        "reference": "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/15",
+        "scope": "Independent review of CP005 observations, CP004 correction and exact full head required"
+      },
+      "docs_sync": [
+        {
+          "path": "README.md",
+          "state": "updated",
+          "reason": "Current CP004–005 state and review pointer."
+        },
+        {
+          "path": "docs/PLAN.md",
+          "state": "updated",
+          "reason": "CP005 status, next task and reviewer-only ownership."
+        },
+        {
+          "path": "docs/PROTOCOL.md",
+          "state": "updated",
+          "reason": "Corrected cross-run causality and scope."
+        },
+        {
+          "path": "docs/RESEARCH.md",
+          "state": "updated",
+          "reason": "Measured branch values and field-initialization next step."
+        },
+        {
+          "path": "docs/evidence/wcp-guard/README.md",
+          "state": "updated",
+          "reason": "Superseded causal interpretation and link to CP005."
+        },
+        {
+          "path": "docs/evidence/wcp-launcher/README.md",
+          "state": "updated",
+          "reason": "New recipe, runtime/static comparison and controls."
         }
       ]
     }

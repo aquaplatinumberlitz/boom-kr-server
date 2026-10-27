@@ -24,14 +24,15 @@ nguy cơ che lỗi thật. Đã kiểm hai file cùng size, chỉ ba byte khác 
 đưa patch vào builder/harness đã merge. Không xóa lỗi live hay sửa binary gốc. Debug3 dùng cú pháp
 watch thiếu type nên thất bại; debug4 dùng typed watchpoint. Plain-control bị ngắt, thiếu `run.json`,
 không dùng làm đối chứng. Breakpoints/watchpoints không hit chỉ là quan sát trong phạm vi run/điều
-kiện debugger, không chứng minh không có ghi bởi thread khác.
+kiện debugger, không chứng minh không có ghi bởi thread khác. CP005 đính thêm assembly và thu hẹp suy luận nhân quả;
+đo nhánh mới ở [evidence CP005](../wcp-launcher/README.md).
 
 ## Đối chiếu tĩnh
 
 `modO` SHA `a08950c833d3acab8281049def7b3dc96b221f107eeda01da3a548e34b91dce5` là memory-layout
 base `0x400000`. Hai u32 đã là `1/1958` trong modO, kr-full và file R2; builder tạo image từ memory
 snapshot. `1254D50`/`1254D60` đọc hai ô đó; `1254CC0` ghi chúng. Với variant, nhánh
-`1232385→12323BA→1258150` khớp backtrace `12323EB`, sau đó `1258150` ghi `9/0x9a1` sau call
+`1232385→12323BA→1258150` có assembly lưu từ WCP r2 và khớp backtrace `12323EB`, sau đó `1258150` ghi `9/0x9a1` sau call
 `16EA1D0`. Quan sát start CALauncher không chứng minh kết quả hay thành công của launcher.
 `12349E0` gọi `1238530`; code có các nhánh trả0 cho hai kết quả, nhưng chưa gọi được trong các run này.
 Không gán nguyên nhân MW_SEP(10) hoặc UD2 khi chưa đo. REA/IDA decompiler trả lỗi
