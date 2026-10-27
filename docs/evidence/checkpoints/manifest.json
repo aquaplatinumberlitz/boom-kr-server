@@ -613,10 +613,11 @@
       ],
       "next_steps": [],
       "review": {
-        "status": "pending",
-        "as_of_utc": "2026-10-27T06:32:24.704318+00:00",
-        "reference": "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/13",
-        "scope": "CP003 hardening and updated review-state links; requires fresh exact-head review"
+        "status": "approved",
+        "as_of_utc": "2026-10-27T06:35:06.436955+00:00",
+        "reference": "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/13#issuecomment-6435471409",
+        "scope": "CP003 checker/policy/canonical docs at exact reviewed head; no new runtime or gate",
+        "head": "29ead4aaa6a1fd95069a58df83d255b1236e7e43"
       },
       "docs_sync": [
         {
