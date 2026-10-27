@@ -1,0 +1,348 @@
+{
+  "schema": "kre-wine-post-bootstrap-r2",
+  "baseline": "e633736947bd04277a3f64485ce8148368e8d7bd",
+  "issue": 9,
+  "recipe": "post-bootstrap-r2",
+  "exe_sha256": "7b3b435b5d8e110185359107376b736615ceabe9452cea8154d02c8628f44c29",
+  "tool": {
+    "path": "tools/build_wine_copy.py",
+    "bytes": 10643,
+    "sha256": "09cb3626405056ec093639706c1364633035892badebcf02f46d42c01ec8bdbc"
+  },
+  "harness": {
+    "path": "tools/wine_probe.py",
+    "bytes": 16512,
+    "sha256": "a1e7abeaaf4a4def11fe56845dc5d5d7c05d86813786f4024188d7902032e0fb"
+  },
+  "report": {
+    "path": "local/research/codex/rebuild-r2-final.json",
+    "bytes": 92365,
+    "sha256": "22afffb9a19694797453c0c99dd363b972983b6d459171484bd023f855ffdfc6"
+  },
+  "r1_regression": {
+    "path": "local/research/codex/rebuild-r1-final-regression.json",
+    "bytes": 91634,
+    "sha256": "e69c9213a896139ad075f79a8b5ef0a716626f72607b8a3e3169dbe4df788909"
+  },
+  "claims": [
+    {
+      "source": "kr_static",
+      "status": "confirmed",
+      "scope": "SevenWindowsimportcallsite/ABI withboundednativewrapperproof; allocator/TEBcontextslisted; public-name andconversionlimitsinREADME"
+    },
+    {
+      "source": "emu_choice",
+      "status": "confirmed",
+      "scope": "5byteNGinitcallomission; originalr1unchangeddefault; callbackfunctionalitynotprovided"
+    },
+    {
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "scope": "ModifiedR2sameSHA3freshprocess/game/prefixcopystarts window800x600+secondloopbackaccept;15sWCPfailure,10sother2stillwaiting. NoUIlogin/gamehello/vanilla equivalence."
+    }
+  ],
+  "static_raw": [
+    {
+      "path": "local/research/codex/resolve-16ea160-r2.json",
+      "bytes": 10084,
+      "sha256": "6e68239677192fb5c56951bd7bc4e3f7b0febe9b2a5fcabb2e1c7df3e057ba41"
+    },
+    {
+      "path": "local/research/codex/hook-wrapper-oracle-r1.json",
+      "bytes": 405,
+      "sha256": "644260fbde86f02865a513dc59673ebe68d1ccf54384aa6c2739d1d9008f1753"
+    },
+    {
+      "path": "local/research/codex/user32-hook-public.asm",
+      "bytes": 1236,
+      "sha256": "ba21dd486eb540d493280ce95143435e1f6c2ea27b3c8dd088fad1ca0807a834"
+    },
+    {
+      "path": "local/research/codex/hook-install.asm",
+      "bytes": 411,
+      "sha256": "f00dd74f7568900fdc7b42af4b199bc675ebeda8e1fbf8a1a001e43a3afed984"
+    },
+    {
+      "path": "local/research/codex/icon-wrapper-oracle-r1.json",
+      "bytes": 434,
+      "sha256": "8cdf90325193e2c5a0c6caf6c8ed8662a729dc78010659ad078b303b389c5305"
+    },
+    {
+      "path": "local/research/codex/icon-wrapper-string-verified.json",
+      "bytes": 736,
+      "sha256": "76a8ec9837269ee8386904db7b4a3249013e6222521690724794eb286afcb524"
+    },
+    {
+      "path": "local/research/codex/user32-icon-public.asm",
+      "bytes": 3425,
+      "sha256": "21b38186ad19548b2a358c6b13ba810aa282bb28028cecb8193114cb25ab6baf"
+    },
+    {
+      "path": "local/research/codex/slot16ea6c4-calls.asm",
+      "bytes": 1352,
+      "sha256": "76a811b37121bf45838be0e84d2161d8a2f7a754268fa0662cb131fe186405b2"
+    },
+    {
+      "path": "local/research/codex/cursor-wrapper-oracle-r1.json",
+      "bytes": 430,
+      "sha256": "3913831846d8781dfda16106196f92eebe47ea2fd600e290859ea0083e908b97"
+    },
+    {
+      "path": "local/research/codex/cursor-wrapper-string-verified.json",
+      "bytes": 887,
+      "sha256": "44f6ba2db76c0c68fc9e46548eefdfce6c05a2ddd0d80d1102007ae7767da928"
+    },
+    {
+      "path": "local/research/codex/user32-cursor-public.asm",
+      "bytes": 966,
+      "sha256": "c5e7261b335c37d09cd8471f39647bcef47073f608e1ea91d1ab0de4b69a12b8"
+    },
+    {
+      "path": "local/research/codex/class-wrapper-oracle-r1.json",
+      "bytes": 426,
+      "sha256": "66c609440419e1ec2d44c66e92c6eef9c1402b41f1f3a968d9cd0ad790432afb"
+    },
+    {
+      "path": "local/research/codex/user32-class-public.asm",
+      "bytes": 1074,
+      "sha256": "7b25fdebee24c99236d04f70737b40ae1c5b6e2be6206e2d47918b8773662a03"
+    },
+    {
+      "path": "local/research/codex/slot16ea5ac-calls.asm",
+      "bytes": 591,
+      "sha256": "1efc70519589aac999689eb9cd7777600c0c39d6b65b30b78da3a2270412808b"
+    },
+    {
+      "path": "local/research/codex/rect-wrapper-oracle-r2.json",
+      "bytes": 426,
+      "sha256": "4af152e9c01114f064c2587a3ccd442b92164768946c1bc99775aa5355cbdb8b"
+    },
+    {
+      "path": "local/research/codex/user32-rect-public.asm",
+      "bytes": 999,
+      "sha256": "d4d4f7050793ffd03cca7bc8198cf7e6b23fb12c1329af2646da55015273cd56"
+    },
+    {
+      "path": "local/research/codex/slot16ea630-calls.asm",
+      "bytes": 905,
+      "sha256": "e1d6ab672b3eb8b8172123f4c20f8dfdb07e87e7e7b6a01a7031169dd931f53c"
+    },
+    {
+      "path": "local/research/codex/ntdll-defproc-thunks.asm",
+      "bytes": 336,
+      "sha256": "b75aac64a23ef4b9c0bc68169d80b0c2b2e31faa2c203febe1df12dd3826ac3e"
+    },
+    {
+      "path": "local/research/codex/ntdll-defproc-thunks.json",
+      "bytes": 125,
+      "sha256": "11b54ccb88901f6d3479329b9865cee870928bf713cc36c9c16ec6a36026d61b"
+    },
+    {
+      "path": "local/research/codex/slot16ea5c0-calls.asm",
+      "bytes": 673,
+      "sha256": "5e5c5f3c1826191a7e2aee29f7e1348fcb926ae8bd450ba637086a611f71225b"
+    },
+    {
+      "path": "local/research/codex/wcp-locator-r1.json",
+      "bytes": 225,
+      "sha256": "ac57cc786fef1e715498b4b8fbf1c839880be080f0d2069c637809748196fba1"
+    }
+  ],
+  "worker_reports": [
+    {
+      "path": "local/research/dsh1/ngclient-r1.md",
+      "bytes": 3519,
+      "sha256": "30376c0f533613ecbda749afe1dbbd938f01c9119811f0b217cc2e52306e49e2"
+    },
+    {
+      "path": "local/research/dsh1/windows-import-r2.md",
+      "bytes": 4238,
+      "sha256": "9a14d5ed820a65f3e3f4634561c527afb5e43af440c22cd2a4bed1fd14afb573"
+    },
+    {
+      "path": "local/research/dsh2/hook-import-r1.md",
+      "bytes": 4145,
+      "sha256": "55b5152cde1fdee547c4c4662b2e51b969c9a6a77d671137abd1ca28fc0785d8"
+    },
+    {
+      "path": "local/research/dsh2/icon-import-r2.md",
+      "bytes": 3366,
+      "sha256": "5e8c7fc75354aa791208da75427c667d9c824b978b5ff66ca440fc654f5f1cd1"
+    },
+    {
+      "path": "local/research/dsh2/window-class-rect-r3.md",
+      "bytes": 3643,
+      "sha256": "93ea745c180f76e708843be0b6fab1d112dc91a216429e183adddeef1cda3700"
+    }
+  ],
+  "singleton_state": [
+    {
+      "path": "local/research/wine-r2/cursor-1/debug/run.json",
+      "bytes": 2141,
+      "sha256": "b8f5b1de43e47dce696fe801466ef6e2375b4aba0b49f1c632348c070ce3c763"
+    },
+    {
+      "path": "local/research/wine-r2/cursor-1/debug/client.log",
+      "bytes": 38508,
+      "sha256": "48292a22ec89d1a3dc905962a9f825aa4abd99004fbf3a438a0ca7b042ca06fb"
+    },
+    {
+      "path": "local/research/wine-r2/cursor-1/debug/debug-commands.txt",
+      "bytes": 86,
+      "sha256": "1a853c583d44f7f333054bca3a51b7a7010fb4bede2439cd4c07f36f7ca8ff3a"
+    }
+  ],
+  "runs": [
+    {
+      "run": "local/research/wine-r2/defproc-1/run",
+      "fresh_game_prefix_copy": true,
+      "seconds": 15,
+      "start_monotonic_ns": 1019967091553679,
+      "end_monotonic_ns": 1019989106895234,
+      "ports": [
+        3888,
+        3898
+      ],
+      "crazy_arcade_800x600": true,
+      "wcp_failure_logged": true,
+      "login_failed_dialog": true,
+      "raw": [
+        {
+          "path": "local/research/wine-r2/defproc-1/run/run.json",
+          "bytes": 2625,
+          "sha256": "0983e08ecb9159cbe7ad9a36b0eb93104de647c301fce20a15df70007b399811"
+        },
+        {
+          "path": "local/research/wine-r2/defproc-1/run/client.log",
+          "bytes": 247645,
+          "sha256": "ca29c44dd77d618d03e56089b2dc85688048e0b16c31925b06546be4ebc2e977"
+        },
+        {
+          "path": "local/research/wine-r2/defproc-1/run/CALog-run.txt",
+          "bytes": 76,
+          "sha256": "54d152938ec039bc68e9644c110402e345b4ac5756e963298e67d74107bb0aaf"
+        },
+        {
+          "path": "local/research/wine-r2/defproc-1/run/windows-05.txt",
+          "bytes": 1273,
+          "sha256": "25cae5f1b6c2f7b4164462d34557fa6b38ec5927c02877cf4268fe4f10763b52"
+        },
+        {
+          "path": "local/research/wine-r2/defproc-1/run/screen-05.png",
+          "bytes": 2019,
+          "sha256": "751ee6f6dfc45d76f8ebce4ee21cf9ad5ac24716fc010ad76395cce3b9a6ec8e"
+        },
+        {
+          "path": "local/research/wine-r2/defproc-1/run/processes-05.txt",
+          "bytes": 2819,
+          "sha256": "e11a49e7b92458f05087925093467dee8d9e51e54528b02a0f97db2be8c71b72"
+        }
+      ]
+    },
+    {
+      "run": "local/research/wine-r2/final-cold-2/run",
+      "fresh_game_prefix_copy": true,
+      "seconds": 10,
+      "start_monotonic_ns": 1020017380792490,
+      "end_monotonic_ns": 1020034378671050,
+      "ports": [
+        3908,
+        3908
+      ],
+      "crazy_arcade_800x600": true,
+      "wcp_failure_logged": false,
+      "login_failed_dialog": false,
+      "raw": [
+        {
+          "path": "local/research/wine-r2/final-cold-2/run/run.json",
+          "bytes": 2528,
+          "sha256": "7585209c94831e3d696abcb6103caf79ad581f89d778802b840be88445567b25"
+        },
+        {
+          "path": "local/research/wine-r2/final-cold-2/run/client.log",
+          "bytes": 86585,
+          "sha256": "e5c0924f2a0c4424c058d3224df620809ea8fdfe2681023607765d2d882e1ca9"
+        },
+        {
+          "path": "local/research/wine-r2/final-cold-2/run/CALog-run.txt",
+          "bytes": 46,
+          "sha256": "1dd23e4b03452ed015c1477017fbed7718c0836710f693e445ebf2eb18015a12"
+        },
+        {
+          "path": "local/research/wine-r2/final-cold-2/run/windows-04.txt",
+          "bytes": 1033,
+          "sha256": "4343fd5cb25ce077174cbab390df10224a6e40d5f26abf877abe337adb032abf"
+        },
+        {
+          "path": "local/research/wine-r2/final-cold-2/run/screen-04.png",
+          "bytes": 233,
+          "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+        },
+        {
+          "path": "local/research/wine-r2/final-cold-2/run/processes-04.txt",
+          "bytes": 2831,
+          "sha256": "517986a89bbdd8e96333a792e5f6647afaa0cc6b709e8166e14de31164e9cb34"
+        }
+      ]
+    },
+    {
+      "run": "local/research/wine-r2/final-cold-3/run",
+      "fresh_game_prefix_copy": true,
+      "seconds": 10,
+      "start_monotonic_ns": 1020035829416864,
+      "end_monotonic_ns": 1020051780266206,
+      "ports": [
+        3898,
+        3878
+      ],
+      "crazy_arcade_800x600": true,
+      "wcp_failure_logged": false,
+      "login_failed_dialog": false,
+      "raw": [
+        {
+          "path": "local/research/wine-r2/final-cold-3/run/run.json",
+          "bytes": 2527,
+          "sha256": "25ffadd6e686d58d06f66ac7edc3505704768035b081971a0ba0b42b0faa6115"
+        },
+        {
+          "path": "local/research/wine-r2/final-cold-3/run/client.log",
+          "bytes": 87195,
+          "sha256": "ec0c760f9b85391c9240912fa02a0734eba6d9f42c1f1215b62e27f247f7f8f8"
+        },
+        {
+          "path": "local/research/wine-r2/final-cold-3/run/CALog-run.txt",
+          "bytes": 46,
+          "sha256": "1dd23e4b03452ed015c1477017fbed7718c0836710f693e445ebf2eb18015a12"
+        },
+        {
+          "path": "local/research/wine-r2/final-cold-3/run/windows-04.txt",
+          "bytes": 1033,
+          "sha256": "2f0fd4405d7f5a5f3d19dd96f6afd3dd45dae0ee3d8cb8bd049b6a368554f7f6"
+        },
+        {
+          "path": "local/research/wine-r2/final-cold-3/run/screen-04.png",
+          "bytes": 233,
+          "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+        },
+        {
+          "path": "local/research/wine-r2/final-cold-3/run/processes-04.txt",
+          "bytes": 2638,
+          "sha256": "ef1ae74ab008ed2b83d8b0dbd44e8704ee5bab75509af961e5f027ed6243f855"
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "Modified Wine only, full K1/K2/login not approved",
+    "No second reply, no C2S app bytes; connection role unproven",
+    "Lstrcpy/cursorstringedgesnotcomplete",
+    "99missing/excludedtraps remain, cleanup16EA2A4missing",
+    "SeparateoldNGskipoverlapruns excluded",
+    "CI not configured"
+  ],
+  "pe_verification": {
+    "path": "local/research/codex/r2-pe-verification.json",
+    "bytes": 782,
+    "sha256": "3efe2f420f3544c27a0a7be0202ca605ca8d1e63b7828e887a59582125a3d46c"
+  }
+}

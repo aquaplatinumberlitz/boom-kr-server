@@ -100,3 +100,7 @@ candidate, chưa chứng minh full frame/schema hoặc login. Metadata run/check
 
 Không đánh dấu K2/login/gameplay hoàn thành. Gate K1 toàn project vẫn cần review contract/bootstrap
 và đối chứng Windows; bằng chứng này đóng đường tự động hóa Wine cho thí nghiệm bootstrap local.
+
+Recipe riêng tiếp theo [post-bootstrap-r2](../wine-r2/README.md) bỏ một call NGClient init và phục hồi
+bảy import Windows trên copy; đã tạo cửa sổ và attempt local thứ hai, còn WCP/Login Failed.
+R1 trong tài liệu này giữ binary SHA/recipe cũ; không tính kết quả R2 cho r1.

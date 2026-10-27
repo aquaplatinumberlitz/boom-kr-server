@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Rebuild the measured experimental KR Wine copy from pinned local RE artifacts."""
+"""Rebuild pinned KR Wine experimental recipes from immutable local RE artifacts."""
 import argparse
 import hashlib
 import json
@@ -13,6 +13,7 @@ SOURCE_SHA = 'a08950c833d3acab8281049def7b3dc96b221f107eeda01da3a548e34b91dce5'
 HEADER_SHA = 'cf72da112308d9f1ca256df8089594c5f787875310933073bf6bd5ba6f70e63b'
 CANDIDATES_SHA = 'e5a618a3d1f6c8b29a5895f5354519a7a904a65a02c44abfb82449c2796aaf74'
 EXPECTED_SHA = 'a0c3b9867dae5fe2ff7c315cfe851117661c2cafead45196ce999329f67432f5'
+POST_BOOTSTRAP_SHA = '7b3b435b5d8e110185359107376b736615ceabe9452cea8154d02c8628f44c29'
 OVERRIDES = {
     0x16ea278: ('kernel32.dll', 'GetProcAddress'),
     0x16ea3a0: ('kernel32.dll', 'InitializeSListHead'),
@@ -37,6 +38,8 @@ def sha(data):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--recipe', choices=['bootstrap-r1', 'post-bootstrap-r2'], default='bootstrap-r1',
+                        help='Keep r1 unchanged; r2 is a separately verified offline experiment')
     parser.add_argument('--memory', type=Path, required=True, help='Original modO.bin memory image')
     parser.add_argument('--headers', type=Path, required=True, help='Original kr-full.exe analysis PE')
     parser.add_argument('--candidates', type=Path, required=True, help='Pinned private wine-imports-r4.json')
@@ -101,6 +104,18 @@ def main():
     patch(0x804f90,b'\x31\xc0\xc2\x0c\x00','Analytics property lookup unavailable; thiscall3 args','emu_choice')
     for address in [0x5725f0,0x572950,0x5729d0,0x5729f0,0x572a10,0x572a30]:
         patch(address,b'\x31\xc0\xc3','Omit analytics send/shutdown; cdecl caller cleanup','emu_choice')
+    overrides = dict(OVERRIDES)
+    if args.recipe == 'post-bootstrap-r2':
+        if bytes(image[0x12358e7-BASE:0x12358ec-BASE]) != bytes.fromhex('e8e4f330ff'):
+            raise RuntimeError('NGClient callsite differs from the recorded source')
+        patch(0x12358e7, b'\x90'*5, 'Omit ignored NGClient init call544CD0; keep545E40 object init', 'emu_choice')
+        overrides[0x16ea160] = ('kernel32.dll', 'lstrcpyA')
+        overrides[0x16ea664] = ('user32.dll', 'SetWindowsHookExA')
+        overrides[0x16ea6c4] = ('user32.dll', 'LoadIconA')
+        overrides[0x16ea5ec] = ('user32.dll', 'LoadCursorA')
+        overrides[0x16ea5ac] = ('user32.dll', 'RegisterClassExA')
+        overrides[0x16ea630] = ('user32.dll', 'AdjustWindowRect')
+        overrides[0x16ea5c0] = ('user32.dll', 'DefWindowProcA')
     rows = json.loads(candidate_data)['rows']
     extra_rva = (span+0xfff)&~0xfff
     extra = bytearray((len(rows)+1)*20)
@@ -123,7 +138,7 @@ def main():
             stubs.append({'slot':hex(slot),'va':hex(BASE+address),'ret_bytes':count,
                           'source':'emu_choice','reason':'Omit offline CrashReporter'})
             continue
-        choices = [OVERRIDES[slot]] if slot in OVERRIDES else row.get('names',[])
+        choices = [overrides[slot]] if slot in overrides else row.get('names',[])
         choices = sorted(choices,key=lambda x:(x[0] in blocked,x[0] not in ['kernel32.dll','user32.dll','gdi32.dll','advapi32.dll'],x[1].startswith('#'),len(x[1])))
         if choices and choices[0][0] not in blocked:
             dll,name = choices[0]
@@ -134,7 +149,7 @@ def main():
             # Discard bound addresses from the old Windows process; the loader uses ILT.
             struct.pack_into('<I',image,slot-BASE,0)
             imports.append({'slot':hex(slot),'dll':dll,'name':name,
-                            'status':'candidate','override':slot in OVERRIDES})
+                            'status':'candidate','override':slot in overrides})
         else:
             address = alloc(b'\x0f\x0b'+struct.pack('<I',slot)+b'\xcc\xcc',4)
             struct.pack_into('<I',image,slot-BASE,BASE+address)
@@ -146,14 +161,17 @@ def main():
     struct.pack_into('<8sIIIIIIHHI',headers,section_table,b'.image',span-0x1000,0x1000,span-0x1000,0x1000,0,0,0,0,0xe0000060)
     struct.pack_into('<8sIIIIIIHHI',headers,section_table+40,b'.repair',len(extra),extra_rva,extra_size,span,0,0,0,0,0xe0000060)
     result = bytes(headers)+bytes(image[0x1000:])+bytes(extra).ljust(extra_size,b'\0')
-    if sha(result)!=EXPECTED_SHA:
-        raise RuntimeError('rebuild differs from measured r30; no output written')
-    report = {'schema':'kre-wine-copy-r1','output_sha256':sha(result),'entry_va':'0x1470e40',
+    expected_sha = EXPECTED_SHA if args.recipe == 'bootstrap-r1' else POST_BOOTSTRAP_SHA
+    if sha(result) != expected_sha:
+        raise RuntimeError(f'rebuild differs from pinned {args.recipe}; computed SHA {sha(result)}; no output written')
+    report = {'schema':'kre-wine-copy-r1','output_sha256':sha(result),'entry_va':'0x1470e40', 'recipe':args.recipe,
               'inputs':[{'path':str(path),'sha256':sha(data)} for path,data in zip(inputs,[raw,header_data,candidate_data])],
               'patches':patches,'imports':imports,'traps':traps,'stubs':stubs,
               'limitations':['Partial experimental reconstruction; imports outside exercised path remain candidates.',
                              'Analytics/CrashReporter omitted; identity from analytics lookup unavailable.',
                              'Login/lobby/gameplay and vanilla equivalence unverified.']}
+    if args.recipe == 'post-bootstrap-r2':
+        report['limitations'].append('NGClient init omitted offline; callbacks/state unavailable; original-client equivalence unknown.')
     # Exclusive creation preserves prior experiments. No client is executed by this tool.
     with outputs[1].open('x') as handle:
         json.dump(report,handle,indent=2)
