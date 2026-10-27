@@ -37,6 +37,8 @@ verification và reviewer độc lập. Duyệt plan không phải hoàn thành 
 
 ## Checkpoint và tài liệu RE bắt buộc
 
+Ưu tiên RE động dẫn đường và thử nghiệm tiếp khi có giả thuyết cụ thể; gom các phép đo liên quan
+thành một checkpoint tại mốc quan trọng hoặc blocker rõ ràng, không tạo checkpoint/PR cho mỗi phép thử.
 Mỗi checkpoint phải đồng bộ docs bị ảnh hưởng trước khi complete;không chỉ giữ kiến thức trong
 hội thoại/report worker/checkpoint local. README current state,PLAN task/gate/thứ tự,PROTOCOL
 contract/limits,RESEARCH câu hỏi/phép kiểm tiếp,evidence metadata/recipe/hash; raw ở local.
