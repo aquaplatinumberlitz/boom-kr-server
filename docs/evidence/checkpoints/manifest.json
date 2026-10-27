@@ -1,7 +1,7 @@
 {
   "schema": "kre-checkpoints-v1",
-  "last_id": "CP002",
-  "completed_count": 2,
+  "last_id": "CP003",
+  "completed_count": 3,
   "audit_interval": 4,
   "last_periodic_audit": 0,
   "next_periodic_audit": "CP004",
@@ -283,10 +283,11 @@
         }
       ],
       "review": {
-        "status": "pending",
-        "as_of_utc": "2026-10-27T06:24:42.869762+00:00",
-        "reference": "Issue12 / upcoming documentation-workflow PR",
-        "scope": "New WCP synthesis + documentation reconciliation; existing R2 merge is a separate fact"
+        "status": "approved",
+        "as_of_utc": "2026-10-27T06:32:24.351386+00:00",
+        "reference": "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/13#issuecomment-6435434555",
+        "scope": "Checkpoint/docs/workflow code at reviewed head; no runtime gate approval; source observations re-verified",
+        "head": "4f64ad2a0e3bab7a8d94bca895647c85b5384510"
       },
       "docs_sync": [
         {
@@ -440,10 +441,11 @@
       ],
       "next_steps": [],
       "review": {
-        "status": "pending",
-        "as_of_utc": "2026-10-27T06:26:59.590653+00:00",
-        "reference": "Issue12 / documentation-workflow PR",
-        "scope": "Policy/checker/tests and new WCP synthesis; exact-head independent review required"
+        "status": "approved",
+        "as_of_utc": "2026-10-27T06:32:24.351386+00:00",
+        "reference": "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/13#issuecomment-6435434555",
+        "scope": "Checkpoint/docs/workflow code at reviewed head; no runtime gate approval; source observations re-verified",
+        "head": "4f64ad2a0e3bab7a8d94bca895647c85b5384510"
       },
       "docs_sync": [
         {
@@ -475,6 +477,177 @@
           "path": "tools/README.md",
           "state": "updated",
           "reason": "Checker invocation and warning/verification limits documented"
+        }
+      ]
+    },
+    {
+      "id": "CP003",
+      "previous": "CP002",
+      "lifecycle": "complete",
+      "recorded_utc": "2026-10-27T06:32:24.704318+00:00",
+      "question": "How should review history and missing/shallow Git history be reported without silently weakening continuity?",
+      "scope": "Review-driven workflow correction; preserve CP001/CP002 completed payload and AUD001; no new KR measurement",
+      "context_commit": "4f64ad2a0e3bab7a8d94bca895647c85b5384510",
+      "artifacts": [
+        {
+          "name": "checker source CP003 snapshot",
+          "sha256": "85bb669401e148f2933d07ece27695ea3630e2707f020e42f68399ea41ded6d8"
+        }
+      ],
+      "locators": [
+        "tools/check_checkpoints.py continuity/check_history/main",
+        "CP001/CP002 review metadata only; completed payload unchanged"
+      ],
+      "owner": "Codex",
+      "reviewer": "Claude Sonnet 5.5 fresh independent reviewer",
+      "findings": [
+        {
+          "summary": "Approved review becomes immutable once committed; pending review may still be explicitly approved later",
+          "source": "design",
+          "status": "design",
+          "method": "design",
+          "limits": "Structural review metadata protection, not validation that a reviewer really approved",
+          "canonical": "docs/evidence/checkpoints/README.md",
+          "evidence": [
+            "E001",
+            "E003"
+          ]
+        },
+        {
+          "summary": "Missing/empty/shallow Git history is UNVERIFIED and strict history mode rejects it; known reset still fails in shallow mode",
+          "source": "design",
+          "status": "confirmed",
+          "method": "documentation",
+          "limits": "15 synthetic software tests; cannot protect against deliberate total Git-history rewrite",
+          "canonical": "docs/evidence/checkpoints/README.md",
+          "evidence": [
+            "E001",
+            "E002",
+            "E004"
+          ]
+        },
+        {
+          "summary": "CP001 garbled summary is clarified by its unchanged limits and canonical contract; no seed storage inferred",
+          "source": "design",
+          "status": "design",
+          "method": "documentation",
+          "limits": "Clarification, not new static/runtime evidence; CP001 content untouched",
+          "canonical": "docs/PROTOCOL.md#wcp",
+          "evidence": [
+            "E003"
+          ]
+        }
+      ],
+      "verification": [
+        {
+          "check": "15 software tests including immutable approval, empty history, missing git, shallow known reset, CP008 audit due",
+          "result": "pass",
+          "evidence": [
+            "E004"
+          ],
+          "limits": "No binary/client/codec oracle"
+        },
+        {
+          "check": "Host checker after CP001/2 explicit approval metadata update",
+          "result": "pass",
+          "evidence": [
+            "E005"
+          ],
+          "limits": "Before CP003 append;23 evidence files verified,no pending reviews at that snapshot"
+        }
+      ],
+      "evidence": [
+        {
+          "id": "E001",
+          "kind": "local",
+          "path": "local/research/doc-workflow/snapshot-cp003-check_checkpoints.py",
+          "bytes": 19361,
+          "sha256": "85bb669401e148f2933d07ece27695ea3630e2707f020e42f68399ea41ded6d8"
+        },
+        {
+          "id": "E002",
+          "kind": "local",
+          "path": "local/research/doc-workflow/snapshot-cp003-test_checkpoints.py",
+          "bytes": 11856,
+          "sha256": "dd9b266911a7dc9514a4b9d71007bf3c7d237a83c3054a5a4bba70aad0709893"
+        },
+        {
+          "id": "E003",
+          "kind": "local",
+          "path": "local/research/doc-workflow/claude-review.md",
+          "bytes": 6582,
+          "sha256": "c647c9e7336cb225b4e8a70f4202043f737a3c1de38e86f991d1e3b6df53910e"
+        },
+        {
+          "id": "E004",
+          "kind": "local",
+          "path": "local/research/doc-workflow/workflow-tests-cp003.txt",
+          "bytes": 114,
+          "sha256": "8e5e99e6c7b31f4fe67557fb1269442b8c6536685ee52118d614876193852e25"
+        },
+        {
+          "id": "E005",
+          "kind": "local",
+          "path": "local/research/doc-workflow/pre-cp003-checker.txt",
+          "bytes": 158,
+          "sha256": "4cc5325a6a4302679b6d313448c08ca333059257cb8e5920ff7669faa6ed2753"
+        }
+      ],
+      "delta": {
+        "added": [
+          "Strict history availability diagnostics and history_verified output",
+          "Review-pending records may acquire exact-head approval; approval may not be silently replaced once committed"
+        ],
+        "corrected": [
+          "CP002 permitted a committed approved review to regress silently; this is now rejected",
+          "CP002 did not flag no committed manifest revisions or shallow history",
+          "CP001 finding2 summary means mode2/3 was observed in emulation while seed-storage proof remains absent"
+        ],
+        "superseded": [
+          "Earlier Claude R2 review claim of a duplicated pefile.PE line was false and is retracted in E003; old raw report hash retained"
+        ]
+      },
+      "blockers": [
+        "No new RE blockers resolved; Q-023 remains open",
+        "Next periodic manual audit is CP004; ad-hoc AUD001 does not reset it"
+      ],
+      "next_steps": [],
+      "review": {
+        "status": "pending",
+        "as_of_utc": "2026-10-27T06:32:24.704318+00:00",
+        "reference": "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/13",
+        "scope": "CP003 hardening and updated review-state links; requires fresh exact-head review"
+      },
+      "docs_sync": [
+        {
+          "path": "README.md",
+          "state": "updated",
+          "reason": "Current review state links manifest instead of stale pending prose"
+        },
+        {
+          "path": "docs/PLAN.md",
+          "state": "updated",
+          "reason": "WCP experiment vs review state remains distinct;task/gates unchanged"
+        },
+        {
+          "path": "docs/PROTOCOL.md",
+          "state": "updated",
+          "reason": "Review state referenced;no new contract field or gate"
+        },
+        {
+          "path": "docs/RESEARCH.md",
+          "state": "unchanged",
+          "reason": "Same next WCP measurement,unknowns and owners"
+        },
+        {
+          "path": "docs/evidence/checkpoints/README.md",
+          "state": "updated",
+          "reason": "Approved-review immutability and empty/shallow availability limits"
+        },
+        {
+          "path": "docs/evidence/wcp/README.md",
+          "state": "updated",
+          "reason": "Initial pending snapshot distinguished from current review state"
         }
       ]
     }

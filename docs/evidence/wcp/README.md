@@ -34,7 +34,7 @@ Không chạy lại client trong đợt đồng bộ docs; chỉ đọc raw và 
 
 R2 đã review/merge PR10 tại2dbbf32; các run silent cũ vẫn đúng cho recipe đó.
 Probe hai-reply và report Claude WCP r1/r2 chưa có review độc lập riêng tại CP001;
-ghi pending review, không coi thành gate K2/login.
+Snapshot khi ghi CP001 là pending;review về sau xem [manifest](../checkpoints/manifest.json). Không coi thành gate K2/login.
 Report có erratum giữ hash cũ; contract mới trích correction, không sửa raw lịch sử.
 Zero C→S không chứng minh toàn client chắc chắn cần gói server tiếp; còn guard sau connect chưa đo.
 Nguồn báo cáo/oracle/debug commands/run/log/digest ở [verification.json](verification.json).

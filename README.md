@@ -25,7 +25,7 @@ boom-kr-server/
 Recipe Wine R2 đã review/merge, qua ProcessPatch và đạt cửa sổ800×600 + kết nối local thứ hai.
 Probe riêng sau đó được debugger xác nhận nhận phản hồi WCP; vẫn zero C→S và cuối run báo
 MW_SEP(10)/Login Failed. **Chưa có login hoạt động hoặc gameplay.**
-Probe hai-reply và tổng hợp contract WCP hiện pending review, tách khỏi R2 đã merge.
+Probe hai-reply vẫn là thí nghiệm riêng; review tài liệu theo [CP001](docs/evidence/checkpoints/manifest.json), tách khỏi R2 đã merge.
 Phạm vi từng recipe/bằng chứng ở [WCP](docs/evidence/wcp/README.md);
 điểm chặn và phép kiểm kế ở [Q-023](docs/RESEARCH.md#q-023).
 

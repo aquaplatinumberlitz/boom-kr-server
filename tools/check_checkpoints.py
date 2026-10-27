@@ -304,18 +304,33 @@ def continuity(previous, current):
             without_review = lambda x: {k: v for k, v in x.items() if k != "review"}
             if without_review(old) != without_review(new):
                 errors.append(f"{old.get('id')}: completed record changed; append a correction checkpoint")
+            if old.get("review", {}).get("status") == "approved" and old.get("review") != new.get("review"):
+                errors.append(f"{old.get('id')}: approved review is immutable; append a correction checkpoint")
     old_audits, new_audits = previous.get("audits", []), current.get("audits", [])
     if old_audits != new_audits[:len(old_audits)]:
         errors.append("manual audit history deleted or changed")
     return errors
 
 
-def check_history(root, relative_manifest, current):
+def check_history(root, relative_manifest, current, availability=None):
+    def unverified(message):
+        if availability is None:
+            raise ValueError(message)
+        availability.append(message)
+
     command = ["git", "-C", str(root)]
-    revisions = subprocess.run(command + ["log", "--first-parent", "--reverse", "--format=%H", "HEAD", "--", str(relative_manifest)],
-                               capture_output=True, text=True)
+    try:
+        shallow = subprocess.run(command + ["rev-parse", "--is-shallow-repository"], capture_output=True, text=True)
+        revisions = subprocess.run(command + ["log", "--first-parent", "--reverse", "--format=%H", "HEAD", "--", str(relative_manifest)],
+                                   capture_output=True, text=True)
+    except OSError as error:
+        raise ValueError(f"Git unavailable: {error}") from error
     if revisions.returncode:
         raise ValueError("Git history unavailable")
+    if shallow.returncode == 0 and shallow.stdout.strip() == "true":
+        unverified("shallow Git history; earlier counter continuity UNVERIFIED")
+    if not revisions.stdout.strip():
+        unverified("no committed manifest history; counter rollback UNVERIFIED")
     previous, errors = None, []
     for revision in revisions.stdout.splitlines():
         content = subprocess.run(command + ["show", f"{revision}:{relative_manifest.as_posix()}"], capture_output=True, text=True)
@@ -343,10 +358,13 @@ def main():
     try:
         manifest = read_json(ROOT / MANIFEST)
         errors, warnings, stats = validate(manifest, ROOT, args.require_local)
+        availability = []
         try:
-            errors.extend(check_history(ROOT, MANIFEST, manifest))
+            errors.extend(check_history(ROOT, MANIFEST, manifest, availability))
         except ValueError as error:
-            (errors if args.require_history else warnings).append(str(error) + "; counter rollback UNVERIFIED")
+            availability.append(str(error) + "; counter rollback UNVERIFIED")
+        (errors if args.require_history else warnings).extend(availability)
+        stats["history_verified"] = not availability
         links = subprocess.run([sys.executable, str(ROOT / "tools/check_docs.py")], capture_output=True, text=True)
         if links.returncode:
             errors.append(links.stdout + links.stderr)

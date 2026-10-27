@@ -7,6 +7,7 @@ from pathlib import Path
 import subprocess
 import tempfile
 import unittest
+from unittest import mock
 
 spec = importlib.util.spec_from_file_location("checkpoint_checker", Path(__file__).with_name("check_checkpoints.py"))
 checker = importlib.util.module_from_spec(spec)
@@ -141,6 +142,58 @@ class CheckpointsTest(unittest.TestCase):
         self.assertEqual(checker.continuity(previous, self.manifest), [])
         self.record["findings"][0]["summary"] = "rewrite old conclusion"
         self.assertTrue(any("completed record changed" in e for e in checker.continuity(previous, self.manifest)))
+
+    def test_approved_review_cannot_regress_or_change_head(self):
+        self.record["review"].update(status="approved", head="b" * 40)
+        previous = copy.deepcopy(self.manifest)
+        self.record["review"]["status"] = "pending"
+        self.assertTrue(any("approved review is immutable" in e for e in checker.continuity(previous, self.manifest)))
+        self.record["review"].update(status="approved", head="c" * 40)
+        self.assertTrue(any("approved review is immutable" in e for e in checker.continuity(previous, self.manifest)))
+
+    def test_uncommitted_manifest_history_is_explicit(self):
+        git = ["git", "-C", str(self.root), "-c", "user.name=Test", "-c", "user.email=test@example.invalid"]
+        subprocess.run(git + ["init", "-q"], check=True)
+        (self.root / "initial.txt").write_text("initial")
+        subprocess.run(git + ["add", "initial.txt"], check=True)
+        subprocess.run(git + ["commit", "-qm", "initial"], check=True)
+        availability = []
+        self.assertEqual(checker.check_history(self.root, checker.MANIFEST, self.manifest, availability), [])
+        self.assertTrue(any("no committed manifest history" in e for e in availability))
+
+    def test_missing_git_is_a_clear_availability_error(self):
+        with mock.patch.object(checker.subprocess, "run", side_effect=FileNotFoundError("git")):
+            with self.assertRaisesRegex(ValueError, "Git unavailable"):
+                checker.check_history(self.root, checker.MANIFEST, self.manifest)
+
+    def test_shallow_history_does_not_hide_known_counter_reset(self):
+        git = ["git", "-C", str(self.root), "-c", "user.name=Test", "-c", "user.email=test@example.invalid"]
+        subprocess.run(git + ["init", "-q"], check=True)
+        target = self.root / checker.MANIFEST
+        target.parent.mkdir(parents=True)
+        for _ in range(2):
+            target.write_text(json.dumps(self.manifest))
+            subprocess.run(git + ["add", str(checker.MANIFEST)], check=True)
+            subprocess.run(git + ["commit", "-qm", "fixture"], check=True)
+            self.append()
+        clone = self.root / "shallow"
+        subprocess.run(["git", "clone", "-q", "--depth", "1", self.root.as_uri(), str(clone)], check=True)
+        availability = []
+        # Working copy deletes CP002; even with incomplete Git history this is a known violation.
+        reduced = copy.deepcopy(self.manifest)
+        reduced["checkpoints"] = reduced["checkpoints"][:1]
+        errors = checker.check_history(clone, checker.MANIFEST, reduced, availability)
+        self.assertTrue(any("shallow Git history" in e for e in availability))
+        self.assertTrue(any("counter reset" in e for e in errors))
+
+    def test_eighth_checkpoint_needs_its_own_periodic_audit(self):
+        for _ in range(3):
+            self.append()
+        self.audit("periodic", "CP004")
+        self.manifest.update(last_periodic_audit=4, next_periodic_audit="CP008")
+        for _ in range(4):
+            self.append()
+        self.assertTrue(any("CP008: MANUAL AUDIT DUE" in e for e in self.errors()))
 
     def test_committed_counter_reset_detected_from_git_history(self):
         git = ["git", "-C", str(self.root), "-c", "user.name=Test", "-c", "user.email=test@example.invalid"]

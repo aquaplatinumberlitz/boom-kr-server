@@ -42,7 +42,7 @@ với client Rust không chứng minh có thể điều khiển client KR bằng
 | KRE-004/issue6 | Đã review/merge PR7 và đóng issue:recipe r1 đến local accept;không phải full K1 | [Wine r1](evidence/wine/README.md) |
 | Bootstrap reply | PR8 đã merge;debugger ProcessPatchreturn1,không ép success | [bootstrap evidence](evidence/bootstrap-wire/README.md) |
 | KRE-005a/issue9,R2 | PR10 đã merge:3 cold start cửa sổ/second accept;issue9 còn mở | [R2 evidence](evidence/wine-r2/README.md) |
-| WCP hai-reply | Thí nghiệm riêng,tổng hợp/contract pending review;static+emulation+debug hẹp,chưa C→S | [PROTOCOL](PROTOCOL.md#wcp),[WCP evidence](evidence/wcp/README.md) |
+| WCP hai-reply | Harness vẫn thí nghiệm riêng;review tổng hợp theo CP001 manifest;static+emulation+debug hẹp,chưa C→S | [PROTOCOL](PROTOCOL.md#wcp),[WCP evidence](evidence/wcp/README.md) |
 | K0/K1 | Chưa nghiệm thu toàn gate;Windows vanilla/control ownership và các điều kiện còn thiếu giữ mở | Gate dưới,[Q-022](RESEARCH.md) |
 | K2a/K2 | Primitive/WCP từng phần;full codec,multipleframes,reconnect,request kế chưa pass | [PROTOCOL](PROTOCOL.md),[Q-023](RESEARCH.md#q-023) |
 | K3–K7 | Chưa đạt login/sảnh/phòng/trận/multiplayer | Không có phần trăm ước lượng |

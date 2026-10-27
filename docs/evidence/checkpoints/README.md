@@ -28,7 +28,9 @@ Complete chỉ nói record và docs đầy đủ,không nói RE đã thành côn
 Chưa review vẫn ghi kiến thức và review.pending/reference,không đợi merge.
 
 Review độc lập đúng commit qua PR. Review có as_of_utc,approved phải có exact head.
-Có thể bổ sung review về sau;không sửa findings/evidence của checkpoint đã complete.
+Có thể bổ sung review pending về sau; approved (kể cả head) đã commit thì bất biến.
+Đổi/rút approval phải ghi checkpoint correction mới, không hồi quy ngầm.
+Không sửa findings/evidence của checkpoint đã complete.
 Correction khoa học là checkpoint tiếp,chỉ rõ claim cũ bị sửa;không sửa raw cũ để làm check pass.
 Review/integration là snapshot có ngày;PR là nguồn trạng thái tích hợp hiện tại,checkpoint sau ghi
 merge khi có. Không tự gán commit của chính file đang viết hoặc tự approve.
@@ -60,7 +62,7 @@ Không bảo vệ được cố ý rewrite/xóa toàn Git history;archive/shallo
 Không đọc GitHub để tự đoán task;người ghi cập nhật snapshot có reference.
 
 Clone thiếu local/artifact: không flag báo UNVERIFIED+số thiếu,không tuyên bố hash đã kiểm.
---require-local biến thiếu raw thành lỗi. Thiếu Git báo counter rollback UNVERIFIED;
+--require-local biến thiếu raw thành lỗi. Thiếu Git, chưa có manifest commit hoặc shallow history báo counter rollback UNVERIFIED;
 --require-history biến thành lỗi. Pending review hiện WARNING dù exit0.
 Complete có blocked docs,lệchhash hoặc audit tới hạn đều exit1.
 

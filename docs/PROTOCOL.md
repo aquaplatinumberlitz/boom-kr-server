@@ -96,7 +96,7 @@ packet nằm trên stack, nên không truy nhầm setter `packet+3C` để tìm 
 Nguồn chuẩn cho contract hẹp này; raw/recipe/run/review snapshot ở [evidence WCP](evidence/wcp/README.md).
 Target modO base400000 SHA a08950c833d3acab8281049def7b3dc96b221f107eeda01da3a548e34b91dce5;
 runtime chỉ trên copy Wine R2 SHA7b3b435b5d8e110185359107376b736615ceabe9452cea8154d02c8628f44c29.
-Tổng hợp CP001 pending review; confirmed nói về loại/phạm vi phép đo, không tự nói đã qua gate.
+Trạng thái review của tổng hợp ở [CP001](evidence/checkpoints/manifest.json); confirmed nói về loại/phạm vi phép đo, không tự nói đã qua gate.
 
 | Claim | Nguồn/phương pháp | Trạng thái và giới hạn |
 |---|---|---|
