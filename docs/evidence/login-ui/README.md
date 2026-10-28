@@ -56,3 +56,5 @@ Chính sách miễn review chỉ đổi quy trình review/merge; các lỗi ch�
 đã đo message input tại DispatchMessage trên KR copy với audio tắt trong prefix riêng;
 custom control vẫn chưa thay đổi và tổng C→S vẫn66 byte. Không còn giữ “chưa biết input có tới
 API dispatch không” như câu hỏi mở; handler/hit-test phía sau vẫn unknown.
+
+CP012 đã đo handler và command xác nhận; xem [mốc mới](../ui-handler/README.md). Phần trên là lịch sử CP011.

@@ -46,17 +46,27 @@ trên host chỉ được đọc tĩnh, chưa xác nhận vai trò với hiện 
 Nguồn và giới hạn tại [VN→KR](evidence/vn-reuse/README.md). Chưa chứng minh custom handler nhận
 đúng control; GetAsyncKeyState vẫn là candidate KR, so VN chưa đủ để đổi thành GetKeyState.
 
-Bước tiếp: Codex theo message từ DispatchMessage tới WndProc/custom UI, đo focus-control và
-hit-test với x/y trong lParam; tìm nhánh bỏ event hoặc control chưa khởi tạo. Sau đó nối xác nhận
-tới packet builder/send/socket. Đặt conditional breakpoint tại handler KR để giảm overhead,
-không dùng địa chỉ handler VN. Tiếp tục packet15, NMCO, dữ liệu khởi tạo và codec hai chiều khi
-có cạnh runtime liên quan; không coi UI login hoặc identity giả là auth. `oneclickuser` vẫn chưa
-đo runtime. Review độc lập đã được chủ dự án miễn từ28/10.
+CP012: đã nối mouse/key qua handler và click tới command1002. Hai tọa độ ID/password chưa
+cho edit control; phím được chuyển tới button, không suy toàn bộ input hỏng. Đã tìm hostname login
+riêng; run có ánh xạ local mở kết nối3 trước click, WCP poll/consumer trả1. Sau đó vào attempt
+`11049C0` từ return`11013FE`, modal `CWaitForLoginDlg` trả1, chưa vào nhánh result3; attempt EAX0.
+`modal-result` nối setter1 tới nhánh kiểm global1A966FC; bản dump có giá trị1. Reset riêng global
+trong bộ nhớ run mới giữ được dialog đếm chờ, không thấy return trong cửa sổ đo.
+Hai run reset thu276 byte mới=4 frame C→S15, nối guard→virtual→WinSock/capture; native parser
+replay với seq40+3n khớp CRC cho bốn mẫu, negatives từ chối. Chưa xác nhận semantics auth.
+Raw/recipe/timeline/giới hạn tại [evidence handler](evidence/ui-handler/README.md).
+
+Bước tiếp: Codex truy `CWaitForLoginDlg` tại stage+2C04, vf98→15037F7 và lifecycle/OnInit;
+sau phép reset global, truy state0 và data dependency/queue/send còn thiếu; xác định lifecycle
+đúng của global1A966FC (chưa coi reset là fix nguyên bản). Đo trực tiếp builder-to-socket
+và capture; phân biệt C→S15 đã đo với request auth thực còn thiếu. Không ép modal return thành thành công. Giữ mode/seq
+riêng cho kết nối mới. `oneclickuser/+E9C`, nguồn auto-attempt và tương đương vanilla vẫn unknown.
+Review độc lập đã được chủ dự án miễn; CP012 có audit định kỳ, không có gate mới.
 
 | ID / ưu tiên | Trạng thái | Owner / reviewer | Đã biết | Còn thiếu / bước đóng |
 |---|---|---|---|---|
 | Q-022 / KRE-P1 bootstrap | open | Codex RE/tự kiểm | ProcessPatch local có debugger return1;recipe R2 đã merge;contract ở [PROTOCOL](PROTOCOL.md#wcp) | K1a ownership/control trên Windows local/effective token; K1b kiểm caller/config/IPC riêng CA và NewPatcher; K1c stub/patch theo evidence; gate ba cold start tới network attempt/state chờ hello, không lấy alive/không exit làm proof |
-| Q-023 / KRE-P1 codec | open | Codex RE/tự kiểm | Primitive có [oracle](evidence/primitives/README.md);WCP có bằng chứng hẹp tại [PROTOCOL](PROTOCOL.md#wcp) | Truy input UI/packet15 theo Q-023; tiếp tục identity và codec hai chiều,checksum/seq/reset và gate K2 |
+| Q-023 / KRE-P1 codec | open | Codex RE/tự kiểm | Primitive có [oracle](evidence/primitives/README.md);WCP có bằng chứng hẹp tại [PROTOCOL](PROTOCOL.md#wcp) | Truy wait-dialog và send theo Q-023; tiếp tục identity và codec hai chiều,checksum/seq/reset và gate K2 |
 | Q-024 / KRE-P1 login/kênh | open | Codex RE/tự kiểm | VN có bootstrap-data, login/redirect/cache/kênh; các variant trong một binary đã khác layout | KR handler/field/order/encoding/local identity; cold/warm cache và keepalive vào sảnh K3; không gọi auth Nexon thật |
 | Q-025 / KRE-P1 room/load | open | Codex RE/tự kiểm | Asset map KR và UI Ready có locator; VN có bẫy map tự gửi/spawn trước khi load | Wire KR create/join/host/slot/ready/start/roster/map/spawn/ack; K4 hai client thấy cùng phòng và spawn đúng |
 | Q-026 / KRE-P1 authority/trận | open | Codex RE/tự kiểm | KR có consumer flame/chain, timer/send167/status184; VN mô hình lai | Phân quyền client/server/peer từng event; packet bom/pickup/trap/death/result/correction KR; K5 một chu kỳ hoàn chỉnh, không lấy packet183 ghost làm mover người sống |

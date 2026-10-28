@@ -51,4 +51,4 @@ Mỗi run có recipe argv và `run.json`; không phát hành binary/asset hoặc
 `verify.py` đối chiếu exact byte của patch cố định và import, hash copy, snapshot, isolation và các
 quan sát log hữu hạn. `patch-diffs.json` lưu diff và SHA phần append của recorder; ngữ nghĩa stub
 cần review thủ công, checker không tự xác nhận. Năm artifact nguồn được kiểm lại. Xem
-[verification](verification.json) cho kết quả kiểm; chưa review thì vẫn pending trong manifest.
+[verification](verification.json) cho kết quả kiểm; report review cũ giữ nguyên và miễn approval từ28/10 được ghi rõ trong manifest.
