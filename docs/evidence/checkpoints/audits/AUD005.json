@@ -1,0 +1,70 @@
+{
+  "id": "AUD005",
+  "trigger": "periodic",
+  "completed_through": "CP016",
+  "recorded_utc": "2026-10-28T08:17:31.621980+00:00",
+  "auditor": "Codex self-audit, independent review waived by project owner",
+  "read_files": [
+    "README.md",
+    "docs/PLAN.md",
+    "docs/PROTOCOL.md",
+    "docs/RESEARCH.md",
+    "docs/evidence/room-input/README.md",
+    "docs/evidence/postwait/README.md",
+    "docs/evidence/login-runtime/README.md",
+    "docs/evidence/ui-handler/README.md",
+    "docs/evidence/vn-reuse/README.md",
+    "docs/evidence/object-state/README.md",
+    "docs/evidence/checkpoints/manifest.json"
+  ],
+  "method": "Manual core-doc reading in required order, evidence and new raw GDB/RTTI/targeted PE ranges, 14 run timelines and screenshots; compare native blob oracle, captured107byte request81 and every native primitive field with writer. Inspect negative missing-selector runs and old CP012 callback-interface precedent, CP015 baseline/PR23 merge. Script results used only for measurable consistency; no gate auto-closure.",
+  "findings": [
+    {
+      "id": "F1",
+      "stale": "CP015 current README/PLAN/RESEARCH still stop at click without control proof and request77 search",
+      "correction": "Current state now measured secondary interface callback2011, actual dialog and C2S81/107bytes; response/room not observed. CP015 completed record and historical evidence unchanged.",
+      "fixed_in": [
+        "README.md",
+        "docs/PLAN.md",
+        "docs/PROTOCOL.md",
+        "docs/RESEARCH.md",
+        "docs/evidence/room-input/README.md"
+      ]
+    },
+    {
+      "id": "F2",
+      "stale": "Protocol VN reuse table says custom UI unconfirmed and all game header/checksum/field unknown despite CP012–015",
+      "correction": "Link table to current bounded native/runtime contract; no general full-codec/room assumption. Historical CP013 no-runtime sentence explicitly scoped toCP013.",
+      "fixed_in": [
+        "docs/PROTOCOL.md"
+      ]
+    },
+    {
+      "id": "F3",
+      "stale": "A first-field/native-CRC success could be read as validation of full channel14 blob; candidate omits raw selector and aborts",
+      "correction": "Keep negative experiments, record inner length0/count26276 and reject old candidate; corrected raw0 candidate has native complete blob/count1 plus runtime channel index0/levels and dialog. Existing15/241 synthetic blobs still need full cursor revalidation; do not retract their observed state transitions or assert full semantic validity.",
+      "fixed_in": [
+        "docs/PROTOCOL.md",
+        "docs/RESEARCH.md",
+        "docs/evidence/room-input/README.md"
+      ]
+    },
+    {
+      "id": "F4",
+      "stale": "README merge snapshot and audit due marker stop at CP015 pending/CP016 next",
+      "correction": "Confirm PR23 merged; CP016 pending snapshot, AUD005 atCP016 and next periodicCP020.",
+      "fixed_in": [
+        "README.md",
+        "docs/RESEARCH.md",
+        "docs/PLAN.md",
+        "docs/evidence/room-input/README.md"
+      ]
+    }
+  ],
+  "remaining": [
+    "No room reply/room stage; next trace actual response dispatcher, do not assume S2C81 pairing from number.",
+    "Full auth/profile, cache/reconnect/reset/vanilla controls remain open; CP015 state facts survive, earlier synthetic15/241 blobs need further cursor checks.",
+    "One channel/count1/empty name and roomlist count0 only; count bounds, compression/flag0, title/password variants not validated.",
+    "CP016 integration pending at record; PR authoritative. No independent approval or gate completion."
+  ]
+}

@@ -22,19 +22,18 @@ boom-kr-server/
 
 ## Đang làm
 
-CP015: **copy Wine đã hiển thị sảnh KR và đóng hộp “đang kết nối kênh” qua handler nhận của client**.
-Sau request auth đã đo ở CP014, client đi qua request5 → redirect local → socket kênh/request6;
-S→C17 vào `CLobbyStage`, S→C241 đặt ready và đóng notice. Không ép modal result hoặc cờ ready.
+CP016: **copy Wine đã mở hộp Tạo phòng và gửi request C→S81/107byte qua socket kênh**.
+Click thật tới callback; S→C91/14 cho phép client mở `CCreateDlgRenew`. Xác nhận dialog trả3,
+capture và parser KR kiểm đủ payload. Không ép cờ UI/modal/index/level.
 
-Đây là mốc UI/đường nhận trên **copy chẩn đoán**, chưa phải login/profile/cache đầy đủ hoặc gate K3.
-Body result0 còn thiếu; tên/profile trống. Hai lần click Tạo phòng chưa có request77, chưa xác nhận
-hit control; chưa tạo phòng hoặc vào trận. Contract/giới hạn tại
-[PROTOCOL](docs/PROTOCOL.md#channel-lobby), recipe/ảnh/hash tại
-[evidence sảnh](docs/evidence/postwait/README.md); bước tiếp ở [Q-023](docs/RESEARCH.md#q-023).
+Đây là mốc trên **copy chẩn đoán**, chưa phải login/profile/cache đầy đủ hoặc gate K3.
+Body result0 còn thiếu; tên/profile trống. Stub chưa trả lời request tạo phòng, chưa có phòng
+hoặc vào trận. Contract tại [PROTOCOL](docs/PROTOCOL.md#room-create), recipe/ảnh/hash tại
+[evidence tạo phòng](docs/evidence/room-input/README.md); bước tiếp ở [Q-023](docs/RESEARCH.md#q-023).
 
-CP014 đã merge [PR22](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/22).
-CP015 là checkpoint mới chờ tích hợp khi ghi record; PR là nguồn trạng thái merge hiện tại.
-Chủ dự án miễn review độc lập; Codex tự kiểm, giữ gate bằng chứng. Audit định kỳ kế CP016.
+CP015 đã merge [PR23](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/23).
+CP016 chờ tích hợp khi ghi record; PR là nguồn trạng thái merge hiện tại.
+Review độc lập được miễn; Codex tự kiểm, giữ gate bằng chứng. AUD005 ở CP016; audit kế CP020.
 
 Checkpoint bền vững: [manifest](docs/evidence/checkpoints/manifest.json).
 Quy trình ghi chép/review/audit: [checkpoint workflow](docs/evidence/checkpoints/README.md).
