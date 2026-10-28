@@ -1,6 +1,6 @@
 # KR 00967 — contract tương thích client gốc
 
-Revision kr-legacy-contract-r1; cập nhật28/10/2026 JST (CP013).
+Revision kr-legacy-contract-r1; cập nhật28/10/2026 JST (CP014).
 **Contract có bằng chứng từng phần; chưa nghiệm thu full codec K2**.
 Lộ trình và thứ tự task chỉ giữ ở [REWRITE_PLAN — KRE](PLAN.md).
 Đây là contract của repo server KR. ADR0009 của bản viết lại là nguồn lịch sử để so sánh;
@@ -44,7 +44,7 @@ Mức `confirmed` dưới đây chỉ áp dụng nguồn/build/phạm vi ghi tro
 | Framing/primitive | VN `CClientSocket` `A68850`, recv/process `A662E0`, send `A663E0`; encode/decode/CRC đã có kiểm binary | Dùng làm mẫu tìm class/call graph và mẫu fixture. Patch bootstrap có profile riêng [đã kiểm](evidence/bootstrap-wire/README.md); game socket header/checksum/mode/field obfuscation vẫn **unknown**. |
 | Crypto/seq | VN XOR `0x53351D9C`/step `0x63CAACE3`, CRC8/32, base/seq/delta, opcode substitution | Constants chỉ là VN confirmed. Không gán cho KR khi chưa đọc consumer/đo. Kiểm seq tăng trước/sau crypto và reset riêng từng socket/chiều. |
 | Hello/version | VN server-first hello, rồi đổi mode; version 116 và packet bootstrap có thứ tự | Patch socket KR: mode0/selector0, BE16 version967, response local được chấp nhận theo [evidence](evidence/bootstrap-wire/README.md). Consumer WCP, initial0/0 và transition2/3 có bằng chứng theo [contract WCP](#wcp); full codec/seq và login/world role chưa xác nhận; không gộp socket. |
-| Login/identity | VN có pipeline login-result/network-info và variant China khác layout | CP013 đã giải dispatcher KR: S→C4 và15 nối chuỗi wait0→2→1→3; [evidence](evidence/vn-reuse/README.md). Đây là static, chưa runtime hoặc đủ payload/auth. C→S request, fields và identity launcher KR vẫn unknown. |
+| Login/identity | VN có pipeline login-result/network-info và variant China khác layout | CP013 giải dispatcher/state tĩnh; CP014 đo auth request1, phản hồi lỗi4 và prefix result0 trên copy. [Contract login](#login-auth); full success body, network-info/runtime và identity nguyên bản vẫn thiếu. |
 | Cache/redirect/channel | VN cần tag blob; dữ liệu inner LE khác outer wire, cache path khởi tạo theo stage | Kiểm contract KR từ reader/consumer. Giữ test cold/warm cache; không copy blob VN hay replay flag “dùng cache” khi file không tồn tại. |
 | Lobby/room/start | VN có request/reply, slot flags, map tự gửi lúc vào phòng, loading/clock nhiều pha | Dùng để xây checklist ca biên. Opcode, bitfield, stage ID, số slot và map ID KR **unknown**. |
 | Bomb/item/trap/result | VN `111→152→151`; `553`, pickup `117→158`; `120` subtype; kết quả `168→173` có runtime nguồn cũ | Chỉ mỏ neo VN. KR phải nối send/receive tới object/state tương ứng trước khi implement. Fuse/drop/cap policy emulator không phải luật server gốc. |
@@ -141,11 +141,49 @@ Semantics auth/keepalive và field payload chưa xác nhận.
 CP013 bổ sung đường **S→C** bằng static dispatcher KR: `10FCBE0` ánh xạ4→`10FEDA0` (result0→`10FD540`)
 và15→`1100590`; hai handler nối `stage+2C04` tới wait state`+F4` qua`C47260/C472A0`, tick`C472E0`
 hoàn tất1→3. [Bằng chứng đối chiếu VN](evidence/vn-reuse/README.md) giữ bytes, guard và giới hạn.
-Chưa có runtime S→C4/15, full schema/result payload hoặc C→S auth KR. Không gộp S→C15 này với
+Tại CP013 chưa có runtime S→C4/15 hoặc C→S auth KR; CP014 bổ sung ở [contract login](#login-auth).
+Full success schema vẫn thiếu; CP014 có thử S→C15 bên dưới. Không gộp S→C15 này với
 bốn C→S15 đã capture ở CP012. Đây không phải toàn bộ endpoint/port,
 full codec hoặc proof auth/reconnect K2.
 Call/capture và giới hạn tại [evidence handler](evidence/ui-handler/README.md);
-contract username/password, token, kết quả auth và mode/seq sau đó vẫn unknown.
+Contract username/password, token thật và mode/seq tổng quát vẫn unknown.
+
+<a id="login-auth"></a>
+### Login auth trên copy — CP014
+
+Nguồn raw/recipe/hash và các control/failure: [evidence login](evidence/login-runtime/README.md).
+Các facts dưới là `kr_runtime/confirmed` hoặc `kr_static/confirmed` trong phạm vi copy đã khóa,
+không phải đăng nhập Nexon thật hoặc K2/K3 đã pass.
+
+- Luồng tự động `11010F0` đọc config `token_1/token_2`; tĩnh chọn count0/1/2 theo chuỗi rỗng.
+  Runtime `token_1:offline-probe` đi tới `13B07F0` với1; cùng copy không token có0.
+  `1255C90` chỉ gọi builder khi count1..2. Chỉ nhánh token_1/count1 đã đo; token_2/count2 chưa kiểm.
+- `1255DC1→13ADE40` yêu cầu getter `13AD5B0==-1`, socket ready và count1/2; gọi base ctor
+  `14EAD00` với opcode1. Capture connection3 có **C→S1/80 byte**, kế **C→S60/58 byte**, rồi C→S15.
+  Native parser `14EF300` replay7 frame với seq40+3n, khớp CRC/payload; CRC-sai/partial từ chối.
+  Hai u8 đầu payload auth được native reader đọc4 và1. Full schema/biến thể auth còn unknown.
+- Chiều nhận của login socket: tại `14EF300`, hello có mode0/selector0/seq40; phản hồi kế có
+  mode2/selector3/**seq43**. Fixture S→C4 result1 dùng43 vào `10FCBE0→10FEDA0`, guard
+  `stage+2FD8=1`, decode1 rồi nhánh lỗi đặt dialog result1. Đây là thử nghiệm từ chối login.
+  Fixture sai giả định seq40 trước đó vẫn qua dispatch nhưng decode2; CRC của mẫu1byte không
+  đủ chứng minh plaintext/seq. Không dùng seq chiều gửi thay chiều nhận.
+- Prefix S→C4 result0 có thứ tự đã đo: **outer u8 result, u8, u16, u8 playerCount, u64**.
+  Native replay đọc0/0/1/1/0; runtime vào handler result0 và đọc khớp prefix/count local1.
+  Body theo từng player, đuôi và S→C15/network-info chưa đủ để tạo phản hồi thành công hợp lệ.
+- Prefix13byte cố ý thiếu body vẫn dẫn tới C→S9/46byte. Cấp tiếp fixture S→C15 với seq46,
+  blob reader chứa host loopback, ba u16=0, mode0 và tailu16=0: đã vào `1100590` và đo wait
+  **0→2→1→3**, setter result3 từ`C4704E`, modal trả3. Không suy getter bounds hoặc schema hợp lệ
+  từ việc client tiếp tục với dữ liệu thiếu. Các giá trị loopback/zero là `emu_choice`.
+- Sau modal, slot`16EA598` trap ở`13BFD44`, arguments hwnd/msg403/1/0. Copy bind thử
+  `PostMessageA` (`emu_choice/candidate`; `SendMessageA` còn alternative) cho attempt trả1 và tới
+  xử lý message tiếp `1259C65→125AF18→13BFF43→13C2052`. Run này dừng ở trap`2265828`,
+  slot`16EA8FC`, call`13CA429`/return`13CA42F`; API/native helper và stage tiếp chưa xác định.
+  Đây là return của luồng chẩn đoán, không phải login hợp lệ, vào kênh/sảnh hoặc gate K3.
+
+Recipe mới bind Toolhelp process/thread và các API window trên copy, giữ global1A966FC reset0 trong
+bộ nhớ như CP012. Các API phục hồi là `emu_choice/candidate`; `GetWindowTextA` còn alternative ABI
+`GetClassNameA` chưa loại trừ. Token là giá trị giả local. Không ép modal/state thành success;
+không suy các patch/import/API này là tương đương vanilla hoặc là nguyên nhân duy nhất.
 
 Fixture opaque/zero/empty và prefix69 là emu_choice đã được consumer chấp nhận trong phép thử,
 không phải byte server gốc. Nhánh flag1,codec frame mode2/selector3 ở phạm vi fixture CP006 có kiểm hẹp; seq/reconnect, semantics đầy đủ và

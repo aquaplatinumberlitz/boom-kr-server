@@ -61,19 +61,24 @@ rồi tick1→3; offset state KR+F4 khác VN+D8. Nguồn/call và giới hạn t
 [evidence VN→KR](evidence/vn-reuse/README.md). Chưa quan sát runtime hai handler hoặc đủ payload;
 không dùng code VN `login_ok()` nguyên xi để đóng contract KR.
 
-Bước tiếp: Codex đặt breakpoint đúng dispatcher/reader mới tìm (`10FCBE0`, `10FEDA0`, `1100590`),
-phục hồi field ledger tối thiểu của KR và xác định request auth/điều kiện khởi phát nó trên socket3.
-Đối chiếu source VN `login_ok/login_net_info` để kiểm thứ tự/cursor/playerCount/guard; giữ riêng
-C→S15 đã đo với S→C15/network-info và C→S auth còn unknown. Sau đó kiểm transition bằng response
-KR được consumer chấp nhận, chưa ép modal return/state thành thành công. Lifecycle global1A966FC,
-`oneclickuser/+E9C`, nguồn auto-attempt và tương đương vanilla vẫn unknown. Review độc lập đã miễn;
-AUD004 hoàn tất ở CP012, audit kế CP016. Chưa thêm gate.
+CP014 đã tìm trigger auth từ token local, capture request và thực thi handler phản hồi lỗi;
+contract/chiều seq/prefix result0 tại [PROTOCOL](PROTOCOL.md#login-auth), control và các phép đo
+bị loại ở [evidence login](evidence/login-runtime/README.md). CP013 đã merge PR21.
+Nguồn count0 của auto-attempt đã giải; lifecycle kích hoạt stage tự động và global vẫn chưa đủ.
+
+Bước tiếp: Codex giải call`13CA429`/slot`16EA8FC` đang chặn sau modal/attempt1: xác định helper,
+arguments, module/caller trước khi bind hoặc thay stub; chạy lại cùng fixture và đo stage tiếp sau
+message403. Giữ bản đối chứng trap và rollback copy. Đồng thời tiếp nối reader`10FD820` để phục hồi
+đủ body result0; prefix thiếu body đã gửi9 và fixture S→C15 đã chạy wait0→2→1→3, nhưng không
+xác nhận dữ liệu auth hợp lệ hay sảnh. Không ép modal/state. Giữ lifecycle global1A966FC,
+`oneclickuser/+E9C`, token_2/count2, full codec/reset và tương đương vanilla ở trạng thái unknown.
+Review độc lập đã miễn; AUD004 ở CP012, audit kế CP016. Chưa thêm gate.
 
 | ID / ưu tiên | Trạng thái | Owner / reviewer | Đã biết | Còn thiếu / bước đóng |
 |---|---|---|---|---|
 | Q-022 / KRE-P1 bootstrap | open | Codex RE/tự kiểm | ProcessPatch local có debugger return1;recipe R2 đã merge;contract ở [PROTOCOL](PROTOCOL.md#wcp) | K1a ownership/control trên Windows local/effective token; K1b kiểm caller/config/IPC riêng CA và NewPatcher; K1c stub/patch theo evidence; gate ba cold start tới network attempt/state chờ hello, không lấy alive/không exit làm proof |
-| Q-023 / KRE-P1 codec | open | Codex RE/tự kiểm | Primitive có [oracle](evidence/primitives/README.md);WCP có bằng chứng hẹp tại [PROTOCOL](PROTOCOL.md#wcp) | Truy wait-dialog và send theo Q-023; tiếp tục identity và codec hai chiều,checksum/seq/reset và gate K2 |
-| Q-024 / KRE-P1 login/kênh | open | Codex RE/tự kiểm | VN có bootstrap-data, login/redirect/cache/kênh; các variant trong một binary đã khác layout | KR handler/field/order/encoding/local identity; cold/warm cache và keepalive vào sảnh K3; không gọi auth Nexon thật |
+| Q-023 / KRE-P1 codec | open | Codex RE/tự kiểm | Primitive/WCP từng phần; CP014 có request auth, seq nhận và chuỗi wait trên fixture thiếu body | Native helper sau attempt và full result0/codec/reset theo bước trên; gate K2 còn mở |
+| Q-024 / KRE-P1 login/kênh | open | Codex RE/tự kiểm | KR có request auth và phản hồi lỗi runtime; VN cung cấp mỏ neo schema/stage, không phải layout KR | Full result0 và S→C15, cold/warm cache và keepalive vào sảnh K3; không gọi auth Nexon thật |
 | Q-025 / KRE-P1 room/load | open | Codex RE/tự kiểm | Asset map KR và UI Ready có locator; VN có bẫy map tự gửi/spawn trước khi load | Wire KR create/join/host/slot/ready/start/roster/map/spawn/ack; K4 hai client thấy cùng phòng và spawn đúng |
 | Q-026 / KRE-P1 authority/trận | open | Codex RE/tự kiểm | KR có consumer flame/chain, timer/send167/status184; VN mô hình lai | Phân quyền client/server/peer từng event; packet bom/pickup/trap/death/result/correction KR; K5 một chu kỳ hoàn chỉnh, không lấy packet183 ghost làm mover người sống |
 | Q-027 / KRE-P1 peer | open | Codex RE/tự kiểm | VN92/146 và UDP P2P có runtime; chưa xác nhận tương đương KR | Peer negotiation, endpoint, key/slot, protocol UDP và relay KR; movement hai chiều, cùng result và hai trận K6 |

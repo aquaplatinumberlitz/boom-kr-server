@@ -1,7 +1,7 @@
 {
   "schema": "kre-checkpoints-v1",
-  "last_id": "CP013",
-  "completed_count": 13,
+  "last_id": "CP014",
+  "completed_count": 14,
   "audit_interval": 4,
   "last_periodic_audit": 12,
   "next_periodic_audit": "CP016",
@@ -7265,6 +7265,1640 @@
           "path": "docs/evidence/vn-reuse/README.md",
           "state": "updated",
           "reason": "VN proven flow, exact KR comparison and failed extraction correction."
+        }
+      ]
+    },
+    {
+      "id": "CP014",
+      "previous": "CP013",
+      "lifecycle": "complete",
+      "recorded_utc": "2026-10-28T01:07:29.282500+00:00",
+      "question": "Why is auth not sent after WCP, and can local request/reply advance the measured login wait flow?",
+      "scope": "16 sequential isolated Wine runs; targeted KR auth/token/import and wait-handler analysis; actual C2S capture/native parser replay, local rejection and deliberately truncated result0 plus network-info. No original binary/DB edits, live auth or gate promotion.",
+      "context_commit": "42f4c03f3163fd24ec02c1e3c50e24e7d0e146e0",
+      "owner": "Codex",
+      "reviewer": "Codex",
+      "artifacts": [
+        {
+          "name": "Prior KR diagnostic copy",
+          "sha256": "70708abab77ebd1cfd230a35f4997b8e84330f74442ed77b0b74c7b03180c82c"
+        },
+        {
+          "name": "Final offline diagnostic copy with candidate bindings",
+          "sha256": "de2df3ba68f2e7deff892186d51571e3eae7b613d7cb02227066015a2eb4789d"
+        },
+        {
+          "name": "KR modO native parser image/base400000",
+          "sha256": "a08950c833d3acab8281049def7b3dc96b221f107eeda01da3a548e34b91dce5"
+        }
+      ],
+      "locators": [
+        "11010F0/token_1/token_2→13B07F0;1255C90 count1..2;1255DC1→13ADE40/14EAD00 opcode1",
+        "16 Wine runs 2026-10-28 UTC listed in login-runtime-r1/runtime-summary.json; TCP ordinal3 only loopback",
+        "14EF300 native frame parser and receiver+5C seq40 before hello/43 after;S2C15 fixture seq46",
+        "10FCBE0/10FEDA0→10FD540; prefix getters10FD577/59E/5C3/5D6; first body10FD820/822",
+        "C47260/C472A0/C472E0 wait+F4;1100590/1100785;modal1503C82/11044A7;attempt1104A26",
+        "post-wait13BFD44 slot16EA598;new blocker13CA429 slot16EA8FC trap2265828;RVA=VA-400000"
+      ],
+      "findings": [
+        {
+          "summary": "Natural token1 triggers playerCount1; matched final-copy no-token control stays0 and does not send auth. Static auto path counts token config and app gates allow only1/2.",
+          "source": "kr_runtime",
+          "status": "confirmed",
+          "method": "runtime",
+          "canonical": "docs/PROTOCOL.md#login-auth",
+          "limits": "Modified copy/global reset and fake local token only; token2/count2, manual credentials, original launcher lifecycle untested.",
+          "evidence": [
+            "E108",
+            "E121",
+            "E117",
+            "E009"
+          ]
+        },
+        {
+          "summary": "Auth builder13ADE40 invokes base packet ctor with opcode1; capture has C2S1/80 bytes then60/58 and later15. Native parser/CRC replay independently accepts captured frames and rejects bad CRC/partial; first auth u8 values4/1.",
+          "source": "kr_runtime",
+          "status": "confirmed",
+          "method": "runtime",
+          "canonical": "docs/PROTOCOL.md#login-auth",
+          "limits": "Native replay is synthetic context, prefix check off/allocator stub; not semantic token verification, original server auth or full codec/reset.",
+          "evidence": [
+            "E110",
+            "E114",
+            "E042",
+            "E091",
+            "E020"
+          ]
+        },
+        {
+          "summary": "Targeted Toolhelp and window import bindings pass successive observed traps; PostMessageA candidate gets past post-modal trap to attempt return1 and message handling.",
+          "source": "emu_choice",
+          "status": "candidate",
+          "method": "runtime",
+          "canonical": "docs/PROTOCOL.md#login-auth",
+          "limits": "API aliases remain candidates: GetWindowTextA vs GetClassNameA and PostMessageA vs SendMessageA not fully excluded; diagnostic copy only.",
+          "evidence": [
+            "E186",
+            "E130",
+            "E191",
+            "E150",
+            "E072"
+          ]
+        },
+        {
+          "summary": "Live receive seq is40 on hello and43 on subsequent mode2/selector3 reply. Correct local opcode4 fixture decodes rejection1; wrong key40 fixture decoded2 despite dispatch.",
+          "source": "kr_runtime",
+          "status": "confirmed",
+          "method": "runtime",
+          "canonical": "docs/PROTOCOL.md#login-auth",
+          "limits": "Single-byte CRC/native oracle alone cannot identify plaintext/seq; no generalization to other sockets/reconnect.",
+          "evidence": [
+            "E028",
+            "E036",
+            "E135"
+          ]
+        },
+        {
+          "summary": "Deliberately truncated result0 prefix enters success reader, count matches1 and sends9; candidate S2C15 runs wait0→2→1→3, modal3. PostMessageA copy returns attempt1 then traps slot16EA8FC.",
+          "source": "kr_runtime",
+          "status": "confirmed",
+          "method": "runtime",
+          "canonical": "docs/PROTOCOL.md#login-auth",
+          "limits": "Not valid full login schema or lobby; first-body getter0/error-field0 does not prove bounds. Full user/cache/body absent, network-info defaults local design.",
+          "evidence": [
+            "E085",
+            "E151",
+            "E054",
+            "E072",
+            "E140",
+            "E149"
+          ]
+        },
+        {
+          "summary": "Misaligned breakpoint caused prefix-run SIGSEGV and was corrected; header modes0 did not disable XOR getter in a synthetic oracle and was not injected.",
+          "source": "kr_static",
+          "status": "confirmed",
+          "method": "emulation",
+          "canonical": "docs/PROTOCOL.md#login-auth",
+          "limits": "Failed probes retained with limits; neither failure used as original-client blocker or success evidence.",
+          "evidence": [
+            "E152",
+            "E081",
+            "E085",
+            "E192"
+          ]
+        }
+      ],
+      "verification": [
+        {
+          "check": "302 assertions on16 isolated sequential runs, raw hashes, actual capture/native CRC and negatives, state markers and corrected probe",
+          "result": "pass",
+          "limits": "Mechanical consistency; manual assembly/timeline/screenshot assessment separate. No semantic login/gate validation.",
+          "evidence": [
+            "E189",
+            "E188",
+            "E162"
+          ]
+        }
+      ],
+      "evidence": [
+        {
+          "id": "E001",
+          "kind": "local",
+          "path": "local/research/codex/bootstrap-copy-oracle.py",
+          "bytes": 2377,
+          "sha256": "8127e0f2fbc385360e878bb68ae3a6680eabbf7456335f0f3db75c7c3b73a8c0"
+        },
+        {
+          "id": "E002",
+          "kind": "local",
+          "path": "local/research/codex/bootstrap-recv-oracle.py",
+          "bytes": 2104,
+          "sha256": "1e86c06540e8fe654564c5bd403f859070f77c9af0d5d11c70c9351198e00ae2"
+        },
+        {
+          "id": "E003",
+          "kind": "local",
+          "path": "local/research/codex/login-runtime-r1/adapter-blocker.asm",
+          "bytes": 2829,
+          "sha256": "a8db360ce1e1f09e6609a2685d67afd114b57fd3e31d2532e2b049451b746c94"
+        },
+        {
+          "id": "E004",
+          "kind": "local",
+          "path": "local/research/codex/login-runtime-r1/adapter-branch.asm",
+          "bytes": 1988,
+          "sha256": "01548083e8d195e7d21c6c34afcf2789e05511350ad639baed6ca630aa0c8649"
+        },
+        {
+          "id": "E005",
+          "kind": "local",
+          "path": "local/research/codex/login-runtime-r1/adapter-import-call.asm",
+          "bytes": 1,
+          "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+        },
+        {
+          "id": "E006",
+          "kind": "local",
+          "path": "local/research/codex/login-runtime-r1/adapter-query-full.asm",
+          "bytes": 32456,
+          "sha256": "efde47c01e7501e1debb693746cdd0699aedc74d07f3c4c149378a01c2ddc60d"
+        },
+        {
+          "id": "E007",
+          "kind": "local",
+          "path": "local/research/codex/login-runtime-r1/adapter-query.asm",
+          "bytes": 1076,
+          "sha256": "2829e0d0544d9d3d371b697d77d2f72dad50f74315c329181f56254aad0cc147"
+        },
+        {
+          "id": "E008",
+          "kind": "local",
+          "path": "local/research/codex/login-runtime-r1/auth-body-tail.asm",
+          "bytes": 6510,
+          "sha256": "8f3d50cb268a7403a5d7c4fe63c4ea814497deb97b6b680ae88ce66db449c25d"
+        },
+        {
+          "id": "E009",
+          "kind": "local",
+          "path": "local/research/codex/login-runtime-r1/auth-config-gates.asm",
+          "bytes": 563,
+          "sha256": "1d1e6242f2b6efc1b8637cf474f5fee12d27fe1a1e97a3e61c880900489e54c2"
+        },
+        {
+          "id": "E010",
+          "kind": "local",
+          "path": "local/research/codex/login-runtime-r1/auth-config-tail.asm",
+          "bytes": 1635,
+          "sha256": "a0c6a7cffb5092c485a8f41c5726ba1153068d280123e319cc7156cd233f25a3"
+        },
+        {
+          "id": "E011",
+          "kind": "local",
+          "path": "local/research/codex/login-runtime-r1/auth-count1/client.log",
+          "bytes": 118558,
+          "sha256": "c6841568261eb410381e282cdc283552c1da05b6d8fd05fd5d35293cf2c9e6ef"
+        },
+        {
+          "id": "E012",
+          "kind": "local",
+          "path": "local/research/codex/login-runtime-r1/auth-count1/debug-commands.txt",
+          "bytes": 873,
+          "sha256": "e4a159abf132a29d85ca05ec66f9bb327c45b72ff21cad6c16d1d86ce057a0a8"
+        },
+        {
+          "id": "E013",
+          "kind": "local",
+          "path": "local/research/codex/login-runtime-r1/auth-count1/run.json",
+          "bytes": 5215,
+          "sha256": "3ec29c4c3ef14545f1187aec1b07e77c53bf0c55f979e174e38e61e0a72400d7"
+        },
+        {
+          "id": "E014",
+          "kind": "local",
+          "path": "local/research/codex/login-runtime-r1/auth-count1/screen-07.png",
+          "bytes": 52130,
+          "sha256": "65521de802e77d75410677e39f7237b283d54c06d74441958e2c40c73102d18e"
+        },
+        {
+          "id": "E015",
+          "kind": "local",
+          "path": "local/research/codex/login-runtime-r1/auth-count1-hashes.json",
+          "bytes": 6593,
+          "sha256": "b28d278494ecf82757c14f18a0cb655d6fda195f7506a3770cb1358a55ad3b37"
+        },
+        {
+          "id": "E016",
+          "kind": "local",
+          "path": "local/research/codex/login-runtime-r1/auth-count1-launcher.log",
+          "bytes": 4375,
+          "sha256": "bc3d5d5f1e03bda7b37ad8b3d21b11b0667f943dad9cd356e0b0d3610b4a324a"
+        },
+        {
+          "id": "E017",
+          "kind": "local",
+          "path": "local/research/codex/login-runtime-r1/auth-count1-recipe.json",
+          "bytes": 956,
+          "sha256": "d2a9006657c40fd07af53d22bd22f3a0fccd9c6eba706f0480b9e1d09f76762e"
+        },
+        {
+          "id": "E018",
+          "kind": "local",
+          "path": "local/research/codex/login-runtime-r1/auth-count1.gdb",
+          "bytes": 873,
+          "sha256": "e4a159abf132a29d85ca05ec66f9bb327c45b72ff21cad6c16d1d86ce057a0a8"
+        },
+        {
+          "id": "E019",
+          "kind": "local",
+          "path": "local/research/codex/login-runtime-r1/auth-entry-callers.json",
+          "bytes": 73,
+          "sha256": "5eb553233b6d4da388e224fd740946d83e9657309dadebaf90b24a12006d32c5"
+        },
+        {
+          "id": "E020",
+          "kind": "local",
+          "path": "local/research/codex/login-runtime-r1/auth-entry.asm",
+          "bytes": 1820,
+          "sha256": "ef7b2397583896e5805b83ce0661df08e0e3a1da452de43f6d741dbec315cf76"
+        },
+        {
+          "id": "E021",
+          "kind": "local",
+          "path": "local/research/codex/login-runtime-r1/auth-enum/client.log",
+          "bytes": 124228,
+          "sha256": "44ea73fda982bfc3f3f481f847c5d622bb92756b5c545b8f18b23eff89fc524b"
+        },
+        {
+          "id": "E022",
+          "kind": "local",
+          "path": "local/research/codex/login-runtime-r1/auth-enum/debug-commands.txt",
+          "bytes": 911,
+          "sha256": "936ef8c038c614c618bac4b8cbbc67faf1178f0f82d98647bacbdc36759665f1"
+        },
+        {
+          "id": "E023",
+          "kind": "local",
+          "path": "local/research/codex/login-runtime-r1/auth-enum/run.json",
+          "bytes": 5238,
+          "sha256": "d4abb6a4121fd72e422f128b34d66252282362cdcaec04cf605efb4abe214456"
+        },
+        {
+          "id": "E024",
+          "kind": "local",
+          "path": "local/research/codex/login-runtime-r1/auth-enum/screen-07.png",
+          "bytes": 45861,
+          "sha256": "e4821028c73a4e166b279109a7672bf81a4851ad2ac7dec43fd4edb0e9a8ec76"
+        },
+        {
+          "id": "E025",
+          "kind": "local",
+          "path": "local/research/codex/login-runtime-r1/auth-enum-hashes.json",
+          "bytes": 6525,
+          "sha256": "5149605fb65d6e2accfe29390b8e27128a89a2f320093c3b07bc06f306dab445"
+        },
+        {
+          "id": "E026",
+          "kind": "local",
+          "path": "local/research/codex/login-runtime-r1/auth-enum-launcher.log",
+          "bytes": 4394,
+          "sha256": "9f7c6ecfaa30cb1bf961a75dd9e0ec0966bf3eaf3a8e192ccf717f6cde13236f"
+        },
+        {
+          "id": "E027",
+          "kind": "local",
+          "path": "local/research/codex/login-runtime-r1/auth-enum-recipe.json",
+          "bytes": 993,
+          "sha256": "3d8544254cadd7d1de22f944a200d9226b7bcd38d9b366edbc2529ae644509a0"
+        },
+        {
+          "id": "E028",
+          "kind": "local",
+          "path": "local/research/codex/login-runtime-r1/auth-error/client.log",
+          "bytes": 127024,
+          "sha256": "ca444d78d4fb23bd880b10c21e9b4289d35505cae3212957ba2991ae7cc9a10f"
+        },
+        {
+          "id": "E029",
+          "kind": "local",
+          "path": "local/research/codex/login-runtime-r1/auth-error/debug-commands.txt",
+          "bytes": 775,
+          "sha256": "592379329675d257f84b7a4d186b4c6022d56b08202a0ba4d1356d1bf70e5e71"
+        },
+        {
+          "id": "E030",
+          "kind": "local",
+          "path": "local/research/codex/login-runtime-r1/auth-error/run.json",
+          "bytes": 8510,
+          "sha256": "99247ed559392b457c072c0eea8e7ea6f75015cb6dd8ae7f63734ccec27a424e"
+        },
+        {
+          "id": "E031",
+          "kind": "local",
+          "path": "local/research/codex/login-runtime-r1/auth-error/screen-14.png",
+          "bytes": 405142,
+          "sha256": "279deaec18593716443e691515a1ad09014126c3fddc029ac52be18a03dd0464"
+        },
+        {
+          "id": "E032",
+          "kind": "local",
+          "path": "local/research/codex/login-runtime-r1/auth-error-hashes.json",
+          "bytes": 11993,
+          "sha256": "efd17528402f023a137d62f88b15fcb608bfc31421e035cc14fe0fd382c0d977"
+        },
+        {
+          "id": "E033",
+          "kind": "local",
+          "path": "local/research/codex/login-runtime-r1/auth-error-launcher.log",
+          "bytes": 6986,
+          "sha256": "34a8292e38cf9f14d1195746f3e8909eb32932899bae3a4b8c033d61a434d43e"
+        },
+        {
+          "id": "E034",
+          "kind": "local",
+          "path": "local/research/codex/login-runtime-r1/auth-error-recipe.json",
+          "bytes": 995,
+          "sha256": "75207ac680c8f7915246ef3e9dbb990c31bed46ce4ae7b58091912195dbc4c46"
+        },
+        {
+          "id": "E035",
+          "kind": "local",
+          "path": "local/research/codex/login-runtime-r1/auth-error.gdb",
+          "bytes": 775,
+          "sha256": "592379329675d257f84b7a4d186b4c6022d56b08202a0ba4d1356d1bf70e5e71"
+        },
+        {
+          "id": "E036",
+          "kind": "local",
+          "path": "local/research/codex/login-runtime-r1/auth-error43/client.log",
+          "bytes": 123583,
+          "sha256": "5e9a55c968366c499527ea319f52a3cd685bf1ffe07e4e8dde4ff6fabea8abe6"
+        },
+        {
+          "id": "E037",
+          "kind": "local",
+          "path": "local/research/codex/login-runtime-r1/auth-error43/debug-commands.txt",
+          "bytes": 994,
+          "sha256": "b4685a0a69de0ee77890784c1fb9c9318e83fc4f51bc96862f6f406dd857acc2"
+        },
+        {
+          "id": "E038",
+          "kind": "local",
+          "path": "local/research/codex/login-runtime-r1/auth-error43/run.json",
+          "bytes": 8018,
+          "sha256": "f5ed933261f46bdd7c8fc3d20689ba37cf5b78da894f3d0bce37120a5448c0e8"
+        },
+        {
+          "id": "E039",
+          "kind": "local",
+          "path": "local/research/codex/login-runtime-r1/auth-error43/screen-13.png",
+          "bytes": 404025,
+          "sha256": "a101286d9fbfbcb864454eb85374ee873721a607807b56eca7e6e13cda04f10d"
+        },
+        {
+          "id": "E040",
+          "kind": "local",
+          "path": "local/research/codex/login-runtime-r1/auth-error43-hashes.json",
+          "bytes": 11088,
+          "sha256": "288f5e02d5e342c34e8f4dcefb28f3b49983a0dc26bcede2e7e0e329878fceeb"
+        },
+        {
+          "id": "E041",
+          "kind": "local",
+          "path": "local/research/codex/login-runtime-r1/auth-error43-launcher.log",
+          "bytes": 6610,
+          "sha256": "331d1e137ce829aa3dfd105f17b81e08db07bf54d79233127c51d8a0d7e12742"
+        },
+        {
+          "id": "E042",
+          "kind": "local",
+          "path": "local/research/codex/login-runtime-r1/auth-error43-oracle.json",
+          "bytes": 7021,
+          "sha256": "556b7dcb805d21832f1c46f22cb7906482ab869983a23e059e24ff809cda3b52"
+        },
+        {
+          "id": "E043",
+          "kind": "local",
+          "path": "local/research/codex/login-runtime-r1/auth-error43-recipe.json",
+          "bytes": 1003,
+          "sha256": "f7e222ab160f41ccc36d44a9b9f2599400516c9184c816622f6d5884a0c5a7ca"
+        },
+        {
+          "id": "E044",
+          "kind": "local",
+          "path": "local/research/codex/login-runtime-r1/auth-error43-replay.log",
+          "bytes": 5767,
+          "sha256": "d7d815a25bbaa2cc1dd5767748cd91c91c29d1b00f87036d758872114b49d4d6"
+        },
+        {
+          "id": "E045",
+          "kind": "local",
+          "path": "local/research/codex/login-runtime-r1/auth-error43.gdb",
+          "bytes": 994,
+          "sha256": "b4685a0a69de0ee77890784c1fb9c9318e83fc4f51bc96862f6f406dd857acc2"
+        },
+        {
+          "id": "E046",
+          "kind": "local",
+          "path": "local/research/codex/login-runtime-r1/auth-gates/client.log",
+          "bytes": 123090,
+          "sha256": "dc21d5e2893d9b52021a19beefcb1fbc09c3f2e1b3b23c376a3380287fa50c2c"
+        },
+        {
+          "id": "E047",
+          "kind": "local",
+          "path": "local/research/codex/login-runtime-r1/auth-gates/debug-commands.txt",
+          "bytes": 705,
+          "sha256": "6b9222594e1f3878b329b422ca339781b1efbfd993ba41840fd268ecbebc7e80"
+        },
+        {
+          "id": "E048",
+          "kind": "local",
+          "path": "local/research/codex/login-runtime-r1/auth-gates/run.json",
+          "bytes": 6793,
+          "sha256": "347412304b8732a3f4c7cee416f7c2cffadd873e2205d023a2a4ad8eb1ae272d"
+        },
+        {
+          "id": "E049",
+          "kind": "local",
+          "path": "local/research/codex/login-runtime-r1/auth-gates/screen-12.png",
+          "bytes": 442385,
+          "sha256": "f7c28ca937ccba77a6277d402570fd2ea6e37c9bc37b36a082e205ca4fbd8477"
+        },
+        {
+          "id": "E050",
+          "kind": "local",
+          "path": "local/research/codex/login-runtime-r1/auth-gates-hashes.json",
+          "bytes": 10382,
+          "sha256": "984ac54b1a6d0e601e1d0e1c121454ffe7701731f3215b2bd9707d90b1de0d6d"
+        },
+        {
+          "id": "E051",
+          "kind": "local",
+          "path": "local/research/codex/login-runtime-r1/auth-gates-launcher.log",
+          "bytes": 5589,
+          "sha256": "2bc3c9fd8fce66d4f83d5d109b4d45853e10e4f2cf9b7696310546f235152b2a"
+        },
+        {
+          "id": "E052",
+          "kind": "local",
+          "path": "local/research/codex/login-runtime-r1/auth-gates-recipe.json",
+          "bytes": 953,
+          "sha256": "4f3e88f6023070daf3738543c23174d8ef96a5222649afa520d82b2162cc6835"
+        },
+        {
+          "id": "E053",
+          "kind": "local",
+          "path": "local/research/codex/login-runtime-r1/auth-gates.gdb",
+          "bytes": 705,
+          "sha256": "6b9222594e1f3878b329b422ca339781b1efbfd993ba41840fd268ecbebc7e80"
+        },
+        {
+          "id": "E054",
+          "kind": "local",
+          "path": "local/research/codex/login-runtime-r1/auth-netinfo/client.log",
+          "bytes": 122413,
+          "sha256": "9c7f79705abd39126c0354759b0ca7c9e67125d212fd8593ac5428170f3b7094"
+        },
+        {
+          "id": "E055",
+          "kind": "local",
+          "path": "local/research/codex/login-runtime-r1/auth-netinfo/debug-commands.txt",
+          "bytes": 2368,
+          "sha256": "0737591d08ee360ce524ddf2b035233e7d38ce47023dc9b4117185c622a54d1e"
+        },
+        {
+          "id": "E056",
+          "kind": "local",
+          "path": "local/research/codex/login-runtime-r1/auth-netinfo/run.json",
+          "bytes": 6795,
+          "sha256": "c074293763dfec435966f2634dfecacc026c32215bbfa8ca16418fba7a099836"
+        },
+        {
+          "id": "E057",
+          "kind": "local",
+          "path": "local/research/codex/login-runtime-r1/auth-netinfo/screen-07.png",
+          "bytes": 354940,
+          "sha256": "311fd551dd4fac4997f6c626b0652b5ae3197cb90d616cf17a745b340459972c"
+        },
+        {
+          "id": "E058",
+          "kind": "local",
+          "path": "local/research/codex/login-runtime-r1/auth-netinfo-hashes.json",
+          "bytes": 6629,
+          "sha256": "e98b4ffc61c4a1375dc36a81d05ca899d157b659dfa5c55b7ccf26d954fa9907"
+        },
+        {
+          "id": "E059",
+          "kind": "local",
+          "path": "local/research/codex/login-runtime-r1/auth-netinfo-launcher.log",
+          "bytes": 5701,
+          "sha256": "bed1d7cd8902ddc7ea1a63dcfce9dde22bd16c08215b754eda1a3d83060d9933"
+        },
+        {
+          "id": "E060",
+          "kind": "local",
+          "path": "local/research/codex/login-runtime-r1/auth-netinfo-oracle.json",
+          "bytes": 3697,
+          "sha256": "020631a1a33da92b8a0b01a897444fabc7b5666b10c0f4374437655a2525b551"
+        },
+        {
+          "id": "E061",
+          "kind": "local",
+          "path": "local/research/codex/login-runtime-r1/auth-netinfo-recipe.json",
+          "bytes": 1003,
+          "sha256": "e574dc072c9be872eb296e70da4aca9c0399f679f8ea4d715d3000016f6f014b"
+        },
+        {
+          "id": "E062",
+          "kind": "local",
+          "path": "local/research/codex/login-runtime-r1/auth-netinfo-replay.log",
+          "bytes": 2912,
+          "sha256": "9e1180ce20a087c148933b98a589dec670bb3e60a5ed0d7eea441a2eb647e205"
+        },
+        {
+          "id": "E063",
+          "kind": "local",
+          "path": "local/research/codex/login-runtime-r1/auth-netinfo.gdb",
+          "bytes": 2368,
+          "sha256": "0737591d08ee360ce524ddf2b035233e7d38ce47023dc9b4117185c622a54d1e"
+        },
+        {
+          "id": "E064",
+          "kind": "local",
+          "path": "local/research/codex/login-runtime-r1/auth-observe/client.log",
+          "bytes": 124094,
+          "sha256": "a12e974c074afbf185bf3ac49ac3cade637c5384bc0e1c121a279ad3a397bd0b"
+        },
+        {
+          "id": "E065",
+          "kind": "local",
+          "path": "local/research/codex/login-runtime-r1/auth-observe/debug-commands.txt",
+          "bytes": 911,
+          "sha256": "936ef8c038c614c618bac4b8cbbc67faf1178f0f82d98647bacbdc36759665f1"
+        },
+        {
+          "id": "E066",
+          "kind": "local",
+          "path": "local/research/codex/login-runtime-r1/auth-observe/run.json",
+          "bytes": 5247,
+          "sha256": "04a7ad93d32d0da2a2c9e09dc38c7e26931635d4247ffe72683906932f9b0b92"
+        },
+        {
+          "id": "E067",
+          "kind": "local",
+          "path": "local/research/codex/login-runtime-r1/auth-observe/screen-07.png",
+          "bytes": 52114,
+          "sha256": "a298bba65e6a1cdb16f7ad103a6ffb48dbb73e374fe5480220a777d27c2dfdef"
+        },
+        {
+          "id": "E068",
+          "kind": "local",
+          "path": "local/research/codex/login-runtime-r1/auth-observe-hashes.json",
+          "bytes": 6627,
+          "sha256": "9c05685904015dea2e237d06cc9ece64d53d410f57cf4b14192e938fed36658d"
+        },
+        {
+          "id": "E069",
+          "kind": "local",
+          "path": "local/research/codex/login-runtime-r1/auth-observe-launcher.log",
+          "bytes": 4403,
+          "sha256": "1e9e8da5c7dda07bd9cb4eeef55e8bbdcf2641a4a6d81a06e885e494dd0e94d3"
+        },
+        {
+          "id": "E070",
+          "kind": "local",
+          "path": "local/research/codex/login-runtime-r1/auth-observe-recipe.json",
+          "bytes": 1003,
+          "sha256": "aa8b7f3259ae2cf09ae4621036b07147cf99792bc99f2343c69c6a92ca842bf1"
+        },
+        {
+          "id": "E071",
+          "kind": "local",
+          "path": "local/research/codex/login-runtime-r1/auth-observe.gdb",
+          "bytes": 911,
+          "sha256": "936ef8c038c614c618bac4b8cbbc67faf1178f0f82d98647bacbdc36759665f1"
+        },
+        {
+          "id": "E072",
+          "kind": "local",
+          "path": "local/research/codex/login-runtime-r1/auth-postmsg/client.log",
+          "bytes": 122068,
+          "sha256": "24ce284f66bf3e68760dfa7670fbf1d7e39ba25be2359c5e7a50f6d2bbc0f98a"
+        },
+        {
+          "id": "E073",
+          "kind": "local",
+          "path": "local/research/codex/login-runtime-r1/auth-postmsg/debug-commands.txt",
+          "bytes": 2368,
+          "sha256": "0737591d08ee360ce524ddf2b035233e7d38ce47023dc9b4117185c622a54d1e"
+        },
+        {
+          "id": "E074",
+          "kind": "local",
+          "path": "local/research/codex/login-runtime-r1/auth-postmsg/run.json",
+          "bytes": 7204,
+          "sha256": "dc5b69ee58d6ea53c0d360035db9bc71b12f15f6784a364ee0b71df879c5c8e7"
+        },
+        {
+          "id": "E075",
+          "kind": "local",
+          "path": "local/research/codex/login-runtime-r1/auth-postmsg/screen-07.png",
+          "bytes": 358646,
+          "sha256": "a2fc9423a4d72f2106f2ec7d1aa86c4019c1c038f13d9de02bca39d7026b749d"
+        },
+        {
+          "id": "E076",
+          "kind": "local",
+          "path": "local/research/codex/login-runtime-r1/auth-postmsg-hashes.json",
+          "bytes": 6632,
+          "sha256": "ee17d64dbb5efbc89cfc37d81a078732daf4576c21fdaa973990e5088e20d11b"
+        },
+        {
+          "id": "E077",
+          "kind": "local",
+          "path": "local/research/codex/login-runtime-r1/auth-postmsg-launcher.log",
+          "bytes": 6034,
+          "sha256": "5afcd30c702a818ed27e77929f264dba43f8180485460777c89574ea38a144b2"
+        },
+        {
+          "id": "E078",
+          "kind": "local",
+          "path": "local/research/codex/login-runtime-r1/auth-postmsg-oracle.json",
+          "bytes": 6789,
+          "sha256": "1dd8bc9d1a5fd3cd8d72cb1d006f8fb9cf13865e4904ee2df411b717cd5e2ce4"
+        },
+        {
+          "id": "E079",
+          "kind": "local",
+          "path": "local/research/codex/login-runtime-r1/auth-postmsg-recipe.json",
+          "bytes": 1000,
+          "sha256": "b1d1f5dd590920e9751be4a455568ab2879626fd8b3f3a8ebd7ffc7ed4022db6"
+        },
+        {
+          "id": "E080",
+          "kind": "local",
+          "path": "local/research/codex/login-runtime-r1/auth-postmsg-replay.log",
+          "bytes": 5757,
+          "sha256": "70cd088a61a44c784b97ae413030eaeb4ccf1f6b4e2c18be527fb75bd7210a7d"
+        },
+        {
+          "id": "E081",
+          "kind": "local",
+          "path": "local/research/codex/login-runtime-r1/auth-prefix/client.log",
+          "bytes": 116566,
+          "sha256": "31dcd54de41028cca29ef24e83c3f08dbc18a4f4ad0defa35242da90bd4f0ee5"
+        },
+        {
+          "id": "E082",
+          "kind": "local",
+          "path": "local/research/codex/login-runtime-r1/auth-prefix/debug-commands.txt",
+          "bytes": 1596,
+          "sha256": "33504e3d71e0a1d4c06523dd279855c20b25f53b37a1a31a4a5cea60f0dda1bc"
+        },
+        {
+          "id": "E083",
+          "kind": "local",
+          "path": "local/research/codex/login-runtime-r1/auth-prefix/run.json",
+          "bytes": 6174,
+          "sha256": "fbc964f8d278669b198dee634e7ff3291917831713c71686726beb313ddba9a5"
+        },
+        {
+          "id": "E084",
+          "kind": "local",
+          "path": "local/research/codex/login-runtime-r1/auth-prefix/screen-07.png",
+          "bytes": 233,
+          "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+        },
+        {
+          "id": "E085",
+          "kind": "local",
+          "path": "local/research/codex/login-runtime-r1/auth-prefix-corrected/client.log",
+          "bytes": 123836,
+          "sha256": "311a323eb81603c69924c69a1d354d2cd2671817784ee22ee3d1ac42b4b49790"
+        },
+        {
+          "id": "E086",
+          "kind": "local",
+          "path": "local/research/codex/login-runtime-r1/auth-prefix-corrected/debug-commands.txt",
+          "bytes": 1596,
+          "sha256": "936da88d736571e77b7e637da379523efd5dad97ecbedd0e3ffcedd3416fd0cf"
+        },
+        {
+          "id": "E087",
+          "kind": "local",
+          "path": "local/research/codex/login-runtime-r1/auth-prefix-corrected/run.json",
+          "bytes": 7900,
+          "sha256": "17a60a0574fe61a3e928e3c856126ec798e69f776304c0a7242a179450958de8"
+        },
+        {
+          "id": "E088",
+          "kind": "local",
+          "path": "local/research/codex/login-runtime-r1/auth-prefix-corrected/screen-12.png",
+          "bytes": 442385,
+          "sha256": "f7c28ca937ccba77a6277d402570fd2ea6e37c9bc37b36a082e205ca4fbd8477"
+        },
+        {
+          "id": "E089",
+          "kind": "local",
+          "path": "local/research/codex/login-runtime-r1/auth-prefix-corrected-hashes.json",
+          "bytes": 10963,
+          "sha256": "a238fa659163ffda12c92626f486173faad9b8580a1ca930f12af09c6b8b6111"
+        },
+        {
+          "id": "E090",
+          "kind": "local",
+          "path": "local/research/codex/login-runtime-r1/auth-prefix-corrected-launcher.log",
+          "bytes": 6514,
+          "sha256": "46cfc771db458bd832589c488a4f2a88f65167d5bdaef10ebaac96b0cb935d11"
+        },
+        {
+          "id": "E091",
+          "kind": "local",
+          "path": "local/research/codex/login-runtime-r1/auth-prefix-corrected-oracle.json",
+          "bytes": 6983,
+          "sha256": "aea85ae579bc5d4616b235623399e2a1d746c64a421a9c0a489070d96f1a9f46"
+        },
+        {
+          "id": "E092",
+          "kind": "local",
+          "path": "local/research/codex/login-runtime-r1/auth-prefix-corrected-recipe.json",
+          "bytes": 1029,
+          "sha256": "ea9c7d6641d7b04c50fd884c2b7490fd5f1be8c37e17ecfd3930686afba643d4"
+        },
+        {
+          "id": "E093",
+          "kind": "local",
+          "path": "local/research/codex/login-runtime-r1/auth-prefix-corrected-replay.log",
+          "bytes": 5766,
+          "sha256": "e8359577322a9ef6100fca436acb85ced184e55855e181bed6bbee54ac5b3eb5"
+        },
+        {
+          "id": "E094",
+          "kind": "local",
+          "path": "local/research/codex/login-runtime-r1/auth-prefix-corrected.gdb",
+          "bytes": 1596,
+          "sha256": "936da88d736571e77b7e637da379523efd5dad97ecbedd0e3ffcedd3416fd0cf"
+        },
+        {
+          "id": "E095",
+          "kind": "local",
+          "path": "local/research/codex/login-runtime-r1/auth-prefix-hashes.json",
+          "bytes": 6591,
+          "sha256": "e799c7bd944a7e97441440a4558cd0ea275645849650040077f0d33683331ea8"
+        },
+        {
+          "id": "E096",
+          "kind": "local",
+          "path": "local/research/codex/login-runtime-r1/auth-prefix-launcher.log",
+          "bytes": 5176,
+          "sha256": "6fb39720627c1061bb4f5e1c0be6d6774958d779f1f8d65a78434a85dec76c60"
+        },
+        {
+          "id": "E097",
+          "kind": "local",
+          "path": "local/research/codex/login-runtime-r1/auth-prefix-recipe.json",
+          "bytes": 999,
+          "sha256": "5bff1f5d3bd587b19584b7d28b6ff5f7ff05758ecf2d87e49df016d262f5b00e"
+        },
+        {
+          "id": "E098",
+          "kind": "local",
+          "path": "local/research/codex/login-runtime-r1/auth-prefix.gdb",
+          "bytes": 1596,
+          "sha256": "33504e3d71e0a1d4c06523dd279855c20b25f53b37a1a31a4a5cea60f0dda1bc"
+        },
+        {
+          "id": "E099",
+          "kind": "local",
+          "path": "local/research/codex/login-runtime-r1/auth-send-context.asm",
+          "bytes": 10367,
+          "sha256": "3c198555b48fd835751be5c621bea26572df4c9f97a4987d79351d4110d93aa0"
+        },
+        {
+          "id": "E100",
+          "kind": "local",
+          "path": "local/research/codex/login-runtime-r1/auth-trigger/client.log",
+          "bytes": 123053,
+          "sha256": "b5d6568743b031bdba14f3cc0f89fba5e94bace2ff6a67fd5fa10cb9a73fa7d5"
+        },
+        {
+          "id": "E101",
+          "kind": "local",
+          "path": "local/research/codex/login-runtime-r1/auth-trigger/debug-commands.txt",
+          "bytes": 771,
+          "sha256": "2dcaf351bc81639bc3e7655c890db55182a67e612de7f48eb813f22c463ed1ed"
+        },
+        {
+          "id": "E102",
+          "kind": "local",
+          "path": "local/research/codex/login-runtime-r1/auth-trigger/run.json",
+          "bytes": 7091,
+          "sha256": "773c89ecefbea9b021fea115f53e9145e5ea86f5498e1751f8c944c52b5d2e0f"
+        },
+        {
+          "id": "E103",
+          "kind": "local",
+          "path": "local/research/codex/login-runtime-r1/auth-trigger/screen-13.png",
+          "bytes": 442527,
+          "sha256": "8779330a8642f5be4c8cf67001369b809a2d6aebb261268ad09cfc8641de3202"
+        },
+        {
+          "id": "E104",
+          "kind": "local",
+          "path": "local/research/codex/login-runtime-r1/auth-trigger-hashes.json",
+          "bytes": 11091,
+          "sha256": "543f665d05e116daecf5ab5a0d026930652b02a953bcc97867333e7211b71799"
+        },
+        {
+          "id": "E105",
+          "kind": "local",
+          "path": "local/research/codex/login-runtime-r1/auth-trigger-launcher.log",
+          "bytes": 5827,
+          "sha256": "67288ac8c04fc260e7bdb2b9183c24f44a41bc61cfd6231f98da1034fdf23526"
+        },
+        {
+          "id": "E106",
+          "kind": "local",
+          "path": "local/research/codex/login-runtime-r1/auth-trigger-recipe.json",
+          "bytes": 959,
+          "sha256": "9ef61090bb1d02972f36528c7479b78a6cba1eb2d7f893ba4da24494588ff68e"
+        },
+        {
+          "id": "E107",
+          "kind": "local",
+          "path": "local/research/codex/login-runtime-r1/auth-trigger.gdb",
+          "bytes": 771,
+          "sha256": "2dcaf351bc81639bc3e7655c890db55182a67e612de7f48eb813f22c463ed1ed"
+        },
+        {
+          "id": "E108",
+          "kind": "local",
+          "path": "local/research/codex/login-runtime-r1/auth-windowtext/client.log",
+          "bytes": 128973,
+          "sha256": "3e9b2271a1eb6b9e9694c14f341dadf133a600dd61f6da2a22f1ea84bbde3e7b"
+        },
+        {
+          "id": "E109",
+          "kind": "local",
+          "path": "local/research/codex/login-runtime-r1/auth-windowtext/debug-commands.txt",
+          "bytes": 911,
+          "sha256": "936ef8c038c614c618bac4b8cbbc67faf1178f0f82d98647bacbdc36759665f1"
+        },
+        {
+          "id": "E110",
+          "kind": "local",
+          "path": "local/research/codex/login-runtime-r1/auth-windowtext/run.json",
+          "bytes": 8135,
+          "sha256": "90e328c3d9a7f0464a63ed44a4ba3a681c19daac1b9dbf7e1b7c93b66ec844d3"
+        },
+        {
+          "id": "E111",
+          "kind": "local",
+          "path": "local/research/codex/login-runtime-r1/auth-windowtext/screen-15.png",
+          "bytes": 441135,
+          "sha256": "fcd5150eb64d8c73bbfc5b57603b405d1f7fd3e6088a5fb71a4fc4dbd42f6f52"
+        },
+        {
+          "id": "E112",
+          "kind": "local",
+          "path": "local/research/codex/login-runtime-r1/auth-windowtext-hashes.json",
+          "bytes": 12906,
+          "sha256": "edfa6bf919a03b1c2d8cb4340082cb92c3492ab9a575a00b7e65030394dbd7db"
+        },
+        {
+          "id": "E113",
+          "kind": "local",
+          "path": "local/research/codex/login-runtime-r1/auth-windowtext-launcher.log",
+          "bytes": 6653,
+          "sha256": "53cecd8d63b9cfc3d8cbb54790466d769cd657843c781bfac19299affc43ba9d"
+        },
+        {
+          "id": "E114",
+          "kind": "local",
+          "path": "local/research/codex/login-runtime-r1/auth-windowtext-oracle.json",
+          "bytes": 8123,
+          "sha256": "68e1985bfde00836ddb4bd9937fa66ee51170b5d32a07fe88dc339edc5178815"
+        },
+        {
+          "id": "E115",
+          "kind": "local",
+          "path": "local/research/codex/login-runtime-r1/auth-windowtext-recipe.json",
+          "bytes": 1011,
+          "sha256": "500acb03417d5e7bf1f8e4408b2fd34a62d01dd181d27021cf821a7d8e381030"
+        },
+        {
+          "id": "E116",
+          "kind": "local",
+          "path": "local/research/codex/login-runtime-r1/auth-windowtext-replay.log",
+          "bytes": 6725,
+          "sha256": "602a4f0e7643f5127156582d827c2a332cc5355dcf32c1da9e1c34b56efbbe76"
+        },
+        {
+          "id": "E117",
+          "kind": "local",
+          "path": "local/research/codex/login-runtime-r1/auto-count-source-corrected.asm",
+          "bytes": 5061,
+          "sha256": "cb49835eaff1b32d119d5f637c326cd01314b9c78e08a2603a5a0ce0afd96fe7"
+        },
+        {
+          "id": "E118",
+          "kind": "local",
+          "path": "local/research/codex/login-runtime-r1/auto-count-source.asm",
+          "bytes": 1,
+          "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+        },
+        {
+          "id": "E119",
+          "kind": "local",
+          "path": "local/research/codex/login-runtime-r1/auto-count.asm",
+          "bytes": 1174,
+          "sha256": "07606ee51c62f79273e36e611ce52071081dafce1b64f2c6bfdc4e2b67b76dc0"
+        },
+        {
+          "id": "E120",
+          "kind": "local",
+          "path": "local/research/codex/login-runtime-r1/base-ctor-context.asm",
+          "bytes": 2908,
+          "sha256": "58ae6ef26a7b18d661115748568af320283816e21fdebc25bcd6076dae8f6115"
+        },
+        {
+          "id": "E121",
+          "kind": "local",
+          "path": "local/research/codex/login-runtime-r1/control-no-token/client.log",
+          "bytes": 124493,
+          "sha256": "6430050e94dbe1dea75ac57993753c91ea7003ca615c1b07f9bf26d6738a48a8"
+        },
+        {
+          "id": "E122",
+          "kind": "local",
+          "path": "local/research/codex/login-runtime-r1/control-no-token/debug-commands.txt",
+          "bytes": 911,
+          "sha256": "936ef8c038c614c618bac4b8cbbc67faf1178f0f82d98647bacbdc36759665f1"
+        },
+        {
+          "id": "E123",
+          "kind": "local",
+          "path": "local/research/codex/login-runtime-r1/control-no-token/run.json",
+          "bytes": 6713,
+          "sha256": "8bb75840f76e2d96b27fb5e39d649e889d09ecadd7742498333684901b775181"
+        },
+        {
+          "id": "E124",
+          "kind": "local",
+          "path": "local/research/codex/login-runtime-r1/control-no-token/screen-11.png",
+          "bytes": 442310,
+          "sha256": "ee3c607a832b5d75c2bc1998b9bf61ea6d97a2283799a4a245d76de06440d1d8"
+        },
+        {
+          "id": "E125",
+          "kind": "local",
+          "path": "local/research/codex/login-runtime-r1/control-no-token-hashes.json",
+          "bytes": 10082,
+          "sha256": "d80a05147cca29bd11afde277465dca584c6d79acdaa2bb3e1ef47851cc6e36a"
+        },
+        {
+          "id": "E126",
+          "kind": "local",
+          "path": "local/research/codex/login-runtime-r1/control-no-token-launcher.log",
+          "bytes": 5531,
+          "sha256": "5d94cab84eecbb8df87c3f47f0e66e8efdfaaff188a66948fd8ca8349a99a402"
+        },
+        {
+          "id": "E127",
+          "kind": "local",
+          "path": "local/research/codex/login-runtime-r1/control-no-token-recipe.json",
+          "bytes": 968,
+          "sha256": "c83ccd83819c60509066f0b99b81678d24763e6ea585fbbe1c694517584b3359"
+        },
+        {
+          "id": "E128",
+          "kind": "local",
+          "path": "local/research/codex/login-runtime-r1/copy-import384-xrefs.asm",
+          "bytes": 920,
+          "sha256": "465bbde9eabc9c2eda921e137a048f813064b9ab2842fe3bda9f026c8f812c2f"
+        },
+        {
+          "id": "E129",
+          "kind": "local",
+          "path": "local/research/codex/login-runtime-r1/count-context.asm",
+          "bytes": 2887,
+          "sha256": "2ca7f368c78dd2490897aee6ab0bf137bcc2826c6177a92d48456f9d19f28615"
+        },
+        {
+          "id": "E130",
+          "kind": "local",
+          "path": "local/research/codex/login-runtime-r1/enumthread-patch.json",
+          "bytes": 531,
+          "sha256": "6bdcae4545671ca42005a8fa3df13a608677072fae67dd5ce531a053ba98b1c7"
+        },
+        {
+          "id": "E131",
+          "kind": "local",
+          "path": "local/research/codex/login-runtime-r1/error-fixture.json",
+          "bytes": 618,
+          "sha256": "718c1ad8b8294d3c1d37808a6e957606ee710c281031ab6be72f8a7fc1dcf301"
+        },
+        {
+          "id": "E132",
+          "kind": "local",
+          "path": "local/research/codex/login-runtime-r1/game-ctor-call-context.asm",
+          "bytes": 1272,
+          "sha256": "d580dbf0bb5273c16fcd341ba8ed1952a865f6e67082afffc0a5b9dc54a698fd"
+        },
+        {
+          "id": "E133",
+          "kind": "local",
+          "path": "local/research/codex/login-runtime-r1/import384-xrefs.asm",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "id": "E134",
+          "kind": "local",
+          "path": "local/research/codex/login-runtime-r1/login-error1-key43.bin",
+          "bytes": 39,
+          "sha256": "9aeae7b7937ad0c54d968297c48fffb4d506087f7826b2e9fdde35d84ed3ac19"
+        },
+        {
+          "id": "E135",
+          "kind": "local",
+          "path": "local/research/codex/login-runtime-r1/login-error1-oracle.json",
+          "bytes": 1485,
+          "sha256": "2ad114574710847c7d128b628588706148abb3cedb0467470d24965d416dedb2"
+        },
+        {
+          "id": "E136",
+          "kind": "local",
+          "path": "local/research/codex/login-runtime-r1/login-error1.bin",
+          "bytes": 39,
+          "sha256": "2edd77ef94ef18fc1380512c6b711145183d5dae57fba2fee63b9cc681703976"
+        },
+        {
+          "id": "E137",
+          "kind": "local",
+          "path": "local/research/codex/login-runtime-r1/login-netinfo-candidate.bin",
+          "bytes": 69,
+          "sha256": "b40615efdf3d4b8a6d530a43c3a1e425cb88eeb76304d88601a70b48ca72abe6"
+        },
+        {
+          "id": "E138",
+          "kind": "local",
+          "path": "local/research/codex/login-runtime-r1/login-result0-prefix.bin",
+          "bytes": 51,
+          "sha256": "4bb5b79fb1ac16bdfcc293ee9edacda2c1a94dc69304a11c757c398680a6e935"
+        },
+        {
+          "id": "E139",
+          "kind": "local",
+          "path": "local/research/codex/login-runtime-r1/login-result0-zerofill.bin",
+          "bytes": 4134,
+          "sha256": "c77dba808a1fad9990c1827a9da59329e38c29491ed3f16165e1015a2fb403c5"
+        },
+        {
+          "id": "E140",
+          "kind": "local",
+          "path": "local/research/codex/login-runtime-r1/netinfo-recipe.json",
+          "bytes": 530,
+          "sha256": "4e2ed9118eb936e8f4dc96b76f661c6d6621a9edcccadf69d35c52c1907d0a68"
+        },
+        {
+          "id": "E141",
+          "kind": "local",
+          "path": "local/research/codex/login-runtime-r1/packet-ctor-xrefs.json",
+          "bytes": 1811,
+          "sha256": "878149411664b59478c12c2aa7dfbf1bcf4443e962e4e274628bae8a3d23130b"
+        },
+        {
+          "id": "E142",
+          "kind": "local",
+          "path": "local/research/codex/login-runtime-r1/patch-enumthread.py",
+          "bytes": 1796,
+          "sha256": "10f147fb29e2de3e4c2ff0c6a5915a223345c61a8fe6b82690e4f1ea6fc854db"
+        },
+        {
+          "id": "E143",
+          "kind": "local",
+          "path": "local/research/codex/login-runtime-r1/patch-postmessage.py",
+          "bytes": 1833,
+          "sha256": "f8985748f79db07ff8d4dda942afe1aa7b801749cdbb24074af5edc9ee84dd3f"
+        },
+        {
+          "id": "E144",
+          "kind": "local",
+          "path": "local/research/codex/login-runtime-r1/patch-toolhelp.py",
+          "bytes": 2534,
+          "sha256": "1f214f4f472c0434b1bc154f640e737033703e54292b5fcb5ea9c11a64161966"
+        },
+        {
+          "id": "E145",
+          "kind": "local",
+          "path": "local/research/codex/login-runtime-r1/patch-windowtext.py",
+          "bytes": 1869,
+          "sha256": "3b22cc81929c58f3d9b11c5041cb85d7a27cff4258a3fb8b79af98a693fdaedb"
+        },
+        {
+          "id": "E146",
+          "kind": "local",
+          "path": "local/research/codex/login-runtime-r1/playercount.asm",
+          "bytes": 1112,
+          "sha256": "498bf268fa9cd7d30dbd078445e5a5d887e8e06c8fe0fc7eb1a67858eebbf53a"
+        },
+        {
+          "id": "E147",
+          "kind": "local",
+          "path": "local/research/codex/login-runtime-r1/post-wait-message-entry.asm",
+          "bytes": 533,
+          "sha256": "e5667fd9375baa9f4035109b9bc8e2b94d6b0d040ddcd2694421504956e655cc"
+        },
+        {
+          "id": "E148",
+          "kind": "local",
+          "path": "local/research/codex/login-runtime-r1/post-wait-message.asm",
+          "bytes": 1650,
+          "sha256": "290bff102ee87950daddbffd545656a89c549a141e0776a3cc0ee87e954dbc2b"
+        },
+        {
+          "id": "E149",
+          "kind": "local",
+          "path": "local/research/codex/login-runtime-r1/post-wait-next-trap.asm",
+          "bytes": 1864,
+          "sha256": "738f49867c7f007c8d540f7f1b10a0426a134c5b68e466a6991acd2af94ea28b"
+        },
+        {
+          "id": "E150",
+          "kind": "local",
+          "path": "local/research/codex/login-runtime-r1/postmessage-patch.json",
+          "bytes": 569,
+          "sha256": "5de27050775e2cb2b5c270d7c4cee8b6b98cc366b0f7fdff10c9a5e100b6105e"
+        },
+        {
+          "id": "E151",
+          "kind": "local",
+          "path": "local/research/codex/login-runtime-r1/prefix-oracle.json",
+          "bytes": 554,
+          "sha256": "e368e65d4561cca50493ad91b9953c10ab64cda85b1716dc78fb0f9f5cd20a2f"
+        },
+        {
+          "id": "E152",
+          "kind": "local",
+          "path": "local/research/codex/login-runtime-r1/prefix-probe-correction.json",
+          "bytes": 444,
+          "sha256": "3b3cbee6da47e5e96f401e218ecf15c9d17b820d41d23a700899e0cb31fd6bdc"
+        },
+        {
+          "id": "E153",
+          "kind": "local",
+          "path": "local/research/codex/login-runtime-r1/process-window-callback.asm",
+          "bytes": 1881,
+          "sha256": "694d110619e7d74c402af169af9f92c87f0317415280bea4d373e332a6a0efa9"
+        },
+        {
+          "id": "E154",
+          "kind": "local",
+          "path": "local/research/codex/login-runtime-r1/replay-auth.py",
+          "bytes": 2747,
+          "sha256": "a3083909c8982e3a4e8f643e1b55e22c9946dfd92dd5238769ecbde85ebed163"
+        },
+        {
+          "id": "E155",
+          "kind": "local",
+          "path": "local/research/codex/login-runtime-r1/replay-error-fixture.py",
+          "bytes": 2400,
+          "sha256": "37ba30fa7aec12c58d93eed5633b256ac8d2f0fd93d77468378946e9d47f7aa9"
+        },
+        {
+          "id": "E156",
+          "kind": "local",
+          "path": "local/research/codex/login-runtime-r1/replay-prefix.py",
+          "bytes": 1567,
+          "sha256": "efe8138801598e2c926eb31a926510265d8f56fb707a3bc5c74004380e96c065"
+        },
+        {
+          "id": "E157",
+          "kind": "local",
+          "path": "local/research/codex/login-runtime-r1/replay-zerofill.py",
+          "bytes": 1564,
+          "sha256": "110b58581dcafc15962db4ddf476e4757cca4932d96eca26b49cdeb914aacbab"
+        },
+        {
+          "id": "E158",
+          "kind": "local",
+          "path": "local/research/codex/login-runtime-r1/result0-prefix-recipe.json",
+          "bytes": 368,
+          "sha256": "68e869f37f23855d328b1ca8df9b4a283e7c1d57b04c4f40252d7a968ef38519"
+        },
+        {
+          "id": "E159",
+          "kind": "local",
+          "path": "local/research/codex/login-runtime-r1/result0-zerofill-recipe.json",
+          "bytes": 496,
+          "sha256": "fc17883042781373f5fc9224c7f43a9c4bd1e217f739a164947ec0f7dcf31333"
+        },
+        {
+          "id": "E160",
+          "kind": "local",
+          "path": "local/research/codex/login-runtime-r1/run_probe.py",
+          "bytes": 1030,
+          "sha256": "d9f17b9d4a1c86dde984a82faa32084252765ea2ebc15bfd81a2f5d933ff1a54"
+        },
+        {
+          "id": "E161",
+          "kind": "local",
+          "path": "local/research/codex/login-runtime-r1/run_probe_token.py",
+          "bytes": 1069,
+          "sha256": "4d47efd19c31a4e5522ea2dd363c0a10804ac4e3857e72f8a9a82d22bbeb5ca9"
+        },
+        {
+          "id": "E162",
+          "kind": "local",
+          "path": "local/research/codex/login-runtime-r1/runtime-summary.json",
+          "bytes": 11833,
+          "sha256": "61f18610255874c13a873ed428631004f26ff8c3d5567af5dfda53b2e69b82db"
+        },
+        {
+          "id": "E163",
+          "kind": "local",
+          "path": "local/research/codex/login-runtime-r1/success-reader-candidates.json",
+          "bytes": 39964,
+          "sha256": "39e852d6b3546834a80383c4d9e7fc392b079637aa981f526b1ed0abe0462fac"
+        },
+        {
+          "id": "E164",
+          "kind": "local",
+          "path": "local/research/codex/login-runtime-r1/token-toolhelp/client.log",
+          "bytes": 118551,
+          "sha256": "f43a7d5d0bc8a07dc23197d0f1b43711c3f78c80f46ff751b8fd6ec66099d3b5"
+        },
+        {
+          "id": "E165",
+          "kind": "local",
+          "path": "local/research/codex/login-runtime-r1/token-toolhelp/debug-commands.txt",
+          "bytes": 873,
+          "sha256": "e4a159abf132a29d85ca05ec66f9bb327c45b72ff21cad6c16d1d86ce057a0a8"
+        },
+        {
+          "id": "E166",
+          "kind": "local",
+          "path": "local/research/codex/login-runtime-r1/token-toolhelp/run.json",
+          "bytes": 5242,
+          "sha256": "4eda9a98301e827e25051d09d346eb85024190d9b06be5517373d57ce6f535e5"
+        },
+        {
+          "id": "E167",
+          "kind": "local",
+          "path": "local/research/codex/login-runtime-r1/token-toolhelp/screen-07.png",
+          "bytes": 52114,
+          "sha256": "a298bba65e6a1cdb16f7ad103a6ffb48dbb73e374fe5480220a777d27c2dfdef"
+        },
+        {
+          "id": "E168",
+          "kind": "local",
+          "path": "local/research/codex/login-runtime-r1/token-toolhelp-hashes.json",
+          "bytes": 6695,
+          "sha256": "48099f567c6fdc8cc5f32b630b67191e4d99553c75f183cf10fb59b90ee899bc"
+        },
+        {
+          "id": "E169",
+          "kind": "local",
+          "path": "local/research/codex/login-runtime-r1/token-toolhelp-launcher.log",
+          "bytes": 4398,
+          "sha256": "13d089407c722d1192a40ee17d46596da8d02f02b935b9f27beb7888df98b8eb"
+        },
+        {
+          "id": "E170",
+          "kind": "local",
+          "path": "local/research/codex/login-runtime-r1/token-toolhelp-recipe.json",
+          "bytes": 1006,
+          "sha256": "0fc3f70a873f598e00bfef0cfb5b6ab508787a4f4e99203e79bc01a85fa132e9"
+        },
+        {
+          "id": "E171",
+          "kind": "local",
+          "path": "local/research/codex/login-runtime-r1/token-trap/client.log",
+          "bytes": 125246,
+          "sha256": "cbe66ca4847649f26d44320acd74924c5fa3fa658475de9ef611683b9caaa781"
+        },
+        {
+          "id": "E172",
+          "kind": "local",
+          "path": "local/research/codex/login-runtime-r1/token-trap/debug-commands.txt",
+          "bytes": 763,
+          "sha256": "22260aa1fe0f4fb6ed6e7f07ed38d1986a529134dc3226c1b3a88fbec99020bc"
+        },
+        {
+          "id": "E173",
+          "kind": "local",
+          "path": "local/research/codex/login-runtime-r1/token-trap/run.json",
+          "bytes": 5249,
+          "sha256": "f896e455c5f41c7384641db1fab9e5d8f2f5031780ab62ef67bd355ff9d2e4e5"
+        },
+        {
+          "id": "E174",
+          "kind": "local",
+          "path": "local/research/codex/login-runtime-r1/token-trap/screen-07.png",
+          "bytes": 83845,
+          "sha256": "683d9cf4d8d551aae12a01a90da84280ea49532ff76bee7d068ee04510c1d248"
+        },
+        {
+          "id": "E175",
+          "kind": "local",
+          "path": "local/research/codex/login-runtime-r1/token-trap-hashes.json",
+          "bytes": 6559,
+          "sha256": "892c524ff75716d3ea177ef05800b57d64a78345c063a0365b3adf5e3324e7c7"
+        },
+        {
+          "id": "E176",
+          "kind": "local",
+          "path": "local/research/codex/login-runtime-r1/token-trap-launcher.log",
+          "bytes": 4405,
+          "sha256": "146f883731c56206abcee8b34b68d998b76c9aa01680664d80021aa1119e1461"
+        },
+        {
+          "id": "E177",
+          "kind": "local",
+          "path": "local/research/codex/login-runtime-r1/token-trap-recipe.json",
+          "bytes": 998,
+          "sha256": "b166dad1e6d2fd0b718748fc25e8ef88edc11bb26705f790e7fbeb5ecd707016"
+        },
+        {
+          "id": "E178",
+          "kind": "local",
+          "path": "local/research/codex/login-runtime-r1/token-trap.gdb",
+          "bytes": 763,
+          "sha256": "22260aa1fe0f4fb6ed6e7f07ed38d1986a529134dc3226c1b3a88fbec99020bc"
+        },
+        {
+          "id": "E179",
+          "kind": "local",
+          "path": "local/research/codex/login-runtime-r1/token1/client.log",
+          "bytes": 117912,
+          "sha256": "d2756932ba3826d45f688e4f6e69e49246a95661d8402f557dbaad869baa0c13"
+        },
+        {
+          "id": "E180",
+          "kind": "local",
+          "path": "local/research/codex/login-runtime-r1/token1/debug-commands.txt",
+          "bytes": 705,
+          "sha256": "6b9222594e1f3878b329b422ca339781b1efbfd993ba41840fd268ecbebc7e80"
+        },
+        {
+          "id": "E181",
+          "kind": "local",
+          "path": "local/research/codex/login-runtime-r1/token1/run.json",
+          "bytes": 5248,
+          "sha256": "f2b84c43da9db9f9337d80c92550f54eedde8b87d8bfb0ae6e781cbceebbef79"
+        },
+        {
+          "id": "E182",
+          "kind": "local",
+          "path": "local/research/codex/login-runtime-r1/token1/screen-07.png",
+          "bytes": 55878,
+          "sha256": "7ce27d452bb2dc5556437720aeefeb6a091403b2183777c7494bca72c948c36b"
+        },
+        {
+          "id": "E183",
+          "kind": "local",
+          "path": "local/research/codex/login-runtime-r1/token1-hashes.json",
+          "bytes": 6423,
+          "sha256": "4c83910f38f2549de79e7627f05ed2ed531e93b5f1a002854450488541710653"
+        },
+        {
+          "id": "E184",
+          "kind": "local",
+          "path": "local/research/codex/login-runtime-r1/token1-launcher.log",
+          "bytes": 4404,
+          "sha256": "a79d2ce14c76410b84442f62de878df9c9dadff97ca1ec4967cf84568ad3a5cf"
+        },
+        {
+          "id": "E185",
+          "kind": "local",
+          "path": "local/research/codex/login-runtime-r1/token1-recipe.json",
+          "bytes": 990,
+          "sha256": "25878a6ba7bcb7541a8012b5ed043e2f229fdbd6d18355917f861f6ec0b97f52"
+        },
+        {
+          "id": "E186",
+          "kind": "local",
+          "path": "local/research/codex/login-runtime-r1/toolhelp-patch.json",
+          "bytes": 1310,
+          "sha256": "3b2696e7f4ff943b397390890f1952a79cd7bc8b1014a1b8e1e2c268e549a834"
+        },
+        {
+          "id": "E187",
+          "kind": "local",
+          "path": "local/research/codex/login-runtime-r1/trap-helpers.asm",
+          "bytes": 3967,
+          "sha256": "9abb90625ec5c0c9fc1a35255818ab69e24afe13a63facde0dd9c4111ff4af83"
+        },
+        {
+          "id": "E188",
+          "kind": "local",
+          "path": "local/research/codex/login-runtime-r1/verification.json",
+          "bytes": 12398,
+          "sha256": "305fd23f8aa2f2fb4406c6449e1f7d6fb37bb9b2e88bdfa604cc64692628d89d"
+        },
+        {
+          "id": "E189",
+          "kind": "local",
+          "path": "local/research/codex/login-runtime-r1/verify.py",
+          "bytes": 5647,
+          "sha256": "e49970560286c9a5224c8f613e781eb78995aa18bb7b1ebdcece286e8d7397a2"
+        },
+        {
+          "id": "E190",
+          "kind": "local",
+          "path": "local/research/codex/login-runtime-r1/vn-boomproto-reference.py",
+          "bytes": 7779,
+          "sha256": "e9642ec10e53cfed6c24c0c5ade07b34a46ce02073a8d316f724776686855bbd"
+        },
+        {
+          "id": "E191",
+          "kind": "local",
+          "path": "local/research/codex/login-runtime-r1/windowtext-patch.json",
+          "bytes": 601,
+          "sha256": "3e5a6a8229d44a430607fb39a61ea719c13a38eb71d89ffa5a0db4f3e02d3a8c"
+        },
+        {
+          "id": "E192",
+          "kind": "local",
+          "path": "local/research/codex/login-runtime-r1/zerofill-oracle.json",
+          "bytes": 728,
+          "sha256": "cb73316148337aaec005c245af2ceb40778e5dc7f0887e72a1eb13c567972b69"
+        },
+        {
+          "id": "E193",
+          "kind": "local",
+          "path": "local/research/codex/wcp-guard-r1/game/CA-r2-login-enum.exe",
+          "bytes": 31874560,
+          "sha256": "3e7cc5778a34829f6f073aa6433f0600e268a78874d530ffc386c886c26c7e84"
+        },
+        {
+          "id": "E194",
+          "kind": "local",
+          "path": "local/research/codex/wcp-guard-r1/game/CA-r2-login-postmsg.exe",
+          "bytes": 31874560,
+          "sha256": "de2df3ba68f2e7deff892186d51571e3eae7b613d7cb02227066015a2eb4789d"
+        },
+        {
+          "id": "E195",
+          "kind": "local",
+          "path": "local/research/codex/wcp-guard-r1/game/CA-r2-login-toolhelp.exe",
+          "bytes": 31874560,
+          "sha256": "da3dfde6ea357b475d71231c5fe61c80455507521c57b4dcfeeae7cc565b40ce"
+        },
+        {
+          "id": "E196",
+          "kind": "local",
+          "path": "local/research/codex/wcp-guard-r1/game/CA-r2-login-windowtext.exe",
+          "bytes": 31874560,
+          "sha256": "a301bafae5c55989f8c7d1d99b9de3c7ebf00d5f31532f0bb0cd48f48aee4511"
+        },
+        {
+          "id": "E197",
+          "kind": "local",
+          "path": "local/research/codex/wcp-guard-r1/game/CA-r2-no-overlay-tick.exe",
+          "bytes": 31874560,
+          "sha256": "70708abab77ebd1cfd230a35f4997b8e84330f74442ed77b0b74c7b03180c82c"
+        },
+        {
+          "id": "E198",
+          "kind": "local",
+          "path": "local/research/codex/wine_probe_auth_error.py",
+          "bytes": 22049,
+          "sha256": "cf253b482e1ee90a8d76658dccc109546562ee55b6e12131daad0d94dc38cf25"
+        },
+        {
+          "id": "E199",
+          "kind": "local",
+          "path": "local/research/codex/wine_probe_auth_error43.py",
+          "bytes": 22055,
+          "sha256": "576fd05fa3fdd70d9202f6782594fe916a2c7bce14793c80a89a83668ac3db82"
+        },
+        {
+          "id": "E200",
+          "kind": "local",
+          "path": "local/research/codex/wine_probe_auth_netinfo.py",
+          "bytes": 22654,
+          "sha256": "0e70b2aa889d9d1a6a2ab18f79ff50f8e21e1067bdff166669888f52c6f9a9b7"
+        },
+        {
+          "id": "E201",
+          "kind": "local",
+          "path": "local/research/codex/wine_probe_auth_prefix.py",
+          "bytes": 22057,
+          "sha256": "469695c70432e7b679aae14edf6f8260648ba38901c203b36e412d0a240c9582"
+        },
+        {
+          "id": "E202",
+          "kind": "local",
+          "path": "local/research/codex/wine_probe_confirm_hello3.py",
+          "bytes": 20877,
+          "sha256": "dbddc4769e66b871f7336ea3ec60353616e834323f4dbf4681276ff67a33e6f9"
+        }
+      ],
+      "delta": {
+        "added": [
+          "Actual KR auth request and trigger; receiver seq43 after hello; local rejection handler and wait transitions observed.",
+          "New helper blocker after attempt1 identified at13CA429/16EA8FC, with rollback copies and raw control."
+        ],
+        "corrected": [
+          "CP013 auth-request and S2C4/15-runtime unknown narrowed by measured copy behavior; full success schema remains unknown.",
+          "Own trial seq40 assumption rejected by live decoded2/receiverseq43; candidate encoder not used as oracle.",
+          "Own prefix breakpoint10FD823 caused crash, corrected10FD822; no client-root-cause claim from bad probe.",
+          "CP013 integration now recorded as merged PR21; completed historical record left unchanged."
+        ],
+        "superseded": [
+          "NEXT-KR-AUTH-CONTRACT generic auth trigger search; current measured blocker is post-wait helper and missing complete schema."
+        ]
+      },
+      "blockers": [
+        "PostMessageA-copy traps2265828 via13CA429/slot16EA8FC after attempt1; native helper/API and next stage unknown.",
+        "Result0 only13byte deliberately truncated prefix; full player/body/tail semantics, cache and valid auth not recovered.",
+        "Original identity/global lifecycle, oneclickuser, token2/count2, full codec/reset and vanilla equivalence remain open."
+      ],
+      "next_steps": [
+        {
+          "id": "NEXT-KR-AUTH-CONTRACT",
+          "task": "KRE-005b",
+          "state": "superseded",
+          "action": "Auth trigger/request and local response wait route now measured; keep full schema debt separate.",
+          "owner": "Codex",
+          "reviewer": "Codex"
+        },
+        {
+          "id": "NEXT-POSTWAIT-HELPER",
+          "task": "KRE-005b",
+          "state": "active",
+          "action": "Resolve13CA429/slot16EA8FC caller, arguments and module; preserve trap control before candidate binding/stub, rerun same isolated fixture and measure next stage after message403.",
+          "owner": "Codex",
+          "reviewer": "Codex"
+        },
+        {
+          "id": "NEXT-FULL-LOGIN-FIELDS",
+          "task": "KRE-005b",
+          "state": "active",
+          "action": "Recover complete KR result0 body/tail from10FD540 reader/cursor/guard evidence, verify native accepted network-info variants and cache/identity before calling auth/lobby successful.",
+          "owner": "Codex",
+          "reviewer": "Codex"
+        }
+      ],
+      "review": {
+        "status": "waived",
+        "as_of_utc": "2026-10-28T01:07:29.282500+00:00",
+        "reference": "docs/evidence/checkpoints/review-waiver.json",
+        "scope": "Owner waiver persists; Codex RE/runtime and self-check, no independent approval.",
+        "authorization": {
+          "by": "project_owner",
+          "reference": "docs/evidence/checkpoints/review-waiver.json",
+          "reason": "Explicit owner instruction to continue solo without Claude review."
+        }
+      },
+      "docs_sync": [
+        {
+          "path": "README.md",
+          "state": "updated",
+          "reason": "Current request/wait milestone and post-wait blocker; no valid auth/lobby claim."
+        },
+        {
+          "path": "docs/PLAN.md",
+          "state": "updated",
+          "reason": "Keep gate open and prioritize measured helper before next stage; full schema debt."
+        },
+        {
+          "path": "docs/PROTOCOL.md",
+          "state": "updated",
+          "reason": "Runtime token/auth/seq/prefix/state contract with narrow limits and corrections."
+        },
+        {
+          "path": "docs/RESEARCH.md",
+          "state": "updated",
+          "reason": "Replace stale auth trigger search with post-wait helper and full fields."
+        },
+        {
+          "path": "docs/evidence/login-runtime/README.md",
+          "state": "updated",
+          "reason": "Artifact/recipe/control/failure/oracle metadata and limitations."
         }
       ]
     }

@@ -22,20 +22,18 @@ boom-kr-server/
 
 ## Đang làm
 
-CP006–011 đã tích hợp qua PR16–19: bản copy Wine nhận dữ liệu thử và vẽ UI đăng nhập.
-CP012 đã theo input tới command xác nhận1002 của CLoginStage và tìm hostname login riêng.
-Thêm ánh xạ local cho hostname này giúp luồng tự động trước click mở kết nối thứ ba;
-fixture hello đã qua poll/consumer WCP trên kết nối đó. Sau phép reset global trong bộ nhớ,
-**đã thu4 frame C→S type15 (276 byte mới)**, kiểm parser/CRC native với seq40,43,46,49.
-**Chưa xác nhận request auth hoặc login thành công.**
-Đã đo global từ dump làm `CWaitForLoginDlg` đóng với result1; thử reset riêng global trong
-bộ nhớ giữ được dialog đếm chờ. State runtime vẫn0. CP013 đối chiếu VN đã giải tĩnh dispatcher KR cho hai phản hồi S→C4/15
-nối chuỗi state chờ; request auth và payload đầy đủ vẫn chưa phục hồi.
+CP014: bản copy Wine **đã gửi request auth opcode1 (80 byte)** tới stub local,
+tiếp theo opcode60; capture đã kiểm bằng parser/CRC native KR. Token local giúp luồng tự động
+đặt playerCount1; đối chứng cùng copy thiếu token vẫn count0 và không gửi auth.
+Phản hồi lỗi đã vào handler đúng mã1; phép thử result0-prefix + network-info chạy state chờ
+**0→2→1→3**, modal trả3 và attempt trả1, rồi dừng ở native helper chưa phục hồi `16EA8FC`.
+**Chưa xác nhận login hợp lệ, chưa vào sảnh**: result0 vẫn cố ý thiếu body đầy đủ.
 
-Recipe/giới hạn tại [evidence handler](docs/evidence/ui-handler/README.md);
-nguồn tham chiếu VN ở [VN→KR](docs/evidence/vn-reuse/README.md).
-Bước tiếp duy nhất ở [Q-023](docs/RESEARCH.md#q-023). CP012 đã merge PR20; CP013 là kết quả tĩnh đang chờ tích hợp khi lập checkpoint;
-PR là nguồn trạng thái merge hiện tại. Chủ dự án miễn review độc lập; Codex tự kiểm và giữ gate bằng chứng.
+Các phép thử dùng copy có patch và reset global trong bộ nhớ; không tương đương client nguyên bản.
+Contract/giới hạn ở [PROTOCOL](docs/PROTOCOL.md#login-auth), recipe/raw/hash tại
+[evidence login](docs/evidence/login-runtime/README.md); bước tiếp ở [Q-023](docs/RESEARCH.md#q-023).
+CP012/013 đã merge PR20/21; CP014 đang chờ tích hợp khi lập checkpoint. PR là nguồn trạng thái
+merge hiện tại. Chủ dự án miễn review độc lập; Codex tự kiểm và giữ gate bằng chứng.
 
 Checkpoint bền vững: [manifest](docs/evidence/checkpoints/manifest.json).
 Quy trình ghi chép/review/audit: [checkpoint workflow](docs/evidence/checkpoints/README.md).
