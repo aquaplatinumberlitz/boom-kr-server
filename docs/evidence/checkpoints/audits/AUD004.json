@@ -1,0 +1,78 @@
+{
+  "id": "AUD004",
+  "trigger": "periodic",
+  "completed_through": "CP012",
+  "recorded_utc": "2026-10-28T00:11:27.290292+00:00",
+  "auditor": "Codex self-audit; independent review waived by project owner",
+  "read_files": [
+    "README.md",
+    "docs/PLAN.md",
+    "docs/PROTOCOL.md",
+    "docs/RESEARCH.md",
+    "docs/evidence/ui-handler/README.md",
+    "docs/evidence/login-ui/README.md",
+    "docs/evidence/vn-reuse/README.md",
+    "docs/evidence/object-state/README.md",
+    "docs/evidence/checkpoints/manifest.json"
+  ],
+  "method": "Manual core-doc reading in required order, then evidence; compare grouped GDB raw logs/snapshots, run namespaces, TCP counts/timeline, imported static RTTI/call ranges, CP010 report/correction scope and new native parser positive/negative results. Check current copy vs historical recipe, merged PR19 vs pending CP012; no semantic claims inferred by checker.",
+  "findings": [
+    {
+      "id": "F1",
+      "stale": "CP011 main-state text stops at DispatchMessage and PR19 unmerged snapshot",
+      "correction": "Current README/PLAN/RESEARCH identify measured UI command and endpoint, PR19 integrated; historical CP011 references kept and linked forward.",
+      "fixed_in": [
+        "README.md",
+        "docs/PLAN.md",
+        "docs/RESEARCH.md",
+        "docs/evidence/login-ui/README.md",
+        "docs/evidence/vn-reuse/README.md"
+      ]
+    },
+    {
+      "id": "F2",
+      "stale": "WCP section said runtime only uses original R2 copy despite later diagnostic copies",
+      "correction": "Distinguish historical R2 hash from each manifest-identified diagnostic copy; no vanilla equivalence.",
+      "fixed_in": [
+        "docs/PROTOCOL.md"
+      ]
+    },
+    {
+      "id": "F3",
+      "stale": "Inference that click caused third connection would conflict with raw monotonic timestamps",
+      "correction": "Capture third accept precedes first injected click; command1002 measured separately. Auto-attempt origin still unknown.",
+      "fixed_in": [
+        "docs/evidence/ui-handler/README.md",
+        "docs/RESEARCH.md",
+        "README.md"
+      ]
+    },
+    {
+      "id": "F4",
+      "stale": "Earlier live status and draft said66-byte total for global-reset run before final capture was inspected",
+      "correction": "Both completed reset runs contain276 new bytes on connection3; constrain old zero-wire claims to prior named runs. Native parser verifies captured C2S15 with40+3n, not fixed55 or fixed40. Failed oracle cases retained locally as dated experiment history.",
+      "fixed_in": [
+        "README.md",
+        "docs/PLAN.md",
+        "docs/PROTOCOL.md",
+        "docs/RESEARCH.md",
+        "docs/evidence/ui-handler/README.md"
+      ]
+    },
+    {
+      "id": "F5",
+      "stale": "Object-state evidence ended with generic pending-review prose after owner waived approval",
+      "correction": "Keep old report provenance; explicitly record waiver and self-checks, not independent approval.",
+      "fixed_in": [
+        "docs/evidence/object-state/README.md"
+      ]
+    }
+  ],
+  "remaining": [
+    "Wait-dialog state0, exact auth request and response/identity contract unresolved; C2S15 semantics not assumed.",
+    "Global1A966FC lifecycle/original initialization unknown; runtime memory reset is emulator experiment, not original-client fix.",
+    "Native capture replay uses synthetic receiver/prefix-check disabled; full seq rollover/reconnect and codec gate remain open.",
+    "oneclickuser/+E9C runtime, auto-attempt source, source Windows controls, all K0–K7 gates still bounded/open as PLAN.",
+    "CP012 integration pending at checkpoint time; PR is live integration source."
+  ]
+}

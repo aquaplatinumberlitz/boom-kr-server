@@ -29,7 +29,8 @@ Raw ở `local/research/codex/vn-reuse-r1/`, harness riêng
 Các event chuột đầu có lParam`01F201C2` (x450,y498); nút xác nhận có`023E0193` (x403,y574).
 Tọa độ đã tới message không chứng minh chúng trúng custom control. Điểm chặn đã thu hẹp từ
 “xdotool trả0 nhưng chưa biết có event” sang đường sau DispatchMessage; bước kiểm duy nhất
-được duy trì ở [RESEARCH](../../RESEARCH.md#q-023). Không có request auth mới hoặc gate mới.
+được duy trì ở [RESEARCH](../../RESEARCH.md#q-023). Không có request auth mới hoặc gate mới tại CP011.
+CP012 đã nối tới handler/button/command UI; cập nhật ở [evidence handler](../ui-handler/README.md).
 
 ## Dùng ở bước login/sảnh kế tiếp
 

@@ -22,16 +22,19 @@ boom-kr-server/
 
 ## Đang làm
 
-CP006–009 đã review/merge: bản copy Wine gửi request đầu và nhận chuỗi response thử.
-CP010–011 trên PR19 (chưa merge tại checkpoint) đưa copy tới UI đăng nhập đầy đủ;
-input qua xdotool chưa làm ô nhập đổi hoặc tạo request mới. Áp dụng cách GDB từ VN đã
-đo được message chuột/phím tại DispatchMessage của KR, thu hẹp điểm chặn về handler UI.
-**Chưa có đăng nhập thành công hoặc gameplay.**
+CP006–011 đã tích hợp qua PR16–19: bản copy Wine nhận dữ liệu thử và vẽ UI đăng nhập.
+CP012 đã theo input tới command xác nhận1002 của CLoginStage và tìm hostname login riêng.
+Thêm ánh xạ local cho hostname này giúp luồng tự động trước click mở kết nối thứ ba;
+fixture hello đã qua poll/consumer WCP trên kết nối đó. Sau phép reset global trong bộ nhớ,
+**đã thu4 frame C→S type15 (276 byte mới)**, kiểm parser/CRC native với seq40,43,46,49.
+**Chưa xác nhận request auth hoặc login thành công.**
+Đã đo global từ dump làm `CWaitForLoginDlg` đóng với result1; thử reset riêng global trong
+bộ nhớ giữ được dialog đếm chờ. State vẫn0; chưa rõ data dependency/response để đi tới result3.
 
-Recipe, giới hạn và trạng thái review tại [evidence UI](docs/evidence/login-ui/README.md);
-phần đã áp dụng từ VN tại [VN→KR](docs/evidence/vn-reuse/README.md).
-Các run cũ giữ như lịch sử trong evidence; bước tiếp duy nhất ở [Q-023](docs/RESEARCH.md#q-023).
-Từ28/10, chủ dự án miễn review độc lập; Codex tự kiểm, giữ PR và các gate bằng chứng.
+Recipe/giới hạn tại [evidence handler](docs/evidence/ui-handler/README.md);
+nguồn tham chiếu VN ở [VN→KR](docs/evidence/vn-reuse/README.md).
+Bước tiếp duy nhất ở [Q-023](docs/RESEARCH.md#q-023). CP012 còn chờ tích hợp khi lập checkpoint;
+PR là nguồn trạng thái merge hiện tại. Chủ dự án miễn review độc lập; Codex tự kiểm và giữ gate bằng chứng.
 
 Checkpoint bền vững: [manifest](docs/evidence/checkpoints/manifest.json).
 Quy trình ghi chép/review/audit: [checkpoint workflow](docs/evidence/checkpoints/README.md).

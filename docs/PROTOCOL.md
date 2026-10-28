@@ -1,6 +1,6 @@
 # KR 00967 — contract tương thích client gốc
 
-Revision kr-legacy-contract-r1; cập nhật28/10/2026 JST (CP011).
+Revision kr-legacy-contract-r1; cập nhật28/10/2026 JST (CP012).
 **Contract có bằng chứng từng phần; chưa nghiệm thu full codec K2**.
 Lộ trình và thứ tự task chỉ giữ ở [REWRITE_PLAN — KRE](PLAN.md).
 Đây là contract của repo server KR. ADR0009 của bản viết lại là nguồn lịch sử để so sánh;
@@ -96,7 +96,8 @@ packet nằm trên stack, nên không truy nhầm setter `packet+3C` để tìm 
 
 Nguồn chuẩn cho contract hẹp này; raw/recipe/run/review snapshot ở [evidence WCP](evidence/wcp/README.md).
 Target modO base400000 SHA a08950c833d3acab8281049def7b3dc96b221f107eeda01da3a548e34b91dce5;
-runtime chỉ trên copy Wine R2 SHA7b3b435b5d8e110185359107376b736615ceabe9452cea8154d02c8628f44c29.
+runtime ban đầu trên copy Wine R2 SHA7b3b435b5d8e110185359107376b736615ceabe9452cea8154d02c8628f44c29;
+các copy chẩn đoán CP006–012 có SHA/patch riêng trong manifest, không tương đương R2 nguyên recipe.
 Trạng thái review của tổng hợp ở [CP001](evidence/checkpoints/manifest.json); confirmed nói về loại/phạm vi phép đo, không tự nói đã qua gate.
 
 | Claim | Nguồn/phương pháp | Trạng thái và giới hạn |
@@ -119,7 +120,7 @@ là `emu_choice`, không chứng minh tài nguyên/server gốc. Mode2/3 với h
 được kiểm hẹp bằng native oracle cùng negative checksum/partial và runtime; không suy full codec,
 reconnect hay K2. Import NMCO identity chưa bind trên copy CP006; thử nghiệm tiếp
 CP007–009 ở [evidence identity](evidence/nmco-identity/README.md), còn blocker/kiểm hiện hành
-ở [CP010](evidence/object-state/README.md). Không có login/gameplay.
+ở [Q-023](RESEARCH.md#q-023). Không có login/gameplay.
 
 CP007 dùng identity `1` và screen name rỗng như **emu_choice**, không bổ sung contract wire hay
 chứng minh identity server gốc. Các run chỉ chứng minh phạm vi đường chạy trên copy đã sửa;
@@ -128,6 +129,18 @@ ngữ nghĩa login và nội dung khởi tạo vẫn unknown.
 CP010 có log tạo packet type15 sau marker khởi tạo trên copy; capture stub vẫn chỉ có 66 byte
 C→S trước đó. Chưa có wire/layout hoặc vai trò packet15 được khôi phục từ quan sát này.
 CP011 vẽ UI login nhưng hai phép input chưa tạo thêm C→S; điều này chưa bổ sung contract auth.
+
+CP012 (`kr_runtime/confirmed`, copy có patch): command UI1002 và luồng tự động trước click đều
+được tách bằng breakpoint/timeline. Resolver login yêu cầu `dream-login-ca.nexon.com`, thấy port3838/3848;
+NSS riêng ánh xạ về loopback cho kết nối thứ ba. Trên run cấp cùng fixture hello cho ordinal3,
+đã đo `13AD782`/`13AD79C` trả1 sau guard. Trước reset global, tổng C→S chỉ66 byte của connection2. Hai run reset global1A966FC trong bộ nhớ
+thu thêm4 frame×69 byte C→S15 trên connection3. Native parser14EF300 replay bốn capture với
+seq40,43,46,49 khớp CRC/payload; CRC-sai và partial bị từ chối. Header37+payload31+CRC1 đúng cho
+bốn mẫu mode2/selector3 đang thử; synthetic receiver tắt prefix check, không phải server C→S.
+Semantics auth/keepalive và field payload chưa xác nhận. Đây không phải toàn bộ endpoint/port,
+full codec hoặc proof auth/reconnect K2.
+Call/capture và giới hạn tại [evidence handler](evidence/ui-handler/README.md);
+contract username/password, token, kết quả auth và mode/seq sau đó vẫn unknown.
 
 Fixture opaque/zero/empty và prefix69 là emu_choice đã được consumer chấp nhận trong phép thử,
 không phải byte server gốc. Nhánh flag1,codec frame mode2/selector3 ở phạm vi fixture CP006 có kiểm hẹp; seq/reconnect, semantics đầy đủ và
@@ -173,6 +186,6 @@ locator/trace và trạng thái từng ô; những vai trò không nêu dưới 
 | Result/reset | Chưa có wire contract | Người quyết outcome, result/round identity và reset hai phía |
 | Peer lifecycle | Chưa xác nhận KR giống MTUDP VN | Discovery/key/slot/endpoint/reliability/relay và peer được sửa state nào |
 
-Gate K5/K6 bắt reviewer kiểm matrix và đối chứng của hành vi thực sự dùng. Có thể giữ unknown về
+Gate K5/K6 cần kiểm matrix và đối chứng của hành vi thực sự dùng; từ28/10 Codex tự kiểm theo miễn review của chủ dự án. Có thể giữ unknown về
 server gốc thất lạc nếu policy emulator được chọn `design`, client chấp nhận và ca consistency đạt;
 không thể để unknown về đường đồng bộ cần thiết rồi tuyên bố multiplayer đã nghiệm thu.
