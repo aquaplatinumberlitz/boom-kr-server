@@ -46,7 +46,7 @@ Mức `confirmed` dưới đây chỉ áp dụng nguồn/build/phạm vi ghi tro
 | Hello/version | VN server-first hello, rồi đổi mode; version 116 và packet bootstrap có thứ tự | Patch socket KR: mode0/selector0, BE16 version967, response local được chấp nhận theo [evidence](evidence/bootstrap-wire/README.md). Consumer WCP, initial0/0 và transition2/3 có bằng chứng theo [contract WCP](#wcp); full codec/seq và login/world role chưa xác nhận; không gộp socket. |
 | Login/identity | VN có pipeline login-result/network-info và variant China khác layout | CP013–014 có dispatcher/auth; CP015 đi qua redirect/request6 và UI sảnh hết notice trên copy. [Contract sảnh](#channel-lobby); full auth/profile/cache và vanilla vẫn thiếu. |
 | Cache/redirect/channel | VN cần tag blob; dữ liệu inner LE khác outer wire, cache path khởi tạo theo stage | Kiểm contract KR từ reader/consumer. Giữ test cold/warm cache; không copy blob VN hay replay flag “dùng cache” khi file không tồn tại. |
-| Lobby/room/start | VN có request/reply, slot flags, map tự gửi lúc vào phòng, loading/clock nhiều pha | Dùng để xây checklist ca biên. KR có stage11 và17/241 theo [contract sảnh](#channel-lobby); [request81/response86](#room-create) đã đưa copy tới CPrepareStage và UI tám ô trống; roster/slot ownership/map/start vẫn **unknown**. |
+| Lobby/room/start | VN có request/reply, slot flags, map tự gửi lúc vào phòng, loading/clock nhiều pha | Dùng để xây checklist ca biên. KR có stage11 và17/241 theo [contract sảnh](#channel-lobby); [request81/response86](#room-create) đã đưa copy tới CPrepareStage và UI phòng chờ; [player/ownslot/controls](#room-player) đã đo trên copy, map/load/trận chưa có. |
 | Bomb/item/trap/result | VN `111→152→151`; `553`, pickup `117→158`; `120` subtype; kết quả `168→173` có runtime nguồn cũ | Chỉ mỏ neo VN. KR phải nối send/receive tới object/state tương ứng trước khi implement. Fuse/drop/cap policy emulator không phải luật server gốc. |
 | Peer/movement | VN C→S92 trao IP/UDP port; S→C146 có peer table; runtime hai máy di chuyển đồng bộ qua UDP | Không giả định KR dùng cùng packet/MTUDP version hoặc không đổi peer contract. TCP-only demo không hoàn tất multiplayer khi peer chưa đồng bộ. |
 | Kiến trúc/harness | VN có hub/session/round generation, golden Python↔Rust, control 1–2 client | Dùng pattern và bài học, không coi golden hai implementation cùng logic là oracle KR; không copy legacy server vào crates của rewrite. |
@@ -290,9 +290,74 @@ Sau chuyển12 client gửi **C→S585/42byte**, builder`11E1820`, một u32 t�
 (native capture=0 trong ba run). Stack init`DC4AB1→11E1820→1164D50→13ADD10` đã quan sát;
 semantics/version/catalog chưa xác nhận. Receiver CPrepareStage`DC51F0` có fallback`D5F5A0`;
 static opcode106 → virtual+2B4=`D62750` → constructor`AE4000` → `AE3360` và `AE3950`.
-Đây là locator **kr_static/confirmed**, ý nghĩa/player schema và hiệu ứng runtime vẫn **candidate**;
-chưa gửi106/107 hoặc trả585. Không gán map/user layout từ VN hay đoán opcode theo độ lệch.
+Tại **CP017**, đây là locator **kr_static/confirmed**, player schema/hiệu ứng vẫn candidate, chưa gửi106/107.
+CP018 dưới đây thử106 sau585; không xác nhận585 chỉ dùng để xin roster hoặc là pairing server gốc. Không gán map/user layout từ VN hay đoán opcode theo độ lệch.
 Profile/auth-prefix và các giới hạn CP015/016 tiếp tục giữ mở.
+
+<a id="room-player"></a>
+### Player, own-slot và controls phòng (CP018)
+
+Nguồn **kr_static/kr_runtime confirmed trong phạm vi copy**; lựa chọn field/API **emu_choice/candidate**.
+Recipe/control/correction/hash tại [evidence](evidence/room-player/README.md). VN docs về
+CSetPlayerOnPreparePacket, profile tên, ID match và unlock controls giúp chọn probe; **không copy wire**:
+VN103/106/337 dùng3byte state, KR đo106/110/585 và4byte state. Chưa nghiệm thu K3/K4.
+
+**S→C106**, sau stage12: `DC51F0→D5F5A0→vf2B4/D62750→AE4000`.
+RTTI xác nhận CSetPlayerOnPreparePacket/vt173CB4C, secondary+5C/vt173CB5C;
+base CSetPlayerPacket/AE3360 và accessory CSlotAccessoryPacket/AE3950.
+Fixture242byte, payload204; incoming seq58 sau create86 seq55, chỉ gửi sau C→S585 thực tế.
+Chọn slot0, ID1 hoặc0, tên ASCII `KRLocal`, state raw4byte `02 01 00 00`.
+Đây là lựa chọn thử, chưa gán byte thứ2 thành character1 theo layout VN.
+
+| Offset payload mẫu | Reader/data | Kết quả trong scope |
+|---|---|---|
+| 0..11 | u8 slot,u32 ID,3u8,u32 | Base+8=slot,+C=ID; semantic ba u8/u32 giữ trung tính. |
+| 12..15 | DecodeBuf4 | AE3474/virtual+58 đọc4, không dùng VN3. |
+| 16..134 | blob `[18,u32LE length,rawSelector0,inner109]` | D2D310 đọc stringLE đầu `KRLocal`; native/runtime cursor109/109. |
+| 135..158 | 3u8,string,string,blob rỗng | String outer dùng reader khác blob; blob thứ hai được đọc nhưng region52/82 đều0 nên không deserialize nhánh vùng. |
+| 159..175 | u8 count0,4u32=0 | Feature70/11F/34 trên build; native/runtime base cursor176. |
+| 176..203 | accessory headeru16, countA/Bu8=0,sentinelFF,u8=0,u32 count0,u8 countC0,2u32,boolfalse,u32,u16,stringrỗng | AE3950 đi đúng branch native và runtime, cursor204/204/error54=error58=0. Count lớn/optional variants chưa kiểm. |
+
+Profile109 là layout KR theo D2D310, không đệm256byte từ VN: stringLE; widths
+`u8,u8,u32,u8,u32,u16,4u32,u8,u32,stringLE,5u16,6u32,u8,5u32,stringLE,u8`.
+Tên dài7byte, strings sau rỗng, scalar0; 5u32 optional phụ thuộc feature11F. Feature7A0130=false,
+48D8D0=true cho string bổ sung; các wrapper/gate và limits chi tiết trong raw ledger.
+Oracle native giữ input readers/control-flow nhưng mô hình hóa alloc/object setters/storage và
+selected-region10; **runtime** xác nhận cursors/region0 riêng, không lấy mô hình làm proof nguyên object.
+
+ID1 hiển thị nhân vật/tên/nhãn chủ phòng sau khi sửa import pointer-check, nhưng local user list
+thực tế có count1/ID0. `13B1540` so incoming1→−1, `123FF70` không đặt own flag;
+`DC5925` đo own_slot0. Gửi incoming0 theo giá trị vừa đo → lookup0/own_slot1;
+client tự gửi thêm96/266, không ép own flag hoặc sửa danh sách ID từ debugger.
+Đây là workaround dữ liệu của recipe auth chưa đủ, **không phải ID hợp lệ/stable của server gốc**.
+NMCO code1 kế thừa không được đồng nhất với local login user-ID0.
+
+**S→C110**, `DC51F0→DC52D6→DC6700`: u8 slot,DecodeBuf4,u8; mẫu payload6/wire44,
+seq61, state giống106/tail0, gửi sau106 khoảng2s để quan sát branch. Native getter và runtime
+đọc6/6/errors0; slot của mình/state không đổi đưa pending+6224 từ1 về0, gọi vf+2F4/DDF330(1).
+Ảnh cho nút Bắt đầu và nút map sáng. **111 là handler khác (DC6AF0)**; giả thuyết111 cũ bị bác bỏ
+bằng jump table, primitive-only oracle không chứng minh dispatcher. Không khẳng định ready/team/character
+roundtrip hoặc tương đương server gốc từ một mẫu110.
+
+Hai generated import traps trong copy đã gặp thực tế và bind trên copy mới:
+16EA2B4→kernel32!IsBadReadPtr (pointer,size60; return0 trong run),
+16EA6A8→user32!GetKeyState (VK_MENU12, mask8000; return0 khi không giữ Alt).
+Có byte before/after, control và rollback; **tên API gốc vẫn candidate** vì IsBadWritePtr/
+GetAsyncKeyState có thể trùng signature. SIGILL tại22624DC/22645D8 là trap dựng khi rebuild,
+không phải bằng chứng nhánh anti-tamper gốc. Copy mới chỉ thêm import, giữ nguyên handler/state code.
+
+Click nút Bắt đầu với một player tới modal thông báo số người quá ít; chưa capture request start.
+Map trống. Capture sau own match có C→S96/44byte và266/50byte; native getter thử lần lượt
+u16/u32=[0,0] và3u32=[0,0,0] tiêu6/12byte, **schema/semantics cần nối writer**, chưa gọi là map request confirmed.
+Run `room-guest` thêm KRGuest slot1/ID2/state ready nhưng cùng team8, click tới modal không đủ đội.
+Run `teams-retry` dùng state self=`02 00 00 00`, guest=`24 00 00 00`,110 self cùng state;
+bits5..9 của lowword đổi team8→0/1 theo consumer`D628E0`. UI đổi đỏ/vàng, đủ hai player/đội để
+click tới thông báo **map hiện tại cho tối đa0 người tham gia**. Đây là bằng chứng runtime hẹp cho
+team0/1 và nhánh start, không phải hai client hoặc ready/team roundtrip. Chưa gửi request start.
+Một lần trước đó (`room-teams`) wineboot timeout35s trước client, không tính là phép đo game;
+retry prefix mới giữ nguyên copy/fixture/harness.
+Handler117/DC70D0 (locator tĩnh) đọc resultu16 rồi nhánh map; cần kiểm bảng map/index/data trước fixture.
+Chưa có map/load/Battle, auth/profile/cache hoàn chỉnh hoặc hai client.
 
 Fixture opaque/zero/empty và prefix69 là emu_choice đã được consumer chấp nhận trong phép thử,
 không phải byte server gốc. Nhánh flag1,codec frame mode2/selector3 ở phạm vi fixture CP006 có kiểm hẹp; seq/reconnect, semantics đầy đủ và

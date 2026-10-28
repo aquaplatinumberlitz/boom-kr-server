@@ -22,19 +22,19 @@ boom-kr-server/
 
 ## Đang làm
 
-CP017: **copy Wine đã vào giao diện phòng chờ KR, khởi tạo `CPrepareStage` (stage12)**.
-Sau click tạo phòng thật và request81, stub trả S→C86/result0; handler KR đọc body rồi tự yêu cầu
-stage12. Ảnh hiển thị tám ô, chọn nhân vật/đội và nút Sẵn sàng. Ba run cùng fixture tới stage12;
-không ép stage/modal hoặc cờ UI.
+CP018: **copy Wine đã hiện người chơi `KRLocal`, nhận đúng ô của mình và bật nút Bắt đầu**.
+Dùng docs VN để định hướng player/profile và kiểm ID, rồi phục hồi reader KR106/110 riêng.
+Blob profile và payload được đọc đủ trong runtime; phản hồi trạng thái ô đưa pending về0.
+Hai import còn thiếu được bind API thật trên copy mới, giữ tên API gốc ở mức candidate.
 
-Các ô người chơi và map còn trống; chưa vào trận, chưa có hai client. Đây là mốc trên **copy chẩn đoán**,
-chưa phải login/profile/cache đầy đủ hoặc gate K3/K4. Điểm chặn tiếp là dữ liệu người chơi/map của phòng;
-request585 từ init đã capture, semantics còn cần kiểm. Contract tại
-[PROTOCOL](docs/PROTOCOL.md#room-create), recipe/ảnh/hash tại
-[evidence phòng chờ](docs/evidence/room-reply/README.md); bước tiếp ở [Q-023](docs/RESEARCH.md#q-023).
+Map vẫn trống; chưa vào trận hoặc chạy hai client. Thử roster giả hai người/đội đỏ-vàng đã qua
+kiểm số người/đội và tới thông báo map cho tối đa0 người tham gia. Full login/profile/cache và gate K3/K4 còn mở; ID0 chỉ là giá trị cục bộ
+đã đo của recipe chẩn đoán. Contract tại [PROTOCOL](docs/PROTOCOL.md#room-player),
+recipe/ảnh/hash tại [evidence player](docs/evidence/room-player/README.md);
+bước tiếp ở [Q-023](docs/RESEARCH.md#q-023).
 
-CP016 đã merge [PR24](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/24).
-CP017 chờ tích hợp khi ghi record; PR là nguồn trạng thái merge hiện tại.
+CP017 đã merge [PR25](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/25).
+CP018 chờ tích hợp khi ghi record; PR là nguồn trạng thái merge hiện tại.
 Review độc lập được miễn; Codex tự kiểm, giữ gate bằng chứng. AUD005 ở CP016; audit kế CP020.
 
 Checkpoint bền vững: [manifest](docs/evidence/checkpoints/manifest.json).
