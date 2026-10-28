@@ -22,17 +22,19 @@ boom-kr-server/
 
 ## Đang làm
 
-CP016: **copy Wine đã mở hộp Tạo phòng và gửi request C→S81/107byte qua socket kênh**.
-Click thật tới callback; S→C91/14 cho phép client mở `CCreateDlgRenew`. Xác nhận dialog trả3,
-capture và parser KR kiểm đủ payload. Không ép cờ UI/modal/index/level.
+CP017: **copy Wine đã vào giao diện phòng chờ KR, khởi tạo `CPrepareStage` (stage12)**.
+Sau click tạo phòng thật và request81, stub trả S→C86/result0; handler KR đọc body rồi tự yêu cầu
+stage12. Ảnh hiển thị tám ô, chọn nhân vật/đội và nút Sẵn sàng. Ba run cùng fixture tới stage12;
+không ép stage/modal hoặc cờ UI.
 
-Đây là mốc trên **copy chẩn đoán**, chưa phải login/profile/cache đầy đủ hoặc gate K3.
-Body result0 còn thiếu; tên/profile trống. Stub chưa trả lời request tạo phòng, chưa có phòng
-hoặc vào trận. Contract tại [PROTOCOL](docs/PROTOCOL.md#room-create), recipe/ảnh/hash tại
-[evidence tạo phòng](docs/evidence/room-input/README.md); bước tiếp ở [Q-023](docs/RESEARCH.md#q-023).
+Các ô người chơi và map còn trống; chưa vào trận, chưa có hai client. Đây là mốc trên **copy chẩn đoán**,
+chưa phải login/profile/cache đầy đủ hoặc gate K3/K4. Điểm chặn tiếp là dữ liệu người chơi/map của phòng;
+request585 từ init đã capture, semantics còn cần kiểm. Contract tại
+[PROTOCOL](docs/PROTOCOL.md#room-create), recipe/ảnh/hash tại
+[evidence phòng chờ](docs/evidence/room-reply/README.md); bước tiếp ở [Q-023](docs/RESEARCH.md#q-023).
 
-CP015 đã merge [PR23](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/23).
-CP016 chờ tích hợp khi ghi record; PR là nguồn trạng thái merge hiện tại.
+CP016 đã merge [PR24](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/24).
+CP017 chờ tích hợp khi ghi record; PR là nguồn trạng thái merge hiện tại.
 Review độc lập được miễn; Codex tự kiểm, giữ gate bằng chứng. AUD005 ở CP016; audit kế CP020.
 
 Checkpoint bền vững: [manifest](docs/evidence/checkpoints/manifest.json).

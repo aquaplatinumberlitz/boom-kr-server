@@ -1,7 +1,7 @@
 {
   "schema": "kre-checkpoints-v1",
-  "last_id": "CP016",
-  "completed_count": 16,
+  "last_id": "CP017",
+  "completed_count": 17,
   "audit_interval": 4,
   "last_periodic_audit": 16,
   "next_periodic_audit": "CP020",
@@ -12801,6 +12801,1774 @@
           "path": "docs/evidence/checkpoints/audits/AUD005.json",
           "state": "updated",
           "reason": "Periodic manual audit due atCP016."
+        }
+      ]
+    },
+    {
+      "id": "CP017",
+      "previous": "CP016",
+      "lifecycle": "complete",
+      "recorded_utc": "2026-10-28T23:17:00.792058+00:00",
+      "question": "Which actual KR response to captured create81 reaches room state, what guards reject alternative paths, and what init/request/data boundary follows?",
+      "scope": "Six sequential isolated Wine measurements, targeted active receiver/strategy static edges and native capture/full-field oracles on unchanged diagnostic copy; first room waiting UI. No original source/DB patch or live Nexon.",
+      "context_commit": "a4d28a9af3837710813652a3ab79f3907590027e",
+      "owner": "Codex",
+      "reviewer": "Codex",
+      "artifacts": [
+        {
+          "name": "unchanged CP015/016 diagnostic copy",
+          "sha256": "660447c293ce92270cb9b5815331bca976e8f156366e1fe50b217b6c12e60ce3"
+        },
+        {
+          "name": "modO native oracle base400000",
+          "sha256": "a08950c833d3acab8281049def7b3dc96b221f107eeda01da3a548e34b91dce5"
+        },
+        {
+          "name": "synthetic reply86 fixture",
+          "sha256": "f7d21cf19f44a9d4c2a17d55c1090af1e2145689fc17e39c2e0e299574c2a4e2"
+        }
+      ],
+      "locators": [
+        "CNormalLobbyStrategy vt17675D0/vf2C=DB29A0; listener CLobbyStage+61E8/vt1766D84 exactly five methods; receiver/registry runs",
+        "CApp125F0C0 pre-dispatch pending registry1A34478 slots77..85 NULL in registry run",
+        "S2C92 DA2185→7A0180=1→1220480=0; noDABD40 in reply92 run",
+        "S2C86 810AC0→810B9C→815740 result0→815797/8157BA→strategyvf2C=DB29A0",
+        "DB29A0 u16/u32/3u8/bool; native vf38 XOR+normalize; body11 including outer result",
+        "DB2AAC→12562F0(12); actualDC1AB0/vt1767A80 CPrepareStage in prepare-init/prepare-cursor",
+        "prepare-cursor DB2A10 body cursor11/payload11/errors0; 11E1852 context+7C=0",
+        "C2S585/42bytes: DC4AB1→11E1820→1164D50→13ADD10; native getter u32=0/cursor4",
+        "CPrepareStage DC51F0→D5F5A0 static opcode106/vf2B4→D62750→AE4000→AE3360/AE3950; schema semantics not recovered/runtime not tested",
+        "RVA=VA-400000 for copy/native image; same copy and shared non-normalized cache throughout"
+      ],
+      "findings": [
+        {
+          "summary": "Actual create strategy is CNormalLobbyStrategy with CLobbyStage secondary listener; runtime pending77..85 are NULL at request81, control receives no create reply and never reaches12.",
+          "source": "kr_runtime",
+          "status": "confirmed",
+          "method": "runtime",
+          "canonical": "docs/PROTOCOL.md#room-create",
+          "evidence": [
+            "E179",
+            "E180",
+            "E183",
+            "E184",
+            "E084",
+            "E164",
+            "E085"
+          ],
+          "limits": "Bounded snapshot/slots only; listener dump after five entries is text, not additional functions. Does not exclude other pending handlers/stages/builds."
+        },
+        {
+          "summary": "Candidate92 reaches lobby but feature1/region0 rejects before DABD40/strategy success; no transition12 in that run.",
+          "source": "kr_runtime",
+          "status": "confirmed",
+          "method": "runtime",
+          "canonical": "docs/PROTOCOL.md#room-create",
+          "evidence": [
+            "E191",
+            "E192",
+            "E034",
+            "E093"
+          ],
+          "limits": "Configuration-specific negative. Initial92 bool prediction failed, old bytes decode true1; no success body executed. Region was not forced."
+        },
+        {
+          "summary": "S2C86 result0 dispatches through actual room UI to normal strategyDB29A0; it requests12 without debugger forcing stage. Three positive runs have this sequence.",
+          "source": "kr_runtime",
+          "status": "confirmed",
+          "method": "runtime",
+          "canonical": "docs/PROTOCOL.md#room-create",
+          "evidence": [
+            "E187",
+            "E188",
+            "E175",
+            "E176",
+            "E171",
+            "E172",
+            "E017",
+            "E062",
+            "E129"
+          ],
+          "limits": "Synthetic fields/identity1/empty name and inherited patches. No original server capture, full login, roster/map/ready/gameplay or K3/K4 proof."
+        },
+        {
+          "summary": "Native frame/all primitive getters read reply86 fields0,1,0,0,0,0,false and consume11; runtime prepare-cursor independently confirms11/11/errors0.",
+          "source": "kr_runtime",
+          "status": "confirmed",
+          "method": "runtime",
+          "canonical": "docs/PROTOCOL.md#room-create",
+          "evidence": [
+            "E171",
+            "E172",
+            "E128",
+            "E139",
+            "E136",
+            "E093"
+          ],
+          "limits": "Native receiver/buffer/allocator synthetic and prefix check off. False encoded5A, notraw00; corrected92-false only emulated. Runtime cursor not observed in prior duplicate-breakpoint run."
+        },
+        {
+          "summary": "CPrepareStage actual init/vt1767A80 follows transition12; screenshot shows eight empty player cells, team/character controls and Ready button, map blank. C2S585 from init has one native u32=0 and runtime context+7C=0.",
+          "source": "kr_runtime",
+          "status": "confirmed",
+          "method": "runtime",
+          "canonical": "docs/PROTOCOL.md#room-create",
+          "evidence": [
+            "E175",
+            "E176",
+            "E171",
+            "E172",
+            "E112",
+            "E197",
+            "E102",
+            "E003"
+          ],
+          "limits": "UI and one request value only; no player slot assignment/host, map/catalog semantic claim or successfulReady/Battle. Shared cache not normalized; body result0 incomplete."
+        },
+        {
+          "summary": "Static prepare fallback dispatch106→vf2B4/D62750 constructs AE4000 using AE3360 and AE3950; this supplies next targeted input-reader edges.",
+          "source": "kr_static",
+          "status": "confirmed",
+          "method": "static",
+          "canonical": "docs/PROTOCOL.md#room-create",
+          "evidence": [
+            "E023",
+            "E024",
+            "E020",
+            "E155"
+          ],
+          "limits": "Player semantics/schema remain candidate. No106/107 injection or runtime effect; do not assert numeric opcode shift or reuse VN layout."
+        },
+        {
+          "summary": "VN snapshot create77/reply83→strategy→stage12 helped select strategy/listener probes; actual KR opcode81/86 and getters were recovered independently.",
+          "source": "vn_static",
+          "status": "confirmed",
+          "method": "documentation",
+          "canonical": "docs/PROTOCOL.md#room-create",
+          "evidence": [
+            "E216",
+            "E217"
+          ],
+          "limits": "Stored historical source reference only, no new VN runtime; not opcode/layout authority for KR."
+        }
+      ],
+      "verification": [
+        {
+          "check": "1343 checks/6 runs: every raw hash index, isolation/unchanged copy/harness, bounded control/negative/positive markers, all captured game frames native replay with CRC/partial negatives,9 full-body fixture cases",
+          "result": "pass",
+          "evidence": [
+            "E166",
+            "E152",
+            "E128",
+            "E102"
+          ],
+          "limits": "Mechanical consistency and bounded native oracles. Manual screenshots/targeted code/timelines separate. No independent review/full auth/room server/gates."
+        }
+      ],
+      "evidence": [
+        {
+          "id": "E001",
+          "kind": "local",
+          "path": "local/research/codex/room-reply-r1/1164D50.asm",
+          "bytes": 2421,
+          "sha256": "2260eb8d19a3ebf3caa78d04b9bb68f64870a40bea538b88b6566ed0b3c51984"
+        },
+        {
+          "id": "E002",
+          "kind": "local",
+          "path": "local/research/codex/room-reply-r1/11E17D0.asm",
+          "bytes": 269,
+          "sha256": "2911adb526c9697c839a2fd25827aaf0354f3108cd41cd3376c8fb146385ae25"
+        },
+        {
+          "id": "E003",
+          "kind": "local",
+          "path": "local/research/codex/room-reply-r1/11E1820.asm",
+          "bytes": 2488,
+          "sha256": "8172792e56ffa4dbbc4801dba45aae0e2c65adb9a08588242254a8177d479b26"
+        },
+        {
+          "id": "E004",
+          "kind": "local",
+          "path": "local/research/codex/room-reply-r1/1248570.asm",
+          "bytes": 10170,
+          "sha256": "af962f4119081b3f920685672baa62b34095fc9a5571a50572df83380f969805"
+        },
+        {
+          "id": "E005",
+          "kind": "local",
+          "path": "local/research/codex/room-reply-r1/125DD20.asm",
+          "bytes": 4267,
+          "sha256": "de000eab33590ae1fe90446e7742b39d9f185dad935475099f1aeebf50f084d8"
+        },
+        {
+          "id": "E006",
+          "kind": "local",
+          "path": "local/research/codex/room-reply-r1/125DE10.asm",
+          "bytes": 5455,
+          "sha256": "ce3242eae2d10fe21c9c5d6fb517b743b86776d1b395fc4c984d8e53c0707e85"
+        },
+        {
+          "id": "E007",
+          "kind": "local",
+          "path": "local/research/codex/room-reply-r1/125E540.asm",
+          "bytes": 4579,
+          "sha256": "ccc5e9fe0ff1b3387298426068857e83e6608c8e75305f14d3c19df1cacb49af"
+        },
+        {
+          "id": "E008",
+          "kind": "local",
+          "path": "local/research/codex/room-reply-r1/125F0C0.asm",
+          "bytes": 3866,
+          "sha256": "34c81535292b4d2cd59c07ceb6622c84e8070b9d3f894ba9f57a49887e1572e1"
+        },
+        {
+          "id": "E009",
+          "kind": "local",
+          "path": "local/research/codex/room-reply-r1/125F1C0.asm",
+          "bytes": 3774,
+          "sha256": "6110ebf5e9e7e9da29ec65439b38fc9073a8754520a7cf7f481cfff62450b95e"
+        },
+        {
+          "id": "E010",
+          "kind": "local",
+          "path": "local/research/codex/room-reply-r1/125F280.asm",
+          "bytes": 2876,
+          "sha256": "9bd2332e88e377767c3c42a41e0ba9b9c892dd381cf73cb45ca4d6ef43339506"
+        },
+        {
+          "id": "E011",
+          "kind": "local",
+          "path": "local/research/codex/room-reply-r1/125F380.asm",
+          "bytes": 2465,
+          "sha256": "e6c931f6a1239ffa4512e3201592d836dce00b4f53ebdfab7488cad599676717"
+        },
+        {
+          "id": "E012",
+          "kind": "local",
+          "path": "local/research/codex/room-reply-r1/125F400.asm",
+          "bytes": 6757,
+          "sha256": "bccb9c4811b11411817db6dd07ac6dac5011797fc253d61b145795894b4155c7"
+        },
+        {
+          "id": "E013",
+          "kind": "local",
+          "path": "local/research/codex/room-reply-r1/14EAF40.asm",
+          "bytes": 2724,
+          "sha256": "9a845010a25b5b648e458fc33c26e1c03ebe1d353b3bf2fda646d25b406681d2"
+        },
+        {
+          "id": "E014",
+          "kind": "local",
+          "path": "local/research/codex/room-reply-r1/14EAFD0.asm",
+          "bytes": 990,
+          "sha256": "1c87bee668ec0dcbf0b178c9340b91fe8bb8f333419825b7146ead5b64065de1"
+        },
+        {
+          "id": "E015",
+          "kind": "local",
+          "path": "local/research/codex/room-reply-r1/14EB1F0.asm",
+          "bytes": 502,
+          "sha256": "c1ee26ccc4fa9d24c19504855db7d171867a902245d53792f1c910b3c6caccc2"
+        },
+        {
+          "id": "E016",
+          "kind": "local",
+          "path": "local/research/codex/room-reply-r1/5D9E60.asm",
+          "bytes": 3716,
+          "sha256": "6996ea755fb988f38d1f6add4d448b92770a53448b9e8ec0a919ec59a2d6d4a4"
+        },
+        {
+          "id": "E017",
+          "kind": "local",
+          "path": "local/research/codex/room-reply-r1/815740.asm",
+          "bytes": 1349,
+          "sha256": "af288b93dd705d294f924cddfccc96cbb165f85e01d16da44fac6c7f79b42938"
+        },
+        {
+          "id": "E018",
+          "kind": "local",
+          "path": "local/research/codex/room-reply-r1/81578D.asm",
+          "bytes": 1903,
+          "sha256": "b2fd298c87ba15d4662ac2e86a562647df0308540d1e088ec2ed5c7398f3a0be"
+        },
+        {
+          "id": "E019",
+          "kind": "local",
+          "path": "local/research/codex/room-reply-r1/8169C0.asm",
+          "bytes": 3615,
+          "sha256": "8fa7d16e293a7fd74adce19ace4346e8d7ff842d0e991450046082cc45741b3c"
+        },
+        {
+          "id": "E020",
+          "kind": "local",
+          "path": "local/research/codex/room-reply-r1/AE4000.asm",
+          "bytes": 10439,
+          "sha256": "f3a01f1569f75a17d88ac19939f82b6ee033c80768e95dd13c83d3d8442322fb"
+        },
+        {
+          "id": "E021",
+          "kind": "local",
+          "path": "local/research/codex/room-reply-r1/D3B6F0.asm",
+          "bytes": 4726,
+          "sha256": "8c17e1b9c7d92c05bc3924609f9aa05d0905beb05875538be31f8b0bba72d488"
+        },
+        {
+          "id": "E022",
+          "kind": "local",
+          "path": "local/research/codex/room-reply-r1/D3BFD8.asm",
+          "bytes": 1329,
+          "sha256": "86e28b4055c280fdd73a111439f35c4c7ab8fb5b57a758351e7e7416cba423be"
+        },
+        {
+          "id": "E023",
+          "kind": "local",
+          "path": "local/research/codex/room-reply-r1/D5F5A0.asm",
+          "bytes": 4896,
+          "sha256": "a69b82d73a314f752d0ecc910e4597a10b724b3684ec182642438c7ed1b9e85e"
+        },
+        {
+          "id": "E024",
+          "kind": "local",
+          "path": "local/research/codex/room-reply-r1/D62750.asm",
+          "bytes": 9626,
+          "sha256": "6e9252f1474e49b554d7fd6e2f172345026b806ee401393dbd4fcd3bea1ca692"
+        },
+        {
+          "id": "E025",
+          "kind": "local",
+          "path": "local/research/codex/room-reply-r1/D68960.asm",
+          "bytes": 7716,
+          "sha256": "7a150b607257cdcc9304caf69c6b71cf8bd4bed5f9ebd2d0b89b76df3e1ea020"
+        },
+        {
+          "id": "E026",
+          "kind": "local",
+          "path": "local/research/codex/room-reply-r1/D68B3E.asm",
+          "bytes": 5202,
+          "sha256": "9f4ff59163dd8643c6a2cc2c983dd756151bd08179c3d84c3ef12446b1b2f271"
+        },
+        {
+          "id": "E027",
+          "kind": "local",
+          "path": "local/research/codex/room-reply-r1/D68D64.asm",
+          "bytes": 984,
+          "sha256": "03f1863620cd8b79f0c4e3847e78ac9a3ce98f6705256feb6a827556d85ca9a2"
+        },
+        {
+          "id": "E028",
+          "kind": "local",
+          "path": "local/research/codex/room-reply-r1/D6B64C.asm",
+          "bytes": 2522,
+          "sha256": "64e84e43cde08e4d62f9741e1523e1c47e222155b169f7724a6c29461f5d9138"
+        },
+        {
+          "id": "E029",
+          "kind": "local",
+          "path": "local/research/codex/room-reply-r1/D6B6E2.asm",
+          "bytes": 9864,
+          "sha256": "cff9c7249a9f5c6067ac57a3db85a70e78119b349afc8f96dc48ff926f27e681"
+        },
+        {
+          "id": "E030",
+          "kind": "local",
+          "path": "local/research/codex/room-reply-r1/DA1FB3.asm",
+          "bytes": 1052,
+          "sha256": "039e1ec89a4243e0e4008aba7deefb8f16666c7bc3d8dacb520210dbe3c8837d"
+        },
+        {
+          "id": "E031",
+          "kind": "local",
+          "path": "local/research/codex/room-reply-r1/DA2004.asm",
+          "bytes": 2348,
+          "sha256": "fb16d607035b8d672e301f489454507f107d39ed7cf8cbf73b8b3ea590425d9a"
+        },
+        {
+          "id": "E032",
+          "kind": "local",
+          "path": "local/research/codex/room-reply-r1/DA208F.asm",
+          "bytes": 402,
+          "sha256": "aa6848ac4a9959d1f073d444a1a640a6a776b8d8141ad1da3006b12cf4fa9773"
+        },
+        {
+          "id": "E033",
+          "kind": "local",
+          "path": "local/research/codex/room-reply-r1/DA20A1.asm",
+          "bytes": 3760,
+          "sha256": "bde83502501bd6fc26548e24f816465a764378590031e00023aeaaab900a3b4f"
+        },
+        {
+          "id": "E034",
+          "kind": "local",
+          "path": "local/research/codex/room-reply-r1/DA2185.asm",
+          "bytes": 2195,
+          "sha256": "4aef053be9b20e3f1a477c9cec1d45efc55df7120bc5cb443e7bd6977869a077"
+        },
+        {
+          "id": "E035",
+          "kind": "local",
+          "path": "local/research/codex/room-reply-r1/DA22D9.asm",
+          "bytes": 4050,
+          "sha256": "f3347754230d72d59fd35f10601d0ea0770b390207ff5d99757ab2f55bfe97c6"
+        },
+        {
+          "id": "E036",
+          "kind": "local",
+          "path": "local/research/codex/room-reply-r1/DA25C0-calls.asm",
+          "bytes": 6983,
+          "sha256": "218e6a030e4b44dc1a0ffb99425c0af7a0a606a359e3c3106ad7025aebc829b9"
+        },
+        {
+          "id": "E037",
+          "kind": "local",
+          "path": "local/research/codex/room-reply-r1/DA25C0.asm",
+          "bytes": 1600,
+          "sha256": "2e1824ce1b92da47bc220541dd9865dfbb2ba34a3f1c6b7430cbd49bc4e5422b"
+        },
+        {
+          "id": "E038",
+          "kind": "local",
+          "path": "local/research/codex/room-reply-r1/DA2910-calls.asm",
+          "bytes": 10471,
+          "sha256": "1a45ace1cdf203f3b3b42466e6b83c1452912633bcd3953561a5a31ff2653cc2"
+        },
+        {
+          "id": "E039",
+          "kind": "local",
+          "path": "local/research/codex/room-reply-r1/DA2910.asm",
+          "bytes": 2528,
+          "sha256": "6192385a5d975280020af4dbc6bce32c177083503a74a5ec950a682a1f54b0fd"
+        },
+        {
+          "id": "E040",
+          "kind": "local",
+          "path": "local/research/codex/room-reply-r1/DA2E20-calls.asm",
+          "bytes": 10506,
+          "sha256": "2dd04b31b7e48ab44f6c6ddf45e4f5679deb78827f1bd07d60440a4477e932ed"
+        },
+        {
+          "id": "E041",
+          "kind": "local",
+          "path": "local/research/codex/room-reply-r1/DA2E20.asm",
+          "bytes": 4774,
+          "sha256": "4f16ea503cc2941a620f004238a6597d4d81597e5add0a14e9a5df560b9d1469"
+        },
+        {
+          "id": "E042",
+          "kind": "local",
+          "path": "local/research/codex/room-reply-r1/DA3B60-calls.asm",
+          "bytes": 9691,
+          "sha256": "56165cb38fe7f2a3f820106fe368bece8285fe865cd819fe5f4b4b123402fd82"
+        },
+        {
+          "id": "E043",
+          "kind": "local",
+          "path": "local/research/codex/room-reply-r1/DA44F0.asm",
+          "bytes": 2846,
+          "sha256": "a12235af644472ac36ee4a887aca346690f4d82b2b5ef59e26e0150c64ae276c"
+        },
+        {
+          "id": "E044",
+          "kind": "local",
+          "path": "local/research/codex/room-reply-r1/DA5C10.asm",
+          "bytes": 1798,
+          "sha256": "93916a41f9cdcf6a72b50ea10bcdb6f17d8a098379aadb83581f2dec8aeb3bcd"
+        },
+        {
+          "id": "E045",
+          "kind": "local",
+          "path": "local/research/codex/room-reply-r1/DA5D30.asm",
+          "bytes": 2428,
+          "sha256": "6e0cdf20c945544ab00fa9ab4d29b1e791bdd40a63de475f81c7a2cd67dc4ea0"
+        },
+        {
+          "id": "E046",
+          "kind": "local",
+          "path": "local/research/codex/room-reply-r1/DA6530.asm",
+          "bytes": 2706,
+          "sha256": "bf7184056d97c227cc4d450052a91119d4b482a5d2f208080ab4042de5fc56b5"
+        },
+        {
+          "id": "E047",
+          "kind": "local",
+          "path": "local/research/codex/room-reply-r1/DA6AD0.asm",
+          "bytes": 4560,
+          "sha256": "fa5814396c25d2b2e2ac357fb388278659f4b921bb2b9cdee5aaba2512087905"
+        },
+        {
+          "id": "E048",
+          "kind": "local",
+          "path": "local/research/codex/room-reply-r1/DA6BA0-calls.asm",
+          "bytes": 3083,
+          "sha256": "66399e42a1aeecb494a913dc3f54728e1e6ebdfd1053718bfe509db0fc1f1508"
+        },
+        {
+          "id": "E049",
+          "kind": "local",
+          "path": "local/research/codex/room-reply-r1/DA6D20.asm",
+          "bytes": 1999,
+          "sha256": "27230c5fa78fad7621c355663e91005a79a0f5eea01c92e7d80dd2dec47fb3cb"
+        },
+        {
+          "id": "E050",
+          "kind": "local",
+          "path": "local/research/codex/room-reply-r1/DB01F0.asm",
+          "bytes": 3281,
+          "sha256": "b20df40f627f39397b74563032ac1249b542e36017e71341c0b52a3d6d6705e6"
+        },
+        {
+          "id": "E051",
+          "kind": "local",
+          "path": "local/research/codex/room-reply-r1/DB02B0.asm",
+          "bytes": 2246,
+          "sha256": "d5405639bd67a54071f16179120bacba3f4a2a47c38eb19f14a0b285bfeecbc1"
+        },
+        {
+          "id": "E052",
+          "kind": "local",
+          "path": "local/research/codex/room-reply-r1/DB03F0.asm",
+          "bytes": 1844,
+          "sha256": "1b07861a0bfa67759a2fc63b1667d9bf431aa4e97d24bcbcbb80cc69b5471319"
+        },
+        {
+          "id": "E053",
+          "kind": "local",
+          "path": "local/research/codex/room-reply-r1/DB0450.asm",
+          "bytes": 2079,
+          "sha256": "f7cfecc94a355fe66f54406ec06f9115603d1236cde6f396e58ee3e5c9b4829f"
+        },
+        {
+          "id": "E054",
+          "kind": "local",
+          "path": "local/research/codex/room-reply-r1/DB0930.asm",
+          "bytes": 3034,
+          "sha256": "331094f2e93b18a6b31e6b0250cef99da8feb42fdb0644d8799383cfb01df699"
+        },
+        {
+          "id": "E055",
+          "kind": "local",
+          "path": "local/research/codex/room-reply-r1/DB0DB0.asm",
+          "bytes": 1465,
+          "sha256": "fefdc4260ebe134c432ca47dffdcf0500d698437bc20fccffb85126985724fce"
+        },
+        {
+          "id": "E056",
+          "kind": "local",
+          "path": "local/research/codex/room-reply-r1/DB0DCD.asm",
+          "bytes": 5374,
+          "sha256": "09222e4472422aca9137ede64e9363634d6fb00b3c863fba85408365d9660143"
+        },
+        {
+          "id": "E057",
+          "kind": "local",
+          "path": "local/research/codex/room-reply-r1/DB1600.asm",
+          "bytes": 1763,
+          "sha256": "b2a74f22eceb3bcea11c77f70fad6a992884350ddc1bc0719f5e5c7ed2909f4d"
+        },
+        {
+          "id": "E058",
+          "kind": "local",
+          "path": "local/research/codex/room-reply-r1/DB1720.asm",
+          "bytes": 1719,
+          "sha256": "f1dc617c56850ee3b10b0cd67807579996d84f7526c5000a780dbfdf61a77870"
+        },
+        {
+          "id": "E059",
+          "kind": "local",
+          "path": "local/research/codex/room-reply-r1/DB1CE0.asm",
+          "bytes": 3479,
+          "sha256": "a9c05846bf73cd4645b7b14862f8752345be4c9a1c4c43ad3cd7936099d4c377"
+        },
+        {
+          "id": "E060",
+          "kind": "local",
+          "path": "local/research/codex/room-reply-r1/DB1F20.asm",
+          "bytes": 3728,
+          "sha256": "9d798dc56969c12f51688f5491051764046e7aac56f25d780f6876e35cf19449"
+        },
+        {
+          "id": "E061",
+          "kind": "local",
+          "path": "local/research/codex/room-reply-r1/DB28C0.asm",
+          "bytes": 3578,
+          "sha256": "03b9fe55a4e1a839ffbf8aa5e76d7bcb6280541f5cd2d0da8b1a04c27063dffb"
+        },
+        {
+          "id": "E062",
+          "kind": "local",
+          "path": "local/research/codex/room-reply-r1/DB29A0.asm",
+          "bytes": 7087,
+          "sha256": "96515f740335b282e03c8f7eb16a8373d5c6f752e86b335ea9e4e687457d28e6"
+        },
+        {
+          "id": "E063",
+          "kind": "local",
+          "path": "local/research/codex/room-reply-r1/DB2EA0.asm",
+          "bytes": 1667,
+          "sha256": "10cd824ba888a9d4332b7f74a15350ea4804b80225273b589641c72d8e4cd2a2"
+        },
+        {
+          "id": "E064",
+          "kind": "local",
+          "path": "local/research/codex/room-reply-r1/DB2FE0.asm",
+          "bytes": 3797,
+          "sha256": "db707514f13b7e64302838faf0d3cf742cde502beef429c79159e50c5dd307d5"
+        },
+        {
+          "id": "E065",
+          "kind": "local",
+          "path": "local/research/codex/room-reply-r1/DB30E0.asm",
+          "bytes": 15015,
+          "sha256": "53837ce80b883164b865b20f7ee1ef752a05aa230798ff005a4a5e3bd3c6e831"
+        },
+        {
+          "id": "E066",
+          "kind": "local",
+          "path": "local/research/codex/room-reply-r1/DB35FE.asm",
+          "bytes": 1910,
+          "sha256": "ca04a6b4e0c3800961767433a69f5ee7d5c4f96322c2c32276f0e95acd17d58e"
+        },
+        {
+          "id": "E067",
+          "kind": "local",
+          "path": "local/research/codex/room-reply-r1/DC1AB0.asm",
+          "bytes": 2284,
+          "sha256": "9d7451c90226f4f6ee981b44fc702ff7748617ff385749d4eae8c6ee4ee87b4e"
+        },
+        {
+          "id": "E068",
+          "kind": "local",
+          "path": "local/research/codex/room-reply-r1/DC4A70.asm",
+          "bytes": 2156,
+          "sha256": "fe44932076ddf1fb2d8cf813b5518895365bb1395a9b5fe350ccc93e06f778af"
+        },
+        {
+          "id": "E069",
+          "kind": "local",
+          "path": "local/research/codex/room-reply-r1/DC51F0.asm",
+          "bytes": 5446,
+          "sha256": "934fedb6d3bd258b0bf86c8474adaaaf0ae5663eb6383dfcd4c01a5a76d63128"
+        },
+        {
+          "id": "E070",
+          "kind": "local",
+          "path": "local/research/codex/room-reply-r1/DC55B8.asm",
+          "bytes": 1865,
+          "sha256": "0de3413a34840e7731f35c0570a530450004c2c04aa9b7f02a737cdcc9071286"
+        },
+        {
+          "id": "E071",
+          "kind": "local",
+          "path": "local/research/codex/room-reply-r1/app-packet-and-room-stage-read.log",
+          "bytes": 10831,
+          "sha256": "ef94724bde764e9f22ad38d9d8c8a3a8b2133d6ffa07ea0731101445188eee07"
+        },
+        {
+          "id": "E072",
+          "kind": "local",
+          "path": "local/research/codex/room-reply-r1/app-recv-prefix-read.log",
+          "bytes": 4268,
+          "sha256": "f957b042be211b77e9627ea354b88e4f6c36a4af9efd382fd5b5a37c4ac352ba"
+        },
+        {
+          "id": "E073",
+          "kind": "local",
+          "path": "local/research/codex/room-reply-r1/app-tail-strategy-read.log",
+          "bytes": 7427,
+          "sha256": "fe722664957887356bf7ef3d1d4dff8020269fc6d58571bf4838f68f3ec0db3b"
+        },
+        {
+          "id": "E074",
+          "kind": "local",
+          "path": "local/research/codex/room-reply-r1/async-dispatch-read.log",
+          "bytes": 9224,
+          "sha256": "d71baddea3f7dbf05dcd0fec8fea96ccc2f4a25cf21add48a607680c6c1f391e"
+        },
+        {
+          "id": "E075",
+          "kind": "local",
+          "path": "local/research/codex/room-reply-r1/base-fallback-read.log",
+          "bytes": 9865,
+          "sha256": "9bd76c7b358e9f625187cf67329b4dd8da50a3460e5460ce7c2cf90488675367"
+        },
+        {
+          "id": "E076",
+          "kind": "local",
+          "path": "local/research/codex/room-reply-r1/base-forward-read.log",
+          "bytes": 4727,
+          "sha256": "6306e0efb254ba967a9363eb6340bdf6c1d06f5e00fd0f09727483f84fdb1fad"
+        },
+        {
+          "id": "E077",
+          "kind": "local",
+          "path": "local/research/codex/room-reply-r1/base-normal-vtable.json",
+          "bytes": 2031,
+          "sha256": "184461cf6128723681613ff3ed7c84f34eb29082855c013ab3d22ef5c32faf27"
+        },
+        {
+          "id": "E078",
+          "kind": "local",
+          "path": "local/research/codex/room-reply-r1/bool-reader-entry.log",
+          "bytes": 503,
+          "sha256": "83b8637cf139c42a0543d6d45884f93692ab3b8cb2936dc944001545cd3525f0"
+        },
+        {
+          "id": "E079",
+          "kind": "local",
+          "path": "local/research/codex/room-reply-r1/bool-reader-read.log",
+          "bytes": 3716,
+          "sha256": "7c0ae1b715b48c434b2818172d1c0a27d3cd11917a54df2df2320dc431b6fb9f"
+        },
+        {
+          "id": "E080",
+          "kind": "local",
+          "path": "local/research/codex/room-reply-r1/build-reply86.py",
+          "bytes": 1624,
+          "sha256": "d79bf3087ca9c5a4506a97341b1aa1d2c90e340eee64992de4d5915fe6cdd15f"
+        },
+        {
+          "id": "E081",
+          "kind": "local",
+          "path": "local/research/codex/room-reply-r1/build-reply92-false.py",
+          "bytes": 1679,
+          "sha256": "5b0caf3090147a1306d9b345d670a3f12ea376a802a3cfc4551f9a4b5443a528"
+        },
+        {
+          "id": "E082",
+          "kind": "local",
+          "path": "local/research/codex/room-reply-r1/build-reply92.py",
+          "bytes": 1628,
+          "sha256": "3238b35ae1dbcb6d6dac43f3dde264ce223744d7a08ba5a54ce2e6d408a8126c"
+        },
+        {
+          "id": "E083",
+          "kind": "local",
+          "path": "local/research/codex/room-reply-r1/create-builder-tail-read.log",
+          "bytes": 15016,
+          "sha256": "be74081f84dcf2c5b54b88e4f32bdf91de28264580a15f98976d3d449c1c849d"
+        },
+        {
+          "id": "E084",
+          "kind": "local",
+          "path": "local/research/codex/room-reply-r1/create-listener-rtti.json",
+          "bytes": 989,
+          "sha256": "42e121f388ef2c180bbfa2300ef7f9365e8d694503be778a4236b24eaf3483d3"
+        },
+        {
+          "id": "E085",
+          "kind": "local",
+          "path": "local/research/codex/room-reply-r1/create-receiver-rtti.json",
+          "bytes": 1316,
+          "sha256": "273b524312d6e02e9a61206df74c8088304a64b0948c73910bf294c35c379e67"
+        },
+        {
+          "id": "E086",
+          "kind": "local",
+          "path": "local/research/codex/room-reply-r1/create-reply-strategy-read.log",
+          "bytes": 10667,
+          "sha256": "43c5065229fc09c99917f42d8ad60c5a0062b7e91589769a284e46ed6c2b9b04"
+        },
+        {
+          "id": "E087",
+          "kind": "local",
+          "path": "local/research/codex/room-reply-r1/create-result86-read.log",
+          "bytes": 1904,
+          "sha256": "6d131d6e3efa6cf080ee174a1c896aa0ab56cd5052b1e8b7d574f857549e315b"
+        },
+        {
+          "id": "E088",
+          "kind": "local",
+          "path": "local/research/codex/room-reply-r1/extended-room-opcodes.json",
+          "bytes": 1403,
+          "sha256": "9930300d90bfdb2f9a5adf2c64c971d2654cd4c5a9d895dbf8f1e6070f987da6"
+        },
+        {
+          "id": "E089",
+          "kind": "local",
+          "path": "local/research/codex/room-reply-r1/listener-read.log",
+          "bytes": 6472,
+          "sha256": "0c60b0421b2c80717b579dbcf899b26a1426871cb52963277a488d380629fb9b"
+        },
+        {
+          "id": "E090",
+          "kind": "local",
+          "path": "local/research/codex/room-reply-r1/lobby-early-opcodes.json",
+          "bytes": 436,
+          "sha256": "8482aa40fbea933fe3d0667f6c9fd4b93343f0a8bf74ce38ddf57b67ee96e4a0"
+        },
+        {
+          "id": "E091",
+          "kind": "local",
+          "path": "local/research/codex/room-reply-r1/lobby-forward-read.log",
+          "bytes": 4051,
+          "sha256": "81c50b54b92bb33121bf4ccc80ac6afa67a0c5bd239275e5255b23a041315a85"
+        },
+        {
+          "id": "E092",
+          "kind": "local",
+          "path": "local/research/codex/room-reply-r1/lobby-redirect-room-read.log",
+          "bytes": 4545,
+          "sha256": "af1680b6e1c7ce8e7b55706443803319b02fb7156d3b304d13adcd3a2bda9b84"
+        },
+        {
+          "id": "E093",
+          "kind": "local",
+          "path": "local/research/codex/room-reply-r1/measurement-corrections.json",
+          "bytes": 2827,
+          "sha256": "532bdb0b196d301c1a73d7053edea6feb5a6bc5c2d7252319570037f64f4faf4"
+        },
+        {
+          "id": "E094",
+          "kind": "local",
+          "path": "local/research/codex/room-reply-r1/nested-room-opcodes.json",
+          "bytes": 483,
+          "sha256": "6fa3f1c2521334e97142e876904b5f8d609219079ad7df2576646b9e8c59e21b"
+        },
+        {
+          "id": "E095",
+          "kind": "local",
+          "path": "local/research/codex/room-reply-r1/nested-tail-read.log",
+          "bytes": 1330,
+          "sha256": "551679eea34e1a0eb76335e85e9f03ccd96cdf3bcc5fc9fc3daf36a4ab99e4c3"
+        },
+        {
+          "id": "E096",
+          "kind": "local",
+          "path": "local/research/codex/room-reply-r1/offline-response-table.json",
+          "bytes": 417,
+          "sha256": "ed03013df699cabfbde2d2f1999f0fc2a9fae7371b7d024ac7334337c33bdb20"
+        },
+        {
+          "id": "E097",
+          "kind": "local",
+          "path": "local/research/codex/room-reply-r1/packet-strategy-entry-read.log",
+          "bytes": 7410,
+          "sha256": "6328684d29a70b362a9807d99511f9a9c7cd4a396398be5cb05cb68e20806bc9"
+        },
+        {
+          "id": "E098",
+          "kind": "local",
+          "path": "local/research/codex/room-reply-r1/player-next-static.txt",
+          "bytes": 12929,
+          "sha256": "b3fd0473c5da3c59f083d75030b503b52530980ced733d6a2200131b2141cacb"
+        },
+        {
+          "id": "E099",
+          "kind": "local",
+          "path": "local/research/codex/room-reply-r1/pre-dispatch-read.log",
+          "bytes": 9183,
+          "sha256": "37dea880ac30a9aeca0e67c0ccf5077acec2e92f4dc4f94b9bf611699e17bf9d"
+        },
+        {
+          "id": "E100",
+          "kind": "local",
+          "path": "local/research/codex/room-reply-r1/prepare-cursor-hashes.json",
+          "bytes": 11612,
+          "sha256": "f2db65d4e4e062842fbcba9b50c154a99b751bbea30ee3c23e7f4ee68eb272aa"
+        },
+        {
+          "id": "E101",
+          "kind": "local",
+          "path": "local/research/codex/room-reply-r1/prepare-cursor-launcher.log",
+          "bytes": 13191,
+          "sha256": "78b3406f4831a8a3da700daf19ffc890fc02af42fb01c17171f1eb19159aa6e4"
+        },
+        {
+          "id": "E102",
+          "kind": "local",
+          "path": "local/research/codex/room-reply-r1/prepare-cursor-oracle.json",
+          "bytes": 38072,
+          "sha256": "ccd2115e9319fab89f8979a380d399e0cd073a729103fa462ffa45ac19911e67"
+        },
+        {
+          "id": "E103",
+          "kind": "local",
+          "path": "local/research/codex/room-reply-r1/prepare-cursor-recipe.json",
+          "bytes": 998,
+          "sha256": "1e13a7ead2b3bb2575f2760b8295994f9f7a550e6769bee1a218be39e231ad0b"
+        },
+        {
+          "id": "E104",
+          "kind": "local",
+          "path": "local/research/codex/room-reply-r1/prepare-cursor.gdb",
+          "bytes": 3458,
+          "sha256": "d394d67eb42056f1d461293eda985144ce4c313eba8dc85e435b3326d1a9f66c"
+        },
+        {
+          "id": "E105",
+          "kind": "local",
+          "path": "local/research/codex/room-reply-r1/prepare-entry-read.log",
+          "bytes": 7732,
+          "sha256": "539a19b7bf80d732e6ac51d559c9cc4d688f620d53152473d1028eda7dfe98b4"
+        },
+        {
+          "id": "E106",
+          "kind": "local",
+          "path": "local/research/codex/room-reply-r1/prepare-forward-tail.log",
+          "bytes": 1866,
+          "sha256": "3294e623816b27edce1a389f434cd431433190679e91b58ed4876f15811a1054"
+        },
+        {
+          "id": "E107",
+          "kind": "local",
+          "path": "local/research/codex/room-reply-r1/prepare-init-hashes.json",
+          "bytes": 11494,
+          "sha256": "24e5a2d3f9b280b6b234a9414fd666d02e57f6d8bf1ff79be18b78085b9ccb34"
+        },
+        {
+          "id": "E108",
+          "kind": "local",
+          "path": "local/research/codex/room-reply-r1/prepare-init-launcher.log",
+          "bytes": 13273,
+          "sha256": "1bc69ac2f609d424b80d2ba2c7fa5743bbf902fcfbec9176bc88b4df8b588169"
+        },
+        {
+          "id": "E109",
+          "kind": "local",
+          "path": "local/research/codex/room-reply-r1/prepare-init-oracle.json",
+          "bytes": 39284,
+          "sha256": "64cd619c5cc4795d93e4dd5bc62b331cdb2c8df6729ee7e0342794cff09bb23c"
+        },
+        {
+          "id": "E110",
+          "kind": "local",
+          "path": "local/research/codex/room-reply-r1/prepare-init-recipe.json",
+          "bytes": 992,
+          "sha256": "37eea4736ae9f0f66bef2e7a3178564cadf31fdb1b00b9b18b6fa7d5160c7f47"
+        },
+        {
+          "id": "E111",
+          "kind": "local",
+          "path": "local/research/codex/room-reply-r1/prepare-init.gdb",
+          "bytes": 3333,
+          "sha256": "24550a64b82fea9496afc5d82c5cac7c34fc91522b1460b4a2aaa695cb766538"
+        },
+        {
+          "id": "E112",
+          "kind": "local",
+          "path": "local/research/codex/room-reply-r1/prepare-rtti.json",
+          "bytes": 139,
+          "sha256": "c54db4cc2b193a32c06e1df43ed514c5fb8f5b820cc3380105de8b840f06a17f"
+        },
+        {
+          "id": "E113",
+          "kind": "local",
+          "path": "local/research/codex/room-reply-r1/read_static.py",
+          "bytes": 669,
+          "sha256": "83978981ae9eeb8538a390f162bb2e51b989160f0cbee51a18204b6fd2ae5db6"
+        },
+        {
+          "id": "E114",
+          "kind": "local",
+          "path": "local/research/codex/room-reply-r1/receiver-hashes.json",
+          "bytes": 11258,
+          "sha256": "dfec0edf37c83025688aab7071d3d6cad28233225ad307ff877c69ec98645014"
+        },
+        {
+          "id": "E115",
+          "kind": "local",
+          "path": "local/research/codex/room-reply-r1/receiver-launcher.log",
+          "bytes": 12290,
+          "sha256": "69b44d25ee929fb14b54391edaf6909b89d5fa0d937b9c9069d5106f8021d232"
+        },
+        {
+          "id": "E116",
+          "kind": "local",
+          "path": "local/research/codex/room-reply-r1/receiver-oracle.json",
+          "bytes": 33357,
+          "sha256": "0fcc6c6306a523539d58eb302514a4f3c2d1f8b872dda7d77678f6fa2af47d25"
+        },
+        {
+          "id": "E117",
+          "kind": "local",
+          "path": "local/research/codex/room-reply-r1/receiver-recipe.json",
+          "bytes": 980,
+          "sha256": "ab95e6e40ddc5a4cecf8496d961757e6f7e2a5045215617349dcd84d91a4dd08"
+        },
+        {
+          "id": "E118",
+          "kind": "local",
+          "path": "local/research/codex/room-reply-r1/receiver.gdb",
+          "bytes": 1115,
+          "sha256": "b1f5ee9a66daa37f4cc630771cab24a6f01b7127cc4151a1acbef837068d01ff"
+        },
+        {
+          "id": "E119",
+          "kind": "local",
+          "path": "local/research/codex/room-reply-r1/registry-hashes.json",
+          "bytes": 10676,
+          "sha256": "788dff9eb605de6b4d6281635c58b6c9bf2fc892e340e34413b198aafdd730b2"
+        },
+        {
+          "id": "E120",
+          "kind": "local",
+          "path": "local/research/codex/room-reply-r1/registry-launcher.log",
+          "bytes": 12150,
+          "sha256": "d514ae7ea9cbcd8106f264c485da1962b63c5e0c7268f977e4f800fc70fd0c4b"
+        },
+        {
+          "id": "E121",
+          "kind": "local",
+          "path": "local/research/codex/room-reply-r1/registry-oracle.json",
+          "bytes": 33355,
+          "sha256": "d9ed36c7afe134ace3e3264301290d99ea51618db69e0b0f97a1c8fd0d30f5d7"
+        },
+        {
+          "id": "E122",
+          "kind": "local",
+          "path": "local/research/codex/room-reply-r1/registry-recipe.json",
+          "bytes": 980,
+          "sha256": "0f6acbb2fc2c602a7c4f086c8ab5205de0bd91a1530b716bae8920fe990d0164"
+        },
+        {
+          "id": "E123",
+          "kind": "local",
+          "path": "local/research/codex/room-reply-r1/registry.gdb",
+          "bytes": 1608,
+          "sha256": "aeb79419bab697db64d716e81f1c80af828d794432d0181f6081c7d400230024"
+        },
+        {
+          "id": "E124",
+          "kind": "local",
+          "path": "local/research/codex/room-reply-r1/replay-run.py",
+          "bytes": 2796,
+          "sha256": "f49a6d3d60006e74bcd43f2ec8313d0cbc39c88db3a934ef9543f02ae3a23d3a"
+        },
+        {
+          "id": "E125",
+          "kind": "local",
+          "path": "local/research/codex/room-reply-r1/reply-direct-callers.json",
+          "bytes": 3,
+          "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+        },
+        {
+          "id": "E126",
+          "kind": "local",
+          "path": "local/research/codex/room-reply-r1/reply-dispatch-register-read.log",
+          "bytes": 5775,
+          "sha256": "52424a302a7365e498db70a5ab8296b5a6030cc891b2adbd2dcdfe254dce51ba"
+        },
+        {
+          "id": "E127",
+          "kind": "local",
+          "path": "local/research/codex/room-reply-r1/reply-initial-read.log",
+          "bytes": 4702,
+          "sha256": "eb4655a4bd371339ef6ee22b0bd0d6391467c2afc70ec1878d2478bf8eb30324"
+        },
+        {
+          "id": "E128",
+          "kind": "local",
+          "path": "local/research/codex/room-reply-r1/reply86-fixture-oracle.json",
+          "bytes": 1275,
+          "sha256": "75ae3e56596e19adef622501624c0b89e683eaa634f1167aa4c4f6444ef0e73e"
+        },
+        {
+          "id": "E129",
+          "kind": "local",
+          "path": "local/research/codex/room-reply-r1/reply86-fixture.json",
+          "bytes": 554,
+          "sha256": "69a6346f9f7a7f4ba808ad81e504d325fd66387f16303927bbd0a0cd9fec18ea"
+        },
+        {
+          "id": "E130",
+          "kind": "local",
+          "path": "local/research/codex/room-reply-r1/reply86-hashes.json",
+          "bytes": 11778,
+          "sha256": "68bf0617b67beff4e7a8134d0a6605473dfd95bbec12599b8bc4eb3b2e8723bf"
+        },
+        {
+          "id": "E131",
+          "kind": "local",
+          "path": "local/research/codex/room-reply-r1/reply86-launcher.log",
+          "bytes": 13378,
+          "sha256": "95e045952a43fb1b369db649cf72b3fee66495fcda31532e4c10fea66aa28371"
+        },
+        {
+          "id": "E132",
+          "kind": "local",
+          "path": "local/research/codex/room-reply-r1/reply86-oracle.json",
+          "bytes": 39283,
+          "sha256": "014a0f165e02faf248512bb04aaf9b07499fc1b8088436926e4de2b095dd61f8"
+        },
+        {
+          "id": "E133",
+          "kind": "local",
+          "path": "local/research/codex/room-reply-r1/reply86-recipe.json",
+          "bytes": 977,
+          "sha256": "0d70b5ac20c2d569fd14fd4d6a02212b82cd71809e8fca9958e3edf39a9676da"
+        },
+        {
+          "id": "E134",
+          "kind": "local",
+          "path": "local/research/codex/room-reply-r1/reply86.bin",
+          "bytes": 49,
+          "sha256": "f7d21cf19f44a9d4c2a17d55c1090af1e2145689fc17e39c2e0e299574c2a4e2"
+        },
+        {
+          "id": "E135",
+          "kind": "local",
+          "path": "local/research/codex/room-reply-r1/reply86.gdb",
+          "bytes": 2707,
+          "sha256": "0019831a32a836ad0f76b035fe00b2ee2df8d855482b62f88c9f7adc87521c44"
+        },
+        {
+          "id": "E136",
+          "kind": "local",
+          "path": "local/research/codex/room-reply-r1/reply92-false-fixture-oracle.json",
+          "bytes": 1282,
+          "sha256": "ba92e59246327e0dd2cdebeff0288a2bab4cdd08163020bebafcdc846b7e1eb4"
+        },
+        {
+          "id": "E137",
+          "kind": "local",
+          "path": "local/research/codex/room-reply-r1/reply92-false-fixture.json",
+          "bytes": 556,
+          "sha256": "93d833259a2af121cbea2b2663e47b75167ec8290c51e881ece86f4c938be45e"
+        },
+        {
+          "id": "E138",
+          "kind": "local",
+          "path": "local/research/codex/room-reply-r1/reply92-false.bin",
+          "bytes": 48,
+          "sha256": "081b61ab393a2b29141b73a0cf3fe07608efddcdf255bdd955ae3a67e2fd92b4"
+        },
+        {
+          "id": "E139",
+          "kind": "local",
+          "path": "local/research/codex/room-reply-r1/reply92-fixture-oracle.json",
+          "bytes": 1264,
+          "sha256": "ab7aaa3df7f3a0c42c68a829137fedfc89bc030f6dfd7a2f220eadc46f437aa6"
+        },
+        {
+          "id": "E140",
+          "kind": "local",
+          "path": "local/research/codex/room-reply-r1/reply92-fixture.json",
+          "bytes": 760,
+          "sha256": "9cd235d7a0c64e59f6b12b016849c9049e216a892c2a36140a077b40799ae6bf"
+        },
+        {
+          "id": "E141",
+          "kind": "local",
+          "path": "local/research/codex/room-reply-r1/reply92-hashes.json",
+          "bytes": 11778,
+          "sha256": "64b5262dc5c64a011fd0588d70765de0be25e8e65605ecb021729781ed9c8871"
+        },
+        {
+          "id": "E142",
+          "kind": "local",
+          "path": "local/research/codex/room-reply-r1/reply92-launcher.log",
+          "bytes": 13172,
+          "sha256": "854a05af2df30138db04fa1f88a3f75241314a5e64e7dbdd74b253414fd6fac2"
+        },
+        {
+          "id": "E143",
+          "kind": "local",
+          "path": "local/research/codex/room-reply-r1/reply92-oracle.json",
+          "bytes": 36972,
+          "sha256": "a86f8e7f9d29195220b6b5626de867f2a0e9520c7c57ba6b86a21bb0ee95a694"
+        },
+        {
+          "id": "E144",
+          "kind": "local",
+          "path": "local/research/codex/room-reply-r1/reply92-recipe.json",
+          "bytes": 977,
+          "sha256": "bdf3be785bcbc7ecaa52ed3e94ff9c9ec3b5c9b9cfb9b570c898aa704f2afae3"
+        },
+        {
+          "id": "E145",
+          "kind": "local",
+          "path": "local/research/codex/room-reply-r1/reply92.bin",
+          "bytes": 48,
+          "sha256": "90ff82a8dbfb232fbf79f01734a4d5002a1a395dfabcdd7da7f1dafffca8d7fa"
+        },
+        {
+          "id": "E146",
+          "kind": "local",
+          "path": "local/research/codex/room-reply-r1/reply92.gdb",
+          "bytes": 2425,
+          "sha256": "952226e7c624d4b45c3daf602ee263c7f66bce318e1b146a8307daf3f9214067"
+        },
+        {
+          "id": "E147",
+          "kind": "local",
+          "path": "local/research/codex/room-reply-r1/request-callback-register-read.log",
+          "bytes": 9052,
+          "sha256": "6fa574983a2bd6923f2fb271110b23883e0f416e41822e71e693310c1b9f2e65"
+        },
+        {
+          "id": "E148",
+          "kind": "local",
+          "path": "local/research/codex/room-reply-r1/request-pending-match-read.log",
+          "bytes": 6744,
+          "sha256": "257612cd0556e212e38fc5e2d769418fc4db54f44e2a8cf79920b31051478917"
+        },
+        {
+          "id": "E149",
+          "kind": "local",
+          "path": "local/research/codex/room-reply-r1/room-enter-handler-read.log",
+          "bytes": 6376,
+          "sha256": "c5784065e58cdda062094e593f57fe6bb63518c4e2878709c97a4b61ff2b7c78"
+        },
+        {
+          "id": "E150",
+          "kind": "local",
+          "path": "local/research/codex/room-reply-r1/room-transition-pointers.json",
+          "bytes": 95,
+          "sha256": "91a9baa576347a270f745ea52fdd89f19a61c44f3af79ea5f723b37e28a0077a"
+        },
+        {
+          "id": "E151",
+          "kind": "local",
+          "path": "local/research/codex/room-reply-r1/run_probe.py",
+          "bytes": 1066,
+          "sha256": "e52944d7dc2c6654729e766159a0d4fdf95846669c20170b7e575db750c66ab2"
+        },
+        {
+          "id": "E152",
+          "kind": "local",
+          "path": "local/research/codex/room-reply-r1/runtime-summary.json",
+          "bytes": 22805,
+          "sha256": "757c8fd8a07cc81aec6659ee63a8daf142944edd385d74ef94b941374ba09b2c"
+        },
+        {
+          "id": "E153",
+          "kind": "local",
+          "path": "local/research/codex/room-reply-r1/seal_run.py",
+          "bytes": 486,
+          "sha256": "efebe0bf482e4a47dad9e2b87db8bebbda29ee2ab4b9d7fd3b39986e0eb5238d"
+        },
+        {
+          "id": "E154",
+          "kind": "local",
+          "path": "local/research/codex/room-reply-r1/session-dispatch-read.log",
+          "bytes": 11224,
+          "sha256": "e7ae3d2f5afbcdee1ae646f97826c4c1b442a204c60456759d7b03edcebabcca"
+        },
+        {
+          "id": "E155",
+          "kind": "local",
+          "path": "local/research/codex/room-reply-r1/session-player-locators.json",
+          "bytes": 336,
+          "sha256": "f4a2dd17d101ff5b84daa27c5c8bbde8a8ad3031aba5dc9c52481a922eb6c289"
+        },
+        {
+          "id": "E156",
+          "kind": "local",
+          "path": "local/research/codex/room-reply-r1/session-receiver-entry.log",
+          "bytes": 4897,
+          "sha256": "c8e42b66974b04c4035a6c1aeddfd92a0792bf4c93b65d6e6c2ab593e07d4f00"
+        },
+        {
+          "id": "E157",
+          "kind": "local",
+          "path": "local/research/codex/room-reply-r1/strategy-forward-sites-read.log",
+          "bytes": 8813,
+          "sha256": "e2610a8636f8cd5bc934ae016d1d9d5c9bf1286adecee4dd23896e51a9031ad5"
+        },
+        {
+          "id": "E158",
+          "kind": "local",
+          "path": "local/research/codex/room-reply-r1/strategy-holder-refs.json",
+          "bytes": 1281,
+          "sha256": "fa3e256d20194b697e1df551b4f8f2c8bd10dac017a3e40faefef46a584e089f"
+        },
+        {
+          "id": "E159",
+          "kind": "local",
+          "path": "local/research/codex/room-reply-r1/strategy-init-summary.asm",
+          "bytes": 3905,
+          "sha256": "7fdbb3972a7b72a843ac4593d5e4b4514f4962e65d196a7d79209f1b5a6d81dc"
+        },
+        {
+          "id": "E160",
+          "kind": "local",
+          "path": "local/research/codex/room-reply-r1/strategy-methods-read.log",
+          "bytes": 8809,
+          "sha256": "f21d78637200b954ad74fb26757c48ef204efa536ed55238ad813d509a1a12c7"
+        },
+        {
+          "id": "E161",
+          "kind": "local",
+          "path": "local/research/codex/room-reply-r1/strategy-owner-prefilter-read.log",
+          "bytes": 8485,
+          "sha256": "30dfac7cc8b6ac67b059c88b94fef3461936634dc88300d0f40402a39d2bafb9"
+        },
+        {
+          "id": "E162",
+          "kind": "local",
+          "path": "local/research/codex/room-reply-r1/strategy-slot2c-sites.json",
+          "bytes": 641,
+          "sha256": "b142e6f3569ac4d09d5a217d4ca7794ce17bf1751bd548bda3974839386739b7"
+        },
+        {
+          "id": "E163",
+          "kind": "local",
+          "path": "local/research/codex/room-reply-r1/strategy-small-read.log",
+          "bytes": 8056,
+          "sha256": "1c1711d895b00a8d804befb9f7c195e5a8e67f2226aacaf4ae6da4af04880ac6"
+        },
+        {
+          "id": "E164",
+          "kind": "local",
+          "path": "local/research/codex/room-reply-r1/strategy-vtable.json",
+          "bytes": 1405,
+          "sha256": "bb9aee617cf8ef9d313dda4bd75f62e48ed8e1ae8d20788c0bd8deea0d74d685"
+        },
+        {
+          "id": "E165",
+          "kind": "local",
+          "path": "local/research/codex/room-reply-r1/ui-response-read.log",
+          "bytes": 6765,
+          "sha256": "e4286fda749b2ffac0e51b4f11735217b4936a0452e3c5050b1d1736bf3c9fe7"
+        },
+        {
+          "id": "E166",
+          "kind": "local",
+          "path": "local/research/codex/room-reply-r1/verification.json",
+          "bytes": 61790,
+          "sha256": "d69ebf275c55a4028eeb6dba93436fb6989813e7b49ce85f7e9c9dfcaa25934f"
+        },
+        {
+          "id": "E167",
+          "kind": "local",
+          "path": "local/research/codex/room-reply-r1/verify-reply86.py",
+          "bytes": 2267,
+          "sha256": "bc0038ed4e0d8106fdb95f0c323a2555ad1eb536a3f72f148a68ce87a45e6b43"
+        },
+        {
+          "id": "E168",
+          "kind": "local",
+          "path": "local/research/codex/room-reply-r1/verify-reply92-false.py",
+          "bytes": 2278,
+          "sha256": "9835eae8f197e27cdbaee782b6c380dca177ac57ddd30e412cda2bdabd9650b6"
+        },
+        {
+          "id": "E169",
+          "kind": "local",
+          "path": "local/research/codex/room-reply-r1/verify-reply92.py",
+          "bytes": 2291,
+          "sha256": "a8216bd7d8aeb028221dc692288323bc3e559adc16aa4966baf08f680f436e15"
+        },
+        {
+          "id": "E170",
+          "kind": "local",
+          "path": "local/research/codex/room-reply-r1/verify.py",
+          "bytes": 4951,
+          "sha256": "1954572e29b1a8800e25911c3809349e56ae8fbbffb1fb325766598d85ecbbc8"
+        },
+        {
+          "id": "E171",
+          "kind": "local",
+          "path": "local/research/codex/room-reply-r1/prepare-cursor/run.json",
+          "bytes": 16143,
+          "sha256": "cf33a823dcee47e2e9c6bf182171de028b50c1a5aa4f3d3cc597cf8923f9bd7b"
+        },
+        {
+          "id": "E172",
+          "kind": "local",
+          "path": "local/research/codex/room-reply-r1/prepare-cursor/client.log",
+          "bytes": 16016,
+          "sha256": "c3b8cb7111d606a5dd692aeee70946c3f3f861d358b2a314f75d9293e8b29d20"
+        },
+        {
+          "id": "E173",
+          "kind": "local",
+          "path": "local/research/codex/room-reply-r1/prepare-cursor/CALog-run.txt",
+          "bytes": 1606,
+          "sha256": "93ce1d49beda8d14f6fedc90c13f1e07c38600006e590a98c28f65411eca4d68"
+        },
+        {
+          "id": "E174",
+          "kind": "local",
+          "path": "local/research/codex/room-reply-r1/prepare-cursor/debug-commands.txt",
+          "bytes": 3458,
+          "sha256": "d394d67eb42056f1d461293eda985144ce4c313eba8dc85e435b3326d1a9f66c"
+        },
+        {
+          "id": "E175",
+          "kind": "local",
+          "path": "local/research/codex/room-reply-r1/prepare-init/run.json",
+          "bytes": 16187,
+          "sha256": "94fc92022c9995cb3daad02e90fec7ac2d6276216eb20e33a147eab7f8471908"
+        },
+        {
+          "id": "E176",
+          "kind": "local",
+          "path": "local/research/codex/room-reply-r1/prepare-init/client.log",
+          "bytes": 15976,
+          "sha256": "b60728538d2a0da9b79d20a4462ebc1cad3b83d40f34daa95340a7c18fa80320"
+        },
+        {
+          "id": "E177",
+          "kind": "local",
+          "path": "local/research/codex/room-reply-r1/prepare-init/CALog-run.txt",
+          "bytes": 1647,
+          "sha256": "04a5729c8df80b9461180d020d95360bd62ee6ebce25fbb00c04dbd8ed558313"
+        },
+        {
+          "id": "E178",
+          "kind": "local",
+          "path": "local/research/codex/room-reply-r1/prepare-init/debug-commands.txt",
+          "bytes": 3333,
+          "sha256": "24550a64b82fea9496afc5d82c5cac7c34fc91522b1460b4a2aaa695cb766538"
+        },
+        {
+          "id": "E179",
+          "kind": "local",
+          "path": "local/research/codex/room-reply-r1/receiver/run.json",
+          "bytes": 15026,
+          "sha256": "ad2ad64bbdad1136b7e9b29d551c62d5c82ae4fa0c6925f730b68a5da2427ce3"
+        },
+        {
+          "id": "E180",
+          "kind": "local",
+          "path": "local/research/codex/room-reply-r1/receiver/client.log",
+          "bytes": 11489,
+          "sha256": "78cb76e5f414aee2604fe9a0409f45f93b8fa15f995d7d9c01e7eade34f0277a"
+        },
+        {
+          "id": "E181",
+          "kind": "local",
+          "path": "local/research/codex/room-reply-r1/receiver/CALog-run.txt",
+          "bytes": 1422,
+          "sha256": "35e68acd9865ef8d54a520f7c09f6eccda7660973ef57d51b7f0761e8fe6ff82"
+        },
+        {
+          "id": "E182",
+          "kind": "local",
+          "path": "local/research/codex/room-reply-r1/receiver/debug-commands.txt",
+          "bytes": 1115,
+          "sha256": "b1f5ee9a66daa37f4cc630771cab24a6f01b7127cc4151a1acbef837068d01ff"
+        },
+        {
+          "id": "E183",
+          "kind": "local",
+          "path": "local/research/codex/room-reply-r1/registry/run.json",
+          "bytes": 14788,
+          "sha256": "65f161da1c9a087b8b36e26bf3bddbf823d3bb1fe23a7c68c6d0e5d5306a40f9"
+        },
+        {
+          "id": "E184",
+          "kind": "local",
+          "path": "local/research/codex/room-reply-r1/registry/client.log",
+          "bytes": 11758,
+          "sha256": "00849a0704870102d2167d71002a59424c4da413e98ec1eaa703d9a86c77e8a2"
+        },
+        {
+          "id": "E185",
+          "kind": "local",
+          "path": "local/research/codex/room-reply-r1/registry/CALog-run.txt",
+          "bytes": 1422,
+          "sha256": "35e68acd9865ef8d54a520f7c09f6eccda7660973ef57d51b7f0761e8fe6ff82"
+        },
+        {
+          "id": "E186",
+          "kind": "local",
+          "path": "local/research/codex/room-reply-r1/registry/debug-commands.txt",
+          "bytes": 1608,
+          "sha256": "aeb79419bab697db64d716e81f1c80af828d794432d0181f6081c7d400230024"
+        },
+        {
+          "id": "E187",
+          "kind": "local",
+          "path": "local/research/codex/room-reply-r1/reply86/run.json",
+          "bytes": 16352,
+          "sha256": "725fc38e26fddbb14867986e3836c9cefc40a740a327efadd7211193bd392e15"
+        },
+        {
+          "id": "E188",
+          "kind": "local",
+          "path": "local/research/codex/room-reply-r1/reply86/client.log",
+          "bytes": 13845,
+          "sha256": "f1ee31d9bacac21f6743e091476db11529f0b49aa8b18d20db32da2198246215"
+        },
+        {
+          "id": "E189",
+          "kind": "local",
+          "path": "local/research/codex/room-reply-r1/reply86/CALog-run.txt",
+          "bytes": 1647,
+          "sha256": "04a5729c8df80b9461180d020d95360bd62ee6ebce25fbb00c04dbd8ed558313"
+        },
+        {
+          "id": "E190",
+          "kind": "local",
+          "path": "local/research/codex/room-reply-r1/reply86/debug-commands.txt",
+          "bytes": 2707,
+          "sha256": "0019831a32a836ad0f76b035fe00b2ee2df8d855482b62f88c9f7adc87521c44"
+        },
+        {
+          "id": "E191",
+          "kind": "local",
+          "path": "local/research/codex/room-reply-r1/reply92/run.json",
+          "bytes": 16070,
+          "sha256": "44f4c9e551dc4c3669767ba302bf2be816c10d353c2f2c10ad3c4c36e32703e9"
+        },
+        {
+          "id": "E192",
+          "kind": "local",
+          "path": "local/research/codex/room-reply-r1/reply92/client.log",
+          "bytes": 12334,
+          "sha256": "88433c26f898ba5744902e30e6267d95f99da0f9a796b39b2f3257f8cee47d6a"
+        },
+        {
+          "id": "E193",
+          "kind": "local",
+          "path": "local/research/codex/room-reply-r1/reply92/CALog-run.txt",
+          "bytes": 1490,
+          "sha256": "8b5ab8fa091bd6e5c2dc5c8d67ec84693529795f32dee847ffd30f23ca95b652"
+        },
+        {
+          "id": "E194",
+          "kind": "local",
+          "path": "local/research/codex/room-reply-r1/reply92/debug-commands.txt",
+          "bytes": 2425,
+          "sha256": "952226e7c624d4b45c3daf602ee263c7f66bce318e1b146a8307daf3f9214067"
+        },
+        {
+          "id": "E195",
+          "kind": "local",
+          "path": "local/research/codex/room-reply-r1/reply86/screen-11.png",
+          "bytes": 150276,
+          "sha256": "589fc84fbf153f722a0cb3dd24cb98b5d227f79730094a816b090b991c7dd437"
+        },
+        {
+          "id": "E196",
+          "kind": "local",
+          "path": "local/research/codex/room-reply-r1/prepare-init/screen-13.png",
+          "bytes": 149067,
+          "sha256": "96a188ae0a85167033d494edffa13408ee47af5d9bfa70fdde392b04acb0239c"
+        },
+        {
+          "id": "E197",
+          "kind": "local",
+          "path": "local/research/codex/room-reply-r1/prepare-cursor/screen-13.png",
+          "bytes": 149221,
+          "sha256": "94fefe93aa0d594e2b70515d82e5754a872fdbe9f1108a9871469922c2b560b0"
+        },
+        {
+          "id": "E198",
+          "kind": "local",
+          "path": "local/research/codex/wine_probe_create_confirm.py",
+          "bytes": 28246,
+          "sha256": "2b48d3582ee82640669f40ad59eae7e7c9ea35eeb30768180f5e76623426a17c"
+        },
+        {
+          "id": "E199",
+          "kind": "local",
+          "path": "local/research/codex/wine_probe_create_reply92.py",
+          "bytes": 28819,
+          "sha256": "10b190bd348d931f14131c294846a5a039a22ef648b5ed3f685f8417feadfacc"
+        },
+        {
+          "id": "E200",
+          "kind": "local",
+          "path": "local/research/codex/wine_probe_create_reply86.py",
+          "bytes": 28819,
+          "sha256": "d01c32f26a579a1f86c540ce42d4a24e67c674e2fa7b6db0ffbf0185294f98d9"
+        },
+        {
+          "id": "E201",
+          "kind": "local",
+          "path": "local/research/codex/bootstrap-copy-oracle.py",
+          "bytes": 2377,
+          "sha256": "8127e0f2fbc385360e878bb68ae3a6680eabbf7456335f0f3db75c7c3b73a8c0"
+        },
+        {
+          "id": "E202",
+          "kind": "local",
+          "path": "local/research/codex/bootstrap-recv-oracle.py",
+          "bytes": 2104,
+          "sha256": "1e86c06540e8fe654564c5bd403f859070f77c9af0d5d11c70c9351198e00ae2"
+        },
+        {
+          "id": "E203",
+          "kind": "local",
+          "path": "local/research/codex/ui-handler-r1/oracle-dependencies/boomproto.py",
+          "bytes": 7779,
+          "sha256": "e9642ec10e53cfed6c24c0c5ade07b34a46ce02073a8d316f724776686855bbd"
+        },
+        {
+          "id": "E204",
+          "kind": "local",
+          "path": "local/research/codex/postwait-r1/flags62-status2.bin",
+          "bytes": 41,
+          "sha256": "f0199e6a5f835884fec25568a342f42d247c2bfa720f677866957c2299437ab9"
+        },
+        {
+          "id": "E205",
+          "kind": "local",
+          "path": "local/research/codex/postwait-r1/redirect7-loopback.bin",
+          "bytes": 52,
+          "sha256": "b514742b5e0feb58f64f6f8b1427ca1c34c7494202607b7fb8ee78e02d0caa15"
+        },
+        {
+          "id": "E206",
+          "kind": "local",
+          "path": "local/research/codex/postwait-r1/channel17-zero-arrays.bin",
+          "bytes": 75,
+          "sha256": "5bb5a42cb1ea4fe8967d50ed39649cc886a493c0a13a25ceb2df589a2b9bcd37"
+        },
+        {
+          "id": "E207",
+          "kind": "local",
+          "path": "local/research/codex/postwait-r1/lobby-ready241.bin",
+          "bytes": 68,
+          "sha256": "808ca8fe8318b79084f5306d2fafcfc98a34101b14ba4dfde7366fbab561d251"
+        },
+        {
+          "id": "E208",
+          "kind": "local",
+          "path": "local/research/codex/login-runtime-r1/login-result0-prefix.bin",
+          "bytes": 51,
+          "sha256": "4bb5b79fb1ac16bdfcc293ee9edacda2c1a94dc69304a11c757c398680a6e935"
+        },
+        {
+          "id": "E209",
+          "kind": "local",
+          "path": "local/research/codex/login-runtime-r1/login-netinfo-candidate.bin",
+          "bytes": 69,
+          "sha256": "b40615efdf3d4b8a6d530a43c3a1e425cb88eeb76304d88601a70b48ca72abe6"
+        },
+        {
+          "id": "E210",
+          "kind": "local",
+          "path": "local/research/codex/wcp-fields-r1/eight-v2-responses.bin",
+          "bytes": 317,
+          "sha256": "5930ad297fc2c1540d8cbd894e88d3c1d2831bd4565dfb8ad96644568b87ad38"
+        },
+        {
+          "id": "E211",
+          "kind": "local",
+          "path": "local/research/codex/bootstrap-reply-r1.bin",
+          "bytes": 15,
+          "sha256": "75be47b3067e2b1e9d2cf99b5a7eb7f949a074482409fb3eafc1a553cec53cd1"
+        },
+        {
+          "id": "E212",
+          "kind": "local",
+          "path": "local/research/codex/room-input-r1/room-list91-empty.bin",
+          "bytes": 40,
+          "sha256": "66192f9ab8be8c609a0989a16e5403968aa8c6087caa43775920efd3ea78ec2e"
+        },
+        {
+          "id": "E213",
+          "kind": "local",
+          "path": "local/research/codex/room-input-r1/channel14-raw-one.bin",
+          "bytes": 82,
+          "sha256": "513b4b7417e2da29adc66c6dc7dfd7a80de130f79b9abac99f72a85b021d5a18"
+        },
+        {
+          "id": "E214",
+          "kind": "local",
+          "path": "local/research/codex/wcp-guard-r1/game/CA-r2-login-logout.exe",
+          "bytes": 31874560,
+          "sha256": "660447c293ce92270cb9b5815331bca976e8f156366e1fe50b217b6c12e60ce3"
+        },
+        {
+          "id": "E215",
+          "kind": "artifact",
+          "path": "/home/admin/boom/repos/boomkr-re/out/modO.bin",
+          "bytes": 31858688,
+          "sha256": "a08950c833d3acab8281049def7b3dc96b221f107eeda01da3a548e34b91dce5"
+        },
+        {
+          "id": "E216",
+          "kind": "local",
+          "path": "local/research/codex/auth-request-r1/vn-login-references/docs/lobby.md",
+          "bytes": 69790,
+          "sha256": "13bac46134fc2255c32ac539b7e0072b31cd78dcb71122996ba003d1a2256ca4"
+        },
+        {
+          "id": "E217",
+          "kind": "local",
+          "path": "local/research/codex/auth-request-r1/vn-login-references/server/src/packets.rs",
+          "bytes": 29566,
+          "sha256": "b7c8ff9899b94b307c62137cb1ed7aaf1196125b01125fef4f800381e5748f76"
+        }
+      ],
+      "delta": {
+        "added": [
+          "First actual response86/result0 to create81 and CPrepareStage/UI waiting room on copy.",
+          "Runtime full86 cursor/error proof and init585 context/native field; next targeted receiver106 reader edges."
+        ],
+        "corrected": [
+          "Replace request81→unknown reply/room stage with measured86 strategy/init. Preserve CP016 historical scope.",
+          "92 direct stage/strategy static locator is guarded and rejected at runtime region0; not used as successful reply. S2C81 base/pending82 are not proven pairings.",
+          "Document failed raw-bool prediction/ungated launch; native corrected expectations reflect XOR/normalize; false fixture separate.",
+          "Duplicate breakpoint blocked earlier cursor print; only new prepare-cursor proves11/11. Keep inheritedREPLY92 labels and out-of-vtable text limits explicit.",
+          "CP016 PR24 confirmed merged; CP017 integration snapshot pending. No audit reset; nextCP020."
+        ],
+        "superseded": [
+          "NEXT-CREATE81-REPLY resolved to reply86 and room-stage init; active work now player/map data and585 semantics."
+        ]
+      },
+      "blockers": [
+        "Player cells and map blank; no assigned self/slot/host or usable ready/start/load/Battle/multiplayer.",
+        "585 meaning and106/player schema not recovered; synthetic reply default fields do not establish original server policy.",
+        "Full result0/user/profile/cache,15/241 blob/cursor revalidation, codec/reconnect, global lifecycle and vanilla controls remain open."
+      ],
+      "next_steps": [
+        {
+          "id": "NEXT-CREATE81-REPLY",
+          "task": "KRE-005b",
+          "state": "closed",
+          "action": "Actual86/result0→normal strategy→stage12/CPrepareStage confirmed on copy.",
+          "owner": "Codex",
+          "reviewer": "Codex"
+        },
+        {
+          "id": "NEXT-ROOM-PLAYER-MAP",
+          "task": "KRE-005b",
+          "state": "active",
+          "action": "Follow585 context/consumer and106 constructorAE3360/AE3950 to bound next player/map data; native validate before isolated runtime, no forced slot/stage.",
+          "owner": "Codex",
+          "reviewer": "Codex"
+        },
+        {
+          "id": "NEXT-FULL-LOGIN-FIELDS",
+          "task": "KRE-005b",
+          "state": "active",
+          "action": "Complete result0/user/cache,15/241 cursor/blob revalidation and codec/cache/reset controls before K2/K3 acceptance.",
+          "owner": "Codex",
+          "reviewer": "Codex"
+        }
+      ],
+      "review": {
+        "status": "waived",
+        "as_of_utc": "2026-10-28T23:17:00.792058+00:00",
+        "reference": "docs/evidence/checkpoints/review-waiver.json",
+        "scope": "Codex solo targeted static/native/runtime and self-check; no independent approval.",
+        "authorization": {
+          "by": "project_owner",
+          "reference": "docs/evidence/checkpoints/review-waiver.json",
+          "reason": "Explicit owner instruction to continue solo without Claude review."
+        }
+      },
+      "docs_sync": [
+        {
+          "path": "README.md",
+          "state": "updated",
+          "reason": "Current waiting-room UI milestone, empty player/map/full auth limits; PR24/audit snapshot."
+        },
+        {
+          "path": "docs/PLAN.md",
+          "state": "updated",
+          "reason": "Stage12 measured; next player/map/585/106, no gate closure."
+        },
+        {
+          "path": "docs/PROTOCOL.md",
+          "state": "updated",
+          "reason": "Single contract source for86/create transition/body, negative92, init585 and static locators."
+        },
+        {
+          "path": "docs/RESEARCH.md",
+          "state": "updated",
+          "reason": "Replace solved reply question with player/map readers and585 semantics."
+        },
+        {
+          "path": "docs/evidence/room-reply/README.md",
+          "state": "updated",
+          "reason": "Recipes/run controls, hash/native verification and measurement corrections."
         }
       ]
     }

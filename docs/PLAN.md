@@ -1,7 +1,7 @@
 # Kế hoạch server giả lập KR 00967
 
 Nguồn chuẩn của project `boom-kr-server`; bản nhập từ plan đã được dsh1/dsh2 review tại `1eee46d`.
-Cập nhật28/10 JST (CP016): triển khai K0/K1, K2/K3 từng phần và request tạo phòng;bảng gate là scope nghiệm thu,chưa phải checklist đã pass.
+Cập nhật29/10 JST (CP017): triển khai K0/K1, K2/K3 từng phần và UI phòng chờ trên copy;bảng gate là scope nghiệm thu,chưa phải checklist đã pass.
 
 
 ### Mục tiêu, baseline và phạm vi
@@ -37,25 +37,25 @@ với client Rust không chứng minh có thể điều khiển client KR bằng
 
 ### Tiến độ hiện hành theo bằng chứng
 
-| Task/mốc | Trạng thái tại CP016 | Nguồn chuẩn |
+| Task/mốc | Trạng thái tại CP017 | Nguồn chuẩn |
 |---|---|---|
 | KRE-004/issue6 | Đã review/merge PR7 và đóng issue:recipe r1 đến local accept;không phải full K1 | [Wine r1](evidence/wine/README.md) |
 | Bootstrap reply | PR8 đã merge;debugger ProcessPatchreturn1,không ép success | [bootstrap evidence](evidence/bootstrap-wire/README.md) |
 | KRE-005a/issue9,R2 | PR10 đã merge:3 cold start cửa sổ/second accept;issue9 còn mở | [R2 evidence](evidence/wine-r2/README.md) |
 | WCP hai-reply | Run CP001 là lịch sử chưa C→S; CP006 đã đo request đầu trên copy tham số hóa | [PROTOCOL](PROTOCOL.md#wcp),[WCP evidence](evidence/wcp/README.md) |
-| KRE-005b/issue14 | CP006–015 đã merge; CP016 mở dialog Tạo phòng và capture81/107byte; full auth/profile và phản hồi tạo phòng còn thiếu | [Q-023](RESEARCH.md#q-023), [evidence](evidence/room-input/README.md) |
+| KRE-005b/issue14 | CP006–016 đã merge; CP017 nhận86/result0, tự khởi tạo stage12/UI phòng chờ; người chơi/map/full auth còn thiếu | [Q-023](RESEARCH.md#q-023), [evidence](evidence/room-reply/README.md) |
 | K0/K1 | Chưa nghiệm thu toàn gate;Windows vanilla/control ownership và các điều kiện còn thiếu giữ mở | Gate dưới,[Q-022](RESEARCH.md) |
 | K2a/K2 | Primitive/WCP từng phần; request auth đã capture/native replay, phản hồi lỗi đã dispatch; full codec/reconnect và gate chưa pass | [PROTOCOL](PROTOCOL.md#login-auth),[Q-023](RESEARCH.md#q-023) |
 | K3 | Copy chẩn đoán đã vẽ UI sảnh và đóng notice; chưa nghiệm thu identity/cache/codec đủ gate | [Contract sảnh](PROTOCOL.md#channel-lobby) |
-| K4–K7 | Click tới command2011, mở dialog và gửi81; chưa trả lời/tạo phòng/trận/multiplayer | Không có phần trăm ước lượng |
+| K4–K7 | UI phòng chờ stage12 có phản hồi86; slot người chơi/map/load/trận/multiplayer chưa kiểm | Không có phần trăm ước lượng |
 
-Thứ tự tiếp: nối response/state sau request81 đã capture tới room stage tại
-[Q-023](RESEARCH.md#q-023); phục hồi body result0/user/cache còn thiếu trước khi xét K2/K3.
-Chỉ mở contract phòng cần cho request đã đo; không suy phòng đã tạo từ dialog hoặc request.
+Thứ tự tiếp: phục hồi dữ liệu người chơi/map cần cho stage12, lần theo request585 và receiver
+đang hoạt động tại [Q-023](RESEARCH.md#q-023); đồng thời giữ body result0/user/cache còn thiếu
+trước khi xét K2/K3. Chỉ mở contract cần cho phép thử tiếp; UI phòng chờ không tự đóng K4.
 Chu kỳ docs/audit theo [workflow](evidence/checkpoints/README.md);
 counter ở [manifest](evidence/checkpoints/manifest.json). Không tạo plan theo phiên.
 
-### Bản đồ đường chạy, CP016
+### Bản đồ đường chạy, CP017
 
 | Bước | Quan sát/bước tiếp |
 |---|---|
@@ -63,7 +63,8 @@ counter ở [manifest](evidence/checkpoints/manifest.json). Không tạo plan th
 | WCP → request đầu | Consumer chấp nhận fixture; một run debug và một run plain có C→S66 byte; xem [contract](PROTOCOL.md#wcp). |
 | Dữ liệu khởi tạo | Tám response tổng hợp đã dẫn tới guard trả1 trên copy; chưa chứng minh tài nguyên thật hay K2. |
 | Login → sảnh | Đã đo redirect/request6, S→C17 và241; UI sảnh hết notice trên copy, profile/auth body còn thiếu; xem [contract](PROTOCOL.md#channel-lobby). |
-| Phòng → trận | Đã mở CCreateDlgRenew và capture81 trên copy; chưa có phản hồi/room stage hoặc contract load/trận. |
+| Sảnh → phòng | Click/dialog → C→S81 → S→C86/result0 → CPrepareStage/stage12; [contract](PROTOCOL.md#room-create). |
+| Phòng → trận | Tám ô còn trống, map trống; tiếp tục player data/request585/receiver106. Chưa có contract load/trận. |
 
 RE động là chính; gom phép đo thành checkpoint mốc/blocker, audit định kỳ theo workflow.
 Review độc lập được chủ dự án miễn từ28/10; Codex tự kiểm, giữ PR và điều kiện bằng chứng của gate.
