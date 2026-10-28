@@ -46,3 +46,46 @@ các giả thuyết có thứ tự, **chưa phải contract KR**:
 Constants crypto, opcode, địa chỉ, offset, stage ID và tọa độ VN chưa được mang sang KR như fact.
 Pack/map tooling đã có trong [ma trận reuse](../../PROTOCOL.md); chưa cần mở rộng gameplay khi input/login còn chặn.
 Raw binary/packet/decompile nằm local; Git chỉ lưu metadata, recipe và hash.
+
+## CP013 — tái sử dụng luồng login VN vào điểm chặn KR
+
+Đối chiếu28/10 JST, baseline KR `2bcee732659bc4170eb869a491bdb0744e680d0b` (CP012/PR20 đã merge).
+Nguồn VN hiện hành được đọc thêm: README trạng thái19/10, `docs/oc_d-login.md`, `protocol.md`,
+`lobby.md` kể cả errata, `oc_e-game.md`, `tools/fakeserver.py`, `server/src/{session,packets}.rs`.
+Snapshot/hash ở `local/research/codex/auth-request-r1/vn-login-references/` và manifest CP013.
+Không chạy lại VN hoặc tạo runtime KR mới trong lượt đối chiếu này.
+
+VN đã có bằng chứng lịch sử login→kênh→sảnh→phòng→trận hai client trong README và các report/run
+được trỏ ở `oc_e-game.md`. Những đoạn ghi “hai client đứng yên” là mốc trước khi tìm peer UDP;
+không dùng chúng làm trạng thái hiện tại. Code Rust/session mới là reference đang chạy, Python
+fakeserver là đặc tả/golden có giá trị mẫu; các zero/default hoặc identity giả vẫn là lựa chọn emulator.
+
+### Kết quả áp dụng vào KR
+
+| Đường VN | Đối chiếu KR và giới hạn |
+|---|---|
+| S→C4 kết quả login → dialog0→2; `612CB1`, state`+D8` | Vtable `CLoginStage` `1788C64+CC → 10FCBE0`; opcode getter, trừ4 rồi bảng byte/jump: opcode4→`10FCC46`→`10FEDA0`, result0 gọi`10FD540`. Call`10FEBA5` truyền`stage+2C04` vào`C47260`, state`+F4` từ0→2; sau đó tạo C→S9. `kr_static/confirmed` cho đường và bytes; chưa đọc đủ field/result0 hoặc quan sát runtime handler. |
+| S→C15 thông tin mạng → dialog2→1; `612CD0`; timer1→3 `612CEF` | Cùng dispatcher: opcode15→`10FCC6A`→`1100590`. Handler đọc blob, nhánh đọc string+3u16, mode1 có2string/mode2 cóu16, cuối tiêu u16; nếu `stage+2FD8!=0`, call`1100785` tới`C472A0(stage+2C04)` đặt2→1. `C472E0` chỉ đặt1→3; tick gọi sau điều kiện thời gian. `kr_static/confirmed` cho nhánh/call; schema/guard/encoding/blob đầy đủ và runtime vẫn cần kiểm. |
+| Login VN cần cả hai response đúng thứ tự và đúng playerCount | KR có cùng mỏ neo state nhưng lệch offset và nhiều variant. Dùng field ledger VN để đặt breakpoint/cursor KR; chưa copy `login_ok()` VN thành KR fixture hoặc coi state3 là auth hợp lệ. |
+
+Bảng opcode được giải từ **dispatcher KR**, không lấy số4/15 VN làm bằng chứng KR. Raw
+`login-dispatch-map.json`, `handler-wrappers-corrected.asm`, `vn-kr-login-compare.asm` và
+`wait-state-transitions.asm` ghi call/bytes. Artifact KR copy SHA`70708abab…`, VN patched SHA`bc875ba5…`;
+full SHA trong manifest. Synthetic fixture/copy từ CP012 giữ giới hạn cũ.
+
+Có một kết quả tìm kiếm phụ phải loại: script tìm SEH prologue không thấy match trước call`10FCC71`,
+đã xuất range sai do chỉ số−1; file cũ giữ như lịch sử failed extraction, không dùng làm evidence
+về function extent. Tìm lại ordinary prologue`10FCBE0`, kiểm exact call và vtable+CC mới là nguồn.
+Phép tìm `push1` gần constructor general packet cũng không xác nhận auth opcode1 KR.
+
+### Thứ tự tận dụng để tiến login/sảnh
+
+Nguồn chuẩn bước tiếp ở [Q-023](../../RESEARCH.md#q-023): từ mỏ neo mới đo reader/handler và
+request auth KR trên đúng socket. Chưa thấy auth request thì chưa dùng C→S15 đã capture làm trigger
+“login thành công”. VN request1/58 là tham chiếu riêng của VN; contract C→S auth KR vẫn unknown.
+
+Sau login, VN giúp tiết kiệm các vòng thử đã biết: số tab kênh đến từ login result; danh sách/status
+kênh phải đúng category/online; cache phải có tag và được khởi tạo path trước khi gửi; redirect cần
+socket/hello/seq mới và identity xuyên socket. Sau sảnh, dùng chuỗi phòng/load/ready/start, loading
+barrier và UDP peer làm checklist. Opcode, field width, numeric ID, map/spawn và authority vẫn phải
+đối chiếu consumer/runtime KR. Các bước này không tự được xác nhận chỉ vì VN đã chạy được trận.
