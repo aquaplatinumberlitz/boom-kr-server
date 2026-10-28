@@ -29,11 +29,12 @@ fixture hello đã qua poll/consumer WCP trên kết nối đó. Sau phép reset
 **đã thu4 frame C→S type15 (276 byte mới)**, kiểm parser/CRC native với seq40,43,46,49.
 **Chưa xác nhận request auth hoặc login thành công.**
 Đã đo global từ dump làm `CWaitForLoginDlg` đóng với result1; thử reset riêng global trong
-bộ nhớ giữ được dialog đếm chờ. State vẫn0; chưa rõ data dependency/response để đi tới result3.
+bộ nhớ giữ được dialog đếm chờ. State runtime vẫn0. CP013 đối chiếu VN đã giải tĩnh dispatcher KR cho hai phản hồi S→C4/15
+nối chuỗi state chờ; request auth và payload đầy đủ vẫn chưa phục hồi.
 
 Recipe/giới hạn tại [evidence handler](docs/evidence/ui-handler/README.md);
 nguồn tham chiếu VN ở [VN→KR](docs/evidence/vn-reuse/README.md).
-Bước tiếp duy nhất ở [Q-023](docs/RESEARCH.md#q-023). CP012 còn chờ tích hợp khi lập checkpoint;
+Bước tiếp duy nhất ở [Q-023](docs/RESEARCH.md#q-023). CP012 đã merge PR20; CP013 là kết quả tĩnh đang chờ tích hợp khi lập checkpoint;
 PR là nguồn trạng thái merge hiện tại. Chủ dự án miễn review độc lập; Codex tự kiểm và giữ gate bằng chứng.
 
 Checkpoint bền vững: [manifest](docs/evidence/checkpoints/manifest.json).

@@ -1,6 +1,6 @@
 # KR 00967 — contract tương thích client gốc
 
-Revision kr-legacy-contract-r1; cập nhật28/10/2026 JST (CP012).
+Revision kr-legacy-contract-r1; cập nhật28/10/2026 JST (CP013).
 **Contract có bằng chứng từng phần; chưa nghiệm thu full codec K2**.
 Lộ trình và thứ tự task chỉ giữ ở [REWRITE_PLAN — KRE](PLAN.md).
 Đây là contract của repo server KR. ADR0009 của bản viết lại là nguồn lịch sử để so sánh;
@@ -44,7 +44,7 @@ Mức `confirmed` dưới đây chỉ áp dụng nguồn/build/phạm vi ghi tro
 | Framing/primitive | VN `CClientSocket` `A68850`, recv/process `A662E0`, send `A663E0`; encode/decode/CRC đã có kiểm binary | Dùng làm mẫu tìm class/call graph và mẫu fixture. Patch bootstrap có profile riêng [đã kiểm](evidence/bootstrap-wire/README.md); game socket header/checksum/mode/field obfuscation vẫn **unknown**. |
 | Crypto/seq | VN XOR `0x53351D9C`/step `0x63CAACE3`, CRC8/32, base/seq/delta, opcode substitution | Constants chỉ là VN confirmed. Không gán cho KR khi chưa đọc consumer/đo. Kiểm seq tăng trước/sau crypto và reset riêng từng socket/chiều. |
 | Hello/version | VN server-first hello, rồi đổi mode; version 116 và packet bootstrap có thứ tự | Patch socket KR: mode0/selector0, BE16 version967, response local được chấp nhận theo [evidence](evidence/bootstrap-wire/README.md). Consumer WCP, initial0/0 và transition2/3 có bằng chứng theo [contract WCP](#wcp); full codec/seq và login/world role chưa xác nhận; không gộp socket. |
-| Login/identity | VN handler `8534F3→852BCA`, op4; có variant China khác layout trong cùng binary | Phương pháp field ledger dùng lại; layout KR/auth launcher **unknown**. Không giả định op4 hay tài khoản/pass VN. Identity cục bộ là design server. |
+| Login/identity | VN có pipeline login-result/network-info và variant China khác layout | CP013 đã giải dispatcher KR: S→C4 và15 nối chuỗi wait0→2→1→3; [evidence](evidence/vn-reuse/README.md). Đây là static, chưa runtime hoặc đủ payload/auth. C→S request, fields và identity launcher KR vẫn unknown. |
 | Cache/redirect/channel | VN cần tag blob; dữ liệu inner LE khác outer wire, cache path khởi tạo theo stage | Kiểm contract KR từ reader/consumer. Giữ test cold/warm cache; không copy blob VN hay replay flag “dùng cache” khi file không tồn tại. |
 | Lobby/room/start | VN có request/reply, slot flags, map tự gửi lúc vào phòng, loading/clock nhiều pha | Dùng để xây checklist ca biên. Opcode, bitfield, stage ID, số slot và map ID KR **unknown**. |
 | Bomb/item/trap/result | VN `111→152→151`; `553`, pickup `117→158`; `120` subtype; kết quả `168→173` có runtime nguồn cũ | Chỉ mỏ neo VN. KR phải nối send/receive tới object/state tương ứng trước khi implement. Fuse/drop/cap policy emulator không phải luật server gốc. |
@@ -137,7 +137,12 @@ NSS riêng ánh xạ về loopback cho kết nối thứ ba. Trên run cấp cù
 thu thêm4 frame×69 byte C→S15 trên connection3. Native parser14EF300 replay bốn capture với
 seq40,43,46,49 khớp CRC/payload; CRC-sai và partial bị từ chối. Header37+payload31+CRC1 đúng cho
 bốn mẫu mode2/selector3 đang thử; synthetic receiver tắt prefix check, không phải server C→S.
-Semantics auth/keepalive và field payload chưa xác nhận. Đây không phải toàn bộ endpoint/port,
+Semantics auth/keepalive và field payload chưa xác nhận.
+CP013 bổ sung đường **S→C** bằng static dispatcher KR: `10FCBE0` ánh xạ4→`10FEDA0` (result0→`10FD540`)
+và15→`1100590`; hai handler nối `stage+2C04` tới wait state`+F4` qua`C47260/C472A0`, tick`C472E0`
+hoàn tất1→3. [Bằng chứng đối chiếu VN](evidence/vn-reuse/README.md) giữ bytes, guard và giới hạn.
+Chưa có runtime S→C4/15, full schema/result payload hoặc C→S auth KR. Không gộp S→C15 này với
+bốn C→S15 đã capture ở CP012. Đây không phải toàn bộ endpoint/port,
 full codec hoặc proof auth/reconnect K2.
 Call/capture và giới hạn tại [evidence handler](evidence/ui-handler/README.md);
 contract username/password, token, kết quả auth và mode/seq sau đó vẫn unknown.

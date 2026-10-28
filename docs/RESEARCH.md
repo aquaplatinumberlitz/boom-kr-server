@@ -56,12 +56,18 @@ Hai run reset thu276 byte mới=4 frame C→S15, nối guard→virtual→WinSock
 replay với seq40+3n khớp CRC cho bốn mẫu, negatives từ chối. Chưa xác nhận semantics auth.
 Raw/recipe/timeline/giới hạn tại [evidence handler](evidence/ui-handler/README.md).
 
-Bước tiếp: Codex truy `CWaitForLoginDlg` tại stage+2C04, vf98→15037F7 và lifecycle/OnInit;
-sau phép reset global, truy state0 và data dependency/queue/send còn thiếu; xác định lifecycle
-đúng của global1A966FC (chưa coi reset là fix nguyên bản). Đo trực tiếp builder-to-socket
-và capture; phân biệt C→S15 đã đo với request auth thực còn thiếu. Không ép modal return thành thành công. Giữ mode/seq
-riêng cho kết nối mới. `oneclickuser/+E9C`, nguồn auto-attempt và tương đương vanilla vẫn unknown.
-Review độc lập đã được chủ dự án miễn; CP012 có audit định kỳ, không có gate mới.
+CP013 đối chiếu VN: static dispatcher KR đã nối S→C4/result0 và S→C15 tới các routine wait0→2→1,
+rồi tick1→3; offset state KR+F4 khác VN+D8. Nguồn/call và giới hạn tại
+[evidence VN→KR](evidence/vn-reuse/README.md). Chưa quan sát runtime hai handler hoặc đủ payload;
+không dùng code VN `login_ok()` nguyên xi để đóng contract KR.
+
+Bước tiếp: Codex đặt breakpoint đúng dispatcher/reader mới tìm (`10FCBE0`, `10FEDA0`, `1100590`),
+phục hồi field ledger tối thiểu của KR và xác định request auth/điều kiện khởi phát nó trên socket3.
+Đối chiếu source VN `login_ok/login_net_info` để kiểm thứ tự/cursor/playerCount/guard; giữ riêng
+C→S15 đã đo với S→C15/network-info và C→S auth còn unknown. Sau đó kiểm transition bằng response
+KR được consumer chấp nhận, chưa ép modal return/state thành thành công. Lifecycle global1A966FC,
+`oneclickuser/+E9C`, nguồn auto-attempt và tương đương vanilla vẫn unknown. Review độc lập đã miễn;
+AUD004 hoàn tất ở CP012, audit kế CP016. Chưa thêm gate.
 
 | ID / ưu tiên | Trạng thái | Owner / reviewer | Đã biết | Còn thiếu / bước đóng |
 |---|---|---|---|---|

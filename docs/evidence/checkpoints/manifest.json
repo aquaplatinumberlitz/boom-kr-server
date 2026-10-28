@@ -1,7 +1,7 @@
 {
   "schema": "kre-checkpoints-v1",
-  "last_id": "CP012",
-  "completed_count": 12,
+  "last_id": "CP013",
+  "completed_count": 13,
   "audit_interval": 4,
   "last_periodic_audit": 12,
   "next_periodic_audit": "CP016",
@@ -6923,6 +6923,348 @@
           "path": "docs/evidence/checkpoints/audits/AUD004.json",
           "state": "updated",
           "reason": "Manual audit required atCP012."
+        }
+      ]
+    },
+    {
+      "id": "CP013",
+      "previous": "CP012",
+      "lifecycle": "complete",
+      "recorded_utc": "2026-10-28T00:35:29.300235+00:00",
+      "question": "Which proven VN login/lobby/battle knowledge applies directly to current KR wait state0, and can the corresponding KR packet handlers be located from that knowledge?",
+      "scope": "Read-only VN docs/reference source and targeted KR/VN static binary comparison; no new client/server runtime, wire payload injection or gate promotion.",
+      "context_commit": "2bcee732659bc4170eb869a491bdb0744e680d0b",
+      "owner": "Codex",
+      "reviewer": "Codex",
+      "artifacts": [
+        {
+          "name": "KR diagnostic copy",
+          "sha256": "70708abab77ebd1cfd230a35f4997b8e84330f74442ed77b0b74c7b03180c82c"
+        },
+        {
+          "name": "VN patched RE/runtime reference",
+          "sha256": "bc875ba5765cc112e924f46e75d0ace112904c7801126e46bc0abb1c9cb576b1"
+        }
+      ],
+      "locators": [
+        "KR CLoginStage vtable1788C64+CC→10FCBE0; opcode-4 byte table10FCD8C / jump table10FCD5C",
+        "KR S2C4→10FCC46→10FEDA0; result0 table11003C4→10FEE0B→10FD540; call10FEBA5→C47260(stage+2C04)",
+        "KR S2C15→10FCC6A→1100590; blob/host3u16/mode/tail branches; guardstage+2FD8 then1100785→C472A0(stage+2C04)",
+        "KR wait state+F4: C47260/C472A0/C472E0; VN state+D8:612CB1/612CD0/612CEF",
+        "VN boom-re@9ac2075bbec0c16217741aaedea968cf685e39a9 README19/10 + protocol/oc_d-login/lobby errata/oc_e-game and Rust/Python reference source"
+      ],
+      "findings": [
+        {
+          "summary": "VN historical runtime and reference server have login→channel→lobby→room→two-client match; state transitions and field/cache pitfalls provide a concrete order for KR probes",
+          "source": "vn_runtime",
+          "status": "candidate",
+          "method": "documentation",
+          "canonical": "docs/evidence/vn-reuse/README.md",
+          "evidence": [
+            "E001",
+            "E014",
+            "E016",
+            "E015",
+            "E017",
+            "E020",
+            "E021"
+          ],
+          "limits": "Historical evidence was read, not re-executed; old immobile-peer observations precede later UDP recovery. Emulator defaults/source are not original server rules or KR wire."
+        },
+        {
+          "summary": "KR static dispatcher independently maps packet4 to login result handler and15 to network-info handler; candidate numbers inherited from VN now verified in KR table",
+          "source": "kr_static",
+          "status": "confirmed",
+          "method": "static",
+          "canonical": "docs/evidence/vn-reuse/README.md",
+          "evidence": [
+            "E011",
+            "E009",
+            "E005"
+          ],
+          "limits": "Confirmed static route only on locked copy; packet4 result0 schema not fully recovered and no new runtime handler execution."
+        },
+        {
+          "summary": "VN wait0→2→1→3 has exact KR state-machine analogue with different object offsets; KR result0 path calls0→2 and network-info handler conditionally calls2→1",
+          "source": "kr_static",
+          "status": "confirmed",
+          "method": "static",
+          "canonical": "docs/evidence/vn-reuse/README.md",
+          "evidence": [
+            "E007",
+            "E002",
+            "E003"
+          ],
+          "limits": "VN state+D8 vs KR+F4 and VN stage-member vs KR+2C04 differ; matching control flow does not establish interchangeable layout or source semantics."
+        },
+        {
+          "summary": "Use VN login field ledger, ordered responses and cold/warm cache/redirect cases to recover KR schema and auth request next",
+          "source": "design",
+          "status": "design",
+          "method": "design",
+          "canonical": "docs/evidence/vn-reuse/README.md",
+          "evidence": [
+            "E001",
+            "E018",
+            "E016"
+          ],
+          "limits": "Do not copy VN login_ok bytes, assume KR C2S1/58, conflate C2S15 with S2C15, force dialog result3, or advance gates without KR runtime."
+        }
+      ],
+      "verification": [
+        {
+          "check": "31 bounded source hashes/dispatcher table/call byte/state-store assertions",
+          "result": "pass",
+          "evidence": [
+            "E012",
+            "E013"
+          ],
+          "limits": "Mechanical consistency only; semantic interpretation remains self-reviewed and runtime absent."
+        }
+      ],
+      "evidence": [
+        {
+          "id": "E001",
+          "kind": "local",
+          "path": "local/research/codex/auth-request-r1/vn-login-sources.json",
+          "bytes": 2579,
+          "sha256": "d53f4ddc45c3a82b89e623102973036436df524bed45ee93e6491f530d5a9c45"
+        },
+        {
+          "id": "E002",
+          "kind": "local",
+          "path": "local/research/codex/auth-request-r1/wait-state-transitions.asm",
+          "bytes": 4604,
+          "sha256": "ee229ea69e8ba58beab10c03457cd991d596a6774c43bc8bb59cf8e957cb4ce4"
+        },
+        {
+          "id": "E003",
+          "kind": "local",
+          "path": "local/research/codex/auth-request-r1/wait-transition-xrefs.json",
+          "bytes": 402,
+          "sha256": "6095a90680635f4b0ed9631d5d01d6e6705e6d55053082a1ab6fe5986a953651"
+        },
+        {
+          "id": "E004",
+          "kind": "local",
+          "path": "local/research/codex/auth-request-r1/wait-handler-calls.asm",
+          "bytes": 4666,
+          "sha256": "9d9104f720c2efc52b6d39ad4920362ef71c5574417b23a279cd9f3d2338739a"
+        },
+        {
+          "id": "E005",
+          "kind": "local",
+          "path": "local/research/codex/auth-request-r1/login-handlers.asm",
+          "bytes": 133189,
+          "sha256": "b6dbabed91182d2fba35ffa9dcadb4c6c55a206664c39a0fea8cd199483d176a"
+        },
+        {
+          "id": "E006",
+          "kind": "local",
+          "path": "local/research/codex/auth-request-r1/login-handlers.json",
+          "bytes": 40528,
+          "sha256": "e4c55414fe2dbe9e58cddb34ad59a484b7024a437022c0d45ff1f2de42eaba83"
+        },
+        {
+          "id": "E007",
+          "kind": "local",
+          "path": "local/research/codex/auth-request-r1/vn-kr-login-compare.asm",
+          "bytes": 8736,
+          "sha256": "66e3a9a670362870096b79dfcf8d38017c1bfbbde60e7eea8034b2af0a89aade"
+        },
+        {
+          "id": "E008",
+          "kind": "local",
+          "path": "local/research/codex/auth-request-r1/candidate-handler-xrefs.json",
+          "bytes": 222,
+          "sha256": "619e8d2a77ecc6299daa6a2df65a5d863d9640503e020f2e0799f83d7591f0d7"
+        },
+        {
+          "id": "E009",
+          "kind": "local",
+          "path": "local/research/codex/auth-request-r1/handler-wrappers-corrected.asm",
+          "bytes": 7414,
+          "sha256": "709d1305bfbaaf790605ff00024358cd97bef7fdc6654e2c74386525a384c8f5"
+        },
+        {
+          "id": "E010",
+          "kind": "local",
+          "path": "local/research/codex/auth-request-r1/handler-wrappers-corrected.json",
+          "bytes": 446,
+          "sha256": "a97bda97d8635ee7c4e0b7e468c210616779c8d359af04b4de3e5d5274b0651d"
+        },
+        {
+          "id": "E011",
+          "kind": "local",
+          "path": "local/research/codex/auth-request-r1/login-dispatch-map.json",
+          "bytes": 604,
+          "sha256": "3b62aa4a23c46729dd6e8a1265342803a285c799d61d625f8dc736b18163865e"
+        },
+        {
+          "id": "E012",
+          "kind": "local",
+          "path": "local/research/codex/auth-request-r1/verify-login-map.py",
+          "bytes": 2816,
+          "sha256": "30b2064f272cd85ec6d7bd29a3747a0175201dd961c64661400da8c339072896"
+        },
+        {
+          "id": "E013",
+          "kind": "local",
+          "path": "local/research/codex/auth-request-r1/login-map-verification.json",
+          "bytes": 1492,
+          "sha256": "fbe7de44ae738ed4874c026f3943a555230c8a06c5df57b33822bd619536ad28"
+        },
+        {
+          "id": "E014",
+          "kind": "local",
+          "path": "local/research/codex/auth-request-r1/vn-login-references/README.md",
+          "bytes": 20673,
+          "sha256": "32eb1ebd61a60a8c59d114772e4834f3194c953288846da5f9d9817df6cc787b"
+        },
+        {
+          "id": "E015",
+          "kind": "local",
+          "path": "local/research/codex/auth-request-r1/vn-login-references/docs/lobby.md",
+          "bytes": 69790,
+          "sha256": "13bac46134fc2255c32ac539b7e0072b31cd78dcb71122996ba003d1a2256ca4"
+        },
+        {
+          "id": "E016",
+          "kind": "local",
+          "path": "local/research/codex/auth-request-r1/vn-login-references/docs/oc_d-login.md",
+          "bytes": 17609,
+          "sha256": "55bfd55a684cbc3edc92bef07a72a07911b8bd3ba09b40294f682af124e3456a"
+        },
+        {
+          "id": "E017",
+          "kind": "local",
+          "path": "local/research/codex/auth-request-r1/vn-login-references/docs/oc_e-game.md",
+          "bytes": 70895,
+          "sha256": "9e80ecea3fb7d152f58a4a0d60ac6e1f6759b18be23bf53d908bb896dbad0b6a"
+        },
+        {
+          "id": "E018",
+          "kind": "local",
+          "path": "local/research/codex/auth-request-r1/vn-login-references/docs/protocol.md",
+          "bytes": 14120,
+          "sha256": "b4152ebbb2303979b2926f53f1cfd9a2251dfac7931030bc3fd2633622a9d62c"
+        },
+        {
+          "id": "E019",
+          "kind": "local",
+          "path": "local/research/codex/auth-request-r1/vn-login-references/server/src/packets.rs",
+          "bytes": 29566,
+          "sha256": "b7c8ff9899b94b307c62137cb1ed7aaf1196125b01125fef4f800381e5748f76"
+        },
+        {
+          "id": "E020",
+          "kind": "local",
+          "path": "local/research/codex/auth-request-r1/vn-login-references/server/src/session.rs",
+          "bytes": 35262,
+          "sha256": "0d32f8eff705a2f731b799ae3e68ba6d7dff52b1f97678bafc1341b83078e8ec"
+        },
+        {
+          "id": "E021",
+          "kind": "local",
+          "path": "local/research/codex/auth-request-r1/vn-login-references/tools/fakeserver.py",
+          "bytes": 45397,
+          "sha256": "d76a57f92c38188b7538e5aad6a59d4331c5a9c31485ba9a02f4b4beaff6a1b8"
+        },
+        {
+          "id": "E022",
+          "kind": "local",
+          "path": "local/research/codex/ui-handler-r1/wait-lifecycle.asm",
+          "bytes": 9485,
+          "sha256": "97fc4b8a4d6f47a2a1981c7d2f866b0e1cce66528260f60fb222c4a337b88229"
+        },
+        {
+          "id": "E023",
+          "kind": "artifact",
+          "path": "/home/admin/boom/repos/boom-re/wine/Boom/ca_fixed_patched.exe",
+          "bytes": 18904064,
+          "sha256": "bc875ba5765cc112e924f46e75d0ace112904c7801126e46bc0abb1c9cb576b1"
+        },
+        {
+          "id": "E024",
+          "kind": "local",
+          "path": "local/research/codex/wcp-guard-r1/game/CA-r2-no-overlay-tick.exe",
+          "bytes": 31874560,
+          "sha256": "70708abab77ebd1cfd230a35f4997b8e84330f74442ed77b0b74c7b03180c82c"
+        }
+      ],
+      "delta": {
+        "added": [
+          "VN-guided concrete KR opcode4/15 dispatcher and corresponding wait state routines; targeted reader/handler entry points.",
+          "Full VN reference snapshots, including source runtime/server claims and later errata, kept with provenance."
+        ],
+        "corrected": [
+          "Earlier schema/route unknown narrowed: KR S2C numbers4/15 now static-confirmed; full payload/auth remains unknown.",
+          "Discard failed SEH-only wrapper extraction with negative index; corrected ordinary prologue plus exact call/vtable/table used.",
+          "CP012/PR20 integration now recorded as merged in current docs; prior checkpoint snapshot unchanged."
+        ],
+        "superseded": [
+          "NEXT-WAIT-AUTH generic lifecycle search narrowed to identified login handlers/reader and missing auth request."
+        ]
+      },
+      "blockers": [
+        "Runtime state remains0; new comparison is static and does not prove S2C4/15 were received.",
+        "KR C2S auth request/trigger, result0 full field layout/guards and network-info codec limits unresolved.",
+        "Original global lifecycle/launcher identity, oneclickuser runtime and gate acceptance remain open."
+      ],
+      "next_steps": [
+        {
+          "id": "NEXT-WAIT-AUTH",
+          "task": "KRE-005b",
+          "state": "superseded",
+          "action": "Use newly verified dispatcher/handler routes rather than generic wait-dialog search.",
+          "owner": "Codex",
+          "reviewer": "Codex"
+        },
+        {
+          "id": "NEXT-KR-AUTH-CONTRACT",
+          "task": "KRE-005b",
+          "state": "active",
+          "action": "Break10FCBE0/10FEDA0/1100590, recover minimal KR reader field ledger/guards and C2S auth trigger on socket3, then verify ordered native-accepted responses and state transition without forcing success.",
+          "owner": "Codex",
+          "reviewer": "Codex"
+        }
+      ],
+      "review": {
+        "status": "waived",
+        "as_of_utc": "2026-10-28T00:35:29.300235+00:00",
+        "reference": "docs/evidence/checkpoints/review-waiver.json",
+        "scope": "Owner waiver persists; Codex static comparison/self-checks, no independent approval.",
+        "authorization": {
+          "by": "project_owner",
+          "reference": "docs/evidence/checkpoints/review-waiver.json",
+          "reason": "Explicit owner instruction to continue solo without Claude review."
+        }
+      },
+      "docs_sync": [
+        {
+          "path": "README.md",
+          "state": "updated",
+          "reason": "Current runtime unchanged; new static handler route and mergedCP012 scope."
+        },
+        {
+          "path": "docs/PLAN.md",
+          "state": "updated",
+          "reason": "Prioritize recovered login dispatcher/fields and auth request."
+        },
+        {
+          "path": "docs/PROTOCOL.md",
+          "state": "updated",
+          "reason": "New static S2C4/15 route, state offsets and limitations."
+        },
+        {
+          "path": "docs/RESEARCH.md",
+          "state": "updated",
+          "reason": "Specific reader/handler and auth request next experiment."
+        },
+        {
+          "path": "docs/evidence/vn-reuse/README.md",
+          "state": "updated",
+          "reason": "VN proven flow, exact KR comparison and failed extraction correction."
         }
       ]
     }
