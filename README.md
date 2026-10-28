@@ -22,18 +22,19 @@ boom-kr-server/
 
 ## Đang làm
 
-CP014: bản copy Wine **đã gửi request auth opcode1 (80 byte)** tới stub local,
-tiếp theo opcode60; capture đã kiểm bằng parser/CRC native KR. Token local giúp luồng tự động
-đặt playerCount1; đối chứng cùng copy thiếu token vẫn count0 và không gửi auth.
-Phản hồi lỗi đã vào handler đúng mã1; phép thử result0-prefix + network-info chạy state chờ
-**0→2→1→3**, modal trả3 và attempt trả1, rồi dừng ở native helper chưa phục hồi `16EA8FC`.
-**Chưa xác nhận login hợp lệ, chưa vào sảnh**: result0 vẫn cố ý thiếu body đầy đủ.
+CP015: **copy Wine đã hiển thị sảnh KR và đóng hộp “đang kết nối kênh” qua handler nhận của client**.
+Sau request auth đã đo ở CP014, client đi qua request5 → redirect local → socket kênh/request6;
+S→C17 vào `CLobbyStage`, S→C241 đặt ready và đóng notice. Không ép modal result hoặc cờ ready.
 
-Các phép thử dùng copy có patch và reset global trong bộ nhớ; không tương đương client nguyên bản.
-Contract/giới hạn ở [PROTOCOL](docs/PROTOCOL.md#login-auth), recipe/raw/hash tại
-[evidence login](docs/evidence/login-runtime/README.md); bước tiếp ở [Q-023](docs/RESEARCH.md#q-023).
-CP012/013 đã merge PR20/21; CP014 đang chờ tích hợp khi lập checkpoint. PR là nguồn trạng thái
-merge hiện tại. Chủ dự án miễn review độc lập; Codex tự kiểm và giữ gate bằng chứng.
+Đây là mốc UI/đường nhận trên **copy chẩn đoán**, chưa phải login/profile/cache đầy đủ hoặc gate K3.
+Body result0 còn thiếu; tên/profile trống. Hai lần click Tạo phòng chưa có request77, chưa xác nhận
+hit control; chưa tạo phòng hoặc vào trận. Contract/giới hạn tại
+[PROTOCOL](docs/PROTOCOL.md#channel-lobby), recipe/ảnh/hash tại
+[evidence sảnh](docs/evidence/postwait/README.md); bước tiếp ở [Q-023](docs/RESEARCH.md#q-023).
+
+CP014 đã merge [PR22](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/22).
+CP015 là checkpoint mới chờ tích hợp khi ghi record; PR là nguồn trạng thái merge hiện tại.
+Chủ dự án miễn review độc lập; Codex tự kiểm, giữ gate bằng chứng. Audit định kỳ kế CP016.
 
 Checkpoint bền vững: [manifest](docs/evidence/checkpoints/manifest.json).
 Quy trình ghi chép/review/audit: [checkpoint workflow](docs/evidence/checkpoints/README.md).

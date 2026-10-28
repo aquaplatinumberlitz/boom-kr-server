@@ -1,7 +1,7 @@
 # Kế hoạch server giả lập KR 00967
 
 Nguồn chuẩn của project `boom-kr-server`; bản nhập từ plan đã được dsh1/dsh2 review tại `1eee46d`.
-Cập nhật28/10 JST (CP014): triển khai K0/K1 và K2a từng phần;bảng gate là scope nghiệm thu,chưa phải checklist đã pass.
+Cập nhật28/10 JST (CP015): triển khai K0/K1 và K2/K3 từng phần;bảng gate là scope nghiệm thu,chưa phải checklist đã pass.
 
 
 ### Mục tiêu, baseline và phạm vi
@@ -37,31 +37,32 @@ với client Rust không chứng minh có thể điều khiển client KR bằng
 
 ### Tiến độ hiện hành theo bằng chứng
 
-| Task/mốc | Trạng thái tại CP014 | Nguồn chuẩn |
+| Task/mốc | Trạng thái tại CP015 | Nguồn chuẩn |
 |---|---|---|
 | KRE-004/issue6 | Đã review/merge PR7 và đóng issue:recipe r1 đến local accept;không phải full K1 | [Wine r1](evidence/wine/README.md) |
 | Bootstrap reply | PR8 đã merge;debugger ProcessPatchreturn1,không ép success | [bootstrap evidence](evidence/bootstrap-wire/README.md) |
 | KRE-005a/issue9,R2 | PR10 đã merge:3 cold start cửa sổ/second accept;issue9 còn mở | [R2 evidence](evidence/wine-r2/README.md) |
 | WCP hai-reply | Run CP001 là lịch sử chưa C→S; CP006 đã đo request đầu trên copy tham số hóa | [PROTOCOL](PROTOCOL.md#wcp),[WCP evidence](evidence/wcp/README.md) |
-| KRE-005b/issue14 | CP006–013 đã merge; CP014 đo auth và chuỗi wait0→2→1→3 trên fixture thiếu body; sau attempt1 còn native helper trap; full schema chưa đủ | [Q-023](RESEARCH.md#q-023), [evidence](evidence/login-runtime/README.md) |
+| KRE-005b/issue14 | CP006–014 đã merge; CP015 đi qua helper, flags62, redirect/request6 và UI sảnh hết notice nhờ241; full auth/profile còn thiếu | [Q-023](RESEARCH.md#q-023), [evidence](evidence/postwait/README.md) |
 | K0/K1 | Chưa nghiệm thu toàn gate;Windows vanilla/control ownership và các điều kiện còn thiếu giữ mở | Gate dưới,[Q-022](RESEARCH.md) |
 | K2a/K2 | Primitive/WCP từng phần; request auth đã capture/native replay, phản hồi lỗi đã dispatch; full codec/reconnect và gate chưa pass | [PROTOCOL](PROTOCOL.md#login-auth),[Q-023](RESEARCH.md#q-023) |
-| K3–K7 | Chưa đạt login/sảnh/phòng/trận/multiplayer | Không có phần trăm ước lượng |
+| K3 | Copy chẩn đoán đã vẽ UI sảnh và đóng notice; chưa nghiệm thu identity/cache/codec đủ gate | [Contract sảnh](PROTOCOL.md#channel-lobby) |
+| K4–K7 | Chưa tạo phòng/trận/multiplayer; click Tạo phòng chưa có request77 hoặc proof hit control | Không có phần trăm ước lượng |
 
-Thứ tự tiếp: giải native helper chặn sau wait tại [Q-023](RESEARCH.md#q-023), đo transition/stage tiếp;
-phục hồi đủ body result0/network-info và kiểm codec/reset trước khi xét K2/K3.
-Không dựng lobby trước contract cần thiết.
+Thứ tự tiếp: đo input/command Tạo phòng trên UI sảnh và guard/profile thực tại
+[Q-023](RESEARCH.md#q-023); phục hồi body result0/user/cache còn thiếu trước khi xét K2/K3.
+Chỉ mở contract phòng cần cho request đã đo; không suy room/battle từ UI.
 Chu kỳ docs/audit theo [workflow](evidence/checkpoints/README.md);
 counter ở [manifest](evidence/checkpoints/manifest.json). Không tạo plan theo phiên.
 
-### Bản đồ đường chạy, CP014
+### Bản đồ đường chạy, CP015
 
 | Bước | Quan sát/bước tiếp |
 |---|---|
 | Bootstrap | ProcessPatch có response local trong Wine copy; K1 còn thiếu đối chứng/gate. |
 | WCP → request đầu | Consumer chấp nhận fixture; một run debug và một run plain có C→S66 byte; xem [contract](PROTOCOL.md#wcp). |
 | Dữ liệu khởi tạo | Tám response tổng hợp đã dẫn tới guard trả1 trên copy; chưa chứng minh tài nguyên thật hay K2. |
-| Login → sảnh | Request auth, phản hồi lỗi và chuỗi wait đã đo trên copy; sau attempt1 dừng native helper; chưa vào sảnh; xem [contract](PROTOCOL.md#login-auth). |
+| Login → sảnh | Đã đo redirect/request6, S→C17 và241; UI sảnh hết notice trên copy, profile/auth body còn thiếu; xem [contract](PROTOCOL.md#channel-lobby). |
 | Phòng → trận | Chưa có runtime hay contract đủ để triển khai. |
 
 RE động là chính; gom phép đo thành checkpoint mốc/blocker, audit định kỳ theo workflow.

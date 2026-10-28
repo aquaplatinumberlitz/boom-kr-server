@@ -66,19 +66,24 @@ contract/chiều seq/prefix result0 tại [PROTOCOL](PROTOCOL.md#login-auth), co
 bị loại ở [evidence login](evidence/login-runtime/README.md). CP013 đã merge PR21.
 Nguồn count0 của auto-attempt đã giải; lifecycle kích hoạt stage tự động và global vẫn chưa đủ.
 
-Bước tiếp: Codex giải call`13CA429`/slot`16EA8FC` đang chặn sau modal/attempt1: xác định helper,
-arguments, module/caller trước khi bind hoặc thay stub; chạy lại cùng fixture và đo stage tiếp sau
-message403. Giữ bản đối chứng trap và rollback copy. Đồng thời tiếp nối reader`10FD820` để phục hồi
-đủ body result0; prefix thiếu body đã gửi9 và fixture S→C15 đã chạy wait0→2→1→3, nhưng không
-xác nhận dữ liệu auth hợp lệ hay sảnh. Không ép modal/state. Giữ lifecycle global1A966FC,
-`oneclickuser/+E9C`, token_2/count2, full codec/reset và tương đương vanilla ở trạng thái unknown.
-Review độc lập đã miễn; AUD004 ở CP012, audit kế CP016. Chưa thêm gate.
+CP015 đã qua helper và nối flags62 → request5 → redirect/request6 → stage11/CLobbyStage;
+S→C241 đóng notice, UI sảnh đã hiển thị trên copy. Contract/giới hạn ở
+[PROTOCOL](PROTOCOL.md#channel-lobby), raw/control ở [evidence](evidence/postwait/README.md).
+CP014 đã merge PR22. Không suy auth/profile đủ hoặc K3 từ UI này.
+
+Bước tiếp: Codex bắt mouse hit-control → command/callback thật của nút Tạo phòng trên CLobbyStage,
+đối chiếu hai action room-open/room-notice đã inject nhưng chưa có request77. Đo guard/field từ nhánh
+thực rồi phục hồi input/profile qua wire; không quy TimerNotice cuối probe thành lỗi tạo phòng
+(đã nối `mainDisconnected`). Tiếp nối reader`10FD820` để phục hồi đầy đủ result0/user/cache, kiểm
+biến thể17/241, lifecycle global1A966FC, `oneclickuser/+E9C`, token_2/count2 và full codec/reset.
+Không ép ready/modal. Review độc lập đã miễn; AUD004 ở CP012, **audit định kỳ tới hạn khi CP016 complete**.
+Chưa thêm gate.
 
 | ID / ưu tiên | Trạng thái | Owner / reviewer | Đã biết | Còn thiếu / bước đóng |
 |---|---|---|---|---|
 | Q-022 / KRE-P1 bootstrap | open | Codex RE/tự kiểm | ProcessPatch local có debugger return1;recipe R2 đã merge;contract ở [PROTOCOL](PROTOCOL.md#wcp) | K1a ownership/control trên Windows local/effective token; K1b kiểm caller/config/IPC riêng CA và NewPatcher; K1c stub/patch theo evidence; gate ba cold start tới network attempt/state chờ hello, không lấy alive/không exit làm proof |
-| Q-023 / KRE-P1 codec | open | Codex RE/tự kiểm | Primitive/WCP từng phần; CP014 có request auth, seq nhận và chuỗi wait trên fixture thiếu body | Native helper sau attempt và full result0/codec/reset theo bước trên; gate K2 còn mở |
-| Q-024 / KRE-P1 login/kênh | open | Codex RE/tự kiểm | KR có request auth và phản hồi lỗi runtime; VN cung cấp mỏ neo schema/stage, không phải layout KR | Full result0 và S→C15, cold/warm cache và keepalive vào sảnh K3; không gọi auth Nexon thật |
+| Q-023 / KRE-P1 codec | open | Codex RE/tự kiểm | CP015 có socket kênh mới, native replay theo từng kết nối, schema17/count0 và nhận241 | Full result0/codec/reset theo bước trên; gate K2 còn mở |
+| Q-024 / KRE-P1 login/kênh | open | Codex RE/tự kiểm | UI sảnh hết notice bằng17/241 trên copy, profile/tên còn trống | Full identity/user/cache và cold/warm/reconnect K3; không gọi auth Nexon thật |
 | Q-025 / KRE-P1 room/load | open | Codex RE/tự kiểm | Asset map KR và UI Ready có locator; VN có bẫy map tự gửi/spawn trước khi load | Wire KR create/join/host/slot/ready/start/roster/map/spawn/ack; K4 hai client thấy cùng phòng và spawn đúng |
 | Q-026 / KRE-P1 authority/trận | open | Codex RE/tự kiểm | KR có consumer flame/chain, timer/send167/status184; VN mô hình lai | Phân quyền client/server/peer từng event; packet bom/pickup/trap/death/result/correction KR; K5 một chu kỳ hoàn chỉnh, không lấy packet183 ghost làm mover người sống |
 | Q-027 / KRE-P1 peer | open | Codex RE/tự kiểm | VN92/146 và UDP P2P có runtime; chưa xác nhận tương đương KR | Peer negotiation, endpoint, key/slot, protocol UDP và relay KR; movement hai chiều, cùng result và hai trận K6 |
