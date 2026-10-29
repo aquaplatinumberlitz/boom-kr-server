@@ -46,7 +46,7 @@ Mức `confirmed` dưới đây chỉ áp dụng nguồn/build/phạm vi ghi tro
 | Hello/version | VN server-first hello, rồi đổi mode; version 116 và packet bootstrap có thứ tự | Patch socket KR: mode0/selector0, BE16 version967, response local được chấp nhận theo [evidence](evidence/bootstrap-wire/README.md). Consumer WCP, initial0/0 và transition2/3 có bằng chứng theo [contract WCP](#wcp); full codec/seq và login/world role chưa xác nhận; không gộp socket. |
 | Login/identity | VN có pipeline login-result/network-info và variant China khác layout | CP013–014 có dispatcher/auth; CP015 đi qua redirect/request6 và UI sảnh hết notice trên copy. [Contract sảnh](#channel-lobby); full auth/profile/cache và vanilla vẫn thiếu. |
 | Cache/redirect/channel | VN cần tag blob; dữ liệu inner LE khác outer wire, cache path khởi tạo theo stage | Kiểm contract KR từ reader/consumer. Giữ test cold/warm cache; không copy blob VN hay replay flag “dùng cache” khi file không tồn tại. |
-| Lobby/room/start | VN có request/reply, slot flags, map tự gửi lúc vào phòng, loading/clock nhiều pha | Dùng để xây checklist ca biên. KR có stage11 và17/241 theo [contract sảnh](#channel-lobby); [request81/response86](#room-create) đã đưa copy tới CPrepareStage và UI phòng chờ; [player/ownslot/controls](#room-player) đã đo trên copy, map/load/trận chưa có. |
+| Lobby/room/start | VN có request/reply, slot flags, map tự gửi lúc vào phòng, loading/clock nhiều pha | Dùng để xây checklist ca biên. KR có stage11 và17/241 theo [contract sảnh](#channel-lobby); [request81/response86](#room-create) đã đưa copy tới CPrepareStage và UI phòng chờ; [player/ownslot/controls](#room-player) đã đo trên copy, [map metadata/start104](#room-map) đã đo, load/trận chưa có. |
 | Bomb/item/trap/result | VN `111→152→151`; `553`, pickup `117→158`; `120` subtype; kết quả `168→173` có runtime nguồn cũ | Chỉ mỏ neo VN. KR phải nối send/receive tới object/state tương ứng trước khi implement. Fuse/drop/cap policy emulator không phải luật server gốc. |
 | Peer/movement | VN C→S92 trao IP/UDP port; S→C146 có peer table; runtime hai máy di chuyển đồng bộ qua UDP | Không giả định KR dùng cùng packet/MTUDP version hoặc không đổi peer contract. TCP-only demo không hoàn tất multiplayer khi peer chưa đồng bộ. |
 | Kiến trúc/harness | VN có hub/session/round generation, golden Python↔Rust, control 1–2 client | Dùng pattern và bài học, không coi golden hai implementation cùng logic là oracle KR; không copy legacy server vào crates của rewrite. |
@@ -358,6 +358,65 @@ Một lần trước đó (`room-teams`) wineboot timeout35s trước client, kh
 retry prefix mới giữ nguyên copy/fixture/harness.
 Handler117/DC70D0 (locator tĩnh) đọc resultu16 rồi nhánh map; cần kiểm bảng map/index/data trước fixture.
 Chưa có map/load/Battle, auth/profile/cache hoàn chỉnh hoặc hai client.
+
+<a id="room-map"></a>
+### Map metadata, filter và request start (CP019)
+
+**kr_static/kr_runtime confirmed trong phạm vi diagnostic copy**; fields/default/scheduling là
+**emu_choice**, không phải capture server gốc. [Evidence](evidence/room-map/README.md) khóa control,
+recipe/hash và lỗi phép đo. Copy CP018 SHA94ee93… không thêm patch. VN chỉ dẫn tách config/table/ack,
+không copy VN231/234/113, row128 hoặc index954. KR đo238/241/117, row120 và local playmap stride52.
+
+- **C→S96**: writer`DDED40`, opcode60hex, u16 local-playmap code từ`E01930(index)`,u32 dynamic-index;
+  gửi qua`13ADD60`, success đặt pending+6224=1 và disable controls. Không thấy ở probe13ADD10 không
+  phủ nhận capture; CP018 width-candidate nay nối writer KR. Chưa kiểm đầy đủ select/reply roundtrip.
+- **S→C117**: `DC70D0`, resultu16=0,u16 localcode,u32 dynamicindex. Native đầy8byte; runtime cùng cursor8/errors0,
+  setter`DFF9F0` kiểm bounds dynamic-count. Ack0/0 khi count0 vẫn không cấp dữ liệu map; count1 mới có row.
+- **S→C241**: `D6E6B0`, blob raw-selector0 với inner8byte `{u8,u16,u32,u8 count0}`, rồi
+  `u32 dynamicCRC,u32 stageCRC,u8,u32`. Native full blob/tail tiêu31byte payload; dynamicCRC vào
+  manager+0C qua`DFE850`. Mẫu mới sửa raw-selector/blob theo bài học CP016; UI-ready side effect các run
+  CP015–018 là lịch sử đã quan sát, không dùng chúng làm proof full blob cũ đúng schema.
+- **S→C238**: base`D68C90→D69278→DFE9A0→DFEB10`, outer blob. Inner u16LE count, rows:
+  `u32,u8,stringLE,stringLE,2u8,stringLE,stringLE,2u8,u32,3u8,u16,u8,u32`.
+  Row memory120byte; u16 tại+68 là local-playmap code (`E01930`), không phải VN+112.
+  Native frame/blob, checksum và mọi row getter tiêu67byte của mẫu count1/strings ngắn;
+  runtime parserCRC khớp/count1/return1/innercursor67=67. Count lớn/compression của238/bounds chưa kiểm.
+
+`14EA760` trả stored-checksum; native blob giữ `405E70` và xác nhận **Adler32 seed0 trên inner67byte**:
+control`66DE09B4`, enabled`66ED09B5`. Giả thuyết tính cả tag ban đầu bị bác bỏ (`80D60A10` khácnative).
+Allocator/free tổng hợp, checksum/reader không bị thay return. Config dùng checksum native tương ứng.
+Mẫu raw blob bên trong outer là `[18,u32LE length,selector0,inner]`; checksum này không tính tag/header.
+
+Config mới thử đọc cache1090row/CRC`C5B1B1C1`, khácexpected nên từ chối rồi gửi528.
+Sau wire238/count1, bảng dynamic-count lên1 qua`DFEF20`; cache ghi lại khi reload vẫn có checksum khác
+trong cửa sổ đo. Đây là **giới hạn cache/persistence đang mở**, không suy cold/warm/reconnect đã qua.
+Raw snapshot/cache hash ở evidence; không coi cache kế thừa là server-origin oracle.
+
+`CPlayMapInfoList` runtime có1151 record/stride52, snapshot tại init12. Index0 là **Antarctic01**,
+capacity lấy record+24hex qua`EDC890`=4; ví dụ Camp01 index178, khác index VN104.
+Fixture row hiển thị chữ **Village01 là emu_choice**, code0 vẫn trỏ Antarctic01; chưa có proof load
+Village01/geometry hoặc preview map. Không dùng nhãn UI để gán map index/build.
+
+**Map filter/start:** mẫu đầu row+5D=0 (inner offset52), ack/table có capacity4 nhưng start-check
+`DCAD80` đo players2/teams2/capacity4, gọi `E00540→E06F80(mode0)→E061A0` trả0;
+notice `CantDecideMap` từ`DCC032`. Predicate`E02C00` đọc row+5D, nhánh`E0622E` đòi khác0.
+Mẫu enabled chỉ đổi inner52=1 và checksum/config tương ứng: runtime đọc row5D=1,
+default-predicate1, các filter tiếp đi qua, selectable1; click check tại`DE03F3` trả0.
+Không sửa roomtype/mode, ép filter return hoặc count/capacity trong debugger. Chỉ count1/mode0/
+roomtype0/row field này đã đo; không khẳng định ý nghĩa tổng quát của byte+5D.
+
+**C→S104**, actual click→`DE0310` builder`DE0463`→`13ADD60` return`DE0574`:
+run `map-enabled`, socket4/frame28, seq124, wire109/payload71, send1/pending3. Client vẫn ở stage12;
+chưa gửi response start hoặc quan sát loading/Battle. Parser KR/native CRC và mọi outer field
+đọc hết71byte: compressed blob outer51byte (storage-selector1, native inflate ra inner265byte),
+`u32 selected-dynamic=0,u16 localcode=0,u32 current-dynamic=0,u8=0,u8=2,u32=0`.
+Map fields nối writer`E006F0`; context265byte từ`1264220` và u8/u32 còn giữ semantics giới hạn.
+Native inflate/checksum giữ nguyên, allocator mô hình arena1MiB/mỗi request≤64KiB;
+không gán inner context thành roster/spawn/seed đủ contract. Width/cursor đúng chưa đủ reply/load.
+
+Bước tiếp duy nhất giữ ở [RESEARCH](RESEARCH.md#q-023): actual receiver sau104, input context/map,
+roster/spawn/barrier cần cho loading; không chuyển stage bằng debugger hoặc copy start501 của VN.
+K2/K3/K4 và full identity/auth/user/cache/vanilla/multiplayer vẫn mở.
 
 Fixture opaque/zero/empty và prefix69 là emu_choice đã được consumer chấp nhận trong phép thử,
 không phải byte server gốc. Nhánh flag1,codec frame mode2/selector3 ở phạm vi fixture CP006 có kiểm hẹp; seq/reconnect, semantics đầy đủ và
