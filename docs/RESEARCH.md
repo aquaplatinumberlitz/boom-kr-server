@@ -91,21 +91,28 @@ CP019 đã nối writer96, config241/checksum, table238 và ack117; map capacity
 [PROTOCOL](PROTOCOL.md#room-map), [raw/correction](evidence/room-map/README.md).
 CP018 đã merge PR26. Đây là mốc request start, chưa có loading/Battle hoặc gate mới.
 
-Bước tiếp: Codex truy actual receiver/response sau104 và context/map/roster/spawn/loading barrier.
-Native compressed context265byte mới giữ opaque; không dùng schema/VN501 hoặc offsetopcode làm factKR.
-Dùng VN docs về pha start/load để chọn handler, xác nhận lại bằng KR runtime; không ép stage.
-Bảng1151 localmap khác VN, labelVillage01 của fixture không phải code0 (Antarctic01).
-Cache checksum/persistence/reload còn mâu thuẫn chưa giải, cần control riêng; không nâng cold/warm.
-Đồng thời hoàn thiện result0/user/cache, blob15 và các biến thể241/channel14/91,
-lifecycle global1A966FC, oneclickuser/+E9C, token_2/count2 và full codec/reset.
-Review độc lập được miễn; AUD005 ở CP016, audit định kỳ kế **CP020**. Chưa thêm gate.
+CP020 nối start104 tới receiver KR121, slot validation và init CGameStage/stage13.
+Auth prefix mở rộng có trường ID1, consumer tự cập nhật local-user list; player1 match own-slot.
+ID0 workaround cũ không đủ để tham gia start. Contract/layout/correction tại
+[PROTOCOL](PROTOCOL.md#start-reply), raw/native/control tại [evidence](evidence/start-reply/README.md).
+CP019 đã merge PR27; CP020 có scene map/HUD/hai nhân vật trên diagnostic copy, chưa gameplay hoặc gate mới.
+
+Bước tiếp: Codex nối C→S99/61byte tới phase round/load/GO, theo actual caller/handler và kiểm
+clock chạy/input/di chuyển. Probe13ADD60 chưa bắt99 nên chưa gán99 là loaded ACK; cần đo13ADD10/
+writer caller đúng. VN chỉ hướng dẫn pha load/clock, không copy opcode/map index/layout.
+Run social có ảnh map/HUD, debugger host crash; lean cùng fixture/copy lặp lại và có hai nhân vật,
+local có mũi tên/KRGuest, timer02:00. Chưa kích input, nổ bom hoặc đo spawn hợp lệ bằng tọa độ;
+ảnh scene không tự chứng minh gameplay. Exact geometry variant/asset path chưa trace.
+Auth prefix34byte chưa đủ full player/profile/tail, ID1 là identity local thử; cần kiểm lifecycle,
+cache cold/warm/reconnect,15/241variants,oneclickuser/+E9C/token_2/count2 và full codec/reset.
+Counter/audit CP020 và audit kế giữ trong manifest; review độc lập waived, Codex tự kiểm.
 
 | ID / ưu tiên | Trạng thái | Owner / reviewer | Đã biết | Còn thiếu / bước đóng |
 |---|---|---|---|---|
 | Q-022 / KRE-P1 bootstrap | open | Codex RE/tự kiểm | ProcessPatch local có debugger return1;recipe R2 đã merge;contract ở [PROTOCOL](PROTOCOL.md#wcp) | K1a ownership/control trên Windows local/effective token; K1b kiểm caller/config/IPC riêng CA và NewPatcher; K1c stub/patch theo evidence; gate ba cold start tới network attempt/state chờ hello, không lấy alive/không exit làm proof |
 | Q-023 / KRE-P1 codec | open | Codex RE/tự kiểm | CP015 có socket kênh mới, native replay theo từng kết nối, schema17/count0 và nhận241 | Full result0/codec/reset theo bước trên; gate K2 còn mở |
-| Q-024 / KRE-P1 login/kênh | open | Codex RE/tự kiểm | UI sảnh hết notice bằng17/241 trên copy, profile/tên còn trống | Full identity/user/cache và cold/warm/reconnect K3; không gọi auth Nexon thật |
-| Q-025 / KRE-P1 room/load | open | Codex RE/tự kiểm | CP019 có map metadata/capacity4/filter và request104; chưa reply/loading/Battle | Response104/context/map/roster/spawn/load barrier; join/ready/select variants/host-leave và cache; K4 hai client thấy cùng phòng và spawn đúng |
+| Q-024 / KRE-P1 login/kênh | open | Codex RE/tự kiểm | UI sảnh hết notice17/241; CP020 phục hồi inputID local, tên/profile phòng có fixture, chưa full auth/sảnh identity | Full identity/user/cache và cold/warm/reconnect K3; không gọi auth Nexon thật |
+| Q-025 / KRE-P1 room/load | open | Codex RE/tự kiểm | CP020 nhận121, slot/localID1 và init CGameStage/stage13; có map/HUD/nhân vật và99, chưa clock/gameplay | Actual99/round/load/GO, clock/input/spawn; join/ready/select variants/host-leave và cache; K4 hai client thấy cùng phòng và spawn đúng |
 | Q-026 / KRE-P1 authority/trận | open | Codex RE/tự kiểm | KR có consumer flame/chain, timer/send167/status184; VN mô hình lai | Phân quyền client/server/peer từng event; packet bom/pickup/trap/death/result/correction KR; K5 một chu kỳ hoàn chỉnh, không lấy packet183 ghost làm mover người sống |
 | Q-027 / KRE-P1 peer | open | Codex RE/tự kiểm | VN92/146 và UDP P2P có runtime; chưa xác nhận tương đương KR | Peer negotiation, endpoint, key/slot, protocol UDP và relay KR; movement hai chiều, cùng result và hai trận K6 |
 | Q-028 / KRE-P2 profile/core | open | Codex/tự kiểm | Core Rust và policy V1 có sẵn, nhưng client gốc không biết ADR0009 | Sau audit Q-026/027, quyết định giữ lai/relay/shadow core hay authoritative được client hỗ trợ; profile emu có provenance, không sửa V1 implicit |

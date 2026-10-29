@@ -22,20 +22,19 @@ boom-kr-server/
 
 ## Đang làm
 
-CP019: **copy Wine đã qua kiểm map và tự gửi request bắt đầu trận C→S104/109byte**.
-Bảng map KR238 và cấu hình241 có checksum native khớp; ack117 cập nhật map/capacity4.
-Một field dữ liệu map được kiểm bằng control rồi sửa cho predicate mode0 chấp nhận; không ép return.
-Click Bắt đầu với roster giả hai người/đội: check0 → send1 → pending3.
+CP020: **copy Wine đã dựng scene trận: map băng, HUD và hai nhân vật trên màn hình**.
+ID local1 được cấp từ packet auth rồi match player1, thay workaround ID0 bị start coi là ô trống.
+Client đọc đầy đủ phản hồi start129/129byte, tự gọi stage13 và gửi tiếp C→S99/61byte.
 
-Client đang chờ phản hồi start; chưa có loading/Battle hoặc hai client. Local map index0 đo được là
-`Antarctic01`; chữ `Village01` trong fixture chỉ là nhãn thử, chưa chứng minh nạp hình học map đó.
-Full login/profile/cache và gate K3/K4 còn mở. Contract tại
-[PROTOCOL](docs/PROTOCOL.md#room-map), recipe/ảnh/hash tại
-[evidence map/start](docs/evidence/room-map/README.md); bước tiếp ở [Q-023](docs/RESEARCH.md#q-023).
+Run probe gọn đã lặp lại scene và nhân vật local có mũi tên; timer còn02:00, chưa thử input,
+clock chạy hoặc chu kỳ gameplay/hai client. Full auth/profile/cache và gate K2/K3/K4 còn mở. Contract tại
+[PROTOCOL](docs/PROTOCOL.md#start-reply), raw/control/hash tại
+[evidence start](docs/evidence/start-reply/README.md); bước tiếp ở [Q-025](docs/RESEARCH.md).
 
-CP018 đã merge [PR26](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/26).
-CP019 chờ tích hợp khi ghi record; PR là nguồn trạng thái merge hiện tại.
-Review độc lập được miễn; Codex tự kiểm, giữ gate bằng chứng. AUD005 ở CP016; audit kế CP020.
+CP019 đã merge [PR27](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/27).
+CP020 chờ tích hợp khi ghi record; PR là nguồn trạng thái merge hiện tại.
+Review độc lập được miễn; Codex tự kiểm. Audit định kỳ CP020 được ghi cùng checkpoint;
+counter/audit kế lấy từ manifest.
 
 Checkpoint bền vững: [manifest](docs/evidence/checkpoints/manifest.json).
 Quy trình ghi chép/review/audit: [checkpoint workflow](docs/evidence/checkpoints/README.md).
