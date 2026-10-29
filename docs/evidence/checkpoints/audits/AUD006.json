@@ -1,0 +1,79 @@
+{
+  "id": "AUD006",
+  "trigger": "periodic",
+  "completed_through": "CP020",
+  "recorded_utc": "2026-10-29T05:07:04.640673+00:00",
+  "auditor": "Codex self-audit; independent review waived by project owner",
+  "read_files": [
+    "README.md",
+    "docs/PLAN.md",
+    "docs/PROTOCOL.md",
+    "docs/RESEARCH.md",
+    "docs/evidence/start-reply/README.md",
+    "docs/evidence/room-map/README.md",
+    "docs/evidence/room-player/README.md",
+    "docs/evidence/room-reply/README.md",
+    "docs/evidence/checkpoints/manifest.json"
+  ],
+  "method": "Đọc thủ công toàn bộ README → PLAN → PROTOCOL → RESEARCH, rồi evidence CP017–020; đối chiếu raw dispatcher/reader/setter/IAT/RTTI, timeline và capture của chín run, native ledger. Xem ảnh social screen18 và lean screen17/18: geometry băng/HUD, hai nhân vật, mũi tên local, timer02:00. Nối setter auth ID1/own match với positive start và negative ID0; kiểm callback129/129, class init/99, giữ lỗi GDB host riêng. Script chỉ kiểm tính nhất quán đo được, không tự duyệt ngữ nghĩa hoặc đóng gate.",
+  "findings": [
+    {
+      "id": "F1",
+      "stale": "Header PROTOCOL còn CP016, overview mới tới81/chưa load; bản nháp CP020 chưa phản ánh ảnh mới.",
+      "correction": "Cập nhật header/overview và trạng thái scene/map/HUD/hai nhân vật; phân biệt ảnh với clock/input/gameplay và multiplayer.",
+      "fixed_in": [
+        "README.md",
+        "docs/PLAN.md",
+        "docs/PROTOCOL.md",
+        "docs/RESEARCH.md",
+        "docs/evidence/start-reply/README.md"
+      ]
+    },
+    {
+      "id": "F2",
+      "stale": "Workaround ID0 của CP018 có thể bị hiểu là identity hiện hành; bước receiver sau104 của CP019 đã có lời giải.",
+      "correction": "Gắn scope lịch sử CP018, liên kết nguồn authID1/slot validation mới. Thay bước tiếp CP019 bằng liên kết CP020/RESEARCH; không sửa checkpoint/raw cũ.",
+      "fixed_in": [
+        "docs/PLAN.md",
+        "docs/PROTOCOL.md",
+        "docs/RESEARCH.md"
+      ]
+    },
+    {
+      "id": "F3",
+      "stale": "Native ledger đầu đọc hết133byte nhưng callback chỉ103/107 ở guest-only; nhãn spawn/position ban đầu bị đảo.",
+      "correction": "Giữ mẫu/oracle cũ và correction; mẫu cuối bỏ4byte dư, callback129/129. Ghi spawnu8/positionu16, negativeposition256/control1; auth34byte vẫn thiếu phần sau.",
+      "fixed_in": [
+        "docs/PROTOCOL.md",
+        "docs/evidence/start-reply/README.md"
+      ]
+    },
+    {
+      "id": "F4",
+      "stale": "Lỗi GDB host có thể bị hiểu là client crash; import trap sinh khi rebuild có thể bị hiểu là protection gốc.",
+      "correction": "Ghi host debugger crash riêng; lean lặp lại scene/hai nhân vật, không log signal. API bind thật trên copy, tên candidate, byte/hash/rollback; giữ short/prelaunch failures.",
+      "fixed_in": [
+        "docs/PROTOCOL.md",
+        "docs/RESEARCH.md",
+        "docs/evidence/start-reply/README.md"
+      ]
+    },
+    {
+      "id": "F5",
+      "stale": "Snapshot merge/audit dừng ở CP019 pending và CP020 sắp tới.",
+      "correction": "PR27 đã merge tại759f60e; CP020 pending khi ghi record, AUD006 tạiCP020 và lịch kế CP024. Review độc lập waived, không đóng gate.",
+      "fixed_in": [
+        "README.md",
+        "docs/PLAN.md",
+        "docs/RESEARCH.md",
+        "docs/evidence/start-reply/README.md"
+      ]
+    }
+  ],
+  "remaining": [
+    "Clock/input/di chuyển/bom/vòng trận chưa đo; capture99/61byte có nhưng writer/caller/semantics và round/load/GO chưa nối.",
+    "Tên Antarctic01 so khớp và scene băng đã vẽ; exact asset variant/path, tọa độ spawn chưa trace; ảnh không chứng minh playable.",
+    "Full auth/profile/tail sau34byte, persistence/cold/warm cache, reconnect/reset/codec và vanilla controls còn mở. Chưa review độc lập hoặc qua K2/K3/K4/K5.",
+    "CP020 pending integration khi ghi record; PR là nguồn hiện tại. Evidence CP017–019 giữ scope lịch sử; complete records bất biến."
+  ]
+}
