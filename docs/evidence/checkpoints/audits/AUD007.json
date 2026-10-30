@@ -1,0 +1,77 @@
+{
+  "id": "AUD007",
+  "trigger": "periodic",
+  "completed_through": "CP024",
+  "recorded_utc": "2026-10-30T10:07:00.058210+00:00",
+  "auditor": "Codex self-audit; independent review waived by project owner",
+  "read_files": [
+    "README.md",
+    "docs/PLAN.md",
+    "docs/PROTOCOL.md",
+    "docs/RESEARCH.md",
+    "docs/evidence/round-go/README.md",
+    "docs/evidence/bomb-calc/README.md",
+    "docs/evidence/round-repeat/README.md",
+    "docs/evidence/bomb-position/README.md",
+    "docs/evidence/checkpoints/manifest.json"
+  ],
+  "method": "Đọc đầy đủ bốn docs chính theo các phần, đối chiếu evidence CP021–024 và raw runtime/native mới; kiểm delta sau sync. Đọc record118 trước send, callback159/121/175/180, native wrapper/checksum, spawn getter/index→point→actual actor, table map CP019, profile241/238/117/121/196. Xem ảnh Village00 có object giữa map; ExVillage01 scene/HELP/result/phòng và ảnh34 đen chuyển cảnh. Script chỉ kiểm hash/cursor/timeline; không thay audit ngữ nghĩa hoặc tự đóng gate.",
+  "findings": [
+    {
+      "id": "F1",
+      "stale": "README/PLAN/RESEARCH còn snapshot CP023 trước tích hợp và audit kếCP024.",
+      "correction": "Ghi PR31 đã merge tại561acc5, cập nhật mốc CP024/echo/spawn; AUD007/CP024 và audit kếCP028. CP024 trước tích hợp ghi rõ, PR giữ trạng thái merge hiện tại.",
+      "fixed_in": [
+        "README.md",
+        "docs/PLAN.md",
+        "docs/RESEARCH.md",
+        "docs/evidence/bomb-position/README.md"
+      ]
+    },
+    {
+      "id": "F2",
+      "stale": "Bước tiếp còn yêu cầu tìm nguồn100/4039 và echo159 từ118; CP023 fixed159 dễ bị hiểu là implementation hiện tại.",
+      "correction": "Contract CP024 có bounded echo và nguồn point từ map trước actor init; chuyển fixed159 thành lịch sử CP023. Không tự coi100 invalid/corrupt hoặc mọi collision/reset đã đúng; ghi width/height candidate và context timing khác.",
+      "fixed_in": [
+        "docs/PROTOCOL.md",
+        "docs/RESEARCH.md",
+        "docs/PLAN.md"
+      ]
+    },
+    {
+      "id": "F3",
+      "stale": "Heading authority matrix nói trước runtime nhưng rows đã có CP023; K6 chưa tách nghiệm thu LAN/Internet.",
+      "correction": "Matrix đổi thành hiện hành/từng phần; K6a cùng host,K6b hai máy LAN,K6c hai mạng Internet/NAT/relay có allowlist, đều chưa đạt. Gates đầy đủ giữ mở.",
+      "fixed_in": [
+        "docs/PROTOCOL.md",
+        "docs/PLAN.md"
+      ]
+    },
+    {
+      "id": "F4",
+      "stale": "Probe mới ban đầu lấy secure-box tại AI interface như base actor; pointer mới/tái dùng và ảnh đen có thể bị dùng nhầm làm reset/room proof.",
+      "correction": "Loại4wrapper checksum fail, pin RTTI CGOAIBattleBomber, chụp actual actor tạiE0F970/E0F973 và native replay56getter hợp lệ. Evidence chọn ảnh36/38 phòng; ảnh34 chỉ transition, pointer không là tiêu chí reset.",
+      "fixed_in": [
+        "docs/PROTOCOL.md",
+        "docs/evidence/bomb-position/README.md"
+      ]
+    },
+    {
+      "id": "F5",
+      "stale": "Tên Village00 hoặc hiển thị label có thể bị hiểu là Battle thường đã đúng; VN index hoặc cùng geometry dễ bị dùng thay map identity.",
+      "correction": "Khóa KR1101/Village00 và278/ExVillage01 từ runtime table, đồng bộ toàn profile; Village00 có object UFO/boss-like và mode còn giới hạn. Outcome/guest là lựa chọn thử; giữ mốc hai client/full match chưa đạt.",
+      "fixed_in": [
+        "README.md",
+        "docs/PROTOCOL.md",
+        "docs/evidence/bomb-position/README.md"
+      ]
+    }
+  ],
+  "remaining": [
+    "Chưa serial/ID allocator cho nhiều bom, duplicate/stale/authority/item/pickup/chain/collision đầy đủ.",
+    "Init99/peer/UDP/relay và hai client thật chưa kiểm; LAN/Internet chưa mở/đạt K6.",
+    "Antarctic second reported19 delay~0.9s và104bodygrowth còn chưa giải thích; không kết luận timer reset đã sửa.",
+    "Full auth/profile/cache/reconnect/codec reset/vanilla controls chưa đạt; no new gate.",
+    "Historical CP021 overlapping159 recovery và CP023 preTCP failure giữ raw/record immutable, không nâng thành repeat proof."
+  ]
+}

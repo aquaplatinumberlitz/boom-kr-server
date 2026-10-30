@@ -109,32 +109,38 @@ CP023 đã nối writer chungB53010 cho127/sub17/19 và giải full prefix14+blo
 reported19→rank chọn→180. Refresh110 host rồi guest-ready cho click thật phát104 lần hai;
 run cuối có hai vòng scene/input/bom/HELP/kết quả/phòng trên cùng channel.
 [Contract](PROTOCOL.md#round-result), [raw/control/correction](evidence/round-repeat/README.md).
-CP022/PR30 đã merge; CP023 trước tích hợp, review độc lập waived. Không tự đóng K5/K6.
+CP023/PR31 đã merge. CP024 bổ sung echo/spawn/map dưới đây; review độc lập waived, gates giữ mở.
+
+CP024 đã echo owner/serial/ba field từ actual118 sang159 cho bom đầu mỗi vòng; native đọc39/39.
+Đã nối index spawn0/1→point từ map→actual actor.100/4039 có nguồn bảng Antarctic01;
+Village00 và ExVillage01 có profile/map/spawn/geometry riêng và hai vòng thử với guest tổng hợp.
+[Contract](PROTOCOL.md#bomb-position), [raw/control/correction](evidence/bomb-position/README.md).
+Không dùng điều này thay nghiệm thu collision/reset/authority hoặc hai client.
 
 **Bước tiếp, Codex RE/tự kiểm:**
 
-1. Nối actual118→reply159 động: hai lượt serial candidate0 nhưng tọa độ100/1→100/3, reply vẫn100/1.
-   Đo actor/bomb pixel/tile và spawn/collision để thử input/echo đúng; giải getter100/prefixy4039.
-2. Kiểm reset state/timer và body104 tăng109→461wire. Hai actor/bomb/manager pointer mới và scene mới
-   chưa chứng minh reset đầy đủ; kind0→reported19 khoảng6.5s/0.9s cần giải thích trước policy timeout.
-3. Theo đường peer/discovery từ init99 và actual event/movement, chọn phép thử hai client cô lập.
-   VN là checklist authority/phase/bom/peer, không áp opcode/enum/ID. Bảng kết quả175 và refresh110 đã
-   có consumer/runtime; không tiếp tục ghi “unknown scoreboard” hoặc lặp probe fixed15s cũ.
+1. Trên ExVillage01 đã đo, phát nhiều request bom thật trong cùng vòng, nối serial/ID và reply159 động;
+   kiểm bomb vị trí/ID ổn định, có duplicate/stale control trước khi dùng cho hai client.
+2. Truy init99/endpoint và writer/consumer movement/peer; đưa hai client identity/slot riêng vào cùng
+   phòng cô lập, mục tiêu A di chuyển/đặt bom thì B thấy và ngược lại. K6a/b/c ở PLAN; chưa LAN/Internet.
+3. Giữ ca va chạm/phá block/item/pickup, reset/timer/104growth và authority theo hành vi. Hai map mới
+   blast→reported19 khoảng6.5s ở cả hai vòng, Antarctic vòng hai khoảng0.9s chưa giải thích nhân quả;
+   không coi pointer mới hoặc cùng địa chỉ là bằng chứng reset đúng/sai.
 
-Cặp159 CP021 giữ exploratory, CP022 năm run tuần tự, CP023 tám run tuần tự gồm một lỗi screenshot
-trước TCP; không thêm patch copy. Outcome chỉ là policy thử local-loss/guest-win, chưa arbitration,
-serial tổng quát/item/pickup/chain/collision/peer hoặc toàn chu kỳ trận được nghiệm thu.
+Cặp159 CP021 giữ exploratory; CP022/023/024 raw và completed record giữ nguyên provenance.
+CP024 năm run tuần tự trên cùng copy không thêm patch; outcome vẫn policy local-loss/guest-win.
+Serial tổng quát/item/pickup/chain/collision/peer và toàn chu kỳ trận được nghiệm thu còn mở.
 Auth prefix34byte vẫn thiếu phần sau; ID1 là identity local thử. Cache persistence/cold/warm,
 reconnect/reset/codec,15/241variants,oneclickuser/+E9C/token_2/count2/vanilla giữ mở.
-AUD006 đã hoàn tấtCP020, kế CP024; review độc lập waived, Codex tự kiểm.
+AUD007 đã hoàn tấtCP024, kế CP028; review độc lập waived, Codex tự kiểm.
 
 | ID / ưu tiên | Trạng thái | Owner / reviewer | Đã biết | Còn thiếu / bước đóng |
 |---|---|---|---|---|
 | Q-022 / KRE-P1 bootstrap | open | Codex RE/tự kiểm | ProcessPatch local có debugger return1;recipe R2 đã merge;contract ở [PROTOCOL](PROTOCOL.md#wcp) | K1a ownership/control trên Windows local/effective token; K1b kiểm caller/config/IPC riêng CA và NewPatcher; K1c stub/patch theo evidence; gate ba cold start tới network attempt/state chờ hello, không lấy alive/không exit làm proof |
 | Q-023 / KRE-P1 codec | open | Codex RE/tự kiểm | CP015 có socket kênh mới, native replay theo từng kết nối, schema17/count0 và nhận241 | Full result0/codec/reset theo bước trên; gate K2 còn mở |
 | Q-024 / KRE-P1 login/kênh | open | Codex RE/tự kiểm | UI sảnh hết notice17/241; CP020 phục hồi inputID local, tên/profile phòng có fixture, chưa full auth/sảnh identity | Full identity/user/cache và cold/warm/reconnect K3; không gọi auth Nexon thật |
-| Q-025 / KRE-P1 room/load | open | Codex RE/tự kiểm | CP023 có127writer/175bảng kết quả, hai vòng thử trên cùng channel một client/guest tổng hợp | Tọa độ/spawn/serial/timer/body104 reset, hai client; join/ready/select variants/host-leave và cache; K4 hai client thấy cùng phòng và spawn đúng |
-| Q-026 / KRE-P1 authority/trận | open | Codex RE/tự kiểm | KR có12717/19/175kết quả và hai vòng thử CP023; VN mô hình lai | Phân quyền client/server/peer từng event; packet bom/pickup/trap/death/result/correction KR; K5 một chu kỳ hoàn chỉnh, không lấy packet183 ghost làm mover người sống |
+| Q-025 / KRE-P1 room/load | open | Codex RE/tự kiểm | CP024 có echo118/159 và nguồn spawn ba map; hai vòng thử một client/guest tổng hợp | Nhiều bom/serial/collision/timer/body104 reset, hai client; join/ready/select variants/host-leave và cache; K4 hai client thấy cùng phòng và spawn đúng |
+| Q-026 / KRE-P1 authority/trận | open | Codex RE/tự kiểm | KR có echo bom/spawn CP024,12717/19/175kết quả và hai vòng thử; VN mô hình lai | Phân quyền client/server/peer từng event; packet bom/pickup/trap/death/result/correction KR; K5 một chu kỳ hoàn chỉnh, không lấy packet183 ghost làm mover người sống |
 | Q-027 / KRE-P1 peer | open | Codex RE/tự kiểm | VN92/146 và UDP P2P có runtime; chưa xác nhận tương đương KR | Peer negotiation, endpoint, key/slot, protocol UDP và relay KR; movement hai chiều, cùng result và hai trận K6 |
 | Q-028 / KRE-P2 profile/core | open | Codex/tự kiểm | Core Rust và policy V1 có sẵn, nhưng client gốc không biết ADR0009 | Sau audit Q-026/027, quyết định giữ lai/relay/shadow core hay authoritative được client hỗ trợ; profile emu có provenance, không sửa V1 implicit |
 | Q-029 / KRE-P2 vận hành | open | Codex/tự kiểm | Runtime KR copy Wine hẹp có [evidence](evidence/wcp/README.md);chưa multiplayer hoặc nghiệm thu chu kỳ trận đầy đủ | K7 bốn client, malformed/stale/duplicate/race/disconnect/restart, bounds/resource limits, Linux package, patch manifest và README tái lập |
