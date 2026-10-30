@@ -22,17 +22,17 @@ boom-kr-server/
 
 ## Đang làm
 
-CP024: **đã phản hồi bom theo request thực và nối nguồn spawn trên ba map KR**.
-Village00 và ExVillage01 đều chạy hai vòng thử: phòng → trận → bom/HELP → bảng kết quả → phòng.
-Có getter native đối chiếu vị trí actor/bom. [Contract](docs/PROTOCOL.md#bomb-position),
-[evidence](docs/evidence/bomb-position/README.md).
+CP025: **đã ghép/nổ ba bom liên tiếp bằng serial thực**, có ca sai field, phản hồi lặp và
+phản hồi cũ sau khi tái dùng object. Đã nối cổng UDP bind tới request99; tìm được consumer bảng
+peer KR153 bằng RE tĩnh. [Contract](docs/PROTOCOL.md#bomb-serial),
+[evidence](docs/evidence/bomb-serial/README.md).
 
-Vẫn là **một client với guest tổng hợp trên copy Wine chẩn đoán**, outcome do policy thử chọn.
-Chưa nghiệm thu trận hoàn chỉnh, hai client hoặc LAN/Internet. Tiếp theo: nhiều bom/serial,
-peer và hai client thật; collision/item/reset/full auth/cache còn thiếu. [Bước RE tiếp](docs/RESEARCH.md).
+Vẫn là **một client với guest tổng hợp trên copy Wine chẩn đoán**. Chưa nghiệm thu trận hoàn chỉnh,
+hai client hoặc LAN/Internet. Điểm chặn tiếp: header/body KR153 và runtime tạo peer; collision/item,
+reset và full auth/cache còn thiếu. [Bước RE tiếp](docs/RESEARCH.md#q-023).
 
-CP023 đã merge [PR31](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/31).
-CP024 là snapshot trước tích hợp; PR nhánh `kre/bomb-position-runtime` giữ trạng thái merge hiện tại.
+CP024 đã merge [PR32](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/32).
+CP025 là snapshot trước tích hợp; PR nhánh `kre/bomb-serial-runtime` giữ trạng thái merge hiện tại.
 Codex tự kiểm, review độc lập waived. **AUD007/CP024** hoàn tất; audit kế **CP028**.
 
 Checkpoint bền vững: [manifest](docs/evidence/checkpoints/manifest.json).

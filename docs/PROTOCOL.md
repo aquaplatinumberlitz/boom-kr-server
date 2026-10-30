@@ -1,6 +1,6 @@
 # KR 00967 — contract tương thích client gốc
 
-Revision kr-legacy-contract-r1; cập nhật30/10/2026 JST (CP024).
+Revision kr-legacy-contract-r1; cập nhật30/10/2026 JST (CP025).
 **Contract có bằng chứng từng phần; chưa nghiệm thu full codec K2**.
 Lộ trình và thứ tự task chỉ giữ ở [REWRITE_PLAN — KRE](PLAN.md).
 Đây là contract của repo server KR. ADR0009 của bản viết lại là nguồn lịch sử để so sánh;
@@ -664,12 +664,11 @@ Guard log state trong probe là pointer wrapper, không phải raw flag word; đ
 10actual118,56native getter trên snapshot, control/ảnh/hash. Copy SHAe9bb47… không thêm patch;
 13vùng code khớp static copy660447… và modO memory-layout a08950….
 
-**118→159 động, branch flag0:** parser stub kiểm payload22byte, seq/checksum, flag0 và serial candidate≤FFFF;
-owner từ118 field2, serial candidate từfield3/u32 chuyển u16, ba byte tại payload10/11/12 sang159payload16/17/18.
-Trong recordE2DF80 là+10/+14/+30; field thứ ba giữ semantics giới hạn (mẫu1).
-Các field159 khác/context0/id1 vẫn diagnostic choice, chỉ bom đầu mỗi vòng; chưa allocator ID,
-serial tổng quát/multi-bomb/duplicate/optional flags. Runtime159 đọc39/39/errors0 ở cả hai vòng;
-native frame/getter xác nhận các reply thực tế được sinh từ request.
+**Lịch sử CP024, chỉ bom đầu/serial0:** stub lúc đó chuyển field3/u32 của118 vào field2/u16
+của159, giữ field3/u32 của159=0. Vì chỉ đo serial0, cả hai field đều0; đây là candidate chưa phân biệt
+được serial. **CP025 bác cách ghép tổng quát này** bằng bom thứ hai/serial28, sửa ở
+[contract serial](#bomb-serial); raw/checkpoint CP024 giữ nguyên. Echo owner và ba byte hàng/cột/
+power candidate vẫn được kiểm độc lập. Các tọa độ/spawn/profile dưới đây giữ phạm vi CP024.
 
 **Tọa độ đã đo:** getter`B335C0/B335E0` đọc secure wrapper actor+4C/+58 qua`57A870→52A350`.
 Snapshot gồm wrapper và vùng data trỏ tới; checksum được giải thủ công rồi gọi native52A350 độc lập.
@@ -711,6 +710,68 @@ Hai map mới đều báo19 khoảng6.46–6.49s sau kind0 ở hai vòng; Antarc
 Đây là số đo theo context, chưa chứng minh nhân quả hoặc mọi timer/reset đã đúng.
 K5/K6, collision/item/chain/authority và peer vẫn mở; bước tiếp ở [RESEARCH](RESEARCH.md#q-023).
 
+<a id="bomb-serial"></a>
+### Nhiều bom, serial và ID — CP025
+
+**kr_static/kr_runtime confirmed trong phạm vi copy offline**, [evidence](evidence/bomb-serial/README.md).
+Bốn run108s tuần tự trên cùng copy SHAe9bb47…; không patch thêm. Request118 thực có serial0,28,56,
+không phải giả định số tăng từng bom. Chưa giải cách sinh/rollover serial hoặc mọi optional flag.
+
+Với118/base22/flag0, widths13field vẫn `[4,1,1,4,1,1,1,1,1,1,1,4,1]`.
+159/base39 có widths17field `[1,1,2,4,4,4,1,1,1,4,1,2,2,1,8,1,1]` (index từ0):
+
+| Nguồn thực118 | Đích159 | Giới hạn |
+|---|---|---|
+|field2/u8 owner |field1/u8 |owner0 trong các run này |
+|field3/u32, record+0C |**field3/u32**, payload+4 |serial ghép local pool, đo0/28/56; không ép u16 |
+|field4/5/6/u8 |field6/7/8/u8, payload+16/+17/+18 |hàng/cột/power candidate như CP024 |
+|ID do stub cấp |field11/u16, payload+24 |chọn1/2/3; allocator/round generation/collision còn design |
+|không suy từ118 serial |field2/u16, payload+2 |aux unknown, giữ0 trong ca sửa; không gọi field này serial |
+
+`E5E989→65A320` đưa serial u32 vào info+00; `E5EAD1` đưa ID vào info+0C.
+`E14600` đưa aux u16 vào info+B0, gọi `CGOAIBattleBomber/vf50→AEF700`.
+Hai nhánh pool so `B37FC0(this+118→B3BB20)` với getter info+00 tại **AEF7AB/AEF814**;
+run có probe mới đi nhánh AEF7AB, không phải AEF814. Match dẫn tới`B37880(ID)`;
+aux+B0 đi`B38350` lưu secure+10C. Getter`B38370` đọc aux, không được dùng nó thay serial.
+
+Control đặt serial28 vào aux u16 nhưng serial u32=0: callback vẫn39/39/errors0,
+**E5ECA8 trả0**, không bind bom2; ảnh bom local prediction không chứng minh159 đã nhận/ghép đúng.
+Ca sửa chỉ hai field này có ba118→159 trả entity, bind ID1..3 và ba158/kind0→cleanup.
+Cùng pointer được tái dùng, ID/serial và nhánh thực thi mới là bằng chứng phân biệt vòng đời.
+Fuse4s, ID, field159 còn lại và158args2/−1/FF là **emu_choice**, không phải luật server gốc.
+Các run CP025 bỏ policy tự gửi175/180 để tập trung cùng vòng; không dùng chúng chứng minh kết quả trận.
+
+**Control lặp/cũ ở tầng semantic**, mã hóa lại cùng payload bằng seq S→C mới liên tục (+3):
+
+- 159 lặp sau0.5s: ba bản gốc trả entity/bind1..3; ba bản lặp trả0, đọc39/39/errors0.
+- 158 lặp sau cleanup0.5s: lookup vẫn thấy ID, nhưng không vào E9E660/kind0 lần hai;
+  tổng ba enter/cleanup cho sáu callback13/13/errors0. Không nói lookup0 hoặc crash-free là đủ idempotency.
+- 159/158 của bom cũ gửi sau khi ID kế đã bind: hai159 cũ trả0;
+  hai158 cũ đọc đủ nhưng không tới E1449C/E9E660; ba158 gốc vẫn enter/cleanup đúng ID1..3.
+  Chỉ xác nhận đường đã đo; không chứng minh mọi race, stale round, ID reuse/wrap hoặc chain/item an toàn.
+
+<a id="kr-peer-entry"></a>
+### Request99 và entry bảng peer KR — CP025
+
+**kr_runtime confirmed hẹp:** `E7F301→13E1470→13DE7C0` dùng hostname/host lookup lấy tối đa hai IPv4;
+`E7F33C→13E14A0→14E5670` lấy u16 ở networkbase+24. Hai run có breakpoint bind đo cùng cổng
+với native99 (9751/9345); còn có socket bind khác, không gán cả hai cho movement.
+IP trong namespace=127.0.0.1/0. Chưa cấp peer nên không thấy sendto dưới hook đã cài;
+không suy không có UDP hoặc đồng bộ movement từ quan sát âm này.
+
+**kr_static confirmed cho cấu trúc/cạnh, áp dụng runtime candidate:** dispatch153 tạiE5D4CE→E5E6D0
+**gọi E825D0 không qua guard703A80**. Trong E825D0, đoạnE838…/E839… đọc relay IPv4/u16port/u8flag;
+IP khác0→htonl→13E1140→14E57B0. ĐoạnE839A2 lặp **26slot**, mỗi slot đọc u8on;
+on→**3×(u32IP,u16port)** tạiE83AB2/E83AC9, đóng thành array3×8byte, kiểm1243330(slot),
+rồi E83B69→13E1190(slot,array,localID,slotID).13E1190 có consumer địa chỉ và gọi14E57B0.
+Đây là suffix trong **body dài chưa phục hồi đủ**, không được gửi suffix trần như full153.
+Endian/runtime HostCreate và movement/UDP framing/key/relay chưa được nghiệm thu.
+
+KR532 cũng tớiE825D0 quaE5E820 nhưng guard703A80 trên ba artifact đồng nhất trả AL=0;
+đường này không phải ứng viên mặc định để thử. Chưa quan sát153 hoặc532 trên client trong các run này.
+VN §5a-6 (92/146,18slot) giúp nhận ra pattern peer; KR99/153/26slot và guard được đọc riêng,
+không dùng offset opcode hay số slot VN. Phép kiểm tiếp giữ ở [RESEARCH](RESEARCH.md#q-023).
+
 ### Giới hạn và correction WCP lịch sử
 
 Fixture opaque/zero/empty và prefix69 là emu_choice đã được consumer chấp nhận trong phép thử,
@@ -742,14 +803,14 @@ liệt kê và phân biệt với nguyên bản trong mọi demo.
 
 ### Authority matrix hiện hành và gate review
 
-Bảng này tổng hợp bằng chứng từng phần đến CP024; chưa phải toàn contract server gốc. Mỗi hàng khi
+Bảng này tổng hợp bằng chứng từng phần đến CP025; chưa phải toàn contract server gốc. Mỗi hàng khi
 triển khai phải bổ sung riêng **creator, simulator, validator, broadcaster, peer-editable state**, với
 locator/trace và trạng thái từng ô; những vai trò không nêu dưới đây hiện `unknown` cho KR.
 
 | Hành vi | Đã thấy trong KR | Phần cần đóng trước demo dùng hành vi đó |
 |---|---|---|
 | Movement | Consumer dir/position có phạm vi lớp;183 đã nối ghost | Input player→mover/network, peer update/correction và ai chấp nhận vị trí |
-| Bomb place/ID | CP024 echo118→159/first bomb, native actor/bomb coords trên ba map; ID1 còn choice | Serial/ID lifecycle, duplicate, creator/validator/broadcast và peer còn thiếu |
+| Bomb place/ID | CP025 ba bom/serial u320/28/56, ID1..3 và lặp/cũ hẹp; tọa độ/spawn CP024 | ID allocator/rollover/concurrent/race/round generation, creator/validator/broadcast và peer còn thiếu |
 | Explode/chain | CP022158/kind0 có nước/HELP; calc tĩnh/message27 giữ phạm vi riêng | Fuse/clock owner/relay và cách bỏ lặp chain còn thiếu |
 | Block destroy/item reveal | Calc vùng nổ không tự xác nhận authority phá block/drop | Ai quyết block/item, state từng peer và packet/event đồng thuận |
 | Item placement/pickup | Loader/receiver có mỏ neo, chưa đủ contract | Kind/index theo build, ai đặt item, xác nhận pickup/race và broadcast |
