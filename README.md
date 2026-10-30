@@ -22,18 +22,18 @@ boom-kr-server/
 
 ## Đang làm
 
-CP023: **copy Wine đã chạy hai vòng thử trên cùng kết nối: phòng → trận → bom/HELP → bảng kết quả → phòng**.
-Client hiện **LOSE KRLocal / PERFECT KRGuest** theo rank thử; vòng thứ hai bắt đầu bằng click thật,
-phát104, đọc121 đủ byte và khởi tạo scene mới. [Contract](docs/PROTOCOL.md#round-result),
-[evidence](docs/evidence/round-repeat/README.md).
+CP024: **đã phản hồi bom theo request thực và nối nguồn spawn trên ba map KR**.
+Village00 và ExVillage01 đều chạy hai vòng thử: phòng → trận → bom/HELP → bảng kết quả → phòng.
+Có getter native đối chiếu vị trí actor/bom. [Contract](docs/PROTOCOL.md#bomb-position),
+[evidence](docs/evidence/bomb-position/README.md).
 
-Đây là **một client với guest tổng hợp**, trên bản copy chẩn đoán. Stub chọn outcome từ báo cáo19;
-chưa trận hoàn chỉnh được nghiệm thu, hai client hoặc gate K2–K6. Điểm chặn tiếp là đồng bộ tọa độ/
-spawn/serial/timer và peer; full auth/profile/cache còn thiếu. Thứ tự ở [RESEARCH](docs/RESEARCH.md).
+Vẫn là **một client với guest tổng hợp trên copy Wine chẩn đoán**, outcome do policy thử chọn.
+Chưa nghiệm thu trận hoàn chỉnh, hai client hoặc LAN/Internet. Tiếp theo: nhiều bom/serial,
+peer và hai client thật; collision/item/reset/full auth/cache còn thiếu. [Bước RE tiếp](docs/RESEARCH.md).
 
-CP022 đã merge [PR30](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/30).
-CP023 là snapshot trước tích hợp; PR nhánh `kre/round-repeat-runtime` giữ trạng thái merge hiện tại.
-Codex tự kiểm, review độc lập waived. AUD006 ở CP020; audit kế **CP024**.
+CP023 đã merge [PR31](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/31).
+CP024 là snapshot trước tích hợp; PR nhánh `kre/bomb-position-runtime` giữ trạng thái merge hiện tại.
+Codex tự kiểm, review độc lập waived. **AUD007/CP024** hoàn tất; audit kế **CP028**.
 
 Checkpoint bền vững: [manifest](docs/evidence/checkpoints/manifest.json).
 Quy trình ghi chép/review/audit: [checkpoint workflow](docs/evidence/checkpoints/README.md).

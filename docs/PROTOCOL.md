@@ -1,6 +1,6 @@
 # KR 00967 — contract tương thích client gốc
 
-Revision kr-legacy-contract-r1; cập nhật30/10/2026 JST (CP023).
+Revision kr-legacy-contract-r1; cập nhật30/10/2026 JST (CP024).
 **Contract có bằng chứng từng phần; chưa nghiệm thu full codec K2**.
 Lộ trình và thứ tự task chỉ giữ ở [REWRITE_PLAN — KRE](PLAN.md).
 Đây là contract của repo server KR. ADR0009 của bản viết lại là nguồn lịch sử để so sánh;
@@ -542,7 +542,8 @@ Thứ tự mẫu:2u8,u16,3u32,3u8,u32,u8,2u16,u8,u64,2u8.
 Context được so với play-map; slot được kiểm trước`E14600`.
 Run `reply159-rerun` có entity return61BDD300 khác0, nhưng ảnh sau Space và timer01:40/01:37
 chưa cho thấy bom riêng biệt. Entity return khác0 không chứng minh đã đặt bom lên map.
-ID1/zeros/first-record serial0 là emu_choice; chưa dynamic echo/general schema hoặc nhánh flag/type khác0.
+Tại CP021, ID1/zeros/first-record serial0 là emu_choice; CP024 bổ sung echo bên dưới.
+General schema, nhiều bom/ID và nhánh flag/type khác0 vẫn mở.
 Cặp159/retry chồng thời gian sau daemon recovery nên chỉ exploratory, không dùng làm independent repeat.
 Run riêng `explode158` sau khi cả hai kết thúc xác nhận full39, entity có vt16FC0CC/
 RTTI `.?AVCGOGameBomb@@`; sau Space rồi Right, ảnh cho thấy bom nước tại vị trí vừa rời.
@@ -648,12 +649,67 @@ Hai vòng trên cùng channel4, không reconnect/reset wire counter và không �
 Ảnh second-after-space,screen30/31/33 tương ứng scene/input,HELP,bảng kết quả,phòng.
 Đây là hai vòng thử một client/guest tổng hợp, chưa hai client hoặc nghiệm thu toàn K5/K6.
 
-Hai capture118 đều base22/serial candidate0, nhưng tọa độ bytes100/1→100/3;
-reply159 vẫn dùng mẫu100/1/id1. Request104 lần hai wire461 thay vì109; framing/CRC có kiểm,
+Trong run CP023, hai capture118 đều base22/serial candidate0, tọa độ bytes100/1→100/3;
+reply159 lúc đó vẫn dùng mẫu100/1/id1; echo/spawn được kiểm tiếp tại [CP024](#bomb-position). Request104 lần hai wire461 thay vì109; framing/CRC có kiểm,
 body tăng chưa giải thích. Delay kind0→reported19 khoảng6.5s/0.9s khác nhau chưa giải thích;
 không dùng thành công lặp UI để tuyên bố spatial/timer reset chính xác hoặc authority đã khôi phục.
 Guard log state trong probe là pointer wrapper, không phải raw flag word; điều kiện bit ở trên
 đến từ code tĩnh và input110 được consumer chấp nhận, không từ cách printf đó.
+
+<a id="bomb-position"></a>
+### Echo bom, nguồn spawn và map cụ thể — CP024
+
+**kr_static/kr_runtime confirmed trong phạm vi copy offline**, encoder/profile/policy còn là
+**emu_choice/design**. [Evidence](evidence/bomb-position/README.md) khóa năm run tuần tự,
+10actual118,56native getter trên snapshot, control/ảnh/hash. Copy SHAe9bb47… không thêm patch;
+13vùng code khớp static copy660447… và modO memory-layout a08950….
+
+**118→159 động, branch flag0:** parser stub kiểm payload22byte, seq/checksum, flag0 và serial candidate≤FFFF;
+owner từ118 field2, serial candidate từfield3/u32 chuyển u16, ba byte tại payload10/11/12 sang159payload16/17/18.
+Trong recordE2DF80 là+10/+14/+30; field thứ ba giữ semantics giới hạn (mẫu1).
+Các field159 khác/context0/id1 vẫn diagnostic choice, chỉ bom đầu mỗi vòng; chưa allocator ID,
+serial tổng quát/multi-bomb/duplicate/optional flags. Runtime159 đọc39/39/errors0 ở cả hai vòng;
+native frame/getter xác nhận các reply thực tế được sinh từ request.
+
+**Tọa độ đã đo:** getter`B335C0/B335E0` đọc secure wrapper actor+4C/+58 qua`57A870→52A350`.
+Snapshot gồm wrapper và vùng data trỏ tới; checksum được giải thủ công rồi gọi native52A350 độc lập.
+Info159+18/+24 giữ hai field A/B của bộ ba vừa nêu; snapshot bom trả từE5ECA8 có các cặp sau:
+
+| Profile/run |118 A/B |159 A/B động |Bom getter+4C/+58 |
+|---|---|---|---|
+| Antarctic/position-dynamic vòng1 |100/1 |100/1 |40/4039 |
+| Antarctic/position-dynamic vòng2 |100/3 |100/3 |120/4039 |
+| Village00 hai vòng |11/11 |11/11 |440/479 |
+| ExVillage01 hai vòng |3/3 |3/3 |120/159 |
+
+Các mẫu khớp`x=40*B,y=40*A+39`; A/B tương ứng hàng/cột trong phạm vi này.
+Không áp công thức/thẩm định va chạm cho mọi mode từ bốn mẫu. AI interface`1775F08/CGOAIBattleBomber`
+trả ởE14600 khác base actor; dump4C/+58 của interface đầu là sai, checksum fail và bị loại rõ.
+Không suy địa chỉ pointer mới hoặc được tái dùng là reset state đầy đủ.
+
+**Nguồn spawn đã nối:** `E57D76→12418A0` lấy index từ slot+7C đã được121 đặt0/1;
+`CGameStage/v2D0→E59F30→E5A290→E0F6C0` đưa vector index tới`EAF910`.
+Hàm này lấy point8byte từ mapinfo+368, ngoài khoảng trả0/0; runtime thấy slot0/1 hợp lệ,
+slot2..15 index−1. `E0F770→vf/B3D170` khởi tạo **actual actor** tạiE0F970/E0F973:
+
+| KR code/name |Point spawn0/1 từ map |Actor pixel0/1 sau init |
+|---|---|---|
+|0/Antarctic01 |(6,100)/(4,100) |(240,4039)/(160,4039) |
+|1101/Village00 |(13,11)/(1,11) |(520,479)/(40,479) |
+|278/ExVillage01 |(3,3)/(3,9) |(120,159)/(120,399) |
+
+Như vậy100 có nguồn từ bảng map **trước actor init**, không tự chứng minh garbage/reset hỏng.
+Snapshot local-playmap CP019 có fields15/101 cho Antarctic và15/13 cho hai map mới;
+nhãn width/height và bounds toàn consumer còn giới hạn, không dùng4039 riêng để kết luận spawn sai.
+VN §5a-7 chỉ gợi ý đường index→point→actor; index/name/layout KR được đo riêng.
+
+**Profile map đồng bộ:** đổi238row/name/localcode và Adler32 inner→241,117ack,
+121name/code và196code ở cả hai vòng; không chỉ đổi chữ UI. Village00/ExVillage01 có ảnh geometry,
+spawn riêng,118/159,HELP,175 và180→UI phòng;121 lần lượt127/129byte,errors0.
+Village00 có object giữa map giống UFO/boss: chưa chốt semantics Battle thường từ tên/ảnh.
+Hai map mới đều báo19 khoảng6.46–6.49s sau kind0 ở hai vòng; Antarctic vòng hai vẫn khoảng0.9s.
+Đây là số đo theo context, chưa chứng minh nhân quả hoặc mọi timer/reset đã đúng.
+K5/K6, collision/item/chain/authority và peer vẫn mở; bước tiếp ở [RESEARCH](RESEARCH.md#q-023).
 
 ### Giới hạn và correction WCP lịch sử
 
@@ -684,16 +740,16 @@ Client gốc tự vẽ và phát âm thanh. Tái sử dụng ODT/assets giúp đ
 viết lại UI để hoàn thành nhánh tương thích. Những patch bootstrap/AC nếu cần chạy offline phải được
 liệt kê và phân biệt với nguyên bản trong mọi demo.
 
-### Authority matrix ban đầu và gate review
+### Authority matrix hiện hành và gate review
 
-Đây là trạng thái RE trước runtime KRE, không phải contract server gốc đã khôi phục. Mỗi hàng khi
+Bảng này tổng hợp bằng chứng từng phần đến CP024; chưa phải toàn contract server gốc. Mỗi hàng khi
 triển khai phải bổ sung riêng **creator, simulator, validator, broadcaster, peer-editable state**, với
 locator/trace và trạng thái từng ô; những vai trò không nêu dưới đây hiện `unknown` cho KR.
 
 | Hành vi | Đã thấy trong KR | Phần cần đóng trước demo dùng hành vi đó |
 |---|---|---|
 | Movement | Consumer dir/position có phạm vi lớp;183 đã nối ghost | Input player→mover/network, peer update/correction và ai chấp nhận vị trí |
-| Bomb place/ID | CP021 có118/159, cùng CGOGameBomb và bom hiện trên map local | Serial/ID lifecycle, duplicate, creator/validator/broadcast và peer còn thiếu |
+| Bomb place/ID | CP024 echo118→159/first bomb, native actor/bomb coords trên ba map; ID1 còn choice | Serial/ID lifecycle, duplicate, creator/validator/broadcast và peer còn thiếu |
 | Explode/chain | CP022158/kind0 có nước/HELP; calc tĩnh/message27 giữ phạm vi riêng | Fuse/clock owner/relay và cách bỏ lặp chain còn thiếu |
 | Block destroy/item reveal | Calc vùng nổ không tự xác nhận authority phá block/drop | Ai quyết block/item, state từng peer và packet/event đồng thuận |
 | Item placement/pickup | Loader/receiver có mỏ neo, chưa đủ contract | Kind/index theo build, ai đặt item, xác nhận pickup/race và broadcast |
