@@ -104,13 +104,26 @@ CP020/PR28 đã merge. Đây là bước clock/di chuyển trên một client c�
 CP022 đã phân biệt calcE9C520 với nhánh158/kind0→E9E660; burst có nước/HELP và local actor
 biến mất sau đó.180/full3 được đọc3/3/errors0 rồi stage12/UI phòng.
 [Contract](PROTOCOL.md#bomb-cycle), [raw/correction](evidence/bomb-calc/README.md).
-Bước tiếp: nối writer/full body127 với lifecycle trap/death (prefix đo17/19, chưa áp enum VN11/13),
-phục hồi kết quả/rank, chọn và kiểm policy outcome rồi reset/start trận thứ hai; giải serial/dynamic echo,
-spawn/tọa độ trước khi gọi vòng trận hoàn chỉnh. Gói180 đang phát theo fixed15s test policy, chưa chứng minh
-arbitration tự động hoặc bảng kết quả. Không dùng generic stage12 để tự đóng K5.
-Cặp159 CP021 vẫn exploratory; CP022 năm run tuần tự, copy không thêm patch.
-VN dùng làm checklist phase/round và bom/request-reply, mỗi field/handler KR cần đo riêng.
-Clock map198 và nổ/HELP/về phòng có runtime trên copy; spawn tọa độ/collision/peer vẫn cần kiểm.
+CP023 đã nối writer chungB53010 cho127/sub17/19 và giải full prefix14+blob8/5 bằng native;
+175/292rawbyte đọc đủ và UI có LOSE/PERFECT. Stub chuyển từ fixed15s sang checksum-checked
+reported19→rank chọn→180. Refresh110 host rồi guest-ready cho click thật phát104 lần hai;
+run cuối có hai vòng scene/input/bom/HELP/kết quả/phòng trên cùng channel.
+[Contract](PROTOCOL.md#round-result), [raw/control/correction](evidence/round-repeat/README.md).
+CP022/PR30 đã merge; CP023 trước tích hợp, review độc lập waived. Không tự đóng K5/K6.
+
+**Bước tiếp, Codex RE/tự kiểm:**
+
+1. Nối actual118→reply159 động: hai lượt serial candidate0 nhưng tọa độ100/1→100/3, reply vẫn100/1.
+   Đo actor/bomb pixel/tile và spawn/collision để thử input/echo đúng; giải getter100/prefixy4039.
+2. Kiểm reset state/timer và body104 tăng109→461wire. Hai actor/bomb/manager pointer mới và scene mới
+   chưa chứng minh reset đầy đủ; kind0→reported19 khoảng6.5s/0.9s cần giải thích trước policy timeout.
+3. Theo đường peer/discovery từ init99 và actual event/movement, chọn phép thử hai client cô lập.
+   VN là checklist authority/phase/bom/peer, không áp opcode/enum/ID. Bảng kết quả175 và refresh110 đã
+   có consumer/runtime; không tiếp tục ghi “unknown scoreboard” hoặc lặp probe fixed15s cũ.
+
+Cặp159 CP021 giữ exploratory, CP022 năm run tuần tự, CP023 tám run tuần tự gồm một lỗi screenshot
+trước TCP; không thêm patch copy. Outcome chỉ là policy thử local-loss/guest-win, chưa arbitration,
+serial tổng quát/item/pickup/chain/collision/peer hoặc toàn chu kỳ trận được nghiệm thu.
 Auth prefix34byte vẫn thiếu phần sau; ID1 là identity local thử. Cache persistence/cold/warm,
 reconnect/reset/codec,15/241variants,oneclickuser/+E9C/token_2/count2/vanilla giữ mở.
 AUD006 đã hoàn tấtCP020, kế CP024; review độc lập waived, Codex tự kiểm.
@@ -120,11 +133,11 @@ AUD006 đã hoàn tấtCP020, kế CP024; review độc lập waived, Codex tự
 | Q-022 / KRE-P1 bootstrap | open | Codex RE/tự kiểm | ProcessPatch local có debugger return1;recipe R2 đã merge;contract ở [PROTOCOL](PROTOCOL.md#wcp) | K1a ownership/control trên Windows local/effective token; K1b kiểm caller/config/IPC riêng CA và NewPatcher; K1c stub/patch theo evidence; gate ba cold start tới network attempt/state chờ hello, không lấy alive/không exit làm proof |
 | Q-023 / KRE-P1 codec | open | Codex RE/tự kiểm | CP015 có socket kênh mới, native replay theo từng kết nối, schema17/count0 và nhận241 | Full result0/codec/reset theo bước trên; gate K2 còn mở |
 | Q-024 / KRE-P1 login/kênh | open | Codex RE/tự kiểm | UI sảnh hết notice17/241; CP020 phục hồi inputID local, tên/profile phòng có fixture, chưa full auth/sảnh identity | Full identity/user/cache và cold/warm/reconnect K3; không gọi auth Nexon thật |
-| Q-025 / KRE-P1 room/load | open | Codex RE/tự kiểm | CP020 nhận121, slot/localID1 và init CGameStage/stage13; CP022 có nổ/HELP/180→UI phòng, chưa scoreboard/outcome/lặp trận | 127/death, kết quả/rank, reset/trận hai, spawn; join/ready/select variants/host-leave và cache; K4 hai client thấy cùng phòng và spawn đúng |
-| Q-026 / KRE-P1 authority/trận | open | Codex RE/tự kiểm | KR có nổ/HELP/về phòng CP022, consumer flame/chain và static167/184; VN mô hình lai | Phân quyền client/server/peer từng event; packet bom/pickup/trap/death/result/correction KR; K5 một chu kỳ hoàn chỉnh, không lấy packet183 ghost làm mover người sống |
+| Q-025 / KRE-P1 room/load | open | Codex RE/tự kiểm | CP023 có127writer/175bảng kết quả, hai vòng thử trên cùng channel một client/guest tổng hợp | Tọa độ/spawn/serial/timer/body104 reset, hai client; join/ready/select variants/host-leave và cache; K4 hai client thấy cùng phòng và spawn đúng |
+| Q-026 / KRE-P1 authority/trận | open | Codex RE/tự kiểm | KR có12717/19/175kết quả và hai vòng thử CP023; VN mô hình lai | Phân quyền client/server/peer từng event; packet bom/pickup/trap/death/result/correction KR; K5 một chu kỳ hoàn chỉnh, không lấy packet183 ghost làm mover người sống |
 | Q-027 / KRE-P1 peer | open | Codex RE/tự kiểm | VN92/146 và UDP P2P có runtime; chưa xác nhận tương đương KR | Peer negotiation, endpoint, key/slot, protocol UDP và relay KR; movement hai chiều, cùng result và hai trận K6 |
 | Q-028 / KRE-P2 profile/core | open | Codex/tự kiểm | Core Rust và policy V1 có sẵn, nhưng client gốc không biết ADR0009 | Sau audit Q-026/027, quyết định giữ lai/relay/shadow core hay authoritative được client hỗ trợ; profile emu có provenance, không sửa V1 implicit |
-| Q-029 / KRE-P2 vận hành | open | Codex/tự kiểm | Runtime KR copy Wine hẹp có [evidence](evidence/wcp/README.md);chưa multiplayer/gameplay | K7 bốn client, malformed/stale/duplicate/race/disconnect/restart, bounds/resource limits, Linux package, patch manifest và README tái lập |
+| Q-029 / KRE-P2 vận hành | open | Codex/tự kiểm | Runtime KR copy Wine hẹp có [evidence](evidence/wcp/README.md);chưa multiplayer hoặc nghiệm thu chu kỳ trận đầy đủ | K7 bốn client, malformed/stale/duplicate/race/disconnect/restart, bounds/resource limits, Linux package, patch manifest và README tái lập |
 
 Tối đa hai lượt mỗi câu hỏi theo plan; gặp VM hoặc thiếu runtime thì ghi entry/boundary/thí nghiệm cần,
 không đóng wire unknown bằng design. Không sửa trạng thái sang done chỉ vì đã có kế hoạch hoặc golden tự sinh.
