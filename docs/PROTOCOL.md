@@ -1,6 +1,6 @@
 # KR 00967 — contract tương thích client gốc
 
-Revision kr-legacy-contract-r1; cập nhật30/10/2026 JST (CP021).
+Revision kr-legacy-contract-r1; cập nhật30/10/2026 JST (CP022).
 **Contract có bằng chứng từng phần; chưa nghiệm thu full codec K2**.
 Lộ trình và thứ tự task chỉ giữ ở [REWRITE_PLAN — KRE](PLAN.md).
 Đây là contract của repo server KR. ADR0009 của bản viết lại là nguồn lịch sử để so sánh;
@@ -46,7 +46,7 @@ Mức `confirmed` dưới đây chỉ áp dụng nguồn/build/phạm vi ghi tro
 | Hello/version | VN server-first hello, rồi đổi mode; version 116 và packet bootstrap có thứ tự | Patch socket KR: mode0/selector0, BE16 version967, response local được chấp nhận theo [evidence](evidence/bootstrap-wire/README.md). Consumer WCP, initial0/0 và transition2/3 có bằng chứng theo [contract WCP](#wcp); full codec/seq và login/world role chưa xác nhận; không gộp socket. |
 | Login/identity | VN có pipeline login-result/network-info và variant China khác layout | CP013–014 có dispatcher/auth; CP015 đi qua redirect/request6 và UI sảnh hết notice trên copy. [Contract sảnh](#channel-lobby); full auth/profile/cache và vanilla vẫn thiếu. |
 | Cache/redirect/channel | VN cần tag blob; dữ liệu inner LE khác outer wire, cache path khởi tạo theo stage | Kiểm contract KR từ reader/consumer. Giữ test cold/warm cache; không copy blob VN hay replay flag “dùng cache” khi file không tồn tại. |
-| Lobby/room/start | VN có request/reply, slot flags, map tự gửi lúc vào phòng, loading/clock nhiều pha | Dùng để xây checklist ca biên. KR có stage11 và17/241 theo [contract sảnh](#channel-lobby); [request81/response86](#room-create) đã đưa copy tới CPrepareStage và UI phòng chờ; [player/ownslot/controls](#room-player) đã đo trên copy, [map metadata/start104](#room-map) và [start121/scene nhân vật](#start-reply), [clock/input](#round-go) đã đo; bom/vòng trận/hai client chưa có. |
+| Lobby/room/start | VN có request/reply, slot flags, map tự gửi lúc vào phòng, loading/clock nhiều pha | Dùng để xây checklist ca biên. KR có stage11 và17/241 theo [contract sảnh](#channel-lobby); [request81/response86](#room-create) đã đưa copy tới CPrepareStage và UI phòng chờ; [player/ownslot/controls](#room-player) đã đo trên copy, [map metadata/start104](#room-map) và [start121/scene nhân vật](#start-reply), [clock/input](#round-go), [nổ/HELP/về phòng](#bomb-cycle) đã đo; outcome/lặp trận/hai client còn thiếu. |
 | Bomb/item/trap/result | VN `111→152→151`; `553`, pickup `117→158`; `120` subtype; kết quả `168→173` có runtime nguồn cũ | Chỉ mỏ neo VN. KR phải nối send/receive tới object/state tương ứng trước khi implement. Fuse/drop/cap policy emulator không phải luật server gốc. |
 | Peer/movement | VN C→S92 trao IP/UDP port; S→C146 có peer table; runtime hai máy di chuyển đồng bộ qua UDP | Không giả định KR dùng cùng packet/MTUDP version hoặc không đổi peer contract. TCP-only demo không hoàn tất multiplayer khi peer chưa đồng bộ. |
 | Kiến trúc/harness | VN có hub/session/round generation, golden Python↔Rust, control 1–2 client | Dùng pattern và bài học, không coi golden hai implementation cùng logic là oracle KR; không copy legacy server vào crates của rewrite. |
@@ -60,7 +60,7 @@ Mức `confirmed` dưới đây chỉ áp dụng nguồn/build/phạm vi ghi tro
 | `0x00B7A760`, sender packet **167** | `kr_static` / `confirmed`, R-200…R-202 | Lần ngược packet builder/primitive writer từ CGOGameBomber | Không tự gán semantics/layout VN120 hoặc S→C tương ứng |
 | `0x00E67E70→0x00E84460`, packet **184 C→S** | `kr_static` / `confirmed` trong phạm vi status serialize | Writer, context/slot và status report | Không gọi đây là S→C trap event hoặc coi client report là quyết định server |
 | Packet **183 S→C**, `CGOGhost→B334C0` | `kr_static` / `confirmed`, R-138 | Reader/dispatch/context, setter đơn vị ô 40px | Chưa chứng minh đây là movement sync của bomber sống; C→S148/149 chỉ candidate |
-| `0x00E9C520` / `0x00E9CDC0`, message **27** | `kr_static` / `confirmed` theo R-139…R-141 | Tính vùng nổ/chain và đường gọi từ network event | Message27 là nội bộ; handler wire explosion chưa định vị |
+| `0x00E9C520` / `0x00E9CDC0`, message **27** | `kr_static` / `confirmed` theo R-139…R-141 | Tính vùng nổ/chain và đường gọi từ network event | Message27 là nội bộ; wire158/kind0 được bổ sung riêng ở [CP022](#bomb-cycle), chưa full chain/authority |
 | `0x01196A70`, `0x00E9E660` | `kr_static`, xem [ItemAttr](REFERENCES.md) | Loader/receiver để đối chiếu index/kind/actor | Không suy weight thành %, hoặc mặc định ItemAttr/drop placement do client chọn |
 
 Các số opcode này là các mảnh đã có, không phải registry hoàn chỉnh. Tìm được writer từ 167/184
@@ -555,8 +555,46 @@ Entry calc không tự chứng minh nổ hoặc xóa bom. Static kind0 còn đ�
 nhánhkind0 chưa runtime. ID1/kind1 và delay2.5s sau159 là lựa chọn test, không phải fuse/authority gốc.
 
 
-Bước tiếp chỉ ở [RESEARCH](RESEARCH.md): guard/state/clock của calc nổ, rồi kết quả/về phòng.
+Tại CP021, bước tiếp là guard/state/clock calc và về phòng; CP022 bên dưới bổ sung kết quả.
+Bước hiện hành chỉ ở [RESEARCH](RESEARCH.md).
 Chưa hoàn thành một trận, chưa multiplayer/fullauth/cache/vanilla hoặc qua K2–K5.
+
+<a id="bomb-cycle"></a>
+### Bom nổ, HELP và trở về phòng — CP022
+
+**kr_static/kr_runtime confirmed theo copy offline**; fixture/time/policy là **emu_choice**.
+[Evidence](evidence/bomb-calc/README.md) khóa năm run tuần tự, code/native/ảnh/hash và correction;
+copy stage-social SHAe9bb47… không thêm patch. Sáu vùng code/table so byte với static copy660447….
+Đây bổ sung CP021: kết luận “chưa thấy nổ/về phòng” ở các run trước là lịch sử, không phải trạng thái hiện tại.
+
+**158/kind1 và calc:** `calc-guard` thấyE9C520 ở stack đặt trước159 (`AF10E5→AEF528`) và
+sau158/kind1 (`E5F5CF`). Kind getter1, các getter tọa độ100/1/power1, cell khác0 và qua spread;
+không phải guard đầu loại request. Không gọi hàm tính này là detonation; vị trí100 không tự xác nhận tile hợp lệ.
+
+**158/kind0:** u8 count1,u16 ID1,u8 kind0, **2u32,u8**; mẫu2/FFFFFFFF/FF,
+seq88/payload13 đọc13/13/errors0. `E14360→E9E660` nhận đúng pointer bom đã được159 cấp ID1.
+Nhánh này xây tập sự kiện rồi gọi cleanup virtual; burst runtime có nước ở ô bom, `HELP!`/local trong
+bong bóng, bom biến mất và vật cản lân cận thay đổi. Run stay có local biến mất/roster đổi sau đó;
+đây là quan sát hình ảnh, chưa full contract death/outcome/peer hoặc toàn authority phá block.
+Các input thêm/delay2.5s là test choice, chưa fuse gốc hay đầy đủ nhánh kind/type.
+
+Native prefix10byte của hai capture127 sau blast là `[17,0,40,4039,1441]` và
+`[19,0,40,4039,1650]`, widths u8,u8,u16,u16,u32; payload32/29byte.
+17/19 có liên hệ thời gian với HELP/local biến mất, **semantics candidate**; writer/tail chưa phục hồi,
+không chuyển enum VN11/13 hoặc tự gán vị trí4039 thành spawn hợp lệ. Các127/142/167 khác chưa là full event contract.
+
+**180/branch thường:** dispatcher`E5D62B`, CGameStagevt176A470+2D8→`E64950`.
+`1220550` còn có branch khác quaE72490, chưa kiểm. Mẫu branch thường đọc **bool (u8), u8, u8**:
+virtual38→`14EB1F0` thực gọi getter3C và tiêu thụ một byte; rồi status và listflag.
+Chọn0/0/0, seq91/payload3: `result180-full` đọc3/3/error54=0/error58=0,
+`E652D8→12562F0(12)` và UI phòng có KRLocal/KRGuest/nút Bắt đầu vẽ lại.
+Listflag0 bỏ list variant; reset flags/position đi qua handler, chưa chứng minh start trận kế.
+
+Mẫu đầu2byte có framing và hai getter pass nhưng callback báo54=1, vẫn gọi stage12;
+giữ làm short-body control, không gọi full valid result. Việc trở về phòng không tự chứng minh parse đúng.
+Stub phát180 sau158 đúng15s theo test policy, không tự quyết thắng thua từ death.
+Chưa bảng kết quả/rank175, serial/dynamic echo, lifecycle death hoàn chỉnh, hai trận/hai client,
+full auth/cache/vanilla hoặc pass K2–K5. Bước tiếp duy nhất ở [RESEARCH](RESEARCH.md).
 
 ### Giới hạn và correction WCP lịch sử
 
@@ -597,11 +635,11 @@ locator/trace và trạng thái từng ô; những vai trò không nêu dưới 
 |---|---|---|
 | Movement | Consumer dir/position có phạm vi lớp;183 đã nối ghost | Input player→mover/network, peer update/correction và ai chấp nhận vị trí |
 | Bomb place/ID | CP021 có118/159, cùng CGOGameBomb và bom hiện trên map local | Serial/ID lifecycle, duplicate, creator/validator/broadcast và peer còn thiếu |
-| Explode/chain | Client có calc `E9C520/E9CDC0`, message27 | Trigger wire/timer/clock owner, relay và cách bỏ lặp chain |
+| Explode/chain | CP022158/kind0 có nước/HELP; calc tĩnh/message27 giữ phạm vi riêng | Fuse/clock owner/relay và cách bỏ lặp chain còn thiếu |
 | Block destroy/item reveal | Calc vùng nổ không tự xác nhận authority phá block/drop | Ai quyết block/item, state từng peer và packet/event đồng thuận |
 | Item placement/pickup | Loader/receiver có mỏ neo, chưa đủ contract | Kind/index theo build, ai đặt item, xác nhận pickup/race và broadcast |
-| Trap/death | Client gửi167/status184 trong phạm vi R-200…202 | Ai chấp nhận kết quả, đường nhận của peer, timeout và loại trùng |
-| Result/reset | Chưa có wire contract | Người quyết outcome, result/round identity và reset hai phía |
+| Trap/death | CP022 có HELP/local biến mất;127prefix17/19 candidate, tĩnh167/184 còn phạm vi riêng | Full event/ai chấp nhận kết quả/peer/timeout/loại trùng còn thiếu |
+| Result/reset | CP022180/full3 về UI phòng trên copy, trigger thử cố định | Outcome/rank, round identity và reset/start lặp hai phía còn mở |
 | Peer lifecycle | Chưa xác nhận KR giống MTUDP VN | Discovery/key/slot/endpoint/reliability/relay và peer được sửa state nào |
 
 Gate K5/K6 cần kiểm matrix và đối chứng của hành vi thực sự dùng; từ28/10 Codex tự kiểm theo miễn review của chủ dự án. Có thể giữ unknown về

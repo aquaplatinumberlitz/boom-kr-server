@@ -1,7 +1,7 @@
 {
   "schema": "kre-checkpoints-v1",
-  "last_id": "CP021",
-  "completed_count": 21,
+  "last_id": "CP022",
+  "completed_count": 22,
   "audit_interval": 4,
   "last_periodic_audit": 20,
   "next_periodic_audit": "CP024",
@@ -21745,6 +21745,1053 @@
           "path": "docs/evidence/round-go/README.md",
           "state": "updated",
           "reason": "Grouped runs, reproducible recipe, native/runtime/visual provenance, corrections and hash references."
+        }
+      ]
+    },
+    {
+      "id": "CP022",
+      "previous": "CP021",
+      "lifecycle": "complete",
+      "recorded_utc": "2026-10-30T04:30:48.347064+00:00",
+      "question": "Which KR branch detonates the visible bomb, what happens to the local actor, and which complete result180 input returns the client to its room?",
+      "scope": "Five sequential isolated Wine runs on unchanged CP020 copy; targeted kind1/calc control, kind0 detonation, visual burst/HELP, partial127 prefix and short/full180 callback. One client with synthetic guest, fixed result trigger, no full match/gate claim.",
+      "context_commit": "96a0e48efd76a50d174c889b18c1f8b9cfcb397e",
+      "owner": "Codex",
+      "reviewer": "Codex",
+      "artifacts": [
+        {
+          "name": "CA-r2-login-logout.exe",
+          "sha256": "660447c293ce92270cb9b5815331bca976e8f156366e1fe50b217b6c12e60ce3"
+        },
+        {
+          "name": "CA-r2-stage-social.exe",
+          "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+        },
+        {
+          "name": "modO.bin",
+          "sha256": "a08950c833d3acab8281049def7b3dc96b221f107eeda01da3a548e34b91dce5"
+        }
+      ],
+      "locators": [
+        "VA base400000/RVA=VA-400000; static660447/runtimeE9BB47/nativeA08950; six targeted code/table ranges byte-matched.",
+        "E9C520 appears before159 (AF10E5←AEF528) and after158/kind1 (E5F5CF); guardkind1, coordinate getters100/1,power1,cellnonzero/spread/end.",
+        "158/kind0 E5F450→E14360→E9E660, payload13/seq88 and full runtime13/13/errors0; E9EC74 after cleanup.",
+        "kind0-burst blast01 water/HELP; screen24/26 local absent. Native127 frame49/seq187 and53/199 prefix10 gives17/19; fullpayload32/29 not recovered.",
+        "180 dispatcher E5D62B; vt176A470+2D8→E64950; initialbool virtual38→14EB1F0→getter3C consumes1byte; status/listflag follow.",
+        "result180 short2 reaches12 but54=1. result180-full0/0/0 seq91 reads3/3/errors0, E652D8→12562F0(12), screen29 UI room.",
+        "Fixed result15s after158 is emulator test policy. Namespace-held lease checked during final run; legacy harnesses not covered."
+      ],
+      "findings": [
+        {
+          "summary": "VN kind0 lifecycle and result navigation selected focused probes; KR extra fields, firstbool and subtype prefix verified independently.",
+          "source": "vn_static",
+          "status": "confirmed",
+          "method": "documentation",
+          "canonical": "docs/PROTOCOL.md#bomb-cycle",
+          "evidence": [
+            "E064"
+          ],
+          "limits": "Historical sources only, no new VN runtime or opcode/enum-offset mapping."
+        },
+        {
+          "summary": "E9C520 also runs on placement-side stack and158/kind1; guards pass and spread completes, without detonation.",
+          "source": "kr_runtime",
+          "status": "confirmed",
+          "method": "runtime",
+          "canonical": "docs/PROTOCOL.md#bomb-cycle",
+          "evidence": [
+            "E065",
+            "E066",
+            "E005",
+            "E006",
+            "E009"
+          ],
+          "limits": "Only targeted calc behavior, no full world/coordinate/collision proof; getter100 remains unexplained."
+        },
+        {
+          "summary": "158/kind0 full13-byte input enters E9E660 and cleanup; water/HELP and local bubble are captured, later local actor absent with changed roster icon.",
+          "source": "kr_runtime",
+          "status": "confirmed",
+          "method": "runtime",
+          "canonical": "docs/PROTOCOL.md#bomb-cycle",
+          "evidence": [
+            "E069",
+            "E070",
+            "E073",
+            "E074",
+            "E081",
+            "E082",
+            "E087",
+            "E089",
+            "E090",
+            "E093",
+            "E007",
+            "E008"
+          ],
+          "limits": "One modified local client/synthetic guest; visual trap/disappearance only, not complete death contract, original fuse, peer authority or full match."
+        },
+        {
+          "summary": "Captured127 small postblast frames have native prefix17/19, unlike VN11/13; complete writer/tail and semantics remain candidate.",
+          "source": "kr_runtime",
+          "status": "candidate",
+          "method": "emulation",
+          "canonical": "docs/PROTOCOL.md#bomb-cycle",
+          "evidence": [
+            "E015",
+            "E031",
+            "E018"
+          ],
+          "limits": "Only10 bytes of32/29 decoded; temporal relation to HELP/disappearance is not causal proof or full event schema."
+        },
+        {
+          "summary": "180 static branch firstbool consumes a byte. Short2 callback reports54=1 despite returning12; full3 consumes3/3/errors0 and actual UI room redraws.",
+          "source": "kr_runtime",
+          "status": "confirmed",
+          "method": "runtime",
+          "canonical": "docs/PROTOCOL.md#bomb-cycle",
+          "evidence": [
+            "E077",
+            "E078",
+            "E081",
+            "E082",
+            "E001",
+            "E003",
+            "E004",
+            "E094"
+          ],
+          "limits": "Ordinary branch/listflag0 only. Fixed15s result trigger; no scoreboard/rank/arbitration/second-start proof. Other feature branch1220550/E72490 untested."
+        },
+        {
+          "summary": "Diagnostic kind0 values2/-1/255, result0/0/0, seq88/91,2.5s bomb scheduling and15s result scheduling are emulator choices.",
+          "source": "emu_choice",
+          "status": "candidate",
+          "method": "emulation",
+          "canonical": "docs/PROTOCOL.md#bomb-cycle",
+          "evidence": [
+            "E021",
+            "E036",
+            "E038"
+          ],
+          "limits": "Native framing/getters separate from callback; chosen fields do not recover historical timing/outcome policy."
+        },
+        {
+          "summary": "New kind0-derived harness holds fcntl lease inside PID namespace; observed held, seal requires final run.json and all five run timestamps are sequential.",
+          "source": "design",
+          "status": "design",
+          "method": "runtime",
+          "canonical": "docs/PROTOCOL.md#bomb-cycle",
+          "evidence": [
+            "E054",
+            "E096",
+            "E056",
+            "E058"
+          ],
+          "limits": "Prevents overlapping adopting harnesses only; legacy harness can bypass lease. Lifecycle guard, not protocol evidence."
+        }
+      ],
+      "verification": [
+        {
+          "check": "1630 mechanical checks/5 sequential runs; raw hash/isolation/pinnedcopy/harness, native replay all captured frames plus CRC/partial negatives,9 framing cases/3 fixtures, typed readers, expected short180 overread and full180 correction, lease/burst/cleanup markers.",
+          "result": "pass",
+          "evidence": [
+            "E058",
+            "E055",
+            "E030"
+          ],
+          "limits": "Manual code/images/timeline checked separately; no independent review, full death/outcome/round-repeat/multiplayer or gate closure."
+        }
+      ],
+      "evidence": [
+        {
+          "id": "E001",
+          "kind": "local",
+          "path": "local/research/codex/bomb-calc-r1/14EB1F0.asm",
+          "bytes": 6394,
+          "sha256": "38671d1d9e43304145de898dcc8dff47d0a5ce1c92b641be651e6e831bcb9aa5"
+        },
+        {
+          "id": "E002",
+          "kind": "local",
+          "path": "local/research/codex/bomb-calc-r1/E5D62B.asm",
+          "bytes": 658,
+          "sha256": "e868b2ec7c016740db08f1256bac3c9faf2670004c327d229e338960b975b9a9"
+        },
+        {
+          "id": "E003",
+          "kind": "local",
+          "path": "local/research/codex/bomb-calc-r1/E64950.asm",
+          "bytes": 14972,
+          "sha256": "abf038c7062f9b607934f41b70d49b10027f16476dd019d4df341c9910330dac"
+        },
+        {
+          "id": "E004",
+          "kind": "local",
+          "path": "local/research/codex/bomb-calc-r1/E6521E.asm",
+          "bytes": 3025,
+          "sha256": "105068b5a2d3c4a38d08e7ff0b9f8d2442868f2220fdfbe63adccc370d947246"
+        },
+        {
+          "id": "E005",
+          "kind": "local",
+          "path": "local/research/codex/bomb-calc-r1/E9C520.asm",
+          "bytes": 16171,
+          "sha256": "8717fcfd6b99c4a53780401d95fd3847e8a4c94af6dbc72d37d5f271323bd3c9"
+        },
+        {
+          "id": "E006",
+          "kind": "local",
+          "path": "local/research/codex/bomb-calc-r1/E9CA1F.asm",
+          "bytes": 14634,
+          "sha256": "442f8a94ca3fbff42feacf26d2c0a589bc0134532f78294d336dcae5b47d16e4"
+        },
+        {
+          "id": "E007",
+          "kind": "local",
+          "path": "local/research/codex/bomb-calc-r1/E9E660.asm",
+          "bytes": 12375,
+          "sha256": "60dca134e6308adbfa866bff0040105ae739090f668bf6cc5d823664e3fe6d98"
+        },
+        {
+          "id": "E008",
+          "kind": "local",
+          "path": "local/research/codex/bomb-calc-r1/E9E998.asm",
+          "bytes": 12289,
+          "sha256": "5769d409990c381f7f518ab23e60361151b8b6a4c0e1be3a47f79ec98fe99866"
+        },
+        {
+          "id": "E009",
+          "kind": "local",
+          "path": "local/research/codex/bomb-calc-r1/E9F6D0.asm",
+          "bytes": 4720,
+          "sha256": "a7b3dabdbdf979aa382e4cf2f18f0ce7012317471acbdacd63745b94236f492e"
+        },
+        {
+          "id": "E010",
+          "kind": "local",
+          "path": "local/research/codex/bomb-calc-r1/calc-guard-hashes.json",
+          "bytes": 17402,
+          "sha256": "b6d23fc395a909a240deb65ad15db20bc0c781a6040c0c699ecd3ec526dfd90b"
+        },
+        {
+          "id": "E011",
+          "kind": "local",
+          "path": "local/research/codex/bomb-calc-r1/calc-guard-launcher.log",
+          "bytes": 25429,
+          "sha256": "2fcaf9f2399ae9861fab52707abe551a7534928fb59759f745642e26ad2a39a8"
+        },
+        {
+          "id": "E012",
+          "kind": "local",
+          "path": "local/research/codex/bomb-calc-r1/calc-guard-oracle.json",
+          "bytes": 88851,
+          "sha256": "3811160c13afac783d080a04e8c5b5329e5bcc0aa37c57b72b4b12f46c22cdad"
+        },
+        {
+          "id": "E013",
+          "kind": "local",
+          "path": "local/research/codex/bomb-calc-r1/calc-guard-recipe.json",
+          "bytes": 979,
+          "sha256": "05242c19355e65ad9f2a5608a0b679e7f082552f854a4bc65df693dd5c4c9d87"
+        },
+        {
+          "id": "E014",
+          "kind": "local",
+          "path": "local/research/codex/bomb-calc-r1/calc-guard.gdb",
+          "bytes": 5056,
+          "sha256": "cf10972d3254cbc5097ab460695ef8ed14366d7d90ca72db2040e95ab0f0bb47"
+        },
+        {
+          "id": "E015",
+          "kind": "local",
+          "path": "local/research/codex/bomb-calc-r1/event127-prefix.json",
+          "bytes": 1066,
+          "sha256": "e00ef2cd0c2454b1e38dbbc8ba41fbdff3cb125c12c03c8af69c63bd384448cd"
+        },
+        {
+          "id": "E016",
+          "kind": "local",
+          "path": "local/research/codex/bomb-calc-r1/kind0-burst-hashes.json",
+          "bytes": 23148,
+          "sha256": "ccef1839854e0554b8de893e8cfe88e502760b16cccc0914fbc6d720597aedb4"
+        },
+        {
+          "id": "E017",
+          "kind": "local",
+          "path": "local/research/codex/bomb-calc-r1/kind0-burst-launcher.log",
+          "bytes": 25809,
+          "sha256": "7aa3f72c936732f25f2000d47bc035c4a529f1c7fa3334756bb1bc92658edc4d"
+        },
+        {
+          "id": "E018",
+          "kind": "local",
+          "path": "local/research/codex/bomb-calc-r1/kind0-burst-oracle.json",
+          "bytes": 91377,
+          "sha256": "222b29b49070957cca36267bce2517f82540b1574cadaaf701951ef02ee76e55"
+        },
+        {
+          "id": "E019",
+          "kind": "local",
+          "path": "local/research/codex/bomb-calc-r1/kind0-burst-recipe.json",
+          "bytes": 982,
+          "sha256": "598be45f9310522476712bbd1cd43b61d0e3dcad5392829eba37cf0d7b5a920c"
+        },
+        {
+          "id": "E020",
+          "kind": "local",
+          "path": "local/research/codex/bomb-calc-r1/kind0-burst.gdb",
+          "bytes": 5269,
+          "sha256": "d7e1e351daaddad29b915c3153058ac8210718c4af24fb81242c86a3c06cd0e5"
+        },
+        {
+          "id": "E021",
+          "kind": "local",
+          "path": "local/research/codex/bomb-calc-r1/kind0-fixture.json",
+          "bytes": 662,
+          "sha256": "20200ed15bdf15d17ce0ea91b3f3c59a2013b11d400bf77a99712e0e6544d75f"
+        },
+        {
+          "id": "E022",
+          "kind": "local",
+          "path": "local/research/codex/bomb-calc-r1/kind0-frame-oracle.json",
+          "bytes": 1190,
+          "sha256": "2126ddeae761e61d0cadc398f50b74d82a8250f73fef98a07ab2bff804d6b7ab"
+        },
+        {
+          "id": "E023",
+          "kind": "local",
+          "path": "local/research/codex/bomb-calc-r1/kind0-hashes.json",
+          "bytes": 17519,
+          "sha256": "b256602b59eb684669821a8ac3dc2d93e6b0a7e6b2080255350015fd1ff26ee6"
+        },
+        {
+          "id": "E024",
+          "kind": "local",
+          "path": "local/research/codex/bomb-calc-r1/kind0-launcher.log",
+          "bytes": 25733,
+          "sha256": "d37cbfa77f59ce6a90d2b535ca7702eaf04adea3ae8a6a2f31700f97e96c1988"
+        },
+        {
+          "id": "E025",
+          "kind": "local",
+          "path": "local/research/codex/bomb-calc-r1/kind0-native-fields.json",
+          "bytes": 436,
+          "sha256": "38c0fa6ae95f1ea6cf9e62174b7447f911e429eca930e8f42c2d746f6a55c8eb"
+        },
+        {
+          "id": "E026",
+          "kind": "local",
+          "path": "local/research/codex/bomb-calc-r1/kind0-oracle.json",
+          "bytes": 91544,
+          "sha256": "580a354535a422af5891ea07bbd6f6500bdeb4054709182e5ee65e27173d23bc"
+        },
+        {
+          "id": "E027",
+          "kind": "local",
+          "path": "local/research/codex/bomb-calc-r1/kind0-recipe.json",
+          "bytes": 964,
+          "sha256": "35759e879a4a36226d012d6ae12f693e4cbfbbe164ebad5168c2963218a6290e"
+        },
+        {
+          "id": "E028",
+          "kind": "local",
+          "path": "local/research/codex/bomb-calc-r1/kind0.bin",
+          "bytes": 51,
+          "sha256": "5095a65ab689b03ac91e11a9d306341cf9995b5bf8dc8ac146706908c60496b7"
+        },
+        {
+          "id": "E029",
+          "kind": "local",
+          "path": "local/research/codex/bomb-calc-r1/kind0.gdb",
+          "bytes": 5193,
+          "sha256": "21dd350edc0dcdb7f3a069ac9128067cfc276c0438c5d91a7855c1d4a3dd2edf"
+        },
+        {
+          "id": "E030",
+          "kind": "local",
+          "path": "local/research/codex/bomb-calc-r1/measurement-notes.json",
+          "bytes": 1860,
+          "sha256": "14090d79524904c1d8f8baf3fa2d822843ab4f87e8bbf11e8b7c87f3da163f9e"
+        },
+        {
+          "id": "E031",
+          "kind": "local",
+          "path": "local/research/codex/bomb-calc-r1/probe127.py",
+          "bytes": 1846,
+          "sha256": "9f574a366262b0ef323b0689dbb0df8167b084e0ba45dc55610f07075e1c6019"
+        },
+        {
+          "id": "E032",
+          "kind": "local",
+          "path": "local/research/codex/bomb-calc-r1/read_static.py",
+          "bytes": 668,
+          "sha256": "0ad35b090ccd171edf4c20851965c12783d11211656ff23974c7230b24063f0c"
+        },
+        {
+          "id": "E033",
+          "kind": "local",
+          "path": "local/research/codex/bomb-calc-r1/replay-run.py",
+          "bytes": 3000,
+          "sha256": "55425d1573e8f86a171f5f2146a27f7a5687209ba1a4ad59bf033f3a96185048"
+        },
+        {
+          "id": "E034",
+          "kind": "local",
+          "path": "local/research/codex/bomb-calc-r1/result-dispatch-candidates.json",
+          "bytes": 2332,
+          "sha256": "923fbc9a840af811af99138d82b10894b6b9024011bc696cc235c0583b448e4b"
+        },
+        {
+          "id": "E035",
+          "kind": "local",
+          "path": "local/research/codex/bomb-calc-r1/result-vtable-target.json",
+          "bytes": 293,
+          "sha256": "a42a2517bec4ad24b9739f1aca759127b5ad9dec365124877261c5a5aeaa409b"
+        },
+        {
+          "id": "E036",
+          "kind": "local",
+          "path": "local/research/codex/bomb-calc-r1/result180-fixture.json",
+          "bytes": 512,
+          "sha256": "c342e9e803b0cef2bbeb41add8fd311fcc9d9bf6b76d105b5cb49f68470e7703"
+        },
+        {
+          "id": "E037",
+          "kind": "local",
+          "path": "local/research/codex/bomb-calc-r1/result180-frame-oracle.json",
+          "bytes": 1206,
+          "sha256": "46ba1c25d680ab722cd3f9a179ef3a751300d81f1bf5f3ad65c795019e34153a"
+        },
+        {
+          "id": "E038",
+          "kind": "local",
+          "path": "local/research/codex/bomb-calc-r1/result180-full-fixture.json",
+          "bytes": 582,
+          "sha256": "f84f22e2324dca4077d212fc69de70732721c46c87a332cd35ea8ed2581c99c6"
+        },
+        {
+          "id": "E039",
+          "kind": "local",
+          "path": "local/research/codex/bomb-calc-r1/result180-full-frame-oracle.json",
+          "bytes": 1221,
+          "sha256": "ec21206275a5d4b000aa4ed8b7a8063ab0bd8b25478dda85234b2de0ed6e92b0"
+        },
+        {
+          "id": "E040",
+          "kind": "local",
+          "path": "local/research/codex/bomb-calc-r1/result180-full-hashes.json",
+          "bytes": 25293,
+          "sha256": "24f392e0819c9b083a44012baadcd97fd31e26c5cea6cce3cab96ca618b5346d"
+        },
+        {
+          "id": "E041",
+          "kind": "local",
+          "path": "local/research/codex/bomb-calc-r1/result180-full-launcher.log",
+          "bytes": 27333,
+          "sha256": "d33c5f1337716545ba591a48242a01c43da8c45d1e9f1d1a5d5d39b14d527b19"
+        },
+        {
+          "id": "E042",
+          "kind": "local",
+          "path": "local/research/codex/bomb-calc-r1/result180-full-native-fields.json",
+          "bytes": 400,
+          "sha256": "badda748cc7479fcd2c8dcbe9ce82f81639d4dd4e51614e174b6a2aac7dbd1b5"
+        },
+        {
+          "id": "E043",
+          "kind": "local",
+          "path": "local/research/codex/bomb-calc-r1/result180-full-oracle.json",
+          "bytes": 100762,
+          "sha256": "5333b2a5fcace06a8f8e78c038989e9e706ee68c63afc9bb71b875f2e6d93856"
+        },
+        {
+          "id": "E044",
+          "kind": "local",
+          "path": "local/research/codex/bomb-calc-r1/result180-full-recipe.json",
+          "bytes": 990,
+          "sha256": "08ad6ea2cab99af9f7d0d5025cdc5454b773c62a7d13fdb3cd778c5ab433a332"
+        },
+        {
+          "id": "E045",
+          "kind": "local",
+          "path": "local/research/codex/bomb-calc-r1/result180-full.bin",
+          "bytes": 41,
+          "sha256": "b2e1c6e22b2210d0ac198fea278d2b7d70d982935e88acb641b36cb45afaa8b0"
+        },
+        {
+          "id": "E046",
+          "kind": "local",
+          "path": "local/research/codex/bomb-calc-r1/result180-hashes.json",
+          "bytes": 24653,
+          "sha256": "c0c269d31a78873d733080a01852f8ee8a57c1ea8e8cf83a6661773687566ce9"
+        },
+        {
+          "id": "E047",
+          "kind": "local",
+          "path": "local/research/codex/bomb-calc-r1/result180-launcher.log",
+          "bytes": 27288,
+          "sha256": "d8985c76417314e87377985182609c11fbb15bc791b341ba9763f7598b965b8e"
+        },
+        {
+          "id": "E048",
+          "kind": "local",
+          "path": "local/research/codex/bomb-calc-r1/result180-native-fields.json",
+          "bytes": 384,
+          "sha256": "d77ae5dab02639d91971271400219cfb0f79bba9d29607cefd2196dfc0ed6a1e"
+        },
+        {
+          "id": "E049",
+          "kind": "local",
+          "path": "local/research/codex/bomb-calc-r1/result180-oracle.json",
+          "bytes": 100777,
+          "sha256": "2002c4173a950726a929f79c81f5af54ddfa758b6f890109c6255785d792f0a6"
+        },
+        {
+          "id": "E050",
+          "kind": "local",
+          "path": "local/research/codex/bomb-calc-r1/result180-recipe.json",
+          "bytes": 975,
+          "sha256": "ba12bbccb32f955440b97cd002040f4c6cdb2d7e0d0cb2c0a2da41de2f606eb5"
+        },
+        {
+          "id": "E051",
+          "kind": "local",
+          "path": "local/research/codex/bomb-calc-r1/result180.bin",
+          "bytes": 40,
+          "sha256": "6da8f376c1f0b921531b4213bccd06a8bb452b2bf8e4cadce871306eecd5ace5"
+        },
+        {
+          "id": "E052",
+          "kind": "local",
+          "path": "local/research/codex/bomb-calc-r1/result180.gdb",
+          "bytes": 5649,
+          "sha256": "322378c2f71f14d2651a216b87802a6e202d331f9aa0c8d811f903c5ddcbe88c"
+        },
+        {
+          "id": "E053",
+          "kind": "local",
+          "path": "local/research/codex/bomb-calc-r1/run_probe.py",
+          "bytes": 1065,
+          "sha256": "207595e5ce976e5cfaf530ac2dd0c086511576fdcbb020e6da5219bc3d693b40"
+        },
+        {
+          "id": "E054",
+          "kind": "local",
+          "path": "local/research/codex/bomb-calc-r1/runtime-lease-check.json",
+          "bytes": 290,
+          "sha256": "cbf4d448afb54170a0ba353db70f6a121db41c8a4c0b1d7b0eec4b8ea2eb14b9"
+        },
+        {
+          "id": "E055",
+          "kind": "local",
+          "path": "local/research/codex/bomb-calc-r1/runtime-summary.json",
+          "bytes": 5231,
+          "sha256": "4171518f6595b919d408cf93a793575d76ebfd3617a4b6d7e7cd9ad1be0d42cc"
+        },
+        {
+          "id": "E056",
+          "kind": "local",
+          "path": "local/research/codex/bomb-calc-r1/seal_run.py",
+          "bytes": 623,
+          "sha256": "b45b4014400c3ded78f764b5e7123b247775e171b21a97c30a32b74591044ab3"
+        },
+        {
+          "id": "E057",
+          "kind": "local",
+          "path": "local/research/codex/bomb-calc-r1/static-runtime-code-match.json",
+          "bytes": 1295,
+          "sha256": "110cd573ff7411e32dd2074dfd73db7cd43929f712af05a39475cfcc321d70e8"
+        },
+        {
+          "id": "E058",
+          "kind": "local",
+          "path": "local/research/codex/bomb-calc-r1/verification.json",
+          "bytes": 85030,
+          "sha256": "1f606f177d7c9b3ffcdf18a3ee9f6ebc04dd648f7ac3e820df46de7d8f8e402f"
+        },
+        {
+          "id": "E059",
+          "kind": "local",
+          "path": "local/research/codex/bomb-calc-r1/verify-frame.py",
+          "bytes": 2070,
+          "sha256": "7071037e9dc6f8112db1678c714bf189c5b4f7e68d2d00fb597eddf51ca2b562"
+        },
+        {
+          "id": "E060",
+          "kind": "local",
+          "path": "local/research/codex/bomb-calc-r1/verify-kind0.py",
+          "bytes": 1524,
+          "sha256": "a64ff11a7ada873fd111cafde358db069844b1bc388389b17807eb11237db584"
+        },
+        {
+          "id": "E061",
+          "kind": "local",
+          "path": "local/research/codex/bomb-calc-r1/verify-result180-full.py",
+          "bytes": 1542,
+          "sha256": "e44088217b51302a6805c0ecb381ee3bd45462a1a7033e1b475a830070eca56c"
+        },
+        {
+          "id": "E062",
+          "kind": "local",
+          "path": "local/research/codex/bomb-calc-r1/verify-result180.py",
+          "bytes": 1532,
+          "sha256": "d3836bf9b9c5cc39dfd52228ee6475e850a06dbf481c036652f4d8fd1bc7ce52"
+        },
+        {
+          "id": "E063",
+          "kind": "local",
+          "path": "local/research/codex/bomb-calc-r1/verify.py",
+          "bytes": 4351,
+          "sha256": "b043ff8fd2404ce1723d20e38042c70ad985050701453f7ae3728fe32635b5f5"
+        },
+        {
+          "id": "E064",
+          "kind": "local",
+          "path": "local/research/codex/bomb-calc-r1/vn-bomb-navigation.json",
+          "bytes": 632,
+          "sha256": "9569fb140c252aa11b7f21fa9b273adb10862fa71c36413e931b396d3650ed8b"
+        },
+        {
+          "id": "E065",
+          "kind": "local",
+          "path": "local/research/codex/bomb-calc-r1/calc-guard/run.json",
+          "bytes": 30433,
+          "sha256": "b93ec72ab02c4d7ca591f16a5709b3c84aabd5993d9da0dcb0a0720c04fa3730"
+        },
+        {
+          "id": "E066",
+          "kind": "local",
+          "path": "local/research/codex/bomb-calc-r1/calc-guard/client.log",
+          "bytes": 15067,
+          "sha256": "a6dec5c7b8f444991f201d510ba655873e346cd2ff84557b22403060bc807a2d"
+        },
+        {
+          "id": "E067",
+          "kind": "local",
+          "path": "local/research/codex/bomb-calc-r1/calc-guard/CALog-run.txt",
+          "bytes": 3286,
+          "sha256": "1fe9bfabea224071081f5ca26a15940e5b43526b30cfda080a9709ffdea83bab"
+        },
+        {
+          "id": "E068",
+          "kind": "local",
+          "path": "local/research/codex/bomb-calc-r1/calc-guard/debug-commands.txt",
+          "bytes": 5056,
+          "sha256": "cf10972d3254cbc5097ab460695ef8ed14366d7d90ca72db2040e95ab0f0bb47"
+        },
+        {
+          "id": "E069",
+          "kind": "local",
+          "path": "local/research/codex/bomb-calc-r1/kind0/run.json",
+          "bytes": 30761,
+          "sha256": "4d8726ee8bbe9420e7bc76745430f59480ad79577ee77a6538bb22460a770653"
+        },
+        {
+          "id": "E070",
+          "kind": "local",
+          "path": "local/research/codex/bomb-calc-r1/kind0/client.log",
+          "bytes": 14372,
+          "sha256": "6e63bfb74accb9bce61af5e72b629ed916fa1cf79be09baee40b4ceada71997d"
+        },
+        {
+          "id": "E071",
+          "kind": "local",
+          "path": "local/research/codex/bomb-calc-r1/kind0/CALog-run.txt",
+          "bytes": 3311,
+          "sha256": "740867f1dd3e0472d7aee4a3d55db6917df907e7497d0810b46998384ad84526"
+        },
+        {
+          "id": "E072",
+          "kind": "local",
+          "path": "local/research/codex/bomb-calc-r1/kind0/debug-commands.txt",
+          "bytes": 5193,
+          "sha256": "21dd350edc0dcdb7f3a069ac9128067cfc276c0438c5d91a7855c1d4a3dd2edf"
+        },
+        {
+          "id": "E073",
+          "kind": "local",
+          "path": "local/research/codex/bomb-calc-r1/kind0-burst/run.json",
+          "bytes": 31741,
+          "sha256": "1d8828f3ef0ce3794082642bafc16f83a72ac64fee5bb01f67106e3544037442"
+        },
+        {
+          "id": "E074",
+          "kind": "local",
+          "path": "local/research/codex/bomb-calc-r1/kind0-burst/client.log",
+          "bytes": 14470,
+          "sha256": "deff4557b0dd917a312aa5444f537dc311b911775ea347412264e511e8f06257"
+        },
+        {
+          "id": "E075",
+          "kind": "local",
+          "path": "local/research/codex/bomb-calc-r1/kind0-burst/CALog-run.txt",
+          "bytes": 3212,
+          "sha256": "61231d970b43d23dfd27a5abf48c2543e689ec1bb2d02097eaa078aa6a7d60f0"
+        },
+        {
+          "id": "E076",
+          "kind": "local",
+          "path": "local/research/codex/bomb-calc-r1/kind0-burst/debug-commands.txt",
+          "bytes": 5269,
+          "sha256": "d7e1e351daaddad29b915c3153058ac8210718c4af24fb81242c86a3c06cd0e5"
+        },
+        {
+          "id": "E077",
+          "kind": "local",
+          "path": "local/research/codex/bomb-calc-r1/result180/run.json",
+          "bytes": 33712,
+          "sha256": "8d70c5622538812e412cc0ee7069101b551d12157df082de98a6a85d8a39e1c6"
+        },
+        {
+          "id": "E078",
+          "kind": "local",
+          "path": "local/research/codex/bomb-calc-r1/result180/client.log",
+          "bytes": 14656,
+          "sha256": "b7c2788d43ea63a2ae89b7d28bc465ed6541a21508d100ec8e47e3cb4ef82c19"
+        },
+        {
+          "id": "E079",
+          "kind": "local",
+          "path": "local/research/codex/bomb-calc-r1/result180/CALog-run.txt",
+          "bytes": 3515,
+          "sha256": "4e5586aa8b4acd78b816f67e7371cb218c40990eecd12ababb8aaf331034d417"
+        },
+        {
+          "id": "E080",
+          "kind": "local",
+          "path": "local/research/codex/bomb-calc-r1/result180/debug-commands.txt",
+          "bytes": 5649,
+          "sha256": "322378c2f71f14d2651a216b87802a6e202d331f9aa0c8d811f903c5ddcbe88c"
+        },
+        {
+          "id": "E081",
+          "kind": "local",
+          "path": "local/research/codex/bomb-calc-r1/result180-full/run.json",
+          "bytes": 33795,
+          "sha256": "2263cfe2ab294e5c4b0fa97e9af9bb10e028661f6b6140728208b28b9d4a4585"
+        },
+        {
+          "id": "E082",
+          "kind": "local",
+          "path": "local/research/codex/bomb-calc-r1/result180-full/client.log",
+          "bytes": 14656,
+          "sha256": "44224df3a0bcce3096d0278b7c7da51609ddb962fad8519200e6c21d48b5efd2"
+        },
+        {
+          "id": "E083",
+          "kind": "local",
+          "path": "local/research/codex/bomb-calc-r1/result180-full/CALog-run.txt",
+          "bytes": 3515,
+          "sha256": "ca85d5b4a327e6360ca463cd96abac9065d218b04de2f8449ea1e8e9dd5781e0"
+        },
+        {
+          "id": "E084",
+          "kind": "local",
+          "path": "local/research/codex/bomb-calc-r1/result180-full/debug-commands.txt",
+          "bytes": 5649,
+          "sha256": "322378c2f71f14d2651a216b87802a6e202d331f9aa0c8d811f903c5ddcbe88c"
+        },
+        {
+          "id": "E085",
+          "kind": "local",
+          "path": "local/research/codex/bomb-calc-r1/kind0/screen-18.png",
+          "bytes": 195078,
+          "sha256": "6855004e15a77390248576f2e514106180a6121724ab78dcb473e59c45293bf4"
+        },
+        {
+          "id": "E086",
+          "kind": "local",
+          "path": "local/research/codex/bomb-calc-r1/kind0-burst/blast-00.png",
+          "bytes": 194646,
+          "sha256": "1019e2706597a2bee523cce388e54303a49d23a5eb530acf6a720a31bd97044e"
+        },
+        {
+          "id": "E087",
+          "kind": "local",
+          "path": "local/research/codex/bomb-calc-r1/kind0-burst/blast-01.png",
+          "bytes": 202254,
+          "sha256": "1d598f97e926ef3fdc920c90b724980e128f98234051489a01925a686fef3a23"
+        },
+        {
+          "id": "E088",
+          "kind": "local",
+          "path": "local/research/codex/bomb-calc-r1/kind0-burst/blast-02.png",
+          "bytes": 201266,
+          "sha256": "edbeaf3383e8d6cc41cb7057a229f65262a4e90fcaad89283ee0f93008d0c2d7"
+        },
+        {
+          "id": "E089",
+          "kind": "local",
+          "path": "local/research/codex/bomb-calc-r1/kind0-burst/blast-07.png",
+          "bytes": 199721,
+          "sha256": "334907bc1cf99f4688f131c33964dad2671a91ee526c4fe42b269a706ffde187"
+        },
+        {
+          "id": "E090",
+          "kind": "local",
+          "path": "local/research/codex/bomb-calc-r1/kind0-burst/screen-24.png",
+          "bytes": 191864,
+          "sha256": "83e0e73e5ce9c43969bb9aa703858dde11ee612c2c717ffd5d14bd017b2e6099"
+        },
+        {
+          "id": "E091",
+          "kind": "local",
+          "path": "local/research/codex/bomb-calc-r1/kind0-burst/screen-26.png",
+          "bytes": 192773,
+          "sha256": "9bd548ca5e579b3e3c1b47862a8aceb6dd8406b2584a5afb85464a521df95736"
+        },
+        {
+          "id": "E092",
+          "kind": "local",
+          "path": "local/research/codex/bomb-calc-r1/result180/screen-29.png",
+          "bytes": 175819,
+          "sha256": "d2c15ef16779001e3626e359846e3a5094b7fcdf67d5c6301601e48252ff35ca"
+        },
+        {
+          "id": "E093",
+          "kind": "local",
+          "path": "local/research/codex/bomb-calc-r1/result180-full/blast-01.png",
+          "bytes": 201869,
+          "sha256": "0d2b6627c1ce7a6c1acc8defc0a4bb2f0370b499943ae637cc177df06bfca513"
+        },
+        {
+          "id": "E094",
+          "kind": "local",
+          "path": "local/research/codex/bomb-calc-r1/result180-full/screen-29.png",
+          "bytes": 175701,
+          "sha256": "234dfcdb035b2a6d64e12e71a338a4b305f66a8ff6bae2795a053c67d9bafb48"
+        },
+        {
+          "id": "E095",
+          "kind": "local",
+          "path": "local/research/codex/wine_probe_explode158.py",
+          "bytes": 37360,
+          "sha256": "7636fd2b5d86e7bea98edd30eb0b04574150ec599d12b43450064fe22975c509"
+        },
+        {
+          "id": "E096",
+          "kind": "local",
+          "path": "local/research/codex/wine_probe_bomb_kind0.py",
+          "bytes": 37560,
+          "sha256": "0fc6f1ad6b06fb613186bd17e028b5b4a370cc43314b20240a56bd38424230e1"
+        },
+        {
+          "id": "E097",
+          "kind": "local",
+          "path": "local/research/codex/wine_probe_bomb_burst.py",
+          "bytes": 38246,
+          "sha256": "2a288e80dffcb56089bdc46629dfd22a365ecb3047658b14896092d40f1a7e65"
+        },
+        {
+          "id": "E098",
+          "kind": "local",
+          "path": "local/research/codex/wine_probe_result180.py",
+          "bytes": 38839,
+          "sha256": "2a859c89aa5a10fbacd1d46ef1e579de2cf88f725f4bff4c48793d170ba74b57"
+        },
+        {
+          "id": "E099",
+          "kind": "local",
+          "path": "local/research/codex/wine_probe_result180_full.py",
+          "bytes": 38844,
+          "sha256": "f80cb1fbd27911e2fc1e5e9e9d5384c71a537efdd5dbb653d116d3fb96aa4c79"
+        },
+        {
+          "id": "E100",
+          "kind": "local",
+          "path": "local/research/codex/bootstrap-copy-oracle.py",
+          "bytes": 2377,
+          "sha256": "8127e0f2fbc385360e878bb68ae3a6680eabbf7456335f0f3db75c7c3b73a8c0"
+        },
+        {
+          "id": "E101",
+          "kind": "local",
+          "path": "local/research/codex/bootstrap-recv-oracle.py",
+          "bytes": 2104,
+          "sha256": "1e86c06540e8fe654564c5bd403f859070f77c9af0d5d11c70c9351198e00ae2"
+        },
+        {
+          "id": "E102",
+          "kind": "local",
+          "path": "local/research/codex/ui-handler-r1/oracle-dependencies/boomproto.py",
+          "bytes": 7779,
+          "sha256": "e9642ec10e53cfed6c24c0c5ade07b34a46ce02073a8d316f724776686855bbd"
+        },
+        {
+          "id": "E103",
+          "kind": "local",
+          "path": "local/research/codex/round-go-r1/reply159.bin",
+          "bytes": 77,
+          "sha256": "aafc349b2b6f518fffbac1a02df7e7c7c94a2c328fdb35d68c8fd67bb1ebef01"
+        },
+        {
+          "id": "E104",
+          "kind": "local",
+          "path": "local/research/codex/round-go-r1/go197-time30.bin",
+          "bytes": 52,
+          "sha256": "1e3437fc0f52910e218c69570a4e7e6c83f73a66ba11f5313ac6ad0d50b34881"
+        },
+        {
+          "id": "E105",
+          "kind": "local",
+          "path": "local/research/codex/round-go-r1/play196.bin",
+          "bytes": 45,
+          "sha256": "3a18b79220fefa06560caabfe4d1de27574e3835ac1cedbf800006258264f0d4"
+        },
+        {
+          "id": "E106",
+          "kind": "local",
+          "path": "local/research/codex/round-go-r1/begin198.bin",
+          "bytes": 51,
+          "sha256": "c6704c3997e319a8f2ed4bfdaf20a2d600fb1ca1af3d5bae0c6f6ea1b07fce64"
+        },
+        {
+          "id": "E107",
+          "kind": "local",
+          "path": "local/research/codex/round-go-r1/explode158.bin",
+          "bytes": 42,
+          "sha256": "ec49cc969d27b0a543826b2a10d66ff2b502645579145e40f484bfa8f94d4905"
+        },
+        {
+          "id": "E108",
+          "kind": "local",
+          "path": "local/research/codex/round-go-r1/E5F450.asm",
+          "bytes": 11490,
+          "sha256": "afb3d07781c400722fb2ccfefefe9e539d029573886402e002beba03dc188407"
+        },
+        {
+          "id": "E109",
+          "kind": "local",
+          "path": "local/research/codex/round-go-r1/E14360.asm",
+          "bytes": 11198,
+          "sha256": "f64091621363cdf2a38aedc078855251e26f9aebd9d81244bd422c86d728483e"
+        },
+        {
+          "id": "E110",
+          "kind": "local",
+          "path": "local/research/codex/start-reply-r1/start121-final.bin",
+          "bytes": 167,
+          "sha256": "a19f169cf30af78f51e8a82d8c4ba26d36324b8016ac3c7deb14c82ea3e16a76"
+        },
+        {
+          "id": "E111",
+          "kind": "local",
+          "path": "local/research/codex/wcp-guard-r1/game/CA-r2-login-logout.exe",
+          "bytes": 31874560,
+          "sha256": "660447c293ce92270cb9b5815331bca976e8f156366e1fe50b217b6c12e60ce3"
+        },
+        {
+          "id": "E112",
+          "kind": "local",
+          "path": "local/research/codex/wcp-guard-r1/game/CA-r2-stage-social.exe",
+          "bytes": 31874560,
+          "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+        },
+        {
+          "id": "E113",
+          "kind": "artifact",
+          "path": "/home/admin/boom/repos/boomkr-re/out/modO.bin",
+          "bytes": 31858688,
+          "sha256": "a08950c833d3acab8281049def7b3dc96b221f107eeda01da3a548e34b91dce5"
+        },
+        {
+          "id": "E114",
+          "kind": "artifact",
+          "path": "/home/admin/boom/repos/boom-re/docs/oc_e-game.md",
+          "bytes": 70895,
+          "sha256": "9e80ecea3fb7d152f58a4a0d60ac6e1f6759b18be23bf53d908bb896dbad0b6a"
+        },
+        {
+          "id": "E115",
+          "kind": "artifact",
+          "path": "/home/admin/boom/repos/boom-re/server/src/session.rs",
+          "bytes": 35262,
+          "sha256": "0d32f8eff705a2f731b799ae3e68ba6d7dff52b1f97678bafc1341b83078e8ec"
+        }
+      ],
+      "delta": {
+        "added": [
+          "Actual158/kind0 detonation path, water/HELP and later actor disappearance on copy.",
+          "180/full3 callback and UI return to room after fixed diagnostic trigger.",
+          "Namespace-held runtime lease and final-run seal guard for new probes."
+        ],
+        "corrected": [
+          "CP021 unknown explosion/return now bounded runtime evidence; original checkpoint/raw unchanged.",
+          "Calc entry/guard is not detonation; kind1 had no early rejection and runs during placement too.",
+          "Initial180 two-byte framing/typed-getter success did not prove callback;54=1 caught missing firstbool, full3 fixes it.",
+          "KR127 prefix17/19 differs from VN11/13; no enum-offset inference.",
+          "CP021 PR29 merged at96a0e48; CP022 integration pending snapshot, independent review waived."
+        ],
+        "superseded": [
+          "NEXT-BOMB118-ROUND superseded by NEXT-ROUND-END-REPEAT after kind0/HELP/room-return milestone."
+        ]
+      },
+      "blockers": [
+        "Full death127 writer/tail, result/rank175 and automatic outcome policy unproved;180 trigger is fixed test timing.",
+        "Only first serial0/id1/one client/synthetic guest; dynamic echo, duplicate handling, reset/second round and two-client consistency remain open.",
+        "Getter100/prefixy4039 and exact spawn/collision/asset semantics unclear; full auth/profile/cache/reconnect/codec reset/vanilla controls still open."
+      ],
+      "next_steps": [
+        {
+          "id": "NEXT-BOMB118-ROUND",
+          "task": "KRE-005b",
+          "state": "superseded",
+          "action": "158kind0 and180full3 now measured with water/HELP/UI room; continue event/outcome/round-repeat.",
+          "owner": "Codex",
+          "reviewer": "Codex"
+        },
+        {
+          "id": "NEXT-ROUND-END-REPEAT",
+          "task": "KRE-005b",
+          "state": "active",
+          "action": "Trace127 full writer/death; recover result/rank175, validate chosen outcome policy and serial/reset/start second round before gate claims.",
+          "owner": "Codex",
+          "reviewer": "Codex"
+        },
+        {
+          "id": "NEXT-FULL-LOGIN-FIELDS",
+          "task": "KRE-005b",
+          "state": "active",
+          "action": "Complete full auth/profile/identity/cache/reconnect/codec controls before K2/K3 acceptance.",
+          "owner": "Codex",
+          "reviewer": "Codex"
+        }
+      ],
+      "review": {
+        "status": "waived",
+        "as_of_utc": "2026-10-30T04:30:48.347064+00:00",
+        "reference": "docs/evidence/checkpoints/review-waiver.json",
+        "scope": "Codex solo RE/code/runtime and self-check; no independent approval.",
+        "authorization": {
+          "by": "project_owner",
+          "reference": "docs/evidence/checkpoints/review-waiver.json",
+          "reason": "Owner explicitly instructed solo work without Claude review."
+        }
+      },
+      "docs_sync": [
+        {
+          "path": "README.md",
+          "state": "updated",
+          "reason": "Current water/HELP/UI-room milestone and fixed-result/outcome/full-match limits; PR29 merged."
+        },
+        {
+          "path": "docs/PLAN.md",
+          "state": "updated",
+          "reason": "Measured cycle path and next event/rank/serial/repeat tasks; gates open."
+        },
+        {
+          "path": "docs/PROTOCOL.md",
+          "state": "updated",
+          "reason": "Canonical158kind0/calc distinction and180 firstbool/short-control/full3; partial127 and scope."
+        },
+        {
+          "path": "docs/RESEARCH.md",
+          "state": "updated",
+          "reason": "Resolve bounded explosion/room-return questions; focus full death/outcome/repeat/identity gaps."
+        },
+        {
+          "path": "docs/evidence/bomb-calc/README.md",
+          "state": "updated",
+          "reason": "Grouped five runs/recipe/rawhash/oracles/images and corrections."
         }
       ]
     }
