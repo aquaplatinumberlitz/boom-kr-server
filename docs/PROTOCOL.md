@@ -1,6 +1,6 @@
 # KR 00967 — contract tương thích client gốc
 
-Revision kr-legacy-contract-r1; cập nhật30/10/2026 JST (CP027).
+Revision kr-legacy-contract-r1; cập nhật31/10/2026 JST (CP031).
 **Contract có bằng chứng từng phần; chưa nghiệm thu full codec K2**.
 Lộ trình và thứ tự task chỉ giữ ở [REWRITE_PLAN — KRE](PLAN.md).
 Đây là contract của repo server KR. ADR0009 của bản viết lại là nguồn lịch sử để so sánh;
@@ -667,8 +667,9 @@ Guard log state trong probe là pointer wrapper, không phải raw flag word; đ
 **Lịch sử CP024, chỉ bom đầu/serial0:** stub lúc đó chuyển field3/u32 của118 vào field2/u16
 của159, giữ field3/u32 của159=0. Vì chỉ đo serial0, cả hai field đều0; đây là candidate chưa phân biệt
 được serial. **CP025 bác cách ghép tổng quát này** bằng bom thứ hai/serial28, sửa ở
-[contract serial](#bomb-serial); raw/checkpoint CP024 giữ nguyên. Echo owner và ba byte hàng/cột/
-power candidate vẫn được kiểm độc lập. Các tọa độ/spawn/profile dưới đây giữ phạm vi CP024.
+[contract serial](#bomb-serial); raw/checkpoint CP024 giữ nguyên. Hai byte hàng/cột vẫn được kiểm
+độc lập. Byte thứ ba từng gán power candidate bị CP031 bác bằng Fire; xem [mapping power](#item-effects).
+Các tọa độ/spawn/profile dưới đây giữ phạm vi CP024.
 
 **Tọa độ đã đo:** getter`B335C0/B335E0` đọc secure wrapper actor+4C/+58 qua`57A870→52A350`.
 Snapshot gồm wrapper và vùng data trỏ tới; checksum được giải thủ công rồi gọi native52A350 độc lập.
@@ -724,7 +725,8 @@ Với118/base22/flag0, widths13field vẫn `[4,1,1,4,1,1,1,1,1,1,1,4,1]`.
 |---|---|---|
 |field2/u8 owner |field1/u8 |owner0 trong các run này |
 |field3/u32, record+0C |**field3/u32**, payload+4 |serial ghép local pool, đo0/28/56; không ép u16 |
-|field4/5/6/u8 |field6/7/8/u8, payload+16/+17/+18 |hàng/cột/power candidate như CP024 |
+|field4/5/u8 |field6/7/u8, payload+16/+17 |hàng/cột đã đo; không gộp field6 của118 thành power |
+|**field10/u8, record+18** |**field8/u8**, payload+18 |Correction CP031 bằng Fire1→2; [bằng chứng](#item-effects). CP025 dùng field6=1 nên chưa phân biệt hai field |
 |ID do stub cấp |field11/u16, payload+24 |chọn1/2/3; allocator/round generation/collision còn design |
 |không suy từ118 serial |field2/u16, payload+2 |aux unknown, giữ0 trong ca sửa; không gọi field này serial |
 
@@ -830,7 +832,9 @@ chưa phục hồi đủ codec movement/reliability/handshake/relay hoặc cơ c
 
 **Bom hai phía:** hai run`duo-bombs`/`duo-confirm` có bốn request118 thực, owner/serial lần lượt
 `(0,0),(0,28),(1,1),(1,29)`. Không mặc định serial bắt đầu0 hoặc dùng chung giữa hai owner.
-Stub echo serial u32/owner/hàng/cột/power sang159 như [contract serial](#bomb-serial), cấp **ID chung1–4**,
+Stub tại CP027 echo serial u32/owner/hàng/cột và field6=1 sang159, cấp **ID chung1–4**.
+Field6 khi đó còn là power candidate; CP031 đã sửa nguồn power thành field10 sau Fire, xem
+[contract serial](#bomb-serial) và [correction](#item-effects). Các bom CP027 đều power1, chưa phân biệt hai field.
 broadcast159 rồi158/kind0 tới cả hai socket bằng seq riêng. Mỗi phía đọc4×39/39 và4×13/13/errors0,
 trả4entity khác0, lookup IDs1/2/3/4 và4kind0/cleanup. Ảnh B có bomA, ảnh A có bomB.
 Allocator thử và fuse4s/args/fieldzero là **emu_choice/design**, không phải luật server gốc hoặc
@@ -1014,7 +1018,8 @@ u8 ok, u8 ctx, u8 slot, u8 row, u8 column, u32 index, u16 kind, bool flag
 `E2C660` xóa pending theo ctx/index trước kiểm ok/context. Native reject/context-mismatch chỉ kiểm
 header/nhánh từ chối với cache/world model; positive effect lấy từ runtime. `ok!=0` và context khớp
 mới đi tiếp lookup actor theo slot; interface actor+588 gọi `F73D30`, sau đó tìm item, kiểm tọa độ/kind
-trước phần xử lý tiếp. Cạnh tĩnh `F73D30→B52840→E14DA0` là mỏ neo đo stat tiếp, chưa proof +stat/cap.
+trước phần xử lý tiếp. Cạnh tĩnh `F73D30→B52840→E14DA0` tại CP030 mới là mỏ neo; CP031 đã nối
+và đo [stat Bomb/Fire cùng giới hạn](#item-effects).
 Không gửi nguyên124 làm reply: thêm ok, bỏ haiu32 t/k, mã hóa lại165 theo seq của từng receiver.
 
 **Control và can thiệp:** `near-control` có A gửi124/index17/row4/col3/kind0 nhưng không165;
@@ -1032,14 +1037,69 @@ chưa đảo thứ tự winner, duplicate replay, stale/round generation, stat c
 | Vai trò cho hành vi đã dùng | Bằng chứng/giới hạn |
 |---|---|
 | Creator | Stub chọn layout/index/kind; client tự phát124 khi chạm item. Không phục hồi thuật toán drop server gốc. |
-| Simulator | Client dựng item, giữ pending và xử lý165/interface. Stat/cap từng loại chưa đo. |
+| Simulator | Client dựng item, giữ pending và xử lý165/interface. Tại CP030 chưa đo stat/cap; kết quả Bomb/Fire mới ở [CP031](#item-effects). |
 | Validator | Harness kiểm CRC, slot theo origin và allowlist index/tọa độ/kind; giữ một index cho request đầu. Đây là design hẹp, thiếu kiểm room/round/generation/timing đầy đủ. |
 | Broadcaster | Stub mã hóa165 riêng từng socket và gửi cả origin lẫn peer; hai consumer đã quan sát. |
 | Peer-editable state | Report124 chỉ được chấp nhận theo slot gắn socket trong harness. Toàn grammar/quyền UDP và chống sửa state ngoài đường này còn unknown. |
 
-Placement/first-arrival/delay2s là **emu_choice/design**, không luật server gốc. Hiệu ứng stat/cap,
-item ẩn/phá block/drop, variants, malformed/duplicate/stale/reset/disconnect và full auth/cache/codec
-còn mở; không ghép riêng mốc này với CP029 thành nghiệm thu full match/K5/K6a hoặc LAN/Internet.
+Placement/first-arrival/delay2s là **emu_choice/design**, không luật server gốc. Stat và duplicate sau
+xóa được kiểm tiếp hẹp ở [CP031](#item-effects); item ẩn/phá block/drop, variants, malformed/stale/
+reset/disconnect và full auth/cache/codec còn mở. Không ghép riêng mốc này với CP029 thành nghiệm thu
+full match/K5/K6a hoặc LAN/Internet.
+
+<a id="item-effects"></a>
+### Bomb/Fire: stat, giới hạn và nguồn power — CP031
+
+**kr_runtime/kr_static confirmed trong phạm vi diagnostic copy Wine**;
+[control/native/snapshot/hash và audit](evidence/item-effects/README.md). CP030 mới kiểm layout/pickup;
+CP031 theo cạnh đang chạy, không thay binary hoặc ép stat bằng debugger.
+
+**Đường thực thi:**165→`F73D30→B52840→E14DA0→1190A40`; custom-effect getter trả0,
+đi `1192700`. Group1 chọn `11927AE`, gọi `1191840` bốn effect number. Bomb/kind0 có effect1,
+Fire/kind1 có effect2; ba số còn lại là0 ở hai loại này. Receiver runtime là actor+58C,
+vtable17760BC. Effect1→v4/B47180→context actor+4A0/vA4/**AF06F0**;
+effect2→v8/B47210→cùng context/vA0/**AF0690**. Không lấy interface+588 của165 làm receiver stat.
+
+| Stat secure của actor | Offset wrapper | Phạm vi đã đo |
+|---|---|---|
+| Capacity hiện tại / max |+4A4 / +50C |Slot0 ban đầu1/10, sau Bomb2/10; slot1 giữ2/7 |
+| Fire/power hiện tại / max |+4BC / +524 |Slot1 ban đầu1/9, sau Fire2/9; slot0 giữ1/7 |
+
+Hai client chụp cùng giá trị trước/sau từng165 và lúc clock bắt đầu; checksum giải độc lập rồi gọi
+native `529C60→52A350` trên wrapper/data đã capture. Chỉ profile hai slot hiện tại; chưa nối tên
+asset/character tới mọi base/max, chưa Roller/Shoe/speed hoặc cơ chế reset về base.
+
+**Phép tăng/kẹp native:** AF06F0 dùng context+4/+6C; AF0690 dùng+1C/+84.
+`636620` đọc secure current rồi cộng1/ghi bằng52A860; sau đó so signed current với max.
+Nếu vượt, `54B610` chép max về current và trả0; trong giới hạn trả1. Mười ca emulation chạy code
+increment/getter/setter/clamp/RNG thật với context/box storage tổng hợp, gồm tại max và current>max.
+Counters/callback định kỳ của instrumentation được khởi tạo0; chưa mô phỏng rollover các counters.
+Đây là **emulation** của nhánh kẹp; runtime mới kiểm pickup dưới max, chưa ca nhặt dư tại max.
+
+**Control hành vi:** cùng layout hai item và ba lần bấm Space xen Right cho mỗi slot, fuse thử30s
+để mọi input kết thúc trước158 đầu. Không165: A có một118, B có hai; có165: A có hai, B vẫn hai.
+Mọi bom có actual118/native replay và159 trả entity ở cả hai. Không lấy việc thiếu request thứ ba
+riêng lẻ làm proof trần; snapshot stat và nhánh kẹp là các bằng chứng riêng. Tại B, field10 của118
+tăng1→2 sau Fire. Không suy hai actor có cùng capacity ban đầu từ cùng recipe.
+
+**165 gửi lặp:** sau mỗi positive165 khoảng1s, gửi lại cùng payload bằng seq receiver mới liên tục.
+Cả hai vẫn đọc12/12/errors0 nhưng stat không tăng lần hai; mỗi loại chỉ đi increment một lần.
+`E14DA0` tra item trước effect; trong nhánh item không còn, trả sớm. Ca đo giới hạn hai index đã bị
+xóa trong cùng round, không chứng minh mọi stale/round-generation/reuse index đều an toàn.
+
+**Correction power118→159:** mapping cũ dùng field6 của118 như power chỉ vì cả field6 vàfield10
+đều1 trước pickup. Fire phân biệt: field6 vẫn1, **field10/u8 tại payload+16, nguồn record+18**, lên2.
+Writer `E2E1D1` serialize record+18; không dùng record+30 (nguồn field6) thay nó.
+Harness `capacity-power` đổi nguồn **118.field10→159.field8/u8 tại payload+18**;
+owner/serial/hàng/cột/ID giữ cách ghép đã kiểm. Native đọc packet độc lập, và `E9C58C` trên cả hai
+client đọc power2 cho bom B tại6/3,6/4; bom A tại3/3,3/4 giữ1. Trước correction chỉ có proof wire
+đang lấy nhầm field, chưa probe calc của peer để gán toàn bộ ảnh hưởng runtime cũ.
+Raw/checkpoint/harness CP024–030 và các run mapping cũ giữ nguyên làm lịch sử/control; không sửa hash cũ.
+
+Emulator vẫn chọn placement/index, fuse30s, broadcast, timing/duplicate và outcome. Nhánh tăng stat
+và clamp là code client đã chạy, không tự phục hồi authority server gốc. Item ẩn/phá block/reveal,
+runtime nhặt tại max, speed, validator/round reset/disconnect/full auth/cache/codec còn mở;
+**chưa full match/K5/K6a/LAN/Internet**.
 
 ### Giới hạn và correction WCP lịch sử
 
@@ -1072,7 +1132,7 @@ liệt kê và phân biệt với nguyên bản trong mọi demo.
 
 ### Authority matrix hiện hành và gate review
 
-Bảng này tổng hợp bằng chứng từng phần đến CP030; chưa phải toàn contract server gốc. Mỗi hàng khi
+Bảng này tổng hợp bằng chứng từng phần đến CP031; chưa phải toàn contract server gốc. Mỗi hàng khi
 triển khai phải bổ sung riêng **creator, simulator, validator, broadcaster, peer-editable state**, với
 locator/trace và trạng thái từng ô; những vai trò không nêu dưới đây hiện `unknown` cho KR.
 
@@ -1082,7 +1142,7 @@ locator/trace và trạng thái từng ô; những vai trò không nêu dưới 
 | Bomb place/ID | CP027 hai owner/ID chung1..4 tạo trên cả hai client; [phạm vi](#peer-duo); lặp/cũ CP025 | Allocator/rollover/concurrent/race/round generation và authority ngoài policy broadcast thử |
 | Explode/chain | CP027 bốn kind0/cleanup mỗi client; CP022 có nước/HELP; chain chưa nghiệm thu | Fuse/clock owner/relay và cách bỏ lặp chain còn thiếu |
 | Block destroy/item reveal | Calc vùng nổ không tự xác nhận authority phá block/drop | Ai quyết block/item, state từng peer và packet/event đồng thuận |
-| Item placement/pickup | CP030 layout582/actual124/165, hai origin và một ca tranh index; [vai trò và giới hạn](#item-pickup) | Hiệu ứng stat/cap, item ẩn/drop, đảo thứ tự winner, duplicate/stale/generation và reset chưa đo |
+| Item placement/pickup | CP030 layout/nhặt/tranh index; CP031 Bomb/Fire stat tăng trên cả hai,165 lặp sau xóa không tăng, clamp native và power correction; [contract](#item-effects) | Runtime tại max, speed, item ẩn/drop, đảo winner, stale/generation và reset chưa đo |
 | Trap/death | CP029 control mismatch và170/17,19 đưa remoteactor56→1 trước175 qua hai vòng; [contract](#peer-events) | Validator/timeout/duplicate/stale/generation, rescue/enemy-pop và variants còn thiếu |
 | Result/reset | CP028 reported19→175→180/full3 đọc đủ ở cả hai client, cùng về UI phòng; [phạm vi](#duo-room-round) | CP029 có boundedtrap/death forwarding; arbitration/round identity, không rò entity/timer/peer/seq và disconnect vẫn mở |
 | Peer lifecycle | CP027 actual99→153 và UDP send/receive hai client; [phạm vi](#peer-duo) | Full schema receive/handshake/key/slot/reliability/relay và giới hạn state peer được sửa |
