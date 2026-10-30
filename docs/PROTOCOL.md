@@ -46,7 +46,7 @@ Mức `confirmed` dưới đây chỉ áp dụng nguồn/build/phạm vi ghi tro
 | Hello/version | VN server-first hello, rồi đổi mode; version 116 và packet bootstrap có thứ tự | Patch socket KR: mode0/selector0, BE16 version967, response local được chấp nhận theo [evidence](evidence/bootstrap-wire/README.md). Consumer WCP, initial0/0 và transition2/3 có bằng chứng theo [contract WCP](#wcp); full codec/seq và login/world role chưa xác nhận; không gộp socket. |
 | Login/identity | VN có pipeline login-result/network-info và variant China khác layout | CP013–014 có dispatcher/auth; CP015 đi qua redirect/request6 và UI sảnh hết notice trên copy. [Contract sảnh](#channel-lobby); full auth/profile/cache và vanilla vẫn thiếu. |
 | Cache/redirect/channel | VN cần tag blob; dữ liệu inner LE khác outer wire, cache path khởi tạo theo stage | Kiểm contract KR từ reader/consumer. Giữ test cold/warm cache; không copy blob VN hay replay flag “dùng cache” khi file không tồn tại. |
-| Lobby/room/start | VN có request/reply, slot flags, map tự gửi lúc vào phòng, loading/clock nhiều pha | Dùng để xây checklist ca biên. KR có stage11 và17/241 theo [contract sảnh](#channel-lobby); [request81/response86](#room-create) đã đưa copy tới CPrepareStage và UI phòng chờ; [player/ownslot/controls](#room-player) đã đo trên copy, [map metadata/start104](#room-map) và [start121/scene nhân vật](#start-reply), [clock/input](#round-go), [nổ/HELP/về phòng](#bomb-cycle) đã đo; bảng kết quả chọn đã có [CP023](#round-result), authority/reset đầy đủ/hai client còn thiếu. |
+| Lobby/room/start | VN có request/reply, slot flags, map tự gửi lúc vào phòng, loading/clock nhiều pha | Dùng để xây checklist ca biên. KR có stage11 và17/241 theo [contract sảnh](#channel-lobby); [request81/response86](#room-create) đã đưa copy tới CPrepareStage và UI phòng chờ; [player/ownslot/controls](#room-player) đã đo trên copy, [map metadata/start104](#room-map) và [start121/scene nhân vật](#start-reply), [clock/input](#round-go), [nổ/HELP/về phòng](#bomb-cycle) đã đo; bảng kết quả chọn đã có [CP023](#round-result), hai client movement/bom đã đo ở [CP027](#peer-duo), join/Ready và chu kỳ pair ở [CP028](#duo-room-round); authority/reset đầy đủ còn thiếu. |
 | Bomb/item/trap/result | VN `111→152→151`; `553`, pickup `117→158`; `120` subtype; kết quả `168→173` có runtime nguồn cũ | Chỉ mỏ neo VN. KR phải nối send/receive tới object/state tương ứng trước khi implement. Fuse/drop/cap policy emulator không phải luật server gốc. |
 | Peer/movement | VN C→S92 trao IP/UDP port; S→C146 có peer table; runtime hai máy di chuyển đồng bộ qua UDP | Không giả định KR dùng cùng packet/MTUDP version hoặc không đổi peer contract. TCP-only demo không hoàn tất multiplayer khi peer chưa đồng bộ. |
 | Kiến trúc/harness | VN có hub/session/round generation, golden Python↔Rust, control 1–2 client | Dùng pattern và bài học, không coi golden hai implementation cùng logic là oracle KR; không copy legacy server vào crates của rewrite. |
@@ -237,7 +237,7 @@ không thêm patch binary hoặc ép ready/index/level. Fixture và bounds là `
   Command2011→`813060`; control có `+4EC74=0,+4EC70=0` và trả ngay.
 - **S→C91**, u16 count=0 (seq49 ở channel socket sau17/241), UI dispatcher`810AC0`→`8150F0`:
   handler tự đặt`+4EC74=1`. Nhánh count>0 đọc blob, mỗi entry u16/u32 rồi object consumer;
-  mới xác nhận count0, chưa đủ contract danh sách phòng không rỗng.
+  tại CP016 mới xác nhận count0. CP028 bổ sung một row không rỗng ở [contract join](#duo-room-round); các variant khác vẫn mở.
 - Sau91, callback qua guard rồi kiểm level`1220360`; control chưa có bảng kênh chọn index−1,
   getter`13A2E10` tính`context+E4*index+84`, gây fault`52A219` trên secure-box ngoài hàng.
   Chưa quy lỗi này cho profile hoặc input; snapshot xác nhận index−1 trong run này.
@@ -355,11 +355,11 @@ Run `room-guest` thêm KRGuest slot1/ID2/state ready nhưng cùng team8, click t
 Run `teams-retry` dùng state self=`02 00 00 00`, guest=`24 00 00 00`,110 self cùng state;
 bits5..9 của lowword đổi team8→0/1 theo consumer`D628E0`. UI đổi đỏ/vàng, đủ hai player/đội để
 click tới thông báo **map hiện tại cho tối đa0 người tham gia**. Đây là bằng chứng runtime hẹp cho
-team0/1 và nhánh start, không phải hai client hoặc ready/team roundtrip. Chưa gửi request start.
+team0/1 và nhánh start tại CP018, chưa ready roundtrip ở checkpoint đó. CP028 bổ sung [Ready95→110](#duo-room-round).
 Một lần trước đó (`room-teams`) wineboot timeout35s trước client, không tính là phép đo game;
 retry prefix mới giữ nguyên copy/fixture/harness.
 Tại CP018, Handler117/DC70D0 mới là locator tĩnh và chưa có map/load/Battle.
-CP019 bên dưới nối table/ack/filter; auth/profile/cache hoàn chỉnh và hai client vẫn chưa có.
+CP019 bên dưới nối table/ack/filter; CP027–028 có hai client thật. Auth/profile/cache hoàn chỉnh vẫn thiếu.
 
 <a id="room-map"></a>
 ### Map metadata, filter và request start (CP019)
@@ -811,9 +811,9 @@ variant/stage/reset tương đương hoặc header timeout đã là cấu hình 
 
 **Identity và roster:** A nhậnID1, B nhậnID2 qua auth prefix34byte, không sửa identity/ownflag từ GDB.
 A slot0/KRLocal, B slot1/KRGuest; B nhận106 của chính mình trước ởseq58,110slot1/61 rồi106A/64.
-Cả hai nhận cùng map ExVillage01/code278 và121 đã đo. A vẫn click tạo/start; B hiện cũng dùngcreate86
+Cả hai nhận cùng map ExVillage01/code278 và121 đã đo. **Trong CP027**, A click tạo/start; B dùngcreate86
 và server push121 sau map/profile tạistage12. **Chưa chứng minh join/ready chuẩn hoặc phòng chung
-production**, full auth/profile/cache vẫn thiếu; không gán cấpIDlocal thành login Nexon thành công.
+production tại CP027**. CP028 đã nối [join/Ready thực](#duo-room-round); full auth/profile/cache vẫn thiếu, không gán cấpIDlocal thành login Nexon thành công.
 
 **Trao endpoint thực:** stub chờ cả hai99 trước khi phát197/196/153. Trong153, cả slot0/1 bật;
 slot của máy mình có ba endpoint0 chẩn đoán; slot bên kia dùng `(7f000001,u16port từ99),(0,0),(0,0)`.
@@ -842,9 +842,74 @@ và thêm ảnh trễ sau Space/trigger158: run hoàn tất không lỗi, cùng4
 Tên ảnh`blast-N` chỉ thời điểm trigger snapshot sau emit158; callback GDB mới chứng minh thực thi,
 không suy ảnh luôn bắt đúng frame nước nổ. Control/runtime cũ giữ nguyên hash.
 
-**Giới hạn nghiệm thu:** chưa hai trận đầy đủ, đồng thuận trap/death/result/item, join/ready chuẩn,
+**Giới hạn tại CP027:** chưa hai trận đầy đủ, đồng thuận trap/death/result/item, join/ready chuẩn,
 reset/disconnect, LAN hoặc Internet. Authority matrix dưới đây còn phần validator/broadcast/peer-editable
 chưa đủ. Bước tiếp chỉ giữ ở [RESEARCH](RESEARCH.md#q-023); không tự đóng K4/K5/K6 từ mốc này.
+
+<a id="duo-room-round"></a>
+### Join, Ready và chu kỳ hai client — CP028
+
+**kr_static/kr_runtime confirmed hẹp trên copy Wine**, [recipe/control/hash](evidence/duo-room-round/README.md).
+Không patch thêm vào copy SHAe9bb47…; hai client/prefix/display/game-dir riêng, chung namespace chỉlo.
+Fixture/room/profile/Ready ACK/rank/timing là **emu_choice/design**, không phải policy server gốc.
+VN `boom-re@9ac2075/server/src/packets.rs:228–273` hướng dẫn pattern count/blob/session/roomID;
+KR dispatcher/schema/gates được kiểm riêng, không đổi opcode VN theo offset rồi coi tương thích.
+
+**Room list91 không rỗng:** `810AC0→810B66→8150F0` đọc u16 count; count>0 mở stream,
+mỗi row đọc u16LE session/u32LE roomID rồi`D9D720`. Row mẫu38byte:
+
+```text
+u16LE session, u32LE roomID, u32LE name_len, name_bytes
+u8, u8, u8, u16LE, u8, u8, u8, u8, u32LE
+9×u8 zero theo các guard/tail bên dưới
+```
+
+Tên`KRRoom`, session0/1, roomID1; các trường sau tên chọn`0,0,0,0,1,0,4,0,0`.
+Pattern player-count1/capacity4/password0/playing0 có UI/card tương ứng; semantics mọi field khác
+vẫn candidate/unknown. Tail đi`13704B0` (mandatoryu8,703AD0=false nên bỏ một byte,
+A32020=true thêm một byte), D9DFD0=true/u8,A31FE0=true/bool,hai bool bắt buộc,
+7FA4A0=true/u8,một u8 bắt buộc rồi`D9DEA0` count0. Không khái quát cho feature/mode khác.
+Outer=`u16obf count1 + serializedblob(compression0 + row)`; full payload50.
+Control thiếu byte cuối vẫn vẽ card và outer49/49/errors0, nhưng **inner37/37/error1**.
+Ca sửa **inner38/38/error0**, doubleclick card tự phát request82; UI/outer pass không thay inner check.
+
+**C→S82/join:** actual body11byte; native widths`[2,4,2,1,2]` trả`[session,1,0,1,5]`,
+session0 hoặc1 khớp row. Trường u16zero sau roomID có thể là chuỗi password rỗng nhưng chưa nối
+writer/nonempty; hai field cuối cũng chưa đặt tên. Không áp toàn contract VN78 lên KR82.
+**S→C87/result0:** `810BAE→8169C0→strategy/v34 DB2B70` đọc u8slot,
+`123FF10(slot)→12562F0(12)`; sau đó`817820` đọc u16session,2u8,bool khi`1220520()==0`.
+Fixture7byte=`u8result0,u8slot,u16session,u8zero,u8zero,bool0`, runtime **7/7/errors0**.
+Roomlookup`8117E0(session)` và setters`123FA30/123FB30/123FB70/12409E0` nối context/title.
+B dùng slot1/ID2; các run sau ghi **session1 ở cả A(create86) và B(join87)**. Pair đầu giữ
+sessionB0/A1 làm diagnostic control, không dùng nó chứng minh context phòng chung đã nhất quán.
+Full room authority, password/error/leave/host variants chưa kiểm.
+
+**C→S95/Ready thật:** B ban đầu state20/unready; click nút Ready tự tới`DDE760` rồi
+`DDEAB7→1164C10(95)`, context`1264220→14EC120`, u8desired qua`14EBC50` vàu32tail
+qua`14EBD90`, send`13ADD60`; success đặt pending4. Body đầu60byte gồm serializedbuffer
+stored51byte +u8desired1 +u32tail0. Native framer/blob/checksum/getters đọc đủ; inner context chưa
+được gán toàn semantics. Ở run cuối, body sau trận322byte, native decode context265→2845byte; không áp cố định60 cho mọi95 hoặc coi growth là lỗi reset đã biết.
+Stub sau CRC hợp lệ broadcast110/slot1/state24/tail0, client tự clear pending và A click tự gửi104;
+không ép state/ready/104 từ GDB. Bits2..4=1 là ready group; bit khác giữ theo profile đã đo.
+ACK/policy này là lựa chọn emulator, chưa thử unready0/error/duplicate/race.
+
+**Chuỗi pair vòng đầu:** A81→86, B82→87, B95→110 cả hai, A104→121 cả hai;
+197/196/153 chỉ sau actual99 của cả hai. Seq dynamic riêng mỗi receiver bắt đầu73+3n;
+Ready11073,12176,19779,19682,15385; bom/result tiếp tục counter, không chèn198.
+Run`duo-join-ready` có4bom/4entity/4kind0 mỗi phía; session control nêu trên giữ nguyên raw.
+Các run session1 dùng một bom A/stay, actual127/sub17/19 dẫn policy175→180 tới cả hai,
+callback175outer302/302/inner292/292 và1803/3/errors0, cả hai chuyển stage12/UI phòng.
+Đây kiểm consumer/chu kỳ local với outcome Alose/Bwin được chọn, chưa đồng thuận hoặc validation
+trap/death phía peer. Run cuối`duo-round-restart` có **hai lần actual104 củaA,95 củaB,99/121/153/clock/bom/175/180
+mỗi phía, cùng tám connection**; Aport9339/B9256 giữ qua hai99. Seq12176/109,
+15385/118,17594/127,18097/130; toàn S→C73..136 bước3 có159/158/110 chen đúng counter.
+Hai bomA serial0/0, stub cấp chungID1/2 qua hai stage. B không đặt bom trong runhai vòng này;
+không ghép bomB của CP027/firstpair thành proof mọi event đều đã lặp hai vòng.
+Ảnh cả hai cho cùng LOSEKRLocal/PERFECTKRGuest (highlight ownID), rồi UI phòng sau180lần hai.
+Đây là **hai chu kỳ thử pair**, chưa fullmatch, reset không rò state, item/pickup hoặc gate K6a.
+Bấm sau return cần retry hữu hạn:3clicksA→2request104,3clicksB→2request95. Hai run trước chỉ
+đạt một vòng hoặc Ready lần hai; nguyên nhân click đầu bị bỏ vẫn unknown (focus/timing/state).
+Không suy quan hệ nhân quả từ recipe thay nhiều yếu tố hoặc gọi retry là protocol fix.
 
 ### Giới hạn và correction WCP lịch sử
 
@@ -877,7 +942,7 @@ liệt kê và phân biệt với nguyên bản trong mọi demo.
 
 ### Authority matrix hiện hành và gate review
 
-Bảng này tổng hợp bằng chứng từng phần đến CP027; chưa phải toàn contract server gốc. Mỗi hàng khi
+Bảng này tổng hợp bằng chứng từng phần đến CP028; chưa phải toàn contract server gốc. Mỗi hàng khi
 triển khai phải bổ sung riêng **creator, simulator, validator, broadcaster, peer-editable state**, với
 locator/trace và trạng thái từng ô; những vai trò không nêu dưới đây hiện `unknown` cho KR.
 
@@ -889,7 +954,7 @@ locator/trace và trạng thái từng ô; những vai trò không nêu dưới 
 | Block destroy/item reveal | Calc vùng nổ không tự xác nhận authority phá block/drop | Ai quyết block/item, state từng peer và packet/event đồng thuận |
 | Item placement/pickup | Loader/receiver có mỏ neo, chưa đủ contract | Kind/index theo build, ai đặt item, xác nhận pickup/race và broadcast |
 | Trap/death | CP023 nối writer127/sub17/19 và full envelope14+blob8/5; HELP/local biến mất có ảnh | Semantics inner, validator/broadcast/peer/timeout/loại trùng còn thiếu |
-| Result/reset | CP023175 hiện LOSE/PERFECT theo rank chọn; reported19→175→180/full3 về UI phòng | Arbitration/round identity/serial và reset/start lặp hai phía còn mở |
+| Result/reset | CP028 reported19→175→180/full3 đọc đủ ở cả hai client, cùng về UI phòng; [phạm vi](#duo-room-round) | Arbitration/round identity, không rò entity/timer/peer/seq và disconnect còn mở; hai chu kỳ thử đã có ởCP028 |
 | Peer lifecycle | CP027 actual99→153 và UDP send/receive hai client; [phạm vi](#peer-duo) | Full schema receive/handshake/key/slot/reliability/relay và giới hạn state peer được sửa |
 
 Gate K5/K6 cần kiểm matrix và đối chứng của hành vi thực sự dùng; từ28/10 Codex tự kiểm theo miễn review của chủ dự án. Có thể giữ unknown về

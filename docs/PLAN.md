@@ -1,7 +1,7 @@
 # Kế hoạch server giả lập KR 00967
 
 Nguồn chuẩn của project `boom-kr-server`; bản nhập từ plan đã được dsh1/dsh2 review tại `1eee46d`.
-Cập nhật30/10 JST (CP027): triển khai K0/K1, K2/K3 từng phần; hai client thật movement/bom hai chiều trên harness;bảng gate là scope nghiệm thu,chưa phải checklist đã pass.
+Cập nhật30/10 JST (CP028): triển khai K0/K1, K2/K3 từng phần; hai client thật join/Ready và hai chu kỳ scene/bom/kết quả/phòng trên harness;bảng gate là scope nghiệm thu,chưa phải checklist đã pass.
 
 
 ### Mục tiêu, baseline và phạm vi
@@ -10,7 +10,7 @@ Yêu cầu chủ dự án 26/10/2026: dùng kiến thức RE VN `VBNB_116` để
 **chính `CA.exe` KR `00967`**. Đây là project độc lập `boom-kr-server`; không dùng scope, gate,
 registry hoặc tỷ lệ tiến độ V1 của bản viết lại `boom-rs` làm điều kiện của repo này.
 
-Revision kế hoạch **`KR-00967-EMU-1`**, trạng thái **hai vòng thử một client/guest tổng hợp trên copy Wine;chưa demo đầy đủ/hai client**.
+Revision kế hoạch **`KR-00967-EMU-1`**, trạng thái **hai client thật đã chạy hai chu kỳ thử trên copy Wine; chưa nghiệm thu trận đầy đủ/K6a**.
 Các mốc nguồn được phân biệt rõ:
 
 - **Tài liệu tham chiếu lịch sử:** `boom-rs@dae5e1c717ad31b9e8d32a9b20a76d65942807eb`.
@@ -37,27 +37,28 @@ với client Rust không chứng minh có thể điều khiển client KR bằng
 
 ### Tiến độ hiện hành theo bằng chứng
 
-| Task/mốc | Trạng thái tại CP027 | Nguồn chuẩn |
+| Task/mốc | Trạng thái tại CP028 | Nguồn chuẩn |
 |---|---|---|
 | KRE-004/issue6 | Đã review/merge PR7 và đóng issue:recipe r1 đến local accept;không phải full K1 | [Wine r1](evidence/wine/README.md) |
 | Bootstrap reply | PR8 đã merge;debugger ProcessPatchreturn1,không ép success | [bootstrap evidence](evidence/bootstrap-wire/README.md) |
 | KRE-005a/issue9,R2 | PR10 đã merge:3 cold start cửa sổ/second accept;issue9 còn mở | [R2 evidence](evidence/wine-r2/README.md) |
 | WCP hai-reply | Run CP001 là lịch sử chưa C→S; CP006 đã đo request đầu trên copy tham số hóa | [PROTOCOL](PROTOCOL.md#wcp),[WCP evidence](evidence/wcp/README.md) |
-| KRE-005b/issue14 | CP006–026 đã merge; CP027 hai client movement/4bom chung,153 thay198; join/ready chuẩn/fullround/authority/full auth còn mở | [Q-023](RESEARCH.md#q-023), [evidence](evidence/peer-duo/README.md) |
+| KRE-005b/issue14 | CP006–027 đã merge; CP028 join82/87,Ready95/110 và hai chu kỳ thử pair; fullround/authority/full auth còn mở | [Q-023](RESEARCH.md#q-023), [evidence](evidence/duo-room-round/README.md) |
 | K0/K1 | Chưa nghiệm thu toàn gate;Windows vanilla/control ownership và các điều kiện còn thiếu giữ mở | Gate dưới,[Q-022](RESEARCH.md) |
 | K2a/K2 | Primitive/WCP từng phần; request auth đã capture/native replay, phản hồi lỗi đã dispatch; full codec/reconnect và gate chưa pass | [PROTOCOL](PROTOCOL.md#login-auth),[Q-023](RESEARCH.md#q-023) |
 | K3 | Copy chẩn đoán đã vẽ UI sảnh và đóng notice; chưa nghiệm thu identity/cache/codec đủ gate | [Contract sảnh](PROTOCOL.md#channel-lobby) |
-| K4–K7 | CP027 hai client movement/bom từng phần; hai vòng kết quả/phòng CP024 vẫn là một client/outcome chọn. Chưa K6a, chưa LAN/Internet | Không có phần trăm ước lượng |
+| K4–K7 | CP028 hai client/hai chu kỳ kết quả-phòng theo outcome chọn; peer trap/death/item/reset/disconnect chưa nghiệm thu. Chưa K6a/LAN/Internet | Không có phần trăm ước lượng |
 
-Thứ tự tiếp: từ hai client movement/bom đã đo, nối join/ready thật củaB, đồng thuận trap/death/result,
-về phòng và round2 cùng pair; giữ item/pickup/collision/authority/reset/disconnect trước nghiệm thuK6a.
-[Q-023](RESEARCH.md#q-023) giữ task/phép thử tiếp. CP027 đã kiểm153 thay198, endpoint từ99 và UDP
-receive hai phía, không còn chặn ở lần thử clientB đầu. Full auth/cache/codec/variant/relay và serial
-wrap/allocator/concurrent vẫn mở. Chưa qua K4/K5/K6; chưa LAN/Internet.
+Thứ tự tiếp: kiểm đồng thuận trap/death giữa hai peer và authority cho event đang dùng, rồi
+item/pickup/collision, reset/seq/host-leave/disconnect trước nghiệm thuK6a.
+[Q-023](RESEARCH.md#q-023) giữ phép thử tiếp; [CP028](PROTOCOL.md#duo-room-round) đã trả lời đường
+join/Ready và hai chu kỳ thử trên cùng pair. Kết quả thắng/thua vẫn do policy stub chọn.
+Full auth/cache/codec/variant/relay, serial wrap/allocator/concurrent còn mở. Chưa qua K4/K5/K6;
+chưa LAN/Internet.
 Chu kỳ docs/audit theo [workflow](evidence/checkpoints/README.md);
 counter ở [manifest](evidence/checkpoints/manifest.json). Không tạo plan theo phiên.
 
-### Bản đồ đường chạy, CP027
+### Bản đồ đường chạy, CP028
 
 | Bước | Quan sát/bước tiếp |
 |---|---|
@@ -71,7 +72,7 @@ counter ở [manifest](evidence/checkpoints/manifest.json). Không tạo plan th
 | Start → init game | CP024 nối index spawn→point map→native actor;121 trên Village00/ExVillage01 đọc127/129byte. CP020 đọc129/129, cấp localID1/ownslot bằng packet, kiểm slot rồi init CGameStage/stage13; map/HUD/hai nhân vật đã vẽ, có99/61byte. [Contract](PROTOCOL.md#start-reply). |
 | Clock/input | 197/196/198 có control một client; CP027 dùng153 thay198, clock1 mỗi phía và movement hai chiều. [Clock gốc](PROTOCOL.md#round-go), [hai client](PROTOCOL.md#peer-duo). |
 | Bom → kết quả → phòng → trận hai | CP024 echo118→159 trên ba map;127 writer17/19/full envelope; reported19→175/LOSE-PERFECT→180/full3; refresh110 host/guest-ready cho click104 và vòng hai. Một client/guest tổng hợp, policy outcome chọn; spatial/timer/serial/peer chưa đủ. [Contract](PROTOCOL.md#round-result). |
-| Hai client → movement/bom | CP027 hai prefix/copy/ID/slot riêng, actual99→153 thay198→UDP send/receive; ảnh movement hai chiều, ID bom1..4 tạo/nổ trên cả hai. B vẫn create86→push121 chẩn đoán; chưa join/ready chuẩn/fullround/K6a. [Contract](PROTOCOL.md#peer-duo). |
+| Hai client → hai chu kỳ thử | CP028 B82→87/slot1,95→110, A104→121 cả hai; cùng session1, hai chu kỳ scene/bom/175/180/phòng trên cùng sockets. Outcome chọn; peer trap/death/item/reset/disconnect còn thiếu, chưa K6a. [Contract](PROTOCOL.md#duo-room-round). |
 
 RE động là chính; gom phép đo thành checkpoint mốc/blocker, audit định kỳ theo workflow.
 Review độc lập được chủ dự án miễn từ28/10; Codex tự kiểm, giữ PR và điều kiện bằng chứng của gate.
@@ -127,7 +128,7 @@ flowchart LR
 - **K6b — hai máy LAN:** lặp cùng ca giữa hai máy, endpoint/port đúng và disconnect/rejoin có log.
 - **K6c — hai mạng Internet:** kiểm endpoint/NAT và P2P hoặc relay được chọn; hai bên cùng state/result,
   hai trận liên tiếp, latency/loss/disconnect được ghi. Chỉ endpoint thử do dự án kiểm soát trong allowlist;
-  giữ block Nexon/live auth. Chưa chọn cơ chế hoặc mở mạng Internet ở CP024.
+  giữ block Nexon/live auth. P2P local đã đo từ CP027; relay/NAT và Internet còn chưa kiểm ở CP028.
 
 K2a chạy song song K1 bằng dump/DB có sẵn. Nếu K1 thất bại, kết quả K2a vẫn là RE tĩnh và K2 chưa
 qua gate. Không dựng cả lobby trước khi có hello KR thật. Không hứa ngày xong K6 khi K1/K2 còn
@@ -199,7 +200,7 @@ Các repo VN/KR/Rust cũ chỉ là nguồn tham chiếu. Không thêm code/doc m
 ```text
 CA.exe KR (bản copy) ── TCP ── KrWire/PacketReader ── KrSession/Stage ── lobby/room/round
          │                         │                    │                   │
-         └── UDP peer/relay ? ──────┴────────────────────┴── authority audit ┘
+         └── UDP peer đã đo; relay ? ──────┴────────────────────┴── authority audit ┘
                                    └── raw + decoded trace → fixture/replay
 ```
 
@@ -208,7 +209,7 @@ CA.exe KR (bản copy) ── TCP ── KrWire/PacketReader ── KrSession/St
 | `kr-wire` (đề xuất) | Buffer TCP có giới hạn, codec state riêng từng socket/chiều, packet registry `(build,direction,stage,opcode)`, reader có cursor và báo trailing bytes. Dùng VN làm reference/fixture control; constants KR vào profile có nguồn. |
 | `kr-session` / server (đề xuất) | Auth local, redirect token một lần, ID account/session/slot tách nhau; state machine idempotent, timer gắn round generation. SQLite chỉ cần khi identity contract ổn; không thiết kế economy sớm. |
 | Room/round | Một owner cập nhật mỗi phòng, broadcast theo roster, phân biệt request/ack/result. Tái dùng ý tưởng generation guard từ VN; policy ready/host/timeout phải khớp consumer KR hoặc ghi design. |
-| UDP | K6 quyết định P2P local/relay sau capture. Không mặc định TCP mang movement; không mặc định 3 port login VN là endpoint movement. |
+| UDP | P2P local đã đo ở CP027–028 qua actual99→153 và UDP receive. Relay/NAT còn unknown; kiểm consumer trước lựa chọn cho LAN/Internet. Không dùng 3 port login VN làm endpoint movement. |
 | `boom-core` | Ứng viên dùng sau audit authority: shadow validation trước; chỉ phát kết quả authoritative khi chứng minh client có đường nhận/correction phù hợp. Nếu không có, giữ mô hình lai để đạt demo tương thích và ghi rõ giới hạn. |
 | Content | Dùng reader pack/map/ODT đã có và inventory KR; map/item/character numeric ID có crosswalk theo build. Client gốc tự render/audio; không port renderer mới để giải wire. |
 
