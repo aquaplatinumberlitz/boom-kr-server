@@ -1,7 +1,7 @@
 # Kế hoạch server giả lập KR 00967
 
 Nguồn chuẩn của project `boom-kr-server`; bản nhập từ plan đã được dsh1/dsh2 review tại `1eee46d`.
-Cập nhật30/10 JST (CP028): triển khai K0/K1, K2/K3 từng phần; hai client thật join/Ready và hai chu kỳ scene/bom/kết quả/phòng trên harness;bảng gate là scope nghiệm thu,chưa phải checklist đã pass.
+Cập nhật 30/10 JST (CP029): triển khai K0/K1, K2/K3 từng phần; hai client thật đã đồng bộ trap/death trong profile thử trước gói 175 và chạy hai chu kỳ. Bảng gate là scope nghiệm thu, chưa phải checklist đã pass.
 
 
 ### Mục tiêu, baseline và phạm vi
@@ -37,20 +37,21 @@ với client Rust không chứng minh có thể điều khiển client KR bằng
 
 ### Tiến độ hiện hành theo bằng chứng
 
-| Task/mốc | Trạng thái tại CP028 | Nguồn chuẩn |
+| Task/mốc | Trạng thái tại CP029 | Nguồn chuẩn |
 |---|---|---|
 | KRE-004/issue6 | Đã review/merge PR7 và đóng issue:recipe r1 đến local accept;không phải full K1 | [Wine r1](evidence/wine/README.md) |
 | Bootstrap reply | PR8 đã merge;debugger ProcessPatchreturn1,không ép success | [bootstrap evidence](evidence/bootstrap-wire/README.md) |
 | KRE-005a/issue9,R2 | PR10 đã merge:3 cold start cửa sổ/second accept;issue9 còn mở | [R2 evidence](evidence/wine-r2/README.md) |
 | WCP hai-reply | Run CP001 là lịch sử chưa C→S; CP006 đã đo request đầu trên copy tham số hóa | [PROTOCOL](PROTOCOL.md#wcp),[WCP evidence](evidence/wcp/README.md) |
-| KRE-005b/issue14 | CP006–027 đã merge; CP028 join82/87,Ready95/110 và hai chu kỳ thử pair; fullround/authority/full auth còn mở | [Q-023](RESEARCH.md#q-023), [evidence](evidence/duo-room-round/README.md) |
+| KRE-005b/issue14 | CP006–028 đã merge; CP029 control death lệch và170 đưa state peer56→1 trước175; fullround/authority/full auth còn mở | [Q-023](RESEARCH.md#q-023), [evidence](evidence/peer-events/README.md) |
 | K0/K1 | Chưa nghiệm thu toàn gate;Windows vanilla/control ownership và các điều kiện còn thiếu giữ mở | Gate dưới,[Q-022](RESEARCH.md) |
 | K2a/K2 | Primitive/WCP từng phần; request auth đã capture/native replay, phản hồi lỗi đã dispatch; full codec/reconnect và gate chưa pass | [PROTOCOL](PROTOCOL.md#login-auth),[Q-023](RESEARCH.md#q-023) |
 | K3 | Copy chẩn đoán đã vẽ UI sảnh và đóng notice; chưa nghiệm thu identity/cache/codec đủ gate | [Contract sảnh](PROTOCOL.md#channel-lobby) |
-| K4–K7 | CP028 hai client/hai chu kỳ kết quả-phòng theo outcome chọn; peer trap/death/item/reset/disconnect chưa nghiệm thu. Chưa K6a/LAN/Internet | Không có phần trăm ước lượng |
+| K4–K7 | CP029 boundedtrap/death forwarding có snapshotnative trước175; item/reset/disconnect/authority chưa nghiệm thu. Chưa K6a/LAN/Internet | Không có phần trăm ước lượng |
 
-Thứ tự tiếp: kiểm đồng thuận trap/death giữa hai peer và authority cho event đang dùng, rồi
-item/pickup/collision, reset/seq/host-leave/disconnect trước nghiệm thuK6a.
+Thứ tự tiếp: item/pickup và tranh item, collision/chain/rescue, validator/generation/duplicate/stale,
+reset/seq/host-leave/disconnect trước nghiệm thuK6a. CP029 đã kiểm boundedtrap/death forwarding,
+không cần tìm lại receiver170; mở variants khi gặp hành vi cần dùng.
 [Q-023](RESEARCH.md#q-023) giữ phép thử tiếp; [CP028](PROTOCOL.md#duo-room-round) đã trả lời đường
 join/Ready và hai chu kỳ thử trên cùng pair. Kết quả thắng/thua vẫn do policy stub chọn.
 Full auth/cache/codec/variant/relay, serial wrap/allocator/concurrent còn mở. Chưa qua K4/K5/K6;
@@ -58,7 +59,7 @@ chưa LAN/Internet.
 Chu kỳ docs/audit theo [workflow](evidence/checkpoints/README.md);
 counter ở [manifest](evidence/checkpoints/manifest.json). Không tạo plan theo phiên.
 
-### Bản đồ đường chạy, CP028
+### Bản đồ đường chạy, CP029
 
 | Bước | Quan sát/bước tiếp |
 |---|---|
@@ -72,7 +73,8 @@ counter ở [manifest](evidence/checkpoints/manifest.json). Không tạo plan th
 | Start → init game | CP024 nối index spawn→point map→native actor;121 trên Village00/ExVillage01 đọc127/129byte. CP020 đọc129/129, cấp localID1/ownslot bằng packet, kiểm slot rồi init CGameStage/stage13; map/HUD/hai nhân vật đã vẽ, có99/61byte. [Contract](PROTOCOL.md#start-reply). |
 | Clock/input | 197/196/198 có control một client; CP027 dùng153 thay198, clock1 mỗi phía và movement hai chiều. [Clock gốc](PROTOCOL.md#round-go), [hai client](PROTOCOL.md#peer-duo). |
 | Bom → kết quả → phòng → trận hai | CP024 echo118→159 trên ba map;127 writer17/19/full envelope; reported19→175/LOSE-PERFECT→180/full3; refresh110 host/guest-ready cho click104 và vòng hai. Một client/guest tổng hợp, policy outcome chọn; spatial/timer/serial/peer chưa đủ. [Contract](PROTOCOL.md#round-result). |
-| Hai client → hai chu kỳ thử | CP028 B82→87/slot1,95→110, A104→121 cả hai; cùng session1, hai chu kỳ scene/bom/175/180/phòng trên cùng sockets. Outcome chọn; peer trap/death/item/reset/disconnect còn thiếu, chưa K6a. [Contract](PROTOCOL.md#duo-room-round). |
+| Hai client → hai chu kỳ thử | CP028 B82→87/slot1,95→110, A104→121 cả hai; cùng session1, hai chu kỳ scene/bom/175/180/phòng trên cùng sockets. Outcome chọn; giới hạn trap/death tại CP028 được kiểm tiếp ở hàng CP029. Item/reset/disconnect còn thiếu, chưa K6a. [Contract](PROTOCOL.md#duo-room-round). |
+| Trap/death phía peer | CP029 control: actor A có state1 trên A nhưng state56 trên B trước175;170/17,19 đưa remote actor56→1 bằng packet, đọc đủ10/21byte. Getter native kiểm lại snapshot; đã đo cả hai chiều. [Contract](PROTOCOL.md#peer-events). |
 
 RE động là chính; gom phép đo thành checkpoint mốc/blocker, audit định kỳ theo workflow.
 Review độc lập được chủ dự án miễn từ28/10; Codex tự kiểm, giữ PR và điều kiện bằng chứng của gate.
