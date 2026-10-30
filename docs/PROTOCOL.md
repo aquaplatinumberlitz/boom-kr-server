@@ -1,6 +1,6 @@
 # KR 00967 — contract tương thích client gốc
 
-Revision kr-legacy-contract-r1; cập nhật30/10/2026 JST (CP026).
+Revision kr-legacy-contract-r1; cập nhật30/10/2026 JST (CP027).
 **Contract có bằng chứng từng phần; chưa nghiệm thu full codec K2**.
 Lộ trình và thứ tự task chỉ giữ ở [REWRITE_PLAN — KRE](PLAN.md).
 Đây là contract của repo server KR. ADR0009 của bản viết lại là nguồn lịch sử để so sánh;
@@ -751,7 +751,7 @@ Các run CP025 bỏ policy tự gửi175/180 để tập trung cùng vòng; khô
   Chỉ xác nhận đường đã đo; không chứng minh mọi race, stale round, ID reuse/wrap hoặc chain/item an toàn.
 
 <a id="kr-peer-entry"></a>
-### Request99 và bảng peer KR153 — CP025/CP026
+### Request99 và bảng peer KR153 — CP025–027
 
 [Evidence CP026](evidence/peer153/README.md). **kr_runtime confirmed hẹp trên copy Wine**,
 không thêm patch vào SHAe9bb47…; native decoder trên modO/a08950… và code11vùng khớp ba artifact.
@@ -789,13 +789,62 @@ cho127.0.0.1, port14001 hostu16. Control0x0100007f tạo sockaddr1.0.0.127, hook
 sink không nhận; bản sửa chỉ IP tạo sockaddr127.0.0.1, sendto trả byte count và sink có raw/hash thật.
 `13E14C0` ghi envelope trước sendto; chưa gọi các datagram này là movement/handshake đã giải mã.
 
-Bốn recipe gửi153 **sau198** để kiểm consumer; clock origin được khởi tạo lại. Chưa chọn chuỗi
-production hoặc kết luận phải gửi cả198+153. Sink một chiều không phải clientB, không có handshake
-reply/UDP receive/đồng bộ hai chiều. Relay/NAT, codec/key/slot, consistency/reset và K6 vẫn mở.
+Bốn recipe **CP026** gửi153 sau198 để kiểm consumer; clock origin được khởi tạo lại. SinkCP026
+không phải clientB. **CP027 đã kiểm153 thay198 và hai client thật** bên dưới; không dùng recipeCP026
+làm chuỗi production. Relay/NAT, codec/key/slot đầy đủ, consistency/reset và K6 vẫn mở.
 
 KR532 cũng tớiE825D0 quaE5E820 nhưng guard703A80 trên ba artifact trảAL0; giữ giới hạnCP025,
 không thử532. VN §5a-6 và helper blob giúp định hướng; KRstream/153/26slot/endian được kiểm riêng.
 [Bước tiếp](RESEARCH.md#q-023).
+
+<a id="peer-duo"></a>
+### Hai client thật: movement và bom — CP027
+
+**kr_runtime confirmed trong phạm vi harness Wine**, [recipe/control/hash](evidence/peer-duo/README.md).
+Không patch thêm. CopyA/B cùngSHAe9bb47…; prefix, wineserver, display và game-dir riêng, cùng một
+namespace chỉlo/no outbound/files-only NSS. Codex solo/tự kiểm, review độc lập waived; chưa qua K6a.
+
+**Chuỗi khởi tạo đã kiểm hẹp:** 197/seq76→196/79→**153/82 thay198**; kế tiếp S→C85+3n liên tục
+trên từng socket. Control một client đọc97/97/errors0, clock origin một lần, ba118/159/158 và133UDP
+vào sink. Ba run hai client cũng có một clock origin mỗi phía và không dispatch198. Không suy mọi
+variant/stage/reset tương đương hoặc header timeout đã là cấu hình production.
+
+**Identity và roster:** A nhậnID1, B nhậnID2 qua auth prefix34byte, không sửa identity/ownflag từ GDB.
+A slot0/KRLocal, B slot1/KRGuest; B nhận106 của chính mình trước ởseq58,110slot1/61 rồi106A/64.
+Cả hai nhận cùng map ExVillage01/code278 và121 đã đo. A vẫn click tạo/start; B hiện cũng dùngcreate86
+và server push121 sau map/profile tạistage12. **Chưa chứng minh join/ready chuẩn hoặc phòng chung
+production**, full auth/profile/cache vẫn thiếu; không gán cấpIDlocal thành login Nexon thành công.
+
+**Trao endpoint thực:** stub chờ cả hai99 trước khi phát197/196/153. Trong153, cả slot0/1 bật;
+slot của máy mình có ba endpoint0 chẩn đoán; slot bên kia dùng `(7f000001,u16port từ99),(0,0),(0,0)`.
+`13E1190` đăng ký đúng localID/remoteID và slot đối diện,14E57B0 trảptr; sendto/recvfrom thật hai chiều.
+Các cặp cổng9858/9720,9218/9564,9237/9351 khớp actual99/source sockaddr ở ba run.
+
+**Movement:** run`duo-first` điều khiển A rồi B bằng bàn phím trên display riêng. Ảnh B sau inputA
+cho thấy KRLocal rời spawn/đổi vị trí; ảnh A sau inputB cho thấy KRGuest rời spawn/đổi vị trí.
+Có recvfrom tại13DE717 ở cả hai phía, không dùng log stub hoặc hai actor trên một client thay bằng chứng.
+180 sample UDP API memory được trích từ30 successfulrecvfrom đầu/client/run;173gói17byte và7gói5byte,
+được kiểm checksum bằng native14A5860 với seed0, n−1byte. Chỉ trích đúng nbyte dù GDBdump17;
+đây là API capture có hash, không phải pcap/full grammar. `13E1820→vf24/13E14C0` là wrapper gửi đã nối;
+chưa phục hồi đủ codec movement/reliability/handshake/relay hoặc cơ chế kiểm vị trí phía nhận.
+
+**Bom hai phía:** hai run`duo-bombs`/`duo-confirm` có bốn request118 thực, owner/serial lần lượt
+`(0,0),(0,28),(1,1),(1,29)`. Không mặc định serial bắt đầu0 hoặc dùng chung giữa hai owner.
+Stub echo serial u32/owner/hàng/cột/power sang159 như [contract serial](#bomb-serial), cấp **ID chung1–4**,
+broadcast159 rồi158/kind0 tới cả hai socket bằng seq riêng. Mỗi phía đọc4×39/39 và4×13/13/errors0,
+trả4entity khác0, lookup IDs1/2/3/4 và4kind0/cleanup. Ảnh B có bomA, ảnh A có bomB.
+Allocator thử và fuse4s/args/fieldzero là **emu_choice/design**, không phải luật server gốc hoặc
+proof mọi duplicate/stale/race/chain/item/trap. Chỉ đặt lần lượt, chưa stress đồng thời/hai round.
+
+`duo-bombs` bị timeout chụp ảnh cuối: runerror được giữ, metadata sender/fixture và callbacks đã có;
+không gọi toàn run đó pass. `duo-confirm` sửa recorder lưu metadata trước cleanup, ảnh lỗi ghi riêng,
+và thêm ảnh trễ sau Space/trigger158: run hoàn tất không lỗi, cùng4bom trên cả hai phía.
+Tên ảnh`blast-N` chỉ thời điểm trigger snapshot sau emit158; callback GDB mới chứng minh thực thi,
+không suy ảnh luôn bắt đúng frame nước nổ. Control/runtime cũ giữ nguyên hash.
+
+**Giới hạn nghiệm thu:** chưa hai trận đầy đủ, đồng thuận trap/death/result/item, join/ready chuẩn,
+reset/disconnect, LAN hoặc Internet. Authority matrix dưới đây còn phần validator/broadcast/peer-editable
+chưa đủ. Bước tiếp chỉ giữ ở [RESEARCH](RESEARCH.md#q-023); không tự đóng K4/K5/K6 từ mốc này.
 
 ### Giới hạn và correction WCP lịch sử
 
@@ -828,20 +877,20 @@ liệt kê và phân biệt với nguyên bản trong mọi demo.
 
 ### Authority matrix hiện hành và gate review
 
-Bảng này tổng hợp bằng chứng từng phần đến CP026; chưa phải toàn contract server gốc. Mỗi hàng khi
+Bảng này tổng hợp bằng chứng từng phần đến CP027; chưa phải toàn contract server gốc. Mỗi hàng khi
 triển khai phải bổ sung riêng **creator, simulator, validator, broadcaster, peer-editable state**, với
 locator/trace và trạng thái từng ô; những vai trò không nêu dưới đây hiện `unknown` cho KR.
 
 | Hành vi | Đã thấy trong KR | Phần cần đóng trước demo dùng hành vi đó |
 |---|---|---|
-| Movement | Consumer dir/position có phạm vi lớp;183 đã nối ghost | Input player→mover/network, peer update/correction và ai chấp nhận vị trí |
-| Bomb place/ID | CP025 ba bom/serial u320/28/56, ID1..3 và lặp/cũ hẹp; tọa độ/spawn CP024 | ID allocator/rollover/concurrent/race/round generation, creator/validator/broadcast và peer còn thiếu |
-| Explode/chain | CP022158/kind0 có nước/HELP; calc tĩnh/message27 giữ phạm vi riêng | Fuse/clock owner/relay và cách bỏ lặp chain còn thiếu |
+| Movement | CP027 hai client thấy movement hai chiều; [phạm vi](#peer-duo);183 vẫn chỉ ghost | Full schema input/update/correction, validator và quyền sửa vị trí của peer |
+| Bomb place/ID | CP027 hai owner/ID chung1..4 tạo trên cả hai client; [phạm vi](#peer-duo); lặp/cũ CP025 | Allocator/rollover/concurrent/race/round generation và authority ngoài policy broadcast thử |
+| Explode/chain | CP027 bốn kind0/cleanup mỗi client; CP022 có nước/HELP; chain chưa nghiệm thu | Fuse/clock owner/relay và cách bỏ lặp chain còn thiếu |
 | Block destroy/item reveal | Calc vùng nổ không tự xác nhận authority phá block/drop | Ai quyết block/item, state từng peer và packet/event đồng thuận |
 | Item placement/pickup | Loader/receiver có mỏ neo, chưa đủ contract | Kind/index theo build, ai đặt item, xác nhận pickup/race và broadcast |
 | Trap/death | CP023 nối writer127/sub17/19 và full envelope14+blob8/5; HELP/local biến mất có ảnh | Semantics inner, validator/broadcast/peer/timeout/loại trùng còn thiếu |
 | Result/reset | CP023175 hiện LOSE/PERFECT theo rank chọn; reported19→175→180/full3 về UI phòng | Arbitration/round identity/serial và reset/start lặp hai phía còn mở |
-| Peer lifecycle | CP026 cấp endpoint và UDP tới sink; [phạm vi](#kr-peer-entry) | Peer receive/handshake/key/slot/reliability/relay, đồng bộ hai chiều và peer được sửa state nào |
+| Peer lifecycle | CP027 actual99→153 và UDP send/receive hai client; [phạm vi](#peer-duo) | Full schema receive/handshake/key/slot/reliability/relay và giới hạn state peer được sửa |
 
 Gate K5/K6 cần kiểm matrix và đối chứng của hành vi thực sự dùng; từ28/10 Codex tự kiểm theo miễn review của chủ dự án. Có thể giữ unknown về
 server gốc thất lạc nếu policy emulator được chọn `design`, client chấp nhận và ca consistency đạt;
