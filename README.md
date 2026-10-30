@@ -22,18 +22,18 @@ boom-kr-server/
 
 ## Đang làm
 
-CP022: **copy Wine đã đi từ phòng vào trận, di chuyển, đặt/nổ bom, hiện HELP và trở về phòng**.
-Ảnh burst có luồng nước và nhân vật trong bong bóng; ảnh sau có local actor biến mất.
-Gói kết thúc180 mẫu cuối đọc3/3byte, không lỗi và client tự gọi stage12/vẽ lại UI phòng.
+CP023: **copy Wine đã chạy hai vòng thử trên cùng kết nối: phòng → trận → bom/HELP → bảng kết quả → phòng**.
+Client hiện **LOSE KRLocal / PERFECT KRGuest** theo rank thử; vòng thứ hai bắt đầu bằng click thật,
+phát104, đọc121 đủ byte và khởi tạo scene mới. [Contract](docs/PROTOCOL.md#round-result),
+[evidence](docs/evidence/round-repeat/README.md).
 
-Đây là vòng thử nghiệm **một client với guest tổng hợp**; stub phát kết thúc theo thời điểm thử đã chọn.
-Chưa có bảng kết quả/thắng thua tự quyết, hợp đồng death đầy đủ, trận thứ hai hoặc multiplayer.
-Full auth/profile/cache và gate K2–K5 còn mở. [Contract](docs/PROTOCOL.md#bomb-cycle),
-[evidence](docs/evidence/bomb-calc/README.md), bước tiếp ở [RESEARCH](docs/RESEARCH.md).
+Đây là **một client với guest tổng hợp**, trên bản copy chẩn đoán. Stub chọn outcome từ báo cáo19;
+chưa trận hoàn chỉnh được nghiệm thu, hai client hoặc gate K2–K6. Điểm chặn tiếp là đồng bộ tọa độ/
+spawn/serial/timer và peer; full auth/profile/cache còn thiếu. Thứ tự ở [RESEARCH](docs/RESEARCH.md).
 
-CP021 đã merge [PR29](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/29).
-CP022 pending tích hợp khi ghi record; PR là nguồn trạng thái merge hiện tại.
-Codex tự kiểm, review độc lập waived. AUD006 ở CP020; audit kế CP024.
+CP022 đã merge [PR30](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/30).
+CP023 là snapshot trước tích hợp; PR nhánh `kre/round-repeat-runtime` giữ trạng thái merge hiện tại.
+Codex tự kiểm, review độc lập waived. AUD006 ở CP020; audit kế **CP024**.
 
 Checkpoint bền vững: [manifest](docs/evidence/checkpoints/manifest.json).
 Quy trình ghi chép/review/audit: [checkpoint workflow](docs/evidence/checkpoints/README.md).

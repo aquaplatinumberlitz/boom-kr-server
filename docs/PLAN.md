@@ -1,7 +1,7 @@
 # Kế hoạch server giả lập KR 00967
 
 Nguồn chuẩn của project `boom-kr-server`; bản nhập từ plan đã được dsh1/dsh2 review tại `1eee46d`.
-Cập nhật30/10 JST (CP022): triển khai K0/K1, K2/K3 từng phần, clock/input/bom nổ/HELP/về phòng trên copy;bảng gate là scope nghiệm thu,chưa phải checklist đã pass.
+Cập nhật30/10 JST (CP023): triển khai K0/K1, K2/K3 từng phần, hai vòng thử bom/HELP/kết quả/về phòng một client trên copy;bảng gate là scope nghiệm thu,chưa phải checklist đã pass.
 
 
 ### Mục tiêu, baseline và phạm vi
@@ -10,7 +10,7 @@ Yêu cầu chủ dự án 26/10/2026: dùng kiến thức RE VN `VBNB_116` để
 **chính `CA.exe` KR `00967`**. Đây là project độc lập `boom-kr-server`; không dùng scope, gate,
 registry hoặc tỷ lệ tiến độ V1 của bản viết lại `boom-rs` làm điều kiện của repo này.
 
-Revision kế hoạch **`KR-00967-EMU-1`**, trạng thái **đang kiểm vòng trận một client trên copy Wine;chưa demo đầy đủ/hai client**.
+Revision kế hoạch **`KR-00967-EMU-1`**, trạng thái **hai vòng thử một client/guest tổng hợp trên copy Wine;chưa demo đầy đủ/hai client**.
 Các mốc nguồn được phân biệt rõ:
 
 - **Tài liệu tham chiếu lịch sử:** `boom-rs@dae5e1c717ad31b9e8d32a9b20a76d65942807eb`.
@@ -37,25 +37,25 @@ với client Rust không chứng minh có thể điều khiển client KR bằng
 
 ### Tiến độ hiện hành theo bằng chứng
 
-| Task/mốc | Trạng thái tại CP022 | Nguồn chuẩn |
+| Task/mốc | Trạng thái tại CP023 | Nguồn chuẩn |
 |---|---|---|
 | KRE-004/issue6 | Đã review/merge PR7 và đóng issue:recipe r1 đến local accept;không phải full K1 | [Wine r1](evidence/wine/README.md) |
 | Bootstrap reply | PR8 đã merge;debugger ProcessPatchreturn1,không ép success | [bootstrap evidence](evidence/bootstrap-wire/README.md) |
 | KRE-005a/issue9,R2 | PR10 đã merge:3 cold start cửa sổ/second accept;issue9 còn mở | [R2 evidence](evidence/wine-r2/README.md) |
 | WCP hai-reply | Run CP001 là lịch sử chưa C→S; CP006 đã đo request đầu trên copy tham số hóa | [PROTOCOL](PROTOCOL.md#wcp),[WCP evidence](evidence/wcp/README.md) |
-| KRE-005b/issue14 | CP006–021 đã merge; CP022 có nổ/HELP và180→UI phòng, một client/guest tổng hợp; outcome/bảng kết quả/lặp trận/full auth còn mở | [Q-023](RESEARCH.md#q-023), [evidence](evidence/bomb-calc/README.md) |
+| KRE-005b/issue14 | CP006–022 đã merge; CP023 có writer127/17/19, bảng kết quả175 và hai vòng thử một client/guest tổng hợp; authority/spatial/timer/full auth còn mở | [Q-023](RESEARCH.md#q-023), [evidence](evidence/round-repeat/README.md) |
 | K0/K1 | Chưa nghiệm thu toàn gate;Windows vanilla/control ownership và các điều kiện còn thiếu giữ mở | Gate dưới,[Q-022](RESEARCH.md) |
 | K2a/K2 | Primitive/WCP từng phần; request auth đã capture/native replay, phản hồi lỗi đã dispatch; full codec/reconnect và gate chưa pass | [PROTOCOL](PROTOCOL.md#login-auth),[Q-023](RESEARCH.md#q-023) |
 | K3 | Copy chẩn đoán đã vẽ UI sảnh và đóng notice; chưa nghiệm thu identity/cache/codec đủ gate | [Contract sảnh](PROTOCOL.md#channel-lobby) |
-| K4–K7 | Vòng thử nghiệm nổ/HELP/về phòng một client đã đo; chưa scoreboard/outcome/trận hai/hai client | Không có phần trăm ước lượng |
+| K4–K7 | Hai vòng thử có bom/HELP/bảng kết quả/về phòng một client đã đo; outcome là policy thử, chưa nghiệm thu/hai client | Không có phần trăm ước lượng |
 
-Thứ tự tiếp: nối127/event death, kết quả/rank và reset/start trận thứ hai; giữ context/spawn đúng
-nhánh tại [Q-023](RESEARCH.md#q-023); đồng thời giữ body result0/user/cache còn thiếu
-trước khi xét K2/K3. Chỉ mở contract cần cho phép thử tiếp; UI phòng chờ không tự đóng K4.
+Thứ tự tiếp: kiểm tọa độ/spawn và reply159 theo actual118, serial/timer/reset; giải body104 lần hai tăng,
+rồi nối đường peer/đồng bộ hai client tại [Q-023](RESEARCH.md#q-023). Full body result0/user/cache
+vẫn cần trước khi xét K2/K3. Chỉ mở contract cần cho phép thử tiếp; hai vòng thử không tự đóng K5/K6.
 Chu kỳ docs/audit theo [workflow](evidence/checkpoints/README.md);
 counter ở [manifest](evidence/checkpoints/manifest.json). Không tạo plan theo phiên.
 
-### Bản đồ đường chạy, CP022
+### Bản đồ đường chạy, CP023
 
 | Bước | Quan sát/bước tiếp |
 |---|---|
@@ -65,10 +65,10 @@ counter ở [manifest](evidence/checkpoints/manifest.json). Không tạo plan th
 | Login → sảnh | Đã đo redirect/request6, S→C17 và241; UI sảnh hết notice trên copy, profile/auth body còn thiếu; xem [contract](PROTOCOL.md#channel-lobby). |
 | Sảnh → phòng | Click/dialog → C→S81 → S→C86/result0 → CPrepareStage/stage12; [contract](PROTOCOL.md#room-create). |
 | Player/controls phòng | CP018: KR106/profile, ID0 match và110/pending0/Bắt đầu; CP020 auth cấp ID1 để tham gia start. [Contract](PROTOCOL.md#room-player). |
-| Map → start | 241/238/117, native checksum, capacity4, filter mode0; click tự gửi104/109byte. [Contract](PROTOCOL.md#room-map). |
+| Map → start | 241/238/117, native checksum, capacity4, filter mode0; click đầu tự gửi104/109byte. [Contract](PROTOCOL.md#room-map). |
 | Start → init game | S→C121 đọc129/129, cấp localID1/ownslot bằng packet, kiểm slot rồi init CGameStage/stage13; map/HUD/hai nhân vật đã vẽ, có99/61byte. [Contract](PROTOCOL.md#start-reply). |
 | Clock/input | 197/196/198 nhận đủ byte, phase3 và clock map; ảnh timer đếm, local đổi vị trí sau input. [Contract](PROTOCOL.md#round-go). |
-| Bom → về phòng | 118/159→158/kind0 có nước/HELP, local biến mất;180/full3→stage12/UI phòng. Trigger kết thúc là test policy, chưa scoreboard/outcome/serial/lặp trận. [Contract](PROTOCOL.md#bomb-cycle). |
+| Bom → kết quả → phòng → trận hai | 127 writer17/19/full envelope; reported19→175/LOSE-PERFECT→180/full3; refresh110 host/guest-ready cho click104 và vòng hai. Một client/guest tổng hợp, policy outcome chọn; spatial/timer/serial/peer chưa đủ. [Contract](PROTOCOL.md#round-result). |
 
 RE động là chính; gom phép đo thành checkpoint mốc/blocker, audit định kỳ theo workflow.
 Review độc lập được chủ dự án miễn từ28/10; Codex tự kiểm, giữ PR và điều kiện bằng chứng của gate.
