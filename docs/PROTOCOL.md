@@ -1,6 +1,6 @@
 # KR 00967 — contract tương thích client gốc
 
-Revision kr-legacy-contract-r1; cập nhật30/10/2026 JST (CP025).
+Revision kr-legacy-contract-r1; cập nhật30/10/2026 JST (CP026).
 **Contract có bằng chứng từng phần; chưa nghiệm thu full codec K2**.
 Lộ trình và thứ tự task chỉ giữ ở [REWRITE_PLAN — KRE](PLAN.md).
 Đây là contract của repo server KR. ADR0009 của bản viết lại là nguồn lịch sử để so sánh;
@@ -751,26 +751,51 @@ Các run CP025 bỏ policy tự gửi175/180 để tập trung cùng vòng; khô
   Chỉ xác nhận đường đã đo; không chứng minh mọi race, stale round, ID reuse/wrap hoặc chain/item an toàn.
 
 <a id="kr-peer-entry"></a>
-### Request99 và entry bảng peer KR — CP025
+### Request99 và bảng peer KR153 — CP025/CP026
 
-**kr_runtime confirmed hẹp:** `E7F301→13E1470→13DE7C0` dùng hostname/host lookup lấy tối đa hai IPv4;
-`E7F33C→13E14A0→14E5670` lấy u16 ở networkbase+24. Hai run có breakpoint bind đo cùng cổng
-với native99 (9751/9345); còn có socket bind khác, không gán cả hai cho movement.
-IP trong namespace=127.0.0.1/0. Chưa cấp peer nên không thấy sendto dưới hook đã cài;
-không suy không có UDP hoặc đồng bộ movement từ quan sát âm này.
+[Evidence CP026](evidence/peer153/README.md). **kr_runtime confirmed hẹp trên copy Wine**,
+không thêm patch vào SHAe9bb47…; native decoder trên modO/a08950… và code11vùng khớp ba artifact.
+CP025 chỉ xác định153 tĩnh; CP026 đã dispatch153→E5E6D0→E825D0 trong bốn run tuần tự.
 
-**kr_static confirmed cho cấu trúc/cạnh, áp dụng runtime candidate:** dispatch153 tạiE5D4CE→E5E6D0
-**gọi E825D0 không qua guard703A80**. Trong E825D0, đoạnE838…/E839… đọc relay IPv4/u16port/u8flag;
-IP khác0→htonl→13E1140→14E57B0. ĐoạnE839A2 lặp **26slot**, mỗi slot đọc u8on;
-on→**3×(u32IP,u16port)** tạiE83AB2/E83AC9, đóng thành array3×8byte, kiểm1243330(slot),
-rồi E83B69→13E1190(slot,array,localID,slotID).13E1190 có consumer địa chỉ và gọi14E57B0.
-Đây là suffix trong **body dài chưa phục hồi đủ**, không được gửi suffix trần như full153.
-Endian/runtime HostCreate và movement/UDP framing/key/relay chưa được nghiệm thu.
+**Request99 (CP025):** `E7F301→13E1470→13DE7C0` lấy tối đa hai IPv4 qua hostname/hostlookup;
+`E7F33C→13E14A0→14E5670` lấy u16networkbase+24. Bind9751/9345 khớp99 trong hai runCP025;
+còn có socket bind khác, không gán cả hai cho movement. Trong namespace IP=127.0.0.1/0.
 
-KR532 cũng tớiE825D0 quaE5E820 nhưng guard703A80 trên ba artifact đồng nhất trả AL=0;
-đường này không phải ứng viên mặc định để thử. Chưa quan sát153 hoặc532 trên client trong các run này.
-VN §5a-6 (92/146,18slot) giúp nhận ra pattern peer; KR99/153/26slot và guard được đọc riêng,
-không dùng offset opcode hay số slot VN. Phép kiểm tiếp giữ ở [RESEARCH](RESEARCH.md#q-023).
+**Body153 đã đo**, index từ0, typed field dùng obfuscation theo codec KR; relay/header values ngoài
+đích ghi vẫn là `emu_choice`. Không dùng suffix trần hoặc schema VN146 thay fullKR153:
+
+| Phần | Decoder/giới hạn |
+|---|---|
+| Stream đầu | `E88790→vf5C/14EB410→14EB430`: u32obf stored length, rồi blob obf theo chunk4/2/1. Raw sau decode=`18` +u32LE length +compression0 +data. Ca đo: raw7byte=`18020000000000`; data=u8count0. Outer tổng11byte. `E8A340→E8A3F0` đọc count rồi count×u8 vào vector stage+6404. Chỉ count0/compression0 đã kiểm. |
+| u32 đầu | Đưa vào `E13490`; chọn0, quan sát clock origin khởi tạo lại. Semantics game time candidate; chưa thử nonzero. |
+| u32 thứ hai | Gán stage+63E0, chọn12345 theo key hiện có; không suy đủ UDP session/identity contract. |
+| 2×u32, u8 | Stage+64D4/+64D8 nhân1000; chọn180/180 giây và flag0→secure+647C. Header kết thúc cursor28. |
+| Relay u32IP/u16port/u8flag | Chọn0/0/0. Static IPnonzero quahtonl→13E1140→14E57B0; chưa kiểm relay runtime/endian. Không áp kết luận endian peer cho relay. |
+| 26slot | Mỗi slot u8on. On≠0 đọc3×(u32IP,u16port); array3×8byte→13E1190 khi1243330(slot) đủ điều kiện. Ca đo slots0/1 có profile, localID1/guestID2. |
+
+Payload61 (mọi slot tắt),79 (guest1 bật),97 (local0+guest1 bật) đều tới cuốiE83E53 với cursor=payload,
+error54/error58=0. Stream cursor11, header28; không có read packet khác giữa header và relay trên
+đường đã đo. Chưa kiểm mọi mode, vector khác rỗng, optional state hoặc handler ở stage khác.
+
+**Slot bật/tắt có side effect**, không chỉ khai báo địa chỉ. ĐoạnE83A35/E83A89 gọi12400D0 với slot
+tắt đang có profile. Hai run local0off không phát118 sau input; ca local0on/ba endpoint0 giữ guest
+endpoint như cũ phát ba118, ghép159/158 nhưCP025. Ảnh alloff hiệnComputer0/1; không khái quát
+đây là toàn semantics leave/disconnect hoặc nguyên nhân duy nhất của mọi input guard.
+
+**Peer endpoint và UDP đã đo:** guestslot1→13E1190(localID1,slotID2)→14E57B0; ca cả hai bật có
+HostCreate trả pointer khác0. `14E7370` lưu IP/port; sender`14E61F0` gọi **htonl tại14E63A8**,
+htons tại14E63BC rồi sendtoIAT16EA798 tại14E63D9. Vì vậy **peer IPv4 typed u32=0x7f000001**
+cho127.0.0.1, port14001 hostu16. Control0x0100007f tạo sockaddr1.0.0.127, hooksendto có hit nhưng
+sink không nhận; bản sửa chỉ IP tạo sockaddr127.0.0.1, sendto trả byte count và sink có raw/hash thật.
+`13E14C0` ghi envelope trước sendto; chưa gọi các datagram này là movement/handshake đã giải mã.
+
+Bốn recipe gửi153 **sau198** để kiểm consumer; clock origin được khởi tạo lại. Chưa chọn chuỗi
+production hoặc kết luận phải gửi cả198+153. Sink một chiều không phải clientB, không có handshake
+reply/UDP receive/đồng bộ hai chiều. Relay/NAT, codec/key/slot, consistency/reset và K6 vẫn mở.
+
+KR532 cũng tớiE825D0 quaE5E820 nhưng guard703A80 trên ba artifact trảAL0; giữ giới hạnCP025,
+không thử532. VN §5a-6 và helper blob giúp định hướng; KRstream/153/26slot/endian được kiểm riêng.
+[Bước tiếp](RESEARCH.md#q-023).
 
 ### Giới hạn và correction WCP lịch sử
 
@@ -803,7 +828,7 @@ liệt kê và phân biệt với nguyên bản trong mọi demo.
 
 ### Authority matrix hiện hành và gate review
 
-Bảng này tổng hợp bằng chứng từng phần đến CP025; chưa phải toàn contract server gốc. Mỗi hàng khi
+Bảng này tổng hợp bằng chứng từng phần đến CP026; chưa phải toàn contract server gốc. Mỗi hàng khi
 triển khai phải bổ sung riêng **creator, simulator, validator, broadcaster, peer-editable state**, với
 locator/trace và trạng thái từng ô; những vai trò không nêu dưới đây hiện `unknown` cho KR.
 
@@ -816,7 +841,7 @@ locator/trace và trạng thái từng ô; những vai trò không nêu dưới 
 | Item placement/pickup | Loader/receiver có mỏ neo, chưa đủ contract | Kind/index theo build, ai đặt item, xác nhận pickup/race và broadcast |
 | Trap/death | CP023 nối writer127/sub17/19 và full envelope14+blob8/5; HELP/local biến mất có ảnh | Semantics inner, validator/broadcast/peer/timeout/loại trùng còn thiếu |
 | Result/reset | CP023175 hiện LOSE/PERFECT theo rank chọn; reported19→175→180/full3 về UI phòng | Arbitration/round identity/serial và reset/start lặp hai phía còn mở |
-| Peer lifecycle | Chưa xác nhận KR giống MTUDP VN | Discovery/key/slot/endpoint/reliability/relay và peer được sửa state nào |
+| Peer lifecycle | CP026 cấp endpoint và UDP tới sink; [phạm vi](#kr-peer-entry) | Peer receive/handshake/key/slot/reliability/relay, đồng bộ hai chiều và peer được sửa state nào |
 
 Gate K5/K6 cần kiểm matrix và đối chứng của hành vi thực sự dùng; từ28/10 Codex tự kiểm theo miễn review của chủ dự án. Có thể giữ unknown về
 server gốc thất lạc nếu policy emulator được chọn `design`, client chấp nhận và ca consistency đạt;
