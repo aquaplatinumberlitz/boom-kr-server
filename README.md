@@ -22,17 +22,18 @@ boom-kr-server/
 
 ## Đang làm
 
-CP026: **KR153 đã được client xử lý đủ body và phát UDP tới sink local**. Có control slot tắt,
-slot bật và IP đảo byte; giữ cả hai slot bật khôi phục đường request bom. [Contract](docs/PROTOCOL.md#kr-peer-entry),
-[evidence](docs/evidence/peer153/README.md).
+CP027: **hai client KR thật đã di chuyển hai chiều và xử lý bom của nhau** trong harness Wine cô lập.
+KR153 thay198 khởi tạo clock một lần; endpoint lấy từ request99 của từng client. Bốn bom/ID1–4
+đều tạo/nổ trên cả A và B. [Contract](docs/PROTOCOL.md#peer-duo),
+[evidence](docs/evidence/peer-duo/README.md).
 
-Vẫn là **một client với guest tổng hợp trên copy Wine chẩn đoán**; sink không trả lời.
-Chưa đồng bộ hai client, chưa nghiệm thu trận hoàn chỉnh hoặc LAN/Internet. Tiếp theo: kiểm153 thay198,
-identity/slot riêng cho client B và trao endpoint thật; full auth/cache, collision/item/reset còn thiếu.
-[Bước RE tiếp](docs/RESEARCH.md#q-023).
+Đây là **hai client trên cùng host, cùng roster/map do stub cấp**; chưa nghiệm thu K6a hoặc trận
+hoàn chỉnh. B vẫn dùng đường create86→server push121 chẩn đoán; join/ready chuẩn, item/trap/result,
+reset hai trận/disconnect và full auth/cache còn thiếu. Chưa LAN/Internet.
+[Bước tiếp](docs/RESEARCH.md#q-023).
 
-CP025 đã merge [PR33](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/33).
-CP026 là snapshot trước tích hợp; PR nhánh `kre/peer153-runtime` giữ trạng thái merge hiện tại.
+CP026 đã merge [PR34](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/34).
+CP027 là snapshot trước tích hợp; PR nhánh `kre/peer-duo-runtime` giữ trạng thái merge hiện tại.
 Codex tự kiểm, review độc lập waived. **AUD007/CP024** hoàn tất; audit kế **CP028**.
 
 Checkpoint bền vững: [manifest](docs/evidence/checkpoints/manifest.json).
