@@ -1,0 +1,94 @@
+{
+  "id": "AUD008",
+  "trigger": "periodic",
+  "completed_through": "CP028",
+  "recorded_utc": "2026-10-30T12:38:24.371359+00:00",
+  "auditor": "Codex self-audit; independent review waived by project owner",
+  "read_files": [
+    "README.md",
+    "docs/PLAN.md",
+    "docs/PROTOCOL.md",
+    "docs/RESEARCH.md",
+    "docs/evidence/bomb-serial/README.md",
+    "docs/evidence/peer153/README.md",
+    "docs/evidence/peer-duo/README.md",
+    "docs/evidence/duo-room-round/README.md",
+    "docs/evidence/checkpoints/manifest.json"
+  ],
+  "method": "Đọc bốn docs chính theo thứ tự từng phần, evidence CP025–028 và raw/runtime mới; đọc lại delta và evidence sau sync. Đối chiếu failed inner-row37 với full38, actual82/87/95 và guard DDE760; đọc log175/180/121/153/clock/bom của cả hai, native decode95/CRC/role replay, ảnh rank hai vòng/final room của A/B. Script chỉ kiểm tính cơ học, không thay audit/ngữ nghĩa/gate. Không sửa completed CP025–027 hoặc raw đã seal.",
+  "findings": [
+    {
+      "id": "F1",
+      "stale": "PLAN revision còn ghi một client/guest/chưa hai client dù CP027 có pair thật; README và current next vẫn CP027 trước tích hợp.",
+      "correction": "Ghi PR35 merge b55ec6c; current CP028 pair/join/Ready/hai chu kỳ thử, snapshot trước tích hợp; audit kếCP032.",
+      "fixed_in": [
+        "README.md",
+        "docs/PLAN.md",
+        "docs/RESEARCH.md",
+        "docs/evidence/duo-room-round/README.md"
+      ]
+    },
+    {
+      "id": "F2",
+      "stale": "Architecture/UDP vẫn để P2P unknown hoặc chờ capture đầu; PROTOCOL reuse nói hai client còn thiếu.",
+      "correction": "Link CP027 actual99→153/UDP hai chiều; relay/NAT vẫn unknown. Ghi pairCP028, không suy full consistency hoặc LAN/Internet.",
+      "fixed_in": [
+        "docs/PLAN.md",
+        "docs/PROTOCOL.md"
+      ]
+    },
+    {
+      "id": "F3",
+      "stale": "Danh sách phòng không rỗng/Ready roundtrip vẫn chưa có lời giải ở phần CP016/018; B hiện create86→push121 dễ bị đọc là trạng thái mới nhất.",
+      "correction": "Đánh dấu scope lịch sử; thêm nguồn chuẩn CP028 room91/row38,82→87,95→110. Row37 control vẫn error1 dù vẽUI; không sửa raw/oldcheckpoint.",
+      "fixed_in": [
+        "docs/PROTOCOL.md",
+        "docs/RESEARCH.md"
+      ]
+    },
+    {
+      "id": "F4",
+      "stale": "Pair đầu chưa đồng nhất context session B0/A1; tên recipe duo-two-rounds có thể bị hiểu đã đạt hai vòng.",
+      "correction": "Giữ control/session lệch và hai run chỉ đạt một vòng; run cuối session1/setter thực cả hai, hai callback cycle/ảnh/seq trên cùng sockets. Không gọi mọi runpass mục tiêu từ exit0.",
+      "fixed_in": [
+        "docs/PROTOCOL.md",
+        "docs/evidence/duo-room-round/README.md"
+      ]
+    },
+    {
+      "id": "F5",
+      "stale": "Result/reset matrix chỉ một client; bằng chứng cùng rank có nguy cơ bị dùng thay peer trap/death agreement.",
+      "correction": "CP028 có175/180 đầy đủ và hai UIphòng/two cycles; policy Alose/Bwin là emu_choice. Next ưu tiên peer trap/death/item/disconnect/authority, không đóng K4/K5/K6.",
+      "fixed_in": [
+        "README.md",
+        "docs/PLAN.md",
+        "docs/PROTOCOL.md",
+        "docs/RESEARCH.md"
+      ]
+    },
+    {
+      "id": "F6",
+      "stale": "Native blob preview ban đầu dùng stream indices sai và chưa model HeapAlloc; có thể dẫn nhận định innercontext rỗng hoặc cố định60.",
+      "correction": "Giữ failure/script cũ local; final dùng ptr+8/size+0C/arena HeapAlloc, native checksum/decompression.95context265/2845, body60/322, semanticgrowth unknown.",
+      "fixed_in": [
+        "docs/PROTOCOL.md",
+        "docs/evidence/duo-room-round/README.md"
+      ]
+    },
+    {
+      "id": "F7",
+      "stale": "Retry/focus/delay thay đổi có thể bị mô tả là protocol fix hoặc nguyên nhân đã biết của first click.",
+      "correction": "Ghi actual3clicks mỗi phía→2request tương ứng, boundedUIrecipe; nguyên nhân suppression unknown. Không ép ready/stage/debugger call.",
+      "fixed_in": [
+        "docs/PROTOCOL.md",
+        "docs/evidence/duo-room-round/README.md"
+      ]
+    }
+  ],
+  "remaining": [
+    "Trap/death peer agreement, validation/broadcast/inner127; item/pickup/collision/block/chain và toàn authority còn mở.",
+    "Hai chu kỳ thử không chứng minh không rò entity/timer/peer/seq; hostleave/disconnect/rejoin và first-click suppression chưa giải.",
+    "Full auth/profile/cache/codec/reconnect/vanilla, UDP grammar/handshake/reliability/relay/NAT, LAN/Internet/gates chưa đạt.",
+    "CP025–027 giữ lịch sử/metadata immutable; AUD007 remaining serial/firstpeer/firstB được trả lời từng phần CP025–028, không sửa audit cũ."
+  ]
+}

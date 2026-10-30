@@ -120,39 +120,41 @@ Village00 và ExVillage01 có profile/map/spawn/geometry riêng và hai vòng th
 [Contract](PROTOCOL.md#bomb-position), [raw/control/correction](evidence/bomb-position/README.md).
 Không dùng điều này thay nghiệm thu collision/reset/authority hoặc hai client.
 
+CP028 đã nối join/Ready thật và hai chu kỳ thử với hai client; contract chỉ giữ tại
+[PROTOCOL](PROTOCOL.md#duo-room-round), [raw/control/hash](evidence/duo-room-round/README.md).
+CP027/PR35 đã merge`b55ec6c`; CP028 snapshot trước tích hợp, review độc lập waived.
+
 **Bước tiếp, Codex RE/tự kiểm:**
 
-1. **NEXT-DUO-ROUND:** CP027 đã kiểm153 thay198, ID1/2-slot0/1 qua packet, endpointactual99,
-   UDP send/receive và movement/bom hai phía. [Contract](PROTOCOL.md#peer-duo),
-   [control/run lỗi recorder và xác nhận](evidence/peer-duo/README.md). Nối đường join/ready thực củaB
-   (hiện create86→server push121 chẩn đoán), đồng thuận trap/death/result→về phòng→round2 cùng pair.
-2. Giữ phép kiểm item/pickup, host/disconnect/reset/seq và authority trước nghiệm thuK6a; chưa LAN/Internet.
-   UDP API capture đã kiểm nativeCRC, nhưng grammar/key/reliability/handshake/relay/NAT và fullauth
-   còn thiếu. Không dùng movement/bốn bom cùng ID thay cho trận hoàn chỉnh hoặc toànK6.
-3. Giữ ca va chạm/phá block/item/pickup, reset/timer/104growth và authority theo hành vi. Hai map mới
-   blast→reported19 khoảng6.5s ở cả hai vòng, Antarctic vòng hai khoảng0.9s chưa giải thích nhân quả;
-   không coi pointer mới hoặc cùng địa chỉ là bằng chứng reset đúng/sai.
+1. **NEXT-DUO-ROUND:** kiểm đồng thuận trap/death phía peer trước kết quả. Actual127/sub17/19
+   củaA đã dẫn policy175→180 tới cả hai; chưa chứng minh B chấp nhận cùng trap/death qua UDP hoặc
+   handler khác. Probe cạnh đã chạy, so ảnh/getter state hai phía theo cùng tick/event; dùng VN làm
+   reference cho broadcast/peer event, kiểm opcode/key/handler KR riêng. Không lấy cùng bảng rank
+   được server cấp làm bằng chứng event đã đồng thuận.
+2. Kiểm item/pickup và tranh item, collision/phá block, host/disconnect/rejoin, generation/seq/timer
+   trên hai vòng trước K6a. CP028 đã có hai121/99/153/clock/bom/175/180 mỗi phía cùng sockets;
+   đó là reset path từng phần, chưa chứng minh không rò state hoặc full match.
+3. Giữ fullauth/profile/cache/reconnect/codec và UDP grammar/key/reliability/handshake/relay/NAT
+   ngoài scope mốc này; chưa LAN/Internet. 104/95 body tăng sau trận, serial rollover/allocator/
+   concurrent/optional flags và thời gian Antarctic khác chưa giải thích; kiểm khi chạm hành vi đó.
 
-Cặp159 CP021 giữ exploratory; CP022–024 raw và completed record giữ nguyên provenance.
-CP025/026 raw/completed records giữ nguyên. CP027 một control153-thay198 và ba run hai client;
-run bom đầu lỗi chụp ảnh cuối được giữ failed, run xác nhận không lỗi và bốn bom trên cả hai.
-Không thêm patch hoặc tự gửi175/180.
-CP025 đo serial0/28/56/control lặp/cũ; CP027 owner1 có serial1/29, owner0 có0/28; serial rollover, ID collision/allocator, concurrent/optional flags,
-item/pickup/chain/collision/peer và toàn chu kỳ trận được nghiệm thu còn mở.
-Auth prefix34byte vẫn thiếu phần sau; ID1/ID2 là identity local thử của hai client. Cache persistence/cold/warm,
-reconnect/reset/codec,15/241variants,oneclickuser/+E9C/token_2/count2/vanilla giữ mở.
-AUD007 đã hoàn tấtCP024, kế CP028; review độc lập waived, Codex tự kiểm.
+CP025–027 raw/completed giữ nguyên. CP028 giữ control row37 bị lỗi inner dù vẫn vẽ card,
+row38 sửa, pair đầu sessionB0/A1 và các run chưa restart. Run cuối session1/hai vòng chỉ thay
+recipe input/retry hữu hạn và thời điểm chụp ảnh, không patch thêm hoặc ép stage/ready từ GDB.
+Kết quả Alose/Bwin và delay/fuse vẫn là policy thử, không phải authority server gốc.
+Auth prefix34byte/ID1/2 không đóng full login/cache;15/241variants,oneclickuser/+E9C/token_2/count2/
+vanilla vẫn mở. AUD008 hoàn tấtCP028, kếCP032; không có gate mới đóng.
 
 | ID / ưu tiên | Trạng thái | Owner / reviewer | Đã biết | Còn thiếu / bước đóng |
 |---|---|---|---|---|
 | Q-022 / KRE-P1 bootstrap | open | Codex RE/tự kiểm | ProcessPatch local có debugger return1;recipe R2 đã merge;contract ở [PROTOCOL](PROTOCOL.md#wcp) | K1a ownership/control trên Windows local/effective token; K1b kiểm caller/config/IPC riêng CA và NewPatcher; K1c stub/patch theo evidence; gate ba cold start tới network attempt/state chờ hello, không lấy alive/không exit làm proof |
 | Q-023 / KRE-P1 codec | open | Codex RE/tự kiểm | CP015 có socket kênh mới, native replay theo từng kết nối, schema17/count0 và nhận241 | Full result0/codec/reset theo bước trên; gate K2 còn mở |
 | Q-024 / KRE-P1 login/kênh | open | Codex RE/tự kiểm | UI sảnh hết notice17/241; CP020 phục hồi inputID local, tên/profile phòng có fixture, chưa full auth/sảnh identity | Full identity/user/cache và cold/warm/reconnect K3; không gọi auth Nexon thật |
-| Q-025 / KRE-P1 room/load | open | Codex RE/tự kiểm | CP027 hai client cùng roster/map thử; B create86→push121 chẩn đoán; [phạm vi](PROTOCOL.md#peer-duo) | Join/ready/select/host-leave chuẩn, collision/reset/104growth/cache và nghiệm thu K4 |
-| Q-026 / KRE-P1 authority/trận | open | Codex RE/tự kiểm | CP027 bốn ID bom tạo/nổ trên hai client; result/hai vòng CP024 vẫn một client; [phạm vi](PROTOCOL.md#peer-duo) | Phân quyền client/server/peer từng event; packet bom/pickup/trap/death/result/correction KR; K5 một chu kỳ hoàn chỉnh, không lấy packet183 ghost làm mover người sống |
-| Q-027 / KRE-P1 peer | open | Codex RE/tự kiểm | CP027 actual99→153, UDP receive/movement/bom hai client; VN92/146 làm reference | Full grammar/key/slot/reliability/relay, đồng thuận toàn state/result và hai trận trước K6 |
+| Q-025 / KRE-P1 room/load | open | Codex RE/tự kiểm | CP028 Acreate81/86,Bjoin82/87,Ready95/110,Start104/121; cùng session1/hai vòng thử; [phạm vi](PROTOCOL.md#duo-room-round) | Password/error/unready/leave/host và load-barrier variants, collision/reset/104growth/cache, nghiệm thu K4 |
+| Q-026 / KRE-P1 authority/trận | open | Codex RE/tự kiểm | CP028 hai client/hai vòng bom/175/180/phòng theo outcome chọn; [phạm vi](PROTOCOL.md#duo-room-round) | Phân quyền client/server/peer từng event; packet bom/pickup/trap/death/result/correction KR; K5 một chu kỳ hoàn chỉnh, không lấy packet183 ghost làm mover người sống |
+| Q-027 / KRE-P1 peer | open | Codex RE/tự kiểm | CP027 actual99→153, UDP receive/movement/bom hai client; VN92/146 làm reference | Full grammar/key/slot/reliability/relay, đồng thuận trap/death/item, reset/disconnect trước nghiệm thu K6 |
 | Q-028 / KRE-P2 profile/core | open | Codex/tự kiểm | Core Rust và policy V1 có sẵn, nhưng client gốc không biết ADR0009 | Sau audit Q-026/027, quyết định giữ lai/relay/shadow core hay authoritative được client hỗ trợ; profile emu có provenance, không sửa V1 implicit |
-| Q-029 / KRE-P2 vận hành | open | Codex/tự kiểm | CP027 có movement/bom hai client trên copy Wine; [giới hạn](PROTOCOL.md#peer-duo); chưa nghiệm thu toàn chu kỳ/K6a | K7 bốn client, malformed/stale/duplicate/race/disconnect/restart, bounds/resource limits, Linux package, patch manifest và README tái lập |
+| Q-029 / KRE-P2 vận hành | open | Codex/tự kiểm | CP028 có hai chu kỳ thử pair trên copy Wine; [giới hạn](PROTOCOL.md#duo-room-round); chưa fullmatch/K6a | K7 bốn client, malformed/stale/duplicate/race/disconnect/restart, bounds/resource limits, Linux package, patch manifest và README tái lập |
 
 Tối đa hai lượt mỗi câu hỏi theo plan; gặp VM hoặc thiếu runtime thì ghi entry/boundary/thí nghiệm cần,
 không đóng wire unknown bằng design. Không sửa trạng thái sang done chỉ vì đã có kế hoạch hoặc golden tự sinh.
