@@ -61,7 +61,7 @@ Mức `confirmed` dưới đây chỉ áp dụng nguồn/build/phạm vi ghi tro
 | `0x00E67E70→0x00E84460`, packet **184 C→S** | `kr_static` / `confirmed` trong phạm vi status serialize | Writer, context/slot và status report | Không gọi đây là S→C trap event hoặc coi client report là quyết định server |
 | Packet **183 S→C**, `CGOGhost→B334C0` | `kr_static` / `confirmed`, R-138 | Reader/dispatch/context, setter đơn vị ô 40px | Chưa chứng minh đây là movement sync của bomber sống; C→S148/149 chỉ candidate |
 | `0x00E9C520` / `0x00E9CDC0`, message **27** | `kr_static` / `confirmed` theo R-139…R-141 | Tính vùng nổ/chain và đường gọi từ network event | Message27 là nội bộ; wire158/kind0 được bổ sung riêng ở [CP022](#bomb-cycle), chưa full chain/authority |
-| `0x01196A70`, `0x00E9E660` | `kr_static`, xem [ItemAttr](REFERENCES.md) | Loader/receiver để đối chiếu index/kind/actor | Không suy weight thành %, hoặc mặc định ItemAttr/drop placement do client chọn |
+| `0x01196A70` | `kr_static`, xem [ItemAttr](REFERENCES.md) | Loader ItemAttr; pickup/layout đã có [contract KR riêng](#item-pickup) | Không suy weight thành %, hoặc mặc định drop placement do client chọn. `E9E660` là nhánh kind0 bom, không phải receiver pickup |
 
 Các số opcode này là các mảnh đã có, không phải registry hoàn chỉnh. Tìm được writer từ 167/184
 có thể mở được primitive codec trước K1; vẫn cần traffic thật để qua K2.
@@ -970,6 +970,77 @@ trong170 và snapshot tại mốc; có một retry Space0.8s nếu chưa118. Gi�
 không khẳng định nguyên nhân input chỉ từ recipe thay nhiều yếu tố. Native emulation giữ framer/
 handler/blob/vector nhưng model world/actor/guard/endpoints; runtime state/ảnh là nguồn kiểm riêng.
 
+<a id="item-pickup"></a>
+### Item trên nền và xác nhận nhặt — CP030
+
+**kr_static/kr_runtime confirmed trong phạm vi copy Wine**; [recipe/control/hash](evidence/item-pickup/README.md).
+Giữ cùng binary chẩn đoán SHAe9bb47… và profile ExVillage01/278, hai identity/slot riêng, không patch thêm.
+VN hướng dẫn cách thử layout trước start và report→confirm; opcode, index32bit và reader KR dưới đây
+được phục hồi riêng. Không áp VN553/117/158 hoặc index16bit sang KR.
+
+**Layout trước load:** prepare dispatcher `DC51F0→DC5378`, **S→C582**, đọc serialized blob rồi
+`D824D0`. Guard `5725B0` thực trả1; `11ED590` đọc từng record. Inner sau giải blob gồm:
+
+```text
+u16LE n1; n1 × {u32LE index, u8 row, u8 column, u32LE kind}
+u16LE n2; n2 × cùng record
+u16LE n3; n3 × cùng record
+```
+
+Chỉ ý nghĩa list1 là item trên nền đã quan sát; list2/3 đều rỗng trong runtime này, chưa xác nhận item
+ẩn/drop. Mẫu hai item tiêu26byte inner/36byte payload; mẫu một item tiêu16/26byte, errors0 cả hai.
+Framer/blob/getters và record reader native kiểm độc lập; runtime guard/list install/map render là
+nguồn riêng. Tag raw0 trong recipe đã được reader chấp nhận, không phải capture server gốc.
+Item record dùng hàng/cột, khác point spawn map có quy ước riêng; không chuyển nhãn tọa độ giữa hai kiểu.
+Kind0 vẽ Bomb, kind1 vẽ Fire ở profile này; icon không chứng minh đã cộng số bom/tầm nổ.
+
+**Request/confirm:** actual **C→S124** từ `E2E390` (stack thực `E2E5EC`) có19byte:
+
+```text
+u8 ctx, u8 slot, u8 row, u8 column, u32 index, u16 kind, u32 t, u32 k, bool flag
+```
+
+Đây là typed outer fields qua primitive KR, không phải raw LE của inner blob. Writer lấy record+0,
+slot từ argument, record+0C/+10/+08/+14/+1C/+20/+24 tương ứng; `t/k` thường được gọi tick/session
+nhưng chưa phục hồi toàn nghĩa/validator. Ca này ctx0, flag0, k12345 do profile peer đã cấp.
+Native replay actual frame theo seq/socket xác nhận CRC, độ dài và giá trị; không dựng request từ encoder.
+
+**S→C165**: `E5D570→E63260(packet,0)`, payload12byte:
+
+```text
+u8 ok, u8 ctx, u8 slot, u8 row, u8 column, u32 index, u16 kind, bool flag
+```
+
+`E2C660` xóa pending theo ctx/index trước kiểm ok/context. Native reject/context-mismatch chỉ kiểm
+header/nhánh từ chối với cache/world model; positive effect lấy từ runtime. `ok!=0` và context khớp
+mới đi tiếp lookup actor theo slot; interface actor+588 gọi `F73D30`, sau đó tìm item, kiểm tọa độ/kind
+trước phần xử lý tiếp. Cạnh tĩnh `F73D30→B52840→E14DA0` là mỏ neo đo stat tiếp, chưa proof +stat/cap.
+Không gửi nguyên124 làm reply: thêm ok, bỏ haiu32 t/k, mã hóa lại165 theo seq của từng receiver.
+
+**Control và can thiệp:** `near-control` có A gửi124/index17/row4/col3/kind0 nhưng không165;
+item hiện lại sau khi rời ô. `pickup-ack` giữ input/placement A đó; B được đặt Fire tại ô hàng8/cột3
+thay vị trí gần gạch ở control. Cả B rồi A gửi124 thật; mỗi xác nhận165 phát tới cả hai, đọc12/12/errors0,
+context0 khớp, đúng actor/item/tọa độ/kind; pending local được xóa và ảnh cuối không còn hai item.
+Đây là can thiệp có đối chứng cho A; B đổi placement nên không tuyên bố một biến duy nhất cho cả run.
+
+**Một ca tranh index:** `pickup-race` đặt Bomb/index19 ở hàng6/cột3, input Down(A)/Up(B) đồng thời.
+Cả hai gửi124 cho cùng index trước ACK; stub giữ request đến trước, chờ2s rồi chỉ phát một positive165
+slot0/index19 tới A/B. Request B ghi bị từ chối do đã giữ index. Cả hai có một callback165 đầy đủ,
+cùng slot thắng, xóa pending của chính mình và không còn item ở ảnh cuối. Đã kiểm một ca/two requests;
+chưa đảo thứ tự winner, duplicate replay, stale/round generation, stat chỉ cộng một lần hoặc mọi race.
+
+| Vai trò cho hành vi đã dùng | Bằng chứng/giới hạn |
+|---|---|
+| Creator | Stub chọn layout/index/kind; client tự phát124 khi chạm item. Không phục hồi thuật toán drop server gốc. |
+| Simulator | Client dựng item, giữ pending và xử lý165/interface. Stat/cap từng loại chưa đo. |
+| Validator | Harness kiểm CRC, slot theo origin và allowlist index/tọa độ/kind; giữ một index cho request đầu. Đây là design hẹp, thiếu kiểm room/round/generation/timing đầy đủ. |
+| Broadcaster | Stub mã hóa165 riêng từng socket và gửi cả origin lẫn peer; hai consumer đã quan sát. |
+| Peer-editable state | Report124 chỉ được chấp nhận theo slot gắn socket trong harness. Toàn grammar/quyền UDP và chống sửa state ngoài đường này còn unknown. |
+
+Placement/first-arrival/delay2s là **emu_choice/design**, không luật server gốc. Hiệu ứng stat/cap,
+item ẩn/phá block/drop, variants, malformed/duplicate/stale/reset/disconnect và full auth/cache/codec
+còn mở; không ghép riêng mốc này với CP029 thành nghiệm thu full match/K5/K6a hoặc LAN/Internet.
+
 ### Giới hạn và correction WCP lịch sử
 
 Fixture opaque/zero/empty và prefix69 là emu_choice đã được consumer chấp nhận trong phép thử,
@@ -1001,7 +1072,7 @@ liệt kê và phân biệt với nguyên bản trong mọi demo.
 
 ### Authority matrix hiện hành và gate review
 
-Bảng này tổng hợp bằng chứng từng phần đến CP029; chưa phải toàn contract server gốc. Mỗi hàng khi
+Bảng này tổng hợp bằng chứng từng phần đến CP030; chưa phải toàn contract server gốc. Mỗi hàng khi
 triển khai phải bổ sung riêng **creator, simulator, validator, broadcaster, peer-editable state**, với
 locator/trace và trạng thái từng ô; những vai trò không nêu dưới đây hiện `unknown` cho KR.
 
@@ -1011,7 +1082,7 @@ locator/trace và trạng thái từng ô; những vai trò không nêu dưới 
 | Bomb place/ID | CP027 hai owner/ID chung1..4 tạo trên cả hai client; [phạm vi](#peer-duo); lặp/cũ CP025 | Allocator/rollover/concurrent/race/round generation và authority ngoài policy broadcast thử |
 | Explode/chain | CP027 bốn kind0/cleanup mỗi client; CP022 có nước/HELP; chain chưa nghiệm thu | Fuse/clock owner/relay và cách bỏ lặp chain còn thiếu |
 | Block destroy/item reveal | Calc vùng nổ không tự xác nhận authority phá block/drop | Ai quyết block/item, state từng peer và packet/event đồng thuận |
-| Item placement/pickup | Loader/receiver có mỏ neo, chưa đủ contract | Kind/index theo build, ai đặt item, xác nhận pickup/race và broadcast |
+| Item placement/pickup | CP030 layout582/actual124/165, hai origin và một ca tranh index; [vai trò và giới hạn](#item-pickup) | Hiệu ứng stat/cap, item ẩn/drop, đảo thứ tự winner, duplicate/stale/generation và reset chưa đo |
 | Trap/death | CP029 control mismatch và170/17,19 đưa remoteactor56→1 trước175 qua hai vòng; [contract](#peer-events) | Validator/timeout/duplicate/stale/generation, rescue/enemy-pop và variants còn thiếu |
 | Result/reset | CP028 reported19→175→180/full3 đọc đủ ở cả hai client, cùng về UI phòng; [phạm vi](#duo-room-round) | CP029 có boundedtrap/death forwarding; arbitration/round identity, không rò entity/timer/peer/seq và disconnect vẫn mở |
 | Peer lifecycle | CP027 actual99→153 và UDP send/receive hai client; [phạm vi](#peer-duo) | Full schema receive/handshake/key/slot/reliability/relay và giới hạn state peer được sửa |

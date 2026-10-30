@@ -120,16 +120,19 @@ Village00 và ExVillage01 có profile/map/spawn/geometry riêng và hai vòng th
 [Contract](PROTOCOL.md#bomb-position), [raw/control/correction](evidence/bomb-position/README.md).
 Không dùng điều này thay nghiệm thu collision/reset/authority hoặc hai client.
 
-CP029 đã có receiver/boundedtranslation170 và control death lệch trước175; nguồn chuẩn ở
-[PROTOCOL](PROTOCOL.md#peer-events), [raw/control/hash](evidence/peer-events/README.md).
-CP028/PR36 đã merge`79acacd`; CP029 snapshot trước tích hợp, review độc lập waived.
+CP030 đã có layout582/request124/confirm165, nhặt từ hai origin và một ca tranh cùng index;
+nguồn chuẩn ở [PROTOCOL](PROTOCOL.md#item-pickup), [raw/control/hash](evidence/item-pickup/README.md).
+Trap/death CP029 giữ [contract riêng](PROTOCOL.md#peer-events).
+CP029/PR37 đã merge `99f0ea9`; CP030 snapshot trước tích hợp, review độc lập waived.
 
 **Bước tiếp, Codex RE/tự kiểm:**
 
-1. **NEXT-ITEM-PICKUP:** tìm ca item hiện/nhặt và tranh item cùng index trên hai client. Theo cạnh
-   block/drop đã chạm trong blast, dùng docs VN làm pattern cho placement/request/confirm; kiểm
-   opcode/field KR bằng dispatcher/native/runtime riêng. Không chọn chỉ từ VNoffset hoặc dựng golden
-   tự sinh rồi coi oracle. Chốt creator/simulator/validator/broadcaster/peer-editable state cho hành vi dùng.
+1. **NEXT-ITEM-PICKUP:** layout/request/confirm và một ca tranh index đã được kiểm hẹp ở CP030.
+   Tiếp theo đo capacity/range/speed và cap trước/sau165, bám cạnh `F73D30→B52840→E14DA0`;
+   không suy +stat từ icon hoặc interface hit. Sau đó item ẩn/phá block/reveal hai phía; list2/3 của582
+   chưa được kiểm với dữ liệu thật. Kiểm đảo thứ tự winner, duplicate/stale/round generation và chỉ cộng
+   hiệu ứng một lần; một positive165 không tự chứng minh stat đã nhất quán. VN chỉ làm reference,
+   từng schema/offset/loại item KR cần đo riêng. Vai trò authority giữ ở contract, không lập bản độc lập.
 2. **NEXT-DUO-ROUND:** receiver170/17,19 và boundeddeath mismatch đã có lời giải theo contract;
    giữ duplicate/stale/generation và rescue/enemy-pop/timeout/variants. Kiểm host/disconnect/rejoin,
    không rò entity/timer/peer/seq sau hai vòng trước K6a. Cùngrank không thay deathstate; snapshot
@@ -138,10 +141,11 @@ CP028/PR36 đã merge`79acacd`; CP029 snapshot trước tích hợp, review đ�
    chưa LAN/Internet. Hai chu kỳ thử và forwardreport không xác thực client report hoặc đóng K5/K6.
    104/95bodygrowth, serialrollover/allocator/concurrent/optionalflags, Antarctic timing giữ scope riêng.
 
-CP028 raw/record bất biến; CP029 thêm các ca probe chưa đạt118, sửa nhãnB41150 generic hit không
-phải deathproof, và so bằng cạnhhandler/snapshotnative. Không patch thêm/ép state từ GDB.
-Trap56 và death1 là state đo ở profile này, không enum chung. Rank/outcome/fuse/timing và remoteonly
-forward là policy thử có nguồn, chưa serverauthoritygốc. Authprefix34byte/ID1/2,15/241variants,
+CP029 raw/record bất biến; CP030 giữ các control chưa nhặt được, parser19/12byte/native và ảnh hai phía.
+Không patch thêm/ép state bằng GDB. `E9E660` là nhánh kind0 bom, không phải receiver pickup;
+layout/request/confirm mới đã đo riêng. Hai item và một ca tranh index chưa đóng stat/cap, hidden drop
+hoặc toàn validator. Rank/outcome/fuse/timing và policy giữ index cho request đầu là lựa chọn emulator,
+chưa server authority gốc. Authprefix34byte/ID1/2,15/241variants,
 oneclickuser/+E9C/token_2/count2/vanilla còn mở. AUD008/CP028 gần nhất, audit kếCP032.
 
 | ID / ưu tiên | Trạng thái | Owner / reviewer | Đã biết | Còn thiếu / bước đóng |
@@ -150,8 +154,8 @@ oneclickuser/+E9C/token_2/count2/vanilla còn mở. AUD008/CP028 gần nhất, a
 | Q-023 / KRE-P1 codec | open | Codex RE/tự kiểm | CP015 có socket kênh mới, native replay theo từng kết nối, schema17/count0 và nhận241 | Full result0/codec/reset theo bước trên; gate K2 còn mở |
 | Q-024 / KRE-P1 login/kênh | open | Codex RE/tự kiểm | UI sảnh hết notice17/241; CP020 phục hồi inputID local, tên/profile phòng có fixture, chưa full auth/sảnh identity | Full identity/user/cache và cold/warm/reconnect K3; không gọi auth Nexon thật |
 | Q-025 / KRE-P1 room/load | open | Codex RE/tự kiểm | CP028 Acreate81/86,Bjoin82/87,Ready95/110,Start104/121; cùng session1/hai vòng thử; [phạm vi](PROTOCOL.md#duo-room-round) | Password/error/unready/leave/host và load-barrier variants, collision/reset/104growth/cache, nghiệm thu K4 |
-| Q-026 / KRE-P1 authority/trận | open | Codex RE/tự kiểm | CP029 boundedtrap/death170/state trước175 đã đo; [phạm vi](PROTOCOL.md#peer-events) | Phân quyền client/server/peer từng event; pickup/rescue/trap-death variants/validator/result/correction; K5 một chu kỳ hoàn chỉnh, không lấy packet183 ghost làm mover người sống |
-| Q-027 / KRE-P1 peer | open | Codex RE/tự kiểm | CP027 actual99→153, UDP receive/movement/bom hai client; VN92/146 làm reference | Full grammar/key/slot/reliability/relay, trap/death forwarding hẹp đã có; item/reset/disconnect/variants trước nghiệm thu K6 |
+| Q-026 / KRE-P1 authority/trận | open | Codex RE/tự kiểm | CP030 có item trên nền/nhặt/tranh index với vai trò hẹp; [phạm vi](PROTOCOL.md#item-pickup) | Stat/cap, item ẩn/drop, rescue/trap-death variants/validator/result/correction; K5 một chu kỳ hoàn chỉnh, không lấy packet183 ghost làm mover người sống |
+| Q-027 / KRE-P1 peer | open | Codex RE/tự kiểm | CP027 actual99→153/UDP movement/bom, CP029 trap/death, CP030 cùng xử lý pickup và một winner; [giới hạn](PROTOCOL.md#item-pickup) | Full grammar/key/slot/reliability/relay, item effect/hidden drop, reset/disconnect/variants trước nghiệm thu K6 |
 | Q-028 / KRE-P2 profile/core | open | Codex/tự kiểm | Core Rust và policy V1 có sẵn, nhưng client gốc không biết ADR0009 | Sau audit Q-026/027, quyết định giữ lai/relay/shadow core hay authoritative được client hỗ trợ; profile emu có provenance, không sửa V1 implicit |
 | Q-029 / KRE-P2 vận hành | open | Codex/tự kiểm | CP029 có statepeer sau170 trước175 và hai chu kỳ thử; [giới hạn](PROTOCOL.md#peer-events); chưa fullmatch/K6a | K7 bốn client, malformed/stale/duplicate/race/disconnect/restart, bounds/resource limits, Linux package, patch manifest và README tái lập |
 
