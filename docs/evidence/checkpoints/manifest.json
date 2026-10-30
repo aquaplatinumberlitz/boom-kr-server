@@ -1,7 +1,7 @@
 {
   "schema": "kre-checkpoints-v1",
-  "last_id": "CP024",
-  "completed_count": 24,
+  "last_id": "CP025",
+  "completed_count": 25,
   "audit_interval": 4,
   "last_periodic_audit": 24,
   "next_periodic_audit": "CP028",
@@ -26444,6 +26444,1409 @@
           "path": "docs/evidence/checkpoints/audits/AUD007.json",
           "state": "updated",
           "reason": "Periodic manual audit of canonical docs/evidence against raw/runtime; nextCP028."
+        }
+      ]
+    },
+    {
+      "id": "CP025",
+      "previous": "CP024",
+      "lifecycle": "complete",
+      "recorded_utc": "2026-10-30T10:33:26.276337+00:00",
+      "question": "How do nonzero actual118 serials reconcile multiple local bombs, what do duplicate/stale159/158 do after ID rebinding, and which KR consumer supplies peer addresses?",
+      "scope": "Four sequential108s configured isolated Wine probes, ExVillage01/one client/synthetic guest. Wrong aux16 control versus actual u32 serial echo, semantic duplicate/stale with fresh sequence, bind99 port runtime and targeted static peer-entry discovery. No new patch/full153 or multiplayer claim.",
+      "context_commit": "d14c708e47a5a80851e1c2e752d658e6bc934ac3",
+      "owner": "Codex",
+      "reviewer": "Codex",
+      "artifacts": [
+        {
+          "name": "CA-r2-login-logout.exe",
+          "sha256": "660447c293ce92270cb9b5815331bca976e8f156366e1fe50b217b6c12e60ce3"
+        },
+        {
+          "name": "CA-r2-stage-social.exe",
+          "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+        },
+        {
+          "name": "modO.bin",
+          "sha256": "a08950c833d3acab8281049def7b3dc96b221f107eeda01da3a548e34b91dce5"
+        }
+      ],
+      "locators": [
+        "VA base400000, RVA=VA-400000. Static660447/runtimee9bb47/nativea08950;16bounded ranges identical, no new binary/DB patch.",
+        "Actual118 E2DF80 record+0C/u32→159field3u32/payload+4→E5E989 info+00. Header159field2u16/payload+2→E14600 info+B0→B38350 secure+10C, not serial.",
+        "E14600→CGOAIBattleBomber/vf50 AEF700. Compare getterB37FC0/this+118 viaB3BB20 toinfo+00 atAEF7AB orAEF814; observedAEF7AB in duplicates/stale. E5EAD1 info+0C→B37880serverID; entityreturn E5ECA8.",
+        "multi-sequential serial0/28, mappingaux16 yieldsentitynonzero/0. serial-corrected realserial0/28/56→entity/bind IDs1/2/3, three158kind0 cleanups.",
+        "duplicates-peer original/duplicate159 returnnonzero/0×3; six158callbacks but threeE9E660/cleanup. stale-id-reuse two old159return0/two old158neverreachE1449C/E9E660 after successorbind. Sameobject pointer reused.",
+        "E7F301→13E1470→13DE7C0(hostname/hostlookup),E7F33C→13E14A0→14E5670/u16networkbase+24. IATbind16EA7A0 calls14E55F2, advertisednative99 equals actualport9751/9345.",
+        "Static153:E5D4CE→E5E6D0→E825D0, unguarded. BodyE839A2 loops26slot;on→3u32/u16pairs atE83AB2/E83AC9→E83B69/13E1190→14E57B0. RelaynonzeroIP→htonl→13E1140→14E57B0.",
+        "Static532:E5D4E0→E5E820 guarded703A80; guardreturnsAL0 on all3artifacts. Table2 lowerbound312, not307; fullE825D0body/header not recovered, neither153/532 sent/observed thisCP."
+      ],
+      "findings": [
+        {
+          "summary": "Nonzero actualserial28 falsifies CP024 candidate aux16 mapping; correct159u32 echo reconciles three actual requests0/28/56 and binds distinct IDs1..3.",
+          "source": "kr_runtime",
+          "status": "confirmed",
+          "method": "runtime",
+          "canonical": "docs/PROTOCOL.md#bomb-serial",
+          "evidence": [
+            "E096",
+            "E090",
+            "E108",
+            "E101",
+            "E041",
+            "E057",
+            "E143",
+            "E144"
+          ],
+          "limits": "Bounded flag0/base22→base39, owner0, chosenID/fuse/remainingfields; not allocator/rollover/concurrent/multiplayer/full-match proof."
+        },
+        {
+          "summary": "Actual serial comparison and ID binding separate info+00/ID+0C fromaux+B0; runtime takes AEF7AB branch, not initialAEF814 probe.",
+          "source": "kr_runtime",
+          "status": "confirmed",
+          "method": "runtime",
+          "canonical": "docs/PROTOCOL.md#bomb-serial",
+          "evidence": [
+            "E126",
+            "E113",
+            "E142",
+            "E131",
+            "E150",
+            "E011",
+            "E012",
+            "E010"
+          ],
+          "limits": "Securepool flags/serialgeneration beyond getters remain unnamed; inherited rawlabels wrongauxserial corrected only newprobes/docs."
+        },
+        {
+          "summary": "Semantic duplicate/stale controls with fresh transportseq do not add kind0 executions in measured cases; old159returns0 and old158 after rebinding misses lookup-return probe.",
+          "source": "kr_runtime",
+          "status": "confirmed",
+          "method": "runtime",
+          "canonical": "docs/PROTOCOL.md#bomb-serial",
+          "evidence": [
+            "E126",
+            "E113",
+            "E142",
+            "E131",
+            "E041",
+            "E057",
+            "E145",
+            "E146"
+          ],
+          "limits": "Duplicate158stillfindsIDbeforeguard, not lookup0. Exactly3kind0/cleanup, but no universal idempotency/race/generation/simultaneous/IDreuse-wrap guarantee."
+        },
+        {
+          "summary": "Actual bind ports match native99 advertised ports9751/9345; IPsource andportgetter linked to manager/networkbase.",
+          "source": "kr_runtime",
+          "status": "confirmed",
+          "method": "runtime",
+          "canonical": "docs/PROTOCOL.md#kr-peer-entry",
+          "evidence": [
+            "E126",
+            "E113",
+            "E142",
+            "E131",
+            "E041",
+            "E005",
+            "E001",
+            "E007"
+          ],
+          "limits": "Loopback-only namespace, anotherbindsocket present; no peer supplied/sendto observed under installedbounded hook. No movement/relay or negativeUDPproof."
+        },
+        {
+          "summary": "KR153 directly calls E825D0 with relay/26slot×3endpoint suffix leading13E1190; alternate532 entry hasfalseguard703A80 on pinnedbuilds.",
+          "source": "kr_static",
+          "status": "confirmed",
+          "method": "static",
+          "canonical": "docs/PROTOCOL.md#kr-peer-entry",
+          "evidence": [
+            "E154",
+            "E016",
+            "E017",
+            "E024",
+            "E026",
+            "E003",
+            "E002",
+            "E009",
+            "E045",
+            "E027"
+          ],
+          "limits": "Staticedges/layoutconfirmed; fullprefix/body153, consumersideeffects/endian/runtimeHostCreate/UDP/key/slot remain untested. No153/532 fixture sent."
+        },
+        {
+          "summary": "Application of153 peer suffix to current live path remains candidate until full packet/cursor/manager/sendto runtime experiment.",
+          "source": "kr_static",
+          "status": "candidate",
+          "method": "static",
+          "canonical": "docs/PROTOCOL.md#kr-peer-entry",
+          "evidence": [
+            "E024",
+            "E026",
+            "E042"
+          ],
+          "limits": "Do notsend suffixtruncatedbody, assume532works, or call staticsuffix a peer runtime success."
+        },
+        {
+          "summary": "VN92/146/18slots documentation supplies a structural hint; KR99/153/26slots independently recovered with KRbytes/native/runtime.",
+          "source": "vn_static",
+          "status": "confirmed",
+          "method": "documentation",
+          "canonical": "docs/PROTOCOL.md#kr-peer-entry",
+          "evidence": [
+            "E162",
+            "E034"
+          ],
+          "limits": "HistoricalVNrecord, no newVNruntime, no constantopcodeoffset/slot/key translation."
+        },
+        {
+          "summary": "Four-second fuse, IDs1..3, fixedaux0 and remainingfields are diagnostic emulator choices; CP025 deliberately removes auto175/180 for same-round serial study.",
+          "source": "emu_choice",
+          "status": "design",
+          "method": "documentation",
+          "canonical": "docs/PROTOCOL.md#bomb-serial",
+          "evidence": [
+            "E144",
+            "E145",
+            "E146",
+            "E034"
+          ],
+          "limits": "Not originalserver policy, noresult/reset/full-match/newgate proof."
+        }
+      ],
+      "verification": [
+        {
+          "check": "1649mechanicalchecks/4sequentialruns, sealedraw/copy/harness/isolation/lease, allC2S native framing withCRC/partialnegatives,111native typed/framingcases includingactual99/118 andall159/158fixtures,16code-rangematches,153/532tables/guard andruntimeack/ID/cleanup/porttimelines.",
+          "result": "pass",
+          "evidence": [
+            "E083",
+            "E041",
+            "E027",
+            "E057",
+            "E034"
+          ],
+          "limits": "Codexmanualcode/log/image interpretation separate. Noindependentreview, peer/full153/runtimeHostCreate or gate closure."
+        }
+      ],
+      "evidence": [
+        {
+          "id": "E001",
+          "kind": "local",
+          "path": "local/research/codex/bomb-serial-r1/13DE7C0.asm",
+          "bytes": 2071,
+          "sha256": "4d6de04c32c562c40414f0989283762df6fae0f8c07a4ac7bcc9373b240b27c4"
+        },
+        {
+          "id": "E002",
+          "kind": "local",
+          "path": "local/research/codex/bomb-serial-r1/13E1140.asm",
+          "bytes": 1711,
+          "sha256": "a03c7344cba1b041b22542ee80e96c6c16849601f12307bf8bb6e24bb5f4ff29"
+        },
+        {
+          "id": "E003",
+          "kind": "local",
+          "path": "local/research/codex/bomb-serial-r1/13E1190.asm",
+          "bytes": 7837,
+          "sha256": "fca82b26d7d8dad5cb494f88bf38ed64251ade2163393a93fcee253a75e0d912"
+        },
+        {
+          "id": "E004",
+          "kind": "local",
+          "path": "local/research/codex/bomb-serial-r1/13E13C0.asm",
+          "bytes": 3107,
+          "sha256": "8385f72a712d29977df40e852b2faf435fdb6e06967e67bc4d355ef3a9c6e9cc"
+        },
+        {
+          "id": "E005",
+          "kind": "local",
+          "path": "local/research/codex/bomb-serial-r1/13E1470.asm",
+          "bytes": 2748,
+          "sha256": "3f4a6e266ff2a7529fc21f08ed6e9fb6d7d1a48c8d3bea138e7ad11c044a693c"
+        },
+        {
+          "id": "E006",
+          "kind": "local",
+          "path": "local/research/codex/bomb-serial-r1/13E14C0.asm",
+          "bytes": 6565,
+          "sha256": "600f405980542f384814d0ed091179ab6c27ad30380b6eca15fb75338b6c4ec4"
+        },
+        {
+          "id": "E007",
+          "kind": "local",
+          "path": "local/research/codex/bomb-serial-r1/14E5670.asm",
+          "bytes": 2204,
+          "sha256": "7818ba4e77e837af66d472b250ec0a75f3098282a0ded09154aa642f85238b07"
+        },
+        {
+          "id": "E008",
+          "kind": "local",
+          "path": "local/research/codex/bomb-serial-r1/14E57B0.asm",
+          "bytes": 2717,
+          "sha256": "ebf415184408e20d2964ce1b67e18c12b8507ee2a0f75de4a6049fe6287dc10b"
+        },
+        {
+          "id": "E009",
+          "kind": "local",
+          "path": "local/research/codex/bomb-serial-r1/703A80.asm",
+          "bytes": 1643,
+          "sha256": "6f8523c89d0d3e8a0612703e1ea38eb3b5542498dae9bbe7c5418ebb81265caf"
+        },
+        {
+          "id": "E010",
+          "kind": "local",
+          "path": "local/research/codex/bomb-serial-r1/B37880.asm",
+          "bytes": 1235,
+          "sha256": "ae0bf3b37db3764df9e4b8939b7b8064d805c09d88ea5c35fbda7608952e28aa"
+        },
+        {
+          "id": "E011",
+          "kind": "local",
+          "path": "local/research/codex/bomb-serial-r1/B37FC0.asm",
+          "bytes": 1118,
+          "sha256": "97c423f6da8cb0dd37dd160dfec5c702042d350719491eb594b1cc45266338a6"
+        },
+        {
+          "id": "E012",
+          "kind": "local",
+          "path": "local/research/codex/bomb-serial-r1/B38350.asm",
+          "bytes": 1678,
+          "sha256": "9ab018714c3db6aa8f1d30802079c637ac074af63ac3436be67889d757a28797"
+        },
+        {
+          "id": "E013",
+          "kind": "local",
+          "path": "local/research/codex/bomb-serial-r1/D97010.asm",
+          "bytes": 1416,
+          "sha256": "82a9f5300eeab9b8eb38ad6f5a6449a2bfec45b1acad2b0817b1e8c84e36d98d"
+        },
+        {
+          "id": "E014",
+          "kind": "local",
+          "path": "local/research/codex/bomb-serial-r1/E5E370.asm",
+          "bytes": 2223,
+          "sha256": "d78de1e4f6727feac567ebb16b467cbfbfccc38d037fb664117eb400f66f7e5c"
+        },
+        {
+          "id": "E015",
+          "kind": "local",
+          "path": "local/research/codex/bomb-serial-r1/E5E5A0.asm",
+          "bytes": 2947,
+          "sha256": "18d7f62ec09fc462a911ad8f7dd27c49cf85efd68878414b040b9aa94278d6af"
+        },
+        {
+          "id": "E016",
+          "kind": "local",
+          "path": "local/research/codex/bomb-serial-r1/E5E6D0.asm",
+          "bytes": 1984,
+          "sha256": "18e045d1018bea0f7a2d8fd993c984b06b1ad687df90d9db0f2fcc811c9c0e1e"
+        },
+        {
+          "id": "E017",
+          "kind": "local",
+          "path": "local/research/codex/bomb-serial-r1/E5E800.asm",
+          "bytes": 2939,
+          "sha256": "63202c5704feec5b3eb91a28d317b7f1013ebd98eb476d5c24e8016e0f3a1264"
+        },
+        {
+          "id": "E018",
+          "kind": "local",
+          "path": "local/research/codex/bomb-serial-r1/E66290.asm",
+          "bytes": 122,
+          "sha256": "8becb1d9de9533c1928135b1dd4f14a80c13e3737531eb82107bbd80240f76f0"
+        },
+        {
+          "id": "E019",
+          "kind": "local",
+          "path": "local/research/codex/bomb-serial-r1/E662B0.asm",
+          "bytes": 15121,
+          "sha256": "56144deebf447cd836ac0c57ef15f50e4923ba55ae1ba1d3cdee70c79f709a37"
+        },
+        {
+          "id": "E020",
+          "kind": "local",
+          "path": "local/research/codex/bomb-serial-r1/E66680.asm",
+          "bytes": 19962,
+          "sha256": "693de8be35ee71184f37bc1d1947059aef3cd4f2f99348593da2e403c15ba8fe"
+        },
+        {
+          "id": "E021",
+          "kind": "local",
+          "path": "local/research/codex/bomb-serial-r1/E66860.asm",
+          "bytes": 14530,
+          "sha256": "1829921df86c8176c20355a16c0554f4ffd4ba642aea6d7695159b5652d59ad4"
+        },
+        {
+          "id": "E022",
+          "kind": "local",
+          "path": "local/research/codex/bomb-serial-r1/E67E70.asm",
+          "bytes": 13960,
+          "sha256": "9a13b218939f3f22c762967cd5f5d9373a46106f78702c0e06d19c3c8ff928d9"
+        },
+        {
+          "id": "E023",
+          "kind": "local",
+          "path": "local/research/codex/bomb-serial-r1/E68110.asm",
+          "bytes": 121,
+          "sha256": "74a5864de415c763381db358c441db4d64721403579f8de7705888e05ae01280"
+        },
+        {
+          "id": "E024",
+          "kind": "local",
+          "path": "local/research/codex/bomb-serial-r1/E825D0.asm",
+          "bytes": 3879,
+          "sha256": "50d4d339ae0487b924079a2c6e92ba1ab7ea65ea317e2f38cb0c0965942889b7"
+        },
+        {
+          "id": "E025",
+          "kind": "local",
+          "path": "local/research/codex/bomb-serial-r1/E838D0.asm",
+          "bytes": 121,
+          "sha256": "b42ced55e8636e2f4363b3b61e9d0e41739ddbf1d2a51b7561309260fe9afb2e"
+        },
+        {
+          "id": "E026",
+          "kind": "local",
+          "path": "local/research/codex/bomb-serial-r1/E83900.asm",
+          "bytes": 10590,
+          "sha256": "6d60b92941b5cda8e70da9b24049dac30f5015104feedee05478426d4dfed5e8"
+        },
+        {
+          "id": "E027",
+          "kind": "local",
+          "path": "local/research/codex/bomb-serial-r1/code-match.json",
+          "bytes": 2452,
+          "sha256": "316224b24c92296e3efc63d2acdae5382fbe6a54c6f583a2dda8cac10e6818ad"
+        },
+        {
+          "id": "E028",
+          "kind": "local",
+          "path": "local/research/codex/bomb-serial-r1/duplicates-peer-hashes.json",
+          "bytes": 23904,
+          "sha256": "b41f0d538595ddb3a65d58adf9fc4364ea73f706377db541c926abd5ae70017e"
+        },
+        {
+          "id": "E029",
+          "kind": "local",
+          "path": "local/research/codex/bomb-serial-r1/duplicates-peer-launcher.log",
+          "bytes": 32889,
+          "sha256": "56cbce00b5bf04a7a7253962b0ad77de81294b8053ff81b0e320adcb91e11fb2"
+        },
+        {
+          "id": "E030",
+          "kind": "local",
+          "path": "local/research/codex/bomb-serial-r1/duplicates-peer-oracle.json",
+          "bytes": 114493,
+          "sha256": "2965fff70aeb39806f8cc2decebbd2c6c2a69c146e525d4667a3cc43976ff87d"
+        },
+        {
+          "id": "E031",
+          "kind": "local",
+          "path": "local/research/codex/bomb-serial-r1/duplicates-peer-recipe.json",
+          "bytes": 1006,
+          "sha256": "68bc2a9632977e1b6caefa0137797eed6c8b6aa00040a94bdeb2be70607bd5f7"
+        },
+        {
+          "id": "E032",
+          "kind": "local",
+          "path": "local/research/codex/bomb-serial-r1/duplicates-peer-replay.txt",
+          "bytes": 1891,
+          "sha256": "1fd5b082e4827c5fc5a582d76221f246f57e0262c144466a82e039cd829b3c15"
+        },
+        {
+          "id": "E033",
+          "kind": "local",
+          "path": "local/research/codex/bomb-serial-r1/duplicates-peer.gdb",
+          "bytes": 11312,
+          "sha256": "3fdae5adf5ee5996172a8de24e395e728640954667b397b25fa71d136e41b3c3"
+        },
+        {
+          "id": "E034",
+          "kind": "local",
+          "path": "local/research/codex/bomb-serial-r1/measurement-notes.json",
+          "bytes": 3925,
+          "sha256": "c9113f03e93e90a0942880c055968b1b2249e1305c1a60058932379f6856d0b3"
+        },
+        {
+          "id": "E035",
+          "kind": "local",
+          "path": "local/research/codex/bomb-serial-r1/multi-sequential-hashes.json",
+          "bytes": 22396,
+          "sha256": "8ab2d91c9e13aec5d0acb851d50c6425e471289d76be3b45ee56a13e4caf53ab"
+        },
+        {
+          "id": "E036",
+          "kind": "local",
+          "path": "local/research/codex/bomb-serial-r1/multi-sequential-launcher.log",
+          "bytes": 27102,
+          "sha256": "1872347d87ad63366d5ae80444ed4516e4a05301bf986ba8230eb1846d179522"
+        },
+        {
+          "id": "E037",
+          "kind": "local",
+          "path": "local/research/codex/bomb-serial-r1/multi-sequential-oracle.json",
+          "bytes": 93557,
+          "sha256": "7ae24dcdb55fd7023f47d817d743183b8392bb04543070a1ac47567f2358bde5"
+        },
+        {
+          "id": "E038",
+          "kind": "local",
+          "path": "local/research/codex/bomb-serial-r1/multi-sequential-recipe.json",
+          "bytes": 993,
+          "sha256": "e2688d9ff2fb74ed63fa7625cb96a5b781cec2c806072b2f4ae2076075f5005b"
+        },
+        {
+          "id": "E039",
+          "kind": "local",
+          "path": "local/research/codex/bomb-serial-r1/multi-sequential-replay.txt",
+          "bytes": 1549,
+          "sha256": "1edccba9e43806260925f55d30629d39669c792013ee862b0c17c85cf502949a"
+        },
+        {
+          "id": "E040",
+          "kind": "local",
+          "path": "local/research/codex/bomb-serial-r1/multi.gdb",
+          "bytes": 10177,
+          "sha256": "b1012019ec6fd3ef281bd4ebfef3693a751157dbad98a21b8c629d55cb7ea514"
+        },
+        {
+          "id": "E041",
+          "kind": "local",
+          "path": "local/research/codex/bomb-serial-r1/native-fields.json",
+          "bytes": 44634,
+          "sha256": "3f8aabcad548597e8d475b1caa5c719f0d2d7a6fc5fd6ba4efdd76364b5c37cf"
+        },
+        {
+          "id": "E042",
+          "kind": "local",
+          "path": "local/research/codex/bomb-serial-r1/peer-body-xrefs.json",
+          "bytes": 162,
+          "sha256": "8f9c08cfba8a8f226950ca3d119224a62fbfdb6db33e6e7e0b74759410d643fa"
+        },
+        {
+          "id": "E043",
+          "kind": "local",
+          "path": "local/research/codex/bomb-serial-r1/peer-dispatch-candidates.json",
+          "bytes": 333,
+          "sha256": "f8f7bc1ad86f21499874671b3a5976af7c0814c9e9db98ef920151cfcce19175"
+        },
+        {
+          "id": "E044",
+          "kind": "local",
+          "path": "local/research/codex/bomb-serial-r1/peer-register-xrefs.json",
+          "bytes": 164,
+          "sha256": "d606869252af0fa843457436607f4e7602144d9804d6bd0c3d3275db67cf4efc"
+        },
+        {
+          "id": "E045",
+          "kind": "local",
+          "path": "local/research/codex/bomb-serial-r1/peer-table-dispatch.json",
+          "bytes": 255,
+          "sha256": "e936a5fce0e98b4d952e5d4cddbdcebf1158cc8eace42aad78d7d3c9b5b371fe"
+        },
+        {
+          "id": "E046",
+          "kind": "local",
+          "path": "local/research/codex/bomb-serial-r1/peer-vtable.json",
+          "bytes": 255,
+          "sha256": "0a1fad1afbbec3f41fe0d1117d2d44d1c8b0ebea5cfc72be1370634e69afe51b"
+        },
+        {
+          "id": "E047",
+          "kind": "local",
+          "path": "local/research/codex/bomb-serial-r1/peer-vtable.py",
+          "bytes": 563,
+          "sha256": "346179cb05532d3895eff283f3f5d19dcd57c97eca961164fbc234391845a2b3"
+        },
+        {
+          "id": "E048",
+          "kind": "local",
+          "path": "local/research/codex/bomb-serial-r1/peer-xrefs.json",
+          "bytes": 1974,
+          "sha256": "1ed8e96093e807a81f932455893cbb970dd01730a5eddcbcc24d035327b91456"
+        },
+        {
+          "id": "E049",
+          "kind": "local",
+          "path": "local/research/codex/bomb-serial-r1/peer-xrefs.py",
+          "bytes": 982,
+          "sha256": "ec56aaa89c44d58c9b1ff355fa47724138ff80e8f547b8d3775262e5d60e51f1"
+        },
+        {
+          "id": "E050",
+          "kind": "local",
+          "path": "local/research/codex/bomb-serial-r1/prepare-duplicates.py",
+          "bytes": 2596,
+          "sha256": "51052258db6662f6294990dfee55a11d8eb5f1fee5e63f6feaf27cf8408e64a2"
+        },
+        {
+          "id": "E051",
+          "kind": "local",
+          "path": "local/research/codex/bomb-serial-r1/prepare-stale.py",
+          "bytes": 896,
+          "sha256": "b64aac91e7768893853b48814f4544a2308087e01a2d7b162116b76d65843985"
+        },
+        {
+          "id": "E052",
+          "kind": "local",
+          "path": "local/research/codex/bomb-serial-r1/prepare.py",
+          "bytes": 6141,
+          "sha256": "a473433e57d9314dcd279f3c832cc4c3033790575967c5626949b144f3b85a07"
+        },
+        {
+          "id": "E053",
+          "kind": "local",
+          "path": "local/research/codex/bomb-serial-r1/read_static.py",
+          "bytes": 670,
+          "sha256": "726c33bf76f56a0d8040398e747c0c71720f154848120f653ce86f6af1067160"
+        },
+        {
+          "id": "E054",
+          "kind": "local",
+          "path": "local/research/codex/bomb-serial-r1/replay-run.py",
+          "bytes": 3002,
+          "sha256": "349ccb54236cc5f7153f44f1c7130134d95afcb5210ff7889ba9a867954826e8"
+        },
+        {
+          "id": "E055",
+          "kind": "local",
+          "path": "local/research/codex/bomb-serial-r1/run-index.json",
+          "bytes": 1376,
+          "sha256": "1c605b15c6785d1518ff575bde5031a27eb438f01120fadb068ae4c2f72f3341"
+        },
+        {
+          "id": "E056",
+          "kind": "local",
+          "path": "local/research/codex/bomb-serial-r1/run_probe.py",
+          "bytes": 1067,
+          "sha256": "dc7022d605e4992e37ca42f0fac022d547e6cc450d2a7086651b8d4e12eba1a8"
+        },
+        {
+          "id": "E057",
+          "kind": "local",
+          "path": "local/research/codex/bomb-serial-r1/runtime-summary.json",
+          "bytes": 1695,
+          "sha256": "2298e4bc08d2a60c7d8175ac169b57db565b7f2e412a2f7911b712d692fd7d3b"
+        },
+        {
+          "id": "E058",
+          "kind": "local",
+          "path": "local/research/codex/bomb-serial-r1/seal_run.py",
+          "bytes": 625,
+          "sha256": "4e06bb8253c23e353dfa354548c1b72aaadaef36749480cd67f578b976976038"
+        },
+        {
+          "id": "E059",
+          "kind": "local",
+          "path": "local/research/codex/bomb-serial-r1/serial-corrected-hashes.json",
+          "bytes": 22799,
+          "sha256": "b06104cfda5976296fb70b88247ad529a1fd052f8ea413b9532a906805794391"
+        },
+        {
+          "id": "E060",
+          "kind": "local",
+          "path": "local/research/codex/bomb-serial-r1/serial-corrected-launcher.log",
+          "bytes": 30162,
+          "sha256": "0db2ac04369868d82a68d0516e3b05e8bd942dc8b631fbc362da4af30a94b514"
+        },
+        {
+          "id": "E061",
+          "kind": "local",
+          "path": "local/research/codex/bomb-serial-r1/serial-corrected-oracle.json",
+          "bytes": 110033,
+          "sha256": "3468f1de18be0a63542c6fffaf2c9ed2c29adb17237dbcf5a6c8c07d4d30d5e8"
+        },
+        {
+          "id": "E062",
+          "kind": "local",
+          "path": "local/research/codex/bomb-serial-r1/serial-corrected-recipe.json",
+          "bytes": 1001,
+          "sha256": "3ab0e55ac47bb8eeb4c6ef98fd31b425b99b57d6801e6cc3efe2e4615dbc333b"
+        },
+        {
+          "id": "E063",
+          "kind": "local",
+          "path": "local/research/codex/bomb-serial-r1/serial-corrected-replay.txt",
+          "bytes": 1824,
+          "sha256": "264fb10983597af08f96f43ae166238a01dbf7337004521b48c27a2b228c8891"
+        },
+        {
+          "id": "E064",
+          "kind": "local",
+          "path": "local/research/codex/bomb-serial-r1/serial.gdb",
+          "bytes": 10421,
+          "sha256": "e7df8c392f8122d0a7e7381b04dcc6facacf9ca46612738cc85fb974c1f1bdfc"
+        },
+        {
+          "id": "E065",
+          "kind": "local",
+          "path": "local/research/codex/bomb-serial-r1/stale-id-reuse-hashes.json",
+          "bytes": 23380,
+          "sha256": "1753426f6938a2605e2f2c17fca8dc607cd612462affeb16eef05af422fe1d50"
+        },
+        {
+          "id": "E066",
+          "kind": "local",
+          "path": "local/research/codex/bomb-serial-r1/stale-id-reuse-launcher.log",
+          "bytes": 32422,
+          "sha256": "4134cf2d3bb84d4e0318f57e1157040c5522cbfe4e51d099d31a3dfca2aa44e1"
+        },
+        {
+          "id": "E067",
+          "kind": "local",
+          "path": "local/research/codex/bomb-serial-r1/stale-id-reuse-oracle.json",
+          "bytes": 114470,
+          "sha256": "ebe486684a18ccaf03b9e932ed7327b94fb90b13c49b5cabe96ad84275777596"
+        },
+        {
+          "id": "E068",
+          "kind": "local",
+          "path": "local/research/codex/bomb-serial-r1/stale-id-reuse-recipe.json",
+          "bytes": 999,
+          "sha256": "9a4a0b64c4ef5ecafe1634ffe129a55c521695d6066e406ad8eb34d37d34076c"
+        },
+        {
+          "id": "E069",
+          "kind": "local",
+          "path": "local/research/codex/bomb-serial-r1/stale-id-reuse-replay.txt",
+          "bytes": 1891,
+          "sha256": "010fc539baf7902919331d7212abfd94b4f6fc1c36c46d0808aacf00d6b990e2"
+        },
+        {
+          "id": "E070",
+          "kind": "local",
+          "path": "local/research/codex/bomb-serial-r1/static-id-fields.txt",
+          "bytes": 4034,
+          "sha256": "fa2e26781a9b3bdf7f689dd8218ec3aca91704c091b6895ba3ff857329d8517c"
+        },
+        {
+          "id": "E071",
+          "kind": "local",
+          "path": "local/research/codex/bomb-serial-r1/static-peer-active-entry.txt",
+          "bytes": 1985,
+          "sha256": "a9272998e437deab56b7e6fc4b9a22a347589dcfa4c00ff9fd307f25d743b3cc"
+        },
+        {
+          "id": "E072",
+          "kind": "local",
+          "path": "local/research/codex/bomb-serial-r1/static-peer-candidates.txt",
+          "bytes": 6811,
+          "sha256": "7064739bb3c919fadc86399547a4b1a751cf929a15eb3d628cfa4d7bf6487d3c"
+        },
+        {
+          "id": "E073",
+          "kind": "local",
+          "path": "local/research/codex/bomb-serial-r1/static-peer-entry.txt",
+          "bytes": 4002,
+          "sha256": "140d98158aeb35382d01a9a70f8cf8a3c0dbbbfa8b92e6dafb34d4352e476042"
+        },
+        {
+          "id": "E074",
+          "kind": "local",
+          "path": "local/research/codex/bomb-serial-r1/static-peer-fields.txt",
+          "bytes": 2749,
+          "sha256": "ccc022e46e76f189040bee3b1260f3c239e68aba49fd20a5493b4a0c12df013b"
+        },
+        {
+          "id": "E075",
+          "kind": "local",
+          "path": "local/research/codex/bomb-serial-r1/static-peer-handler.txt",
+          "bytes": 15122,
+          "sha256": "40a172b69d88d3f9827115b8b7090ad0e87eeaa2dfd2a06fcbef12ba83ab722c"
+        },
+        {
+          "id": "E076",
+          "kind": "local",
+          "path": "local/research/codex/bomb-serial-r1/static-peer-host.txt",
+          "bytes": 6074,
+          "sha256": "bd059855e21f83cb88bd273e25ddba703588575165d2d789d99c2aeb00670057"
+        },
+        {
+          "id": "E077",
+          "kind": "local",
+          "path": "local/research/codex/bomb-serial-r1/static-peer-init.txt",
+          "bytes": 19963,
+          "sha256": "02a5fbcc383a3c50df2f5a077bd1b690d06e3f677701988f6740fbd2179c23fa"
+        },
+        {
+          "id": "E078",
+          "kind": "local",
+          "path": "local/research/codex/bomb-serial-r1/static-peer-registration.txt",
+          "bytes": 22369,
+          "sha256": "2b4e18a209ec776f3cdf77dd0338ed2e7beeb9206ae55846e53ca07a78439e49"
+        },
+        {
+          "id": "E079",
+          "kind": "local",
+          "path": "local/research/codex/bomb-serial-r1/static-peer-source.txt",
+          "bytes": 4277,
+          "sha256": "ca99ccc5241a2b822fcd1f71548bbf06f884985cae7df27e7fb2126430e3ca0f"
+        },
+        {
+          "id": "E080",
+          "kind": "local",
+          "path": "local/research/codex/bomb-serial-r1/static-peer-table-caller.txt",
+          "bytes": 10591,
+          "sha256": "b1a712b19bb0cf58224bed2c36774c7e1e43b8afd2cee1983c78983844f74273"
+        },
+        {
+          "id": "E081",
+          "kind": "local",
+          "path": "local/research/codex/bomb-serial-r1/static-peer-table.txt",
+          "bytes": 13961,
+          "sha256": "53deea1e833c788a64ec42744a2ca6ae089ce9eaa809ba2fe21346e604137132"
+        },
+        {
+          "id": "E082",
+          "kind": "local",
+          "path": "local/research/codex/bomb-serial-r1/sync_docs.py",
+          "bytes": 12567,
+          "sha256": "9e59399c352583516ce445b7450d58a5044eddd85e48a278dfaa07768f750321"
+        },
+        {
+          "id": "E083",
+          "kind": "local",
+          "path": "local/research/codex/bomb-serial-r1/verification.json",
+          "bytes": 94551,
+          "sha256": "9d59640e21e10bb577ba72e2f4974e2aae406c394f99ea2cdf914f5e4e1a378b"
+        },
+        {
+          "id": "E084",
+          "kind": "local",
+          "path": "local/research/codex/bomb-serial-r1/verify-native.py",
+          "bytes": 3071,
+          "sha256": "3cec0cf160d9542b5d03b910ecb3996b520c7690b89dca2f98ead5ea27811156"
+        },
+        {
+          "id": "E085",
+          "kind": "local",
+          "path": "local/research/codex/bomb-serial-r1/verify.py",
+          "bytes": 7032,
+          "sha256": "e4d0800fef9cd95cab159682e5b828c6cf65c5c220ae82821a5b55f09ae347ba"
+        },
+        {
+          "id": "E086",
+          "kind": "local",
+          "path": "local/research/codex/bomb-serial-r1/write_evidence.py",
+          "bytes": 6722,
+          "sha256": "089580a35684e85192eb4dfa8a183b8cfd3a3ebd9f8bb55e599c8bfe52b90a58"
+        },
+        {
+          "id": "E087",
+          "kind": "local",
+          "path": "local/research/codex/bomb-serial-r1/multi-sequential/CALog-run.txt",
+          "bytes": 3261,
+          "sha256": "01cb1fe4def494c0d27992f128ffd89f9861b19c48453313e463bb50dc652da6"
+        },
+        {
+          "id": "E088",
+          "kind": "local",
+          "path": "local/research/codex/bomb-serial-r1/multi-sequential/blast158-1.bin",
+          "bytes": 51,
+          "sha256": "5095a65ab689b03ac91e11a9d306341cf9995b5bf8dc8ac146706908c60496b7"
+        },
+        {
+          "id": "E089",
+          "kind": "local",
+          "path": "local/research/codex/bomb-serial-r1/multi-sequential/blast158-2.bin",
+          "bytes": 51,
+          "sha256": "05a420f90f44600024c160707dd2899f78eee749d66e22bbeaee6d1188efeacc"
+        },
+        {
+          "id": "E090",
+          "kind": "local",
+          "path": "local/research/codex/bomb-serial-r1/multi-sequential/client.log",
+          "bytes": 27783,
+          "sha256": "ab3aa4620eae9316ce71ae37f4510f9642899e065708d33cdae386cd8bb24d52"
+        },
+        {
+          "id": "E091",
+          "kind": "local",
+          "path": "local/research/codex/bomb-serial-r1/multi-sequential/debug-commands.txt",
+          "bytes": 10177,
+          "sha256": "b1012019ec6fd3ef281bd4ebfef3693a751157dbad98a21b8c629d55cb7ea514"
+        },
+        {
+          "id": "E092",
+          "kind": "local",
+          "path": "local/research/codex/bomb-serial-r1/multi-sequential/dynamic159-1.bin",
+          "bytes": 77,
+          "sha256": "f5b00dc36dddcba138ee6f96a437b46d4c5ae0e233b47947332ef2d91f624703"
+        },
+        {
+          "id": "E093",
+          "kind": "local",
+          "path": "local/research/codex/bomb-serial-r1/multi-sequential/dynamic159-2.bin",
+          "bytes": 77,
+          "sha256": "55d492fdd8bd37cad9cd2b2f6e03871de44f473c04a8c54d67ec248c476f5e44"
+        },
+        {
+          "id": "E094",
+          "kind": "local",
+          "path": "local/research/codex/bomb-serial-r1/multi-sequential/multi-after-3-Down.png",
+          "bytes": 130753,
+          "sha256": "b5efb27b025cdf7d562453b75495bda8039a79dc4689bc215dec17e891731bc8"
+        },
+        {
+          "id": "E095",
+          "kind": "local",
+          "path": "local/research/codex/bomb-serial-r1/multi-sequential/multi-after-5-Right.png",
+          "bytes": 130069,
+          "sha256": "147dc1e9393b072139254ac00c85fda7117c89e9f5b3929d2144a99a09cb6070"
+        },
+        {
+          "id": "E096",
+          "kind": "local",
+          "path": "local/research/codex/bomb-serial-r1/multi-sequential/run.json",
+          "bytes": 34072,
+          "sha256": "01c43d02c615e2cea5a6cfbdbbc1d34547b931bbf8a148c5f243ad218dc29c29"
+        },
+        {
+          "id": "E097",
+          "kind": "local",
+          "path": "local/research/codex/bomb-serial-r1/serial-corrected/CALog-run.txt",
+          "bytes": 3733,
+          "sha256": "1f1caa413b7608b602750d7a1e5864421a88c7dee61d158d8a3e4d2bd2e2317d"
+        },
+        {
+          "id": "E098",
+          "kind": "local",
+          "path": "local/research/codex/bomb-serial-r1/serial-corrected/blast158-1.bin",
+          "bytes": 51,
+          "sha256": "5095a65ab689b03ac91e11a9d306341cf9995b5bf8dc8ac146706908c60496b7"
+        },
+        {
+          "id": "E099",
+          "kind": "local",
+          "path": "local/research/codex/bomb-serial-r1/serial-corrected/blast158-2.bin",
+          "bytes": 51,
+          "sha256": "05a420f90f44600024c160707dd2899f78eee749d66e22bbeaee6d1188efeacc"
+        },
+        {
+          "id": "E100",
+          "kind": "local",
+          "path": "local/research/codex/bomb-serial-r1/serial-corrected/blast158-3.bin",
+          "bytes": 51,
+          "sha256": "bcab90bec9d144d582d0c5ebd3fc18b5247df1a92f004417a4c6422732dec31c"
+        },
+        {
+          "id": "E101",
+          "kind": "local",
+          "path": "local/research/codex/bomb-serial-r1/serial-corrected/client.log",
+          "bytes": 34034,
+          "sha256": "9529c2437e29307d214bb72454ef3775d0146dd948e943bca7b8244aef852bb1"
+        },
+        {
+          "id": "E102",
+          "kind": "local",
+          "path": "local/research/codex/bomb-serial-r1/serial-corrected/debug-commands.txt",
+          "bytes": 10421,
+          "sha256": "e7df8c392f8122d0a7e7381b04dcc6facacf9ca46612738cc85fb974c1f1bdfc"
+        },
+        {
+          "id": "E103",
+          "kind": "local",
+          "path": "local/research/codex/bomb-serial-r1/serial-corrected/dynamic159-1.bin",
+          "bytes": 77,
+          "sha256": "f5b00dc36dddcba138ee6f96a437b46d4c5ae0e233b47947332ef2d91f624703"
+        },
+        {
+          "id": "E104",
+          "kind": "local",
+          "path": "local/research/codex/bomb-serial-r1/serial-corrected/dynamic159-2.bin",
+          "bytes": 77,
+          "sha256": "724a62eab43ca0813881d5d042024e23fa23c9afe03fb9e6e2bd899d7c72848a"
+        },
+        {
+          "id": "E105",
+          "kind": "local",
+          "path": "local/research/codex/bomb-serial-r1/serial-corrected/dynamic159-3.bin",
+          "bytes": 77,
+          "sha256": "41dbb49fe62e46d38d777d059ea2aaf128790e3add8aeb0c10e84115130b0db3"
+        },
+        {
+          "id": "E106",
+          "kind": "local",
+          "path": "local/research/codex/bomb-serial-r1/serial-corrected/multi-after-3-Down.png",
+          "bytes": 129557,
+          "sha256": "5ad51d3348eeeaba05feef1f70143a6e2932fa13f9ae6bbcbf5b31ce500ca732"
+        },
+        {
+          "id": "E107",
+          "kind": "local",
+          "path": "local/research/codex/bomb-serial-r1/serial-corrected/multi-after-5-Right.png",
+          "bytes": 129231,
+          "sha256": "318ff1e24297ef298e363ff679fa5850daa9339bca52158cf53647d661c581c1"
+        },
+        {
+          "id": "E108",
+          "kind": "local",
+          "path": "local/research/codex/bomb-serial-r1/serial-corrected/run.json",
+          "bytes": 38392,
+          "sha256": "2bf3d9f09673020b937d9e1f76850c41cc9cab30ee0db43be6efabeef2cd0bf8"
+        },
+        {
+          "id": "E109",
+          "kind": "local",
+          "path": "local/research/codex/bomb-serial-r1/duplicates-peer/CALog-run.txt",
+          "bytes": 3838,
+          "sha256": "7d40fdbce9c813d87710e2ea81a4fb412de33a9042163c324c28c55d35e3af0b"
+        },
+        {
+          "id": "E110",
+          "kind": "local",
+          "path": "local/research/codex/bomb-serial-r1/duplicates-peer/blast158-1.bin",
+          "bytes": 51,
+          "sha256": "6743cbc5f35f03e9464ffa8a92813f7c65c9922bed311ce92720822146a44743"
+        },
+        {
+          "id": "E111",
+          "kind": "local",
+          "path": "local/research/codex/bomb-serial-r1/duplicates-peer/blast158-2.bin",
+          "bytes": 51,
+          "sha256": "00c164201ff3771a86585828cb5f6bbef13064ffa8a944ab06d6fd1f147aa5ec"
+        },
+        {
+          "id": "E112",
+          "kind": "local",
+          "path": "local/research/codex/bomb-serial-r1/duplicates-peer/blast158-3.bin",
+          "bytes": 51,
+          "sha256": "c0b63a0a01970a3739790d718f3d7f5113bd906187190464bbcf1c097c114d4e"
+        },
+        {
+          "id": "E113",
+          "kind": "local",
+          "path": "local/research/codex/bomb-serial-r1/duplicates-peer/client.log",
+          "bytes": 43019,
+          "sha256": "8a2005f625ce91cfe3a45de1364181d8a6b53e9161ee9e8cede1f49ec64ade0d"
+        },
+        {
+          "id": "E114",
+          "kind": "local",
+          "path": "local/research/codex/bomb-serial-r1/duplicates-peer/debug-commands.txt",
+          "bytes": 11312,
+          "sha256": "3fdae5adf5ee5996172a8de24e395e728640954667b397b25fa71d136e41b3c3"
+        },
+        {
+          "id": "E115",
+          "kind": "local",
+          "path": "local/research/codex/bomb-serial-r1/duplicates-peer/duplicate158-1.bin",
+          "bytes": 51,
+          "sha256": "31e41726c0deaa834ef2fa20813c84199f3f94023a8f3b7d0f64f9d5241eede1"
+        },
+        {
+          "id": "E116",
+          "kind": "local",
+          "path": "local/research/codex/bomb-serial-r1/duplicates-peer/duplicate158-2.bin",
+          "bytes": 51,
+          "sha256": "c02bddc3a494e2434c446487aaca03d3b8a644b50b60feea1735544d61a82582"
+        },
+        {
+          "id": "E117",
+          "kind": "local",
+          "path": "local/research/codex/bomb-serial-r1/duplicates-peer/duplicate158-3.bin",
+          "bytes": 51,
+          "sha256": "a877222649dc783fbfe66c4a068e899c6f6765e79348bb13188e9137f1fcb57c"
+        },
+        {
+          "id": "E118",
+          "kind": "local",
+          "path": "local/research/codex/bomb-serial-r1/duplicates-peer/duplicate159-1.bin",
+          "bytes": 77,
+          "sha256": "22c9832376ca82e45669424990b6578c5f6a5b9766a643e522b40fea27385cd2"
+        },
+        {
+          "id": "E119",
+          "kind": "local",
+          "path": "local/research/codex/bomb-serial-r1/duplicates-peer/duplicate159-2.bin",
+          "bytes": 77,
+          "sha256": "d9611a1ad7ff0c8fcecc7b77e523447eaaede5986f52e5117eacff23c1b75eb3"
+        },
+        {
+          "id": "E120",
+          "kind": "local",
+          "path": "local/research/codex/bomb-serial-r1/duplicates-peer/duplicate159-3.bin",
+          "bytes": 77,
+          "sha256": "f53b5c459b14f336194acac2731d2d84cb8d2c5360a39d1b43eba45be41b2f87"
+        },
+        {
+          "id": "E121",
+          "kind": "local",
+          "path": "local/research/codex/bomb-serial-r1/duplicates-peer/dynamic159-1.bin",
+          "bytes": 77,
+          "sha256": "f5b00dc36dddcba138ee6f96a437b46d4c5ae0e233b47947332ef2d91f624703"
+        },
+        {
+          "id": "E122",
+          "kind": "local",
+          "path": "local/research/codex/bomb-serial-r1/duplicates-peer/dynamic159-2.bin",
+          "bytes": 77,
+          "sha256": "d57cdd71599a81211b04ed393ae97651e34348af4e975b0cabd55913004bd539"
+        },
+        {
+          "id": "E123",
+          "kind": "local",
+          "path": "local/research/codex/bomb-serial-r1/duplicates-peer/dynamic159-3.bin",
+          "bytes": 77,
+          "sha256": "4ba921ec6b7b29d294065f922ab1c770684689c55f5da059089e1ed0f515af2a"
+        },
+        {
+          "id": "E124",
+          "kind": "local",
+          "path": "local/research/codex/bomb-serial-r1/duplicates-peer/multi-after-3-Down.png",
+          "bytes": 129810,
+          "sha256": "8445a114525e0dc452afe251eeec0087ee3b72b95f2afdd95f1046d67c0bd1fc"
+        },
+        {
+          "id": "E125",
+          "kind": "local",
+          "path": "local/research/codex/bomb-serial-r1/duplicates-peer/multi-after-5-Right.png",
+          "bytes": 129283,
+          "sha256": "5440282c24fe0f11fa3a532773cb7a62f4c2fa2896b3aa6dc19dd417215299e4"
+        },
+        {
+          "id": "E126",
+          "kind": "local",
+          "path": "local/research/codex/bomb-serial-r1/duplicates-peer/run.json",
+          "bytes": 41801,
+          "sha256": "24535dbdf651cb1da3cb2e314fdcc122240f5f891398755583d62d1c14453d23"
+        },
+        {
+          "id": "E127",
+          "kind": "local",
+          "path": "local/research/codex/bomb-serial-r1/stale-id-reuse/CALog-run.txt",
+          "bytes": 3891,
+          "sha256": "ae9cf754f7a09fc1c2d1e61836b741ffc83a4a5301fc329beed8d295c213d965"
+        },
+        {
+          "id": "E128",
+          "kind": "local",
+          "path": "local/research/codex/bomb-serial-r1/stale-id-reuse/blast158-1.bin",
+          "bytes": 51,
+          "sha256": "5095a65ab689b03ac91e11a9d306341cf9995b5bf8dc8ac146706908c60496b7"
+        },
+        {
+          "id": "E129",
+          "kind": "local",
+          "path": "local/research/codex/bomb-serial-r1/stale-id-reuse/blast158-2.bin",
+          "bytes": 51,
+          "sha256": "fdc5e0af6908e61e7ecd4bab3546616d740f2d8b5f0678bb81ff541b168ab93e"
+        },
+        {
+          "id": "E130",
+          "kind": "local",
+          "path": "local/research/codex/bomb-serial-r1/stale-id-reuse/blast158-3.bin",
+          "bytes": 51,
+          "sha256": "9e74f11ecea8a92e5d509f274a4866ef3fd9b545af4f6875e30be682adcb0360"
+        },
+        {
+          "id": "E131",
+          "kind": "local",
+          "path": "local/research/codex/bomb-serial-r1/stale-id-reuse/client.log",
+          "bytes": 40409,
+          "sha256": "6e3c23996c1b0ceb60ae5412f23d73eea508268c45db9ef4f7ba7e5e32168ae9"
+        },
+        {
+          "id": "E132",
+          "kind": "local",
+          "path": "local/research/codex/bomb-serial-r1/stale-id-reuse/debug-commands.txt",
+          "bytes": 11312,
+          "sha256": "3fdae5adf5ee5996172a8de24e395e728640954667b397b25fa71d136e41b3c3"
+        },
+        {
+          "id": "E133",
+          "kind": "local",
+          "path": "local/research/codex/bomb-serial-r1/stale-id-reuse/duplicate158-1.bin",
+          "bytes": 51,
+          "sha256": "74e2de4a80eccc95ca075b6b7b315a7883176c212d7f752f47cb45a80c0122e3"
+        },
+        {
+          "id": "E134",
+          "kind": "local",
+          "path": "local/research/codex/bomb-serial-r1/stale-id-reuse/duplicate158-2.bin",
+          "bytes": 51,
+          "sha256": "271c17578d17fe22afdc2c81815b3a5f96c3966ce141d7ce9c3fd8bd1dd39b7e"
+        },
+        {
+          "id": "E135",
+          "kind": "local",
+          "path": "local/research/codex/bomb-serial-r1/stale-id-reuse/duplicate159-1.bin",
+          "bytes": 77,
+          "sha256": "2da555dcacefe5c09383da7795c0c67adca31c4cc4091eb12c5bcaa63aae3548"
+        },
+        {
+          "id": "E136",
+          "kind": "local",
+          "path": "local/research/codex/bomb-serial-r1/stale-id-reuse/duplicate159-2.bin",
+          "bytes": 77,
+          "sha256": "ae07b89635e381e118affc78b664a13b5721de2434fcacb2aad6a42515f84197"
+        },
+        {
+          "id": "E137",
+          "kind": "local",
+          "path": "local/research/codex/bomb-serial-r1/stale-id-reuse/dynamic159-1.bin",
+          "bytes": 77,
+          "sha256": "f5b00dc36dddcba138ee6f96a437b46d4c5ae0e233b47947332ef2d91f624703"
+        },
+        {
+          "id": "E138",
+          "kind": "local",
+          "path": "local/research/codex/bomb-serial-r1/stale-id-reuse/dynamic159-2.bin",
+          "bytes": 77,
+          "sha256": "724a62eab43ca0813881d5d042024e23fa23c9afe03fb9e6e2bd899d7c72848a"
+        },
+        {
+          "id": "E139",
+          "kind": "local",
+          "path": "local/research/codex/bomb-serial-r1/stale-id-reuse/dynamic159-3.bin",
+          "bytes": 77,
+          "sha256": "e5a3932111c3a8a6eb7e2d6e41bf1f64d9a8fb0ed33301b41f41133c16ceb8df"
+        },
+        {
+          "id": "E140",
+          "kind": "local",
+          "path": "local/research/codex/bomb-serial-r1/stale-id-reuse/multi-after-3-Down.png",
+          "bytes": 130080,
+          "sha256": "9c1cdd8d52afb192f6cfff0098c007b1b7c662512783805877554fe7de781aac"
+        },
+        {
+          "id": "E141",
+          "kind": "local",
+          "path": "local/research/codex/bomb-serial-r1/stale-id-reuse/multi-after-5-Right.png",
+          "bytes": 129289,
+          "sha256": "7ca387a3de58152e608daea57e95e2e165af46e48b2790cc7fed0f92fb832ffe"
+        },
+        {
+          "id": "E142",
+          "kind": "local",
+          "path": "local/research/codex/bomb-serial-r1/stale-id-reuse/run.json",
+          "bytes": 41170,
+          "sha256": "b1efc2c8db572235c31d7dce33b5984f3361241b8c880ea6135a1581e8c3dc24"
+        },
+        {
+          "id": "E143",
+          "kind": "local",
+          "path": "local/research/codex/wine_probe_bomb_multi.py",
+          "bytes": 40848,
+          "sha256": "43f9ba68b82ba157e251b10f2c659b5c9cf2038b385cd32bf54998caa658f9b2"
+        },
+        {
+          "id": "E144",
+          "kind": "local",
+          "path": "local/research/codex/wine_probe_bomb_multi_serial.py",
+          "bytes": 40829,
+          "sha256": "b0eef2171f83bdc4c931cb62cca2ccb548fe9690b312253fce7bc3d79ef63926"
+        },
+        {
+          "id": "E145",
+          "kind": "local",
+          "path": "local/research/codex/wine_probe_bomb_duplicates.py",
+          "bytes": 41884,
+          "sha256": "f6d3588a6caa897ba52f4ba3e427ba9702dd269b47dc1e02e0480bf7ea93c7e1"
+        },
+        {
+          "id": "E146",
+          "kind": "local",
+          "path": "local/research/codex/wine_probe_bomb_stale.py",
+          "bytes": 42053,
+          "sha256": "9bacb1a143f9b6864626082037ec30dddb0dc08fb61905fddb5b2dd0ce52e68a"
+        },
+        {
+          "id": "E147",
+          "kind": "local",
+          "path": "local/research/codex/wine_probe_bomb_exvillage.py",
+          "bytes": 48199,
+          "sha256": "4eeceb6756a5b94a9c7f9660f638065b04ba109e33eaf1c4bb741367932d3074"
+        },
+        {
+          "id": "E148",
+          "kind": "local",
+          "path": "local/research/codex/bootstrap-recv-oracle.py",
+          "bytes": 2104,
+          "sha256": "1e86c06540e8fe654564c5bd403f859070f77c9af0d5d11c70c9351198e00ae2"
+        },
+        {
+          "id": "E149",
+          "kind": "local",
+          "path": "local/research/codex/bootstrap-copy-oracle.py",
+          "bytes": 2377,
+          "sha256": "8127e0f2fbc385360e878bb68ae3a6680eabbf7456335f0f3db75c7c3b73a8c0"
+        },
+        {
+          "id": "E150",
+          "kind": "local",
+          "path": "local/research/codex/bomb-position-r1/AEF700.asm",
+          "bytes": 21623,
+          "sha256": "1fb09feb2380f19d09a583043c642534ad95098dd9dbeaf733864cb56df6da6c"
+        },
+        {
+          "id": "E151",
+          "kind": "local",
+          "path": "local/research/codex/round-go-r1/E5E8F0.asm",
+          "bytes": 23601,
+          "sha256": "24acf8073d564072cda5a7b0d41ad9318934a33dae6e07755401f29904254a2a"
+        },
+        {
+          "id": "E152",
+          "kind": "local",
+          "path": "local/research/codex/round-go-r1/E14600.asm",
+          "bytes": 21429,
+          "sha256": "b845e182cc257f2f0835bfda4fcd3052809fe35dd16c74ab431d3e14d4c842ec"
+        },
+        {
+          "id": "E153",
+          "kind": "local",
+          "path": "local/research/codex/round-go-r1/E14360.asm",
+          "bytes": 11198,
+          "sha256": "f64091621363cdf2a38aedc078855251e26f9aebd9d81244bd422c86d728483e"
+        },
+        {
+          "id": "E154",
+          "kind": "local",
+          "path": "local/research/codex/round-go-r1/E5D3A0.asm",
+          "bytes": 16770,
+          "sha256": "8202be92089d9954b982ab19e23fd52d7ee7c67c1d23a93f8dcf386a09eb2da5"
+        },
+        {
+          "id": "E155",
+          "kind": "local",
+          "path": "local/research/codex/round-go-r1/E7F2A0.asm",
+          "bytes": 4043,
+          "sha256": "0abe4ad771b670e7b23073b26dcaa3b1241a1b1e344fcacbd57fbf3437ebed8b"
+        },
+        {
+          "id": "E156",
+          "kind": "local",
+          "path": "local/research/codex/ui-handler-r1/oracle-dependencies/bootstrap-copy-oracle.py",
+          "bytes": 2377,
+          "sha256": "8127e0f2fbc385360e878bb68ae3a6680eabbf7456335f0f3db75c7c3b73a8c0"
+        },
+        {
+          "id": "E157",
+          "kind": "local",
+          "path": "local/research/codex/ui-handler-r1/oracle-dependencies/bootstrap-recv-oracle.py",
+          "bytes": 2104,
+          "sha256": "1e86c06540e8fe654564c5bd403f859070f77c9af0d5d11c70c9351198e00ae2"
+        },
+        {
+          "id": "E158",
+          "kind": "local",
+          "path": "local/research/codex/ui-handler-r1/oracle-dependencies/boomproto.py",
+          "bytes": 7779,
+          "sha256": "e9642ec10e53cfed6c24c0c5ade07b34a46ce02073a8d316f724776686855bbd"
+        },
+        {
+          "id": "E159",
+          "kind": "local",
+          "path": "local/research/codex/wcp-guard-r1/game/CA-r2-login-logout.exe",
+          "bytes": 31874560,
+          "sha256": "660447c293ce92270cb9b5815331bca976e8f156366e1fe50b217b6c12e60ce3"
+        },
+        {
+          "id": "E160",
+          "kind": "local",
+          "path": "local/research/codex/wcp-guard-r1/game/CA-r2-stage-social.exe",
+          "bytes": 31874560,
+          "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+        },
+        {
+          "id": "E161",
+          "kind": "artifact",
+          "path": "/home/admin/boom/repos/boomkr-re/out/modO.bin",
+          "bytes": 31858688,
+          "sha256": "a08950c833d3acab8281049def7b3dc96b221f107eeda01da3a548e34b91dce5"
+        },
+        {
+          "id": "E162",
+          "kind": "artifact",
+          "path": "/home/admin/boom/repos/boom-re/docs/oc_e-game.md",
+          "bytes": 70895,
+          "sha256": "9e80ecea3fb7d152f58a4a0d60ac6e1f6759b18be23bf53d908bb896dbad0b6a"
+        }
+      ],
+      "delta": {
+        "added": [
+          "Multipleactual118/159/158 in same round, distinctIDbindings andbounded semanticduplicate/stalecontrols.",
+          "Actual99IP/portgetter→bindprovenance andstaticKR153peer26slot×3endpoint entry."
+        ],
+        "corrected": [
+          "CP024 onlyserial0 didnot distinguish auxu16 from serialu32; CP025 nonzero control falsifies general auxmapping andcorrectsu32 echo. CompletedCP024/rawunchanged.",
+          "InheritedGDBlabelserial wasaux16, correctednewprobes; AEF814not hit, AEF7ABobserved. Duplicate158looks up entity butdoesnotrepeatkind0.",
+          "Pointer reused across IDs, no lifecycle/reset inference from pointer equality.",
+          "Static532guardfalse, full153headerunknown; no blanketVN146opcodeoffset or18slotreuse. Exploratorytable2lowerbound307corrected312beforecheckpoint, no527sent.",
+          "CP024/PR32 now merged d14c708;CP025integration snapshot pending,reviewwaived."
+        ],
+        "superseded": [
+          "NEXT-MULTIBOMB-PEER replaced by NEXT-PEER153-GATE after nonzeroserial/ID/controlmilestone; concurrent/rollover/collision/authority stillopen."
+        ]
+      },
+      "blockers": [
+        "Full153prefix/body/variant sideeffects andruntime13E1190/HostCreate/sendto, UDPcodec/key/slot/relay; no realclientB/samehost/LAN/Internet.",
+        "Onlyserial0/28/56 andIDs1..3 sequential, no wrap/collision/concurrent/optionalflags/race/roundgeneration orfullallocator.",
+        "Collision/item/pickup/chain/reset/timer/104growth andfullauth/profile/cache/reconnect/codec/vanillacontrol remainopen."
+      ],
+      "next_steps": [
+        {
+          "id": "NEXT-MULTIBOMB-PEER",
+          "task": "KRE-005b",
+          "state": "superseded",
+          "action": "Nonzeroserialmapping andbounded ID/duplicate/stale observed; carry broader serial/ID/collision gaps into peer task and authority checks.",
+          "owner": "Codex",
+          "reviewer": "Codex"
+        },
+        {
+          "id": "NEXT-PEER153-GATE",
+          "task": "KRE-005b",
+          "state": "active",
+          "action": "Recover full KR153/E825D0 prefix/body to26peer suffix; native fixture/cursor check then isolatedWine guard/13E1190/HostCreate/sendto probe before two identity-separated clients. Keep wrap/concurrent/authority/reset gaps and K6a/b/c acceptance open.",
+          "owner": "Codex",
+          "reviewer": "Codex"
+        },
+        {
+          "id": "NEXT-FULL-LOGIN-FIELDS",
+          "task": "KRE-005b",
+          "state": "active",
+          "action": "Complete full auth/profile/identity/cache/reconnect/codec controls before K2/K3 acceptance.",
+          "owner": "Codex",
+          "reviewer": "Codex"
+        }
+      ],
+      "review": {
+        "status": "waived",
+        "as_of_utc": "2026-10-30T10:33:26.276337+00:00",
+        "reference": "docs/evidence/checkpoints/review-waiver.json",
+        "scope": "Codexsolo RE/code/runtime and self-check; no independent approval.",
+        "authorization": {
+          "by": "project_owner",
+          "reference": "docs/evidence/checkpoints/review-waiver.json",
+          "reason": "Owner explicitly instructed solo work without Claude review."
+        }
+      },
+      "docs_sync": [
+        {
+          "path": "README.md",
+          "state": "updated",
+          "reason": "Current three-bomb/control milestone, peer153static/blocker,CP024PR32merged,CP025integrationpending andnextCP028."
+        },
+        {
+          "path": "docs/PLAN.md",
+          "state": "updated",
+          "reason": "Currentmilestone/path andpeer153fullbody/runtime next; nogateclosure."
+        },
+        {
+          "path": "docs/PROTOCOL.md",
+          "state": "updated",
+          "reason": "Canonicalserialu32/auxcorrection, ID/dup/stale scope,99bind and153/532static/26slot contractlimits."
+        },
+        {
+          "path": "docs/RESEARCH.md",
+          "state": "updated",
+          "reason": "NEXT-PEER153-GATE replacesboundedmulti-bombnext, preservedallocator/authority/fullauthgaps."
+        },
+        {
+          "path": "docs/evidence/bomb-serial/README.md",
+          "state": "updated",
+          "reason": "Grouped4run recipe/result/hash/control/native/staticlimitandfailednavigationmetadata."
         }
       ]
     }
