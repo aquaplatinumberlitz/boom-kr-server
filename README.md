@@ -22,18 +22,17 @@ boom-kr-server/
 
 ## Đang làm
 
-CP021: **copy Wine đã đếm giờ, di chuyển và hiện bom nước sau thao tác đặt**.
-Sau start121, chuỗi197→196/mode0→198 được reader KR xử lý đầy đủ, phase0→2→3 và clock map chạy.
-Ảnh runtime có timer01:56→01:50→01:47, vị trí local đổi sau phím; vẫn một client với guest tổng hợp.
+CP022: **copy Wine đã đi từ phòng vào trận, di chuyển, đặt/nổ bom, hiện HELP và trở về phòng**.
+Ảnh burst có luồng nước và nhân vật trong bong bóng; ảnh sau có local actor biến mất.
+Gói kết thúc180 mẫu cuối đọc3/3byte, không lỗi và client tự gọi stage12/vẽ lại UI phòng.
 
-Chuỗi118→159 đã trả đúng đối tượng `CGOGameBomb`; bước khỏi vị trí cho thấy bom trên map.
-158/kind1 tìm lại cùng bom và tới hàm tính nổ, nhưng ảnh sau đó bom vẫn còn: **chưa xác nhận nổ,
-kết quả, về phòng hoặc hoàn thành trận**. Một client/guest tổng hợp; full auth/profile/cache,
-multiplayer và gate K2–K5 còn mở. [Contract](docs/PROTOCOL.md#round-go),
-[evidence và giới hạn run](docs/evidence/round-go/README.md), bước tiếp ở [RESEARCH](docs/RESEARCH.md).
+Đây là vòng thử nghiệm **một client với guest tổng hợp**; stub phát kết thúc theo thời điểm thử đã chọn.
+Chưa có bảng kết quả/thắng thua tự quyết, hợp đồng death đầy đủ, trận thứ hai hoặc multiplayer.
+Full auth/profile/cache và gate K2–K5 còn mở. [Contract](docs/PROTOCOL.md#bomb-cycle),
+[evidence](docs/evidence/bomb-calc/README.md), bước tiếp ở [RESEARCH](docs/RESEARCH.md).
 
-CP020 đã merge [PR28](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/28).
-CP021 pending tích hợp khi ghi record; PR là nguồn trạng thái merge hiện tại.
+CP021 đã merge [PR29](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/29).
+CP022 pending tích hợp khi ghi record; PR là nguồn trạng thái merge hiện tại.
 Codex tự kiểm, review độc lập waived. AUD006 ở CP020; audit kế CP024.
 
 Checkpoint bền vững: [manifest](docs/evidence/checkpoints/manifest.json).
