@@ -97,23 +97,29 @@ ID0 workaround cũ không đủ để tham gia start. Contract/layout/correction
 [PROTOCOL](PROTOCOL.md#start-reply), raw/native/control tại [evidence](evidence/start-reply/README.md).
 CP019 đã merge PR27; CP020 có scene map/HUD/hai nhân vật trên diagnostic copy, chưa gameplay hoặc gate mới.
 
-Bước tiếp: Codex nối C→S99/61byte tới phase round/load/GO, theo actual caller/handler và kiểm
-clock chạy/input/di chuyển. Probe13ADD60 chưa bắt99 nên chưa gán99 là loaded ACK; cần đo13ADD10/
-writer caller đúng. VN chỉ hướng dẫn pha load/clock, không copy opcode/map index/layout.
-Run social có ảnh map/HUD, debugger host crash; lean cùng fixture/copy lặp lại và có hai nhân vật,
-local có mũi tên/KRGuest, timer02:00. Chưa kích input, nổ bom hoặc đo spawn hợp lệ bằng tọa độ;
-ảnh scene không tự chứng minh gameplay. Exact geometry variant/asset path chưa trace.
-Auth prefix34byte chưa đủ full player/profile/tail, ID1 là identity local thử; cần kiểm lifecycle,
-cache cold/warm/reconnect,15/241variants,oneclickuser/+E9C/token_2/count2 và full codec/reset.
-Counter/audit CP020 và audit kế giữ trong manifest; review độc lập waived, Codex tự kiểm.
+CP021 đã nối actual99 tới writer/init, đo197/196/mode0/198, clock/input và bom hiện sau118/159.
+Nguồn chuẩn [PROTOCOL](PROTOCOL.md#round-go), raw/control tại [evidence](evidence/round-go/README.md).
+CP020/PR28 đã merge. Đây là bước clock/di chuyển trên một client có guest tổng hợp, chưa vòng trận.
+
+Actual118 đã nối writerE2DF80/enqueue13ADCC0 và native payload22;159 đọc39/39.
+Run riêng `explode158` trả RTTI CGOGameBomb; bước ra thấy bom,158/kind1 tìm lại cùng pointer/id1
+và vàoE9C520 nhưng ảnh sau vẫn còn bom. Bước tiếp: đọc guard/state/clock của calc và kiểm trigger nổ
+đúng consumer KR; sau đó trap/death, kết quả/về phòng. Không gọi entry calc là nổ thành công.
+Cặp run159 đã chồng thời gian sau daemon recovery, giữ làm exploratory; bằng chứng bom từ run riêng sau đó.
+Các request127/132/190 vẫn giữ semantics giới hạn.
+VN dùng làm checklist phase/round và bom/request-reply, mỗi field/handler KR cần đo riêng.
+Clock map198 đã có runtime running1 và ảnh countdown; spawn tọa độ/collision/peer vẫn cần kiểm.
+Auth prefix34byte vẫn thiếu phần sau; ID1 là identity local thử. Cache persistence/cold/warm,
+reconnect/reset/codec,15/241variants,oneclickuser/+E9C/token_2/count2/vanilla giữ mở.
+AUD006 đã hoàn tấtCP020, kế CP024; review độc lập waived, Codex tự kiểm.
 
 | ID / ưu tiên | Trạng thái | Owner / reviewer | Đã biết | Còn thiếu / bước đóng |
 |---|---|---|---|---|
 | Q-022 / KRE-P1 bootstrap | open | Codex RE/tự kiểm | ProcessPatch local có debugger return1;recipe R2 đã merge;contract ở [PROTOCOL](PROTOCOL.md#wcp) | K1a ownership/control trên Windows local/effective token; K1b kiểm caller/config/IPC riêng CA và NewPatcher; K1c stub/patch theo evidence; gate ba cold start tới network attempt/state chờ hello, không lấy alive/không exit làm proof |
 | Q-023 / KRE-P1 codec | open | Codex RE/tự kiểm | CP015 có socket kênh mới, native replay theo từng kết nối, schema17/count0 và nhận241 | Full result0/codec/reset theo bước trên; gate K2 còn mở |
 | Q-024 / KRE-P1 login/kênh | open | Codex RE/tự kiểm | UI sảnh hết notice17/241; CP020 phục hồi inputID local, tên/profile phòng có fixture, chưa full auth/sảnh identity | Full identity/user/cache và cold/warm/reconnect K3; không gọi auth Nexon thật |
-| Q-025 / KRE-P1 room/load | open | Codex RE/tự kiểm | CP020 nhận121, slot/localID1 và init CGameStage/stage13; có map/HUD/nhân vật và99, chưa clock/gameplay | Actual99/round/load/GO, clock/input/spawn; join/ready/select variants/host-leave và cache; K4 hai client thấy cùng phòng và spawn đúng |
-| Q-026 / KRE-P1 authority/trận | open | Codex RE/tự kiểm | KR có consumer flame/chain, timer/send167/status184; VN mô hình lai | Phân quyền client/server/peer từng event; packet bom/pickup/trap/death/result/correction KR; K5 một chu kỳ hoàn chỉnh, không lấy packet183 ghost làm mover người sống |
+| Q-025 / KRE-P1 room/load | open | Codex RE/tự kiểm | CP020 nhận121, slot/localID1 và init CGameStage/stage13; CP021 có clock/input/bom hiện, chưa nổ/kết quả/vòng trận | Guard/state nổ158/E9C520, kết quả, spawn; join/ready/select variants/host-leave và cache; K4 hai client thấy cùng phòng và spawn đúng |
+| Q-026 / KRE-P1 authority/trận | open | Codex RE/tự kiểm | KR có clock/input/bom hiện CP021, consumer flame/chain và static167/184; VN mô hình lai | Phân quyền client/server/peer từng event; packet bom/pickup/trap/death/result/correction KR; K5 một chu kỳ hoàn chỉnh, không lấy packet183 ghost làm mover người sống |
 | Q-027 / KRE-P1 peer | open | Codex RE/tự kiểm | VN92/146 và UDP P2P có runtime; chưa xác nhận tương đương KR | Peer negotiation, endpoint, key/slot, protocol UDP và relay KR; movement hai chiều, cùng result và hai trận K6 |
 | Q-028 / KRE-P2 profile/core | open | Codex/tự kiểm | Core Rust và policy V1 có sẵn, nhưng client gốc không biết ADR0009 | Sau audit Q-026/027, quyết định giữ lai/relay/shadow core hay authoritative được client hỗ trợ; profile emu có provenance, không sửa V1 implicit |
 | Q-029 / KRE-P2 vận hành | open | Codex/tự kiểm | Runtime KR copy Wine hẹp có [evidence](evidence/wcp/README.md);chưa multiplayer/gameplay | K7 bốn client, malformed/stale/duplicate/race/disconnect/restart, bounds/resource limits, Linux package, patch manifest và README tái lập |

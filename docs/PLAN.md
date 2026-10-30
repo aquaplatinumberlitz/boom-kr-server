@@ -1,7 +1,7 @@
 # Kế hoạch server giả lập KR 00967
 
 Nguồn chuẩn của project `boom-kr-server`; bản nhập từ plan đã được dsh1/dsh2 review tại `1eee46d`.
-Cập nhật29/10 JST (CP020): triển khai K0/K1, K2/K3 từng phần và scene/nhân vật sau start trên copy;bảng gate là scope nghiệm thu,chưa phải checklist đã pass.
+Cập nhật30/10 JST (CP021): triển khai K0/K1, K2/K3 từng phần, scene/clock/input/bom trên copy;bảng gate là scope nghiệm thu,chưa phải checklist đã pass.
 
 
 ### Mục tiêu, baseline và phạm vi
@@ -37,25 +37,25 @@ với client Rust không chứng minh có thể điều khiển client KR bằng
 
 ### Tiến độ hiện hành theo bằng chứng
 
-| Task/mốc | Trạng thái tại CP020 | Nguồn chuẩn |
+| Task/mốc | Trạng thái tại CP021 | Nguồn chuẩn |
 |---|---|---|
 | KRE-004/issue6 | Đã review/merge PR7 và đóng issue:recipe r1 đến local accept;không phải full K1 | [Wine r1](evidence/wine/README.md) |
 | Bootstrap reply | PR8 đã merge;debugger ProcessPatchreturn1,không ép success | [bootstrap evidence](evidence/bootstrap-wire/README.md) |
 | KRE-005a/issue9,R2 | PR10 đã merge:3 cold start cửa sổ/second accept;issue9 còn mở | [R2 evidence](evidence/wine-r2/README.md) |
 | WCP hai-reply | Run CP001 là lịch sử chưa C→S; CP006 đã đo request đầu trên copy tham số hóa | [PROTOCOL](PROTOCOL.md#wcp),[WCP evidence](evidence/wcp/README.md) |
-| KRE-005b/issue14 | CP006–019 đã merge; CP020 nhận start121, localID1/own-slot và scene map/HUD/nhân vật stage13; clock/gameplay/full auth còn thiếu | [Q-023](RESEARCH.md#q-023), [evidence](evidence/start-reply/README.md) |
+| KRE-005b/issue14 | CP006–020 đã merge; CP021 có clock/input/bom hiện; nổ/kết quả/vòng trận/full auth còn mở | [Q-023](RESEARCH.md#q-023), [evidence](evidence/round-go/README.md) |
 | K0/K1 | Chưa nghiệm thu toàn gate;Windows vanilla/control ownership và các điều kiện còn thiếu giữ mở | Gate dưới,[Q-022](RESEARCH.md) |
 | K2a/K2 | Primitive/WCP từng phần; request auth đã capture/native replay, phản hồi lỗi đã dispatch; full codec/reconnect và gate chưa pass | [PROTOCOL](PROTOCOL.md#login-auth),[Q-023](RESEARCH.md#q-023) |
 | K3 | Copy chẩn đoán đã vẽ UI sảnh và đóng notice; chưa nghiệm thu identity/cache/codec đủ gate | [Contract sảnh](PROTOCOL.md#channel-lobby) |
-| K4–K7 | Scene map/HUD/hai nhân vật và99 đã đo; chưa clock/gameplay/hai client | Không có phần trăm ước lượng |
+| K4–K7 | Clock/input và bom hiện trên một client đã đo; chưa nổ/kết quả/hai client | Không có phần trăm ước lượng |
 
-Thứ tự tiếp: nối actual99 tới round/load/GO, kiểm clock/input/spawn, giữ context/map/roster đúng
+Thứ tự tiếp: kiểm guard/state trong đường nổ158/E9C520, rồi trap/kết quả/về phòng; giữ context/spawn đúng
 nhánh tại [Q-023](RESEARCH.md#q-023); đồng thời giữ body result0/user/cache còn thiếu
 trước khi xét K2/K3. Chỉ mở contract cần cho phép thử tiếp; UI phòng chờ không tự đóng K4.
 Chu kỳ docs/audit theo [workflow](evidence/checkpoints/README.md);
 counter ở [manifest](evidence/checkpoints/manifest.json). Không tạo plan theo phiên.
 
-### Bản đồ đường chạy, CP020
+### Bản đồ đường chạy, CP021
 
 | Bước | Quan sát/bước tiếp |
 |---|---|
@@ -67,7 +67,8 @@ counter ở [manifest](evidence/checkpoints/manifest.json). Không tạo plan th
 | Player/controls phòng | CP018: KR106/profile, ID0 match và110/pending0/Bắt đầu; CP020 auth cấp ID1 để tham gia start. [Contract](PROTOCOL.md#room-player). |
 | Map → start | 241/238/117, native checksum, capacity4, filter mode0; click tự gửi104/109byte. [Contract](PROTOCOL.md#room-map). |
 | Start → init game | S→C121 đọc129/129, cấp localID1/ownslot bằng packet, kiểm slot rồi init CGameStage/stage13; map/HUD/hai nhân vật đã vẽ, có99/61byte. [Contract](PROTOCOL.md#start-reply). |
-| Scene → gameplay | Timer02:00, chưa đo clock/input/bom; tiếp99/round/load/GO, không dùng ảnh tĩnh làm proof chơi được. |
+| Clock/input | 197/196/198 nhận đủ byte, phase3 và clock map; ảnh timer đếm, local đổi vị trí sau input. [Contract](PROTOCOL.md#round-go). |
+| Bom → kết quả | 118/159 đưa đúng CGOGameBomb lên map sau khi bước ra.158/kind1 tới calc nhưng bom vẫn còn; kiểm nổ/kết quả/về phòng, chưa trọn một trận. |
 
 RE động là chính; gom phép đo thành checkpoint mốc/blocker, audit định kỳ theo workflow.
 Review độc lập được chủ dự án miễn từ28/10; Codex tự kiểm, giữ PR và điều kiện bằng chứng của gate.

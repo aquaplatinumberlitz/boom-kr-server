@@ -22,19 +22,19 @@ boom-kr-server/
 
 ## Đang làm
 
-CP020: **copy Wine đã dựng scene trận: map băng, HUD và hai nhân vật trên màn hình**.
-ID local1 được cấp từ packet auth rồi match player1, thay workaround ID0 bị start coi là ô trống.
-Client đọc đầy đủ phản hồi start129/129byte, tự gọi stage13 và gửi tiếp C→S99/61byte.
+CP021: **copy Wine đã đếm giờ, di chuyển và hiện bom nước sau thao tác đặt**.
+Sau start121, chuỗi197→196/mode0→198 được reader KR xử lý đầy đủ, phase0→2→3 và clock map chạy.
+Ảnh runtime có timer01:56→01:50→01:47, vị trí local đổi sau phím; vẫn một client với guest tổng hợp.
 
-Run probe gọn đã lặp lại scene và nhân vật local có mũi tên; timer còn02:00, chưa thử input,
-clock chạy hoặc chu kỳ gameplay/hai client. Full auth/profile/cache và gate K2/K3/K4 còn mở. Contract tại
-[PROTOCOL](docs/PROTOCOL.md#start-reply), raw/control/hash tại
-[evidence start](docs/evidence/start-reply/README.md); bước tiếp ở [Q-025](docs/RESEARCH.md).
+Chuỗi118→159 đã trả đúng đối tượng `CGOGameBomb`; bước khỏi vị trí cho thấy bom trên map.
+158/kind1 tìm lại cùng bom và tới hàm tính nổ, nhưng ảnh sau đó bom vẫn còn: **chưa xác nhận nổ,
+kết quả, về phòng hoặc hoàn thành trận**. Một client/guest tổng hợp; full auth/profile/cache,
+multiplayer và gate K2–K5 còn mở. [Contract](docs/PROTOCOL.md#round-go),
+[evidence và giới hạn run](docs/evidence/round-go/README.md), bước tiếp ở [RESEARCH](docs/RESEARCH.md).
 
-CP019 đã merge [PR27](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/27).
-CP020 chờ tích hợp khi ghi record; PR là nguồn trạng thái merge hiện tại.
-Review độc lập được miễn; Codex tự kiểm. Audit định kỳ CP020 được ghi cùng checkpoint;
-counter/audit kế lấy từ manifest.
+CP020 đã merge [PR28](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/28).
+CP021 pending tích hợp khi ghi record; PR là nguồn trạng thái merge hiện tại.
+Codex tự kiểm, review độc lập waived. AUD006 ở CP020; audit kế CP024.
 
 Checkpoint bền vững: [manifest](docs/evidence/checkpoints/manifest.json).
 Quy trình ghi chép/review/audit: [checkpoint workflow](docs/evidence/checkpoints/README.md).
