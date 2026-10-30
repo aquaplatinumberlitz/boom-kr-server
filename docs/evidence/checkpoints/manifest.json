@@ -1,11 +1,11 @@
 {
   "schema": "kre-checkpoints-v1",
-  "last_id": "CP030",
-  "completed_count": 30,
+  "last_id": "CP031",
+  "completed_count": 31,
   "audit_interval": 4,
   "last_periodic_audit": 28,
   "next_periodic_audit": "CP032",
-  "last_manual_audit": "AUD008",
+  "last_manual_audit": "AUD009",
   "checkpoints": [
     {
       "id": "CP001",
@@ -43223,6 +43223,2515 @@
           "reason": "Fourrecipes/controls/native/visual/hash and scopedracepolicy."
         }
       ]
+    },
+    {
+      "id": "CP031",
+      "previous": "CP030",
+      "lifecycle": "complete",
+      "recorded_utc": "2026-10-30T22:54:55.285242+00:00",
+      "question": "Bomb/Fire sau165 áp stat nào trên hai client, duplicate sau xóa có cộng lần hai, và nguồn power request118→159 thực sự là field nào?",
+      "scope": "Grouped5 sequential isolated Wine pair runs; actual secure snapshots/effect/stat/calc callbacks, noack/ACK/duplicate/power correction and native cap/dispatch. No new binarypatch, no fullmatch/gate claim.",
+      "context_commit": "1f70d4fdfd707099bfabdfbafa8bed69ae9be9af",
+      "owner": "Codex",
+      "reviewer": "Codex",
+      "artifacts": [
+        {
+          "name": "CA-r2-login-logout.exe",
+          "sha256": "660447c293ce92270cb9b5815331bca976e8f156366e1fe50b217b6c12e60ce3"
+        },
+        {
+          "name": "CA-r2-stage-social.exe",
+          "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+        },
+        {
+          "name": "CA-r2-stage-social.exe Bcopy",
+          "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+        },
+        {
+          "name": "modO.bin",
+          "sha256": "a08950c833d3acab8281049def7b3dc96b221f107eeda01da3a548e34b91dce5"
+        }
+      ],
+      "locators": [
+        "Imagebase400000,RVA=VA-400000; modO rawmemory notPEremapped;12ranges match4artifacts in code-match.json.",
+        "165→F73D30→B52840→E14DA0→1190A40 customgetterB81B40=0→1192700/group1/11927AE→1191840.",
+        "Actual receiver actor+58C/vtable17760BC; effect1→B47180→actor+4A0/vA4 AF06F0; effect2→B47210/vA0 AF0690.",
+        "Capacitycurrent/max wrappers actor+4A4/+50C; Firecurrent/max +4BC/+524; native529C60→52A350 snapshot validation.",
+        "AF06F0 current+4/max+6C;AF0690 current+1C/max+84;636620 increment,52A860 securewrite,54B610 clamp.",
+        "118.field10/u8payload+16 writerE2E1D1/record+18;159.field8/u8payload+18;E9C58C actualcalc power2 B/1A bothviews.",
+        "UTC30/10/2026 effect-path22:33:27,capacity-control22:36:33,capacity-ack22:39:42,capacity-duplicate22:43:04,capacity-power22:46:18;31/10JST."
+      ],
+      "findings": [
+        {
+          "summary": "Runtime effect chain/receiver and actual secure stat increase agree across both clients; canonical values/offsets in contract.",
+          "source": "kr_runtime",
+          "status": "confirmed",
+          "method": "runtime",
+          "limits": "Only current diagnostic profile/two slots belowmax; no assetrow/allroster/speed/reset claim.",
+          "canonical": "docs/PROTOCOL.md#item-effects",
+          "evidence": [
+            "E052",
+            "E262",
+            "E263",
+            "E055"
+          ]
+        },
+        {
+          "summary": "Native increment/clamp and secure storage path execute10cases;1191840 dispatch4cases.",
+          "source": "kr_static",
+          "status": "confirmed",
+          "method": "emulation",
+          "limits": "Synthetic context/storage/receiver endpoints and zeroed instrumentation counters; no livepickup-at-cap proof.",
+          "canonical": "docs/PROTOCOL.md#item-effects",
+          "evidence": [
+            "E053",
+            "E054",
+            "E044",
+            "E032"
+          ]
+        },
+        {
+          "summary": "Same3Space/Right perrole noack A1/B2 versusACK A2/B2; actual118/native and159entities bothviews.",
+          "source": "kr_runtime",
+          "status": "confirmed",
+          "method": "runtime",
+          "limits": "Fuse30s design; missingthirdrequest alone not cap proof, control final staysBattle.",
+          "canonical": "docs/PROTOCOL.md#item-effects",
+          "evidence": [
+            "E050",
+            "E051",
+            "E090",
+            "E133"
+          ]
+        },
+        {
+          "summary": "Duplicate165 after removal readsfully but causes no second stat increment for two indices same round.",
+          "source": "kr_runtime",
+          "status": "confirmed",
+          "method": "runtime",
+          "limits": "No allstale/generation/indexreuse or racevalidator claim.",
+          "canonical": "docs/PROTOCOL.md#item-effects",
+          "evidence": [
+            "E052",
+            "E196",
+            "E197",
+            "E262",
+            "E263"
+          ]
+        },
+        {
+          "summary": "Correct118power sourcefield10, notoldfield6; new159field8 mapping yields calcBpower2/A1 on bothviews.",
+          "source": "kr_runtime",
+          "status": "confirmed",
+          "method": "runtime",
+          "limits": "Oldfield6 semantics remainunknown; priorraw/harness immutable, no unmeasured wholeimpact/physicalblast range claim.",
+          "canonical": "docs/PROTOCOL.md#item-effects",
+          "evidence": [
+            "E050",
+            "E262",
+            "E263",
+            "E051"
+          ]
+        },
+        {
+          "summary": "Placement/index/fuse30s/broadcast/duplicate/outcome remain emulatorpolicy; manualAUD009 now, periodicCP032 unchanged.",
+          "source": "design",
+          "status": "design",
+          "method": "documentation",
+          "limits": "Not originalserver authority or semantic gateapproval; reviewwaived.",
+          "canonical": "docs/PROTOCOL.md#item-effects",
+          "evidence": [
+            "E056",
+            "E049"
+          ]
+        }
+      ],
+      "verification": [
+        {
+          "check": "7094 mechanical checks/5 sealed runs, isolation/lease/sequential/hash, separate roleC2S nativeCRCpartial replay, dynamicseq/field/state/timeline.",
+          "result": "pass",
+          "evidence": [
+            "E049",
+            "E050",
+            "E047"
+          ],
+          "limits": "Mechanical assertions, no independent review or semantic gate."
+        },
+        {
+          "check": "357 actual packetnative cases;288 captured securebox snapshots checksum/native;10cap+4dispatch cases;12ranges match4artifacts.",
+          "result": "pass",
+          "evidence": [
+            "E051",
+            "E052",
+            "E053",
+            "E054",
+            "E055"
+          ],
+          "limits": "Native code with declared synthetic allocator/context endpoints; runtime state/calc separate."
+        },
+        {
+          "check": "Manual code/log/snapshot and12images control/ACK/power comparison; immediate seriouscontradiction audit of fourcanonicaldocs/evidence.",
+          "result": "observed",
+          "evidence": [
+            "E056",
+            "E057",
+            "E002"
+          ],
+          "limits": "Control staysBattle; ACK/power finalroom not fullmatch or resetproof; no independent review."
+        }
+      ],
+      "evidence": [
+        {
+          "id": "E001",
+          "kind": "repository",
+          "path": "docs/evidence/item-effects/README.md",
+          "bytes": 7898,
+          "sha256": "d5d8aaf0aa7e41fb037b53b2be52aea65ddd3bba46f7c239e9bd6e28c4d00e21"
+        },
+        {
+          "id": "E002",
+          "kind": "repository",
+          "path": "docs/evidence/checkpoints/audits/AUD009.json",
+          "bytes": 4211,
+          "sha256": "b26cf27ed393f08a9371c029a0ee0ff863e1b4d0f9c1572c4124bbe7cd4a1598"
+        },
+        {
+          "id": "E003",
+          "kind": "artifact",
+          "path": "/home/admin/boom/repos/boom-re/docs/oc_e-game.md",
+          "bytes": 70895,
+          "sha256": "9e80ecea3fb7d152f58a4a0d60ac6e1f6759b18be23bf53d908bb896dbad0b6a"
+        },
+        {
+          "id": "E004",
+          "kind": "artifact",
+          "path": "/home/admin/boom/repos/boom-rs/docs/research/findings/KR_RE_BOMBERATTR.md",
+          "bytes": 18820,
+          "sha256": "9bf54fd75c2041910a9620a1792579d1708f80dec1f7c65e6a359bb19f65216e"
+        },
+        {
+          "id": "E005",
+          "kind": "local",
+          "path": "local/research/codex/wcp-guard-r1/game/CA-r2-login-logout.exe",
+          "bytes": 31874560,
+          "sha256": "660447c293ce92270cb9b5815331bca976e8f156366e1fe50b217b6c12e60ce3"
+        },
+        {
+          "id": "E006",
+          "kind": "local",
+          "path": "local/research/codex/wcp-guard-r1/game/CA-r2-stage-social.exe",
+          "bytes": 31874560,
+          "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+        },
+        {
+          "id": "E007",
+          "kind": "local",
+          "path": "local/research/codex/duo-round-r1/game-B/CA-r2-stage-social.exe",
+          "bytes": 31874560,
+          "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+        },
+        {
+          "id": "E008",
+          "kind": "artifact",
+          "path": "/home/admin/boom/repos/boomkr-re/out/modO.bin",
+          "bytes": 31858688,
+          "sha256": "a08950c833d3acab8281049def7b3dc96b221f107eeda01da3a548e34b91dce5"
+        },
+        {
+          "id": "E009",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/read_static.py",
+          "bytes": 671,
+          "sha256": "74b79c5824168f28f0eba4014bbcf362fd2b1205b99c37e299b4a32438cf525e"
+        },
+        {
+          "id": "E010",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/run_probe.py",
+          "bytes": 1068,
+          "sha256": "60efe98a0a46e4f926edeea83a744f95d945878a9c8510c6d21947b097e0ca03"
+        },
+        {
+          "id": "E011",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/seal_run.py",
+          "bytes": 626,
+          "sha256": "c95641068a0e13dd9a6b5062fed7cfbb3e3dc424ad97b6ef7af2e77e60d980ee"
+        },
+        {
+          "id": "E012",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/derive_roles.py",
+          "bytes": 803,
+          "sha256": "05cd86d82211913086185c4926ced3ed059b9345fe639795487871b5a007d86a"
+        },
+        {
+          "id": "E013",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/replay-run.py",
+          "bytes": 3003,
+          "sha256": "616264e3b3a65849ccf1aa6bf3894c8719ecf48ecfe159b8d476deea5e7c6873"
+        },
+        {
+          "id": "E014",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/first-edge.log",
+          "bytes": 18446,
+          "sha256": "f2c145d2a700118efc73aa07cef4d91d642cc917aae0f783616f7e1070ca3da4"
+        },
+        {
+          "id": "E015",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/E14DA0.asm",
+          "bytes": 18445,
+          "sha256": "f20320ecb31bd68563d724a002048630211b5ffc733c1335cd105493a810793f"
+        },
+        {
+          "id": "E016",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/edge-resource.log",
+          "bytes": 14066,
+          "sha256": "3176101299261c7164aad8b6cd2c2cb24d6793e2a61b556598fe35530278922c"
+        },
+        {
+          "id": "E017",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/1190A40.asm",
+          "bytes": 14065,
+          "sha256": "bf11d871d966e662df41de6ab14762d8e8ece9c419d537a2ed64f76e885a7f1c"
+        },
+        {
+          "id": "E018",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/edge-item-effect.log",
+          "bytes": 14405,
+          "sha256": "86b5804415123510c0dc82d7fc0aeb6b487a988b8b547848ae8f3b5b7cdae5f9"
+        },
+        {
+          "id": "E019",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/B4D2F0.asm",
+          "bytes": 14404,
+          "sha256": "134e0a401c09a09d5263e2c5eb11e9ce423a1c8dee814f884d1c111cae5b6b29"
+        },
+        {
+          "id": "E020",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/effect-path.gdb",
+          "bytes": 6108,
+          "sha256": "e1c404699d5ac784d7c61ebe3b3f4e4083bbc4fd821f9c34552b13c826f579ff"
+        },
+        {
+          "id": "E021",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/effect-path-launcher.log",
+          "bytes": 53098,
+          "sha256": "18e5110de1feb9563c4bfe48e444d5db2268030b89d72b0bc0c0634047f814ca"
+        },
+        {
+          "id": "E022",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/capacity.gdb",
+          "bytes": 6982,
+          "sha256": "3e27eb0e16aec3ba7a363b6979b446a8fa2005b430ce35848a925ce6a734d0c0"
+        },
+        {
+          "id": "E023",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/native_actual.py",
+          "bytes": 3528,
+          "sha256": "09edbbc040bfc46d73123b019d05ed82cb4c4290c5e2f51b23747c7593cf6372"
+        },
+        {
+          "id": "E024",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/edge-dispatch.log",
+          "bytes": 14123,
+          "sha256": "6ebec7e40f1c30097234d9928b2c4ef55c743c5ea46edd8ab3550c60cfc9cda7"
+        },
+        {
+          "id": "E025",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/1192700.asm",
+          "bytes": 14122,
+          "sha256": "e544892e08d01f5a19859d70e20942699c2f6cde35ffc1a492f2f15cfc65338e"
+        },
+        {
+          "id": "E026",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/edge-increment.log",
+          "bytes": 10212,
+          "sha256": "678ee5de4160304bfa1c60ae524a726afb1098e9e2d7f8c0c280672c57871b49"
+        },
+        {
+          "id": "E027",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/1191840.asm",
+          "bytes": 10211,
+          "sha256": "68740224ae32b13ab0bd2937776bdedfcea9e7a7d3f6e01548c6f474f876847b"
+        },
+        {
+          "id": "E028",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/edge-stat-writers.log",
+          "bytes": 4692,
+          "sha256": "94d96aa83feac46de5f0e1952b10fd2ddb26699135a3d016bd02bff8f2ff2563"
+        },
+        {
+          "id": "E029",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/B47180.asm",
+          "bytes": 4691,
+          "sha256": "b662a4668d695f7a2008ba1885e367ea375ab4a279643665af168f594f792290"
+        },
+        {
+          "id": "E030",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/capacity-control-launcher.log",
+          "bytes": 69285,
+          "sha256": "f17de90bfa9ad3a0f9d79750ee72a615a4924aebe05f542a0e562e870b8074b8"
+        },
+        {
+          "id": "E031",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/capacity-ack-launcher.log",
+          "bytes": 85833,
+          "sha256": "1f37daeb28987bcb7d91637d36c3c89a282aaf1da991dd569e58c032e6b57d27"
+        },
+        {
+          "id": "E032",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/native_dispatch.py",
+          "bytes": 1497,
+          "sha256": "6e347b9306db6fb5894a806cb46b356dba090d39512e0ba361724b8da6c74a14"
+        },
+        {
+          "id": "E033",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/edge-actual-increment.log",
+          "bytes": 3618,
+          "sha256": "cd1ddaf558fdf46d9a4c9602f6b3ef84c4dbaa20db200ec5aced000230054007"
+        },
+        {
+          "id": "E034",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/AF0690.asm",
+          "bytes": 3617,
+          "sha256": "cdb2d7fde9a8c64bd045d1658115db4faa1042ed680c531663008074cd93e10c"
+        },
+        {
+          "id": "E035",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/edge-secure-stat.log",
+          "bytes": 6885,
+          "sha256": "8551b53b06331ed639e0c702bd9991c6efefb6a4520646bdf81a1d467ecea7cf"
+        },
+        {
+          "id": "E036",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/529C60.asm",
+          "bytes": 2321,
+          "sha256": "0723427de7f47add5905f77a5cb28b7b2d14f41afaa5621079a85525080335f3"
+        },
+        {
+          "id": "E037",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/636620.asm",
+          "bytes": 2198,
+          "sha256": "17ae57fabd5523ac9a2f680304d57b45de08d142ed7cd68cda51624eac5cd3ae"
+        },
+        {
+          "id": "E038",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/54B610.asm",
+          "bytes": 2363,
+          "sha256": "e4d79ce084b1cfe9479c7b7e2735dd37520df38c8c832029e63d106a0d67ee6f"
+        },
+        {
+          "id": "E039",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/capacity-states.gdb",
+          "bytes": 7964,
+          "sha256": "a99a2537d5d13d6ab96fab2326aea2a1e24c2aed30f27c06fa70c4c058a4c6fc"
+        },
+        {
+          "id": "E040",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/capacity-duplicate-launcher.log",
+          "bytes": 87981,
+          "sha256": "98f6e2f8cc21ce824dac6a8e50c29476bd98c27f4cb0df760cd8a9c269054d30"
+        },
+        {
+          "id": "E041",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/parse_states.py",
+          "bytes": 2547,
+          "sha256": "35bada9a599e77ac8c9f1830ca1df128aa6b1a255d8440968c0eb975ed0361ef"
+        },
+        {
+          "id": "E042",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/edge-native-stat-setter.log",
+          "bytes": 3990,
+          "sha256": "045b36af874dd846f4990ff41b4f29b998c15bf42a3479c0dd8218d3d4886cfe"
+        },
+        {
+          "id": "E043",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/52A860.asm",
+          "bytes": 3989,
+          "sha256": "9c9b53f66fc5941747770a2744c002f923f9074c745be60e39c7be2bc26d55f9"
+        },
+        {
+          "id": "E044",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/native_caps.py",
+          "bytes": 1815,
+          "sha256": "0a7083797835be5c983e7b9590389f18cbe5eda6f5b05efd333b228b21adca9c"
+        },
+        {
+          "id": "E045",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/capacity-power.gdb",
+          "bytes": 8164,
+          "sha256": "fee7cdcdab49f4fe506eb990fb52cdd8cb43983dcfd0d727316de182d1036ef8"
+        },
+        {
+          "id": "E046",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/capacity-power-launcher.log",
+          "bytes": 88056,
+          "sha256": "73575e750f6f578659b103ca16b083cc6f3aa83685265f90c765176be5a411b6"
+        },
+        {
+          "id": "E047",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/verify.py",
+          "bytes": 7775,
+          "sha256": "30c825bfa602559b43b1b8ac72741c468b8115cf5c4fb397461a0a200f9bd356"
+        },
+        {
+          "id": "E048",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/finish_checkpoint.py",
+          "bytes": 13902,
+          "sha256": "376f9b9330e79651f0a09fd9c346244840ca8b0dbaebb3c6ce9584848d810213"
+        },
+        {
+          "id": "E049",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/verification.json",
+          "bytes": 287,
+          "sha256": "56b31e2142f66f50ca901aa3580ea734bcc9608c4bf01e8ee35337c7df4f2683"
+        },
+        {
+          "id": "E050",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/runtime-summary.json",
+          "bytes": 17013,
+          "sha256": "dac5c1104d22e27aed97a10ced4d024d4925b3d9ededd8d3ac3fa02d5cfd0fd6"
+        },
+        {
+          "id": "E051",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/native-actual.json",
+          "bytes": 143842,
+          "sha256": "238ddb1c62594c64e68f4bda92b608d0ca5c85df793574bf0143ab76a5db590d"
+        },
+        {
+          "id": "E052",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/stat-states.json",
+          "bytes": 182155,
+          "sha256": "af50c7b707a999e36b660097ab380100106b4c1307fe21160c1334e806a7ac06"
+        },
+        {
+          "id": "E053",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/native-caps.json",
+          "bytes": 2996,
+          "sha256": "021f4b666b4b3d4d26eb559dee3499667ac2ec5969da2cab34be3a5b42d1ff57"
+        },
+        {
+          "id": "E054",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/native-dispatch.json",
+          "bytes": 931,
+          "sha256": "8988f3944ac85ac33248aef26f68ec858d0a02ea558b3c9732475b0a8ac04112"
+        },
+        {
+          "id": "E055",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/code-match.json",
+          "bytes": 2791,
+          "sha256": "0883dc92d6437f312b230efee87e27e817c18cf19749db31a7f76f1805035f32"
+        },
+        {
+          "id": "E056",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/measurement-notes.json",
+          "bytes": 5358,
+          "sha256": "f3df23aa7ccdc57b85e921731417f6b04838b2f7125a5b1d80167261b0449c74"
+        },
+        {
+          "id": "E057",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/visual-review.png",
+          "bytes": 710220,
+          "sha256": "2c7f573680503dd1f1753c53c1af71161e3d9b6ba5b999c33bccdfc2abcdc991"
+        },
+        {
+          "id": "E058",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/effect-path-recipe.json",
+          "bytes": 998,
+          "sha256": "17a43f9c747795464ca278f598a40435eaf56a42291a410422e9b3349d2563b8"
+        },
+        {
+          "id": "E059",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/effect-path-hashes.json",
+          "bytes": 117817,
+          "sha256": "be21755376a9bf489bb74771c506bd338eaffb8d9451d18f48a2f6f7bef32003"
+        },
+        {
+          "id": "E060",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/effect-path/run.json",
+          "bytes": 64772,
+          "sha256": "8b06b967ab082c3b1be749cb9f06123073172c76eda3fb249a30ff382f3e698d"
+        },
+        {
+          "id": "E061",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/effect-path/client.log",
+          "bytes": 14790,
+          "sha256": "bff263f376d3833abdb351588cef8a4366d57b14179bb3b20d52136c7c75df10"
+        },
+        {
+          "id": "E062",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/effect-path/client-B.log",
+          "bytes": 15170,
+          "sha256": "e425c53a251164ca0ef73662be924af1ceef347a4f0bfb2b765200b31dbe776c"
+        },
+        {
+          "id": "E063",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/effect-path/A-ready110-73.bin",
+          "bytes": 44,
+          "sha256": "8fafd9cf652b458ee09b3751a0201f9ab1409920398e0e842e43b915c8840e25"
+        },
+        {
+          "id": "E064",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/effect-path/B-ready110-73.bin",
+          "bytes": 44,
+          "sha256": "8fafd9cf652b458ee09b3751a0201f9ab1409920398e0e842e43b915c8840e25"
+        },
+        {
+          "id": "E065",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/effect-path/A-floor582-76.bin",
+          "bytes": 74,
+          "sha256": "e35a08ee21eae99c5bdbc4dd7abc099330a21ed5b1b3a9e572a44a57b801c846"
+        },
+        {
+          "id": "E066",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/effect-path/A-start121-r1-79.bin",
+          "bytes": 167,
+          "sha256": "4d85d0786f484c579ef94cd61ceaa40997df93c39589d720ea8334bc9b5ca29f"
+        },
+        {
+          "id": "E067",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/effect-path/B-floor582-76.bin",
+          "bytes": 74,
+          "sha256": "e35a08ee21eae99c5bdbc4dd7abc099330a21ed5b1b3a9e572a44a57b801c846"
+        },
+        {
+          "id": "E068",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/effect-path/B-start121-r1-79.bin",
+          "bytes": 167,
+          "sha256": "4d85d0786f484c579ef94cd61ceaa40997df93c39589d720ea8334bc9b5ca29f"
+        },
+        {
+          "id": "E069",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/effect-path/A-go197-82.bin",
+          "bytes": 52,
+          "sha256": "64b95010ecb0e40bc0367f41f6710d2357fb2538ce827e205825284601237ef8"
+        },
+        {
+          "id": "E070",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/effect-path/B-go197-82.bin",
+          "bytes": 52,
+          "sha256": "64b95010ecb0e40bc0367f41f6710d2357fb2538ce827e205825284601237ef8"
+        },
+        {
+          "id": "E071",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/effect-path/A-play196-85.bin",
+          "bytes": 45,
+          "sha256": "d04bf155b4847f9d41b0edfdf00a32526302273271c0f1cadbb8ce22b89eb51d"
+        },
+        {
+          "id": "E072",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/effect-path/B-play196-85.bin",
+          "bytes": 45,
+          "sha256": "d04bf155b4847f9d41b0edfdf00a32526302273271c0f1cadbb8ce22b89eb51d"
+        },
+        {
+          "id": "E073",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/effect-path/A-peer153-88.bin",
+          "bytes": 135,
+          "sha256": "a3a42f669ae9df9406a425e21226a97cd0a06143130b894a83b655d1a1cba49f"
+        },
+        {
+          "id": "E074",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/effect-path/B-peer153-88.bin",
+          "bytes": 135,
+          "sha256": "9417f585616114e16615ae90394e88402604699ca3cac9a212dcb468b9f19bd1"
+        },
+        {
+          "id": "E075",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/effect-path/A-item165-18-91.bin",
+          "bytes": 50,
+          "sha256": "512ecc6d01a8017950bd5e46808e080d3ad08afcb88c3be15eac91ab5ca4e604"
+        },
+        {
+          "id": "E076",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/effect-path/B-item165-18-91.bin",
+          "bytes": 50,
+          "sha256": "512ecc6d01a8017950bd5e46808e080d3ad08afcb88c3be15eac91ab5ca4e604"
+        },
+        {
+          "id": "E077",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/effect-path/A-item165-17-94.bin",
+          "bytes": 50,
+          "sha256": "7e90ec22aa06a19821f477c0da5ee5da61c814a81a9c7d32aa07df12f5af2c37"
+        },
+        {
+          "id": "E078",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/effect-path/B-item165-17-94.bin",
+          "bytes": 50,
+          "sha256": "7e90ec22aa06a19821f477c0da5ee5da61c814a81a9c7d32aa07df12f5af2c37"
+        },
+        {
+          "id": "E079",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/derived/effect-path-A-replay.txt",
+          "bytes": 1665,
+          "sha256": "e1a5849924812f172578ba36cedfce4588f719aa677c578c02dc8d6b1a4f6a48"
+        },
+        {
+          "id": "E080",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/derived/effect-path-A-oracle.json",
+          "bytes": 100907,
+          "sha256": "ca96eaadc989a856b041616220bdc63659c2948e8cbfcb7e68e30806132cb15d"
+        },
+        {
+          "id": "E081",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/derived/effect-path-B-replay.txt",
+          "bytes": 1275,
+          "sha256": "175fd0176f0eb7e8f80a0aab3aadeb7e2be14649d6bdb089ac98b90b4ba2b94a"
+        },
+        {
+          "id": "E082",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/derived/effect-path-B-oracle.json",
+          "bytes": 76092,
+          "sha256": "14bbee66f8e72a9e288cf8c2b2510819bc30f2af75e6adb91dd59f6f99125251"
+        },
+        {
+          "id": "E083",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/request-frames/effect-path/A-F46-124.bin",
+          "bytes": 57,
+          "sha256": "45f1c2f7aa87ca39837c3b8ce737a1a88c855e92fbf36b57377897d043ae7757"
+        },
+        {
+          "id": "E084",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/request-frames/effect-path/B-F34-124.bin",
+          "bytes": 57,
+          "sha256": "7f130a0f4768a3f89deedf7dbd35895b75bdb086e2d429096a45424cf3ec9643"
+        },
+        {
+          "id": "E085",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/effect-path/A/final-both.png",
+          "bytes": 128382,
+          "sha256": "e97cd12299b10b700b3438afd7cd19b40bc5bc9a03c1bf1b0509f739acd910e0"
+        },
+        {
+          "id": "E086",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/effect-path/B/final-both.png",
+          "bytes": 128616,
+          "sha256": "c741bec6d0d8d4fd70c13689bca592395924f3f63576572d667f615e11a69f70"
+        },
+        {
+          "id": "E087",
+          "kind": "local",
+          "path": "local/research/codex/wine_probe_item_effect_path.py",
+          "bytes": 60142,
+          "sha256": "c9cb6579cc7ee6870a66944bac53481678b3072f3241cbb2426ce3e0f291a898"
+        },
+        {
+          "id": "E088",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/capacity-control-recipe.json",
+          "bytes": 1010,
+          "sha256": "c8d8e21fe4c34da8eee28b60b5994326d67865228ab07cf30533d6d18575f709"
+        },
+        {
+          "id": "E089",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/capacity-control-hashes.json",
+          "bytes": 144700,
+          "sha256": "8790357901dfd3aab6197b65d4abc984f4e6f4cbd173185c41861392e1c647cd"
+        },
+        {
+          "id": "E090",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/capacity-control/run.json",
+          "bytes": 88999,
+          "sha256": "f63a66b11293661ee5ffb8ce7342c10639c3ac25ada3ebf64a063ee58e6859c5"
+        },
+        {
+          "id": "E091",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/capacity-control/client.log",
+          "bytes": 14293,
+          "sha256": "4acb2907862d7b1d91cd41535cceb4fec5ac747f0f316a3dba4c00a83faf3f5c"
+        },
+        {
+          "id": "E092",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/capacity-control/client-B.log",
+          "bytes": 15181,
+          "sha256": "7834942394f91386124d255f891c26f09a4e790feff7e53eb26b8bc699cf92d9"
+        },
+        {
+          "id": "E093",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/capacity-control/A-ready110-73.bin",
+          "bytes": 44,
+          "sha256": "8fafd9cf652b458ee09b3751a0201f9ab1409920398e0e842e43b915c8840e25"
+        },
+        {
+          "id": "E094",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/capacity-control/B-ready110-73.bin",
+          "bytes": 44,
+          "sha256": "8fafd9cf652b458ee09b3751a0201f9ab1409920398e0e842e43b915c8840e25"
+        },
+        {
+          "id": "E095",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/capacity-control/A-floor582-76.bin",
+          "bytes": 74,
+          "sha256": "e35a08ee21eae99c5bdbc4dd7abc099330a21ed5b1b3a9e572a44a57b801c846"
+        },
+        {
+          "id": "E096",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/capacity-control/A-start121-r1-79.bin",
+          "bytes": 167,
+          "sha256": "4d85d0786f484c579ef94cd61ceaa40997df93c39589d720ea8334bc9b5ca29f"
+        },
+        {
+          "id": "E097",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/capacity-control/B-floor582-76.bin",
+          "bytes": 74,
+          "sha256": "e35a08ee21eae99c5bdbc4dd7abc099330a21ed5b1b3a9e572a44a57b801c846"
+        },
+        {
+          "id": "E098",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/capacity-control/B-start121-r1-79.bin",
+          "bytes": 167,
+          "sha256": "4d85d0786f484c579ef94cd61ceaa40997df93c39589d720ea8334bc9b5ca29f"
+        },
+        {
+          "id": "E099",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/capacity-control/A-go197-82.bin",
+          "bytes": 52,
+          "sha256": "64b95010ecb0e40bc0367f41f6710d2357fb2538ce827e205825284601237ef8"
+        },
+        {
+          "id": "E100",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/capacity-control/B-go197-82.bin",
+          "bytes": 52,
+          "sha256": "64b95010ecb0e40bc0367f41f6710d2357fb2538ce827e205825284601237ef8"
+        },
+        {
+          "id": "E101",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/capacity-control/A-play196-85.bin",
+          "bytes": 45,
+          "sha256": "d04bf155b4847f9d41b0edfdf00a32526302273271c0f1cadbb8ce22b89eb51d"
+        },
+        {
+          "id": "E102",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/capacity-control/B-play196-85.bin",
+          "bytes": 45,
+          "sha256": "d04bf155b4847f9d41b0edfdf00a32526302273271c0f1cadbb8ce22b89eb51d"
+        },
+        {
+          "id": "E103",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/capacity-control/A-peer153-88.bin",
+          "bytes": 135,
+          "sha256": "8ee79f77ffaf017f7417fb1ff2e65d680c1a218ac8e56cd3b4d1d6b5df2cb7ab"
+        },
+        {
+          "id": "E104",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/capacity-control/B-peer153-88.bin",
+          "bytes": 135,
+          "sha256": "c412ebcebc40a24e35c1975adeeb0cacdf71e6010524c0650b1e407c8ba7ea77"
+        },
+        {
+          "id": "E105",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/capacity-control/A-dynamic159-1.bin",
+          "bytes": 77,
+          "sha256": "6022d36881f7a4da2ec4ffc4f6a1a8695af3f369fdf8f5dff0ad4408f2808a7f"
+        },
+        {
+          "id": "E106",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/capacity-control/B-dynamic159-1.bin",
+          "bytes": 77,
+          "sha256": "6022d36881f7a4da2ec4ffc4f6a1a8695af3f369fdf8f5dff0ad4408f2808a7f"
+        },
+        {
+          "id": "E107",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/capacity-control/A-dynamic159-2.bin",
+          "bytes": 77,
+          "sha256": "ab0b8519686a94cd143480403a55ee7470774115771b11577d3273022e56182c"
+        },
+        {
+          "id": "E108",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/capacity-control/B-dynamic159-2.bin",
+          "bytes": 77,
+          "sha256": "ab0b8519686a94cd143480403a55ee7470774115771b11577d3273022e56182c"
+        },
+        {
+          "id": "E109",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/capacity-control/A-dynamic159-3.bin",
+          "bytes": 77,
+          "sha256": "0dfd8e0587e6c891a75dfc1efb2171cbd348f8dc190f97d659176848148fb14f"
+        },
+        {
+          "id": "E110",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/capacity-control/B-dynamic159-3.bin",
+          "bytes": 77,
+          "sha256": "0dfd8e0587e6c891a75dfc1efb2171cbd348f8dc190f97d659176848148fb14f"
+        },
+        {
+          "id": "E111",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/capacity-control/A-blast158-1.bin",
+          "bytes": 51,
+          "sha256": "8267ecd76c85413992f106445d871cbcfb817ebeba0ff5bd1060dee651506f7e"
+        },
+        {
+          "id": "E112",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/capacity-control/B-blast158-1.bin",
+          "bytes": 51,
+          "sha256": "8267ecd76c85413992f106445d871cbcfb817ebeba0ff5bd1060dee651506f7e"
+        },
+        {
+          "id": "E113",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/capacity-control/A-blast158-2.bin",
+          "bytes": 51,
+          "sha256": "00c164201ff3771a86585828cb5f6bbef13064ffa8a944ab06d6fd1f147aa5ec"
+        },
+        {
+          "id": "E114",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/capacity-control/B-blast158-2.bin",
+          "bytes": 51,
+          "sha256": "00c164201ff3771a86585828cb5f6bbef13064ffa8a944ab06d6fd1f147aa5ec"
+        },
+        {
+          "id": "E115",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/capacity-control/A-blast158-3.bin",
+          "bytes": 51,
+          "sha256": "58ce275696b091e5efe8aaaa7d776eb00a3b52a25103ca846a81ac534b6bc18b"
+        },
+        {
+          "id": "E116",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/capacity-control/B-blast158-3.bin",
+          "bytes": 51,
+          "sha256": "58ce275696b091e5efe8aaaa7d776eb00a3b52a25103ca846a81ac534b6bc18b"
+        },
+        {
+          "id": "E117",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/derived/capacity-control-A-replay.txt",
+          "bytes": 2036,
+          "sha256": "467a14e7337f442feb900473887556e22ca7c548f69b1bdbcf79b827f07f6ef0"
+        },
+        {
+          "id": "E118",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/derived/capacity-control-A-oracle.json",
+          "bytes": 123540,
+          "sha256": "48ebddda8376abba07b40e9f2dd4d8af6843f818539e10aceaa105a16a5580dd"
+        },
+        {
+          "id": "E119",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/derived/capacity-control-B-replay.txt",
+          "bytes": 1600,
+          "sha256": "519c39e7934a273100bba4f56ffb1153d872d40aa9a031dba17cb609eca393e8"
+        },
+        {
+          "id": "E120",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/derived/capacity-control-B-oracle.json",
+          "bytes": 96047,
+          "sha256": "e4cea02167f00969e33b121bb5038c5f5b8b7758fe0e530abbf737ba10327d85"
+        },
+        {
+          "id": "E121",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/request-frames/capacity-control/A-F47-124.bin",
+          "bytes": 57,
+          "sha256": "407e166e73b0f555ce6230310bc806f637e0a93cc3c8b3491a9d1181f3dbc7ef"
+        },
+        {
+          "id": "E122",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/request-frames/capacity-control/A-F56-118.bin",
+          "bytes": 60,
+          "sha256": "b089de09a959d1f19232663bbaf9ab0bd6c49f056639c592d662bbf6218e97f2"
+        },
+        {
+          "id": "E123",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/request-frames/capacity-control/B-F34-124.bin",
+          "bytes": 57,
+          "sha256": "482ce0720fb6249c2c041869875f1e57484ab19f377b42cd5796c5fb30f38514"
+        },
+        {
+          "id": "E124",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/request-frames/capacity-control/B-F39-118.bin",
+          "bytes": 60,
+          "sha256": "3f56baedeeffed5c976299724db82b3f29e1e68ea9a967d243280891d39c5589"
+        },
+        {
+          "id": "E125",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/request-frames/capacity-control/B-F42-118.bin",
+          "bytes": 60,
+          "sha256": "a178f9834593aa59aaa4c59607c63a573e31a5b79374fef2d5c59332514c111a"
+        },
+        {
+          "id": "E126",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/capacity-control/A/capacity-after-B.png",
+          "bytes": 133053,
+          "sha256": "193533bedb4b2abadf38e22a02a878c14fc5f723b84ed56a27593f5164b6f776"
+        },
+        {
+          "id": "E127",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/capacity-control/A/final-both.png",
+          "bytes": 129627,
+          "sha256": "57356dddba72a2dcf62f894ffcc123b19487b00173c036bf530d3fd3f1ef3222"
+        },
+        {
+          "id": "E128",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/capacity-control/B/capacity-after-B.png",
+          "bytes": 133075,
+          "sha256": "93cbbcce0b6bf8732a89a13158761cad8cdbc3a3550b02a5b0bba4ba5d87afff"
+        },
+        {
+          "id": "E129",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/capacity-control/B/final-both.png",
+          "bytes": 129741,
+          "sha256": "c6793be3a675bed861220ae1e05d46196ede60b909212191af7d426e2e0f63ed"
+        },
+        {
+          "id": "E130",
+          "kind": "local",
+          "path": "local/research/codex/wine_probe_item_capacity_control.py",
+          "bytes": 61490,
+          "sha256": "142d2fe1f3ff03eb065d535928ed3ad32ec6092ab53f59760320eb27dc7a8b3e"
+        },
+        {
+          "id": "E131",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/capacity-ack-recipe.json",
+          "bytes": 998,
+          "sha256": "05e5470748d2d32d27f4376f5d31723175a9b70a02c9646d4c1a22e3f6fdced4"
+        },
+        {
+          "id": "E132",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/capacity-ack-hashes.json",
+          "bytes": 148431,
+          "sha256": "501bd8b8cd7dcf5243665318f422971ea465270a435f8fb586e22e703108a054"
+        },
+        {
+          "id": "E133",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/capacity-ack/run.json",
+          "bytes": 112567,
+          "sha256": "16d7eedfea0a66775dd87ce500d78d695ef7d65dcb1cbfb32858d5e8478adbf1"
+        },
+        {
+          "id": "E134",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/capacity-ack/client.log",
+          "bytes": 16779,
+          "sha256": "731139c247b2d1e0a9b65d685c8baccb62ba5f8f29be13b3b3aa64bfa6bec526"
+        },
+        {
+          "id": "E135",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/capacity-ack/client-B.log",
+          "bytes": 17393,
+          "sha256": "6876cccc4ce04328ca9ec28e86d09500770c81cbe2ff8ed7e9e2713e99e08e4f"
+        },
+        {
+          "id": "E136",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/capacity-ack/A-ready110-73.bin",
+          "bytes": 44,
+          "sha256": "8fafd9cf652b458ee09b3751a0201f9ab1409920398e0e842e43b915c8840e25"
+        },
+        {
+          "id": "E137",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/capacity-ack/B-ready110-73.bin",
+          "bytes": 44,
+          "sha256": "8fafd9cf652b458ee09b3751a0201f9ab1409920398e0e842e43b915c8840e25"
+        },
+        {
+          "id": "E138",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/capacity-ack/A-floor582-76.bin",
+          "bytes": 74,
+          "sha256": "e35a08ee21eae99c5bdbc4dd7abc099330a21ed5b1b3a9e572a44a57b801c846"
+        },
+        {
+          "id": "E139",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/capacity-ack/A-start121-r1-79.bin",
+          "bytes": 167,
+          "sha256": "4d85d0786f484c579ef94cd61ceaa40997df93c39589d720ea8334bc9b5ca29f"
+        },
+        {
+          "id": "E140",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/capacity-ack/B-floor582-76.bin",
+          "bytes": 74,
+          "sha256": "e35a08ee21eae99c5bdbc4dd7abc099330a21ed5b1b3a9e572a44a57b801c846"
+        },
+        {
+          "id": "E141",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/capacity-ack/B-start121-r1-79.bin",
+          "bytes": 167,
+          "sha256": "4d85d0786f484c579ef94cd61ceaa40997df93c39589d720ea8334bc9b5ca29f"
+        },
+        {
+          "id": "E142",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/capacity-ack/A-go197-82.bin",
+          "bytes": 52,
+          "sha256": "64b95010ecb0e40bc0367f41f6710d2357fb2538ce827e205825284601237ef8"
+        },
+        {
+          "id": "E143",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/capacity-ack/B-go197-82.bin",
+          "bytes": 52,
+          "sha256": "64b95010ecb0e40bc0367f41f6710d2357fb2538ce827e205825284601237ef8"
+        },
+        {
+          "id": "E144",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/capacity-ack/A-play196-85.bin",
+          "bytes": 45,
+          "sha256": "d04bf155b4847f9d41b0edfdf00a32526302273271c0f1cadbb8ce22b89eb51d"
+        },
+        {
+          "id": "E145",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/capacity-ack/B-play196-85.bin",
+          "bytes": 45,
+          "sha256": "d04bf155b4847f9d41b0edfdf00a32526302273271c0f1cadbb8ce22b89eb51d"
+        },
+        {
+          "id": "E146",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/capacity-ack/A-peer153-88.bin",
+          "bytes": 135,
+          "sha256": "5e6b422df678a47ef0d91a82edc2c677a8d95941024e663adbd70d77b1ab1cf5"
+        },
+        {
+          "id": "E147",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/capacity-ack/B-peer153-88.bin",
+          "bytes": 135,
+          "sha256": "57353c65ea3f7284befa9d444361d1dd455fad9ba22a5fdbdeac474a8ea72cc8"
+        },
+        {
+          "id": "E148",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/capacity-ack/A-item165-18-91.bin",
+          "bytes": 50,
+          "sha256": "512ecc6d01a8017950bd5e46808e080d3ad08afcb88c3be15eac91ab5ca4e604"
+        },
+        {
+          "id": "E149",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/capacity-ack/B-item165-18-91.bin",
+          "bytes": 50,
+          "sha256": "512ecc6d01a8017950bd5e46808e080d3ad08afcb88c3be15eac91ab5ca4e604"
+        },
+        {
+          "id": "E150",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/capacity-ack/A-item165-17-94.bin",
+          "bytes": 50,
+          "sha256": "7e90ec22aa06a19821f477c0da5ee5da61c814a81a9c7d32aa07df12f5af2c37"
+        },
+        {
+          "id": "E151",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/capacity-ack/B-item165-17-94.bin",
+          "bytes": 50,
+          "sha256": "7e90ec22aa06a19821f477c0da5ee5da61c814a81a9c7d32aa07df12f5af2c37"
+        },
+        {
+          "id": "E152",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/capacity-ack/A-dynamic159-1.bin",
+          "bytes": 77,
+          "sha256": "69fc069a87f228018362803a50c6f9596004091fbe922d5a7362a03d6383fd03"
+        },
+        {
+          "id": "E153",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/capacity-ack/B-dynamic159-1.bin",
+          "bytes": 77,
+          "sha256": "69fc069a87f228018362803a50c6f9596004091fbe922d5a7362a03d6383fd03"
+        },
+        {
+          "id": "E154",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/capacity-ack/A-dynamic159-2.bin",
+          "bytes": 77,
+          "sha256": "ccc6d72160947428b209bce9a9dd588a6d7a2f0490332e567eccdbb81e5bbc0d"
+        },
+        {
+          "id": "E155",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/capacity-ack/B-dynamic159-2.bin",
+          "bytes": 77,
+          "sha256": "ccc6d72160947428b209bce9a9dd588a6d7a2f0490332e567eccdbb81e5bbc0d"
+        },
+        {
+          "id": "E156",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/capacity-ack/A-dynamic159-3.bin",
+          "bytes": 77,
+          "sha256": "bd226d62c1d494254305f5458f456737024b5da8256d7767abb61aba0125b65a"
+        },
+        {
+          "id": "E157",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/capacity-ack/B-dynamic159-3.bin",
+          "bytes": 77,
+          "sha256": "bd226d62c1d494254305f5458f456737024b5da8256d7767abb61aba0125b65a"
+        },
+        {
+          "id": "E158",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/capacity-ack/A-dynamic159-4.bin",
+          "bytes": 77,
+          "sha256": "71aaf49f36f07ccedea367712cd03f79ed137a4af1baac5115e70a333c53d181"
+        },
+        {
+          "id": "E159",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/capacity-ack/B-dynamic159-4.bin",
+          "bytes": 77,
+          "sha256": "71aaf49f36f07ccedea367712cd03f79ed137a4af1baac5115e70a333c53d181"
+        },
+        {
+          "id": "E160",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/capacity-ack/A-blast158-1.bin",
+          "bytes": 51,
+          "sha256": "99156def6ba409be5a068588d841f633204447e1e5faabf86e2c2eefa56e2c19"
+        },
+        {
+          "id": "E161",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/capacity-ack/B-blast158-1.bin",
+          "bytes": 51,
+          "sha256": "99156def6ba409be5a068588d841f633204447e1e5faabf86e2c2eefa56e2c19"
+        },
+        {
+          "id": "E162",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/capacity-ack/A-blast158-2.bin",
+          "bytes": 51,
+          "sha256": "7674e4caf53d1a59211d0192b5d9c5d4e4832910342b53c1a2f8d399ad71f3de"
+        },
+        {
+          "id": "E163",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/capacity-ack/B-blast158-2.bin",
+          "bytes": 51,
+          "sha256": "7674e4caf53d1a59211d0192b5d9c5d4e4832910342b53c1a2f8d399ad71f3de"
+        },
+        {
+          "id": "E164",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/capacity-ack/B-event170-17-r1-115.bin",
+          "bytes": 48,
+          "sha256": "745b6d7735569041acfe007bf10b31ed0b2cb87533f7ef7f2f9af4d20630b47b"
+        },
+        {
+          "id": "E165",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/capacity-ack/A-blast158-3.bin",
+          "bytes": 51,
+          "sha256": "c0b63a0a01970a3739790d718f3d7f5113bd906187190464bbcf1c097c114d4e"
+        },
+        {
+          "id": "E166",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/capacity-ack/B-blast158-3.bin",
+          "bytes": 51,
+          "sha256": "a877222649dc783fbfe66c4a068e899c6f6765e79348bb13188e9137f1fcb57c"
+        },
+        {
+          "id": "E167",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/capacity-ack/A-blast158-4.bin",
+          "bytes": 51,
+          "sha256": "357153ba558829fe8ca9809fd170234209037a2176f9bb9f72ba80889856e2e5"
+        },
+        {
+          "id": "E168",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/capacity-ack/B-blast158-4.bin",
+          "bytes": 51,
+          "sha256": "c08a9bfb3e47507d9b94e454a125466b8b991099aa58e613f6691b29657a865d"
+        },
+        {
+          "id": "E169",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/capacity-ack/B-event170-19-r1-124.bin",
+          "bytes": 59,
+          "sha256": "f51787d7904696a801dc985a54971beb65091c6681308169c81e983a27b4b217"
+        },
+        {
+          "id": "E170",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/capacity-ack/A-rank175-r1-121.bin",
+          "bytes": 340,
+          "sha256": "610c8e0a6036b04110a80083684b0318aeccd52bcbb5cc7f3c93ae73c368277a"
+        },
+        {
+          "id": "E171",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/capacity-ack/B-rank175-r1-127.bin",
+          "bytes": 340,
+          "sha256": "7bc28b836fee3e8f7fec45e1a9d7d5ae263afc2293ec1456d4f7b9ee679e59c9"
+        },
+        {
+          "id": "E172",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/capacity-ack/A-return180-r1-124.bin",
+          "bytes": 41,
+          "sha256": "601765ff3f7a5af3bee6a67974c066454ef14a67dec8f2a5f3aec8975dd139b9"
+        },
+        {
+          "id": "E173",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/capacity-ack/B-return180-r1-130.bin",
+          "bytes": 41,
+          "sha256": "6635509b2e76efc0e575b40066729e9bbea8af6b208ca91eef407d6339887596"
+        },
+        {
+          "id": "E174",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/capacity-ack/A-host110-r1-127.bin",
+          "bytes": 44,
+          "sha256": "ae4f865538936580914f6f1adfe2f559ad6cfce7d70817a442df9853c07a58c9"
+        },
+        {
+          "id": "E175",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/capacity-ack/A-guest110-r1-130.bin",
+          "bytes": 44,
+          "sha256": "581ae6190a16964c86ba988b1b139e1f82005201eed6cbe816a62c9855e383d6"
+        },
+        {
+          "id": "E176",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/capacity-ack/B-host110-r1-133.bin",
+          "bytes": 44,
+          "sha256": "2ad8d4a8e7697f2acafae8e38c1e47afa20ed603af68535c2ab6258c8a158c3d"
+        },
+        {
+          "id": "E177",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/capacity-ack/B-guest110-r1-136.bin",
+          "bytes": 44,
+          "sha256": "00b6d0802d99828b48d8cd3b45a3ce49ffb764689c073fd49b4f58c9a823fefe"
+        },
+        {
+          "id": "E178",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/derived/capacity-ack-A-replay.txt",
+          "bytes": 2308,
+          "sha256": "9f802373d836c6c50a994f8396086f125cb312763773888028203da7121463b5"
+        },
+        {
+          "id": "E179",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/derived/capacity-ack-A-oracle.json",
+          "bytes": 139749,
+          "sha256": "b90f13777c5ac3e06cb4e2e667d87f6ec70bf87ad9d71ecc69a725e29fbebc80"
+        },
+        {
+          "id": "E180",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/derived/capacity-ack-B-replay.txt",
+          "bytes": 1987,
+          "sha256": "d1230beeda1c1ea8fb764eff4ea15ea52ca8603753928512bed557d2e554cc70"
+        },
+        {
+          "id": "E181",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/derived/capacity-ack-B-oracle.json",
+          "bytes": 118949,
+          "sha256": "390ce9a57287ea86ae10b2682afce6c1056fd5349300479c3cd15be753db7bb1"
+        },
+        {
+          "id": "E182",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/request-frames/capacity-ack/A-F46-124.bin",
+          "bytes": 57,
+          "sha256": "b75a97001f76431cb7a8e9a771f053013a6f2094911f7ac2f72308447e249fc8"
+        },
+        {
+          "id": "E183",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/request-frames/capacity-ack/A-F56-118.bin",
+          "bytes": 60,
+          "sha256": "f8ba9eb266421edcbf6e5b11465f3410e1cd1ec69a40bacbeb3a19259a69d23a"
+        },
+        {
+          "id": "E184",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/request-frames/capacity-ack/A-F59-118.bin",
+          "bytes": 60,
+          "sha256": "04cae264f71f6e10dd3585784f1a877e9ead6bc14095cd0b4b9fb698f03448a6"
+        },
+        {
+          "id": "E185",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/request-frames/capacity-ack/B-F34-124.bin",
+          "bytes": 57,
+          "sha256": "7f130a0f4768a3f89deedf7dbd35895b75bdb086e2d429096a45424cf3ec9643"
+        },
+        {
+          "id": "E186",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/request-frames/capacity-ack/B-F39-118.bin",
+          "bytes": 60,
+          "sha256": "d6f08a8ca2a503ffc855580fe515a9bf25e89b485e5e99c4a0245e558032187e"
+        },
+        {
+          "id": "E187",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/request-frames/capacity-ack/B-F42-118.bin",
+          "bytes": 60,
+          "sha256": "5342a07c380a301281927b128186619ab24d5d3f405e59cd04886540cf93c6e8"
+        },
+        {
+          "id": "E188",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/capacity-ack/A/capacity-after-B.png",
+          "bytes": 131671,
+          "sha256": "16f4521b97a9763c754a397263540ea2c1deb34ced9dc0d81be4eec533f1757f"
+        },
+        {
+          "id": "E189",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/capacity-ack/A/final-both.png",
+          "bytes": 177833,
+          "sha256": "efd15ad7cb39b5e86601bc82f8d2dfd7cf5ae9a92cc540e9be54b695df677c2d"
+        },
+        {
+          "id": "E190",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/capacity-ack/B/capacity-after-B.png",
+          "bytes": 130525,
+          "sha256": "bf51e20cc1330872fc3ee958504d9c1cd89b9a0b0079217ff780d97065c4f1f9"
+        },
+        {
+          "id": "E191",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/capacity-ack/B/final-both.png",
+          "bytes": 175620,
+          "sha256": "9e8c5f87465ee1be93a6c87249a0cddd1c8e1a2489735182294439ab160413dc"
+        },
+        {
+          "id": "E192",
+          "kind": "local",
+          "path": "local/research/codex/wine_probe_item_capacity_ack.py",
+          "bytes": 61488,
+          "sha256": "b673eeb21e9ac8be5d6eeea65fed67feaea416616ac6e2407c3a8d37e2905995"
+        },
+        {
+          "id": "E193",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/capacity-duplicate-recipe.json",
+          "bytes": 1023,
+          "sha256": "1a0c5fd8fa10f94f0aea320978501f280a736b39eebe8f8749469b678e6b4d92"
+        },
+        {
+          "id": "E194",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/capacity-duplicate-hashes.json",
+          "bytes": 153697,
+          "sha256": "f6c036e44f43331ccdd4f833694add25a672de5047fd045a4c03352bc4d011aa"
+        },
+        {
+          "id": "E195",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/capacity-duplicate/run.json",
+          "bytes": 115711,
+          "sha256": "c4a673be472a0cc5b9fad478c13adfec74dd24782a9aed456fb957437bec5487"
+        },
+        {
+          "id": "E196",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/capacity-duplicate/client.log",
+          "bytes": 34959,
+          "sha256": "06342e15a4af44bbff72c721f213c53d4f90e5cc905b9836a040413a6adb0a06"
+        },
+        {
+          "id": "E197",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/capacity-duplicate/client-B.log",
+          "bytes": 35586,
+          "sha256": "5a2a09f31be9366237731db3e0e1057fabd306dc7705f000c892c4656bafb59a"
+        },
+        {
+          "id": "E198",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/capacity-duplicate/A-ready110-73.bin",
+          "bytes": 44,
+          "sha256": "8fafd9cf652b458ee09b3751a0201f9ab1409920398e0e842e43b915c8840e25"
+        },
+        {
+          "id": "E199",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/capacity-duplicate/B-ready110-73.bin",
+          "bytes": 44,
+          "sha256": "8fafd9cf652b458ee09b3751a0201f9ab1409920398e0e842e43b915c8840e25"
+        },
+        {
+          "id": "E200",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/capacity-duplicate/A-floor582-76.bin",
+          "bytes": 74,
+          "sha256": "e35a08ee21eae99c5bdbc4dd7abc099330a21ed5b1b3a9e572a44a57b801c846"
+        },
+        {
+          "id": "E201",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/capacity-duplicate/A-start121-r1-79.bin",
+          "bytes": 167,
+          "sha256": "4d85d0786f484c579ef94cd61ceaa40997df93c39589d720ea8334bc9b5ca29f"
+        },
+        {
+          "id": "E202",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/capacity-duplicate/B-floor582-76.bin",
+          "bytes": 74,
+          "sha256": "e35a08ee21eae99c5bdbc4dd7abc099330a21ed5b1b3a9e572a44a57b801c846"
+        },
+        {
+          "id": "E203",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/capacity-duplicate/B-start121-r1-79.bin",
+          "bytes": 167,
+          "sha256": "4d85d0786f484c579ef94cd61ceaa40997df93c39589d720ea8334bc9b5ca29f"
+        },
+        {
+          "id": "E204",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/capacity-duplicate/B-go197-82.bin",
+          "bytes": 52,
+          "sha256": "64b95010ecb0e40bc0367f41f6710d2357fb2538ce827e205825284601237ef8"
+        },
+        {
+          "id": "E205",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/capacity-duplicate/A-go197-82.bin",
+          "bytes": 52,
+          "sha256": "64b95010ecb0e40bc0367f41f6710d2357fb2538ce827e205825284601237ef8"
+        },
+        {
+          "id": "E206",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/capacity-duplicate/B-play196-85.bin",
+          "bytes": 45,
+          "sha256": "d04bf155b4847f9d41b0edfdf00a32526302273271c0f1cadbb8ce22b89eb51d"
+        },
+        {
+          "id": "E207",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/capacity-duplicate/A-play196-85.bin",
+          "bytes": 45,
+          "sha256": "d04bf155b4847f9d41b0edfdf00a32526302273271c0f1cadbb8ce22b89eb51d"
+        },
+        {
+          "id": "E208",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/capacity-duplicate/B-peer153-88.bin",
+          "bytes": 135,
+          "sha256": "c5d289f0aaa74942fb445c976f6a6b4e56b52f411ad6499a50224756270d84ab"
+        },
+        {
+          "id": "E209",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/capacity-duplicate/A-peer153-88.bin",
+          "bytes": 135,
+          "sha256": "5632c66d66e921e49aa9fe17f96f353037814710ccfcb0214f10faf67ccf0b88"
+        },
+        {
+          "id": "E210",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/capacity-duplicate/A-item165-18-91.bin",
+          "bytes": 50,
+          "sha256": "cf292247ac7a929ebd3c64ab27089855d4d46a1e22b54760b06bf33bc74c3228"
+        },
+        {
+          "id": "E211",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/capacity-duplicate/B-item165-18-91.bin",
+          "bytes": 50,
+          "sha256": "cf292247ac7a929ebd3c64ab27089855d4d46a1e22b54760b06bf33bc74c3228"
+        },
+        {
+          "id": "E212",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/capacity-duplicate/A-duplicate165-18-94.bin",
+          "bytes": 50,
+          "sha256": "ac3054dd9209205255068d4ed7c178b32e49bace348a2ae01dd6aac1b2f026fd"
+        },
+        {
+          "id": "E213",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/capacity-duplicate/B-duplicate165-18-94.bin",
+          "bytes": 50,
+          "sha256": "ac3054dd9209205255068d4ed7c178b32e49bace348a2ae01dd6aac1b2f026fd"
+        },
+        {
+          "id": "E214",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/capacity-duplicate/A-item165-17-97.bin",
+          "bytes": 50,
+          "sha256": "10a2ee5b999cde673164b6466613bc5fb0c27ca933880efe7ad9a0be106a7451"
+        },
+        {
+          "id": "E215",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/capacity-duplicate/B-item165-17-97.bin",
+          "bytes": 50,
+          "sha256": "10a2ee5b999cde673164b6466613bc5fb0c27ca933880efe7ad9a0be106a7451"
+        },
+        {
+          "id": "E216",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/capacity-duplicate/A-duplicate165-17-100.bin",
+          "bytes": 50,
+          "sha256": "869c7862db810831158f696dff8a64f2bb61179eb8e321af6f00fc90643e4fc6"
+        },
+        {
+          "id": "E217",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/capacity-duplicate/B-duplicate165-17-100.bin",
+          "bytes": 50,
+          "sha256": "869c7862db810831158f696dff8a64f2bb61179eb8e321af6f00fc90643e4fc6"
+        },
+        {
+          "id": "E218",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/capacity-duplicate/A-dynamic159-1.bin",
+          "bytes": 77,
+          "sha256": "5ebc15399986eb800608022a1884fac7772345e5d718545be6a113671a8c52ca"
+        },
+        {
+          "id": "E219",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/capacity-duplicate/B-dynamic159-1.bin",
+          "bytes": 77,
+          "sha256": "5ebc15399986eb800608022a1884fac7772345e5d718545be6a113671a8c52ca"
+        },
+        {
+          "id": "E220",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/capacity-duplicate/A-dynamic159-2.bin",
+          "bytes": 77,
+          "sha256": "16172cbb250d4f3f0c2f887e40e510d1f4541e94de31bb87f110636f1b4dad10"
+        },
+        {
+          "id": "E221",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/capacity-duplicate/B-dynamic159-2.bin",
+          "bytes": 77,
+          "sha256": "16172cbb250d4f3f0c2f887e40e510d1f4541e94de31bb87f110636f1b4dad10"
+        },
+        {
+          "id": "E222",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/capacity-duplicate/A-dynamic159-3.bin",
+          "bytes": 77,
+          "sha256": "82938d6cdb8579ab1e465eab58160190cfaa6808b16fcc8eee4fdafb10c9cdf1"
+        },
+        {
+          "id": "E223",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/capacity-duplicate/B-dynamic159-3.bin",
+          "bytes": 77,
+          "sha256": "82938d6cdb8579ab1e465eab58160190cfaa6808b16fcc8eee4fdafb10c9cdf1"
+        },
+        {
+          "id": "E224",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/capacity-duplicate/A-dynamic159-4.bin",
+          "bytes": 77,
+          "sha256": "a77d5cb81833a5fafc6e6feb225865a9fe6063c56c21d1dd1ac7805588171de6"
+        },
+        {
+          "id": "E225",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/capacity-duplicate/B-dynamic159-4.bin",
+          "bytes": 77,
+          "sha256": "a77d5cb81833a5fafc6e6feb225865a9fe6063c56c21d1dd1ac7805588171de6"
+        },
+        {
+          "id": "E226",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/capacity-duplicate/A-blast158-1.bin",
+          "bytes": 51,
+          "sha256": "73cf916bf95b814900502f8ff6c695c0c2e86010199e9f8623552b5ad36d8f78"
+        },
+        {
+          "id": "E227",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/capacity-duplicate/B-blast158-1.bin",
+          "bytes": 51,
+          "sha256": "73cf916bf95b814900502f8ff6c695c0c2e86010199e9f8623552b5ad36d8f78"
+        },
+        {
+          "id": "E228",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/capacity-duplicate/A-blast158-2.bin",
+          "bytes": 51,
+          "sha256": "1ad2b586779f13343f1c6a163fbad42aaf9d502a1caa8ee77c2db5d6875f0d70"
+        },
+        {
+          "id": "E229",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/capacity-duplicate/B-blast158-2.bin",
+          "bytes": 51,
+          "sha256": "1ad2b586779f13343f1c6a163fbad42aaf9d502a1caa8ee77c2db5d6875f0d70"
+        },
+        {
+          "id": "E230",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/capacity-duplicate/A-blast158-3.bin",
+          "bytes": 51,
+          "sha256": "e1d9f73bb4df22df993dbdeecd04a97798b58b44733a6fa28af9a25c9bcc6ff0"
+        },
+        {
+          "id": "E231",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/capacity-duplicate/B-blast158-3.bin",
+          "bytes": 51,
+          "sha256": "e1d9f73bb4df22df993dbdeecd04a97798b58b44733a6fa28af9a25c9bcc6ff0"
+        },
+        {
+          "id": "E232",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/capacity-duplicate/A-blast158-4.bin",
+          "bytes": 51,
+          "sha256": "28c5b4d2601888d5176912b43159cab00178b33168aba8df624fee3c392aa783"
+        },
+        {
+          "id": "E233",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/capacity-duplicate/B-blast158-4.bin",
+          "bytes": 51,
+          "sha256": "28c5b4d2601888d5176912b43159cab00178b33168aba8df624fee3c392aa783"
+        },
+        {
+          "id": "E234",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/capacity-duplicate/B-event170-17-r1-127.bin",
+          "bytes": 48,
+          "sha256": "ac9bca8bbec05d0b2bad900cbde884a8439c31bd9fbab0cf6c5752a33329fb0c"
+        },
+        {
+          "id": "E235",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/capacity-duplicate/B-event170-19-r1-130.bin",
+          "bytes": 59,
+          "sha256": "9fd3a65b258308a0c7bbed6be788406204d610d746b6c30cf587a21535d60a87"
+        },
+        {
+          "id": "E236",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/capacity-duplicate/A-rank175-r1-127.bin",
+          "bytes": 340,
+          "sha256": "7bc28b836fee3e8f7fec45e1a9d7d5ae263afc2293ec1456d4f7b9ee679e59c9"
+        },
+        {
+          "id": "E237",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/capacity-duplicate/B-rank175-r1-133.bin",
+          "bytes": 340,
+          "sha256": "a650571eac7ac88b8a63c689d277f33f067a0a02cafefe9a47fb6766b6e4f46c"
+        },
+        {
+          "id": "E238",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/capacity-duplicate/A-return180-r1-130.bin",
+          "bytes": 41,
+          "sha256": "6635509b2e76efc0e575b40066729e9bbea8af6b208ca91eef407d6339887596"
+        },
+        {
+          "id": "E239",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/capacity-duplicate/B-return180-r1-136.bin",
+          "bytes": 41,
+          "sha256": "dea703a5f5fba54456f7040c367a3014662401708698034e1dfe0ddbba432538"
+        },
+        {
+          "id": "E240",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/capacity-duplicate/A-host110-r1-133.bin",
+          "bytes": 44,
+          "sha256": "2ad8d4a8e7697f2acafae8e38c1e47afa20ed603af68535c2ab6258c8a158c3d"
+        },
+        {
+          "id": "E241",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/capacity-duplicate/A-guest110-r1-136.bin",
+          "bytes": 44,
+          "sha256": "00b6d0802d99828b48d8cd3b45a3ce49ffb764689c073fd49b4f58c9a823fefe"
+        },
+        {
+          "id": "E242",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/capacity-duplicate/B-host110-r1-139.bin",
+          "bytes": 44,
+          "sha256": "b9eb311ff2868e5d2dda699437fbbdf64701a2cefce8f1e19b35f7782bb32f83"
+        },
+        {
+          "id": "E243",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/capacity-duplicate/B-guest110-r1-142.bin",
+          "bytes": 44,
+          "sha256": "c5345f3b36afb184e6827e21b0089107789ffc0c6bb5c025369801115ba4f3fe"
+        },
+        {
+          "id": "E244",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/derived/capacity-duplicate-A-replay.txt",
+          "bytes": 2337,
+          "sha256": "2c26adfddf654c751e5ac1ff53dd4bcf95b468a429b9401ba69e6eadee912f3e"
+        },
+        {
+          "id": "E245",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/derived/capacity-duplicate-A-oracle.json",
+          "bytes": 140954,
+          "sha256": "a5d8fc9a1d01afd657bc4d315ab40b83fe4a2809a19ca09eaa8e5c54d4010346"
+        },
+        {
+          "id": "E246",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/derived/capacity-duplicate-B-replay.txt",
+          "bytes": 2062,
+          "sha256": "49063032d722af974b9dfd880ee9041e7c9d191bc4abb8333d126cde40abde6a"
+        },
+        {
+          "id": "E247",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/derived/capacity-duplicate-B-oracle.json",
+          "bytes": 122988,
+          "sha256": "2f7e3f26feaf0272e1101f35cace0f4b39f65d646889b5a5eca8105cf4154378"
+        },
+        {
+          "id": "E248",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/request-frames/capacity-duplicate/A-F47-124.bin",
+          "bytes": 57,
+          "sha256": "7100cb7a2a4a4d734041ae19c8f782b9c583d63ac17a7e247aa5264f73172fb2"
+        },
+        {
+          "id": "E249",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/request-frames/capacity-duplicate/A-F56-118.bin",
+          "bytes": 60,
+          "sha256": "04054d833136bfcf995914ab41bf5f2399d866a99bb543ef80c0ba3c5fd260b2"
+        },
+        {
+          "id": "E250",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/request-frames/capacity-duplicate/A-F60-118.bin",
+          "bytes": 60,
+          "sha256": "e6cb62946a294a49771128d543cddbb4d3c318890ec052368df66917b350de93"
+        },
+        {
+          "id": "E251",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/request-frames/capacity-duplicate/B-F35-124.bin",
+          "bytes": 57,
+          "sha256": "eef819b41e3f349af38be77400b0d3b217a9a4e32ff123d559eac93ef487f522"
+        },
+        {
+          "id": "E252",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/request-frames/capacity-duplicate/B-F40-118.bin",
+          "bytes": 60,
+          "sha256": "2fac2d0db5ce32c0760a94e60c6c425e3a8a93e8a907573ec73e3a644c0123a9"
+        },
+        {
+          "id": "E253",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/request-frames/capacity-duplicate/B-F43-118.bin",
+          "bytes": 60,
+          "sha256": "7524bcf38959235de1983d3b56cc041960edabae6ef70f372c1f3b4982143a2f"
+        },
+        {
+          "id": "E254",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/capacity-duplicate/A/capacity-after-B.png",
+          "bytes": 130822,
+          "sha256": "b361b5f977ae598bf33f291b85f6ac16ff525797a9aa6b087de59b078fb0b9c5"
+        },
+        {
+          "id": "E255",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/capacity-duplicate/A/final-both.png",
+          "bytes": 179238,
+          "sha256": "a53c41ca5f3a24cd69cb31e2ae2056324d5c80a061887cf909a17fedb92d36fb"
+        },
+        {
+          "id": "E256",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/capacity-duplicate/B/capacity-after-B.png",
+          "bytes": 129717,
+          "sha256": "67adb50476ba9e94e046c68e62cd0e6818857cddedb59eb0b38b4175323548ac"
+        },
+        {
+          "id": "E257",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/capacity-duplicate/B/final-both.png",
+          "bytes": 177183,
+          "sha256": "28ef411764a942053608e16e24650c23e90b7ed2e0f2b31c2dc2a0df0b87f232"
+        },
+        {
+          "id": "E258",
+          "kind": "local",
+          "path": "local/research/codex/wine_probe_item_capacity_duplicate.py",
+          "bytes": 62216,
+          "sha256": "d07d63ea9af7dc362732629789870675dee1589e82aac6fe89c919891bf8f22d"
+        },
+        {
+          "id": "E259",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/capacity-power-recipe.json",
+          "bytes": 1010,
+          "sha256": "f444ca10773384b373dd242b78e893e4496a74adf26a5764f2ca6bfe694f82fe"
+        },
+        {
+          "id": "E260",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/capacity-power-hashes.json",
+          "bytes": 150739,
+          "sha256": "f685b51e52e2436138f40ba078894785978dd9694b68463feced465792a2d2ea"
+        },
+        {
+          "id": "E261",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/capacity-power/run.json",
+          "bytes": 115748,
+          "sha256": "b48df075934524297c34679e5f0786ae706b3c7dce1bd0282524708360e619d6"
+        },
+        {
+          "id": "E262",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/capacity-power/client.log",
+          "bytes": 35233,
+          "sha256": "6392bd28bf169c99668f5af164448310533670bbb20b41b8de54db69cb3a8071"
+        },
+        {
+          "id": "E263",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/capacity-power/client-B.log",
+          "bytes": 35784,
+          "sha256": "ac5640a8960345edc0992c46f82f2f23bacf3c974541fd91973097faafda0e80"
+        },
+        {
+          "id": "E264",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/capacity-power/A-ready110-73.bin",
+          "bytes": 44,
+          "sha256": "8fafd9cf652b458ee09b3751a0201f9ab1409920398e0e842e43b915c8840e25"
+        },
+        {
+          "id": "E265",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/capacity-power/B-ready110-73.bin",
+          "bytes": 44,
+          "sha256": "8fafd9cf652b458ee09b3751a0201f9ab1409920398e0e842e43b915c8840e25"
+        },
+        {
+          "id": "E266",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/capacity-power/A-floor582-76.bin",
+          "bytes": 74,
+          "sha256": "e35a08ee21eae99c5bdbc4dd7abc099330a21ed5b1b3a9e572a44a57b801c846"
+        },
+        {
+          "id": "E267",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/capacity-power/A-start121-r1-79.bin",
+          "bytes": 167,
+          "sha256": "4d85d0786f484c579ef94cd61ceaa40997df93c39589d720ea8334bc9b5ca29f"
+        },
+        {
+          "id": "E268",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/capacity-power/B-floor582-76.bin",
+          "bytes": 74,
+          "sha256": "e35a08ee21eae99c5bdbc4dd7abc099330a21ed5b1b3a9e572a44a57b801c846"
+        },
+        {
+          "id": "E269",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/capacity-power/B-start121-r1-79.bin",
+          "bytes": 167,
+          "sha256": "4d85d0786f484c579ef94cd61ceaa40997df93c39589d720ea8334bc9b5ca29f"
+        },
+        {
+          "id": "E270",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/capacity-power/A-go197-82.bin",
+          "bytes": 52,
+          "sha256": "64b95010ecb0e40bc0367f41f6710d2357fb2538ce827e205825284601237ef8"
+        },
+        {
+          "id": "E271",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/capacity-power/B-go197-82.bin",
+          "bytes": 52,
+          "sha256": "64b95010ecb0e40bc0367f41f6710d2357fb2538ce827e205825284601237ef8"
+        },
+        {
+          "id": "E272",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/capacity-power/A-play196-85.bin",
+          "bytes": 45,
+          "sha256": "d04bf155b4847f9d41b0edfdf00a32526302273271c0f1cadbb8ce22b89eb51d"
+        },
+        {
+          "id": "E273",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/capacity-power/B-play196-85.bin",
+          "bytes": 45,
+          "sha256": "d04bf155b4847f9d41b0edfdf00a32526302273271c0f1cadbb8ce22b89eb51d"
+        },
+        {
+          "id": "E274",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/capacity-power/A-peer153-88.bin",
+          "bytes": 135,
+          "sha256": "b9f3b45683ed1571eeeb6829ab5d48a617aeab19c6212131df14e41bc9a7454a"
+        },
+        {
+          "id": "E275",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/capacity-power/B-peer153-88.bin",
+          "bytes": 135,
+          "sha256": "ac10270173bf8da606f22f014b7df7729ede052d93b68651ebebb608a4a60f5b"
+        },
+        {
+          "id": "E276",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/capacity-power/A-item165-18-91.bin",
+          "bytes": 50,
+          "sha256": "512ecc6d01a8017950bd5e46808e080d3ad08afcb88c3be15eac91ab5ca4e604"
+        },
+        {
+          "id": "E277",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/capacity-power/B-item165-18-91.bin",
+          "bytes": 50,
+          "sha256": "512ecc6d01a8017950bd5e46808e080d3ad08afcb88c3be15eac91ab5ca4e604"
+        },
+        {
+          "id": "E278",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/capacity-power/A-duplicate165-18-94.bin",
+          "bytes": 50,
+          "sha256": "2f86aeae17d831a1e45d14a1a1151f50060f965b25da5bec050760ff66855da9"
+        },
+        {
+          "id": "E279",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/capacity-power/B-duplicate165-18-94.bin",
+          "bytes": 50,
+          "sha256": "2f86aeae17d831a1e45d14a1a1151f50060f965b25da5bec050760ff66855da9"
+        },
+        {
+          "id": "E280",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/capacity-power/A-item165-17-97.bin",
+          "bytes": 50,
+          "sha256": "10a2ee5b999cde673164b6466613bc5fb0c27ca933880efe7ad9a0be106a7451"
+        },
+        {
+          "id": "E281",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/capacity-power/B-item165-17-97.bin",
+          "bytes": 50,
+          "sha256": "10a2ee5b999cde673164b6466613bc5fb0c27ca933880efe7ad9a0be106a7451"
+        },
+        {
+          "id": "E282",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/capacity-power/A-duplicate165-17-100.bin",
+          "bytes": 50,
+          "sha256": "869c7862db810831158f696dff8a64f2bb61179eb8e321af6f00fc90643e4fc6"
+        },
+        {
+          "id": "E283",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/capacity-power/B-duplicate165-17-100.bin",
+          "bytes": 50,
+          "sha256": "869c7862db810831158f696dff8a64f2bb61179eb8e321af6f00fc90643e4fc6"
+        },
+        {
+          "id": "E284",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/capacity-power/A-dynamic159-1.bin",
+          "bytes": 77,
+          "sha256": "57c996f671a073160bd422208cceb5984bc6dd63a32d550340127f605cf79220"
+        },
+        {
+          "id": "E285",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/capacity-power/B-dynamic159-1.bin",
+          "bytes": 77,
+          "sha256": "57c996f671a073160bd422208cceb5984bc6dd63a32d550340127f605cf79220"
+        },
+        {
+          "id": "E286",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/capacity-power/A-dynamic159-2.bin",
+          "bytes": 77,
+          "sha256": "8dee03510b94549b940daf2e873f075956d1de59ece79ea7444ac727b5aa7c82"
+        },
+        {
+          "id": "E287",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/capacity-power/B-dynamic159-2.bin",
+          "bytes": 77,
+          "sha256": "8dee03510b94549b940daf2e873f075956d1de59ece79ea7444ac727b5aa7c82"
+        },
+        {
+          "id": "E288",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/capacity-power/A-dynamic159-3.bin",
+          "bytes": 77,
+          "sha256": "968b7b5e1985c6791ca0f054823c8ccc88a28f81a1619b7d8a324ef8661a6a56"
+        },
+        {
+          "id": "E289",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/capacity-power/B-dynamic159-3.bin",
+          "bytes": 77,
+          "sha256": "968b7b5e1985c6791ca0f054823c8ccc88a28f81a1619b7d8a324ef8661a6a56"
+        },
+        {
+          "id": "E290",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/capacity-power/A-dynamic159-4.bin",
+          "bytes": 77,
+          "sha256": "0039fd4eec195be188ac2013cc680260c1119d0615f294946cc7ead1602d47be"
+        },
+        {
+          "id": "E291",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/capacity-power/B-dynamic159-4.bin",
+          "bytes": 77,
+          "sha256": "0039fd4eec195be188ac2013cc680260c1119d0615f294946cc7ead1602d47be"
+        },
+        {
+          "id": "E292",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/capacity-power/A-blast158-1.bin",
+          "bytes": 51,
+          "sha256": "73cf916bf95b814900502f8ff6c695c0c2e86010199e9f8623552b5ad36d8f78"
+        },
+        {
+          "id": "E293",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/capacity-power/B-blast158-1.bin",
+          "bytes": 51,
+          "sha256": "73cf916bf95b814900502f8ff6c695c0c2e86010199e9f8623552b5ad36d8f78"
+        },
+        {
+          "id": "E294",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/capacity-power/A-blast158-2.bin",
+          "bytes": 51,
+          "sha256": "1ad2b586779f13343f1c6a163fbad42aaf9d502a1caa8ee77c2db5d6875f0d70"
+        },
+        {
+          "id": "E295",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/capacity-power/B-blast158-2.bin",
+          "bytes": 51,
+          "sha256": "1ad2b586779f13343f1c6a163fbad42aaf9d502a1caa8ee77c2db5d6875f0d70"
+        },
+        {
+          "id": "E296",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/capacity-power/B-event170-17-r1-121.bin",
+          "bytes": 48,
+          "sha256": "69bd09740540cfd0c34566d56bbd85c3a117741ecbaccb222116184ededf48ef"
+        },
+        {
+          "id": "E297",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/capacity-power/A-blast158-3.bin",
+          "bytes": 51,
+          "sha256": "e1d9f73bb4df22df993dbdeecd04a97798b58b44733a6fa28af9a25c9bcc6ff0"
+        },
+        {
+          "id": "E298",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/capacity-power/B-blast158-3.bin",
+          "bytes": 51,
+          "sha256": "8a3f5408f006094b0693dff042245c0cf934841b288204d477ee5f8516003198"
+        },
+        {
+          "id": "E299",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/capacity-power/A-blast158-4.bin",
+          "bytes": 51,
+          "sha256": "28c5b4d2601888d5176912b43159cab00178b33168aba8df624fee3c392aa783"
+        },
+        {
+          "id": "E300",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/capacity-power/B-blast158-4.bin",
+          "bytes": 51,
+          "sha256": "acda7b3d06ae8e85a96c76f5ad7c79ba0a383721fc59e300ddf8fd14fedabe11"
+        },
+        {
+          "id": "E301",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/capacity-power/B-event170-19-r1-130.bin",
+          "bytes": 59,
+          "sha256": "9fd3a65b258308a0c7bbed6be788406204d610d746b6c30cf587a21535d60a87"
+        },
+        {
+          "id": "E302",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/capacity-power/A-rank175-r1-127.bin",
+          "bytes": 340,
+          "sha256": "7bc28b836fee3e8f7fec45e1a9d7d5ae263afc2293ec1456d4f7b9ee679e59c9"
+        },
+        {
+          "id": "E303",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/capacity-power/B-rank175-r1-133.bin",
+          "bytes": 340,
+          "sha256": "a650571eac7ac88b8a63c689d277f33f067a0a02cafefe9a47fb6766b6e4f46c"
+        },
+        {
+          "id": "E304",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/capacity-power/A-return180-r1-130.bin",
+          "bytes": 41,
+          "sha256": "6635509b2e76efc0e575b40066729e9bbea8af6b208ca91eef407d6339887596"
+        },
+        {
+          "id": "E305",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/capacity-power/B-return180-r1-136.bin",
+          "bytes": 41,
+          "sha256": "dea703a5f5fba54456f7040c367a3014662401708698034e1dfe0ddbba432538"
+        },
+        {
+          "id": "E306",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/capacity-power/A-host110-r1-133.bin",
+          "bytes": 44,
+          "sha256": "2ad8d4a8e7697f2acafae8e38c1e47afa20ed603af68535c2ab6258c8a158c3d"
+        },
+        {
+          "id": "E307",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/capacity-power/A-guest110-r1-136.bin",
+          "bytes": 44,
+          "sha256": "00b6d0802d99828b48d8cd3b45a3ce49ffb764689c073fd49b4f58c9a823fefe"
+        },
+        {
+          "id": "E308",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/capacity-power/B-host110-r1-139.bin",
+          "bytes": 44,
+          "sha256": "b9eb311ff2868e5d2dda699437fbbdf64701a2cefce8f1e19b35f7782bb32f83"
+        },
+        {
+          "id": "E309",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/capacity-power/B-guest110-r1-142.bin",
+          "bytes": 44,
+          "sha256": "c5345f3b36afb184e6827e21b0089107789ffc0c6bb5c025369801115ba4f3fe"
+        },
+        {
+          "id": "E310",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/derived/capacity-power-A-replay.txt",
+          "bytes": 2355,
+          "sha256": "67218faea5997f2da7353409369c20ffc17cae010a070ff54856b86baf47d32b"
+        },
+        {
+          "id": "E311",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/derived/capacity-power-A-oracle.json",
+          "bytes": 142487,
+          "sha256": "078c0a1bcdb6199773f5abb4fb737a58b3f14ea5d1606f5635c7118e9492d8b5"
+        },
+        {
+          "id": "E312",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/derived/capacity-power-B-replay.txt",
+          "bytes": 1989,
+          "sha256": "974dcbca42e57bbf8a123e4cfff4996c7a4ebd46801ea007f81db634657e4e94"
+        },
+        {
+          "id": "E313",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/derived/capacity-power-B-oracle.json",
+          "bytes": 118927,
+          "sha256": "19337cda782706809cbbe9f4f4640c5d4be9d273524fff86b79c14827c574bcf"
+        },
+        {
+          "id": "E314",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/request-frames/capacity-power/A-F47-124.bin",
+          "bytes": 57,
+          "sha256": "4c134ec4070284e21cf3ca92ec643cf6ed43f6bdf3a39cce38e08970356819ae"
+        },
+        {
+          "id": "E315",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/request-frames/capacity-power/A-F56-118.bin",
+          "bytes": 60,
+          "sha256": "4aef3d9f4ca65360be8804e28f6c9efc4ce861c5826889aea9c35fbd1c7b6c3a"
+        },
+        {
+          "id": "E316",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/request-frames/capacity-power/A-F59-118.bin",
+          "bytes": 60,
+          "sha256": "04cae264f71f6e10dd3585784f1a877e9ead6bc14095cd0b4b9fb698f03448a6"
+        },
+        {
+          "id": "E317",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/request-frames/capacity-power/B-F34-124.bin",
+          "bytes": 57,
+          "sha256": "9f32e1269d8687c70792d90a37c3e566c39b8b8ac4dc9edf8c4d3bf9169150e3"
+        },
+        {
+          "id": "E318",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/request-frames/capacity-power/B-F39-118.bin",
+          "bytes": 60,
+          "sha256": "02b9b0df4887f326200be41434d0c55ff4957561f179b9bf9318ca9c86a629cb"
+        },
+        {
+          "id": "E319",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/request-frames/capacity-power/B-F42-118.bin",
+          "bytes": 60,
+          "sha256": "5342a07c380a301281927b128186619ab24d5d3f405e59cd04886540cf93c6e8"
+        },
+        {
+          "id": "E320",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/capacity-power/A/capacity-after-B.png",
+          "bytes": 131347,
+          "sha256": "5098300c765e0bb41d2e7ede0765f74131fe199492b401093f2b329c5ddf597c"
+        },
+        {
+          "id": "E321",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/capacity-power/A/final-both.png",
+          "bytes": 177141,
+          "sha256": "183308ed30078d487b6dbf3d528a6763b69749f9cb579bd07c3caec3519c9c21"
+        },
+        {
+          "id": "E322",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/capacity-power/B/capacity-after-B.png",
+          "bytes": 130392,
+          "sha256": "90eb583ee081ddb3a05e6a3e1abf8563667063232390e63e75c206248a6b845b"
+        },
+        {
+          "id": "E323",
+          "kind": "local",
+          "path": "local/research/codex/item-effects-r1/capacity-power/B/final-both.png",
+          "bytes": 177555,
+          "sha256": "1c812481bc29a5379a3bacc64de4a0eeba66264cad6a6ab97208c809db574569"
+        },
+        {
+          "id": "E324",
+          "kind": "local",
+          "path": "local/research/codex/wine_probe_item_capacity_power.py",
+          "bytes": 62217,
+          "sha256": "ec748601c3fbdf9920da2fda509bb2a788fd358dfc34035d593bd1d033a92a76"
+        }
+      ],
+      "delta": {
+        "added": [
+          "Effect→actualstat chain, two-view secure snapshots, noack/ACK actions, duplicate-after-removal, nativeclamp and calc power corrected run; contract links evidence."
+        ],
+        "corrected": [
+          "118field6→159field8 oldpower candidate corrected to118field10 afterFire. Oldraw/completeCP024–030 unchanged.",
+          "CP030statunknown qualifiedhistorical; current next hiddenitem/reveal. InitialBcapacity2 differsA1; no universalbaseline1.",
+          "PROTOCOLheaderCP027 stale→CP031;CP030/PR38 merged1f70d4f;AUD009 seriouscontradiction doesnotreset periodicCP032."
+        ],
+        "superseded": [
+          "Bounded Bomb/Fire stat andduplicate-after-removal subquestions answered; NEXT-ITEM-PICKUP continues hiddenitem/block/reveal andremainingcap/speed/validator/reset, no gateclosed."
+        ]
+      },
+      "blockers": [
+        "Hidden item/list2/3, blockdestroy/reveal hai phía, runtime tại max/speed và base/max asset-character bridge chưa kiểm.",
+        "Race đảo winner, stale/roundgeneration/reuse, chain/rescue/validator và reset/entity/timer/seq/peer/disconnect/hostleave/rejoin còn mở.",
+        "Full auth/profile/cache/codec/reconnect/vanilla, UDPgrammar/reliability/relay/NAT, LAN/Internet và K5/K6a chưa nghiệm thu."
+      ],
+      "next_steps": [
+        {
+          "id": "NEXT-ITEM-PICKUP",
+          "task": "KRE-005b",
+          "state": "active",
+          "action": "Hiddenitem/list2/3/blockdestroy/reveal bothviews next; keep runtime-atmax/speed/indexreuse/generation/validator/reset open. Use corrected118field10→159field8 in allnewroundharnesses.",
+          "owner": "Codex",
+          "reviewer": "Codex"
+        },
+        {
+          "id": "NEXT-DUO-ROUND",
+          "task": "KRE-005b",
+          "state": "active",
+          "action": "Trap/death variants/chain/rescue, stale/generation/reset/entity-timer-seq-peer leaks/hostleave/disconnect beforeK6a. Do notcombine separate boundedruns into fullmatchproof.",
+          "owner": "Codex",
+          "reviewer": "Codex"
+        },
+        {
+          "id": "NEXT-FULL-LOGIN-FIELDS",
+          "task": "KRE-005b",
+          "state": "active",
+          "action": "Keep fullauth/profile/cache/reconnect/codec controls beforeK2/K3; diagnosticIDprefix notauthcompletion.",
+          "owner": "Codex",
+          "reviewer": "Codex"
+        }
+      ],
+      "review": {
+        "status": "waived",
+        "as_of_utc": "2026-10-30T22:54:55.285242+00:00",
+        "reference": "docs/evidence/checkpoints/review-waiver.json",
+        "scope": "Codex solo RE/code/runtime/selfcheck, not independent approval.",
+        "authorization": {
+          "by": "project_owner",
+          "reference": "docs/evidence/checkpoints/review-waiver.json",
+          "reason": "Owner explicitly requested solo without Claude review."
+        }
+      },
+      "docs_sync": [
+        {
+          "path": "README.md",
+          "state": "updated",
+          "reason": "CurrentCP031 milestone/limits,PR38merge/snapshot/AUD009 periodicCP032."
+        },
+        {
+          "path": "docs/PLAN.md",
+          "state": "updated",
+          "reason": "Task/map/next hiddenitem/reveal andboundedstat/clamp; no gateclosed."
+        },
+        {
+          "path": "docs/PROTOCOL.md",
+          "state": "updated",
+          "reason": "Canonicaleffect/stat/nativeclamp/duplicate/powercorrection, historicalqualification andauthority."
+        },
+        {
+          "path": "docs/RESEARCH.md",
+          "state": "updated",
+          "reason": "Answeredstat/onlyoncebounded, nexthiddenitem/remainingvariants,correctedsource fornewharness."
+        },
+        {
+          "path": "docs/evidence/item-effects/README.md",
+          "state": "updated",
+          "reason": "Five recipes/native/state/visual/hash/limits and immediateaudit."
+        }
+      ]
     }
   ],
   "audits": [
@@ -43265,6 +45774,11 @@
       "id": "AUD008",
       "path": "docs/evidence/checkpoints/audits/AUD008.json",
       "sha256": "7082d9d39fa0097f08f112b043199b45bd422d9549280d9c052c757107177db1"
+    },
+    {
+      "id": "AUD009",
+      "path": "docs/evidence/checkpoints/audits/AUD009.json",
+      "sha256": "b26cf27ed393f08a9371c029a0ee0ff863e1b4d0f9c1572c4124bbe7cd4a1598"
     }
   ],
   "task_states": [

@@ -123,16 +123,18 @@ Không dùng điều này thay nghiệm thu collision/reset/authority hoặc hai
 CP030 đã có layout582/request124/confirm165, nhặt từ hai origin và một ca tranh cùng index;
 nguồn chuẩn ở [PROTOCOL](PROTOCOL.md#item-pickup), [raw/control/hash](evidence/item-pickup/README.md).
 Trap/death CP029 giữ [contract riêng](PROTOCOL.md#peer-events).
-CP029/PR37 đã merge `99f0ea9`; CP030 snapshot trước tích hợp, review độc lập waived.
+CP030/PR38 đã merge `1f70d4f`. CP031 đo hiệu ứng Bomb/Fire, duplicate sau xóa, native clamp và
+sửa mapping power; [nguồn chuẩn/giới hạn](PROTOCOL.md#item-effects),
+[raw/control/hash](evidence/item-effects/README.md). CP031 snapshot trước tích hợp, review độc lập waived.
 
 **Bước tiếp, Codex RE/tự kiểm:**
 
-1. **NEXT-ITEM-PICKUP:** layout/request/confirm và một ca tranh index đã được kiểm hẹp ở CP030.
-   Tiếp theo đo capacity/range/speed và cap trước/sau165, bám cạnh `F73D30→B52840→E14DA0`;
-   không suy +stat từ icon hoặc interface hit. Sau đó item ẩn/phá block/reveal hai phía; list2/3 của582
-   chưa được kiểm với dữ liệu thật. Kiểm đảo thứ tự winner, duplicate/stale/round generation và chỉ cộng
-   hiệu ứng một lần; một positive165 không tự chứng minh stat đã nhất quán. VN chỉ làm reference,
-   từng schema/offset/loại item KR cần đo riêng. Vai trò authority giữ ở contract, không lập bản độc lập.
+1. **NEXT-ITEM-PICKUP:** tiếp theo đo item ẩn/phá block/reveal hai phía; bám consumer list2/3 của582
+   và nhánh nổ đang chạy, dùng VN để chọn phép thử có mục tiêu. CP031 đã trả lời stat Bomb/Fire và
+   duplicate sau khi xóa hai index cùng round; không tìm lại effect receiver. Runtime nhặt tại max,
+   speed, đảo thứ tự winner, stale/generation/reuse index và reset còn thiếu. Mapping power đã sửa
+   trong harness mới; ca fullround tiếp phải dùng118.field10→159.field8. Từng schema/offset/loại KR
+   cần kiểm riêng; authority và giới hạn chỉ giữ ở contract.
 2. **NEXT-DUO-ROUND:** receiver170/17,19 và boundeddeath mismatch đã có lời giải theo contract;
    giữ duplicate/stale/generation và rescue/enemy-pop/timeout/variants. Kiểm host/disconnect/rejoin,
    không rò entity/timer/peer/seq sau hai vòng trước K6a. Cùngrank không thay deathstate; snapshot
@@ -141,12 +143,14 @@ CP029/PR37 đã merge `99f0ea9`; CP030 snapshot trước tích hợp, review đ�
    chưa LAN/Internet. Hai chu kỳ thử và forwardreport không xác thực client report hoặc đóng K5/K6.
    104/95bodygrowth, serialrollover/allocator/concurrent/optionalflags, Antarctic timing giữ scope riêng.
 
-CP029 raw/record bất biến; CP030 giữ các control chưa nhặt được, parser19/12byte/native và ảnh hai phía.
+CP029–030 raw/record bất biến; CP030 giữ các control chưa nhặt được, parser19/12byte/native và ảnh hai phía.
 Không patch thêm/ép state bằng GDB. `E9E660` là nhánh kind0 bom, không phải receiver pickup;
-layout/request/confirm mới đã đo riêng. Hai item và một ca tranh index chưa đóng stat/cap, hidden drop
-hoặc toàn validator. Rank/outcome/fuse/timing và policy giữ index cho request đầu là lựa chọn emulator,
+layout/request/confirm và stat Bomb/Fire mới đã đo riêng. Clamp native chưa thay runtime tại max;
+hai item và một ca tranh index chưa đóng hidden drop hoặc toàn validator. Rank/outcome/fuse/timing
+và policy giữ index cho request đầu là lựa chọn emulator,
 chưa server authority gốc. Authprefix34byte/ID1/2,15/241variants,
-oneclickuser/+E9C/token_2/count2/vanilla còn mở. AUD008/CP028 gần nhất, audit kếCP032.
+oneclickuser/+E9C/token_2/count2/vanilla còn mở. AUD009/CP031 audit ngay do mâu thuẫn nguồn power;
+audit định kỳ kế vẫn CP032.
 
 | ID / ưu tiên | Trạng thái | Owner / reviewer | Đã biết | Còn thiếu / bước đóng |
 |---|---|---|---|---|
@@ -154,8 +158,8 @@ oneclickuser/+E9C/token_2/count2/vanilla còn mở. AUD008/CP028 gần nhất, a
 | Q-023 / KRE-P1 codec | open | Codex RE/tự kiểm | CP015 có socket kênh mới, native replay theo từng kết nối, schema17/count0 và nhận241 | Full result0/codec/reset theo bước trên; gate K2 còn mở |
 | Q-024 / KRE-P1 login/kênh | open | Codex RE/tự kiểm | UI sảnh hết notice17/241; CP020 phục hồi inputID local, tên/profile phòng có fixture, chưa full auth/sảnh identity | Full identity/user/cache và cold/warm/reconnect K3; không gọi auth Nexon thật |
 | Q-025 / KRE-P1 room/load | open | Codex RE/tự kiểm | CP028 Acreate81/86,Bjoin82/87,Ready95/110,Start104/121; cùng session1/hai vòng thử; [phạm vi](PROTOCOL.md#duo-room-round) | Password/error/unready/leave/host và load-barrier variants, collision/reset/104growth/cache, nghiệm thu K4 |
-| Q-026 / KRE-P1 authority/trận | open | Codex RE/tự kiểm | CP030 có item trên nền/nhặt/tranh index với vai trò hẹp; [phạm vi](PROTOCOL.md#item-pickup) | Stat/cap, item ẩn/drop, rescue/trap-death variants/validator/result/correction; K5 một chu kỳ hoàn chỉnh, không lấy packet183 ghost làm mover người sống |
-| Q-027 / KRE-P1 peer | open | Codex RE/tự kiểm | CP027 actual99→153/UDP movement/bom, CP029 trap/death, CP030 cùng xử lý pickup và một winner; [giới hạn](PROTOCOL.md#item-pickup) | Full grammar/key/slot/reliability/relay, item effect/hidden drop, reset/disconnect/variants trước nghiệm thu K6 |
+| Q-026 / KRE-P1 authority/trận | open | Codex RE/tự kiểm | CP031 đo stat Bomb/Fire, clamp native và sửa nguồn power; [phạm vi](PROTOCOL.md#item-effects) | Item ẩn/drop, runtime tại max/speed, rescue/trap-death variants/validator/result/correction; K5 một chu kỳ hoàn chỉnh, không lấy packet183 ghost làm mover người sống |
+| Q-027 / KRE-P1 peer | open | Codex RE/tự kiểm | CP027 movement/bom, CP029 trap/death, CP030 pickup/một winner, CP031 stat và calc power hai phía; [giới hạn](PROTOCOL.md#item-effects) | Full grammar/key/slot/reliability/relay, hidden drop, reset/disconnect/variants trước nghiệm thu K6 |
 | Q-028 / KRE-P2 profile/core | open | Codex/tự kiểm | Core Rust và policy V1 có sẵn, nhưng client gốc không biết ADR0009 | Sau audit Q-026/027, quyết định giữ lai/relay/shadow core hay authoritative được client hỗ trợ; profile emu có provenance, không sửa V1 implicit |
 | Q-029 / KRE-P2 vận hành | open | Codex/tự kiểm | CP029 có statepeer sau170 trước175 và hai chu kỳ thử; [giới hạn](PROTOCOL.md#peer-events); chưa fullmatch/K6a | K7 bốn client, malformed/stale/duplicate/race/disconnect/restart, bounds/resource limits, Linux package, patch manifest và README tái lập |
 

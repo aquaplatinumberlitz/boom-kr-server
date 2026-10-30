@@ -22,19 +22,20 @@ boom-kr-server/
 
 ## Đang làm
 
-CP030: **hai client đã hiện/nhặt item trên nền và cùng xử lý một ca tranh cùng index** trong Wine
-cô lập. A nhặt Bomb, B nhặt Fire; cả hai nhận xác nhận và xóa item. Khi A/B cùng xin index19,
-policy emulator chọn một người và cả hai nhận cùng slot thắng.
-[Contract và giới hạn](docs/PROTOCOL.md#item-pickup), [bằng chứng](docs/evidence/item-pickup/README.md).
+CP031: **đã đo Bomb tăng capacity và Fire tăng power trên cả hai client** trong Wine cô lập.
+Đã sửa nguồn power khi chuyển request đặt bom sang broadcast; hàm tính bom của cả hai nhận giá trị
+sau Fire. Gửi lặp xác nhận cho hai item đã bị xóa không cộng stat lần hai trong ca đã đo.
+[Contract và giới hạn](docs/PROTOCOL.md#item-effects), [bằng chứng](docs/evidence/item-effects/README.md).
 
 Đây là profile thử local với rank/policy do stub chọn; **chưa nghiệm thu trận hoàn chỉnh/K6a**.
-Hiệu ứng stat/cap của item, item ẩn/phá block, collision/chain/rescue, validator/reset/disconnect
+Runtime nhặt tại max, speed, item ẩn/phá block, collision/chain/rescue, validator/reset/disconnect
 và full auth/cache còn thiếu. Trap/death hai chiều đã kiểm hẹp ở [CP029](docs/PROTOCOL.md#peer-events).
 Chưa LAN/Internet. [Bước tiếp](docs/RESEARCH.md#q-023).
 
-CP029 đã merge [PR37](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/37) tại `99f0ea9`.
-CP030 là snapshot trước tích hợp; PR nhánh `kre/item-pickup-runtime` giữ trạng thái merge hiện tại.
-Codex tự kiểm, review độc lập waived. **AUD008/CP028** hoàn tất; audit kế **CP032**.
+CP030 đã merge [PR38](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/38) tại `1f70d4f`.
+CP031 là snapshot trước tích hợp; PR nhánh `kre/item-effects-runtime` giữ trạng thái merge hiện tại.
+Codex tự kiểm, review độc lập waived. **AUD009/CP031** audit ngay do correction power;
+audit định kỳ kế vẫn **CP032**.
 
 Checkpoint bền vững: [manifest](docs/evidence/checkpoints/manifest.json).
 Quy trình ghi chép/review/audit: [checkpoint workflow](docs/evidence/checkpoints/README.md).

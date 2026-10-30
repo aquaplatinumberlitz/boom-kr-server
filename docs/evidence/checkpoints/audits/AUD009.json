@@ -1,0 +1,80 @@
+{
+  "id": "AUD009",
+  "trigger": "serious_contradiction",
+  "completed_through": "CP031",
+  "recorded_utc": "2026-10-30T22:54:55.285242+00:00",
+  "auditor": "Codex self-audit; independent review waived by project owner",
+  "read_files": [
+    "README.md",
+    "docs/PLAN.md",
+    "docs/PROTOCOL.md",
+    "docs/RESEARCH.md",
+    "docs/evidence/item-pickup/README.md",
+    "docs/evidence/bomb-serial/README.md",
+    "docs/evidence/item-effects/README.md",
+    "docs/evidence/checkpoints/manifest.json"
+  ],
+  "method": "Đọc README→PLAN→PROTOCOL→RESEARCH và evidence CP025/030/031 trong lượt RE, đọc lại delta/current/evidence sau sync. Đối chiếu ASM writer E2E1D1/record+18 với actual118 sau Fire; đọc actual165/effect/increment/calc logs A/B, native clamp/dispatch, secure snapshots/checksum và 12 ảnh control/ACK/power qua contact sheet. Giữ raw/record complete bất biến; checker chỉ kiểm cơ học, không thay audit hoặc nghiệm thu gate.",
+  "findings": [
+    {
+      "id": "F1",
+      "stale": "CP024–030/harness cũ dùng118.field6 như power; trước Fire cả field6/10 đều1 nên chưa phân biệt.",
+      "correction": "Fire phân biệt field10 tăng1→2, field6 giữ1. Sửa canonical mapping field10→159.field8; marked old sections historical, giữ raw/harness/checkpoint cũ. Run mới calc nhận power2 của B trên cả hai; chưa gán toàn hậu quả runtime cũ.",
+      "fixed_in": [
+        "docs/PROTOCOL.md",
+        "docs/evidence/item-effects/README.md",
+        "docs/RESEARCH.md"
+      ]
+    },
+    {
+      "id": "F2",
+      "stale": "Header PROTOCOL còn CP027; README/PLAN/RESEARCH current còn CP030 snapshot/nextstat dù có mốc hiệu ứng mới.",
+      "correction": "Current CP031, CP030/PR38 merge1f70d4f; next hiddenitem/block/reveal, không tìm lại effect receiver. Review waived và snapshot/merge/gate phân biệt.",
+      "fixed_in": [
+        "README.md",
+        "docs/PLAN.md",
+        "docs/PROTOCOL.md",
+        "docs/RESEARCH.md",
+        "docs/evidence/item-effects/README.md"
+      ]
+    },
+    {
+      "id": "F3",
+      "stale": "Các dòng Simulator/stat-cap missing của CP030 có thể bị hiểu là current unknown.",
+      "correction": "Qualify tạiCP030 và link nguồn chuẩn CP031; native clamp tách runtime pickup dưới max. Runtime tại max/speed/reset vẫn mở.",
+      "fixed_in": [
+        "docs/PROTOCOL.md",
+        "docs/PLAN.md",
+        "docs/RESEARCH.md",
+        "docs/evidence/item-effects/README.md"
+      ]
+    },
+    {
+      "id": "F4",
+      "stale": "Cùng recipe hoặc thiếu request thứ ba dễ bị suy cùng base/cap; duplicate pass dễ bị nâng thành mọi stale/generation an toàn.",
+      "correction": "Ghi initial capacity slot0=1/slot1=2 theo snapshot; control/ACK chỉ hành vi đo. Duplicate chỉ hai index đã xóa cùng round, không tổng quát reuse/generation/full validator.",
+      "fixed_in": [
+        "docs/PROTOCOL.md",
+        "docs/evidence/item-effects/README.md"
+      ]
+    },
+    {
+      "id": "F5",
+      "stale": "Exit0 và ảnh final có thể bị mô tả mọi run hoàn tất round; ad-hoc audit có thể làm reset lịch4 checkpoint.",
+      "correction": "Control final vẫn Battle, ACK/power về phòng; không ghép thành fullmatch/K6a. AUD009 serious_contradiction không đổi periodic28/CP032.",
+      "fixed_in": [
+        "README.md",
+        "docs/PLAN.md",
+        "docs/PROTOCOL.md",
+        "docs/RESEARCH.md",
+        "docs/evidence/item-effects/README.md"
+      ]
+    }
+  ],
+  "remaining": [
+    "Hidden item/list2/3, blockdestroy/reveal hai phía, runtime tại max/speed và base/max asset-character bridge chưa kiểm.",
+    "Race đảo winner, stale/roundgeneration/reuse, chain/rescue/validator và reset/entity/timer/seq/peer/disconnect/hostleave/rejoin còn mở.",
+    "Full auth/profile/cache/codec/reconnect/vanilla, UDPgrammar/reliability/relay/NAT, LAN/Internet và K5/K6a chưa nghiệm thu.",
+    "Không sửa docs/research của boom-rs; KR_RE_BOMBERATTR là nguồn lịch sử giới hạn scope. Canonical mới của project này ở PROTOCOL#item-effects."
+  ]
+}
