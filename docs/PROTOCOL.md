@@ -1,6 +1,6 @@
 # KR 00967 — contract tương thích client gốc
 
-Revision kr-legacy-contract-r1; cập nhật31/10/2026 JST (CP036).
+Revision kr-legacy-contract-r1; cập nhật31/10/2026 JST (CP037).
 **Contract có bằng chứng từng phần; chưa nghiệm thu full codec K2**.
 Lộ trình và thứ tự task chỉ giữ ở [REWRITE_PLAN — KRE](PLAN.md).
 Đây là contract của repo server KR. ADR0009 của bản viết lại là nguồn lịch sử để so sánh;
@@ -1334,6 +1334,92 @@ chưa rescue đảo chiều/aux khác/enemy3actor/no-touch3actor/duplicate/stale
 toàn reset/full auth/cache/codec/vanilla/LAN/Internet/K5/K6a.
 [Bước tiếp](RESEARCH.md#q-023).
 
+<a id="needle-selfescape"></a>
+### Kim tự thoát và đồng bộ peer — CP037
+
+**kr_runtime/kr_static confirmed hẹp trên diagnostic copy Wine**,
+[recipe, control và hash](evidence/needle-contact/README.md). Không thêm patch hoặc ép state actor.
+VN `boom-re/docs/oc_e-game.md` mục dùng vật phẩm Ctrl hướng phép thử nhặt→bị nhốt→Ctrl và
+pattern report1 rồi0; ID/opcode/receiver được kiểm riêng trên KR.
+
+**Kim KR:** bảng `KR_ItemAttr.bin` có `Item/ItemNiddle` kind**145**, offset11664, group23,
+field160=1. VN cùng tên kind117; `ItemHPNeedle` kind17/group1 là hàng khác.
+Parser đọc335 hàng KR/269 hàng VN, chỉ subset kim được runtime xác nhận, không khái quát toàn schema.
+Fixture582 list1 chọn index41/hàng4/cột3/kind145; actual124 trả đúng index/kind,
+165 hai phía đưa kim vào ô Ctrl×01 trên A. Placement/drop và ACK là **emu_choice**, không luật drop gốc.
+
+**Local tự thoát:** `needle-fixed` và `needle-forward` có A actual17→Ctrl→**127/sub1** body14
+(commonprefix, không blob) rồi **127/sub0** body22. Sub0 thêm
+`u8=1,u16kind=145,u8=0,u32=0` sau commonprefix14. Nativeframer/getters/checksum đọc đủ;
+không chỉ dựa encoder của stub. Writer subtype1 `B53010`, caller**E70EF1**, trong**E70E90**;
+sub0 caller**AEE818**. E70E90 gửi1 trước vf148: state A tại writer vẫn56,
+**E70F15 sau vf148 là26**, khớp state tại writer0. Không có19 trong cửa sổ hai ca này.
+Ảnh cho thấy thoát bong bóng/ô kim trống; A tiếp tục Right và B thấy vị trí mới.
+
+**Peer:** switch170/sub1 tại**E85DA6** gọi
+**E86820(slot,x,y,1,-1)**, chỉ đọc prefix6=`u8sub,u8slot,u16x,u16y`.
+`needle-forward` lấy đúng prefix6 từ CRC-checked actual127/1, gửi B với seq mới;
+entry arg4=1/auxFFFFFFFF, reader**6/6/errors0**, B actorA trước56→sau vf14826→end26.
+Local A sau vf14826. `needle-fixed` không forward1: A đã thoát nhưng B vẫn giữ actorA56/ảnh bubble.
+Native dispatcher controls giữ E85B60/E86820, chỉ model world/actor/effect endpoints;
+không dùng chúng thay bằng chứng actor runtime.
+
+`needle-first` là **collector thất bại**: handler124 cũ trùng allowlist gây KeyError41/đóng socket;
+không phải bằng chứng client không hỗ trợ kim. Raw lỗi giữ nguyên; `needle-fixed` loại handler trùng.
+Ctrl lần hai trong `needle-forward` khi đã thoát/ô trống không phát thêm1/0, nhưng chưa thử
+**bị nhốt lần hai khi hết kim**, duplicate/stale/server inventory authority hoặc Ctrl cạnh tranh
+với rescue/enemy touch. Không gửi170/sub0 đoán để suy inventory peer đã đồng bộ đầy đủ.
+
+State26/56 chỉ trong profile này; timing/fixture/fuse/translation là lựa chọn emulator.
+Hai client thật, không full match/K5/K6a/LAN/Internet hoặc vanilla Windows.
+[Bước tiếp duy nhất](RESEARCH.md#q-023).
+
+<a id="contact-precedence"></a>
+### Tranh chấp cứu/diệt: ba client thật và nhánh chọn — CP037
+
+**kr_runtime confirmed hẹp; quy tắc dừng ở chạm hợp lệ đầu kiểm bằng kr_static/emulation**,
+[run/recipe/hash](evidence/needle-contact/README.md). Ba client A/B/C có authID1/2/3,
+ownslot0/1/2, prefix/wineserver/display/game-dir riêng; A/B team0, C team1, cùng spawn index0
+point(3,3), position0/1/2 riêng. C là client thật với actual82→87slot2→95, không actor tổng hợp CP036.
+Ba phía đọc121**155/155/errors0**, actual99 và clock một lần, 153 giữ profileC/peer endpoint thực.
+Tên C vẫn trùng KRGuest; identity được kiểm bằng ID/slot/trace. Đây là ca RE ba client, chưa gate K7.
+
+**Phân biệt input với chạm:** `race-first` bấm B Up/C Left lệch khoảng0,289ms, nhưng tại A deathentry
+B(120,239), C(150,159), A(120,159). A17→19 sau3,100s; C gần hơn, không phải bằng chứng cùng chạm.
+`race-Bfirst` cho C input trễ0,7s: tại tick428 có cờ cứu1/diệt0, rescuer slot1,
+B(120,187), C(160,159), A(120,159); gọi E6F060 rồi actual18. Hai ca không có outcome ngược
+trong cửa sổ đo; kết quả không khái quát cho mọi độ trễ/mode/packet ordering.
+
+**Nhánh đang chạy:** backtrace nối update**E7C7B0→E6E440**. Đường trapped duyệt danh sách
+actor đủ điều kiện; khi tìm thấy chạm hợp lệ, **E6EE3F nhảy thẳng E6EE66, dừng vòng quét**.
+**1269B20** kiểm diện tích giao ≥400 và candidate vf1F0 hoặc bằng nhóm getter**60A3D0**
+(wrapper actor+9C). Return1 đặt cờ cứu ở E6EDFA; return0 đặt cờ diệt ở E6EE18.
+Getter runtime của A/B/C là0/0/1, khớp team121 trong profile này; vf1F0/special mode còn giới hạn.
+
+**Cùng đủ điều kiện trong một lượt quét:** bốn ca native collection/predicate
+**E6EAB3–E6EE66 +1269B20**, với cả B/C ở vùng giao hợp lệ, cho B trước→cứu, C trước→diệt;
+đổi thứ tự danh sách đổi kết quả. Self actor bị bỏ qua; actor hợp lệ thứ hai không được xét.
+Actorlist/order/positions/group/gates/rectangle math/profiling là model trong emulation;
+không dùng nó chứng minh runtime cùng chạm hoặc thứ tự danh sách mọi mode.
+`race-order` trace bốn lượt sau17, tick372–375: thứ tự slot**0→1→2** (A→B→C) trong ca này.
+Tick389 A(120,159),B(120,275),C(120,159); predicate C trả0, cờ diệt1/cứu0/deathslot2 rồi report19. B vẫn xa, không phải cả hai cùng chạm.
+`race-aligned-limited` tick426 vẫn chỉ B đủ điều kiện, cờ cứu1/diệt0; getter0/0/1 và tọa độ kiểm riêng.
+Chưa bắt được cả B/C cùng đủ điều kiện trong một lần quét trên client thật, chưa đảo slot/team;
+thứ tự trên không được nâng thành luật ưu tiên slot cố định mọi mode.
+
+Tại nhánh cuối **E6EEA7**, cờ diệt khác0 gọi stage vf2DC; nếu diệt0/cứu khác0 mới gọi vf2E0.
+Runtime xác nhận **vf2DC=E6EF50** (report19), **vf2E0=E6F060** (report18).
+Sáu ca native final branch có ca hai cờ cùng bật chọn diệt, nhưng **đây là input tổng hợp;
+chưa chứng minh trạng thái hai cờ cùng bật có thể đạt được trên trapped path thông thường**.
+Không dùng kết quả đó làm luật “cùng chạm thì chết”: vòng quét đã thoát ở chạm hợp lệ đầu.
+18 ca native predicate kiểm threshold/nhóm/vf1F0, không thay full world/authority.
+
+Nhận định nháp CP037 “gom hết va chạm rồi diệt luôn thắng” đã bị bác bỏ trước khi checkpoint
+complete; [AUD012](evidence/checkpoints/audits/AUD012.json) giữ correction/nguồn/giới hạn.
+Checkpoint/raw trước đó không bị viết lại. Trạng thái runtime còn thiếu và thứ tự kiểm tiếp chỉ giữ
+ở [RESEARCH](RESEARCH.md#q-023); recipe/số đo ở [evidence](evidence/needle-contact/README.md).
+Không suy luật server gốc/validator, kết quả175, full match/K5/K6a/LAN/Internet từ các nhánh trên.
+
 ### Giới hạn và correction WCP lịch sử
 
 Fixture opaque/zero/empty và prefix69 là emu_choice đã được consumer chấp nhận trong phép thử,
@@ -1365,7 +1451,7 @@ liệt kê và phân biệt với nguyên bản trong mọi demo.
 
 ### Authority matrix hiện hành và gate review
 
-Bảng này tổng hợp bằng chứng từng phần đến CP036; chưa phải toàn contract server gốc. Mỗi hàng khi
+Bảng này tổng hợp bằng chứng từng phần đến CP037; chưa phải toàn contract server gốc. Mỗi hàng khi
 triển khai phải bổ sung riêng **creator, simulator, validator, broadcaster, peer-editable state**, với
 locator/trace và trạng thái từng ô; những vai trò không nêu dưới đây hiện `unknown` cho KR.
 
@@ -1376,7 +1462,7 @@ locator/trace và trạng thái từng ô; những vai trò không nêu dưới 
 | Explode/chain | CP033 hai bom B liền kề từ một158/ID1, control cách hai ô/replay sau chain; [contract](#bomb-chain) | Nhiều owner/ba bom/vật cản/race/generation và authority server gốc còn thiếu |
 | Block destroy/item reveal | CP032 list2→FixedBox,158→hai view vỡ/reveal→124/165/stat; report142 từ cả hai; [contract](#hidden-items) | Drop algorithm/server validator, variants/chain và phép loại transport riêng còn thiếu |
 | Item placement/pickup | CP030 nhặt/tranh index; CP031 stat/clamp/power; CP032 item ẩn và reset field hẹp; [contract](#hidden-items) | Runtime tại max/speed, random drop/đảo winner/stale/generation và toàn reset còn thiếu |
-| Trap/death | CP029 trap/death; CP036 rescue18/170,state56→26 hai phía và enemy touch/no-touch hẹp; [contract](#collision-rescue) | Validator/duplicate/stale/generation/variants, result21 và đối chứng thêm/đảo chiều còn thiếu |
+| Trap/death | CP029/036; CP037 kim và tranh chấp cứu/diệt; [kim](#needle-selfescape), [precedence](#contact-precedence) | Validator/duplicate/stale/generation/variants, result21 và đối chứng thêm/đảo chiều còn thiếu |
 | Result/reset | CP028 chu kỳ pair; CP032 đo lại hidden item/stat/serial/power ở đầu vòng2; [phạm vi](#hidden-items) | Arbitration/generation, mọi entity/timer/peer/seq không rò và disconnect vẫn mở; phân biệt run chờ sai origin với ca hoàn tất |
 | Room lifecycle | CP034 leave/promotion/EOF/return; CP035 rejoin/Ready và chủ B Start tới clock cả hai; [contract](#room-rejoin) | Bầu chủ/giữ ID-slot là policy stub; host EOF, reconnect và disconnect trong trận chưa kiểm |
 | Peer lifecycle | CP027 actual99→153 và UDP send/receive hai client; [phạm vi](#peer-duo) | Full schema receive/handshake/key/slot/reliability/relay và giới hạn state peer được sửa |

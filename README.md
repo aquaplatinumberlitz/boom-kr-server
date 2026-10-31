@@ -22,19 +22,18 @@ boom-kr-server/
 
 ## Đang làm
 
-CP036: **đã đo cứu đồng đội và đồng bộ giải thoát sang client còn lại**.
-A bị nhốt→B chạm→report18;170/18 đưa actor A trên B từ56→26, khớp A sau giải thoát;
-A tiếp tục di chuyển và B thấy vị trí mới. Ca đối lập đo chết sớm khi chạm so với giữ khoảng cách.
-[Contract/giới hạn](docs/PROTOCOL.md#collision-rescue), [bằng chứng](docs/evidence/collision-rescue/README.md).
-Rejoin và chủ mới Start tới clock giữ tại [CP035](docs/PROTOCOL.md#room-rejoin).
+CP037: **đã đo kim tự thoát và đồng bộ sang peer**, thêm đối chứng cứu/diệt bằng ba client thật.
+[Contract kim](docs/PROTOCOL.md#needle-selfescape), [tranh chấp cứu/diệt](docs/PROTOCOL.md#contact-precedence),
+[recipe và bằng chứng](docs/evidence/needle-contact/README.md). Native collection cho thấy vòng quét dừng ở chạm hợp lệ đầu;
+điều kiện cùng chạm và thứ tự duyệt runtime được phân biệt rõ trong contract.
 
-Đây là profile local với **hai client thật và actor C tổng hợp ở ca rescue**;
-**chưa nghiệm thu trận hoàn chỉnh/K6a**. Disconnect trong trận, validator/toàn reset, result và
-full auth/cache còn thiếu. Chưa LAN/Internet. [Bước tiếp](docs/RESEARCH.md#q-023).
+Đây là các thí nghiệm trên copy chẩn đoán Wine; **chưa nghiệm thu trận hoàn chỉnh/K6a**.
+Disconnect trong trận, validator/toàn reset, report21/result và full auth/cache còn thiếu.
+Chưa LAN/Internet. [Bước tiếp](docs/RESEARCH.md#q-023).
 
-CP035 đã merge [PR43](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/43) tại `1e78035`.
-CP036 là snapshot trước tích hợp; PR nhánh `kre/collision-runtime` giữ trạng thái tích hợp.
-Codex tự kiểm, review độc lập waived. **AUD011/CP036** định kỳ hoàn tất; audit kế **CP040**.
+CP036 đã merge [PR44](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/44) tại `7ab702f`.
+CP037 là snapshot trước tích hợp; PR nhánh `kre/needle-race-runtime` giữ trạng thái tích hợp.
+Codex tự kiểm, review độc lập waived. **AUD011/CP036** định kỳ đã hoàn tất; AUD012 kiểm correction CP037; audit định kỳ kế **CP040**.
 
 Checkpoint bền vững: [manifest](docs/evidence/checkpoints/manifest.json).
 Quy trình ghi chép/review/audit: [checkpoint workflow](docs/evidence/checkpoints/README.md).
