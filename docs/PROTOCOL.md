@@ -1,6 +1,6 @@
 # KR 00967 — contract tương thích client gốc
 
-Revision kr-legacy-contract-r1; cập nhật31/10/2026 JST (CP034).
+Revision kr-legacy-contract-r1; cập nhật31/10/2026 JST (CP035).
 **Contract có bằng chứng từng phần; chưa nghiệm thu full codec K2**.
 Lộ trình và thứ tự task chỉ giữ ở [REWRITE_PLAN — KRE](PLAN.md).
 Đây là contract của repo server KR. ADR0009 của bản viết lại là nguồn lịch sử để so sánh;
@@ -888,7 +888,9 @@ Fixture7byte=`u8result0,u8slot,u16session,u8zero,u8zero,bool0`, runtime **7/7/er
 Roomlookup`8117E0(session)` và setters`123FA30/123FB30/123FB70/12409E0` nối context/title.
 B dùng slot1/ID2; các run sau ghi **session1 ở cả A(create86) và B(join87)**. Pair đầu giữ
 sessionB0/A1 làm diagnostic control, không dùng nó chứng minh context phòng chung đã nhất quán.
-Full room authority, password/error/leave/host variants chưa kiểm.
+Tại CP028, full room authority và password/error/leave/host variants chưa kiểm.
+CP034–035 bổ sung [leave, chuyển chủ](#room-leave) và [rejoin/Start sau chuyển chủ](#room-rejoin)
+trong phạm vi đã nêu; authority và các variant còn lại vẫn mở.
 
 **C→S95/Ready thật:** B ban đầu state20/unready; click nút Ready tự tới`DDE760` rồi
 `DDEAB7→1164C10(95)`, context`1264220→14EC120`, u8desired qua`14EBC50` vàu32tail
@@ -1213,11 +1215,11 @@ Không gửi107 cho leaver trong ca tự rời; nhánh tự bị đuổi/modal B
 **Chuyển chủ:** sau A rời, stub gửi110 cho B: slot1, DecodeBuf4=`22 00 00 00`, tail0.
 State B trước đó20hex; bit1 được đặt. Getter`1240CF0→1240D5E` của actual B đổi0→1,
 slot A ID1→0, UI B có nút Start. Đây là promotion được client chấp nhận; chọn người còn lại làm chủ
-là **design** của stub. Chưa đo click Start sau promotion hoặc mọi luật bầu chủ server gốc.
+là **design** của stub. Tại CP034 chưa đo click Start; CP035 bổ sung [rejoin/Start](#room-rejoin). Mọi luật bầu chủ server gốc còn thiếu.
 
 **Ngắt guest:** kill wineserver thuộc riêng prefix B trong namespace; channel B quan sát EOF,
 stub sau đó phát107(slot1,id2,0) cho A. A xóa record ID2→0/ô B; capture không có86.
-Chỉ ca idle room; chưa host abrupt disconnect, active-match recovery, reconnect/rejoin hoặc cleanup mọi peer/timer.
+Chỉ ca idle room; chưa host abrupt disconnect, active-match recovery, reconnect hoặc cleanup mọi peer/timer. CP035 đo rejoin cùng socket riêng dưới đây.
 
 **Điểm chặn quay về sảnh:** controls `guest-return`/`host-return` vẫn loading sau refresh241/91.
 Ca `guest-route` đo trực tiếp hai frame seq73/76 được framer chấp nhận: `115BA99` return0, `125DD40` app+F0
@@ -1239,9 +1241,37 @@ rowbase+8 từng đoán sai được sửa thành+14, giữ nguyên run thất b
 bị lỗi, không tính là proof; native blob oracle và runtime getter/factory là các bằng chứng riêng.
 
 Creator/policy của107/110/normal-lobby fixture và thời gian refresh là **emu_choice/design**.
-Không phục hồi authority server gốc hoặc đóng K4/K5/K6a; rejoin/start sau promotion/disconnect trong trận,
+Không phục hồi authority server gốc hoặc đóng K4/K5/K6a; rejoin/start sau promotion được bổ sung ở CP035, còn disconnect trong trận,
 collision/rescue/generation/toàn reset/full auth/cache/codec/LAN/Internet vẫn mở.
 [Bước tiếp duy nhất](RESEARCH.md#q-023).
+
+<a id="room-rejoin"></a>
+### Rejoin và Start sau chuyển chủ — CP035
+
+**kr_runtime/confirmed trong phạm vi copy/profile**, [hai run và hash](evidence/room-rejoin/README.md).
+Không thêm binary patch/ép state; dùng lại channel14 loại1 và các contract [leave](#room-leave),
+[join/Ready](#duo-room-round), [start](#start-reply)/[peer](#peer-duo). Fixture/policy là **emu_choice/design**.
+
+- `guest-rejoin`: B Back→86→sảnh, click lại row phòng→actual82 lần hai; S→C87/seq79
+  đọc7/7/errors0, client tự gửi585. Refresh own106/seq82, own110/85, peer106/88,
+  table238/91 và117/94 đưa B về phòng với hai profile; A đã xóa slot B nhận lại106.
+  Roster/ID1,2/slot0,1/session1 và channel sockets giữ nguyên; không reconnect/auth lại.
+- `promoted-rejoin`: A rời, B nhận107 xóa A và110/state22 thành chủ; A về sảnh rồi
+  actual82→87(slot0/session1)→585. Cấp lại106/110 cho A với state0 (khách/team0),
+  profile B state22 (chủ/team1), đồng thời gửi lại profile A cho B.
+  A own-match1, local-chief getter0; B local-chief1. A click Ready→actual95→110/state4
+  cho cả hai; B click Start→**actual104 từ B**, không dựa giả định chủ luôn slot0.
+- Stub trả121 cho cả hai từ request đó: runtime **129/129/errors0**, stage13, actual99
+  mỗi phía,197/196/153 rồi **clock một lần mỗi client**. Ảnh sau clock có hai actor đúng
+  own-marker; không dùng UI/clock riêng lẻ thay chuỗi input/request/reader/init này.
+
+Dynamic S2C seq tiếp tục trên từng socket, không reset/replay template cũ nguyên wire.
+Thời gian refresh/giữ ID/slot/session, trạng thái0/4/22 và cách chọn chủ là policy emulator được
+client chấp nhận trong ca này; chưa allocator/ID reuse/đổi slot/password/full variant/reconnect.
+Ca guest control chỉ tới phòng; ca chủ mới chỉ chứng minh rejoin→Ready→Start→clock, không phải
+full match/hai trận hoặc mọi peer/entity/timer reset. Host EOF/disconnect trong trận/collision/rescue/
+stale-generation/full auth/cache/codec/K5/K6a/LAN/Internet còn mở.
+[Bước tiếp](RESEARCH.md#q-023).
 
 ### Giới hạn và correction WCP lịch sử
 
@@ -1274,7 +1304,7 @@ liệt kê và phân biệt với nguyên bản trong mọi demo.
 
 ### Authority matrix hiện hành và gate review
 
-Bảng này tổng hợp bằng chứng từng phần đến CP034; chưa phải toàn contract server gốc. Mỗi hàng khi
+Bảng này tổng hợp bằng chứng từng phần đến CP035; chưa phải toàn contract server gốc. Mỗi hàng khi
 triển khai phải bổ sung riêng **creator, simulator, validator, broadcaster, peer-editable state**, với
 locator/trace và trạng thái từng ô; những vai trò không nêu dưới đây hiện `unknown` cho KR.
 
@@ -1287,7 +1317,7 @@ locator/trace và trạng thái từng ô; những vai trò không nêu dưới 
 | Item placement/pickup | CP030 nhặt/tranh index; CP031 stat/clamp/power; CP032 item ẩn và reset field hẹp; [contract](#hidden-items) | Runtime tại max/speed, random drop/đảo winner/stale/generation và toàn reset còn thiếu |
 | Trap/death | CP029 control mismatch và170/17,19 đưa remoteactor56→1 trước175 qua hai vòng; [contract](#peer-events) | Validator/timeout/duplicate/stale/generation, rescue/enemy-pop và variants còn thiếu |
 | Result/reset | CP028 chu kỳ pair; CP032 đo lại hidden item/stat/serial/power ở đầu vòng2; [phạm vi](#hidden-items) | Arbitration/generation, mọi entity/timer/peer/seq không rò và disconnect vẫn mở; phân biệt run chờ sai origin với ca hoàn tất |
-| Room lifecycle | CP034 actual86,107 slot-clear,110 chief B0→1, guest EOF và guest/host về đúng loại sảnh; [contract](#room-leave) | Bầu chủ là policy stub; rejoin/start sau promotion, host EOF và disconnect trong trận chưa kiểm |
+| Room lifecycle | CP034 leave/promotion/EOF/return; CP035 rejoin/Ready và chủ B Start tới clock cả hai; [contract](#room-rejoin) | Bầu chủ/giữ ID-slot là policy stub; host EOF, reconnect và disconnect trong trận chưa kiểm |
 | Peer lifecycle | CP027 actual99→153 và UDP send/receive hai client; [phạm vi](#peer-duo) | Full schema receive/handshake/key/slot/reliability/relay và giới hạn state peer được sửa |
 
 Gate K5/K6 cần kiểm matrix và đối chứng của hành vi thực sự dùng; từ28/10 Codex tự kiểm theo miễn review của chủ dự án. Có thể giữ unknown về

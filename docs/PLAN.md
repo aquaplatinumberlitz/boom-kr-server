@@ -1,7 +1,7 @@
 # Kế hoạch server giả lập KR 00967
 
 Nguồn chuẩn của project `boom-kr-server`; bản nhập từ plan đã được dsh1/dsh2 review tại `1eee46d`.
-Cập nhật 31/10 JST (CP034): đã đo room leave/host promotion/guest EOF và loại sảnh khi quay về; rejoin/start sau chuyển chủ còn thiếu. K0/K1, K2/K3 còn từng phần; bảng gate là scope nghiệm thu, chưa phải checklist đã pass.
+Cập nhật 31/10 JST (CP035): đã đo rejoin và Ready/Start sau chuyển chủ tới clock cả hai; disconnect trong trận/collision/rescue/toàn reset còn thiếu. K0/K1, K2/K3 còn từng phần; bảng gate là scope nghiệm thu, chưa phải checklist đã pass.
 
 
 ### Mục tiêu, baseline và phạm vi
@@ -37,19 +37,19 @@ với client Rust không chứng minh có thể điều khiển client KR bằng
 
 ### Tiến độ hiện hành theo bằng chứng
 
-| Task/mốc | Trạng thái tại CP034 | Nguồn chuẩn |
+| Task/mốc | Trạng thái tại CP035 | Nguồn chuẩn |
 |---|---|---|
 | KRE-004/issue6 | Đã review/merge PR7 và đóng issue:recipe r1 đến local accept;không phải full K1 | [Wine r1](evidence/wine/README.md) |
 | Bootstrap reply | PR8 đã merge;debugger ProcessPatchreturn1,không ép success | [bootstrap evidence](evidence/bootstrap-wire/README.md) |
 | KRE-005a/issue9,R2 | PR10 đã merge:3 cold start cửa sổ/second accept;issue9 còn mở | [R2 evidence](evidence/wine-r2/README.md) |
 | WCP hai-reply | Run CP001 là lịch sử chưa C→S; CP006 đã đo request đầu trên copy tham số hóa | [PROTOCOL](PROTOCOL.md#wcp),[WCP evidence](evidence/wcp/README.md) |
-| KRE-005b/issue14 | CP006–033 đã merge; CP034 có leave/promotion/guest EOF/return hẹp; fullround/authority/full auth còn mở | [Q-023](RESEARCH.md#q-023), [evidence](evidence/room-leave/README.md) |
+| KRE-005b/issue14 | CP006–034 đã merge; CP035 có rejoin/promotion start/clock hẹp; fullround/authority/full auth còn mở | [Q-023](RESEARCH.md#q-023), [evidence](evidence/room-rejoin/README.md) |
 | K0/K1 | Chưa nghiệm thu toàn gate;Windows vanilla/control ownership và các điều kiện còn thiếu giữ mở | Gate dưới,[Q-022](RESEARCH.md) |
 | K2a/K2 | Primitive/WCP từng phần; request auth đã capture/native replay, phản hồi lỗi đã dispatch; full codec/reconnect và gate chưa pass | [PROTOCOL](PROTOCOL.md#login-auth),[Q-023](RESEARCH.md#q-023) |
 | K3 | Copy chẩn đoán đã vẽ UI sảnh và đóng notice; chưa nghiệm thu identity/cache/codec đủ gate | [Contract sảnh](PROTOCOL.md#channel-lobby) |
-| K4–K7 | CP034 room lifecycle hẹp; block/chain variants/rescue/generation/disconnect trong trận/authority chưa nghiệm thu. Chưa K6a/LAN/Internet | Không có phần trăm ước lượng |
+| K4–K7 | CP035 rejoin/start sau chuyển chủ hẹp; block/chain variants/rescue/generation/disconnect trong trận/authority chưa nghiệm thu. Chưa K6a/LAN/Internet | Không có phần trăm ước lượng |
 
-Thứ tự tiếp: rejoin thực và start sau chuyển chủ, rồi disconnect trong trận/collision/rescue,
+Thứ tự tiếp: collision/rescue và host EOF/disconnect trong trận,
 validator/generation/stale và toàn reset trước K6a; chain nhiều owner/ba bom/vật cản và runtime tại max/speed còn thiếu.
 CP032 đã đo hai block/list2/reveal/nhặt và reset stat/item hẹp ở
 [contract](PROTOCOL.md#hidden-items). CP031 giữ effect/stat/power; CP030 giữ layout/nhặt/tranh index;
@@ -61,7 +61,7 @@ chưa LAN/Internet.
 Chu kỳ docs/audit theo [workflow](evidence/checkpoints/README.md);
 counter ở [manifest](evidence/checkpoints/manifest.json). Không tạo plan theo phiên.
 
-### Bản đồ đường chạy, CP034
+### Bản đồ đường chạy, CP035
 
 | Bước | Quan sát/bước tiếp |
 |---|---|
@@ -81,7 +81,8 @@ counter ở [manifest](evidence/checkpoints/manifest.json). Không tạo plan th
 | Hiệu ứng item → bom kế tiếp | CP031 đo stat Bomb/Fire hai phía; native clamp, duplicate sau xóa và118.field10→159.field8→calc power đã kiểm. Runtime tại max/speed còn thiếu. [Contract](PROTOCOL.md#item-effects). |
 | Phá block → reveal → vòng kế | CP032 list2/FixedBox,142/124/165 và stat/serial/power đo lại sau Start. Phân biệt control không158 và run chờ sai origin vòng2; không đóng toàn reset/generation. [Contract](PROTOCOL.md#hidden-items). |
 | Bom liền kề → chain | CP033 một158/ID1 xử lý hai bom B trên cả A/B; cách hai ô giữ bom2. Replay ID1/ID2 không vào lại kind0 trong ca đã đo. [Contract](PROTOCOL.md#bomb-chain). |
-| Rời phòng → về sảnh/chủ mới | CP034 actual86/107 xóa slot,110 chuyển chủ B; guest EOF→107. Dữ liệu14 loại1 giữ đúng CLobbyStage để241/91 vào handler và UI sảnh; [contract](PROTOCOL.md#room-leave). Rejoin/start sau promotion và disconnect trong trận còn mở. |
+| Rời phòng → về sảnh/chủ mới | CP034 actual86/107 xóa slot,110 chuyển chủ B; guest EOF→107. Dữ liệu14 loại1 giữ đúng CLobbyStage để241/91 vào handler và UI sảnh; [contract](PROTOCOL.md#room-leave). CP035 bổ sung [rejoin/start sau promotion](PROTOCOL.md#room-rejoin); disconnect trong trận còn mở. |
+| Vào lại → chủ mới Start | CP035 actual82→87→585 trên socket cũ; A khách Ready95→110, B chủ104→121/129byte cả hai→99/197/196/153→clock. [Contract](PROTOCOL.md#room-rejoin); chưa full match/toàn reset. |
 
 RE động là chính; gom phép đo thành checkpoint mốc/blocker, audit định kỳ theo workflow.
 Review độc lập được chủ dự án miễn từ28/10; Codex tự kiểm, giữ PR và điều kiện bằng chứng của gate.
