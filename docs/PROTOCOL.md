@@ -1,6 +1,6 @@
 # KR 00967 — contract tương thích client gốc
 
-Revision kr-legacy-contract-r1; cập nhật31/10/2026 JST (CP044).
+Revision kr-legacy-contract-r1; cập nhật31/10/2026 JST (CP045).
 **Contract có bằng chứng từng phần; chưa nghiệm thu full codec K2**.
 Lộ trình và thứ tự task chỉ giữ ở [REWRITE_PLAN — KRE](PLAN.md).
 Đây là contract của repo server KR. ADR0009 của bản viết lại là nguồn lịch sử để so sánh;
@@ -1075,7 +1075,8 @@ effect2→v8/B47210→cùng context/vA0/**AF0690**. Không lấy interface+588 c
 
 Hai client chụp cùng giá trị trước/sau từng165 và lúc clock bắt đầu; checksum giải độc lập rồi gọi
 native `529C60→52A350` trên wrapper/data đã capture. Chỉ profile hai slot hiện tại; chưa nối tên
-asset/character tới mọi base/max, chưa Roller/Shoe/speed hoặc cơ chế reset về base.
+asset/character tới mọi base/max. Đây là phạm vi CP031; Roller/MaxPower được bổ sung tại
+[CP045](#item-families), reset stat hẹp ở [CP032](#hidden-items). Shoe và toàn reset vẫn chưa đo.
 
 **Phép tăng/kẹp native:** AF06F0 dùng context+4/+6C; AF0690 dùng+1C/+84.
 `636620` đọc secure current rồi cộng1/ghi bằng52A860; sau đó so signed current với max.
@@ -1109,6 +1110,58 @@ và clamp là code client đã chạy, không tự phục hồi authority server
 runtime nhặt tại max, speed, validator/disconnect/full auth/cache/codec còn mở;
 reset stat/item được kiểm tiếp hẹp ở [CP032](#hidden-items), chưa toàn lifecycle round;
 **chưa full match/K5/K6a/LAN/Internet**.
+
+<a id="item-families"></a>
+### Nhóm item và kiến thức tái sử dụng — CP045
+
+Đối chiếu theo câu hỏi Battle cơ bản; bảng dưới không là kiểm kê mọi cơ chế trong client.
+Nguồn/hash/locator và bốn câu hỏi tái sử dụng tại [evidence](evidence/item-families/README.md).
+ItemAttr KR335/VN269 đã parse từ CP037:269 tên chung,267 hàng giống group/field160/five-tail/weight;
+hai hàng khác là KR247/VN213 `ItemCpGold`, KR248/VN214 `ItemCpPocket`. Cùng field không chứng minh
+cùng hiệu ứng. `boom-re-l10n/decomp/item_kinds.json` là cùng bảng VN269, ba số−1 khác biểu diễn
+unsignedFFFFFFFF; không coi là ba cơ chế mới hoặc một nguồn runtime độc lập.
+
+`boom-rs` R169–185 bổ sung **VN static/runtime confirmed** cho Roller: selector3, tăng1/kẹp max,
+base/max/current, movement amount và đường cong đo trên actor cụ thể. Dùng lại kiến thức và cách kiểm;
+offset/ID/consumer/wire KR vẫn phải đối chiếu. `oc_e-game.md:454` ghi unknown cũ; dòng463 đã có
+Bomb/Fire runtime, evidence R169–185 mới hơn đã có Roller. Không đọc unknown lịch sử thành hiện trạng.
+`archive/KNOWLEDGE.md` và bundle là bản đồ nguồn; câu tóm tắt33px/s/cấp hoặc fuse2,5s không thay
+giới hạn capture gốc. `boom-rs` wire/authority/scope V1 là design khác project này.
+
+| Nhóm / ví dụ KR↔VN | Đã biết từ VN | KR static/emulation | KR runtime / phần còn thiếu cho demo dùng nhóm đó |
+|---|---|---|---|
+| Stat tích lũy, group1: Bomb0/Fire1/Roller2 |Bomb/Fire effect và nhiều bom; R169–185 Roller+1 logical point/kẹp max/reset/consumer theo fixture VN |1192700/group1 gọi1191840 cho **bốn** selector đầu; fifth-tail không phải selector thứ5. Effect1→vf4,2→vf8,3→vf14; CP031 increment/clamp; Roller B48350 current iface+5C/max+50 |Bomb/Fire đã [đo stat/peer](#item-effects), [reset hẹp](#hidden-items). CP045 Roller5→6/max7 cả hai view, đầu vòng2 về5 rồi nhặt lên6; không chuyển rate VN thành px/s KR. Không tiêu hao kiểu Ctrl; item nền bị xóa sau165. |
+| Ability/debuff cùng group1: Shoe3/Punch4/MaxPower5, Hollow6, Skeleton7/8, MoonWalk9, Superman10, GreenDevil11 |Tên/selector và render đã có; tránh suy Shoe là tăng speed, Roller mới là nhánh tăng point đã đo |Selector4/5/6 dùng các virtual khác ở1191840; không RE lại124/165 cho từng bản ghi |CP045 MaxPower1→7/max7 và118/159power7, reset đầu vòng2 về1. Ném/đá, immunity, thời hạn/debuff/mode cần consumer/case riêng trước dùng. Tên/icon hoặc số0 trong table không chứng minh vô hạn. |
+| Mount/biến hình group2: Airship40↔34/Owl41↔35/Turtle42↔36… |Table và tên/variant có sẵn |Group2 là nhánh khác11928A2; không áp increment group1 |Chưa runtime KR trong đợt này; exclude khỏi fixture Battle tối thiểu theo policy thử, không gọi client không hỗ trợ. |
+| Dùng chủ động group23: Needle145↔117 và12 hàng KR cùng group |Kim Ctrl sau trap, dùng cạn; R169–185 không là bằng chứng kim |1190C20 amount>0 rồi nhánhgroup23/vf1C; variant cùng group là ứng viên tái dùng đường |[Kim145](#needle-selfescape)/[lần hai](#needle-repeat): pickup124/165→Ctrl×1→actual127/1 rồi0(kind145), peer170/1 đưa56→26; cạn không thoát lần hai. Inventory validator, multi-charge/variant/round-reset toàn túi chưa đo. |
+| Chủ động khác: Dart143↔115(g21), Oxygen144↔116(g22), Potion147↔119(g25), Spring148↔120(g26), Drill149↔121(g27), RemoteBomb150↔122(g28) |Table và đường Ctrl/nhận xét cũ; không runtime từng loại |Group/field160 chỉ phân loại dữ liệu; không gọi field160 luôn là số lần dùng |Điều kiện, effect, tiêu hao/report0/confirm, peer và reset chưa được kiểm theo từng nhóm; dùng Needle làm phương pháp, không copy kết quả. |
+| Có thời hạn/variant: Shield151↔123(g29,raw2000/1000), Sensor152↔124(g30,raw30000/5000), SJNeedle161↔133(g46) |Shield được ghi2000ms là locator/hypothesis; SJ/needle variants khác group |Raw tail giống không đủ xác nhận đơn vị, duration hoặc cùng nhánh145; cần consumer timer/group |Chưa runtime KR duration/expiration/consume/peer/reset; không gán max/giây từ tên/field. |
+| Mode/event/reward: HPNeedle17(g1/effect27), GoldFlag19(effect99), Lucci67↔50(g99), HCHint300↔266(g1000), RPG… |Catalog cũ cho phép tránh nhầm HPNeedle17 với Needle145 |Cùng tên “Needle” không cùng group/effect; R153 loader/group table khác biệt với effectconsumer |Không đưa vào ca Battle cơ bản hiện hành; mode guard/serverreward/variants còn unknown, không RE mọi row trước K6a. |
+
+Nhóm pickup dùng đường [582/124/165](#item-pickup) đã đo; đối chiếu KR indexu32, không dùng VN indexu16.
+Confirm broadcast có CRC/cursor đúng chưa đủ chứng minh effect; đo securefield/native consumer/peer và
+đầu vòng kế. Placement/drop/first-arrival/fuse của stub là `emu_choice/design`, weight không là phần trăm.
+Nguồn R150 cũ gọi E9E660 là item path đã bị [CP030 sửa](#item-pickup): đó là bom kind0;
+R153 loader/table vẫn dùng được, không lặp tìm pickup/stat từ nhánh nổ.
+
+**Delta KR runtime CP045, hai run riêng `roller-rounds`/`maxpower-rounds`:** mỗi run hai client thật,
+hai Start/clock trên cùng8connections/IDs1,2/slots0,1/session1. Mỗi vòng một item nền index17/hàng4/
+cột3, A Down tới actual124, ItemClaims/current165 phát cả hai, không chèn gói cũ hoặc sửa state.
+Sau nhặt A Space thật, bom nổ→A17/19→170 peerstate1 trước175/180/phòng hai vòng. Placement,
+catalog/fuse6s/rank/first-arrival là policy emulator, không luật server gốc.
+
+- Roller2: actual165full12 →1191840 effect3/0/0/0, receiver actor+58C/vt17760BC →B48350.
+  Secure **actor+5E8/current5→6**, **+5DC/max7→7** trên cả A/B; capacity/Fire/max và stat slot1
+  được chụp giữ nguyên. Native B48350 dùng636620 tăng1 rồi so current với max, vượt thì54B610 chép max;
+  năm ca emulation giữ machinecode tăng/kẹp, chỉ model local gateAD5BA0=false. Runtime tại max chưa đo.
+  Cặp field/consumer tương ứng VN R173 nhưng không copy offset658/64C hay định lượng px/s từ VN.
+- MaxPower5: effect6/0/0/0 →vfC/B472A0. Secure **actor+4BC/power1→7** và **+524/max7→7**
+  cả hai; capacity/movement được chụp giữ nguyên. Actual118.field10=7,159.field8=7 ở hai vòng;
+  không suy capacity/speed cũng lên max hoặc mọi feature branch từ tên MaxPower.
+- Clock vòng2 reset current Roller về5 và power về1 trước pickup mới; sau nhặt lặp cùng delta.
+  Hai run có hai175outer302/inner292 và180full3 mỗi client. Đây là reset của field đã đo, không
+  toàn túi/entity/UDP hoặc kiểm mọi item. Không có input Ctrl/127sub0 trong hai ca này; chưa đo TTL/
+  expiration trong cùng vòng. Không gán “vĩnh viễn” từ việc giữ qua các mốc hoặc table tail0.
 
 <a id="hidden-items"></a>
 ### Gạch, item ẩn và khởi tạo lại vòng — CP032
@@ -1731,6 +1784,68 @@ CP040 chỉ tới movement; đây là run mới mở rộng tới bom/death/resu
 Không suy đã giải fullvalidator/UDPqueue, gói đã gửi, reconnect cùng account hoặc mọi disconnect.
 **Chưa fullmatch/K5/K6a/LAN/Internet**. [Bước tiếp](RESEARCH.md#q-023).
 
+<a id="udp-generation"></a>
+### UDP qua vòng mới: queue, drain và consumer game — CP045
+
+**kr_runtime/kr_static confirmed hẹp** trên cùng diagnostic copy, không thêm patch/ép actor.
+[Nguồn đã đối chiếu, recipe/hash và các ca chưa đạt](evidence/udp-generation/README.md).
+Tái dùng CP027 endpoint/actual99→153/nativeCRC và CP039–044 lifecycle; VN92/146 chỉ hướng peer
+exchange/P2P, chưa có proof stale UDP. `boom-rs` ADR0009 là wire mới, không áp epoch của nó vào KR.
+
+`ingress-rounds` giữ hai client/hai Start/clock/result/return trên cùng8connections; breakpoint sau
+recvfrom, trước indirectcall **13DE7AA** ghi24datagram/client/round, tổng96sample.
+Receiver vtable17A2BB0, callback thật **13DE880** cả hai vòng; receiver cùng pointer trong mỗi client
+không chứng minh mọi state/queue giữ nguyên hoặc đã reset. Đây là actualAPIcapture, không pcap toàn luồng.
+
+**Đường native có mục tiêu:**13DE880 lookup peer theo IP/u16port, thiếu thì thử14E57B0; kiểm fragment
+length bằng14A58A0 và CRC14A5860(seed0 trên toàn frame) bằng0 rồi gọi **14E7340**.
+Wrapper cộng peer+140 và truyền argument đầu **hằng0** vào **14E8280**.
+Nhánh buffer kiểm pointer/length1..255, giữ lock, ghi length4byte +payload vào buffer+80,
+cập nhật count+2080; guard argument đầu chỉ so khi khác0. Không gọi argument này là round hoặc
+wireseq chỉ vì method có phép so; wrapper constant0 không proof toàn UDP không epoch.
+
+**Drain:**14E8480 đọc record đầu, copy tối đa outputcapacity, dịch phần còn lại và cập nhật count;
+directcall14E5742 nằm trong vòng duyệt peer, return14E5747.14E83A0 có clear count0 theo static;
+chưa thấy runtime caller của clear ở roundboundary, không coi đã chứng minh reset từ body đó.
+
+Proxy thử chỉ đổi endpoint153 sang hai socket loopback sở hữu bởi harness; forward nguyên datagram
+đến UDPport thực từ99, dùng sourceport đúng endpoint của origin đã khai báo. Đây là policy thí nghiệm,
+không productionrelay/NAT. `proxy-control` có159/entity/158kind0 nhưng A không17/19 hoặc result,
+giữ làm ca chưa đạt vòng2. `centered-control` lỗi GDB `Invalid type combination in equality test`
+tại14E85B7 do conveniencevar drain chưa khởi tạo; không lỗi wire/client. `centered-fixed` khởi tạo
+vars và bỏ ADown trước Space để giữ ởspawn: hai bom/trap/death/statepeer1 trước175, hai175/180/phòng.
+Không khẳng định nhân quả của partialrun chỉ từ thay input/probe; giữ tất cả raw.
+
+Queueappend/drain đã quan sát trong control: payload15byte tăng count0→19, draincopy15 rồi count0;
+payload3byte tăng0→7. Mẫu có nhiều record thì count khác0, không ép luôn0→19.
+Admission/drain không tương đương actor đã áp dụng.
+
+**Gói cũ nguyên vẹn:** `stale-round2` lấy actual B→A datagram17byte vòng1, replay một lần sau153
+cả hai phía vòng2/trước input mới, cùng advertised sourceport. Wire SHA
+`bbd38001fff30521da221b5c67a5b2389e3d95abab160cb85e376d9a063f4058`, inner15byte
+`010100003b000132c8009f0000004b`; không có gói forward bình thường vòng2 cùng wirehash.
+Round2/sample10: queue61FE6E00 count26→45, drain cùng payload/count57→38. Đây là bằng chứng
+runtime gói cũ đã được nhận và lấy khỏi queue, không chỉ sendlog.
+
+**Consumer game:** stack-return thật14E5747 và backtrace giới hạn dẫn tới13E0E3F trong13E0E00.
+Prefix tĩnh đọc selector; selector1 đọc slot0..25. Gate từE8E960 điều khiển nhánh đọc4byte/
+so với securefield tại context+18D4+slot×C: compare13E0F96, windowdrop13E0FB6,
+store13E0FD7. Chưa đặt tên field là tick/key/epoch chỉ vì có phép so. Body clear chưa chứng minh
+roundboundary; prefix consumer chưa phải toàn parser/downstream.
+
+`stale-game-guard` chỉ tới vòng1/A17, không19/vòng2/replay; giữ partial, instrumentation overhead
+là giả thuyết. Run kế `stale-game-lite` chỉ bật probe game từ Start2, tắt sau64 message/client:
+actual old B→A wire SHA `dc261c4b21730298f962a78cc6cbe26fe64c2034c3828bd2feb6d9f7e8715246`,
+inner `010100003b00013ac8009f00000048`, không trùng normalforward vòng2. Round2/sample6:
+queue5C303B80 count19→38, drain45→26, gameconsumer nhận đúng inner15byte,
+**slot1/gate0, return13**; không vào compare/windowdrop/store branch đã đặt probe.
+Đó là giá trị return quan sát được, chưa chứng minh toàn13byte output hoặc actor nhận/apply.
+Run này vẫn có hai17/19/statepeer1 trước175 và hai175/180/phòng; outcome/fuse là policy stub.
+
+Không suy gói cũ teleport/sửa actor từ ảnh spawn/tutorial, queue hoặc return13. Còn thiếu đường
+downstream từ consumer tới actor, điều kiện gate và kiểm round identity/grammar đầy đủ;
+không tự đóng validator/reset/K6a từ các ca này. [Phép thử tối thiểu tiếp](RESEARCH.md#q-023).
+
 ### Giới hạn và correction WCP lịch sử
 
 Fixture opaque/zero/empty và prefix69 là emu_choice đã được consumer chấp nhận trong phép thử,
@@ -1762,7 +1877,7 @@ liệt kê và phân biệt với nguyên bản trong mọi demo.
 
 ### Authority matrix hiện hành và gate review
 
-Bảng này tổng hợp bằng chứng từng phần đến CP044; chưa phải toàn contract server gốc. Mỗi hàng khi
+Bảng này tổng hợp bằng chứng từng phần đến CP045; chưa phải toàn contract server gốc. Mỗi hàng khi
 triển khai phải bổ sung riêng **creator, simulator, validator, broadcaster, peer-editable state**, với
 locator/trace và trạng thái từng ô; những vai trò không nêu dưới đây hiện `unknown` cho KR.
 
@@ -1772,11 +1887,11 @@ locator/trace và trạng thái từng ô; những vai trò không nêu dưới 
 | Bomb place/ID | CP027 hai owner/ID chung1..4 tạo trên cả hai client; [phạm vi](#peer-duo); lặp/cũ CP025 | CP041 có [stale158/ID reuse và fence job local](#round-generation), CP043 có [old159/serial reuse](#late-bomb-confirm); allocator/rollover/concurrent/race/toàn generation và authority ngoài policy thử còn mở |
 | Explode/chain | CP033 hai bom B liền kề từ một158/ID1, control cách hai ô/replay sau chain; [contract](#bomb-chain) | Nhiều owner/ba bom/vật cản/race/generation và authority server gốc còn thiếu |
 | Block destroy/item reveal | CP032 list2→FixedBox,158→hai view vỡ/reveal→124/165/stat; report142 từ cả hai; [contract](#hidden-items) | Drop algorithm/server validator, variants/chain và phép loại transport riêng còn thiếu |
-| Item placement/pickup | CP030 nhặt/tranh index; CP031 stat/clamp/power; CP032 item ẩn và reset field hẹp; [contract](#hidden-items) | CP042 có [old165/index reuse](#item-generation); runtime max/speed, drop/đảo winner, toàn124validator/generation/reset còn thiếu |
+| Item placement/pickup | CP030 nhặt/tranh index; CP031/032 stat/itemẩn; CP045 [bảng nhóm/Roller/MaxPower hai view/reset](#item-families) | CP042 có [old165/index reuse](#item-generation); runtime tại max, KRspeed→px/s/TTL/activevariants, drop/đảo winner/toàn124validator/generation/reset còn thiếu |
 | Trap/death | CP029/036; CP037 kim và tranh chấp cứu/diệt; [kim](#needle-selfescape), [precedence](#contact-precedence) | Validator/duplicate/stale/generation/variants, result21 và đối chứng thêm/đảo chiều còn thiếu |
 | Result/reset | CP039 hai vòng statepeer/result/21/return và reset field hẹp; CP044 [timer ở EOF và vòng B/C mới](#abort-timer) | CP041 có [payload cũ khi ID reuse](#round-generation); arbitration/toàn generation/entity/timer/peer/seq không rò vẫn mở; phân biệt run chờ sai origin với ca hoàn tất |
 | Room lifecycle | CP034 leave/promotion/EOF/return; CP035 rejoin/Ready; CP040 chủ B/C Start; CP044 [B/C bom/death/result/return sau abort](#abort-timer) | Bầu chủ/giữ ID-slot/forfeit là policy stub; guest EOF trả A về phòng/xóa B đã đo riêng; reconnect cùng account/disconnect variants/toàn reset còn mở |
-| Peer lifecycle | CP027 actual99→153 và UDP send/receive hai client; [phạm vi](#peer-duo) | Full schema receive/handshake/key/slot/reliability/relay và giới hạn state peer được sửa |
+| Peer lifecycle | CP027 actual99→153; CP045 [UDP cũ tới queue/drain/consumer](#udp-generation) | Full schema/handshake/key/slot/reliability/relay, gate và actorapply/round identity; queue/return không thay proof state peer được sửa |
 
 Gate K5/K6 cần kiểm matrix và đối chứng của hành vi thực sự dùng; từ28/10 Codex tự kiểm theo miễn review của chủ dự án. Có thể giữ unknown về
 server gốc thất lạc nếu policy emulator được chọn `design`, client chấp nhận và ca consistency đạt;

@@ -38,6 +38,13 @@ Duyệt plan không phải hoàn thành implementation/runtime.
 
 ## Checkpoint và tài liệu RE bắt buộc
 
+Trước mỗi nhánh RE mới, đối chiếu nguồn theo đúng câu hỏi: docs/evidence/cache hiện hành →
+boomkr-re → boom-re; thêm boom-rs, boom-re-l10n và archive khi có nguồn liên quan. Theo router
+và migration tới nguồn thật; không dùng snapshot cũ làm scope của repo này. Ghi ngắn nguồn/build/
+hash/locator, điều đã biết cùng mức static/emulation/runtime/policy, phần dùng trực tiếp/phải đối chiếu
+KR, khoảng trống và phép đo tối thiểu. Chỉ RE phần khác biệt/còn thiếu. Bảng đối chiếu gọn ở PROTOCOL,
+phép thử tiếp ở RESEARCH, provenance/hash ở evidence; không tạo plan hay bản kiến thức độc lập theo phiên.
+
 Ưu tiên RE động dẫn đường và thử nghiệm tiếp khi có giả thuyết cụ thể; gom các phép đo liên quan
 thành một checkpoint tại mốc quan trọng hoặc blocker rõ ràng, không tạo checkpoint/PR cho mỗi phép thử.
 Mỗi checkpoint phải đồng bộ docs bị ảnh hưởng trước khi complete;không chỉ giữ kiến thức trong
