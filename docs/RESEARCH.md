@@ -132,21 +132,23 @@ Phân biệt run chờ sai origin với run sửa policy; review độc lập wa
 CP032/PR40 đã merge `fe46beb`. CP033 đo chain hai bom liền kề/cách hai ô và replay sau chain;
 [contract](PROTOCOL.md#bomb-chain), [raw/control](evidence/bomb-chain/README.md). Không nâng toàn gate.
 
+CP033/PR41 đã merge `fbf4dc5`. CP034 đo leave/107/host110/guestEOF và giải
+return loading bằng trường loại sảnh trong channel14; [contract duy nhất](PROTOCOL.md#room-leave),
+[control/recipe/hash](evidence/room-leave/README.md). Không ghép các ca này thành full match.
+
 **Bước tiếp, Codex RE/tự kiểm:**
 
-1. **NEXT-ITEM-PICKUP:** list2/FixedBox/reveal/nhặt và stat đầu vòng kế đã được đo hẹp ở CP032;
-   không tìm lại receiver. CP033 đã có chain hai bom một owner; tiếp theo room leave/host-leave/
-   disconnect từ input thật, collision/rescue và validator/generation/stale/reset. Runtime tại max/speed,
-   chain nhiều owner/ba bom/vật cản, list3, loại block khác,
-   đảo winner và stale index qua round còn thiếu. Giữ118.field10→159.field8 trong harness mới.
-   Authority/giới hạn chỉ giữ ở contract; không biến report142 từ cả hai thành quyết định server gốc.
-2. **NEXT-DUO-ROUND:** receiver170/17,19 và boundeddeath mismatch đã có lời giải theo contract;
-   giữ duplicate/stale/generation và rescue/enemy-pop/timeout/variants. Kiểm host/disconnect/rejoin,
-   không rò entity/timer/peer/seq sau hai vòng trước K6a. Cùngrank không thay deathstate; snapshot
-   trước175 của CP029 mới là proofboundedstateagreement.
-3. Fullauth/profile/cache/reconnect/codec và UDPgrammar/key/reliability/handshake/relay/NAT vẫn mở;
-   chưa LAN/Internet. Hai chu kỳ thử và forwardreport không xác thực client report hoặc đóng K5/K6.
+1. **NEXT-DUO-ROUND:** rời phòng/xóa ghost slot/promotion/guest EOF/về sảnh đã đo hẹp ở CP034;
+   tiếp tục **rejoin qua click/request thật và Start sau promotion**, rồi host EOF/disconnect trong trận.
+   Kiểm entity/timer/peer/seq/generation/reset trước K6a; không coi promotion getter/UI Start là đã start được trận.
+2. **NEXT-ITEM-PICKUP:** tiếp collision/rescue/validator/stale/generation/toàn reset. CP032 item ẩn và
+   stat đầu vòng kế, CP033 chain một owner đã có bằng chứng; không tìm lại receiver. Runtime tại max/speed,
+   chain nhiều owner/ba bom/vật cản, list3/loại block khác/đảo winner/stale index qua round còn thiếu.
+   Giữ118.field10→159.field8. Report142 từ cả hai không tự chứng minh authority server gốc.
+3. Receiver170/17,19 và mismatch death hẹp có lời giải CP029; tiếp rescue/enemy-pop/timeout/variants.
+   Fullauth/profile/cache/reconnect/codec/vanilla và UDPgrammar/key/reliability/handshake/relay/NAT còn mở;
    104/95bodygrowth, serialrollover/allocator/concurrent/optionalflags, Antarctic timing giữ scope riêng.
+   Cùngrank không thay deathstate; không có gate K5/K6a/LAN/Internet mới đóng.
 
 CP029–032 raw/record bất biến; CP032 giữ control không158 và ca hai vòng chờ sai origin làm lịch sử.
 Không patch thêm/ép state bằng GDB. `E9E660` là nhánh kind0 bom, không phải receiver pickup;
