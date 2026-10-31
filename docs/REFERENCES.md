@@ -19,6 +19,7 @@ review đường dẫn/scope sau migration; việc import không xác nhận run
 | RE/server VN | `/home/admin/boom/repos/boom-re`, commit `9ac2075bbec0c16217741aaedea968cf685e39a9` | `docs/protocol.md`, `oc_d-login.md`, `lobby.md`, `oc_e-game.md`; `tools/boomproto.py`, `verify_emu.py`, `fakeserver.py`; `server/src` làm reference |
 | RE KR cũ | `/home/admin/boom/repos/boomkr-re`, commit `88e11ed30764c753a00f4f23a2f33dafadc4c890` | `docs/kr.md` §18–33, dump/native consumer, `out/kr-full.exe` và sourceDB |
 | Nghiên cứu dùng chung | `/home/admin/boom/repos/boom-rs`, docs baseline `dae5e1c717ad31b9e8d32a9b20a76d65942807eb` | `docs/research/findings/{VN_LEGACY_SERVER_REFERENCE,VN_BATTLE_RUNTIME_REFERENCE,KR_RE_FLAME_CHAIN,KR_RE_TRAP_TIMER,KR_RE_TRAPPED_SPEED,KR_RE_BOMBERATTR}.md`; `docs/decisions/0009-wire-protocol-input-snapshot-codec.md` là protocol **rewrite**, không phải KR wire; ADR0002/0013 cho lịch sử nguồn |
+| Snapshot RE/Việt hóa | `/home/admin/boom/repos/boom-re-l10n` | `docs/README.md` chỉ migration sang boom-rs; `decomp/item_kinds.json` VN269 dùng đối chiếu dữ liệu, server snapshot cũ hơn boom-re; không tái tạo docs tại đây |
 | Archive | `/home/admin/boom/archive/2026-10-26` | RESUME/KNOWLEDGE/TOOLS/PROCESS là hồ sơ lịch sử; kết luận mới giữ trong repo này |
 
 `kr.md` là notebook nối tiếp: §31 sửa nhận định exitcode cũ thành một run alive-stall; §33 tách dialog
@@ -27,6 +28,12 @@ nghĩa đã quét dispatcher mạng. VN và KR chung engine không chứng minh 
 
 Các tham chiếu legacy protocol/ADR/RULES trong bản import dẫn về danh mục này; tra đúng tài liệu
 nguồn theo bảng. Giá trị/claim dùng trong code mới phải có record riêng gắn source+locator rõ.
+
+CP045 tra theo câu hỏi item/UDP: `boom-rs/docs/evidence/measurements/vn-item-effects-2026-10-24/README.md`
+(R169–181), `vn-player-movement-2026-10-25/README.md` (R182–185), `kr-static-item-2026-10-21/README.md`
+(R150/R153), và `docs/specification/gameplay/RULES_V1.md`. Archive `KNOWLEDGE.md` trỏ các report149/
+raw/bundle, không là một phép đo độc lập. Nguồn/raw/hash dùng lại tại [evidence](evidence/item-families/README.md),
+kiến thức đã đối chiếu chỉ giữ trong [bảng nhóm item](PROTOCOL.md#item-families).
 
 ## Bản đồ chuyển
 

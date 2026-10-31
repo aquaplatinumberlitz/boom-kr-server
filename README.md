@@ -22,18 +22,19 @@ boom-kr-server/
 
 ## Đang làm
 
-CP044: **đã đo loại timer bom cũ sau host EOF và chơi tiếp một vòng với client thay thế**.
-B trở thành chủ phòng; C mới vào, Ready → B Start → bom mới → trap/death đồng bộ → kết quả → về phòng.
-Control cố ý gửi timer cũ cho thấy gói tới preparestage; bật fence thì không gửi.
-[Contract/phạm vi](docs/PROTOCOL.md#abort-timer), [recipe/control/hash](docs/evidence/abort-timer/README.md).
-Các ca stale158/165/159 và giới hạn policy local nằm trong [contract KR](docs/PROTOCOL.md).
+CP045: **đã tái dùng kiến thức item từ các repo cũ và đo thêm Roller/MaxPower trên KR**.
+Hai client cùng quan sát stat thay đổi và reset qua vòng kế; nhóm chủ động/biến thể/mode được phân biệt
+trong [bảng nguồn chuẩn](docs/PROTOCOL.md#item-families), [recipe/hash](docs/evidence/item-families/README.md).
+UDP vòng cũ đã đo tới queue, drain và consumer game; hiệu ứng lên actor còn thiếu bằng chứng.
+[Contract và giới hạn](docs/PROTOCOL.md#udp-generation), [recipe/hash](docs/evidence/udp-generation/README.md).
 
 Đây là thí nghiệm copy chẩn đoán Wine; **chưa nghiệm thu trận hoàn chỉnh/K6a**.
 Peerqueue/UDP generation, fullvalidator, server độc lập và full auth/cache/codec còn thiếu; chưa LAN/Internet.
 [Bước tiếp](docs/RESEARCH.md#q-023).
 
-CP043 đã merge [PR51](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/51) tại `f8569d8`.
-CP044 là snapshot trước tích hợp trên nhánh `kre/abort-timer-runtime`.
+CP044 đã merge [PR52](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/52) tại `b947a9d`.
+CP045 hoàn tất record/tự kiểm; [PR53](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/53)
+giữ trạng thái tích hợp của nhánh `kre/item-families-udp`.
 Codex tự kiểm, review độc lập waived. Audit **AUD014/CP044**, audit định kỳ kế **CP048**.
 
 Checkpoint bền vững: [manifest](docs/evidence/checkpoints/manifest.json).
