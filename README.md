@@ -22,18 +22,19 @@ boom-kr-server/
 
 ## Đang làm
 
-CP035: **đã rời rồi vào lại cùng phòng; chủ mới B bấm Start đưa cả hai client vào trận và chạy clock**.
-A vào lại với vai khách/own-match đúng, Ready thật rồi B phát104; hai client đọc đủ121 và khởi tạo trận.
-[Contract và giới hạn](docs/PROTOCOL.md#room-rejoin), [bằng chứng](docs/evidence/room-rejoin/README.md).
-Rời phòng/chuyển chủ/guest EOF và sửa loại sảnh giữ tại [CP034](docs/PROTOCOL.md#room-leave).
+CP036: **đã đo cứu đồng đội và đồng bộ giải thoát sang client còn lại**.
+A bị nhốt→B chạm→report18;170/18 đưa actor A trên B từ56→26, khớp A sau giải thoát;
+A tiếp tục di chuyển và B thấy vị trí mới. Ca đối lập đo chết sớm khi chạm so với giữ khoảng cách.
+[Contract/giới hạn](docs/PROTOCOL.md#collision-rescue), [bằng chứng](docs/evidence/collision-rescue/README.md).
+Rejoin và chủ mới Start tới clock giữ tại [CP035](docs/PROTOCOL.md#room-rejoin).
 
-Đây là profile thử local; **chưa nghiệm thu trận hoàn chỉnh/K6a**. Disconnect trong trận,
-collision/rescue, validator/toàn reset và full auth/cache còn thiếu. Chưa LAN/Internet.
-[Bước tiếp](docs/RESEARCH.md#q-023).
+Đây là profile local với **hai client thật và actor C tổng hợp ở ca rescue**;
+**chưa nghiệm thu trận hoàn chỉnh/K6a**. Disconnect trong trận, validator/toàn reset, result và
+full auth/cache còn thiếu. Chưa LAN/Internet. [Bước tiếp](docs/RESEARCH.md#q-023).
 
-CP034 đã merge [PR42](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/42) tại `0779bc7`.
-CP035 là snapshot trước tích hợp; PR nhánh `kre/rejoin-runtime` giữ trạng thái tích hợp.
-Codex tự kiểm, review độc lập waived. **AUD010/CP032** gần nhất; audit định kỳ kế **CP036**.
+CP035 đã merge [PR43](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/43) tại `1e78035`.
+CP036 là snapshot trước tích hợp; PR nhánh `kre/collision-runtime` giữ trạng thái tích hợp.
+Codex tự kiểm, review độc lập waived. **AUD011/CP036** định kỳ hoàn tất; audit kế **CP040**.
 
 Checkpoint bền vững: [manifest](docs/evidence/checkpoints/manifest.json).
 Quy trình ghi chép/review/audit: [checkpoint workflow](docs/evidence/checkpoints/README.md).

@@ -1,0 +1,74 @@
+{
+  "id": "AUD011",
+  "trigger": "periodic",
+  "completed_through": "CP036",
+  "recorded_utc": "2026-10-31T04:35:47.778386+00:00",
+  "auditor": "Codex self-audit; independent review waived by project owner",
+  "read_files": [
+    "README.md",
+    "docs/PLAN.md",
+    "docs/PROTOCOL.md",
+    "docs/RESEARCH.md",
+    "docs/evidence/bomb-chain/README.md",
+    "docs/evidence/room-leave/README.md",
+    "docs/evidence/room-rejoin/README.md",
+    "docs/evidence/collision-rescue/README.md",
+    "docs/evidence/checkpoints/manifest.json"
+  ],
+  "method": "Read README→PLAN→wholePROTOCOL in ordered slices→RESEARCH→CP033/034/035evidence andnewCP036evidence, thenrereadnewdelta. Compare12roomleave/rejoinruns reports with7collisionruns, actual127/170/nativeblob/checksum/actorsecure snapshots/coordinate/control/touch/timing andimages. Auditmanualreading notcheckersubstitute. OldcompleteCP/raw/evidence pinned andunchanged.",
+  "findings": [
+    {
+      "id": "F1",
+      "stale": "Current Q025row still lists leave/host as unknown despite CP034/035 bounded measured lifecycle; README latest CP035 snapshot before PR43 merge.",
+      "correction": "Current Q025 linksroomrejoin, leave/hostboundedanswer; currentCP036/PR43merge1e78035, nextactivefailure/result21/validator/reset. Gatesstillopen.",
+      "fixed_in": [
+        "README.md",
+        "docs/PLAN.md",
+        "docs/RESEARCH.md"
+      ]
+    },
+    {
+      "id": "F2",
+      "stale": "CP015 notice phrase claimed result1 atDA5FF1; CP034raw stack4=16 probe isnot return/result; inheritedlabel couldbe mistaken as successproof.",
+      "correction": "KeepCP015ready0→1/UIobservation; qualifycallsite/register andexclude CP034stack4 rawvalue asresultproof. Do notchangeoldsealedlogs/evidence/CP.",
+      "fixed_in": [
+        "docs/PROTOCOL.md"
+      ]
+    },
+    {
+      "id": "F3",
+      "stale": "WCPsection ended unqualified no login/gameplay though later contract hasmeasured local stages; table rescue broadlyunknown nowansweredbounded.",
+      "correction": "ExplicitCP006historical no login/gameplay; CP036separatecanonicalrescuecontract/currentmatrix with2realclients/syntheticC andvariantsremaining.",
+      "fixed_in": [
+        "docs/PROTOCOL.md",
+        "README.md",
+        "docs/RESEARCH.md"
+      ]
+    },
+    {
+      "id": "F4",
+      "stale": "Same-teamtwoactorcontrol,153offC orimmediateHELPimage could be misreadas failedrescue/all3clientconsistency; report21reply could be calledadequateACK.",
+      "correction": "Keepfailedfriendlyfirst/report21before17;153offCclearsprofile→Computer3; rescue-keptretainsCprofile/noIDclear. Distinguishbeforewriter56/localafter26/remote170after26 andlatermovement. Ack21full6doesnotstop49reports, meaning/resultopen.",
+      "fixed_in": [
+        "docs/PROTOCOL.md",
+        "docs/evidence/collision-rescue/README.md",
+        "docs/RESEARCH.md"
+      ]
+    },
+    {
+      "id": "F5",
+      "stale": "Runenemy-first subtypeprintf readsstackpointer, misalignedE6F430 andfullfixtureencoder couldbe assumed oracle.",
+      "correction": "Actualcapture/fullnativeblob+CRC/fields source;later$esp+8 correct, rawunchanged. Ignoremisalignedopeningread/rereadE6F370entry. Nativeallocationmodeled/worldsemantics fromruntime. No newvanilla/fullgateclaims.",
+      "fixed_in": [
+        "docs/PROTOCOL.md",
+        "docs/evidence/collision-rescue/README.md"
+      ]
+    }
+  ],
+  "remaining": [
+    "Only2realclients +syntheticC inrescue; no reversedrescuer/auxother/threeactorenemy/no-touch controls/UDPablation/allcollisionlaws.",
+    "Report21result/validator,hostEOF/active-matchdisconnect,generation/stale/allreset/fullmatchremainopen; noK5/K6a/LAN/Internet acceptance.",
+    "Fullauth/profile/cache/codec/reconnect/vanilla,UDPgrammar/reliability/relay/NAT andruntime-atmax/speed/drop/blockchainvariantsstillopen.",
+    "PriorCP033/034/035evidence snapshots arehistorical; PR42/43mergesrecorded insuccessorCPs,currentREADME linkslatestcanonical."
+  ]
+}
