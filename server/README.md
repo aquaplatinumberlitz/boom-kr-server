@@ -32,4 +32,18 @@ không gọi đây là toàn validator chống stale124.
 
 Kiểm cả hai policy: `python3 -m unittest server.test_round_fence server.test_item_claims`.
 
+`udp_round_keys.py` là policy cấp khóa cho [nhánh movement đã đo CP047](../docs/PROTOCOL.md#udp-generation).
+Owner phòng serialize `next_key()` một lần mỗi Start được chấp nhận, dùng cùng giá trị ở u32 thứ hai
+của153 cho mọi client. Giữ instance khi kết thúc/hủy vòng; module không có reset/release tự động.
+Sau256 giá trị byte thấp khác nhau, allocator báo lỗi; không quay vòng rồi giả định gói cũ đã hết hạn.
+Chỉ tạo instance mới khi caller đã thiết lập lifetime peer mới an toàn; việc đóng transport/loại queue
+để bảo đảm điều đó còn cần kiểm riêng. Roster/ID thay đổi cũng phải kiểm identity riêng.
+
+Runtime CP047 kiểm12345→12346, stable IDs1/2 và một gói movement cũ. Module mới chỉ qua unit test,
+chưa ghép vào server độc lập; các key khác/biênu32 là kiểm policy, không thêm bằng chứng runtime KR.
+Không gọi đây là xác thực, toàn UDP validator hoặc bảo vệ mọi loại packet. Fixture RE CP047 chọn hai
+giá trị trực tiếp qua153; runtime đó không tự chứng minh caller đã tích hợp module này.
+
+Kiểm policy: `python3 -m unittest server.test_udp_round_keys`.
+
 Lộ trình và điều kiện mở probe server: [PLAN](../docs/PLAN.md).

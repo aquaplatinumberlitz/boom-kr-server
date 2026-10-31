@@ -1,7 +1,7 @@
 {
   "schema": "kre-checkpoints-v1",
-  "last_id": "CP046",
-  "completed_count": 46,
+  "last_id": "CP047",
+  "completed_count": 47,
   "audit_interval": 4,
   "last_periodic_audit": 44,
   "next_periodic_audit": "CP048",
@@ -85215,6 +85215,3019 @@
           "path": "docs/evidence/udp-actor/README.md",
           "state": "updated",
           "reason": "Nguồn/build/hash/recipe/failedprobe/control/native/visual và giới hạn."
+        }
+      ]
+    },
+    {
+      "id": "CP047",
+      "previous": "CP046",
+      "lifecycle": "complete",
+      "recorded_utc": "2026-10-31T15:27:48.047917+00:00",
+      "context_commit": "f85cda4146dd48a5a476400c9851bb8ca1c2f8c4",
+      "question": "Handler movement thật kiểm gì với gói vòng cũ? Đổi153key hay đổi endpoint có chặn actorapply, trong khi gói mới/hai vòng vẫn chạy?",
+      "scope": "Source-question reconciliation/currentCP045–046 and legacy/VN caches beforebranches; foursequentialtwo-client diagnosticcopycontrollers. Nativehandler target andcase0 key/tailbranches, exactold replay/samekey vsnewkey vsrotatedold/newsource, capturedsecurefield before/after. New low-byte allocator isdesign/unit-tested, notintegratedserver. No extra clientpatch/gate/stateforcing, noalltypes/fullgrammar/fullmatch claim.",
+      "owner": "Codex",
+      "reviewer": "Codex",
+      "artifacts": [
+        {
+          "name": "CA-r2-login-logout.exe",
+          "sha256": "660447c293ce92270cb9b5815331bca976e8f156366e1fe50b217b6c12e60ce3"
+        },
+        {
+          "name": "CA-r2-stage-social.exe",
+          "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+        },
+        {
+          "name": "CA-r2-stage-social.exe Bcopy",
+          "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+        },
+        {
+          "name": "modO.bin",
+          "sha256": "a08950c833d3acab8281049def7b3dc96b221f107eeda01da3a548e34b91dce5"
+        }
+      ],
+      "locators": [
+        "PEcopiesmapped/base400000/modOraw;RVA=VA-400000. Runtime e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef/static660447c293ce92270cb9b5815331bca976e8f156366e1fe50b217b6c12e60ce3/modOa08950c833d3acab8281049def7b3dc96b221f107eeda01da3a548e34b91dce5.",
+        "CP046125DF30 actualvfF4→E66680/vt176A470, existingCP025E66680/E83900/14E57B0 caches reused. CP026native_all.py stream/vector/typed153 decoder adapted toactualsentfixtures; VN92/146P2P notKRwireoracle.",
+        "E66680case0/length13: u16selector0/u8key/u8context/8bytebody/u8tail. KeyE667BE =low8stage+63E0 XORlow8profileID(slot)/1240370. Body slot, signed16x/y,state usedbyB4E6F0; byte1/7 andcontextname unknown.",
+        "E66868compare→E66884drop only incoming<=stored andstored-incoming<10; elseE66889store+63ECslot thenE668AD/B4E6F0apply. E83900memset24bytesFF at153init, notall26slotbounds proof.",
+        "key-rotateR2sample4 wireSHA12f19edc8462717b528f36ece3a4d5606bd4b128c78aeb3551628c44547b8291 exactoldqueue/drain/output/E66680; wire59expected56,no tail/apply, actorstate15/x120/y159unchanged. Both153keys12345→12346 nativefull97; currentkey56 applies.",
+        "rotate-oldR2sample4 oldsource60880 vsnewadvertised46041, endpointpeer5FB758B8nonzero; key59match, incoming69stored86(delta17), applyx120→200. Directoldsocket→actualclient bypassesrelaygenerationdiscard. rotate-new comparedseparately, sameoldpayloadtype throughnewadvertisedsource.",
+        "6ranges4artifact byteequality;16nativeguardbranchcases incltail9/10/wrap andkey+256collision. Nativegetters useCP046syntheticcounterlimits, noperiodicrekey/storage orruntimeclientstatechange.",
+        "NewUdpRoundKeys design: oneu32peracceptedStart/allmemberssame, no repeatedlow8within256allocations thenraise; lifecycle/rosterownerresponsibility. Runtimefixtureschoosevaluesdirectly, notnewmoduleintegration.",
+        "CP046PR54mergedf85cda4/AUD014at44, nextperiodicCP048; solo/selfcheck/reviewwaived;nogate/fullmatch/K5/K6a/LAN/Internetclosure."
+      ],
+      "findings": [
+        {
+          "summary": "Target runtime vfF4 là E66680 có sẵn cacheCP025; reuse handler/reset/decoder153, không tìm lại endpoint/CRC/queue hoặc quét client. Chỉ selector0/length13 cho movement được giải.",
+          "source": "kr_runtime",
+          "status": "confirmed",
+          "method": "runtime",
+          "canonical": "docs/PROTOCOL.md#udp-generation",
+          "limits": "VN/legacy là method/provenance; ID/offset/wire KR kiểm theo build. Các selector khác, fullgrammar/authority vẫn mở.",
+          "evidence": [
+            "E005",
+            "E026",
+            "E058",
+            "E001"
+          ]
+        },
+        {
+          "summary": "Native keybyte =low8(stage+63E0)^low8(profileID); tailfilter chỉ bỏ lùi0..9, lùi>=10 vẫn store/apply. Emulation16cases xác nhận branchboundaries và key+256collision.",
+          "source": "kr_static",
+          "status": "confirmed",
+          "method": "emulation",
+          "canonical": "docs/PROTOCOL.md#udp-generation",
+          "limits": "Nativecomparison/XOR/jumps trên contexts tổng hợp, không fullhandler/actor/runtime allboundary hoặc auth/security. Names/units context/tail chưa gán.",
+          "evidence": [
+            "E030",
+            "E027",
+            "E031",
+            "E044",
+            "E020"
+          ]
+        },
+        {
+          "summary": "Đổi second153u32 12345→12346 qua packet ở vòng2/cảA-B, sameports/oldUDPbytes unchanged: exactoldkey59!=expected56 dừng trước tail/apply; securestate15/x120/y159 giữ nguyên. Currentkey56 match/applies và hai result/return.",
+          "source": "kr_runtime",
+          "status": "confirmed",
+          "method": "runtime",
+          "canonical": "docs/PROTOCOL.md#udp-generation",
+          "limits": "StableprofilesIDs1/2/oneactualoldpacket/diagnosticcopy; không toànUDPtype, keyreuse/rosterchanges hoặc productiongenerationguard. Fixtures lựa chọn emu, nativeclient observed riêng.",
+          "evidence": [
+            "E140",
+            "E141",
+            "E142",
+            "E029",
+            "E038",
+            "E035"
+          ]
+        },
+        {
+          "summary": "Đổi153ports riêng lẻ, giữ key12345: exactold từ retainedoldsource vẫn resolve/queue/drain/E66680/keymatch/tailstore/apply x120→200; newsource đối chiếu riêng. Endpointrotation không là guard cho ca này.",
+          "source": "kr_runtime",
+          "status": "confirmed",
+          "method": "runtime",
+          "canonical": "docs/PROTOCOL.md#udp-generation",
+          "limits": "Replay trực tiếp tới client bypassesproxyobsolete-generationdiscard. Không suy peer lifetime từpointer, hoặc mọi transport/newaccount. Originalpayload/CRC retained, not forgednewUDP.",
+          "evidence": [
+            "E220",
+            "E221",
+            "E299",
+            "E300",
+            "E038",
+            "E019"
+          ]
+        },
+        {
+          "summary": "UdpRoundKeys cấp khóa không lặp low8 trong256acceptedrounds rồi báo lỗi; caller gửi cùng key cho mọi member/giữ instance quafinishabort. Policy/code unit-tested, chưa tích hợp runtime service.",
+          "source": "design",
+          "status": "design",
+          "method": "documentation",
+          "canonical": "docs/PROTOCOL.md#udp-generation",
+          "limits": "Không tự quản transport lifetime/roster hoặc validateUDP/auth. Chỉ12345/12346 córuntimechuyểnkey trongđợtnày; testu32wrap không KRruntimeproof.",
+          "evidence": [
+            "E002",
+            "E003",
+            "E004",
+            "E048",
+            "E001"
+          ]
+        }
+      ],
+      "verification": [
+        {
+          "check": "13650 mechanicalchecks/4sealedcontrollers/678nativepacketcases/1766secure snapshots; actual153decode/CRCpartial/oldpayloadendpoint/branches/actor/isolation/sequential/hash verified.",
+          "result": "pass",
+          "evidence": [
+            "E042",
+            "E039",
+            "E029",
+            "E037",
+            "E038"
+          ],
+          "limits": "Relation checks only, no automaticsemantic/gateclosure; nativeactorproof scopedtoliteralsamples."
+        },
+        {
+          "check": "16nativeguardbranchcases;6ranges4artifacts;16policytests(4newallocator)/artifacts5/5;16images manuallyviewed withsourcehash.",
+          "result": "pass",
+          "evidence": [
+            "E030",
+            "E027",
+            "E044",
+            "E040",
+            "E048",
+            "E049",
+            "E056"
+          ],
+          "limits": "Emulationcandidatecontexts anddesignpolicy separate fromruntimecopy; getter excludesperiodicrekey/callbackstorage. Selfcheck, notindependentreview."
+        }
+      ],
+      "evidence": [
+        {
+          "id": "E001",
+          "kind": "repository",
+          "path": "docs/evidence/udp-freshness/README.md",
+          "sha256": "1908c7ca71a01d3452c585ba4e5a39a45b37fcf35df5f90b5f9ff474163199ce",
+          "bytes": 8318
+        },
+        {
+          "id": "E002",
+          "kind": "repository",
+          "path": "server/udp_round_keys.py",
+          "sha256": "db58ae1f25bcbeb52c2d25c7db6afbf1021ddd3af29702e756f5f41886530a0d",
+          "bytes": 1187
+        },
+        {
+          "id": "E003",
+          "kind": "repository",
+          "path": "server/test_udp_round_keys.py",
+          "sha256": "cfb36ee95d48c79b1800081a73b54498242f366eb08a2e3be850ff4a3503ce96",
+          "bytes": 1224
+        },
+        {
+          "id": "E004",
+          "kind": "repository",
+          "path": "server/README.md",
+          "sha256": "64e59e1a9583f1356b34c6822e9df3ce0516ac740023ad85970f9967faebb3a5",
+          "bytes": 3929
+        },
+        {
+          "id": "E005",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/reuse-question.json",
+          "sha256": "a97782827de0960f50f40cd8610b68c641b648b21844612ce07b6deac159167c",
+          "bytes": 5318
+        },
+        {
+          "id": "E006",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/run_probe.py",
+          "sha256": "fa6e6ec2f9d455e5f4206578ca92a91ad7c26031ba1a79e67d92a9a48440e25a",
+          "bytes": 1069
+        },
+        {
+          "id": "E007",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/seal_run.py",
+          "sha256": "dd8a8d4ee1a42f85f5e03c0ca0d42be33a545ace5bb6f79081d5199e63e84387",
+          "bytes": 627
+        },
+        {
+          "id": "E008",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/derive_roles.py",
+          "sha256": "0db242a0825a87ede17beba78f6a4b8063e5d917e712d04c4edbee0151db82f3",
+          "bytes": 808
+        },
+        {
+          "id": "E009",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/replay-run.py",
+          "sha256": "9661b2c758ad8f163051523b860780aa3cbb56db8c3919b03401c83f5ff6cd2f",
+          "bytes": 3004
+        },
+        {
+          "id": "E010",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/native_packets.py",
+          "sha256": "39d896f54c1f59b07674759d9b4cb0539af4c42f906ec8ac6cd21953fe310c3e",
+          "bytes": 4769
+        },
+        {
+          "id": "E011",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/parse_fields.py",
+          "sha256": "eae0762c355c86663845243b96057507c20eeef644e42693f198ae431762f369",
+          "bytes": 3877
+        },
+        {
+          "id": "E012",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/native_udp.py",
+          "sha256": "d58bb002a52d0e00164d4c38409786f25809096159aed44f5c0b54455968daf4",
+          "bytes": 1538
+        },
+        {
+          "id": "E013",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/parse_runtime.py",
+          "sha256": "44dba44aacac2e1842a6ce5f13dcaefab0d1384be9d7b8ff0b8aba9cd4a1ebcc",
+          "bytes": 4852
+        },
+        {
+          "id": "E014",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/parse_downstream.py",
+          "sha256": "ab051000b7f11bf213fc46f9394349f51f04acfe0096a747b8335990dcef14d5",
+          "bytes": 4322
+        },
+        {
+          "id": "E015",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/handler.gdb",
+          "sha256": "5eb9f766b8c270e0b2d8ffbd46c90747c1fbf34e8a87a5ebae359138b795b323",
+          "bytes": 21572
+        },
+        {
+          "id": "E016",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/handler-stale-recipe.json",
+          "sha256": "8281a0b5369a21c8216526c009079990d24e66fac588bda3f293722ba272b14b",
+          "bytes": 1000
+        },
+        {
+          "id": "E017",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/handler-stale-launcher.log",
+          "sha256": "907cc083e466b81d16ad6ce4d1dda16dae27bf8cbf96cfb1635aacb07659b9ff",
+          "bytes": 254260
+        },
+        {
+          "id": "E018",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/rotate.gdb",
+          "sha256": "ab2b3915cfaa4c679d6ec960c4c7de7f11f2e3840dd2c1fea08e9124755a219f",
+          "bytes": 22045
+        },
+        {
+          "id": "E019",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/measurement-notes.json",
+          "sha256": "bee46f41f83703df166b6f181fd11d2e09e020d512543f25f3947a55635e4ec2",
+          "bytes": 4593
+        },
+        {
+          "id": "E020",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/E66680-prefix.asm",
+          "sha256": "881f2fbff332eaf3b863931dfcdee82f78b62b26a3cb542abb65d1f9bb86f633",
+          "bytes": 14629
+        },
+        {
+          "id": "E021",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/freshness.gdb",
+          "sha256": "22d97f770fef8befa186b1f2b2eb337009be1a9e092cda9574b700d759886a5c",
+          "bytes": 23322
+        },
+        {
+          "id": "E022",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/handler-stale-hashes.json",
+          "sha256": "7e39566fd206ee899514a98a9a9dd36fe2db1524bccbf82441ac2d29fbe8bdd8",
+          "bytes": 244756
+        },
+        {
+          "id": "E023",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/key-rotate-recipe.json",
+          "sha256": "564e9b684fb76d0be7072ea80e356e992418984bda6c01965ad3faa90bded1ee",
+          "bytes": 995
+        },
+        {
+          "id": "E024",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/key-rotate-launcher.log",
+          "sha256": "c0133c90a48d8df12c0d0f172bf82a29b37c2fffaf90c24ab2b49630b89ce325",
+          "bytes": 201895
+        },
+        {
+          "id": "E025",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/runtime-summary.json",
+          "sha256": "8da2960e8cb47afae0ee07aff9fa9897adaf42014bf0ab783f1c9871ed23b4ad",
+          "bytes": 841795
+        },
+        {
+          "id": "E026",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/downstream-summary.json",
+          "sha256": "a84432de3a28cb124a8196dc05c18945a2f0a470e213204c42b44ae9f748d13f",
+          "bytes": 326151
+        },
+        {
+          "id": "E027",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/native-tail-branch.json",
+          "sha256": "ce480ea34ac740ec57e3e9b4d838a22b607b44345e86e2c6e9ca38ddd1d8fff1",
+          "bytes": 1413
+        },
+        {
+          "id": "E028",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/native_153.py",
+          "sha256": "4f0981c8821dbd3fccf5f58449ea38dbe88a270f2906b5e5801fb2f6171d01fd",
+          "bytes": 3519
+        },
+        {
+          "id": "E029",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/native-153.json",
+          "sha256": "0472d7c0693a5171d4f206ca498ff3b6bea1ef89dee8c6f09a0dba4e264d303a",
+          "bytes": 54393
+        },
+        {
+          "id": "E030",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/native-key-branch.json",
+          "sha256": "a76f2cf9b2b046a73e7225c338906e525353fa088a6e63baaef67b77efd0a186",
+          "bytes": 1138
+        },
+        {
+          "id": "E031",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/native_guard_branches.py",
+          "sha256": "d9becea362875fddc224d433eb72a3631b07a52ae06b2369dc415e200a2285d7",
+          "bytes": 2600
+        },
+        {
+          "id": "E032",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/key-rotate-hashes.json",
+          "sha256": "942a36d2577b1527820d0815ff2c82c51445f91c2a1db8ef196f5f62d3d995a4",
+          "bytes": 241159
+        },
+        {
+          "id": "E033",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/rotate-old-recipe.json",
+          "sha256": "1ba4fd014764c2b191079715375f1a7382f68124bae57eae68a3e9e0ff77062d",
+          "bytes": 995
+        },
+        {
+          "id": "E034",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/rotate-old-launcher.log",
+          "sha256": "ab73f722dcf629b3681c897c412d5f2ae3016a8392b00db0166fc0eae6cb3ff7",
+          "bytes": 198234
+        },
+        {
+          "id": "E035",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/actor-fields.json",
+          "sha256": "5634a60cbc9db043cac55e9084d3c980b9e6418ee22206f4ebf3cb6e3d4907fd",
+          "bytes": 1200025
+        },
+        {
+          "id": "E036",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/native-packets.json",
+          "sha256": "c74592a09f882f30aa49b8cf5d30a9c6b34947eece3b4562d7d450990f597ff9",
+          "bytes": 283638
+        },
+        {
+          "id": "E037",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/summarize_replays.py",
+          "sha256": "9fcd26f5524ddda24834353b42c806bc10dabd2962273348732863f220ff54ff",
+          "bytes": 2534
+        },
+        {
+          "id": "E038",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/replay-effects.json",
+          "sha256": "6f4854eab1db72d5db15e705617e43251d647906c5a9382f648276db49258643",
+          "bytes": 76599
+        },
+        {
+          "id": "E039",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/verify.py",
+          "sha256": "f2f4290384f111ea034eccc854bf814b7227a08c85bf0351ec90a44d34113c2c",
+          "bytes": 9051
+        },
+        {
+          "id": "E040",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/native-udp.json",
+          "sha256": "8c108d3e40b92a03c0c28797f7d8822996ca2e41c63f32df5bb57e928dfbf3e5",
+          "bytes": 97837
+        },
+        {
+          "id": "E041",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/runtime-metrics.json",
+          "sha256": "4fd93b21fb615681d3f9e200db86d496b178dc14a493d818ce2525df18709887",
+          "bytes": 1512
+        },
+        {
+          "id": "E042",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/verification.json",
+          "sha256": "3a7073efa1f4667582d80c76eade215cce14d9975cd85e7da0561f352a445dac",
+          "bytes": 260
+        },
+        {
+          "id": "E043",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/match_code.py",
+          "sha256": "62a48f3bc90d3cdb79da6c79bd0dd47aa79713989bff821d6f7c0b1026ef77f8",
+          "bytes": 1149
+        },
+        {
+          "id": "E044",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/code-match.json",
+          "sha256": "fa1ba419fcf12634161e8753357e49fff4cfda99012fcc8509bc3717a02932da",
+          "bytes": 1822
+        },
+        {
+          "id": "E045",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/rotate-old-hashes.json",
+          "sha256": "77da3ee0a13a0fabd741381204d4605b3f207290591aeaa2681d9c6e3b3179e3",
+          "bytes": 241763
+        },
+        {
+          "id": "E046",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/rotate-new-recipe.json",
+          "sha256": "14ee39a7f6d7b947110b557dce38abfeabe3a63a10e8066b6bb99b424a008a3b",
+          "bytes": 995
+        },
+        {
+          "id": "E047",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/rotate-new-launcher.log",
+          "sha256": "8bfecd4239a03d223b0a85729c1cc44c0a88e75d77472ef64fd859f3db157fdc",
+          "bytes": 201954
+        },
+        {
+          "id": "E048",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/policy-tests.txt",
+          "sha256": "bf1d8186df2d63ab6beb6c5dbd7841764bfe6ec831b9b94b3acbe5cbc71d83a5",
+          "bytes": 115
+        },
+        {
+          "id": "E049",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/artifact-verification.txt",
+          "sha256": "649c6624aa6d317dfc1db5e16fea683cfbc9d9cf4dd3df11c0d70e57409054a0",
+          "bytes": 253
+        },
+        {
+          "id": "E050",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/finish_checkpoint.py",
+          "sha256": "a88c9b82b97063a2ab3c1b8dc4c66c78757787d91fe9ecbc88c321308d62ec23",
+          "bytes": 11597
+        },
+        {
+          "id": "E051",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/rotate-new-hashes.json",
+          "sha256": "661e4500594ca46e8593cb425b8590aaa69a2573014c697bc1f2497596f06ce1",
+          "bytes": 242368
+        },
+        {
+          "id": "E052",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/handler-stale-visual.png",
+          "sha256": "99c8eba73f8410b86bbb0357472030a377f21ed048bf2dfc699c313e8a37a7e1",
+          "bytes": 229984
+        },
+        {
+          "id": "E053",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/key-rotate-visual.png",
+          "sha256": "a911a0a7ee72bef9f0bf28926004eeba6fd1fd73fca84e1b798f0d7513f90bd8",
+          "bytes": 302837
+        },
+        {
+          "id": "E054",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/rotate-old-visual.png",
+          "sha256": "10d98cd85695e1632bc305a677491368a4e5d2b3b2e1663e30049d66e1b78e2e",
+          "bytes": 307589
+        },
+        {
+          "id": "E055",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/rotate-new-visual.png",
+          "sha256": "f5823b9a0e42f9e47b33b427731a7e246e39b030f67c3be89653df5a83a82e17",
+          "bytes": 301292
+        },
+        {
+          "id": "E056",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/visual-index.json",
+          "sha256": "c33713202b45cb31f9563195733231977fd12cde507a34490ae60f657c940b40",
+          "bytes": 3499
+        },
+        {
+          "id": "E057",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/handler-stale/run.json",
+          "sha256": "e5f819e43c826f83681bda4755dbbb1b132b81f23c9a3d1521a9c37e7d0543bf",
+          "bytes": 339608
+        },
+        {
+          "id": "E058",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/handler-stale/client.log",
+          "sha256": "e0520ce90db6e659c07dddf5fa2faddd7c6489c08d7940c06978693492ab8753",
+          "bytes": 205515
+        },
+        {
+          "id": "E059",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/handler-stale/client-B.log",
+          "sha256": "aa6419dbc7a8568de3986fde55a521c6cd6ac7451011000c7fd2fcaeb6237c29",
+          "bytes": 218631
+        },
+        {
+          "id": "E060",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/handler-stale/A-ready110-73.bin",
+          "sha256": "8fafd9cf652b458ee09b3751a0201f9ab1409920398e0e842e43b915c8840e25",
+          "bytes": 44
+        },
+        {
+          "id": "E061",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/handler-stale/B-ready110-73.bin",
+          "sha256": "8fafd9cf652b458ee09b3751a0201f9ab1409920398e0e842e43b915c8840e25",
+          "bytes": 44
+        },
+        {
+          "id": "E062",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/handler-stale/A-floor582-76.bin",
+          "sha256": "9001468072b5ca6e05400891cfd72a5f50549b84806907c1e43b4a350676557b",
+          "bytes": 54
+        },
+        {
+          "id": "E063",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/handler-stale/A-start121-r1-79.bin",
+          "sha256": "f8a824335b4079160a4aaf0e0b425d1fabfa78c248d131503440d0414e1f26cf",
+          "bytes": 167
+        },
+        {
+          "id": "E064",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/handler-stale/B-floor582-76.bin",
+          "sha256": "9001468072b5ca6e05400891cfd72a5f50549b84806907c1e43b4a350676557b",
+          "bytes": 54
+        },
+        {
+          "id": "E065",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/handler-stale/B-start121-r1-79.bin",
+          "sha256": "f8a824335b4079160a4aaf0e0b425d1fabfa78c248d131503440d0414e1f26cf",
+          "bytes": 167
+        },
+        {
+          "id": "E066",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/handler-stale/A-go197-82.bin",
+          "sha256": "64b95010ecb0e40bc0367f41f6710d2357fb2538ce827e205825284601237ef8",
+          "bytes": 52
+        },
+        {
+          "id": "E067",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/handler-stale/B-go197-82.bin",
+          "sha256": "64b95010ecb0e40bc0367f41f6710d2357fb2538ce827e205825284601237ef8",
+          "bytes": 52
+        },
+        {
+          "id": "E068",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/handler-stale/A-play196-85.bin",
+          "sha256": "d04bf155b4847f9d41b0edfdf00a32526302273271c0f1cadbb8ce22b89eb51d",
+          "bytes": 45
+        },
+        {
+          "id": "E069",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/handler-stale/B-play196-85.bin",
+          "sha256": "d04bf155b4847f9d41b0edfdf00a32526302273271c0f1cadbb8ce22b89eb51d",
+          "bytes": 45
+        },
+        {
+          "id": "E070",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/handler-stale/A-peer153-88.bin",
+          "sha256": "02f71787a4164c80bb4585bba7cb6006ce4d1d7acc590d81d88f3948eea26eb4",
+          "bytes": 135
+        },
+        {
+          "id": "E071",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/handler-stale/B-peer153-88.bin",
+          "sha256": "af192ea030f53d83844c205cda2c531773cb6967203a182ca4f75a6fb503def3",
+          "bytes": 135
+        },
+        {
+          "id": "E072",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/handler-stale/A-dynamic159-r1-1.bin",
+          "sha256": "ce45fc947aabc22d29d1361e7f576818a1665b9a9f617af2c2cec7116d89591e",
+          "bytes": 77
+        },
+        {
+          "id": "E073",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/handler-stale/B-dynamic159-r1-1.bin",
+          "sha256": "ce45fc947aabc22d29d1361e7f576818a1665b9a9f617af2c2cec7116d89591e",
+          "bytes": 77
+        },
+        {
+          "id": "E074",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/handler-stale/A-blast158-r1-1.bin",
+          "sha256": "31e41726c0deaa834ef2fa20813c84199f3f94023a8f3b7d0f64f9d5241eede1",
+          "bytes": 51
+        },
+        {
+          "id": "E075",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/handler-stale/B-blast158-r1-1.bin",
+          "sha256": "31e41726c0deaa834ef2fa20813c84199f3f94023a8f3b7d0f64f9d5241eede1",
+          "bytes": 51
+        },
+        {
+          "id": "E076",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/handler-stale/B-event170-17-r1-97.bin",
+          "sha256": "02b5985a867bc19e3bb91236bc8816d3f6f25bc4f8c5f7bddba4579c9a56e15b",
+          "bytes": 48
+        },
+        {
+          "id": "E077",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/handler-stale/B-event170-19-r1-100.bin",
+          "sha256": "bd8bf772c0329942ba758585caf140131b8b59be9138cb03a2c34fd4d1ba22b3",
+          "bytes": 59
+        },
+        {
+          "id": "E078",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/handler-stale/A-rank175-r1-97.bin",
+          "sha256": "6be30231b79508f47dfe49eaf4b8d6c1fe69ae1e8976654096d7eb50ae1f47f7",
+          "bytes": 340
+        },
+        {
+          "id": "E079",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/handler-stale/B-rank175-r1-103.bin",
+          "sha256": "8f755c898994d478f38d2b807ece591b2ad2d1da7c950eba60859a5e338aa315",
+          "bytes": 340
+        },
+        {
+          "id": "E080",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/handler-stale/A-return180-r1-100.bin",
+          "sha256": "1560d1178af0e8cea05c74affdc46a79d86c425250a71210b94da25e4073df4a",
+          "bytes": 41
+        },
+        {
+          "id": "E081",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/handler-stale/B-return180-r1-106.bin",
+          "sha256": "6a49bc7222df4957e03d3ebe2382217d1988daab1844150f76558baf634da81b",
+          "bytes": 41
+        },
+        {
+          "id": "E082",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/handler-stale/A-host110-r1-103.bin",
+          "sha256": "f8c269431038bc985afb79961f89b6e2509d0829ed8046e397aa5acfb962c596",
+          "bytes": 44
+        },
+        {
+          "id": "E083",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/handler-stale/A-guest110-r1-106.bin",
+          "sha256": "34aa966e0eef0cee7af15360322ee98baf2f023eb2b8528674b6115d7889a313",
+          "bytes": 44
+        },
+        {
+          "id": "E084",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/handler-stale/B-host110-r1-109.bin",
+          "sha256": "1464734628e1b0aa271c48a50c2ed3ceb0fb0d4ba99dac113b20b2ea74dc0d7e",
+          "bytes": 44
+        },
+        {
+          "id": "E085",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/handler-stale/B-guest110-r1-112.bin",
+          "sha256": "5459dc7d1e715e0523e24981ce67a04e72b6949c2274e3cc6b7577cf62fe6a9d",
+          "bytes": 44
+        },
+        {
+          "id": "E086",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/handler-stale/A-ready110-109.bin",
+          "sha256": "d61e0dec5dd42f6d9359359420df2fed9723478d5554aebb09cb7fa7d9ca1754",
+          "bytes": 44
+        },
+        {
+          "id": "E087",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/handler-stale/B-ready110-115.bin",
+          "sha256": "71ab3449f204c7354574438ac4952909165942f1abaf832f65a4463c57f8a476",
+          "bytes": 44
+        },
+        {
+          "id": "E088",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/handler-stale/A-floor582-112.bin",
+          "sha256": "3de167f2b9fd7e539a43e320113a3504ec5d160adc35bf04bedc1c5f1bb1e636",
+          "bytes": 54
+        },
+        {
+          "id": "E089",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/handler-stale/A-start121-r2-115.bin",
+          "sha256": "2c2f633223459f50f3c83b215e3438d816637d3fcedf6adc5177f166c3f45901",
+          "bytes": 167
+        },
+        {
+          "id": "E090",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/handler-stale/B-floor582-118.bin",
+          "sha256": "7506dfc711c0914f95893c307a778b093e45b31b226e4e457a6678c9e7ad7afb",
+          "bytes": 54
+        },
+        {
+          "id": "E091",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/handler-stale/B-start121-r2-121.bin",
+          "sha256": "90884970c6bbda9491a5a3408cea9f6d47a3b1e0019b1aefd6d83b2764810fec",
+          "bytes": 167
+        },
+        {
+          "id": "E092",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/handler-stale/A-go197-118.bin",
+          "sha256": "aa70380f2f8ac732b32002b998ecd874353865d9e3853102c01a72d06b327970",
+          "bytes": 52
+        },
+        {
+          "id": "E093",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/handler-stale/B-go197-124.bin",
+          "sha256": "94f616295ccb42b1d65f119531b5965ade54edc4e9034b76dbf7c2d89697e0e9",
+          "bytes": 52
+        },
+        {
+          "id": "E094",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/handler-stale/A-play196-121.bin",
+          "sha256": "c36a9aaa4674958645f4db690772261f39607eb5fb712a80827259d710da962d",
+          "bytes": 45
+        },
+        {
+          "id": "E095",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/handler-stale/B-play196-127.bin",
+          "sha256": "010276ee96d43eb798c4cbd8f0d661c416e8d7faa30a083f459303b635c75c2f",
+          "bytes": 45
+        },
+        {
+          "id": "E096",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/handler-stale/A-peer153-124.bin",
+          "sha256": "ede852e5eedb2370f98e2350cefc7a46609c29fd0ebe8fd246a6676e7ea0dc0e",
+          "bytes": 135
+        },
+        {
+          "id": "E097",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/handler-stale/B-peer153-130.bin",
+          "sha256": "97c43bb27779cc8f1a3f4d0fe58383ae9da63b4a3fa8a98ed4f19e190ad944b6",
+          "bytes": 135
+        },
+        {
+          "id": "E098",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/handler-stale/A-dynamic159-r2-2.bin",
+          "sha256": "1f56028930bada07b7dfeb0ce88f915ea32e2fa78cceccb6516cdb8b1f5f2827",
+          "bytes": 77
+        },
+        {
+          "id": "E099",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/handler-stale/B-dynamic159-r2-2.bin",
+          "sha256": "4f3fafdca00ba6b5e6b4d6c8fb57bffec19bfe76cf7bd79a94ac2245bd090f20",
+          "bytes": 77
+        },
+        {
+          "id": "E100",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/handler-stale/A-blast158-r2-2.bin",
+          "sha256": "c6f71031e51fa0da4cb1724b12a5664aa7bbaf287f0bb19bbe92c8e1f8ddcc55",
+          "bytes": 51
+        },
+        {
+          "id": "E101",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/handler-stale/B-blast158-r2-2.bin",
+          "sha256": "64d4c380a715c392025aa97ce4b91e3dcfcb01f4ee6596e3e32257b491d7ca6f",
+          "bytes": 51
+        },
+        {
+          "id": "E102",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/handler-stale/B-event170-17-r2-139.bin",
+          "sha256": "7022b58b7bb7840e235d21aca62eb17865fe116a7994783180635706efb4c251",
+          "bytes": 48
+        },
+        {
+          "id": "E103",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/handler-stale/B-event170-19-r2-142.bin",
+          "sha256": "94256aa5b47d621ace79192a06375768fad40e0030e11e9c740ae251b8c8914e",
+          "bytes": 59
+        },
+        {
+          "id": "E104",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/handler-stale/A-rank175-r2-133.bin",
+          "sha256": "a650571eac7ac88b8a63c689d277f33f067a0a02cafefe9a47fb6766b6e4f46c",
+          "bytes": 340
+        },
+        {
+          "id": "E105",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/handler-stale/B-rank175-r2-145.bin",
+          "sha256": "4c6525e5113bf1406389d88be7e48119b575f2fbefd0f348e16de23fbb57f234",
+          "bytes": 340
+        },
+        {
+          "id": "E106",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/handler-stale/A-return180-r2-136.bin",
+          "sha256": "dea703a5f5fba54456f7040c367a3014662401708698034e1dfe0ddbba432538",
+          "bytes": 41
+        },
+        {
+          "id": "E107",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/handler-stale/B-return180-r2-148.bin",
+          "sha256": "417d16715f09456c9c7eb895c68ad6f295d89e0350ed21b14baa14429e1575c9",
+          "bytes": 41
+        },
+        {
+          "id": "E108",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/handler-stale/A-host110-r2-139.bin",
+          "sha256": "b9eb311ff2868e5d2dda699437fbbdf64701a2cefce8f1e19b35f7782bb32f83",
+          "bytes": 44
+        },
+        {
+          "id": "E109",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/handler-stale/A-guest110-r2-142.bin",
+          "sha256": "c5345f3b36afb184e6827e21b0089107789ffc0c6bb5c025369801115ba4f3fe",
+          "bytes": 44
+        },
+        {
+          "id": "E110",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/handler-stale/B-host110-r2-151.bin",
+          "sha256": "1ef9d8ba04436e67c099050d5bb250566d314d0138e4fdaa6d580c7e94b76827",
+          "bytes": 44
+        },
+        {
+          "id": "E111",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/handler-stale/B-guest110-r2-154.bin",
+          "sha256": "e603cf59b15311af66d273c5557ce9e12e248a32cdab30a53044eb4038e7be3b",
+          "bytes": 44
+        },
+        {
+          "id": "E112",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/request-frames/handler-stale/A-F51-118.bin",
+          "sha256": "3c44e079b280b130ac8da3c38f393e69fe477e15ecbc503e917f1591e900e5ff",
+          "bytes": 60
+        },
+        {
+          "id": "E113",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/request-frames/handler-stale/A-F64-127.bin",
+          "sha256": "6be9328b7cbf73eb0f2b2f3872bf745b5557e795f01218edcd8e6c2189b2a0e5",
+          "bytes": 70
+        },
+        {
+          "id": "E114",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/request-frames/handler-stale/A-F77-127.bin",
+          "sha256": "a32e834fff39b3d52461d868e2860446ed687efd32975806bbc2fc9118bb2370",
+          "bytes": 67
+        },
+        {
+          "id": "E115",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/request-frames/handler-stale/A-F132-118.bin",
+          "sha256": "89c4245b6baf5c36deaa5860964a074086aa6e90365fe887f51ae5e18f7daec2",
+          "bytes": 60
+        },
+        {
+          "id": "E116",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/request-frames/handler-stale/A-F145-127.bin",
+          "sha256": "d153b215ca4bfe8343099a6575a0e0ed2d46e54599c1fe2dcf11f64d009accae",
+          "bytes": 70
+        },
+        {
+          "id": "E117",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/request-frames/handler-stale/A-F166-127.bin",
+          "sha256": "de3330c679d9dc8fbf01448b06b1c9c22620cffda5be36525e00d54d1d8ae536",
+          "bytes": 67
+        },
+        {
+          "id": "E118",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/request-frames/handler-stale/B-F13-82.bin",
+          "sha256": "1746130345929e482c425aa463e6bf34d6da555c86c6474cf235330227f74f47",
+          "bytes": 49
+        },
+        {
+          "id": "E119",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/request-frames/handler-stale/B-F24-95.bin",
+          "sha256": "730e662309a1a5abb7556e5f500168850ae220a9b7f288c1c62d18904206398c",
+          "bytes": 98
+        },
+        {
+          "id": "E120",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/request-frames/handler-stale/B-F65-127.bin",
+          "sha256": "bf3de8c98b1c4ff5f81c160bc13c490cc69273d3af38eef8a476e11985da4a30",
+          "bytes": 52
+        },
+        {
+          "id": "E121",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/request-frames/handler-stale/B-F67-127.bin",
+          "sha256": "6b42514237b4c948c008889d232ebcbb1182a23e327ed63b202703e088e3dab3",
+          "bytes": 52
+        },
+        {
+          "id": "E122",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/request-frames/handler-stale/B-F70-127.bin",
+          "sha256": "c8bb65d1b0bb7ab2feb72aa1092227d8d5c0c923e33f319eabaadc70fe3be805",
+          "bytes": 52
+        },
+        {
+          "id": "E123",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/request-frames/handler-stale/B-F73-127.bin",
+          "sha256": "0174349371fa46ca0ab6f4becafe138fcf9d7cfa4926a6111b87cdc4ccfa4d99",
+          "bytes": 52
+        },
+        {
+          "id": "E124",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/request-frames/handler-stale/B-F75-127.bin",
+          "sha256": "5bf3e52fdb0d412af2dc0b00556cb616a26e489531714e95218dc8822766b32b",
+          "bytes": 52
+        },
+        {
+          "id": "E125",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/request-frames/handler-stale/B-F78-127.bin",
+          "sha256": "6efb5cedeb6f3e8e0ac7cf6d703f6c9893889dc2847572b12b1fc4d12bff8b40",
+          "bytes": 52
+        },
+        {
+          "id": "E126",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/request-frames/handler-stale/B-F80-127.bin",
+          "sha256": "aecffa3d9fda898f2654d5ae04effd7468ffc920f36be6a7c8ad5aac1694d0d3",
+          "bytes": 52
+        },
+        {
+          "id": "E127",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/request-frames/handler-stale/B-F99-95.bin",
+          "sha256": "d2ea0e8e4899abaa5a5ea0f72f3dd1105e3e9a9bcad1710f3283bb3340c21dc8",
+          "bytes": 382
+        },
+        {
+          "id": "E128",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/request-frames/handler-stale/B-F152-127.bin",
+          "sha256": "0c62fb1d0f55ea1fa190ed4a05caea9cee5d623a0f60be5ea58714951026dd4b",
+          "bytes": 52
+        },
+        {
+          "id": "E129",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/request-frames/handler-stale/B-F155-127.bin",
+          "sha256": "856f9cdc86dda2c8779cf5dc33dc4d1d7914b7752eee1404c83d30a4d0b7fc71",
+          "bytes": 52
+        },
+        {
+          "id": "E130",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/request-frames/handler-stale/B-F158-127.bin",
+          "sha256": "147e3b498c2d41af9f692e0916fdd28ddd6daad5c9d090efad01019c9bb24dfb",
+          "bytes": 52
+        },
+        {
+          "id": "E131",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/request-frames/handler-stale/B-F159-127.bin",
+          "sha256": "ab0783f178f0f975cb8d61d1b26acc837a5bdfd1a4d9fe1cbebdfe03f42b8ad8",
+          "bytes": 52
+        },
+        {
+          "id": "E132",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/request-frames/handler-stale/B-F161-127.bin",
+          "sha256": "a9692a679291033869b597dd50a06eb07791cfdad09485b806e255e1569baeb2",
+          "bytes": 52
+        },
+        {
+          "id": "E133",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/request-frames/handler-stale/B-F164-127.bin",
+          "sha256": "5d09a5f3cdbe07491e807dbfdff3e89fd704fa0e7ed383c3c49a0d2c0f55a4f1",
+          "bytes": 52
+        },
+        {
+          "id": "E134",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/request-frames/handler-stale/B-F166-127.bin",
+          "sha256": "90ae25715186f5e4045da896bcb9c4474386ee7e46ccc044fab7b18bb6b01430",
+          "bytes": 52
+        },
+        {
+          "id": "E135",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/derived/handler-stale-A-replay.txt",
+          "sha256": "d813f16abbf36a6c194229275ede02cda3a66696d9e41784d27bf64f3e10721a",
+          "bytes": 4795
+        },
+        {
+          "id": "E136",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/derived/handler-stale-A-oracle.json",
+          "sha256": "8a9d1dc7e1cb7d0b8daf47b349903c4704381517b3588cbeac46f7a88d8e387b",
+          "bytes": 299484
+        },
+        {
+          "id": "E137",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/derived/handler-stale-B-replay.txt",
+          "sha256": "5af9549ca03a50a4812238115ecd0887c7af434155799dd658d5b6dd7c5a5a86",
+          "bytes": 4464
+        },
+        {
+          "id": "E138",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/derived/handler-stale-B-oracle.json",
+          "sha256": "eae3e01a1bfc37cfb15195d83375c106f3ab2abcfebeda08cf8905e25e1c7bb0",
+          "bytes": 277150
+        },
+        {
+          "id": "E139",
+          "kind": "local",
+          "path": "local/research/codex/wine_probe_udp_actor_stale.py",
+          "sha256": "ba71b6007e9ce83f5172b290752aba651dea6e3bf48733d697447b186abe0ea1",
+          "bytes": 68108
+        },
+        {
+          "id": "E140",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/key-rotate/run.json",
+          "sha256": "adbf470826bc16b8c72935da99e4fe177332ccb660ee48a1b102f58544edf08f",
+          "bytes": 268857
+        },
+        {
+          "id": "E141",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/key-rotate/client.log",
+          "sha256": "42ca9a517264927ed5d9878456b80daa5709ef8a181a0cce1b1144c8abb2083c",
+          "bytes": 155778
+        },
+        {
+          "id": "E142",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/key-rotate/client-B.log",
+          "sha256": "e69d057dc87b3fcf4f5637abd06412e0d35c3ee91700ed97660efa3aaa404f4b",
+          "bytes": 250194
+        },
+        {
+          "id": "E143",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/key-rotate/A-ready110-73.bin",
+          "sha256": "8fafd9cf652b458ee09b3751a0201f9ab1409920398e0e842e43b915c8840e25",
+          "bytes": 44
+        },
+        {
+          "id": "E144",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/key-rotate/B-ready110-73.bin",
+          "sha256": "8fafd9cf652b458ee09b3751a0201f9ab1409920398e0e842e43b915c8840e25",
+          "bytes": 44
+        },
+        {
+          "id": "E145",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/key-rotate/A-floor582-76.bin",
+          "sha256": "9001468072b5ca6e05400891cfd72a5f50549b84806907c1e43b4a350676557b",
+          "bytes": 54
+        },
+        {
+          "id": "E146",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/key-rotate/A-start121-r1-79.bin",
+          "sha256": "f8a824335b4079160a4aaf0e0b425d1fabfa78c248d131503440d0414e1f26cf",
+          "bytes": 167
+        },
+        {
+          "id": "E147",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/key-rotate/B-floor582-76.bin",
+          "sha256": "9001468072b5ca6e05400891cfd72a5f50549b84806907c1e43b4a350676557b",
+          "bytes": 54
+        },
+        {
+          "id": "E148",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/key-rotate/B-start121-r1-79.bin",
+          "sha256": "f8a824335b4079160a4aaf0e0b425d1fabfa78c248d131503440d0414e1f26cf",
+          "bytes": 167
+        },
+        {
+          "id": "E149",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/key-rotate/A-go197-82.bin",
+          "sha256": "64b95010ecb0e40bc0367f41f6710d2357fb2538ce827e205825284601237ef8",
+          "bytes": 52
+        },
+        {
+          "id": "E150",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/key-rotate/B-go197-82.bin",
+          "sha256": "64b95010ecb0e40bc0367f41f6710d2357fb2538ce827e205825284601237ef8",
+          "bytes": 52
+        },
+        {
+          "id": "E151",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/key-rotate/B-play196-85.bin",
+          "sha256": "d04bf155b4847f9d41b0edfdf00a32526302273271c0f1cadbb8ce22b89eb51d",
+          "bytes": 45
+        },
+        {
+          "id": "E152",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/key-rotate/A-play196-85.bin",
+          "sha256": "d04bf155b4847f9d41b0edfdf00a32526302273271c0f1cadbb8ce22b89eb51d",
+          "bytes": 45
+        },
+        {
+          "id": "E153",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/key-rotate/B-peer153-88.bin",
+          "sha256": "3735ad1614a6272a2ab5ad1429125b66a53adb538f0cc78d31fb790669c5dcf7",
+          "bytes": 135
+        },
+        {
+          "id": "E154",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/key-rotate/A-peer153-88.bin",
+          "sha256": "862c4079a57924bfb8a225e446f39422c27ae0e330511c172bb00a0a60aa8064",
+          "bytes": 135
+        },
+        {
+          "id": "E155",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/key-rotate/A-dynamic159-r1-1.bin",
+          "sha256": "ce45fc947aabc22d29d1361e7f576818a1665b9a9f617af2c2cec7116d89591e",
+          "bytes": 77
+        },
+        {
+          "id": "E156",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/key-rotate/B-dynamic159-r1-1.bin",
+          "sha256": "ce45fc947aabc22d29d1361e7f576818a1665b9a9f617af2c2cec7116d89591e",
+          "bytes": 77
+        },
+        {
+          "id": "E157",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/key-rotate/A-blast158-r1-1.bin",
+          "sha256": "31e41726c0deaa834ef2fa20813c84199f3f94023a8f3b7d0f64f9d5241eede1",
+          "bytes": 51
+        },
+        {
+          "id": "E158",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/key-rotate/B-blast158-r1-1.bin",
+          "sha256": "31e41726c0deaa834ef2fa20813c84199f3f94023a8f3b7d0f64f9d5241eede1",
+          "bytes": 51
+        },
+        {
+          "id": "E159",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/key-rotate/B-event170-17-r1-97.bin",
+          "sha256": "02b5985a867bc19e3bb91236bc8816d3f6f25bc4f8c5f7bddba4579c9a56e15b",
+          "bytes": 48
+        },
+        {
+          "id": "E160",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/key-rotate/B-event170-19-r1-100.bin",
+          "sha256": "bd8bf772c0329942ba758585caf140131b8b59be9138cb03a2c34fd4d1ba22b3",
+          "bytes": 59
+        },
+        {
+          "id": "E161",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/key-rotate/A-rank175-r1-97.bin",
+          "sha256": "6be30231b79508f47dfe49eaf4b8d6c1fe69ae1e8976654096d7eb50ae1f47f7",
+          "bytes": 340
+        },
+        {
+          "id": "E162",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/key-rotate/B-rank175-r1-103.bin",
+          "sha256": "8f755c898994d478f38d2b807ece591b2ad2d1da7c950eba60859a5e338aa315",
+          "bytes": 340
+        },
+        {
+          "id": "E163",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/key-rotate/A-return180-r1-100.bin",
+          "sha256": "1560d1178af0e8cea05c74affdc46a79d86c425250a71210b94da25e4073df4a",
+          "bytes": 41
+        },
+        {
+          "id": "E164",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/key-rotate/B-return180-r1-106.bin",
+          "sha256": "6a49bc7222df4957e03d3ebe2382217d1988daab1844150f76558baf634da81b",
+          "bytes": 41
+        },
+        {
+          "id": "E165",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/key-rotate/A-host110-r1-103.bin",
+          "sha256": "f8c269431038bc985afb79961f89b6e2509d0829ed8046e397aa5acfb962c596",
+          "bytes": 44
+        },
+        {
+          "id": "E166",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/key-rotate/A-guest110-r1-106.bin",
+          "sha256": "34aa966e0eef0cee7af15360322ee98baf2f023eb2b8528674b6115d7889a313",
+          "bytes": 44
+        },
+        {
+          "id": "E167",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/key-rotate/B-host110-r1-109.bin",
+          "sha256": "1464734628e1b0aa271c48a50c2ed3ceb0fb0d4ba99dac113b20b2ea74dc0d7e",
+          "bytes": 44
+        },
+        {
+          "id": "E168",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/key-rotate/B-guest110-r1-112.bin",
+          "sha256": "5459dc7d1e715e0523e24981ce67a04e72b6949c2274e3cc6b7577cf62fe6a9d",
+          "bytes": 44
+        },
+        {
+          "id": "E169",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/key-rotate/A-ready110-109.bin",
+          "sha256": "d61e0dec5dd42f6d9359359420df2fed9723478d5554aebb09cb7fa7d9ca1754",
+          "bytes": 44
+        },
+        {
+          "id": "E170",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/key-rotate/B-ready110-115.bin",
+          "sha256": "71ab3449f204c7354574438ac4952909165942f1abaf832f65a4463c57f8a476",
+          "bytes": 44
+        },
+        {
+          "id": "E171",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/key-rotate/A-floor582-112.bin",
+          "sha256": "3de167f2b9fd7e539a43e320113a3504ec5d160adc35bf04bedc1c5f1bb1e636",
+          "bytes": 54
+        },
+        {
+          "id": "E172",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/key-rotate/A-start121-r2-115.bin",
+          "sha256": "2c2f633223459f50f3c83b215e3438d816637d3fcedf6adc5177f166c3f45901",
+          "bytes": 167
+        },
+        {
+          "id": "E173",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/key-rotate/B-floor582-118.bin",
+          "sha256": "7506dfc711c0914f95893c307a778b093e45b31b226e4e457a6678c9e7ad7afb",
+          "bytes": 54
+        },
+        {
+          "id": "E174",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/key-rotate/B-start121-r2-121.bin",
+          "sha256": "90884970c6bbda9491a5a3408cea9f6d47a3b1e0019b1aefd6d83b2764810fec",
+          "bytes": 167
+        },
+        {
+          "id": "E175",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/key-rotate/A-go197-118.bin",
+          "sha256": "aa70380f2f8ac732b32002b998ecd874353865d9e3853102c01a72d06b327970",
+          "bytes": 52
+        },
+        {
+          "id": "E176",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/key-rotate/B-go197-124.bin",
+          "sha256": "94f616295ccb42b1d65f119531b5965ade54edc4e9034b76dbf7c2d89697e0e9",
+          "bytes": 52
+        },
+        {
+          "id": "E177",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/key-rotate/A-play196-121.bin",
+          "sha256": "c36a9aaa4674958645f4db690772261f39607eb5fb712a80827259d710da962d",
+          "bytes": 45
+        },
+        {
+          "id": "E178",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/key-rotate/B-play196-127.bin",
+          "sha256": "010276ee96d43eb798c4cbd8f0d661c416e8d7faa30a083f459303b635c75c2f",
+          "bytes": 45
+        },
+        {
+          "id": "E179",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/key-rotate/A-peer153-124.bin",
+          "sha256": "0338b0090b4c7f7e599cc4e6c745382bcfef81de9768b4ca762887183e68572b",
+          "bytes": 135
+        },
+        {
+          "id": "E180",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/key-rotate/B-peer153-130.bin",
+          "sha256": "6c91f768785108eaaf374da91dac884c7e8d6e14b36fc2506c01084a0573f97d",
+          "bytes": 135
+        },
+        {
+          "id": "E181",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/key-rotate/A-dynamic159-r2-2.bin",
+          "sha256": "1f56028930bada07b7dfeb0ce88f915ea32e2fa78cceccb6516cdb8b1f5f2827",
+          "bytes": 77
+        },
+        {
+          "id": "E182",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/key-rotate/B-dynamic159-r2-2.bin",
+          "sha256": "4f3fafdca00ba6b5e6b4d6c8fb57bffec19bfe76cf7bd79a94ac2245bd090f20",
+          "bytes": 77
+        },
+        {
+          "id": "E183",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/key-rotate/A-blast158-r2-2.bin",
+          "sha256": "c6f71031e51fa0da4cb1724b12a5664aa7bbaf287f0bb19bbe92c8e1f8ddcc55",
+          "bytes": 51
+        },
+        {
+          "id": "E184",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/key-rotate/B-blast158-r2-2.bin",
+          "sha256": "64d4c380a715c392025aa97ce4b91e3dcfcb01f4ee6596e3e32257b491d7ca6f",
+          "bytes": 51
+        },
+        {
+          "id": "E185",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/key-rotate/B-event170-17-r2-139.bin",
+          "sha256": "7022b58b7bb7840e235d21aca62eb17865fe116a7994783180635706efb4c251",
+          "bytes": 48
+        },
+        {
+          "id": "E186",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/key-rotate/B-event170-19-r2-142.bin",
+          "sha256": "8fb7b87df3f231d08a2e10753ce5fed6ecd8a59d86f7ba699cc7fbf08b8dd91b",
+          "bytes": 59
+        },
+        {
+          "id": "E187",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/key-rotate/A-rank175-r2-133.bin",
+          "sha256": "a650571eac7ac88b8a63c689d277f33f067a0a02cafefe9a47fb6766b6e4f46c",
+          "bytes": 340
+        },
+        {
+          "id": "E188",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/key-rotate/B-rank175-r2-145.bin",
+          "sha256": "4c6525e5113bf1406389d88be7e48119b575f2fbefd0f348e16de23fbb57f234",
+          "bytes": 340
+        },
+        {
+          "id": "E189",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/key-rotate/A-return180-r2-136.bin",
+          "sha256": "dea703a5f5fba54456f7040c367a3014662401708698034e1dfe0ddbba432538",
+          "bytes": 41
+        },
+        {
+          "id": "E190",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/key-rotate/B-return180-r2-148.bin",
+          "sha256": "417d16715f09456c9c7eb895c68ad6f295d89e0350ed21b14baa14429e1575c9",
+          "bytes": 41
+        },
+        {
+          "id": "E191",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/key-rotate/A-host110-r2-139.bin",
+          "sha256": "b9eb311ff2868e5d2dda699437fbbdf64701a2cefce8f1e19b35f7782bb32f83",
+          "bytes": 44
+        },
+        {
+          "id": "E192",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/key-rotate/A-guest110-r2-142.bin",
+          "sha256": "c5345f3b36afb184e6827e21b0089107789ffc0c6bb5c025369801115ba4f3fe",
+          "bytes": 44
+        },
+        {
+          "id": "E193",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/key-rotate/B-host110-r2-151.bin",
+          "sha256": "1ef9d8ba04436e67c099050d5bb250566d314d0138e4fdaa6d580c7e94b76827",
+          "bytes": 44
+        },
+        {
+          "id": "E194",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/key-rotate/B-guest110-r2-154.bin",
+          "sha256": "e603cf59b15311af66d273c5557ce9e12e248a32cdab30a53044eb4038e7be3b",
+          "bytes": 44
+        },
+        {
+          "id": "E195",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/request-frames/key-rotate/A-F52-118.bin",
+          "sha256": "eb85779ef4f9b4f0ed3e268432ed9b167928795ceeb4f55b5754e0d189d29e5e",
+          "bytes": 60
+        },
+        {
+          "id": "E196",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/request-frames/key-rotate/A-F65-127.bin",
+          "sha256": "485be1e6f1d62defec52b37e0f8f4fc817b6f78cfafc4b26185cb42f188ebb9c",
+          "bytes": 70
+        },
+        {
+          "id": "E197",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/request-frames/key-rotate/A-F76-127.bin",
+          "sha256": "8d43f51ce7ddb7608096eb8857e335c73d06b8d5375aa5b28e86a56346d7954f",
+          "bytes": 67
+        },
+        {
+          "id": "E198",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/request-frames/key-rotate/A-F132-118.bin",
+          "sha256": "051f25a38737328905d4c5c0425a6d1fcca62626e16737be02451881d5ec24ad",
+          "bytes": 60
+        },
+        {
+          "id": "E199",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/request-frames/key-rotate/A-F144-127.bin",
+          "sha256": "edf2c1b4c96cda21f7bc7c652260ac685770608e9263c14e2c33232f89860ac0",
+          "bytes": 70
+        },
+        {
+          "id": "E200",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/request-frames/key-rotate/A-F148-127.bin",
+          "sha256": "f0009bceb4c5656a883ad55c246ad0ef1fd35408249f6cb3f15a7127d8ad2596",
+          "bytes": 67
+        },
+        {
+          "id": "E201",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/request-frames/key-rotate/B-F13-82.bin",
+          "sha256": "1746130345929e482c425aa463e6bf34d6da555c86c6474cf235330227f74f47",
+          "bytes": 49
+        },
+        {
+          "id": "E202",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/request-frames/key-rotate/B-F24-95.bin",
+          "sha256": "730e662309a1a5abb7556e5f500168850ae220a9b7f288c1c62d18904206398c",
+          "bytes": 98
+        },
+        {
+          "id": "E203",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/request-frames/key-rotate/B-F66-127.bin",
+          "sha256": "c9bf5cb8210c682f4cc8863062c8620d7e9f966adbadc7e6d740b1243379a5d3",
+          "bytes": 52
+        },
+        {
+          "id": "E204",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/request-frames/key-rotate/B-F68-127.bin",
+          "sha256": "671504ca95bd032b275986d926773afba40a9da0f19ee6439540add061dda6e5",
+          "bytes": 52
+        },
+        {
+          "id": "E205",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/request-frames/key-rotate/B-F70-127.bin",
+          "sha256": "1cd87e54cf45e7df7200e38050e145697bf50dcca18da7a0a72d40728bbbdb27",
+          "bytes": 52
+        },
+        {
+          "id": "E206",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/request-frames/key-rotate/B-F74-127.bin",
+          "sha256": "4c04b956e4906ea4a9f556636cf2a58807252c6ab187bd7a681bc2055b175f70",
+          "bytes": 52
+        },
+        {
+          "id": "E207",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/request-frames/key-rotate/B-F75-127.bin",
+          "sha256": "5bf3e52fdb0d412af2dc0b00556cb616a26e489531714e95218dc8822766b32b",
+          "bytes": 52
+        },
+        {
+          "id": "E208",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/request-frames/key-rotate/B-F78-127.bin",
+          "sha256": "d9ab26c0bdf1d1e12bf272ffb85850d124a9d5b90ab9fba66ee139bf3f9e1f04",
+          "bytes": 52
+        },
+        {
+          "id": "E209",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/request-frames/key-rotate/B-F80-127.bin",
+          "sha256": "6fe1861be4ccfae55f3ba6fd9e0ce960b84c03c1fd5a3810582feae54e194f28",
+          "bytes": 52
+        },
+        {
+          "id": "E210",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/request-frames/key-rotate/B-F97-95.bin",
+          "sha256": "62823c4526e92e5b9f645ca79d3e9613aa5bc6a51809ead9cc556648cf20ccb3",
+          "bytes": 382
+        },
+        {
+          "id": "E211",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/request-frames/key-rotate/B-F119-127.bin",
+          "sha256": "63f04d82bee882a0f791860dcbaf13061d8c9bbee2d691b9355f7070f0f667a8",
+          "bytes": 70
+        },
+        {
+          "id": "E212",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/request-frames/key-rotate/B-F120-127.bin",
+          "sha256": "8ea9b3e5322a1348287568048d033fa6541b0fa176b325f3945b20ea7de04516",
+          "bytes": 52
+        },
+        {
+          "id": "E213",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/request-frames/key-rotate/B-F121-127.bin",
+          "sha256": "c1d9a5ef124582c005792a033506f5a1cc3ec37277bc3ed9da037aa7f6a6ef0d",
+          "bytes": 70
+        },
+        {
+          "id": "E214",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/request-frames/key-rotate/B-F127-127.bin",
+          "sha256": "b6248f5a2fc8484d36e94f8e616b25fc402e422db03cc60d64c85136ca6debb6",
+          "bytes": 52
+        },
+        {
+          "id": "E215",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/derived/key-rotate-A-replay.txt",
+          "sha256": "871234e7d3883f01920f76952297c0a2b15e81b468bca1874ce496b09c6ff02e",
+          "bytes": 4262
+        },
+        {
+          "id": "E216",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/derived/key-rotate-A-oracle.json",
+          "sha256": "259d9e739f86f2e2604d0b64bc6b91a6cd2f911cceaa56aed1cf389e2439fa67",
+          "bytes": 264527
+        },
+        {
+          "id": "E217",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/derived/key-rotate-B-replay.txt",
+          "sha256": "a34cb6da483bdfe6d293bd13cd788ccccaeafb26203b490d7051d6aa4f4c0df6",
+          "bytes": 3722
+        },
+        {
+          "id": "E218",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/derived/key-rotate-B-oracle.json",
+          "sha256": "551b210fb4fee5bf835435e203e7cb0ae1ddf1380ef37769370fdd0ed238c4fa",
+          "bytes": 229597
+        },
+        {
+          "id": "E219",
+          "kind": "local",
+          "path": "local/research/codex/wine_probe_udp_key_rotate.py",
+          "sha256": "9e9702d5ffbe09c4d9a67e100b03cb18f17093a49bb6ff9cf4316675fb70b7f7",
+          "bytes": 68606
+        },
+        {
+          "id": "E220",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/rotate-old/run.json",
+          "sha256": "4efe0a022a90b2908d9cf5aaa5c0354563aa8c2b61313613862df7f05d614495",
+          "bytes": 264124
+        },
+        {
+          "id": "E221",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/rotate-old/client.log",
+          "sha256": "694fbe9294ad72d1c6d78673eb52de3a7321e5d5fc9db71f024a218ab692a0da",
+          "bytes": 184875
+        },
+        {
+          "id": "E222",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/rotate-old/client-B.log",
+          "sha256": "dfe40db3493e5a89e74681c5670972b8eac80d4e43e7ff7f8ae21cfc014b6083",
+          "bytes": 244145
+        },
+        {
+          "id": "E223",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/rotate-old/A-ready110-73.bin",
+          "sha256": "8fafd9cf652b458ee09b3751a0201f9ab1409920398e0e842e43b915c8840e25",
+          "bytes": 44
+        },
+        {
+          "id": "E224",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/rotate-old/B-ready110-73.bin",
+          "sha256": "8fafd9cf652b458ee09b3751a0201f9ab1409920398e0e842e43b915c8840e25",
+          "bytes": 44
+        },
+        {
+          "id": "E225",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/rotate-old/A-floor582-76.bin",
+          "sha256": "9001468072b5ca6e05400891cfd72a5f50549b84806907c1e43b4a350676557b",
+          "bytes": 54
+        },
+        {
+          "id": "E226",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/rotate-old/A-start121-r1-79.bin",
+          "sha256": "f8a824335b4079160a4aaf0e0b425d1fabfa78c248d131503440d0414e1f26cf",
+          "bytes": 167
+        },
+        {
+          "id": "E227",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/rotate-old/B-floor582-76.bin",
+          "sha256": "9001468072b5ca6e05400891cfd72a5f50549b84806907c1e43b4a350676557b",
+          "bytes": 54
+        },
+        {
+          "id": "E228",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/rotate-old/B-start121-r1-79.bin",
+          "sha256": "f8a824335b4079160a4aaf0e0b425d1fabfa78c248d131503440d0414e1f26cf",
+          "bytes": 167
+        },
+        {
+          "id": "E229",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/rotate-old/A-go197-82.bin",
+          "sha256": "64b95010ecb0e40bc0367f41f6710d2357fb2538ce827e205825284601237ef8",
+          "bytes": 52
+        },
+        {
+          "id": "E230",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/rotate-old/B-go197-82.bin",
+          "sha256": "64b95010ecb0e40bc0367f41f6710d2357fb2538ce827e205825284601237ef8",
+          "bytes": 52
+        },
+        {
+          "id": "E231",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/rotate-old/A-play196-85.bin",
+          "sha256": "d04bf155b4847f9d41b0edfdf00a32526302273271c0f1cadbb8ce22b89eb51d",
+          "bytes": 45
+        },
+        {
+          "id": "E232",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/rotate-old/B-play196-85.bin",
+          "sha256": "d04bf155b4847f9d41b0edfdf00a32526302273271c0f1cadbb8ce22b89eb51d",
+          "bytes": 45
+        },
+        {
+          "id": "E233",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/rotate-old/A-peer153-88.bin",
+          "sha256": "7a6fcb36caa896f4a633d35dcf6c26522647a6cf4c09a5f200228db4f9b4c924",
+          "bytes": 135
+        },
+        {
+          "id": "E234",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/rotate-old/B-peer153-88.bin",
+          "sha256": "bdd3aa70ba96733abbb3fb36cf51edb0170c53215dde9fa225321390eebcf659",
+          "bytes": 135
+        },
+        {
+          "id": "E235",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/rotate-old/A-dynamic159-r1-1.bin",
+          "sha256": "ce45fc947aabc22d29d1361e7f576818a1665b9a9f617af2c2cec7116d89591e",
+          "bytes": 77
+        },
+        {
+          "id": "E236",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/rotate-old/B-dynamic159-r1-1.bin",
+          "sha256": "ce45fc947aabc22d29d1361e7f576818a1665b9a9f617af2c2cec7116d89591e",
+          "bytes": 77
+        },
+        {
+          "id": "E237",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/rotate-old/A-blast158-r1-1.bin",
+          "sha256": "31e41726c0deaa834ef2fa20813c84199f3f94023a8f3b7d0f64f9d5241eede1",
+          "bytes": 51
+        },
+        {
+          "id": "E238",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/rotate-old/B-blast158-r1-1.bin",
+          "sha256": "31e41726c0deaa834ef2fa20813c84199f3f94023a8f3b7d0f64f9d5241eede1",
+          "bytes": 51
+        },
+        {
+          "id": "E239",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/rotate-old/B-event170-17-r1-97.bin",
+          "sha256": "02b5985a867bc19e3bb91236bc8816d3f6f25bc4f8c5f7bddba4579c9a56e15b",
+          "bytes": 48
+        },
+        {
+          "id": "E240",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/rotate-old/B-event170-19-r1-100.bin",
+          "sha256": "bd8bf772c0329942ba758585caf140131b8b59be9138cb03a2c34fd4d1ba22b3",
+          "bytes": 59
+        },
+        {
+          "id": "E241",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/rotate-old/A-rank175-r1-97.bin",
+          "sha256": "6be30231b79508f47dfe49eaf4b8d6c1fe69ae1e8976654096d7eb50ae1f47f7",
+          "bytes": 340
+        },
+        {
+          "id": "E242",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/rotate-old/B-rank175-r1-103.bin",
+          "sha256": "8f755c898994d478f38d2b807ece591b2ad2d1da7c950eba60859a5e338aa315",
+          "bytes": 340
+        },
+        {
+          "id": "E243",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/rotate-old/A-return180-r1-100.bin",
+          "sha256": "1560d1178af0e8cea05c74affdc46a79d86c425250a71210b94da25e4073df4a",
+          "bytes": 41
+        },
+        {
+          "id": "E244",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/rotate-old/B-return180-r1-106.bin",
+          "sha256": "6a49bc7222df4957e03d3ebe2382217d1988daab1844150f76558baf634da81b",
+          "bytes": 41
+        },
+        {
+          "id": "E245",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/rotate-old/A-host110-r1-103.bin",
+          "sha256": "f8c269431038bc985afb79961f89b6e2509d0829ed8046e397aa5acfb962c596",
+          "bytes": 44
+        },
+        {
+          "id": "E246",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/rotate-old/A-guest110-r1-106.bin",
+          "sha256": "34aa966e0eef0cee7af15360322ee98baf2f023eb2b8528674b6115d7889a313",
+          "bytes": 44
+        },
+        {
+          "id": "E247",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/rotate-old/B-host110-r1-109.bin",
+          "sha256": "1464734628e1b0aa271c48a50c2ed3ceb0fb0d4ba99dac113b20b2ea74dc0d7e",
+          "bytes": 44
+        },
+        {
+          "id": "E248",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/rotate-old/B-guest110-r1-112.bin",
+          "sha256": "5459dc7d1e715e0523e24981ce67a04e72b6949c2274e3cc6b7577cf62fe6a9d",
+          "bytes": 44
+        },
+        {
+          "id": "E249",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/rotate-old/A-ready110-109.bin",
+          "sha256": "d61e0dec5dd42f6d9359359420df2fed9723478d5554aebb09cb7fa7d9ca1754",
+          "bytes": 44
+        },
+        {
+          "id": "E250",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/rotate-old/B-ready110-115.bin",
+          "sha256": "71ab3449f204c7354574438ac4952909165942f1abaf832f65a4463c57f8a476",
+          "bytes": 44
+        },
+        {
+          "id": "E251",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/rotate-old/A-floor582-112.bin",
+          "sha256": "3de167f2b9fd7e539a43e320113a3504ec5d160adc35bf04bedc1c5f1bb1e636",
+          "bytes": 54
+        },
+        {
+          "id": "E252",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/rotate-old/A-start121-r2-115.bin",
+          "sha256": "2c2f633223459f50f3c83b215e3438d816637d3fcedf6adc5177f166c3f45901",
+          "bytes": 167
+        },
+        {
+          "id": "E253",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/rotate-old/B-floor582-118.bin",
+          "sha256": "7506dfc711c0914f95893c307a778b093e45b31b226e4e457a6678c9e7ad7afb",
+          "bytes": 54
+        },
+        {
+          "id": "E254",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/rotate-old/B-start121-r2-121.bin",
+          "sha256": "90884970c6bbda9491a5a3408cea9f6d47a3b1e0019b1aefd6d83b2764810fec",
+          "bytes": 167
+        },
+        {
+          "id": "E255",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/rotate-old/A-go197-118.bin",
+          "sha256": "aa70380f2f8ac732b32002b998ecd874353865d9e3853102c01a72d06b327970",
+          "bytes": 52
+        },
+        {
+          "id": "E256",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/rotate-old/B-go197-124.bin",
+          "sha256": "94f616295ccb42b1d65f119531b5965ade54edc4e9034b76dbf7c2d89697e0e9",
+          "bytes": 52
+        },
+        {
+          "id": "E257",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/rotate-old/A-play196-121.bin",
+          "sha256": "c36a9aaa4674958645f4db690772261f39607eb5fb712a80827259d710da962d",
+          "bytes": 45
+        },
+        {
+          "id": "E258",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/rotate-old/B-play196-127.bin",
+          "sha256": "010276ee96d43eb798c4cbd8f0d661c416e8d7faa30a083f459303b635c75c2f",
+          "bytes": 45
+        },
+        {
+          "id": "E259",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/rotate-old/A-peer153-124.bin",
+          "sha256": "82cf53be159fe42b9d1d8f70797b8763f74f5dff5d40c330cdd1ab1c9aa0b93d",
+          "bytes": 135
+        },
+        {
+          "id": "E260",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/rotate-old/B-peer153-130.bin",
+          "sha256": "5d7b9470cd4c4b8557814720e95569afada68d06d058f5362bcc8ab794738042",
+          "bytes": 135
+        },
+        {
+          "id": "E261",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/rotate-old/A-dynamic159-r2-2.bin",
+          "sha256": "1f56028930bada07b7dfeb0ce88f915ea32e2fa78cceccb6516cdb8b1f5f2827",
+          "bytes": 77
+        },
+        {
+          "id": "E262",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/rotate-old/B-dynamic159-r2-2.bin",
+          "sha256": "4f3fafdca00ba6b5e6b4d6c8fb57bffec19bfe76cf7bd79a94ac2245bd090f20",
+          "bytes": 77
+        },
+        {
+          "id": "E263",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/rotate-old/A-blast158-r2-2.bin",
+          "sha256": "c6f71031e51fa0da4cb1724b12a5664aa7bbaf287f0bb19bbe92c8e1f8ddcc55",
+          "bytes": 51
+        },
+        {
+          "id": "E264",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/rotate-old/B-blast158-r2-2.bin",
+          "sha256": "64d4c380a715c392025aa97ce4b91e3dcfcb01f4ee6596e3e32257b491d7ca6f",
+          "bytes": 51
+        },
+        {
+          "id": "E265",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/rotate-old/B-event170-17-r2-139.bin",
+          "sha256": "7022b58b7bb7840e235d21aca62eb17865fe116a7994783180635706efb4c251",
+          "bytes": 48
+        },
+        {
+          "id": "E266",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/rotate-old/B-event170-19-r2-142.bin",
+          "sha256": "8fb7b87df3f231d08a2e10753ce5fed6ecd8a59d86f7ba699cc7fbf08b8dd91b",
+          "bytes": 59
+        },
+        {
+          "id": "E267",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/rotate-old/A-rank175-r2-133.bin",
+          "sha256": "a650571eac7ac88b8a63c689d277f33f067a0a02cafefe9a47fb6766b6e4f46c",
+          "bytes": 340
+        },
+        {
+          "id": "E268",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/rotate-old/B-rank175-r2-145.bin",
+          "sha256": "4c6525e5113bf1406389d88be7e48119b575f2fbefd0f348e16de23fbb57f234",
+          "bytes": 340
+        },
+        {
+          "id": "E269",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/rotate-old/A-return180-r2-136.bin",
+          "sha256": "dea703a5f5fba54456f7040c367a3014662401708698034e1dfe0ddbba432538",
+          "bytes": 41
+        },
+        {
+          "id": "E270",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/rotate-old/B-return180-r2-148.bin",
+          "sha256": "417d16715f09456c9c7eb895c68ad6f295d89e0350ed21b14baa14429e1575c9",
+          "bytes": 41
+        },
+        {
+          "id": "E271",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/rotate-old/A-host110-r2-139.bin",
+          "sha256": "b9eb311ff2868e5d2dda699437fbbdf64701a2cefce8f1e19b35f7782bb32f83",
+          "bytes": 44
+        },
+        {
+          "id": "E272",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/rotate-old/A-guest110-r2-142.bin",
+          "sha256": "c5345f3b36afb184e6827e21b0089107789ffc0c6bb5c025369801115ba4f3fe",
+          "bytes": 44
+        },
+        {
+          "id": "E273",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/rotate-old/B-host110-r2-151.bin",
+          "sha256": "1ef9d8ba04436e67c099050d5bb250566d314d0138e4fdaa6d580c7e94b76827",
+          "bytes": 44
+        },
+        {
+          "id": "E274",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/rotate-old/B-guest110-r2-154.bin",
+          "sha256": "e603cf59b15311af66d273c5557ce9e12e248a32cdab30a53044eb4038e7be3b",
+          "bytes": 44
+        },
+        {
+          "id": "E275",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/request-frames/rotate-old/A-F53-118.bin",
+          "sha256": "f55761bfc13503280ca707bfe41967c020819722ae55a82056a218edf4669186",
+          "bytes": 60
+        },
+        {
+          "id": "E276",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/request-frames/rotate-old/A-F66-127.bin",
+          "sha256": "967156ac1fab5d89352f7f2c5972980c3ff07c9bb29303344bd8136a4b80dfbd",
+          "bytes": 70
+        },
+        {
+          "id": "E277",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/request-frames/rotate-old/A-F78-127.bin",
+          "sha256": "cc91834524de2640091ab89564b8946e7aca590573c8bc97450e42c8fb42f069",
+          "bytes": 67
+        },
+        {
+          "id": "E278",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/request-frames/rotate-old/A-F133-118.bin",
+          "sha256": "c86937d30af1fe6c1f3bb4769baa30fb9498128e350da538a8d23f5ff17e4588",
+          "bytes": 60
+        },
+        {
+          "id": "E279",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/request-frames/rotate-old/A-F142-127.bin",
+          "sha256": "6dbd24253838f8528e9ed90a10f2e8aa0f9a8d30b2fad2b21eeb32f1c8dbb74f",
+          "bytes": 70
+        },
+        {
+          "id": "E280",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/request-frames/rotate-old/A-F146-127.bin",
+          "sha256": "10388edbec710943fd739b698151c69b381f7857bcd9a1e2c921aecde7bd637d",
+          "bytes": 67
+        },
+        {
+          "id": "E281",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/request-frames/rotate-old/B-F13-82.bin",
+          "sha256": "1746130345929e482c425aa463e6bf34d6da555c86c6474cf235330227f74f47",
+          "bytes": 49
+        },
+        {
+          "id": "E282",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/request-frames/rotate-old/B-F24-95.bin",
+          "sha256": "730e662309a1a5abb7556e5f500168850ae220a9b7f288c1c62d18904206398c",
+          "bytes": 98
+        },
+        {
+          "id": "E283",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/request-frames/rotate-old/B-F66-127.bin",
+          "sha256": "adfd12f99f707c562c3dc93fa3663d6eb3a7f07cc99172a9e8efad8b3f324c58",
+          "bytes": 52
+        },
+        {
+          "id": "E284",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/request-frames/rotate-old/B-F68-127.bin",
+          "sha256": "8a6d84ec6fce0386772e2dabab23d8e78e5914435c23d50f121075e75a70e57f",
+          "bytes": 52
+        },
+        {
+          "id": "E285",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/request-frames/rotate-old/B-F71-127.bin",
+          "sha256": "cc44e08f20cb2d3471659b302f09d5e93457de5620a0f65d181c37c1c8e465b8",
+          "bytes": 52
+        },
+        {
+          "id": "E286",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/request-frames/rotate-old/B-F73-127.bin",
+          "sha256": "157dafcfe20c1456f938ed2b2a4d3663aaaa9d8edeca203a9c129cf1aa433e48",
+          "bytes": 52
+        },
+        {
+          "id": "E287",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/request-frames/rotate-old/B-F75-127.bin",
+          "sha256": "1d04a2e4d2f0e13d687e19a73a9619631657174f9ac1a22528f5456e079bfc00",
+          "bytes": 52
+        },
+        {
+          "id": "E288",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/request-frames/rotate-old/B-F77-127.bin",
+          "sha256": "6cfd20c200d4cbe6602f3a4ecbf3f6f3dee00602092f3c80cd55431e4bc8d74c",
+          "bytes": 52
+        },
+        {
+          "id": "E289",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/request-frames/rotate-old/B-F95-95.bin",
+          "sha256": "5cc2153a11c5cbe054ff4847ac4ccc6aadb8a26229edee6a9075d42a56fec5e1",
+          "bytes": 382
+        },
+        {
+          "id": "E290",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/request-frames/rotate-old/B-F123-127.bin",
+          "sha256": "0aecf99219ef4ef1931420238af710072b43c8f2b99a4abae0abc160eb9c8a86",
+          "bytes": 70
+        },
+        {
+          "id": "E291",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/request-frames/rotate-old/B-F124-127.bin",
+          "sha256": "8ddf2f812594d127c507be1d6b7d029e814e8255319bc72f6a9c5e46c7e5055f",
+          "bytes": 52
+        },
+        {
+          "id": "E292",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/request-frames/rotate-old/B-F125-127.bin",
+          "sha256": "a54d636a007468094b87beee5599a91e733238403578fa66ff79b37ffcf06d26",
+          "bytes": 70
+        },
+        {
+          "id": "E293",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/request-frames/rotate-old/B-F130-127.bin",
+          "sha256": "0df9e0ca1055791f0f2a251a1f70cb2c3c0b731aa99cfd9bf2bcc79922d7757e",
+          "bytes": 52
+        },
+        {
+          "id": "E294",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/derived/rotate-old-A-replay.txt",
+          "sha256": "3a793dcc9f60021f182e7519cc1372c0c115c656252b1f3ceaed40b1b2380525",
+          "bytes": 4176
+        },
+        {
+          "id": "E295",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/derived/rotate-old-A-oracle.json",
+          "sha256": "fe997152e4348d73defd2dc22cba73224a339aed41fcedbaebf02d0032e63460",
+          "bytes": 258809
+        },
+        {
+          "id": "E296",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/derived/rotate-old-B-replay.txt",
+          "sha256": "a493d6dad994e7144929bef1275f4b887bc183f184113c9e3eed8348760b8318",
+          "bytes": 3763
+        },
+        {
+          "id": "E297",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/derived/rotate-old-B-oracle.json",
+          "sha256": "74b6606b478e56f90e766da37089a111fe8b6b6e863fbfc91ec8be91a5aee3f5",
+          "bytes": 232269
+        },
+        {
+          "id": "E298",
+          "kind": "local",
+          "path": "local/research/codex/wine_probe_udp_rotate_old.py",
+          "sha256": "33df991e724af058bb747cadeb22e4b5a41496a6134d61f83ba78ea6b70db385",
+          "bytes": 69128
+        },
+        {
+          "id": "E299",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/rotate-new/run.json",
+          "sha256": "80041caf5f796d3c3af1282237dbc1e45c79125c6ec820a5f0d97c9e37fb594d",
+          "bytes": 269374
+        },
+        {
+          "id": "E300",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/rotate-new/client.log",
+          "sha256": "a1cfcab68330320c5a399c98c88bb07bd195250661525b039676c8bf88033338",
+          "bytes": 162256
+        },
+        {
+          "id": "E301",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/rotate-new/client-B.log",
+          "sha256": "19821adc334983756b5b80497f38db65c6ff058f0b7f981f3a8270cc253182c9",
+          "bytes": 240410
+        },
+        {
+          "id": "E302",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/rotate-new/A-ready110-73.bin",
+          "sha256": "8fafd9cf652b458ee09b3751a0201f9ab1409920398e0e842e43b915c8840e25",
+          "bytes": 44
+        },
+        {
+          "id": "E303",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/rotate-new/B-ready110-73.bin",
+          "sha256": "8fafd9cf652b458ee09b3751a0201f9ab1409920398e0e842e43b915c8840e25",
+          "bytes": 44
+        },
+        {
+          "id": "E304",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/rotate-new/A-floor582-76.bin",
+          "sha256": "9001468072b5ca6e05400891cfd72a5f50549b84806907c1e43b4a350676557b",
+          "bytes": 54
+        },
+        {
+          "id": "E305",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/rotate-new/A-start121-r1-79.bin",
+          "sha256": "f8a824335b4079160a4aaf0e0b425d1fabfa78c248d131503440d0414e1f26cf",
+          "bytes": 167
+        },
+        {
+          "id": "E306",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/rotate-new/B-floor582-76.bin",
+          "sha256": "9001468072b5ca6e05400891cfd72a5f50549b84806907c1e43b4a350676557b",
+          "bytes": 54
+        },
+        {
+          "id": "E307",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/rotate-new/B-start121-r1-79.bin",
+          "sha256": "f8a824335b4079160a4aaf0e0b425d1fabfa78c248d131503440d0414e1f26cf",
+          "bytes": 167
+        },
+        {
+          "id": "E308",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/rotate-new/A-go197-82.bin",
+          "sha256": "64b95010ecb0e40bc0367f41f6710d2357fb2538ce827e205825284601237ef8",
+          "bytes": 52
+        },
+        {
+          "id": "E309",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/rotate-new/B-go197-82.bin",
+          "sha256": "64b95010ecb0e40bc0367f41f6710d2357fb2538ce827e205825284601237ef8",
+          "bytes": 52
+        },
+        {
+          "id": "E310",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/rotate-new/A-play196-85.bin",
+          "sha256": "d04bf155b4847f9d41b0edfdf00a32526302273271c0f1cadbb8ce22b89eb51d",
+          "bytes": 45
+        },
+        {
+          "id": "E311",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/rotate-new/B-play196-85.bin",
+          "sha256": "d04bf155b4847f9d41b0edfdf00a32526302273271c0f1cadbb8ce22b89eb51d",
+          "bytes": 45
+        },
+        {
+          "id": "E312",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/rotate-new/A-peer153-88.bin",
+          "sha256": "b3682a36a7df98b50650352e01a5b0d9dd919c6db65b709f75505a1c4a08978d",
+          "bytes": 135
+        },
+        {
+          "id": "E313",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/rotate-new/B-peer153-88.bin",
+          "sha256": "846a61fc58d75c312f182edb8d6219f466ec469a5262f10c5f3baa7416e82ca2",
+          "bytes": 135
+        },
+        {
+          "id": "E314",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/rotate-new/A-dynamic159-r1-1.bin",
+          "sha256": "ce45fc947aabc22d29d1361e7f576818a1665b9a9f617af2c2cec7116d89591e",
+          "bytes": 77
+        },
+        {
+          "id": "E315",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/rotate-new/B-dynamic159-r1-1.bin",
+          "sha256": "ce45fc947aabc22d29d1361e7f576818a1665b9a9f617af2c2cec7116d89591e",
+          "bytes": 77
+        },
+        {
+          "id": "E316",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/rotate-new/A-blast158-r1-1.bin",
+          "sha256": "31e41726c0deaa834ef2fa20813c84199f3f94023a8f3b7d0f64f9d5241eede1",
+          "bytes": 51
+        },
+        {
+          "id": "E317",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/rotate-new/B-blast158-r1-1.bin",
+          "sha256": "31e41726c0deaa834ef2fa20813c84199f3f94023a8f3b7d0f64f9d5241eede1",
+          "bytes": 51
+        },
+        {
+          "id": "E318",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/rotate-new/B-event170-17-r1-97.bin",
+          "sha256": "02b5985a867bc19e3bb91236bc8816d3f6f25bc4f8c5f7bddba4579c9a56e15b",
+          "bytes": 48
+        },
+        {
+          "id": "E319",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/rotate-new/B-event170-19-r1-100.bin",
+          "sha256": "bd8bf772c0329942ba758585caf140131b8b59be9138cb03a2c34fd4d1ba22b3",
+          "bytes": 59
+        },
+        {
+          "id": "E320",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/rotate-new/A-rank175-r1-97.bin",
+          "sha256": "6be30231b79508f47dfe49eaf4b8d6c1fe69ae1e8976654096d7eb50ae1f47f7",
+          "bytes": 340
+        },
+        {
+          "id": "E321",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/rotate-new/B-rank175-r1-103.bin",
+          "sha256": "8f755c898994d478f38d2b807ece591b2ad2d1da7c950eba60859a5e338aa315",
+          "bytes": 340
+        },
+        {
+          "id": "E322",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/rotate-new/A-return180-r1-100.bin",
+          "sha256": "1560d1178af0e8cea05c74affdc46a79d86c425250a71210b94da25e4073df4a",
+          "bytes": 41
+        },
+        {
+          "id": "E323",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/rotate-new/B-return180-r1-106.bin",
+          "sha256": "6a49bc7222df4957e03d3ebe2382217d1988daab1844150f76558baf634da81b",
+          "bytes": 41
+        },
+        {
+          "id": "E324",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/rotate-new/A-host110-r1-103.bin",
+          "sha256": "f8c269431038bc985afb79961f89b6e2509d0829ed8046e397aa5acfb962c596",
+          "bytes": 44
+        },
+        {
+          "id": "E325",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/rotate-new/A-guest110-r1-106.bin",
+          "sha256": "34aa966e0eef0cee7af15360322ee98baf2f023eb2b8528674b6115d7889a313",
+          "bytes": 44
+        },
+        {
+          "id": "E326",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/rotate-new/B-host110-r1-109.bin",
+          "sha256": "1464734628e1b0aa271c48a50c2ed3ceb0fb0d4ba99dac113b20b2ea74dc0d7e",
+          "bytes": 44
+        },
+        {
+          "id": "E327",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/rotate-new/B-guest110-r1-112.bin",
+          "sha256": "5459dc7d1e715e0523e24981ce67a04e72b6949c2274e3cc6b7577cf62fe6a9d",
+          "bytes": 44
+        },
+        {
+          "id": "E328",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/rotate-new/A-ready110-109.bin",
+          "sha256": "d61e0dec5dd42f6d9359359420df2fed9723478d5554aebb09cb7fa7d9ca1754",
+          "bytes": 44
+        },
+        {
+          "id": "E329",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/rotate-new/B-ready110-115.bin",
+          "sha256": "71ab3449f204c7354574438ac4952909165942f1abaf832f65a4463c57f8a476",
+          "bytes": 44
+        },
+        {
+          "id": "E330",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/rotate-new/A-floor582-112.bin",
+          "sha256": "3de167f2b9fd7e539a43e320113a3504ec5d160adc35bf04bedc1c5f1bb1e636",
+          "bytes": 54
+        },
+        {
+          "id": "E331",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/rotate-new/A-start121-r2-115.bin",
+          "sha256": "2c2f633223459f50f3c83b215e3438d816637d3fcedf6adc5177f166c3f45901",
+          "bytes": 167
+        },
+        {
+          "id": "E332",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/rotate-new/B-floor582-118.bin",
+          "sha256": "7506dfc711c0914f95893c307a778b093e45b31b226e4e457a6678c9e7ad7afb",
+          "bytes": 54
+        },
+        {
+          "id": "E333",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/rotate-new/B-start121-r2-121.bin",
+          "sha256": "90884970c6bbda9491a5a3408cea9f6d47a3b1e0019b1aefd6d83b2764810fec",
+          "bytes": 167
+        },
+        {
+          "id": "E334",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/rotate-new/A-go197-118.bin",
+          "sha256": "aa70380f2f8ac732b32002b998ecd874353865d9e3853102c01a72d06b327970",
+          "bytes": 52
+        },
+        {
+          "id": "E335",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/rotate-new/B-go197-124.bin",
+          "sha256": "94f616295ccb42b1d65f119531b5965ade54edc4e9034b76dbf7c2d89697e0e9",
+          "bytes": 52
+        },
+        {
+          "id": "E336",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/rotate-new/B-play196-127.bin",
+          "sha256": "010276ee96d43eb798c4cbd8f0d661c416e8d7faa30a083f459303b635c75c2f",
+          "bytes": 45
+        },
+        {
+          "id": "E337",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/rotate-new/A-play196-121.bin",
+          "sha256": "c36a9aaa4674958645f4db690772261f39607eb5fb712a80827259d710da962d",
+          "bytes": 45
+        },
+        {
+          "id": "E338",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/rotate-new/A-peer153-124.bin",
+          "sha256": "cfb38c411510d5d2a58cfdc7df88f0b062f08eceb42e51e6ed36e0eb9f970475",
+          "bytes": 135
+        },
+        {
+          "id": "E339",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/rotate-new/B-peer153-130.bin",
+          "sha256": "5b07c06384d6ef4f5e0182a0ccabacd770bdbf28787c055b16b6cf66ac8f6332",
+          "bytes": 135
+        },
+        {
+          "id": "E340",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/rotate-new/A-dynamic159-r2-2.bin",
+          "sha256": "1f56028930bada07b7dfeb0ce88f915ea32e2fa78cceccb6516cdb8b1f5f2827",
+          "bytes": 77
+        },
+        {
+          "id": "E341",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/rotate-new/B-dynamic159-r2-2.bin",
+          "sha256": "4f3fafdca00ba6b5e6b4d6c8fb57bffec19bfe76cf7bd79a94ac2245bd090f20",
+          "bytes": 77
+        },
+        {
+          "id": "E342",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/rotate-new/A-blast158-r2-2.bin",
+          "sha256": "c6f71031e51fa0da4cb1724b12a5664aa7bbaf287f0bb19bbe92c8e1f8ddcc55",
+          "bytes": 51
+        },
+        {
+          "id": "E343",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/rotate-new/B-blast158-r2-2.bin",
+          "sha256": "64d4c380a715c392025aa97ce4b91e3dcfcb01f4ee6596e3e32257b491d7ca6f",
+          "bytes": 51
+        },
+        {
+          "id": "E344",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/rotate-new/B-event170-17-r2-139.bin",
+          "sha256": "7022b58b7bb7840e235d21aca62eb17865fe116a7994783180635706efb4c251",
+          "bytes": 48
+        },
+        {
+          "id": "E345",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/rotate-new/B-event170-19-r2-142.bin",
+          "sha256": "8fb7b87df3f231d08a2e10753ce5fed6ecd8a59d86f7ba699cc7fbf08b8dd91b",
+          "bytes": 59
+        },
+        {
+          "id": "E346",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/rotate-new/A-rank175-r2-133.bin",
+          "sha256": "a650571eac7ac88b8a63c689d277f33f067a0a02cafefe9a47fb6766b6e4f46c",
+          "bytes": 340
+        },
+        {
+          "id": "E347",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/rotate-new/B-rank175-r2-145.bin",
+          "sha256": "4c6525e5113bf1406389d88be7e48119b575f2fbefd0f348e16de23fbb57f234",
+          "bytes": 340
+        },
+        {
+          "id": "E348",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/rotate-new/A-return180-r2-136.bin",
+          "sha256": "dea703a5f5fba54456f7040c367a3014662401708698034e1dfe0ddbba432538",
+          "bytes": 41
+        },
+        {
+          "id": "E349",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/rotate-new/B-return180-r2-148.bin",
+          "sha256": "417d16715f09456c9c7eb895c68ad6f295d89e0350ed21b14baa14429e1575c9",
+          "bytes": 41
+        },
+        {
+          "id": "E350",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/rotate-new/A-host110-r2-139.bin",
+          "sha256": "b9eb311ff2868e5d2dda699437fbbdf64701a2cefce8f1e19b35f7782bb32f83",
+          "bytes": 44
+        },
+        {
+          "id": "E351",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/rotate-new/A-guest110-r2-142.bin",
+          "sha256": "c5345f3b36afb184e6827e21b0089107789ffc0c6bb5c025369801115ba4f3fe",
+          "bytes": 44
+        },
+        {
+          "id": "E352",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/rotate-new/B-host110-r2-151.bin",
+          "sha256": "1ef9d8ba04436e67c099050d5bb250566d314d0138e4fdaa6d580c7e94b76827",
+          "bytes": 44
+        },
+        {
+          "id": "E353",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/rotate-new/B-guest110-r2-154.bin",
+          "sha256": "e603cf59b15311af66d273c5557ce9e12e248a32cdab30a53044eb4038e7be3b",
+          "bytes": 44
+        },
+        {
+          "id": "E354",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/request-frames/rotate-new/A-F52-118.bin",
+          "sha256": "eb85779ef4f9b4f0ed3e268432ed9b167928795ceeb4f55b5754e0d189d29e5e",
+          "bytes": 60
+        },
+        {
+          "id": "E355",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/request-frames/rotate-new/A-F65-127.bin",
+          "sha256": "92b4eaf1c333c578b12c31823c4a3c1ba09be06adebeb369f14593aad9ef0230",
+          "bytes": 70
+        },
+        {
+          "id": "E356",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/request-frames/rotate-new/A-F77-127.bin",
+          "sha256": "0e68f837904700f69959efc31cd11e5da778b1538e4993c11f14ddec122cb374",
+          "bytes": 67
+        },
+        {
+          "id": "E357",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/request-frames/rotate-new/A-F131-118.bin",
+          "sha256": "a3f2ee45603e0ce71501467866ffaef8d727278f39d0a17d31c7ea0beff62558",
+          "bytes": 60
+        },
+        {
+          "id": "E358",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/request-frames/rotate-new/A-F143-127.bin",
+          "sha256": "f33e7942e0e167bd10e4a3d88f4b5266309ae31dcfa23014f8b84301914733c6",
+          "bytes": 70
+        },
+        {
+          "id": "E359",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/request-frames/rotate-new/A-F147-127.bin",
+          "sha256": "9c1e69964e3ec6cc1f517ac04f6fed2f0b12ff4ef8e0d877db8b7ccf37c72c1d",
+          "bytes": 67
+        },
+        {
+          "id": "E360",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/request-frames/rotate-new/B-F13-82.bin",
+          "sha256": "1746130345929e482c425aa463e6bf34d6da555c86c6474cf235330227f74f47",
+          "bytes": 49
+        },
+        {
+          "id": "E361",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/request-frames/rotate-new/B-F24-95.bin",
+          "sha256": "730e662309a1a5abb7556e5f500168850ae220a9b7f288c1c62d18904206398c",
+          "bytes": 98
+        },
+        {
+          "id": "E362",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/request-frames/rotate-new/B-F64-127.bin",
+          "sha256": "cb12ccd191ab49249f55ae77a3deaf471e393240d55f012d90af8970b48bbcd9",
+          "bytes": 52
+        },
+        {
+          "id": "E363",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/request-frames/rotate-new/B-F65-127.bin",
+          "sha256": "807ce899da3b5caea17a0b0ef20742a66479ec8a57479faae8b58bb2ac4566f8",
+          "bytes": 52
+        },
+        {
+          "id": "E364",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/request-frames/rotate-new/B-F69-127.bin",
+          "sha256": "4230c8e2ae53bbeb8a9e77d5b4ceaea6e4d74df12951a6c92ed49c61d772786d",
+          "bytes": 52
+        },
+        {
+          "id": "E365",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/request-frames/rotate-new/B-F71-127.bin",
+          "sha256": "9b7bd7ca6eaaee02b7517a724f30564fb2a8350e47e222838f12978066243458",
+          "bytes": 52
+        },
+        {
+          "id": "E366",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/request-frames/rotate-new/B-F73-127.bin",
+          "sha256": "0043df90fd58db5b4020eb54f4c2bba3dca6506f482cf2f9b5d099afd82c3a84",
+          "bytes": 52
+        },
+        {
+          "id": "E367",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/request-frames/rotate-new/B-F75-127.bin",
+          "sha256": "c55b869879269b5fa51dea8bd4fd6559e37c0ad758bd98dd1d846a883534bbd2",
+          "bytes": 52
+        },
+        {
+          "id": "E368",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/request-frames/rotate-new/B-F79-127.bin",
+          "sha256": "05e890e58c0607eba9620d5b76ac799e9fc59fb81eea3f3f641567d1c4c2722d",
+          "bytes": 52
+        },
+        {
+          "id": "E369",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/request-frames/rotate-new/B-F96-95.bin",
+          "sha256": "c3d22dfd06abc3c7c17f7f4cfc0f7f2f92afea417ad65d4ca48eab565ed04f78",
+          "bytes": 382
+        },
+        {
+          "id": "E370",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/request-frames/rotate-new/B-F115-127.bin",
+          "sha256": "879260235735dc439f7ce1d3a034f697d2a18c416449527dac96a9f458039bc5",
+          "bytes": 70
+        },
+        {
+          "id": "E371",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/request-frames/rotate-new/B-F119-127.bin",
+          "sha256": "b9560cd7a7ab66b3450bcca02c8232439a10b0016c8d9dd66bc105e56db57925",
+          "bytes": 52
+        },
+        {
+          "id": "E372",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/request-frames/rotate-new/B-F121-127.bin",
+          "sha256": "7f55917046074ec394a367dbb288a950104b2cbaa61a4d3bd16caf91e7bb2eae",
+          "bytes": 52
+        },
+        {
+          "id": "E373",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/request-frames/rotate-new/B-F126-127.bin",
+          "sha256": "36149b57381a0f7e6a3c5c12457411bf6ecae33b49e669888fd8dc6d57ab8500",
+          "bytes": 52
+        },
+        {
+          "id": "E374",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/derived/rotate-new-A-replay.txt",
+          "sha256": "42c3203ba1cf4312a3baf702c19d0e3dc84384ac8e66f3fb2310d40504447964",
+          "bytes": 4265
+        },
+        {
+          "id": "E375",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/derived/rotate-new-A-oracle.json",
+          "sha256": "1e8d86295f31b212b3a77c116f944e8837a85bade92f80092af7bb48bf75dcba",
+          "bytes": 264619
+        },
+        {
+          "id": "E376",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/derived/rotate-new-B-replay.txt",
+          "sha256": "d98f87ac001540e1fa86cf2c346714a695fc9b80284d2adb0358df5ce4277cfe",
+          "bytes": 3659
+        },
+        {
+          "id": "E377",
+          "kind": "local",
+          "path": "local/research/codex/udp-freshness-r1/derived/rotate-new-B-oracle.json",
+          "sha256": "1217b05aee831d7ad7e896abfd08975114c4335e5f980c78e40bcac79db7edad",
+          "bytes": 225301
+        },
+        {
+          "id": "E378",
+          "kind": "local",
+          "path": "local/research/codex/wine_probe_udp_rotate_new.py",
+          "sha256": "d535fb632f1fcf7fd63a81dbbe2b7815a2e8c4078bd468d9f75573a9b80b7a96",
+          "bytes": 69128
+        },
+        {
+          "id": "E379",
+          "kind": "local",
+          "path": "local/research/codex/wcp-guard-r1/game/CA-r2-login-logout.exe",
+          "sha256": "660447c293ce92270cb9b5815331bca976e8f156366e1fe50b217b6c12e60ce3",
+          "bytes": 31874560
+        },
+        {
+          "id": "E380",
+          "kind": "local",
+          "path": "local/research/codex/wcp-guard-r1/game/CA-r2-stage-social.exe",
+          "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef",
+          "bytes": 31874560
+        },
+        {
+          "id": "E381",
+          "kind": "local",
+          "path": "local/research/codex/duo-round-r1/game-B/CA-r2-stage-social.exe",
+          "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef",
+          "bytes": 31874560
+        },
+        {
+          "id": "E382",
+          "kind": "artifact",
+          "path": "/home/admin/boom/repos/boomkr-re/out/modO.bin",
+          "sha256": "a08950c833d3acab8281049def7b3dc96b221f107eeda01da3a548e34b91dce5",
+          "bytes": 31858688
+        },
+        {
+          "id": "E383",
+          "kind": "repository",
+          "path": "docs/evidence/udp-actor/README.md",
+          "sha256": "972c49e6f39af1a28b18913304f800e7ca26c2a3ffb6d3241afe0afdd6b29521",
+          "bytes": 7493
+        },
+        {
+          "id": "E384",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/actor-apply.json",
+          "sha256": "9b927df8ed547be05cca4507a79001ce12b92ad26d45c874495aca0bb127da67",
+          "bytes": 10824
+        },
+        {
+          "id": "E385",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/125DEF0-prefix.asm",
+          "sha256": "5b2607b482380ce337594a56256da2c2d2d2e01ec23802fa171bb8566d0f7ca9",
+          "bytes": 1530
+        },
+        {
+          "id": "E386",
+          "kind": "local",
+          "path": "local/research/codex/udp-generation-r1/13DE880.asm",
+          "sha256": "339642d204108af4be68811ac41bde67220e879968cc483caaa15c48e1ffd299",
+          "bytes": 12732
+        },
+        {
+          "id": "E387",
+          "kind": "artifact",
+          "path": "/home/admin/boom/repos/boomkr-re/docs/kr-data.md",
+          "sha256": "79b84d57c7db51b100888ca685601be17d847d378f3080805cdd03b2ca059eaa",
+          "bytes": 34971
+        },
+        {
+          "id": "E388",
+          "kind": "artifact",
+          "path": "/home/admin/boom/repos/boom-re/docs/oc_e-game.md",
+          "sha256": "9e80ecea3fb7d152f58a4a0d60ac6e1f6759b18be23bf53d908bb896dbad0b6a",
+          "bytes": 70895
+        },
+        {
+          "id": "E389",
+          "kind": "artifact",
+          "path": "/home/admin/boom/repos/boom-rs/docs/research/findings/VN_LEGACY_SERVER_REFERENCE.md",
+          "sha256": "bd5c9b95929b78e17f21ce6adfaaf5c7bb02a3f13c7a026544bdc706f21e41fa",
+          "bytes": 6820
+        },
+        {
+          "id": "E390",
+          "kind": "artifact",
+          "path": "/home/admin/boom/repos/boom-re-l10n/docs/README.md",
+          "sha256": "e1cbceee4ac5fa46ee90f56fc4a9224def3e3e2350dd0fe3656cba18f1265ec9",
+          "bytes": 607
+        },
+        {
+          "id": "E391",
+          "kind": "artifact",
+          "path": "/home/admin/boom/archive/2026-10-26/KNOWLEDGE.md",
+          "sha256": "41494edfa4897cf01925220b6d62dfc132c137eaa00bdae5cfed33f0e9512305",
+          "bytes": 9136
+        },
+        {
+          "id": "E392",
+          "kind": "local",
+          "path": "local/research/codex/bomb-serial-r1/E66680.asm",
+          "sha256": "693de8be35ee71184f37bc1d1947059aef3cd4f2f99348593da2e403c15ba8fe",
+          "bytes": 19962
+        },
+        {
+          "id": "E393",
+          "kind": "local",
+          "path": "local/research/codex/bomb-serial-r1/E83900.asm",
+          "sha256": "6d60b92941b5cda8e70da9b24049dac30f5015104feedee05478426d4dfed5e8",
+          "bytes": 10590
+        },
+        {
+          "id": "E394",
+          "kind": "local",
+          "path": "local/research/codex/peer153-r1/native_all.py",
+          "sha256": "a4b3d839de3adcfdea3f17d568c327a6109222726f698d50e304b8c40f3cda6f",
+          "bytes": 3308
+        },
+        {
+          "id": "E395",
+          "kind": "local",
+          "path": "local/research/codex/bomb-serial-r1/14E57B0.asm",
+          "sha256": "ebf415184408e20d2964ce1b67e18c12b8507ee2a0f75de4a6049fe6287dc10b",
+          "bytes": 2717
+        }
+      ],
+      "delta": {
+        "added": [
+          "E66680 actualhandler/selector0 keybyte/tailfilter; reuseCP025cache andCP026native153decoder.",
+          "Nativekeyrotation blocksactualoldmovement whilecurrentapply/tworesultscontinue; endpointrotationalone failsforoldsource/newsource.",
+          "New boundedlowbyte allocator with4meaningfulunitchecks, nointegrationclaim; cores/evidence/nextsteps synchronized."
+        ],
+        "corrected": [
+          "Endpointrotation was a hypothesis, now rejected asstandalonefreshnessguard inmeasuredsamekeycases.",
+          "Tailbyte isnotmonotonicanti-oldrule: backwardgap>=10 stillapplies, no tick/time/epochname implied.",
+          "u32key changes+256 collide inthisbytecheck; notcryptographicauth orfullu32epoch."
+        ],
+        "superseded": [
+          "CP046deepvfF4/fieldfreshness unknown nowboundedanswered; no repeatE66680/153keybyte/endpointfreshnesssearch.",
+          "NEXT-DUO-ROUND moves tointegratingexistingpolicy andmeasuredkeys into smallservice/two-clienttwo-round run, notper-breakpointRE."
+        ]
+      },
+      "blockers": [
+        "Key low8reuse/IDrosterchanges/otherUDPtypes/fullgrammar/reliability/peer lifetime andproductionfreshness remain; endpointrotationalone rejected.",
+        "UdpRoundKeys module notruntimeintegrated; samekeymust beallocatedonceunderroomowner andbroadcastallmembers; no blanketUDPauth/epoch claim.",
+        "Full124validator/identicalcatalog/tick/session, standalone server/fullauth/profile/cache/codec/vanilla/accountreconnect/fullmatch/K5/K6a/LAN/Internet notaccepted."
+      ],
+      "next_steps": [
+        {
+          "id": "NEXT-DUO-ROUND",
+          "task": "KRE-005b",
+          "state": "active",
+          "action": "Reuse CP047measured153keybyte/nativehandler/endpointresults; integrateUdpRoundKeys/RoundFence/ItemClaims into smallservice withonekeyperacceptedStartforallmembers, actualtwo-clienttwo-round oldkeydrop/currentapply/result/reset run. Do not re-REqueue/E66680 orclaimnewtransportclean onallocatorreset. Source-reuse beforecodebranch; AUDdueCP048.",
+          "owner": "Codex",
+          "reviewer": "Codex"
+        },
+        {
+          "id": "NEXT-ITEM-PICKUP",
+          "task": "KRE-005b",
+          "state": "active",
+          "action": "Usefamilytable/R169–185/CP045boundedanswers; runtimeatmax/TTL/neededactivevariant only, nofullcatalogscan. Full124validator identicalcatalog/tick/session limits remain.",
+          "owner": "Codex",
+          "reviewer": "Codex"
+        },
+        {
+          "id": "NEXT-FULL-LOGIN-FIELDS",
+          "task": "KRE-005b",
+          "state": "active",
+          "action": "Fullauth/profile/cache/codec/vanilla/accountreconnect separate; no gate fromdiagnosticcopy/UI alone.",
+          "owner": "Codex",
+          "reviewer": "Codex"
+        }
+      ],
+      "review": {
+        "status": "waived",
+        "as_of_utc": "2026-10-31T15:27:48.047917+00:00",
+        "reference": "docs/evidence/checkpoints/review-waiver.json",
+        "scope": "Codex solo RE/code/runtime/selfcheck, not independent approval.",
+        "authorization": {
+          "by": "project_owner",
+          "reference": "docs/evidence/checkpoints/review-waiver.json",
+          "reason": "Owner explicitly requested solo without Claude review."
+        }
+      },
+      "docs_sync": [
+        {
+          "path": "README.md",
+          "state": "updated",
+          "reason": "CurrentCP047keyguard/endpointlimits/modulependingintegration/CP046merge."
+        },
+        {
+          "path": "docs/PLAN.md",
+          "state": "updated",
+          "reason": "Task/map andnextsmallserviceintegration, no newper-sessionplan orgate."
+        },
+        {
+          "path": "docs/PROTOCOL.md",
+          "state": "updated",
+          "reason": "Canonicalmovementhandler/keybyte/tailfilter/keyrotation/endpointcontrol/designlimits."
+        },
+        {
+          "path": "docs/RESEARCH.md",
+          "state": "updated",
+          "reason": "AnswereddeepvfF4/keybyte/endpoint, nextpolicyserviceintegration andexplicitremaininglimits."
+        },
+        {
+          "path": "docs/REFERENCES.md",
+          "state": "unchanged",
+          "reason": "CP045alreadyroutedlegacyrepos; per-questioncache/sourcehash inreuse/evidence."
+        },
+        {
+          "path": "AGENTS.md",
+          "state": "unchanged",
+          "reason": "Mandatorysource-reuse/solo/waiver/checkpoint/PRapplied, no rulechange."
+        },
+        {
+          "path": "docs/evidence/udp-freshness/README.md",
+          "state": "updated",
+          "reason": "Recipe/4runs/rawSHA/native/controls/prooflevels/limits."
+        },
+        {
+          "path": "server/README.md",
+          "state": "updated",
+          "reason": "Allocatorintegrationrecipe/owner/exhaustion/lifetimelimits; unitpolicyvsruntime separated."
         }
       ]
     }

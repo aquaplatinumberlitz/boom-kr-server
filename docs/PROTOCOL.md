@@ -1,6 +1,6 @@
 # KR 00967 — contract tương thích client gốc
 
-Revision kr-legacy-contract-r1; cập nhật31/10/2026 JST (CP046).
+Revision kr-legacy-contract-r1; cập nhật01/11/2026 JST (CP047).
 **Contract có bằng chứng từng phần; chưa nghiệm thu full codec K2**.
 Lộ trình và thứ tự task chỉ giữ ở [REWRITE_PLAN — KRE](PLAN.md).
 Đây là contract của repo server KR. ADR0009 của bản viết lại là nguồn lịch sử để so sánh;
@@ -775,7 +775,7 @@ còn có socket bind khác, không gán cả hai cho movement. Trong namespace I
 |---|---|
 | Stream đầu | `E88790→vf5C/14EB410→14EB430`: u32obf stored length, rồi blob obf theo chunk4/2/1. Raw sau decode=`18` +u32LE length +compression0 +data. Ca đo: raw7byte=`18020000000000`; data=u8count0. Outer tổng11byte. `E8A340→E8A3F0` đọc count rồi count×u8 vào vector stage+6404. Chỉ count0/compression0 đã kiểm. |
 | u32 đầu | Đưa vào `E13490`; chọn0, quan sát clock origin khởi tạo lại. Semantics game time candidate; chưa thử nonzero. |
-| u32 thứ hai | Gán stage+63E0, chọn12345 theo key hiện có; không suy đủ UDP session/identity contract. |
+| u32 thứ hai | Gán stage+63E0; CP026 chọn12345, CP047 đổi12346 vòng2 và kiểm byte khóa trong [movement handler](#udp-generation). Chưa đủ toàn UDP session/identity contract. |
 | 2×u32, u8 | Stage+64D4/+64D8 nhân1000; chọn180/180 giây và flag0→secure+647C. Header kết thúc cursor28. |
 | Relay u32IP/u16port/u8flag | Chọn0/0/0. Static IPnonzero quahtonl→13E1140→14E57B0; chưa kiểm relay runtime/endian. Không áp kết luận endian peer cho relay. |
 | 26slot | Mỗi slot u8on. On≠0 đọc3×(u32IP,u16port); array3×8byte→13E1190 khi1243330(slot) đủ điều kiện. Ca đo slots0/1 có profile, localID1/guestID2. |
@@ -1856,7 +1856,7 @@ nguồn cũ không chứng minh guard KR. Không thêm patch/ép state; cùng di
   output13byte khớp inner15byte đã bỏ selector/slot. `125937E→14EF010` là khởi tạo packet stream,
   không phải callback gameplay. Bước này chưa đổi field actor trong ca đã đo.
 - Pump ngoài tại **1257B61** gọi virtual+B4, runtime target **125DEF0**, receiver vt17927FC;
-  wrapper này chuyển tới receiver+F0/vfF4. Target vfF4 sâu hơn chưa được đo tên/grammar.
+  wrapper này chuyển tới receiver+F0/vfF4. Tại CP046 target vfF4 sâu hơn chưa được đo; CP047 bổ sung bên dưới.
   Nhánh130BC00 trong caller trung gian không hit ở control, không gọi nó là handler actor.
 - `pump-stale`, vòng2/sample6: exact old B→A datagram17byte vòng1, wire SHA
   `2bee9f8cf7d5f12d3cbec10921e8d1c4e66ac1a10c1bf320b0b772417d9f0f9d`, không trùng normalforwardR2.
@@ -1876,6 +1876,49 @@ Getter oracle kiểm value/checksum native, mô hình riêng counter5000/55-read
 rekey/storage trong emulation; không đổi counter/state của client runtime. [Giới hạn phép kiểm](evidence/udp-actor/README.md).
 Giới hạn: một oldpacket/cùng endpoint/profile; chưa toàn peer grammar, freshness validator, loại gói
 cũ theo generation hoặc giải pháp production. [Phép thử kế](RESEARCH.md#q-023).
+
+**CP047 — handler, byte khóa và bộ lọc ngắn, kr_static/kr_runtime confirmed hẹp:**
+[Nguồn/cache đã tái dùng, recipe/hash và các mức kiểm](evidence/udp-freshness/README.md).
+Runtime125DF30 xác định vfF4 thật **E66680/vt176A470** trên cả hai client. Cache CP025 đã có body,
+không quét lại client. Chỉ nhánh selector0/length13 đang dùng cho ca movement được phục hồi ở đây;
+E66680 còn các nhánh khác, không lấy một nhánh làm toàn grammar.
+
+| Phần payload13byte | Đọc/consumer đã đối chiếu |
+|---|---|
+| u16 selector | Nhánh0, tổng packetlength phải13. |
+| u8 khóa | So tạiE667BE với `low8(stage+63E0) XOR low8(profileID(slot))`, profile getter1240370 đã có ở CP020. Không là xác thực hoặc u32 epoch đầy đủ. |
+| u8 context | So với E150F0 trên context lấy từE703E0; chưa gán tên/đơn vị. |
+| body8byte | byte0 chọn slot; byte2–3/4–5 là signed16 x/y ở call B4E6F0; byte6 đi vào state argument. Byte1/7 chưa giải nghĩa. |
+| u8 cuối | So với byte tại stage+63EC+slot, rồi lưu trước apply; chưa gọi là clock/tick/time. |
+
+CacheE83900 cho thấy init153 đặt24byte từ+63EC thànhFF; không suy đủ bounds26slot từ peerlist26.
+Ở E66868–E66892, nếu incoming>stored thì store/apply; nếu incoming≤stored nhưng stored−incoming≥10
+vẫn store/apply. Chỉ đoạn lùi0..9 bị nhánh E66884 bỏ. Vì vậy byte này không tự chống packet vòng cũ.
+Mười ca emulation chạy đúng code compare/jump với context tổng hợp (biên9/10/wrap), tách với runtime.
+
+- `handler-stale`: giữ khóa12345/cùng endpoint, exactold callback vẫn đổi x120→200; handler target
+  E66680 được quan sát. Hai Start/bom/17/19/statepeer/result/return, không phải nghiệm thu toàn trận.
+- `key-rotate`: **chỉ u32 thứ hai trong153 đổi12345→12346 ở vòng2**, cả hai client cùng khóa;
+  endpoint và oldUDPbytes/CRC giữ nguyên. Decoder native153 đọc97/97/errors0, khóa đúng từng vòng.
+  Exactold B→A wire SHA `12f19edc8462717b528f36ece3a4d5606bd4b128c78aeb3551628c44547b8291`
+  vẫn qua endpoint/CRC/queue/drain/consumer/packetstream/E66680, round2/sample4 đọc đủ13byte;
+  key wire59/expected56. Không tới tailcompare/B4E6F0; cùng actor giữ state15/x120/y159 trước/sau.
+  Normalpacket key56 khớp và tới apply; có hai bom/17/19/statepeer/result/return. Đây là native guard
+  cho packet đã đo, không suy sendlog hoặc return callback thành accept/reject.
+- `rotate-old`:153 đổi cả hai proxyport vòng2 nhưng khóa vẫn12345; giữ socket cũ, replay trực tiếp
+  tới client từ cổng B cũ60880, không đi qua bộ lọc generation của proxy. Native resolve peer khác0;
+  exactold round2/sample4 key59 khớp, tail incoming69/stored86 (lùi17) vẫn store/apply,
+  actor x120→200/y159 giữ nguyên. Có hai result/return. **Đổi endpoint riêng lẻ không chặn ca này.**
+- `rotate-new`: oldpayload từ cổng mới47725 vẫn vào E66680; round2/sample4 key59 khớp,
+  incoming70/stored86 (lùi16) store/apply, x120→200/y159 giữ nguyên. Hai result/return.
+  Cả hai ca đổi cổng đều kiểm native endpoint/queue/actor, không dùng log proxy làm oracle.
+
+Sáu ca emulation byte-key/XOR/compare gồm khóa12345 và12601 (`+256`) cho cùng byte kiểm;
+không nâng sáu ca thành runtime wrap/security. Bộ cấp [UdpRoundKeys](../server/udp_round_keys.py)
+là `design/emu_choice`: cấp một u32 mỗi acceptedStart, cùng khóa cho mọi member, không lặp low8
+trong một lifetime, báo lỗi sau256 lần; caller giữ instance qua finish/abort và quản lifetime/roster.
+Unit test không là runtime tích hợp module; các harness trên chọn12345/12346 trực tiếp. Roster/ID thay,
+key reuse, packet type khác, giả mạo và peer lifetime mới vẫn cần xử lý riêng; không gọi khóa này là auth.
 
 ### Giới hạn và correction WCP lịch sử
 
@@ -1908,7 +1951,7 @@ liệt kê và phân biệt với nguyên bản trong mọi demo.
 
 ### Authority matrix hiện hành và gate review
 
-Bảng này tổng hợp bằng chứng từng phần đến CP046; chưa phải toàn contract server gốc. Mỗi hàng khi
+Bảng này tổng hợp bằng chứng từng phần đến CP047; chưa phải toàn contract server gốc. Mỗi hàng khi
 triển khai phải bổ sung riêng **creator, simulator, validator, broadcaster, peer-editable state**, với
 locator/trace và trạng thái từng ô; những vai trò không nêu dưới đây hiện `unknown` cho KR.
 
@@ -1922,7 +1965,7 @@ locator/trace và trạng thái từng ô; những vai trò không nêu dưới 
 | Trap/death | CP029/036; CP037 kim và tranh chấp cứu/diệt; [kim](#needle-selfescape), [precedence](#contact-precedence) | Validator/duplicate/stale/generation/variants, result21 và đối chứng thêm/đảo chiều còn thiếu |
 | Result/reset | CP039 hai vòng statepeer/result/21/return và reset field hẹp; CP044 [timer ở EOF và vòng B/C mới](#abort-timer) | CP041 có [payload cũ khi ID reuse](#round-generation); arbitration/toàn generation/entity/timer/peer/seq không rò vẫn mở; phân biệt run chờ sai origin với ca hoàn tất |
 | Room lifecycle | CP034 leave/promotion/EOF/return; CP035 rejoin/Ready; CP040 chủ B/C Start; CP044 [B/C bom/death/result/return sau abort](#abort-timer) | Bầu chủ/giữ ID-slot/forfeit là policy stub; guest EOF trả A về phòng/xóa B đã đo riêng; reconnect cùng account/disconnect variants/toàn reset còn mở |
-| Peer lifecycle | CP027 actual99→153; CP045–046 [oldUDP tới actor/current sửa lại/control](#udp-generation) | DeepvfF4/freshness/identity guard, full schema/handshake/key/slot/reliability/relay và round reset; E8E960false đã giải hẹp, chưa production generation guard |
+| Peer lifecycle | CP027 actual99→153; CP045–047 [oldUDP actor/keyguard/endpointcontrol](#udp-generation) | Tích hợp key policy/service; low8reuse/roster/UDPtype khác/fullgrammar/reliability/relay/reset. Không coi đổi cổng riêng lẻ là freshness guard hoặc keybyte là auth |
 
 Gate K5/K6 cần kiểm matrix và đối chứng của hành vi thực sự dùng; từ28/10 Codex tự kiểm theo miễn review của chủ dự án. Có thể giữ unknown về
 server gốc thất lạc nếu policy emulator được chọn `design`, client chấp nhận và ca consistency đạt;

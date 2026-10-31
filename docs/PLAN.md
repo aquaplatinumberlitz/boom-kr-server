@@ -1,7 +1,7 @@
 # Kế hoạch server giả lập KR 00967
 
 Nguồn chuẩn của project `boom-kr-server`; bản nhập từ plan đã được dsh1/dsh2 review tại `1eee46d`.
-Cập nhật31/10 JST (CP046): oldUDP đã làm đổi tọa độ actor ở vòng2, gói hiện tại sửa lại; chưa giải freshness/generation. Toàn reset/validator/variants chưa full match. K0/K1, K2/K3 còn từng phần; bảng gate là scope nghiệm thu, chưa phải checklist đã pass.
+Cập nhật01/11 JST (CP047): đổi khóa153 chặn oldmovement đã đo, gói mới và hai result/return còn chạy; đổi cổng riêng lẻ không chặn oldsource/newsource. Toàn reset/validator/variants chưa full match. K0/K1, K2/K3 còn từng phần; bảng gate là scope nghiệm thu, chưa phải checklist đã pass.
 
 
 ### Mục tiêu, baseline và phạm vi
@@ -37,13 +37,13 @@ với client Rust không chứng minh có thể điều khiển client KR bằng
 
 ### Tiến độ hiện hành theo bằng chứng
 
-| Task/mốc | Trạng thái tại CP046 | Nguồn chuẩn |
+| Task/mốc | Trạng thái tại CP047 | Nguồn chuẩn |
 |---|---|---|
 | KRE-004/issue6 | Đã review/merge PR7 và đóng issue:recipe r1 đến local accept;không phải full K1 | [Wine r1](evidence/wine/README.md) |
 | Bootstrap reply | PR8 đã merge;debugger ProcessPatchreturn1,không ép success | [bootstrap evidence](evidence/bootstrap-wire/README.md) |
 | KRE-005a/issue9,R2 | PR10 đã merge:3 cold start cửa sổ/second accept;issue9 còn mở | [R2 evidence](evidence/wine-r2/README.md) |
 | WCP hai-reply | Run CP001 là lịch sử chưa C→S; CP006 đã đo request đầu trên copy tham số hóa | [PROTOCOL](PROTOCOL.md#wcp),[WCP evidence](evidence/wcp/README.md) |
-| KRE-005b/issue14 | CP006–045 đã merge; CP046 oldUDP tới actor/native tọa độ, control không replay đã kiểm; fullround/authority/full auth còn mở | [Q-023](RESEARCH.md#q-023), [evidence](evidence/udp-actor/README.md) |
+| KRE-005b/issue14 | CP006–046 đã merge; CP047 movement key guard/endpoint control và allocator policy; fullround/authority/full auth còn mở | [Q-023](RESEARCH.md#q-023), [evidence](evidence/udp-freshness/README.md) |
 | K0/K1 | Chưa nghiệm thu toàn gate;Windows vanilla/control ownership và các điều kiện còn thiếu giữ mở | Gate dưới,[Q-022](RESEARCH.md) |
 | K2a/K2 | Primitive/WCP từng phần; request auth đã capture/native replay, phản hồi lỗi đã dispatch; full codec/reconnect và gate chưa pass | [PROTOCOL](PROTOCOL.md#login-auth),[Q-023](RESEARCH.md#q-023) |
 | K3 | Copy chẩn đoán đã vẽ UI sảnh và đóng notice; chưa nghiệm thu identity/cache/codec đủ gate | [Contract sảnh](PROTOCOL.md#channel-lobby) |
@@ -53,8 +53,10 @@ Thứ tự tiếp: peerqueue/UDP generation/reset và giới hạn124 trùng cat
 CP044 đã đo fence timer ở EOF và vòng B/C mới tới result/return, không tìm lại đường timer đã kiểm.
 CP045 đã reuse R153/R169–185 và CP031–042 để đo Roller/MaxPower; phân nhóm item tại
 [contract](PROTOCOL.md#item-families), không mở lại mỗi row như một cơ chế. UDP cũ đã tới consumer;
-CP046 đã nối tới actor và giải gate0 bằng native false stub. Tiếp freshness/round identity và phép thử
-endpoint/key theo cạnh runtime; không tìm lại callback/CRC/queue hoặc tìm input bật gatefalse này.
+CP046 đã nối tới actor và giải gate0 bằng native false stub. CP047 đã xác định E66680/keybyte và
+tailfilter, đo đổi153key chặn oldmovement; không tìm lại callback/CRC/queue, deep handler này hoặc
+thử endpointrotation như guard đã thành công. Tiếp tích hợp key policy cùng lifecycle vào service nhỏ
+cho đường hai client/hai vòng; key reuse/roster và các packet type khác giữ giới hạn riêng.
 CP043 đã đo159 cũ tới khi serial local dùng lại, không tìm lại receiver/pool compare.
 CP041–042 trả lời hẹp stale158/ID và165/index reuse; không tìm lại nhánh nổ hoặc coi fence job local là toàn validator.
 Phân biệt client mới C sau host EOF với reconnect/resume cùng account. Chain nhiều owner/ba bom/vật cản và runtime tại max/speed còn thiếu.
@@ -72,7 +74,7 @@ Không săn timing vô hạn; ưu tiên consistency/result/reset của ca hai cl
 Chu kỳ docs/audit theo [workflow](evidence/checkpoints/README.md);
 counter ở [manifest](evidence/checkpoints/manifest.json). Không tạo plan theo phiên.
 
-### Bản đồ đường chạy, CP046
+### Bản đồ đường chạy, CP047
 
 | Bước | Quan sát/bước tiếp |
 |---|---|
@@ -107,6 +109,7 @@ counter ở [manifest](evidence/checkpoints/manifest.json). Không tạo plan th
 | Nhóm item → delta build | CP045 reuse VN R169–185/ItemAttr/consumer, KR Roller5→6 và MaxPower1→7 cả hai view/reset vòng2; [bảng nhóm](PROTOCOL.md#item-families). Không wholeitemcoverage/pxs KR hoặc TTL từ tên/icon. |
 | UDP vòng cũ → consumer game | CP045 nguyên datagram B vòng1 được replay vòng2, qua queue/drain và consumer trả13 với slot1/gate0; [contract](PROTOCOL.md#udp-generation). Giới hạn CP045: chưa actorapply; CP046 kiểm tiếp ở hàng dưới. |
 | UDP vòng cũ → actor | CP046 actualpump1257B61→125DEF0, exactold callback đổi x120→200, gói hiện tại sửa về120; [contract](PROTOCOL.md#udp-generation). No-replaycontrol giữ vị trí ở8sample trước input; chưa fullmatch hoặc production generation guard. |
+| Movement vòng cũ → khóa vòng mới | CP047 E66680/native153key12345→12346: oldkey mismatch/actor giữ nguyên, currentpacket apply và hai result/return. Endpoint cũ vẫn apply nếu chỉ đổi cổng. Allocator policy có unit test, chưa tích hợp service. [Contract](PROTOCOL.md#udp-generation). |
 
 RE động là chính; gom phép đo thành checkpoint mốc/blocker, audit định kỳ theo workflow.
 Review độc lập được chủ dự án miễn từ28/10; Codex tự kiểm, giữ PR và điều kiện bằng chứng của gate.
