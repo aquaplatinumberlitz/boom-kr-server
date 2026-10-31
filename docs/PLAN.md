@@ -1,7 +1,7 @@
 # Kế hoạch server giả lập KR 00967
 
 Nguồn chuẩn của project `boom-kr-server`; bản nhập từ plan đã được dsh1/dsh2 review tại `1eee46d`.
-Cập nhật 31/10 JST (CP036): có đối chứng enemy touch/timeout và rescue18→170/18/state56→26 hai phía; hai client thật + actor C tổng hợp, chưa full match. K0/K1, K2/K3 còn từng phần; bảng gate là scope nghiệm thu, chưa phải checklist đã pass.
+Cập nhật31/10 JST (CP037): có kim tự thoát/peer sync, thí nghiệm cứu/diệt ba client thật và native collection có kiểm theo thứ tự; phạm vi tại PROTOCOL, chưa full match. K0/K1, K2/K3 còn từng phần; bảng gate là scope nghiệm thu, chưa phải checklist đã pass.
 
 
 ### Mục tiêu, baseline và phạm vi
@@ -37,19 +37,20 @@ với client Rust không chứng minh có thể điều khiển client KR bằng
 
 ### Tiến độ hiện hành theo bằng chứng
 
-| Task/mốc | Trạng thái tại CP036 | Nguồn chuẩn |
+| Task/mốc | Trạng thái tại CP037 | Nguồn chuẩn |
 |---|---|---|
 | KRE-004/issue6 | Đã review/merge PR7 và đóng issue:recipe r1 đến local accept;không phải full K1 | [Wine r1](evidence/wine/README.md) |
 | Bootstrap reply | PR8 đã merge;debugger ProcessPatchreturn1,không ép success | [bootstrap evidence](evidence/bootstrap-wire/README.md) |
 | KRE-005a/issue9,R2 | PR10 đã merge:3 cold start cửa sổ/second accept;issue9 còn mở | [R2 evidence](evidence/wine-r2/README.md) |
 | WCP hai-reply | Run CP001 là lịch sử chưa C→S; CP006 đã đo request đầu trên copy tham số hóa | [PROTOCOL](PROTOCOL.md#wcp),[WCP evidence](evidence/wcp/README.md) |
-| KRE-005b/issue14 | CP006–035 đã merge; CP036 có collision/rescue hẹp; fullround/authority/full auth còn mở | [Q-023](RESEARCH.md#q-023), [evidence](evidence/collision-rescue/README.md) |
+| KRE-005b/issue14 | CP006–036 đã merge; CP037 có kim/ba client và precedence hẹp; fullround/authority/full auth còn mở | [Q-023](RESEARCH.md#q-023), [evidence](evidence/needle-contact/README.md) |
 | K0/K1 | Chưa nghiệm thu toàn gate;Windows vanilla/control ownership và các điều kiện còn thiếu giữ mở | Gate dưới,[Q-022](RESEARCH.md) |
 | K2a/K2 | Primitive/WCP từng phần; request auth đã capture/native replay, phản hồi lỗi đã dispatch; full codec/reconnect và gate chưa pass | [PROTOCOL](PROTOCOL.md#login-auth),[Q-023](RESEARCH.md#q-023) |
 | K3 | Copy chẩn đoán đã vẽ UI sảnh và đóng notice; chưa nghiệm thu identity/cache/codec đủ gate | [Contract sảnh](PROTOCOL.md#channel-lobby) |
-| K4–K7 | CP036 rescue/va chạm hẹp; block/chain variants/generation/disconnect trong trận/authority chưa nghiệm thu. Chưa K6a/LAN/Internet | Không có phần trăm ước lượng |
+| K4–K7 | CP037 kim/rescue/precedence hẹp; block/chain variants/generation/disconnect trong trận/authority chưa nghiệm thu. Chưa K6a/LAN/Internet | Không có phần trăm ước lượng |
 
-Thứ tự tiếp: host EOF/disconnect trong trận,
+Thứ tự tiếp: kiểm cả hai actor cùng đủ điều kiện và đảo slot/team trong cứu/diệt và kim khi bị nhốt lần hai;
+sau đó report21/result, host EOF/disconnect trong trận,
 validator/generation/stale và toàn reset trước K6a; chain nhiều owner/ba bom/vật cản và runtime tại max/speed còn thiếu.
 CP032 đã đo hai block/list2/reveal/nhặt và reset stat/item hẹp ở
 [contract](PROTOCOL.md#hidden-items). CP031 giữ effect/stat/power; CP030 giữ layout/nhặt/tranh index;
@@ -61,7 +62,7 @@ chưa LAN/Internet.
 Chu kỳ docs/audit theo [workflow](evidence/checkpoints/README.md);
 counter ở [manifest](evidence/checkpoints/manifest.json). Không tạo plan theo phiên.
 
-### Bản đồ đường chạy, CP036
+### Bản đồ đường chạy, CP037
 
 | Bước | Quan sát/bước tiếp |
 |---|---|
@@ -84,6 +85,8 @@ counter ở [manifest](evidence/checkpoints/manifest.json). Không tạo plan th
 | Rời phòng → về sảnh/chủ mới | CP034 actual86/107 xóa slot,110 chuyển chủ B; guest EOF→107. Dữ liệu14 loại1 giữ đúng CLobbyStage để241/91 vào handler và UI sảnh; [contract](PROTOCOL.md#room-leave). CP035 bổ sung [rejoin/start sau promotion](PROTOCOL.md#room-rejoin); disconnect trong trận còn mở. |
 | Vào lại → chủ mới Start | CP035 actual82→87→585 trên socket cũ; A khách Ready95→110, B chủ104→121/129byte cả hai→99/197/196/153→clock. [Contract](PROTOCOL.md#room-rejoin); chưa full match/toàn reset. |
 | Va chạm → rescue | CP036 A17→Bchạm→A18,170/18 đọc7/7 đưa B actorA56→26, A26 và tiếp movement; hai client thật + C tổng hợp. Enemy touch2,32s vs no-touch6,18s tới19; [contract](PROTOCOL.md#collision-rescue). Validator/result/variants còn mở. |
+| Kim Ctrl → tự thoát | CP037 actual pickup/use và170/1 đồng bộ peer; [contract](PROTOCOL.md#needle-selfescape). Server inventory/secondtrap/duplicate và Ctrl cạnh tranh va chạm còn mở. |
+| Cứu/diệt cạnh tranh | CP037 ba client thật, đối chứng thứ tự tới và native collection dừng ở chạm hợp lệ đầu; [phạm vi](PROTOCOL.md#contact-precedence). Cùng phím không thay cùng va chạm. |
 
 RE động là chính; gom phép đo thành checkpoint mốc/blocker, audit định kỳ theo workflow.
 Review độc lập được chủ dự án miễn từ28/10; Codex tự kiểm, giữ PR và điều kiện bằng chứng của gate.

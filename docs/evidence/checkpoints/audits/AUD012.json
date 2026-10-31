@@ -1,0 +1,74 @@
+{
+  "id": "AUD012",
+  "trigger": "serious_contradiction",
+  "completed_through": "CP037",
+  "recorded_utc": "2026-10-31T06:38:15.900674+00:00",
+  "auditor": "Codex self-audit; independent review waived by project owner",
+  "read_files": [
+    "README.md",
+    "docs/PLAN.md",
+    "docs/PROTOCOL.md",
+    "docs/RESEARCH.md",
+    "docs/evidence/needle-contact/README.md",
+    "local/research/codex/contact-race-r1/E6E440.asm",
+    "local/research/codex/contact-race-r1/E6E680.asm",
+    "local/research/codex/contact-race-r1/native-collection.json",
+    "local/research/codex/contact-race-r1/native-decision.json",
+    "local/research/codex/contact-race-r1/native-predicate.json",
+    "local/research/codex/contact-race-r1/race-order/client.log",
+    "local/research/codex/contact-race-r1/race-Bfirst/client.log",
+    "local/research/codex/contact-race-r1/runtime-summary.json",
+    "local/research/codex/contact-race-r1/actor-fields.json",
+    "local/research/codex/contact-race-r1/measurement-notes.json",
+    "local/research/codex/needle-r1/runtime-summary.json",
+    "local/research/codex/needle-r1/actor-fields.json",
+    "local/research/codex/needle-r1/needle-forward/client.log",
+    "local/research/codex/needle-r1/needle-forward/client-B.log",
+    "local/research/codex/needle-r1/measurement-notes.json"
+  ],
+  "method": "Immediate audit started when draftinference collectall/alwaysdeath contradicted E6EE3Fexit. Read currentREADME→PLAN→PROTOCOLCP036/037andlimits→RESEARCH→newevidence; compare actualsnapshots/typednativepackets/6branch/18predicate/4collectioncases and rawcontrolflow, thennewactualvisittrace/8runoutcomes/images and sourcehashes. Wholeoldercontractscope previouslyauditedAUD011; focusthiscorrection/newdelta. Notcheckersubstitute; oldcompleteCP/rawimmutable.",
+  "findings": [
+    {
+      "id": "F1",
+      "stale": "UnpublishedCP037draftandinterimcommentary inferred collectallcollisions and deathpriority from syntheticbothflagsfinalbranch; ordinarytrappedloop actually exitsfirsteligible viaE6EE3F→EE66.",
+      "correction": "Retractinference beforeCP037complete. Nativecollection withbothmodeledeligible reversesoutcome onorder; finalbranchbothflagsis counterfactual/reachabilityunproven. Actualruntimefourvisitticks0/1/2 separatefrom simultaneouseligibilityunknown. No oldcompletedcheckpoint changed.",
+      "fixed_in": [
+        "README.md",
+        "docs/PLAN.md",
+        "docs/PROTOCOL.md",
+        "docs/RESEARCH.md",
+        "docs/evidence/needle-contact/README.md",
+        "local/research/codex/contact-race-r1/measurement-notes.json",
+        "local/research/codex/contact-race-r1/native-collection.json",
+        "local/research/codex/contact-race-r1/native-decision.json"
+      ]
+    },
+    {
+      "id": "F2",
+      "stale": "RooterrorNone/keysendreturn0/clock infailedcontrols couldbe mistakenfor gameplay measurement.",
+      "correction": "needle-first explicitlyfailedcollectorKeyError41/role; race-aligned hasclockbutnoactual118/contact andcannotanswercontactquestion. Limitedprobe restoredactual118/17/18; instrumentationcausecandidateonly.",
+      "fixed_in": [
+        "docs/PROTOCOL.md",
+        "docs/evidence/needle-contact/README.md",
+        "local/research/codex/needle-r1/measurement-notes.json",
+        "local/research/codex/contact-race-r1/measurement-notes.json"
+      ]
+    },
+    {
+      "id": "F3",
+      "stale": "CurrentREADME retainedCP036preintegration snapshot; newPLANrows separatedfromtablebyblankline; contactheadingstillfocusedcounterfactualbothflags.",
+      "correction": "RecordPR44merge7ab702f andCP037snapshot; joinnewrowsintomaptable; updateheadingtofirsteligiblecollection/currentnextsteps. WaivedreviewandopenK5/K6a/LAN/Internet remainexplicit.",
+      "fixed_in": [
+        "README.md",
+        "docs/PLAN.md",
+        "docs/PROTOCOL.md",
+        "docs/RESEARCH.md"
+      ]
+    }
+  ],
+  "remaining": [
+    "Actualbotheligible inoneruntimescan andslot/teampermutation/invulnerability/specialmode/timeout-vs-contact/UDPordering notvalidated; visit0/1/2onlyfourmeasuredticks/profile.",
+    "Secondtrapwithnoneedle/Ctrlvsfriendly-enemytouch,serverinventory/stale/duplicate/generation/validator/result21/active-matchdisconnect/allreset/fullauth/cache/codec/vanilla/relay/NAT/LAN/Internet/fullmatch/gatesopen.",
+    "AUD012ad-hocdoesnotresetperiodicCP036→CP040; selfauditnotindependentapproval."
+  ]
+}
