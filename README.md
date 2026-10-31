@@ -22,18 +22,19 @@ boom-kr-server/
 
 ## Đang làm
 
-CP043: **159 cũ có thể bind nhầm ID cho bom dự đoán vòng mới khi serial local dùng lại**,
-khiến timer ID hiện tại nổ ở B nhưng không ở A. Control và ca fence loại job159 cũ đều đủ hai vòng.
-[Contract/phạm vi](docs/PROTOCOL.md#late-bomb-confirm), [recipe/control/hash](docs/evidence/late-bomb-confirm/README.md).
-CP041–042 đã có [fence job bom](docs/PROTOCOL.md#round-generation) và [claim item](docs/PROTOCOL.md#item-generation).
+CP044: **đã đo loại timer bom cũ sau host EOF và chơi tiếp một vòng với client thay thế**.
+B trở thành chủ phòng; C mới vào, Ready → B Start → bom mới → trap/death đồng bộ → kết quả → về phòng.
+Control cố ý gửi timer cũ cho thấy gói tới preparestage; bật fence thì không gửi.
+[Contract/phạm vi](docs/PROTOCOL.md#abort-timer), [recipe/control/hash](docs/evidence/abort-timer/README.md).
+Các ca stale158/165/159 và giới hạn policy local nằm trong [contract KR](docs/PROTOCOL.md).
 
 Đây là thí nghiệm copy chẩn đoán Wine; **chưa nghiệm thu trận hoàn chỉnh/K6a**.
-Timer abort, peerqueue, fullvalidator và full auth/cache/codec còn thiếu; chưa LAN/Internet.
+Peerqueue/UDP generation, fullvalidator, server độc lập và full auth/cache/codec còn thiếu; chưa LAN/Internet.
 [Bước tiếp](docs/RESEARCH.md#q-023).
 
-CP042 đã merge [PR50](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/50) tại `ed47c97`.
-CP043 là snapshot trước tích hợp trên nhánh `kre/late-bomb-confirmation`.
-Codex tự kiểm, review độc lập waived. Audit gần nhất **AUD013/CP040**, audit định kỳ kế **CP044**.
+CP043 đã merge [PR51](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/51) tại `f8569d8`.
+CP044 là snapshot trước tích hợp trên nhánh `kre/abort-timer-runtime`.
+Codex tự kiểm, review độc lập waived. Audit **AUD014/CP044**, audit định kỳ kế **CP048**.
 
 Checkpoint bền vững: [manifest](docs/evidence/checkpoints/manifest.json).
 Quy trình ghi chép/review/audit: [checkpoint workflow](docs/evidence/checkpoints/README.md).

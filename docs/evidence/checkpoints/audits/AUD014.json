@@ -1,0 +1,109 @@
+{
+  "id": "AUD014",
+  "trigger": "periodic",
+  "completed_through": "CP044",
+  "recorded_utc": "2026-10-31T10:14:39.203989+00:00",
+  "auditor": "Codex manual self-audit; independent review waived by project owner",
+  "read_files": [
+    "README.md",
+    "docs/PLAN.md",
+    "docs/PROTOCOL.md",
+    "docs/RESEARCH.md",
+    "docs/evidence/abort-rejoin/README.md",
+    "docs/evidence/round-generation/README.md",
+    "docs/evidence/item-generation/README.md",
+    "docs/evidence/late-bomb-confirm/README.md",
+    "local/research/codex/generation-r1/runtime-summary.json",
+    "local/research/codex/generation-r1/verification.json",
+    "local/research/codex/item-generation-r1/runtime-summary.json",
+    "local/research/codex/item-generation-r1/verification.json",
+    "local/research/codex/late159-r1/runtime-summary.json",
+    "local/research/codex/late159-r1/verification.json",
+    "local/research/codex/late159-r1/old159-first/client.log",
+    "docs/evidence/abort-timer/README.md",
+    "server/README.md",
+    "local/research/codex/abort-timer-r1/measurement-notes.json",
+    "local/research/codex/abort-timer-r1/app-dispatch.asm",
+    "local/research/codex/abort-timer-r1/runtime-summary.json",
+    "local/research/codex/abort-timer-r1/actor-fields.json",
+    "local/research/codex/abort-timer-r1/native-packets.json",
+    "local/research/codex/abort-timer-r1/verification.json",
+    "local/research/codex/abort-timer-r1/uncancelled-room/run.json",
+    "local/research/codex/abort-timer-r1/uncancelled-room/client-B.log",
+    "local/research/codex/abort-timer-r1/uncancelled-room-visual.png",
+    "local/research/codex/abort-timer-r1/fenced-room/run.json",
+    "local/research/codex/abort-timer-r1/fenced-room/client-B.log",
+    "local/research/codex/abort-timer-r1/fenced-room-visual.png",
+    "local/research/codex/abort-timer-r1/fenced-replacement/run.json",
+    "local/research/codex/abort-timer-r1/fenced-replacement/client-B.log",
+    "local/research/codex/abort-timer-r1/fenced-replacement/client-C.log",
+    "local/research/codex/abort-timer-r1/fenced-replacement-visual.png"
+  ],
+  "method": "Read README→wholePLAN→wholePROTOCOL→wholeRESEARCH in ordered bounded slices (first220PROTOCOL before context resumption,221-end resumed), then CP040–043 evidence and raw/runtime reports. Compare CP041 semantic158/ID, CP042165/stat/failure and CP043159/entity/disruption separately with new3sealedaborttimercontrols, nativepacket/securegetter reports and29manuallyviewedsourceimages. Reread finalcore delta and fullCP044evidence vs raw beforecomplete; checker only validates declared relationships. Historical checkpoints/evidence untouched.",
+  "findings": [
+    {
+      "id": "F1",
+      "stale": "README CP043 preintegration snapshot persisted after PR51 merge f8569d8.",
+      "correction": "Record exact baseline merge and CP044 preintegration scope; distinguish selfcheck/waiver/integration/gates.",
+      "fixed_in": [
+        "README.md",
+        "docs/PLAN.md",
+        "docs/RESEARCH.md"
+      ]
+    },
+    {
+      "id": "F2",
+      "stale": "PLAN K4-K7 row and Q026 backlog stopped at CP041 despite CP042/043 bounded answers.",
+      "correction": "Link current canonical old165/index and old159/serial answers plus CP044aborttimer; active nextstep is peerqueue/UDPgeneration/fullvalidator, no repeated receiver search.",
+      "fixed_in": [
+        "docs/PLAN.md",
+        "docs/RESEARCH.md",
+        "docs/PROTOCOL.md"
+      ]
+    },
+    {
+      "id": "F3",
+      "stale": "Native packet pass could be conflated with gameconsumer execution; control old158 arrives after roomreturn.",
+      "correction": "App125DD40 currentstage1767A80/PREPARE_RECV158, noE5F450/kind0; onlynativeframer/getterfull13, notruntimegamereader13. Preserve nocrashexplosion/mutation claim.",
+      "fixed_in": [
+        "docs/PROTOCOL.md",
+        "docs/evidence/abort-timer/README.md"
+      ]
+    },
+    {
+      "id": "F4",
+      "stale": "Replacement C can be mistaken for A reconnect; client-local round1 can look like failure to reach roomgeneration2; CP040 movement scope could be expanded retroactively.",
+      "correction": "CnewauthID3/4sockets/slot0 vs oldAID1; CfirstStart=roomgeneration2/BsecondStart. Separate CP044 Bbomb/trap/death/statepeer/result/return run; oneforfeit+oneplayedround, nottwofullmatches.",
+      "fixed_in": [
+        "docs/PROTOCOL.md",
+        "docs/RESEARCH.md",
+        "docs/evidence/abort-timer/README.md"
+      ]
+    },
+    {
+      "id": "F5",
+      "stale": "Timer finish may be read as scheduler removal or allnetworkgeneration validation.",
+      "correction": "OriginalticketinvalidatedatEOF; jobremainsuntildeadline/drop/round_closed; newID2timerworks. Callerlock/scheduler/roster/UDP/alreadysent and fullvalidator stayexplicit limits.",
+      "fixed_in": [
+        "docs/PROTOCOL.md",
+        "server/README.md",
+        "docs/evidence/abort-timer/README.md"
+      ]
+    },
+    {
+      "id": "F6",
+      "stale": "Nearest roomcleanup screenshot can precede callback during Cboot; raw bootstrap_reply_limit label remains8 despite12actualconnections.",
+      "correction": "Use trace107clear/chief and finalroom, not screenshotlabel. Record inherited8label vs actualreply_claimed<12/12connections; preserve sealed raw/harness. Keep failed CP042 and disrupted CP043 historical scopes.",
+      "fixed_in": [
+        "docs/evidence/abort-timer/README.md",
+        "local/research/codex/abort-timer-r1/measurement-notes.json"
+      ]
+    }
+  ],
+  "remaining": [
+    "Standalone server, fullauth/profile/cache/codec/vanilla/accountreconnect, K5/K6a/LAN/Internet still open.",
+    "QueuedUDP/peerkey/slot/reliability/relay/NAT and generation/timing/identicalold124 validator limits remain; no gate closure from 5741checks/12tests.",
+    "FirstStartclickcause, CP039Aownwhitecosmetic, report21/sub34/fullserialallocator/wrap and variants/max/speed remain unknown; exact simultaneous contact is optional parity backlog.",
+    "Independent review waived/selfcheck only. AUD014 periodic44, next48; no rewrite of earlier completedrecords or auditcadence."
+  ]
+}

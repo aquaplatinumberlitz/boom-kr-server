@@ -1,6 +1,6 @@
 # KR 00967 — contract tương thích client gốc
 
-Revision kr-legacy-contract-r1; cập nhật31/10/2026 JST (CP043).
+Revision kr-legacy-contract-r1; cập nhật31/10/2026 JST (CP044).
 **Contract có bằng chứng từng phần; chưa nghiệm thu full codec K2**.
 Lộ trình và thứ tự task chỉ giữ ở [REWRITE_PLAN — KRE](PLAN.md).
 Đây là contract của repo server KR. ADR0009 của bản viết lại là nguồn lịch sử để so sánh;
@@ -1680,6 +1680,57 @@ kiểm lifetime trước159 không tự chặn duplicate159 trong cùng generati
 Generation/ID wrap/abort timer và fullvalidator vẫn có scope riêng.
 **Chưa fullmatch/K5/K6a/LAN/Internet**. [Bước tiếp](RESEARCH.md#q-023).
 
+<a id="abort-timer"></a>
+### Timer bom còn chờ khi host EOF — CP044
+
+**kr_runtime confirmed trong phạm vi diagnostic copy Wine**;
+[control, recipe và hash](evidence/abort-timer/README.md). Không thêm patch hoặc ép actor/state.
+Kế thừa [forfeit/return/promotion](#round-finish) và [client thay thế](#abort-rejoin).
+Fuse, forfeit, identity/slot và thời gian gửi là **emu_choice/design**, không luật server gốc.
+
+Hai ca `uncancelled-room`/`fenced-room` bắt đầu A/B IDs1/2, slots0/1, cùng namespace chỉlo.
+B bấm Space → actual118 owner1/serial1, stub159 cấp ID1 cả hai; mỗi consumer đọc39/39 và trả entity.
+Sau đó kill riêng wineserver prefix A; channel A có EOF thực. Caller gọi `RoundFence.finish()`
+ngay khi quan sát EOF, trước175. Policy chọn Alose/Bwin,175→180→107 xóa A→110 chủ B như CP039.
+Không có actual17/19 hoặc deathreport tổng hợp trong vòng abort này.
+
+Timer cũ đến hạn40s sau record bom, khi B đã trở về phòng:
+
+| Ca | Quyết định local và client |
+|---|---|
+| `uncancelled-room` |Cố ý bỏ qua ticket đã đóng, gửi một158/ID1 chỉ tới B. Framer nhận seq106, app125DD40 đọc current stage vtable1767A80/CPrepareStage, có PREPARE_RECV158; không vào E5F450/kind0. |
+| `fenced-room` |Giữ ticket gốc; `rejection()` trả `round_closed`, `consume()` trảfalse, không gửi158. B vẫn đọc175outer302/inner292 và180full3, xóa slot0 ID1→0, chiefB1 và ở phòng cuối run. |
+
+Control158 có native framer/getters/CRC/partial check; không có callback game nên **không gọi nó
+là runtime game-reader13/13 hoặc bom đã nổ**. Không đo crash hay đổi state do gói muộn này.
+Hình ngay sau send có thể trước callback; trace stage/consumer và ảnh trễ giữ vai trò riêng.
+Ca control vẫn gọi finish nhưng cố ý bỏ qua kết quả tại deadline; đây là đối chứng đường gửi,
+không bằng chứng module fence không hủy được job.
+
+`finish()` phải nằm trong cùng owner/lock với kiểm ticket/phát packet; không chờ tới bảng rank mới
+hủy vòng đã abort. Timer giữ ticket ban đầu, không lấy ticket hiện tại từ wireID khi chạy.
+Module không tự phát hiện EOF hoặc quản lý roster/deadline; caller chịu trách nhiệm.
+Job vẫn nằm trong scheduler tới deadline trong harness; fence ngăn phát packet, không xóa entry scheduler.
+
+**Vòng mới với C:** `fenced-replacement` giữ oldtimer drop/round_closed trước Start mới;
+A ID1 đã EOF/xóa slot0, C mới authID3/ownslot0 qua87full7. C actual82/95, B chủ actual104
+cho B/C đọc121full129, actual99/197/196/153/clock/movement. B giữ channel cũ; C có bốn socket,
+prefix và UDPport riêng. Không gọi đây là A reconnect/resume.
+
+Sau input C Down/B Right rồi C Down/B Space, có actual118 mới từ B/owner1/serial1, stub cấp ID2
+ở generation2. Timer6s hiện tại consume thành công,159full39/entity và158full13/lookupID2/kind0/
+cleanup khớp cùng entity trên cả B/C. Local B bindID2; remote C kiểm entity→lookup, không đòi localbind.
+B actual17/19 được chuyển170/17,19 cho C, đọc10/21byte/errors0; secure actorB state1 cả hai
+**trước175**. Policy chờ C21 rồi chọn slot0win/slot1lose;175outer302/inner292 và180full3 cả hai,
+ảnh C highlight KRLocal/PERFECT, B highlight KRGuest/LOSE; hai view về phòng.
+Refresh110 giữ B chủ/state22, C khách/state0. Rank/outcome/forfeit vẫn do stub chọn.
+
+Counter GDB của C chỉ1 vì đây là Start đầu của process C; đó là generation2 của phòng,
+không thiếu Start hoặc reset counter của B. Các broadcast mới chỉ B/C, không gửi A đã EOF.
+CP040 chỉ tới movement; đây là run mới mở rộng tới bom/death/result/return, không sửa lịch sử CP040.
+Không suy đã giải fullvalidator/UDPqueue, gói đã gửi, reconnect cùng account hoặc mọi disconnect.
+**Chưa fullmatch/K5/K6a/LAN/Internet**. [Bước tiếp](RESEARCH.md#q-023).
+
 ### Giới hạn và correction WCP lịch sử
 
 Fixture opaque/zero/empty và prefix69 là emu_choice đã được consumer chấp nhận trong phép thử,
@@ -1711,7 +1762,7 @@ liệt kê và phân biệt với nguyên bản trong mọi demo.
 
 ### Authority matrix hiện hành và gate review
 
-Bảng này tổng hợp bằng chứng từng phần đến CP043; chưa phải toàn contract server gốc. Mỗi hàng khi
+Bảng này tổng hợp bằng chứng từng phần đến CP044; chưa phải toàn contract server gốc. Mỗi hàng khi
 triển khai phải bổ sung riêng **creator, simulator, validator, broadcaster, peer-editable state**, với
 locator/trace và trạng thái từng ô; những vai trò không nêu dưới đây hiện `unknown` cho KR.
 
@@ -1723,8 +1774,8 @@ locator/trace và trạng thái từng ô; những vai trò không nêu dưới 
 | Block destroy/item reveal | CP032 list2→FixedBox,158→hai view vỡ/reveal→124/165/stat; report142 từ cả hai; [contract](#hidden-items) | Drop algorithm/server validator, variants/chain và phép loại transport riêng còn thiếu |
 | Item placement/pickup | CP030 nhặt/tranh index; CP031 stat/clamp/power; CP032 item ẩn và reset field hẹp; [contract](#hidden-items) | CP042 có [old165/index reuse](#item-generation); runtime max/speed, drop/đảo winner, toàn124validator/generation/reset còn thiếu |
 | Trap/death | CP029/036; CP037 kim và tranh chấp cứu/diệt; [kim](#needle-selfescape), [precedence](#contact-precedence) | Validator/duplicate/stale/generation/variants, result21 và đối chứng thêm/đảo chiều còn thiếu |
-| Result/reset | CP039 hai vòng statepeer/result/21/return và reset field hẹp; [phạm vi](#round-finish) | CP041 có [payload cũ khi ID reuse](#round-generation); arbitration/toàn generation/entity/timer/peer/seq không rò vẫn mở; phân biệt run chờ sai origin với ca hoàn tất |
-| Room lifecycle | CP034 leave/promotion/EOF/return; CP035 rejoin/Ready và chủ B Start tới clock cả hai; [contract](#room-rejoin) | Bầu chủ/giữ ID-slot là policy stub; CP040 có [client mới/chủ mới Start sau host EOF](#abort-rejoin); guest EOF trả A về phòng/xóa B đã đo riêng; reconnect cùng account/disconnect variants/toàn reset còn mở |
+| Result/reset | CP039 hai vòng statepeer/result/21/return và reset field hẹp; CP044 [timer ở EOF và vòng B/C mới](#abort-timer) | CP041 có [payload cũ khi ID reuse](#round-generation); arbitration/toàn generation/entity/timer/peer/seq không rò vẫn mở; phân biệt run chờ sai origin với ca hoàn tất |
+| Room lifecycle | CP034 leave/promotion/EOF/return; CP035 rejoin/Ready; CP040 chủ B/C Start; CP044 [B/C bom/death/result/return sau abort](#abort-timer) | Bầu chủ/giữ ID-slot/forfeit là policy stub; guest EOF trả A về phòng/xóa B đã đo riêng; reconnect cùng account/disconnect variants/toàn reset còn mở |
 | Peer lifecycle | CP027 actual99→153 và UDP send/receive hai client; [phạm vi](#peer-duo) | Full schema receive/handshake/key/slot/reliability/relay và giới hạn state peer được sửa |
 
 Gate K5/K6 cần kiểm matrix và đối chứng của hành vi thực sự dùng; từ28/10 Codex tự kiểm theo miễn review của chủ dự án. Có thể giữ unknown về
