@@ -1,6 +1,6 @@
 # KR 00967 — contract tương thích client gốc
 
-Revision kr-legacy-contract-r1; cập nhật31/10/2026 JST (CP038).
+Revision kr-legacy-contract-r1; cập nhật31/10/2026 JST (CP039).
 **Contract có bằng chứng từng phần; chưa nghiệm thu full codec K2**.
 Lộ trình và thứ tự task chỉ giữ ở [REWRITE_PLAN — KRE](PLAN.md).
 Đây là contract của repo server KR. ADR0009 của bản viết lại là nguồn lịch sử để so sánh;
@@ -1455,6 +1455,46 @@ body giữ nguyên. Sửa harness/fixture mới, không sửa raw lỗi/nguồn 
 Ca runtime cả hai cùng đủ điều kiện và các thứ tự khác vẫn unknown. Đây là kiểm bổ sung cho
 độ khớp client gốc; ưu tiên tiếp result/disconnect/reset ở [RESEARCH](RESEARCH.md#q-023).
 
+<a id="round-finish"></a>
+### Trap/death nhất quán → kết quả → vòng kế và host EOF — CP039
+
+**kr_runtime/kr_static confirmed hẹp trên copy Wine**, [recipe/control/hash](evidence/round-finish/README.md).
+`finish-first` giữ8connection/cùngIDs1/2/slots0/1/session1; actual95 củaB/104củaA,121full129/129,
+99/197/196/153/clock hai lần. Vòng1 một145pickup, hai bom A:17→1→0→17→19;
+vòng2 phát582list rỗng, một bom A:17→19. Không có1/0 vòng2. Không thêm patch/ép state.
+
+**Kết quả đã gắn state peer:** trước175, actorA local/remote đều1 ở cả hai vòng, khác control
+CP028/029 chưaforward170. Stub chọn outcome Alose/Bwin và chỉ phát175 sauactual19vàB21;
+175outer302/302/inner292/292/errors0,1803/3/errors0, cả hai vềstage12/phòng.
+Sau room110 refresh, click95/104 thực khởi động vòng2. Ảnh hai lần cùngLOSEKRLocal/PERFECTKRGuest;
+ownhighlight theoID. Outcome/delay/fuse/roster/ACK là emulatorchoice, chưa server arbitration gốc.
+
+**Report21 hẹp:** mỗi vòng7actualB21 trước175, không có21 sau175 tới hết run;
+last21→175 là0,801s/0,630s,175→180 là5,077s/5,080s. Runtime writer E6F370 và callback rank
+được trace; không chỉ log stub. ActualB127/sub34 xuất hiện khoảng0,448s/0,446s sau175,
+callerB51CCD; semantics **unknown**, không đặt tên ACK. Chuỗi175/180 không thay toàn validator21.
+
+**Reset đã đo:** clock vòng1/2 có state/coordinates(+28/+4C/+58), stat(+4A4/+50C/+4BC/+524)
+khớp riêng từng actor/client; ownstate24/remote15 lúc clock và spawn(120,159) trongprofile này.
+Ba actual118/159/158 liên tục; UDPport từ99 giữ nguyên qua hai vòng, wireseq riêng liên tục không reset.
+Sự khớp các field/port không chứng minh mọi entity/timer/peerqueue/generation đã reset.
+Aownavatar ở phòng là silhouette trắng nhưng BthấyAđỏ; cosmetic/profile/animationcause cònunknown,
+không gọi mọi cache/profileđúng. Scene/gameactor/input vòng2 và statepeer được kiểm riêng.
+
+**Host EOF:** `host-EOF-control` kill wineserver chỉprefixA sauclock; channelAEOF thật,
+Bchannel vẫn mở và inputRight đổi vị trí/ảnh, actorA còn hiện; không tự result/return trongcửa sổđo.
+Không cósynthetic107/175/180/19 ởcontrol. EOFkhông đồng nghĩa death được client tự xử lý.
+`host-EOF-policy` giữ đối chứng riêng: EOF đúng Achannel→chờ12s→175choB→5s→180choB→
+107xóaA/110promoteB ởphòng. B175full302/inner292,180full3,107base6 rồi wrapperrewind/final1,
+slot0ID1→0, localchiefB→1/nútStart. 107chỉ gửi sau vềCPrepareStage; không giả định107vào trận đã xử lý.
+ActorA trênB state0 trước/sau175 vàtrước180, không cóactual17/19; **forfeitpolicykhông giảlậpcái chết**.
+Ảnh cuốiBởphòngmộtmình/chủmới; chưaStart/rejoin hoặc cảhai disconnect. Đây là **emu_choice/design**,
+không serverauthoritygốc. [Bước tiếp](RESEARCH.md#q-023).
+
+Chưa toàn reset/validator/generation/disconnectvariants/rejoin/fullauth/cache/codec/vanilla/
+LAN/Internet hoặc K5/K6a. Đây là ca hai vòng thử có kết quả/statepeer nhất quán hẹp,
+không tự đổi thành nghiệm thu toàn trận đầy đủ.
+
 ### Giới hạn và correction WCP lịch sử
 
 Fixture opaque/zero/empty và prefix69 là emu_choice đã được consumer chấp nhận trong phép thử,
@@ -1486,7 +1526,7 @@ liệt kê và phân biệt với nguyên bản trong mọi demo.
 
 ### Authority matrix hiện hành và gate review
 
-Bảng này tổng hợp bằng chứng từng phần đến CP038; chưa phải toàn contract server gốc. Mỗi hàng khi
+Bảng này tổng hợp bằng chứng từng phần đến CP039; chưa phải toàn contract server gốc. Mỗi hàng khi
 triển khai phải bổ sung riêng **creator, simulator, validator, broadcaster, peer-editable state**, với
 locator/trace và trạng thái từng ô; những vai trò không nêu dưới đây hiện `unknown` cho KR.
 
@@ -1498,8 +1538,8 @@ locator/trace và trạng thái từng ô; những vai trò không nêu dưới 
 | Block destroy/item reveal | CP032 list2→FixedBox,158→hai view vỡ/reveal→124/165/stat; report142 từ cả hai; [contract](#hidden-items) | Drop algorithm/server validator, variants/chain và phép loại transport riêng còn thiếu |
 | Item placement/pickup | CP030 nhặt/tranh index; CP031 stat/clamp/power; CP032 item ẩn và reset field hẹp; [contract](#hidden-items) | Runtime tại max/speed, random drop/đảo winner/stale/generation và toàn reset còn thiếu |
 | Trap/death | CP029/036; CP037 kim và tranh chấp cứu/diệt; [kim](#needle-selfescape), [precedence](#contact-precedence) | Validator/duplicate/stale/generation/variants, result21 và đối chứng thêm/đảo chiều còn thiếu |
-| Result/reset | CP028 chu kỳ pair; CP032 đo lại hidden item/stat/serial/power ở đầu vòng2; [phạm vi](#hidden-items) | Arbitration/generation, mọi entity/timer/peer/seq không rò và disconnect vẫn mở; phân biệt run chờ sai origin với ca hoàn tất |
-| Room lifecycle | CP034 leave/promotion/EOF/return; CP035 rejoin/Ready và chủ B Start tới clock cả hai; [contract](#room-rejoin) | Bầu chủ/giữ ID-slot là policy stub; host EOF, reconnect và disconnect trong trận chưa kiểm |
+| Result/reset | CP039 hai vòng statepeer/result/21/return và reset field hẹp; [phạm vi](#round-finish) | Arbitration/generation, mọi entity/timer/peer/seq không rò và disconnect vẫn mở; phân biệt run chờ sai origin với ca hoàn tất |
+| Room lifecycle | CP034 leave/promotion/EOF/return; CP035 rejoin/Ready và chủ B Start tới clock cả hai; [contract](#room-rejoin) | Bầu chủ/giữ ID-slot là policy stub; CP039 có hostEOFcontrol/forfeitreturn; reconnect/guestEOF/variants và sauabortStart chưa kiểm |
 | Peer lifecycle | CP027 actual99→153 và UDP send/receive hai client; [phạm vi](#peer-duo) | Full schema receive/handshake/key/slot/reliability/relay và giới hạn state peer được sửa |
 
 Gate K5/K6 cần kiểm matrix và đối chứng của hành vi thực sự dùng; từ28/10 Codex tự kiểm theo miễn review của chủ dự án. Có thể giữ unknown về
