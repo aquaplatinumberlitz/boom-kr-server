@@ -1,11 +1,11 @@
 {
   "schema": "kre-checkpoints-v1",
-  "last_id": "CP031",
-  "completed_count": 31,
+  "last_id": "CP032",
+  "completed_count": 32,
   "audit_interval": 4,
-  "last_periodic_audit": 28,
-  "next_periodic_audit": "CP032",
-  "last_manual_audit": "AUD009",
+  "last_periodic_audit": 32,
+  "next_periodic_audit": "CP036",
+  "last_manual_audit": "AUD010",
   "checkpoints": [
     {
       "id": "CP001",
@@ -45732,6 +45732,3075 @@
           "reason": "Five recipes/native/state/visual/hash/limits and immediateaudit."
         }
       ]
+    },
+    {
+      "id": "CP032",
+      "previous": "CP031",
+      "lifecycle": "complete",
+      "recorded_utc": "2026-10-31T01:49:45.296660+00:00",
+      "question": "List2 KR582 có gắn item ẩn vào gạch rồi reveal/nhặt đồng thuận hai view, và các field item/stat/serial/power có khởi tạo lại vòng kế không?",
+      "scope": "Five sequential isolated Wine pairs: positive/no158/control,partial2round,preciserevealtrace,fixedpolicy2cycles. Nativepackets/stat snapshots/RTTI/byteequality, periodicAUD010. No newbinarypatch/fullmatch/gateclaim.",
+      "context_commit": "4de4e2ef2e0de4bba4c6a365cf669b97db618790",
+      "owner": "Codex",
+      "reviewer": "Codex",
+      "artifacts": [
+        {
+          "name": "CA-r2-login-logout.exe",
+          "sha256": "660447c293ce92270cb9b5815331bca976e8f156366e1fe50b217b6c12e60ce3"
+        },
+        {
+          "name": "CA-r2-stage-social.exe",
+          "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+        },
+        {
+          "name": "CA-r2-stage-social.exe Bcopy",
+          "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+        },
+        {
+          "name": "modO.bin",
+          "sha256": "a08950c833d3acab8281049def7b3dc96b221f107eeda01da3a548e34b91dce5"
+        }
+      ],
+      "locators": [
+        "Base400000,RVA=VA-400000;modOrawmemory;11ranges match4artifacts.",
+        "D824D0→1245700/context+3E8→1245780 atEA46E2→EB56E0;B9C8D0 index+AC/kind+B0;runtimeFixedBoxvt1747724.",
+        "B9CEC0→B9D0B4/B8B5B0;runtimeCGOItemvt1746A4C sameptr asE636D9/165lookup.",
+        "C2S142 E72720/constructE727FF/writeE7281B,28,35,41/runtimeE72849;callerB9D11C,u8row/u8col/u8selectedslot/u32aux.",
+        "5runs hidden-explode,hidden-no158,hidden-rounds,hidden-trace,hidden-rounds-fixed UTC30/10/2026/JST31/10. Exactstart/runID/argv inrecipes/runmetadata.",
+        "496actualsecureboxsnapshots/native529C60→52A350;round2Acurrentcapacity/Fire1/1 then2/2;serial0/28 andpower1→2 eachround;8connections continuousseq."
+      ],
+      "findings": [
+        {
+          "summary": "List2→actualFixedBox index/kind storage andpositive158→reveal→A124/165/stat onbothviews; controlno158 retainsbomb/bricks.",
+          "source": "kr_runtime",
+          "status": "confirmed",
+          "method": "runtime",
+          "limits": "Two seededtiles/map278; no randomdrop/list3/blockvariants/UDPablation.",
+          "canonical": "docs/PROTOCOL.md#hidden-items",
+          "evidence": [
+            "E051",
+            "E113",
+            "E114",
+            "E053",
+            "E056"
+          ]
+        },
+        {
+          "summary": "Directreveal destination CGOItem pointer/index equals later165found onbothviews;142writer runtime andnativecapturedfields match.",
+          "source": "kr_runtime",
+          "status": "confirmed",
+          "method": "runtime",
+          "limits": "Oneprecisetracerun;selectedslot differsA/B, auxFFFFFFFF only;no universalservervalidator/schema variants.",
+          "canonical": "docs/PROTOCOL.md#hidden-items",
+          "evidence": [
+            "E252",
+            "E253",
+            "E054",
+            "E055"
+          ]
+        },
+        {
+          "summary": "Native framer/getters/blob/11ED590 andsecuregetter validate429packet cases/496snapshots;11targetedranges equal4artifacts.",
+          "source": "kr_static",
+          "status": "confirmed",
+          "method": "emulation",
+          "limits": "Syntheticalloc/nativeoracle, S2Cfixtures emulatorchoice;actualruntime validatesworld/effects separately.",
+          "canonical": "docs/PROTOCOL.md#hidden-items",
+          "evidence": [
+            "E052",
+            "E053",
+            "E056"
+          ]
+        },
+        {
+          "summary": "Round2reinstallsseededtiles/items andresetsmeasuredstat/serial/power;fixedA/Aoriginpolicy yields2rank/return cyclesbothviews.",
+          "source": "kr_runtime",
+          "status": "confirmed",
+          "method": "runtime",
+          "limits": "Onlymeasuredfields/entitypaths;partialoldrun hasonecycle;not alltimer/peer/seq/generation/disconnectproof.",
+          "canonical": "docs/PROTOCOL.md#hidden-items",
+          "evidence": [
+            "E051",
+            "E053",
+            "E143",
+            "E295",
+            "E064"
+          ]
+        },
+        {
+          "summary": "Placement/index/fuse6s/ACK/broadcast/rankpolicy remain design;periodicauditCP032complete,nextCP036.",
+          "source": "design",
+          "status": "design",
+          "method": "documentation",
+          "limits": "No originalserverauthority/fullmatch/K5/K6a/LAN/Internetclaim; reviewwaived.",
+          "canonical": "docs/PROTOCOL.md#hidden-items",
+          "evidence": [
+            "E057",
+            "E050"
+          ]
+        }
+      ],
+      "verification": [
+        {
+          "check": "8674mechanical checks/5sealedruns/isolation/lease/sequential/hash/seq,roleC2S nativeCRCpartial,callback/field/objectidentity/resetrelationships.",
+          "result": "pass",
+          "evidence": [
+            "E050",
+            "E051",
+            "E036"
+          ],
+          "limits": "Mechanicalassertions only,not semanticgate/review."
+        },
+        {
+          "check": "429actualpacketnative cases,496captured secureboxchecksum/native checks,40blockreports and11ranges match4artifacts.",
+          "result": "pass",
+          "evidence": [
+            "E052",
+            "E053",
+            "E054",
+            "E056"
+          ],
+          "limits": "Allocator modeled;typed142schema tiedtowriter, no fullgameemulation."
+        },
+        {
+          "check": "Manualperiodicaudit/core/evidence/rawcomparison and18images before/reveal/pickup/control/round2rank-room.",
+          "result": "observed",
+          "evidence": [
+            "E057",
+            "E062",
+            "E063",
+            "E064",
+            "E002"
+          ],
+          "limits": "Partialrunretained;fieldreset notalllifecycle,no independentreview."
+        }
+      ],
+      "evidence": [
+        {
+          "id": "E001",
+          "kind": "repository",
+          "path": "docs/evidence/hidden-items/README.md",
+          "bytes": 6927,
+          "sha256": "82a3d5bbe7dc873d25350990467a474ed271fdd6d86586d3d09d67056bc09dce"
+        },
+        {
+          "id": "E002",
+          "kind": "repository",
+          "path": "docs/evidence/checkpoints/audits/AUD010.json",
+          "bytes": 3951,
+          "sha256": "ac57e29c374dc7928976e228990cd46965b73efd02f11bd15126c5dba399b579"
+        },
+        {
+          "id": "E003",
+          "kind": "artifact",
+          "path": "/home/admin/boom/repos/boom-re/docs/oc_e-game.md",
+          "bytes": 70895,
+          "sha256": "9e80ecea3fb7d152f58a4a0d60ac6e1f6759b18be23bf53d908bb896dbad0b6a"
+        },
+        {
+          "id": "E004",
+          "kind": "local",
+          "path": "local/research/codex/wcp-guard-r1/game/CA-r2-login-logout.exe",
+          "bytes": 31874560,
+          "sha256": "660447c293ce92270cb9b5815331bca976e8f156366e1fe50b217b6c12e60ce3"
+        },
+        {
+          "id": "E005",
+          "kind": "local",
+          "path": "local/research/codex/wcp-guard-r1/game/CA-r2-stage-social.exe",
+          "bytes": 31874560,
+          "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+        },
+        {
+          "id": "E006",
+          "kind": "local",
+          "path": "local/research/codex/duo-round-r1/game-B/CA-r2-stage-social.exe",
+          "bytes": 31874560,
+          "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+        },
+        {
+          "id": "E007",
+          "kind": "artifact",
+          "path": "/home/admin/boom/repos/boomkr-re/out/modO.bin",
+          "bytes": 31858688,
+          "sha256": "a08950c833d3acab8281049def7b3dc96b221f107eeda01da3a548e34b91dce5"
+        },
+        {
+          "id": "E008",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/run_probe.py",
+          "bytes": 1067,
+          "sha256": "ff4dec9c2196b6a6c2d3020906b87bbe0102e20cf6c2b950a6f5c47ce3d47b21"
+        },
+        {
+          "id": "E009",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/seal_run.py",
+          "bytes": 625,
+          "sha256": "254e39d02d7a1df3d226f102b6ace336b3ac29ff42acf6fb089a0a2a242a00c4"
+        },
+        {
+          "id": "E010",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/derive_roles.py",
+          "bytes": 802,
+          "sha256": "19948ba9f8663ceea91549ee03adde8959d77e07312ed1869e67eae4f309655b"
+        },
+        {
+          "id": "E011",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/replay-run.py",
+          "bytes": 3002,
+          "sha256": "48a0066f46f577781383ef4c072dbd8a4ded64a8c412ad5306248c2160c1efbc"
+        },
+        {
+          "id": "E012",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/read_static.py",
+          "bytes": 670,
+          "sha256": "6123f2d59f4daf0c79adbf627bea45539239c86fdaaad2185f45faaa3bbd759f"
+        },
+        {
+          "id": "E013",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/edge-context.log",
+          "bytes": 3223,
+          "sha256": "f4d9553527cde63cc2d623516294ffbd08c8141fbbb91d470d0cf14b5261ee30"
+        },
+        {
+          "id": "E014",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/12456E0.asm",
+          "bytes": 1858,
+          "sha256": "701a3ec8a7951213cd6f003deaadc2d9b3817c5cf2b8502e40c2b2db53bce4bf"
+        },
+        {
+          "id": "E015",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/E9E660.asm",
+          "bytes": 1363,
+          "sha256": "86b4556eceee86f7c79d3b08dd680377e4f30eb12e41489efada82c98b963f9a"
+        },
+        {
+          "id": "E016",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/prepare.py",
+          "bytes": 2507,
+          "sha256": "857b883ff603603ae313e44d2ecdce7dd4822c83d4072a687170be05bce998de"
+        },
+        {
+          "id": "E017",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden.gdb",
+          "bytes": 8285,
+          "sha256": "475bd11527759ebb299e6852165c14e627947ecec868eb185dfd7f69a744b68a"
+        },
+        {
+          "id": "E018",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-explode-launcher.log",
+          "bytes": 59669,
+          "sha256": "f4ee5dd2002667af40f97291b1894d98e7e85d1537e0f9bce4f98488adefef19"
+        },
+        {
+          "id": "E019",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/edge-getters.log",
+          "bytes": 2789,
+          "sha256": "8a2f5ece252d7cd12f1449d0544fff3f5126413a68795341a65f5fb95124d480"
+        },
+        {
+          "id": "E020",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/1245740.asm",
+          "bytes": 2788,
+          "sha256": "7428c66cedd8477f635780840a7d77eeed4477ff022b9803e3152d53f7389e11"
+        },
+        {
+          "id": "E021",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/edge-map-layout.log",
+          "bytes": 9506,
+          "sha256": "7562e488f0b00bbce6897283f6c95fec4b7c906348d702781f4b9cab75b774eb"
+        },
+        {
+          "id": "E022",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/EA4660.asm",
+          "bytes": 9505,
+          "sha256": "f129f35db29bf7ce983545a88ad3a4275900c2c4b94d812b943773d24320d1fb"
+        },
+        {
+          "id": "E023",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/edge-install.log",
+          "bytes": 19459,
+          "sha256": "a6421f65d1b715d2af99d33708e80c32100d044576ec6ad280c3c1043afcb5b8"
+        },
+        {
+          "id": "E024",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/EB56E0.asm",
+          "bytes": 19458,
+          "sha256": "e3b30cca8454cca04482f9b3154d3b67b428dc29f1b77d3e7b202245083cc227"
+        },
+        {
+          "id": "E025",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/edge-hidden-storage.log",
+          "bytes": 2733,
+          "sha256": "78791f10e9d87ca895fe96f145df81fd17b04c40b95bd558a7cc273dec8b678b"
+        },
+        {
+          "id": "E026",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/B9C8D0.asm",
+          "bytes": 3979,
+          "sha256": "6b88754fc1a716dde98257e0907b34d0a0c427a7e240d6ad98451eb4f196c11a"
+        },
+        {
+          "id": "E027",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-install.gdb",
+          "bytes": 9561,
+          "sha256": "16a2a561312e42f33ee0c607da4c5043c1f20529af765644b705e9826fc36ee4"
+        },
+        {
+          "id": "E028",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-no158-launcher.log",
+          "bytes": 51815,
+          "sha256": "e1a72b2f11ad2fcc63f22318ec44c8260253f966421909249155c83bc91012b6"
+        },
+        {
+          "id": "E029",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/edge-storage-tail.log",
+          "bytes": 1650,
+          "sha256": "1b48249f3cae1994129fdc5696069fa0d68b7e96b42c377ed236f9b17bf537f8"
+        },
+        {
+          "id": "E030",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/B9C980.asm",
+          "bytes": 1649,
+          "sha256": "b55fa49545210a8b07f79077dfb90431415ee99054f90e9ce054835101215c10"
+        },
+        {
+          "id": "E031",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/native_actual.py",
+          "bytes": 3533,
+          "sha256": "07645da3f9f03a70efa461ae3fdbb6e0e10d78ae7a08c418aa2e7909e0f7e97a"
+        },
+        {
+          "id": "E032",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/parse_states.py",
+          "bytes": 2664,
+          "sha256": "30a37504a9831625aab453ce2649b2298d016d43c5a2b2c39d52324e139212dd"
+        },
+        {
+          "id": "E033",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/edge-storage-full.log",
+          "bytes": 3980,
+          "sha256": "aefe2edfd6a2a6bcc5bdf2ba05d333bdcb59704ec5faa6a6d308de08d4a41b2d"
+        },
+        {
+          "id": "E034",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-rounds.gdb",
+          "bytes": 9663,
+          "sha256": "38217a66a559d4a4e0a34182cd5d0268fcab09efa42044a387e00461be950386"
+        },
+        {
+          "id": "E035",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-rounds-launcher.log",
+          "bytes": 119699,
+          "sha256": "e1e1e3cffae62b774f09f1e973a392b846a189fb8c646f3281fd7b3fa1af483e"
+        },
+        {
+          "id": "E036",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/verify.py",
+          "bytes": 8742,
+          "sha256": "e655b26f08019a34012f741766eeeac0ae6d62527a0739c40d7681a4376febdd"
+        },
+        {
+          "id": "E037",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/match_code.py",
+          "bytes": 1229,
+          "sha256": "3eac24d253a88110702b7d0af7d7d6277235ad3fdf94698904e6455cfa98f2ac"
+        },
+        {
+          "id": "E038",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/edge-destroy.log",
+          "bytes": 16809,
+          "sha256": "97e0739379e90668b524dcfc8dd24b9fbd2232f90e7bee0042b49d53ed4745b5"
+        },
+        {
+          "id": "E039",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/B9CC10.asm",
+          "bytes": 16808,
+          "sha256": "1b525b1ef82a673d16d100f8afa4d8675b799a30c769d5e43a2ae92ae203eb40"
+        },
+        {
+          "id": "E040",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/edge-reveal.log",
+          "bytes": 10121,
+          "sha256": "92e2596ed0f3ee1b332803a984dc972520960bc083596a461dff5c074c84bb04"
+        },
+        {
+          "id": "E041",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/B9CEC0.asm",
+          "bytes": 10120,
+          "sha256": "86227f451d38b148e06ec83fb1c5b6cef65c3c3bd50e229953f991024607eae6"
+        },
+        {
+          "id": "E042",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/edge-report142.log",
+          "bytes": 3326,
+          "sha256": "b4ed6e5ee3468afdf11c0aaa3405aafb78d6ca9e0646c855a29195ae95134e72"
+        },
+        {
+          "id": "E043",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/E72720.asm",
+          "bytes": 5368,
+          "sha256": "32da6a4e2618bb797e3d6c170ea266cc51dcdf9bc3f99709b6e88c5bbadf20f6"
+        },
+        {
+          "id": "E044",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/edge-report142-full.log",
+          "bytes": 5369,
+          "sha256": "2d742bc4dc9675689a3d8425c7aca803d5f5cc688a5210d69563b261002a66a6"
+        },
+        {
+          "id": "E045",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-reveal.gdb",
+          "bytes": 9405,
+          "sha256": "2a2933dfcf67533834bb5cb108508442c90aa5f3887ea18014c0fd754d1fba96"
+        },
+        {
+          "id": "E046",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-trace-launcher.log",
+          "bytes": 59572,
+          "sha256": "124bb6f4e84cebabfaf2ed2f5be14d29f535fe4fda0beaa84284fc3e1bf8bca8"
+        },
+        {
+          "id": "E047",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-rounds-fixed-launcher.log",
+          "bytes": 133632,
+          "sha256": "ba71762d44d071d566700e3ee059221d41c54c9d75115cc6ab2f8dd8da7ef17d"
+        },
+        {
+          "id": "E048",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/prepare_chain.py",
+          "bytes": 2700,
+          "sha256": "53b0cf0074150d4d3d149de3b9a1b9fd381641b82d633ed5b3cc5a85c54c7d35"
+        },
+        {
+          "id": "E049",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/finish_checkpoint.py",
+          "bytes": 12069,
+          "sha256": "939e8d4fe9d286345c17b73426d085d8bd205680987c8da1a60de9b07851d946"
+        },
+        {
+          "id": "E050",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/verification.json",
+          "bytes": 261,
+          "sha256": "5f82c0128f82c432ba889dfb2bf214b75b5cee117f4eb53fd62959373961dc97"
+        },
+        {
+          "id": "E051",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/runtime-summary.json",
+          "bytes": 11649,
+          "sha256": "2ea82393aa502b752152db7f7d33ec04130c6667452cbb6b722de95ce87935e2"
+        },
+        {
+          "id": "E052",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/native-actual.json",
+          "bytes": 170748,
+          "sha256": "ebede52abfed03c8c619f5a16aea3251a299e5f27377a0d1f947d4eb1f2580e1"
+        },
+        {
+          "id": "E053",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/stat-states.json",
+          "bytes": 320769,
+          "sha256": "15f6c7f7d2e5076bd341fbbcba7df4fbe29e76315d5be7e4ee32e382229252bf"
+        },
+        {
+          "id": "E054",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/block142.json",
+          "bytes": 17014,
+          "sha256": "32f1ce27bcfac9416e25f8e69a85b32a3ddf9a6be8829b11f454f3e2bffb8e89"
+        },
+        {
+          "id": "E055",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/tile-rtti.json",
+          "bytes": 2380,
+          "sha256": "f44b2df2f803be682f358c25e0b538019b6d622db4b589059c1afdc6329ccd0a"
+        },
+        {
+          "id": "E056",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/code-match.json",
+          "bytes": 2641,
+          "sha256": "4e9829ffb933fba5cf1b546052fde08509e929d78e5c99376672b735f09c94cb"
+        },
+        {
+          "id": "E057",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/measurement-notes.json",
+          "bytes": 3688,
+          "sha256": "f2c5da3336de83d13da3c7c0eccd5d758a501a6149825d8639922f962c4dc2de"
+        },
+        {
+          "id": "E058",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden582.bin",
+          "bytes": 74,
+          "sha256": "75ffe584a16497abda6f026fece3d84f5dd83b73d593d2f40e4a9f2698245289"
+        },
+        {
+          "id": "E059",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden582-fixture.json",
+          "bytes": 424,
+          "sha256": "c01d652fa79569ff1d1e5a4f13564d882707e6b1a2ef0d963cabbbc96a60b1a7"
+        },
+        {
+          "id": "E060",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/getter-xref-candidates.json",
+          "bytes": 323,
+          "sha256": "224d30f05d0f9137f339e378d28042305861c5d676611b2f3b22fca2f4e2a827"
+        },
+        {
+          "id": "E061",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/first-142.json",
+          "bytes": 847,
+          "sha256": "3307b18f563c35d0c97826849d9e665578586cfa8835de8ef7df5f8532d1adb6"
+        },
+        {
+          "id": "E062",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/first-visual.png",
+          "bytes": 690507,
+          "sha256": "10b5f2a3628e6ce527d9568d5bf4dec5ec4e5a904a203427e8fe63b816f6894d"
+        },
+        {
+          "id": "E063",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/control-visual.png",
+          "bytes": 87968,
+          "sha256": "622265bec10eaaaf59668ed0ec2d8c73966e54924e2bab50b45781f655e827e1"
+        },
+        {
+          "id": "E064",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/fixed-visual.png",
+          "bytes": 626108,
+          "sha256": "106b743612fd140b7046ac2e94e1c26cf8df090bbfb324b3eab46dc4673e7ad2"
+        },
+        {
+          "id": "E065",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-explode-recipe.json",
+          "bytes": 992,
+          "sha256": "458d59006b988b2f5a7f0c9753f3ae8429342c00a70cba6de011fab046da1525"
+        },
+        {
+          "id": "E066",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-explode-hashes.json",
+          "bytes": 122077,
+          "sha256": "dcd4cf79cc34a7d6a61dc0848c3531f5b047ad7a17a83f2309456517d02caa95"
+        },
+        {
+          "id": "E067",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-explode/run.json",
+          "bytes": 74323,
+          "sha256": "a0c9636d2ede75f7026b61dd7e90693040648e9b617d0d47339652dc31a52f61"
+        },
+        {
+          "id": "E068",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-explode/client.log",
+          "bytes": 27116,
+          "sha256": "d515c371b599dcd5666830fec8a826f66b79609c0608d606615d9f15a2a4ee1e"
+        },
+        {
+          "id": "E069",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-explode/client-B.log",
+          "bytes": 24936,
+          "sha256": "13f9e2605c448b2edd71079eb53d25ba567a8f3eebff6850ee7c1b56035df021"
+        },
+        {
+          "id": "E070",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-explode/A-ready110-73.bin",
+          "bytes": 44,
+          "sha256": "8fafd9cf652b458ee09b3751a0201f9ab1409920398e0e842e43b915c8840e25"
+        },
+        {
+          "id": "E071",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-explode/B-ready110-73.bin",
+          "bytes": 44,
+          "sha256": "8fafd9cf652b458ee09b3751a0201f9ab1409920398e0e842e43b915c8840e25"
+        },
+        {
+          "id": "E072",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-explode/A-floor582-76.bin",
+          "bytes": 74,
+          "sha256": "ca3de73ae041ee5c57119a2702daa980e6a95bb83bc8cc97bd152c35aa1c28f9"
+        },
+        {
+          "id": "E073",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-explode/A-start121-r1-79.bin",
+          "bytes": 167,
+          "sha256": "4d85d0786f484c579ef94cd61ceaa40997df93c39589d720ea8334bc9b5ca29f"
+        },
+        {
+          "id": "E074",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-explode/B-floor582-76.bin",
+          "bytes": 74,
+          "sha256": "ca3de73ae041ee5c57119a2702daa980e6a95bb83bc8cc97bd152c35aa1c28f9"
+        },
+        {
+          "id": "E075",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-explode/B-start121-r1-79.bin",
+          "bytes": 167,
+          "sha256": "4d85d0786f484c579ef94cd61ceaa40997df93c39589d720ea8334bc9b5ca29f"
+        },
+        {
+          "id": "E076",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-explode/A-go197-82.bin",
+          "bytes": 52,
+          "sha256": "64b95010ecb0e40bc0367f41f6710d2357fb2538ce827e205825284601237ef8"
+        },
+        {
+          "id": "E077",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-explode/B-go197-82.bin",
+          "bytes": 52,
+          "sha256": "64b95010ecb0e40bc0367f41f6710d2357fb2538ce827e205825284601237ef8"
+        },
+        {
+          "id": "E078",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-explode/A-play196-85.bin",
+          "bytes": 45,
+          "sha256": "d04bf155b4847f9d41b0edfdf00a32526302273271c0f1cadbb8ce22b89eb51d"
+        },
+        {
+          "id": "E079",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-explode/B-play196-85.bin",
+          "bytes": 45,
+          "sha256": "d04bf155b4847f9d41b0edfdf00a32526302273271c0f1cadbb8ce22b89eb51d"
+        },
+        {
+          "id": "E080",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-explode/A-peer153-88.bin",
+          "bytes": 135,
+          "sha256": "35f27631ed09cb6a5f5216feda2dafc3054c882a17976d86ffbfb1b931447b98"
+        },
+        {
+          "id": "E081",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-explode/B-peer153-88.bin",
+          "bytes": 135,
+          "sha256": "cd097a1ed2f2f4ef501810157332a7024fbedef39b5cecf099c8f12c36465b50"
+        },
+        {
+          "id": "E082",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-explode/A-dynamic159-1.bin",
+          "bytes": 77,
+          "sha256": "ce45fc947aabc22d29d1361e7f576818a1665b9a9f617af2c2cec7116d89591e"
+        },
+        {
+          "id": "E083",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-explode/B-dynamic159-1.bin",
+          "bytes": 77,
+          "sha256": "ce45fc947aabc22d29d1361e7f576818a1665b9a9f617af2c2cec7116d89591e"
+        },
+        {
+          "id": "E084",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-explode/A-blast158-1.bin",
+          "bytes": 51,
+          "sha256": "31e41726c0deaa834ef2fa20813c84199f3f94023a8f3b7d0f64f9d5241eede1"
+        },
+        {
+          "id": "E085",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-explode/B-blast158-1.bin",
+          "bytes": 51,
+          "sha256": "31e41726c0deaa834ef2fa20813c84199f3f94023a8f3b7d0f64f9d5241eede1"
+        },
+        {
+          "id": "E086",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-explode/A-item165-27-97.bin",
+          "bytes": 50,
+          "sha256": "8a6766ae43563f0d6b4a9c7587cb7d956379347ef0ecf790d7c86ac7676db8cb"
+        },
+        {
+          "id": "E087",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-explode/B-item165-27-97.bin",
+          "bytes": 50,
+          "sha256": "8a6766ae43563f0d6b4a9c7587cb7d956379347ef0ecf790d7c86ac7676db8cb"
+        },
+        {
+          "id": "E088",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-explode/A-item165-28-100.bin",
+          "bytes": 50,
+          "sha256": "9f974e016c2f651fab8f0457e5f929f2c750e859dcc2e5b1edb583f1186500ac"
+        },
+        {
+          "id": "E089",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-explode/B-item165-28-100.bin",
+          "bytes": 50,
+          "sha256": "9f974e016c2f651fab8f0457e5f929f2c750e859dcc2e5b1edb583f1186500ac"
+        },
+        {
+          "id": "E090",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/derived/hidden-explode-A-replay.txt",
+          "bytes": 1925,
+          "sha256": "8078fd493a01f061bac85c7a46f2ec2daefdb1bfd8482d09f1767c5fa53a5efa"
+        },
+        {
+          "id": "E091",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/derived/hidden-explode-A-oracle.json",
+          "bytes": 117675,
+          "sha256": "653bfe384d9b3293a44b3b8f6b58bc09ba71da6c29962ac5011b7fab869d4d87"
+        },
+        {
+          "id": "E092",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/derived/hidden-explode-B-replay.txt",
+          "bytes": 1274,
+          "sha256": "8110ef5b22628fd2b0c30346b738d3c5bdf598d934a00ac394270328b06cc40d"
+        },
+        {
+          "id": "E093",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/derived/hidden-explode-B-oracle.json",
+          "bytes": 75249,
+          "sha256": "032ab9b1ffcc5c710aacd9d4d8f47945c123fedbe8fa9fc973a9386c23bba8f0"
+        },
+        {
+          "id": "E094",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/request-frames/hidden-explode/A-F44-118.bin",
+          "bytes": 60,
+          "sha256": "43381ab797ddc9f2eb0ba4a7393ed121870275a069f7b9f91031c59a0aabbda4"
+        },
+        {
+          "id": "E095",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/request-frames/hidden-explode/A-F51-142.bin",
+          "bytes": 45,
+          "sha256": "14c2458b14eeb17d63916eac99c0907d6c30b8fe73e54b67de2bcfb1c902b94e"
+        },
+        {
+          "id": "E096",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/request-frames/hidden-explode/A-F52-142.bin",
+          "bytes": 45,
+          "sha256": "0048733000edb136c127b296db2c98c6bf0115833a0b57ee239b8256c25a0a7b"
+        },
+        {
+          "id": "E097",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/request-frames/hidden-explode/A-F60-124.bin",
+          "bytes": 57,
+          "sha256": "37c711d018ff5d9ef5055dfb20b77455c857716e56e11846552933f1302c3a01"
+        },
+        {
+          "id": "E098",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/request-frames/hidden-explode/A-F66-124.bin",
+          "bytes": 57,
+          "sha256": "57e159a26c55817f0658b2a557c6230197a3b4894f95370f921f2030545bb3ef"
+        },
+        {
+          "id": "E099",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/request-frames/hidden-explode/B-F34-142.bin",
+          "bytes": 45,
+          "sha256": "bbe22e6d0f3a8b00250aee8eaab57ff00b89b211f12c993973ff379759cc322c"
+        },
+        {
+          "id": "E100",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/request-frames/hidden-explode/B-F35-142.bin",
+          "bytes": 45,
+          "sha256": "82e0e133b18d295b5f933cf3614e1651f7d6941fbd2df8aa41e0fc81b5ceb247"
+        },
+        {
+          "id": "E101",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-explode/A/r1-seen-after-A-0-space.png",
+          "bytes": 128052,
+          "sha256": "488db62b2ede67f2e6871b59a7f1d9618aca4824411eea3fb6a6483557913e98"
+        },
+        {
+          "id": "E102",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-explode/A/r1-seen-after-A-4-Left.png",
+          "bytes": 129980,
+          "sha256": "4425e56b7b4d33a82aaf886986ddd17b8de1cee6c8dc5d7d982c499cdf6cb08d"
+        },
+        {
+          "id": "E103",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-explode/A/blast-1.png",
+          "bytes": 133621,
+          "sha256": "e3835341c4ba4ca46128ea85dc22b6a0858685b0fc5956309e63aac254afaf10"
+        },
+        {
+          "id": "E104",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-explode/A/final-both.png",
+          "bytes": 128783,
+          "sha256": "5e08ee41b0f6f28f4bf43122306fe4840bc03cfac4c998aa74504b99f9e830f8"
+        },
+        {
+          "id": "E105",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-explode/B/r1-seen-after-A-0-space.png",
+          "bytes": 128034,
+          "sha256": "aca64bc3eada2096495bd7fd4340abb07c539ee801b84994a5b8c27def65ec7d"
+        },
+        {
+          "id": "E106",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-explode/B/r1-seen-after-A-4-Left.png",
+          "bytes": 128305,
+          "sha256": "46e002fba761d848ec70872aa7e61d36103480a232c823281115c176fd02e033"
+        },
+        {
+          "id": "E107",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-explode/B/blast-1.png",
+          "bytes": 134620,
+          "sha256": "c04e12e89cb0f65ef4a493d84bd1d4c04319697005cb4973eb06c89445ee93b2"
+        },
+        {
+          "id": "E108",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-explode/B/final-both.png",
+          "bytes": 128835,
+          "sha256": "d3cdf4eb21d4bac5eadee244646914571102e981022b992384c77fd00a2f5ffd"
+        },
+        {
+          "id": "E109",
+          "kind": "local",
+          "path": "local/research/codex/wine_probe_hidden_items.py",
+          "bytes": 60213,
+          "sha256": "f1a0c63d424e833f7e77a5755c764849cca357ed1cbcffa7af130d5089b68dcc"
+        },
+        {
+          "id": "E110",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-no158-recipe.json",
+          "bytes": 998,
+          "sha256": "196aba82c2ba6e91823e24b10c05afb008ff3f36185e5d320fc7bb9755bcbfcd"
+        },
+        {
+          "id": "E111",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-no158-hashes.json",
+          "bytes": 119279,
+          "sha256": "c8f62300b67e150c93c8ff3024a97758724c59fdac134c40cd940fb786ef3f5f"
+        },
+        {
+          "id": "E112",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-no158/run.json",
+          "bytes": 64347,
+          "sha256": "fd8c7a267bc07c584ea56f155a8c885d11f31408eabb9ccca37c54b37a2a5bb8"
+        },
+        {
+          "id": "E113",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-no158/client.log",
+          "bytes": 16069,
+          "sha256": "feb968fc22e53707bda3687e5567f9ed21d268fded441679838abd9fbf842c87"
+        },
+        {
+          "id": "E114",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-no158/client-B.log",
+          "bytes": 15803,
+          "sha256": "46576ee784dd0210afefe0d1fb4bf72a3c08f3a9a1b017d85e09d754f53c2aa1"
+        },
+        {
+          "id": "E115",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-no158/A-ready110-73.bin",
+          "bytes": 44,
+          "sha256": "8fafd9cf652b458ee09b3751a0201f9ab1409920398e0e842e43b915c8840e25"
+        },
+        {
+          "id": "E116",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-no158/B-ready110-73.bin",
+          "bytes": 44,
+          "sha256": "8fafd9cf652b458ee09b3751a0201f9ab1409920398e0e842e43b915c8840e25"
+        },
+        {
+          "id": "E117",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-no158/A-floor582-76.bin",
+          "bytes": 74,
+          "sha256": "ca3de73ae041ee5c57119a2702daa980e6a95bb83bc8cc97bd152c35aa1c28f9"
+        },
+        {
+          "id": "E118",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-no158/A-start121-r1-79.bin",
+          "bytes": 167,
+          "sha256": "4d85d0786f484c579ef94cd61ceaa40997df93c39589d720ea8334bc9b5ca29f"
+        },
+        {
+          "id": "E119",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-no158/B-floor582-76.bin",
+          "bytes": 74,
+          "sha256": "ca3de73ae041ee5c57119a2702daa980e6a95bb83bc8cc97bd152c35aa1c28f9"
+        },
+        {
+          "id": "E120",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-no158/B-start121-r1-79.bin",
+          "bytes": 167,
+          "sha256": "4d85d0786f484c579ef94cd61ceaa40997df93c39589d720ea8334bc9b5ca29f"
+        },
+        {
+          "id": "E121",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-no158/B-go197-82.bin",
+          "bytes": 52,
+          "sha256": "64b95010ecb0e40bc0367f41f6710d2357fb2538ce827e205825284601237ef8"
+        },
+        {
+          "id": "E122",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-no158/A-go197-82.bin",
+          "bytes": 52,
+          "sha256": "64b95010ecb0e40bc0367f41f6710d2357fb2538ce827e205825284601237ef8"
+        },
+        {
+          "id": "E123",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-no158/B-play196-85.bin",
+          "bytes": 45,
+          "sha256": "d04bf155b4847f9d41b0edfdf00a32526302273271c0f1cadbb8ce22b89eb51d"
+        },
+        {
+          "id": "E124",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-no158/A-play196-85.bin",
+          "bytes": 45,
+          "sha256": "d04bf155b4847f9d41b0edfdf00a32526302273271c0f1cadbb8ce22b89eb51d"
+        },
+        {
+          "id": "E125",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-no158/B-peer153-88.bin",
+          "bytes": 135,
+          "sha256": "451fbbc729d6a0361cd4b0e24635d5f250e915a951199e9e23d5e1085d552b96"
+        },
+        {
+          "id": "E126",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-no158/A-peer153-88.bin",
+          "bytes": 135,
+          "sha256": "539da7e34613e4e20dbd56155f3a6b6a256584b3aec806a540c1c9a465015232"
+        },
+        {
+          "id": "E127",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-no158/A-dynamic159-1.bin",
+          "bytes": 77,
+          "sha256": "ce45fc947aabc22d29d1361e7f576818a1665b9a9f617af2c2cec7116d89591e"
+        },
+        {
+          "id": "E128",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-no158/B-dynamic159-1.bin",
+          "bytes": 77,
+          "sha256": "ce45fc947aabc22d29d1361e7f576818a1665b9a9f617af2c2cec7116d89591e"
+        },
+        {
+          "id": "E129",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/derived/hidden-no158-A-replay.txt",
+          "bytes": 1689,
+          "sha256": "f3642bd8c88419c0439abb67c0ea344094df865e654a8e0978031250d306eafd"
+        },
+        {
+          "id": "E130",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/derived/hidden-no158-A-oracle.json",
+          "bytes": 103105,
+          "sha256": "35f577926aad37e440d244203f7e0391c33dd2fb21ba2e50e71e03b335a721cc"
+        },
+        {
+          "id": "E131",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/derived/hidden-no158-B-replay.txt",
+          "bytes": 1226,
+          "sha256": "c682fbac381da4a9c6d0407111cc48a91e711eab8d35d8767a1905637f01290a"
+        },
+        {
+          "id": "E132",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/derived/hidden-no158-B-oracle.json",
+          "bytes": 72485,
+          "sha256": "a3352d119bd16e10b082c3d25bba9bd9674757f34022b213f2b4dddc0724dddb"
+        },
+        {
+          "id": "E133",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/request-frames/hidden-no158/A-F43-118.bin",
+          "bytes": 60,
+          "sha256": "ae177649cee856e91947c4c904d657ec8d901bb5bf692ed20242bf4972b749f7"
+        },
+        {
+          "id": "E134",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-no158/A/r1-seen-after-A-0-space.png",
+          "bytes": 128057,
+          "sha256": "38bb67a21321f1a31044499e6a53c056681f9c9e399a52292214a1934b8d6a69"
+        },
+        {
+          "id": "E135",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-no158/A/r1-seen-after-A-4-Left.png",
+          "bytes": 129524,
+          "sha256": "f3201dbdb94882e63f751ef28c055aedf68e9aecf5b1a90f04c68d8d2969f34b"
+        },
+        {
+          "id": "E136",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-no158/A/final-both.png",
+          "bytes": 130074,
+          "sha256": "3aa9af4374cabeafd64f5ef800fb1e78e3af2d68074a5df758962de107931ef9"
+        },
+        {
+          "id": "E137",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-no158/B/r1-seen-after-A-0-space.png",
+          "bytes": 128329,
+          "sha256": "33a4e87da6a5f0c68cae7ea2145a2929bbe40b02927e053f585273c33cfe86f5"
+        },
+        {
+          "id": "E138",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-no158/B/r1-seen-after-A-4-Left.png",
+          "bytes": 129632,
+          "sha256": "badf9fa6d7135192d5de5c683bd0fa5eb5ad47866f4419b38301892149d52657"
+        },
+        {
+          "id": "E139",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-no158/B/final-both.png",
+          "bytes": 130048,
+          "sha256": "1c01a92c3ec5f50f96f490250c392353c24fe186cd512a7310b8001449f14a52"
+        },
+        {
+          "id": "E140",
+          "kind": "local",
+          "path": "local/research/codex/wine_probe_hidden_control.py",
+          "bytes": 60223,
+          "sha256": "b6e07e01fb1098e6cccea1c28a33092ac4317e4dd066b5e0c435f1f2abb7cebd"
+        },
+        {
+          "id": "E141",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-rounds-recipe.json",
+          "bytes": 998,
+          "sha256": "67bb872170a7e218340a7d3324f1368a3b63b72b05f7afdc310e350cbdd79ccf"
+        },
+        {
+          "id": "E142",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-rounds-hashes.json",
+          "bytes": 249795,
+          "sha256": "150669caba20ff3e446324bf0ec7ff6a26517c4d83cad8850286677c870afb98"
+        },
+        {
+          "id": "E143",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-rounds/run.json",
+          "bytes": 154323,
+          "sha256": "8c5ef799f26d3ec0a40b479825a11c9c298c85e80e013447b471f351897fab27"
+        },
+        {
+          "id": "E144",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-rounds/client.log",
+          "bytes": 43947,
+          "sha256": "14025816b66c2485114ade6427591edcc761900ce0182b01fa873fc98220b782"
+        },
+        {
+          "id": "E145",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-rounds/client-B.log",
+          "bytes": 39226,
+          "sha256": "2e19bcf80dbdc3c26e4d379434d5fc0f7db14c0583f448f1c9035ee23472fc42"
+        },
+        {
+          "id": "E146",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-rounds/A-ready110-73.bin",
+          "bytes": 44,
+          "sha256": "8fafd9cf652b458ee09b3751a0201f9ab1409920398e0e842e43b915c8840e25"
+        },
+        {
+          "id": "E147",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-rounds/B-ready110-73.bin",
+          "bytes": 44,
+          "sha256": "8fafd9cf652b458ee09b3751a0201f9ab1409920398e0e842e43b915c8840e25"
+        },
+        {
+          "id": "E148",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-rounds/A-floor582-76.bin",
+          "bytes": 74,
+          "sha256": "ca3de73ae041ee5c57119a2702daa980e6a95bb83bc8cc97bd152c35aa1c28f9"
+        },
+        {
+          "id": "E149",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-rounds/A-start121-r1-79.bin",
+          "bytes": 167,
+          "sha256": "4d85d0786f484c579ef94cd61ceaa40997df93c39589d720ea8334bc9b5ca29f"
+        },
+        {
+          "id": "E150",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-rounds/B-floor582-76.bin",
+          "bytes": 74,
+          "sha256": "ca3de73ae041ee5c57119a2702daa980e6a95bb83bc8cc97bd152c35aa1c28f9"
+        },
+        {
+          "id": "E151",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-rounds/B-start121-r1-79.bin",
+          "bytes": 167,
+          "sha256": "4d85d0786f484c579ef94cd61ceaa40997df93c39589d720ea8334bc9b5ca29f"
+        },
+        {
+          "id": "E152",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-rounds/B-go197-82.bin",
+          "bytes": 52,
+          "sha256": "64b95010ecb0e40bc0367f41f6710d2357fb2538ce827e205825284601237ef8"
+        },
+        {
+          "id": "E153",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-rounds/A-go197-82.bin",
+          "bytes": 52,
+          "sha256": "64b95010ecb0e40bc0367f41f6710d2357fb2538ce827e205825284601237ef8"
+        },
+        {
+          "id": "E154",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-rounds/B-play196-85.bin",
+          "bytes": 45,
+          "sha256": "d04bf155b4847f9d41b0edfdf00a32526302273271c0f1cadbb8ce22b89eb51d"
+        },
+        {
+          "id": "E155",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-rounds/A-play196-85.bin",
+          "bytes": 45,
+          "sha256": "d04bf155b4847f9d41b0edfdf00a32526302273271c0f1cadbb8ce22b89eb51d"
+        },
+        {
+          "id": "E156",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-rounds/B-peer153-88.bin",
+          "bytes": 135,
+          "sha256": "e6d8a4ebc398ad916246b43781649fd7ace3d540b170476d6847c7c2e0d7dcad"
+        },
+        {
+          "id": "E157",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-rounds/A-peer153-88.bin",
+          "bytes": 135,
+          "sha256": "4aae0999f99cc2388299f2d03ace8f1455822497e6a23ece95f1f379e9bc5897"
+        },
+        {
+          "id": "E158",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-rounds/A-dynamic159-1.bin",
+          "bytes": 77,
+          "sha256": "ce45fc947aabc22d29d1361e7f576818a1665b9a9f617af2c2cec7116d89591e"
+        },
+        {
+          "id": "E159",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-rounds/B-dynamic159-1.bin",
+          "bytes": 77,
+          "sha256": "ce45fc947aabc22d29d1361e7f576818a1665b9a9f617af2c2cec7116d89591e"
+        },
+        {
+          "id": "E160",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-rounds/A-blast158-1.bin",
+          "bytes": 51,
+          "sha256": "31e41726c0deaa834ef2fa20813c84199f3f94023a8f3b7d0f64f9d5241eede1"
+        },
+        {
+          "id": "E161",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-rounds/B-blast158-1.bin",
+          "bytes": 51,
+          "sha256": "31e41726c0deaa834ef2fa20813c84199f3f94023a8f3b7d0f64f9d5241eede1"
+        },
+        {
+          "id": "E162",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-rounds/A-item165-27-97.bin",
+          "bytes": 50,
+          "sha256": "8a6766ae43563f0d6b4a9c7587cb7d956379347ef0ecf790d7c86ac7676db8cb"
+        },
+        {
+          "id": "E163",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-rounds/B-item165-27-97.bin",
+          "bytes": 50,
+          "sha256": "8a6766ae43563f0d6b4a9c7587cb7d956379347ef0ecf790d7c86ac7676db8cb"
+        },
+        {
+          "id": "E164",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-rounds/A-item165-28-100.bin",
+          "bytes": 50,
+          "sha256": "a771a90badd0b8db118bf4f438cc0c9c983a1dfd63683de85428efcd2bd1cda3"
+        },
+        {
+          "id": "E165",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-rounds/B-item165-28-100.bin",
+          "bytes": 50,
+          "sha256": "a771a90badd0b8db118bf4f438cc0c9c983a1dfd63683de85428efcd2bd1cda3"
+        },
+        {
+          "id": "E166",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-rounds/A-dynamic159-2.bin",
+          "bytes": 77,
+          "sha256": "d8eba346e1f7caf2be9a59cb7e9d9dc0dd6d400b21f4780455aa076661319848"
+        },
+        {
+          "id": "E167",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-rounds/B-dynamic159-2.bin",
+          "bytes": 77,
+          "sha256": "d8eba346e1f7caf2be9a59cb7e9d9dc0dd6d400b21f4780455aa076661319848"
+        },
+        {
+          "id": "E168",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-rounds/A-blast158-2.bin",
+          "bytes": 51,
+          "sha256": "c02bddc3a494e2434c446487aaca03d3b8a644b50b60feea1735544d61a82582"
+        },
+        {
+          "id": "E169",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-rounds/B-blast158-2.bin",
+          "bytes": 51,
+          "sha256": "c02bddc3a494e2434c446487aaca03d3b8a644b50b60feea1735544d61a82582"
+        },
+        {
+          "id": "E170",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-rounds/B-event170-17-r1-109.bin",
+          "bytes": 48,
+          "sha256": "a1ad4598858ba04c0059af8c523fd3d7f8919edaa71b17acc8bf422fe7ee2a83"
+        },
+        {
+          "id": "E171",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-rounds/B-event170-19-r1-112.bin",
+          "bytes": 59,
+          "sha256": "bbbc909b8404968e24650a716a596ee88e85a741b2925007e8e13e8418915d3c"
+        },
+        {
+          "id": "E172",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-rounds/A-rank175-r1-109.bin",
+          "bytes": 340,
+          "sha256": "cb97774948f9c4e2a2b2f598a3cfada8be56181e4c9f9340f48c0d8c5505ad34"
+        },
+        {
+          "id": "E173",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-rounds/B-rank175-r1-115.bin",
+          "bytes": 340,
+          "sha256": "f9e99198e4495395e566f964fcc47a37c2aa6dd2bc62c6dd91640ee4a0191da2"
+        },
+        {
+          "id": "E174",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-rounds/A-return180-r1-112.bin",
+          "bytes": 41,
+          "sha256": "8fbf7d929774603b0881b88b9b5793b0d8212a03edcc2392ae14c08c4fc1c408"
+        },
+        {
+          "id": "E175",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-rounds/B-return180-r1-118.bin",
+          "bytes": 41,
+          "sha256": "7089134701e5113d31f2727d469f33ad5161269194fd9f5e85e5025a28ee02ec"
+        },
+        {
+          "id": "E176",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-rounds/A-host110-r1-115.bin",
+          "bytes": 44,
+          "sha256": "8573ef3802cc6ef9deb5ac9abf27414bd676b864c803fff9b7e900308425267c"
+        },
+        {
+          "id": "E177",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-rounds/A-guest110-r1-118.bin",
+          "bytes": 44,
+          "sha256": "d6a00d6f46dfa856e3eb47422204af7c0e7eb2abc2ed2ccfa87e851a2e45d4d7"
+        },
+        {
+          "id": "E178",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-rounds/B-host110-r1-121.bin",
+          "bytes": 44,
+          "sha256": "7fad8d02e7b9e3fbeca8541cbf389d4133bb0809831b2bcff2ded03fecbd59d1"
+        },
+        {
+          "id": "E179",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-rounds/B-guest110-r1-124.bin",
+          "bytes": 44,
+          "sha256": "62dc36ac59ef9b35ee015c878b8fb0aad4b797d889914898a9ff5dbc00f59a79"
+        },
+        {
+          "id": "E180",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-rounds/A-ready110-121.bin",
+          "bytes": 44,
+          "sha256": "da6dc245fa15a4d8dce84125d85fb5b4a8fc58d7ed7ceac09d6e1ef2178331f2"
+        },
+        {
+          "id": "E181",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-rounds/B-ready110-127.bin",
+          "bytes": 44,
+          "sha256": "bb2d7b0b9bb9c6dbdce7c2d6f6164f4a794dc1c2f6f8b53692d5803de8e3fccf"
+        },
+        {
+          "id": "E182",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-rounds/A-floor582-124.bin",
+          "bytes": 74,
+          "sha256": "db1a12e6c831042c3e1049c3bd9562f964909964e01c329de30b2c9acd070e00"
+        },
+        {
+          "id": "E183",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-rounds/A-start121-r2-127.bin",
+          "bytes": 167,
+          "sha256": "a711ab6451c6cfd9a9783389157be38f35bf5e76c3e1e3f8b95465b5992f2201"
+        },
+        {
+          "id": "E184",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-rounds/B-floor582-130.bin",
+          "bytes": 74,
+          "sha256": "aa38e908c7b14c888c1383c2d3cf8569d2fe50db7c7a0052539d30c2f005f52a"
+        },
+        {
+          "id": "E185",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-rounds/B-start121-r2-133.bin",
+          "bytes": 167,
+          "sha256": "f5cde80d6517f97185b4afbd2aa498fc98eb740a9ce28394d5fb620721d39cf7"
+        },
+        {
+          "id": "E186",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-rounds/B-go197-136.bin",
+          "bytes": 52,
+          "sha256": "86f12c31eed216e2f38fb84c464d1bdfe79c701dea82a39b1444a967ab06f56b"
+        },
+        {
+          "id": "E187",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-rounds/A-go197-130.bin",
+          "bytes": 52,
+          "sha256": "36b687d42683c83366d8413f5a77363cc7df8798f3285e5514f055a79d07908d"
+        },
+        {
+          "id": "E188",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-rounds/A-play196-133.bin",
+          "bytes": 45,
+          "sha256": "cb4fe989111b3d46d94fb36bf6cd98adfa9d61f1254f65d6c7a29a78aa5f2a07"
+        },
+        {
+          "id": "E189",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-rounds/B-play196-139.bin",
+          "bytes": 45,
+          "sha256": "15a49c1a4b4f17bb0017f79dbdfc7eadbb717230c28a30cb0bd32e182897453f"
+        },
+        {
+          "id": "E190",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-rounds/B-peer153-142.bin",
+          "bytes": 135,
+          "sha256": "6510e551688d811e1ee127d70824dc86556bd21bf489531c12d404a30f7feee4"
+        },
+        {
+          "id": "E191",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-rounds/A-peer153-136.bin",
+          "bytes": 135,
+          "sha256": "4a22b6579ccd449e989f1acdbab59b3a60e6e74bd40b1fd989c77bc97702f751"
+        },
+        {
+          "id": "E192",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-rounds/A-dynamic159-3.bin",
+          "bytes": 77,
+          "sha256": "4c7f97cd6227f890a27a882230853154cfae78d1cf59288528269851c024d463"
+        },
+        {
+          "id": "E193",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-rounds/B-dynamic159-3.bin",
+          "bytes": 77,
+          "sha256": "499da26faca0cd83bd4f5305210b2ea24af4c2dbe15f8806b468463dbf69e61a"
+        },
+        {
+          "id": "E194",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-rounds/A-blast158-3.bin",
+          "bytes": 51,
+          "sha256": "8b9a4eca8345e22c9658e2b96edce1b155d969207f2d3d6b6b345919bd721409"
+        },
+        {
+          "id": "E195",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-rounds/B-blast158-3.bin",
+          "bytes": 51,
+          "sha256": "0d9f37c3b7dfaadd6e4ab819b00af801b81e7512b2b5ed29756c1621c3818f0d"
+        },
+        {
+          "id": "E196",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-rounds/A-item165-27-145.bin",
+          "bytes": 50,
+          "sha256": "a04edafe14987758a36e3890aea679da22880ab61005f7494f565f3076a9e561"
+        },
+        {
+          "id": "E197",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-rounds/B-item165-27-151.bin",
+          "bytes": 50,
+          "sha256": "3f79c7c23dea5426003dafdf0cf73d568626f82b7cf765265cf4f325b1438d4d"
+        },
+        {
+          "id": "E198",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-rounds/A-item165-28-148.bin",
+          "bytes": 50,
+          "sha256": "d823855cab8aa1202d95bfc6ad456f66e425c029549775b8cc41280ab8855ee1"
+        },
+        {
+          "id": "E199",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-rounds/B-item165-28-154.bin",
+          "bytes": 50,
+          "sha256": "eb4005139cf5ff0c38d3e888cdb5f1ea18c1ca8e0257354832521143cb9d2b0e"
+        },
+        {
+          "id": "E200",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-rounds/A-dynamic159-4.bin",
+          "bytes": 77,
+          "sha256": "d71521925b3612fe113da13f33d8da358f085c53fbe1ca3b3c19cbeb2d5d58f9"
+        },
+        {
+          "id": "E201",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-rounds/B-dynamic159-4.bin",
+          "bytes": 77,
+          "sha256": "725cd77872c7b3c4043b5574a4e03a35447be8fdf762eac09c9e40bf52175daa"
+        },
+        {
+          "id": "E202",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-rounds/A-blast158-4.bin",
+          "bytes": 51,
+          "sha256": "03fa58c9e2d69b7aa46420a020bfc9b3f30775eeef642e0c1e1a97a8c2a0133a"
+        },
+        {
+          "id": "E203",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-rounds/B-blast158-4.bin",
+          "bytes": 51,
+          "sha256": "17dd03146e6526e3db2f02f565c40f001ad1ab4dbb23b032e67052a8bfdfa7b9"
+        },
+        {
+          "id": "E204",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/derived/hidden-rounds-A-replay.txt",
+          "bytes": 3718,
+          "sha256": "34cf4bc8a5025ea2dd9e2d5c1c3b099a893d5495814bca8f8014da76b166c0bd"
+        },
+        {
+          "id": "E205",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/derived/hidden-rounds-A-oracle.json",
+          "bytes": 229923,
+          "sha256": "8ee49e6a8b24d08b72ac0bcb4616bff6d825762b023a14fc1fe55e5e732b576d"
+        },
+        {
+          "id": "E206",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/derived/hidden-rounds-B-replay.txt",
+          "bytes": 2781,
+          "sha256": "7e89d9686b4bca6fec8be507023cd2c5b2a12dc4c61dd59e214aa101ba4c0170"
+        },
+        {
+          "id": "E207",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/derived/hidden-rounds-B-oracle.json",
+          "bytes": 167777,
+          "sha256": "d038072ec853d048112c08fd531fa42c9ef57ca9bc433d2875ebfcddf5840f23"
+        },
+        {
+          "id": "E208",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/derived/hidden-rounds-fixed-A-replay.txt",
+          "bytes": 3981,
+          "sha256": "6b7c978cd1ad253db6179a931655a5de637305beb76f90f98d4a04b16b3c22e0"
+        },
+        {
+          "id": "E209",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/derived/hidden-rounds-fixed-A-oracle.json",
+          "bytes": 245900,
+          "sha256": "2e3e85894caa7be2c272aed7ec52ab8e0126982aa8a3de5089bd85983da99d36"
+        },
+        {
+          "id": "E210",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/derived/hidden-rounds-fixed-B-replay.txt",
+          "bytes": 3132,
+          "sha256": "b525d2ae11b0ca8bbadc02e1039dc5833b6154678020e9f870ece081808c966d"
+        },
+        {
+          "id": "E211",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/derived/hidden-rounds-fixed-B-oracle.json",
+          "bytes": 188094,
+          "sha256": "1613f7c0b5373cfabfce692bbcefc62d3f507c3ef957752ddcc0774f48d9f5af"
+        },
+        {
+          "id": "E212",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/request-frames/hidden-rounds/A-F44-118.bin",
+          "bytes": 60,
+          "sha256": "43381ab797ddc9f2eb0ba4a7393ed121870275a069f7b9f91031c59a0aabbda4"
+        },
+        {
+          "id": "E213",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/request-frames/hidden-rounds/A-F51-142.bin",
+          "bytes": 45,
+          "sha256": "14c2458b14eeb17d63916eac99c0907d6c30b8fe73e54b67de2bcfb1c902b94e"
+        },
+        {
+          "id": "E214",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/request-frames/hidden-rounds/A-F52-142.bin",
+          "bytes": 45,
+          "sha256": "0048733000edb136c127b296db2c98c6bf0115833a0b57ee239b8256c25a0a7b"
+        },
+        {
+          "id": "E215",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/request-frames/hidden-rounds/A-F60-124.bin",
+          "bytes": 57,
+          "sha256": "6020f0f85d2d3017e1d51868582c31b3a0ebb860cd3c3f2a289625f872996acd"
+        },
+        {
+          "id": "E216",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/request-frames/hidden-rounds/A-F64-124.bin",
+          "bytes": 57,
+          "sha256": "eab2430bc66559a1b30bb1396f4b7a5e93b38864c8c9e3a5567055602821fcd8"
+        },
+        {
+          "id": "E217",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/request-frames/hidden-rounds/A-F65-118.bin",
+          "bytes": 60,
+          "sha256": "3d066261d6ef780624749c9e732a645cf0a91bd8df75d7c0a66870a70454c2bb"
+        },
+        {
+          "id": "E218",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/request-frames/hidden-rounds/A-F67-142.bin",
+          "bytes": 45,
+          "sha256": "e01da5abd37c9e7f282ffdfacecb2cab2bf5fcfb218468c4eb0863198baf8d45"
+        },
+        {
+          "id": "E219",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/request-frames/hidden-rounds/A-F68-142.bin",
+          "bytes": 45,
+          "sha256": "c24b6973eeefd39176434b988fc1c21a0578e3d78aae0eb2ae858e275612e482"
+        },
+        {
+          "id": "E220",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/request-frames/hidden-rounds/A-F100-118.bin",
+          "bytes": 60,
+          "sha256": "abd9ba83852005acc03a2cbd5bfa2d2a68e56c26ae94162ae1f547ac294828e8"
+        },
+        {
+          "id": "E221",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/request-frames/hidden-rounds/A-F106-142.bin",
+          "bytes": 45,
+          "sha256": "d0a4197b792af255d56e21d1b303c14b133aa8206e85ba863b863be541fb46a4"
+        },
+        {
+          "id": "E222",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/request-frames/hidden-rounds/A-F107-142.bin",
+          "bytes": 45,
+          "sha256": "7dab1f263fc388e81de121f94f9f1f5be1e7b6262ef7005110352d9471b98d55"
+        },
+        {
+          "id": "E223",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/request-frames/hidden-rounds/A-F115-124.bin",
+          "bytes": 57,
+          "sha256": "4d57385df74c8210201f2ab805f5b1c8334b95aa1b23627ce16ec2da81df7ad0"
+        },
+        {
+          "id": "E224",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/request-frames/hidden-rounds/A-F119-124.bin",
+          "bytes": 57,
+          "sha256": "ddf3c60263bbe5c7e57a0b38e00263c8d016898a8d309680b6538d3f2dcc88a1"
+        },
+        {
+          "id": "E225",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/request-frames/hidden-rounds/A-F120-118.bin",
+          "bytes": 60,
+          "sha256": "0e3b10112a13cbc155e57382145db8ad64bbeb650610f2edc68d9c522b966da4"
+        },
+        {
+          "id": "E226",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/request-frames/hidden-rounds/A-F122-142.bin",
+          "bytes": 45,
+          "sha256": "0d155a77073b1a75c8f66323db46823b86af363615f01d957b8dfc606dd62486"
+        },
+        {
+          "id": "E227",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/request-frames/hidden-rounds/A-F123-142.bin",
+          "bytes": 45,
+          "sha256": "aec039bb1cc4f5f77104ab4e13c1c4ecb507668672249f966478db173287d902"
+        },
+        {
+          "id": "E228",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/request-frames/hidden-rounds/B-F35-142.bin",
+          "bytes": 45,
+          "sha256": "07cc11b4c78e3250c666f991f6f16798b73cccdcae74e7a0f12e99ed1c15e5b4"
+        },
+        {
+          "id": "E229",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/request-frames/hidden-rounds/B-F36-142.bin",
+          "bytes": 45,
+          "sha256": "5c0c35d407909c30547950bed2d22ba94ca62885ec66f43f7fae295864957dd3"
+        },
+        {
+          "id": "E230",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/request-frames/hidden-rounds/B-F41-142.bin",
+          "bytes": 45,
+          "sha256": "a27a3337cdea6cf28358377204c0c113798a847f8584c26ce09cc6cd609ebcd1"
+        },
+        {
+          "id": "E231",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/request-frames/hidden-rounds/B-F42-142.bin",
+          "bytes": 45,
+          "sha256": "cd3a70a71730c78f80608b93b02e6130cae1af5867cf96641b50b04157b7dc81"
+        },
+        {
+          "id": "E232",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/request-frames/hidden-rounds/B-F80-142.bin",
+          "bytes": 45,
+          "sha256": "d99836e8ba7befce6045a55f7ccca58b90dfce26f62b1b97e13722de8b936e41"
+        },
+        {
+          "id": "E233",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/request-frames/hidden-rounds/B-F81-142.bin",
+          "bytes": 45,
+          "sha256": "9cb8a226f0dbae5e7934e04fa5bf2e237686c156ebc0393a6f70a062280a578e"
+        },
+        {
+          "id": "E234",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/request-frames/hidden-rounds/B-F86-142.bin",
+          "bytes": 45,
+          "sha256": "121c7462573313071f6bb633121c7af5bf5f04a5cc247319375d5d4a9620a0ba"
+        },
+        {
+          "id": "E235",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/request-frames/hidden-rounds/B-F87-142.bin",
+          "bytes": 45,
+          "sha256": "705ef1b1add51f2584df249e91f280fa7d253728ae0cd8fcc7b7efa774a13377"
+        },
+        {
+          "id": "E236",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-rounds/A/r1-seen-after-A-0-space.png",
+          "bytes": 127976,
+          "sha256": "98f3da5941beec425e00f8cec50ecf61d54b9aa5353ed2c9761cd93484d9c01b"
+        },
+        {
+          "id": "E237",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-rounds/A/r1-seen-after-A-4-Left.png",
+          "bytes": 128344,
+          "sha256": "f2d54136970dd44bf2788795fdddad0d67dd2a2a4e3118de3f8c4147f1bc2c98"
+        },
+        {
+          "id": "E238",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-rounds/A/blast-1.png",
+          "bytes": 132670,
+          "sha256": "793f240d11b5eb49876d64b0e3a53b663cfa5a1be1b6cd465eeb2dcb8fc4cbc6"
+        },
+        {
+          "id": "E239",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-rounds/A/r2-seen-after-A-0-space.png",
+          "bytes": 128022,
+          "sha256": "371c5ec752fb6d6324d301a749ced1e547ceebf0bbda1b8513d7ce72a82467c4"
+        },
+        {
+          "id": "E240",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-rounds/A/blast-3.png",
+          "bytes": 136302,
+          "sha256": "3200bf6566bc6835f32b0a2a1bd2060efd9c775d80b6a5cbc0d17a8ba0ba68c2"
+        },
+        {
+          "id": "E241",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-rounds/A/final-both.png",
+          "bytes": 125864,
+          "sha256": "efa1fd3e0a57b1be2879ab52f8d225caac9e7c7179a02c12296fa6cd1f7db306"
+        },
+        {
+          "id": "E242",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-rounds/B/r1-seen-after-A-0-space.png",
+          "bytes": 128123,
+          "sha256": "7096dd90285044f12121f058589b9fd619e6f5841cd5892f25f4ff0bb7c9397b"
+        },
+        {
+          "id": "E243",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-rounds/B/r1-seen-after-A-4-Left.png",
+          "bytes": 128396,
+          "sha256": "ddc3adad452e8f0433b24c4d8642dc3bd2908d369b20217b8b67ac24ffcc8100"
+        },
+        {
+          "id": "E244",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-rounds/B/blast-1.png",
+          "bytes": 134657,
+          "sha256": "4c3d57493e60095b55653c982d31f893f08fc36d6dd5bee3fc28f78176402fd8"
+        },
+        {
+          "id": "E245",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-rounds/B/r2-seen-after-A-0-space.png",
+          "bytes": 128041,
+          "sha256": "10c40713a6e826aeb3fb412aac77b6fafc21249b66d86dd05ffa0565c9dd0b91"
+        },
+        {
+          "id": "E246",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-rounds/B/blast-3.png",
+          "bytes": 134718,
+          "sha256": "a4c5d997856803964bd88f9bcb91811c4fe314bb4ffa62f5cf733a43e6b9b839"
+        },
+        {
+          "id": "E247",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-rounds/B/final-both.png",
+          "bytes": 127809,
+          "sha256": "78f67c6bb6afe14503402d72fa2cc066aabaaaf537016ebc6e689a567c56a747"
+        },
+        {
+          "id": "E248",
+          "kind": "local",
+          "path": "local/research/codex/wine_probe_hidden_rounds.py",
+          "bytes": 60322,
+          "sha256": "cb0b1a5fc6d3da5b7a251836adc53edff4bc33d683000c5e431f91d7d515439b"
+        },
+        {
+          "id": "E249",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-trace-recipe.json",
+          "bytes": 995,
+          "sha256": "4d686c39da3a8c593adcc2c6b2e5dd7370d73d9500d483fe257062012c6461ec"
+        },
+        {
+          "id": "E250",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-trace-hashes.json",
+          "bytes": 120874,
+          "sha256": "b4a3c61d119bf619baf69844a19caeb73df225989e9a3db6c34264f1c217a1db"
+        },
+        {
+          "id": "E251",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-trace/run.json",
+          "bytes": 74188,
+          "sha256": "96db4e21a0ff7bbae1e5a6409c3ebd51d981270224919986df07a0b924655036"
+        },
+        {
+          "id": "E252",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-trace/client.log",
+          "bytes": 30520,
+          "sha256": "16aacb65b20fc0aab5a92ae1673d912b870b6d78cf08bb4001b9885cd386b7ff"
+        },
+        {
+          "id": "E253",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-trace/client-B.log",
+          "bytes": 28593,
+          "sha256": "463b134f1e9219025f6c83bc08c86cef58daa5e8b33894490ea11856b7d49da1"
+        },
+        {
+          "id": "E254",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-trace/A-ready110-73.bin",
+          "bytes": 44,
+          "sha256": "8fafd9cf652b458ee09b3751a0201f9ab1409920398e0e842e43b915c8840e25"
+        },
+        {
+          "id": "E255",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-trace/B-ready110-73.bin",
+          "bytes": 44,
+          "sha256": "8fafd9cf652b458ee09b3751a0201f9ab1409920398e0e842e43b915c8840e25"
+        },
+        {
+          "id": "E256",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-trace/A-floor582-76.bin",
+          "bytes": 74,
+          "sha256": "ca3de73ae041ee5c57119a2702daa980e6a95bb83bc8cc97bd152c35aa1c28f9"
+        },
+        {
+          "id": "E257",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-trace/A-start121-r1-79.bin",
+          "bytes": 167,
+          "sha256": "4d85d0786f484c579ef94cd61ceaa40997df93c39589d720ea8334bc9b5ca29f"
+        },
+        {
+          "id": "E258",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-trace/B-floor582-76.bin",
+          "bytes": 74,
+          "sha256": "ca3de73ae041ee5c57119a2702daa980e6a95bb83bc8cc97bd152c35aa1c28f9"
+        },
+        {
+          "id": "E259",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-trace/B-start121-r1-79.bin",
+          "bytes": 167,
+          "sha256": "4d85d0786f484c579ef94cd61ceaa40997df93c39589d720ea8334bc9b5ca29f"
+        },
+        {
+          "id": "E260",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-trace/A-go197-82.bin",
+          "bytes": 52,
+          "sha256": "64b95010ecb0e40bc0367f41f6710d2357fb2538ce827e205825284601237ef8"
+        },
+        {
+          "id": "E261",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-trace/B-go197-82.bin",
+          "bytes": 52,
+          "sha256": "64b95010ecb0e40bc0367f41f6710d2357fb2538ce827e205825284601237ef8"
+        },
+        {
+          "id": "E262",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-trace/A-play196-85.bin",
+          "bytes": 45,
+          "sha256": "d04bf155b4847f9d41b0edfdf00a32526302273271c0f1cadbb8ce22b89eb51d"
+        },
+        {
+          "id": "E263",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-trace/B-play196-85.bin",
+          "bytes": 45,
+          "sha256": "d04bf155b4847f9d41b0edfdf00a32526302273271c0f1cadbb8ce22b89eb51d"
+        },
+        {
+          "id": "E264",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-trace/A-peer153-88.bin",
+          "bytes": 135,
+          "sha256": "176afef808b091e4d455dffd615c6e7242471e6d48da5270c4a41393991149a8"
+        },
+        {
+          "id": "E265",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-trace/B-peer153-88.bin",
+          "bytes": 135,
+          "sha256": "5c37399f1434e2d177d416870f6a965499ccb6c14a9d762bcc4f153f3d44951c"
+        },
+        {
+          "id": "E266",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-trace/A-dynamic159-1.bin",
+          "bytes": 77,
+          "sha256": "ce45fc947aabc22d29d1361e7f576818a1665b9a9f617af2c2cec7116d89591e"
+        },
+        {
+          "id": "E267",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-trace/B-dynamic159-1.bin",
+          "bytes": 77,
+          "sha256": "ce45fc947aabc22d29d1361e7f576818a1665b9a9f617af2c2cec7116d89591e"
+        },
+        {
+          "id": "E268",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-trace/A-blast158-1.bin",
+          "bytes": 51,
+          "sha256": "31e41726c0deaa834ef2fa20813c84199f3f94023a8f3b7d0f64f9d5241eede1"
+        },
+        {
+          "id": "E269",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-trace/B-blast158-1.bin",
+          "bytes": 51,
+          "sha256": "31e41726c0deaa834ef2fa20813c84199f3f94023a8f3b7d0f64f9d5241eede1"
+        },
+        {
+          "id": "E270",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-trace/A-item165-27-97.bin",
+          "bytes": 50,
+          "sha256": "8a6766ae43563f0d6b4a9c7587cb7d956379347ef0ecf790d7c86ac7676db8cb"
+        },
+        {
+          "id": "E271",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-trace/B-item165-27-97.bin",
+          "bytes": 50,
+          "sha256": "8a6766ae43563f0d6b4a9c7587cb7d956379347ef0ecf790d7c86ac7676db8cb"
+        },
+        {
+          "id": "E272",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-trace/A-item165-28-100.bin",
+          "bytes": 50,
+          "sha256": "b59c9e29d41a26e188881c0cec7ce87620f7b81ce465096aee21b4aa75bd85db"
+        },
+        {
+          "id": "E273",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-trace/B-item165-28-100.bin",
+          "bytes": 50,
+          "sha256": "b59c9e29d41a26e188881c0cec7ce87620f7b81ce465096aee21b4aa75bd85db"
+        },
+        {
+          "id": "E274",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/derived/hidden-trace-A-replay.txt",
+          "bytes": 1923,
+          "sha256": "b7cfa171843edf7a9015a35ce19983484f585d50f73138074d21f4cd0ea73ede"
+        },
+        {
+          "id": "E275",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/derived/hidden-trace-A-oracle.json",
+          "bytes": 117649,
+          "sha256": "06f7a94ac2362214c9922f984e63b0231f3c78c3b916fa72def57661b6343130"
+        },
+        {
+          "id": "E276",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/derived/hidden-trace-B-replay.txt",
+          "bytes": 1272,
+          "sha256": "241e6aa04b8311ea4da7af3aa054f378a27e21d3e153f765c06cefa8fc342c52"
+        },
+        {
+          "id": "E277",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/derived/hidden-trace-B-oracle.json",
+          "bytes": 75199,
+          "sha256": "efa7eac2eee82dc25a001badaa685a9b2732e9c85f73820ca15652261cf80964"
+        },
+        {
+          "id": "E278",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/request-frames/hidden-trace/A-F44-118.bin",
+          "bytes": 60,
+          "sha256": "43381ab797ddc9f2eb0ba4a7393ed121870275a069f7b9f91031c59a0aabbda4"
+        },
+        {
+          "id": "E279",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/request-frames/hidden-trace/A-F51-142.bin",
+          "bytes": 45,
+          "sha256": "14c2458b14eeb17d63916eac99c0907d6c30b8fe73e54b67de2bcfb1c902b94e"
+        },
+        {
+          "id": "E280",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/request-frames/hidden-trace/A-F52-142.bin",
+          "bytes": 45,
+          "sha256": "0048733000edb136c127b296db2c98c6bf0115833a0b57ee239b8256c25a0a7b"
+        },
+        {
+          "id": "E281",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/request-frames/hidden-trace/A-F60-124.bin",
+          "bytes": 57,
+          "sha256": "9a24755b4637a53c6e2a0b8f56db0e4fc47c8fdfedd7e0f5225704203dc04209"
+        },
+        {
+          "id": "E282",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/request-frames/hidden-trace/A-F66-124.bin",
+          "bytes": 57,
+          "sha256": "b386ba03a8eaf29e94da8031b56e1bae5c8a7bd16b144b85854e177679867d66"
+        },
+        {
+          "id": "E283",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/request-frames/hidden-trace/B-F34-142.bin",
+          "bytes": 45,
+          "sha256": "bbe22e6d0f3a8b00250aee8eaab57ff00b89b211f12c993973ff379759cc322c"
+        },
+        {
+          "id": "E284",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/request-frames/hidden-trace/B-F35-142.bin",
+          "bytes": 45,
+          "sha256": "82e0e133b18d295b5f933cf3614e1651f7d6941fbd2df8aa41e0fc81b5ceb247"
+        },
+        {
+          "id": "E285",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-trace/A/r1-seen-after-A-0-space.png",
+          "bytes": 128211,
+          "sha256": "16a67cf921f1ad73cc82846898a4cf1133195a6d43c03f73a24303aa5951de53"
+        },
+        {
+          "id": "E286",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-trace/A/r1-seen-after-A-4-Left.png",
+          "bytes": 128334,
+          "sha256": "7ad496e7ee7d716fa9489f7b37b83a192988bb0296f42afac589a59d6d465568"
+        },
+        {
+          "id": "E287",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-trace/A/blast-1.png",
+          "bytes": 133614,
+          "sha256": "6485e527f389a9e3f28d1ca7dc67995ee37c68e2ba2023686c44196717e0ff89"
+        },
+        {
+          "id": "E288",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-trace/A/final-both.png",
+          "bytes": 128709,
+          "sha256": "523876c2ab8517f67eb0cd335d53fcae7283494007ef521e42e6521d9f385514"
+        },
+        {
+          "id": "E289",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-trace/B/r1-seen-after-A-0-space.png",
+          "bytes": 128307,
+          "sha256": "8f54710c9de8c76afb98002da44acc58a9aac93c4c83f054f4f10fb69a71f86b"
+        },
+        {
+          "id": "E290",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-trace/B/r1-seen-after-A-4-Left.png",
+          "bytes": 128410,
+          "sha256": "bee72f97e89e1c64789a861961fdc9c62d51017034798f57313ee241e6f16bd1"
+        },
+        {
+          "id": "E291",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-trace/B/blast-1.png",
+          "bytes": 134662,
+          "sha256": "c40aac8339352560da0eac65cd0e90c7e3ab8d8d23073ed3b2b8a631d35b5569"
+        },
+        {
+          "id": "E292",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-trace/B/final-both.png",
+          "bytes": 128690,
+          "sha256": "c0ee9ff2c8d7c39343a31ba70f8ec8552ef7793ebc7e24cab8358c255093431a"
+        },
+        {
+          "id": "E293",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-rounds-fixed-recipe.json",
+          "bytes": 1016,
+          "sha256": "9c9f867530d1203368ac5f9c5ac6830ca8c7000befa062a43fa10154fec9c02e"
+        },
+        {
+          "id": "E294",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-rounds-fixed-hashes.json",
+          "bytes": 260142,
+          "sha256": "01207968ee23f17bfcc71c802cedbaf84e3879b2a183e89eedc32ec006cd78d1"
+        },
+        {
+          "id": "E295",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-rounds-fixed/run.json",
+          "bytes": 172250,
+          "sha256": "8e847ab3756695f45b8a7c3baf7659e2c2f4ba13ee3ccfb565eebbbdb61ffe6b"
+        },
+        {
+          "id": "E296",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-rounds-fixed/client.log",
+          "bytes": 44057,
+          "sha256": "a379f5dcd66373b4e1937b3f76d582775c216de53b92d6d0131afd25af39e88b"
+        },
+        {
+          "id": "E297",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-rounds-fixed/client-B.log",
+          "bytes": 38757,
+          "sha256": "4c2b70ba74a222731c6f2f26e65e19b217b95e3879a74344bee8df2c484c9846"
+        },
+        {
+          "id": "E298",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-rounds-fixed/A-ready110-73.bin",
+          "bytes": 44,
+          "sha256": "8fafd9cf652b458ee09b3751a0201f9ab1409920398e0e842e43b915c8840e25"
+        },
+        {
+          "id": "E299",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-rounds-fixed/B-ready110-73.bin",
+          "bytes": 44,
+          "sha256": "8fafd9cf652b458ee09b3751a0201f9ab1409920398e0e842e43b915c8840e25"
+        },
+        {
+          "id": "E300",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-rounds-fixed/A-floor582-76.bin",
+          "bytes": 74,
+          "sha256": "ca3de73ae041ee5c57119a2702daa980e6a95bb83bc8cc97bd152c35aa1c28f9"
+        },
+        {
+          "id": "E301",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-rounds-fixed/A-start121-r1-79.bin",
+          "bytes": 167,
+          "sha256": "4d85d0786f484c579ef94cd61ceaa40997df93c39589d720ea8334bc9b5ca29f"
+        },
+        {
+          "id": "E302",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-rounds-fixed/B-floor582-76.bin",
+          "bytes": 74,
+          "sha256": "ca3de73ae041ee5c57119a2702daa980e6a95bb83bc8cc97bd152c35aa1c28f9"
+        },
+        {
+          "id": "E303",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-rounds-fixed/B-start121-r1-79.bin",
+          "bytes": 167,
+          "sha256": "4d85d0786f484c579ef94cd61ceaa40997df93c39589d720ea8334bc9b5ca29f"
+        },
+        {
+          "id": "E304",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-rounds-fixed/A-go197-82.bin",
+          "bytes": 52,
+          "sha256": "64b95010ecb0e40bc0367f41f6710d2357fb2538ce827e205825284601237ef8"
+        },
+        {
+          "id": "E305",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-rounds-fixed/B-go197-82.bin",
+          "bytes": 52,
+          "sha256": "64b95010ecb0e40bc0367f41f6710d2357fb2538ce827e205825284601237ef8"
+        },
+        {
+          "id": "E306",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-rounds-fixed/A-play196-85.bin",
+          "bytes": 45,
+          "sha256": "d04bf155b4847f9d41b0edfdf00a32526302273271c0f1cadbb8ce22b89eb51d"
+        },
+        {
+          "id": "E307",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-rounds-fixed/B-play196-85.bin",
+          "bytes": 45,
+          "sha256": "d04bf155b4847f9d41b0edfdf00a32526302273271c0f1cadbb8ce22b89eb51d"
+        },
+        {
+          "id": "E308",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-rounds-fixed/A-peer153-88.bin",
+          "bytes": 135,
+          "sha256": "14d75f55fcb92aa3b77fbbc1cba805f58b7ef3f393ccd6d58008a37cb0fe104a"
+        },
+        {
+          "id": "E309",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-rounds-fixed/B-peer153-88.bin",
+          "bytes": 135,
+          "sha256": "54095f6433ce688b04bac64fc9922ff76dc569ac57f34bab53f535e154eedc23"
+        },
+        {
+          "id": "E310",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-rounds-fixed/A-dynamic159-1.bin",
+          "bytes": 77,
+          "sha256": "ce45fc947aabc22d29d1361e7f576818a1665b9a9f617af2c2cec7116d89591e"
+        },
+        {
+          "id": "E311",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-rounds-fixed/B-dynamic159-1.bin",
+          "bytes": 77,
+          "sha256": "ce45fc947aabc22d29d1361e7f576818a1665b9a9f617af2c2cec7116d89591e"
+        },
+        {
+          "id": "E312",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-rounds-fixed/A-blast158-1.bin",
+          "bytes": 51,
+          "sha256": "31e41726c0deaa834ef2fa20813c84199f3f94023a8f3b7d0f64f9d5241eede1"
+        },
+        {
+          "id": "E313",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-rounds-fixed/B-blast158-1.bin",
+          "bytes": 51,
+          "sha256": "31e41726c0deaa834ef2fa20813c84199f3f94023a8f3b7d0f64f9d5241eede1"
+        },
+        {
+          "id": "E314",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-rounds-fixed/A-item165-27-97.bin",
+          "bytes": 50,
+          "sha256": "8a6766ae43563f0d6b4a9c7587cb7d956379347ef0ecf790d7c86ac7676db8cb"
+        },
+        {
+          "id": "E315",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-rounds-fixed/B-item165-27-97.bin",
+          "bytes": 50,
+          "sha256": "8a6766ae43563f0d6b4a9c7587cb7d956379347ef0ecf790d7c86ac7676db8cb"
+        },
+        {
+          "id": "E316",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-rounds-fixed/A-item165-28-100.bin",
+          "bytes": 50,
+          "sha256": "11f93d5c4829eb20b21c01e6f60a1068f3b3f2a0d30ad08d00b703071391bed8"
+        },
+        {
+          "id": "E317",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-rounds-fixed/B-item165-28-100.bin",
+          "bytes": 50,
+          "sha256": "11f93d5c4829eb20b21c01e6f60a1068f3b3f2a0d30ad08d00b703071391bed8"
+        },
+        {
+          "id": "E318",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-rounds-fixed/A-dynamic159-2.bin",
+          "bytes": 77,
+          "sha256": "d8eba346e1f7caf2be9a59cb7e9d9dc0dd6d400b21f4780455aa076661319848"
+        },
+        {
+          "id": "E319",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-rounds-fixed/B-dynamic159-2.bin",
+          "bytes": 77,
+          "sha256": "d8eba346e1f7caf2be9a59cb7e9d9dc0dd6d400b21f4780455aa076661319848"
+        },
+        {
+          "id": "E320",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-rounds-fixed/A-blast158-2.bin",
+          "bytes": 51,
+          "sha256": "c02bddc3a494e2434c446487aaca03d3b8a644b50b60feea1735544d61a82582"
+        },
+        {
+          "id": "E321",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-rounds-fixed/B-blast158-2.bin",
+          "bytes": 51,
+          "sha256": "c02bddc3a494e2434c446487aaca03d3b8a644b50b60feea1735544d61a82582"
+        },
+        {
+          "id": "E322",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-rounds-fixed/B-event170-17-r1-109.bin",
+          "bytes": 48,
+          "sha256": "a1ad4598858ba04c0059af8c523fd3d7f8919edaa71b17acc8bf422fe7ee2a83"
+        },
+        {
+          "id": "E323",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-rounds-fixed/B-event170-19-r1-112.bin",
+          "bytes": 59,
+          "sha256": "bbbc909b8404968e24650a716a596ee88e85a741b2925007e8e13e8418915d3c"
+        },
+        {
+          "id": "E324",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-rounds-fixed/A-rank175-r1-109.bin",
+          "bytes": 340,
+          "sha256": "cb97774948f9c4e2a2b2f598a3cfada8be56181e4c9f9340f48c0d8c5505ad34"
+        },
+        {
+          "id": "E325",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-rounds-fixed/B-rank175-r1-115.bin",
+          "bytes": 340,
+          "sha256": "f9e99198e4495395e566f964fcc47a37c2aa6dd2bc62c6dd91640ee4a0191da2"
+        },
+        {
+          "id": "E326",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-rounds-fixed/A-return180-r1-112.bin",
+          "bytes": 41,
+          "sha256": "8fbf7d929774603b0881b88b9b5793b0d8212a03edcc2392ae14c08c4fc1c408"
+        },
+        {
+          "id": "E327",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-rounds-fixed/B-return180-r1-118.bin",
+          "bytes": 41,
+          "sha256": "7089134701e5113d31f2727d469f33ad5161269194fd9f5e85e5025a28ee02ec"
+        },
+        {
+          "id": "E328",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-rounds-fixed/A-host110-r1-115.bin",
+          "bytes": 44,
+          "sha256": "8573ef3802cc6ef9deb5ac9abf27414bd676b864c803fff9b7e900308425267c"
+        },
+        {
+          "id": "E329",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-rounds-fixed/A-guest110-r1-118.bin",
+          "bytes": 44,
+          "sha256": "d6a00d6f46dfa856e3eb47422204af7c0e7eb2abc2ed2ccfa87e851a2e45d4d7"
+        },
+        {
+          "id": "E330",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-rounds-fixed/B-host110-r1-121.bin",
+          "bytes": 44,
+          "sha256": "7fad8d02e7b9e3fbeca8541cbf389d4133bb0809831b2bcff2ded03fecbd59d1"
+        },
+        {
+          "id": "E331",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-rounds-fixed/B-guest110-r1-124.bin",
+          "bytes": 44,
+          "sha256": "62dc36ac59ef9b35ee015c878b8fb0aad4b797d889914898a9ff5dbc00f59a79"
+        },
+        {
+          "id": "E332",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-rounds-fixed/A-ready110-121.bin",
+          "bytes": 44,
+          "sha256": "da6dc245fa15a4d8dce84125d85fb5b4a8fc58d7ed7ceac09d6e1ef2178331f2"
+        },
+        {
+          "id": "E333",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-rounds-fixed/B-ready110-127.bin",
+          "bytes": 44,
+          "sha256": "bb2d7b0b9bb9c6dbdce7c2d6f6164f4a794dc1c2f6f8b53692d5803de8e3fccf"
+        },
+        {
+          "id": "E334",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-rounds-fixed/A-floor582-124.bin",
+          "bytes": 74,
+          "sha256": "db1a12e6c831042c3e1049c3bd9562f964909964e01c329de30b2c9acd070e00"
+        },
+        {
+          "id": "E335",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-rounds-fixed/A-start121-r2-127.bin",
+          "bytes": 167,
+          "sha256": "a711ab6451c6cfd9a9783389157be38f35bf5e76c3e1e3f8b95465b5992f2201"
+        },
+        {
+          "id": "E336",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-rounds-fixed/B-floor582-130.bin",
+          "bytes": 74,
+          "sha256": "aa38e908c7b14c888c1383c2d3cf8569d2fe50db7c7a0052539d30c2f005f52a"
+        },
+        {
+          "id": "E337",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-rounds-fixed/B-start121-r2-133.bin",
+          "bytes": 167,
+          "sha256": "f5cde80d6517f97185b4afbd2aa498fc98eb740a9ce28394d5fb620721d39cf7"
+        },
+        {
+          "id": "E338",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-rounds-fixed/B-go197-136.bin",
+          "bytes": 52,
+          "sha256": "86f12c31eed216e2f38fb84c464d1bdfe79c701dea82a39b1444a967ab06f56b"
+        },
+        {
+          "id": "E339",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-rounds-fixed/A-go197-130.bin",
+          "bytes": 52,
+          "sha256": "36b687d42683c83366d8413f5a77363cc7df8798f3285e5514f055a79d07908d"
+        },
+        {
+          "id": "E340",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-rounds-fixed/B-play196-139.bin",
+          "bytes": 45,
+          "sha256": "15a49c1a4b4f17bb0017f79dbdfc7eadbb717230c28a30cb0bd32e182897453f"
+        },
+        {
+          "id": "E341",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-rounds-fixed/A-play196-133.bin",
+          "bytes": 45,
+          "sha256": "cb4fe989111b3d46d94fb36bf6cd98adfa9d61f1254f65d6c7a29a78aa5f2a07"
+        },
+        {
+          "id": "E342",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-rounds-fixed/B-peer153-142.bin",
+          "bytes": 135,
+          "sha256": "aa126435665026b075ffcf82408699de2a8c9586dccc24fa7c0baaf94a93de0b"
+        },
+        {
+          "id": "E343",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-rounds-fixed/A-peer153-136.bin",
+          "bytes": 135,
+          "sha256": "049c5ad46470adca060d0c0bb53722d7a26e3f555c6495d0e0762a3299086025"
+        },
+        {
+          "id": "E344",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-rounds-fixed/A-dynamic159-3.bin",
+          "bytes": 77,
+          "sha256": "4c7f97cd6227f890a27a882230853154cfae78d1cf59288528269851c024d463"
+        },
+        {
+          "id": "E345",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-rounds-fixed/B-dynamic159-3.bin",
+          "bytes": 77,
+          "sha256": "499da26faca0cd83bd4f5305210b2ea24af4c2dbe15f8806b468463dbf69e61a"
+        },
+        {
+          "id": "E346",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-rounds-fixed/A-blast158-3.bin",
+          "bytes": 51,
+          "sha256": "8b9a4eca8345e22c9658e2b96edce1b155d969207f2d3d6b6b345919bd721409"
+        },
+        {
+          "id": "E347",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-rounds-fixed/B-blast158-3.bin",
+          "bytes": 51,
+          "sha256": "0d9f37c3b7dfaadd6e4ab819b00af801b81e7512b2b5ed29756c1621c3818f0d"
+        },
+        {
+          "id": "E348",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-rounds-fixed/A-item165-27-145.bin",
+          "bytes": 50,
+          "sha256": "02335114776a747c2a6e5573218aceaf62962cb1ba1973b25e27688c2fbc5742"
+        },
+        {
+          "id": "E349",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-rounds-fixed/B-item165-27-151.bin",
+          "bytes": 50,
+          "sha256": "57098ee4205cacc9f2c5c8b580801bfd4649529eab3ec5aa38890fce9393c5bf"
+        },
+        {
+          "id": "E350",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-rounds-fixed/A-item165-28-148.bin",
+          "bytes": 50,
+          "sha256": "20f174aaecc39855a786acee53d890e3709eabb14d52a402b8ebc311773a6218"
+        },
+        {
+          "id": "E351",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-rounds-fixed/B-item165-28-154.bin",
+          "bytes": 50,
+          "sha256": "599229543462e58e271cde552295bb8235bf840bdb11c58bbedbecf377ee4f99"
+        },
+        {
+          "id": "E352",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-rounds-fixed/A-dynamic159-4.bin",
+          "bytes": 77,
+          "sha256": "d71521925b3612fe113da13f33d8da358f085c53fbe1ca3b3c19cbeb2d5d58f9"
+        },
+        {
+          "id": "E353",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-rounds-fixed/B-dynamic159-4.bin",
+          "bytes": 77,
+          "sha256": "725cd77872c7b3c4043b5574a4e03a35447be8fdf762eac09c9e40bf52175daa"
+        },
+        {
+          "id": "E354",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-rounds-fixed/A-blast158-4.bin",
+          "bytes": 51,
+          "sha256": "03fa58c9e2d69b7aa46420a020bfc9b3f30775eeef642e0c1e1a97a8c2a0133a"
+        },
+        {
+          "id": "E355",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-rounds-fixed/B-blast158-4.bin",
+          "bytes": 51,
+          "sha256": "17dd03146e6526e3db2f02f565c40f001ad1ab4dbb23b032e67052a8bfdfa7b9"
+        },
+        {
+          "id": "E356",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-rounds-fixed/B-event170-17-r2-163.bin",
+          "bytes": 48,
+          "sha256": "778d58944686143effc0f93a53e781a7c2c30d310ede301af1277502a4188ce5"
+        },
+        {
+          "id": "E357",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-rounds-fixed/B-event170-19-r2-166.bin",
+          "bytes": 59,
+          "sha256": "fefe9f246b3a6aeac7dec5ae52573e4dbf89985645aeab7e521cf3968444e6f3"
+        },
+        {
+          "id": "E358",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-rounds-fixed/A-rank175-r2-157.bin",
+          "bytes": 340,
+          "sha256": "cfa938fb31603c21c8a6c39a6d5def3f97049c629b1b9c4131f2cb7b95fae5a7"
+        },
+        {
+          "id": "E359",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-rounds-fixed/B-rank175-r2-169.bin",
+          "bytes": 340,
+          "sha256": "bd447dbf325e5f3d7f00e7a0263562c736f415a5d574af0279c30574ca2b243a"
+        },
+        {
+          "id": "E360",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-rounds-fixed/A-return180-r2-160.bin",
+          "bytes": 41,
+          "sha256": "bf34ceb0d0d258669d11ecdb7b1d33e3349c46abdd51877194fb8eb1c714e6a4"
+        },
+        {
+          "id": "E361",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-rounds-fixed/B-return180-r2-172.bin",
+          "bytes": 41,
+          "sha256": "857b3bec60a50b6817da9826ddeab6d7282f1da3437461cca8b8f3942e01a2d2"
+        },
+        {
+          "id": "E362",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-rounds-fixed/A-host110-r2-163.bin",
+          "bytes": 44,
+          "sha256": "7e5220b3bb3fd2bbdb84bcbc5688124e5c5b4fce55bb9d372ccfe5b3b40b6f75"
+        },
+        {
+          "id": "E363",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-rounds-fixed/A-guest110-r2-166.bin",
+          "bytes": 44,
+          "sha256": "fb059bc50ef95c9ff35e098f3c26ee7a5c00d11022c5e26542589f69722cf5cb"
+        },
+        {
+          "id": "E364",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-rounds-fixed/B-host110-r2-175.bin",
+          "bytes": 44,
+          "sha256": "10fe614599e628f68e038cd9a426f874fbcc805a11eb63934a4f4aaf94bb9da1"
+        },
+        {
+          "id": "E365",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-rounds-fixed/B-guest110-r2-178.bin",
+          "bytes": 44,
+          "sha256": "f6e35f64df2773da6d4279482ce43c193430617a168e120796a652da1e417668"
+        },
+        {
+          "id": "E366",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/request-frames/hidden-rounds-fixed/A-F44-118.bin",
+          "bytes": 60,
+          "sha256": "43381ab797ddc9f2eb0ba4a7393ed121870275a069f7b9f91031c59a0aabbda4"
+        },
+        {
+          "id": "E367",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/request-frames/hidden-rounds-fixed/A-F51-142.bin",
+          "bytes": 45,
+          "sha256": "14c2458b14eeb17d63916eac99c0907d6c30b8fe73e54b67de2bcfb1c902b94e"
+        },
+        {
+          "id": "E368",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/request-frames/hidden-rounds-fixed/A-F52-142.bin",
+          "bytes": 45,
+          "sha256": "0048733000edb136c127b296db2c98c6bf0115833a0b57ee239b8256c25a0a7b"
+        },
+        {
+          "id": "E369",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/request-frames/hidden-rounds-fixed/A-F60-124.bin",
+          "bytes": 57,
+          "sha256": "6020f0f85d2d3017e1d51868582c31b3a0ebb860cd3c3f2a289625f872996acd"
+        },
+        {
+          "id": "E370",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/request-frames/hidden-rounds-fixed/A-F66-124.bin",
+          "bytes": 57,
+          "sha256": "eaf2c04f9953fb31e276064c041409aa9237bbaa373bf91b00fba506ae4de10b"
+        },
+        {
+          "id": "E371",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/request-frames/hidden-rounds-fixed/A-F67-118.bin",
+          "bytes": 60,
+          "sha256": "6cff1a85a86d09feb438822e395fe8fff002c0e5b8af2a716beee75ceb3b27c3"
+        },
+        {
+          "id": "E372",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/request-frames/hidden-rounds-fixed/A-F69-142.bin",
+          "bytes": 45,
+          "sha256": "ac646fef9a88795c222559a53ad6e136c42a62b03189dd80414576ab20d4adff"
+        },
+        {
+          "id": "E373",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/request-frames/hidden-rounds-fixed/A-F70-142.bin",
+          "bytes": 45,
+          "sha256": "67e40040c06040b44ef01a982c5d3ced4dd18274ad93a004be662d49c2889aee"
+        },
+        {
+          "id": "E374",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/request-frames/hidden-rounds-fixed/A-F102-118.bin",
+          "bytes": 60,
+          "sha256": "3810b94392a63b1b7d6cd4050369f002d99d66a2c7166f87d8294be3fad4cc0d"
+        },
+        {
+          "id": "E375",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/request-frames/hidden-rounds-fixed/A-F108-142.bin",
+          "bytes": 45,
+          "sha256": "8eeb1029290b4f771df134742620af3207210321178641c03589af4736647b25"
+        },
+        {
+          "id": "E376",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/request-frames/hidden-rounds-fixed/A-F109-142.bin",
+          "bytes": 45,
+          "sha256": "ef8449fec977f95e5d4f3c37aa6d03b9f3cfc716d46595ecb8b52ea6048826d6"
+        },
+        {
+          "id": "E377",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/request-frames/hidden-rounds-fixed/A-F117-124.bin",
+          "bytes": 57,
+          "sha256": "91412818aac885d21dec4e76784c64b49810ec7f1f1e3998592d65e54a7d5c37"
+        },
+        {
+          "id": "E378",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/request-frames/hidden-rounds-fixed/A-F123-124.bin",
+          "bytes": 57,
+          "sha256": "3dba91a3326a3f84acad6d242ed222b707394d94a6be8fe5d2cb0f96003122d7"
+        },
+        {
+          "id": "E379",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/request-frames/hidden-rounds-fixed/A-F124-118.bin",
+          "bytes": 60,
+          "sha256": "61f11bd5337c4b0760686a4cdff5778603a5b867175709dd6ffe9d1a93589f3f"
+        },
+        {
+          "id": "E380",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/request-frames/hidden-rounds-fixed/A-F126-142.bin",
+          "bytes": 45,
+          "sha256": "feef30ed06125c6a41ae513bbdb22879865d24e0ec879e8e6546a255039b7c94"
+        },
+        {
+          "id": "E381",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/request-frames/hidden-rounds-fixed/A-F127-142.bin",
+          "bytes": 45,
+          "sha256": "eab219f6200c42f41a792a2ccd61972264404579cc90a04e8573ec69bfd19830"
+        },
+        {
+          "id": "E382",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/request-frames/hidden-rounds-fixed/B-F34-142.bin",
+          "bytes": 45,
+          "sha256": "bbe22e6d0f3a8b00250aee8eaab57ff00b89b211f12c993973ff379759cc322c"
+        },
+        {
+          "id": "E383",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/request-frames/hidden-rounds-fixed/B-F35-142.bin",
+          "bytes": 45,
+          "sha256": "82e0e133b18d295b5f933cf3614e1651f7d6941fbd2df8aa41e0fc81b5ceb247"
+        },
+        {
+          "id": "E384",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/request-frames/hidden-rounds-fixed/B-F40-142.bin",
+          "bytes": 45,
+          "sha256": "69f2034ebdf8c3d8e8405f6548b6ccfbfeb39fe72a87e020e26f5c420a91b860"
+        },
+        {
+          "id": "E385",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/request-frames/hidden-rounds-fixed/B-F41-142.bin",
+          "bytes": 45,
+          "sha256": "8bfa692de124fa830c7f74b9f4ba8e3d96caad24c0295d2b59a36a753d367b52"
+        },
+        {
+          "id": "E386",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/request-frames/hidden-rounds-fixed/B-F79-142.bin",
+          "bytes": 45,
+          "sha256": "69eb3db505557a9900c355381d29f4973d33228ddaa58b9ab389e3d6cb283ea4"
+        },
+        {
+          "id": "E387",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/request-frames/hidden-rounds-fixed/B-F80-142.bin",
+          "bytes": 45,
+          "sha256": "053b146fb6d59cc46130cd245a166b1c3f7afceca38630fc57385564efd6546a"
+        },
+        {
+          "id": "E388",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/request-frames/hidden-rounds-fixed/B-F85-142.bin",
+          "bytes": 45,
+          "sha256": "339576e023f98b05fe563b2b613d822563309f7a1c4deee2f01221ed084da1c5"
+        },
+        {
+          "id": "E389",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/request-frames/hidden-rounds-fixed/B-F86-142.bin",
+          "bytes": 45,
+          "sha256": "94c6644d30a5d0ccd08b17acd831876ce5388a51a4ad240854904a19e710ef13"
+        },
+        {
+          "id": "E390",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-rounds-fixed/A/r1-seen-after-A-0-space.png",
+          "bytes": 128005,
+          "sha256": "c1cac9c09e5dc45ce7b6a224ba94ae38adc20ada6a6f44d5f6b1585ef6909367"
+        },
+        {
+          "id": "E391",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-rounds-fixed/A/r1-seen-after-A-4-Left.png",
+          "bytes": 128340,
+          "sha256": "0f3ea7630723c11dabbc264073430b83d54e9cfc4403d43c3de4cfe6be968634"
+        },
+        {
+          "id": "E392",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-rounds-fixed/A/blast-1.png",
+          "bytes": 132780,
+          "sha256": "1b5bd251930420128310fe45c9857e75ea054f2ba60041d655f84f382f26868e"
+        },
+        {
+          "id": "E393",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-rounds-fixed/A/r2-seen-after-A-0-space.png",
+          "bytes": 127999,
+          "sha256": "30ed15fe3273dd6e12dd65daa438a07f3c7a824915e2805c258faf53906a7c59"
+        },
+        {
+          "id": "E394",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-rounds-fixed/A/blast-3.png",
+          "bytes": 133180,
+          "sha256": "59bfdc8b8a0fbceef9e4606b1244ccb36e013d3a043df8b015d24b5f38f62c11"
+        },
+        {
+          "id": "E395",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-rounds-fixed/A/rank-r2-delayed.png",
+          "bytes": 148993,
+          "sha256": "a1a8a90ab1e18559be035f6c239f2497efaa278ab6e99f8acd7e902b2d356cc6"
+        },
+        {
+          "id": "E396",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-rounds-fixed/A/room-r2.png",
+          "bytes": 177769,
+          "sha256": "0e6a9e064cae5a107bacb0f40ffd27616ab65e01f5926d4877ecc8e6522fe4e2"
+        },
+        {
+          "id": "E397",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-rounds-fixed/A/final-both.png",
+          "bytes": 179754,
+          "sha256": "8d90f0348af006c0b767e382528f9188607b93ce8f08666a32cf047ac52be423"
+        },
+        {
+          "id": "E398",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-rounds-fixed/B/r1-seen-after-A-0-space.png",
+          "bytes": 128110,
+          "sha256": "461ddc0698d00175de2d635d1ba9c5c1429c6dd448a03f2637d5b700de2505da"
+        },
+        {
+          "id": "E399",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-rounds-fixed/B/r1-seen-after-A-4-Left.png",
+          "bytes": 128403,
+          "sha256": "0a48a98166acabec601a5fe3fe291b850136d74282eb15ce00bfc58f12a10551"
+        },
+        {
+          "id": "E400",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-rounds-fixed/B/blast-1.png",
+          "bytes": 134657,
+          "sha256": "4c3d57493e60095b55653c982d31f893f08fc36d6dd5bee3fc28f78176402fd8"
+        },
+        {
+          "id": "E401",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-rounds-fixed/B/r2-seen-after-A-0-space.png",
+          "bytes": 128086,
+          "sha256": "363da8bb0a1551db9af022cecc9608a8f22bff7d827127dc6f4ad33ffbd626cd"
+        },
+        {
+          "id": "E402",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-rounds-fixed/B/blast-3.png",
+          "bytes": 134305,
+          "sha256": "c2e81d7ceaa12fe575f23b7e0068f384dd82a4caa86188d65848173a960a8526"
+        },
+        {
+          "id": "E403",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-rounds-fixed/B/rank-r2-delayed.png",
+          "bytes": 149221,
+          "sha256": "ac7f986ca5302d81977df0f09d7b612c402428d64f0f5edd6f0a34fa4d212d17"
+        },
+        {
+          "id": "E404",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-rounds-fixed/B/room-r2.png",
+          "bytes": 176780,
+          "sha256": "a928772f1921b843aee4a5a143cb2a0bf578dfb8dc2d2f99e74df75aa3b491b6"
+        },
+        {
+          "id": "E405",
+          "kind": "local",
+          "path": "local/research/codex/hidden-item-r1/hidden-rounds-fixed/B/final-both.png",
+          "bytes": 179928,
+          "sha256": "a5097b990b3b66b88bc19bee6209f75aa84ef6b692e9d4659842260ae9c71770"
+        },
+        {
+          "id": "E406",
+          "kind": "local",
+          "path": "local/research/codex/wine_probe_hidden_rounds_fixed.py",
+          "bytes": 60205,
+          "sha256": "a64cb9f0ecda8ecd5f397b79f36fc15b71f76c73db0f9e26c21b7491ef3fe336"
+        }
+      ],
+      "delta": {
+        "added": [
+          "KRlist2/FixedBox/reveal→sameCGOItem165/runtime142writer andtwo-viewstat/reset evidence.",
+          "Fivegroupedruns inclno158/partialorigincontrol/fixed2cycle,rawhash/native andperiodicAUD010."
+        ],
+        "corrected": [
+          "CP031/PR39merged4de4e2e;CP030list2unknown/currentmatrixnext qualifiedwithCP032.",
+          "InheritedalternatingoriginA/B mismatchedA-onlyinput;newfixedpolicyA/Acompletes2cycles,oldrawunchanged.",
+          "E9DFC0floorentrynotreveal;duplicatebreakpointabsence notnegative142;misalignedASM ignored/rereadfromentry."
+        ],
+        "superseded": [
+          "Hiddenitem/block/reveal andboundedround2stat/items/serial/power subquestions answered; nextchain/rescue/generation/stale/disconnect/allreset, no gateclosed."
+        ]
+      },
+      "blockers": [
+        "Chain/collision/rescue,blockvariants/list3/randomdrop, runtime-atmax/speed, stale/generation/validator,hostleave/disconnect vàallentity/timer/peer/seqreset chưa nghiệm thu.",
+        "Fullauth/profile/cache/codec/reconnect/vanilla, UDPgrammar/reliability/relay/NAT,Lan/Internet vàK5/K6a chưa đạt."
+      ],
+      "next_steps": [
+        {
+          "id": "NEXT-ITEM-PICKUP",
+          "task": "KRE-005b",
+          "state": "active",
+          "action": "Continuechain/collision/rescue,validator/generation/stale andhostleave/disconnect/allreset;keepatmax/speed/list3/blockvariants/randomdrop open. Newharnessesuse118field10→159field8.",
+          "owner": "Codex",
+          "reviewer": "Codex"
+        },
+        {
+          "id": "NEXT-DUO-ROUND",
+          "task": "KRE-005b",
+          "state": "active",
+          "action": "Auditentity/timer/peer/seqreset,chain/rescue/variants/generation/disconnect beforeK6a; separateboundedruns notfullmatchproof.",
+          "owner": "Codex",
+          "reviewer": "Codex"
+        },
+        {
+          "id": "NEXT-FULL-LOGIN-FIELDS",
+          "task": "KRE-005b",
+          "state": "active",
+          "action": "Fullauth/profile/cache/reconnect/codec/vanilla controls beforeK2/K3; localprefix notauthcompletion.",
+          "owner": "Codex",
+          "reviewer": "Codex"
+        }
+      ],
+      "review": {
+        "status": "waived",
+        "as_of_utc": "2026-10-31T01:49:45.296660+00:00",
+        "reference": "docs/evidence/checkpoints/review-waiver.json",
+        "scope": "Codex solo RE/code/runtime/selfcheck, not independent approval.",
+        "authorization": {
+          "by": "project_owner",
+          "reference": "docs/evidence/checkpoints/review-waiver.json",
+          "reason": "Owner explicitly requested solo without Claude review."
+        }
+      },
+      "docs_sync": [
+        {
+          "path": "README.md",
+          "state": "updated",
+          "reason": "CurrentCP032/resetlimits,PR39merge/snapshot/AUD010,nextCP036."
+        },
+        {
+          "path": "docs/PLAN.md",
+          "state": "updated",
+          "reason": "Progress/map/nextchain-rescue-generation-disconnect; no gateclosed."
+        },
+        {
+          "path": "docs/PROTOCOL.md",
+          "state": "updated",
+          "reason": "Canonicalhiddenlist/FixedBox/sameCGOItem/reveal/142/reset andhistoricalqualifications."
+        },
+        {
+          "path": "docs/RESEARCH.md",
+          "state": "updated",
+          "reason": "Answeredboundedhiddenitem/reset;nextchain/rescue/validator/disconnect andpartialpolicycontrol."
+        },
+        {
+          "path": "docs/evidence/hidden-items/README.md",
+          "state": "updated",
+          "reason": "Five recipes/native/snapshots/visual/RTTI/hash andlimits."
+        }
+      ]
     }
   ],
   "audits": [
@@ -45779,6 +48848,11 @@
       "id": "AUD009",
       "path": "docs/evidence/checkpoints/audits/AUD009.json",
       "sha256": "b26cf27ed393f08a9371c029a0ee0ff863e1b4d0f9c1572c4124bbe7cd4a1598"
+    },
+    {
+      "id": "AUD010",
+      "path": "docs/evidence/checkpoints/audits/AUD010.json",
+      "sha256": "ac57e29c374dc7928976e228990cd46965b73efd02f11bd15126c5dba399b579"
     }
   ],
   "task_states": [

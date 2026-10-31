@@ -1,6 +1,6 @@
 # KR 00967 — contract tương thích client gốc
 
-Revision kr-legacy-contract-r1; cập nhật31/10/2026 JST (CP031).
+Revision kr-legacy-contract-r1; cập nhật31/10/2026 JST (CP032).
 **Contract có bằng chứng từng phần; chưa nghiệm thu full codec K2**.
 Lộ trình và thứ tự task chỉ giữ ở [REWRITE_PLAN — KRE](PLAN.md).
 Đây là contract của repo server KR. ADR0009 của bản viết lại là nguồn lịch sử để so sánh;
@@ -581,7 +581,8 @@ Các input thêm/delay2.5s là test choice, chưa fuse gốc hay đầy đủ nh
 
 Lịch sử CP022 chỉ đọc prefix10byte của127 sau blast; writer/tail lúc đó chưa phục hồi.
 CP023 đã mở hết hai envelope và nối writer trap/death tại [contract dưới](#round-result).
-Không chuyển enum VN11/13 hoặc tự gán vị trí4039 thành spawn hợp lệ; các127/142/167 khác vẫn cần kiểm riêng.
+Không chuyển enum VN11/13 hoặc tự gán vị trí4039 thành spawn hợp lệ; các127/167 khác vẫn cần kiểm riêng.
+Report142 được nối tiếp trong [CP032](#hidden-items), không dùng giới hạn CP022 làm current unknown.
 
 **180/branch thường:** dispatcher`E5D62B`, CGameStagevt176A470+2D8→`E64950`.
 `1220550` còn có branch khác quaE72490, chưa kiểm. Mẫu branch thường đọc **bool (u8), u8, u8**:
@@ -991,8 +992,9 @@ u16LE n2; n2 × cùng record
 u16LE n3; n3 × cùng record
 ```
 
-Chỉ ý nghĩa list1 là item trên nền đã quan sát; list2/3 đều rỗng trong runtime này, chưa xác nhận item
-ẩn/drop. Mẫu hai item tiêu26byte inner/36byte payload; mẫu một item tiêu16/26byte, errors0 cả hai.
+Tại CP030 chỉ list1 là item trên nền đã quan sát; list2/3 đều rỗng trong các run đó.
+CP032 kiểm tiếp [list2 giấu trong gạch](#hidden-items); list3 vẫn chưa có ca nonempty.
+Mẫu hai item tiêu26byte inner/36byte payload; mẫu một item tiêu16/26byte, errors0 cả hai.
 Framer/blob/getters và record reader native kiểm độc lập; runtime guard/list install/map render là
 nguồn riêng. Tag raw0 trong recipe đã được reader chấp nhận, không phải capture server gốc.
 Item record dùng hàng/cột, khác point spawn map có quy ước riêng; không chuyển nhãn tọa độ giữa hai kiểu.
@@ -1098,8 +1100,59 @@ Raw/checkpoint/harness CP024–030 và các run mapping cũ giữ nguyên làm l
 
 Emulator vẫn chọn placement/index, fuse30s, broadcast, timing/duplicate và outcome. Nhánh tăng stat
 và clamp là code client đã chạy, không tự phục hồi authority server gốc. Item ẩn/phá block/reveal,
-runtime nhặt tại max, speed, validator/round reset/disconnect/full auth/cache/codec còn mở;
+runtime nhặt tại max, speed, validator/disconnect/full auth/cache/codec còn mở;
+reset stat/item được kiểm tiếp hẹp ở [CP032](#hidden-items), chưa toàn lifecycle round;
 **chưa full match/K5/K6a/LAN/Internet**.
+
+<a id="hidden-items"></a>
+### Gạch, item ẩn và khởi tạo lại vòng — CP032
+
+**kr_static/kr_runtime confirmed trên diagnostic copy Wine**, không patch thêm hoặc ép stat/state.
+[Recipe, controls, native, snapshot và hash](evidence/hidden-items/README.md).
+VN chỉ hướng dẫn thử list2 trước start và theo dõi report vỡ gạch; schema/consumer KR được kiểm riêng.
+
+**List2 của582:** sau giải blob có counts `[0,2,0]`, hai record
+`index27/row2/col3/kind0` và `index28/row3/col2/kind1`;26byte inner được đọc đủ.
+`D824D0→1245700` lưu list2 ở context+3E8; getter `1245780` được gọi từ `EA46E2`, rồi
+`EA46F8→EB56E0` duyệt list2 trước list1. Với hai ô trên ExVillage01/code278, lookup đầu
+`E9FCF0` trả tile, hai lookup thay thế trả0. `B9C8D0` qua guard `11902B0`, ghi kind vào
+tile+B0 và index vào tile+AC. Cả A/B đo đúng tọa độ/index/kind, vtable1747724;
+RTTI static khớp `CGOTileFixedBox`. Không suy mọi loại block/map đều chấp nhận list2.
+
+**Control và reveal:** cùng input A đặt bom3/3 rồi rời ô, quay lại hai ô gạch; B giữ ở spawn.
+Control không phát158: bom/gạch còn nguyên, không124/142/165 hoặc hit hàm tăng stat đã probe trong cửa sổ đo.
+Ca có158/kind0 sau fuse thử6s: hai gạch biến mất và hai item hiện trên cả hai view;
+A thực gửi124/index27 rồi28, stub xác nhận165 tới cả hai. Snapshot secure/native xác nhận
+capacity và Fire của slot0 lần lượt1→2 ở cả hai; các max và stat slot1 đã đo giữ nguyên.
+Không cần chuyển tiếp report142 để hai view reveal trong recipe này; chưa có phép tắt UDP riêng.
+
+**Đường phá/reveal có mục tiêu:** `CGOTileFixedBox/B9CEC0` có nhánh giảm secure durability,
+ẩn tile và lấy object nền `E9F360`; `118FBF0(index)`/`B8CC50(kind)` kiểm trước cạnh
+`B9D0B4→B8B5B0(game,index,kind,...)`. Runtime đo hai destination vtable1746A4C/RTTI `CGOItem`;
+pointer từng index khớp đúng item tìm thấy sau đó trong165 ở cả hai client.
+Không dùng entry `E9DFC0` của đường đặt item nền làm proof reveal: probe entry đó không hit trong ca list2.
+
+**C→S142**, writer `E72720`, construct tại `E727FF`, serialize `E7281B/28/35/41`:
+`u8 row,u8 column,u8 selectedSlot,u32 aux`;7byte payload, khác VN135/u16 đuôi.
+Hai client đều report cùng ô2/3 và3/2 nhưng selectedSlot lần lượt0/1, không phải luôn bomb owner0.
+Hàm chọn slot bằng guard/local-slot registry; aux được caller `B9D11C` truyền−1 trong ca này.
+Native framer/getters kiểm actual frame theo seq/socket; chưa generalize aux hoặc validator/server reply.
+
+**Vòng kế:** run `hidden-rounds` có hai121/clock/layout trên cùng tám connection; hai tile/index
+được gắn lại, cùng hai124/165 mỗi vòng. Snapshot đầu vòng2 ở cả hai đã trở lại capacity1/Fire1
+cho slot0; sau nhặt lại lên2/2. Serial bomA lặp0/28 ở mỗi vòng, ID stub chọn1–4;
+power request/broadcast là1 trước Fire,2 sau Fire. Đây là reset của các field/đối tượng đã đo,
+không phải chứng minh toàn entity/timer/peer/seq không rò.
+Run này chỉ có175/180 vòng1: harness kế thừa policy chờ B reported19 vòng2 trong khi input điều khiển A;
+actual A17/19 vòng2 vẫn capture. Run sửa policy phải được đối chiếu riêng, không gọi ca này hai vòng hoàn tất.
+`hidden-rounds-fixed` chỉ đổi điều kiện origin của policy thành A/A: hai reported17/19 của A dẫn tới
+170 gửi B,175/180 mỗi client hai lần, cùng tám connection/seq liên tục và ảnh kết quả/phòng vòng2.
+Hai lần layout/reveal/nhặt, stat reset và serial0/28/power1→2 vẫn khớp. Không coi sửa policy stub
+là sửa bug client hoặc chứng minh mọi reset/validator đã đạt.
+
+Placement/index/fuse6s, giữ một ACK/index/round, broadcast, rank và timing vẫn **emu_choice/design**.
+Chưa phục hồi thuật toán random drop/server authority; list3, block variants, chain/rescue, runtime tại max/
+speed, stale/generation/disconnect/full auth/cache/codec và K5/K6a/LAN/Internet còn mở.
 
 ### Giới hạn và correction WCP lịch sử
 
@@ -1132,7 +1185,7 @@ liệt kê và phân biệt với nguyên bản trong mọi demo.
 
 ### Authority matrix hiện hành và gate review
 
-Bảng này tổng hợp bằng chứng từng phần đến CP031; chưa phải toàn contract server gốc. Mỗi hàng khi
+Bảng này tổng hợp bằng chứng từng phần đến CP032; chưa phải toàn contract server gốc. Mỗi hàng khi
 triển khai phải bổ sung riêng **creator, simulator, validator, broadcaster, peer-editable state**, với
 locator/trace và trạng thái từng ô; những vai trò không nêu dưới đây hiện `unknown` cho KR.
 
@@ -1141,10 +1194,10 @@ locator/trace và trạng thái từng ô; những vai trò không nêu dưới 
 | Movement | CP027 hai client thấy movement hai chiều; [phạm vi](#peer-duo);183 vẫn chỉ ghost | Full schema input/update/correction, validator và quyền sửa vị trí của peer |
 | Bomb place/ID | CP027 hai owner/ID chung1..4 tạo trên cả hai client; [phạm vi](#peer-duo); lặp/cũ CP025 | Allocator/rollover/concurrent/race/round generation và authority ngoài policy broadcast thử |
 | Explode/chain | CP027 bốn kind0/cleanup mỗi client; CP022 có nước/HELP; chain chưa nghiệm thu | Fuse/clock owner/relay và cách bỏ lặp chain còn thiếu |
-| Block destroy/item reveal | Calc vùng nổ không tự xác nhận authority phá block/drop | Ai quyết block/item, state từng peer và packet/event đồng thuận |
-| Item placement/pickup | CP030 layout/nhặt/tranh index; CP031 Bomb/Fire stat tăng trên cả hai,165 lặp sau xóa không tăng, clamp native và power correction; [contract](#item-effects) | Runtime tại max, speed, item ẩn/drop, đảo winner, stale/generation và reset chưa đo |
+| Block destroy/item reveal | CP032 list2→FixedBox,158→hai view vỡ/reveal→124/165/stat; report142 từ cả hai; [contract](#hidden-items) | Drop algorithm/server validator, variants/chain và phép loại transport riêng còn thiếu |
+| Item placement/pickup | CP030 nhặt/tranh index; CP031 stat/clamp/power; CP032 item ẩn và reset field hẹp; [contract](#hidden-items) | Runtime tại max/speed, random drop/đảo winner/stale/generation và toàn reset còn thiếu |
 | Trap/death | CP029 control mismatch và170/17,19 đưa remoteactor56→1 trước175 qua hai vòng; [contract](#peer-events) | Validator/timeout/duplicate/stale/generation, rescue/enemy-pop và variants còn thiếu |
-| Result/reset | CP028 reported19→175→180/full3 đọc đủ ở cả hai client, cùng về UI phòng; [phạm vi](#duo-room-round) | CP029 có boundedtrap/death forwarding; arbitration/round identity, không rò entity/timer/peer/seq và disconnect vẫn mở |
+| Result/reset | CP028 chu kỳ pair; CP032 đo lại hidden item/stat/serial/power ở đầu vòng2; [phạm vi](#hidden-items) | Arbitration/generation, mọi entity/timer/peer/seq không rò và disconnect vẫn mở; phân biệt run chờ sai origin với ca hoàn tất |
 | Peer lifecycle | CP027 actual99→153 và UDP send/receive hai client; [phạm vi](#peer-duo) | Full schema receive/handshake/key/slot/reliability/relay và giới hạn state peer được sửa |
 
 Gate K5/K6 cần kiểm matrix và đối chứng của hành vi thực sự dùng; từ28/10 Codex tự kiểm theo miễn review của chủ dự án. Có thể giữ unknown về
