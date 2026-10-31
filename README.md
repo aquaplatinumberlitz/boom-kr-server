@@ -22,18 +22,19 @@ boom-kr-server/
 
 ## Đang làm
 
-CP046: **đã đo gói UDP vòng cũ làm thay đổi tọa độ actor ở vòng mới**.
-Getter native xác nhận vị trí nhảy rồi được gói hiện tại sửa lại; control không replay giữ vị trí ở các mẫu trước input.
-[Contract và giới hạn](docs/PROTOCOL.md#udp-generation), [recipe/hash](docs/evidence/udp-actor/README.md).
+CP047: **đổi khóa qua153 đã chặn gói movement vòng cũ trong ca đo**; gói hiện tại vẫn chạy và
+hai vòng tới result/return. Đổi cổng riêng lẻ không chặn được gói cũ từ cả cổng cũ và cổng mới.
+[Contract và giới hạn](docs/PROTOCOL.md#udp-generation), [recipe/hash](docs/evidence/udp-freshness/README.md).
+Policy cấp khóa đã có unit test, chưa tích hợp server độc lập; khóa thực tế được so ở byte thấp.
 Nhóm item và delta Roller/MaxPower của CP045 giữ tại [bảng nguồn chuẩn](docs/PROTOCOL.md#item-families).
 
 Đây là thí nghiệm copy chẩn đoán Wine; **chưa nghiệm thu trận hoàn chỉnh/K6a**.
 Peerqueue/UDP generation, fullvalidator, server độc lập và full auth/cache/codec còn thiếu; chưa LAN/Internet.
 [Bước tiếp](docs/RESEARCH.md#q-023).
 
-CP045 đã merge [PR53](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/53) tại `6fe17b0`.
-CP046 hoàn tất record/tự kiểm; [PR54](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/54)
-giữ trạng thái tích hợp của nhánh `kre/udp-actor-apply`.
+CP046 đã merge [PR54](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/54) tại `f85cda4`.
+CP047 hoàn tất record/tự kiểm; [PR55](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/55)
+giữ trạng thái tích hợp của nhánh `kre/udp-freshness`.
 Codex tự kiểm, review độc lập waived. Audit **AUD014/CP044**, audit định kỳ kế **CP048**.
 
 Checkpoint bền vững: [manifest](docs/evidence/checkpoints/manifest.json).
