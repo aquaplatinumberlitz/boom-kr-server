@@ -22,20 +22,19 @@ boom-kr-server/
 
 ## Đang làm
 
-CP040: **sau host ngắt kết nối, chủ mới B đã Start trận với client mới C**;
-C Join/Ready thật, B gửi104, cả hai đọc đủ121, chạy clock và thấy movement của nhau.
-Guest EOF có control riêng và policy đưa host còn lại về phòng/xóa guest.
-[Contract/phạm vi](docs/PROTOCOL.md#abort-rejoin), [recipe/control/hash](docs/evidence/abort-rejoin/README.md).
-CP039 đã đo hai vòng trap/death → kết quả → về phòng trên cùng kết nối;
-[nguồn chuẩn](docs/PROTOCOL.md#round-finish).
+CP041: **payload nổ158 cũ có thể tác động lên bom mới nếu ID được dùng lại qua vòng trận**.
+Ca cấp ID tăng không có tác động đó; cả hai đã có hai vòng trap/death nhất quán → kết quả → về phòng.
+[Contract/phạm vi](docs/PROTOCOL.md#round-generation), [recipe/control/hash](docs/evidence/round-generation/README.md).
+Policy ticket theo vòng trong `server/round_fence.py` chặn job local cũ; không là toàn validator.
 
 Đây là các thí nghiệm trên copy chẩn đoán Wine; **chưa nghiệm thu trận hoàn chỉnh/K6a**.
-C là identity local mới, chưa reconnect A. Validator/generation/toàn reset và full auth/cache còn thiếu;
-chưa LAN/Internet. [Bước tiếp](docs/RESEARCH.md#q-023).
+Full auth/cache/codec, item/pending qua vòng và toàn reset/peerqueue còn thiếu; chưa LAN/Internet.
+[Bước tiếp](docs/RESEARCH.md#q-023). CP040 đã đo [Start với client mới sau host EOF](docs/PROTOCOL.md#abort-rejoin),
+không phải reconnect account cũ.
 
-CP039 đã merge [PR47](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/47) tại `e19bc9e`.
-CP040 là thí nghiệm trước tích hợp trên nhánh `kre/abort-rejoin-runtime`.
-Codex tự kiểm, review độc lập waived. Đã audit định kỳ **AUD013/CP040**; audit định kỳ kế **CP044**. Counter/biên bản ở manifest.
+CP040 đã merge [PR48](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/48) tại `99d1835`.
+CP041 là snapshot trước tích hợp trên nhánh `kre/round-generation-runtime`.
+Codex tự kiểm, review độc lập waived. Audit định kỳ gần nhất **AUD013/CP040**, audit kế **CP044**.
 
 Checkpoint bền vững: [manifest](docs/evidence/checkpoints/manifest.json).
 Quy trình ghi chép/review/audit: [checkpoint workflow](docs/evidence/checkpoints/README.md).

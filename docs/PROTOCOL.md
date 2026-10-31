@@ -1,6 +1,6 @@
 # KR 00967 — contract tương thích client gốc
 
-Revision kr-legacy-contract-r1; cập nhật31/10/2026 JST (CP040).
+Revision kr-legacy-contract-r1; cập nhật31/10/2026 JST (CP041).
 **Contract có bằng chứng từng phần; chưa nghiệm thu full codec K2**.
 Lộ trình và thứ tự task chỉ giữ ở [REWRITE_PLAN — KRE](PLAN.md).
 Đây là contract của repo server KR. ADR0009 của bản viết lại là nguồn lịch sử để so sánh;
@@ -1545,6 +1545,55 @@ ID allocator hoặc cleanup mọi entity/timer/queue/generation. Run dừng ở 
 chưa bom/death/result của B/C. **Chưa nghiệm thu full match/K5/K6a/LAN/Internet**.
 [Bước tiếp duy nhất](RESEARCH.md#q-023).
 
+<a id="round-generation"></a>
+### Payload nổ cũ qua vòng mới và tái dùng ID — CP041
+
+**kr_runtime/kr_static confirmed hẹp trên diagnostic copy Wine**;
+[controls, recipe, native checks và hash](evidence/round-generation/README.md).
+Không thêm patch/ép state. Hai client A/B, cùng8connections/IDs1,2/slots0,1/session1,
+hai actual95/104/121/99/clock; mỗi vòng layout582 rỗng, một bom A rồi17→19,
+170 đưa peer vềstate1 trước175/180/về phòng. Fuse6s và outcome Alose/Bwin là **emu_choice**.
+
+**Phép thử phân biệt tầng:** giữ payload158 của bom vòng1, mã hóa lại bằng **seq S2C hiện tại**
+cho từng receiver ở vòng2. Đây là replay semantic có CRC/seq hợp lệ, không raw packet replay
+và không bằng chứng vượt kiểm seq/crypto. Gửi một lần trước bom mới và một lần sau khi159 mới
+đã cấp entity/ID, trước timer6s hiện tại. Các158 đều đọc13/13/errors0 qua native và runtime.
+Variant đã dùng là `u8 count=1,u16 ID,u8 kind=0,u32=2,u32=FFFFFFFF,u8=FF`;
+không có field round riêng trong variant này. Không khái quát mọi optional flag/mode/transport.
+
+| Ca | Runtime vòng2 ở cả A/B |
+|---|---|
+| `unique-control`: cấp ID1 rồi2 | Hai158 cũ/ID1 không tới lookup-return E1449C hoặc kind0; timer hiện tại/ID2 mới tới entity159 vòng2 và nổ. A17 sau mốc record server6,738s. |
+| `reused-ID`: cấp ID1 rồi1 | Trước159 mới,158 cũ không tới lookup-return/kind0. Sau bind ID1 mới,158 cũ lookup đúng **entity159 vòng2**, đi E9E660/cleanup; A17 sau mốc record server3,644s, trước timer hiện tại6,109s. Timer đó sau cùng vẫn lookup entity nhưng không nổ lần hai. |
+| `guarded-reuse`: ID1 rồi1, fence job local | Giữ control158 trước bind như trên; job cũ sau bind bị loại với `stale_round`, không phát packet. Timer hiện tại6,067s mới vào kind0 của entity vòng2; A17 sau mốc record server6,651s. Hai vòng vẫn có statepeer1 trước175 và180/phòng. |
+
+Các khoảng trên lấy từ `created_ns` của record server sau phát159, không phải timestamp breakpoint bind.
+Không dùng pointer lặp, ảnh bom prediction hoặc việc đọc packet đủ làm bằng chứng nổ.
+159 trả entity khác0 cả hai; B37880 bind được probe ở đường local A, remote B kiểm bằng
+entity159→lookup ID→kind0 cùng pointer. Trace từng158 ghép theo thứ tự TCP/seq riêng của receiver.
+Ảnh tức thời sau gửi có thể trước effect; callback và ảnh trễ được đối chiếu riêng.
+Trước bind không có kind0 chỉ trả lời ca đã đo, không chứng minh toàn heap/entity/timer đã xóa.
+
+**Cạnh tĩnh giải thích:** E5F450 đọc ID/kind/args rồi E5F5CA→E14360.
+E143A2/E143C3 tìm ID trong context hiện tại; không có record phù hợp thì trả sớm trước E1449C.
+Probe E1449C sau lời gọi nhận pointer; E144E9→B323D0 kiểm trạng thái hiện tại trước nhánh kind0 tại
+E145DD→E9E660. Nhánh state giải thích ứng viên cho duplicate không nổ thêm;
+chưa phục hồi đầy đủ mọi getter/collection/optional context hoặc luật generation server gốc.
+
+**Design server:** [RoundFence](../server/round_fence.py) giữ ticket theo instance owner phòng,
+generation và lần cấp ID; job chỉ consume một lần, `begin/finish` vô hiệu hóa job vòng cũ.
+Caller giữ ticket gốc và serialize kiểm/phát packet cùng owner/lock. Không thêm field vào wire KR.
+Trong lượt guarded, control packet trước bind cố ý bypass fence để đo consumer; job cũ sau bind
+mới là phép kiểm fence. Không gọi đây là chặn mọi đường gửi trong harness.
+Module chỉ chặn job local chưa gửi; không thay allocator/quarantine, deadline, chain cleanup,
+validator C2S, gói đã gửi hoặc UDP. Kiểm unit và lượt runtime có fence được ghi ở evidence;
+không coi log policy tự nó là proof consumer client.
+
+State/coordinates/stat tại clock hai vòng, serialA0 và UDPport giữ nguyên đã kiểm hẹp;
+không đồng nghĩa toàn reset/validator/stale-safe. Item index/165 qua vòng mới, pending159 tới trễ,
+ID wrap, abort/cancel timer và peerqueue/UDP generation còn mở.
+**Chưa nghiệm thu full match/K5/K6a/LAN/Internet**. [Bước tiếp](RESEARCH.md#q-023).
+
 ### Giới hạn và correction WCP lịch sử
 
 Fixture opaque/zero/empty và prefix69 là emu_choice đã được consumer chấp nhận trong phép thử,
@@ -1576,19 +1625,19 @@ liệt kê và phân biệt với nguyên bản trong mọi demo.
 
 ### Authority matrix hiện hành và gate review
 
-Bảng này tổng hợp bằng chứng từng phần đến CP040; chưa phải toàn contract server gốc. Mỗi hàng khi
+Bảng này tổng hợp bằng chứng từng phần đến CP041; chưa phải toàn contract server gốc. Mỗi hàng khi
 triển khai phải bổ sung riêng **creator, simulator, validator, broadcaster, peer-editable state**, với
 locator/trace và trạng thái từng ô; những vai trò không nêu dưới đây hiện `unknown` cho KR.
 
 | Hành vi | Đã thấy trong KR | Phần cần đóng trước demo dùng hành vi đó |
 |---|---|---|
 | Movement | CP027 hai client thấy movement hai chiều; [phạm vi](#peer-duo);183 vẫn chỉ ghost | Full schema input/update/correction, validator và quyền sửa vị trí của peer |
-| Bomb place/ID | CP027 hai owner/ID chung1..4 tạo trên cả hai client; [phạm vi](#peer-duo); lặp/cũ CP025 | Allocator/rollover/concurrent/race/round generation và authority ngoài policy broadcast thử |
+| Bomb place/ID | CP027 hai owner/ID chung1..4 tạo trên cả hai client; [phạm vi](#peer-duo); lặp/cũ CP025 | CP041 có [stale158/ID reuse và fence job local](#round-generation); allocator/rollover/concurrent/race/toàn generation và authority ngoài policy thử còn mở |
 | Explode/chain | CP033 hai bom B liền kề từ một158/ID1, control cách hai ô/replay sau chain; [contract](#bomb-chain) | Nhiều owner/ba bom/vật cản/race/generation và authority server gốc còn thiếu |
 | Block destroy/item reveal | CP032 list2→FixedBox,158→hai view vỡ/reveal→124/165/stat; report142 từ cả hai; [contract](#hidden-items) | Drop algorithm/server validator, variants/chain và phép loại transport riêng còn thiếu |
 | Item placement/pickup | CP030 nhặt/tranh index; CP031 stat/clamp/power; CP032 item ẩn và reset field hẹp; [contract](#hidden-items) | Runtime tại max/speed, random drop/đảo winner/stale/generation và toàn reset còn thiếu |
 | Trap/death | CP029/036; CP037 kim và tranh chấp cứu/diệt; [kim](#needle-selfescape), [precedence](#contact-precedence) | Validator/duplicate/stale/generation/variants, result21 và đối chứng thêm/đảo chiều còn thiếu |
-| Result/reset | CP039 hai vòng statepeer/result/21/return và reset field hẹp; [phạm vi](#round-finish) | Arbitration/generation, mọi entity/timer/peer/seq không rò và disconnect vẫn mở; phân biệt run chờ sai origin với ca hoàn tất |
+| Result/reset | CP039 hai vòng statepeer/result/21/return và reset field hẹp; [phạm vi](#round-finish) | CP041 có [payload cũ khi ID reuse](#round-generation); arbitration/toàn generation/entity/timer/peer/seq không rò vẫn mở; phân biệt run chờ sai origin với ca hoàn tất |
 | Room lifecycle | CP034 leave/promotion/EOF/return; CP035 rejoin/Ready và chủ B Start tới clock cả hai; [contract](#room-rejoin) | Bầu chủ/giữ ID-slot là policy stub; CP040 có [client mới/chủ mới Start sau host EOF](#abort-rejoin); guest EOF trả A về phòng/xóa B đã đo riêng; reconnect cùng account/disconnect variants/toàn reset còn mở |
 | Peer lifecycle | CP027 actual99→153 và UDP send/receive hai client; [phạm vi](#peer-duo) | Full schema receive/handshake/key/slot/reliability/relay và giới hạn state peer được sửa |
 
