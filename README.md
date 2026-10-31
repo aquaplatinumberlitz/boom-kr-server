@@ -22,19 +22,17 @@ boom-kr-server/
 
 ## Đang làm
 
-CP045: **đã tái dùng kiến thức item từ các repo cũ và đo thêm Roller/MaxPower trên KR**.
-Hai client cùng quan sát stat thay đổi và reset qua vòng kế; nhóm chủ động/biến thể/mode được phân biệt
-trong [bảng nguồn chuẩn](docs/PROTOCOL.md#item-families), [recipe/hash](docs/evidence/item-families/README.md).
-UDP vòng cũ đã đo tới queue, drain và consumer game; hiệu ứng lên actor còn thiếu bằng chứng.
-[Contract và giới hạn](docs/PROTOCOL.md#udp-generation), [recipe/hash](docs/evidence/udp-generation/README.md).
+CP046: **đã đo gói UDP vòng cũ làm thay đổi tọa độ actor ở vòng mới**.
+Getter native xác nhận vị trí nhảy rồi được gói hiện tại sửa lại; control không replay giữ vị trí ở các mẫu trước input.
+[Contract và giới hạn](docs/PROTOCOL.md#udp-generation), [recipe/hash](docs/evidence/udp-actor/README.md).
+Nhóm item và delta Roller/MaxPower của CP045 giữ tại [bảng nguồn chuẩn](docs/PROTOCOL.md#item-families).
 
 Đây là thí nghiệm copy chẩn đoán Wine; **chưa nghiệm thu trận hoàn chỉnh/K6a**.
 Peerqueue/UDP generation, fullvalidator, server độc lập và full auth/cache/codec còn thiếu; chưa LAN/Internet.
 [Bước tiếp](docs/RESEARCH.md#q-023).
 
-CP044 đã merge [PR52](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/52) tại `b947a9d`.
-CP045 hoàn tất record/tự kiểm; [PR53](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/53)
-giữ trạng thái tích hợp của nhánh `kre/item-families-udp`.
+CP045 đã merge [PR53](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/53) tại `6fe17b0`.
+CP046 hoàn tất record/tự kiểm trên nhánh `kre/udp-actor-apply`; tích hợp qua PR của nhánh.
 Codex tự kiểm, review độc lập waived. Audit **AUD014/CP044**, audit định kỳ kế **CP048**.
 
 Checkpoint bền vững: [manifest](docs/evidence/checkpoints/manifest.json).

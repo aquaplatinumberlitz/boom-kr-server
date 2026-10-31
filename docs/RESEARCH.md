@@ -190,6 +190,11 @@ CP045 bổ sung [nhóm item/nguồn cũ/Roller và MaxPower KR](PROTOCOL.md#item
 không còn gọi nó unknown vì chỉ đọc oc_e-game cũ. [UDP cũ](PROTOCOL.md#udp-generation) đã tới
 queue/drain và consumer game ở vòng2, slot1/gate0/return13; chưa chứng minh actorapply.
 CP045 hoàn tất record/tự kiểm, review độc lập waived; [recipe/các control chưa đạt](evidence/udp-generation/README.md).
+CP045/PR53 đã merge `6fe17b0`. CP046 đo tiếp [oldUDP tới actor](PROTOCOL.md#udp-generation):
+native getter xác nhận x120→200 qua exactold callback, gói hiện tại sửa về120; no-replaycontrol
+giữ x120/y159 ở8callback trước input, có hai result/return. Oldrun vòng2 có17 nhưng chưa19/result;
+không quy toàn outcome chỉ do replay. CP046 hoàn tất record/tự kiểm, review độc lập waived.
+E8E960 là false stub trong build này; không tiếp tìm input bật gate đã đo0.
 
 **Bước tiếp, Codex RE/tự kiểm:**
 
@@ -200,10 +205,13 @@ CP045 hoàn tất record/tự kiểm, review độc lập waived; [recipe/các c
    CP041 đã kiểm hai vòng với stale158 và ID cấp tăng/tái dùng; nhánh nổ không cần tìm lại.
    CP042 có old165/index reuse và policy claim/ticket local; CP043 đã đo159 cũ/serial reuse làm sai ID giữa A/B.
    CP044 đã đo timer abort/control/fence và một vòng B/C mới tới bom/death/result/return.
-   CP045 đã đo actualcallback/CRC/queue/drain và oldpayload vào gameconsumer ở vòng2;
-   không mở lại endpoint/receiver/queue. **Phép đo tối thiểu kế:** ghi caller/địa chỉ output sau13E0E00
-   trên một exactold replay; theo cạnh runtime đó tới handler, chụp secure actor trước/sau và so control
-   không replay. Chỉ mở body giải thích cạnh đã chạy; kiểm điều kiện E8E960 riêng, không ép gate/state.
+   CP045 đã đo actualcallback/CRC/queue/drain; CP046 output13byte→packetstream→pumpcallback đổi
+   actor ở vòng2. Không mở lại các đường đã đo hoặc nhầm14EF010 với gameplayhandler.
+   **Phép đo tối thiểu kế:** ghi target vfF4 tại125DF30 trên packet cũ/current, chỉ đọc handler đã chạy
+   để tìm field identity/freshness và consumer. Chuẩn bị control đổi endpoint153 ở vòng2 rồi replay
+   cùng payload từ endpoint cũ/mới để kiểm guard; đó là giả thuyết policy, chưa giải pháp đã chứng minh.
+   Không đổi gate/state hoặc reencode oldpayload để tự tạo epochproof. Return callback0/1 không là
+   accept/reject: cả old và current đã đổi field. Toàn grammar/validator vẫn mở.
    Tiếp UDP generation/reset và giới hạn124 trùng catalog trước K6a;
    reconnect/resume cùng account vẫn chưa đo. Không tự gọi sub34 là ACK hoặc21 là validator.
 2. **NEXT-ITEM-PICKUP:** CP037 kim tự thoát/peer, CP038 có [trap lần hai khi hết kim](PROTOCOL.md#needle-repeat).
@@ -237,7 +245,7 @@ oneclickuser/+E9C/token_2/count2/vanilla còn mở. AUD014/CP044 đã audit đ�
 | Q-024 / KRE-P1 login/kênh | open | Codex RE/tự kiểm | UI sảnh hết notice17/241; CP020 phục hồi inputID local, tên/profile phòng có fixture, chưa full auth/sảnh identity | Full identity/user/cache và cold/warm/reconnect K3; không gọi auth Nexon thật |
 | Q-025 / KRE-P1 room/load | open | Codex RE/tự kiểm | CP028 join/Ready;CP034 leave/promotion/EOF/return;CP035 rejoin/newhostStart, [phạm vi](PROTOCOL.md#room-rejoin) | Password/error/unready/load-barrier variants, CP040 đã có client mới/chủ B Start sau host EOF; guest EOF trả host về phòng đã đo; reconnect cùng account/reset/104growth/cache và nghiệm thu K4 còn mở |
 | Q-026 / KRE-P1 authority/trận | open | Codex RE/tự kiểm | CP039 hai vòng statepeer/result/return; CP041 [stale158/ID](PROTOCOL.md#round-generation), CP042 [old165/index](PROTOCOL.md#item-generation), CP043 [old159/serial](PROTOCOL.md#late-bomb-confirm); CP044 [timer abort/B-C result](PROTOCOL.md#abort-timer) | Drop/block/chain/rescue variants, runtime max/speed/fullvalidator/semantics21,34/toàn reset còn thiếu; không coi fence job local là wire epoch hoặc toàn validator; K5 chưa nghiệm thu |
-| Q-027 / KRE-P1 peer | open | Codex RE/tự kiểm | CP027 movement/bom, CP029 trap/death; CP044 [thay peer](PROTOCOL.md#abort-timer); CP045 [oldUDP tới consumer](PROTOCOL.md#udp-generation) | Không tìm lại queue; tiếp downstream/actorapply/control, gate và round identity; full grammar/key/slot/reliability/relay/disconnect/toàn reset trước K6 |
+| Q-027 / KRE-P1 peer | open | Codex RE/tự kiểm | CP027 movement/bom, CP044 thay peer; CP045–046 [oldUDP tới actor](PROTOCOL.md#udp-generation) | Tiếp target vfF4/freshness, endpoint control và round identity; không tìm lại queue/actorapply/gatefalse; full grammar/key/slot/reliability/relay/disconnect/toàn reset trước K6 |
 | Q-028 / KRE-P2 profile/core | open | Codex/tự kiểm | Core Rust và policy V1 có sẵn, nhưng client gốc không biết ADR0009 | Sau audit Q-026/027, quyết định giữ lai/relay/shadow core hay authoritative được client hỗ trợ; profile emu có provenance, không sửa V1 implicit |
 | Q-029 / KRE-P2 vận hành | open | Codex/tự kiểm | CP029 có statepeer sau170 trước175 và hai chu kỳ thử; [giới hạn](PROTOCOL.md#peer-events); chưa fullmatch/K6a | K7 bốn client, malformed/stale/duplicate/race/disconnect/restart, bounds/resource limits, Linux package, patch manifest và README tái lập |
 

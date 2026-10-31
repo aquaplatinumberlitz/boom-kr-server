@@ -1,7 +1,7 @@
 {
   "schema": "kre-checkpoints-v1",
-  "last_id": "CP045",
-  "completed_count": 45,
+  "last_id": "CP046",
+  "completed_count": 46,
   "audit_interval": 4,
   "last_periodic_audit": 44,
   "next_periodic_audit": "CP048",
@@ -82115,6 +82115,3106 @@
           "path": "docs/evidence/udp-generation/README.md",
           "state": "updated",
           "reason": "Rawreplay/controls/probeerror/queue/drain/gameconsumer/slotgate/return/hash/limits."
+        }
+      ]
+    },
+    {
+      "id": "CP046",
+      "previous": "CP045",
+      "lifecycle": "complete",
+      "recorded_utc": "2026-10-31T14:49:15.811836+00:00",
+      "context_commit": "6fe17b0665f952964abe4360116b621f3ae56919",
+      "question": "Gói UDP thật từ vòng cũ có làm thay đổi actor ở vòng mới hay chỉ được queue/parse? Theo output tới callback, đo securefield trước/sau và control không replay.",
+      "scope": "Reuse CP045/CP025 và nguồn VN/legacy theo câu hỏi; năm controller tuần tự, hai lỗi probe được giữ rõ; oldpacket nguyên vẹn/copy-only/offline. Không thêm binarypatch/gate/actorforcing, không toàn grammar/freshness hoặc nghiệm thu fullmatch.",
+      "owner": "Codex",
+      "reviewer": "Codex",
+      "artifacts": [
+        {
+          "name": "CA-r2-login-logout.exe",
+          "sha256": "660447c293ce92270cb9b5815331bca976e8f156366e1fe50b217b6c12e60ce3"
+        },
+        {
+          "name": "CA-r2-stage-social.exe",
+          "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+        },
+        {
+          "name": "CA-r2-stage-social.exe Bcopy",
+          "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+        },
+        {
+          "name": "modO.bin",
+          "sha256": "a08950c833d3acab8281049def7b3dc96b221f107eeda01da3a548e34b91dce5"
+        }
+      ],
+      "locators": [
+        "PEcopies mapped/base400000; modO rawmemory, RVA=VA-400000. Runtimecopy e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef, static660447c293ce92270cb9b5815331bca976e8f156366e1fe50b217b6c12e60ce3, modOa08950c833d3acab8281049def7b3dc96b221f107eeda01da3a548e34b91dce5.",
+        "CP045 actualold queue/drain/gamebuffer/return13 reused; source-question ledger/currentrepo→boomkr-re→VN→boom-rs/l10n/archive, CP025sender13E14C0 alreadyoptional4bytegate. No endpoint/CRC/pickup/item rediscovery.",
+        "E8E960–E8E96C xorAL,AL/ret; 13byte equality source/static/runtimeA/runtimeB, observedgate0 explained. Consumer13E0FEF–13E1119 lengthminus2/output, realreturncaller125934B.",
+        "125937E actualtarget14EF010/vt17B0D18 only packetstreaminit; actualouterpump1257B61/vB4 target125DEF0/vt17927FC→receiver+F0/vfF4. DeepvfF4target/grammar stillunmeasured; intermediate130BC00probe didnot hit.",
+        "pump-stale R2sample6 wire2bee9f8cf7d5f12d3cbec10921e8d1c4e66ac1a10c1bf320b0b772417d9f0f9d, actualB9556→proxy41460→A9648; inner010100003b00015cc8009f00000043, output00003b00015cc8009f00000043.",
+        "Samecallback actor641E9198/slot1 secure+28state15→0/+4Cx120→200/+58y159same; native52A350/checksum bothsnapshots. NextcurrentR2sample8 x200→120, state0/y159same. Returnold1/current0 bothchangex; notaccepted/rejectedlabels.",
+        "No-replaypumpcontrol uses sameactor-pump.gdb24samples/input1sSpace/R2wait12s, harnessdiffonlyproxymode. Compare pre-inputactualBforwardbytes and securevalues, not UI orservergolden.",
+        "downstream-stale wrongprecallstackargs/read0xD/KR_STOP both; stage-control 2results thenlateAfreesactor/readFF00418B/KR_STOP. Preservefailedprobe separately fromcollectorerrorNone/protocolgoal.",
+        "CP045PR53merged6fe17b0, AUD014atCP044/nextperiodicCP048. Codexsolo/selfcheck/reviewwaived; no fullmatch/K5/K6a/LAN/Internet."
+      ],
+      "findings": [
+        {
+          "summary": "Gate E8E960 của build được đo là false stub; optional compare/read4byte không bật tại callsites đã kiểm. Tail consumer bỏ2byte và output13byte thực tế khớp payload sau selector/slot.",
+          "source": "kr_static",
+          "status": "confirmed",
+          "method": "static",
+          "canonical": "docs/PROTOCOL.md#udp-generation",
+          "limits": "Byte equality 8ranges/4artifacts, execution gate0/output chứng minh riêng; không toàn wire không epoch hoặc mọi branch.",
+          "evidence": [
+            "E017",
+            "E003",
+            "E018",
+            "E026"
+          ]
+        },
+        {
+          "summary": "ExactoldBdatagram vòng1 replay vòng2 đi qua queue/drain/game/output/packetstream và actualpumpcallback; cùng callback làm secure actor x120→200/y159same/state15→0. Nativegetter xác nhận, không chỉ queue admission.",
+          "source": "kr_runtime",
+          "status": "confirmed",
+          "method": "runtime",
+          "canonical": "docs/PROTOCOL.md#udp-generation",
+          "limits": "Một actualoldpacket/cùng endpoint/profile/copy Wine; không mọi build/mode hoặc serverauthority. R2bom/17 thiếu19/result là partial outcome riêng, không suy nguyên nhân chỉ từoldreplay.",
+          "evidence": [
+            "E254",
+            "E255",
+            "E049",
+            "E028",
+            "E025",
+            "E026"
+          ]
+        },
+        {
+          "summary": "Gói hiện tại kế tiếp sửa x200→120; control không replay cùng probe/input giữ x120/y159 ở các callback trước input đã match actualforward. Return0/1 không là accepted/rejected vì cả hai callback đổi field.",
+          "source": "kr_runtime",
+          "status": "confirmed",
+          "method": "runtime",
+          "canonical": "docs/PROTOCOL.md#udp-generation",
+          "limits": "Control chỉ các normalBdatagram đã đo trướcinput; không chứng minh toàn vòng/gameplay hoặc mọi validator.",
+          "evidence": [
+            "E320",
+            "E321",
+            "E049",
+            "E043"
+          ]
+        },
+        {
+          "summary": "Output caller125934B→14EF010 chỉ khởi tạo packetstream; outerpump1257B61/vB4→125DEF0 gọi receiver+F0/vfF4 mới là phạm vi callback có thay đổi actor. Nhánh130BC00 không quan sát hit trong control.",
+          "source": "kr_runtime",
+          "status": "confirmed",
+          "method": "runtime",
+          "canonical": "docs/PROTOCOL.md#udp-generation",
+          "limits": "Target vfF4 sâu hơn/layout/fieldfreshness còn unknown; bounded negative không kết luận nhánh130BC00 không bao giờ chạy.",
+          "evidence": [
+            "E026",
+            "E023",
+            "E044",
+            "E036",
+            "E175"
+          ]
+        },
+        {
+          "summary": "Tái sử dụng nguồn cũ và rawmatching, giữ hai probe lỗi với classification rõ; đọc actor có vtable phù hợp và reset observerpointer khiStart, không sửa actorstate để làm kiểm pass.",
+          "source": "kr_runtime",
+          "status": "confirmed",
+          "method": "runtime",
+          "canonical": "docs/PROTOCOL.md#udp-generation",
+          "limits": "ControllererrorNone không phủ lỗiGDB; kiểm cơ học không suy ngữ nghĩa hoặc đóng gate.",
+          "evidence": [
+            "E002",
+            "E034",
+            "E042",
+            "E001"
+          ]
+        }
+      ],
+      "verification": [
+        {
+          "check": "16623 mechanical checks/5sealedcontrollers/669nativepacket cases/2443secure snapshots; exactold/nativeoutput/callback/control/sourcehash/isolation/sequential verified.",
+          "result": "pass",
+          "evidence": [
+            "E043",
+            "E041",
+            "E050",
+            "E049"
+          ],
+          "limits": "Các relationship khai báo; lỗi probe và gameplay partial không bị nâng thành pass protocol/gate."
+        },
+        {
+          "check": "Native14A5860 actualUDP checksum,8ranges/4artifacts;12policyregressiontests/artifacts5/5;16images manuallyviewed withsourcehash.",
+          "result": "pass",
+          "evidence": [
+            "E029",
+            "E018",
+            "E051",
+            "E052",
+            "E058"
+          ],
+          "limits": "CRC/byte equality/UI không tự chứng minh semanticapply; actorproof dựa capturedsecurevalues/nativegetter. Emulation19D88D4 starts0/1A7E438 reset0perread, excludes periodic55-readrekey/5000callback/storage, no runtimeclientstatechange. Selfcheck, notindependentreview."
+        }
+      ],
+      "evidence": [
+        {
+          "id": "E001",
+          "kind": "repository",
+          "path": "docs/evidence/udp-actor/README.md",
+          "sha256": "972c49e6f39af1a28b18913304f800e7ca26c2a3ffb6d3241afe0afdd6b29521",
+          "bytes": 7493
+        },
+        {
+          "id": "E002",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/reuse-question.json",
+          "sha256": "b5bedd72fd30721c8b2680eb9a0d4cc3b2c72d842b31d886f57241c72acb0bda",
+          "bytes": 5094
+        },
+        {
+          "id": "E003",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/consumer-tail.asm",
+          "sha256": "ce8baf6810582e9509efbc8e3f603c9c6fdb620b7808346f84aef0b31b3e8d5f",
+          "bytes": 4907
+        },
+        {
+          "id": "E004",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/caller-window.asm",
+          "sha256": "98222f488184b97f987e451af9ddb91448eeebc1bdbf6ee246fb6523f1a7d93e",
+          "bytes": 3538
+        },
+        {
+          "id": "E005",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/run_probe.py",
+          "sha256": "240044006650fbe879ad052d52fca930561b3f0b0f0405ea0cc8b9f2c8309aaf",
+          "bytes": 1065
+        },
+        {
+          "id": "E006",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/seal_run.py",
+          "sha256": "00d5f9114184dcfee93eef0eb37586148d5b921b517c66e6f7202aacf3ed0238",
+          "bytes": 623
+        },
+        {
+          "id": "E007",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/derive_roles.py",
+          "sha256": "ebccd5431aedb9a3c26d1abd33b73e315034f56bf968fbe0bc3a412d5bd57e0d",
+          "bytes": 804
+        },
+        {
+          "id": "E008",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/replay-run.py",
+          "sha256": "7e40139e8fe430f5ae7535118bd9e16433494870dadebb3c4032c7bcf3be913c",
+          "bytes": 3000
+        },
+        {
+          "id": "E009",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/native_packets.py",
+          "sha256": "13ef70ec737d8c9a98afc5485f5ac3905f8a1c5d3ea2d1afbf5d8f70aa08349c",
+          "bytes": 4765
+        },
+        {
+          "id": "E010",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/parse_fields.py",
+          "sha256": "83668db03ec3ae0d7b459daf8f3cfda175cb6ef0012937f8e66b8934a649739d",
+          "bytes": 3873
+        },
+        {
+          "id": "E011",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/native_udp.py",
+          "sha256": "64f263623b5d6e541b7115ae41597d4929b21c9897e4e4c0c48f7cb67b205ca2",
+          "bytes": 1534
+        },
+        {
+          "id": "E012",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/parse_runtime.py",
+          "sha256": "7ab38a7bea014e75cf9d4d9ab163553ead73b3bfe0f40f9bf0951328e5229990",
+          "bytes": 4848
+        },
+        {
+          "id": "E013",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/actor.gdb",
+          "sha256": "df34b1a534e29ff15fead22325a60d7ee7bc6c3fee93f05401a97a7512f8be41",
+          "bytes": 20143
+        },
+        {
+          "id": "E014",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/downstream-stale-recipe.json",
+          "sha256": "77f0f5772f328341ec441d8783bedb18434e0dbf240d2dc201929ec6ae3f8c42",
+          "bytes": 995
+        },
+        {
+          "id": "E015",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/downstream-stale-launcher.log",
+          "sha256": "7a0b0e5f76f3c2eb91793ca0eb40f8c9f622d875cac808852429b19dc5dd32ed",
+          "bytes": 141536
+        },
+        {
+          "id": "E016",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/actor-fixed.gdb",
+          "sha256": "c791539f2df90b3db68381d7dd9407db2cb6dba07cd390ff10dc3113b94f993e",
+          "bytes": 20171
+        },
+        {
+          "id": "E017",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/gate-E8E960.asm",
+          "sha256": "37637756789b39c060932990e47ac467a9d05c14908b15f550d557f554b86edd",
+          "bytes": 479
+        },
+        {
+          "id": "E018",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/code-match.json",
+          "sha256": "1106bad529330a6d0442a284eda5c0fc43639af64b0a9bc0f403abe423ee046a",
+          "bytes": 2151
+        },
+        {
+          "id": "E019",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/parse_downstream.py",
+          "sha256": "310c42b20269bdafa23de6fc59c3c56313fe70feb24af207d8826129b38f7f59",
+          "bytes": 2634
+        },
+        {
+          "id": "E020",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/downstream-stale-hashes.json",
+          "sha256": "84cb6758db03ec46783d5126e8e93d5224a86995dc9a8b3cc1525680f19fd511",
+          "bytes": 142323
+        },
+        {
+          "id": "E021",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/downstream-fixed-recipe.json",
+          "sha256": "486f19297be4a91034fbde3236a2caee825be7cda5f3d6d30129e3d9719f5e1d",
+          "bytes": 1001
+        },
+        {
+          "id": "E022",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/downstream-fixed-launcher.log",
+          "sha256": "21b63560fc0c5cdc20b5066885d883af56a8baf3fd442153f7eafb6a03cb4deb",
+          "bytes": 287944
+        },
+        {
+          "id": "E023",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/14EF010.asm",
+          "sha256": "53a73daa5d0ba8b0f4bb890b1d0fed4a369e3b96a52308244d752f491b8baa96",
+          "bytes": 1553
+        },
+        {
+          "id": "E024",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/actor-stage.gdb",
+          "sha256": "80907fa422d1a5abab5c19d488f3173b80608f6a9191634154b2860b2bdbd03d",
+          "bytes": 21137
+        },
+        {
+          "id": "E025",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/runtime-summary.json",
+          "sha256": "42616fb992c757e396ffb8b4dbdc87ca23ffe15a65797d394f5e9fa8beb9c836",
+          "bytes": 1088883
+        },
+        {
+          "id": "E026",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/downstream-summary.json",
+          "sha256": "6a32fffe364f6001ba659d16ab5ec9eb6d6ada76f2f8c133330c14efb9a36de5",
+          "bytes": 159492
+        },
+        {
+          "id": "E027",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/native-packets.json",
+          "sha256": "e96fb9c55e1f7266564da4f0ff0aa13ee7fe1ce7cd62a6e5f0958df4c79a45d0",
+          "bytes": 284483
+        },
+        {
+          "id": "E028",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/actor-fields.json",
+          "sha256": "e8ced0a642f89f9f7cfe93b690bf22513994fe7816e8a0432b4b4dcb2ba28b9c",
+          "bytes": 1647944
+        },
+        {
+          "id": "E029",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/native-udp.json",
+          "sha256": "9fa40a7a65119f327bbf7092b8e326095a60161bb3b6f07cf88e97ddc91e28fd",
+          "bytes": 115158
+        },
+        {
+          "id": "E030",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/downstream-fixed-hashes.json",
+          "sha256": "8263865976eb7d87e062aab952f3c7dbbfbe5e9e91b0b826b1a63eefc3b675c2",
+          "bytes": 215766
+        },
+        {
+          "id": "E031",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/stage-control-recipe.json",
+          "sha256": "c663026eb06b42d2a7595b6279bb783f8f1875a6d3e04d5912d3f1ce79dd3490",
+          "bytes": 997
+        },
+        {
+          "id": "E032",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/stage-control-launcher.log",
+          "sha256": "12144e67f1a17dd001274fc3c88d723515875cc9658e7a64481836ded3efd016",
+          "bytes": 193423
+        },
+        {
+          "id": "E033",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/actor-stage-lite.gdb",
+          "sha256": "f287e8fbb41b19187c9a130d286694fcf006cc11a25da79fef8197f6ca8ef661",
+          "bytes": 21137
+        },
+        {
+          "id": "E034",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/measurement-notes.json",
+          "sha256": "4f0b8c875285faa6b849de4eefea2826214884db41fccc1d60cace2a49d35222",
+          "bytes": 4519
+        },
+        {
+          "id": "E035",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/outer-caller-window.asm",
+          "sha256": "38cdce872d36a0fbffc545b371c62414832c7e6a72579483717b096724c32095",
+          "bytes": 747
+        },
+        {
+          "id": "E036",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/pump-caller-window.asm",
+          "sha256": "d297196cf1d0b1a9f592d299e415401ec7b5a9e922d3685048ca1878441213e0",
+          "bytes": 5677
+        },
+        {
+          "id": "E037",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/stage-control-hashes.json",
+          "sha256": "0ed25953eaf2d692085d55d691fffe749badd8a3324b9b35f6cade97bca60f16",
+          "bytes": 218105
+        },
+        {
+          "id": "E038",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/actor-pump.gdb",
+          "sha256": "c8a2f517251f739f7da041107ab5753682a8c2b7efb2e20cefdf807de23cae18",
+          "bytes": 21231
+        },
+        {
+          "id": "E039",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/pump-stale-recipe.json",
+          "sha256": "3166548981b86d999a0eeb6017fc572818286b97e99f857461cd0b87e45181bf",
+          "bytes": 985
+        },
+        {
+          "id": "E040",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/pump-stale-launcher.log",
+          "sha256": "d92da39ec30c2e8e6fc454916886072e61c04fe53be70ab4eb85795d61ea5fe2",
+          "bytes": 369932
+        },
+        {
+          "id": "E041",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/verify.py",
+          "sha256": "9cbac0093307f933d83b89940055e15686e76426d53a5d8ee5119c763ac41731",
+          "bytes": 6208
+        },
+        {
+          "id": "E042",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/runtime-metrics.json",
+          "sha256": "a912060423f023ebab7e7cf00aba12c4a4521775eaf02a5370947b961023c743",
+          "bytes": 1857
+        },
+        {
+          "id": "E043",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/verification.json",
+          "sha256": "d2d1fc5fede0f7ea69c68174f88baee9bc128766ce567a5ce249f332c3e98e85",
+          "bytes": 250
+        },
+        {
+          "id": "E044",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/125DEF0-prefix.asm",
+          "sha256": "5b2607b482380ce337594a56256da2c2d2d2e01ec23802fa171bb8566d0f7ca9",
+          "bytes": 1530
+        },
+        {
+          "id": "E045",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/pump-stale-hashes.json",
+          "sha256": "e8b68777e55ef30cc7c43f8b92a0348c625192b0eb1adce9734d2deb3e874fe4",
+          "bytes": 232980
+        },
+        {
+          "id": "E046",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/pump-control-recipe.json",
+          "sha256": "1aefdaa61c3c2ee981319944d07f805d3d83f603c3b9cf41a39c90ac7ebe67cb",
+          "bytes": 991
+        },
+        {
+          "id": "E047",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/pump-control-launcher.log",
+          "sha256": "21a18698819d6122b4681f97feb19cc2e51524ad13e41c13dfd10fe01adec454",
+          "bytes": 241240
+        },
+        {
+          "id": "E048",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/match_code.py",
+          "sha256": "0bed1504ebea41d3b758ca75296d3611c8db3afb8a95b12b24beeae284ff9c54",
+          "bytes": 1176
+        },
+        {
+          "id": "E049",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/actor-apply.json",
+          "sha256": "9b927df8ed547be05cca4507a79001ce12b92ad26d45c874495aca0bb127da67",
+          "bytes": 10824
+        },
+        {
+          "id": "E050",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/summarize_apply.py",
+          "sha256": "12b0f7eeec1550305d4e755ba40df6d671bd58cfe5250e7c816afdd5c6858650",
+          "bytes": 2962
+        },
+        {
+          "id": "E051",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/policy-tests.txt",
+          "sha256": "72f09eca554e87a45b7156c6109520cf15e8b6ec157dc5c033610649b49b8698",
+          "bytes": 111
+        },
+        {
+          "id": "E052",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/artifact-verification.txt",
+          "sha256": "649c6624aa6d317dfc1db5e16fea683cfbc9d9cf4dd3df11c0d70e57409054a0",
+          "bytes": 253
+        },
+        {
+          "id": "E053",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/finish_checkpoint.py",
+          "sha256": "2b8861a9e496fae8910955770af0c9972c32b8ebdd42ea4f256b9c3e7162bdd3",
+          "bytes": 11048
+        },
+        {
+          "id": "E054",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/pump-control-hashes.json",
+          "sha256": "a58ce3369c6cf9675f77fae249532b246348531f4ef62b53bb9e41fd727e07bc",
+          "bytes": 239371
+        },
+        {
+          "id": "E055",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/getter-tail.asm",
+          "sha256": "8f5f2314967c387b5bd292c77e6e199abd8515b66c3e3a1a78269a4c2e0aa0be",
+          "bytes": 2501
+        },
+        {
+          "id": "E056",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/pump-stale-visual.png",
+          "sha256": "eba11c02b81b7e4a132d4dd0f22fb00461dac7902d2b3e052be211e0d821b27d",
+          "bytes": 569968
+        },
+        {
+          "id": "E057",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/pump-control-visual.png",
+          "sha256": "c9e54b80685bd2665a7b766a5b4ec9e83bff7534c9dba9641efd8a6dd7db41de",
+          "bytes": 528453
+        },
+        {
+          "id": "E058",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/visual-index.json",
+          "sha256": "0c3d75e3d6ccef3768300f9dde75d4f8f5cfde96e25a34ac9535dfc0bdf45993",
+          "bytes": 3443
+        },
+        {
+          "id": "E059",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/downstream-stale/run.json",
+          "sha256": "7802ccf595aad631808ab85b95fb7b5cbaa2be24867ea029cbdd700aed9e4c5b",
+          "bytes": 187152
+        },
+        {
+          "id": "E060",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/downstream-stale/client.log",
+          "sha256": "258ee26f77cb214e8c69f1f0ebf542959851ae9052c1d3d87ea479b977e8310b",
+          "bytes": 102991
+        },
+        {
+          "id": "E061",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/downstream-stale/client-B.log",
+          "sha256": "9daa9dadb2c6b0723a1260194bf1c796117050cb5ef3d7e1a5540f2b387c7648",
+          "bytes": 107580
+        },
+        {
+          "id": "E062",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/downstream-stale/A-ready110-73.bin",
+          "sha256": "8fafd9cf652b458ee09b3751a0201f9ab1409920398e0e842e43b915c8840e25",
+          "bytes": 44
+        },
+        {
+          "id": "E063",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/downstream-stale/B-ready110-73.bin",
+          "sha256": "8fafd9cf652b458ee09b3751a0201f9ab1409920398e0e842e43b915c8840e25",
+          "bytes": 44
+        },
+        {
+          "id": "E064",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/downstream-stale/A-floor582-76.bin",
+          "sha256": "9001468072b5ca6e05400891cfd72a5f50549b84806907c1e43b4a350676557b",
+          "bytes": 54
+        },
+        {
+          "id": "E065",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/downstream-stale/A-start121-r1-79.bin",
+          "sha256": "f8a824335b4079160a4aaf0e0b425d1fabfa78c248d131503440d0414e1f26cf",
+          "bytes": 167
+        },
+        {
+          "id": "E066",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/downstream-stale/B-floor582-76.bin",
+          "sha256": "9001468072b5ca6e05400891cfd72a5f50549b84806907c1e43b4a350676557b",
+          "bytes": 54
+        },
+        {
+          "id": "E067",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/downstream-stale/B-start121-r1-79.bin",
+          "sha256": "f8a824335b4079160a4aaf0e0b425d1fabfa78c248d131503440d0414e1f26cf",
+          "bytes": 167
+        },
+        {
+          "id": "E068",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/downstream-stale/A-go197-82.bin",
+          "sha256": "64b95010ecb0e40bc0367f41f6710d2357fb2538ce827e205825284601237ef8",
+          "bytes": 52
+        },
+        {
+          "id": "E069",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/downstream-stale/B-go197-82.bin",
+          "sha256": "64b95010ecb0e40bc0367f41f6710d2357fb2538ce827e205825284601237ef8",
+          "bytes": 52
+        },
+        {
+          "id": "E070",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/downstream-stale/A-play196-85.bin",
+          "sha256": "d04bf155b4847f9d41b0edfdf00a32526302273271c0f1cadbb8ce22b89eb51d",
+          "bytes": 45
+        },
+        {
+          "id": "E071",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/downstream-stale/B-play196-85.bin",
+          "sha256": "d04bf155b4847f9d41b0edfdf00a32526302273271c0f1cadbb8ce22b89eb51d",
+          "bytes": 45
+        },
+        {
+          "id": "E072",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/downstream-stale/A-peer153-88.bin",
+          "sha256": "1248b8cfd9ff359ad51329620eccedbfd7920db1e30f279938c8a4fd5c4b4e2e",
+          "bytes": 135
+        },
+        {
+          "id": "E073",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/downstream-stale/B-peer153-88.bin",
+          "sha256": "7707e89aac71152b0b4b244e2b5e0ca9fe764cfb91f286349920aa34cd2abecc",
+          "bytes": 135
+        },
+        {
+          "id": "E074",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/downstream-stale/A-dynamic159-r1-1.bin",
+          "sha256": "ce45fc947aabc22d29d1361e7f576818a1665b9a9f617af2c2cec7116d89591e",
+          "bytes": 77
+        },
+        {
+          "id": "E075",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/downstream-stale/B-dynamic159-r1-1.bin",
+          "sha256": "ce45fc947aabc22d29d1361e7f576818a1665b9a9f617af2c2cec7116d89591e",
+          "bytes": 77
+        },
+        {
+          "id": "E076",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/downstream-stale/A-blast158-r1-1.bin",
+          "sha256": "31e41726c0deaa834ef2fa20813c84199f3f94023a8f3b7d0f64f9d5241eede1",
+          "bytes": 51
+        },
+        {
+          "id": "E077",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/downstream-stale/B-blast158-r1-1.bin",
+          "sha256": "31e41726c0deaa834ef2fa20813c84199f3f94023a8f3b7d0f64f9d5241eede1",
+          "bytes": 51
+        },
+        {
+          "id": "E078",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/downstream-stale/B-event170-17-r1-97.bin",
+          "sha256": "02b5985a867bc19e3bb91236bc8816d3f6f25bc4f8c5f7bddba4579c9a56e15b",
+          "bytes": 48
+        },
+        {
+          "id": "E079",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/downstream-stale/B-event170-19-r1-100.bin",
+          "sha256": "bd8bf772c0329942ba758585caf140131b8b59be9138cb03a2c34fd4d1ba22b3",
+          "bytes": 59
+        },
+        {
+          "id": "E080",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/downstream-stale/A-rank175-r1-97.bin",
+          "sha256": "6be30231b79508f47dfe49eaf4b8d6c1fe69ae1e8976654096d7eb50ae1f47f7",
+          "bytes": 340
+        },
+        {
+          "id": "E081",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/downstream-stale/B-rank175-r1-103.bin",
+          "sha256": "8f755c898994d478f38d2b807ece591b2ad2d1da7c950eba60859a5e338aa315",
+          "bytes": 340
+        },
+        {
+          "id": "E082",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/downstream-stale/A-return180-r1-100.bin",
+          "sha256": "1560d1178af0e8cea05c74affdc46a79d86c425250a71210b94da25e4073df4a",
+          "bytes": 41
+        },
+        {
+          "id": "E083",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/downstream-stale/B-return180-r1-106.bin",
+          "sha256": "6a49bc7222df4957e03d3ebe2382217d1988daab1844150f76558baf634da81b",
+          "bytes": 41
+        },
+        {
+          "id": "E084",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/downstream-stale/A-host110-r1-103.bin",
+          "sha256": "f8c269431038bc985afb79961f89b6e2509d0829ed8046e397aa5acfb962c596",
+          "bytes": 44
+        },
+        {
+          "id": "E085",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/downstream-stale/A-guest110-r1-106.bin",
+          "sha256": "34aa966e0eef0cee7af15360322ee98baf2f023eb2b8528674b6115d7889a313",
+          "bytes": 44
+        },
+        {
+          "id": "E086",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/downstream-stale/B-host110-r1-109.bin",
+          "sha256": "1464734628e1b0aa271c48a50c2ed3ceb0fb0d4ba99dac113b20b2ea74dc0d7e",
+          "bytes": 44
+        },
+        {
+          "id": "E087",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/downstream-stale/B-guest110-r1-112.bin",
+          "sha256": "5459dc7d1e715e0523e24981ce67a04e72b6949c2274e3cc6b7577cf62fe6a9d",
+          "bytes": 44
+        },
+        {
+          "id": "E088",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/downstream-stale/A-ready110-109.bin",
+          "sha256": "d61e0dec5dd42f6d9359359420df2fed9723478d5554aebb09cb7fa7d9ca1754",
+          "bytes": 44
+        },
+        {
+          "id": "E089",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/downstream-stale/B-ready110-115.bin",
+          "sha256": "71ab3449f204c7354574438ac4952909165942f1abaf832f65a4463c57f8a476",
+          "bytes": 44
+        },
+        {
+          "id": "E090",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/downstream-stale/A-floor582-112.bin",
+          "sha256": "3de167f2b9fd7e539a43e320113a3504ec5d160adc35bf04bedc1c5f1bb1e636",
+          "bytes": 54
+        },
+        {
+          "id": "E091",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/downstream-stale/A-start121-r2-115.bin",
+          "sha256": "2c2f633223459f50f3c83b215e3438d816637d3fcedf6adc5177f166c3f45901",
+          "bytes": 167
+        },
+        {
+          "id": "E092",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/downstream-stale/B-floor582-118.bin",
+          "sha256": "7506dfc711c0914f95893c307a778b093e45b31b226e4e457a6678c9e7ad7afb",
+          "bytes": 54
+        },
+        {
+          "id": "E093",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/downstream-stale/B-start121-r2-121.bin",
+          "sha256": "90884970c6bbda9491a5a3408cea9f6d47a3b1e0019b1aefd6d83b2764810fec",
+          "bytes": 167
+        },
+        {
+          "id": "E094",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/downstream-stale/A-go197-118.bin",
+          "sha256": "aa70380f2f8ac732b32002b998ecd874353865d9e3853102c01a72d06b327970",
+          "bytes": 52
+        },
+        {
+          "id": "E095",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/downstream-stale/B-go197-124.bin",
+          "sha256": "94f616295ccb42b1d65f119531b5965ade54edc4e9034b76dbf7c2d89697e0e9",
+          "bytes": 52
+        },
+        {
+          "id": "E096",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/downstream-stale/B-play196-127.bin",
+          "sha256": "010276ee96d43eb798c4cbd8f0d661c416e8d7faa30a083f459303b635c75c2f",
+          "bytes": 45
+        },
+        {
+          "id": "E097",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/downstream-stale/A-play196-121.bin",
+          "sha256": "c36a9aaa4674958645f4db690772261f39607eb5fb712a80827259d710da962d",
+          "bytes": 45
+        },
+        {
+          "id": "E098",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/downstream-stale/B-peer153-130.bin",
+          "sha256": "0d618e5ad51069bc2a4482a94ebcc387efe8623c31d9283c36a7f148d3d9779f",
+          "bytes": 135
+        },
+        {
+          "id": "E099",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/downstream-stale/A-peer153-124.bin",
+          "sha256": "6729d14b78685a3de9885d71e06af1ef555fc07b7b047636a407b0aa0aca055a",
+          "bytes": 135
+        },
+        {
+          "id": "E100",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/request-frames/downstream-stale/A-F53-118.bin",
+          "sha256": "f55761bfc13503280ca707bfe41967c020819722ae55a82056a218edf4669186",
+          "bytes": 60
+        },
+        {
+          "id": "E101",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/request-frames/downstream-stale/A-F65-127.bin",
+          "sha256": "729894cf9109a51cda9b966e09307432f8ec99bfbbad33c499ec5511eede59c3",
+          "bytes": 70
+        },
+        {
+          "id": "E102",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/request-frames/downstream-stale/A-F77-127.bin",
+          "sha256": "1efbe6255ebf4536a2c7c903a258da07ea63bc1a88d38289e8f96e8e19b27d91",
+          "bytes": 67
+        },
+        {
+          "id": "E103",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/request-frames/downstream-stale/B-F13-82.bin",
+          "sha256": "1746130345929e482c425aa463e6bf34d6da555c86c6474cf235330227f74f47",
+          "bytes": 49
+        },
+        {
+          "id": "E104",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/request-frames/downstream-stale/B-F24-95.bin",
+          "sha256": "730e662309a1a5abb7556e5f500168850ae220a9b7f288c1c62d18904206398c",
+          "bytes": 98
+        },
+        {
+          "id": "E105",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/request-frames/downstream-stale/B-F66-127.bin",
+          "sha256": "3ca09b78f88ddad6b49469ad6891d557e7ff0d719f14b7ab39b3ad483f7f4dd3",
+          "bytes": 52
+        },
+        {
+          "id": "E106",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/request-frames/downstream-stale/B-F69-127.bin",
+          "sha256": "68898cc291c14a77a084f197168473c8f2725fd5aa494fd2c826466658b5c4dd",
+          "bytes": 52
+        },
+        {
+          "id": "E107",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/request-frames/downstream-stale/B-F71-127.bin",
+          "sha256": "88af521665b69fe290972965eb0c1efd21117bde588f4c4df3cbd62f7719e1d1",
+          "bytes": 52
+        },
+        {
+          "id": "E108",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/request-frames/downstream-stale/B-F74-127.bin",
+          "sha256": "7bdc35d4fd817facc90d11fb75af3a6cd90ac21108310a735211782040b4f94f",
+          "bytes": 52
+        },
+        {
+          "id": "E109",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/request-frames/downstream-stale/B-F76-127.bin",
+          "sha256": "389d31f83297f23a92746340d7b64975f29ccb8a1e5b4a5ef224602e9def6077",
+          "bytes": 52
+        },
+        {
+          "id": "E110",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/request-frames/downstream-stale/B-F78-127.bin",
+          "sha256": "bcaac02ef880b5a71e62801802945ff92c5c1a31b9cfd441d0576588c9394e74",
+          "bytes": 52
+        },
+        {
+          "id": "E111",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/request-frames/downstream-stale/B-F97-95.bin",
+          "sha256": "62823c4526e92e5b9f645ca79d3e9613aa5bc6a51809ead9cc556648cf20ccb3",
+          "bytes": 382
+        },
+        {
+          "id": "E112",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/derived/downstream-stale-A-replay.txt",
+          "sha256": "0a5fa52362e224b40afe7399522466e1130775fad59daea11e34ea2b33d51c5c",
+          "bytes": 2819
+        },
+        {
+          "id": "E113",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/derived/downstream-stale-A-oracle.json",
+          "sha256": "9104645ff9df73516ebbb14a1aa268e6f1a016f534d3f3746f63ce1bfc014fbb",
+          "bytes": 173554
+        },
+        {
+          "id": "E114",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/derived/downstream-stale-B-replay.txt",
+          "sha256": "69a53ec4fb491dc4b89e7d0c55bbe333a0b8a221cc16a8700764f147e1c9598f",
+          "bytes": 2628
+        },
+        {
+          "id": "E115",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/derived/downstream-stale-B-oracle.json",
+          "sha256": "b82131eec2e8b93ee94efa3d99850f6aab3028fb1d2c4bfc6f2ea677595207cd",
+          "bytes": 160990
+        },
+        {
+          "id": "E116",
+          "kind": "local",
+          "path": "local/research/codex/wine_probe_udp_centered_stale.py",
+          "sha256": "c5b0d17c415c2ec419c595e6e5d7d158cb4f1daadadee89a4e5fb3c24eee686a",
+          "bytes": 68058
+        },
+        {
+          "id": "E117",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/downstream-fixed/run.json",
+          "sha256": "537bf08de0ec70d1a30f1c3ed8571924dc15864def0e5ef015be9d627707de6c",
+          "bytes": 385394
+        },
+        {
+          "id": "E118",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/downstream-fixed/client.log",
+          "sha256": "9c8220575edd94b89cf22fa918c86fb5f8c67627e3d4a2c91632083158f6226c",
+          "bytes": 279780
+        },
+        {
+          "id": "E119",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/downstream-fixed/client-B.log",
+          "sha256": "8ebe8dfd318cf4325df1d5bb09004c5d2470873fb1d216f161fc7cb7183a1025",
+          "bytes": 267808
+        },
+        {
+          "id": "E120",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/downstream-fixed/A-ready110-73.bin",
+          "sha256": "8fafd9cf652b458ee09b3751a0201f9ab1409920398e0e842e43b915c8840e25",
+          "bytes": 44
+        },
+        {
+          "id": "E121",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/downstream-fixed/B-ready110-73.bin",
+          "sha256": "8fafd9cf652b458ee09b3751a0201f9ab1409920398e0e842e43b915c8840e25",
+          "bytes": 44
+        },
+        {
+          "id": "E122",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/downstream-fixed/A-floor582-76.bin",
+          "sha256": "9001468072b5ca6e05400891cfd72a5f50549b84806907c1e43b4a350676557b",
+          "bytes": 54
+        },
+        {
+          "id": "E123",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/downstream-fixed/A-start121-r1-79.bin",
+          "sha256": "f8a824335b4079160a4aaf0e0b425d1fabfa78c248d131503440d0414e1f26cf",
+          "bytes": 167
+        },
+        {
+          "id": "E124",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/downstream-fixed/B-floor582-76.bin",
+          "sha256": "9001468072b5ca6e05400891cfd72a5f50549b84806907c1e43b4a350676557b",
+          "bytes": 54
+        },
+        {
+          "id": "E125",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/downstream-fixed/B-start121-r1-79.bin",
+          "sha256": "f8a824335b4079160a4aaf0e0b425d1fabfa78c248d131503440d0414e1f26cf",
+          "bytes": 167
+        },
+        {
+          "id": "E126",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/downstream-fixed/A-go197-82.bin",
+          "sha256": "64b95010ecb0e40bc0367f41f6710d2357fb2538ce827e205825284601237ef8",
+          "bytes": 52
+        },
+        {
+          "id": "E127",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/downstream-fixed/B-go197-82.bin",
+          "sha256": "64b95010ecb0e40bc0367f41f6710d2357fb2538ce827e205825284601237ef8",
+          "bytes": 52
+        },
+        {
+          "id": "E128",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/downstream-fixed/A-play196-85.bin",
+          "sha256": "d04bf155b4847f9d41b0edfdf00a32526302273271c0f1cadbb8ce22b89eb51d",
+          "bytes": 45
+        },
+        {
+          "id": "E129",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/downstream-fixed/B-play196-85.bin",
+          "sha256": "d04bf155b4847f9d41b0edfdf00a32526302273271c0f1cadbb8ce22b89eb51d",
+          "bytes": 45
+        },
+        {
+          "id": "E130",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/downstream-fixed/A-peer153-88.bin",
+          "sha256": "ee5b922a05c2a527ab94aabe8b46bff4572598c496cc66074b80da7f3611bc90",
+          "bytes": 135
+        },
+        {
+          "id": "E131",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/downstream-fixed/B-peer153-88.bin",
+          "sha256": "a74eae3bcdb5352387c6709fe2dc7fbe58feb3daf599cb7631853d11e7381bd3",
+          "bytes": 135
+        },
+        {
+          "id": "E132",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/downstream-fixed/A-dynamic159-r1-1.bin",
+          "sha256": "ce45fc947aabc22d29d1361e7f576818a1665b9a9f617af2c2cec7116d89591e",
+          "bytes": 77
+        },
+        {
+          "id": "E133",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/downstream-fixed/B-dynamic159-r1-1.bin",
+          "sha256": "ce45fc947aabc22d29d1361e7f576818a1665b9a9f617af2c2cec7116d89591e",
+          "bytes": 77
+        },
+        {
+          "id": "E134",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/downstream-fixed/A-blast158-r1-1.bin",
+          "sha256": "31e41726c0deaa834ef2fa20813c84199f3f94023a8f3b7d0f64f9d5241eede1",
+          "bytes": 51
+        },
+        {
+          "id": "E135",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/downstream-fixed/B-blast158-r1-1.bin",
+          "sha256": "31e41726c0deaa834ef2fa20813c84199f3f94023a8f3b7d0f64f9d5241eede1",
+          "bytes": 51
+        },
+        {
+          "id": "E136",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/downstream-fixed/B-event170-17-r1-97.bin",
+          "sha256": "02b5985a867bc19e3bb91236bc8816d3f6f25bc4f8c5f7bddba4579c9a56e15b",
+          "bytes": 48
+        },
+        {
+          "id": "E137",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/downstream-fixed/B-event170-19-r1-100.bin",
+          "sha256": "bd8bf772c0329942ba758585caf140131b8b59be9138cb03a2c34fd4d1ba22b3",
+          "bytes": 59
+        },
+        {
+          "id": "E138",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/downstream-fixed/A-rank175-r1-97.bin",
+          "sha256": "6be30231b79508f47dfe49eaf4b8d6c1fe69ae1e8976654096d7eb50ae1f47f7",
+          "bytes": 340
+        },
+        {
+          "id": "E139",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/downstream-fixed/B-rank175-r1-103.bin",
+          "sha256": "8f755c898994d478f38d2b807ece591b2ad2d1da7c950eba60859a5e338aa315",
+          "bytes": 340
+        },
+        {
+          "id": "E140",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/downstream-fixed/A-return180-r1-100.bin",
+          "sha256": "1560d1178af0e8cea05c74affdc46a79d86c425250a71210b94da25e4073df4a",
+          "bytes": 41
+        },
+        {
+          "id": "E141",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/downstream-fixed/B-return180-r1-106.bin",
+          "sha256": "6a49bc7222df4957e03d3ebe2382217d1988daab1844150f76558baf634da81b",
+          "bytes": 41
+        },
+        {
+          "id": "E142",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/downstream-fixed/A-host110-r1-103.bin",
+          "sha256": "f8c269431038bc985afb79961f89b6e2509d0829ed8046e397aa5acfb962c596",
+          "bytes": 44
+        },
+        {
+          "id": "E143",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/downstream-fixed/A-guest110-r1-106.bin",
+          "sha256": "34aa966e0eef0cee7af15360322ee98baf2f023eb2b8528674b6115d7889a313",
+          "bytes": 44
+        },
+        {
+          "id": "E144",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/downstream-fixed/B-host110-r1-109.bin",
+          "sha256": "1464734628e1b0aa271c48a50c2ed3ceb0fb0d4ba99dac113b20b2ea74dc0d7e",
+          "bytes": 44
+        },
+        {
+          "id": "E145",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/downstream-fixed/B-guest110-r1-112.bin",
+          "sha256": "5459dc7d1e715e0523e24981ce67a04e72b6949c2274e3cc6b7577cf62fe6a9d",
+          "bytes": 44
+        },
+        {
+          "id": "E146",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/downstream-fixed/A-ready110-109.bin",
+          "sha256": "d61e0dec5dd42f6d9359359420df2fed9723478d5554aebb09cb7fa7d9ca1754",
+          "bytes": 44
+        },
+        {
+          "id": "E147",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/downstream-fixed/B-ready110-115.bin",
+          "sha256": "71ab3449f204c7354574438ac4952909165942f1abaf832f65a4463c57f8a476",
+          "bytes": 44
+        },
+        {
+          "id": "E148",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/downstream-fixed/A-floor582-112.bin",
+          "sha256": "3de167f2b9fd7e539a43e320113a3504ec5d160adc35bf04bedc1c5f1bb1e636",
+          "bytes": 54
+        },
+        {
+          "id": "E149",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/downstream-fixed/A-start121-r2-115.bin",
+          "sha256": "2c2f633223459f50f3c83b215e3438d816637d3fcedf6adc5177f166c3f45901",
+          "bytes": 167
+        },
+        {
+          "id": "E150",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/downstream-fixed/B-floor582-118.bin",
+          "sha256": "7506dfc711c0914f95893c307a778b093e45b31b226e4e457a6678c9e7ad7afb",
+          "bytes": 54
+        },
+        {
+          "id": "E151",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/downstream-fixed/B-start121-r2-121.bin",
+          "sha256": "90884970c6bbda9491a5a3408cea9f6d47a3b1e0019b1aefd6d83b2764810fec",
+          "bytes": 167
+        },
+        {
+          "id": "E152",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/downstream-fixed/A-go197-118.bin",
+          "sha256": "aa70380f2f8ac732b32002b998ecd874353865d9e3853102c01a72d06b327970",
+          "bytes": 52
+        },
+        {
+          "id": "E153",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/downstream-fixed/B-go197-124.bin",
+          "sha256": "94f616295ccb42b1d65f119531b5965ade54edc4e9034b76dbf7c2d89697e0e9",
+          "bytes": 52
+        },
+        {
+          "id": "E154",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/downstream-fixed/A-play196-121.bin",
+          "sha256": "c36a9aaa4674958645f4db690772261f39607eb5fb712a80827259d710da962d",
+          "bytes": 45
+        },
+        {
+          "id": "E155",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/downstream-fixed/B-play196-127.bin",
+          "sha256": "010276ee96d43eb798c4cbd8f0d661c416e8d7faa30a083f459303b635c75c2f",
+          "bytes": 45
+        },
+        {
+          "id": "E156",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/downstream-fixed/B-peer153-130.bin",
+          "sha256": "7ada545c34c36ce35f4dc993caf75ebdad19bc32c28693ea3a06c6c3f1814b35",
+          "bytes": 135
+        },
+        {
+          "id": "E157",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/downstream-fixed/A-peer153-124.bin",
+          "sha256": "805e261577c0882ea372bc64ccaf36f0d6b081c925bfea0f8505c9d153411a66",
+          "bytes": 135
+        },
+        {
+          "id": "E158",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/request-frames/downstream-fixed/A-F51-118.bin",
+          "sha256": "3c44e079b280b130ac8da3c38f393e69fe477e15ecbc503e917f1591e900e5ff",
+          "bytes": 60
+        },
+        {
+          "id": "E159",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/request-frames/downstream-fixed/A-F63-127.bin",
+          "sha256": "5214369578e341bc10ba917ba95cf5ea53e8a202e27212a5a04fcf0139e4b92b",
+          "bytes": 70
+        },
+        {
+          "id": "E160",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/request-frames/downstream-fixed/A-F74-127.bin",
+          "sha256": "bdfd84563f565de46eab316e12f9f9a0c429e2c0bf84fdb8de8cbde468a61fa6",
+          "bytes": 67
+        },
+        {
+          "id": "E161",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/request-frames/downstream-fixed/B-F13-82.bin",
+          "sha256": "1746130345929e482c425aa463e6bf34d6da555c86c6474cf235330227f74f47",
+          "bytes": 49
+        },
+        {
+          "id": "E162",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/request-frames/downstream-fixed/B-F24-95.bin",
+          "sha256": "730e662309a1a5abb7556e5f500168850ae220a9b7f288c1c62d18904206398c",
+          "bytes": 98
+        },
+        {
+          "id": "E163",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/request-frames/downstream-fixed/B-F64-127.bin",
+          "sha256": "c631f303c1e5c5b7ed0eb91c0ad517631f8abe06da8dc01f688469ee60da5eeb",
+          "bytes": 52
+        },
+        {
+          "id": "E164",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/request-frames/downstream-fixed/B-F66-127.bin",
+          "sha256": "b287e7e73647a430679dc81e72f413b63dbd82187969b86790b0ffe2f3bfa95b",
+          "bytes": 52
+        },
+        {
+          "id": "E165",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/request-frames/downstream-fixed/B-F69-127.bin",
+          "sha256": "44cc853c34f8f9799e7e5d01af60bf056153d63ed80cf6f9011c8a0f27e70bce",
+          "bytes": 52
+        },
+        {
+          "id": "E166",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/request-frames/downstream-fixed/B-F71-127.bin",
+          "sha256": "3859a6c4090a740b423e623e1fbeea30e8ea199f680a3a5511b127a9a497a2d2",
+          "bytes": 52
+        },
+        {
+          "id": "E167",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/request-frames/downstream-fixed/B-F74-127.bin",
+          "sha256": "f090279f3ba71d681a38a07c8e5f95bfdf982de4b5810e0dbb7f0d112354a721",
+          "bytes": 52
+        },
+        {
+          "id": "E168",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/request-frames/downstream-fixed/B-F76-127.bin",
+          "sha256": "389d31f83297f23a92746340d7b64975f29ccb8a1e5b4a5ef224602e9def6077",
+          "bytes": 52
+        },
+        {
+          "id": "E169",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/request-frames/downstream-fixed/B-F94-95.bin",
+          "sha256": "daa8f698e70e47b7304a7498064180a1be161de048bc1e6841835b9080840f55",
+          "bytes": 382
+        },
+        {
+          "id": "E170",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/derived/downstream-fixed-A-replay.txt",
+          "sha256": "7a5429bbee10c4854dc5e9e9b4915d8e47003e4eb598e0f1f4bf31f9ed993d3d",
+          "bytes": 4449
+        },
+        {
+          "id": "E171",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/derived/downstream-fixed-A-oracle.json",
+          "sha256": "6ccae9ec1462095236044b60a8b9d6572cc09e0bcfb05864bd015d9b1e5f3bfc",
+          "bytes": 279384
+        },
+        {
+          "id": "E172",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/derived/downstream-fixed-B-replay.txt",
+          "sha256": "7dc1fde360421a31be8d7d7b7fcca5d4ec4a3b76ba038f5edd78a93e18d93b31",
+          "bytes": 4618
+        },
+        {
+          "id": "E173",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/derived/downstream-fixed-B-oracle.json",
+          "sha256": "8c82dc04b936a5016a91e2e988b0b22c8486fac495db3c21da8a828366e6f1d7",
+          "bytes": 290020
+        },
+        {
+          "id": "E174",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/stage-control/run.json",
+          "sha256": "34aad11535f20aa7b4313121189cf4818ab3e0e1e6b3cc6842e47d2550c674a8",
+          "bytes": 258431
+        },
+        {
+          "id": "E175",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/stage-control/client.log",
+          "sha256": "5ed72701cae3b2f1765025bc3429822f014e36935fb271a9771061707d7156d5",
+          "bytes": 164444
+        },
+        {
+          "id": "E176",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/stage-control/client-B.log",
+          "sha256": "b41e96d22744b263f6f678f3544c94fb463c0993c63e999fb10c3a2bfa660d63",
+          "bytes": 262071
+        },
+        {
+          "id": "E177",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/stage-control/A-ready110-73.bin",
+          "sha256": "8fafd9cf652b458ee09b3751a0201f9ab1409920398e0e842e43b915c8840e25",
+          "bytes": 44
+        },
+        {
+          "id": "E178",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/stage-control/B-ready110-73.bin",
+          "sha256": "8fafd9cf652b458ee09b3751a0201f9ab1409920398e0e842e43b915c8840e25",
+          "bytes": 44
+        },
+        {
+          "id": "E179",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/stage-control/A-floor582-76.bin",
+          "sha256": "9001468072b5ca6e05400891cfd72a5f50549b84806907c1e43b4a350676557b",
+          "bytes": 54
+        },
+        {
+          "id": "E180",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/stage-control/A-start121-r1-79.bin",
+          "sha256": "f8a824335b4079160a4aaf0e0b425d1fabfa78c248d131503440d0414e1f26cf",
+          "bytes": 167
+        },
+        {
+          "id": "E181",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/stage-control/B-floor582-76.bin",
+          "sha256": "9001468072b5ca6e05400891cfd72a5f50549b84806907c1e43b4a350676557b",
+          "bytes": 54
+        },
+        {
+          "id": "E182",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/stage-control/B-start121-r1-79.bin",
+          "sha256": "f8a824335b4079160a4aaf0e0b425d1fabfa78c248d131503440d0414e1f26cf",
+          "bytes": 167
+        },
+        {
+          "id": "E183",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/stage-control/A-go197-82.bin",
+          "sha256": "64b95010ecb0e40bc0367f41f6710d2357fb2538ce827e205825284601237ef8",
+          "bytes": 52
+        },
+        {
+          "id": "E184",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/stage-control/B-go197-82.bin",
+          "sha256": "64b95010ecb0e40bc0367f41f6710d2357fb2538ce827e205825284601237ef8",
+          "bytes": 52
+        },
+        {
+          "id": "E185",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/stage-control/A-play196-85.bin",
+          "sha256": "d04bf155b4847f9d41b0edfdf00a32526302273271c0f1cadbb8ce22b89eb51d",
+          "bytes": 45
+        },
+        {
+          "id": "E186",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/stage-control/B-play196-85.bin",
+          "sha256": "d04bf155b4847f9d41b0edfdf00a32526302273271c0f1cadbb8ce22b89eb51d",
+          "bytes": 45
+        },
+        {
+          "id": "E187",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/stage-control/A-peer153-88.bin",
+          "sha256": "73cee746bfa4c89aa17f2273e9266e4063eb94cf6e786cbd849aca67e8562a19",
+          "bytes": 135
+        },
+        {
+          "id": "E188",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/stage-control/B-peer153-88.bin",
+          "sha256": "c4748b4096d21e57b12a38d2a801de3fcf31ff30aeaa863e2df86a422d29ff35",
+          "bytes": 135
+        },
+        {
+          "id": "E189",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/stage-control/A-dynamic159-r1-1.bin",
+          "sha256": "ce45fc947aabc22d29d1361e7f576818a1665b9a9f617af2c2cec7116d89591e",
+          "bytes": 77
+        },
+        {
+          "id": "E190",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/stage-control/B-dynamic159-r1-1.bin",
+          "sha256": "ce45fc947aabc22d29d1361e7f576818a1665b9a9f617af2c2cec7116d89591e",
+          "bytes": 77
+        },
+        {
+          "id": "E191",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/stage-control/A-blast158-r1-1.bin",
+          "sha256": "31e41726c0deaa834ef2fa20813c84199f3f94023a8f3b7d0f64f9d5241eede1",
+          "bytes": 51
+        },
+        {
+          "id": "E192",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/stage-control/B-blast158-r1-1.bin",
+          "sha256": "31e41726c0deaa834ef2fa20813c84199f3f94023a8f3b7d0f64f9d5241eede1",
+          "bytes": 51
+        },
+        {
+          "id": "E193",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/stage-control/B-event170-17-r1-97.bin",
+          "sha256": "02b5985a867bc19e3bb91236bc8816d3f6f25bc4f8c5f7bddba4579c9a56e15b",
+          "bytes": 48
+        },
+        {
+          "id": "E194",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/stage-control/B-event170-19-r1-100.bin",
+          "sha256": "bd8bf772c0329942ba758585caf140131b8b59be9138cb03a2c34fd4d1ba22b3",
+          "bytes": 59
+        },
+        {
+          "id": "E195",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/stage-control/A-rank175-r1-97.bin",
+          "sha256": "6be30231b79508f47dfe49eaf4b8d6c1fe69ae1e8976654096d7eb50ae1f47f7",
+          "bytes": 340
+        },
+        {
+          "id": "E196",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/stage-control/B-rank175-r1-103.bin",
+          "sha256": "8f755c898994d478f38d2b807ece591b2ad2d1da7c950eba60859a5e338aa315",
+          "bytes": 340
+        },
+        {
+          "id": "E197",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/stage-control/A-return180-r1-100.bin",
+          "sha256": "1560d1178af0e8cea05c74affdc46a79d86c425250a71210b94da25e4073df4a",
+          "bytes": 41
+        },
+        {
+          "id": "E198",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/stage-control/B-return180-r1-106.bin",
+          "sha256": "6a49bc7222df4957e03d3ebe2382217d1988daab1844150f76558baf634da81b",
+          "bytes": 41
+        },
+        {
+          "id": "E199",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/stage-control/A-host110-r1-103.bin",
+          "sha256": "f8c269431038bc985afb79961f89b6e2509d0829ed8046e397aa5acfb962c596",
+          "bytes": 44
+        },
+        {
+          "id": "E200",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/stage-control/A-guest110-r1-106.bin",
+          "sha256": "34aa966e0eef0cee7af15360322ee98baf2f023eb2b8528674b6115d7889a313",
+          "bytes": 44
+        },
+        {
+          "id": "E201",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/stage-control/B-host110-r1-109.bin",
+          "sha256": "1464734628e1b0aa271c48a50c2ed3ceb0fb0d4ba99dac113b20b2ea74dc0d7e",
+          "bytes": 44
+        },
+        {
+          "id": "E202",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/stage-control/B-guest110-r1-112.bin",
+          "sha256": "5459dc7d1e715e0523e24981ce67a04e72b6949c2274e3cc6b7577cf62fe6a9d",
+          "bytes": 44
+        },
+        {
+          "id": "E203",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/stage-control/A-ready110-109.bin",
+          "sha256": "d61e0dec5dd42f6d9359359420df2fed9723478d5554aebb09cb7fa7d9ca1754",
+          "bytes": 44
+        },
+        {
+          "id": "E204",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/stage-control/B-ready110-115.bin",
+          "sha256": "71ab3449f204c7354574438ac4952909165942f1abaf832f65a4463c57f8a476",
+          "bytes": 44
+        },
+        {
+          "id": "E205",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/stage-control/A-floor582-112.bin",
+          "sha256": "3de167f2b9fd7e539a43e320113a3504ec5d160adc35bf04bedc1c5f1bb1e636",
+          "bytes": 54
+        },
+        {
+          "id": "E206",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/stage-control/A-start121-r2-115.bin",
+          "sha256": "2c2f633223459f50f3c83b215e3438d816637d3fcedf6adc5177f166c3f45901",
+          "bytes": 167
+        },
+        {
+          "id": "E207",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/stage-control/B-floor582-118.bin",
+          "sha256": "7506dfc711c0914f95893c307a778b093e45b31b226e4e457a6678c9e7ad7afb",
+          "bytes": 54
+        },
+        {
+          "id": "E208",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/stage-control/B-start121-r2-121.bin",
+          "sha256": "90884970c6bbda9491a5a3408cea9f6d47a3b1e0019b1aefd6d83b2764810fec",
+          "bytes": 167
+        },
+        {
+          "id": "E209",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/stage-control/A-go197-118.bin",
+          "sha256": "aa70380f2f8ac732b32002b998ecd874353865d9e3853102c01a72d06b327970",
+          "bytes": 52
+        },
+        {
+          "id": "E210",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/stage-control/B-go197-124.bin",
+          "sha256": "94f616295ccb42b1d65f119531b5965ade54edc4e9034b76dbf7c2d89697e0e9",
+          "bytes": 52
+        },
+        {
+          "id": "E211",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/stage-control/A-play196-121.bin",
+          "sha256": "c36a9aaa4674958645f4db690772261f39607eb5fb712a80827259d710da962d",
+          "bytes": 45
+        },
+        {
+          "id": "E212",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/stage-control/B-play196-127.bin",
+          "sha256": "010276ee96d43eb798c4cbd8f0d661c416e8d7faa30a083f459303b635c75c2f",
+          "bytes": 45
+        },
+        {
+          "id": "E213",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/stage-control/A-peer153-124.bin",
+          "sha256": "44948f150e56eff92daba0c28ffe92458540e19e25e9fa7ccaa43032d5aab0e6",
+          "bytes": 135
+        },
+        {
+          "id": "E214",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/stage-control/B-peer153-130.bin",
+          "sha256": "f0d11d1d77f6c6587f233aed73475f5eb9a69cece1080174e9fc0ad91682cff2",
+          "bytes": 135
+        },
+        {
+          "id": "E215",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/stage-control/A-dynamic159-r2-2.bin",
+          "sha256": "1f56028930bada07b7dfeb0ce88f915ea32e2fa78cceccb6516cdb8b1f5f2827",
+          "bytes": 77
+        },
+        {
+          "id": "E216",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/stage-control/B-dynamic159-r2-2.bin",
+          "sha256": "4f3fafdca00ba6b5e6b4d6c8fb57bffec19bfe76cf7bd79a94ac2245bd090f20",
+          "bytes": 77
+        },
+        {
+          "id": "E217",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/stage-control/A-blast158-r2-2.bin",
+          "sha256": "c6f71031e51fa0da4cb1724b12a5664aa7bbaf287f0bb19bbe92c8e1f8ddcc55",
+          "bytes": 51
+        },
+        {
+          "id": "E218",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/stage-control/B-blast158-r2-2.bin",
+          "sha256": "64d4c380a715c392025aa97ce4b91e3dcfcb01f4ee6596e3e32257b491d7ca6f",
+          "bytes": 51
+        },
+        {
+          "id": "E219",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/stage-control/B-event170-17-r2-139.bin",
+          "sha256": "7022b58b7bb7840e235d21aca62eb17865fe116a7994783180635706efb4c251",
+          "bytes": 48
+        },
+        {
+          "id": "E220",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/stage-control/B-event170-19-r2-142.bin",
+          "sha256": "8fb7b87df3f231d08a2e10753ce5fed6ecd8a59d86f7ba699cc7fbf08b8dd91b",
+          "bytes": 59
+        },
+        {
+          "id": "E221",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/stage-control/A-rank175-r2-133.bin",
+          "sha256": "a650571eac7ac88b8a63c689d277f33f067a0a02cafefe9a47fb6766b6e4f46c",
+          "bytes": 340
+        },
+        {
+          "id": "E222",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/stage-control/B-rank175-r2-145.bin",
+          "sha256": "4c6525e5113bf1406389d88be7e48119b575f2fbefd0f348e16de23fbb57f234",
+          "bytes": 340
+        },
+        {
+          "id": "E223",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/stage-control/A-return180-r2-136.bin",
+          "sha256": "dea703a5f5fba54456f7040c367a3014662401708698034e1dfe0ddbba432538",
+          "bytes": 41
+        },
+        {
+          "id": "E224",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/stage-control/B-return180-r2-148.bin",
+          "sha256": "417d16715f09456c9c7eb895c68ad6f295d89e0350ed21b14baa14429e1575c9",
+          "bytes": 41
+        },
+        {
+          "id": "E225",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/stage-control/A-host110-r2-139.bin",
+          "sha256": "b9eb311ff2868e5d2dda699437fbbdf64701a2cefce8f1e19b35f7782bb32f83",
+          "bytes": 44
+        },
+        {
+          "id": "E226",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/stage-control/A-guest110-r2-142.bin",
+          "sha256": "c5345f3b36afb184e6827e21b0089107789ffc0c6bb5c025369801115ba4f3fe",
+          "bytes": 44
+        },
+        {
+          "id": "E227",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/stage-control/B-host110-r2-151.bin",
+          "sha256": "1ef9d8ba04436e67c099050d5bb250566d314d0138e4fdaa6d580c7e94b76827",
+          "bytes": 44
+        },
+        {
+          "id": "E228",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/stage-control/B-guest110-r2-154.bin",
+          "sha256": "e603cf59b15311af66d273c5557ce9e12e248a32cdab30a53044eb4038e7be3b",
+          "bytes": 44
+        },
+        {
+          "id": "E229",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/request-frames/stage-control/A-F54-118.bin",
+          "sha256": "2b671aab0d5a5f3cdae9ec58d486cc5ffce16625da93e1c433599016a5a130f9",
+          "bytes": 60
+        },
+        {
+          "id": "E230",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/request-frames/stage-control/A-F65-127.bin",
+          "sha256": "49d2bbc22f4dfacd59fe85f8e7dbb827599d81e089811c6e4b6839aec37c95e9",
+          "bytes": 70
+        },
+        {
+          "id": "E231",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/request-frames/stage-control/A-F77-127.bin",
+          "sha256": "6b829b312c7cce9f10383fe763ae8611acf9d32734c286a2db50034f283bba7c",
+          "bytes": 67
+        },
+        {
+          "id": "E232",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/request-frames/stage-control/A-F125-118.bin",
+          "sha256": "e3e7fc4468f6be7e95dda5121a335a4b1ea054fda708790923c249e4c8cbd3fb",
+          "bytes": 60
+        },
+        {
+          "id": "E233",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/request-frames/stage-control/A-F135-127.bin",
+          "sha256": "d12484416c30ae6f74c2381bd5fe5b85931dd7409aff2dd45da31abc7a3a5835",
+          "bytes": 70
+        },
+        {
+          "id": "E234",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/request-frames/stage-control/A-F140-127.bin",
+          "sha256": "ea921b9e5f058f2d30fc9ad1e9bdcb38b7e055d580ebf6efb878acd50d8b39c0",
+          "bytes": 67
+        },
+        {
+          "id": "E235",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/request-frames/stage-control/B-F13-82.bin",
+          "sha256": "1746130345929e482c425aa463e6bf34d6da555c86c6474cf235330227f74f47",
+          "bytes": 49
+        },
+        {
+          "id": "E236",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/request-frames/stage-control/B-F24-95.bin",
+          "sha256": "730e662309a1a5abb7556e5f500168850ae220a9b7f288c1c62d18904206398c",
+          "bytes": 98
+        },
+        {
+          "id": "E237",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/request-frames/stage-control/B-F64-127.bin",
+          "sha256": "c142751880790e1f840a050be42065c90dd3f37679d922105178fa6d19829e33",
+          "bytes": 52
+        },
+        {
+          "id": "E238",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/request-frames/stage-control/B-F66-127.bin",
+          "sha256": "8ee1b12a90d2b4d511bb3b598f9bcca6656b37c5e4e5c6300b469c2df5905d6d",
+          "bytes": 52
+        },
+        {
+          "id": "E239",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/request-frames/stage-control/B-F69-127.bin",
+          "sha256": "c3b259b76f50895add8f914a186f7fb8815b992a2767d4e34ec963da1ba1096b",
+          "bytes": 52
+        },
+        {
+          "id": "E240",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/request-frames/stage-control/B-F71-127.bin",
+          "sha256": "33dd875c53f49ffc47eab088967f9b44feb1bfae8ca4809feb65e30d3e17a2ec",
+          "bytes": 52
+        },
+        {
+          "id": "E241",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/request-frames/stage-control/B-F73-127.bin",
+          "sha256": "14920504c932c7dcdc075f35fb9e392bed7d8e7b22bc3467fd8fee90ba85bff1",
+          "bytes": 52
+        },
+        {
+          "id": "E242",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/request-frames/stage-control/B-F76-127.bin",
+          "sha256": "16a7d439fef37ca0ec4785946b0c4dfe4a6fd82b32cd65f5e0c0e940f4fadba9",
+          "bytes": 52
+        },
+        {
+          "id": "E243",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/request-frames/stage-control/B-F79-127.bin",
+          "sha256": "f64c47a22cc331f062b98fcef656426d2ebd5ad4769f27c15a52bb61d0d1a40e",
+          "bytes": 52
+        },
+        {
+          "id": "E244",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/request-frames/stage-control/B-F95-95.bin",
+          "sha256": "5cc2153a11c5cbe054ff4847ac4ccc6aadb8a26229edee6a9075d42a56fec5e1",
+          "bytes": 382
+        },
+        {
+          "id": "E245",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/request-frames/stage-control/B-F118-127.bin",
+          "sha256": "413866011fe82f25183cf9cd50f18fa37b103c274ed22b398eeccb4922511098",
+          "bytes": 70
+        },
+        {
+          "id": "E246",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/request-frames/stage-control/B-F121-127.bin",
+          "sha256": "4d2059694d3368b8b6337209c96191a1f1a50819045e047ffcfe42d75ac510f0",
+          "bytes": 52
+        },
+        {
+          "id": "E247",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/request-frames/stage-control/B-F124-127.bin",
+          "sha256": "ab5165b9a8b566e829545a85724aecbcab2159a094f72c183dda5a32ebdd2531",
+          "bytes": 52
+        },
+        {
+          "id": "E248",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/request-frames/stage-control/B-F130-127.bin",
+          "sha256": "7ae21a4ce4553a401edf69ac0f6db2edd56ae39864f468ba2592acc55a898145",
+          "bytes": 52
+        },
+        {
+          "id": "E249",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/derived/stage-control-A-replay.txt",
+          "sha256": "2e29f3deffaf41ea9961b5111b5e1885c910d957d90f9b658b0b3477d0fd8d1e",
+          "bytes": 3849
+        },
+        {
+          "id": "E250",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/derived/stage-control-A-oracle.json",
+          "sha256": "1828c35465917883c060bd21bce12f396083c7e9762e49989ebd6e1f1d540517",
+          "bytes": 237776
+        },
+        {
+          "id": "E251",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/derived/stage-control-B-replay.txt",
+          "sha256": "3751878b5f2e954c18347f6609bee3077b0c25c3dc07752e96765ab7cb538f0a",
+          "bytes": 3592
+        },
+        {
+          "id": "E252",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/derived/stage-control-B-oracle.json",
+          "sha256": "94d33333605f0ff4b4b3780330f11ce80a0f31c80b945c52aeb1fefe4e046117",
+          "bytes": 220988
+        },
+        {
+          "id": "E253",
+          "kind": "local",
+          "path": "local/research/codex/wine_probe_udp_centered_control.py",
+          "sha256": "ed032881146559830b9206ad0fe90c747c43c5ff239c83ac7e26a6965a34311a",
+          "bytes": 68031
+        },
+        {
+          "id": "E254",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/pump-stale/run.json",
+          "sha256": "dc592fc22f0c9118d950c4c69983674d2a8a3f10eb1ab5bebfc1e746d39a4e8d",
+          "bytes": 505660
+        },
+        {
+          "id": "E255",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/pump-stale/client.log",
+          "sha256": "a1024d84f070725f89c964faccdc2be5fedf337bc5f5b15deedecf137e18e943",
+          "bytes": 193895
+        },
+        {
+          "id": "E256",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/pump-stale/client-B.log",
+          "sha256": "ff27b11661e696f9bbdfed043de49bd092774614963c49ee2ccaf51195b79735",
+          "bytes": 188826
+        },
+        {
+          "id": "E257",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/pump-stale/A-ready110-73.bin",
+          "sha256": "8fafd9cf652b458ee09b3751a0201f9ab1409920398e0e842e43b915c8840e25",
+          "bytes": 44
+        },
+        {
+          "id": "E258",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/pump-stale/B-ready110-73.bin",
+          "sha256": "8fafd9cf652b458ee09b3751a0201f9ab1409920398e0e842e43b915c8840e25",
+          "bytes": 44
+        },
+        {
+          "id": "E259",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/pump-stale/A-floor582-76.bin",
+          "sha256": "9001468072b5ca6e05400891cfd72a5f50549b84806907c1e43b4a350676557b",
+          "bytes": 54
+        },
+        {
+          "id": "E260",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/pump-stale/A-start121-r1-79.bin",
+          "sha256": "f8a824335b4079160a4aaf0e0b425d1fabfa78c248d131503440d0414e1f26cf",
+          "bytes": 167
+        },
+        {
+          "id": "E261",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/pump-stale/B-floor582-76.bin",
+          "sha256": "9001468072b5ca6e05400891cfd72a5f50549b84806907c1e43b4a350676557b",
+          "bytes": 54
+        },
+        {
+          "id": "E262",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/pump-stale/B-start121-r1-79.bin",
+          "sha256": "f8a824335b4079160a4aaf0e0b425d1fabfa78c248d131503440d0414e1f26cf",
+          "bytes": 167
+        },
+        {
+          "id": "E263",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/pump-stale/A-go197-82.bin",
+          "sha256": "64b95010ecb0e40bc0367f41f6710d2357fb2538ce827e205825284601237ef8",
+          "bytes": 52
+        },
+        {
+          "id": "E264",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/pump-stale/B-go197-82.bin",
+          "sha256": "64b95010ecb0e40bc0367f41f6710d2357fb2538ce827e205825284601237ef8",
+          "bytes": 52
+        },
+        {
+          "id": "E265",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/pump-stale/B-play196-85.bin",
+          "sha256": "d04bf155b4847f9d41b0edfdf00a32526302273271c0f1cadbb8ce22b89eb51d",
+          "bytes": 45
+        },
+        {
+          "id": "E266",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/pump-stale/A-play196-85.bin",
+          "sha256": "d04bf155b4847f9d41b0edfdf00a32526302273271c0f1cadbb8ce22b89eb51d",
+          "bytes": 45
+        },
+        {
+          "id": "E267",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/pump-stale/B-peer153-88.bin",
+          "sha256": "a8fa810b588b55c7978920f4748e643688e7c2cbb35ad9eaf83d845e9781486f",
+          "bytes": 135
+        },
+        {
+          "id": "E268",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/pump-stale/A-peer153-88.bin",
+          "sha256": "f80350c87ff634b2a2982110642cc13a691fa3221ecbc86ceb7e7c7e522f27a6",
+          "bytes": 135
+        },
+        {
+          "id": "E269",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/pump-stale/A-dynamic159-r1-1.bin",
+          "sha256": "ce45fc947aabc22d29d1361e7f576818a1665b9a9f617af2c2cec7116d89591e",
+          "bytes": 77
+        },
+        {
+          "id": "E270",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/pump-stale/B-dynamic159-r1-1.bin",
+          "sha256": "ce45fc947aabc22d29d1361e7f576818a1665b9a9f617af2c2cec7116d89591e",
+          "bytes": 77
+        },
+        {
+          "id": "E271",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/pump-stale/A-blast158-r1-1.bin",
+          "sha256": "31e41726c0deaa834ef2fa20813c84199f3f94023a8f3b7d0f64f9d5241eede1",
+          "bytes": 51
+        },
+        {
+          "id": "E272",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/pump-stale/B-blast158-r1-1.bin",
+          "sha256": "31e41726c0deaa834ef2fa20813c84199f3f94023a8f3b7d0f64f9d5241eede1",
+          "bytes": 51
+        },
+        {
+          "id": "E273",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/pump-stale/B-event170-17-r1-97.bin",
+          "sha256": "02b5985a867bc19e3bb91236bc8816d3f6f25bc4f8c5f7bddba4579c9a56e15b",
+          "bytes": 48
+        },
+        {
+          "id": "E274",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/pump-stale/B-event170-19-r1-100.bin",
+          "sha256": "bd8bf772c0329942ba758585caf140131b8b59be9138cb03a2c34fd4d1ba22b3",
+          "bytes": 59
+        },
+        {
+          "id": "E275",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/pump-stale/A-rank175-r1-97.bin",
+          "sha256": "6be30231b79508f47dfe49eaf4b8d6c1fe69ae1e8976654096d7eb50ae1f47f7",
+          "bytes": 340
+        },
+        {
+          "id": "E276",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/pump-stale/B-rank175-r1-103.bin",
+          "sha256": "8f755c898994d478f38d2b807ece591b2ad2d1da7c950eba60859a5e338aa315",
+          "bytes": 340
+        },
+        {
+          "id": "E277",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/pump-stale/A-return180-r1-100.bin",
+          "sha256": "1560d1178af0e8cea05c74affdc46a79d86c425250a71210b94da25e4073df4a",
+          "bytes": 41
+        },
+        {
+          "id": "E278",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/pump-stale/B-return180-r1-106.bin",
+          "sha256": "6a49bc7222df4957e03d3ebe2382217d1988daab1844150f76558baf634da81b",
+          "bytes": 41
+        },
+        {
+          "id": "E279",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/pump-stale/A-host110-r1-103.bin",
+          "sha256": "f8c269431038bc985afb79961f89b6e2509d0829ed8046e397aa5acfb962c596",
+          "bytes": 44
+        },
+        {
+          "id": "E280",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/pump-stale/A-guest110-r1-106.bin",
+          "sha256": "34aa966e0eef0cee7af15360322ee98baf2f023eb2b8528674b6115d7889a313",
+          "bytes": 44
+        },
+        {
+          "id": "E281",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/pump-stale/B-host110-r1-109.bin",
+          "sha256": "1464734628e1b0aa271c48a50c2ed3ceb0fb0d4ba99dac113b20b2ea74dc0d7e",
+          "bytes": 44
+        },
+        {
+          "id": "E282",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/pump-stale/B-guest110-r1-112.bin",
+          "sha256": "5459dc7d1e715e0523e24981ce67a04e72b6949c2274e3cc6b7577cf62fe6a9d",
+          "bytes": 44
+        },
+        {
+          "id": "E283",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/pump-stale/A-ready110-109.bin",
+          "sha256": "d61e0dec5dd42f6d9359359420df2fed9723478d5554aebb09cb7fa7d9ca1754",
+          "bytes": 44
+        },
+        {
+          "id": "E284",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/pump-stale/B-ready110-115.bin",
+          "sha256": "71ab3449f204c7354574438ac4952909165942f1abaf832f65a4463c57f8a476",
+          "bytes": 44
+        },
+        {
+          "id": "E285",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/pump-stale/A-floor582-112.bin",
+          "sha256": "3de167f2b9fd7e539a43e320113a3504ec5d160adc35bf04bedc1c5f1bb1e636",
+          "bytes": 54
+        },
+        {
+          "id": "E286",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/pump-stale/A-start121-r2-115.bin",
+          "sha256": "2c2f633223459f50f3c83b215e3438d816637d3fcedf6adc5177f166c3f45901",
+          "bytes": 167
+        },
+        {
+          "id": "E287",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/pump-stale/B-floor582-118.bin",
+          "sha256": "7506dfc711c0914f95893c307a778b093e45b31b226e4e457a6678c9e7ad7afb",
+          "bytes": 54
+        },
+        {
+          "id": "E288",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/pump-stale/B-start121-r2-121.bin",
+          "sha256": "90884970c6bbda9491a5a3408cea9f6d47a3b1e0019b1aefd6d83b2764810fec",
+          "bytes": 167
+        },
+        {
+          "id": "E289",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/pump-stale/A-go197-118.bin",
+          "sha256": "aa70380f2f8ac732b32002b998ecd874353865d9e3853102c01a72d06b327970",
+          "bytes": 52
+        },
+        {
+          "id": "E290",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/pump-stale/B-go197-124.bin",
+          "sha256": "94f616295ccb42b1d65f119531b5965ade54edc4e9034b76dbf7c2d89697e0e9",
+          "bytes": 52
+        },
+        {
+          "id": "E291",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/pump-stale/A-play196-121.bin",
+          "sha256": "c36a9aaa4674958645f4db690772261f39607eb5fb712a80827259d710da962d",
+          "bytes": 45
+        },
+        {
+          "id": "E292",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/pump-stale/B-play196-127.bin",
+          "sha256": "010276ee96d43eb798c4cbd8f0d661c416e8d7faa30a083f459303b635c75c2f",
+          "bytes": 45
+        },
+        {
+          "id": "E293",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/pump-stale/A-peer153-124.bin",
+          "sha256": "507ed47ae496a6fda2f80aa18bb49371a776e9770977488666a5dfe183b8c7f6",
+          "bytes": 135
+        },
+        {
+          "id": "E294",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/pump-stale/B-peer153-130.bin",
+          "sha256": "fc31ba13a05477ecb274f1867ed210b1b5476c0320111e3efd41473e7aef58c4",
+          "bytes": 135
+        },
+        {
+          "id": "E295",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/pump-stale/A-dynamic159-r2-2.bin",
+          "sha256": "1f56028930bada07b7dfeb0ce88f915ea32e2fa78cceccb6516cdb8b1f5f2827",
+          "bytes": 77
+        },
+        {
+          "id": "E296",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/pump-stale/B-dynamic159-r2-2.bin",
+          "sha256": "4f3fafdca00ba6b5e6b4d6c8fb57bffec19bfe76cf7bd79a94ac2245bd090f20",
+          "bytes": 77
+        },
+        {
+          "id": "E297",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/pump-stale/A-blast158-r2-2.bin",
+          "sha256": "c6f71031e51fa0da4cb1724b12a5664aa7bbaf287f0bb19bbe92c8e1f8ddcc55",
+          "bytes": 51
+        },
+        {
+          "id": "E298",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/pump-stale/B-blast158-r2-2.bin",
+          "sha256": "64d4c380a715c392025aa97ce4b91e3dcfcb01f4ee6596e3e32257b491d7ca6f",
+          "bytes": 51
+        },
+        {
+          "id": "E299",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/pump-stale/B-event170-17-r2-139.bin",
+          "sha256": "7022b58b7bb7840e235d21aca62eb17865fe116a7994783180635706efb4c251",
+          "bytes": 48
+        },
+        {
+          "id": "E300",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/request-frames/pump-stale/A-F53-118.bin",
+          "sha256": "f55761bfc13503280ca707bfe41967c020819722ae55a82056a218edf4669186",
+          "bytes": 60
+        },
+        {
+          "id": "E301",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/request-frames/pump-stale/A-F66-127.bin",
+          "sha256": "7fee7f0a3cbe59b897d79bfee68fab2810618fc80028dc7d5d32883d615a1709",
+          "bytes": 70
+        },
+        {
+          "id": "E302",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/request-frames/pump-stale/A-F78-127.bin",
+          "sha256": "abf963e9b30089a011319519e4cc0b8a0c362dbaf6b11f2dd8fd224c9c44f031",
+          "bytes": 67
+        },
+        {
+          "id": "E303",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/request-frames/pump-stale/A-F133-118.bin",
+          "sha256": "c86937d30af1fe6c1f3bb4769baa30fb9498128e350da538a8d23f5ff17e4588",
+          "bytes": 60
+        },
+        {
+          "id": "E304",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/request-frames/pump-stale/A-F145-127.bin",
+          "sha256": "afbd2d39db03d5ee02afef834985306ca55db81e25de1b15a6505830d058f08f",
+          "bytes": 70
+        },
+        {
+          "id": "E305",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/request-frames/pump-stale/B-F13-82.bin",
+          "sha256": "1746130345929e482c425aa463e6bf34d6da555c86c6474cf235330227f74f47",
+          "bytes": 49
+        },
+        {
+          "id": "E306",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/request-frames/pump-stale/B-F24-95.bin",
+          "sha256": "730e662309a1a5abb7556e5f500168850ae220a9b7f288c1c62d18904206398c",
+          "bytes": 98
+        },
+        {
+          "id": "E307",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/request-frames/pump-stale/B-F67-127.bin",
+          "sha256": "ed00813d902036f3a5b81697e033492d73c1a63e2df0274382ca363b21bf4fb7",
+          "bytes": 52
+        },
+        {
+          "id": "E308",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/request-frames/pump-stale/B-F70-127.bin",
+          "sha256": "3e3257728a89457d19018ec061ec438c3f47a244434d195f3d5e8b975fd16e26",
+          "bytes": 52
+        },
+        {
+          "id": "E309",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/request-frames/pump-stale/B-F72-127.bin",
+          "sha256": "764e02d4861991652f7cbf017c79e550ba7978ec004722a07ea34c492d6fbc40",
+          "bytes": 52
+        },
+        {
+          "id": "E310",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/request-frames/pump-stale/B-F76-127.bin",
+          "sha256": "54ba4bc8480d3d0bc288b0795812ceb2af1daed77a250f68b1238437c0694607",
+          "bytes": 52
+        },
+        {
+          "id": "E311",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/request-frames/pump-stale/B-F78-127.bin",
+          "sha256": "b5a2e7f6ce755c99e8d19d00ecb2359afdff189bd4de9e5323ec0465b12093c0",
+          "bytes": 52
+        },
+        {
+          "id": "E312",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/request-frames/pump-stale/B-F80-127.bin",
+          "sha256": "473be260a9eac29f40147209d55b1e28553b9c7ece77bd82eacdea2cc21b7e11",
+          "bytes": 52
+        },
+        {
+          "id": "E313",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/request-frames/pump-stale/B-F82-127.bin",
+          "sha256": "130d482abbd123e1e03dc4609a63912c42ff66c917239861094b00353d29eda4",
+          "bytes": 52
+        },
+        {
+          "id": "E314",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/request-frames/pump-stale/B-F99-95.bin",
+          "sha256": "d2ea0e8e4899abaa5a5ea0f72f3dd1105e3e9a9bcad1710f3283bb3340c21dc8",
+          "bytes": 382
+        },
+        {
+          "id": "E315",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/derived/pump-stale-A-replay.txt",
+          "sha256": "b2fbf4f4610e4131e3f735892478aa116098c6bb96871b3d48ae46ae7859ba44",
+          "bytes": 4560
+        },
+        {
+          "id": "E316",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/derived/pump-stale-A-oracle.json",
+          "sha256": "3d385b864bd9d5cfc07375db3ce052be1f701eefcdc0a749ab570db3982aedfc",
+          "bytes": 285620
+        },
+        {
+          "id": "E317",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/derived/pump-stale-B-replay.txt",
+          "sha256": "fdfecb1b83d7319008d7025363be261414d419c7b96f36afd1b5d3da0b23b148",
+          "bytes": 3715
+        },
+        {
+          "id": "E318",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/derived/pump-stale-B-oracle.json",
+          "sha256": "89ea0c4b69d65130651ca440a440ef6f52bffad5854809b794f64dd227d3722e",
+          "bytes": 230720
+        },
+        {
+          "id": "E319",
+          "kind": "local",
+          "path": "local/research/codex/wine_probe_udp_actor_stale.py",
+          "sha256": "ba71b6007e9ce83f5172b290752aba651dea6e3bf48733d697447b186abe0ea1",
+          "bytes": 68108
+        },
+        {
+          "id": "E320",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/pump-control/run.json",
+          "sha256": "61d5bddd745ee5546c14a830655b4baa1ea991d17044a81a202e4042681bcd76",
+          "bytes": 322078
+        },
+        {
+          "id": "E321",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/pump-control/client.log",
+          "sha256": "567142677f14746c790f04dd2bb2fed06f3e9f84ef3064edf4ccf53ee1e80ef0",
+          "bytes": 205987
+        },
+        {
+          "id": "E322",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/pump-control/client-B.log",
+          "sha256": "79af9cbf3cf304a884a2ce0923d1757521a3ce40bae15b2ee73d3b68a0e3ca91",
+          "bytes": 227485
+        },
+        {
+          "id": "E323",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/pump-control/A-ready110-73.bin",
+          "sha256": "8fafd9cf652b458ee09b3751a0201f9ab1409920398e0e842e43b915c8840e25",
+          "bytes": 44
+        },
+        {
+          "id": "E324",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/pump-control/B-ready110-73.bin",
+          "sha256": "8fafd9cf652b458ee09b3751a0201f9ab1409920398e0e842e43b915c8840e25",
+          "bytes": 44
+        },
+        {
+          "id": "E325",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/pump-control/A-floor582-76.bin",
+          "sha256": "9001468072b5ca6e05400891cfd72a5f50549b84806907c1e43b4a350676557b",
+          "bytes": 54
+        },
+        {
+          "id": "E326",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/pump-control/A-start121-r1-79.bin",
+          "sha256": "f8a824335b4079160a4aaf0e0b425d1fabfa78c248d131503440d0414e1f26cf",
+          "bytes": 167
+        },
+        {
+          "id": "E327",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/pump-control/B-floor582-76.bin",
+          "sha256": "9001468072b5ca6e05400891cfd72a5f50549b84806907c1e43b4a350676557b",
+          "bytes": 54
+        },
+        {
+          "id": "E328",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/pump-control/B-start121-r1-79.bin",
+          "sha256": "f8a824335b4079160a4aaf0e0b425d1fabfa78c248d131503440d0414e1f26cf",
+          "bytes": 167
+        },
+        {
+          "id": "E329",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/pump-control/A-go197-82.bin",
+          "sha256": "64b95010ecb0e40bc0367f41f6710d2357fb2538ce827e205825284601237ef8",
+          "bytes": 52
+        },
+        {
+          "id": "E330",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/pump-control/B-go197-82.bin",
+          "sha256": "64b95010ecb0e40bc0367f41f6710d2357fb2538ce827e205825284601237ef8",
+          "bytes": 52
+        },
+        {
+          "id": "E331",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/pump-control/A-play196-85.bin",
+          "sha256": "d04bf155b4847f9d41b0edfdf00a32526302273271c0f1cadbb8ce22b89eb51d",
+          "bytes": 45
+        },
+        {
+          "id": "E332",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/pump-control/B-play196-85.bin",
+          "sha256": "d04bf155b4847f9d41b0edfdf00a32526302273271c0f1cadbb8ce22b89eb51d",
+          "bytes": 45
+        },
+        {
+          "id": "E333",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/pump-control/A-peer153-88.bin",
+          "sha256": "cd1338238dac85ff804a306aea55898eeab4abadd873f3cd4a5531c921d28e30",
+          "bytes": 135
+        },
+        {
+          "id": "E334",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/pump-control/B-peer153-88.bin",
+          "sha256": "9856e0622b30fbf2c76733dea7b08d15956c1deac8ed7453ec48605b934e1b18",
+          "bytes": 135
+        },
+        {
+          "id": "E335",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/pump-control/A-dynamic159-r1-1.bin",
+          "sha256": "ce45fc947aabc22d29d1361e7f576818a1665b9a9f617af2c2cec7116d89591e",
+          "bytes": 77
+        },
+        {
+          "id": "E336",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/pump-control/B-dynamic159-r1-1.bin",
+          "sha256": "ce45fc947aabc22d29d1361e7f576818a1665b9a9f617af2c2cec7116d89591e",
+          "bytes": 77
+        },
+        {
+          "id": "E337",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/pump-control/A-blast158-r1-1.bin",
+          "sha256": "31e41726c0deaa834ef2fa20813c84199f3f94023a8f3b7d0f64f9d5241eede1",
+          "bytes": 51
+        },
+        {
+          "id": "E338",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/pump-control/B-blast158-r1-1.bin",
+          "sha256": "31e41726c0deaa834ef2fa20813c84199f3f94023a8f3b7d0f64f9d5241eede1",
+          "bytes": 51
+        },
+        {
+          "id": "E339",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/pump-control/B-event170-17-r1-97.bin",
+          "sha256": "02b5985a867bc19e3bb91236bc8816d3f6f25bc4f8c5f7bddba4579c9a56e15b",
+          "bytes": 48
+        },
+        {
+          "id": "E340",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/pump-control/B-event170-19-r1-100.bin",
+          "sha256": "bd8bf772c0329942ba758585caf140131b8b59be9138cb03a2c34fd4d1ba22b3",
+          "bytes": 59
+        },
+        {
+          "id": "E341",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/pump-control/A-rank175-r1-97.bin",
+          "sha256": "6be30231b79508f47dfe49eaf4b8d6c1fe69ae1e8976654096d7eb50ae1f47f7",
+          "bytes": 340
+        },
+        {
+          "id": "E342",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/pump-control/B-rank175-r1-103.bin",
+          "sha256": "8f755c898994d478f38d2b807ece591b2ad2d1da7c950eba60859a5e338aa315",
+          "bytes": 340
+        },
+        {
+          "id": "E343",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/pump-control/A-return180-r1-100.bin",
+          "sha256": "1560d1178af0e8cea05c74affdc46a79d86c425250a71210b94da25e4073df4a",
+          "bytes": 41
+        },
+        {
+          "id": "E344",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/pump-control/B-return180-r1-106.bin",
+          "sha256": "6a49bc7222df4957e03d3ebe2382217d1988daab1844150f76558baf634da81b",
+          "bytes": 41
+        },
+        {
+          "id": "E345",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/pump-control/A-host110-r1-103.bin",
+          "sha256": "f8c269431038bc985afb79961f89b6e2509d0829ed8046e397aa5acfb962c596",
+          "bytes": 44
+        },
+        {
+          "id": "E346",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/pump-control/A-guest110-r1-106.bin",
+          "sha256": "34aa966e0eef0cee7af15360322ee98baf2f023eb2b8528674b6115d7889a313",
+          "bytes": 44
+        },
+        {
+          "id": "E347",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/pump-control/B-host110-r1-109.bin",
+          "sha256": "1464734628e1b0aa271c48a50c2ed3ceb0fb0d4ba99dac113b20b2ea74dc0d7e",
+          "bytes": 44
+        },
+        {
+          "id": "E348",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/pump-control/B-guest110-r1-112.bin",
+          "sha256": "5459dc7d1e715e0523e24981ce67a04e72b6949c2274e3cc6b7577cf62fe6a9d",
+          "bytes": 44
+        },
+        {
+          "id": "E349",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/pump-control/A-ready110-109.bin",
+          "sha256": "d61e0dec5dd42f6d9359359420df2fed9723478d5554aebb09cb7fa7d9ca1754",
+          "bytes": 44
+        },
+        {
+          "id": "E350",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/pump-control/B-ready110-115.bin",
+          "sha256": "71ab3449f204c7354574438ac4952909165942f1abaf832f65a4463c57f8a476",
+          "bytes": 44
+        },
+        {
+          "id": "E351",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/pump-control/A-floor582-112.bin",
+          "sha256": "3de167f2b9fd7e539a43e320113a3504ec5d160adc35bf04bedc1c5f1bb1e636",
+          "bytes": 54
+        },
+        {
+          "id": "E352",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/pump-control/A-start121-r2-115.bin",
+          "sha256": "2c2f633223459f50f3c83b215e3438d816637d3fcedf6adc5177f166c3f45901",
+          "bytes": 167
+        },
+        {
+          "id": "E353",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/pump-control/B-floor582-118.bin",
+          "sha256": "7506dfc711c0914f95893c307a778b093e45b31b226e4e457a6678c9e7ad7afb",
+          "bytes": 54
+        },
+        {
+          "id": "E354",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/pump-control/B-start121-r2-121.bin",
+          "sha256": "90884970c6bbda9491a5a3408cea9f6d47a3b1e0019b1aefd6d83b2764810fec",
+          "bytes": 167
+        },
+        {
+          "id": "E355",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/pump-control/A-go197-118.bin",
+          "sha256": "aa70380f2f8ac732b32002b998ecd874353865d9e3853102c01a72d06b327970",
+          "bytes": 52
+        },
+        {
+          "id": "E356",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/pump-control/B-go197-124.bin",
+          "sha256": "94f616295ccb42b1d65f119531b5965ade54edc4e9034b76dbf7c2d89697e0e9",
+          "bytes": 52
+        },
+        {
+          "id": "E357",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/pump-control/A-play196-121.bin",
+          "sha256": "c36a9aaa4674958645f4db690772261f39607eb5fb712a80827259d710da962d",
+          "bytes": 45
+        },
+        {
+          "id": "E358",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/pump-control/B-play196-127.bin",
+          "sha256": "010276ee96d43eb798c4cbd8f0d661c416e8d7faa30a083f459303b635c75c2f",
+          "bytes": 45
+        },
+        {
+          "id": "E359",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/pump-control/A-peer153-124.bin",
+          "sha256": "b075981267d90ffdb87878037b20cde9f5b282b07d5621fb71b96be4b4e9b038",
+          "bytes": 135
+        },
+        {
+          "id": "E360",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/pump-control/B-peer153-130.bin",
+          "sha256": "ad5f88168f5eb84d0ced542ef4a7e2cf15259089fdf4c096e87957c388c8d424",
+          "bytes": 135
+        },
+        {
+          "id": "E361",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/pump-control/A-dynamic159-r2-2.bin",
+          "sha256": "1f56028930bada07b7dfeb0ce88f915ea32e2fa78cceccb6516cdb8b1f5f2827",
+          "bytes": 77
+        },
+        {
+          "id": "E362",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/pump-control/B-dynamic159-r2-2.bin",
+          "sha256": "4f3fafdca00ba6b5e6b4d6c8fb57bffec19bfe76cf7bd79a94ac2245bd090f20",
+          "bytes": 77
+        },
+        {
+          "id": "E363",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/pump-control/A-blast158-r2-2.bin",
+          "sha256": "c6f71031e51fa0da4cb1724b12a5664aa7bbaf287f0bb19bbe92c8e1f8ddcc55",
+          "bytes": 51
+        },
+        {
+          "id": "E364",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/pump-control/B-blast158-r2-2.bin",
+          "sha256": "64d4c380a715c392025aa97ce4b91e3dcfcb01f4ee6596e3e32257b491d7ca6f",
+          "bytes": 51
+        },
+        {
+          "id": "E365",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/pump-control/B-event170-17-r2-139.bin",
+          "sha256": "7022b58b7bb7840e235d21aca62eb17865fe116a7994783180635706efb4c251",
+          "bytes": 48
+        },
+        {
+          "id": "E366",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/pump-control/B-event170-19-r2-142.bin",
+          "sha256": "94256aa5b47d621ace79192a06375768fad40e0030e11e9c740ae251b8c8914e",
+          "bytes": 59
+        },
+        {
+          "id": "E367",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/pump-control/A-rank175-r2-133.bin",
+          "sha256": "a650571eac7ac88b8a63c689d277f33f067a0a02cafefe9a47fb6766b6e4f46c",
+          "bytes": 340
+        },
+        {
+          "id": "E368",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/pump-control/B-rank175-r2-145.bin",
+          "sha256": "4c6525e5113bf1406389d88be7e48119b575f2fbefd0f348e16de23fbb57f234",
+          "bytes": 340
+        },
+        {
+          "id": "E369",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/pump-control/A-return180-r2-136.bin",
+          "sha256": "dea703a5f5fba54456f7040c367a3014662401708698034e1dfe0ddbba432538",
+          "bytes": 41
+        },
+        {
+          "id": "E370",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/pump-control/B-return180-r2-148.bin",
+          "sha256": "417d16715f09456c9c7eb895c68ad6f295d89e0350ed21b14baa14429e1575c9",
+          "bytes": 41
+        },
+        {
+          "id": "E371",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/pump-control/A-host110-r2-139.bin",
+          "sha256": "b9eb311ff2868e5d2dda699437fbbdf64701a2cefce8f1e19b35f7782bb32f83",
+          "bytes": 44
+        },
+        {
+          "id": "E372",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/pump-control/A-guest110-r2-142.bin",
+          "sha256": "c5345f3b36afb184e6827e21b0089107789ffc0c6bb5c025369801115ba4f3fe",
+          "bytes": 44
+        },
+        {
+          "id": "E373",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/pump-control/B-host110-r2-151.bin",
+          "sha256": "1ef9d8ba04436e67c099050d5bb250566d314d0138e4fdaa6d580c7e94b76827",
+          "bytes": 44
+        },
+        {
+          "id": "E374",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/pump-control/B-guest110-r2-154.bin",
+          "sha256": "e603cf59b15311af66d273c5557ce9e12e248a32cdab30a53044eb4038e7be3b",
+          "bytes": 44
+        },
+        {
+          "id": "E375",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/request-frames/pump-control/A-F53-118.bin",
+          "sha256": "f55761bfc13503280ca707bfe41967c020819722ae55a82056a218edf4669186",
+          "bytes": 60
+        },
+        {
+          "id": "E376",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/request-frames/pump-control/A-F66-127.bin",
+          "sha256": "6d9baffb8721b643f10e168bb24e81d1c223d7d0a96ec4b0f0b45722aaa7fa03",
+          "bytes": 70
+        },
+        {
+          "id": "E377",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/request-frames/pump-control/A-F80-127.bin",
+          "sha256": "78b5dd1f0f3f0b7f292841a3fe860cd642f18911f85bbbef1201639100ccbdb1",
+          "bytes": 67
+        },
+        {
+          "id": "E378",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/request-frames/pump-control/A-F138-118.bin",
+          "sha256": "4742678dc8d6a34c29fd13b49443f47cec1d6394fd144ebca44b94251f2bb3a7",
+          "bytes": 60
+        },
+        {
+          "id": "E379",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/request-frames/pump-control/A-F149-127.bin",
+          "sha256": "db34ef4115445be9d55c0eac2e96392912cacef43c90f0a5ee3e5d0256d2221b",
+          "bytes": 70
+        },
+        {
+          "id": "E380",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/request-frames/pump-control/A-F162-127.bin",
+          "sha256": "765fa4e75b7e869a040a6f703894f3dab9ab31934b0cda4ddd48462c418801a5",
+          "bytes": 67
+        },
+        {
+          "id": "E381",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/request-frames/pump-control/B-F13-82.bin",
+          "sha256": "1746130345929e482c425aa463e6bf34d6da555c86c6474cf235330227f74f47",
+          "bytes": 49
+        },
+        {
+          "id": "E382",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/request-frames/pump-control/B-F24-95.bin",
+          "sha256": "730e662309a1a5abb7556e5f500168850ae220a9b7f288c1c62d18904206398c",
+          "bytes": 98
+        },
+        {
+          "id": "E383",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/request-frames/pump-control/B-F68-127.bin",
+          "sha256": "15319de4630bb52d3be6c1171bad66aad07ee8ca94acf36665d39252a11337bf",
+          "bytes": 52
+        },
+        {
+          "id": "E384",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/request-frames/pump-control/B-F70-127.bin",
+          "sha256": "64d254b06873d033814be085d942a1114a9febfac92a81237d2d445b74e6c940",
+          "bytes": 52
+        },
+        {
+          "id": "E385",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/request-frames/pump-control/B-F73-127.bin",
+          "sha256": "f2882176db2af491f29df8bf020083aa19f4bc5bfb749f2dbde50edc28c821bc",
+          "bytes": 52
+        },
+        {
+          "id": "E386",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/request-frames/pump-control/B-F75-127.bin",
+          "sha256": "8ba4358c2b12f00517fe29fa5f78e57c8fbd066b1f57499f99408b99baf98ad7",
+          "bytes": 52
+        },
+        {
+          "id": "E387",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/request-frames/pump-control/B-F77-127.bin",
+          "sha256": "69146ce329196f4fcbe4238149da120af197a83cfb16280760081f6675f46281",
+          "bytes": 52
+        },
+        {
+          "id": "E388",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/request-frames/pump-control/B-F78-127.bin",
+          "sha256": "98d5116003b7dee5c5a850ede35de6df1318427956884b1d945c2d6431d463e3",
+          "bytes": 52
+        },
+        {
+          "id": "E389",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/request-frames/pump-control/B-F97-95.bin",
+          "sha256": "62823c4526e92e5b9f645ca79d3e9613aa5bc6a51809ead9cc556648cf20ccb3",
+          "bytes": 382
+        },
+        {
+          "id": "E390",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/request-frames/pump-control/B-F144-127.bin",
+          "sha256": "32df2eeea435cbec671663b9a98ad726358497331b5a992b47bb57b2e73dfce2",
+          "bytes": 52
+        },
+        {
+          "id": "E391",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/request-frames/pump-control/B-F146-127.bin",
+          "sha256": "e371c41684e1c66b5d8a715d9a91164908e2e1f10e059c9308c6b8e85d74a948",
+          "bytes": 52
+        },
+        {
+          "id": "E392",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/request-frames/pump-control/B-F148-127.bin",
+          "sha256": "c5de47310bd64251380273eb53815164010e3e10324f3a047dad96cb29fdfbca",
+          "bytes": 52
+        },
+        {
+          "id": "E393",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/request-frames/pump-control/B-F152-127.bin",
+          "sha256": "97491fa7495534b99d52f09dc03fd4a042a5c90441bbecc0a471f07addbacf98",
+          "bytes": 52
+        },
+        {
+          "id": "E394",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/request-frames/pump-control/B-F154-127.bin",
+          "sha256": "98b86802c9ab1bac73e6cdcbd7b1d41ffebe8e5cc90d3e7fcec68a586a1e0ca6",
+          "bytes": 52
+        },
+        {
+          "id": "E395",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/request-frames/pump-control/B-F156-127.bin",
+          "sha256": "af84b8e3942ba9576c1b140cecd695f69dce1830b061dec9fd29c069c62c1220",
+          "bytes": 52
+        },
+        {
+          "id": "E396",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/derived/pump-control-A-replay.txt",
+          "sha256": "845f788dccb350e333edbb1c87e82d5fa13893bf8d839cf6962b15b8c4ae9f4b",
+          "bytes": 4662
+        },
+        {
+          "id": "E397",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/derived/pump-control-A-oracle.json",
+          "sha256": "068d76aac1d04375b0ef55b72590c9ba11f9e078b1e18f291dad0744c15930a5",
+          "bytes": 290711
+        },
+        {
+          "id": "E398",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/derived/pump-control-B-replay.txt",
+          "sha256": "e63ff3f1bddd1a662aa77befa9f7379853e2aaf47dc396ff865517b8fee0a5bf",
+          "bytes": 4308
+        },
+        {
+          "id": "E399",
+          "kind": "local",
+          "path": "local/research/codex/udp-actor-r1/derived/pump-control-B-oracle.json",
+          "sha256": "135a7f69743c47049473421fb46afbe8d3e89012323e4dee3615ae4e4780409b",
+          "bytes": 266943
+        },
+        {
+          "id": "E400",
+          "kind": "local",
+          "path": "local/research/codex/wine_probe_udp_actor_control.py",
+          "sha256": "66f52f104580c2b5e09d4ae13622638fb5d1b94457b85037cd0e9741140221c8",
+          "bytes": 68110
+        },
+        {
+          "id": "E401",
+          "kind": "local",
+          "path": "local/research/codex/wcp-guard-r1/game/CA-r2-login-logout.exe",
+          "sha256": "660447c293ce92270cb9b5815331bca976e8f156366e1fe50b217b6c12e60ce3",
+          "bytes": 31874560
+        },
+        {
+          "id": "E402",
+          "kind": "local",
+          "path": "local/research/codex/wcp-guard-r1/game/CA-r2-stage-social.exe",
+          "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef",
+          "bytes": 31874560
+        },
+        {
+          "id": "E403",
+          "kind": "local",
+          "path": "local/research/codex/duo-round-r1/game-B/CA-r2-stage-social.exe",
+          "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef",
+          "bytes": 31874560
+        },
+        {
+          "id": "E404",
+          "kind": "artifact",
+          "path": "/home/admin/boom/repos/boomkr-re/out/modO.bin",
+          "sha256": "a08950c833d3acab8281049def7b3dc96b221f107eeda01da3a548e34b91dce5",
+          "bytes": 31858688
+        },
+        {
+          "id": "E405",
+          "kind": "artifact",
+          "path": "/home/admin/boom/repos/boomkr-re/docs/kr-data.md",
+          "sha256": "79b84d57c7db51b100888ca685601be17d847d378f3080805cdd03b2ca059eaa",
+          "bytes": 34971
+        },
+        {
+          "id": "E406",
+          "kind": "artifact",
+          "path": "/home/admin/boom/repos/boom-re/docs/oc_e-game.md",
+          "sha256": "9e80ecea3fb7d152f58a4a0d60ac6e1f6759b18be23bf53d908bb896dbad0b6a",
+          "bytes": 70895
+        },
+        {
+          "id": "E407",
+          "kind": "artifact",
+          "path": "/home/admin/boom/repos/boom-rs/docs/research/findings/VN_LEGACY_SERVER_REFERENCE.md",
+          "sha256": "bd5c9b95929b78e17f21ce6adfaaf5c7bb02a3f13c7a026544bdc706f21e41fa",
+          "bytes": 6820
+        },
+        {
+          "id": "E408",
+          "kind": "artifact",
+          "path": "/home/admin/boom/repos/boom-re-l10n/docs/README.md",
+          "sha256": "e1cbceee4ac5fa46ee90f56fc4a9224def3e3e2350dd0fe3656cba18f1265ec9",
+          "bytes": 607
+        },
+        {
+          "id": "E409",
+          "kind": "artifact",
+          "path": "/home/admin/boom/archive/2026-10-26/KNOWLEDGE.md",
+          "sha256": "41494edfa4897cf01925220b6d62dfc132c137eaa00bdae5cfed33f0e9512305",
+          "bytes": 9136
+        }
+      ],
+      "delta": {
+        "added": [
+          "Gói cũ vòng1 thực sự đổi tọa độ actor vòng2; currentpacket sửa lại và no-replaycontrol giữ vị trí ở boundedpreinputcallbacks.",
+          "Nối output/caller/packetstream tới actualpumpcallback, không tìm lại endpoint/queue; E8E960false giải gate0.",
+          "Giữ các lỗi GDB/partial outcomes, raw/hash/native/visual và docs đồng bộ trong một checkpoint."
+        ],
+        "corrected": [
+          "Return0 của callback không là reject: currentpacket vẫn đổi x200→120.",
+          "14EF010 là packetstreaminit, không handleractor; nhánh130BC00 đặtprobe không hit, actualpump nằm outercaller.",
+          "Không lấy controllererrorNone hoặc haiStart làm hai vòng hoàn tất; hai lỗi probe được giữ đầy đủ."
+        ],
+        "superseded": [
+          "CP045 actorapply/gatecondition unknown đã trả lời hẹp bằngCP046; không sửa raw/findingsCP045.",
+          "NEXT-DUO-ROUND consumeroutput/actorbeforeafter nay có evidence; tiếp deepvfF4/freshness vàendpointcontrol."
+        ]
+      },
+      "blockers": [
+        "TargetvfF4 sâu hơn/identity/freshness/layout chưa đo; sameendpoint cho mộtoldpacket apply, chưa có generationguard production.",
+        "Endpoint153/key rotation là giả thuyết cần controlold/newsource, không được gọi đã chặn stale. Full124validator/itemcatalog/tick/session và UDPgrammar/reset vẫn mở.",
+        "Standalone server/fullauth/profile/cache/codec/vanilla/accountreconnect/fullmatch/K5/K6a/LAN/Internet chưa nghiệm thu."
+      ],
+      "next_steps": [
+        {
+          "id": "NEXT-DUO-ROUND",
+          "task": "KRE-005b",
+          "state": "active",
+          "action": "Use CP046 actualoldUDP actorapply/currentrestore/no-replaycontrol: observe125DF30vfF4actualtarget, read only executedhandler foridentity/freshness; controlchanged153endpoints withold/newsource beforeclaiminggenerationguard. NoGDBgate/stateforcing oroldpayloadreencoding.",
+          "owner": "Codex",
+          "reviewer": "Codex"
+        },
+        {
+          "id": "NEXT-ITEM-PICKUP",
+          "task": "KRE-005b",
+          "state": "active",
+          "action": "Usefamilytable/R169–185/CP045boundedanswers; runtimeatmax/TTL/neededactivevariant only, nofullcatalogscan. Full124validator identicalcatalog/tick/session limits remain.",
+          "owner": "Codex",
+          "reviewer": "Codex"
+        },
+        {
+          "id": "NEXT-FULL-LOGIN-FIELDS",
+          "task": "KRE-005b",
+          "state": "active",
+          "action": "Fullauth/profile/cache/codec/vanilla/accountreconnect separate; no gate fromdiagnosticcopy/UI alone.",
+          "owner": "Codex",
+          "reviewer": "Codex"
+        }
+      ],
+      "review": {
+        "status": "waived",
+        "as_of_utc": "2026-10-31T14:49:15.811836+00:00",
+        "reference": "docs/evidence/checkpoints/review-waiver.json",
+        "scope": "Codex solo RE/code/runtime/selfcheck, not independent approval.",
+        "authorization": {
+          "by": "project_owner",
+          "reference": "docs/evidence/checkpoints/review-waiver.json",
+          "reason": "Owner explicitly requested solo without Claude review."
+        }
+      },
+      "docs_sync": [
+        {
+          "path": "README.md",
+          "state": "updated",
+          "reason": "CurrentCP046actorproof/control/CP045merge và limits."
+        },
+        {
+          "path": "docs/PLAN.md",
+          "state": "updated",
+          "reason": "Task/map/nextfreshness, không plan theo phiên hoặc gateclosure."
+        },
+        {
+          "path": "docs/PROTOCOL.md",
+          "state": "updated",
+          "reason": "CanonicaloldUDPactor/output/gatefalse/control/limits; CP045scope giữ lịch sử."
+        },
+        {
+          "path": "docs/RESEARCH.md",
+          "state": "updated",
+          "reason": "Không tìm lạiqueue/actorapply/gatefalse; nextactualvfF4/freshness/endpointcontrol."
+        },
+        {
+          "path": "docs/REFERENCES.md",
+          "state": "unchanged",
+          "reason": "CP045 đã có migration/source routing; per-questionsourcehash trongreuseledger/evidence mới."
+        },
+        {
+          "path": "AGENTS.md",
+          "state": "unchanged",
+          "reason": "Áp dụng mandatorysource-questionreuse/solo/waiver/PR; không đổi workflow."
+        },
+        {
+          "path": "docs/evidence/udp-actor/README.md",
+          "state": "updated",
+          "reason": "Nguồn/build/hash/recipe/failedprobe/control/native/visual và giới hạn."
         }
       ]
     }

@@ -1,6 +1,6 @@
 # KR 00967 — contract tương thích client gốc
 
-Revision kr-legacy-contract-r1; cập nhật31/10/2026 JST (CP045).
+Revision kr-legacy-contract-r1; cập nhật31/10/2026 JST (CP046).
 **Contract có bằng chứng từng phần; chưa nghiệm thu full codec K2**.
 Lộ trình và thứ tự task chỉ giữ ở [REWRITE_PLAN — KRE](PLAN.md).
 Đây là contract của repo server KR. ADR0009 của bản viết lại là nguồn lịch sử để so sánh;
@@ -1842,9 +1842,40 @@ queue5C303B80 count19→38, drain45→26, gameconsumer nhận đúng inner15byte
 Đó là giá trị return quan sát được, chưa chứng minh toàn13byte output hoặc actor nhận/apply.
 Run này vẫn có hai17/19/statepeer1 trước175 và hai175/180/phòng; outcome/fuse là policy stub.
 
-Không suy gói cũ teleport/sửa actor từ ảnh spawn/tutorial, queue hoặc return13. Còn thiếu đường
-downstream từ consumer tới actor, điều kiện gate và kiểm round identity/grammar đầy đủ;
-không tự đóng validator/reset/K6a từ các ca này. [Phép thử tối thiểu tiếp](RESEARCH.md#q-023).
+Tại CP045 chưa suy gói cũ sửa actor từ ảnh spawn/tutorial, queue hoặc return13. CP046 kiểm tiếp
+downstream và actor dưới đây; round identity/grammar đầy đủ vẫn mở. Không tự đóng validator/reset/K6a.
+
+**CP046 — output và actor, kr_static/kr_runtime confirmed hẹp:**
+[Nguồn đối chiếu, recipe, control/lỗi probe và hash](evidence/udp-actor/README.md).
+Không RE lại endpoint/CRC/queue: dùng CP045, cache sender13E14C0 và VN P2P làm phương pháp;
+nguồn cũ không chứng minh guard KR. Không thêm patch/ép state; cùng diagnostic copy Wine.
+
+- `E8E960` tại build này trả AL0 vô điều kiện; 13byte machinecode khớp static/runtimeA/runtimeB/modO.
+  Gate0 của CP045 có lời giải tĩnh, không còn cần tìm input bật nó. Không suy toàn wire không epoch.
+- Tail13E0E00 dưới gate0 chép payload từ buffer+2 về đầu, trả length−2. Runtime caller thật125934B;
+  output13byte khớp inner15byte đã bỏ selector/slot. `125937E→14EF010` là khởi tạo packet stream,
+  không phải callback gameplay. Bước này chưa đổi field actor trong ca đã đo.
+- Pump ngoài tại **1257B61** gọi virtual+B4, runtime target **125DEF0**, receiver vt17927FC;
+  wrapper này chuyển tới receiver+F0/vfF4. Target vfF4 sâu hơn chưa được đo tên/grammar.
+  Nhánh130BC00 trong caller trung gian không hit ở control, không gọi nó là handler actor.
+- `pump-stale`, vòng2/sample6: exact old B→A datagram17byte vòng1, wire SHA
+  `2bee9f8cf7d5f12d3cbec10921e8d1c4e66ac1a10c1bf320b0b772417d9f0f9d`, không trùng normalforwardR2.
+  Inner15byte `010100003b00015cc8009f00000043` → output/packet stream/callback13byte
+  `00003b00015cc8009f00000043`. Cùng callback, cùng pointer actor slot1: secure **+4C/x120→200**,
+  **+58/y159→159**, **+28/state15→0**; checksum và getter native52A350 xác nhận trước/sau.
+  Cursor packet0→13. Đây là actor thực sự đổi field trong lúc xử lý oldpayload, vượt bằng chứng queue.
+- Normalforward vòng2/sample8 kế tiếp làm **x200→120**, y159/state0 giữ nguyên. Return callback
+  old=1/current=0 nhưng cả hai đổi tọa độ; không gọi0 là reject hoặc1 là accept từ quan sát này.
+  Không gán tên tick/key/epoch cho field payload chỉ vì trông giống counter.
+
+Control `pump-control` không replay, cùng24-sample probe/input (harness chỉ khác mode), có8callback
+normalB đã match actualforward trước input vòng2: x120/y159 giữ nguyên trước/sau. Control có hai
+bom/17/19/statepeer/result/return. Oldrun có hai Start/bom nhưng vòng2 chỉ17, không19/result; không
+quy việc thiếu19 chỉ do replay và không ghép hai run thành ca fullmatch.
+Getter oracle kiểm value/checksum native, mô hình riêng counter5000/55-read để bỏ periodic callback/
+rekey/storage trong emulation; không đổi counter/state của client runtime. [Giới hạn phép kiểm](evidence/udp-actor/README.md).
+Giới hạn: một oldpacket/cùng endpoint/profile; chưa toàn peer grammar, freshness validator, loại gói
+cũ theo generation hoặc giải pháp production. [Phép thử kế](RESEARCH.md#q-023).
 
 ### Giới hạn và correction WCP lịch sử
 
@@ -1877,7 +1908,7 @@ liệt kê và phân biệt với nguyên bản trong mọi demo.
 
 ### Authority matrix hiện hành và gate review
 
-Bảng này tổng hợp bằng chứng từng phần đến CP045; chưa phải toàn contract server gốc. Mỗi hàng khi
+Bảng này tổng hợp bằng chứng từng phần đến CP046; chưa phải toàn contract server gốc. Mỗi hàng khi
 triển khai phải bổ sung riêng **creator, simulator, validator, broadcaster, peer-editable state**, với
 locator/trace và trạng thái từng ô; những vai trò không nêu dưới đây hiện `unknown` cho KR.
 
@@ -1891,7 +1922,7 @@ locator/trace và trạng thái từng ô; những vai trò không nêu dưới 
 | Trap/death | CP029/036; CP037 kim và tranh chấp cứu/diệt; [kim](#needle-selfescape), [precedence](#contact-precedence) | Validator/duplicate/stale/generation/variants, result21 và đối chứng thêm/đảo chiều còn thiếu |
 | Result/reset | CP039 hai vòng statepeer/result/21/return và reset field hẹp; CP044 [timer ở EOF và vòng B/C mới](#abort-timer) | CP041 có [payload cũ khi ID reuse](#round-generation); arbitration/toàn generation/entity/timer/peer/seq không rò vẫn mở; phân biệt run chờ sai origin với ca hoàn tất |
 | Room lifecycle | CP034 leave/promotion/EOF/return; CP035 rejoin/Ready; CP040 chủ B/C Start; CP044 [B/C bom/death/result/return sau abort](#abort-timer) | Bầu chủ/giữ ID-slot/forfeit là policy stub; guest EOF trả A về phòng/xóa B đã đo riêng; reconnect cùng account/disconnect variants/toàn reset còn mở |
-| Peer lifecycle | CP027 actual99→153; CP045 [UDP cũ tới queue/drain/consumer](#udp-generation) | Full schema/handshake/key/slot/reliability/relay, gate và actorapply/round identity; queue/return không thay proof state peer được sửa |
+| Peer lifecycle | CP027 actual99→153; CP045–046 [oldUDP tới actor/current sửa lại/control](#udp-generation) | DeepvfF4/freshness/identity guard, full schema/handshake/key/slot/reliability/relay và round reset; E8E960false đã giải hẹp, chưa production generation guard |
 
 Gate K5/K6 cần kiểm matrix và đối chứng của hành vi thực sự dùng; từ28/10 Codex tự kiểm theo miễn review của chủ dự án. Có thể giữ unknown về
 server gốc thất lạc nếu policy emulator được chọn `design`, client chấp nhận và ca consistency đạt;
