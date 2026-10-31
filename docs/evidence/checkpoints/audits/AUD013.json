@@ -1,0 +1,100 @@
+{
+  "id": "AUD013",
+  "trigger": "periodic",
+  "completed_through": "CP040",
+  "recorded_utc": "2026-10-31T08:06:04.789240+00:00",
+  "auditor": "Codex self-audit; independent review waived by project owner",
+  "read_files": [
+    "README.md",
+    "docs/PLAN.md",
+    "docs/PROTOCOL.md",
+    "docs/RESEARCH.md",
+    "docs/evidence/needle-contact/README.md",
+    "docs/evidence/needle-repeat/README.md",
+    "docs/evidence/round-finish/README.md",
+    "docs/evidence/abort-rejoin/README.md",
+    "docs/evidence/checkpoints/manifest.json",
+    "local/research/codex/needle-repeat-r1/verification.json",
+    "local/research/codex/contact-symmetry-r1/runtime-summary.json",
+    "local/research/codex/round-finish-r1/runtime-summary.json",
+    "local/research/codex/round-finish-r1/verification.json",
+    "local/research/codex/abort-rejoin-r1/replacement-first/run.json",
+    "local/research/codex/abort-rejoin-r1/replacement-fixed/run.json",
+    "local/research/codex/abort-rejoin-r1/replacement-retry/run.json",
+    "local/research/codex/abort-rejoin-r1/replacement-retry/client-B.log",
+    "local/research/codex/abort-rejoin-r1/replacement-retry/client-C.log",
+    "local/research/codex/abort-rejoin-r1/guest-EOF-control/run.json",
+    "local/research/codex/abort-rejoin-r1/guest-EOF-policy/run.json",
+    "local/research/codex/abort-rejoin-r1/guest-EOF-policy/client.log",
+    "local/research/codex/abort-rejoin-r1/runtime-summary.json",
+    "local/research/codex/abort-rejoin-r1/actor-fields.json",
+    "local/research/codex/abort-rejoin-r1/native-packets.json",
+    "local/research/codex/abort-rejoin-r1/measurement-notes.json",
+    "local/research/codex/abort-rejoin-r1/replacement-fixed-visual.png",
+    "local/research/codex/abort-rejoin-r1/replacement-retry-visual.png",
+    "local/research/codex/abort-rejoin-r1/guest-EOF-control-visual.png",
+    "local/research/codex/abort-rejoin-r1/guest-EOF-policy-visual.png"
+  ],
+  "method": "Periodic CP036→CP040, retaining AUD012 ad-hoc correction and all completed checkpoints/raw. Read README→whole PLAN→whole PROTOCOL in ordered slices (first950 before compaction,951-end resumed)→whole RESEARCH→CP037/038/039 evidence, then new CP040 evidence/raw/reports/native fields/secure snapshots and18 manually viewed images. Re-read final four-doc delta and new evidence against sealed actual C2S/EOF/profile/reader/clock/input, not checker-only. Source hashes checked5/5. Prior first-eligible correction remains, exact simultaneous runtime is optional parity backlog.",
+  "findings": [
+    {
+      "id": "F1",
+      "stale": "README/current integration retained CP039 preintegration snapshot despite PR47 merge; active next step still BStart/newjoin after hostEOF and guestEOF as wholly unknown.",
+      "correction": "Record exact PR47 baseline e19bc9e and CP040 preintegration scope; update PLAN map, current matrix/Q025/Q027 and NEXT-DUO-ROUND to validator/generation/reset, retaining reconnect/fullmatch unknown.",
+      "fixed_in": [
+        "README.md",
+        "docs/PLAN.md",
+        "docs/PROTOCOL.md",
+        "docs/RESEARCH.md"
+      ]
+    },
+    {
+      "id": "F2",
+      "stale": "Fresh replacement C can be misread as A reconnect because slot0 and name KRLocal are reused; partial native106 prefix might be read as full profile parse.",
+      "correction": "Explicit ID3 vs oldID1, new four C sockets/prefix, actual ownmatch/87/95/B104/121/99 evidence; native106 only5byte slot/ID. No auth/session resume/full profile claim.",
+      "fixed_in": [
+        "docs/PROTOCOL.md",
+        "docs/RESEARCH.md",
+        "docs/evidence/abort-rejoin/README.md"
+      ]
+    },
+    {
+      "id": "F3",
+      "stale": "Failed early collector or first unproductive Start input could be erased by later retry success; immediate cleanup/rank screenshots can precede callback and retain old roster.",
+      "correction": "Keep all five sealed runs: zeroTCP NameError collectorfailure, fixed oneclick/no104 incomplete, separate boundedretry actual104 success. Unknown firstclick cause preserved; combine callback with late images, no inputreturn/UI-only claims.",
+      "fixed_in": [
+        "docs/PROTOCOL.md",
+        "docs/evidence/abort-rejoin/README.md",
+        "local/research/codex/abort-rejoin-r1/measurement-notes.json",
+        "local/research/codex/abort-rejoin-r1/verify.py"
+      ]
+    },
+    {
+      "id": "F4",
+      "stale": "Inherited guest-run metadata/screenshot labels host_disconnect/B-after-EOF-input can invert departed/survivor identity; forfeit rank could be misread as actual death.",
+      "correction": "Explicit Bprefixkill/BchannelEOF, Ainput/A175/180/107slot1ID2→0/chiefA1; actual actorBstate0 aroundrank/return, no17/19. No automaticdeath/serverauthority claim.",
+      "fixed_in": [
+        "docs/PROTOCOL.md",
+        "docs/evidence/abort-rejoin/README.md",
+        "local/research/codex/abort-rejoin-r1/measurement-notes.json"
+      ]
+    },
+    {
+      "id": "F5",
+      "stale": "Historical checkpoint sections/evidence keep then-open limits and old audit-next/integration snapshot, which can look current if read out of context.",
+      "correction": "Add PROTOCOL historical-scope note and current canonical CP040 section/matrix; preserve immutable CP037–039 evidence/raw, link current RESEARCH/manifest. AUD013 periodic40, next44; no ad-hoc reset.",
+      "fixed_in": [
+        "docs/PROTOCOL.md",
+        "README.md",
+        "docs/RESEARCH.md",
+        "docs/evidence/checkpoints/manifest.json"
+      ]
+    }
+  ],
+  "remaining": [
+    "No A account reconnect/resume, bothdisconnect, guestEOF followed by Start, ID allocator/slotreuse variants or timeout/NAT/relay proof.",
+    "B/C recovery only reaches movement, no bomb/death/result there; CP039 combinedtwo-round statepeer/result remains separate. Allentity/timer/peerqueue/reset and validator/stale/generation not accepted; K5/K6a/LAN/Internet remain open.",
+    "Full auth/profile/cache/codec/vanilla, cosmetic Aownroomwhite silhouette CP039, report21/sub34 semantics remain unknown.",
+    "Firstclickno104 cause unknown; native106 only prefix5, no fullprofile oracle. Review waived/selfcheck not independent approval or gate closure."
+  ]
+}

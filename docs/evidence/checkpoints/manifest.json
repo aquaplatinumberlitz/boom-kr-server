@@ -1,11 +1,11 @@
 {
   "schema": "kre-checkpoints-v1",
-  "last_id": "CP039",
-  "completed_count": 39,
+  "last_id": "CP040",
+  "completed_count": 40,
   "audit_interval": 4,
-  "last_periodic_audit": 36,
-  "next_periodic_audit": "CP040",
-  "last_manual_audit": "AUD012",
+  "last_periodic_audit": 40,
+  "next_periodic_audit": "CP044",
+  "last_manual_audit": "AUD013",
   "checkpoints": [
     {
       "id": "CP001",
@@ -66800,6 +66800,1510 @@
           "reason": "Threecontrollerruns/recipe/rawhash/parser/securefields/images/control/policychoices."
         }
       ]
+    },
+    {
+      "id": "CP040",
+      "previous": "CP039",
+      "lifecycle": "complete",
+      "recorded_utc": "2026-10-31T08:07:21.059535+00:00",
+      "context_commit": "e19bc9e9e255d160efc90a68474cab742f360781",
+      "question": "Sau host EOF/forfeitreturn/promotion, B có nhận client mới/Ready rồi Start tới peer movement; guest EOF có cần policy để A về phòng?",
+      "scope": "Five sequential isolated Wine controllers: failedcollector beforeTCP, freshreplacementCready but no104 singleclick, boundedretryactualBStart/B+Cclock/movement, guestEOFcontrol and guestforfeitreturn/roomcleanup. Copy source unchanged, no new binarypatch/stateforcing. Fresh C not A reconnect/fullmatch.",
+      "owner": "Codex",
+      "reviewer": "Codex",
+      "artifacts": [
+        {
+          "name": "CA-r2-login-logout.exe",
+          "sha256": "660447c293ce92270cb9b5815331bca976e8f156366e1fe50b217b6c12e60ce3"
+        },
+        {
+          "name": "CA-r2-stage-social.exe",
+          "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+        },
+        {
+          "name": "CA-r2-stage-social.exe Bcopy",
+          "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+        },
+        {
+          "name": "modO.bin",
+          "sha256": "a08950c833d3acab8281049def7b3dc96b221f107eeda01da3a548e34b91dce5"
+        },
+        {
+          "name": "CA-r2-stage-social.exe Ccopy",
+          "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+        }
+      ],
+      "locators": [
+        "VA base400000/RVA=VA-400000;modO raw memory, PE copies mapped.14 targeted ranges match5 artifacts including C, no wholeclient rescan.",
+        "replacement-first UTC07:35:37 NameError recordroot/zeroTCP; fixed07:36:47 Ready/no104; retry07:43:36 oneboundedretry→actual104 B.",
+        "Auth13B09E0 id3; ownslot123FF10 slot0; join87 tail8179F3 full7;106 ownmatch DC5925=1; Cactual82/585/95→110slot0state4→Bactual104.",
+        "B/C121 DC7F30/DC9363 129/129/errors0;gameinitE572D9/stage13;actual99→197/196/153→clockE134B0. Bseq73..121 continuous, Bport retained;Cnewport/identity3.",
+        "Replacement153 excludes deadA; Bremoteport=Cactual99 and viceversa. CDown0.5/BRight0.5 afterboth153, before/afterimages bothviews movement.",
+        "guestEOFcontrol UTC07:49:38 actualBchannelEOF, AinputRight/ghostB/noresult. guestpolicy07:53:55 confirmedEOF B→12s→175Awin/Blose→5s→180A→room107B/110hostA.",
+        "175 E5F610/E5F67B outer302 and E3EDBE inner292;180E64950/E652C5 full3/stage12;107D6062C full6/DC6329rewind/final1;12400D0 ID2→0, chief1240D5E=1.",
+        "ActualsecureactorB+28=0 aroundguestforfeitrank/return;no17/19. Native52A350 confirms captured wrappers/checksum;106 onlynativeprefix5 notfullprofile.",
+        "CP039PR47 merge e19bc9e, CP040periodicAUD013 completes CP036→040; nextperiodicCP044. Issue14/KRE-005b/open, no new gates."
+      ],
+      "findings": [
+        {
+          "summary": "Fresh C identity3/slot0 joins after AEOF/forfeitreturn/roomcleanup; actual82/585/95, ownID/slot/match, dynamic106toB andReady110toB/C. B remainsID2/slot1/chief.",
+          "source": "kr_runtime",
+          "status": "confirmed",
+          "method": "runtime",
+          "canonical": "docs/PROTOCOL.md#abort-rejoin",
+          "limits": "C has new prefix/four sockets and inheritedname KRLocal, not A account reconnect/resume/fullauth/cache/IDallocator proof.",
+          "evidence": [
+            "E082",
+            "E084",
+            "E085",
+            "E031"
+          ]
+        },
+        {
+          "summary": "One bounded BStartretry produced actual104; full121129/99/clock on B/C, correct currentpeer endpoints153, Bsocket/UDPport retained, images bothviews show newCDown/BRight positions.",
+          "source": "kr_runtime",
+          "status": "confirmed",
+          "method": "runtime",
+          "canonical": "docs/PROTOCOL.md#abort-rejoin",
+          "limits": "Only reaches movement after recovery, no B/C bomb/death/result. Unknown firstclick failure cause, no entireUDPgrammar/reset or K6a proof.",
+          "evidence": [
+            "E082",
+            "E084",
+            "E085",
+            "E033",
+            "E035"
+          ]
+        },
+        {
+          "summary": "GuestBEOFcontrol leaves A active with Bghost/noautomaticresult; chosenforfeit175/180 thenroom107B/110hostA clearsID2 and retainsAchief1. ActorBstate0aroundrank/return,noactual17/19.",
+          "source": "kr_runtime",
+          "status": "confirmed",
+          "method": "runtime",
+          "canonical": "docs/PROTOCOL.md#abort-rejoin",
+          "limits": "ChosenAwin/Blose/timing/cleanup policy notoriginalserverauthority/deathsimulation. No AStartafterguestEOF/bothdisconnect/accountreconnect/generalcleanup proof.",
+          "evidence": [
+            "E126",
+            "E148",
+            "E149",
+            "E040",
+            "E042",
+            "E030"
+          ]
+        },
+        {
+          "summary": "First collector NameError recordroot beforeTCP; fixed oneclick trial CReady/Bchief butno104 through320s; boundedretry trial independent raw. No negativeprotocol or causalinput conclusion.",
+          "source": "kr_runtime",
+          "status": "confirmed",
+          "method": "runtime",
+          "canonical": "docs/PROTOCOL.md#abort-rejoin",
+          "limits": "Measurement outcomes explicitlyfailed/incomplete, notallruns gameplaypass; immediate rank/cleanup images may precede callbacks.",
+          "evidence": [
+            "E045",
+            "E048",
+            "E032",
+            "E082",
+            "E021"
+          ]
+        },
+        {
+          "summary": "Native actualC2Sframer/CRCpartial checks and selectedpacket fields/blob/checksum/securegetter validate declared recipe;14ranges5artifacts includingC unchanged.",
+          "source": "kr_static",
+          "status": "confirmed",
+          "method": "emulation",
+          "canonical": "docs/PROTOCOL.md#abort-rejoin",
+          "limits": "Synthetic receiver/allocation, no originalserveroracle/nativeworld emulation.106 parsedprefix5only;callback/identity/visual runtime separate.",
+          "evidence": [
+            "E031",
+            "E030",
+            "E022",
+            "E036"
+          ]
+        },
+        {
+          "summary": "CP040 replaces active afterabortStart/guestEOF question with validator/generation/reset; freshidentity/profile/slotreuse/forfeit are explicit emulatorchoice, no fullmatch/gates closed.",
+          "source": "design",
+          "status": "design",
+          "method": "documentation",
+          "canonical": "docs/PROTOCOL.md#abort-rejoin",
+          "limits": "Remaining original21/34semantics/fullauth/cache/codec/vanilla/allocator/stale/entity/timer/peerqueue/LAN/Internet not silently marked solved.",
+          "evidence": [
+            "E021",
+            "E035",
+            "E036"
+          ]
+        }
+      ],
+      "verification": [
+        {
+          "check": "7224 mechanical hash/isolation/lease/sequential/EOFidentity/timeline/seq/callback/nativeC2S checks across5sealedruns, preservingfailed/incomplete outcomes.",
+          "result": "pass",
+          "evidence": [
+            "E036",
+            "E034",
+            "E035"
+          ],
+          "limits": "Checker validatesdeclaredrelationships, not semantics/fullmatch/gate."
+        },
+        {
+          "check": "159 nativepacket cases, 212 actualsecure checksum/native52A350/sourcehash checks;14ranges5artifacts;18 manuallyviewedimages.",
+          "result": "pass",
+          "evidence": [
+            "E031",
+            "E030",
+            "E022",
+            "E032",
+            "E033",
+            "E040",
+            "E042"
+          ],
+          "limits": "106onlyprefix5;S2Cfixturesselectedpolicy, noindependentserveroracle."
+        },
+        {
+          "check": "PeriodicmanualAUD013CP040 coreorder/evidence/raw/reports/images reconciliation andsourceartifactverify5/5 beforecomplete.",
+          "result": "observed",
+          "evidence": [
+            "E002",
+            "E043",
+            "E021"
+          ],
+          "limits": "Selfaudit/reviewwaived, not independent approval; previous completedCP/raw unchanged."
+        }
+      ],
+      "evidence": [
+        {
+          "id": "E001",
+          "kind": "repository",
+          "path": "docs/evidence/abort-rejoin/README.md",
+          "bytes": 6316,
+          "sha256": "b6d81cd7070b1ee6ff34c7d9d6b19ec041173956c39606683df02ea4e2fa3aab"
+        },
+        {
+          "id": "E002",
+          "kind": "repository",
+          "path": "docs/evidence/checkpoints/audits/AUD013.json",
+          "bytes": 6192,
+          "sha256": "facb953c4204c22d4d303a28882675b4c0e95ae6791566503916b53c89b7722b"
+        },
+        {
+          "id": "E003",
+          "kind": "local",
+          "path": "local/research/codex/abort-rejoin-r1/prepare.py",
+          "bytes": 9522,
+          "sha256": "6ff4e52348fb438cc38202a525273659b7af93ff135278085f58df449db908de"
+        },
+        {
+          "id": "E004",
+          "kind": "local",
+          "path": "local/research/codex/abort-rejoin-r1/C106-slot0-id3.bin",
+          "bytes": 242,
+          "sha256": "5232f9b513e18fa78c6bd15a1c093f2997382e695d8f98398f33f95bede3470f"
+        },
+        {
+          "id": "E005",
+          "kind": "local",
+          "path": "local/research/codex/abort-rejoin-r1/C-guestB106-chief64.bin",
+          "bytes": 242,
+          "sha256": "baba396be0cc267d0bc54828a1ecc4fff464c51035722ba92650a071bcfb99a4"
+        },
+        {
+          "id": "E006",
+          "kind": "local",
+          "path": "local/research/codex/abort-rejoin-r1/fixtures.json",
+          "bytes": 716,
+          "sha256": "137a1c51a22f9ccfc10f7b2fc8789f980af84c622d96ffb2aeaf53d909e76a7f"
+        },
+        {
+          "id": "E007",
+          "kind": "local",
+          "path": "local/research/codex/abort-rejoin-r1/run_probe.py",
+          "bytes": 1068,
+          "sha256": "2589eb1ac70ff0f86b9047e2a71d3e3916d2cfbd3db07a8af587efe479ec2c80"
+        },
+        {
+          "id": "E008",
+          "kind": "local",
+          "path": "local/research/codex/abort-rejoin-r1/seal_run.py",
+          "bytes": 626,
+          "sha256": "2bce0e31ce800f4c104af63f74f19a855cd0c8d6b6ac6c0c0b5b87c329fc195b"
+        },
+        {
+          "id": "E009",
+          "kind": "local",
+          "path": "local/research/codex/abort-rejoin-r1/derive_roles.py",
+          "bytes": 857,
+          "sha256": "d558f1049f7f7c834d760f73e5e8f030b001cdcd7cb1c5c8ab6ebd778b9da2e3"
+        },
+        {
+          "id": "E010",
+          "kind": "local",
+          "path": "local/research/codex/abort-rejoin-r1/replay-run.py",
+          "bytes": 3003,
+          "sha256": "bcc336b6bd92c6c047c16a56090c220a59df803c4ddfc430f22899ef421c4722"
+        },
+        {
+          "id": "E011",
+          "kind": "local",
+          "path": "local/research/codex/abort-rejoin-r1/parse_fields.py",
+          "bytes": 3091,
+          "sha256": "433d19f5ebc15808b29975e6b3ffa010f30e0680e9e681ae7d3aea162ca3265d"
+        },
+        {
+          "id": "E012",
+          "kind": "local",
+          "path": "local/research/codex/abort-rejoin-r1/native_packets.py",
+          "bytes": 4768,
+          "sha256": "4d6954777b1e9bb255857d3ddef58cccddfa3141c6e59bd5cd0fca09825e1565"
+        },
+        {
+          "id": "E013",
+          "kind": "local",
+          "path": "local/research/codex/abort-rejoin-r1/read_static.py",
+          "bytes": 671,
+          "sha256": "9a0c420fd2d3a941fbf44d86beaf8726e41400a7cb1fad526356baa14d2476c5"
+        },
+        {
+          "id": "E014",
+          "kind": "local",
+          "path": "local/research/codex/abort-rejoin-r1/match_code.py",
+          "bytes": 1351,
+          "sha256": "b37797c6cfaa90e21d806c962c6ac7e959434fcda4d6ef2877275e467e42a586"
+        },
+        {
+          "id": "E015",
+          "kind": "local",
+          "path": "local/research/codex/abort-rejoin-r1/recovery.gdb",
+          "bytes": 12412,
+          "sha256": "ca85cf875d5d939d950ff99c0d79951473776b64b39514f33fe9f7c3e04979a1"
+        },
+        {
+          "id": "E016",
+          "kind": "local",
+          "path": "local/research/codex/abort-rejoin-r1/replacement-first-recipe.json",
+          "bytes": 1008,
+          "sha256": "29408069ce4bc1c0f30f3ebe20e6ea0ce533a509e2c11041d6a2fc8ade744fce"
+        },
+        {
+          "id": "E017",
+          "kind": "local",
+          "path": "local/research/codex/abort-rejoin-r1/replacement-first-launcher.log",
+          "bytes": 6288,
+          "sha256": "69cee4a637b25fcc288e19ccfdc0b4e23a4ef4acaf14b1a24b1df6d57265f115"
+        },
+        {
+          "id": "E018",
+          "kind": "local",
+          "path": "local/research/codex/abort-rejoin-r1/replacement-first-hashes.json",
+          "bytes": 2877,
+          "sha256": "b073cca2ba1ae4caf61d3eeb406584af141900709f90082c5df3217eb323cf0b"
+        },
+        {
+          "id": "E019",
+          "kind": "local",
+          "path": "local/research/codex/abort-rejoin-r1/replacement-fixed-recipe.json",
+          "bytes": 1014,
+          "sha256": "848aa25245aca1fc2cd4a2d4a4fa8f61057f8869ff8e731aea0d63a28131d1e5"
+        },
+        {
+          "id": "E020",
+          "kind": "local",
+          "path": "local/research/codex/abort-rejoin-r1/replacement-fixed-launcher.log",
+          "bytes": 66444,
+          "sha256": "1b158dc46f87e5fe323cc73e82297d45844111118405cb012e9d1f236ad7226f"
+        },
+        {
+          "id": "E021",
+          "kind": "local",
+          "path": "local/research/codex/abort-rejoin-r1/measurement-notes.json",
+          "bytes": 2045,
+          "sha256": "75627158668c54212a214cec9e04d922b3c04f944d20da47f6938562d4ef5110"
+        },
+        {
+          "id": "E022",
+          "kind": "local",
+          "path": "local/research/codex/abort-rejoin-r1/code-match.json",
+          "bytes": 3314,
+          "sha256": "3670ea544ccfe3c691745480e25bfeb48fc9f7bc649e434e05afcb2aa80a1b81"
+        },
+        {
+          "id": "E023",
+          "kind": "local",
+          "path": "local/research/codex/abort-rejoin-r1/replacement-fixed-hashes.json",
+          "bytes": 356937,
+          "sha256": "33cda37a7cd2cd362cdcde3bccdb6383a40fff7fba6c7cda288f48398215a518"
+        },
+        {
+          "id": "E024",
+          "kind": "local",
+          "path": "local/research/codex/abort-rejoin-r1/replacement-retry-recipe.json",
+          "bytes": 1014,
+          "sha256": "bc89f13c341ba31c40e444ff8378ee66155d702d6562531bef22ba317cd544bd"
+        },
+        {
+          "id": "E025",
+          "kind": "local",
+          "path": "local/research/codex/abort-rejoin-r1/replacement-retry-launcher.log",
+          "bytes": 80146,
+          "sha256": "033f846245a6dd42f9bd96f149155f5fac923c0562db03678abf92fc81fcdf13"
+        },
+        {
+          "id": "E026",
+          "kind": "local",
+          "path": "local/research/codex/abort-rejoin-r1/replacement-retry-progress.png",
+          "bytes": 400679,
+          "sha256": "a123905a078099b40fcc370ae6702499367ee39638236778259fc6fcae7280a2"
+        },
+        {
+          "id": "E027",
+          "kind": "local",
+          "path": "local/research/codex/abort-rejoin-r1/replacement-retry-hashes.json",
+          "bytes": 344366,
+          "sha256": "62b1c22731b552737807d37cf3001d8366d49dd0fe14049a5341830a0a1ebaff"
+        },
+        {
+          "id": "E028",
+          "kind": "local",
+          "path": "local/research/codex/abort-rejoin-r1/guest-EOF-control-recipe.json",
+          "bytes": 1014,
+          "sha256": "60588c8ee583a27cfc0cb76ead29471963481799f43b7af3ff6f349ed57bc052"
+        },
+        {
+          "id": "E029",
+          "kind": "local",
+          "path": "local/research/codex/abort-rejoin-r1/guest-EOF-control-launcher.log",
+          "bytes": 41720,
+          "sha256": "62c22191718bd120d3a5aa45ea1d607ac8e32150239df332fce0010933d678c7"
+        },
+        {
+          "id": "E030",
+          "kind": "local",
+          "path": "local/research/codex/abort-rejoin-r1/actor-fields.json",
+          "bytes": 139649,
+          "sha256": "6d77ba7f71fcc63b89d7e830f60ceed30b5db9fdb93581d898426fe64dc98457"
+        },
+        {
+          "id": "E031",
+          "kind": "local",
+          "path": "local/research/codex/abort-rejoin-r1/native-packets.json",
+          "bytes": 61475,
+          "sha256": "7d56c0a81a025165ea151d163eebe50d73f7eefba31e4783955c51c22c9a6683"
+        },
+        {
+          "id": "E032",
+          "kind": "local",
+          "path": "local/research/codex/abort-rejoin-r1/replacement-fixed-visual.png",
+          "bytes": 260680,
+          "sha256": "e75ade8b7378fefd6aa62666c31845556582dd41ff9155cafdb044421bac639b"
+        },
+        {
+          "id": "E033",
+          "kind": "local",
+          "path": "local/research/codex/abort-rejoin-r1/replacement-retry-visual.png",
+          "bytes": 1316016,
+          "sha256": "be118c692ffe2e9350d60658c4447a47d380964ebce2f7ca9ac2b3626500528a"
+        },
+        {
+          "id": "E034",
+          "kind": "local",
+          "path": "local/research/codex/abort-rejoin-r1/verify.py",
+          "bytes": 9168,
+          "sha256": "59bede0a895723bc140a5f8b686a9aa9044bc08b8b2b78e0901f661a81dcc85e"
+        },
+        {
+          "id": "E035",
+          "kind": "local",
+          "path": "local/research/codex/abort-rejoin-r1/runtime-summary.json",
+          "bytes": 10982,
+          "sha256": "5c7eeb52cbe254e138d348b178126a08e201eda4b17b03987cbf5a473ef4bf58"
+        },
+        {
+          "id": "E036",
+          "kind": "local",
+          "path": "local/research/codex/abort-rejoin-r1/verification.json",
+          "bytes": 311,
+          "sha256": "3667bd6239d3164c60c1b6449ff6e8048fb137a7e7784cda45a5ca1339892666"
+        },
+        {
+          "id": "E037",
+          "kind": "local",
+          "path": "local/research/codex/abort-rejoin-r1/guest-EOF-control-hashes.json",
+          "bytes": 103741,
+          "sha256": "70ce22b445c1d3fe044f06c073c8dfd1b10178caffdc19110eded0fd69b148c1"
+        },
+        {
+          "id": "E038",
+          "kind": "local",
+          "path": "local/research/codex/abort-rejoin-r1/guest-EOF-policy-recipe.json",
+          "bytes": 1011,
+          "sha256": "de24d52db9c327bee74d927377d033c33e39f5ffad485b582f4bfaa52a4a4295"
+        },
+        {
+          "id": "E039",
+          "kind": "local",
+          "path": "local/research/codex/abort-rejoin-r1/guest-EOF-policy-launcher.log",
+          "bytes": 45009,
+          "sha256": "a01a820e5d6dee1ae0b0bc299d6db29ba7d31d9131e74427ab08e79a22ce2f3e"
+        },
+        {
+          "id": "E040",
+          "kind": "local",
+          "path": "local/research/codex/abort-rejoin-r1/guest-EOF-control-visual.png",
+          "bytes": 624308,
+          "sha256": "b082197cae950fb2e807f62be5cf16b249e59b21c5028ce7f8a2fabb4fe87434"
+        },
+        {
+          "id": "E041",
+          "kind": "local",
+          "path": "local/research/codex/abort-rejoin-r1/guest-EOF-policy-hashes.json",
+          "bytes": 156162,
+          "sha256": "b054ebb48588ec31be940be6cd3e3fd8d9d4d39e15baa1802d24ef67da5a6a34"
+        },
+        {
+          "id": "E042",
+          "kind": "local",
+          "path": "local/research/codex/abort-rejoin-r1/guest-EOF-policy-visual.png",
+          "bytes": 625140,
+          "sha256": "41beb2544ec92cabb404879b8bb6d1f30a6f5a2fb648948fbcdc460855802de2"
+        },
+        {
+          "id": "E043",
+          "kind": "local",
+          "path": "local/research/codex/abort-rejoin-r1/artifact-verification.txt",
+          "bytes": 387,
+          "sha256": "a1851642f21b4e24138c26e101f1210b3c98af1986577ba8277bc341917e81b2"
+        },
+        {
+          "id": "E044",
+          "kind": "local",
+          "path": "local/research/codex/abort-rejoin-r1/finish_checkpoint.py",
+          "bytes": 11341,
+          "sha256": "fc41719f412b836297d8d6c03d1e2ee9b78ffd20aca233ecf1254d42cf45ed4c"
+        },
+        {
+          "id": "E045",
+          "kind": "local",
+          "path": "local/research/codex/abort-rejoin-r1/replacement-first/run.json",
+          "bytes": 6932,
+          "sha256": "f697a8ae08635e233b18e2997768295252b6819fda1ec95267d123628397d9a4"
+        },
+        {
+          "id": "E046",
+          "kind": "local",
+          "path": "local/research/codex/abort-rejoin-r1/replacement-first/client.log",
+          "bytes": 5268,
+          "sha256": "6f0c3a16821f94706f7514b9b56f57c857d79602f40cb6f30a3726e968899072"
+        },
+        {
+          "id": "E047",
+          "kind": "local",
+          "path": "local/research/codex/wine_probe_abort_replacement.py",
+          "bytes": 71119,
+          "sha256": "a1b0e0de9cff2e5dfd245cd90556b0475e0b3b33a9c3b716b733a7f8fc927bcf"
+        },
+        {
+          "id": "E048",
+          "kind": "local",
+          "path": "local/research/codex/abort-rejoin-r1/replacement-fixed/run.json",
+          "bytes": 82482,
+          "sha256": "612422400b84dbbbea0febbe261db51bd200a5435b8d58759d05e798d8ff769a"
+        },
+        {
+          "id": "E049",
+          "kind": "local",
+          "path": "local/research/codex/abort-rejoin-r1/replacement-fixed/client.log",
+          "bytes": 19866,
+          "sha256": "8ca4070dfa6cff9ad928f25adb768ad4df8e13640ef8a9026a5f1029a9fc4624"
+        },
+        {
+          "id": "E050",
+          "kind": "local",
+          "path": "local/research/codex/abort-rejoin-r1/replacement-fixed/client-B.log",
+          "bytes": 28519,
+          "sha256": "374ec0c91e8e3a4cd8bb33b4b35c2d95d595c1f05888939049a52c728594faaa"
+        },
+        {
+          "id": "E051",
+          "kind": "local",
+          "path": "local/research/codex/abort-rejoin-r1/replacement-fixed/client-C.log",
+          "bytes": 17097,
+          "sha256": "c3e63deb85b39fb1e4f05fafd2bb53367fb8adcca93013d97ae841fb008ea297"
+        },
+        {
+          "id": "E052",
+          "kind": "local",
+          "path": "local/research/codex/abort-rejoin-r1/replacement-fixed/A-ready110-73.bin",
+          "bytes": 44,
+          "sha256": "8fafd9cf652b458ee09b3751a0201f9ab1409920398e0e842e43b915c8840e25"
+        },
+        {
+          "id": "E053",
+          "kind": "local",
+          "path": "local/research/codex/abort-rejoin-r1/replacement-fixed/B-ready110-73.bin",
+          "bytes": 44,
+          "sha256": "8fafd9cf652b458ee09b3751a0201f9ab1409920398e0e842e43b915c8840e25"
+        },
+        {
+          "id": "E054",
+          "kind": "local",
+          "path": "local/research/codex/abort-rejoin-r1/replacement-fixed/A-floor582-76.bin",
+          "bytes": 54,
+          "sha256": "9001468072b5ca6e05400891cfd72a5f50549b84806907c1e43b4a350676557b"
+        },
+        {
+          "id": "E055",
+          "kind": "local",
+          "path": "local/research/codex/abort-rejoin-r1/replacement-fixed/A-start121-r1-79.bin",
+          "bytes": 167,
+          "sha256": "f8a824335b4079160a4aaf0e0b425d1fabfa78c248d131503440d0414e1f26cf"
+        },
+        {
+          "id": "E056",
+          "kind": "local",
+          "path": "local/research/codex/abort-rejoin-r1/replacement-fixed/B-floor582-76.bin",
+          "bytes": 54,
+          "sha256": "9001468072b5ca6e05400891cfd72a5f50549b84806907c1e43b4a350676557b"
+        },
+        {
+          "id": "E057",
+          "kind": "local",
+          "path": "local/research/codex/abort-rejoin-r1/replacement-fixed/B-start121-r1-79.bin",
+          "bytes": 167,
+          "sha256": "f8a824335b4079160a4aaf0e0b425d1fabfa78c248d131503440d0414e1f26cf"
+        },
+        {
+          "id": "E058",
+          "kind": "local",
+          "path": "local/research/codex/abort-rejoin-r1/replacement-fixed/A-go197-82.bin",
+          "bytes": 52,
+          "sha256": "64b95010ecb0e40bc0367f41f6710d2357fb2538ce827e205825284601237ef8"
+        },
+        {
+          "id": "E059",
+          "kind": "local",
+          "path": "local/research/codex/abort-rejoin-r1/replacement-fixed/B-go197-82.bin",
+          "bytes": 52,
+          "sha256": "64b95010ecb0e40bc0367f41f6710d2357fb2538ce827e205825284601237ef8"
+        },
+        {
+          "id": "E060",
+          "kind": "local",
+          "path": "local/research/codex/abort-rejoin-r1/replacement-fixed/A-play196-85.bin",
+          "bytes": 45,
+          "sha256": "d04bf155b4847f9d41b0edfdf00a32526302273271c0f1cadbb8ce22b89eb51d"
+        },
+        {
+          "id": "E061",
+          "kind": "local",
+          "path": "local/research/codex/abort-rejoin-r1/replacement-fixed/B-play196-85.bin",
+          "bytes": 45,
+          "sha256": "d04bf155b4847f9d41b0edfdf00a32526302273271c0f1cadbb8ce22b89eb51d"
+        },
+        {
+          "id": "E062",
+          "kind": "local",
+          "path": "local/research/codex/abort-rejoin-r1/replacement-fixed/A-peer153-88.bin",
+          "bytes": 135,
+          "sha256": "64f4d8996ea28f9a5aecc13342cef90576563fa55e42d6c1c86ccd964542ddd3"
+        },
+        {
+          "id": "E063",
+          "kind": "local",
+          "path": "local/research/codex/abort-rejoin-r1/replacement-fixed/B-peer153-88.bin",
+          "bytes": 135,
+          "sha256": "36f6547f7155f021162bafd6b06bd23906eaf5c984fa0d171ae75a729ab05b24"
+        },
+        {
+          "id": "E064",
+          "kind": "local",
+          "path": "local/research/codex/abort-rejoin-r1/replacement-fixed/B-abort-rank175-91.bin",
+          "bytes": 340,
+          "sha256": "facec5f1b3dc5decafce8369562c77466cea676299b07748240f44ae090892cd"
+        },
+        {
+          "id": "E065",
+          "kind": "local",
+          "path": "local/research/codex/abort-rejoin-r1/replacement-fixed/B-abort-return180-94.bin",
+          "bytes": 41,
+          "sha256": "ba0f3eb612dbf90f7f5d95d5bc92421bc468e88cd5c2882cce37d098e5f5cef4"
+        },
+        {
+          "id": "E066",
+          "kind": "local",
+          "path": "local/research/codex/abort-rejoin-r1/replacement-fixed/B-abort-remove107-97.bin",
+          "bytes": 44,
+          "sha256": "5210c093a86d45a828f39c9f6809ed8e1579bf2c39c98a95a68671b6313c1812"
+        },
+        {
+          "id": "E067",
+          "kind": "local",
+          "path": "local/research/codex/abort-rejoin-r1/replacement-fixed/B-abort-promote110-100.bin",
+          "bytes": 44,
+          "sha256": "0259f7a438bd0d5a29a25dccea3c6bb9e9ffe4af5c885f6ed993ad59f6db21ed"
+        },
+        {
+          "id": "E068",
+          "kind": "local",
+          "path": "local/research/codex/abort-rejoin-r1/replacement-fixed/B-replacement106-103.bin",
+          "bytes": 242,
+          "sha256": "465dec5268fd27a503bb9097c5013cfb4c49e873bb5a23fd79b6d64fb614651c"
+        },
+        {
+          "id": "E069",
+          "kind": "local",
+          "path": "local/research/codex/abort-rejoin-r1/replacement-fixed/B-ready110-106.bin",
+          "bytes": 44,
+          "sha256": "c36fd8cdd856fd6d4fb7f5866341a5c6fa19e5eb200355d2c26f6d3ddee5cdb1"
+        },
+        {
+          "id": "E070",
+          "kind": "local",
+          "path": "local/research/codex/abort-rejoin-r1/replacement-fixed/C-ready110-73.bin",
+          "bytes": 44,
+          "sha256": "849c64b6d2a8752c38a190d0dc6aa657b81dae657ef732890d826aff520b1e73"
+        },
+        {
+          "id": "E071",
+          "kind": "local",
+          "path": "local/research/codex/abort-rejoin-r1/derived/replacement-fixed-A-replay.txt",
+          "bytes": 1214,
+          "sha256": "7c5962142606ad2951d5842cbc1f9dfe7c3c024f2d5de85490df5a87f3f24eeb"
+        },
+        {
+          "id": "E072",
+          "kind": "local",
+          "path": "local/research/codex/abort-rejoin-r1/derived/replacement-fixed-A-oracle.json",
+          "bytes": 71169,
+          "sha256": "c70b615f8831b1e361ebdb86310e3ee22c531607e654c4c2d79915afd1c52083"
+        },
+        {
+          "id": "E073",
+          "kind": "local",
+          "path": "local/research/codex/abort-rejoin-r1/derived/replacement-fixed-B-replay.txt",
+          "bytes": 2188,
+          "sha256": "a740acb31ee78f59779b4577a83044f49d72f86086dbf8c7d16a2570ddcb175d"
+        },
+        {
+          "id": "E074",
+          "kind": "local",
+          "path": "local/research/codex/abort-rejoin-r1/derived/replacement-fixed-B-oracle.json",
+          "bytes": 132416,
+          "sha256": "6d35ab635bd9ed40a11ff614f8989fe2d578549bcf6667512c48609f314bed51"
+        },
+        {
+          "id": "E075",
+          "kind": "local",
+          "path": "local/research/codex/abort-rejoin-r1/derived/replacement-fixed-C-replay.txt",
+          "bytes": 1378,
+          "sha256": "4acc3687988e4302fa9e653e33b545e97e1d9619b590c298df510cdeb7fb925e"
+        },
+        {
+          "id": "E076",
+          "kind": "local",
+          "path": "local/research/codex/abort-rejoin-r1/derived/replacement-fixed-C-oracle.json",
+          "bytes": 82273,
+          "sha256": "97977aed4059b0fe299d576ea942010ad449375740388ccf78181f04b406ea78"
+        },
+        {
+          "id": "E077",
+          "kind": "local",
+          "path": "local/research/codex/abort-rejoin-r1/request-frames/replacement-fixed/B-F13-82.bin",
+          "bytes": 49,
+          "sha256": "1746130345929e482c425aa463e6bf34d6da555c86c6474cf235330227f74f47"
+        },
+        {
+          "id": "E078",
+          "kind": "local",
+          "path": "local/research/codex/abort-rejoin-r1/request-frames/replacement-fixed/B-F24-95.bin",
+          "bytes": 98,
+          "sha256": "730e662309a1a5abb7556e5f500168850ae220a9b7f288c1c62d18904206398c"
+        },
+        {
+          "id": "E079",
+          "kind": "local",
+          "path": "local/research/codex/abort-rejoin-r1/request-frames/replacement-fixed/C-F13-82.bin",
+          "bytes": 49,
+          "sha256": "1746130345929e482c425aa463e6bf34d6da555c86c6474cf235330227f74f47"
+        },
+        {
+          "id": "E080",
+          "kind": "local",
+          "path": "local/research/codex/abort-rejoin-r1/request-frames/replacement-fixed/C-F22-95.bin",
+          "bytes": 98,
+          "sha256": "38eeff06df1cda4991e6860d5e77cabcb5d78c9a82bc217363b4899b10d3aedd"
+        },
+        {
+          "id": "E081",
+          "kind": "local",
+          "path": "local/research/codex/wine_probe_abort_replacement_fixed.py",
+          "bytes": 71141,
+          "sha256": "4105395db7542435772477b62af9576f24fb6ac2a7acc433e10636d6559650ff"
+        },
+        {
+          "id": "E082",
+          "kind": "local",
+          "path": "local/research/codex/abort-rejoin-r1/replacement-retry/run.json",
+          "bytes": 99544,
+          "sha256": "d8a37567ff7378ccb0d60a0e47c2f207282e33e70d2e61d541b9889fa7dedd8a"
+        },
+        {
+          "id": "E083",
+          "kind": "local",
+          "path": "local/research/codex/abort-rejoin-r1/replacement-retry/client.log",
+          "bytes": 19880,
+          "sha256": "4596703ecc96be5a3491f36187041ae588d72503ca21568253028a0dea277fb5"
+        },
+        {
+          "id": "E084",
+          "kind": "local",
+          "path": "local/research/codex/abort-rejoin-r1/replacement-retry/client-B.log",
+          "bytes": 32298,
+          "sha256": "524b7ba4c2cd5c2de492ebef8a5af0f7b50d6962124363647b4d7ebb03e1b528"
+        },
+        {
+          "id": "E085",
+          "kind": "local",
+          "path": "local/research/codex/abort-rejoin-r1/replacement-retry/client-C.log",
+          "bytes": 21234,
+          "sha256": "e180ddb5a3f729a2f2d58aad0a2609e01cc9fdc04bceb03560d410e72bbbb861"
+        },
+        {
+          "id": "E086",
+          "kind": "local",
+          "path": "local/research/codex/abort-rejoin-r1/replacement-retry/A-ready110-73.bin",
+          "bytes": 44,
+          "sha256": "8fafd9cf652b458ee09b3751a0201f9ab1409920398e0e842e43b915c8840e25"
+        },
+        {
+          "id": "E087",
+          "kind": "local",
+          "path": "local/research/codex/abort-rejoin-r1/replacement-retry/B-ready110-73.bin",
+          "bytes": 44,
+          "sha256": "8fafd9cf652b458ee09b3751a0201f9ab1409920398e0e842e43b915c8840e25"
+        },
+        {
+          "id": "E088",
+          "kind": "local",
+          "path": "local/research/codex/abort-rejoin-r1/replacement-retry/A-floor582-76.bin",
+          "bytes": 54,
+          "sha256": "9001468072b5ca6e05400891cfd72a5f50549b84806907c1e43b4a350676557b"
+        },
+        {
+          "id": "E089",
+          "kind": "local",
+          "path": "local/research/codex/abort-rejoin-r1/replacement-retry/A-start121-r1-79.bin",
+          "bytes": 167,
+          "sha256": "f8a824335b4079160a4aaf0e0b425d1fabfa78c248d131503440d0414e1f26cf"
+        },
+        {
+          "id": "E090",
+          "kind": "local",
+          "path": "local/research/codex/abort-rejoin-r1/replacement-retry/B-floor582-76.bin",
+          "bytes": 54,
+          "sha256": "9001468072b5ca6e05400891cfd72a5f50549b84806907c1e43b4a350676557b"
+        },
+        {
+          "id": "E091",
+          "kind": "local",
+          "path": "local/research/codex/abort-rejoin-r1/replacement-retry/B-start121-r1-79.bin",
+          "bytes": 167,
+          "sha256": "f8a824335b4079160a4aaf0e0b425d1fabfa78c248d131503440d0414e1f26cf"
+        },
+        {
+          "id": "E092",
+          "kind": "local",
+          "path": "local/research/codex/abort-rejoin-r1/replacement-retry/A-go197-82.bin",
+          "bytes": 52,
+          "sha256": "64b95010ecb0e40bc0367f41f6710d2357fb2538ce827e205825284601237ef8"
+        },
+        {
+          "id": "E093",
+          "kind": "local",
+          "path": "local/research/codex/abort-rejoin-r1/replacement-retry/B-go197-82.bin",
+          "bytes": 52,
+          "sha256": "64b95010ecb0e40bc0367f41f6710d2357fb2538ce827e205825284601237ef8"
+        },
+        {
+          "id": "E094",
+          "kind": "local",
+          "path": "local/research/codex/abort-rejoin-r1/replacement-retry/A-play196-85.bin",
+          "bytes": 45,
+          "sha256": "d04bf155b4847f9d41b0edfdf00a32526302273271c0f1cadbb8ce22b89eb51d"
+        },
+        {
+          "id": "E095",
+          "kind": "local",
+          "path": "local/research/codex/abort-rejoin-r1/replacement-retry/B-play196-85.bin",
+          "bytes": 45,
+          "sha256": "d04bf155b4847f9d41b0edfdf00a32526302273271c0f1cadbb8ce22b89eb51d"
+        },
+        {
+          "id": "E096",
+          "kind": "local",
+          "path": "local/research/codex/abort-rejoin-r1/replacement-retry/A-peer153-88.bin",
+          "bytes": 135,
+          "sha256": "04c4960308533dad2e29f0a3caf5c175ed0a12fcef246115754accf83a6ff1d2"
+        },
+        {
+          "id": "E097",
+          "kind": "local",
+          "path": "local/research/codex/abort-rejoin-r1/replacement-retry/B-peer153-88.bin",
+          "bytes": 135,
+          "sha256": "9cb59ac7eb8af653e702a1f56356ce6bd1df2866a34743efd083aea0e43330b4"
+        },
+        {
+          "id": "E098",
+          "kind": "local",
+          "path": "local/research/codex/abort-rejoin-r1/replacement-retry/B-abort-rank175-91.bin",
+          "bytes": 340,
+          "sha256": "facec5f1b3dc5decafce8369562c77466cea676299b07748240f44ae090892cd"
+        },
+        {
+          "id": "E099",
+          "kind": "local",
+          "path": "local/research/codex/abort-rejoin-r1/replacement-retry/B-abort-return180-94.bin",
+          "bytes": 41,
+          "sha256": "ba0f3eb612dbf90f7f5d95d5bc92421bc468e88cd5c2882cce37d098e5f5cef4"
+        },
+        {
+          "id": "E100",
+          "kind": "local",
+          "path": "local/research/codex/abort-rejoin-r1/replacement-retry/B-abort-remove107-97.bin",
+          "bytes": 44,
+          "sha256": "5210c093a86d45a828f39c9f6809ed8e1579bf2c39c98a95a68671b6313c1812"
+        },
+        {
+          "id": "E101",
+          "kind": "local",
+          "path": "local/research/codex/abort-rejoin-r1/replacement-retry/B-abort-promote110-100.bin",
+          "bytes": 44,
+          "sha256": "0259f7a438bd0d5a29a25dccea3c6bb9e9ffe4af5c885f6ed993ad59f6db21ed"
+        },
+        {
+          "id": "E102",
+          "kind": "local",
+          "path": "local/research/codex/abort-rejoin-r1/replacement-retry/B-replacement106-103.bin",
+          "bytes": 242,
+          "sha256": "465dec5268fd27a503bb9097c5013cfb4c49e873bb5a23fd79b6d64fb614651c"
+        },
+        {
+          "id": "E103",
+          "kind": "local",
+          "path": "local/research/codex/abort-rejoin-r1/replacement-retry/B-ready110-106.bin",
+          "bytes": 44,
+          "sha256": "c36fd8cdd856fd6d4fb7f5866341a5c6fa19e5eb200355d2c26f6d3ddee5cdb1"
+        },
+        {
+          "id": "E104",
+          "kind": "local",
+          "path": "local/research/codex/abort-rejoin-r1/replacement-retry/C-ready110-73.bin",
+          "bytes": 44,
+          "sha256": "849c64b6d2a8752c38a190d0dc6aa657b81dae657ef732890d826aff520b1e73"
+        },
+        {
+          "id": "E105",
+          "kind": "local",
+          "path": "local/research/codex/abort-rejoin-r1/replacement-retry/B-floor582-109.bin",
+          "bytes": 54,
+          "sha256": "b9b71470c976156558d214315de9eb09562e10fa383d1d47bc512b082d6b3e54"
+        },
+        {
+          "id": "E106",
+          "kind": "local",
+          "path": "local/research/codex/abort-rejoin-r1/replacement-retry/B-start121-r2-112.bin",
+          "bytes": 167,
+          "sha256": "49a6e83eb719617b91d888722d42c48691c2c24ce978e956bd0891c123e3de4b"
+        },
+        {
+          "id": "E107",
+          "kind": "local",
+          "path": "local/research/codex/abort-rejoin-r1/replacement-retry/C-floor582-76.bin",
+          "bytes": 54,
+          "sha256": "9001468072b5ca6e05400891cfd72a5f50549b84806907c1e43b4a350676557b"
+        },
+        {
+          "id": "E108",
+          "kind": "local",
+          "path": "local/research/codex/abort-rejoin-r1/replacement-retry/C-start121-r2-79.bin",
+          "bytes": 167,
+          "sha256": "f8a824335b4079160a4aaf0e0b425d1fabfa78c248d131503440d0414e1f26cf"
+        },
+        {
+          "id": "E109",
+          "kind": "local",
+          "path": "local/research/codex/abort-rejoin-r1/replacement-retry/B-go197-115.bin",
+          "bytes": 52,
+          "sha256": "6738aa0feb18267ece25171c9913856558390f1c8bff9f9b9d5d8381876c2c26"
+        },
+        {
+          "id": "E110",
+          "kind": "local",
+          "path": "local/research/codex/abort-rejoin-r1/replacement-retry/C-go197-82.bin",
+          "bytes": 52,
+          "sha256": "64b95010ecb0e40bc0367f41f6710d2357fb2538ce827e205825284601237ef8"
+        },
+        {
+          "id": "E111",
+          "kind": "local",
+          "path": "local/research/codex/abort-rejoin-r1/replacement-retry/B-play196-118.bin",
+          "bytes": 45,
+          "sha256": "991c7a079a6ecd395b910d86b6367ffa4d38f3311c06d4f14863f30b8b92a61a"
+        },
+        {
+          "id": "E112",
+          "kind": "local",
+          "path": "local/research/codex/abort-rejoin-r1/replacement-retry/C-play196-85.bin",
+          "bytes": 45,
+          "sha256": "d04bf155b4847f9d41b0edfdf00a32526302273271c0f1cadbb8ce22b89eb51d"
+        },
+        {
+          "id": "E113",
+          "kind": "local",
+          "path": "local/research/codex/abort-rejoin-r1/replacement-retry/B-peer153-121.bin",
+          "bytes": 135,
+          "sha256": "b0b5e1736d95ba54a68635c05594ff5893d38d2cad9de89c3d41782a66834a20"
+        },
+        {
+          "id": "E114",
+          "kind": "local",
+          "path": "local/research/codex/abort-rejoin-r1/replacement-retry/C-peer153-88.bin",
+          "bytes": 135,
+          "sha256": "04c4960308533dad2e29f0a3caf5c175ed0a12fcef246115754accf83a6ff1d2"
+        },
+        {
+          "id": "E115",
+          "kind": "local",
+          "path": "local/research/codex/abort-rejoin-r1/derived/replacement-retry-A-replay.txt",
+          "bytes": 1192,
+          "sha256": "801723cedd4c0118b35981cef30a899198f8628c905f26344e9953b45714956f"
+        },
+        {
+          "id": "E116",
+          "kind": "local",
+          "path": "local/research/codex/abort-rejoin-r1/derived/replacement-retry-A-oracle.json",
+          "bytes": 69796,
+          "sha256": "6578ed71586d8fcd54a67db696beb7437ee9e0300cba18461806691861eb5277"
+        },
+        {
+          "id": "E117",
+          "kind": "local",
+          "path": "local/research/codex/abort-rejoin-r1/derived/replacement-retry-B-replay.txt",
+          "bytes": 2400,
+          "sha256": "859764add1cd558df3df0b25d799cda2f991b2c339683ad7810097d2e4389904"
+        },
+        {
+          "id": "E118",
+          "kind": "local",
+          "path": "local/research/codex/abort-rejoin-r1/derived/replacement-retry-B-oracle.json",
+          "bytes": 145869,
+          "sha256": "883a16316980ae12d7f771142111cbc9418063821a1538f6bf4488a362ef366f"
+        },
+        {
+          "id": "E119",
+          "kind": "local",
+          "path": "local/research/codex/abort-rejoin-r1/derived/replacement-retry-C-replay.txt",
+          "bytes": 1567,
+          "sha256": "6066c5f4ed266350197bc3d89bea26106f8a2a78ceb4b72416f6eea5f733a5b3"
+        },
+        {
+          "id": "E120",
+          "kind": "local",
+          "path": "local/research/codex/abort-rejoin-r1/derived/replacement-retry-C-oracle.json",
+          "bytes": 94103,
+          "sha256": "458bb29f2cd9ea283ecd8463c3ab636cceedf1ed9e46215d2b8abff084df9292"
+        },
+        {
+          "id": "E121",
+          "kind": "local",
+          "path": "local/research/codex/abort-rejoin-r1/request-frames/replacement-retry/B-F13-82.bin",
+          "bytes": 49,
+          "sha256": "1746130345929e482c425aa463e6bf34d6da555c86c6474cf235330227f74f47"
+        },
+        {
+          "id": "E122",
+          "kind": "local",
+          "path": "local/research/codex/abort-rejoin-r1/request-frames/replacement-retry/B-F24-95.bin",
+          "bytes": 98,
+          "sha256": "730e662309a1a5abb7556e5f500168850ae220a9b7f288c1c62d18904206398c"
+        },
+        {
+          "id": "E123",
+          "kind": "local",
+          "path": "local/research/codex/abort-rejoin-r1/request-frames/replacement-retry/C-F13-82.bin",
+          "bytes": 49,
+          "sha256": "1746130345929e482c425aa463e6bf34d6da555c86c6474cf235330227f74f47"
+        },
+        {
+          "id": "E124",
+          "kind": "local",
+          "path": "local/research/codex/abort-rejoin-r1/request-frames/replacement-retry/C-F22-95.bin",
+          "bytes": 98,
+          "sha256": "38eeff06df1cda4991e6860d5e77cabcb5d78c9a82bc217363b4899b10d3aedd"
+        },
+        {
+          "id": "E125",
+          "kind": "local",
+          "path": "local/research/codex/wine_probe_abort_replacement_retry.py",
+          "bytes": 71610,
+          "sha256": "4ea6d2637d7c3bc7ce71ecc49eddaab761746934cbbe7d9db1d4ae7588079d98"
+        },
+        {
+          "id": "E126",
+          "kind": "local",
+          "path": "local/research/codex/abort-rejoin-r1/guest-EOF-control/run.json",
+          "bytes": 51648,
+          "sha256": "d5f886bcc1a9a3927f14fd84aed23d2aecdacc5b2010081b171093590ec30c2c"
+        },
+        {
+          "id": "E127",
+          "kind": "local",
+          "path": "local/research/codex/abort-rejoin-r1/guest-EOF-control/client.log",
+          "bytes": 19866,
+          "sha256": "c2741895d68d17524aa43dbac15a840b821b38a76895c82bbcfb70f0fb2e2515"
+        },
+        {
+          "id": "E128",
+          "kind": "local",
+          "path": "local/research/codex/abort-rejoin-r1/guest-EOF-control/client-B.log",
+          "bytes": 20499,
+          "sha256": "98d767cf79561f6b1fcb33f2180ae745e5b85b3bce2250806111112e84f17ec0"
+        },
+        {
+          "id": "E129",
+          "kind": "local",
+          "path": "local/research/codex/abort-rejoin-r1/guest-EOF-control/A-ready110-73.bin",
+          "bytes": 44,
+          "sha256": "8fafd9cf652b458ee09b3751a0201f9ab1409920398e0e842e43b915c8840e25"
+        },
+        {
+          "id": "E130",
+          "kind": "local",
+          "path": "local/research/codex/abort-rejoin-r1/guest-EOF-control/B-ready110-73.bin",
+          "bytes": 44,
+          "sha256": "8fafd9cf652b458ee09b3751a0201f9ab1409920398e0e842e43b915c8840e25"
+        },
+        {
+          "id": "E131",
+          "kind": "local",
+          "path": "local/research/codex/abort-rejoin-r1/guest-EOF-control/A-floor582-76.bin",
+          "bytes": 64,
+          "sha256": "1fe57e07bd06ae1a9be28de403007342926d18b328480a6b3e379b833ff9ce0a"
+        },
+        {
+          "id": "E132",
+          "kind": "local",
+          "path": "local/research/codex/abort-rejoin-r1/guest-EOF-control/A-start121-r1-79.bin",
+          "bytes": 167,
+          "sha256": "f8a824335b4079160a4aaf0e0b425d1fabfa78c248d131503440d0414e1f26cf"
+        },
+        {
+          "id": "E133",
+          "kind": "local",
+          "path": "local/research/codex/abort-rejoin-r1/guest-EOF-control/B-floor582-76.bin",
+          "bytes": 64,
+          "sha256": "1fe57e07bd06ae1a9be28de403007342926d18b328480a6b3e379b833ff9ce0a"
+        },
+        {
+          "id": "E134",
+          "kind": "local",
+          "path": "local/research/codex/abort-rejoin-r1/guest-EOF-control/B-start121-r1-79.bin",
+          "bytes": 167,
+          "sha256": "f8a824335b4079160a4aaf0e0b425d1fabfa78c248d131503440d0414e1f26cf"
+        },
+        {
+          "id": "E135",
+          "kind": "local",
+          "path": "local/research/codex/abort-rejoin-r1/guest-EOF-control/A-go197-82.bin",
+          "bytes": 52,
+          "sha256": "64b95010ecb0e40bc0367f41f6710d2357fb2538ce827e205825284601237ef8"
+        },
+        {
+          "id": "E136",
+          "kind": "local",
+          "path": "local/research/codex/abort-rejoin-r1/guest-EOF-control/B-go197-82.bin",
+          "bytes": 52,
+          "sha256": "64b95010ecb0e40bc0367f41f6710d2357fb2538ce827e205825284601237ef8"
+        },
+        {
+          "id": "E137",
+          "kind": "local",
+          "path": "local/research/codex/abort-rejoin-r1/guest-EOF-control/A-play196-85.bin",
+          "bytes": 45,
+          "sha256": "d04bf155b4847f9d41b0edfdf00a32526302273271c0f1cadbb8ce22b89eb51d"
+        },
+        {
+          "id": "E138",
+          "kind": "local",
+          "path": "local/research/codex/abort-rejoin-r1/guest-EOF-control/B-play196-85.bin",
+          "bytes": 45,
+          "sha256": "d04bf155b4847f9d41b0edfdf00a32526302273271c0f1cadbb8ce22b89eb51d"
+        },
+        {
+          "id": "E139",
+          "kind": "local",
+          "path": "local/research/codex/abort-rejoin-r1/guest-EOF-control/A-peer153-88.bin",
+          "bytes": 135,
+          "sha256": "dfa6e25d2a6e8e2b68b98aa61c376c20d5c5c0f12c4e2c04e76ec828556c9479"
+        },
+        {
+          "id": "E140",
+          "kind": "local",
+          "path": "local/research/codex/abort-rejoin-r1/guest-EOF-control/B-peer153-88.bin",
+          "bytes": 135,
+          "sha256": "fc4f302e43b94bdcab8b3be62a4deb31f9be7d12a13b6f137eed7ffbd77569fe"
+        },
+        {
+          "id": "E141",
+          "kind": "local",
+          "path": "local/research/codex/abort-rejoin-r1/derived/guest-EOF-control-A-replay.txt",
+          "bytes": 1526,
+          "sha256": "1845e6cb32c5f3f9b56e6921ae2a5984adf2f6a53b929f86e120cd15be91dd65"
+        },
+        {
+          "id": "E142",
+          "kind": "local",
+          "path": "local/research/codex/abort-rejoin-r1/derived/guest-EOF-control-A-oracle.json",
+          "bytes": 91167,
+          "sha256": "7b4c6ee59f7823d59c8095ca232e86e2a7fc68b077e5ebdff3e6adef5a7e1e4d"
+        },
+        {
+          "id": "E143",
+          "kind": "local",
+          "path": "local/research/codex/abort-rejoin-r1/derived/guest-EOF-control-B-replay.txt",
+          "bytes": 1010,
+          "sha256": "5fce7853872493214eb6c3e6ac0fdfaba62bc0dcb8cffdb0d7966971c36551b7"
+        },
+        {
+          "id": "E144",
+          "kind": "local",
+          "path": "local/research/codex/abort-rejoin-r1/derived/guest-EOF-control-B-oracle.json",
+          "bytes": 58676,
+          "sha256": "b51b53b582144e1174ab72ec67c7f2ff2a5a0d7bd54a912ce21b8fd5f9f8f887"
+        },
+        {
+          "id": "E145",
+          "kind": "local",
+          "path": "local/research/codex/abort-rejoin-r1/request-frames/guest-EOF-control/B-F13-82.bin",
+          "bytes": 49,
+          "sha256": "1746130345929e482c425aa463e6bf34d6da555c86c6474cf235330227f74f47"
+        },
+        {
+          "id": "E146",
+          "kind": "local",
+          "path": "local/research/codex/abort-rejoin-r1/request-frames/guest-EOF-control/B-F24-95.bin",
+          "bytes": 98,
+          "sha256": "730e662309a1a5abb7556e5f500168850ae220a9b7f288c1c62d18904206398c"
+        },
+        {
+          "id": "E147",
+          "kind": "local",
+          "path": "local/research/codex/wine_probe_round_guest_eof_control.py",
+          "bytes": 67266,
+          "sha256": "99b1389ab92afd4d2394e361cf434365e80f154809291cda8cf60c09fb4a7d85"
+        },
+        {
+          "id": "E148",
+          "kind": "local",
+          "path": "local/research/codex/abort-rejoin-r1/guest-EOF-policy/run.json",
+          "bytes": 55899,
+          "sha256": "8129c8df47684253ce31c0421d761fea17e2cdcc7570283ac8b10dc07c13999a"
+        },
+        {
+          "id": "E149",
+          "kind": "local",
+          "path": "local/research/codex/abort-rejoin-r1/guest-EOF-policy/client.log",
+          "bytes": 26906,
+          "sha256": "f304daf8b3d6c3ea776a58367c09f934887b0142bd53e2fe1405a8a268691b2d"
+        },
+        {
+          "id": "E150",
+          "kind": "local",
+          "path": "local/research/codex/abort-rejoin-r1/guest-EOF-policy/client-B.log",
+          "bytes": 20591,
+          "sha256": "eaafb626cf351b8ee19e93bfdf69af87970d31b2528d4ff57eba2669cffbe4ec"
+        },
+        {
+          "id": "E151",
+          "kind": "local",
+          "path": "local/research/codex/abort-rejoin-r1/guest-EOF-policy/A-ready110-73.bin",
+          "bytes": 44,
+          "sha256": "8fafd9cf652b458ee09b3751a0201f9ab1409920398e0e842e43b915c8840e25"
+        },
+        {
+          "id": "E152",
+          "kind": "local",
+          "path": "local/research/codex/abort-rejoin-r1/guest-EOF-policy/B-ready110-73.bin",
+          "bytes": 44,
+          "sha256": "8fafd9cf652b458ee09b3751a0201f9ab1409920398e0e842e43b915c8840e25"
+        },
+        {
+          "id": "E153",
+          "kind": "local",
+          "path": "local/research/codex/abort-rejoin-r1/guest-EOF-policy/A-floor582-76.bin",
+          "bytes": 64,
+          "sha256": "1fe57e07bd06ae1a9be28de403007342926d18b328480a6b3e379b833ff9ce0a"
+        },
+        {
+          "id": "E154",
+          "kind": "local",
+          "path": "local/research/codex/abort-rejoin-r1/guest-EOF-policy/A-start121-r1-79.bin",
+          "bytes": 167,
+          "sha256": "f8a824335b4079160a4aaf0e0b425d1fabfa78c248d131503440d0414e1f26cf"
+        },
+        {
+          "id": "E155",
+          "kind": "local",
+          "path": "local/research/codex/abort-rejoin-r1/guest-EOF-policy/B-floor582-76.bin",
+          "bytes": 64,
+          "sha256": "1fe57e07bd06ae1a9be28de403007342926d18b328480a6b3e379b833ff9ce0a"
+        },
+        {
+          "id": "E156",
+          "kind": "local",
+          "path": "local/research/codex/abort-rejoin-r1/guest-EOF-policy/B-start121-r1-79.bin",
+          "bytes": 167,
+          "sha256": "f8a824335b4079160a4aaf0e0b425d1fabfa78c248d131503440d0414e1f26cf"
+        },
+        {
+          "id": "E157",
+          "kind": "local",
+          "path": "local/research/codex/abort-rejoin-r1/guest-EOF-policy/A-go197-82.bin",
+          "bytes": 52,
+          "sha256": "64b95010ecb0e40bc0367f41f6710d2357fb2538ce827e205825284601237ef8"
+        },
+        {
+          "id": "E158",
+          "kind": "local",
+          "path": "local/research/codex/abort-rejoin-r1/guest-EOF-policy/B-go197-82.bin",
+          "bytes": 52,
+          "sha256": "64b95010ecb0e40bc0367f41f6710d2357fb2538ce827e205825284601237ef8"
+        },
+        {
+          "id": "E159",
+          "kind": "local",
+          "path": "local/research/codex/abort-rejoin-r1/guest-EOF-policy/A-play196-85.bin",
+          "bytes": 45,
+          "sha256": "d04bf155b4847f9d41b0edfdf00a32526302273271c0f1cadbb8ce22b89eb51d"
+        },
+        {
+          "id": "E160",
+          "kind": "local",
+          "path": "local/research/codex/abort-rejoin-r1/guest-EOF-policy/B-play196-85.bin",
+          "bytes": 45,
+          "sha256": "d04bf155b4847f9d41b0edfdf00a32526302273271c0f1cadbb8ce22b89eb51d"
+        },
+        {
+          "id": "E161",
+          "kind": "local",
+          "path": "local/research/codex/abort-rejoin-r1/guest-EOF-policy/A-peer153-88.bin",
+          "bytes": 135,
+          "sha256": "5c982ec17bfe01070f8a00e6b1c69b9800d5c738ef33acb2ccf164d3fd1772cc"
+        },
+        {
+          "id": "E162",
+          "kind": "local",
+          "path": "local/research/codex/abort-rejoin-r1/guest-EOF-policy/B-peer153-88.bin",
+          "bytes": 135,
+          "sha256": "91f78726b4afd82e3ff2509bdf0bb3012f83c2465b9922d7da2b5d80c2e5ba5c"
+        },
+        {
+          "id": "E163",
+          "kind": "local",
+          "path": "local/research/codex/abort-rejoin-r1/guest-EOF-policy/A-abort-rank175-91.bin",
+          "bytes": 340,
+          "sha256": "2252ad693d8a7fd8280f223189849edd5c131b6a6c2809b783dd253d4c0e4dce"
+        },
+        {
+          "id": "E164",
+          "kind": "local",
+          "path": "local/research/codex/abort-rejoin-r1/guest-EOF-policy/A-abort-return180-94.bin",
+          "bytes": 41,
+          "sha256": "ba0f3eb612dbf90f7f5d95d5bc92421bc468e88cd5c2882cce37d098e5f5cef4"
+        },
+        {
+          "id": "E165",
+          "kind": "local",
+          "path": "local/research/codex/abort-rejoin-r1/guest-EOF-policy/A-abort-remove107-97.bin",
+          "bytes": 44,
+          "sha256": "3891c13a56b6eef5e596ae41483b86d9c10ca198a08ba1bb7c361e2455de4fdd"
+        },
+        {
+          "id": "E166",
+          "kind": "local",
+          "path": "local/research/codex/abort-rejoin-r1/guest-EOF-policy/A-abort-host110-100.bin",
+          "bytes": 44,
+          "sha256": "6dc9f24f92da6e064865f1d126467a793cb92758602cbc02fb4dd0d9b20a7af0"
+        },
+        {
+          "id": "E167",
+          "kind": "local",
+          "path": "local/research/codex/abort-rejoin-r1/derived/guest-EOF-policy-A-replay.txt",
+          "bytes": 1797,
+          "sha256": "5c531b8977126b4fbc0b09815cb3dc9bac7005e81028de0cfb92ce57ba7f20c9"
+        },
+        {
+          "id": "E168",
+          "kind": "local",
+          "path": "local/research/codex/abort-rejoin-r1/derived/guest-EOF-policy-A-oracle.json",
+          "bytes": 107455,
+          "sha256": "8be13fff854c1009d0ded7dd3eb8fa315431c4b8d0a5c73a9a8df31f6d16a6dc"
+        },
+        {
+          "id": "E169",
+          "kind": "local",
+          "path": "local/research/codex/abort-rejoin-r1/derived/guest-EOF-policy-B-replay.txt",
+          "bytes": 943,
+          "sha256": "70cd47573104c66a098ee01d90ba51cb4e4d634ae04e8d7725c2218169401c4f"
+        },
+        {
+          "id": "E170",
+          "kind": "local",
+          "path": "local/research/codex/abort-rejoin-r1/derived/guest-EOF-policy-B-oracle.json",
+          "bytes": 54520,
+          "sha256": "7a7e297a66f5ce8d0a5e10d953dc8a548c4d81ad6235e5edea48a5d283b015ae"
+        },
+        {
+          "id": "E171",
+          "kind": "local",
+          "path": "local/research/codex/abort-rejoin-r1/request-frames/guest-EOF-policy/B-F13-82.bin",
+          "bytes": 49,
+          "sha256": "1746130345929e482c425aa463e6bf34d6da555c86c6474cf235330227f74f47"
+        },
+        {
+          "id": "E172",
+          "kind": "local",
+          "path": "local/research/codex/abort-rejoin-r1/request-frames/guest-EOF-policy/B-F24-95.bin",
+          "bytes": 98,
+          "sha256": "730e662309a1a5abb7556e5f500168850ae220a9b7f288c1c62d18904206398c"
+        },
+        {
+          "id": "E173",
+          "kind": "local",
+          "path": "local/research/codex/wine_probe_round_guest_eof_policy.py",
+          "bytes": 69170,
+          "sha256": "d413bf9204bcab835dc77743d2ae5e62c9fd1cc4bd903b47b5aafb5e955aa185"
+        },
+        {
+          "id": "E174",
+          "kind": "local",
+          "path": "local/research/codex/wcp-guard-r1/game/CA-r2-login-logout.exe",
+          "bytes": 31874560,
+          "sha256": "660447c293ce92270cb9b5815331bca976e8f156366e1fe50b217b6c12e60ce3"
+        },
+        {
+          "id": "E175",
+          "kind": "local",
+          "path": "local/research/codex/wcp-guard-r1/game/CA-r2-stage-social.exe",
+          "bytes": 31874560,
+          "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+        },
+        {
+          "id": "E176",
+          "kind": "local",
+          "path": "local/research/codex/duo-round-r1/game-B/CA-r2-stage-social.exe",
+          "bytes": 31874560,
+          "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+        },
+        {
+          "id": "E177",
+          "kind": "local",
+          "path": "local/research/codex/contact-race-r1/game-C/CA-r2-stage-social.exe",
+          "bytes": 31874560,
+          "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+        },
+        {
+          "id": "E178",
+          "kind": "artifact",
+          "path": "/home/admin/boom/repos/boomkr-re/out/modO.bin",
+          "bytes": 31858688,
+          "sha256": "a08950c833d3acab8281049def7b3dc96b221f107eeda01da3a548e34b91dce5"
+        }
+      ],
+      "delta": {
+        "added": [
+          "Fresh C join/Ready and Bchief actual104/full121/99/clock/peer movement after hostEOF; sameBsocket/UDPport retained.",
+          "Guest EOF no-policycontrol vs chosenforfeitreturn/clearB/retainAchief; nofake19.",
+          "CP040 periodicAUD013 completed; CP044next. CP039PR47merge baseline recorded."
+        ],
+        "corrected": [
+          "Do notcallnewCidentity3 A reconnect justbecause name/slot reused.",
+          "FirstNameErrornotclientnegative;fixed oneclickno104 incomplete preserved;retrycauseunknown.",
+          "Guestmetadata inheritedhost/Blabels disambiguated byactual role Bkill/Ainput;lateimagevsimmediatecallback scope explicit.",
+          "Native106prefix5 not fullprofileoracle;modOrawnotPEremapped."
+        ],
+        "superseded": [
+          "NEXT-DUO-ROUND afterabortpromotedStart/newjoin andguestEOF boundedquestions answered; nextvalidator/generation/reset incombinedtwo-roundacceptance.",
+          "HistoricalCP037–039evidence then-open limits remainimmutable; currentPROTOCOL/RESEARCH linkCP040additions.",
+          "CP036→040periodic audit is nowAUD013, notresetbyAUD012."
+        ]
+      },
+      "blockers": [
+        "Validator/stale/generation/allentity/timer/peerqueue/reset not accepted; B/C recoveryonlymovement, nogameplayresult cycle there. K5/K6a/LAN/Internet open.",
+        "Fullauth/profile/cache/codec/vanilla/accountreconnect,original21/sub34semantics,cosmeticCP039Aownsilhouette,IDallocator/variant/bothdisconnect/NAT/relay remainunknown.",
+        "FirstStartinput no104 causeunknown; no infinite timinghunt or manufacturedrequest."
+      ],
+      "next_steps": [
+        {
+          "id": "NEXT-DUO-ROUND",
+          "task": "KRE-005b",
+          "state": "active",
+          "action": "Measurevalidator/generation/stale/entity/timer/peerqueue reset across combinedtwo-roundinput/outcome; use currentCP039/040boundedevidence, do notlabel34ACK/freshCaccountreconnect.",
+          "owner": "Codex",
+          "reviewer": "Codex"
+        },
+        {
+          "id": "NEXT-ITEM-PICKUP",
+          "task": "KRE-005b",
+          "state": "active",
+          "action": "Validator/stale/generation/itemindexandIDreuse/reset; optionalCtrlcontact/exactsameupdateparity notblockingfirstfullmatch; retain118field10→159field8.",
+          "owner": "Codex",
+          "reviewer": "Codex"
+        },
+        {
+          "id": "NEXT-FULL-LOGIN-FIELDS",
+          "task": "KRE-005b",
+          "state": "active",
+          "action": "Fullauth/profile/cache/codec/vanilla/accountreconnect beforeK2/K3; CnewprefixID3 notproofaccountresume, CP039cosmeticunknownretained.",
+          "owner": "Codex",
+          "reviewer": "Codex"
+        }
+      ],
+      "review": {
+        "status": "waived",
+        "as_of_utc": "2026-10-31T08:07:21.059535+00:00",
+        "reference": "docs/evidence/checkpoints/review-waiver.json",
+        "scope": "Codex solo RE/code/runtime/selfcheck, not independent approval.",
+        "authorization": {
+          "by": "project_owner",
+          "reference": "docs/evidence/checkpoints/review-waiver.json",
+          "reason": "Owner explicitly requested solo without Claude review."
+        }
+      },
+      "docs_sync": [
+        {
+          "path": "README.md",
+          "state": "updated",
+          "reason": "CurrentCP040recovery/guestEOFscope, CP039merge, auditCP044next."
+        },
+        {
+          "path": "docs/PLAN.md",
+          "state": "updated",
+          "reason": "Progress/map/nextvalidatorreset; no gatesclosed."
+        },
+        {
+          "path": "docs/PROTOCOL.md",
+          "state": "updated",
+          "reason": "CanonicalfreshC/actualBStart/guestcontrolandpolicy/limits; historicalsection note."
+        },
+        {
+          "path": "docs/RESEARCH.md",
+          "state": "updated",
+          "reason": "BoundedafterabortStart/guestEOF answered; newactivevalidator/generation/reset, reconnectunknown."
+        },
+        {
+          "path": "docs/evidence/abort-rejoin/README.md",
+          "state": "updated",
+          "reason": "Fiveoutcomes/recipes/hash/native106prefixlimits/18images/auditprovenance."
+        }
+      ]
     }
   ],
   "audits": [
@@ -66862,6 +68366,11 @@
       "id": "AUD012",
       "path": "docs/evidence/checkpoints/audits/AUD012.json",
       "sha256": "e4d250a351e212857ff74a73e2c306e7a501fee519812c6f39dcc36f28470a63"
+    },
+    {
+      "id": "AUD013",
+      "path": "docs/evidence/checkpoints/audits/AUD013.json",
+      "sha256": "facb953c4204c22d4d303a28882675b4c0e95ae6791566503916b53c89b7722b"
     }
   ],
   "task_states": [

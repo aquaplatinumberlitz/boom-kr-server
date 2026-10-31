@@ -159,13 +159,19 @@ CP039 có [hai vòng statepeer/result/return, report21 suppression và hostEOFco
 [recipe/hash](evidence/round-finish/README.md). Không còn coi các mốc hẹp này unknown;
 semantics21/sub34, toàn reset/authority và disconnectvariants vẫn mở.
 
+CP039/[PR47](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/47) đã merge `e19bc9e`.
+CP040 đo [Start với client mới sau host EOF](PROTOCOL.md#abort-rejoin),
+[recipe/control/hash](evidence/abort-rejoin/README.md). Đây là C identity mới3 vào slot0;
+không coi là A reconnect/session resume. Giữ lượt collector lỗi và lượt bấm Start chưa tạo104 như lịch sử.
+
 **Bước tiếp, Codex RE/tự kiểm:**
 
 1. **NEXT-DUO-ROUND:** rời phòng/xóa ghost slot/promotion/guest EOF/về sảnh đã đo hẹp ở CP034;
    CP035 đã đo **rejoin qua click/request thật và Start sau promotion tới clock**.
    CP039 đã nối result/return hai vòng sau statepeer nhất quán và hostEOF→forfeitreturn/roomcleanup/promotion.
-   Tiếp Bchủmới Start/rejoin sau abort và guestEOF trong trận; đặt validator/generation/entity/timer/peer/reset
-   vào cùng ca hai vòng có input và outcome đủ điều kiện trước K6a. Không tự gọi sub34 là ACK hoặc21 là validator.
+   CP040 đã đo B chủ mới gửi104 với C mới Join/Ready sau abort; guest EOF control/policy trả A về phòng, xóa B/chief A giữ nguyên đã đo riêng.
+   Tiếp validator/generation/entity/timer/peer/reset vào cùng ca hai vòng có input và outcome đủ điều kiện trước K6a;
+   reconnect/resume cùng account vẫn chưa đo. Không tự gọi sub34 là ACK hoặc21 là validator.
 2. **NEXT-ITEM-PICKUP:** CP037 kim tự thoát/peer, CP038 có [trap lần hai khi hết kim](PROTOCOL.md#needle-repeat).
    Exact sameupdate/both-eligible runtime, đảo thứ tự danh sách và Ctrl cạnh tranh là kiểm bổ sung,
    không chặn first full match. Tiếp validator/stale/generation/toàn reset sau mốc result/hostEOF hẹp CP039;
@@ -185,16 +191,16 @@ layout/request/confirm và stat Bomb/Fire mới đã đo riêng. Clamp native ch
 Hai item ẩn đã đo không phục hồi thuật toán random drop hoặc toàn validator. Rank/outcome/fuse/timing
 và policy giữ index cho request đầu là lựa chọn emulator,
 chưa server authority gốc. Authprefix34byte/ID1/2,15/241variants,
-oneclickuser/+E9C/token_2/count2/vanilla còn mở. AUD011/CP036 audit định kỳ hoàn tất; AUD012 sửa inference nháp CP037, audit định kỳ kế CP040.
+oneclickuser/+E9C/token_2/count2/vanilla còn mở. AUD013/CP040 đã audit định kỳ; audit kế CP044. Manifest giữ counter, không reset theo phiên.
 
 | ID / ưu tiên | Trạng thái | Owner / reviewer | Đã biết | Còn thiếu / bước đóng |
 |---|---|---|---|---|
 | Q-022 / KRE-P1 bootstrap | open | Codex RE/tự kiểm | ProcessPatch local có debugger return1;recipe R2 đã merge;contract ở [PROTOCOL](PROTOCOL.md#wcp) | K1a ownership/control trên Windows local/effective token; K1b kiểm caller/config/IPC riêng CA và NewPatcher; K1c stub/patch theo evidence; gate ba cold start tới network attempt/state chờ hello, không lấy alive/không exit làm proof |
 | Q-023 / KRE-P1 codec | open | Codex RE/tự kiểm | CP015 có socket kênh mới, native replay theo từng kết nối, schema17/count0 và nhận241 | Full result0/codec/reset theo bước trên; gate K2 còn mở |
 | Q-024 / KRE-P1 login/kênh | open | Codex RE/tự kiểm | UI sảnh hết notice17/241; CP020 phục hồi inputID local, tên/profile phòng có fixture, chưa full auth/sảnh identity | Full identity/user/cache và cold/warm/reconnect K3; không gọi auth Nexon thật |
-| Q-025 / KRE-P1 room/load | open | Codex RE/tự kiểm | CP028 join/Ready;CP034 leave/promotion/EOF/return;CP035 rejoin/newhostStart, [phạm vi](PROTOCOL.md#room-rejoin) | Password/error/unready/load-barrier variants, CP039 hostEOFreturnhẹp;guestEOF/sauabortStart/rejoin/reset/104growth/cache, nghiệm thu K4 |
+| Q-025 / KRE-P1 room/load | open | Codex RE/tự kiểm | CP028 join/Ready;CP034 leave/promotion/EOF/return;CP035 rejoin/newhostStart, [phạm vi](PROTOCOL.md#room-rejoin) | Password/error/unready/load-barrier variants, CP040 đã có client mới/chủ B Start sau host EOF; guest EOF trả host về phòng đã đo; reconnect cùng account/reset/104growth/cache và nghiệm thu K4 còn mở |
 | Q-026 / KRE-P1 authority/trận | open | Codex RE/tự kiểm | CP032–038/collision/item;CP039 hai vòng statepeer/result/return, [phạm vi](PROTOCOL.md#round-finish) | Drop algorithm, block/chain/rescue variants, runtime tại max/speed/validator/semantics21,34/toàn reset; K5 một chu kỳ hoàn chỉnh, không lấy packet183 ghost làm mover người sống |
-| Q-027 / KRE-P1 peer | open | Codex RE/tự kiểm | CP027 movement/bom, CP029 trap/death, CP030 tranh item, CP032 reveal/stat và vòng kế; [giới hạn](PROTOCOL.md#hidden-items) | Full grammar/key/slot/reliability/relay, stale/generation/disconnect/variants và toàn reset trước K6 |
+| Q-027 / KRE-P1 peer | open | Codex RE/tự kiểm | CP027 movement/bom, CP029 trap/death, CP030 tranh item, CP032 reveal/stat và vòng kế; [giới hạn](PROTOCOL.md#hidden-items) | CP040 host/guest EOF hẹp có [contract](PROTOCOL.md#abort-rejoin); full grammar/key/slot/reliability/relay, stale/generation/disconnect variants và toàn reset trước K6 |
 | Q-028 / KRE-P2 profile/core | open | Codex/tự kiểm | Core Rust và policy V1 có sẵn, nhưng client gốc không biết ADR0009 | Sau audit Q-026/027, quyết định giữ lai/relay/shadow core hay authoritative được client hỗ trợ; profile emu có provenance, không sửa V1 implicit |
 | Q-029 / KRE-P2 vận hành | open | Codex/tự kiểm | CP029 có statepeer sau170 trước175 và hai chu kỳ thử; [giới hạn](PROTOCOL.md#peer-events); chưa fullmatch/K6a | K7 bốn client, malformed/stale/duplicate/race/disconnect/restart, bounds/resource limits, Linux package, patch manifest và README tái lập |
 

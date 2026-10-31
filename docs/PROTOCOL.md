@@ -1,10 +1,12 @@
 # KR 00967 — contract tương thích client gốc
 
-Revision kr-legacy-contract-r1; cập nhật31/10/2026 JST (CP039).
+Revision kr-legacy-contract-r1; cập nhật31/10/2026 JST (CP040).
 **Contract có bằng chứng từng phần; chưa nghiệm thu full codec K2**.
 Lộ trình và thứ tự task chỉ giữ ở [REWRITE_PLAN — KRE](PLAN.md).
 Đây là contract của repo server KR. ADR0009 của bản viết lại là nguồn lịch sử để so sánh;
 vị trí tài liệu nguồn ghi trong [REFERENCES](REFERENCES.md), không phải giao thức dùng cho client KR gốc.
+Giới hạn trong mục mang CP ID là phạm vi tại thời điểm đo đó; bổ sung mới ghi ở mục kế tiếp,
+không sửa raw/checkpoint cũ. Câu hỏi còn mở và phép kiểm tiếp giữ ở [RESEARCH](RESEARCH.md#q-023).
 
 ## 1. Định danh và nguồn chuẩn
 
@@ -1495,6 +1497,54 @@ Chưa toàn reset/validator/generation/disconnectvariants/rejoin/fullauth/cache/
 LAN/Internet hoặc K5/K6a. Đây là ca hai vòng thử có kết quả/statepeer nhất quán hẹp,
 không tự đổi thành nghiệm thu toàn trận đầy đủ.
 
+<a id="abort-rejoin"></a>
+### Sau host EOF: client mới vào slot trống, chủ mới Start — CP040
+
+**kr_runtime/confirmed hẹp trên diagnostic copy Wine**;
+[recipe, các lượt chưa đạt, control và hash](evidence/abort-rejoin/README.md).
+Không thêm patch hoặc ép game state. Kế thừa [forfeit/return](#round-finish),
+[107/110](#room-leave), [Join/Ready](#duo-room-round) và [Start sau promotion](#room-rejoin).
+Các mô tả “chưa đo sau abort” ở CP039 là giới hạn tại checkpoint đó; kết quả bổ sung dưới đây
+không mở rộng chúng thành reconnect/full match.
+
+`replacement-retry` bắt đầu A/B, IDs1/2, slots0/1, session1. Sau actual A channel EOF,
+stub chọn Alose/Bwin →175 cho B →180 →107 xóa slot0/ID1 →110 đưa B slot1 thành chủ.
+Chỉ sau cleanup mới khởi động **client C mới**, auth prefix cấp ID3, own slot0 qua87;
+runtime `13B09E0`, `123FF10`, `8179F3` xác nhận ID3/slot0/87 đọc7/7/errors0.
+106 own-match1 và profile B chief được cấp cho C; B nhận106 slot0/ID3.
+C gửi82/585/95 thật;110 Ready slot0/state4 phát cho B/C.
+Tên hiển thị C vẫn KRLocal theo fixture; phải dùng ID/slot/socket để phân biệt với A.
+
+**Start từ chủ mới:** lần bấm đầu chưa có104; sau một lần bấm lại có **actual104 từ B**.
+B và C đều đọc121 **129/129/errors0**, init stage13, actual99,197/196/153 rồi clock.
+B giữ channel socket và UDP port qua hai lần Start; C dùng socket/port riêng.
+153 vòng mới chỉ dành B/C, remote endpoint lấy từ actual99 của peer tương ứng;
+không phát tiếp cho A đã EOF. S2C seq B liên tục73…121, không reset khi thay peer;
+C bắt đầu stream riêng. Input C Down/B Right sau153 và ảnh trước/sau cho thấy hai view
+đều thấy cả hai di chuyển. Không phục hồi toàn UDP grammar/key/reliability chỉ từ ca này.
+
+`replacement-first` lỗi collector `NameError recordroot` trước TCP, không là lỗi client/protocol.
+`replacement-fixed` đã C Ready/B chief nhưng một lần bấm chưa có104 tới hết320s;
+giữ nguyên như lượt chưa đạt Start. Run mới có retry giới hạn, không giả request104 hoặc sửa
+state để đi tiếp. **Nguyên nhân khác biệt lần bấm đầu vẫn unknown**: chưa quy cho focus/timing/guard.
+Ảnh ngay sau gửi cleanup có thể còn roster trước callback; dùng trace clear/chief và ảnh trễ để đối chiếu.
+
+**Guest EOF trong trận, đo riêng:** `guest-EOF-control` chỉ kill prefix B, có actual B channel EOF;
+A channel vẫn mở, input Right đổi vị trí, B vẫn hiện và không có175/180/107 tự động trong cửa sổ đo.
+`guest-EOF-policy` chỉ sau EOF đúng B chọn Awin/Blose →175 cho A →180 →107(slot1,ID2,0)
+rồi110 host A. A đọc175 outer302/302, inner292/292/errors0 và1803/3/errors0, về stage12;
+107 base6/6 rồi wrapper rewind/final1, record ID2→0. Chief A vẫn1, ảnh trễ chỉ còn A trong phòng.
+Actor B trên A vẫn state0 trước/sau175 và trước180, không có actual17/19;
+đây là policy bỏ cuộc, không giả deathreport. Chưa thử A Start sau ca guest EOF hoặc cả hai mất kết nối.
+Các tên metadata/screenshot kế thừa `host_disconnect`/`B-after-EOF-input` không xác định vai trò;
+run này ghi role B bị kill và role A được input/quan sát.
+
+Policy forfeit, identity3, tái dùng slot0/session1, profile, timing và fixture là **emu_choice/design**
+được client chấp nhận trong ca này. C không phải A reconnect/resume; chưa full auth/cache,
+ID allocator hoặc cleanup mọi entity/timer/queue/generation. Run dừng ở clock/movement trận mới,
+chưa bom/death/result của B/C. **Chưa nghiệm thu full match/K5/K6a/LAN/Internet**.
+[Bước tiếp duy nhất](RESEARCH.md#q-023).
+
 ### Giới hạn và correction WCP lịch sử
 
 Fixture opaque/zero/empty và prefix69 là emu_choice đã được consumer chấp nhận trong phép thử,
@@ -1526,7 +1576,7 @@ liệt kê và phân biệt với nguyên bản trong mọi demo.
 
 ### Authority matrix hiện hành và gate review
 
-Bảng này tổng hợp bằng chứng từng phần đến CP039; chưa phải toàn contract server gốc. Mỗi hàng khi
+Bảng này tổng hợp bằng chứng từng phần đến CP040; chưa phải toàn contract server gốc. Mỗi hàng khi
 triển khai phải bổ sung riêng **creator, simulator, validator, broadcaster, peer-editable state**, với
 locator/trace và trạng thái từng ô; những vai trò không nêu dưới đây hiện `unknown` cho KR.
 
@@ -1539,7 +1589,7 @@ locator/trace và trạng thái từng ô; những vai trò không nêu dưới 
 | Item placement/pickup | CP030 nhặt/tranh index; CP031 stat/clamp/power; CP032 item ẩn và reset field hẹp; [contract](#hidden-items) | Runtime tại max/speed, random drop/đảo winner/stale/generation và toàn reset còn thiếu |
 | Trap/death | CP029/036; CP037 kim và tranh chấp cứu/diệt; [kim](#needle-selfescape), [precedence](#contact-precedence) | Validator/duplicate/stale/generation/variants, result21 và đối chứng thêm/đảo chiều còn thiếu |
 | Result/reset | CP039 hai vòng statepeer/result/21/return và reset field hẹp; [phạm vi](#round-finish) | Arbitration/generation, mọi entity/timer/peer/seq không rò và disconnect vẫn mở; phân biệt run chờ sai origin với ca hoàn tất |
-| Room lifecycle | CP034 leave/promotion/EOF/return; CP035 rejoin/Ready và chủ B Start tới clock cả hai; [contract](#room-rejoin) | Bầu chủ/giữ ID-slot là policy stub; CP039 có hostEOFcontrol/forfeitreturn; reconnect/guestEOF/variants và sauabortStart chưa kiểm |
+| Room lifecycle | CP034 leave/promotion/EOF/return; CP035 rejoin/Ready và chủ B Start tới clock cả hai; [contract](#room-rejoin) | Bầu chủ/giữ ID-slot là policy stub; CP040 có [client mới/chủ mới Start sau host EOF](#abort-rejoin); guest EOF trả A về phòng/xóa B đã đo riêng; reconnect cùng account/disconnect variants/toàn reset còn mở |
 | Peer lifecycle | CP027 actual99→153 và UDP send/receive hai client; [phạm vi](#peer-duo) | Full schema receive/handshake/key/slot/reliability/relay và giới hạn state peer được sửa |
 
 Gate K5/K6 cần kiểm matrix và đối chứng của hành vi thực sự dùng; từ28/10 Codex tự kiểm theo miễn review của chủ dự án. Có thể giữ unknown về
