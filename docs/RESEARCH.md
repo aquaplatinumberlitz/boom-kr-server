@@ -149,19 +149,26 @@ CP037 thêm [kim tự thoát/peer](PROTOCOL.md#needle-selfescape) và
 [cứu/diệt ba client thật + nhánh native](PROTOCOL.md#contact-precedence);
 [recipe/control/hash](evidence/needle-contact/README.md). Không ghép các ca thành full match.
 
+CP037/[PR45](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/45) đã merge `1e2ac9a`.
+CP038 trả lời hẹp [trap lần hai khi hết kim](PROTOCOL.md#needle-repeat), có đối chứng hoán đổi team;
+[raw/control/hash](evidence/needle-repeat/README.md). Kiểm exact-simultaneity runtime là backlog bổ sung,
+không điều kiện chặn mốc trận đầy đủ; đây là quyết định ưu tiên của Codex, không tự xác nhận unknown.
+
 **Bước tiếp, Codex RE/tự kiểm:**
 
 1. **NEXT-DUO-ROUND:** rời phòng/xóa ghost slot/promotion/guest EOF/về sảnh đã đo hẹp ở CP034;
-   CP035 đã đo **rejoin qua click/request thật và Start sau promotion tới clock**. Tiếp host EOF/disconnect trong trận và report21/result trước ca full match.
+   CP035 đã đo **rejoin qua click/request thật và Start sau promotion tới clock**. Ưu tiên đo actual21 cùng175/180: report có ngừng, UI kết quả và return/reset có nhất quán hai phía không;
+   sau đó host EOF/disconnect trong trận trước nghiệm thu full match.
    Kiểm entity/timer/peer/seq/generation/reset trước K6a; giữ riêng mốc request104/reader121/99/clock CP035, không suy full match từ đó.
-2. **NEXT-ITEM-PICKUP:** CP037 trả lời kim tự thoát và peer sync, có đối chứng cứu/diệt ba client thật.
-   Đã trace thứ tự0→1→2 ở bốn lượt sau trap trong profile CP037; ưu tiên đo cả hai actor cùng đủ điều kiện và đảo slot/team; thử bị nhốt lần hai khi hết kim và Ctrl cạnh tranh
-   với enemy/friendly touch. Sau đó validator/stale/generation/toàn reset. CP032 item ẩn và
+2. **NEXT-ITEM-PICKUP:** CP037 kim tự thoát/peer, CP038 có [trap lần hai khi hết kim](PROTOCOL.md#needle-repeat).
+   Exact sameupdate/both-eligible runtime, đảo thứ tự danh sách và Ctrl cạnh tranh là kiểm bổ sung,
+   không chặn first full match. Tiếp validator/stale/generation/toàn reset sau report21/result và disconnect;
+   multi-charge/duplicate/aux khác và các mode giữ scope riêng. CP032 item ẩn và
    stat đầu vòng kế, CP033 chain một owner đã có bằng chứng; không tìm lại receiver. Runtime tại max/speed,
    chain nhiều owner/ba bom/vật cản, list3/loại block khác/đảo winner/stale index qua round còn thiếu.
    Giữ118.field10→159.field8. Report142 từ cả hai không tự chứng minh authority server gốc.
 3. Receiver170/17,19 và mismatch death hẹp có lời giải CP029; CP036 bổ sung rescue/enemy-touch/timeout hẹp; CP037 có ba client thật và native collection dừng ở chạm hợp lệ đầu.
-   Không tìm lại ID kim VN117/KR145 hoặc170/sub1; tiếp sameupdate/listorder/đảo slot/team/aux khác/variants.
+   Không tìm lại ID kim VN117/KR145 hoặc170/sub1; sameupdate/listorder/aux khác/variants là backlog kiểm bổ sung.
    Fullauth/profile/cache/reconnect/codec/vanilla và UDPgrammar/key/reliability/handshake/relay/NAT còn mở;
    104/95bodygrowth, serialrollover/allocator/concurrent/optionalflags, Antarctic timing giữ scope riêng.
    Cùngrank không thay deathstate; không có gate K5/K6a/LAN/Internet mới đóng.

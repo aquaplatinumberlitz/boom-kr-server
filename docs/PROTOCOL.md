@@ -1,6 +1,6 @@
 # KR 00967 — contract tương thích client gốc
 
-Revision kr-legacy-contract-r1; cập nhật31/10/2026 JST (CP037).
+Revision kr-legacy-contract-r1; cập nhật31/10/2026 JST (CP038).
 **Contract có bằng chứng từng phần; chưa nghiệm thu full codec K2**.
 Lộ trình và thứ tự task chỉ giữ ở [REWRITE_PLAN — KRE](PLAN.md).
 Đây là contract của repo server KR. ADR0009 của bản viết lại là nguồn lịch sử để so sánh;
@@ -1366,13 +1366,30 @@ không dùng chúng thay bằng chứng actor runtime.
 
 `needle-first` là **collector thất bại**: handler124 cũ trùng allowlist gây KeyError41/đóng socket;
 không phải bằng chứng client không hỗ trợ kim. Raw lỗi giữ nguyên; `needle-fixed` loại handler trùng.
-Ctrl lần hai trong `needle-forward` khi đã thoát/ô trống không phát thêm1/0, nhưng chưa thử
+Tại CP037, Ctrl lần hai trong `needle-forward` khi đã thoát/ô trống không phát thêm1/0, nhưng chưa thử
 **bị nhốt lần hai khi hết kim**, duplicate/stale/server inventory authority hoặc Ctrl cạnh tranh
 với rescue/enemy touch. Không gửi170/sub0 đoán để suy inventory peer đã đồng bộ đầy đủ.
 
 State26/56 chỉ trong profile này; timing/fixture/fuse/translation là lựa chọn emulator.
 Hai client thật, không full match/K5/K6a/LAN/Internet hoặc vanilla Windows.
 [Bước tiếp duy nhất](RESEARCH.md#q-023).
+
+<a id="needle-repeat"></a>
+#### Bị nhốt lần hai khi hết kim — CP038
+
+**kr_runtime confirmed hẹp**, [run/recipe/hash](evidence/needle-repeat/README.md).
+`repeat-ctrl` giữ cùng hai client/socket/identity và một Start/clock, một pickup145/165, hai bom A
+ở cùng ô hàng6/cột3. Report A đúng thứ tự **17→1→0→17→19**; không phải hai trận.
+Lần đầu Ctrl đưa local/peer56→26 như CP037. Sau đó chờ hơn8s, đặt bom lần hai;
+ảnh ô Ctrl đã trống. Ctrl sau trap lần hai1,455s không có thêm report1/0 hoặc entry E70E90;
+ảnh sau Ctrl vẫn bubble, A19 sau trap6,150s. Cả hai client kết thúc actorA state1;
+170/17 đọc10/10,170/19 đọc21/21/errors0. Không suy inputreturn0 chứng minh mọi input đã được xử lý.
+
+Native **1190C20** từ callsite B4D999 có guard1190C59: argument amount≤0 trả0 trước effect;
+nhánh group23 tại1190FCC gọi interface vf1C. Sáu ca native kiểm kind/amount với itemtable/group/
+interface model. **Chưa đọc amount argument của chính lần Ctrl rỗng**, không đặt tên field inventory
+hoặc dùng emulation thay quan sát hết kim. Timing/fuse là stub choice; một ca không phục hồi mọi
+mode/timeout hoặc server inventory validator. Duplicate/stale/multi-charge và Ctrl cạnh tranh touch còn mở.
 
 <a id="contact-precedence"></a>
 ### Tranh chấp cứu/diệt: ba client thật và nhánh chọn — CP037
@@ -1404,7 +1421,7 @@ không dùng nó chứng minh runtime cùng chạm hoặc thứ tự danh sách 
 `race-order` trace bốn lượt sau17, tick372–375: thứ tự slot**0→1→2** (A→B→C) trong ca này.
 Tick389 A(120,159),B(120,275),C(120,159); predicate C trả0, cờ diệt1/cứu0/deathslot2 rồi report19. B vẫn xa, không phải cả hai cùng chạm.
 `race-aligned-limited` tick426 vẫn chỉ B đủ điều kiện, cờ cứu1/diệt0; getter0/0/1 và tọa độ kiểm riêng.
-Chưa bắt được cả B/C cùng đủ điều kiện trong một lần quét trên client thật, chưa đảo slot/team;
+Tại CP037 chưa bắt được cả B/C cùng đủ điều kiện trong một lần quét trên client thật, chưa đảo slot/team;
 thứ tự trên không được nâng thành luật ưu tiên slot cố định mọi mode.
 
 Tại nhánh cuối **E6EEA7**, cờ diệt khác0 gọi stage vf2DC; nếu diệt0/cứu khác0 mới gọi vf2E0.
@@ -1419,6 +1436,24 @@ complete; [AUD012](evidence/checkpoints/audits/AUD012.json) giữ correction/ngu
 Checkpoint/raw trước đó không bị viết lại. Trạng thái runtime còn thiếu và thứ tự kiểm tiếp chỉ giữ
 ở [RESEARCH](RESEARCH.md#q-023); recipe/số đo ở [evidence](evidence/needle-contact/README.md).
 Không suy luật server gốc/validator, kết quả175, full match/K5/K6a/LAN/Internet từ các nhánh trên.
+
+<a id="contact-inversion"></a>
+#### Đối chứng đổi team slot1/2 — CP038
+
+**kr_runtime confirmed hẹp**, [recipe/control/hash](evidence/needle-repeat/README.md).
+`swapped-fixed` giữ IDs1/2/3 và slots0/1/2, đổi team A0/B1/C0 trong106/110/121;
+getter runtime khớp0/1/0. Ba phía Start155/155/errors0 và clock một lần.
+B/C cùng được input Down rồi Up, không xem cùng phím là cùng đủ điều kiện va chạm.
+Trace bốn lượt đầu sau17 vẫn slot0→1→2; tick405 predicate của B trả0,
+flags diệt1/cứu0/deathslot1, gọi E6EF50 rồi actual19. CP037 Bteam0 đã có rescue từ slot1;
+**không hardcode slot1 luôn cứu**. Movement profile ca này cũng khác CP037 nên không dùng
+hai run để khẳng định mọi khác biệt chỉ do team hoặc quy tắc luôn ưu tiên slot nhỏ nhất.
+
+Lượt trước `swapped-symmetric` dừng trước Start do fixture Aguest106 sai seq58 thay64;
+không có kết luận va chạm. Native framer key64 kiểm oldfixture→7/CRC, retime64→0;
+body giữ nguyên. Sửa harness/fixture mới, không sửa raw lỗi/nguồn client.
+Ca runtime cả hai cùng đủ điều kiện và các thứ tự khác vẫn unknown. Đây là kiểm bổ sung cho
+độ khớp client gốc; ưu tiên tiếp result/disconnect/reset ở [RESEARCH](RESEARCH.md#q-023).
 
 ### Giới hạn và correction WCP lịch sử
 
@@ -1451,7 +1486,7 @@ liệt kê và phân biệt với nguyên bản trong mọi demo.
 
 ### Authority matrix hiện hành và gate review
 
-Bảng này tổng hợp bằng chứng từng phần đến CP037; chưa phải toàn contract server gốc. Mỗi hàng khi
+Bảng này tổng hợp bằng chứng từng phần đến CP038; chưa phải toàn contract server gốc. Mỗi hàng khi
 triển khai phải bổ sung riêng **creator, simulator, validator, broadcaster, peer-editable state**, với
 locator/trace và trạng thái từng ô; những vai trò không nêu dưới đây hiện `unknown` cho KR.
 

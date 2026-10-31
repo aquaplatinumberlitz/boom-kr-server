@@ -22,17 +22,17 @@ boom-kr-server/
 
 ## Đang làm
 
-CP037: **đã đo kim tự thoát và đồng bộ sang peer**, thêm đối chứng cứu/diệt bằng ba client thật.
-[Contract kim](docs/PROTOCOL.md#needle-selfescape), [tranh chấp cứu/diệt](docs/PROTOCOL.md#contact-precedence),
-[recipe và bằng chứng](docs/evidence/needle-contact/README.md). Native collection cho thấy vòng quét dừng ở chạm hợp lệ đầu;
-điều kiện cùng chạm và thứ tự duyệt runtime được phân biệt rõ trong contract.
+CP038: **đã đo bị nhốt lần hai sau khi dùng hết kim** trên cùng cặp client/trận.
+[Contract](docs/PROTOCOL.md#needle-repeat), [recipe và bằng chứng](docs/evidence/needle-repeat/README.md).
+Kiểm runtime cả địch/đồng đội cùng đủ điều kiện được giữ làm kiểm bổ sung;
+ưu tiên tiếp là report21/kết quả trận, disconnect và reset cho trận kế tiếp.
 
 Đây là các thí nghiệm trên copy chẩn đoán Wine; **chưa nghiệm thu trận hoàn chỉnh/K6a**.
 Disconnect trong trận, validator/toàn reset, report21/result và full auth/cache còn thiếu.
 Chưa LAN/Internet. [Bước tiếp](docs/RESEARCH.md#q-023).
 
-CP036 đã merge [PR44](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/44) tại `7ab702f`.
-CP037 là snapshot trước tích hợp; PR nhánh `kre/needle-race-runtime` giữ trạng thái tích hợp.
+CP037 đã merge [PR45](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/45) tại `1e2ac9a`.
+CP038 là snapshot trước tích hợp; PR nhánh `kre/contact-inventory-next` giữ trạng thái tích hợp.
 Codex tự kiểm, review độc lập waived. **AUD011/CP036** định kỳ đã hoàn tất; AUD012 kiểm correction CP037; audit định kỳ kế **CP040**.
 
 Checkpoint bền vững: [manifest](docs/evidence/checkpoints/manifest.json).
