@@ -22,19 +22,18 @@ boom-kr-server/
 
 ## Đang làm
 
-CP041: **payload nổ158 cũ có thể tác động lên bom mới nếu ID được dùng lại qua vòng trận**.
-Ca cấp ID tăng không có tác động đó; cả hai đã có hai vòng trap/death nhất quán → kết quả → về phòng.
-[Contract/phạm vi](docs/PROTOCOL.md#round-generation), [recipe/control/hash](docs/evidence/round-generation/README.md).
-Policy ticket theo vòng trong `server/round_fence.py` chặn job local cũ; không là toàn validator.
+CP042: **165 xác nhận nhặt cũ có thể cộng item ở vòng mới khi tái dùng index**,
+trước cả request124 mới. Control đổi index không cộng; stat được kiểm trực tiếp trên hai client.
+[Contract/phạm vi](docs/PROTOCOL.md#item-generation), [recipe/control/hash](docs/evidence/item-generation/README.md).
+`server/item_claims.py` bổ sung policy catalog/claim một lần và ticket xác nhận theo vòng.
 
-Đây là các thí nghiệm trên copy chẩn đoán Wine; **chưa nghiệm thu trận hoàn chỉnh/K6a**.
-Full auth/cache/codec, item/pending qua vòng và toàn reset/peerqueue còn thiếu; chưa LAN/Internet.
-[Bước tiếp](docs/RESEARCH.md#q-023). CP040 đã đo [Start với client mới sau host EOF](docs/PROTOCOL.md#abort-rejoin),
-không phải reconnect account cũ.
+Đây là thí nghiệm copy chẩn đoán Wine; **chưa nghiệm thu trận hoàn chỉnh/K6a**.
+Policy local chưa phân biệt được124 cũ trùng toàn catalog hiện tại; pending159, timer abort,
+peerqueue và full auth/cache/codec còn thiếu. [Bước tiếp](docs/RESEARCH.md#q-023). Chưa LAN/Internet.
 
-CP040 đã merge [PR48](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/48) tại `99d1835`.
-CP041 là snapshot trước tích hợp trên nhánh `kre/round-generation-runtime`.
-Codex tự kiểm, review độc lập waived. Audit định kỳ gần nhất **AUD013/CP040**, audit kế **CP044**.
+CP041 đã merge [PR49](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/49) tại `97320ca`.
+CP042 là snapshot trước tích hợp trên nhánh `kre/item-generation-runtime`.
+Codex tự kiểm, review độc lập waived. Audit gần nhất **AUD013/CP040**, audit kế **CP044**.
 
 Checkpoint bền vững: [manifest](docs/evidence/checkpoints/manifest.json).
 Quy trình ghi chép/review/audit: [checkpoint workflow](docs/evidence/checkpoints/README.md).

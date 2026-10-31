@@ -169,6 +169,11 @@ CP041 có [stale158/ID reuse qua vòng](PROTOCOL.md#round-generation),
 [controls/recipe/hash](evidence/round-generation/README.md). Không coi CRC/seq hợp lệ hoặc callback đầy đủ
 là chống stale semantic. Fence cho job local là design server, không field generation phục hồi từ wire.
 
+CP041/[PR49](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/49) đã merge `97320ca`.
+CP042 có [old165/index reuse và stat trước124 mới](PROTOCOL.md#item-generation),
+[control/hash](evidence/item-generation/README.md). Claim/ticket local là design; chưa giải được124 cũ
+có toàn field khớp catalog mới. Không tìm lại receiver165 hoặc coi duplicate cùng vòng là proof qua vòng.
+
 **Bước tiếp, Codex RE/tự kiểm:**
 
 1. **NEXT-DUO-ROUND:** rời phòng/xóa ghost slot/promotion/guest EOF/về sảnh đã đo hẹp ở CP034;
@@ -176,11 +181,13 @@ là chống stale semantic. Fence cho job local là design server, không field 
    CP039 đã nối result/return hai vòng sau statepeer nhất quán và hostEOF→forfeitreturn/roomcleanup/promotion.
    CP040 đã đo B chủ mới gửi104 với C mới Join/Ready sau abort; guest EOF control/policy trả A về phòng, xóa B/chief A giữ nguyên đã đo riêng.
    CP041 đã kiểm hai vòng với stale158 và ID cấp tăng/tái dùng; nhánh nổ không cần tìm lại.
-   Tiếp item index/165, pending159 tới trễ qua vòng mới, timer hủy khi abort và peerqueue/reset trước K6a;
+   CP042 có old165/index reuse và policy claim/ticket local. Tiếp pending159 tới trễ qua vòng mới,
+   timer hủy khi abort, peerqueue/reset và giới hạn124 trùng catalog trước K6a;
    reconnect/resume cùng account vẫn chưa đo. Không tự gọi sub34 là ACK hoặc21 là validator.
 2. **NEXT-ITEM-PICKUP:** CP037 kim tự thoát/peer, CP038 có [trap lần hai khi hết kim](PROTOCOL.md#needle-repeat).
    Exact sameupdate/both-eligible runtime, đảo thứ tự danh sách và Ctrl cạnh tranh là kiểm bổ sung,
-   không chặn first full match. Tiếp index/165 stale qua vòng khi index được tái dùng; tách payload cũ với job local theo CP041;
+   không chặn first full match. CP042 đã đo165 cũ khi index tái dùng/đổi index và stat1→2 trước124 mới;
+   tiếp giới hạn stale124 trùng catalog/tick/session/actor validation, không suy local ticket giải toàn request cũ;
    multi-charge/duplicate/aux khác và các mode giữ scope riêng. CP032 item ẩn và
    stat đầu vòng kế, CP033 chain một owner đã có bằng chứng; không tìm lại receiver. Runtime tại max/speed,
    chain nhiều owner/ba bom/vật cản, list3/loại block khác/đảo winner/stale index qua round còn thiếu.

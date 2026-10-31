@@ -15,4 +15,13 @@ vẫn cần kiểm riêng; không gọi module này là toàn validator hoặc �
 
 Kiểm policy: `python3 -m unittest server.test_round_fence`.
 
+`item_claims.py` giữ catalog item hiện tại, kiểm slot gắn socket/context/index/hàng/cột/kind,
+chọn một claim đầu cho mỗi index và chỉ consume xác nhận local một lần. `begin/finish` làm
+ticket cũ hết hiệu lực, kể cả khi dùng lại index. Caller serialize claim/consume/phát165 cùng owner phòng.
+Đây là policy thử; chưa tự kiểm distance, thời gian, session key, actor state hoặc UDP. Nếu request cũ
+có mọi field trùng catalog hiện tại và wire không có epoch đã xác nhận, module không phân biệt được nó;
+không gọi đây là toàn validator chống stale124.
+
+Kiểm cả hai policy: `python3 -m unittest server.test_round_fence server.test_item_claims`.
+
 Lộ trình và điều kiện mở probe server: [PLAN](../docs/PLAN.md).

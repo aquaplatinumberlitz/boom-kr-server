@@ -1,6 +1,6 @@
 # KR 00967 — contract tương thích client gốc
 
-Revision kr-legacy-contract-r1; cập nhật31/10/2026 JST (CP041).
+Revision kr-legacy-contract-r1; cập nhật31/10/2026 JST (CP042).
 **Contract có bằng chứng từng phần; chưa nghiệm thu full codec K2**.
 Lộ trình và thứ tự task chỉ giữ ở [REWRITE_PLAN — KRE](PLAN.md).
 Đây là contract của repo server KR. ADR0009 của bản viết lại là nguồn lịch sử để so sánh;
@@ -1594,6 +1594,48 @@ không đồng nghĩa toàn reset/validator/stale-safe. Item index/165 qua vòng
 ID wrap, abort/cancel timer và peerqueue/UDP generation còn mở.
 **Chưa nghiệm thu full match/K5/K6a/LAN/Internet**. [Bước tiếp](RESEARCH.md#q-023).
 
+<a id="item-generation"></a>
+### Xác nhận item cũ khi tái dùng index qua vòng — CP042
+
+**kr_runtime/kr_static confirmed hẹp trên diagnostic copy Wine**;
+[recipe/control/hash](evidence/item-generation/README.md). Không thêm patch hoặc ép actor/stat.
+Theo [item165](#item-pickup)/[stat Bomb](#item-effects), đặt một Bomb/kind0 tại hàng4/cột3
+mỗi vòng, index17 vòng1; vòng2 đổi18 hoặc giữ17. Hai client A/B giữ8connections/IDs1,2/slots0,1,
+hai actual95/104/121/99/clock. Mỗi vòng một bom A rồi17/19,170 đồng bộ peerstate1 trước175/180/phòng.
+Placement/index/outcome/fuse6s là **emu_choice/design**.
+
+Sau clock vòng2, trước input/actual124 mới, stub mã hóa lại payload165 xác nhận vòng1 bằng seq
+hiện tại của từng receiver. Payload12byte là `ok1,ctx0,slot0,row4,col3,index17,kind0,flag0`.
+Đây là semantic replay từ stub, không replay nguyên frame vượt CRC/seq và không request client giả.
+
+| Ca | Quan sát ở cả hai client |
+|---|---|
+| `unique-index`: vòng2 index18 |165 cũ đọc12/12/errors0, item17 lookup0, capacityA giữ1→1, không increment. Sau A Down có actual124/index18;165 hiện tại làm capacity1→2. |
+| `reused-index`: vòng2 index17 |165 cũ tìm item17 hiện tại, chạy effect/increment, capacityA1→2 trước input nhặt. Toàn capture không có124 vòng2; chỉ có124 vòng1. |
+| `guarded-fixed`: vòng2 index17, claim policy local |Ticket xác nhận cũ bị loại `stale_round`, không phát165. Sau input có actual124/index17,165 hiện tại đọc12/12 và capacityA1→2 cả hai; hai vòng vẫn kết quả/về phòng. |
+
+Stat là secure actor+4A4 trước/sau từng callback, checksum và native52A350 kiểm độc lập;
+max/power/capacityB đã đo giữ nguyên. Clock vòng2 reset capacityA về1 trước replay.
+Không dùng riêng full cursor, icon biến mất hoặc log stub làm bằng chứng cộng stat.
+
+**Cạnh đã kiểm:** E63260 đọc packet, E63331→E2C660 thử xóa pending theo ctx/index,
+sau đó mới kiểm ok/context và actor. Với variant đã đo, việc không có124 mới không chặn effect
+khi item hiện tại khớp. Interface→F73D30/B52840/E14DA0 tìm item bằng index; E636D9 kiểm pointer,
+E63712…E6374F kiểm hàng/cột và E637F9 qua nhánh match. Probe effect có thể xảy ra trước nhãn
+FOUND/MATCHED của outer handler do interface gọi lồng; không dùng thứ tự tên probe thay call graph.
+Chưa suy mọi variant đều bỏ qua pending hoặc mọi tọa độ/flag/kind sẽ được chấp nhận.
+Lượt `guarded-index` trước bản fixed lỗi collector `claimed_items` trước165, không phải client/protocol
+từ chối; giữ raw và harness lỗi như lịch sử tại evidence, không gộp thành ca runtime thành công.
+
+**Policy emulator:** [ItemClaims](../server/item_claims.py) kiểm catalog hiện tại cùng slot gắn socket,
+context/index/hàng/cột/kind, giữ một winner và ticket xác nhận local gắn owner/generation.
+`begin/finish` vô hiệu hóa ticket cũ; `consume` chỉ một lần dưới owner/lock trước phát165.
+Đây là design cho job/xác nhận local chưa gửi, không field epoch phục hồi từ wire.
+Request124 cũ trùng toàn bộ catalog hiện tại vẫn không thể được module phân biệt chỉ bằng các field đó;
+distance/tick/session/actor-state, pending159, timer abort và UDP/peerqueue còn cần kiểm riêng.
+Không gọi module này là toàn validator hoặc nghiệm thu K5/K6a/LAN/Internet.
+[Bước tiếp](RESEARCH.md#q-023).
+
 ### Giới hạn và correction WCP lịch sử
 
 Fixture opaque/zero/empty và prefix69 là emu_choice đã được consumer chấp nhận trong phép thử,
@@ -1625,7 +1667,7 @@ liệt kê và phân biệt với nguyên bản trong mọi demo.
 
 ### Authority matrix hiện hành và gate review
 
-Bảng này tổng hợp bằng chứng từng phần đến CP041; chưa phải toàn contract server gốc. Mỗi hàng khi
+Bảng này tổng hợp bằng chứng từng phần đến CP042; chưa phải toàn contract server gốc. Mỗi hàng khi
 triển khai phải bổ sung riêng **creator, simulator, validator, broadcaster, peer-editable state**, với
 locator/trace và trạng thái từng ô; những vai trò không nêu dưới đây hiện `unknown` cho KR.
 
@@ -1635,7 +1677,7 @@ locator/trace và trạng thái từng ô; những vai trò không nêu dưới 
 | Bomb place/ID | CP027 hai owner/ID chung1..4 tạo trên cả hai client; [phạm vi](#peer-duo); lặp/cũ CP025 | CP041 có [stale158/ID reuse và fence job local](#round-generation); allocator/rollover/concurrent/race/toàn generation và authority ngoài policy thử còn mở |
 | Explode/chain | CP033 hai bom B liền kề từ một158/ID1, control cách hai ô/replay sau chain; [contract](#bomb-chain) | Nhiều owner/ba bom/vật cản/race/generation và authority server gốc còn thiếu |
 | Block destroy/item reveal | CP032 list2→FixedBox,158→hai view vỡ/reveal→124/165/stat; report142 từ cả hai; [contract](#hidden-items) | Drop algorithm/server validator, variants/chain và phép loại transport riêng còn thiếu |
-| Item placement/pickup | CP030 nhặt/tranh index; CP031 stat/clamp/power; CP032 item ẩn và reset field hẹp; [contract](#hidden-items) | Runtime tại max/speed, random drop/đảo winner/stale/generation và toàn reset còn thiếu |
+| Item placement/pickup | CP030 nhặt/tranh index; CP031 stat/clamp/power; CP032 item ẩn và reset field hẹp; [contract](#hidden-items) | CP042 có [old165/index reuse](#item-generation); runtime max/speed, drop/đảo winner, toàn124validator/generation/reset còn thiếu |
 | Trap/death | CP029/036; CP037 kim và tranh chấp cứu/diệt; [kim](#needle-selfescape), [precedence](#contact-precedence) | Validator/duplicate/stale/generation/variants, result21 và đối chứng thêm/đảo chiều còn thiếu |
 | Result/reset | CP039 hai vòng statepeer/result/21/return và reset field hẹp; [phạm vi](#round-finish) | CP041 có [payload cũ khi ID reuse](#round-generation); arbitration/toàn generation/entity/timer/peer/seq không rò vẫn mở; phân biệt run chờ sai origin với ca hoàn tất |
 | Room lifecycle | CP034 leave/promotion/EOF/return; CP035 rejoin/Ready và chủ B Start tới clock cả hai; [contract](#room-rejoin) | Bầu chủ/giữ ID-slot là policy stub; CP040 có [client mới/chủ mới Start sau host EOF](#abort-rejoin); guest EOF trả A về phòng/xóa B đã đo riêng; reconnect cùng account/disconnect variants/toàn reset còn mở |
