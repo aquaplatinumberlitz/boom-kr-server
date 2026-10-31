@@ -1,6 +1,6 @@
 # KR 00967 — contract tương thích client gốc
 
-Revision kr-legacy-contract-r1; cập nhật31/10/2026 JST (CP033).
+Revision kr-legacy-contract-r1; cập nhật31/10/2026 JST (CP034).
 **Contract có bằng chứng từng phần; chưa nghiệm thu full codec K2**.
 Lộ trình và thứ tự task chỉ giữ ở [REWRITE_PLAN — KRE](PLAN.md).
 Đây là contract của repo server KR. ADR0009 của bản viết lại là nguồn lịch sử để so sánh;
@@ -247,7 +247,8 @@ không thêm patch binary hoặc ép ready/index/level. Fixture và bounds là `
   frame/CRC/first-field pass không xác nhận blob/schema. Nhánh selector1 là compressed, chưa kiểm.
   Inner có u16LE count, mỗi row theo`13A20D0`: string(u32LE byte-length),u32LE,
   7×u8,2×u16LE,4×u8,2×u32LE. Chỉ count1/name rỗng/kind10 đã thử; semantics/bounds còn thiếu.
-  Native blob reader xác nhận count1/33byte inner. Runtime copy bảng qua`13A28F0`,
+  Native blob reader xác nhận count1/33byte inner. CP034 nối trường u32 cuối tới
+  loại sảnh khi quay về tại [room lifecycle](#room-leave); các field còn lại giữ giới hạn CP016. Runtime copy bảng qua`13A28F0`,
   lookup`13A2C10` cập nhật selected0; getters min/max trả0/65535, check level trả1.
 - Client tự mở `CCreateDlgRenew` (vtable`1752274`, modal caller`DB2170`). Click xác nhận
   client-relative343,479 làm modal trả3 →`DB3550→DB35E0`, builder`DB3617` chọn **opcode81**.
@@ -1187,6 +1188,61 @@ server phát riêng ID2. Không phục hồi thuật toán authority/validator s
 UDP riêng. Chain qua tường/block, nhiều owner/ba bom/race, collision/rescue/reset/disconnect và
 full auth/cache/codec còn mở; **chưa full match/K5/K6a/LAN/Internet**.
 
+<a id="room-leave"></a>
+### Rời phòng, chủ mới và chọn loại sảnh — CP034
+
+**kr_runtime/kr_static confirmed trong phạm vi diagnostic Wine copy**;
+[10 run, recipe, control và hash](evidence/room-leave/README.md). VN `docs/lobby.md` §0/§18
+chỉ dẫn kiểm ghost slot/chief bit và ba biến thể sảnh; wire KR được kiểm riêng.
+Không thêm patch binary hay ép stage/game state bằng debugger.
+
+**Rời bằng UI:** click Back client-relative113,581 đi qua
+`DDA160→12562F0(previousStage11)` (return`DDA32C`) rồi`1256100` tạo **C→S86**, body rỗng,
+wire38byte, gửi qua`1164D50→13ADD10`. Seq theo socket`40+3n`, không cố định một giá trị.
+Escape control không tạo86. Control Back không reply giữ ghost B trên A và leaver ở loading.
+`123F820(1)` trên đường gửi reset room context; không gọi routine này đơn giản là pending setter.
+
+**Xóa slot:** **S→C107** = `u8 slot,u32 id,u8 flag`, payload6/wire44.
+`D5F5A0→vf2BC/DC62D0→D603A0` đọc đủ6/6/errors0;
+`12400D0` so incoming ID với record rồi xóa ID về0. Manager+A8 chứa rows stride318hex,
+ID tại row+C. Guest rời gửi107(slot1,id2,flag0) cho A; host rời gửi107(slot0,id1,flag0) cho B.
+Runtime và ảnh cùng xác nhận ô người rời bị xóa. DC62D0 **rewind** packet tại DC6327
+(cursor6→0) rồi đọc lại slot cho UI; cursor cuối1/6 là intentional second pass, không phải base parser đọc thiếu.
+Không gửi107 cho leaver trong ca tự rời; nhánh tự bị đuổi/modal BannedByLeader/ChiefBanned/BannedBySuper chưa kiểm.
+
+**Chuyển chủ:** sau A rời, stub gửi110 cho B: slot1, DecodeBuf4=`22 00 00 00`, tail0.
+State B trước đó20hex; bit1 được đặt. Getter`1240CF0→1240D5E` của actual B đổi0→1,
+slot A ID1→0, UI B có nút Start. Đây là promotion được client chấp nhận; chọn người còn lại làm chủ
+là **design** của stub. Chưa đo click Start sau promotion hoặc mọi luật bầu chủ server gốc.
+
+**Ngắt guest:** kill wineserver thuộc riêng prefix B trong namespace; channel B quan sát EOF,
+stub sau đó phát107(slot1,id2,0) cho A. A xóa record ID2→0/ô B; capture không có86.
+Chỉ ca idle room; chưa host abrupt disconnect, active-match recovery, reconnect/rejoin hoặc cleanup mọi peer/timer.
+
+**Điểm chặn quay về sảnh:** controls `guest-return`/`host-return` vẫn loading sau refresh241/91.
+Ca `guest-route` đo trực tiếp hai frame seq73/76 được framer chấp nhận: `115BA99` return0, `125DD40` app+F0
+trỏ vtable1716740/**CLobbySquareStage**, vfCC=82A530; vì vậy không vào CLobbyStage/DA1F30.
+Không suy CRC lỗi hoặc thiếu reply88 từ ảnh loading/không có log handler sảnh.
+
+Factory`125D497` mặc định loại1; khi `13AD5B0` trả index−1/−2 thì không đọc bảng.
+Khi index0, getter`13A1CB0` đọc secure value tại manager+D4+E4×index.
+Reader`13A1FB0` đặt rowbase manager+14+E4×index; do đó field là **row+C0, u32LE cuối
+bản ghi channel14** (reader`13A21DD→13A2250`), getter dùng byte thấp.
+`125D4E5`: loại0 tạo Square; loại1 tạo **CLobbyStage**/vt1766A2C/vfCC=DA1F30.
+Loại2 có nhánh riêng, chưa đo. Lần vào đầu dùng default1 lúc index−1 không bảo đảm lần quay về chọn cùng loại.
+
+Ca sửa chỉ u32 cuối0→1 trong channel14, giữ các field cũ: guest/host ở hai run riêng
+đều đo getter1→factory1→normal ctor→framer0→handler241/91; ảnh leaver hiện sảnh, hết loading.
+Refresh gửi sau actual86 khoảng1s. Đây là recipe tương thích đã đo; chưa chứng minh 241/91 là tối thiểu
+hoặc bắt buộc trong mọi cache path. Initial candidate đổi u8 thứ ba không đổi getter0;
+rowbase+8 từng đoán sai được sửa thành+14, giữ nguyên run thất bại. Full-row emulation thiếu context
+bị lỗi, không tính là proof; native blob oracle và runtime getter/factory là các bằng chứng riêng.
+
+Creator/policy của107/110/normal-lobby fixture và thời gian refresh là **emu_choice/design**.
+Không phục hồi authority server gốc hoặc đóng K4/K5/K6a; rejoin/start sau promotion/disconnect trong trận,
+collision/rescue/generation/toàn reset/full auth/cache/codec/LAN/Internet vẫn mở.
+[Bước tiếp duy nhất](RESEARCH.md#q-023).
+
 ### Giới hạn và correction WCP lịch sử
 
 Fixture opaque/zero/empty và prefix69 là emu_choice đã được consumer chấp nhận trong phép thử,
@@ -1218,7 +1274,7 @@ liệt kê và phân biệt với nguyên bản trong mọi demo.
 
 ### Authority matrix hiện hành và gate review
 
-Bảng này tổng hợp bằng chứng từng phần đến CP033; chưa phải toàn contract server gốc. Mỗi hàng khi
+Bảng này tổng hợp bằng chứng từng phần đến CP034; chưa phải toàn contract server gốc. Mỗi hàng khi
 triển khai phải bổ sung riêng **creator, simulator, validator, broadcaster, peer-editable state**, với
 locator/trace và trạng thái từng ô; những vai trò không nêu dưới đây hiện `unknown` cho KR.
 
@@ -1231,6 +1287,7 @@ locator/trace và trạng thái từng ô; những vai trò không nêu dưới 
 | Item placement/pickup | CP030 nhặt/tranh index; CP031 stat/clamp/power; CP032 item ẩn và reset field hẹp; [contract](#hidden-items) | Runtime tại max/speed, random drop/đảo winner/stale/generation và toàn reset còn thiếu |
 | Trap/death | CP029 control mismatch và170/17,19 đưa remoteactor56→1 trước175 qua hai vòng; [contract](#peer-events) | Validator/timeout/duplicate/stale/generation, rescue/enemy-pop và variants còn thiếu |
 | Result/reset | CP028 chu kỳ pair; CP032 đo lại hidden item/stat/serial/power ở đầu vòng2; [phạm vi](#hidden-items) | Arbitration/generation, mọi entity/timer/peer/seq không rò và disconnect vẫn mở; phân biệt run chờ sai origin với ca hoàn tất |
+| Room lifecycle | CP034 actual86,107 slot-clear,110 chief B0→1, guest EOF và guest/host về đúng loại sảnh; [contract](#room-leave) | Bầu chủ là policy stub; rejoin/start sau promotion, host EOF và disconnect trong trận chưa kiểm |
 | Peer lifecycle | CP027 actual99→153 và UDP send/receive hai client; [phạm vi](#peer-duo) | Full schema receive/handshake/key/slot/reliability/relay và giới hạn state peer được sửa |
 
 Gate K5/K6 cần kiểm matrix và đối chứng của hành vi thực sự dùng; từ28/10 Codex tự kiểm theo miễn review của chủ dự án. Có thể giữ unknown về

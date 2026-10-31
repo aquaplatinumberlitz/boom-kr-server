@@ -22,18 +22,18 @@ boom-kr-server/
 
 ## Đang làm
 
-CP033: **đã kiểm nổ dây chuyền hai bom liền kề trên cả hai client** trong Wine cô lập:
-một event nổ ID1 xử lý cả hai bom; đối chứng cách hai ô giữ lại bom thứ hai.
-[Contract và giới hạn](docs/PROTOCOL.md#bomb-chain), [bằng chứng](docs/evidence/bomb-chain/README.md).
-Item ẩn và reset stat/item qua hai chu kỳ thử đã đo tại [CP032](docs/PROTOCOL.md#hidden-items).
+CP034: **đã đo rời phòng, chuyển chủ và quay về sảnh trên cả hai client theo hai ca riêng**.
+Guest B rời → A xóa slot; host A rời → B nhận quyền chủ. Ca ngắt B đột ngột cũng xóa slot trên A.
+Đã giải điểm kẹt loading khi về sảnh bằng trường loại sảnh trong dữ liệu kênh.
+[Contract và giới hạn](docs/PROTOCOL.md#room-leave), [bằng chứng](docs/evidence/room-leave/README.md).
+Item/reset hẹp và chain giữ tại [CP032](docs/PROTOCOL.md#hidden-items)/[CP033](docs/PROTOCOL.md#bomb-chain).
 
 Đây là profile thử local với rank/policy do stub chọn; **chưa nghiệm thu trận hoàn chỉnh/K6a**.
-Runtime nhặt tại max, speed, block/chain variants, collision/rescue, validator/reset/disconnect
-và full auth/cache còn thiếu. Trap/death hai chiều đã kiểm hẹp ở [CP029](docs/PROTOCOL.md#peer-events).
-Chưa LAN/Internet. [Bước tiếp](docs/RESEARCH.md#q-023).
+Rejoin, start sau chuyển chủ, disconnect trong trận, collision/rescue, validator/toàn reset
+và full auth/cache còn thiếu. Chưa LAN/Internet. [Bước tiếp](docs/RESEARCH.md#q-023).
 
-CP032 đã merge [PR40](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/40) tại `fe46beb`.
-CP033 là snapshot trước tích hợp; PR nhánh `kre/chain-runtime` giữ trạng thái tích hợp.
+CP033 đã merge [PR41](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/41) tại `fbf4dc5`.
+CP034 là snapshot trước tích hợp; PR nhánh `kre/leave-runtime` giữ trạng thái tích hợp.
 Codex tự kiểm, review độc lập waived. **AUD010/CP032** audit định kỳ hoàn tất; audit kế **CP036**.
 
 Checkpoint bền vững: [manifest](docs/evidence/checkpoints/manifest.json).
