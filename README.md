@@ -33,7 +33,8 @@ Peerqueue/UDP generation, fullvalidator, server độc lập và full auth/cache
 [Bước tiếp](docs/RESEARCH.md#q-023).
 
 CP046 đã merge [PR54](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/54) tại `f85cda4`.
-CP047 hoàn tất record/tự kiểm trên nhánh `kre/udp-freshness`; tích hợp qua PR của nhánh.
+CP047 hoàn tất record/tự kiểm; [PR55](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/55)
+giữ trạng thái tích hợp của nhánh `kre/udp-freshness`.
 Codex tự kiểm, review độc lập waived. Audit **AUD014/CP044**, audit định kỳ kế **CP048**.
 
 Checkpoint bền vững: [manifest](docs/evidence/checkpoints/manifest.json).
