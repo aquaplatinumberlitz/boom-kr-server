@@ -17,6 +17,10 @@ CP043 đo [159 cũ khi serial local trùng](../docs/PROTOCOL.md#late-bomb-confir
 ticket gốc trước phát159. `rejection()` chỉ kiểm lifetime; duplicate159 trong cùng generation cần
 quy tắc riêng, không consume ticket timer chỉ để gửi ACK.
 
+CP044 kiểm [timer còn chờ khi host EOF](../docs/PROTOCOL.md#abort-timer): caller gọi `finish()` ngay
+khi quan sát abort dưới owner/lock; job cũ tới hạn bị loại `round_closed`. Module không tự theo dõi
+socket/roster hoặc hủy timer trong scheduler; mỗi đường gửi vẫn phải kiểm ticket gốc.
+
 Kiểm policy: `python3 -m unittest server.test_round_fence`.
 
 `item_claims.py` giữ catalog item hiện tại, kiểm slot gắn socket/context/index/hàng/cột/kind,

@@ -1,11 +1,11 @@
 {
   "schema": "kre-checkpoints-v1",
-  "last_id": "CP043",
-  "completed_count": 43,
+  "last_id": "CP044",
+  "completed_count": 44,
   "audit_interval": 4,
-  "last_periodic_audit": 40,
-  "next_periodic_audit": "CP044",
-  "last_manual_audit": "AUD013",
+  "last_periodic_audit": 44,
+  "next_periodic_audit": "CP048",
+  "last_manual_audit": "AUD014",
   "checkpoints": [
     {
       "id": "CP001",
@@ -75397,6 +75397,1504 @@
           "reason": "Explainoriginalticketlifetimecheckbefore159andcurrentroundduplicateACKlimit."
         }
       ]
+    },
+    {
+      "id": "CP044",
+      "previous": "CP043",
+      "lifecycle": "complete",
+      "recorded_utc": "2026-10-31T10:14:39.252180+00:00",
+      "context_commit": "f8569d8822b62fb2f917f00fb415b3c4e3771cdb",
+      "question": "Timer bom B còn chờ sau AEOF/forfeit/return đi vào stage nào; finish ở EOF có hủy job cũ mà giữ bom/trap/death/result của B/C mới?",
+      "scope": "Three sequential isolated Wine controllers: deliberate uncancelled timer sent in room, fenced drop in room, fenced fresh-C replacement plus current-round bomb/death/result/return. No new binary patch or actor/state forcing; not fullmatch acceptance.",
+      "owner": "Codex",
+      "reviewer": "Codex",
+      "artifacts": [
+        {
+          "name": "CA-r2-login-logout.exe",
+          "sha256": "660447c293ce92270cb9b5815331bca976e8f156366e1fe50b217b6c12e60ce3"
+        },
+        {
+          "name": "CA-r2-stage-social.exe",
+          "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+        },
+        {
+          "name": "CA-r2-stage-social.exe Bcopy",
+          "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+        },
+        {
+          "name": "modO.bin",
+          "sha256": "a08950c833d3acab8281049def7b3dc96b221f107eeda01da3a548e34b91dce5"
+        },
+        {
+          "name": "Runtime C copy",
+          "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+        },
+        {
+          "name": "RoundFence exact policy snapshot",
+          "sha256": "aabcc7f1d623573fc217de8df05403f83d82425bbe5d6e78872b3096a2d46708"
+        }
+      ],
+      "locators": [
+        "Base400000/RVA=VA-400000; modO raw memory, PE copies mapped.19targetedranges/5artifacts match; cached probes/WineGDB/Unicorn, no cold full-client scan.",
+        "Actual B118 owner1/serial1/ID1 →159 full39 both; A ownprefix wineserver kill → actual AchannelEOF → RoundFence.finish under packetlock before chosen175/180/107/110.",
+        "Oldfuse40s control ignores closedticket and sends158 only B afterreturn:125DD40 app+F0 vt1767A80/CPrepareStage/PREPARE_RECV158; no E5F450/kind0. Fenced oldjob round_closed/drop/no158.",
+        "Fresh C ID3/slot0 after AID1removed; C82/87full7/95, promoted B104; B/C121full129/99/197/196/153/clock/movement. Bsamechannel; Cnewprefix/sockets, not Aaccountreconnect.",
+        "New Bactual118 generation2/ID2 →159entity both →6s158 →E1449C lookup sameentity →E9E660kind0/E9EC74cleanup; actual B17/19 forward170 toC, Bstate1 both before175.",
+        "Chosen175 slot0win/slot1lose fullouter302/inner292 and180full3 both; roomrefresh Bchief/Cunready. Client-local roundcounter C1 is roomgeneration2; no spurious 2Start expectation for C.",
+        "CP043PR51mergedf8569d8; periodic manualAUD014throughCP044/nextCP048. KRE-005b and K5/K6a/LAN/Internet remain open."
+      ],
+      "findings": [
+        {
+          "summary": "Uncancelled old Bbomb timer after AEOF arrives only at Bpreparestage after roomcleanup; nativeframer valid but no game158/kind0 callback.",
+          "source": "kr_runtime",
+          "status": "confirmed",
+          "method": "runtime",
+          "canonical": "docs/PROTOCOL.md#abort-timer",
+          "limits": "Control intentionally bypasses closedticket atsend; no crash/game mutation/explosion claim. Forfeit is policy, no17/19 fabricated.",
+          "evidence": [
+            "E043",
+            "E045",
+            "E021",
+            "E026"
+          ]
+        },
+        {
+          "summary": "Existing RoundFence.finish at observed AEOF invalidates originaltimer: deadline sees round_closed and emits no158; Bforfeit175/180/removeA/chief1/room still observed.",
+          "source": "kr_runtime",
+          "status": "confirmed",
+          "method": "runtime",
+          "canonical": "docs/PROTOCOL.md#abort-timer",
+          "limits": "Local unsent job policy, no nativeepoch/fullvalidator/UDPqueue claim; caller must serialize EOF/finish/check/send.",
+          "evidence": [
+            "E073",
+            "E075",
+            "E011",
+            "E021",
+            "E035"
+          ]
+        },
+        {
+          "summary": "Fresh C ID3 replaces old AID1 after abort, actual Join/Ready and BStart lead to current Bbomb ID2, both entitylookup/kind0, B17/19 and peerstate1 before chosenresult/return in B/C.",
+          "source": "kr_runtime",
+          "status": "confirmed",
+          "method": "runtime",
+          "canonical": "docs/PROTOCOL.md#abort-timer",
+          "limits": "One replacement round after one forfeit; not two fully played matches or Aaccount reconnect. Fullprofile106 native only prefix5.",
+          "evidence": [
+            "E102",
+            "E104",
+            "E105",
+            "E021",
+            "E019",
+            "E039"
+          ]
+        },
+        {
+          "summary": "Selected actualC2S and S2Ctyped/blob/CRC/partial checks and captured secure52A350 snapshots validate declared byte/state relationships independently of encoder.",
+          "source": "kr_static",
+          "status": "confirmed",
+          "method": "emulation",
+          "canonical": "docs/PROTOCOL.md#abort-timer",
+          "limits": "Synthetic receiver/allocation; no modeledworld/originalserverauthority oracle. Native106prefix5 only; no game158runtimeparser claim in preparestage.",
+          "evidence": [
+            "E018",
+            "E019",
+            "E022"
+          ]
+        },
+        {
+          "summary": "On known abort caller must finish generation before waiting rank; closed or stale originalticket prevents pending send. Activepeer filtering excludes AEOF for subsequent B/C broadcasts.",
+          "source": "design",
+          "status": "design",
+          "method": "design",
+          "canonical": "docs/PROTOCOL.md#abort-timer",
+          "limits": "RoundFence unchanged. Caller/scheduler/roster integration remains separate; already-sent TCP or queuedUDP/fullreset not solved.",
+          "evidence": [
+            "E012",
+            "E011",
+            "E027"
+          ]
+        },
+        {
+          "summary": "Periodic whole-core/evidence/raw audit reconciles CP041–043 current answers and PR51 integration; preserves failed CP042 and disrupted CP043 history and open gates.",
+          "source": "design",
+          "status": "design",
+          "method": "documentation",
+          "canonical": "docs/PROTOCOL.md#abort-timer",
+          "limits": "Manual self-audit under review waiver; mechanical check does not infer semantics or close gates.",
+          "evidence": [
+            "E031",
+            "E012"
+          ]
+        }
+      ],
+      "verification": [
+        {
+          "check": "5741 mechanical checks/3 sealed sequential isolated controllers; oldtimer/EOF/return ordering, no postEOF sendA, seq and actualC2S/native checks.",
+          "result": "pass",
+          "evidence": [
+            "E023",
+            "E025",
+            "E021",
+            "E024"
+          ],
+          "limits": "Declared relationships only, no gate inference."
+        },
+        {
+          "check": "213 native packet cases/310 captured secure getterchecks;19ranges/5artifacts and manual image comparison.",
+          "result": "pass",
+          "evidence": [
+            "E018",
+            "E019",
+            "E022",
+            "E030",
+            "E039"
+          ],
+          "limits": "Parser context modeled; image immediately aftersend may precede callback."
+        },
+        {
+          "check": "12 policy regressiontests, sourceartifact5/5, periodic AUD014 wholecore/evidence/raw reconciliation.",
+          "result": "pass",
+          "evidence": [
+            "E027",
+            "E028",
+            "E002",
+            "E031"
+          ],
+          "limits": "Selfcheck/reviewwaived, not independent approval or acceptance."
+        }
+      ],
+      "evidence": [
+        {
+          "id": "E001",
+          "kind": "repository",
+          "path": "docs/evidence/abort-timer/README.md",
+          "bytes": 7178,
+          "sha256": "fda9ba7b8f0e803afb31dbab78de55aacbbee9ad44ec67eaa35e175547158489"
+        },
+        {
+          "id": "E002",
+          "kind": "repository",
+          "path": "docs/evidence/checkpoints/audits/AUD014.json",
+          "bytes": 6097,
+          "sha256": "b9c8c374f6a63b14a18c2405827f1723ae9277487607aeff9ea5a4c9a3ada5e1"
+        },
+        {
+          "id": "E003",
+          "kind": "local",
+          "path": "local/research/codex/abort-timer-r1/run_probe.py",
+          "bytes": 1067,
+          "sha256": "44a840742521279bc571d29dac9fbd1629083379715617ae85ddde6cf4a0c6fb"
+        },
+        {
+          "id": "E004",
+          "kind": "local",
+          "path": "local/research/codex/abort-timer-r1/seal_run.py",
+          "bytes": 625,
+          "sha256": "e915bf2526a09baacbc3bd036b29a5a6118647dfa827a476ca71e44945bbfc07"
+        },
+        {
+          "id": "E005",
+          "kind": "local",
+          "path": "local/research/codex/abort-timer-r1/derive_roles.py",
+          "bytes": 856,
+          "sha256": "ce361cb374a218d2ebff15fecab228c7e883b16fac05062b652d2b7c86a5d708"
+        },
+        {
+          "id": "E006",
+          "kind": "local",
+          "path": "local/research/codex/abort-timer-r1/replay-run.py",
+          "bytes": 3002,
+          "sha256": "967790d3018c7dcffd71ac13b7caba0007fa54160e20b44de5c4a62b95b8d9be"
+        },
+        {
+          "id": "E007",
+          "kind": "local",
+          "path": "local/research/codex/abort-timer-r1/parse_fields.py",
+          "bytes": 3090,
+          "sha256": "8ac3653385ea852c9b2cfe79ee50c15533a58dc77da87a9eb03693c175d7e05b"
+        },
+        {
+          "id": "E008",
+          "kind": "local",
+          "path": "local/research/codex/abort-timer-r1/native_packets.py",
+          "bytes": 4767,
+          "sha256": "94afa58e6bc99d73e852ad6b24bc5cf4bf26db6b804bdd9d66e77b224d64e60b"
+        },
+        {
+          "id": "E009",
+          "kind": "local",
+          "path": "local/research/codex/abort-timer-r1/match_code.py",
+          "bytes": 1435,
+          "sha256": "c2dc979711555d538b6da9562e0db3d5a33e4172ebb8ac77d0d2d2302ec68efb"
+        },
+        {
+          "id": "E010",
+          "kind": "local",
+          "path": "local/research/codex/abort-timer-r1/timer.gdb",
+          "bytes": 14046,
+          "sha256": "05072e6fc9e03d2b1bc7d6bd51af7a93cbf3fbd20f3bf9623a85ccecdc5dbbd1"
+        },
+        {
+          "id": "E011",
+          "kind": "local",
+          "path": "local/research/codex/abort-timer-r1/server-round_fence.py",
+          "bytes": 2339,
+          "sha256": "aabcc7f1d623573fc217de8df05403f83d82425bbe5d6e78872b3096a2d46708"
+        },
+        {
+          "id": "E012",
+          "kind": "local",
+          "path": "local/research/codex/abort-timer-r1/measurement-notes.json",
+          "bytes": 4309,
+          "sha256": "81d5f0dccc4c45716e10d0c2bb94d718740f2f2709c68a43a33061cb43ee634d"
+        },
+        {
+          "id": "E013",
+          "kind": "local",
+          "path": "local/research/codex/abort-timer-r1/uncancelled-room-recipe.json",
+          "bytes": 1002,
+          "sha256": "3b3672cdea41baa84929c928ff3bb993a25cb66651e0c1fd5960a4dca1e6c566"
+        },
+        {
+          "id": "E014",
+          "kind": "local",
+          "path": "local/research/codex/abort-timer-r1/uncancelled-room-launcher.log",
+          "bytes": 48929,
+          "sha256": "4fbb78617dd1dfdb85808c8603ac94b84fbc6d3ef5631512ca21fd66310b5f66"
+        },
+        {
+          "id": "E015",
+          "kind": "local",
+          "path": "local/research/codex/abort-timer-r1/fenced-room-recipe.json",
+          "bytes": 991,
+          "sha256": "4b62e9095eb6314ec01688f521eb1984f2c1ce639a6a1eaaac3924d8b7ae27d2"
+        },
+        {
+          "id": "E016",
+          "kind": "local",
+          "path": "local/research/codex/abort-timer-r1/fenced-room-launcher.log",
+          "bytes": 48521,
+          "sha256": "894eed16f4227339547571eab2598095e490cfe25bc6a2d7b76d3557b715c447"
+        },
+        {
+          "id": "E017",
+          "kind": "local",
+          "path": "local/research/codex/abort-timer-r1/uncancelled-room-hashes.json",
+          "bytes": 171652,
+          "sha256": "65b8b23289e04fa51574d48a49cc24ca62f4c12f6ae700ae7c94faf1cea6a6a1"
+        },
+        {
+          "id": "E018",
+          "kind": "local",
+          "path": "local/research/codex/abort-timer-r1/native-packets.json",
+          "bytes": 82933,
+          "sha256": "5c3b7b24229358c6088917568f79aa1c5e993407801d7e74db37de4b26c77028"
+        },
+        {
+          "id": "E019",
+          "kind": "local",
+          "path": "local/research/codex/abort-timer-r1/actor-fields.json",
+          "bytes": 206715,
+          "sha256": "8045c6f51a082f4cd9432c5d5ee2442382cd3fa172a0f5a52763200b24e545d3"
+        },
+        {
+          "id": "E020",
+          "kind": "local",
+          "path": "local/research/codex/abort-timer-r1/parse_runtime.py",
+          "bytes": 3263,
+          "sha256": "df01d8e55455858d6ccbbc406b0026bef86b7141fda9fd81c9d2f1d7097665ad"
+        },
+        {
+          "id": "E021",
+          "kind": "local",
+          "path": "local/research/codex/abort-timer-r1/runtime-summary.json",
+          "bytes": 20470,
+          "sha256": "562e0f39a83e0c5498eaeb33d4cb97b2bdf607a5c98617eb6b76bfe6ebc61b51"
+        },
+        {
+          "id": "E022",
+          "kind": "local",
+          "path": "local/research/codex/abort-timer-r1/code-match.json",
+          "bytes": 4135,
+          "sha256": "362840837fb7e55314e374d554265a9e9229860df5d227ec1d05e06bc7656e0e"
+        },
+        {
+          "id": "E023",
+          "kind": "local",
+          "path": "local/research/codex/abort-timer-r1/verify.py",
+          "bytes": 7118,
+          "sha256": "d47a379ae3efbfffd85b458dfd07fa7ca621cbb0e75ce5c105aaeeb461505f47"
+        },
+        {
+          "id": "E024",
+          "kind": "local",
+          "path": "local/research/codex/abort-timer-r1/runtime-metrics.json",
+          "bytes": 1666,
+          "sha256": "7c498cb25676c931296f728d9ae7e2d5eb569acafe968886359c6ba4a7c5756b"
+        },
+        {
+          "id": "E025",
+          "kind": "local",
+          "path": "local/research/codex/abort-timer-r1/verification.json",
+          "bytes": 227,
+          "sha256": "efa4d432c4c1448c42969ab587bbd4ef1c8b9bc9b82d22751782bd13ccb9a9f1"
+        },
+        {
+          "id": "E026",
+          "kind": "local",
+          "path": "local/research/codex/abort-timer-r1/uncancelled-room-visual.png",
+          "bytes": 370770,
+          "sha256": "d1d04f1fa8d65b3aa729ea38ea6632a32109f94c583c28b7c016a00f6025b220"
+        },
+        {
+          "id": "E027",
+          "kind": "local",
+          "path": "local/research/codex/abort-timer-r1/policy-tests.txt",
+          "bytes": 111,
+          "sha256": "72f09eca554e87a45b7156c6109520cf15e8b6ec157dc5c033610649b49b8698"
+        },
+        {
+          "id": "E028",
+          "kind": "local",
+          "path": "local/research/codex/abort-timer-r1/artifact-verification.txt",
+          "bytes": 253,
+          "sha256": "649c6624aa6d317dfc1db5e16fea683cfbc9d9cf4dd3df11c0d70e57409054a0"
+        },
+        {
+          "id": "E029",
+          "kind": "local",
+          "path": "local/research/codex/abort-timer-r1/build_visual.py",
+          "bytes": 1788,
+          "sha256": "e5f54ae6074aa97f9929adc7577bd1ff29af287ae6b26dd5f1b79fdb8a7b2929"
+        },
+        {
+          "id": "E030",
+          "kind": "local",
+          "path": "local/research/codex/abort-timer-r1/visual-index.json",
+          "bytes": 7725,
+          "sha256": "065f03beacef2d758f84c64e21842850d9c3c5fd59bce74bfd3d462757b5884c"
+        },
+        {
+          "id": "E031",
+          "kind": "local",
+          "path": "local/research/codex/abort-timer-r1/audit-delta.md",
+          "bytes": 2955,
+          "sha256": "879bdfcd7742b4c6dc698ed8c78b05901c67902bb56f475b0b4b4646f460f1ab"
+        },
+        {
+          "id": "E032",
+          "kind": "local",
+          "path": "local/research/codex/abort-timer-r1/fenced-replacement-recipe.json",
+          "bytes": 1010,
+          "sha256": "80f45a557d7680028bc17690cc6bcbf00c528d8624c432178b99bce80de520be"
+        },
+        {
+          "id": "E033",
+          "kind": "local",
+          "path": "local/research/codex/abort-timer-r1/fenced-replacement-launcher.log",
+          "bytes": 103757,
+          "sha256": "2cf5609600220a307f9eea67ce30a8bd9e7c894bf89da6fd63ecbd068340e557"
+        },
+        {
+          "id": "E034",
+          "kind": "local",
+          "path": "local/research/codex/abort-timer-r1/fenced-room-hashes.json",
+          "bytes": 166255,
+          "sha256": "7f36567659473edb3b69cf9704d1735dad6f76279d8adf6ea7b9d0d47b3c09f7"
+        },
+        {
+          "id": "E035",
+          "kind": "local",
+          "path": "local/research/codex/abort-timer-r1/fenced-room-visual.png",
+          "bytes": 364838,
+          "sha256": "b918dc244541a90b62a5cafa40ac06c0dd3ac750fb0664f85198ec69235a60f5"
+        },
+        {
+          "id": "E036",
+          "kind": "local",
+          "path": "local/research/codex/abort-timer-r1/finish_checkpoint.py",
+          "bytes": 10640,
+          "sha256": "41f54f94ded8fff94693577259b1095a2091d4def3ec0f1bb497de823956e493"
+        },
+        {
+          "id": "E037",
+          "kind": "local",
+          "path": "local/research/codex/abort-timer-r1/app-dispatch.asm",
+          "bytes": 8432,
+          "sha256": "c6e30930a63ef55bfb7145116fcc360d57e772e51e7a760d054f79a78e51fec1"
+        },
+        {
+          "id": "E038",
+          "kind": "local",
+          "path": "local/research/codex/abort-timer-r1/fenced-replacement-hashes.json",
+          "bytes": 368154,
+          "sha256": "7a9f86bb8bd6cbbfb8fdd006337a23b60d9607e6b0306b49729b663700fce592"
+        },
+        {
+          "id": "E039",
+          "kind": "local",
+          "path": "local/research/codex/abort-timer-r1/fenced-replacement-visual.png",
+          "bytes": 1081399,
+          "sha256": "fd9f8d6801ae7ee55a2871a0c155527a740b0b304d7d555ed90ceb1c1ff8a9ae"
+        },
+        {
+          "id": "E040",
+          "kind": "local",
+          "path": "local/research/codex/abort-timer-r1/fenced-replacement-visual-1.png",
+          "bytes": 352605,
+          "sha256": "c4b4af73467193aef9a8635913698427c9fd3c8f03023689d50aafc8f317063a"
+        },
+        {
+          "id": "E041",
+          "kind": "local",
+          "path": "local/research/codex/abort-timer-r1/fenced-replacement-visual-2.png",
+          "bytes": 356546,
+          "sha256": "508cd7285aeb74384fe1d271e189128d5cb01c6078cefa3febe11be06cda7a37"
+        },
+        {
+          "id": "E042",
+          "kind": "local",
+          "path": "local/research/codex/abort-timer-r1/fenced-replacement-visual-3.png",
+          "bytes": 372360,
+          "sha256": "388a8e36fb35260398cd01fc7f57a953aa8a684e44fa0da4cef3a77f8c8405bc"
+        },
+        {
+          "id": "E043",
+          "kind": "local",
+          "path": "local/research/codex/abort-timer-r1/uncancelled-room/run.json",
+          "bytes": 62281,
+          "sha256": "018f10e740440b05563ec05428940c4ba8e3c78d921fe67e37c8f93c019b86a6"
+        },
+        {
+          "id": "E044",
+          "kind": "local",
+          "path": "local/research/codex/abort-timer-r1/uncancelled-room/client.log",
+          "bytes": 20558,
+          "sha256": "98cf80fd6774d0bb1ddc2602602036d627fa5f174ff4c6d2095b1c1906fd651c"
+        },
+        {
+          "id": "E045",
+          "kind": "local",
+          "path": "local/research/codex/abort-timer-r1/uncancelled-room/client-B.log",
+          "bytes": 28859,
+          "sha256": "5cc858911315cc03de2f614855df7e63cc44e21eb14a74b888dd566f7cbdcf29"
+        },
+        {
+          "id": "E046",
+          "kind": "local",
+          "path": "local/research/codex/abort-timer-r1/uncancelled-room/A-ready110-73.bin",
+          "bytes": 44,
+          "sha256": "8fafd9cf652b458ee09b3751a0201f9ab1409920398e0e842e43b915c8840e25"
+        },
+        {
+          "id": "E047",
+          "kind": "local",
+          "path": "local/research/codex/abort-timer-r1/uncancelled-room/B-ready110-73.bin",
+          "bytes": 44,
+          "sha256": "8fafd9cf652b458ee09b3751a0201f9ab1409920398e0e842e43b915c8840e25"
+        },
+        {
+          "id": "E048",
+          "kind": "local",
+          "path": "local/research/codex/abort-timer-r1/uncancelled-room/A-floor582-76.bin",
+          "bytes": 54,
+          "sha256": "9001468072b5ca6e05400891cfd72a5f50549b84806907c1e43b4a350676557b"
+        },
+        {
+          "id": "E049",
+          "kind": "local",
+          "path": "local/research/codex/abort-timer-r1/uncancelled-room/A-start121-r1-79.bin",
+          "bytes": 167,
+          "sha256": "f8a824335b4079160a4aaf0e0b425d1fabfa78c248d131503440d0414e1f26cf"
+        },
+        {
+          "id": "E050",
+          "kind": "local",
+          "path": "local/research/codex/abort-timer-r1/uncancelled-room/B-floor582-76.bin",
+          "bytes": 54,
+          "sha256": "9001468072b5ca6e05400891cfd72a5f50549b84806907c1e43b4a350676557b"
+        },
+        {
+          "id": "E051",
+          "kind": "local",
+          "path": "local/research/codex/abort-timer-r1/uncancelled-room/B-start121-r1-79.bin",
+          "bytes": 167,
+          "sha256": "f8a824335b4079160a4aaf0e0b425d1fabfa78c248d131503440d0414e1f26cf"
+        },
+        {
+          "id": "E052",
+          "kind": "local",
+          "path": "local/research/codex/abort-timer-r1/uncancelled-room/A-go197-82.bin",
+          "bytes": 52,
+          "sha256": "64b95010ecb0e40bc0367f41f6710d2357fb2538ce827e205825284601237ef8"
+        },
+        {
+          "id": "E053",
+          "kind": "local",
+          "path": "local/research/codex/abort-timer-r1/uncancelled-room/B-go197-82.bin",
+          "bytes": 52,
+          "sha256": "64b95010ecb0e40bc0367f41f6710d2357fb2538ce827e205825284601237ef8"
+        },
+        {
+          "id": "E054",
+          "kind": "local",
+          "path": "local/research/codex/abort-timer-r1/uncancelled-room/A-play196-85.bin",
+          "bytes": 45,
+          "sha256": "d04bf155b4847f9d41b0edfdf00a32526302273271c0f1cadbb8ce22b89eb51d"
+        },
+        {
+          "id": "E055",
+          "kind": "local",
+          "path": "local/research/codex/abort-timer-r1/uncancelled-room/B-play196-85.bin",
+          "bytes": 45,
+          "sha256": "d04bf155b4847f9d41b0edfdf00a32526302273271c0f1cadbb8ce22b89eb51d"
+        },
+        {
+          "id": "E056",
+          "kind": "local",
+          "path": "local/research/codex/abort-timer-r1/uncancelled-room/A-peer153-88.bin",
+          "bytes": 135,
+          "sha256": "53ead17ab6d4437a1a973cd497466e6189c0c8d4443e2bfc9da3f7cfeeaaebdb"
+        },
+        {
+          "id": "E057",
+          "kind": "local",
+          "path": "local/research/codex/abort-timer-r1/uncancelled-room/B-peer153-88.bin",
+          "bytes": 135,
+          "sha256": "af691a4d0538d4bdb37df0eb2f4e193ada07efd2139ea699196120cdc49ee2ab"
+        },
+        {
+          "id": "E058",
+          "kind": "local",
+          "path": "local/research/codex/abort-timer-r1/uncancelled-room/A-dynamic159-1.bin",
+          "bytes": 77,
+          "sha256": "d24f72659094bae23c995528167f9dd03469b3bb67823a3a2f10602aa9f88b47"
+        },
+        {
+          "id": "E059",
+          "kind": "local",
+          "path": "local/research/codex/abort-timer-r1/uncancelled-room/B-dynamic159-1.bin",
+          "bytes": 77,
+          "sha256": "d24f72659094bae23c995528167f9dd03469b3bb67823a3a2f10602aa9f88b47"
+        },
+        {
+          "id": "E060",
+          "kind": "local",
+          "path": "local/research/codex/abort-timer-r1/uncancelled-room/B-abort-rank175-94.bin",
+          "bytes": 340,
+          "sha256": "270bf9f55d7cff6bc9d2527ec1e3612e1c9362bad5e70ff41842042cb4ee3e19"
+        },
+        {
+          "id": "E061",
+          "kind": "local",
+          "path": "local/research/codex/abort-timer-r1/uncancelled-room/B-abort-return180-97.bin",
+          "bytes": 41,
+          "sha256": "ab37525fb5e3cdf3792552145a440c0bf6cb24b6af168d2ca53bcb9ff967fcfe"
+        },
+        {
+          "id": "E062",
+          "kind": "local",
+          "path": "local/research/codex/abort-timer-r1/uncancelled-room/B-abort-remove107-100.bin",
+          "bytes": 44,
+          "sha256": "db0251bb872f9c8558a99be2f12a57f6e82b4ba11a283c86a2157a0802940d28"
+        },
+        {
+          "id": "E063",
+          "kind": "local",
+          "path": "local/research/codex/abort-timer-r1/uncancelled-room/B-abort-promote110-103.bin",
+          "bytes": 44,
+          "sha256": "d45a4b7df4380937283443e6f1b0984e0cd42ec4b8c6c2298abfa11526522b61"
+        },
+        {
+          "id": "E064",
+          "kind": "local",
+          "path": "local/research/codex/abort-timer-r1/uncancelled-room/B-blast158-r1-1.bin",
+          "bytes": 51,
+          "sha256": "efe7a4c01f3c9759017abfb6558721f2496a46e05aa1f93caf44d45a7d92ba18"
+        },
+        {
+          "id": "E065",
+          "kind": "local",
+          "path": "local/research/codex/abort-timer-r1/derived/uncancelled-room-A-replay.txt",
+          "bytes": 1191,
+          "sha256": "fa36e713e8df8f92fc1e83fc509a47ae34023b52c61156093546a8a1950c517d"
+        },
+        {
+          "id": "E066",
+          "kind": "local",
+          "path": "local/research/codex/abort-timer-r1/derived/uncancelled-room-A-oracle.json",
+          "bytes": 69787,
+          "sha256": "de51ab1f546b4736db495ef6092dad9573bf7eac42d9e2150f48b2062e0aff15"
+        },
+        {
+          "id": "E067",
+          "kind": "local",
+          "path": "local/research/codex/abort-timer-r1/derived/uncancelled-room-B-replay.txt",
+          "bytes": 1661,
+          "sha256": "862741ffe3acefe77a1438ec526fe716063a6219b133243873239bcc200c661d"
+        },
+        {
+          "id": "E068",
+          "kind": "local",
+          "path": "local/research/codex/abort-timer-r1/derived/uncancelled-room-B-oracle.json",
+          "bytes": 99167,
+          "sha256": "0dc0b82e068c239cbd14626c62848168720db4419b1013745597e5afcf5e2872"
+        },
+        {
+          "id": "E069",
+          "kind": "local",
+          "path": "local/research/codex/abort-timer-r1/request-frames/uncancelled-room/B-F13-82.bin",
+          "bytes": 49,
+          "sha256": "1746130345929e482c425aa463e6bf34d6da555c86c6474cf235330227f74f47"
+        },
+        {
+          "id": "E070",
+          "kind": "local",
+          "path": "local/research/codex/abort-timer-r1/request-frames/uncancelled-room/B-F24-95.bin",
+          "bytes": 98,
+          "sha256": "730e662309a1a5abb7556e5f500168850ae220a9b7f288c1c62d18904206398c"
+        },
+        {
+          "id": "E071",
+          "kind": "local",
+          "path": "local/research/codex/abort-timer-r1/request-frames/uncancelled-room/B-F34-118.bin",
+          "bytes": 60,
+          "sha256": "8e1a85a949a7b61000ee54ed3aff9a484820f31251e195ade107f4a449d53a31"
+        },
+        {
+          "id": "E072",
+          "kind": "local",
+          "path": "local/research/codex/wine_probe_abort_timer_control.py",
+          "bytes": 73790,
+          "sha256": "e202aac0e6681404022b055dd728fee13b50bb2e2da8653176f403e35d172af3"
+        },
+        {
+          "id": "E073",
+          "kind": "local",
+          "path": "local/research/codex/abort-timer-r1/fenced-room/run.json",
+          "bytes": 61647,
+          "sha256": "c0094fd72c737304207b12225742a9780b0ef2b2cd4a3a28d8acfb878bb20957"
+        },
+        {
+          "id": "E074",
+          "kind": "local",
+          "path": "local/research/codex/abort-timer-r1/fenced-room/client.log",
+          "bytes": 20507,
+          "sha256": "144e8dbe0649be3c3209045c8bb349599ec44821a47e5da649d22ae2d7f74437"
+        },
+        {
+          "id": "E075",
+          "kind": "local",
+          "path": "local/research/codex/abort-timer-r1/fenced-room/client-B.log",
+          "bytes": 28239,
+          "sha256": "70976eafe35a9108e3e29f73a6d4539e1a23b146d4cb7ae33e49130cdbbd3579"
+        },
+        {
+          "id": "E076",
+          "kind": "local",
+          "path": "local/research/codex/abort-timer-r1/fenced-room/A-ready110-73.bin",
+          "bytes": 44,
+          "sha256": "8fafd9cf652b458ee09b3751a0201f9ab1409920398e0e842e43b915c8840e25"
+        },
+        {
+          "id": "E077",
+          "kind": "local",
+          "path": "local/research/codex/abort-timer-r1/fenced-room/B-ready110-73.bin",
+          "bytes": 44,
+          "sha256": "8fafd9cf652b458ee09b3751a0201f9ab1409920398e0e842e43b915c8840e25"
+        },
+        {
+          "id": "E078",
+          "kind": "local",
+          "path": "local/research/codex/abort-timer-r1/fenced-room/A-floor582-76.bin",
+          "bytes": 54,
+          "sha256": "9001468072b5ca6e05400891cfd72a5f50549b84806907c1e43b4a350676557b"
+        },
+        {
+          "id": "E079",
+          "kind": "local",
+          "path": "local/research/codex/abort-timer-r1/fenced-room/A-start121-r1-79.bin",
+          "bytes": 167,
+          "sha256": "f8a824335b4079160a4aaf0e0b425d1fabfa78c248d131503440d0414e1f26cf"
+        },
+        {
+          "id": "E080",
+          "kind": "local",
+          "path": "local/research/codex/abort-timer-r1/fenced-room/B-floor582-76.bin",
+          "bytes": 54,
+          "sha256": "9001468072b5ca6e05400891cfd72a5f50549b84806907c1e43b4a350676557b"
+        },
+        {
+          "id": "E081",
+          "kind": "local",
+          "path": "local/research/codex/abort-timer-r1/fenced-room/B-start121-r1-79.bin",
+          "bytes": 167,
+          "sha256": "f8a824335b4079160a4aaf0e0b425d1fabfa78c248d131503440d0414e1f26cf"
+        },
+        {
+          "id": "E082",
+          "kind": "local",
+          "path": "local/research/codex/abort-timer-r1/fenced-room/A-go197-82.bin",
+          "bytes": 52,
+          "sha256": "64b95010ecb0e40bc0367f41f6710d2357fb2538ce827e205825284601237ef8"
+        },
+        {
+          "id": "E083",
+          "kind": "local",
+          "path": "local/research/codex/abort-timer-r1/fenced-room/B-go197-82.bin",
+          "bytes": 52,
+          "sha256": "64b95010ecb0e40bc0367f41f6710d2357fb2538ce827e205825284601237ef8"
+        },
+        {
+          "id": "E084",
+          "kind": "local",
+          "path": "local/research/codex/abort-timer-r1/fenced-room/A-play196-85.bin",
+          "bytes": 45,
+          "sha256": "d04bf155b4847f9d41b0edfdf00a32526302273271c0f1cadbb8ce22b89eb51d"
+        },
+        {
+          "id": "E085",
+          "kind": "local",
+          "path": "local/research/codex/abort-timer-r1/fenced-room/B-play196-85.bin",
+          "bytes": 45,
+          "sha256": "d04bf155b4847f9d41b0edfdf00a32526302273271c0f1cadbb8ce22b89eb51d"
+        },
+        {
+          "id": "E086",
+          "kind": "local",
+          "path": "local/research/codex/abort-timer-r1/fenced-room/A-peer153-88.bin",
+          "bytes": 135,
+          "sha256": "951223191a0a0516e3b6d08f1da1a6e2e3118c95df34f2c0c595714b0a05eaa5"
+        },
+        {
+          "id": "E087",
+          "kind": "local",
+          "path": "local/research/codex/abort-timer-r1/fenced-room/B-peer153-88.bin",
+          "bytes": 135,
+          "sha256": "c694a81bc36b9de33ef2404ebe389d971a0bb01195a776e1d8a52b7444a86fa5"
+        },
+        {
+          "id": "E088",
+          "kind": "local",
+          "path": "local/research/codex/abort-timer-r1/fenced-room/A-dynamic159-1.bin",
+          "bytes": 77,
+          "sha256": "d24f72659094bae23c995528167f9dd03469b3bb67823a3a2f10602aa9f88b47"
+        },
+        {
+          "id": "E089",
+          "kind": "local",
+          "path": "local/research/codex/abort-timer-r1/fenced-room/B-dynamic159-1.bin",
+          "bytes": 77,
+          "sha256": "d24f72659094bae23c995528167f9dd03469b3bb67823a3a2f10602aa9f88b47"
+        },
+        {
+          "id": "E090",
+          "kind": "local",
+          "path": "local/research/codex/abort-timer-r1/fenced-room/B-abort-rank175-94.bin",
+          "bytes": 340,
+          "sha256": "270bf9f55d7cff6bc9d2527ec1e3612e1c9362bad5e70ff41842042cb4ee3e19"
+        },
+        {
+          "id": "E091",
+          "kind": "local",
+          "path": "local/research/codex/abort-timer-r1/fenced-room/B-abort-return180-97.bin",
+          "bytes": 41,
+          "sha256": "ab37525fb5e3cdf3792552145a440c0bf6cb24b6af168d2ca53bcb9ff967fcfe"
+        },
+        {
+          "id": "E092",
+          "kind": "local",
+          "path": "local/research/codex/abort-timer-r1/fenced-room/B-abort-remove107-100.bin",
+          "bytes": 44,
+          "sha256": "db0251bb872f9c8558a99be2f12a57f6e82b4ba11a283c86a2157a0802940d28"
+        },
+        {
+          "id": "E093",
+          "kind": "local",
+          "path": "local/research/codex/abort-timer-r1/fenced-room/B-abort-promote110-103.bin",
+          "bytes": 44,
+          "sha256": "d45a4b7df4380937283443e6f1b0984e0cd42ec4b8c6c2298abfa11526522b61"
+        },
+        {
+          "id": "E094",
+          "kind": "local",
+          "path": "local/research/codex/abort-timer-r1/derived/fenced-room-A-replay.txt",
+          "bytes": 1208,
+          "sha256": "f36b260af419ea10f025f287797e9a37bb89791dac5d8cc209698b6e8225ec72"
+        },
+        {
+          "id": "E095",
+          "kind": "local",
+          "path": "local/research/codex/abort-timer-r1/derived/fenced-room-A-oracle.json",
+          "bytes": 71183,
+          "sha256": "63de74a0f602c1d2b70239695556649c5b073153a2397d9b709f3ec2931af02d"
+        },
+        {
+          "id": "E096",
+          "kind": "local",
+          "path": "local/research/codex/abort-timer-r1/derived/fenced-room-B-replay.txt",
+          "bytes": 1656,
+          "sha256": "118a20b27c1f474593b26b8b3d56d88cc08ee0d66dadd4145a783f1472c8ccd0"
+        },
+        {
+          "id": "E097",
+          "kind": "local",
+          "path": "local/research/codex/abort-timer-r1/derived/fenced-room-B-oracle.json",
+          "bytes": 99122,
+          "sha256": "0107d55867c22d95464d87f5b3a5eb4f8122ba18bd13c28e7dc218dc5de70a77"
+        },
+        {
+          "id": "E098",
+          "kind": "local",
+          "path": "local/research/codex/abort-timer-r1/request-frames/fenced-room/B-F13-82.bin",
+          "bytes": 49,
+          "sha256": "1746130345929e482c425aa463e6bf34d6da555c86c6474cf235330227f74f47"
+        },
+        {
+          "id": "E099",
+          "kind": "local",
+          "path": "local/research/codex/abort-timer-r1/request-frames/fenced-room/B-F24-95.bin",
+          "bytes": 98,
+          "sha256": "730e662309a1a5abb7556e5f500168850ae220a9b7f288c1c62d18904206398c"
+        },
+        {
+          "id": "E100",
+          "kind": "local",
+          "path": "local/research/codex/abort-timer-r1/request-frames/fenced-room/B-F34-118.bin",
+          "bytes": 60,
+          "sha256": "8e1a85a949a7b61000ee54ed3aff9a484820f31251e195ade107f4a449d53a31"
+        },
+        {
+          "id": "E101",
+          "kind": "local",
+          "path": "local/research/codex/wine_probe_abort_timer_fenced.py",
+          "bytes": 73789,
+          "sha256": "101c4199bd1d855d2c266e42fb400c117b0b0eb1bafb0da73a1841b302cecf84"
+        },
+        {
+          "id": "E102",
+          "kind": "local",
+          "path": "local/research/codex/abort-timer-r1/fenced-replacement/run.json",
+          "bytes": 132635,
+          "sha256": "25b0d0ccb5cbc6a3c725abc042ca52142fa2ea79b7dd815e005a8eb40d036948"
+        },
+        {
+          "id": "E103",
+          "kind": "local",
+          "path": "local/research/codex/abort-timer-r1/fenced-replacement/client.log",
+          "bytes": 20647,
+          "sha256": "b25b4e2f651405f9fac35749b8c7a845dedb6afcd20958ecde31937f83d738e8"
+        },
+        {
+          "id": "E104",
+          "kind": "local",
+          "path": "local/research/codex/abort-timer-r1/fenced-replacement/client-B.log",
+          "bytes": 47256,
+          "sha256": "72fee9ff00299c9b248fb25df46db3283b4f76e34862c5b0a827fe074d896fe9"
+        },
+        {
+          "id": "E105",
+          "kind": "local",
+          "path": "local/research/codex/abort-timer-r1/fenced-replacement/client-C.log",
+          "bytes": 47103,
+          "sha256": "e9b89e98e688735366e55a8e01e1dfe4ed4559cb2f11b456e81a824055a2f7ea"
+        },
+        {
+          "id": "E106",
+          "kind": "local",
+          "path": "local/research/codex/abort-timer-r1/fenced-replacement/A-ready110-73.bin",
+          "bytes": 44,
+          "sha256": "8fafd9cf652b458ee09b3751a0201f9ab1409920398e0e842e43b915c8840e25"
+        },
+        {
+          "id": "E107",
+          "kind": "local",
+          "path": "local/research/codex/abort-timer-r1/fenced-replacement/B-ready110-73.bin",
+          "bytes": 44,
+          "sha256": "8fafd9cf652b458ee09b3751a0201f9ab1409920398e0e842e43b915c8840e25"
+        },
+        {
+          "id": "E108",
+          "kind": "local",
+          "path": "local/research/codex/abort-timer-r1/fenced-replacement/A-floor582-76.bin",
+          "bytes": 54,
+          "sha256": "9001468072b5ca6e05400891cfd72a5f50549b84806907c1e43b4a350676557b"
+        },
+        {
+          "id": "E109",
+          "kind": "local",
+          "path": "local/research/codex/abort-timer-r1/fenced-replacement/A-start121-r1-79.bin",
+          "bytes": 167,
+          "sha256": "f8a824335b4079160a4aaf0e0b425d1fabfa78c248d131503440d0414e1f26cf"
+        },
+        {
+          "id": "E110",
+          "kind": "local",
+          "path": "local/research/codex/abort-timer-r1/fenced-replacement/B-floor582-76.bin",
+          "bytes": 54,
+          "sha256": "9001468072b5ca6e05400891cfd72a5f50549b84806907c1e43b4a350676557b"
+        },
+        {
+          "id": "E111",
+          "kind": "local",
+          "path": "local/research/codex/abort-timer-r1/fenced-replacement/B-start121-r1-79.bin",
+          "bytes": 167,
+          "sha256": "f8a824335b4079160a4aaf0e0b425d1fabfa78c248d131503440d0414e1f26cf"
+        },
+        {
+          "id": "E112",
+          "kind": "local",
+          "path": "local/research/codex/abort-timer-r1/fenced-replacement/A-go197-82.bin",
+          "bytes": 52,
+          "sha256": "64b95010ecb0e40bc0367f41f6710d2357fb2538ce827e205825284601237ef8"
+        },
+        {
+          "id": "E113",
+          "kind": "local",
+          "path": "local/research/codex/abort-timer-r1/fenced-replacement/B-go197-82.bin",
+          "bytes": 52,
+          "sha256": "64b95010ecb0e40bc0367f41f6710d2357fb2538ce827e205825284601237ef8"
+        },
+        {
+          "id": "E114",
+          "kind": "local",
+          "path": "local/research/codex/abort-timer-r1/fenced-replacement/A-play196-85.bin",
+          "bytes": 45,
+          "sha256": "d04bf155b4847f9d41b0edfdf00a32526302273271c0f1cadbb8ce22b89eb51d"
+        },
+        {
+          "id": "E115",
+          "kind": "local",
+          "path": "local/research/codex/abort-timer-r1/fenced-replacement/B-play196-85.bin",
+          "bytes": 45,
+          "sha256": "d04bf155b4847f9d41b0edfdf00a32526302273271c0f1cadbb8ce22b89eb51d"
+        },
+        {
+          "id": "E116",
+          "kind": "local",
+          "path": "local/research/codex/abort-timer-r1/fenced-replacement/B-peer153-88.bin",
+          "bytes": 135,
+          "sha256": "24b85248d8920e21bfdce473d56d2b1d0962aa1ceca0bdac3d5ae805f0145981"
+        },
+        {
+          "id": "E117",
+          "kind": "local",
+          "path": "local/research/codex/abort-timer-r1/fenced-replacement/A-peer153-88.bin",
+          "bytes": 135,
+          "sha256": "fbc3cd196bd8b69b89bc8a0e3dc313b4661b48d4b3c83b73bab25df8d5972a3a"
+        },
+        {
+          "id": "E118",
+          "kind": "local",
+          "path": "local/research/codex/abort-timer-r1/fenced-replacement/A-dynamic159-1.bin",
+          "bytes": 77,
+          "sha256": "d24f72659094bae23c995528167f9dd03469b3bb67823a3a2f10602aa9f88b47"
+        },
+        {
+          "id": "E119",
+          "kind": "local",
+          "path": "local/research/codex/abort-timer-r1/fenced-replacement/B-dynamic159-1.bin",
+          "bytes": 77,
+          "sha256": "d24f72659094bae23c995528167f9dd03469b3bb67823a3a2f10602aa9f88b47"
+        },
+        {
+          "id": "E120",
+          "kind": "local",
+          "path": "local/research/codex/abort-timer-r1/fenced-replacement/B-abort-rank175-94.bin",
+          "bytes": 340,
+          "sha256": "270bf9f55d7cff6bc9d2527ec1e3612e1c9362bad5e70ff41842042cb4ee3e19"
+        },
+        {
+          "id": "E121",
+          "kind": "local",
+          "path": "local/research/codex/abort-timer-r1/fenced-replacement/B-abort-return180-97.bin",
+          "bytes": 41,
+          "sha256": "ab37525fb5e3cdf3792552145a440c0bf6cb24b6af168d2ca53bcb9ff967fcfe"
+        },
+        {
+          "id": "E122",
+          "kind": "local",
+          "path": "local/research/codex/abort-timer-r1/fenced-replacement/B-abort-remove107-100.bin",
+          "bytes": 44,
+          "sha256": "db0251bb872f9c8558a99be2f12a57f6e82b4ba11a283c86a2157a0802940d28"
+        },
+        {
+          "id": "E123",
+          "kind": "local",
+          "path": "local/research/codex/abort-timer-r1/fenced-replacement/B-abort-promote110-103.bin",
+          "bytes": 44,
+          "sha256": "d45a4b7df4380937283443e6f1b0984e0cd42ec4b8c6c2298abfa11526522b61"
+        },
+        {
+          "id": "E124",
+          "kind": "local",
+          "path": "local/research/codex/abort-timer-r1/fenced-replacement/B-replacement106-106.bin",
+          "bytes": 242,
+          "sha256": "f34ca490ec31c063128590cd3db92977d76fc1248cbb61f59fa114af73c69a65"
+        },
+        {
+          "id": "E125",
+          "kind": "local",
+          "path": "local/research/codex/abort-timer-r1/fenced-replacement/B-ready110-109.bin",
+          "bytes": 44,
+          "sha256": "72fcb4a8d7aa320bb1e8233036cf02551e139b642c7fc5eb7f2e350f79ec5db9"
+        },
+        {
+          "id": "E126",
+          "kind": "local",
+          "path": "local/research/codex/abort-timer-r1/fenced-replacement/C-ready110-73.bin",
+          "bytes": 44,
+          "sha256": "849c64b6d2a8752c38a190d0dc6aa657b81dae657ef732890d826aff520b1e73"
+        },
+        {
+          "id": "E127",
+          "kind": "local",
+          "path": "local/research/codex/abort-timer-r1/fenced-replacement/B-floor582-112.bin",
+          "bytes": 54,
+          "sha256": "3de167f2b9fd7e539a43e320113a3504ec5d160adc35bf04bedc1c5f1bb1e636"
+        },
+        {
+          "id": "E128",
+          "kind": "local",
+          "path": "local/research/codex/abort-timer-r1/fenced-replacement/B-start121-r2-115.bin",
+          "bytes": 167,
+          "sha256": "2c2f633223459f50f3c83b215e3438d816637d3fcedf6adc5177f166c3f45901"
+        },
+        {
+          "id": "E129",
+          "kind": "local",
+          "path": "local/research/codex/abort-timer-r1/fenced-replacement/C-floor582-76.bin",
+          "bytes": 54,
+          "sha256": "9001468072b5ca6e05400891cfd72a5f50549b84806907c1e43b4a350676557b"
+        },
+        {
+          "id": "E130",
+          "kind": "local",
+          "path": "local/research/codex/abort-timer-r1/fenced-replacement/C-start121-r2-79.bin",
+          "bytes": 167,
+          "sha256": "f8a824335b4079160a4aaf0e0b425d1fabfa78c248d131503440d0414e1f26cf"
+        },
+        {
+          "id": "E131",
+          "kind": "local",
+          "path": "local/research/codex/abort-timer-r1/fenced-replacement/B-go197-118.bin",
+          "bytes": 52,
+          "sha256": "aa70380f2f8ac732b32002b998ecd874353865d9e3853102c01a72d06b327970"
+        },
+        {
+          "id": "E132",
+          "kind": "local",
+          "path": "local/research/codex/abort-timer-r1/fenced-replacement/C-go197-82.bin",
+          "bytes": 52,
+          "sha256": "64b95010ecb0e40bc0367f41f6710d2357fb2538ce827e205825284601237ef8"
+        },
+        {
+          "id": "E133",
+          "kind": "local",
+          "path": "local/research/codex/abort-timer-r1/fenced-replacement/B-play196-121.bin",
+          "bytes": 45,
+          "sha256": "c36a9aaa4674958645f4db690772261f39607eb5fb712a80827259d710da962d"
+        },
+        {
+          "id": "E134",
+          "kind": "local",
+          "path": "local/research/codex/abort-timer-r1/fenced-replacement/C-play196-85.bin",
+          "bytes": 45,
+          "sha256": "d04bf155b4847f9d41b0edfdf00a32526302273271c0f1cadbb8ce22b89eb51d"
+        },
+        {
+          "id": "E135",
+          "kind": "local",
+          "path": "local/research/codex/abort-timer-r1/fenced-replacement/B-peer153-124.bin",
+          "bytes": 135,
+          "sha256": "03983496a8260d902a2f7a18e11cf33092d718377a3b082baaeee6823205da26"
+        },
+        {
+          "id": "E136",
+          "kind": "local",
+          "path": "local/research/codex/abort-timer-r1/fenced-replacement/C-peer153-88.bin",
+          "bytes": 135,
+          "sha256": "fbc3cd196bd8b69b89bc8a0e3dc313b4661b48d4b3c83b73bab25df8d5972a3a"
+        },
+        {
+          "id": "E137",
+          "kind": "local",
+          "path": "local/research/codex/abort-timer-r1/fenced-replacement/B-dynamic159-2.bin",
+          "bytes": 77,
+          "sha256": "9c13f759d1e24a6be3807633a1488cd0762afa1a8a357774912988f1df42ad35"
+        },
+        {
+          "id": "E138",
+          "kind": "local",
+          "path": "local/research/codex/abort-timer-r1/fenced-replacement/C-dynamic159-2.bin",
+          "bytes": 77,
+          "sha256": "5286714e0fa61426ffa463533b98ae4573b4205fff3f2ca1f93804036ac16b30"
+        },
+        {
+          "id": "E139",
+          "kind": "local",
+          "path": "local/research/codex/abort-timer-r1/fenced-replacement/B-blast158-r2-2.bin",
+          "bytes": 51,
+          "sha256": "c6f71031e51fa0da4cb1724b12a5664aa7bbaf287f0bb19bbe92c8e1f8ddcc55"
+        },
+        {
+          "id": "E140",
+          "kind": "local",
+          "path": "local/research/codex/abort-timer-r1/fenced-replacement/C-blast158-r2-2.bin",
+          "bytes": 51,
+          "sha256": "05a420f90f44600024c160707dd2899f78eee749d66e22bbeaee6d1188efeacc"
+        },
+        {
+          "id": "E141",
+          "kind": "local",
+          "path": "local/research/codex/abort-timer-r1/fenced-replacement/C-event170-17-r2-97.bin",
+          "bytes": 48,
+          "sha256": "e10f4cfe3264acc46d6d7132dec4b357937968f5877bea1f4d46482cb0da5a04"
+        },
+        {
+          "id": "E142",
+          "kind": "local",
+          "path": "local/research/codex/abort-timer-r1/fenced-replacement/C-event170-19-r2-100.bin",
+          "bytes": 59,
+          "sha256": "8fd2f7c31d4354b2103d371ae653269560d6a8742004d147b50e48169fb207bb"
+        },
+        {
+          "id": "E143",
+          "kind": "local",
+          "path": "local/research/codex/abort-timer-r1/fenced-replacement/B-rank175-r2-133.bin",
+          "bytes": 340,
+          "sha256": "b3f095f391e3e23f2c7155ebaa39ecaed80040108dafed3afa66b3bb94c8f939"
+        },
+        {
+          "id": "E144",
+          "kind": "local",
+          "path": "local/research/codex/abort-timer-r1/fenced-replacement/C-rank175-r2-103.bin",
+          "bytes": 340,
+          "sha256": "72a950b6f971c7347f1e597d76d82d5a5dd2039fce54ceb260183b6ad2e4fc29"
+        },
+        {
+          "id": "E145",
+          "kind": "local",
+          "path": "local/research/codex/abort-timer-r1/fenced-replacement/B-return180-r2-136.bin",
+          "bytes": 41,
+          "sha256": "dea703a5f5fba54456f7040c367a3014662401708698034e1dfe0ddbba432538"
+        },
+        {
+          "id": "E146",
+          "kind": "local",
+          "path": "local/research/codex/abort-timer-r1/fenced-replacement/C-return180-r2-106.bin",
+          "bytes": 41,
+          "sha256": "6a49bc7222df4957e03d3ebe2382217d1988daab1844150f76558baf634da81b"
+        },
+        {
+          "id": "E147",
+          "kind": "local",
+          "path": "local/research/codex/abort-timer-r1/fenced-replacement/B-host110-r2-139.bin",
+          "bytes": 44,
+          "sha256": "bb01cca1bbbfb2bd7742775fec7092de12c77f063680c8a20ae8dcbe4a4fe5b4"
+        },
+        {
+          "id": "E148",
+          "kind": "local",
+          "path": "local/research/codex/abort-timer-r1/fenced-replacement/B-guest110-r2-142.bin",
+          "bytes": 44,
+          "sha256": "36ba1a09d66d1a41cbb18b2c6033a7a68a0a28bd35acae5621c474caa82e5383"
+        },
+        {
+          "id": "E149",
+          "kind": "local",
+          "path": "local/research/codex/abort-timer-r1/fenced-replacement/C-host110-r2-109.bin",
+          "bytes": 44,
+          "sha256": "f43a38becebb5a830904f8239748fe9501bcf788411da56bfb0a1acf203f4ba7"
+        },
+        {
+          "id": "E150",
+          "kind": "local",
+          "path": "local/research/codex/abort-timer-r1/fenced-replacement/C-guest110-r2-112.bin",
+          "bytes": 44,
+          "sha256": "de3c1befd2ad28213b4e3cc74a5d3896ecf2231079feba87e02bb75f6fbebbc8"
+        },
+        {
+          "id": "E151",
+          "kind": "local",
+          "path": "local/research/codex/abort-timer-r1/derived/fenced-replacement-A-replay.txt",
+          "bytes": 1215,
+          "sha256": "64dba3fff8397b80178631b7fc3de187e77e669914b9c5dabcb28ec9abc5eafa"
+        },
+        {
+          "id": "E152",
+          "kind": "local",
+          "path": "local/research/codex/abort-timer-r1/derived/fenced-replacement-A-oracle.json",
+          "bytes": 71176,
+          "sha256": "0988e9cdd40e932002074e3c4d71ebd173fd0334976a61406a20f94b8b997a14"
+        },
+        {
+          "id": "E153",
+          "kind": "local",
+          "path": "local/research/codex/abort-timer-r1/derived/fenced-replacement-B-replay.txt",
+          "bytes": 2880,
+          "sha256": "ea3604cb584155bfdeccc77330deac3a50165e01a625206d1a9d0d9880958c27"
+        },
+        {
+          "id": "E154",
+          "kind": "local",
+          "path": "local/research/codex/abort-timer-r1/derived/fenced-replacement-B-oracle.json",
+          "bytes": 174667,
+          "sha256": "c59e6310fef6168878dfd606c604137c07dc19970026878c4af383c8f35a83f1"
+        },
+        {
+          "id": "E155",
+          "kind": "local",
+          "path": "local/research/codex/abort-timer-r1/derived/fenced-replacement-C-replay.txt",
+          "bytes": 2164,
+          "sha256": "126e28cac938d10a7f0e6ba19d07cf3147d2839d7a8437ad19eaa89fdf44cdcc"
+        },
+        {
+          "id": "E156",
+          "kind": "local",
+          "path": "local/research/codex/abort-timer-r1/derived/fenced-replacement-C-oracle.json",
+          "bytes": 130369,
+          "sha256": "085f56e2440e39e31fdf257baa5cdf322922c054041ccf431e2d142247742cd0"
+        },
+        {
+          "id": "E157",
+          "kind": "local",
+          "path": "local/research/codex/abort-timer-r1/request-frames/fenced-replacement/B-F13-82.bin",
+          "bytes": 49,
+          "sha256": "1746130345929e482c425aa463e6bf34d6da555c86c6474cf235330227f74f47"
+        },
+        {
+          "id": "E158",
+          "kind": "local",
+          "path": "local/research/codex/abort-timer-r1/request-frames/fenced-replacement/B-F24-95.bin",
+          "bytes": 98,
+          "sha256": "730e662309a1a5abb7556e5f500168850ae220a9b7f288c1c62d18904206398c"
+        },
+        {
+          "id": "E159",
+          "kind": "local",
+          "path": "local/research/codex/abort-timer-r1/request-frames/fenced-replacement/B-F34-118.bin",
+          "bytes": 60,
+          "sha256": "8e1a85a949a7b61000ee54ed3aff9a484820f31251e195ade107f4a449d53a31"
+        },
+        {
+          "id": "E160",
+          "kind": "local",
+          "path": "local/research/codex/abort-timer-r1/request-frames/fenced-replacement/B-F76-118.bin",
+          "bytes": 60,
+          "sha256": "a7c4fde5b0ed579aabdc0c6eba1aa40135fe1d7e0634d8ea801d7be7329579ad"
+        },
+        {
+          "id": "E161",
+          "kind": "local",
+          "path": "local/research/codex/abort-timer-r1/request-frames/fenced-replacement/B-F83-127.bin",
+          "bytes": 70,
+          "sha256": "b6f994d67c2ff117991555fd397eb89edb08531370d03d92d115e979ee745ff3"
+        },
+        {
+          "id": "E162",
+          "kind": "local",
+          "path": "local/research/codex/abort-timer-r1/request-frames/fenced-replacement/B-F88-127.bin",
+          "bytes": 67,
+          "sha256": "454cbb0a4268374566039c68503364d040759c7ecf394b2ffac668e5acc1b402"
+        },
+        {
+          "id": "E163",
+          "kind": "local",
+          "path": "local/research/codex/abort-timer-r1/request-frames/fenced-replacement/C-F12-82.bin",
+          "bytes": 49,
+          "sha256": "27d13b13f8df5db1f67451352419d49458641283683b06d40bc91f6c3f7220e7"
+        },
+        {
+          "id": "E164",
+          "kind": "local",
+          "path": "local/research/codex/abort-timer-r1/request-frames/fenced-replacement/C-F22-95.bin",
+          "bytes": 98,
+          "sha256": "38eeff06df1cda4991e6860d5e77cabcb5d78c9a82bc217363b4899b10d3aedd"
+        },
+        {
+          "id": "E165",
+          "kind": "local",
+          "path": "local/research/codex/abort-timer-r1/request-frames/fenced-replacement/C-F47-127.bin",
+          "bytes": 52,
+          "sha256": "5b90eef5af8334d041493efddb234d8c01ef50bfab9ad6031ceb61d5963981f5"
+        },
+        {
+          "id": "E166",
+          "kind": "local",
+          "path": "local/research/codex/abort-timer-r1/request-frames/fenced-replacement/C-F48-127.bin",
+          "bytes": 52,
+          "sha256": "b8f1884e8e7086ccfdc58e94a0e3b203d6e6b2e3cc3f4f883950f31c220abfe5"
+        },
+        {
+          "id": "E167",
+          "kind": "local",
+          "path": "local/research/codex/abort-timer-r1/request-frames/fenced-replacement/C-F50-127.bin",
+          "bytes": 52,
+          "sha256": "ca744eb98a71721bde7691f3ed4285138000465a7d75b0840b7bbbcbb0be5a21"
+        },
+        {
+          "id": "E168",
+          "kind": "local",
+          "path": "local/research/codex/abort-timer-r1/request-frames/fenced-replacement/C-F52-127.bin",
+          "bytes": 52,
+          "sha256": "86e710ed1b675b1a24a8f37dd005d29c10e69b4aa6da27df649f665e03d60f15"
+        },
+        {
+          "id": "E169",
+          "kind": "local",
+          "path": "local/research/codex/abort-timer-r1/request-frames/fenced-replacement/C-F53-127.bin",
+          "bytes": 52,
+          "sha256": "f1f7e4a7fdc95b9adca90420934d3817a7dc4c557882ff4c02852abec1f58b25"
+        },
+        {
+          "id": "E170",
+          "kind": "local",
+          "path": "local/research/codex/abort-timer-r1/request-frames/fenced-replacement/C-F54-127.bin",
+          "bytes": 52,
+          "sha256": "5ac92c4cbf60f72b1cea2fd96f4ea24b2a758088513aeb70663e48423661ece7"
+        },
+        {
+          "id": "E171",
+          "kind": "local",
+          "path": "local/research/codex/abort-timer-r1/request-frames/fenced-replacement/C-F56-127.bin",
+          "bytes": 52,
+          "sha256": "fea2a8073363c235bf26452c816227e9da47e9033e08792f68502b853d6c0d3b"
+        },
+        {
+          "id": "E172",
+          "kind": "local",
+          "path": "local/research/codex/wine_probe_abort_timer_replacement.py",
+          "bytes": 73788,
+          "sha256": "434ebadac76bf386b79adfdfb83656b4ac940fcc79ef7fa4cd3482a13c8e4b20"
+        },
+        {
+          "id": "E173",
+          "kind": "local",
+          "path": "local/research/codex/wcp-guard-r1/game/CA-r2-login-logout.exe",
+          "bytes": 31874560,
+          "sha256": "660447c293ce92270cb9b5815331bca976e8f156366e1fe50b217b6c12e60ce3"
+        },
+        {
+          "id": "E174",
+          "kind": "local",
+          "path": "local/research/codex/wcp-guard-r1/game/CA-r2-stage-social.exe",
+          "bytes": 31874560,
+          "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+        },
+        {
+          "id": "E175",
+          "kind": "local",
+          "path": "local/research/codex/duo-round-r1/game-B/CA-r2-stage-social.exe",
+          "bytes": 31874560,
+          "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+        },
+        {
+          "id": "E176",
+          "kind": "local",
+          "path": "local/research/codex/contact-race-r1/game-C/CA-r2-stage-social.exe",
+          "bytes": 31874560,
+          "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+        },
+        {
+          "id": "E177",
+          "kind": "artifact",
+          "path": "/home/admin/boom/repos/boomkr-re/out/modO.bin",
+          "bytes": 31858688,
+          "sha256": "a08950c833d3acab8281049def7b3dc96b221f107eeda01da3a548e34b91dce5"
+        }
+      ],
+      "delta": {
+        "added": [
+          "Pending Btimer after AEOF: deliberate send reaches room stage; fencefinish atEOF drops localjob before158.",
+          "Fresh C replacement extends CP040 movement scope to actual Bbomb/trap/death/statepeer/result/return.",
+          "Periodic AUD014 throughCP044, nextCP048, and CP043PR51merge recorded."
+        ],
+        "corrected": [
+          "Current K4-K7 summary and Q026 now include CP042/043 instead of stopping at CP041.",
+          "Do not interpret control158nativeparse as game-runtimefull13reader; currentstage is preparestage.",
+          "Cclientlocalcounter1 corresponds roomgeneration2; CfreshID3 not reconnect AID1."
+        ],
+        "superseded": [
+          "NEXT-DUO-ROUND timerabort unknown bounded by control/fenced/replacement; full peerqueue/UDP/reset still open.",
+          "Historical CP040 stopped at movement; CP044 adds separate run without rewriting old evidence."
+        ]
+      },
+      "blockers": [
+        "Queued UDP/peer generation, already-sent packets, fullC2Svalidator and identicalold124catalog limit remain.",
+        "No standalone server or fullauth/profile/cache/codec/vanilla/accountreconnect; K5/K6a/LAN/Internet not accepted.",
+        "Allocator/wrap/concurrent/variants/chainmanyowners and runtime max/speed remain bounded backlog."
+      ],
+      "next_steps": [
+        {
+          "id": "NEXT-DUO-ROUND",
+          "task": "KRE-005b",
+          "state": "active",
+          "action": "Measure peerqueue/UDP generation and stale receive behavior on next start with targeted runtime consumers; do not repeat proved aborttimer. Keep standalone server/fullmatch acceptance separate.",
+          "owner": "Codex",
+          "reviewer": "Codex"
+        },
+        {
+          "id": "NEXT-ITEM-PICKUP",
+          "task": "KRE-005b",
+          "state": "active",
+          "action": "Identicalold124catalog/tick/session/actor validation limit; ticket only guards localconfirm jobs. Optional max/speed/variants backlog.",
+          "owner": "Codex",
+          "reviewer": "Codex"
+        },
+        {
+          "id": "NEXT-FULL-LOGIN-FIELDS",
+          "task": "KRE-005b",
+          "state": "active",
+          "action": "Fullauth/profile/cache/codec/vanilla/account reconnect remain separate; no gate from diagnosticcopy UI/results.",
+          "owner": "Codex",
+          "reviewer": "Codex"
+        }
+      ],
+      "review": {
+        "status": "waived",
+        "as_of_utc": "2026-10-31T10:14:39.252180+00:00",
+        "reference": "docs/evidence/checkpoints/review-waiver.json",
+        "scope": "Codex solo RE/code/runtime/selfcheck, not independent approval.",
+        "authorization": {
+          "by": "project_owner",
+          "reference": "docs/evidence/checkpoints/review-waiver.json",
+          "reason": "Owner explicitly requested solo without Claude review."
+        }
+      },
+      "docs_sync": [
+        {
+          "path": "README.md",
+          "state": "updated",
+          "reason": "Current CP044 control/fence/replacement, PR51integration and AUD014/next48."
+        },
+        {
+          "path": "docs/PLAN.md",
+          "state": "updated",
+          "reason": "Progress/route/nextpeerqueue, historical CP041summary corrected."
+        },
+        {
+          "path": "docs/PROTOCOL.md",
+          "state": "updated",
+          "reason": "Canonical aborttimer/preparestage/drop/replacement/currenttimer and limits."
+        },
+        {
+          "path": "docs/RESEARCH.md",
+          "state": "updated",
+          "reason": "Bounded answer, active peerqueue/fullvalidator/fullauth; Q026 sync."
+        },
+        {
+          "path": "docs/evidence/abort-timer/README.md",
+          "state": "updated",
+          "reason": "Recipes/sealedruns/native/securefields/images/hash and periodic audit."
+        },
+        {
+          "path": "server/README.md",
+          "state": "updated",
+          "reason": "Finish atEOF caller responsibility and unsentjob limits."
+        }
+      ]
     }
   ],
   "audits": [
@@ -75464,6 +76962,11 @@
       "id": "AUD013",
       "path": "docs/evidence/checkpoints/audits/AUD013.json",
       "sha256": "facb953c4204c22d4d303a28882675b4c0e95ae6791566503916b53c89b7722b"
+    },
+    {
+      "id": "AUD014",
+      "path": "docs/evidence/checkpoints/audits/AUD014.json",
+      "sha256": "b9c8c374f6a63b14a18c2405827f1723ae9277487607aeff9ea5a4c9a3ada5e1"
     }
   ],
   "task_states": [
