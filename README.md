@@ -22,20 +22,19 @@ boom-kr-server/
 
 ## Đang làm
 
-CP031: **đã đo Bomb tăng capacity và Fire tăng power trên cả hai client** trong Wine cô lập.
-Đã sửa nguồn power khi chuyển request đặt bom sang broadcast; hàm tính bom của cả hai nhận giá trị
-sau Fire. Gửi lặp xác nhận cho hai item đã bị xóa không cộng stat lần hai trong ca đã đo.
-[Contract và giới hạn](docs/PROTOCOL.md#item-effects), [bằng chứng](docs/evidence/item-effects/README.md).
+CP032: **đã phá gạch, hiện và nhặt item ẩn trên hai client** trong Wine cô lập.
+Đã đo lại việc gắn block/item và reset capacity/Fire trước lần Start thứ hai.
+Run sửa policy đã có hai chu kỳ kết quả/về phòng ở cả hai client; phạm vi reset vẫn giới hạn ở các field đã đo.
+[Contract và giới hạn](docs/PROTOCOL.md#hidden-items), [bằng chứng](docs/evidence/hidden-items/README.md).
 
 Đây là profile thử local với rank/policy do stub chọn; **chưa nghiệm thu trận hoàn chỉnh/K6a**.
-Runtime nhặt tại max, speed, item ẩn/phá block, collision/chain/rescue, validator/reset/disconnect
+Runtime nhặt tại max, speed, block variants/collision/chain/rescue, validator/reset/disconnect
 và full auth/cache còn thiếu. Trap/death hai chiều đã kiểm hẹp ở [CP029](docs/PROTOCOL.md#peer-events).
 Chưa LAN/Internet. [Bước tiếp](docs/RESEARCH.md#q-023).
 
-CP030 đã merge [PR38](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/38) tại `1f70d4f`.
-CP031 là snapshot trước tích hợp; PR nhánh `kre/item-effects-runtime` giữ trạng thái merge hiện tại.
-Codex tự kiểm, review độc lập waived. **AUD009/CP031** audit ngay do correction power;
-audit định kỳ kế vẫn **CP032**.
+CP031 đã merge [PR39](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/39) tại `4de4e2e`.
+CP032 là snapshot trước tích hợp; PR nhánh `kre/hidden-item-runtime` giữ trạng thái tích hợp.
+Codex tự kiểm, review độc lập waived. **AUD010/CP032** audit định kỳ hoàn tất; audit kế **CP036**.
 
 Checkpoint bền vững: [manifest](docs/evidence/checkpoints/manifest.json).
 Quy trình ghi chép/review/audit: [checkpoint workflow](docs/evidence/checkpoints/README.md).

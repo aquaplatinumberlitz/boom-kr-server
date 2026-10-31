@@ -1,0 +1,79 @@
+{
+  "id": "AUD010",
+  "trigger": "periodic",
+  "completed_through": "CP032",
+  "recorded_utc": "2026-10-31T01:49:45.296660+00:00",
+  "auditor": "Codex self-audit; independent review waived by project owner",
+  "read_files": [
+    "README.md",
+    "docs/PLAN.md",
+    "docs/PROTOCOL.md",
+    "docs/RESEARCH.md",
+    "docs/evidence/peer-events/README.md",
+    "docs/evidence/item-effects/README.md",
+    "docs/evidence/hidden-items/README.md",
+    "docs/evidence/checkpoints/manifest.json"
+  ],
+  "method": "Đọc lại README→PLAN→PROTOCOL từng đoạn toàn contract→RESEARCH→evidence CP029/031/032 trong lượt này; đọc lại delta/current/evidence sau sync. Đối chiếu raw5run A/B, typedactual142 vàwriter E72720, list/store/reveal→sameCGOItem165 pointers, stat snapshots/nativechecksum và18ảnh/control/reveal/round2rank/room. Phân biệt incompleteoriginpolicy với fixedrun, fieldreset với toàn lifecycle. Checker chỉ kiểm cơ học, không thay audit/semanticgate.",
+  "findings": [
+    {
+      "id": "F1",
+      "stale": "Current docs còn CP031 snapshot/PR38 và next hiddenitem dù đã có PR39 merge và kết quả block/list2 mới.",
+      "correction": "CP031/PR39 merge4de4e2e,currentCP032; nextchain/rescue/generation/disconnect. Giữ snapshot/merge/reviewwaived/gate riêng.",
+      "fixed_in": [
+        "README.md",
+        "docs/PLAN.md",
+        "docs/PROTOCOL.md",
+        "docs/RESEARCH.md",
+        "docs/evidence/hidden-items/README.md"
+      ]
+    },
+    {
+      "id": "F2",
+      "stale": "CP030 list2unknown và matrix current itemẩn/reset chưađo có thể bị hiểu là trạng thái mới nhất.",
+      "correction": "QualifyCP030historical, link CP032 list2/FixedBox/reveal, item/stat/serial/power reset hẹp; list3/randomdrop/allreset vẫn mở.",
+      "fixed_in": [
+        "docs/PROTOCOL.md",
+        "docs/PLAN.md",
+        "docs/RESEARCH.md",
+        "docs/evidence/hidden-items/README.md"
+      ]
+    },
+    {
+      "id": "F3",
+      "stale": "Hai chu kỳ dùng cùngharness có thể bị gọi hoàn tất khi vòng2 chờ originB dùactualreportA đã có.",
+      "correction": "Giữ hidden-rounds partial1rank/return, nêu inheritedA/Bpolicy mismatchedA-onlyinput; separatefixedA/A run2rank/return bothviews. Không coi stubpolicyfix là clientfix.",
+      "fixed_in": [
+        "docs/PROTOCOL.md",
+        "docs/evidence/hidden-items/README.md",
+        "docs/RESEARCH.md"
+      ]
+    },
+    {
+      "id": "F4",
+      "stale": "Floor entry E9DFC0 hoặc duplicatequeueprobe absence có thể bị dùng sai thành proofreveal/không142.",
+      "correction": "Directruntime B9D0B4/B8B5B0 sameCGOItem pointer as165; E72849actualwriter vànativecapture142. Giữ misalignedASM ignored và earlyhypothesis như lịch sử.",
+      "fixed_in": [
+        "docs/PROTOCOL.md",
+        "docs/evidence/hidden-items/README.md"
+      ]
+    },
+    {
+      "id": "F5",
+      "stale": "Resetstat/item và hai175/180 dễ bị nâng thành toànround/allentity/no-leak/K6a; oldCP029missingitem có thể bị lấy làmcurrent.",
+      "correction": "Currentmatrix ghi boundedfieldreset, không nâng gate; raw/oldcompleteCP/audits immutable. K5/K6a/LAN/Internet vàvalidator/chain/rescue/disconnect vẫn mở;periodicCP032→CP036.",
+      "fixed_in": [
+        "README.md",
+        "docs/PLAN.md",
+        "docs/PROTOCOL.md",
+        "docs/RESEARCH.md",
+        "docs/evidence/hidden-items/README.md"
+      ]
+    }
+  ],
+  "remaining": [
+    "Chain/collision/rescue,blockvariants/list3/randomdrop, runtime-atmax/speed, stale/generation/validator,hostleave/disconnect vàallentity/timer/peer/seqreset chưa nghiệm thu.",
+    "Fullauth/profile/cache/codec/reconnect/vanilla, UDPgrammar/reliability/relay/NAT,Lan/Internet vàK5/K6a chưa đạt.",
+    "Chain next experiment prepared/running in separate local/chain-r1, not evidence forCP032 andnot gatecompletion."
+  ]
+}

@@ -1,7 +1,7 @@
 # Kế hoạch server giả lập KR 00967
 
 Nguồn chuẩn của project `boom-kr-server`; bản nhập từ plan đã được dsh1/dsh2 review tại `1eee46d`.
-Cập nhật 31/10 JST (CP031): đã đo hiệu ứng Bomb/Fire trên hai client, clamp bằng emulation và sửa mapping power đặt bom. K0/K1, K2/K3 còn từng phần; bảng gate là scope nghiệm thu, chưa phải checklist đã pass.
+Cập nhật 31/10 JST (CP032): đã đo list2/item ẩn trong gạch, reveal/nhặt hai phía và reset stat/item ở vòng kế. K0/K1, K2/K3 còn từng phần; bảng gate là scope nghiệm thu, chưa phải checklist đã pass.
 
 
 ### Mục tiêu, baseline và phạm vi
@@ -37,23 +37,23 @@ với client Rust không chứng minh có thể điều khiển client KR bằng
 
 ### Tiến độ hiện hành theo bằng chứng
 
-| Task/mốc | Trạng thái tại CP031 | Nguồn chuẩn |
+| Task/mốc | Trạng thái tại CP032 | Nguồn chuẩn |
 |---|---|---|
 | KRE-004/issue6 | Đã review/merge PR7 và đóng issue:recipe r1 đến local accept;không phải full K1 | [Wine r1](evidence/wine/README.md) |
 | Bootstrap reply | PR8 đã merge;debugger ProcessPatchreturn1,không ép success | [bootstrap evidence](evidence/bootstrap-wire/README.md) |
 | KRE-005a/issue9,R2 | PR10 đã merge:3 cold start cửa sổ/second accept;issue9 còn mở | [R2 evidence](evidence/wine-r2/README.md) |
 | WCP hai-reply | Run CP001 là lịch sử chưa C→S; CP006 đã đo request đầu trên copy tham số hóa | [PROTOCOL](PROTOCOL.md#wcp),[WCP evidence](evidence/wcp/README.md) |
-| KRE-005b/issue14 | CP006–030 đã merge; CP031 có stat Bomb/Fire, duplicate sau xóa và power correction; fullround/authority/full auth còn mở | [Q-023](RESEARCH.md#q-023), [evidence](evidence/item-effects/README.md) |
+| KRE-005b/issue14 | CP006–031 đã merge; CP032 có block/reveal/pickup/stat reset hẹp; fullround/authority/full auth còn mở | [Q-023](RESEARCH.md#q-023), [evidence](evidence/hidden-items/README.md) |
 | K0/K1 | Chưa nghiệm thu toàn gate;Windows vanilla/control ownership và các điều kiện còn thiếu giữ mở | Gate dưới,[Q-022](RESEARCH.md) |
 | K2a/K2 | Primitive/WCP từng phần; request auth đã capture/native replay, phản hồi lỗi đã dispatch; full codec/reconnect và gate chưa pass | [PROTOCOL](PROTOCOL.md#login-auth),[Q-023](RESEARCH.md#q-023) |
 | K3 | Copy chẩn đoán đã vẽ UI sảnh và đóng notice; chưa nghiệm thu identity/cache/codec đủ gate | [Contract sảnh](PROTOCOL.md#channel-lobby) |
-| K4–K7 | CP031 đo stat hai phía, clamp native và nguồn power; runtime tại max, item ẩn/reset/disconnect/authority chưa nghiệm thu. Chưa K6a/LAN/Internet | Không có phần trăm ước lượng |
+| K4–K7 | CP032 có item ẩn/reveal và reset field đã đo; variants/chain/rescue/generation/disconnect/authority chưa nghiệm thu. Chưa K6a/LAN/Internet | Không có phần trăm ước lượng |
 
-Thứ tự tiếp: item ẩn/phá block và đồng thuận reveal; kiểm runtime tại max/speed khi cần cho lát cắt
-item, rồi collision/chain/rescue, validator/generation/stale, reset/seq/host-leave/disconnect trước K6a.
-CP031 đã nối effect tới stat và nguồn power, không tìm lại receiver; giới hạn ở
-[contract hiệu ứng](PROTOCOL.md#item-effects). CP030 giữ layout/request/confirm và một ca tranh index;
-CP029 giữ bằng chứng trap/death hai chiều.
+Thứ tự tiếp: collision/chain/rescue và validator/generation/stale, rồi host-leave/disconnect và reset
+entity/timer/peer/seq trước K6a; kiểm runtime tại max/speed khi cần cho lát cắt item.
+CP032 đã đo hai block/list2/reveal/nhặt và reset stat/item hẹp ở
+[contract](PROTOCOL.md#hidden-items). CP031 giữ effect/stat/power; CP030 giữ layout/nhặt/tranh index;
+CP029 giữ trap/death hai chiều. Không ghép các run khác nhau thành một ca nghiệm thu full match.
 [Q-023](RESEARCH.md#q-023) giữ phép thử tiếp; [CP028](PROTOCOL.md#duo-room-round) đã trả lời đường
 join/Ready và hai chu kỳ thử trên cùng pair. Kết quả thắng/thua vẫn do policy stub chọn.
 Full auth/cache/codec/variant/relay, serial wrap/allocator/concurrent còn mở. Chưa qua K4/K5/K6;
@@ -61,7 +61,7 @@ chưa LAN/Internet.
 Chu kỳ docs/audit theo [workflow](evidence/checkpoints/README.md);
 counter ở [manifest](evidence/checkpoints/manifest.json). Không tạo plan theo phiên.
 
-### Bản đồ đường chạy, CP031
+### Bản đồ đường chạy, CP032
 
 | Bước | Quan sát/bước tiếp |
 |---|---|
@@ -75,10 +75,11 @@ counter ở [manifest](evidence/checkpoints/manifest.json). Không tạo plan th
 | Start → init game | CP024 nối index spawn→point map→native actor;121 trên Village00/ExVillage01 đọc127/129byte. CP020 đọc129/129, cấp localID1/ownslot bằng packet, kiểm slot rồi init CGameStage/stage13; map/HUD/hai nhân vật đã vẽ, có99/61byte. [Contract](PROTOCOL.md#start-reply). |
 | Clock/input | 197/196/198 có control một client; CP027 dùng153 thay198, clock1 mỗi phía và movement hai chiều. [Clock gốc](PROTOCOL.md#round-go), [hai client](PROTOCOL.md#peer-duo). |
 | Bom → kết quả → phòng → trận hai | CP024 echo118→159 trên ba map;127 writer17/19/full envelope; reported19→175/LOSE-PERFECT→180/full3; refresh110 host/guest-ready cho click104 và vòng hai. Một client/guest tổng hợp, policy outcome chọn; spatial/timer/serial/peer chưa đủ. [Contract](PROTOCOL.md#round-result). |
-| Hai client → hai chu kỳ thử | CP028 B82→87/slot1,95→110, A104→121 cả hai; cùng session1, hai chu kỳ scene/bom/175/180/phòng trên cùng sockets. Outcome chọn; giới hạn trap/death tại CP028 được kiểm tiếp ở hàng CP029. Item/reset/disconnect còn thiếu, chưa K6a. [Contract](PROTOCOL.md#duo-room-round). |
+| Hai client → hai chu kỳ thử | CP028 B82→87/slot1,95→110, A104→121 cả hai; cùng session1, hai chu kỳ scene/bom/175/180/phòng trên cùng sockets. Outcome chọn; trap/death kiểm tiếp ở CP029, item/reset hẹp ở CP032. Toàn reset/disconnect còn thiếu, chưa K6a. [Contract](PROTOCOL.md#duo-room-round). |
 | Trap/death phía peer | CP029 control: actor A có state1 trên A nhưng state56 trên B trước175;170/17,19 đưa remote actor56→1 bằng packet, đọc đủ10/21byte. Getter native kiểm lại snapshot; đã đo cả hai chiều. [Contract](PROTOCOL.md#peer-events). |
 | Item trên nền → nhặt/tranh | CP030 gửi582 trước121, actual124/19byte→165/12byte cả A/B; một index19 có hai request trước một xác nhận người thắng. [Contract](PROTOCOL.md#item-pickup). |
-| Hiệu ứng item → bom kế tiếp | CP031 đo stat Bomb/Fire hai phía; native clamp, duplicate sau xóa và118.field10→159.field8→calc power đã kiểm. Item ẩn/phá block, runtime tại max/speed/reset còn thiếu. [Contract](PROTOCOL.md#item-effects). |
+| Hiệu ứng item → bom kế tiếp | CP031 đo stat Bomb/Fire hai phía; native clamp, duplicate sau xóa và118.field10→159.field8→calc power đã kiểm. Runtime tại max/speed còn thiếu. [Contract](PROTOCOL.md#item-effects). |
+| Phá block → reveal → vòng kế | CP032 list2/FixedBox,142/124/165 và stat/serial/power đo lại sau Start. Phân biệt control không158 và run chờ sai origin vòng2; không đóng toàn reset/generation. [Contract](PROTOCOL.md#hidden-items). |
 
 RE động là chính; gom phép đo thành checkpoint mốc/blocker, audit định kỳ theo workflow.
 Review độc lập được chủ dự án miễn từ28/10; Codex tự kiểm, giữ PR và điều kiện bằng chứng của gate.
