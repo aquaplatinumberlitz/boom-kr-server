@@ -136,11 +136,15 @@ CP033/PR41 đã merge `fbf4dc5`. CP034 đo leave/107/host110/guestEOF và giải
 return loading bằng trường loại sảnh trong channel14; [contract duy nhất](PROTOCOL.md#room-leave),
 [control/recipe/hash](evidence/room-leave/README.md). Không ghép các ca này thành full match.
 
+CP034/PR42 đã merge `0779bc7`. CP035 đo B rejoin và A rejoin sau B promotion,
+Ready A→Start B→121/99/clock hai phía; [contract](PROTOCOL.md#room-rejoin),
+[evidence](evidence/room-rejoin/README.md). Chỉ mốc rejoin/start, chưa full match.
+
 **Bước tiếp, Codex RE/tự kiểm:**
 
 1. **NEXT-DUO-ROUND:** rời phòng/xóa ghost slot/promotion/guest EOF/về sảnh đã đo hẹp ở CP034;
-   tiếp tục **rejoin qua click/request thật và Start sau promotion**, rồi host EOF/disconnect trong trận.
-   Kiểm entity/timer/peer/seq/generation/reset trước K6a; không coi promotion getter/UI Start là đã start được trận.
+   CP035 đã đo **rejoin qua click/request thật và Start sau promotion tới clock**. Tiếp host EOF/disconnect trong trận.
+   Kiểm entity/timer/peer/seq/generation/reset trước K6a; giữ riêng mốc request104/reader121/99/clock CP035, không suy full match từ đó.
 2. **NEXT-ITEM-PICKUP:** tiếp collision/rescue/validator/stale/generation/toàn reset. CP032 item ẩn và
    stat đầu vòng kế, CP033 chain một owner đã có bằng chứng; không tìm lại receiver. Runtime tại max/speed,
    chain nhiều owner/ba bom/vật cản, list3/loại block khác/đảo winner/stale index qua round còn thiếu.

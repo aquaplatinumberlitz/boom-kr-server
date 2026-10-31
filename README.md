@@ -22,19 +22,18 @@ boom-kr-server/
 
 ## Đang làm
 
-CP034: **đã đo rời phòng, chuyển chủ và quay về sảnh trên cả hai client theo hai ca riêng**.
-Guest B rời → A xóa slot; host A rời → B nhận quyền chủ. Ca ngắt B đột ngột cũng xóa slot trên A.
-Đã giải điểm kẹt loading khi về sảnh bằng trường loại sảnh trong dữ liệu kênh.
-[Contract và giới hạn](docs/PROTOCOL.md#room-leave), [bằng chứng](docs/evidence/room-leave/README.md).
-Item/reset hẹp và chain giữ tại [CP032](docs/PROTOCOL.md#hidden-items)/[CP033](docs/PROTOCOL.md#bomb-chain).
+CP035: **đã rời rồi vào lại cùng phòng; chủ mới B bấm Start đưa cả hai client vào trận và chạy clock**.
+A vào lại với vai khách/own-match đúng, Ready thật rồi B phát104; hai client đọc đủ121 và khởi tạo trận.
+[Contract và giới hạn](docs/PROTOCOL.md#room-rejoin), [bằng chứng](docs/evidence/room-rejoin/README.md).
+Rời phòng/chuyển chủ/guest EOF và sửa loại sảnh giữ tại [CP034](docs/PROTOCOL.md#room-leave).
 
-Đây là profile thử local với rank/policy do stub chọn; **chưa nghiệm thu trận hoàn chỉnh/K6a**.
-Rejoin, start sau chuyển chủ, disconnect trong trận, collision/rescue, validator/toàn reset
-và full auth/cache còn thiếu. Chưa LAN/Internet. [Bước tiếp](docs/RESEARCH.md#q-023).
+Đây là profile thử local; **chưa nghiệm thu trận hoàn chỉnh/K6a**. Disconnect trong trận,
+collision/rescue, validator/toàn reset và full auth/cache còn thiếu. Chưa LAN/Internet.
+[Bước tiếp](docs/RESEARCH.md#q-023).
 
-CP033 đã merge [PR41](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/41) tại `fbf4dc5`.
-CP034 là snapshot trước tích hợp; PR nhánh `kre/leave-runtime` giữ trạng thái tích hợp.
-Codex tự kiểm, review độc lập waived. **AUD010/CP032** audit định kỳ hoàn tất; audit kế **CP036**.
+CP034 đã merge [PR42](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/42) tại `0779bc7`.
+CP035 là snapshot trước tích hợp; PR nhánh `kre/rejoin-runtime` giữ trạng thái tích hợp.
+Codex tự kiểm, review độc lập waived. **AUD010/CP032** gần nhất; audit định kỳ kế **CP036**.
 
 Checkpoint bền vững: [manifest](docs/evidence/checkpoints/manifest.json).
 Quy trình ghi chép/review/audit: [checkpoint workflow](docs/evidence/checkpoints/README.md).

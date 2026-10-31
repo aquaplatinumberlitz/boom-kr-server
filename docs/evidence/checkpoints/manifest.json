@@ -1,7 +1,7 @@
 {
   "schema": "kre-checkpoints-v1",
-  "last_id": "CP034",
-  "completed_count": 34,
+  "last_id": "CP035",
+  "completed_count": 35,
   "audit_interval": 4,
   "last_periodic_audit": 32,
   "next_periodic_audit": "CP036",
@@ -53686,6 +53686,1000 @@
           "path": "docs/evidence/room-leave/README.md",
           "state": "updated",
           "reason": "Ten runs/controls/rejected field/native/hash/visual/recipe/limits."
+        }
+      ]
+    },
+    {
+      "id": "CP035",
+      "previous": "CP034",
+      "lifecycle": "complete",
+      "recorded_utc": "2026-10-31T04:02:21.532114+00:00",
+      "question": "Guest có vào lại phòng trên socket cũ, và chủ mới B có start sau A vào lại làm khách/Ready không?",
+      "scope": "Two sequential isolated Wine pairs: guest leave/return/rejoin room-only control and formerhost A leave/Bpromotion/Aguest rejoin/ReadyA95/StartB104/full121/99/clock both. No additional binary patch or stateforcing; no fullmatch/gate claim.",
+      "context_commit": "0779bc71b6a23d9262e3d4bec522ef18b3681b5c",
+      "owner": "Codex",
+      "reviewer": "Codex",
+      "artifacts": [
+        {
+          "name": "CA-r2-login-logout.exe",
+          "sha256": "660447c293ce92270cb9b5815331bca976e8f156366e1fe50b217b6c12e60ce3"
+        },
+        {
+          "name": "CA-r2-stage-social.exe",
+          "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+        },
+        {
+          "name": "CA-r2-stage-social.exe Bcopy",
+          "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+        },
+        {
+          "name": "modO.bin",
+          "sha256": "a08950c833d3acab8281049def7b3dc96b221f107eeda01da3a548e34b91dce5"
+        }
+      ],
+      "locators": [
+        "Base400000/RVA=VA-400000; modO raw;15ranges match4artifacts; prior handlers reused, no new function-body RE.",
+        "Real B Back86 then second82→87seq79/full7→stage12/585→106seq82/11085/10688/23891/11794; peer107clear then106 reinstall.",
+        "Formerhost A similarly87slot0/session1;123FF10→ownslot0,DC5925ownmatch1; Astate0/chief0, Bstate22/chief1.",
+        "ArealReady95→110slot0/state4/tail0 both; BactualStart104→121full129/129/errors0/stage13; actual99 both→197/196/153→E134B0clock onceeach.",
+        "Same IDs1/2,slots0/1,session1,channel sockets/C2S seq40+3n and dynamicS2Ccontinuous. No reconnect/authagain."
+      ],
+      "findings": [
+        {
+          "summary": "Guest B leaves and rejoins same room via real second82/87/585; both profiles restored onA/B with continuous socket seq.",
+          "source": "kr_runtime",
+          "status": "confirmed",
+          "method": "runtime",
+          "limits": "One room/index0/normal-lobby profile, same ID/slot/session; no reconnect/password/slot allocator/ID reuse/bounds/fullmatch proof.",
+          "canonical": "docs/PROTOCOL.md#room-rejoin",
+          "evidence": [
+            "E040",
+            "E041",
+            "E042",
+            "E030",
+            "E033"
+          ]
+        },
+        {
+          "summary": "Aformerhost leaves; Bpromoted; A rejoins asguest/ownmatch1/chief0, Bchief1. A95Ready then B104Start produces full121/129,actual99 andclock onceeach.",
+          "source": "kr_runtime",
+          "status": "confirmed",
+          "method": "runtime",
+          "limits": "Boundedrejoin/role/ready/start/clock milestone, not result/deathagreement/twofullrounds/allcleanup. Existing121map profile/policy only.",
+          "canonical": "docs/PROTOCOL.md#room-rejoin",
+          "evidence": [
+            "E067",
+            "E068",
+            "E069",
+            "E030",
+            "E033"
+          ]
+        },
+        {
+          "summary": "NativecaptureframerCRCpartial andtyped82/86/95/107/110 validate packetwidths; same15code ranges match4artifacts.",
+          "source": "kr_static",
+          "status": "confirmed",
+          "method": "emulation",
+          "limits": "Synthetic allocator; no full106object/world semantic emulation, no encoder-as-serveroracle.",
+          "canonical": "docs/PROTOCOL.md#room-rejoin",
+          "evidence": [
+            "E028",
+            "E038",
+            "E032",
+            "E031"
+          ]
+        },
+        {
+          "summary": "Keep ID/slot/session,refresh106/110/238/117,state0/4/22 andBchief election areemulator choices accepted in measuredrun.",
+          "source": "design",
+          "status": "design",
+          "method": "documentation",
+          "limits": "Originalserverauthority/allocator/reconnect/activefailure/UDPvariants/vanilla/fullauth/fullmatch remainunknown; reviewwaived.",
+          "canonical": "docs/PROTOCOL.md#room-rejoin",
+          "evidence": [
+            "E023",
+            "E039",
+            "E031"
+          ]
+        }
+      ],
+      "verification": [
+        {
+          "check": "2605 mechanical checks/2sealedsequentialruns/isolation/lease/hash/seq/C2SnativeCRCpartial/actualUI82-95-104/handlercursor/role/clock.",
+          "result": "pass",
+          "evidence": [
+            "E031",
+            "E030",
+            "E029"
+          ],
+          "limits": "Declared relationships, notsemantic inference/independentreview/gate."
+        },
+        {
+          "check": "48nativeactual cases/15ranges4artifacts and6manualimages withruntime trace.",
+          "result": "pass",
+          "evidence": [
+            "E028",
+            "E038",
+            "E032",
+            "E039",
+            "E033"
+          ],
+          "limits": "Diagnostic Wine/emulatorpolicy; no packetwidth orscenealone closesgate."
+        }
+      ],
+      "evidence": [
+        {
+          "id": "E001",
+          "kind": "repository",
+          "path": "docs/evidence/room-rejoin/README.md",
+          "bytes": 3656,
+          "sha256": "f24faa92bf0492fdde072fa1c9a8fe9cbf9b675f7aec1211b78af6b909fa1cab"
+        },
+        {
+          "id": "E002",
+          "kind": "repository",
+          "path": "docs/evidence/room-leave/README.md",
+          "bytes": 5843,
+          "sha256": "76e68c42f44ae79a9479e31cb32f61d657c19975191fe5882ffc1bc15c6d83e1"
+        },
+        {
+          "id": "E003",
+          "kind": "local",
+          "path": "local/research/codex/wcp-guard-r1/game/CA-r2-login-logout.exe",
+          "bytes": 31874560,
+          "sha256": "660447c293ce92270cb9b5815331bca976e8f156366e1fe50b217b6c12e60ce3"
+        },
+        {
+          "id": "E004",
+          "kind": "local",
+          "path": "local/research/codex/wcp-guard-r1/game/CA-r2-stage-social.exe",
+          "bytes": 31874560,
+          "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+        },
+        {
+          "id": "E005",
+          "kind": "local",
+          "path": "local/research/codex/duo-round-r1/game-B/CA-r2-stage-social.exe",
+          "bytes": 31874560,
+          "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+        },
+        {
+          "id": "E006",
+          "kind": "artifact",
+          "path": "/home/admin/boom/repos/boomkr-re/out/modO.bin",
+          "bytes": 31858688,
+          "sha256": "a08950c833d3acab8281049def7b3dc96b221f107eeda01da3a548e34b91dce5"
+        },
+        {
+          "id": "E007",
+          "kind": "local",
+          "path": "local/research/codex/rejoin-r1/run_probe.py",
+          "bytes": 1062,
+          "sha256": "185ce5caf96b6726d5f0e9c38a35ffd25c7b306034100b6a4d5418a8ef36d6b3"
+        },
+        {
+          "id": "E008",
+          "kind": "local",
+          "path": "local/research/codex/rejoin-r1/seal_run.py",
+          "bytes": 620,
+          "sha256": "e555b14bc83832584a95cf5e87f24c6b9a50196c507f23174becd0ab221ae1a0"
+        },
+        {
+          "id": "E009",
+          "kind": "local",
+          "path": "local/research/codex/rejoin-r1/derive_roles.py",
+          "bytes": 797,
+          "sha256": "20a9e462a5710a7ed69f9e5972b81e9a0dcb147907dab1c2ab04b142ba113d75"
+        },
+        {
+          "id": "E010",
+          "kind": "local",
+          "path": "local/research/codex/rejoin-r1/replay-run.py",
+          "bytes": 2997,
+          "sha256": "7d283429b2033915e54c7c98945165d337d70d5bd21b26ee6a031530bfded355"
+        },
+        {
+          "id": "E011",
+          "kind": "local",
+          "path": "local/research/codex/rejoin-r1/read_static.py",
+          "bytes": 665,
+          "sha256": "89fc3b9d5abead606530061ad89d4a297d8595414dad8c6d05f91a2e64a0a0e2"
+        },
+        {
+          "id": "E012",
+          "kind": "local",
+          "path": "local/research/codex/rejoin-r1/match_code.py",
+          "bytes": 1301,
+          "sha256": "741edef95a5b776030c4cba11fdbf3589a5dd7df0df1412fd126c7c5798d807b"
+        },
+        {
+          "id": "E013",
+          "kind": "local",
+          "path": "local/research/codex/rejoin-r1/native_actual.py",
+          "bytes": 3579,
+          "sha256": "3236f4d4a51dc14527344e25ea1438312ca32866d4a122f263a52b618c4bc1b9"
+        },
+        {
+          "id": "E014",
+          "kind": "local",
+          "path": "local/research/codex/rejoin-r1/rejoin.gdb",
+          "bytes": 8702,
+          "sha256": "d15749e0a42fae41912c061d9121db9e7214eb0a26cb063cdd8c3c356aa64669"
+        },
+        {
+          "id": "E015",
+          "kind": "local",
+          "path": "local/research/codex/rejoin-r1/guest-rejoin-recipe.json",
+          "bytes": 978,
+          "sha256": "0bca69ff5bfcddb55ad42ccc9c942983d25038bdfd4e7ffe00173334a1c5320e"
+        },
+        {
+          "id": "E016",
+          "kind": "local",
+          "path": "local/research/codex/rejoin-r1/guest-rejoin-launcher.log",
+          "bytes": 39146,
+          "sha256": "f67524c65d6c80778f8c813c85c3d3d835c9e64e0382fc2970779ce72828e308"
+        },
+        {
+          "id": "E017",
+          "kind": "local",
+          "path": "local/research/codex/rejoin-r1/prepare_promoted.py",
+          "bytes": 4929,
+          "sha256": "5bdacce4d138a495083343bd227222996530fcc50d16d9096788d6e4a18420f5"
+        },
+        {
+          "id": "E018",
+          "kind": "local",
+          "path": "local/research/codex/rejoin-r1/A106-unready.bin",
+          "bytes": 242,
+          "sha256": "2dbc2c247eb94c40af6338e733c98eb18dfa833a2d48662209ce952ca9d9fec7"
+        },
+        {
+          "id": "E019",
+          "kind": "local",
+          "path": "local/research/codex/rejoin-r1/B106-chief.bin",
+          "bytes": 242,
+          "sha256": "8dee2a2f58af50ebcf7487d66040c97c374683ed8726ccfe9dd13e064ebf9d86"
+        },
+        {
+          "id": "E020",
+          "kind": "local",
+          "path": "local/research/codex/rejoin-r1/A110-unready.bin",
+          "bytes": 44,
+          "sha256": "979cfad03305717aaaa203643e875d48aa1430a7d8b34ba534c7fb26668c55db"
+        },
+        {
+          "id": "E021",
+          "kind": "local",
+          "path": "local/research/codex/rejoin-r1/A110-ready.bin",
+          "bytes": 44,
+          "sha256": "2b8c7ae9412c1bee0340587269b1e32af2e3c2117081bc28a331202f8f82d422"
+        },
+        {
+          "id": "E022",
+          "kind": "local",
+          "path": "local/research/codex/rejoin-r1/reply87-A-session1.bin",
+          "bytes": 45,
+          "sha256": "79b35b72494211e3b4b7af04904a75cd8b67d99c1cb39f33d93b3cf056816586"
+        },
+        {
+          "id": "E023",
+          "kind": "local",
+          "path": "local/research/codex/rejoin-r1/promoted-fixtures.json",
+          "bytes": 1233,
+          "sha256": "d0f55340ce173b35a1d82d00f55b3099c626d7db7cb31336bb97e4114c4014dc"
+        },
+        {
+          "id": "E024",
+          "kind": "local",
+          "path": "local/research/codex/rejoin-r1/promoted.gdb",
+          "bytes": 8931,
+          "sha256": "d8c0b49702890c6378be8694d882a0f9899724843529bf7c54c7bde9e6493d00"
+        },
+        {
+          "id": "E025",
+          "kind": "local",
+          "path": "local/research/codex/rejoin-r1/guest-rejoin-hashes.json",
+          "bytes": 154373,
+          "sha256": "760e140cd5924333a0e3a65b43d01285d45fbe5d026a7e0720a2b1a31b22231b"
+        },
+        {
+          "id": "E026",
+          "kind": "local",
+          "path": "local/research/codex/rejoin-r1/promoted-rejoin-recipe.json",
+          "bytes": 989,
+          "sha256": "1e3eee7e5b893bce7a76db0d9b3d49fb6951f3e50cf9df18a1c2c2ce0048aaee"
+        },
+        {
+          "id": "E027",
+          "kind": "local",
+          "path": "local/research/codex/rejoin-r1/promoted-rejoin-launcher.log",
+          "bytes": 50894,
+          "sha256": "d52dd0d990c65c528b3797658f3ac2e37d550dafe331dded5067449ad6080a7b"
+        },
+        {
+          "id": "E028",
+          "kind": "local",
+          "path": "local/research/codex/rejoin-r1/native-actual.json",
+          "bytes": 14484,
+          "sha256": "ff2cad39f155bc0adae77b8ee899ce41c8d7be8075f52ac3290de0ae03848566"
+        },
+        {
+          "id": "E029",
+          "kind": "local",
+          "path": "local/research/codex/rejoin-r1/verify.py",
+          "bytes": 6058,
+          "sha256": "894854a1f7a359d0caa40d20140b8842d848ddde1002538e671a0d94002d3161"
+        },
+        {
+          "id": "E030",
+          "kind": "local",
+          "path": "local/research/codex/rejoin-r1/runtime-summary.json",
+          "bytes": 11509,
+          "sha256": "f9e8c4496f99226d0c854e4db054f9af81e459e5d11debfd71dde5e91c40411e"
+        },
+        {
+          "id": "E031",
+          "kind": "local",
+          "path": "local/research/codex/rejoin-r1/verification.json",
+          "bytes": 274,
+          "sha256": "fbbf2819d6e4ed9f9e65bb9175906adc7d99d4333d69d14c18afa8710ae82717"
+        },
+        {
+          "id": "E032",
+          "kind": "local",
+          "path": "local/research/codex/rejoin-r1/code-match.json",
+          "bytes": 3305,
+          "sha256": "9201a1f6b92beef9338ee0bf78433414908bea9cbb3b8ddc0fa0248ae1dbe161"
+        },
+        {
+          "id": "E033",
+          "kind": "local",
+          "path": "local/research/codex/rejoin-r1/rejoin-visual.png",
+          "bytes": 456027,
+          "sha256": "5c9364b848e1a3904cfdfcb9f1dcd1a5be1187509a6973476864a5edd23d299a"
+        },
+        {
+          "id": "E034",
+          "kind": "local",
+          "path": "local/research/codex/rejoin-r1/sync_docs.py",
+          "bytes": 12841,
+          "sha256": "67e1e8f56f7014d7543aa862e99decd6380d101d7cc89f05991a283c9db6771c"
+        },
+        {
+          "id": "E035",
+          "kind": "local",
+          "path": "local/research/codex/rejoin-r1/finish_checkpoint.py",
+          "bytes": 7825,
+          "sha256": "4dca5b9b635c3bec5ddb0fb3b9b5f788979b2f0c3807e22cc674137fec6d76e9"
+        },
+        {
+          "id": "E036",
+          "kind": "local",
+          "path": "local/research/codex/rejoin-r1/promoted-rejoin-hashes.json",
+          "bytes": 167766,
+          "sha256": "14660d3b07412ff3ed2cae526f8b4439e6d5a0e5e0cb58a935ca74d6725541c7"
+        },
+        {
+          "id": "E037",
+          "kind": "local",
+          "path": "local/research/codex/rejoin-r1/native_fields.py",
+          "bytes": 4101,
+          "sha256": "5c36ee23cb1ff98241f51a023cc66cb417fe1175672bdbd6d4cdb130299b95d9"
+        },
+        {
+          "id": "E038",
+          "kind": "local",
+          "path": "local/research/codex/rejoin-r1/native-fields.json",
+          "bytes": 5560,
+          "sha256": "3ebef69209debe9266bae511f85c700b8e9abb0b30ff6b6a52a955147613c161"
+        },
+        {
+          "id": "E039",
+          "kind": "local",
+          "path": "local/research/codex/rejoin-r1/measurement-notes.json",
+          "bytes": 1094,
+          "sha256": "a1482b90ed03af55cd4719d6f4537072cec725d2128b55beb89f46e62e83101d"
+        },
+        {
+          "id": "E040",
+          "kind": "local",
+          "path": "local/research/codex/rejoin-r1/guest-rejoin/run.json",
+          "bytes": 48994,
+          "sha256": "02fc8ea32629d675b07788b3d823f0e91c1d8a1d3f2e88e3d88dd9c058eeab41"
+        },
+        {
+          "id": "E041",
+          "kind": "local",
+          "path": "local/research/codex/rejoin-r1/guest-rejoin/client.log",
+          "bytes": 15058,
+          "sha256": "3984d2d401437a173df426a18a964a95bfecebf905d8e5e436c08a9dc90dcb2f"
+        },
+        {
+          "id": "E042",
+          "kind": "local",
+          "path": "local/research/codex/rejoin-r1/guest-rejoin/client-B.log",
+          "bytes": 19751,
+          "sha256": "b35a2f85b83a146e56183243f570b30229e8e54e0231abf2e994357340a35fdc"
+        },
+        {
+          "id": "E043",
+          "kind": "local",
+          "path": "local/research/codex/rejoin-r1/guest-rejoin/A-remove107-73.bin",
+          "bytes": 44,
+          "sha256": "fa2bc06c3af5c5476ad7efed13f5df6163d1c9f0b1988bb8aa56d95524db3115"
+        },
+        {
+          "id": "E044",
+          "kind": "local",
+          "path": "local/research/codex/rejoin-r1/guest-rejoin/B-return-lobby241-73.bin",
+          "bytes": 69,
+          "sha256": "c467509cd1c075f1ea98cbaeb4ba10ab235be409611c1e51649c9074e49e9002"
+        },
+        {
+          "id": "E045",
+          "kind": "local",
+          "path": "local/research/codex/rejoin-r1/guest-rejoin/B-return-room91-76.bin",
+          "bytes": 88,
+          "sha256": "83a99bbe03a492df8fe52330b8ab76621e4d6390ef2e10d1f4839fa0584f57d9"
+        },
+        {
+          "id": "E046",
+          "kind": "local",
+          "path": "local/research/codex/rejoin-r1/guest-rejoin/B-rejoin87-79.bin",
+          "bytes": 45,
+          "sha256": "d68495f466f2de180d4342b4d29027cec1e01af87afb1a5d10e410ede18cf82a"
+        },
+        {
+          "id": "E047",
+          "kind": "local",
+          "path": "local/research/codex/rejoin-r1/guest-rejoin/B-rejoin106-82.bin",
+          "bytes": 242,
+          "sha256": "dc21a40cb4e33aa68e01da2435a4b0045a3023db725d6a286efabda1fd9cbdb3"
+        },
+        {
+          "id": "E048",
+          "kind": "local",
+          "path": "local/research/codex/rejoin-r1/guest-rejoin/A-rejoin-peer106-76.bin",
+          "bytes": 242,
+          "sha256": "bf8ae8c96a4d4c1d1e52a2016dfa5f437a11cc15059b1280b5cceb4acbb77356"
+        },
+        {
+          "id": "E049",
+          "kind": "local",
+          "path": "local/research/codex/rejoin-r1/guest-rejoin/B-rejoin110-85.bin",
+          "bytes": 44,
+          "sha256": "df51f8e75aa5f2684d0485769bbd1f424833c81059a016a9249211ae2aa1bb81"
+        },
+        {
+          "id": "E050",
+          "kind": "local",
+          "path": "local/research/codex/rejoin-r1/guest-rejoin/B-rejoin-guest106-88.bin",
+          "bytes": 242,
+          "sha256": "5b44e1936a4361febd1e706e585133d79566c85face03014e6780477bf3f2052"
+        },
+        {
+          "id": "E051",
+          "kind": "local",
+          "path": "local/research/codex/rejoin-r1/guest-rejoin/B-rejoin238-91.bin",
+          "bytes": 117,
+          "sha256": "cd285fbbda1af2a74dd84ca77b901f629e8addcc809851f2322e64490a349500"
+        },
+        {
+          "id": "E052",
+          "kind": "local",
+          "path": "local/research/codex/rejoin-r1/guest-rejoin/B-rejoin117-94.bin",
+          "bytes": 46,
+          "sha256": "3143622496921bb0c6c78a785895dd44bfc8c43ca6f82e4aaf09b9253987a9a1"
+        },
+        {
+          "id": "E053",
+          "kind": "local",
+          "path": "local/research/codex/rejoin-r1/derived/guest-rejoin-A-replay.txt",
+          "bytes": 1376,
+          "sha256": "8b07081ac8739b69de394c3f6fdec0c7e7ef3cd670a64950f591c1c324593265"
+        },
+        {
+          "id": "E054",
+          "kind": "local",
+          "path": "local/research/codex/rejoin-r1/derived/guest-rejoin-A-oracle.json",
+          "bytes": 82224,
+          "sha256": "fcbb135a46ff6d653378e1d538a4c371c75452909ac03e40c53cef7b9d71a456"
+        },
+        {
+          "id": "E055",
+          "kind": "local",
+          "path": "local/research/codex/rejoin-r1/derived/guest-rejoin-B-replay.txt",
+          "bytes": 1565,
+          "sha256": "de39878829a72da4691e99e72de7b456c000d2a8b5d40da26e1bacbd2dfc7f40"
+        },
+        {
+          "id": "E056",
+          "kind": "local",
+          "path": "local/research/codex/rejoin-r1/derived/guest-rejoin-B-oracle.json",
+          "bytes": 92319,
+          "sha256": "b15a70f65a9c002735786457864e8b151e68f6b972442ff5ca8391e89be1d81c"
+        },
+        {
+          "id": "E057",
+          "kind": "local",
+          "path": "local/research/codex/rejoin-r1/request-frames/guest-rejoin/B-F13-82.bin",
+          "bytes": 49,
+          "sha256": "1746130345929e482c425aa463e6bf34d6da555c86c6474cf235330227f74f47"
+        },
+        {
+          "id": "E058",
+          "kind": "local",
+          "path": "local/research/codex/rejoin-r1/request-frames/guest-rejoin/B-F22-86.bin",
+          "bytes": 38,
+          "sha256": "96e56ea332303f86b1ac1fad244386de57173239a3caf3de38f5cf3f8cf952ac"
+        },
+        {
+          "id": "E059",
+          "kind": "local",
+          "path": "local/research/codex/rejoin-r1/request-frames/guest-rejoin/B-F34-82.bin",
+          "bytes": 49,
+          "sha256": "e644042144e9fd2ffeec379fc7c3ffc89531619b3f73924bd76aec76794357f3"
+        },
+        {
+          "id": "E060",
+          "kind": "local",
+          "path": "local/research/codex/rejoin-r1/guest-rejoin/A/before-rejoin.png",
+          "bytes": 179143,
+          "sha256": "b970db7e1dc95b51d378f9ea791d81ba3c159f491cce2a1dd946873f4fc27aef"
+        },
+        {
+          "id": "E061",
+          "kind": "local",
+          "path": "local/research/codex/rejoin-r1/guest-rejoin/A/after-rejoin.png",
+          "bytes": 179218,
+          "sha256": "e5bfc9317f9f48ca2b9e4014be70f9b61b3dd00026b228192d9633207d41d362"
+        },
+        {
+          "id": "E062",
+          "kind": "local",
+          "path": "local/research/codex/rejoin-r1/guest-rejoin/A/final-both.png",
+          "bytes": 182314,
+          "sha256": "43b84b9a74d20abc34fadd5a60293c2d4c7f14fd093d5e7c527173225b057dcd"
+        },
+        {
+          "id": "E063",
+          "kind": "local",
+          "path": "local/research/codex/rejoin-r1/guest-rejoin/B/before-rejoin.png",
+          "bytes": 150700,
+          "sha256": "1a3de3c6de45cf424deee3f4b4fec0db4b92606a2659f0108a77b914641efdb5"
+        },
+        {
+          "id": "E064",
+          "kind": "local",
+          "path": "local/research/codex/rejoin-r1/guest-rejoin/B/after-rejoin.png",
+          "bytes": 176114,
+          "sha256": "dbad87200d311bdb49dfddc4f07f69e5b176f0b16ad1300a3e7a6880b3102c43"
+        },
+        {
+          "id": "E065",
+          "kind": "local",
+          "path": "local/research/codex/rejoin-r1/guest-rejoin/B/final-both.png",
+          "bytes": 178447,
+          "sha256": "81da921d41162f7abee872fc7eb44eeeaba73a2b88e7b1d79f77d67ce64113ab"
+        },
+        {
+          "id": "E066",
+          "kind": "local",
+          "path": "local/research/codex/wine_probe_room_guest_rejoin.py",
+          "bytes": 66178,
+          "sha256": "6bf60df3a239ace79f3b1cea71f19c228b0c14fe3ef26e618b43c019470b8c18"
+        },
+        {
+          "id": "E067",
+          "kind": "local",
+          "path": "local/research/codex/rejoin-r1/promoted-rejoin/run.json",
+          "bytes": 64174,
+          "sha256": "5c213a3034e59bb6fb55c361368074ee95970d635846dcaa18ec33c17cd07b6a"
+        },
+        {
+          "id": "E068",
+          "kind": "local",
+          "path": "local/research/codex/rejoin-r1/promoted-rejoin/client.log",
+          "bytes": 23650,
+          "sha256": "1a40af44d1c08b24f66216daac3c1935e862f0fe8b4f9d97e9ac49dc502ccc4f"
+        },
+        {
+          "id": "E069",
+          "kind": "local",
+          "path": "local/research/codex/rejoin-r1/promoted-rejoin/client-B.log",
+          "bytes": 19349,
+          "sha256": "220fcfa53ca54909537844d9f2f8280abead4ddbcfb247dabe31e4659e9d2aab"
+        },
+        {
+          "id": "E070",
+          "kind": "local",
+          "path": "local/research/codex/rejoin-r1/promoted-rejoin/B-remove107-73.bin",
+          "bytes": 44,
+          "sha256": "080a2a02737ae7e0dbbace69ad20e9c0c0b9cb6da610f5e75f75b28f33f88a4f"
+        },
+        {
+          "id": "E071",
+          "kind": "local",
+          "path": "local/research/codex/rejoin-r1/promoted-rejoin/B-promote110-76.bin",
+          "bytes": 44,
+          "sha256": "67c2f21980ce4b68ed14c23c18e831065a18ed4056b43e34a94288cdbb7149bd"
+        },
+        {
+          "id": "E072",
+          "kind": "local",
+          "path": "local/research/codex/rejoin-r1/promoted-rejoin/A-return-lobby241-73.bin",
+          "bytes": 69,
+          "sha256": "c467509cd1c075f1ea98cbaeb4ba10ab235be409611c1e51649c9074e49e9002"
+        },
+        {
+          "id": "E073",
+          "kind": "local",
+          "path": "local/research/codex/rejoin-r1/promoted-rejoin/A-return-room91-76.bin",
+          "bytes": 88,
+          "sha256": "83a99bbe03a492df8fe52330b8ab76621e4d6390ef2e10d1f4839fa0584f57d9"
+        },
+        {
+          "id": "E074",
+          "kind": "local",
+          "path": "local/research/codex/rejoin-r1/promoted-rejoin/A-rejoin87-79.bin",
+          "bytes": 45,
+          "sha256": "c4c2853374f14ce8eebc834850f6e672d353fefe5a251b18144864cce7140faa"
+        },
+        {
+          "id": "E075",
+          "kind": "local",
+          "path": "local/research/codex/rejoin-r1/promoted-rejoin/A-rejoin106-82.bin",
+          "bytes": 242,
+          "sha256": "6f2743ff7afe0f9cda183926ef0d924ecb342945e284224d55564cc577411624"
+        },
+        {
+          "id": "E076",
+          "kind": "local",
+          "path": "local/research/codex/rejoin-r1/promoted-rejoin/B-rejoin-peer106-79.bin",
+          "bytes": 242,
+          "sha256": "e00cc24e35485e481c4c03f63502c9aa77588a8fc58dfdfbbe0dc8e0f3ae213e"
+        },
+        {
+          "id": "E077",
+          "kind": "local",
+          "path": "local/research/codex/rejoin-r1/promoted-rejoin/A-rejoin110-85.bin",
+          "bytes": 44,
+          "sha256": "4a85585b3a15e17e64270f258d6a0a66ec28311a1a38ff930e5e995293de04b9"
+        },
+        {
+          "id": "E078",
+          "kind": "local",
+          "path": "local/research/codex/rejoin-r1/promoted-rejoin/A-rejoin-guest106-88.bin",
+          "bytes": 242,
+          "sha256": "a6e1ffd0437ad17e265e0d8644ae8c759a160abd409aca4a070e23e255f2d5fa"
+        },
+        {
+          "id": "E079",
+          "kind": "local",
+          "path": "local/research/codex/rejoin-r1/promoted-rejoin/A-rejoin238-91.bin",
+          "bytes": 117,
+          "sha256": "cd285fbbda1af2a74dd84ca77b901f629e8addcc809851f2322e64490a349500"
+        },
+        {
+          "id": "E080",
+          "kind": "local",
+          "path": "local/research/codex/rejoin-r1/promoted-rejoin/A-rejoin117-94.bin",
+          "bytes": 46,
+          "sha256": "3143622496921bb0c6c78a785895dd44bfc8c43ca6f82e4aaf09b9253987a9a1"
+        },
+        {
+          "id": "E081",
+          "kind": "local",
+          "path": "local/research/codex/rejoin-r1/promoted-rejoin/A-ready110-97.bin",
+          "bytes": 44,
+          "sha256": "e74b30455417687601a5a88c2cd2813ca066735e5416adc188bd09bf6561a322"
+        },
+        {
+          "id": "E082",
+          "kind": "local",
+          "path": "local/research/codex/rejoin-r1/promoted-rejoin/B-ready110-82.bin",
+          "bytes": 44,
+          "sha256": "62a5e55c4bf26e5bd646957e0a5c18d685a4f1ad3471a3714ed35b5ddfa05c84"
+        },
+        {
+          "id": "E083",
+          "kind": "local",
+          "path": "local/research/codex/rejoin-r1/promoted-rejoin/A-floor582-100.bin",
+          "bytes": 54,
+          "sha256": "dfe14c28fd6e34ebe50541f07dd3a4febfa3e917b3b931e71de37947b8081130"
+        },
+        {
+          "id": "E084",
+          "kind": "local",
+          "path": "local/research/codex/rejoin-r1/promoted-rejoin/A-start121-r1-103.bin",
+          "bytes": 167,
+          "sha256": "ae6da08a5c5114379f30b4a23c1e74d15fb5e42d457df15190e63283f4657cf7"
+        },
+        {
+          "id": "E085",
+          "kind": "local",
+          "path": "local/research/codex/rejoin-r1/promoted-rejoin/B-floor582-85.bin",
+          "bytes": 54,
+          "sha256": "5b45676229fe5fa1ca6b04b5f197f483a5b12ee9b323c5be41a6acb9c9c92eeb"
+        },
+        {
+          "id": "E086",
+          "kind": "local",
+          "path": "local/research/codex/rejoin-r1/promoted-rejoin/B-start121-r1-88.bin",
+          "bytes": 167,
+          "sha256": "79ff2e48bebb4a603ddb976796aa3809dbd0feba8fdd5432313cb48b17a371ca"
+        },
+        {
+          "id": "E087",
+          "kind": "local",
+          "path": "local/research/codex/rejoin-r1/promoted-rejoin/B-go197-91.bin",
+          "bytes": 52,
+          "sha256": "d17f6f5c33e4e7512a63c26e7b64f89245596f0239d59eac8f14a8a147fe2d38"
+        },
+        {
+          "id": "E088",
+          "kind": "local",
+          "path": "local/research/codex/rejoin-r1/promoted-rejoin/A-go197-106.bin",
+          "bytes": 52,
+          "sha256": "5e7c0c08c220ce4f8f5a9190e5cb3852c1e3f02d6bc5878d69f5296498bf7ce0"
+        },
+        {
+          "id": "E089",
+          "kind": "local",
+          "path": "local/research/codex/rejoin-r1/promoted-rejoin/B-play196-94.bin",
+          "bytes": 45,
+          "sha256": "aa96cae97c2874b468ef229a2893c249f80b238461227d1ecde772496ecfde7d"
+        },
+        {
+          "id": "E090",
+          "kind": "local",
+          "path": "local/research/codex/rejoin-r1/promoted-rejoin/A-play196-109.bin",
+          "bytes": 45,
+          "sha256": "93370d067f3adafa89b6fde6898954b5cd55dc1b6e98e1a29168e68376a50e60"
+        },
+        {
+          "id": "E091",
+          "kind": "local",
+          "path": "local/research/codex/rejoin-r1/promoted-rejoin/A-peer153-112.bin",
+          "bytes": 135,
+          "sha256": "6a6acefa0532ded0f68e6e14674d2e7e603d9b785a50aa4a860864312f63b5bb"
+        },
+        {
+          "id": "E092",
+          "kind": "local",
+          "path": "local/research/codex/rejoin-r1/promoted-rejoin/B-peer153-97.bin",
+          "bytes": 135,
+          "sha256": "16c93738c88e703181ecefeb4c89e8c336955892fca5934d1b1ef96b808d2c54"
+        },
+        {
+          "id": "E093",
+          "kind": "local",
+          "path": "local/research/codex/rejoin-r1/derived/promoted-rejoin-A-replay.txt",
+          "bytes": 2018,
+          "sha256": "5975363c2f9417f7e5f44ab7372758d635f7da787ef7088dcaf9b56ea2d997cc"
+        },
+        {
+          "id": "E094",
+          "kind": "local",
+          "path": "local/research/codex/rejoin-r1/derived/promoted-rejoin-A-oracle.json",
+          "bytes": 120128,
+          "sha256": "742e34421ae1d83dadbb8fc3ef6a0c4612df2e20bc3f7f22b5ee89e720beaaa4"
+        },
+        {
+          "id": "E095",
+          "kind": "local",
+          "path": "local/research/codex/rejoin-r1/derived/promoted-rejoin-B-replay.txt",
+          "bytes": 1407,
+          "sha256": "413605b695a3021a811c9d09598fa33690dd4a22bd480f65674604e256abcea6"
+        },
+        {
+          "id": "E096",
+          "kind": "local",
+          "path": "local/research/codex/rejoin-r1/derived/promoted-rejoin-B-oracle.json",
+          "bytes": 83602,
+          "sha256": "f2a011768147694ebeccef88cc41b7b6951c36779e8e57ade17d2764441e3d53"
+        },
+        {
+          "id": "E097",
+          "kind": "local",
+          "path": "local/research/codex/rejoin-r1/request-frames/promoted-rejoin/A-F32-86.bin",
+          "bytes": 38,
+          "sha256": "82e134a9a7e0d2c60827c3cd8014bc62e36c975ceaddae434309b10f56fc6c7a"
+        },
+        {
+          "id": "E098",
+          "kind": "local",
+          "path": "local/research/codex/rejoin-r1/request-frames/promoted-rejoin/A-F44-82.bin",
+          "bytes": 49,
+          "sha256": "4a1297c4794c7b6c10e073f92d14b1bb0d707b4f40876fa4efbfb72e52a0025d"
+        },
+        {
+          "id": "E099",
+          "kind": "local",
+          "path": "local/research/codex/rejoin-r1/request-frames/promoted-rejoin/A-F53-95.bin",
+          "bytes": 98,
+          "sha256": "efa360fbb853f445e86050da94129b67eabbe101ecf9c04a0fef8594224edba9"
+        },
+        {
+          "id": "E100",
+          "kind": "local",
+          "path": "local/research/codex/rejoin-r1/request-frames/promoted-rejoin/B-F13-82.bin",
+          "bytes": 49,
+          "sha256": "1746130345929e482c425aa463e6bf34d6da555c86c6474cf235330227f74f47"
+        },
+        {
+          "id": "E101",
+          "kind": "local",
+          "path": "local/research/codex/rejoin-r1/promoted-rejoin/A/before-rejoin.png",
+          "bytes": 150639,
+          "sha256": "4436c38419ee46b6c545640dea5e5f9c94ad2d5e44d1bbe485e4f7e173711eb3"
+        },
+        {
+          "id": "E102",
+          "kind": "local",
+          "path": "local/research/codex/rejoin-r1/promoted-rejoin/A/after-rejoin.png",
+          "bytes": 176264,
+          "sha256": "1f38109020ee0b8d3cec053fb9193f695234f4a230792494bb50c0c6e52d0e63"
+        },
+        {
+          "id": "E103",
+          "kind": "local",
+          "path": "local/research/codex/rejoin-r1/promoted-rejoin/A/after-promoted-clock.png",
+          "bytes": 127975,
+          "sha256": "f8542ee36fafaef5dbd6a4f4b4dca9b013f5bb1285704d15d073f5b05135f4a0"
+        },
+        {
+          "id": "E104",
+          "kind": "local",
+          "path": "local/research/codex/rejoin-r1/promoted-rejoin/A/before-rejoin_ready_ui.png",
+          "bytes": 176448,
+          "sha256": "fdc974c9f4df9d0138a9f0e3863f13cd9203a4f2cac2b1b422bf742026853da5"
+        },
+        {
+          "id": "E105",
+          "kind": "local",
+          "path": "local/research/codex/rejoin-r1/promoted-rejoin/A/before-promoted_start_ui.png",
+          "bytes": 177608,
+          "sha256": "886c4a10293fb6b086942a2e12c6839bc7f49db8c924dfb53bbbad949ef24cf5"
+        },
+        {
+          "id": "E106",
+          "kind": "local",
+          "path": "local/research/codex/rejoin-r1/promoted-rejoin/A/final-both.png",
+          "bytes": 127934,
+          "sha256": "9d87a6642f45cfecb7f475449a1633e12b49ef6aff2a19af367f2860ac1ee41b"
+        },
+        {
+          "id": "E107",
+          "kind": "local",
+          "path": "local/research/codex/rejoin-r1/promoted-rejoin/B/before-rejoin.png",
+          "bytes": 178249,
+          "sha256": "a9baec17dc44872a7e11c36ecfcad3656549bf73699242c01a9ac791c7f08340"
+        },
+        {
+          "id": "E108",
+          "kind": "local",
+          "path": "local/research/codex/rejoin-r1/promoted-rejoin/B/after-rejoin.png",
+          "bytes": 180378,
+          "sha256": "a03b3c7096547a08f60e93261addf3222522e31c18880f2f16ab0fbde11ee0bd"
+        },
+        {
+          "id": "E109",
+          "kind": "local",
+          "path": "local/research/codex/rejoin-r1/promoted-rejoin/B/after-promoted-clock.png",
+          "bytes": 127979,
+          "sha256": "d61c4378ac89ce67e9d5bdab64bd94fcfada2c6f88c1b3dc0f8e199d9f1452ec"
+        },
+        {
+          "id": "E110",
+          "kind": "local",
+          "path": "local/research/codex/rejoin-r1/promoted-rejoin/B/before-rejoin_ready_ui.png",
+          "bytes": 180467,
+          "sha256": "64a96fde6ff63f2d50fb7f26cda039b5fd0bd24c9ca000362331c2c1b326d71d"
+        },
+        {
+          "id": "E111",
+          "kind": "local",
+          "path": "local/research/codex/rejoin-r1/promoted-rejoin/B/before-promoted_start_ui.png",
+          "bytes": 179624,
+          "sha256": "c194f6f9d8faf5cc7de95c8aa9b05300374dbc09c5b25813a5bc0797254cbf47"
+        },
+        {
+          "id": "E112",
+          "kind": "local",
+          "path": "local/research/codex/rejoin-r1/promoted-rejoin/B/final-both.png",
+          "bytes": 127794,
+          "sha256": "4fc93acd97c4067e3c78f8d719fa27de5c380600a00195f646daa496af3ac80e"
+        },
+        {
+          "id": "E113",
+          "kind": "local",
+          "path": "local/research/codex/wine_probe_room_promoted_rejoin.py",
+          "bytes": 68016,
+          "sha256": "d1d55b1a61f6b2267d3780a5d61dd2dfef8a3517b9a89a429a03066dbc5425e5"
+        }
+      ],
+      "delta": {
+        "added": [
+          "Bounded samechannel rejoin andactual newhostBStart afterA rejoinasguest/Ready, full121/99/clockboth.",
+          "Two relatedmeasurements plusraw/native/role/visual/hash;CP034/PR42merge0779bc7 recorded."
+        ],
+        "corrected": [
+          "PriorCP034 limits rejoin/startunmeasured now superseded by these boundedcases; active-match recovery/fullreset remainopen.",
+          "First helper95/u8failedcursor; corrected using existingCP028serializedblob+desired/tail, no client/schema regression.",
+          "Do not hardcodehostslot0: Agueststate0/ready4,Bchief22 and104originB; existing121row hasteam/spawn fields, not roomchiefbits."
+        ],
+        "superseded": [
+          "Boundedrejoinandstartafterpromotion answered; nextcollision/rescue andhostEOF/active-match disconnect/generation/allreset. No gate closed."
+        ]
+      },
+      "blockers": [
+        "Collision/rescue,hostabruptEOF/active-match recovery,stale/generation/allreset/twofullmatchconsistency remainopen.",
+        "Fullauth/profile/cache/codec/reconnect/vanilla/UDPgrammar/relay/NAT/LAN/Internet/K5/K6a remainopen."
+      ],
+      "next_steps": [
+        {
+          "id": "NEXT-ITEM-PICKUP",
+          "task": "KRE-005b",
+          "state": "active",
+          "action": "Continuecollision/rescue andvalidator/generation/stale/allreset; keepatmax/speed/list3/blockvariants/randomdrop/chainmixedowner/3bomb/wallsopen.",
+          "owner": "Codex",
+          "reviewer": "Codex"
+        },
+        {
+          "id": "NEXT-DUO-ROUND",
+          "task": "KRE-005b",
+          "state": "active",
+          "action": "Boundedrejoin/Ready/newhostBStarttoclock answered; nexthostEOF/active-matchdisconnect/collision/rescue andallreset beforeK6a.",
+          "owner": "Codex",
+          "reviewer": "Codex"
+        },
+        {
+          "id": "NEXT-FULL-LOGIN-FIELDS",
+          "task": "KRE-005b",
+          "state": "active",
+          "action": "Fullauth/profile/cache/reconnect/codec/vanilla controls beforeK2/K3;localprefix notauthcompletion.",
+          "owner": "Codex",
+          "reviewer": "Codex"
+        }
+      ],
+      "review": {
+        "status": "waived",
+        "as_of_utc": "2026-10-31T04:02:21.532114+00:00",
+        "reference": "docs/evidence/checkpoints/review-waiver.json",
+        "scope": "Codex solo RE/code/runtime/selfcheck, not independent approval.",
+        "authorization": {
+          "by": "project_owner",
+          "reference": "docs/evidence/checkpoints/review-waiver.json",
+          "reason": "Owner explicitly requested solo without Claude review."
+        }
+      },
+      "docs_sync": [
+        {
+          "path": "README.md",
+          "state": "updated",
+          "reason": "Currentrejoin/promotionStartmilestone/limits,PR42merge/snapshot."
+        },
+        {
+          "path": "docs/PLAN.md",
+          "state": "updated",
+          "reason": "Progress/map/nextcollision/rescue/activefailure; no gate closed."
+        },
+        {
+          "path": "docs/PROTOCOL.md",
+          "state": "updated",
+          "reason": "Canonicalboundedrejoin/role/Ready/Start/clockcontract andlimits; CP034 historicalunknown superseded."
+        },
+        {
+          "path": "docs/RESEARCH.md",
+          "state": "updated",
+          "reason": "Rejoin/start answered; nextcollision/rescue/hostEOF/activefailure/reset."
+        },
+        {
+          "path": "docs/evidence/room-rejoin/README.md",
+          "state": "updated",
+          "reason": "Tworun/native/role/input/6images/recipe/hash/limits."
         }
       ]
     }
