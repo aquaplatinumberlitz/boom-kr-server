@@ -1,7 +1,7 @@
 # Kế hoạch server giả lập KR 00967
 
 Nguồn chuẩn của project `boom-kr-server`; bản nhập từ plan đã được dsh1/dsh2 review tại `1eee46d`.
-Cập nhật31/10 JST (CP042, trước tích hợp): old165/item index reuse đã có control/stat hai client; policy claim/ticket theo vòng được triển khai; toàn reset/validator/variants chưa full match. K0/K1, K2/K3 còn từng phần; bảng gate là scope nghiệm thu, chưa phải checklist đã pass.
+Cập nhật31/10 JST (CP043, trước tích hợp): old159 khi serial local tái dùng đã đo mất đồng bộ ID giữa owner/remote; toàn reset/validator/variants chưa full match. K0/K1, K2/K3 còn từng phần; bảng gate là scope nghiệm thu, chưa phải checklist đã pass.
 
 
 ### Mục tiêu, baseline và phạm vi
@@ -37,19 +37,20 @@ với client Rust không chứng minh có thể điều khiển client KR bằng
 
 ### Tiến độ hiện hành theo bằng chứng
 
-| Task/mốc | Trạng thái tại CP042 | Nguồn chuẩn |
+| Task/mốc | Trạng thái tại CP043 | Nguồn chuẩn |
 |---|---|---|
 | KRE-004/issue6 | Đã review/merge PR7 và đóng issue:recipe r1 đến local accept;không phải full K1 | [Wine r1](evidence/wine/README.md) |
 | Bootstrap reply | PR8 đã merge;debugger ProcessPatchreturn1,không ép success | [bootstrap evidence](evidence/bootstrap-wire/README.md) |
 | KRE-005a/issue9,R2 | PR10 đã merge:3 cold start cửa sổ/second accept;issue9 còn mở | [R2 evidence](evidence/wine-r2/README.md) |
 | WCP hai-reply | Run CP001 là lịch sử chưa C→S; CP006 đã đo request đầu trên copy tham số hóa | [PROTOCOL](PROTOCOL.md#wcp),[WCP evidence](evidence/wcp/README.md) |
-| KRE-005b/issue14 | CP006–041 đã merge; CP042 đo old165/index reuse qua vòng; fullround/authority/full auth còn mở | [Q-023](RESEARCH.md#q-023), [evidence](evidence/item-generation/README.md) |
+| KRE-005b/issue14 | CP006–042 đã merge; CP043 đo old159/serial reuse và mất đồng bộ ID; fullround/authority/full auth còn mở | [Q-023](RESEARCH.md#q-023), [evidence](evidence/late-bomb-confirm/README.md) |
 | K0/K1 | Chưa nghiệm thu toàn gate;Windows vanilla/control ownership và các điều kiện còn thiếu giữ mở | Gate dưới,[Q-022](RESEARCH.md) |
 | K2a/K2 | Primitive/WCP từng phần; request auth đã capture/native replay, phản hồi lỗi đã dispatch; full codec/reconnect và gate chưa pass | [PROTOCOL](PROTOCOL.md#login-auth),[Q-023](RESEARCH.md#q-023) |
 | K3 | Copy chẩn đoán đã vẽ UI sảnh và đóng notice; chưa nghiệm thu identity/cache/codec đủ gate | [Contract sảnh](PROTOCOL.md#channel-lobby) |
 | K4–K7 | CP039–040 có hai vòng statepeer/result và phục hồi EOF; CP041 có stale158/ID reuse, fence job local. Block/chain variants/generation/disconnect/authority chưa nghiệm thu. Chưa K6a/LAN/Internet | Không có phần trăm ước lượng |
 
-Thứ tự tiếp: pending159 qua vòng kế, timer hủy khi abort, peerqueue/reset và giới hạn nhận124 trùng catalog trước K6a;
+Thứ tự tiếp: timer hủy khi abort, peerqueue/reset và giới hạn124 trùng catalog trước K6a;
+CP043 đã đo159 cũ tới khi serial local dùng lại, không tìm lại receiver/pool compare.
 CP041–042 trả lời hẹp stale158/ID và165/index reuse; không tìm lại nhánh nổ hoặc coi fence job local là toàn validator.
 Phân biệt client mới C sau host EOF với reconnect/resume cùng account. Chain nhiều owner/ba bom/vật cản và runtime tại max/speed còn thiếu.
 CP032 đã đo hai block/list2/reveal/nhặt và reset stat/item hẹp ở
@@ -66,7 +67,7 @@ Không săn timing vô hạn; ưu tiên consistency/result/reset của ca hai cl
 Chu kỳ docs/audit theo [workflow](evidence/checkpoints/README.md);
 counter ở [manifest](evidence/checkpoints/manifest.json). Không tạo plan theo phiên.
 
-### Bản đồ đường chạy, CP042
+### Bản đồ đường chạy, CP043
 
 | Bước | Quan sát/bước tiếp |
 |---|---|
@@ -96,6 +97,7 @@ counter ở [manifest](evidence/checkpoints/manifest.json). Không tạo plan th
 | Sau host EOF → client mới → trận kế | CP040 C identity3/slot0 Join/Ready, B chủ slot1 gửi104, B/C đọc121/clock/movement; [contract](PROTOCOL.md#abort-rejoin). Guest EOF control/policy trả A về phòng/xóa B đo riêng; không ghép thành full match. |
 | Qua vòng mới → payload nổ cũ | CP041 unique ID control không nổ; reused ID cũ158 trúng entity mới trước timer. [Contract/fence local](PROTOCOL.md#round-generation); item/pending/UDP generation còn mở. |
 | Index item qua vòng → xác nhận cũ | CP042 old165 cộng capacity trước124 mới khi index17 tái dùng; đổi index18 không cộng. [Contract/claim policy](PROTOCOL.md#item-generation); full124validator/pending/UDP còn mở. |
+| Xác nhận bom cũ → serial dùng lại | CP043 old159 bindID1 vào bom vòng2 trên A, current159ID2 trả0; B nổID2/Akhông, chưa result vòng2; fence oldjob giữ hai vòng chuẩn. [Contract](PROTOCOL.md#late-bomb-confirm); không gọi ca lệch này pass trận. |
 
 RE động là chính; gom phép đo thành checkpoint mốc/blocker, audit định kỳ theo workflow.
 Review độc lập được chủ dự án miễn từ28/10; Codex tự kiểm, giữ PR và điều kiện bằng chứng của gate.

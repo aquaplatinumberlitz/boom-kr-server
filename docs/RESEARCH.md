@@ -174,6 +174,11 @@ CP042 có [old165/index reuse và stat trước124 mới](PROTOCOL.md#item-gener
 [control/hash](evidence/item-generation/README.md). Claim/ticket local là design; chưa giải được124 cũ
 có toàn field khớp catalog mới. Không tìm lại receiver165 hoặc coi duplicate cùng vòng là proof qua vòng.
 
+CP042/[PR50](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/50) đã merge `ed47c97`.
+CP043 đo [159 cũ khi serial local trùng](PROTOCOL.md#late-bomb-confirm),
+[recipe/control/hash](evidence/late-bomb-confirm/README.md). ID cấp tăng không đủ khi old159 khớp pending serial;
+ca chèn gói cũ mất đồng bộ, không có result vòng2, phải giữ như outcome riêng.
+
 **Bước tiếp, Codex RE/tự kiểm:**
 
 1. **NEXT-DUO-ROUND:** rời phòng/xóa ghost slot/promotion/guest EOF/về sảnh đã đo hẹp ở CP034;
@@ -181,8 +186,8 @@ có toàn field khớp catalog mới. Không tìm lại receiver165 hoặc coi d
    CP039 đã nối result/return hai vòng sau statepeer nhất quán và hostEOF→forfeitreturn/roomcleanup/promotion.
    CP040 đã đo B chủ mới gửi104 với C mới Join/Ready sau abort; guest EOF control/policy trả A về phòng, xóa B/chief A giữ nguyên đã đo riêng.
    CP041 đã kiểm hai vòng với stale158 và ID cấp tăng/tái dùng; nhánh nổ không cần tìm lại.
-   CP042 có old165/index reuse và policy claim/ticket local. Tiếp pending159 tới trễ qua vòng mới,
-   timer hủy khi abort, peerqueue/reset và giới hạn124 trùng catalog trước K6a;
+   CP042 có old165/index reuse và policy claim/ticket local; CP043 đã đo159 cũ/serial reuse làm sai ID giữa A/B.
+   Tiếp timer hủy khi abort, peerqueue/reset và giới hạn124 trùng catalog trước K6a;
    reconnect/resume cùng account vẫn chưa đo. Không tự gọi sub34 là ACK hoặc21 là validator.
 2. **NEXT-ITEM-PICKUP:** CP037 kim tự thoát/peer, CP038 có [trap lần hai khi hết kim](PROTOCOL.md#needle-repeat).
    Exact sameupdate/both-eligible runtime, đảo thứ tự danh sách và Ctrl cạnh tranh là kiểm bổ sung,

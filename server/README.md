@@ -13,6 +13,10 @@ mới khi chạy. `register()` không tự chọn ID; nó từ chối ID đang a
 deadline, chain đã xử lý tại client, UDP, packet đã gửi hoặc allocator wrap/quarantine. Các phạm vi đó
 vẫn cần kiểm riêng; không gọi module này là toàn validator hoặc đủ đóng K5/K6.
 
+CP043 đo [159 cũ khi serial local trùng](../docs/PROTOCOL.md#late-bomb-confirm): caller cũng phải kiểm
+ticket gốc trước phát159. `rejection()` chỉ kiểm lifetime; duplicate159 trong cùng generation cần
+quy tắc riêng, không consume ticket timer chỉ để gửi ACK.
+
 Kiểm policy: `python3 -m unittest server.test_round_fence`.
 
 `item_claims.py` giữ catalog item hiện tại, kiểm slot gắn socket/context/index/hàng/cột/kind,
