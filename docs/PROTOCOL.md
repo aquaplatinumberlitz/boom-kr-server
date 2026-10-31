@@ -1,6 +1,6 @@
 # KR 00967 — contract tương thích client gốc
 
-Revision kr-legacy-contract-r1; cập nhật31/10/2026 JST (CP042).
+Revision kr-legacy-contract-r1; cập nhật31/10/2026 JST (CP043).
 **Contract có bằng chứng từng phần; chưa nghiệm thu full codec K2**.
 Lộ trình và thứ tự task chỉ giữ ở [REWRITE_PLAN — KRE](PLAN.md).
 Đây là contract của repo server KR. ADR0009 của bản viết lại là nguồn lịch sử để so sánh;
@@ -1636,6 +1636,50 @@ distance/tick/session/actor-state, pending159, timer abort và UDP/peerqueue cò
 Không gọi module này là toàn validator hoặc nghiệm thu K5/K6a/LAN/Internet.
 [Bước tiếp](RESEARCH.md#q-023).
 
+<a id="late-bomb-confirm"></a>
+### 159 cũ tới khi serial local được dùng lại — CP043
+
+**kr_runtime/kr_static confirmed hẹp trên diagnostic copy Wine**;
+[recipe/control/hash](evidence/late-bomb-confirm/README.md). Không thêm patch/ép state.
+Giữ ca hai client/8connections/IDs1,2/slots0,1/session1, hai Start/clock và layout582 rỗng,
+mỗi vòng một actual118 của A có owner0/serial0. ID hiện tại do stub cấp1 vòng1,2 vòng2;
+fuse6s/outcome/delay là **emu_choice/design**.
+
+`no-old159` nhận159 hiện tại mỗi vòng, full39/39/errors0, A bindID1/2;158 cùng ID lookup đúng
+entity159 và nổ cả hai. Hai actual17/19, peerstate1 trước175, hai175/180/phòng.
+`old159-first` chỉ thêm payload159 vòng1, mã hóa lại seq hiện tại, sau actual118 vòng2 và ngay
+trước159 hiện tại trên từng TCP stream. Cả hai159 vòng2 đọc39/39/errors0; không lỗi CRC/seq/parser.
+
+| Receiver | 159 cũ ID1/serial0 | 159 hiện tại ID2/serial0 | Timer158 hiện tại ID2 |
+|---|---|---|---|
+| A, owner/local prediction |Compare localserial0/incoming0, bind ID1 vào entity dự đoán vòng2 |24 compare samples localserialFFFFFFFF/incoming0, entity return0, không bindID2 |Đọc đủ13 nhưng không tới lookup-return/kind0 |
+| B, remote |Trả entity khác0 |Trả entity thứ hai khác0, khác pointer của159 cũ |Lookup ID2 đúng entity hiện tại, kind0/cleanup |
+
+Vòng2 không có actualA17/19, không175/180 tiếp; ảnh cuối cả hai còn scene trận.
+Ảnh B ngay sau timer có bubble cho A trong khi A không có; ảnh muộn có thể đổi animation/state,
+chưa snapshot secure tại mốc đó nên không gán enum trap/death kéo dài cho remote từ ảnh.
+Đây là ca **mất đồng bộ có chủ ý**, không hai trận hoàn tất. Không bịa deathreport hoặc sửa bind để ép kết quả.
+ID tăng1→2 đã tránh old158 trong CP041 nhưng không đủ chống old159 khi serial local trùng.
+
+**Giải thích tĩnh có mục tiêu:** handler159 E5E8F0 đưa serialu32 vào info+00/ID vào info+0C.
+AEF700 localpool duyệt actor bomb, AEF7AB so getter B37FC0 với65A340(info+00);
+nhánh khớp có đường AEF8DC→B37880 bindID. Runtime đo nhánh AEF7AB trên A như bảng;
+không suy AEF814 hoặc mọi mode/pool cùng hành vi. Giá trịFFFFFFFF là getter sample trên các
+candidate được xét sau159 cũ, chưa gán nghĩa cho toàn pending table hoặc phục hồi mọi reset guard.
+Remote B đi đường khác; không bắt buộc B37880 phải hit để công nhận entity/lookup runtime.
+
+`fenced-old159` giữ oldjob từ vòng1 nhưng kiểm ticket gốc ở generation2, nhận `stale_round`
+và không phát159 cũ.159 hiện tại/ID2 trả entity/bind đúng A,158/ID2 kind0 trên cả hai;
+hai actual17/19, peerstate1 trước175 và hai175/180/phòng như control. Đây là runtime áp dụng
+policy local sẵn có, không sửa client hoặc phục hồi epoch native.
+
+Áp dụng [RoundFence](../server/round_fence.py) cho việc phát159 chưa gửi cần giữ ticket gốc từ
+request/round ban đầu và kiểm `rejection()` dưới owner/lock ngay trước send. Không tạo ticket mới
+từ ID/serial đang active để “hợp thức hóa” job cũ. Fence là policy local, không field epoch wire;
+kiểm lifetime trước159 không tự chặn duplicate159 trong cùng generation hoặc packet đã phát/UDP.
+Generation/ID wrap/abort timer và fullvalidator vẫn có scope riêng.
+**Chưa fullmatch/K5/K6a/LAN/Internet**. [Bước tiếp](RESEARCH.md#q-023).
+
 ### Giới hạn và correction WCP lịch sử
 
 Fixture opaque/zero/empty và prefix69 là emu_choice đã được consumer chấp nhận trong phép thử,
@@ -1667,14 +1711,14 @@ liệt kê và phân biệt với nguyên bản trong mọi demo.
 
 ### Authority matrix hiện hành và gate review
 
-Bảng này tổng hợp bằng chứng từng phần đến CP042; chưa phải toàn contract server gốc. Mỗi hàng khi
+Bảng này tổng hợp bằng chứng từng phần đến CP043; chưa phải toàn contract server gốc. Mỗi hàng khi
 triển khai phải bổ sung riêng **creator, simulator, validator, broadcaster, peer-editable state**, với
 locator/trace và trạng thái từng ô; những vai trò không nêu dưới đây hiện `unknown` cho KR.
 
 | Hành vi | Đã thấy trong KR | Phần cần đóng trước demo dùng hành vi đó |
 |---|---|---|
 | Movement | CP027 hai client thấy movement hai chiều; [phạm vi](#peer-duo);183 vẫn chỉ ghost | Full schema input/update/correction, validator và quyền sửa vị trí của peer |
-| Bomb place/ID | CP027 hai owner/ID chung1..4 tạo trên cả hai client; [phạm vi](#peer-duo); lặp/cũ CP025 | CP041 có [stale158/ID reuse và fence job local](#round-generation); allocator/rollover/concurrent/race/toàn generation và authority ngoài policy thử còn mở |
+| Bomb place/ID | CP027 hai owner/ID chung1..4 tạo trên cả hai client; [phạm vi](#peer-duo); lặp/cũ CP025 | CP041 có [stale158/ID reuse và fence job local](#round-generation), CP043 có [old159/serial reuse](#late-bomb-confirm); allocator/rollover/concurrent/race/toàn generation và authority ngoài policy thử còn mở |
 | Explode/chain | CP033 hai bom B liền kề từ một158/ID1, control cách hai ô/replay sau chain; [contract](#bomb-chain) | Nhiều owner/ba bom/vật cản/race/generation và authority server gốc còn thiếu |
 | Block destroy/item reveal | CP032 list2→FixedBox,158→hai view vỡ/reveal→124/165/stat; report142 từ cả hai; [contract](#hidden-items) | Drop algorithm/server validator, variants/chain và phép loại transport riêng còn thiếu |
 | Item placement/pickup | CP030 nhặt/tranh index; CP031 stat/clamp/power; CP032 item ẩn và reset field hẹp; [contract](#hidden-items) | CP042 có [old165/index reuse](#item-generation); runtime max/speed, drop/đảo winner, toàn124validator/generation/reset còn thiếu |

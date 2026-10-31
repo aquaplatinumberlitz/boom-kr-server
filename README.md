@@ -22,18 +22,18 @@ boom-kr-server/
 
 ## Đang làm
 
-CP042: **165 xác nhận nhặt cũ có thể cộng item ở vòng mới khi tái dùng index**,
-trước cả request124 mới. Control đổi index không cộng; stat được kiểm trực tiếp trên hai client.
-[Contract/phạm vi](docs/PROTOCOL.md#item-generation), [recipe/control/hash](docs/evidence/item-generation/README.md).
-`server/item_claims.py` bổ sung policy catalog/claim một lần và ticket xác nhận theo vòng.
+CP043: **159 cũ có thể bind nhầm ID cho bom dự đoán vòng mới khi serial local dùng lại**,
+khiến timer ID hiện tại nổ ở B nhưng không ở A. Control và ca fence loại job159 cũ đều đủ hai vòng.
+[Contract/phạm vi](docs/PROTOCOL.md#late-bomb-confirm), [recipe/control/hash](docs/evidence/late-bomb-confirm/README.md).
+CP041–042 đã có [fence job bom](docs/PROTOCOL.md#round-generation) và [claim item](docs/PROTOCOL.md#item-generation).
 
 Đây là thí nghiệm copy chẩn đoán Wine; **chưa nghiệm thu trận hoàn chỉnh/K6a**.
-Policy local chưa phân biệt được124 cũ trùng toàn catalog hiện tại; pending159, timer abort,
-peerqueue và full auth/cache/codec còn thiếu. [Bước tiếp](docs/RESEARCH.md#q-023). Chưa LAN/Internet.
+Timer abort, peerqueue, fullvalidator và full auth/cache/codec còn thiếu; chưa LAN/Internet.
+[Bước tiếp](docs/RESEARCH.md#q-023).
 
-CP041 đã merge [PR49](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/49) tại `97320ca`.
-CP042 là snapshot trước tích hợp trên nhánh `kre/item-generation-runtime`.
-Codex tự kiểm, review độc lập waived. Audit gần nhất **AUD013/CP040**, audit kế **CP044**.
+CP042 đã merge [PR50](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/50) tại `ed47c97`.
+CP043 là snapshot trước tích hợp trên nhánh `kre/late-bomb-confirmation`.
+Codex tự kiểm, review độc lập waived. Audit gần nhất **AUD013/CP040**, audit định kỳ kế **CP044**.
 
 Checkpoint bền vững: [manifest](docs/evidence/checkpoints/manifest.json).
 Quy trình ghi chép/review/audit: [checkpoint workflow](docs/evidence/checkpoints/README.md).
