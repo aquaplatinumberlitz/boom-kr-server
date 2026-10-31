@@ -22,18 +22,20 @@ boom-kr-server/
 
 ## Đang làm
 
-CP039: **hai vòng thử đã có trap/death nhất quán hai phía, kết quả rồi về phòng** trên cùng kết nối.
-Report21 không xuất hiện sau175 trong ca này; policy hostEOF cũng đưa client còn lại về phòng,
-xóa slot cũ/chuyển chủ. [Contract/giới hạn](docs/PROTOCOL.md#round-finish),
-[recipe/control/hash](docs/evidence/round-finish/README.md).
+CP040: **sau host ngắt kết nối, chủ mới B đã Start trận với client mới C**;
+C Join/Ready thật, B gửi104, cả hai đọc đủ121, chạy clock và thấy movement của nhau.
+Guest EOF có control riêng và policy đưa host còn lại về phòng/xóa guest.
+[Contract/phạm vi](docs/PROTOCOL.md#abort-rejoin), [recipe/control/hash](docs/evidence/abort-rejoin/README.md).
+CP039 đã đo hai vòng trap/death → kết quả → về phòng trên cùng kết nối;
+[nguồn chuẩn](docs/PROTOCOL.md#round-finish).
 
 Đây là các thí nghiệm trên copy chẩn đoán Wine; **chưa nghiệm thu trận hoàn chỉnh/K6a**.
-Validator/toàn reset, các biến thể disconnect và full auth/cache còn thiếu; report21 semantics chưa giải hết.
-Chưa LAN/Internet. [Bước tiếp](docs/RESEARCH.md#q-023).
+C là identity local mới, chưa reconnect A. Validator/generation/toàn reset và full auth/cache còn thiếu;
+chưa LAN/Internet. [Bước tiếp](docs/RESEARCH.md#q-023).
 
-CP038 đã merge [PR46](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/46) tại `1fb2c66`.
-CP039 là snapshot trước tích hợp; PR nhánh `kre/round-result-runtime` giữ trạng thái tích hợp.
-Codex tự kiểm, review độc lập waived. **AUD011/CP036** định kỳ đã hoàn tất; AUD012 kiểm correction CP037; audit định kỳ kế **CP040**.
+CP039 đã merge [PR47](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/47) tại `e19bc9e`.
+CP040 là thí nghiệm trước tích hợp trên nhánh `kre/abort-rejoin-runtime`.
+Codex tự kiểm, review độc lập waived. Đã audit định kỳ **AUD013/CP040**; audit định kỳ kế **CP044**. Counter/biên bản ở manifest.
 
 Checkpoint bền vững: [manifest](docs/evidence/checkpoints/manifest.json).
 Quy trình ghi chép/review/audit: [checkpoint workflow](docs/evidence/checkpoints/README.md).
