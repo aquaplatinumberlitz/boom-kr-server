@@ -22,18 +22,18 @@ boom-kr-server/
 
 ## Đang làm
 
-CP032: **đã phá gạch, hiện và nhặt item ẩn trên hai client** trong Wine cô lập.
-Đã đo lại việc gắn block/item và reset capacity/Fire trước lần Start thứ hai.
-Run sửa policy đã có hai chu kỳ kết quả/về phòng ở cả hai client; phạm vi reset vẫn giới hạn ở các field đã đo.
-[Contract và giới hạn](docs/PROTOCOL.md#hidden-items), [bằng chứng](docs/evidence/hidden-items/README.md).
+CP033: **đã kiểm nổ dây chuyền hai bom liền kề trên cả hai client** trong Wine cô lập:
+một event nổ ID1 xử lý cả hai bom; đối chứng cách hai ô giữ lại bom thứ hai.
+[Contract và giới hạn](docs/PROTOCOL.md#bomb-chain), [bằng chứng](docs/evidence/bomb-chain/README.md).
+Item ẩn và reset stat/item qua hai chu kỳ thử đã đo tại [CP032](docs/PROTOCOL.md#hidden-items).
 
 Đây là profile thử local với rank/policy do stub chọn; **chưa nghiệm thu trận hoàn chỉnh/K6a**.
-Runtime nhặt tại max, speed, block variants/collision/chain/rescue, validator/reset/disconnect
+Runtime nhặt tại max, speed, block/chain variants, collision/rescue, validator/reset/disconnect
 và full auth/cache còn thiếu. Trap/death hai chiều đã kiểm hẹp ở [CP029](docs/PROTOCOL.md#peer-events).
 Chưa LAN/Internet. [Bước tiếp](docs/RESEARCH.md#q-023).
 
-CP031 đã merge [PR39](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/39) tại `4de4e2e`.
-CP032 là snapshot trước tích hợp; PR nhánh `kre/hidden-item-runtime` giữ trạng thái tích hợp.
+CP032 đã merge [PR40](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/40) tại `fe46beb`.
+CP033 là snapshot trước tích hợp; PR nhánh `kre/chain-runtime` giữ trạng thái tích hợp.
 Codex tự kiểm, review độc lập waived. **AUD010/CP032** audit định kỳ hoàn tất; audit kế **CP036**.
 
 Checkpoint bền vững: [manifest](docs/evidence/checkpoints/manifest.json).

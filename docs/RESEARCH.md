@@ -129,12 +129,15 @@ sửa mapping power; [nguồn chuẩn/giới hạn](PROTOCOL.md#item-effects),
 CP032 đo block/list2→reveal/124/165/stat và khởi tạo lại vòng; contract ở
 [PROTOCOL](PROTOCOL.md#hidden-items), raw/control ở [evidence](evidence/hidden-items/README.md).
 Phân biệt run chờ sai origin với run sửa policy; review độc lập waived.
+CP032/PR40 đã merge `fe46beb`. CP033 đo chain hai bom liền kề/cách hai ô và replay sau chain;
+[contract](PROTOCOL.md#bomb-chain), [raw/control](evidence/bomb-chain/README.md). Không nâng toàn gate.
 
 **Bước tiếp, Codex RE/tự kiểm:**
 
 1. **NEXT-ITEM-PICKUP:** list2/FixedBox/reveal/nhặt và stat đầu vòng kế đã được đo hẹp ở CP032;
-   không tìm lại receiver. Tiếp theo tích hợp collision/chain/rescue và kiểm validator/generation/stale,
-   host-leave/disconnect/reset theo đường đang chạy. Runtime tại max/speed, list3, loại block khác,
+   không tìm lại receiver. CP033 đã có chain hai bom một owner; tiếp theo room leave/host-leave/
+   disconnect từ input thật, collision/rescue và validator/generation/stale/reset. Runtime tại max/speed,
+   chain nhiều owner/ba bom/vật cản, list3, loại block khác,
    đảo winner và stale index qua round còn thiếu. Giữ118.field10→159.field8 trong harness mới.
    Authority/giới hạn chỉ giữ ở contract; không biến report142 từ cả hai thành quyết định server gốc.
 2. **NEXT-DUO-ROUND:** receiver170/17,19 và boundeddeath mismatch đã có lời giải theo contract;
@@ -145,7 +148,7 @@ Phân biệt run chờ sai origin với run sửa policy; review độc lập wa
    chưa LAN/Internet. Hai chu kỳ thử và forwardreport không xác thực client report hoặc đóng K5/K6.
    104/95bodygrowth, serialrollover/allocator/concurrent/optionalflags, Antarctic timing giữ scope riêng.
 
-CP029–031 raw/record bất biến; CP032 giữ control không158 và ca hai vòng chờ sai origin làm lịch sử.
+CP029–032 raw/record bất biến; CP032 giữ control không158 và ca hai vòng chờ sai origin làm lịch sử.
 Không patch thêm/ép state bằng GDB. `E9E660` là nhánh kind0 bom, không phải receiver pickup;
 layout/request/confirm và stat Bomb/Fire mới đã đo riêng. Clamp native chưa thay runtime tại max.
 Hai item ẩn đã đo không phục hồi thuật toán random drop hoặc toàn validator. Rank/outcome/fuse/timing
@@ -159,7 +162,7 @@ oneclickuser/+E9C/token_2/count2/vanilla còn mở. AUD010/CP032 audit định k
 | Q-023 / KRE-P1 codec | open | Codex RE/tự kiểm | CP015 có socket kênh mới, native replay theo từng kết nối, schema17/count0 và nhận241 | Full result0/codec/reset theo bước trên; gate K2 còn mở |
 | Q-024 / KRE-P1 login/kênh | open | Codex RE/tự kiểm | UI sảnh hết notice17/241; CP020 phục hồi inputID local, tên/profile phòng có fixture, chưa full auth/sảnh identity | Full identity/user/cache và cold/warm/reconnect K3; không gọi auth Nexon thật |
 | Q-025 / KRE-P1 room/load | open | Codex RE/tự kiểm | CP028 Acreate81/86,Bjoin82/87,Ready95/110,Start104/121; cùng session1/hai vòng thử; [phạm vi](PROTOCOL.md#duo-room-round) | Password/error/unready/leave/host và load-barrier variants, collision/reset/104growth/cache, nghiệm thu K4 |
-| Q-026 / KRE-P1 authority/trận | open | Codex RE/tự kiểm | CP032 hai block/item ẩn/reveal/nhặt và stat reset hẹp; [phạm vi](PROTOCOL.md#hidden-items) | Drop algorithm, block variants/chain/rescue, runtime tại max/speed/validator/result; K5 một chu kỳ hoàn chỉnh, không lấy packet183 ghost làm mover người sống |
+| Q-026 / KRE-P1 authority/trận | open | Codex RE/tự kiểm | CP032 hidden item/reset hẹp; CP033 chain hai bom/controls/replay; [phạm vi](PROTOCOL.md#bomb-chain) | Drop algorithm, block/chain variants/rescue, runtime tại max/speed/validator/result; K5 một chu kỳ hoàn chỉnh, không lấy packet183 ghost làm mover người sống |
 | Q-027 / KRE-P1 peer | open | Codex RE/tự kiểm | CP027 movement/bom, CP029 trap/death, CP030 tranh item, CP032 reveal/stat và vòng kế; [giới hạn](PROTOCOL.md#hidden-items) | Full grammar/key/slot/reliability/relay, stale/generation/disconnect/variants và toàn reset trước K6 |
 | Q-028 / KRE-P2 profile/core | open | Codex/tự kiểm | Core Rust và policy V1 có sẵn, nhưng client gốc không biết ADR0009 | Sau audit Q-026/027, quyết định giữ lai/relay/shadow core hay authoritative được client hỗ trợ; profile emu có provenance, không sửa V1 implicit |
 | Q-029 / KRE-P2 vận hành | open | Codex/tự kiểm | CP029 có statepeer sau170 trước175 và hai chu kỳ thử; [giới hạn](PROTOCOL.md#peer-events); chưa fullmatch/K6a | K7 bốn client, malformed/stale/duplicate/race/disconnect/restart, bounds/resource limits, Linux package, patch manifest và README tái lập |
