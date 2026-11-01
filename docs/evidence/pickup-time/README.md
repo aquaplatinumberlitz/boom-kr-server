@@ -2,7 +2,7 @@
 
 Baseline CP054/PR69 merge `69df506cfd32c2898abb53f83d4b1e14a4c287f0`;
 KRE-018/[issue70](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/70), Codex solo,
-review [waived](../checkpoints/review-waiver.json), tự kiểm/chờ PR.
+review [waived](../checkpoints/review-waiver.json), tự kiểm; trạng thái tích hợp ở [PR71](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/71).
 [Contract](../../PROTOCOL.md#pickup-tick), [gap/phép thử](../../RESEARCH.md#gap-floor-pickup),
 [thứ tự duy nhất](../../PLAN.md#current-order). Raw `local/research/codex/pickup-time-r1/`.
 

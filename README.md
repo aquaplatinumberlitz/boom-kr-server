@@ -36,7 +36,7 @@ tiếp actorstate/forged-current-key. Chưa nghiệm thu hai trận đầy đủ
 membership/auth/validator/cache/codec/reset tổng quát; runtime trên Wine copy chẩn đoán.
 
 CP054 đã merge [PR69](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/69) tại `69df506`.
-CP055 tự kiểm, chờ PR; review độc lập [waived](docs/evidence/checkpoints/review-waiver.json).
+CP055 tự kiểm/integration theo [PR71](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/71); review độc lập [waived](docs/evidence/checkpoints/review-waiver.json).
 Audit **AUD016/CP052**, audit kế **CP056**.
 [Yêu cầu chủ dự án](docs/evidence/owner-directives/continuous-work.json): tiếp tục ngay việc kế trong
 PLAN sau mỗi checkpoint/commit/PR, không tự dừng/chờ nhắc.
