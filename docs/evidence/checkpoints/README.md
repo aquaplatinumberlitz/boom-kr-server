@@ -77,3 +77,11 @@ Checker không đọc hiểu disassembly,suy diễn kiến thức,xác nhận ng
 Fragment link chỉ kiểm file,không kiểm anchor;semantic sync do audit/reviewer.
 Tests tools/test_checkpoints.py là schema/negative cases,không phải protocol oracle.
 Bàn giao ghi ID/counter,audit kế,pending,kết quả kiểm,commit/PR,blocker.
+
+
+Từ CP048, tài liệu repository `.md` đã được pin ở checkpoint cũ có thể tiếp tục chỉnh hiện trạng.
+Nếu bytes hiện tại khác, checker phải tìm **đúng size/SHA lịch sử trong Git** rồi báo rõ
+`HISTORICAL DOC VERIFIED` kèm revision; không dùng file hiện tại thay bằng chứng cũ. Không tìm
+được bytes cũ vẫn lỗi. Quy tắc này chỉ cho documentation repository, không cho code/raw/binary/
+local evidence; record cũ không sửa, không nới hash hoặc tự suy ngữ nghĩa đồng bộ. Clone thiếu
+Git blob cần khôi phục lịch sử để kiểm, không tạo bytes thay thế từ docs mới.

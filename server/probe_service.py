@@ -1,0 +1,415 @@
+"""Fixture-backed KR diagnostic service, one serialized owner, two local clients.
+
+Run as ``python3 -m server.probe_service``. Authentication/roster/map/rank bodies
+are explicitly synthetic profile fixtures. Accept order assigns the two test
+identities: four connections for A, then four for B. Not a public login server.
+No Wine/UI automation is imported. The caller supplies network isolation.
+"""
+
+import argparse
+import hashlib
+import json
+from pathlib import Path
+import selectors
+import signal
+import socket
+import struct
+import time
+
+from server import probe_codec as codec
+from server.item_claims import ItemSpec
+from server.probe_room import ProbeRoom
+
+
+class FixtureProfile:
+    def __init__(self, path: Path):
+        self.data = json.loads(path.read_text())
+        if self.data.get('schema') != 'kr-probe-profile-v1':
+            raise ValueError('unsupported profile')
+        self.frames = {}
+        for name, meta in self.data['fixtures'].items():
+            raw = Path(meta['path']).read_bytes()
+            if len(raw) != meta['bytes'] or hashlib.sha256(raw).hexdigest() != meta['sha256']:
+                raise ValueError(f'fixture hash mismatch: {name}')
+            if not 1 <= len(raw) <= 65536:
+                raise ValueError('unsupported fixture size')
+            self.frames[name] = raw
+            if meta['sequence'] is not None:
+                try:
+                    codec.frame_body(raw, meta['sequence'])
+                except ValueError as error:
+                    raise ValueError(f'invalid fixture {name}: {error}') from error
+
+    def raw(self, name):
+        return self.frames[name]
+
+    def body(self, name):
+        return codec.frame_body(self.raw(name), self.data['fixtures'][name]['sequence'])
+
+
+class ProbeService:
+    def __init__(self, profile: FixtureProfile, out: Path, proxy_ports: dict):
+        self.profile, self.out, self.proxy_ports = profile, out, proxy_ports
+        self.room = ProbeRoom([ItemSpec(**item) for item in profile.data['items']],
+                              profile.data['initial_key'])
+        self.selector = selectors.DefaultSelector()
+        self.connections, self.events, self.jobs = {}, [], []
+        self.channels = {}
+        self.closed = False
+        self.round = {'index': 0}
+        self.state = {'schema': 'kr-probe-service-v1', 'tcp_events': self.events,
+                      'round_bombs': [], 'event_reports': [], 'round_history': [],
+                      'item_requests': [], 'policy_events': [], 'errors': [],
+                      'source': 'emu_choice', 'profile': profile.data,
+                      'limits': 'Fixture auth/roster/rank, loopback-only, two sequential identities; no fullmatch gate.'}
+        self.state['policy_sources'] = []
+        for filename in ['probe_service.py', 'probe_codec.py', 'probe_room.py', 'round_fence.py',
+                         'item_claims.py', 'udp_round_keys.py']:
+            path = Path(__file__).with_name(filename)
+            self.state['policy_sources'].append({'path': str(path.resolve()),
+                                                 'sha256': hashlib.sha256(path.read_bytes()).hexdigest()})
+
+    def peers(self, marker='map_response_sent'):
+        return [event for event in self.events if event.get('reply_ordinal') == 4 and event.get(marker)]
+
+    def send_raw(self, event, raw):
+        self.connections[event['global_ordinal']]['socket'].sendall(raw)
+
+    def send(self, event, name, label, *, body=None, opcode=None):
+        template = self.profile.raw(name)
+        if body is None:
+            body = self.profile.body(name)
+        if opcode is None:
+            opcode = struct.unpack_from('<I', template, 5)[0]
+        sequence = event.get('s2c_next_seq', 73)
+        frame = codec.encode(template[:37], opcode, body, sequence)
+        self.send_raw(event, frame)
+        event['s2c_next_seq'] = sequence + 3
+        filename = f"{event['role']}-{label}-{sequence}.bin"
+        (self.out / filename).write_bytes(frame)
+        meta = {'seq': sequence, 'opcode': opcode, 'fixture': filename,
+                'sha256': hashlib.sha256(frame).hexdigest(), 'size': len(frame),
+                'monotonic_ns': time.monotonic_ns()}
+        event.setdefault('dynamic_s2c', []).append(meta)
+        return meta
+
+    def broadcast(self, name, label, **kwargs):
+        return [{'role': peer['role'], **self.send(peer, name, label, **kwargs)}
+                for peer in self.peers()]
+
+    def start_round(self):
+        key = self.room.begin()
+        if self.round['index']:
+            self.state['round_history'].append(self.round)
+        self.round = {'index': self.room.generation, 'key': key}
+        self.state['current_round'] = self.round
+        self.state['policy_events'].append({'op': 'begin', 'generation': self.room.generation,
+                                            'key': key, 'monotonic_ns': time.monotonic_ns()})
+        for event in self.peers():
+            markers = ['start_response_sent', 'init99', 'go_response_sent', 'play_response_sent',
+                       'begin_response_sent', 'peer153_sent', 'death_event']
+            if event.get('start_response_sent'):
+                event.setdefault('rounds', []).append({key: event[key] for key in markers if key in event})
+            for marker in markers:
+                event.pop(marker, None)
+            event['floor582_sent'] = self.send(event, 'floor', 'floor582')
+            event['start_response_sent'] = {**self.send(event, 'start', f"start121-r{self.round['index']}"),
+                                             'round': self.round['index'], 'after_c2s_opcode': 104,
+                                             'host_role': 'A', 'broadcast': True}
+
+    def receive_channel(self, event, frame, sequence, body):
+        opcode = struct.unpack_from('<I', frame, 5)[0]
+        role = event['role']
+        if opcode == 6 and not event.get('channel_response_sent'):
+            self.send_raw(event, self.profile.raw('channel'))
+            event['channel_response_sent'] = {'monotonic_ns': time.monotonic_ns()}
+        elif opcode == 67 and not event.get('ready_response_sent'):
+            self.send_raw(event, self.profile.raw('ready') + self.profile.raw(f'roomlist_{role}')
+                          + self.profile.raw('channel_list'))
+            event['ready_response_sent'] = {'monotonic_ns': time.monotonic_ns()}
+        elif opcode in (81, 82) and not event.get('create_response_sent'):
+            if (role, opcode) not in [('A', 81), ('B', 82)]:
+                raise ValueError('unsupported fixture role/join')
+            self.send_raw(event, self.profile.raw('create' if role == 'A' else 'join'))
+            event['create_response_sent'] = {'monotonic_ns': time.monotonic_ns(), 'after_c2s_opcode': opcode}
+        elif opcode == 585 and event.get('create_response_sent') and not event.get('player_response_sent'):
+            self.send_raw(event, self.profile.raw(f'player_{role}'))
+            event['player_response_sent'] = {'monotonic_ns': time.monotonic_ns()}
+        elif opcode == 95 and role == 'B' and not event.get('guest_ready_received'):
+            event['guest_ready_received'] = {'monotonic_ns': time.monotonic_ns(), 'payload_hex': body.hex()}
+            self.broadcast('ready_slot', 'ready110')
+        elif opcode == 104 and role == 'A':
+            if (self.room.active or not event.get('map_response_sent')
+                    or not self.channels.get('B', {}).get('guest_ready_received')):
+                return
+            # Result must have returned/refreshed before another accepted Start.
+            if self.round['index'] and not self.round.get('refresh'):
+                return
+            self.start_round()
+        elif opcode == 99 and self.room.active and not event.get('init99'):
+            values = codec.read_fields(body, [4, 4, 2, 4, 2, 1, 1, 1, 4])
+            if not 1 <= values[2] <= 65535:
+                raise ValueError('invalid UDP port')
+            event['init99'] = {'fields': values, 'seq': sequence, 'monotonic_ns': time.monotonic_ns(),
+                               'sha256': hashlib.sha256(frame).hexdigest()}
+        elif opcode == 118 and self.room.active:
+            values = codec.read_fields(body, [4, 1, 1, 4, 1, 1, 1, 1, 1, 1, 1, 4, 1])
+            if values[-1] != 0 or values[2] != {'A': 0, 'B': 1}[role]:
+                raise ValueError('unsupported bomb report')
+            ticket = self.room.bomb()
+            fields = [0, values[2], 0, values[3], 0, 0, values[4], values[5], values[10],
+                      1, 0, ticket.wire_id, 0, 1, 0, 0, 0]
+            payload = codec.pack_fields(fields, [1, 1, 2, 4, 4, 4, 1, 1, 1, 4, 1, 2, 2, 1, 8, 1, 1])
+            if self.room.fence.rejection(ticket) is not None:
+                return
+            broadcast = self.broadcast('bomb', f'dynamic159-r{self.room.generation}-{ticket.wire_id}', body=payload)
+            for sent in broadcast:
+                sent['fields'] = fields
+            own = next(sent for sent in broadcast if sent['role'] == role)
+            source = {'id': ticket.wire_id, 'actual118': {'monotonic_ns': time.monotonic_ns(),
+                       'seq': sequence, 'sha256': hashlib.sha256(frame).hexdigest(), 'fields': values}, 'reply': own}
+            event.setdefault('bombs', []).append(source)
+            bomb = {'round': self.room.generation, 'id': ticket.wire_id, 'owner': values[2],
+                    'serial': values[3], 'source_role': role, 'source_bomb': source,
+                    'created_ns': time.monotonic_ns(), 'broadcast159': broadcast}
+            self.state['round_bombs'].append(bomb)
+            self.jobs.append((time.monotonic() + 6, ticket, bomb))
+        elif opcode == 124 and self.room.active:
+            values = codec.read_fields(body, [1, 1, 1, 1, 4, 2, 4, 4, 1])
+            context, slot, row, column, index, kind, _, _, flag = values
+            if flag != 0:
+                raise ValueError('unsupported item variant')
+            claim = self.room.claim({'A': 0, 'B': 1}[role], slot, context, ItemSpec(index, row, column, kind))
+            report = {'round': self.room.generation, 'role': role, 'seq': sequence, 'fields': values,
+                      'payload_hex': body.hex(), 'frame_sha256': hashlib.sha256(frame).hexdigest(),
+                      'monotonic_ns': time.monotonic_ns(), 'broadcast165': []}
+            self.state['item_requests'].append(report)
+            if claim is not None and self.room.claims.consume(claim):
+                payload = codec.pack_fields([1, context, slot, row, column, index, kind, 0], [1, 1, 1, 1, 1, 4, 2, 1])
+                report['broadcast165'] = self.broadcast('start', f'item165-r{self.room.generation}-{index}',
+                                                         opcode=165, body=payload)
+                self.state['policy_events'].append({'op': 'item_consume', 'generation': claim.generation,
+                                                    'index': index, 'slot': slot})
+            else:
+                report['rejected'] = 'claim_not_current_or_already_consumed'
+        elif opcode == 127 and self.room.active:
+            self.receive_event(event, frame, sequence, body)
+
+    def receive_event(self, event, frame, sequence, body):
+        if len(body) < 14:
+            raise ValueError('unsupported event prefix')
+        subtype, slot = codec.read_fields(body[:2], [1, 1])
+        if slot != {'A': 0, 'B': 1}[event['role']]:
+            raise ValueError('event slot does not match connection')
+        report = {'role': event['role'], 'round': self.room.generation, 'subtype': subtype,
+                  'slot': slot, 'seq': sequence, 'monotonic_ns': time.monotonic_ns(),
+                  'payload_hex': body.hex(), 'frame_sha256': hashlib.sha256(frame).hexdigest()}
+        self.state['event_reports'].append(report)
+        if subtype in (17, 19) and event['role'] == 'A':
+            if subtype == 17:
+                length = codec.read_fields(body[14:18], [4])[0]
+                if length != 14 or len(body) != 32:
+                    raise ValueError('unsupported trap blob')
+                raw, offset = bytearray(), 0
+                while offset < length:
+                    width = 4 if length - offset >= 4 else 2 if length - offset >= 2 else 1
+                    raw.extend(codec.read_fields(body[18 + offset:18 + offset + width], [width])[0].to_bytes(width, 'little'))
+                    offset += width
+                if raw[:6] != bytes.fromhex('180900000000'):
+                    raise ValueError('unsupported trap envelope')
+                payload = body[:6] + codec.pack_fields([int.from_bytes(raw[10:14], 'little')], [4])
+            else:
+                payload = body[:6] + body[14:]
+            report['forward170'] = self.send(self.channels['B'], 'start', f'event170-{subtype}-r{self.room.generation}',
+                                               opcode=170, body=payload)
+            if subtype == 19:
+                event['death_event'] = report
+
+    def tick(self):
+        now = time.monotonic_ns()
+        for due, ticket, bomb in list(self.jobs):
+            if time.monotonic() < due:
+                continue
+            self.jobs.remove((due, ticket, bomb))
+            reason = self.room.fence.rejection(ticket)
+            if reason is None and self.room.fence.consume(ticket):
+                body = codec.pack_fields([1, bomb['id'], 0, 2, 0xFFFFFFFF, 255], [1, 2, 1, 4, 4, 1])
+                bomb['broadcast158'] = self.broadcast('blast', f"blast158-r{bomb['round']}-{bomb['id']}", body=body)
+            else:
+                bomb['timer_rejected'] = reason
+            self.state['policy_events'].append({'op': 'bomb_deadline', 'generation': ticket.generation,
+                                                'wire_id': ticket.wire_id, 'rejected': reason})
+        self.tick_setup(now)
+        if self.room.active:
+            peers = self.peers('init99')
+            if len(peers) == 2:
+                for event in peers:
+                    if not event.get('go_response_sent'):
+                        event['go_response_sent'] = self.send(event, 'go', 'go197')
+                    elif not event.get('play_response_sent') and now - event['go_response_sent']['monotonic_ns'] >= 10**9:
+                        event['play_response_sent'] = self.send(event, 'play', 'play196')
+                    elif event.get('play_response_sent') and not event.get('peer153_sent') and now - event['play_response_sent']['monotonic_ns'] >= 10**9:
+                        other = next(peer for peer in peers if peer['role'] != event['role'])
+                        port = self.proxy_ports[other['role']] or other['init99']['fields'][2]
+                        body = bytearray(self.profile.body('peer')[:35])
+                        body[15:19] = codec.pack_fields([self.room.key], [4])
+                        for slot in range(26):
+                            body.extend(codec.pack_fields([int(slot < 2)], [1]))
+                            if slot < 2:
+                                remote = slot != {'A': 0, 'B': 1}[event['role']]
+                                for ip, endpoint in ([(0x7F000001, port), (0, 0), (0, 0)] if remote else [(0, 0)] * 3):
+                                    body.extend(codec.pack_fields([ip, endpoint], [4, 2]))
+                        event['begin_response_sent'] = self.send(event, 'peer', 'peer153', body=bytes(body))
+                        event['peer153_sent'] = {**event['begin_response_sent'], 'remote_port': port}
+                        self.state['policy_events'].append({'op': 'peer_key', 'role': event['role'],
+                                                            'generation': self.room.generation, 'key': self.room.key})
+            death = self.channels.get('A', {}).get('death_event')
+            remote_reports = self.state['event_reports']
+            if death and now - death['monotonic_ns'] >= 8 * 10**9 and any(
+                row['role'] == 'B' and row['round'] == self.room.generation and row['subtype'] == 21
+                and row['monotonic_ns'] > death['monotonic_ns'] for row in remote_reports
+            ):
+                self.room.finish()
+                self.round['rank'] = {'monotonic_ns': now, 'broadcast': self.broadcast('rank', f"rank175-r{self.room.generation}")}
+                self.state['policy_events'].append({'op': 'finish', 'generation': self.room.generation})
+        if self.round.get('rank') and not self.round.get('return') and now - self.round['rank']['monotonic_ns'] >= 5 * 10**9:
+            self.round['return'] = {'monotonic_ns': now, 'broadcast': self.broadcast('return', f"return180-r{self.room.generation}")}
+        if self.round.get('return') and not self.round.get('refresh') and now - self.round['return']['monotonic_ns'] >= 3 * 10**9:
+            sent = self.broadcast('slot_A', f"host110-r{self.room.generation}")
+            sent += self.broadcast('slot_B', f"guest110-r{self.room.generation}")
+            self.round['refresh'] = {'monotonic_ns': now, 'broadcast': sent}
+            for event in self.peers():
+                event.pop('guest_ready_received', None)
+
+    def tick_setup(self, now):
+        for event in self.events:
+            if event.get('reply_ordinal') != 4:
+                continue
+            role = event['role']
+            for previous, marker, delay, aliases in [
+                ('player_response_sent', 'slot_response_sent', 2, [f'slot_{role}']),
+                ('slot_response_sent', 'guest_response_sent', 1, [f'guest_{role}']),
+                ('guest_response_sent', 'map_response_sent', 1, ['table', 'map']),
+            ]:
+                if event.get(previous) and not event.get(marker) and now - event[previous]['monotonic_ns'] >= delay * 10**9:
+                    self.send_raw(event, b''.join(self.profile.raw(alias) for alias in aliases))
+                    event[marker] = {'monotonic_ns': now}
+
+    def accept(self, listener):
+        connection, peer = listener.accept()
+        ordinal = len(self.events) + 1
+        if ordinal > 8:
+            connection.close()
+            return
+        connection.settimeout(2)
+        event = {'global_ordinal': ordinal, 'role': 'A' if ordinal <= 4 else 'B',
+                 'reply_ordinal': (ordinal - 1) % 4 + 1, 'peer': list(peer),
+                 'port': listener.getsockname()[1], 'accept_monotonic_ns': time.monotonic_ns(), 'chunks': []}
+        self.events.append(event)
+        self.connections[ordinal] = {'socket': connection, 'event': event, 'buffer': bytearray(), 'sequence': 40}
+        if event['reply_ordinal'] == 4:
+            self.channels[event['role']] = event
+        self.send_raw(event, self.profile.raw('bootstrap'))
+        event['reply_sent'] = {'monotonic_ns': time.monotonic_ns()}
+        self.selector.register(connection, selectors.EVENT_READ, ordinal)
+
+    def receive(self, ordinal):
+        state = self.connections[ordinal]
+        connection, event = state['socket'], state['event']
+        data = connection.recv(4096)
+        if not data:
+            event['peer_eof'] = True
+            self.selector.unregister(connection)
+            connection.close()
+            if event['reply_ordinal'] == 4:
+                self.room.finish()
+            return
+        event['chunks'].append({'monotonic_ns': time.monotonic_ns(), 'hex': data.hex()})
+        if event['reply_ordinal'] == 2:
+            if not event.get('second_response_sent'):
+                self.send_raw(event, self.profile.raw('second'))
+                event['second_response_sent'] = {'monotonic_ns': time.monotonic_ns()}
+            return
+        if event['reply_ordinal'] < 3:
+            return
+        state['buffer'].extend(data)
+        while (frame := codec.pop_frame(state['buffer'])) is not None:
+            sequence = state['sequence']
+            body = codec.frame_body(frame, sequence)
+            state['sequence'] += 3
+            opcode = struct.unpack_from('<I', frame, 5)[0]
+            event['c2s_frame_count'] = event.get('c2s_frame_count', 0) + 1
+            if event['reply_ordinal'] == 3:
+                for op, marker, names in [(1, 'auth_response_sent', [f"auth_{event['role']}"]),
+                                          (9, 'netinfo_response_sent', ['netinfo', 'flags']),
+                                          (5, 'redirect_response_sent', ['redirect'])]:
+                    if opcode == op and not event.get(marker):
+                        self.send_raw(event, b''.join(self.profile.raw(name) for name in names))
+                        event[marker] = {'monotonic_ns': time.monotonic_ns()}
+            else:
+                self.receive_channel(event, frame, sequence, body)
+
+    def save(self):
+        self.state['snapshot_monotonic_ns'] = time.monotonic_ns()
+        temporary = self.out / 'service-state.tmp'
+        temporary.write_text(json.dumps(self.state, indent=2) + '\n')
+        temporary.replace(self.out / 'service-state.json')
+
+    def run(self, ports):
+        listeners = []
+        try:
+            for port in ports:
+                listener = socket.socket()
+                listener.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+                listener.bind(('127.0.0.1', port))
+                listener.listen(8)
+                listeners.append(listener)
+                self.selector.register(listener, selectors.EVENT_READ, None)
+            self.state['listen_ports'] = [listener.getsockname()[1] for listener in listeners]
+            self.state['ready'] = True
+            self.save()
+            while not self.closed:
+                for key, _ in self.selector.select(0.05):
+                    try:
+                        self.accept(key.fileobj) if key.data is None else self.receive(key.data)
+                    except (OSError, ValueError, RuntimeError) as error:
+                        self.state['errors'].append({'connection': key.data, 'error': str(error)})
+                        if key.data is None:
+                            raise
+                        self.selector.unregister(key.fileobj)
+                        key.fileobj.close()
+                        self.room.finish()
+                self.tick()
+                self.save()
+        finally:
+            self.room.finish()
+            self.state['stopped'] = True
+            self.save()
+            for entry in self.connections.values():
+                entry['socket'].close()
+            for listener in listeners:
+                listener.close()
+            self.selector.close()
+
+
+def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--profile', type=Path, required=True)
+    parser.add_argument('--out', type=Path, required=True)
+    parser.add_argument('--port', action='append', type=int, required=True)
+    parser.add_argument('--proxy-a', type=int, default=0)
+    parser.add_argument('--proxy-b', type=int, default=0)
+    args = parser.parse_args()
+    if any(not 0 <= port <= 65535 for port in [*args.port, args.proxy_a, args.proxy_b]):
+        parser.error('invalid port')
+    args.out.mkdir(parents=True, exist_ok=True)
+    service = ProbeService(FixtureProfile(args.profile), args.out, {'A': args.proxy_a, 'B': args.proxy_b})
+    def stop(_signal, _frame):
+        service.closed = True
+    signal.signal(signal.SIGTERM, stop)
+    signal.signal(signal.SIGINT, stop)
+    service.run(args.port)
+
+
+if __name__ == '__main__':
+    main()

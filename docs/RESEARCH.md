@@ -10,12 +10,75 @@ KRE-001/002/003 đang thực hiện: từ28/10 Codex solo RE/runtime và tự ki
 [miễn review của chủ dự án](evidence/checkpoints/review-waiver.json). Report dsh/Claude cũ giữ lịch sử.
 Review plan nguồn đã xong; các câu hỏi dưới đây vẫn open cho tới khi có evidence trả lời.
 
+## Câu hỏi hiện hành
+
+Thứ tự task chỉ ở [PLAN](PLAN.md#current-order). Tra phạm vi đã biết qua
+[coverage/cây chức năng](COVERAGE.md); bảng dưới dẫn đến khoảng trống/phép đo theo cơ chế.
+Nguồn cũ và run/checkpoint giữ trong phần lịch sử bên dưới và manifest; kết luận tại CP cũ không
+được đọc thành trạng thái hiện tại. CP048 bổ sung service fixture; giới hạn của [contract](PROTOCOL.md#probe-service)
+và các [phép kiểm service](#gap-diagnostic-service) vẫn mở; không nghiệm thu K5/K6a.
+
+| Câu hỏi / owner | Trạng thái | Khoảng trống và phép đo hiện hành |
+|---|---|---|
+| <a id="q-022"></a>Q-022 bootstrap / Codex tự kiểm | open | [ProcessPatch/control](#gap-process-patch), [WCP/config](#gap-wcp-config) |
+| <a id="q-023"></a>Q-023 codec / Codex tự kiểm | open | [Socket/seq/mode/bounds](#gap-socket-codec), [service actual frame](#gap-diagnostic-service) |
+| <a id="q-024"></a>Q-024 login/kênh / Codex tự kiểm | open | [Auth/identity](#gap-auth-identity), [sảnh](#gap-redirect-lobby), [cache](#gap-profile-cache) |
+| <a id="q-025"></a>Q-025 phòng/load / Codex tự kiểm | open | [Tạo/join](#gap-create-join), [roster](#gap-roster-ready-host), [barrier](#gap-map-spawn-loading), [membership](#gap-room-membership) |
+| <a id="q-026"></a>Q-026 authority/trận / Codex tự kiểm | open | [Bom](#gap-bomb-lifetime), [chain/block](#gap-blast-block-chain), [pickup validator](#gap-floor-pickup), [item](#gap-item-stats), [contact](#gap-contact-state), [result/reset](#gap-round-reset) |
+| <a id="q-027"></a>Q-027 peer / Codex tự kiểm | open | [Movement](#gap-peer-movement), [freshness](#gap-udp-freshness), [relay/NAT](#gap-peer-relay), [EOF](#gap-disconnect-replacement) |
+| <a id="q-028"></a>Q-028 profile/core / Codex tự kiểm | open | [Authority matrix](PROTOCOL.md#authority): audit creator/simulator/validator/broadcast/peer-editable; lựa chọn lai/shadow core là design, chưa là contract client |
+| <a id="q-029"></a>Q-029 vận hành / Codex tự kiểm | open | [Hardening/demo nhiều máy](#gap-service-hardening); theo gate K7, không suy từ TCP accept |
+
+<a id="feature-gaps"></a>
+## Khoảng trống theo cơ chế
+
+Đây là câu hỏi/phép đo tối thiểu, **không là thứ tự công việc**; thứ tự duy nhất ở [PLAN](PLAN.md#current-order).
+Phạm vi đã biết/giới hạn nằm ở contract được catalog dẫn; không đọc `unknown` thành vắng mặt.
+Bảng được [coverage](COVERAGE.md) trích tự động để tra theo chức năng, không sửa bản sinh.
+
+| ID | Khoảng trống hiện hành | Phép kiểm tối thiểu |
+|---|---|---|
+| <a id="gap-process-patch"></a>KR-B001 | Đối chứng Windows nguyên bản/ownership và recipe cùng cold start chưa nghiệm thu. | Tái dùng recipe có hash; ba cold start đúng một recipe, gắn network attempt với PID; so Windows control khi mở nhánh bootstrap. |
+| <a id="gap-wcp-config"></a>KR-B002 | Fixture tổng hợp đã qua guard; oneclickuser/+E9C và dữ liệu/cache thật chưa đủ. | Chỉ mở consumer/config đang chặn runtime; so nhánh với và không tham số trên cùng copy, không đo lại +E78 đã giải. |
+| <a id="gap-socket-codec"></a>KR-B003 | Profile hẹp mode2/selector3; full bounds/mode/reset/reconnect chưa nghiệm thu. | So reader server với native KR trên actual frame; thử fragmented/coalesced/boundary/reset từng chiều, không dùng roundtrip tự sinh làm oracle. |
+| <a id="gap-auth-identity"></a>KR-L001 | Success body/profile đầy đủ, token_2/count2 và identity qua reconnect chưa đủ; fixture không là full auth. | Từ prefix có ID đã đo, trace cursor/consumer tiếp theo trên cold cache; đổi đúng một field/control và giữ socket/seq riêng. |
+| <a id="gap-redirect-lobby"></a>KR-L002 | UI sảnh copy đã có; thông tin user/cache/version và variants chưa đủ K3. | Kiểm identity hiển thị cùng request6/17/241 trên cold/warm/missing cache, log stage/seq; không suy từ cửa sổ. |
+| <a id="gap-profile-cache"></a>KR-L003 | Chưa có ma trận cold/warm/missing/reconnect/profile đủ; presence của toàn contract giữ candidate. | Theo reader/cache path đã dẫn ở contract; giữ nguyên fixture, đo cache hiện hữu rồi một control thiếu file có hash. |
+| <a id="gap-create-join"></a>KR-R001 | Password/full/error/capacity và auth roster tổng quát chưa kiểm. | So actual81/82 với consumer86/87 và slot hai phía; bổ sung lỗi/room-full từng ca khi service cần, không copy opcode VN. |
+| <a id="gap-roster-ready-host"></a>KR-R002 | Full roster/ID thay đổi và unready/load race chưa nghiệm thu. | Kiểm socket→ID→slot hiện hành và Ready/host controls; dùng ca promotion đã đo làm reference cho service. |
+| <a id="gap-map-spawn-loading"></a>KR-R003 | Scene/spawn đã đo; barrier một peer chậm load, config/map variants và104 growth còn thiếu. | Delay99 của đúng một peer trên service, đo197/196/153 và clock mỗi phía; chỉ mở handler nếu xuất hiện lệch phase. |
+| <a id="gap-room-membership"></a>KR-R004 | Rejoin socket cũ đã đo; resume cùng account và service membership tổng quát chưa có. | Tái dùng CP034/035/040, kiểm cleanup107/110 và B Start sau membership change trong service, không tìm lại receiver. |
+| <a id="gap-round-clock"></a>KR-F001 | 153 đã dùng hai phía; loading delay/phase race và loss chưa nghiệm thu. | Giữ native clock marker và input thật ở cả hai view trong một run có barrier control. |
+| <a id="gap-peer-movement"></a>KR-F002 | Hai client local đã đo; grammar/type khác/reliability và roster thay còn thiếu. | Tái dùng99/153 và consumer đã biết; bắt callback thực cho packet type đang chặn, không quét toàn UDP. |
+| <a id="gap-udp-freshness"></a>KR-F003 | low8 key không là auth/epoch tổng quát; reuse sau256 và slot/profileID đổi còn mở. | Tái dùng same-run CP048 đã có one-key/Start và old-drop/current-apply; chỉ đo lifetime/roster/ID thay hoặc packet type còn thiếu theo blocker. |
+| <a id="gap-bomb-lifetime"></a>KR-F004 | Serial wrap/concurrent/old159 pending match và validator đầy đủ còn mở. | Tái dùng CP041/043/044; kiểm ticket gốc trước159/158 ở result/EOF và vòng mới, không cấp ticket mới từ wire_id cũ. |
+| <a id="gap-blast-block-chain"></a>KR-F005 | Đã đo chain hai bom một owner và block/list2; nhiều owner/ba bom/vật cản/list3 chưa kiểm. | Một ca chain khác owner có control cách ô và entity ID/cursor cả hai view; chỉ mở consumer biến thể gây khác biệt. |
+| <a id="gap-floor-pickup"></a>KR-F006 | Actual124 r2 có k12345→12346; bench dispatch service nhận old124/k12345 ở key12346 rồi từ chối current124 vì claim đã tiêu. Chưa replay Wine; distance/state/t còn thiếu. | Thiết kế guard k theo key đã cấp với nguồn design; control old/current124 và replay Wine trước input ở vòng2, so165/stat. Không gọi k là auth hoặc guard giải mọi stale request. |
+| <a id="gap-item-stats"></a>KR-F007 | Bomb/Fire/Roller/MaxPower có delta hẹp; runtime tại max/pxs KR/TTL/toàn reset chưa đủ. | Tái dùng CP045 và paired165/stat CP048 r3/clock2reset; chỉ đo runtime tại max hoặc pxs khi ca Battle cần, không đo lại Roller5→6 để lấp unknown cũ. |
+| <a id="gap-needle"></a>KR-F008 | Kim một lần/cạn đã đo; multi-charge/duplicate/inventory validation và Ctrl cạnh tranh còn mở. | Dùng lại actual pickup/Ctrl/170, kiểm một inventory transition cần cho service; không RE lại145/117 hoặc receiver. |
+| <a id="gap-contact-state"></a>KR-F009 | First-eligible native đã biết; both-eligible cùng update/list-order runtime,21/sub34 và authority đầy đủ còn thiếu. | Ưu tiên consistency17/19→170/state hai view→21/result trong cùng run; exact simultaneous chỉ kiểm bổ sung khi có setup cụ thể. |
+| <a id="gap-ability-debuff"></a>KR-F010 | Shoe/Punch/debuff/TTL chỉ có bảng và một phần selector; không chuyển kết quả MaxPower sang mọi effect. | Chọn đúng ability cần cho Battle rồi trace1191840 selector/virtual tương ứng; đo consume/effect/peer/reset một case và control. |
+| <a id="gap-mount"></a>KR-F011 | Group2 có nhánh riêng; điều kiện/effect/giới hạn/reset runtime KR chưa kiểm. | Chỉ khi fixture Battle cần mount: trace11928A2 tới consumer rồi một pickup/peer/reset; hiện loại khỏi fixture theo policy. |
+| <a id="gap-active-other"></a>KR-F012 | Dart/Oxygen/Potion/Spring/Drill/RemoteBomb mới là phân loại, chưa chứng minh cùng đường kim. | Chọn một group đang cần, tìm consumer Ctrl/report/confirm; đo điều kiện, tiêu hao, hiệu ứng và peer, không quét từng row. |
+| <a id="gap-timed-variants"></a>KR-F013 | Shield/Sensor/SJNeedle raw tail chưa chứng minh đơn vị/thời hạn/hành vi KR. | Trace consumer timer/group cần dùng, đo start/expiry/cancel/reset và peer với control; không suy ms từ tên hoặc raw số. |
+| <a id="gap-mode-items"></a>KR-F014 | ItemAttr cho thấy row/group; presence cơ chế/mode guard/reward runtime vẫn candidate, ngoài Battle tối thiểu. | Chỉ mở group mode khi PLAN mở mode đó; bắt guard/consumer trước thử runtime, HPNeedle17 không là Needle145. |
+| <a id="gap-peer-relay"></a>KR-F015 | Relay/NAT và toàn grammar/reliability KR chưa xác nhận; local P2P không là LAN/Internet. | Sau local consistency, chọn endpoint thử được kiểm soát và capture native route; không thiết kế relay như contract đã phục hồi. |
+| <a id="gap-result-return"></a>KR-X001 | 175/outcome do policy chọn;21/sub34/chọn rank/authority chưa phục hồi đầy đủ. | Đối chiếu deathstate hai view trước175, cursor/full blob và180/reset trong cùng service run; không coi rank thay state. |
+| <a id="gap-round-reset"></a>KR-X002 | Reset field đã đo không là toàn entity/seq/queue/timer/túi; old124 đồng catalog còn mở. | Tái dùng CP041–047; kiểm job/claim/key owner cùng run ở vòng2 và sau abort, đối chiếu field hiện hành với baseline vòng1. |
+| <a id="gap-disconnect-replacement"></a>KR-X003 | C mới sau EOF không là A reconnect; membership/EOF integration service mới chưa đo. | Cắt host khi timer còn chờ trong service, kiểm round_closed/forfeit/cleanup, cho C mới Join/Ready/B Start; giữ control không fence làm nguồn cũ. |
+| <a id="gap-diagnostic-service"></a>KR-S001 | r2 có hai chu kỳ thử; r3 chỉ165/stat vòng1 và reset clock2, thiếu124/118 vòng2 dù đã input. Auth/roster/rank vẫn fixture, chưa full match. | Tái dùng native/effect/UDP CP048; control/retry input hữu hạn theo actual request để phân biệt focus/tutorial/probe/state, rồi kiểm validator/EOF theo PLAN. |
+| <a id="gap-service-hardening"></a>KR-S002 | Chưa LAN/Internet/bốn client/restart/backpressure/rate limit/persistence đủ K7. | Sau local gate có evidence, thử hai máy theo K6b rồi loss/disconnect/restart; không lấy loopback accept làm multiplayer. |
+
+## Diễn biến lịch sử theo checkpoint
+
+Các đoạn sau ghi trạng thái **tại checkpoint được nêu**, không phải bảng việc đang hoạt động.
+Câu hỏi/kiểm tiếp đã được gom ở bảng phía trên; raw/checkpoint/evidence cũ giữ nguyên.
+
 Cập nhật CP001: contract WCP ở [PROTOCOL](PROTOCOL.md#wcp),raw/review/integration ở
 [evidence WCP](evidence/wcp/README.md). Kết luận “socket hai chưa nhận reply” chỉ áp cho
 [ba run R2 silent](evidence/wine-r2/README.md),không còn là trạng thái mới nhất.
 KRE-004/issue6 đã đóng trong scope Wine r1;KRE-005a/issue9 còn mở cho bước sau.
 
-<a id="q-023"></a>
 Q-023, CP006 (review theo [manifest](evidence/checkpoints/manifest.json)): `multiserveridx:0`
 trong run copy đã kích hoạt setter `+E78`, tránh nhánh launcher và cho request đầu C→S;
 `oneclickuser` liên hệ setter `+E9C` mới chỉ static, chưa đo runtime. Tám fixture S→C mode2/3
@@ -199,61 +262,3 @@ CP046/PR54 đã merge `f85cda4`. CP047 theo target thật E66680, tái dùng cac
 [byte khóa/tailfilter](PROTOCOL.md#udp-generation), [runtime key/endpoint](evidence/udp-freshness/README.md).
 Đổi153key chặn oldmovement đã đo; endpointrotation riêng lẻ không chặn cả oldsource/newsource.
 CP047 hoàn tất record/docs/tự kiểm, allocator unit-tested/pending runtime integration; review độc lập waived.
-
-**Bước tiếp, Codex RE/tự kiểm:**
-
-1. **NEXT-DUO-ROUND:** rời phòng/xóa ghost slot/promotion/guest EOF/về sảnh đã đo hẹp ở CP034;
-   CP035 đã đo **rejoin qua click/request thật và Start sau promotion tới clock**.
-   CP039 đã nối result/return hai vòng sau statepeer nhất quán và hostEOF→forfeitreturn/roomcleanup/promotion.
-   CP040 đã đo B chủ mới gửi104 với C mới Join/Ready sau abort; guest EOF control/policy trả A về phòng, xóa B/chief A giữ nguyên đã đo riêng.
-   CP041 đã kiểm hai vòng với stale158 và ID cấp tăng/tái dùng; nhánh nổ không cần tìm lại.
-   CP042 có old165/index reuse và policy claim/ticket local; CP043 đã đo159 cũ/serial reuse làm sai ID giữa A/B.
-   CP044 đã đo timer abort/control/fence và một vòng B/C mới tới bom/death/result/return.
-   CP045 đã đo actualcallback/CRC/queue/drain; CP046 output13byte→packetstream→pumpcallback đổi
-   actor ở vòng2. Không mở lại các đường đã đo hoặc nhầm14EF010 với gameplayhandler.
-   CP047 đã trả lời targetvfF4/E66680, keybyte và tailfilter, keyrotation/oldsource; không tìm lại.
-   **Bước kế:** tích hợp allocator khóa153 và các policy RoundFence/ItemClaims vào service nhỏ cho
-   hai client/hai vòng; kiểm sender cùng key, oldkeydrop/currentapply, actualC2S/peerstate/result/reset
-   trong cùng run. Source reuse trước nhánh service/code; không import nguyên server VN hoặc coi
-   module unit test là runtime đã tích hợp. Key low8 không đủ auth; không tái dùng sau256 vòng và
-   tự suy transport đã sạch. Roster/ID thay/keyreuse/các UDPtype khác giữ nợ riêng.
-   Return callback0/1 không là accept/reject: cả old và current đã đổi field ở CP046.
-   Tiếp UDP generation/reset và giới hạn124 trùng catalog trước K6a;
-   reconnect/resume cùng account vẫn chưa đo. Không tự gọi sub34 là ACK hoặc21 là validator.
-2. **NEXT-ITEM-PICKUP:** CP037 kim tự thoát/peer, CP038 có [trap lần hai khi hết kim](PROTOCOL.md#needle-repeat).
-   Exact sameupdate/both-eligible runtime, đảo thứ tự danh sách và Ctrl cạnh tranh là kiểm bổ sung,
-   không chặn first full match. CP042 đã đo165 cũ khi index tái dùng/đổi index và stat1→2 trước124 mới;
-   tiếp giới hạn stale124 trùng catalog/tick/session/actor validation, không suy local ticket giải toàn request cũ;
-   multi-charge/duplicate/aux khác và các mode giữ scope riêng. CP032 item ẩn và
-   stat đầu vòng kế, CP033 chain một owner đã có bằng chứng; CP045 Roller/MaxPower hai view/reset hẹp.
-   Không tìm lại receiver/kim/loader hoặc VN Rollerplateau; [bảng reuse](PROTOCOL.md#item-families).
-   Runtime tại max, tốc độ KR→px/s và thời hạn/nhóm chủ động/variant,
-   chain nhiều owner/ba bom/vật cản, list3/loại block khác/đảo winner/stale index qua round còn thiếu.
-   Giữ118.field10→159.field8. Report142 từ cả hai không tự chứng minh authority server gốc.
-3. Receiver170/17,19 và mismatch death hẹp có lời giải CP029; CP036 bổ sung rescue/enemy-touch/timeout hẹp; CP037 có ba client thật và native collection dừng ở chạm hợp lệ đầu.
-   Không tìm lại ID kim VN117/KR145 hoặc170/sub1; sameupdate/listorder/aux khác/variants là backlog kiểm bổ sung.
-   Fullauth/profile/cache/reconnect/codec/vanilla và UDPgrammar/key/reliability/handshake/relay/NAT còn mở;
-   104/95bodygrowth, serialrollover/allocator/concurrent/optionalflags, Antarctic timing giữ scope riêng.
-   Cùngrank không thay deathstate; không có gate K5/K6a/LAN/Internet mới đóng.
-
-CP029–032 raw/record bất biến; CP032 giữ control không158 và ca hai vòng chờ sai origin làm lịch sử.
-Không patch thêm/ép state bằng GDB. `E9E660` là nhánh kind0 bom, không phải receiver pickup;
-layout/request/confirm và stat Bomb/Fire mới đã đo riêng. Clamp native chưa thay runtime tại max.
-Hai item ẩn đã đo không phục hồi thuật toán random drop hoặc toàn validator. Rank/outcome/fuse/timing
-và policy giữ index cho request đầu là lựa chọn emulator,
-chưa server authority gốc. Authprefix34byte/ID1/2,15/241variants,
-oneclickuser/+E9C/token_2/count2/vanilla còn mở. AUD014/CP044 đã audit định kỳ; audit kế CP048. Manifest giữ counter, không reset theo phiên.
-
-| ID / ưu tiên | Trạng thái | Owner / reviewer | Đã biết | Còn thiếu / bước đóng |
-|---|---|---|---|---|
-| Q-022 / KRE-P1 bootstrap | open | Codex RE/tự kiểm | ProcessPatch local có debugger return1;recipe R2 đã merge;contract ở [PROTOCOL](PROTOCOL.md#wcp) | K1a ownership/control trên Windows local/effective token; K1b kiểm caller/config/IPC riêng CA và NewPatcher; K1c stub/patch theo evidence; gate ba cold start tới network attempt/state chờ hello, không lấy alive/không exit làm proof |
-| Q-023 / KRE-P1 codec | open | Codex RE/tự kiểm | CP015 có socket kênh mới, native replay theo từng kết nối, schema17/count0 và nhận241 | Full result0/codec/reset theo bước trên; gate K2 còn mở |
-| Q-024 / KRE-P1 login/kênh | open | Codex RE/tự kiểm | UI sảnh hết notice17/241; CP020 phục hồi inputID local, tên/profile phòng có fixture, chưa full auth/sảnh identity | Full identity/user/cache và cold/warm/reconnect K3; không gọi auth Nexon thật |
-| Q-025 / KRE-P1 room/load | open | Codex RE/tự kiểm | CP028 join/Ready;CP034 leave/promotion/EOF/return;CP035 rejoin/newhostStart, [phạm vi](PROTOCOL.md#room-rejoin) | Password/error/unready/load-barrier variants, CP040 đã có client mới/chủ B Start sau host EOF; guest EOF trả host về phòng đã đo; reconnect cùng account/reset/104growth/cache và nghiệm thu K4 còn mở |
-| Q-026 / KRE-P1 authority/trận | open | Codex RE/tự kiểm | CP039 hai vòng statepeer/result/return; CP041 [stale158/ID](PROTOCOL.md#round-generation), CP042 [old165/index](PROTOCOL.md#item-generation), CP043 [old159/serial](PROTOCOL.md#late-bomb-confirm); CP044 [timer abort/B-C result](PROTOCOL.md#abort-timer) | Drop/block/chain/rescue variants, runtime max/speed/fullvalidator/semantics21,34/toàn reset còn thiếu; không coi fence job local là wire epoch hoặc toàn validator; K5 chưa nghiệm thu |
-| Q-027 / KRE-P1 peer | open | Codex RE/tự kiểm | CP027 movement/bom; CP045–047 [oldUDP actor/keyguard và endpoint control](PROTOCOL.md#udp-generation) | Tích hợp key policy/service, kiểm cùng run; keyreuse/roster/fullgrammar/type khác/relay/disconnect/toàn reset trước K6; không tìm lại E66680/keybyte hoặc coi đổi cổng đã giải freshness |
-| Q-028 / KRE-P2 profile/core | open | Codex/tự kiểm | Core Rust và policy V1 có sẵn, nhưng client gốc không biết ADR0009 | Sau audit Q-026/027, quyết định giữ lai/relay/shadow core hay authoritative được client hỗ trợ; profile emu có provenance, không sửa V1 implicit |
-| Q-029 / KRE-P2 vận hành | open | Codex/tự kiểm | CP029 có statepeer sau170 trước175 và hai chu kỳ thử; [giới hạn](PROTOCOL.md#peer-events); chưa fullmatch/K6a | K7 bốn client, malformed/stale/duplicate/race/disconnect/restart, bounds/resource limits, Linux package, patch manifest và README tái lập |
-
-Tối đa hai lượt mỗi câu hỏi theo plan; gặp VM hoặc thiếu runtime thì ghi entry/boundary/thí nghiệm cần,
-không đóng wire unknown bằng design. Không sửa trạng thái sang done chỉ vì đã có kế hoạch hoặc golden tự sinh.

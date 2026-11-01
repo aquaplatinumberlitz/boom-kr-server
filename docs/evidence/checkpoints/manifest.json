@@ -1,11 +1,11 @@
 {
   "schema": "kre-checkpoints-v1",
-  "last_id": "CP047",
-  "completed_count": 47,
+  "last_id": "CP048",
+  "completed_count": 48,
   "audit_interval": 4,
-  "last_periodic_audit": 44,
-  "next_periodic_audit": "CP048",
-  "last_manual_audit": "AUD014",
+  "last_periodic_audit": 48,
+  "next_periodic_audit": "CP052",
+  "last_manual_audit": "AUD015",
   "checkpoints": [
     {
       "id": "CP001",
@@ -88230,6 +88230,1622 @@
           "reason": "Allocatorintegrationrecipe/owner/exhaustion/lifetimelimits; unitpolicyvsruntime separated."
         }
       ]
+    },
+    {
+      "id": "CP048",
+      "previous": "CP047",
+      "lifecycle": "complete",
+      "recorded_utc": "2026-11-01T11:29:54.244084+00:00",
+      "context_commit": "5ffd9258ac52068f6ee42786fd4cdca2c4a2a382",
+      "question": "Howcanmechanismcataloganswerpresence/proof/gap/nextworkdirectlyandwhatremainsafteractualseparate-serviceintegration?",
+      "scope": "Docsmechanismrefactor/stableID/sourceindex/generatedcoverage+diagrams/consistencynegativechecks; preserveCP001–047. Threeboundedservicecontrollers includingfailedprofile/r2two-trialrounds/r3partialpaired165stat; nativechecks/cachedreuse. Subsequentactual124bodyservicebench confirmsimplementationgap only. No newbinarypatch/nativebodysearch/gateclosure. PeriodicAUD015/CP048.",
+      "owner": "Codex",
+      "reviewer": "Codex",
+      "artifacts": [
+        {
+          "name": "CA-r2-login-logout.exe",
+          "sha256": "660447c293ce92270cb9b5815331bca976e8f156366e1fe50b217b6c12e60ce3"
+        },
+        {
+          "name": "CA-r2-stage-social.exe",
+          "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+        },
+        {
+          "name": "CA-r2-stage-social.exe Bcopy",
+          "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+        },
+        {
+          "name": "modO.bin",
+          "sha256": "a08950c833d3acab8281049def7b3dc96b221f107eeda01da3a548e34b91dce5"
+        }
+      ],
+      "locators": [
+        "CP048integrated-r1/r2/r3;Winecopye9bb47/static660447/modOa08950;base400000,RVA=VA-400000",
+        "E66680/E667BEkeyguard;14EF300framer;52A350securegetter;E63260/E63E1A165;1191840/B48350Roller",
+        "KR-B001…S002stablecatalogIDs;docs/PLAN.md#current-order;RESEARCH#feature-gaps",
+        "E2E390cachedwriter/RVAA2E390/E2E5ABrecord+20;service receive_channel actual124bench"
+      ],
+      "findings": [
+        {
+          "summary": "30mechanismsindexedwithstableID/tree/dependencies/source-linkedproofaxes; generatedcardsquote canonicalRESEARCH gaps/tests, onlyPLANhasworkorder. Unknown/presence/runtimeenv/code/gate separate.",
+          "source": "design",
+          "status": "design",
+          "method": "documentation",
+          "canonical": "docs/COVERAGE.md",
+          "limits": "Notwholeclientinventory/semanticverification ornewKRproof. Servicecodeisnotclientpresence; variantsboundedbysource.",
+          "evidence": [
+            "E060",
+            "E056",
+            "E001"
+          ]
+        },
+        {
+          "summary": "SeparateTCPservice executeskeys/fence/claimswithtwoactualWineclients: r2twoStarts/124/bom/17/19/peerstate1before175/180/room perclient.",
+          "source": "kr_runtime",
+          "status": "confirmed",
+          "method": "runtime",
+          "canonical": "docs/PROTOCOL.md#probe-service",
+          "limits": "Diagnosticfixtures/acceptorder/auth/map/rank/fusechoices; notpublicserver/fullauth/originalauthority/fullmatch.",
+          "evidence": [
+            "E045",
+            "E003",
+            "E083",
+            "E002"
+          ]
+        },
+        {
+          "summary": "Same-runoldmovementround1arrivesatE66680round2,key59!=56,noapply/actorunchanged; normalkey56reachesapply. ServiceallocatesonekeyperStartallmembers.",
+          "source": "kr_runtime",
+          "status": "confirmed",
+          "method": "runtime",
+          "canonical": "docs/PROTOCOL.md#probe-service",
+          "limits": "StableIDs1/2slots0/1,oneboundedmovementpacket; low8notauth/fullUDPgrammar. Policylogsseparatefromnativebranch.",
+          "evidence": [
+            "E040",
+            "E022",
+            "E012"
+          ]
+        },
+        {
+          "summary": "r3full165cursor12/effect3/Roller5→6max7bothviews,clock2reset5. r3onlyoneactual124/118/result/return despiteinputround2.",
+          "source": "kr_runtime",
+          "status": "confirmed",
+          "method": "runtime",
+          "canonical": "docs/PROTOCOL.md#probe-service",
+          "limits": "No165pairedstat2roundclaim; missingrequestcauseunknown. Notmaxruntime/pxs/TTL/allreset.",
+          "evidence": [
+            "E019",
+            "E003",
+            "E146"
+          ]
+        },
+        {
+          "summary": "Newcodec typedprefixesof97actualframesagreewithnativeKR;291nativepacket/24native153/189UDPchecksum/876securegetterchecks.",
+          "source": "kr_static",
+          "status": "confirmed",
+          "method": "emulation",
+          "canonical": "docs/PROTOCOL.md#probe-service",
+          "limits": "Syntheticallocation/receivers; compareprefixforblob,fullfieldsforfixedlayout; getterexcludesperiodicrekey/storage. Notallmodes/authority/runtimegate.",
+          "evidence": [
+            "E007",
+            "E024",
+            "E050"
+          ]
+        },
+        {
+          "summary": "Actualold124bodyk12345executedthroughserviceatkey12346consumesnewcatalogclaim;currentk12346thenrejected. Controlcurrentonlyaccepted.",
+          "source": "design",
+          "status": "confirmed",
+          "method": "design",
+          "canonical": "docs/PROTOCOL.md#probe-service",
+          "limits": "DirectPythonentry/broadcastrecorder, noWine/TCP/native165effect ororiginalservervalidatorproof. Guardnotimplemented.",
+          "evidence": [
+            "E030",
+            "E029"
+          ]
+        }
+      ],
+      "verification": [
+        {
+          "check": "3710mechanicalchecks/3sealedruns;291nativepacket/24native153/189UDP/876secure/97prefixcomparisons;12imagesmanuallyviewed",
+          "result": "pass",
+          "evidence": [
+            "E050",
+            "E052"
+          ],
+          "limits": "Checksvalidatecapturedrelationships, notsemantics/allvariants/gate; r1failedbeforeclient/r3partialexplicit."
+        },
+        {
+          "check": "25serverpolicy/codec/profiletests,7catalogconsistencytests,18checkpointtests; requiredcorelinks/history/rawhash/artifacts andmanualaudit",
+          "result": "pass",
+          "evidence": [
+            "E035",
+            "E005",
+            "E006"
+          ],
+          "limits": "Unit/regressionnotKRoracle. Independentreviewwaived; checkerhistoricaldocfallbackexactGitbytesnotnewsemanticapproval."
+        }
+      ],
+      "evidence": [
+        {
+          "id": "E001",
+          "kind": "repository",
+          "path": "docs/evidence/feature-catalog/README.md",
+          "sha256": "33f5439ceb20407bedaf2422abfd51f921985ffc0a32bf1b9ef2db69bf32a0e1",
+          "bytes": 2688
+        },
+        {
+          "id": "E002",
+          "kind": "repository",
+          "path": "docs/evidence/probe-service/README.md",
+          "sha256": "779489fed9b8b77570b3d2a0dd3b8eb5c9f0d255e8490c05efd36106cd61366e",
+          "bytes": 8693
+        },
+        {
+          "id": "E003",
+          "kind": "local",
+          "path": "local/research/codex/probe-service-r1/actor-fields.json",
+          "sha256": "68ce2af5e495e94199d08044469cdb7379a5f792ff09fca72f794aded84489c0",
+          "bytes": 599841
+        },
+        {
+          "id": "E004",
+          "kind": "local",
+          "path": "local/research/codex/probe-service-r1/build_catalog.py",
+          "sha256": "278d7fa8463701c7823e56043c6764635577f32211c4fff58fdaca0610bd8288",
+          "bytes": 15129
+        },
+        {
+          "id": "E005",
+          "kind": "local",
+          "path": "local/research/codex/probe-service-r1/catalog-tests.txt",
+          "sha256": "f39b0311ce154046f55920f3d523b2a0cfe4555ba9e69b80d00138ea8b892264",
+          "bytes": 105
+        },
+        {
+          "id": "E006",
+          "kind": "local",
+          "path": "local/research/codex/probe-service-r1/checkpoint-tests.txt",
+          "sha256": "72307edf0574db0ab6c3c3efa66d93bccb3e24993d4a3511ec6861734d8d9e5f",
+          "bytes": 117
+        },
+        {
+          "id": "E007",
+          "kind": "local",
+          "path": "local/research/codex/probe-service-r1/codec-native-comparison.json",
+          "sha256": "08317fa8377d97ea09185538462123ad23698cee6aee2609f56170aa6ab8cad5",
+          "bytes": 57517
+        },
+        {
+          "id": "E008",
+          "kind": "local",
+          "path": "local/research/codex/probe-service-r1/codec-reuse-verification.json",
+          "sha256": "255af8a7ea08c09413b0d6832755bebe9f62262d0f4da9e492d969dc8d08ae44",
+          "bytes": 156565
+        },
+        {
+          "id": "E009",
+          "kind": "local",
+          "path": "local/research/codex/probe-service-r1/compare_codec.py",
+          "sha256": "0f562ce7a6f2c2c13767a2aa991325fdf03b26e5aa7ef437e86c7c80a1cc3ee9",
+          "bytes": 1677
+        },
+        {
+          "id": "E010",
+          "kind": "local",
+          "path": "local/research/codex/probe-service-r1/derive-results.txt",
+          "sha256": "df8295106ce3ff1ebeec60c30f4c2bc2936573b4033b557491c10c600316b89c",
+          "bytes": 68
+        },
+        {
+          "id": "E011",
+          "kind": "local",
+          "path": "local/research/codex/probe-service-r1/derive_roles.py",
+          "sha256": "29da797faf42db353f8bbc18cfb74d49f625d58f323ed27bf2c85c4083a65198",
+          "bytes": 808
+        },
+        {
+          "id": "E012",
+          "kind": "local",
+          "path": "local/research/codex/probe-service-r1/downstream-summary.json",
+          "sha256": "13b127067d917c434b6973432ac8e45e1ad05a91bea9b8cb0485ab8b58ffbe04",
+          "bytes": 204805
+        },
+        {
+          "id": "E013",
+          "kind": "local",
+          "path": "local/research/codex/probe-service-r1/integrated-r1-hashes.json",
+          "sha256": "674996b2d1c9b2a2e4fcaeb133be6122297ef320d2e5950aea3472740a35317c",
+          "bytes": 1225
+        },
+        {
+          "id": "E014",
+          "kind": "local",
+          "path": "local/research/codex/probe-service-r1/integrated-r1-recipe.json",
+          "sha256": "b5c51dd651c9fd6c80eed5d774c375ca61b63ccf365f4a56d26f25587a64fa81",
+          "bytes": 1001
+        },
+        {
+          "id": "E015",
+          "kind": "local",
+          "path": "local/research/codex/probe-service-r1/integrated-r2-hashes.json",
+          "sha256": "f059a67b5cd69a3a468750061bfae4ada42fd5c1ee8331d19254785bb0be7ccf",
+          "bytes": 279153
+        },
+        {
+          "id": "E016",
+          "kind": "local",
+          "path": "local/research/codex/probe-service-r1/integrated-r2-recipe.json",
+          "sha256": "7f1a4c3cf0838be7578d2c6d23612528e4b2590565c1c9247cb3c439d60c3fd1",
+          "bytes": 1004
+        },
+        {
+          "id": "E017",
+          "kind": "local",
+          "path": "local/research/codex/probe-service-r1/integrated-r3-hashes.json",
+          "sha256": "11dc4fb775f50a7883e9a59de5297ca2396b64fba1f16bd0b8c8564f47339a27",
+          "bytes": 275845
+        },
+        {
+          "id": "E018",
+          "kind": "local",
+          "path": "local/research/codex/probe-service-r1/integrated-r3-recipe.json",
+          "sha256": "a315cd082b6ddc1a38fb922ad77ff812a3aa3d6280de48fda197775febde057b",
+          "bytes": 1007
+        },
+        {
+          "id": "E019",
+          "kind": "local",
+          "path": "local/research/codex/probe-service-r1/item-summary.json",
+          "sha256": "9b4abd7f5d0290fc056a38c157e40171b3b82beb5923e52e6bb2bbee984ae1bb",
+          "bytes": 6128
+        },
+        {
+          "id": "E020",
+          "kind": "local",
+          "path": "local/research/codex/probe-service-r1/measurement-notes.json",
+          "sha256": "a0691f6370368b3103bf57690c848e5c3d79f1c3abb00bf50467591c220266f6",
+          "bytes": 1181
+        },
+        {
+          "id": "E021",
+          "kind": "local",
+          "path": "local/research/codex/probe-service-r1/native-153-r2.txt",
+          "sha256": "c78b0c88107aa4deac39d540ca3f97a944aa1706fe598478526d29ae3875f2a1",
+          "bytes": 23
+        },
+        {
+          "id": "E022",
+          "kind": "local",
+          "path": "local/research/codex/probe-service-r1/native-153.json",
+          "sha256": "ac2b946a92b66007aff013bfc5e3e89fb4e8d809ef3e82b7747d6c28a258696c",
+          "bytes": 27373
+        },
+        {
+          "id": "E023",
+          "kind": "local",
+          "path": "local/research/codex/probe-service-r1/native-packets-r2.txt",
+          "sha256": "da0297d31b03ff4cf8bee88a92c6479349775010ec22abf44995dbb191674593",
+          "bytes": 29
+        },
+        {
+          "id": "E024",
+          "kind": "local",
+          "path": "local/research/codex/probe-service-r1/native-packets.json",
+          "sha256": "2a299b814232de86b13d90c846638f235a6be0acf869760a4f12e2869b27b26f",
+          "bytes": 124119
+        },
+        {
+          "id": "E025",
+          "kind": "local",
+          "path": "local/research/codex/probe-service-r1/native-udp.json",
+          "sha256": "ebffa24557d3ec910c45f67cd09d0469474dc3ac320b0f6d246f2547a1a0e040",
+          "bytes": 50307
+        },
+        {
+          "id": "E026",
+          "kind": "local",
+          "path": "local/research/codex/probe-service-r1/native_153.py",
+          "sha256": "e357b99572378a4fb7918f351b7acceb10460e20bb3d50304d038cf280697858",
+          "bytes": 3495
+        },
+        {
+          "id": "E027",
+          "kind": "local",
+          "path": "local/research/codex/probe-service-r1/native_packets.py",
+          "sha256": "93a6dadad6c9942e94331b86dae00ba95ad1ddfb7efcd3e7f66875a52a66a8ea",
+          "bytes": 4769
+        },
+        {
+          "id": "E028",
+          "kind": "local",
+          "path": "local/research/codex/probe-service-r1/native_udp.py",
+          "sha256": "3fc0a0869a8b2a1dc9d3647adcf26dc7352864ce5b2977a1608054de7200199b",
+          "bytes": 1538
+        },
+        {
+          "id": "E029",
+          "kind": "local",
+          "path": "local/research/codex/probe-service-r1/old124-reuse.json",
+          "sha256": "e9d87fec20e33b04354e63d3ef5e71b2640072523e839f2ae32107f2c2b2219a",
+          "bytes": 2944
+        },
+        {
+          "id": "E030",
+          "kind": "local",
+          "path": "local/research/codex/probe-service-r1/old124-service-gap.json",
+          "sha256": "7189cbd9c5bcefd377afe7d0aebccead676eb1b306cdc393fb0278fa481502e5",
+          "bytes": 4316
+        },
+        {
+          "id": "E031",
+          "kind": "local",
+          "path": "local/research/codex/probe-service-r1/parse_downstream.py",
+          "sha256": "11cf4ff88a6ea1285b4c83d0a1013f6fe3b6fc003faf6edf23ee3d9a82557ec6",
+          "bytes": 4322
+        },
+        {
+          "id": "E032",
+          "kind": "local",
+          "path": "local/research/codex/probe-service-r1/parse_fields.py",
+          "sha256": "02d65e4284142c540fde1fe232625852650da322ceb78e13dde1d7b3b4d85d0a",
+          "bytes": 3914
+        },
+        {
+          "id": "E033",
+          "kind": "local",
+          "path": "local/research/codex/probe-service-r1/parse_items.py",
+          "sha256": "ac3fb5f9eea4748043880b204f59e99d9cd632ccafe26c341fc91f5e8e700238",
+          "bytes": 3427
+        },
+        {
+          "id": "E034",
+          "kind": "local",
+          "path": "local/research/codex/probe-service-r1/parse_runtime.py",
+          "sha256": "cd508842a5df13b6286c161523ac1f2705125e9a62809eedee078868384fb8b2",
+          "bytes": 4852
+        },
+        {
+          "id": "E035",
+          "kind": "local",
+          "path": "local/research/codex/probe-service-r1/policy-tests-final.txt",
+          "sha256": "eea909e80cac976e042df6bc3545b70fb14ff6a007d31081c1e4a83f66f1a024",
+          "bytes": 124
+        },
+        {
+          "id": "E036",
+          "kind": "local",
+          "path": "local/research/codex/probe-service-r1/policy-tests.txt",
+          "sha256": "e88eaf6e50984f6551445a6c9e77e4ca9e63f0e93ed442e493d2682e576a4f19",
+          "bytes": 124
+        },
+        {
+          "id": "E037",
+          "kind": "local",
+          "path": "local/research/codex/probe-service-r1/probe_old124.py",
+          "sha256": "c5e6443d2555eba9457e79c19620255722008c7cac0f95cda4b0f9c207064c47",
+          "bytes": 4324
+        },
+        {
+          "id": "E038",
+          "kind": "local",
+          "path": "local/research/codex/probe-service-r1/profile-v2.json",
+          "sha256": "112aea4eb6c6f907202cbeae88af3c0fe6487806ace2a9a8da4368afad3ebab4",
+          "bytes": 8532
+        },
+        {
+          "id": "E039",
+          "kind": "local",
+          "path": "local/research/codex/probe-service-r1/profile.json",
+          "sha256": "b577b80919be0b4e3c1315f11fed725872ddd9037d46b18ed71aa5603970acf6",
+          "bytes": 8532
+        },
+        {
+          "id": "E040",
+          "kind": "local",
+          "path": "local/research/codex/probe-service-r1/replay-effects.json",
+          "sha256": "f83016cfeb97ea9fc0f11b24364d6bf34b9bd2748e259f5358b453c3b419c487",
+          "bytes": 54088
+        },
+        {
+          "id": "E041",
+          "kind": "local",
+          "path": "local/research/codex/probe-service-r1/replay-run.py",
+          "sha256": "3934349af20f19fd6a3600db4c7b25ac2dca8b16e3c2ac74225e9f9eee13047d",
+          "bytes": 3004
+        },
+        {
+          "id": "E042",
+          "kind": "local",
+          "path": "local/research/codex/probe-service-r1/replay-summary.txt",
+          "sha256": "c7bd5d2e676e25ed362c76963861328c6ee8beaff0f6272b52f194f9c956510a",
+          "bytes": 1256
+        },
+        {
+          "id": "E043",
+          "kind": "local",
+          "path": "local/research/codex/probe-service-r1/reuse-question.json",
+          "sha256": "f4728b068e65a451e94daa44afa8fa84687223ae379164d2bbcaed4eb7d8a44d",
+          "bytes": 4655
+        },
+        {
+          "id": "E044",
+          "kind": "local",
+          "path": "local/research/codex/probe-service-r1/run_probe.py",
+          "sha256": "bc04807f4fc80df56fe49acdf90b6cf23e5dc0c4f1a2e2bc3cc268a1cbd15e7b",
+          "bytes": 1069
+        },
+        {
+          "id": "E045",
+          "kind": "local",
+          "path": "local/research/codex/probe-service-r1/runtime-summary.json",
+          "sha256": "973b7acce012d4be30e367809b1fde559e1e1735597169e80e061a2b37e02cae",
+          "bytes": 420226
+        },
+        {
+          "id": "E046",
+          "kind": "local",
+          "path": "local/research/codex/probe-service-r1/seal_run.py",
+          "sha256": "874f8e90a1dc51cca1367e03ea597ad5dacecf71b9d6ac347939148d8c24b0d9",
+          "bytes": 627
+        },
+        {
+          "id": "E047",
+          "kind": "local",
+          "path": "local/research/codex/probe-service-r1/service-v2.gdb",
+          "sha256": "57002f7a894f9ad164829ceb3bc17dc96e552edd5417400a0712c3d9832a2103",
+          "bytes": 24693
+        },
+        {
+          "id": "E048",
+          "kind": "local",
+          "path": "local/research/codex/probe-service-r1/service.gdb",
+          "sha256": "368bfd19f8ffcdf0c8ce7759414141e89e0625c1b736ccedb0499077ce2ad64f",
+          "bytes": 23914
+        },
+        {
+          "id": "E049",
+          "kind": "local",
+          "path": "local/research/codex/probe-service-r1/summarize_replays.py",
+          "sha256": "0b3c1debc9909dd358c65728d36016df617bb695f72c1e98413e9aa4e5f292e5",
+          "bytes": 2534
+        },
+        {
+          "id": "E050",
+          "kind": "local",
+          "path": "local/research/codex/probe-service-r1/verification.json",
+          "sha256": "703845fd798b04bf35e80e5584b14b1c362c96092797ec804a82b39fe3adaae5",
+          "bytes": 530
+        },
+        {
+          "id": "E051",
+          "kind": "local",
+          "path": "local/research/codex/probe-service-r1/verify.py",
+          "sha256": "c9cb399836e9f978f14d2b8636f8c76585ab7124940b444485965203a8efd504",
+          "bytes": 4407
+        },
+        {
+          "id": "E052",
+          "kind": "local",
+          "path": "local/research/codex/probe-service-r1/visual-index.json",
+          "sha256": "0fba92c8ddb4b938d93d3d5fd248d1208496fc15b9d5cc5599d372a8ba5109da",
+          "bytes": 2342
+        },
+        {
+          "id": "E053",
+          "kind": "local",
+          "path": "local/research/codex/probe-service-r1/visuals.py",
+          "sha256": "ce635b166ef5973bf9aa326716f7b04499b39bf290195701e94e6987739f49ef",
+          "bytes": 892
+        },
+        {
+          "id": "E054",
+          "kind": "local",
+          "path": "local/research/codex/probe-service-r1/cp048-snapshot/AGENTS.md",
+          "sha256": "4ef022db8cefe65690f46e9b98b90ecac79ff8127bef9fc8d783d5812e53c46a",
+          "bytes": 7171
+        },
+        {
+          "id": "E055",
+          "kind": "local",
+          "path": "local/research/codex/probe-service-r1/cp048-snapshot/README.md",
+          "sha256": "a9b737ed906864239de131360076c2abea9cc5bab3a7d2278987c3d361695252",
+          "bytes": 3861
+        },
+        {
+          "id": "E056",
+          "kind": "local",
+          "path": "local/research/codex/probe-service-r1/cp048-snapshot/docs/COVERAGE.md",
+          "sha256": "88e989d561b0f2feb04a445c02ed8b05aaba0ee76382984a9c6d114430b95086",
+          "bytes": 59821
+        },
+        {
+          "id": "E057",
+          "kind": "local",
+          "path": "local/research/codex/probe-service-r1/cp048-snapshot/docs/PLAN.md",
+          "sha256": "ca58f97e12b18830f182668f82244b9c8d918e103e01e9ef4a8a3f20a9d62056",
+          "bytes": 27907
+        },
+        {
+          "id": "E058",
+          "kind": "local",
+          "path": "local/research/codex/probe-service-r1/cp048-snapshot/docs/PROTOCOL.md",
+          "sha256": "3a59580ba58710644fa4f24d1c904653695c1b3f8ae7b0ccd9fb518223783462",
+          "bytes": 176516
+        },
+        {
+          "id": "E059",
+          "kind": "local",
+          "path": "local/research/codex/probe-service-r1/cp048-snapshot/docs/RESEARCH.md",
+          "sha256": "bb65626d694621d6fdf11eecd32a6658d70a0ee43e375ec7f259ee50adddd802",
+          "bytes": 28379
+        },
+        {
+          "id": "E060",
+          "kind": "local",
+          "path": "local/research/codex/probe-service-r1/cp048-snapshot/docs/features.json",
+          "sha256": "4ea6414368e45c5f72222f7ab6c24a5fbfd6a6d8ae899036ed7e6db4ca0d927f",
+          "bytes": 62562
+        },
+        {
+          "id": "E061",
+          "kind": "local",
+          "path": "local/research/codex/probe-service-r1/cp048-snapshot/server/README.md",
+          "sha256": "54332851fac383c3bc7e14140b412914220215f43702975d36ff10a841aa622a",
+          "bytes": 5546
+        },
+        {
+          "id": "E062",
+          "kind": "local",
+          "path": "local/research/codex/probe-service-r1/cp048-snapshot/server/item_claims.py",
+          "sha256": "7990ae9195e9f8bba56b04101f352506194dbd0252793183993ce101a8674a2e",
+          "bytes": 3340
+        },
+        {
+          "id": "E063",
+          "kind": "local",
+          "path": "local/research/codex/probe-service-r1/cp048-snapshot/server/probe_codec.py",
+          "sha256": "23ba54e6940953a52ff737e7e06b2761a8eb22eab444310b49b1d96efa12411d",
+          "bytes": 3227
+        },
+        {
+          "id": "E064",
+          "kind": "local",
+          "path": "local/research/codex/probe-service-r1/cp048-snapshot/server/probe_room.py",
+          "sha256": "91292494d492c7851bd5432649adf528e1b07290316dc56ba1478f8a209a08bc",
+          "bytes": 1468
+        },
+        {
+          "id": "E065",
+          "kind": "local",
+          "path": "local/research/codex/probe-service-r1/cp048-snapshot/server/probe_service.py",
+          "sha256": "5bf9470502a3b0539e2ecc1ec7549987d25b9b95011e76947a9a162d545d2e29",
+          "bytes": 23418
+        },
+        {
+          "id": "E066",
+          "kind": "local",
+          "path": "local/research/codex/probe-service-r1/cp048-snapshot/server/round_fence.py",
+          "sha256": "aabcc7f1d623573fc217de8df05403f83d82425bbe5d6e78872b3096a2d46708",
+          "bytes": 2339
+        },
+        {
+          "id": "E067",
+          "kind": "local",
+          "path": "local/research/codex/probe-service-r1/cp048-snapshot/server/test_item_claims.py",
+          "sha256": "63d68da46f91bcc9d4d3517bfd4ebc0d8f0a08c283a83715ac5b14a6efb71eea",
+          "bytes": 2832
+        },
+        {
+          "id": "E068",
+          "kind": "local",
+          "path": "local/research/codex/probe-service-r1/cp048-snapshot/server/test_probe_codec.py",
+          "sha256": "ddb2cd6303aaf99af43d7add3735fec1b7c41461deb38f482d4a1b113a21367c",
+          "bytes": 1366
+        },
+        {
+          "id": "E069",
+          "kind": "local",
+          "path": "local/research/codex/probe-service-r1/cp048-snapshot/server/test_probe_room.py",
+          "sha256": "4ace7f5828661d891fa2006731f0aceed081a527c09be335bbee47e9a721e783",
+          "bytes": 1605
+        },
+        {
+          "id": "E070",
+          "kind": "local",
+          "path": "local/research/codex/probe-service-r1/cp048-snapshot/server/test_probe_service.py",
+          "sha256": "2f4f4696aa9b22ae8bd651018c8b30eef817c83c8a97946e25567565d8d11ea7",
+          "bytes": 1634
+        },
+        {
+          "id": "E071",
+          "kind": "local",
+          "path": "local/research/codex/probe-service-r1/cp048-snapshot/server/test_round_fence.py",
+          "sha256": "6923d90f30636dfe05b09d45f5bbaceaf3ef32223d48eba0213a6c3cc40b037a",
+          "bytes": 2455
+        },
+        {
+          "id": "E072",
+          "kind": "local",
+          "path": "local/research/codex/probe-service-r1/cp048-snapshot/server/test_udp_round_keys.py",
+          "sha256": "cfb36ee95d48c79b1800081a73b54498242f366eb08a2e3be850ff4a3503ce96",
+          "bytes": 1224
+        },
+        {
+          "id": "E073",
+          "kind": "local",
+          "path": "local/research/codex/probe-service-r1/cp048-snapshot/server/udp_round_keys.py",
+          "sha256": "db58ae1f25bcbeb52c2d25c7db6afbf1021ddd3af29702e756f5f41886530a0d",
+          "bytes": 1187
+        },
+        {
+          "id": "E074",
+          "kind": "local",
+          "path": "local/research/codex/probe-service-r1/cp048-snapshot/tools/README.md",
+          "sha256": "4b9caada2718c33b74ce5bf5c72adaed775956c73969275a43d47e284b190e3f",
+          "bytes": 4209
+        },
+        {
+          "id": "E075",
+          "kind": "local",
+          "path": "local/research/codex/probe-service-r1/cp048-snapshot/tools/check_checkpoints.py",
+          "sha256": "77aee87aa00f8fedf6900d0377c2f216fb145d7e009763a92855bd52b24c79f2",
+          "bytes": 21956
+        },
+        {
+          "id": "E076",
+          "kind": "local",
+          "path": "local/research/codex/probe-service-r1/cp048-snapshot/tools/check_docs.py",
+          "sha256": "f2e61e5583dd89d7978eaa2c9d47b1cdcc0f928d66e42f841b1e1dd1a9486db2",
+          "bytes": 1765
+        },
+        {
+          "id": "E077",
+          "kind": "local",
+          "path": "local/research/codex/probe-service-r1/cp048-snapshot/tools/export_probe_profile.py",
+          "sha256": "48c474d3e8f9951e844090cbd10f51c4db973d82bce80550106571bb9f6c1202",
+          "bytes": 3684
+        },
+        {
+          "id": "E078",
+          "kind": "local",
+          "path": "local/research/codex/probe-service-r1/cp048-snapshot/tools/feature_catalog.py",
+          "sha256": "e1ddec5dc6e1c2c700e66bb5a68948f89c82df5168acb0870443ae84ac0e6fb5",
+          "bytes": 14768
+        },
+        {
+          "id": "E079",
+          "kind": "local",
+          "path": "local/research/codex/probe-service-r1/cp048-snapshot/tools/test_checkpoints.py",
+          "sha256": "541952fd575741a70e1dcc9490fe11d8e990e6dfc9c05012d531d5bd930c5cd6",
+          "bytes": 14329
+        },
+        {
+          "id": "E080",
+          "kind": "local",
+          "path": "local/research/codex/probe-service-r1/cp048-snapshot/tools/test_feature_catalog.py",
+          "sha256": "09c375d6d7db7282cee21bd33dfbfdb4fc449a3bcfa3384f6b26ccf37e3e7a06",
+          "bytes": 2952
+        },
+        {
+          "id": "E081",
+          "kind": "local",
+          "path": "local/research/codex/probe-service-r1/integrated-r1/run.json",
+          "sha256": "54ca7de2d298a21783059e6543bcfbac3c2056a27407c77259d6392ab4325d3f",
+          "bytes": 7624
+        },
+        {
+          "id": "E082",
+          "kind": "local",
+          "path": "local/research/codex/probe-service-r1/integrated-r1/service.log",
+          "sha256": "9ed0aaf3ae31bfeff8552021541904a6c328116d61eeebfa9e949d11cd0a4d90",
+          "bytes": 871
+        },
+        {
+          "id": "E083",
+          "kind": "local",
+          "path": "local/research/codex/probe-service-r1/integrated-r2/run.json",
+          "sha256": "237645f5b4848f721b9cfbca91270fe953568b00f45972a975b3fe1c8c60696e",
+          "bytes": 284218
+        },
+        {
+          "id": "E084",
+          "kind": "local",
+          "path": "local/research/codex/probe-service-r1/integrated-r2/client.log",
+          "sha256": "a04680270eedd4b1a816ab73b6f3e57bbcb631310589cc57e447eafc0dd2e0ca",
+          "bytes": 171158
+        },
+        {
+          "id": "E085",
+          "kind": "local",
+          "path": "local/research/codex/probe-service-r1/integrated-r2/client-B.log",
+          "sha256": "c3ef62ecd8520ae4942f82e32f2d25e1a151432d4b0d2e7de1e7c3042f3b2967",
+          "bytes": 236847
+        },
+        {
+          "id": "E086",
+          "kind": "local",
+          "path": "local/research/codex/probe-service-r1/integrated-r2/service-state.json",
+          "sha256": "8f2d2dfed964fd3015531ea49be712ccca1083eb39cc6bd63edb3ba1fd978486",
+          "bytes": 158183
+        },
+        {
+          "id": "E087",
+          "kind": "local",
+          "path": "local/research/codex/probe-service-r1/integrated-r2/service.log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "id": "E088",
+          "kind": "local",
+          "path": "local/research/codex/probe-service-r1/integrated-r2/debug-commands.txt",
+          "sha256": "368bfd19f8ffcdf0c8ce7759414141e89e0625c1b736ccedb0499077ce2ad64f",
+          "bytes": 23914
+        },
+        {
+          "id": "E089",
+          "kind": "local",
+          "path": "local/research/codex/probe-service-r1/integrated-r2/debug-commands-B.txt",
+          "sha256": "368bfd19f8ffcdf0c8ce7759414141e89e0625c1b736ccedb0499077ce2ad64f",
+          "bytes": 23914
+        },
+        {
+          "id": "E090",
+          "kind": "local",
+          "path": "local/research/codex/probe-service-r1/integrated-r2/A-blast158-r1-1-97.bin",
+          "sha256": "74e2de4a80eccc95ca075b6b7b315a7883176c212d7f752f47cb45a80c0122e3",
+          "bytes": 51
+        },
+        {
+          "id": "E091",
+          "kind": "local",
+          "path": "local/research/codex/probe-service-r1/integrated-r2/A-blast158-r2-2-136.bin",
+          "sha256": "64d4c380a715c392025aa97ce4b91e3dcfcb01f4ee6596e3e32257b491d7ca6f",
+          "bytes": 51
+        },
+        {
+          "id": "E092",
+          "kind": "local",
+          "path": "local/research/codex/probe-service-r1/integrated-r2/A-dynamic159-r1-1-94.bin",
+          "sha256": "9eabef752de5cb32d752c4092e28f9affa41d42bbbc417099612d800129055ff",
+          "bytes": 77
+        },
+        {
+          "id": "E093",
+          "kind": "local",
+          "path": "local/research/codex/probe-service-r1/integrated-r2/A-dynamic159-r2-2-133.bin",
+          "sha256": "21ab35a31c09963c993ee393123e07630e7bc3ff4ae995a80353991cfde2b893",
+          "bytes": 77
+        },
+        {
+          "id": "E094",
+          "kind": "local",
+          "path": "local/research/codex/probe-service-r1/integrated-r2/A-floor582-115.bin",
+          "sha256": "d7cfe29149c84aaa1e95b2cd935d5313540651f27c4c6eb4aa030f96981eac36",
+          "bytes": 64
+        },
+        {
+          "id": "E095",
+          "kind": "local",
+          "path": "local/research/codex/probe-service-r1/integrated-r2/A-floor582-76.bin",
+          "sha256": "dade68ac6b12c8c7ae59bf27d007ad4f1b32b6369d9a0fcd29170b3063e42ace",
+          "bytes": 64
+        },
+        {
+          "id": "E096",
+          "kind": "local",
+          "path": "local/research/codex/probe-service-r1/integrated-r2/A-go197-121.bin",
+          "sha256": "3380c0c80d8faad72ca646a853ed917edd2f30fd0527e83e58ce731c40aa7b3f",
+          "bytes": 52
+        },
+        {
+          "id": "E097",
+          "kind": "local",
+          "path": "local/research/codex/probe-service-r1/integrated-r2/A-go197-82.bin",
+          "sha256": "64b95010ecb0e40bc0367f41f6710d2357fb2538ce827e205825284601237ef8",
+          "bytes": 52
+        },
+        {
+          "id": "E098",
+          "kind": "local",
+          "path": "local/research/codex/probe-service-r1/integrated-r2/A-guest110-r1-109.bin",
+          "sha256": "f300f7803c78018bc7bb0a99ff04bd200a6843d607915cb48c84b78b557b6a61",
+          "bytes": 44
+        },
+        {
+          "id": "E099",
+          "kind": "local",
+          "path": "local/research/codex/probe-service-r1/integrated-r2/A-guest110-r2-148.bin",
+          "sha256": "df02d8a7984631a6c13646af10eae0def798bf3d6ac4691112817b04012efdb7",
+          "bytes": 44
+        },
+        {
+          "id": "E100",
+          "kind": "local",
+          "path": "local/research/codex/probe-service-r1/integrated-r2/A-host110-r1-106.bin",
+          "sha256": "bbbf2539317016a757afed97a98b9103e3e64fa0b31dc96c0a3ff853c815818e",
+          "bytes": 44
+        },
+        {
+          "id": "E101",
+          "kind": "local",
+          "path": "local/research/codex/probe-service-r1/integrated-r2/A-host110-r2-145.bin",
+          "sha256": "3f61445619e55a509cbcfc153858b6fb4a8529cba6b9bad57fe91aa05570c76b",
+          "bytes": 44
+        },
+        {
+          "id": "E102",
+          "kind": "local",
+          "path": "local/research/codex/probe-service-r1/integrated-r2/A-item165-r1-17-91.bin",
+          "sha256": "2ad2e7cbd637f553ff114fada41951a1129ca3dc52b14a540a60ccea59088bf0",
+          "bytes": 50
+        },
+        {
+          "id": "E103",
+          "kind": "local",
+          "path": "local/research/codex/probe-service-r1/integrated-r2/A-item165-r2-17-130.bin",
+          "sha256": "1f7b0435485208c4a329795aa60112b09552104e608473b7f5057406ce53b206",
+          "bytes": 50
+        },
+        {
+          "id": "E104",
+          "kind": "local",
+          "path": "local/research/codex/probe-service-r1/integrated-r2/A-peer153-127.bin",
+          "sha256": "e1d9f68e7343577dc43f0863893146b0a17494c735942c720d8675daa15258e0",
+          "bytes": 135
+        },
+        {
+          "id": "E105",
+          "kind": "local",
+          "path": "local/research/codex/probe-service-r1/integrated-r2/A-peer153-88.bin",
+          "sha256": "5bf4782db79999711e502b86eb8fcd7dcf13c35ebcfe9d93fd63e2022d993ead",
+          "bytes": 135
+        },
+        {
+          "id": "E106",
+          "kind": "local",
+          "path": "local/research/codex/probe-service-r1/integrated-r2/A-play196-124.bin",
+          "sha256": "e0f364fc0becf0a2a91327c1a33e299af37f1cecc00a26d40443c5bda58b1af4",
+          "bytes": 45
+        },
+        {
+          "id": "E107",
+          "kind": "local",
+          "path": "local/research/codex/probe-service-r1/integrated-r2/A-play196-85.bin",
+          "sha256": "d04bf155b4847f9d41b0edfdf00a32526302273271c0f1cadbb8ce22b89eb51d",
+          "bytes": 45
+        },
+        {
+          "id": "E108",
+          "kind": "local",
+          "path": "local/research/codex/probe-service-r1/integrated-r2/A-rank175-r1-100.bin",
+          "sha256": "5b3751f4c322454005652035ed69253cac647ed0fbc24540bd0599fa2bae6c31",
+          "bytes": 340
+        },
+        {
+          "id": "E109",
+          "kind": "local",
+          "path": "local/research/codex/probe-service-r1/integrated-r2/A-rank175-r2-139.bin",
+          "sha256": "076e2ce52df3f3450801afd1e815de8afcccc048d94546b45cd74c50f03dd959",
+          "bytes": 340
+        },
+        {
+          "id": "E110",
+          "kind": "local",
+          "path": "local/research/codex/probe-service-r1/integrated-r2/A-ready110-112.bin",
+          "sha256": "f31c5f5630019345dc62b5027f13c5267af82643ac2dbac979f0a454192b910e",
+          "bytes": 44
+        },
+        {
+          "id": "E111",
+          "kind": "local",
+          "path": "local/research/codex/probe-service-r1/integrated-r2/A-ready110-73.bin",
+          "sha256": "8fafd9cf652b458ee09b3751a0201f9ab1409920398e0e842e43b915c8840e25",
+          "bytes": 44
+        },
+        {
+          "id": "E112",
+          "kind": "local",
+          "path": "local/research/codex/probe-service-r1/integrated-r2/A-return180-r1-103.bin",
+          "sha256": "996ed34682d009d8977c2571e23c636f824049fb8d962426a9c2d903ed080200",
+          "bytes": 41
+        },
+        {
+          "id": "E113",
+          "kind": "local",
+          "path": "local/research/codex/probe-service-r1/integrated-r2/A-return180-r2-142.bin",
+          "sha256": "7e2f2c7c886e57bc6ea6b82c1aaa41fa02ca04bcebdf5e725bb7531d97d17567",
+          "bytes": 41
+        },
+        {
+          "id": "E114",
+          "kind": "local",
+          "path": "local/research/codex/probe-service-r1/integrated-r2/A-start121-r1-79.bin",
+          "sha256": "f8a824335b4079160a4aaf0e0b425d1fabfa78c248d131503440d0414e1f26cf",
+          "bytes": 167
+        },
+        {
+          "id": "E115",
+          "kind": "local",
+          "path": "local/research/codex/probe-service-r1/integrated-r2/A-start121-r2-118.bin",
+          "sha256": "c8bc9053b53a7ea610e29ae2928cdadeec601dd12bcf9ce25f30ac71cdad6346",
+          "bytes": 167
+        },
+        {
+          "id": "E116",
+          "kind": "local",
+          "path": "local/research/codex/probe-service-r1/integrated-r2/B-blast158-r1-1-97.bin",
+          "sha256": "74e2de4a80eccc95ca075b6b7b315a7883176c212d7f752f47cb45a80c0122e3",
+          "bytes": 51
+        },
+        {
+          "id": "E117",
+          "kind": "local",
+          "path": "local/research/codex/probe-service-r1/integrated-r2/B-blast158-r2-2-142.bin",
+          "sha256": "b12c3fbe13bba6591e62ca40687ffe6a04b44a19ffbc64d48647cd6075c91ebc",
+          "bytes": 51
+        },
+        {
+          "id": "E118",
+          "kind": "local",
+          "path": "local/research/codex/probe-service-r1/integrated-r2/B-dynamic159-r1-1-94.bin",
+          "sha256": "9eabef752de5cb32d752c4092e28f9affa41d42bbbc417099612d800129055ff",
+          "bytes": 77
+        },
+        {
+          "id": "E119",
+          "kind": "local",
+          "path": "local/research/codex/probe-service-r1/integrated-r2/B-dynamic159-r2-2-139.bin",
+          "sha256": "07307a178c83e41b775986c9032efddbfd5eb8d53c7f3ac9798bffec7660ff87",
+          "bytes": 77
+        },
+        {
+          "id": "E120",
+          "kind": "local",
+          "path": "local/research/codex/probe-service-r1/integrated-r2/B-event170-17-r1-100.bin",
+          "sha256": "6a402694c712090aaa8289ab445df237698b9375ed92f44d9739febed6a0d449",
+          "bytes": 48
+        },
+        {
+          "id": "E121",
+          "kind": "local",
+          "path": "local/research/codex/probe-service-r1/integrated-r2/B-event170-17-r2-145.bin",
+          "sha256": "d78aa19bca781045c4a5e301c4bb181045f8657937393a3a1b9066ed5aef4e39",
+          "bytes": 48
+        },
+        {
+          "id": "E122",
+          "kind": "local",
+          "path": "local/research/codex/probe-service-r1/integrated-r2/B-event170-19-r1-103.bin",
+          "sha256": "4da110a362a18e12431eda5a74a44baac7a046d132204dceb8f01e9ed8176760",
+          "bytes": 59
+        },
+        {
+          "id": "E123",
+          "kind": "local",
+          "path": "local/research/codex/probe-service-r1/integrated-r2/B-event170-19-r2-148.bin",
+          "sha256": "1da0e2129ec9cb07ffa8661a1f34c07e365ff999580b99f287b46eaeea60111c",
+          "bytes": 59
+        },
+        {
+          "id": "E124",
+          "kind": "local",
+          "path": "local/research/codex/probe-service-r1/integrated-r2/B-floor582-121.bin",
+          "sha256": "b108cbc93ed5896e87a383e680b955df612b139b892fe2dc6fa7c89dc76d1eaf",
+          "bytes": 64
+        },
+        {
+          "id": "E125",
+          "kind": "local",
+          "path": "local/research/codex/probe-service-r1/integrated-r2/B-floor582-76.bin",
+          "sha256": "dade68ac6b12c8c7ae59bf27d007ad4f1b32b6369d9a0fcd29170b3063e42ace",
+          "bytes": 64
+        },
+        {
+          "id": "E126",
+          "kind": "local",
+          "path": "local/research/codex/probe-service-r1/integrated-r2/B-go197-127.bin",
+          "sha256": "4479c8d2bd5a138f8dd57f39fc717eabaade8d4273b394c5d4da4ac42a32ce22",
+          "bytes": 52
+        },
+        {
+          "id": "E127",
+          "kind": "local",
+          "path": "local/research/codex/probe-service-r1/integrated-r2/B-go197-82.bin",
+          "sha256": "64b95010ecb0e40bc0367f41f6710d2357fb2538ce827e205825284601237ef8",
+          "bytes": 52
+        },
+        {
+          "id": "E128",
+          "kind": "local",
+          "path": "local/research/codex/probe-service-r1/integrated-r2/B-guest110-r1-115.bin",
+          "sha256": "b9a562c345517aa67d96c51dfe93daedc56af471a1e386fd57cb165b0cee0bf1",
+          "bytes": 44
+        },
+        {
+          "id": "E129",
+          "kind": "local",
+          "path": "local/research/codex/probe-service-r1/integrated-r2/B-guest110-r2-160.bin",
+          "sha256": "6e725be5eaf80cc30e3e51269018d224087c7b2b56713e255fbc72e8bb48e884",
+          "bytes": 44
+        },
+        {
+          "id": "E130",
+          "kind": "local",
+          "path": "local/research/codex/probe-service-r1/integrated-r2/B-host110-r1-112.bin",
+          "sha256": "57460635dc0e9976e22e6b40d430710aab16e6a33c152be10c6a80b4564c3110",
+          "bytes": 44
+        },
+        {
+          "id": "E131",
+          "kind": "local",
+          "path": "local/research/codex/probe-service-r1/integrated-r2/B-host110-r2-157.bin",
+          "sha256": "19ca60c86c873daa8df91c39edd61ebf3baafa3b8b4439c672d5dc049de76026",
+          "bytes": 44
+        },
+        {
+          "id": "E132",
+          "kind": "local",
+          "path": "local/research/codex/probe-service-r1/integrated-r2/B-item165-r1-17-91.bin",
+          "sha256": "2ad2e7cbd637f553ff114fada41951a1129ca3dc52b14a540a60ccea59088bf0",
+          "bytes": 50
+        },
+        {
+          "id": "E133",
+          "kind": "local",
+          "path": "local/research/codex/probe-service-r1/integrated-r2/B-item165-r2-17-136.bin",
+          "sha256": "777c46f533113967cf62ae0c9994a9aff2a2f9d88a5eb35f01042cbe0ef60d75",
+          "bytes": 50
+        },
+        {
+          "id": "E134",
+          "kind": "local",
+          "path": "local/research/codex/probe-service-r1/integrated-r2/B-peer153-133.bin",
+          "sha256": "111e8963e3d5b97d2b562b60eb475efacff086c84be8d9948ca7380bd98449b0",
+          "bytes": 135
+        },
+        {
+          "id": "E135",
+          "kind": "local",
+          "path": "local/research/codex/probe-service-r1/integrated-r2/B-peer153-88.bin",
+          "sha256": "879ae35285d64a3465596ced276b4d598110b167a255d3a8b039580a2b05a0a2",
+          "bytes": 135
+        },
+        {
+          "id": "E136",
+          "kind": "local",
+          "path": "local/research/codex/probe-service-r1/integrated-r2/B-play196-130.bin",
+          "sha256": "13f2d542669df1a08be243989a4e70967313aab6c60971f9d235817f9240b651",
+          "bytes": 45
+        },
+        {
+          "id": "E137",
+          "kind": "local",
+          "path": "local/research/codex/probe-service-r1/integrated-r2/B-play196-85.bin",
+          "sha256": "d04bf155b4847f9d41b0edfdf00a32526302273271c0f1cadbb8ce22b89eb51d",
+          "bytes": 45
+        },
+        {
+          "id": "E138",
+          "kind": "local",
+          "path": "local/research/codex/probe-service-r1/integrated-r2/B-rank175-r1-106.bin",
+          "sha256": "af64696343b71bbddfcca524adcb34b3c8dd3b736f65508ac464a977c1810384",
+          "bytes": 340
+        },
+        {
+          "id": "E139",
+          "kind": "local",
+          "path": "local/research/codex/probe-service-r1/integrated-r2/B-rank175-r2-151.bin",
+          "sha256": "a8f475739686a41b6fe6a6c6f2e2bceadcc320ea62dd0c7c8d819769e9fe05ee",
+          "bytes": 340
+        },
+        {
+          "id": "E140",
+          "kind": "local",
+          "path": "local/research/codex/probe-service-r1/integrated-r2/B-ready110-118.bin",
+          "sha256": "6526e2f461589ee6ea8406ec75602e5c82bbf08353ee8d7d8b7f54952d1dac89",
+          "bytes": 44
+        },
+        {
+          "id": "E141",
+          "kind": "local",
+          "path": "local/research/codex/probe-service-r1/integrated-r2/B-ready110-73.bin",
+          "sha256": "8fafd9cf652b458ee09b3751a0201f9ab1409920398e0e842e43b915c8840e25",
+          "bytes": 44
+        },
+        {
+          "id": "E142",
+          "kind": "local",
+          "path": "local/research/codex/probe-service-r1/integrated-r2/B-return180-r1-109.bin",
+          "sha256": "b53daa3dda63e60a45282c346e337b4d3d97dd07a2ef4b33a42a147350601e54",
+          "bytes": 41
+        },
+        {
+          "id": "E143",
+          "kind": "local",
+          "path": "local/research/codex/probe-service-r1/integrated-r2/B-return180-r2-154.bin",
+          "sha256": "6cfe760393700f6f5727536b029fbf72d8d3fcbd640b42da5887c4fe612b6389",
+          "bytes": 41
+        },
+        {
+          "id": "E144",
+          "kind": "local",
+          "path": "local/research/codex/probe-service-r1/integrated-r2/B-start121-r1-79.bin",
+          "sha256": "f8a824335b4079160a4aaf0e0b425d1fabfa78c248d131503440d0414e1f26cf",
+          "bytes": 167
+        },
+        {
+          "id": "E145",
+          "kind": "local",
+          "path": "local/research/codex/probe-service-r1/integrated-r2/B-start121-r2-124.bin",
+          "sha256": "f83868d66c8127ba318fca619743e810d900bfd1edcaab62656afbf7531b2dab",
+          "bytes": 167
+        },
+        {
+          "id": "E146",
+          "kind": "local",
+          "path": "local/research/codex/probe-service-r1/integrated-r3/run.json",
+          "sha256": "2c5a5eb9a9b6a8c7ea8500821f88eb7e29c15da57838656154f0843fd84f18f9",
+          "bytes": 494467
+        },
+        {
+          "id": "E147",
+          "kind": "local",
+          "path": "local/research/codex/probe-service-r1/integrated-r3/client.log",
+          "sha256": "b5f929ec4136903e80ad88400ed7748758b24442eb0f8105fec8a8ab75036a3f",
+          "bytes": 247664
+        },
+        {
+          "id": "E148",
+          "kind": "local",
+          "path": "local/research/codex/probe-service-r1/integrated-r3/client-B.log",
+          "sha256": "36c500de7c94a7af8c33bb2b9a4cc3e65a1a1187b152de47de526122aa0d7fd4",
+          "bytes": 199805
+        },
+        {
+          "id": "E149",
+          "kind": "local",
+          "path": "local/research/codex/probe-service-r1/integrated-r3/service-state.json",
+          "sha256": "9f9456adb6463ed78aa5793751befab9f614612291e19a31b40b8102f08e0ac9",
+          "bytes": 178731
+        },
+        {
+          "id": "E150",
+          "kind": "local",
+          "path": "local/research/codex/probe-service-r1/integrated-r3/service.log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "id": "E151",
+          "kind": "local",
+          "path": "local/research/codex/probe-service-r1/integrated-r3/debug-commands.txt",
+          "sha256": "57002f7a894f9ad164829ceb3bc17dc96e552edd5417400a0712c3d9832a2103",
+          "bytes": 24693
+        },
+        {
+          "id": "E152",
+          "kind": "local",
+          "path": "local/research/codex/probe-service-r1/integrated-r3/debug-commands-B.txt",
+          "sha256": "57002f7a894f9ad164829ceb3bc17dc96e552edd5417400a0712c3d9832a2103",
+          "bytes": 24693
+        },
+        {
+          "id": "E153",
+          "kind": "local",
+          "path": "local/research/codex/probe-service-r1/integrated-r3/A-blast158-r1-1-97.bin",
+          "sha256": "74e2de4a80eccc95ca075b6b7b315a7883176c212d7f752f47cb45a80c0122e3",
+          "bytes": 51
+        },
+        {
+          "id": "E154",
+          "kind": "local",
+          "path": "local/research/codex/probe-service-r1/integrated-r3/A-dynamic159-r1-1-94.bin",
+          "sha256": "9eabef752de5cb32d752c4092e28f9affa41d42bbbc417099612d800129055ff",
+          "bytes": 77
+        },
+        {
+          "id": "E155",
+          "kind": "local",
+          "path": "local/research/codex/probe-service-r1/integrated-r3/A-floor582-115.bin",
+          "sha256": "d7cfe29149c84aaa1e95b2cd935d5313540651f27c4c6eb4aa030f96981eac36",
+          "bytes": 64
+        },
+        {
+          "id": "E156",
+          "kind": "local",
+          "path": "local/research/codex/probe-service-r1/integrated-r3/A-floor582-76.bin",
+          "sha256": "dade68ac6b12c8c7ae59bf27d007ad4f1b32b6369d9a0fcd29170b3063e42ace",
+          "bytes": 64
+        },
+        {
+          "id": "E157",
+          "kind": "local",
+          "path": "local/research/codex/probe-service-r1/integrated-r3/A-go197-121.bin",
+          "sha256": "3380c0c80d8faad72ca646a853ed917edd2f30fd0527e83e58ce731c40aa7b3f",
+          "bytes": 52
+        },
+        {
+          "id": "E158",
+          "kind": "local",
+          "path": "local/research/codex/probe-service-r1/integrated-r3/A-go197-82.bin",
+          "sha256": "64b95010ecb0e40bc0367f41f6710d2357fb2538ce827e205825284601237ef8",
+          "bytes": 52
+        },
+        {
+          "id": "E159",
+          "kind": "local",
+          "path": "local/research/codex/probe-service-r1/integrated-r3/A-guest110-r1-109.bin",
+          "sha256": "f300f7803c78018bc7bb0a99ff04bd200a6843d607915cb48c84b78b557b6a61",
+          "bytes": 44
+        },
+        {
+          "id": "E160",
+          "kind": "local",
+          "path": "local/research/codex/probe-service-r1/integrated-r3/A-host110-r1-106.bin",
+          "sha256": "bbbf2539317016a757afed97a98b9103e3e64fa0b31dc96c0a3ff853c815818e",
+          "bytes": 44
+        },
+        {
+          "id": "E161",
+          "kind": "local",
+          "path": "local/research/codex/probe-service-r1/integrated-r3/A-item165-r1-17-91.bin",
+          "sha256": "2ad2e7cbd637f553ff114fada41951a1129ca3dc52b14a540a60ccea59088bf0",
+          "bytes": 50
+        },
+        {
+          "id": "E162",
+          "kind": "local",
+          "path": "local/research/codex/probe-service-r1/integrated-r3/A-peer153-127.bin",
+          "sha256": "a50d93df14b20a7810b48bb362b73db9607580f452ec21ec6d37d072ff609e3d",
+          "bytes": 135
+        },
+        {
+          "id": "E163",
+          "kind": "local",
+          "path": "local/research/codex/probe-service-r1/integrated-r3/A-peer153-88.bin",
+          "sha256": "24bb03c0591b05c303b1055d8bdce605273f3a7da6fe56b514c4647838709f08",
+          "bytes": 135
+        },
+        {
+          "id": "E164",
+          "kind": "local",
+          "path": "local/research/codex/probe-service-r1/integrated-r3/A-play196-124.bin",
+          "sha256": "e0f364fc0becf0a2a91327c1a33e299af37f1cecc00a26d40443c5bda58b1af4",
+          "bytes": 45
+        },
+        {
+          "id": "E165",
+          "kind": "local",
+          "path": "local/research/codex/probe-service-r1/integrated-r3/A-play196-85.bin",
+          "sha256": "d04bf155b4847f9d41b0edfdf00a32526302273271c0f1cadbb8ce22b89eb51d",
+          "bytes": 45
+        },
+        {
+          "id": "E166",
+          "kind": "local",
+          "path": "local/research/codex/probe-service-r1/integrated-r3/A-rank175-r1-100.bin",
+          "sha256": "5b3751f4c322454005652035ed69253cac647ed0fbc24540bd0599fa2bae6c31",
+          "bytes": 340
+        },
+        {
+          "id": "E167",
+          "kind": "local",
+          "path": "local/research/codex/probe-service-r1/integrated-r3/A-ready110-112.bin",
+          "sha256": "f31c5f5630019345dc62b5027f13c5267af82643ac2dbac979f0a454192b910e",
+          "bytes": 44
+        },
+        {
+          "id": "E168",
+          "kind": "local",
+          "path": "local/research/codex/probe-service-r1/integrated-r3/A-ready110-73.bin",
+          "sha256": "8fafd9cf652b458ee09b3751a0201f9ab1409920398e0e842e43b915c8840e25",
+          "bytes": 44
+        },
+        {
+          "id": "E169",
+          "kind": "local",
+          "path": "local/research/codex/probe-service-r1/integrated-r3/A-return180-r1-103.bin",
+          "sha256": "996ed34682d009d8977c2571e23c636f824049fb8d962426a9c2d903ed080200",
+          "bytes": 41
+        },
+        {
+          "id": "E170",
+          "kind": "local",
+          "path": "local/research/codex/probe-service-r1/integrated-r3/A-start121-r1-79.bin",
+          "sha256": "f8a824335b4079160a4aaf0e0b425d1fabfa78c248d131503440d0414e1f26cf",
+          "bytes": 167
+        },
+        {
+          "id": "E171",
+          "kind": "local",
+          "path": "local/research/codex/probe-service-r1/integrated-r3/A-start121-r2-118.bin",
+          "sha256": "c8bc9053b53a7ea610e29ae2928cdadeec601dd12bcf9ce25f30ac71cdad6346",
+          "bytes": 167
+        },
+        {
+          "id": "E172",
+          "kind": "local",
+          "path": "local/research/codex/probe-service-r1/integrated-r3/B-blast158-r1-1-97.bin",
+          "sha256": "74e2de4a80eccc95ca075b6b7b315a7883176c212d7f752f47cb45a80c0122e3",
+          "bytes": 51
+        },
+        {
+          "id": "E173",
+          "kind": "local",
+          "path": "local/research/codex/probe-service-r1/integrated-r3/B-dynamic159-r1-1-94.bin",
+          "sha256": "9eabef752de5cb32d752c4092e28f9affa41d42bbbc417099612d800129055ff",
+          "bytes": 77
+        },
+        {
+          "id": "E174",
+          "kind": "local",
+          "path": "local/research/codex/probe-service-r1/integrated-r3/B-event170-17-r1-100.bin",
+          "sha256": "6a402694c712090aaa8289ab445df237698b9375ed92f44d9739febed6a0d449",
+          "bytes": 48
+        },
+        {
+          "id": "E175",
+          "kind": "local",
+          "path": "local/research/codex/probe-service-r1/integrated-r3/B-event170-19-r1-103.bin",
+          "sha256": "4da110a362a18e12431eda5a74a44baac7a046d132204dceb8f01e9ed8176760",
+          "bytes": 59
+        },
+        {
+          "id": "E176",
+          "kind": "local",
+          "path": "local/research/codex/probe-service-r1/integrated-r3/B-floor582-121.bin",
+          "sha256": "b108cbc93ed5896e87a383e680b955df612b139b892fe2dc6fa7c89dc76d1eaf",
+          "bytes": 64
+        },
+        {
+          "id": "E177",
+          "kind": "local",
+          "path": "local/research/codex/probe-service-r1/integrated-r3/B-floor582-76.bin",
+          "sha256": "dade68ac6b12c8c7ae59bf27d007ad4f1b32b6369d9a0fcd29170b3063e42ace",
+          "bytes": 64
+        },
+        {
+          "id": "E178",
+          "kind": "local",
+          "path": "local/research/codex/probe-service-r1/integrated-r3/B-go197-127.bin",
+          "sha256": "4479c8d2bd5a138f8dd57f39fc717eabaade8d4273b394c5d4da4ac42a32ce22",
+          "bytes": 52
+        },
+        {
+          "id": "E179",
+          "kind": "local",
+          "path": "local/research/codex/probe-service-r1/integrated-r3/B-go197-82.bin",
+          "sha256": "64b95010ecb0e40bc0367f41f6710d2357fb2538ce827e205825284601237ef8",
+          "bytes": 52
+        },
+        {
+          "id": "E180",
+          "kind": "local",
+          "path": "local/research/codex/probe-service-r1/integrated-r3/B-guest110-r1-115.bin",
+          "sha256": "b9a562c345517aa67d96c51dfe93daedc56af471a1e386fd57cb165b0cee0bf1",
+          "bytes": 44
+        },
+        {
+          "id": "E181",
+          "kind": "local",
+          "path": "local/research/codex/probe-service-r1/integrated-r3/B-host110-r1-112.bin",
+          "sha256": "57460635dc0e9976e22e6b40d430710aab16e6a33c152be10c6a80b4564c3110",
+          "bytes": 44
+        },
+        {
+          "id": "E182",
+          "kind": "local",
+          "path": "local/research/codex/probe-service-r1/integrated-r3/B-item165-r1-17-91.bin",
+          "sha256": "2ad2e7cbd637f553ff114fada41951a1129ca3dc52b14a540a60ccea59088bf0",
+          "bytes": 50
+        },
+        {
+          "id": "E183",
+          "kind": "local",
+          "path": "local/research/codex/probe-service-r1/integrated-r3/B-peer153-133.bin",
+          "sha256": "c0e1c8ceeb28d708efa22d8d38164a285a73f9ca1e8af75e8913e8382b0df962",
+          "bytes": 135
+        },
+        {
+          "id": "E184",
+          "kind": "local",
+          "path": "local/research/codex/probe-service-r1/integrated-r3/B-peer153-88.bin",
+          "sha256": "69ae8c3b7cde331917c5610e54e357587c4cac4c3be2362b7659c92f515b20fb",
+          "bytes": 135
+        },
+        {
+          "id": "E185",
+          "kind": "local",
+          "path": "local/research/codex/probe-service-r1/integrated-r3/B-play196-130.bin",
+          "sha256": "13f2d542669df1a08be243989a4e70967313aab6c60971f9d235817f9240b651",
+          "bytes": 45
+        },
+        {
+          "id": "E186",
+          "kind": "local",
+          "path": "local/research/codex/probe-service-r1/integrated-r3/B-play196-85.bin",
+          "sha256": "d04bf155b4847f9d41b0edfdf00a32526302273271c0f1cadbb8ce22b89eb51d",
+          "bytes": 45
+        },
+        {
+          "id": "E187",
+          "kind": "local",
+          "path": "local/research/codex/probe-service-r1/integrated-r3/B-rank175-r1-106.bin",
+          "sha256": "af64696343b71bbddfcca524adcb34b3c8dd3b736f65508ac464a977c1810384",
+          "bytes": 340
+        },
+        {
+          "id": "E188",
+          "kind": "local",
+          "path": "local/research/codex/probe-service-r1/integrated-r3/B-ready110-118.bin",
+          "sha256": "6526e2f461589ee6ea8406ec75602e5c82bbf08353ee8d7d8b7f54952d1dac89",
+          "bytes": 44
+        },
+        {
+          "id": "E189",
+          "kind": "local",
+          "path": "local/research/codex/probe-service-r1/integrated-r3/B-ready110-73.bin",
+          "sha256": "8fafd9cf652b458ee09b3751a0201f9ab1409920398e0e842e43b915c8840e25",
+          "bytes": 44
+        },
+        {
+          "id": "E190",
+          "kind": "local",
+          "path": "local/research/codex/probe-service-r1/integrated-r3/B-return180-r1-109.bin",
+          "sha256": "b53daa3dda63e60a45282c346e337b4d3d97dd07a2ef4b33a42a147350601e54",
+          "bytes": 41
+        },
+        {
+          "id": "E191",
+          "kind": "local",
+          "path": "local/research/codex/probe-service-r1/integrated-r3/B-start121-r1-79.bin",
+          "sha256": "f8a824335b4079160a4aaf0e0b425d1fabfa78c248d131503440d0414e1f26cf",
+          "bytes": 167
+        },
+        {
+          "id": "E192",
+          "kind": "local",
+          "path": "local/research/codex/probe-service-r1/integrated-r3/B-start121-r2-124.bin",
+          "sha256": "f83868d66c8127ba318fca619743e810d900bfd1edcaab62656afbf7531b2dab",
+          "bytes": 167
+        },
+        {
+          "id": "E193",
+          "kind": "local",
+          "path": "local/research/codex/wine_probe_external_service.py",
+          "sha256": "ebc7033ea8400f3d95151568f27dc29811d30a8c36710f8e0b8a6bd78ae29071",
+          "bytes": 39138
+        },
+        {
+          "id": "E194",
+          "kind": "local",
+          "path": "local/research/codex/wine_probe_external_service_v2.py",
+          "sha256": "b5c2d1542e0c2151b5058ba1fc27a65780f5562d34beae8180d1c09df1225650",
+          "bytes": 39141
+        }
+      ],
+      "delta": {
+        "added": [
+          "Mechanismcatalog/generatedcoverage+tree/DAG/cards;canonicalquestionanchors,onePLANorder;KRE-011issue56.",
+          "SeparatefixtureTCPservice/codec/serializedroomowner/policyintegration andboundednativeWineproof; exactcodearchivedlocal.",
+          "Actualbodyold124servicegapbenchafterdocsorganization; periodicAUD015;historicaldocblobverification."
+        ],
+        "corrected": [
+          "No-server/allocatorpendingbaseline supersededonlyforfixtureintegration, notfullauth/publicserver.",
+          "Roundtripnotoracle: addindependentnativeprefixcomparison. R3twoStartsnot2results; preservefailure/partialandnoinputcauseinference.",
+          "Currentdocsnotimmutableoldcheckpointbytes; verifyhistoricalexactGitSHAandwarn,neverrewriteoldCP."
+        ],
+        "superseded": [
+          "ChronologicalPLANpathmap andRESEARCHworkorderduplicated replacedbygeneratedfeatureindexandonecurrentorderinPLAN.",
+          "Q027nextintegrationonly replacedbyactualstale124/EOF/barrier/inputreproducibilityblockers; CP047PR55mergedrecorded."
+        ]
+      },
+      "blockers": [
+        "Full124validatorstillmissing;actualoldbodyconsumesnewclaimatwrongk;keyguard/Winecounterfactualnext.",
+        "R3inputround2didnotemit124/118;noautomaticsemanticcause;EOFservicefinishonly/notcleanup/newpeer,loadbarrierunknown.",
+        "Fullauth/profile/cache/codec/vanilla/accountreconnect/fullmatch/K5/K6a/LAN/Internetnotaccepted;low8reuse/roster/otherUDPtypes/relay/variantsremain."
+      ],
+      "next_steps": [
+        {
+          "id": "NEXT-DUO-ROUND",
+          "task": "KRE-005b",
+          "state": "active",
+          "action": "Followdocs/PLAN.md#current-order:guard/replayold124firstthenserviceEOFlifecycle/delayedload/inputcontrol; reuseCP030–048nativeandlegacyledger,noqueue/handlerrediscovery.",
+          "owner": "Codex",
+          "reviewer": "Codex"
+        },
+        {
+          "id": "NEXT-ITEM-PICKUP",
+          "task": "KRE-005b",
+          "state": "active",
+          "action": "CanonicalRESEARCH#gap-floor-pickup; useactualbodyk12345→12346/oldclaimbench; neededitemfamiliesonly,avoidfullinventory.",
+          "owner": "Codex",
+          "reviewer": "Codex"
+        },
+        {
+          "id": "NEXT-FULL-LOGIN-FIELDS",
+          "task": "KRE-005b",
+          "state": "active",
+          "action": "CanonicalPLANworkorder/RESEARCHauth/cache;fixtureprofiledoesnotclosefullidentity/codec/reconnect/vanilla.",
+          "owner": "Codex",
+          "reviewer": "Codex"
+        }
+      ],
+      "review": {
+        "status": "waived",
+        "as_of_utc": "2026-11-01T11:29:54.244084+00:00",
+        "reference": "docs/evidence/checkpoints/review-waiver.json",
+        "scope": "Codex solo RE/code/runtime/selfcheck, not independent approval.",
+        "authorization": {
+          "by": "project_owner",
+          "reference": "docs/evidence/checkpoints/review-waiver.json",
+          "reason": "Owner explicitly requested solo without Claude review."
+        }
+      },
+      "docs_sync": [
+        {
+          "path": "README.md",
+          "state": "updated",
+          "reason": "Currentstatus/catalogentry/CP047merge/AUD015next52;CP048integrationviaPR."
+        },
+        {
+          "path": "docs/PLAN.md",
+          "state": "updated",
+          "reason": "Solecurrentworkorder/gates/taskstate;replacechronologicalpathduplicatewithindex."
+        },
+        {
+          "path": "docs/PROTOCOL.md",
+          "state": "updated",
+          "reason": "Canonicalservicecontract/nativeruntimevsbenchlimits,authoritypeerrowupdated."
+        },
+        {
+          "path": "docs/RESEARCH.md",
+          "state": "updated",
+          "reason": "Canonicalmechanismgaps/tests/currentQtable;historyclearlyseparated,norepeatedworkorder."
+        },
+        {
+          "path": "docs/features.json",
+          "state": "updated",
+          "reason": "Stablemechanismindex/9dimensions/deps/refs;notindependentcontractsorplan."
+        },
+        {
+          "path": "docs/COVERAGE.md",
+          "state": "updated",
+          "reason": "Reproduciblygeneratedcards/table/diagrams,questionsquotedfromRESEARCH."
+        },
+        {
+          "path": "docs/evidence/feature-catalog/README.md",
+          "state": "updated",
+          "reason": "Refactorprovenance/limits/checkrecipe."
+        },
+        {
+          "path": "docs/evidence/probe-service/README.md",
+          "state": "updated",
+          "reason": "Threecontrollers/nativechecks/failurepartial/bodystale124/evidencehashes."
+        },
+        {
+          "path": "AGENTS.md",
+          "state": "updated",
+          "reason": "Sourcecatalog/generatedviewownership/workflow."
+        },
+        {
+          "path": "server/README.md",
+          "state": "updated",
+          "reason": "Separatefixtureprocess/limits/recipepolicyintegration."
+        },
+        {
+          "path": "tools/README.md",
+          "state": "updated",
+          "reason": "Catalogandhistoricaldoccheckerusage/limits."
+        },
+        {
+          "path": "docs/evidence/checkpoints/README.md",
+          "state": "updated",
+          "reason": "ImmutableCPdocsbytescheckedfromexactGitblobwhenmutablecurrentdocsevolve."
+        }
+      ]
     }
   ],
   "audits": [
@@ -88302,6 +89918,11 @@
       "id": "AUD014",
       "path": "docs/evidence/checkpoints/audits/AUD014.json",
       "sha256": "b9c8c374f6a63b14a18c2405827f1723ae9277487607aeff9ea5a4c9a3ada5e1"
+    },
+    {
+      "id": "AUD015",
+      "path": "docs/evidence/checkpoints/audits/AUD015.json",
+      "sha256": "98f35a7016f0ce220e78d38867ebbe05abbbf55d0a746a7a4997557a8dc03ab8"
     }
   ],
   "task_states": [
@@ -88328,6 +89949,12 @@
       "state": "open",
       "canonical": "docs/PLAN.md",
       "reference": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/14"
+    },
+    {
+      "id": "KRE-011",
+      "state": "open",
+      "canonical": "docs/PLAN.md",
+      "reference": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/56"
     }
   ]
 }

@@ -11,6 +11,8 @@ boom-kr-server/
   AGENTS.md                 quy tắc của project này
   docs/
     PLAN.md                 lộ trình K0–K7, task và gate
+    features.json           chỉ mục cơ chế/ID/dependency/trạng thái có nguồn
+    COVERAGE.md             bảng/cây/thẻ tra cứu sinh từ catalog
     PROTOCOL.md             contract KR, ma trận reuse VN→KR và authority
     RESEARCH.md             câu hỏi mở, owner và điều kiện đóng
     REFERENCES.md           nguồn RE cũ, provenance và bản đồ migration
@@ -20,28 +22,25 @@ boom-kr-server/
   local/                    raw/copy client/DB/capture; git-ignored
 ```
 
-## Đang làm
+## Tra nhanh và trạng thái hiện tại
 
-CP047: **đổi khóa qua153 đã chặn gói movement vòng cũ trong ca đo**; gói hiện tại vẫn chạy và
-hai vòng tới result/return. Đổi cổng riêng lẻ không chặn được gói cũ từ cả cổng cũ và cổng mới.
-[Contract và giới hạn](docs/PROTOCOL.md#udp-generation), [recipe/hash](docs/evidence/udp-freshness/README.md).
-Policy cấp khóa đã có unit test, chưa tích hợp server độc lập; khóa thực tế được so ở byte thấp.
-Nhóm item và delta Roller/MaxPower của CP045 giữ tại [bảng nguồn chuẩn](docs/PROTOCOL.md#item-families).
+[Coverage và cây chức năng](docs/COVERAGE.md) trả lời: cơ chế nào hiện diện, mức RE/implementation/
+runtime nào có nguồn, còn thiếu gì và phép kiểm nào giải quyết. Mỗi ID dẫn thẳng contract/giới hạn,
+evidence/hash và câu hỏi; [PLAN](docs/PLAN.md#current-order) giữ duy nhất thứ tự công việc.
+Đây là scope đường bootstrap → login → sảnh → phòng → Battle → kết quả/reset, không kiểm kê toàn client.
 
-Đây là thí nghiệm copy chẩn đoán Wine; **chưa nghiệm thu trận hoàn chỉnh/K6a**.
-Peerqueue/UDP generation, fullvalidator, server độc lập và full auth/cache/codec còn thiếu; chưa LAN/Internet.
-[Bước tiếp](docs/RESEARCH.md#q-023).
+CP048: đã tách service TCP fixture khỏi harness và ghép các policy vòng/khóa/item; run Wine copy
+hai client có hai chu kỳ thử. [Phạm vi và bằng chứng](docs/evidence/probe-service/README.md),
+[contract service](docs/PROTOCOL.md#probe-service). Auth/profile/cache/codec tổng quát, toàn validator/
+reset và các biến thể vẫn thiếu; chưa nghiệm thu trận hoàn chỉnh/K5/K6a, LAN hoặc Internet.
 
-CP046 đã merge [PR54](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/54) tại `f85cda4`.
-CP047 hoàn tất record/tự kiểm; [PR55](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/55)
-giữ trạng thái tích hợp của nhánh `kre/udp-freshness`.
-Codex tự kiểm, review độc lập waived. Audit **AUD014/CP044**, audit định kỳ kế **CP048**.
+CP047 đã merge [PR55](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/55) tại `5ffd925`.
+CP048 đã ghi record tự kiểm; [PR57](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/57) giữ trạng thái tích hợp code/docs mới.
+Catalog `via_pr` dẫn tới nguồn PR này, không tự suy merge từ runtime. Review độc lập
+[waived](docs/evidence/checkpoints/review-waiver.json), không phải approved. Audit **AUD015/CP048** đã hoàn tất; audit định kỳ kế **CP052**; counter ở [manifest](docs/evidence/checkpoints/manifest.json).
+[Workflow](docs/evidence/checkpoints/README.md) giữ lịch sử và lịch audit.
 
-Checkpoint bền vững: [manifest](docs/evidence/checkpoints/manifest.json).
-Quy trình ghi chép/review/audit: [checkpoint workflow](docs/evidence/checkpoints/README.md).
-
-Đích đầu: bootstrap offline → login cục bộ → sảnh/phòng → Battle → kết quả → hai client chơi hai
-trận liên tiếp. Bốn client và hardening sau đó. Chi tiết ở [PLAN](docs/PLAN.md).
+Đích đầu: hai client thật chơi hai trận liên tiếp; mở bốn client và hardening sau đó.
 
 ## Bắt đầu
 
@@ -49,6 +48,7 @@ trận liên tiếp. Bốn client và hardening sau đó. Chi tiết ở [PLAN](
 [RESEARCH](docs/RESEARCH.md) theo task.
 
 ```bash
+python3 tools/feature_catalog.py
 python3 tools/check_docs.py
 python3 tools/check_checkpoints.py --require-local --require-history
 python3 tools/artifacts.py verify

@@ -1,6 +1,6 @@
 # KR 00967 — contract tương thích client gốc
 
-Revision kr-legacy-contract-r1; cập nhật01/11/2026 JST (CP047).
+Revision kr-legacy-contract-r1; cập nhật01/11/2026 JST (CP048).
 **Contract có bằng chứng từng phần; chưa nghiệm thu full codec K2**.
 Lộ trình và thứ tự task chỉ giữ ở [REWRITE_PLAN — KRE](PLAN.md).
 Đây là contract của repo server KR. ADR0009 của bản viết lại là nguồn lịch sử để so sánh;
@@ -1949,9 +1949,10 @@ Client gốc tự vẽ và phát âm thanh. Tái sử dụng ODT/assets giúp đ
 viết lại UI để hoàn thành nhánh tương thích. Những patch bootstrap/AC nếu cần chạy offline phải được
 liệt kê và phân biệt với nguyên bản trong mọi demo.
 
+<a id="authority"></a>
 ### Authority matrix hiện hành và gate review
 
-Bảng này tổng hợp bằng chứng từng phần đến CP047; chưa phải toàn contract server gốc. Mỗi hàng khi
+Bảng này tổng hợp bằng chứng từng phần đến CP048; chưa phải toàn contract server gốc. Mỗi hàng khi
 triển khai phải bổ sung riêng **creator, simulator, validator, broadcaster, peer-editable state**, với
 locator/trace và trạng thái từng ô; những vai trò không nêu dưới đây hiện `unknown` cho KR.
 
@@ -1965,8 +1966,49 @@ locator/trace và trạng thái từng ô; những vai trò không nêu dưới 
 | Trap/death | CP029/036; CP037 kim và tranh chấp cứu/diệt; [kim](#needle-selfescape), [precedence](#contact-precedence) | Validator/duplicate/stale/generation/variants, result21 và đối chứng thêm/đảo chiều còn thiếu |
 | Result/reset | CP039 hai vòng statepeer/result/21/return và reset field hẹp; CP044 [timer ở EOF và vòng B/C mới](#abort-timer) | CP041 có [payload cũ khi ID reuse](#round-generation); arbitration/toàn generation/entity/timer/peer/seq không rò vẫn mở; phân biệt run chờ sai origin với ca hoàn tất |
 | Room lifecycle | CP034 leave/promotion/EOF/return; CP035 rejoin/Ready; CP040 chủ B/C Start; CP044 [B/C bom/death/result/return sau abort](#abort-timer) | Bầu chủ/giữ ID-slot/forfeit là policy stub; guest EOF trả A về phòng/xóa B đã đo riêng; reconnect cùng account/disconnect variants/toàn reset còn mở |
-| Peer lifecycle | CP027 actual99→153; CP045–047 [oldUDP actor/keyguard/endpointcontrol](#udp-generation) | Tích hợp key policy/service; low8reuse/roster/UDPtype khác/fullgrammar/reliability/relay/reset. Không coi đổi cổng riêng lẻ là freshness guard hoặc keybyte là auth |
+| Peer lifecycle | CP027 actual99→153; CP045–047 [oldUDP actor/keyguard/endpointcontrol](#udp-generation) | CP048 [service fixture](#probe-service) đã tích hợp key policy hẹp; low8reuse/roster/UDPtype khác/fullgrammar/reliability/relay/reset còn mở. Không coi đổi cổng riêng lẻ là freshness guard hoặc keybyte là auth |
 
 Gate K5/K6 cần kiểm matrix và đối chứng của hành vi thực sự dùng; từ28/10 Codex tự kiểm theo miễn review của chủ dự án. Có thể giữ unknown về
 server gốc thất lạc nếu policy emulator được chọn `design`, client chấp nhận và ca consistency đạt;
 không thể để unknown về đường đồng bộ cần thiết rồi tuyên bố multiplayer đã nghiệm thu.
+
+<a id="probe-service"></a>
+## Service fixture và phạm vi tích hợp — CP048
+
+Nguồn/recipe/actual trace/native checks ở [evidence service](evidence/probe-service/README.md).
+`server/probe_service.py` là tiến trình TCP riêng; `probe_codec.py` chỉ hỗ trợ profile mode2/selector3
+đã đo, header37 byte và typed reader. Header37 tính cả byte prefix; mô tả header36 lịch sử WCP
+không được dùng để bỏ byte prefix. `probe_room.py` serialize owner, gọi UdpRoundKeys một lần/Start,
+RoundFence cho159/158 và ItemClaims cho124→165; cùng khóa153 cho hai peer. Đây là implementation
+`emu_choice/design`, không phục hồi thêm field wire hoặc luật server gốc.
+
+Auth/roster/map/rank dùng fixture có SHA, identity A/B theo thứ tự bốn connection mỗi vai.
+Bootstrap/hello/auth/redirect có state riêng theo connection nhưng chưa schema tổng quát/cache/
+reconnect đầy đủ. Kết quả/fuse/drop và forfeit vẫn là policy. Harness chỉ còn Wine/input/measurement/
+UDP proxy; không sở hữu TCP state hay timer gameplay. Chi tiết run và prooflevel giữ ở evidence.
+
+Các ca tích hợp chỉ áp dụng copy chẩn đoán Wine và stable IDs1/2/slots0/1. Không tự chứng minh
+Windows nguyên bản, LAN/Internet, full124validator, toàn reset/grammar/auth hoặc K5/K6a.
+Contract cơ chế vẫn ở các anchor tương ứng, không đổi chúng thành claim full match từ log service.
+
+
+**Quan sát tích hợp CP048 (`kr_runtime/confirmed`, giới hạn theo run):** `integrated-r2` có hai
+actual124/kind2, hai bom/17/19/170, hai175/180 mỗi client trên cùng8connection; exact-old UDP vòng1
+đến E66680 ở vòng2, byte59≠56, secure actor giữ nguyên; normalpacket key56 tới apply.
+`integrated-r3` kiểm thêm165full12 và Roller5→6/max7 cả hai view, clock vòng2 về5; run này chỉ một
+124/118/result/return, input vòng2 không tạo request tương ứng trong cửa sổ đo. Không ghép thành
+một run có hai165 paired-secure hoặc suy nguyên nhân thiếu request. Recipe/hash/native/raw ở evidence.
+
+Trong actual124 của r2, `k`=12345 ở vòng1,12346 ở vòng2 tương ứng u32 thứ hai153 đã cấp;
+đây là quan sát trên hai vòng/keys đó, không chứng minh toàn semantics hoặc validator server gốc.
+Service hiện parse `t/k` nhưng ItemClaims chưa kiểm chúng. Replay124 trùng catalog vẫn là khoảng
+trống có thể đo; không tự nói allocator UDP đã giải C2S stale124. Kiểm codec mới so **typed prefix của
+97 actual/native-checked frame**, ngoài354roundtrip cũ; native framer/blob/CRC có proof riêng.
+
+
+**Khoảng trống service được thực thi sau refactor:** body actual124/native-checked của r2 vòng1
+được đưa vào `receive_channel` sau begin/finish/begin (catalog17 giữ, key12346). ItemClaims chấp
+nhận body cũ `k12345` và phát positive165; current124/k12346 kế tiếp bị từ chối do claim đã tiêu.
+Control chỉ current124 được chấp nhận. Đây là `design/confirmed` về code service, **không** runtime
+client KR hoặc validator server gốc; [recipe/hash](evidence/probe-service/README.md) giữ phân biệt.
+Chưa thêm guard hoặc gọi toàn stale124 đã giải. Phép đo tiếp ở [RESEARCH](RESEARCH.md#gap-floor-pickup).
