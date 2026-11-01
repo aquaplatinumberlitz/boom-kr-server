@@ -1,0 +1,8 @@
+{
+  "schema": "kre-owner-directive-v1",
+  "recorded_utc": "2026-11-01T14:06:02.083503+00:00",
+  "by": "project_owner",
+  "source": "Direct user instruction in current conversation, 2026-11-01 JST",
+  "instruction": "tiếp tục làm các cp còn lại,  sau khi hoàn thành cái này thì lập tức  làm tiếp cái tiếp theo, ko được tự ý ngưng, ghi vào docs đây là yêu cầu chủ dự án",
+  "application": "Codex continues the next evidence-driven task in docs/PLAN.md immediately after completing a checkpoint/commit/PR. No permission question or voluntary stop at checkpoint boundaries. Keep source-reuse, isolation, documentation, periodic audit and commit/PR workflow; no invented success/gate closure."
+}

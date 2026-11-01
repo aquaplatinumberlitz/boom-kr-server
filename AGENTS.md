@@ -19,6 +19,9 @@ vào boom-rs, boom-re hoặc boomkr-re. Không nhập nguyên code legacy; dùng
 ## Quyền và phạm vi
 
 Chủ dự án đã cho triển khai tiếp và toàn quyền thao tác phục vụ project. Không hỏi lại quyết định đã có.
+Theo [yêu cầu trực tiếp01/11](docs/evidence/owner-directives/continuous-work.json), hoàn tất một checkpoint/commit/PR
+thì **tiếp tục ngay công việc kế tiếp theo PLAN**, không tự dừng hoặc chờ chủ dự án nhắc lại.
+Blocker một nhánh phải ghi rõ rồi tiếp việc độc lập có thể làm; giữ nguyên evidence, audit, kiểm tra và PR.
 Mục tiêu offline-preservation, identity/server local; không login/capture server Nexon thật.
 Trước runtime, cô lập outbound của VM/client, chỉ cho host/stub/capture cục bộ theo allowlist.
 

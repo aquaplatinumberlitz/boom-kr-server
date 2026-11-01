@@ -56,6 +56,10 @@ CP048 tổ chức catalog/service fixture, CP049 bổ sung guard124 trong scope 
 [KRE-011/issue56](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/56) giữ acceptance của refactor.
 KRE-005b/issue14 vẫn mở. Các bước dưới là **thứ tự ưu tiên**, không tự thay dependency/nghiệm thu K0–K7.
 
+**Yêu cầu chủ dự án01/11:** [làm liên tục qua các checkpoint](evidence/owner-directives/continuous-work.json);
+xong checkpoint/commit/PR thì chuyển ngay việc kế tiếp trong thứ tự này, không tự dừng/chờ nhắc.
+Một blocker chỉ kết thúc nhánh đo tương ứng; ghi rõ rồi tiếp việc độc lập có thể làm, không tự đóng gate.
+
 1. **KR-X003/KR-R004/KR-S001 — lifecycle theo khoảng trống:** CP052 đã sửa/đo guest EOF
    sau Join/106 trước map; không đo lại ca này, C mới/B Start hoặc EOF/hold99 đã giải.
    Cạnh tiếp có blocker code cụ thể: host rời khi B còn setup/chưa map, cleanup không có recipient
