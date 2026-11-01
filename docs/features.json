@@ -832,10 +832,11 @@
         },
         "implementation": {
           "state": "partial",
-          "delivery": "branch_pending",
+          "delivery": "via_pr",
           "refs": [
             "server/probe_service.py",
-            "docs/PROTOCOL.md#service-eof"
+            "docs/PROTOCOL.md#service-eof",
+            "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/61"
           ]
         },
         "integration": {
@@ -920,10 +921,11 @@
         },
         "implementation": {
           "state": "partial",
-          "delivery": "branch_pending",
+          "delivery": "via_pr",
           "refs": [
             "server/probe_service.py",
-            "docs/PROTOCOL.md#service-eof"
+            "docs/PROTOCOL.md#service-eof",
+            "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/61"
           ]
         },
         "integration": {
@@ -2433,10 +2435,11 @@
         },
         "implementation": {
           "state": "partial",
-          "delivery": "branch_pending",
+          "delivery": "via_pr",
           "refs": [
             "server/probe_service.py",
-            "docs/PROTOCOL.md#service-eof"
+            "docs/PROTOCOL.md#service-eof",
+            "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/61"
           ]
         },
         "integration": {
@@ -2519,10 +2522,11 @@
         },
         "implementation": {
           "state": "partial",
-          "delivery": "branch_pending",
+          "delivery": "via_pr",
           "refs": [
             "server/probe_service.py",
-            "docs/PROTOCOL.md#service-eof"
+            "docs/PROTOCOL.md#service-eof",
+            "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/61"
           ]
         },
         "integration": {

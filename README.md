@@ -36,7 +36,7 @@ peer rồi mới phát phase; client tiếp tục input/bom/result vòng1. [Evid
 fullvalidator/auth/cache/codec/reset và gate K5/K6a/LAN/Internet vẫn mở.
 
 CP049 đã merge [PR59](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/59) tại `a6b62cd`.
-CP050 tự kiểm trên nhánh, integration theo PR của nhánh; review độc lập
+CP050 tự kiểm/integration theo [PR61](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/61); review độc lập
 [waived](docs/evidence/checkpoints/review-waiver.json). Audit **AUD015/CP048**, audit định kỳ kế **CP052**;
 [counter](docs/evidence/checkpoints/manifest.json), [workflow](docs/evidence/checkpoints/README.md).
 
