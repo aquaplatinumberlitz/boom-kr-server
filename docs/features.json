@@ -139,9 +139,10 @@
           "state": "partial",
           "refs": [
             "server/probe_service.py",
-            "docs/PROTOCOL.md#probe-service"
+            "docs/PROTOCOL.md#probe-service",
+            "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/57"
           ],
-          "delivery": "branch_pending"
+          "delivery": "via_pr"
         },
         "integration": {
           "state": "partial",
@@ -226,9 +227,10 @@
           "state": "partial",
           "refs": [
             "server/probe_service.py",
-            "docs/PROTOCOL.md#probe-service"
+            "docs/PROTOCOL.md#probe-service",
+            "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/57"
           ],
-          "delivery": "branch_pending"
+          "delivery": "via_pr"
         },
         "integration": {
           "state": "partial",
@@ -313,9 +315,10 @@
           "state": "partial",
           "refs": [
             "server/probe_service.py",
-            "docs/PROTOCOL.md#probe-service"
+            "docs/PROTOCOL.md#probe-service",
+            "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/57"
           ],
-          "delivery": "branch_pending"
+          "delivery": "via_pr"
         },
         "integration": {
           "state": "partial",
@@ -400,9 +403,10 @@
           "state": "partial",
           "refs": [
             "server/probe_service.py",
-            "docs/PROTOCOL.md#probe-service"
+            "docs/PROTOCOL.md#probe-service",
+            "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/57"
           ],
-          "delivery": "branch_pending"
+          "delivery": "via_pr"
         },
         "integration": {
           "state": "partial",
@@ -487,9 +491,10 @@
           "state": "partial",
           "refs": [
             "server/probe_service.py",
-            "docs/PROTOCOL.md#probe-service"
+            "docs/PROTOCOL.md#probe-service",
+            "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/57"
           ],
-          "delivery": "branch_pending"
+          "delivery": "via_pr"
         },
         "integration": {
           "state": "partial",
@@ -651,9 +656,10 @@
           "state": "partial",
           "refs": [
             "server/probe_service.py",
-            "docs/PROTOCOL.md#probe-service"
+            "docs/PROTOCOL.md#probe-service",
+            "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/57"
           ],
-          "delivery": "branch_pending"
+          "delivery": "via_pr"
         },
         "integration": {
           "state": "partial",
@@ -738,9 +744,10 @@
           "state": "partial",
           "refs": [
             "server/probe_service.py",
-            "docs/PROTOCOL.md#probe-service"
+            "docs/PROTOCOL.md#probe-service",
+            "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/57"
           ],
-          "delivery": "branch_pending"
+          "delivery": "via_pr"
         },
         "integration": {
           "state": "partial",
@@ -825,9 +832,10 @@
           "state": "partial",
           "refs": [
             "server/probe_service.py",
-            "docs/PROTOCOL.md#probe-service"
+            "docs/PROTOCOL.md#probe-service",
+            "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/57"
           ],
-          "delivery": "branch_pending"
+          "delivery": "via_pr"
         },
         "integration": {
           "state": "partial",
@@ -993,9 +1001,10 @@
           "state": "partial",
           "refs": [
             "server/probe_service.py",
-            "docs/PROTOCOL.md#probe-service"
+            "docs/PROTOCOL.md#probe-service",
+            "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/57"
           ],
-          "delivery": "branch_pending"
+          "delivery": "via_pr"
         },
         "integration": {
           "state": "partial",
@@ -1080,9 +1089,10 @@
           "state": "partial",
           "refs": [
             "server/probe_service.py",
-            "docs/PROTOCOL.md#probe-service"
+            "docs/PROTOCOL.md#probe-service",
+            "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/57"
           ],
-          "delivery": "branch_pending"
+          "delivery": "via_pr"
         },
         "integration": {
           "state": "partial",
@@ -1167,9 +1177,10 @@
           "state": "partial",
           "refs": [
             "server/probe_service.py",
-            "docs/PROTOCOL.md#probe-service"
+            "docs/PROTOCOL.md#probe-service",
+            "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/57"
           ],
-          "delivery": "branch_pending"
+          "delivery": "via_pr"
         },
         "integration": {
           "state": "partial",
@@ -1255,9 +1266,10 @@
           "state": "partial",
           "refs": [
             "server/probe_service.py",
-            "docs/PROTOCOL.md#probe-service"
+            "docs/PROTOCOL.md#probe-service",
+            "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/57"
           ],
-          "delivery": "branch_pending"
+          "delivery": "via_pr"
         },
         "integration": {
           "state": "partial",
@@ -1424,9 +1436,10 @@
           "state": "partial",
           "refs": [
             "server/probe_service.py",
-            "docs/PROTOCOL.md#probe-service"
+            "docs/PROTOCOL.md#probe-service",
+            "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/57"
           ],
-          "delivery": "branch_pending"
+          "delivery": "via_pr"
         },
         "integration": {
           "state": "partial",
@@ -1511,9 +1524,10 @@
           "state": "partial",
           "refs": [
             "server/probe_service.py",
-            "docs/PROTOCOL.md#probe-service"
+            "docs/PROTOCOL.md#probe-service",
+            "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/57"
           ],
-          "delivery": "branch_pending"
+          "delivery": "via_pr"
         },
         "integration": {
           "state": "partial",
@@ -1683,9 +1697,10 @@
           "state": "partial",
           "refs": [
             "server/probe_service.py",
-            "docs/PROTOCOL.md#probe-service"
+            "docs/PROTOCOL.md#probe-service",
+            "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/57"
           ],
-          "delivery": "branch_pending"
+          "delivery": "via_pr"
         },
         "integration": {
           "state": "partial",
@@ -2230,9 +2245,10 @@
           "state": "partial",
           "refs": [
             "server/probe_service.py",
-            "docs/PROTOCOL.md#probe-service"
+            "docs/PROTOCOL.md#probe-service",
+            "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/57"
           ],
-          "delivery": "branch_pending"
+          "delivery": "via_pr"
         },
         "integration": {
           "state": "partial",
@@ -2319,9 +2335,10 @@
           "state": "partial",
           "refs": [
             "server/probe_service.py",
-            "docs/PROTOCOL.md#probe-service"
+            "docs/PROTOCOL.md#probe-service",
+            "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/57"
           ],
-          "delivery": "branch_pending"
+          "delivery": "via_pr"
         },
         "integration": {
           "state": "partial",
@@ -2483,9 +2500,10 @@
           "state": "partial",
           "refs": [
             "server/probe_service.py",
-            "docs/PROTOCOL.md#probe-service"
+            "docs/PROTOCOL.md#probe-service",
+            "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/57"
           ],
-          "delivery": "branch_pending"
+          "delivery": "via_pr"
         },
         "integration": {
           "state": "partial",

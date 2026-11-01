@@ -21,7 +21,7 @@ STATES = {
     'gate': {'open', 'passed', 'unknown'},
 }
 ENVIRONMENTS = {'wine_diagnostic_copy', 'windows_original', 'lan', 'internet'}
-DELIVERY = {'baseline_merged', 'branch_pending', 'unknown'}
+DELIVERY = {'baseline_merged', 'branch_pending', 'via_pr', 'unknown'}
 
 
 def load(root=ROOT):
@@ -121,6 +121,8 @@ def validate(data, root=ROOT, previous=None):
                     check(error is None, f'{ident}/{name}: {error}')
                 if dimension == 'implementation':
                     check(entry.get('delivery') in DELIVERY, f'{ident}: implementation delivery invalid')
+                    if entry.get('delivery') == 'via_pr':
+                        check(any(re.match(r'https://github.com/[^/]+/[^/]+/pull/[0-9]+$', ref) for ref in entry.get('refs', [])), f'{ident}: via_pr requires PR source')
         gate = dimensions.get('gate', {})
         check(gate.get('id') in {f'K{x}' for x in range(8)}, f'{ident}: gate ID invalid')
         # A passed declaration must be explicit and sourced; never inferred from other columns.
@@ -177,7 +179,8 @@ def render(data, root=ROOT):
            'Thứ tự thực hiện chỉ ở [PLAN](PLAN.md#current-order); câu hỏi ở [RESEARCH](RESEARCH.md#feature-gaps);',
            'lịch sử/review/merge ở [manifest](evidence/checkpoints/manifest.json).',
            'Runtime tách Wine copy chẩn đoán / Windows nguyên bản / LAN / Internet; không suy tương đương giữa môi trường.',
-           'Implementation `branch_pending` chờ tích hợp qua PR; `baseline_merged` nói về code đã có tại baseline.',
+           'Implementation `branch_pending` chưa có PR; `via_pr` dẫn tới PR giữ trạng thái tích hợp hiện tại;',
+           '`baseline_merged` nói về code đã có tại baseline. Trạng thái GitHub không được checker suy từ runtime.',
            'Review độc lập: [waived theo chủ dự án](evidence/checkpoints/review-waiver.json); Codex tự kiểm.', '',
            '## Coverage khai báo', '',
            '| ID / chức năng | Presence | VN ref | KR static | Emulation | Wine copy | Windows gốc | LAN | Internet | Implementation / delivery | Integration | Gate |',
@@ -248,7 +251,8 @@ def main():
         raise SystemExit('COVERAGE stale: run python3 tools/feature_catalog.py --generate')
     print(f'Feature index OK: {sum(n["kind"] == "feature" for n in data["nodes"])} features; links/anchors/DAG/declarations/generated view checked.')
     print('ID baseline: HEAD compared' if previous else 'ID baseline: first catalog, no previous IDs to compare')
-    print('Declared pending implementation: ' + ', '.join(n['id'] for n in data['nodes'] if n.get('coverage', {}).get('implementation', {}).get('delivery') == 'branch_pending'))
+    pending = [n['id'] for n in data['nodes'] if n.get('coverage', {}).get('implementation', {}).get('delivery') == 'branch_pending']
+    print('Declared pending without PR: ' + (', '.join(pending) or 'none; via_pr status remains at the linked PR'))
     print('No semantic confirmation, external-link fetch, runtime certification or gate closure performed.')
 
 

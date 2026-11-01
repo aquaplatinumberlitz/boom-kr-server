@@ -56,6 +56,9 @@ class CatalogTests(unittest.TestCase):
         self.assert_error(data, 'positive declaration without refs')
         f['coverage']['presence']['state'] = 'certain'
         self.assert_error(data, 'state invalid')
+        f['coverage']['implementation']['delivery'] = 'via_pr'
+        f['coverage']['implementation']['refs'] = ['server/probe_service.py']
+        self.assert_error(data, 'via_pr requires PR source')
         f['coverage']['runtime'].pop('windows_original')
         self.assert_error(data, 'runtime environments')
 

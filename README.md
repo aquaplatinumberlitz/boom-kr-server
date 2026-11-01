@@ -35,7 +35,8 @@ hai client có hai chu kỳ thử. [Phạm vi và bằng chứng](docs/evidence/
 reset và các biến thể vẫn thiếu; chưa nghiệm thu trận hoàn chỉnh/K5/K6a, LAN hoặc Internet.
 
 CP047 đã merge [PR55](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/55) tại `5ffd925`.
-CP048 là record tự kiểm trên nhánh hiện tại, code mới `branch_pending` chờ PR. Review độc lập
+CP048 đã ghi record tự kiểm; [PR57](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/57) giữ trạng thái tích hợp code/docs mới.
+Catalog `via_pr` dẫn tới nguồn PR này, không tự suy merge từ runtime. Review độc lập
 [waived](docs/evidence/checkpoints/review-waiver.json), không phải approved. Audit **AUD015/CP048** đã hoàn tất; audit định kỳ kế **CP052**; counter ở [manifest](docs/evidence/checkpoints/manifest.json).
 [Workflow](docs/evidence/checkpoints/README.md) giữ lịch sử và lịch audit.
 
