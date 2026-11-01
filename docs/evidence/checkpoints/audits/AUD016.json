@@ -1,0 +1,101 @@
+{
+  "id": "AUD016",
+  "trigger": "periodic",
+  "completed_through": "CP052",
+  "recorded_utc": "2026-11-01T13:55:28.963699+00:00",
+  "auditor": "Codex manual self-audit; independent review waived by project owner",
+  "read_files": [
+    "README.md",
+    "docs/PLAN.md",
+    "docs/PROTOCOL.md",
+    "docs/RESEARCH.md",
+    "docs/features.json",
+    "docs/COVERAGE.md",
+    "server/README.md",
+    "docs/evidence/stale124/README.md",
+    "docs/evidence/service-eof/README.md",
+    "docs/evidence/service-replacement/README.md",
+    "docs/evidence/setup-eof/README.md",
+    "local/research/codex/stale124-r1/verification.json",
+    "local/research/codex/service-eof-r1/verification.json",
+    "local/research/codex/service-eof-r1/load-verification.json",
+    "local/research/codex/service-eof-r1/lifecycle-summary.json",
+    "local/research/codex/service-replacement-r1/verification.json",
+    "local/research/codex/service-replacement-r1/lifecycle-summary.json",
+    "local/research/codex/service-replacement-r1/measurement-notes.json",
+    "local/research/codex/setup-eof-r1/reuse-question.json",
+    "local/research/codex/setup-eof-r1/audit-source-reports.json",
+    "local/research/codex/setup-eof-r1/baseline-bench.json",
+    "local/research/codex/setup-eof-r1/host-setup-gap.json",
+    "local/research/codex/setup-eof-r1/setup-baseline/run.json",
+    "local/research/codex/setup-eof-r1/setup-baseline/client.log",
+    "local/research/codex/setup-eof-r1/setup-fixed/run.json",
+    "local/research/codex/setup-eof-r1/setup-fixed/client.log",
+    "local/research/codex/setup-eof-r1/native-packets.json",
+    "local/research/codex/setup-eof-r1/lifecycle-summary.json",
+    "local/research/codex/setup-eof-r1/verification.json",
+    "local/research/codex/setup-eof-r1/visual-index.json",
+    "local/research/codex/setup-eof-r1/setup-visual.png"
+  ],
+  "method": "Đọc README→PLAN (scope/order/gates)→PROTOCOL (identity/source rules, room leave và authority/service CP048–052 theo cơ chế; các phần khác tra index/giới hạn)→RESEARCH (current table và lịch sử liên quan)→evidence CP049–052. Đối chiếu report nguồn với số Start/clock/rank/return và clear native, code owner/cleanup, hai run setup/cursor/ID/chief và bốn ảnh trong composite; không dùng script pass thay việc đọc. Phạm vi audit là current state/lifecycle/service/source reuse, không tái RE toàn binary hoặc mọi contract lịch sử.",
+  "findings": [
+    {
+      "id": "F1",
+      "stale": "Nguồn hiện hành còn ghi guest setup EOF chưa kiểm và bước tiếp đóng guest trước map, dù control/fix CP052 đã bắt đúng boundary.",
+      "correction": "Ghi native control không107/slot ma và fix ID2→0/chiefA1, thay next test bằng hostEOF khi survivor chưa map. Không gọi mọi setup race đã giải.",
+      "fixed_in": [
+        "README.md",
+        "docs/PLAN.md",
+        "docs/PROTOCOL.md",
+        "docs/RESEARCH.md",
+        "server/README.md"
+      ]
+    },
+    {
+      "id": "F2",
+      "stale": "Evidence CP050 còn câu chưa C mới/B Start; CP051 còn setup unknown. Dù là snapshot có CP, người đọc có thể hiểu là backlog hiện tại.",
+      "correction": "Thêm chỉ dẫn phạm vi snapshot và link contract CP052; không sửa run/hash/conclusion/counter cũ. CP051 PR63 đã merge, cập nhật current README/PLAN, snapshot manifest vẫn trước merge.",
+      "fixed_in": [
+        "docs/evidence/service-eof/README.md",
+        "docs/evidence/service-replacement/README.md",
+        "README.md",
+        "docs/PLAN.md"
+      ]
+    },
+    {
+      "id": "F3",
+      "stale": "Summary RESEARCH dừng CP048/049; catalog/delivery dẫn CP051 mà thiếu proof CP052 và gap host chưa map.",
+      "correction": "Đồng bộ summary, KR-R004/X003/S001 source links/delivery branch_pending và coverage sinh lại; PLAN giữ duy nhất thứ tự. Các chiều presence/static/runtime/implementation/gate tách nguyên, không nâng gate.",
+      "fixed_in": [
+        "docs/RESEARCH.md",
+        "docs/features.json",
+        "docs/COVERAGE.md"
+      ]
+    },
+    {
+      "id": "F4",
+      "stale": "Không thấy mâu thuẫn mới ở CP049 guard-vs-transport hoặc CP050/051 lifecycle sau khi so reports; cần tránh nâng các số consumer thành fullmatch.",
+      "correction": "Giữ CP049 injection bypass TCP/2setupfail, CP050 forfeit + delayed-load chỉ một result, CP051 partial first vs một vòng B/C thành công. CP052 không có trận; 931checks/12native cases không tự xác nhận semantics/gate.",
+      "fixed_in": [
+        "docs/evidence/setup-eof/README.md",
+        "docs/PROTOCOL.md"
+      ]
+    },
+    {
+      "id": "F5",
+      "stale": "Inactive cleanup theo map progress bỏ sót member đã Join; fix guest vẫn có thể bị hiểu là đầy đủ lifecycle.",
+      "correction": "Membership theo acceptance, 3regression boundaries và native control/fix; bench host-setup-gap chỉ proof code/fake sender, không KR runtime. Giữ case host chưa map và general membership mở.",
+      "fixed_in": [
+        "server/probe_service.py",
+        "server/test_probe_eof.py",
+        "docs/PROTOCOL.md",
+        "docs/RESEARCH.md"
+      ]
+    }
+  ],
+  "remaining": [
+    "HostEOF khi B còn setup cần native control và deferred cleanup/current roster nếu gap được xác nhận; không chạy lại guest beforemap hoặc rediscover107/110.",
+    "Fixture auth/map/roster/rank/accept-order; general membership/account reconnect/idleEOF/sendfailure/loadfail/timeout/full124validator/cache/codec/whole reset/Windows vanilla/LAN/Internet và K0–K7 giữ mở.",
+    "CP052 nhánh pending PR tại snapshot; Codex tự kiểm/review waived. Lịch sử CP001–051/AUD001–015 không đổi; chu kỳ kế CP056."
+  ]
+}

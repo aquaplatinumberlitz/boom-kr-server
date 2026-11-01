@@ -1,5 +1,7 @@
 # CP050 — EOF trong service riêng và ca giữ99
 
+Phạm vi dưới đây là snapshot CP050. Cập nhật hiện hành: [guest setup EOF CP052](../../PROTOCOL.md#setup-eof); thứ tự công việc chỉ ở PLAN.
+
 Baseline CP049/[PR59](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/59) merge
 `a6b62cd93bb96a30a5e7fc55b697d90dbbce9703`. KRE-013/issue60, phụ thuộc KRE-005b/issue14.
 Codex solo/tự kiểm; independent review [waived](../checkpoints/review-waiver.json).
