@@ -49,6 +49,9 @@ class FixtureProfile:
 
 class ProbeService:
     def __init__(self, profile: FixtureProfile, out: Path, proxy_ports: dict):
+        missing = {'rank_Awin', 'promote_B'} - profile.frames.keys()
+        if missing:
+            raise ValueError('profile missing lifecycle fixtures: ' + ', '.join(sorted(missing)))
         self.profile, self.out, self.proxy_ports = profile, out, proxy_ports
         self.room = ProbeRoom([ItemSpec(**item) for item in profile.data['items']],
                               profile.data['initial_key'])
@@ -70,9 +73,12 @@ class ProbeService:
                                                  'sha256': hashlib.sha256(path.read_bytes()).hexdigest()})
 
     def peers(self, marker='map_response_sent'):
-        return [event for event in self.events if event.get('reply_ordinal') == 4 and event.get(marker)]
+        return [event for event in self.events if event.get('reply_ordinal') == 4
+                and not event.get('closed') and event.get(marker)]
 
     def send_raw(self, event, raw):
+        if event.get('closed'):
+            raise RuntimeError('attempt to send on a closed connection')
         self.connections[event['global_ordinal']]['socket'].sendall(raw)
 
     def send(self, event, name, label, *, body=None, opcode=None):
@@ -236,6 +242,57 @@ class ProbeService:
             if subtype == 19:
                 event['death_event'] = report
 
+    def close_connection(self, ordinal, reason):
+        """One owner serializes close, lifetime invalidation and later recovery."""
+        state = self.connections[ordinal]
+        event = state['event']
+        if event.get('closed'):
+            return
+        event['closed'] = {'reason': reason, 'monotonic_ns': time.monotonic_ns()}
+        try:
+            self.selector.unregister(state['socket'])
+        except KeyError:
+            pass
+        state['socket'].close()
+        if event['reply_ordinal'] != 4:
+            return
+        event.pop('guest_ready_received', None)
+        if self.room.active:
+            # Do this immediately, before rank/return delays or another deadline.
+            self.room.finish()
+            self.round['abort'] = {'role': event['role'], 'reason': reason,
+                                   'monotonic_ns': time.monotonic_ns(),
+                                   'generation': self.room.generation}
+            self.state['policy_events'].append({'op': 'abort', 'role': event['role'],
+                                                'generation': self.room.generation,
+                                                'reason': reason})
+        elif self.round.get('rank') and not self.round.get('refresh'):
+            # A result already chosen remains chosen; still clear the departed
+            # slot after return. Never start a second result sequence.
+            self.round.setdefault('abort', {'role': event['role'], 'reason': reason,
+                                           'monotonic_ns': time.monotonic_ns(),
+                                           'generation': self.room.generation})
+        elif event.get('map_response_sent'):
+            self.cleanup_departed(event['role'])
+
+    def cleanup_departed(self, departed):
+        peers = self.peers()
+        slot, identity = {'A': (0, 1), 'B': (1, 2)}[departed]
+        body = codec.pack_fields([slot, identity, 0], [1, 4, 1])
+        sent = []
+        for peer in peers:
+            sent.append({'role': peer['role'], **self.send(peer, 'start', 'remove107',
+                                                         opcode=107, body=body)})
+            # In this two-person fixture profile B becomes host after A leaves;
+            # A keeps its original host state when B leaves.
+            alias = 'promote_B' if peer['role'] == 'B' else 'slot_A'
+            sent.append({'role': peer['role'], **self.send(peer, alias, 'survivor110')})
+            peer.pop('guest_ready_received', None)
+        self.state['policy_events'].append({'op': 'cleanup_departed', 'role': departed,
+                                            'generation': self.room.generation,
+                                            'broadcast': sent})
+        return sent
+
     def tick(self):
         now = time.monotonic_ns()
         for due, ticket, bomb in list(self.jobs):
@@ -251,6 +308,12 @@ class ProbeService:
             self.state['policy_events'].append({'op': 'bomb_deadline', 'generation': ticket.generation,
                                                 'wire_id': ticket.wire_id, 'rejected': reason})
         self.tick_setup(now)
+        abort = self.round.get('abort')
+        if abort and not self.round.get('rank') and now - abort['monotonic_ns'] >= 12 * 10**9:
+            alias = 'rank' if abort['role'] == 'A' else 'rank_Awin'
+            self.round['rank'] = {'monotonic_ns': now,
+                                  'broadcast': self.broadcast(alias, 'forfeit175'),
+                                  'policy': 'forfeit on channel close, no synthetic death'}
         if self.room.active:
             peers = self.peers('init99')
             if len(peers) == 2:
@@ -286,15 +349,18 @@ class ProbeService:
         if self.round.get('rank') and not self.round.get('return') and now - self.round['rank']['monotonic_ns'] >= 5 * 10**9:
             self.round['return'] = {'monotonic_ns': now, 'broadcast': self.broadcast('return', f"return180-r{self.room.generation}")}
         if self.round.get('return') and not self.round.get('refresh') and now - self.round['return']['monotonic_ns'] >= 3 * 10**9:
-            sent = self.broadcast('slot_A', f"host110-r{self.room.generation}")
-            sent += self.broadcast('slot_B', f"guest110-r{self.room.generation}")
+            if self.round.get('abort'):
+                sent = self.cleanup_departed(self.round['abort']['role'])
+            else:
+                sent = self.broadcast('slot_A', f"host110-r{self.room.generation}")
+                sent += self.broadcast('slot_B', f"guest110-r{self.room.generation}")
             self.round['refresh'] = {'monotonic_ns': now, 'broadcast': sent}
             for event in self.peers():
                 event.pop('guest_ready_received', None)
 
     def tick_setup(self, now):
         for event in self.events:
-            if event.get('reply_ordinal') != 4:
+            if event.get('reply_ordinal') != 4 or event.get('closed'):
                 continue
             role = event['role']
             for previous, marker, delay, aliases in [
@@ -330,10 +396,7 @@ class ProbeService:
         data = connection.recv(4096)
         if not data:
             event['peer_eof'] = True
-            self.selector.unregister(connection)
-            connection.close()
-            if event['reply_ordinal'] == 4:
-                self.room.finish()
+            self.close_connection(ordinal, 'eof')
             return
         event['chunks'].append({'monotonic_ns': time.monotonic_ns(), 'hex': data.hex()})
         if event['reply_ordinal'] == 2:
@@ -387,9 +450,7 @@ class ProbeService:
                         self.state['errors'].append({'connection': key.data, 'error': str(error)})
                         if key.data is None:
                             raise
-                        self.selector.unregister(key.fileobj)
-                        key.fileobj.close()
-                        self.room.finish()
+                        self.close_connection(key.data, str(error))
                 self.tick()
                 self.save()
         finally:

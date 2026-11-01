@@ -29,16 +29,15 @@ runtime nào có nguồn, còn thiếu gì và phép kiểm nào giải quyết.
 evidence/hash và câu hỏi; [PLAN](docs/PLAN.md#current-order) giữ duy nhất thứ tự công việc.
 Đây là scope đường bootstrap → login → sảnh → phòng → Battle → kết quả/reset, không kiểm kê toàn client.
 
-CP049: service đã kiểm khóa của request124 trước claim. Replay body cũ bị loại; request TCP
-hiện tại vẫn nhặt Roller5→6 trên cả hai view và chạy hai chu kỳ thử tới result/return.
-[Phạm vi, control và hash](docs/evidence/stale124/README.md), [contract/giới hạn](docs/PROTOCOL.md#pickup-round-key).
-Body cũ được chèn tại dispatcher; chưa kiểm admission qua TCP của replay. Full validator/auth/cache/
-codec/reset và lifecycle service còn thiếu; chưa nghiệm thu trận hoàn chỉnh/K5/K6a, LAN/Internet.
+CP050: service đã xử lý host/guest EOF khi bom còn chờ: loại timer cũ, forfeit/về phòng,
+xóa đúng slot và chuyển/giữ chủ bằng getter native. Ca giữ99 củaB10s cho thấy service chờ đủ hai
+peer rồi mới phát phase; client tiếp tục input/bom/result vòng1. [Evidence/giới hạn](docs/evidence/service-eof/README.md),
+[contract](docs/PROTOCOL.md#service-eof). Chưa client mới vào/Start từ B trong service hoặc account reconnect;
+fullvalidator/auth/cache/codec/reset và gate K5/K6a/LAN/Internet vẫn mở.
 
-CP048 đã merge [PR57](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/57) tại `4d77eaf`.
-CP049 tự kiểm/tích hợp theo [PR59](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/59); review độc lập
-[waived](docs/evidence/checkpoints/review-waiver.json). Catalog ghi nguồn delivery riêng.
-Audit **AUD015/CP048**, audit định kỳ kế **CP052**;
+CP049 đã merge [PR59](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/59) tại `a6b62cd`.
+CP050 tự kiểm trên nhánh, integration theo PR của nhánh; review độc lập
+[waived](docs/evidence/checkpoints/review-waiver.json). Audit **AUD015/CP048**, audit định kỳ kế **CP052**;
 [counter](docs/evidence/checkpoints/manifest.json), [workflow](docs/evidence/checkpoints/README.md).
 
 Đích đầu: hai client thật chơi hai trận liên tiếp; mở bốn client và hardening sau đó.

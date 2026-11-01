@@ -64,8 +64,8 @@ Service chỉ bind loopback. Khi chạy Wine phải dùng namespace/lease/files-
 loopback binding riêng nó không cô lập outbound client. Cần đủ các port của fixture/harness, không
 chỉ3808 cho chuỗi runtime. Profile chỉ cho hai identity A/B theo accept-order (4connection/vai),
 synthetic auth/map/roster/rank và stable slots. Không là public server hoặc login/auth hoàn chỉnh.
-Service chưa quản membership tổng quát/EOF forfeit/promotion, full124validator/tick/actorstate,
-relay/NAT/backpressure hay gate K5/K6a. Kết thúc ở EOF hiện chỉ invalidate room, chưa ca recovery service.
+Service chưa quản membership tổng quát/client thay thế sau EOF, full124validator/tick/actorstate,
+relay/NAT/backpressure hay gate K5/K6a. CP050 bổ sung [EOF recovery hẹp](../docs/PROTOCOL.md#service-eof); mô tả chỉ finish là snapshot CP049.
 Runtime r2 có hai chu kỳ; r3 chỉ một result, không dùng để tuyên bố tính tái lập mọi input.
 
 
@@ -74,3 +74,12 @@ và không chiếm item. Đây là policy server ở caller, không đổi ItemC
 [Contract/giới hạn](../docs/PROTOCOL.md#pickup-round-key), [hai run native effect và recipe](../docs/evidence/stale124/README.md).
 Tests kiểm old→current→duplicate, origin/catalog vẫn áp dụng và key+256 cùng low8 vẫn bị policyu32 loại.
 Không xác thực sender hoặc kiểm t/distance/actorstate; body chèn tại dispatcher chưa proof transport replay.
+
+
+CP050: channel close vào một đường idempotent, loại closedpeer khỏi sends/setup, finish vòng ngay
+để ticket bom cũ không phát158. Sau forfeit/return mới107/110 cho survivor. Delay12/5/3s, rank,
+slot/ID/promote là policy fixture; [native evidence](../docs/evidence/service-eof/README.md) kiểm cả host/guest.
+Profile cần34fixture mới, export lại bằng tool ra path mới; profile32 cũ fail rõ trước listen.
+33server tests gồm5EOF/profile regressions. Service vẫn chỉA/B/cap8/StartA; C mới/BStart/account
+reconnect/idle-EOF/setup/sendfailure race chưa runtime. Một wrapper giữ99 10s đã kiểm wait-both hẹp,
+không chứng minh mọi timeout hoặc full loading gate.

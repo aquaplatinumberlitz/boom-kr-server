@@ -1,7 +1,7 @@
 {
   "schema": "kre-feature-index-v1",
   "build": "KR00967",
-  "as_of": "CP049",
+  "as_of": "CP050",
   "sources": {
     "plan": "docs/PLAN.md",
     "contract": "docs/PROTOCOL.md",
@@ -780,7 +780,8 @@
         "plan": "docs/PLAN.md#current-order",
         "evidence": [
           "docs/evidence/start-reply/README.md",
-          "docs/evidence/probe-service/README.md"
+          "docs/evidence/probe-service/README.md",
+          "docs/evidence/service-eof/README.md"
         ]
       },
       "coverage": {
@@ -812,7 +813,8 @@
           "wine_diagnostic_copy": {
             "state": "observed",
             "refs": [
-              "docs/evidence/start-reply/README.md"
+              "docs/evidence/start-reply/README.md",
+              "docs/evidence/service-eof/README.md"
             ]
           },
           "windows_original": {
@@ -830,17 +832,16 @@
         },
         "implementation": {
           "state": "partial",
+          "delivery": "branch_pending",
           "refs": [
             "server/probe_service.py",
-            "docs/PROTOCOL.md#probe-service",
-            "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/57"
-          ],
-          "delivery": "via_pr"
+            "docs/PROTOCOL.md#service-eof"
+          ]
         },
         "integration": {
           "state": "partial",
           "refs": [
-            "docs/evidence/probe-service/README.md"
+            "docs/evidence/service-eof/README.md"
           ]
         },
         "gate": {
@@ -867,7 +868,8 @@
         "question": "docs/RESEARCH.md#gap-room-membership",
         "plan": "docs/PLAN.md#current-order",
         "evidence": [
-          "docs/evidence/room-rejoin/README.md"
+          "docs/evidence/room-rejoin/README.md",
+          "docs/evidence/service-eof/README.md"
         ]
       },
       "coverage": {
@@ -899,7 +901,8 @@
           "wine_diagnostic_copy": {
             "state": "observed",
             "refs": [
-              "docs/evidence/room-rejoin/README.md"
+              "docs/evidence/room-rejoin/README.md",
+              "docs/evidence/service-eof/README.md"
             ]
           },
           "windows_original": {
@@ -916,13 +919,18 @@
           }
         },
         "implementation": {
-          "state": "unknown",
-          "refs": [],
-          "delivery": "unknown"
+          "state": "partial",
+          "delivery": "branch_pending",
+          "refs": [
+            "server/probe_service.py",
+            "docs/PROTOCOL.md#service-eof"
+          ]
         },
         "integration": {
-          "state": "unknown",
-          "refs": []
+          "state": "partial",
+          "refs": [
+            "docs/evidence/service-eof/README.md"
+          ]
         },
         "gate": {
           "id": "K4",
@@ -2373,7 +2381,8 @@
         "question": "docs/RESEARCH.md#gap-disconnect-replacement",
         "plan": "docs/PLAN.md#current-order",
         "evidence": [
-          "docs/evidence/abort-timer/README.md"
+          "docs/evidence/abort-timer/README.md",
+          "docs/evidence/service-eof/README.md"
         ]
       },
       "coverage": {
@@ -2405,7 +2414,8 @@
           "wine_diagnostic_copy": {
             "state": "observed",
             "refs": [
-              "docs/evidence/abort-timer/README.md"
+              "docs/evidence/abort-timer/README.md",
+              "docs/evidence/service-eof/README.md"
             ]
           },
           "windows_original": {
@@ -2422,13 +2432,18 @@
           }
         },
         "implementation": {
-          "state": "unknown",
-          "refs": [],
-          "delivery": "unknown"
+          "state": "partial",
+          "delivery": "branch_pending",
+          "refs": [
+            "server/probe_service.py",
+            "docs/PROTOCOL.md#service-eof"
+          ]
         },
         "integration": {
-          "state": "unknown",
-          "refs": []
+          "state": "partial",
+          "refs": [
+            "docs/evidence/service-eof/README.md"
+          ]
         },
         "gate": {
           "id": "K6",
@@ -2457,7 +2472,8 @@
         "plan": "docs/PLAN.md#current-order",
         "evidence": [
           "docs/evidence/probe-service/README.md",
-          "docs/evidence/stale124/README.md"
+          "docs/evidence/stale124/README.md",
+          "docs/evidence/service-eof/README.md"
         ]
       },
       "coverage": {
@@ -2484,7 +2500,8 @@
             "state": "observed",
             "refs": [
               "docs/evidence/probe-service/README.md",
-              "docs/evidence/stale124/README.md"
+              "docs/evidence/stale124/README.md",
+              "docs/evidence/service-eof/README.md"
             ]
           },
           "windows_original": {
@@ -2502,17 +2519,16 @@
         },
         "implementation": {
           "state": "partial",
-          "delivery": "via_pr",
+          "delivery": "branch_pending",
           "refs": [
             "server/probe_service.py",
-            "docs/PROTOCOL.md#pickup-round-key",
-            "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/59"
+            "docs/PROTOCOL.md#service-eof"
           ]
         },
         "integration": {
           "state": "partial",
           "refs": [
-            "docs/evidence/stale124/README.md"
+            "docs/evidence/service-eof/README.md"
           ]
         },
         "gate": {

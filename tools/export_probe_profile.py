@@ -39,6 +39,8 @@ FIXTURES = {
     'bomb': ('round-go-r1/reply159.bin', 85),
     'blast': ('bomb-calc-r1/kind0.bin', None),
     'rank': ('round-repeat-r1/rank175-v2.bin', 91),
+    'rank_Awin': ('peer-events-r1/rank175-Awin-Blose.bin', 91),
+    'promote_B': ('leave-r1/promote110-B.bin', 73),
     'return': ('bomb-calc-r1/result180-full.bin', 91),
 }
 
