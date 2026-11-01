@@ -176,14 +176,25 @@ class ProbeService:
             self.jobs.append((time.monotonic() + 6, ticket, bomb))
         elif opcode == 124 and self.room.active:
             values = codec.read_fields(body, [1, 1, 1, 1, 4, 2, 4, 4, 1])
-            context, slot, row, column, index, kind, _, _, flag = values
+            context, slot, row, column, index, kind, _, reported_key, flag = values
             if flag != 0:
                 raise ValueError('unsupported item variant')
-            claim = self.room.claim({'A': 0, 'B': 1}[role], slot, context, ItemSpec(index, row, column, kind))
             report = {'round': self.room.generation, 'role': role, 'seq': sequence, 'fields': values,
                       'payload_hex': body.hex(), 'frame_sha256': hashlib.sha256(frame).hexdigest(),
                       'monotonic_ns': time.monotonic_ns(), 'broadcast165': []}
             self.state['item_requests'].append(report)
+            # Emulator policy for the measured 124 variant. This is the u32 k
+            # observed following the second 153 u32, not an authentication token.
+            # Reject before touching the current catalog's one-winner claim.
+            if reported_key != self.room.key:
+                report['rejected'] = 'round_key_mismatch'
+                self.state['policy_events'].append({'op': 'item_reject_key',
+                                                    'generation': self.room.generation,
+                                                    'reported_key': reported_key,
+                                                    'expected_key': self.room.key,
+                                                    'slot': slot, 'index': index})
+                return
+            claim = self.room.claim({'A': 0, 'B': 1}[role], slot, context, ItemSpec(index, row, column, kind))
             if claim is not None and self.room.claims.consume(claim):
                 payload = codec.pack_fields([1, context, slot, row, column, index, kind, 0], [1, 1, 1, 1, 1, 4, 2, 1])
                 report['broadcast165'] = self.broadcast('start', f'item165-r{self.room.generation}-{index}',

@@ -1,7 +1,7 @@
 {
   "schema": "kre-feature-index-v1",
   "build": "KR00967",
-  "as_of": "CP048",
+  "as_of": "CP049",
   "sources": {
     "plan": "docs/PLAN.md",
     "contract": "docs/PROTOCOL.md",
@@ -1383,7 +1383,8 @@
         "plan": "docs/PLAN.md#current-order",
         "evidence": [
           "docs/evidence/item-pickup/README.md",
-          "docs/evidence/probe-service/README.md"
+          "docs/evidence/probe-service/README.md",
+          "docs/evidence/stale124/README.md"
         ]
       },
       "coverage": {
@@ -1416,7 +1417,8 @@
           "wine_diagnostic_copy": {
             "state": "observed",
             "refs": [
-              "docs/evidence/item-pickup/README.md"
+              "docs/evidence/item-pickup/README.md",
+              "docs/evidence/stale124/README.md"
             ]
           },
           "windows_original": {
@@ -1434,17 +1436,17 @@
         },
         "implementation": {
           "state": "partial",
+          "delivery": "via_pr",
           "refs": [
             "server/probe_service.py",
-            "docs/PROTOCOL.md#probe-service",
-            "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/57"
-          ],
-          "delivery": "via_pr"
+            "docs/PROTOCOL.md#pickup-round-key",
+            "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/59"
+          ]
         },
         "integration": {
           "state": "partial",
           "refs": [
-            "docs/evidence/probe-service/README.md"
+            "docs/evidence/stale124/README.md"
           ]
         },
         "gate": {
@@ -2454,7 +2456,8 @@
         "question": "docs/RESEARCH.md#gap-diagnostic-service",
         "plan": "docs/PLAN.md#current-order",
         "evidence": [
-          "docs/evidence/probe-service/README.md"
+          "docs/evidence/probe-service/README.md",
+          "docs/evidence/stale124/README.md"
         ]
       },
       "coverage": {
@@ -2480,7 +2483,8 @@
           "wine_diagnostic_copy": {
             "state": "observed",
             "refs": [
-              "docs/evidence/probe-service/README.md"
+              "docs/evidence/probe-service/README.md",
+              "docs/evidence/stale124/README.md"
             ]
           },
           "windows_original": {
@@ -2498,17 +2502,17 @@
         },
         "implementation": {
           "state": "partial",
+          "delivery": "via_pr",
           "refs": [
             "server/probe_service.py",
-            "docs/PROTOCOL.md#probe-service",
-            "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/57"
-          ],
-          "delivery": "via_pr"
+            "docs/PROTOCOL.md#pickup-round-key",
+            "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/59"
+          ]
         },
         "integration": {
           "state": "partial",
           "refs": [
-            "docs/evidence/probe-service/README.md"
+            "docs/evidence/stale124/README.md"
           ]
         },
         "gate": {
