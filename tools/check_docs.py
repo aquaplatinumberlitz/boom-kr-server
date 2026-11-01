@@ -25,6 +25,14 @@ def main():
                 errors.append(f"{path.relative_to(ROOT)}: invalid local link {target}")
     if errors:
         raise SystemExit("\n".join(errors))
+    from feature_catalog import load, validate, render, previous_catalog, OUTPUT
+    catalog = load()
+    errors = validate(catalog, previous=previous_catalog())
+    if (ROOT / OUTPUT).read_text() != render(catalog):
+        errors.append("COVERAGE stale: run python3 tools/feature_catalog.py --generate")
+    if errors:
+        raise SystemExit("\n".join(errors))
+    print("Feature catalog declarations/links/anchors/dependencies/generated view OK; semantics/gates not certified.")
     print(f"Docs OK: {len(files)} files, {count} internal file links; fragments not checked.")
 
 

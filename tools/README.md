@@ -37,3 +37,19 @@ evidence hash,closed-task/active-next-step và cadence audit;dùng lại check_d
 Trên host chạy --require-local --require-history;clone thiếu raw báo UNVERIFIED khi không flag.
 Pending review hiện WARNING,không thành semantic approval. [Quy trình/giới hạn](../docs/evidence/checkpoints/README.md).
 Tests: python3 tools/test_checkpoints.py.
+
+`feature_catalog.py --generate`: sinh [coverage/cây/thẻ cơ chế](../docs/COVERAGE.md) từ
+[catalog ID ổn định](../docs/features.json). Không flag: kiểm bản sinh đã đồng bộ, schema/trạng thái,
+file/anchor, dependency/parent DAG và ID/key so HEAD. RESEARCH giữ nguồn câu hỏi/phép đo để trích;
+PLAN giữ thứ tự. Check này cũng chạy trong `check_docs.py`; kiểm Markdown thường vẫn không kiểm fragment.
+External URL không fetch. Tool không suy nghĩa/kết luận, xác nhận runtime hoặc tự đóng gate.
+Negative tests: `python3 tools/test_feature_catalog.py`.
+
+`export_probe_profile.py --source-root local/research/codex --out <local/profile.json>`: chỉ lập index path/size/SHA/sequence của
+fixture RE hiện hữu cho [service chẩn đoán](../server/README.md); không nhập binary/asset vào Git.
+Profile dùng chính xác bytes/seq đã đo, không là schema auth/cache tổng quát hoặc oracle tự sinh.
+
+CP048: checkpoint checker phân biệt docs hiện hành với snapshot cũ. Khi `.md` repository đã đổi,
+chỉ chấp nhận bytes lịch sử khớp size/SHA chính xác từ Git và báo revision; không bỏ qua mismatch.
+Code/raw/local/binary vẫn so đúng file hiện tại. Negative test kiểm cả tìm đúng bytes cũ và từ chối
+hash không tồn tại; không sửa lịch sử checkpoint để cập nhật canonical docs.

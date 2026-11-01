@@ -50,6 +50,23 @@ class CheckpointsTest(unittest.TestCase):
             "task_states": [{"id": "T1", "state": "open", "canonical": "docs/PLAN.md", "reference": "test issue"}],
         }
 
+    def test_changed_document_requires_exact_historical_bytes(self):
+        relative = "docs/evidence/README.md"
+        path = self.root / relative
+        original = path.read_bytes()
+        self.record["evidence"] = [{"id": "E1", "kind": "repository", "path": relative,
+                                    "sha256": hashlib.sha256(original).hexdigest(), "bytes": len(original)}]
+        git = ["git", "-c", "user.email=test@example.invalid", "-c", "user.name=test", "-C", str(self.root)]
+        subprocess.run(git + ["init", "-q"], check=True)
+        subprocess.run(git + ["add", relative], check=True)
+        subprocess.run(git + ["commit", "-qm", "historical document"], check=True)
+        path.write_text("new current document\n")
+        errors, warnings, _ = checker.validate(self.manifest, self.root, True)
+        self.assertEqual(errors, [])
+        self.assertTrue(any("HISTORICAL DOC VERIFIED" in w for w in warnings))
+        self.record["evidence"][0]["sha256"] = "f" * 64
+        self.assertTrue(any("hash mismatch" in e for e in self.errors()))
+
     def errors(self, manifest=None, require_local=True):
         return checker.validate(manifest or self.manifest, self.root, require_local)[0]
 

@@ -7,7 +7,10 @@ Các quy tắc/scope V1 của `boom-rs` không tự áp dụng lên project này
 
 Đọc `README.md` → `docs/PLAN.md`, rồi `docs/PROTOCOL.md`/`docs/RESEARCH.md` đúng task.
 Chỉ `docs/PLAN.md` giữ lộ trình; không tạo plan theo phiên. Protocol/authority ở PROTOCOL, câu hỏi mở
-ở RESEARCH, nguồn cũ/migration ở REFERENCES, metadata bằng chứng ở `docs/evidence/`.
+ở RESEARCH. `docs/features.json` chỉ mục ID/cây/dependency/mức bằng chứng, không là plan hoặc contract;
+`docs/COVERAGE.md` sinh bằng `python3 tools/feature_catalog.py --generate`, trích khoảng trống/phép đo từ RESEARCH.
+Khi đổi cơ chế/trạng thái/câu hỏi, đồng bộ catalog rồi sinh lại coverage; ID không xóa/repurpose (retired giữ lại).
+Nguồn cũ/migration ở REFERENCES, metadata bằng chứng ở `docs/evidence/`.
 Docs viết tiếng Việt; ID/API/type kỹ thuật giữ nguyên.
 
 Mọi code/docs/tool mới thuộc repo này: `server/`, `tools/`, `docs/`. Không tiếp tục ghi bản tương ứng

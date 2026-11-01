@@ -1,0 +1,2581 @@
+{
+  "schema": "kre-feature-index-v1",
+  "build": "KR00967",
+  "as_of": "CP048",
+  "sources": {
+    "plan": "docs/PLAN.md",
+    "contract": "docs/PROTOCOL.md",
+    "questions": "docs/RESEARCH.md",
+    "history": "docs/evidence/checkpoints/manifest.json"
+  },
+  "scope": "Mechanism index for offline Battle path; not whole-client inventory or gate acceptance. Statuses only within linked source limits.",
+  "nodes": [
+    {
+      "id": "KR-G000",
+      "kind": "group",
+      "title": "KR00967: Battle offline",
+      "mechanism": "battle-scenario-index",
+      "parent": null,
+      "depends_on": [],
+      "lifecycle": "active"
+    },
+    {
+      "id": "KR-G001",
+      "kind": "group",
+      "title": "Bootstrap",
+      "mechanism": "bootstrap",
+      "parent": "KR-G000",
+      "depends_on": [],
+      "lifecycle": "active"
+    },
+    {
+      "id": "KR-G002",
+      "kind": "group",
+      "title": "Login và sảnh",
+      "mechanism": "login-lobby",
+      "parent": "KR-G000",
+      "depends_on": [],
+      "lifecycle": "active"
+    },
+    {
+      "id": "KR-G003",
+      "kind": "group",
+      "title": "Phòng và load",
+      "mechanism": "room-load",
+      "parent": "KR-G000",
+      "depends_on": [],
+      "lifecycle": "active"
+    },
+    {
+      "id": "KR-G004",
+      "kind": "group",
+      "title": "Battle",
+      "mechanism": "battle",
+      "parent": "KR-G000",
+      "depends_on": [],
+      "lifecycle": "active"
+    },
+    {
+      "id": "KR-G005",
+      "kind": "group",
+      "title": "Kết quả và reset",
+      "mechanism": "result-reset",
+      "parent": "KR-G000",
+      "depends_on": [],
+      "lifecycle": "active"
+    },
+    {
+      "id": "KR-G006",
+      "kind": "group",
+      "title": "Service và vận hành",
+      "mechanism": "service",
+      "parent": "KR-G000",
+      "depends_on": [],
+      "lifecycle": "active"
+    },
+    {
+      "id": "KR-B001",
+      "kind": "feature",
+      "title": "ProcessPatch và copy offline",
+      "mechanism": "process-patch",
+      "parent": "KR-G001",
+      "depends_on": [],
+      "lifecycle": "active",
+      "refs": {
+        "contract": "docs/PROTOCOL.md#wcp",
+        "question": "docs/RESEARCH.md#gap-process-patch",
+        "plan": "docs/PLAN.md#current-order",
+        "evidence": [
+          "docs/evidence/bootstrap-wire/README.md",
+          "docs/evidence/probe-service/README.md"
+        ]
+      },
+      "coverage": {
+        "presence": {
+          "state": "present",
+          "refs": [
+            "docs/PROTOCOL.md#wcp"
+          ]
+        },
+        "vn_reference": {
+          "state": "both",
+          "refs": [
+            "docs/REFERENCES.md"
+          ]
+        },
+        "kr_static": {
+          "state": "partial",
+          "refs": [
+            "docs/PROTOCOL.md#wcp"
+          ]
+        },
+        "emulation": {
+          "state": "checked",
+          "refs": [
+            "docs/evidence/bootstrap-wire/README.md"
+          ]
+        },
+        "runtime": {
+          "wine_diagnostic_copy": {
+            "state": "observed",
+            "refs": [
+              "docs/evidence/bootstrap-wire/README.md"
+            ]
+          },
+          "windows_original": {
+            "state": "unknown",
+            "refs": []
+          },
+          "lan": {
+            "state": "unknown",
+            "refs": []
+          },
+          "internet": {
+            "state": "unknown",
+            "refs": []
+          }
+        },
+        "implementation": {
+          "state": "partial",
+          "refs": [
+            "server/probe_service.py",
+            "docs/PROTOCOL.md#probe-service"
+          ],
+          "delivery": "branch_pending"
+        },
+        "integration": {
+          "state": "partial",
+          "refs": [
+            "docs/evidence/probe-service/README.md"
+          ]
+        },
+        "gate": {
+          "id": "K1",
+          "state": "open",
+          "refs": [
+            "docs/PLAN.md#gates"
+          ]
+        }
+      }
+    },
+    {
+      "id": "KR-B002",
+      "kind": "feature",
+      "title": "WCP và dữ liệu khởi tạo",
+      "mechanism": "wcp-config",
+      "parent": "KR-G001",
+      "depends_on": [
+        "KR-B001"
+      ],
+      "lifecycle": "active",
+      "refs": {
+        "contract": "docs/PROTOCOL.md#wcp",
+        "question": "docs/RESEARCH.md#gap-wcp-config",
+        "plan": "docs/PLAN.md#current-order",
+        "evidence": [
+          "docs/evidence/wcp-sequence/README.md",
+          "docs/evidence/probe-service/README.md"
+        ]
+      },
+      "coverage": {
+        "presence": {
+          "state": "present",
+          "refs": [
+            "docs/PROTOCOL.md#wcp"
+          ]
+        },
+        "vn_reference": {
+          "state": "both",
+          "refs": [
+            "docs/REFERENCES.md"
+          ]
+        },
+        "kr_static": {
+          "state": "partial",
+          "refs": [
+            "docs/PROTOCOL.md#wcp"
+          ]
+        },
+        "emulation": {
+          "state": "checked",
+          "refs": [
+            "docs/evidence/wcp-sequence/README.md"
+          ]
+        },
+        "runtime": {
+          "wine_diagnostic_copy": {
+            "state": "observed",
+            "refs": [
+              "docs/evidence/wcp-sequence/README.md"
+            ]
+          },
+          "windows_original": {
+            "state": "unknown",
+            "refs": []
+          },
+          "lan": {
+            "state": "unknown",
+            "refs": []
+          },
+          "internet": {
+            "state": "unknown",
+            "refs": []
+          }
+        },
+        "implementation": {
+          "state": "partial",
+          "refs": [
+            "server/probe_service.py",
+            "docs/PROTOCOL.md#probe-service"
+          ],
+          "delivery": "branch_pending"
+        },
+        "integration": {
+          "state": "partial",
+          "refs": [
+            "docs/evidence/probe-service/README.md"
+          ]
+        },
+        "gate": {
+          "id": "K2",
+          "state": "open",
+          "refs": [
+            "docs/PLAN.md#gates"
+          ]
+        }
+      }
+    },
+    {
+      "id": "KR-B003",
+      "kind": "feature",
+      "title": "Codec theo socket và chiều",
+      "mechanism": "socket-codec",
+      "parent": "KR-G001",
+      "depends_on": [
+        "KR-B002"
+      ],
+      "lifecycle": "active",
+      "refs": {
+        "contract": "docs/PROTOCOL.md#wcp",
+        "question": "docs/RESEARCH.md#gap-socket-codec",
+        "plan": "docs/PLAN.md#current-order",
+        "evidence": [
+          "docs/evidence/primitives/README.md",
+          "docs/evidence/probe-service/README.md"
+        ]
+      },
+      "coverage": {
+        "presence": {
+          "state": "present",
+          "refs": [
+            "docs/PROTOCOL.md#wcp"
+          ]
+        },
+        "vn_reference": {
+          "state": "both",
+          "refs": [
+            "docs/REFERENCES.md"
+          ]
+        },
+        "kr_static": {
+          "state": "partial",
+          "refs": [
+            "docs/PROTOCOL.md#wcp"
+          ]
+        },
+        "emulation": {
+          "state": "checked",
+          "refs": [
+            "docs/evidence/primitives/README.md"
+          ]
+        },
+        "runtime": {
+          "wine_diagnostic_copy": {
+            "state": "observed",
+            "refs": [
+              "docs/evidence/primitives/README.md"
+            ]
+          },
+          "windows_original": {
+            "state": "unknown",
+            "refs": []
+          },
+          "lan": {
+            "state": "unknown",
+            "refs": []
+          },
+          "internet": {
+            "state": "unknown",
+            "refs": []
+          }
+        },
+        "implementation": {
+          "state": "partial",
+          "refs": [
+            "server/probe_service.py",
+            "docs/PROTOCOL.md#probe-service"
+          ],
+          "delivery": "branch_pending"
+        },
+        "integration": {
+          "state": "partial",
+          "refs": [
+            "docs/evidence/probe-service/README.md"
+          ]
+        },
+        "gate": {
+          "id": "K2",
+          "state": "open",
+          "refs": [
+            "docs/PLAN.md#gates"
+          ]
+        }
+      }
+    },
+    {
+      "id": "KR-L001",
+      "kind": "feature",
+      "title": "Auth và identity cục bộ",
+      "mechanism": "auth-identity",
+      "parent": "KR-G002",
+      "depends_on": [
+        "KR-B003"
+      ],
+      "lifecycle": "active",
+      "refs": {
+        "contract": "docs/PROTOCOL.md#login-auth",
+        "question": "docs/RESEARCH.md#gap-auth-identity",
+        "plan": "docs/PLAN.md#current-order",
+        "evidence": [
+          "docs/evidence/login-runtime/README.md",
+          "docs/evidence/probe-service/README.md"
+        ]
+      },
+      "coverage": {
+        "presence": {
+          "state": "present",
+          "refs": [
+            "docs/PROTOCOL.md#login-auth"
+          ]
+        },
+        "vn_reference": {
+          "state": "both",
+          "refs": [
+            "docs/REFERENCES.md"
+          ]
+        },
+        "kr_static": {
+          "state": "partial",
+          "refs": [
+            "docs/PROTOCOL.md#login-auth"
+          ]
+        },
+        "emulation": {
+          "state": "checked",
+          "refs": [
+            "docs/evidence/login-runtime/README.md"
+          ]
+        },
+        "runtime": {
+          "wine_diagnostic_copy": {
+            "state": "observed",
+            "refs": [
+              "docs/evidence/login-runtime/README.md"
+            ]
+          },
+          "windows_original": {
+            "state": "unknown",
+            "refs": []
+          },
+          "lan": {
+            "state": "unknown",
+            "refs": []
+          },
+          "internet": {
+            "state": "unknown",
+            "refs": []
+          }
+        },
+        "implementation": {
+          "state": "partial",
+          "refs": [
+            "server/probe_service.py",
+            "docs/PROTOCOL.md#probe-service"
+          ],
+          "delivery": "branch_pending"
+        },
+        "integration": {
+          "state": "partial",
+          "refs": [
+            "docs/evidence/probe-service/README.md"
+          ]
+        },
+        "gate": {
+          "id": "K3",
+          "state": "open",
+          "refs": [
+            "docs/PLAN.md#gates"
+          ]
+        }
+      }
+    },
+    {
+      "id": "KR-L002",
+      "kind": "feature",
+      "title": "Redirect và UI sảnh",
+      "mechanism": "redirect-lobby",
+      "parent": "KR-G002",
+      "depends_on": [
+        "KR-L001"
+      ],
+      "lifecycle": "active",
+      "refs": {
+        "contract": "docs/PROTOCOL.md#channel-lobby",
+        "question": "docs/RESEARCH.md#gap-redirect-lobby",
+        "plan": "docs/PLAN.md#current-order",
+        "evidence": [
+          "docs/evidence/postwait/README.md",
+          "docs/evidence/probe-service/README.md"
+        ]
+      },
+      "coverage": {
+        "presence": {
+          "state": "present",
+          "refs": [
+            "docs/PROTOCOL.md#channel-lobby"
+          ]
+        },
+        "vn_reference": {
+          "state": "both",
+          "refs": [
+            "docs/REFERENCES.md"
+          ]
+        },
+        "kr_static": {
+          "state": "partial",
+          "refs": [
+            "docs/PROTOCOL.md#channel-lobby"
+          ]
+        },
+        "emulation": {
+          "state": "checked",
+          "refs": [
+            "docs/evidence/postwait/README.md"
+          ]
+        },
+        "runtime": {
+          "wine_diagnostic_copy": {
+            "state": "observed",
+            "refs": [
+              "docs/evidence/postwait/README.md"
+            ]
+          },
+          "windows_original": {
+            "state": "unknown",
+            "refs": []
+          },
+          "lan": {
+            "state": "unknown",
+            "refs": []
+          },
+          "internet": {
+            "state": "unknown",
+            "refs": []
+          }
+        },
+        "implementation": {
+          "state": "partial",
+          "refs": [
+            "server/probe_service.py",
+            "docs/PROTOCOL.md#probe-service"
+          ],
+          "delivery": "branch_pending"
+        },
+        "integration": {
+          "state": "partial",
+          "refs": [
+            "docs/evidence/probe-service/README.md"
+          ]
+        },
+        "gate": {
+          "id": "K3",
+          "state": "open",
+          "refs": [
+            "docs/PLAN.md#gates"
+          ]
+        }
+      }
+    },
+    {
+      "id": "KR-L003",
+      "kind": "feature",
+      "title": "Profile và cache lifecycle",
+      "mechanism": "profile-cache",
+      "parent": "KR-G002",
+      "depends_on": [
+        "KR-L001"
+      ],
+      "lifecycle": "active",
+      "refs": {
+        "contract": "docs/PROTOCOL.md#channel-lobby",
+        "question": "docs/RESEARCH.md#gap-profile-cache",
+        "plan": "docs/PLAN.md#current-order",
+        "evidence": [
+          "docs/evidence/start-reply/README.md"
+        ]
+      },
+      "coverage": {
+        "presence": {
+          "state": "candidate",
+          "refs": [
+            "docs/PROTOCOL.md#channel-lobby"
+          ]
+        },
+        "vn_reference": {
+          "state": "static",
+          "refs": [
+            "docs/REFERENCES.md"
+          ]
+        },
+        "kr_static": {
+          "state": "partial",
+          "refs": [
+            "docs/PROTOCOL.md#channel-lobby"
+          ]
+        },
+        "emulation": {
+          "state": "unknown",
+          "refs": []
+        },
+        "runtime": {
+          "wine_diagnostic_copy": {
+            "state": "unknown",
+            "refs": []
+          },
+          "windows_original": {
+            "state": "unknown",
+            "refs": []
+          },
+          "lan": {
+            "state": "unknown",
+            "refs": []
+          },
+          "internet": {
+            "state": "unknown",
+            "refs": []
+          }
+        },
+        "implementation": {
+          "state": "unknown",
+          "refs": [],
+          "delivery": "unknown"
+        },
+        "integration": {
+          "state": "unknown",
+          "refs": []
+        },
+        "gate": {
+          "id": "K3",
+          "state": "open",
+          "refs": [
+            "docs/PLAN.md#gates"
+          ]
+        }
+      }
+    },
+    {
+      "id": "KR-R001",
+      "kind": "feature",
+      "title": "Tạo và vào phòng",
+      "mechanism": "create-join",
+      "parent": "KR-G003",
+      "depends_on": [
+        "KR-L002"
+      ],
+      "lifecycle": "active",
+      "refs": {
+        "contract": "docs/PROTOCOL.md#duo-room-round",
+        "question": "docs/RESEARCH.md#gap-create-join",
+        "plan": "docs/PLAN.md#current-order",
+        "evidence": [
+          "docs/evidence/duo-room-round/README.md",
+          "docs/evidence/probe-service/README.md"
+        ]
+      },
+      "coverage": {
+        "presence": {
+          "state": "present",
+          "refs": [
+            "docs/PROTOCOL.md#duo-room-round"
+          ]
+        },
+        "vn_reference": {
+          "state": "both",
+          "refs": [
+            "docs/REFERENCES.md"
+          ]
+        },
+        "kr_static": {
+          "state": "partial",
+          "refs": [
+            "docs/PROTOCOL.md#duo-room-round"
+          ]
+        },
+        "emulation": {
+          "state": "checked",
+          "refs": [
+            "docs/evidence/duo-room-round/README.md"
+          ]
+        },
+        "runtime": {
+          "wine_diagnostic_copy": {
+            "state": "observed",
+            "refs": [
+              "docs/evidence/duo-room-round/README.md"
+            ]
+          },
+          "windows_original": {
+            "state": "unknown",
+            "refs": []
+          },
+          "lan": {
+            "state": "unknown",
+            "refs": []
+          },
+          "internet": {
+            "state": "unknown",
+            "refs": []
+          }
+        },
+        "implementation": {
+          "state": "partial",
+          "refs": [
+            "server/probe_service.py",
+            "docs/PROTOCOL.md#probe-service"
+          ],
+          "delivery": "branch_pending"
+        },
+        "integration": {
+          "state": "partial",
+          "refs": [
+            "docs/evidence/probe-service/README.md"
+          ]
+        },
+        "gate": {
+          "id": "K4",
+          "state": "open",
+          "refs": [
+            "docs/PLAN.md#gates"
+          ]
+        }
+      }
+    },
+    {
+      "id": "KR-R002",
+      "kind": "feature",
+      "title": "Roster, own-slot, Ready và chủ phòng",
+      "mechanism": "roster-ready-host",
+      "parent": "KR-G003",
+      "depends_on": [
+        "KR-R001"
+      ],
+      "lifecycle": "active",
+      "refs": {
+        "contract": "docs/PROTOCOL.md#room-player",
+        "question": "docs/RESEARCH.md#gap-roster-ready-host",
+        "plan": "docs/PLAN.md#current-order",
+        "evidence": [
+          "docs/evidence/room-player/README.md",
+          "docs/evidence/probe-service/README.md"
+        ]
+      },
+      "coverage": {
+        "presence": {
+          "state": "present",
+          "refs": [
+            "docs/PROTOCOL.md#room-player"
+          ]
+        },
+        "vn_reference": {
+          "state": "both",
+          "refs": [
+            "docs/REFERENCES.md"
+          ]
+        },
+        "kr_static": {
+          "state": "partial",
+          "refs": [
+            "docs/PROTOCOL.md#room-player"
+          ]
+        },
+        "emulation": {
+          "state": "checked",
+          "refs": [
+            "docs/evidence/room-player/README.md"
+          ]
+        },
+        "runtime": {
+          "wine_diagnostic_copy": {
+            "state": "observed",
+            "refs": [
+              "docs/evidence/room-player/README.md"
+            ]
+          },
+          "windows_original": {
+            "state": "unknown",
+            "refs": []
+          },
+          "lan": {
+            "state": "unknown",
+            "refs": []
+          },
+          "internet": {
+            "state": "unknown",
+            "refs": []
+          }
+        },
+        "implementation": {
+          "state": "partial",
+          "refs": [
+            "server/probe_service.py",
+            "docs/PROTOCOL.md#probe-service"
+          ],
+          "delivery": "branch_pending"
+        },
+        "integration": {
+          "state": "partial",
+          "refs": [
+            "docs/evidence/probe-service/README.md"
+          ]
+        },
+        "gate": {
+          "id": "K4",
+          "state": "open",
+          "refs": [
+            "docs/PLAN.md#gates"
+          ]
+        }
+      }
+    },
+    {
+      "id": "KR-R003",
+      "kind": "feature",
+      "title": "Map, spawn và loading barrier",
+      "mechanism": "map-spawn-loading",
+      "parent": "KR-G003",
+      "depends_on": [
+        "KR-R002"
+      ],
+      "lifecycle": "active",
+      "refs": {
+        "contract": "docs/PROTOCOL.md#start-reply",
+        "question": "docs/RESEARCH.md#gap-map-spawn-loading",
+        "plan": "docs/PLAN.md#current-order",
+        "evidence": [
+          "docs/evidence/start-reply/README.md",
+          "docs/evidence/probe-service/README.md"
+        ]
+      },
+      "coverage": {
+        "presence": {
+          "state": "present",
+          "refs": [
+            "docs/PROTOCOL.md#start-reply"
+          ]
+        },
+        "vn_reference": {
+          "state": "both",
+          "refs": [
+            "docs/REFERENCES.md"
+          ]
+        },
+        "kr_static": {
+          "state": "partial",
+          "refs": [
+            "docs/PROTOCOL.md#start-reply"
+          ]
+        },
+        "emulation": {
+          "state": "checked",
+          "refs": [
+            "docs/evidence/start-reply/README.md"
+          ]
+        },
+        "runtime": {
+          "wine_diagnostic_copy": {
+            "state": "observed",
+            "refs": [
+              "docs/evidence/start-reply/README.md"
+            ]
+          },
+          "windows_original": {
+            "state": "unknown",
+            "refs": []
+          },
+          "lan": {
+            "state": "unknown",
+            "refs": []
+          },
+          "internet": {
+            "state": "unknown",
+            "refs": []
+          }
+        },
+        "implementation": {
+          "state": "partial",
+          "refs": [
+            "server/probe_service.py",
+            "docs/PROTOCOL.md#probe-service"
+          ],
+          "delivery": "branch_pending"
+        },
+        "integration": {
+          "state": "partial",
+          "refs": [
+            "docs/evidence/probe-service/README.md"
+          ]
+        },
+        "gate": {
+          "id": "K4",
+          "state": "open",
+          "refs": [
+            "docs/PLAN.md#gates"
+          ]
+        }
+      }
+    },
+    {
+      "id": "KR-R004",
+      "kind": "feature",
+      "title": "Leave, promotion và rejoin",
+      "mechanism": "room-membership",
+      "parent": "KR-G003",
+      "depends_on": [
+        "KR-R002"
+      ],
+      "lifecycle": "active",
+      "refs": {
+        "contract": "docs/PROTOCOL.md#room-rejoin",
+        "question": "docs/RESEARCH.md#gap-room-membership",
+        "plan": "docs/PLAN.md#current-order",
+        "evidence": [
+          "docs/evidence/room-rejoin/README.md"
+        ]
+      },
+      "coverage": {
+        "presence": {
+          "state": "present",
+          "refs": [
+            "docs/PROTOCOL.md#room-rejoin"
+          ]
+        },
+        "vn_reference": {
+          "state": "both",
+          "refs": [
+            "docs/REFERENCES.md"
+          ]
+        },
+        "kr_static": {
+          "state": "partial",
+          "refs": [
+            "docs/PROTOCOL.md#room-rejoin"
+          ]
+        },
+        "emulation": {
+          "state": "checked",
+          "refs": [
+            "docs/evidence/room-rejoin/README.md"
+          ]
+        },
+        "runtime": {
+          "wine_diagnostic_copy": {
+            "state": "observed",
+            "refs": [
+              "docs/evidence/room-rejoin/README.md"
+            ]
+          },
+          "windows_original": {
+            "state": "unknown",
+            "refs": []
+          },
+          "lan": {
+            "state": "unknown",
+            "refs": []
+          },
+          "internet": {
+            "state": "unknown",
+            "refs": []
+          }
+        },
+        "implementation": {
+          "state": "unknown",
+          "refs": [],
+          "delivery": "unknown"
+        },
+        "integration": {
+          "state": "unknown",
+          "refs": []
+        },
+        "gate": {
+          "id": "K4",
+          "state": "open",
+          "refs": [
+            "docs/PLAN.md#gates"
+          ]
+        }
+      }
+    },
+    {
+      "id": "KR-F001",
+      "kind": "feature",
+      "title": "Phase, clock và input",
+      "mechanism": "round-clock",
+      "parent": "KR-G004",
+      "depends_on": [
+        "KR-R003"
+      ],
+      "lifecycle": "active",
+      "refs": {
+        "contract": "docs/PROTOCOL.md#round-go",
+        "question": "docs/RESEARCH.md#gap-round-clock",
+        "plan": "docs/PLAN.md#current-order",
+        "evidence": [
+          "docs/evidence/round-go/README.md",
+          "docs/evidence/probe-service/README.md"
+        ]
+      },
+      "coverage": {
+        "presence": {
+          "state": "present",
+          "refs": [
+            "docs/PROTOCOL.md#round-go"
+          ]
+        },
+        "vn_reference": {
+          "state": "both",
+          "refs": [
+            "docs/REFERENCES.md"
+          ]
+        },
+        "kr_static": {
+          "state": "partial",
+          "refs": [
+            "docs/PROTOCOL.md#round-go"
+          ]
+        },
+        "emulation": {
+          "state": "checked",
+          "refs": [
+            "docs/evidence/round-go/README.md"
+          ]
+        },
+        "runtime": {
+          "wine_diagnostic_copy": {
+            "state": "observed",
+            "refs": [
+              "docs/evidence/round-go/README.md"
+            ]
+          },
+          "windows_original": {
+            "state": "unknown",
+            "refs": []
+          },
+          "lan": {
+            "state": "unknown",
+            "refs": []
+          },
+          "internet": {
+            "state": "unknown",
+            "refs": []
+          }
+        },
+        "implementation": {
+          "state": "partial",
+          "refs": [
+            "server/probe_service.py",
+            "docs/PROTOCOL.md#probe-service"
+          ],
+          "delivery": "branch_pending"
+        },
+        "integration": {
+          "state": "partial",
+          "refs": [
+            "docs/evidence/probe-service/README.md"
+          ]
+        },
+        "gate": {
+          "id": "K5",
+          "state": "open",
+          "refs": [
+            "docs/PLAN.md#gates"
+          ]
+        }
+      }
+    },
+    {
+      "id": "KR-F002",
+      "kind": "feature",
+      "title": "Peer discovery và movement",
+      "mechanism": "peer-movement",
+      "parent": "KR-G004",
+      "depends_on": [
+        "KR-F001"
+      ],
+      "lifecycle": "active",
+      "refs": {
+        "contract": "docs/PROTOCOL.md#peer-duo",
+        "question": "docs/RESEARCH.md#gap-peer-movement",
+        "plan": "docs/PLAN.md#current-order",
+        "evidence": [
+          "docs/evidence/peer-duo/README.md",
+          "docs/evidence/probe-service/README.md"
+        ]
+      },
+      "coverage": {
+        "presence": {
+          "state": "present",
+          "refs": [
+            "docs/PROTOCOL.md#peer-duo"
+          ]
+        },
+        "vn_reference": {
+          "state": "both",
+          "refs": [
+            "docs/REFERENCES.md"
+          ]
+        },
+        "kr_static": {
+          "state": "partial",
+          "refs": [
+            "docs/PROTOCOL.md#peer-duo"
+          ]
+        },
+        "emulation": {
+          "state": "checked",
+          "refs": [
+            "docs/evidence/peer-duo/README.md"
+          ]
+        },
+        "runtime": {
+          "wine_diagnostic_copy": {
+            "state": "observed",
+            "refs": [
+              "docs/evidence/peer-duo/README.md"
+            ]
+          },
+          "windows_original": {
+            "state": "unknown",
+            "refs": []
+          },
+          "lan": {
+            "state": "unknown",
+            "refs": []
+          },
+          "internet": {
+            "state": "unknown",
+            "refs": []
+          }
+        },
+        "implementation": {
+          "state": "partial",
+          "refs": [
+            "server/probe_service.py",
+            "docs/PROTOCOL.md#probe-service"
+          ],
+          "delivery": "branch_pending"
+        },
+        "integration": {
+          "state": "partial",
+          "refs": [
+            "docs/evidence/probe-service/README.md"
+          ]
+        },
+        "gate": {
+          "id": "K6",
+          "state": "open",
+          "refs": [
+            "docs/PLAN.md#gates"
+          ]
+        }
+      }
+    },
+    {
+      "id": "KR-F003",
+      "kind": "feature",
+      "title": "UDP cũ và khóa vòng",
+      "mechanism": "udp-freshness",
+      "parent": "KR-G004",
+      "depends_on": [
+        "KR-F002"
+      ],
+      "lifecycle": "active",
+      "refs": {
+        "contract": "docs/PROTOCOL.md#udp-generation",
+        "question": "docs/RESEARCH.md#gap-udp-freshness",
+        "plan": "docs/PLAN.md#current-order",
+        "evidence": [
+          "docs/evidence/udp-freshness/README.md",
+          "docs/evidence/probe-service/README.md"
+        ]
+      },
+      "coverage": {
+        "presence": {
+          "state": "present",
+          "refs": [
+            "docs/PROTOCOL.md#udp-generation"
+          ]
+        },
+        "vn_reference": {
+          "state": "both",
+          "refs": [
+            "docs/REFERENCES.md"
+          ]
+        },
+        "kr_static": {
+          "state": "partial",
+          "refs": [
+            "docs/PROTOCOL.md#udp-generation"
+          ]
+        },
+        "emulation": {
+          "state": "checked",
+          "refs": [
+            "docs/evidence/udp-freshness/README.md"
+          ]
+        },
+        "runtime": {
+          "wine_diagnostic_copy": {
+            "state": "observed",
+            "refs": [
+              "docs/evidence/udp-freshness/README.md"
+            ]
+          },
+          "windows_original": {
+            "state": "unknown",
+            "refs": []
+          },
+          "lan": {
+            "state": "unknown",
+            "refs": []
+          },
+          "internet": {
+            "state": "unknown",
+            "refs": []
+          }
+        },
+        "implementation": {
+          "state": "partial",
+          "refs": [
+            "server/probe_service.py",
+            "docs/PROTOCOL.md#probe-service"
+          ],
+          "delivery": "branch_pending"
+        },
+        "integration": {
+          "state": "partial",
+          "refs": [
+            "docs/evidence/probe-service/README.md"
+          ]
+        },
+        "gate": {
+          "id": "K6",
+          "state": "open",
+          "refs": [
+            "docs/PLAN.md#gates"
+          ]
+        }
+      }
+    },
+    {
+      "id": "KR-F004",
+      "kind": "feature",
+      "title": "Bom, serial, confirm và timer",
+      "mechanism": "bomb-lifetime",
+      "parent": "KR-G004",
+      "depends_on": [
+        "KR-F001",
+        "KR-F002"
+      ],
+      "lifecycle": "active",
+      "refs": {
+        "contract": "docs/PROTOCOL.md#bomb-serial",
+        "question": "docs/RESEARCH.md#gap-bomb-lifetime",
+        "plan": "docs/PLAN.md#current-order",
+        "evidence": [
+          "docs/evidence/bomb-serial/README.md",
+          "docs/evidence/probe-service/README.md"
+        ]
+      },
+      "coverage": {
+        "presence": {
+          "state": "present",
+          "refs": [
+            "docs/PROTOCOL.md#bomb-serial"
+          ]
+        },
+        "vn_reference": {
+          "state": "both",
+          "refs": [
+            "docs/REFERENCES.md"
+          ]
+        },
+        "kr_static": {
+          "state": "partial",
+          "refs": [
+            "docs/PROTOCOL.md#bomb-serial"
+          ]
+        },
+        "emulation": {
+          "state": "checked",
+          "refs": [
+            "docs/evidence/bomb-serial/README.md"
+          ]
+        },
+        "runtime": {
+          "wine_diagnostic_copy": {
+            "state": "observed",
+            "refs": [
+              "docs/evidence/bomb-serial/README.md"
+            ]
+          },
+          "windows_original": {
+            "state": "unknown",
+            "refs": []
+          },
+          "lan": {
+            "state": "unknown",
+            "refs": []
+          },
+          "internet": {
+            "state": "unknown",
+            "refs": []
+          }
+        },
+        "implementation": {
+          "state": "partial",
+          "refs": [
+            "server/probe_service.py",
+            "docs/PROTOCOL.md#probe-service"
+          ],
+          "delivery": "branch_pending"
+        },
+        "integration": {
+          "state": "partial",
+          "refs": [
+            "docs/evidence/probe-service/README.md"
+          ]
+        },
+        "gate": {
+          "id": "K5",
+          "state": "open",
+          "refs": [
+            "docs/PLAN.md#gates"
+          ]
+        }
+      }
+    },
+    {
+      "id": "KR-F005",
+      "kind": "feature",
+      "title": "Vùng nổ, block và chain",
+      "mechanism": "blast-block-chain",
+      "parent": "KR-G004",
+      "depends_on": [
+        "KR-F004"
+      ],
+      "lifecycle": "active",
+      "refs": {
+        "contract": "docs/PROTOCOL.md#bomb-chain",
+        "question": "docs/RESEARCH.md#gap-blast-block-chain",
+        "plan": "docs/PLAN.md#current-order",
+        "evidence": [
+          "docs/evidence/bomb-chain/README.md"
+        ]
+      },
+      "coverage": {
+        "presence": {
+          "state": "present",
+          "refs": [
+            "docs/PROTOCOL.md#bomb-chain"
+          ]
+        },
+        "vn_reference": {
+          "state": "both",
+          "refs": [
+            "docs/REFERENCES.md"
+          ]
+        },
+        "kr_static": {
+          "state": "partial",
+          "refs": [
+            "docs/PROTOCOL.md#bomb-chain"
+          ]
+        },
+        "emulation": {
+          "state": "checked",
+          "refs": [
+            "docs/evidence/bomb-chain/README.md"
+          ]
+        },
+        "runtime": {
+          "wine_diagnostic_copy": {
+            "state": "observed",
+            "refs": [
+              "docs/evidence/bomb-chain/README.md"
+            ]
+          },
+          "windows_original": {
+            "state": "unknown",
+            "refs": []
+          },
+          "lan": {
+            "state": "unknown",
+            "refs": []
+          },
+          "internet": {
+            "state": "unknown",
+            "refs": []
+          }
+        },
+        "implementation": {
+          "state": "unknown",
+          "refs": [],
+          "delivery": "unknown"
+        },
+        "integration": {
+          "state": "unknown",
+          "refs": []
+        },
+        "gate": {
+          "id": "K5",
+          "state": "open",
+          "refs": [
+            "docs/PLAN.md#gates"
+          ]
+        }
+      }
+    },
+    {
+      "id": "KR-F006",
+      "kind": "feature",
+      "title": "Item nền, nhặt và tranh index",
+      "mechanism": "floor-pickup",
+      "parent": "KR-G004",
+      "depends_on": [
+        "KR-F001"
+      ],
+      "lifecycle": "active",
+      "refs": {
+        "contract": "docs/PROTOCOL.md#item-pickup",
+        "question": "docs/RESEARCH.md#gap-floor-pickup",
+        "plan": "docs/PLAN.md#current-order",
+        "evidence": [
+          "docs/evidence/item-pickup/README.md",
+          "docs/evidence/probe-service/README.md"
+        ]
+      },
+      "coverage": {
+        "presence": {
+          "state": "present",
+          "refs": [
+            "docs/PROTOCOL.md#item-pickup"
+          ]
+        },
+        "vn_reference": {
+          "state": "both",
+          "refs": [
+            "docs/PROTOCOL.md#item-pickup",
+            "docs/REFERENCES.md"
+          ]
+        },
+        "kr_static": {
+          "state": "partial",
+          "refs": [
+            "docs/PROTOCOL.md#item-pickup"
+          ]
+        },
+        "emulation": {
+          "state": "checked",
+          "refs": [
+            "docs/evidence/item-pickup/README.md"
+          ]
+        },
+        "runtime": {
+          "wine_diagnostic_copy": {
+            "state": "observed",
+            "refs": [
+              "docs/evidence/item-pickup/README.md"
+            ]
+          },
+          "windows_original": {
+            "state": "unknown",
+            "refs": []
+          },
+          "lan": {
+            "state": "unknown",
+            "refs": []
+          },
+          "internet": {
+            "state": "unknown",
+            "refs": []
+          }
+        },
+        "implementation": {
+          "state": "partial",
+          "refs": [
+            "server/probe_service.py",
+            "docs/PROTOCOL.md#probe-service"
+          ],
+          "delivery": "branch_pending"
+        },
+        "integration": {
+          "state": "partial",
+          "refs": [
+            "docs/evidence/probe-service/README.md"
+          ]
+        },
+        "gate": {
+          "id": "K5",
+          "state": "open",
+          "refs": [
+            "docs/PLAN.md#gates"
+          ]
+        }
+      }
+    },
+    {
+      "id": "KR-F007",
+      "kind": "feature",
+      "title": "Stat tích lũy và MaxPower",
+      "mechanism": "item-stats",
+      "parent": "KR-G004",
+      "depends_on": [
+        "KR-F006"
+      ],
+      "lifecycle": "active",
+      "refs": {
+        "contract": "docs/PROTOCOL.md#item-families",
+        "question": "docs/RESEARCH.md#gap-item-stats",
+        "plan": "docs/PLAN.md#current-order",
+        "evidence": [
+          "docs/evidence/item-families/README.md",
+          "docs/evidence/probe-service/README.md"
+        ]
+      },
+      "coverage": {
+        "presence": {
+          "state": "present",
+          "refs": [
+            "docs/PROTOCOL.md#item-families"
+          ]
+        },
+        "vn_reference": {
+          "state": "both",
+          "refs": [
+            "docs/PROTOCOL.md#item-families"
+          ]
+        },
+        "kr_static": {
+          "state": "partial",
+          "refs": [
+            "docs/PROTOCOL.md#item-families"
+          ]
+        },
+        "emulation": {
+          "state": "checked",
+          "refs": [
+            "docs/evidence/item-families/README.md"
+          ]
+        },
+        "runtime": {
+          "wine_diagnostic_copy": {
+            "state": "observed",
+            "refs": [
+              "docs/evidence/item-families/README.md"
+            ]
+          },
+          "windows_original": {
+            "state": "unknown",
+            "refs": []
+          },
+          "lan": {
+            "state": "unknown",
+            "refs": []
+          },
+          "internet": {
+            "state": "unknown",
+            "refs": []
+          }
+        },
+        "implementation": {
+          "state": "partial",
+          "refs": [
+            "server/probe_service.py",
+            "docs/PROTOCOL.md#probe-service"
+          ],
+          "delivery": "branch_pending"
+        },
+        "integration": {
+          "state": "partial",
+          "refs": [
+            "docs/evidence/probe-service/README.md"
+          ]
+        },
+        "gate": {
+          "id": "K5",
+          "state": "open",
+          "refs": [
+            "docs/PLAN.md#gates"
+          ]
+        }
+      }
+    },
+    {
+      "id": "KR-F008",
+      "kind": "feature",
+      "title": "Kim dùng chủ động",
+      "mechanism": "needle",
+      "parent": "KR-G004",
+      "depends_on": [
+        "KR-F006",
+        "KR-F009"
+      ],
+      "lifecycle": "active",
+      "refs": {
+        "contract": "docs/PROTOCOL.md#needle-selfescape",
+        "question": "docs/RESEARCH.md#gap-needle",
+        "plan": "docs/PLAN.md#current-order",
+        "evidence": [
+          "docs/evidence/needle-repeat/README.md"
+        ]
+      },
+      "coverage": {
+        "presence": {
+          "state": "present",
+          "refs": [
+            "docs/PROTOCOL.md#needle-selfescape"
+          ]
+        },
+        "vn_reference": {
+          "state": "both",
+          "refs": [
+            "docs/PROTOCOL.md#needle-selfescape",
+            "docs/REFERENCES.md"
+          ]
+        },
+        "kr_static": {
+          "state": "partial",
+          "refs": [
+            "docs/PROTOCOL.md#needle-selfescape"
+          ]
+        },
+        "emulation": {
+          "state": "checked",
+          "refs": [
+            "docs/evidence/needle-repeat/README.md"
+          ]
+        },
+        "runtime": {
+          "wine_diagnostic_copy": {
+            "state": "observed",
+            "refs": [
+              "docs/evidence/needle-repeat/README.md"
+            ]
+          },
+          "windows_original": {
+            "state": "unknown",
+            "refs": []
+          },
+          "lan": {
+            "state": "unknown",
+            "refs": []
+          },
+          "internet": {
+            "state": "unknown",
+            "refs": []
+          }
+        },
+        "implementation": {
+          "state": "unknown",
+          "refs": [],
+          "delivery": "unknown"
+        },
+        "integration": {
+          "state": "unknown",
+          "refs": []
+        },
+        "gate": {
+          "id": "K5",
+          "state": "open",
+          "refs": [
+            "docs/PLAN.md#gates"
+          ]
+        }
+      }
+    },
+    {
+      "id": "KR-F009",
+      "kind": "feature",
+      "title": "Trap, death, cứu và chạm địch",
+      "mechanism": "contact-state",
+      "parent": "KR-G004",
+      "depends_on": [
+        "KR-F004",
+        "KR-F002"
+      ],
+      "lifecycle": "active",
+      "refs": {
+        "contract": "docs/PROTOCOL.md#collision-rescue",
+        "question": "docs/RESEARCH.md#gap-contact-state",
+        "plan": "docs/PLAN.md#current-order",
+        "evidence": [
+          "docs/evidence/collision-rescue/README.md",
+          "docs/evidence/probe-service/README.md"
+        ]
+      },
+      "coverage": {
+        "presence": {
+          "state": "present",
+          "refs": [
+            "docs/PROTOCOL.md#collision-rescue"
+          ]
+        },
+        "vn_reference": {
+          "state": "both",
+          "refs": [
+            "docs/PROTOCOL.md#collision-rescue",
+            "docs/REFERENCES.md"
+          ]
+        },
+        "kr_static": {
+          "state": "partial",
+          "refs": [
+            "docs/PROTOCOL.md#collision-rescue"
+          ]
+        },
+        "emulation": {
+          "state": "checked",
+          "refs": [
+            "docs/evidence/collision-rescue/README.md"
+          ]
+        },
+        "runtime": {
+          "wine_diagnostic_copy": {
+            "state": "observed",
+            "refs": [
+              "docs/evidence/collision-rescue/README.md"
+            ]
+          },
+          "windows_original": {
+            "state": "unknown",
+            "refs": []
+          },
+          "lan": {
+            "state": "unknown",
+            "refs": []
+          },
+          "internet": {
+            "state": "unknown",
+            "refs": []
+          }
+        },
+        "implementation": {
+          "state": "partial",
+          "refs": [
+            "server/probe_service.py",
+            "docs/PROTOCOL.md#probe-service"
+          ],
+          "delivery": "branch_pending"
+        },
+        "integration": {
+          "state": "partial",
+          "refs": [
+            "docs/evidence/probe-service/README.md"
+          ]
+        },
+        "gate": {
+          "id": "K5",
+          "state": "open",
+          "refs": [
+            "docs/PLAN.md#gates"
+          ]
+        }
+      }
+    },
+    {
+      "id": "KR-F010",
+      "kind": "feature",
+      "title": "Ability và debuff group1",
+      "mechanism": "ability-debuff",
+      "parent": "KR-G004",
+      "depends_on": [
+        "KR-F006"
+      ],
+      "lifecycle": "active",
+      "refs": {
+        "contract": "docs/PROTOCOL.md#item-families",
+        "question": "docs/RESEARCH.md#gap-ability-debuff",
+        "plan": "docs/PLAN.md#current-order",
+        "evidence": [
+          "docs/evidence/item-families/README.md"
+        ]
+      },
+      "coverage": {
+        "presence": {
+          "state": "present",
+          "refs": [
+            "docs/PROTOCOL.md#item-families"
+          ]
+        },
+        "vn_reference": {
+          "state": "static",
+          "refs": [
+            "docs/PROTOCOL.md#item-families"
+          ]
+        },
+        "kr_static": {
+          "state": "partial",
+          "refs": [
+            "docs/PROTOCOL.md#item-families"
+          ]
+        },
+        "emulation": {
+          "state": "unknown",
+          "refs": []
+        },
+        "runtime": {
+          "wine_diagnostic_copy": {
+            "state": "unknown",
+            "refs": []
+          },
+          "windows_original": {
+            "state": "unknown",
+            "refs": []
+          },
+          "lan": {
+            "state": "unknown",
+            "refs": []
+          },
+          "internet": {
+            "state": "unknown",
+            "refs": []
+          }
+        },
+        "implementation": {
+          "state": "unknown",
+          "refs": [],
+          "delivery": "unknown"
+        },
+        "integration": {
+          "state": "unknown",
+          "refs": []
+        },
+        "gate": {
+          "id": "K5",
+          "state": "open",
+          "refs": [
+            "docs/PLAN.md#gates"
+          ]
+        }
+      }
+    },
+    {
+      "id": "KR-F011",
+      "kind": "feature",
+      "title": "Mount và biến hình",
+      "mechanism": "mount",
+      "parent": "KR-G004",
+      "depends_on": [
+        "KR-F006"
+      ],
+      "lifecycle": "active",
+      "refs": {
+        "contract": "docs/PROTOCOL.md#item-families",
+        "question": "docs/RESEARCH.md#gap-mount",
+        "plan": "docs/PLAN.md#current-order",
+        "evidence": [
+          "docs/evidence/item-families/README.md"
+        ]
+      },
+      "coverage": {
+        "presence": {
+          "state": "present",
+          "refs": [
+            "docs/PROTOCOL.md#item-families"
+          ]
+        },
+        "vn_reference": {
+          "state": "static",
+          "refs": [
+            "docs/PROTOCOL.md#item-families"
+          ]
+        },
+        "kr_static": {
+          "state": "partial",
+          "refs": [
+            "docs/PROTOCOL.md#item-families"
+          ]
+        },
+        "emulation": {
+          "state": "unknown",
+          "refs": []
+        },
+        "runtime": {
+          "wine_diagnostic_copy": {
+            "state": "unknown",
+            "refs": []
+          },
+          "windows_original": {
+            "state": "unknown",
+            "refs": []
+          },
+          "lan": {
+            "state": "unknown",
+            "refs": []
+          },
+          "internet": {
+            "state": "unknown",
+            "refs": []
+          }
+        },
+        "implementation": {
+          "state": "unknown",
+          "refs": [],
+          "delivery": "unknown"
+        },
+        "integration": {
+          "state": "unknown",
+          "refs": []
+        },
+        "gate": {
+          "id": "K5",
+          "state": "open",
+          "refs": [
+            "docs/PLAN.md#gates"
+          ]
+        }
+      }
+    },
+    {
+      "id": "KR-F012",
+      "kind": "feature",
+      "title": "Nhóm chủ động ngoài kim",
+      "mechanism": "active-other",
+      "parent": "KR-G004",
+      "depends_on": [
+        "KR-F006"
+      ],
+      "lifecycle": "active",
+      "refs": {
+        "contract": "docs/PROTOCOL.md#item-families",
+        "question": "docs/RESEARCH.md#gap-active-other",
+        "plan": "docs/PLAN.md#current-order",
+        "evidence": [
+          "docs/evidence/item-families/README.md"
+        ]
+      },
+      "coverage": {
+        "presence": {
+          "state": "candidate",
+          "refs": [
+            "docs/PROTOCOL.md#item-families"
+          ]
+        },
+        "vn_reference": {
+          "state": "static",
+          "refs": [
+            "docs/PROTOCOL.md#item-families"
+          ]
+        },
+        "kr_static": {
+          "state": "partial",
+          "refs": [
+            "docs/PROTOCOL.md#item-families"
+          ]
+        },
+        "emulation": {
+          "state": "unknown",
+          "refs": []
+        },
+        "runtime": {
+          "wine_diagnostic_copy": {
+            "state": "unknown",
+            "refs": []
+          },
+          "windows_original": {
+            "state": "unknown",
+            "refs": []
+          },
+          "lan": {
+            "state": "unknown",
+            "refs": []
+          },
+          "internet": {
+            "state": "unknown",
+            "refs": []
+          }
+        },
+        "implementation": {
+          "state": "unknown",
+          "refs": [],
+          "delivery": "unknown"
+        },
+        "integration": {
+          "state": "unknown",
+          "refs": []
+        },
+        "gate": {
+          "id": "K5",
+          "state": "open",
+          "refs": [
+            "docs/PLAN.md#gates"
+          ]
+        }
+      }
+    },
+    {
+      "id": "KR-F013",
+      "kind": "feature",
+      "title": "Thời hạn và variant item",
+      "mechanism": "timed-variants",
+      "parent": "KR-G004",
+      "depends_on": [
+        "KR-F006"
+      ],
+      "lifecycle": "active",
+      "refs": {
+        "contract": "docs/PROTOCOL.md#item-families",
+        "question": "docs/RESEARCH.md#gap-timed-variants",
+        "plan": "docs/PLAN.md#current-order",
+        "evidence": [
+          "docs/evidence/item-families/README.md"
+        ]
+      },
+      "coverage": {
+        "presence": {
+          "state": "candidate",
+          "refs": [
+            "docs/PROTOCOL.md#item-families"
+          ]
+        },
+        "vn_reference": {
+          "state": "static",
+          "refs": [
+            "docs/PROTOCOL.md#item-families"
+          ]
+        },
+        "kr_static": {
+          "state": "partial",
+          "refs": [
+            "docs/PROTOCOL.md#item-families"
+          ]
+        },
+        "emulation": {
+          "state": "unknown",
+          "refs": []
+        },
+        "runtime": {
+          "wine_diagnostic_copy": {
+            "state": "unknown",
+            "refs": []
+          },
+          "windows_original": {
+            "state": "unknown",
+            "refs": []
+          },
+          "lan": {
+            "state": "unknown",
+            "refs": []
+          },
+          "internet": {
+            "state": "unknown",
+            "refs": []
+          }
+        },
+        "implementation": {
+          "state": "unknown",
+          "refs": [],
+          "delivery": "unknown"
+        },
+        "integration": {
+          "state": "unknown",
+          "refs": []
+        },
+        "gate": {
+          "id": "K5",
+          "state": "open",
+          "refs": [
+            "docs/PLAN.md#gates"
+          ]
+        }
+      }
+    },
+    {
+      "id": "KR-F014",
+      "kind": "feature",
+      "title": "Item riêng mode/event",
+      "mechanism": "mode-items",
+      "parent": "KR-G004",
+      "depends_on": [],
+      "lifecycle": "active",
+      "refs": {
+        "contract": "docs/PROTOCOL.md#item-families",
+        "question": "docs/RESEARCH.md#gap-mode-items",
+        "plan": "docs/PLAN.md#current-order",
+        "evidence": [
+          "docs/evidence/item-families/README.md"
+        ]
+      },
+      "coverage": {
+        "presence": {
+          "state": "candidate",
+          "refs": [
+            "docs/PROTOCOL.md#item-families"
+          ]
+        },
+        "vn_reference": {
+          "state": "static",
+          "refs": [
+            "docs/PROTOCOL.md#item-families"
+          ]
+        },
+        "kr_static": {
+          "state": "partial",
+          "refs": [
+            "docs/PROTOCOL.md#item-families"
+          ]
+        },
+        "emulation": {
+          "state": "unknown",
+          "refs": []
+        },
+        "runtime": {
+          "wine_diagnostic_copy": {
+            "state": "unknown",
+            "refs": []
+          },
+          "windows_original": {
+            "state": "unknown",
+            "refs": []
+          },
+          "lan": {
+            "state": "unknown",
+            "refs": []
+          },
+          "internet": {
+            "state": "unknown",
+            "refs": []
+          }
+        },
+        "implementation": {
+          "state": "unknown",
+          "refs": [],
+          "delivery": "unknown"
+        },
+        "integration": {
+          "state": "unknown",
+          "refs": []
+        },
+        "gate": {
+          "id": "K5",
+          "state": "open",
+          "refs": [
+            "docs/PLAN.md#gates"
+          ]
+        }
+      }
+    },
+    {
+      "id": "KR-F015",
+      "kind": "feature",
+      "title": "Relay, NAT và type UDP khác",
+      "mechanism": "peer-relay",
+      "parent": "KR-G004",
+      "depends_on": [
+        "KR-F002"
+      ],
+      "lifecycle": "active",
+      "refs": {
+        "contract": "docs/PROTOCOL.md#udp-generation",
+        "question": "docs/RESEARCH.md#gap-peer-relay",
+        "plan": "docs/PLAN.md#current-order",
+        "evidence": [
+          "docs/evidence/peer153/README.md"
+        ]
+      },
+      "coverage": {
+        "presence": {
+          "state": "candidate",
+          "refs": [
+            "docs/PROTOCOL.md#udp-generation"
+          ]
+        },
+        "vn_reference": {
+          "state": "both",
+          "refs": [
+            "docs/PROTOCOL.md#item-families"
+          ]
+        },
+        "kr_static": {
+          "state": "partial",
+          "refs": [
+            "docs/PROTOCOL.md#udp-generation"
+          ]
+        },
+        "emulation": {
+          "state": "unknown",
+          "refs": []
+        },
+        "runtime": {
+          "wine_diagnostic_copy": {
+            "state": "unknown",
+            "refs": []
+          },
+          "windows_original": {
+            "state": "unknown",
+            "refs": []
+          },
+          "lan": {
+            "state": "unknown",
+            "refs": []
+          },
+          "internet": {
+            "state": "unknown",
+            "refs": []
+          }
+        },
+        "implementation": {
+          "state": "unknown",
+          "refs": [],
+          "delivery": "unknown"
+        },
+        "integration": {
+          "state": "unknown",
+          "refs": []
+        },
+        "gate": {
+          "id": "K6",
+          "state": "open",
+          "refs": [
+            "docs/PLAN.md#gates"
+          ]
+        }
+      }
+    },
+    {
+      "id": "KR-X001",
+      "kind": "feature",
+      "title": "Kết quả và trở về phòng",
+      "mechanism": "result-return",
+      "parent": "KR-G005",
+      "depends_on": [
+        "KR-F009"
+      ],
+      "lifecycle": "active",
+      "refs": {
+        "contract": "docs/PROTOCOL.md#round-finish",
+        "question": "docs/RESEARCH.md#gap-result-return",
+        "plan": "docs/PLAN.md#current-order",
+        "evidence": [
+          "docs/evidence/round-finish/README.md",
+          "docs/evidence/probe-service/README.md"
+        ]
+      },
+      "coverage": {
+        "presence": {
+          "state": "present",
+          "refs": [
+            "docs/PROTOCOL.md#round-finish"
+          ]
+        },
+        "vn_reference": {
+          "state": "both",
+          "refs": [
+            "docs/REFERENCES.md"
+          ]
+        },
+        "kr_static": {
+          "state": "partial",
+          "refs": [
+            "docs/PROTOCOL.md#round-finish"
+          ]
+        },
+        "emulation": {
+          "state": "checked",
+          "refs": [
+            "docs/evidence/round-finish/README.md"
+          ]
+        },
+        "runtime": {
+          "wine_diagnostic_copy": {
+            "state": "observed",
+            "refs": [
+              "docs/evidence/round-finish/README.md"
+            ]
+          },
+          "windows_original": {
+            "state": "unknown",
+            "refs": []
+          },
+          "lan": {
+            "state": "unknown",
+            "refs": []
+          },
+          "internet": {
+            "state": "unknown",
+            "refs": []
+          }
+        },
+        "implementation": {
+          "state": "partial",
+          "refs": [
+            "server/probe_service.py",
+            "docs/PROTOCOL.md#probe-service"
+          ],
+          "delivery": "branch_pending"
+        },
+        "integration": {
+          "state": "partial",
+          "refs": [
+            "docs/evidence/probe-service/README.md"
+          ]
+        },
+        "gate": {
+          "id": "K5",
+          "state": "open",
+          "refs": [
+            "docs/PLAN.md#gates"
+          ]
+        }
+      }
+    },
+    {
+      "id": "KR-X002",
+      "kind": "feature",
+      "title": "Reset vòng và stale fences",
+      "mechanism": "round-reset",
+      "parent": "KR-G005",
+      "depends_on": [
+        "KR-X001",
+        "KR-F003",
+        "KR-F006"
+      ],
+      "lifecycle": "active",
+      "refs": {
+        "contract": "docs/PROTOCOL.md#round-generation",
+        "question": "docs/RESEARCH.md#gap-round-reset",
+        "plan": "docs/PLAN.md#current-order",
+        "evidence": [
+          "docs/evidence/round-generation/README.md",
+          "docs/evidence/probe-service/README.md"
+        ]
+      },
+      "coverage": {
+        "presence": {
+          "state": "present",
+          "refs": [
+            "docs/PROTOCOL.md#round-generation"
+          ]
+        },
+        "vn_reference": {
+          "state": "both",
+          "refs": [
+            "docs/REFERENCES.md"
+          ]
+        },
+        "kr_static": {
+          "state": "partial",
+          "refs": [
+            "docs/PROTOCOL.md#round-generation"
+          ]
+        },
+        "emulation": {
+          "state": "checked",
+          "refs": [
+            "docs/evidence/round-generation/README.md"
+          ]
+        },
+        "runtime": {
+          "wine_diagnostic_copy": {
+            "state": "observed",
+            "refs": [
+              "docs/evidence/round-generation/README.md"
+            ]
+          },
+          "windows_original": {
+            "state": "unknown",
+            "refs": []
+          },
+          "lan": {
+            "state": "unknown",
+            "refs": []
+          },
+          "internet": {
+            "state": "unknown",
+            "refs": []
+          }
+        },
+        "implementation": {
+          "state": "partial",
+          "refs": [
+            "server/probe_service.py",
+            "docs/PROTOCOL.md#probe-service"
+          ],
+          "delivery": "branch_pending"
+        },
+        "integration": {
+          "state": "partial",
+          "refs": [
+            "docs/evidence/probe-service/README.md"
+          ]
+        },
+        "gate": {
+          "id": "K6",
+          "state": "open",
+          "refs": [
+            "docs/PLAN.md#gates"
+          ]
+        }
+      }
+    },
+    {
+      "id": "KR-X003",
+      "kind": "feature",
+      "title": "EOF, forfeit và peer thay thế",
+      "mechanism": "disconnect-replacement",
+      "parent": "KR-G005",
+      "depends_on": [
+        "KR-X002",
+        "KR-R004"
+      ],
+      "lifecycle": "active",
+      "refs": {
+        "contract": "docs/PROTOCOL.md#abort-timer",
+        "question": "docs/RESEARCH.md#gap-disconnect-replacement",
+        "plan": "docs/PLAN.md#current-order",
+        "evidence": [
+          "docs/evidence/abort-timer/README.md"
+        ]
+      },
+      "coverage": {
+        "presence": {
+          "state": "present",
+          "refs": [
+            "docs/PROTOCOL.md#abort-timer"
+          ]
+        },
+        "vn_reference": {
+          "state": "both",
+          "refs": [
+            "docs/REFERENCES.md"
+          ]
+        },
+        "kr_static": {
+          "state": "partial",
+          "refs": [
+            "docs/PROTOCOL.md#abort-timer"
+          ]
+        },
+        "emulation": {
+          "state": "checked",
+          "refs": [
+            "docs/evidence/abort-timer/README.md"
+          ]
+        },
+        "runtime": {
+          "wine_diagnostic_copy": {
+            "state": "observed",
+            "refs": [
+              "docs/evidence/abort-timer/README.md"
+            ]
+          },
+          "windows_original": {
+            "state": "unknown",
+            "refs": []
+          },
+          "lan": {
+            "state": "unknown",
+            "refs": []
+          },
+          "internet": {
+            "state": "unknown",
+            "refs": []
+          }
+        },
+        "implementation": {
+          "state": "unknown",
+          "refs": [],
+          "delivery": "unknown"
+        },
+        "integration": {
+          "state": "unknown",
+          "refs": []
+        },
+        "gate": {
+          "id": "K6",
+          "state": "open",
+          "refs": [
+            "docs/PLAN.md#gates"
+          ]
+        }
+      }
+    },
+    {
+      "id": "KR-S001",
+      "kind": "feature",
+      "title": "Service fixture độc lập",
+      "mechanism": "diagnostic-service",
+      "parent": "KR-G006",
+      "depends_on": [
+        "KR-B003",
+        "KR-R003",
+        "KR-X002"
+      ],
+      "lifecycle": "active",
+      "refs": {
+        "contract": "docs/PROTOCOL.md#probe-service",
+        "question": "docs/RESEARCH.md#gap-diagnostic-service",
+        "plan": "docs/PLAN.md#current-order",
+        "evidence": [
+          "docs/evidence/probe-service/README.md"
+        ]
+      },
+      "coverage": {
+        "presence": {
+          "state": "unknown",
+          "refs": []
+        },
+        "vn_reference": {
+          "state": "both",
+          "refs": [
+            "docs/REFERENCES.md"
+          ]
+        },
+        "kr_static": {
+          "state": "unknown",
+          "refs": []
+        },
+        "emulation": {
+          "state": "unknown",
+          "refs": []
+        },
+        "runtime": {
+          "wine_diagnostic_copy": {
+            "state": "observed",
+            "refs": [
+              "docs/evidence/probe-service/README.md"
+            ]
+          },
+          "windows_original": {
+            "state": "unknown",
+            "refs": []
+          },
+          "lan": {
+            "state": "unknown",
+            "refs": []
+          },
+          "internet": {
+            "state": "unknown",
+            "refs": []
+          }
+        },
+        "implementation": {
+          "state": "partial",
+          "refs": [
+            "server/probe_service.py",
+            "docs/PROTOCOL.md#probe-service"
+          ],
+          "delivery": "branch_pending"
+        },
+        "integration": {
+          "state": "partial",
+          "refs": [
+            "docs/evidence/probe-service/README.md"
+          ]
+        },
+        "gate": {
+          "id": "K6",
+          "state": "open",
+          "refs": [
+            "docs/PLAN.md#gates"
+          ]
+        }
+      }
+    },
+    {
+      "id": "KR-S002",
+      "kind": "feature",
+      "title": "Hardening và triển khai nhiều máy",
+      "mechanism": "service-hardening",
+      "parent": "KR-G006",
+      "depends_on": [
+        "KR-S001",
+        "KR-X003",
+        "KR-F015"
+      ],
+      "lifecycle": "active",
+      "refs": {
+        "contract": "docs/PROTOCOL.md#udp-generation",
+        "question": "docs/RESEARCH.md#gap-service-hardening",
+        "plan": "docs/PLAN.md#current-order",
+        "evidence": [
+          "docs/evidence/udp-freshness/README.md"
+        ]
+      },
+      "coverage": {
+        "presence": {
+          "state": "unknown",
+          "refs": []
+        },
+        "vn_reference": {
+          "state": "static",
+          "refs": [
+            "docs/REFERENCES.md"
+          ]
+        },
+        "kr_static": {
+          "state": "unknown",
+          "refs": []
+        },
+        "emulation": {
+          "state": "unknown",
+          "refs": []
+        },
+        "runtime": {
+          "wine_diagnostic_copy": {
+            "state": "unknown",
+            "refs": []
+          },
+          "windows_original": {
+            "state": "unknown",
+            "refs": []
+          },
+          "lan": {
+            "state": "unknown",
+            "refs": []
+          },
+          "internet": {
+            "state": "unknown",
+            "refs": []
+          }
+        },
+        "implementation": {
+          "state": "unknown",
+          "refs": [],
+          "delivery": "unknown"
+        },
+        "integration": {
+          "state": "unknown",
+          "refs": []
+        },
+        "gate": {
+          "id": "K7",
+          "state": "open",
+          "refs": [
+            "docs/PLAN.md#gates"
+          ]
+        }
+      }
+    }
+  ]
+}

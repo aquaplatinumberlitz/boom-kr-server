@@ -1,7 +1,7 @@
 # Server tương thích KR
 
 Code server mới thuộc thư mục này. Harness RE trong `local/` đã chạy các chu kỳ hai client
-Wine theo [contract](../docs/PROTOCOL.md); chưa có server độc lập hoặc nghiệm thu toàn codec/hello.
+Wine theo [contract](../docs/PROTOCOL.md); CP048 thêm service fixture riêng theo [phạm vi](../docs/PROTOCOL.md#probe-service), chưa nghiệm thu toàn codec/hello.
 
 `round_fence.py` là policy emulator cho vòng đời **job local**: ticket gắn instance chủ phòng,
 generation vòng và lần cấp ID; chỉ job hiện tại được consume một lần. Caller phải giữ ticket gốc,
@@ -39,11 +39,31 @@ Sau256 giá trị byte thấp khác nhau, allocator báo lỗi; không quay vòn
 Chỉ tạo instance mới khi caller đã thiết lập lifetime peer mới an toàn; việc đóng transport/loại queue
 để bảo đảm điều đó còn cần kiểm riêng. Roster/ID thay đổi cũng phải kiểm identity riêng.
 
-Runtime CP047 kiểm12345→12346, stable IDs1/2 và một gói movement cũ. Module mới chỉ qua unit test,
-chưa ghép vào server độc lập; các key khác/biênu32 là kiểm policy, không thêm bằng chứng runtime KR.
+Runtime CP047 kiểm12345→12346, stable IDs1/2 và một gói movement cũ. Module CP047 chỉ qua unit test; CP048 đã ghép vào service fixture theo phạm vi bên dưới; các key khác/biênu32 là kiểm policy, không thêm bằng chứng runtime KR.
 Không gọi đây là xác thực, toàn UDP validator hoặc bảo vệ mọi loại packet. Fixture RE CP047 chọn hai
 giá trị trực tiếp qua153; runtime đó không tự chứng minh caller đã tích hợp module này.
 
 Kiểm policy: `python3 -m unittest server.test_udp_round_keys`.
 
 Lộ trình và điều kiện mở probe server: [PLAN](../docs/PLAN.md).
+
+## Service chẩn đoán CP048
+
+`probe_service.py` chạy tiến trình riêng, sở hữu TCP/frame/seq, round owner và timer; harness chỉ
+Wine/UI/isolation/UDP đo lường. `probe_codec.py` là profile hẹp đã so với actual frame/native KR;
+`probe_room.py` ghép key/fence/claims theo owner serialize. Fixture profile chỉ trỏ path/size/hash,
+không chép tài nguyên vào Git. Chi tiết native/partial-run/recipe ở [evidence](../docs/evidence/probe-service/README.md).
+
+```bash
+python3 tools/export_probe_profile.py --source-root local/research/codex --out local/new-profile.json
+python3 -m server.probe_service --profile local/new-profile.json --out local/new-service-run --port 3808
+python3 -m unittest discover -s server -p 'test_*.py'
+```
+
+Service chỉ bind loopback. Khi chạy Wine phải dùng namespace/lease/files-only NSS của recipe đã đo;
+loopback binding riêng nó không cô lập outbound client. Cần đủ các port của fixture/harness, không
+chỉ3808 cho chuỗi runtime. Profile chỉ cho hai identity A/B theo accept-order (4connection/vai),
+synthetic auth/map/roster/rank và stable slots. Không là public server hoặc login/auth hoàn chỉnh.
+Service chưa quản membership tổng quát/EOF forfeit/promotion, full124validator/tick/key/state,
+relay/NAT/backpressure hay gate K5/K6a. Kết thúc ở EOF hiện chỉ invalidate room, chưa ca recovery service.
+Runtime r2 có hai chu kỳ; r3 chỉ một result, không dùng để tuyên bố tính tái lập mọi input.

@@ -54,6 +54,23 @@ def read_json(path):
     return json.loads(path.read_text())
 
 
+def historical_repository_blob(root, relative, expected_sha, expected_bytes):
+    """Recover exact historical bytes; never accept a changed file by path alone."""
+    try:
+        revisions = subprocess.run(
+            ["git", "-c", "core.fsmonitor=false", "log", "--all", "--format=%H", "--", relative],
+            cwd=root, capture_output=True, text=True, check=True)
+        for revision in revisions.stdout.splitlines():
+            result = subprocess.run(["git", "-c", "core.fsmonitor=false", "show", f"{revision}:{relative}"],
+                                    cwd=root, capture_output=True)
+            if (result.returncode == 0 and len(result.stdout) == expected_bytes
+                    and hashlib.sha256(result.stdout).hexdigest() == expected_sha):
+                return revision
+    except (OSError, subprocess.CalledProcessError):
+        pass
+    return None
+
+
 def validate(manifest, root=ROOT, require_local=False):
     errors, warnings = [], []
     checked, unavailable = 0, 0
@@ -123,7 +140,16 @@ def validate(manifest, root=ROOT, require_local=False):
             return
         checked += 1
         if path.stat().st_size != item.get("bytes") or digest(path) != item.get("sha256"):
-            errors.append(f"{where}: evidence size/hash mismatch {value}")
+            # Canonical docs can evolve while old checkpoint bytes remain immutable.
+            # Recover the old exact content only for repository documentation. Code,
+            # binaries, raw captures and local evidence still require the pinned bytes.
+            revision = None
+            if kind == "repository" and path.suffix == ".md":
+                revision = historical_repository_blob(root, value, item.get("sha256"), item.get("bytes"))
+            if revision:
+                warnings.append(f"{where}: HISTORICAL DOC VERIFIED {value} at {revision}; current file differs; checkpoint bytes unchanged")
+            else:
+                errors.append(f"{where}: evidence size/hash mismatch {value}")
 
     completed, saw_draft = 0, False
     ids, current_steps = [], {}

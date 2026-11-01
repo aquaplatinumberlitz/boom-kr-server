@@ -1,0 +1,121 @@
+{
+  "id": "AUD015",
+  "trigger": "periodic",
+  "completed_through": "CP048",
+  "recorded_utc": "2026-11-01T11:29:54.244084+00:00",
+  "auditor": "Codex manual self-audit; independent review waived by project owner",
+  "read_files": [
+    "README.md",
+    "docs/PLAN.md",
+    "docs/PROTOCOL.md",
+    "docs/RESEARCH.md",
+    "docs/features.json",
+    "docs/COVERAGE.md",
+    "docs/evidence/item-families/README.md",
+    "docs/evidence/udp-generation/README.md",
+    "docs/evidence/udp-actor/README.md",
+    "docs/evidence/udp-freshness/README.md",
+    "docs/evidence/probe-service/README.md",
+    "docs/evidence/feature-catalog/README.md",
+    "server/README.md",
+    "tools/README.md",
+    "local/research/codex/probe-service-r1/reuse-question.json",
+    "local/research/codex/probe-service-r1/measurement-notes.json",
+    "local/research/codex/probe-service-r1/runtime-summary.json",
+    "local/research/codex/probe-service-r1/downstream-summary.json",
+    "local/research/codex/probe-service-r1/actor-fields.json",
+    "local/research/codex/probe-service-r1/item-summary.json",
+    "local/research/codex/probe-service-r1/native-packets.json",
+    "local/research/codex/probe-service-r1/native-153.json",
+    "local/research/codex/probe-service-r1/native-udp.json",
+    "local/research/codex/probe-service-r1/codec-native-comparison.json",
+    "local/research/codex/probe-service-r1/replay-effects.json",
+    "local/research/codex/probe-service-r1/verification.json",
+    "local/research/codex/probe-service-r1/old124-reuse.json",
+    "local/research/codex/probe-service-r1/old124-service-gap.json",
+    "local/research/codex/probe-service-r1/visual-index.json",
+    "local/research/codex/probe-service-r1/integrated-r2/run.json",
+    "local/research/codex/probe-service-r1/integrated-r2/client.log",
+    "local/research/codex/probe-service-r1/integrated-r2/client-B.log",
+    "local/research/codex/probe-service-r1/integrated-r3/run.json",
+    "local/research/codex/probe-service-r1/integrated-r3/client.log",
+    "local/research/codex/probe-service-r1/integrated-r3/client-B.log",
+    "local/research/codex/probe-service-r1/integrated-r2-visual.png",
+    "local/research/codex/probe-service-r1/integrated-r3-visual.png"
+  ],
+  "method": "Read core README→PLAN→PROTOCOL→RESEARCH with bounded mechanism slices across resumed audit; inspect catalog/generated feature rows/DAG/gap cards and follow source contracts/evidence. Reconcile CP045–047 item/UDP raw reports/cached handler with CP048 actual traces, fields and service policy sources. Inspect 12 source images in2composites and compare selected native cursors/key branches/stat snapshots, not just checker output. Re-read current-order/current questions and final service contract. Documentation generator/checker verifies structure only; no semantic/gate certification.",
+  "findings": [
+    {
+      "id": "F1",
+      "stale": "README/service docs still said no standalone service and CP047 allocator pending integration despite separate-process run; CP047 PR55 pending snapshot no longer current.",
+      "correction": "Record baseline PR55 merge and bounded fixture service integration; distinguish failedbeforeclient/r2tworesults/r3partial, fullauth/vanilla/LAN/gates open.",
+      "fixed_in": [
+        "README.md",
+        "server/README.md",
+        "docs/PLAN.md",
+        "docs/PROTOCOL.md",
+        "docs/evidence/probe-service/README.md"
+      ]
+    },
+    {
+      "id": "F2",
+      "stale": "PLAN carried chronological pathway and RESEARCH next-step order independently; Q026/Q027 summaries lagged current source reuse/UDP proofs.",
+      "correction": "Replace PLAN pathway with generated catalog link; one current order in PLAN, research mechanism gaps/test rows and historical section with explicit dated/CP scopes.",
+      "fixed_in": [
+        "docs/PLAN.md",
+        "docs/RESEARCH.md",
+        "docs/features.json",
+        "docs/COVERAGE.md"
+      ]
+    },
+    {
+      "id": "F3",
+      "stale": "One feature row could imply all variants or all environments tested; implementation/code choices could be read as KR presence.",
+      "correction": "Separate9dimensions,4runtime environments, partialintegration/code delivery/source refs; servicepresenceunknown, itemdata-onlycandidate/unknownruntime. Scope bounded by source contract/evidence; no closed gate.",
+      "fixed_in": [
+        "docs/features.json",
+        "docs/COVERAGE.md",
+        "docs/evidence/feature-catalog/README.md"
+      ]
+    },
+    {
+      "id": "F4",
+      "stale": "r3 instrumentation has two Starts but only one actual124/118/result/return; full165pair absent inr2.",
+      "correction": "Keep partial outcome, do not combine runs into two165pairedstat/fullmatch; r3Roller5→6bothviews andclock2reset5 measured separately; unknown missinginput cause.",
+      "fixed_in": [
+        "docs/PROTOCOL.md",
+        "docs/RESEARCH.md",
+        "docs/evidence/probe-service/README.md"
+      ]
+    },
+    {
+      "id": "F5",
+      "stale": "354codec roundtrips could look like independent verification; current mutable server README hash pinned by CP047 blocked documentation evolution.",
+      "correction": "Compare97actualprefixes against independentnativeKR; historical-doc checker recovers exactoldsize/SHA Gitblob withrevision warning, never rewrites oldCP, code/rawremainstrict;18negative/regressiontests.",
+      "fixed_in": [
+        "tools/check_checkpoints.py",
+        "tools/test_checkpoints.py",
+        "docs/evidence/checkpoints/README.md",
+        "tools/README.md",
+        "docs/evidence/probe-service/README.md"
+      ]
+    },
+    {
+      "id": "F6",
+      "stale": "Claims integration might be treated as solving stale124 across repeatedcatalog.",
+      "correction": "Execute actualbody service bench: oldk12345 atroomkey12346 consumesnewclaim, currentbodythenreject; nativeWine consequences/guard remainexplicitnextwork, notKRruntimeproof.",
+      "fixed_in": [
+        "docs/PROTOCOL.md",
+        "docs/RESEARCH.md",
+        "docs/PLAN.md",
+        "docs/evidence/probe-service/README.md"
+      ]
+    }
+  ],
+  "remaining": [
+    "GateK0–K7 includingK5/K6a notsigned; fullauth/profile/cache/codec/vanilla/accountreconnect/LAN/Internet stillopen.",
+    "Serviceold124guard andWinecontrol/replay next; t/distance/actorstate/fullvalidator,keylow8reuse/roster/otherUDPtypes/relay remain.",
+    "ServiceEOF currentlyfinishonly, notforfeit/cleanup/promotion/newpeer; delayedloadbarrier/inputreproducibility(r3) needscontrolledmeasurement.",
+    "CP048branchpendingPR integration; independentreviewwaived/selfcheckonly; cadence nextCP052, oldCP001–047/AUD001–014 untouched."
+  ]
+}
