@@ -4,7 +4,7 @@ Baseline CP053/[PR67](https://github.com/aquaplatinumberlitz/boom-kr-server/pull
 `75606eb0353e7ef51d6a41e6bf6ac56b6cb56ad7`; KRE-017/[issue68](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/68).
 Codex solo/tự kiểm, review [waived](../checkpoints/review-waiver.json). [Contract](../../PROTOCOL.md#prestart-replacement),
 [câu hỏi](../../RESEARCH.md#gap-disconnect-replacement), [thứ tự duy nhất](../../PLAN.md#current-order).
-Raw `local/research/codex/prestart-replacement-r1/`; snapshot trước merge trên `kre/prestart-replacement`.
+Raw `local/research/codex/prestart-replacement-r1/`; snapshot trước merge trên `kre/prestart-replacement`. Trạng thái tích hợp ở [PR69](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/69).
 
 `reuse-question.json` pin hash/source/locator/proof: CP053 cleanup, CP040/044/051 C3/BStart/current
 roster/170/result, native framer/getter/153; VN lobby/session method, boomkr-re, boom-rs, l10n/archive.

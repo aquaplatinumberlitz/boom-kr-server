@@ -1,7 +1,7 @@
 {
   "schema": "kre-feature-index-v1",
   "build": "KR00967",
-  "as_of": "2026-11-02 JST / CP054; prestart integration pending PR",
+  "as_of": "2026-11-02 JST / CP054; integration status via PR69",
   "sources": {
     "plan": "docs/PLAN.md",
     "contract": "docs/PROTOCOL.md",
@@ -929,7 +929,7 @@
         },
         "implementation": {
           "state": "partial",
-          "delivery": "branch_pending",
+          "delivery": "via_pr",
           "refs": [
             "server/probe_service.py",
             "docs/PROTOCOL.md#service-eof",
@@ -940,7 +940,8 @@
             "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/65",
             "docs/PROTOCOL.md#host-setup",
             "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/67",
-            "docs/PROTOCOL.md#prestart-replacement"
+            "docs/PROTOCOL.md#prestart-replacement",
+            "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/69"
           ]
         },
         "integration": {
@@ -2462,7 +2463,7 @@
         },
         "implementation": {
           "state": "partial",
-          "delivery": "branch_pending",
+          "delivery": "via_pr",
           "refs": [
             "server/probe_service.py",
             "docs/PROTOCOL.md#service-eof",
@@ -2473,7 +2474,8 @@
             "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/65",
             "docs/PROTOCOL.md#host-setup",
             "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/67",
-            "docs/PROTOCOL.md#prestart-replacement"
+            "docs/PROTOCOL.md#prestart-replacement",
+            "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/69"
           ]
         },
         "integration": {
@@ -2568,7 +2570,7 @@
         },
         "implementation": {
           "state": "partial",
-          "delivery": "branch_pending",
+          "delivery": "via_pr",
           "refs": [
             "server/probe_service.py",
             "docs/PROTOCOL.md#service-eof",
@@ -2579,7 +2581,8 @@
             "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/65",
             "docs/PROTOCOL.md#host-setup",
             "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/67",
-            "docs/PROTOCOL.md#prestart-replacement"
+            "docs/PROTOCOL.md#prestart-replacement",
+            "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/69"
           ]
         },
         "integration": {

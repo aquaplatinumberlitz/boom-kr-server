@@ -36,7 +36,7 @@ hai client có trap/death/statepeer →175→180/về phòng. Control cũ từ c
 membership/auth/validator/cache/codec/reset tổng quát; các kết quả chỉ trên Wine copy chẩn đoán.
 
 CP053 đã merge [PR67](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/67) tại `75606eb`.
-CP054 đang trên nhánh `kre/prestart-replacement`, tự kiểm; review độc lập
+CP054 tự kiểm/integration theo [PR69](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/69); review độc lập
 [waived](docs/evidence/checkpoints/review-waiver.json). Audit **AUD016/CP052**, audit kế **CP056**.
 [Yêu cầu chủ dự án](docs/evidence/owner-directives/continuous-work.json): tiếp tục ngay việc kế trong
 PLAN sau mỗi checkpoint/commit/PR, không tự dừng/chờ nhắc.
