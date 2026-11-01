@@ -1,7 +1,7 @@
 {
   "schema": "kre-feature-index-v1",
   "build": "KR00967",
-  "as_of": "2026-11-01 / CP052; integration status via PR65",
+  "as_of": "2026-11-01 / CP053; integration status via PR67",
   "sources": {
     "plan": "docs/PLAN.md",
     "contract": "docs/PROTOCOL.md",
@@ -872,7 +872,8 @@
           "docs/evidence/room-rejoin/README.md",
           "docs/evidence/service-eof/README.md",
           "docs/evidence/service-replacement/README.md",
-          "docs/evidence/setup-eof/README.md"
+          "docs/evidence/setup-eof/README.md",
+          "docs/evidence/host-setup/README.md"
         ]
       },
       "coverage": {
@@ -907,7 +908,8 @@
               "docs/evidence/room-rejoin/README.md",
               "docs/evidence/service-eof/README.md",
               "docs/evidence/service-replacement/README.md",
-              "docs/evidence/setup-eof/README.md"
+              "docs/evidence/setup-eof/README.md",
+              "docs/evidence/host-setup/README.md"
             ]
           },
           "windows_original": {
@@ -933,7 +935,9 @@
             "docs/PROTOCOL.md#service-replacement",
             "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/63",
             "docs/PROTOCOL.md#setup-eof",
-            "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/65"
+            "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/65",
+            "docs/PROTOCOL.md#host-setup",
+            "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/67"
           ]
         },
         "integration": {
@@ -941,7 +945,8 @@
           "refs": [
             "docs/evidence/service-eof/README.md",
             "docs/evidence/service-replacement/README.md",
-            "docs/evidence/setup-eof/README.md"
+            "docs/evidence/setup-eof/README.md",
+            "docs/evidence/host-setup/README.md"
           ]
         },
         "gate": {
@@ -2396,7 +2401,8 @@
           "docs/evidence/abort-timer/README.md",
           "docs/evidence/service-eof/README.md",
           "docs/evidence/service-replacement/README.md",
-          "docs/evidence/setup-eof/README.md"
+          "docs/evidence/setup-eof/README.md",
+          "docs/evidence/host-setup/README.md"
         ]
       },
       "coverage": {
@@ -2431,7 +2437,8 @@
               "docs/evidence/abort-timer/README.md",
               "docs/evidence/service-eof/README.md",
               "docs/evidence/service-replacement/README.md",
-              "docs/evidence/setup-eof/README.md"
+              "docs/evidence/setup-eof/README.md",
+              "docs/evidence/host-setup/README.md"
             ]
           },
           "windows_original": {
@@ -2457,7 +2464,9 @@
             "docs/PROTOCOL.md#service-replacement",
             "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/63",
             "docs/PROTOCOL.md#setup-eof",
-            "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/65"
+            "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/65",
+            "docs/PROTOCOL.md#host-setup",
+            "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/67"
           ]
         },
         "integration": {
@@ -2465,7 +2474,8 @@
           "refs": [
             "docs/evidence/service-eof/README.md",
             "docs/evidence/service-replacement/README.md",
-            "docs/evidence/setup-eof/README.md"
+            "docs/evidence/setup-eof/README.md",
+            "docs/evidence/host-setup/README.md"
           ]
         },
         "gate": {
@@ -2498,7 +2508,8 @@
           "docs/evidence/stale124/README.md",
           "docs/evidence/service-eof/README.md",
           "docs/evidence/service-replacement/README.md",
-          "docs/evidence/setup-eof/README.md"
+          "docs/evidence/setup-eof/README.md",
+          "docs/evidence/host-setup/README.md"
         ]
       },
       "coverage": {
@@ -2528,7 +2539,8 @@
               "docs/evidence/stale124/README.md",
               "docs/evidence/service-eof/README.md",
               "docs/evidence/service-replacement/README.md",
-              "docs/evidence/setup-eof/README.md"
+              "docs/evidence/setup-eof/README.md",
+              "docs/evidence/host-setup/README.md"
             ]
           },
           "windows_original": {
@@ -2554,7 +2566,9 @@
             "docs/PROTOCOL.md#service-replacement",
             "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/63",
             "docs/PROTOCOL.md#setup-eof",
-            "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/65"
+            "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/65",
+            "docs/PROTOCOL.md#host-setup",
+            "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/67"
           ]
         },
         "integration": {
@@ -2562,7 +2576,8 @@
           "refs": [
             "docs/evidence/service-eof/README.md",
             "docs/evidence/service-replacement/README.md",
-            "docs/evidence/setup-eof/README.md"
+            "docs/evidence/setup-eof/README.md",
+            "docs/evidence/host-setup/README.md"
           ]
         },
         "gate": {

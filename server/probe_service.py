@@ -275,6 +275,7 @@ class ProbeService:
         if event['reply_ordinal'] != 4:
             return
         event.pop('guest_ready_received', None)
+        event.pop('pending_departures', None)
         if self.room.active:
             # Do this immediately, before rank/return delays or another deadline.
             self.room.finish()
@@ -295,24 +296,35 @@ class ProbeService:
             # A peer may already have this slot via106 when setup disconnects.
             self.cleanup_departed(event['role'])
 
+    def deliver_departure(self, peer, departed):
+        """Send after recipient setup, so fixture roster cannot restore the slot."""
+        body = codec.pack_fields([ROLE_SLOTS[departed], ROLE_IDS[departed], 0], [1, 4, 1])
+        sent = [{'role': peer['role'], **self.send(peer, 'start', 'remove107',
+                                                 opcode=107, body=body)}]
+        # This diagnostic profile supports B taking over A, or A staying chief.
+        alias = 'promote_B' if peer['role'] == 'B' else ('slot_C' if peer['role'] == 'C' else 'slot_A')
+        sent.append({'role': peer['role'], **self.send(peer, alias, 'survivor110')})
+        peer.pop('guest_ready_received', None)
+        return sent
+
     def cleanup_departed(self, departed):
-        peers = self.peers()
-        slot, identity = ROLE_SLOTS[departed], ROLE_IDS[departed]
-        if departed == self.host_role and peers:
-            self.host_role = peers[0]['role']
-        body = codec.pack_fields([slot, identity, 0], [1, 4, 1])
-        sent = []
-        for peer in peers:
-            sent.append({'role': peer['role'], **self.send(peer, 'start', 'remove107',
-                                                         opcode=107, body=body)})
-            # In this two-person fixture profile B becomes host after A leaves;
-            # A keeps its original host state when B leaves.
-            alias = 'promote_B' if peer['role'] == 'B' else ('slot_C' if peer['role'] == 'C' else 'slot_A')
-            sent.append({'role': peer['role'], **self.send(peer, alias, 'survivor110')})
-            peer.pop('guest_ready_received', None)
+        members = [event for event in self.events if event.get('reply_ordinal') == 4
+                   and not event.get('closed')
+                   and (event.get('create_response_sent') or event.get('map_response_sent'))]
+        if departed == self.host_role and members:
+            self.host_role = members[0]['role']
+        sent, deferred = [], []
+        for peer in members:
+            if peer.get('map_response_sent'):
+                sent.extend(self.deliver_departure(peer, departed))
+            else:
+                pending = peer.setdefault('pending_departures', [])
+                if departed not in pending:
+                    pending.append(departed)
+                deferred.append(peer['role'])
         self.state['policy_events'].append({'op': 'cleanup_departed', 'role': departed,
                                             'generation': self.room.generation,
-                                            'broadcast': sent})
+                                            'broadcast': sent, 'deferred': deferred})
         return sent
 
     def tick(self):
@@ -399,6 +411,12 @@ class ProbeService:
                 if event.get(previous) and not event.get(marker) and now - event[previous]['monotonic_ns'] >= delay * 10**9:
                     self.send_raw(event, b''.join(self.profile.raw(alias) for alias in aliases))
                     event[marker] = {'monotonic_ns': now}
+            if event.get('map_response_sent'):
+                for departed in event.pop('pending_departures', []):
+                    sent = self.deliver_departure(event, departed)
+                    self.state['policy_events'].append({'op': 'deferred_cleanup', 'role': departed,
+                                                        'recipient': role, 'broadcast': sent,
+                                                        'monotonic_ns': time.monotonic_ns()})
 
     def replacement_allowed(self):
         departed, survivor = self.channels.get('A'), self.channels.get('B')
