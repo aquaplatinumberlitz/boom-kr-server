@@ -3,7 +3,7 @@
 Baseline CP052/PR65 `3617e69a3536cac9ac9f8a05ae826cbb0cc803be`; KRE-016/[issue66](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/66).
 Codex solo/tự kiểm, review [waived](../checkpoints/review-waiver.json). [Contract](../../PROTOCOL.md#host-setup),
 [câu hỏi](../../RESEARCH.md#gap-disconnect-replacement), [thứ tự](../../PLAN.md#current-order).
-Raw `local/research/codex/host-setup-r1/`; snapshot trước merge trên `kre/host-setup`.
+Raw `local/research/codex/host-setup-r1/`; snapshot trước merge trên `kre/host-setup`. Trạng thái tích hợp ở [PR67](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/67).
 
 `reuse-question.json` pin source/hash/build và scope: CP052 host-setup-gap, CP034/050/051107/110/
 IDclear/chief, profile41/probe; boomkr-re, VN lobby/session, boom-rs reference, l10n/archive. Tái dùng

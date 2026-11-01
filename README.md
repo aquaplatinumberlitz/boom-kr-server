@@ -36,7 +36,7 @@ Admission C trước trận đầu vẫn bị chặn bởi điều kiện round 
 hai trận đầy đủ/K6a/LAN/Internet hoặc auth/membership/validator/cache/codec/reset tổng quát.
 
 CP052 đã merge [PR65](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/65) tại `3617e69`.
-CP053 đang trên nhánh `kre/host-setup`, tự kiểm; review độc lập
+CP053 tự kiểm/integration theo [PR67](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/67); review độc lập
 [waived](docs/evidence/checkpoints/review-waiver.json). Audit **AUD016/CP052**, audit kế **CP056**.
 [Yêu cầu chủ dự án](docs/evidence/owner-directives/continuous-work.json): tiếp tục ngay công việc kế
 trong PLAN sau mỗi checkpoint/commit/PR, không tự dừng/chờ nhắc.
