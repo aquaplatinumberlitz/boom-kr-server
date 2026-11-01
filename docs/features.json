@@ -1436,10 +1436,11 @@
         },
         "implementation": {
           "state": "partial",
-          "delivery": "branch_pending",
+          "delivery": "via_pr",
           "refs": [
             "server/probe_service.py",
-            "docs/PROTOCOL.md#pickup-round-key"
+            "docs/PROTOCOL.md#pickup-round-key",
+            "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/59"
           ]
         },
         "integration": {
@@ -2501,10 +2502,11 @@
         },
         "implementation": {
           "state": "partial",
-          "delivery": "branch_pending",
+          "delivery": "via_pr",
           "refs": [
             "server/probe_service.py",
-            "docs/PROTOCOL.md#pickup-round-key"
+            "docs/PROTOCOL.md#pickup-round-key",
+            "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/59"
           ]
         },
         "integration": {

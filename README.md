@@ -36,7 +36,7 @@ Body cũ được chèn tại dispatcher; chưa kiểm admission qua TCP của r
 codec/reset và lifecycle service còn thiếu; chưa nghiệm thu trận hoàn chỉnh/K5/K6a, LAN/Internet.
 
 CP048 đã merge [PR57](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/57) tại `4d77eaf`.
-CP049 đang tự kiểm/tích hợp theo PR của nhánh; review độc lập
+CP049 tự kiểm/tích hợp theo [PR59](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/59); review độc lập
 [waived](docs/evidence/checkpoints/review-waiver.json). Catalog ghi nguồn delivery riêng.
 Audit **AUD015/CP048**, audit định kỳ kế **CP052**;
 [counter](docs/evidence/checkpoints/manifest.json), [workflow](docs/evidence/checkpoints/README.md).
