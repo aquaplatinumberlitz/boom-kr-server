@@ -1,11 +1,11 @@
 {
   "schema": "kre-checkpoints-v1",
-  "last_id": "CP051",
-  "completed_count": 51,
+  "last_id": "CP052",
+  "completed_count": 52,
   "audit_interval": 4,
-  "last_periodic_audit": 48,
-  "next_periodic_audit": "CP052",
-  "last_manual_audit": "AUD015",
+  "last_periodic_audit": 52,
+  "next_periodic_audit": "CP056",
+  "last_manual_audit": "AUD016",
   "checkpoints": [
     {
       "id": "CP001",
@@ -95369,6 +95369,835 @@
           "reason": "CP051 current replacement service evidence/limits, canonical source links and remaining minimal test; history retained."
         }
       ]
+    },
+    {
+      "id": "CP052",
+      "previous": "CP051",
+      "lifecycle": "complete",
+      "recorded_utc": "2026-11-01T13:57:16.374863+00:00",
+      "context_commit": "c764aa555d0318322a4f67ef0628e14d3e95d0c9",
+      "question": "Does guest EOF after Join/own106 but before map leave a ghost on A; can membership cleanup run before map without false phase/rank?",
+      "scope": "KRE-015/#64, solo source reuse then code/native runtime. Baseline ghost and one membership-marker fix on identical145s recipe; 3boundary regressions, same profile41/binary. No new binary body or patch, no gameplay/gate claim. Periodic manual AUD016 across CP049–052, nextCP056. HostEOF with unmapped survivor identified as code-only remaining gap, not runtime solved.",
+      "owner": "Codex",
+      "reviewer": "Codex",
+      "artifacts": [
+        {
+          "name": "CA-r2-login-logout.exe",
+          "sha256": "660447c293ce92270cb9b5815331bca976e8f156366e1fe50b217b6c12e60ce3"
+        },
+        {
+          "name": "CA-r2-stage-social.exe",
+          "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+        },
+        {
+          "name": "CA-r2-stage-social.exe Bcopy",
+          "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+        },
+        {
+          "name": "modO.bin",
+          "sha256": "a08950c833d3acab8281049def7b3dc96b221f107eeda01da3a548e34b91dce5"
+        }
+      ],
+      "locators": [
+        "setup-baseline/setup-fixed 2026-11-01; runtime e9bb47/static660447/modOa08950 rawbase400000 RVA=VA-400000",
+        "D603A0/DC6329/12400D0/12401A9/1240D5E reused: native107 full6/rewind/final1, ID2→0 andchiefA1",
+        "ProbeService.close_connection create_response_sent vs map_response_sent; cleanup_departed/peers/tick_setup; actual guest82/own106 then EOF before slot/map",
+        "14EF300 native framing/CRC/typed fields; AUD016 source reports CP049–052, setup4images andtwoisolatedcontrollers"
+      ],
+      "findings": [
+        {
+          "summary": "Inactive room membership ends on accepted Join/create, independent of map-loading progress. Close now clears accepted guest before map; lobby-only socket unchanged; active/result EOF paths retain old policy.",
+          "source": "design",
+          "status": "design",
+          "method": "design",
+          "canonical": "docs/PROTOCOL.md#setup-eof",
+          "limits": "Known2role fixture cleanup, not general allocator/auth/reconnect/deferred survivor handling. Before-own106/lobby/duplicate/Start guards code-tested, not separate KR runtime cases.",
+          "evidence": [
+            "E048",
+            "E049",
+            "E026"
+          ]
+        },
+        {
+          "summary": "Baseline: actual B82/own106 then actual channelEOF before slot/map while A mapped; no107/nativeclear and A screenshot retains B. No native Start/clock/rank/result.",
+          "source": "kr_runtime",
+          "status": "confirmed",
+          "method": "runtime",
+          "canonical": "docs/PROTOCOL.md#setup-eof",
+          "limits": "Diagnostic Wine/profile/cache recipe, no full membership/gameplay/originalserver oracle. UIStart injection is not actual104.",
+          "evidence": [
+            "E062",
+            "E014",
+            "E037",
+            "E006"
+          ]
+        },
+        {
+          "summary": "Fixed same boundary: single107(slot1,id2,0)/seq73 +110/seq76 toA; nativebase6/errors0 thenrewind/final1, actualID2→0 once, A chief1 and Bslot gone. No sends closedB/no false121/197/196/153/175/180.",
+          "source": "kr_runtime",
+          "status": "confirmed",
+          "method": "runtime",
+          "canonical": "docs/PROTOCOL.md#setup-eof",
+          "limits": "Two sequential bounded controls, no match; guestEOF beforemap only, host with unmappedpeer/sendfailure/idleEOF/timeout/etc remain.",
+          "evidence": [
+            "E069",
+            "E014",
+            "E035",
+            "E015",
+            "E037"
+          ]
+        },
+        {
+          "summary": "Native code14EF300/typed/CRC replay12cases on actual82 and generatedS2C107110 valid/CRCbad/partial; exactsourcearchives and931hash/timeline relationships.",
+          "source": "kr_static",
+          "status": "confirmed",
+          "method": "emulation",
+          "canonical": "docs/evidence/setup-eof/README.md",
+          "limits": "Receiver/heap model, not gameplay state/authority oracle or semantic/gate certification; native107runtime separately observed.",
+          "evidence": [
+            "E015",
+            "E035",
+            "E023"
+          ]
+        },
+        {
+          "summary": "HostEOF with B not mapped: code execution has no cleanuprecipient and later tick selects slot_B/guest_B/table/map. This is a remaining caller/setup gap.",
+          "source": "design",
+          "status": "confirmed",
+          "method": "design",
+          "canonical": "docs/PROTOCOL.md#setup-eof",
+          "limits": "Socketpair/fake profile/sender only; nativeKR ghost/readd/chief outcome still unknown, needs controlled runtime before policy fix.",
+          "evidence": [
+            "E012"
+          ]
+        },
+        {
+          "summary": "Periodic manual AUD016 reconciles current docs and raw/reportCP049–052; historical snapshot footnotes, current summary/catalog/gaps updated, no gate advanced.",
+          "source": "design",
+          "status": "confirmed",
+          "method": "documentation",
+          "canonical": "docs/evidence/checkpoints/audits/AUD016.json",
+          "limits": "Bounded mechanism audit/current source links, not full binary semantic re-certification; independentreview waived; nextauditCP056.",
+          "evidence": [
+            "E002",
+            "E005"
+          ]
+        }
+      ],
+      "verification": [
+        {
+          "check": "931 hash/timeline relations;12native packet cases; A/B actualframer replays; native clear/chief andfourimages manually inspected",
+          "result": "pass",
+          "evidence": [
+            "E035",
+            "E015",
+            "E037",
+            "E014"
+          ],
+          "limits": "No gate or gameplay from noStart; fake sender bench distinct from native runtime."
+        },
+        {
+          "check": "39server+7catalog+18checkpoint tests; docs/catalog/artifacts5/5/diff and periodic audit; exact history/local checker after append",
+          "result": "pass",
+          "evidence": [
+            "E026",
+            "E008",
+            "E009",
+            "E004",
+            "E011",
+            "E007",
+            "E002"
+          ],
+          "limits": "Tests verify policy boundaries, not original authority. No worker/review approval; waiver remains."
+        }
+      ],
+      "evidence": [
+        {
+          "id": "E001",
+          "kind": "repository",
+          "path": "docs/evidence/setup-eof/README.md",
+          "sha256": "801a4c5dee35c7063367187629c16eea3feadf4fc9a13bcddffd9f0e2cbdef03",
+          "bytes": 5825
+        },
+        {
+          "id": "E002",
+          "kind": "repository",
+          "path": "docs/evidence/checkpoints/audits/AUD016.json",
+          "sha256": "c64c73fda7b00f764f8072833cc8e7efb3c7a80cec5aa88de0d657f83d8ef612",
+          "bytes": 5860
+        },
+        {
+          "id": "E003",
+          "kind": "local",
+          "path": "local/research/codex/setup-eof-r1/append_checkpoint.py",
+          "sha256": "29600385e34d5b1b6b9fd75820e79eb0821785529db55439445f6f7af0e8928c",
+          "bytes": 10030
+        },
+        {
+          "id": "E004",
+          "kind": "local",
+          "path": "local/research/codex/setup-eof-r1/artifacts-check.txt",
+          "sha256": "649c6624aa6d317dfc1db5e16fea683cfbc9d9cf4dd3df11c0d70e57409054a0",
+          "bytes": 253
+        },
+        {
+          "id": "E005",
+          "kind": "local",
+          "path": "local/research/codex/setup-eof-r1/audit-source-reports.json",
+          "sha256": "22c490258f47ade96c49fa180fefb6fe8ec8342e9fd98ddf5c8024a0bd9914e9",
+          "bytes": 806
+        },
+        {
+          "id": "E006",
+          "kind": "local",
+          "path": "local/research/codex/setup-eof-r1/baseline-bench.json",
+          "sha256": "e9b8db71b9c85320f0f91753a87450879f1a73a6800b5562931ea498194e961e",
+          "bytes": 554
+        },
+        {
+          "id": "E007",
+          "kind": "local",
+          "path": "local/research/codex/setup-eof-r1/catalog-check.txt",
+          "sha256": "07cfdc4671ab13f3320ca868da10e2f29adb3799625c524fd7e8975cb45a5554",
+          "bytes": 264
+        },
+        {
+          "id": "E008",
+          "kind": "local",
+          "path": "local/research/codex/setup-eof-r1/catalog-tests.txt",
+          "sha256": "64a6f6444ff23a8755568facb192c84ef8bcd32f41bfb207386b37b3144b02f8",
+          "bytes": 105
+        },
+        {
+          "id": "E009",
+          "kind": "local",
+          "path": "local/research/codex/setup-eof-r1/checkpoint-tests.txt",
+          "sha256": "9c1799fddbd14bdef5099f768e511870d7f38dd6bd69bbafef5b7219f95f778c",
+          "bytes": 117
+        },
+        {
+          "id": "E010",
+          "kind": "local",
+          "path": "local/research/codex/setup-eof-r1/derive_roles.py",
+          "sha256": "5e7c4652a585dd3f73d82e5fc64ff7758d235df4e29782881adf8fa8c9262596",
+          "bytes": 853
+        },
+        {
+          "id": "E011",
+          "kind": "local",
+          "path": "local/research/codex/setup-eof-r1/docs-check.txt",
+          "sha256": "4e96f4a63c27075cb982edcbcafc5bf9b7107686fe12ea828411cd3cef9e6419",
+          "bytes": 173
+        },
+        {
+          "id": "E012",
+          "kind": "local",
+          "path": "local/research/codex/setup-eof-r1/host-setup-gap.json",
+          "sha256": "776251c5a50c9412de6cb2068bd4d3496fc47ecdf35411c6cf0ec8451519eff7",
+          "bytes": 751
+        },
+        {
+          "id": "E013",
+          "kind": "local",
+          "path": "local/research/codex/setup-eof-r1/issue-body.md",
+          "sha256": "686c12de0907a98bc1f51db96bf28211e30e7fab7adf101a50d421cd9933b618",
+          "bytes": 981
+        },
+        {
+          "id": "E014",
+          "kind": "local",
+          "path": "local/research/codex/setup-eof-r1/lifecycle-summary.json",
+          "sha256": "a520a4524609e248d62d21998b44a6faabfcde632145604ebc411639cac6923a",
+          "bytes": 9435
+        },
+        {
+          "id": "E015",
+          "kind": "local",
+          "path": "local/research/codex/setup-eof-r1/native-packets.json",
+          "sha256": "9e05c1bdab63215056f8214e41d9985a094f50b116a968a86be60935ba41803d",
+          "bytes": 4412
+        },
+        {
+          "id": "E016",
+          "kind": "local",
+          "path": "local/research/codex/setup-eof-r1/native_153.py",
+          "sha256": "f29b4c50260612020b0d183343aa8ee128b7ad8fbe61ee2df2730f0a706093a5",
+          "bytes": 3513
+        },
+        {
+          "id": "E017",
+          "kind": "local",
+          "path": "local/research/codex/setup-eof-r1/native_packets.py",
+          "sha256": "527f37b09b5a603016aefff53ceeadc82df89b2e4fbbdf2503d6d3673545780d",
+          "bytes": 4827
+        },
+        {
+          "id": "E018",
+          "kind": "local",
+          "path": "local/research/codex/setup-eof-r1/parse_fields.py",
+          "sha256": "8774c42d23e9ce50767b7c54786616b1597d70fee27faa5c5d0d58e208fd450f",
+          "bytes": 3910
+        },
+        {
+          "id": "E019",
+          "kind": "local",
+          "path": "local/research/codex/setup-eof-r1/parse_lifecycle.py",
+          "sha256": "45feb81988c6f81ed71546aa1aea34e15837663a773113a8b53cc0cc5971d825",
+          "bytes": 2664
+        },
+        {
+          "id": "E020",
+          "kind": "local",
+          "path": "local/research/codex/setup-eof-r1/profile.json",
+          "sha256": "922cce0ba24ede668fb44b3b82f937c5c2a0af478bb5b8905fde272bbd564b5f",
+          "bytes": 10845
+        },
+        {
+          "id": "E021",
+          "kind": "local",
+          "path": "local/research/codex/setup-eof-r1/proposed-tests.txt",
+          "sha256": "1778a15415f23b741f1c50833addcc1a4ba428d98a5a0bc024b9c4482b67e526",
+          "bytes": 486
+        },
+        {
+          "id": "E022",
+          "kind": "local",
+          "path": "local/research/codex/setup-eof-r1/replay-run.py",
+          "sha256": "b79fa3923c9d533d2975e02ecdc8c4b5d728d29a5f9ad03e79825321cf5acd14",
+          "bytes": 3000
+        },
+        {
+          "id": "E023",
+          "kind": "local",
+          "path": "local/research/codex/setup-eof-r1/reuse-question.json",
+          "sha256": "b0f112cb0093580668d12b193446ef70a565a11ca7995c942c162c5618adac8b",
+          "bytes": 4142
+        },
+        {
+          "id": "E024",
+          "kind": "local",
+          "path": "local/research/codex/setup-eof-r1/run_probe.py",
+          "sha256": "61f3396431cb4d947e5c13f238e6da7dc5a47b817598da5ff480698c359765b4",
+          "bytes": 1065
+        },
+        {
+          "id": "E025",
+          "kind": "local",
+          "path": "local/research/codex/setup-eof-r1/seal_run.py",
+          "sha256": "bb68b0159ccc3ca532828bd9cde340a84515495cc556499144cb23afd1196f97",
+          "bytes": 623
+        },
+        {
+          "id": "E026",
+          "kind": "local",
+          "path": "local/research/codex/setup-eof-r1/server-tests.txt",
+          "sha256": "82a305e34e4e7523e91f0a65b85434d1f25551b1c26000587adc7678bd7b0ea0",
+          "bytes": 138
+        },
+        {
+          "id": "E027",
+          "kind": "local",
+          "path": "local/research/codex/setup-eof-r1/setup-baseline-hashes.json",
+          "sha256": "39dba1c3fb17b859931270d1fa2d59771c91b362d7a52d9e630b68aaf24425c8",
+          "bytes": 88427
+        },
+        {
+          "id": "E028",
+          "kind": "local",
+          "path": "local/research/codex/setup-eof-r1/setup-baseline-launcher.log",
+          "sha256": "dd837092a9e71871b337ba0b5237ee19d7062ec9e98e8fd206b1468d1e836392",
+          "bytes": 25259
+        },
+        {
+          "id": "E029",
+          "kind": "local",
+          "path": "local/research/codex/setup-eof-r1/setup-baseline-recipe.json",
+          "sha256": "b56022e2e69fc81aac3cdf9928e77cbc52a42d05fbfe33b343bc7935cb1bafc9",
+          "bytes": 982
+        },
+        {
+          "id": "E030",
+          "kind": "local",
+          "path": "local/research/codex/setup-eof-r1/setup-fixed-hashes.json",
+          "sha256": "9390cee7cefb410e39562a03f205efe88878df19aca974d57887d9611080f925",
+          "bytes": 87501
+        },
+        {
+          "id": "E031",
+          "kind": "local",
+          "path": "local/research/codex/setup-eof-r1/setup-fixed-launcher.log",
+          "sha256": "aab3e82c75f4f6fe85cc5bf54925b6f7779676c69175e995b5abf33947e86638",
+          "bytes": 26138
+        },
+        {
+          "id": "E032",
+          "kind": "local",
+          "path": "local/research/codex/setup-eof-r1/setup-fixed-recipe.json",
+          "sha256": "22be3a21f207d899733f6ae348418f411331a4c2887de77002d2e9766e1830f0",
+          "bytes": 976
+        },
+        {
+          "id": "E033",
+          "kind": "local",
+          "path": "local/research/codex/setup-eof-r1/setup-visual.png",
+          "sha256": "daff3d7c6953dc309a7726beb4537f18fe71e808736411a2593494ea1344273f",
+          "bytes": 221344
+        },
+        {
+          "id": "E034",
+          "kind": "local",
+          "path": "local/research/codex/setup-eof-r1/setup.gdb",
+          "sha256": "90f53ef6e1527e04db68609d275833899ee662b071f53f666d6b7803b0b7a77d",
+          "bytes": 24712
+        },
+        {
+          "id": "E035",
+          "kind": "local",
+          "path": "local/research/codex/setup-eof-r1/verification.json",
+          "sha256": "802d02c0dc857b6d99a7552203804b7681d98f06bc23b26ce15b92d0a23e64b6",
+          "bytes": 2495
+        },
+        {
+          "id": "E036",
+          "kind": "local",
+          "path": "local/research/codex/setup-eof-r1/verify.py",
+          "sha256": "b9fe025dfe6925d4b94d0de9f19da2e0ca426837439cc41b1b8b0ef61dca8f7c",
+          "bytes": 4123
+        },
+        {
+          "id": "E037",
+          "kind": "local",
+          "path": "local/research/codex/setup-eof-r1/visual-index.json",
+          "sha256": "abeac56a13c7878893d9aa19c7b93a82817cf4f4a38e920d458eb855ec22026d",
+          "bytes": 886
+        },
+        {
+          "id": "E038",
+          "kind": "local",
+          "path": "local/research/codex/setup-eof-r1/cp052-snapshot/README.md",
+          "sha256": "cc256a01067bf899f471de8bf57c47a957ca15d84871b09b408a4c23b045b9b8",
+          "bytes": 3856
+        },
+        {
+          "id": "E039",
+          "kind": "local",
+          "path": "local/research/codex/setup-eof-r1/cp052-snapshot/docs/COVERAGE.md",
+          "sha256": "702b1d79c4f3ca813b56b1b386a0f10c843f030bf92405256930368a9a7cc9de",
+          "bytes": 63804
+        },
+        {
+          "id": "E040",
+          "kind": "local",
+          "path": "local/research/codex/setup-eof-r1/cp052-snapshot/docs/PLAN.md",
+          "sha256": "6340111f18b6afa689e0bfa8b2ef9ea7134013b3b87e6b8557fcb297aa8d7446",
+          "bytes": 29106
+        },
+        {
+          "id": "E041",
+          "kind": "local",
+          "path": "local/research/codex/setup-eof-r1/cp052-snapshot/docs/PROTOCOL.md",
+          "sha256": "7f088e41635653bc00b82a9adbbf5acc6aaec56e81354783e5cf48c972a53191",
+          "bytes": 186081
+        },
+        {
+          "id": "E042",
+          "kind": "local",
+          "path": "local/research/codex/setup-eof-r1/cp052-snapshot/docs/RESEARCH.md",
+          "sha256": "7861d98d7d83bf34b2668abda2a2712f1dff6767b430050176c51f4e169beeba",
+          "bytes": 29147
+        },
+        {
+          "id": "E043",
+          "kind": "local",
+          "path": "local/research/codex/setup-eof-r1/cp052-snapshot/docs/evidence/service-eof/README.md",
+          "sha256": "a1902b8359f70dbe086eabc6f8954fbc4c0edd0d97a62a07b114a63e9a118914",
+          "bytes": 8059
+        },
+        {
+          "id": "E044",
+          "kind": "local",
+          "path": "local/research/codex/setup-eof-r1/cp052-snapshot/docs/evidence/service-replacement/README.md",
+          "sha256": "ed1781ded2bec5f5778c71de4c1f03a5fc8141e2358b3a223841a1cc7ca54c95",
+          "bytes": 7809
+        },
+        {
+          "id": "E045",
+          "kind": "local",
+          "path": "local/research/codex/setup-eof-r1/cp052-snapshot/docs/evidence/setup-eof/README.md",
+          "sha256": "801a4c5dee35c7063367187629c16eea3feadf4fc9a13bcddffd9f0e2cbdef03",
+          "bytes": 5825
+        },
+        {
+          "id": "E046",
+          "kind": "local",
+          "path": "local/research/codex/setup-eof-r1/cp052-snapshot/docs/features.json",
+          "sha256": "d175f72daac6d2bc80238fe3cb387e8b5f65cccfecb72c7d0c8b081fc4b5dcc7",
+          "bytes": 66410
+        },
+        {
+          "id": "E047",
+          "kind": "local",
+          "path": "local/research/codex/setup-eof-r1/cp052-snapshot/server/README.md",
+          "sha256": "a0963258905e68f11378da5bacac4fc57bf008f42a89122550d54eb93f95d247",
+          "bytes": 8083
+        },
+        {
+          "id": "E048",
+          "kind": "local",
+          "path": "local/research/codex/setup-eof-r1/cp052-snapshot/server/probe_service.py",
+          "sha256": "1bcd3e8892fd2a5149aa62ef59384ecbb337653556753019dfe2d302eb988ce6",
+          "bytes": 29764
+        },
+        {
+          "id": "E049",
+          "kind": "local",
+          "path": "local/research/codex/setup-eof-r1/cp052-snapshot/server/test_probe_eof.py",
+          "sha256": "411db02ca36e27bf3b62a969f28e260b326d2d388028ce40c11fc9c24a2a9b72",
+          "bytes": 7513
+        },
+        {
+          "id": "E050",
+          "kind": "local",
+          "path": "local/research/codex/setup-eof-r1/baseline/server/item_claims.py",
+          "sha256": "7990ae9195e9f8bba56b04101f352506194dbd0252793183993ce101a8674a2e",
+          "bytes": 3340
+        },
+        {
+          "id": "E051",
+          "kind": "local",
+          "path": "local/research/codex/setup-eof-r1/baseline/server/probe_codec.py",
+          "sha256": "23ba54e6940953a52ff737e7e06b2761a8eb22eab444310b49b1d96efa12411d",
+          "bytes": 3227
+        },
+        {
+          "id": "E052",
+          "kind": "local",
+          "path": "local/research/codex/setup-eof-r1/baseline/server/probe_room.py",
+          "sha256": "91292494d492c7851bd5432649adf528e1b07290316dc56ba1478f8a209a08bc",
+          "bytes": 1468
+        },
+        {
+          "id": "E053",
+          "kind": "local",
+          "path": "local/research/codex/setup-eof-r1/baseline/server/probe_service.py",
+          "sha256": "3dbaf35dd44211a9c3f43725e48fccb2ba89a614dcf4d84b87e5d7f1eda925eb",
+          "bytes": 29602
+        },
+        {
+          "id": "E054",
+          "kind": "local",
+          "path": "local/research/codex/setup-eof-r1/baseline/server/round_fence.py",
+          "sha256": "aabcc7f1d623573fc217de8df05403f83d82425bbe5d6e78872b3096a2d46708",
+          "bytes": 2339
+        },
+        {
+          "id": "E055",
+          "kind": "local",
+          "path": "local/research/codex/setup-eof-r1/baseline/server/udp_round_keys.py",
+          "sha256": "db58ae1f25bcbeb52c2d25c7db6afbf1021ddd3af29702e756f5f41886530a0d",
+          "bytes": 1187
+        },
+        {
+          "id": "E056",
+          "kind": "local",
+          "path": "local/research/codex/setup-eof-r1/fixed-source/item_claims.py",
+          "sha256": "7990ae9195e9f8bba56b04101f352506194dbd0252793183993ce101a8674a2e",
+          "bytes": 3340
+        },
+        {
+          "id": "E057",
+          "kind": "local",
+          "path": "local/research/codex/setup-eof-r1/fixed-source/probe_codec.py",
+          "sha256": "23ba54e6940953a52ff737e7e06b2761a8eb22eab444310b49b1d96efa12411d",
+          "bytes": 3227
+        },
+        {
+          "id": "E058",
+          "kind": "local",
+          "path": "local/research/codex/setup-eof-r1/fixed-source/probe_room.py",
+          "sha256": "91292494d492c7851bd5432649adf528e1b07290316dc56ba1478f8a209a08bc",
+          "bytes": 1468
+        },
+        {
+          "id": "E059",
+          "kind": "local",
+          "path": "local/research/codex/setup-eof-r1/fixed-source/probe_service.py",
+          "sha256": "1bcd3e8892fd2a5149aa62ef59384ecbb337653556753019dfe2d302eb988ce6",
+          "bytes": 29764
+        },
+        {
+          "id": "E060",
+          "kind": "local",
+          "path": "local/research/codex/setup-eof-r1/fixed-source/round_fence.py",
+          "sha256": "aabcc7f1d623573fc217de8df05403f83d82425bbe5d6e78872b3096a2d46708",
+          "bytes": 2339
+        },
+        {
+          "id": "E061",
+          "kind": "local",
+          "path": "local/research/codex/setup-eof-r1/fixed-source/udp_round_keys.py",
+          "sha256": "db58ae1f25bcbeb52c2d25c7db6afbf1021ddd3af29702e756f5f41886530a0d",
+          "bytes": 1187
+        },
+        {
+          "id": "E062",
+          "kind": "local",
+          "path": "local/research/codex/setup-eof-r1/setup-baseline/run.json",
+          "sha256": "519d505485522323696f278ff84c66910035c51e2f4fa6d85d717d5b1d64279c",
+          "bytes": 31357
+        },
+        {
+          "id": "E063",
+          "kind": "local",
+          "path": "local/research/codex/setup-eof-r1/setup-baseline/client.log",
+          "sha256": "e26404e6fc89e6fe17fe6d462ac8f7338ddd9e8f2117b78d82e8970c3dfad5ae",
+          "bytes": 18135
+        },
+        {
+          "id": "E064",
+          "kind": "local",
+          "path": "local/research/codex/setup-eof-r1/setup-baseline/client-B.log",
+          "sha256": "0cb94c730b0d249cdf56c9e45cdac44e8e6bf081bc57e6f05bddd8087a17b2c3",
+          "bytes": 17451
+        },
+        {
+          "id": "E065",
+          "kind": "local",
+          "path": "local/research/codex/setup-eof-r1/setup-baseline/service-state.json",
+          "sha256": "78a9d3a838b04f3f1a063d64633ebc8f7f061b2cf615d415e2dba83ef245bee6",
+          "bytes": 33972
+        },
+        {
+          "id": "E066",
+          "kind": "local",
+          "path": "local/research/codex/setup-eof-r1/setup-baseline/service.log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "id": "E067",
+          "kind": "local",
+          "path": "local/research/codex/setup-eof-r1/setup-baseline/debug-commands.txt",
+          "sha256": "90f53ef6e1527e04db68609d275833899ee662b071f53f666d6b7803b0b7a77d",
+          "bytes": 24712
+        },
+        {
+          "id": "E068",
+          "kind": "local",
+          "path": "local/research/codex/setup-eof-r1/setup-baseline/debug-commands-B.txt",
+          "sha256": "90f53ef6e1527e04db68609d275833899ee662b071f53f666d6b7803b0b7a77d",
+          "bytes": 24712
+        },
+        {
+          "id": "E069",
+          "kind": "local",
+          "path": "local/research/codex/setup-eof-r1/setup-fixed/run.json",
+          "sha256": "9350439da1121019ac49b5d2415868d802dd43317d9bdfba3dc5470ce689cb10",
+          "bytes": 32630
+        },
+        {
+          "id": "E070",
+          "kind": "local",
+          "path": "local/research/codex/setup-eof-r1/setup-fixed/client.log",
+          "sha256": "fed2eac8c7cc3f00f97dde376735e505c066c29742d8484b3db52508ad9bf1b1",
+          "bytes": 19078
+        },
+        {
+          "id": "E071",
+          "kind": "local",
+          "path": "local/research/codex/setup-eof-r1/setup-fixed/client-B.log",
+          "sha256": "ecedb10361777dc5927a037f8f98c9c75f4371c0dd063c0ca23285a5c7246757",
+          "bytes": 17434
+        },
+        {
+          "id": "E072",
+          "kind": "local",
+          "path": "local/research/codex/setup-eof-r1/setup-fixed/service-state.json",
+          "sha256": "e19a6e61297bfa12e83d22c59940c24a2bd46a6b9a63792de1c4bb96d9e81986",
+          "bytes": 35254
+        },
+        {
+          "id": "E073",
+          "kind": "local",
+          "path": "local/research/codex/setup-eof-r1/setup-fixed/service.log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "id": "E074",
+          "kind": "local",
+          "path": "local/research/codex/setup-eof-r1/setup-fixed/debug-commands.txt",
+          "sha256": "90f53ef6e1527e04db68609d275833899ee662b071f53f666d6b7803b0b7a77d",
+          "bytes": 24712
+        },
+        {
+          "id": "E075",
+          "kind": "local",
+          "path": "local/research/codex/setup-eof-r1/setup-fixed/debug-commands-B.txt",
+          "sha256": "90f53ef6e1527e04db68609d275833899ee662b071f53f666d6b7803b0b7a77d",
+          "bytes": 24712
+        },
+        {
+          "id": "E076",
+          "kind": "local",
+          "path": "local/research/codex/setup-eof-r1/setup-fixed/A-remove107-73.bin",
+          "sha256": "fa2bc06c3af5c5476ad7efed13f5df6163d1c9f0b1988bb8aa56d95524db3115",
+          "bytes": 44
+        },
+        {
+          "id": "E077",
+          "kind": "local",
+          "path": "local/research/codex/setup-eof-r1/setup-fixed/A-survivor110-76.bin",
+          "sha256": "d28bb95d16421382ff09dd83a716d2f68358d3fdde3d236b049af6f401f702e9",
+          "bytes": 44
+        },
+        {
+          "id": "E078",
+          "kind": "local",
+          "path": "local/research/codex/setup-eof-r1/request-frames/setup-baseline/B-F13-82.bin",
+          "sha256": "1746130345929e482c425aa463e6bf34d6da555c86c6474cf235330227f74f47",
+          "bytes": 49
+        },
+        {
+          "id": "E079",
+          "kind": "local",
+          "path": "local/research/codex/setup-eof-r1/request-frames/setup-fixed/B-F13-82.bin",
+          "sha256": "1746130345929e482c425aa463e6bf34d6da555c86c6474cf235330227f74f47",
+          "bytes": 49
+        },
+        {
+          "id": "E080",
+          "kind": "local",
+          "path": "local/research/codex/wine_probe_setup_eof.py",
+          "sha256": "edd9384e3b327473e177b9f68fcc3a85cd1f2fc92b46e23fb3446228bc02bb18",
+          "bytes": 45419
+        },
+        {
+          "id": "E081",
+          "kind": "local",
+          "path": "local/research/codex/wcp-guard-r1/game/CA-r2-stage-social.exe",
+          "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef",
+          "bytes": 31874560
+        },
+        {
+          "id": "E082",
+          "kind": "local",
+          "path": "local/research/codex/duo-round-r1/game-B/CA-r2-stage-social.exe",
+          "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef",
+          "bytes": 31874560
+        }
+      ],
+      "delta": {
+        "added": [
+          "Guest setup EOF native control/fix, membership-marker cleanup,3regression tests andcode-only host/unmapped gap.",
+          "AUD016 periodic manually reconciles CP049–052; auditcounter52/next56."
+        ],
+        "corrected": [
+          "Do not use map-loading completion to mean membership exists. B accepted Join can be preannounced before own map; originalcode leaves ghost.",
+          "Service CP050/051 evidence clearly labelled historical snapshots; current README records PR63 merge. RESEARCHsummary/current guestsetup unknown superseded by CP052, hostsetup stays distinct."
+        ],
+        "superseded": [
+          "CP051 NEXT-DUO-ROUND guest-before-map experiment now measured; next minimal hostEOF while B still setup, then deferred removal/current roster only if runtime confirms."
+        ]
+      },
+      "blockers": [
+        "HostEOF when survivor not mapped: no recipient and setup oldguest alias; code-level confirmed but KR runtime unknown. General membership/preannouncedfixtures/account reconnect/sendfailure/idleEOF/loadfail/timeout not covered.",
+        "Fullvalidator/t/distance/actorstate/forgedcurrentkey/transport replay/UDPgrammar/keylifetime/cache/codec/reset/Windowsvanilla and K5/K6a/LAN/Internet remain."
+      ],
+      "next_steps": [
+        {
+          "id": "NEXT-DUO-ROUND",
+          "task": "KRE-005b",
+          "state": "active",
+          "action": "Follow PLAN#current-order / RESEARCH#gap-disconnect-replacement: kill host A after Bown106 before Bmap; inspect nativeID/chief/roster/currentorigin, then deferred cleanup/current roster if needed. Do not repeat solvedguestEOF or RE107/110.",
+          "owner": "Codex",
+          "reviewer": "Codex"
+        },
+        {
+          "id": "NEXT-ITEM-PICKUP",
+          "task": "KRE-005b",
+          "state": "active",
+          "action": "Canonical PLAN/RESEARCH validator gap current-k/t/distance/actorstate/transport only when needed; CP049 old/current-k proof reused.",
+          "owner": "Codex",
+          "reviewer": "Codex"
+        },
+        {
+          "id": "NEXT-FULL-LOGIN-FIELDS",
+          "task": "KRE-005b",
+          "state": "active",
+          "action": "Canonical auth/cache/codec debt remains after concrete lifecycle gap; Cnewidentity still not account resume.",
+          "owner": "Codex",
+          "reviewer": "Codex"
+        }
+      ],
+      "review": {
+        "status": "waived",
+        "as_of_utc": "2026-11-01T13:57:16.374863+00:00",
+        "reference": "docs/evidence/checkpoints/review-waiver.json",
+        "scope": "Codex solo RE/code/runtime/selfcheck, not independent approval.",
+        "authorization": {
+          "by": "project_owner",
+          "reference": "docs/evidence/checkpoints/review-waiver.json",
+          "reason": "Owner explicitly requested solo without Claude review."
+        }
+      },
+      "docs_sync": [
+        {
+          "path": "README.md",
+          "state": "updated",
+          "reason": "Current CP052 guest setup evidence/limits, historical snapshot pointers, stable catalog and concrete remaining host/unmapped test; manual AUD016."
+        },
+        {
+          "path": "docs/PLAN.md",
+          "state": "updated",
+          "reason": "Current CP052 guest setup evidence/limits, historical snapshot pointers, stable catalog and concrete remaining host/unmapped test; manual AUD016."
+        },
+        {
+          "path": "docs/PROTOCOL.md",
+          "state": "updated",
+          "reason": "Current CP052 guest setup evidence/limits, historical snapshot pointers, stable catalog and concrete remaining host/unmapped test; manual AUD016."
+        },
+        {
+          "path": "docs/RESEARCH.md",
+          "state": "updated",
+          "reason": "Current CP052 guest setup evidence/limits, historical snapshot pointers, stable catalog and concrete remaining host/unmapped test; manual AUD016."
+        },
+        {
+          "path": "docs/features.json",
+          "state": "updated",
+          "reason": "Current CP052 guest setup evidence/limits, historical snapshot pointers, stable catalog and concrete remaining host/unmapped test; manual AUD016."
+        },
+        {
+          "path": "docs/COVERAGE.md",
+          "state": "updated",
+          "reason": "Current CP052 guest setup evidence/limits, historical snapshot pointers, stable catalog and concrete remaining host/unmapped test; manual AUD016."
+        },
+        {
+          "path": "server/README.md",
+          "state": "updated",
+          "reason": "Current CP052 guest setup evidence/limits, historical snapshot pointers, stable catalog and concrete remaining host/unmapped test; manual AUD016."
+        },
+        {
+          "path": "docs/evidence/setup-eof/README.md",
+          "state": "updated",
+          "reason": "Current CP052 guest setup evidence/limits, historical snapshot pointers, stable catalog and concrete remaining host/unmapped test; manual AUD016."
+        },
+        {
+          "path": "docs/evidence/service-eof/README.md",
+          "state": "updated",
+          "reason": "Current CP052 guest setup evidence/limits, historical snapshot pointers, stable catalog and concrete remaining host/unmapped test; manual AUD016."
+        },
+        {
+          "path": "docs/evidence/service-replacement/README.md",
+          "state": "updated",
+          "reason": "Current CP052 guest setup evidence/limits, historical snapshot pointers, stable catalog and concrete remaining host/unmapped test; manual AUD016."
+        },
+        {
+          "path": "docs/evidence/checkpoints/audits/AUD016.json",
+          "state": "updated",
+          "reason": "Periodic manual audit throughCP052, nextCP056; prior history untouched."
+        }
+      ]
     }
   ],
   "audits": [
@@ -95446,6 +96275,11 @@
       "id": "AUD015",
       "path": "docs/evidence/checkpoints/audits/AUD015.json",
       "sha256": "98f35a7016f0ce220e78d38867ebbe05abbbf55d0a746a7a4997557a8dc03ab8"
+    },
+    {
+      "id": "AUD016",
+      "path": "docs/evidence/checkpoints/audits/AUD016.json",
+      "sha256": "c64c73fda7b00f764f8072833cc8e7efb3c7a80cec5aa88de0d657f83d8ef612"
     }
   ],
   "task_states": [
@@ -95496,6 +96330,12 @@
       "state": "open",
       "canonical": "docs/PLAN.md",
       "reference": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/62"
+    },
+    {
+      "id": "KRE-015",
+      "state": "open",
+      "canonical": "docs/PLAN.md",
+      "reference": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/64"
     }
   ]
 }

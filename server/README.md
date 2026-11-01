@@ -91,3 +91,9 @@ không giả C là A reconnect. Profile cần **41fixture**, export ra path mớ
 fail trước listen. Max12connection theo thứ tựA-B-C, chỉ hai live members; admission chờ cleanup A.
 36server tests có3replacement regressions cho Ready/host/roster/key/seq/ticket và report21 đúng peer.
 Auth/map/rank/roster vẫn fixture, chưa login server công khai, membership hoặc fullvalidator/reset.
+
+
+CP052: [guest setup EOF](../docs/PROTOCOL.md#setup-eof) cleanup theo Join/create acceptance,
+không đợi map. Control bản cũ còn slot ma; bản sửa native107 xóa ID2→0, A giữ chủ, không false phase.
+39server tests có3case thêm cho before-map/before-own106/lobby-only/duplicate và Start với closedpeer.
+Host EOF khi survivor chưa map vẫn là gap riêng, chưa deferred cleanup hoặc membership tổng quát.

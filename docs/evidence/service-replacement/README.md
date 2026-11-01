@@ -1,5 +1,7 @@
 # CP051 — C mới thay A, B Start và vòng B/C trên service độc lập
 
+Phạm vi dưới đây là snapshot CP051. Cập nhật hiện hành: [guest setup EOF CP052](../../PROTOCOL.md#setup-eof); thứ tự công việc chỉ ở PLAN.
+
 Baseline CP050/[PR61](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/61), merge
 `9c6ac926630431c246a98475039fdde69a4f03f9`. KRE-014/[issue62](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/62),
 phụ thuộc KRE-005b/issue14. Codex solo/tự kiểm; independent review [waived](../checkpoints/review-waiver.json).

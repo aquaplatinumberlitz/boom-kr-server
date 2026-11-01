@@ -92,6 +92,53 @@ class EofTests(unittest.TestCase):
         self.tick_at(122)
         self.assertEqual(self.sends, [])
 
+    def prepare_setup(self, *, accepted=True, player=True):
+        self.service.room.finish()
+        self.service.round = {'index': 0}
+        guest = self.service.channels['B']
+        guest.pop('map_response_sent')
+        if accepted:
+            guest['create_response_sent'] = {'after_c2s_opcode': 82}
+        if player:
+            guest['player_response_sent'] = {'monotonic_ns': 1}
+        return guest
+
+    def test_joined_guest_eof_before_map_clears_slot_once_without_start_or_rank(self):
+        from server import probe_codec as codec
+        guest = self.prepare_setup()
+        self.close_at(2, 10)
+        self.assertEqual([s['opcode'] for s in self.sends], [107, 110])
+        self.assertEqual([s['role'] for s in self.sends], ['A', 'A'])
+        self.assertEqual(codec.read_fields(self.sends[0]['body'], [1, 4, 1]), [1, 2, 0])
+        self.assertEqual(self.sends[1]['alias'], 'slot_A')
+        self.assertNotIn('guest_ready_received', guest)
+        self.assertEqual(self.service.host_role, 'A')
+        # A delayed owner tick cannot continue B setup or create a false phase.
+        self.service.send_raw = lambda *_args: self.fail('setup send to closed guest')
+        self.tick_at(20)
+        self.close_at(2, 21)
+        frame = codec.encode(bytes(37), 104, b'', 40)
+        self.service.receive_channel(self.service.channels['A'], frame, 40, b'')
+        self.assertEqual([s['opcode'] for s in self.sends], [107, 110])
+        self.assertEqual(self.service.round, {'index': 0})
+        self.assertFalse(self.service.room.active)
+        self.assertEqual(self.service.room.keys.issued_count, 1)  # fixture begin only
+        self.assertFalse(guest.get('map_response_sent'))
+
+    def test_lobby_guest_eof_does_not_remove_room_slot_without_join_acceptance(self):
+        self.prepare_setup(accepted=False, player=False)
+        self.close_at(2, 10)
+        self.tick_at(20)
+        self.assertEqual(self.sends, [])
+        self.assertEqual(self.service.state['policy_events'], [])
+
+    def test_joined_guest_eof_before_own_profile_still_cleans_membership(self):
+        self.prepare_setup(player=False)
+        self.close_at(2, 10)
+        self.tick_at(20)
+        self.assertEqual([s['opcode'] for s in self.sends], [107, 110])
+        self.assertEqual(self.service.state['policy_events'][0]['op'], 'cleanup_departed')
+
     def test_missing_lifecycle_profile_fails_before_opening_transports(self):
         profile = SimpleNamespace(frames={}, data={})
         with self.assertRaisesRegex(ValueError, 'missing lifecycle fixtures'):

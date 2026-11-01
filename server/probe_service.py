@@ -290,7 +290,9 @@ class ProbeService:
             self.round.setdefault('abort', {'role': event['role'], 'reason': reason,
                                            'monotonic_ns': time.monotonic_ns(),
                                            'generation': self.room.generation})
-        elif event.get('map_response_sent'):
+        elif event.get('create_response_sent'):
+            # Join/create acceptance establishes membership before map loading.
+            # A peer may already have this slot via106 when setup disconnects.
             self.cleanup_departed(event['role'])
 
     def cleanup_departed(self, departed):
