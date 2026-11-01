@@ -5,7 +5,7 @@ Baseline CP050/[PR61](https://github.com/aquaplatinumberlitz/boom-kr-server/pull
 phụ thuộc KRE-005b/issue14. Codex solo/tự kiểm; independent review [waived](../checkpoints/review-waiver.json).
 [Contract/giới hạn](../../PROTOCOL.md#service-replacement), [câu hỏi](../../RESEARCH.md#gap-disconnect-replacement),
 [thứ tự duy nhất](../../PLAN.md#current-order). Raw: `local/research/codex/service-replacement-r1/`.
-CP051 đang trên nhánh `kre/service-replacement`, chưa merge tại lúc ghi record.
+Snapshot khi ghi CP051: nhánh `kre/service-replacement`, chưa merge. Trạng thái tích hợp hiện tại ở [PR63](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/63); manifest giữ nguyên snapshot trước merge.
 
 ## Tái sử dụng đúng câu hỏi
 

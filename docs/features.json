@@ -1,7 +1,7 @@
 {
   "schema": "kre-feature-index-v1",
   "build": "KR00967",
-  "as_of": "2026-11-01 / CP051; integration pending PR on kre/service-replacement",
+  "as_of": "2026-11-01 / CP051; integration status via PR63",
   "sources": {
     "plan": "docs/PLAN.md",
     "contract": "docs/PROTOCOL.md",
@@ -923,12 +923,13 @@
         },
         "implementation": {
           "state": "partial",
-          "delivery": "branch_pending",
+          "delivery": "via_pr",
           "refs": [
             "server/probe_service.py",
             "docs/PROTOCOL.md#service-eof",
             "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/61",
-            "docs/PROTOCOL.md#service-replacement"
+            "docs/PROTOCOL.md#service-replacement",
+            "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/63"
           ]
         },
         "integration": {
@@ -2441,12 +2442,13 @@
         },
         "implementation": {
           "state": "partial",
-          "delivery": "branch_pending",
+          "delivery": "via_pr",
           "refs": [
             "server/probe_service.py",
             "docs/PROTOCOL.md#service-eof",
             "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/61",
-            "docs/PROTOCOL.md#service-replacement"
+            "docs/PROTOCOL.md#service-replacement",
+            "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/63"
           ]
         },
         "integration": {
@@ -2532,12 +2534,13 @@
         },
         "implementation": {
           "state": "partial",
-          "delivery": "branch_pending",
+          "delivery": "via_pr",
           "refs": [
             "server/probe_service.py",
             "docs/PROTOCOL.md#service-eof",
             "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/61",
-            "docs/PROTOCOL.md#service-replacement"
+            "docs/PROTOCOL.md#service-replacement",
+            "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/63"
           ]
         },
         "integration": {

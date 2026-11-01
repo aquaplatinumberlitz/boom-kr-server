@@ -36,7 +36,7 @@ Một run trước chỉ tới Start/pickup; không ghép chúng thành hai tr�
 fixture; fullvalidator/cache/codec/reset và K5/K6a/LAN/Internet vẫn mở.
 
 CP050 đã merge [PR61](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/61) tại `9c6ac92`.
-CP051 đang trên nhánh `kre/service-replacement`, tự kiểm; review độc lập
+CP051 tự kiểm, tích hợp theo [PR63](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/63); review độc lập
 [waived](docs/evidence/checkpoints/review-waiver.json). Audit **AUD015/CP048**, audit định kỳ kế **CP052**;
 [counter](docs/evidence/checkpoints/manifest.json), [workflow](docs/evidence/checkpoints/README.md).
 
