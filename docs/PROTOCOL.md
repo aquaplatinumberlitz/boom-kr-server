@@ -1,6 +1,6 @@
 # KR 00967 — contract tương thích client gốc
 
-Revision kr-legacy-contract-r1; cập nhật01/11/2026 JST (CP049).
+Revision kr-legacy-contract-r1; cập nhật01/11/2026 JST (CP050).
 **Contract có bằng chứng từng phần; chưa nghiệm thu full codec K2**.
 Lộ trình và thứ tự task chỉ giữ ở [REWRITE_PLAN — KRE](PLAN.md).
 Đây là contract của repo server KR. ADR0009 của bản viết lại là nguồn lịch sử để so sánh;
@@ -1952,7 +1952,7 @@ liệt kê và phân biệt với nguyên bản trong mọi demo.
 <a id="authority"></a>
 ### Authority matrix hiện hành và gate review
 
-Bảng này tổng hợp bằng chứng từng phần đến CP048; chưa phải toàn contract server gốc. Mỗi hàng khi
+Bảng này tổng hợp bằng chứng từng phần đến CP050; chưa phải toàn contract server gốc. Mỗi hàng khi
 triển khai phải bổ sung riêng **creator, simulator, validator, broadcaster, peer-editable state**, với
 locator/trace và trạng thái từng ô; những vai trò không nêu dưới đây hiện `unknown` cho KR.
 
@@ -1965,7 +1965,7 @@ locator/trace và trạng thái từng ô; những vai trò không nêu dưới 
 | Item placement/pickup | CP030 nhặt/tranh index; CP031/032 stat/itemẩn; CP045 [bảng nhóm/Roller/MaxPower hai view/reset](#item-families) | CP042 có [old165/index reuse](#item-generation); runtime tại max, KRspeed→px/s/TTL/activevariants, drop/đảo winner/toàn124validator/generation/reset còn thiếu |
 | Trap/death | CP029/036; CP037 kim và tranh chấp cứu/diệt; [kim](#needle-selfescape), [precedence](#contact-precedence) | Validator/duplicate/stale/generation/variants, result21 và đối chứng thêm/đảo chiều còn thiếu |
 | Result/reset | CP039 hai vòng statepeer/result/21/return và reset field hẹp; CP044 [timer ở EOF và vòng B/C mới](#abort-timer) | CP041 có [payload cũ khi ID reuse](#round-generation); arbitration/toàn generation/entity/timer/peer/seq không rò vẫn mở; phân biệt run chờ sai origin với ca hoàn tất |
-| Room lifecycle | CP034 leave/promotion/EOF/return; CP035 rejoin/Ready; CP040 chủ B/C Start; CP044 [B/C bom/death/result/return sau abort](#abort-timer) | Bầu chủ/giữ ID-slot/forfeit là policy stub; guest EOF trả A về phòng/xóa B đã đo riêng; reconnect cùng account/disconnect variants/toàn reset còn mở |
+| Room lifecycle | CP034 leave/promotion/EOF/return; CP035 rejoin/Ready; CP040 chủ B/C Start; CP044 [B/C bom/death/result/return sau abort](#abort-timer) | Bầu chủ/giữ ID-slot/forfeit là policy stub; guest EOF trả A về phòng/xóa B đã đo riêng; CP050 có [service EOF/cleanup](#service-eof); C mới/Start B trong service, reconnect cùng account/disconnect variants/toàn reset còn mở |
 | Peer lifecycle | CP027 actual99→153; CP045–047 [oldUDP actor/keyguard/endpointcontrol](#udp-generation) | CP048 [service fixture](#probe-service) đã tích hợp key policy hẹp; low8reuse/roster/UDPtype khác/fullgrammar/reliability/relay/reset còn mở. Không coi đổi cổng riêng lẻ là freshness guard hoặc keybyte là auth |
 
 Gate K5/K6 cần kiểm matrix và đối chứng của hành vi thực sự dùng; từ28/10 Codex tự kiểm theo miễn review của chủ dự án. Có thể giữ unknown về
@@ -2036,3 +2036,35 @@ mới do native writer phát. Hai proxy setup dừng trước phép đo được
 Không còn coi “service chưa kiểm k” là trạng thái hiện hành. `t`, distance/actorstate, request giả đã
 đổi k hiện tại, mode/variant, key lifetime/roster/otherUDP và fullvalidator vẫn mở. Equality không xác
 thực sender; fuse/drop/rank/auth/profile còn fixture. Không gate K5/K6a/LAN/Internet mới đóng.
+
+
+<a id="service-eof"></a>
+### Service EOF và loading chờ đủ99 — CP050
+
+[Recipe/raw/hash/nguồn reuse/native checks](evidence/service-eof/README.md). Wire107/110/175/180
+vẫn theo [room leave](#room-leave), [forfeit](#round-finish), [pending timer](#abort-timer);
+không phục hồi lại receiver hoặc chuyển opcode VN. `close_connection` idempotent, đánh dấu đóng/
+unregister rồi loại connection khỏi peers/setup; channel EOF lúc active gọi finish ngay trong owner,
+đặt abort và giữ ticket timer gốc. Tới deadline ticket bị loại `round_closed`, không phát158.
+
+Policy fixture cho hai người:12s sau EOF chọn rank survivor thắng,5s sau180,3s sau107 xóa slot
+người rời và110 cho survivor; B được promote nếu A rời, A giữ host nếu B rời. Đây là
+`design/emu_choice`, không death/event19 hoặc thuật toán server gốc. Kết quả đã chọn trước EOF
+không bị thay bằng một chuỗi rank mới. Profile34fixture yêu cầu rankAwin/Blose và promoteB có SHA;
+profile32 cũ phải export mới, không sửa lịch sử. Send failure/idle-EOF/roster race chưa kiểm runtime.
+
+**kr_runtime/confirmed hẹp:** hai run riêng host/guest EOF khi actual bomB còn chờ6s; mỗi survivor
+175full302/inner292,180full3 rồi107base6/rewind/final1, ID người rời về0; chiefB0→1 hoặc chiefAgiữ1.
+Không postEOF senddead/158 hay actual/synthetic17/19; secure actor trước rank không state1.
+Đây là forfeit/cleanup đã kiểm trong service, không trận đã chơi xong hoặc account reconnect.
+UI helper bấm tiếp nút một người tạo modal cuối; snapshot sau cleanup và native getter giữ phạm vi.
+
+**Giữ99:** wrapper giữ dispatch frameTCP99 thật củaB10,002s; A đã init99. Service không phát
+197/196/153 trong khoảng đó; sau release phát đúng phase, cả hai có clock native và actualinput/
+bom/result/return vòng1. Run185s có Start2/clock2 nhưng chỉ một result/return; không hai trận.
+Đây là kiểm policy đã chờ đủ99 với can thiệp có log; không networkloss/native-server loadpolicy,
+timeout/latejoin/loadfail hoặc toàn gate K4. Giới hạn ở [evidence](evidence/service-eof/README.md).
+
+Chưa C mới vào/roster-ID mới và Start từ B trong service: accept-order vẫn chỉ hai identity, cap8;
+CP040/044 đã có contract/harness B/C để dùng tiếp, không coi integration đó sẵn có ở code mới.
+Fullvalidator/auth/cache/codec/vanilla/K5/K6a/LAN/Internet giữ mở. Câu hỏi ở [RESEARCH](RESEARCH.md#gap-disconnect-replacement).

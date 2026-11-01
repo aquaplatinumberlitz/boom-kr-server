@@ -1,7 +1,7 @@
 {
   "schema": "kre-checkpoints-v1",
-  "last_id": "CP049",
-  "completed_count": 49,
+  "last_id": "CP050",
+  "completed_count": 50,
   "audit_interval": 4,
   "last_periodic_audit": 48,
   "next_periodic_audit": "CP052",
@@ -91987,6 +91987,1677 @@
           "reason": "4runs/provenance/nativehash/source/recipe/limits."
         }
       ]
+    },
+    {
+      "id": "CP050",
+      "previous": "CP049",
+      "lifecycle": "complete",
+      "recorded_utc": "2026-11-01T12:46:11.686047+00:00",
+      "context_commit": "a6b62cd93bb96a30a5e7fc55b697d90dbbce9703",
+      "question": "DoesseparateTCPservicehandlehost/guestEOFwithpendingbombwithoutstalesendsandreturn/clearpromotesurvivor? Doesexistingwaitboth99holdphaseunderdelayedactualB99dispatch?",
+      "scope": "KRE-013issue60. SourcequestionreuseCP034–044/049+VN/legacy beforecode/runtime; idempotentclose/livepeerfilter/immediatefinish/forfeitreturn/postroom107110; new34fixtureprofile. TwosequentialWineEOFcontrols andonedelayed99run, nativeframer/fields/securestate/IDclear/chief proof. No newbinarybodyRE/patch/worker/sourceDBmutation. Forfeitnotdeath, schedulerkeepsoriginalticketuntildeadline. Cnewidentity/BStart/accountreconnect/idleEOF/sendfailure/timeoutvariants/gatesremainopen.",
+      "owner": "Codex",
+      "reviewer": "Codex",
+      "artifacts": [
+        {
+          "name": "CA-r2-login-logout.exe",
+          "sha256": "660447c293ce92270cb9b5815331bca976e8f156366e1fe50b217b6c12e60ce3"
+        },
+        {
+          "name": "CA-r2-stage-social.exe",
+          "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+        },
+        {
+          "name": "CA-r2-stage-social.exe Bcopy",
+          "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+        },
+        {
+          "name": "modO.bin",
+          "sha256": "a08950c833d3acab8281049def7b3dc96b221f107eeda01da3a548e34b91dce5"
+        }
+      ],
+      "locators": [
+        "CP050host-pending/guest-pending/delayed-load; runtimecopye9bb47/static660447/modOa08950rawbase400000,RVA=VA-400000",
+        "CP034D603A0/DC6329/12400D0/12401A9/1240CF0; CP039/040/044175/180/107/110contractreused",
+        "E7F2A0actual99;197/196/E825D0153/clockE134B0;14EF300nativeframer/52A350securegetter",
+        "server/probe_service.py close_connection/cleanup_departed/peers/tick; RoundFenceoriginalticket held6s thenrejectround_closed"
+      ],
+      "findings": [
+        {
+          "summary": "Oneowneridempotentclose excludesclosedchannel frompeers/setup, immediatelyfinishactive round andinvalidateoriginalbombticket; forfeit/returnthen107110tosurvivor. Existingranknotreplaced.",
+          "source": "design",
+          "status": "design",
+          "method": "design",
+          "canonical": "docs/PROTOCOL.md#service-eof",
+          "limits": "Twoidentityfixture/12-5-3s/rank/IDslot/hostchoiceareemulatorpolicy;notoriginalserverauth/election/death. C/idle/setup/sendfailuresremain.",
+          "evidence": [
+            "E050",
+            "E051",
+            "E036"
+          ]
+        },
+        {
+          "summary": "HostEOFafteractualB118/159beforefuse: oldticketround_closeddrop/no158; B175full302/inner292,180full3,107ID1→0slot0,chief0→1 through110.",
+          "source": "kr_runtime",
+          "status": "confirmed",
+          "method": "runtime",
+          "canonical": "docs/PROTOCOL.md#service-eof",
+          "limits": "OneWinecopycase, no17/19/death; forfeitchosenpolicy. UIhelperlaterStartonepersonmodalnotnewmatch;notCjoin/accountresume.",
+          "evidence": [
+            "E077",
+            "E020",
+            "E002",
+            "E024"
+          ]
+        },
+        {
+          "summary": "GuestEOFmirrorbeforefuse: sameoldtimerdrop/no158; A175/180,107ID2→0slot1,chiefremains1. No dynamicpacketafterclose, no duplicate wirecleanup.",
+          "source": "kr_runtime",
+          "status": "confirmed",
+          "method": "runtime",
+          "canonical": "docs/PROTOCOL.md#service-eof",
+          "limits": "Survivorfinalcontrollerteardowncanrecordemptycleanupwithnopacket; notdoublefirstEOFcleanup. No native/syntheticdeathreport/gate/fullmatch.",
+          "evidence": [
+            "E102",
+            "E020",
+            "E038"
+          ]
+        },
+        {
+          "summary": "HoldactualB99dispatch10002.462492ms withAinit99: no197/196/153untilrelease; thennativephase/clockboth,input/pickup/bomb/result/returnround1. Start2clock2butonlyoneactualbomb/result/returnat185sbound.",
+          "source": "kr_runtime",
+          "status": "confirmed",
+          "method": "runtime",
+          "canonical": "docs/PROTOCOL.md#service-eof",
+          "limits": "Wrapperdelayatserverdispatch,notnetworkloss/nativeoriginalserverbarrier/alltimeout/latejoin/loadfail orK4gate. Do notinfermissinground2inputcausefromtutorialimage.",
+          "evidence": [
+            "E127",
+            "E021",
+            "E023",
+            "E020"
+          ]
+        },
+        {
+          "summary": "KRnativeframer/typed/blob/CRC andactualsecuregetterusedwithcachedconsumer/contracts;261packetcasesacross3runs,12native153,420snapshots. ReuseVNmembership/phase method, noVNwirelayoutport.",
+          "source": "kr_static",
+          "status": "confirmed",
+          "method": "emulation",
+          "canonical": "docs/evidence/service-eof/README.md",
+          "limits": "Allocation/receiverstorage/counters modeled; notfullworld/originalauthority/automaticsemanticconfirmation. EOF-onlyearlier78cases120snapshotsarchivednotaddedasindependentoracle.",
+          "evidence": [
+            "E031",
+            "E022",
+            "E024",
+            "E023",
+            "E002"
+          ]
+        }
+      ],
+      "verification": [
+        {
+          "check": "1700EOFrelationships+812loadrelationships/3sealedcontrollers;261nativepacket/12native153/420securegetters;12imagesreadin3composites",
+          "result": "pass",
+          "evidence": [
+            "E038",
+            "E021",
+            "E041"
+          ],
+          "limits": "Checksverifydeclaredrelations,notsemantic/gate. OneforfeitperEOFrunandoneplayedresultindelayrun,not3fullmatches. Finalteardownemptycleanupdistinguished."
+        },
+        {
+          "check": "33server tests incl5EOF/profilecases;7catalog+18checkpointtests/artifacts5/5;core/catalog/generatedlinks/history/localhash/diff checks",
+          "result": "pass",
+          "evidence": [
+            "E036",
+            "E005",
+            "E007",
+            "E004"
+          ],
+          "limits": "PolicyregressionnotKRoracle; independentlyreviewwaived/selfcheck; noauditdueCP050,nextCP052."
+        }
+      ],
+      "evidence": [
+        {
+          "id": "E001",
+          "kind": "repository",
+          "path": "docs/evidence/service-eof/README.md",
+          "sha256": "8c5366eddb37b9455305125910e990b6d1c8b8a77b881e0833daebfa3efef3fc",
+          "bytes": 7893
+        },
+        {
+          "id": "E002",
+          "kind": "local",
+          "path": "local/research/codex/service-eof-r1/actor-fields.json",
+          "sha256": "27bf606ee4c995577c3b6851326b4c89d5c7f0f659e1e97f73cb6ca5857bd090",
+          "bytes": 279611
+        },
+        {
+          "id": "E003",
+          "kind": "local",
+          "path": "local/research/codex/service-eof-r1/append_checkpoint.py",
+          "sha256": "85f337e8a8146f9d718820adea8f111335534f5edcc974dd004d11fcdc64dec9",
+          "bytes": 10178
+        },
+        {
+          "id": "E004",
+          "kind": "local",
+          "path": "local/research/codex/service-eof-r1/artifacts-check.txt",
+          "sha256": "649c6624aa6d317dfc1db5e16fea683cfbc9d9cf4dd3df11c0d70e57409054a0",
+          "bytes": 253
+        },
+        {
+          "id": "E005",
+          "kind": "local",
+          "path": "local/research/codex/service-eof-r1/catalog-tests-final.txt",
+          "sha256": "f37cc3db5e1b110347ca95c5f9db133ed71d5b7436efd0e511daf0404ef1dc6f",
+          "bytes": 105
+        },
+        {
+          "id": "E006",
+          "kind": "local",
+          "path": "local/research/codex/service-eof-r1/catalog-tests.txt",
+          "sha256": "f5793827d90192b6cdb7ce1db3014afeb04aef94ab694b519161e0677917ecae",
+          "bytes": 105
+        },
+        {
+          "id": "E007",
+          "kind": "local",
+          "path": "local/research/codex/service-eof-r1/checkpoint-tests-final.txt",
+          "sha256": "6981e104513e3d02f84aa9727bb5d46ede6e5137249d164b4f827dc48b741c04",
+          "bytes": 117
+        },
+        {
+          "id": "E008",
+          "kind": "local",
+          "path": "local/research/codex/service-eof-r1/checkpoint-tests.txt",
+          "sha256": "04a65a6b6dbd616cc4cf88e988a1f87ed6f8fbaea7de8d7c6ee2bc9749127902",
+          "bytes": 117
+        },
+        {
+          "id": "E009",
+          "kind": "local",
+          "path": "local/research/codex/service-eof-r1/delay99.py",
+          "sha256": "3cad90722ca447e5d1264f75e81fbb26d44a02c24ccd9a079cec76b4aaadcf32",
+          "bytes": 1922
+        },
+        {
+          "id": "E010",
+          "kind": "local",
+          "path": "local/research/codex/service-eof-r1/delayed-load-hashes.json",
+          "sha256": "47fc3c2da0d75e6009cba0ec8a1e8a4064cce305d227283064e460cb60b8cf57",
+          "bytes": 160499
+        },
+        {
+          "id": "E011",
+          "kind": "local",
+          "path": "local/research/codex/service-eof-r1/delayed-load-recipe.json",
+          "sha256": "3a7da55a3eaa7bd18ad4bd311243e9e785ce971f748efcf6697bbc12fd48067d",
+          "bytes": 994
+        },
+        {
+          "id": "E012",
+          "kind": "local",
+          "path": "local/research/codex/service-eof-r1/derive-eof.txt",
+          "sha256": "4476e4e25f9f97afb83a72180ca56643579db632ffb30cda5e30212d29af273b",
+          "bytes": 67
+        },
+        {
+          "id": "E013",
+          "kind": "local",
+          "path": "local/research/codex/service-eof-r1/derive-final.txt",
+          "sha256": "7882a8cd52df766171d478880bc599d9ab77509c12b022c9a1f087190c243a23",
+          "bytes": 100
+        },
+        {
+          "id": "E014",
+          "kind": "local",
+          "path": "local/research/codex/service-eof-r1/derive-host.txt",
+          "sha256": "94e16c216b4c2ca159815619dc141bcbd16a88cde6fc319853b2b57464b501a9",
+          "bytes": 33
+        },
+        {
+          "id": "E015",
+          "kind": "local",
+          "path": "local/research/codex/service-eof-r1/derive_roles.py",
+          "sha256": "3797c4964a3a42e4fd07b838559303614eb8e8919a759516e73d9f107e635f27",
+          "bytes": 806
+        },
+        {
+          "id": "E016",
+          "kind": "local",
+          "path": "local/research/codex/service-eof-r1/guest-pending-hashes.json",
+          "sha256": "bf82ba92864c74c840a83b227cb3ba3e51cc57c517b54839182fb17b29e14bc5",
+          "bytes": 118390
+        },
+        {
+          "id": "E017",
+          "kind": "local",
+          "path": "local/research/codex/service-eof-r1/guest-pending-recipe.json",
+          "sha256": "a52a28589e5a34705e956726ceaaecd316274181716c95cba18cfbd68005de12",
+          "bytes": 996
+        },
+        {
+          "id": "E018",
+          "kind": "local",
+          "path": "local/research/codex/service-eof-r1/host-pending-hashes.json",
+          "sha256": "97ef43238ad19ef32146ce331da77bfb24b67116172a3d24652a0e914d828379",
+          "bytes": 124998
+        },
+        {
+          "id": "E019",
+          "kind": "local",
+          "path": "local/research/codex/service-eof-r1/host-pending-recipe.json",
+          "sha256": "3006e96388635207dd643c0b758232ce16ba9f7ef8b5c75179b77ed8422a76d4",
+          "bytes": 993
+        },
+        {
+          "id": "E020",
+          "kind": "local",
+          "path": "local/research/codex/service-eof-r1/lifecycle-summary.json",
+          "sha256": "6b9f6a09de0cce429dbb4369e616d07ec8098b7f275f13a23b47369799118d08",
+          "bytes": 18565
+        },
+        {
+          "id": "E021",
+          "kind": "local",
+          "path": "local/research/codex/service-eof-r1/load-verification.json",
+          "sha256": "e8c4d565759e7ee63c2ea5aac2fb8bb84a23cafa4026a1d537af3ed19ae6481d",
+          "bytes": 3986
+        },
+        {
+          "id": "E022",
+          "kind": "local",
+          "path": "local/research/codex/service-eof-r1/loadbarrier-reuse.json",
+          "sha256": "a682089c0066291c4dc9bf5d2ca528f374a0c491ea5eabd0fcb140e47a428c4b",
+          "bytes": 1875
+        },
+        {
+          "id": "E023",
+          "kind": "local",
+          "path": "local/research/codex/service-eof-r1/native-153.json",
+          "sha256": "5ff68e5bc986def99319d999132f6f7520bf517a7adebc4d97c7a89c010cbe8e",
+          "bytes": 13797
+        },
+        {
+          "id": "E024",
+          "kind": "local",
+          "path": "local/research/codex/service-eof-r1/native-packets.json",
+          "sha256": "c4d58c3c22f026e4a487062f162f4e478a51eda303c32eff407c5b139937ba91",
+          "bytes": 104305
+        },
+        {
+          "id": "E025",
+          "kind": "local",
+          "path": "local/research/codex/service-eof-r1/native_153.py",
+          "sha256": "682e318389067c50d5cc19279f3fecf4a40718abb344b24579c5dfdb98e8b841",
+          "bytes": 3493
+        },
+        {
+          "id": "E026",
+          "kind": "local",
+          "path": "local/research/codex/service-eof-r1/native_packets.py",
+          "sha256": "064fde798b1dfa1edc0327e22d95400a7c4589203fb581c5f87e15861db61ffa",
+          "bytes": 4829
+        },
+        {
+          "id": "E027",
+          "kind": "local",
+          "path": "local/research/codex/service-eof-r1/parse_fields.py",
+          "sha256": "f74fa89ee5c253abbb8609b7f8b6114e5a177090d9b33fe4ee4f1b0d9c38ff41",
+          "bytes": 3912
+        },
+        {
+          "id": "E028",
+          "kind": "local",
+          "path": "local/research/codex/service-eof-r1/parse_lifecycle.py",
+          "sha256": "81bd15395d1647016bc51aea473e326f8dbea8d4b0c08709278b21ce11052d5f",
+          "bytes": 2597
+        },
+        {
+          "id": "E029",
+          "kind": "local",
+          "path": "local/research/codex/service-eof-r1/profile.json",
+          "sha256": "2caec81dd58da3d3d80266ba9baf3e065299a2a7a1f9d777b0f31b6c5b32d00f",
+          "bytes": 9049
+        },
+        {
+          "id": "E030",
+          "kind": "local",
+          "path": "local/research/codex/service-eof-r1/replay-run.py",
+          "sha256": "d7dfca164b446b6b47e0b03e2d5756651c9cf506696fe64fcf0db0051d039159",
+          "bytes": 3002
+        },
+        {
+          "id": "E031",
+          "kind": "local",
+          "path": "local/research/codex/service-eof-r1/reuse-question.json",
+          "sha256": "3b5b9492d00cc0609c6aee73982d5992186f799d97588aabe8962b8fe58b7ba6",
+          "bytes": 4131
+        },
+        {
+          "id": "E032",
+          "kind": "local",
+          "path": "local/research/codex/service-eof-r1/run_probe.py",
+          "sha256": "175952c6febc81a23245f76fff9dbb61234627922d75b100c395cc5e15e78449",
+          "bytes": 1067
+        },
+        {
+          "id": "E033",
+          "kind": "local",
+          "path": "local/research/codex/service-eof-r1/seal_run.py",
+          "sha256": "6a2564f76d3f5458270f73846d4261e7044c39fa3602b109b90bd47b65106376",
+          "bytes": 625
+        },
+        {
+          "id": "E034",
+          "kind": "local",
+          "path": "local/research/codex/service-eof-r1/service-source-sha.json",
+          "sha256": "2cd79486f4a4469d604300b13fd994306b44fd75b39cb7298a213dddc161d108",
+          "bytes": 1148
+        },
+        {
+          "id": "E035",
+          "kind": "local",
+          "path": "local/research/codex/service-eof-r1/service.gdb",
+          "sha256": "57002f7a894f9ad164829ceb3bc17dc96e552edd5417400a0712c3d9832a2103",
+          "bytes": 24693
+        },
+        {
+          "id": "E036",
+          "kind": "local",
+          "path": "local/research/codex/service-eof-r1/unit-tests-final.txt",
+          "sha256": "35294fd933df89558d88a7017b4471e3403ef0fd767633f4d9b20ccd83a38f5b",
+          "bytes": 132
+        },
+        {
+          "id": "E037",
+          "kind": "local",
+          "path": "local/research/codex/service-eof-r1/unit-tests.txt",
+          "sha256": "aa53a6c0350b483f6b19c722e4f8d997e8b81f8aae70786020cf18aa6a6b4dab",
+          "bytes": 132
+        },
+        {
+          "id": "E038",
+          "kind": "local",
+          "path": "local/research/codex/service-eof-r1/verification.json",
+          "sha256": "bbbadae3461e80357308921cddc2f2dd7623e336da7f3af0fbd38e3d7fedef22",
+          "bytes": 463
+        },
+        {
+          "id": "E039",
+          "kind": "local",
+          "path": "local/research/codex/service-eof-r1/verify.py",
+          "sha256": "9a949eb4225302fd8487530cd0ff420e8dff1f5caa79f1e3b5ac053781cd4768",
+          "bytes": 5080
+        },
+        {
+          "id": "E040",
+          "kind": "local",
+          "path": "local/research/codex/service-eof-r1/verify_load.py",
+          "sha256": "0cf39f7ee04a84a0a1504884de1a40022887f500eed510690c0d7c9d0a66d46d",
+          "bytes": 2870
+        },
+        {
+          "id": "E041",
+          "kind": "local",
+          "path": "local/research/codex/service-eof-r1/visual-index.json",
+          "sha256": "f22a1cf7c27b77e9b4d8c0dd084ec6448573cd78f0db361d4fc9bc3fe88f60cb",
+          "bytes": 2329
+        },
+        {
+          "id": "E042",
+          "kind": "local",
+          "path": "local/research/codex/service-eof-r1/visuals.py",
+          "sha256": "7a5d75bf95e1a395743ef4ed222c6ac43de9f7f71ca1b965b713a182ff5749fc",
+          "bytes": 917
+        },
+        {
+          "id": "E043",
+          "kind": "local",
+          "path": "local/research/codex/service-eof-r1/cp050-snapshot/README.md",
+          "sha256": "798df48388025c0de843598eebe88ab16bee74905c7f399d738a8903db6f0a26",
+          "bytes": 3870
+        },
+        {
+          "id": "E044",
+          "kind": "local",
+          "path": "local/research/codex/service-eof-r1/cp050-snapshot/docs/COVERAGE.md",
+          "sha256": "e05ae2cc81a99254cd4db931457df906f99a92c14c4e1a0aee06e3fa9417b152",
+          "bytes": 61725
+        },
+        {
+          "id": "E045",
+          "kind": "local",
+          "path": "local/research/codex/service-eof-r1/cp050-snapshot/docs/PLAN.md",
+          "sha256": "65bd02c2aa390d3dac69c3dc164ba819297ffe42483bda66165a4a9dd0e5d8f5",
+          "bytes": 28464
+        },
+        {
+          "id": "E046",
+          "kind": "local",
+          "path": "local/research/codex/service-eof-r1/cp050-snapshot/docs/PROTOCOL.md",
+          "sha256": "288eeefe455f3b73df06cefeedfb21452b46608056366b6bfb5f48ac9bab1dd0",
+          "bytes": 181090
+        },
+        {
+          "id": "E047",
+          "kind": "local",
+          "path": "local/research/codex/service-eof-r1/cp050-snapshot/docs/RESEARCH.md",
+          "sha256": "b78854cade9af746ec1b7344a98203acd7e8ed905e8a79c729031f13d5f3016a",
+          "bytes": 28671
+        },
+        {
+          "id": "E048",
+          "kind": "local",
+          "path": "local/research/codex/service-eof-r1/cp050-snapshot/docs/features.json",
+          "sha256": "2a6cbdf7eb085948410191f4e3de58084767eafacd215e899d7965fadc90d89d",
+          "bytes": 64578
+        },
+        {
+          "id": "E049",
+          "kind": "local",
+          "path": "local/research/codex/service-eof-r1/cp050-snapshot/server/README.md",
+          "sha256": "af9ec7640efdb2323e6da38776a05a4a8ec6a2f20dc44de80ad8cae00f8ef75f",
+          "bytes": 6916
+        },
+        {
+          "id": "E050",
+          "kind": "local",
+          "path": "local/research/codex/service-eof-r1/cp050-snapshot/server/probe_service.py",
+          "sha256": "ef56704a56a0bf127bd879e1ccaea5f645be37bd0a60f7844e734c8a8b1f32a9",
+          "bytes": 27710
+        },
+        {
+          "id": "E051",
+          "kind": "local",
+          "path": "local/research/codex/service-eof-r1/cp050-snapshot/server/test_probe_eof.py",
+          "sha256": "6a4189decbf05db001e465f9c6fca31b1e4445f29ba922e3901712ec0d7f1e8d",
+          "bytes": 5079
+        },
+        {
+          "id": "E052",
+          "kind": "local",
+          "path": "local/research/codex/service-eof-r1/cp050-snapshot/tools/export_probe_profile.py",
+          "sha256": "80757890623a7d939726465a439099166c31ad746ede7a0fc39b2f27b8e28f48",
+          "bytes": 3800
+        },
+        {
+          "id": "E053",
+          "kind": "local",
+          "path": "local/research/codex/service-eof-r1/service-source/item_claims.py",
+          "sha256": "7990ae9195e9f8bba56b04101f352506194dbd0252793183993ce101a8674a2e",
+          "bytes": 3340
+        },
+        {
+          "id": "E054",
+          "kind": "local",
+          "path": "local/research/codex/service-eof-r1/service-source/probe_codec.py",
+          "sha256": "23ba54e6940953a52ff737e7e06b2761a8eb22eab444310b49b1d96efa12411d",
+          "bytes": 3227
+        },
+        {
+          "id": "E055",
+          "kind": "local",
+          "path": "local/research/codex/service-eof-r1/service-source/probe_room.py",
+          "sha256": "91292494d492c7851bd5432649adf528e1b07290316dc56ba1478f8a209a08bc",
+          "bytes": 1468
+        },
+        {
+          "id": "E056",
+          "kind": "local",
+          "path": "local/research/codex/service-eof-r1/service-source/probe_service.py",
+          "sha256": "ef56704a56a0bf127bd879e1ccaea5f645be37bd0a60f7844e734c8a8b1f32a9",
+          "bytes": 27710
+        },
+        {
+          "id": "E057",
+          "kind": "local",
+          "path": "local/research/codex/service-eof-r1/service-source/round_fence.py",
+          "sha256": "aabcc7f1d623573fc217de8df05403f83d82425bbe5d6e78872b3096a2d46708",
+          "bytes": 2339
+        },
+        {
+          "id": "E058",
+          "kind": "local",
+          "path": "local/research/codex/service-eof-r1/service-source/udp_round_keys.py",
+          "sha256": "db58ae1f25bcbeb52c2d25c7db6afbf1021ddd3af29702e756f5f41886530a0d",
+          "bytes": 1187
+        },
+        {
+          "id": "E059",
+          "kind": "local",
+          "path": "local/research/codex/service-eof-r1/baseline/server/__init__.py",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "id": "E060",
+          "kind": "local",
+          "path": "local/research/codex/service-eof-r1/baseline/server/item_claims.py",
+          "sha256": "7990ae9195e9f8bba56b04101f352506194dbd0252793183993ce101a8674a2e",
+          "bytes": 3340
+        },
+        {
+          "id": "E061",
+          "kind": "local",
+          "path": "local/research/codex/service-eof-r1/baseline/server/probe_codec.py",
+          "sha256": "23ba54e6940953a52ff737e7e06b2761a8eb22eab444310b49b1d96efa12411d",
+          "bytes": 3227
+        },
+        {
+          "id": "E062",
+          "kind": "local",
+          "path": "local/research/codex/service-eof-r1/baseline/server/probe_room.py",
+          "sha256": "91292494d492c7851bd5432649adf528e1b07290316dc56ba1478f8a209a08bc",
+          "bytes": 1468
+        },
+        {
+          "id": "E063",
+          "kind": "local",
+          "path": "local/research/codex/service-eof-r1/baseline/server/probe_service.py",
+          "sha256": "2fb2cca3949e9da746379bb6bd7ffed3778869bcb876e5a3d50975fc8cd65ac2",
+          "bytes": 24206
+        },
+        {
+          "id": "E064",
+          "kind": "local",
+          "path": "local/research/codex/service-eof-r1/baseline/server/round_fence.py",
+          "sha256": "aabcc7f1d623573fc217de8df05403f83d82425bbe5d6e78872b3096a2d46708",
+          "bytes": 2339
+        },
+        {
+          "id": "E065",
+          "kind": "local",
+          "path": "local/research/codex/service-eof-r1/baseline/server/test_item_claims.py",
+          "sha256": "63d68da46f91bcc9d4d3517bfd4ebc0d8f0a08c283a83715ac5b14a6efb71eea",
+          "bytes": 2832
+        },
+        {
+          "id": "E066",
+          "kind": "local",
+          "path": "local/research/codex/service-eof-r1/baseline/server/test_probe_codec.py",
+          "sha256": "ddb2cd6303aaf99af43d7add3735fec1b7c41461deb38f482d4a1b113a21367c",
+          "bytes": 1366
+        },
+        {
+          "id": "E067",
+          "kind": "local",
+          "path": "local/research/codex/service-eof-r1/baseline/server/test_probe_room.py",
+          "sha256": "4ace7f5828661d891fa2006731f0aceed081a527c09be335bbee47e9a721e783",
+          "bytes": 1605
+        },
+        {
+          "id": "E068",
+          "kind": "local",
+          "path": "local/research/codex/service-eof-r1/baseline/server/test_probe_service.py",
+          "sha256": "06fe9717f941f311087c0877e818357de9949f614c0cc1ee61e118b9a42b51c9",
+          "bytes": 4652
+        },
+        {
+          "id": "E069",
+          "kind": "local",
+          "path": "local/research/codex/service-eof-r1/baseline/server/test_round_fence.py",
+          "sha256": "6923d90f30636dfe05b09d45f5bbaceaf3ef32223d48eba0213a6c3cc40b037a",
+          "bytes": 2455
+        },
+        {
+          "id": "E070",
+          "kind": "local",
+          "path": "local/research/codex/service-eof-r1/baseline/server/test_udp_round_keys.py",
+          "sha256": "cfb36ee95d48c79b1800081a73b54498242f366eb08a2e3be850ff4a3503ce96",
+          "bytes": 1224
+        },
+        {
+          "id": "E071",
+          "kind": "local",
+          "path": "local/research/codex/service-eof-r1/baseline/server/udp_round_keys.py",
+          "sha256": "db58ae1f25bcbeb52c2d25c7db6afbf1021ddd3af29702e756f5f41886530a0d",
+          "bytes": 1187
+        },
+        {
+          "id": "E072",
+          "kind": "local",
+          "path": "local/research/codex/service-eof-r1/baseline/run.py",
+          "sha256": "e1a718eed78f2c1feebdff3bd59d08cf553fc4251b5c0db12a07f5266d550b29",
+          "bytes": 45
+        },
+        {
+          "id": "E073",
+          "kind": "local",
+          "path": "local/research/codex/service-eof-r1/eof-reports/actor-fields.json",
+          "sha256": "08a5d037c28e202f37c58657376bb04c95c8c936eaf66b190913b31e75695991",
+          "bytes": 78278
+        },
+        {
+          "id": "E074",
+          "kind": "local",
+          "path": "local/research/codex/service-eof-r1/eof-reports/lifecycle-summary.json",
+          "sha256": "ffa13d5cdb8e9a578d855af480fc8203a84db938ae74f801828692bd0c94a869",
+          "bytes": 12394
+        },
+        {
+          "id": "E075",
+          "kind": "local",
+          "path": "local/research/codex/service-eof-r1/eof-reports/native-packets.json",
+          "sha256": "84f1f657e209a6258c0438a384894846a3e15349fe37f329caf9f723ab3ccad7",
+          "bytes": 30681
+        },
+        {
+          "id": "E076",
+          "kind": "local",
+          "path": "local/research/codex/service-eof-r1/eof-reports/verification.json",
+          "sha256": "ae945b97c9e72276430f9efbdc89fedda75ff6945a0044bdba5b7b8fd96ad076",
+          "bytes": 462
+        },
+        {
+          "id": "E077",
+          "kind": "local",
+          "path": "local/research/codex/service-eof-r1/host-pending/run.json",
+          "sha256": "67c3d63b43fc91d42d0d9b58d82db35a02ca4f19780718e50d1dd1c251402c2c",
+          "bytes": 112431
+        },
+        {
+          "id": "E078",
+          "kind": "local",
+          "path": "local/research/codex/service-eof-r1/host-pending/client.log",
+          "sha256": "54e30ca4b00a923809ee9bf56601bb47e3b11cc98adc07626214f7c78217cb82",
+          "bytes": 44985
+        },
+        {
+          "id": "E079",
+          "kind": "local",
+          "path": "local/research/codex/service-eof-r1/host-pending/client-B.log",
+          "sha256": "ca40cfd8f5eae8730c3003f99eae768e4741688dd6ba8a5416e3370d78cfc495",
+          "bytes": 55401
+        },
+        {
+          "id": "E080",
+          "kind": "local",
+          "path": "local/research/codex/service-eof-r1/host-pending/service-state.json",
+          "sha256": "0af19a5662b726b669f6bfe6003e987058e8b471dda67b3284e77b971146334e",
+          "bytes": 63580
+        },
+        {
+          "id": "E081",
+          "kind": "local",
+          "path": "local/research/codex/service-eof-r1/host-pending/service.log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "id": "E082",
+          "kind": "local",
+          "path": "local/research/codex/service-eof-r1/host-pending/debug-commands.txt",
+          "sha256": "57002f7a894f9ad164829ceb3bc17dc96e552edd5417400a0712c3d9832a2103",
+          "bytes": 24693
+        },
+        {
+          "id": "E083",
+          "kind": "local",
+          "path": "local/research/codex/service-eof-r1/host-pending/debug-commands-B.txt",
+          "sha256": "57002f7a894f9ad164829ceb3bc17dc96e552edd5417400a0712c3d9832a2103",
+          "bytes": 24693
+        },
+        {
+          "id": "E084",
+          "kind": "local",
+          "path": "local/research/codex/service-eof-r1/host-pending/A-dynamic159-r1-1-91.bin",
+          "sha256": "d24f72659094bae23c995528167f9dd03469b3bb67823a3a2f10602aa9f88b47",
+          "bytes": 77
+        },
+        {
+          "id": "E085",
+          "kind": "local",
+          "path": "local/research/codex/service-eof-r1/host-pending/A-floor582-76.bin",
+          "sha256": "dade68ac6b12c8c7ae59bf27d007ad4f1b32b6369d9a0fcd29170b3063e42ace",
+          "bytes": 64
+        },
+        {
+          "id": "E086",
+          "kind": "local",
+          "path": "local/research/codex/service-eof-r1/host-pending/A-go197-82.bin",
+          "sha256": "64b95010ecb0e40bc0367f41f6710d2357fb2538ce827e205825284601237ef8",
+          "bytes": 52
+        },
+        {
+          "id": "E087",
+          "kind": "local",
+          "path": "local/research/codex/service-eof-r1/host-pending/A-peer153-88.bin",
+          "sha256": "b806d7cc1725529b54ad1ebeb98b66d9301360d55d5f2999dd025315e080e143",
+          "bytes": 135
+        },
+        {
+          "id": "E088",
+          "kind": "local",
+          "path": "local/research/codex/service-eof-r1/host-pending/A-play196-85.bin",
+          "sha256": "d04bf155b4847f9d41b0edfdf00a32526302273271c0f1cadbb8ce22b89eb51d",
+          "bytes": 45
+        },
+        {
+          "id": "E089",
+          "kind": "local",
+          "path": "local/research/codex/service-eof-r1/host-pending/A-ready110-73.bin",
+          "sha256": "8fafd9cf652b458ee09b3751a0201f9ab1409920398e0e842e43b915c8840e25",
+          "bytes": 44
+        },
+        {
+          "id": "E090",
+          "kind": "local",
+          "path": "local/research/codex/service-eof-r1/host-pending/A-start121-r1-79.bin",
+          "sha256": "f8a824335b4079160a4aaf0e0b425d1fabfa78c248d131503440d0414e1f26cf",
+          "bytes": 167
+        },
+        {
+          "id": "E091",
+          "kind": "local",
+          "path": "local/research/codex/service-eof-r1/host-pending/B-dynamic159-r1-1-91.bin",
+          "sha256": "d24f72659094bae23c995528167f9dd03469b3bb67823a3a2f10602aa9f88b47",
+          "bytes": 77
+        },
+        {
+          "id": "E092",
+          "kind": "local",
+          "path": "local/research/codex/service-eof-r1/host-pending/B-floor582-76.bin",
+          "sha256": "dade68ac6b12c8c7ae59bf27d007ad4f1b32b6369d9a0fcd29170b3063e42ace",
+          "bytes": 64
+        },
+        {
+          "id": "E093",
+          "kind": "local",
+          "path": "local/research/codex/service-eof-r1/host-pending/B-forfeit175-94.bin",
+          "sha256": "270bf9f55d7cff6bc9d2527ec1e3612e1c9362bad5e70ff41842042cb4ee3e19",
+          "bytes": 340
+        },
+        {
+          "id": "E094",
+          "kind": "local",
+          "path": "local/research/codex/service-eof-r1/host-pending/B-go197-82.bin",
+          "sha256": "64b95010ecb0e40bc0367f41f6710d2357fb2538ce827e205825284601237ef8",
+          "bytes": 52
+        },
+        {
+          "id": "E095",
+          "kind": "local",
+          "path": "local/research/codex/service-eof-r1/host-pending/B-peer153-88.bin",
+          "sha256": "4b73a931da4f93b0fe7cfa3bc6cef75f5cd4d6ed7be33a22f977781cd6758694",
+          "bytes": 135
+        },
+        {
+          "id": "E096",
+          "kind": "local",
+          "path": "local/research/codex/service-eof-r1/host-pending/B-play196-85.bin",
+          "sha256": "d04bf155b4847f9d41b0edfdf00a32526302273271c0f1cadbb8ce22b89eb51d",
+          "bytes": 45
+        },
+        {
+          "id": "E097",
+          "kind": "local",
+          "path": "local/research/codex/service-eof-r1/host-pending/B-ready110-73.bin",
+          "sha256": "8fafd9cf652b458ee09b3751a0201f9ab1409920398e0e842e43b915c8840e25",
+          "bytes": 44
+        },
+        {
+          "id": "E098",
+          "kind": "local",
+          "path": "local/research/codex/service-eof-r1/host-pending/B-remove107-100.bin",
+          "sha256": "db0251bb872f9c8558a99be2f12a57f6e82b4ba11a283c86a2157a0802940d28",
+          "bytes": 44
+        },
+        {
+          "id": "E099",
+          "kind": "local",
+          "path": "local/research/codex/service-eof-r1/host-pending/B-return180-r1-97.bin",
+          "sha256": "ab37525fb5e3cdf3792552145a440c0bf6cb24b6af168d2ca53bcb9ff967fcfe",
+          "bytes": 41
+        },
+        {
+          "id": "E100",
+          "kind": "local",
+          "path": "local/research/codex/service-eof-r1/host-pending/B-start121-r1-79.bin",
+          "sha256": "f8a824335b4079160a4aaf0e0b425d1fabfa78c248d131503440d0414e1f26cf",
+          "bytes": 167
+        },
+        {
+          "id": "E101",
+          "kind": "local",
+          "path": "local/research/codex/service-eof-r1/host-pending/B-survivor110-103.bin",
+          "sha256": "d45a4b7df4380937283443e6f1b0984e0cd42ec4b8c6c2298abfa11526522b61",
+          "bytes": 44
+        },
+        {
+          "id": "E102",
+          "kind": "local",
+          "path": "local/research/codex/service-eof-r1/guest-pending/run.json",
+          "sha256": "51eb44e9a10ef200fba63b04bc5f8f704b747128db5d7466e4d0250774610d21",
+          "bytes": 110843
+        },
+        {
+          "id": "E103",
+          "kind": "local",
+          "path": "local/research/codex/service-eof-r1/guest-pending/client.log",
+          "sha256": "b6320a1ecc682f905921c2b6e4aed46aa52b40392f6c1f0d8c96fc9d23aa457d",
+          "bytes": 51251
+        },
+        {
+          "id": "E104",
+          "kind": "local",
+          "path": "local/research/codex/service-eof-r1/guest-pending/client-B.log",
+          "sha256": "096ad38d38ab1ac911139a9fc45378c1e043bc3d21840ee3cbd07610ba454fe5",
+          "bytes": 46086
+        },
+        {
+          "id": "E105",
+          "kind": "local",
+          "path": "local/research/codex/service-eof-r1/guest-pending/service-state.json",
+          "sha256": "31655a310022341dedcf471fbebf9b8b0e14dc10c7c88288d89e8729241dc050",
+          "bytes": 63561
+        },
+        {
+          "id": "E106",
+          "kind": "local",
+          "path": "local/research/codex/service-eof-r1/guest-pending/service.log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "id": "E107",
+          "kind": "local",
+          "path": "local/research/codex/service-eof-r1/guest-pending/debug-commands.txt",
+          "sha256": "57002f7a894f9ad164829ceb3bc17dc96e552edd5417400a0712c3d9832a2103",
+          "bytes": 24693
+        },
+        {
+          "id": "E108",
+          "kind": "local",
+          "path": "local/research/codex/service-eof-r1/guest-pending/debug-commands-B.txt",
+          "sha256": "57002f7a894f9ad164829ceb3bc17dc96e552edd5417400a0712c3d9832a2103",
+          "bytes": 24693
+        },
+        {
+          "id": "E109",
+          "kind": "local",
+          "path": "local/research/codex/service-eof-r1/guest-pending/A-dynamic159-r1-1-91.bin",
+          "sha256": "d24f72659094bae23c995528167f9dd03469b3bb67823a3a2f10602aa9f88b47",
+          "bytes": 77
+        },
+        {
+          "id": "E110",
+          "kind": "local",
+          "path": "local/research/codex/service-eof-r1/guest-pending/A-floor582-76.bin",
+          "sha256": "dade68ac6b12c8c7ae59bf27d007ad4f1b32b6369d9a0fcd29170b3063e42ace",
+          "bytes": 64
+        },
+        {
+          "id": "E111",
+          "kind": "local",
+          "path": "local/research/codex/service-eof-r1/guest-pending/A-forfeit175-94.bin",
+          "sha256": "16696400a141e1cb1c834eb2a30ead89f1327018d13dbe22fd624f5f342c89e0",
+          "bytes": 340
+        },
+        {
+          "id": "E112",
+          "kind": "local",
+          "path": "local/research/codex/service-eof-r1/guest-pending/A-go197-82.bin",
+          "sha256": "64b95010ecb0e40bc0367f41f6710d2357fb2538ce827e205825284601237ef8",
+          "bytes": 52
+        },
+        {
+          "id": "E113",
+          "kind": "local",
+          "path": "local/research/codex/service-eof-r1/guest-pending/A-peer153-88.bin",
+          "sha256": "d4182a9ac5f57eb02388fad3bc8dd4b7fdd85794d02718626bdc24db85facbf6",
+          "bytes": 135
+        },
+        {
+          "id": "E114",
+          "kind": "local",
+          "path": "local/research/codex/service-eof-r1/guest-pending/A-play196-85.bin",
+          "sha256": "d04bf155b4847f9d41b0edfdf00a32526302273271c0f1cadbb8ce22b89eb51d",
+          "bytes": 45
+        },
+        {
+          "id": "E115",
+          "kind": "local",
+          "path": "local/research/codex/service-eof-r1/guest-pending/A-ready110-73.bin",
+          "sha256": "8fafd9cf652b458ee09b3751a0201f9ab1409920398e0e842e43b915c8840e25",
+          "bytes": 44
+        },
+        {
+          "id": "E116",
+          "kind": "local",
+          "path": "local/research/codex/service-eof-r1/guest-pending/A-remove107-100.bin",
+          "sha256": "74f06315b0d14bf368b6b0a0af9d23053a942733e19cbd9a24d56e6f5bf140ab",
+          "bytes": 44
+        },
+        {
+          "id": "E117",
+          "kind": "local",
+          "path": "local/research/codex/service-eof-r1/guest-pending/A-return180-r1-97.bin",
+          "sha256": "ab37525fb5e3cdf3792552145a440c0bf6cb24b6af168d2ca53bcb9ff967fcfe",
+          "bytes": 41
+        },
+        {
+          "id": "E118",
+          "kind": "local",
+          "path": "local/research/codex/service-eof-r1/guest-pending/A-start121-r1-79.bin",
+          "sha256": "f8a824335b4079160a4aaf0e0b425d1fabfa78c248d131503440d0414e1f26cf",
+          "bytes": 167
+        },
+        {
+          "id": "E119",
+          "kind": "local",
+          "path": "local/research/codex/service-eof-r1/guest-pending/A-survivor110-103.bin",
+          "sha256": "f8c269431038bc985afb79961f89b6e2509d0829ed8046e397aa5acfb962c596",
+          "bytes": 44
+        },
+        {
+          "id": "E120",
+          "kind": "local",
+          "path": "local/research/codex/service-eof-r1/guest-pending/B-dynamic159-r1-1-91.bin",
+          "sha256": "d24f72659094bae23c995528167f9dd03469b3bb67823a3a2f10602aa9f88b47",
+          "bytes": 77
+        },
+        {
+          "id": "E121",
+          "kind": "local",
+          "path": "local/research/codex/service-eof-r1/guest-pending/B-floor582-76.bin",
+          "sha256": "dade68ac6b12c8c7ae59bf27d007ad4f1b32b6369d9a0fcd29170b3063e42ace",
+          "bytes": 64
+        },
+        {
+          "id": "E122",
+          "kind": "local",
+          "path": "local/research/codex/service-eof-r1/guest-pending/B-go197-82.bin",
+          "sha256": "64b95010ecb0e40bc0367f41f6710d2357fb2538ce827e205825284601237ef8",
+          "bytes": 52
+        },
+        {
+          "id": "E123",
+          "kind": "local",
+          "path": "local/research/codex/service-eof-r1/guest-pending/B-peer153-88.bin",
+          "sha256": "46dc6e8909c8952d1122475cd84c82234d8dfad98f600480565972a6c4e23af7",
+          "bytes": 135
+        },
+        {
+          "id": "E124",
+          "kind": "local",
+          "path": "local/research/codex/service-eof-r1/guest-pending/B-play196-85.bin",
+          "sha256": "d04bf155b4847f9d41b0edfdf00a32526302273271c0f1cadbb8ce22b89eb51d",
+          "bytes": 45
+        },
+        {
+          "id": "E125",
+          "kind": "local",
+          "path": "local/research/codex/service-eof-r1/guest-pending/B-ready110-73.bin",
+          "sha256": "8fafd9cf652b458ee09b3751a0201f9ab1409920398e0e842e43b915c8840e25",
+          "bytes": 44
+        },
+        {
+          "id": "E126",
+          "kind": "local",
+          "path": "local/research/codex/service-eof-r1/guest-pending/B-start121-r1-79.bin",
+          "sha256": "f8a824335b4079160a4aaf0e0b425d1fabfa78c248d131503440d0414e1f26cf",
+          "bytes": 167
+        },
+        {
+          "id": "E127",
+          "kind": "local",
+          "path": "local/research/codex/service-eof-r1/delayed-load/run.json",
+          "sha256": "569222e29909c17df8029a0c50b0bb35a145d188f3fe1f4fb7aee9a44a9c4e26",
+          "bytes": 225604
+        },
+        {
+          "id": "E128",
+          "kind": "local",
+          "path": "local/research/codex/service-eof-r1/delayed-load/client.log",
+          "sha256": "eae3683d6129083cd1c205d41272507cc4511bd958aba94840d09d0a9a9cd330",
+          "bytes": 177621
+        },
+        {
+          "id": "E129",
+          "kind": "local",
+          "path": "local/research/codex/service-eof-r1/delayed-load/client-B.log",
+          "sha256": "ccc027377a94ce4dfc153ed0ff4697bb867b424d51d05ac77bad1e3dff91649f",
+          "bytes": 133224
+        },
+        {
+          "id": "E130",
+          "kind": "local",
+          "path": "local/research/codex/service-eof-r1/delayed-load/service-state.json",
+          "sha256": "9121b980ec5cb04648aba61de5a0f3fa019c8c508dd0849e608c3beb80e2638d",
+          "bytes": 121709
+        },
+        {
+          "id": "E131",
+          "kind": "local",
+          "path": "local/research/codex/service-eof-r1/delayed-load/service.log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "id": "E132",
+          "kind": "local",
+          "path": "local/research/codex/service-eof-r1/delayed-load/debug-commands.txt",
+          "sha256": "57002f7a894f9ad164829ceb3bc17dc96e552edd5417400a0712c3d9832a2103",
+          "bytes": 24693
+        },
+        {
+          "id": "E133",
+          "kind": "local",
+          "path": "local/research/codex/service-eof-r1/delayed-load/debug-commands-B.txt",
+          "sha256": "57002f7a894f9ad164829ceb3bc17dc96e552edd5417400a0712c3d9832a2103",
+          "bytes": 24693
+        },
+        {
+          "id": "E134",
+          "kind": "local",
+          "path": "local/research/codex/service-eof-r1/delayed-load/A-blast158-r1-1-97.bin",
+          "sha256": "74e2de4a80eccc95ca075b6b7b315a7883176c212d7f752f47cb45a80c0122e3",
+          "bytes": 51
+        },
+        {
+          "id": "E135",
+          "kind": "local",
+          "path": "local/research/codex/service-eof-r1/delayed-load/A-dynamic159-r1-1-94.bin",
+          "sha256": "71a4476e7583f1680ac0e2cf7adb90b4660b95cc002aa25d8a7a1782afd1b969",
+          "bytes": 77
+        },
+        {
+          "id": "E136",
+          "kind": "local",
+          "path": "local/research/codex/service-eof-r1/delayed-load/A-floor582-115.bin",
+          "sha256": "d7cfe29149c84aaa1e95b2cd935d5313540651f27c4c6eb4aa030f96981eac36",
+          "bytes": 64
+        },
+        {
+          "id": "E137",
+          "kind": "local",
+          "path": "local/research/codex/service-eof-r1/delayed-load/A-floor582-76.bin",
+          "sha256": "dade68ac6b12c8c7ae59bf27d007ad4f1b32b6369d9a0fcd29170b3063e42ace",
+          "bytes": 64
+        },
+        {
+          "id": "E138",
+          "kind": "local",
+          "path": "local/research/codex/service-eof-r1/delayed-load/A-go197-121.bin",
+          "sha256": "3380c0c80d8faad72ca646a853ed917edd2f30fd0527e83e58ce731c40aa7b3f",
+          "bytes": 52
+        },
+        {
+          "id": "E139",
+          "kind": "local",
+          "path": "local/research/codex/service-eof-r1/delayed-load/A-go197-82.bin",
+          "sha256": "64b95010ecb0e40bc0367f41f6710d2357fb2538ce827e205825284601237ef8",
+          "bytes": 52
+        },
+        {
+          "id": "E140",
+          "kind": "local",
+          "path": "local/research/codex/service-eof-r1/delayed-load/A-guest110-r1-109.bin",
+          "sha256": "f300f7803c78018bc7bb0a99ff04bd200a6843d607915cb48c84b78b557b6a61",
+          "bytes": 44
+        },
+        {
+          "id": "E141",
+          "kind": "local",
+          "path": "local/research/codex/service-eof-r1/delayed-load/A-host110-r1-106.bin",
+          "sha256": "bbbf2539317016a757afed97a98b9103e3e64fa0b31dc96c0a3ff853c815818e",
+          "bytes": 44
+        },
+        {
+          "id": "E142",
+          "kind": "local",
+          "path": "local/research/codex/service-eof-r1/delayed-load/A-item165-r1-17-91.bin",
+          "sha256": "2ad2e7cbd637f553ff114fada41951a1129ca3dc52b14a540a60ccea59088bf0",
+          "bytes": 50
+        },
+        {
+          "id": "E143",
+          "kind": "local",
+          "path": "local/research/codex/service-eof-r1/delayed-load/A-peer153-127.bin",
+          "sha256": "84fd4642272a3ca86b023b21eb05905d7efe9a5e5042585c7ee615684d5d9c0f",
+          "bytes": 135
+        },
+        {
+          "id": "E144",
+          "kind": "local",
+          "path": "local/research/codex/service-eof-r1/delayed-load/A-peer153-88.bin",
+          "sha256": "5d7a1ecd7f9ea75355c18d821c46fc8e9f8fd7ed9364bb92f5248846390c0e8b",
+          "bytes": 135
+        },
+        {
+          "id": "E145",
+          "kind": "local",
+          "path": "local/research/codex/service-eof-r1/delayed-load/A-play196-124.bin",
+          "sha256": "e0f364fc0becf0a2a91327c1a33e299af37f1cecc00a26d40443c5bda58b1af4",
+          "bytes": 45
+        },
+        {
+          "id": "E146",
+          "kind": "local",
+          "path": "local/research/codex/service-eof-r1/delayed-load/A-play196-85.bin",
+          "sha256": "d04bf155b4847f9d41b0edfdf00a32526302273271c0f1cadbb8ce22b89eb51d",
+          "bytes": 45
+        },
+        {
+          "id": "E147",
+          "kind": "local",
+          "path": "local/research/codex/service-eof-r1/delayed-load/A-rank175-r1-100.bin",
+          "sha256": "5b3751f4c322454005652035ed69253cac647ed0fbc24540bd0599fa2bae6c31",
+          "bytes": 340
+        },
+        {
+          "id": "E148",
+          "kind": "local",
+          "path": "local/research/codex/service-eof-r1/delayed-load/A-ready110-112.bin",
+          "sha256": "f31c5f5630019345dc62b5027f13c5267af82643ac2dbac979f0a454192b910e",
+          "bytes": 44
+        },
+        {
+          "id": "E149",
+          "kind": "local",
+          "path": "local/research/codex/service-eof-r1/delayed-load/A-ready110-73.bin",
+          "sha256": "8fafd9cf652b458ee09b3751a0201f9ab1409920398e0e842e43b915c8840e25",
+          "bytes": 44
+        },
+        {
+          "id": "E150",
+          "kind": "local",
+          "path": "local/research/codex/service-eof-r1/delayed-load/A-return180-r1-103.bin",
+          "sha256": "996ed34682d009d8977c2571e23c636f824049fb8d962426a9c2d903ed080200",
+          "bytes": 41
+        },
+        {
+          "id": "E151",
+          "kind": "local",
+          "path": "local/research/codex/service-eof-r1/delayed-load/A-start121-r1-79.bin",
+          "sha256": "f8a824335b4079160a4aaf0e0b425d1fabfa78c248d131503440d0414e1f26cf",
+          "bytes": 167
+        },
+        {
+          "id": "E152",
+          "kind": "local",
+          "path": "local/research/codex/service-eof-r1/delayed-load/A-start121-r2-118.bin",
+          "sha256": "c8bc9053b53a7ea610e29ae2928cdadeec601dd12bcf9ce25f30ac71cdad6346",
+          "bytes": 167
+        },
+        {
+          "id": "E153",
+          "kind": "local",
+          "path": "local/research/codex/service-eof-r1/delayed-load/B-blast158-r1-1-97.bin",
+          "sha256": "74e2de4a80eccc95ca075b6b7b315a7883176c212d7f752f47cb45a80c0122e3",
+          "bytes": 51
+        },
+        {
+          "id": "E154",
+          "kind": "local",
+          "path": "local/research/codex/service-eof-r1/delayed-load/B-dynamic159-r1-1-94.bin",
+          "sha256": "71a4476e7583f1680ac0e2cf7adb90b4660b95cc002aa25d8a7a1782afd1b969",
+          "bytes": 77
+        },
+        {
+          "id": "E155",
+          "kind": "local",
+          "path": "local/research/codex/service-eof-r1/delayed-load/B-event170-17-r1-100.bin",
+          "sha256": "ac7a8b7ad3f149b76a9101129323736a91ee9e830bd4b967e0237b0dd20127e2",
+          "bytes": 48
+        },
+        {
+          "id": "E156",
+          "kind": "local",
+          "path": "local/research/codex/service-eof-r1/delayed-load/B-event170-19-r1-103.bin",
+          "sha256": "604d2a85f8ada43437ca78d17be63ce0ea585670a88696e0e4932c4b76001908",
+          "bytes": 59
+        },
+        {
+          "id": "E157",
+          "kind": "local",
+          "path": "local/research/codex/service-eof-r1/delayed-load/B-floor582-121.bin",
+          "sha256": "b108cbc93ed5896e87a383e680b955df612b139b892fe2dc6fa7c89dc76d1eaf",
+          "bytes": 64
+        },
+        {
+          "id": "E158",
+          "kind": "local",
+          "path": "local/research/codex/service-eof-r1/delayed-load/B-floor582-76.bin",
+          "sha256": "dade68ac6b12c8c7ae59bf27d007ad4f1b32b6369d9a0fcd29170b3063e42ace",
+          "bytes": 64
+        },
+        {
+          "id": "E159",
+          "kind": "local",
+          "path": "local/research/codex/service-eof-r1/delayed-load/B-go197-127.bin",
+          "sha256": "4479c8d2bd5a138f8dd57f39fc717eabaade8d4273b394c5d4da4ac42a32ce22",
+          "bytes": 52
+        },
+        {
+          "id": "E160",
+          "kind": "local",
+          "path": "local/research/codex/service-eof-r1/delayed-load/B-go197-82.bin",
+          "sha256": "64b95010ecb0e40bc0367f41f6710d2357fb2538ce827e205825284601237ef8",
+          "bytes": 52
+        },
+        {
+          "id": "E161",
+          "kind": "local",
+          "path": "local/research/codex/service-eof-r1/delayed-load/B-guest110-r1-115.bin",
+          "sha256": "b9a562c345517aa67d96c51dfe93daedc56af471a1e386fd57cb165b0cee0bf1",
+          "bytes": 44
+        },
+        {
+          "id": "E162",
+          "kind": "local",
+          "path": "local/research/codex/service-eof-r1/delayed-load/B-host110-r1-112.bin",
+          "sha256": "57460635dc0e9976e22e6b40d430710aab16e6a33c152be10c6a80b4564c3110",
+          "bytes": 44
+        },
+        {
+          "id": "E163",
+          "kind": "local",
+          "path": "local/research/codex/service-eof-r1/delayed-load/B-item165-r1-17-91.bin",
+          "sha256": "2ad2e7cbd637f553ff114fada41951a1129ca3dc52b14a540a60ccea59088bf0",
+          "bytes": 50
+        },
+        {
+          "id": "E164",
+          "kind": "local",
+          "path": "local/research/codex/service-eof-r1/delayed-load/B-peer153-133.bin",
+          "sha256": "568c17e6d943749b24ac2d14443b15662f6aa33e8e04fa7cfe4646a0178ba6c1",
+          "bytes": 135
+        },
+        {
+          "id": "E165",
+          "kind": "local",
+          "path": "local/research/codex/service-eof-r1/delayed-load/B-peer153-88.bin",
+          "sha256": "a4b015752de822d6c8356b8941f06f9606f021fd702bc3c5e9343d6e14ce5139",
+          "bytes": 135
+        },
+        {
+          "id": "E166",
+          "kind": "local",
+          "path": "local/research/codex/service-eof-r1/delayed-load/B-play196-130.bin",
+          "sha256": "13f2d542669df1a08be243989a4e70967313aab6c60971f9d235817f9240b651",
+          "bytes": 45
+        },
+        {
+          "id": "E167",
+          "kind": "local",
+          "path": "local/research/codex/service-eof-r1/delayed-load/B-play196-85.bin",
+          "sha256": "d04bf155b4847f9d41b0edfdf00a32526302273271c0f1cadbb8ce22b89eb51d",
+          "bytes": 45
+        },
+        {
+          "id": "E168",
+          "kind": "local",
+          "path": "local/research/codex/service-eof-r1/delayed-load/B-rank175-r1-106.bin",
+          "sha256": "af64696343b71bbddfcca524adcb34b3c8dd3b736f65508ac464a977c1810384",
+          "bytes": 340
+        },
+        {
+          "id": "E169",
+          "kind": "local",
+          "path": "local/research/codex/service-eof-r1/delayed-load/B-ready110-118.bin",
+          "sha256": "6526e2f461589ee6ea8406ec75602e5c82bbf08353ee8d7d8b7f54952d1dac89",
+          "bytes": 44
+        },
+        {
+          "id": "E170",
+          "kind": "local",
+          "path": "local/research/codex/service-eof-r1/delayed-load/B-ready110-73.bin",
+          "sha256": "8fafd9cf652b458ee09b3751a0201f9ab1409920398e0e842e43b915c8840e25",
+          "bytes": 44
+        },
+        {
+          "id": "E171",
+          "kind": "local",
+          "path": "local/research/codex/service-eof-r1/delayed-load/B-return180-r1-109.bin",
+          "sha256": "b53daa3dda63e60a45282c346e337b4d3d97dd07a2ef4b33a42a147350601e54",
+          "bytes": 41
+        },
+        {
+          "id": "E172",
+          "kind": "local",
+          "path": "local/research/codex/service-eof-r1/delayed-load/B-start121-r1-79.bin",
+          "sha256": "f8a824335b4079160a4aaf0e0b425d1fabfa78c248d131503440d0414e1f26cf",
+          "bytes": 167
+        },
+        {
+          "id": "E173",
+          "kind": "local",
+          "path": "local/research/codex/service-eof-r1/delayed-load/B-start121-r2-124.bin",
+          "sha256": "f83868d66c8127ba318fca619743e810d900bfd1edcaab62656afbf7531b2dab",
+          "bytes": 167
+        },
+        {
+          "id": "E174",
+          "kind": "local",
+          "path": "local/research/codex/service-eof-r1/delayed-load/held-B99.bin",
+          "sha256": "31ada4d8e396d2c6fdf68d9b9985195053a2e4c131afbce1bfd7471e2966a924",
+          "bytes": 61
+        },
+        {
+          "id": "E175",
+          "kind": "local",
+          "path": "local/research/codex/service-eof-r1/request-frames/delayed-load/A-F122-99.bin",
+          "sha256": "c0b67c0da16637ffec32a29f43eadcd40c6f7478b3b6489b10d9c10e6d9f2bd4",
+          "bytes": 61
+        },
+        {
+          "id": "E176",
+          "kind": "local",
+          "path": "local/research/codex/service-eof-r1/request-frames/delayed-load/A-F39-99.bin",
+          "sha256": "e1b57b46590ca10543842bc1e4e3a4bc93285ffc5b0d16fd4fdf935e8b3e191b",
+          "bytes": 61
+        },
+        {
+          "id": "E177",
+          "kind": "local",
+          "path": "local/research/codex/service-eof-r1/request-frames/delayed-load/A-F55-124.bin",
+          "sha256": "7fc761e0eed44abf0eabf4bb50c0c5f4da039ce4991c7c2f9616ca364d8d17bd",
+          "bytes": 57
+        },
+        {
+          "id": "E178",
+          "kind": "local",
+          "path": "local/research/codex/service-eof-r1/request-frames/delayed-load/A-F58-118.bin",
+          "sha256": "e600a3058a4b86f76a050caf64b2d7c9e16bd2585eb6a7776aaad13637fce902",
+          "bytes": 60
+        },
+        {
+          "id": "E179",
+          "kind": "local",
+          "path": "local/research/codex/service-eof-r1/request-frames/delayed-load/A-F71-127.bin",
+          "sha256": "d24b08d5f000a3e19cdf3840afca07f910f85616ebaec909a27bb0b2b88ef5ec",
+          "bytes": 70
+        },
+        {
+          "id": "E180",
+          "kind": "local",
+          "path": "local/research/codex/service-eof-r1/request-frames/delayed-load/A-F84-127.bin",
+          "sha256": "878b005a9a42bf24f4b6c21f080cb23323559adfce6368795ba78e926aee21a7",
+          "bytes": 67
+        },
+        {
+          "id": "E181",
+          "kind": "local",
+          "path": "local/research/codex/service-eof-r1/request-frames/delayed-load/B-F105-99.bin",
+          "sha256": "bd21bfb296ad64697d62b2d9330682b5f410626239cab27722cc5b8a076ffbfa",
+          "bytes": 61
+        },
+        {
+          "id": "E182",
+          "kind": "local",
+          "path": "local/research/codex/service-eof-r1/request-frames/delayed-load/B-F13-82.bin",
+          "sha256": "1746130345929e482c425aa463e6bf34d6da555c86c6474cf235330227f74f47",
+          "bytes": 49
+        },
+        {
+          "id": "E183",
+          "kind": "local",
+          "path": "local/research/codex/service-eof-r1/request-frames/delayed-load/B-F24-95.bin",
+          "sha256": "730e662309a1a5abb7556e5f500168850ae220a9b7f288c1c62d18904206398c",
+          "bytes": 98
+        },
+        {
+          "id": "E184",
+          "kind": "local",
+          "path": "local/research/codex/service-eof-r1/request-frames/delayed-load/B-F28-99.bin",
+          "sha256": "31ada4d8e396d2c6fdf68d9b9985195053a2e4c131afbce1bfd7471e2966a924",
+          "bytes": 61
+        },
+        {
+          "id": "E185",
+          "kind": "local",
+          "path": "local/research/codex/service-eof-r1/request-frames/delayed-load/B-F68-127.bin",
+          "sha256": "ed22c71515f85239205934fb1f0f5fdeb78b0a1594d86393f45033333e4419ae",
+          "bytes": 52
+        },
+        {
+          "id": "E186",
+          "kind": "local",
+          "path": "local/research/codex/service-eof-r1/request-frames/delayed-load/B-F70-127.bin",
+          "sha256": "69e0f7046490f4d069b75e25d36cb0b4d6dd57c62709816baf1da6fd23b0b73b",
+          "bytes": 52
+        },
+        {
+          "id": "E187",
+          "kind": "local",
+          "path": "local/research/codex/service-eof-r1/request-frames/delayed-load/B-F73-127.bin",
+          "sha256": "3ae57fae0eb7f6673de7466943d2c0ed53a8318868a860572c3093091d402360",
+          "bytes": 52
+        },
+        {
+          "id": "E188",
+          "kind": "local",
+          "path": "local/research/codex/service-eof-r1/request-frames/delayed-load/B-F76-127.bin",
+          "sha256": "41df36a9a866bebd7e92865c6e585daf1bb0894055794357c9a8b2c61b0462a7",
+          "bytes": 52
+        },
+        {
+          "id": "E189",
+          "kind": "local",
+          "path": "local/research/codex/service-eof-r1/request-frames/delayed-load/B-F78-127.bin",
+          "sha256": "9d35b7cf172bc280a67741787abbae65762db795cd675cebc5008f483725ef6a",
+          "bytes": 52
+        },
+        {
+          "id": "E190",
+          "kind": "local",
+          "path": "local/research/codex/service-eof-r1/request-frames/delayed-load/B-F81-127.bin",
+          "sha256": "32b79ce54908058b264e2b63fabc09c88e6fe35236f987e456834b98fdd72240",
+          "bytes": 52
+        },
+        {
+          "id": "E191",
+          "kind": "local",
+          "path": "local/research/codex/service-eof-r1/request-frames/delayed-load/B-F99-95.bin",
+          "sha256": "8bdce31797c26333fd2906ead197911e2bfe1c599385a20736ca1e4698cfea59",
+          "bytes": 375
+        },
+        {
+          "id": "E192",
+          "kind": "local",
+          "path": "local/research/codex/service-eof-r1/request-frames/guest-pending/A-F41-99.bin",
+          "sha256": "e1fbbc79222b790975184b4989b1fe4356a542bf3910faa5049e5c710f27fc0f",
+          "bytes": 61
+        },
+        {
+          "id": "E193",
+          "kind": "local",
+          "path": "local/research/codex/service-eof-r1/request-frames/guest-pending/B-F13-82.bin",
+          "sha256": "1746130345929e482c425aa463e6bf34d6da555c86c6474cf235330227f74f47",
+          "bytes": 49
+        },
+        {
+          "id": "E194",
+          "kind": "local",
+          "path": "local/research/codex/service-eof-r1/request-frames/guest-pending/B-F24-95.bin",
+          "sha256": "730e662309a1a5abb7556e5f500168850ae220a9b7f288c1c62d18904206398c",
+          "bytes": 98
+        },
+        {
+          "id": "E195",
+          "kind": "local",
+          "path": "local/research/codex/service-eof-r1/request-frames/guest-pending/B-F28-99.bin",
+          "sha256": "848fe38e252efab17973c2274862b9ad10601de5570fdc94091fce99d3379a81",
+          "bytes": 61
+        },
+        {
+          "id": "E196",
+          "kind": "local",
+          "path": "local/research/codex/service-eof-r1/request-frames/guest-pending/B-F41-118.bin",
+          "sha256": "9261c6c7a42211946e0f61c39457f8089afe79c1b91c0d791d9a31be460059ab",
+          "bytes": 60
+        },
+        {
+          "id": "E197",
+          "kind": "local",
+          "path": "local/research/codex/service-eof-r1/request-frames/host-pending/A-F39-99.bin",
+          "sha256": "c35b325d978d533b9e228ff0d27486c32f7292a8cf58abed1b7fd7b441e26252",
+          "bytes": 61
+        },
+        {
+          "id": "E198",
+          "kind": "local",
+          "path": "local/research/codex/service-eof-r1/request-frames/host-pending/B-F13-82.bin",
+          "sha256": "1746130345929e482c425aa463e6bf34d6da555c86c6474cf235330227f74f47",
+          "bytes": 49
+        },
+        {
+          "id": "E199",
+          "kind": "local",
+          "path": "local/research/codex/service-eof-r1/request-frames/host-pending/B-F24-95.bin",
+          "sha256": "730e662309a1a5abb7556e5f500168850ae220a9b7f288c1c62d18904206398c",
+          "bytes": 98
+        },
+        {
+          "id": "E200",
+          "kind": "local",
+          "path": "local/research/codex/service-eof-r1/request-frames/host-pending/B-F28-99.bin",
+          "sha256": "c992f5038bf7a1681e07343aa9e86ea116de80a021ee97034cbce02ab4ad49da",
+          "bytes": 61
+        },
+        {
+          "id": "E201",
+          "kind": "local",
+          "path": "local/research/codex/service-eof-r1/request-frames/host-pending/B-F40-118.bin",
+          "sha256": "b3c5903af3cceafeec5911b264fd24d175b097511c557b40fd3eb8c460e45181",
+          "bytes": 60
+        },
+        {
+          "id": "E202",
+          "kind": "local",
+          "path": "local/research/codex/wine_probe_service_eof_host.py",
+          "sha256": "83acabb79904db90c29425011f6754556b22d746e0e06ba646e26ca09204c1fa",
+          "bytes": 38934
+        },
+        {
+          "id": "E203",
+          "kind": "local",
+          "path": "local/research/codex/wine_probe_service_eof_guest.py",
+          "sha256": "2d5b9056ee5671c3a4a6173a1816e0e5411c665e1f9fb931eb265770f44e1ad0",
+          "bytes": 38934
+        },
+        {
+          "id": "E204",
+          "kind": "local",
+          "path": "local/research/codex/wine_probe_service_delayed99.py",
+          "sha256": "963e3c21394404906c5d4d34e4996db15adfc7aa65573a54425e074af6d4e2e8",
+          "bytes": 39314
+        },
+        {
+          "id": "E205",
+          "kind": "local",
+          "path": "local/research/codex/wcp-guard-r1/game/CA-r2-stage-social.exe",
+          "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef",
+          "bytes": 31874560
+        },
+        {
+          "id": "E206",
+          "kind": "local",
+          "path": "local/research/codex/duo-round-r1/game-B/CA-r2-stage-social.exe",
+          "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef",
+          "bytes": 31874560
+        }
+      ],
+      "delta": {
+        "added": [
+          "StandaloneEOFcallerfilter/ticketfinish/forfeit/cleanup/promote andnativehost+guestWineproof.",
+          "Delayedactual99dispatchcontrolconfirmswaitbothgatebeforephase;34fixtureprofilewithknownrank/promotehashes;5meaningfulregressions."
+        ],
+        "corrected": [
+          "Service-only-finish/noEOFcleanup nowCP049historical, notcurrent; CP039/040/044harnessknowledge reused ratherthanrediscovered.",
+          "Allcleanuprecords-count1wascheckerassumption: finalteardownemptycleanuphasno sends, distinctfromonewirecleanup; nativeIDclear/lastchief/fullcursor supportactualscope."
+        ],
+        "superseded": [
+          "PLANEOFintegration/basicdelayed99measurement nowboundedanswered; nextCnewidentity/roster/BStart isactualserviceblocker.",
+          "OneStart2/clock2inthe185sloadrunisnottworesults/fullmatch; snapshotUIcannotassigninputcause."
+        ]
+      },
+      "blockers": [
+        "Servicecap8/acceptorderA-B/start-originApreventCnewidentity/BStartintegration; CP040/044contract/harnessalreadyavailable fornextminimalport.",
+        "Accountreconnect/idleEOF/setup/sendfailure/broadcast races/timeout/loadfail/latejoin/fullvalidator/auth/cache/codec/vanilla/whole reset remain.",
+        "NoK5/K6a/LAN/Internet acceptance;forfeitpolicynotdeath/arbitrationoriginalserver. NativeproofonlymeasuredWinecopy/profile."
+      ],
+      "next_steps": [
+        {
+          "id": "NEXT-DUO-ROUND",
+          "task": "KRE-005b",
+          "state": "active",
+          "action": "FollowPLAN#current-order: newCidentity/slotfree,keepBchief/sequence/key,ticket, actualJoinReady→BStart→bomb/statepeer/result/return usingCP040/044;do notrediscoverEOF107/110 orsamehold99.",
+          "owner": "Codex",
+          "reviewer": "Codex"
+        },
+        {
+          "id": "NEXT-ITEM-PICKUP",
+          "task": "KRE-005b",
+          "state": "active",
+          "action": "CanonicalRESEARCH#gap-floor-pickup/PLAN: CP049old/currentkanswered,remainingt/distance/actorstate/forgedcurrentk/transportonlywhenneeded.",
+          "owner": "Codex",
+          "reviewer": "Codex"
+        },
+        {
+          "id": "NEXT-FULL-LOGIN-FIELDS",
+          "task": "KRE-005b",
+          "state": "active",
+          "action": "CanonicalPLANauth/cache/codec/vanilla/accountreconnectstillopen;newCidentitydoesnotproveAresume.",
+          "owner": "Codex",
+          "reviewer": "Codex"
+        }
+      ],
+      "review": {
+        "status": "waived",
+        "as_of_utc": "2026-11-01T12:46:11.686047+00:00",
+        "reference": "docs/evidence/checkpoints/review-waiver.json",
+        "scope": "Codex solo RE/code/runtime/selfcheck, not independent approval.",
+        "authorization": {
+          "by": "project_owner",
+          "reference": "docs/evidence/checkpoints/review-waiver.json",
+          "reason": "Owner explicitly requested solo without Claude review."
+        }
+      },
+      "docs_sync": [
+        {
+          "path": "README.md",
+          "state": "updated",
+          "reason": "CurrentEOFlifecycle/delayed99scope/CP049merge/no gateclaims."
+        },
+        {
+          "path": "docs/PLAN.md",
+          "state": "updated",
+          "reason": "SoleprioritytoCnewidentity/roster/BStart;knownEOF/loadcontrolnolongerunknown."
+        },
+        {
+          "path": "docs/PROTOCOL.md",
+          "state": "updated",
+          "reason": "CanonicalserviceEOFdesign/nativeproof/loadlimits,sourcecontractsreused."
+        },
+        {
+          "path": "docs/RESEARCH.md",
+          "state": "updated",
+          "reason": "Specificmembership/EOF/loading/servicegaps/testsupdatedtoskipalreadyansweredwork."
+        },
+        {
+          "path": "docs/features.json",
+          "state": "updated",
+          "reason": "AffectedR003/R004/X003/S001proof/deliveryrefs;stableIDsanddimensionsretained."
+        },
+        {
+          "path": "docs/COVERAGE.md",
+          "state": "updated",
+          "reason": "Reproduciblygeneratedwithcanonicalquestions/deps/evidence."
+        },
+        {
+          "path": "server/README.md",
+          "state": "updated",
+          "reason": "Newlifecycle/profile34/limitsandtestrecipe."
+        },
+        {
+          "path": "docs/evidence/service-eof/README.md",
+          "state": "updated",
+          "reason": "Threecontrollers/nativeIDclear/chief/forfeit/timer/loadandhash/recipe/limits."
+        }
+      ]
     }
   ],
   "audits": [
@@ -92102,6 +93773,12 @@
       "state": "open",
       "canonical": "docs/PLAN.md",
       "reference": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/58"
+    },
+    {
+      "id": "KRE-013",
+      "state": "open",
+      "canonical": "docs/PLAN.md",
+      "reference": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/60"
     }
   ]
 }
