@@ -64,6 +64,13 @@ Service chỉ bind loopback. Khi chạy Wine phải dùng namespace/lease/files-
 loopback binding riêng nó không cô lập outbound client. Cần đủ các port của fixture/harness, không
 chỉ3808 cho chuỗi runtime. Profile chỉ cho hai identity A/B theo accept-order (4connection/vai),
 synthetic auth/map/roster/rank và stable slots. Không là public server hoặc login/auth hoàn chỉnh.
-Service chưa quản membership tổng quát/EOF forfeit/promotion, full124validator/tick/key/state,
+Service chưa quản membership tổng quát/EOF forfeit/promotion, full124validator/tick/actorstate,
 relay/NAT/backpressure hay gate K5/K6a. Kết thúc ở EOF hiện chỉ invalidate room, chưa ca recovery service.
 Runtime r2 có hai chu kỳ; r3 chỉ một result, không dùng để tuyên bố tính tái lập mọi input.
+
+
+CP049: `probe_service.py` so u32 k của124 với khóa153 hiện hành trước claim, khác thì không phát165
+và không chiếm item. Đây là policy server ở caller, không đổi ItemClaims thành toàn validator.
+[Contract/giới hạn](../docs/PROTOCOL.md#pickup-round-key), [hai run native effect và recipe](../docs/evidence/stale124/README.md).
+Tests kiểm old→current→duplicate, origin/catalog vẫn áp dụng và key+256 cùng low8 vẫn bị policyu32 loại.
+Không xác thực sender hoặc kiểm t/distance/actorstate; body chèn tại dispatcher chưa proof transport replay.

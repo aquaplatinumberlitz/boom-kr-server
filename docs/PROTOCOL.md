@@ -1,6 +1,6 @@
 # KR 00967 — contract tương thích client gốc
 
-Revision kr-legacy-contract-r1; cập nhật01/11/2026 JST (CP048).
+Revision kr-legacy-contract-r1; cập nhật01/11/2026 JST (CP049).
 **Contract có bằng chứng từng phần; chưa nghiệm thu full codec K2**.
 Lộ trình và thứ tự task chỉ giữ ở [REWRITE_PLAN — KRE](PLAN.md).
 Đây là contract của repo server KR. ADR0009 của bản viết lại là nguồn lịch sử để so sánh;
@@ -2001,7 +2001,7 @@ một run có hai165 paired-secure hoặc suy nguyên nhân thiếu request. Rec
 
 Trong actual124 của r2, `k`=12345 ở vòng1,12346 ở vòng2 tương ứng u32 thứ hai153 đã cấp;
 đây là quan sát trên hai vòng/keys đó, không chứng minh toàn semantics hoặc validator server gốc.
-Service hiện parse `t/k` nhưng ItemClaims chưa kiểm chúng. Replay124 trùng catalog vẫn là khoảng
+Tại snapshot CP048, service parse `t/k` nhưng chưa kiểm chúng; CP049 bổ sung [guard k](#pickup-round-key). Replay124 trùng catalog vẫn là khoảng
 trống có thể đo; không tự nói allocator UDP đã giải C2S stale124. Kiểm codec mới so **typed prefix của
 97 actual/native-checked frame**, ngoài354roundtrip cũ; native framer/blob/CRC có proof riêng.
 
@@ -2011,4 +2011,28 @@ trống có thể đo; không tự nói allocator UDP đã giải C2S stale124. 
 nhận body cũ `k12345` và phát positive165; current124/k12346 kế tiếp bị từ chối do claim đã tiêu.
 Control chỉ current124 được chấp nhận. Đây là `design/confirmed` về code service, **không** runtime
 client KR hoặc validator server gốc; [recipe/hash](evidence/probe-service/README.md) giữ phân biệt.
-Chưa thêm guard hoặc gọi toàn stale124 đã giải. Phép đo tiếp ở [RESEARCH](RESEARCH.md#gap-floor-pickup).
+Tại CP048 chưa thêm guard; CP049 bổ sung bên dưới, không gọi toàn stale124 đã giải. Phép đo tiếp ở [RESEARCH](RESEARCH.md#gap-floor-pickup).
+
+
+<a id="pickup-round-key"></a>
+### Guard124 theo khóa đã cấp — CP049
+
+[Schema124/165 và consumer](#item-pickup) giữ nguyên. [Recipe/raw/hash/controls](evidence/stale124/README.md)
+tái dùng CP030/042/047/048 và nguồn VN, không phục hồi lại receiver hoặc đổi layout/opcode theo VN.
+
+`probe_service.receive_channel` kiểm **u32 k (field7)** bằng khóa đang cấp ở u32 thứ hai153 **trước
+ItemClaims.claim/consume**. Khác khóa: ghi `round_key_mismatch`, không phát165/không chiếm claim.
+Khớp khóa: tiếp origin/context/catalog/first-winner/one-consume hiện có. So sánh cảu32 là lựa chọn
+`design`, không sao chép quy tắc low8 của [movement](#udp-generation) hoặc gọi k là auth.
+
+**kr_runtime/confirmed hẹp trên Wine copy:** control service CP048 nhận lại body actual124 vòng1
+(k12345) qua dispatcher ở vòng2/key12346 rồi phát165 trước input mới; native secure Roller5→6
+cả A/B, không actual124 vòng2. Service có guard loại body cũ; sau input **actual TCP124/k12346**
+vẫn phát165, callback12/12/errors0 và Roller5→6 cả hai. Clock vòng2 về5; hai run đều có hai
+bom/17/19/peerstate1 trước175/180/phòng. Điều này chứng minh consequence của dispatch/165 và guard
+hẹp; body chèn bypass C2S transport, **chưa kiểm TCP admission của replay**. Không giả nó là request
+mới do native writer phát. Hai proxy setup dừng trước phép đo được giữ riêng, nguyên nhân unknown.
+
+Không còn coi “service chưa kiểm k” là trạng thái hiện hành. `t`, distance/actorstate, request giả đã
+đổi k hiện tại, mode/variant, key lifetime/roster/otherUDP và fullvalidator vẫn mở. Equality không xác
+thực sender; fuse/drop/rank/auth/profile còn fixture. Không gate K5/K6a/LAN/Internet mới đóng.

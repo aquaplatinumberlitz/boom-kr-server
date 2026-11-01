@@ -35,7 +35,7 @@ Review độc lập: [waived theo chủ dự án](evidence/checkpoints/review-wa
 | [KR-F003 · UDP cũ và khóa vòng](#kr-f003) | present | both | partial | checked | observed | unknown | unknown | unknown | partial / via_pr | partial | K6: open |
 | [KR-F004 · Bom, serial, confirm và timer](#kr-f004) | present | both | partial | checked | observed | unknown | unknown | unknown | partial / via_pr | partial | K5: open |
 | [KR-F005 · Vùng nổ, block và chain](#kr-f005) | present | both | partial | checked | observed | unknown | unknown | unknown | unknown / unknown | unknown | K5: open |
-| [KR-F006 · Item nền, nhặt và tranh index](#kr-f006) | present | both | partial | checked | observed | unknown | unknown | unknown | partial / via_pr | partial | K5: open |
+| [KR-F006 · Item nền, nhặt và tranh index](#kr-f006) | present | both | partial | checked | observed | unknown | unknown | unknown | partial / branch_pending | partial | K5: open |
 | [KR-F007 · Stat tích lũy và MaxPower](#kr-f007) | present | both | partial | checked | observed | unknown | unknown | unknown | partial / via_pr | partial | K5: open |
 | [KR-F008 · Kim dùng chủ động](#kr-f008) | present | both | partial | checked | observed | unknown | unknown | unknown | unknown / unknown | unknown | K5: open |
 | [KR-F009 · Trap, death, cứu và chạm địch](#kr-f009) | present | both | partial | checked | observed | unknown | unknown | unknown | partial / via_pr | partial | K5: open |
@@ -48,7 +48,7 @@ Review độc lập: [waived theo chủ dự án](evidence/checkpoints/review-wa
 | [KR-X001 · Kết quả và trở về phòng](#kr-x001) | present | both | partial | checked | observed | unknown | unknown | unknown | partial / via_pr | partial | K5: open |
 | [KR-X002 · Reset vòng và stale fences](#kr-x002) | present | both | partial | checked | observed | unknown | unknown | unknown | partial / via_pr | partial | K6: open |
 | [KR-X003 · EOF, forfeit và peer thay thế](#kr-x003) | present | both | partial | checked | observed | unknown | unknown | unknown | unknown / unknown | unknown | K6: open |
-| [KR-S001 · Service fixture độc lập](#kr-s001) | unknown | both | unknown | unknown | observed | unknown | unknown | unknown | partial / via_pr | partial | K6: open |
+| [KR-S001 · Service fixture độc lập](#kr-s001) | unknown | both | unknown | unknown | observed | unknown | unknown | unknown | partial / branch_pending | partial | K6: open |
 | [KR-S002 · Hardening và triển khai nhiều máy](#kr-s002) | unknown | static | unknown | unknown | unknown | unknown | unknown | unknown | unknown / unknown | unknown | K7: open |
 
 Số lượng theo trạng thái khai báo (không phải tỷ lệ hoàn thành):
@@ -627,11 +627,11 @@ Dependency: [KR-F001](#kr-f001).
 
 [Contract và giới hạn](PROTOCOL.md#item-pickup) · [Câu hỏi gốc](RESEARCH.md#gap-floor-pickup) · [Thứ tự ở PLAN](PLAN.md#current-order).
 
-Khoảng trống (trích bảng RESEARCH): Actual124 r2 có k12345→12346; bench dispatch service nhận old124/k12345 ở key12346 rồi từ chối current124 vì claim đã tiêu. Chưa replay Wine; distance/state/t còn thiếu.
+Khoảng trống (trích bảng RESEARCH): CP049 guard k loại body cũ trước claim; actual124 hiện tại/165/Roller hai view/hai vòng đã kiểm. Chưa C2S TCP replay admission, t/distance/actorstate hoặc fullvalidator.
 
-Phép kiểm tối thiểu (trích cùng nguồn): Thiết kế guard k theo key đã cấp với nguồn design; control old/current124 và replay Wine trước input ở vòng2, so165/stat. Không gọi k là auth hoặc guard giải mọi stale request.
+Phép kiểm tối thiểu (trích cùng nguồn): Tái dùng CP049, không đo lại old/current k cơ bản. Khi cần hardening, kiểm cùng-k/actorstate/distance theo report hiện hành; replay qua transport cần setup riêng, không mở lại receiver.
 
-Bằng chứng/build/hash/recipe: [item-pickup](evidence/item-pickup/README.md), [probe-service](evidence/probe-service/README.md).
+Bằng chứng/build/hash/recipe: [item-pickup](evidence/item-pickup/README.md), [probe-service](evidence/probe-service/README.md), [stale124](evidence/stale124/README.md).
 
 | Chiều chứng minh | Khai báo | Nguồn/phạm vi áp dụng |
 |---|---|---|
@@ -639,12 +639,12 @@ Bằng chứng/build/hash/recipe: [item-pickup](evidence/item-pickup/README.md),
 | vn_reference | both | [nguồn1](PROTOCOL.md#item-pickup), [nguồn2](REFERENCES.md) |
 | kr_static | partial | [nguồn1](PROTOCOL.md#item-pickup) |
 | emulation | checked | [nguồn1](evidence/item-pickup/README.md) |
-| wine_diagnostic_copy | observed | [nguồn1](evidence/item-pickup/README.md) |
+| wine_diagnostic_copy | observed | [nguồn1](evidence/item-pickup/README.md), [nguồn2](evidence/stale124/README.md) |
 | windows_original | unknown | Chưa có bằng chứng trong phạm vi rà |
 | lan | unknown | Chưa có bằng chứng trong phạm vi rà |
 | internet | unknown | Chưa có bằng chứng trong phạm vi rà |
-| implementation | partial / via_pr | [nguồn1](../server/probe_service.py), [nguồn2](PROTOCOL.md#probe-service), [nguồn3](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/57) |
-| integration | partial | [nguồn1](evidence/probe-service/README.md) |
+| implementation | partial / branch_pending | [nguồn1](../server/probe_service.py), [nguồn2](PROTOCOL.md#pickup-round-key) |
+| integration | partial | [nguồn1](evidence/stale124/README.md) |
 | gate | K5: open | [nguồn1](PLAN.md#gates) |
 
 <a id="kr-f007"></a>
@@ -978,11 +978,11 @@ Dependency: [KR-B003](#kr-b003), [KR-R003](#kr-r003), [KR-X002](#kr-x002).
 
 [Contract và giới hạn](PROTOCOL.md#probe-service) · [Câu hỏi gốc](RESEARCH.md#gap-diagnostic-service) · [Thứ tự ở PLAN](PLAN.md#current-order).
 
-Khoảng trống (trích bảng RESEARCH): r2 có hai chu kỳ thử; r3 chỉ165/stat vòng1 và reset clock2, thiếu124/118 vòng2 dù đã input. Auth/roster/rank vẫn fixture, chưa full match.
+Khoảng trống (trích bảng RESEARCH): CP049 có hai run/two cycles và guard124; r3 CP048 thiếu request vẫn là lịch sử, chưa biết nguyên nhân. Auth/roster/rank còn fixture, EOF service mới chỉ finish.
 
-Phép kiểm tối thiểu (trích cùng nguồn): Tái dùng native/effect/UDP CP048; control/retry input hữu hạn theo actual request để phân biệt focus/tutorial/probe/state, rồi kiểm validator/EOF theo PLAN.
+Phép kiểm tối thiểu (trích cùng nguồn): Tái dùng ca input thành công CP049 và controls CP039–044; kiểm EOF/timer/forfeit/cleanup/promotion và barrier chậm load trong service theo PLAN.
 
-Bằng chứng/build/hash/recipe: [probe-service](evidence/probe-service/README.md).
+Bằng chứng/build/hash/recipe: [probe-service](evidence/probe-service/README.md), [stale124](evidence/stale124/README.md).
 
 | Chiều chứng minh | Khai báo | Nguồn/phạm vi áp dụng |
 |---|---|---|
@@ -990,12 +990,12 @@ Bằng chứng/build/hash/recipe: [probe-service](evidence/probe-service/README.
 | vn_reference | both | [nguồn1](REFERENCES.md) |
 | kr_static | unknown | Chưa có bằng chứng trong phạm vi rà |
 | emulation | unknown | Chưa có bằng chứng trong phạm vi rà |
-| wine_diagnostic_copy | observed | [nguồn1](evidence/probe-service/README.md) |
+| wine_diagnostic_copy | observed | [nguồn1](evidence/probe-service/README.md), [nguồn2](evidence/stale124/README.md) |
 | windows_original | unknown | Chưa có bằng chứng trong phạm vi rà |
 | lan | unknown | Chưa có bằng chứng trong phạm vi rà |
 | internet | unknown | Chưa có bằng chứng trong phạm vi rà |
-| implementation | partial / via_pr | [nguồn1](../server/probe_service.py), [nguồn2](PROTOCOL.md#probe-service), [nguồn3](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/57) |
-| integration | partial | [nguồn1](evidence/probe-service/README.md) |
+| implementation | partial / branch_pending | [nguồn1](../server/probe_service.py), [nguồn2](PROTOCOL.md#pickup-round-key) |
+| integration | partial | [nguồn1](evidence/stale124/README.md) |
 | gate | K6: open | [nguồn1](PLAN.md#gates) |
 
 <a id="kr-s002"></a>

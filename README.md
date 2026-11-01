@@ -29,16 +29,17 @@ runtime nào có nguồn, còn thiếu gì và phép kiểm nào giải quyết.
 evidence/hash và câu hỏi; [PLAN](docs/PLAN.md#current-order) giữ duy nhất thứ tự công việc.
 Đây là scope đường bootstrap → login → sảnh → phòng → Battle → kết quả/reset, không kiểm kê toàn client.
 
-CP048: đã tách service TCP fixture khỏi harness và ghép các policy vòng/khóa/item; run Wine copy
-hai client có hai chu kỳ thử. [Phạm vi và bằng chứng](docs/evidence/probe-service/README.md),
-[contract service](docs/PROTOCOL.md#probe-service). Auth/profile/cache/codec tổng quát, toàn validator/
-reset và các biến thể vẫn thiếu; chưa nghiệm thu trận hoàn chỉnh/K5/K6a, LAN hoặc Internet.
+CP049: service đã kiểm khóa của request124 trước claim. Replay body cũ bị loại; request TCP
+hiện tại vẫn nhặt Roller5→6 trên cả hai view và chạy hai chu kỳ thử tới result/return.
+[Phạm vi, control và hash](docs/evidence/stale124/README.md), [contract/giới hạn](docs/PROTOCOL.md#pickup-round-key).
+Body cũ được chèn tại dispatcher; chưa kiểm admission qua TCP của replay. Full validator/auth/cache/
+codec/reset và lifecycle service còn thiếu; chưa nghiệm thu trận hoàn chỉnh/K5/K6a, LAN/Internet.
 
-CP047 đã merge [PR55](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/55) tại `5ffd925`.
-CP048 đã ghi record tự kiểm; [PR57](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/57) giữ trạng thái tích hợp code/docs mới.
-Catalog `via_pr` dẫn tới nguồn PR này, không tự suy merge từ runtime. Review độc lập
-[waived](docs/evidence/checkpoints/review-waiver.json), không phải approved. Audit **AUD015/CP048** đã hoàn tất; audit định kỳ kế **CP052**; counter ở [manifest](docs/evidence/checkpoints/manifest.json).
-[Workflow](docs/evidence/checkpoints/README.md) giữ lịch sử và lịch audit.
+CP048 đã merge [PR57](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/57) tại `4d77eaf`.
+CP049 đang tự kiểm/tích hợp theo PR của nhánh; review độc lập
+[waived](docs/evidence/checkpoints/review-waiver.json). Catalog ghi nguồn delivery riêng.
+Audit **AUD015/CP048**, audit định kỳ kế **CP052**;
+[counter](docs/evidence/checkpoints/manifest.json), [workflow](docs/evidence/checkpoints/README.md).
 
 Đích đầu: hai client thật chơi hai trận liên tiếp; mở bốn client và hardening sau đó.
 
