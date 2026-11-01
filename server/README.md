@@ -64,7 +64,7 @@ Service chỉ bind loopback. Khi chạy Wine phải dùng namespace/lease/files-
 loopback binding riêng nó không cô lập outbound client. Cần đủ các port của fixture/harness, không
 chỉ3808 cho chuỗi runtime. Profile CP051 cho identity A/B rồi C thay A theo accept-order (4connection/vai),
 synthetic auth/map/roster/rank và stable slots. Không là public server hoặc login/auth hoàn chỉnh.
-Service chưa quản membership tổng quát/account reconnect, full124validator/tick/actorstate,
+Service chưa quản membership tổng quát/account reconnect, full124validator/timepolicy/actorstate,
 relay/NAT/backpressure hay gate K5/K6a. CP050 bổ sung [EOF recovery hẹp](../docs/PROTOCOL.md#service-eof); mô tả chỉ finish là snapshot CP049.
 Runtime r2 có hai chu kỳ; r3 chỉ một result, không dùng để tuyên bố tính tái lập mọi input.
 
@@ -108,3 +108,7 @@ CP054: [C trước round1](../docs/PROTOCOL.md#prestart-replacement) được nh
 A đã đóng và107/110 gửi xong/không pending; post-round path giữ, active/lobby/setup bị chặn.
 Rejection có reason/time, không assign role.45server tests; native một B/C playedround sau setupEOF.
 Không account reconnect/general membership/fullauth/fullvalidator/K6a hoặc LAN.
+
+CP055: service log `client_tick` của124; [nguồn native/giới hạn](../docs/PROTOCOL.md#pickup-tick).
+Không thêm time threshold; hai Wine run dùng source CP054 trước đổi logging, actual-capture bench
+kiểm log mới. Chưa original-server time/actorstate/distance validator.

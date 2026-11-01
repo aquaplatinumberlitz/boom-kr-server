@@ -627,19 +627,19 @@ Dependency: [KR-F001](#kr-f001).
 
 [Contract và giới hạn](PROTOCOL.md#item-pickup) · [Câu hỏi gốc](RESEARCH.md#gap-floor-pickup) · [Thứ tự ở PLAN](PLAN.md#current-order).
 
-Khoảng trống (trích bảng RESEARCH): CP049 key guard đã kiểm; t(record+1C) là field khác chưa có nguồn/clock/đơn vị KR. VN ghi time producer6EFBB8, không đủ xác nhận KR. Distance/actorstate/forged-current-key/transport/fullvalidator còn mở.
+Khoảng trống (trích bảng RESEARCH): CP055 đã giải t là counter CMainSystem riêng/qua round, latchedrecord→TCP; physical timebase và original validator vẫn unknown. Distance/actorstate/forged-current-key/transport/fullvalidator còn mở.
 
-Phép kiểm tối thiểu (trích cùng nguồn): Tái dùng124/165/cachedE2E390 và VNcache producer; trace nơi khởi tạo record+1C/clock, chụp t ở init/writer và actualTCP. Chỉ chọn time policy sau khi đối chiếu KR; không gán ms/elapsed từ tên hoặc tương quan.
+Phép kiểm tối thiểu (trích cùng nguồn): Tái dùng [nguồn t](PROTOCOL.md#pickup-tick),17/18/19/170/actual124 và guardk; trace collision/producer state guard, đo sống/trapped/dead cùng một round và một dispatcher control bodycũ/đổi k hiện tại khi actor không đủ điều kiện. Không áp threshold ms hoặc gọi injection là TCP admission.
 
-Bằng chứng/build/hash/recipe: [item-pickup](evidence/item-pickup/README.md), [probe-service](evidence/probe-service/README.md), [stale124](evidence/stale124/README.md).
+Bằng chứng/build/hash/recipe: [item-pickup](evidence/item-pickup/README.md), [probe-service](evidence/probe-service/README.md), [stale124](evidence/stale124/README.md), [pickup-time](evidence/pickup-time/README.md).
 
 | Chiều chứng minh | Khai báo | Nguồn/phạm vi áp dụng |
 |---|---|---|
 | presence | present | [nguồn1](PROTOCOL.md#item-pickup) |
 | vn_reference | both | [nguồn1](PROTOCOL.md#item-pickup), [nguồn2](REFERENCES.md) |
-| kr_static | partial | [nguồn1](PROTOCOL.md#item-pickup) |
-| emulation | checked | [nguồn1](evidence/item-pickup/README.md) |
-| wine_diagnostic_copy | observed | [nguồn1](evidence/item-pickup/README.md), [nguồn2](evidence/stale124/README.md) |
+| kr_static | partial | [nguồn1](PROTOCOL.md#item-pickup), [nguồn2](PROTOCOL.md#pickup-tick) |
+| emulation | checked | [nguồn1](evidence/item-pickup/README.md), [nguồn2](evidence/pickup-time/README.md) |
+| wine_diagnostic_copy | observed | [nguồn1](evidence/item-pickup/README.md), [nguồn2](evidence/stale124/README.md), [nguồn3](evidence/pickup-time/README.md) |
 | windows_original | unknown | Chưa có bằng chứng trong phạm vi rà |
 | lan | unknown | Chưa có bằng chứng trong phạm vi rà |
 | internet | unknown | Chưa có bằng chứng trong phạm vi rà |
@@ -978,7 +978,7 @@ Dependency: [KR-B003](#kr-b003), [KR-R003](#kr-r003), [KR-X002](#kr-x002).
 
 [Contract và giới hạn](PROTOCOL.md#probe-service) · [Câu hỏi gốc](RESEARCH.md#gap-diagnostic-service) · [Thứ tự ở PLAN](PLAN.md#current-order).
 
-Khoảng trống (trích bảng RESEARCH): CP054 idle-before-first admission có native C/B-Cround,45server tests; same fixture41/max12/2live members. Fullauth/cache/codec/validator/roster không tổng quát.
+Khoảng trống (trích bảng RESEARCH): CP054 admission có native C/B-Cround; CP055 chỉ thêm client_tick log/actual-capture bench,45server tests; same fixture41/max12/2live members. Fullauth/cache/codec/validator/roster không tổng quát.
 
 Phép kiểm tối thiểu (trích cùng nguồn): Tiếp validator124 theo PLAN; chỉ dùng actual native proof cho integration, tests/logs không tự đóng gate hoặc thay identity/login contract.
 
