@@ -139,6 +139,48 @@ class EofTests(unittest.TestCase):
         self.assertEqual([s['opcode'] for s in self.sends], [107, 110])
         self.assertEqual(self.service.state['policy_events'][0]['op'], 'cleanup_departed')
 
+    def test_host_eof_defers_cleanup_until_survivor_setup_then_promotes_once(self):
+        self.prepare_setup()
+        self.service.channels['A']['create_response_sent'] = {'after_c2s_opcode': 81}
+        raw_aliases = []
+        self.service.profile.raw = lambda name: raw_aliases.append(name) or b''
+        self.service.send_raw = lambda *_args: None
+        self.close_at(1, 10)
+        self.assertEqual(self.service.host_role, 'B')
+        self.assertEqual(self.service.channels['B']['pending_departures'], ['A'])
+        self.assertEqual(self.sends, [])
+        self.tick_at(20)
+        self.tick_at(22)
+        self.assertEqual(self.sends, [])
+        self.assertEqual(raw_aliases, ['slot_B', 'guest_B'])
+        self.tick_at(24)
+        self.assertEqual(raw_aliases, ['slot_B', 'guest_B', 'table', 'map'])
+        self.assertEqual([(s['role'], s['opcode']) for s in self.sends], [('B', 107), ('B', 110)])
+        self.assertEqual(self.sends[-1]['alias'], 'promote_B')
+        self.assertNotIn('pending_departures', self.service.channels['B'])
+        self.tick_at(30)
+        self.close_at(1, 31)
+        self.assertEqual(len(self.sends), 2)
+        self.assertEqual(self.service.round, {'index': 0})
+
+    def test_survivor_eof_discards_deferred_cleanup_before_any_setup_send(self):
+        self.prepare_setup()
+        self.service.channels['A']['create_response_sent'] = {'after_c2s_opcode': 81}
+        self.close_at(1, 10)
+        self.close_at(2, 11)
+        self.service.send_raw = lambda *_args: self.fail('setup after both closed')
+        self.tick_at(20)
+        self.assertEqual(self.sends, [])
+        self.assertNotIn('pending_departures', self.service.channels['B'])
+
+    def test_lobby_only_survivor_is_not_promoted_or_queued_as_room_member(self):
+        self.prepare_setup(accepted=False, player=False)
+        self.service.channels['A']['create_response_sent'] = {'after_c2s_opcode': 81}
+        self.close_at(1, 10)
+        self.assertEqual(self.sends, [])
+        self.assertEqual(self.service.host_role, 'A')
+        self.assertNotIn('pending_departures', self.service.channels['B'])
+
     def test_missing_lifecycle_profile_fails_before_opening_transports(self):
         profile = SimpleNamespace(frames={}, data={})
         with self.assertRaisesRegex(ValueError, 'missing lifecycle fixtures'):

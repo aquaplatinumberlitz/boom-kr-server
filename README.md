@@ -29,16 +29,17 @@ runtime nào có nguồn, còn thiếu gì và phép kiểm nào giải quyết.
 evidence/hash và câu hỏi; [PLAN](docs/PLAN.md#current-order) giữ duy nhất thứ tự công việc.
 Đây là scope đường bootstrap → login → sảnh → phòng → Battle → kết quả/reset, không kiểm kê toàn client.
 
-CP052: đã sửa slot ma khi guest rời trong setup, sau Join/106 nhưng trước map/Start. Đối chứng
-Wine cho thấy bản cũ không xóa B; bản sửa có native107 ID2→0, A giữ chủ và không có phase/rank giả.
-[Evidence/giới hạn](docs/evidence/setup-eof/README.md), [contract](docs/PROTOCOL.md#setup-eof).
-CP051 đã có C mới/B Start và một vòng B/C trên service; chưa hai trận đầy đủ/K6a/LAN/Internet.
-Host rời khi peer chưa map, membership/auth tổng quát và fullvalidator/cache/codec/reset còn mở.
+CP053: host rời khi B chưa map đã có control/fix. Bản cũ giữ slot A/chiefB0; bản sửa chuyển chủ
+cho member đã Join, chờ hết setup rồi native107 xóa ID1→0 và110 đưa chiefB0→1.
+[Evidence/giới hạn](docs/evidence/host-setup/README.md), [contract](docs/PROTOCOL.md#host-setup).
+Admission C trước trận đầu vẫn bị chặn bởi điều kiện round refresh; đang tiếp cạnh đó. Chưa nghiệm thu
+hai trận đầy đủ/K6a/LAN/Internet hoặc auth/membership/validator/cache/codec/reset tổng quát.
 
-CP051 đã merge [PR63](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/63) tại `c764aa5`.
-CP052 tự kiểm, tích hợp theo [PR65](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/65); review độc lập
-[waived](docs/evidence/checkpoints/review-waiver.json). Audit **AUD016/CP052**, audit định kỳ kế **CP056**;
-[counter](docs/evidence/checkpoints/manifest.json), [workflow](docs/evidence/checkpoints/README.md).
+CP052 đã merge [PR65](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/65) tại `3617e69`.
+CP053 đang trên nhánh `kre/host-setup`, tự kiểm; review độc lập
+[waived](docs/evidence/checkpoints/review-waiver.json). Audit **AUD016/CP052**, audit kế **CP056**.
+[Yêu cầu chủ dự án](docs/evidence/owner-directives/continuous-work.json): tiếp tục ngay công việc kế
+trong PLAN sau mỗi checkpoint/commit/PR, không tự dừng/chờ nhắc.
 
 Đích đầu: hai client thật chơi hai trận liên tiếp; mở bốn client và hardening sau đó.
 

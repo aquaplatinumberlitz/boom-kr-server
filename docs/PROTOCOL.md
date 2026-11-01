@@ -1,6 +1,6 @@
 # KR 00967 — contract tương thích client gốc
 
-Revision kr-legacy-contract-r1; cập nhật01/11/2026 JST (CP052).
+Revision kr-legacy-contract-r1; cập nhật01/11/2026 JST (CP053).
 **Contract có bằng chứng từng phần; chưa nghiệm thu full codec K2**.
 Lộ trình và thứ tự task chỉ giữ ở [REWRITE_PLAN — KRE](PLAN.md).
 Đây là contract của repo server KR. ADR0009 của bản viết lại là nguồn lịch sử để so sánh;
@@ -1952,7 +1952,7 @@ liệt kê và phân biệt với nguyên bản trong mọi demo.
 <a id="authority"></a>
 ### Authority matrix hiện hành và gate review
 
-Bảng này tổng hợp bằng chứng từng phần đến CP052; chưa phải toàn contract server gốc. Mỗi hàng khi
+Bảng này tổng hợp bằng chứng từng phần đến CP053; chưa phải toàn contract server gốc. Mỗi hàng khi
 triển khai phải bổ sung riêng **creator, simulator, validator, broadcaster, peer-editable state**, với
 locator/trace và trạng thái từng ô; những vai trò không nêu dưới đây hiện `unknown` cho KR.
 
@@ -2126,3 +2126,25 @@ socketpair/fake sender thấy cleanup không recipient và tick sau vẫn chọn
 `design/confirmed`, **chưa native runtime KR**. Không coi việc sửa guest đã giải mọi setup race,
 preannounced fixture/general membership, sendfailure/timeout/loadfail/account reconnect/fullcodec/
 fullvalidator/reset hoặc gate. Phép kiểm tối thiểu ở [RESEARCH](RESEARCH.md#gap-disconnect-replacement).
+
+
+<a id="host-setup"></a>
+### Host EOF khi survivor chưa map — CP053
+
+[Control/fix/recipe/hash](evidence/host-setup/README.md), tái dùng [107/110](#room-leave) và
+[guest setup EOF](#setup-eof). CP052 bench nay có runtime đúng boundary, không tìm lại consumer.
+Policy `design`: chọn host mới từ live channel đã Join/create, độc lập với map progress. Member chưa
+map nhận pending departure riêng; sau slot/guest/table/map ban đầu mới gửi107/110 qua sequence động.
+Nhờ thứ tự này fixture guest cũ không ghi đè cleanup hoặc đảo sequence61/64/67/70→73/76. Recipient
+đóng thì bỏ pending, tick không gửi tới closedpeer; người ở lobby/chưa Join không được bầu chủ.
+
+**kr_runtime/confirmed hẹp:** A đã map, B actual82/own106 rồi AEOF trước Bslot/map. Control giữ ôA,
+chiefB0, không107; bấm nút B phát Ready95/110 (không phải Start). Fixed chờ Bmap rồi một107(slot0,
+id1,0)/seq73 và110/seq76: native base6/rewind/final1/errors0, ID1→0 và chiefB0→1; UI chỉ B/Start.
+Hai run chưa121/clock/175/180, không phase197/196/153 hoặc gửi tới A đã đóng. Run đầu bị ngắt trước
+B được giữ incomplete, không là protocol failure/control. Không thêm patch binary/force state.
+
+Đây là cleanup trước trận, không account reconnect hoặc general membership/host election gốc.
+C mới sau ca này vẫn bị admission đòi round.refresh dù chưa có vòng nào: gap code cần kiểm kế tiếp,
+không coi B có nút Start là service đã nhận C/Start hoặc đã chơi được. Full auth/validator/cache/
+codec/reset/timeout/sendfailure và K5/K6a/LAN/Internet giữ mở; [phép đo](RESEARCH.md#gap-disconnect-replacement).

@@ -97,3 +97,8 @@ CP052: [guest setup EOF](../docs/PROTOCOL.md#setup-eof) cleanup theo Join/create
 không đợi map. Control bản cũ còn slot ma; bản sửa native107 xóa ID2→0, A giữ chủ, không false phase.
 39server tests có3case thêm cho before-map/before-own106/lobby-only/duplicate và Start với closedpeer.
 Host EOF khi survivor chưa map vẫn là gap riêng, chưa deferred cleanup hoặc membership tổng quát.
+
+
+CP053: [host setup EOF](../docs/PROTOCOL.md#host-setup) chọn host từ member đã Join và queue
+cleanup cho recipient chưa map, flush107/110 sau setup; closed recipient bỏ queue. Native B ID1→0,
+chief0→1 ở control/fix;42server tests. C trước trận đầu còn bị refresh guard, chưa account reconnect.
