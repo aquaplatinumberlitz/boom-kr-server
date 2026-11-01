@@ -102,3 +102,9 @@ Host EOF khi survivor chưa map vẫn là gap riêng, chưa deferred cleanup ho�
 CP053: [host setup EOF](../docs/PROTOCOL.md#host-setup) chọn host từ member đã Join và queue
 cleanup cho recipient chưa map, flush107/110 sau setup; closed recipient bỏ queue. Native B ID1→0,
 chief0→1 ở control/fix;42server tests. C trước trận đầu còn bị refresh guard, chưa account reconnect.
+
+
+CP054: [C trước round1](../docs/PROTOCOL.md#prestart-replacement) được nhận khi B idle/mapped/chief,
+A đã đóng và107/110 gửi xong/không pending; post-round path giữ, active/lobby/setup bị chặn.
+Rejection có reason/time, không assign role.45server tests; native một B/C playedround sau setupEOF.
+Không account reconnect/general membership/fullauth/fullvalidator/K6a hoặc LAN.

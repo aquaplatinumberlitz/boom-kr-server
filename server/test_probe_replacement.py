@@ -85,6 +85,58 @@ class ReplacementTests(unittest.TestCase):
         self.assertEqual([s['alias'] for s in self.sent[-2:]], ['rank_Awin', 'rank_Awin'])
         self.assertEqual([s['role'] for s in self.sent[-2:]], ['B', 'C'])
 
+    def prepare_before_first(self):
+        from server.probe_room import ProbeRoom
+        self.service.room = ProbeRoom([], 12345)
+        self.service.round = {'index': 0}
+        self.b['departures_sent'] = ['A']
+
+    def test_before_first_admission_requires_completed_cleanup_setup_and_idle(self):
+        self.prepare_before_first()
+        self.assertTrue(self.service.replacement_allowed())
+        self.b.pop('departures_sent')
+        self.assertFalse(self.service.replacement_allowed())
+        self.b['departures_sent'] = ['A']
+        self.b['pending_departures'] = ['A']
+        self.assertFalse(self.service.replacement_allowed())
+        self.b.pop('pending_departures')
+        self.b.pop('map_response_sent')
+        self.assertFalse(self.service.replacement_allowed())
+        self.b['map_response_sent'] = True
+        self.service.room.begin()
+        self.assertFalse(self.service.replacement_allowed())
+
+    def test_first_actual_host_start_uses_first_key_and_only_current_roster(self):
+        self.prepare_before_first()
+        self.dispatch(self.b, 104)
+        self.assertFalse(self.service.room.active)
+        self.dispatch(self.c, 95)
+        self.dispatch(self.b, 104)
+        self.assertEqual((self.service.round['index'], self.service.room.key), (1, 12345))
+        self.assertEqual(self.service.round['roster'],
+                         [{'role': 'B', 'slot': 1, 'identity': 2}, {'role': 'C', 'slot': 0, 'identity': 3}])
+        self.assertEqual(self.service.room.keys.issued_count, 1)
+        self.assertTrue(all(s['role'] in ['B', 'C'] for s in self.sent))
+        count = len(self.sent)
+        self.dispatch(self.b, 104)
+        self.assertEqual(len(self.sent), count)
+        self.assertEqual(self.service.room.keys.issued_count, 1)
+
+    def test_rejected_transport_is_logged_without_identity_or_bootstrap(self):
+        import socket
+        self.prepare_before_first()
+        self.b.pop('departures_sent')
+        self.service.events += [{} for _ in range(5)]  # 8 accepted transports
+        connection, remote = socket.socketpair()
+        self.addCleanup(remote.close)
+        self.addCleanup(connection.close)
+        listener = SimpleNamespace(accept=lambda: (connection, ('127.0.0.1', 1234)))
+        self.service.accept(listener)
+        self.assertEqual(connection.fileno(), -1)
+        self.assertEqual(len(self.service.events), 8)
+        self.assertEqual(self.service.state['admission_rejections'][0]['reason'], 'replacement_not_ready')
+        self.assertEqual(self.sent, [])
+
     def test_replacement_admission_requires_departure_cleanup_and_live_b(self):
         self.assertTrue(self.service.replacement_allowed())
         self.b['closed'] = {'reason': 'eof'}

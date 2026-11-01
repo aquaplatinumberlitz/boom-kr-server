@@ -1,7 +1,7 @@
 # Kế hoạch server giả lập KR 00967
 
 Nguồn chuẩn của project `boom-kr-server`; bản nhập từ plan đã được dsh1/dsh2 review tại `1eee46d`.
-Cập nhật01/11 JST (CP053): host EOF khi B chưa map đã có cleanup/promotion sau setup; [phạm vi](PROTOCOL.md#host-setup). Các gate giữ mở; bằng chứng hẹp không thay nghiệm thu toàn reset/validator/auth hoặc K6a.
+Cập nhật02/11 JST (CP054): C thay A trước trận đầu/B Start và vòng B/C đã có native proof; [phạm vi](PROTOCOL.md#prestart-replacement). Các gate giữ mở; bằng chứng hẹp không thay nghiệm thu toàn reset/validator/auth hoặc K6a.
 
 
 ### Mục tiêu, baseline và phạm vi
@@ -37,13 +37,13 @@ với client Rust không chứng minh có thể điều khiển client KR bằng
 
 ### Tiến độ hiện hành theo bằng chứng
 
-| Task/mốc | Trạng thái tại CP053 | Nguồn chuẩn |
+| Task/mốc | Trạng thái tại CP054 | Nguồn chuẩn |
 |---|---|---|
 | KRE-004/issue6 | Đã review/merge PR7 và đóng issue:recipe r1 đến local accept;không phải full K1 | [Wine r1](evidence/wine/README.md) |
 | Bootstrap reply | PR8 đã merge;debugger ProcessPatchreturn1,không ép success | [bootstrap evidence](evidence/bootstrap-wire/README.md) |
 | KRE-005a/issue9,R2 | PR10 đã merge:3 cold start cửa sổ/second accept;issue9 còn mở | [R2 evidence](evidence/wine-r2/README.md) |
 | WCP hai-reply | Run CP001 là lịch sử chưa C→S; CP006 đã đo request đầu trên copy tham số hóa | [PROTOCOL](PROTOCOL.md#wcp),[WCP evidence](evidence/wcp/README.md) |
-| KRE-005b/issue14 | CP006–052 đã merge; CP053 host setup EOF tự kiểm/integration theo [PR67](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/67); fullround/authority/full auth còn mở | [Q-023](RESEARCH.md#q-023), [service](evidence/probe-service/README.md) |
+| KRE-005b/issue14 | CP006–053 đã merge; CP054 prestart C/B-C round đang tự kiểm trên nhánh `kre/prestart-replacement`; fullround/authority/full auth còn mở | [Q-023](RESEARCH.md#q-023), [service](evidence/probe-service/README.md) |
 | K0/K1 | Chưa nghiệm thu toàn gate;Windows vanilla/control ownership và các điều kiện còn thiếu giữ mở | Gate dưới,[Q-022](RESEARCH.md) |
 | K2a/K2 | Primitive/WCP từng phần; request auth đã capture/native replay, phản hồi lỗi đã dispatch; full codec/reconnect và gate chưa pass | [PROTOCOL](PROTOCOL.md#login-auth),[Q-023](RESEARCH.md#q-023) |
 | K3 | Copy chẩn đoán đã vẽ UI sảnh và đóng notice; chưa nghiệm thu identity/cache/codec đủ gate | [Contract sảnh](PROTOCOL.md#channel-lobby) |
@@ -60,24 +60,19 @@ KRE-005b/issue14 vẫn mở. Các bước dưới là **thứ tự ưu tiên**, 
 xong checkpoint/commit/PR thì chuyển ngay việc kế tiếp trong thứ tự này, không tự dừng/chờ nhắc.
 Một blocker chỉ kết thúc nhánh đo tương ứng; ghi rõ rồi tiếp việc độc lập có thể làm, không tự đóng gate.
 
-1. **KR-X003/KR-R004/KR-S001 — vào lại roster sau setup EOF:** CP053 đã có native control/fix
-   host rời khi B chưa map: deferred107/110 sau setup, Bchief1. Không đo lại107/110 hoặc guestEOF.
-   Tiếp blocker admission C trước trận đầu: round index0 không có refresh, dù A đã đóng/B có chủ.
-   Mở điều kiện hẹp sau cleanup/setup rồi C Join/Ready→B Start→bom/statepeer/result/return theo
-   contract CP040/051; giữ khác biệt với reconnect account. Không mở mọi timeout/race trước nợ
-   validator/auth bên dưới. [Phép kiểm](RESEARCH.md#gap-disconnect-replacement); gate giữ mở.
-2. **KR-F006/KR-F003 — validator theo khoảng trống:** CP049 đã kiểm guard k trước claim, oldbody
-   drop/currentactual124/165/stat/hai result/return. Không RE lại đường này. Tiếp t/distance/actorstate/
-   request sửa k hiện tại/roster/key lifetime khi ca service cần; transport replay chưa nghiệm thu,
-   hai proxy setup CP049 chưa vào phép đo. [Giới hạn](PROTOCOL.md#pickup-round-key),
-   [câu hỏi](RESEARCH.md#gap-floor-pickup). Không coi equality là auth hoặc toàn stale-safe.
-3. **KR-B003/KR-L001/L003 — nợ codec/auth/cache:** profile hiện tại vẫn là fixture. Bổ sung native
-   boundaries/reset và cold/warm/missing/reconnect theo [câu hỏi codec](RESEARCH.md#gap-socket-codec),
-   [auth](RESEARCH.md#gap-auth-identity), [cache](RESEARCH.md#gap-profile-cache) trước nghiệm thu gate tương ứng.
-4. **Battle tối thiểu còn thiếu:** chain khác owner/vật cản, runtime max/speed hoặc ability chỉ khi
-   ca Battle dùng nhóm đó. Dùng [nhóm item có sẵn](PROTOCOL.md#item-families); không quét mọi row,
-   không tìm lại receiver/kim/Roller VN hoặc E66680/queue đã giải. Exact both-eligible contact runtime
-   là kiểm parity bổ sung, không điều kiện riêng chặn first full match.
+1. **KR-F006/KR-F003 — validator theo khoảng trống:** CP054 đã giải admission C trước trận đầu
+   và B/C bom/statepeer/result/return; không đo lại setup EOF/107/110 hoặc C fixtures. Tiếp nguồn
+   `t` của124 (record+1C) và clock khởi tạo: đối chiếu VN/cached KR trước, probe producer/writer
+   tối thiểu rồi mới chọn policy kiểm hợp lệ. CP049 đã loại oldk/currentk; không RE lại đường đó.
+   Distance/actorstate/forged-current-key/transport chỉ mở đúng phần thiếu có evidence; equality
+   không là auth/toàn stale-safe. [Phép kiểm](RESEARCH.md#gap-floor-pickup).
+2. **KR-B003/KR-L001/L003 — nợ codec/auth/cache:** profile hiện tại vẫn fixture. Bổ sung native
+   boundaries/reset và cold/warm/missing/reconnect theo câu hỏi tương ứng trước nghiệm thu gate.
+3. **Battle tối thiểu:** chain khác owner/vật cản, runtime max/speed hoặc ability khi ca Battle dùng
+   nhóm đó. Tái dùng [item families](PROTOCOL.md#item-families), không quét mọi row hoặc tìm lại kim/Roller.
+4. **Lifecycle còn thiếu:** account reconnect/general membership/idleEOF/sendfailure/timeout/loadfail/
+   reset variants chưa đủ; chỉ mở ca có trigger cụ thể khi chặn integration/acceptance, không kiểm
+   kê hết mọi race trước validator/auth. C mới không là account resume; một vòng B/C không K6a.
 5. **Nghiệm thu local rồi nhiều máy:** gom cùng-run consistency/malformed/stale/reset/disconnect theo
    K5/K6a và [authority](PROTOCOL.md#authority); sau đó K6b LAN, K6c Internet rồi K7 bốn client/hardening.
    Không ghép các run riêng thành một trận đã nghiệm thu. LAN/Internet/relay hiện unknown.
@@ -250,6 +245,7 @@ transfer, không giữ hai bảng việc. Mỗi task có baseline, owner/reviewe
 | KRE-008 | Bomb/item/trap/result, authority map và K5 | KRE-007 | Codex RE/code / tự kiểm (review miễn28/10) |
 | KRE-009 | UDP/peer hoặc relay, đồng bộ hai client và K6 | KRE-008; có thể RE static từ KRE-003 | Codex RE/code / tự kiểm (review miễn28/10) |
 | KRE-010 | Race/disconnect, bốn client, Linux packaging và K7 | KRE-009 | Codex / tự kiểm (review miễn28/10) |
+| KRE-017 / issue68 | Admission C trước round1 sau host setup EOF; B/C played round CP054; baseline75606eb; nhánh `kre/prestart-replacement` tự kiểm, chưa merge | KRE-005b/CP040/051/053 | Codex / tự kiểm (waived) |
 | KRE-016 / issue66 | Host EOF khi B chưa map: deferred cleanup/promotion CP053; baseline3617e69; tự kiểm/integration theo [PR67](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/67) | KRE-005b/CP034/050–052 | Codex / tự kiểm (waived) |
 | KRE-015 / issue64 | Guest setup EOF/slot ma: control + native fix CP052, audit AUD016; baselinec764aa5; tự kiểm/integration theo [PR65](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/65) | KRE-005b/CP034/050/051 | Codex / tự kiểm (waived) |
 | KRE-014 / issue62 | Service A/B→B/C: C identity3, B Start và một vòng bom/statepeer/result/return CP051; baseline9c6ac92; tự kiểm/integration theo [PR63](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/63) | KRE-005b/CP040/044/050 | Codex / tự kiểm (waived) |

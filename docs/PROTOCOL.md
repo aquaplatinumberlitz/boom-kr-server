@@ -1,6 +1,6 @@
 # KR 00967 — contract tương thích client gốc
 
-Revision kr-legacy-contract-r1; cập nhật01/11/2026 JST (CP053).
+Revision kr-legacy-contract-r1; cập nhật02/11/2026 JST (CP054).
 **Contract có bằng chứng từng phần; chưa nghiệm thu full codec K2**.
 Lộ trình và thứ tự task chỉ giữ ở [REWRITE_PLAN — KRE](PLAN.md).
 Đây là contract của repo server KR. ADR0009 của bản viết lại là nguồn lịch sử để so sánh;
@@ -1952,7 +1952,7 @@ liệt kê và phân biệt với nguyên bản trong mọi demo.
 <a id="authority"></a>
 ### Authority matrix hiện hành và gate review
 
-Bảng này tổng hợp bằng chứng từng phần đến CP053; chưa phải toàn contract server gốc. Mỗi hàng khi
+Bảng này tổng hợp bằng chứng từng phần đến CP054; chưa phải toàn contract server gốc. Mỗi hàng khi
 triển khai phải bổ sung riêng **creator, simulator, validator, broadcaster, peer-editable state**, với
 locator/trace và trạng thái từng ô; những vai trò không nêu dưới đây hiện `unknown` cho KR.
 
@@ -2148,3 +2148,27 @@ B được giữ incomplete, không là protocol failure/control. Không thêm p
 C mới sau ca này vẫn bị admission đòi round.refresh dù chưa có vòng nào: gap code cần kiểm kế tiếp,
 không coi B có nút Start là service đã nhận C/Start hoặc đã chơi được. Full auth/validator/cache/
 codec/reset/timeout/sendfailure và K5/K6a/LAN/Internet giữ mở; [phép đo](RESEARCH.md#gap-disconnect-replacement).
+
+
+<a id="prestart-replacement"></a>
+### C mới vào trước vòng đầu sau setup EOF — CP054
+
+[Control/fix/source/raw/hash](evidence/prestart-replacement/README.md); dùng lại [CP053 cleanup](#host-setup)
+và [CP051 C/B Start](#service-replacement), không thêm wire/schema hoặc port ID VN. Policy `design`:
+post-round refresh path giữ; trước vòng1 chỉ nhận C khi Achannel đóng, B live/mapped/currenthost,
+không pending departure, room idle và service đã gửi xong107/110 cho A (`departures_sent`). Marker
+là hoàn tất send của service, không ACK/native consume. Reject accept ghi reason/peer/ordinal/time,
+không assign identity/bootstrap; cap12 giữ. Không mở admission cho active round/lobby/pending setup.
+
+**kr_runtime/confirmed hẹp:** control `prestart-denied` sau B clear/chief vẫn từ chối actual TCP
+ordinal9 `replacement_not_ready`; C chưa được auth/ID3, không round. Fixed cùng binary/profile/recipe
+có12connection; native C ID3/slot0/ownmatch, actual82/95 và B104. B/C121full129/clock, generation1/
+key12345, actual B118→ID1/159/158→B17/19→C170/C21; secure Bstate1 cả hai trước175,175full302/
+inner292→180full3/phòng. Không A-B round/bom/forfeit trước đó, không packet tới A sauEOF. Một vòng
+B/C đã chơi, không hai trận đủ gate. Auth/roster/rank/fuse vẫn fixture/policy; C3 không A1resume.
+
+Native replay144packet/6vector153/210secure snapshots, source/heap/counter limits ở evidence.
+Adapter153 ban đầu giả mọi channel có dynamic_s2c; A chưa vào round không có list nên KeyError,
+đã sửa vắnglist→empty và rerun oracle, không sửa raw/giả pass. Ba policy regression cho
+idle-before-first/setup/cleanup/active và first-key/roster/deny transport. Fullvalidator/t/actorstate/
+distance/auth/cache/codec/membership/reset/vanilla/K5/K6a/LAN/Internet giữ mở; thứ tự chỉ ở PLAN.

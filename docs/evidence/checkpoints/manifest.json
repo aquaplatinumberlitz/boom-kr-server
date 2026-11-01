@@ -1,7 +1,7 @@
 {
   "schema": "kre-checkpoints-v1",
-  "last_id": "CP053",
-  "completed_count": 53,
+  "last_id": "CP054",
+  "completed_count": 54,
   "audit_interval": 4,
   "last_periodic_audit": 52,
   "next_periodic_audit": "CP056",
@@ -96954,6 +96954,1095 @@
           "reason": "CP053 current host/setup proof, policy/limits/next admission and explicit owner continuous-work instruction, stable history."
         }
       ]
+    },
+    {
+      "id": "CP054",
+      "previous": "CP053",
+      "lifecycle": "complete",
+      "recorded_utc": "2026-11-01T15:10:18.081070+00:00",
+      "context_commit": "75606eb0353e7ef51d6a41e6bf6ac56b6cb56ad7",
+      "question": "Can fresh C join after pre-map hostEOF before first round, and B/C actually start/play/result/return?",
+      "scope": "KRE-017/#68. Reuse CP040/051/053 native fixture/consumers and VN method; admission logging control then narrow idle-before-first guard fix,3regressions. Two isolated ABC scripts, firstgeneration1/key12345/bombID1; no new native body/patch/worker. Continue validator124 source t immediately after integration per owner directive. Audit nextCP056.",
+      "owner": "Codex",
+      "reviewer": "Codex",
+      "artifacts": [
+        {
+          "name": "CA-r2-login-logout.exe",
+          "sha256": "660447c293ce92270cb9b5815331bca976e8f156366e1fe50b217b6c12e60ce3"
+        },
+        {
+          "name": "CA-r2-stage-social.exe",
+          "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+        },
+        {
+          "name": "CA-r2-stage-social.exe Bcopy",
+          "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+        },
+        {
+          "name": "modO.bin",
+          "sha256": "a08950c833d3acab8281049def7b3dc96b221f107eeda01da3a548e34b91dce5"
+        },
+        {
+          "name": "CA-r2-stage-social.exe Ccopy",
+          "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+        }
+      ],
+      "locators": [
+        "prestart-denied/prestart-fixed 2026-11-01UTC/CP05402-11JST; runtimee9bb47/static660447/modOa08950rawbase400000,RVA=VA-400000",
+        "ProbeService.replacement_allowed/deliver_departure/accept: idleindex0+mapB+chiefB+Acloses+no pending+departures_sent, preserves refresh/cap12",
+        "13B09E0 ID3/DC5925ownmatch/DC9363 121/E134B0clock;14EF300/E8A340153/52A350 securegetter; event170/175180 consumers reused"
+      ],
+      "findings": [
+        {
+          "summary": "Before first round allow fresh C only after closedA/live mapped promotedB/no pending cleanup/roomidle and completed departure sends. Record rejected accepts without assigning role/bootstrap, preserve post-round path and cap12.",
+          "source": "design",
+          "status": "design",
+          "method": "design",
+          "canonical": "docs/PROTOCOL.md#prestart-replacement",
+          "limits": "One diagnostic Wine B/C round, no prior forfeit; fixture auth/roster/rank/accept-order not account resume/general membership/fullvalidator/reset or gate/LAN proof. Mechanical checks not semantic certification.",
+          "evidence": [
+            "E044",
+            "E030"
+          ]
+        },
+        {
+          "summary": "Control after B native clear/chief: actual C ordinal9 rejected replacement_not_ready,8accepted sockets/noC ID3/no round. This confirms old admission blocker, not client auth success.",
+          "source": "kr_runtime",
+          "status": "confirmed",
+          "method": "runtime",
+          "canonical": "docs/PROTOCOL.md#prestart-replacement",
+          "limits": "One diagnostic Wine B/C round, no prior forfeit; fixture auth/roster/rank/accept-order not account resume/general membership/fullvalidator/reset or gate/LAN proof. Mechanical checks not semantic certification.",
+          "evidence": [
+            "E075",
+            "E011",
+            "E032"
+          ]
+        },
+        {
+          "summary": "Fixed12actual transports/CID3/ownmatch/actual82/95/B104; B/C121full129/clock, one generation1/key12345/actual B118 ID1,159158/17/19→C170/C21; secure Bstate1 both before175 then175full302/180full3/room. No priorA-Bround/bomb/forfeit or postcloseA sends.",
+          "source": "kr_runtime",
+          "status": "confirmed",
+          "method": "runtime",
+          "canonical": "docs/PROTOCOL.md#prestart-replacement",
+          "limits": "One diagnostic Wine B/C round, no prior forfeit; fixture auth/roster/rank/accept-order not account resume/general membership/fullvalidator/reset or gate/LAN proof. Mechanical checks not semantic certification.",
+          "evidence": [
+            "E085",
+            "E002",
+            "E011",
+            "E032",
+            "E034"
+          ]
+        },
+        {
+          "summary": "144native packet cases,6native153,210secure snapshots/getters; adapter153 absent dynamic_s2c on nonplaying A corrected to empty and oracle rerun, raw unchanged. No native Cauth replay in denied control.",
+          "source": "kr_static",
+          "status": "confirmed",
+          "method": "emulation",
+          "canonical": "docs/PROTOCOL.md#prestart-replacement",
+          "limits": "One diagnostic Wine B/C round, no prior forfeit; fixture auth/roster/rank/accept-order not account resume/general membership/fullvalidator/reset or gate/LAN proof. Mechanical checks not semantic certification.",
+          "evidence": [
+            "E014",
+            "E013",
+            "E002",
+            "E012"
+          ]
+        }
+      ],
+      "verification": [
+        {
+          "check": "2528relations/hash;144nativepacket/6native153/210secure;45server+7catalog+18checkpoint tests/docs/catalog/artifacts5/5/diff and requiredhistory/local checker",
+          "result": "pass",
+          "evidence": [
+            "E032",
+            "E013",
+            "E030",
+            "E006",
+            "E007",
+            "E009",
+            "E004"
+          ],
+          "limits": "Independent review waived; heap/receiver/getter counters modeled, not fullworld/gate; no audit due beforeCP056."
+        }
+      ],
+      "evidence": [
+        {
+          "id": "E001",
+          "kind": "repository",
+          "path": "docs/evidence/prestart-replacement/README.md",
+          "sha256": "2895657e0dc1c5e6f1a3fe141ae6a8ba49d7c020c5949a760c0adb3de4be46ce",
+          "bytes": 4763
+        },
+        {
+          "id": "E002",
+          "kind": "local",
+          "path": "local/research/codex/prestart-replacement-r1/actor-fields.json",
+          "sha256": "2093d1c3beee0e14b81d16dcc917c47612b4a8095b7adfcd5f9396c19c8ff29d",
+          "bytes": 143074
+        },
+        {
+          "id": "E003",
+          "kind": "local",
+          "path": "local/research/codex/prestart-replacement-r1/append_checkpoint.py",
+          "sha256": "8d9e3eb301d66aec3f536d9642ecb6de922d5f11f1358495772ff8697ad1a7e4",
+          "bytes": 7279
+        },
+        {
+          "id": "E004",
+          "kind": "local",
+          "path": "local/research/codex/prestart-replacement-r1/artifacts-check.txt",
+          "sha256": "649c6624aa6d317dfc1db5e16fea683cfbc9d9cf4dd3df11c0d70e57409054a0",
+          "bytes": 253
+        },
+        {
+          "id": "E005",
+          "kind": "local",
+          "path": "local/research/codex/prestart-replacement-r1/catalog-check.txt",
+          "sha256": "07cfdc4671ab13f3320ca868da10e2f29adb3799625c524fd7e8975cb45a5554",
+          "bytes": 264
+        },
+        {
+          "id": "E006",
+          "kind": "local",
+          "path": "local/research/codex/prestart-replacement-r1/catalog-tests.txt",
+          "sha256": "9d5cca9e1ffcfd2ba5f320e65a16bddf12fa2a3f2e88f25e82f37079349bb27c",
+          "bytes": 105
+        },
+        {
+          "id": "E007",
+          "kind": "local",
+          "path": "local/research/codex/prestart-replacement-r1/checkpoint-tests.txt",
+          "sha256": "afb7e0ac0669524a58b150411543a10977c059b8c1905fdf671ad0c037ce2487",
+          "bytes": 117
+        },
+        {
+          "id": "E008",
+          "kind": "local",
+          "path": "local/research/codex/prestart-replacement-r1/derive_roles.py",
+          "sha256": "06286897326746a71a35ece96efb0e2dbd463ab3339f311dc4ac45fa1e51366b",
+          "bytes": 1035
+        },
+        {
+          "id": "E009",
+          "kind": "local",
+          "path": "local/research/codex/prestart-replacement-r1/docs-check.txt",
+          "sha256": "48e962b3f6455c056334207bd2557715cbd7d78dc7e7c9bef1aa83eb7ee892ee",
+          "bytes": 173
+        },
+        {
+          "id": "E010",
+          "kind": "local",
+          "path": "local/research/codex/prestart-replacement-r1/issue-body.md",
+          "sha256": "48f91d952a4a4a4c74374b36cbdb4c4cf554412ef7ea8f68c607633790e5c8b5",
+          "bytes": 1154
+        },
+        {
+          "id": "E011",
+          "kind": "local",
+          "path": "local/research/codex/prestart-replacement-r1/lifecycle-summary.json",
+          "sha256": "3f4525374e0f6f958fa9d267dc01ebe3c7d943e8f4b23be8682e45f5489e76af",
+          "bytes": 16263
+        },
+        {
+          "id": "E012",
+          "kind": "local",
+          "path": "local/research/codex/prestart-replacement-r1/measurement-notes.json",
+          "sha256": "d5aa1c30684fef0a9ce058c291b62da6a8f07e32847c2e5a6eb6fb9493172762",
+          "bytes": 1315
+        },
+        {
+          "id": "E013",
+          "kind": "local",
+          "path": "local/research/codex/prestart-replacement-r1/native-153.json",
+          "sha256": "6075c8395994a8a7ff9d42ce9f81b5da9ec96daf4f773756cc69662f7abcb1e1",
+          "bytes": 7025
+        },
+        {
+          "id": "E014",
+          "kind": "local",
+          "path": "local/research/codex/prestart-replacement-r1/native-packets.json",
+          "sha256": "0e3514ca1d0588b16340a607a4d488e52af5b2ef894cef50ecc7179f362c3ae6",
+          "bytes": 55157
+        },
+        {
+          "id": "E015",
+          "kind": "local",
+          "path": "local/research/codex/prestart-replacement-r1/native_153.py",
+          "sha256": "0e21e690f36d6a50248f4010d2a5e8802add46538e35a73ff1e80a5219bb00c1",
+          "bytes": 3539
+        },
+        {
+          "id": "E016",
+          "kind": "local",
+          "path": "local/research/codex/prestart-replacement-r1/native_packets.py",
+          "sha256": "88fd91b5694707a35bb6c3f1d15ffc5676c4259aac02d89b8679faa02eafc60f",
+          "bytes": 4838
+        },
+        {
+          "id": "E017",
+          "kind": "local",
+          "path": "local/research/codex/prestart-replacement-r1/parse_fields.py",
+          "sha256": "840e35a218b1c95e4ee24c5b7c9477e6997e57032532a23cf8064dfbbc5f8983",
+          "bytes": 3921
+        },
+        {
+          "id": "E018",
+          "kind": "local",
+          "path": "local/research/codex/prestart-replacement-r1/parse_lifecycle.py",
+          "sha256": "d84b57fef799374b6abc3c611e028b05ee5b2e679d90cd9be06dd09726fcc0c2",
+          "bytes": 2675
+        },
+        {
+          "id": "E019",
+          "kind": "local",
+          "path": "local/research/codex/prestart-replacement-r1/prestart-denied-hashes.json",
+          "sha256": "1a631df6201753003a5fda2871dc5220911133b7bad5042682d1576c53193f01",
+          "bytes": 191295
+        },
+        {
+          "id": "E020",
+          "kind": "local",
+          "path": "local/research/codex/prestart-replacement-r1/prestart-denied-launcher.log",
+          "sha256": "b8f525a4c5b200e7cfdb55e2ad440715f1f7029ac17c27021e25612ca9b28c3e",
+          "bytes": 29322
+        },
+        {
+          "id": "E021",
+          "kind": "local",
+          "path": "local/research/codex/prestart-replacement-r1/prestart-denied-recipe.json",
+          "sha256": "c156d6d8eb77a1e0d82a517dc70cc67f593f5dd39e5a9a2fc452443e6f0303a2",
+          "bytes": 1030
+        },
+        {
+          "id": "E022",
+          "kind": "local",
+          "path": "local/research/codex/prestart-replacement-r1/prestart-fixed-hashes.json",
+          "sha256": "3c8f14a4126f9bf4140f7a00eba0809d5d8dfcbd0e7c5a4a1ac86310ae84d12e",
+          "bytes": 335996
+        },
+        {
+          "id": "E023",
+          "kind": "local",
+          "path": "local/research/codex/prestart-replacement-r1/prestart-fixed-launcher.log",
+          "sha256": "f40606d4c965415a04923b483960c0f95947b1965cc1cff709920b366c230bfb",
+          "bytes": 83774
+        },
+        {
+          "id": "E024",
+          "kind": "local",
+          "path": "local/research/codex/prestart-replacement-r1/prestart-fixed-recipe.json",
+          "sha256": "bc50959877484adddfd3c91da7296326d09cb9899e1884a1ef0bf1b6d0017375",
+          "bytes": 1028
+        },
+        {
+          "id": "E025",
+          "kind": "local",
+          "path": "local/research/codex/prestart-replacement-r1/profile.json",
+          "sha256": "922cce0ba24ede668fb44b3b82f937c5c2a0af478bb5b8905fde272bbd564b5f",
+          "bytes": 10845
+        },
+        {
+          "id": "E026",
+          "kind": "local",
+          "path": "local/research/codex/prestart-replacement-r1/replay-run.py",
+          "sha256": "f25adc0613113e77c034b805cb28bdb184544650609d1adc8236ad630b1f76ed",
+          "bytes": 3011
+        },
+        {
+          "id": "E027",
+          "kind": "local",
+          "path": "local/research/codex/prestart-replacement-r1/reuse-question.json",
+          "sha256": "f3c1fd1edc10a6b0cf009b543ba5d2578b9bfec33400d249a8a6096c39b84c7f",
+          "bytes": 4254
+        },
+        {
+          "id": "E028",
+          "kind": "local",
+          "path": "local/research/codex/prestart-replacement-r1/run_probe.py",
+          "sha256": "569d49708f6967e05f89b71961f1f3b9c76c0ebd8efc910c600660aefd6b42fb",
+          "bytes": 1076
+        },
+        {
+          "id": "E029",
+          "kind": "local",
+          "path": "local/research/codex/prestart-replacement-r1/seal_run.py",
+          "sha256": "839169dced8aca99276482846fcdc359864d0551f47769ee8bb1f7e05aaf19ca",
+          "bytes": 634
+        },
+        {
+          "id": "E030",
+          "kind": "local",
+          "path": "local/research/codex/prestart-replacement-r1/server-tests.txt",
+          "sha256": "b51a082b995f6b8302c6c65731710c665e8dd28f0c99ea7e67f8fb4621044dc3",
+          "bytes": 144
+        },
+        {
+          "id": "E031",
+          "kind": "local",
+          "path": "local/research/codex/prestart-replacement-r1/service.gdb",
+          "sha256": "90f53ef6e1527e04db68609d275833899ee662b071f53f666d6b7803b0b7a77d",
+          "bytes": 24712
+        },
+        {
+          "id": "E032",
+          "kind": "local",
+          "path": "local/research/codex/prestart-replacement-r1/verification.json",
+          "sha256": "b389ab7ec05ab10a2d0bcd22bc478732a8e9fc2fcb4445262f42205a9fde50cc",
+          "bytes": 1043
+        },
+        {
+          "id": "E033",
+          "kind": "local",
+          "path": "local/research/codex/prestart-replacement-r1/verify.py",
+          "sha256": "286ca1ab6b15fa88037e93f2a027241961662f85ff2bc2c07c0ebb78ed420ee3",
+          "bytes": 5011
+        },
+        {
+          "id": "E034",
+          "kind": "local",
+          "path": "local/research/codex/prestart-replacement-r1/visual-index.json",
+          "sha256": "bb6c2fc4deb4b5074634d8b0645e328d269f4417c98887e6b52980821905ee8e",
+          "bytes": 824
+        },
+        {
+          "id": "E035",
+          "kind": "local",
+          "path": "local/research/codex/prestart-replacement-r1/visual.png",
+          "sha256": "577ba58abafc8ae63277b78f536f40fa2fcea34f86e9c2f592ee063ecb9e6e79",
+          "bytes": 501785
+        },
+        {
+          "id": "E036",
+          "kind": "local",
+          "path": "local/research/codex/prestart-replacement-r1/cp054-snapshot/README.md",
+          "sha256": "a1b91edb14ccab6b5401b2b6d93838db315f25a8cadc2915c97267ec84daf25d",
+          "bytes": 3945
+        },
+        {
+          "id": "E037",
+          "kind": "local",
+          "path": "local/research/codex/prestart-replacement-r1/cp054-snapshot/docs/COVERAGE.md",
+          "sha256": "899c7d1414e177503ef2aed5d170a6c87b2bfd83dac4ddcbf8777b47c240a41f",
+          "bytes": 65239
+        },
+        {
+          "id": "E038",
+          "kind": "local",
+          "path": "local/research/codex/prestart-replacement-r1/cp054-snapshot/docs/PLAN.md",
+          "sha256": "d00bcdb81c029018052ea14067ca4cc7c1695bae58ed7effb0d1ed5304a5b794",
+          "bytes": 29545
+        },
+        {
+          "id": "E039",
+          "kind": "local",
+          "path": "local/research/codex/prestart-replacement-r1/cp054-snapshot/docs/PROTOCOL.md",
+          "sha256": "fd5bfd74502ea59288e0ace6ba22a5fa86a7f9390341ceb16e8d2533671bc011",
+          "bytes": 189764
+        },
+        {
+          "id": "E040",
+          "kind": "local",
+          "path": "local/research/codex/prestart-replacement-r1/cp054-snapshot/docs/RESEARCH.md",
+          "sha256": "e65b7b76f2ae682dc39fce95cddd425ded490235eef317a74e7caa0137dc35ee",
+          "bytes": 28977
+        },
+        {
+          "id": "E041",
+          "kind": "local",
+          "path": "local/research/codex/prestart-replacement-r1/cp054-snapshot/docs/evidence/prestart-replacement/README.md",
+          "sha256": "2895657e0dc1c5e6f1a3fe141ae6a8ba49d7c020c5949a760c0adb3de4be46ce",
+          "bytes": 4763
+        },
+        {
+          "id": "E042",
+          "kind": "local",
+          "path": "local/research/codex/prestart-replacement-r1/cp054-snapshot/docs/features.json",
+          "sha256": "8e09df6a4a791aad0fee32ca90534551c83ac693a1279d68daa0323b491649ad",
+          "bytes": 68153
+        },
+        {
+          "id": "E043",
+          "kind": "local",
+          "path": "local/research/codex/prestart-replacement-r1/cp054-snapshot/server/README.md",
+          "sha256": "e9b46ed63b6f7f63c59737621282d874254efe6a4c325422dc870425c8ef4e14",
+          "bytes": 8814
+        },
+        {
+          "id": "E044",
+          "kind": "local",
+          "path": "local/research/codex/prestart-replacement-r1/cp054-snapshot/server/probe_service.py",
+          "sha256": "6b10bf9ee788c243e47f71a666b458870d48155a3755a6bcb88b61359e3191fe",
+          "bytes": 31461
+        },
+        {
+          "id": "E045",
+          "kind": "local",
+          "path": "local/research/codex/prestart-replacement-r1/cp054-snapshot/server/test_probe_replacement.py",
+          "sha256": "93ac17d0b479d0657d6814e3d54cd4e182fe7034fa83380e80d20087d4fb9b02",
+          "bytes": 7723
+        },
+        {
+          "id": "E046",
+          "kind": "local",
+          "path": "local/research/codex/prestart-replacement-r1/baseline/server/item_claims.py",
+          "sha256": "7990ae9195e9f8bba56b04101f352506194dbd0252793183993ce101a8674a2e",
+          "bytes": 3340
+        },
+        {
+          "id": "E047",
+          "kind": "local",
+          "path": "local/research/codex/prestart-replacement-r1/baseline/server/probe_codec.py",
+          "sha256": "23ba54e6940953a52ff737e7e06b2761a8eb22eab444310b49b1d96efa12411d",
+          "bytes": 3227
+        },
+        {
+          "id": "E048",
+          "kind": "local",
+          "path": "local/research/codex/prestart-replacement-r1/baseline/server/probe_room.py",
+          "sha256": "91292494d492c7851bd5432649adf528e1b07290316dc56ba1478f8a209a08bc",
+          "bytes": 1468
+        },
+        {
+          "id": "E049",
+          "kind": "local",
+          "path": "local/research/codex/prestart-replacement-r1/baseline/server/probe_service.py",
+          "sha256": "a498c2e6018adf6aabaee4d13639e7f3b05669d10d92d40496c3305a2b7eadac",
+          "bytes": 31129
+        },
+        {
+          "id": "E050",
+          "kind": "local",
+          "path": "local/research/codex/prestart-replacement-r1/baseline/server/round_fence.py",
+          "sha256": "aabcc7f1d623573fc217de8df05403f83d82425bbe5d6e78872b3096a2d46708",
+          "bytes": 2339
+        },
+        {
+          "id": "E051",
+          "kind": "local",
+          "path": "local/research/codex/prestart-replacement-r1/baseline/server/udp_round_keys.py",
+          "sha256": "db58ae1f25bcbeb52c2d25c7db6afbf1021ddd3af29702e756f5f41886530a0d",
+          "bytes": 1187
+        },
+        {
+          "id": "E052",
+          "kind": "local",
+          "path": "local/research/codex/prestart-replacement-r1/fixed-source/item_claims.py",
+          "sha256": "7990ae9195e9f8bba56b04101f352506194dbd0252793183993ce101a8674a2e",
+          "bytes": 3340
+        },
+        {
+          "id": "E053",
+          "kind": "local",
+          "path": "local/research/codex/prestart-replacement-r1/fixed-source/probe_codec.py",
+          "sha256": "23ba54e6940953a52ff737e7e06b2761a8eb22eab444310b49b1d96efa12411d",
+          "bytes": 3227
+        },
+        {
+          "id": "E054",
+          "kind": "local",
+          "path": "local/research/codex/prestart-replacement-r1/fixed-source/probe_room.py",
+          "sha256": "91292494d492c7851bd5432649adf528e1b07290316dc56ba1478f8a209a08bc",
+          "bytes": 1468
+        },
+        {
+          "id": "E055",
+          "kind": "local",
+          "path": "local/research/codex/prestart-replacement-r1/fixed-source/probe_service.py",
+          "sha256": "6b10bf9ee788c243e47f71a666b458870d48155a3755a6bcb88b61359e3191fe",
+          "bytes": 31461
+        },
+        {
+          "id": "E056",
+          "kind": "local",
+          "path": "local/research/codex/prestart-replacement-r1/fixed-source/round_fence.py",
+          "sha256": "aabcc7f1d623573fc217de8df05403f83d82425bbe5d6e78872b3096a2d46708",
+          "bytes": 2339
+        },
+        {
+          "id": "E057",
+          "kind": "local",
+          "path": "local/research/codex/prestart-replacement-r1/fixed-source/udp_round_keys.py",
+          "sha256": "db58ae1f25bcbeb52c2d25c7db6afbf1021ddd3af29702e756f5f41886530a0d",
+          "bytes": 1187
+        },
+        {
+          "id": "E058",
+          "kind": "local",
+          "path": "local/research/codex/prestart-replacement-r1/request-frames/prestart-denied/B-F13-82.bin",
+          "sha256": "1746130345929e482c425aa463e6bf34d6da555c86c6474cf235330227f74f47",
+          "bytes": 49
+        },
+        {
+          "id": "E059",
+          "kind": "local",
+          "path": "local/research/codex/prestart-replacement-r1/request-frames/prestart-fixed/B-F12-82.bin",
+          "sha256": "27d13b13f8df5db1f67451352419d49458641283683b06d40bc91f6c3f7220e7",
+          "bytes": 49
+        },
+        {
+          "id": "E060",
+          "kind": "local",
+          "path": "local/research/codex/prestart-replacement-r1/request-frames/prestart-fixed/B-F38-99.bin",
+          "sha256": "c04ecc99ac65e89a670662f284c8d23a3010a4a9f2d721104152f5712792d2bb",
+          "bytes": 61
+        },
+        {
+          "id": "E061",
+          "kind": "local",
+          "path": "local/research/codex/prestart-replacement-r1/request-frames/prestart-fixed/B-F45-118.bin",
+          "sha256": "04b2a834657512cdacc67a2abc0ae21d47d00288d6b59d480658a0625a4efb03",
+          "bytes": 60
+        },
+        {
+          "id": "E062",
+          "kind": "local",
+          "path": "local/research/codex/prestart-replacement-r1/request-frames/prestart-fixed/B-F52-127.bin",
+          "sha256": "607ba4108d179ab1970f95118f2570edf32fa28815b14106352ef6908f5a7ec9",
+          "bytes": 70
+        },
+        {
+          "id": "E063",
+          "kind": "local",
+          "path": "local/research/codex/prestart-replacement-r1/request-frames/prestart-fixed/B-F56-127.bin",
+          "sha256": "f937f238870fb6ead1644ced79f37bb42c43d9154d108fe14ee79fa07fc02d0c",
+          "bytes": 67
+        },
+        {
+          "id": "E064",
+          "kind": "local",
+          "path": "local/research/codex/prestart-replacement-r1/request-frames/prestart-fixed/C-F13-82.bin",
+          "sha256": "1746130345929e482c425aa463e6bf34d6da555c86c6474cf235330227f74f47",
+          "bytes": 49
+        },
+        {
+          "id": "E065",
+          "kind": "local",
+          "path": "local/research/codex/prestart-replacement-r1/request-frames/prestart-fixed/C-F23-95.bin",
+          "sha256": "41ec7cfe284ac427205c3029e41fd807814e254b6f15c4c80abea2e30c47b7d1",
+          "bytes": 98
+        },
+        {
+          "id": "E066",
+          "kind": "local",
+          "path": "local/research/codex/prestart-replacement-r1/request-frames/prestart-fixed/C-F28-99.bin",
+          "sha256": "5987dbf0958d42f55156e8b941c0e801bc2281a57f4de2ff06286f30379399dc",
+          "bytes": 61
+        },
+        {
+          "id": "E067",
+          "kind": "local",
+          "path": "local/research/codex/prestart-replacement-r1/request-frames/prestart-fixed/C-F36-124.bin",
+          "sha256": "7f1eb3cfb03aea29bf760f6731615f7f9febe64203987380b19c4ed80bf33444",
+          "bytes": 57
+        },
+        {
+          "id": "E068",
+          "kind": "local",
+          "path": "local/research/codex/prestart-replacement-r1/request-frames/prestart-fixed/C-F48-127.bin",
+          "sha256": "1727bbe6a03e88bb50fb8f12ab728d845a99423f646c72fa7ca22ba1a649dca7",
+          "bytes": 52
+        },
+        {
+          "id": "E069",
+          "kind": "local",
+          "path": "local/research/codex/prestart-replacement-r1/request-frames/prestart-fixed/C-F49-127.bin",
+          "sha256": "83dce3826a35095338a95e639a65b755cce8ea8aa07051f4ef1149507ff2d4e3",
+          "bytes": 52
+        },
+        {
+          "id": "E070",
+          "kind": "local",
+          "path": "local/research/codex/prestart-replacement-r1/request-frames/prestart-fixed/C-F52-127.bin",
+          "sha256": "34317393c098524e8f0d2211ee8f22fab03f96ab5597c1adfc409c9c502be086",
+          "bytes": 52
+        },
+        {
+          "id": "E071",
+          "kind": "local",
+          "path": "local/research/codex/prestart-replacement-r1/request-frames/prestart-fixed/C-F53-127.bin",
+          "sha256": "6e43ecb451da5d4788ef0ba08f6bf5f57dc7eb486cc0e2a5c0ed5026ca5cc065",
+          "bytes": 52
+        },
+        {
+          "id": "E072",
+          "kind": "local",
+          "path": "local/research/codex/prestart-replacement-r1/request-frames/prestart-fixed/C-F54-127.bin",
+          "sha256": "5b49c2c3326114d82130af40b19e0db2e66f6c8fa98d717280e3d39071666b35",
+          "bytes": 52
+        },
+        {
+          "id": "E073",
+          "kind": "local",
+          "path": "local/research/codex/prestart-replacement-r1/request-frames/prestart-fixed/C-F55-127.bin",
+          "sha256": "de9038fbf46e99617f43f9900a9552723b747de0fb2e342775d09015d9f77dbc",
+          "bytes": 52
+        },
+        {
+          "id": "E074",
+          "kind": "local",
+          "path": "local/research/codex/prestart-replacement-r1/request-frames/prestart-fixed/C-F57-127.bin",
+          "sha256": "4772f80c9cdd2050bcbffc7e259b40f31fa27c62e13a47c4eaba80ff2c5107ba",
+          "bytes": 52
+        },
+        {
+          "id": "E075",
+          "kind": "local",
+          "path": "local/research/codex/prestart-replacement-r1/prestart-denied/run.json",
+          "sha256": "95e45aa9c8c6808cff006148812551900ce4b90dac4832f0ffc91e246204f785",
+          "bytes": 36504
+        },
+        {
+          "id": "E076",
+          "kind": "local",
+          "path": "local/research/codex/prestart-replacement-r1/prestart-denied/client.log",
+          "sha256": "d0aa57efaf7079b974484e6f4fa059b79dedd8a50079a8eae1d34cdabe0a39ed",
+          "bytes": 18080
+        },
+        {
+          "id": "E077",
+          "kind": "local",
+          "path": "local/research/codex/prestart-replacement-r1/prestart-denied/client-B.log",
+          "sha256": "a8a00abfcfef35b2b9f3700a79ee6d1c8aefb252ed15d74e85dce281e5db31b6",
+          "bytes": 19824
+        },
+        {
+          "id": "E078",
+          "kind": "local",
+          "path": "local/research/codex/prestart-replacement-r1/prestart-denied/client-C.log",
+          "sha256": "29f949f1d1b8b55d2537bec3b34482728724df03f00f1af480d576522fbda866",
+          "bytes": 8333
+        },
+        {
+          "id": "E079",
+          "kind": "local",
+          "path": "local/research/codex/prestart-replacement-r1/prestart-denied/service-state.json",
+          "sha256": "8d2bc96495ee16a45394049446664fefdb6666f97821b8c0e1d8ae3c045c7acf",
+          "bytes": 38756
+        },
+        {
+          "id": "E080",
+          "kind": "local",
+          "path": "local/research/codex/prestart-replacement-r1/prestart-denied/debug-commands.txt",
+          "sha256": "90f53ef6e1527e04db68609d275833899ee662b071f53f666d6b7803b0b7a77d",
+          "bytes": 24712
+        },
+        {
+          "id": "E081",
+          "kind": "local",
+          "path": "local/research/codex/prestart-replacement-r1/prestart-denied/debug-commands-B.txt",
+          "sha256": "90f53ef6e1527e04db68609d275833899ee662b071f53f666d6b7803b0b7a77d",
+          "bytes": 24712
+        },
+        {
+          "id": "E082",
+          "kind": "local",
+          "path": "local/research/codex/prestart-replacement-r1/prestart-denied/debug-commands-C.txt",
+          "sha256": "90f53ef6e1527e04db68609d275833899ee662b071f53f666d6b7803b0b7a77d",
+          "bytes": 24712
+        },
+        {
+          "id": "E083",
+          "kind": "local",
+          "path": "local/research/codex/prestart-replacement-r1/prestart-denied/B-remove107-73.bin",
+          "sha256": "080a2a02737ae7e0dbbace69ad20e9c0c0b9cb6da610f5e75f75b28f33f88a4f",
+          "bytes": 44
+        },
+        {
+          "id": "E084",
+          "kind": "local",
+          "path": "local/research/codex/prestart-replacement-r1/prestart-denied/B-survivor110-76.bin",
+          "sha256": "67c2f21980ce4b68ed14c23c18e831065a18ed4056b43e34a94288cdbb7149bd",
+          "bytes": 44
+        },
+        {
+          "id": "E085",
+          "kind": "local",
+          "path": "local/research/codex/prestart-replacement-r1/prestart-fixed/run.json",
+          "sha256": "9b56e4ec05c932ec09d8ddbe4ce8801c52999189d94abe89616392d26db99ca0",
+          "bytes": 107220
+        },
+        {
+          "id": "E086",
+          "kind": "local",
+          "path": "local/research/codex/prestart-replacement-r1/prestart-fixed/client.log",
+          "sha256": "73891105d93148bee9954ad8ec5b7e7e660864b3ce92838d15c23c35a4dce6bb",
+          "bytes": 18152
+        },
+        {
+          "id": "E087",
+          "kind": "local",
+          "path": "local/research/codex/prestart-replacement-r1/prestart-fixed/client-B.log",
+          "sha256": "f0f4c042bdff3cb76cab3fe3ec09a9f596f185c1354f5000b4aea5a9441205e0",
+          "bytes": 45767
+        },
+        {
+          "id": "E088",
+          "kind": "local",
+          "path": "local/research/codex/prestart-replacement-r1/prestart-fixed/client-C.log",
+          "sha256": "fefaee70bb9cadc1713480fbc0d3dd6bf754348851f6c9a1a3d18a949bb741bf",
+          "bytes": 56462
+        },
+        {
+          "id": "E089",
+          "kind": "local",
+          "path": "local/research/codex/prestart-replacement-r1/prestart-fixed/service-state.json",
+          "sha256": "ea8c54edde0687f841c5b2264640abdf9ef185b8be02797c7d16280dee44f0bc",
+          "bytes": 108291
+        },
+        {
+          "id": "E090",
+          "kind": "local",
+          "path": "local/research/codex/prestart-replacement-r1/prestart-fixed/debug-commands.txt",
+          "sha256": "90f53ef6e1527e04db68609d275833899ee662b071f53f666d6b7803b0b7a77d",
+          "bytes": 24712
+        },
+        {
+          "id": "E091",
+          "kind": "local",
+          "path": "local/research/codex/prestart-replacement-r1/prestart-fixed/debug-commands-B.txt",
+          "sha256": "90f53ef6e1527e04db68609d275833899ee662b071f53f666d6b7803b0b7a77d",
+          "bytes": 24712
+        },
+        {
+          "id": "E092",
+          "kind": "local",
+          "path": "local/research/codex/prestart-replacement-r1/prestart-fixed/debug-commands-C.txt",
+          "sha256": "90f53ef6e1527e04db68609d275833899ee662b071f53f666d6b7803b0b7a77d",
+          "bytes": 24712
+        },
+        {
+          "id": "E093",
+          "kind": "local",
+          "path": "local/research/codex/prestart-replacement-r1/prestart-fixed/B-blast158-r1-1-106.bin",
+          "sha256": "efe7a4c01f3c9759017abfb6558721f2496a46e05aa1f93caf44d45a7d92ba18",
+          "bytes": 51
+        },
+        {
+          "id": "E094",
+          "kind": "local",
+          "path": "local/research/codex/prestart-replacement-r1/prestart-fixed/B-dynamic159-r1-1-103.bin",
+          "sha256": "85149144d535b5e3cf29dc13627e879cd22ad7795620c6dfda49e9e90a32e56b",
+          "bytes": 77
+        },
+        {
+          "id": "E095",
+          "kind": "local",
+          "path": "local/research/codex/prestart-replacement-r1/prestart-fixed/B-floor582-85.bin",
+          "sha256": "d956bb1e3a7b0e8aa06483338f53c08fb270099987dd1bf20e7332dafefe4607",
+          "bytes": 64
+        },
+        {
+          "id": "E096",
+          "kind": "local",
+          "path": "local/research/codex/prestart-replacement-r1/prestart-fixed/B-go197-91.bin",
+          "sha256": "d17f6f5c33e4e7512a63c26e7b64f89245596f0239d59eac8f14a8a147fe2d38",
+          "bytes": 52
+        },
+        {
+          "id": "E097",
+          "kind": "local",
+          "path": "local/research/codex/prestart-replacement-r1/prestart-fixed/B-guest110-r1-118.bin",
+          "sha256": "ab43fbe540028f8091e1bd34f2eec627c215d96567f97c89619be55e603eaeb4",
+          "bytes": 44
+        },
+        {
+          "id": "E098",
+          "kind": "local",
+          "path": "local/research/codex/prestart-replacement-r1/prestart-fixed/B-host110-r1-115.bin",
+          "sha256": "32190a709ecca6ccf51c7acbd9e8c9282906a64a695d5772c522cfeb516bc90a",
+          "bytes": 44
+        },
+        {
+          "id": "E099",
+          "kind": "local",
+          "path": "local/research/codex/prestart-replacement-r1/prestart-fixed/B-item165-r1-17-100.bin",
+          "sha256": "132c24878c021733b639305e55d81bac7ca16cd0d8cfe246c2c979858a0e282a",
+          "bytes": 50
+        },
+        {
+          "id": "E100",
+          "kind": "local",
+          "path": "local/research/codex/prestart-replacement-r1/prestart-fixed/B-peer153-97.bin",
+          "sha256": "27c0ef17a2134b72cd4624be9aeb51622d129df0d0529a72c1035cab9df3f8bc",
+          "bytes": 135
+        },
+        {
+          "id": "E101",
+          "kind": "local",
+          "path": "local/research/codex/prestart-replacement-r1/prestart-fixed/B-play196-94.bin",
+          "sha256": "aa96cae97c2874b468ef229a2893c249f80b238461227d1ecde772496ecfde7d",
+          "bytes": 45
+        },
+        {
+          "id": "E102",
+          "kind": "local",
+          "path": "local/research/codex/prestart-replacement-r1/prestart-fixed/B-rank175-r1-109.bin",
+          "sha256": "c4d1727ae8cf8b68cd7f49b6f5539ed23d4b852905fa635e96046f5a20e87c24",
+          "bytes": 340
+        },
+        {
+          "id": "E103",
+          "kind": "local",
+          "path": "local/research/codex/prestart-replacement-r1/prestart-fixed/B-ready110-82.bin",
+          "sha256": "62a5e55c4bf26e5bd646957e0a5c18d685a4f1ad3471a3714ed35b5ddfa05c84",
+          "bytes": 44
+        },
+        {
+          "id": "E104",
+          "kind": "local",
+          "path": "local/research/codex/prestart-replacement-r1/prestart-fixed/B-remove107-121.bin",
+          "sha256": "3cdcdaa9a4702be54ea41897b03e04b45dd93b686e0760568639a83fcca9ab87",
+          "bytes": 44
+        },
+        {
+          "id": "E105",
+          "kind": "local",
+          "path": "local/research/codex/prestart-replacement-r1/prestart-fixed/B-remove107-73.bin",
+          "sha256": "080a2a02737ae7e0dbbace69ad20e9c0c0b9cb6da610f5e75f75b28f33f88a4f",
+          "bytes": 44
+        },
+        {
+          "id": "E106",
+          "kind": "local",
+          "path": "local/research/codex/prestart-replacement-r1/prestart-fixed/B-replacement106-79.bin",
+          "sha256": "8887f58446d30a3598b19e3b2ea8d5317f8f0316bc8fcc82afd9de8bb3a3b317",
+          "bytes": 242
+        },
+        {
+          "id": "E107",
+          "kind": "local",
+          "path": "local/research/codex/prestart-replacement-r1/prestart-fixed/B-return180-r1-112.bin",
+          "sha256": "8fbf7d929774603b0881b88b9b5793b0d8212a03edcc2392ae14c08c4fc1c408",
+          "bytes": 41
+        },
+        {
+          "id": "E108",
+          "kind": "local",
+          "path": "local/research/codex/prestart-replacement-r1/prestart-fixed/B-start121-r1-88.bin",
+          "sha256": "e327c9204c8b47f3bb0eb74231a741fdbb99f3dcbff24f4479af26a708bcb4de",
+          "bytes": 167
+        },
+        {
+          "id": "E109",
+          "kind": "local",
+          "path": "local/research/codex/prestart-replacement-r1/prestart-fixed/B-survivor110-124.bin",
+          "sha256": "0135f24bccfc8967220f86e58a7d3b3c4aa1b4abac598e724df7344d7a506ef9",
+          "bytes": 44
+        },
+        {
+          "id": "E110",
+          "kind": "local",
+          "path": "local/research/codex/prestart-replacement-r1/prestart-fixed/B-survivor110-76.bin",
+          "sha256": "67c2f21980ce4b68ed14c23c18e831065a18ed4056b43e34a94288cdbb7149bd",
+          "bytes": 44
+        },
+        {
+          "id": "E111",
+          "kind": "local",
+          "path": "local/research/codex/prestart-replacement-r1/prestart-fixed/C-blast158-r1-1-97.bin",
+          "sha256": "74e2de4a80eccc95ca075b6b7b315a7883176c212d7f752f47cb45a80c0122e3",
+          "bytes": 51
+        },
+        {
+          "id": "E112",
+          "kind": "local",
+          "path": "local/research/codex/prestart-replacement-r1/prestart-fixed/C-dynamic159-r1-1-94.bin",
+          "sha256": "3c86a14bec4f050bacd0b4829db7873e640f35f5bcc156ada75ed13eaeb9d508",
+          "bytes": 77
+        },
+        {
+          "id": "E113",
+          "kind": "local",
+          "path": "local/research/codex/prestart-replacement-r1/prestart-fixed/C-event170-17-r1-100.bin",
+          "sha256": "b5cfe59eae7d8cdea01f589a65820c40b112bc6441888331e9f8c7e973ed8bad",
+          "bytes": 48
+        },
+        {
+          "id": "E114",
+          "kind": "local",
+          "path": "local/research/codex/prestart-replacement-r1/prestart-fixed/C-event170-19-r1-103.bin",
+          "sha256": "abf3517056c6b50ccf52df77793226640ff2d669f75a2cddaf4b465d00bf73a1",
+          "bytes": 59
+        },
+        {
+          "id": "E115",
+          "kind": "local",
+          "path": "local/research/codex/prestart-replacement-r1/prestart-fixed/C-floor582-76.bin",
+          "sha256": "dade68ac6b12c8c7ae59bf27d007ad4f1b32b6369d9a0fcd29170b3063e42ace",
+          "bytes": 64
+        },
+        {
+          "id": "E116",
+          "kind": "local",
+          "path": "local/research/codex/prestart-replacement-r1/prestart-fixed/C-go197-82.bin",
+          "sha256": "64b95010ecb0e40bc0367f41f6710d2357fb2538ce827e205825284601237ef8",
+          "bytes": 52
+        },
+        {
+          "id": "E117",
+          "kind": "local",
+          "path": "local/research/codex/prestart-replacement-r1/prestart-fixed/C-guest110-r1-115.bin",
+          "sha256": "e4a6a716f8432eb339c062d2344ba1bb33880062001820bdd990dc576ad40e9f",
+          "bytes": 44
+        },
+        {
+          "id": "E118",
+          "kind": "local",
+          "path": "local/research/codex/prestart-replacement-r1/prestart-fixed/C-host110-r1-112.bin",
+          "sha256": "a9eb149b5c7164a57af2bae274c86214691c941ede01eb746e1741c6ae733011",
+          "bytes": 44
+        },
+        {
+          "id": "E119",
+          "kind": "local",
+          "path": "local/research/codex/prestart-replacement-r1/prestart-fixed/C-item165-r1-17-91.bin",
+          "sha256": "2ad2e7cbd637f553ff114fada41951a1129ca3dc52b14a540a60ccea59088bf0",
+          "bytes": 50
+        },
+        {
+          "id": "E120",
+          "kind": "local",
+          "path": "local/research/codex/prestart-replacement-r1/prestart-fixed/C-peer153-88.bin",
+          "sha256": "2f88e34b90768193816a3a8b51559f9360f975f33ffc4b9066805983a33ae2d5",
+          "bytes": 135
+        },
+        {
+          "id": "E121",
+          "kind": "local",
+          "path": "local/research/codex/prestart-replacement-r1/prestart-fixed/C-play196-85.bin",
+          "sha256": "d04bf155b4847f9d41b0edfdf00a32526302273271c0f1cadbb8ce22b89eb51d",
+          "bytes": 45
+        },
+        {
+          "id": "E122",
+          "kind": "local",
+          "path": "local/research/codex/prestart-replacement-r1/prestart-fixed/C-rank175-r1-106.bin",
+          "sha256": "26f918bc7327487f8a6052df2dbde551e9a761188aae29af81588d2df30aa31a",
+          "bytes": 340
+        },
+        {
+          "id": "E123",
+          "kind": "local",
+          "path": "local/research/codex/prestart-replacement-r1/prestart-fixed/C-ready110-73.bin",
+          "sha256": "849c64b6d2a8752c38a190d0dc6aa657b81dae657ef732890d826aff520b1e73",
+          "bytes": 44
+        },
+        {
+          "id": "E124",
+          "kind": "local",
+          "path": "local/research/codex/prestart-replacement-r1/prestart-fixed/C-return180-r1-109.bin",
+          "sha256": "b53daa3dda63e60a45282c346e337b4d3d97dd07a2ef4b33a42a147350601e54",
+          "bytes": 41
+        },
+        {
+          "id": "E125",
+          "kind": "local",
+          "path": "local/research/codex/prestart-replacement-r1/prestart-fixed/C-start121-r1-79.bin",
+          "sha256": "f8a824335b4079160a4aaf0e0b425d1fabfa78c248d131503440d0414e1f26cf",
+          "bytes": 167
+        },
+        {
+          "id": "E126",
+          "kind": "local",
+          "path": "local/research/codex/wine_probe_prestart_replacement.py",
+          "sha256": "30e1abc86c2493dffeb3326ef7957c1f68df7554be663bac7554315074ac8159",
+          "bytes": 45190
+        }
+      ],
+      "delta": {
+        "added": [
+          "Native admission denial control vs freshC/BStart/one played B-Cround before any previousround; idle-before-first guard and3regressions."
+        ],
+        "corrected": [
+          "CP053 C-before-first admission blocker now measured/fixed narrowly; after cleanup or TCPaccept alone still not full auth.",
+          "Native153 replay initially assumed every event had dynamiclist; empty/nonplayingA now explicitly skipped withraw preserved, rerun6cases."
+        ],
+        "superseded": [
+          "Next C-before-round1 task measured; PLAN moves to validator124 fieldt producer/clock, not endlessEOF variants."
+        ]
+      },
+      "blockers": [
+        "t(record+1C) initialization/clock/unit/validator not established in KR; distance/actorstate/forgedcurrentkey/transport remain.",
+        "Fixtureauth/cache/codec/general membership/account reconnect/reset/sendfailure/timeout/vanilla/K5/K6a/LAN/Internet remain."
+      ],
+      "next_steps": [
+        {
+          "id": "NEXT-DUO-ROUND",
+          "task": "KRE-005b",
+          "state": "superseded",
+          "action": "Narrow setupEOF/Cbeforefirst andB-Cplayedround measuredCP054; future lifecycle variant only when actual integration/acceptance requires, followPLAN.",
+          "owner": "Codex",
+          "reviewer": "Codex"
+        },
+        {
+          "id": "NEXT-ITEM-PICKUP",
+          "task": "KRE-005b",
+          "state": "active",
+          "action": "Immediately followPLAN: reuseVNtimeproducer/cachedKRwriter; trace t(record+1C) init/clock and actual fields before choosing validator policy. Do not redo kguard/124165/kim/UDP handlers.",
+          "owner": "Codex",
+          "reviewer": "Codex"
+        },
+        {
+          "id": "NEXT-FULL-LOGIN-FIELDS",
+          "task": "KRE-005b",
+          "state": "active",
+          "action": "Canonical codec/auth/cache debt after targetvalidator; no Cidentity fixture equated with accountresume.",
+          "owner": "Codex",
+          "reviewer": "Codex"
+        }
+      ],
+      "review": {
+        "status": "waived",
+        "as_of_utc": "2026-11-01T15:10:18.081070+00:00",
+        "reference": "docs/evidence/checkpoints/review-waiver.json",
+        "scope": "Codex solo RE/code/runtime/selfcheck, not independent approval.",
+        "authorization": {
+          "by": "project_owner",
+          "reference": "docs/evidence/checkpoints/review-waiver.json",
+          "reason": "Owner explicitly requested solo without Claude review."
+        }
+      },
+      "docs_sync": [
+        {
+          "path": "README.md",
+          "state": "updated",
+          "reason": "CP054 native scope/limits, sole order now validator t, stablecatalog and priorhistory retained."
+        },
+        {
+          "path": "docs/PLAN.md",
+          "state": "updated",
+          "reason": "CP054 native scope/limits, sole order now validator t, stablecatalog and priorhistory retained."
+        },
+        {
+          "path": "docs/PROTOCOL.md",
+          "state": "updated",
+          "reason": "CP054 native scope/limits, sole order now validator t, stablecatalog and priorhistory retained."
+        },
+        {
+          "path": "docs/RESEARCH.md",
+          "state": "updated",
+          "reason": "CP054 native scope/limits, sole order now validator t, stablecatalog and priorhistory retained."
+        },
+        {
+          "path": "docs/features.json",
+          "state": "updated",
+          "reason": "CP054 native scope/limits, sole order now validator t, stablecatalog and priorhistory retained."
+        },
+        {
+          "path": "docs/COVERAGE.md",
+          "state": "updated",
+          "reason": "CP054 native scope/limits, sole order now validator t, stablecatalog and priorhistory retained."
+        },
+        {
+          "path": "server/README.md",
+          "state": "updated",
+          "reason": "CP054 native scope/limits, sole order now validator t, stablecatalog and priorhistory retained."
+        },
+        {
+          "path": "docs/evidence/prestart-replacement/README.md",
+          "state": "updated",
+          "reason": "CP054 native scope/limits, sole order now validator t, stablecatalog and priorhistory retained."
+        }
+      ]
     }
   ],
   "audits": [
@@ -97098,6 +98187,12 @@
       "state": "open",
       "canonical": "docs/PLAN.md",
       "reference": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/66"
+    },
+    {
+      "id": "KRE-017",
+      "state": "open",
+      "canonical": "docs/PLAN.md",
+      "reference": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/68"
     }
   ]
 }
