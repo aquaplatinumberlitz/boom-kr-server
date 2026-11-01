@@ -305,6 +305,7 @@ class ProbeService:
         alias = 'promote_B' if peer['role'] == 'B' else ('slot_C' if peer['role'] == 'C' else 'slot_A')
         sent.append({'role': peer['role'], **self.send(peer, alias, 'survivor110')})
         peer.pop('guest_ready_received', None)
+        peer.setdefault('departures_sent', []).append(departed)
         return sent
 
     def cleanup_departed(self, departed):
@@ -420,13 +421,20 @@ class ProbeService:
 
     def replacement_allowed(self):
         departed, survivor = self.channels.get('A'), self.channels.get('B')
-        return bool(departed and departed.get('closed') and survivor and not survivor.get('closed')
-                    and self.host_role == 'B' and self.round.get('refresh'))
+        if not (departed and departed.get('closed') and survivor and not survivor.get('closed')
+                and self.host_role == 'B' and survivor.get('map_response_sent')
+                and not survivor.get('pending_departures') and not self.room.active):
+            return False
+        before_first = self.round['index'] == 0 and 'A' in survivor.get('departures_sent', [])
+        return bool(before_first or self.round.get('refresh'))
 
     def accept(self, listener):
         connection, peer = listener.accept()
         ordinal = len(self.events) + 1
         if ordinal > 12 or (ordinal > 8 and not self.replacement_allowed()):
+            self.state.setdefault('admission_rejections', []).append({
+                'ordinal': ordinal, 'peer': list(peer), 'monotonic_ns': time.monotonic_ns(),
+                'reason': 'capacity' if ordinal > 12 else 'replacement_not_ready'})
             connection.close()
             return
         connection.settimeout(2)
