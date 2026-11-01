@@ -1,7 +1,7 @@
 {
   "schema": "kre-feature-index-v1",
   "build": "KR00967",
-  "as_of": "2026-11-02 JST / CP054; integration status via PR69",
+  "as_of": "2026-11-02 JST / CP055; self-check, pending PR",
   "sources": {
     "plan": "docs/PLAN.md",
     "contract": "docs/PROTOCOL.md",
@@ -1414,7 +1414,8 @@
         "evidence": [
           "docs/evidence/item-pickup/README.md",
           "docs/evidence/probe-service/README.md",
-          "docs/evidence/stale124/README.md"
+          "docs/evidence/stale124/README.md",
+          "docs/evidence/pickup-time/README.md"
         ]
       },
       "coverage": {
@@ -1434,13 +1435,15 @@
         "kr_static": {
           "state": "partial",
           "refs": [
-            "docs/PROTOCOL.md#item-pickup"
+            "docs/PROTOCOL.md#item-pickup",
+            "docs/PROTOCOL.md#pickup-tick"
           ]
         },
         "emulation": {
           "state": "checked",
           "refs": [
-            "docs/evidence/item-pickup/README.md"
+            "docs/evidence/item-pickup/README.md",
+            "docs/evidence/pickup-time/README.md"
           ]
         },
         "runtime": {
@@ -1448,7 +1451,8 @@
             "state": "observed",
             "refs": [
               "docs/evidence/item-pickup/README.md",
-              "docs/evidence/stale124/README.md"
+              "docs/evidence/stale124/README.md",
+              "docs/evidence/pickup-time/README.md"
             ]
           },
           "windows_original": {

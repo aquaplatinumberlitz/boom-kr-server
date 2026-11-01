@@ -1013,8 +1013,8 @@ u8 ctx, u8 slot, u8 row, u8 column, u32 index, u16 kind, u32 t, u32 k, bool flag
 ```
 
 Đây là typed outer fields qua primitive KR, không phải raw LE của inner blob. Writer lấy record+0,
-slot từ argument, record+0C/+10/+08/+14/+1C/+20/+24 tương ứng; `t/k` thường được gọi tick/session
-nhưng chưa phục hồi toàn nghĩa/validator. Ca này ctx0, flag0, k12345 do profile peer đã cấp.
+slot từ argument, record+0C/+10/+08/+14/+1C/+20/+24 tương ứng. Nguồn `t` đã phục hồi ở
+[CP055](#pickup-tick); `k` có [guard hẹp CP049](#pickup-round-key), không là auth. Ca CP030 ctx0, flag0, k12345 do profile peer đã cấp.
 Native replay actual frame theo seq/socket xác nhận CRC, độ dài và giá trị; không dựng request từ encoder.
 
 **S→C165**: `E5D570→E63260(packet,0)`, payload12byte:
@@ -1952,7 +1952,7 @@ liệt kê và phân biệt với nguyên bản trong mọi demo.
 <a id="authority"></a>
 ### Authority matrix hiện hành và gate review
 
-Bảng này tổng hợp bằng chứng từng phần đến CP054; chưa phải toàn contract server gốc. Mỗi hàng khi
+Bảng này tổng hợp bằng chứng từng phần đến CP055; chưa phải toàn contract server gốc. Mỗi hàng khi
 triển khai phải bổ sung riêng **creator, simulator, validator, broadcaster, peer-editable state**, với
 locator/trace và trạng thái từng ô; những vai trò không nêu dưới đây hiện `unknown` cho KR.
 
@@ -2034,7 +2034,8 @@ bom/17/19/peerstate1 trước175/180/phòng. Điều này chứng minh consequen
 hẹp; body chèn bypass C2S transport, **chưa kiểm TCP admission của replay**. Không giả nó là request
 mới do native writer phát. Hai proxy setup dừng trước phép đo được giữ riêng, nguyên nhân unknown.
 
-Không còn coi “service chưa kiểm k” là trạng thái hiện hành. `t`, distance/actorstate, request giả đã
+Không còn coi “service chưa kiểm k” là trạng thái hiện hành. [Nguồn t](#pickup-tick) đã giải ở CP055;
+policy dùng t, distance/actorstate, request giả đã
 đổi k hiện tại, mode/variant, key lifetime/roster/otherUDP và fullvalidator vẫn mở. Equality không xác
 thực sender; fuse/drop/rank/auth/profile còn fixture. Không gate K5/K6a/LAN/Internet mới đóng.
 
@@ -2172,3 +2173,41 @@ Adapter153 ban đầu giả mọi channel có dynamic_s2c; A chưa vào round kh
 đã sửa vắnglist→empty và rerun oracle, không sửa raw/giả pass. Ba policy regression cho
 idle-before-first/setup/cleanup/active và first-key/roster/deny transport. Fullvalidator/t/actorstate/
 distance/auth/cache/codec/membership/reset/vanilla/K5/K6a/LAN/Internet giữ mở; thứ tự chỉ ở PLAN.
+
+<a id="pickup-tick"></a>
+### Nguồn và lifetime của t trong124 — CP055
+
+**kr_static/kr_runtime confirmed trong scope Wine copy**, [recipe/hash/giới hạn](evidence/pickup-time/README.md).
+Tái dùng VN time/session producer làm hướng truy nguồn và cached KR writer, không chuyển địa chỉ/đơn vị VN.
+`t` là **bộ đếm cập nhật logic riêng của CMainSystem**, chốt khi tạo pending record; không là đồng hồ
+server hoặc số mili giây tính từ đầu trận. Physical timebase/đơn vị của nguồn thời gian vẫn unknown.
+
+Native `E2C450` gọi `E2F2D0→60FDE0(global19D9920)→12580B0(+100)→123DD10(+10)→65A340→65A5D0`;
+protected member **CMainSystem+110**. RTTI cùng hash runtime: vtable179234C, COL18076F4,
+type descriptor19D089C, `.?AVCMainSystem@@`. `12580B0` đã có trong cache bootstrap cũ; CP055 nối nó
+với124. Getter khi globalnull trả0. Constructor `E36F20` ghi u32t vào record+1C, k vào+20;
+writer `E2E390/E2E583` đọc lại; actual TCP124 giữ cùng giá trị. Temporary stack record được copy vào
+vector heap, không đòi pointer giống nhau. Gọi collision lặp không nhất thiết tạo thêm record.
+
+Setter stack runtime phân biệt tăng thực (`D54743←123DCAB←1256B3B`) với periodic getter rekey
+(`65A734`, giữ giá trị). Native `123DC20`: unsigned delta chia30, số bước xử lý kẹp15,
+flag timer+20 có thể kẹp1; counter timer+10 cộng số bước đã xử lý, reference timer+4 tiến30×quotient
+**chưa kẹp**.17 ca emulation kiểm arithmetic/wrap với time source/protected storage/callback model;
+không chứng minh full scheduler hoặc30ms/33Hz. Counter/rekey globals chỉ được model/reset trong
+emulation, không sửa runtime. Pointer timebase vào Wine kernelbase chưa khớp exact export.
+
+| Run (hai vòng liên tiếp) | actual A124 t/k vòng1 | vòng2 |
+|---|---|---|
+| clock-trace |2215/12345|4365/12346|
+| clock-late (input đầu4→12s) |2558/12345|4698/12346|
+
+Trong từng run/role, cùng CMainSystem tiếp tục qua Start vòng2; A/B có counter khác nhau tại
+Start/clock tương ứng. Chỉ chứng minh lifetime qua hai vòng trong cùng process, chưa logout/reconnect
+hoặc mọi reset.45 snapshot native getter,7 constructor cases,4 chuỗi init→record→writer→TCP;
+context của snapshot là tag **trước đó**, không đếm tag context lặp thành writer mới.
+
+Service chỉ log `client_tick` cùng request; không thêm ngưỡng thời gian/tự nhận auth hay chống replay.
+Hai run dùng source CP054 lưu `runtime-source/` **trước** thay đổi logging; dispatcher bench với
+bốn actual frame kiểm code mới, broadcast sockets stubbed, không gọi bench là runtime mới.
+[Guard k](#pickup-round-key) giữ nguyên. Original-server validator/time policy, distance/actorstate,
+forged-current-key và TCP replay admission còn mở; bước kiểm ở [RESEARCH](RESEARCH.md#gap-floor-pickup).

@@ -197,11 +197,14 @@ class ProbeService:
             self.jobs.append((time.monotonic() + 6, ticket, bomb))
         elif opcode == 124 and self.room.active:
             values = codec.read_fields(body, [1, 1, 1, 1, 4, 2, 4, 4, 1])
-            context, slot, row, column, index, kind, _, reported_key, flag = values
+            context, slot, row, column, index, kind, client_tick, reported_key, flag = values
             if flag != 0:
                 raise ValueError('unsupported item variant')
             report = {'round': self.room.generation, 'role': role, 'seq': sequence, 'fields': values,
                       'payload_hex': body.hex(), 'frame_sha256': hashlib.sha256(frame).hexdigest(),
+                      # CP055: latched CMainSystem logical tick, not round/server milliseconds.
+                      # Log it without inventing a timing/authentication policy.
+                      'client_tick': client_tick,
                       'monotonic_ns': time.monotonic_ns(), 'broadcast165': []}
             self.state['item_requests'].append(report)
             # Emulator policy for the measured 124 variant. This is the u32 k

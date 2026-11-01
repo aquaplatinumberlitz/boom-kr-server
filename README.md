@@ -29,15 +29,15 @@ runtime nào có nguồn, còn thiếu gì và phép kiểm nào giải quyết.
 evidence/hash và câu hỏi; [PLAN](docs/PLAN.md#current-order) giữ duy nhất thứ tự công việc.
 Đây là scope đường bootstrap → login → sảnh → phòng → Battle → kết quả/reset, không kiểm kê toàn client.
 
-CP054: C mới đã vào sau host setup EOF **trước trận đầu**; B Start thật, key12345/bomID1,
-hai client có trap/death/statepeer →175→180/về phòng. Control cũ từ chối C đúng admission guard;
-[phạm vi/recipe](docs/evidence/prestart-replacement/README.md), [contract](docs/PROTOCOL.md#prestart-replacement).
-Đang tiếp validator124 (nguồn field t). Chưa nghiệm thu hai trận đầy đủ/K6a/LAN/Internet hoặc
-membership/auth/validator/cache/codec/reset tổng quát; các kết quả chỉ trên Wine copy chẩn đoán.
+CP055: đã truy `t` của124 từ bộ đếm logic CMainSystem qua pending record đến bốn gói TCP thật;
+counter riêng mỗi client và tiếp tục qua vòng mới. [Contract/giới hạn](docs/PROTOCOL.md#pickup-tick),
+[recipe/bằng chứng](docs/evidence/pickup-time/README.md). Chưa có cơ sở thêm ngưỡng thời gian vào validator;
+tiếp actorstate/forged-current-key. Chưa nghiệm thu hai trận đầy đủ/K6a/LAN/Internet hoặc
+membership/auth/validator/cache/codec/reset tổng quát; runtime trên Wine copy chẩn đoán.
 
-CP053 đã merge [PR67](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/67) tại `75606eb`.
-CP054 tự kiểm/integration theo [PR69](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/69); review độc lập
-[waived](docs/evidence/checkpoints/review-waiver.json). Audit **AUD016/CP052**, audit kế **CP056**.
+CP054 đã merge [PR69](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/69) tại `69df506`.
+CP055 tự kiểm, chờ PR; review độc lập [waived](docs/evidence/checkpoints/review-waiver.json).
+Audit **AUD016/CP052**, audit kế **CP056**.
 [Yêu cầu chủ dự án](docs/evidence/owner-directives/continuous-work.json): tiếp tục ngay việc kế trong
 PLAN sau mỗi checkpoint/commit/PR, không tự dừng/chờ nhắc.
 
