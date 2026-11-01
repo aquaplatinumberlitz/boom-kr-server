@@ -13,7 +13,7 @@ class EofTests(unittest.TestCase):
     def setUp(self):
         self.temporary = tempfile.TemporaryDirectory()
         self.addCleanup(self.temporary.cleanup)
-        profile = SimpleNamespace(frames={'rank_Awin': b'', 'promote_B': b''},
+        profile = SimpleNamespace(frames={name: b'' for name in ['rank_Awin', 'promote_B', 'auth_C', 'roomlist_C', 'join_C', 'player_C', 'slot_C', 'guest_C', 'ready_C']},
                                   data={'items': [], 'initial_key': 12345})
         self.service = ProbeService(profile, Path(self.temporary.name), {'A': 0, 'B': 0})
         self.addCleanup(self.service.selector.close)

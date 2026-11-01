@@ -1,7 +1,7 @@
 {
   "schema": "kre-checkpoints-v1",
-  "last_id": "CP050",
-  "completed_count": 50,
+  "last_id": "CP051",
+  "completed_count": 51,
   "audit_interval": 4,
   "last_periodic_audit": 48,
   "next_periodic_audit": "CP052",
@@ -93658,6 +93658,1717 @@
           "reason": "Threecontrollers/nativeIDclear/chief/forfeit/timer/loadandhash/recipe/limits."
         }
       ]
+    },
+    {
+      "id": "CP051",
+      "previous": "CP050",
+      "lifecycle": "complete",
+      "recorded_utc": "2026-11-01T13:33:14.020370+00:00",
+      "context_commit": "9c6ac926630431c246a98475039fdde69a4f03f9",
+      "question": "Can new identity C replace A after EOF on standalone service, keep B host, actually Join/Ready/BStart and play B/C bomb/trap/death/result/return?",
+      "scope": "KRE-014/#62. Reuse exact CP034/035/040/044/050 and VN/legacy source ledger before integration. Three identities by accept-order, at most two live slots, fixture profile41; solo isolated Wine runtime two runs and native replay. No new binary function bodies, patch or source DB changes. First run partial; lite run one forfeit plus one played B/C round. Not account reconnect, general membership, fullmatch gates or LAN.",
+      "owner": "Codex",
+      "reviewer": "Codex",
+      "artifacts": [
+        {
+          "name": "CA-r2-login-logout.exe",
+          "sha256": "660447c293ce92270cb9b5815331bca976e8f156366e1fe50b217b6c12e60ce3"
+        },
+        {
+          "name": "CA-r2-stage-social.exe",
+          "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+        },
+        {
+          "name": "CA-r2-stage-social.exe Bcopy",
+          "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+        },
+        {
+          "name": "modO.bin",
+          "sha256": "a08950c833d3acab8281049def7b3dc96b221f107eeda01da3a548e34b91dce5"
+        },
+        {
+          "name": "CA-r2-stage-social.exe Ccopy",
+          "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+        }
+      ],
+      "locators": [
+        "CP051 replacement-first/replacement-lite, profile41 and runtime-source archives; C slot0/ID3 distinct from A ID1",
+        "13B09E0 localID, DC5925 ownmatch, DC7F30/DC9363 Start121, E134B0 clock, D603A0/12400D0/12401A9 clear107; contracts reused",
+        "14EF300 framer, E8A340 vector153,52A350 securegetter; E85B60/E863CA170, E5F610175/E64950180; modO raw base400000,RVA=VA-400000",
+        "ProbeService.accept/replacement_allowed/receive_channel/start_round/receive_event/tick; ROLE_IDS and ROLE_SLOTS; current roster/seq/key/fence"
+      ],
+      "findings": [
+        {
+          "summary": "Profile41 + bounded A/B→B/C admission after A closed/B live-chief/refresh. Current host B104 requires live mapped peers and guest ready. C ID3/slot0, own seq and continued B seq; new153 key once per Start.170/report21 use current live peer.",
+          "source": "design",
+          "status": "design",
+          "method": "design",
+          "canonical": "docs/PROTOCOL.md#service-replacement",
+          "limits": "Accept-order max12/fixture auth/map/roster/rank, not general allocator/auth/account reconnect or original authority.",
+          "evidence": [
+            "E049",
+            "E051",
+            "E034"
+          ]
+        },
+        {
+          "summary": "replacement-first reaches native C localID3/ownmatch, actual Join/Ready and B104, full121/clock/key12346; C actual124/165. No B118/result in bounded run.",
+          "source": "kr_runtime",
+          "status": "confirmed",
+          "method": "runtime",
+          "canonical": "docs/PROTOCOL.md#service-replacement",
+          "limits": "Partial run retained; not full B/C round, no cause inferred from tutorial/input returncode/probe timing.",
+          "evidence": [
+            "E077",
+            "E074",
+            "E013"
+          ]
+        },
+        {
+          "summary": "replacement-lite: pending old B bomb ID1 dropped round_closed after A EOF, B clear/promote, fresh C3 and actual B104; actual B118/key12346/serial1→ID2,159/158 only B/C, B17/19→C170/C21; both175/180/room. Secure Bstate1 both before175, rank slot1 loss, Bchief1/C0.",
+          "source": "kr_runtime",
+          "status": "confirmed",
+          "method": "runtime",
+          "canonical": "docs/PROTOCOL.md#service-replacement",
+          "limits": "One forfeit plus one played B/C round on diagnostic Wine copy, not two full matches/K6a; chosen policy rank/fuse. No account resume/full reset/validator/auth.",
+          "evidence": [
+            "E119",
+            "E012",
+            "E002",
+            "E015",
+            "E038",
+            "E040"
+          ]
+        },
+        {
+          "summary": "Native replay both runs: 288 packet cases valid/CRC/partial,24 vector153 cases,684 secure snapshots. Direct endpoints from99, key12346 B/C; C localround1=B localround2=roomgeneration2.",
+          "source": "kr_static",
+          "status": "confirmed",
+          "method": "emulation",
+          "canonical": "docs/evidence/service-replacement/README.md",
+          "limits": "Heap/receiver and getter periodic counters modeled; not full world/semantics/original server oracle. Earlier partial reports not added as independent oracle.",
+          "evidence": [
+            "E015",
+            "E014",
+            "E002",
+            "E030"
+          ]
+        },
+        {
+          "summary": "Lite probe originally intended to disable79-101, but Start auto-enables85-101; actual reduction only79-84. Corrected noUDP probe and late-input harness prepared, not run because required B/C edge succeeded.",
+          "source": "design",
+          "status": "confirmed",
+          "method": "documentation",
+          "canonical": "docs/evidence/service-replacement/README.md",
+          "limits": "Do not claim full UDP-disabled control or causal resolution of missing118. New artifacts are preparation, not runtime evidence.",
+          "evidence": [
+            "E035",
+            "E036",
+            "E013",
+            "E011"
+          ]
+        }
+      ],
+      "verification": [
+        {
+          "check": "2313 relationship/hash checks on successful run;288nativepacket/24native153/684secure snapshots across both runs; two visual composites read",
+          "result": "pass",
+          "evidence": [
+            "E038",
+            "E040",
+            "E025",
+            "E022"
+          ],
+          "limits": "Mechanical verification, no automatic semantics/gate confirmation. Successful sequence distinct from partial first run."
+        },
+        {
+          "check": "36server +7catalog +18checkpoint tests, docs/catalog/artifacts5/5, diff; exact local/history checker run after append",
+          "result": "pass",
+          "evidence": [
+            "E034",
+            "E007",
+            "E008",
+            "E010",
+            "E005",
+            "E004"
+          ],
+          "limits": "Initial catalog test module invocation lacked tools on import path, retained as wrong-invocation log; discover invocation passes. No independent review, audit nextCP052."
+        }
+      ],
+      "evidence": [
+        {
+          "id": "E001",
+          "kind": "repository",
+          "path": "docs/evidence/service-replacement/README.md",
+          "sha256": "35e39008d663fda347792f50757fbd43be3bf80ba9f497e2a8a0480302a69d1d",
+          "bytes": 7497
+        },
+        {
+          "id": "E002",
+          "kind": "local",
+          "path": "local/research/codex/service-replacement-r1/actor-fields.json",
+          "sha256": "231e3dfcf6110badd80e0b61b29191eb32ad074ff3d25834900c835a08611645",
+          "bytes": 476395
+        },
+        {
+          "id": "E003",
+          "kind": "local",
+          "path": "local/research/codex/service-replacement-r1/append_checkpoint.py",
+          "sha256": "4695946f21415da71b850034803b3eeb7bdb84f64e7171cdc81fe2c5bac16b4d",
+          "bytes": 9952
+        },
+        {
+          "id": "E004",
+          "kind": "local",
+          "path": "local/research/codex/service-replacement-r1/artifacts-check.txt",
+          "sha256": "649c6624aa6d317dfc1db5e16fea683cfbc9d9cf4dd3df11c0d70e57409054a0",
+          "bytes": 253
+        },
+        {
+          "id": "E005",
+          "kind": "local",
+          "path": "local/research/codex/service-replacement-r1/catalog-check.txt",
+          "sha256": "07cfdc4671ab13f3320ca868da10e2f29adb3799625c524fd7e8975cb45a5554",
+          "bytes": 264
+        },
+        {
+          "id": "E006",
+          "kind": "local",
+          "path": "local/research/codex/service-replacement-r1/catalog-tests-wrong-invocation.txt",
+          "sha256": "90dfb237f2e15d497194099ce9772090e1ae97052b7283bbf08361fcee1c9529",
+          "bytes": 743
+        },
+        {
+          "id": "E007",
+          "kind": "local",
+          "path": "local/research/codex/service-replacement-r1/catalog-tests.txt",
+          "sha256": "4467aaa002bb59bfc030557de21eb1649c6eb5f7b56fd3decc203f2889200796",
+          "bytes": 105
+        },
+        {
+          "id": "E008",
+          "kind": "local",
+          "path": "local/research/codex/service-replacement-r1/checkpoint-tests.txt",
+          "sha256": "225c9e7d1f947db8c1dab5156cd4c1274e2648d7a0addfb2b3ab012d23b8cf90",
+          "bytes": 117
+        },
+        {
+          "id": "E009",
+          "kind": "local",
+          "path": "local/research/codex/service-replacement-r1/derive_roles.py",
+          "sha256": "892fbc06fcdafe9cb73a797efe7d08243fb056c1f3adaabcd296629325d1fd71",
+          "bytes": 863
+        },
+        {
+          "id": "E010",
+          "kind": "local",
+          "path": "local/research/codex/service-replacement-r1/docs-check.txt",
+          "sha256": "492010821e670f9dbbf0b28e35d50a512a32bae9c98916715f0b96f721c189d5",
+          "bytes": 173
+        },
+        {
+          "id": "E011",
+          "kind": "local",
+          "path": "local/research/codex/service-replacement-r1/late-input-reuse.json",
+          "sha256": "5b64ae477fdf536ea73fdb2c80d225e38a37dd524570e0bf14f491053089bd50",
+          "bytes": 2077
+        },
+        {
+          "id": "E012",
+          "kind": "local",
+          "path": "local/research/codex/service-replacement-r1/lifecycle-summary.json",
+          "sha256": "914d7eb228cf849c32c78cae17b7717e836936581cb71fb0a17d925460bc994f",
+          "bytes": 19175
+        },
+        {
+          "id": "E013",
+          "kind": "local",
+          "path": "local/research/codex/service-replacement-r1/measurement-notes.json",
+          "sha256": "995f5e780d9efd80597a820b86979fcad9dea5cae754723d4f79c1db4f784c35",
+          "bytes": 1675
+        },
+        {
+          "id": "E014",
+          "kind": "local",
+          "path": "local/research/codex/service-replacement-r1/native-153.json",
+          "sha256": "ef039b43532690624699ab756f035092adac50e8a3be30395110192dc4e0ec04",
+          "bytes": 27437
+        },
+        {
+          "id": "E015",
+          "kind": "local",
+          "path": "local/research/codex/service-replacement-r1/native-packets.json",
+          "sha256": "7f928d831d049c0cdb4c898c4a4a9b4f26e03e2c15a0a813e6fe57f9a7fe133a",
+          "bytes": 111741
+        },
+        {
+          "id": "E016",
+          "kind": "local",
+          "path": "local/research/codex/service-replacement-r1/native_153.py",
+          "sha256": "467a2d7592d9c3b7b1ab825fcc1ca3951833cf5bebcb54b2794f2465184414d7",
+          "bytes": 3523
+        },
+        {
+          "id": "E017",
+          "kind": "local",
+          "path": "local/research/codex/service-replacement-r1/native_packets.py",
+          "sha256": "675c59228734058ad19091d507cacb1a0f260d85878366ca9158d01dbf0d9403",
+          "bytes": 4837
+        },
+        {
+          "id": "E018",
+          "kind": "local",
+          "path": "local/research/codex/service-replacement-r1/parse_fields.py",
+          "sha256": "862c5327f42866f81f1ff4bc982c360628eb054b0f491ae0d8f4e44da33ebb5e",
+          "bytes": 3920
+        },
+        {
+          "id": "E019",
+          "kind": "local",
+          "path": "local/research/codex/service-replacement-r1/parse_lifecycle.py",
+          "sha256": "2fb621fcac187a4ac4290e894422a074aef259764ae76bb985ee8242f65a3985",
+          "bytes": 2674
+        },
+        {
+          "id": "E020",
+          "kind": "local",
+          "path": "local/research/codex/service-replacement-r1/partial-first-visual.png",
+          "sha256": "cfe0eeb4586587e437749c1623e3ab7b046be061a3b7c046512dd7055b2e9044",
+          "bytes": 500198
+        },
+        {
+          "id": "E021",
+          "kind": "local",
+          "path": "local/research/codex/service-replacement-r1/profile.json",
+          "sha256": "922cce0ba24ede668fb44b3b82f937c5c2a0af478bb5b8905fde272bbd564b5f",
+          "bytes": 10845
+        },
+        {
+          "id": "E022",
+          "kind": "local",
+          "path": "local/research/codex/service-replacement-r1/replacement-first-hashes.json",
+          "sha256": "326a5bc4e618c6934070376414e498b79eb6d18c606aa15c2f438f30101e2845",
+          "bytes": 332730
+        },
+        {
+          "id": "E023",
+          "kind": "local",
+          "path": "local/research/codex/service-replacement-r1/replacement-first-launcher.log",
+          "sha256": "a483eea22304bda136c0d7e8f47dc62d186f27e6b2ff9920d1352ed581409e5e",
+          "bytes": 141656
+        },
+        {
+          "id": "E024",
+          "kind": "local",
+          "path": "local/research/codex/service-replacement-r1/replacement-first-recipe.json",
+          "sha256": "9aa63d6947d44d112aea6f255c5cc2d3cc1c582e8c6e08380827112c939b9d72",
+          "bytes": 1030
+        },
+        {
+          "id": "E025",
+          "kind": "local",
+          "path": "local/research/codex/service-replacement-r1/replacement-lite-hashes.json",
+          "sha256": "8acfb3997764993c41086ba03b8d6c8fdecec1007067de14c024a3a6133a6b87",
+          "bytes": 337862
+        },
+        {
+          "id": "E026",
+          "kind": "local",
+          "path": "local/research/codex/service-replacement-r1/replacement-lite-launcher.log",
+          "sha256": "00695dc6d4e291610888ad28b346556898ae79b5f0057438e5d18349708c2e5e",
+          "bytes": 101127
+        },
+        {
+          "id": "E027",
+          "kind": "local",
+          "path": "local/research/codex/service-replacement-r1/replacement-lite-recipe.json",
+          "sha256": "77643cbb05cbd8b1391b013127189a23e4181beb7b181bc480eb460481692a92",
+          "bytes": 1033
+        },
+        {
+          "id": "E028",
+          "kind": "local",
+          "path": "local/research/codex/service-replacement-r1/replacement-lite-visual.png",
+          "sha256": "88b8e55b979ad1d92c3c3fbf22b7fb3b4f96114ffb8851a319fe6558048f2a61",
+          "bytes": 497402
+        },
+        {
+          "id": "E029",
+          "kind": "local",
+          "path": "local/research/codex/service-replacement-r1/replay-run.py",
+          "sha256": "aa3d16e9ed92976d44b887d403f03ae29979479dfb310a11bab3eea3ace4b2d6",
+          "bytes": 3010
+        },
+        {
+          "id": "E030",
+          "kind": "local",
+          "path": "local/research/codex/service-replacement-r1/reuse-question.json",
+          "sha256": "4785afe26a8a8efdbabfaa26c23556a2648c0b57e96255003b713d5db558d7eb",
+          "bytes": 4652
+        },
+        {
+          "id": "E031",
+          "kind": "local",
+          "path": "local/research/codex/service-replacement-r1/run_probe.py",
+          "sha256": "ea37e9aa096cc76994b592680d7846732ed72f2a5a347627b9dfdd0caeab9958",
+          "bytes": 1075
+        },
+        {
+          "id": "E032",
+          "kind": "local",
+          "path": "local/research/codex/service-replacement-r1/runtime-source-sha.json",
+          "sha256": "1cf871737cdb6467cafcdf4f5d6aee9b7f1676dfd4534d4aa621e6bcd2354de3",
+          "bytes": 1196
+        },
+        {
+          "id": "E033",
+          "kind": "local",
+          "path": "local/research/codex/service-replacement-r1/seal_run.py",
+          "sha256": "910df80e5807f7fb5099da256b710b469b3ec64246c1ccd3a70df1fac642a292",
+          "bytes": 633
+        },
+        {
+          "id": "E034",
+          "kind": "local",
+          "path": "local/research/codex/service-replacement-r1/server-tests.txt",
+          "sha256": "2eb5a0795d25b89aa5d7e3572f2b8d04b606b4049f2d2d098e98a1046273a7f0",
+          "bytes": 135
+        },
+        {
+          "id": "E035",
+          "kind": "local",
+          "path": "local/research/codex/service-replacement-r1/service-lite.gdb",
+          "sha256": "46a796fedebf7adadfbe2423cdb99e2d65dcec922f3c90caf43d822aeae87c81",
+          "bytes": 24772
+        },
+        {
+          "id": "E036",
+          "kind": "local",
+          "path": "local/research/codex/service-replacement-r1/service-no-udp.gdb",
+          "sha256": "90f53ef6e1527e04db68609d275833899ee662b071f53f666d6b7803b0b7a77d",
+          "bytes": 24712
+        },
+        {
+          "id": "E037",
+          "kind": "local",
+          "path": "local/research/codex/service-replacement-r1/service.gdb",
+          "sha256": "57002f7a894f9ad164829ceb3bc17dc96e552edd5417400a0712c3d9832a2103",
+          "bytes": 24693
+        },
+        {
+          "id": "E038",
+          "kind": "local",
+          "path": "local/research/codex/service-replacement-r1/verification.json",
+          "sha256": "b4dfb70136e70d26ef2501c0087f58cdf1e9a3018fb0aa58732f1a0aabd4ca68",
+          "bytes": 383
+        },
+        {
+          "id": "E039",
+          "kind": "local",
+          "path": "local/research/codex/service-replacement-r1/verify.py",
+          "sha256": "908aaeba9a1342e3ca83c6a39f7d515a5184fddd3627b7187dde0741e197c53f",
+          "bytes": 4672
+        },
+        {
+          "id": "E040",
+          "kind": "local",
+          "path": "local/research/codex/service-replacement-r1/visual-index.json",
+          "sha256": "097dff18d79211cc8345c96de617a461eebd89c6dd92e09d4c425e934149dae3",
+          "bytes": 932
+        },
+        {
+          "id": "E041",
+          "kind": "local",
+          "path": "local/research/codex/service-replacement-r1/cp051-snapshot/README.md",
+          "sha256": "1cea871d07f044987537a2997588cdab9885ba4efea0633f6fd52f4d69876a3a",
+          "bytes": 3845
+        },
+        {
+          "id": "E042",
+          "kind": "local",
+          "path": "local/research/codex/service-replacement-r1/cp051-snapshot/docs/COVERAGE.md",
+          "sha256": "fd7e60cca2f83040cdba4173115a36df1272b608678bbc0154d96139c8c31fa0",
+          "bytes": 63055
+        },
+        {
+          "id": "E043",
+          "kind": "local",
+          "path": "local/research/codex/service-replacement-r1/cp051-snapshot/docs/PLAN.md",
+          "sha256": "3a7005529c7fdad0f5fff97f47b67f83dd7bad50889541033af14b4a3b029295",
+          "bytes": 28800
+        },
+        {
+          "id": "E044",
+          "kind": "local",
+          "path": "local/research/codex/service-replacement-r1/cp051-snapshot/docs/PROTOCOL.md",
+          "sha256": "1d50e1b7d86ac05bc6672f7915b5931c4f440e254b6efdf63fc2a03ef194ac01",
+          "bytes": 183843
+        },
+        {
+          "id": "E045",
+          "kind": "local",
+          "path": "local/research/codex/service-replacement-r1/cp051-snapshot/docs/RESEARCH.md",
+          "sha256": "1966368ccd332675016a9aa0b20529c266960fbadcc2c919a6d1eaeae48f0e75",
+          "bytes": 29081
+        },
+        {
+          "id": "E046",
+          "kind": "local",
+          "path": "local/research/codex/service-replacement-r1/cp051-snapshot/docs/evidence/service-replacement/README.md",
+          "sha256": "35e39008d663fda347792f50757fbd43be3bf80ba9f497e2a8a0480302a69d1d",
+          "bytes": 7497
+        },
+        {
+          "id": "E047",
+          "kind": "local",
+          "path": "local/research/codex/service-replacement-r1/cp051-snapshot/docs/features.json",
+          "sha256": "cf62644ce61431eae6bdca8b77d4ccf0474be8b93332225d83c5de17a50da704",
+          "bytes": 65629
+        },
+        {
+          "id": "E048",
+          "kind": "local",
+          "path": "local/research/codex/service-replacement-r1/cp051-snapshot/server/README.md",
+          "sha256": "ce7c448263f0dc5fe80f84a0ab6085baa428e3281d9c6ec35dda8bb14d9c4fc9",
+          "bytes": 7649
+        },
+        {
+          "id": "E049",
+          "kind": "local",
+          "path": "local/research/codex/service-replacement-r1/cp051-snapshot/server/probe_service.py",
+          "sha256": "3dbaf35dd44211a9c3f43725e48fccb2ba89a614dcf4d84b87e5d7f1eda925eb",
+          "bytes": 29602
+        },
+        {
+          "id": "E050",
+          "kind": "local",
+          "path": "local/research/codex/service-replacement-r1/cp051-snapshot/server/test_probe_eof.py",
+          "sha256": "f73fb93971e7db6dbd048c5c1300d58e916a10046be01ed24eced72b79efd3a0",
+          "bytes": 5171
+        },
+        {
+          "id": "E051",
+          "kind": "local",
+          "path": "local/research/codex/service-replacement-r1/cp051-snapshot/server/test_probe_replacement.py",
+          "sha256": "1a72761243b6a6f40cc3ea7feb3f6c200abd00c04c41be9e7d9b9b44b86bf120",
+          "bytes": 5191
+        },
+        {
+          "id": "E052",
+          "kind": "local",
+          "path": "local/research/codex/service-replacement-r1/cp051-snapshot/tools/export_probe_profile.py",
+          "sha256": "f9f43d3aef6720d3d57dc7078481770642194454f0d70982e7f371c409455bc5",
+          "bytes": 4194
+        },
+        {
+          "id": "E053",
+          "kind": "local",
+          "path": "local/research/codex/service-replacement-r1/runtime-source/item_claims.py",
+          "sha256": "7990ae9195e9f8bba56b04101f352506194dbd0252793183993ce101a8674a2e",
+          "bytes": 3340
+        },
+        {
+          "id": "E054",
+          "kind": "local",
+          "path": "local/research/codex/service-replacement-r1/runtime-source/probe_codec.py",
+          "sha256": "23ba54e6940953a52ff737e7e06b2761a8eb22eab444310b49b1d96efa12411d",
+          "bytes": 3227
+        },
+        {
+          "id": "E055",
+          "kind": "local",
+          "path": "local/research/codex/service-replacement-r1/runtime-source/probe_room.py",
+          "sha256": "91292494d492c7851bd5432649adf528e1b07290316dc56ba1478f8a209a08bc",
+          "bytes": 1468
+        },
+        {
+          "id": "E056",
+          "kind": "local",
+          "path": "local/research/codex/service-replacement-r1/runtime-source/probe_service.py",
+          "sha256": "7b1d55dae801b8c79e5479a38c7ee5701b27888aa9e942be8f89c063f79baec2",
+          "bytes": 29589
+        },
+        {
+          "id": "E057",
+          "kind": "local",
+          "path": "local/research/codex/service-replacement-r1/runtime-source/round_fence.py",
+          "sha256": "aabcc7f1d623573fc217de8df05403f83d82425bbe5d6e78872b3096a2d46708",
+          "bytes": 2339
+        },
+        {
+          "id": "E058",
+          "kind": "local",
+          "path": "local/research/codex/service-replacement-r1/runtime-source/udp_round_keys.py",
+          "sha256": "db58ae1f25bcbeb52c2d25c7db6afbf1021ddd3af29702e756f5f41886530a0d",
+          "bytes": 1187
+        },
+        {
+          "id": "E059",
+          "kind": "local",
+          "path": "local/research/codex/service-replacement-r1/baseline/server/__init__.py",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "id": "E060",
+          "kind": "local",
+          "path": "local/research/codex/service-replacement-r1/baseline/server/item_claims.py",
+          "sha256": "7990ae9195e9f8bba56b04101f352506194dbd0252793183993ce101a8674a2e",
+          "bytes": 3340
+        },
+        {
+          "id": "E061",
+          "kind": "local",
+          "path": "local/research/codex/service-replacement-r1/baseline/server/probe_codec.py",
+          "sha256": "23ba54e6940953a52ff737e7e06b2761a8eb22eab444310b49b1d96efa12411d",
+          "bytes": 3227
+        },
+        {
+          "id": "E062",
+          "kind": "local",
+          "path": "local/research/codex/service-replacement-r1/baseline/server/probe_room.py",
+          "sha256": "91292494d492c7851bd5432649adf528e1b07290316dc56ba1478f8a209a08bc",
+          "bytes": 1468
+        },
+        {
+          "id": "E063",
+          "kind": "local",
+          "path": "local/research/codex/service-replacement-r1/baseline/server/probe_service.py",
+          "sha256": "ef56704a56a0bf127bd879e1ccaea5f645be37bd0a60f7844e734c8a8b1f32a9",
+          "bytes": 27710
+        },
+        {
+          "id": "E064",
+          "kind": "local",
+          "path": "local/research/codex/service-replacement-r1/baseline/server/round_fence.py",
+          "sha256": "aabcc7f1d623573fc217de8df05403f83d82425bbe5d6e78872b3096a2d46708",
+          "bytes": 2339
+        },
+        {
+          "id": "E065",
+          "kind": "local",
+          "path": "local/research/codex/service-replacement-r1/baseline/server/test_item_claims.py",
+          "sha256": "63d68da46f91bcc9d4d3517bfd4ebc0d8f0a08c283a83715ac5b14a6efb71eea",
+          "bytes": 2832
+        },
+        {
+          "id": "E066",
+          "kind": "local",
+          "path": "local/research/codex/service-replacement-r1/baseline/server/test_probe_codec.py",
+          "sha256": "ddb2cd6303aaf99af43d7add3735fec1b7c41461deb38f482d4a1b113a21367c",
+          "bytes": 1366
+        },
+        {
+          "id": "E067",
+          "kind": "local",
+          "path": "local/research/codex/service-replacement-r1/baseline/server/test_probe_eof.py",
+          "sha256": "6a4189decbf05db001e465f9c6fca31b1e4445f29ba922e3901712ec0d7f1e8d",
+          "bytes": 5079
+        },
+        {
+          "id": "E068",
+          "kind": "local",
+          "path": "local/research/codex/service-replacement-r1/baseline/server/test_probe_room.py",
+          "sha256": "4ace7f5828661d891fa2006731f0aceed081a527c09be335bbee47e9a721e783",
+          "bytes": 1605
+        },
+        {
+          "id": "E069",
+          "kind": "local",
+          "path": "local/research/codex/service-replacement-r1/baseline/server/test_probe_service.py",
+          "sha256": "06fe9717f941f311087c0877e818357de9949f614c0cc1ee61e118b9a42b51c9",
+          "bytes": 4652
+        },
+        {
+          "id": "E070",
+          "kind": "local",
+          "path": "local/research/codex/service-replacement-r1/baseline/server/test_round_fence.py",
+          "sha256": "6923d90f30636dfe05b09d45f5bbaceaf3ef32223d48eba0213a6c3cc40b037a",
+          "bytes": 2455
+        },
+        {
+          "id": "E071",
+          "kind": "local",
+          "path": "local/research/codex/service-replacement-r1/baseline/server/test_udp_round_keys.py",
+          "sha256": "cfb36ee95d48c79b1800081a73b54498242f366eb08a2e3be850ff4a3503ce96",
+          "bytes": 1224
+        },
+        {
+          "id": "E072",
+          "kind": "local",
+          "path": "local/research/codex/service-replacement-r1/baseline/server/udp_round_keys.py",
+          "sha256": "db58ae1f25bcbeb52c2d25c7db6afbf1021ddd3af29702e756f5f41886530a0d",
+          "bytes": 1187
+        },
+        {
+          "id": "E073",
+          "kind": "local",
+          "path": "local/research/codex/service-replacement-r1/partial-first-reports/actor-fields.json",
+          "sha256": "9cafa4885058ffb4e7bdd3c15893660de888a8789b0a700591979b6bb5b5de56",
+          "bytes": 193271
+        },
+        {
+          "id": "E074",
+          "kind": "local",
+          "path": "local/research/codex/service-replacement-r1/partial-first-reports/lifecycle-summary.json",
+          "sha256": "78086892bc17a9f003d362cb4ed16823949c7339c99a7feb8bb06f071dde84d8",
+          "bytes": 8968
+        },
+        {
+          "id": "E075",
+          "kind": "local",
+          "path": "local/research/codex/service-replacement-r1/partial-first-reports/native-153.json",
+          "sha256": "fed8ee3059e9dea10edf9cebe30f21692a8c4992ec1a6ebe8e141734e58f144f",
+          "bytes": 13847
+        },
+        {
+          "id": "E076",
+          "kind": "local",
+          "path": "local/research/codex/service-replacement-r1/partial-first-reports/native-packets.json",
+          "sha256": "e2478e33443873ea8bbe954243e1f972167b8c523a9088c113f4680e8ce8378c",
+          "bytes": 40860
+        },
+        {
+          "id": "E077",
+          "kind": "local",
+          "path": "local/research/codex/service-replacement-r1/replacement-first/run.json",
+          "sha256": "47c1331712e8c877e51c67398a247d3ff730db0f104c9d7b33c33598ad2c61e5",
+          "bytes": 174174
+        },
+        {
+          "id": "E078",
+          "kind": "local",
+          "path": "local/research/codex/service-replacement-r1/replacement-first/client.log",
+          "sha256": "c997c61ee74d267b1369c5bfb060e7c4a1c90e47e6dc662d1149190cea60bf3d",
+          "bytes": 43572
+        },
+        {
+          "id": "E079",
+          "kind": "local",
+          "path": "local/research/codex/service-replacement-r1/replacement-first/client-B.log",
+          "sha256": "1c969473ae8b669a7d310486d2877e938694bbb663083518d1d5073c662dd3a1",
+          "bytes": 211825
+        },
+        {
+          "id": "E080",
+          "kind": "local",
+          "path": "local/research/codex/service-replacement-r1/replacement-first/client-C.log",
+          "sha256": "51e7866807fe8dbfaee875b72080becf8c990acb1840892aa20dcbd8a9896f77",
+          "bytes": 89475
+        },
+        {
+          "id": "E081",
+          "kind": "local",
+          "path": "local/research/codex/service-replacement-r1/replacement-first/service-state.json",
+          "sha256": "35843498c1ab55f30b8adf8b37b6fc37e97bf28a82872df0cd0b258bb20a2f1e",
+          "bytes": 175119
+        },
+        {
+          "id": "E082",
+          "kind": "local",
+          "path": "local/research/codex/service-replacement-r1/replacement-first/service.log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "id": "E083",
+          "kind": "local",
+          "path": "local/research/codex/service-replacement-r1/replacement-first/debug-commands.txt",
+          "sha256": "57002f7a894f9ad164829ceb3bc17dc96e552edd5417400a0712c3d9832a2103",
+          "bytes": 24693
+        },
+        {
+          "id": "E084",
+          "kind": "local",
+          "path": "local/research/codex/service-replacement-r1/replacement-first/debug-commands-B.txt",
+          "sha256": "57002f7a894f9ad164829ceb3bc17dc96e552edd5417400a0712c3d9832a2103",
+          "bytes": 24693
+        },
+        {
+          "id": "E085",
+          "kind": "local",
+          "path": "local/research/codex/service-replacement-r1/replacement-first/debug-commands-C.txt",
+          "sha256": "57002f7a894f9ad164829ceb3bc17dc96e552edd5417400a0712c3d9832a2103",
+          "bytes": 24693
+        },
+        {
+          "id": "E086",
+          "kind": "local",
+          "path": "local/research/codex/service-replacement-r1/replacement-first/A-dynamic159-r1-1-91.bin",
+          "sha256": "d24f72659094bae23c995528167f9dd03469b3bb67823a3a2f10602aa9f88b47",
+          "bytes": 77
+        },
+        {
+          "id": "E087",
+          "kind": "local",
+          "path": "local/research/codex/service-replacement-r1/replacement-first/A-floor582-76.bin",
+          "sha256": "dade68ac6b12c8c7ae59bf27d007ad4f1b32b6369d9a0fcd29170b3063e42ace",
+          "bytes": 64
+        },
+        {
+          "id": "E088",
+          "kind": "local",
+          "path": "local/research/codex/service-replacement-r1/replacement-first/A-go197-82.bin",
+          "sha256": "64b95010ecb0e40bc0367f41f6710d2357fb2538ce827e205825284601237ef8",
+          "bytes": 52
+        },
+        {
+          "id": "E089",
+          "kind": "local",
+          "path": "local/research/codex/service-replacement-r1/replacement-first/A-peer153-88.bin",
+          "sha256": "bcbe59582b2bc1fdbc6ccd61df0233de878966a853fed95b600c49c5a94b56dc",
+          "bytes": 135
+        },
+        {
+          "id": "E090",
+          "kind": "local",
+          "path": "local/research/codex/service-replacement-r1/replacement-first/A-play196-85.bin",
+          "sha256": "d04bf155b4847f9d41b0edfdf00a32526302273271c0f1cadbb8ce22b89eb51d",
+          "bytes": 45
+        },
+        {
+          "id": "E091",
+          "kind": "local",
+          "path": "local/research/codex/service-replacement-r1/replacement-first/A-ready110-73.bin",
+          "sha256": "8fafd9cf652b458ee09b3751a0201f9ab1409920398e0e842e43b915c8840e25",
+          "bytes": 44
+        },
+        {
+          "id": "E092",
+          "kind": "local",
+          "path": "local/research/codex/service-replacement-r1/replacement-first/A-start121-r1-79.bin",
+          "sha256": "f8a824335b4079160a4aaf0e0b425d1fabfa78c248d131503440d0414e1f26cf",
+          "bytes": 167
+        },
+        {
+          "id": "E093",
+          "kind": "local",
+          "path": "local/research/codex/service-replacement-r1/replacement-first/B-dynamic159-r1-1-91.bin",
+          "sha256": "d24f72659094bae23c995528167f9dd03469b3bb67823a3a2f10602aa9f88b47",
+          "bytes": 77
+        },
+        {
+          "id": "E094",
+          "kind": "local",
+          "path": "local/research/codex/service-replacement-r1/replacement-first/B-floor582-112.bin",
+          "sha256": "956a562107a3853c400511f576ac75e95df99fc17551d1b2b11b2f017bd8bc5a",
+          "bytes": 64
+        },
+        {
+          "id": "E095",
+          "kind": "local",
+          "path": "local/research/codex/service-replacement-r1/replacement-first/B-floor582-76.bin",
+          "sha256": "dade68ac6b12c8c7ae59bf27d007ad4f1b32b6369d9a0fcd29170b3063e42ace",
+          "bytes": 64
+        },
+        {
+          "id": "E096",
+          "kind": "local",
+          "path": "local/research/codex/service-replacement-r1/replacement-first/B-forfeit175-94.bin",
+          "sha256": "270bf9f55d7cff6bc9d2527ec1e3612e1c9362bad5e70ff41842042cb4ee3e19",
+          "bytes": 340
+        },
+        {
+          "id": "E097",
+          "kind": "local",
+          "path": "local/research/codex/service-replacement-r1/replacement-first/B-go197-118.bin",
+          "sha256": "aa70380f2f8ac732b32002b998ecd874353865d9e3853102c01a72d06b327970",
+          "bytes": 52
+        },
+        {
+          "id": "E098",
+          "kind": "local",
+          "path": "local/research/codex/service-replacement-r1/replacement-first/B-go197-82.bin",
+          "sha256": "64b95010ecb0e40bc0367f41f6710d2357fb2538ce827e205825284601237ef8",
+          "bytes": 52
+        },
+        {
+          "id": "E099",
+          "kind": "local",
+          "path": "local/research/codex/service-replacement-r1/replacement-first/B-item165-r2-17-127.bin",
+          "sha256": "57205d0248db95f454bebb2a464bac816912b4615dca4bff2d8c2d8473f6fe32",
+          "bytes": 50
+        },
+        {
+          "id": "E100",
+          "kind": "local",
+          "path": "local/research/codex/service-replacement-r1/replacement-first/B-peer153-124.bin",
+          "sha256": "7412fecf6b1a8ddb5b1f36fd822492eb9899817892c76e39ef388b08498bbc64",
+          "bytes": 135
+        },
+        {
+          "id": "E101",
+          "kind": "local",
+          "path": "local/research/codex/service-replacement-r1/replacement-first/B-peer153-88.bin",
+          "sha256": "b68f63527a58a096f8cb4edb67e958223b3383e68bd7d7407fade020ba0c4454",
+          "bytes": 135
+        },
+        {
+          "id": "E102",
+          "kind": "local",
+          "path": "local/research/codex/service-replacement-r1/replacement-first/B-play196-121.bin",
+          "sha256": "c36a9aaa4674958645f4db690772261f39607eb5fb712a80827259d710da962d",
+          "bytes": 45
+        },
+        {
+          "id": "E103",
+          "kind": "local",
+          "path": "local/research/codex/service-replacement-r1/replacement-first/B-play196-85.bin",
+          "sha256": "d04bf155b4847f9d41b0edfdf00a32526302273271c0f1cadbb8ce22b89eb51d",
+          "bytes": 45
+        },
+        {
+          "id": "E104",
+          "kind": "local",
+          "path": "local/research/codex/service-replacement-r1/replacement-first/B-ready110-109.bin",
+          "sha256": "72fcb4a8d7aa320bb1e8233036cf02551e139b642c7fc5eb7f2e350f79ec5db9",
+          "bytes": 44
+        },
+        {
+          "id": "E105",
+          "kind": "local",
+          "path": "local/research/codex/service-replacement-r1/replacement-first/B-ready110-73.bin",
+          "sha256": "8fafd9cf652b458ee09b3751a0201f9ab1409920398e0e842e43b915c8840e25",
+          "bytes": 44
+        },
+        {
+          "id": "E106",
+          "kind": "local",
+          "path": "local/research/codex/service-replacement-r1/replacement-first/B-remove107-100.bin",
+          "sha256": "db0251bb872f9c8558a99be2f12a57f6e82b4ba11a283c86a2157a0802940d28",
+          "bytes": 44
+        },
+        {
+          "id": "E107",
+          "kind": "local",
+          "path": "local/research/codex/service-replacement-r1/replacement-first/B-replacement106-106.bin",
+          "sha256": "f34ca490ec31c063128590cd3db92977d76fc1248cbb61f59fa114af73c69a65",
+          "bytes": 242
+        },
+        {
+          "id": "E108",
+          "kind": "local",
+          "path": "local/research/codex/service-replacement-r1/replacement-first/B-return180-r1-97.bin",
+          "sha256": "ab37525fb5e3cdf3792552145a440c0bf6cb24b6af168d2ca53bcb9ff967fcfe",
+          "bytes": 41
+        },
+        {
+          "id": "E109",
+          "kind": "local",
+          "path": "local/research/codex/service-replacement-r1/replacement-first/B-start121-r1-79.bin",
+          "sha256": "f8a824335b4079160a4aaf0e0b425d1fabfa78c248d131503440d0414e1f26cf",
+          "bytes": 167
+        },
+        {
+          "id": "E110",
+          "kind": "local",
+          "path": "local/research/codex/service-replacement-r1/replacement-first/B-start121-r2-115.bin",
+          "sha256": "2c2f633223459f50f3c83b215e3438d816637d3fcedf6adc5177f166c3f45901",
+          "bytes": 167
+        },
+        {
+          "id": "E111",
+          "kind": "local",
+          "path": "local/research/codex/service-replacement-r1/replacement-first/B-survivor110-103.bin",
+          "sha256": "d45a4b7df4380937283443e6f1b0984e0cd42ec4b8c6c2298abfa11526522b61",
+          "bytes": 44
+        },
+        {
+          "id": "E112",
+          "kind": "local",
+          "path": "local/research/codex/service-replacement-r1/replacement-first/C-floor582-76.bin",
+          "sha256": "dade68ac6b12c8c7ae59bf27d007ad4f1b32b6369d9a0fcd29170b3063e42ace",
+          "bytes": 64
+        },
+        {
+          "id": "E113",
+          "kind": "local",
+          "path": "local/research/codex/service-replacement-r1/replacement-first/C-go197-82.bin",
+          "sha256": "64b95010ecb0e40bc0367f41f6710d2357fb2538ce827e205825284601237ef8",
+          "bytes": 52
+        },
+        {
+          "id": "E114",
+          "kind": "local",
+          "path": "local/research/codex/service-replacement-r1/replacement-first/C-item165-r2-17-91.bin",
+          "sha256": "2ad2e7cbd637f553ff114fada41951a1129ca3dc52b14a540a60ccea59088bf0",
+          "bytes": 50
+        },
+        {
+          "id": "E115",
+          "kind": "local",
+          "path": "local/research/codex/service-replacement-r1/replacement-first/C-peer153-88.bin",
+          "sha256": "0cb5defc824387b900b4adb6fe3055cfc5fb2881e23c70c035cfeeaa4f1487d6",
+          "bytes": 135
+        },
+        {
+          "id": "E116",
+          "kind": "local",
+          "path": "local/research/codex/service-replacement-r1/replacement-first/C-play196-85.bin",
+          "sha256": "d04bf155b4847f9d41b0edfdf00a32526302273271c0f1cadbb8ce22b89eb51d",
+          "bytes": 45
+        },
+        {
+          "id": "E117",
+          "kind": "local",
+          "path": "local/research/codex/service-replacement-r1/replacement-first/C-ready110-73.bin",
+          "sha256": "849c64b6d2a8752c38a190d0dc6aa657b81dae657ef732890d826aff520b1e73",
+          "bytes": 44
+        },
+        {
+          "id": "E118",
+          "kind": "local",
+          "path": "local/research/codex/service-replacement-r1/replacement-first/C-start121-r2-79.bin",
+          "sha256": "f8a824335b4079160a4aaf0e0b425d1fabfa78c248d131503440d0414e1f26cf",
+          "bytes": 167
+        },
+        {
+          "id": "E119",
+          "kind": "local",
+          "path": "local/research/codex/service-replacement-r1/replacement-lite/run.json",
+          "sha256": "da1d694d15aaf2e732906d280f261b81ef9bd589b5bdf473a87ff9afd10ee7e5",
+          "bytes": 131231
+        },
+        {
+          "id": "E120",
+          "kind": "local",
+          "path": "local/research/codex/service-replacement-r1/replacement-lite/client.log",
+          "sha256": "cd9d8bd07c6d17be61c2df56c05015fbeb65492b10a089882e09dae67bdfdb9f",
+          "bytes": 23543
+        },
+        {
+          "id": "E121",
+          "kind": "local",
+          "path": "local/research/codex/service-replacement-r1/replacement-lite/client-B.log",
+          "sha256": "c14eb172b4bfb8eb2081c3076a3c8d2751c0a61260710a1d70c0ee63d22db045",
+          "bytes": 146930
+        },
+        {
+          "id": "E122",
+          "kind": "local",
+          "path": "local/research/codex/service-replacement-r1/replacement-lite/client-C.log",
+          "sha256": "8fdc62525286ec2c85447a02f001b39303a323cd0fe244932695e2180c64e554",
+          "bytes": 56365
+        },
+        {
+          "id": "E123",
+          "kind": "local",
+          "path": "local/research/codex/service-replacement-r1/replacement-lite/service-state.json",
+          "sha256": "9f27a776712b3890709de6882a7210a67f22ebba94443d90a8af51a1f9383e5f",
+          "bytes": 132128
+        },
+        {
+          "id": "E124",
+          "kind": "local",
+          "path": "local/research/codex/service-replacement-r1/replacement-lite/service.log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "id": "E125",
+          "kind": "local",
+          "path": "local/research/codex/service-replacement-r1/replacement-lite/debug-commands.txt",
+          "sha256": "46a796fedebf7adadfbe2423cdb99e2d65dcec922f3c90caf43d822aeae87c81",
+          "bytes": 24772
+        },
+        {
+          "id": "E126",
+          "kind": "local",
+          "path": "local/research/codex/service-replacement-r1/replacement-lite/debug-commands-B.txt",
+          "sha256": "46a796fedebf7adadfbe2423cdb99e2d65dcec922f3c90caf43d822aeae87c81",
+          "bytes": 24772
+        },
+        {
+          "id": "E127",
+          "kind": "local",
+          "path": "local/research/codex/service-replacement-r1/replacement-lite/debug-commands-C.txt",
+          "sha256": "46a796fedebf7adadfbe2423cdb99e2d65dcec922f3c90caf43d822aeae87c81",
+          "bytes": 24772
+        },
+        {
+          "id": "E128",
+          "kind": "local",
+          "path": "local/research/codex/service-replacement-r1/replacement-lite/A-dynamic159-r1-1-91.bin",
+          "sha256": "d24f72659094bae23c995528167f9dd03469b3bb67823a3a2f10602aa9f88b47",
+          "bytes": 77
+        },
+        {
+          "id": "E129",
+          "kind": "local",
+          "path": "local/research/codex/service-replacement-r1/replacement-lite/A-floor582-76.bin",
+          "sha256": "dade68ac6b12c8c7ae59bf27d007ad4f1b32b6369d9a0fcd29170b3063e42ace",
+          "bytes": 64
+        },
+        {
+          "id": "E130",
+          "kind": "local",
+          "path": "local/research/codex/service-replacement-r1/replacement-lite/A-go197-82.bin",
+          "sha256": "64b95010ecb0e40bc0367f41f6710d2357fb2538ce827e205825284601237ef8",
+          "bytes": 52
+        },
+        {
+          "id": "E131",
+          "kind": "local",
+          "path": "local/research/codex/service-replacement-r1/replacement-lite/A-peer153-88.bin",
+          "sha256": "4e33b555d114f5284c6bc144156cf9572bf1eebc454613e64208ee21654e0d31",
+          "bytes": 135
+        },
+        {
+          "id": "E132",
+          "kind": "local",
+          "path": "local/research/codex/service-replacement-r1/replacement-lite/A-play196-85.bin",
+          "sha256": "d04bf155b4847f9d41b0edfdf00a32526302273271c0f1cadbb8ce22b89eb51d",
+          "bytes": 45
+        },
+        {
+          "id": "E133",
+          "kind": "local",
+          "path": "local/research/codex/service-replacement-r1/replacement-lite/A-ready110-73.bin",
+          "sha256": "8fafd9cf652b458ee09b3751a0201f9ab1409920398e0e842e43b915c8840e25",
+          "bytes": 44
+        },
+        {
+          "id": "E134",
+          "kind": "local",
+          "path": "local/research/codex/service-replacement-r1/replacement-lite/A-start121-r1-79.bin",
+          "sha256": "f8a824335b4079160a4aaf0e0b425d1fabfa78c248d131503440d0414e1f26cf",
+          "bytes": 167
+        },
+        {
+          "id": "E135",
+          "kind": "local",
+          "path": "local/research/codex/service-replacement-r1/replacement-lite/B-blast158-r2-2-133.bin",
+          "sha256": "cc3c18104cfae1ecae5ba69c4261e5a4cc0581dab44d7a9023a8b904bde76faa",
+          "bytes": 51
+        },
+        {
+          "id": "E136",
+          "kind": "local",
+          "path": "local/research/codex/service-replacement-r1/replacement-lite/B-dynamic159-r1-1-91.bin",
+          "sha256": "d24f72659094bae23c995528167f9dd03469b3bb67823a3a2f10602aa9f88b47",
+          "bytes": 77
+        },
+        {
+          "id": "E137",
+          "kind": "local",
+          "path": "local/research/codex/service-replacement-r1/replacement-lite/B-dynamic159-r2-2-130.bin",
+          "sha256": "bed298ffee9235118ea135bc0ea5b820a68351fe23b78e7b92d2968cd27e6e82",
+          "bytes": 77
+        },
+        {
+          "id": "E138",
+          "kind": "local",
+          "path": "local/research/codex/service-replacement-r1/replacement-lite/B-floor582-112.bin",
+          "sha256": "956a562107a3853c400511f576ac75e95df99fc17551d1b2b11b2f017bd8bc5a",
+          "bytes": 64
+        },
+        {
+          "id": "E139",
+          "kind": "local",
+          "path": "local/research/codex/service-replacement-r1/replacement-lite/B-floor582-76.bin",
+          "sha256": "dade68ac6b12c8c7ae59bf27d007ad4f1b32b6369d9a0fcd29170b3063e42ace",
+          "bytes": 64
+        },
+        {
+          "id": "E140",
+          "kind": "local",
+          "path": "local/research/codex/service-replacement-r1/replacement-lite/B-forfeit175-94.bin",
+          "sha256": "270bf9f55d7cff6bc9d2527ec1e3612e1c9362bad5e70ff41842042cb4ee3e19",
+          "bytes": 340
+        },
+        {
+          "id": "E141",
+          "kind": "local",
+          "path": "local/research/codex/service-replacement-r1/replacement-lite/B-go197-118.bin",
+          "sha256": "aa70380f2f8ac732b32002b998ecd874353865d9e3853102c01a72d06b327970",
+          "bytes": 52
+        },
+        {
+          "id": "E142",
+          "kind": "local",
+          "path": "local/research/codex/service-replacement-r1/replacement-lite/B-go197-82.bin",
+          "sha256": "64b95010ecb0e40bc0367f41f6710d2357fb2538ce827e205825284601237ef8",
+          "bytes": 52
+        },
+        {
+          "id": "E143",
+          "kind": "local",
+          "path": "local/research/codex/service-replacement-r1/replacement-lite/B-guest110-r2-145.bin",
+          "sha256": "a0abb60ad93ac04a503559886b81d3b6a51fa37287c483dd8ce881c2fe44fdc4",
+          "bytes": 44
+        },
+        {
+          "id": "E144",
+          "kind": "local",
+          "path": "local/research/codex/service-replacement-r1/replacement-lite/B-host110-r2-142.bin",
+          "sha256": "605c251d3044ae1553a8b46862cee44f788a100b02286dceedd7ef6722c165f5",
+          "bytes": 44
+        },
+        {
+          "id": "E145",
+          "kind": "local",
+          "path": "local/research/codex/service-replacement-r1/replacement-lite/B-item165-r2-17-127.bin",
+          "sha256": "57205d0248db95f454bebb2a464bac816912b4615dca4bff2d8c2d8473f6fe32",
+          "bytes": 50
+        },
+        {
+          "id": "E146",
+          "kind": "local",
+          "path": "local/research/codex/service-replacement-r1/replacement-lite/B-peer153-124.bin",
+          "sha256": "04e71bac94c2e8e111b8057383a62fc67f9ef6b547ff2851aff84207eefb6e2c",
+          "bytes": 135
+        },
+        {
+          "id": "E147",
+          "kind": "local",
+          "path": "local/research/codex/service-replacement-r1/replacement-lite/B-peer153-88.bin",
+          "sha256": "6721147a54b2e25aed33712fb5d286cb3fbcfb68f2b1dd33775c4051b9945304",
+          "bytes": 135
+        },
+        {
+          "id": "E148",
+          "kind": "local",
+          "path": "local/research/codex/service-replacement-r1/replacement-lite/B-play196-121.bin",
+          "sha256": "c36a9aaa4674958645f4db690772261f39607eb5fb712a80827259d710da962d",
+          "bytes": 45
+        },
+        {
+          "id": "E149",
+          "kind": "local",
+          "path": "local/research/codex/service-replacement-r1/replacement-lite/B-play196-85.bin",
+          "sha256": "d04bf155b4847f9d41b0edfdf00a32526302273271c0f1cadbb8ce22b89eb51d",
+          "bytes": 45
+        },
+        {
+          "id": "E150",
+          "kind": "local",
+          "path": "local/research/codex/service-replacement-r1/replacement-lite/B-rank175-r2-136.bin",
+          "sha256": "33011bc1dd51bc0465ad7c5a896826ddcecacc4a1b4b54363b7cd3498ad8249e",
+          "bytes": 340
+        },
+        {
+          "id": "E151",
+          "kind": "local",
+          "path": "local/research/codex/service-replacement-r1/replacement-lite/B-ready110-109.bin",
+          "sha256": "72fcb4a8d7aa320bb1e8233036cf02551e139b642c7fc5eb7f2e350f79ec5db9",
+          "bytes": 44
+        },
+        {
+          "id": "E152",
+          "kind": "local",
+          "path": "local/research/codex/service-replacement-r1/replacement-lite/B-ready110-73.bin",
+          "sha256": "8fafd9cf652b458ee09b3751a0201f9ab1409920398e0e842e43b915c8840e25",
+          "bytes": 44
+        },
+        {
+          "id": "E153",
+          "kind": "local",
+          "path": "local/research/codex/service-replacement-r1/replacement-lite/B-remove107-100.bin",
+          "sha256": "db0251bb872f9c8558a99be2f12a57f6e82b4ba11a283c86a2157a0802940d28",
+          "bytes": 44
+        },
+        {
+          "id": "E154",
+          "kind": "local",
+          "path": "local/research/codex/service-replacement-r1/replacement-lite/B-remove107-148.bin",
+          "sha256": "4132e1fb62729727e8612fa9683560d22a581b6821f714d7f7b42e758b301d62",
+          "bytes": 44
+        },
+        {
+          "id": "E155",
+          "kind": "local",
+          "path": "local/research/codex/service-replacement-r1/replacement-lite/B-replacement106-106.bin",
+          "sha256": "f34ca490ec31c063128590cd3db92977d76fc1248cbb61f59fa114af73c69a65",
+          "bytes": 242
+        },
+        {
+          "id": "E156",
+          "kind": "local",
+          "path": "local/research/codex/service-replacement-r1/replacement-lite/B-return180-r1-97.bin",
+          "sha256": "ab37525fb5e3cdf3792552145a440c0bf6cb24b6af168d2ca53bcb9ff967fcfe",
+          "bytes": 41
+        },
+        {
+          "id": "E157",
+          "kind": "local",
+          "path": "local/research/codex/service-replacement-r1/replacement-lite/B-return180-r2-139.bin",
+          "sha256": "8fa8217ca07c9c323d1ce112ea12b332623386fcd993a09b78f31f1346ed4b0c",
+          "bytes": 41
+        },
+        {
+          "id": "E158",
+          "kind": "local",
+          "path": "local/research/codex/service-replacement-r1/replacement-lite/B-start121-r1-79.bin",
+          "sha256": "f8a824335b4079160a4aaf0e0b425d1fabfa78c248d131503440d0414e1f26cf",
+          "bytes": 167
+        },
+        {
+          "id": "E159",
+          "kind": "local",
+          "path": "local/research/codex/service-replacement-r1/replacement-lite/B-start121-r2-115.bin",
+          "sha256": "2c2f633223459f50f3c83b215e3438d816637d3fcedf6adc5177f166c3f45901",
+          "bytes": 167
+        },
+        {
+          "id": "E160",
+          "kind": "local",
+          "path": "local/research/codex/service-replacement-r1/replacement-lite/B-survivor110-103.bin",
+          "sha256": "d45a4b7df4380937283443e6f1b0984e0cd42ec4b8c6c2298abfa11526522b61",
+          "bytes": 44
+        },
+        {
+          "id": "E161",
+          "kind": "local",
+          "path": "local/research/codex/service-replacement-r1/replacement-lite/B-survivor110-151.bin",
+          "sha256": "62b70843cfedb883775bc88e7284e5bcbd899570a8212c52f0b16d7c716ec5e3",
+          "bytes": 44
+        },
+        {
+          "id": "E162",
+          "kind": "local",
+          "path": "local/research/codex/service-replacement-r1/replacement-lite/C-blast158-r2-2-97.bin",
+          "sha256": "fb137d6de8074e8fb5ad55aadadc1635e76f600c8a50ade0f8ccd3053d21798b",
+          "bytes": 51
+        },
+        {
+          "id": "E163",
+          "kind": "local",
+          "path": "local/research/codex/service-replacement-r1/replacement-lite/C-dynamic159-r2-2-94.bin",
+          "sha256": "2e32020a5b6a20b285038bfcc72d56b06b2036862be4e6ec3d190d1d625663a5",
+          "bytes": 77
+        },
+        {
+          "id": "E164",
+          "kind": "local",
+          "path": "local/research/codex/service-replacement-r1/replacement-lite/C-event170-17-r2-100.bin",
+          "sha256": "b387c70fe08ef83cb32875cb4ccdda1b283d563f6d4a5a894264182ec563d55a",
+          "bytes": 48
+        },
+        {
+          "id": "E165",
+          "kind": "local",
+          "path": "local/research/codex/service-replacement-r1/replacement-lite/C-event170-19-r2-103.bin",
+          "sha256": "55843c242aea99ec136720961897330b2958c3ee3e53e02988a20ef21d459c52",
+          "bytes": 59
+        },
+        {
+          "id": "E166",
+          "kind": "local",
+          "path": "local/research/codex/service-replacement-r1/replacement-lite/C-floor582-76.bin",
+          "sha256": "dade68ac6b12c8c7ae59bf27d007ad4f1b32b6369d9a0fcd29170b3063e42ace",
+          "bytes": 64
+        },
+        {
+          "id": "E167",
+          "kind": "local",
+          "path": "local/research/codex/service-replacement-r1/replacement-lite/C-go197-82.bin",
+          "sha256": "64b95010ecb0e40bc0367f41f6710d2357fb2538ce827e205825284601237ef8",
+          "bytes": 52
+        },
+        {
+          "id": "E168",
+          "kind": "local",
+          "path": "local/research/codex/service-replacement-r1/replacement-lite/C-guest110-r2-115.bin",
+          "sha256": "e4a6a716f8432eb339c062d2344ba1bb33880062001820bdd990dc576ad40e9f",
+          "bytes": 44
+        },
+        {
+          "id": "E169",
+          "kind": "local",
+          "path": "local/research/codex/service-replacement-r1/replacement-lite/C-host110-r2-112.bin",
+          "sha256": "a9eb149b5c7164a57af2bae274c86214691c941ede01eb746e1741c6ae733011",
+          "bytes": 44
+        },
+        {
+          "id": "E170",
+          "kind": "local",
+          "path": "local/research/codex/service-replacement-r1/replacement-lite/C-item165-r2-17-91.bin",
+          "sha256": "2ad2e7cbd637f553ff114fada41951a1129ca3dc52b14a540a60ccea59088bf0",
+          "bytes": 50
+        },
+        {
+          "id": "E171",
+          "kind": "local",
+          "path": "local/research/codex/service-replacement-r1/replacement-lite/C-peer153-88.bin",
+          "sha256": "14fcf762c4113775d3e6f5d9d1143ffa11113ad474d37588f8b3fc37432d0f63",
+          "bytes": 135
+        },
+        {
+          "id": "E172",
+          "kind": "local",
+          "path": "local/research/codex/service-replacement-r1/replacement-lite/C-play196-85.bin",
+          "sha256": "d04bf155b4847f9d41b0edfdf00a32526302273271c0f1cadbb8ce22b89eb51d",
+          "bytes": 45
+        },
+        {
+          "id": "E173",
+          "kind": "local",
+          "path": "local/research/codex/service-replacement-r1/replacement-lite/C-rank175-r2-106.bin",
+          "sha256": "26f918bc7327487f8a6052df2dbde551e9a761188aae29af81588d2df30aa31a",
+          "bytes": 340
+        },
+        {
+          "id": "E174",
+          "kind": "local",
+          "path": "local/research/codex/service-replacement-r1/replacement-lite/C-ready110-73.bin",
+          "sha256": "849c64b6d2a8752c38a190d0dc6aa657b81dae657ef732890d826aff520b1e73",
+          "bytes": 44
+        },
+        {
+          "id": "E175",
+          "kind": "local",
+          "path": "local/research/codex/service-replacement-r1/replacement-lite/C-return180-r2-109.bin",
+          "sha256": "b53daa3dda63e60a45282c346e337b4d3d97dd07a2ef4b33a42a147350601e54",
+          "bytes": 41
+        },
+        {
+          "id": "E176",
+          "kind": "local",
+          "path": "local/research/codex/service-replacement-r1/replacement-lite/C-start121-r2-79.bin",
+          "sha256": "f8a824335b4079160a4aaf0e0b425d1fabfa78c248d131503440d0414e1f26cf",
+          "bytes": 167
+        },
+        {
+          "id": "E177",
+          "kind": "local",
+          "path": "local/research/codex/service-replacement-r1/request-frames/replacement-first/A-F39-99.bin",
+          "sha256": "b973a41764e0e99d1ae406824ec714f15a26eaa23cd73f0ed3229c4eac057ea4",
+          "bytes": 61
+        },
+        {
+          "id": "E178",
+          "kind": "local",
+          "path": "local/research/codex/service-replacement-r1/request-frames/replacement-first/B-F13-82.bin",
+          "sha256": "1746130345929e482c425aa463e6bf34d6da555c86c6474cf235330227f74f47",
+          "bytes": 49
+        },
+        {
+          "id": "E179",
+          "kind": "local",
+          "path": "local/research/codex/service-replacement-r1/request-frames/replacement-first/B-F24-95.bin",
+          "sha256": "730e662309a1a5abb7556e5f500168850ae220a9b7f288c1c62d18904206398c",
+          "bytes": 98
+        },
+        {
+          "id": "E180",
+          "kind": "local",
+          "path": "local/research/codex/service-replacement-r1/request-frames/replacement-first/B-F28-99.bin",
+          "sha256": "4545f7cce093534adc725b2102902bb7e60578269bff96d6a2a7d623ca42ad18",
+          "bytes": 61
+        },
+        {
+          "id": "E181",
+          "kind": "local",
+          "path": "local/research/codex/service-replacement-r1/request-frames/replacement-first/B-F40-118.bin",
+          "sha256": "b3c5903af3cceafeec5911b264fd24d175b097511c557b40fd3eb8c460e45181",
+          "bytes": 60
+        },
+        {
+          "id": "E182",
+          "kind": "local",
+          "path": "local/research/codex/service-replacement-r1/request-frames/replacement-first/B-F77-99.bin",
+          "sha256": "008f1e1778217a61df45fd05daab560fef1b74a43f053f27f820b93bfcbe4748",
+          "bytes": 61
+        },
+        {
+          "id": "E183",
+          "kind": "local",
+          "path": "local/research/codex/service-replacement-r1/request-frames/replacement-first/C-F13-82.bin",
+          "sha256": "1746130345929e482c425aa463e6bf34d6da555c86c6474cf235330227f74f47",
+          "bytes": 49
+        },
+        {
+          "id": "E184",
+          "kind": "local",
+          "path": "local/research/codex/service-replacement-r1/request-frames/replacement-first/C-F23-95.bin",
+          "sha256": "41ec7cfe284ac427205c3029e41fd807814e254b6f15c4c80abea2e30c47b7d1",
+          "bytes": 98
+        },
+        {
+          "id": "E185",
+          "kind": "local",
+          "path": "local/research/codex/service-replacement-r1/request-frames/replacement-first/C-F30-99.bin",
+          "sha256": "3bdf89e947c183a7fbfa04e91e810a48298e00feb98f24d7896a052a393277f9",
+          "bytes": 61
+        },
+        {
+          "id": "E186",
+          "kind": "local",
+          "path": "local/research/codex/service-replacement-r1/request-frames/replacement-first/C-F38-124.bin",
+          "sha256": "14e0b6804c4b068a00d8400912dd98d372fb9e84c12d1c20357f46aaf4523b8e",
+          "bytes": 57
+        },
+        {
+          "id": "E187",
+          "kind": "local",
+          "path": "local/research/codex/service-replacement-r1/request-frames/replacement-lite/A-F38-99.bin",
+          "sha256": "1739c21e5639ddbe00ded188d2a3fd4b1d1004611e88d3ac6977e62867ce7cd7",
+          "bytes": 61
+        },
+        {
+          "id": "E188",
+          "kind": "local",
+          "path": "local/research/codex/service-replacement-r1/request-frames/replacement-lite/B-F13-82.bin",
+          "sha256": "1746130345929e482c425aa463e6bf34d6da555c86c6474cf235330227f74f47",
+          "bytes": 49
+        },
+        {
+          "id": "E189",
+          "kind": "local",
+          "path": "local/research/codex/service-replacement-r1/request-frames/replacement-lite/B-F24-95.bin",
+          "sha256": "730e662309a1a5abb7556e5f500168850ae220a9b7f288c1c62d18904206398c",
+          "bytes": 98
+        },
+        {
+          "id": "E190",
+          "kind": "local",
+          "path": "local/research/codex/service-replacement-r1/request-frames/replacement-lite/B-F28-99.bin",
+          "sha256": "e82650b9201e247dd48c9f6993b7eeccce893b515b355e23db4218730643b256",
+          "bytes": 61
+        },
+        {
+          "id": "E191",
+          "kind": "local",
+          "path": "local/research/codex/service-replacement-r1/request-frames/replacement-lite/B-F34-118.bin",
+          "sha256": "8e1a85a949a7b61000ee54ed3aff9a484820f31251e195ade107f4a449d53a31",
+          "bytes": 60
+        },
+        {
+          "id": "E192",
+          "kind": "local",
+          "path": "local/research/codex/service-replacement-r1/request-frames/replacement-lite/B-F67-99.bin",
+          "sha256": "fde3d761010ebdca71a792cca6da1ea4626eef452cc66e3d1d7b2c5e6d433309",
+          "bytes": 61
+        },
+        {
+          "id": "E193",
+          "kind": "local",
+          "path": "local/research/codex/service-replacement-r1/request-frames/replacement-lite/B-F84-118.bin",
+          "sha256": "aa8ca6ecb8ecce6e74272eb1bc7afb967552e0bbbe1ba61eab0629ef9a4c2bcd",
+          "bytes": 60
+        },
+        {
+          "id": "E194",
+          "kind": "local",
+          "path": "local/research/codex/service-replacement-r1/request-frames/replacement-lite/B-F91-127.bin",
+          "sha256": "1668ff0b389d29d09e7b2c2d18b9eb3336fcc6b0d0d501185bf6f0740c5e816f",
+          "bytes": 70
+        },
+        {
+          "id": "E195",
+          "kind": "local",
+          "path": "local/research/codex/service-replacement-r1/request-frames/replacement-lite/B-F95-127.bin",
+          "sha256": "7e005231285dcb2533bcc30dee603318c82750f38dce2499f8d7cb9738419774",
+          "bytes": 67
+        },
+        {
+          "id": "E196",
+          "kind": "local",
+          "path": "local/research/codex/service-replacement-r1/request-frames/replacement-lite/C-F13-82.bin",
+          "sha256": "1746130345929e482c425aa463e6bf34d6da555c86c6474cf235330227f74f47",
+          "bytes": 49
+        },
+        {
+          "id": "E197",
+          "kind": "local",
+          "path": "local/research/codex/service-replacement-r1/request-frames/replacement-lite/C-F22-95.bin",
+          "sha256": "38eeff06df1cda4991e6860d5e77cabcb5d78c9a82bc217363b4899b10d3aedd",
+          "bytes": 98
+        },
+        {
+          "id": "E198",
+          "kind": "local",
+          "path": "local/research/codex/service-replacement-r1/request-frames/replacement-lite/C-F28-99.bin",
+          "sha256": "2384539e1446a196e1d2af419740ad5c85ac9ce96b6835f5f4955ad066b90489",
+          "bytes": 61
+        },
+        {
+          "id": "E199",
+          "kind": "local",
+          "path": "local/research/codex/service-replacement-r1/request-frames/replacement-lite/C-F36-124.bin",
+          "sha256": "71447f7946d642ff1529cd7d27e9172e970122f16c302db439b38846e2193f24",
+          "bytes": 57
+        },
+        {
+          "id": "E200",
+          "kind": "local",
+          "path": "local/research/codex/service-replacement-r1/request-frames/replacement-lite/C-F51-127.bin",
+          "sha256": "eaefe9544b8bcd97e68934c986238f442412d64d23d134467defcc6fba25dadf",
+          "bytes": 52
+        },
+        {
+          "id": "E201",
+          "kind": "local",
+          "path": "local/research/codex/service-replacement-r1/request-frames/replacement-lite/C-F52-127.bin",
+          "sha256": "bbd557b71463d74e3a6064bc4665f434a2da5e4f649760224b6a6fd31099a6f8",
+          "bytes": 52
+        },
+        {
+          "id": "E202",
+          "kind": "local",
+          "path": "local/research/codex/service-replacement-r1/request-frames/replacement-lite/C-F54-127.bin",
+          "sha256": "2a352d3d666c01b130cd5c78a5fddd72085106b73986d5c82967d946c87748c4",
+          "bytes": 52
+        },
+        {
+          "id": "E203",
+          "kind": "local",
+          "path": "local/research/codex/service-replacement-r1/request-frames/replacement-lite/C-F56-127.bin",
+          "sha256": "bbbfbd0954b51072054fb3ea87d2ecfd92760187412f34307e7019e04f17a68f",
+          "bytes": 52
+        },
+        {
+          "id": "E204",
+          "kind": "local",
+          "path": "local/research/codex/service-replacement-r1/request-frames/replacement-lite/C-F57-127.bin",
+          "sha256": "824925b65893940d03318020738cc134fda2fd0f64b31a0887d6eedf05aeae47",
+          "bytes": 52
+        },
+        {
+          "id": "E205",
+          "kind": "local",
+          "path": "local/research/codex/service-replacement-r1/request-frames/replacement-lite/C-F58-127.bin",
+          "sha256": "5d967dd89cc8b96fa7c1185b08eed34f3c1be920436e0b2e408d7f08dfcfef84",
+          "bytes": 52
+        },
+        {
+          "id": "E206",
+          "kind": "local",
+          "path": "local/research/codex/service-replacement-r1/request-frames/replacement-lite/C-F59-127.bin",
+          "sha256": "ac67987de694fbdaf38a99e40a77e23f7da4d790db0e4cd0609e3bb7deb716bd",
+          "bytes": 52
+        },
+        {
+          "id": "E207",
+          "kind": "local",
+          "path": "local/research/codex/wine_probe_service_replacement.py",
+          "sha256": "7057101f1f250eb63396b3115a22c6feedbdf54ce7efc25de8d2cec1ba90648d",
+          "bytes": 43846
+        },
+        {
+          "id": "E208",
+          "kind": "local",
+          "path": "local/research/codex/wine_probe_service_replacement_late.py",
+          "sha256": "110d8b3eb0ff81fdb314f113fb737382ab48426b9ae3507bfc699c3717c96ffc",
+          "bytes": 44471
+        },
+        {
+          "id": "E209",
+          "kind": "local",
+          "path": "local/research/codex/wcp-guard-r1/game/CA-r2-stage-social.exe",
+          "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef",
+          "bytes": 31874560
+        },
+        {
+          "id": "E210",
+          "kind": "local",
+          "path": "local/research/codex/duo-round-r1/game-B/CA-r2-stage-social.exe",
+          "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef",
+          "bytes": 31874560
+        },
+        {
+          "id": "E211",
+          "kind": "local",
+          "path": "local/research/codex/contact-race-r1/game-C/CA-r2-stage-social.exe",
+          "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef",
+          "bytes": 31874560
+        }
+      ],
+      "delta": {
+        "added": [
+          "Standalone C replacement/BStart/roster/seq/key integration and actual B/C bomb/death/result/return; three regression tests and profile41."
+        ],
+        "corrected": [
+          "Service cap8/A-B/StartA was CP050 historical, not current. KR-X002 old124 gap now distinguishes CP049 keyguard answer from remaining transport/forged-current-key/roster gaps.",
+          "Lite means only UDP ingress/queue/drain79-84 removed in actual run, not full79-101 due autoenable; no causal claim or hidden failed control."
+        ],
+        "superseded": [
+          "CP050 next Cnew/BStart standalone integration now measured; remaining lifecycle setup/closed race and validator/auth/cache/codec gaps in canonical PLAN/RESEARCH."
+        ]
+      },
+      "blockers": [
+        "General membership/account reconnect/setup/idleEOF/sendfailure/timeout/loadfail/reset variants unknown. Diagnostic accept-order/profile remain, not production auth.",
+        "Full124validator/t/distance/actorstate/forged-current-key, transport replay, roster/key lifetime/fullUDPgrammar/cache/codec/vanilla/gates remain. First run partial prevents broad reproducibility claim."
+      ],
+      "next_steps": [
+        {
+          "id": "NEXT-DUO-ROUND",
+          "task": "KRE-005b",
+          "state": "active",
+          "action": "Follow PLAN#current-order and RESEARCH#gap-disconnect-replacement: close guest channel before map/Start during setup; inspect no false phase/rank and no closedpeer reuse, reuse known consumers.",
+          "owner": "Codex",
+          "reviewer": "Codex"
+        },
+        {
+          "id": "NEXT-ITEM-PICKUP",
+          "task": "KRE-005b",
+          "state": "active",
+          "action": "Canonical PLAN/RESEARCH#gap-floor-pickup: remaining t/distance/actorstate/forged-current-key/transport when actual service branch needs it; do not redo old/current-key proof.",
+          "owner": "Codex",
+          "reviewer": "Codex"
+        },
+        {
+          "id": "NEXT-FULL-LOGIN-FIELDS",
+          "task": "KRE-005b",
+          "state": "active",
+          "action": "Canonical auth/cache/codec debt remains after lifecycle; new C identity is not A account resume.",
+          "owner": "Codex",
+          "reviewer": "Codex"
+        }
+      ],
+      "review": {
+        "status": "waived",
+        "as_of_utc": "2026-11-01T13:33:14.020370+00:00",
+        "reference": "docs/evidence/checkpoints/review-waiver.json",
+        "scope": "Codex solo RE/code/runtime/selfcheck, not independent approval.",
+        "authorization": {
+          "by": "project_owner",
+          "reference": "docs/evidence/checkpoints/review-waiver.json",
+          "reason": "Owner explicitly requested solo without Claude review."
+        }
+      },
+      "docs_sync": [
+        {
+          "path": "README.md",
+          "state": "updated",
+          "reason": "CP051 current replacement service evidence/limits, canonical source links and remaining minimal test; history retained."
+        },
+        {
+          "path": "docs/PLAN.md",
+          "state": "updated",
+          "reason": "CP051 current replacement service evidence/limits, canonical source links and remaining minimal test; history retained."
+        },
+        {
+          "path": "docs/PROTOCOL.md",
+          "state": "updated",
+          "reason": "CP051 current replacement service evidence/limits, canonical source links and remaining minimal test; history retained."
+        },
+        {
+          "path": "docs/RESEARCH.md",
+          "state": "updated",
+          "reason": "CP051 current replacement service evidence/limits, canonical source links and remaining minimal test; history retained."
+        },
+        {
+          "path": "docs/features.json",
+          "state": "updated",
+          "reason": "CP051 current replacement service evidence/limits, canonical source links and remaining minimal test; history retained."
+        },
+        {
+          "path": "docs/COVERAGE.md",
+          "state": "updated",
+          "reason": "CP051 current replacement service evidence/limits, canonical source links and remaining minimal test; history retained."
+        },
+        {
+          "path": "server/README.md",
+          "state": "updated",
+          "reason": "CP051 current replacement service evidence/limits, canonical source links and remaining minimal test; history retained."
+        },
+        {
+          "path": "docs/evidence/service-replacement/README.md",
+          "state": "updated",
+          "reason": "CP051 current replacement service evidence/limits, canonical source links and remaining minimal test; history retained."
+        }
+      ]
     }
   ],
   "audits": [
@@ -93779,6 +95490,12 @@
       "state": "open",
       "canonical": "docs/PLAN.md",
       "reference": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/60"
+    },
+    {
+      "id": "KRE-014",
+      "state": "open",
+      "canonical": "docs/PLAN.md",
+      "reference": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/62"
     }
   ]
 }

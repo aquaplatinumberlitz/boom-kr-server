@@ -62,9 +62,9 @@ python3 -m unittest discover -s server -p 'test_*.py'
 
 Service chỉ bind loopback. Khi chạy Wine phải dùng namespace/lease/files-only NSS của recipe đã đo;
 loopback binding riêng nó không cô lập outbound client. Cần đủ các port của fixture/harness, không
-chỉ3808 cho chuỗi runtime. Profile chỉ cho hai identity A/B theo accept-order (4connection/vai),
+chỉ3808 cho chuỗi runtime. Profile CP051 cho identity A/B rồi C thay A theo accept-order (4connection/vai),
 synthetic auth/map/roster/rank và stable slots. Không là public server hoặc login/auth hoàn chỉnh.
-Service chưa quản membership tổng quát/client thay thế sau EOF, full124validator/tick/actorstate,
+Service chưa quản membership tổng quát/account reconnect, full124validator/tick/actorstate,
 relay/NAT/backpressure hay gate K5/K6a. CP050 bổ sung [EOF recovery hẹp](../docs/PROTOCOL.md#service-eof); mô tả chỉ finish là snapshot CP049.
 Runtime r2 có hai chu kỳ; r3 chỉ một result, không dùng để tuyên bố tính tái lập mọi input.
 
@@ -79,7 +79,15 @@ Không xác thực sender hoặc kiểm t/distance/actorstate; body chèn tại 
 CP050: channel close vào một đường idempotent, loại closedpeer khỏi sends/setup, finish vòng ngay
 để ticket bom cũ không phát158. Sau forfeit/return mới107/110 cho survivor. Delay12/5/3s, rank,
 slot/ID/promote là policy fixture; [native evidence](../docs/evidence/service-eof/README.md) kiểm cả host/guest.
-Profile cần34fixture mới, export lại bằng tool ra path mới; profile32 cũ fail rõ trước listen.
-33server tests gồm5EOF/profile regressions. Service vẫn chỉA/B/cap8/StartA; C mới/BStart/account
-reconnect/idle-EOF/setup/sendfailure race chưa runtime. Một wrapper giữ99 10s đã kiểm wait-both hẹp,
+Tại CP050 profile cần34fixture, export lại bằng tool ra path mới; profile32 cũ fail rõ trước listen.
+33server tests tại CP050 gồm5EOF/profile regressions. Snapshot CP050 chỉA/B/cap8/StartA;
+CP051 thay giới hạn C mới/BStart theo phần dưới; account reconnect/idle-EOF/setup/sendfailure race vẫn mở. Một wrapper giữ99 10s đã kiểm wait-both hẹp,
 không chứng minh mọi timeout hoặc full loading gate.
+
+
+CP051: [C mới thay A/B Start](../docs/PROTOCOL.md#service-replacement) đã tích hợp và có một vòng
+B/C bom/death/result/return trên Wine copy; run đầu partial giữ riêng. C có ID3/slot0, B giữ ID2/slot1/chief;
+không giả C là A reconnect. Profile cần **41fixture**, export ra path mới; profile34 thiếu bảy aliasC
+fail trước listen. Max12connection theo thứ tựA-B-C, chỉ hai live members; admission chờ cleanup A.
+36server tests có3replacement regressions cho Ready/host/roster/key/seq/ticket và report21 đúng peer.
+Auth/map/rank/roster vẫn fixture, chưa login server công khai, membership hoặc fullvalidator/reset.
