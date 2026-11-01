@@ -465,11 +465,11 @@ Dependency: [KR-R002](#kr-r002).
 
 [Contract và giới hạn](PROTOCOL.md#room-rejoin) · [Câu hỏi gốc](RESEARCH.md#gap-room-membership) · [Thứ tự ở PLAN](PLAN.md#current-order).
 
-Khoảng trống (trích bảng RESEARCH): Leave/rejoin/promotion đã đo harness CP034/035; CP050 service có EOF cleanup/chief. UI Back/rejoin service và identity C chưa tích hợp.
+Khoảng trống (trích bảng RESEARCH): CP051 service có C mới/ID3/slot0, Bchief/actual104 và B/C result/return; admission theo accept-order, chưa allocator/account reconnect/UI Back tổng quát.
 
-Phép kiểm tối thiểu (trích cùng nguồn): Theo PLAN ưu tiên C mới sau abort; giữ socket/ID/slot/host lifecycle và seq theo CP040/044, phân biệt với reconnect cùng account.
+Phép kiểm tối thiểu (trích cùng nguồn): Không tìm lại C106/87/110. Khi mở membership tổng quát, kiểm socket→identity→slot và setup/closed race, phân biệt C mới với resume; contract [service replacement](PROTOCOL.md#service-replacement).
 
-Bằng chứng/build/hash/recipe: [room-rejoin](evidence/room-rejoin/README.md), [service-eof](evidence/service-eof/README.md).
+Bằng chứng/build/hash/recipe: [room-rejoin](evidence/room-rejoin/README.md), [service-eof](evidence/service-eof/README.md), [service-replacement](evidence/service-replacement/README.md).
 
 | Chiều chứng minh | Khai báo | Nguồn/phạm vi áp dụng |
 |---|---|---|
@@ -477,12 +477,12 @@ Bằng chứng/build/hash/recipe: [room-rejoin](evidence/room-rejoin/README.md),
 | vn_reference | both | [nguồn1](REFERENCES.md) |
 | kr_static | partial | [nguồn1](PROTOCOL.md#room-rejoin) |
 | emulation | checked | [nguồn1](evidence/room-rejoin/README.md) |
-| wine_diagnostic_copy | observed | [nguồn1](evidence/room-rejoin/README.md), [nguồn2](evidence/service-eof/README.md) |
+| wine_diagnostic_copy | observed | [nguồn1](evidence/room-rejoin/README.md), [nguồn2](evidence/service-eof/README.md), [nguồn3](evidence/service-replacement/README.md) |
 | windows_original | unknown | Chưa có bằng chứng trong phạm vi rà |
 | lan | unknown | Chưa có bằng chứng trong phạm vi rà |
 | internet | unknown | Chưa có bằng chứng trong phạm vi rà |
-| implementation | partial / via_pr | [nguồn1](../server/probe_service.py), [nguồn2](PROTOCOL.md#service-eof), [nguồn3](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/61) |
-| integration | partial | [nguồn1](evidence/service-eof/README.md) |
+| implementation | partial / via_pr | [nguồn1](../server/probe_service.py), [nguồn2](PROTOCOL.md#service-eof), [nguồn3](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/61), [nguồn4](PROTOCOL.md#service-replacement), [nguồn5](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/63) |
+| integration | partial | [nguồn1](evidence/service-eof/README.md), [nguồn2](evidence/service-replacement/README.md) |
 | gate | K4: open | [nguồn1](PLAN.md#gates) |
 
 <a id="kr-f001"></a>
@@ -924,7 +924,7 @@ Dependency: [KR-X001](#kr-x001), [KR-F003](#kr-f003), [KR-F006](#kr-f006).
 
 [Contract và giới hạn](PROTOCOL.md#round-generation) · [Câu hỏi gốc](RESEARCH.md#gap-round-reset) · [Thứ tự ở PLAN](PLAN.md#current-order).
 
-Khoảng trống (trích bảng RESEARCH): Reset field đã đo không là toàn entity/seq/queue/timer/túi; old124 đồng catalog còn mở.
+Khoảng trống (trích bảng RESEARCH): Reset field đã đo không là toàn entity/seq/queue/timer/túi; CP049 đã loại old124 khác k, transport/forged-current-key/roster lifetime còn mở.
 
 Phép kiểm tối thiểu (trích cùng nguồn): Tái dùng CP041–047; kiểm job/claim/key owner cùng run ở vòng2 và sau abort, đối chiếu field hiện hành với baseline vòng1.
 
@@ -951,11 +951,11 @@ Dependency: [KR-X002](#kr-x002), [KR-R004](#kr-r004).
 
 [Contract và giới hạn](PROTOCOL.md#abort-timer) · [Câu hỏi gốc](RESEARCH.md#gap-disconnect-replacement) · [Thứ tự ở PLAN](PLAN.md#current-order).
 
-Khoảng trống (trích bảng RESEARCH): CP050 service đã kiểm host/guest EOF với pendingtimer,175/180/107/110/chief; C mới và Start từ B còn thiếu, không account reconnect.
+Khoảng trống (trích bảng RESEARCH): CP051 service C mới/B Start/bom/17/19/C21/175/180 đã đo cùng run; CP050 host/guestEOF/timerdrop/cleanup và hold99 đã giải hẹp. Account reconnect/setup/idleEOF/sendfailure/timeout và toàn reset còn mở.
 
-Phép kiểm tối thiểu (trích cùng nguồn): Dùng lại CP040/044: mở accept C/ID3/slot trống, B chief gửi104, C Join/Ready rồi native bom/statepeer/result/return; giữ seq/key/ticket đúng, không tìm lại cleanup receiver.
+Phép kiểm tối thiểu (trích cùng nguồn): Phép kiểm tối thiểu tiếp: đóng channel guest khi còn ở setup (chưa map/Start), log thời điểm/owner; kiểm host còn sống không nhận phase153/Start hoặc rank giả, không dùng lại closed event. Nếu vướng, sửa lifecycle caller, không RE lại107/110/175/180.
 
-Bằng chứng/build/hash/recipe: [abort-timer](evidence/abort-timer/README.md), [service-eof](evidence/service-eof/README.md).
+Bằng chứng/build/hash/recipe: [abort-timer](evidence/abort-timer/README.md), [service-eof](evidence/service-eof/README.md), [service-replacement](evidence/service-replacement/README.md).
 
 | Chiều chứng minh | Khai báo | Nguồn/phạm vi áp dụng |
 |---|---|---|
@@ -963,12 +963,12 @@ Bằng chứng/build/hash/recipe: [abort-timer](evidence/abort-timer/README.md),
 | vn_reference | both | [nguồn1](REFERENCES.md) |
 | kr_static | partial | [nguồn1](PROTOCOL.md#abort-timer) |
 | emulation | checked | [nguồn1](evidence/abort-timer/README.md) |
-| wine_diagnostic_copy | observed | [nguồn1](evidence/abort-timer/README.md), [nguồn2](evidence/service-eof/README.md) |
+| wine_diagnostic_copy | observed | [nguồn1](evidence/abort-timer/README.md), [nguồn2](evidence/service-eof/README.md), [nguồn3](evidence/service-replacement/README.md) |
 | windows_original | unknown | Chưa có bằng chứng trong phạm vi rà |
 | lan | unknown | Chưa có bằng chứng trong phạm vi rà |
 | internet | unknown | Chưa có bằng chứng trong phạm vi rà |
-| implementation | partial / via_pr | [nguồn1](../server/probe_service.py), [nguồn2](PROTOCOL.md#service-eof), [nguồn3](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/61) |
-| integration | partial | [nguồn1](evidence/service-eof/README.md) |
+| implementation | partial / via_pr | [nguồn1](../server/probe_service.py), [nguồn2](PROTOCOL.md#service-eof), [nguồn3](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/61), [nguồn4](PROTOCOL.md#service-replacement), [nguồn5](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/63) |
+| integration | partial | [nguồn1](evidence/service-eof/README.md), [nguồn2](evidence/service-replacement/README.md) |
 | gate | K6: open | [nguồn1](PLAN.md#gates) |
 
 <a id="kr-s001"></a>
@@ -978,11 +978,11 @@ Dependency: [KR-B003](#kr-b003), [KR-R003](#kr-r003), [KR-X002](#kr-x002).
 
 [Contract và giới hạn](PROTOCOL.md#probe-service) · [Câu hỏi gốc](RESEARCH.md#gap-diagnostic-service) · [Thứ tự ở PLAN](PLAN.md#current-order).
 
-Khoảng trống (trích bảng RESEARCH): CP050 thêm EOF/forfeit/cleanup và hold99 hẹp; auth/roster/rank vẫn fixture, chỉ hai identity/cap8/start từ A.
+Khoảng trống (trích bảng RESEARCH): CP051 profile41/cap12/A-B→B-C, Start từ host hiện hành và một vòng B/C có native proof. Auth/map/roster/rank vẫn fixture; không full service/gate.
 
-Phép kiểm tối thiểu (trích cùng nguồn): Mở đường C mới sau abort và B Start từ contract đã có; kiểm cùng run, không dùng trace harness cũ làm proof service đã tích hợp.
+Phép kiểm tối thiểu (trích cùng nguồn): Theo PLAN: lifecycle setup/closed race và validator gap có trigger cụ thể trước nợ auth/cache/codec; không dùng trace embedded harness hoặc log service thay native integration proof.
 
-Bằng chứng/build/hash/recipe: [probe-service](evidence/probe-service/README.md), [stale124](evidence/stale124/README.md), [service-eof](evidence/service-eof/README.md).
+Bằng chứng/build/hash/recipe: [probe-service](evidence/probe-service/README.md), [stale124](evidence/stale124/README.md), [service-eof](evidence/service-eof/README.md), [service-replacement](evidence/service-replacement/README.md).
 
 | Chiều chứng minh | Khai báo | Nguồn/phạm vi áp dụng |
 |---|---|---|
@@ -990,12 +990,12 @@ Bằng chứng/build/hash/recipe: [probe-service](evidence/probe-service/README.
 | vn_reference | both | [nguồn1](REFERENCES.md) |
 | kr_static | unknown | Chưa có bằng chứng trong phạm vi rà |
 | emulation | unknown | Chưa có bằng chứng trong phạm vi rà |
-| wine_diagnostic_copy | observed | [nguồn1](evidence/probe-service/README.md), [nguồn2](evidence/stale124/README.md), [nguồn3](evidence/service-eof/README.md) |
+| wine_diagnostic_copy | observed | [nguồn1](evidence/probe-service/README.md), [nguồn2](evidence/stale124/README.md), [nguồn3](evidence/service-eof/README.md), [nguồn4](evidence/service-replacement/README.md) |
 | windows_original | unknown | Chưa có bằng chứng trong phạm vi rà |
 | lan | unknown | Chưa có bằng chứng trong phạm vi rà |
 | internet | unknown | Chưa có bằng chứng trong phạm vi rà |
-| implementation | partial / via_pr | [nguồn1](../server/probe_service.py), [nguồn2](PROTOCOL.md#service-eof), [nguồn3](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/61) |
-| integration | partial | [nguồn1](evidence/service-eof/README.md) |
+| implementation | partial / via_pr | [nguồn1](../server/probe_service.py), [nguồn2](PROTOCOL.md#service-eof), [nguồn3](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/61), [nguồn4](PROTOCOL.md#service-replacement), [nguồn5](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/63) |
+| integration | partial | [nguồn1](evidence/service-eof/README.md), [nguồn2](evidence/service-replacement/README.md) |
 | gate | K6: open | [nguồn1](PLAN.md#gates) |
 
 <a id="kr-s002"></a>

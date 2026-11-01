@@ -29,14 +29,14 @@ runtime nào có nguồn, còn thiếu gì và phép kiểm nào giải quyết.
 evidence/hash và câu hỏi; [PLAN](docs/PLAN.md#current-order) giữ duy nhất thứ tự công việc.
 Đây là scope đường bootstrap → login → sảnh → phòng → Battle → kết quả/reset, không kiểm kê toàn client.
 
-CP050: service đã xử lý host/guest EOF khi bom còn chờ: loại timer cũ, forfeit/về phòng,
-xóa đúng slot và chuyển/giữ chủ bằng getter native. Ca giữ99 củaB10s cho thấy service chờ đủ hai
-peer rồi mới phát phase; client tiếp tục input/bom/result vòng1. [Evidence/giới hạn](docs/evidence/service-eof/README.md),
-[contract](docs/PROTOCOL.md#service-eof). Chưa client mới vào/Start từ B trong service hoặc account reconnect;
-fullvalidator/auth/cache/codec/reset và gate K5/K6a/LAN/Internet vẫn mở.
+CP051: service độc lập đã nhận C mới (identity3/slot0) sau A EOF, giữ B làm chủ và nhận Start104
+thật từ B. Vòng B/C có bom → trap/death → report21 → kết quả175 → về phòng180;
+[phạm vi và hai run](docs/evidence/service-replacement/README.md), [contract](docs/PROTOCOL.md#service-replacement).
+Một run trước chỉ tới Start/pickup; không ghép chúng thành hai trận hoàn chỉnh. Auth/membership vẫn
+fixture; fullvalidator/cache/codec/reset và K5/K6a/LAN/Internet vẫn mở.
 
-CP049 đã merge [PR59](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/59) tại `a6b62cd`.
-CP050 tự kiểm/integration theo [PR61](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/61); review độc lập
+CP050 đã merge [PR61](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/61) tại `9c6ac92`.
+CP051 tự kiểm, tích hợp theo [PR63](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/63); review độc lập
 [waived](docs/evidence/checkpoints/review-waiver.json). Audit **AUD015/CP048**, audit định kỳ kế **CP052**;
 [counter](docs/evidence/checkpoints/manifest.json), [workflow](docs/evidence/checkpoints/README.md).
 

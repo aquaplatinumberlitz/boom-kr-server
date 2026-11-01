@@ -1,6 +1,6 @@
 # KR 00967 — contract tương thích client gốc
 
-Revision kr-legacy-contract-r1; cập nhật01/11/2026 JST (CP050).
+Revision kr-legacy-contract-r1; cập nhật01/11/2026 JST (CP051).
 **Contract có bằng chứng từng phần; chưa nghiệm thu full codec K2**.
 Lộ trình và thứ tự task chỉ giữ ở [REWRITE_PLAN — KRE](PLAN.md).
 Đây là contract của repo server KR. ADR0009 của bản viết lại là nguồn lịch sử để so sánh;
@@ -1952,7 +1952,7 @@ liệt kê và phân biệt với nguyên bản trong mọi demo.
 <a id="authority"></a>
 ### Authority matrix hiện hành và gate review
 
-Bảng này tổng hợp bằng chứng từng phần đến CP050; chưa phải toàn contract server gốc. Mỗi hàng khi
+Bảng này tổng hợp bằng chứng từng phần đến CP051; chưa phải toàn contract server gốc. Mỗi hàng khi
 triển khai phải bổ sung riêng **creator, simulator, validator, broadcaster, peer-editable state**, với
 locator/trace và trạng thái từng ô; những vai trò không nêu dưới đây hiện `unknown` cho KR.
 
@@ -1965,7 +1965,7 @@ locator/trace và trạng thái từng ô; những vai trò không nêu dưới 
 | Item placement/pickup | CP030 nhặt/tranh index; CP031/032 stat/itemẩn; CP045 [bảng nhóm/Roller/MaxPower hai view/reset](#item-families) | CP042 có [old165/index reuse](#item-generation); runtime tại max, KRspeed→px/s/TTL/activevariants, drop/đảo winner/toàn124validator/generation/reset còn thiếu |
 | Trap/death | CP029/036; CP037 kim và tranh chấp cứu/diệt; [kim](#needle-selfescape), [precedence](#contact-precedence) | Validator/duplicate/stale/generation/variants, result21 và đối chứng thêm/đảo chiều còn thiếu |
 | Result/reset | CP039 hai vòng statepeer/result/21/return và reset field hẹp; CP044 [timer ở EOF và vòng B/C mới](#abort-timer) | CP041 có [payload cũ khi ID reuse](#round-generation); arbitration/toàn generation/entity/timer/peer/seq không rò vẫn mở; phân biệt run chờ sai origin với ca hoàn tất |
-| Room lifecycle | CP034 leave/promotion/EOF/return; CP035 rejoin/Ready; CP040 chủ B/C Start; CP044 [B/C bom/death/result/return sau abort](#abort-timer) | Bầu chủ/giữ ID-slot/forfeit là policy stub; guest EOF trả A về phòng/xóa B đã đo riêng; CP050 có [service EOF/cleanup](#service-eof); C mới/Start B trong service, reconnect cùng account/disconnect variants/toàn reset còn mở |
+| Room lifecycle | CP034 leave/promotion/EOF/return; CP035 rejoin/Ready; CP040 chủ B/C Start; CP044 [B/C bom/death/result/return sau abort](#abort-timer) | Bầu chủ/giữ ID-slot/forfeit là policy stub; guest EOF trả A về phòng/xóa B đã đo riêng; CP050 có [service EOF/cleanup](#service-eof); CP051 có [C mới/Start B trong service](#service-replacement); reconnect cùng account/disconnect variants/toàn reset còn mở |
 | Peer lifecycle | CP027 actual99→153; CP045–047 [oldUDP actor/keyguard/endpointcontrol](#udp-generation) | CP048 [service fixture](#probe-service) đã tích hợp key policy hẹp; low8reuse/roster/UDPtype khác/fullgrammar/reliability/relay/reset còn mở. Không coi đổi cổng riêng lẻ là freshness guard hoặc keybyte là auth |
 
 Gate K5/K6 cần kiểm matrix và đối chứng của hành vi thực sự dùng; từ28/10 Codex tự kiểm theo miễn review của chủ dự án. Có thể giữ unknown về
@@ -1982,12 +1982,13 @@ không được dùng để bỏ byte prefix. `probe_room.py` serialize owner, g
 RoundFence cho159/158 và ItemClaims cho124→165; cùng khóa153 cho hai peer. Đây là implementation
 `emu_choice/design`, không phục hồi thêm field wire hoặc luật server gốc.
 
-Auth/roster/map/rank dùng fixture có SHA, identity A/B theo thứ tự bốn connection mỗi vai.
+Auth/roster/map/rank dùng fixture có SHA; snapshot CP048 dùng identity A/B theo thứ tự bốn connection mỗi vai.
+CP051 mở đường [A/B→B/C hẹp](#service-replacement), không đổi thành auth/membership tổng quát.
 Bootstrap/hello/auth/redirect có state riêng theo connection nhưng chưa schema tổng quát/cache/
 reconnect đầy đủ. Kết quả/fuse/drop và forfeit vẫn là policy. Harness chỉ còn Wine/input/measurement/
 UDP proxy; không sở hữu TCP state hay timer gameplay. Chi tiết run và prooflevel giữ ở evidence.
 
-Các ca tích hợp chỉ áp dụng copy chẩn đoán Wine và stable IDs1/2/slots0/1. Không tự chứng minh
+Các ca tích hợp CP048 chỉ áp dụng copy chẩn đoán Wine và stable IDs1/2/slots0/1. Không tự chứng minh
 Windows nguyên bản, LAN/Internet, full124validator, toàn reset/grammar/auth hoặc K5/K6a.
 Contract cơ chế vẫn ở các anchor tương ứng, không đổi chúng thành claim full match từ log service.
 
@@ -2050,7 +2051,7 @@ unregister rồi loại connection khỏi peers/setup; channel EOF lúc active g
 Policy fixture cho hai người:12s sau EOF chọn rank survivor thắng,5s sau180,3s sau107 xóa slot
 người rời và110 cho survivor; B được promote nếu A rời, A giữ host nếu B rời. Đây là
 `design/emu_choice`, không death/event19 hoặc thuật toán server gốc. Kết quả đã chọn trước EOF
-không bị thay bằng một chuỗi rank mới. Profile34fixture yêu cầu rankAwin/Blose và promoteB có SHA;
+không bị thay bằng một chuỗi rank mới. Profile34fixture tại CP050 yêu cầu rankAwin/Blose và promoteB có SHA;
 profile32 cũ phải export mới, không sửa lịch sử. Send failure/idle-EOF/roster race chưa kiểm runtime.
 
 **kr_runtime/confirmed hẹp:** hai run riêng host/guest EOF khi actual bomB còn chờ6s; mỗi survivor
@@ -2065,6 +2066,37 @@ bom/result/return vòng1. Run185s có Start2/clock2 nhưng chỉ một result/re
 Đây là kiểm policy đã chờ đủ99 với can thiệp có log; không networkloss/native-server loadpolicy,
 timeout/latejoin/loadfail hoặc toàn gate K4. Giới hạn ở [evidence](evidence/service-eof/README.md).
 
-Chưa C mới vào/roster-ID mới và Start từ B trong service: accept-order vẫn chỉ hai identity, cap8;
-CP040/044 đã có contract/harness B/C để dùng tiếp, không coi integration đó sẵn có ở code mới.
+Tại snapshot CP050, service chỉ hai identity/cap8/StartA; CP051 tích hợp
+[C mới/roster-ID mới và B Start](#service-replacement). Giữ giới hạn CP050 như lịch sử.
 Fullvalidator/auth/cache/codec/vanilla/K5/K6a/LAN/Internet giữ mở. Câu hỏi ở [RESEARCH](RESEARCH.md#gap-disconnect-replacement).
+
+
+<a id="service-replacement"></a>
+### Client mới thay slot sau EOF trên service độc lập — CP051
+
+[Recipe, nguồn reuse, raw/hash và hai run](evidence/service-replacement/README.md). Tái dùng
+[roster/rejoin](#room-rejoin), [B/C sau abort](#abort-timer), [EOF](#service-eof), không phục hồi
+lại layout hoặc áp opcode/ID VN. Policy `design`: bốn connection/vai theo thứ tự A→B→C, tối đa12;
+C chỉ được nhận khi channelA đã đóng, B còn sống/chủ và vòng cũ đã refresh. IDs1/2/3 tách với
+slot0/1/0: C là identity mới, không A reconnect/account resume. Profile41fixture thêm bảy alias C
+đã đo từ CP035/040/044; profile34 cũ thiếu alias thì fail trước listen.
+
+C Join82→87/session1, own106/ID3 và push106 sang B bằng sequence B đang tiếp tục; C có sequence
+riêng. Nonhost C Ready95→110/slot0, host hiện hành B104 chỉ được Start khi hai peer live đã setup,
+guest ready và vòng trước refresh. Begin một lần/Start, key12346 cho B/C qua153 từ actual99;
+A đóng không còn trong roster hoặc destination. Timer bom vòng cũ giữ ticket gốc và bị loại
+`round_closed`, không158. Broadcast170/17,19 và điều kiện report21 dùng peer hiện tại; rank theo
+slot chết (B/slot1 thua), refresh giữ Bchief và C unready. Đây là policy fixture, không auth,
+arbitration/rank/host election của server gốc hoặc bộ membership tổng quát.
+
+**kr_runtime/confirmed hẹp:** `replacement-lite` có actual C Join/Ready, native localID3/ownmatch,
+B104, B/C121 đọc129/129/errors0 và clock; actual B118/key12346/serial1→ID2/159/158 tới B/C,
+B17/19→C170 và C21. Secure actorB state1 ở cả B/C trước175;175full302/inner292 rồi180full3
+và phòng/chiefB1/C0. Một forfeit A + một vòng B/C đã chơi, không hai trận đủ gate.
+`replacement-first` chỉ tới Start/clock và C pickup, không B118 hoặc result; không ghép run.
+Giảm probe79–84 ở ca lite,85–101 tự bật lại khi Start; chưa có đối chứng xác định nguyên nhân
+input thiếu hoặc overhead/tutorial. Chưa chạy recipe tắt toàn UDP hoặc retry muộn đã chuẩn bị.
+
+Fullvalidator/t/distance/actorstate/forged-current-key, roster/key lifetime/UDP grammar, account
+reconnect/cache/fullcodec, timeout/loadfail/sendfailure/idleEOF/reset variants và K5/K6a/LAN/Internet
+còn mở. Phép kiểm còn thiếu ở [RESEARCH](RESEARCH.md#gap-disconnect-replacement); thứ tự chỉ ở PLAN.

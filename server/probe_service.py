@@ -1,8 +1,8 @@
-"""Fixture-backed KR diagnostic service, one serialized owner, two local clients.
+"""Fixture-backed KR diagnostic service, one serialized owner, two live local clients with one replacement identity.
 
 Run as ``python3 -m server.probe_service``. Authentication/roster/map/rank bodies
-are explicitly synthetic profile fixtures. Accept order assigns the two test
-identities: four connections for A, then four for B. Not a public login server.
+are explicitly synthetic profile fixtures. Accept order assigns four connections
+each for A, B, then replacement C (at most two live members). Not a public login server.
 No Wine/UI automation is imported. The caller supplies network isolation.
 """
 
@@ -47,9 +47,14 @@ class FixtureProfile:
         return codec.frame_body(self.raw(name), self.data['fixtures'][name]['sequence'])
 
 
+ROLE_SLOTS = {'A': 0, 'B': 1, 'C': 0}
+ROLE_IDS = {'A': 1, 'B': 2, 'C': 3}
+
+
 class ProbeService:
     def __init__(self, profile: FixtureProfile, out: Path, proxy_ports: dict):
-        missing = {'rank_Awin', 'promote_B'} - profile.frames.keys()
+        missing = {'rank_Awin', 'promote_B', 'auth_C', 'roomlist_C', 'join_C',
+                   'player_C', 'slot_C', 'guest_C', 'ready_C'} - profile.frames.keys()
         if missing:
             raise ValueError('profile missing lifecycle fixtures: ' + ', '.join(sorted(missing)))
         self.profile, self.out, self.proxy_ports = profile, out, proxy_ports
@@ -58,13 +63,14 @@ class ProbeService:
         self.selector = selectors.DefaultSelector()
         self.connections, self.events, self.jobs = {}, [], []
         self.channels = {}
+        self.host_role = 'A'
         self.closed = False
         self.round = {'index': 0}
         self.state = {'schema': 'kr-probe-service-v1', 'tcp_events': self.events,
                       'round_bombs': [], 'event_reports': [], 'round_history': [],
                       'item_requests': [], 'policy_events': [], 'errors': [],
                       'source': 'emu_choice', 'profile': profile.data,
-                      'limits': 'Fixture auth/roster/rank, loopback-only, two sequential identities; no fullmatch gate.'}
+                      'limits': 'Fixture auth/roster/rank, loopback-only, two live members/A-B then B-C by accept order; no fullmatch gate.'}
         self.state['policy_sources'] = []
         for filename in ['probe_service.py', 'probe_codec.py', 'probe_room.py', 'round_fence.py',
                          'item_claims.py', 'udp_round_keys.py']:
@@ -107,7 +113,9 @@ class ProbeService:
         key = self.room.begin()
         if self.round['index']:
             self.state['round_history'].append(self.round)
-        self.round = {'index': self.room.generation, 'key': key}
+        self.round = {'index': self.room.generation, 'key': key, 'host_role': self.host_role,
+                      'roster': [{'role': e['role'], 'slot': ROLE_SLOTS[e['role']],
+                                  'identity': ROLE_IDS[e['role']]} for e in self.peers()]}
         self.state['current_round'] = self.round
         self.state['policy_events'].append({'op': 'begin', 'generation': self.room.generation,
                                             'key': key, 'monotonic_ns': time.monotonic_ns()})
@@ -121,11 +129,13 @@ class ProbeService:
             event['floor582_sent'] = self.send(event, 'floor', 'floor582')
             event['start_response_sent'] = {**self.send(event, 'start', f"start121-r{self.round['index']}"),
                                              'round': self.round['index'], 'after_c2s_opcode': 104,
-                                             'host_role': 'A', 'broadcast': True}
+                                             'host_role': self.host_role, 'broadcast': True}
 
     def receive_channel(self, event, frame, sequence, body):
         opcode = struct.unpack_from('<I', frame, 5)[0]
         role = event['role']
+        if event.get('closed'):
+            return
         if opcode == 6 and not event.get('channel_response_sent'):
             self.send_raw(event, self.profile.raw('channel'))
             event['channel_response_sent'] = {'monotonic_ns': time.monotonic_ns()}
@@ -134,19 +144,24 @@ class ProbeService:
                           + self.profile.raw('channel_list'))
             event['ready_response_sent'] = {'monotonic_ns': time.monotonic_ns()}
         elif opcode in (81, 82) and not event.get('create_response_sent'):
-            if (role, opcode) not in [('A', 81), ('B', 82)]:
+            if (role, opcode) not in [('A', 81), ('B', 82), ('C', 82)]:
                 raise ValueError('unsupported fixture role/join')
-            self.send_raw(event, self.profile.raw('create' if role == 'A' else 'join'))
+            self.send_raw(event, self.profile.raw({'A': 'create', 'B': 'join', 'C': 'join_C'}[role]))
             event['create_response_sent'] = {'monotonic_ns': time.monotonic_ns(), 'after_c2s_opcode': opcode}
         elif opcode == 585 and event.get('create_response_sent') and not event.get('player_response_sent'):
             self.send_raw(event, self.profile.raw(f'player_{role}'))
             event['player_response_sent'] = {'monotonic_ns': time.monotonic_ns()}
-        elif opcode == 95 and role == 'B' and not event.get('guest_ready_received'):
+            if role == 'C':
+                peer = self.channels['B']
+                event['replacement_roster_sent'] = self.send(peer, 'player_C', 'replacement106')
+        elif opcode == 95 and role != self.host_role and not self.room.active and not event.get('guest_ready_received'):
             event['guest_ready_received'] = {'monotonic_ns': time.monotonic_ns(), 'payload_hex': body.hex()}
-            self.broadcast('ready_slot', 'ready110')
-        elif opcode == 104 and role == 'A':
-            if (self.room.active or not event.get('map_response_sent')
-                    or not self.channels.get('B', {}).get('guest_ready_received')):
+            self.broadcast('ready_C' if role == 'C' else 'ready_slot', 'ready110')
+        elif opcode == 104 and role == self.host_role:
+            peers = self.peers()
+            if self.room.active or len(peers) != 2 or event not in peers:
+                return
+            if not all(peer.get('guest_ready_received') for peer in peers if peer is not event):
                 return
             # Result must have returned/refreshed before another accepted Start.
             if self.round['index'] and not self.round.get('refresh'):
@@ -160,7 +175,7 @@ class ProbeService:
                                'sha256': hashlib.sha256(frame).hexdigest()}
         elif opcode == 118 and self.room.active:
             values = codec.read_fields(body, [4, 1, 1, 4, 1, 1, 1, 1, 1, 1, 1, 4, 1])
-            if values[-1] != 0 or values[2] != {'A': 0, 'B': 1}[role]:
+            if values[-1] != 0 or values[2] != ROLE_SLOTS[role]:
                 raise ValueError('unsupported bomb report')
             ticket = self.room.bomb()
             fields = [0, values[2], 0, values[3], 0, 0, values[4], values[5], values[10],
@@ -200,7 +215,7 @@ class ProbeService:
                                                     'expected_key': self.room.key,
                                                     'slot': slot, 'index': index})
                 return
-            claim = self.room.claim({'A': 0, 'B': 1}[role], slot, context, ItemSpec(index, row, column, kind))
+            claim = self.room.claim(ROLE_SLOTS[role], slot, context, ItemSpec(index, row, column, kind))
             if claim is not None and self.room.claims.consume(claim):
                 payload = codec.pack_fields([1, context, slot, row, column, index, kind, 0], [1, 1, 1, 1, 1, 4, 2, 1])
                 report['broadcast165'] = self.broadcast('start', f'item165-r{self.room.generation}-{index}',
@@ -216,13 +231,13 @@ class ProbeService:
         if len(body) < 14:
             raise ValueError('unsupported event prefix')
         subtype, slot = codec.read_fields(body[:2], [1, 1])
-        if slot != {'A': 0, 'B': 1}[event['role']]:
+        if slot != ROLE_SLOTS[event['role']]:
             raise ValueError('event slot does not match connection')
         report = {'role': event['role'], 'round': self.room.generation, 'subtype': subtype,
                   'slot': slot, 'seq': sequence, 'monotonic_ns': time.monotonic_ns(),
                   'payload_hex': body.hex(), 'frame_sha256': hashlib.sha256(frame).hexdigest()}
         self.state['event_reports'].append(report)
-        if subtype in (17, 19) and event['role'] == 'A':
+        if subtype in (17, 19):
             if subtype == 17:
                 length = codec.read_fields(body[14:18], [4])[0]
                 if length != 14 or len(body) != 32:
@@ -237,8 +252,11 @@ class ProbeService:
                 payload = body[:6] + codec.pack_fields([int.from_bytes(raw[10:14], 'little')], [4])
             else:
                 payload = body[:6] + body[14:]
-            report['forward170'] = self.send(self.channels['B'], 'start', f'event170-{subtype}-r{self.room.generation}',
-                                               opcode=170, body=payload)
+            other = next((peer for peer in self.peers() if peer is not event), None)
+            if other is None:
+                return
+            report['forward170'] = self.send(other, 'start', f'event170-{subtype}-r{self.room.generation}',
+                                             opcode=170, body=payload)
             if subtype == 19:
                 event['death_event'] = report
 
@@ -277,7 +295,9 @@ class ProbeService:
 
     def cleanup_departed(self, departed):
         peers = self.peers()
-        slot, identity = {'A': (0, 1), 'B': (1, 2)}[departed]
+        slot, identity = ROLE_SLOTS[departed], ROLE_IDS[departed]
+        if departed == self.host_role and peers:
+            self.host_role = peers[0]['role']
         body = codec.pack_fields([slot, identity, 0], [1, 4, 1])
         sent = []
         for peer in peers:
@@ -285,7 +305,7 @@ class ProbeService:
                                                          opcode=107, body=body)})
             # In this two-person fixture profile B becomes host after A leaves;
             # A keeps its original host state when B leaves.
-            alias = 'promote_B' if peer['role'] == 'B' else 'slot_A'
+            alias = 'promote_B' if peer['role'] == 'B' else ('slot_C' if peer['role'] == 'C' else 'slot_A')
             sent.append({'role': peer['role'], **self.send(peer, alias, 'survivor110')})
             peer.pop('guest_ready_received', None)
         self.state['policy_events'].append({'op': 'cleanup_departed', 'role': departed,
@@ -310,7 +330,7 @@ class ProbeService:
         self.tick_setup(now)
         abort = self.round.get('abort')
         if abort and not self.round.get('rank') and now - abort['monotonic_ns'] >= 12 * 10**9:
-            alias = 'rank' if abort['role'] == 'A' else 'rank_Awin'
+            alias = 'rank' if ROLE_SLOTS[abort['role']] == 0 else 'rank_Awin'
             self.round['rank'] = {'monotonic_ns': now,
                                   'broadcast': self.broadcast(alias, 'forfeit175'),
                                   'policy': 'forfeit on channel close, no synthetic death'}
@@ -324,27 +344,29 @@ class ProbeService:
                         event['play_response_sent'] = self.send(event, 'play', 'play196')
                     elif event.get('play_response_sent') and not event.get('peer153_sent') and now - event['play_response_sent']['monotonic_ns'] >= 10**9:
                         other = next(peer for peer in peers if peer['role'] != event['role'])
-                        port = self.proxy_ports[other['role']] or other['init99']['fields'][2]
+                        port = self.proxy_ports.get(other['role'], 0) or other['init99']['fields'][2]
                         body = bytearray(self.profile.body('peer')[:35])
                         body[15:19] = codec.pack_fields([self.room.key], [4])
                         for slot in range(26):
                             body.extend(codec.pack_fields([int(slot < 2)], [1]))
                             if slot < 2:
-                                remote = slot != {'A': 0, 'B': 1}[event['role']]
+                                remote = slot != ROLE_SLOTS[event['role']]
                                 for ip, endpoint in ([(0x7F000001, port), (0, 0), (0, 0)] if remote else [(0, 0)] * 3):
                                     body.extend(codec.pack_fields([ip, endpoint], [4, 2]))
                         event['begin_response_sent'] = self.send(event, 'peer', 'peer153', body=bytes(body))
                         event['peer153_sent'] = {**event['begin_response_sent'], 'remote_port': port}
                         self.state['policy_events'].append({'op': 'peer_key', 'role': event['role'],
                                                             'generation': self.room.generation, 'key': self.room.key})
-            death = self.channels.get('A', {}).get('death_event')
+            death = next((peer['death_event'] for peer in self.peers() if peer.get('death_event')), None)
             remote_reports = self.state['event_reports']
             if death and now - death['monotonic_ns'] >= 8 * 10**9 and any(
-                row['role'] == 'B' and row['round'] == self.room.generation and row['subtype'] == 21
+                row['role'] != death['role'] and row['role'] in {peer['role'] for peer in self.peers()}
+                and row['round'] == self.room.generation and row['subtype'] == 21
                 and row['monotonic_ns'] > death['monotonic_ns'] for row in remote_reports
             ):
                 self.room.finish()
-                self.round['rank'] = {'monotonic_ns': now, 'broadcast': self.broadcast('rank', f"rank175-r{self.room.generation}")}
+                alias = 'rank' if death['slot'] == 0 else 'rank_Awin'
+                self.round['rank'] = {'monotonic_ns': now, 'broadcast': self.broadcast(alias, f"rank175-r{self.room.generation}")}
                 self.state['policy_events'].append({'op': 'finish', 'generation': self.room.generation})
         if self.round.get('rank') and not self.round.get('return') and now - self.round['rank']['monotonic_ns'] >= 5 * 10**9:
             self.round['return'] = {'monotonic_ns': now, 'broadcast': self.broadcast('return', f"return180-r{self.room.generation}")}
@@ -352,8 +374,12 @@ class ProbeService:
             if self.round.get('abort'):
                 sent = self.cleanup_departed(self.round['abort']['role'])
             else:
-                sent = self.broadcast('slot_A', f"host110-r{self.room.generation}")
-                sent += self.broadcast('slot_B', f"guest110-r{self.room.generation}")
+                if self.host_role == 'B':
+                    sent = self.broadcast('promote_B', f"host110-r{self.room.generation}")
+                    sent += self.broadcast('slot_C', f"guest110-r{self.room.generation}")
+                else:
+                    sent = self.broadcast('slot_A', f"host110-r{self.room.generation}")
+                    sent += self.broadcast('slot_B', f"guest110-r{self.room.generation}")
             self.round['refresh'] = {'monotonic_ns': now, 'broadcast': sent}
             for event in self.peers():
                 event.pop('guest_ready_received', None)
@@ -372,14 +398,19 @@ class ProbeService:
                     self.send_raw(event, b''.join(self.profile.raw(alias) for alias in aliases))
                     event[marker] = {'monotonic_ns': now}
 
+    def replacement_allowed(self):
+        departed, survivor = self.channels.get('A'), self.channels.get('B')
+        return bool(departed and departed.get('closed') and survivor and not survivor.get('closed')
+                    and self.host_role == 'B' and self.round.get('refresh'))
+
     def accept(self, listener):
         connection, peer = listener.accept()
         ordinal = len(self.events) + 1
-        if ordinal > 8:
+        if ordinal > 12 or (ordinal > 8 and not self.replacement_allowed()):
             connection.close()
             return
         connection.settimeout(2)
-        event = {'global_ordinal': ordinal, 'role': 'A' if ordinal <= 4 else 'B',
+        event = {'global_ordinal': ordinal, 'role': 'ABC'[(ordinal - 1) // 4],
                  'reply_ordinal': (ordinal - 1) % 4 + 1, 'peer': list(peer),
                  'port': listener.getsockname()[1], 'accept_monotonic_ns': time.monotonic_ns(), 'chunks': []}
         self.events.append(event)
