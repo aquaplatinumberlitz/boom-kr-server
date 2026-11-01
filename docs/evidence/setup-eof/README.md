@@ -5,7 +5,7 @@ Baseline CP051/[PR63](https://github.com/aquaplatinumberlitz/boom-kr-server/pull
 phụ thuộc KRE-005b/#14 và CP034/050/051. Codex solo/tự kiểm, independent review
 [waived](../checkpoints/review-waiver.json). [Contract](../../PROTOCOL.md#setup-eof),
 [câu hỏi/phép đo tiếp](../../RESEARCH.md#gap-disconnect-replacement), [thứ tự duy nhất](../../PLAN.md#current-order).
-Raw `local/research/codex/setup-eof-r1/`; snapshot khi ghi CP052: nhánh `kre/setup-eof`, chưa merge.
+Raw `local/research/codex/setup-eof-r1/`; snapshot khi ghi CP052: nhánh `kre/setup-eof`, chưa merge. Trạng thái tích hợp hiện tại ở [PR65](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/65); manifest giữ snapshot trước merge.
 
 ## Nguồn và khoảng trống cần đo
 

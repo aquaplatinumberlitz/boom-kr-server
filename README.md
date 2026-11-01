@@ -36,7 +36,7 @@ CP051 đã có C mới/B Start và một vòng B/C trên service; chưa hai tr�
 Host rời khi peer chưa map, membership/auth tổng quát và fullvalidator/cache/codec/reset còn mở.
 
 CP051 đã merge [PR63](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/63) tại `c764aa5`.
-CP052 đang trên nhánh `kre/setup-eof`, tự kiểm; review độc lập
+CP052 tự kiểm, tích hợp theo [PR65](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/65); review độc lập
 [waived](docs/evidence/checkpoints/review-waiver.json). Audit **AUD016/CP052**, audit định kỳ kế **CP056**;
 [counter](docs/evidence/checkpoints/manifest.json), [workflow](docs/evidence/checkpoints/README.md).
 

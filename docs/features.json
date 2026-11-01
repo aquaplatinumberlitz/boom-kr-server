@@ -1,7 +1,7 @@
 {
   "schema": "kre-feature-index-v1",
   "build": "KR00967",
-  "as_of": "2026-11-01 / CP052; setup EOF integration pending PR",
+  "as_of": "2026-11-01 / CP052; integration status via PR65",
   "sources": {
     "plan": "docs/PLAN.md",
     "contract": "docs/PROTOCOL.md",
@@ -925,14 +925,15 @@
         },
         "implementation": {
           "state": "partial",
-          "delivery": "branch_pending",
+          "delivery": "via_pr",
           "refs": [
             "server/probe_service.py",
             "docs/PROTOCOL.md#service-eof",
             "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/61",
             "docs/PROTOCOL.md#service-replacement",
             "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/63",
-            "docs/PROTOCOL.md#setup-eof"
+            "docs/PROTOCOL.md#setup-eof",
+            "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/65"
           ]
         },
         "integration": {
@@ -2448,14 +2449,15 @@
         },
         "implementation": {
           "state": "partial",
-          "delivery": "branch_pending",
+          "delivery": "via_pr",
           "refs": [
             "server/probe_service.py",
             "docs/PROTOCOL.md#service-eof",
             "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/61",
             "docs/PROTOCOL.md#service-replacement",
             "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/63",
-            "docs/PROTOCOL.md#setup-eof"
+            "docs/PROTOCOL.md#setup-eof",
+            "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/65"
           ]
         },
         "integration": {
@@ -2544,14 +2546,15 @@
         },
         "implementation": {
           "state": "partial",
-          "delivery": "branch_pending",
+          "delivery": "via_pr",
           "refs": [
             "server/probe_service.py",
             "docs/PROTOCOL.md#service-eof",
             "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/61",
             "docs/PROTOCOL.md#service-replacement",
             "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/63",
-            "docs/PROTOCOL.md#setup-eof"
+            "docs/PROTOCOL.md#setup-eof",
+            "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/65"
           ]
         },
         "integration": {
