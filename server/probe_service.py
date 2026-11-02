@@ -58,7 +58,12 @@ class ProbeService:
         if missing:
             raise ValueError('profile missing lifecycle fixtures: ' + ', '.join(sorted(missing)))
         self.profile, self.out, self.proxy_ports = profile, out, proxy_ports
-        self.room = ProbeRoom([ItemSpec(**item) for item in profile.data['items']],
+        self.hidden_items = {item['index']: ItemSpec(**item)
+                             for item in profile.data.get('hidden_items', [])}
+        if len(self.hidden_items) != len(profile.data.get('hidden_items', [])):
+            raise ValueError('duplicate hidden item index')
+        self.room = ProbeRoom([ItemSpec(**item) for item in profile.data['items']]
+                              + list(self.hidden_items.values()),
                               profile.data['initial_key'])
         self.selector = selectors.DefaultSelector()
         self.connections, self.events, self.jobs = {}, [], []
@@ -67,7 +72,8 @@ class ProbeService:
         self.closed = False
         self.round = {'index': 0}
         self.state = {'schema': 'kr-probe-service-v1', 'tcp_events': self.events,
-                      'round_bombs': [], 'bomb_requests': [], 'event_reports': [], 'round_history': [],
+                      'round_bombs': [], 'bomb_requests': [], 'block_reports': [],
+                      'event_reports': [], 'round_history': [],
                       'item_requests': [], 'policy_events': [], 'errors': [],
                       'source': 'emu_choice', 'profile': profile.data,
                       'limits': 'Fixture auth/roster/rank, loopback-only, two live members/A-B then B-C by accept order; no fullmatch gate.'}
@@ -114,6 +120,7 @@ class ProbeService:
         if self.round['index']:
             self.state['round_history'].append(self.round)
         self.round = {'index': self.room.generation, 'key': key, 'host_role': self.host_role,
+                      'revealed_hidden': {},
                       'roster': [{'role': e['role'], 'slot': ROLE_SLOTS[e['role']],
                                   'identity': ROLE_IDS[e['role']]} for e in self.peers()]}
         self.state['current_round'] = self.round
@@ -241,6 +248,9 @@ class ProbeService:
                                                     'expected_key': self.room.key,
                                                     'slot': slot, 'index': index})
                 return
+            if index in self.hidden_items and str(index) not in self.round['revealed_hidden']:
+                report['rejected'] = 'hidden_item_not_reported_revealed'
+                return
             # Conservative fixture policy after an accepted trap/death report.
             # This is report-derived, not native state authority/authentication.
             # This profile has no rescue/self-escape flow; a new Start clears it.
@@ -262,6 +272,30 @@ class ProbeService:
                                                     'index': index, 'slot': slot})
             else:
                 report['rejected'] = 'claim_not_current_or_already_consumed'
+        elif opcode == 142 and self.room.active:
+            row, column, selected_slot, aux = codec.read_fields(body, [1, 1, 1, 4])
+            report = {'round': self.room.generation, 'role': role, 'seq': sequence,
+                      'fields': [row, column, selected_slot, aux],
+                      'monotonic_ns': time.monotonic_ns(),
+                      'frame_sha256': hashlib.sha256(frame).hexdigest()}
+            self.state['block_reports'].append(report)
+            if selected_slot != ROLE_SLOTS[role] or aux != 0xFFFFFFFF:
+                report['rejected'] = 'unsupported_block_report'
+                return
+            matches = [item for item in self.hidden_items.values()
+                       if (item.row, item.column) == (row, column)]
+            if not matches:
+                report['rejected'] = 'unknown_hidden_cell'
+                return
+            # Report-derived fixture policy only. Sending any current158 is a
+            # lower bound, not proof that this particular cell was destroyed.
+            if not any(bomb['round'] == self.room.generation and bomb.get('broadcast158')
+                       for bomb in self.state['round_bombs']):
+                report['rejected'] = 'no_current_blast_sent'
+                return
+            for item in matches:
+                prior = self.round['revealed_hidden'].setdefault(str(item.index), report)
+                report.setdefault('revealed_indices' if prior is report else 'already_revealed', []).append(item.index)
         elif opcode == 127 and self.room.active:
             self.receive_event(event, frame, sequence, body)
 

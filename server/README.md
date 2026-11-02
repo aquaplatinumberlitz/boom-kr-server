@@ -148,3 +148,8 @@ CP067 thêm [guardC2S118](../docs/PROTOCOL.md#c2s118-admission): fullfield0key v
 riêng boundowner/round trước cấpID/timer;Start xóa serialmap, fullkeymismatch/duplicate/conflict log
 không159. Policydesign hẹp, không auth/cap/distance/wholevalidator;actualtransportreplay chưa kiểm.
 64server tests;control/fix Wine/nativeentity tách với dispatcherinjection trong evidence.
+
+CP068: `--item-layout hidden` xuất profileknownlist2/FixedBox/Bomb+Fire;defaultfloor giữ.
+`hidden_items` catalog riêng merged vào claimcatalog,124 chờknowncell142 saucurrent158đãphát.
+Duplicate/report/reset kiểm hẹp, **report-deriveddesign**, không collision/auth hoặc chốngold142sau
+blast. [Nativeintegration/partial/limits](../docs/PROTOCOL.md#current-hidden-items);72server tests.

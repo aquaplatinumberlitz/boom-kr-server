@@ -1,0 +1,89 @@
+{
+  "id": "AUD021",
+  "trigger": "periodic",
+  "completed_through": "CP068",
+  "recorded_utc": "2026-11-02T17:03:58.057732+00:00",
+  "auditor": "Codex manual self-audit; independent review waived by owner",
+  "read_files": [
+    "README.md",
+    "docs/PLAN.md",
+    "docs/PROTOCOL.md",
+    "docs/RESEARCH.md",
+    "docs/features.json",
+    "docs/COVERAGE.md",
+    "server/README.md",
+    "docs/evidence/distinct-spawn/README.md",
+    "docs/evidence/distinct-spawn-race/README.md",
+    "docs/evidence/c2s118-admission/README.md",
+    "docs/evidence/hidden-items/README.md",
+    "docs/evidence/current-hidden-items/README.md",
+    "local/research/codex/c2s118-admission-r1/entity-summary.json",
+    "local/research/codex/c2s118-admission-r1/verification.json",
+    "local/research/codex/distinct-spawn-race-r1/verification.json",
+    "local/research/codex/current-hidden-items-r1/reuse-question.json",
+    "local/research/codex/current-hidden-items-r1/verification.json",
+    "local/research/codex/current-hidden-items-r1/hidden-summary.json",
+    "local/research/codex/current-hidden-items-r1/actor-fields.json",
+    "local/research/codex/current-hidden-items-r1/native-actual.json",
+    "local/research/codex/current-hidden-items-r1/bench.json",
+    "local/research/codex/current-hidden-items-r1/route-retry.json",
+    "local/research/codex/current-hidden-items-r1/hidden-current/run.json",
+    "local/research/codex/current-hidden-items-r1/hidden-route/run.json",
+    "local/research/codex/current-hidden-items-r1/hidden-route/service-state.json",
+    "local/research/codex/current-hidden-items-r1/hidden-route/client.log",
+    "local/research/codex/current-hidden-items-r1/hidden-route/client-B.log"
+  ],
+  "method": "Đọc README→PLAN→PROTOCOL(legacy scope,authority,currentCP065–068/CP032hidden)→RESEARCHcurrentgaps→evidence;đối chiếu raw/source/model với reports/native. CP066fouractualcontested124distinctspawn khácCP062overlap;CP067oldghostID3Bonlyblast/replaybypass khácTCPadmission. CP068rawfirstpartialonly27round2 giữ,routeactual27/28/mỗiround/142bothroles/FixedBoxtile→revealCGOItem→165samepointer/securecapFire/reset/actual118serialpower/resultbeforestate kiểm. Đọc ảnh cònitem ởfirstpartial và triggerroute;finaldocs/COVERAGE đọc lại sau sync. Checkerkhôngsemanticcertification;ngườitựkiểmkhôngindependentreview.",
+  "findings": [
+    {
+      "id": "F1",
+      "stale": "AuthorityheaderCP065/oldK4–7progress không link CP066race/CP067C2S118/CP068hiddenintegration; CP066next118prose hiệnreadactive.",
+      "correction": "AuthorityCP068/linkC2S118/currenthidden;PLANtablelinknewscopes;oldCP064nextspawn/CP066next118/CP067nexthidden ghi successor,không sửa raw/immutable record.",
+      "fixed_in": [
+        "docs/PROTOCOL.md",
+        "docs/PLAN.md"
+      ]
+    },
+    {
+      "id": "F2",
+      "stale": "CP068first knownUIroute có2result nhưng chỉ1pickup27round2;nguycơ lấy reveal/callback/2rank làmfullhiddeneffectproof.",
+      "correction": "Firstpartial raw/hash giữ;routecontrol dùng actual124/kếtquảpointer/nativecapFire bênhai view,4pickups/reset;khôngquynhânquảwallholdthànhunit/pxs. Verifierfilterrunlabel vàstripENDcursorsuffix đểjoinexactactualsnapshots,notchangemeaningtoforcepass.",
+      "fixed_in": [
+        "docs/evidence/current-hidden-items/README.md",
+        "docs/PROTOCOL.md",
+        "local/research/codex/current-hidden-items-r1/verify.py",
+        "local/research/codex/current-hidden-items-r1/route-retry.json"
+      ]
+    },
+    {
+      "id": "F3",
+      "stale": "Report142gate dễhiểulàserver đãbiết ôbịphá/đãchốngoldreplay.",
+      "correction": "Labeldesignreport-derived;anycurrent158lowerbound/knowncell/boundslot/aux chỉnarrowfixturegate. Old/forged142aftercurrentblaststillpasses documentedandnegativepolicytestexplicit;no key/tickimport/inventedauth. Benchcapturedinputs/socketstub/emissionmodelnotnewruntime.",
+      "fixed_in": [
+        "docs/PROTOCOL.md",
+        "docs/RESEARCH.md",
+        "server/README.md",
+        "docs/evidence/current-hidden-items/README.md",
+        "server/test_hidden_items.py"
+      ]
+    },
+    {
+      "id": "F4",
+      "stale": "Floor/currentracevshidden vẫn profile tách,RESEARCHservicetaskhiddenintegration đãđo thìkhôngđượclặpconsumer/clock/ID.",
+      "correction": "PLAN solepriority basicBattleknownlist1+list2combinedfixture/nativecounts rồisame-runalleffects/reset;catalogrefs/COVERAGE cập nhật không nânggate. Exporthiddenoptional/defaultfloorkeeps/sourcehash,JSONcũnotautomigrated.",
+      "fixed_in": [
+        "docs/PLAN.md",
+        "docs/RESEARCH.md",
+        "docs/features.json",
+        "docs/COVERAGE.md",
+        "tools/export_probe_profile.py",
+        "README.md"
+      ]
+    }
+  ],
+  "remaining": [
+    "Firstfieldconstructor/serialgeneration/cap/distance/forgednewserial/report142oldafterblast/actor authority/fullvalidator/fullreset/Windowsvanilla/fullcodec/LANInternet remainopen;K4/K5/K6a notcertifiedby2ranks.",
+    "NextcombinedbasicBattleprofile/nativefloor+hidden/effect/reset same-run notcollectionofseparateruns. MixedowneradjacentCP064stillpartial.",
+    "CP068selfcheckpendingPR,reviewwaivednotapproved;AUD021periodicthroughCP068,nextCP072. CP001–067/AUD001–020immutable preserved."
+  ]
+}

@@ -44,6 +44,7 @@ class PickupRoundKeyTests(unittest.TestCase):
         # Exercise the actual dispatch/claim path. The fixture profile and TCP
         # transport are irrelevant to this policy regression; record broadcasts.
         service = ProbeService.__new__(ProbeService)
+        service.hidden_items = {}
         service.room = ProbeRoom([ItemSpec(17, 4, 3, 2)])
         service.room.begin()
         service.room.finish()
