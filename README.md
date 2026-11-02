@@ -36,7 +36,7 @@ với giá trị design, chưa auth/account/cache hoàn chỉnh hoặc fullmatch
 Tiếp cold/missing cache theo consumer trong PLAN.
 
 CP057 đã merge [PR75](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/75) tại `956f31b`.
-CP058 tự kiểm/chờ PR, review độc lập [waived](docs/evidence/checkpoints/review-waiver.json).
+CP058 tự kiểm/integration theo [PR77](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/77), review độc lập [waived](docs/evidence/checkpoints/review-waiver.json).
 Audit **AUD018/CP058** do mâu thuẫn string; periodic giữ CP056, audit kế **CP060**.
 [Yêu cầu chủ dự án](docs/evidence/owner-directives/continuous-work.json): tiếp tục ngay việc kế trong
 PLAN sau mỗi checkpoint/commit/PR, không tự dừng/chờ nhắc.

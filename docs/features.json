@@ -1,7 +1,7 @@
 {
   "schema": "kre-feature-index-v1",
   "build": "KR00967",
-  "as_of": "2026-11-02 JST / CP058; self-check pending PR; AUD018 serious contradiction, nextCP060",
+  "as_of": "2026-11-02 JST / CP058; integration status via PR77; AUD018, nextCP060",
   "sources": {
     "plan": "docs/PLAN.md",
     "contract": "docs/PROTOCOL.md",
@@ -413,9 +413,10 @@
             "docs/PROTOCOL.md#probe-service",
             "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/57",
             "tools/export_probe_profile.py",
-            "docs/PROTOCOL.md#auth-profile"
+            "docs/PROTOCOL.md#auth-profile",
+            "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/77"
           ],
-          "delivery": "branch_pending"
+          "delivery": "via_pr"
         },
         "integration": {
           "state": "partial",

@@ -2,7 +2,7 @@
 
 Baseline CP057/[PR75](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/75) merge `956f31b`;
 KRE-021/[issue76](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/76), Codex solo/tự kiểm,
-[review waived](../checkpoints/review-waiver.json), chờ PR. [Contract](../../PROTOCOL.md#auth-profile),
+[review waived](../checkpoints/review-waiver.json); trạng thái tích hợp ở [PR77](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/77). [Contract](../../PROTOCOL.md#auth-profile),
 [chỉ mục56field](field-shape.json), [gap](../../RESEARCH.md#gap-auth-identity), [PLAN](../../PLAN.md#current-order).
 Raw/privateDB/scripts/capture `local/research/codex/auth-profile-r1/`.
 
