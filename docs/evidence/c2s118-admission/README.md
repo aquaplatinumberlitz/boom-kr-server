@@ -2,7 +2,7 @@
 
 Baseline CP066/PR93 merge `40ec5441fe4a4d08b795322ff84ef8ec37ea11ab`;
 KRE-030/[issue94](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/94).
-Codex solo/tự kiểm; [review waived](../checkpoints/review-waiver.json), tích hợp chờ PR.
+Codex solo/tự kiểm; [review waived](../checkpoints/review-waiver.json), tích hợp theo [PR95](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/95).
 [Contract/policy/giới hạn](../../PROTOCOL.md#c2s118-admission), [gap](../../RESEARCH.md#gap-bomb-lifetime),
 [thứ tự](../../PLAN.md#current-order). Raw/script/capture ở `local/research/codex/c2s118-admission-r1/`.
 

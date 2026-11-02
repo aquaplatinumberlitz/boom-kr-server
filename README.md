@@ -35,7 +35,7 @@ loại replay trước ID/timer, hai chu kỳ hợp lệ vẫn chạy. [Contract
 tiếp gạch/item ẩn/reveal trên currentservice theo nguồn CP032.
 
 CP066 đã merge [PR93](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/93) tại `40ec544`.
-CP067 tự kiểm/chờ PR, review độc lập [waived](docs/evidence/checkpoints/review-waiver.json).
+CP067 tự kiểm/tích hợp theo [PR95](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/95), review độc lập [waived](docs/evidence/checkpoints/review-waiver.json).
 Audit **AUD020/CP064**, periodic kế **CP068**.
 [Yêu cầu chủ dự án](docs/evidence/owner-directives/continuous-work.json): tiếp tục ngay việc kế trong
 PLAN sau mỗi checkpoint/commit/PR, không tự dừng/chờ nhắc.

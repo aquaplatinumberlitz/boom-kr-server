@@ -1,7 +1,7 @@
 {
   "schema": "kre-feature-index-v1",
   "build": "KR00967",
-  "as_of": "2026-11-03 JST / CP067; self-check pending PR; nextauditCP068",
+  "as_of": "2026-11-03 JST / CP067; self-check; integration via PR95; nextauditCP068",
   "sources": {
     "plan": "docs/PLAN.md",
     "contract": "docs/PROTOCOL.md",
@@ -1335,9 +1335,10 @@
             "server/probe_service.py",
             "docs/PROTOCOL.md#probe-service",
             "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/57",
-            "docs/PROTOCOL.md#c2s118-admission"
+            "docs/PROTOCOL.md#c2s118-admission",
+            "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/95"
           ],
-          "delivery": "branch_pending"
+          "delivery": "via_pr"
         },
         "integration": {
           "state": "partial",
@@ -2452,9 +2453,10 @@
             "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/87",
             "docs/PROTOCOL.md#distinct-spawn",
             "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/91",
-            "docs/PROTOCOL.md#c2s118-admission"
+            "docs/PROTOCOL.md#c2s118-admission",
+            "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/95"
           ],
-          "delivery": "branch_pending"
+          "delivery": "via_pr"
         },
         "integration": {
           "state": "partial",
@@ -2678,7 +2680,7 @@
         },
         "implementation": {
           "state": "partial",
-          "delivery": "branch_pending",
+          "delivery": "via_pr",
           "refs": [
             "server/probe_service.py",
             "docs/PROTOCOL.md#service-eof",
@@ -2697,7 +2699,8 @@
             "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/87",
             "docs/PROTOCOL.md#distinct-spawn",
             "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/91",
-            "docs/PROTOCOL.md#c2s118-admission"
+            "docs/PROTOCOL.md#c2s118-admission",
+            "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/95"
           ]
         },
         "integration": {
