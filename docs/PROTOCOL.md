@@ -1,6 +1,6 @@
 # KR 00967 — contract tương thích client gốc
 
-Revision kr-legacy-contract-r1; cập nhật03/11/2026 JST (CP073).
+Revision kr-legacy-contract-r1; cập nhật03/11/2026 JST (CP074).
 **Contract có bằng chứng từng phần; chưa nghiệm thu full codec K2**.
 Lộ trình và thứ tự task chỉ giữ ở [REWRITE_PLAN — KRE](PLAN.md).
 Đây là contract của repo server KR. ADR0009 của bản viết lại là nguồn lịch sử để so sánh;
@@ -1958,7 +1958,7 @@ liệt kê và phân biệt với nguyên bản trong mọi demo.
 <a id="authority"></a>
 ### Authority matrix hiện hành và gate review
 
-Bảng này tổng hợp bằng chứng từng phần đến CP073; chưa phải toàn contract server gốc. Mỗi hàng khi
+Bảng này tổng hợp bằng chứng từng phần đến CP074; chưa phải toàn contract server gốc. Mỗi hàng khi
 triển khai phải bổ sung riêng **creator, simulator, validator, broadcaster, peer-editable state**, với
 locator/trace và trạng thái từng ô; những vai trò không nêu dưới đây hiện `unknown` cho KR.
 
@@ -1971,7 +1971,7 @@ locator/trace và trạng thái từng ô; những vai trò không nêu dưới 
 | Item placement/pickup | CP030 nhặt/tranh index; CP031/032 stat/itemẩn; CP045 [bảng nhóm/Roller/MaxPower hai view/reset](#item-families) | CP042 có [old165/index reuse](#item-generation); runtime tại max, KRspeed→px/s/TTL/activevariants, drop/toàn124validator/generation/reset còn thiếu; CP062 [winner đảo trên actual tranh index](#current-pickup-race) đã có scope riêng |
 | Trap/death | CP029/036; CP037 kim và tranh chấp cứu/diệt; [kim](#needle-selfescape), [precedence](#contact-precedence) | CP063 [guard stale/duplicate](#report127-freshness) là policy hẹp; fullvalidator/firstseen/forgedforward/actualTCP/generation/variants/result21 vẫn thiếu |
 | Result/reset | CP039 hai vòng statepeer/result/21/return và reset field hẹp; CP044 [timer ở EOF và vòng B/C mới](#abort-timer) | CP041 có [payload cũ khi ID reuse](#round-generation); arbitration/toàn generation/entity/timer/peer/seq không rò vẫn mở; phân biệt run chờ sai origin với ca hoàn tất |
-| Room lifecycle | CP034 leave/promotion/EOF/return; CP035 rejoin/Ready; CP040 chủ B/C Start; CP044 [B/C bom/death/result/return sau abort](#abort-timer) | Bầu chủ/giữ ID-slot/forfeit là policy stub; guest EOF trả A về phòng/xóa B đã đo riêng; CP050 có [service EOF/cleanup](#service-eof); CP051 có [C mới/Start B trong service](#service-replacement); CP052 [guest setup EOF](#setup-eof), CP053 [host với peer chưa map](#host-setup), CP054 [C trước vòng đầu](#prestart-replacement), CP072 [preclock forfeit/return, cleanup còn thiếu](#preclock-eof) đã đo; reconnect cùng account/disconnect variants/toàn reset còn mở |
+| Room lifecycle | CP034 leave/promotion/EOF/return; CP035 rejoin/Ready; CP040 chủ B/C Start; CP044 [B/C bom/death/result/return sau abort](#abort-timer) | Bầu chủ/giữ ID-slot/forfeit là policy stub; guest EOF trả A về phòng/xóa B đã đo riêng; CP050 có [service EOF/cleanup](#service-eof); CP051 có [C mới/Start B trong service](#service-replacement); CP052 [guest setup EOF](#setup-eof), CP053 [host với peer chưa map](#host-setup), CP054 [C trước vòng đầu](#prestart-replacement), CP072 [preclock forfeit/return](#preclock-eof), CP074 [native107/IDclear và UI](#preclock-cleanup) đã đo; reconnect cùng account/disconnect variants/toàn reset còn mở |
 | Peer lifecycle | CP027 actual99→153; CP045–047 [oldUDP actor/keyguard/endpointcontrol](#udp-generation), CP070 [transport cut hai chiều](#current-udp-causality) | CP048 [service fixture](#probe-service) đã tích hợp key policy hẹp; low8reuse/roster/UDPtype khác/fullgrammar/reliability/relay/reset còn mở. Không coi đổi cổng riêng lẻ là freshness guard hoặc keybyte là auth |
 
 Gate K5/K6 cần kiểm matrix và đối chứng của hành vi thực sự dùng; từ28/10 Codex tự kiểm theo miễn review của chủ dự án. Có thể giữ unknown về
@@ -2704,3 +2704,23 @@ Preferredbaseprobe lỗiASLR và genericargvclaim sai giữraw/correction; actua
 emptyargvcontrol đã đo riêng. Không locale/client/provider/servicefix/force success, không stability/
 fullauth/K5/K6a/fullmatch/LANInternet/vanilla proof. Bước kế tiếp preclocknative107 observer với
 fallback/errorstate diagnostics; không bypassauxiliary locale để giả mainổnđịnh.
+
+<a id="preclock-cleanup"></a>
+### Native107 và UI sau preclockEOF — CP074
+
+[Raw/recipe/native/image/hash](evidence/preclock-cleanup/README.md), **kr_runtime/confirmed hẹp** trên
+currentWinecopy/profile41/service giữ nguyên. Reuse CP072actualB99hold/realEOF/175180, CP034Back/
+107slotclear/chief vàCP073attributionprobes; không nativebody/patch/forcing/providerfix.
+Hai run: accepted121129/actualA99/B99held→realBEOF/discard, không197196153/clock/death/bom.
+A175full302→180full3/stage12→107base6/rewind0/final1/errors0; slot1ID2→0,110full6/chief1afterclear.
+
+Firstnativeobserver10,485s sau servicesendcleanup có đủtrace nhưng ảnhđen. Followupfocus/chờ4/8/12s
+renderphòng mộtKRLocal/ôBtrống/nútStart; blackframe trước không là failedcleanup/hangproof, chưa tách
+focus vs wait causality. NormalBack113581→actual86empty/seq205/nativeframer0 và UIsảnh; servicechưa
+explicit86 membership reset/recreate handler, không fulljoin/profile/cache/list/rejoinproof.
+Serviceerrors0/khôngnativefallback/errorstate tronghai window; không suy sửa được lỗistartuphistorical.
+
+Forfeit/timing/hold là **design**, không servergốc/death. CP072missingnativecleanup được đo bổ sung,
+không viết lại history hoặc suy causalroot oldreset/blackframe. Chưa accountresume/hostvariant/
+timeout/loadfail/wholemembership/fullreset/gameplay/2cycles/K4/K5/K6a/fullmatch/LANInternet/vanilla.
+Bước tiếp [PLAN](PLAN.md#current-order) là selectedTCPguardadmission, không tìm lại107/175/180.

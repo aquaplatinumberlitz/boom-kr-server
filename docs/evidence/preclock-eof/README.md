@@ -69,3 +69,6 @@ negative runtime để chọn phép kiểm nhỏ, không retry proxy/chain hoặ
 Attribution cập nhật ở [CP073](../../PROTOCOL.md#launcher-error-attribution): cùng popup đã tái hiện
 trong auxiliary/no gameTCP; stack96A15A là HTTPcontents, chưa locale caller. Không dùng nhãn
 startupNMCO tại CP072 làm causalroot main. Raw/error/nativecleanupunknown giữ; thứ tự hiện hành ở PLAN.
+
+Phần native107/slotclear/UI còn thiếu đã đo hẹp ở [CP074](../../PROTOCOL.md#preclock-cleanup).
+CP072 raw thiếu trace và teardownreset vẫn giữ nguyên; không suy đó là failure/protocolcause đã được sửa.
