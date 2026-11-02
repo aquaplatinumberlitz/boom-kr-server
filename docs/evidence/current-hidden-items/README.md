@@ -2,7 +2,7 @@
 
 Baseline CP067/PR95 merge `bf4761d0efec4da40d9bc5531aefb833ed1c46a4`;
 KRE-031/[issue96](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/96).
-Codex solo/tự kiểm, [review waived](../checkpoints/review-waiver.json), tích hợp chờ PR.
+Codex solo/tự kiểm, [review waived](../checkpoints/review-waiver.json), tích hợp theo [PR97](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/97).
 [Contract/giới hạn](../../PROTOCOL.md#current-hidden-items), [gap](../../RESEARCH.md#gap-blast-block-chain),
 [thứ tự](../../PLAN.md#current-order). Raw ở `local/research/codex/current-hidden-items-r1/`.
 
