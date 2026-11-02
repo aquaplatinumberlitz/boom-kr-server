@@ -29,13 +29,13 @@ runtime nào có nguồn, còn thiếu gì và phép kiểm nào giải quyết.
 evidence/hash và câu hỏi; [PLAN](docs/PLAN.md#current-order) giữ duy nhất thứ tự công việc.
 Đây là scope đường bootstrap → login → sảnh → phòng → Battle → kết quả/reset, không kiểm kê toàn client.
 
-CP070: cắt UDP từng chiều làm view bên kia ngừng cập nhật vị trí trong khi own actor vẫn di chuyển;
-khôi phục UDP thì hai view cập nhật lại. [Contract/giới hạn](docs/PROTOCOL.md#current-udp-causality),
-[raw/hash](docs/evidence/current-udp-causality/README.md). CP069 vẫn là nguồn ba item/effect/reset cùngrun.
-Chưa K6a/fullmatch/LAN/Internet/fullvalidator/reset; tiếp blocker chain khác owner với root power2.
+CP071: Fire/power2 đã đọc trên current profile, nhưng chưa đặt được hai bom khác owner trong tầm;
+run phản hồi vị trí đạt tọa độ rồi không phát118. [Contract/blocker](docs/PROTOCOL.md#mixed-owner-power),
+[raw/hash](docs/evidence/mixed-owner-power/README.md). CP069 ba effects/reset và CP070 UDP cut/restore giữ nguồn.
+Tiếp kiểm EOF sau Start, trước đủ99/clock; chưa K6a/fullmatch/LAN/Internet/fullvalidator/reset.
 
-CP069 đã merge [PR99](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/99) tại `03f1afb`.
-CP070 tự kiểm/tích hợp theo [PR101](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/101), review độc lập [waived](docs/evidence/checkpoints/review-waiver.json).
+CP070 đã merge [PR101](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/101) tại `b0ddb12`.
+CP071 tự kiểm/chờ PR, review độc lập [waived](docs/evidence/checkpoints/review-waiver.json).
 Audit **AUD021/CP068**, periodic kế **CP072**.
 [Yêu cầu chủ dự án](docs/evidence/owner-directives/continuous-work.json): tiếp tục ngay việc kế trong
 PLAN sau mỗi checkpoint/commit/PR, không tự dừng/chờ nhắc.
