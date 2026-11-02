@@ -35,7 +35,7 @@ run phản hồi vị trí đạt tọa độ rồi không phát118. [Contract/b
 Tiếp kiểm EOF sau Start, trước đủ99/clock; chưa K6a/fullmatch/LAN/Internet/fullvalidator/reset.
 
 CP070 đã merge [PR101](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/101) tại `b0ddb12`.
-CP071 tự kiểm/chờ PR, review độc lập [waived](docs/evidence/checkpoints/review-waiver.json).
+CP071 tự kiểm/tích hợp theo [PR103](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/103), review độc lập [waived](docs/evidence/checkpoints/review-waiver.json).
 Audit **AUD021/CP068**, periodic kế **CP072**.
 [Yêu cầu chủ dự án](docs/evidence/owner-directives/continuous-work.json): tiếp tục ngay việc kế trong
 PLAN sau mỗi checkpoint/commit/PR, không tự dừng/chờ nhắc.
