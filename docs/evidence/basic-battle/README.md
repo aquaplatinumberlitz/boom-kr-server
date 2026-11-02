@@ -2,7 +2,7 @@
 
 Baseline CP068/PR97 merge `f94efe10efbb5943acb10055619072b225a21498`;
 KRE-032/[issue98](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/98).
-Codex solo/tự kiểm; [review waived](../checkpoints/review-waiver.json), tích hợp chờ PR.
+Codex solo/tự kiểm; [review waived](../checkpoints/review-waiver.json), tích hợp theo [PR99](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/99).
 [Contract/giới hạn](../../PROTOCOL.md#basic-battle), [gap](../../RESEARCH.md#gap-diagnostic-service),
 [thứ tự](../../PLAN.md#current-order). Raw/script/capture ở `local/research/codex/basic-battle-r1/`.
 

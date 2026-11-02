@@ -34,7 +34,7 @@ view qua hai chu kỳ cùngrun. [Contract/giới hạn](docs/PROTOCOL.md#basic-b
 Chưa K6a/fullmatch/LAN/Internet/fullvalidator/reset; tiếp kiểm movement/UDP bằng can thiệp mạng cô lập.
 
 CP068 đã merge [PR97](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/97) tại `f94efe1`.
-CP069 tự kiểm/chờ PR, review độc lập [waived](docs/evidence/checkpoints/review-waiver.json).
+CP069 tự kiểm/tích hợp theo [PR99](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/99), review độc lập [waived](docs/evidence/checkpoints/review-waiver.json).
 Audit **AUD021/CP068**, periodic kế **CP072**.
 [Yêu cầu chủ dự án](docs/evidence/owner-directives/continuous-work.json): tiếp tục ngay việc kế trong
 PLAN sau mỗi checkpoint/commit/PR, không tự dừng/chờ nhắc.
