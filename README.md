@@ -35,7 +35,7 @@ Run có R1result/return và R2item/bom/deathstate, hết thời gian trước R2
 Tiếp kiểm membership sau Back86/tạo lại phòng; chưa fullmatch/K6a/LAN/Internet/fullvalidator/accountresume.
 
 CP074 đã merge [PR109](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/109) tại `f84823d`.
-CP075 tự kiểm/chờ PR; review độc lập [waived](docs/evidence/checkpoints/review-waiver.json).
+CP075 tự kiểm/tích hợp theo [PR111](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/111); review độc lập [waived](docs/evidence/checkpoints/review-waiver.json).
 Audit **AUD022/CP072**, periodic kế **CP076**.
 [Yêu cầu chủ dự án](docs/evidence/owner-directives/continuous-work.json): tiếp tục ngay việc kế trong
 PLAN sau mỗi checkpoint/commit/PR, không tự dừng/chờ nhắc.

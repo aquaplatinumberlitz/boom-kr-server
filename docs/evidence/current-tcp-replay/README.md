@@ -1,7 +1,7 @@
 # CP075 — Guard body cũ/trùng qua TCP thực
 
 Baseline CP074/PR109 merge `f84823dd8745930713de1d99c5e7fb45d83ee50d`; KRE-038/[issue110](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/110).
-Codex solo/tự kiểm; [review waived](../checkpoints/review-waiver.json), tích hợp chờ PR.
+Codex solo/tự kiểm; [review waived](../checkpoints/review-waiver.json), tích hợp theo [PR111](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/111).
 [Contract/giới hạn](../../PROTOCOL.md#current-tcp-replay), [gap](../../RESEARCH.md#gap-diagnostic-service),
 [thứ tự](../../PLAN.md#current-order). Raw/scripts/seals tại `local/research/codex/current-tcp-replay-r1/`.
 
