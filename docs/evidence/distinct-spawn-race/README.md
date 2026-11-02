@@ -2,7 +2,7 @@
 
 Baseline CP065/PR91 merge `fbdf5f32bd44ddc347c21fad362a7532277682ef`;
 KRE-029/[issue92](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/92).
-Codex solo/tự kiểm; [review waived](../checkpoints/review-waiver.json), tích hợp chờ PR.
+Codex solo/tự kiểm; [review waived](../checkpoints/review-waiver.json), tích hợp theo [PR93](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/93).
 [Contract/giới hạn](../../PROTOCOL.md#distinct-spawn-race), [gap](../../RESEARCH.md#gap-floor-pickup),
 [thứ tự](../../PLAN.md#current-order). Raw/script/capture ở `local/research/codex/distinct-spawn-race-r1/`.
 

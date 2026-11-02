@@ -35,7 +35,7 @@ reset và state/kết quả khớp trong cùng run. [Contract/giới hạn](docs
 Tiếp kiểm request đặt bom118 cũ/trùng trước cấp ID/timer.
 
 CP065 đã merge [PR91](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/91) tại `fbdf5f3`.
-CP066 tự kiểm/chờ PR, review độc lập [waived](docs/evidence/checkpoints/review-waiver.json).
+CP066 tự kiểm/tích hợp theo [PR93](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/93), review độc lập [waived](docs/evidence/checkpoints/review-waiver.json).
 Audit **AUD020/CP064**, periodic kế **CP068**.
 [Yêu cầu chủ dự án](docs/evidence/owner-directives/continuous-work.json): tiếp tục ngay việc kế trong
 PLAN sau mỗi checkpoint/commit/PR, không tự dừng/chờ nhắc.
