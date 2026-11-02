@@ -29,12 +29,12 @@ runtime nào có nguồn, còn thiếu gì và phép kiểm nào giải quyết.
 evidence/hash và câu hỏi; [PLAN](docs/PLAN.md#current-order) giữ duy nhất thứ tự công việc.
 Đây là scope đường bootstrap → login → sảnh → phòng → Battle → kết quả/reset, không kiểm kê toàn client.
 
-CP068: currentservice đã có gạch/item ẩn/reveal/nhặt Bomb+Fire/reset qua hai vòng; native hai view
-khớp. [Contract/giới hạn](docs/PROTOCOL.md#current-hidden-items), [raw/hash](docs/evidence/current-hidden-items/README.md).
-Chưa K6a/fullmatch/LAN/Internet/fullvalidator/reset; tiếp gom profile Battle dùng cảfloor vàhidden theo PLAN.
+CP069: một profile Battle đã có floorRoller + hiddenBomb/Fire, cả ba stat/effect và reset khớp hai
+view qua hai chu kỳ cùngrun. [Contract/giới hạn](docs/PROTOCOL.md#basic-battle), [raw/hash](docs/evidence/basic-battle/README.md).
+Chưa K6a/fullmatch/LAN/Internet/fullvalidator/reset; tiếp kiểm movement/UDP bằng can thiệp mạng cô lập.
 
-CP067 đã merge [PR95](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/95) tại `bf4761d`.
-CP068 tự kiểm/tích hợp theo [PR97](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/97), review độc lập [waived](docs/evidence/checkpoints/review-waiver.json).
+CP068 đã merge [PR97](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/97) tại `f94efe1`.
+CP069 tự kiểm/tích hợp theo [PR99](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/99), review độc lập [waived](docs/evidence/checkpoints/review-waiver.json).
 Audit **AUD021/CP068**, periodic kế **CP072**.
 [Yêu cầu chủ dự án](docs/evidence/owner-directives/continuous-work.json): tiếp tục ngay việc kế trong
 PLAN sau mỗi checkpoint/commit/PR, không tự dừng/chờ nhắc.

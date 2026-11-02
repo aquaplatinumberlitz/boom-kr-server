@@ -58,8 +58,8 @@ def main():
     parser.add_argument('--out', type=Path, required=True)
     parser.add_argument('--spawn-layout', choices=['distinct', 'overlap'], default='distinct',
                         help='known map spawn0/1, or intentional overlap for contact/race RE')
-    parser.add_argument('--item-layout', choices=['floor', 'hidden'], default='floor',
-                        help='known floor Roller, or two known CP032 items in FixedBox tiles')
+    parser.add_argument('--item-layout', choices=['floor', 'hidden', 'battle'], default='floor',
+                        help='known floor Roller, hidden Bomb/Fire, or both known groups together')
     args = parser.parse_args()
     local = Path(__file__).resolve().parents[1] / 'local'
     root = args.source_root.resolve(strict=True)
@@ -74,9 +74,11 @@ def main():
     fixtures = dict(FIXTURES)
     if args.spawn_layout == 'overlap':
         fixtures['start'] = ('collision-r1/overlap121.bin', 73)
-    if args.item_layout == 'hidden':
-        fixtures['floor'] = ('hidden-item-r1/hidden582.bin', 73)
-        result['items'] = []
+    if args.item_layout in ('hidden', 'battle'):
+        fixtures['floor'] = (('hidden-item-r1/hidden582.bin' if args.item_layout == 'hidden'
+                              else 'basic-battle-r1/basic582.bin'), 73)
+        if args.item_layout == 'hidden':
+            result['items'] = []
         result['hidden_items'] = [
             {'index': 27, 'row': 2, 'column': 3, 'kind': 0},
             {'index': 28, 'row': 3, 'column': 2, 'kind': 1},
