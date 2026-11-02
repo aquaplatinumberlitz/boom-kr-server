@@ -34,7 +34,7 @@ exporter mặc định distinct, còn tùy chọn overlap phục vụ RE. [Contr
 [raw/hash](docs/evidence/distinct-spawn/README.md). Chưa K4/K6a/fullmatch/LAN/Internet/fullvalidator/reset.
 
 CP064 đã merge [PR89](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/89) tại `9ebc93c`;
-chain liền kề khác owner còn mở tại issue88. CP065 tự kiểm/chờ PR,
+chain liền kề khác owner còn mở tại issue88. CP065 tự kiểm/tích hợp theo [PR91](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/91),
 review độc lập [waived](docs/evidence/checkpoints/review-waiver.json).
 Audit **AUD020/CP064**, periodic kế **CP068**.
 [Yêu cầu chủ dự án](docs/evidence/owner-directives/continuous-work.json): tiếp tục ngay việc kế trong

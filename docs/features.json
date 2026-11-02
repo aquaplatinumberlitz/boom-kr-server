@@ -1,7 +1,7 @@
 {
   "schema": "kre-feature-index-v1",
   "build": "KR00967",
-  "as_of": "2026-11-03 JST / CP065; self-check pending PR; nextauditCP068",
+  "as_of": "2026-11-03 JST / CP065; self-check; integration via PR91; nextauditCP068",
   "sources": {
     "plan": "docs/PLAN.md",
     "contract": "docs/PROTOCOL.md",
@@ -861,12 +861,13 @@
         },
         "implementation": {
           "state": "partial",
-          "delivery": "branch_pending",
+          "delivery": "via_pr",
           "refs": [
             "server/probe_service.py",
             "docs/PROTOCOL.md#service-eof",
             "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/61",
-            "docs/PROTOCOL.md#distinct-spawn"
+            "docs/PROTOCOL.md#distinct-spawn",
+            "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/91"
           ]
         },
         "integration": {
@@ -2438,9 +2439,10 @@
             "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/57",
             "docs/PROTOCOL.md#report127-freshness",
             "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/87",
-            "docs/PROTOCOL.md#distinct-spawn"
+            "docs/PROTOCOL.md#distinct-spawn",
+            "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/91"
           ],
-          "delivery": "branch_pending"
+          "delivery": "via_pr"
         },
         "integration": {
           "state": "partial",
@@ -2658,7 +2660,7 @@
         },
         "implementation": {
           "state": "partial",
-          "delivery": "branch_pending",
+          "delivery": "via_pr",
           "refs": [
             "server/probe_service.py",
             "docs/PROTOCOL.md#service-eof",
@@ -2675,7 +2677,8 @@
             "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/73",
             "docs/PROTOCOL.md#report127-freshness",
             "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/87",
-            "docs/PROTOCOL.md#distinct-spawn"
+            "docs/PROTOCOL.md#distinct-spawn",
+            "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/91"
           ]
         },
         "integration": {
