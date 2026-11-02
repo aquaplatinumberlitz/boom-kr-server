@@ -36,7 +36,7 @@ sau vòng hoàn tất; chưa hai trận nghiệm thu/K6a/LAN/Internet/fullauth/c
 Tiếp kiểm hai vòng A/B trên currentprofile theo PLAN.
 
 CP059 đã merge [PR79](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/79) tại `6920ae2`.
-CP060 tự kiểm/chờ PR, review độc lập [waived](docs/evidence/checkpoints/review-waiver.json).
+CP060 tự kiểm/integration theo [PR81](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/81), review độc lập [waived](docs/evidence/checkpoints/review-waiver.json).
 Audit **AUD019/CP060**, periodic kế **CP064**.
 [Yêu cầu chủ dự án](docs/evidence/owner-directives/continuous-work.json): tiếp tục ngay việc kế trong
 PLAN sau mỗi checkpoint/commit/PR, không tự dừng/chờ nhắc.
