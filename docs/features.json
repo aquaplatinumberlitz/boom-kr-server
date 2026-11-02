@@ -1,7 +1,7 @@
 {
   "schema": "kre-feature-index-v1",
   "build": "KR00967",
-  "as_of": "2026-11-03 JST / CP071 partial; self-check PR103; nextauditCP072",
+  "as_of": "2026-11-03 JST / CP072 partial; self-check PR105; AUD022/nextCP076",
   "sources": {
     "plan": "docs/PLAN.md",
     "contract": "docs/PROTOCOL.md",
@@ -87,7 +87,8 @@
         "plan": "docs/PLAN.md#current-order",
         "evidence": [
           "docs/evidence/bootstrap-wire/README.md",
-          "docs/evidence/probe-service/README.md"
+          "docs/evidence/probe-service/README.md",
+          "docs/evidence/preclock-eof/README.md"
         ]
       },
       "coverage": {
@@ -119,7 +120,8 @@
           "wine_diagnostic_copy": {
             "state": "observed",
             "refs": [
-              "docs/evidence/bootstrap-wire/README.md"
+              "docs/evidence/bootstrap-wire/README.md",
+              "docs/evidence/preclock-eof/README.md"
             ]
           },
           "windows_original": {
@@ -147,7 +149,8 @@
         "integration": {
           "state": "partial",
           "refs": [
-            "docs/evidence/probe-service/README.md"
+            "docs/evidence/probe-service/README.md",
+            "docs/evidence/preclock-eof/README.md"
           ]
         },
         "gate": {
@@ -356,7 +359,8 @@
           "docs/evidence/login-runtime/README.md",
           "docs/evidence/probe-service/README.md",
           "docs/evidence/auth-profile/README.md",
-          "docs/evidence/current-profile-c/README.md"
+          "docs/evidence/current-profile-c/README.md",
+          "docs/evidence/preclock-eof/README.md"
         ]
       },
       "coverage": {
@@ -392,7 +396,8 @@
             "refs": [
               "docs/evidence/login-runtime/README.md",
               "docs/evidence/auth-profile/README.md",
-              "docs/evidence/current-profile-c/README.md"
+              "docs/evidence/current-profile-c/README.md",
+              "docs/evidence/preclock-eof/README.md"
             ]
           },
           "windows_original": {
@@ -425,7 +430,8 @@
           "refs": [
             "docs/evidence/probe-service/README.md",
             "docs/evidence/auth-profile/README.md",
-            "docs/evidence/current-profile-c/README.md"
+            "docs/evidence/current-profile-c/README.md",
+            "docs/evidence/preclock-eof/README.md"
           ]
         },
         "gate": {
@@ -809,7 +815,8 @@
           "docs/evidence/start-reply/README.md",
           "docs/evidence/probe-service/README.md",
           "docs/evidence/service-eof/README.md",
-          "docs/evidence/distinct-spawn/README.md"
+          "docs/evidence/distinct-spawn/README.md",
+          "docs/evidence/preclock-eof/README.md"
         ]
       },
       "coverage": {
@@ -843,7 +850,8 @@
             "refs": [
               "docs/evidence/start-reply/README.md",
               "docs/evidence/service-eof/README.md",
-              "docs/evidence/distinct-spawn/README.md"
+              "docs/evidence/distinct-spawn/README.md",
+              "docs/evidence/preclock-eof/README.md"
             ]
           },
           "windows_original": {
@@ -874,7 +882,8 @@
           "state": "partial",
           "refs": [
             "docs/evidence/service-eof/README.md",
-            "docs/evidence/distinct-spawn/README.md"
+            "docs/evidence/distinct-spawn/README.md",
+            "docs/evidence/preclock-eof/README.md"
           ]
         },
         "gate": {
@@ -2553,7 +2562,8 @@
           "docs/evidence/service-replacement/README.md",
           "docs/evidence/setup-eof/README.md",
           "docs/evidence/host-setup/README.md",
-          "docs/evidence/prestart-replacement/README.md"
+          "docs/evidence/prestart-replacement/README.md",
+          "docs/evidence/preclock-eof/README.md"
         ]
       },
       "coverage": {
@@ -2590,7 +2600,8 @@
               "docs/evidence/service-replacement/README.md",
               "docs/evidence/setup-eof/README.md",
               "docs/evidence/host-setup/README.md",
-              "docs/evidence/prestart-replacement/README.md"
+              "docs/evidence/prestart-replacement/README.md",
+              "docs/evidence/preclock-eof/README.md"
             ]
           },
           "windows_original": {
@@ -2630,7 +2641,8 @@
             "docs/evidence/service-replacement/README.md",
             "docs/evidence/setup-eof/README.md",
             "docs/evidence/host-setup/README.md",
-            "docs/evidence/prestart-replacement/README.md"
+            "docs/evidence/prestart-replacement/README.md",
+            "docs/evidence/preclock-eof/README.md"
           ]
         },
         "gate": {
@@ -2678,7 +2690,8 @@
           "docs/evidence/current-hidden-items/README.md",
           "docs/evidence/basic-battle/README.md",
           "docs/evidence/current-udp-causality/README.md",
-          "docs/evidence/mixed-owner-power/README.md"
+          "docs/evidence/mixed-owner-power/README.md",
+          "docs/evidence/preclock-eof/README.md"
         ]
       },
       "coverage": {
@@ -2723,7 +2736,8 @@
               "docs/evidence/current-hidden-items/README.md",
               "docs/evidence/basic-battle/README.md",
               "docs/evidence/current-udp-causality/README.md",
-              "docs/evidence/mixed-owner-power/README.md"
+              "docs/evidence/mixed-owner-power/README.md",
+              "docs/evidence/preclock-eof/README.md"
             ]
           },
           "windows_original": {
@@ -2788,7 +2802,8 @@
             "docs/evidence/current-hidden-items/README.md",
             "docs/evidence/basic-battle/README.md",
             "docs/evidence/current-udp-causality/README.md",
-            "docs/evidence/mixed-owner-power/README.md"
+            "docs/evidence/mixed-owner-power/README.md",
+            "docs/evidence/preclock-eof/README.md"
           ]
         },
         "gate": {

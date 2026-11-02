@@ -1,0 +1,109 @@
+{
+  "id": "AUD022",
+  "trigger": "periodic",
+  "completed_through": "CP072",
+  "recorded_utc": "2026-11-02T18:09:59.457395+00:00",
+  "auditor": "Codex manual self-audit; independent review waived by owner",
+  "read_files": [
+    "README.md",
+    "docs/PLAN.md",
+    "docs/PROTOCOL.md",
+    "docs/RESEARCH.md",
+    "docs/features.json",
+    "docs/COVERAGE.md",
+    "server/README.md",
+    "docs/evidence/service-eof/README.md",
+    "docs/evidence/setup-eof/README.md",
+    "docs/evidence/host-setup/README.md",
+    "docs/evidence/basic-battle/README.md",
+    "docs/evidence/current-udp-causality/README.md",
+    "docs/evidence/mixed-owner-chain/README.md",
+    "docs/evidence/mixed-owner-power/README.md",
+    "docs/evidence/preclock-eof/README.md",
+    "local/research/codex/basic-battle-r1/verification.json",
+    "local/research/codex/basic-battle-r1/basic-current/run.json",
+    "local/research/codex/basic-battle-r1/actor-fields.json",
+    "local/research/codex/current-udp-causality-r1/verification.json",
+    "local/research/codex/current-udp-causality-r1/samples.json",
+    "local/research/codex/current-udp-causality-r1/cut-v3/run.json",
+    "local/research/codex/mixed-owner-power-r1/verification.json",
+    "local/research/codex/mixed-owner-power-r1/chain-summary.json",
+    "local/research/codex/mixed-owner-power-r1/power-live/run.json",
+    "local/research/codex/mixed-owner-power-r1/power-feedback/run.json",
+    "local/research/codex/preclock-eof-r1/reuse-question.json",
+    "local/research/codex/preclock-eof-r1/verification.json",
+    "local/research/codex/preclock-eof-r1/lifecycle-summary.json",
+    "local/research/codex/preclock-eof-r1/startup-failure.json",
+    "local/research/codex/preclock-eof-r1/startup-retry.json",
+    "local/research/codex/preclock-eof-r1/observer-retry.json",
+    "local/research/codex/preclock-eof-r1/guest-preclock/run.json",
+    "local/research/codex/preclock-eof-r1/guest-preclock/client-B.log",
+    "local/research/codex/preclock-eof-r1/guest-preclock/B/screen-149.png",
+    "local/research/codex/preclock-eof-r1/guest-preclock-warm/run.json",
+    "local/research/codex/preclock-eof-r1/guest-preclock-warm/client.log",
+    "local/research/codex/preclock-eof-r1/guest-preclock-warm/service-state.json",
+    "local/research/codex/preclock-eof-r1/guest-preclock-observed/run.json",
+    "local/research/codex/preclock-eof-r1/guest-preclock-observed/client.log",
+    "local/research/codex/preclock-eof-r1/guest-preclock-observed/A/screen-28.png"
+  ],
+  "method": "Đọc README→PLAN(current-order/gates và scope)→PROTOCOL(header/source/reuse/authority, CP033/050/052–054/069–072 theo nhánh)→RESEARCH(current table và nhãn historical)→evidence liên quan, raw/log/report/nativefields/counter và hai ảnh startup. Đối chiếu CP069actual3pickups/round2reset/stats hai view;CP070actual99/153/phase samples/rulecounter/drop/restore, không grammar/queue proof;CP071outside-range vs feedbackno118;CP072actualheldB99/EOF/no197196153/clock/175180stage12, sender107 chưa nativeclear, Aresetafterstop, nativeSIGABRT beforeStart ở hai role. Đọc lại current summary/gap/catalog sau sync. Không reread mọi body lịch sử/scan toànclient, không dùng checker thay audit ngữ nghĩa.",
+  "findings": [
+    {
+      "id": "F1",
+      "stale": "PROTOCOLheaderCP069/authorityheaderCP068 nhưng đã có CP071; Movement/Peer rows chưa dẫn CP070 transportcontrol.",
+      "correction": "Header/matrix currentCP072, link cutcounter/restore và preclockpartial; không mở rộng thành fullgrammar/reliability/auth/LAN hoặc nativecleanup.",
+      "fixed_in": [
+        "docs/PROTOCOL.md"
+      ]
+    },
+    {
+      "id": "F2",
+      "stale": "RESEARCHintro lặp progress theo CP tới064, serverREADME và evidence069/070 còn câu tiếp có thể hiểu là đang active.",
+      "correction": "RESEARCH dùng coverage/canonicalgap thay danh sách tiếnđộ riêng; serverREADME gắn lịch sử, evidence069/070 dẫn successor/PLAN. CP071 deferredgap giữ, không sửa immutablefindings/raw.",
+      "fixed_in": [
+        "docs/RESEARCH.md",
+        "server/README.md",
+        "docs/evidence/basic-battle/README.md",
+        "docs/evidence/current-udp-causality/README.md"
+      ]
+    },
+    {
+      "id": "F3",
+      "stale": "CP070run có actualfloorRoller incidental chưa ghi rõ; quãng đi dễ bị đọc thành speedcontrol hoặc fixture khôngitem.",
+      "correction": "Ghi incidental12417/kind2 và giới hạn own-vs-remote từngphase; không suy px/s hoặc queueflush từ restore-before-input.",
+      "fixed_in": [
+        "docs/evidence/current-udp-causality/README.md"
+      ]
+    },
+    {
+      "id": "F4",
+      "stale": "CP071nextstep holdUp1→boundary kỳ vọng sai; feedbacksamecoords không có118 có thể bị hiểu nhầm thành in-rangebomb/chain.",
+      "correction": "Giữ actual(3,3)/(6,5)/power2,1 làoutside-rangecontrol; retryboundedno118/error giữ, mixedownerquestionunknown, khôngtránh bằng giảmassert. CP072không lặp hold.",
+      "fixed_in": [
+        "docs/PROTOCOL.md",
+        "docs/RESEARCH.md",
+        "docs/evidence/mixed-owner-power/README.md"
+      ]
+    },
+    {
+      "id": "F5",
+      "stale": "CP072serverrefresh+3s chưa native107; serviceAECONNRESET có thể bị đổ cho preclockEOF, nativeStop trướcStart có thể bị che bởi errorabsent/launcher0.",
+      "correction": "Native175302/1803/stage12 được ghi confirmedhẹp; cleanup/IDclearunknown. Reset timestamp sau controlledstop vẫn giữserviceerror, không errorfreerun. FirstB/thirdAabort/ảnhSetLocale2000:0/stack vànoStart/held99 giữ rõ. Observerretry trướcStart nênkhôngcleanupfailureproof. NextNMCOexactcaller/input/result; khôngservicefix khi chưanativefailure.",
+      "fixed_in": [
+        "docs/evidence/preclock-eof/README.md",
+        "docs/PROTOCOL.md",
+        "docs/PLAN.md",
+        "docs/RESEARCH.md",
+        "README.md",
+        "docs/features.json",
+        "docs/COVERAGE.md"
+      ]
+    }
+  ],
+  "remaining": [
+    "NMCOSetLocaleAndRegion2000:0causeunknown; nexttargetedcall/input/result usingexistingpositive/negative/cachedimports, no unchangedruntime/proxy retry.",
+    "Preclocknative107/IDclear/chief pending stable startup; forfeit/return alone notwholecleanup/gate. CP071mixedownerinrange/actual118stillunknown.",
+    "CP069basicprofile2cycles,CP070transportcontrol are separate runs; not stitchedfullmatch/K5/K6a. Fullauthority/reset/auth/Windowsvanilla/LANInternet/threebombs/walls remainopen.",
+    "CP072selfcheckpendingPR,reviewwaivednotapproved; periodicAUD022throughCP072,nextCP076. CP001–071/AUD001–021 records/raw preserved."
+  ]
+}

@@ -29,14 +29,14 @@ runtime nào có nguồn, còn thiếu gì và phép kiểm nào giải quyết.
 evidence/hash và câu hỏi; [PLAN](docs/PLAN.md#current-order) giữ duy nhất thứ tự công việc.
 Đây là scope đường bootstrap → login → sảnh → phòng → Battle → kết quả/reset, không kiểm kê toàn client.
 
-CP071: Fire/power2 đã đọc trên current profile, nhưng chưa đặt được hai bom khác owner trong tầm;
-run phản hồi vị trí đạt tọa độ rồi không phát118. [Contract/blocker](docs/PROTOCOL.md#mixed-owner-power),
-[raw/hash](docs/evidence/mixed-owner-power/README.md). CP069 ba effects/reset và CP070 UDP cut/restore giữ nguồn.
-Tiếp kiểm EOF sau Start, trước đủ99/clock; chưa K6a/fullmatch/LAN/Internet/fullvalidator/reset.
+CP072: A nhận kết quả/về stage phòng sau BEOF trước clock; xóa slot vẫn thiếu trace native.
+Hai run bị NMCO `SetLocaleAndRegion(2000:0)` trước Start, nay là blocker runtime cần xử lý.
+[Contract/giới hạn](docs/PROTOCOL.md#preclock-eof), [raw/hash](docs/evidence/preclock-eof/README.md).
+CP069 item/reset và CP070 UDPcontrol giữ; chưa fullmatch/K6a/LAN/Internet/fullvalidator/reset.
 
-CP070 đã merge [PR101](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/101) tại `b0ddb12`.
-CP071 tự kiểm/tích hợp theo [PR103](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/103), review độc lập [waived](docs/evidence/checkpoints/review-waiver.json).
-Audit **AUD021/CP068**, periodic kế **CP072**.
+CP071 đã merge [PR103](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/103) tại `d95c5ba`.
+CP072 partial tự kiểm/tích hợp theo [PR105](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/105), review độc lập [waived](docs/evidence/checkpoints/review-waiver.json).
+Audit **AUD022/CP072**, periodic kế **CP076**.
 [Yêu cầu chủ dự án](docs/evidence/owner-directives/continuous-work.json): tiếp tục ngay việc kế trong
 PLAN sau mỗi checkpoint/commit/PR, không tự dừng/chờ nhắc.
 

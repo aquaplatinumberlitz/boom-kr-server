@@ -40,6 +40,6 @@ knownUIrouteCP068 ASpace tại3/3→Downescape/pickRoller→Uphiddenroute→fina
 nguồngeometry/effect, khôngholdtime. Normalstop saurefresh2+3s,seal saucompletion/derive/native/verify
 modulemode repo root;khôngoverwrite raw/chạy chồng. Không allitem/ability/chainvariant/drop/collision/
 auth/fullvalidator/fullreset/K5/K6a/LAN/Internet/vanilla. Report142old/forgedafterblastlimitsCP068giữ.
-Bước tiếp movementcausality trên currentprofile: endpointUDPcut cócounter trongprivate namespace,
+Bước tiếp ghi tại CP069 (đã đo hẹp trong [CP070](../../PROTOCOL.md#current-udp-causality)); thứ tự hiện hành ở PLAN. Recipe câu hỏi lúc đó: movementcausality trên currentprofile: endpointUDPcut cócounter trongprivate namespace,
 đối chiếu localvsremote nativeposition rồirestore; tái dùng CP027/045–047, không lặpfailedproxyCP049
 hoặc gọi pairedcoordinatesamples là fulltransportproof.
