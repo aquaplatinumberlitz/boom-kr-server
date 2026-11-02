@@ -1966,7 +1966,7 @@ locator/trace và trạng thái từng ô; những vai trò không nêu dưới 
 |---|---|---|
 | Movement | CP027 hai client thấy movement hai chiều; [phạm vi](#peer-duo);183 vẫn chỉ ghost | Full schema input/update/correction, validator và quyền sửa vị trí của peer |
 | Bomb place/ID | CP027 hai owner/ID chung1..4 tạo trên cả hai client; [phạm vi](#peer-duo); lặp/cũ CP025 | CP041 có [stale158/ID reuse và fence job local](#round-generation), CP043 có [old159/serial reuse](#late-bomb-confirm); CP067 [C2Skey/serialguard](#c2s118-admission) loại duplicate/oldbody hẹp; allocator/rollover/concurrent/race/toàn generation/authority còn mở |
-| Explode/chain | CP033 một owner; CP064 [hai owner/cách hai ô](#mixed-owner-chain) chỉ xử lý từng timer; liền kề bị blocker bố trí | Mixed-owner liền kề/ba bom/vật cản/race/generation và authority server gốc còn thiếu |
+| Explode/chain | CP033 một owner; CP064 [power1/cách hai ô](#mixed-owner-chain), CP071 [power2 ngoài tầm/feedback chưa118](#mixed-owner-power) giữ partial khác owner | Mixed-owner liền kề/ba bom/vật cản/race/generation và authority server gốc còn thiếu |
 | Block destroy/item reveal | CP032 nativecontract; CP068 [currentservice/list2/reportgate/effect/reset](#current-hidden-items) cảhai view | Drop algorithm/server validator, variants/chain và phép loại transport riêng còn thiếu |
 | Item placement/pickup | CP030 nhặt/tranh index; CP031/032 stat/itemẩn; CP045 [bảng nhóm/Roller/MaxPower hai view/reset](#item-families) | CP042 có [old165/index reuse](#item-generation); runtime tại max, KRspeed→px/s/TTL/activevariants, drop/toàn124validator/generation/reset còn thiếu; CP062 [winner đảo trên actual tranh index](#current-pickup-race) đã có scope riêng |
 | Trap/death | CP029/036; CP037 kim và tranh chấp cứu/diệt; [kim](#needle-selfescape), [precedence](#contact-precedence) | CP063 [guard stale/duplicate](#report127-freshness) là policy hẹp; fullvalidator/firstseen/forgedforward/actualTCP/generation/variants/result21 vẫn thiếu |
@@ -2647,3 +2647,22 @@ Run v2 counter dương nhưng thiếu paired phases giữ partial, v3 tăng samp
 Lỗi assert metadata của run đầu xảy ra trước nft, không quy cho client. Service/profile/guards giữ;
 không bom/result/reset/2cycles ở phép này, không full UDP grammar/reliability/NAT/auth/fallback/LAN/
 Internet/vanilla/K5/K6a. [OldUDP/key](#udp-generation) giữ nguồn CP045–047 riêng.
+
+<a id="mixed-owner-power"></a>
+### Mixed-owner/power2: control ngoài tầm và blocker UI — CP071
+
+[Raw/recipe/hash](evidence/mixed-owner-power/README.md). **kr_runtime/confirmed hẹp**: currentservice/
+CP065distinctspawn, floorFire17row6col3 nhận actual124/165 và Fire+4BC1→2 cảhai view. Run đầu actual
+A118(3,3)/power2 và B118(6,5)/power1, owner0/1, IDs1/2; native root158 chỉ xử lýID1, ID2 tới timer riêng.
+Đây là control ngoài tầm dự định, không chứng minh chain/radius2 hoặc phủ nhận chain khác owner.
+
+CP070 next-step kỳ vọng Up1 đưa B tới hàng3 đã bị actualhàng6 sửa; không suy hold→cell hoặc pickup
+row6 là điểm dừng. Retry read-only cached1256B3B/manualchecksum/native52A350 feedback cho normalUI
+Up đưa B tới(120,159), cùng A trước Space, nhưng không request118 trong4s. Controller dừng bounded
+failure; không native159/158/bom trong retry, không quy cause cho debugger/client/input. Hash/raw/lỗi
+được giữ; không thử lại recipe thiếu điều kiện mới. Không thêm body/patch/service hoặc force state.
+
+**Unknown:** hai owner trong tầm/adjacent1cell/ba bom/vật cản/reset/fullvalidator/authority/K5/K6a/
+fullmatch/LANInternet/vanilla. [CP033](#bomb-chain) sameowner và [CP064](#mixed-owner-chain) control
+power1 vẫn hợp lệ; historicalcontrols không cùngrun power-only intervention. Bước tiếp ở PLAN là
+EOF sauStart trướcclock, không nâng gate từ Fire/feedback/encoder/probe pass.

@@ -1,7 +1,7 @@
 {
   "schema": "kre-checkpoints-v1",
-  "last_id": "CP070",
-  "completed_count": 70,
+  "last_id": "CP071",
+  "completed_count": 71,
   "audit_interval": 4,
   "last_periodic_audit": 68,
   "next_periodic_audit": "CP072",
@@ -142399,6 +142399,1179 @@
           "reason": "CP070 current UDP transport control, preserved partial/failure, scope/limits; next bounded mixedowner power2 condition; no gatepromotion."
         }
       ]
+    },
+    {
+      "id": "CP071",
+      "previous": "CP070",
+      "lifecycle": "complete",
+      "recorded_utc": "2026-11-02T17:53:40.665943+00:00",
+      "context_commit": "b0ddb1271c9027392d1f90631cd6b2a1538b884d",
+      "question": "Can existing Fire+1 and distinctspawn routes obtain native two-owner bombs within rootpower2, distinguished from secondarytimer by callback-scoped processing?",
+      "scope": "KRE-034/#102; CP033/064/066/068reuse. Two bounded sequentialruns: firstactualroot3,3power2/secondary6,5power1outside-range; retry normalUIUp/read-onlynativepositionfeedback reaches120159 but no actualA118 in4s. Branchquestionpartial/blockerrecorded, notchainpass. No third inputtuning; nextpreclockEOF independentboundary. AUD021/CP068,nextperiodicCP072.",
+      "owner": "Codex",
+      "reviewer": "Codex",
+      "artifacts": [
+        {
+          "name": "CA-r2-login-logout.exe",
+          "sha256": "660447c293ce92270cb9b5815331bca976e8f156366e1fe50b217b6c12e60ce3"
+        },
+        {
+          "name": "CA-r2-stage-social.exe",
+          "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+        },
+        {
+          "name": "CA-r2-stage-social.exe Bcopy",
+          "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+        },
+        {
+          "name": "modO.bin",
+          "sha256": "a08950c833d3acab8281049def7b3dc96b221f107eeda01da3a548e34b91dce5"
+        },
+        {
+          "name": "CA-r2-stage-social.exe Ccopy",
+          "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+        }
+      ],
+      "locators": [
+        "power-live 2026-11-02T17:35:23Z runSHA 96651fe754676b1e782a654517cd5b6f6aae9f9de28034eaeb29e1b0ce590edb",
+        "power-feedback 2026-11-02T17:47:46Z runSHA a68f87e27499213f54a51cbd46a8ec280140ad383a4ba48724cd824ec0893f47",
+        "CachedEBE180/B32390callerEBE21A/EB80E3/native159IDs and1256B3Bread-onlyfeedback;RVA=VA-400000",
+        "ActualA124row6col3index17kind1;bothviews+4BC1→2;actual118owner0cell3,3power2/owner1cell6,5power1;retrylastBviewboth120159/no118"
+      ],
+      "findings": [
+        {
+          "summary": "CurrentfloorFire17row6col3actual124/165 gives secureFire1→2bothviews inbothruns. Firsttwoactual118/IDs1,2/owners0,1 outsideintendedrange; root158onlyID1, secondaryonlyowntimer, native15939/15813/errors0.",
+          "source": "kr_runtime",
+          "status": "confirmed",
+          "method": "runtime",
+          "canonical": "docs/PROTOCOL.md#mixed-owner-power",
+          "limits": "CurrentWinecopies/localoneRoundperrun/productionserviceunchanged/Firefloorfixturedesign. Firstactualgeometryoutsidepower2, secondtargetfeedbackbutnoactual118. No mixedownerpositive/radiusproof/auth/wholematch/reset/K5/K6a/LANInternet/vanilla. Nativeheap/receiver/gettercountermodels emulationonly; no newbody/patch/stateforcing.",
+          "evidence": [
+            "E087",
+            "E008",
+            "E022",
+            "E002",
+            "E044"
+          ]
+        },
+        {
+          "summary": "Read-onlyhostJSON/checksum feedback atcached1256B3B controls normalUIUprelease; Bviewbothactors120159 beforeSpace, nativegetter agrees capturedsamples. No actual118 in4s, controllerboundedfailure; no159/158/chainexperiment inretry. Causeofmissinginput remains unknown, notnativecrash proof.",
+          "source": "kr_runtime",
+          "status": "confirmed",
+          "method": "runtime",
+          "canonical": "docs/PROTOCOL.md#mixed-owner-power",
+          "limits": "CurrentWinecopies/localoneRoundperrun/productionserviceunchanged/Firefloorfixturedesign. Firstactualgeometryoutsidepower2, secondtargetfeedbackbutnoactual118. No mixedownerpositive/radiusproof/auth/wholematch/reset/K5/K6a/LANInternet/vanilla. Nativeheap/receiver/gettercountermodels emulationonly; no newbody/patch/stateforcing.",
+          "evidence": [
+            "E117",
+            "E011",
+            "E002",
+            "E044"
+          ]
+        },
+        {
+          "summary": "Mixed-owner in-range/radius2/adjacent chain remains unknown: actual intendedbombpair unavailable. HistoricalCP064power1control and CP033sameowner reused, notsame-runpower-onlycausality. Stopafter2runs; nextpreclockEOF.",
+          "source": "kr_runtime",
+          "status": "unknown",
+          "method": "runtime",
+          "canonical": "docs/PROTOCOL.md#mixed-owner-power",
+          "limits": "CurrentWinecopies/localoneRoundperrun/productionserviceunchanged/Firefloorfixturedesign. Firstactualgeometryoutsidepower2, secondtargetfeedbackbutnoactual118. No mixedownerpositive/radiusproof/auth/wholematch/reset/K5/K6a/LANInternet/vanilla. Nativeheap/receiver/gettercountermodels emulationonly; no newbody/patch/stateforcing.",
+          "evidence": [
+            "E044",
+            "E039"
+          ]
+        },
+        {
+          "summary": "Floor582kind1atknownmidpoint/currentguards/profile and feedbackmethod are measurementdesign; no servicechange/newbody/clientpatch/forcing, native582recordcount/fullcursor/CRCpartialchecked.",
+          "source": "design",
+          "status": "design",
+          "method": "design",
+          "canonical": "docs/PROTOCOL.md#mixed-owner-power",
+          "limits": "CurrentWinecopies/localoneRoundperrun/productionserviceunchanged/Firefloorfixturedesign. Firstactualgeometryoutsidepower2, secondtargetfeedbackbutnoactual118. No mixedownerpositive/radiusproof/auth/wholematch/reset/K5/K6a/LANInternet/vanilla. Nativeheap/receiver/gettercountermodels emulationonly; no newbody/patch/stateforcing.",
+          "evidence": [
+            "E034",
+            "E014",
+            "E021",
+            "E011"
+          ]
+        }
+      ],
+      "verification": [
+        {
+          "check": "1926 relations/seals/source, 768 nativeframer/132 packet/264 secure snapshots; 7catalog/docs/artifacts5/5/diff/requiredlocalhistory. Unchangedcode baseline72server/18checkpoint tests.",
+          "result": "pass",
+          "evidence": [
+            "E044",
+            "E006",
+            "E010",
+            "E005"
+          ],
+          "limits": "Pass verifiespartial/failureclassification,notmixedownerchainorquestioncompletion. Independentreviewwaived; no gatepromotion."
+        }
+      ],
+      "evidence": [
+        {
+          "id": "E001",
+          "kind": "repository",
+          "path": "docs/evidence/mixed-owner-power/README.md",
+          "bytes": 5790,
+          "sha256": "a042649eac787cd505b4212f17714793c4cf493c8a427d60e6293e317a4de06c"
+        },
+        {
+          "id": "E002",
+          "kind": "local",
+          "path": "local/research/codex/mixed-owner-power-r1/actor-fields.json",
+          "bytes": 176751,
+          "sha256": "ae558f42cc712d08e61450aaf002f829ba3fb0292596a7df971e87fa14c64eaf"
+        },
+        {
+          "id": "E003",
+          "kind": "local",
+          "path": "local/research/codex/mixed-owner-power-r1/analyze_completed.py",
+          "bytes": 1018,
+          "sha256": "cd5b268bf48969b80774b4d5aa7f6ee1828542e605a5de9dcaae5387cf6b0dc3"
+        },
+        {
+          "id": "E004",
+          "kind": "local",
+          "path": "local/research/codex/mixed-owner-power-r1/append_checkpoint.py",
+          "bytes": 7287,
+          "sha256": "431989dd62c19409e8b1009acd398e434f0016da82298687739f0e0ef2e0e76c"
+        },
+        {
+          "id": "E005",
+          "kind": "local",
+          "path": "local/research/codex/mixed-owner-power-r1/artifacts-check.txt",
+          "bytes": 253,
+          "sha256": "649c6624aa6d317dfc1db5e16fea683cfbc9d9cf4dd3df11c0d70e57409054a0"
+        },
+        {
+          "id": "E006",
+          "kind": "local",
+          "path": "local/research/codex/mixed-owner-power-r1/catalog-tests.txt",
+          "bytes": 105,
+          "sha256": "74ac421003431ec779aa7a1a5d4da5a39404034e98a210c0a524d4c59c251c36"
+        },
+        {
+          "id": "E007",
+          "kind": "local",
+          "path": "local/research/codex/mixed-owner-power-r1/chain-check.txt",
+          "bytes": 108,
+          "sha256": "641d70b6ce5af51b76c7db98228695db15c6dceece0ccf75285d0bcca641c55d"
+        },
+        {
+          "id": "E008",
+          "kind": "local",
+          "path": "local/research/codex/mixed-owner-power-r1/chain-summary.json",
+          "bytes": 19668,
+          "sha256": "419cc4e51134e40e3ba7df84f6b92bf55954a2c4ba3d66f5d1fdbc472442786b"
+        },
+        {
+          "id": "E009",
+          "kind": "local",
+          "path": "local/research/codex/mixed-owner-power-r1/derive_roles.py",
+          "bytes": 1032,
+          "sha256": "e252f9946d617bf4667835ba2d45b2a3398a1c6584c269448d6712192c4a1fc8"
+        },
+        {
+          "id": "E010",
+          "kind": "local",
+          "path": "local/research/codex/mixed-owner-power-r1/docs-check.txt",
+          "bytes": 174,
+          "sha256": "bd102387d620b96027ab3f83d594d45e6f0c4288b640898617ecc382504c3b03"
+        },
+        {
+          "id": "E011",
+          "kind": "local",
+          "path": "local/research/codex/mixed-owner-power-r1/feedback-retry.json",
+          "bytes": 910,
+          "sha256": "1c875ae4c3513a741a49dcc82f1393193feacb5f28cbcb2795c808924c82ee10"
+        },
+        {
+          "id": "E012",
+          "kind": "local",
+          "path": "local/research/codex/mixed-owner-power-r1/fields-check.txt",
+          "bytes": 32,
+          "sha256": "388e681b8d35e22660e877d801c5f0e0fbe1edf8047f5c0959db15c6d8596308"
+        },
+        {
+          "id": "E013",
+          "kind": "local",
+          "path": "local/research/codex/mixed-owner-power-r1/first-geometry.json",
+          "bytes": 790,
+          "sha256": "5cc4fb421df07a6b73eda4995780d52c497f418c1da6fc3a33620477e3e38b9d"
+        },
+        {
+          "id": "E014",
+          "kind": "local",
+          "path": "local/research/codex/mixed-owner-power-r1/floor582-fixture.json",
+          "bytes": 510,
+          "sha256": "935fdba7250aa8b03df5c3d0a311e2e640d0e9c3dfd1471ed299510968eb6cc9"
+        },
+        {
+          "id": "E015",
+          "kind": "local",
+          "path": "local/research/codex/mixed-owner-power-r1/floor582.bin",
+          "bytes": 64,
+          "sha256": "ba120478ef6b177bf085a80b585aefde0605bd712a78f442ffc8bd7d015fb504"
+        },
+        {
+          "id": "E016",
+          "kind": "local",
+          "path": "local/research/codex/mixed-owner-power-r1/framer-check.txt",
+          "bytes": 66,
+          "sha256": "faa748a043f5730b810c40ef6fd3e251ada0ee15fac06d1e38cd7f79117e501f"
+        },
+        {
+          "id": "E017",
+          "kind": "local",
+          "path": "local/research/codex/mixed-owner-power-r1/gdb_live_positions.py",
+          "bytes": 1126,
+          "sha256": "5196de683bf13383719af83fb7c46164d8c4bcc9102f338b0ce72f607b841718"
+        },
+        {
+          "id": "E018",
+          "kind": "local",
+          "path": "local/research/codex/mixed-owner-power-r1/issue-body.md",
+          "bytes": 1656,
+          "sha256": "4b208ecf9d3df1dbf31b11231236beddd922ebd1c6257d08dde18563825ecb16"
+        },
+        {
+          "id": "E019",
+          "kind": "local",
+          "path": "local/research/codex/mixed-owner-power-r1/mixed-feedback.gdb",
+          "bytes": 30916,
+          "sha256": "e73b508665d4b41c55ad4c42d32e3fd248c0e31b9626254c7593c4e2218800f6"
+        },
+        {
+          "id": "E020",
+          "kind": "local",
+          "path": "local/research/codex/mixed-owner-power-r1/mixed.gdb",
+          "bytes": 30112,
+          "sha256": "46b47ee60ce9dd15cf092b40f8ca275f4dd15399b11eefbb9d93051bf642f31b"
+        },
+        {
+          "id": "E021",
+          "kind": "local",
+          "path": "local/research/codex/mixed-owner-power-r1/native-layout.json",
+          "bytes": 1255,
+          "sha256": "cce4bc90f6e987be6fe3a99118c39d7865c4d7d33685f2cf8615fcca769d12ad"
+        },
+        {
+          "id": "E022",
+          "kind": "local",
+          "path": "local/research/codex/mixed-owner-power-r1/native-packets.json",
+          "bytes": 50085,
+          "sha256": "76b3075da4b0ef78b7a7e33fe57a3ecf85613d9ad9ce9113cc6009e6a5b62686"
+        },
+        {
+          "id": "E023",
+          "kind": "local",
+          "path": "local/research/codex/mixed-owner-power-r1/native_layout.py",
+          "bytes": 2367,
+          "sha256": "0fe60b3b6510af4d4778eec73a82f9ae111424e20f4afc1a517ee49931049073"
+        },
+        {
+          "id": "E024",
+          "kind": "local",
+          "path": "local/research/codex/mixed-owner-power-r1/native_packets.py",
+          "bytes": 4835,
+          "sha256": "9bb2083696dc88589f64a9bd4512b300bdfe5c1d29cfe1300aa241463bf07772"
+        },
+        {
+          "id": "E025",
+          "kind": "local",
+          "path": "local/research/codex/mixed-owner-power-r1/packets-check.txt",
+          "bytes": 29,
+          "sha256": "09d4c40120d9a8b070ba74c7e54395afb523366eb0b8b447c0aa20c1dd3c7c9e"
+        },
+        {
+          "id": "E026",
+          "kind": "local",
+          "path": "local/research/codex/mixed-owner-power-r1/parse_chain.py",
+          "bytes": 4530,
+          "sha256": "02c29b29c9c0b52b597526399e0909c441a074fc895312242508c9d42ece914c"
+        },
+        {
+          "id": "E027",
+          "kind": "local",
+          "path": "local/research/codex/mixed-owner-power-r1/parse_fields.py",
+          "bytes": 3940,
+          "sha256": "cd99fb18a54332cd88397cf4c12ae697b98f7f9c61ae8b173fac80e8ab080816"
+        },
+        {
+          "id": "E028",
+          "kind": "local",
+          "path": "local/research/codex/mixed-owner-power-r1/power-feedback-hashes.json",
+          "bytes": 157952,
+          "sha256": "8a80f17f55032d9386c5de4cbb7729e08c45198e67a1afe1265a616e50a3250b"
+        },
+        {
+          "id": "E029",
+          "kind": "local",
+          "path": "local/research/codex/mixed-owner-power-r1/power-feedback-launcher.log",
+          "bytes": 54736,
+          "sha256": "84a16750bdfc8ae644f18530352acae4a7f73dbbaee8cd8f031d1cc45166b6ce"
+        },
+        {
+          "id": "E030",
+          "kind": "local",
+          "path": "local/research/codex/mixed-owner-power-r1/power-feedback-recipe.json",
+          "bytes": 1033,
+          "sha256": "6fc3ce1f9eae499a602438ebbfea86cab4385cb71050131b2a3be3bf526aa163"
+        },
+        {
+          "id": "E031",
+          "kind": "local",
+          "path": "local/research/codex/mixed-owner-power-r1/power-live-hashes.json",
+          "bytes": 164704,
+          "sha256": "2ff45acb20282868feffd64b97d0309eb71bd10b3da931e3d3a40966df96d461"
+        },
+        {
+          "id": "E032",
+          "kind": "local",
+          "path": "local/research/codex/mixed-owner-power-r1/power-live-launcher.log",
+          "bytes": 70801,
+          "sha256": "df99115f796a579532d96c60ddcd52434cd541ac79c3dcd5777afbd476796b2c"
+        },
+        {
+          "id": "E033",
+          "kind": "local",
+          "path": "local/research/codex/mixed-owner-power-r1/power-live-recipe.json",
+          "bytes": 1007,
+          "sha256": "1e4383a9c03446797ff4e23a07c25e21d4d6f6daecb171555b2bc52c1477636e"
+        },
+        {
+          "id": "E034",
+          "kind": "local",
+          "path": "local/research/codex/mixed-owner-power-r1/preparation.json",
+          "bytes": 937,
+          "sha256": "da6c4e1bc6b1e18fe46a9645aabe7a6904d56f4eff379dfeb07a7b8966cd448e"
+        },
+        {
+          "id": "E035",
+          "kind": "local",
+          "path": "local/research/codex/mixed-owner-power-r1/prepare.py",
+          "bytes": 8837,
+          "sha256": "e7e68e14082122e9ddbe5f2d22527e8798459ad04e57bbd0deb601f39192202b"
+        },
+        {
+          "id": "E036",
+          "kind": "local",
+          "path": "local/research/codex/mixed-owner-power-r1/prepare_feedback.py",
+          "bytes": 5225,
+          "sha256": "1d1c8e72f601783c96a252d6d8c343c0362e3e19cce94e2ef18d68fff7f8fcc1"
+        },
+        {
+          "id": "E037",
+          "kind": "local",
+          "path": "local/research/codex/mixed-owner-power-r1/profile.json",
+          "bytes": 10890,
+          "sha256": "2d01d83595bc68b3d473cb4af789ed81efd118d11a6e65edfae403c5437acaf0"
+        },
+        {
+          "id": "E038",
+          "kind": "local",
+          "path": "local/research/codex/mixed-owner-power-r1/replay-run.py",
+          "bytes": 3008,
+          "sha256": "8c7aa29f3e28ac4de9481f59a15fd7b9e6f2ae86971e9c4f44af2ba7ec75728b"
+        },
+        {
+          "id": "E039",
+          "kind": "local",
+          "path": "local/research/codex/mixed-owner-power-r1/reuse-question.json",
+          "bytes": 6322,
+          "sha256": "6547867661b169b34652a270c8828a555fa534706f672bfb99c39dea1fd81467"
+        },
+        {
+          "id": "E040",
+          "kind": "local",
+          "path": "local/research/codex/mixed-owner-power-r1/run_probe.py",
+          "bytes": 1080,
+          "sha256": "eb68199362dfbdae2f0f8c20cb3a22f9352688083175156d94d2d7a9eb05f356"
+        },
+        {
+          "id": "E041",
+          "kind": "local",
+          "path": "local/research/codex/mixed-owner-power-r1/seal-check.txt",
+          "bytes": 26,
+          "sha256": "64d550842920bc29a3c81a5f515381938ca30a500bfe84eb1ce59159f5011ab8"
+        },
+        {
+          "id": "E042",
+          "kind": "local",
+          "path": "local/research/codex/mixed-owner-power-r1/seal_run.py",
+          "bytes": 631,
+          "sha256": "4c95c0dc3d3a90fafb02f91005c6f88aef3f587e1d0e957ff23f3a765b2ab0ec"
+        },
+        {
+          "id": "E043",
+          "kind": "local",
+          "path": "local/research/codex/mixed-owner-power-r1/sync_docs.py",
+          "bytes": 13214,
+          "sha256": "0786c96c9dd78759784798a01474320bfd8a14ebb0e7e410bd0d899dda6b63ec"
+        },
+        {
+          "id": "E044",
+          "kind": "local",
+          "path": "local/research/codex/mixed-owner-power-r1/verification.json",
+          "bytes": 2194,
+          "sha256": "d9741f6b218ffb9a12a8e3af29cbe7489e5d9784ad7ffb1d1195ce49f7db6c4b"
+        },
+        {
+          "id": "E045",
+          "kind": "local",
+          "path": "local/research/codex/mixed-owner-power-r1/verify-check.txt",
+          "bytes": 2194,
+          "sha256": "d9741f6b218ffb9a12a8e3af29cbe7489e5d9784ad7ffb1d1195ce49f7db6c4b"
+        },
+        {
+          "id": "E046",
+          "kind": "local",
+          "path": "local/research/codex/mixed-owner-power-r1/verify.py",
+          "bytes": 7037,
+          "sha256": "4c294376f0c47dd28c6537a2556e65f2f0d3a255e952c494b9a939cb0c295544"
+        },
+        {
+          "id": "E047",
+          "kind": "local",
+          "path": "local/research/codex/mixed-owner-power-r1/verify_positive.py",
+          "bytes": 8544,
+          "sha256": "33d909bc9d2a1474cf829c68e0f261c686693e936a277024c750cccbf65cbf15"
+        },
+        {
+          "id": "E048",
+          "kind": "local",
+          "path": "local/research/codex/mixed-owner-power-r1/cp071-snapshot/README.md",
+          "bytes": 3821,
+          "sha256": "9afb48845b7f65d2ea987e7483ac36ee69890fb12f02ece0f6fe249415868de4"
+        },
+        {
+          "id": "E049",
+          "kind": "local",
+          "path": "local/research/codex/mixed-owner-power-r1/cp071-snapshot/docs/COVERAGE.md",
+          "bytes": 76729,
+          "sha256": "178f3481dd54dee4e44489339c711d2951cc60b5704982cdfcb4b7b720f5e16f"
+        },
+        {
+          "id": "E050",
+          "kind": "local",
+          "path": "local/research/codex/mixed-owner-power-r1/cp071-snapshot/docs/PLAN.md",
+          "bytes": 30361,
+          "sha256": "157c03918ba053cdb6b4fdc77171b95dcee66e252bb6b916d8aee7d72415cfda"
+        },
+        {
+          "id": "E051",
+          "kind": "local",
+          "path": "local/research/codex/mixed-owner-power-r1/cp071-snapshot/docs/PROTOCOL.md",
+          "bytes": 232043,
+          "sha256": "05fbe153717ca5a76d8d5d3d31ca814faed70099b83a72cfa210c8d2a7d73dc9"
+        },
+        {
+          "id": "E052",
+          "kind": "local",
+          "path": "local/research/codex/mixed-owner-power-r1/cp071-snapshot/docs/RESEARCH.md",
+          "bytes": 30847,
+          "sha256": "55dc4c075d3a65fa4e206489dbc2e5071e33c9833b8d70dd200267391c815528"
+        },
+        {
+          "id": "E053",
+          "kind": "local",
+          "path": "local/research/codex/mixed-owner-power-r1/cp071-snapshot/docs/evidence/mixed-owner-power/README.md",
+          "bytes": 5790,
+          "sha256": "a042649eac787cd505b4212f17714793c4cf493c8a427d60e6293e317a4de06c"
+        },
+        {
+          "id": "E054",
+          "kind": "local",
+          "path": "local/research/codex/mixed-owner-power-r1/cp071-snapshot/docs/features.json",
+          "bytes": 79464,
+          "sha256": "bcc0361db09fe3da42531bb1f0f5c627580db253bff7811261c157109b81d0d4"
+        },
+        {
+          "id": "E055",
+          "kind": "local",
+          "path": "local/research/codex/mixed-owner-power-r1/runtime-source/item_claims.py",
+          "bytes": 3340,
+          "sha256": "7990ae9195e9f8bba56b04101f352506194dbd0252793183993ce101a8674a2e"
+        },
+        {
+          "id": "E056",
+          "kind": "local",
+          "path": "local/research/codex/mixed-owner-power-r1/runtime-source/probe_codec.py",
+          "bytes": 3227,
+          "sha256": "23ba54e6940953a52ff737e7e06b2761a8eb22eab444310b49b1d96efa12411d"
+        },
+        {
+          "id": "E057",
+          "kind": "local",
+          "path": "local/research/codex/mixed-owner-power-r1/runtime-source/probe_room.py",
+          "bytes": 1468,
+          "sha256": "91292494d492c7851bd5432649adf528e1b07290316dc56ba1478f8a209a08bc"
+        },
+        {
+          "id": "E058",
+          "kind": "local",
+          "path": "local/research/codex/mixed-owner-power-r1/runtime-source/probe_service.py",
+          "bytes": 37600,
+          "sha256": "91be840fe16d77070e130882940be478aa80651df59de9dc3af204d1b9ce05e2"
+        },
+        {
+          "id": "E059",
+          "kind": "local",
+          "path": "local/research/codex/mixed-owner-power-r1/runtime-source/round_fence.py",
+          "bytes": 2339,
+          "sha256": "aabcc7f1d623573fc217de8df05403f83d82425bbe5d6e78872b3096a2d46708"
+        },
+        {
+          "id": "E060",
+          "kind": "local",
+          "path": "local/research/codex/mixed-owner-power-r1/runtime-source/udp_round_keys.py",
+          "bytes": 1187,
+          "sha256": "db58ae1f25bcbeb52c2d25c7db6afbf1021ddd3af29702e756f5f41886530a0d"
+        },
+        {
+          "id": "E061",
+          "kind": "local",
+          "path": "local/research/codex/mixed-owner-power-r1/derived/power-feedback-A/run.json",
+          "bytes": 49089,
+          "sha256": "8541925e1514b650519f22258ccc76ee56841c4600a2cef3bd5b42a02089ed5d"
+        },
+        {
+          "id": "E062",
+          "kind": "local",
+          "path": "local/research/codex/mixed-owner-power-r1/derived/power-feedback-A-oracle.json",
+          "bytes": 91227,
+          "sha256": "b98e9f11054a35153ecb4c6b4dad0b3d14ce15b1675e46cbee0cd35422aa6e92"
+        },
+        {
+          "id": "E063",
+          "kind": "local",
+          "path": "local/research/codex/mixed-owner-power-r1/derived/power-feedback-A-replay.txt",
+          "bytes": 1513,
+          "sha256": "1b70d45402ae38a181600312e7f9e44d2b4e02c5453d2beea6031ba9f6c00a0e"
+        },
+        {
+          "id": "E064",
+          "kind": "local",
+          "path": "local/research/codex/mixed-owner-power-r1/derived/power-feedback-B/run.json",
+          "bytes": 45510,
+          "sha256": "a56a3544ecc5cc9650f08b3a7b686be9b9ce0e8ea547c5274c947a3bd104af81"
+        },
+        {
+          "id": "E065",
+          "kind": "local",
+          "path": "local/research/codex/mixed-owner-power-r1/derived/power-feedback-B-oracle.json",
+          "bytes": 69938,
+          "sha256": "b2fe4314eb8806f32b5cda781739706d1938aedc7d74904c14f8c3787edc692a"
+        },
+        {
+          "id": "E066",
+          "kind": "local",
+          "path": "local/research/codex/mixed-owner-power-r1/derived/power-feedback-B-replay.txt",
+          "bytes": 1172,
+          "sha256": "da3763de009976bb8fb54b263c395db83e9116582d5c92a06ae3e7f3d4fd2b74"
+        },
+        {
+          "id": "E067",
+          "kind": "local",
+          "path": "local/research/codex/mixed-owner-power-r1/derived/power-live-A/run.json",
+          "bytes": 66520,
+          "sha256": "d76f0160e6b678376104f339498593a9dbfb1030cc450c2c1965921477da9826"
+        },
+        {
+          "id": "E068",
+          "kind": "local",
+          "path": "local/research/codex/mixed-owner-power-r1/derived/power-live-A-oracle.json",
+          "bytes": 114793,
+          "sha256": "947d7942feeffcf39b8fcdfa5d80954b18bdc8cf9699f781ef3c2da9ee8f3816"
+        },
+        {
+          "id": "E069",
+          "kind": "local",
+          "path": "local/research/codex/mixed-owner-power-r1/derived/power-live-A-replay.txt",
+          "bytes": 1880,
+          "sha256": "bf4cd2b870784030dfb5b00269610f58a54191b1a138aa714322c7a0e5312928"
+        },
+        {
+          "id": "E070",
+          "kind": "local",
+          "path": "local/research/codex/mixed-owner-power-r1/derived/power-live-B/run.json",
+          "bytes": 59980,
+          "sha256": "9ce019b0b741b2472aa8db36698156a9d099905c300ce624a2f6c0763f086465"
+        },
+        {
+          "id": "E071",
+          "kind": "local",
+          "path": "local/research/codex/mixed-owner-power-r1/derived/power-live-B-oracle.json",
+          "bytes": 83548,
+          "sha256": "d5c8626fef594468c7bfb26c60aa81a6e0dd96af8f21ad9b533b441f0449e588"
+        },
+        {
+          "id": "E072",
+          "kind": "local",
+          "path": "local/research/codex/mixed-owner-power-r1/derived/power-live-B-replay.txt",
+          "bytes": 1395,
+          "sha256": "447d3778276caa00eff5f6ca46a5e737d99a239364d9addb3a1af93d79312905"
+        },
+        {
+          "id": "E073",
+          "kind": "local",
+          "path": "local/research/codex/mixed-owner-power-r1/request-frames/power-feedback/A-F39-99.bin",
+          "bytes": 61,
+          "sha256": "1ade116249ce585dd69647f8b5dd8044c34d5987c57b96f53823145b477b8aa0"
+        },
+        {
+          "id": "E074",
+          "kind": "local",
+          "path": "local/research/codex/mixed-owner-power-r1/request-frames/power-feedback/A-F50-124.bin",
+          "bytes": 57,
+          "sha256": "f9b55c33cee0e2ec78f2ab04378b4e6cb50184db2efbdbacd2175ae24160fd36"
+        },
+        {
+          "id": "E075",
+          "kind": "local",
+          "path": "local/research/codex/mixed-owner-power-r1/request-frames/power-feedback/B-F12-82.bin",
+          "bytes": 49,
+          "sha256": "27d13b13f8df5db1f67451352419d49458641283683b06d40bc91f6c3f7220e7"
+        },
+        {
+          "id": "E076",
+          "kind": "local",
+          "path": "local/research/codex/mixed-owner-power-r1/request-frames/power-feedback/B-F22-95.bin",
+          "bytes": 98,
+          "sha256": "38eeff06df1cda4991e6860d5e77cabcb5d78c9a82bc217363b4899b10d3aedd"
+        },
+        {
+          "id": "E077",
+          "kind": "local",
+          "path": "local/research/codex/mixed-owner-power-r1/request-frames/power-feedback/B-F27-99.bin",
+          "bytes": 61,
+          "sha256": "ad787b3d0d30c46abf1dd7491314a011ac3f5b6167c425f33b1425589487a64a"
+        },
+        {
+          "id": "E078",
+          "kind": "local",
+          "path": "local/research/codex/mixed-owner-power-r1/request-frames/power-live/A-F38-99.bin",
+          "bytes": 61,
+          "sha256": "a3b0162b889ffbbdc84ee49254e2c815694f6e8473df59c3cc607ab2ad69b441"
+        },
+        {
+          "id": "E079",
+          "kind": "local",
+          "path": "local/research/codex/mixed-owner-power-r1/request-frames/power-live/A-F49-124.bin",
+          "bytes": 57,
+          "sha256": "8a60b9868bd2965c8c641ef7a6316d49c673548220d46df41f9d49b2cc6659ae"
+        },
+        {
+          "id": "E080",
+          "kind": "local",
+          "path": "local/research/codex/mixed-owner-power-r1/request-frames/power-live/A-F60-118.bin",
+          "bytes": 60,
+          "sha256": "a188dc84cf3f4ec5f5b71f4b58fb9c9b94f4f8646771256683c35ed17372a76d"
+        },
+        {
+          "id": "E081",
+          "kind": "local",
+          "path": "local/research/codex/mixed-owner-power-r1/request-frames/power-live/A-F68-127.bin",
+          "bytes": 70,
+          "sha256": "649261b01f040bf01ccbf7f0cdef54ea26d74001c5f9c0006f872d5853ce8dd6"
+        },
+        {
+          "id": "E082",
+          "kind": "local",
+          "path": "local/research/codex/mixed-owner-power-r1/request-frames/power-live/B-F12-82.bin",
+          "bytes": 49,
+          "sha256": "27d13b13f8df5db1f67451352419d49458641283683b06d40bc91f6c3f7220e7"
+        },
+        {
+          "id": "E083",
+          "kind": "local",
+          "path": "local/research/codex/mixed-owner-power-r1/request-frames/power-live/B-F22-95.bin",
+          "bytes": 98,
+          "sha256": "38eeff06df1cda4991e6860d5e77cabcb5d78c9a82bc217363b4899b10d3aedd"
+        },
+        {
+          "id": "E084",
+          "kind": "local",
+          "path": "local/research/codex/mixed-owner-power-r1/request-frames/power-live/B-F26-99.bin",
+          "bytes": 61,
+          "sha256": "17fe9ebffdac2b1f0ea3feb99c9b3e6e988c1589a6222db8c94449f1c420b44e"
+        },
+        {
+          "id": "E085",
+          "kind": "local",
+          "path": "local/research/codex/mixed-owner-power-r1/request-frames/power-live/B-F42-118.bin",
+          "bytes": 60,
+          "sha256": "b74f450467156e5b0320d0c1eef94a74e2c908d7abe6f6742f26e0d7a0b9f0c7"
+        },
+        {
+          "id": "E086",
+          "kind": "local",
+          "path": "local/research/codex/mixed-owner-power-r1/request-frames/power-live/B-F50-127.bin",
+          "bytes": 70,
+          "sha256": "9b9383df675a3ed8fe30f9d4142c3aea8ed40c0b511883e7400c3d63585b9d5d"
+        },
+        {
+          "id": "E087",
+          "kind": "local",
+          "path": "local/research/codex/mixed-owner-power-r1/power-live/run.json",
+          "bytes": 89721,
+          "sha256": "96651fe754676b1e782a654517cd5b6f6aae9f9de28034eaeb29e1b0ce590edb"
+        },
+        {
+          "id": "E088",
+          "kind": "local",
+          "path": "local/research/codex/mixed-owner-power-r1/power-live/client.log",
+          "bytes": 42158,
+          "sha256": "76a305c6796749fd689dcd2024d398a9f8d08f78dbecf636e4d0a27579e36e1d"
+        },
+        {
+          "id": "E089",
+          "kind": "local",
+          "path": "local/research/codex/mixed-owner-power-r1/power-live/client-B.log",
+          "bytes": 44091,
+          "sha256": "51d772229d394a5b0b7c7483fb41efdac24ce4c01546b5c16361e4f2a47bd261"
+        },
+        {
+          "id": "E090",
+          "kind": "local",
+          "path": "local/research/codex/mixed-owner-power-r1/power-live/debug-commands.txt",
+          "bytes": 30112,
+          "sha256": "46b47ee60ce9dd15cf092b40f8ca275f4dd15399b11eefbb9d93051bf642f31b"
+        },
+        {
+          "id": "E091",
+          "kind": "local",
+          "path": "local/research/codex/mixed-owner-power-r1/power-live/debug-commands-B.txt",
+          "bytes": 30112,
+          "sha256": "46b47ee60ce9dd15cf092b40f8ca275f4dd15399b11eefbb9d93051bf642f31b"
+        },
+        {
+          "id": "E092",
+          "kind": "local",
+          "path": "local/research/codex/mixed-owner-power-r1/power-live/service-state.json",
+          "bytes": 94421,
+          "sha256": "ec7456bf1d5963ef1e0a96315009dee407c15b44458c0c17e3f6008307b57a29"
+        },
+        {
+          "id": "E093",
+          "kind": "local",
+          "path": "local/research/codex/mixed-owner-power-r1/power-live/A-blast158-r1-1-100.bin",
+          "bytes": 51,
+          "sha256": "8267ecd76c85413992f106445d871cbcfb817ebeba0ff5bd1060dee651506f7e"
+        },
+        {
+          "id": "E094",
+          "kind": "local",
+          "path": "local/research/codex/mixed-owner-power-r1/power-live/A-blast158-r1-2-103.bin",
+          "bytes": 51,
+          "sha256": "00c164201ff3771a86585828cb5f6bbef13064ffa8a944ab06d6fd1f147aa5ec"
+        },
+        {
+          "id": "E095",
+          "kind": "local",
+          "path": "local/research/codex/mixed-owner-power-r1/power-live/A-dynamic159-r1-1-94.bin",
+          "bytes": 77,
+          "sha256": "fc68eba4decb3918105762c26936f2bf9f306be1875ca4bb53ee95c67102ff9d"
+        },
+        {
+          "id": "E096",
+          "kind": "local",
+          "path": "local/research/codex/mixed-owner-power-r1/power-live/A-dynamic159-r1-2-97.bin",
+          "bytes": 77,
+          "sha256": "d5c8c9cad45a2549fac4c702494e7b087e52f0d9b4908748ee84762911c24bce"
+        },
+        {
+          "id": "E097",
+          "kind": "local",
+          "path": "local/research/codex/mixed-owner-power-r1/power-live/A-event170-17-r1-106.bin",
+          "bytes": 48,
+          "sha256": "806633e0bd8ea8dd6bfdeccb99ba6cfd1a86038d558da61da31b1f5ef266705e"
+        },
+        {
+          "id": "E098",
+          "kind": "local",
+          "path": "local/research/codex/mixed-owner-power-r1/power-live/A-floor582-76.bin",
+          "bytes": 64,
+          "sha256": "54545dfe8b87d74a678422a6011e45ad9e4b3d62d7c3e843f84c95f498605b3f"
+        },
+        {
+          "id": "E099",
+          "kind": "local",
+          "path": "local/research/codex/mixed-owner-power-r1/power-live/A-go197-82.bin",
+          "bytes": 52,
+          "sha256": "64b95010ecb0e40bc0367f41f6710d2357fb2538ce827e205825284601237ef8"
+        },
+        {
+          "id": "E100",
+          "kind": "local",
+          "path": "local/research/codex/mixed-owner-power-r1/power-live/A-item165-r1-17-91.bin",
+          "bytes": 50,
+          "sha256": "0012022f8ccb51b37d4d523f3430c2d93f3fab4885233e28ab62935a80177bdf"
+        },
+        {
+          "id": "E101",
+          "kind": "local",
+          "path": "local/research/codex/mixed-owner-power-r1/power-live/A-peer153-88.bin",
+          "bytes": 135,
+          "sha256": "f4bbb3fc386b081d8f504d42efea504e97ef05855d9213e48d4f735f9b583dc4"
+        },
+        {
+          "id": "E102",
+          "kind": "local",
+          "path": "local/research/codex/mixed-owner-power-r1/power-live/A-play196-85.bin",
+          "bytes": 45,
+          "sha256": "d04bf155b4847f9d41b0edfdf00a32526302273271c0f1cadbb8ce22b89eb51d"
+        },
+        {
+          "id": "E103",
+          "kind": "local",
+          "path": "local/research/codex/mixed-owner-power-r1/power-live/A-ready110-73.bin",
+          "bytes": 44,
+          "sha256": "8fafd9cf652b458ee09b3751a0201f9ab1409920398e0e842e43b915c8840e25"
+        },
+        {
+          "id": "E104",
+          "kind": "local",
+          "path": "local/research/codex/mixed-owner-power-r1/power-live/A-start121-r1-79.bin",
+          "bytes": 167,
+          "sha256": "4d85d0786f484c579ef94cd61ceaa40997df93c39589d720ea8334bc9b5ca29f"
+        },
+        {
+          "id": "E105",
+          "kind": "local",
+          "path": "local/research/codex/mixed-owner-power-r1/power-live/B-blast158-r1-1-100.bin",
+          "bytes": 51,
+          "sha256": "8267ecd76c85413992f106445d871cbcfb817ebeba0ff5bd1060dee651506f7e"
+        },
+        {
+          "id": "E106",
+          "kind": "local",
+          "path": "local/research/codex/mixed-owner-power-r1/power-live/B-blast158-r1-2-106.bin",
+          "bytes": 51,
+          "sha256": "c02bddc3a494e2434c446487aaca03d3b8a644b50b60feea1735544d61a82582"
+        },
+        {
+          "id": "E107",
+          "kind": "local",
+          "path": "local/research/codex/mixed-owner-power-r1/power-live/B-dynamic159-r1-1-94.bin",
+          "bytes": 77,
+          "sha256": "fc68eba4decb3918105762c26936f2bf9f306be1875ca4bb53ee95c67102ff9d"
+        },
+        {
+          "id": "E108",
+          "kind": "local",
+          "path": "local/research/codex/mixed-owner-power-r1/power-live/B-dynamic159-r1-2-97.bin",
+          "bytes": 77,
+          "sha256": "d5c8c9cad45a2549fac4c702494e7b087e52f0d9b4908748ee84762911c24bce"
+        },
+        {
+          "id": "E109",
+          "kind": "local",
+          "path": "local/research/codex/mixed-owner-power-r1/power-live/B-event170-17-r1-103.bin",
+          "bytes": 48,
+          "sha256": "afbfc16530c9294030bd0502599f729b5232611fce95be85adcd2cfbdbac3ea3"
+        },
+        {
+          "id": "E110",
+          "kind": "local",
+          "path": "local/research/codex/mixed-owner-power-r1/power-live/B-floor582-76.bin",
+          "bytes": 64,
+          "sha256": "54545dfe8b87d74a678422a6011e45ad9e4b3d62d7c3e843f84c95f498605b3f"
+        },
+        {
+          "id": "E111",
+          "kind": "local",
+          "path": "local/research/codex/mixed-owner-power-r1/power-live/B-go197-82.bin",
+          "bytes": 52,
+          "sha256": "64b95010ecb0e40bc0367f41f6710d2357fb2538ce827e205825284601237ef8"
+        },
+        {
+          "id": "E112",
+          "kind": "local",
+          "path": "local/research/codex/mixed-owner-power-r1/power-live/B-item165-r1-17-91.bin",
+          "bytes": 50,
+          "sha256": "0012022f8ccb51b37d4d523f3430c2d93f3fab4885233e28ab62935a80177bdf"
+        },
+        {
+          "id": "E113",
+          "kind": "local",
+          "path": "local/research/codex/mixed-owner-power-r1/power-live/B-peer153-88.bin",
+          "bytes": 135,
+          "sha256": "73a3299a8d9d3cd16caba66e137dc5618b01ea5a151b18c9356767043e0670f0"
+        },
+        {
+          "id": "E114",
+          "kind": "local",
+          "path": "local/research/codex/mixed-owner-power-r1/power-live/B-play196-85.bin",
+          "bytes": 45,
+          "sha256": "d04bf155b4847f9d41b0edfdf00a32526302273271c0f1cadbb8ce22b89eb51d"
+        },
+        {
+          "id": "E115",
+          "kind": "local",
+          "path": "local/research/codex/mixed-owner-power-r1/power-live/B-ready110-73.bin",
+          "bytes": 44,
+          "sha256": "8fafd9cf652b458ee09b3751a0201f9ab1409920398e0e842e43b915c8840e25"
+        },
+        {
+          "id": "E116",
+          "kind": "local",
+          "path": "local/research/codex/mixed-owner-power-r1/power-live/B-start121-r1-79.bin",
+          "bytes": 167,
+          "sha256": "4d85d0786f484c579ef94cd61ceaa40997df93c39589d720ea8334bc9b5ca29f"
+        },
+        {
+          "id": "E117",
+          "kind": "local",
+          "path": "local/research/codex/mixed-owner-power-r1/power-feedback/run.json",
+          "bytes": 67486,
+          "sha256": "a68f87e27499213f54a51cbd46a8ec280140ad383a4ba48724cd824ec0893f47"
+        },
+        {
+          "id": "E118",
+          "kind": "local",
+          "path": "local/research/codex/mixed-owner-power-r1/power-feedback/client.log",
+          "bytes": 40674,
+          "sha256": "b947487ed0a13b9c3f933df24d6ac74c8e7ec1e335d0fa58a3856eb3df5123df"
+        },
+        {
+          "id": "E119",
+          "kind": "local",
+          "path": "local/research/codex/mixed-owner-power-r1/power-feedback/client-B.log",
+          "bytes": 45967,
+          "sha256": "016a924765f211536e2b775e0ff30c2c416bd5f670b233519f8d015ffbd2a2b9"
+        },
+        {
+          "id": "E120",
+          "kind": "local",
+          "path": "local/research/codex/mixed-owner-power-r1/power-feedback/debug-commands.txt",
+          "bytes": 30916,
+          "sha256": "e73b508665d4b41c55ad4c42d32e3fd248c0e31b9626254c7593c4e2218800f6"
+        },
+        {
+          "id": "E121",
+          "kind": "local",
+          "path": "local/research/codex/mixed-owner-power-r1/power-feedback/debug-commands-B.txt",
+          "bytes": 30916,
+          "sha256": "613404f4ff16febd09de294ae29d7e2a0f962a3a666f9a7759774787003ce285"
+        },
+        {
+          "id": "E122",
+          "kind": "local",
+          "path": "local/research/codex/mixed-owner-power-r1/power-feedback/service-state.json",
+          "bytes": 67180,
+          "sha256": "b25baf2303e60134e2f783347da51f9b2677ff2006ad7582e35277f3655c51df"
+        },
+        {
+          "id": "E123",
+          "kind": "local",
+          "path": "local/research/codex/mixed-owner-power-r1/power-feedback/A-floor582-76.bin",
+          "bytes": 64,
+          "sha256": "54545dfe8b87d74a678422a6011e45ad9e4b3d62d7c3e843f84c95f498605b3f"
+        },
+        {
+          "id": "E124",
+          "kind": "local",
+          "path": "local/research/codex/mixed-owner-power-r1/power-feedback/A-go197-82.bin",
+          "bytes": 52,
+          "sha256": "64b95010ecb0e40bc0367f41f6710d2357fb2538ce827e205825284601237ef8"
+        },
+        {
+          "id": "E125",
+          "kind": "local",
+          "path": "local/research/codex/mixed-owner-power-r1/power-feedback/A-item165-r1-17-91.bin",
+          "bytes": 50,
+          "sha256": "0012022f8ccb51b37d4d523f3430c2d93f3fab4885233e28ab62935a80177bdf"
+        },
+        {
+          "id": "E126",
+          "kind": "local",
+          "path": "local/research/codex/mixed-owner-power-r1/power-feedback/A-peer153-88.bin",
+          "bytes": 135,
+          "sha256": "ac1fc417d23b8a52a8445ebd6351ad686ea9b1457c401b5f90e2ca58af7bcd2e"
+        },
+        {
+          "id": "E127",
+          "kind": "local",
+          "path": "local/research/codex/mixed-owner-power-r1/power-feedback/A-play196-85.bin",
+          "bytes": 45,
+          "sha256": "d04bf155b4847f9d41b0edfdf00a32526302273271c0f1cadbb8ce22b89eb51d"
+        },
+        {
+          "id": "E128",
+          "kind": "local",
+          "path": "local/research/codex/mixed-owner-power-r1/power-feedback/A-ready110-73.bin",
+          "bytes": 44,
+          "sha256": "8fafd9cf652b458ee09b3751a0201f9ab1409920398e0e842e43b915c8840e25"
+        },
+        {
+          "id": "E129",
+          "kind": "local",
+          "path": "local/research/codex/mixed-owner-power-r1/power-feedback/A-start121-r1-79.bin",
+          "bytes": 167,
+          "sha256": "4d85d0786f484c579ef94cd61ceaa40997df93c39589d720ea8334bc9b5ca29f"
+        },
+        {
+          "id": "E130",
+          "kind": "local",
+          "path": "local/research/codex/mixed-owner-power-r1/power-feedback/B-floor582-76.bin",
+          "bytes": 64,
+          "sha256": "54545dfe8b87d74a678422a6011e45ad9e4b3d62d7c3e843f84c95f498605b3f"
+        },
+        {
+          "id": "E131",
+          "kind": "local",
+          "path": "local/research/codex/mixed-owner-power-r1/power-feedback/B-go197-82.bin",
+          "bytes": 52,
+          "sha256": "64b95010ecb0e40bc0367f41f6710d2357fb2538ce827e205825284601237ef8"
+        },
+        {
+          "id": "E132",
+          "kind": "local",
+          "path": "local/research/codex/mixed-owner-power-r1/power-feedback/B-item165-r1-17-91.bin",
+          "bytes": 50,
+          "sha256": "0012022f8ccb51b37d4d523f3430c2d93f3fab4885233e28ab62935a80177bdf"
+        },
+        {
+          "id": "E133",
+          "kind": "local",
+          "path": "local/research/codex/mixed-owner-power-r1/power-feedback/B-peer153-88.bin",
+          "bytes": 135,
+          "sha256": "554e08663feb71518273adc15fb9318360c00ef3fddc7fc7a15fad963414b7af"
+        },
+        {
+          "id": "E134",
+          "kind": "local",
+          "path": "local/research/codex/mixed-owner-power-r1/power-feedback/B-play196-85.bin",
+          "bytes": 45,
+          "sha256": "d04bf155b4847f9d41b0edfdf00a32526302273271c0f1cadbb8ce22b89eb51d"
+        },
+        {
+          "id": "E135",
+          "kind": "local",
+          "path": "local/research/codex/mixed-owner-power-r1/power-feedback/B-ready110-73.bin",
+          "bytes": 44,
+          "sha256": "8fafd9cf652b458ee09b3751a0201f9ab1409920398e0e842e43b915c8840e25"
+        },
+        {
+          "id": "E136",
+          "kind": "local",
+          "path": "local/research/codex/mixed-owner-power-r1/power-feedback/B-start121-r1-79.bin",
+          "bytes": 167,
+          "sha256": "4d85d0786f484c579ef94cd61ceaa40997df93c39589d720ea8334bc9b5ca29f"
+        },
+        {
+          "id": "E137",
+          "kind": "local",
+          "path": "local/research/codex/mixed-owner-power-r1/power-feedback/live-A.json",
+          "bytes": 273,
+          "sha256": "f36cab55a8a06fad99d074e2b6214104c141013c899c39a58f2d48878073a99d"
+        },
+        {
+          "id": "E138",
+          "kind": "local",
+          "path": "local/research/codex/mixed-owner-power-r1/power-feedback/live-B.json",
+          "bytes": 273,
+          "sha256": "ef7a9a8582ef5a6a4aaaf01b6dbe660281e4774c44ec0bbd04216af3f6e3f39e"
+        },
+        {
+          "id": "E139",
+          "kind": "local",
+          "path": "local/research/codex/wine_probe_mixed_power.py",
+          "bytes": 40639,
+          "sha256": "e0f2d1c57c2f2a39b23a23f3da7015e6f4b62c03c5952dd8a8c908c2532030f2"
+        },
+        {
+          "id": "E140",
+          "kind": "local",
+          "path": "local/research/codex/wine_probe_mixed_power_feedback.py",
+          "bytes": 42443,
+          "sha256": "8861f2009439807781fd573256a32018bc618922218b7e12a93592dd9871d838"
+        }
+      ],
+      "delta": {
+        "added": [
+          "NativeFire+1currentfloorfixture and actualmixedowneroutside-rangecontrol; boundedread-onlypositionfeedback measuredbeforeUIattempt.",
+          "Failed retry explicitly retained/error/no118, no impliednativecrash orchainpositive."
+        ],
+        "corrected": [
+          "CP070 nextstep assumption timedBUp1reachesrow3 disprovenbyactualBrow6; CP066historicalroute notgeneralhold→cell mapping."
+        ],
+        "superseded": [
+          "NEXT-MIXED-OWNER-POWER boundedattemptspartial, deferuntil concreteinput/placementnewcondition; nextpreclockEOF no auth/cache/clockconsumer rediscovery."
+        ]
+      },
+      "blockers": [
+        "Actualtwo-ownerin-rangepairnotobtained;retrytargetcoordinatesnotactualbomb/request. Causeofmissing118 unknown; no endlessinputtuning.",
+        "Fullmatch/K5/K6a/LANInternet/authority/reset/threebombs/walls/vanilla remainopen."
+      ],
+      "next_steps": [
+        {
+          "id": "NEXT-MIXED-OWNER-POWER",
+          "task": "KRE-005b",
+          "state": "superseded",
+          "action": "CP071twoboundedattemptsremainpartial; canonicalRESEARCHkeepsinrange/adjacentgap, reopenonlywithnewinput/placementcondition. Notcompletedmechanism.",
+          "owner": "Codex",
+          "reviewer": "Codex"
+        },
+        {
+          "id": "NEXT-PRECLOCK-EOF",
+          "task": "KRE-005b",
+          "state": "active",
+          "action": "Immediately reuseCP050actualB99dispatchhold/native175180107/CP052–054setup. Currentservice acceptedStart active but beforeboth99/clock; holdB99<=30s, actualA99 thenrealBEOF before release, discardheldclosedframe. Observe nativeAreturn/cleanup/IDclear and no late197196153/clock; preservefailurethenfixcallerpolicyifneeded. CP072manualperiodicauditrequired.",
+          "owner": "Codex",
+          "reviewer": "Codex"
+        }
+      ],
+      "review": {
+        "status": "waived",
+        "as_of_utc": "2026-11-02T17:53:40.665943+00:00",
+        "reference": "docs/evidence/checkpoints/review-waiver.json",
+        "scope": "Codex solo RE/code/runtime/selfcheck, not independent approval.",
+        "authorization": {
+          "by": "project_owner",
+          "reference": "docs/evidence/checkpoints/review-waiver.json",
+          "reason": "Owner explicitly requested solo without Claude review."
+        }
+      },
+      "docs_sync": [
+        {
+          "path": "README.md",
+          "state": "updated",
+          "reason": "CP071partial/nativeFire/outside-rangecontrol/feedbackno118/error/correction, nextpreclockEOF; no gatepromotion."
+        },
+        {
+          "path": "docs/PLAN.md",
+          "state": "updated",
+          "reason": "CP071partial/nativeFire/outside-rangecontrol/feedbackno118/error/correction, nextpreclockEOF; no gatepromotion."
+        },
+        {
+          "path": "docs/PROTOCOL.md",
+          "state": "updated",
+          "reason": "CP071partial/nativeFire/outside-rangecontrol/feedbackno118/error/correction, nextpreclockEOF; no gatepromotion."
+        },
+        {
+          "path": "docs/RESEARCH.md",
+          "state": "updated",
+          "reason": "CP071partial/nativeFire/outside-rangecontrol/feedbackno118/error/correction, nextpreclockEOF; no gatepromotion."
+        },
+        {
+          "path": "docs/features.json",
+          "state": "updated",
+          "reason": "CP071partial/nativeFire/outside-rangecontrol/feedbackno118/error/correction, nextpreclockEOF; no gatepromotion."
+        },
+        {
+          "path": "docs/COVERAGE.md",
+          "state": "updated",
+          "reason": "CP071partial/nativeFire/outside-rangecontrol/feedbackno118/error/correction, nextpreclockEOF; no gatepromotion."
+        },
+        {
+          "path": "docs/evidence/mixed-owner-power/README.md",
+          "state": "updated",
+          "reason": "CP071partial/nativeFire/outside-rangecontrol/feedbackno118/error/correction, nextpreclockEOF; no gatepromotion."
+        }
+      ]
     }
   ],
   "audits": [
@@ -142670,6 +143843,12 @@
       "state": "open",
       "canonical": "docs/PLAN.md",
       "reference": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/100"
+    },
+    {
+      "id": "KRE-034",
+      "state": "open",
+      "canonical": "docs/PLAN.md",
+      "reference": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/102"
     }
   ]
 }
