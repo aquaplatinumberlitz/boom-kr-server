@@ -2,7 +2,7 @@
 
 Baseline CP062/PR85 merge `46cbbfd1e9c2f5b01133fbff8d6f104c52d6ab0f`;
 KRE-026/[issue86](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/86).
-Codex solo/tự kiểm; [review waived](../checkpoints/review-waiver.json), tích hợp chờ PR.
+Codex solo/tự kiểm; [review waived](../checkpoints/review-waiver.json), tích hợp theo [PR87](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/87).
 [Contract/policy/giới hạn](../../PROTOCOL.md#report127-freshness),
 [gap](../../RESEARCH.md#gap-contact-state), [thứ tự tiếp](../../PLAN.md#current-order).
 Raw/script/capture/snapshot ở `local/research/codex/report127-freshness-r1/`.

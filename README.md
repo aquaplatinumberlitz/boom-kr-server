@@ -35,7 +35,7 @@ old/duplicate tại dispatcher và vẫn chạy hai chu kỳ hợp lệ. [Contra
 tiếp chain khác owner có control cách ô theo PLAN.
 
 CP062 đã merge [PR85](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/85) tại `46cbbfd`.
-CP063 tự kiểm/chờ PR, review độc lập [waived](docs/evidence/checkpoints/review-waiver.json).
+CP063 tự kiểm/tích hợp theo [PR87](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/87), review độc lập [waived](docs/evidence/checkpoints/review-waiver.json).
 Audit **AUD019/CP060**, periodic kế **CP064**.
 [Yêu cầu chủ dự án](docs/evidence/owner-directives/continuous-work.json): tiếp tục ngay việc kế trong
 PLAN sau mỗi checkpoint/commit/PR, không tự dừng/chờ nhắc.

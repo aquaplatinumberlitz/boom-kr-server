@@ -1,7 +1,7 @@
 {
   "schema": "kre-feature-index-v1",
   "build": "KR00967",
-  "as_of": "2026-11-02 JST / CP063; self-check pending PR; nextauditCP064",
+  "as_of": "2026-11-02 JST / CP063; self-check; integration via PR87; nextauditCP064",
   "sources": {
     "plan": "docs/PLAN.md",
     "contract": "docs/PROTOCOL.md",
@@ -1779,9 +1779,10 @@
             "server/probe_service.py",
             "docs/PROTOCOL.md#probe-service",
             "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/57",
-            "docs/PROTOCOL.md#report127-freshness"
+            "docs/PROTOCOL.md#report127-freshness",
+            "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/87"
           ],
-          "delivery": "branch_pending"
+          "delivery": "via_pr"
         },
         "integration": {
           "state": "partial",
@@ -2425,9 +2426,10 @@
             "server/probe_service.py",
             "docs/PROTOCOL.md#probe-service",
             "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/57",
-            "docs/PROTOCOL.md#report127-freshness"
+            "docs/PROTOCOL.md#report127-freshness",
+            "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/87"
           ],
-          "delivery": "branch_pending"
+          "delivery": "via_pr"
         },
         "integration": {
           "state": "partial",
@@ -2640,7 +2642,7 @@
         },
         "implementation": {
           "state": "partial",
-          "delivery": "branch_pending",
+          "delivery": "via_pr",
           "refs": [
             "server/probe_service.py",
             "docs/PROTOCOL.md#service-eof",
@@ -2655,7 +2657,8 @@
             "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/69",
             "docs/PROTOCOL.md#pickup-report-state",
             "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/73",
-            "docs/PROTOCOL.md#report127-freshness"
+            "docs/PROTOCOL.md#report127-freshness",
+            "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/87"
           ]
         },
         "integration": {
