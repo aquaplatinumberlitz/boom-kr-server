@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Index local synthetic fixtures measured through CP058; copy no assets."""
+"""Index local synthetic fixtures measured through CP059; copy no assets."""
 
 import argparse
 import hashlib
@@ -23,7 +23,7 @@ FIXTURES = {
     'flags': ('postwait-r1/flags62-status2.bin', None),
     'redirect': ('postwait-r1/redirect7-loopback.bin', None),
     'channel': ('postwait-r1/channel17-zero-arrays.bin', None),
-    'ready': ('bomb-position-r1/exvillage241.bin', 46),
+    'ready': ('cache-boundary-r1/compressed241.bin', 46),
     'roomlist_A': ('room-input-r1/room-list91-empty.bin', 49),
     'roomlist_B': ('duo-round-r1/room91-session1.bin', None),
     'channel_list': ('leave-r1/channel14-kind1.bin', None),
@@ -35,7 +35,7 @@ FIXTURES = {
     'slot_B': ('duo-round-r1/B110-unready.bin', 61),
     'guest_A': ('duo-round-r1/A-guest106-unready.bin', None),
     'guest_B': ('peer-duo-r1/B-guest106.bin', None),
-    'table': ('bomb-position-r1/exvillage238.bin', None),
+    'table': ('cache-boundary-r1/compressed238.bin', 67),
     'map': ('bomb-position-r1/exvillage117.bin', None),
     'floor': ('item-families-r1/floor582-kind2.bin', 73),
     'start': ('collision-r1/overlap121.bin', 73),
