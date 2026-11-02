@@ -1,7 +1,7 @@
 # Kế hoạch server giả lập KR 00967
 
 Nguồn chuẩn của project `boom-kr-server`; bản nhập từ plan đã được dsh1/dsh2 review tại `1eee46d`.
-Cập nhật02/11 JST (CP059): cache dynamic-map raw/nén/CRC đã giải; missing→write→freshprefixwarm được A/B chấp nhận/no528. [Scope](PROTOCOL.md#dynamic-cache-representation). Tiếp integration C/auth135 với fixture mới, gate giữ mở.
+Cập nhật02/11 JST (CP060): Cauth135/errors0/currentprofile và một vòngB/C đã native proof; [scope/errorcuối](PROTOCOL.md#current-profile-c). Tiếp hai vòngA/B/currentprofile, không gọi một vòng thay gate; AUD019/nextCP064.
 
 
 ### Mục tiêu, baseline và phạm vi
@@ -37,17 +37,17 @@ với client Rust không chứng minh có thể điều khiển client KR bằng
 
 ### Tiến độ hiện hành theo bằng chứng
 
-| Task/mốc | Trạng thái tại CP059 | Nguồn chuẩn |
+| Task/mốc | Trạng thái tại CP060 | Nguồn chuẩn |
 |---|---|---|
 | KRE-004/issue6 | Đã review/merge PR7 và đóng issue:recipe r1 đến local accept;không phải full K1 | [Wine r1](evidence/wine/README.md) |
 | Bootstrap reply | PR8 đã merge;debugger ProcessPatchreturn1,không ép success | [bootstrap evidence](evidence/bootstrap-wire/README.md) |
 | KRE-005a/issue9,R2 | PR10 đã merge:3 cold start cửa sổ/second accept;issue9 còn mở | [R2 evidence](evidence/wine-r2/README.md) |
 | WCP hai-reply | Run CP001 là lịch sử chưa C→S; CP006 đã đo request đầu trên copy tham số hóa | [PROTOCOL](PROTOCOL.md#wcp),[WCP evidence](evidence/wcp/README.md) |
-| KRE-005b/issue14 | CP006–058 đã merge; CP059 namedcache/profile tự kiểm/integration theo [PR79](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/79); fullround/authority/full auth còn mở | [Q-023](RESEARCH.md#q-023), [service](evidence/probe-service/README.md) |
+| KRE-005b/issue14 | CP006–059 đã merge; CP060 currentprofileC tự kiểm/integration theo [PR81](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/81); fullround/authority/full auth còn mở | [Q-023](RESEARCH.md#q-023), [service](evidence/probe-service/README.md) |
 | K0/K1 | Chưa nghiệm thu toàn gate;Windows vanilla/control ownership và các điều kiện còn thiếu giữ mở | Gate dưới,[Q-022](RESEARCH.md) |
-| K2a/K2 | Primitive/WCP từng phần; request auth đã capture/native replay, phản hồi lỗi đã dispatch; full codec/reconnect và gate chưa pass | [PROTOCOL](PROTOCOL.md#login-auth),[Q-023](RESEARCH.md#q-023) |
-| K3 | Copy chẩn đoán đã vẽ UI sảnh và đóng notice; chưa nghiệm thu identity/cache/codec đủ gate | [Contract sảnh](PROTOCOL.md#channel-lobby) |
-| K4–K7 | CP039–040 có hai vòng statepeer/result và phục hồi EOF; CP041–043 đo stale158/165/159; CP044 có timer abort và B/C mới bom/death/result/return. CP047 byte khóa, CP049 guard124 và CP050 service EOF/cleanup/hold99 đã đo hẹp; CP051 đã có peer mới B/C trên service; membership tổng quát/variants/toàn reset/authority chưa nghiệm thu. Chưa K6a/LAN/Internet | [Giới hạn lifecycle](PROTOCOL.md#abort-timer) |
+| K2a/K2 | Primitive/WCP, CP057stream native/model và CP058–060authcallback137/135/errors0 đã có; fullcodec/authauthority/reconnect và gate chưa pass | [PROTOCOL](PROTOCOL.md#login-auth),[Q-023](RESEARCH.md#q-023) |
+| K3 | Copy đã vẽUI/đóngnotice, A/B/Cprofile đọc sạch và mộtnamedcachewarm được nhận; identityauthority/toàncache/codec/K3 chưa nghiệm thu | [Contract sảnh](PROTOCOL.md#channel-lobby) |
+| K4–K7 | CP039–040 có hai vòng statepeer/result và phục hồi EOF; CP041–043 đo stale158/165/159; CP044 có timer abort và B/C mới bom/death/result/return. CP047 byte khóa, CP049 guard124 và CP050 service EOF/cleanup/hold99 đã đo hẹp; CP051–054 có peer mới B/C/setupEOF, CP056reportguard và CP060newprofileC/B-Ccycle; membership tổng quát/variants/toàn reset/authority chưa nghiệm thu. Chưa K6a/LAN/Internet | [Giới hạn lifecycle](PROTOCOL.md#abort-timer) |
 
 <a id="current-order"></a>
 ### Thứ tự công việc hiện hành
@@ -60,12 +60,12 @@ KRE-005b/issue14 vẫn mở. Các bước dưới là **thứ tự ưu tiên**, 
 xong checkpoint/commit/PR thì chuyển ngay việc kế tiếp trong thứ tự này, không tự dừng/chờ nhắc.
 Một blocker chỉ kết thúc nhánh đo tương ứng; ghi rõ rồi tiếp việc độc lập có thể làm, không tự đóng gate.
 
-1. **KR-S001/L001 — integration fixture mới với C:** CP058 authA/B sạch và CP059 namedcache
-   [missing→write→warm](PROTOCOL.md#dynamic-cache-representation) đã đo. C auth135byte hiện native-only;
-   tái dùng CP054/051 admission/ID3/ownmatch/BStart recipe, **không** RE lại EOF/107/110 hoặc chạycontrol
-   cũ. Dùng profile exporter mới, log authC/cursor/errors/actual6name rồi B/C Start/bom/statepeer/result/
-   return trong cùng run. Đây là integration mới cần cho fixtures, không accountresume/general membership.
-   CP060 kèm audit định kỳ; sau đó gom acceptance hai client/hai vòng với currentprofile theo gate.
+1. **KR-S001/KR-X002 — hai vòng với currentprofile:** CP060 đã có [C135/errors0/B-Ccycle](PROTOCOL.md#current-profile-c).
+   Tiếp A/Bcùngidentity/socket qua2vòng trên exporter hiện hành: nativeauth/cache/actualpickup/currentkey,
+   bom/statepeer/result/return và resetcounter/stat/claim/ticket trong cùngrun. Tái dùng CP048/055/056
+   two-cyclepath, inputdelay hữu hạn đã đo; không RE lại authstring/cacheCRC/Cadmission/EOFcontrol.
+   Ghi rõ thiếu gì so K6a (đồng thuận/movement/tranhitem/reset/transport), không tự đóng gate từ2rank.
+   Sau cùng-run consistency mới mở LAN/hardening theo gate; blocker thực thì trace đúngnhánh tiếp.
 2. **KR-B003/KR-F006 — nợ có giới hạn:** [CP057](PROTOCOL.md#codec-stream-boundaries) đã đo stream/
    seq/bounds trong model, không mở lại76split hoặc cấp buffer lớn chỉ để vượt allocationguardFFFFFFFF.
    Full modes/prefix guard/live reset, distance/auth/transport/kim-cứu của reportguard giữ trong RESEARCH;

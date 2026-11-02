@@ -1,0 +1,102 @@
+{
+  "id": "AUD019",
+  "trigger": "periodic",
+  "completed_through": "CP060",
+  "recorded_utc": "2026-11-02T12:16:31.924423+00:00",
+  "auditor": "Codex manual self-audit; independent review waived by owner",
+  "read_files": [
+    "README.md",
+    "docs/PLAN.md",
+    "docs/PROTOCOL.md",
+    "docs/RESEARCH.md",
+    "docs/features.json",
+    "docs/COVERAGE.md",
+    "server/README.md",
+    "docs/evidence/codec-boundaries/README.md",
+    "docs/evidence/auth-profile/README.md",
+    "docs/evidence/auth-profile/field-shape.json",
+    "docs/evidence/cache-boundary/README.md",
+    "docs/evidence/current-profile-c/README.md",
+    "local/research/codex/codec-boundaries-r1/verification.json",
+    "local/research/codex/auth-profile-r1/verification.json",
+    "local/research/codex/cache-boundary-r1/verification.json",
+    "local/research/codex/cache-boundary-r1/ida/representation.json",
+    "local/research/codex/cache-boundary-r1/cache-wire-delta.json",
+    "local/research/codex/current-profile-c-r1/reuse-question.json",
+    "local/research/codex/current-profile-c-r1/verification.json",
+    "local/research/codex/current-profile-c-r1/auth-reads.json",
+    "local/research/codex/current-profile-c-r1/current-C-native-names.json",
+    "local/research/codex/current-profile-c-r1/lifecycle-summary.json",
+    "local/research/codex/current-profile-c-r1/actor-fields.json",
+    "local/research/codex/current-profile-c-r1/measurement-notes.json",
+    "local/research/codex/current-profile-c-r1/current-C/run.json",
+    "local/research/codex/current-profile-c-r1/current-C/client.log",
+    "local/research/codex/current-profile-c-r1/current-C/client-B.log",
+    "local/research/codex/current-profile-c-r1/current-C/client-C.log"
+  ],
+  "method": "Đọc README→PLAN→PROTOCOL theo currentcodec/auth/cache/integration/lifecycle/authority và giới hạn→RESEARCH→evidence CP057–060. Đối chiếu raw portions authcursor/errors/ID/name6/cacheload/round/Bstate/rankreturn và finalerror timestamps với source/report hashes; không scriptpass thay semantic audit. CP057emulation/socketpair khác runtime;CP058stringcorrection/56fields vàCP059preinflate representation khác plaintext đã kiểm nguồn. CP060 reused oldEOFsetup chỉ là cách đưa C vào, không newcontrol/authority. Independentreviewwaived khôngapproval.",
+  "findings": [
+    {
+      "id": "F1",
+      "stale": "PLAN progressK2/K3 dừng phản hồi lỗi/UI, chưa nêu cleanauthA/B/C và namedcacheproof; authorityheader dừng CP056.",
+      "correction": "Cập nhật currenttable bằng nguồnCP057/058–060, giữ authauthority/fullcodec/toàncache/K3 chưa nghiệmthu; authorityheaderCP060 không tựmở rộng contracts.",
+      "fixed_in": [
+        "docs/PLAN.md",
+        "docs/PROTOCOL.md"
+      ]
+    },
+    {
+      "id": "F2",
+      "stale": "CP058/059 source còn C135nativeonly và nextcache/Cintegration. Nay current-C đãnativecallback/name/oneBCcycle.",
+      "correction": "Giữ snapshotlimitation trướcCP060, thêm currentpointers từevidence/protocol/serverREADME;currentRESEARCH/catalog source liên kết runC mới. Không backfillruntime vào recordCP058/059 hoặc ápC3 thành accountresume.",
+      "fixed_in": [
+        "docs/PROTOCOL.md",
+        "docs/evidence/auth-profile/README.md",
+        "docs/evidence/cache-boundary/README.md",
+        "server/README.md",
+        "docs/RESEARCH.md",
+        "docs/features.json",
+        "docs/COVERAGE.md"
+      ]
+    },
+    {
+      "id": "F3",
+      "stale": "Verifier đầu đòi serviceerrors0, nhưng finalraw current-C có Bconnection8reset; nguycơ bỏlỗi hoặc gọi runerrorfree vì gameplayđãxong.",
+      "correction": "Giữexacterrorraw, so Bclose sau roomrefresh/finalphoto và<1s trướcend, C EOFngaytrước. Checkchuyển sang exactknownerror+chronology, không bỏassertionvôcớ. Evidence/contract/README nêulỗi, không gọi teardown là gameplayrecoveryproof.",
+      "fixed_in": [
+        "README.md",
+        "docs/PROTOCOL.md",
+        "docs/evidence/current-profile-c/README.md",
+        "local/research/codex/current-profile-c-r1/measurement-notes.json",
+        "local/research/codex/current-profile-c-r1/verify.py"
+      ]
+    },
+    {
+      "id": "F4",
+      "stale": "Newcleanfixture/defaultnames/cacheCRC dễ bị coi fullauth/defaultserver, cachewarm còn servicegửi238later; nativewrap/resetmodel dễ bị gọi livereconnect.",
+      "correction": "Giữ numeric0/names/roster/rank/fuse là design;cacheacceptedbefore238/norequest528 chỉnamedconsumer,CP057syntheticreset/prefixguardoff/fullmodelgap tách. CP0601BCround không2fullround/K6a/LAN/Internet; sourceorig preserved/copyoffline.",
+      "fixed_in": [
+        "docs/PROTOCOL.md",
+        "docs/PLAN.md",
+        "docs/RESEARCH.md",
+        "docs/evidence/current-profile-c/README.md"
+      ]
+    },
+    {
+      "id": "F5",
+      "stale": "Remainingtask Cintegration đãđo nhưng nếu để nextactive sẽ lặpEOF/Cauth thay acceptance currentpair.",
+      "correction": "PLAN ưu tiên2vòngA/B/currentprofile/nativekey/item/bomb/state/result/reset cùngrun; recordNEXT-CURRENT-PROFILE-Csuperseded vànextcurrentpair mới. Chưa tựđónggate/certifymovement/tranhitem/fullreset từ2rank. AuditCP060 hoànthành, nextCP064, AUD018 không resetcadence.",
+      "fixed_in": [
+        "docs/PLAN.md",
+        "docs/RESEARCH.md",
+        "docs/evidence/checkpoints/manifest.json",
+        "README.md"
+      ]
+    }
+  ],
+  "remaining": [
+    "CurrentprofileA/B2playedcycles/same-runconsistency stillnext; actualmovementtwoway/raceitem/transport/reset acceptance dimensions must beexplicit beforeK6a. Cnewidentitynotaccountresume/generalroster.",
+    "Fullauthentication/fieldsemantics/count2/features/othercachefamily/corrupt/reconnect/vanilla/fullcodec/validator/distance/kim-cứutransitions/LAN/Internet remainopen perRESEARCH andgates.",
+    "CP060selfcheckpendingPR,reviewwaived; noindependentapproval. CP001–059/AUD001–018 preserved; lastperiodicCP060/AUD019,nextCP064."
+  ]
+}

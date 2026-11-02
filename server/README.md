@@ -121,10 +121,15 @@ Policy chỉ fixture Roller hiện hành; rescue/selfescape chưa hỗ trợ, ph
 Không originalserver stateauthority/auth/distance/TCP replay; không dùng marker làm enum native.
 
 CP058: exporter41fixture chuyển auth_A/B/C sang [profile count1 mới](../docs/PROTOCOL.md#auth-profile).
-A/B callback137/137/errors0 và actual6 tên riêng đã đo; C135byte mới native/emulation, chưa C runtime.
+Tại CP058 A/B callback137/137/errors0/actual6 tên riêng đã đo; C135 mới native/emulation.
+CP060 bên dưới bổ sung C runtime, không sửa phạm vi phép đo cũ.
 Profile JSON cũ giữ hash/path cũ, phải export sang file mới để dùng fixture mới. Service/codec không đổi;
 values0/emptylist vẫn design, không publicauth/account/cache/vanilla/gateproof.
 
 CP059: exporter đổi ready241/table238 sang [cặp compressed/checksumkhớpcache](../docs/PROTOCOL.md#dynamic-cache-representation).
 A/B missing→nativewrite→freshprefixwarm/69bytes/loader1/no528;39alias khác giữ nguyên, oldprofileJSONs giữ.
 Không fullcache/reconnect/auth/profile/gate. Tiếp runtimeC với bộfixture mới, không đo lại raw/nénCRC.
+
+CP060: [Ccurrentprofile](../docs/PROTOCOL.md#current-profile-c) đã135/errors0/actual6KRNew/ID3 và1B/Ccycle,
+không newcode/protocol. Một Breset cuối controller sau roomrefresh được giữ, không errorfreerun/generalrecovery.
+Tiếp2vòngA/B/currentprofile, không Caccountresume/fullmembership/gate hoặc toànauth/cache.
