@@ -1,6 +1,6 @@
 # KR 00967 — contract tương thích client gốc
 
-Revision kr-legacy-contract-r1; cập nhật03/11/2026 JST (CP067).
+Revision kr-legacy-contract-r1; cập nhật03/11/2026 JST (CP068).
 **Contract có bằng chứng từng phần; chưa nghiệm thu full codec K2**.
 Lộ trình và thứ tự task chỉ giữ ở [REWRITE_PLAN — KRE](PLAN.md).
 Đây là contract của repo server KR. ADR0009 của bản viết lại là nguồn lịch sử để so sánh;
@@ -1958,16 +1958,16 @@ liệt kê và phân biệt với nguyên bản trong mọi demo.
 <a id="authority"></a>
 ### Authority matrix hiện hành và gate review
 
-Bảng này tổng hợp bằng chứng từng phần đến CP065; chưa phải toàn contract server gốc. Mỗi hàng khi
+Bảng này tổng hợp bằng chứng từng phần đến CP068; chưa phải toàn contract server gốc. Mỗi hàng khi
 triển khai phải bổ sung riêng **creator, simulator, validator, broadcaster, peer-editable state**, với
 locator/trace và trạng thái từng ô; những vai trò không nêu dưới đây hiện `unknown` cho KR.
 
 | Hành vi | Đã thấy trong KR | Phần cần đóng trước demo dùng hành vi đó |
 |---|---|---|
 | Movement | CP027 hai client thấy movement hai chiều; [phạm vi](#peer-duo);183 vẫn chỉ ghost | Full schema input/update/correction, validator và quyền sửa vị trí của peer |
-| Bomb place/ID | CP027 hai owner/ID chung1..4 tạo trên cả hai client; [phạm vi](#peer-duo); lặp/cũ CP025 | CP041 có [stale158/ID reuse và fence job local](#round-generation), CP043 có [old159/serial reuse](#late-bomb-confirm); allocator/rollover/concurrent/race/toàn generation và authority ngoài policy thử còn mở |
+| Bomb place/ID | CP027 hai owner/ID chung1..4 tạo trên cả hai client; [phạm vi](#peer-duo); lặp/cũ CP025 | CP041 có [stale158/ID reuse và fence job local](#round-generation), CP043 có [old159/serial reuse](#late-bomb-confirm); CP067 [C2Skey/serialguard](#c2s118-admission) loại duplicate/oldbody hẹp; allocator/rollover/concurrent/race/toàn generation/authority còn mở |
 | Explode/chain | CP033 một owner; CP064 [hai owner/cách hai ô](#mixed-owner-chain) chỉ xử lý từng timer; liền kề bị blocker bố trí | Mixed-owner liền kề/ba bom/vật cản/race/generation và authority server gốc còn thiếu |
-| Block destroy/item reveal | CP032 list2→FixedBox,158→hai view vỡ/reveal→124/165/stat; report142 từ cả hai; [contract](#hidden-items) | Drop algorithm/server validator, variants/chain và phép loại transport riêng còn thiếu |
+| Block destroy/item reveal | CP032 nativecontract; CP068 [currentservice/list2/reportgate/effect/reset](#current-hidden-items) cảhai view | Drop algorithm/server validator, variants/chain và phép loại transport riêng còn thiếu |
 | Item placement/pickup | CP030 nhặt/tranh index; CP031/032 stat/itemẩn; CP045 [bảng nhóm/Roller/MaxPower hai view/reset](#item-families) | CP042 có [old165/index reuse](#item-generation); runtime tại max, KRspeed→px/s/TTL/activevariants, drop/toàn124validator/generation/reset còn thiếu; CP062 [winner đảo trên actual tranh index](#current-pickup-race) đã có scope riêng |
 | Trap/death | CP029/036; CP037 kim và tranh chấp cứu/diệt; [kim](#needle-selfescape), [precedence](#contact-precedence) | CP063 [guard stale/duplicate](#report127-freshness) là policy hẹp; fullvalidator/firstseen/forgedforward/actualTCP/generation/variants/result21 vẫn thiếu |
 | Result/reset | CP039 hai vòng statepeer/result/21/return và reset field hẹp; CP044 [timer ở EOF và vòng B/C mới](#abort-timer) | CP041 có [payload cũ khi ID reuse](#round-generation); arbitration/toàn generation/entity/timer/peer/seq không rò vẫn mở; phân biệt run chờ sai origin với ca hoàn tất |
@@ -2501,8 +2501,8 @@ cũng được giữ riêng là lỗi trước Wine, không clientruntimefailure
 
 Ba ca chỉ một lượt bom, không hai trận/reset/fullmatch/K6a/LAN/authority gốc. CP033 chain một owner
 vẫn nguồn hợp lệ; mixed-owner liền kề/ba bom/vật cản/list3 còn mở. Tránh lặp vô hạn input trên overlap
-profile: [PLAN](PLAN.md#current-order) tiếp distinct spawn bằng nguồn map/index đã có, chỉ mở lại
-mixed-owner chain khi bố trí native đủ điều kiện hoặc probe ổn định hơn.
+profile: CP065 đã [tích hợp distinct spawn](#distinct-spawn). Chỉ mở lại mixed-owner chain khi bố trí
+native đủ điều kiện hoặc probe ổn định hơn; thứ tự hiện hành chỉ ở [PLAN](PLAN.md#current-order).
 
 <a id="distinct-spawn"></a>
 ### Spawn riêng trên profile service hiện hành — CP065
@@ -2552,10 +2552,8 @@ transportcausality/actorauth/distancevalidator/fullreset/K6a/LAN/Internet. Delay
 không suy productionlatency hoặc TCP replay admission. Wrapperdiscardqueued165khácgeneration chưa
 runtime riêng, policytiming/fuse/rank/placement/authfixture vẫn design.
 
-Điểm tiếp theo [PLAN](PLAN.md#current-order): C→S118 admission. Source service hiện kiểm boundowner/
-flag nhưng chưa so field0 với roundkey hoặc chặn duplicate report trước cấp ID/timer; chưa có control
-runtime cho hậu quả. Không dùng oldS→C159/158 CP025/041/043 thay proof C2S admission hoặc mang
-k124 sang118 chỉ vì giá trị giống; đối chiếu writer/capture và minimalcontrol trước khi chọn policy.
+Tại CP066, C→S118 admission còn thiếu; [CP067](#c2s118-admission) đã đo control/fix, không coi
+oldS→C159/158 hoặc k124 là proofrequest auth. Thứ tự hiện hành chỉ ở PLAN.
 
 <a id="c2s118-admission"></a>
 ### Admission request đặt bom118 — CP067
@@ -2582,5 +2580,30 @@ Guardrun cùngprofile/3injection:loại2duplicate +1oldkey trướcID/jobs/159; 
 đượcID1/2, nativeentity cảhai, hai bom/state/result/return/refresh/errors0.64regression gồmfullkey+256/
 newseqsamebody/conflict/perowner/roundreset/nonmonotonic/hardlimits; wrapnumeric chỉpolicytest,
 không runtimeallocator/serialwrapproof. Chưa cap/geometry/actorstate/fullvalidator/auth/forgednewserial/
-firstfieldconstructor/fullreset/K6a/LAN. Next [PLAN](PLAN.md#current-order) tích hợp block/list2/reveal
-trên currentservice theo CP032, không mở mọi inputrace trước Battle cơ bản.
+firstfieldconstructor/fullreset/K6a/LAN. Khoảng trống currenthiddenitems của CP067 đã được đo ở
+[CP068](#current-hidden-items); thứ tự hiện hành chỉ ở [PLAN](PLAN.md#current-order).
+
+<a id="current-hidden-items"></a>
+### Item ẩn trong currentservice — CP068
+
+[Recipe/hash/partial/retry/audit](evidence/current-hidden-items/README.md). **kr_runtime/confirmed**
+cho integration Winecopy, **design** cho catalog/reportgate. Tái dùng CP032exact582/counts0/2/0/
+FixedBox/revealconsumer/142/124165/nativeeffects/knownUI; không thêm thân hàm native/patch hoặc RE lại
+receiver/IDs/clock. Currentprofile giữ distinctspawn/cleanauth/cache/key+serial/reportguards.
+
+`hidden_items` là catalog optional riêng với floor`items`, merged vào Room claimcatalog; duplicateindex
+fail.124 kiểmcurrentkey rồi hiddeneligibility trướcclaim;142 có7byte đã phục hồi, kiểmboundselectedslot,
+auxFFFFFFFF và knowncell. Sau ít nhấtmộtcurrent158 đã gửi, report mởindex tươngứng, duplicateidempotent,
+Startreset. Không forward142, không servercollision/replayauth; old/forged142saucurrent158 vẫn ngoài
+policy, currentblast bất kỳ không chứng minh ô báo đãphá. Floorprofilekhônghidden giữbehavior.
+
+Run đầu2cyclesreveal/result chỉ1pickup27vòng2, khôngfulleffects. Retry normalUIroute có haiactual27/28
+mỗi vòng,142 từhairole trướcpickup. Nativebothviews FixedBox(tile,index,kind)→revealcommit CGOItem→
+165lookupsamepointer; capacity/FireA1/1→2/1→2/2, reset1/1vòng2;4actual118/159158/power1→2/serial0,28,
+Astate1bothbefore175/hairesult/return/refresh/errors0. Không dùng cursor/ảnh hoặc runpartial thayproof.
+Nativeframer/blob/11ED590/gettermodel tách khỏi runtime; counts0/2/0/inner26 kiểm, chưa mọilist2/mode.
+
+Exporter `--item-layout hidden` giữ exactCP032fixture27/28 vàcatalog;defaultfloor giữ,41alias chỉfloor
+khác. Đây là deterministicfixtureplacement, không thuật toán drop gốc, không tựmigrate profilecũ.
+72serverregressions kiểmguardnegative/reset/forgerylimit; actualcapturebench khôngruntime mới.
+Chưafullvalidator/reset/auth/K5/K6a/LAN/Internet. Nghiệm thu profile dùnghànhvi nào vẫn theo PLAN/gates.

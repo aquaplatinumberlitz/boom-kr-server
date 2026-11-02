@@ -58,6 +58,8 @@ def main():
     parser.add_argument('--out', type=Path, required=True)
     parser.add_argument('--spawn-layout', choices=['distinct', 'overlap'], default='distinct',
                         help='known map spawn0/1, or intentional overlap for contact/race RE')
+    parser.add_argument('--item-layout', choices=['floor', 'hidden'], default='floor',
+                        help='known floor Roller, or two known CP032 items in FixedBox tiles')
     args = parser.parse_args()
     local = Path(__file__).resolve().parents[1] / 'local'
     root = args.source_root.resolve(strict=True)
@@ -67,10 +69,18 @@ def main():
     result = {'schema': 'kr-probe-profile-v1', 'source': 'emu_choice',
               'limits': 'Synthetic local diagnostic fixtures, not recovered full auth or original server.',
               'items': [{'index': 17, 'row': 4, 'column': 3, 'kind': 2}],
-              'initial_key': 12345, 'spawn_layout': args.spawn_layout, 'fixtures': {}}
+              'initial_key': 12345, 'spawn_layout': args.spawn_layout,
+              'item_layout': args.item_layout, 'fixtures': {}}
     fixtures = dict(FIXTURES)
     if args.spawn_layout == 'overlap':
         fixtures['start'] = ('collision-r1/overlap121.bin', 73)
+    if args.item_layout == 'hidden':
+        fixtures['floor'] = ('hidden-item-r1/hidden582.bin', 73)
+        result['items'] = []
+        result['hidden_items'] = [
+            {'index': 27, 'row': 2, 'column': 3, 'kind': 0},
+            {'index': 28, 'row': 3, 'column': 2, 'kind': 1},
+        ]
     for name, (relative, sequence) in fixtures.items():
         path = (root / relative).resolve(strict=True)
         if not path.is_relative_to(root):
