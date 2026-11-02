@@ -1,7 +1,7 @@
 # Kế hoạch server giả lập KR 00967
 
 Nguồn chuẩn của project `boom-kr-server`; bản nhập từ plan đã được dsh1/dsh2 review tại `1eee46d`.
-Cập nhật02/11 JST (CP062): actualtwo124/sameindex/winnerA→B/one165effect/reset trên currentservice đã đo; [scope](PROTOCOL.md#current-pickup-race). Tiếp stale/duplicate127 state/result, không quét mọirace hoặc đóng K6a.
+Cập nhật02/11 JST (CP063): [report127 guard](PROTOCOL.md#report127-freshness) có control/fix trên copy Wine, dispatcher replay tách với TCP. Tiếp chain khác owner/control cách ô; audit định kỳ kế CP064, không đóng K6a.
 
 
 ### Mục tiêu, baseline và phạm vi
@@ -37,13 +37,13 @@ với client Rust không chứng minh có thể điều khiển client KR bằng
 
 ### Tiến độ hiện hành theo bằng chứng
 
-| Task/mốc | Trạng thái tại CP062 | Nguồn chuẩn |
+| Task/mốc | Trạng thái tại CP063 | Nguồn chuẩn |
 |---|---|---|
 | KRE-004/issue6 | Đã review/merge PR7 và đóng issue:recipe r1 đến local accept;không phải full K1 | [Wine r1](evidence/wine/README.md) |
 | Bootstrap reply | PR8 đã merge;debugger ProcessPatchreturn1,không ép success | [bootstrap evidence](evidence/bootstrap-wire/README.md) |
 | KRE-005a/issue9,R2 | PR10 đã merge:3 cold start cửa sổ/second accept;issue9 còn mở | [R2 evidence](evidence/wine-r2/README.md) |
 | WCP hai-reply | Run CP001 là lịch sử chưa C→S; CP006 đã đo request đầu trên copy tham số hóa | [PROTOCOL](PROTOCOL.md#wcp),[WCP evidence](evidence/wcp/README.md) |
-| KRE-005b/issue14 | CP006–061 đã merge; CP062 currentitemrace tự kiểm/tích hợp theo [PR85](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/85); fullround/authority/full auth còn mở | [Q-023](RESEARCH.md#q-023), [service](evidence/probe-service/README.md) |
+| KRE-005b/issue14 | CP006–062 đã merge; CP063 report127 guard tự kiểm/tích hợp theo [PR87](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/87); fullround/authority/full auth còn mở | [Q-023](RESEARCH.md#q-023), [service](evidence/probe-service/README.md) |
 | K0/K1 | Chưa nghiệm thu toàn gate;Windows vanilla/control ownership và các điều kiện còn thiếu giữ mở | Gate dưới,[Q-022](RESEARCH.md) |
 | K2a/K2 | Primitive/WCP, CP057stream native/model và CP058–060authcallback137/135/errors0 đã có; fullcodec/authauthority/reconnect và gate chưa pass | [PROTOCOL](PROTOCOL.md#login-auth),[Q-023](RESEARCH.md#q-023) |
 | K3 | Copy đã vẽUI/đóngnotice, A/B/Cprofile đọc sạch và mộtnamedcachewarm được nhận; identityauthority/toàncache/codec/K3 chưa nghiệm thu | [Contract sảnh](PROTOCOL.md#channel-lobby) |
@@ -60,12 +60,13 @@ KRE-005b/issue14 vẫn mở. Các bước dưới là **thứ tự ưu tiên**, 
 xong checkpoint/commit/PR thì chuyển ngay việc kế tiếp trong thứ tự này, không tự dừng/chờ nhắc.
 Một blocker chỉ kết thúc nhánh đo tương ứng; ghi rõ rồi tiếp việc độc lập có thể làm, không tự đóng gate.
 
-1. **KR-F009/X002/S001 — report127 stale/duplicate:** CP061currentpair và CP062[actualitemrace](PROTOCOL.md#current-pickup-race)
-   đã có same-runproof. Tiếp điểm có thể làm sai state/result: service127 chưa có freshness/duplicate
-   rule; prefix14byte đã có tick từ12580B0 và fieldcuối actor/v35C, **không** mang nguyên k124.
-   Đối chiếu CP023/029/055/cachedwriter/VN trước, kiểm actualperconnectionorder và một oldreportcontrol
-   vòng2 sau marker mới; chỉ chọn guard có nguồn và scope policy rõ, không áp ms/threshold hoặc coi
-   logicaltick là auth. Bypassdispatcher phải ghi riêng với realTCP. Không lặp itemrace/t/k/auth/cache.
+1. **KR-F005/S001 — chain khác owner:** CP063 [guard127](PROTOCOL.md#report127-freshness) đã đo control/fix
+   trong scope dispatcher/currentprofile; không mở mọi biến thể replay. Tiếp [gap chain](RESEARCH.md#gap-blast-block-chain):
+   tái dùng CP033/helper/state/pointer mapping và service timer hiện hành; một cặp actual118 A/B liền kề,
+   control cách hai ô, theo đúng vị trí/power đã nhận. Kiểm hai view xử lý secondary trong **callback158
+   của root**, trước timer riêng của secondary; không dùng sốcallback/ảnh đơn lẻ làm chainproof.
+   Chỉ mở static/body còn thiếu nếu native route khác. Không RE lại auth/cache/t/k/itemrace.
+   Hoàn tất CP064 kèm audit định kỳ README→PLAN→PROTOCOL→RESEARCH→evidence/raw.
 2. **KR-B003/KR-F006 — nợ có giới hạn:** [CP057](PROTOCOL.md#codec-stream-boundaries) đã đo stream/
    seq/bounds trong model, không mở lại76split hoặc cấp buffer lớn chỉ để vượt allocationguardFFFFFFFF.
    Full modes/prefix guard/live reset, distance/auth/transport/kim-cứu của reportguard giữ trong RESEARCH;

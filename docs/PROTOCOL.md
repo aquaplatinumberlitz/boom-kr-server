@@ -1,6 +1,6 @@
 # KR 00967 — contract tương thích client gốc
 
-Revision kr-legacy-contract-r1; cập nhật02/11/2026 JST (CP062).
+Revision kr-legacy-contract-r1; cập nhật02/11/2026 JST (CP063).
 **Contract có bằng chứng từng phần; chưa nghiệm thu full codec K2**.
 Lộ trình và thứ tự task chỉ giữ ở [REWRITE_PLAN — KRE](PLAN.md).
 Đây là contract của repo server KR. ADR0009 của bản viết lại là nguồn lịch sử để so sánh;
@@ -2442,3 +2442,36 @@ discard khácvòng nhưng ca discard chưa runtime riêng. Không thay firstarri
 va chạm tuyệt đối; normalUIbarrier không chứng minh physics cùngtick. CP030oldharness và CP062current
 service là hai scope có liên kết, không nâng mọi duplicate/stale/transport/mode biến thể. Bước tiếp theo
 [PLAN](PLAN.md#current-order) là khoảng trống report127 stale/duplicate đang ảnh hưởng state/result.
+
+<a id="report127-freshness"></a>
+### Admission report127 theo kết nối — CP063
+
+[Recipe/hash/control](evidence/report127-freshness/README.md), [giới hạn còn mở](RESEARCH.md#gap-contact-state).
+Tái dùng [writer/prefix14](#round-result), [CMainSystem logicalcounter](#pickup-tick), nativeframer/
+state/stat và currentprofile; không thêm thân hàm native hoặc patch. Đối chiếu64 report active ở
+CP061–062: tick không giảm trên từng kết nối qua hai Start, có **cùngtick/khácbody/tọa độ**.
+Native getter kiểm prefix14 cả các report này và subtype34 ngoài active; không giải toàn tail39/34.
+Field u32 tại offset6 là tick; field cuối actor/v35C **không** là k124. Không áp milliseconds hay clock chung hai peer.
+
+**Đối chứng runtime:** wrapper giữ nguyên exact frame/body17/19/21 do client thật gửi ở vòng1 rồi
+replay tại dispatcher sau actual39 của cùng role ở vòng2. Baseline nhận cả ba; old17/19 đặt marker
+vòng2/phát170. Trước175 vòng2 native view A đọc actorA state0, viewB đọc state1; không có actualbom/
+actual19 vòng2. Duplicate19 cùng vòng cũng thay deathreport/phát170 lần nữa. Đây là can thiệp một
+nhóm replay, chưa cô lập đóng góp từng subtype; không khẳng định old21 là nguyên nhân của rank.
+**Dispatcher replay bỏ qua socket/framer/sequence admission**, không chứng minh actual TCP replay lọt.
+Run đầu clientB dừng login local trước phép thử giữ riêng, không tính là đối chứng thành công.
+
+**Policy mới là design của emulator**, không phục hồi server gốc: sau prefix/slot và supported trap
+validation, giữ `report127_cursor` riêng trên channel connection, không xóa ở Start. Với tick cũ,
+`delta=(tick−last)&FFFFFFFF`; delta>=80000000 bị loại, gồm half-range mơ hồ. Delta0 cho body khác
+đi tiếp; đúng bodySHA đã nhận ở tick hiện tại bị loại, kể cả wire sequence khác. Tick tiến thì thay
+nhóm bodySHA. Không lấy124t đã chốt ở pending record hoặc tick peer khác làm watermark.
+Report bị loại vẫn log lý do, không sửa marker/death, không phát170 và không được dùng làm21 hoàn tất vòng.
+
+Run guard cùng recipe: **3 old replay +6 exact duplicate bị loại**, tất cả report actual trong active
+được nhận; hai actual124/165/Roller5→6/reset, hai bom/17/19→170/21, nativeAstate1 cảhai view trước175,
+hai kết quả/return/roomrefresh. Không suy toàn reset/K5/K6a từ hai chu kỳ này.
+Clock wrap/half-range và freshconnection chỉ regression policy, không runtime wrap/reconnect proof.
+Guard không nhận biết old report lần đầu khi thiếu anchor, payload sửa/tick tăng giả, actor/distance/auth,
+reset counter cùng socket hoặc khoảng cách>=nửa miềnu32. Originalvalidator/đơn vị thời gian/transport
+replay admission còn unknown; không dùng reportguard như authority state. Bước tiếp ở [PLAN](PLAN.md#current-order).

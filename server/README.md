@@ -133,3 +133,8 @@ Không fullcache/reconnect/auth/profile/gate. Tiếp runtimeC với bộfixture 
 CP060: [Ccurrentprofile](../docs/PROTOCOL.md#current-profile-c) đã135/errors0/actual6KRNew/ID3 và1B/Ccycle,
 không newcode/protocol. Một Breset cuối controller sau roomrefresh được giữ, không errorfreerun/generalrecovery.
 Tiếp2vòngA/B/currentprofile, không Caccountresume/fullmembership/gate hoặc toànauth/cache.
+
+CP063 thêm [admission report127](../docs/PROTOCOL.md#report127-freshness): cursor tick/bodySHA riêng
+trên kết nối, giữ qua Start; old/exactduplicate không sửa marker/death/phát170 hoặc góp21 vào result.
+Policy design hẹp, không là authentication hoặc toàn validator. Regression57case; control/fix Wine dùng
+dispatcher replay, actualTCP replay admission vẫn mở. Recipe/giới hạn ở link contract/evidence.
