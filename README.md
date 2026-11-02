@@ -35,7 +35,7 @@ chỉ winner được cộng stat, hai view khớp. [Scope/deliverydelay](docs/P
 tiếp stale/duplicate report127 theo PLAN.
 
 CP061 đã merge [PR83](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/83) tại `c70a4e2`.
-CP062 tự kiểm/chờ PR, review độc lập [waived](docs/evidence/checkpoints/review-waiver.json).
+CP062 tự kiểm/tích hợp theo [PR85](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/85), review độc lập [waived](docs/evidence/checkpoints/review-waiver.json).
 Audit **AUD019/CP060**, periodic kế **CP064**.
 [Yêu cầu chủ dự án](docs/evidence/owner-directives/continuous-work.json): tiếp tục ngay việc kế trong
 PLAN sau mỗi checkpoint/commit/PR, không tự dừng/chờ nhắc.

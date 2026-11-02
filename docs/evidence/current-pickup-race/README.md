@@ -2,7 +2,7 @@
 
 Baseline CP061/PR83 merge `c70a4e226d99ab623d9cc2ccba782d8a2f2ffb32`;
 KRE-025/[issue84](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/84).
-Codex solo/tự kiểm; [review waived](../checkpoints/review-waiver.json), tích hợp chờ PR.
+Codex solo/tự kiểm; [review waived](../checkpoints/review-waiver.json), tích hợp theo [PR85](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/85).
 [Contract và giới hạn](../../PROTOCOL.md#current-pickup-race),
 [câu hỏi còn mở](../../RESEARCH.md#gap-contact-state), [thứ tự tiếp](../../PLAN.md#current-order).
 
