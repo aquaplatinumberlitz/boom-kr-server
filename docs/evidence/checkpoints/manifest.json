@@ -1,7 +1,7 @@
 {
   "schema": "kre-checkpoints-v1",
-  "last_id": "CP073",
-  "completed_count": 73,
+  "last_id": "CP074",
+  "completed_count": 74,
   "audit_interval": 4,
   "last_periodic_audit": 72,
   "next_periodic_audit": "CP076",
@@ -145979,6 +145979,1096 @@
           "reason": "CP073aux/mainattribution/nativecontrols/ASLRargvcorrections/limits; nextpreclocknativeobserverdiagnostics, no stabilityfix/gatepromotion."
         }
       ]
+    },
+    {
+      "id": "CP074",
+      "previous": "CP073",
+      "lifecycle": "complete",
+      "recorded_utc": "2026-11-02T21:40:13.296836+00:00",
+      "context_commit": "5c642930ed6c9ac40993055c9a01ca2a819c0778",
+      "question": "Can preclockBEOF survivor native107/slotclear/chief complete andrenderedroom remainusable, beyondCP072sendercleanup/fixedstop evidence?",
+      "scope": "KRE-037/#108; sourcefirstCP050/052–054/072/073/errorfallback plusCP034Back/UI exactquestion andlegacyKR/VN/l10n/archive. Twoisolatedruns: nativecleanupobserverconfirmedbutblackimage, changedfocus/wait4/8/12/BacknormalUI followup rendersroom/actual86/lobbyUI. Sameproductionservice/profile/99hold/nativeprobes, no code/newbody/clientpatch/forcing. NextselectedactualTCPcapturedbodyguardadmission withcurrentauthcache condition. AUD022/CP072,nextCP076.",
+      "owner": "Codex",
+      "reviewer": "Codex",
+      "artifacts": [
+        {
+          "name": "CA-r2-login-logout.exe",
+          "sha256": "660447c293ce92270cb9b5815331bca976e8f156366e1fe50b217b6c12e60ce3"
+        },
+        {
+          "name": "CA-r2-stage-social.exe",
+          "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+        },
+        {
+          "name": "CA-r2-stage-social.exe Bcopy",
+          "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+        },
+        {
+          "name": "modO.bin",
+          "sha256": "a08950c833d3acab8281049def7b3dc96b221f107eeda01da3a548e34b91dce5"
+        },
+        {
+          "name": "CA-r2-stage-social.exe Ccopy",
+          "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+        },
+        {
+          "name": "CALauncher.exe",
+          "sha256": "8cc2668bec7a4a0281f1acab26ab3487c4b4e5047d7ce75ab32b299ef16f527d"
+        },
+        {
+          "name": "nmcogame.dll",
+          "sha256": "25746a9a0e29deb7abb70ed1889c01072eb7343d1cafb4a9ffc76b69fac3ae9d"
+        },
+        {
+          "name": "nmco3.dll",
+          "sha256": "7e038696ec69db579f71e029da66f5b5500c56375ff77b24d93529ba7faf9493"
+        }
+      ],
+      "locators": [
+        "cleanup-observed 2026-11-02T21:26:30Z runSHA 6637bd0e2e781e4a794b0887048e7f4b18bbdae988b9f95e0d930e63c4ec0e2f",
+        "cleanup-ui 2026-11-02T21:32:39Z runSHA 401946b0b2e8c943a8ea9495b62712f93a74ede1906c229fa8afea7d831b175f",
+        "Native121129/no197196153/clock; actualB99held2434.399246msfirst,realEOF/discard;175302/1803/1076→rewind0→1/slot1ID2→0/1106/chief1afterclear",
+        "ActualUIBack113581→DDA32C/86payload0seq205/SHA03408fac7b88f33fc0819b61e011b60bf2d319d26eebe32f28492962411cd1e2; runtimee9bb47/static660447/modOa08950rawbase400000,RVA=VA-400000"
+      ],
+      "findings": [
+        {
+          "summary": "Two preclockBEOF runs currentservice nativeA175302/1803/stage12/107base6rewind0final1/slot1ID2→0/110full6/chief1afterclear. No197196153/clock/bom/pickup/death, no controller/serviceerror. Firstnativeobserver completes10.485safterservicesendcleanup.",
+          "source": "kr_runtime",
+          "status": "confirmed",
+          "method": "runtime",
+          "canonical": "docs/PROTOCOL.md#preclock-cleanup",
+          "limits": "CurrentWinecopy/profile41/actualB99dispatchhold+realpreclockBEOF/oneStartperrun/no197196153/clock/bomb/death; unchangedservice/guards. Nativeforfeit/return/107BIDclear/Achief/renderedroom+actualUIBack86 bounded, notoriginalserverforfeit/fullmembership/accountresume/rejoin/hostvariant/timeout/loadfail/fullreset/gameplay/fullmatch/K4/K5/K6a/LANInternet/vanilla. Focusvswaitcausalityunknown; models emulationonly,no newbody/patch/forcing.",
+          "evidence": [
+            "E086",
+            "E103",
+            "E024",
+            "E025",
+            "E019",
+            "E046"
+          ]
+        },
+        {
+          "summary": "Firstnativecleanupimageblack doesnotproveusableUIorfailedcleanup. Followupnormalfocus/wait4/8/12s renderroomonlyKRLocal/guestempty/Start; actualBack86emptyseq205/nativeframer0 andlobbyUI. Productionserviceno86membershipreset/recreatehandler, so notfullmembership/rejoinproof. Focusvswaitcauseuntested.",
+          "source": "kr_runtime",
+          "status": "confirmed",
+          "method": "runtime",
+          "canonical": "docs/PROTOCOL.md#preclock-cleanup",
+          "limits": "CurrentWinecopy/profile41/actualB99dispatchhold+realpreclockBEOF/oneStartperrun/no197196153/clock/bomb/death; unchangedservice/guards. Nativeforfeit/return/107BIDclear/Achief/renderedroom+actualUIBack86 bounded, notoriginalserverforfeit/fullmembership/accountresume/rejoin/hostvariant/timeout/loadfail/fullreset/gameplay/fullmatch/K4/K5/K6a/LANInternet/vanilla. Focusvswaitcausalityunknown; models emulationonly,no newbody/patch/forcing.",
+          "evidence": [
+            "E103",
+            "E041",
+            "E046",
+            "E050"
+          ]
+        },
+        {
+          "summary": "Known1254CC0/CreateProcess/HTTPprobesnotobservedintwocurrentruns, no claimedhistoricalstartupfix. Reusepacket/consumer/nativeoracles andpolicy,nonewnativebody/patch/servicechange; hold99andforfeit remain measurement/emulatordesign.",
+          "source": "design",
+          "status": "design",
+          "method": "design",
+          "canonical": "docs/PROTOCOL.md#preclock-cleanup",
+          "limits": "CurrentWinecopy/profile41/actualB99dispatchhold+realpreclockBEOF/oneStartperrun/no197196153/clock/bomb/death; unchangedservice/guards. Nativeforfeit/return/107BIDclear/Achief/renderedroom+actualUIBack86 bounded, notoriginalserverforfeit/fullmembership/accountresume/rejoin/hostvariant/timeout/loadfail/fullreset/gameplay/fullmatch/K4/K5/K6a/LANInternet/vanilla. Focusvswaitcausalityunknown; models emulationonly,no newbody/patch/forcing.",
+          "evidence": [
+            "E035",
+            "E030",
+            "E041",
+            "E019"
+          ]
+        }
+      ],
+      "verification": [
+        {
+          "check": "First770relations/291nativeframer/36packet/24secure; followup783relations/324nativeframer,75packetcases/48secure all2runs; 7catalog/docs/artifacts5/5/diff/requiredlocalhistory. Baseline72server/18checkpointtests reuseunchangedcode; imagesmanualread/nativeactual86joined. AUD022,nextCP076.",
+          "result": "pass",
+          "evidence": [
+            "E019",
+            "E046",
+            "E008",
+            "E017",
+            "E007"
+          ],
+          "limits": "Noaddingoverlappingmechanicalchecksasindependentproof; pixelmetricsnotsemantics, imagesmanualread/nativecallbacks/actual86separate. No gatecertification/independentapproval."
+        }
+      ],
+      "evidence": [
+        {
+          "id": "E001",
+          "kind": "repository",
+          "path": "docs/evidence/preclock-eof/README.md",
+          "bytes": 6597,
+          "sha256": "af44448c68b75b3982c0f47754200ed7473e459a210c0b5675c8b10e781bb968"
+        },
+        {
+          "id": "E002",
+          "kind": "repository",
+          "path": "docs/evidence/preclock-cleanup/README.md",
+          "bytes": 6177,
+          "sha256": "7e4860659a6dd5798876793fc2db825476c7331e23f0040cfa93c94f1f1585a7"
+        },
+        {
+          "id": "E003",
+          "kind": "local",
+          "path": "local/research/codex/preclock-cleanup-r1/actor-fields.json",
+          "bytes": 32247,
+          "sha256": "ecc2760dbdbac33cc93602c6a7383b1dbd6c5a17e1fb7e69ae9a04cd598b7315"
+        },
+        {
+          "id": "E004",
+          "kind": "local",
+          "path": "local/research/codex/preclock-cleanup-r1/analyze_completed.py",
+          "bytes": 938,
+          "sha256": "44a581fae705a7e30fce6fa0462464d5cdc76ad1baef355d36a2f6c6d2f4e0ce"
+        },
+        {
+          "id": "E005",
+          "kind": "local",
+          "path": "local/research/codex/preclock-cleanup-r1/analyze_ui.py",
+          "bytes": 4285,
+          "sha256": "5d7ceab755f4be4605ecea6a4003a0f4b48667b460300f4544d04829eb694064"
+        },
+        {
+          "id": "E006",
+          "kind": "local",
+          "path": "local/research/codex/preclock-cleanup-r1/append_checkpoint.py",
+          "bytes": 8099,
+          "sha256": "39ae43f9a30b4cd7404c14c8873a515fe8c30de23a417f0b38bcb297d8267e29"
+        },
+        {
+          "id": "E007",
+          "kind": "local",
+          "path": "local/research/codex/preclock-cleanup-r1/artifacts-check.txt",
+          "bytes": 253,
+          "sha256": "649c6624aa6d317dfc1db5e16fea683cfbc9d9cf4dd3df11c0d70e57409054a0"
+        },
+        {
+          "id": "E008",
+          "kind": "local",
+          "path": "local/research/codex/preclock-cleanup-r1/catalog-tests.txt",
+          "bytes": 105,
+          "sha256": "f4745038baadc9089b6a8edb955d4735e455dfb9bb0d9930ba99e7be3f8d9748"
+        },
+        {
+          "id": "E009",
+          "kind": "local",
+          "path": "local/research/codex/preclock-cleanup-r1/cleanup-observed-hashes.json",
+          "bytes": 148599,
+          "sha256": "b8cacec9120cc580ba67bfa8276ba6035bce1e2faa6d2eeb2e548db1b9141898"
+        },
+        {
+          "id": "E010",
+          "kind": "local",
+          "path": "local/research/codex/preclock-cleanup-r1/cleanup-observed-launcher.log",
+          "bytes": 33858,
+          "sha256": "8009b2ce3848e14915ab7bf116a9cf9d0dffadc24639546d72a656235bdc9747"
+        },
+        {
+          "id": "E011",
+          "kind": "local",
+          "path": "local/research/codex/preclock-cleanup-r1/cleanup-observed-recipe.json",
+          "bytes": 1023,
+          "sha256": "975fc5336f1fbab43f1867c13ced221c36518b3b66b1af94b557223c8334b27e"
+        },
+        {
+          "id": "E012",
+          "kind": "local",
+          "path": "local/research/codex/preclock-cleanup-r1/cleanup-ui-hashes.json",
+          "bytes": 146898,
+          "sha256": "22548e98f0672def7148c30f427be9b26bf5a31dab7db4cf9620e3187f201dcb"
+        },
+        {
+          "id": "E013",
+          "kind": "local",
+          "path": "local/research/codex/preclock-cleanup-r1/cleanup-ui-launcher.log",
+          "bytes": 35684,
+          "sha256": "9ffe61b11307a2042035c08d3c254053140f0c023ab616b7d40b259578f10520"
+        },
+        {
+          "id": "E014",
+          "kind": "local",
+          "path": "local/research/codex/preclock-cleanup-r1/cleanup-ui-recipe.json",
+          "bytes": 1014,
+          "sha256": "88f0621de145e8bbe0b650707ee29ec2dbd47bcc3123181d89484c290568a04d"
+        },
+        {
+          "id": "E015",
+          "kind": "local",
+          "path": "local/research/codex/preclock-cleanup-r1/cleanup.gdb",
+          "bytes": 32936,
+          "sha256": "32eacae1586004784229c39138f20a78c5aeb34a3837a6c4287c0f670f3d5577"
+        },
+        {
+          "id": "E016",
+          "kind": "local",
+          "path": "local/research/codex/preclock-cleanup-r1/derive_roles.py",
+          "bytes": 1076,
+          "sha256": "30fece10f83fbf4173ac040273728a6fab8cba697ad9f6d731707552897400a2"
+        },
+        {
+          "id": "E017",
+          "kind": "local",
+          "path": "local/research/codex/preclock-cleanup-r1/docs-check.txt",
+          "bytes": 174,
+          "sha256": "4727857db796990d9094f818e3fba0610b34615cd9e727e2f76b5798d32e9eb7"
+        },
+        {
+          "id": "E018",
+          "kind": "local",
+          "path": "local/research/codex/preclock-cleanup-r1/fields-check.txt",
+          "bytes": 31,
+          "sha256": "dab3fb03280cce540fbe1fe713acb894096c3b3317f062bae078ad1d638d27ac"
+        },
+        {
+          "id": "E019",
+          "kind": "local",
+          "path": "local/research/codex/preclock-cleanup-r1/first-verification.json",
+          "bytes": 3277,
+          "sha256": "b02e6e1d1c7e64f2beb1a49f5723da24eb523c2eda2f84d58843dd7c05823d0e"
+        },
+        {
+          "id": "E020",
+          "kind": "local",
+          "path": "local/research/codex/preclock-cleanup-r1/framer-check.txt",
+          "bytes": 37,
+          "sha256": "e75d92f65ad45f046d54898b370f2a72b629fc1bc31d5f2494af7d68e017bb78"
+        },
+        {
+          "id": "E021",
+          "kind": "local",
+          "path": "local/research/codex/preclock-cleanup-r1/hold99.py",
+          "bytes": 2055,
+          "sha256": "93c9b958a52164be8db14368b6bb435e281952d49b64e966c1f35db8ee180735"
+        },
+        {
+          "id": "E022",
+          "kind": "local",
+          "path": "local/research/codex/preclock-cleanup-r1/issue-body.md",
+          "bytes": 1469,
+          "sha256": "9388bdd3a6362817218a80988aed15725a025943610fbb3aacaaf4dbfb4c3067"
+        },
+        {
+          "id": "E023",
+          "kind": "local",
+          "path": "local/research/codex/preclock-cleanup-r1/lifecycle-check.txt",
+          "bytes": 308,
+          "sha256": "20c2ed50aefca58e972e0eeadd3d480fac5456c134f92b6870b8e1ac73054dd8"
+        },
+        {
+          "id": "E024",
+          "kind": "local",
+          "path": "local/research/codex/preclock-cleanup-r1/lifecycle-summary.json",
+          "bytes": 11865,
+          "sha256": "15553d178f26e901cb83042456c31894e9a852437701d2d721789afa6670a6fc"
+        },
+        {
+          "id": "E025",
+          "kind": "local",
+          "path": "local/research/codex/preclock-cleanup-r1/native-packets.json",
+          "bytes": 29701,
+          "sha256": "6c715cb577f4bc57a858bf0568a63a93559def0984977abfd94c8e7ede54f91d"
+        },
+        {
+          "id": "E026",
+          "kind": "local",
+          "path": "local/research/codex/preclock-cleanup-r1/native_packets.py",
+          "bytes": 4843,
+          "sha256": "d6c8b6231bfa53477be4b0f3233e363dba904ccd6edab0eba3b9496679d0422a"
+        },
+        {
+          "id": "E027",
+          "kind": "local",
+          "path": "local/research/codex/preclock-cleanup-r1/packets-check.txt",
+          "bytes": 28,
+          "sha256": "d315b29dca3b032b8bb39c869c47b5d84b64aff941c05262e8f38c21ba79da2a"
+        },
+        {
+          "id": "E028",
+          "kind": "local",
+          "path": "local/research/codex/preclock-cleanup-r1/parse_fields.py",
+          "bytes": 3988,
+          "sha256": "397fbb3a71db677624b5a0f9b4fcbb401664e5b2346c90a04222e8635e1c8a6e"
+        },
+        {
+          "id": "E029",
+          "kind": "local",
+          "path": "local/research/codex/preclock-cleanup-r1/parse_lifecycle.py",
+          "bytes": 2719,
+          "sha256": "454849113091f0bba1274bd00dfab83f84806a52e195db2166a6d4303085093c"
+        },
+        {
+          "id": "E030",
+          "kind": "local",
+          "path": "local/research/codex/preclock-cleanup-r1/preparation.json",
+          "bytes": 915,
+          "sha256": "5529c225dcb5e244e900b17d2f343d4a571e2df21b613e2e808f4edcbf1a6bcc"
+        },
+        {
+          "id": "E031",
+          "kind": "local",
+          "path": "local/research/codex/preclock-cleanup-r1/prepare.py",
+          "bytes": 5606,
+          "sha256": "cc7db553d5e3b4e3a3c0fb8c2b31b8a28d9096e51de04fc962e12c21fbb8f2db"
+        },
+        {
+          "id": "E032",
+          "kind": "local",
+          "path": "local/research/codex/preclock-cleanup-r1/prepare_ui_followup.py",
+          "bytes": 4612,
+          "sha256": "96ab3e4c511bf510f402be3f2eeaee984341024e95a0a4bdd55b95f0c5066a97"
+        },
+        {
+          "id": "E033",
+          "kind": "local",
+          "path": "local/research/codex/preclock-cleanup-r1/profile.json",
+          "bytes": 11102,
+          "sha256": "7607f5dbc3b61fa136eb5505fe29cafce688aae014e0a00a393d7469659888ff"
+        },
+        {
+          "id": "E034",
+          "kind": "local",
+          "path": "local/research/codex/preclock-cleanup-r1/replay-run.py",
+          "bytes": 3007,
+          "sha256": "b77974afb6b1180d5b0903b1f8098dae8c22483ce987d56fa1f0de38d4d41698"
+        },
+        {
+          "id": "E035",
+          "kind": "local",
+          "path": "local/research/codex/preclock-cleanup-r1/reuse-question.json",
+          "bytes": 5623,
+          "sha256": "5e791bd155705b76a167161d738c62525277678fa2d23ecd4389c505517afcd6"
+        },
+        {
+          "id": "E036",
+          "kind": "local",
+          "path": "local/research/codex/preclock-cleanup-r1/run_probe.py",
+          "bytes": 1079,
+          "sha256": "a1064e6b004062edf2235340186836a164aa7ef5e34aa46ed29ff64c005752fe"
+        },
+        {
+          "id": "E037",
+          "kind": "local",
+          "path": "local/research/codex/preclock-cleanup-r1/seal-check.txt",
+          "bytes": 28,
+          "sha256": "d801887e8edfc7befb2002fb91eac3fa9b5af3d86db474ef7e1ac3751f9b5f9b"
+        },
+        {
+          "id": "E038",
+          "kind": "local",
+          "path": "local/research/codex/preclock-cleanup-r1/seal_run.py",
+          "bytes": 630,
+          "sha256": "62c838a0e4321c873948ed21fcba0d86f6794e116095cbdbfe3b92aeb7646f63"
+        },
+        {
+          "id": "E039",
+          "kind": "local",
+          "path": "local/research/codex/preclock-cleanup-r1/sync_docs.py",
+          "bytes": 13406,
+          "sha256": "b2f8b1c371217de783bb73cd9d41f0af6429da97dccd27b80b4e036e8d97f330"
+        },
+        {
+          "id": "E040",
+          "kind": "local",
+          "path": "local/research/codex/preclock-cleanup-r1/ui-fields-check.txt",
+          "bytes": 31,
+          "sha256": "c4ade5c22427c22e7a60e6ab5f6c515fcda5994588df834e6482b0ad358704c8"
+        },
+        {
+          "id": "E041",
+          "kind": "local",
+          "path": "local/research/codex/preclock-cleanup-r1/ui-followup-reuse.json",
+          "bytes": 2165,
+          "sha256": "25a8710b87657cd4859d7d6ed3204c70a96a0b0125803855c39295e9a3d9a125"
+        },
+        {
+          "id": "E042",
+          "kind": "local",
+          "path": "local/research/codex/preclock-cleanup-r1/ui-framer-check.txt",
+          "bytes": 31,
+          "sha256": "974e65eccbda3fcb119081d797cd3475ac36c42ce58b1eb3ddca832e3026c554"
+        },
+        {
+          "id": "E043",
+          "kind": "local",
+          "path": "local/research/codex/preclock-cleanup-r1/ui-lifecycle-check.txt",
+          "bytes": 610,
+          "sha256": "bf30ce22185380621d66b4b0193f20b04e5a248a61a77614ac5c46ead7c22ae1"
+        },
+        {
+          "id": "E044",
+          "kind": "local",
+          "path": "local/research/codex/preclock-cleanup-r1/ui-packets-check.txt",
+          "bytes": 28,
+          "sha256": "1b815f16723c8ed1243e665aa5fe84771a541039bf5e83d230f55b3d2d1ff1d2"
+        },
+        {
+          "id": "E045",
+          "kind": "local",
+          "path": "local/research/codex/preclock-cleanup-r1/ui-seal-check.txt",
+          "bytes": 22,
+          "sha256": "dce6095cce2140f4b179ec391e23da8c31be895ee9845924531f6bf3128cccea"
+        },
+        {
+          "id": "E046",
+          "kind": "local",
+          "path": "local/research/codex/preclock-cleanup-r1/ui-verification.json",
+          "bytes": 5379,
+          "sha256": "c12eff7a28e85e6b25131a19c28e875de35a5a79d0783b96f1978bad5e23f658"
+        },
+        {
+          "id": "E047",
+          "kind": "local",
+          "path": "local/research/codex/preclock-cleanup-r1/verification.json",
+          "bytes": 3277,
+          "sha256": "b02e6e1d1c7e64f2beb1a49f5723da24eb523c2eda2f84d58843dd7c05823d0e"
+        },
+        {
+          "id": "E048",
+          "kind": "local",
+          "path": "local/research/codex/preclock-cleanup-r1/verify-check.txt",
+          "bytes": 3277,
+          "sha256": "b02e6e1d1c7e64f2beb1a49f5723da24eb523c2eda2f84d58843dd7c05823d0e"
+        },
+        {
+          "id": "E049",
+          "kind": "local",
+          "path": "local/research/codex/preclock-cleanup-r1/verify.py",
+          "bytes": 5614,
+          "sha256": "4170f49674daeef69f4b7dfa9a347ba552012acc8fa9fbbe2a8034cc5408f640"
+        },
+        {
+          "id": "E050",
+          "kind": "local",
+          "path": "local/research/codex/preclock-cleanup-r1/visual-observation.json",
+          "bytes": 477,
+          "sha256": "8193202323377b8d45d85d8b717a328d394a197728fcad15fec0e81ede404415"
+        },
+        {
+          "id": "E051",
+          "kind": "local",
+          "path": "local/research/codex/preclock-cleanup-r1/cp074-snapshot/README.md",
+          "bytes": 3719,
+          "sha256": "444f6cb6367d22bebfeb17ab1cc6ded829732b9725d7180593edd792dbffcdad"
+        },
+        {
+          "id": "E052",
+          "kind": "local",
+          "path": "local/research/codex/preclock-cleanup-r1/cp074-snapshot/docs/COVERAGE.md",
+          "bytes": 78692,
+          "sha256": "6f1b43142f6bd902200c5e45b6cee1faf817d335d46d48d887ff4f25b89b9324"
+        },
+        {
+          "id": "E053",
+          "kind": "local",
+          "path": "local/research/codex/preclock-cleanup-r1/cp074-snapshot/docs/PLAN.md",
+          "bytes": 30720,
+          "sha256": "ae99201e27242afc96ca5e9b5003f5ccb330e65e36f227936205011696863851"
+        },
+        {
+          "id": "E054",
+          "kind": "local",
+          "path": "local/research/codex/preclock-cleanup-r1/cp074-snapshot/docs/PROTOCOL.md",
+          "bytes": 236709,
+          "sha256": "022de987e00fa5554e2f4eca71de723a6156fa86652176da6e742d1cfb006e80"
+        },
+        {
+          "id": "E055",
+          "kind": "local",
+          "path": "local/research/codex/preclock-cleanup-r1/cp074-snapshot/docs/RESEARCH.md",
+          "bytes": 30530,
+          "sha256": "8f1eb97739118f963306d0fbbfef67eb51a2cb498cb2b75eda2a6e0a52039a25"
+        },
+        {
+          "id": "E056",
+          "kind": "local",
+          "path": "local/research/codex/preclock-cleanup-r1/cp074-snapshot/docs/evidence/preclock-cleanup/README.md",
+          "bytes": 6177,
+          "sha256": "7e4860659a6dd5798876793fc2db825476c7331e23f0040cfa93c94f1f1585a7"
+        },
+        {
+          "id": "E057",
+          "kind": "local",
+          "path": "local/research/codex/preclock-cleanup-r1/cp074-snapshot/docs/evidence/preclock-eof/README.md",
+          "bytes": 6597,
+          "sha256": "af44448c68b75b3982c0f47754200ed7473e459a210c0b5675c8b10e781bb968"
+        },
+        {
+          "id": "E058",
+          "kind": "local",
+          "path": "local/research/codex/preclock-cleanup-r1/cp074-snapshot/docs/features.json",
+          "bytes": 81491,
+          "sha256": "7d09514a894e29a1834120b3178079d587315231675068855b3572f0d53f8103"
+        },
+        {
+          "id": "E059",
+          "kind": "local",
+          "path": "local/research/codex/preclock-cleanup-r1/runtime-source/item_claims.py",
+          "bytes": 3340,
+          "sha256": "7990ae9195e9f8bba56b04101f352506194dbd0252793183993ce101a8674a2e"
+        },
+        {
+          "id": "E060",
+          "kind": "local",
+          "path": "local/research/codex/preclock-cleanup-r1/runtime-source/probe_codec.py",
+          "bytes": 3227,
+          "sha256": "23ba54e6940953a52ff737e7e06b2761a8eb22eab444310b49b1d96efa12411d"
+        },
+        {
+          "id": "E061",
+          "kind": "local",
+          "path": "local/research/codex/preclock-cleanup-r1/runtime-source/probe_room.py",
+          "bytes": 1468,
+          "sha256": "91292494d492c7851bd5432649adf528e1b07290316dc56ba1478f8a209a08bc"
+        },
+        {
+          "id": "E062",
+          "kind": "local",
+          "path": "local/research/codex/preclock-cleanup-r1/runtime-source/probe_service.py",
+          "bytes": 37600,
+          "sha256": "91be840fe16d77070e130882940be478aa80651df59de9dc3af204d1b9ce05e2"
+        },
+        {
+          "id": "E063",
+          "kind": "local",
+          "path": "local/research/codex/preclock-cleanup-r1/runtime-source/round_fence.py",
+          "bytes": 2339,
+          "sha256": "aabcc7f1d623573fc217de8df05403f83d82425bbe5d6e78872b3096a2d46708"
+        },
+        {
+          "id": "E064",
+          "kind": "local",
+          "path": "local/research/codex/preclock-cleanup-r1/runtime-source/udp_round_keys.py",
+          "bytes": 1187,
+          "sha256": "db58ae1f25bcbeb52c2d25c7db6afbf1021ddd3af29702e756f5f41886530a0d"
+        },
+        {
+          "id": "E065",
+          "kind": "local",
+          "path": "local/research/codex/preclock-cleanup-r1/derived/cleanup-observed-A/run.json",
+          "bytes": 31889,
+          "sha256": "9c666dc70435d0cd4c77ddebeaee7508763be4a7d4a97da091188a092ee9b979"
+        },
+        {
+          "id": "E066",
+          "kind": "local",
+          "path": "local/research/codex/preclock-cleanup-r1/derived/cleanup-observed-A-oracle.json",
+          "bytes": 81933,
+          "sha256": "a2371f6380644427f3046f20f27a9dd00f48d2af4a5870e531bd7861e2cc2e30"
+        },
+        {
+          "id": "E067",
+          "kind": "local",
+          "path": "local/research/codex/preclock-cleanup-r1/derived/cleanup-observed-A-replay.txt",
+          "bytes": 1392,
+          "sha256": "7d68525565682a0b24c703e36b757a3f5cf127e56a7f82abd6d5309fd171e49d"
+        },
+        {
+          "id": "E068",
+          "kind": "local",
+          "path": "local/research/codex/preclock-cleanup-r1/derived/cleanup-observed-B/run.json",
+          "bytes": 25690,
+          "sha256": "7ad8174138ca0d32231ee228817e8c249857d54124f77d9ca0a388aec158e289"
+        },
+        {
+          "id": "E069",
+          "kind": "local",
+          "path": "local/research/codex/preclock-cleanup-r1/derived/cleanup-observed-B-oracle.json",
+          "bytes": 50281,
+          "sha256": "f3cb721c172dac40595dac139353ff9a037702202b602fb95c521798f1a70c7f"
+        },
+        {
+          "id": "E070",
+          "kind": "local",
+          "path": "local/research/codex/preclock-cleanup-r1/derived/cleanup-observed-B-replay.txt",
+          "bytes": 873,
+          "sha256": "286894ee8bb7cacdf7cae47dbae88b3e131315fb2447b902e9d09d8c7e5cc113"
+        },
+        {
+          "id": "E071",
+          "kind": "local",
+          "path": "local/research/codex/preclock-cleanup-r1/derived/cleanup-ui-A/run.json",
+          "bytes": 34077,
+          "sha256": "a5ef1d472eb8dd323bd037d2746de6a18ad7342d40006df620fcc9d3152e52a9"
+        },
+        {
+          "id": "E072",
+          "kind": "local",
+          "path": "local/research/codex/preclock-cleanup-r1/derived/cleanup-ui-A-oracle.json",
+          "bytes": 96728,
+          "sha256": "f21d477fb0909ca63565bded75337741a1f03d0452a928e86fa26dc63d041dbd"
+        },
+        {
+          "id": "E073",
+          "kind": "local",
+          "path": "local/research/codex/preclock-cleanup-r1/derived/cleanup-ui-A-replay.txt",
+          "bytes": 1635,
+          "sha256": "83a868b99f39511cc325b1c3390dd02172912bd046da51613ac4b94926e86dd5"
+        },
+        {
+          "id": "E074",
+          "kind": "local",
+          "path": "local/research/codex/preclock-cleanup-r1/derived/cleanup-ui-B/run.json",
+          "bytes": 26144,
+          "sha256": "43f41829c746bd0089601088b932314c9b1361ed7cac48e1fe66c480901d9d17"
+        },
+        {
+          "id": "E075",
+          "kind": "local",
+          "path": "local/research/codex/preclock-cleanup-r1/derived/cleanup-ui-B-oracle.json",
+          "bytes": 50259,
+          "sha256": "80725b44c4ac6877e3b92db928da6bfcbc65a5585d47f2ff96ef66518128921d"
+        },
+        {
+          "id": "E076",
+          "kind": "local",
+          "path": "local/research/codex/preclock-cleanup-r1/derived/cleanup-ui-B-replay.txt",
+          "bytes": 867,
+          "sha256": "f50254f8cf75fe1da500bc701abf479d709c5a3f0d55eb9ccb73b391aff0976e"
+        },
+        {
+          "id": "E077",
+          "kind": "local",
+          "path": "local/research/codex/preclock-cleanup-r1/request-frames/cleanup-observed/A-F39-99.bin",
+          "bytes": 61,
+          "sha256": "11411647acfb61fcc39f9e231f1e808f68ea66de64d44b2131942e876ec474da"
+        },
+        {
+          "id": "E078",
+          "kind": "local",
+          "path": "local/research/codex/preclock-cleanup-r1/request-frames/cleanup-observed/B-F12-82.bin",
+          "bytes": 49,
+          "sha256": "27d13b13f8df5db1f67451352419d49458641283683b06d40bc91f6c3f7220e7"
+        },
+        {
+          "id": "E079",
+          "kind": "local",
+          "path": "local/research/codex/preclock-cleanup-r1/request-frames/cleanup-observed/B-F22-95.bin",
+          "bytes": 98,
+          "sha256": "38eeff06df1cda4991e6860d5e77cabcb5d78c9a82bc217363b4899b10d3aedd"
+        },
+        {
+          "id": "E080",
+          "kind": "local",
+          "path": "local/research/codex/preclock-cleanup-r1/request-frames/cleanup-observed/B-F27-99.bin",
+          "bytes": 61,
+          "sha256": "e5cd45b86ca5b343e53e310470c169c76941fb80a1dc162550c2e3fe1e3412b4"
+        },
+        {
+          "id": "E081",
+          "kind": "local",
+          "path": "local/research/codex/preclock-cleanup-r1/request-frames/cleanup-ui/A-F39-99.bin",
+          "bytes": 61,
+          "sha256": "4c260d117eb573ab24458d67a15faefe4dfc8982703dc17eead3bc00e983b8bb"
+        },
+        {
+          "id": "E082",
+          "kind": "local",
+          "path": "local/research/codex/preclock-cleanup-r1/request-frames/cleanup-ui/A-F55-86.bin",
+          "bytes": 38,
+          "sha256": "03408fac7b88f33fc0819b61e011b60bf2d319d26eebe32f28492962411cd1e2"
+        },
+        {
+          "id": "E083",
+          "kind": "local",
+          "path": "local/research/codex/preclock-cleanup-r1/request-frames/cleanup-ui/B-F12-82.bin",
+          "bytes": 49,
+          "sha256": "27d13b13f8df5db1f67451352419d49458641283683b06d40bc91f6c3f7220e7"
+        },
+        {
+          "id": "E084",
+          "kind": "local",
+          "path": "local/research/codex/preclock-cleanup-r1/request-frames/cleanup-ui/B-F22-95.bin",
+          "bytes": 98,
+          "sha256": "38eeff06df1cda4991e6860d5e77cabcb5d78c9a82bc217363b4899b10d3aedd"
+        },
+        {
+          "id": "E085",
+          "kind": "local",
+          "path": "local/research/codex/preclock-cleanup-r1/request-frames/cleanup-ui/B-F27-99.bin",
+          "bytes": 61,
+          "sha256": "3861f2993fe8f1aad67f16333ccc07d84f733e4a5e1fc7b93cf4f81cf699f598"
+        },
+        {
+          "id": "E086",
+          "kind": "local",
+          "path": "local/research/codex/preclock-cleanup-r1/cleanup-observed/run.json",
+          "bytes": 42952,
+          "sha256": "6637bd0e2e781e4a794b0887048e7f4b18bbdae988b9f95e0d930e63c4ec0e2f"
+        },
+        {
+          "id": "E087",
+          "kind": "local",
+          "path": "local/research/codex/preclock-cleanup-r1/cleanup-observed/client.log",
+          "bytes": 33233,
+          "sha256": "5b6acc8b710a1ef78fb09528693268320cee878148934c22056ca13d9f1def48"
+        },
+        {
+          "id": "E088",
+          "kind": "local",
+          "path": "local/research/codex/preclock-cleanup-r1/cleanup-observed/client-B.log",
+          "bytes": 26908,
+          "sha256": "05b96c90f92a4d2cfd53aa865a4e393f440f8a3a7ead603e71497b1d703b5d7b"
+        },
+        {
+          "id": "E089",
+          "kind": "local",
+          "path": "local/research/codex/preclock-cleanup-r1/cleanup-observed/debug-commands.txt",
+          "bytes": 32936,
+          "sha256": "32eacae1586004784229c39138f20a78c5aeb34a3837a6c4287c0f670f3d5577"
+        },
+        {
+          "id": "E090",
+          "kind": "local",
+          "path": "local/research/codex/preclock-cleanup-r1/cleanup-observed/debug-commands-B.txt",
+          "bytes": 32936,
+          "sha256": "32eacae1586004784229c39138f20a78c5aeb34a3837a6c4287c0f670f3d5577"
+        },
+        {
+          "id": "E091",
+          "kind": "local",
+          "path": "local/research/codex/preclock-cleanup-r1/cleanup-observed/service-state.json",
+          "bytes": 45978,
+          "sha256": "fd75a8104857c3a0045f116723db6350a605b0b008ecb1c2457de86862cdfee6"
+        },
+        {
+          "id": "E092",
+          "kind": "local",
+          "path": "local/research/codex/preclock-cleanup-r1/cleanup-observed/A-floor582-76.bin",
+          "bytes": 84,
+          "sha256": "254c2831334c14da414505b3870648c9cd22ad30d3d86628cc7709b32bbc631e"
+        },
+        {
+          "id": "E093",
+          "kind": "local",
+          "path": "local/research/codex/preclock-cleanup-r1/cleanup-observed/A-forfeit175-82.bin",
+          "bytes": 340,
+          "sha256": "bd9a13e1fb59650cdddf5875734f47185db9cc60f4eed8f7c7d4af01345ad3c1"
+        },
+        {
+          "id": "E094",
+          "kind": "local",
+          "path": "local/research/codex/preclock-cleanup-r1/cleanup-observed/A-ready110-73.bin",
+          "bytes": 44,
+          "sha256": "8fafd9cf652b458ee09b3751a0201f9ab1409920398e0e842e43b915c8840e25"
+        },
+        {
+          "id": "E095",
+          "kind": "local",
+          "path": "local/research/codex/preclock-cleanup-r1/cleanup-observed/A-remove107-88.bin",
+          "bytes": 44,
+          "sha256": "05000ff9693b122d5c2d263191cc42f0c435a4a357ae30d7b6169218b14d7d56"
+        },
+        {
+          "id": "E096",
+          "kind": "local",
+          "path": "local/research/codex/preclock-cleanup-r1/cleanup-observed/A-return180-r1-85.bin",
+          "bytes": 41,
+          "sha256": "53bf2006db5b2f691efca9e8c8876891d82b02869f4510428fa434c3b3f39767"
+        },
+        {
+          "id": "E097",
+          "kind": "local",
+          "path": "local/research/codex/preclock-cleanup-r1/cleanup-observed/A-start121-r1-79.bin",
+          "bytes": 167,
+          "sha256": "4d85d0786f484c579ef94cd61ceaa40997df93c39589d720ea8334bc9b5ca29f"
+        },
+        {
+          "id": "E098",
+          "kind": "local",
+          "path": "local/research/codex/preclock-cleanup-r1/cleanup-observed/A-survivor110-91.bin",
+          "bytes": 44,
+          "sha256": "b91511992a64679953c759de815c3f35be7b92ec415109c04d4afb0d28ab1b83"
+        },
+        {
+          "id": "E099",
+          "kind": "local",
+          "path": "local/research/codex/preclock-cleanup-r1/cleanup-observed/B-floor582-76.bin",
+          "bytes": 84,
+          "sha256": "254c2831334c14da414505b3870648c9cd22ad30d3d86628cc7709b32bbc631e"
+        },
+        {
+          "id": "E100",
+          "kind": "local",
+          "path": "local/research/codex/preclock-cleanup-r1/cleanup-observed/B-ready110-73.bin",
+          "bytes": 44,
+          "sha256": "8fafd9cf652b458ee09b3751a0201f9ab1409920398e0e842e43b915c8840e25"
+        },
+        {
+          "id": "E101",
+          "kind": "local",
+          "path": "local/research/codex/preclock-cleanup-r1/cleanup-observed/B-start121-r1-79.bin",
+          "bytes": 167,
+          "sha256": "4d85d0786f484c579ef94cd61ceaa40997df93c39589d720ea8334bc9b5ca29f"
+        },
+        {
+          "id": "E102",
+          "kind": "local",
+          "path": "local/research/codex/preclock-cleanup-r1/cleanup-observed/held-B99.bin",
+          "bytes": 61,
+          "sha256": "e5cd45b86ca5b343e53e310470c169c76941fb80a1dc162550c2e3fe1e3412b4"
+        },
+        {
+          "id": "E103",
+          "kind": "local",
+          "path": "local/research/codex/preclock-cleanup-r1/cleanup-ui/run.json",
+          "bytes": 45146,
+          "sha256": "401946b0b2e8c943a8ea9495b62712f93a74ede1906c229fa8afea7d831b175f"
+        },
+        {
+          "id": "E104",
+          "kind": "local",
+          "path": "local/research/codex/preclock-cleanup-r1/cleanup-ui/client.log",
+          "bytes": 34874,
+          "sha256": "ccce51eef688767b58721b4496b798f4d749817701c8bbfaa37da15f0e0940a0"
+        },
+        {
+          "id": "E105",
+          "kind": "local",
+          "path": "local/research/codex/preclock-cleanup-r1/cleanup-ui/client-B.log",
+          "bytes": 26891,
+          "sha256": "5730e769a09a9f984e2fc5e45e85e943ec8fc81151fd18095fa44b977ee43286"
+        },
+        {
+          "id": "E106",
+          "kind": "local",
+          "path": "local/research/codex/preclock-cleanup-r1/cleanup-ui/debug-commands.txt",
+          "bytes": 32936,
+          "sha256": "32eacae1586004784229c39138f20a78c5aeb34a3837a6c4287c0f670f3d5577"
+        },
+        {
+          "id": "E107",
+          "kind": "local",
+          "path": "local/research/codex/preclock-cleanup-r1/cleanup-ui/debug-commands-B.txt",
+          "bytes": 32936,
+          "sha256": "32eacae1586004784229c39138f20a78c5aeb34a3837a6c4287c0f670f3d5577"
+        },
+        {
+          "id": "E108",
+          "kind": "local",
+          "path": "local/research/codex/preclock-cleanup-r1/cleanup-ui/service-state.json",
+          "bytes": 47712,
+          "sha256": "b72c20136345cc6b0eb51463ee1eb8243323ca803a0ca5d02dd880941b62cef8"
+        },
+        {
+          "id": "E109",
+          "kind": "local",
+          "path": "local/research/codex/preclock-cleanup-r1/cleanup-ui/A-floor582-76.bin",
+          "bytes": 84,
+          "sha256": "254c2831334c14da414505b3870648c9cd22ad30d3d86628cc7709b32bbc631e"
+        },
+        {
+          "id": "E110",
+          "kind": "local",
+          "path": "local/research/codex/preclock-cleanup-r1/cleanup-ui/A-forfeit175-82.bin",
+          "bytes": 340,
+          "sha256": "bd9a13e1fb59650cdddf5875734f47185db9cc60f4eed8f7c7d4af01345ad3c1"
+        },
+        {
+          "id": "E111",
+          "kind": "local",
+          "path": "local/research/codex/preclock-cleanup-r1/cleanup-ui/A-ready110-73.bin",
+          "bytes": 44,
+          "sha256": "8fafd9cf652b458ee09b3751a0201f9ab1409920398e0e842e43b915c8840e25"
+        },
+        {
+          "id": "E112",
+          "kind": "local",
+          "path": "local/research/codex/preclock-cleanup-r1/cleanup-ui/A-remove107-88.bin",
+          "bytes": 44,
+          "sha256": "05000ff9693b122d5c2d263191cc42f0c435a4a357ae30d7b6169218b14d7d56"
+        },
+        {
+          "id": "E113",
+          "kind": "local",
+          "path": "local/research/codex/preclock-cleanup-r1/cleanup-ui/A-return180-r1-85.bin",
+          "bytes": 41,
+          "sha256": "53bf2006db5b2f691efca9e8c8876891d82b02869f4510428fa434c3b3f39767"
+        },
+        {
+          "id": "E114",
+          "kind": "local",
+          "path": "local/research/codex/preclock-cleanup-r1/cleanup-ui/A-start121-r1-79.bin",
+          "bytes": 167,
+          "sha256": "4d85d0786f484c579ef94cd61ceaa40997df93c39589d720ea8334bc9b5ca29f"
+        },
+        {
+          "id": "E115",
+          "kind": "local",
+          "path": "local/research/codex/preclock-cleanup-r1/cleanup-ui/A-survivor110-91.bin",
+          "bytes": 44,
+          "sha256": "b91511992a64679953c759de815c3f35be7b92ec415109c04d4afb0d28ab1b83"
+        },
+        {
+          "id": "E116",
+          "kind": "local",
+          "path": "local/research/codex/preclock-cleanup-r1/cleanup-ui/B-floor582-76.bin",
+          "bytes": 84,
+          "sha256": "254c2831334c14da414505b3870648c9cd22ad30d3d86628cc7709b32bbc631e"
+        },
+        {
+          "id": "E117",
+          "kind": "local",
+          "path": "local/research/codex/preclock-cleanup-r1/cleanup-ui/B-ready110-73.bin",
+          "bytes": 44,
+          "sha256": "8fafd9cf652b458ee09b3751a0201f9ab1409920398e0e842e43b915c8840e25"
+        },
+        {
+          "id": "E118",
+          "kind": "local",
+          "path": "local/research/codex/preclock-cleanup-r1/cleanup-ui/B-start121-r1-79.bin",
+          "bytes": 167,
+          "sha256": "4d85d0786f484c579ef94cd61ceaa40997df93c39589d720ea8334bc9b5ca29f"
+        },
+        {
+          "id": "E119",
+          "kind": "local",
+          "path": "local/research/codex/preclock-cleanup-r1/cleanup-ui/held-B99.bin",
+          "bytes": 61,
+          "sha256": "3861f2993fe8f1aad67f16333ccc07d84f733e4a5e1fc7b93cf4f81cf699f598"
+        },
+        {
+          "id": "E120",
+          "kind": "local",
+          "path": "local/research/codex/preclock-cleanup-r1/cleanup-observed/A/after-preclock-native-cleanup.png",
+          "bytes": 233,
+          "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+        },
+        {
+          "id": "E121",
+          "kind": "local",
+          "path": "local/research/codex/preclock-cleanup-r1/cleanup-ui/A/native-cleanup-after-back.png",
+          "bytes": 141210,
+          "sha256": "08e66741b4621802e07411febd091b196c21b832fe4fdabdbfc46039180e7019"
+        },
+        {
+          "id": "E122",
+          "kind": "local",
+          "path": "local/research/codex/preclock-cleanup-r1/cleanup-ui/A/native-cleanup-before-wait.png",
+          "bytes": 233,
+          "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+        },
+        {
+          "id": "E123",
+          "kind": "local",
+          "path": "local/research/codex/preclock-cleanup-r1/cleanup-ui/A/native-cleanup-render12-before-back.png",
+          "bytes": 176426,
+          "sha256": "03e6a18ecb6c80a41fa1a9ea4af3490f42f78b5564952e6ae3f1d01023a7030f"
+        },
+        {
+          "id": "E124",
+          "kind": "local",
+          "path": "local/research/codex/preclock-cleanup-r1/cleanup-ui/A/native-cleanup-render4.png",
+          "bytes": 175929,
+          "sha256": "c00ecfd2a88864a00d9eb7054f802ab5747d4114f9590fdaa91008a1a8c2f73b"
+        },
+        {
+          "id": "E125",
+          "kind": "local",
+          "path": "local/research/codex/preclock-cleanup-r1/cleanup-ui/A/native-cleanup-render8.png",
+          "bytes": 175975,
+          "sha256": "29932ecdf4d3642c3eb3e53dad30bb9907ac77676b4ad49249154f247c10e34b"
+        },
+        {
+          "id": "E126",
+          "kind": "local",
+          "path": "local/research/codex/wine_probe_preclock_cleanup.py",
+          "bytes": 41004,
+          "sha256": "32ef29ec4621ebf2c38fb7cfbf9e44ce4f0385226ca1f19611897a15fe0f6b40"
+        },
+        {
+          "id": "E127",
+          "kind": "local",
+          "path": "local/research/codex/wine_probe_preclock_cleanup_ui.py",
+          "bytes": 42820,
+          "sha256": "29c1d2be12f4b3a6f1c5965c31fb7c3ec214c0450ed2b71d7939dda9d7399233"
+        }
+      ],
+      "delta": {
+        "added": [
+          "Native107/slotIDclear/chiefafterpreclockEOF previouslymissinginCP072, nowtworunsconfirmedhẹp.",
+          "Renderedroom/normalBackactual86/lobbyUI measuredafterfocus/wait, notassumedfromnativeIDclear/OSreturn."
+        ],
+        "corrected": [
+          "Immediateblackimage/native-onlystopinsufficientforusableUI; followupobservationaddedwithoutprotocol/clientpatch. Notcausalclaimfocus/waitfixesengine.",
+          "CP072sendercleanup/lateAreset/unknownoldtrace history preserved, notcallednativefailureorrewritten."
+        ],
+        "superseded": [
+          "NEXT-PRECLOCK-DIAGNOSTIC measurednativecleanup/UI bounded; nextactualTCPguardreplay, no107/175180rediscovery/providerbypass."
+        ]
+      },
+      "blockers": [
+        "Generalroomleave86/servicecatalogreset/recreate/rejoin/accountresume/hostvariant/timeout/loadfail/fullreset stillopen.",
+        "HistoricalmainstartupSIGABRTcauseunknown; nonewfailureinthiswindow notstabilityfix. MixedownerCP071partial/fullauthority/fullmatch/K5/K6a/LANInternet remainopen."
+      ],
+      "next_steps": [
+        {
+          "id": "NEXT-PRECLOCK-DIAGNOSTIC",
+          "task": "KRE-005b",
+          "state": "superseded",
+          "action": "CP074native107/IDclear/chief/renderedroom/actualUIBack86measuredhẹp; no newservice/providerpatch. RemaininggeneralvariantscanonicalRESEARCH.",
+          "owner": "Codex",
+          "reviewer": "Codex"
+        },
+        {
+          "id": "NEXT-CURRENT-TCP-GUARDS",
+          "task": "KRE-005b",
+          "state": "active",
+          "action": "ImmediatelyreuseCP049proxyfailures/CP063127/CP067118dispatchercontrols/CP069basicroute/nativeoracles. Newcurrentauthcache/profile41/CP073duo67positivecondition, privatechannelproxy3858→23858/exactbytesbeforeinjection, capturedactual124118127bodyreplaywithcurrentupstreamseq/resequenceactual. Origin/client/upstream/serverSHAseqjoins; old/duplicate noID/job/claim170/resultsideeffect, actualcurrentround2 nativeeffects/state/resultcontinue. Oneboundedattempt,nounchangedretry/callingproxyreplaynativewriter/authproof.",
+          "owner": "Codex",
+          "reviewer": "Codex"
+        }
+      ],
+      "review": {
+        "status": "waived",
+        "as_of_utc": "2026-11-02T21:40:13.296836+00:00",
+        "reference": "docs/evidence/checkpoints/review-waiver.json",
+        "scope": "Codex solo RE/code/runtime/selfcheck, not independent approval.",
+        "authorization": {
+          "by": "project_owner",
+          "reference": "docs/evidence/checkpoints/review-waiver.json",
+          "reason": "Owner explicitly requested solo without Claude review."
+        }
+      },
+      "docs_sync": [
+        {
+          "path": "README.md",
+          "state": "updated",
+          "reason": "CP074nativepreclockcleanup/UI/input andscope/limits, nextselectedactualTCPguardprobe; no gatepromotion/stabilityfix."
+        },
+        {
+          "path": "docs/PLAN.md",
+          "state": "updated",
+          "reason": "CP074nativepreclockcleanup/UI/input andscope/limits, nextselectedactualTCPguardprobe; no gatepromotion/stabilityfix."
+        },
+        {
+          "path": "docs/PROTOCOL.md",
+          "state": "updated",
+          "reason": "CP074nativepreclockcleanup/UI/input andscope/limits, nextselectedactualTCPguardprobe; no gatepromotion/stabilityfix."
+        },
+        {
+          "path": "docs/RESEARCH.md",
+          "state": "updated",
+          "reason": "CP074nativepreclockcleanup/UI/input andscope/limits, nextselectedactualTCPguardprobe; no gatepromotion/stabilityfix."
+        },
+        {
+          "path": "docs/features.json",
+          "state": "updated",
+          "reason": "CP074nativepreclockcleanup/UI/input andscope/limits, nextselectedactualTCPguardprobe; no gatepromotion/stabilityfix."
+        },
+        {
+          "path": "docs/COVERAGE.md",
+          "state": "updated",
+          "reason": "CP074nativepreclockcleanup/UI/input andscope/limits, nextselectedactualTCPguardprobe; no gatepromotion/stabilityfix."
+        },
+        {
+          "path": "docs/evidence/preclock-eof/README.md",
+          "state": "updated",
+          "reason": "CP074nativepreclockcleanup/UI/input andscope/limits, nextselectedactualTCPguardprobe; no gatepromotion/stabilityfix."
+        },
+        {
+          "path": "docs/evidence/preclock-cleanup/README.md",
+          "state": "updated",
+          "reason": "CP074nativepreclockcleanup/UI/input andscope/limits, nextselectedactualTCPguardprobe; no gatepromotion/stabilityfix."
+        }
+      ]
     }
   ],
   "audits": [
@@ -146273,6 +147363,12 @@
       "state": "open",
       "canonical": "docs/PLAN.md",
       "reference": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/106"
+    },
+    {
+      "id": "KRE-037",
+      "state": "open",
+      "canonical": "docs/PLAN.md",
+      "reference": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/108"
     }
   ]
 }

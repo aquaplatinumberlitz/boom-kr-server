@@ -1,7 +1,7 @@
 # Kế hoạch server giả lập KR 00967
 
 Nguồn chuẩn của project `boom-kr-server`; bản nhập từ plan đã được dsh1/dsh2 review tại `1eee46d`.
-Cập nhật03/11 JST (CP073): [popup auxiliary vs main](PROTOCOL.md#launcher-error-attribution) đã tách bằng control; chưa stabilityfix/cause main. Tiếp native107preclock với error/fallback diagnostics; AUD022, audit kếCP076.
+Cập nhật03/11 JST (CP074): [nativepreclockcleanup/UI](PROTOCOL.md#preclock-cleanup) đã đo hẹp; không stabilityfix/fullmembership. Tiếp selectedTCPguardadmission/currentprofile; AUD022, audit kếCP076.
 
 
 ### Mục tiêu, baseline và phạm vi
@@ -37,13 +37,13 @@ với client Rust không chứng minh có thể điều khiển client KR bằng
 
 ### Tiến độ hiện hành theo bằng chứng
 
-| Task/mốc | Trạng thái tại CP073 | Nguồn chuẩn |
+| Task/mốc | Trạng thái tại CP074 | Nguồn chuẩn |
 |---|---|---|
 | KRE-004/issue6 | Đã review/merge PR7 và đóng issue:recipe r1 đến local accept;không phải full K1 | [Wine r1](evidence/wine/README.md) |
 | Bootstrap reply | PR8 đã merge;debugger ProcessPatchreturn1,không ép success | [bootstrap evidence](evidence/bootstrap-wire/README.md) |
 | KRE-005a/issue9,R2 | PR10 đã merge:3 cold start cửa sổ/second accept;issue9 còn mở | [R2 evidence](evidence/wine-r2/README.md) |
 | WCP hai-reply | Run CP001 là lịch sử chưa C→S; CP006 đã đo request đầu trên copy tham số hóa | [PROTOCOL](PROTOCOL.md#wcp),[WCP evidence](evidence/wcp/README.md) |
-| KRE-005b/issue14 | CP006–072 đã merge; CP073 auxiliary/main attribution tự kiểm/tích hợp theo [PR107](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/107); fullround/authority/full auth còn mở | [Q-023](RESEARCH.md#q-023), [service](evidence/probe-service/README.md) |
+| KRE-005b/issue14 | CP006–073 đã merge; CP074 preclocknativecleanup/UI tự kiểm/chờ PR; fullround/authority/full auth còn mở | [Q-023](RESEARCH.md#q-023), [service](evidence/probe-service/README.md) |
 | K0/K1 | Chưa nghiệm thu toàn gate;Windows vanilla/control ownership và các điều kiện còn thiếu giữ mở | Gate dưới,[Q-022](RESEARCH.md) |
 | K2a/K2 | Primitive/WCP, CP057stream native/model và CP058–060authcallback137/135/errors0 đã có; fullcodec/authauthority/reconnect và gate chưa pass | [PROTOCOL](PROTOCOL.md#login-auth),[Q-023](RESEARCH.md#q-023) |
 | K3 | Copy đã vẽUI/đóngnotice, A/B/Cprofile đọc sạch và mộtnamedcachewarm được nhận; identityauthority/toàncache/codec/K3 chưa nghiệm thu | [Contract sảnh](PROTOCOL.md#channel-lobby) |
@@ -60,15 +60,18 @@ KRE-005b/issue14 vẫn mở. Các bước dưới là **thứ tự ưu tiên**, 
 xong checkpoint/commit/PR thì chuyển ngay việc kế tiếp trong thứ tự này, không tự dừng/chờ nhắc.
 Một blocker chỉ kết thúc nhánh đo tương ứng; ghi rõ rồi tiếp việc độc lập có thể làm, không tự đóng gate.
 
-1. **KR-X003/R003/S001 — preclocknative107 với attribution diagnostics:** CP073 [controls](PROTOCOL.md#launcher-error-attribution)
-   tái hiện popup2000:0 trong auxiliary/noTCP; chưa chứng minh lỗi locale chặn main, không sửa provider/
-   bypassabort. HaiA-only và duo actual67 currentprofile positive; dùng cửa sổ này hoàn tất CP072
-   native107/slot1ID2→0/chief sauEOF trướcclock. Giữ actual99hold/currentprofile/productionservice,
-   observer chờnativecleanup≤30s thay service-refresh+3s, tắt autoUI sauEOF. Thêm read-only1254CC0
-   errorstate/knownCreateProcess/HTTPcaller để nếu startupfail thì logđúng rootbranch thay gánpopup.
-   Hashmatch/reuse CP004/006–020/050/052–054/072/073 trước đo; không tìm lại175/180 hoặc thay wire.
-   Nếu tới nativefailure mới: giữerror/args/caller, chỉ mở đúng nhánh; không retry launcher/prefix/
-   TCPproxy/chain nguyên trạng. Chưa currentfullmatch hoặc gate mới.
+1. **KR-B003/F004/F006/F009/S001 — guard qua actualTCP/framer:** CP074nativecleanup/UI đã đo,
+   không mở lại lifecycle/locale đã biết trước task này. CP049/063/067 replay ởdispatcher bypassTCP/
+   framer/seq; còn thiếu admission qua transport thực. Reuse capturedbody/schema/nativeoracles/current
+   guards và proxyreferenceCP049; hai proxy cũ dừng trước67/Start, không lặp nguyên trạng. Điều kiện
+   mới: profileauth/string/cache/basicCP058/059/069, CP073currentduo67positive và knownerrorfallbackprobe.
+   Trong private namespace/lease, channelproxy3858→23858 trướcinjection forward exactbyte; saucapture
+   actual124/118/127, proxyemit exactbody duplicate/oldkey-oldtick với freshupstreamseq, resequence
+   actualframes tiếp theo. Join clientraw vs upstreamraw vs serverchunks bằngSHA/seq/timestamp, origins
+   rõ không gọi replay là nativewriterrequest. Kiểm không thêmID/job/claim/170/result, actualcurrentround2
+   còn effect/state/result/reset; modeloracle không đủ nếu thiếu nativeintegration. Một boundedattempt,
+   failedsetup phải giữraw và đổi nhánh nếu chưa newcondition; không tìm lại writer/consumer/clock.
+   Chưa auth/forgedcurrentkey/fullvalidator/toàncodec hoặc gate mới.
 2. **KR-B003/KR-F006 — nợ có giới hạn:** [CP057](PROTOCOL.md#codec-stream-boundaries) đã đo stream/
    seq/bounds trong model, không mở lại76split hoặc cấp buffer lớn chỉ để vượt allocationguardFFFFFFFF.
    Full modes/prefix guard/live reset, distance/auth/transport/kim-cứu của reportguard giữ trong RESEARCH;
