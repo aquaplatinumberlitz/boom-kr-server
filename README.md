@@ -29,12 +29,13 @@ runtime nào có nguồn, còn thiếu gì và phép kiểm nào giải quyết.
 evidence/hash và câu hỏi; [PLAN](docs/PLAN.md#current-order) giữ duy nhất thứ tự công việc.
 Đây là scope đường bootstrap → login → sảnh → phòng → Battle → kết quả/reset, không kiểm kê toàn client.
 
-CP074: sau BEOF trước clock, A đã đọc107/xóa ID của B/giữ host, phòng vẽ lại đúng; Back phát86 và UI sảnh.
-[Contract/giới hạn](docs/PROTOCOL.md#preclock-cleanup), [raw/hash](docs/evidence/preclock-cleanup/README.md).
-Tiếp kiểm guard gói cũ/trùng qua TCP thật; chưa fullmatch/K6a/LAN/Internet/fullvalidator/reset/accountresume.
+CP075: 12 replay body cũ/trùng của118/124/127 đã qua TCP thật và bị guard loại; không thêm hiệu ứng.
+[Contract/giới hạn](docs/PROTOCOL.md#current-tcp-replay), [raw/hash](docs/evidence/current-tcp-replay/README.md).
+Run có R1result/return và R2item/bom/deathstate, hết thời gian trước R2result; tích hợp hai vòng còn partial.
+Tiếp kiểm membership sau Back86/tạo lại phòng; chưa fullmatch/K6a/LAN/Internet/fullvalidator/accountresume.
 
-CP073 đã merge [PR107](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/107) tại `5c64293`.
-CP074 tự kiểm/tích hợp theo [PR109](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/109), review độc lập [waived](docs/evidence/checkpoints/review-waiver.json).
+CP074 đã merge [PR109](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/109) tại `f84823d`.
+CP075 tự kiểm/chờ PR; review độc lập [waived](docs/evidence/checkpoints/review-waiver.json).
 Audit **AUD022/CP072**, periodic kế **CP076**.
 [Yêu cầu chủ dự án](docs/evidence/owner-directives/continuous-work.json): tiếp tục ngay việc kế trong
 PLAN sau mỗi checkpoint/commit/PR, không tự dừng/chờ nhắc.

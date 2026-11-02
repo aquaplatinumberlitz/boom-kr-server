@@ -1,7 +1,7 @@
 # Kế hoạch server giả lập KR 00967
 
 Nguồn chuẩn của project `boom-kr-server`; bản nhập từ plan đã được dsh1/dsh2 review tại `1eee46d`.
-Cập nhật03/11 JST (CP074): [nativepreclockcleanup/UI](PROTOCOL.md#preclock-cleanup) đã đo hẹp; không stabilityfix/fullmembership. Tiếp selectedTCPguardadmission/currentprofile; AUD022, audit kếCP076.
+Cập nhật03/11 JST (CP075): [TCPbodyreplay](PROTOCOL.md#current-tcp-replay) đã đo12reject/currentR2effects; hai-cycle acceptance partial do hếtbudget trướcR2rank. Tiếp membershipBack86/tạo lại phòng; AUD022, audit kếCP076.
 
 
 ### Mục tiêu, baseline và phạm vi
@@ -37,17 +37,17 @@ với client Rust không chứng minh có thể điều khiển client KR bằng
 
 ### Tiến độ hiện hành theo bằng chứng
 
-| Task/mốc | Trạng thái tại CP074 | Nguồn chuẩn |
+| Task/mốc | Trạng thái tại CP075 | Nguồn chuẩn |
 |---|---|---|
 | KRE-004/issue6 | Đã review/merge PR7 và đóng issue:recipe r1 đến local accept;không phải full K1 | [Wine r1](evidence/wine/README.md) |
 | Bootstrap reply | PR8 đã merge;debugger ProcessPatchreturn1,không ép success | [bootstrap evidence](evidence/bootstrap-wire/README.md) |
 | KRE-005a/issue9,R2 | PR10 đã merge:3 cold start cửa sổ/second accept;issue9 còn mở | [R2 evidence](evidence/wine-r2/README.md) |
 | WCP hai-reply | Run CP001 là lịch sử chưa C→S; CP006 đã đo request đầu trên copy tham số hóa | [PROTOCOL](PROTOCOL.md#wcp),[WCP evidence](evidence/wcp/README.md) |
-| KRE-005b/issue14 | CP006–073 đã merge; CP074 preclocknativecleanup/UI tự kiểm/tích hợp theo [PR109](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/109); fullround/authority/full auth còn mở | [Q-023](RESEARCH.md#q-023), [service](evidence/probe-service/README.md) |
+| KRE-005b/issue14 | CP006–074 đã merge; CP075 TCPguardreplay/currentR2effects tự kiểm/chờ PR; fullround/authority/full auth còn mở | [Q-023](RESEARCH.md#q-023), [service](evidence/probe-service/README.md) |
 | K0/K1 | Chưa nghiệm thu toàn gate;Windows vanilla/control ownership và các điều kiện còn thiếu giữ mở | Gate dưới,[Q-022](RESEARCH.md) |
 | K2a/K2 | Primitive/WCP, CP057stream native/model và CP058–060authcallback137/135/errors0 đã có; fullcodec/authauthority/reconnect và gate chưa pass | [PROTOCOL](PROTOCOL.md#login-auth),[Q-023](RESEARCH.md#q-023) |
 | K3 | Copy đã vẽUI/đóngnotice, A/B/Cprofile đọc sạch và mộtnamedcachewarm được nhận; identityauthority/toàncache/codec/K3 chưa nghiệm thu | [Contract sảnh](PROTOCOL.md#channel-lobby) |
-| K4–K7 | CP039–040 có hai vòng statepeer/result và phục hồi EOF; CP041–043 đo stale158/165/159; CP044 có timer abort và B/C mới bom/death/result/return. CP047 byte khóa, CP049 guard124 và CP050 service EOF/cleanup/hold99 đã đo hẹp; CP051–054 có peer mới B/C/setupEOF, CP056reportguard và CP060newprofileC/B-Ccycle; CP065/066distinctspawn/tranhitem vàCP067/068C2Sguards/hiddenitems cósource hiện hành; membership tổng quát/variants/toànreset/authority chưa nghiệmthu. CP072 preclock175/180 hẹp, nativecleanup còn thiếu. Chưa K6a/LAN/Internet | [Giới hạn lifecycle](PROTOCOL.md#abort-timer) |
+| K4–K7 | CP039–040 có hai vòng statepeer/result và phục hồi EOF; CP041–043 đo stale158/165/159; CP044 có timer abort và B/C mới bom/death/result/return. CP047 byte khóa, CP049 guard124 và CP050 service EOF/cleanup/hold99 đã đo hẹp; CP051–054 có peer mới B/C/setupEOF, CP056reportguard và CP060newprofileC/B-Ccycle; CP065/066distinctspawn/tranhitem vàCP067/068C2Sguards/hiddenitems cósource hiện hành; membership tổng quát/variants/toànreset/authority chưa nghiệmthu. CP074 nativepreclock107/IDclear/UI đã có; CP07512actualTCPreplayrejected/currentR2effects, chưaR2rank trongboundedrun. Chưa K6a/LAN/Internet | [Giới hạn lifecycle](PROTOCOL.md#abort-timer) |
 
 <a id="current-order"></a>
 ### Thứ tự công việc hiện hành
@@ -60,18 +60,17 @@ KRE-005b/issue14 vẫn mở. Các bước dưới là **thứ tự ưu tiên**, 
 xong checkpoint/commit/PR thì chuyển ngay việc kế tiếp trong thứ tự này, không tự dừng/chờ nhắc.
 Một blocker chỉ kết thúc nhánh đo tương ứng; ghi rõ rồi tiếp việc độc lập có thể làm, không tự đóng gate.
 
-1. **KR-B003/F004/F006/F009/S001 — guard qua actualTCP/framer:** CP074nativecleanup/UI đã đo,
-   không mở lại lifecycle/locale đã biết trước task này. CP049/063/067 replay ởdispatcher bypassTCP/
-   framer/seq; còn thiếu admission qua transport thực. Reuse capturedbody/schema/nativeoracles/current
-   guards và proxyreferenceCP049; hai proxy cũ dừng trước67/Start, không lặp nguyên trạng. Điều kiện
-   mới: profileauth/string/cache/basicCP058/059/069, CP073currentduo67positive và knownerrorfallbackprobe.
-   Trong private namespace/lease, channelproxy3858→23858 trướcinjection forward exactbyte; saucapture
-   actual124/118/127, proxyemit exactbody duplicate/oldkey-oldtick với freshupstreamseq, resequence
-   actualframes tiếp theo. Join clientraw vs upstreamraw vs serverchunks bằngSHA/seq/timestamp, origins
-   rõ không gọi replay là nativewriterrequest. Kiểm không thêmID/job/claim/170/result, actualcurrentround2
-   còn effect/state/result/reset; modeloracle không đủ nếu thiếu nativeintegration. Một boundedattempt,
-   failedsetup phải giữraw và đổi nhánh nếu chưa newcondition; không tìm lại writer/consumer/clock.
-   Chưa auth/forgedcurrentkey/fullvalidator/toàncodec hoặc gate mới.
+1. **KR-R004/X003/S001 — Back86 và room membership cùng channel:** CP075 đã đo selectedTCPguard
+   admission/currentR2effects, planned hai-cycle result còn partial; không lặp nguyên run hoặc tìm lại
+   writers/codec/auth/clock. CP074 normalBack86empty/UIsảnh nhưng service chưa explicit86/resetmarkers.
+   Reuse CP034Back/86/room81-82 và CP050/052–054cleanup/host/roster, nguồn VN lobby/session chỉ làm
+   reference; xác định room member khác TCPconnection. Nativecontrol sau Back: actual81 tạo lại/585/
+   106/map/UI, đối chiếu service markers còn cũ. Chỉ sửa service khi có trigger/bằng chứng, giữ loghistory,
+   seq/socket/identity và jobgeneration; không mặc định generalleave/hostpromotion/accountresume.
+   Kiểm one-room profile và peer còn lại trước mở rộng, không fixtureopcode/layoutVN. Runtimeprivate
+   namespace/lease/budget mới theo câu hỏi, không chạy chồng hoặc overwrite raw đãseal.
+   CP075 thiếu R2rank không được tự nâng acceptance; khi integration có điều kiện mới dùng budget
+   cho cảrank+return+refresh, không hạ delaypolicy hoặc gọi boundedpass là hai-roundpass.
 2. **KR-B003/KR-F006 — nợ có giới hạn:** [CP057](PROTOCOL.md#codec-stream-boundaries) đã đo stream/
    seq/bounds trong model, không mở lại76split hoặc cấp buffer lớn chỉ để vượt allocationguardFFFFFFFF.
    Full modes/prefix guard/live reset, distance/auth/transport/kim-cứu của reportguard giữ trong RESEARCH;

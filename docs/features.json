@@ -1,7 +1,7 @@
 {
   "schema": "kre-feature-index-v1",
   "build": "KR00967",
-  "as_of": "2026-11-03 JST / CP074 nativecleanup/UI; self-check PR109; AUD022/nextCP076",
+  "as_of": "2026-11-03 JST / CP075 selectedactualTCPreplay/currentR2effects, planned2cyclepartial; selfcheck; AUD022/nextCP076",
   "sources": {
     "plan": "docs/PLAN.md",
     "contract": "docs/PROTOCOL.md",
@@ -270,7 +270,8 @@
         "evidence": [
           "docs/evidence/primitives/README.md",
           "docs/evidence/probe-service/README.md",
-          "docs/evidence/codec-boundaries/README.md"
+          "docs/evidence/codec-boundaries/README.md",
+          "docs/evidence/current-tcp-replay/README.md"
         ]
       },
       "coverage": {
@@ -332,7 +333,8 @@
         "integration": {
           "state": "partial",
           "refs": [
-            "docs/evidence/probe-service/README.md"
+            "docs/evidence/probe-service/README.md",
+            "docs/PROTOCOL.md#current-tcp-replay"
           ]
         },
         "gate": {
@@ -1304,7 +1306,8 @@
         "evidence": [
           "docs/evidence/bomb-serial/README.md",
           "docs/evidence/probe-service/README.md",
-          "docs/evidence/c2s118-admission/README.md"
+          "docs/evidence/c2s118-admission/README.md",
+          "docs/evidence/current-tcp-replay/README.md"
         ]
       },
       "coverage": {
@@ -1368,7 +1371,8 @@
           "state": "partial",
           "refs": [
             "docs/evidence/probe-service/README.md",
-            "docs/evidence/c2s118-admission/README.md"
+            "docs/evidence/c2s118-admission/README.md",
+            "docs/PROTOCOL.md#current-tcp-replay"
           ]
         },
         "gate": {
@@ -1503,7 +1507,8 @@
           "docs/evidence/current-pickup-race/README.md",
           "docs/evidence/distinct-spawn-race/README.md",
           "docs/evidence/current-hidden-items/README.md",
-          "docs/evidence/basic-battle/README.md"
+          "docs/evidence/basic-battle/README.md",
+          "docs/evidence/current-tcp-replay/README.md"
         ]
       },
       "coverage": {
@@ -1587,7 +1592,8 @@
             "docs/evidence/current-pickup-race/README.md",
             "docs/evidence/distinct-spawn-race/README.md",
             "docs/evidence/current-hidden-items/README.md",
-            "docs/evidence/basic-battle/README.md"
+            "docs/evidence/basic-battle/README.md",
+            "docs/PROTOCOL.md#current-tcp-replay"
           ]
         },
         "gate": {
@@ -1801,7 +1807,8 @@
         "evidence": [
           "docs/evidence/collision-rescue/README.md",
           "docs/evidence/probe-service/README.md",
-          "docs/evidence/report127-freshness/README.md"
+          "docs/evidence/report127-freshness/README.md",
+          "docs/evidence/current-tcp-replay/README.md"
         ]
       },
       "coverage": {
@@ -1866,7 +1873,8 @@
           "state": "partial",
           "refs": [
             "docs/evidence/probe-service/README.md",
-            "docs/evidence/report127-freshness/README.md"
+            "docs/evidence/report127-freshness/README.md",
+            "docs/PROTOCOL.md#current-tcp-replay"
           ]
         },
         "gate": {
@@ -2452,7 +2460,8 @@
           "docs/evidence/distinct-spawn-race/README.md",
           "docs/evidence/c2s118-admission/README.md",
           "docs/evidence/current-hidden-items/README.md",
-          "docs/evidence/basic-battle/README.md"
+          "docs/evidence/basic-battle/README.md",
+          "docs/evidence/current-tcp-replay/README.md"
         ]
       },
       "coverage": {
@@ -2538,7 +2547,8 @@
             "docs/evidence/distinct-spawn-race/README.md",
             "docs/evidence/c2s118-admission/README.md",
             "docs/evidence/current-hidden-items/README.md",
-            "docs/evidence/basic-battle/README.md"
+            "docs/evidence/basic-battle/README.md",
+            "docs/PROTOCOL.md#current-tcp-replay"
           ]
         },
         "gate": {
@@ -2708,7 +2718,8 @@
           "docs/evidence/mixed-owner-power/README.md",
           "docs/evidence/preclock-eof/README.md",
           "docs/evidence/nmco-locale-stability/README.md",
-          "docs/evidence/preclock-cleanup/README.md"
+          "docs/evidence/preclock-cleanup/README.md",
+          "docs/evidence/current-tcp-replay/README.md"
         ]
       },
       "coverage": {
@@ -2824,7 +2835,8 @@
             "docs/evidence/mixed-owner-power/README.md",
             "docs/evidence/preclock-eof/README.md",
             "docs/evidence/nmco-locale-stability/README.md",
-            "docs/evidence/preclock-cleanup/README.md"
+            "docs/evidence/preclock-cleanup/README.md",
+            "docs/PROTOCOL.md#current-tcp-replay"
           ]
         },
         "gate": {
