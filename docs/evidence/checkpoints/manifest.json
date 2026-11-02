@@ -1,7 +1,7 @@
 {
   "schema": "kre-checkpoints-v1",
-  "last_id": "CP056",
-  "completed_count": 56,
+  "last_id": "CP057",
+  "completed_count": 57,
   "audit_interval": 4,
   "last_periodic_audit": 56,
   "next_periodic_audit": "CP060",
@@ -121015,6 +121015,450 @@
           "reason": "CP056 scope/reportguard/corrections/currentpointers;solePLAN now codec thenauthcache;AUD017."
         }
       ]
+    },
+    {
+      "id": "CP057",
+      "previous": "CP056",
+      "lifecycle": "complete",
+      "recorded_utc": "2026-11-02T11:19:48.575419+00:00",
+      "context_commit": "c367bab3851ebc6ab71c5bf6389c8282fd1d58e3",
+      "question": "Does incremental codec retain/consume actual fragmented/coalesced frames and perconnectionsequence consistently with native, and what bounds/reset limits remain?",
+      "scope": "KRE-020/#74. Reuse cachednative14EF300/oracle andactualCP056consecutiveAframes plusVNmethod, no newdecompile/Wine/sourcecode change.76native stream/14completedboundary+1modelblocked/5seqwrap-reset and75productionreceive socketpair scenarios. Document native-vs-designcap/CRCretention; continue auth/cache perPLAN. AUD017throughCP056, nextCP060.",
+      "owner": "Codex",
+      "reviewer": "Codex",
+      "artifacts": [
+        {
+          "name": "CA-r2-login-logout.exe",
+          "sha256": "660447c293ce92270cb9b5815331bca976e8f156366e1fe50b217b6c12e60ce3"
+        },
+        {
+          "name": "CA-r2-stage-social.exe",
+          "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+        },
+        {
+          "name": "CA-r2-stage-social.exe Bcopy",
+          "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+        },
+        {
+          "name": "modO.bin",
+          "sha256": "a08950c833d3acab8281049def7b3dc96b221f107eeda01da3a548e34b91dce5"
+        },
+        {
+          "name": "CA-r2-stage-social.exe Ccopy",
+          "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+        }
+      ],
+      "locators": [
+        "KR14EF300VA/RVA10EF300 rawmodOa08950base400000/static660447; actualCP056state-guard runSHA3e4313e8481ab80a8cdacdd8e7bad67be8880d97d6f4df3f694c0c5f0be384a7",
+        "A channel4/frame0/1 actualop6/67,seq40/43,frame0len74;nativebuffer+7C/remaining+98/receiveSeq+5C/delta+64/cap+6C/prefixguard+AC0",
+        "server.probe_codec.pop_frame/frame_body;ProbeService.receive/run errorclosepolicy;socketpairtwo logicalconnections/dispatchrecorder",
+        "NativeFFFFFFFFdeclared payload stops originaloracleallocationguard14F5790;no raisedbuffer/liveinvalidpacket"
+      ],
+      "findings": [
+        {
+          "summary": "Every split0..74 pluscoalescedactualtwoframes: nativepartial2retainsbytes/seq;complete0+3;native memmove exactframe2/repeatdecode seq43to46,decodedpayloadmatches independentservice.76scenarios.",
+          "source": "kr_static",
+          "status": "confirmed",
+          "method": "emulation",
+          "canonical": "docs/PROTOCOL.md#codec-stream-boundaries",
+          "limits": "Native emulation mode2selector3/syntheticreceiver/preallocatedbuffer/prefixguardoff, actualsourceCP056. No newWine/TCPsplit/live reset/auth/allmodes/gateproof; one malformedallocationcase blocked by model. Nativecapexplicitcaseinput,server64KiBdesign.",
+          "evidence": [
+            "E012",
+            "E021"
+          ]
+        },
+        {
+          "summary": "Productionreceive/socketpair75splitcases onactualbytes dispatch exactframe/body torecorder and independentlogicalconnectionseq40/43/46. No codechange; thisiscodebench,not new clientruntime orstatefulhandlerintegration.",
+          "source": "design",
+          "status": "confirmed",
+          "method": "design",
+          "canonical": "docs/PROTOCOL.md#codec-stream-boundaries",
+          "limits": "Native emulation mode2selector3/syntheticreceiver/preallocatedbuffer/prefixguardoff, actualsourceCP056. No newWine/TCPsplit/live reset/auth/allmodes/gateproof; one malformedallocationcase blocked by model. Nativecapexplicitcaseinput,server64KiBdesign.",
+          "evidence": [
+            "E018",
+            "E021"
+          ]
+        },
+        {
+          "summary": "14boundarycases completed: nativeCRC/wrongseq7retain/noadvance,modelcapexactpass/onebelow5;server64KiBprebodylimit remainsdesign. FFFFFFFFcase hitsallocationmodelguard,subsequentnative unknown,no clientcrashclaim. NativeCRCretains while servicepopthenCRC/errorclose discardsconnection.",
+          "source": "kr_static",
+          "status": "confirmed",
+          "method": "emulation",
+          "canonical": "docs/PROTOCOL.md#codec-stream-boundaries",
+          "limits": "Native emulation mode2selector3/syntheticreceiver/preallocatedbuffer/prefixguardoff, actualsourceCP056. No newWine/TCPsplit/live reset/auth/allmodes/gateproof; one malformedallocationcase blocked by model. Nativecapexplicitcaseinput,server64KiBdesign.",
+          "evidence": [
+            "E010",
+            "E006",
+            "E021"
+          ]
+        },
+        {
+          "summary": "4transformedsequencefixtures reencryptedfromactualbody checkedbynative decoder,u32+3wrap;fresh/warmreplay/freshsyntheticsocket0/7/0. Syntheticresetnotlive logout/reconnect/cacheproof,transformedinputsnotactualwriter.",
+          "source": "kr_static",
+          "status": "confirmed",
+          "method": "emulation",
+          "canonical": "docs/PROTOCOL.md#codec-stream-boundaries",
+          "limits": "Native emulation mode2selector3/syntheticreceiver/preallocatedbuffer/prefixguardoff, actualsourceCP056. No newWine/TCPsplit/live reset/auth/allmodes/gateproof; one malformedallocationcase blocked by model. Nativecapexplicitcaseinput,server64KiBdesign.",
+          "evidence": [
+            "E011",
+            "E021"
+          ]
+        },
+        {
+          "summary": "Catalog KR-B003 Wine reference formerly pointed pureprimitiveemulation; now points existingprobe-service runtimeevidence, no newobservedstate/gatepromotion. MainprotocolheaderdateCP054nowCP057; PLAN movesauthcacheafterboundedstreamproof.",
+          "source": "design",
+          "status": "design",
+          "method": "design",
+          "canonical": "docs/PROTOCOL.md#codec-stream-boundaries",
+          "limits": "Native emulation mode2selector3/syntheticreceiver/preallocatedbuffer/prefixguardoff, actualsourceCP056. No newWine/TCPsplit/live reset/auth/allmodes/gateproof; one malformedallocationcase blocked by model. Nativecapexplicitcaseinput,server64KiBdesign.",
+          "evidence": [
+            "E029",
+            "E025"
+          ]
+        }
+      ],
+      "verification": [
+        {
+          "check": "697relations/sourcehash;76native stream/14completedboundary/1modelblocked/5reset;75socketpair;7catalogtests/docs/artifacts5/5/diff/requiredlocalhistory afterappend. ReuseCP05650server+18checkpointtests unchangedsource,not rerun/newclaims.",
+          "result": "pass",
+          "evidence": [
+            "E021",
+            "E007",
+            "E008",
+            "E005"
+          ],
+          "limits": "No semanticgate/independentreview. Explicitunknown modelallocationcase, not totalnativebounds success. Newchecks relevant docs/oracle only; nativebody/capture sources hashpinned."
+        }
+      ],
+      "evidence": [
+        {
+          "id": "E001",
+          "kind": "repository",
+          "path": "docs/evidence/codec-boundaries/README.md",
+          "bytes": 4039,
+          "sha256": "f53dd2c5424f19c1166e1708462d2d4e3769e329091445ee8ad812d54348803a"
+        },
+        {
+          "id": "E002",
+          "kind": "local",
+          "path": "local/research/codex/codec-boundaries-r1/actual-A-frame0.bin",
+          "bytes": 74,
+          "sha256": "76983068130629700df259852d6e91e3d51d195273a309e2a0cde11a1a6f4761"
+        },
+        {
+          "id": "E003",
+          "kind": "local",
+          "path": "local/research/codex/codec-boundaries-r1/actual-A-frame1.bin",
+          "bytes": 41,
+          "sha256": "950d7090ae4a03bb261454948524c61f1b08fa9d90174f7f54d17b4ea2b7bd25"
+        },
+        {
+          "id": "E004",
+          "kind": "local",
+          "path": "local/research/codex/codec-boundaries-r1/append_checkpoint.py",
+          "bytes": 7443,
+          "sha256": "84de282d0f57c06218a89c84555f1b7dfd63f181b43b3f0b93158aa343b1095e"
+        },
+        {
+          "id": "E005",
+          "kind": "local",
+          "path": "local/research/codex/codec-boundaries-r1/artifacts-check.txt",
+          "bytes": 253,
+          "sha256": "649c6624aa6d317dfc1db5e16fea683cfbc9d9cf4dd3df11c0d70e57409054a0"
+        },
+        {
+          "id": "E006",
+          "kind": "local",
+          "path": "local/research/codex/codec-boundaries-r1/boundary-summary.txt",
+          "bytes": 921,
+          "sha256": "9234376b36d8ea8fafabaca22afee0c1c709c899f84bdde43a2436288853fe5e"
+        },
+        {
+          "id": "E007",
+          "kind": "local",
+          "path": "local/research/codex/codec-boundaries-r1/catalog-tests.txt",
+          "bytes": 105,
+          "sha256": "1169eb01c3a69c23881bb5092e7e12df4d8a9086668b3c811c273f0ad827981c"
+        },
+        {
+          "id": "E008",
+          "kind": "local",
+          "path": "local/research/codex/codec-boundaries-r1/docs-check.txt",
+          "bytes": 174,
+          "sha256": "d78a0cacea381ff147387adc3279f6c831f7c4b0dcacdc8cb819cb4805920c01"
+        },
+        {
+          "id": "E009",
+          "kind": "local",
+          "path": "local/research/codex/codec-boundaries-r1/issue-body.md",
+          "bytes": 971,
+          "sha256": "7d2c43c822494a17aaca49572247596bea613943de52a7d560f8cffe0aee6fee"
+        },
+        {
+          "id": "E010",
+          "kind": "local",
+          "path": "local/research/codex/codec-boundaries-r1/native-boundaries.json",
+          "bytes": 11621,
+          "sha256": "a5b048dddbe23c2e49e338119d185d8abeb4b2a8d415f10d839be49dc52b6a99"
+        },
+        {
+          "id": "E011",
+          "kind": "local",
+          "path": "local/research/codex/codec-boundaries-r1/native-reset.json",
+          "bytes": 3414,
+          "sha256": "5eef440a65f72465788fa8138b6a35af5404380314ee3f30685b7a52777caf87"
+        },
+        {
+          "id": "E012",
+          "kind": "local",
+          "path": "local/research/codex/codec-boundaries-r1/native-stream.json",
+          "bytes": 48530,
+          "sha256": "c3198f45e3242c50ecd7834a2227cb13ef2db28c6630e118cf4c6c5693f20e4c"
+        },
+        {
+          "id": "E013",
+          "kind": "local",
+          "path": "local/research/codex/codec-boundaries-r1/native_boundaries.py",
+          "bytes": 2141,
+          "sha256": "07abd54d730f3c8ceb07d231fcc0e3bab2cc0c6f2feb389320614dc2fde81d3f"
+        },
+        {
+          "id": "E014",
+          "kind": "local",
+          "path": "local/research/codex/codec-boundaries-r1/native_reset.py",
+          "bytes": 1652,
+          "sha256": "ed061b17c958fc89532e954749ddfade7228b013846beaf73b5be221bc9c7d79"
+        },
+        {
+          "id": "E015",
+          "kind": "local",
+          "path": "local/research/codex/codec-boundaries-r1/native_stream.py",
+          "bytes": 3509,
+          "sha256": "14a03bc6c3f10200ef86c71c7fed5cc2f63d07c7a38e6e4f26978db9737e5a4e"
+        },
+        {
+          "id": "E016",
+          "kind": "local",
+          "path": "local/research/codex/codec-boundaries-r1/reuse-question.json",
+          "bytes": 4216,
+          "sha256": "7313fac334453466eb39a05127d9788c6a80b84e9c30a5feb26a9526068408eb"
+        },
+        {
+          "id": "E017",
+          "kind": "local",
+          "path": "local/research/codex/codec-boundaries-r1/reuse.py",
+          "bytes": 2699,
+          "sha256": "52563c0009b208d57edbb84b77721a1a709fe401614272bbadec0584eb58c74f"
+        },
+        {
+          "id": "E018",
+          "kind": "local",
+          "path": "local/research/codex/codec-boundaries-r1/service-stream.json",
+          "bytes": 83836,
+          "sha256": "2642103d2fb57022eacfe3f10d8a7391f31088dad73ea73cd5548a9716b6f670"
+        },
+        {
+          "id": "E019",
+          "kind": "local",
+          "path": "local/research/codex/codec-boundaries-r1/service_stream.py",
+          "bytes": 2396,
+          "sha256": "62e98e111fcfaf014b09500ab7ef5791204e23f8dd24510da117a21e89a1db66"
+        },
+        {
+          "id": "E020",
+          "kind": "local",
+          "path": "local/research/codex/codec-boundaries-r1/sync_docs.py",
+          "bytes": 6974,
+          "sha256": "e5e6a519c56a1d60115ac1e52550b3922df0123985bd37e63ac25201ffc57254"
+        },
+        {
+          "id": "E021",
+          "kind": "local",
+          "path": "local/research/codex/codec-boundaries-r1/verification.json",
+          "bytes": 1271,
+          "sha256": "5558b0d522f9845966b4b5ef3f8d1f077e02c0b8c63c4a4013242a9be8dcf2c1"
+        },
+        {
+          "id": "E022",
+          "kind": "local",
+          "path": "local/research/codex/codec-boundaries-r1/verify.py",
+          "bytes": 3338,
+          "sha256": "bf4c92393abeaed034ed016905facafc22caa94ed26f7d90ee036e46b56df605"
+        },
+        {
+          "id": "E023",
+          "kind": "local",
+          "path": "local/research/codex/codec-boundaries-r1/cp057-snapshot/README.md",
+          "bytes": 3818,
+          "sha256": "5991efd9e62ea168c7217a269ba0c9b307816c587de77eed7ad8ba09390dec9b"
+        },
+        {
+          "id": "E024",
+          "kind": "local",
+          "path": "local/research/codex/codec-boundaries-r1/cp057-snapshot/docs/COVERAGE.md",
+          "bytes": 66571,
+          "sha256": "30e3a6a47d1e2b0f8442203c7fda6a6f1aedb4b554c885e72c2289e5a787b401"
+        },
+        {
+          "id": "E025",
+          "kind": "local",
+          "path": "local/research/codex/codec-boundaries-r1/cp057-snapshot/docs/PLAN.md",
+          "bytes": 29549,
+          "sha256": "0882390d1eb1aba7acece29f29292a682306278a67fb0944797aa12d43423a50"
+        },
+        {
+          "id": "E026",
+          "kind": "local",
+          "path": "local/research/codex/codec-boundaries-r1/cp057-snapshot/docs/PROTOCOL.md",
+          "bytes": 199310,
+          "sha256": "f3446ebcff3dd834173cda96b860a18f2786dee30fd6bbc7118fc6640a1e7478"
+        },
+        {
+          "id": "E027",
+          "kind": "local",
+          "path": "local/research/codex/codec-boundaries-r1/cp057-snapshot/docs/RESEARCH.md",
+          "bytes": 29300,
+          "sha256": "61cb68de0bdd3b6d139c791e641f8d59474a13d30c0a0449f021b33bd49fd9cf"
+        },
+        {
+          "id": "E028",
+          "kind": "local",
+          "path": "local/research/codex/codec-boundaries-r1/cp057-snapshot/docs/evidence/codec-boundaries/README.md",
+          "bytes": 4039,
+          "sha256": "f53dd2c5424f19c1166e1708462d2d4e3769e329091445ee8ad812d54348803a"
+        },
+        {
+          "id": "E029",
+          "kind": "local",
+          "path": "local/research/codex/codec-boundaries-r1/cp057-snapshot/docs/features.json",
+          "bytes": 69355,
+          "sha256": "5dab14a0159310170c7976abcc9054348e837ed4f8853b94e40b239b3f8807eb"
+        },
+        {
+          "id": "E030",
+          "kind": "local",
+          "path": "local/research/codex/bootstrap-recv-oracle.py",
+          "bytes": 2104,
+          "sha256": "1e86c06540e8fe654564c5bd403f859070f77c9af0d5d11c70c9351198e00ae2"
+        },
+        {
+          "id": "E031",
+          "kind": "local",
+          "path": "local/research/codex/bootstrap-copy-oracle.py",
+          "bytes": 2377,
+          "sha256": "8127e0f2fbc385360e878bb68ae3a6680eabbf7456335f0f3db75c7c3b73a8c0"
+        },
+        {
+          "id": "E032",
+          "kind": "local",
+          "path": "local/research/codex/leave-r1/14EF300.asm",
+          "bytes": 10471,
+          "sha256": "a508f9818aaf62663efe1524f3f07860a319efb33805ef757106381754e52512"
+        },
+        {
+          "id": "E033",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/state-guard/run.json",
+          "bytes": 135332,
+          "sha256": "3e4313e8481ab80a8cdacdd8e7bad67be8880d97d6f4df3f694c0c5f0be384a7"
+        },
+        {
+          "id": "E034",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/server-tests.txt",
+          "bytes": 149,
+          "sha256": "c18a18b2a4e2b64d035f0125d0a8e516dcd8a9e0f59115dda75a1f6ce2b3017d"
+        },
+        {
+          "id": "E035",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/checkpoint-tests.txt",
+          "bytes": 117,
+          "sha256": "f6b876ffa307f534b382c184a2c63348880c65dca89738ee971589a0a3262287"
+        }
+      ],
+      "delta": {
+        "added": [
+          "Nativebufferretain/memmove/seq onallactualsplits/coalesced,OSsocketpairperconnectionchecks,negativeboundary andwrap/syntheticreset evidence."
+        ],
+        "corrected": [
+          "KR-B003runtime reference replaced primitiveonlyevidence with existingrealservice/Winerun, no runtimepromotion.",
+          "Initialnative_stream report readframe2payload withframe1size; fixedheaderlength andindependentpayloadcheck beforefinalhash. Initialboundary sourceprefixsplitliteral syntaxerror correctedrsplitnewline,notnativefailure."
+        ],
+        "superseded": [
+          "Next76split/coalescedpartialtask measuredwithinmodel; PLANpriority now authsuccess/profile/cacheconsumer. Do not equate this with full K2 or raiseallocatoruntilpasses."
+        ]
+      },
+      "blockers": [
+        "Prefixguardoff/syntheticreceiver,fullmodes/string/blob/live reset/reconnect/native cap configuration remainunknown;FFFFFFFFblocked atallocationmodel.",
+        "Auth/profile/cache cold/warm/missing/reconnect still fixturedebt; validator/reset/K5/K6a/LAN/Internet open."
+      ],
+      "next_steps": [
+        {
+          "id": "NEXT-CODEC-BOUNDARIES",
+          "task": "KRE-005b",
+          "state": "superseded",
+          "action": "Narrowmode2stream/seq boundaries measuredCP057; keepremainingmodes/prefix/live reset/modelgap inRESEARCH,onlyreopenwithspecificconsumerblocker.",
+          "owner": "Codex",
+          "reviewer": "Codex"
+        },
+        {
+          "id": "NEXT-FULL-LOGIN-FIELDS",
+          "task": "KRE-005b",
+          "state": "active",
+          "action": "Immediately reuse successprefix/ID/cache source thentrace remainingconsumer on coldcache;controlone missingfield/file withhashonceexactconsumerknown. Fixtureidentitynotaccountauth.",
+          "owner": "Codex",
+          "reviewer": "Codex"
+        }
+      ],
+      "review": {
+        "status": "waived",
+        "as_of_utc": "2026-11-02T11:19:48.575419+00:00",
+        "reference": "docs/evidence/checkpoints/review-waiver.json",
+        "scope": "Codex solo RE/code/runtime/selfcheck, not independent approval.",
+        "authorization": {
+          "by": "project_owner",
+          "reference": "docs/evidence/checkpoints/review-waiver.json",
+          "reason": "Owner explicitly requested solo without Claude review."
+        }
+      },
+      "docs_sync": [
+        {
+          "path": "README.md",
+          "state": "updated",
+          "reason": "CP057native stream/model/codebench scopes andnextauthcache;no duplicategateclaim."
+        },
+        {
+          "path": "docs/PLAN.md",
+          "state": "updated",
+          "reason": "CP057native stream/model/codebench scopes andnextauthcache;no duplicategateclaim."
+        },
+        {
+          "path": "docs/PROTOCOL.md",
+          "state": "updated",
+          "reason": "CP057native stream/model/codebench scopes andnextauthcache;no duplicategateclaim."
+        },
+        {
+          "path": "docs/RESEARCH.md",
+          "state": "updated",
+          "reason": "CP057native stream/model/codebench scopes andnextauthcache;no duplicategateclaim."
+        },
+        {
+          "path": "docs/features.json",
+          "state": "updated",
+          "reason": "CP057native stream/model/codebench scopes andnextauthcache;no duplicategateclaim."
+        },
+        {
+          "path": "docs/COVERAGE.md",
+          "state": "updated",
+          "reason": "CP057native stream/model/codebench scopes andnextauthcache;no duplicategateclaim."
+        },
+        {
+          "path": "docs/evidence/codec-boundaries/README.md",
+          "state": "updated",
+          "reason": "CP057native stream/model/codebench scopes andnextauthcache;no duplicategateclaim."
+        }
+      ]
     }
   ],
   "audits": [
@@ -121182,6 +121626,12 @@
       "state": "open",
       "canonical": "docs/PLAN.md",
       "reference": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/72"
+    },
+    {
+      "id": "KRE-020",
+      "state": "open",
+      "canonical": "docs/PLAN.md",
+      "reference": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/74"
     }
   ]
 }

@@ -1,7 +1,7 @@
 {
   "schema": "kre-feature-index-v1",
   "build": "KR00967",
-  "as_of": "2026-11-02 JST / CP056; integration status via PR73, AUD017",
+  "as_of": "2026-11-02 JST / CP057; self-check pending PR; audit nextCP060",
   "sources": {
     "plan": "docs/PLAN.md",
     "contract": "docs/PROTOCOL.md",
@@ -263,7 +263,8 @@
         "plan": "docs/PLAN.md#current-order",
         "evidence": [
           "docs/evidence/primitives/README.md",
-          "docs/evidence/probe-service/README.md"
+          "docs/evidence/probe-service/README.md",
+          "docs/evidence/codec-boundaries/README.md"
         ]
       },
       "coverage": {
@@ -282,20 +283,22 @@
         "kr_static": {
           "state": "partial",
           "refs": [
-            "docs/PROTOCOL.md#wcp"
+            "docs/PROTOCOL.md#wcp",
+            "docs/PROTOCOL.md#codec-stream-boundaries"
           ]
         },
         "emulation": {
           "state": "checked",
           "refs": [
-            "docs/evidence/primitives/README.md"
+            "docs/evidence/primitives/README.md",
+            "docs/evidence/codec-boundaries/README.md"
           ]
         },
         "runtime": {
           "wine_diagnostic_copy": {
             "state": "observed",
             "refs": [
-              "docs/evidence/primitives/README.md"
+              "docs/evidence/probe-service/README.md"
             ]
           },
           "windows_original": {

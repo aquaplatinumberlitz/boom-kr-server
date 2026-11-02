@@ -1,6 +1,6 @@
 # KR 00967 — contract tương thích client gốc
 
-Revision kr-legacy-contract-r1; cập nhật02/11/2026 JST (CP054).
+Revision kr-legacy-contract-r1; cập nhật02/11/2026 JST (CP057).
 **Contract có bằng chứng từng phần; chưa nghiệm thu full codec K2**.
 Lộ trình và thứ tự task chỉ giữ ở [REWRITE_PLAN — KRE](PLAN.md).
 Đây là contract của repo server KR. ADR0009 của bản viết lại là nguồn lịch sử để so sánh;
@@ -2252,3 +2252,32 @@ injection SHA/fields/trigger**,2 actual124 ở control/1 ở fixed vòng2; raw k
 v2 chỉ sửa setdefault label, chưa runtime.5regression + actual-capture dispatcher bench kiểm peer còn
 claim được item bị A từ chối, keyguard trước actor và Start/reset. Không dùng số test đóng gate.
 Distance/auth/transport/malformed/stale127 hoặc report giả, rescue/self-escape/general eligibility vẫn mở.
+
+<a id="codec-stream-boundaries"></a>
+### Codec incremental trên actual frame — CP057
+
+**kr_static/confirmed qua emulation**, [source/hash/recipe/model](evidence/codec-boundaries/README.md).
+Tái dùng cached `14EF300`/RVA10EF300 và oracle CP012–056, rawmodO base400000; không thêm decompile
+hoặc chạy malformed input trên client Wine. VN chỉ hướng cách kiểm socket/seq/retain, không port header.
+Actual A channel capture CP056 `state-guard`, hai frame liên tiếp đầu6/67, seq40/43, frame đầu74byte.
+
+- 76 scenario native: chia frame đầu ở mọi vị trí0..74 và coalesce cả hai. Partial trả2, giữ nguyên
+ bytes/seq; đủ frame trả0, tăng3. Coalesced native memmove giữ **đúng byte frame thứ hai**, call tiếp
+ seq43→46. Payload native khớp decoded body của actual frames; không dùng encoder roundtrip làm oracle.
+- 75 scenario `ProbeService.receive`/socketpair: cùng actual bytes qua chia/coalesce; mỗi logical
+ connection riêng40→43→46, buffer hết, dispatch recorder nhận đúng frame/body. Đây là OS socketpair
+ bench với handler recorder, **không** mới Wine runtime/fragmented liveTCP/auth integration.
+- 14 boundary case native hoàn tất: CRC sai hoặc seq sai trả7, không consume/tăng seq; partial length
+ giữ buffer/seq. Cap native được **cấp tường minh trong model**, exact framesize pass/onebelow trả5;
+ chưa phục hồi cấu hình cap thật. 64KiB của service là `design`, kiểm length trước chờ/allocate body.
+ Native có case headerlength lớn trả2/7 trong model nên không sao chép nguyên giới hạn/overflow sang server.
+- HeaderlengthFFFFFFFF dừng tại allocation guard của oracle cũ (>1000hex buffer); **unknown** phần native
+ sau đó. Không chạy lại bằng cấp allocation lớn, không gọi đây client crash hoặc kết quả full bounds.
+- 4 fixture đổi sequence/reencrypt từ actual plaintext được native decoder kiểm u32+3 wrap ở FFFFFFFE/
+ FFFFFFFF/0/3; đó là fixture biến đổi, không nativewriter capture.1 scenario synthetic fresh→warm replay→
+ fresh reset: cùng frame40 pass→CRC7 ở seq43→pass sau reset socket40; chưa live logout/reconnect/cache.
+
+Service pop tách frame rồi frame_body kiểmCRC; native lỗiCRC giữ buffer. Production run policy đóng
+connection lỗi đó (connection khác giữ riêng), không là native resync/recovery. Không đổi code codec/service
+ở CP057. Prefix guard socket+AC vẫn tắt trong model như oracle trước; mode khác, nguyên bảnWindows,
+full reset/reconnect/header-auth và string/blob boundary theo consumer còn mở, **K2 chưa nghiệm thu**.
