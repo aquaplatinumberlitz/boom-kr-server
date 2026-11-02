@@ -35,7 +35,7 @@ nhốt/chết/peerstate, kết quả/về phòng; sampled vị trí hai actor kh
 Chưa fullmatch/K6a/LAN/Internet/toànreset; tiếp tranhitem thật trên service hiện hành.
 
 CP060 đã merge [PR81](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/81) tại `97e5afc`.
-CP061 tự kiểm/chờ PR, review độc lập [waived](docs/evidence/checkpoints/review-waiver.json).
+CP061 tự kiểm/integration theo [PR83](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/83), review độc lập [waived](docs/evidence/checkpoints/review-waiver.json).
 Audit **AUD019/CP060**, periodic kế **CP064**.
 [Yêu cầu chủ dự án](docs/evidence/owner-directives/continuous-work.json): tiếp tục ngay việc kế trong
 PLAN sau mỗi checkpoint/commit/PR, không tự dừng/chờ nhắc.

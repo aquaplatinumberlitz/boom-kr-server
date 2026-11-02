@@ -2,7 +2,7 @@
 
 Baseline CP060/[PR81](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/81) merge
 `97e5afc` (exactcontext trong manifest); KRE-024/[issue82](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/82).
-Codex solo/tự kiểm, [review waived](../checkpoints/review-waiver.json), chờ PR.
+Codex solo/tự kiểm, [review waived](../checkpoints/review-waiver.json); trạng thái tích hợp ở [PR83](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/83).
 [Contract](../../PROTOCOL.md#current-pair-round), [gap](../../RESEARCH.md#gap-diagnostic-service), [PLAN](../../PLAN.md#current-order).
 Raw `local/research/codex/current-pair-round-r1/`; `reuse-question.json` pin CP048/055/056two-cycle/
 stat/guard/currentkey, CP058auth/CP059cache/CP060profile, VNgame/lobby, boomkr-re/boom-rs/l10n/archive.
