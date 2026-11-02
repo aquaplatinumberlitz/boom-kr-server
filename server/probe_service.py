@@ -245,12 +245,14 @@ class ProbeService:
     def receive_event(self, event, frame, sequence, body):
         if len(body) < 14:
             raise ValueError('unsupported event prefix')
-        subtype, slot = codec.read_fields(body[:2], [1, 1])
+        subtype, slot, x, y, client_tick, actor_field = codec.read_fields(body[:14], [1, 1, 2, 2, 4, 4])
         if slot != ROLE_SLOTS[event['role']]:
             raise ValueError('event slot does not match connection')
         report = {'role': event['role'], 'round': self.room.generation, 'subtype': subtype,
                   'slot': slot, 'seq': sequence, 'monotonic_ns': time.monotonic_ns(),
-                  'payload_hex': body.hex(), 'frame_sha256': hashlib.sha256(frame).hexdigest()}
+                  'payload_hex': body.hex(), 'frame_sha256': hashlib.sha256(frame).hexdigest(),
+                  'client_tick': client_tick, 'actor_field': actor_field,
+                  'body_sha256': hashlib.sha256(body).hexdigest()}
         self.state['event_reports'].append(report)
         if subtype in (17, 19):
             if subtype == 17:
@@ -267,6 +269,24 @@ class ProbeService:
                 payload = body[:6] + codec.pack_fields([int.from_bytes(raw[10:14], 'little')], [4])
             else:
                 payload = body[:6] + body[14:]
+        # Diagnostic policy: compare only reports on this connection. The native
+        # CMainSystem counter continues through Start; do not clear this cursor
+        # with round markers or compare it with another peer/124's cached tick.
+        # Validate the supported trap envelope before changing the cursor.
+        cursor = event.get('report127_cursor')
+        if cursor is not None:
+            delta = (client_tick - cursor['tick']) & 0xFFFFFFFF
+            if delta >= 0x80000000:
+                report['rejected'] = 'report_tick_not_forward'
+                return
+            if delta == 0 and report['body_sha256'] in cursor['bodies']:
+                report['rejected'] = 'duplicate_report_body'
+                return
+        if cursor is None or client_tick != cursor['tick']:
+            cursor = {'tick': client_tick, 'bodies': []}
+            event['report127_cursor'] = cursor
+        cursor['bodies'].append(report['body_sha256'])
+        if subtype in (17, 19):
             event['pickup_ineligible'] = {'generation': self.room.generation,
                                           'subtype': subtype, 'report_sequence': sequence,
                                           'report_sha256': report['frame_sha256']}
@@ -395,6 +415,7 @@ class ProbeService:
             if death and now - death['monotonic_ns'] >= 8 * 10**9 and any(
                 row['role'] != death['role'] and row['role'] in {peer['role'] for peer in self.peers()}
                 and row['round'] == self.room.generation and row['subtype'] == 21
+                and not row.get('rejected')
                 and row['monotonic_ns'] > death['monotonic_ns'] for row in remote_reports
             ):
                 self.room.finish()
