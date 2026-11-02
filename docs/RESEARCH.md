@@ -16,7 +16,8 @@ Thứ tự task chỉ ở [PLAN](PLAN.md#current-order). Tra phạm vi đã bi�
 [coverage/cây chức năng](COVERAGE.md); bảng dưới dẫn đến khoảng trống/phép đo theo cơ chế.
 Nguồn cũ và run/checkpoint giữ trong phần lịch sử bên dưới và manifest; kết luận tại CP cũ không
 được đọc thành trạng thái hiện tại. CP053/054 đã đo host setup EOF/C trước vòng1;
-CP055 nối nguồn t, CP056 có [guard theo report](PROTOCOL.md#pickup-report-state). Giới hạn
+CP055 nối nguồn t, CP056 có [guard theo report](PROTOCOL.md#pickup-report-state),
+CP057 đối chiếu [codec stream trong model](PROTOCOL.md#codec-stream-boundaries). Giới hạn
 [service](PROTOCOL.md#probe-service) và bảng gap dưới giữ mở; không nghiệm thu K5/K6a.
 
 | Câu hỏi / owner | Trạng thái | Khoảng trống và phép đo hiện hành |
@@ -41,7 +42,7 @@ Bảng được [coverage](COVERAGE.md) trích tự động để tra theo chứ
 |---|---|---|
 | <a id="gap-process-patch"></a>KR-B001 | Đối chứng Windows nguyên bản/ownership và recipe cùng cold start chưa nghiệm thu. | Tái dùng recipe có hash; ba cold start đúng một recipe, gắn network attempt với PID; so Windows control khi mở nhánh bootstrap. |
 | <a id="gap-wcp-config"></a>KR-B002 | Fixture tổng hợp đã qua guard; oneclickuser/+E9C và dữ liệu/cache thật chưa đủ. | Chỉ mở consumer/config đang chặn runtime; so nhánh với và không tham số trên cùng copy, không đo lại +E78 đã giải. |
-| <a id="gap-socket-codec"></a>KR-B003 | Profile hẹp mode2/selector3; full bounds/mode/reset/reconnect chưa nghiệm thu. | So reader server với native KR trên actual frame; thử fragmented/coalesced/boundary/reset từng chiều, không dùng roundtrip tự sinh làm oracle. |
+| <a id="gap-socket-codec"></a>KR-B003 | CP057 native stream splits/coalesce/seq và socketpair khớp; prefixguardoff/modelcap,FFFFFFFF allocationmodel blocked, full modes/string/blob/reset/live reconnect chưa nghiệm thu. | Reuse [scope/model](PROTOCOL.md#codec-stream-boundaries); không chạy lại76split hoặc tăng allocator để làm pass. Khi consumer auth/cache gây trigger mới, đo đúng field/mode/prefix/lifecycle trên actual connection; fresh synthetic socket không là reconnect thật. |
 | <a id="gap-auth-identity"></a>KR-L001 | Success body/profile đầy đủ, token_2/count2 và identity qua reconnect chưa đủ; fixture không là full auth. | Từ prefix có ID đã đo, trace cursor/consumer tiếp theo trên cold cache; đổi đúng một field/control và giữ socket/seq riêng. |
 | <a id="gap-redirect-lobby"></a>KR-L002 | UI sảnh copy đã có; thông tin user/cache/version và variants chưa đủ K3. | Kiểm identity hiển thị cùng request6/17/241 trên cold/warm/missing cache, log stage/seq; không suy từ cửa sổ. |
 | <a id="gap-profile-cache"></a>KR-L003 | Chưa có ma trận cold/warm/missing/reconnect/profile đủ; presence của toàn contract giữ candidate. | Theo reader/cache path đã dẫn ở contract; giữ nguyên fixture, đo cache hiện hữu rồi một control thiếu file có hash. |

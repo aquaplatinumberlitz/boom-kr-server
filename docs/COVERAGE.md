@@ -276,19 +276,19 @@ Dependency: [KR-B002](#kr-b002).
 
 [Contract và giới hạn](PROTOCOL.md#wcp) · [Câu hỏi gốc](RESEARCH.md#gap-socket-codec) · [Thứ tự ở PLAN](PLAN.md#current-order).
 
-Khoảng trống (trích bảng RESEARCH): Profile hẹp mode2/selector3; full bounds/mode/reset/reconnect chưa nghiệm thu.
+Khoảng trống (trích bảng RESEARCH): CP057 native stream splits/coalesce/seq và socketpair khớp; prefixguardoff/modelcap,FFFFFFFF allocationmodel blocked, full modes/string/blob/reset/live reconnect chưa nghiệm thu.
 
-Phép kiểm tối thiểu (trích cùng nguồn): So reader server với native KR trên actual frame; thử fragmented/coalesced/boundary/reset từng chiều, không dùng roundtrip tự sinh làm oracle.
+Phép kiểm tối thiểu (trích cùng nguồn): Reuse [scope/model](PROTOCOL.md#codec-stream-boundaries); không chạy lại76split hoặc tăng allocator để làm pass. Khi consumer auth/cache gây trigger mới, đo đúng field/mode/prefix/lifecycle trên actual connection; fresh synthetic socket không là reconnect thật.
 
-Bằng chứng/build/hash/recipe: [primitives](evidence/primitives/README.md), [probe-service](evidence/probe-service/README.md).
+Bằng chứng/build/hash/recipe: [primitives](evidence/primitives/README.md), [probe-service](evidence/probe-service/README.md), [codec-boundaries](evidence/codec-boundaries/README.md).
 
 | Chiều chứng minh | Khai báo | Nguồn/phạm vi áp dụng |
 |---|---|---|
 | presence | present | [nguồn1](PROTOCOL.md#wcp) |
 | vn_reference | both | [nguồn1](REFERENCES.md) |
-| kr_static | partial | [nguồn1](PROTOCOL.md#wcp) |
-| emulation | checked | [nguồn1](evidence/primitives/README.md) |
-| wine_diagnostic_copy | observed | [nguồn1](evidence/primitives/README.md) |
+| kr_static | partial | [nguồn1](PROTOCOL.md#wcp), [nguồn2](PROTOCOL.md#codec-stream-boundaries) |
+| emulation | checked | [nguồn1](evidence/primitives/README.md), [nguồn2](evidence/codec-boundaries/README.md) |
+| wine_diagnostic_copy | observed | [nguồn1](evidence/probe-service/README.md) |
 | windows_original | unknown | Chưa có bằng chứng trong phạm vi rà |
 | lan | unknown | Chưa có bằng chứng trong phạm vi rà |
 | internet | unknown | Chưa có bằng chứng trong phạm vi rà |
