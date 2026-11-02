@@ -1,0 +1,86 @@
+{
+  "id": "AUD020",
+  "trigger": "periodic",
+  "completed_through": "CP064",
+  "recorded_utc": "2026-11-02T16:13:53.825130+00:00",
+  "auditor": "Codex manual self-audit; independent review waived by owner",
+  "read_files": [
+    "README.md",
+    "docs/PLAN.md",
+    "docs/PROTOCOL.md",
+    "docs/RESEARCH.md",
+    "docs/features.json",
+    "docs/COVERAGE.md",
+    "docs/evidence/current-pair-round/README.md",
+    "docs/evidence/current-pickup-race/README.md",
+    "docs/evidence/report127-freshness/README.md",
+    "docs/evidence/bomb-chain/README.md",
+    "docs/evidence/mixed-owner-chain/README.md",
+    "local/research/codex/report127-freshness-r1/verification.json",
+    "local/research/codex/report127-freshness-r1/control-actor-fields.json",
+    "local/research/codex/report127-freshness-r1/actor-fields.json",
+    "local/research/codex/report127-freshness-r1/guard-current/run.json",
+    "local/research/codex/mixed-owner-chain-r1/reuse-question.json",
+    "local/research/codex/mixed-owner-chain-r1/verification.json",
+    "local/research/codex/mixed-owner-chain-r1/chain-summary.json",
+    "local/research/codex/mixed-owner-chain-r1/measurement-notes.json",
+    "local/research/codex/mixed-owner-chain-r1/adjacent-slim/run.json",
+    "local/research/codex/mixed-owner-chain-r1/spaced-live/client.log",
+    "local/research/codex/mixed-owner-chain-r1/spaced-live/client-B.log",
+    "local/research/codex/mixed-owner-chain-r1/adjacent-live/run.json",
+    "local/research/codex/mixed-owner-chain-r1/adjacent-short/run.json",
+    "local/research/codex/mixed-owner-chain-r1/native-packets.json"
+  ],
+  "method": "Đọc README→PLAN→PROTOCOL(identity/reuse,CP023clockclaim,CP033chain,authority,currentCP058–064)→RESEARCH(currentgaps/history)→evidence CP061–064 và nguồnCP033. Đối chiếu raw/capture:CP063A0/B1 trước175 ởcontrol,guardA1both;CP064actual118cell/power/wire159owner-ID/native159return/158lookup/state/process bằng callback boundaries. Đọc ảnh Bnmcoerror đãseal, failurekhôngđoBattle. Không scriptpass thay semantic audit; oldimmutablemanifest/rawgiữ. Rereadcanonicaldocs sau sửa vàgeneratedcoverage; scopepartial/gate/reviewwaived tách.",
+  "findings": [
+    {
+      "id": "F1",
+      "stale": "RESEARCHgap-diagnostic-service còn actualcontestedindex next dù CP062 đã có,CP063guard đãchạy.",
+      "correction": "Thay bằng link CP061–063integration vàdistinctspawn gap từactualprofile; khônglặprace/auth/cache.",
+      "fixed_in": [
+        "docs/RESEARCH.md",
+        "docs/COVERAGE.md",
+        "docs/PLAN.md"
+      ]
+    },
+    {
+      "id": "F2",
+      "stale": "Authority matrixasofCP060,đảowinner/stale khônglinks mới;CP061/062nextsteps dễđọcthànhcurrent.",
+      "correction": "HeaderCP064,CP062winner/CP063admissiondesign/CP064negativecontrol đúngscope;CP061/062 thêm successor. ClockCP023linkCP055,không đổi oldraw/findings.",
+      "fixed_in": [
+        "docs/PROTOCOL.md"
+      ]
+    },
+    {
+      "id": "F3",
+      "stale": "Tênadjacent/hold shorter dễbịcoi geometryđủ,banđầu parserIDsetter giả remotehit;fullprobe.2still2cells.",
+      "correction": "Actual118 cả3runB3,5;native159return joinexactwire/order/SHA thayassumedsetter;negativecontrols khôngadjacentproof. Slimnmcofailuretách trướcBattle,candidateobserverhypothesisgiữchưaquynhânquả.",
+      "fixed_in": [
+        "docs/PROTOCOL.md",
+        "docs/RESEARCH.md",
+        "docs/evidence/mixed-owner-chain/README.md",
+        "local/research/codex/mixed-owner-chain-r1/parse_chain.py",
+        "local/research/codex/mixed-owner-chain-r1/verify.py",
+        "local/research/codex/mixed-owner-chain-r1/measurement-notes.json"
+      ]
+    },
+    {
+      "id": "F4",
+      "stale": "Exporter41stilloverlap121forRE nhưngK4đòispawnkhác;tiếptụcchainUIvôhạnkhônggiảiacceptance.",
+      "correction": "PLAN ưu tiênCP024source/index→actor/exact121delta/currentprofiledistinctspawn,giữmixedowneradjacentpartialvàreopentrigger. CP064chỉcontrolsinglebombcycle,noK6a/fullreset.",
+      "fixed_in": [
+        "README.md",
+        "docs/PLAN.md",
+        "docs/PROTOCOL.md",
+        "docs/RESEARCH.md",
+        "docs/features.json",
+        "docs/COVERAGE.md"
+      ]
+    }
+  ],
+  "remaining": [
+    "Mixed-owneradjacent remainsunknown,CP033sameowner chainnotinvalidated. SlimBnmcoSetLocaleAndRegion2000:0causeunknown;do notrepeatfailedobserverwithoutchangedcondition.",
+    "Nextdistinctspawn currentprofilebyknownCP024fixture; fullmovement/authauthority/cache/validator/reset/Windowsvanilla/LAN/Internet/gates remainopen.",
+    "CP064selfcheckpendingPR;reviewwaivednotapproved. PeriodicthroughCP064,nextCP068;CP001–063/AUD001–019immutable."
+  ]
+}

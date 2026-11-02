@@ -1,6 +1,6 @@
 # KR 00967 — contract tương thích client gốc
 
-Revision kr-legacy-contract-r1; cập nhật02/11/2026 JST (CP063).
+Revision kr-legacy-contract-r1; cập nhật03/11/2026 JST (CP064).
 **Contract có bằng chứng từng phần; chưa nghiệm thu full codec K2**.
 Lộ trình và thứ tự task chỉ giữ ở [REWRITE_PLAN — KRE](PLAN.md).
 Đây là contract của repo server KR. ADR0009 của bản viết lại là nguồn lịch sử để so sánh;
@@ -619,7 +619,7 @@ static copy, runtime copy và modO **memory-layout** tại RVA, không remap mod
 death tại`E6EFDF` đẩy19, cùng actor và virtual21C trỏB53010. Call`1164D50→13ADD10`
 có return site`B7839F` (trap) và`E6F008` (death), đã bắt stack runtime.
 Prefix chung **14byte**, gồm u8 subtype,u8 getter actor+584/v28,u16`B335C0`,u16`B335E0`,
-u32`12580B0`,u32 actor/v35C. Getter slot/tick/field cuối còn giới hạn semantics;
+u32`12580B0`,u32 actor/v35C. Tại CP023, getter slot/tick/field cuối còn giới hạn semantics; nguồn tick đã nối ở [CP055](#pickup-tick);
 không tự gán4039 thành vị trí map hợp lệ hoặc12580B0 thành milliseconds.
 Sau prefix,`14EC120` nối buffer serialized có length và checksum; native`14EB410` giải đủ:
 
@@ -629,7 +629,7 @@ Sau prefix,`14EC120` nối buffer serialized có length và checksum; native`14E
 | frame53/seq199, death19 |19,0,40,4039,1654,0 |5byte=`ffffffff00` |29/29 |
 
 Native framer/primitive/blob và Adler32(seed0) độc lập đều khớp. Inner tương ứng2u32 vàu32/u8;
-chưa đặt tên tất cả field, chưa kiểm duplicate, stale, peer hoặc ai chấp nhận/correction event.
+chưa đặt tên tất cả field. Tại CP023 chưa kiểm duplicate/stale/peer; [CP063](#report127-freshness) bổ sung admission policy hẹp, chưa authority/correction tổng quát.
 Đây thay phần prefix10/candidate của CP022 bằng envelope đầy đủ và cạnh writer thực;
 không biến báo cáo client thành death được server xác thực.
 
@@ -1958,7 +1958,7 @@ liệt kê và phân biệt với nguyên bản trong mọi demo.
 <a id="authority"></a>
 ### Authority matrix hiện hành và gate review
 
-Bảng này tổng hợp bằng chứng từng phần đến CP060; chưa phải toàn contract server gốc. Mỗi hàng khi
+Bảng này tổng hợp bằng chứng từng phần đến CP064; chưa phải toàn contract server gốc. Mỗi hàng khi
 triển khai phải bổ sung riêng **creator, simulator, validator, broadcaster, peer-editable state**, với
 locator/trace và trạng thái từng ô; những vai trò không nêu dưới đây hiện `unknown` cho KR.
 
@@ -1966,10 +1966,10 @@ locator/trace và trạng thái từng ô; những vai trò không nêu dưới 
 |---|---|---|
 | Movement | CP027 hai client thấy movement hai chiều; [phạm vi](#peer-duo);183 vẫn chỉ ghost | Full schema input/update/correction, validator và quyền sửa vị trí của peer |
 | Bomb place/ID | CP027 hai owner/ID chung1..4 tạo trên cả hai client; [phạm vi](#peer-duo); lặp/cũ CP025 | CP041 có [stale158/ID reuse và fence job local](#round-generation), CP043 có [old159/serial reuse](#late-bomb-confirm); allocator/rollover/concurrent/race/toàn generation và authority ngoài policy thử còn mở |
-| Explode/chain | CP033 hai bom B liền kề từ một158/ID1, control cách hai ô/replay sau chain; [contract](#bomb-chain) | Nhiều owner/ba bom/vật cản/race/generation và authority server gốc còn thiếu |
+| Explode/chain | CP033 một owner; CP064 [hai owner/cách hai ô](#mixed-owner-chain) chỉ xử lý từng timer; liền kề bị blocker bố trí | Mixed-owner liền kề/ba bom/vật cản/race/generation và authority server gốc còn thiếu |
 | Block destroy/item reveal | CP032 list2→FixedBox,158→hai view vỡ/reveal→124/165/stat; report142 từ cả hai; [contract](#hidden-items) | Drop algorithm/server validator, variants/chain và phép loại transport riêng còn thiếu |
-| Item placement/pickup | CP030 nhặt/tranh index; CP031/032 stat/itemẩn; CP045 [bảng nhóm/Roller/MaxPower hai view/reset](#item-families) | CP042 có [old165/index reuse](#item-generation); runtime tại max, KRspeed→px/s/TTL/activevariants, drop/đảo winner/toàn124validator/generation/reset còn thiếu |
-| Trap/death | CP029/036; CP037 kim và tranh chấp cứu/diệt; [kim](#needle-selfescape), [precedence](#contact-precedence) | Validator/duplicate/stale/generation/variants, result21 và đối chứng thêm/đảo chiều còn thiếu |
+| Item placement/pickup | CP030 nhặt/tranh index; CP031/032 stat/itemẩn; CP045 [bảng nhóm/Roller/MaxPower hai view/reset](#item-families) | CP042 có [old165/index reuse](#item-generation); runtime tại max, KRspeed→px/s/TTL/activevariants, drop/toàn124validator/generation/reset còn thiếu; CP062 [winner đảo trên actual tranh index](#current-pickup-race) đã có scope riêng |
+| Trap/death | CP029/036; CP037 kim và tranh chấp cứu/diệt; [kim](#needle-selfescape), [precedence](#contact-precedence) | CP063 [guard stale/duplicate](#report127-freshness) là policy hẹp; fullvalidator/firstseen/forgedforward/actualTCP/generation/variants/result21 vẫn thiếu |
 | Result/reset | CP039 hai vòng statepeer/result/21/return và reset field hẹp; CP044 [timer ở EOF và vòng B/C mới](#abort-timer) | CP041 có [payload cũ khi ID reuse](#round-generation); arbitration/toàn generation/entity/timer/peer/seq không rò vẫn mở; phân biệt run chờ sai origin với ca hoàn tất |
 | Room lifecycle | CP034 leave/promotion/EOF/return; CP035 rejoin/Ready; CP040 chủ B/C Start; CP044 [B/C bom/death/result/return sau abort](#abort-timer) | Bầu chủ/giữ ID-slot/forfeit là policy stub; guest EOF trả A về phòng/xóa B đã đo riêng; CP050 có [service EOF/cleanup](#service-eof); CP051 có [C mới/Start B trong service](#service-replacement); CP052 [guest setup EOF](#setup-eof), CP053 [host với peer chưa map](#host-setup), CP054 [C trước vòng đầu](#prestart-replacement) đã đo; reconnect cùng account/disconnect variants/toàn reset còn mở |
 | Peer lifecycle | CP027 actual99→153; CP045–047 [oldUDP actor/keyguard/endpointcontrol](#udp-generation) | CP048 [service fixture](#probe-service) đã tích hợp key policy hẹp; low8reuse/roster/UDPtype khác/fullgrammar/reliability/relay/reset còn mở. Không coi đổi cổng riêng lẻ là freshness guard hoặc keybyte là auth |
@@ -2411,9 +2411,9 @@ A=(120,289) vòng1/(120,279) vòng2, B=(200,159) cả hai, khớp ở A/B.
 AuthA/B137/errors0/namedcacheaccepted/no528 giữ; sau chỉnh UI delay12s input2round không forcefunction.
 Không dùng processalive/encoder tựsinh hoặc2rank để nâng fullmatch/K6a/LAN/Internet.
 
-Chưa có currentservice hai người **cùng tranh index**/đảo winner/duplicate theo transport;
-[CP030](#item-pickup) đã có method/actualrace trên oldharness, không đọc thành proof profile/service mới.
-Tiếp ca này, tái dùng wire/claim/nativeeffect, không RE lại t/k/auth/cache hoặc chạy mọirace.
+Tại CP061 chưa có currentservice hai người cùng tranh index/đảo winner; [CP062](#current-pickup-race)
+đã đo scope này với delivery165 giữ2s. Duplicate theo actual transport/fullfairness vẫn mở;
+CP030 oldharness giữ provenance riêng, thứ tự hiện hành chỉ ở PLAN.
 
 <a id="current-pickup-race"></a>
 ### Tranh index thật trên serializedservice — CP062
@@ -2440,8 +2440,7 @@ claim reusedindex17 còn nhận được trước khi reserve/consume mới. Hai
 Production claim được consume **trước** queue165; wrapper flush sau2s chỉ nếu room/generation hiện hành,
 discard khácvòng nhưng ca discard chưa runtime riêng. Không thay firstarrival bằng công bằng/thờiđiểm
 va chạm tuyệt đối; normalUIbarrier không chứng minh physics cùngtick. CP030oldharness và CP062current
-service là hai scope có liên kết, không nâng mọi duplicate/stale/transport/mode biến thể. Bước tiếp theo
-[PLAN](PLAN.md#current-order) là khoảng trống report127 stale/duplicate đang ảnh hưởng state/result.
+service là hai scope có liên kết, không nâng mọi duplicate/stale/transport/mode biến thể. Khoảng trống report127 của CP062 được tiếp ở [CP063](#report127-freshness); thứ tự hiện hành chỉ ở [PLAN](PLAN.md#current-order).
 
 <a id="report127-freshness"></a>
 ### Admission report127 theo kết nối — CP063
@@ -2475,3 +2474,32 @@ Clock wrap/half-range và freshconnection chỉ regression policy, không runtim
 Guard không nhận biết old report lần đầu khi thiếu anchor, payload sửa/tick tăng giả, actor/distance/auth,
 reset counter cùng socket hoặc khoảng cách>=nửa miềnu32. Originalvalidator/đơn vị thời gian/transport
 replay admission còn unknown; không dùng reportguard như authority state. Bước tiếp ở [PLAN](PLAN.md#current-order).
+
+<a id="mixed-owner-chain"></a>
+### Hai owner: control khoảng cách và blocker liền kề — CP064
+
+**kr_runtime/confirmed hẹp cho control**, liền kề khác owner vẫn **unknown**;
+[recipe/raw/hash/blocker](evidence/mixed-owner-chain/README.md). Tái dùng CP033 EBE180/B32390/EB80E3/
+ID mapping, currentprofile/guard127 và VN phương pháp nối ID/tầm lúc đặt; không thêm thân hàm native/
+patch hoặc đổi productionservice. Hai timer6s gửi158 riêng ID1/2 là policy emulator, không thời hạn gốc.
+
+Ba run `spaced-live`, `adjacent-live`, `adjacent-short` đều có actual118 A0 tại(3,3), B1 tại(3,5),
+power1, serial0 riêng từng owner, service cấpID1/2. Giữ Right0.8/0.4/0.2s đều ra ô5 trong fullprobe;
+**tên run và thời gian giữ phím không chứng minh liền kề**. Native159/getter kiểm owner/ID/cell.
+Ở cảhai view, root158/ID1 chỉ state0/processID1; ID2 chỉ state0/process trong callback timer riêng.
+Mỗi158 đọc13/13/errors0. Đây là control hai bom khác owner ngoài tầm1, không chain proof.
+
+Pointer/ID remote nối bằng native159 BEGIN→ENTITY→END và exactwire/order/nativefields; local
+IDsetter chỉ dùng khi đã hit, không giả nó chạy cho mọi entity remote. Nhãn row/col EB80E3 kế thừa
+quy ước getter cũ và đảo so actual118; tọa độ chuẩn lấy actual118. Không sửa raw để đổi nhãn.
+
+Run `adjacent-slim` giữ input0.2s và giảm read-only trace chỉ159/158/state/process, nhưng B báo
+`nmcogame.dll SetLocaleAndRegion Error(2000:0)`, channel đóng saurequest6, chưa Battle/bom/replay.
+Không quy lỗi cho slimprobe hoặc timing khi chưa có control nhân quả. Giả thuyết fullprobe làm
+nhiễu keyup chỉ candidate; không hiệu chỉnh px/s/clock từ wallhold. Preparation đầu thiếuGDBfile
+cũng được giữ riêng là lỗi trước Wine, không clientruntimefailure.
+
+Ba ca chỉ một lượt bom, không hai trận/reset/fullmatch/K6a/LAN/authority gốc. CP033 chain một owner
+vẫn nguồn hợp lệ; mixed-owner liền kề/ba bom/vật cản/list3 còn mở. Tránh lặp vô hạn input trên overlap
+profile: [PLAN](PLAN.md#current-order) tiếp distinct spawn bằng nguồn map/index đã có, chỉ mở lại
+mixed-owner chain khi bố trí native đủ điều kiện hoặc probe ổn định hơn.
