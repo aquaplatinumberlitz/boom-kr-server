@@ -2,7 +2,7 @@
 
 Baseline CP056/[PR73](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/73) merge
 `c367bab` (exact context trong manifest); KRE-020/[issue74](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/74).
-Codex solo/tự kiểm, [review waived](../checkpoints/review-waiver.json), chờ PR.
+Codex solo/tự kiểm, [review waived](../checkpoints/review-waiver.json); trạng thái tích hợp ở [PR75](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/75).
 [Contract](../../PROTOCOL.md#codec-stream-boundaries), [gap](../../RESEARCH.md#gap-socket-codec),
 [thứ tự duy nhất](../../PLAN.md#current-order). Raw `local/research/codex/codec-boundaries-r1/`.
 

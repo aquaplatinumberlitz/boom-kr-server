@@ -1,7 +1,7 @@
 {
   "schema": "kre-feature-index-v1",
   "build": "KR00967",
-  "as_of": "2026-11-02 JST / CP057; self-check pending PR; audit nextCP060",
+  "as_of": "2026-11-02 JST / CP057; integration status via PR75; audit nextCP060",
   "sources": {
     "plan": "docs/PLAN.md",
     "contract": "docs/PROTOCOL.md",

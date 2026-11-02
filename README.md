@@ -35,7 +35,7 @@ Một ca allocation vượt model còn unknown; chưa fresh Wine TCP fragmentati
 Tiếp auth/cache theo PLAN. CP056 reportguard đã merge; chưa nghiệm thu fullmatch/K6a/LAN/Internet.
 
 CP056 đã merge [PR73](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/73) tại `c367bab`.
-CP057 tự kiểm/chờ PR, review độc lập [waived](docs/evidence/checkpoints/review-waiver.json).
+CP057 tự kiểm/integration theo [PR75](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/75), review độc lập [waived](docs/evidence/checkpoints/review-waiver.json).
 Audit **AUD017/CP056**, audit kế **CP060**.
 [Yêu cầu chủ dự án](docs/evidence/owner-directives/continuous-work.json): tiếp tục ngay việc kế trong
 PLAN sau mỗi checkpoint/commit/PR, không tự dừng/chờ nhắc.
