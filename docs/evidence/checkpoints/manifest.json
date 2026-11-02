@@ -1,11 +1,11 @@
 {
   "schema": "kre-checkpoints-v1",
-  "last_id": "CP055",
-  "completed_count": 55,
+  "last_id": "CP056",
+  "completed_count": 56,
   "audit_interval": 4,
-  "last_periodic_audit": 52,
-  "next_periodic_audit": "CP056",
-  "last_manual_audit": "AUD016",
+  "last_periodic_audit": 56,
+  "next_periodic_audit": "CP060",
+  "last_manual_audit": "AUD017",
   "checkpoints": [
     {
       "id": "CP001",
@@ -118533,6 +118533,2488 @@
           "reason": "CP055 source/latch/lifetime evidence and explicit limits, nextvalidatorgap, catalog; historicalcheckpoints preserved."
         }
       ]
+    },
+    {
+      "id": "CP056",
+      "previous": "CP055",
+      "lifecycle": "complete",
+      "recorded_utc": "2026-11-02T11:10:34.344369+00:00",
+      "context_commit": "76766e78c840da02f068ba2e3607536cf2fb00f4",
+      "question": "Can current-key forged124 after actualtrap/death still produce native165 effects, and can a scoped report-derived policy reject before claim without breaking next-round pickup?",
+      "scope": "KRE-019/#72. Source reuseKR/VN/oldrepos; bounded9nativebodies/privateIDA fallback; incompleteGDBtrial retained, control/fixed isolatedAB2cycles each. Add report-derivedmarker17/19 beforeclaim andStartreset,5regressions/nativeactualcapturebench. CP056 periodicAUD017 complete, nextCP060. Continue codec boundaries perPLAN without voluntary stop.",
+      "owner": "Codex",
+      "reviewer": "Codex",
+      "artifacts": [
+        {
+          "name": "CA-r2-login-logout.exe",
+          "sha256": "660447c293ce92270cb9b5815331bca976e8f156366e1fe50b217b6c12e60ce3"
+        },
+        {
+          "name": "CA-r2-stage-social.exe",
+          "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+        },
+        {
+          "name": "CA-r2-stage-social.exe Bcopy",
+          "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+        },
+        {
+          "name": "modO.bin",
+          "sha256": "a08950c833d3acab8281049def7b3dc96b221f107eeda01da3a548e34b91dce5"
+        },
+        {
+          "name": "CA-r2-stage-social.exe Ccopy",
+          "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+        }
+      ],
+      "locators": [
+        "Runtimee9bb47/static660447/modOa08950rawbase400000,RVA=VA-400000;privateDBCP055/originalsourcehash unchanged",
+        "B77300 actor+584→B49FE0 actor+618→B7B440→E2C450;B323D0 item+1C/B8C970itemproperties;vt1775B40vf390→55FE90true;vf108→B40F30 ranges27..30/39..42",
+        "state-control2 2026-11-01T21:56:36Z,state-guard22:02:07Z;real12717state56/19state1;forged124target18/19,k12345/12346,t2215",
+        "ProbeService.receive_event/receive_channel/start_round;pickup_ineligible generation/reportSHA/seq,afterkey beforeclaim"
+      ],
+      "findings": [
+        {
+          "summary": "B7B440 entryfirstguard belongs to item+1C,not actorstate. Observedvtvf390constanttrue;callerB77300 checks protectedactor+618 beforefloorpickup. Runtimealive flag0, no complete trapped/dead eligibility rule recovered;9bodybytes matchruntimecopy.",
+          "source": "kr_static",
+          "status": "confirmed",
+          "method": "static",
+          "canonical": "docs/PROTOCOL.md#pickup-report-state",
+          "limits": "Two diagnostic Wine cycles per run; semanticforgery target/key changed from CP055body at dispatcher, not TCP/nativewriter. Native eligibility/distance/auth/stale127/rescue-selfescape/fullvalidator and gates unknown. Report-derived policy only Rollerfixture.",
+          "evidence": [
+            "E163",
+            "E167",
+            "E159",
+            "E151",
+            "E171",
+            "E009"
+          ]
+        },
+        {
+          "summary": "Control2nativeactual124alive Roller5to6;afteractual17/state56 forgedcurrentkey target18 accepted→165full12/errors0→Roller6to7bothviews inbothrounds. After19/state1 target19also165accepted,stat7atmax unchanged, no deadincreaseclaim.2Start/clock/rank/returnperrole.",
+          "source": "kr_runtime",
+          "status": "confirmed",
+          "method": "runtime",
+          "canonical": "docs/PROTOCOL.md#pickup-report-state",
+          "limits": "Two diagnostic Wine cycles per run; semanticforgery target/key changed from CP055body at dispatcher, not TCP/nativewriter. Native eligibility/distance/auth/stale127/rescue-selfescape/fullvalidator and gates unknown. Report-derived policy only Rollerfixture.",
+          "evidence": [
+            "E178",
+            "E003",
+            "E024",
+            "E056"
+          ]
+        },
+        {
+          "summary": "Markeraftervalidatedfixture17/19,slotbound,records generation/reportSHA/seq.124 afterkeyguard rejectsactor_report_ineligible beforeclaim/consume,evennopeer;newStartclears. Conservativefixturepolicy,nooriginalserverauthority;rescue/selfescape notsupporteduntil1/18transitionwired.",
+          "source": "design",
+          "status": "design",
+          "method": "design",
+          "canonical": "docs/PROTOCOL.md#pickup-report-state",
+          "limits": "Two diagnostic Wine cycles per run; semanticforgery target/key changed from CP055body at dispatcher, not TCP/nativewriter. Native eligibility/distance/auth/stale127/rescue-selfescape/fullvalidator and gates unknown. Report-derived policy only Rollerfixture.",
+          "evidence": [
+            "E069",
+            "E041",
+            "E010"
+          ]
+        },
+        {
+          "summary": "Fixedsame4injectedframes/keys rejected/no165;round2actualTCP124/index17/key12346accepted→native165/Roller5to6both,markerreset. No actual124round1(inputcauseunknown),bothroles2completecycles/state1before175.",
+          "source": "kr_runtime",
+          "status": "confirmed",
+          "method": "runtime",
+          "canonical": "docs/PROTOCOL.md#pickup-report-state",
+          "limits": "Two diagnostic Wine cycles per run; semanticforgery target/key changed from CP055body at dispatcher, not TCP/nativewriter. Native eligibility/distance/auth/stale127/rescue-selfescape/fullvalidator and gates unknown. Report-derived policy only Rollerfixture.",
+          "evidence": [
+            "E254",
+            "E003",
+            "E024",
+            "E056"
+          ]
+        },
+        {
+          "summary": "IncompleteGDBgenerationtrial retained. Runtimewrapperv1 reentrantouter127 overwroteinjectedprovenance label; exactarchivedsourceSHA plus measurement injectionSHA/fields/trigger distinguishcontrol2actual+4injected/fixed1actualR2+4injected. Rawunchanged;v2setdefaultfixnotmeasured.",
+          "source": "design",
+          "status": "confirmed",
+          "method": "design",
+          "canonical": "docs/PROTOCOL.md#pickup-report-state",
+          "limits": "Two diagnostic Wine cycles per run; semanticforgery target/key changed from CP055body at dispatcher, not TCP/nativewriter. Native eligibility/distance/auth/stale127/rescue-selfescape/fullvalidator and gates unknown. Report-derived policy only Rollerfixture.",
+          "evidence": [
+            "E026",
+            "E038",
+            "E039",
+            "E056"
+          ]
+        }
+      ],
+      "verification": [
+        {
+          "check": "3854relations/hash/seals/exactarchives;483nativepacket/1004securegetter;50server+7catalog+18checkpointtests,actualcapturedreportbench;docs/catalog/artifacts5/5/diff;requiredlocal/history afterappend",
+          "result": "pass",
+          "evidence": [
+            "E056",
+            "E010",
+            "E041",
+            "E012",
+            "E013",
+            "E020",
+            "E006"
+          ],
+          "limits": "ManualAUD017 includes raw/provenancecorrection; mechanicalchecksnotsemanticapproval/gate. OriginalsourceDB/binaries intact; privatebatchIDA only."
+        }
+      ],
+      "evidence": [
+        {
+          "id": "E001",
+          "kind": "repository",
+          "path": "docs/evidence/pickup-state/README.md",
+          "bytes": 5183,
+          "sha256": "0e821ec5b0e0926a5b9200e5bb6f4368d11c19ba0c86df8cac0e07fb134c3d6e"
+        },
+        {
+          "id": "E002",
+          "kind": "repository",
+          "path": "docs/evidence/checkpoints/audits/AUD017.json",
+          "bytes": 6332,
+          "sha256": "c3c96f1d02de10ef1b76ca5c19c7f90638bccb49a4e69508dec444edd2b4a9e9"
+        },
+        {
+          "id": "E003",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/actor-fields.json",
+          "bytes": 673669,
+          "sha256": "29d0a9a3177a64e2717789e5313caef32228c2e0799b79514ee3ea457bd6d33a"
+        },
+        {
+          "id": "E004",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/analysis-ledger.json",
+          "bytes": 1231,
+          "sha256": "fb2d34beadb347c03edeb5c91b75adc34c8fed466f23ce24c6a1e9d77cf569f1"
+        },
+        {
+          "id": "E005",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/append_checkpoint.py",
+          "bytes": 8582,
+          "sha256": "0326808827b779a3e4fedd60c9309cf75b30d2b51c676dcef875e15326a2f2cb"
+        },
+        {
+          "id": "E006",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/artifacts-check.txt",
+          "bytes": 253,
+          "sha256": "649c6624aa6d317dfc1db5e16fea683cfbc9d9cf4dd3df11c0d70e57409054a0"
+        },
+        {
+          "id": "E007",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/baseline-checkpoints.txt",
+          "bytes": 6425,
+          "sha256": "335bb43b243bfc60e4688ffb8dd6fb85fce855be491e0f6c59a30acb8a8f3dbf"
+        },
+        {
+          "id": "E008",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/baseline-regression-failures.txt",
+          "bytes": 4712,
+          "sha256": "86a7a0fc4049a66baa1eb9b7e61f8e33f1bf9d5d130d71980d15b31ca3beacd0"
+        },
+        {
+          "id": "E009",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/body-comparisons.json",
+          "bytes": 1979,
+          "sha256": "bf7866012f7e218f3b1cf50b7b2fbad5967819e9c1370bea496e653ed456853d"
+        },
+        {
+          "id": "E010",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/captured-policy.json",
+          "bytes": 4163,
+          "sha256": "ecac4023b67ab9897938290522c62087ea27d7c7b8d604f7dac0a1047cd5cb6c"
+        },
+        {
+          "id": "E011",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/captured_policy.py",
+          "bytes": 3109,
+          "sha256": "3af3575ab08a4578b373629683433ead3d4880aedb63480a8b8bfc57364f362d"
+        },
+        {
+          "id": "E012",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/catalog-tests.txt",
+          "bytes": 105,
+          "sha256": "2efbbe4822ecfa8fe4d85c7a12fe310c0fd8f5c2c87929b9c86ecfc66083a572"
+        },
+        {
+          "id": "E013",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/checkpoint-tests.txt",
+          "bytes": 117,
+          "sha256": "f6b876ffa307f534b382c184a2c63348880c65dca89738ee971589a0a3262287"
+        },
+        {
+          "id": "E014",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/compare_bodies.py",
+          "bytes": 871,
+          "sha256": "462b610668552782746b726b1e14bc9a708c53113f46cc513efa0921a20e63bc"
+        },
+        {
+          "id": "E015",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/control-framer.txt",
+          "bytes": 35,
+          "sha256": "53b8cbb6f798d2cb1d6b7269a90da76ebc2fc91953fa421e2f19d553ba5d2af7"
+        },
+        {
+          "id": "E016",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/control-lifecycle.txt",
+          "bytes": 504,
+          "sha256": "13e30531e523a67e3d170ae1d606d799898cca613c52f04a3524197376625279"
+        },
+        {
+          "id": "E017",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/control-native.txt",
+          "bytes": 29,
+          "sha256": "d3f3090c8dff30daa5a45b6fa313748e0a2f346f562b42f5e1b9fcff8b199d77"
+        },
+        {
+          "id": "E018",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/control-stat-preview.json",
+          "bytes": 5482,
+          "sha256": "c73ccd73ba537f6b064ce3df9491bdab784533da90bcb746131f28b459380537"
+        },
+        {
+          "id": "E019",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/derive_roles.py",
+          "bytes": 856,
+          "sha256": "4260c15916e188b3fb974a0a88ce10254b305ae729eae49736a1ba2da296347b"
+        },
+        {
+          "id": "E020",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/docs-check.txt",
+          "bytes": 173,
+          "sha256": "dd2eb79d730ec60989823a643b5372c19306b2b6ee079cb046105ec571fb43e4"
+        },
+        {
+          "id": "E021",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/floor-recipe.json",
+          "bytes": 563,
+          "sha256": "79351ada72649ec93adc1a2d493e7bb8eeda0a82e4db9bdda627a4394778f7f7"
+        },
+        {
+          "id": "E022",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/guard-framer.txt",
+          "bytes": 32,
+          "sha256": "47f9d97b106ae8be182a54d29240ce13c6f81c434c207a8d0d74cc3bec24cec6"
+        },
+        {
+          "id": "E023",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/issue-body.md",
+          "bytes": 980,
+          "sha256": "f72488f1515a90018198997f01a5637afade9bc34e6a29f7f4de12a58fe6a3a2"
+        },
+        {
+          "id": "E024",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/lifecycle-summary.json",
+          "bytes": 17767,
+          "sha256": "6a96529f299d6b0836f19e3f8836cad2542330cbf9edd41ac0a65b6ba16d36c9"
+        },
+        {
+          "id": "E025",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/lifecycle.txt",
+          "bytes": 1005,
+          "sha256": "2245749fa24009870027c8310a47ea169b31285d1f8061ac28bc7c39eeed3949"
+        },
+        {
+          "id": "E026",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/measurement-notes.json",
+          "bytes": 1891,
+          "sha256": "f21d9d469a37a9ab8657349a6c89c6ad830ea9c6d67352f99249535842a0b63f"
+        },
+        {
+          "id": "E027",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/native-packets.json",
+          "bytes": 194280,
+          "sha256": "ba09466079c7a5660ed523f98c89e2f2c2b7cdc03cfab9df7cbc3231ff0bac41"
+        },
+        {
+          "id": "E028",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/native-report.txt",
+          "bytes": 29,
+          "sha256": "14077901141ac49d304d7af1907b1e0bb52bc63ce1bb3a90814a7e5a7dc9ab53"
+        },
+        {
+          "id": "E029",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/native_packets.py",
+          "bytes": 4830,
+          "sha256": "2bd8c6c9aa12c06d2b9578c4301b9364879521d423fbbd417d7982a93b989655"
+        },
+        {
+          "id": "E030",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/parse_fields.py",
+          "bytes": 4055,
+          "sha256": "c06ef5d09e4798d5fcd1eac534c519384c2d991a44234b5fc54553d4ee2b5084"
+        },
+        {
+          "id": "E031",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/parse_lifecycle.py",
+          "bytes": 2667,
+          "sha256": "d75740016647151bc3bee9491afdf36ed3b23998e5bdcf52221a55efbb686879"
+        },
+        {
+          "id": "E032",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/prepare.py",
+          "bytes": 3193,
+          "sha256": "a3ed27da6d8829df005ca4198efb68f5979c4be36e12788844f8c0d60730d293"
+        },
+        {
+          "id": "E033",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/profile.json",
+          "bytes": 10966,
+          "sha256": "ec4507057c4032c5527e33a790d579d60986d3a86951606303ecbf9b9a758168"
+        },
+        {
+          "id": "E034",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/replay-run.py",
+          "bytes": 3003,
+          "sha256": "947e32cbd60a550e046442da2e8698d593b85b72fb7b473cd7057ac561726361"
+        },
+        {
+          "id": "E035",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/reuse-question.json",
+          "bytes": 4353,
+          "sha256": "6635b5c25c3adeda9a57103e3c9be5497ed4ed656624617a597a69e3e27bac14"
+        },
+        {
+          "id": "E036",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/reuse.py",
+          "bytes": 2675,
+          "sha256": "d51a6e5b16b140c12a67c6e306476cc9f266b8fbc1a6670f3253c610d4eb38a7"
+        },
+        {
+          "id": "E037",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/run_probe.py",
+          "bytes": 1068,
+          "sha256": "4de9f2663434b5151d3e7935621c4a485fa7d64b457df45775cff5800b802b7a"
+        },
+        {
+          "id": "E038",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/runtime_dispatch-v1.py",
+          "bytes": 2365,
+          "sha256": "87b5f8ad07bf86b9ed253347c8dd43db8ca36ddb1c774f7ab9c8c59f2d27b3cb"
+        },
+        {
+          "id": "E039",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/runtime_dispatch.py",
+          "bytes": 2376,
+          "sha256": "65c46ab9f8186b095397ca0e1b690f02aad5f61b5e5c7775d4d034427c7a15e9"
+        },
+        {
+          "id": "E040",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/seal_run.py",
+          "bytes": 626,
+          "sha256": "a9ddb1255c4c84ed36ce681d3ad807586b2049e52c797e8658f45375a278fed4"
+        },
+        {
+          "id": "E041",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/server-tests.txt",
+          "bytes": 149,
+          "sha256": "c18a18b2a4e2b64d035f0125d0a8e516dcd8a9e0f59115dda75a1f6ce2b3017d"
+        },
+        {
+          "id": "E042",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/service-guard.patch",
+          "bytes": 1801,
+          "sha256": "688f3b2edc000f7151b7e4dffab82da7dbd7264ca9a538e5b13cfdc1bdcec066"
+        },
+        {
+          "id": "E043",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/state-control-hashes.json",
+          "bytes": 17199,
+          "sha256": "941735dffb2e8eebc764ceb4ed6c9c8c7de8691fb39c1351aec9400af98131c2"
+        },
+        {
+          "id": "E044",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/state-control-launcher.log",
+          "bytes": 14158,
+          "sha256": "c09ccf581b2bfb8d2b084219842705c61591499135932170e268d8aa55e93f96"
+        },
+        {
+          "id": "E045",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/state-control-recipe.json",
+          "bytes": 992,
+          "sha256": "e4b9ab022038969f79a606f8d8c66052b45f3b4287b1582e2919b871e11623fa"
+        },
+        {
+          "id": "E046",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/state-control2-hashes.json",
+          "bytes": 281651,
+          "sha256": "49c1bb2c93e5b61cd372b5a2c12fc9616858d3f1b6c4adceaa7b3f364f50d955"
+        },
+        {
+          "id": "E047",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/state-control2-launcher.log",
+          "bytes": 108206,
+          "sha256": "8b2a02132e0f8105d78ea81499b0b5a4caa479685a8179c975ff441db99bd64f"
+        },
+        {
+          "id": "E048",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/state-control2-recipe.json",
+          "bytes": 994,
+          "sha256": "8d9b2803e82201c1a59f6ca67ecf37136fe5b8a319045279d299d2534561f219"
+        },
+        {
+          "id": "E049",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/state-guard-hashes.json",
+          "bytes": 275469,
+          "sha256": "22ab9a5aa702a3f573ac7541e115063e87f4e3eb45633a9720f2a389ef36c586"
+        },
+        {
+          "id": "E050",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/state-guard-launcher.log",
+          "bytes": 103750,
+          "sha256": "f7715b58222d4aca468bf49a73349dbfdf85b00d8361c35cd8492871f706c181"
+        },
+        {
+          "id": "E051",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/state-guard-recipe.json",
+          "bytes": 988,
+          "sha256": "d698be751eca8ed7119c4dc0ac216789654524f8235550e29ab74e533a172fef"
+        },
+        {
+          "id": "E052",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/state-malformed.gdb",
+          "bytes": 27947,
+          "sha256": "ca062a0f95db3ed3b40b5593732a532fc660c5b88d3cca37eb10feb8b9058c2f"
+        },
+        {
+          "id": "E053",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/state.gdb",
+          "bytes": 27901,
+          "sha256": "76cd0305f92e511de625f4ba3356e2d6ad8519ecc459b88f72733f707bcec31b"
+        },
+        {
+          "id": "E054",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/sync_docs.py",
+          "bytes": 11015,
+          "sha256": "81bc051d0105b426a63dba1451b08c10d9d3ea15da053204338198349b003b9b"
+        },
+        {
+          "id": "E055",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/test_pickup_state.py",
+          "bytes": 4135,
+          "sha256": "5982394d5d4a67889a595f3f70e2d422a162385e5f620eedef05f0fa52aafe0f"
+        },
+        {
+          "id": "E056",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/verification.json",
+          "bytes": 1166,
+          "sha256": "8c729a4192483f619fea6c8bbb384340a40dc65b48a8df408db54055262d4255"
+        },
+        {
+          "id": "E057",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/verify.py",
+          "bytes": 5143,
+          "sha256": "224052b283a2914e5404f4db46d7e466c3687c62675896baddbf1331a757dc3b"
+        },
+        {
+          "id": "E058",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/cp056-snapshot/README.md",
+          "bytes": 3857,
+          "sha256": "9edf20a2e95a355d7d27b53712c55a133b786bbbb96b7859ee28ac9c9bed7df8"
+        },
+        {
+          "id": "E059",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/cp056-snapshot/docs/COVERAGE.md",
+          "bytes": 66065,
+          "sha256": "3a601db2782672bf885f12abed0b283935a06f18dc60cb89127825b3edd4f529"
+        },
+        {
+          "id": "E060",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/cp056-snapshot/docs/PLAN.md",
+          "bytes": 29631,
+          "sha256": "9681c328c906372a49353cefcea60966b1176dd8014fc86090491bb8496af48d"
+        },
+        {
+          "id": "E061",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/cp056-snapshot/docs/PROTOCOL.md",
+          "bytes": 196603,
+          "sha256": "85cdd22775f74a93609842722981eade8a0f7a21aa012e0828bb530434a76a58"
+        },
+        {
+          "id": "E062",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/cp056-snapshot/docs/RESEARCH.md",
+          "bytes": 28985,
+          "sha256": "1c0013c894a741d5ef20d326e32089f777c84dd1707d3748ce5be5cfaa4b21ec"
+        },
+        {
+          "id": "E063",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/cp056-snapshot/docs/evidence/host-setup/README.md",
+          "bytes": 4713,
+          "sha256": "55ce5aea21c87410569fe36925076133c53127d2a33e4c4279dda89a894b51fb"
+        },
+        {
+          "id": "E064",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/cp056-snapshot/docs/evidence/pickup-state/README.md",
+          "bytes": 5183,
+          "sha256": "0e821ec5b0e0926a5b9200e5bb6f4368d11c19ba0c86df8cac0e07fb134c3d6e"
+        },
+        {
+          "id": "E065",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/cp056-snapshot/docs/evidence/pickup-time/README.md",
+          "bytes": 4880,
+          "sha256": "59cd0b8584be7962451d39028058dc6f1028688f9df69a051fa5ac1b1edc2c41"
+        },
+        {
+          "id": "E066",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/cp056-snapshot/docs/evidence/prestart-replacement/README.md",
+          "bytes": 5053,
+          "sha256": "eb23d6a0086ec8625644d86d2b6ffa1f37f761f6a0832cff3697eb7900447911"
+        },
+        {
+          "id": "E067",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/cp056-snapshot/docs/features.json",
+          "bytes": 69039,
+          "sha256": "518d7ef3561dc46a7274db431213375a71675070af4038f09d2574b83ae4fb38"
+        },
+        {
+          "id": "E068",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/cp056-snapshot/server/README.md",
+          "bytes": 9644,
+          "sha256": "6cf8a08b65d066f156336810d75de01b47a912265a23ea4dc6418803973e1056"
+        },
+        {
+          "id": "E069",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/cp056-snapshot/server/probe_service.py",
+          "bytes": 32828,
+          "sha256": "eb19710037db3886050b5769ff733b6cb9768e3cba51bf9eccb8a9ef269967f2"
+        },
+        {
+          "id": "E070",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/cp056-snapshot/server/test_pickup_state.py",
+          "bytes": 4135,
+          "sha256": "5982394d5d4a67889a595f3f70e2d422a162385e5f620eedef05f0fa52aafe0f"
+        },
+        {
+          "id": "E071",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/control-source/item_claims.py",
+          "bytes": 3340,
+          "sha256": "7990ae9195e9f8bba56b04101f352506194dbd0252793183993ce101a8674a2e"
+        },
+        {
+          "id": "E072",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/control-source/probe_codec.py",
+          "bytes": 3227,
+          "sha256": "23ba54e6940953a52ff737e7e06b2761a8eb22eab444310b49b1d96efa12411d"
+        },
+        {
+          "id": "E073",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/control-source/probe_room.py",
+          "bytes": 1468,
+          "sha256": "91292494d492c7851bd5432649adf528e1b07290316dc56ba1478f8a209a08bc"
+        },
+        {
+          "id": "E074",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/control-source/probe_service.py",
+          "bytes": 31698,
+          "sha256": "3c1d5d57782d15ca5005a01d3015a776e5f838bb9ec91502ff5560f14b286028"
+        },
+        {
+          "id": "E075",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/control-source/round_fence.py",
+          "bytes": 2339,
+          "sha256": "aabcc7f1d623573fc217de8df05403f83d82425bbe5d6e78872b3096a2d46708"
+        },
+        {
+          "id": "E076",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/control-source/udp_round_keys.py",
+          "bytes": 1187,
+          "sha256": "db58ae1f25bcbeb52c2d25c7db6afbf1021ddd3af29702e756f5f41886530a0d"
+        },
+        {
+          "id": "E077",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/fixed-source/item_claims.py",
+          "bytes": 3340,
+          "sha256": "7990ae9195e9f8bba56b04101f352506194dbd0252793183993ce101a8674a2e"
+        },
+        {
+          "id": "E078",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/fixed-source/probe_codec.py",
+          "bytes": 3227,
+          "sha256": "23ba54e6940953a52ff737e7e06b2761a8eb22eab444310b49b1d96efa12411d"
+        },
+        {
+          "id": "E079",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/fixed-source/probe_room.py",
+          "bytes": 1468,
+          "sha256": "91292494d492c7851bd5432649adf528e1b07290316dc56ba1478f8a209a08bc"
+        },
+        {
+          "id": "E080",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/fixed-source/probe_service.py",
+          "bytes": 32828,
+          "sha256": "eb19710037db3886050b5769ff733b6cb9768e3cba51bf9eccb8a9ef269967f2"
+        },
+        {
+          "id": "E081",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/fixed-source/round_fence.py",
+          "bytes": 2339,
+          "sha256": "aabcc7f1d623573fc217de8df05403f83d82425bbe5d6e78872b3096a2d46708"
+        },
+        {
+          "id": "E082",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/fixed-source/udp_round_keys.py",
+          "bytes": 1187,
+          "sha256": "db58ae1f25bcbeb52c2d25c7db6afbf1021ddd3af29702e756f5f41886530a0d"
+        },
+        {
+          "id": "E083",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/request-frames/state-control2/A-F103-127.bin",
+          "bytes": 67,
+          "sha256": "3785217c26199ec1bccb7f1faef940d3142c12cb2ad6a349dcc136939fbf3f1d"
+        },
+        {
+          "id": "E084",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/request-frames/state-control2/A-F39-99.bin",
+          "bytes": 61,
+          "sha256": "356ee54cd597dfb47cbc9933fa10ff4b909b00560e23b059b67b27cdd209c542"
+        },
+        {
+          "id": "E085",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/request-frames/state-control2/A-F48-124.bin",
+          "bytes": 57,
+          "sha256": "1020fed709615e50b0bc409177d01036a452bba186cbb24c74ce4ead0b8bba3b"
+        },
+        {
+          "id": "E086",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/request-frames/state-control2/A-F50-118.bin",
+          "bytes": 60,
+          "sha256": "8fbf346195a578912b91de0ae891687c8e76af93d37d6bead90c58fdfb16da21"
+        },
+        {
+          "id": "E087",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/request-frames/state-control2/A-F55-127.bin",
+          "bytes": 70,
+          "sha256": "5268e857f9417bd02f431945c2bba6563da0069524546f008cd38d170addc8ee"
+        },
+        {
+          "id": "E088",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/request-frames/state-control2/A-F60-127.bin",
+          "bytes": 67,
+          "sha256": "a5d4f8edd5d9fdfc43ca88b664a41780a9e5e97211c035acf9352ed48d514d0f"
+        },
+        {
+          "id": "E089",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/request-frames/state-control2/A-F80-99.bin",
+          "bytes": 61,
+          "sha256": "80f44b88b21908fab8c96e2b9ff7e0f112bf062354ee3d6c396f116440865c1f"
+        },
+        {
+          "id": "E090",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/request-frames/state-control2/A-F91-124.bin",
+          "bytes": 57,
+          "sha256": "e76e3a3012598801f1c2bce974b0576c0fe23af8a37bfa26ca7a388bac8c874f"
+        },
+        {
+          "id": "E091",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/request-frames/state-control2/A-F94-118.bin",
+          "bytes": 60,
+          "sha256": "3b00fff86697a77aa87280e5e540afd1e5d5bcdcf0e5a1c1bbb45bb5d59ff8bc"
+        },
+        {
+          "id": "E092",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/request-frames/state-control2/A-F99-127.bin",
+          "bytes": 70,
+          "sha256": "9fe038c025226941160b438d487f00cdeba785ce622b58dc40491c16e93a88c7"
+        },
+        {
+          "id": "E093",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/request-frames/state-control2/B-F101-127.bin",
+          "bytes": 52,
+          "sha256": "6d203d398f9265c2bb19d74ba23f7482691669843876ec4b7f40574c2c548d7a"
+        },
+        {
+          "id": "E094",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/request-frames/state-control2/B-F102-127.bin",
+          "bytes": 52,
+          "sha256": "0a2702206e3dc22fafc2d9a1664fa622c50c9414889489536ef3662a9aeaffe5"
+        },
+        {
+          "id": "E095",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/request-frames/state-control2/B-F13-82.bin",
+          "bytes": 49,
+          "sha256": "1746130345929e482c425aa463e6bf34d6da555c86c6474cf235330227f74f47"
+        },
+        {
+          "id": "E096",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/request-frames/state-control2/B-F24-95.bin",
+          "bytes": 98,
+          "sha256": "730e662309a1a5abb7556e5f500168850ae220a9b7f288c1c62d18904206398c"
+        },
+        {
+          "id": "E097",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/request-frames/state-control2/B-F28-99.bin",
+          "bytes": 61,
+          "sha256": "a8a8664e1216f7bf647a41fb0c14274c4522651b171dd216cedb5eafcaa8983b"
+        },
+        {
+          "id": "E098",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/request-frames/state-control2/B-F47-127.bin",
+          "bytes": 52,
+          "sha256": "c1980f89046a446840508e6cd8edff10ce48c79ae11cda444aa250ebc15df981"
+        },
+        {
+          "id": "E099",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/request-frames/state-control2/B-F48-127.bin",
+          "bytes": 52,
+          "sha256": "43fd51c3a4fae3dc0b1b367cdfa19e09f59ebc94424720338a7d197340314607"
+        },
+        {
+          "id": "E100",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/request-frames/state-control2/B-F51-127.bin",
+          "bytes": 52,
+          "sha256": "0b1d785be11951a95ee5617b3bfd998ac8c8d6b4864927d9c3b8dd449ca69248"
+        },
+        {
+          "id": "E101",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/request-frames/state-control2/B-F52-127.bin",
+          "bytes": 52,
+          "sha256": "7a443174252b9276917cea191c852bdcf7f65eb08e680bffa941f438e78dc7e0"
+        },
+        {
+          "id": "E102",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/request-frames/state-control2/B-F53-127.bin",
+          "bytes": 52,
+          "sha256": "aae3ec609950d2532c29e1e1de64959142dd75bea029f2f1b97c3236cfac8abe"
+        },
+        {
+          "id": "E103",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/request-frames/state-control2/B-F54-127.bin",
+          "bytes": 52,
+          "sha256": "53ce03999ff034779995a42da98528ebdb7ddb745ae79b43df10a750819e46ac"
+        },
+        {
+          "id": "E104",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/request-frames/state-control2/B-F68-95.bin",
+          "bytes": 375,
+          "sha256": "73cfc3420fe828773d7c41dbcd46fa08e927b246884a7663bf595275ab746365"
+        },
+        {
+          "id": "E105",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/request-frames/state-control2/B-F74-99.bin",
+          "bytes": 61,
+          "sha256": "1c11118e7422741293940dbe67a736053c17d7c7109ad6f61036463f22088bc4"
+        },
+        {
+          "id": "E106",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/request-frames/state-control2/B-F96-127.bin",
+          "bytes": 52,
+          "sha256": "509aee52275a3f4e53a3e6257af3c40f79318dfd6608ba57c031ffe0779d57d7"
+        },
+        {
+          "id": "E107",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/request-frames/state-control2/B-F97-127.bin",
+          "bytes": 52,
+          "sha256": "d2fa08e78f91baeb7a36934287ec5e2d000cbd6c1e51beec6dbfd0ac1a378756"
+        },
+        {
+          "id": "E108",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/request-frames/state-control2/B-F98-127.bin",
+          "bytes": 52,
+          "sha256": "e055baac07d5c15a1a98b3792be8bc4617d8fc1578287fc4c01d13243ad583da"
+        },
+        {
+          "id": "E109",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/request-frames/state-control2/B-F99-127.bin",
+          "bytes": 52,
+          "sha256": "87cc5b8ef01ad42d5e6ef7042690eda3003eb96dda1d5878a01c10b920626b84"
+        },
+        {
+          "id": "E110",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/request-frames/state-guard/A-F101-127.bin",
+          "bytes": 67,
+          "sha256": "2e03d459b09adc7c58e183e6158f631d3bd1f4240316ea12c16f95dba5a7db8d"
+        },
+        {
+          "id": "E111",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/request-frames/state-guard/A-F39-99.bin",
+          "bytes": 61,
+          "sha256": "e98bac5e5618675159983b93812ef2d52bb9038cc61d5391bfe54de6caeffba2"
+        },
+        {
+          "id": "E112",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/request-frames/state-guard/A-F46-118.bin",
+          "bytes": 60,
+          "sha256": "3f58ac81b0db8b1df6e7b2d7dc177075fe9c7f11d3e49cdbd207758971607eb3"
+        },
+        {
+          "id": "E113",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/request-frames/state-guard/A-F53-127.bin",
+          "bytes": 70,
+          "sha256": "e78b33520f8dace5d8812e822aade4b2ce23e252970849215d3fd00f8ed2caf0"
+        },
+        {
+          "id": "E114",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/request-frames/state-guard/A-F58-127.bin",
+          "bytes": 67,
+          "sha256": "443728092199961531c82f929930f52be8764280aa95538571763c2d9a8c5cff"
+        },
+        {
+          "id": "E115",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/request-frames/state-guard/A-F78-99.bin",
+          "bytes": 61,
+          "sha256": "a41d584e7caf0120c833e8fa64ca4c81710e036a256dd1917e06c4b76129badd"
+        },
+        {
+          "id": "E116",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/request-frames/state-guard/A-F89-124.bin",
+          "bytes": 57,
+          "sha256": "7163f6fe5b11ab581410d32b86f153774e4daa49446443c19c310ef8a230838e"
+        },
+        {
+          "id": "E117",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/request-frames/state-guard/A-F91-118.bin",
+          "bytes": 60,
+          "sha256": "8b0977d0f45e15bec628d601a60c495967874ab63d4f699f42b8c7491bcad3ac"
+        },
+        {
+          "id": "E118",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/request-frames/state-guard/A-F97-127.bin",
+          "bytes": 70,
+          "sha256": "e7750325dcd133a79ee22c725ec4986c686c04e012e195a971664895f09b7875"
+        },
+        {
+          "id": "E119",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/request-frames/state-guard/B-F101-127.bin",
+          "bytes": 52,
+          "sha256": "42a9f6c3b2b8793ecdd8ce00205a5428cb34ef5a37caebd220eaceae295da17b"
+        },
+        {
+          "id": "E120",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/request-frames/state-guard/B-F102-127.bin",
+          "bytes": 52,
+          "sha256": "bc62285a5415d34d14e93c262d852f2689e9f01c5ea37738466f686c3de71d9b"
+        },
+        {
+          "id": "E121",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/request-frames/state-guard/B-F103-127.bin",
+          "bytes": 52,
+          "sha256": "2df39ca59048745789046840efd1289056c4f2bdfe1bba0a642941e39a8723a2"
+        },
+        {
+          "id": "E122",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/request-frames/state-guard/B-F104-127.bin",
+          "bytes": 52,
+          "sha256": "166785c058dc199db31d5fe0cb989b1729ec6e21f8bebe175471c445725faaad"
+        },
+        {
+          "id": "E123",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/request-frames/state-guard/B-F107-127.bin",
+          "bytes": 52,
+          "sha256": "2fee7aa2b3d81595ca58a3b6918193e36d68ca179d0e5070f9918b1e90d1d943"
+        },
+        {
+          "id": "E124",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/request-frames/state-guard/B-F13-82.bin",
+          "bytes": 49,
+          "sha256": "1746130345929e482c425aa463e6bf34d6da555c86c6474cf235330227f74f47"
+        },
+        {
+          "id": "E125",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/request-frames/state-guard/B-F24-95.bin",
+          "bytes": 98,
+          "sha256": "730e662309a1a5abb7556e5f500168850ae220a9b7f288c1c62d18904206398c"
+        },
+        {
+          "id": "E126",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/request-frames/state-guard/B-F28-99.bin",
+          "bytes": 61,
+          "sha256": "8fc4806a615c58a225149297fd69f452f8eec0cf0ced8de44408bc9239136e92"
+        },
+        {
+          "id": "E127",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/request-frames/state-guard/B-F48-127.bin",
+          "bytes": 52,
+          "sha256": "15a465b2f0bd9b2ca72097dfeaff8560b318e6cfe96453a0765d1fdbef3487c3"
+        },
+        {
+          "id": "E128",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/request-frames/state-guard/B-F49-127.bin",
+          "bytes": 52,
+          "sha256": "053eb14467c0608faaaa1682f1b32d93766d877be52102d94df8d0db6a3334fc"
+        },
+        {
+          "id": "E129",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/request-frames/state-guard/B-F51-127.bin",
+          "bytes": 52,
+          "sha256": "7f485820f9f7f75035d037a339fb30c2ebb5fa9ba93fcf3475994ba8a7d1a7d2"
+        },
+        {
+          "id": "E130",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/request-frames/state-guard/B-F53-127.bin",
+          "bytes": 52,
+          "sha256": "edff4ad1a2d3ae10ff7397d22bf1b80cfed8192ff9c3758d11c435e77510cfa0"
+        },
+        {
+          "id": "E131",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/request-frames/state-guard/B-F54-127.bin",
+          "bytes": 52,
+          "sha256": "11d297f44595b709c8c7bfda68782ef80bf4d59e3daacdbc3073a97733b3dba7"
+        },
+        {
+          "id": "E132",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/request-frames/state-guard/B-F55-127.bin",
+          "bytes": 52,
+          "sha256": "f8f0d3f1e3094a1a86abfec30bf8b5d146fc2e94d9bfae998ef9146d943ed0c2"
+        },
+        {
+          "id": "E133",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/request-frames/state-guard/B-F56-127.bin",
+          "bytes": 52,
+          "sha256": "bb1c8a862bc0752c9bd390f4d6634c767c1cbb3a4d41c8ec8689affb24e371e3"
+        },
+        {
+          "id": "E134",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/request-frames/state-guard/B-F70-95.bin",
+          "bytes": 375,
+          "sha256": "b961e853348609d962edf51104fb5f6ec75384ff23e40035fe79d8e06804af03"
+        },
+        {
+          "id": "E135",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/request-frames/state-guard/B-F76-99.bin",
+          "bytes": 61,
+          "sha256": "113d648ee41dfb2df0602ae4561ffe9d6ac2603f66f8da2a033a7332086a42a2"
+        },
+        {
+          "id": "E136",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/request-frames/state-guard/B-F98-127.bin",
+          "bytes": 52,
+          "sha256": "afd82733cc142c50d21eb943cd4678db34bef378f474bbfb46a72ef01f29f95f"
+        },
+        {
+          "id": "E137",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/request-frames/state-guard/B-F99-127.bin",
+          "bytes": 52,
+          "sha256": "9f500c1af4c1e9d6745ec1ab6375eb3b3a9ab8749d72024792745557172812b4"
+        },
+        {
+          "id": "E138",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/derived/state-control2-A/run.json",
+          "bytes": 94294,
+          "sha256": "65b66c0a1e78c936d786817f6bd8bd50f5d83dbdcb50da8ad6ebf21432c4b8f0"
+        },
+        {
+          "id": "E139",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/derived/state-control2-A-oracle.json",
+          "bytes": 195927,
+          "sha256": "a333e047113e009a30a76097d39209ac7ff68a595057a880a367c68a84795102"
+        },
+        {
+          "id": "E140",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/derived/state-control2-A-replay.txt",
+          "bytes": 3215,
+          "sha256": "605ba33fc2de6a98fbfb2ed9f6ee4a08c628519ba6363a356d5835987ad7288f"
+        },
+        {
+          "id": "E141",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/derived/state-control2-B/run.json",
+          "bytes": 91605,
+          "sha256": "cf8b9249a87e15a41e00099b3291c50fa8f9b021297742015a608b72f766ddb7"
+        },
+        {
+          "id": "E142",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/derived/state-control2-B-oracle.json",
+          "bytes": 192815,
+          "sha256": "23513e3add9ea88a058ea362bff79ab335534e172f375cf4040953f3dfe58064"
+        },
+        {
+          "id": "E143",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/derived/state-control2-B-replay.txt",
+          "bytes": 3169,
+          "sha256": "a6fa6418f3a584fc21804ccb1006b04428bff8548fcf242b8d890f9b30c2ace7"
+        },
+        {
+          "id": "E144",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/derived/state-guard-A/run.json",
+          "bytes": 88966,
+          "sha256": "8619befe9e2a11d4ae5ee49bb13a3c0be5b764859bab08eab951806e3133bc12"
+        },
+        {
+          "id": "E145",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/derived/state-guard-A-oracle.json",
+          "bytes": 191158,
+          "sha256": "e189d70e9748d8164e4d59dcc000b90b3be188ae8a11ec33db8bb0dfea55e536"
+        },
+        {
+          "id": "E146",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/derived/state-guard-A-replay.txt",
+          "bytes": 3142,
+          "sha256": "c1349d296cde4873808e071f74d2683fcd44e76ce93ee75d66d128f1e9a8ae2d"
+        },
+        {
+          "id": "E147",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/derived/state-guard-B/run.json",
+          "bytes": 87746,
+          "sha256": "e83c3ac54861914d7969d869bf605706f35cdf77c1504799193a90fc0ab9fb55"
+        },
+        {
+          "id": "E148",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/derived/state-guard-B-oracle.json",
+          "bytes": 198184,
+          "sha256": "450716f064a361bfa3bbce0e35cfab7cc1683708fe3f6d472728f35fdf1d2bc7"
+        },
+        {
+          "id": "E149",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/derived/state-guard-B-replay.txt",
+          "bytes": 3259,
+          "sha256": "8d39fba1955221f84dc4f26c930c30e0ef292157598ad9648d60299885417684"
+        },
+        {
+          "id": "E150",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/ida/actor-guard-launcher.log",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "id": "E151",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/ida/actor-guard.json",
+          "bytes": 1393,
+          "sha256": "50e5a5a9b8293fe9027597910d6a3e74d90c12cc68112a1a15a9038baf5a999d"
+        },
+        {
+          "id": "E152",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/ida/actor-guard.log",
+          "bytes": 1533,
+          "sha256": "ae1004f42c6f9f0c0a95a646e7eb95fee25d34d3a1b64581118d5742d9fee9ba"
+        },
+        {
+          "id": "E153",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/ida/actor-guard.py",
+          "bytes": 681,
+          "sha256": "381c08d637e297b41318d6a0bcfe8198bf67f3e60241af5be07eed5a7c4c5717"
+        },
+        {
+          "id": "E154",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/ida/caller-edges-launcher.log",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "id": "E155",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/ida/caller-edges.json",
+          "bytes": 19890,
+          "sha256": "80aac79b4002fa6ada4dc5e69eb759baf507986f3b0fc3af94f7b54ed70721d8"
+        },
+        {
+          "id": "E156",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/ida/caller-edges.log",
+          "bytes": 1656,
+          "sha256": "704ee50b1bafcc88c9b985b12e0467a32765be62557c39e72cd0273574208985"
+        },
+        {
+          "id": "E157",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/ida/caller-edges.py",
+          "bytes": 700,
+          "sha256": "4ee0d8dfc01956eda837342b3f8d435b5e4362cbf99d099399adcaaf0261875f"
+        },
+        {
+          "id": "E158",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/ida/collision-callers-launcher.log",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "id": "E159",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/ida/collision-callers.json",
+          "bytes": 20843,
+          "sha256": "a48e97a91cbb1251e65cb59ab85681b78965b33ef17eed476a0a8a4aaca08349"
+        },
+        {
+          "id": "E160",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/ida/collision-callers.log",
+          "bytes": 1539,
+          "sha256": "809d569299a389ef19ce167001db3f236fb29220ee8a3679e48f44fe70fcafc3"
+        },
+        {
+          "id": "E161",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/ida/collision-callers.py",
+          "bytes": 687,
+          "sha256": "39c3e8a62ead65867d13ae5b47a50f3bc7375852ca7c9287aa155ac98d9d1e9c"
+        },
+        {
+          "id": "E162",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/ida/eligibility-launcher.log",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "id": "E163",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/ida/eligibility.json",
+          "bytes": 16503,
+          "sha256": "392723ef03aa5cad44ceee56946b99b3b1d0fce420f011e56e20fe9c39ae2d65"
+        },
+        {
+          "id": "E164",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/ida/eligibility.log",
+          "bytes": 1533,
+          "sha256": "443e077f7a9062c71609926a2981865ac7ac2d38266a489c80424818d82c4b69"
+        },
+        {
+          "id": "E165",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/ida/eligibility.py",
+          "bytes": 672,
+          "sha256": "a24293a638a092764e83176c25e7852f7b91d58373f86f36c83afbf29ba28a84"
+        },
+        {
+          "id": "E166",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/ida/guards-launcher.log",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "id": "E167",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/ida/guards.json",
+          "bytes": 2155,
+          "sha256": "3ceec5cc7d2f7d8927d37977a19d1e0f7e5998b5f45f8c917c9aff28984ddc81"
+        },
+        {
+          "id": "E168",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/ida/guards.log",
+          "bytes": 1528,
+          "sha256": "979dd43765aa738031b92ed2acf6d9147dd3fa2ed0d23513e06f1b7f6d94e8c0"
+        },
+        {
+          "id": "E169",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/ida/guards.py",
+          "bytes": 685,
+          "sha256": "be86ba20c4d1abcd915f775d2ea2a3fa17512960807bcd826fa134ce78b36410"
+        },
+        {
+          "id": "E170",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/ida/upstream-state-launcher.log",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "id": "E171",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/ida/upstream-state.json",
+          "bytes": 3026,
+          "sha256": "fec61d55420619c163954babfc5eda5a95e62c9b7d46a7bfbfde294512b79984"
+        },
+        {
+          "id": "E172",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/ida/upstream-state.log",
+          "bytes": 1536,
+          "sha256": "2ef38e60d5736f59ee55f311477fdf0306cbcc6321956fac5bbb4344a878aab1"
+        },
+        {
+          "id": "E173",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/ida/upstream-state.py",
+          "bytes": 675,
+          "sha256": "7a79baedc42d0144333a2147ff67b9432a45a0ff611fc8f9f3739290d5ea3c05"
+        },
+        {
+          "id": "E174",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/state-control/run.json",
+          "bytes": 15443,
+          "sha256": "148c5269d3afa9de4464511c2992d0c1a15b5c59d868fd918f621a1b016b3f8c"
+        },
+        {
+          "id": "E175",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/state-control/client.log",
+          "bytes": 19609,
+          "sha256": "ea74f6d4a5146b654ec357c730ef913504091e9d879d045f3bda905d98813043"
+        },
+        {
+          "id": "E176",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/state-control/service-state.json",
+          "bytes": 19605,
+          "sha256": "186ee8ecf5129d586ed50f2f449d4f3e38c3f01d105caf968b83a2a3f8f4563e"
+        },
+        {
+          "id": "E177",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/state-control/debug-commands.txt",
+          "bytes": 27947,
+          "sha256": "ca062a0f95db3ed3b40b5593732a532fc660c5b88d3cca37eb10feb8b9058c2f"
+        },
+        {
+          "id": "E178",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/state-control2/run.json",
+          "bytes": 141320,
+          "sha256": "6565406b8337ea9f1668e30001ecb4f9caeac8517c2c02c3a84c3dbecb0a124f"
+        },
+        {
+          "id": "E179",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/state-control2/client.log",
+          "bytes": 132163,
+          "sha256": "1c55d740328fa84fbf14fddda5133593821c506e4436fb397c15ade2c1c5261a"
+        },
+        {
+          "id": "E180",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/state-control2/client-B.log",
+          "bytes": 128384,
+          "sha256": "12560f26064ddb3c6c55bd8846f3fb9fdd47fe4998860aea73fa47cdaf673720"
+        },
+        {
+          "id": "E181",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/state-control2/service-state.json",
+          "bytes": 146746,
+          "sha256": "b313b061f33c2e1de296e21fb9bcc6b1dfe45edd51fcafd5ea0d0de3d1581d79"
+        },
+        {
+          "id": "E182",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/state-control2/debug-commands.txt",
+          "bytes": 27901,
+          "sha256": "76cd0305f92e511de625f4ba3356e2d6ad8519ecc459b88f72733f707bcec31b"
+        },
+        {
+          "id": "E183",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/state-control2/debug-commands-B.txt",
+          "bytes": 27901,
+          "sha256": "76cd0305f92e511de625f4ba3356e2d6ad8519ecc459b88f72733f707bcec31b"
+        },
+        {
+          "id": "E184",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/state-control2/A-blast158-r1-1-97.bin",
+          "bytes": 51,
+          "sha256": "74e2de4a80eccc95ca075b6b7b315a7883176c212d7f752f47cb45a80c0122e3"
+        },
+        {
+          "id": "E185",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/state-control2/A-blast158-r2-2-142.bin",
+          "bytes": 51,
+          "sha256": "b12c3fbe13bba6591e62ca40687ffe6a04b44a19ffbc64d48647cd6075c91ebc"
+        },
+        {
+          "id": "E186",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/state-control2/A-dynamic159-r1-1-94.bin",
+          "bytes": 77,
+          "sha256": "71a4476e7583f1680ac0e2cf7adb90b4660b95cc002aa25d8a7a1782afd1b969"
+        },
+        {
+          "id": "E187",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/state-control2/A-dynamic159-r2-2-139.bin",
+          "bytes": 77,
+          "sha256": "3a84487b7e02fa906b6d8c8d5775513d3d907a4b7b99cf936023513207df4e6b"
+        },
+        {
+          "id": "E188",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/state-control2/A-floor582-121.bin",
+          "bytes": 84,
+          "sha256": "57bc8794355ba07c6dad380d743a2474d3d92b00c863d0c4eeda68a232d12f8c"
+        },
+        {
+          "id": "E189",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/state-control2/A-floor582-76.bin",
+          "bytes": 84,
+          "sha256": "b7707aa0ec1c8ff031f38d6645999fef181710bbfda241c0c9f76fbdbe39b2b9"
+        },
+        {
+          "id": "E190",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/state-control2/A-go197-127.bin",
+          "bytes": 52,
+          "sha256": "4479c8d2bd5a138f8dd57f39fc717eabaade8d4273b394c5d4da4ac42a32ce22"
+        },
+        {
+          "id": "E191",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/state-control2/A-go197-82.bin",
+          "bytes": 52,
+          "sha256": "64b95010ecb0e40bc0367f41f6710d2357fb2538ce827e205825284601237ef8"
+        },
+        {
+          "id": "E192",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/state-control2/A-guest110-r1-115.bin",
+          "bytes": 44,
+          "sha256": "b9a562c345517aa67d96c51dfe93daedc56af471a1e386fd57cb165b0cee0bf1"
+        },
+        {
+          "id": "E193",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/state-control2/A-guest110-r2-160.bin",
+          "bytes": 44,
+          "sha256": "6e725be5eaf80cc30e3e51269018d224087c7b2b56713e255fbc72e8bb48e884"
+        },
+        {
+          "id": "E194",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/state-control2/A-host110-r1-112.bin",
+          "bytes": 44,
+          "sha256": "57460635dc0e9976e22e6b40d430710aab16e6a33c152be10c6a80b4564c3110"
+        },
+        {
+          "id": "E195",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/state-control2/A-host110-r2-157.bin",
+          "bytes": 44,
+          "sha256": "19ca60c86c873daa8df91c39edd61ebf3baafa3b8b4439c672d5dc049de76026"
+        },
+        {
+          "id": "E196",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/state-control2/A-item165-r1-17-91.bin",
+          "bytes": 50,
+          "sha256": "2ad2e7cbd637f553ff114fada41951a1129ca3dc52b14a540a60ccea59088bf0"
+        },
+        {
+          "id": "E197",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/state-control2/A-item165-r1-18-100.bin",
+          "bytes": 50,
+          "sha256": "167cf96b500602da108cf005f834108e383fa912d1dc2dbe958f51c8f5afe4e5"
+        },
+        {
+          "id": "E198",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/state-control2/A-item165-r1-19-103.bin",
+          "bytes": 50,
+          "sha256": "45a68f062cb868cdbb890bd9e9afde7e7882e30029bd369e17d73ea651faf638"
+        },
+        {
+          "id": "E199",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/state-control2/A-item165-r2-17-136.bin",
+          "bytes": 50,
+          "sha256": "777c46f533113967cf62ae0c9994a9aff2a2f9d88a5eb35f01042cbe0ef60d75"
+        },
+        {
+          "id": "E200",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/state-control2/A-item165-r2-18-145.bin",
+          "bytes": 50,
+          "sha256": "3afbcb2a1e098ac404243b905a1c510a4d33b131802d5fd1d5e6686a93937951"
+        },
+        {
+          "id": "E201",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/state-control2/A-item165-r2-19-148.bin",
+          "bytes": 50,
+          "sha256": "bb42e3d9f626133fc9a352f2df51a75c52009ad81821b4f810a7b171c38d2e5f"
+        },
+        {
+          "id": "E202",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/state-control2/A-peer153-133.bin",
+          "bytes": 135,
+          "sha256": "d7d78d5c68801449d6c73b613df47d5cc8bffeb89516f6244a312b5429e5e018"
+        },
+        {
+          "id": "E203",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/state-control2/A-peer153-88.bin",
+          "bytes": 135,
+          "sha256": "b433ff7d05175ef3468b4e7d22c1053ffc3ff1013e1333dff797ab95e0d56267"
+        },
+        {
+          "id": "E204",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/state-control2/A-play196-130.bin",
+          "bytes": 45,
+          "sha256": "13f2d542669df1a08be243989a4e70967313aab6c60971f9d235817f9240b651"
+        },
+        {
+          "id": "E205",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/state-control2/A-play196-85.bin",
+          "bytes": 45,
+          "sha256": "d04bf155b4847f9d41b0edfdf00a32526302273271c0f1cadbb8ce22b89eb51d"
+        },
+        {
+          "id": "E206",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/state-control2/A-rank175-r1-106.bin",
+          "bytes": 340,
+          "sha256": "af64696343b71bbddfcca524adcb34b3c8dd3b736f65508ac464a977c1810384"
+        },
+        {
+          "id": "E207",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/state-control2/A-rank175-r2-151.bin",
+          "bytes": 340,
+          "sha256": "a8f475739686a41b6fe6a6c6f2e2bceadcc320ea62dd0c7c8d819769e9fe05ee"
+        },
+        {
+          "id": "E208",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/state-control2/A-ready110-118.bin",
+          "bytes": 44,
+          "sha256": "6526e2f461589ee6ea8406ec75602e5c82bbf08353ee8d7d8b7f54952d1dac89"
+        },
+        {
+          "id": "E209",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/state-control2/A-ready110-73.bin",
+          "bytes": 44,
+          "sha256": "8fafd9cf652b458ee09b3751a0201f9ab1409920398e0e842e43b915c8840e25"
+        },
+        {
+          "id": "E210",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/state-control2/A-return180-r1-109.bin",
+          "bytes": 41,
+          "sha256": "b53daa3dda63e60a45282c346e337b4d3d97dd07a2ef4b33a42a147350601e54"
+        },
+        {
+          "id": "E211",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/state-control2/A-return180-r2-154.bin",
+          "bytes": 41,
+          "sha256": "6cfe760393700f6f5727536b029fbf72d8d3fcbd640b42da5887c4fe612b6389"
+        },
+        {
+          "id": "E212",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/state-control2/A-start121-r1-79.bin",
+          "bytes": 167,
+          "sha256": "f8a824335b4079160a4aaf0e0b425d1fabfa78c248d131503440d0414e1f26cf"
+        },
+        {
+          "id": "E213",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/state-control2/A-start121-r2-124.bin",
+          "bytes": 167,
+          "sha256": "f83868d66c8127ba318fca619743e810d900bfd1edcaab62656afbf7531b2dab"
+        },
+        {
+          "id": "E214",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/state-control2/B-blast158-r1-1-97.bin",
+          "bytes": 51,
+          "sha256": "74e2de4a80eccc95ca075b6b7b315a7883176c212d7f752f47cb45a80c0122e3"
+        },
+        {
+          "id": "E215",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/state-control2/B-blast158-r2-2-148.bin",
+          "bytes": 51,
+          "sha256": "88659a570df23d52b5dcaa193424c1ee1cd5a227859fb6fe022340beb30f3e69"
+        },
+        {
+          "id": "E216",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/state-control2/B-dynamic159-r1-1-94.bin",
+          "bytes": 77,
+          "sha256": "71a4476e7583f1680ac0e2cf7adb90b4660b95cc002aa25d8a7a1782afd1b969"
+        },
+        {
+          "id": "E217",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/state-control2/B-dynamic159-r2-2-145.bin",
+          "bytes": 77,
+          "sha256": "1a0125aa7fddc409ea166db9b332f7db65a3d6ca37f4c1cdcefaf20a47319496"
+        },
+        {
+          "id": "E218",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/state-control2/B-event170-17-r1-100.bin",
+          "bytes": 48,
+          "sha256": "ac7a8b7ad3f149b76a9101129323736a91ee9e830bd4b967e0237b0dd20127e2"
+        },
+        {
+          "id": "E219",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/state-control2/B-event170-17-r2-151.bin",
+          "bytes": 48,
+          "sha256": "338cbb68cd875a77ef3cfa0c08ed207bb4db8075fdf3b5298aba86d8ffa93e9f"
+        },
+        {
+          "id": "E220",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/state-control2/B-event170-19-r1-106.bin",
+          "bytes": 59,
+          "sha256": "f44858b45d8f390949e96019ad1c0a64019ec03ec177f763f27f1f87b47c3f68"
+        },
+        {
+          "id": "E221",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/state-control2/B-event170-19-r2-157.bin",
+          "bytes": 59,
+          "sha256": "a716967b3ad7573a21682896e30fd704381bf3829a1946c0e29b6cafd2b51930"
+        },
+        {
+          "id": "E222",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/state-control2/B-floor582-127.bin",
+          "bytes": 84,
+          "sha256": "407b0a6a324e72349b674b5d775fa7dc190a2efc380f5ae8435641e08cee6967"
+        },
+        {
+          "id": "E223",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/state-control2/B-floor582-76.bin",
+          "bytes": 84,
+          "sha256": "b7707aa0ec1c8ff031f38d6645999fef181710bbfda241c0c9f76fbdbe39b2b9"
+        },
+        {
+          "id": "E224",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/state-control2/B-go197-133.bin",
+          "bytes": 52,
+          "sha256": "c8e3ef9a306c801d8c383b432ce03b81ddec0e10387b51b16d811f4668bb8629"
+        },
+        {
+          "id": "E225",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/state-control2/B-go197-82.bin",
+          "bytes": 52,
+          "sha256": "64b95010ecb0e40bc0367f41f6710d2357fb2538ce827e205825284601237ef8"
+        },
+        {
+          "id": "E226",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/state-control2/B-guest110-r1-121.bin",
+          "bytes": 44,
+          "sha256": "3b78f32a3fd42c312c2d43e55d74b7be09df1fd2ff97c81d592f5f35f5b7f7e9"
+        },
+        {
+          "id": "E227",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/state-control2/B-guest110-r2-172.bin",
+          "bytes": 44,
+          "sha256": "167853ab27047587f75683ee2a3eba739d3b7fbe7c3b3edb80a674ceb55029fd"
+        },
+        {
+          "id": "E228",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/state-control2/B-host110-r1-118.bin",
+          "bytes": 44,
+          "sha256": "7f6e4c069299e39e9fda88c9a0352f1d8902f72639fcd1652de7804a20be4612"
+        },
+        {
+          "id": "E229",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/state-control2/B-host110-r2-169.bin",
+          "bytes": 44,
+          "sha256": "2895df5679af4a1c061ab15b92ff4500e338414cac56e06f4332d3627459ccab"
+        },
+        {
+          "id": "E230",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/state-control2/B-item165-r1-17-91.bin",
+          "bytes": 50,
+          "sha256": "2ad2e7cbd637f553ff114fada41951a1129ca3dc52b14a540a60ccea59088bf0"
+        },
+        {
+          "id": "E231",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/state-control2/B-item165-r1-18-103.bin",
+          "bytes": 50,
+          "sha256": "13282e0d6294bfa265defb9a5a7bb07a6c604d233459f0d12c8fb43f78a38688"
+        },
+        {
+          "id": "E232",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/state-control2/B-item165-r1-19-109.bin",
+          "bytes": 50,
+          "sha256": "68c1b6bf4d6b6e6ad2e761eabc15a824ccff39f6f54dbe5add6f53d1428a446e"
+        },
+        {
+          "id": "E233",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/state-control2/B-item165-r2-17-142.bin",
+          "bytes": 50,
+          "sha256": "8f496cd000e74a62c27f73ff5a2e1b3bbec292ddc8c83b969eaeb19034c9c981"
+        },
+        {
+          "id": "E234",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/state-control2/B-item165-r2-18-154.bin",
+          "bytes": 50,
+          "sha256": "eab06d51dc944d556d3039e3d6234d6eb6b2a054e2e883631850f6b8889cb01e"
+        },
+        {
+          "id": "E235",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/state-control2/B-item165-r2-19-160.bin",
+          "bytes": 50,
+          "sha256": "53bde9eaba3872be7a195c3d29f1e1d41232a073561a3254276412d581f52c9a"
+        },
+        {
+          "id": "E236",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/state-control2/B-peer153-139.bin",
+          "bytes": 135,
+          "sha256": "596c616989b33ac682c385fdd3cd355c9a50913964fb664840a4d68e4c84944e"
+        },
+        {
+          "id": "E237",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/state-control2/B-peer153-88.bin",
+          "bytes": 135,
+          "sha256": "20ee59bee1cc3d541ca7724c48410ad367d31127630ca4b6ef9e780b79259e0e"
+        },
+        {
+          "id": "E238",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/state-control2/B-play196-136.bin",
+          "bytes": 45,
+          "sha256": "e2d195e7dc4636e2287c5c82a5b6f7128fd586d4009e54131c307500b7f57792"
+        },
+        {
+          "id": "E239",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/state-control2/B-play196-85.bin",
+          "bytes": 45,
+          "sha256": "d04bf155b4847f9d41b0edfdf00a32526302273271c0f1cadbb8ce22b89eb51d"
+        },
+        {
+          "id": "E240",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/state-control2/B-rank175-r1-112.bin",
+          "bytes": 340,
+          "sha256": "8be64203835a0cf6edbbd793ef96426e1576b0f0dd5c83858861721bcde6bf22"
+        },
+        {
+          "id": "E241",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/state-control2/B-rank175-r2-163.bin",
+          "bytes": 340,
+          "sha256": "6af49c023f1cc7cbaac3a8d7a472ae97776225ba0c4eecd71bafe478b3563564"
+        },
+        {
+          "id": "E242",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/state-control2/B-ready110-124.bin",
+          "bytes": 44,
+          "sha256": "a70e4d4bae1b7aa3c74c43df15249f73bf963d8a75ee866fbd83d9d5f9fdf6fa"
+        },
+        {
+          "id": "E243",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/state-control2/B-ready110-73.bin",
+          "bytes": 44,
+          "sha256": "8fafd9cf652b458ee09b3751a0201f9ab1409920398e0e842e43b915c8840e25"
+        },
+        {
+          "id": "E244",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/state-control2/B-remove107-175.bin",
+          "bytes": 44,
+          "sha256": "669c003b9351366ae29b5f15f732e8ce5ad9984b8839f2de1acab8fcea39ac14"
+        },
+        {
+          "id": "E245",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/state-control2/B-return180-r1-115.bin",
+          "bytes": 41,
+          "sha256": "e5aa8a7186c5b133fe7a03750941950ce962a7df6cc96cff7b4f9292e2ba6127"
+        },
+        {
+          "id": "E246",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/state-control2/B-return180-r2-166.bin",
+          "bytes": 41,
+          "sha256": "5b801171568aad782249307d0341019902713992cd1126a285904447dfb7e78f"
+        },
+        {
+          "id": "E247",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/state-control2/B-start121-r1-79.bin",
+          "bytes": 167,
+          "sha256": "f8a824335b4079160a4aaf0e0b425d1fabfa78c248d131503440d0414e1f26cf"
+        },
+        {
+          "id": "E248",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/state-control2/B-start121-r2-130.bin",
+          "bytes": 167,
+          "sha256": "de85d59b04fa6cc2e20d6e787a6db07102e39f9309853f5c30f45091e2136961"
+        },
+        {
+          "id": "E249",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/state-control2/B-survivor110-178.bin",
+          "bytes": 44,
+          "sha256": "ac30d4bfadfee6e4a00eedca0a36a14188e421d391c533fa68ad21687e4a1de7"
+        },
+        {
+          "id": "E250",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/state-control2/injected124-r1-after17.bin",
+          "bytes": 57,
+          "sha256": "d5ed6822c6c62c8a96701f9d30d549c057196b8cbd95f645fb1701039038e8d6"
+        },
+        {
+          "id": "E251",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/state-control2/injected124-r1-after19.bin",
+          "bytes": 57,
+          "sha256": "4aaa55aeb51fbc22a67c2d022d8987cb65aa2fd154380ff606c22498d24c26e5"
+        },
+        {
+          "id": "E252",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/state-control2/injected124-r2-after17.bin",
+          "bytes": 57,
+          "sha256": "d6ffd04faeb2735738d38baeea8675776c4f95a2e1e6ce512fe701838dba7a65"
+        },
+        {
+          "id": "E253",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/state-control2/injected124-r2-after19.bin",
+          "bytes": 57,
+          "sha256": "ed6d4d2ef2efa005ac93f871bcd59caecb2d0ed08a5f36e08fb93e0521e3018c"
+        },
+        {
+          "id": "E254",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/state-guard/run.json",
+          "bytes": 135332,
+          "sha256": "3e4313e8481ab80a8cdacdd8e7bad67be8880d97d6f4df3f694c0c5f0be384a7"
+        },
+        {
+          "id": "E255",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/state-guard/client.log",
+          "bytes": 92040,
+          "sha256": "fd27680f9345b0eb46e5f570cc3ebcd0458801fc21d4f08c3b3bc27c65b81ada"
+        },
+        {
+          "id": "E256",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/state-guard/client-B.log",
+          "bytes": 99549,
+          "sha256": "d55df4d81fa106ee468c8e561e7620af276fb749d8709e4da117176f1d0e44d3"
+        },
+        {
+          "id": "E257",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/state-guard/service-state.json",
+          "bytes": 140767,
+          "sha256": "e93f1822d8c562dcb4e4187156ef71733770f8820b74f380f8440e380a5ede04"
+        },
+        {
+          "id": "E258",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/state-guard/debug-commands.txt",
+          "bytes": 27901,
+          "sha256": "76cd0305f92e511de625f4ba3356e2d6ad8519ecc459b88f72733f707bcec31b"
+        },
+        {
+          "id": "E259",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/state-guard/debug-commands-B.txt",
+          "bytes": 27901,
+          "sha256": "76cd0305f92e511de625f4ba3356e2d6ad8519ecc459b88f72733f707bcec31b"
+        },
+        {
+          "id": "E260",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/state-guard/A-blast158-r1-1-94.bin",
+          "bytes": 51,
+          "sha256": "31e41726c0deaa834ef2fa20813c84199f3f94023a8f3b7d0f64f9d5241eede1"
+        },
+        {
+          "id": "E261",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/state-guard/A-blast158-r2-2-133.bin",
+          "bytes": 51,
+          "sha256": "cc3c18104cfae1ecae5ba69c4261e5a4cc0581dab44d7a9023a8b904bde76faa"
+        },
+        {
+          "id": "E262",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/state-guard/A-dynamic159-r1-1-91.bin",
+          "bytes": 77,
+          "sha256": "ce45fc947aabc22d29d1361e7f576818a1665b9a9f617af2c2cec7116d89591e"
+        },
+        {
+          "id": "E263",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/state-guard/A-dynamic159-r2-2-130.bin",
+          "bytes": 77,
+          "sha256": "43c5a2cfce4ebd0eb47375a5b1c229e63a57f7a2c79e02c40c1cd349cdd6e7e1"
+        },
+        {
+          "id": "E264",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/state-guard/A-floor582-112.bin",
+          "bytes": 84,
+          "sha256": "6b5b0ccc8fb3afa93f5e8a0ac9d4242dae77a0976b473aa7b10a423c84423d03"
+        },
+        {
+          "id": "E265",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/state-guard/A-floor582-76.bin",
+          "bytes": 84,
+          "sha256": "b7707aa0ec1c8ff031f38d6645999fef181710bbfda241c0c9f76fbdbe39b2b9"
+        },
+        {
+          "id": "E266",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/state-guard/A-go197-118.bin",
+          "bytes": 52,
+          "sha256": "aa70380f2f8ac732b32002b998ecd874353865d9e3853102c01a72d06b327970"
+        },
+        {
+          "id": "E267",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/state-guard/A-go197-82.bin",
+          "bytes": 52,
+          "sha256": "64b95010ecb0e40bc0367f41f6710d2357fb2538ce827e205825284601237ef8"
+        },
+        {
+          "id": "E268",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/state-guard/A-guest110-r1-106.bin",
+          "bytes": 44,
+          "sha256": "34aa966e0eef0cee7af15360322ee98baf2f023eb2b8528674b6115d7889a313"
+        },
+        {
+          "id": "E269",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/state-guard/A-guest110-r2-145.bin",
+          "bytes": 44,
+          "sha256": "3a038453a9e1fc2ead6aea750f42a81563a51952e65097b7cf41ccfa72090d1d"
+        },
+        {
+          "id": "E270",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/state-guard/A-host110-r1-103.bin",
+          "bytes": 44,
+          "sha256": "f8c269431038bc985afb79961f89b6e2509d0829ed8046e397aa5acfb962c596"
+        },
+        {
+          "id": "E271",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/state-guard/A-host110-r2-142.bin",
+          "bytes": 44,
+          "sha256": "dbbc814d1577ea7ca864f46980ef101f143ae72fd648b285e348a5ad6e0d6414"
+        },
+        {
+          "id": "E272",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/state-guard/A-item165-r2-17-127.bin",
+          "bytes": 50,
+          "sha256": "57205d0248db95f454bebb2a464bac816912b4615dca4bff2d8c2d8473f6fe32"
+        },
+        {
+          "id": "E273",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/state-guard/A-peer153-124.bin",
+          "bytes": 135,
+          "sha256": "ba58d8188f250a8cb6bc710cb39f7cd14b956fc3b26ed02738ac954be69060db"
+        },
+        {
+          "id": "E274",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/state-guard/A-peer153-88.bin",
+          "bytes": 135,
+          "sha256": "ede4528a2b08fb8d28f35d0c254b20ad0b73c6fd7fa5406f3bcd479b6fb74513"
+        },
+        {
+          "id": "E275",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/state-guard/A-play196-121.bin",
+          "bytes": 45,
+          "sha256": "c36a9aaa4674958645f4db690772261f39607eb5fb712a80827259d710da962d"
+        },
+        {
+          "id": "E276",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/state-guard/A-play196-85.bin",
+          "bytes": 45,
+          "sha256": "d04bf155b4847f9d41b0edfdf00a32526302273271c0f1cadbb8ce22b89eb51d"
+        },
+        {
+          "id": "E277",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/state-guard/A-rank175-r1-97.bin",
+          "bytes": 340,
+          "sha256": "6be30231b79508f47dfe49eaf4b8d6c1fe69ae1e8976654096d7eb50ae1f47f7"
+        },
+        {
+          "id": "E278",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/state-guard/A-rank175-r2-136.bin",
+          "bytes": 340,
+          "sha256": "d98cab3f2bd84db092678b3de6d6d06d48190caa493d45f47f7f75acb9cf8a85"
+        },
+        {
+          "id": "E279",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/state-guard/A-ready110-109.bin",
+          "bytes": 44,
+          "sha256": "d61e0dec5dd42f6d9359359420df2fed9723478d5554aebb09cb7fa7d9ca1754"
+        },
+        {
+          "id": "E280",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/state-guard/A-ready110-73.bin",
+          "bytes": 44,
+          "sha256": "8fafd9cf652b458ee09b3751a0201f9ab1409920398e0e842e43b915c8840e25"
+        },
+        {
+          "id": "E281",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/state-guard/A-return180-r1-100.bin",
+          "bytes": 41,
+          "sha256": "1560d1178af0e8cea05c74affdc46a79d86c425250a71210b94da25e4073df4a"
+        },
+        {
+          "id": "E282",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/state-guard/A-return180-r2-139.bin",
+          "bytes": 41,
+          "sha256": "8fa8217ca07c9c323d1ce112ea12b332623386fcd993a09b78f31f1346ed4b0c"
+        },
+        {
+          "id": "E283",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/state-guard/A-start121-r1-79.bin",
+          "bytes": 167,
+          "sha256": "f8a824335b4079160a4aaf0e0b425d1fabfa78c248d131503440d0414e1f26cf"
+        },
+        {
+          "id": "E284",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/state-guard/A-start121-r2-115.bin",
+          "bytes": 167,
+          "sha256": "2c2f633223459f50f3c83b215e3438d816637d3fcedf6adc5177f166c3f45901"
+        },
+        {
+          "id": "E285",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/state-guard/B-blast158-r1-1-94.bin",
+          "bytes": 51,
+          "sha256": "31e41726c0deaa834ef2fa20813c84199f3f94023a8f3b7d0f64f9d5241eede1"
+        },
+        {
+          "id": "E286",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/state-guard/B-blast158-r2-2-139.bin",
+          "bytes": 51,
+          "sha256": "5bddebbcc4970cb74c016193c4c9fe642ffbc88163dedc58beb9e61cdc822fc0"
+        },
+        {
+          "id": "E287",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/state-guard/B-dynamic159-r1-1-91.bin",
+          "bytes": 77,
+          "sha256": "ce45fc947aabc22d29d1361e7f576818a1665b9a9f617af2c2cec7116d89591e"
+        },
+        {
+          "id": "E288",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/state-guard/B-dynamic159-r2-2-136.bin",
+          "bytes": 77,
+          "sha256": "6fac4199fd75851ee84ad8d6b90fcbbdcdd46921c381b2fabbd0647a76e07bc9"
+        },
+        {
+          "id": "E289",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/state-guard/B-event170-17-r1-97.bin",
+          "bytes": 48,
+          "sha256": "02b5985a867bc19e3bb91236bc8816d3f6f25bc4f8c5f7bddba4579c9a56e15b"
+        },
+        {
+          "id": "E290",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/state-guard/B-event170-17-r2-142.bin",
+          "bytes": 48,
+          "sha256": "c689c9a99cfbcf8b94a3dc3c1ee7602173e67f6cf9f525a996e7e2c8f5f97b75"
+        },
+        {
+          "id": "E291",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/state-guard/B-event170-19-r1-100.bin",
+          "bytes": 59,
+          "sha256": "bd8bf772c0329942ba758585caf140131b8b59be9138cb03a2c34fd4d1ba22b3"
+        },
+        {
+          "id": "E292",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/state-guard/B-event170-19-r2-145.bin",
+          "bytes": 59,
+          "sha256": "0909ba8c230348fbae25d935cac5e2d6a827bb9af5528976b86c27da4d6f3c1f"
+        },
+        {
+          "id": "E293",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/state-guard/B-floor582-118.bin",
+          "bytes": 84,
+          "sha256": "510533e4ce144bb63d09c76c30f830bcf927b80698d329d14ae2acca1c329d67"
+        },
+        {
+          "id": "E294",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/state-guard/B-floor582-76.bin",
+          "bytes": 84,
+          "sha256": "b7707aa0ec1c8ff031f38d6645999fef181710bbfda241c0c9f76fbdbe39b2b9"
+        },
+        {
+          "id": "E295",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/state-guard/B-go197-124.bin",
+          "bytes": 52,
+          "sha256": "94f616295ccb42b1d65f119531b5965ade54edc4e9034b76dbf7c2d89697e0e9"
+        },
+        {
+          "id": "E296",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/state-guard/B-go197-82.bin",
+          "bytes": 52,
+          "sha256": "64b95010ecb0e40bc0367f41f6710d2357fb2538ce827e205825284601237ef8"
+        },
+        {
+          "id": "E297",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/state-guard/B-guest110-r1-112.bin",
+          "bytes": 44,
+          "sha256": "5459dc7d1e715e0523e24981ce67a04e72b6949c2274e3cc6b7577cf62fe6a9d"
+        },
+        {
+          "id": "E298",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/state-guard/B-guest110-r2-157.bin",
+          "bytes": 44,
+          "sha256": "30c535254d1de45b099bd3d402007bfbc3435113987931f1aab5de2aa0675676"
+        },
+        {
+          "id": "E299",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/state-guard/B-host110-r1-109.bin",
+          "bytes": 44,
+          "sha256": "1464734628e1b0aa271c48a50c2ed3ceb0fb0d4ba99dac113b20b2ea74dc0d7e"
+        },
+        {
+          "id": "E300",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/state-guard/B-host110-r2-154.bin",
+          "bytes": 44,
+          "sha256": "70ec60b70dc5673d216168efadafd5768d2bdd33906e1d08631b2946b4611e76"
+        },
+        {
+          "id": "E301",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/state-guard/B-item165-r2-17-133.bin",
+          "bytes": 50,
+          "sha256": "88436f73200bca25c50e3254e24b9e99209ad66bdb326f6c4f60a238a6035caa"
+        },
+        {
+          "id": "E302",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/state-guard/B-peer153-130.bin",
+          "bytes": 135,
+          "sha256": "6701f5b902d15f2b45f772305cf7fd11d37b14dcac47f20d1af5e8027a7dba47"
+        },
+        {
+          "id": "E303",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/state-guard/B-peer153-88.bin",
+          "bytes": 135,
+          "sha256": "2822e3ca864382e641433d416d3255c1f7f5e58e6466f31ee8f122142ac5b9de"
+        },
+        {
+          "id": "E304",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/state-guard/B-play196-127.bin",
+          "bytes": 45,
+          "sha256": "010276ee96d43eb798c4cbd8f0d661c416e8d7faa30a083f459303b635c75c2f"
+        },
+        {
+          "id": "E305",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/state-guard/B-play196-85.bin",
+          "bytes": 45,
+          "sha256": "d04bf155b4847f9d41b0edfdf00a32526302273271c0f1cadbb8ce22b89eb51d"
+        },
+        {
+          "id": "E306",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/state-guard/B-rank175-r1-103.bin",
+          "bytes": 340,
+          "sha256": "8f755c898994d478f38d2b807ece591b2ad2d1da7c950eba60859a5e338aa315"
+        },
+        {
+          "id": "E307",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/state-guard/B-rank175-r2-148.bin",
+          "bytes": 340,
+          "sha256": "cc35312afb34071d31044897525187ac1420c204becdd7d238d01d5dab95dcaa"
+        },
+        {
+          "id": "E308",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/state-guard/B-ready110-115.bin",
+          "bytes": 44,
+          "sha256": "71ab3449f204c7354574438ac4952909165942f1abaf832f65a4463c57f8a476"
+        },
+        {
+          "id": "E309",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/state-guard/B-ready110-73.bin",
+          "bytes": 44,
+          "sha256": "8fafd9cf652b458ee09b3751a0201f9ab1409920398e0e842e43b915c8840e25"
+        },
+        {
+          "id": "E310",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/state-guard/B-remove107-160.bin",
+          "bytes": 44,
+          "sha256": "606d9b9df58749b91dfd5e3e78fcb4e3d6b64e3739f469d3d9bf4386874985a7"
+        },
+        {
+          "id": "E311",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/state-guard/B-return180-r1-106.bin",
+          "bytes": 41,
+          "sha256": "6a49bc7222df4957e03d3ebe2382217d1988daab1844150f76558baf634da81b"
+        },
+        {
+          "id": "E312",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/state-guard/B-return180-r2-151.bin",
+          "bytes": 41,
+          "sha256": "5b1aea0a52dbb97f56292935014c1efc8c8c1874e5e513013bc5bcad9996b130"
+        },
+        {
+          "id": "E313",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/state-guard/B-start121-r1-79.bin",
+          "bytes": 167,
+          "sha256": "f8a824335b4079160a4aaf0e0b425d1fabfa78c248d131503440d0414e1f26cf"
+        },
+        {
+          "id": "E314",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/state-guard/B-start121-r2-121.bin",
+          "bytes": 167,
+          "sha256": "90884970c6bbda9491a5a3408cea9f6d47a3b1e0019b1aefd6d83b2764810fec"
+        },
+        {
+          "id": "E315",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/state-guard/B-survivor110-163.bin",
+          "bytes": 44,
+          "sha256": "f1d2c13da02ab8aeb7e3e3652e67ee0150cfe6856e86d3db500bd071bb24407c"
+        },
+        {
+          "id": "E316",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/state-guard/injected124-r1-after17.bin",
+          "bytes": 57,
+          "sha256": "d5ed6822c6c62c8a96701f9d30d549c057196b8cbd95f645fb1701039038e8d6"
+        },
+        {
+          "id": "E317",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/state-guard/injected124-r1-after19.bin",
+          "bytes": 57,
+          "sha256": "4aaa55aeb51fbc22a67c2d022d8987cb65aa2fd154380ff606c22498d24c26e5"
+        },
+        {
+          "id": "E318",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/state-guard/injected124-r2-after17.bin",
+          "bytes": 57,
+          "sha256": "d6ffd04faeb2735738d38baeea8675776c4f95a2e1e6ce512fe701838dba7a65"
+        },
+        {
+          "id": "E319",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/state-guard/injected124-r2-after19.bin",
+          "bytes": 57,
+          "sha256": "ed6d4d2ef2efa005ac93f871bcd59caecb2d0ed08a5f36e08fb93e0521e3018c"
+        },
+        {
+          "id": "E320",
+          "kind": "local",
+          "path": "local/research/codex/wine_probe_pickup_state.py",
+          "bytes": 39124,
+          "sha256": "9139844459989274586effba26cd0e9b9ab2d5b7c2218b3a0eda72a48f48a8e4"
+        }
+      ],
+      "delta": {
+        "added": [
+          "Nativeconsequence currentkeyforgeryafterrealtrap,report-derivedserviceguard/reset and5regressions;2isolatedruns2cycles,AUD017."
+        ],
+        "corrected": [
+          "B323D0 itemguard/+618flag not assumed actorstateenum; broadernativeeligibilityunknown.",
+          "Measurementv1provenancelabeloverwroteinjection; verifierusesexactSHA/rawpreserved,counts2vs1actual.",
+          "Dead165atmax7notproofincrease;fixedround1noactual124notproofguardcausedinputmiss.",
+          "StaleRESEARCHsummary/authorityhostgap/CP053-Cadmissionnext/CP054-source-t next now currentpointers;immutablehistoryretained."
+        ],
+        "superseded": [
+          "Nextsource-t/reportguardcontrol doneinscope;PLAN now codecfragmentation/coalescing/bounds thenauthcache,notallvalidator/EOFvariants."
+        ]
+      },
+      "blockers": [
+        "Nativeeligibility/distance/auth/transport/stale-forged127/fullvalidator unknown;Rollerfixtureguarddoesnotsupportrescue/selfescape1/18yet.",
+        "Fixtureauth/codec/cache/generalreset/Windowsvanilla/K5/K6a/LAN/Internet open."
+      ],
+      "next_steps": [
+        {
+          "id": "NEXT-ITEM-PICKUP",
+          "task": "KRE-005b",
+          "state": "superseded",
+          "action": "t/k/reportguard measuredinscopeCP055/056; remainingdistance/auth/transport/rescuevariants inRESEARCH, only reopenwhenblockingintegration perPLAN.",
+          "owner": "Codex",
+          "reviewer": "Codex"
+        },
+        {
+          "id": "NEXT-CODEC-BOUNDARIES",
+          "task": "KRE-005b",
+          "state": "active",
+          "action": "Immediately reuseactualframes/native14EF300 andservicecodec; fragmented/coalesced/partial/headerlen/CRC/bounds/seqperconnection withnativeconsumed/cursor,error/retention. No generatedroundtriporacle.",
+          "owner": "Codex",
+          "reviewer": "Codex"
+        },
+        {
+          "id": "NEXT-FULL-LOGIN-FIELDS",
+          "task": "KRE-005b",
+          "state": "active",
+          "action": "Canonicalauth/cachedebt follows targetedcodecboundaries;fixtureidentitynotaccountresume.",
+          "owner": "Codex",
+          "reviewer": "Codex"
+        }
+      ],
+      "review": {
+        "status": "waived",
+        "as_of_utc": "2026-11-02T11:10:34.344369+00:00",
+        "reference": "docs/evidence/checkpoints/review-waiver.json",
+        "scope": "Codex solo RE/code/runtime/selfcheck, not independent approval.",
+        "authorization": {
+          "by": "project_owner",
+          "reference": "docs/evidence/checkpoints/review-waiver.json",
+          "reason": "Owner explicitly requested solo without Claude review."
+        }
+      },
+      "docs_sync": [
+        {
+          "path": "README.md",
+          "state": "updated",
+          "reason": "CP056 scope/reportguard/corrections/currentpointers;solePLAN now codec thenauthcache;AUD017."
+        },
+        {
+          "path": "docs/PLAN.md",
+          "state": "updated",
+          "reason": "CP056 scope/reportguard/corrections/currentpointers;solePLAN now codec thenauthcache;AUD017."
+        },
+        {
+          "path": "docs/PROTOCOL.md",
+          "state": "updated",
+          "reason": "CP056 scope/reportguard/corrections/currentpointers;solePLAN now codec thenauthcache;AUD017."
+        },
+        {
+          "path": "docs/RESEARCH.md",
+          "state": "updated",
+          "reason": "CP056 scope/reportguard/corrections/currentpointers;solePLAN now codec thenauthcache;AUD017."
+        },
+        {
+          "path": "docs/features.json",
+          "state": "updated",
+          "reason": "CP056 scope/reportguard/corrections/currentpointers;solePLAN now codec thenauthcache;AUD017."
+        },
+        {
+          "path": "docs/COVERAGE.md",
+          "state": "updated",
+          "reason": "CP056 scope/reportguard/corrections/currentpointers;solePLAN now codec thenauthcache;AUD017."
+        },
+        {
+          "path": "server/README.md",
+          "state": "updated",
+          "reason": "CP056 scope/reportguard/corrections/currentpointers;solePLAN now codec thenauthcache;AUD017."
+        },
+        {
+          "path": "docs/evidence/pickup-state/README.md",
+          "state": "updated",
+          "reason": "CP056 scope/reportguard/corrections/currentpointers;solePLAN now codec thenauthcache;AUD017."
+        },
+        {
+          "path": "docs/evidence/host-setup/README.md",
+          "state": "updated",
+          "reason": "CP056 scope/reportguard/corrections/currentpointers;solePLAN now codec thenauthcache;AUD017."
+        },
+        {
+          "path": "docs/evidence/prestart-replacement/README.md",
+          "state": "updated",
+          "reason": "CP056 scope/reportguard/corrections/currentpointers;solePLAN now codec thenauthcache;AUD017."
+        },
+        {
+          "path": "docs/evidence/pickup-time/README.md",
+          "state": "updated",
+          "reason": "CP056 scope/reportguard/corrections/currentpointers;solePLAN now codec thenauthcache;AUD017."
+        }
+      ]
     }
   ],
   "audits": [
@@ -118615,6 +121097,11 @@
       "id": "AUD016",
       "path": "docs/evidence/checkpoints/audits/AUD016.json",
       "sha256": "c64c73fda7b00f764f8072833cc8e7efb3c7a80cec5aa88de0d657f83d8ef612"
+    },
+    {
+      "id": "AUD017",
+      "path": "docs/evidence/checkpoints/audits/AUD017.json",
+      "sha256": "c3c96f1d02de10ef1b76ca5c19c7f90638bccb49a4e69508dec444edd2b4a9e9"
     }
   ],
   "task_states": [
@@ -118689,6 +121176,12 @@
       "state": "open",
       "canonical": "docs/PLAN.md",
       "reference": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/70"
+    },
+    {
+      "id": "KRE-019",
+      "state": "open",
+      "canonical": "docs/PLAN.md",
+      "reference": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/72"
     }
   ]
 }

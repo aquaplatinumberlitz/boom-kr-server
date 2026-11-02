@@ -29,15 +29,15 @@ runtime nào có nguồn, còn thiếu gì và phép kiểm nào giải quyết.
 evidence/hash và câu hỏi; [PLAN](docs/PLAN.md#current-order) giữ duy nhất thứ tự công việc.
 Đây là scope đường bootstrap → login → sảnh → phòng → Battle → kết quả/reset, không kiểm kê toàn client.
 
-CP055: đã truy `t` của124 từ bộ đếm logic CMainSystem qua pending record đến bốn gói TCP thật;
-counter riêng mỗi client và tiếp tục qua vòng mới. [Contract/giới hạn](docs/PROTOCOL.md#pickup-tick),
-[recipe/bằng chứng](docs/evidence/pickup-time/README.md). Chưa có cơ sở thêm ngưỡng thời gian vào validator;
-tiếp actorstate/forged-current-key. Chưa nghiệm thu hai trận đầy đủ/K6a/LAN/Internet hoặc
-membership/auth/validator/cache/codec/reset tổng quát; runtime trên Wine copy chẩn đoán.
+CP056: service đã chặn request nhặt giả mang key hiện tại sau report nhốt/chết, không phát165;
+request thật ở vòng2 vẫn qua và tăng Roller trên cả hai client. [Contract/giới hạn](docs/PROTOCOL.md#pickup-report-state),
+[control/hash](docs/evidence/pickup-state/README.md). Đây là policy hẹp theo report của fixture;
+chưa distance/auth/fullvalidator hoặc nghiệm thu hai trận đầy đủ/K6a/LAN/Internet.
+Tiếp native codec boundaries/fragmentation theo PLAN.
 
-CP054 đã merge [PR69](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/69) tại `69df506`.
-CP055 tự kiểm/integration theo [PR71](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/71); review độc lập [waived](docs/evidence/checkpoints/review-waiver.json).
-Audit **AUD016/CP052**, audit kế **CP056**.
+CP055 đã merge [PR71](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/71) tại `76766e7`.
+CP056 tự kiểm/integration theo [PR73](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/73), review độc lập [waived](docs/evidence/checkpoints/review-waiver.json).
+Audit **AUD017/CP056**, audit kế **CP060**.
 [Yêu cầu chủ dự án](docs/evidence/owner-directives/continuous-work.json): tiếp tục ngay việc kế trong
 PLAN sau mỗi checkpoint/commit/PR, không tự dừng/chờ nhắc.
 

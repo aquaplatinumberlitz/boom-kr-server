@@ -627,24 +627,24 @@ Dependency: [KR-F001](#kr-f001).
 
 [Contract và giới hạn](PROTOCOL.md#item-pickup) · [Câu hỏi gốc](RESEARCH.md#gap-floor-pickup) · [Thứ tự ở PLAN](PLAN.md#current-order).
 
-Khoảng trống (trích bảng RESEARCH): CP055 đã giải t là counter CMainSystem riêng/qua round, latchedrecord→TCP; physical timebase và original validator vẫn unknown. Distance/actorstate/forged-current-key/transport/fullvalidator còn mở.
+Khoảng trống (trích bảng RESEARCH): CP056 đã loại bốn forged-current-key dispatch sau17/19 theo report; chưa distance/auth/TCP replay/native eligibility tổng quát, stale/forged127 hoặc rescue/selfescape transition. Nguồn t đã giải, time policy chưa có.
 
-Phép kiểm tối thiểu (trích cùng nguồn): Tái dùng [nguồn t](PROTOCOL.md#pickup-tick),17/18/19/170/actual124 và guardk; trace collision/producer state guard, đo sống/trapped/dead cùng một round và một dispatcher control bodycũ/đổi k hiện tại khi actor không đủ điều kiện. Không áp threshold ms hoặc gọi injection là TCP admission.
+Phép kiểm tối thiểu (trích cùng nguồn): Reuse [report guard](PROTOCOL.md#pickup-report-state); chỉ khi integration mở kim/cứu thì nối1/18/reset thay marker đến Start. Với transport/geometry cần actual C2S path và vị trí/state cùng run; không chạy lại nguồn t/k hoặc coi dispatcher injection là TCP admission.
 
-Bằng chứng/build/hash/recipe: [item-pickup](evidence/item-pickup/README.md), [probe-service](evidence/probe-service/README.md), [stale124](evidence/stale124/README.md), [pickup-time](evidence/pickup-time/README.md).
+Bằng chứng/build/hash/recipe: [item-pickup](evidence/item-pickup/README.md), [probe-service](evidence/probe-service/README.md), [stale124](evidence/stale124/README.md), [pickup-time](evidence/pickup-time/README.md), [pickup-state](evidence/pickup-state/README.md).
 
 | Chiều chứng minh | Khai báo | Nguồn/phạm vi áp dụng |
 |---|---|---|
 | presence | present | [nguồn1](PROTOCOL.md#item-pickup) |
 | vn_reference | both | [nguồn1](PROTOCOL.md#item-pickup), [nguồn2](REFERENCES.md) |
-| kr_static | partial | [nguồn1](PROTOCOL.md#item-pickup), [nguồn2](PROTOCOL.md#pickup-tick) |
+| kr_static | partial | [nguồn1](PROTOCOL.md#item-pickup), [nguồn2](PROTOCOL.md#pickup-tick), [nguồn3](PROTOCOL.md#pickup-report-state) |
 | emulation | checked | [nguồn1](evidence/item-pickup/README.md), [nguồn2](evidence/pickup-time/README.md) |
-| wine_diagnostic_copy | observed | [nguồn1](evidence/item-pickup/README.md), [nguồn2](evidence/stale124/README.md), [nguồn3](evidence/pickup-time/README.md) |
+| wine_diagnostic_copy | observed | [nguồn1](evidence/item-pickup/README.md), [nguồn2](evidence/stale124/README.md), [nguồn3](evidence/pickup-time/README.md), [nguồn4](evidence/pickup-state/README.md) |
 | windows_original | unknown | Chưa có bằng chứng trong phạm vi rà |
 | lan | unknown | Chưa có bằng chứng trong phạm vi rà |
 | internet | unknown | Chưa có bằng chứng trong phạm vi rà |
-| implementation | partial / via_pr | [nguồn1](../server/probe_service.py), [nguồn2](PROTOCOL.md#pickup-round-key), [nguồn3](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/59) |
-| integration | partial | [nguồn1](evidence/stale124/README.md) |
+| implementation | partial / via_pr | [nguồn1](../server/probe_service.py), [nguồn2](PROTOCOL.md#pickup-round-key), [nguồn3](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/59), [nguồn4](PROTOCOL.md#pickup-report-state), [nguồn5](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/73) |
+| integration | partial | [nguồn1](evidence/stale124/README.md), [nguồn2](evidence/pickup-state/README.md) |
 | gate | K5: open | [nguồn1](PLAN.md#gates) |
 
 <a id="kr-f007"></a>
@@ -978,11 +978,11 @@ Dependency: [KR-B003](#kr-b003), [KR-R003](#kr-r003), [KR-X002](#kr-x002).
 
 [Contract và giới hạn](PROTOCOL.md#probe-service) · [Câu hỏi gốc](RESEARCH.md#gap-diagnostic-service) · [Thứ tự ở PLAN](PLAN.md#current-order).
 
-Khoảng trống (trích bảng RESEARCH): CP054 admission có native C/B-Cround; CP055 chỉ thêm client_tick log/actual-capture bench,45server tests; same fixture41/max12/2live members. Fullauth/cache/codec/validator/roster không tổng quát.
+Khoảng trống (trích bảng RESEARCH): CP056 reportguard/Start reset có native control/fix,50server tests; fixture41/auth/roster/rank và max12/2live còn hẹp.
 
-Phép kiểm tối thiểu (trích cùng nguồn): Tiếp validator124 theo PLAN; chỉ dùng actual native proof cho integration, tests/logs không tự đóng gate hoặc thay identity/login contract.
+Phép kiểm tối thiểu (trích cùng nguồn): Tiếp codec boundaries theo PLAN; giữ report-derived policy tách native authority và không áp giới hạn Roller sang kim/cứu chưa hỗ trợ.
 
-Bằng chứng/build/hash/recipe: [probe-service](evidence/probe-service/README.md), [stale124](evidence/stale124/README.md), [service-eof](evidence/service-eof/README.md), [service-replacement](evidence/service-replacement/README.md), [setup-eof](evidence/setup-eof/README.md), [host-setup](evidence/host-setup/README.md), [prestart-replacement](evidence/prestart-replacement/README.md).
+Bằng chứng/build/hash/recipe: [probe-service](evidence/probe-service/README.md), [stale124](evidence/stale124/README.md), [service-eof](evidence/service-eof/README.md), [service-replacement](evidence/service-replacement/README.md), [setup-eof](evidence/setup-eof/README.md), [host-setup](evidence/host-setup/README.md), [prestart-replacement](evidence/prestart-replacement/README.md), [pickup-state](evidence/pickup-state/README.md).
 
 | Chiều chứng minh | Khai báo | Nguồn/phạm vi áp dụng |
 |---|---|---|
@@ -990,12 +990,12 @@ Bằng chứng/build/hash/recipe: [probe-service](evidence/probe-service/README.
 | vn_reference | both | [nguồn1](REFERENCES.md) |
 | kr_static | unknown | Chưa có bằng chứng trong phạm vi rà |
 | emulation | unknown | Chưa có bằng chứng trong phạm vi rà |
-| wine_diagnostic_copy | observed | [nguồn1](evidence/probe-service/README.md), [nguồn2](evidence/stale124/README.md), [nguồn3](evidence/service-eof/README.md), [nguồn4](evidence/service-replacement/README.md), [nguồn5](evidence/setup-eof/README.md), [nguồn6](evidence/host-setup/README.md), [nguồn7](evidence/prestart-replacement/README.md) |
+| wine_diagnostic_copy | observed | [nguồn1](evidence/probe-service/README.md), [nguồn2](evidence/stale124/README.md), [nguồn3](evidence/service-eof/README.md), [nguồn4](evidence/service-replacement/README.md), [nguồn5](evidence/setup-eof/README.md), [nguồn6](evidence/host-setup/README.md), [nguồn7](evidence/prestart-replacement/README.md), [nguồn8](evidence/pickup-state/README.md) |
 | windows_original | unknown | Chưa có bằng chứng trong phạm vi rà |
 | lan | unknown | Chưa có bằng chứng trong phạm vi rà |
 | internet | unknown | Chưa có bằng chứng trong phạm vi rà |
-| implementation | partial / via_pr | [nguồn1](../server/probe_service.py), [nguồn2](PROTOCOL.md#service-eof), [nguồn3](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/61), [nguồn4](PROTOCOL.md#service-replacement), [nguồn5](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/63), [nguồn6](PROTOCOL.md#setup-eof), [nguồn7](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/65), [nguồn8](PROTOCOL.md#host-setup), [nguồn9](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/67), [nguồn10](PROTOCOL.md#prestart-replacement), [nguồn11](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/69) |
-| integration | partial | [nguồn1](evidence/service-eof/README.md), [nguồn2](evidence/service-replacement/README.md), [nguồn3](evidence/setup-eof/README.md), [nguồn4](evidence/host-setup/README.md), [nguồn5](evidence/prestart-replacement/README.md) |
+| implementation | partial / via_pr | [nguồn1](../server/probe_service.py), [nguồn2](PROTOCOL.md#service-eof), [nguồn3](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/61), [nguồn4](PROTOCOL.md#service-replacement), [nguồn5](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/63), [nguồn6](PROTOCOL.md#setup-eof), [nguồn7](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/65), [nguồn8](PROTOCOL.md#host-setup), [nguồn9](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/67), [nguồn10](PROTOCOL.md#prestart-replacement), [nguồn11](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/69), [nguồn12](PROTOCOL.md#pickup-report-state), [nguồn13](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/73) |
+| integration | partial | [nguồn1](evidence/service-eof/README.md), [nguồn2](evidence/service-replacement/README.md), [nguồn3](evidence/setup-eof/README.md), [nguồn4](evidence/host-setup/README.md), [nguồn5](evidence/prestart-replacement/README.md), [nguồn6](evidence/pickup-state/README.md) |
 | gate | K6: open | [nguồn1](PLAN.md#gates) |
 
 <a id="kr-s002"></a>

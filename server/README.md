@@ -73,7 +73,8 @@ CP049: `probe_service.py` so u32 k của124 với khóa153 hiện hành trước
 và không chiếm item. Đây là policy server ở caller, không đổi ItemClaims thành toàn validator.
 [Contract/giới hạn](../docs/PROTOCOL.md#pickup-round-key), [hai run native effect và recipe](../docs/evidence/stale124/README.md).
 Tests kiểm old→current→duplicate, origin/catalog vẫn áp dụng và key+256 cùng low8 vẫn bị policyu32 loại.
-Không xác thực sender hoặc kiểm t/distance/actorstate; body chèn tại dispatcher chưa proof transport replay.
+Tại CP049 không xác thực sender hoặc kiểm t/distance/actorstate; CP055/056 bổ sung nguồn t/reportguard
+ở các đoạn dưới. Body chèn tại dispatcher chưa proof transport replay.
 
 
 CP050: channel close vào một đường idempotent, loại closedpeer khỏi sends/setup, finish vòng ngay
@@ -96,7 +97,8 @@ Auth/map/rank/roster vẫn fixture, chưa login server công khai, membership ho
 CP052: [guest setup EOF](../docs/PROTOCOL.md#setup-eof) cleanup theo Join/create acceptance,
 không đợi map. Control bản cũ còn slot ma; bản sửa native107 xóa ID2→0, A giữ chủ, không false phase.
 39server tests có3case thêm cho before-map/before-own106/lobby-only/duplicate và Start với closedpeer.
-Host EOF khi survivor chưa map vẫn là gap riêng, chưa deferred cleanup hoặc membership tổng quát.
+Tại CP052 host EOF/survivor chưa map còn gap; CP053 bên dưới đã đo deferred cleanup hẹp,
+không membership tổng quát.
 
 
 CP053: [host setup EOF](../docs/PROTOCOL.md#host-setup) chọn host từ member đã Join và queue
@@ -112,3 +114,8 @@ Không account reconnect/general membership/fullauth/fullvalidator/K6a hoặc LA
 CP055: service log `client_tick` của124; [nguồn native/giới hạn](../docs/PROTOCOL.md#pickup-tick).
 Không thêm time threshold; hai Wine run dùng source CP054 trước đổi logging, actual-capture bench
 kiểm log mới. Chưa original-server time/actorstate/distance validator.
+
+CP056: [guard theo report](../docs/PROTOCOL.md#pickup-report-state) chặn124 sau17/19 trong cùng
+generation trước claim/consume; Start xóa marker.50tests cùng native control/fix/actualpickup vòng2.
+Policy chỉ fixture Roller hiện hành; rescue/selfescape chưa hỗ trợ, phải nối1/18 trước mở kim/cứu.
+Không originalserver stateauthority/auth/distance/TCP replay; không dùng marker làm enum native.

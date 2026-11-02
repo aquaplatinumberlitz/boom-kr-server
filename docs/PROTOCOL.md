@@ -1952,7 +1952,7 @@ liệt kê và phân biệt với nguyên bản trong mọi demo.
 <a id="authority"></a>
 ### Authority matrix hiện hành và gate review
 
-Bảng này tổng hợp bằng chứng từng phần đến CP055; chưa phải toàn contract server gốc. Mỗi hàng khi
+Bảng này tổng hợp bằng chứng từng phần đến CP056; chưa phải toàn contract server gốc. Mỗi hàng khi
 triển khai phải bổ sung riêng **creator, simulator, validator, broadcaster, peer-editable state**, với
 locator/trace và trạng thái từng ô; những vai trò không nêu dưới đây hiện `unknown` cho KR.
 
@@ -1965,7 +1965,7 @@ locator/trace và trạng thái từng ô; những vai trò không nêu dưới 
 | Item placement/pickup | CP030 nhặt/tranh index; CP031/032 stat/itemẩn; CP045 [bảng nhóm/Roller/MaxPower hai view/reset](#item-families) | CP042 có [old165/index reuse](#item-generation); runtime tại max, KRspeed→px/s/TTL/activevariants, drop/đảo winner/toàn124validator/generation/reset còn thiếu |
 | Trap/death | CP029/036; CP037 kim và tranh chấp cứu/diệt; [kim](#needle-selfescape), [precedence](#contact-precedence) | Validator/duplicate/stale/generation/variants, result21 và đối chứng thêm/đảo chiều còn thiếu |
 | Result/reset | CP039 hai vòng statepeer/result/21/return và reset field hẹp; CP044 [timer ở EOF và vòng B/C mới](#abort-timer) | CP041 có [payload cũ khi ID reuse](#round-generation); arbitration/toàn generation/entity/timer/peer/seq không rò vẫn mở; phân biệt run chờ sai origin với ca hoàn tất |
-| Room lifecycle | CP034 leave/promotion/EOF/return; CP035 rejoin/Ready; CP040 chủ B/C Start; CP044 [B/C bom/death/result/return sau abort](#abort-timer) | Bầu chủ/giữ ID-slot/forfeit là policy stub; guest EOF trả A về phòng/xóa B đã đo riêng; CP050 có [service EOF/cleanup](#service-eof); CP051 có [C mới/Start B trong service](#service-replacement); CP052 [guest setup EOF](#setup-eof) đã đo; host với peer chưa map/reconnect cùng account/disconnect variants/toàn reset còn mở |
+| Room lifecycle | CP034 leave/promotion/EOF/return; CP035 rejoin/Ready; CP040 chủ B/C Start; CP044 [B/C bom/death/result/return sau abort](#abort-timer) | Bầu chủ/giữ ID-slot/forfeit là policy stub; guest EOF trả A về phòng/xóa B đã đo riêng; CP050 có [service EOF/cleanup](#service-eof); CP051 có [C mới/Start B trong service](#service-replacement); CP052 [guest setup EOF](#setup-eof), CP053 [host với peer chưa map](#host-setup), CP054 [C trước vòng đầu](#prestart-replacement) đã đo; reconnect cùng account/disconnect variants/toàn reset còn mở |
 | Peer lifecycle | CP027 actual99→153; CP045–047 [oldUDP actor/keyguard/endpointcontrol](#udp-generation) | CP048 [service fixture](#probe-service) đã tích hợp key policy hẹp; low8reuse/roster/UDPtype khác/fullgrammar/reliability/relay/reset còn mở. Không coi đổi cổng riêng lẻ là freshness guard hoặc keybyte là auth |
 
 Gate K5/K6 cần kiểm matrix và đối chứng của hành vi thực sự dùng; từ28/10 Codex tự kiểm theo miễn review của chủ dự án. Có thể giữ unknown về
@@ -2211,3 +2211,44 @@ Hai run dùng source CP054 lưu `runtime-source/` **trước** thay đổi loggi
 bốn actual frame kiểm code mới, broadcast sockets stubbed, không gọi bench là runtime mới.
 [Guard k](#pickup-round-key) giữ nguyên. Original-server validator/time policy, distance/actorstate,
 forged-current-key và TCP replay admission còn mở; bước kiểm ở [RESEARCH](RESEARCH.md#gap-floor-pickup).
+
+<a id="pickup-report-state"></a>
+### Guard124 theo report nhốt/chết của fixture — CP056
+
+[Recipe/hash/control/giới hạn](evidence/pickup-state/README.md); nguồn `kr_runtime/confirmed` cho
+consequence trên Wine copy, **`design`** cho policy service. Tái dùng124/165,17/19→170, securestate/
+Roller và [t/key](#pickup-tick); không RE lại login/item IDs/clock hoặc mang layout VN sang KR.
+
+**Native tĩnh có mục tiêu:** caller `B77300` (subobject actor+584) tìm floor item tại ô actor rồi
+kiểm `B49FE0` (protected actor+618) trước `B7B440→E2C450`. `B7B440` entry `B323D0` đọc **item+1C**,
+`B8C970` kiểm item properties; vf390 trên vtable actor1775B40 là `55FE90` trảtrue.
+Không gọi các guard này là enum sống/chết của actor. Runtime alive có +618=0; chưa nối field này với
+nhốt/chết hoặc toàn eligibility upstream. `B40F30` tại mainvf108(-1) xét các khoảng27..30/39..42;
+chưa chứng minh toàn update/state rule. Static bytes8body chính khớp runtimecopy; cạnh vf108 bổ sung
+được pin riêng. Candidate khác EE5A30/1124C40 không mở rộng thành contract mọi class/mode.
+
+**Control `state-control2`:** giữ item17/Roller ở4,3; thêm spare18/19 ở8,7/8,8, ngoài đường input/bom.
+ActualA124 nhặt17→165→Roller5→6. Sau **actual127/17**, securestateA56: chèn request từ body CP055
+nhưng **đổi index/hàng/cột và k hiện tại**, giữ t2215, tại production dispatcher. Service CP055 nhận
+index18/phát165; native callback12/12/errors0 và Roller6→7 **cả A/B**, lặp cả hai vòng.
+Sau actual19/state1, index19 cũng được nhận/phát165; Roller đã max7 nên7→7, **không** có proof tăng stat
+ở actor chết. Không coi đây là gói mới do native writer phát hoặc replay qua TCP; request chèn cách xa
+actor cũng chưa tách riêng distance khỏi eligibility. Chỉ chứng minh service dựa key/catalog vẫn nhận nó.
+
+**Policy mới:** sau report17 hợp lệ trong layout fixture hoặc19 từ slot khớp connection, service ghi
+`pickup_ineligible` cùng generation/report SHA/sequence. Sau [guard k](#pickup-round-key), trước claim/
+consume,124 từ connection đó bị `actor_report_ineligible`, không165/không chiếm item. Marker không phụ
+thuộc có peer để forward; Start kế xóa nó. Đây là report-derived/conservative fixture policy, không
+state authority/auth hoặc full original validator. Fixture Roller hiện chưa hỗ trợ rescue/self-escape;
+không áp marker chỉ xóa ở Start sang service kim/cứu mà chưa nối report1/18 và kiểm transition.
+
+**`state-guard`:** cùng bốn injected frame/SHA/keys12345/12346, cả bốn bị loại; không callback165 cho
+spare18/19. Input vòng1 không tạo actual124 (nguyên nhân chưa gán cho guard); vòng2 có **actualTCP124**
+index17/key12346, native165 full12 và Roller5→6 cả A/B, chứng minh reset marker trong scope này.
+Hai run đều2Start/clock/175outer302/180full3, stateA1 trước175 cả hai view. Không hai trận nghiệm thu.
+
+Wrapper measurementv1 bị outer127 ghi đè provenance label của injection; final verifier nối **exact
+injection SHA/fields/trigger**,2 actual124 ở control/1 ở fixed vòng2; raw không sửa. V1 source đã archive;
+v2 chỉ sửa setdefault label, chưa runtime.5regression + actual-capture dispatcher bench kiểm peer còn
+claim được item bị A từ chối, keyguard trước actor và Start/reset. Không dùng số test đóng gate.
+Distance/auth/transport/malformed/stale127 hoặc report giả, rescue/self-escape/general eligibility vẫn mở.

@@ -15,8 +15,9 @@ Review plan nguồn đã xong; các câu hỏi dưới đây vẫn open cho tớ
 Thứ tự task chỉ ở [PLAN](PLAN.md#current-order). Tra phạm vi đã biết qua
 [coverage/cây chức năng](COVERAGE.md); bảng dưới dẫn đến khoảng trống/phép đo theo cơ chế.
 Nguồn cũ và run/checkpoint giữ trong phần lịch sử bên dưới và manifest; kết luận tại CP cũ không
-được đọc thành trạng thái hiện tại. CP048–051 đã tích hợp service/guard124/EOF/C mới-B Start; CP052 có [guest setup EOF](PROTOCOL.md#setup-eof). Giới hạn của [contract](PROTOCOL.md#probe-service)
-và các [phép kiểm service](#gap-diagnostic-service) vẫn mở; không nghiệm thu K5/K6a.
+được đọc thành trạng thái hiện tại. CP053/054 đã đo host setup EOF/C trước vòng1;
+CP055 nối nguồn t, CP056 có [guard theo report](PROTOCOL.md#pickup-report-state). Giới hạn
+[service](PROTOCOL.md#probe-service) và bảng gap dưới giữ mở; không nghiệm thu K5/K6a.
 
 | Câu hỏi / owner | Trạng thái | Khoảng trống và phép đo hiện hành |
 |---|---|---|
@@ -53,7 +54,7 @@ Bảng được [coverage](COVERAGE.md) trích tự động để tra theo chứ
 | <a id="gap-udp-freshness"></a>KR-F003 | low8 key không là auth/epoch tổng quát; reuse sau256 và slot/profileID đổi còn mở. | Tái dùng same-run CP048 đã có one-key/Start và old-drop/current-apply; chỉ đo lifetime/roster/ID thay hoặc packet type còn thiếu theo blocker. |
 | <a id="gap-bomb-lifetime"></a>KR-F004 | Serial wrap/concurrent/old159 pending match và validator đầy đủ còn mở. | Tái dùng CP041/043/044; kiểm ticket gốc trước159/158 ở result/EOF và vòng mới, không cấp ticket mới từ wire_id cũ. |
 | <a id="gap-blast-block-chain"></a>KR-F005 | Đã đo chain hai bom một owner và block/list2; nhiều owner/ba bom/vật cản/list3 chưa kiểm. | Một ca chain khác owner có control cách ô và entity ID/cursor cả hai view; chỉ mở consumer biến thể gây khác biệt. |
-| <a id="gap-floor-pickup"></a>KR-F006 | CP055 đã giải t là counter CMainSystem riêng/qua round, latchedrecord→TCP; physical timebase và original validator vẫn unknown. Distance/actorstate/forged-current-key/transport/fullvalidator còn mở. | Tái dùng [nguồn t](PROTOCOL.md#pickup-tick),17/18/19/170/actual124 và guardk; trace collision/producer state guard, đo sống/trapped/dead cùng một round và một dispatcher control bodycũ/đổi k hiện tại khi actor không đủ điều kiện. Không áp threshold ms hoặc gọi injection là TCP admission. |
+| <a id="gap-floor-pickup"></a>KR-F006 | CP056 đã loại bốn forged-current-key dispatch sau17/19 theo report; chưa distance/auth/TCP replay/native eligibility tổng quát, stale/forged127 hoặc rescue/selfescape transition. Nguồn t đã giải, time policy chưa có. | Reuse [report guard](PROTOCOL.md#pickup-report-state); chỉ khi integration mở kim/cứu thì nối1/18/reset thay marker đến Start. Với transport/geometry cần actual C2S path và vị trí/state cùng run; không chạy lại nguồn t/k hoặc coi dispatcher injection là TCP admission. |
 | <a id="gap-item-stats"></a>KR-F007 | Bomb/Fire/Roller/MaxPower có delta hẹp; runtime tại max/pxs KR/TTL/toàn reset chưa đủ. | Tái dùng CP045 và paired165/stat CP048 r3/clock2reset; chỉ đo runtime tại max hoặc pxs khi ca Battle cần, không đo lại Roller5→6 để lấp unknown cũ. |
 | <a id="gap-needle"></a>KR-F008 | Kim một lần/cạn đã đo; multi-charge/duplicate/inventory validation và Ctrl cạnh tranh còn mở. | Dùng lại actual pickup/Ctrl/170, kiểm một inventory transition cần cho service; không RE lại145/117 hoặc receiver. |
 | <a id="gap-contact-state"></a>KR-F009 | First-eligible native đã biết; both-eligible cùng update/list-order runtime,21/sub34 và authority đầy đủ còn thiếu. | Ưu tiên consistency17/19→170/state hai view→21/result trong cùng run; exact simultaneous chỉ kiểm bổ sung khi có setup cụ thể. |
@@ -66,7 +67,7 @@ Bảng được [coverage](COVERAGE.md) trích tự động để tra theo chứ
 | <a id="gap-result-return"></a>KR-X001 | 175/outcome do policy chọn;21/sub34/chọn rank/authority chưa phục hồi đầy đủ. | Đối chiếu deathstate hai view trước175, cursor/full blob và180/reset trong cùng service run; không coi rank thay state. |
 | <a id="gap-round-reset"></a>KR-X002 | Reset field đã đo không là toàn entity/seq/queue/timer/túi; CP049 đã loại old124 khác k, transport/forged-current-key/roster lifetime còn mở. | Tái dùng CP041–047; kiểm job/claim/key owner cùng run ở vòng2 và sau abort, đối chiếu field hiện hành với baseline vòng1. |
 | <a id="gap-disconnect-replacement"></a>KR-X003 | CP052/053 setup guest/hostEOF, CP054 C mới trước vòng1 và một B/C playedround đã đo; không account resume/full reset/idleEOF/sendfailure/timeout/loadfail proof. | Giữ source controls; nếu ca acceptance phát hiện sendfailure/timeout/latejoin thì đo đúng boundary/current roster. Không chạy lại C3/BStart hoặc mở mọi race trước validator/auth debt. |
-| <a id="gap-diagnostic-service"></a>KR-S001 | CP054 admission có native C/B-Cround; CP055 chỉ thêm client_tick log/actual-capture bench,45server tests; same fixture41/max12/2live members. Fullauth/cache/codec/validator/roster không tổng quát. | Tiếp validator124 theo PLAN; chỉ dùng actual native proof cho integration, tests/logs không tự đóng gate hoặc thay identity/login contract. |
+| <a id="gap-diagnostic-service"></a>KR-S001 | CP056 reportguard/Start reset có native control/fix,50server tests; fixture41/auth/roster/rank và max12/2live còn hẹp. | Tiếp codec boundaries theo PLAN; giữ report-derived policy tách native authority và không áp giới hạn Roller sang kim/cứu chưa hỗ trợ. |
 | <a id="gap-service-hardening"></a>KR-S002 | Chưa LAN/Internet/bốn client/restart/backpressure/rate limit/persistence đủ K7. | Sau local gate có evidence, thử hai máy theo K6b rồi loss/disconnect/restart; không lấy loopback accept làm multiplayer. |
 
 ## Diễn biến lịch sử theo checkpoint

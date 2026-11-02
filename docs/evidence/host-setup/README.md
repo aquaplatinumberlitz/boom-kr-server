@@ -1,5 +1,7 @@
 # CP053 — Host rời khi survivor còn setup
 
+Snapshot CP053: blocker C trước vòng đầu đã đo/fix ở [CP054](../../PROTOCOL.md#prestart-replacement); thứ tự hiện hành ở PLAN.
+
 Baseline CP052/PR65 `3617e69a3536cac9ac9f8a05ae826cbb0cc803be`; KRE-016/[issue66](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/66).
 Codex solo/tự kiểm, review [waived](../checkpoints/review-waiver.json). [Contract](../../PROTOCOL.md#host-setup),
 [câu hỏi](../../RESEARCH.md#gap-disconnect-replacement), [thứ tự](../../PLAN.md#current-order).

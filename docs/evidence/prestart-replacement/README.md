@@ -1,5 +1,7 @@
 # CP054 — C thay A trước trận đầu
 
+Snapshot CP054: nguồn t đã giải ở [CP055](../../PROTOCOL.md#pickup-tick), reportguard hẹp ở [CP056](../../PROTOCOL.md#pickup-report-state); theo PLAN cho bước hiện hành.
+
 Baseline CP053/[PR67](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/67) merge
 `75606eb0353e7ef51d6a41e6bf6ac56b6cb56ad7`; KRE-017/[issue68](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/68).
 Codex solo/tự kiểm, review [waived](../checkpoints/review-waiver.json). [Contract](../../PROTOCOL.md#prestart-replacement),
