@@ -29,14 +29,13 @@ runtime nào có nguồn, còn thiếu gì và phép kiểm nào giải quyết.
 evidence/hash và câu hỏi; [PLAN](docs/PLAN.md#current-order) giữ duy nhất thứ tự công việc.
 Đây là scope đường bootstrap → login → sảnh → phòng → Battle → kết quả/reset, không kiểm kê toàn client.
 
-CP060: client C mới đã đọc auth **135/135/errors0**, phát đúng tên KRNew và cùng B đi qua Start/bom/
-peerstate/kết quả/về phòng trên profile mới. [Scope/giới hạn](docs/PROTOCOL.md#current-profile-c),
-[raw/hash](docs/evidence/current-profile-c/README.md). Một Bchannel reset được giữ ở cuối controller,
-sau vòng hoàn tất; chưa hai trận nghiệm thu/K6a/LAN/Internet/fullauth/cache/reset.
-Tiếp kiểm hai vòng A/B trên currentprofile theo PLAN.
+CP061: hai client A/B đã chạy **hai chu kỳ liên tiếp trên currentprofile**: nhặt/statreset, bom,
+nhốt/chết/peerstate, kết quả/về phòng; sampled vị trí hai actor khớp cả hai view.
+[Scope/giới hạn](docs/PROTOCOL.md#current-pair-round), [raw/hash](docs/evidence/current-pair-round/README.md).
+Chưa fullmatch/K6a/LAN/Internet/toànreset; tiếp tranhitem thật trên service hiện hành.
 
-CP059 đã merge [PR79](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/79) tại `6920ae2`.
-CP060 tự kiểm/integration theo [PR81](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/81), review độc lập [waived](docs/evidence/checkpoints/review-waiver.json).
+CP060 đã merge [PR81](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/81) tại `97e5afc`.
+CP061 tự kiểm/integration theo [PR83](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/83), review độc lập [waived](docs/evidence/checkpoints/review-waiver.json).
 Audit **AUD019/CP060**, periodic kế **CP064**.
 [Yêu cầu chủ dự án](docs/evidence/owner-directives/continuous-work.json): tiếp tục ngay việc kế trong
 PLAN sau mỗi checkpoint/commit/PR, không tự dừng/chờ nhắc.

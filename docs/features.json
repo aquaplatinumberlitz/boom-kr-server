@@ -1,7 +1,7 @@
 {
   "schema": "kre-feature-index-v1",
   "build": "KR00967",
-  "as_of": "2026-11-02 JST / CP060; integration status via PR81; AUD019, nextCP064",
+  "as_of": "2026-11-02 JST / CP061; integration status via PR83; nextauditCP064",
   "sources": {
     "plan": "docs/PLAN.md",
     "contract": "docs/PROTOCOL.md",
@@ -1094,7 +1094,8 @@
         "plan": "docs/PLAN.md#current-order",
         "evidence": [
           "docs/evidence/peer-duo/README.md",
-          "docs/evidence/probe-service/README.md"
+          "docs/evidence/probe-service/README.md",
+          "docs/evidence/current-pair-round/README.md"
         ]
       },
       "coverage": {
@@ -1126,7 +1127,8 @@
           "wine_diagnostic_copy": {
             "state": "observed",
             "refs": [
-              "docs/evidence/peer-duo/README.md"
+              "docs/evidence/peer-duo/README.md",
+              "docs/evidence/current-pair-round/README.md"
             ]
           },
           "windows_original": {
@@ -1154,7 +1156,8 @@
         "integration": {
           "state": "partial",
           "refs": [
-            "docs/evidence/probe-service/README.md"
+            "docs/evidence/probe-service/README.md",
+            "docs/evidence/current-pair-round/README.md"
           ]
         },
         "gate": {
@@ -1443,7 +1446,8 @@
           "docs/evidence/probe-service/README.md",
           "docs/evidence/stale124/README.md",
           "docs/evidence/pickup-time/README.md",
-          "docs/evidence/pickup-state/README.md"
+          "docs/evidence/pickup-state/README.md",
+          "docs/evidence/current-pair-round/README.md"
         ]
       },
       "coverage": {
@@ -1482,7 +1486,8 @@
               "docs/evidence/item-pickup/README.md",
               "docs/evidence/stale124/README.md",
               "docs/evidence/pickup-time/README.md",
-              "docs/evidence/pickup-state/README.md"
+              "docs/evidence/pickup-state/README.md",
+              "docs/evidence/current-pair-round/README.md"
             ]
           },
           "windows_original": {
@@ -1513,7 +1518,8 @@
           "state": "partial",
           "refs": [
             "docs/evidence/stale124/README.md",
-            "docs/evidence/pickup-state/README.md"
+            "docs/evidence/pickup-state/README.md",
+            "docs/evidence/current-pair-round/README.md"
           ]
         },
         "gate": {
@@ -2352,7 +2358,8 @@
         "plan": "docs/PLAN.md#current-order",
         "evidence": [
           "docs/evidence/round-generation/README.md",
-          "docs/evidence/probe-service/README.md"
+          "docs/evidence/probe-service/README.md",
+          "docs/evidence/current-pair-round/README.md"
         ]
       },
       "coverage": {
@@ -2384,7 +2391,8 @@
           "wine_diagnostic_copy": {
             "state": "observed",
             "refs": [
-              "docs/evidence/round-generation/README.md"
+              "docs/evidence/round-generation/README.md",
+              "docs/evidence/current-pair-round/README.md"
             ]
           },
           "windows_original": {
@@ -2412,7 +2420,8 @@
         "integration": {
           "state": "partial",
           "refs": [
-            "docs/evidence/probe-service/README.md"
+            "docs/evidence/probe-service/README.md",
+            "docs/evidence/current-pair-round/README.md"
           ]
         },
         "gate": {
@@ -2559,7 +2568,8 @@
           "docs/evidence/host-setup/README.md",
           "docs/evidence/prestart-replacement/README.md",
           "docs/evidence/pickup-state/README.md",
-          "docs/evidence/current-profile-c/README.md"
+          "docs/evidence/current-profile-c/README.md",
+          "docs/evidence/current-pair-round/README.md"
         ]
       },
       "coverage": {
@@ -2593,7 +2603,8 @@
               "docs/evidence/host-setup/README.md",
               "docs/evidence/prestart-replacement/README.md",
               "docs/evidence/pickup-state/README.md",
-              "docs/evidence/current-profile-c/README.md"
+              "docs/evidence/current-profile-c/README.md",
+              "docs/evidence/current-pair-round/README.md"
             ]
           },
           "windows_original": {
@@ -2637,7 +2648,8 @@
             "docs/evidence/host-setup/README.md",
             "docs/evidence/prestart-replacement/README.md",
             "docs/evidence/pickup-state/README.md",
-            "docs/evidence/current-profile-c/README.md"
+            "docs/evidence/current-profile-c/README.md",
+            "docs/evidence/current-pair-round/README.md"
           ]
         },
         "gate": {
