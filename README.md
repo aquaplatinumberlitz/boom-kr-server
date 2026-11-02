@@ -29,14 +29,15 @@ runtime nào có nguồn, còn thiếu gì và phép kiểm nào giải quyết.
 evidence/hash và câu hỏi; [PLAN](docs/PLAN.md#current-order) giữ duy nhất thứ tự công việc.
 Đây là scope đường bootstrap → login → sảnh → phòng → Battle → kết quả/reset, không kiểm kê toàn client.
 
-CP057: đã đối chiếu native codec với actual frame ở mọi điểm chia/coalesce, buffer/sequence riêng;
-[phạm vi emulation/socketpair](docs/PROTOCOL.md#codec-stream-boundaries), [hash/giới hạn](docs/evidence/codec-boundaries/README.md).
-Một ca allocation vượt model còn unknown; chưa fresh Wine TCP fragmentation hoặc full codec/reset.
-Tiếp auth/cache theo PLAN. CP056 reportguard đã merge; chưa nghiệm thu fullmatch/K6a/LAN/Internet.
+CP058: đã sửa fixture auth sai encoding tên và thiếu đuôi; callback A/B đọc **137/137byte/errors0**,
+actual request6 mang đúng tên riêng từng client. [Contract/giới hạn](docs/PROTOCOL.md#auth-profile),
+[control/hash](docs/evidence/auth-profile/README.md). Exporter chọn fixture mới; đây vẫn là profile local
+với giá trị design, chưa auth/account/cache hoàn chỉnh hoặc fullmatch/K6a/LAN/Internet.
+Tiếp cold/missing cache theo consumer trong PLAN.
 
-CP056 đã merge [PR73](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/73) tại `c367bab`.
-CP057 tự kiểm/integration theo [PR75](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/75), review độc lập [waived](docs/evidence/checkpoints/review-waiver.json).
-Audit **AUD017/CP056**, audit kế **CP060**.
+CP057 đã merge [PR75](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/75) tại `956f31b`.
+CP058 tự kiểm/chờ PR, review độc lập [waived](docs/evidence/checkpoints/review-waiver.json).
+Audit **AUD018/CP058** do mâu thuẫn string; periodic giữ CP056, audit kế **CP060**.
 [Yêu cầu chủ dự án](docs/evidence/owner-directives/continuous-work.json): tiếp tục ngay việc kế trong
 PLAN sau mỗi checkpoint/commit/PR, không tự dừng/chờ nhắc.
 

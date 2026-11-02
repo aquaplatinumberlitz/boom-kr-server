@@ -1,6 +1,6 @@
 # KR 00967 — contract tương thích client gốc
 
-Revision kr-legacy-contract-r1; cập nhật02/11/2026 JST (CP057).
+Revision kr-legacy-contract-r1; cập nhật02/11/2026 JST (CP058).
 **Contract có bằng chứng từng phần; chưa nghiệm thu full codec K2**.
 Lộ trình và thứ tự task chỉ giữ ở [REWRITE_PLAN — KRE](PLAN.md).
 Đây là contract của repo server KR. ADR0009 của bản viết lại là nguồn lịch sử để so sánh;
@@ -171,7 +171,8 @@ không phải đăng nhập Nexon thật hoặc K2/K3 đã pass.
   đủ chứng minh plaintext/seq. Không dùng seq chiều gửi thay chiều nhận.
 - Prefix S→C4 result0 có thứ tự đã đo: **outer u8 result, u8, u16, u8 playerCount, u64**.
   Native replay đọc0/0/1/1/0; runtime vào handler result0 và đọc khớp prefix/count local1.
-  Body theo từng player, đuôi và S→C15/network-info chưa đủ để tạo phản hồi thành công hợp lệ.
+  Tại CP014 body theo từng player/đuôi chưa đủ. [CP058](#auth-profile) đã sửa chuỗi và lấp
+  nhánh count1/feature đang chạy tới callback errors0; chưa full auth semantics/variants hoặc S→C15.
   CP020 mở prefix tới trường ID local, xem [contract](#start-reply); không đóng full auth.
 - Prefix13byte cố ý thiếu body vẫn dẫn tới C→S9/46byte. Cấp tiếp fixture S→C15 với seq46,
   blob reader chứa host loopback, ba u16=0, mode0 và tailu16=0: đã vào `1100590` và đo wait
@@ -460,7 +461,9 @@ Bỏ slot0 khỏi row list giữ position−1 cho qua để cô lập downstream
 own-player tham gia hoặc gameplay. Sau đó đã kiểm riêng identity khác0 bên dưới.
 
 **Nối ID từ auth bằng input:** mở rộng prefix S→C4 cũ13byte thêm
-`u32,u32,u16,u16,u32 ID,string(empty),u8`, tổng34byte. Cạnh`10FD8AA→10FD906→13B09E0`
+`u32,u32,u16,u16,u32 ID`, rồi4byte số0 được recipe cũ **định dùng** làm chuỗi rỗng vàu8, tổng34byte.
+[CP058](#auth-profile) xác nhận4byte đó **không** là chuỗi rỗng hợp lệ: reader cần u16length,
+set err54 tại cursor29; proof setterID trước lỗi vẫn giữ, không dùng prefix này làm successbody sạch. Cạnh`10FD8AA→10FD906→13B09E0`
 ghi context local-user+140/index0. Native đọc đúng bounded prefix; runtime đo setter ID1,
 KR106 playerID1→lookup0/ownflag1; không sửa local-list/ownflag trong debugger.
 Full body auth/profile/tail vẫn thiếu: chỉ chứng minh nguồn và lifecycle ID trong recipe local này,
@@ -2281,3 +2284,44 @@ Service pop tách frame rồi frame_body kiểmCRC; native lỗiCRC giữ buffer
 connection lỗi đó (connection khác giữ riêng), không là native resync/recovery. Không đổi code codec/service
 ở CP057. Prefix guard socket+AC vẫn tắt trong model như oracle trước; mode khác, nguyên bảnWindows,
 full reset/reconnect/header-auth và string/blob boundary theo consumer còn mở, **K2 chưa nghiệm thu**.
+
+<a id="auth-profile"></a>
+### Success/profile count1 đã đọc sạch trên copy — CP058
+
+**kr_runtime/confirmed** cho callback/requests trong môi trường đo, **design** cho values fixture;
+[recipe/control/hash/audit](evidence/auth-profile/README.md), [chỉ mục56field](evidence/auth-profile/field-shape.json).
+Không đăng nhập server thật hoặc phục hồi authority/token/account verification. Tái dùng VNoc_d-login
+thứ tự consumer, **KR106 put_str đã kiểm**, CP020 IDprefix, CP057 framer; không chuyển31field/layout VN.
+
+**Sửa kết luận cũ:** CP02034byte gán đúng ID1 trước `10FD90B→13B09E0`, nhưng tên đầu tiên tại
+`10FD8CE→packet.vf4C` **không** đọc sạch. `14EB9E0→vf70/14EBA90` đọc **u16 length + encoded bytes**.
+Recipe cũ dùng u32zero (`96CA5395`) tại cursor29; native đọc thành length33A3hex, vượt payload34,
+đặt packet+54=1 và không tiến cursor. Getteru8 kế đọc head204 từ byte96. Native replay oldA/B/C và
+live A/B xác nhận; ID/ownmatch/các scene cũ vẫn là quan sát đúng, không biến chúng thành fullauth proof.
+Empty string đúng là2byte typedu16zero; prefix qua name/head là **32+length(name)**, không34 cố định.
+
+**Đường count1/feature đã đo:** outer resultu8=0 trước `10FD540`;53lần đọc trực tiếp gồm header và
+một player, chỉ mục trỏ callsite/type/meaning đã có. Ordinal9u32 là local ID;10string là tên,11u8head;
+12/13strings thứ hai/ba còn unknown semantics. Các field khác giữ tên trung tính; dùng0/empty là design,
+không default wire gốc. Sau53fields còn consumer phụ: `10FEC8A→12F6A60→1386790` đọc countu32 tại125,
+conditional AE25E0 đọc countu32 tại129; `53E230` đọc countu32 tại133 (offset với tên7byte trong ca này).
+Ba count0 chỉ kiểm nhánh rỗng, chưa nonzeroentries/featureoff/playerCount2 hoặc profile thật.
+
+| Run fixture / mỗi phía A/B | Callback cursor/payload | err54/58 | Giới hạn |
+|---|---|---|---|
+| auth-short (CP020 prefix) |34/34|1/0| Lỗi bắt đầu ở string/cursor29, cursor cuối bằng size không là parse thành công. |
+| auth-full (sửa chuỗi+53fields) |125/125|1/0| Getter trực tiếp sạch nhưng thiếu consumer phụ, không gọi fullbody. |
+| auth-tail (thêm2count) |133/133|1/0| Còn thiếu count53E230. |
+| auth-final |137/137|0/0|53directfields+3count rỗng, hai role/count1/featureprofile hiện hành. |
+
+Trace final có59getter entries vì3boolwrapper gọi lạiu8 bên trong; đó là **56field logic**, không59field
+độc lập. A/B đều ID1/2, sau đó **actual C→S6/81byte** có tên KRLocal/KRGuest; nativeframer/CRC và
+native string reader tại offset2 xác nhận. Chỉ chọn offset trong emulation để kiểm string, không fullop6schema.
+Run180s có2Start/clock nhưng chỉ1rank/return, không hai trận đầy đủ hoặc K6a. Các run dùng shared game-dir/
+cache đã có; fresh Wine prefix không là coldcache. Không thêm patch/force ID/state trong run.
+
+Exporter41fixture nay chọn authA/B-final (137byte payload), authC-final (135byte/tên5byte) thay malformed
+prefix; byte xuất khớp exact profile đã chạy. **C mới chỉ native reader/emulation**, chưa runtimeC với
+fixture mới. Không tự migrate profile JSON đã export; chúng giữ hash/path cũ cho reproducibility.
+Service/codec không đổi. Fullmeaning/profilevalues/cache/cold-warm/missing/reconnect/token_2/allregions/
+Windowsvanilla/authauthority/K2/K3/K5/K6a/LAN/Internet còn mở. AUD018 audit ngay lỗi string, cadence kếCP060.

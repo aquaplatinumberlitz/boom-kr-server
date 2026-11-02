@@ -1,0 +1,89 @@
+{
+  "id": "AUD018",
+  "trigger": "serious_contradiction",
+  "completed_through": "CP058",
+  "recorded_utc": "2026-11-02T11:44:30.123688+00:00",
+  "auditor": "Codex manual self-audit; independent review waived by owner",
+  "read_files": [
+    "README.md",
+    "docs/PLAN.md",
+    "docs/PROTOCOL.md",
+    "docs/RESEARCH.md",
+    "docs/features.json",
+    "docs/COVERAGE.md",
+    "docs/evidence/start-reply/README.md",
+    "docs/evidence/auth-profile/README.md",
+    "docs/evidence/auth-profile/field-shape.json",
+    "local/research/codex/start-reply-r1/build_identity.py",
+    "local/research/codex/login-runtime-r1/success-reader-candidates.json",
+    "local/research/codex/auth-profile-r1/reuse-question.json",
+    "local/research/codex/auth-profile-r1/ida/success.json",
+    "local/research/codex/auth-profile-r1/ida/string-leaf.json",
+    "local/research/codex/auth-profile-r1/ida/tail-leaf.json",
+    "local/research/codex/auth-profile-r1/ida/extra-consumer.json",
+    "local/research/codex/auth-profile-r1/native-short.json",
+    "local/research/codex/auth-profile-r1/native-final.json",
+    "local/research/codex/auth-profile-r1/auth-reads.json",
+    "local/research/codex/auth-profile-r1/auth-final-native-names.json",
+    "local/research/codex/auth-profile-r1/verification.json",
+    "local/research/codex/auth-profile-r1/lifecycle-summary.json",
+    "local/research/codex/auth-profile-r1/export-check.json",
+    "local/research/codex/auth-profile-r1/auth-short/client.log",
+    "local/research/codex/auth-profile-r1/auth-full/client.log",
+    "local/research/codex/auth-profile-r1/auth-tail/client.log",
+    "local/research/codex/auth-profile-r1/auth-final/client.log",
+    "local/research/codex/auth-profile-r1/auth-final/client-B.log"
+  ],
+  "method": "Đọc lại current README→PLAN→PROTOCOL auth/start/codec+newcontract→RESEARCH→evidence CP020/058; so native oldstring/newfields, actualcallback entry/exitcursor/errors và exactnameC2S6 với raw/sourcehash. Scope audit là contradiction encoding/profile và các current claims/gaps, không tái RE toàn client. Không dùng script pass hoặc cursor==size thay parse success. Trace59entries includes3nestedboolu8,53direct+3listcount là56logicalfields. Reviewwaived không independent approval.",
+  "findings": [
+    {
+      "id": "F1",
+      "stale": "CP020 contract ghi string(empty) trong34byteprefix nhưng builder dùngu32zero; runtime nay chứng minh u16stringlength33A3/error54 từ29. Các run cũ vẫn gán ID trước lỗi.",
+      "correction": "Sửa nguồn chuẩn tách intendedbytes và semanticwire; link correction từ evidence CP020, giữ nguyên immutablecheckpoint/raw. Không bác bỏ IDsetter/ownmatch/scene proof, không gọi oldprefix fullsuccess.",
+      "fixed_in": [
+        "docs/PROTOCOL.md",
+        "docs/evidence/start-reply/README.md",
+        "docs/evidence/auth-profile/README.md"
+      ]
+    },
+    {
+      "id": "F2",
+      "stale": "125bytecandidate hết53directreader nhưng callbackexit vẫn error;133bytecandidate còn helper53E230. Tênfull trong localfile dễ bị hiểu fullauth.",
+      "correction": "Lưu riêng34/125/133 lỗi và137/errors0; mô tả từng consumer mới từ concreteedge, không randompadding/defaultvalues. Chỉcount1/feature/emptylistsbranch confirmed, numeric0/nameIDdesign, meaningunknown giữunknown.",
+      "fixed_in": [
+        "docs/PROTOCOL.md",
+        "docs/evidence/auth-profile/README.md",
+        "docs/evidence/auth-profile/field-shape.json"
+      ]
+    },
+    {
+      "id": "F3",
+      "stale": "Readertrace tail/final có59calls, trong đó3bool wrapper đọc lạiu8; không59wirefields. NativeCfixture chưaC runtime, socketpair/nativefieldcheck không fullauth.",
+      "correction": "Đếm56logicalfields/53direct+3counts; A/B137/errors0 vàactual6/81byte tên riêng; C135/nativeonly, count2/nonzero/featureotherunmeasured. Không nâng runtime hoặcgate.",
+      "fixed_in": [
+        "docs/PROTOCOL.md",
+        "docs/features.json",
+        "docs/COVERAGE.md",
+        "docs/evidence/auth-profile/README.md"
+      ]
+    },
+    {
+      "id": "F4",
+      "stale": "Exporter vẫn chọn malformedshortauth aliases; game-dir/cache kế thừa khiến freshprefix dễ bị hiểu coldcache.180srun2Start không2result.",
+      "correction": "Exporter chọn3nativecheckednewframes,41bytesalias so exactprofile measuredA/B;38alias khác không đổi, oldJSON immutable. Pin filepresence/cache snapshot, chưaconsumerproof. Short/full/final2Start nhưng1result;tail1Start0result. Tiếp mộtnamedcache present/missing trên copyriêng theoPLAN.",
+      "fixed_in": [
+        "tools/export_probe_profile.py",
+        "server/README.md",
+        "docs/PLAN.md",
+        "docs/RESEARCH.md",
+        "README.md",
+        "docs/evidence/auth-profile/README.md"
+      ]
+    }
+  ],
+  "remaining": [
+    "Authfieldmeaning/accountauthority/token_2/count2/otherfeatures/listentries/C runtime/Windowsvanilla and coldwarm/missing/reconnect not established; continue actualcacheconsumer perPLAN.",
+    "Audit này không reset cadence: lastperiodicCP056/AUD017, nextCP060; CP001–057/AUD001–017 history unchanged. CP058 self-check pendingPR, waiver not approval.",
+    "No fullcodec/auth/gates K2/K3/K5/K6a/LAN/Internet closed from profileparser success or one result."
+  ]
+}

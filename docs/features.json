@@ -1,7 +1,7 @@
 {
   "schema": "kre-feature-index-v1",
   "build": "KR00967",
-  "as_of": "2026-11-02 JST / CP057; integration status via PR75; audit nextCP060",
+  "as_of": "2026-11-02 JST / CP058; self-check pending PR; AUD018 serious contradiction, nextCP060",
   "sources": {
     "plan": "docs/PLAN.md",
     "contract": "docs/PROTOCOL.md",
@@ -354,7 +354,8 @@
         "plan": "docs/PLAN.md#current-order",
         "evidence": [
           "docs/evidence/login-runtime/README.md",
-          "docs/evidence/probe-service/README.md"
+          "docs/evidence/probe-service/README.md",
+          "docs/evidence/auth-profile/README.md"
         ]
       },
       "coverage": {
@@ -373,20 +374,23 @@
         "kr_static": {
           "state": "partial",
           "refs": [
-            "docs/PROTOCOL.md#login-auth"
+            "docs/PROTOCOL.md#login-auth",
+            "docs/PROTOCOL.md#auth-profile"
           ]
         },
         "emulation": {
           "state": "checked",
           "refs": [
-            "docs/evidence/login-runtime/README.md"
+            "docs/evidence/login-runtime/README.md",
+            "docs/evidence/auth-profile/README.md"
           ]
         },
         "runtime": {
           "wine_diagnostic_copy": {
             "state": "observed",
             "refs": [
-              "docs/evidence/login-runtime/README.md"
+              "docs/evidence/login-runtime/README.md",
+              "docs/evidence/auth-profile/README.md"
             ]
           },
           "windows_original": {
@@ -407,14 +411,17 @@
           "refs": [
             "server/probe_service.py",
             "docs/PROTOCOL.md#probe-service",
-            "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/57"
+            "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/57",
+            "tools/export_probe_profile.py",
+            "docs/PROTOCOL.md#auth-profile"
           ],
-          "delivery": "via_pr"
+          "delivery": "branch_pending"
         },
         "integration": {
           "state": "partial",
           "refs": [
-            "docs/evidence/probe-service/README.md"
+            "docs/evidence/probe-service/README.md",
+            "docs/evidence/auth-profile/README.md"
           ]
         },
         "gate": {

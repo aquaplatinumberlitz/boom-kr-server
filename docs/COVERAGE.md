@@ -23,7 +23,7 @@ Review độc lập: [waived theo chủ dự án](evidence/checkpoints/review-wa
 | [KR-B001 · ProcessPatch và copy offline](#kr-b001) | present | both | partial | checked | observed | unknown | unknown | unknown | partial / via_pr | partial | K1: open |
 | [KR-B002 · WCP và dữ liệu khởi tạo](#kr-b002) | present | both | partial | checked | observed | unknown | unknown | unknown | partial / via_pr | partial | K2: open |
 | [KR-B003 · Codec theo socket và chiều](#kr-b003) | present | both | partial | checked | observed | unknown | unknown | unknown | partial / via_pr | partial | K2: open |
-| [KR-L001 · Auth và identity cục bộ](#kr-l001) | present | both | partial | checked | observed | unknown | unknown | unknown | partial / via_pr | partial | K3: open |
+| [KR-L001 · Auth và identity cục bộ](#kr-l001) | present | both | partial | checked | observed | unknown | unknown | unknown | partial / branch_pending | partial | K3: open |
 | [KR-L002 · Redirect và UI sảnh](#kr-l002) | present | both | partial | checked | observed | unknown | unknown | unknown | partial / via_pr | partial | K3: open |
 | [KR-L003 · Profile và cache lifecycle](#kr-l003) | candidate | static | partial | unknown | unknown | unknown | unknown | unknown | unknown / unknown | unknown | K3: open |
 | [KR-R001 · Tạo và vào phòng](#kr-r001) | present | both | partial | checked | observed | unknown | unknown | unknown | partial / via_pr | partial | K4: open |
@@ -303,24 +303,24 @@ Dependency: [KR-B003](#kr-b003).
 
 [Contract và giới hạn](PROTOCOL.md#login-auth) · [Câu hỏi gốc](RESEARCH.md#gap-auth-identity) · [Thứ tự ở PLAN](PLAN.md#current-order).
 
-Khoảng trống (trích bảng RESEARCH): Success body/profile đầy đủ, token_2/count2 và identity qua reconnect chưa đủ; fixture không là full auth.
+Khoảng trống (trích bảng RESEARCH): CP058 count1/profilebranch đọc137/errors0 A/B, tên xuất hiện trong actual6; unknown meanings/numeric0/emptylists không là fullauth/token/account. C fixture native-only, count2/features/cache chưa kiểm.
 
-Phép kiểm tối thiểu (trích cùng nguồn): Từ prefix có ID đã đo, trace cursor/consumer tiếp theo trên cold cache; đổi đúng một field/control và giữ socket/seq riêng.
+Phép kiểm tối thiểu (trích cùng nguồn): Reuse [shape/control](PROTOCOL.md#auth-profile), không RE lại string53field. Theo PLAN đo named-cache present/missing trên copy riêng rồi chỉ mở feature/count2/reconnect khi consumer đang chặn.
 
-Bằng chứng/build/hash/recipe: [login-runtime](evidence/login-runtime/README.md), [probe-service](evidence/probe-service/README.md).
+Bằng chứng/build/hash/recipe: [login-runtime](evidence/login-runtime/README.md), [probe-service](evidence/probe-service/README.md), [auth-profile](evidence/auth-profile/README.md).
 
 | Chiều chứng minh | Khai báo | Nguồn/phạm vi áp dụng |
 |---|---|---|
 | presence | present | [nguồn1](PROTOCOL.md#login-auth) |
 | vn_reference | both | [nguồn1](REFERENCES.md) |
-| kr_static | partial | [nguồn1](PROTOCOL.md#login-auth) |
-| emulation | checked | [nguồn1](evidence/login-runtime/README.md) |
-| wine_diagnostic_copy | observed | [nguồn1](evidence/login-runtime/README.md) |
+| kr_static | partial | [nguồn1](PROTOCOL.md#login-auth), [nguồn2](PROTOCOL.md#auth-profile) |
+| emulation | checked | [nguồn1](evidence/login-runtime/README.md), [nguồn2](evidence/auth-profile/README.md) |
+| wine_diagnostic_copy | observed | [nguồn1](evidence/login-runtime/README.md), [nguồn2](evidence/auth-profile/README.md) |
 | windows_original | unknown | Chưa có bằng chứng trong phạm vi rà |
 | lan | unknown | Chưa có bằng chứng trong phạm vi rà |
 | internet | unknown | Chưa có bằng chứng trong phạm vi rà |
-| implementation | partial / via_pr | [nguồn1](../server/probe_service.py), [nguồn2](PROTOCOL.md#probe-service), [nguồn3](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/57) |
-| integration | partial | [nguồn1](evidence/probe-service/README.md) |
+| implementation | partial / branch_pending | [nguồn1](../server/probe_service.py), [nguồn2](PROTOCOL.md#probe-service), [nguồn3](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/57), [nguồn4](../tools/export_probe_profile.py), [nguồn5](PROTOCOL.md#auth-profile) |
+| integration | partial | [nguồn1](evidence/probe-service/README.md), [nguồn2](evidence/auth-profile/README.md) |
 | gate | K3: open | [nguồn1](PLAN.md#gates) |
 
 <a id="kr-l002"></a>
