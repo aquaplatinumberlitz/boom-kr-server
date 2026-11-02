@@ -119,3 +119,8 @@ CP056: [guard theo report](../docs/PROTOCOL.md#pickup-report-state) chặn124 sa
 generation trước claim/consume; Start xóa marker.50tests cùng native control/fix/actualpickup vòng2.
 Policy chỉ fixture Roller hiện hành; rescue/selfescape chưa hỗ trợ, phải nối1/18 trước mở kim/cứu.
 Không originalserver stateauthority/auth/distance/TCP replay; không dùng marker làm enum native.
+
+CP058: exporter41fixture chuyển auth_A/B/C sang [profile count1 mới](../docs/PROTOCOL.md#auth-profile).
+A/B callback137/137/errors0 và actual6 tên riêng đã đo; C135byte mới native/emulation, chưa C runtime.
+Profile JSON cũ giữ hash/path cũ, phải export sang file mới để dùng fixture mới. Service/codec không đổi;
+values0/emptylist vẫn design, không publicauth/account/cache/vanilla/gateproof.

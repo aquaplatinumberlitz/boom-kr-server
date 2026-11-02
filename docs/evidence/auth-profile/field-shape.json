@@ -1,0 +1,409 @@
+{
+  "schema": "kr-auth-diagnostic-shape-v1",
+  "build": "KR00967",
+  "runtime_copy_sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef",
+  "contract": "docs/PROTOCOL.md#auth-profile",
+  "outer_result": {
+    "wire_type": "u8",
+    "design_value": 0,
+    "read_before_handler": true
+  },
+  "shape": [
+    {
+      "ordinal": 1,
+      "reader_slot": "0x3c",
+      "return_va": "0x10fd577",
+      "wire_type": "u8",
+      "meaning": "unknown"
+    },
+    {
+      "ordinal": 2,
+      "reader_slot": "0x40",
+      "return_va": "0x10fd59e",
+      "wire_type": "u16",
+      "meaning": "unknown"
+    },
+    {
+      "ordinal": 3,
+      "reader_slot": "0x3c",
+      "return_va": "0x10fd5c3",
+      "wire_type": "u8",
+      "meaning": "player_count"
+    },
+    {
+      "ordinal": 4,
+      "reader_slot": "0x48",
+      "return_va": "0x10fd5d6",
+      "wire_type": "u64",
+      "meaning": "unknown"
+    },
+    {
+      "ordinal": 5,
+      "reader_slot": "0x44",
+      "return_va": "0x10fd822",
+      "wire_type": "u32",
+      "meaning": "unknown"
+    },
+    {
+      "ordinal": 6,
+      "reader_slot": "0x44",
+      "return_va": "0x10fd84b",
+      "wire_type": "u32",
+      "meaning": "unknown"
+    },
+    {
+      "ordinal": 7,
+      "reader_slot": "0x40",
+      "return_va": "0x10fd85e",
+      "wire_type": "u16",
+      "meaning": "unknown"
+    },
+    {
+      "ordinal": 8,
+      "reader_slot": "0x40",
+      "return_va": "0x10fd86f",
+      "wire_type": "u16",
+      "meaning": "unknown"
+    },
+    {
+      "ordinal": 9,
+      "reader_slot": "0x44",
+      "return_va": "0x10fd8ac",
+      "wire_type": "u32",
+      "meaning": "local_user_id"
+    },
+    {
+      "ordinal": 10,
+      "reader_slot": "0x4c",
+      "return_va": "0x10fd8d0",
+      "wire_type": "str_u16_length",
+      "meaning": "local_user_name"
+    },
+    {
+      "ordinal": 11,
+      "reader_slot": "0x3c",
+      "return_va": "0x10fd8e1",
+      "wire_type": "u8",
+      "meaning": "unknown"
+    },
+    {
+      "ordinal": 12,
+      "reader_slot": "0x4c",
+      "return_va": "0x10fd986",
+      "wire_type": "str_u16_length",
+      "meaning": "unknown"
+    },
+    {
+      "ordinal": 13,
+      "reader_slot": "0x4c",
+      "return_va": "0x10fd9f7",
+      "wire_type": "str_u16_length",
+      "meaning": "unknown"
+    },
+    {
+      "ordinal": 14,
+      "reader_slot": "0x3c",
+      "return_va": "0x10fda57",
+      "wire_type": "u8",
+      "meaning": "unknown"
+    },
+    {
+      "ordinal": 15,
+      "reader_slot": "0x48",
+      "return_va": "0x10fda8e",
+      "wire_type": "u64",
+      "meaning": "unknown"
+    },
+    {
+      "ordinal": 16,
+      "reader_slot": "0x44",
+      "return_va": "0x10fdaf0",
+      "wire_type": "u32",
+      "meaning": "unknown"
+    },
+    {
+      "ordinal": 17,
+      "reader_slot": "0x44",
+      "return_va": "0x10fdb24",
+      "wire_type": "u32",
+      "meaning": "unknown"
+    },
+    {
+      "ordinal": 18,
+      "reader_slot": "0x38",
+      "return_va": "0x10fdb58",
+      "wire_type": "bool",
+      "meaning": "unknown"
+    },
+    {
+      "ordinal": 19,
+      "reader_slot": "0x44",
+      "return_va": "0x10fdc4e",
+      "wire_type": "u32",
+      "meaning": "unknown"
+    },
+    {
+      "ordinal": 20,
+      "reader_slot": "0x3c",
+      "return_va": "0x10fdc82",
+      "wire_type": "u8",
+      "meaning": "unknown"
+    },
+    {
+      "ordinal": 21,
+      "reader_slot": "0x3c",
+      "return_va": "0x10fdcc9",
+      "wire_type": "u8",
+      "meaning": "unknown"
+    },
+    {
+      "ordinal": 22,
+      "reader_slot": "0x40",
+      "return_va": "0x10fdd01",
+      "wire_type": "u16",
+      "meaning": "unknown"
+    },
+    {
+      "ordinal": 23,
+      "reader_slot": "0x3c",
+      "return_va": "0x10fdd31",
+      "wire_type": "u8",
+      "meaning": "unknown"
+    },
+    {
+      "ordinal": 24,
+      "reader_slot": "0x3c",
+      "return_va": "0x10fdd60",
+      "wire_type": "u8",
+      "meaning": "unknown"
+    },
+    {
+      "ordinal": 25,
+      "reader_slot": "0x44",
+      "return_va": "0x10fdd8f",
+      "wire_type": "u32",
+      "meaning": "unknown"
+    },
+    {
+      "ordinal": 26,
+      "reader_slot": "0x44",
+      "return_va": "0x10fddc3",
+      "wire_type": "u32",
+      "meaning": "unknown"
+    },
+    {
+      "ordinal": 27,
+      "reader_slot": "0x3c",
+      "return_va": "0x10fddf7",
+      "wire_type": "u8",
+      "meaning": "unknown"
+    },
+    {
+      "ordinal": 28,
+      "reader_slot": "0x3c",
+      "return_va": "0x10fde26",
+      "wire_type": "u8",
+      "meaning": "unknown"
+    },
+    {
+      "ordinal": 29,
+      "reader_slot": "0x3c",
+      "return_va": "0x10fde55",
+      "wire_type": "u8",
+      "meaning": "unknown"
+    },
+    {
+      "ordinal": 30,
+      "reader_slot": "0x3c",
+      "return_va": "0x10fde8d",
+      "wire_type": "u8",
+      "meaning": "unknown"
+    },
+    {
+      "ordinal": 31,
+      "reader_slot": "0x38",
+      "return_va": "0x10fdec4",
+      "wire_type": "bool",
+      "meaning": "unknown"
+    },
+    {
+      "ordinal": 32,
+      "reader_slot": "0x40",
+      "return_va": "0x10fdf49",
+      "wire_type": "u16",
+      "meaning": "unknown"
+    },
+    {
+      "ordinal": 33,
+      "reader_slot": "0x40",
+      "return_va": "0x10fdf80",
+      "wire_type": "u16",
+      "meaning": "unknown"
+    },
+    {
+      "ordinal": 34,
+      "reader_slot": "0x3c",
+      "return_va": "0x10fdfc7",
+      "wire_type": "u8",
+      "meaning": "unknown"
+    },
+    {
+      "ordinal": 35,
+      "reader_slot": "0x44",
+      "return_va": "0x10fe00e",
+      "wire_type": "u32",
+      "meaning": "unknown"
+    },
+    {
+      "ordinal": 36,
+      "reader_slot": "0x44",
+      "return_va": "0x10fe043",
+      "wire_type": "u32",
+      "meaning": "unknown"
+    },
+    {
+      "ordinal": 37,
+      "reader_slot": "0x3c",
+      "return_va": "0x10fe0bb",
+      "wire_type": "u8",
+      "meaning": "unknown"
+    },
+    {
+      "ordinal": 38,
+      "reader_slot": "0x3c",
+      "return_va": "0x10fe0ea",
+      "wire_type": "u8",
+      "meaning": "unknown"
+    },
+    {
+      "ordinal": 39,
+      "reader_slot": "0x44",
+      "return_va": "0x10fe119",
+      "wire_type": "u32",
+      "meaning": "unknown"
+    },
+    {
+      "ordinal": 40,
+      "reader_slot": "0x3c",
+      "return_va": "0x10fe14e",
+      "wire_type": "u8",
+      "meaning": "unknown"
+    },
+    {
+      "ordinal": 41,
+      "reader_slot": "0x3c",
+      "return_va": "0x10fe172",
+      "wire_type": "u8",
+      "meaning": "unknown"
+    },
+    {
+      "ordinal": 42,
+      "reader_slot": "0x44",
+      "return_va": "0x10fe1ac",
+      "wire_type": "u32",
+      "meaning": "unknown"
+    },
+    {
+      "ordinal": 43,
+      "reader_slot": "0x3c",
+      "return_va": "0x10fe24e",
+      "wire_type": "u8",
+      "meaning": "unknown"
+    },
+    {
+      "ordinal": 44,
+      "reader_slot": "0x3c",
+      "return_va": "0x10fe294",
+      "wire_type": "u8",
+      "meaning": "unknown"
+    },
+    {
+      "ordinal": 45,
+      "reader_slot": "0x40",
+      "return_va": "0x10fe2c1",
+      "wire_type": "u16",
+      "meaning": "unknown"
+    },
+    {
+      "ordinal": 46,
+      "reader_slot": "0x44",
+      "return_va": "0x10fe30c",
+      "wire_type": "u32",
+      "meaning": "unknown"
+    },
+    {
+      "ordinal": 47,
+      "reader_slot": "0x38",
+      "return_va": "0x10fe480",
+      "wire_type": "bool",
+      "meaning": "unknown"
+    },
+    {
+      "ordinal": 48,
+      "reader_slot": "0x3c",
+      "return_va": "0x10fe9d3",
+      "wire_type": "u8",
+      "meaning": "unknown"
+    },
+    {
+      "ordinal": 49,
+      "reader_slot": "0x3c",
+      "return_va": "0x10fea06",
+      "wire_type": "u8",
+      "meaning": "unknown"
+    },
+    {
+      "ordinal": 50,
+      "reader_slot": "0x3c",
+      "return_va": "0x10fea31",
+      "wire_type": "u8",
+      "meaning": "unknown"
+    },
+    {
+      "ordinal": 51,
+      "reader_slot": "0x40",
+      "return_va": "0x10fea64",
+      "wire_type": "u16",
+      "meaning": "unknown"
+    },
+    {
+      "ordinal": 52,
+      "reader_slot": "0x3c",
+      "return_va": "0x10fea90",
+      "wire_type": "u8",
+      "meaning": "unknown"
+    },
+    {
+      "ordinal": 53,
+      "reader_slot": "0x3c",
+      "return_va": "0x10feab8",
+      "wire_type": "u8",
+      "meaning": "unknown"
+    },
+    {
+      "ordinal": 54,
+      "reader_slot": "0x44",
+      "return_va": "0x13867cc",
+      "wire_type": "u32",
+      "meaning": "list_count"
+    },
+    {
+      "ordinal": 55,
+      "reader_slot": "0x44",
+      "return_va": "0x138695d",
+      "wire_type": "u32",
+      "meaning": "list_count",
+      "condition": "AE25E0 feature true in measuredA/B; nonzeroentrybranches untested"
+    },
+    {
+      "ordinal": 56,
+      "reader_slot": "0x44",
+      "return_va": "0x53e269",
+      "wire_type": "u32",
+      "meaning": "list_count"
+    }
+  ],
+  "limits": "Executed count1/featureprofile shape only. Unknown numeric0/emptystrings are design recipe inputs, not serverdefaults; PROTOCOL canonical. C fixture emulation only.",
+  "source": "kr_runtime",
+  "status": "confirmed"
+}

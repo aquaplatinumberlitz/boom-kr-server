@@ -1,5 +1,9 @@
 # CP020 — start121, identity local và scene trận
 
+Correction CP058: IDprefix vẫn gán đúng ID, nhưng4byte recipe cũ định dùng cho `string(empty)`
+không là encoding chuỗi hợp lệ; native u16length lỗi tại cursor29. [Bằng chứng/sửa hiện hành](../../PROTOCOL.md#auth-profile).
+Không sửa raw/run hoặc proof scene/ID CP020.
+
 Contract duy nhất ở [PROTOCOL](../../PROTOCOL.md#start-reply); thứ tự/gate ở
 [PLAN](../../PLAN.md), phép đo tiếp ở [RESEARCH](../../RESEARCH.md).
 Baseline `759f60e6a0eddfded855aa6471444b8e12234bfd` (CP019/PR27 đã merge).

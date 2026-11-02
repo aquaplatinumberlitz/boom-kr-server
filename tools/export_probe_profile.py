@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Index local synthetic fixtures already measured in CP020–047; copy no assets."""
+"""Index local synthetic fixtures measured through CP058; copy no assets."""
 
 import argparse
 import hashlib
@@ -10,9 +10,9 @@ from pathlib import Path
 FIXTURES = {
     'bootstrap': ('bootstrap-reply-r1.bin', None),
     'second': ('wcp-fields-r1/eight-v2-responses.bin', None),
-    'auth_A': ('start-reply-r1/auth-id1-prefix.bin', None),
-    'auth_B': ('peer-duo-r1/auth-id2.bin', None),
-    'auth_C': ('contact-race-r1/auth-id3.bin', 43),
+    'auth_A': ('auth-profile-r1/auth-A-final.bin', 43),
+    'auth_B': ('auth-profile-r1/auth-B-final.bin', 43),
+    'auth_C': ('auth-profile-r1/auth-C-final.bin', 43),
     'roomlist_C': ('duo-round-r1/room91-session1.bin', None),
     'join_C': ('rejoin-r1/reply87-A-session1.bin', 55),
     'player_C': ('abort-rejoin-r1/C106-slot0-id3.bin', 58),
