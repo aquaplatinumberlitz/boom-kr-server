@@ -35,6 +35,8 @@ host monotonic clock. Native52A350 và checksum độc lập kiểm giá trị; 
 
 Run cut-v3 bắt đầu 2026-11-02T17:26:34Z, một Round/8 connections, không bom/result/chu kỳ2.
 Sampling đổi có thể đổi quãng đi của UI; vị trí native thực là nguồn, không suy tốc độ/thời gian game.
+Raw còn actualA124/floor17row4col3kind2 (Roller) đi qua lúc di chuyển; không là fixture không item hoặc
+control tốc độ. Phép cut/restore dùng own vs remote cùng actor/phase, không suy px/s từ quãng đi.
 Actual99 A9701/B9618, peer153 quảng bá đúng cổng đối phương:
 
 | Chiều cắt | Drop packets/bytes | Vị trí own trước → trong cut | Remote trong cut | Sau restore + input mới, hai view |
@@ -64,6 +66,6 @@ không dùng ví dụ label mới với phasepath cũ. Counter/hash kiểm cơ h
 
 Chưa full UDP grammar/reliability/fallback/NAT/auth/relay/Windows vanilla/LAN/Internet/K5/K6a/fullmatch.
 CP045–047 vẫn nguồn riêng cho oldUDP/key/queue; thử này không replay oldUDP hoặc đo reset vòng mới.
-Bước tiếp: dùng đường đi tới biên đã đo CP066 và Fire effect CP068 để tạo hai owner/actual cells cách2,
+Bước tiếp ghi tại CP070 đã thử ở [CP071](../../PROTOCOL.md#mixed-owner-power), kết quả partial và expectation Up1→row3 bị sửa; không đọc như task hiện hành. Câu hỏi lúc đó: dùng đường đi tới biên đã đo CP066 và Fire effect CP068 để tạo hai owner/actual cells cách2,
 root power2 so control power1; đọc state/process trong callback root158 trước timer riêng bom2.
 Đây là điều kiện mới cho blocker CP064, không lặp vô hạn Right hold để cố được ô liền kề.

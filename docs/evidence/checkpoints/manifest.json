@@ -1,11 +1,11 @@
 {
   "schema": "kre-checkpoints-v1",
-  "last_id": "CP071",
-  "completed_count": 71,
+  "last_id": "CP072",
+  "completed_count": 72,
   "audit_interval": 4,
-  "last_periodic_audit": 68,
-  "next_periodic_audit": "CP072",
-  "last_manual_audit": "AUD021",
+  "last_periodic_audit": 72,
+  "next_periodic_audit": "CP076",
+  "last_manual_audit": "AUD022",
   "checkpoints": [
     {
       "id": "CP001",
@@ -143572,6 +143572,1086 @@
           "reason": "CP071partial/nativeFire/outside-rangecontrol/feedbackno118/error/correction, nextpreclockEOF; no gatepromotion."
         }
       ]
+    },
+    {
+      "id": "CP072",
+      "previous": "CP071",
+      "lifecycle": "complete",
+      "recorded_utc": "2026-11-02T18:10:49.813245+00:00",
+      "context_commit": "d95c5ba12c49fe10488c5afbdc00809ba719fd86",
+      "question": "Can survivor nativeforfeit/return/slotcleanup complete after acceptedStart121 but before both99/197196153/clock when realBchannelEOF occurs?",
+      "scope": "KRE-035/#104; reuseCP050/052–054/069 andoldKR/VN/l10n/archive. Threeisolatedsequentialruns: Bstartupabort, warmactualEOF/native175180stage12/cleanupunobserved+teardownreset, nativecleanupobserverretry Astartupabort/noB. Questionpartial, no servicefix/newbody/clientpatch/forcing. AUD022manualperiodicthroughCP072 fixesstaledocs/authority andhistoricalnextsteps; nextCP076. NextNMCOlocaleactualblocker ratherthanunchangedruntime/proxy/chain.",
+      "owner": "Codex",
+      "reviewer": "Codex",
+      "artifacts": [
+        {
+          "name": "CA-r2-login-logout.exe",
+          "sha256": "660447c293ce92270cb9b5815331bca976e8f156366e1fe50b217b6c12e60ce3"
+        },
+        {
+          "name": "CA-r2-stage-social.exe",
+          "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+        },
+        {
+          "name": "CA-r2-stage-social.exe Bcopy",
+          "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+        },
+        {
+          "name": "modO.bin",
+          "sha256": "a08950c833d3acab8281049def7b3dc96b221f107eeda01da3a548e34b91dce5"
+        },
+        {
+          "name": "CA-r2-stage-social.exe Ccopy",
+          "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+        }
+      ],
+      "locators": [
+        "guest-preclock 2026-11-02T17:55:29Z runSHA 791159a3543c89fe9da8173679a11fb835281ad11061dc0e5b8ac3010124b002",
+        "guest-preclock-warm 2026-11-02T18:01:18Z runSHA 8980acfa4d824423cfdef9eefc55cc47f2fd90cfc5877f688c5d56002a66c95f",
+        "guest-preclock-observed 2026-11-02T18:05:16Z runSHA c15e6a82aada3d0863dfcca4c6ce02b64f72be54a4f7cb03b6db41ae52cf7b3d",
+        "ActualB99seq118 held3188.541139ms→realBEOF/discard; A99processed; native121129/full175302/1803/stage12,no197196153/nativeclock",
+        "StartupUISetLocaleAndRegion2000:0/SIGABRT7BC0A4A8;stack1526052→96E300→96E400→9769B3/96A15A;runtimee9bb47/static660447/modOa08950rawbase400000,RVA=VA-400000"
+      ],
+      "findings": [
+        {
+          "summary": "Warmrun actualB99held/realBEOF beforeclock withbothnative121129; A175full302/180full3/stage12 observed, no197196153/clock/bomb/pickup/death. Productionabortforfeitreturn is compatibleinthisboundedpreclockpath,notoriginalforfeit/deathproof.",
+          "source": "kr_runtime",
+          "status": "confirmed",
+          "method": "runtime",
+          "canonical": "docs/PROTOCOL.md#preclock-eof",
+          "limits": "CurrentWinecopies/profile41/private actualB99dispatchhold+realchannelEOF after121beforeboth99/clock; productionpolicyunchanged. Native175/180confirmed, native107/IDclear notobserved. Two startupSIGABRT2000:0beforeexperiment; Aresetafterwarmcontrollerstop retained. No originalserverforfeit/death/gameplay/fullreset/fullmatch/K4/K5/K6a/LANInternet/vanilla/auth. Models emulationonly,no newbody/patch/stateforcing.",
+          "evidence": [
+            "E098",
+            "E025",
+            "E026",
+            "E003",
+            "E050"
+          ]
+        },
+        {
+          "summary": "Service107/110 sentafterreturn but native107/slot1ID2→0/chiefafterclear notobserved beforeoldservice-refresh+3sstop. AECONNRESETaftercontrollerstop keptasrunerror,notattributedtopreclockEOF. Nativecleanupobserverretry failedbeforeStart, so cleanup remainsunknown, notfailedsemantics.",
+          "source": "kr_runtime",
+          "status": "unknown",
+          "method": "runtime",
+          "canonical": "docs/PROTOCOL.md#preclock-eof",
+          "limits": "CurrentWinecopies/profile41/private actualB99dispatchhold+realchannelEOF after121beforeboth99/clock; productionpolicyunchanged. Native175/180confirmed, native107/IDclear notobserved. Two startupSIGABRT2000:0beforeexperiment; Aresetafterwarmcontrollerstop retained. No originalserverforfeit/death/gameplay/fullreset/fullmatch/K4/K5/K6a/LANInternet/vanilla/auth. Models emulationonly,no newbody/patch/stateforcing.",
+          "evidence": [
+            "E098",
+            "E028",
+            "E050"
+          ]
+        },
+        {
+          "summary": "FirstB andobserverretryA hitnativeSIGABRT beforeStart/held99; UISetLocaleAndRegion2000:0 andstack matchknownCP064type. WarmCP069prefixreplacement notcause/fixproof; errorabsent/launcher0 notsuccess. No unchangedretry; nextlocaleexactcaller/input/result.",
+          "source": "kr_runtime",
+          "status": "confirmed",
+          "method": "runtime",
+          "canonical": "docs/PROTOCOL.md#preclock-eof",
+          "limits": "CurrentWinecopies/profile41/private actualB99dispatchhold+realchannelEOF after121beforeboth99/clock; productionpolicyunchanged. Native175/180confirmed, native107/IDclear notobserved. Two startupSIGABRT2000:0beforeexperiment; Aresetafterwarmcontrollerstop retained. No originalserverforfeit/death/gameplay/fullreset/fullmatch/K4/K5/K6a/LANInternet/vanilla/auth. Models emulationonly,no newbody/patch/stateforcing.",
+          "evidence": [
+            "E092",
+            "E115",
+            "E047",
+            "E048",
+            "E050"
+          ]
+        },
+        {
+          "summary": "Privateheld99wrappermodelsdispatchdelay/discardclosedframe; actualsocket/framer remain, productionserviceunmodified. AUD022manualreadraw/doc fixesheader/authority/repeatedprogress/historicalnextsteps/incidentalRollerscope; notgateclosure.",
+          "source": "design",
+          "status": "design",
+          "method": "design",
+          "canonical": "docs/PROTOCOL.md#preclock-eof",
+          "limits": "CurrentWinecopies/profile41/private actualB99dispatchhold+realchannelEOF after121beforeboth99/clock; productionpolicyunchanged. Native175/180confirmed, native107/IDclear notobserved. Two startupSIGABRT2000:0beforeexperiment; Aresetafterwarmcontrollerstop retained. No originalserverforfeit/death/gameplay/fullreset/fullmatch/K4/K5/K6a/LANInternet/vanilla/auth. Models emulationonly,no newbody/patch/stateforcing.",
+          "evidence": [
+            "E042",
+            "E036",
+            "E028",
+            "E050"
+          ]
+        }
+      ],
+      "verification": [
+        {
+          "check": "2146 relations/seals/source/549 nativeframer/36 packet/24 secure; 7catalog/docs/artifacts5/5/diff/requiredlocalhistory. Baseline72server/18checkpoint tests reused unchangedcode. AUD022manualperiodicdone,nextCP076.",
+          "result": "pass",
+          "evidence": [
+            "E050",
+            "E008",
+            "E010",
+            "E006"
+          ],
+          "limits": "Pass validatespartial/failures/notnativecleanupcompletion. Nativewiremodel parse107 notexecution; selfchecknotindependentreview."
+        }
+      ],
+      "evidence": [
+        {
+          "id": "E001",
+          "kind": "repository",
+          "path": "docs/evidence/preclock-eof/README.md",
+          "bytes": 5965,
+          "sha256": "ed97f7d9edfed8236d8673ffc9ce60bce0b9202fb9fa2d79fe3cf8db2ce8f9e9"
+        },
+        {
+          "id": "E002",
+          "kind": "repository",
+          "path": "docs/evidence/checkpoints/audits/AUD022.json",
+          "bytes": 6715,
+          "sha256": "7674e5e8556c1714c892ca14a2f9d3e7fa7a5be67a110c8b5dfc58d3b8e8caae"
+        },
+        {
+          "id": "E003",
+          "kind": "local",
+          "path": "local/research/codex/preclock-eof-r1/actor-fields.json",
+          "bytes": 16559,
+          "sha256": "c95069c9005cf30be1db5e81e360de0bbfe077090a5e63134bf723a47c88d218"
+        },
+        {
+          "id": "E004",
+          "kind": "local",
+          "path": "local/research/codex/preclock-eof-r1/analyze_completed.py",
+          "bytes": 1129,
+          "sha256": "144577d2177a1bc4208699f028526cdb4c14a75b7927971e7be3d760cfadb1f8"
+        },
+        {
+          "id": "E005",
+          "kind": "local",
+          "path": "local/research/codex/preclock-eof-r1/append_checkpoint.py",
+          "bytes": 8737,
+          "sha256": "2ef321c7bb6045d266e3804d2fd6e4245146df73e5465f49ea8f757a8fe0acf5"
+        },
+        {
+          "id": "E006",
+          "kind": "local",
+          "path": "local/research/codex/preclock-eof-r1/artifacts-check.txt",
+          "bytes": 253,
+          "sha256": "649c6624aa6d317dfc1db5e16fea683cfbc9d9cf4dd3df11c0d70e57409054a0"
+        },
+        {
+          "id": "E007",
+          "kind": "local",
+          "path": "local/research/codex/preclock-eof-r1/audit_fixes.py",
+          "bytes": 3558,
+          "sha256": "310eb8c93372ad0dc71fdd328e87429ee36a1eaa0eb139d8c597c49f95fe27a1"
+        },
+        {
+          "id": "E008",
+          "kind": "local",
+          "path": "local/research/codex/preclock-eof-r1/catalog-tests.txt",
+          "bytes": 105,
+          "sha256": "badab983ae142d06d6f889678e0944038b8c10bb21a3d52ee09041d3a7ab1507"
+        },
+        {
+          "id": "E009",
+          "kind": "local",
+          "path": "local/research/codex/preclock-eof-r1/derive_roles.py",
+          "bytes": 1072,
+          "sha256": "26607e72c07edba99efe2a9f1f6e33bb8fa69e479d646689db1061db7d755acd"
+        },
+        {
+          "id": "E010",
+          "kind": "local",
+          "path": "local/research/codex/preclock-eof-r1/docs-check.txt",
+          "bytes": 174,
+          "sha256": "1c8b98a56382c7e8ee9fc54fa8427b402ddd4013e743bb158bd87a5724e46bc1"
+        },
+        {
+          "id": "E011",
+          "kind": "local",
+          "path": "local/research/codex/preclock-eof-r1/fields-check.txt",
+          "bytes": 31,
+          "sha256": "dab3fb03280cce540fbe1fe713acb894096c3b3317f062bae078ad1d638d27ac"
+        },
+        {
+          "id": "E012",
+          "kind": "local",
+          "path": "local/research/codex/preclock-eof-r1/framer-check.txt",
+          "bytes": 119,
+          "sha256": "e9acb9bd3dfb3d959b489a664f5644ae2bc21c59300953232e1df5db48dadbdb"
+        },
+        {
+          "id": "E013",
+          "kind": "local",
+          "path": "local/research/codex/preclock-eof-r1/guest-preclock-hashes.json",
+          "bytes": 251671,
+          "sha256": "f1f1a284304ec9b9d308a6d95bfe4ebc2454851520704d254e1e4bce0bd272c6"
+        },
+        {
+          "id": "E014",
+          "kind": "local",
+          "path": "local/research/codex/preclock-eof-r1/guest-preclock-launcher.log",
+          "bytes": 27330,
+          "sha256": "5624ef61ab2a265d4f1a5e9019282ae5a708149262cee1dfcf034086941ea317"
+        },
+        {
+          "id": "E015",
+          "kind": "local",
+          "path": "local/research/codex/preclock-eof-r1/guest-preclock-observed-hashes.json",
+          "bytes": 21651,
+          "sha256": "208475cbf56384b18b5a44f348d891015d46d9e5699c9960236469c437f5016c"
+        },
+        {
+          "id": "E016",
+          "kind": "local",
+          "path": "local/research/codex/preclock-eof-r1/guest-preclock-observed-launcher.log",
+          "bytes": 11613,
+          "sha256": "efeb42d071af685307193478af8a6a2ea4bb482037b8c4015e260bbf296ee2e8"
+        },
+        {
+          "id": "E017",
+          "kind": "local",
+          "path": "local/research/codex/preclock-eof-r1/guest-preclock-observed-recipe.json",
+          "bytes": 1031,
+          "sha256": "9fe83e0dd04476b576060fe739f53794bd3cb6f1c71b8deb0cd2a1945261fef0"
+        },
+        {
+          "id": "E018",
+          "kind": "local",
+          "path": "local/research/codex/preclock-eof-r1/guest-preclock-recipe.json",
+          "bytes": 1004,
+          "sha256": "ba4ad2e4b7c2f18f7f2e48ec0aa2deb97cb33f552e90860dbcf460915b4cb7f6"
+        },
+        {
+          "id": "E019",
+          "kind": "local",
+          "path": "local/research/codex/preclock-eof-r1/guest-preclock-warm-hashes.json",
+          "bytes": 150023,
+          "sha256": "f5e9837afc2c8560436956afec2d69b9aa5819cc5fff1bd69a8225b63f726f48"
+        },
+        {
+          "id": "E020",
+          "kind": "local",
+          "path": "local/research/codex/preclock-eof-r1/guest-preclock-warm-launcher.log",
+          "bytes": 32469,
+          "sha256": "3028dc78bd0eac0b0df30bdd1ab416c908513d19c65b991e2ff3e4d554420120"
+        },
+        {
+          "id": "E021",
+          "kind": "local",
+          "path": "local/research/codex/preclock-eof-r1/guest-preclock-warm-recipe.json",
+          "bytes": 1019,
+          "sha256": "fb7d3c1a15e8e5718ef81c2473145d69d22b46ad8fec0cf3ff10aee9f5a39d58"
+        },
+        {
+          "id": "E022",
+          "kind": "local",
+          "path": "local/research/codex/preclock-eof-r1/hold99.py",
+          "bytes": 2055,
+          "sha256": "93c9b958a52164be8db14368b6bb435e281952d49b64e966c1f35db8ee180735"
+        },
+        {
+          "id": "E023",
+          "kind": "local",
+          "path": "local/research/codex/preclock-eof-r1/issue-body.md",
+          "bytes": 1665,
+          "sha256": "642278761557b3ae06c9cab7cbe6cfa535401a151087d51716b6f27e3d61756e"
+        },
+        {
+          "id": "E024",
+          "kind": "local",
+          "path": "local/research/codex/preclock-eof-r1/lifecycle-check.txt",
+          "bytes": 437,
+          "sha256": "a8c7a4d51d9a22c243423a5b9d2076d543de49310877f3bc649e35897b0c7eda"
+        },
+        {
+          "id": "E025",
+          "kind": "local",
+          "path": "local/research/codex/preclock-eof-r1/lifecycle-summary.json",
+          "bytes": 10451,
+          "sha256": "712e58921fd3a1c1dab137c8c997832d77db22b304b1e0979d94bd41dd99307c"
+        },
+        {
+          "id": "E026",
+          "kind": "local",
+          "path": "local/research/codex/preclock-eof-r1/native-packets.json",
+          "bytes": 14551,
+          "sha256": "5336437067ad577b947cb141bffadaac239984fce81ad15a402705b87d6b7422"
+        },
+        {
+          "id": "E027",
+          "kind": "local",
+          "path": "local/research/codex/preclock-eof-r1/native_packets.py",
+          "bytes": 4830,
+          "sha256": "15c73cd4da7042f7491240ecb25051da649b7130ec747bb4c3338bfdb101545c"
+        },
+        {
+          "id": "E028",
+          "kind": "local",
+          "path": "local/research/codex/preclock-eof-r1/observer-retry.json",
+          "bytes": 1216,
+          "sha256": "e3cb539f27c48c72f2003273d67d772b048a86b2dcc554a91b66ff2b7380662f"
+        },
+        {
+          "id": "E029",
+          "kind": "local",
+          "path": "local/research/codex/preclock-eof-r1/packets-check.txt",
+          "bytes": 28,
+          "sha256": "d315b29dca3b032b8bb39c869c47b5d84b64aff941c05262e8f38c21ba79da2a"
+        },
+        {
+          "id": "E030",
+          "kind": "local",
+          "path": "local/research/codex/preclock-eof-r1/parse_auth.py",
+          "bytes": 1272,
+          "sha256": "46d6da44578ec92ab4e3af97e3f79b9508efcf72d693b1966955a695b14d1ac9"
+        },
+        {
+          "id": "E031",
+          "kind": "local",
+          "path": "local/research/codex/preclock-eof-r1/parse_chain.py",
+          "bytes": 4525,
+          "sha256": "a0893f2c7a85ab9a75e9072d6a2a97474786bc7c6d7cc80c074d7ca22f2c6091"
+        },
+        {
+          "id": "E032",
+          "kind": "local",
+          "path": "local/research/codex/preclock-eof-r1/parse_fields.py",
+          "bytes": 3984,
+          "sha256": "3a764c15b5f73d3344500837e9d1e5114b519a4995793dfd6e749ac3ed8036ee"
+        },
+        {
+          "id": "E033",
+          "kind": "local",
+          "path": "local/research/codex/preclock-eof-r1/parse_lifecycle.py",
+          "bytes": 2715,
+          "sha256": "13e0dec0a1bb364d2b4af121e740b42f82a209aa2ed1546eaa7b17162a3130ed"
+        },
+        {
+          "id": "E034",
+          "kind": "local",
+          "path": "local/research/codex/preclock-eof-r1/preclock.gdb",
+          "bytes": 30112,
+          "sha256": "46b47ee60ce9dd15cf092b40f8ca275f4dd15399b11eefbb9d93051bf642f31b"
+        },
+        {
+          "id": "E035",
+          "kind": "local",
+          "path": "local/research/codex/preclock-eof-r1/prefix-comparison.json",
+          "bytes": 945,
+          "sha256": "e8ece6c7100a3f51b1add9534a614a0903527f68b30685d172ccf10e5c445cbd"
+        },
+        {
+          "id": "E036",
+          "kind": "local",
+          "path": "local/research/codex/preclock-eof-r1/preparation.json",
+          "bytes": 798,
+          "sha256": "e5f07faecb68e29aaaf385272f23b062a9fd66eb6d3f7fa65be2013128df349f"
+        },
+        {
+          "id": "E037",
+          "kind": "local",
+          "path": "local/research/codex/preclock-eof-r1/prepare.py",
+          "bytes": 5373,
+          "sha256": "484da9666c65f489f30695d1cb4e741029a589b8b1d6bf8c2c2e702ba2a63876"
+        },
+        {
+          "id": "E038",
+          "kind": "local",
+          "path": "local/research/codex/preclock-eof-r1/prepare_observer.py",
+          "bytes": 2974,
+          "sha256": "3e689788696f40e3380c286b5608122e9af5256c89cc68e7707c88dc1b88f6a4"
+        },
+        {
+          "id": "E039",
+          "kind": "local",
+          "path": "local/research/codex/preclock-eof-r1/prepare_retry.py",
+          "bytes": 1836,
+          "sha256": "d7127a250dc7e5b6dba8227d8540be11dc1015519efdf8d0e6d8959092bd9fba"
+        },
+        {
+          "id": "E040",
+          "kind": "local",
+          "path": "local/research/codex/preclock-eof-r1/profile.json",
+          "bytes": 11102,
+          "sha256": "7607f5dbc3b61fa136eb5505fe29cafce688aae014e0a00a393d7469659888ff"
+        },
+        {
+          "id": "E041",
+          "kind": "local",
+          "path": "local/research/codex/preclock-eof-r1/replay-run.py",
+          "bytes": 3003,
+          "sha256": "e7dd6ce22a99be9b1b4216576ccdb3e262b2a2cca0f3057decf79796f136b88e"
+        },
+        {
+          "id": "E042",
+          "kind": "local",
+          "path": "local/research/codex/preclock-eof-r1/reuse-question.json",
+          "bytes": 5582,
+          "sha256": "4bfa1237db027ce2ef530df366d325b1a39d26afdb22b4daf17374662695642e"
+        },
+        {
+          "id": "E043",
+          "kind": "local",
+          "path": "local/research/codex/preclock-eof-r1/reuse.py",
+          "bytes": 3478,
+          "sha256": "2b96a73f30313683f343cd08cde23989b33274a0eff481c3b26af0f2c9eeceb6"
+        },
+        {
+          "id": "E044",
+          "kind": "local",
+          "path": "local/research/codex/preclock-eof-r1/run_probe.py",
+          "bytes": 1075,
+          "sha256": "8eac7c32b61ffb54ac017c882a08f88cc52ab08e71fc5d0e761a402404038024"
+        },
+        {
+          "id": "E045",
+          "kind": "local",
+          "path": "local/research/codex/preclock-eof-r1/seal-check.txt",
+          "bytes": 35,
+          "sha256": "94e6c41678f01a87e507ee231b92ad61678325252200c32e601064a1fb35776b"
+        },
+        {
+          "id": "E046",
+          "kind": "local",
+          "path": "local/research/codex/preclock-eof-r1/seal_run.py",
+          "bytes": 626,
+          "sha256": "002ac389ffd18a8e19adb58ddf4e4badb10d3b62a8d0a98023b0b3f6e121eaa8"
+        },
+        {
+          "id": "E047",
+          "kind": "local",
+          "path": "local/research/codex/preclock-eof-r1/startup-failure.json",
+          "bytes": 826,
+          "sha256": "5072680e91bd84d9435bc160255700b945ad3525ab87d6694b6c18dbf1a1fdf8"
+        },
+        {
+          "id": "E048",
+          "kind": "local",
+          "path": "local/research/codex/preclock-eof-r1/startup-retry.json",
+          "bytes": 2006,
+          "sha256": "e29ddc635e4a0eeef50f172f5f850c90e7f406e36ed2173b95cbce22f520dfce"
+        },
+        {
+          "id": "E049",
+          "kind": "local",
+          "path": "local/research/codex/preclock-eof-r1/sync_docs.py",
+          "bytes": 12841,
+          "sha256": "bdc2f3b9fc1f080bf9bf314755bc07233826049e9fe03e83214152bd4fa3496c"
+        },
+        {
+          "id": "E050",
+          "kind": "local",
+          "path": "local/research/codex/preclock-eof-r1/verification.json",
+          "bytes": 2550,
+          "sha256": "cdd5ab0e3e085f0fa64d4586d42121a7b1bdc08822d81480f249d66d3d349563"
+        },
+        {
+          "id": "E051",
+          "kind": "local",
+          "path": "local/research/codex/preclock-eof-r1/verify-check.txt",
+          "bytes": 2550,
+          "sha256": "cdd5ab0e3e085f0fa64d4586d42121a7b1bdc08822d81480f249d66d3d349563"
+        },
+        {
+          "id": "E052",
+          "kind": "local",
+          "path": "local/research/codex/preclock-eof-r1/verify-initial-check.txt",
+          "bytes": 1168,
+          "sha256": "23dceaf3a85dc17ed4c674a3a87bb57b2c8bdaade589ccd3c4128bc9b6feef8b"
+        },
+        {
+          "id": "E053",
+          "kind": "local",
+          "path": "local/research/codex/preclock-eof-r1/verify.py",
+          "bytes": 7076,
+          "sha256": "20e1aab238e637f4ca72a6b2776ba23920950a12a42f430e91a80328f856e675"
+        },
+        {
+          "id": "E054",
+          "kind": "local",
+          "path": "local/research/codex/preclock-eof-r1/verify_positive.py",
+          "bytes": 7526,
+          "sha256": "1a01945194be79d6737f1e48e35d13d80c30e5f6be37a15f75ed9f0d93c2bc51"
+        },
+        {
+          "id": "E055",
+          "kind": "local",
+          "path": "local/research/codex/preclock-eof-r1/write_audit.py",
+          "bytes": 5870,
+          "sha256": "3c97cc83078143b2f86ddeed9ca44fae6b893ebd6e2c5af3d1cd379ecc61632c"
+        },
+        {
+          "id": "E056",
+          "kind": "local",
+          "path": "local/research/codex/preclock-eof-r1/cp072-snapshot/README.md",
+          "bytes": 3779,
+          "sha256": "8bc37dee801c942ea20eccfb6e85c1cb9f5c26a685ac29022d541a9680a35ba2"
+        },
+        {
+          "id": "E057",
+          "kind": "local",
+          "path": "local/research/codex/preclock-eof-r1/cp072-snapshot/docs/COVERAGE.md",
+          "bytes": 77536,
+          "sha256": "e31d1009503476032a66a30c66df04e570f17fa9d3a25619ae8da3273dc28dc0"
+        },
+        {
+          "id": "E058",
+          "kind": "local",
+          "path": "local/research/codex/preclock-eof-r1/cp072-snapshot/docs/PLAN.md",
+          "bytes": 30299,
+          "sha256": "ff23462bff082d749687c6451d9efac2fd8376308c7e99cf0facff4e4a834809"
+        },
+        {
+          "id": "E059",
+          "kind": "local",
+          "path": "local/research/codex/preclock-eof-r1/cp072-snapshot/docs/PROTOCOL.md",
+          "bytes": 233544,
+          "sha256": "78b7b7a4aa4e2de25dbf2d5552065b94f40bdeb4e98ccf2950d14cf141036a81"
+        },
+        {
+          "id": "E060",
+          "kind": "local",
+          "path": "local/research/codex/preclock-eof-r1/cp072-snapshot/docs/RESEARCH.md",
+          "bytes": 30543,
+          "sha256": "5a4bb4c4335f6e5b10ca69dfda64b197c5ac69092e6b287a39aa486170a8bb2d"
+        },
+        {
+          "id": "E061",
+          "kind": "local",
+          "path": "local/research/codex/preclock-eof-r1/cp072-snapshot/docs/evidence/basic-battle/README.md",
+          "bytes": 4076,
+          "sha256": "299c53d0b0d5a76924a42312ab8529141050d3ed1d84b9af9fd710c9389d7cdf"
+        },
+        {
+          "id": "E062",
+          "kind": "local",
+          "path": "local/research/codex/preclock-eof-r1/cp072-snapshot/docs/evidence/checkpoints/audits/AUD022.json",
+          "bytes": 6715,
+          "sha256": "7674e5e8556c1714c892ca14a2f9d3e7fa7a5be67a110c8b5dfc58d3b8e8caae"
+        },
+        {
+          "id": "E063",
+          "kind": "local",
+          "path": "local/research/codex/preclock-eof-r1/cp072-snapshot/docs/evidence/current-udp-causality/README.md",
+          "bytes": 6395,
+          "sha256": "9ea9980711fcfe1797a1b3d3a9b9c2b0e5f117b84ce4f583f5f21279d17b04af"
+        },
+        {
+          "id": "E064",
+          "kind": "local",
+          "path": "local/research/codex/preclock-eof-r1/cp072-snapshot/docs/evidence/preclock-eof/README.md",
+          "bytes": 5965,
+          "sha256": "ed97f7d9edfed8236d8673ffc9ce60bce0b9202fb9fa2d79fe3cf8db2ce8f9e9"
+        },
+        {
+          "id": "E065",
+          "kind": "local",
+          "path": "local/research/codex/preclock-eof-r1/cp072-snapshot/docs/features.json",
+          "bytes": 80246,
+          "sha256": "1d1664d6f457924af3e6f892ad891f0d1bce3a1461a88367f1d806f908441a8d"
+        },
+        {
+          "id": "E066",
+          "kind": "local",
+          "path": "local/research/codex/preclock-eof-r1/cp072-snapshot/server/README.md",
+          "bytes": 13203,
+          "sha256": "57079a8a51674be584ff38f4acc16533f7b7fa35aa967c13424f49e99ce4a7c3"
+        },
+        {
+          "id": "E067",
+          "kind": "local",
+          "path": "local/research/codex/preclock-eof-r1/runtime-source/item_claims.py",
+          "bytes": 3340,
+          "sha256": "7990ae9195e9f8bba56b04101f352506194dbd0252793183993ce101a8674a2e"
+        },
+        {
+          "id": "E068",
+          "kind": "local",
+          "path": "local/research/codex/preclock-eof-r1/runtime-source/probe_codec.py",
+          "bytes": 3227,
+          "sha256": "23ba54e6940953a52ff737e7e06b2761a8eb22eab444310b49b1d96efa12411d"
+        },
+        {
+          "id": "E069",
+          "kind": "local",
+          "path": "local/research/codex/preclock-eof-r1/runtime-source/probe_room.py",
+          "bytes": 1468,
+          "sha256": "91292494d492c7851bd5432649adf528e1b07290316dc56ba1478f8a209a08bc"
+        },
+        {
+          "id": "E070",
+          "kind": "local",
+          "path": "local/research/codex/preclock-eof-r1/runtime-source/probe_service.py",
+          "bytes": 37600,
+          "sha256": "91be840fe16d77070e130882940be478aa80651df59de9dc3af204d1b9ce05e2"
+        },
+        {
+          "id": "E071",
+          "kind": "local",
+          "path": "local/research/codex/preclock-eof-r1/runtime-source/round_fence.py",
+          "bytes": 2339,
+          "sha256": "aabcc7f1d623573fc217de8df05403f83d82425bbe5d6e78872b3096a2d46708"
+        },
+        {
+          "id": "E072",
+          "kind": "local",
+          "path": "local/research/codex/preclock-eof-r1/runtime-source/udp_round_keys.py",
+          "bytes": 1187,
+          "sha256": "db58ae1f25bcbeb52c2d25c7db6afbf1021ddd3af29702e756f5f41886530a0d"
+        },
+        {
+          "id": "E073",
+          "kind": "local",
+          "path": "local/research/codex/preclock-eof-r1/derived/guest-preclock-A/run.json",
+          "bytes": 29518,
+          "sha256": "35fa8121eb10d4f09eb22247c584f8e57d60c3c0b12ca6f6ce749a4fb598d705"
+        },
+        {
+          "id": "E074",
+          "kind": "local",
+          "path": "local/research/codex/preclock-eof-r1/derived/guest-preclock-A-oracle.json",
+          "bytes": 107332,
+          "sha256": "06d01d9f7bf9d898856ed8081fdabc7683eafe3dc5b0a5e46c2ed504abece692"
+        },
+        {
+          "id": "E075",
+          "kind": "local",
+          "path": "local/research/codex/preclock-eof-r1/derived/guest-preclock-A-replay.txt",
+          "bytes": 1773,
+          "sha256": "8171af4e4f1e4a64a33cf2aacd015bb0bcecd8c96aa38b72a646d87750534fce"
+        },
+        {
+          "id": "E076",
+          "kind": "local",
+          "path": "local/research/codex/preclock-eof-r1/derived/guest-preclock-B/run.json",
+          "bytes": 14769,
+          "sha256": "03675233e368829d4369c18ad5d8851b6d78d0f6cd4b610e506711aa9abea51a"
+        },
+        {
+          "id": "E077",
+          "kind": "local",
+          "path": "local/research/codex/preclock-eof-r1/derived/guest-preclock-B-oracle.json",
+          "bytes": 12556,
+          "sha256": "1f8d43f61016ce0922ecd1111cf4cf37c4deb002f76b1c21b88144d3af5b4fbb"
+        },
+        {
+          "id": "E078",
+          "kind": "local",
+          "path": "local/research/codex/preclock-eof-r1/derived/guest-preclock-B-replay.txt",
+          "bytes": 237,
+          "sha256": "d85b3a6ba0fe5917068c891583c6f1e2b526da01266537861bb5bb615c6daf90"
+        },
+        {
+          "id": "E079",
+          "kind": "local",
+          "path": "local/research/codex/preclock-eof-r1/derived/guest-preclock-observed-A/run.json",
+          "bytes": 14078,
+          "sha256": "f346181e4e15e8a7fc3bd026d7c7c37c37363362783b77c30ea54dffd4209053"
+        },
+        {
+          "id": "E080",
+          "kind": "local",
+          "path": "local/research/codex/preclock-eof-r1/derived/guest-preclock-observed-A-oracle.json",
+          "bytes": 11186,
+          "sha256": "4ca5345bcaa7368deb37be3eaf456f18f4975bba883dd184d59d1d9803b1cb7c"
+        },
+        {
+          "id": "E081",
+          "kind": "local",
+          "path": "local/research/codex/preclock-eof-r1/derived/guest-preclock-observed-A-replay.txt",
+          "bytes": 224,
+          "sha256": "e8f7476527fc30426aefe83c554310e5b358ec8712f010c151bb72f2b5ee837c"
+        },
+        {
+          "id": "E082",
+          "kind": "local",
+          "path": "local/research/codex/preclock-eof-r1/derived/guest-preclock-warm-A/run.json",
+          "bytes": 30619,
+          "sha256": "3778e8acb1388b55f57d23eb377926edac4edcd90c71133e7034a66b586be213"
+        },
+        {
+          "id": "E083",
+          "kind": "local",
+          "path": "local/research/codex/preclock-eof-r1/derived/guest-preclock-warm-A-oracle.json",
+          "bytes": 72496,
+          "sha256": "0ede6cfd0a800e2ada5c793270b9a349d81f8a31e8a528ca7a697254cf7c1816"
+        },
+        {
+          "id": "E084",
+          "kind": "local",
+          "path": "local/research/codex/preclock-eof-r1/derived/guest-preclock-warm-A-replay.txt",
+          "bytes": 1236,
+          "sha256": "a73203dd5526f5542098e5ea579a96ce2899f2ac528dfc46464cad55c0a6cc40"
+        },
+        {
+          "id": "E085",
+          "kind": "local",
+          "path": "local/research/codex/preclock-eof-r1/derived/guest-preclock-warm-B/run.json",
+          "bytes": 25238,
+          "sha256": "c3a9c854fd816835861421f5021d569a0d771a52a4d47acf074716d3b496384e"
+        },
+        {
+          "id": "E086",
+          "kind": "local",
+          "path": "local/research/codex/preclock-eof-r1/derived/guest-preclock-warm-B-oracle.json",
+          "bytes": 47520,
+          "sha256": "252669bbbc82089081457758c4ae89c2ac1a8dfe37e5143af1018f8078cce3da"
+        },
+        {
+          "id": "E087",
+          "kind": "local",
+          "path": "local/research/codex/preclock-eof-r1/derived/guest-preclock-warm-B-replay.txt",
+          "bytes": 832,
+          "sha256": "d09961fc2cd9e11b1666e2c21885e716844c43431f0121adfe6666148caff30d"
+        },
+        {
+          "id": "E088",
+          "kind": "local",
+          "path": "local/research/codex/preclock-eof-r1/request-frames/guest-preclock-warm/A-F38-99.bin",
+          "bytes": 61,
+          "sha256": "259bcf82ce88540f91e735f785f0efc252cd535c40c0bc7bf7e12298b4607fcd"
+        },
+        {
+          "id": "E089",
+          "kind": "local",
+          "path": "local/research/codex/preclock-eof-r1/request-frames/guest-preclock-warm/B-F12-82.bin",
+          "bytes": 49,
+          "sha256": "27d13b13f8df5db1f67451352419d49458641283683b06d40bc91f6c3f7220e7"
+        },
+        {
+          "id": "E090",
+          "kind": "local",
+          "path": "local/research/codex/preclock-eof-r1/request-frames/guest-preclock-warm/B-F22-95.bin",
+          "bytes": 98,
+          "sha256": "38eeff06df1cda4991e6860d5e77cabcb5d78c9a82bc217363b4899b10d3aedd"
+        },
+        {
+          "id": "E091",
+          "kind": "local",
+          "path": "local/research/codex/preclock-eof-r1/request-frames/guest-preclock-warm/B-F26-99.bin",
+          "bytes": 61,
+          "sha256": "2d51210ef1ae22871ef53c9f710c9d66fd773b64c0cf074f8bf74f6a16a5319f"
+        },
+        {
+          "id": "E092",
+          "kind": "local",
+          "path": "local/research/codex/preclock-eof-r1/guest-preclock/run.json",
+          "bytes": 33404,
+          "sha256": "791159a3543c89fe9da8173679a11fb835281ad11061dc0e5b8ac3010124b002"
+        },
+        {
+          "id": "E093",
+          "kind": "local",
+          "path": "local/research/codex/preclock-eof-r1/guest-preclock/client.log",
+          "bytes": 24891,
+          "sha256": "88a3145d88bd5160595db2ee6254a9d3ceea908f607d798341da2b14294e88bb"
+        },
+        {
+          "id": "E094",
+          "kind": "local",
+          "path": "local/research/codex/preclock-eof-r1/guest-preclock/client-B.log",
+          "bytes": 26522,
+          "sha256": "2f1dc3618d568dd823f565ea4b06fdf64c21d62fc07be9220aa81159a3a8be5b"
+        },
+        {
+          "id": "E095",
+          "kind": "local",
+          "path": "local/research/codex/preclock-eof-r1/guest-preclock/debug-commands.txt",
+          "bytes": 30112,
+          "sha256": "46b47ee60ce9dd15cf092b40f8ca275f4dd15399b11eefbb9d93051bf642f31b"
+        },
+        {
+          "id": "E096",
+          "kind": "local",
+          "path": "local/research/codex/preclock-eof-r1/guest-preclock/debug-commands-B.txt",
+          "bytes": 30112,
+          "sha256": "46b47ee60ce9dd15cf092b40f8ca275f4dd15399b11eefbb9d93051bf642f31b"
+        },
+        {
+          "id": "E097",
+          "kind": "local",
+          "path": "local/research/codex/preclock-eof-r1/guest-preclock/service-state.json",
+          "bytes": 37002,
+          "sha256": "69c8436661d5ccec09a9bb3b2a58f1a8e1cb99105cfa4000af6757d4555e8895"
+        },
+        {
+          "id": "E098",
+          "kind": "local",
+          "path": "local/research/codex/preclock-eof-r1/guest-preclock-warm/run.json",
+          "bytes": 41237,
+          "sha256": "8980acfa4d824423cfdef9eefc55cc47f2fd90cfc5877f688c5d56002a66c95f"
+        },
+        {
+          "id": "E099",
+          "kind": "local",
+          "path": "local/research/codex/preclock-eof-r1/guest-preclock-warm/client.log",
+          "bytes": 31486,
+          "sha256": "38c43a436a5141348252badea1efbff02c7b6d6c800684c5eaa07a8cef6e68e3"
+        },
+        {
+          "id": "E100",
+          "kind": "local",
+          "path": "local/research/codex/preclock-eof-r1/guest-preclock-warm/client-B.log",
+          "bytes": 26119,
+          "sha256": "4ed15f1398f73ccf78115268145fdf41812fefaee1632c3671ed0d76806f00b7"
+        },
+        {
+          "id": "E101",
+          "kind": "local",
+          "path": "local/research/codex/preclock-eof-r1/guest-preclock-warm/debug-commands.txt",
+          "bytes": 30112,
+          "sha256": "46b47ee60ce9dd15cf092b40f8ca275f4dd15399b11eefbb9d93051bf642f31b"
+        },
+        {
+          "id": "E102",
+          "kind": "local",
+          "path": "local/research/codex/preclock-eof-r1/guest-preclock-warm/debug-commands-B.txt",
+          "bytes": 30112,
+          "sha256": "46b47ee60ce9dd15cf092b40f8ca275f4dd15399b11eefbb9d93051bf642f31b"
+        },
+        {
+          "id": "E103",
+          "kind": "local",
+          "path": "local/research/codex/preclock-eof-r1/guest-preclock-warm/service-state.json",
+          "bytes": 44360,
+          "sha256": "0915254b6321018f5ac904ef4c003e932d426e75aa9454787277043e5b6681d5"
+        },
+        {
+          "id": "E104",
+          "kind": "local",
+          "path": "local/research/codex/preclock-eof-r1/guest-preclock-warm/A-floor582-76.bin",
+          "bytes": 84,
+          "sha256": "254c2831334c14da414505b3870648c9cd22ad30d3d86628cc7709b32bbc631e"
+        },
+        {
+          "id": "E105",
+          "kind": "local",
+          "path": "local/research/codex/preclock-eof-r1/guest-preclock-warm/A-forfeit175-82.bin",
+          "bytes": 340,
+          "sha256": "bd9a13e1fb59650cdddf5875734f47185db9cc60f4eed8f7c7d4af01345ad3c1"
+        },
+        {
+          "id": "E106",
+          "kind": "local",
+          "path": "local/research/codex/preclock-eof-r1/guest-preclock-warm/A-ready110-73.bin",
+          "bytes": 44,
+          "sha256": "8fafd9cf652b458ee09b3751a0201f9ab1409920398e0e842e43b915c8840e25"
+        },
+        {
+          "id": "E107",
+          "kind": "local",
+          "path": "local/research/codex/preclock-eof-r1/guest-preclock-warm/A-remove107-88.bin",
+          "bytes": 44,
+          "sha256": "05000ff9693b122d5c2d263191cc42f0c435a4a357ae30d7b6169218b14d7d56"
+        },
+        {
+          "id": "E108",
+          "kind": "local",
+          "path": "local/research/codex/preclock-eof-r1/guest-preclock-warm/A-return180-r1-85.bin",
+          "bytes": 41,
+          "sha256": "53bf2006db5b2f691efca9e8c8876891d82b02869f4510428fa434c3b3f39767"
+        },
+        {
+          "id": "E109",
+          "kind": "local",
+          "path": "local/research/codex/preclock-eof-r1/guest-preclock-warm/A-start121-r1-79.bin",
+          "bytes": 167,
+          "sha256": "4d85d0786f484c579ef94cd61ceaa40997df93c39589d720ea8334bc9b5ca29f"
+        },
+        {
+          "id": "E110",
+          "kind": "local",
+          "path": "local/research/codex/preclock-eof-r1/guest-preclock-warm/A-survivor110-91.bin",
+          "bytes": 44,
+          "sha256": "b91511992a64679953c759de815c3f35be7b92ec415109c04d4afb0d28ab1b83"
+        },
+        {
+          "id": "E111",
+          "kind": "local",
+          "path": "local/research/codex/preclock-eof-r1/guest-preclock-warm/B-floor582-76.bin",
+          "bytes": 84,
+          "sha256": "254c2831334c14da414505b3870648c9cd22ad30d3d86628cc7709b32bbc631e"
+        },
+        {
+          "id": "E112",
+          "kind": "local",
+          "path": "local/research/codex/preclock-eof-r1/guest-preclock-warm/B-ready110-73.bin",
+          "bytes": 44,
+          "sha256": "8fafd9cf652b458ee09b3751a0201f9ab1409920398e0e842e43b915c8840e25"
+        },
+        {
+          "id": "E113",
+          "kind": "local",
+          "path": "local/research/codex/preclock-eof-r1/guest-preclock-warm/B-start121-r1-79.bin",
+          "bytes": 167,
+          "sha256": "4d85d0786f484c579ef94cd61ceaa40997df93c39589d720ea8334bc9b5ca29f"
+        },
+        {
+          "id": "E114",
+          "kind": "local",
+          "path": "local/research/codex/preclock-eof-r1/guest-preclock-warm/held-B99.bin",
+          "bytes": 61,
+          "sha256": "2d51210ef1ae22871ef53c9f710c9d66fd773b64c0cf074f8bf74f6a16a5319f"
+        },
+        {
+          "id": "E115",
+          "kind": "local",
+          "path": "local/research/codex/preclock-eof-r1/guest-preclock-observed/run.json",
+          "bytes": 13807,
+          "sha256": "c15e6a82aada3d0863dfcca4c6ce02b64f72be54a4f7cb03b6db41ae52cf7b3d"
+        },
+        {
+          "id": "E116",
+          "kind": "local",
+          "path": "local/research/codex/preclock-eof-r1/guest-preclock-observed/client.log",
+          "bytes": 25907,
+          "sha256": "ee4d033a2a868d3855a7b75eac103e6af02adc11801052f419a48573bd13afc5"
+        },
+        {
+          "id": "E117",
+          "kind": "local",
+          "path": "local/research/codex/preclock-eof-r1/guest-preclock-observed/debug-commands.txt",
+          "bytes": 30112,
+          "sha256": "46b47ee60ce9dd15cf092b40f8ca275f4dd15399b11eefbb9d93051bf642f31b"
+        },
+        {
+          "id": "E118",
+          "kind": "local",
+          "path": "local/research/codex/preclock-eof-r1/guest-preclock-observed/service-state.json",
+          "bytes": 17749,
+          "sha256": "f3d637e1001b64f81b14f6b7fa1926c34c9e5b834fd8de7a466c678e6d01fcc6"
+        },
+        {
+          "id": "E119",
+          "kind": "local",
+          "path": "local/research/codex/preclock-eof-r1/guest-preclock/B/screen-149.png",
+          "bytes": 5671,
+          "sha256": "a02bb97a945223b187ce3c992a4f2634dbcc02783afd22726bfc9fcfc43ae835"
+        },
+        {
+          "id": "E120",
+          "kind": "local",
+          "path": "local/research/codex/preclock-eof-r1/guest-preclock-observed/A/screen-28.png",
+          "bytes": 5671,
+          "sha256": "a02bb97a945223b187ce3c992a4f2634dbcc02783afd22726bfc9fcfc43ae835"
+        },
+        {
+          "id": "E121",
+          "kind": "local",
+          "path": "local/research/codex/wine_probe_preclock_eof.py",
+          "bytes": 40002,
+          "sha256": "80d903219fda0ee31b0eeb85959f93017118e47b1bf1efe1934346fb831d2a23"
+        },
+        {
+          "id": "E122",
+          "kind": "local",
+          "path": "local/research/codex/wine_probe_preclock_eof_warm.py",
+          "bytes": 40303,
+          "sha256": "d98a5c600afca318c0bb3c0f96d632ef440cf245df7714be09fcd5b559747d7c"
+        },
+        {
+          "id": "E123",
+          "kind": "local",
+          "path": "local/research/codex/wine_probe_preclock_eof_observed.py",
+          "bytes": 40872,
+          "sha256": "cca2ed3f823946881ae995dbf27e37f9d5459901d83107310482f79961a2e75c"
+        }
+      ],
+      "delta": {
+        "added": [
+          "Nativeforfeit/return beforeclock withactualheldB99/realEOF, separatefromCP050playedEOF/controlrelease.",
+          "TwoexplicitstartupSIGABRT failures/preStart kept; observer change hasnoexperimentresult; Aresetaftercontrolledstopclassifiedwithoutdroppingerror.",
+          "AUD022periodicmanualauditthroughCP072/currentcanonicalfixes, nextCP076."
+        ],
+        "corrected": [
+          "Sender107/refresh notnativecleanup proof; service-refresh+3s stopwindowinsufficientobservation,no attributiontoclientengine.",
+          "PROTOCOLheader/authoritymissingCP070/071/072, RESEARCHduplicatedCPprogress, evidence069/070historicalnextstep andCP070incidentalRoller scope corrected."
+        ],
+        "superseded": [
+          "NEXT-PRECLOCK-EOF attemptedpartial; native107pending afterstableNMCO startup. PrioritynextNMCOlocaleexactcallinputs/results ratherthanmoreunchangedrun."
+        ]
+      },
+      "blockers": [
+        "Native107/IDclear/chiefnotmeasured inpreclockpath; no demonstratedservicefailurewarrantingfix.",
+        "NMCOlocale2000:0/SIGABRTbeforeStart currentlyblocksrepeatability, causeunknown; no attributiontoprefix/probe/identity/cache/EOF.",
+        "Mixedownerinrange/actual118 CP071partial/fullvalidator/auth/reset/Windowsvanilla/fullmatch/K5/K6a/LANInternet remainopen."
+      ],
+      "next_steps": [
+        {
+          "id": "NEXT-PRECLOCK-EOF",
+          "task": "KRE-005b",
+          "state": "superseded",
+          "action": "CP072native175/180/stage12beforeclockconfirmedhẹp; native107stillunknown, observerretryblockedpreStart. ReopenafterNMCOstable withactualnative107/IDclear/chiefwait<=30s,notservice-refreshstop.",
+          "owner": "Codex",
+          "reviewer": "Codex"
+        },
+        {
+          "id": "NEXT-NMCO-LOCALE-STABILITY",
+          "task": "KRE-005b",
+          "state": "active",
+          "action": "ImmediatelyreuseCP006–020/064imports/cache/runtimepositive/negative. Hashmatched A/B/static/modO, traceexact96A15A/96E300/9769B3 locale caller/input/result/error onprivatecopy; no wholeNMCOscan/providerrepair orunchangedruntime/proxyretry. Patch/stubonlyifneededwithscope/design/control/beforeafter/rollback; sourceimmutable. Thenfinishnativepreclock107 beforeselectedTCPguardadmission.",
+          "owner": "Codex",
+          "reviewer": "Codex"
+        }
+      ],
+      "review": {
+        "status": "waived",
+        "as_of_utc": "2026-11-02T18:10:49.813245+00:00",
+        "reference": "docs/evidence/checkpoints/review-waiver.json",
+        "scope": "Codex solo RE/code/runtime/selfcheck, not independent approval.",
+        "authorization": {
+          "by": "project_owner",
+          "reference": "docs/evidence/checkpoints/review-waiver.json",
+          "reason": "Owner explicitly requested solo without Claude review."
+        }
+      },
+      "docs_sync": [
+        {
+          "path": "README.md",
+          "state": "updated",
+          "reason": "CP072partial/nativeforfeitreturn/cleanupunknown/startupblocker; AUD022correctssourceindex/stalehistory, no gatepromotion."
+        },
+        {
+          "path": "docs/PLAN.md",
+          "state": "updated",
+          "reason": "CP072partial/nativeforfeitreturn/cleanupunknown/startupblocker; AUD022correctssourceindex/stalehistory, no gatepromotion."
+        },
+        {
+          "path": "docs/PROTOCOL.md",
+          "state": "updated",
+          "reason": "CP072partial/nativeforfeitreturn/cleanupunknown/startupblocker; AUD022correctssourceindex/stalehistory, no gatepromotion."
+        },
+        {
+          "path": "docs/RESEARCH.md",
+          "state": "updated",
+          "reason": "CP072partial/nativeforfeitreturn/cleanupunknown/startupblocker; AUD022correctssourceindex/stalehistory, no gatepromotion."
+        },
+        {
+          "path": "docs/features.json",
+          "state": "updated",
+          "reason": "CP072partial/nativeforfeitreturn/cleanupunknown/startupblocker; AUD022correctssourceindex/stalehistory, no gatepromotion."
+        },
+        {
+          "path": "docs/COVERAGE.md",
+          "state": "updated",
+          "reason": "CP072partial/nativeforfeitreturn/cleanupunknown/startupblocker; AUD022correctssourceindex/stalehistory, no gatepromotion."
+        },
+        {
+          "path": "server/README.md",
+          "state": "updated",
+          "reason": "CP072partial/nativeforfeitreturn/cleanupunknown/startupblocker; AUD022correctssourceindex/stalehistory, no gatepromotion."
+        },
+        {
+          "path": "docs/evidence/basic-battle/README.md",
+          "state": "updated",
+          "reason": "CP072partial/nativeforfeitreturn/cleanupunknown/startupblocker; AUD022correctssourceindex/stalehistory, no gatepromotion."
+        },
+        {
+          "path": "docs/evidence/current-udp-causality/README.md",
+          "state": "updated",
+          "reason": "CP072partial/nativeforfeitreturn/cleanupunknown/startupblocker; AUD022correctssourceindex/stalehistory, no gatepromotion."
+        },
+        {
+          "path": "docs/evidence/preclock-eof/README.md",
+          "state": "updated",
+          "reason": "CP072partial/nativeforfeitreturn/cleanupunknown/startupblocker; AUD022correctssourceindex/stalehistory, no gatepromotion."
+        },
+        {
+          "path": "docs/evidence/checkpoints/audits/AUD022.json",
+          "state": "updated",
+          "reason": "CP072partial/nativeforfeitreturn/cleanupunknown/startupblocker; AUD022correctssourceindex/stalehistory, no gatepromotion."
+        }
+      ]
     }
   ],
   "audits": [
@@ -143679,6 +144759,11 @@
       "id": "AUD021",
       "path": "docs/evidence/checkpoints/audits/AUD021.json",
       "sha256": "5e2d27c78363b9423d9a5dcd8f30e8e30cb3e60c1ab413066d28f29cef85b7f6"
+    },
+    {
+      "id": "AUD022",
+      "path": "docs/evidence/checkpoints/audits/AUD022.json",
+      "sha256": "7674e5e8556c1714c892ca14a2f9d3e7fa7a5be67a110c8b5dfc58d3b8e8caae"
     }
   ],
   "task_states": [
@@ -143849,6 +144934,12 @@
       "state": "open",
       "canonical": "docs/PLAN.md",
       "reference": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/102"
+    },
+    {
+      "id": "KRE-035",
+      "state": "open",
+      "canonical": "docs/PLAN.md",
+      "reference": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/104"
     }
   ]
 }

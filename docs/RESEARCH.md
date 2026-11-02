@@ -15,13 +15,10 @@ Review plan nguồn đã xong; các câu hỏi dưới đây vẫn open cho tớ
 Thứ tự task chỉ ở [PLAN](PLAN.md#current-order). Tra phạm vi đã biết qua
 [coverage/cây chức năng](COVERAGE.md); bảng dưới dẫn đến khoảng trống/phép đo theo cơ chế.
 Nguồn cũ và run/checkpoint giữ trong phần lịch sử bên dưới và manifest; kết luận tại CP cũ không
-được đọc thành trạng thái hiện tại. CP053/054 đã đo host setup EOF/C trước vòng1;
-CP055 nối nguồn t, CP056 có [guard theo report](PROTOCOL.md#pickup-report-state),
-CP057 đối chiếu [codec stream trong model](PROTOCOL.md#codec-stream-boundaries);
-CP058 sửa [string/tail auth](PROTOCOL.md#auth-profile), CP059 giải [một cache representation](PROTOCOL.md#dynamic-cache-representation),
-CP060 kiểm [C với currentprofile](PROTOCOL.md#current-profile-c), CP061 có [A/B2cycles](PROTOCOL.md#current-pair-round),
-CP062 [tranh index](PROTOCOL.md#current-pickup-race), CP063 [guard127](PROTOCOL.md#report127-freshness), CP064 [control hai owner/blocker](PROTOCOL.md#mixed-owner-chain); chưa fullauthentication/cache. Giới hạn
-[service](PROTOCOL.md#probe-service) và bảng gap dưới giữ mở; không nghiệm thu K5/K6a.
+được đọc thành trạng thái hiện tại. Tra mức RE/implementation/runtime/gate theo từng chức năng ở
+[coverage](COVERAGE.md), contract/giới hạn tại link của từng cơ chế trong bảng gap. Không duy trì
+một danh sách tiến độ theo CP khác tại đây; [README](../README.md) giữ mốc hiện tại,
+[PLAN](PLAN.md#current-order) giữ thứ tự. Fullauthentication/cache/K5/K6a vẫn chưa nghiệm thu.
 
 | Câu hỏi / owner | Trạng thái | Khoảng trống và phép đo hiện hành |
 |---|---|---|
@@ -46,7 +43,7 @@ Bảng được [coverage](COVERAGE.md) trích tự động để tra theo chứ
 | <a id="gap-process-patch"></a>KR-B001 | Đối chứng Windows nguyên bản/ownership và recipe cùng cold start chưa nghiệm thu. | Tái dùng recipe có hash; ba cold start đúng một recipe, gắn network attempt với PID; so Windows control khi mở nhánh bootstrap. |
 | <a id="gap-wcp-config"></a>KR-B002 | Fixture tổng hợp đã qua guard; oneclickuser/+E9C và dữ liệu/cache thật chưa đủ. | Chỉ mở consumer/config đang chặn runtime; so nhánh với và không tham số trên cùng copy, không đo lại +E78 đã giải. |
 | <a id="gap-socket-codec"></a>KR-B003 | CP057 native stream splits/coalesce/seq và socketpair khớp; prefixguardoff/modelcap,FFFFFFFF allocationmodel blocked, full modes/string/blob/reset/live reconnect chưa nghiệm thu. | Reuse [scope/model](PROTOCOL.md#codec-stream-boundaries); không chạy lại76split hoặc tăng allocator để làm pass. Khi consumer auth/cache gây trigger mới, đo đúng field/mode/prefix/lifecycle trên actual connection; fresh synthetic socket không là reconnect thật. |
-| <a id="gap-auth-identity"></a>KR-L001 | CP060 C135/errors0/ID3/actual6KRNew và B/Ccycle đã kiểm cùngprofile; fieldmeaning/token/accountauthority/count2/otherfeatures vẫn thiếu. | Reuse [Cintegration](PROTOCOL.md#current-profile-c); không lặp Cauth/body/ID. Chỉ mở missingsemantic/variant khi gate/integration có trigger; currentprofiletwo-cycle ở service/resetgap. |
+| <a id="gap-auth-identity"></a>KR-L001 | CP058–060 đã đọc auth/errors0/currentC; CP072 xuất hiện NMCOstartup SetLocaleAndRegion2000:0/SIGABRT trên B/A trướcStart, nguyên nhân chưa biết. Identity/token/accountauthority vẫn mở. | TheoPLAN đối chiếu CP006–020/064/importbinding/cache; trace exactlocale caller96A15A/96E300/9769B3 args/return/error và positive-vs-negative. Không coi đổi prefix là fix hoặc tìm lại packet137/135/string/identityID. |
 | <a id="gap-redirect-lobby"></a>KR-L002 | UI sảnh copy đã có; thông tin user/cache/version và variants chưa đủ K3. | Kiểm identity hiển thị cùng request6/17/241 trên cold/warm/missing cache, log stage/seq; không suy từ cửa sổ. |
 | <a id="gap-profile-cache"></a>KR-L003 | CP059 namedfxdynmapinfo missing→write→warm đã nhận; CRC selector+representation trướcinflate giải lệchraw/nén. Toàncache/profile/version/corrupt/reconnect vẫn mở. | Reuse [scope/CRC](PROTOCOL.md#dynamic-cache-representation); không lặp namedcache này. Chỉ mở cachefile/variant khác khi native consumer hoặc acceptance có trigger; freshprefix không là coldallcache. |
 | <a id="gap-create-join"></a>KR-R001 | Password/full/error/capacity và auth roster tổng quát chưa kiểm. | So actual81/82 với consumer86/87 và slot hai phía; bổ sung lỗi/room-full từng ca khi service cần, không copy opcode VN. |
@@ -70,8 +67,8 @@ Bảng được [coverage](COVERAGE.md) trích tự động để tra theo chứ
 | <a id="gap-peer-relay"></a>KR-F015 | Relay/NAT và toàn grammar/reliability KR chưa xác nhận; local P2P không là LAN/Internet. | Sau local consistency, chọn endpoint thử được kiểm soát và capture native route; không thiết kế relay như contract đã phục hồi. |
 | <a id="gap-result-return"></a>KR-X001 | 175/outcome do policy chọn;21/sub34/chọn rank/authority chưa phục hồi đầy đủ. | Đối chiếu deathstate hai view trước175, cursor/full blob và180/reset trong cùng service run; không coi rank thay state. |
 | <a id="gap-round-reset"></a>KR-X002 | Reset field đã đo không là toàn entity/seq/queue/timer/túi; CP049 đã loại old124 khác k, transport/forged-current-key/roster lifetime còn mở. | Tái dùng CP041–047; kiểm job/claim/key owner cùng run ở vòng2 và sau abort, đối chiếu field hiện hành với baseline vòng1. |
-| <a id="gap-disconnect-replacement"></a>KR-X003 | CP050 playedEOF và delayed99release, CP052–054 setupEOF/Cmới đã đo riêng; EOF sau acceptedStart nhưng trước đủ99/clock chưa có native proof. Accountresume/fullreset/idleEOF/sendfailure/timeout/loadfail còn mở. | TheoPLAN giữ actualB99 tại dispatch rồi realBEOF trước release; survivor175/180/room/107-IDclear/chief, không197196153/clock/late99. Tái dùng schema/probes, giữ failedstage nếu có rồi sửa caller policy, không tìm lại consumer. |
-| <a id="gap-diagnostic-service"></a>KR-S001 | CP069 baeffect/reset, CP070 UDPcontrol hai chiều; CP071 mixed-owner partial với raw/lỗi cụ thể. Fullauthority/reset/K6a chưa đạt. | Tiếp boundary preclockEOF sauStart/beforeboth99; kiểm native survivor return/cleanup và no latephase, không lặp item/auth/cache/clock/UDP hay chỉnh hold vô hạn. |
+| <a id="gap-disconnect-replacement"></a>KR-X003 | [CP072](PROTOCOL.md#preclock-eof) BEOF trongactual99hold sau121/beforeclock: A175/180/stage12 đã thấy, native107/IDclear chưa thấy trước stop; observerretry bị NMCO trướcStart. | Sau startup ổn, giữ waitnative107/IDclear/chief≤30s, không service-refresh+3s hoặc senderlog làm cleanup proof. Không tìm lại175/180consumer; accountresume/hostvariant/loadfail/timeout/whole reset còn mở. |
+| <a id="gap-diagnostic-service"></a>KR-S001 | CP069 basic3effects/reset và CP070 UDPcontrol đã đo; CP071 mixed-owner partial; CP072 preclockforfeit/return hẹp, nativecleanup chưa có. NMCOlocale startup đang cản run. | TheoPLAN giải exact NMCOcall/input/result blocker trước runtime mới; sau đó native107 observer và selectedactualTCPguardadmission, không retry proxy/chain nguyên trạng hoặc mở mọi lifecycle race. |
 | <a id="gap-service-hardening"></a>KR-S002 | Chưa LAN/Internet/bốn client/restart/backpressure/rate limit/persistence đủ K7. | Sau local gate có evidence, thử hai máy theo K6b rồi loss/disconnect/restart; không lấy loopback accept làm multiplayer. |
 
 ## Diễn biến lịch sử theo checkpoint

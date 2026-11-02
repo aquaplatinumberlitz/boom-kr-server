@@ -69,6 +69,12 @@ relay/NAT/backpressure hay gate K5/K6a. CP050 bổ sung [EOF recovery hẹp](../
 Runtime r2 có hai chu kỳ; r3 chỉ một result, không dùng để tuyên bố tính tái lập mọi input.
 
 
+## Các bổ sung theo checkpoint
+
+Các đoạn dưới ghi phạm vi tại checkpoint được nêu. “Tiếp” trong đoạn lịch sử không là việc đang
+hoạt động; tra [PLAN](../docs/PLAN.md#current-order), [contract hiện hành](../docs/PROTOCOL.md#authority)
+và [coverage](../docs/COVERAGE.md). Raw và profile cũ giữ hash, không tự migrate.
+
 CP049: `probe_service.py` so u32 k của124 với khóa153 hiện hành trước claim, khác thì không phát165
 và không chiếm item. Đây là policy server ở caller, không đổi ItemClaims thành toàn validator.
 [Contract/giới hạn](../docs/PROTOCOL.md#pickup-round-key), [hai run native effect và recipe](../docs/evidence/stale124/README.md).

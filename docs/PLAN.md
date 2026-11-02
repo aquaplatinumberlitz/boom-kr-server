@@ -1,7 +1,7 @@
 # Kế hoạch server giả lập KR 00967
 
 Nguồn chuẩn của project `boom-kr-server`; bản nhập từ plan đã được dsh1/dsh2 review tại `1eee46d`.
-Cập nhật03/11 JST (CP071): [mixed-owner/power2](PROTOCOL.md#mixed-owner-power) partial: geometry đầu ngoài tầm, feedback retry không118. Tiếp preclockEOF/return/cleanup; AUD021, audit kếCP072.
+Cập nhật03/11 JST (CP072): [preclockEOF](PROTOCOL.md#preclock-eof) native175/180/stage12 confirmed hẹp, cleanup unknown; NMCOstartupabort là blocker mới. AUD022/CP072, audit kếCP076.
 
 
 ### Mục tiêu, baseline và phạm vi
@@ -37,17 +37,17 @@ với client Rust không chứng minh có thể điều khiển client KR bằng
 
 ### Tiến độ hiện hành theo bằng chứng
 
-| Task/mốc | Trạng thái tại CP071 | Nguồn chuẩn |
+| Task/mốc | Trạng thái tại CP072 | Nguồn chuẩn |
 |---|---|---|
 | KRE-004/issue6 | Đã review/merge PR7 và đóng issue:recipe r1 đến local accept;không phải full K1 | [Wine r1](evidence/wine/README.md) |
 | Bootstrap reply | PR8 đã merge;debugger ProcessPatchreturn1,không ép success | [bootstrap evidence](evidence/bootstrap-wire/README.md) |
 | KRE-005a/issue9,R2 | PR10 đã merge:3 cold start cửa sổ/second accept;issue9 còn mở | [R2 evidence](evidence/wine-r2/README.md) |
 | WCP hai-reply | Run CP001 là lịch sử chưa C→S; CP006 đã đo request đầu trên copy tham số hóa | [PROTOCOL](PROTOCOL.md#wcp),[WCP evidence](evidence/wcp/README.md) |
-| KRE-005b/issue14 | CP006–070 đã merge; CP071 mixed-owner/power2 partial tự kiểm/tích hợp theo [PR103](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/103); fullround/authority/full auth còn mở | [Q-023](RESEARCH.md#q-023), [service](evidence/probe-service/README.md) |
+| KRE-005b/issue14 | CP006–071 đã merge; CP072 preclockEOF partial tự kiểm/chờ PR; fullround/authority/full auth còn mở | [Q-023](RESEARCH.md#q-023), [service](evidence/probe-service/README.md) |
 | K0/K1 | Chưa nghiệm thu toàn gate;Windows vanilla/control ownership và các điều kiện còn thiếu giữ mở | Gate dưới,[Q-022](RESEARCH.md) |
 | K2a/K2 | Primitive/WCP, CP057stream native/model và CP058–060authcallback137/135/errors0 đã có; fullcodec/authauthority/reconnect và gate chưa pass | [PROTOCOL](PROTOCOL.md#login-auth),[Q-023](RESEARCH.md#q-023) |
 | K3 | Copy đã vẽUI/đóngnotice, A/B/Cprofile đọc sạch và mộtnamedcachewarm được nhận; identityauthority/toàncache/codec/K3 chưa nghiệm thu | [Contract sảnh](PROTOCOL.md#channel-lobby) |
-| K4–K7 | CP039–040 có hai vòng statepeer/result và phục hồi EOF; CP041–043 đo stale158/165/159; CP044 có timer abort và B/C mới bom/death/result/return. CP047 byte khóa, CP049 guard124 và CP050 service EOF/cleanup/hold99 đã đo hẹp; CP051–054 có peer mới B/C/setupEOF, CP056reportguard và CP060newprofileC/B-Ccycle; CP065/066distinctspawn/tranhitem vàCP067/068C2Sguards/hiddenitems cósource hiện hành; membership tổng quát/variants/toànreset/authority chưa nghiệmthu. Chưa K6a/LAN/Internet | [Giới hạn lifecycle](PROTOCOL.md#abort-timer) |
+| K4–K7 | CP039–040 có hai vòng statepeer/result và phục hồi EOF; CP041–043 đo stale158/165/159; CP044 có timer abort và B/C mới bom/death/result/return. CP047 byte khóa, CP049 guard124 và CP050 service EOF/cleanup/hold99 đã đo hẹp; CP051–054 có peer mới B/C/setupEOF, CP056reportguard và CP060newprofileC/B-Ccycle; CP065/066distinctspawn/tranhitem vàCP067/068C2Sguards/hiddenitems cósource hiện hành; membership tổng quát/variants/toànreset/authority chưa nghiệmthu. CP072 preclock175/180 hẹp, nativecleanup còn thiếu. Chưa K6a/LAN/Internet | [Giới hạn lifecycle](PROTOCOL.md#abort-timer) |
 
 <a id="current-order"></a>
 ### Thứ tự công việc hiện hành
@@ -60,15 +60,14 @@ KRE-005b/issue14 vẫn mở. Các bước dưới là **thứ tự ưu tiên**, 
 xong checkpoint/commit/PR thì chuyển ngay việc kế tiếp trong thứ tự này, không tự dừng/chờ nhắc.
 Một blocker chỉ kết thúc nhánh đo tương ứng; ghi rõ rồi tiếp việc độc lập có thể làm, không tự đóng gate.
 
-1. **KR-X003/R003 — EOF sauStart, trước đủ99/clock:** CP071 [hai run bounded](PROTOCOL.md#mixed-owner-power)
-   chưa có mixed-owner in-range, không tiếp chỉnh hold khi chưa điều kiện mới. Mở boundary lifecycle
-   cụ thể: room đã active/accepted121 nhưng B99 chưa dispatch, A99 có rồi, chưa197/196/153/clock.
-   Tái dùng CP050 holdactual99 + EOF/175180107110 và CP052–054 setup/departure helpers; current
-   service chọn abortforfeit trướcclock chưa có native proof. Private wrapper giữ actualB99≤30s,
-   EOF Bprefix sauhold+2s/A99, discard heldframe sauEOF, không dispatch vào closed event. Kiểm survivor
-   native175/180/room/IDclear/chief và absence phase trước/sau; lỗi/treo giữ bằng chứng rồi sửa đúng
-   caller policy nếu cần. Không syntheticdeath/bom, không tìm lại receiver hoặc chạy mọirace.
-   CP072 audit định kỳ thủ công sau khi gom kết quả, không dùng checker thay đọc raw.
+1. **KR-B001/L001/S001 — NMCO locale đang cản runtime:** CP072 [hai startupabort](PROTOCOL.md#preclock-eof)
+   ở B/A, UI SetLocaleAndRegion2000:0 và stack96E300/96E400/9769B3; warm prefix thay chỉ có một run
+   đi qua, không cause/fix proof. Trước runtime mới, đối chiếu CP006–020/064/importbinding/cache và
+   caller route thực, hash A/B/static/modO. Trace tối thiểu args/return/error/nhánh96A15A→96E300 và
+   APIprovider liên quan trên copy, so positive/negative; không quét NMCO toàn bộ hoặc sửa engine/config.
+   Nếu cần patch/stub offline phải có scope/design/before-after/control/rollback, không sửa nguồn.
+   Giải blocker này trước retry native107 saupreclockEOF hoặc TCPproxy/chain. Chỉ khi điều kiện mới
+   cụ thể mới chạy lại; không giả prefix/timing/probe là nguyên nhân từ tương quan.
 2. **KR-B003/KR-F006 — nợ có giới hạn:** [CP057](PROTOCOL.md#codec-stream-boundaries) đã đo stream/
    seq/bounds trong model, không mở lại76split hoặc cấp buffer lớn chỉ để vượt allocationguardFFFFFFFF.
    Full modes/prefix guard/live reset, distance/auth/transport/kim-cứu của reportguard giữ trong RESEARCH;

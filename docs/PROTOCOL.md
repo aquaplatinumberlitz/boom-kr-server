@@ -1,6 +1,6 @@
 # KR 00967 — contract tương thích client gốc
 
-Revision kr-legacy-contract-r1; cập nhật03/11/2026 JST (CP069).
+Revision kr-legacy-contract-r1; cập nhật03/11/2026 JST (CP072).
 **Contract có bằng chứng từng phần; chưa nghiệm thu full codec K2**.
 Lộ trình và thứ tự task chỉ giữ ở [REWRITE_PLAN — KRE](PLAN.md).
 Đây là contract của repo server KR. ADR0009 của bản viết lại là nguồn lịch sử để so sánh;
@@ -1958,21 +1958,21 @@ liệt kê và phân biệt với nguyên bản trong mọi demo.
 <a id="authority"></a>
 ### Authority matrix hiện hành và gate review
 
-Bảng này tổng hợp bằng chứng từng phần đến CP068; chưa phải toàn contract server gốc. Mỗi hàng khi
+Bảng này tổng hợp bằng chứng từng phần đến CP072; chưa phải toàn contract server gốc. Mỗi hàng khi
 triển khai phải bổ sung riêng **creator, simulator, validator, broadcaster, peer-editable state**, với
 locator/trace và trạng thái từng ô; những vai trò không nêu dưới đây hiện `unknown` cho KR.
 
 | Hành vi | Đã thấy trong KR | Phần cần đóng trước demo dùng hành vi đó |
 |---|---|---|
-| Movement | CP027 hai client thấy movement hai chiều; [phạm vi](#peer-duo);183 vẫn chỉ ghost | Full schema input/update/correction, validator và quyền sửa vị trí của peer |
+| Movement | CP027 hai chiều; CP070 [cut/counter/restore local vs remote](#current-udp-causality) đã đo trên current Wine copy;183 vẫn ghost | Full schema input/update/correction, validator và quyền sửa vị trí của peer |
 | Bomb place/ID | CP027 hai owner/ID chung1..4 tạo trên cả hai client; [phạm vi](#peer-duo); lặp/cũ CP025 | CP041 có [stale158/ID reuse và fence job local](#round-generation), CP043 có [old159/serial reuse](#late-bomb-confirm); CP067 [C2Skey/serialguard](#c2s118-admission) loại duplicate/oldbody hẹp; allocator/rollover/concurrent/race/toàn generation/authority còn mở |
 | Explode/chain | CP033 một owner; CP064 [power1/cách hai ô](#mixed-owner-chain), CP071 [power2 ngoài tầm/feedback chưa118](#mixed-owner-power) giữ partial khác owner | Mixed-owner liền kề/ba bom/vật cản/race/generation và authority server gốc còn thiếu |
 | Block destroy/item reveal | CP032 nativecontract; CP068 [currentservice/list2/reportgate/effect/reset](#current-hidden-items) cảhai view | Drop algorithm/server validator, variants/chain và phép loại transport riêng còn thiếu |
 | Item placement/pickup | CP030 nhặt/tranh index; CP031/032 stat/itemẩn; CP045 [bảng nhóm/Roller/MaxPower hai view/reset](#item-families) | CP042 có [old165/index reuse](#item-generation); runtime tại max, KRspeed→px/s/TTL/activevariants, drop/toàn124validator/generation/reset còn thiếu; CP062 [winner đảo trên actual tranh index](#current-pickup-race) đã có scope riêng |
 | Trap/death | CP029/036; CP037 kim và tranh chấp cứu/diệt; [kim](#needle-selfescape), [precedence](#contact-precedence) | CP063 [guard stale/duplicate](#report127-freshness) là policy hẹp; fullvalidator/firstseen/forgedforward/actualTCP/generation/variants/result21 vẫn thiếu |
 | Result/reset | CP039 hai vòng statepeer/result/21/return và reset field hẹp; CP044 [timer ở EOF và vòng B/C mới](#abort-timer) | CP041 có [payload cũ khi ID reuse](#round-generation); arbitration/toàn generation/entity/timer/peer/seq không rò vẫn mở; phân biệt run chờ sai origin với ca hoàn tất |
-| Room lifecycle | CP034 leave/promotion/EOF/return; CP035 rejoin/Ready; CP040 chủ B/C Start; CP044 [B/C bom/death/result/return sau abort](#abort-timer) | Bầu chủ/giữ ID-slot/forfeit là policy stub; guest EOF trả A về phòng/xóa B đã đo riêng; CP050 có [service EOF/cleanup](#service-eof); CP051 có [C mới/Start B trong service](#service-replacement); CP052 [guest setup EOF](#setup-eof), CP053 [host với peer chưa map](#host-setup), CP054 [C trước vòng đầu](#prestart-replacement) đã đo; reconnect cùng account/disconnect variants/toàn reset còn mở |
-| Peer lifecycle | CP027 actual99→153; CP045–047 [oldUDP actor/keyguard/endpointcontrol](#udp-generation) | CP048 [service fixture](#probe-service) đã tích hợp key policy hẹp; low8reuse/roster/UDPtype khác/fullgrammar/reliability/relay/reset còn mở. Không coi đổi cổng riêng lẻ là freshness guard hoặc keybyte là auth |
+| Room lifecycle | CP034 leave/promotion/EOF/return; CP035 rejoin/Ready; CP040 chủ B/C Start; CP044 [B/C bom/death/result/return sau abort](#abort-timer) | Bầu chủ/giữ ID-slot/forfeit là policy stub; guest EOF trả A về phòng/xóa B đã đo riêng; CP050 có [service EOF/cleanup](#service-eof); CP051 có [C mới/Start B trong service](#service-replacement); CP052 [guest setup EOF](#setup-eof), CP053 [host với peer chưa map](#host-setup), CP054 [C trước vòng đầu](#prestart-replacement), CP072 [preclock forfeit/return, cleanup còn thiếu](#preclock-eof) đã đo; reconnect cùng account/disconnect variants/toàn reset còn mở |
+| Peer lifecycle | CP027 actual99→153; CP045–047 [oldUDP actor/keyguard/endpointcontrol](#udp-generation), CP070 [transport cut hai chiều](#current-udp-causality) | CP048 [service fixture](#probe-service) đã tích hợp key policy hẹp; low8reuse/roster/UDPtype khác/fullgrammar/reliability/relay/reset còn mở. Không coi đổi cổng riêng lẻ là freshness guard hoặc keybyte là auth |
 
 Gate K5/K6 cần kiểm matrix và đối chứng của hành vi thực sự dùng; từ28/10 Codex tự kiểm theo miễn review của chủ dự án. Có thể giữ unknown về
 server gốc thất lạc nếu policy emulator được chọn `design`, client chấp nhận và ca consistency đạt;
@@ -2666,3 +2666,21 @@ failure; không native159/158/bom trong retry, không quy cause cho debugger/cli
 fullmatch/LANInternet/vanilla. [CP033](#bomb-chain) sameowner và [CP064](#mixed-owner-chain) control
 power1 vẫn hợp lệ; historicalcontrols không cùngrun power-only intervention. Bước tiếp ở PLAN là
 EOF sauStart trướcclock, không nâng gate từ Fire/feedback/encoder/probe pass.
+
+<a id="preclock-eof"></a>
+### EOF sauStart, trước clock — CP072
+
+[Raw/recipe/failures/audit](evidence/preclock-eof/README.md), **kr_runtime/confirmed hẹp** cho forfeit/
+return trướcclock, **unknown** cho native slotcleanup. Production service/profile41/guards giữ;
+wrapper giữ actualB99 tại dispatch≤30s, discard sau actualchannelEOF. A99 đã nhận, hai native121
+full129 nhưng chưa197/196/153/clock. BEOF tronghold, A175full302/180full3/stage12; không bom/death.
+
+107/110 được phát nhưng chưa có native107/IDclear trước stopservice-refresh+3s; AECONNRESET xảy ra
+sau controlledstop, giữ rawerror. Không suy gửi107 là xóa slot; không quy thiếu trace cho engine/
+debugger. Observerretry chờnativecleanup≤30s lại bị NMCO startupabort trướcStart, không đo EOF.
+Cả firstB/thirdA UI SetLocaleAndRegion2000:0/SIGABRT giữ, cùng loại CP064; causeunknown.
+
+Forfeit/rank/timing/dispatchhold là **design**, không death/originalserver. Không thêm body/patch/
+servicefix/force state; không gameplay/2cycles/fullreset/hostEOFvariant/accountresume/timeout/loadfail/
+K4/K5/K6a/fullmatch/LANInternet/vanilla. Next actualblocker: NMCO locale caller/input/result,
+không lặp input/proxy hoặc reopen175/180receiver đã đo. Sau startup ổn mới hoàn tất native107.
