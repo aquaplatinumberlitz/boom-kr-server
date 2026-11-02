@@ -35,7 +35,7 @@ khôi phục UDP thì hai view cập nhật lại. [Contract/giới hạn](docs/
 Chưa K6a/fullmatch/LAN/Internet/fullvalidator/reset; tiếp blocker chain khác owner với root power2.
 
 CP069 đã merge [PR99](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/99) tại `03f1afb`.
-CP070 tự kiểm/chờ PR, review độc lập [waived](docs/evidence/checkpoints/review-waiver.json).
+CP070 tự kiểm/tích hợp theo [PR101](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/101), review độc lập [waived](docs/evidence/checkpoints/review-waiver.json).
 Audit **AUD021/CP068**, periodic kế **CP072**.
 [Yêu cầu chủ dự án](docs/evidence/owner-directives/continuous-work.json): tiếp tục ngay việc kế trong
 PLAN sau mỗi checkpoint/commit/PR, không tự dừng/chờ nhắc.

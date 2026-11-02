@@ -2,7 +2,7 @@
 
 Baseline CP069/PR99 merge `03f1afbeb6eb6d638f47f4a4ce5ea9845ae95fa3`;
 KRE-033/[issue100](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/100).
-Codex solo/tự kiểm; [review waived](../checkpoints/review-waiver.json), tích hợp chờ PR.
+Codex solo/tự kiểm; [review waived](../checkpoints/review-waiver.json), tích hợp theo [PR101](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/101).
 [Contract/giới hạn](../../PROTOCOL.md#current-udp-causality),
 [câu hỏi còn mở](../../RESEARCH.md#gap-peer-movement), [thứ tự](../../PLAN.md#current-order).
 Raw/script/log/capture/seal: `local/research/codex/current-udp-causality-r1/`.
