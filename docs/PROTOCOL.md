@@ -1,6 +1,6 @@
 # KR 00967 — contract tương thích client gốc
 
-Revision kr-legacy-contract-r1; cập nhật02/11/2026 JST (CP058).
+Revision kr-legacy-contract-r1; cập nhật02/11/2026 JST (CP059).
 **Contract có bằng chứng từng phần; chưa nghiệm thu full codec K2**.
 Lộ trình và thứ tự task chỉ giữ ở [REWRITE_PLAN — KRE](PLAN.md).
 Đây là contract của repo server KR. ADR0009 của bản viết lại là nguồn lịch sử để so sánh;
@@ -389,14 +389,17 @@ không copy VN231/234/113, row128 hoặc index954. KR đo238/241/117, row120 và
   Native frame/blob, checksum và mọi row getter tiêu67byte của mẫu count1/strings ngắn;
   runtime parserCRC khớp/count1/return1/innercursor67=67. Count lớn/compression của238/bounds chưa kiểm.
 
-`14EA760` trả stored-checksum; native blob giữ `405E70` và xác nhận **Adler32 seed0 trên inner67byte**:
+`14EA760` trả stored-checksum; native blob giữ `405E70` và xác nhận **Adler32 seed0 trên inner67byte ở selector0**:
 control`66DE09B4`, enabled`66ED09B5`. Giả thuyết tính cả tag ban đầu bị bác bỏ (`80D60A10` khácnative).
 Allocator/free tổng hợp, checksum/reader không bị thay return. Config dùng checksum native tương ứng.
+CP059 xác định checksum tổng quát nằm trên storage selector+representation **trước** inflate; selector0
+zero-prefix/seed0 cho cùng giá trị như inner, không suy checksum ấy áp nguyên sang selector1.
 Mẫu raw blob bên trong outer là `[18,u32LE length,selector0,inner]`; checksum này không tính tag/header.
 
 Config mới thử đọc cache1090row/CRC`C5B1B1C1`, khácexpected nên từ chối rồi gửi528.
 Sau wire238/count1, bảng dynamic-count lên1 qua`DFEF20`; cache ghi lại khi reload vẫn có checksum khác
-trong cửa sổ đo. Đây là **giới hạn cache/persistence đang mở**, không suy cold/warm/reconnect đã qua.
+trong cửa sổ đo. Đây là snapshot CP019; [CP059](#dynamic-cache-representation) đã giải lệch representation
+cho cache này. Fullcache/reconnect vẫn mở, không suy cold/warm toàn client đã qua.
 Raw snapshot/cache hash ở evidence; không coi cache kế thừa là server-origin oracle.
 
 `CPlayMapInfoList` runtime có1151 record/stride52, snapshot tại init12. Index0 là **Antarctic01**,
@@ -2325,3 +2328,43 @@ prefix; byte xuất khớp exact profile đã chạy. **C mới chỉ native rea
 fixture mới. Không tự migrate profile JSON đã export; chúng giữ hash/path cũ cho reproducibility.
 Service/codec không đổi. Fullmeaning/profilevalues/cache/cold-warm/missing/reconnect/token_2/allregions/
 Windowsvanilla/authauthority/K2/K3/K5/K6a/LAN/Internet còn mở. AUD018 audit ngay lỗi string, cadence kếCP060.
+
+<a id="dynamic-cache-representation"></a>
+### Cache dynamic-map và checksum representation — CP059
+
+**kr_runtime/kr_static confirmed trong scope một named-cache**, [source/recipe/hash](evidence/cache-boundary/README.md).
+Tái dùng CP019/DFE850/DFE8D0/DFEB10 và VN cache-method, giữ auth mới CP058. A/B dùng **hai game-dir
+reflink riêng**; chỉ xóa `fxdynmapinfo.ssd` trên bản thử, các cache khác giữ lại. Không gọi fresh prefix
+hoặc missing một file là cold toàn client; không sửa source binary/DB/pack/cache nguồn.
+
+Nguồn lệch đã giải: `14EA7C0` kiểm SSI file-header checksum rồi `14EAB40→14E9560` nạp blob.
+`14E9560` lưu `405E70(seed0, storageSelector+encodedRepresentation)` **trước** copy/inflate.
+Selector0 =0+inner; với seed0 prefixzero không đổi checksum. Selector1 =1+u32LE uncompressedSize+zlib;
+checksum **không** là Adler của plaintext sau inflate. Nativeblob oracle và cache/runtime xác nhận.
+
+Ở profile ExVillage01/278,69byte inner của wire238 và cache **giống từng byte**; khác representation:
+raw-wire checksum `8F400A8B`, compressed SSD `804314B9`. Cache76byte/SHA6a4745… có outerSSIchecksum
+riêng `97201510`; không lẫn outerfile-integrity với checksum mà config241 quảng bá. Cả haiCRC là field
+metadata, không auth/sessionkey. Không hardcode chúng thành hằng mọi map/profile.
+
+| Run / mỗi role A/B | Namedfile/load | Sau config241 | Kết quả wire/cache |
+|---|---|---|---|
+| cache-present (raw241/238) |file có, actual804314B9≠expected8F400A8B, loader0|actual C→S528 rỗng|raw238 parsecount1; ghi compressedfile76byte.|
+| cache-missing (cùng rawprofile) |file bị xóa, fileload0/loader0|actual528|raw238 ghi lại cùng file.|
+| compressed-missing |file bị xóa, expected804314B9|actual528|selector1/238 nativeinflate69/CRCkhớp; ghi file76byte.|
+| compressed-warm (freshprefix/file giữ) |fileload1/CRC804314B9 khớp; parse69/69/return1|**không528**|cache được chấp nhận trước238 tới; service vẫn gửi238 vô điều kiện sau đó.|
+
+C→S528 tại các ca fallback là actual frame38byte/bodyrỗng/seq67 được nativeframer/CRC kiểm. Warm không
+có request528 ở cả hai; không dùng chỉ processalive/TCPaccept để suy cache thành công. Rawtag
+`CP59_CACHE_LOAD_END count` đọc manager+14 là **raw pointer chưa định nghĩa**, không là sốrow;
+count1 lấy từ nativeu16/parser local ở DFEB8C. `CP59_CACHE_WRITE_BEGIN` tại DFE9A0 là handler238/update;
+return14EA940=1 cộng snapshot file mới là proofghi. Warm thêm read-only parserexitprobe, không force return.
+
+Fix servicefixture: gửi **exact compressed blob mà client đã ghi**, quảng bá checksum của representation
+đó ở241; native238inflate69/241CRC/cursor/errors kiểm độc lập. Exporter đổi **ready/table**,39alias khác
+kể cả auth giữ nguyên;41frames trùng profile đã đo. Không sửa codec/service hoặc cache fileformat/client.
+Các file ghi rồi mở lại có cùng SHA; metadata/recipe dùng hash, không publish cache/assets/binary.
+
+Bốn run đều authA/B137/errors0 nhưng gameplay/lifecycle còn partial, không chứng minh2trận hoặc K6a.
+Fullprofile/cachefamily/cacheversion/corrupt/delete/reconnect/Windowsvanilla vẫn mở; Cauth mới trước
+CP060 chỉ native. Theo PLAN tiếp integration C với bộ fixture mới, không đo lại CRC/cachefile này.

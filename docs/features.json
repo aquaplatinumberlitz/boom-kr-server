@@ -1,7 +1,7 @@
 {
   "schema": "kre-feature-index-v1",
   "build": "KR00967",
-  "as_of": "2026-11-02 JST / CP058; integration status via PR77; AUD018, nextCP060",
+  "as_of": "2026-11-02 JST / CP059; integration status via PR79; periodic audit nextCP060",
   "sources": {
     "plan": "docs/PLAN.md",
     "contract": "docs/PROTOCOL.md",
@@ -537,14 +537,16 @@
         "question": "docs/RESEARCH.md#gap-profile-cache",
         "plan": "docs/PLAN.md#current-order",
         "evidence": [
-          "docs/evidence/start-reply/README.md"
+          "docs/evidence/start-reply/README.md",
+          "docs/evidence/cache-boundary/README.md"
         ]
       },
       "coverage": {
         "presence": {
-          "state": "candidate",
+          "state": "present",
           "refs": [
-            "docs/PROTOCOL.md#channel-lobby"
+            "docs/PROTOCOL.md#channel-lobby",
+            "docs/PROTOCOL.md#dynamic-cache-representation"
           ]
         },
         "vn_reference": {
@@ -556,17 +558,22 @@
         "kr_static": {
           "state": "partial",
           "refs": [
-            "docs/PROTOCOL.md#channel-lobby"
+            "docs/PROTOCOL.md#channel-lobby",
+            "docs/PROTOCOL.md#dynamic-cache-representation"
           ]
         },
         "emulation": {
-          "state": "unknown",
-          "refs": []
+          "state": "checked",
+          "refs": [
+            "docs/evidence/cache-boundary/README.md"
+          ]
         },
         "runtime": {
           "wine_diagnostic_copy": {
-            "state": "unknown",
-            "refs": []
+            "state": "observed",
+            "refs": [
+              "docs/evidence/cache-boundary/README.md"
+            ]
           },
           "windows_original": {
             "state": "unknown",
@@ -582,13 +589,19 @@
           }
         },
         "implementation": {
-          "state": "unknown",
-          "refs": [],
-          "delivery": "unknown"
+          "state": "partial",
+          "refs": [
+            "tools/export_probe_profile.py",
+            "docs/PROTOCOL.md#dynamic-cache-representation",
+            "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/79"
+          ],
+          "delivery": "via_pr"
         },
         "integration": {
-          "state": "unknown",
-          "refs": []
+          "state": "partial",
+          "refs": [
+            "docs/evidence/cache-boundary/README.md"
+          ]
         },
         "gate": {
           "id": "K3",

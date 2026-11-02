@@ -25,7 +25,7 @@ Review độc lập: [waived theo chủ dự án](evidence/checkpoints/review-wa
 | [KR-B003 · Codec theo socket và chiều](#kr-b003) | present | both | partial | checked | observed | unknown | unknown | unknown | partial / via_pr | partial | K2: open |
 | [KR-L001 · Auth và identity cục bộ](#kr-l001) | present | both | partial | checked | observed | unknown | unknown | unknown | partial / via_pr | partial | K3: open |
 | [KR-L002 · Redirect và UI sảnh](#kr-l002) | present | both | partial | checked | observed | unknown | unknown | unknown | partial / via_pr | partial | K3: open |
-| [KR-L003 · Profile và cache lifecycle](#kr-l003) | candidate | static | partial | unknown | unknown | unknown | unknown | unknown | unknown / unknown | unknown | K3: open |
+| [KR-L003 · Profile và cache lifecycle](#kr-l003) | present | static | partial | checked | observed | unknown | unknown | unknown | partial / via_pr | partial | K3: open |
 | [KR-R001 · Tạo và vào phòng](#kr-r001) | present | both | partial | checked | observed | unknown | unknown | unknown | partial / via_pr | partial | K4: open |
 | [KR-R002 · Roster, own-slot, Ready và chủ phòng](#kr-r002) | present | both | partial | checked | observed | unknown | unknown | unknown | partial / via_pr | partial | K4: open |
 | [KR-R003 · Map, spawn và loading barrier](#kr-r003) | present | both | partial | checked | observed | unknown | unknown | unknown | partial / via_pr | partial | K4: open |
@@ -53,11 +53,11 @@ Review độc lập: [waived theo chủ dự án](evidence/checkpoints/review-wa
 
 Số lượng theo trạng thái khai báo (không phải tỷ lệ hoàn thành):
 
-- presence: candidate=5, present=23, unknown=2.
+- presence: candidate=4, present=24, unknown=2.
 - kr_static: partial=28, unknown=2.
-- emulation: checked=21, unknown=9.
-- implementation: partial=20, unknown=10.
-- integration: partial=20, unknown=10.
+- emulation: checked=22, unknown=8.
+- implementation: partial=21, unknown=9.
+- integration: partial=21, unknown=9.
 - gate: open=30.
 
 ## Cây cơ chế
@@ -303,9 +303,9 @@ Dependency: [KR-B003](#kr-b003).
 
 [Contract và giới hạn](PROTOCOL.md#login-auth) · [Câu hỏi gốc](RESEARCH.md#gap-auth-identity) · [Thứ tự ở PLAN](PLAN.md#current-order).
 
-Khoảng trống (trích bảng RESEARCH): CP058 count1/profilebranch đọc137/errors0 A/B, tên xuất hiện trong actual6; unknown meanings/numeric0/emptylists không là fullauth/token/account. C fixture native-only, count2/features/cache chưa kiểm.
+Khoảng trống (trích bảng RESEARCH): CP058 A/B137/errors0/actual6name và CP059 namedcache đã kiểm; C135 mới native, otherfeatures/count2/token/accountauthority/fieldmeanings chưa đủ.
 
-Phép kiểm tối thiểu (trích cùng nguồn): Reuse [shape/control](PROTOCOL.md#auth-profile), không RE lại string53field. Theo PLAN đo named-cache present/missing trên copy riêng rồi chỉ mở feature/count2/reconnect khi consumer đang chặn.
+Phép kiểm tối thiểu (trích cùng nguồn): Dùng profile mới/reuseC3/BStart để kiểm runtimeCauth/cursor/name và cùngrun B/Cround theo PLAN; không lặpstring53fields/cacheCRC hoặc coi C là accountresume.
 
 Bằng chứng/build/hash/recipe: [login-runtime](evidence/login-runtime/README.md), [probe-service](evidence/probe-service/README.md), [auth-profile](evidence/auth-profile/README.md).
 
@@ -357,24 +357,24 @@ Dependency: [KR-L001](#kr-l001).
 
 [Contract và giới hạn](PROTOCOL.md#channel-lobby) · [Câu hỏi gốc](RESEARCH.md#gap-profile-cache) · [Thứ tự ở PLAN](PLAN.md#current-order).
 
-Khoảng trống (trích bảng RESEARCH): Chưa có ma trận cold/warm/missing/reconnect/profile đủ; presence của toàn contract giữ candidate.
+Khoảng trống (trích bảng RESEARCH): CP059 namedfxdynmapinfo missing→write→warm đã nhận; CRC selector+representation trướcinflate giải lệchraw/nén. Toàncache/profile/version/corrupt/reconnect vẫn mở.
 
-Phép kiểm tối thiểu (trích cùng nguồn): Theo reader/cache path đã dẫn ở contract; giữ nguyên fixture, đo cache hiện hữu rồi một control thiếu file có hash.
+Phép kiểm tối thiểu (trích cùng nguồn): Reuse [scope/CRC](PROTOCOL.md#dynamic-cache-representation); không lặp namedcache này. Chỉ mở cachefile/variant khác khi native consumer hoặc acceptance có trigger; freshprefix không là coldallcache.
 
-Bằng chứng/build/hash/recipe: [start-reply](evidence/start-reply/README.md).
+Bằng chứng/build/hash/recipe: [start-reply](evidence/start-reply/README.md), [cache-boundary](evidence/cache-boundary/README.md).
 
 | Chiều chứng minh | Khai báo | Nguồn/phạm vi áp dụng |
 |---|---|---|
-| presence | candidate | [nguồn1](PROTOCOL.md#channel-lobby) |
+| presence | present | [nguồn1](PROTOCOL.md#channel-lobby), [nguồn2](PROTOCOL.md#dynamic-cache-representation) |
 | vn_reference | static | [nguồn1](REFERENCES.md) |
-| kr_static | partial | [nguồn1](PROTOCOL.md#channel-lobby) |
-| emulation | unknown | Chưa có bằng chứng trong phạm vi rà |
-| wine_diagnostic_copy | unknown | Chưa có bằng chứng trong phạm vi rà |
+| kr_static | partial | [nguồn1](PROTOCOL.md#channel-lobby), [nguồn2](PROTOCOL.md#dynamic-cache-representation) |
+| emulation | checked | [nguồn1](evidence/cache-boundary/README.md) |
+| wine_diagnostic_copy | observed | [nguồn1](evidence/cache-boundary/README.md) |
 | windows_original | unknown | Chưa có bằng chứng trong phạm vi rà |
 | lan | unknown | Chưa có bằng chứng trong phạm vi rà |
 | internet | unknown | Chưa có bằng chứng trong phạm vi rà |
-| implementation | unknown / unknown | Chưa có bằng chứng trong phạm vi rà |
-| integration | unknown | Chưa có bằng chứng trong phạm vi rà |
+| implementation | partial / via_pr | [nguồn1](../tools/export_probe_profile.py), [nguồn2](PROTOCOL.md#dynamic-cache-representation), [nguồn3](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/79) |
+| integration | partial | [nguồn1](evidence/cache-boundary/README.md) |
 | gate | K3: open | [nguồn1](PLAN.md#gates) |
 
 <a id="kr-r001"></a>

@@ -124,3 +124,7 @@ CP058: exporter41fixture chuyển auth_A/B/C sang [profile count1 mới](../docs
 A/B callback137/137/errors0 và actual6 tên riêng đã đo; C135byte mới native/emulation, chưa C runtime.
 Profile JSON cũ giữ hash/path cũ, phải export sang file mới để dùng fixture mới. Service/codec không đổi;
 values0/emptylist vẫn design, không publicauth/account/cache/vanilla/gateproof.
+
+CP059: exporter đổi ready241/table238 sang [cặp compressed/checksumkhớpcache](../docs/PROTOCOL.md#dynamic-cache-representation).
+A/B missing→nativewrite→freshprefixwarm/69bytes/loader1/no528;39alias khác giữ nguyên, oldprofileJSONs giữ.
+Không fullcache/reconnect/auth/profile/gate. Tiếp runtimeC với bộfixture mới, không đo lại raw/nénCRC.
