@@ -34,7 +34,7 @@ CP074: sau BEOF trước clock, A đã đọc107/xóa ID của B/giữ host, ph�
 Tiếp kiểm guard gói cũ/trùng qua TCP thật; chưa fullmatch/K6a/LAN/Internet/fullvalidator/reset/accountresume.
 
 CP073 đã merge [PR107](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/107) tại `5c64293`.
-CP074 tự kiểm/chờ PR, review độc lập [waived](docs/evidence/checkpoints/review-waiver.json).
+CP074 tự kiểm/tích hợp theo [PR109](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/109), review độc lập [waived](docs/evidence/checkpoints/review-waiver.json).
 Audit **AUD022/CP072**, periodic kế **CP076**.
 [Yêu cầu chủ dự án](docs/evidence/owner-directives/continuous-work.json): tiếp tục ngay việc kế trong
 PLAN sau mỗi checkpoint/commit/PR, không tự dừng/chờ nhắc.
