@@ -1,6 +1,6 @@
 # KR 00967 — contract tương thích client gốc
 
-Revision kr-legacy-contract-r1; cập nhật03/11/2026 JST (CP066).
+Revision kr-legacy-contract-r1; cập nhật03/11/2026 JST (CP067).
 **Contract có bằng chứng từng phần; chưa nghiệm thu full codec K2**.
 Lộ trình và thứ tự task chỉ giữ ở [REWRITE_PLAN — KRE](PLAN.md).
 Đây là contract của repo server KR. ADR0009 của bản viết lại là nguồn lịch sử để so sánh;
@@ -2556,3 +2556,31 @@ runtime riêng, policytiming/fuse/rank/placement/authfixture vẫn design.
 flag nhưng chưa so field0 với roundkey hoặc chặn duplicate report trước cấp ID/timer; chưa có control
 runtime cho hậu quả. Không dùng oldS→C159/158 CP025/041/043 thay proof C2S admission hoặc mang
 k124 sang118 chỉ vì giá trị giống; đối chiếu writer/capture và minimalcontrol trước khi chọn policy.
+
+<a id="c2s118-admission"></a>
+### Admission request đặt bom118 — CP067
+
+[Recipe/native/control/hash](evidence/c2s118-admission/README.md); **kr_runtime/confirmed** cho
+consequence trên copy, **design** cho guard. Tái dùng CP021/025 cachedwriter/fullu32serial/poolmatch,
+CP065/066 profile/captures; không dùng oldS2C159/158 như C2Sadmissionproof hoặc thêm body native.
+E2DF80/E2E03D lấy firstu32 từrecord+8, E2E0B3 serialu32 từ+0C;2vùng khớp4artifact. Actualrecord/
+TCP snapshot giữ firstfield12345→12346 khớp key153 hiện hành quaStart, serial0 lặp. Constructor/key
+source/serialgenerationwrap/authority chưa phục hồi; field0bằngkey không đồng nghĩa authentication.
+
+**Control:** exactactual118duplicate vòng1 và oldbody sau current39vòng2 tại dispatcher khiến service
+cấp extraID2/3 và timer. NativeA159 trả0 cho hai extra (không pending), B tạo cả hai remoteentity;
+oldID3 còn vào kind0 khi timer158 tới ởB, không ởA. Đây là consequence cụ thể, không chỉ logallocate.
+DuplicateID2 đã có entity nhưng callback158 khôngkind0lặp; chưa tách chain/samecell ở nhánh này.
+Replay bypasssocket/framer/seqadmission; không actualTCP replayproof. Baseline chỉpartialround2.
+
+**Policy caller:** sau layoutflag0/boundowner, log `bomb_requests`; so fullu32field0 với currentroomkey
+trước reserve/ID/timer. Giữ mapserial→priorID/bodySHA riêng boundconnection/round, xóa ởStart.
+Same serial/body bịduplicate; same serial/bodykhác bịconflict; không resend159 vì nativepending đã dùng.
+Không áp serialmonotonic hoặc so tick127/124. Không thay RoundFence: oldtimer vẫn giữ ticketgốc.
+
+Guardrun cùngprofile/3injection:loại2duplicate +1oldkey trướcID/jobs/159; haiactual118serial0quaStart
+đượcID1/2, nativeentity cảhai, hai bom/state/result/return/refresh/errors0.64regression gồmfullkey+256/
+newseqsamebody/conflict/perowner/roundreset/nonmonotonic/hardlimits; wrapnumeric chỉpolicytest,
+không runtimeallocator/serialwrapproof. Chưa cap/geometry/actorstate/fullvalidator/auth/forgednewserial/
+firstfieldconstructor/fullreset/K6a/LAN. Next [PLAN](PLAN.md#current-order) tích hợp block/list2/reveal
+trên currentservice theo CP032, không mở mọi inputrace trước Battle cơ bản.
