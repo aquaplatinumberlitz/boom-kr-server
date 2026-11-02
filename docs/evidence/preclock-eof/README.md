@@ -2,7 +2,7 @@
 
 Baseline CP071/[PR103](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/103) merge
 `d95c5ba12c49fe10488c5afbdc00809ba719fd86`; KRE-035/[issue104](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/104).
-Codex solo/tự kiểm, [review waived](../checkpoints/review-waiver.json); tích hợp chờ PR.
+Codex solo/tự kiểm, [review waived](../checkpoints/review-waiver.json); tích hợp theo [PR105](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/105).
 [Contract/giới hạn](../../PROTOCOL.md#preclock-eof), [gap](../../RESEARCH.md#gap-disconnect-replacement),
 [thứ tự](../../PLAN.md#current-order). Raw/script/log/capture/seal: `local/research/codex/preclock-eof-r1/`.
 

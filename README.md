@@ -35,7 +35,7 @@ Hai run bị NMCO `SetLocaleAndRegion(2000:0)` trước Start, nay là blocker r
 CP069 item/reset và CP070 UDPcontrol giữ; chưa fullmatch/K6a/LAN/Internet/fullvalidator/reset.
 
 CP071 đã merge [PR103](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/103) tại `d95c5ba`.
-CP072 partial tự kiểm/chờ PR, review độc lập [waived](docs/evidence/checkpoints/review-waiver.json).
+CP072 partial tự kiểm/tích hợp theo [PR105](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/105), review độc lập [waived](docs/evidence/checkpoints/review-waiver.json).
 Audit **AUD022/CP072**, periodic kế **CP076**.
 [Yêu cầu chủ dự án](docs/evidence/owner-directives/continuous-work.json): tiếp tục ngay việc kế trong
 PLAN sau mỗi checkpoint/commit/PR, không tự dừng/chờ nhắc.

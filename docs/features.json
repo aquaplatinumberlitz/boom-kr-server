@@ -1,7 +1,7 @@
 {
   "schema": "kre-feature-index-v1",
   "build": "KR00967",
-  "as_of": "2026-11-03 JST / CP072 partial; self-check pending PR; AUD022/nextCP076",
+  "as_of": "2026-11-03 JST / CP072 partial; self-check PR105; AUD022/nextCP076",
   "sources": {
     "plan": "docs/PLAN.md",
     "contract": "docs/PROTOCOL.md",
