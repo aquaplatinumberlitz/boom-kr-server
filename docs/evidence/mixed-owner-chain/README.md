@@ -2,7 +2,7 @@
 
 Baseline CP063/[PR87](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/87) merge
 `a0f44d001faf2acddb334b3834da907703cb46b3`; KRE-027/[issue88](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/88).
-Codex solo/tự kiểm, [review waived](../checkpoints/review-waiver.json); tích hợp chờ PR.
+Codex solo/tự kiểm, [review waived](../checkpoints/review-waiver.json); tích hợp theo [PR89](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/89).
 [Contract/giới hạn](../../PROTOCOL.md#mixed-owner-chain), [gap](../../RESEARCH.md#gap-blast-block-chain),
 [thứ tự](../../PLAN.md#current-order). Raw/script/capture ở `local/research/codex/mixed-owner-chain-r1/`.
 

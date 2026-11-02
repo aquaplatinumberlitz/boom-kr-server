@@ -34,7 +34,7 @@ CP064: đã đo bom hai owner cách hai ô ở cả hai view; liền kề chưa 
 Chưa K6a/fullmatch/LAN/Internet/fullvalidator/reset; tiếp spawn riêng cho hai client trên currentprofile theo PLAN.
 
 CP063 đã merge [PR87](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/87) tại `a0f44d0`.
-CP064 tự kiểm/chờ PR, review độc lập [waived](docs/evidence/checkpoints/review-waiver.json).
+CP064 tự kiểm/tích hợp theo [PR89](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/89), review độc lập [waived](docs/evidence/checkpoints/review-waiver.json).
 Audit **AUD020/CP064**, periodic kế **CP068**.
 [Yêu cầu chủ dự án](docs/evidence/owner-directives/continuous-work.json): tiếp tục ngay việc kế trong
 PLAN sau mỗi checkpoint/commit/PR, không tự dừng/chờ nhắc.
