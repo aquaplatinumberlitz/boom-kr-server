@@ -1,7 +1,7 @@
 {
   "schema": "kre-feature-index-v1",
   "build": "KR00967",
-  "as_of": "2026-11-02 JST / CP056; self-check pending PR, AUD017",
+  "as_of": "2026-11-02 JST / CP056; integration status via PR73, AUD017",
   "sources": {
     "plan": "docs/PLAN.md",
     "contract": "docs/PROTOCOL.md",
@@ -1473,12 +1473,13 @@
         },
         "implementation": {
           "state": "partial",
-          "delivery": "branch_pending",
+          "delivery": "via_pr",
           "refs": [
             "server/probe_service.py",
             "docs/PROTOCOL.md#pickup-round-key",
             "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/59",
-            "docs/PROTOCOL.md#pickup-report-state"
+            "docs/PROTOCOL.md#pickup-report-state",
+            "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/73"
           ]
         },
         "integration": {
@@ -2581,7 +2582,7 @@
         },
         "implementation": {
           "state": "partial",
-          "delivery": "branch_pending",
+          "delivery": "via_pr",
           "refs": [
             "server/probe_service.py",
             "docs/PROTOCOL.md#service-eof",
@@ -2594,7 +2595,8 @@
             "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/67",
             "docs/PROTOCOL.md#prestart-replacement",
             "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/69",
-            "docs/PROTOCOL.md#pickup-report-state"
+            "docs/PROTOCOL.md#pickup-report-state",
+            "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/73"
           ]
         },
         "integration": {

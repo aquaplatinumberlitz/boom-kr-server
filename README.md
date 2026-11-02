@@ -36,7 +36,7 @@ chưa distance/auth/fullvalidator hoặc nghiệm thu hai trận đầy đủ/K6
 Tiếp native codec boundaries/fragmentation theo PLAN.
 
 CP055 đã merge [PR71](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/71) tại `76766e7`.
-CP056 tự kiểm/chờ PR, review độc lập [waived](docs/evidence/checkpoints/review-waiver.json).
+CP056 tự kiểm/integration theo [PR73](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/73), review độc lập [waived](docs/evidence/checkpoints/review-waiver.json).
 Audit **AUD017/CP056**, audit kế **CP060**.
 [Yêu cầu chủ dự án](docs/evidence/owner-directives/continuous-work.json): tiếp tục ngay việc kế trong
 PLAN sau mỗi checkpoint/commit/PR, không tự dừng/chờ nhắc.
