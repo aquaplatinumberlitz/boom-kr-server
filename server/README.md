@@ -138,3 +138,8 @@ CP063 thêm [admission report127](../docs/PROTOCOL.md#report127-freshness): curs
 trên kết nối, giữ qua Start; old/exactduplicate không sửa marker/death/phát170 hoặc góp21 vào result.
 Policy design hẹp, không là authentication hoặc toàn validator. Regression57case; control/fix Wine dùng
 dispatcher replay, actualTCP replay admission vẫn mở. Recipe/giới hạn ở link contract/evidence.
+
+CP065: exporter mặc định [spawn riêng](../docs/PROTOCOL.md#distinct-spawn) theo exactfixtureCP024;
+export ra path mới, profileJSON cũ giữ nguyên hash. `--spawn-layout overlap` dành ca contact/race RE.
+Native currentA/B2cycles đã đo index0/1→point→actor/reset; B/C/accountresume/generalroster chưa kiểm
+với default này. Metadata chỉ khai báo fixture, không thêm fieldwire hoặc randomspawnpolicy.

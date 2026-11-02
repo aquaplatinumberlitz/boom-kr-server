@@ -1,6 +1,6 @@
 # KR 00967 — contract tương thích client gốc
 
-Revision kr-legacy-contract-r1; cập nhật03/11/2026 JST (CP064).
+Revision kr-legacy-contract-r1; cập nhật03/11/2026 JST (CP065).
 **Contract có bằng chứng từng phần; chưa nghiệm thu full codec K2**.
 Lộ trình và thứ tự task chỉ giữ ở [REWRITE_PLAN — KRE](PLAN.md).
 Đây là contract của repo server KR. ADR0009 của bản viết lại là nguồn lịch sử để so sánh;
@@ -1958,7 +1958,7 @@ liệt kê và phân biệt với nguyên bản trong mọi demo.
 <a id="authority"></a>
 ### Authority matrix hiện hành và gate review
 
-Bảng này tổng hợp bằng chứng từng phần đến CP064; chưa phải toàn contract server gốc. Mỗi hàng khi
+Bảng này tổng hợp bằng chứng từng phần đến CP065; chưa phải toàn contract server gốc. Mỗi hàng khi
 triển khai phải bổ sung riêng **creator, simulator, validator, broadcaster, peer-editable state**, với
 locator/trace và trạng thái từng ô; những vai trò không nêu dưới đây hiện `unknown` cho KR.
 
@@ -2503,3 +2503,30 @@ Ba ca chỉ một lượt bom, không hai trận/reset/fullmatch/K6a/LAN/authori
 vẫn nguồn hợp lệ; mixed-owner liền kề/ba bom/vật cản/list3 còn mở. Tránh lặp vô hạn input trên overlap
 profile: [PLAN](PLAN.md#current-order) tiếp distinct spawn bằng nguồn map/index đã có, chỉ mở lại
 mixed-owner chain khi bố trí native đủ điều kiện hoặc probe ổn định hơn.
+
+<a id="distinct-spawn"></a>
+### Spawn riêng trên profile service hiện hành — CP065
+
+**kr_runtime/confirmed hẹp trên copy Wine**, [recipe/native/hash](evidence/distinct-spawn/README.md).
+Tái dùng [CP024 index→map point→actor](#bomb-position) và exactfixture ExVillage01/code278, không
+RE lại loader hoặc đổi point map. VN §5a-7 giúp checklist init một lần/per-slot index, không opcode/
+layout/offset VN. Profile overlap trước đây là lựa chọn phục vụ contact/race, không vắng cơ chế spawn riêng.
+
+Body121 knownfixture riêng và overlap đều129byte; khác một byte typed ở bodyoffset86, native inner
+ledger **slot1 spawn tại offset76:0→1**. Slot0 giữ0; seed/map/room/roster/position/outertail không đổi.
+Native frame/blob/getter tiêu inner100/outer129/errors0. Profile41 chỉ aliasstart đổi,40alias còn lại
+khớp byte; không thêm schema hoặc derive spawn từ tên/mapindex VN. Hai fixture/checkpoint cũ giữ hash.
+
+Run currentproductionservice/guard127, không replaywrapper:8connections/IDs1,2/slots0,1, haiStart/
+clock/keys12345→12346. Nativeinit point A(3,3)/B(3,9); clock cảhai nativeview A(120,159),B(120,399)
+ở **cả hai vòng**. Sau normalUI cảhai view cùng sampledcoordinate từng actor trước175; không fullUDP
+schema/correction/transportcausality/pxs. HaiA124/165/Roller5→6/reset5, A118IDs1→2/159158/A17/19→
+B170/B21, nativeAstate1bothbefore175, hai175/180/roomrefresh. Auth/cache/currentkey/reportguard giữ.
+Không gộp CP062overlaprace thành tranhitem distinctspawn cùngrun; không fullmatch/K4/K6a/LAN/Internet.
+
+Exporter mặc định **distinct** dùng exactCP024`exvillage121.bin`; `--spawn-layout overlap` giữ
+`collision-r1/overlap121.bin` cho RE. Metadata`spawn_layout` là design khai báo fixture, không fieldwire.
+Không tự migrate profileJSON cũ: export path mới rồi dùng hash. Đã đo A/B với distinct; default này
+chưa là B/C/accountresume/roster tổng quát hoặc chọn spawn ngẫu nhiên theo seed. Sourcebinary/pack/DB giữ.
+
+Giới hạn còn ở [RESEARCH](RESEARCH.md#gap-map-spawn-loading); thứ tự chỉ ở [PLAN](PLAN.md#current-order).

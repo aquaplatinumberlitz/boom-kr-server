@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Index local synthetic fixtures measured through CP059; copy no assets."""
+"""Index local synthetic fixtures; select known distinct or overlap spawns."""
 
 import argparse
 import hashlib
@@ -38,7 +38,7 @@ FIXTURES = {
     'table': ('cache-boundary-r1/compressed238.bin', 67),
     'map': ('bomb-position-r1/exvillage117.bin', None),
     'floor': ('item-families-r1/floor582-kind2.bin', 73),
-    'start': ('collision-r1/overlap121.bin', 73),
+    'start': ('bomb-position-r1/exvillage121.bin', 73),
     'go': ('round-go-r1/go197-time30.bin', 76),
     'play': ('bomb-position-r1/exvillage196.bin', 79),
     'peer': ('peer-duo-r1/peer153-replace.bin', 82),
@@ -56,6 +56,8 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--source-root', type=Path, required=True)
     parser.add_argument('--out', type=Path, required=True)
+    parser.add_argument('--spawn-layout', choices=['distinct', 'overlap'], default='distinct',
+                        help='known map spawn0/1, or intentional overlap for contact/race RE')
     args = parser.parse_args()
     local = Path(__file__).resolve().parents[1] / 'local'
     root = args.source_root.resolve(strict=True)
@@ -65,8 +67,11 @@ def main():
     result = {'schema': 'kr-probe-profile-v1', 'source': 'emu_choice',
               'limits': 'Synthetic local diagnostic fixtures, not recovered full auth or original server.',
               'items': [{'index': 17, 'row': 4, 'column': 3, 'kind': 2}],
-              'initial_key': 12345, 'fixtures': {}}
-    for name, (relative, sequence) in FIXTURES.items():
+              'initial_key': 12345, 'spawn_layout': args.spawn_layout, 'fixtures': {}}
+    fixtures = dict(FIXTURES)
+    if args.spawn_layout == 'overlap':
+        fixtures['start'] = ('collision-r1/overlap121.bin', 73)
+    for name, (relative, sequence) in fixtures.items():
         path = (root / relative).resolve(strict=True)
         if not path.is_relative_to(root):
             raise ValueError('fixture escapes source root')
@@ -79,7 +84,7 @@ def main():
     with out.open('x') as stream:
         json.dump(result, stream, indent=2)
         stream.write('\n')
-    print(f'Indexed {len(FIXTURES)} fixtures: {out}')
+    print(f'Indexed {len(fixtures)} fixtures ({args.spawn_layout} spawns): {out}')
 
 
 if __name__ == '__main__':
