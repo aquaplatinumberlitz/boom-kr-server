@@ -1,7 +1,7 @@
 {
   "schema": "kre-feature-index-v1",
   "build": "KR00967",
-  "as_of": "2026-11-03 JST / CP069; self-check; integration via PR99; nextauditCP072",
+  "as_of": "2026-11-03 JST / CP070; self-check pending PR; nextauditCP072",
   "sources": {
     "plan": "docs/PLAN.md",
     "contract": "docs/PROTOCOL.md",
@@ -1100,7 +1100,8 @@
         "evidence": [
           "docs/evidence/peer-duo/README.md",
           "docs/evidence/probe-service/README.md",
-          "docs/evidence/current-pair-round/README.md"
+          "docs/evidence/current-pair-round/README.md",
+          "docs/evidence/current-udp-causality/README.md"
         ]
       },
       "coverage": {
@@ -1133,7 +1134,8 @@
             "state": "observed",
             "refs": [
               "docs/evidence/peer-duo/README.md",
-              "docs/evidence/current-pair-round/README.md"
+              "docs/evidence/current-pair-round/README.md",
+              "docs/evidence/current-udp-causality/README.md"
             ]
           },
           "windows_original": {
@@ -1162,7 +1164,8 @@
           "state": "partial",
           "refs": [
             "docs/evidence/probe-service/README.md",
-            "docs/evidence/current-pair-round/README.md"
+            "docs/evidence/current-pair-round/README.md",
+            "docs/evidence/current-udp-causality/README.md"
           ]
         },
         "gate": {
@@ -1190,7 +1193,8 @@
         "plan": "docs/PLAN.md#current-order",
         "evidence": [
           "docs/evidence/udp-freshness/README.md",
-          "docs/evidence/probe-service/README.md"
+          "docs/evidence/probe-service/README.md",
+          "docs/evidence/current-udp-causality/README.md"
         ]
       },
       "coverage": {
@@ -1222,7 +1226,8 @@
           "wine_diagnostic_copy": {
             "state": "observed",
             "refs": [
-              "docs/evidence/udp-freshness/README.md"
+              "docs/evidence/udp-freshness/README.md",
+              "docs/evidence/current-udp-causality/README.md"
             ]
           },
           "windows_original": {
@@ -1250,7 +1255,8 @@
         "integration": {
           "state": "partial",
           "refs": [
-            "docs/evidence/probe-service/README.md"
+            "docs/evidence/probe-service/README.md",
+            "docs/evidence/current-udp-causality/README.md"
           ]
         },
         "gate": {
@@ -2664,7 +2670,8 @@
           "docs/evidence/distinct-spawn-race/README.md",
           "docs/evidence/c2s118-admission/README.md",
           "docs/evidence/current-hidden-items/README.md",
-          "docs/evidence/basic-battle/README.md"
+          "docs/evidence/basic-battle/README.md",
+          "docs/evidence/current-udp-causality/README.md"
         ]
       },
       "coverage": {
@@ -2707,7 +2714,8 @@
               "docs/evidence/distinct-spawn-race/README.md",
               "docs/evidence/c2s118-admission/README.md",
               "docs/evidence/current-hidden-items/README.md",
-              "docs/evidence/basic-battle/README.md"
+              "docs/evidence/basic-battle/README.md",
+              "docs/evidence/current-udp-causality/README.md"
             ]
           },
           "windows_original": {
@@ -2770,7 +2778,8 @@
             "docs/evidence/distinct-spawn-race/README.md",
             "docs/evidence/c2s118-admission/README.md",
             "docs/evidence/current-hidden-items/README.md",
-            "docs/evidence/basic-battle/README.md"
+            "docs/evidence/basic-battle/README.md",
+            "docs/evidence/current-udp-causality/README.md"
           ]
         },
         "gate": {

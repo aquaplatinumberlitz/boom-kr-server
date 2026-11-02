@@ -2626,3 +2626,24 @@ profileJSONcũ khôngtựmigrate. Đây là basicdiagnosticBattle profile, khôn
 fullmovementauthority/chainvariants/fullvalidator/reset/K5/K6a/LANInternet. Originalbinary/DB giữ.
 Phép kiểm tiếp [PLAN](PLAN.md#current-order) tách nativepositionagreement với UDPtransportcausality;
 không cần quét toàngrammar trước đúng observable còn thiếu.
+
+<a id="current-udp-causality"></a>
+### UDP và vị trí hai chiều: can thiệp trên service hiện hành — CP070
+
+**kr_runtime/confirmed hẹp trên Wine diagnostic copy**, [recipe/raw/hash](evidence/current-udp-causality/README.md).
+Tái dùng actual99→153, native wrapper/getter và cached1256B3B; không sửa service, client, key hoặc
+payload. Trong namespace private chỉ loopback, input hook drop chính xác cặp cổng UDP thực, hai
+hướng đo tuần tự; counter dương và restore/delete được ghi. Profile CP065 distinct/floor, một round.
+
+A→B bị drop34gói/1518byte: ownA(120,159)→(120,279), viewB của A giữ(120,159).
+B→A bị drop37gói/1665byte: ownB(120,399)→(172,399), viewA của B giữ(120,399).
+Sau restore, trước input mới, remote đã thấy vị trí cuối cut; sau input mới hai view khớp A(120,339),
+B(200,399). Các mẫu là native state/coordinates đọc bằng secure getter, không kết luận từ ảnh hoặc
+absence callback. Runtime đã tách paired-position agreement với phụ thuộc UDP trong cấu hình này.
+
+Counter bao gồm toàn luồng UDP khớp rule, không định danh mỗi packet movement. Restore trước input
+mới chưa phân biệt periodic send/retransmit/queue; hostclock không là clienttimebase/same-tick proof.
+Run v2 counter dương nhưng thiếu paired phases giữ partial, v3 tăng sampling mới đủ phép kiểm.
+Lỗi assert metadata của run đầu xảy ra trước nft, không quy cho client. Service/profile/guards giữ;
+không bom/result/reset/2cycles ở phép này, không full UDP grammar/reliability/NAT/auth/fallback/LAN/
+Internet/vanilla/K5/K6a. [OldUDP/key](#udp-generation) giữ nguồn CP045–047 riêng.
