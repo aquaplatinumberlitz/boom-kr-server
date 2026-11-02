@@ -1,7 +1,7 @@
 # Kế hoạch server giả lập KR 00967
 
 Nguồn chuẩn của project `boom-kr-server`; bản nhập từ plan đã được dsh1/dsh2 review tại `1eee46d`.
-Cập nhật03/11 JST (CP065): [distinctspawn](PROTOCOL.md#distinct-spawn) A/B hai chu kỳ/currentprofile đã đo; exporter mặc định riêng và giữ overlapRE. Tiếp cùng-run consistency/acceptance theo phạm vi đang dùng; AUD020, audit kế CP068.
+Cập nhật03/11 JST (CP066): [same-run distinctspawn/tranhitem](PROTOCOL.md#distinct-spawn-race) đã đo. Tiếp C2S118 stale/duplicate admission theo source/capture/control; không lặp scene/auth/cache/itemeffect. AUD020, audit kế CP068.
 
 
 ### Mục tiêu, baseline và phạm vi
@@ -37,13 +37,13 @@ với client Rust không chứng minh có thể điều khiển client KR bằng
 
 ### Tiến độ hiện hành theo bằng chứng
 
-| Task/mốc | Trạng thái tại CP065 | Nguồn chuẩn |
+| Task/mốc | Trạng thái tại CP066 | Nguồn chuẩn |
 |---|---|---|
 | KRE-004/issue6 | Đã review/merge PR7 và đóng issue:recipe r1 đến local accept;không phải full K1 | [Wine r1](evidence/wine/README.md) |
 | Bootstrap reply | PR8 đã merge;debugger ProcessPatchreturn1,không ép success | [bootstrap evidence](evidence/bootstrap-wire/README.md) |
 | KRE-005a/issue9,R2 | PR10 đã merge:3 cold start cửa sổ/second accept;issue9 còn mở | [R2 evidence](evidence/wine-r2/README.md) |
 | WCP hai-reply | Run CP001 là lịch sử chưa C→S; CP006 đã đo request đầu trên copy tham số hóa | [PROTOCOL](PROTOCOL.md#wcp),[WCP evidence](evidence/wcp/README.md) |
-| KRE-005b/issue14 | CP006–064 đã merge; CP065 distinctspawn tự kiểm/tích hợp theo [PR91](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/91); fullround/authority/full auth còn mở | [Q-023](RESEARCH.md#q-023), [service](evidence/probe-service/README.md) |
+| KRE-005b/issue14 | CP006–065 đã merge; CP066 distinctspawn race tự kiểm/tích hợp theo [PR93](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/93); fullround/authority/full auth còn mở | [Q-023](RESEARCH.md#q-023), [service](evidence/probe-service/README.md) |
 | K0/K1 | Chưa nghiệm thu toàn gate;Windows vanilla/control ownership và các điều kiện còn thiếu giữ mở | Gate dưới,[Q-022](RESEARCH.md) |
 | K2a/K2 | Primitive/WCP, CP057stream native/model và CP058–060authcallback137/135/errors0 đã có; fullcodec/authauthority/reconnect và gate chưa pass | [PROTOCOL](PROTOCOL.md#login-auth),[Q-023](RESEARCH.md#q-023) |
 | K3 | Copy đã vẽUI/đóngnotice, A/B/Cprofile đọc sạch và mộtnamedcachewarm được nhận; identityauthority/toàncache/codec/K3 chưa nghiệm thu | [Contract sảnh](PROTOCOL.md#channel-lobby) |
@@ -60,13 +60,14 @@ KRE-005b/issue14 vẫn mở. Các bước dưới là **thứ tự ưu tiên**, 
 xong checkpoint/commit/PR thì chuyển ngay việc kế tiếp trong thứ tự này, không tự dừng/chờ nhắc.
 Một blocker chỉ kết thúc nhánh đo tương ứng; ghi rõ rồi tiếp việc độc lập có thể làm, không tự đóng gate.
 
-1. **KR-F002/X002/S001 — cùng-run consistency trên distinctspawn:** [CP065](PROTOCOL.md#distinct-spawn)
-   đã trả lời mapspawn/reset; không RE lại loader/auth/cache/t/k. Tiếp khoảng trống còn chặn nghiệm thu:
-   tranh cùngindex trên distinctspawn và hai vòng trong một run, tái dùng CP030/062actualtwo124/
-   deliveryhold/nativeeffect/reset. Dùng item giữa đường hai spawn nếu cần theo layout582 đã biết;
-   chỉ đổi datafixture có nguồn, lấy actual124 quyết định cảhai writer, không đoán từ thời gian giữphím.
-   Giữ kết quả partial nếu không có competingreport; không biến2rank/encoder/frameCRC thành K6a.
-   Chain liền kề khác owner ở CP064 vẫn mở, chỉ mở lại khi bố trí/probe có điều kiện mới rõ.
+1. **KR-F004/X002/S001 — C→S118 admission:** [CP066](PROTOCOL.md#distinct-spawn-race) đã đo cùngrun
+   tranhitem/distinctspawn/two-cycle. Điểm code có thể làm nhân bom: receive118 chỉ kiểm owner/flag,
+   chưa so firstu32 theo keyhiện hành và chưa chặn duplicate trước ID/timer. Tái dùng CP025/041/043/
+   CP055/nativewriter cache/VN và actual118 củaCP065/066, tách C2Srequest với S2Cconfirmation.
+   Kiểm actualfirstfield/serial/order/lifetime, minimalold/duplicate dispatchercontrol và nativepeer
+   consequence trước policy hẹp; nếu body replay bỏ quaframer thì ghi rõ không TCPproof.
+   Chỉ thêm guard có nguồn, không mặc định firstu32 là auth hoặc serialluônmonotonic/khôngwrap.
+   Không lặp t124/auth/cache/nativeitemwriter hay mở mọi race trước integration.
 2. **KR-B003/KR-F006 — nợ có giới hạn:** [CP057](PROTOCOL.md#codec-stream-boundaries) đã đo stream/
    seq/bounds trong model, không mở lại76split hoặc cấp buffer lớn chỉ để vượt allocationguardFFFFFFFF.
    Full modes/prefix guard/live reset, distance/auth/transport/kim-cứu của reportguard giữ trong RESEARCH;

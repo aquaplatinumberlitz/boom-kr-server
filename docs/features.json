@@ -1,7 +1,7 @@
 {
   "schema": "kre-feature-index-v1",
   "build": "KR00967",
-  "as_of": "2026-11-03 JST / CP065; self-check; integration via PR91; nextauditCP068",
+  "as_of": "2026-11-03 JST / CP066; self-check; integration via PR93; nextauditCP068",
   "sources": {
     "plan": "docs/PLAN.md",
     "contract": "docs/PROTOCOL.md",
@@ -1457,7 +1457,8 @@
           "docs/evidence/pickup-time/README.md",
           "docs/evidence/pickup-state/README.md",
           "docs/evidence/current-pair-round/README.md",
-          "docs/evidence/current-pickup-race/README.md"
+          "docs/evidence/current-pickup-race/README.md",
+          "docs/evidence/distinct-spawn-race/README.md"
         ]
       },
       "coverage": {
@@ -1498,7 +1499,8 @@
               "docs/evidence/pickup-time/README.md",
               "docs/evidence/pickup-state/README.md",
               "docs/evidence/current-pair-round/README.md",
-              "docs/evidence/current-pickup-race/README.md"
+              "docs/evidence/current-pickup-race/README.md",
+              "docs/evidence/distinct-spawn-race/README.md"
             ]
           },
           "windows_original": {
@@ -1531,7 +1533,8 @@
             "docs/evidence/stale124/README.md",
             "docs/evidence/pickup-state/README.md",
             "docs/evidence/current-pair-round/README.md",
-            "docs/evidence/current-pickup-race/README.md"
+            "docs/evidence/current-pickup-race/README.md",
+            "docs/evidence/distinct-spawn-race/README.md"
           ]
         },
         "gate": {
@@ -2379,7 +2382,8 @@
           "docs/evidence/current-pair-round/README.md",
           "docs/evidence/current-pickup-race/README.md",
           "docs/evidence/report127-freshness/README.md",
-          "docs/evidence/distinct-spawn/README.md"
+          "docs/evidence/distinct-spawn/README.md",
+          "docs/evidence/distinct-spawn-race/README.md"
         ]
       },
       "coverage": {
@@ -2415,7 +2419,8 @@
               "docs/evidence/current-pair-round/README.md",
               "docs/evidence/current-pickup-race/README.md",
               "docs/evidence/report127-freshness/README.md",
-              "docs/evidence/distinct-spawn/README.md"
+              "docs/evidence/distinct-spawn/README.md",
+              "docs/evidence/distinct-spawn-race/README.md"
             ]
           },
           "windows_original": {
@@ -2451,7 +2456,8 @@
             "docs/evidence/current-pair-round/README.md",
             "docs/evidence/current-pickup-race/README.md",
             "docs/evidence/report127-freshness/README.md",
-            "docs/evidence/distinct-spawn/README.md"
+            "docs/evidence/distinct-spawn/README.md",
+            "docs/evidence/distinct-spawn-race/README.md"
           ]
         },
         "gate": {
@@ -2603,7 +2609,8 @@
           "docs/evidence/current-pickup-race/README.md",
           "docs/evidence/report127-freshness/README.md",
           "docs/evidence/mixed-owner-chain/README.md",
-          "docs/evidence/distinct-spawn/README.md"
+          "docs/evidence/distinct-spawn/README.md",
+          "docs/evidence/distinct-spawn-race/README.md"
         ]
       },
       "coverage": {
@@ -2642,7 +2649,8 @@
               "docs/evidence/current-pickup-race/README.md",
               "docs/evidence/report127-freshness/README.md",
               "docs/evidence/mixed-owner-chain/README.md",
-              "docs/evidence/distinct-spawn/README.md"
+              "docs/evidence/distinct-spawn/README.md",
+              "docs/evidence/distinct-spawn-race/README.md"
             ]
           },
           "windows_original": {
@@ -2695,7 +2703,8 @@
             "docs/evidence/current-pickup-race/README.md",
             "docs/evidence/report127-freshness/README.md",
             "docs/evidence/mixed-owner-chain/README.md",
-            "docs/evidence/distinct-spawn/README.md"
+            "docs/evidence/distinct-spawn/README.md",
+            "docs/evidence/distinct-spawn-race/README.md"
           ]
         },
         "gate": {

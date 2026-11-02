@@ -1,7 +1,7 @@
 {
   "schema": "kre-checkpoints-v1",
-  "last_id": "CP065",
-  "completed_count": 65,
+  "last_id": "CP066",
+  "completed_count": 66,
   "audit_interval": 4,
   "last_periodic_audit": 64,
   "next_periodic_audit": "CP068",
@@ -134455,6 +134455,1306 @@
           "reason": "CP065distinctnativeABspawn/resetcurrentprofile/exportdefault+overlapRE;nextdistinctrace,limitsnogatepromotion."
         }
       ]
+    },
+    {
+      "id": "CP066",
+      "previous": "CP065",
+      "lifecycle": "complete",
+      "recorded_utc": "2026-11-02T16:30:50.352783+00:00",
+      "context_commit": "fbdf5f32bd44ddc347c21fad362a7532277682ef",
+      "question": "Can actualtwo124 contest same midpoint floorindex on distinctspawn currentABprofile across2cycles,onewinner/statbothviews/reset?",
+      "scope": "KRE-029/#92. ReuseCP030Down-Up1s/midpoint/CP062hold1652s/CP065distinctprofile/nativeoracles. Only582floor/catalogrow4→6,index17kind2same; productionclaim/key/reportguard unchanged. OneisolatedABrun,4actual124,2cycles,errors0. No newnativebody/patch/servicecode. AUD020nextCP068;nextC2S118admission source/control.",
+      "owner": "Codex",
+      "reviewer": "Codex",
+      "artifacts": [
+        {
+          "name": "CA-r2-login-logout.exe",
+          "sha256": "660447c293ce92270cb9b5815331bca976e8f156366e1fe50b217b6c12e60ce3"
+        },
+        {
+          "name": "CA-r2-stage-social.exe",
+          "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+        },
+        {
+          "name": "CA-r2-stage-social.exe Bcopy",
+          "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+        },
+        {
+          "name": "modO.bin",
+          "sha256": "a08950c833d3acab8281049def7b3dc96b221f107eeda01da3a548e34b91dce5"
+        },
+        {
+          "name": "CA-r2-stage-social.exe Ccopy",
+          "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+        }
+      ],
+      "locators": [
+        "distinct-race 2026-11-02T16:24:54Z runSHAf6456a6e76847ed0230973828c08a898eabe0d82a46dbf7390f0cd228531c040",
+        "Actual4TCP124row6col3index17kind2/keys12345,12346;Afirstbothrounds/Brejected;2positive165slot0perreceiver;RollerA5→6/B4 bothviews/reset",
+        "Native11ED590onefloorrecord/16inner/counts1,0,0;clockA120159/B120399bothviewsbothrounds;runtimee9bb47/static660447/modOa08950rawbase400000,RVA=VA-400000"
+      ],
+      "findings": [
+        {
+          "summary": "FouractualTCP124currentkeys/sameindex bothroles/bothrounds;firstarrivalAeachroundwins,loserBclaimrejected/noconfirm/statdelta. One165eachreceiver/slot0,RollerA5→6/B4samebothviews/round2resetA5B4.",
+          "source": "kr_runtime",
+          "status": "confirmed",
+          "method": "runtime",
+          "canonical": "docs/PROTOCOL.md#distinct-spawn-race",
+          "limits": "Winecopy/currentprofile41/spawn0/1,midpointfloorplacementdesign,delivery1652smeasurementperturbation. Actualfirstarrivalpolicy,notoriginalarbitration/exactsametick/fairness/auth/distance/fullreset/K5/K6a/LANInternet. Nativeheap/receiver/gettercountermodels emulationonly.",
+          "evidence": [
+            "E095",
+            "E003",
+            "E042"
+          ]
+        },
+        {
+          "summary": "SameAB8connections/distinctspawn nativeclockresetbothviews/rounds;twoA118ID1→2/159158/17/19→B170/B21/Astate1bothbefore175/tworesult/return/roomrefresh;controller/service/probeerrors0.",
+          "source": "kr_runtime",
+          "status": "confirmed",
+          "method": "runtime",
+          "canonical": "docs/PROTOCOL.md#distinct-spawn-race",
+          "limits": "Winecopy/currentprofile41/spawn0/1,midpointfloorplacementdesign,delivery1652smeasurementperturbation. Actualfirstarrivalpolicy,notoriginalarbitration/exactsametick/fairness/auth/distance/fullreset/K5/K6a/LANInternet. Nativeheap/receiver/gettercountermodels emulationonly.",
+          "evidence": [
+            "E095",
+            "E019",
+            "E003",
+            "E042"
+          ]
+        },
+        {
+          "summary": "Midpoint582knownlayout/counts1,0,0/16inner/record17,6,3,2 verifiednative11ED590;badCRC/partialrejected. Onlydatafixtureandcatalogrowchange,40alias/spawn/profileunchanged,no nativeconsumerRE.",
+          "source": "kr_static",
+          "status": "confirmed",
+          "method": "emulation",
+          "canonical": "docs/PROTOCOL.md#distinct-spawn-race",
+          "limits": "Winecopy/currentprofile41/spawn0/1,midpointfloorplacementdesign,delivery1652smeasurementperturbation. Actualfirstarrivalpolicy,notoriginalarbitration/exactsametick/fairness/auth/distance/fullreset/K5/K6a/LANInternet. Nativeheap/receiver/gettercountermodels emulationonly.",
+          "evidence": [
+            "E021",
+            "E031"
+          ]
+        },
+        {
+          "summary": "Outgoingpositive165deliveryheld2s only asCP062,serializedclaim/consumecurrentkey/reportguardunmodified. Placement/fuse/rank/authfixturedesign;notoriginalarbitration/latency. Nextsourcegap C2S118 admission notyet runtimeconfirmed.",
+          "source": "design",
+          "status": "design",
+          "method": "design",
+          "canonical": "docs/PROTOCOL.md#distinct-spawn-race",
+          "limits": "Winecopy/currentprofile41/spawn0/1,midpointfloorplacementdesign,delivery1652smeasurementperturbation. Actualfirstarrivalpolicy,notoriginalarbitration/exactsametick/fairness/auth/distance/fullreset/K5/K6a/LANInternet. Nativeheap/receiver/gettercountermodels emulationonly.",
+          "evidence": [
+            "E039",
+            "E036"
+          ]
+        }
+      ],
+      "verification": [
+        {
+          "check": "1517relations/hash/seal/source;777nativeframer/243packet/12native153/408secure;native58216bytes;7catalog/docs/artifacts5/5/diff/requiredlocalhistory;57server/18checkpointbaseline reusedunchangedproductioncode.",
+          "result": "pass",
+          "evidence": [
+            "E042",
+            "E006",
+            "E011",
+            "E005"
+          ],
+          "limits": "No forcedwinnerreversal;actualraceproofinscope/delayperturbation,notgate/semanticorindependentreviewcertificate."
+        }
+      ],
+      "evidence": [
+        {
+          "id": "E001",
+          "kind": "repository",
+          "path": "docs/evidence/distinct-spawn-race/README.md",
+          "bytes": 4274,
+          "sha256": "c1a615c5bba7fd41d4a3a4e989975ff04a08ab53e8b98619d437507415737fd0"
+        },
+        {
+          "id": "E002",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-race-r1/153-check.txt",
+          "bytes": 23,
+          "sha256": "c78b0c88107aa4deac39d540ca3f97a944aa1706fe598478526d29ae3875f2a1"
+        },
+        {
+          "id": "E003",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-race-r1/actor-fields.json",
+          "bytes": 275910,
+          "sha256": "0362346d25c3a3e2b608b2593e901aed69f4b672f3db6a0f2f91521a1fb650cf"
+        },
+        {
+          "id": "E004",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-race-r1/append_checkpoint.py",
+          "bytes": 6570,
+          "sha256": "30a0baaeee7ea56983dac118462a5f0fdbd430beec477b6875eb5393f3c64f6a"
+        },
+        {
+          "id": "E005",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-race-r1/artifacts-check.txt",
+          "bytes": 253,
+          "sha256": "649c6624aa6d317dfc1db5e16fea683cfbc9d9cf4dd3df11c0d70e57409054a0"
+        },
+        {
+          "id": "E006",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-race-r1/catalog-tests.txt",
+          "bytes": 105,
+          "sha256": "d63b8e336d68e8ab9bef5d7ecab28cb8409efec64fdf971d87f0b516c7118de5"
+        },
+        {
+          "id": "E007",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-race-r1/derive_roles.py",
+          "bytes": 1034,
+          "sha256": "35023386ac40a12139fe011f1421358e46022fb2321396a5b35161f7919c2a0d"
+        },
+        {
+          "id": "E008",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-race-r1/distinct-race-hashes.json",
+          "bytes": 218110,
+          "sha256": "10fb0adfc0ecfa5e3b3820daeb60720279de94232ffc4af5bc65455a251c2205"
+        },
+        {
+          "id": "E009",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-race-r1/distinct-race-launcher.log",
+          "bytes": 119306,
+          "sha256": "36aa213695c3a22912002d7149f980beba012f02689310ff7257fa13628a74df"
+        },
+        {
+          "id": "E010",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-race-r1/distinct-race-recipe.json",
+          "bytes": 1026,
+          "sha256": "caea7080d2d4d08f018a17f5a556dfa74d181c63ee79daeb00fcef734a4214ff"
+        },
+        {
+          "id": "E011",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-race-r1/docs-check.txt",
+          "bytes": 174,
+          "sha256": "dfa745fb673be2faeb153108b051570ba868c3d8bc6931321e77baf86ab7894f"
+        },
+        {
+          "id": "E012",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-race-r1/fields-check.txt",
+          "bytes": 32,
+          "sha256": "fed09b5edd757844003c442f6d7d7a145afa6a67e735fbc72c32e6d6e18121b3"
+        },
+        {
+          "id": "E013",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-race-r1/floor582-fixture.json",
+          "bytes": 531,
+          "sha256": "19217c94ac43b1fd8cd415c2997ef509cf92163bc94b7f42756b0e3465ca491f"
+        },
+        {
+          "id": "E014",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-race-r1/floor582.bin",
+          "bytes": 64,
+          "sha256": "63d97f494ad981cb7637bbbaf7b07650f798d28897554f276e8ec0ff24d99f43"
+        },
+        {
+          "id": "E015",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-race-r1/framer-check.txt",
+          "bytes": 34,
+          "sha256": "85e77eb74ffdfffda59634bfa9000ba94465c72daf4d0083ba4cf3bbdc7085a7"
+        },
+        {
+          "id": "E016",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-race-r1/issue-body.md",
+          "bytes": 1111,
+          "sha256": "5ad332f03b7aa17df2fbb3b866f9b6c10b71a1f1e124cade1f1825106614e6d3"
+        },
+        {
+          "id": "E017",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-race-r1/layout-check.txt",
+          "bytes": 70,
+          "sha256": "f4d7667c64d287b5ffca35acebc6ccb3ba1973fe6c7341e8c9d349fa05e72a21"
+        },
+        {
+          "id": "E018",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-race-r1/lifecycle-check.txt",
+          "bytes": 442,
+          "sha256": "2ed3df808ef75b3f976825985c86ffcde4e3f42b7b5bdd275dc2af64ea28b535"
+        },
+        {
+          "id": "E019",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-race-r1/lifecycle-summary.json",
+          "bytes": 7826,
+          "sha256": "b0248a88a89db25158a08c0d809710a9e36909bb176b6a2537e702e4b60b568a"
+        },
+        {
+          "id": "E020",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-race-r1/native-153.json",
+          "bytes": 13805,
+          "sha256": "7182c7eb9e457070fc3fda36c3e39420a7459de8794fe90598171569acbbbc7b"
+        },
+        {
+          "id": "E021",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-race-r1/native-layout.json",
+          "bytes": 1255,
+          "sha256": "4d9beecc01a4ef44a75f37436bbd90a2a0c2c065e8eaa51fdbe5df8d57de6e68"
+        },
+        {
+          "id": "E022",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-race-r1/native-packets.json",
+          "bytes": 99705,
+          "sha256": "085a73d885c1bfe8620cb5897119f496f23f9b8a8368cb8da4e836363b845e2c"
+        },
+        {
+          "id": "E023",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-race-r1/native_153.py",
+          "bytes": 3545,
+          "sha256": "799ec0d0c62fac4242fddfcdbc3b10369024ddb90f1165b1baa994cc0ace87b9"
+        },
+        {
+          "id": "E024",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-race-r1/native_layout.py",
+          "bytes": 2369,
+          "sha256": "fa356eb27855f1bef679b6405895494b0649dfbb4a309f297cd64e0f6e47cfd7"
+        },
+        {
+          "id": "E025",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-race-r1/native_names.py",
+          "bytes": 2540,
+          "sha256": "05e40cfcd99689a079eb911a723b2e61fb9e7e809e551394bd1e3f486f31291d"
+        },
+        {
+          "id": "E026",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-race-r1/native_packets.py",
+          "bytes": 4837,
+          "sha256": "69e625fe37a7649a8d57cea35536093174023e432cbac6f24d3af488cb87ad9b"
+        },
+        {
+          "id": "E027",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-race-r1/packets-check.txt",
+          "bytes": 29,
+          "sha256": "7a98b39163a37bd2ad6ccc96040dc4cfa9b579027ef525b6686e347ecb6147ac"
+        },
+        {
+          "id": "E028",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-race-r1/parse_auth.py",
+          "bytes": 1279,
+          "sha256": "3fbaeabc1b436372d06a273a03cfcbdc671a9eea5f39e411ab5c0aa977bfaa05"
+        },
+        {
+          "id": "E029",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-race-r1/parse_fields.py",
+          "bytes": 3920,
+          "sha256": "da3853eccc5340d3de1052b9f9166d4ee7c6523e7e810293b1342d7ab14dab99"
+        },
+        {
+          "id": "E030",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-race-r1/parse_lifecycle.py",
+          "bytes": 2674,
+          "sha256": "b0f38f1046db5a714c329f014be48cea3b5e151221da822922865ad4ec3025b1"
+        },
+        {
+          "id": "E031",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-race-r1/preparation.json",
+          "bytes": 1381,
+          "sha256": "0bbbbdede95c819575432a75d50be74dbc320134a6977457f48597522f8b97fa"
+        },
+        {
+          "id": "E032",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-race-r1/prepare.py",
+          "bytes": 3838,
+          "sha256": "fb6bc544fc4607f70d563161f31d79333e2c4562bd62171c681023fb27306fdb"
+        },
+        {
+          "id": "E033",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-race-r1/profile.json",
+          "bytes": 10892,
+          "sha256": "6300094c7959e5b2edf6d691c09f851608351e71aaa0b647eec923ef6afa0c43"
+        },
+        {
+          "id": "E034",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-race-r1/race.gdb",
+          "bytes": 29433,
+          "sha256": "9110f5b8d61f80c80c5b8b8c149f8a2899aff1c824a8ef0723e20ea9cbf104a9"
+        },
+        {
+          "id": "E035",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-race-r1/replay-run.py",
+          "bytes": 3010,
+          "sha256": "78fdb18dd29346dc51976e0c82d72d2debc201e77ef51f2b93dbdc028f39c60b"
+        },
+        {
+          "id": "E036",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-race-r1/reuse-question.json",
+          "bytes": 5461,
+          "sha256": "b814e95fd41f7a4d9885808a55e2ebf9b4a6506ad9ce96f8f83a12bb405132ff"
+        },
+        {
+          "id": "E037",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-race-r1/reuse.py",
+          "bytes": 3415,
+          "sha256": "e4dc4835d0e4b0d02fea8cdff9f1299a6ea0634e5fb96d5c77b8f2dfee648ea4"
+        },
+        {
+          "id": "E038",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-race-r1/run_probe.py",
+          "bytes": 1082,
+          "sha256": "18c3a71374de32d9a38c2e5b623a0367b32e16b16336f09aba5ded21ca315923"
+        },
+        {
+          "id": "E039",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-race-r1/runtime_hold.py",
+          "bytes": 2098,
+          "sha256": "6dfd804931be44a338cf9adae7fc629dd4fcaa580b77719abe23edc7592b3efd"
+        },
+        {
+          "id": "E040",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-race-r1/seal_run.py",
+          "bytes": 633,
+          "sha256": "edfd61ebd37ec800394858e53aba10e5c0e080399dfe76141fdc4709d31a4ab7"
+        },
+        {
+          "id": "E041",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-race-r1/sync_docs.py",
+          "bytes": 6782,
+          "sha256": "8cd079b257a016c7e10d12b1536252583769920a69f859d88cdf09ae2f3edd9f"
+        },
+        {
+          "id": "E042",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-race-r1/verification.json",
+          "bytes": 2077,
+          "sha256": "a6e5450cf3b95e097d7a2612351308bfb0deaece3359a61666f9fe43378e42aa"
+        },
+        {
+          "id": "E043",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-race-r1/verify.py",
+          "bytes": 6079,
+          "sha256": "643dfc11e45b900167b519ef0fda6b2056581091daac640d727a26307e43f85f"
+        },
+        {
+          "id": "E044",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-race-r1/write_evidence.py",
+          "bytes": 4949,
+          "sha256": "9746f5e5e0575df412075bd570141a7caf7dcb1f87440114e5dfd3b65bd6adae"
+        },
+        {
+          "id": "E045",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-race-r1/cp066-snapshot/README.md",
+          "bytes": 3764,
+          "sha256": "109f99d303f3460888a8dac3c3e8baccd30559d3f9b44b5bed22bf7d98b5712e"
+        },
+        {
+          "id": "E046",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-race-r1/cp066-snapshot/docs/COVERAGE.md",
+          "bytes": 71824,
+          "sha256": "d57361cf5464c8b28b058e26cabf25664ae81233fc4cc627b9a01cac5ef3d71e"
+        },
+        {
+          "id": "E047",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-race-r1/cp066-snapshot/docs/PLAN.md",
+          "bytes": 30117,
+          "sha256": "48714a8bf4f587cc54711b3eed9b6369355023c3d9648ea13936ec19dceabfff"
+        },
+        {
+          "id": "E048",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-race-r1/cp066-snapshot/docs/PROTOCOL.md",
+          "bytes": 223095,
+          "sha256": "6608c02eea94263cb9cc4547a1c3377337f4e7441cf867acf04d1e77090172bd"
+        },
+        {
+          "id": "E049",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-race-r1/cp066-snapshot/docs/RESEARCH.md",
+          "bytes": 30452,
+          "sha256": "0324862d2d1c8cde4920bf475bc01a6bc043f2b0b7f650f0e1eb90585be6a035"
+        },
+        {
+          "id": "E050",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-race-r1/cp066-snapshot/docs/evidence/distinct-spawn-race/README.md",
+          "bytes": 4274,
+          "sha256": "c1a615c5bba7fd41d4a3a4e989975ff04a08ab53e8b98619d437507415737fd0"
+        },
+        {
+          "id": "E051",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-race-r1/cp066-snapshot/docs/features.json",
+          "bytes": 74563,
+          "sha256": "85e4795628947195ead11ba6e40087e967e733e251e101c654173533522cfe2d"
+        },
+        {
+          "id": "E052",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-race-r1/runtime-source/item_claims.py",
+          "bytes": 3340,
+          "sha256": "7990ae9195e9f8bba56b04101f352506194dbd0252793183993ce101a8674a2e"
+        },
+        {
+          "id": "E053",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-race-r1/runtime-source/probe_codec.py",
+          "bytes": 3227,
+          "sha256": "23ba54e6940953a52ff737e7e06b2761a8eb22eab444310b49b1d96efa12411d"
+        },
+        {
+          "id": "E054",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-race-r1/runtime-source/probe_room.py",
+          "bytes": 1468,
+          "sha256": "91292494d492c7851bd5432649adf528e1b07290316dc56ba1478f8a209a08bc"
+        },
+        {
+          "id": "E055",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-race-r1/runtime-source/probe_service.py",
+          "bytes": 34046,
+          "sha256": "fb970b77bd5a92f14ea999b1dcc91f0f8af1e0ced9df6379dcc6d8e7f6f946b1"
+        },
+        {
+          "id": "E056",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-race-r1/runtime-source/round_fence.py",
+          "bytes": 2339,
+          "sha256": "aabcc7f1d623573fc217de8df05403f83d82425bbe5d6e78872b3096a2d46708"
+        },
+        {
+          "id": "E057",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-race-r1/runtime-source/udp_round_keys.py",
+          "bytes": 1187,
+          "sha256": "db58ae1f25bcbeb52c2d25c7db6afbf1021ddd3af29702e756f5f41886530a0d"
+        },
+        {
+          "id": "E058",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-race-r1/derived/distinct-race-A/run.json",
+          "bytes": 105869,
+          "sha256": "f16182a655ae035eda5eadeda167d990953c94538df8db1b949f8ceacd40f32d"
+        },
+        {
+          "id": "E059",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-race-r1/derived/distinct-race-A-oracle.json",
+          "bytes": 180666,
+          "sha256": "f48fbd259f57aa1948faba96a810650f69c8ecc3c44ffdfaa285e16a68d71e99"
+        },
+        {
+          "id": "E060",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-race-r1/derived/distinct-race-A-replay.txt",
+          "bytes": 2965,
+          "sha256": "e88795d0e0dc8a980cdd9331d4c715f06cc4c055d8ac12d18e5899a16f0f33ca"
+        },
+        {
+          "id": "E061",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-race-r1/derived/distinct-race-B/run.json",
+          "bytes": 103845,
+          "sha256": "0788a67a1823d71c93252771f3bd0f33dc159b1e54c6713ea79a643c37e6554b"
+        },
+        {
+          "id": "E062",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-race-r1/derived/distinct-race-B-oracle.json",
+          "bytes": 182522,
+          "sha256": "0cf4faf6c9541923c83bd0696a23df6d928cc1e66ea598133d16cb7c1f41700b"
+        },
+        {
+          "id": "E063",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-race-r1/derived/distinct-race-B-replay.txt",
+          "bytes": 2993,
+          "sha256": "f42cb149ccd5bf77ed4457b192cbe87d669bc19e819219746d5aedfbba63d439"
+        },
+        {
+          "id": "E064",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-race-r1/request-frames/distinct-race/A-F101-118.bin",
+          "bytes": 60,
+          "sha256": "d0260a65d281ed13509170370237b5f5c567564c87608847519463869a2c48c6"
+        },
+        {
+          "id": "E065",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-race-r1/request-frames/distinct-race/A-F105-127.bin",
+          "bytes": 70,
+          "sha256": "a0471b4aeaed227bd47f960baf978dc22bf429cb2798a1512685f99b6d5d98d9"
+        },
+        {
+          "id": "E066",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-race-r1/request-frames/distinct-race/A-F110-127.bin",
+          "bytes": 67,
+          "sha256": "521a0effafc727473bc6ec5f778ff330a68d19579fc18bdc4429bc0c94ab6a82"
+        },
+        {
+          "id": "E067",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-race-r1/request-frames/distinct-race/A-F39-99.bin",
+          "bytes": 61,
+          "sha256": "06c6ba65556984a3d08379628314dfda3013d9b51ebbbe87bb72eca4d3a7f23c"
+        },
+        {
+          "id": "E068",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-race-r1/request-frames/distinct-race/A-F50-124.bin",
+          "bytes": 57,
+          "sha256": "0a5809c126f13667b9458c4e9099a963175d14dddf5bb442b9f0f54debd6fcdb"
+        },
+        {
+          "id": "E069",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-race-r1/request-frames/distinct-race/A-F55-118.bin",
+          "bytes": 60,
+          "sha256": "d30eca5518ca51cc736ca0ef9aadd7b4e5566cf4c30049eaf0c2c80f19802562"
+        },
+        {
+          "id": "E070",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-race-r1/request-frames/distinct-race/A-F60-127.bin",
+          "bytes": 70,
+          "sha256": "6eb0ebb62dbefb5d53689d8dbfa980e324d8d71aafdcdecd63b559809a93c16a"
+        },
+        {
+          "id": "E071",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-race-r1/request-frames/distinct-race/A-F64-127.bin",
+          "bytes": 67,
+          "sha256": "9050f8c8b26e6164c1c9f7a7cdd93233b304c48c53bdc187523cacf6273a1fa8"
+        },
+        {
+          "id": "E072",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-race-r1/request-frames/distinct-race/A-F85-99.bin",
+          "bytes": 61,
+          "sha256": "dee5d2eb979aa096d39c1e11c86ab28d1406e34b3edbef0fbdfce84edf4fe628"
+        },
+        {
+          "id": "E073",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-race-r1/request-frames/distinct-race/A-F96-124.bin",
+          "bytes": 57,
+          "sha256": "095ee7c7572547fd2a7426c9b69d9e30ed934329e5ab1ea0841ee65a3fc378d1"
+        },
+        {
+          "id": "E074",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-race-r1/request-frames/distinct-race/B-F102-127.bin",
+          "bytes": 52,
+          "sha256": "86763d391d4ab1c44dcb721d8d9b0cb6ea577fd7dcd1160784659b9ed3d0d793"
+        },
+        {
+          "id": "E075",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-race-r1/request-frames/distinct-race/B-F104-127.bin",
+          "bytes": 52,
+          "sha256": "6f2c098d452e58a9748ae051ad0445e249120db78268b9eae616678727b35f13"
+        },
+        {
+          "id": "E076",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-race-r1/request-frames/distinct-race/B-F106-127.bin",
+          "bytes": 52,
+          "sha256": "d0e9b49f8d2c7d6bdb211bfda4f9b7fa4eb69a02e42ceea33504f749705173d4"
+        },
+        {
+          "id": "E077",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-race-r1/request-frames/distinct-race/B-F107-127.bin",
+          "bytes": 52,
+          "sha256": "fb64297d8f944a660ca4c9e49b4ca1dce03a306493efbdb80cb45c2f3ccba32c"
+        },
+        {
+          "id": "E078",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-race-r1/request-frames/distinct-race/B-F108-127.bin",
+          "bytes": 52,
+          "sha256": "75e5832ce2f692a394c319ba6341c57c46d45e9a38d95890acab5f3198df0fd0"
+        },
+        {
+          "id": "E079",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-race-r1/request-frames/distinct-race/B-F110-127.bin",
+          "bytes": 52,
+          "sha256": "c7cea9e46c6933da6259c91729693b25e03825d4aa22ea16ea04715729a44e16"
+        },
+        {
+          "id": "E080",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-race-r1/request-frames/distinct-race/B-F111-127.bin",
+          "bytes": 52,
+          "sha256": "4edd0dafc919cf83b383c3a9a17506981b981b91e72612f2c9bb03a1eb14de9a"
+        },
+        {
+          "id": "E081",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-race-r1/request-frames/distinct-race/B-F12-82.bin",
+          "bytes": 49,
+          "sha256": "27d13b13f8df5db1f67451352419d49458641283683b06d40bc91f6c3f7220e7"
+        },
+        {
+          "id": "E082",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-race-r1/request-frames/distinct-race/B-F23-95.bin",
+          "bytes": 98,
+          "sha256": "41ec7cfe284ac427205c3029e41fd807814e254b6f15c4c80abea2e30c47b7d1"
+        },
+        {
+          "id": "E083",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-race-r1/request-frames/distinct-race/B-F28-99.bin",
+          "bytes": 61,
+          "sha256": "c3f29c35c0d228262bbfdc1bdc27076ec04bd6654a3fb0c886cc9bf0b7fdb838"
+        },
+        {
+          "id": "E084",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-race-r1/request-frames/distinct-race/B-F39-124.bin",
+          "bytes": 57,
+          "sha256": "114ffc1d7129a0c190e8b514a18f6112477c7cc01583aa3f99c84ed0ef30e913"
+        },
+        {
+          "id": "E085",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-race-r1/request-frames/distinct-race/B-F52-127.bin",
+          "bytes": 52,
+          "sha256": "788dd9c60de546519abdfffc0cc0a3dc5b8292048a0d0bd74a13b095e7f7f64e"
+        },
+        {
+          "id": "E086",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-race-r1/request-frames/distinct-race/B-F53-127.bin",
+          "bytes": 52,
+          "sha256": "4e025fac15c650b09e743764d0c8008e7d1f6575237374ddefa77ccd83b87255"
+        },
+        {
+          "id": "E087",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-race-r1/request-frames/distinct-race/B-F54-127.bin",
+          "bytes": 52,
+          "sha256": "c434c92953bcc1023cab8e1c26b9725c50f9ec69654a225826e31fdb06f6c692"
+        },
+        {
+          "id": "E088",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-race-r1/request-frames/distinct-race/B-F55-127.bin",
+          "bytes": 52,
+          "sha256": "f8b1a222f2f70048e698c9617c7cde0716e3f9fbef5ed689dd9f85ce029cf6ff"
+        },
+        {
+          "id": "E089",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-race-r1/request-frames/distinct-race/B-F57-127.bin",
+          "bytes": 52,
+          "sha256": "bc13307914fc5f6d099a76c816879de7e95fe770fd577f4a0b554c00db2363dd"
+        },
+        {
+          "id": "E090",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-race-r1/request-frames/distinct-race/B-F59-127.bin",
+          "bytes": 52,
+          "sha256": "fbabfc5aa33f7dddaece21846b79e4609cf8fc6269c0077299b525688fbdb97e"
+        },
+        {
+          "id": "E091",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-race-r1/request-frames/distinct-race/B-F60-127.bin",
+          "bytes": 52,
+          "sha256": "2be5b2091971600ccdbeb006ce7e4976a1b097519adfbfb19fb4b799d10e35b3"
+        },
+        {
+          "id": "E092",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-race-r1/request-frames/distinct-race/B-F73-95.bin",
+          "bytes": 382,
+          "sha256": "dbaadaaa21c9cd0feac4a48bf5392f47b25f3762cdae71276e8005215a609927"
+        },
+        {
+          "id": "E093",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-race-r1/request-frames/distinct-race/B-F79-99.bin",
+          "bytes": 61,
+          "sha256": "cabccdb5856805849c02dc9d2ef0cd6019b5b18e39695a5621225fc906cec1e7"
+        },
+        {
+          "id": "E094",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-race-r1/request-frames/distinct-race/B-F91-124.bin",
+          "bytes": 57,
+          "sha256": "c02ac96b6ff8895e718f97a47babc3e7468b944b792884f12128b629d93f895d"
+        },
+        {
+          "id": "E095",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-race-r1/distinct-race/run.json",
+          "bytes": 152098,
+          "sha256": "f6456a6e76847ed0230973828c08a898eabe0d82a46dbf7390f0cd228531c040"
+        },
+        {
+          "id": "E096",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-race-r1/distinct-race/client.log",
+          "bytes": 70662,
+          "sha256": "e1e6bbd2f1a37108120046d5d9708491188734a0cab24cd9666abc5a3bf5b1b0"
+        },
+        {
+          "id": "E097",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-race-r1/distinct-race/client-B.log",
+          "bytes": 97622,
+          "sha256": "6cf7d391cd2d7b52f324d4480ddf2a341437ddceff42e38e19e132f6bebe0637"
+        },
+        {
+          "id": "E098",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-race-r1/distinct-race/debug-commands.txt",
+          "bytes": 29433,
+          "sha256": "9110f5b8d61f80c80c5b8b8c149f8a2899aff1c824a8ef0723e20ea9cbf104a9"
+        },
+        {
+          "id": "E099",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-race-r1/distinct-race/debug-commands-B.txt",
+          "bytes": 29433,
+          "sha256": "9110f5b8d61f80c80c5b8b8c149f8a2899aff1c824a8ef0723e20ea9cbf104a9"
+        },
+        {
+          "id": "E100",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-race-r1/distinct-race/service-state.json",
+          "bytes": 156030,
+          "sha256": "6c9c10559eb2cbb6e189b1d9230da1f2be578614392e1025a0aecca9f08b64ee"
+        },
+        {
+          "id": "E101",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-race-r1/distinct-race/A-blast158-r1-1-97.bin",
+          "bytes": 51,
+          "sha256": "74e2de4a80eccc95ca075b6b7b315a7883176c212d7f752f47cb45a80c0122e3"
+        },
+        {
+          "id": "E102",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-race-r1/distinct-race/A-blast158-r2-2-136.bin",
+          "bytes": 51,
+          "sha256": "64d4c380a715c392025aa97ce4b91e3dcfcb01f4ee6596e3e32257b491d7ca6f"
+        },
+        {
+          "id": "E103",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-race-r1/distinct-race/A-dynamic159-r1-1-94.bin",
+          "bytes": 77,
+          "sha256": "566852e0305853f9d5aca332cd51d38b84ef4ca57d92b69c9d36a460913a735b"
+        },
+        {
+          "id": "E104",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-race-r1/distinct-race/A-dynamic159-r2-2-133.bin",
+          "bytes": 77,
+          "sha256": "70b2105ffde81bf37ff73f1b8b9447d9721510ed97ce70867479982044570a69"
+        },
+        {
+          "id": "E105",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-race-r1/distinct-race/A-floor582-115.bin",
+          "bytes": 64,
+          "sha256": "f12cc6c7243da5fc0449cafc3074b729419d963e60499ddf6d14798747f103b6"
+        },
+        {
+          "id": "E106",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-race-r1/distinct-race/A-floor582-76.bin",
+          "bytes": 64,
+          "sha256": "bacc62c71568e26c5dd7d838e67f3e7a59c91e3c13bacd418a8881b2a7ab9d1a"
+        },
+        {
+          "id": "E107",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-race-r1/distinct-race/A-go197-121.bin",
+          "bytes": 52,
+          "sha256": "3380c0c80d8faad72ca646a853ed917edd2f30fd0527e83e58ce731c40aa7b3f"
+        },
+        {
+          "id": "E108",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-race-r1/distinct-race/A-go197-82.bin",
+          "bytes": 52,
+          "sha256": "64b95010ecb0e40bc0367f41f6710d2357fb2538ce827e205825284601237ef8"
+        },
+        {
+          "id": "E109",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-race-r1/distinct-race/A-guest110-r1-109.bin",
+          "bytes": 44,
+          "sha256": "f300f7803c78018bc7bb0a99ff04bd200a6843d607915cb48c84b78b557b6a61"
+        },
+        {
+          "id": "E110",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-race-r1/distinct-race/A-guest110-r2-148.bin",
+          "bytes": 44,
+          "sha256": "df02d8a7984631a6c13646af10eae0def798bf3d6ac4691112817b04012efdb7"
+        },
+        {
+          "id": "E111",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-race-r1/distinct-race/A-host110-r1-106.bin",
+          "bytes": 44,
+          "sha256": "bbbf2539317016a757afed97a98b9103e3e64fa0b31dc96c0a3ff853c815818e"
+        },
+        {
+          "id": "E112",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-race-r1/distinct-race/A-host110-r2-145.bin",
+          "bytes": 44,
+          "sha256": "3f61445619e55a509cbcfc153858b6fb4a8529cba6b9bad57fe91aa05570c76b"
+        },
+        {
+          "id": "E113",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-race-r1/distinct-race/A-item165-r1-17-91.bin",
+          "bytes": 50,
+          "sha256": "5073e959083e1494a0d95f9539ce887f20520bc31e3e4b244c0167feffdebd3b"
+        },
+        {
+          "id": "E114",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-race-r1/distinct-race/A-item165-r2-17-130.bin",
+          "bytes": 50,
+          "sha256": "fa539eda72c78fb1524ec390d9672d5f7dcafa06acdbc6d9f0adcf7dbeca6056"
+        },
+        {
+          "id": "E115",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-race-r1/distinct-race/A-peer153-127.bin",
+          "bytes": 135,
+          "sha256": "238dd8f464e851dbc93cb1d8eaa7c5f2b5c16545273b3a9049eb0458822b3eca"
+        },
+        {
+          "id": "E116",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-race-r1/distinct-race/A-peer153-88.bin",
+          "bytes": 135,
+          "sha256": "2d84e4ab2452281a272dc3f6139c2192f22b517b9210921c661884eb035ee5a1"
+        },
+        {
+          "id": "E117",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-race-r1/distinct-race/A-play196-124.bin",
+          "bytes": 45,
+          "sha256": "e0f364fc0becf0a2a91327c1a33e299af37f1cecc00a26d40443c5bda58b1af4"
+        },
+        {
+          "id": "E118",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-race-r1/distinct-race/A-play196-85.bin",
+          "bytes": 45,
+          "sha256": "d04bf155b4847f9d41b0edfdf00a32526302273271c0f1cadbb8ce22b89eb51d"
+        },
+        {
+          "id": "E119",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-race-r1/distinct-race/A-rank175-r1-100.bin",
+          "bytes": 340,
+          "sha256": "5b3751f4c322454005652035ed69253cac647ed0fbc24540bd0599fa2bae6c31"
+        },
+        {
+          "id": "E120",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-race-r1/distinct-race/A-rank175-r2-139.bin",
+          "bytes": 340,
+          "sha256": "076e2ce52df3f3450801afd1e815de8afcccc048d94546b45cd74c50f03dd959"
+        },
+        {
+          "id": "E121",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-race-r1/distinct-race/A-ready110-112.bin",
+          "bytes": 44,
+          "sha256": "f31c5f5630019345dc62b5027f13c5267af82643ac2dbac979f0a454192b910e"
+        },
+        {
+          "id": "E122",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-race-r1/distinct-race/A-ready110-73.bin",
+          "bytes": 44,
+          "sha256": "8fafd9cf652b458ee09b3751a0201f9ab1409920398e0e842e43b915c8840e25"
+        },
+        {
+          "id": "E123",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-race-r1/distinct-race/A-return180-r1-103.bin",
+          "bytes": 41,
+          "sha256": "996ed34682d009d8977c2571e23c636f824049fb8d962426a9c2d903ed080200"
+        },
+        {
+          "id": "E124",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-race-r1/distinct-race/A-return180-r2-142.bin",
+          "bytes": 41,
+          "sha256": "7e2f2c7c886e57bc6ea6b82c1aaa41fa02ca04bcebdf5e725bb7531d97d17567"
+        },
+        {
+          "id": "E125",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-race-r1/distinct-race/A-start121-r1-79.bin",
+          "bytes": 167,
+          "sha256": "4d85d0786f484c579ef94cd61ceaa40997df93c39589d720ea8334bc9b5ca29f"
+        },
+        {
+          "id": "E126",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-race-r1/distinct-race/A-start121-r2-118.bin",
+          "bytes": 167,
+          "sha256": "114870f79c6ad77dc120564851285f2b8f63e558d1df95f13a2d8dbed22ec2b7"
+        },
+        {
+          "id": "E127",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-race-r1/distinct-race/B-blast158-r1-1-97.bin",
+          "bytes": 51,
+          "sha256": "74e2de4a80eccc95ca075b6b7b315a7883176c212d7f752f47cb45a80c0122e3"
+        },
+        {
+          "id": "E128",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-race-r1/distinct-race/B-blast158-r2-2-142.bin",
+          "bytes": 51,
+          "sha256": "b12c3fbe13bba6591e62ca40687ffe6a04b44a19ffbc64d48647cd6075c91ebc"
+        },
+        {
+          "id": "E129",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-race-r1/distinct-race/B-dynamic159-r1-1-94.bin",
+          "bytes": 77,
+          "sha256": "566852e0305853f9d5aca332cd51d38b84ef4ca57d92b69c9d36a460913a735b"
+        },
+        {
+          "id": "E130",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-race-r1/distinct-race/B-dynamic159-r2-2-139.bin",
+          "bytes": 77,
+          "sha256": "863b912df2ecdbc636ddaa7785397adce752b6eea6abfa6d02410a9b80a857dd"
+        },
+        {
+          "id": "E131",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-race-r1/distinct-race/B-event170-17-r1-100.bin",
+          "bytes": 48,
+          "sha256": "f057954e34f2e631e06553176e0d8fffc2b6e33c7beb6864dee15d900087ffcd"
+        },
+        {
+          "id": "E132",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-race-r1/distinct-race/B-event170-17-r2-145.bin",
+          "bytes": 48,
+          "sha256": "728e023f879202eeb8e57db43d8ee2062b0281608568a64555f5ac5aab8cf293"
+        },
+        {
+          "id": "E133",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-race-r1/distinct-race/B-event170-19-r1-103.bin",
+          "bytes": 59,
+          "sha256": "ffc999607c5d6d37cedb6d7e54d35c1d1d8b6223e6f15299460f61778fd3f1be"
+        },
+        {
+          "id": "E134",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-race-r1/distinct-race/B-event170-19-r2-148.bin",
+          "bytes": 59,
+          "sha256": "f517d100f50fb2109d0a7c9ed680b8dc3f7e4a192f13ab09e6a98c26bcbfbc99"
+        },
+        {
+          "id": "E135",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-race-r1/distinct-race/B-floor582-121.bin",
+          "bytes": 64,
+          "sha256": "296a52749c62efa4566c4cf6c75b16869195a08f8aa9cf437d99e81e04812d57"
+        },
+        {
+          "id": "E136",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-race-r1/distinct-race/B-floor582-76.bin",
+          "bytes": 64,
+          "sha256": "bacc62c71568e26c5dd7d838e67f3e7a59c91e3c13bacd418a8881b2a7ab9d1a"
+        },
+        {
+          "id": "E137",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-race-r1/distinct-race/B-go197-127.bin",
+          "bytes": 52,
+          "sha256": "4479c8d2bd5a138f8dd57f39fc717eabaade8d4273b394c5d4da4ac42a32ce22"
+        },
+        {
+          "id": "E138",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-race-r1/distinct-race/B-go197-82.bin",
+          "bytes": 52,
+          "sha256": "64b95010ecb0e40bc0367f41f6710d2357fb2538ce827e205825284601237ef8"
+        },
+        {
+          "id": "E139",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-race-r1/distinct-race/B-guest110-r1-115.bin",
+          "bytes": 44,
+          "sha256": "b9a562c345517aa67d96c51dfe93daedc56af471a1e386fd57cb165b0cee0bf1"
+        },
+        {
+          "id": "E140",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-race-r1/distinct-race/B-guest110-r2-160.bin",
+          "bytes": 44,
+          "sha256": "6e725be5eaf80cc30e3e51269018d224087c7b2b56713e255fbc72e8bb48e884"
+        },
+        {
+          "id": "E141",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-race-r1/distinct-race/B-host110-r1-112.bin",
+          "bytes": 44,
+          "sha256": "57460635dc0e9976e22e6b40d430710aab16e6a33c152be10c6a80b4564c3110"
+        },
+        {
+          "id": "E142",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-race-r1/distinct-race/B-host110-r2-157.bin",
+          "bytes": 44,
+          "sha256": "19ca60c86c873daa8df91c39edd61ebf3baafa3b8b4439c672d5dc049de76026"
+        },
+        {
+          "id": "E143",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-race-r1/distinct-race/B-item165-r1-17-91.bin",
+          "bytes": 50,
+          "sha256": "5073e959083e1494a0d95f9539ce887f20520bc31e3e4b244c0167feffdebd3b"
+        },
+        {
+          "id": "E144",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-race-r1/distinct-race/B-item165-r2-17-136.bin",
+          "bytes": 50,
+          "sha256": "c99a1f4257dfb2a5bdf4695d639a0e38ebcedbc5e97c1d1368cca5c29cbd1b2d"
+        },
+        {
+          "id": "E145",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-race-r1/distinct-race/B-peer153-133.bin",
+          "bytes": 135,
+          "sha256": "32ef4e81ef261fdada06e1f144c414f3f3bc3693965bf6f1f1d33b7efc0bac7c"
+        },
+        {
+          "id": "E146",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-race-r1/distinct-race/B-peer153-88.bin",
+          "bytes": 135,
+          "sha256": "56ca5526f00b012c6cf679115faf787b6913d742b136036fa29fbce0ce13b677"
+        },
+        {
+          "id": "E147",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-race-r1/distinct-race/B-play196-130.bin",
+          "bytes": 45,
+          "sha256": "13f2d542669df1a08be243989a4e70967313aab6c60971f9d235817f9240b651"
+        },
+        {
+          "id": "E148",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-race-r1/distinct-race/B-play196-85.bin",
+          "bytes": 45,
+          "sha256": "d04bf155b4847f9d41b0edfdf00a32526302273271c0f1cadbb8ce22b89eb51d"
+        },
+        {
+          "id": "E149",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-race-r1/distinct-race/B-rank175-r1-106.bin",
+          "bytes": 340,
+          "sha256": "af64696343b71bbddfcca524adcb34b3c8dd3b736f65508ac464a977c1810384"
+        },
+        {
+          "id": "E150",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-race-r1/distinct-race/B-rank175-r2-151.bin",
+          "bytes": 340,
+          "sha256": "a8f475739686a41b6fe6a6c6f2e2bceadcc320ea62dd0c7c8d819769e9fe05ee"
+        },
+        {
+          "id": "E151",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-race-r1/distinct-race/B-ready110-118.bin",
+          "bytes": 44,
+          "sha256": "6526e2f461589ee6ea8406ec75602e5c82bbf08353ee8d7d8b7f54952d1dac89"
+        },
+        {
+          "id": "E152",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-race-r1/distinct-race/B-ready110-73.bin",
+          "bytes": 44,
+          "sha256": "8fafd9cf652b458ee09b3751a0201f9ab1409920398e0e842e43b915c8840e25"
+        },
+        {
+          "id": "E153",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-race-r1/distinct-race/B-remove107-163.bin",
+          "bytes": 44,
+          "sha256": "018c8421718aaf84c501b8ca2f23d39e97750053b22c423b5101e2849cd4db83"
+        },
+        {
+          "id": "E154",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-race-r1/distinct-race/B-return180-r1-109.bin",
+          "bytes": 41,
+          "sha256": "b53daa3dda63e60a45282c346e337b4d3d97dd07a2ef4b33a42a147350601e54"
+        },
+        {
+          "id": "E155",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-race-r1/distinct-race/B-return180-r2-154.bin",
+          "bytes": 41,
+          "sha256": "6cfe760393700f6f5727536b029fbf72d8d3fcbd640b42da5887c4fe612b6389"
+        },
+        {
+          "id": "E156",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-race-r1/distinct-race/B-start121-r1-79.bin",
+          "bytes": 167,
+          "sha256": "4d85d0786f484c579ef94cd61ceaa40997df93c39589d720ea8334bc9b5ca29f"
+        },
+        {
+          "id": "E157",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-race-r1/distinct-race/B-start121-r2-124.bin",
+          "bytes": 167,
+          "sha256": "a0ced0d696374c0497a2cb2a20361b7eaa61a7321bc9dfaa57c97fc151fc588c"
+        },
+        {
+          "id": "E158",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-race-r1/distinct-race/B-survivor110-166.bin",
+          "bytes": 44,
+          "sha256": "dd924b4b2bec2ef2ad5e167f3e4df028f3e66365243aeca3e6718b3edf94c145"
+        },
+        {
+          "id": "E159",
+          "kind": "local",
+          "path": "local/research/codex/wine_probe_distinct_spawn_race.py",
+          "bytes": 41286,
+          "sha256": "6b3c396c640c0655daa8f029e5fee7368c4fe6c1e4cda0560b2a3f2552fed210"
+        }
+      ],
+      "delta": {
+        "added": [
+          "Samecurrentdistinctspawn2cycle/actualcontestedindex/oneeffectbothviews/reset withCP030knowninputmethod;nonewnativebody."
+        ],
+        "corrected": [
+          "CP065distinctracegap nowmeasuredinsame-run;CP062overlapraceprovenanceremainsseparate."
+        ],
+        "superseded": [
+          "NEXT-DISTINCT-SPAWN-RACEmeasuredinscope;nextC2S118stale/duplicateadmissionnotrepeatS2C159tests."
+        ]
+      },
+      "blockers": [
+        "C2S118sourcechecksowner/flagonlybeforeID/timer,firstfield/serialfreshness/dedupnotmeasured;minimalcontrolneedednotassumeauth/k124.",
+        "MixedowneradjacentCP064partial;fullmovement/auth/cache/codec/validator/reset/Windowsvanilla/K6a/LANInternet open."
+      ],
+      "next_steps": [
+        {
+          "id": "NEXT-DISTINCT-SPAWN-RACE",
+          "task": "KRE-005b",
+          "state": "superseded",
+          "action": "CP066same-rundistinctspawnactualrace/stat/resetmeasured;remainingauth/transport/fullacceptanceinRESEARCH.",
+          "owner": "Codex",
+          "reviewer": "Codex"
+        },
+        {
+          "id": "NEXT-C2S118-ADMISSION",
+          "task": "KRE-005b",
+          "state": "active",
+          "action": "ImmediatelyreuseCP025/041/043/055/writercache/VN/currentnative118 firstfield+serial/order/lifetime;minimalold/duplicatedispatchercontrol/nativepeer consequencebeforeguard. Notk124/authinferenceorS2C159replayequivalence. Boundedsource-backedpolicyonly.",
+          "owner": "Codex",
+          "reviewer": "Codex"
+        }
+      ],
+      "review": {
+        "status": "waived",
+        "as_of_utc": "2026-11-02T16:30:50.352783+00:00",
+        "reference": "docs/evidence/checkpoints/review-waiver.json",
+        "scope": "Codex solo RE/code/runtime/selfcheck, not independent approval.",
+        "authorization": {
+          "by": "project_owner",
+          "reference": "docs/evidence/checkpoints/review-waiver.json",
+          "reason": "Owner explicitly requested solo without Claude review."
+        }
+      },
+      "docs_sync": [
+        {
+          "path": "README.md",
+          "state": "updated",
+          "reason": "CP066currentdistinctspawnactual2writer/onewinner/stat/reset/same-run2cycles;nextC2S118admissiongap,limitsno gatepromotion."
+        },
+        {
+          "path": "docs/PLAN.md",
+          "state": "updated",
+          "reason": "CP066currentdistinctspawnactual2writer/onewinner/stat/reset/same-run2cycles;nextC2S118admissiongap,limitsno gatepromotion."
+        },
+        {
+          "path": "docs/PROTOCOL.md",
+          "state": "updated",
+          "reason": "CP066currentdistinctspawnactual2writer/onewinner/stat/reset/same-run2cycles;nextC2S118admissiongap,limitsno gatepromotion."
+        },
+        {
+          "path": "docs/RESEARCH.md",
+          "state": "updated",
+          "reason": "CP066currentdistinctspawnactual2writer/onewinner/stat/reset/same-run2cycles;nextC2S118admissiongap,limitsno gatepromotion."
+        },
+        {
+          "path": "docs/features.json",
+          "state": "updated",
+          "reason": "CP066currentdistinctspawnactual2writer/onewinner/stat/reset/same-run2cycles;nextC2S118admissiongap,limitsno gatepromotion."
+        },
+        {
+          "path": "docs/COVERAGE.md",
+          "state": "updated",
+          "reason": "CP066currentdistinctspawnactual2writer/onewinner/stat/reset/same-run2cycles;nextC2S118admissiongap,limitsno gatepromotion."
+        },
+        {
+          "path": "docs/evidence/distinct-spawn-race/README.md",
+          "state": "updated",
+          "reason": "CP066currentdistinctspawnactual2writer/onewinner/stat/reset/same-run2cycles;nextC2S118admissiongap,limitsno gatepromotion."
+        }
+      ]
     }
   ],
   "audits": [
@@ -134691,6 +135991,12 @@
       "state": "open",
       "canonical": "docs/PLAN.md",
       "reference": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/90"
+    },
+    {
+      "id": "KRE-029",
+      "state": "open",
+      "canonical": "docs/PLAN.md",
+      "reference": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/92"
     }
   ]
 }

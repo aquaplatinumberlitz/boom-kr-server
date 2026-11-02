@@ -1,6 +1,6 @@
 # KR 00967 — contract tương thích client gốc
 
-Revision kr-legacy-contract-r1; cập nhật03/11/2026 JST (CP065).
+Revision kr-legacy-contract-r1; cập nhật03/11/2026 JST (CP066).
 **Contract có bằng chứng từng phần; chưa nghiệm thu full codec K2**.
 Lộ trình và thứ tự task chỉ giữ ở [REWRITE_PLAN — KRE](PLAN.md).
 Đây là contract của repo server KR. ADR0009 của bản viết lại là nguồn lịch sử để so sánh;
@@ -2530,3 +2530,29 @@ Không tự migrate profileJSON cũ: export path mới rồi dùng hash. Đã đ
 chưa là B/C/accountresume/roster tổng quát hoặc chọn spawn ngẫu nhiên theo seed. Sourcebinary/pack/DB giữ.
 
 Giới hạn còn ở [RESEARCH](RESEARCH.md#gap-map-spawn-loading); thứ tự chỉ ở [PLAN](PLAN.md#current-order).
+
+<a id="distinct-spawn-race"></a>
+### Tranh item thật giữa hai spawn riêng — CP066
+
+**kr_runtime/confirmed hẹp**, [recipe/raw/hash](evidence/distinct-spawn-race/README.md).
+Tái dùng CP030 midpoint/Down-Up1s, CP062 claim/deliveryhold/nativeeffect, CP065 currentprofile/
+mapspawn0/1. Không thêm body native/patch/productionservicecode. Chỉ datafixture582 và catalog
+row4→6, giữ index17/col3/kind2; native11ED590 kiểm fullinner16/1floorrecord/2list rỗng, không dropalgorithm.
+
+NormalUI ADown/BUp1s qua barrier, không mintrequest; wrapper giữ outgoingpositive1652s nhưCP062,
+productionclaim/consume/currentkey/reportguard không đổi. Cùngrun8connections,2Start/clock và native
+spawn/reset A120159/B120399 cảhai view, hai key12345→12346. Mỗi vòng có **hai actualTCP124** cùng
+index17/row6/col3/kind2/currentkey trước delivery165. Firstarrival claim thắng một lần, loser không165;
+secureRoller chỉwinner+1 cảhai view, vòng2reset baseline A5/B4 trước nhặt mới. Winner/order cụ thể ở
+bảng evidence, không force đảo winner hoặc gọi đồng bộphím là cùng physicstick/fairnessservergốc.
+
+Sau165, normalUIBRight/Aspace cho hai bom/17/19→B170/B21/stateA1bothbefore175/hairesult/return/room.
+Đây là same-run integration của ca tranhitem/distinctspawn/two-cycle đã đo, không đủ fullmovement/
+transportcausality/actorauth/distancevalidator/fullreset/K6a/LAN/Internet. Delay2s là canthiệp đo;
+không suy productionlatency hoặc TCP replay admission. Wrapperdiscardqueued165khácgeneration chưa
+runtime riêng, policytiming/fuse/rank/placement/authfixture vẫn design.
+
+Điểm tiếp theo [PLAN](PLAN.md#current-order): C→S118 admission. Source service hiện kiểm boundowner/
+flag nhưng chưa so field0 với roundkey hoặc chặn duplicate report trước cấp ID/timer; chưa có control
+runtime cho hậu quả. Không dùng oldS→C159/158 CP025/041/043 thay proof C2S admission hoặc mang
+k124 sang118 chỉ vì giá trị giống; đối chiếu writer/capture và minimalcontrol trước khi chọn policy.
