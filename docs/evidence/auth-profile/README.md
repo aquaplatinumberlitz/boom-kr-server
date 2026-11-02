@@ -1,5 +1,7 @@
 # CP058 — Auth/profile string và đuôi đã đọc sạch
 
+Snapshot CP058: runtimeC135 và profile mới đã được kiểm ở [CP060](../../PROTOCOL.md#current-profile-c); next namedcache đã đo ở [CP059](../../PROTOCOL.md#dynamic-cache-representation). Theo PLAN cho công việc hiện hành.
+
 Baseline CP057/[PR75](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/75) merge `956f31b`;
 KRE-021/[issue76](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/76), Codex solo/tự kiểm,
 [review waived](../checkpoints/review-waiver.json); trạng thái tích hợp ở [PR77](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/77). [Contract](../../PROTOCOL.md#auth-profile),

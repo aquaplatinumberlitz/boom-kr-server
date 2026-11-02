@@ -1,11 +1,11 @@
 {
   "schema": "kre-checkpoints-v1",
-  "last_id": "CP059",
-  "completed_count": 59,
+  "last_id": "CP060",
+  "completed_count": 60,
   "audit_interval": 4,
-  "last_periodic_audit": 56,
-  "next_periodic_audit": "CP060",
-  "last_manual_audit": "AUD018",
+  "last_periodic_audit": 60,
+  "next_periodic_audit": "CP064",
+  "last_manual_audit": "AUD019",
   "checkpoints": [
     {
       "id": "CP001",
@@ -125820,6 +125820,1108 @@
           "reason": "CP059cachecontract/scope/CRCcorrection/newexportprofile andsolePLANnextCintegration;no gateadvance."
         }
       ]
+    },
+    {
+      "id": "CP060",
+      "previous": "CP059",
+      "lifecycle": "complete",
+      "recorded_utc": "2026-11-02T12:17:36.590110+00:00",
+      "context_commit": "6920ae2c53412adae84c33a17d3d543707375980",
+      "question": "Does realC with newauth135/compressedcacheprofile parse identity/name cleanly thenB/CStart/bomb/statepeer/result/return in one run?",
+      "scope": "KRE-023/#80. ReuseCP054prestartC3recipe/CP058fields/CP059cacheprofile,no newnativebody/patch/servicecode. OneisolatedABC12transports;nativeCauth135/errors0/name6,onecurrentB/Cround. FinalBresetafterroom documented. PeriodicAUD019CP060 complete,nextCP064;immediatelycontinuecurrentprofileA/Btwo-cycle perPLAN.",
+      "owner": "Codex",
+      "reviewer": "Codex",
+      "artifacts": [
+        {
+          "name": "CA-r2-login-logout.exe",
+          "sha256": "660447c293ce92270cb9b5815331bca976e8f156366e1fe50b217b6c12e60ce3"
+        },
+        {
+          "name": "CA-r2-stage-social.exe",
+          "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+        },
+        {
+          "name": "CA-r2-stage-social.exe Bcopy",
+          "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+        },
+        {
+          "name": "modO.bin",
+          "sha256": "a08950c833d3acab8281049def7b3dc96b221f107eeda01da3a548e34b91dce5"
+        },
+        {
+          "name": "CA-r2-stage-social.exe Ccopy",
+          "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+        }
+      ],
+      "locators": [
+        "current-C2026-11-02T12:07:06Z run039b652e2d21585dacba8f48e9341dfe0a618efd6d524fc1b3db96561dc3d9ab;profile41SHAf9afd7a330f8619fac1e479cd0f88013b731ae6a8e714922853bf57364c075aa",
+        "Runtimee9bb47/static660447/modOa08950rawbase400000,RVA=VA-400000;A/BprivateCP059/Cnewreflink",
+        "10FD540actualCcallback135/errors0/13B09E0ID3/C6KRNew;Cown106/82/95/B104;generation1key12345/BID2slot1/CID3slot0",
+        "B118ID1→159158/B17/19→C170/C21;52A350secureBstate1bothbefore175/180;14EF300typedblob/vector153",
+        "Bclosed1581642626520863 afterrefresh1581469727114208/finalphoto1581473724332669;controllerend1581643574591672(<1s),C EOF justbefore"
+      ],
+      "findings": [
+        {
+          "summary": "ActualA/B137/C135authcallbacks/errors0,ID1/2/3;nativeC2S6namesKRLocal/KRGuest/KRNew with81/81/79bytes andindependentnativeu16string. Cnewprofile isruntimeconfirmednow;knownfieldvaluesremaindesign/notrealaccountauth.",
+          "source": "kr_runtime",
+          "status": "confirmed",
+          "method": "runtime",
+          "canonical": "docs/PROTOCOL.md#current-profile-c",
+          "limits": "OneB/Ccycle/currentfixture41/diagnosticWine,notAaccountresume/generalroster/fullauth/cache/reset orK5/K6a/LAN. OldEOFtriggerreused,no control/newauthorityclaim. OneBreset finalcontrollerintervalpreserved,noterrorfreerun or gameplayrecoveryproof.",
+          "evidence": [
+            "E084",
+            "E006",
+            "E013",
+            "E041"
+          ]
+        },
+        {
+          "summary": "Cownmatch1/actual82/95/B104 afterknownAEOFbeforefirst;onegeneration1/key12345/currentB-Croster/BbombID1/17/19→C170/C21,secureactorBstate1bothbeforerank;175302/1803/errors0/room. No priorA/Bround/bomb/forfeit,not2matchgate.",
+          "source": "kr_runtime",
+          "status": "confirmed",
+          "method": "runtime",
+          "canonical": "docs/PROTOCOL.md#current-profile-c",
+          "limits": "OneB/Ccycle/currentfixture41/diagnosticWine,notAaccountresume/generalroster/fullauth/cache/reset orK5/K6a/LAN. OldEOFtriggerreused,no control/newauthorityclaim. OneBreset finalcontrollerintervalpreserved,noterrorfreerun or gameplayrecoveryproof.",
+          "evidence": [
+            "E084",
+            "E020",
+            "E003",
+            "E041"
+          ]
+        },
+        {
+          "summary": "One finalserviceerrorBconn8ECONNRESET preserved; timestampafterreturn/refresh/finalphoto andwithin1scontrollerend,C EOFimmediatelybefore. No controller/probeexceptions,do notcallerrorfreerun/gameplaydisconnectrecovery. Verifierchangedfromblanketerrors0toexacterror+chronology,rawunchanged.",
+          "source": "kr_runtime",
+          "status": "confirmed",
+          "method": "runtime",
+          "canonical": "docs/PROTOCOL.md#current-profile-c",
+          "limits": "OneB/Ccycle/currentfixture41/diagnosticWine,notAaccountresume/generalroster/fullauth/cache/reset orK5/K6a/LAN. OldEOFtriggerreused,no control/newauthorityclaim. OneBreset finalcontrollerintervalpreserved,noterrorfreerun or gameplayrecoveryproof.",
+          "evidence": [
+            "E022",
+            "E084",
+            "E041"
+          ]
+        },
+        {
+          "summary": "Profile41currentbytes/sourcehashes,pureintegrationno newnativebody/clientpatch/servicecode;source/packDB intact;catalog/currentdocssynced/AUD019readraw. NextA/Btwo-cyclecurrentprofile,notrepeatCauth/EOF/cacheCRC.",
+          "source": "design",
+          "status": "design",
+          "method": "design",
+          "canonical": "docs/PROTOCOL.md#current-profile-c",
+          "limits": "OneB/Ccycle/currentfixture41/diagnosticWine,notAaccountresume/generalroster/fullauth/cache/reset orK5/K6a/LAN. OldEOFtriggerreused,no control/newauthorityclaim. OneBreset finalcontrollerintervalpreserved,noterrorfreerun or gameplayrecoveryproof.",
+          "evidence": [
+            "E036",
+            "E034",
+            "E005",
+            "E045"
+          ]
+        }
+      ],
+      "verification": [
+        {
+          "check": "1865relations/seals/sourcehash;759native actualframer cases;135nativepacket/6native153/210secure;7catalog/docs/artifacts5/5/diff/requiredlocalhistoryafterappend,periodicAUD019. BaselineCP05650server/18checkpoint reusedunchangedcode.",
+          "result": "pass",
+          "evidence": [
+            "E041",
+            "E024",
+            "E023",
+            "E003",
+            "E007",
+            "E017",
+            "E005"
+          ],
+          "limits": "Errorrecord1Bresetretainedwithtimestampchecks,nozeroerrorsclaim. Nativeheap/gettercountermodels emulationonly,noruntimeforcing. Auditselfcheckwaivednotindependentapproval/gate."
+        }
+      ],
+      "evidence": [
+        {
+          "id": "E001",
+          "kind": "repository",
+          "path": "docs/evidence/current-profile-c/README.md",
+          "bytes": 4436,
+          "sha256": "898dfae4a004465da5c01385f00192f00c3baa7f84fd50aa30efda8cc04d6d97"
+        },
+        {
+          "id": "E002",
+          "kind": "repository",
+          "path": "docs/evidence/checkpoints/audits/AUD019.json",
+          "bytes": 6069,
+          "sha256": "2a432687cb1cc208e45dea9d2096c118d99897415d600c39ec7ad7d2b98340b2"
+        },
+        {
+          "id": "E003",
+          "kind": "local",
+          "path": "local/research/codex/current-profile-c-r1/actor-fields.json",
+          "bytes": 140362,
+          "sha256": "f6a21a7795ec531627d4905398104a8e97030025b07863b46357c1865bac1440"
+        },
+        {
+          "id": "E004",
+          "kind": "local",
+          "path": "local/research/codex/current-profile-c-r1/append_checkpoint.py",
+          "bytes": 7883,
+          "sha256": "1ddd8444bf3dd20f0fcb1d6ee783f1714d60de2f707c9a8a914a2c33e9796ce0"
+        },
+        {
+          "id": "E005",
+          "kind": "local",
+          "path": "local/research/codex/current-profile-c-r1/artifacts-check.txt",
+          "bytes": 253,
+          "sha256": "649c6624aa6d317dfc1db5e16fea683cfbc9d9cf4dd3df11c0d70e57409054a0"
+        },
+        {
+          "id": "E006",
+          "kind": "local",
+          "path": "local/research/codex/current-profile-c-r1/auth-reads.json",
+          "bytes": 36400,
+          "sha256": "7e96167b366da789aaa58ef5cb810b079fe42da47cf1384876d31756c751dfcb"
+        },
+        {
+          "id": "E007",
+          "kind": "local",
+          "path": "local/research/codex/current-profile-c-r1/catalog-tests.txt",
+          "bytes": 105,
+          "sha256": "137df47ce7b59f50f4b0c1ee6db251e78490294d4a60654f913bbcfd83e05f0b"
+        },
+        {
+          "id": "E008",
+          "kind": "local",
+          "path": "local/research/codex/current-profile-c-r1/current-C-A-actual6.bin",
+          "bytes": 81,
+          "sha256": "2cfebd3ad9a4935bb144090c4244c67ec9200ca54d4a9da71ecef00004a8bdf4"
+        },
+        {
+          "id": "E009",
+          "kind": "local",
+          "path": "local/research/codex/current-profile-c-r1/current-C-B-actual6.bin",
+          "bytes": 81,
+          "sha256": "3faabdad6509fc688d8614823af347cc2cfa875256cdf9d02e0ff8ccaea3ea6e"
+        },
+        {
+          "id": "E010",
+          "kind": "local",
+          "path": "local/research/codex/current-profile-c-r1/current-C-C-actual6.bin",
+          "bytes": 79,
+          "sha256": "d4bc579d44b866c5cad199a2345e07752745076a223621bc610e659438d2f477"
+        },
+        {
+          "id": "E011",
+          "kind": "local",
+          "path": "local/research/codex/current-profile-c-r1/current-C-hashes.json",
+          "bytes": 330072,
+          "sha256": "c0edae6cfd8bf0d3945c18e24c5002b99b4f6be187dd2f441340f75baf6f7d4a"
+        },
+        {
+          "id": "E012",
+          "kind": "local",
+          "path": "local/research/codex/current-profile-c-r1/current-C-launcher.log",
+          "bytes": 84126,
+          "sha256": "d96f437cedf5c67e43d9117217fe82fc301aac1fe11d0af3e83f418f343cc5dd"
+        },
+        {
+          "id": "E013",
+          "kind": "local",
+          "path": "local/research/codex/current-profile-c-r1/current-C-native-names.json",
+          "bytes": 2058,
+          "sha256": "79597f10dbf7ee21c96ea2fdb0972bdfd1e2d8d72f7b66e6d21efa39bd45f26b"
+        },
+        {
+          "id": "E014",
+          "kind": "local",
+          "path": "local/research/codex/current-profile-c-r1/current-C-recipe.json",
+          "bytes": 1013,
+          "sha256": "cf87835790ece372463387c37ef56ffe8365eb852b51a4981a40a4b0398cb9a2"
+        },
+        {
+          "id": "E015",
+          "kind": "local",
+          "path": "local/research/codex/current-profile-c-r1/current.gdb",
+          "bytes": 29433,
+          "sha256": "9110f5b8d61f80c80c5b8b8c149f8a2899aff1c824a8ef0723e20ea9cbf104a9"
+        },
+        {
+          "id": "E016",
+          "kind": "local",
+          "path": "local/research/codex/current-profile-c-r1/derive_roles.py",
+          "bytes": 1032,
+          "sha256": "339bc3d8a1007949072b15cfe53a14c0390858c74972c4d5af1f7ffed573a314"
+        },
+        {
+          "id": "E017",
+          "kind": "local",
+          "path": "local/research/codex/current-profile-c-r1/docs-check.txt",
+          "bytes": 174,
+          "sha256": "9b9ae6b66da51772f2c304ced5ab0d4687d79c548ea9b626d97c550354c21f91"
+        },
+        {
+          "id": "E018",
+          "kind": "local",
+          "path": "local/research/codex/current-profile-c-r1/framer-replays.txt",
+          "bytes": 30,
+          "sha256": "4cd5d5e2bb78f09b1240ed185d5a0143db41605de444fe89b64ca736cee4cf66"
+        },
+        {
+          "id": "E019",
+          "kind": "local",
+          "path": "local/research/codex/current-profile-c-r1/issue-body.md",
+          "bytes": 823,
+          "sha256": "4ff9e6a2bf3320a7f86127a443704ee648464455e743385c50523a32dcaca4fc"
+        },
+        {
+          "id": "E020",
+          "kind": "local",
+          "path": "local/research/codex/current-profile-c-r1/lifecycle-summary.json",
+          "bytes": 10217,
+          "sha256": "b2dfde0cc03499ae9b534fd6bb6ef09d2a6e7eb10531781fa78a5d109df23a46"
+        },
+        {
+          "id": "E021",
+          "kind": "local",
+          "path": "local/research/codex/current-profile-c-r1/lifecycle.txt",
+          "bytes": 474,
+          "sha256": "a2269002076f9c84ab2be18b86410412c9febfd98ddce2888b8766571f508607"
+        },
+        {
+          "id": "E022",
+          "kind": "local",
+          "path": "local/research/codex/current-profile-c-r1/measurement-notes.json",
+          "bytes": 959,
+          "sha256": "2e9c399c64f20b9b4e2bc90e4b4d630d6c4e282219a0f99fc1c45bfc205cb29b"
+        },
+        {
+          "id": "E023",
+          "kind": "local",
+          "path": "local/research/codex/current-profile-c-r1/native-153.json",
+          "bytes": 6995,
+          "sha256": "1c720ae9e2eba83828a4e2e0dd63401d6ea6175d3e6be3a8921e026056a89097"
+        },
+        {
+          "id": "E024",
+          "kind": "local",
+          "path": "local/research/codex/current-profile-c-r1/native-packets.json",
+          "bytes": 50864,
+          "sha256": "171444ea83a302183d7f42851a9bef47ed645926203e97c6cbc10459ec37b626"
+        },
+        {
+          "id": "E025",
+          "kind": "local",
+          "path": "local/research/codex/current-profile-c-r1/native_153.py",
+          "bytes": 3536,
+          "sha256": "d45d00bf97f61880f9caf82dda00f8c66fb05df5760bc1f9844fb619e6b0bf0c"
+        },
+        {
+          "id": "E026",
+          "kind": "local",
+          "path": "local/research/codex/current-profile-c-r1/native_names.py",
+          "bytes": 2549,
+          "sha256": "b614331eac31369a2605fcce85f7a64a563b2feadbc2b1aa0a7ea781f4b3e180"
+        },
+        {
+          "id": "E027",
+          "kind": "local",
+          "path": "local/research/codex/current-profile-c-r1/native_packets.py",
+          "bytes": 4835,
+          "sha256": "f1f294128bc99c8b76a87e7b1769c81b709a85b2893665b54ba7df2b9a523906"
+        },
+        {
+          "id": "E028",
+          "kind": "local",
+          "path": "local/research/codex/current-profile-c-r1/packet-report.txt",
+          "bytes": 29,
+          "sha256": "e16c751e5f3db25c1f7c4ca9d760a3dcd96d8380fe6fcdd0f0115c4eac413411"
+        },
+        {
+          "id": "E029",
+          "kind": "local",
+          "path": "local/research/codex/current-profile-c-r1/parse_auth.py",
+          "bytes": 1277,
+          "sha256": "0966450e678abef1612de840b2a54ec4ff326d467df1d8f1ccb1acc501ced72b"
+        },
+        {
+          "id": "E030",
+          "kind": "local",
+          "path": "local/research/codex/current-profile-c-r1/parse_fields.py",
+          "bytes": 3918,
+          "sha256": "396eb21d57f73d76f7f0a4a69ae51a3e3875e0add89694f1c02a2fa06fe9e717"
+        },
+        {
+          "id": "E031",
+          "kind": "local",
+          "path": "local/research/codex/current-profile-c-r1/parse_lifecycle.py",
+          "bytes": 2672,
+          "sha256": "b74b203d3ef3129273721e4ab59f5d0083f55fdc1c872af6af3937e89cfb106d"
+        },
+        {
+          "id": "E032",
+          "kind": "local",
+          "path": "local/research/codex/current-profile-c-r1/prepare.py",
+          "bytes": 2280,
+          "sha256": "bc350b9146c11719fdcb33b2d78be398d3f6ec41a8d5697727c3b93d8ce8e800"
+        },
+        {
+          "id": "E033",
+          "kind": "local",
+          "path": "local/research/codex/current-profile-c-r1/private-copies.json",
+          "bytes": 1477,
+          "sha256": "fbe2c974ac5249244c0fffd16c8b89984911c2b124806181f28d2585e443c355"
+        },
+        {
+          "id": "E034",
+          "kind": "local",
+          "path": "local/research/codex/current-profile-c-r1/profile.json",
+          "bytes": 10856,
+          "sha256": "f9afd7a330f8619fac1e479cd0f88013b731ae6a8e714922853bf57364c075aa"
+        },
+        {
+          "id": "E035",
+          "kind": "local",
+          "path": "local/research/codex/current-profile-c-r1/replay-run.py",
+          "bytes": 3008,
+          "sha256": "89baebc99a23ca6529ebf6591c0ee905f94e73d6cabe37b88121f0b6e23f0e47"
+        },
+        {
+          "id": "E036",
+          "kind": "local",
+          "path": "local/research/codex/current-profile-c-r1/reuse-question.json",
+          "bytes": 4272,
+          "sha256": "f59b9ff7bb8eeec052de36969dc4d60b99287972084e1c86edd43395e4a3a45c"
+        },
+        {
+          "id": "E037",
+          "kind": "local",
+          "path": "local/research/codex/current-profile-c-r1/reuse.py",
+          "bytes": 2479,
+          "sha256": "1380e55da50525d212eead703cba58b62630bc3250266501a83fbdd7b51e26cf"
+        },
+        {
+          "id": "E038",
+          "kind": "local",
+          "path": "local/research/codex/current-profile-c-r1/run_probe.py",
+          "bytes": 1080,
+          "sha256": "b8a17228315866a3123594e82cb1dcf746e31f419b3a0c7b24ce98e007ecffce"
+        },
+        {
+          "id": "E039",
+          "kind": "local",
+          "path": "local/research/codex/current-profile-c-r1/seal_run.py",
+          "bytes": 631,
+          "sha256": "239cf8bf6f11cc7378e7bdac50feeaba57867ae44fd6db0c8366078661bb1143"
+        },
+        {
+          "id": "E040",
+          "kind": "local",
+          "path": "local/research/codex/current-profile-c-r1/sync_docs.py",
+          "bytes": 8477,
+          "sha256": "587bd515e67fb792a7c9f7ff60bd7be49f6ce8e3bdceb2a3ad5b54fdb228818e"
+        },
+        {
+          "id": "E041",
+          "kind": "local",
+          "path": "local/research/codex/current-profile-c-r1/verification.json",
+          "bytes": 852,
+          "sha256": "cd58c6d08e7a885475f97123eedbff4f3cfd671be2f2630a49c7b142e58e03ad"
+        },
+        {
+          "id": "E042",
+          "kind": "local",
+          "path": "local/research/codex/current-profile-c-r1/verify.py",
+          "bytes": 5602,
+          "sha256": "1cea368298bd8e15d325229ef2956ac2f1cacaeac52f213b580f9ff89356482a"
+        },
+        {
+          "id": "E043",
+          "kind": "local",
+          "path": "local/research/codex/current-profile-c-r1/cp060-snapshot/README.md",
+          "bytes": 3846,
+          "sha256": "97a9e63d134d0049337f992b45f52634ff3bce3a519dbc5b49eab0326c0402d7"
+        },
+        {
+          "id": "E044",
+          "kind": "local",
+          "path": "local/research/codex/current-profile-c-r1/cp060-snapshot/docs/COVERAGE.md",
+          "bytes": 67882,
+          "sha256": "ebdb829443fbb21a6a649a8a3ecdbe947bbd41f038b3d4ab1cf535c0692e6bdb"
+        },
+        {
+          "id": "E045",
+          "kind": "local",
+          "path": "local/research/codex/current-profile-c-r1/cp060-snapshot/docs/PLAN.md",
+          "bytes": 29897,
+          "sha256": "bb3a5bead9b7ba1e5f8a38df348f455fd81929f534d1b7e3fc3f936babf27c4b"
+        },
+        {
+          "id": "E046",
+          "kind": "local",
+          "path": "local/research/codex/current-profile-c-r1/cp060-snapshot/docs/PROTOCOL.md",
+          "bytes": 209241,
+          "sha256": "8bab35798f913a481c32286634f8f7855cf419ad258ca03d133237335ec8d41b"
+        },
+        {
+          "id": "E047",
+          "kind": "local",
+          "path": "local/research/codex/current-profile-c-r1/cp060-snapshot/docs/RESEARCH.md",
+          "bytes": 29870,
+          "sha256": "5d119000cd0a8e769a3ce304c79b67279d0839ef313d5816544398bfb8f954ce"
+        },
+        {
+          "id": "E048",
+          "kind": "local",
+          "path": "local/research/codex/current-profile-c-r1/cp060-snapshot/docs/evidence/auth-profile/README.md",
+          "bytes": 6370,
+          "sha256": "6517d300c1ce4977b8156a045a4ac9dd17b570896ad3ff117ca24e603a5a689d"
+        },
+        {
+          "id": "E049",
+          "kind": "local",
+          "path": "local/research/codex/current-profile-c-r1/cp060-snapshot/docs/evidence/cache-boundary/README.md",
+          "bytes": 5754,
+          "sha256": "750b5302df896870cc13f06c082eeac451046250d1930b13d1152abf4715a122"
+        },
+        {
+          "id": "E050",
+          "kind": "local",
+          "path": "local/research/codex/current-profile-c-r1/cp060-snapshot/docs/evidence/current-profile-c/README.md",
+          "bytes": 4436,
+          "sha256": "898dfae4a004465da5c01385f00192f00c3baa7f84fd50aa30efda8cc04d6d97"
+        },
+        {
+          "id": "E051",
+          "kind": "local",
+          "path": "local/research/codex/current-profile-c-r1/cp060-snapshot/docs/features.json",
+          "bytes": 70680,
+          "sha256": "8ce0a6cb89ee1f9c3fb65219193e86cff8b0855e3c7ba3c7c6cdfa97582ea5c2"
+        },
+        {
+          "id": "E052",
+          "kind": "local",
+          "path": "local/research/codex/current-profile-c-r1/cp060-snapshot/server/README.md",
+          "bytes": 10844,
+          "sha256": "26398aacb37d88cb285cdfce8d278366eaf0ca99bc14972cb26c86f3ca146859"
+        },
+        {
+          "id": "E053",
+          "kind": "local",
+          "path": "local/research/codex/current-profile-c-r1/runtime-source/item_claims.py",
+          "bytes": 3340,
+          "sha256": "7990ae9195e9f8bba56b04101f352506194dbd0252793183993ce101a8674a2e"
+        },
+        {
+          "id": "E054",
+          "kind": "local",
+          "path": "local/research/codex/current-profile-c-r1/runtime-source/probe_codec.py",
+          "bytes": 3227,
+          "sha256": "23ba54e6940953a52ff737e7e06b2761a8eb22eab444310b49b1d96efa12411d"
+        },
+        {
+          "id": "E055",
+          "kind": "local",
+          "path": "local/research/codex/current-profile-c-r1/runtime-source/probe_room.py",
+          "bytes": 1468,
+          "sha256": "91292494d492c7851bd5432649adf528e1b07290316dc56ba1478f8a209a08bc"
+        },
+        {
+          "id": "E056",
+          "kind": "local",
+          "path": "local/research/codex/current-profile-c-r1/runtime-source/probe_service.py",
+          "bytes": 32828,
+          "sha256": "eb19710037db3886050b5769ff733b6cb9768e3cba51bf9eccb8a9ef269967f2"
+        },
+        {
+          "id": "E057",
+          "kind": "local",
+          "path": "local/research/codex/current-profile-c-r1/runtime-source/round_fence.py",
+          "bytes": 2339,
+          "sha256": "aabcc7f1d623573fc217de8df05403f83d82425bbe5d6e78872b3096a2d46708"
+        },
+        {
+          "id": "E058",
+          "kind": "local",
+          "path": "local/research/codex/current-profile-c-r1/runtime-source/udp_round_keys.py",
+          "bytes": 1187,
+          "sha256": "db58ae1f25bcbeb52c2d25c7db6afbf1021ddd3af29702e756f5f41886530a0d"
+        },
+        {
+          "id": "E059",
+          "kind": "local",
+          "path": "local/research/codex/current-profile-c-r1/derived/current-C-A/run.json",
+          "bytes": 40346,
+          "sha256": "ce730693b75ae3bb11651cafd8556e7dff1e277999557a827a4f6974293e34e1"
+        },
+        {
+          "id": "E060",
+          "kind": "local",
+          "path": "local/research/codex/current-profile-c-r1/derived/current-C-A-oracle.json",
+          "bytes": 51825,
+          "sha256": "fb5d0a7857462c7d14fda7df74797203669145927e7aca7ba38c0485693bda8d"
+        },
+        {
+          "id": "E061",
+          "kind": "local",
+          "path": "local/research/codex/current-profile-c-r1/derived/current-C-A-replay.txt",
+          "bytes": 888,
+          "sha256": "206e4c10e90b321d43968451bf052de45eed71a6938fcb474012fb72eeceda18"
+        },
+        {
+          "id": "E062",
+          "kind": "local",
+          "path": "local/research/codex/current-profile-c-r1/derived/current-C-B/run.json",
+          "bytes": 64799,
+          "sha256": "0ec8e49b6f34e94f0d6d41ee9411dddea5c879706677a16a2ca411c06680a8ac"
+        },
+        {
+          "id": "E063",
+          "kind": "local",
+          "path": "local/research/codex/current-profile-c-r1/derived/current-C-B-oracle.json",
+          "bytes": 148743,
+          "sha256": "e85bee30ed2309cfaf1e164c5f9569e4362382954eee6473935a73e041eeb565"
+        },
+        {
+          "id": "E064",
+          "kind": "local",
+          "path": "local/research/codex/current-profile-c-r1/derived/current-C-B-replay.txt",
+          "bytes": 2451,
+          "sha256": "54e9e93be4f8baadea424153e14b174c5fd4077b8c4aaf672f230fae52541f87"
+        },
+        {
+          "id": "E065",
+          "kind": "local",
+          "path": "local/research/codex/current-profile-c-r1/derived/current-C-C/run.json",
+          "bytes": 63015,
+          "sha256": "c24ad730f72dfa18403ae43662c38f363d6c078353d8bea383392f49fe59e637"
+        },
+        {
+          "id": "E066",
+          "kind": "local",
+          "path": "local/research/codex/current-profile-c-r1/derived/current-C-C-oracle.json",
+          "bytes": 148445,
+          "sha256": "4227d2d258f011b583adcc14748711e54c93af5a356212cd5acaecbc3d47f6d9"
+        },
+        {
+          "id": "E067",
+          "kind": "local",
+          "path": "local/research/codex/current-profile-c-r1/derived/current-C-C-replay.txt",
+          "bytes": 2440,
+          "sha256": "2dc4bc2874e9f860badc11fbacc563cd93f64634429f7af744bd5397699dd397"
+        },
+        {
+          "id": "E068",
+          "kind": "local",
+          "path": "local/research/codex/current-profile-c-r1/request-frames/current-C/B-F12-82.bin",
+          "bytes": 49,
+          "sha256": "27d13b13f8df5db1f67451352419d49458641283683b06d40bc91f6c3f7220e7"
+        },
+        {
+          "id": "E069",
+          "kind": "local",
+          "path": "local/research/codex/current-profile-c-r1/request-frames/current-C/B-F37-99.bin",
+          "bytes": 61,
+          "sha256": "3e9266f5c30d3a32d2afe8159318be5dba23b55322744e145ea71b70ecb02473"
+        },
+        {
+          "id": "E070",
+          "kind": "local",
+          "path": "local/research/codex/current-profile-c-r1/request-frames/current-C/B-F45-118.bin",
+          "bytes": 60,
+          "sha256": "b18573b788fd866559535121eb16358d0837d621af3dbaa300fa45f14a5b5255"
+        },
+        {
+          "id": "E071",
+          "kind": "local",
+          "path": "local/research/codex/current-profile-c-r1/request-frames/current-C/B-F51-127.bin",
+          "bytes": 70,
+          "sha256": "e79b27dc90a947d4b66799fcf6db9df0d153ce4c86fb409eaf2686f68a072351"
+        },
+        {
+          "id": "E072",
+          "kind": "local",
+          "path": "local/research/codex/current-profile-c-r1/request-frames/current-C/B-F55-127.bin",
+          "bytes": 67,
+          "sha256": "16ec4bd20a0915e02b2baff04a115ade7a2d91589a1fdc0a7260c5b0559a46aa"
+        },
+        {
+          "id": "E073",
+          "kind": "local",
+          "path": "local/research/codex/current-profile-c-r1/request-frames/current-C/C-F12-82.bin",
+          "bytes": 49,
+          "sha256": "27d13b13f8df5db1f67451352419d49458641283683b06d40bc91f6c3f7220e7"
+        },
+        {
+          "id": "E074",
+          "kind": "local",
+          "path": "local/research/codex/current-profile-c-r1/request-frames/current-C/C-F22-95.bin",
+          "bytes": 98,
+          "sha256": "38eeff06df1cda4991e6860d5e77cabcb5d78c9a82bc217363b4899b10d3aedd"
+        },
+        {
+          "id": "E075",
+          "kind": "local",
+          "path": "local/research/codex/current-profile-c-r1/request-frames/current-C/C-F27-99.bin",
+          "bytes": 61,
+          "sha256": "7bf085340c288d06d874cc0445ef8a62ea7b12012961180cd80cba4c0e097762"
+        },
+        {
+          "id": "E076",
+          "kind": "local",
+          "path": "local/research/codex/current-profile-c-r1/request-frames/current-C/C-F35-124.bin",
+          "bytes": 57,
+          "sha256": "578ac9ee714956f292841847cd67f55f7e978dfcc4d72dbd79e271349be15da4"
+        },
+        {
+          "id": "E077",
+          "kind": "local",
+          "path": "local/research/codex/current-profile-c-r1/request-frames/current-C/C-F46-127.bin",
+          "bytes": 52,
+          "sha256": "d951e87ef4e4d835d9055cf0a625bf5cb4004b2a06f6e7e60e7602be87b3b253"
+        },
+        {
+          "id": "E078",
+          "kind": "local",
+          "path": "local/research/codex/current-profile-c-r1/request-frames/current-C/C-F49-127.bin",
+          "bytes": 52,
+          "sha256": "475bb65b55efef84c3bd8ffc702dce9f3f3502c9d573989b34d8986f10595938"
+        },
+        {
+          "id": "E079",
+          "kind": "local",
+          "path": "local/research/codex/current-profile-c-r1/request-frames/current-C/C-F50-127.bin",
+          "bytes": 52,
+          "sha256": "ee99dd6181724718d9f7f5a1fcc0d740af38b4757fdcfb46a6c9df5745d4f333"
+        },
+        {
+          "id": "E080",
+          "kind": "local",
+          "path": "local/research/codex/current-profile-c-r1/request-frames/current-C/C-F51-127.bin",
+          "bytes": 52,
+          "sha256": "a32f1d8b9135f132bebe9d945594f3f71e92087cdfd6a454c3ce5d4167225fc7"
+        },
+        {
+          "id": "E081",
+          "kind": "local",
+          "path": "local/research/codex/current-profile-c-r1/request-frames/current-C/C-F52-127.bin",
+          "bytes": 52,
+          "sha256": "93f707ade937588532d16afda7ec0236f57545c9c03af797347639ba6fdcca71"
+        },
+        {
+          "id": "E082",
+          "kind": "local",
+          "path": "local/research/codex/current-profile-c-r1/request-frames/current-C/C-F54-127.bin",
+          "bytes": 52,
+          "sha256": "fefc46917177e0753430e8d4df18097c2525732f99ae80e4360d70a026f6a946"
+        },
+        {
+          "id": "E083",
+          "kind": "local",
+          "path": "local/research/codex/current-profile-c-r1/request-frames/current-C/C-F56-127.bin",
+          "bytes": 52,
+          "sha256": "0ed4b091e4e37feaa0570ff4c0e7ccbc3e850d9fbb0fc99f496ea5d56facf524"
+        },
+        {
+          "id": "E084",
+          "kind": "local",
+          "path": "local/research/codex/current-profile-c-r1/current-C/run.json",
+          "bytes": 107512,
+          "sha256": "039b652e2d21585dacba8f48e9341dfe0a618efd6d524fc1b3db96561dc3d9ab"
+        },
+        {
+          "id": "E085",
+          "kind": "local",
+          "path": "local/research/codex/current-profile-c-r1/current-C/client.log",
+          "bytes": 24583,
+          "sha256": "7c3e111a10b3cbdcacfd6882d6f710c1b072bcdfe1de5a0708cc0b83ad96b936"
+        },
+        {
+          "id": "E086",
+          "kind": "local",
+          "path": "local/research/codex/current-profile-c-r1/current-C/client-B.log",
+          "bytes": 52363,
+          "sha256": "4c0fe9f3f79bb3fd97d4889da9402aaeb90e6d30bea66f4f3ea82a89eedc6550"
+        },
+        {
+          "id": "E087",
+          "kind": "local",
+          "path": "local/research/codex/current-profile-c-r1/current-C/client-C.log",
+          "bytes": 62296,
+          "sha256": "c1ae57d65192fc20dcb4a87d4c133c06eca9b74bd9357baa83bf389f4b6d582f"
+        },
+        {
+          "id": "E088",
+          "kind": "local",
+          "path": "local/research/codex/current-profile-c-r1/current-C/debug-commands.txt",
+          "bytes": 29433,
+          "sha256": "9110f5b8d61f80c80c5b8b8c149f8a2899aff1c824a8ef0723e20ea9cbf104a9"
+        },
+        {
+          "id": "E089",
+          "kind": "local",
+          "path": "local/research/codex/current-profile-c-r1/current-C/debug-commands-B.txt",
+          "bytes": 29433,
+          "sha256": "9110f5b8d61f80c80c5b8b8c149f8a2899aff1c824a8ef0723e20ea9cbf104a9"
+        },
+        {
+          "id": "E090",
+          "kind": "local",
+          "path": "local/research/codex/current-profile-c-r1/current-C/debug-commands-C.txt",
+          "bytes": 29433,
+          "sha256": "9110f5b8d61f80c80c5b8b8c149f8a2899aff1c824a8ef0723e20ea9cbf104a9"
+        },
+        {
+          "id": "E091",
+          "kind": "local",
+          "path": "local/research/codex/current-profile-c-r1/current-C/service-state.json",
+          "bytes": 108604,
+          "sha256": "36e525b4c0015c6542cb004607898459b091216be0935afb711878ee4b0f65b6"
+        },
+        {
+          "id": "E092",
+          "kind": "local",
+          "path": "local/research/codex/current-profile-c-r1/current-C/B-blast158-r1-1-106.bin",
+          "bytes": 51,
+          "sha256": "efe7a4c01f3c9759017abfb6558721f2496a46e05aa1f93caf44d45a7d92ba18"
+        },
+        {
+          "id": "E093",
+          "kind": "local",
+          "path": "local/research/codex/current-profile-c-r1/current-C/B-dynamic159-r1-1-103.bin",
+          "bytes": 77,
+          "sha256": "17cc36bae6d3df814d1d175de810c878b459befbdb18a70f1de66225e9220406"
+        },
+        {
+          "id": "E094",
+          "kind": "local",
+          "path": "local/research/codex/current-profile-c-r1/current-C/B-floor582-85.bin",
+          "bytes": 64,
+          "sha256": "d956bb1e3a7b0e8aa06483338f53c08fb270099987dd1bf20e7332dafefe4607"
+        },
+        {
+          "id": "E095",
+          "kind": "local",
+          "path": "local/research/codex/current-profile-c-r1/current-C/B-go197-91.bin",
+          "bytes": 52,
+          "sha256": "d17f6f5c33e4e7512a63c26e7b64f89245596f0239d59eac8f14a8a147fe2d38"
+        },
+        {
+          "id": "E096",
+          "kind": "local",
+          "path": "local/research/codex/current-profile-c-r1/current-C/B-guest110-r1-118.bin",
+          "bytes": 44,
+          "sha256": "ab43fbe540028f8091e1bd34f2eec627c215d96567f97c89619be55e603eaeb4"
+        },
+        {
+          "id": "E097",
+          "kind": "local",
+          "path": "local/research/codex/current-profile-c-r1/current-C/B-host110-r1-115.bin",
+          "bytes": 44,
+          "sha256": "32190a709ecca6ccf51c7acbd9e8c9282906a64a695d5772c522cfeb516bc90a"
+        },
+        {
+          "id": "E098",
+          "kind": "local",
+          "path": "local/research/codex/current-profile-c-r1/current-C/B-item165-r1-17-100.bin",
+          "bytes": 50,
+          "sha256": "132c24878c021733b639305e55d81bac7ca16cd0d8cfe246c2c979858a0e282a"
+        },
+        {
+          "id": "E099",
+          "kind": "local",
+          "path": "local/research/codex/current-profile-c-r1/current-C/B-peer153-97.bin",
+          "bytes": 135,
+          "sha256": "5ef7f45753eb6406e203d49a2326a997fd9878e31c6f90809721a2c1d06eaee1"
+        },
+        {
+          "id": "E100",
+          "kind": "local",
+          "path": "local/research/codex/current-profile-c-r1/current-C/B-play196-94.bin",
+          "bytes": 45,
+          "sha256": "aa96cae97c2874b468ef229a2893c249f80b238461227d1ecde772496ecfde7d"
+        },
+        {
+          "id": "E101",
+          "kind": "local",
+          "path": "local/research/codex/current-profile-c-r1/current-C/B-rank175-r1-109.bin",
+          "bytes": 340,
+          "sha256": "c4d1727ae8cf8b68cd7f49b6f5539ed23d4b852905fa635e96046f5a20e87c24"
+        },
+        {
+          "id": "E102",
+          "kind": "local",
+          "path": "local/research/codex/current-profile-c-r1/current-C/B-ready110-82.bin",
+          "bytes": 44,
+          "sha256": "62a5e55c4bf26e5bd646957e0a5c18d685a4f1ad3471a3714ed35b5ddfa05c84"
+        },
+        {
+          "id": "E103",
+          "kind": "local",
+          "path": "local/research/codex/current-profile-c-r1/current-C/B-remove107-121.bin",
+          "bytes": 44,
+          "sha256": "3cdcdaa9a4702be54ea41897b03e04b45dd93b686e0760568639a83fcca9ab87"
+        },
+        {
+          "id": "E104",
+          "kind": "local",
+          "path": "local/research/codex/current-profile-c-r1/current-C/B-remove107-73.bin",
+          "bytes": 44,
+          "sha256": "080a2a02737ae7e0dbbace69ad20e9c0c0b9cb6da610f5e75f75b28f33f88a4f"
+        },
+        {
+          "id": "E105",
+          "kind": "local",
+          "path": "local/research/codex/current-profile-c-r1/current-C/B-replacement106-79.bin",
+          "bytes": 242,
+          "sha256": "8887f58446d30a3598b19e3b2ea8d5317f8f0316bc8fcc82afd9de8bb3a3b317"
+        },
+        {
+          "id": "E106",
+          "kind": "local",
+          "path": "local/research/codex/current-profile-c-r1/current-C/B-return180-r1-112.bin",
+          "bytes": 41,
+          "sha256": "8fbf7d929774603b0881b88b9b5793b0d8212a03edcc2392ae14c08c4fc1c408"
+        },
+        {
+          "id": "E107",
+          "kind": "local",
+          "path": "local/research/codex/current-profile-c-r1/current-C/B-start121-r1-88.bin",
+          "bytes": 167,
+          "sha256": "e327c9204c8b47f3bb0eb74231a741fdbb99f3dcbff24f4479af26a708bcb4de"
+        },
+        {
+          "id": "E108",
+          "kind": "local",
+          "path": "local/research/codex/current-profile-c-r1/current-C/B-survivor110-124.bin",
+          "bytes": 44,
+          "sha256": "0135f24bccfc8967220f86e58a7d3b3c4aa1b4abac598e724df7344d7a506ef9"
+        },
+        {
+          "id": "E109",
+          "kind": "local",
+          "path": "local/research/codex/current-profile-c-r1/current-C/B-survivor110-76.bin",
+          "bytes": 44,
+          "sha256": "67c2f21980ce4b68ed14c23c18e831065a18ed4056b43e34a94288cdbb7149bd"
+        },
+        {
+          "id": "E110",
+          "kind": "local",
+          "path": "local/research/codex/current-profile-c-r1/current-C/C-blast158-r1-1-97.bin",
+          "bytes": 51,
+          "sha256": "74e2de4a80eccc95ca075b6b7b315a7883176c212d7f752f47cb45a80c0122e3"
+        },
+        {
+          "id": "E111",
+          "kind": "local",
+          "path": "local/research/codex/current-profile-c-r1/current-C/C-dynamic159-r1-1-94.bin",
+          "bytes": 77,
+          "sha256": "30a02b5c561c5d8d46fbf836f63d07023ee2fde403f8b1842a8412d362661849"
+        },
+        {
+          "id": "E112",
+          "kind": "local",
+          "path": "local/research/codex/current-profile-c-r1/current-C/C-event170-17-r1-100.bin",
+          "bytes": 48,
+          "sha256": "e9bb3a9f14f9d047536e72ad62fe41eac5e65008592cb5855d60491807cf0751"
+        },
+        {
+          "id": "E113",
+          "kind": "local",
+          "path": "local/research/codex/current-profile-c-r1/current-C/C-event170-19-r1-103.bin",
+          "bytes": 59,
+          "sha256": "572c0707e83e4ca3da6aee63366e0b8501c9db99b85dcc80931d9a1b4287fa0e"
+        },
+        {
+          "id": "E114",
+          "kind": "local",
+          "path": "local/research/codex/current-profile-c-r1/current-C/C-floor582-76.bin",
+          "bytes": 64,
+          "sha256": "dade68ac6b12c8c7ae59bf27d007ad4f1b32b6369d9a0fcd29170b3063e42ace"
+        },
+        {
+          "id": "E115",
+          "kind": "local",
+          "path": "local/research/codex/current-profile-c-r1/current-C/C-go197-82.bin",
+          "bytes": 52,
+          "sha256": "64b95010ecb0e40bc0367f41f6710d2357fb2538ce827e205825284601237ef8"
+        },
+        {
+          "id": "E116",
+          "kind": "local",
+          "path": "local/research/codex/current-profile-c-r1/current-C/C-guest110-r1-115.bin",
+          "bytes": 44,
+          "sha256": "e4a6a716f8432eb339c062d2344ba1bb33880062001820bdd990dc576ad40e9f"
+        },
+        {
+          "id": "E117",
+          "kind": "local",
+          "path": "local/research/codex/current-profile-c-r1/current-C/C-host110-r1-112.bin",
+          "bytes": 44,
+          "sha256": "a9eb149b5c7164a57af2bae274c86214691c941ede01eb746e1741c6ae733011"
+        },
+        {
+          "id": "E118",
+          "kind": "local",
+          "path": "local/research/codex/current-profile-c-r1/current-C/C-item165-r1-17-91.bin",
+          "bytes": 50,
+          "sha256": "2ad2e7cbd637f553ff114fada41951a1129ca3dc52b14a540a60ccea59088bf0"
+        },
+        {
+          "id": "E119",
+          "kind": "local",
+          "path": "local/research/codex/current-profile-c-r1/current-C/C-peer153-88.bin",
+          "bytes": 135,
+          "sha256": "01035c9ef0889e9182a64006df03d8a4214622f6cafe2100f24525613d7d85c5"
+        },
+        {
+          "id": "E120",
+          "kind": "local",
+          "path": "local/research/codex/current-profile-c-r1/current-C/C-play196-85.bin",
+          "bytes": 45,
+          "sha256": "d04bf155b4847f9d41b0edfdf00a32526302273271c0f1cadbb8ce22b89eb51d"
+        },
+        {
+          "id": "E121",
+          "kind": "local",
+          "path": "local/research/codex/current-profile-c-r1/current-C/C-rank175-r1-106.bin",
+          "bytes": 340,
+          "sha256": "26f918bc7327487f8a6052df2dbde551e9a761188aae29af81588d2df30aa31a"
+        },
+        {
+          "id": "E122",
+          "kind": "local",
+          "path": "local/research/codex/current-profile-c-r1/current-C/C-ready110-73.bin",
+          "bytes": 44,
+          "sha256": "849c64b6d2a8752c38a190d0dc6aa657b81dae657ef732890d826aff520b1e73"
+        },
+        {
+          "id": "E123",
+          "kind": "local",
+          "path": "local/research/codex/current-profile-c-r1/current-C/C-return180-r1-109.bin",
+          "bytes": 41,
+          "sha256": "b53daa3dda63e60a45282c346e337b4d3d97dd07a2ef4b33a42a147350601e54"
+        },
+        {
+          "id": "E124",
+          "kind": "local",
+          "path": "local/research/codex/current-profile-c-r1/current-C/C-start121-r1-79.bin",
+          "bytes": 167,
+          "sha256": "f8a824335b4079160a4aaf0e0b425d1fabfa78c248d131503440d0414e1f26cf"
+        },
+        {
+          "id": "E125",
+          "kind": "local",
+          "path": "local/research/codex/wine_probe_current_profile_c.py",
+          "bytes": 45197,
+          "sha256": "cc160399cd6cf750e7707bc850ad0d57533d75850c30c55d08c4b86825ba0a35"
+        },
+        {
+          "id": "E126",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/server-tests.txt",
+          "bytes": 149,
+          "sha256": "c18a18b2a4e2b64d035f0125d0a8e516dcd8a9e0f59115dda75a1f6ce2b3017d"
+        },
+        {
+          "id": "E127",
+          "kind": "local",
+          "path": "local/research/codex/pickup-state-r1/checkpoint-tests.txt",
+          "bytes": 117,
+          "sha256": "f6b876ffa307f534b382c184a2c63348880c65dca89738ee971589a0a3262287"
+        }
+      ],
+      "delta": {
+        "added": [
+          "NewCfixture135runtime/cursor/name6/ID3 proof withcurrentprofile and1B/Cplayedcycle,periodicAUD019/nextCP064."
+        ],
+        "corrected": [
+          "C135nativeonly CP058/059 nowhasruntimeCP060,oldrecordsremainhistoricwithcurrentlinks.",
+          "Bfinalresetpreventsblanketerrorfreerunassertion;exactraw/errorchronologyretained,notnewgameplayfailure/recoveryclaim.",
+          "PLAN K2/K3currentprogressupdatedcleanparser/namedcache,authorityheaderCP060withoutgateclosure."
+        ],
+        "superseded": [
+          "NEXT-CURRENT-PROFILE-Cmeasuredinscope;solePLANnextA/B2cyclescurrentprofile/same-runconsistency,notrepeatEOF/Cbody/cacheCRC."
+        ]
+      },
+      "blockers": [
+        "TwoA/Bcyclescurrentprofile notyetsame-runconfirmed;movementtwoway/tranhitem/fullreset/transport/authauthority acceptance gapsremain.",
+        "Fullprofilemeaning/count2/features/othercachefamily/reconnect/vanilla/fullcodec/validator/distance/kim-cứu/generalroster/LANInternet unknown."
+      ],
+      "next_steps": [
+        {
+          "id": "NEXT-CURRENT-PROFILE-C",
+          "task": "KRE-005b",
+          "state": "superseded",
+          "action": "RealC135/currentprofile/B-Ccycle measuredCP060;no accountresume/generalrosterclaim. Broadervariants keptRESEARCH.",
+          "owner": "Codex",
+          "reviewer": "Codex"
+        },
+        {
+          "id": "NEXT-CURRENT-PAIR-ROUND",
+          "task": "KRE-005b",
+          "state": "active",
+          "action": "ImmediatelyreuseCP048/055/056two-cycleA/Bpath/currentexportprofile/privatecopies;nativeauth/cache/actual124keys/165/statreset/bomb/statepeer/rankreturn inonesamerun,recordremainingK6a dimensionsinsteadclosingfrom2rank.",
+          "owner": "Codex",
+          "reviewer": "Codex"
+        }
+      ],
+      "review": {
+        "status": "waived",
+        "as_of_utc": "2026-11-02T12:17:36.590110+00:00",
+        "reference": "docs/evidence/checkpoints/review-waiver.json",
+        "scope": "Codex solo RE/code/runtime/selfcheck, not independent approval.",
+        "authorization": {
+          "by": "project_owner",
+          "reference": "docs/evidence/checkpoints/review-waiver.json",
+          "reason": "Owner explicitly requested solo without Claude review."
+        }
+      },
+      "docs_sync": [
+        {
+          "path": "README.md",
+          "state": "updated",
+          "reason": "CP060nativeCintegration/errorchronology/solePLANcurrentpair/AUD019,currentpointersoldscopepreserved."
+        },
+        {
+          "path": "docs/PLAN.md",
+          "state": "updated",
+          "reason": "CP060nativeCintegration/errorchronology/solePLANcurrentpair/AUD019,currentpointersoldscopepreserved."
+        },
+        {
+          "path": "docs/PROTOCOL.md",
+          "state": "updated",
+          "reason": "CP060nativeCintegration/errorchronology/solePLANcurrentpair/AUD019,currentpointersoldscopepreserved."
+        },
+        {
+          "path": "docs/RESEARCH.md",
+          "state": "updated",
+          "reason": "CP060nativeCintegration/errorchronology/solePLANcurrentpair/AUD019,currentpointersoldscopepreserved."
+        },
+        {
+          "path": "docs/features.json",
+          "state": "updated",
+          "reason": "CP060nativeCintegration/errorchronology/solePLANcurrentpair/AUD019,currentpointersoldscopepreserved."
+        },
+        {
+          "path": "docs/COVERAGE.md",
+          "state": "updated",
+          "reason": "CP060nativeCintegration/errorchronology/solePLANcurrentpair/AUD019,currentpointersoldscopepreserved."
+        },
+        {
+          "path": "server/README.md",
+          "state": "updated",
+          "reason": "CP060nativeCintegration/errorchronology/solePLANcurrentpair/AUD019,currentpointersoldscopepreserved."
+        },
+        {
+          "path": "docs/evidence/current-profile-c/README.md",
+          "state": "updated",
+          "reason": "CP060nativeCintegration/errorchronology/solePLANcurrentpair/AUD019,currentpointersoldscopepreserved."
+        },
+        {
+          "path": "docs/evidence/auth-profile/README.md",
+          "state": "updated",
+          "reason": "CP060nativeCintegration/errorchronology/solePLANcurrentpair/AUD019,currentpointersoldscopepreserved."
+        },
+        {
+          "path": "docs/evidence/cache-boundary/README.md",
+          "state": "updated",
+          "reason": "CP060nativeCintegration/errorchronology/solePLANcurrentpair/AUD019,currentpointersoldscopepreserved."
+        }
+      ]
     }
   ],
   "audits": [
@@ -125912,6 +127014,11 @@
       "id": "AUD018",
       "path": "docs/evidence/checkpoints/audits/AUD018.json",
       "sha256": "d776917fedac02b488a8bb59d8398b07be0447d5fedf0e4eb6e806145ad091ae"
+    },
+    {
+      "id": "AUD019",
+      "path": "docs/evidence/checkpoints/audits/AUD019.json",
+      "sha256": "2a432687cb1cc208e45dea9d2096c118d99897415d600c39ec7ad7d2b98340b2"
     }
   ],
   "task_states": [
@@ -126010,6 +127117,12 @@
       "state": "open",
       "canonical": "docs/PLAN.md",
       "reference": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/78"
+    },
+    {
+      "id": "KRE-023",
+      "state": "open",
+      "canonical": "docs/PLAN.md",
+      "reference": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/80"
     }
   ]
 }

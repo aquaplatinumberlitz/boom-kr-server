@@ -1,5 +1,7 @@
 # CP059 — Named cache CRC raw/nén và persistence
 
+Snapshot CP059: bước C/currentprofile đã có [CP060](../../PROTOCOL.md#current-profile-c); theo PLAN cho bước hiện hành, không lặp CRC/cachefile.
+
 Baseline CP058/[PR77](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/77) merge
 `07cf48d3f90cd308ded49bc35a56bfd82c20b4a2`; KRE-022/[issue78](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/78).
 Codex solo/tự kiểm, [review waived](../checkpoints/review-waiver.json); trạng thái tích hợp ở [PR79](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/79).

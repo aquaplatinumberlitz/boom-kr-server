@@ -1,6 +1,6 @@
 # KR 00967 — contract tương thích client gốc
 
-Revision kr-legacy-contract-r1; cập nhật02/11/2026 JST (CP059).
+Revision kr-legacy-contract-r1; cập nhật02/11/2026 JST (CP060).
 **Contract có bằng chứng từng phần; chưa nghiệm thu full codec K2**.
 Lộ trình và thứ tự task chỉ giữ ở [REWRITE_PLAN — KRE](PLAN.md).
 Đây là contract của repo server KR. ADR0009 của bản viết lại là nguồn lịch sử để so sánh;
@@ -1958,7 +1958,7 @@ liệt kê và phân biệt với nguyên bản trong mọi demo.
 <a id="authority"></a>
 ### Authority matrix hiện hành và gate review
 
-Bảng này tổng hợp bằng chứng từng phần đến CP056; chưa phải toàn contract server gốc. Mỗi hàng khi
+Bảng này tổng hợp bằng chứng từng phần đến CP060; chưa phải toàn contract server gốc. Mỗi hàng khi
 triển khai phải bổ sung riêng **creator, simulator, validator, broadcaster, peer-editable state**, với
 locator/trace và trạng thái từng ô; những vai trò không nêu dưới đây hiện `unknown` cho KR.
 
@@ -2324,7 +2324,7 @@ Run180s có2Start/clock nhưng chỉ1rank/return, không hai trận đầy đủ
 cache đã có; fresh Wine prefix không là coldcache. Không thêm patch/force ID/state trong run.
 
 Exporter41fixture nay chọn authA/B-final (137byte payload), authC-final (135byte/tên5byte) thay malformed
-prefix; byte xuất khớp exact profile đã chạy. **C mới chỉ native reader/emulation**, chưa runtimeC với
+prefix; byte xuất khớp exact profile đã chạy. Tại CP058 **C mới chỉ native reader/emulation**; [CP060](#current-profile-c) đã đo runtimeC với
 fixture mới. Không tự migrate profile JSON đã export; chúng giữ hash/path cũ cho reproducibility.
 Service/codec không đổi. Fullmeaning/profilevalues/cache/cold-warm/missing/reconnect/token_2/allregions/
 Windowsvanilla/authauthority/K2/K3/K5/K6a/LAN/Internet còn mở. AUD018 audit ngay lỗi string, cadence kếCP060.
@@ -2366,5 +2366,30 @@ kể cả auth giữ nguyên;41frames trùng profile đã đo. Không sửa code
 Các file ghi rồi mở lại có cùng SHA; metadata/recipe dùng hash, không publish cache/assets/binary.
 
 Bốn run đều authA/B137/errors0 nhưng gameplay/lifecycle còn partial, không chứng minh2trận hoặc K6a.
-Fullprofile/cachefamily/cacheversion/corrupt/delete/reconnect/Windowsvanilla vẫn mở; Cauth mới trước
-CP060 chỉ native. Theo PLAN tiếp integration C với bộ fixture mới, không đo lại CRC/cachefile này.
+Fullprofile/cachefamily/cacheversion/corrupt/delete/reconnect/Windowsvanilla vẫn mở. Cauth mới tại
+CP059 chỉ native, [CP060](#current-profile-c) đã đo integrationC; không đo lại CRC/cachefile này.
+
+<a id="current-profile-c"></a>
+### Integration C với profile auth/cache mới — CP060
+
+**kr_runtime/confirmed trong Winecopy**, [recipe/raw/hash/giới hạn](evidence/current-profile-c/README.md).
+Dùng profile41 do exporter CP059 tạo, không thêm packet/schema/patch/servicecode. Tái dùng CP054
+AEOFtrướcround1→Bcleanup→C3/ownmatch/JoinReady/BStart, không làm controlEOF mới hoặc gọi C là Aresume.
+A/B riênggame-dir CP059, C reflinkcopy riêng; cache hiện hữu được nhận, không cold/missingcacheC proof.
+
+Trong cùng run12actualconnections: A/B auth137/137, C **135/135/errors54=0/errors58=0**, ID3 qua
+native setter. ActualC6/79byte có **KRNew** (A/B6/81byte KRLocal/KRGuest), nativeframer/CRC/stringgetter
+xác nhận. C106/ownmatch1/slot0, actual82/95, Bactual104. C/B namedcache loader1/cursor69/không528;
+đó là localprofile/parser/cachepath, không credential/serverauthority/accountverification.
+
+Chỉ một generation1/key12345, rosterB(ID2/slot1)/C(ID3/slot0); B118→globalbombID1→159/158,
+B17/19→C170/C21. Secure actorBstate1 trên cả B/C **trước175**, actorC không bị gán chết từ rank.
+175callback302/errors0,180callback3/errors0, roomrefresh Bchief/Cguest. A đã đóng trước round đầu,
+không có A/Bround/bomb/forfeit trước đó. Đây là **một vòng B/C**, chưa hai trận nghiệm thu/K5/K6a/LAN.
+
+Run có một serviceerror Bchannel `Connection reset by peer` ở đoạn cuối: timestamp sau175/180/
+refresh/final-roomcapture, <1s trướccontrollerend; C EOF ngay trước. Giữ raw/error, không gọi run error-free,
+không suy đây là gameplaydisconnect hoặc đã nghiệm thu reset recovery. Không sửa error để làm checkpass.
+759nativeframer cases,135packet/6native153/210secure snapshots và1865relations chỉ kiểm bằng chứng hẹp.
+No newstaticbody; originalsourcehash giữ. Theo PLAN tiếp hai vòng A/B với **currentprofile** trong cùngrun;
+AUD019periodicCP060, cadence kếCP064. Gate/auth/cache/validator/reset tổng quát vẫn mở.
