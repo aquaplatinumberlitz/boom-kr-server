@@ -1,7 +1,7 @@
 {
   "schema": "kre-feature-index-v1",
   "build": "KR00967",
-  "as_of": "2026-11-02 JST / CP061; integration status via PR83; nextauditCP064",
+  "as_of": "2026-11-02 JST / CP062; self-check pending PR; nextauditCP064",
   "sources": {
     "plan": "docs/PLAN.md",
     "contract": "docs/PROTOCOL.md",
@@ -1447,7 +1447,8 @@
           "docs/evidence/stale124/README.md",
           "docs/evidence/pickup-time/README.md",
           "docs/evidence/pickup-state/README.md",
-          "docs/evidence/current-pair-round/README.md"
+          "docs/evidence/current-pair-round/README.md",
+          "docs/evidence/current-pickup-race/README.md"
         ]
       },
       "coverage": {
@@ -1487,7 +1488,8 @@
               "docs/evidence/stale124/README.md",
               "docs/evidence/pickup-time/README.md",
               "docs/evidence/pickup-state/README.md",
-              "docs/evidence/current-pair-round/README.md"
+              "docs/evidence/current-pair-round/README.md",
+              "docs/evidence/current-pickup-race/README.md"
             ]
           },
           "windows_original": {
@@ -1519,7 +1521,8 @@
           "refs": [
             "docs/evidence/stale124/README.md",
             "docs/evidence/pickup-state/README.md",
-            "docs/evidence/current-pair-round/README.md"
+            "docs/evidence/current-pair-round/README.md",
+            "docs/evidence/current-pickup-race/README.md"
           ]
         },
         "gate": {
@@ -2359,7 +2362,8 @@
         "evidence": [
           "docs/evidence/round-generation/README.md",
           "docs/evidence/probe-service/README.md",
-          "docs/evidence/current-pair-round/README.md"
+          "docs/evidence/current-pair-round/README.md",
+          "docs/evidence/current-pickup-race/README.md"
         ]
       },
       "coverage": {
@@ -2392,7 +2396,8 @@
             "state": "observed",
             "refs": [
               "docs/evidence/round-generation/README.md",
-              "docs/evidence/current-pair-round/README.md"
+              "docs/evidence/current-pair-round/README.md",
+              "docs/evidence/current-pickup-race/README.md"
             ]
           },
           "windows_original": {
@@ -2421,7 +2426,8 @@
           "state": "partial",
           "refs": [
             "docs/evidence/probe-service/README.md",
-            "docs/evidence/current-pair-round/README.md"
+            "docs/evidence/current-pair-round/README.md",
+            "docs/evidence/current-pickup-race/README.md"
           ]
         },
         "gate": {
@@ -2569,7 +2575,8 @@
           "docs/evidence/prestart-replacement/README.md",
           "docs/evidence/pickup-state/README.md",
           "docs/evidence/current-profile-c/README.md",
-          "docs/evidence/current-pair-round/README.md"
+          "docs/evidence/current-pair-round/README.md",
+          "docs/evidence/current-pickup-race/README.md"
         ]
       },
       "coverage": {
@@ -2604,7 +2611,8 @@
               "docs/evidence/prestart-replacement/README.md",
               "docs/evidence/pickup-state/README.md",
               "docs/evidence/current-profile-c/README.md",
-              "docs/evidence/current-pair-round/README.md"
+              "docs/evidence/current-pair-round/README.md",
+              "docs/evidence/current-pickup-race/README.md"
             ]
           },
           "windows_original": {
@@ -2649,7 +2657,8 @@
             "docs/evidence/prestart-replacement/README.md",
             "docs/evidence/pickup-state/README.md",
             "docs/evidence/current-profile-c/README.md",
-            "docs/evidence/current-pair-round/README.md"
+            "docs/evidence/current-pair-round/README.md",
+            "docs/evidence/current-pickup-race/README.md"
           ]
         },
         "gate": {

@@ -1,6 +1,6 @@
 # KR 00967 — contract tương thích client gốc
 
-Revision kr-legacy-contract-r1; cập nhật02/11/2026 JST (CP061).
+Revision kr-legacy-contract-r1; cập nhật02/11/2026 JST (CP062).
 **Contract có bằng chứng từng phần; chưa nghiệm thu full codec K2**.
 Lộ trình và thứ tự task chỉ giữ ở [REWRITE_PLAN — KRE](PLAN.md).
 Đây là contract của repo server KR. ADR0009 của bản viết lại là nguồn lịch sử để so sánh;
@@ -2414,3 +2414,31 @@ Không dùng processalive/encoder tựsinh hoặc2rank để nâng fullmatch/K6a
 Chưa có currentservice hai người **cùng tranh index**/đảo winner/duplicate theo transport;
 [CP030](#item-pickup) đã có method/actualrace trên oldharness, không đọc thành proof profile/service mới.
 Tiếp ca này, tái dùng wire/claim/nativeeffect, không RE lại t/k/auth/cache hoặc chạy mọirace.
+
+<a id="current-pickup-race"></a>
+### Tranh index thật trên serializedservice — CP062
+
+**kr_runtime/confirmed hẹp**, [recipe/hash/giới hạn](evidence/current-pickup-race/README.md).
+Tái dùng CP030race, CP061profile41/floor17/Roller/overlapspawn/currentkey và ItemClaims; không newwire/
+nativebody/patch/servicecode. NormalUI A/B cùngDown0.30s qua barrier, không mintreport bằng encoder.
+Wrapperlocal chỉ giữ **delivery165 trong2s**, productionclaim/consume/key/reportguard/winnerlogic nguyên.
+Đây là canthiệp đo để cả hai nativewriter có thời gian gửi, không latency/arbitrationpolicy servergốc.
+
+Cùng8connections/2cycles: mỗi vòng **hai actualTCP124** index17/hàng4/cột3/kind2/currentkey,
+loser đến trước165delivery khoảng1.92s/v1 và1.96s/v2. Production first-arrivalclaim thắng:
+
+| Vòng/key | Request tới trước / sau | Native165 cùngslot trênA/B | SecureRoller trước→sau ở cả2view |
+|---|---|---|---|
+|1/12345|A / B|một165/receiver,slot0|A5→6, B4→4|
+|2/12346|B / A|một165/receiver,slot1|A5→5, B4→5|
+
+Không có165cho requestloser; cùngpayload positive165 gửi origin/peer một lần, callback12/errors0.
+Winner đảo tự nhiên theo actualarrival, không forcewinner. Clockv2/statbefore165 trởbaseline A5/B4;
+claim reusedindex17 còn nhận được trước khi reserve/consume mới. Hai bom/stateA1/peerstate trước175,
+2rank/return/room; không auth/fullvalidator/whole reset hoặc K6a/LAN/Internet từ sốcallback.
+
+Production claim được consume **trước** queue165; wrapper flush sau2s chỉ nếu room/generation hiện hành,
+discard khácvòng nhưng ca discard chưa runtime riêng. Không thay firstarrival bằng công bằng/thờiđiểm
+va chạm tuyệt đối; normalUIbarrier không chứng minh physics cùngtick. CP030oldharness và CP062current
+service là hai scope có liên kết, không nâng mọi duplicate/stale/transport/mode biến thể. Bước tiếp theo
+[PLAN](PLAN.md#current-order) là khoảng trống report127 stale/duplicate đang ảnh hưởng state/result.
