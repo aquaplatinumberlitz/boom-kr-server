@@ -1,6 +1,6 @@
 # KR 00967 — contract tương thích client gốc
 
-Revision kr-legacy-contract-r1; cập nhật03/11/2026 JST (CP074).
+Revision kr-legacy-contract-r1; cập nhật03/11/2026 JST (CP075).
 **Contract có bằng chứng từng phần; chưa nghiệm thu full codec K2**.
 Lộ trình và thứ tự task chỉ giữ ở [REWRITE_PLAN — KRE](PLAN.md).
 Đây là contract của repo server KR. ADR0009 của bản viết lại là nguồn lịch sử để so sánh;
@@ -1958,7 +1958,7 @@ liệt kê và phân biệt với nguyên bản trong mọi demo.
 <a id="authority"></a>
 ### Authority matrix hiện hành và gate review
 
-Bảng này tổng hợp bằng chứng từng phần đến CP074; chưa phải toàn contract server gốc. Mỗi hàng khi
+Bảng này tổng hợp bằng chứng từng phần đến CP075; chưa phải toàn contract server gốc. Mỗi hàng khi
 triển khai phải bổ sung riêng **creator, simulator, validator, broadcaster, peer-editable state**, với
 locator/trace và trạng thái từng ô; những vai trò không nêu dưới đây hiện `unknown` cho KR.
 
@@ -2724,3 +2724,25 @@ Forfeit/timing/hold là **design**, không servergốc/death. CP072missingnative
 không viết lại history hoặc suy causalroot oldreset/blackframe. Chưa accountresume/hostvariant/
 timeout/loadfail/wholemembership/fullreset/gameplay/2cycles/K4/K5/K6a/fullmatch/LANInternet/vanilla.
 Bước tiếp [PLAN](PLAN.md#current-order) là selectedTCPguardadmission, không tìm lại107/175/180.
+
+<a id="current-tcp-replay"></a>
+### Body cũ/trùng qua TCP channel thực — CP075
+
+[Run/recipe/provenance/hash và kiểm planned-partial](evidence/current-tcp-replay/README.md),
+**kr_runtime/confirmed hẹp**, productionservice/currentauthcache/basicprofile giữ nguyên.
+Channelproxy forward S2C byteforbyte, trước injection C2S nguyênframe; sau capture mã hóa lại body
+nguyên bằng sequence upstream mới và resequence actualframes. Front nativewriter và proxyreplay có
+nguồn riêng; upstream TCPchunk join exact archivedframes. Không gọi replay là nativewriter mới.
+
+12replay (8samebody/4oldbody) của118/124/127sub17,19 đều log admission/reject đúng guard:
+118 duplicate_bomb_serial/bomb_round_key_mismatch,124 claim_not_current_or_already_consumed/
+round_key_mismatch,127 duplicate_report_body/report_tick_not_forward. Oldbody gửi sau actualA39
+vòng2, không sửa key/tick. Không thêm ID/job/165/170 từ replay. Bốn bomactualID1..4, năm pickupactual
+R1Roller/Bomb vàR2Roller/Bomb/Fire, delta native cảhai view và baselineR2; R2 actual17/19→peerstateA1.
+
+**Phạm vi tích hợp partial:** haiStart/clock, R1result/return/refresh, R2effect/deathstate; controller
+hết360s trướcR2rank (4,549s saudeath, policyrank≥8s). Không đủ hai chu kỳ kết quả/reset cùngrun.
+Verifier planned giữ failure, bounded verifier ghi scope riêng. Không hiddenpointerjoin mới vì thiếu
+probe, không baeffects mỗi vòng. CP049/063/067 dispatchercontrols lịch sử không tự biến thànhTCPproof.
+Chưa toàn127/21/34/forgedcurrentkey/freshserial/actorauth/distance/cap/fullvalidator/fullcodec/vanilla/
+fullmatch/K5/K6a/LANInternet. Không causalfix lỗi proxy cũ; reuseauth/cache là điều kiện mới, không isolate.
