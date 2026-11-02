@@ -1,7 +1,7 @@
 {
   "schema": "kre-feature-index-v1",
   "build": "KR00967",
-  "as_of": "2026-11-03 JST / CP064; self-check; integration via PR89; AUD020 nextCP068",
+  "as_of": "2026-11-03 JST / CP065; self-check; integration via PR91; nextauditCP068",
   "sources": {
     "plan": "docs/PLAN.md",
     "contract": "docs/PROTOCOL.md",
@@ -808,7 +808,8 @@
         "evidence": [
           "docs/evidence/start-reply/README.md",
           "docs/evidence/probe-service/README.md",
-          "docs/evidence/service-eof/README.md"
+          "docs/evidence/service-eof/README.md",
+          "docs/evidence/distinct-spawn/README.md"
         ]
       },
       "coverage": {
@@ -841,7 +842,8 @@
             "state": "observed",
             "refs": [
               "docs/evidence/start-reply/README.md",
-              "docs/evidence/service-eof/README.md"
+              "docs/evidence/service-eof/README.md",
+              "docs/evidence/distinct-spawn/README.md"
             ]
           },
           "windows_original": {
@@ -863,13 +865,16 @@
           "refs": [
             "server/probe_service.py",
             "docs/PROTOCOL.md#service-eof",
-            "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/61"
+            "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/61",
+            "docs/PROTOCOL.md#distinct-spawn",
+            "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/91"
           ]
         },
         "integration": {
           "state": "partial",
           "refs": [
-            "docs/evidence/service-eof/README.md"
+            "docs/evidence/service-eof/README.md",
+            "docs/evidence/distinct-spawn/README.md"
           ]
         },
         "gate": {
@@ -2373,7 +2378,8 @@
           "docs/evidence/probe-service/README.md",
           "docs/evidence/current-pair-round/README.md",
           "docs/evidence/current-pickup-race/README.md",
-          "docs/evidence/report127-freshness/README.md"
+          "docs/evidence/report127-freshness/README.md",
+          "docs/evidence/distinct-spawn/README.md"
         ]
       },
       "coverage": {
@@ -2408,7 +2414,8 @@
               "docs/evidence/round-generation/README.md",
               "docs/evidence/current-pair-round/README.md",
               "docs/evidence/current-pickup-race/README.md",
-              "docs/evidence/report127-freshness/README.md"
+              "docs/evidence/report127-freshness/README.md",
+              "docs/evidence/distinct-spawn/README.md"
             ]
           },
           "windows_original": {
@@ -2431,7 +2438,9 @@
             "docs/PROTOCOL.md#probe-service",
             "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/57",
             "docs/PROTOCOL.md#report127-freshness",
-            "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/87"
+            "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/87",
+            "docs/PROTOCOL.md#distinct-spawn",
+            "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/91"
           ],
           "delivery": "via_pr"
         },
@@ -2441,7 +2450,8 @@
             "docs/evidence/probe-service/README.md",
             "docs/evidence/current-pair-round/README.md",
             "docs/evidence/current-pickup-race/README.md",
-            "docs/evidence/report127-freshness/README.md"
+            "docs/evidence/report127-freshness/README.md",
+            "docs/evidence/distinct-spawn/README.md"
           ]
         },
         "gate": {
@@ -2592,7 +2602,8 @@
           "docs/evidence/current-pair-round/README.md",
           "docs/evidence/current-pickup-race/README.md",
           "docs/evidence/report127-freshness/README.md",
-          "docs/evidence/mixed-owner-chain/README.md"
+          "docs/evidence/mixed-owner-chain/README.md",
+          "docs/evidence/distinct-spawn/README.md"
         ]
       },
       "coverage": {
@@ -2630,7 +2641,8 @@
               "docs/evidence/current-pair-round/README.md",
               "docs/evidence/current-pickup-race/README.md",
               "docs/evidence/report127-freshness/README.md",
-              "docs/evidence/mixed-owner-chain/README.md"
+              "docs/evidence/mixed-owner-chain/README.md",
+              "docs/evidence/distinct-spawn/README.md"
             ]
           },
           "windows_original": {
@@ -2664,7 +2676,9 @@
             "docs/PROTOCOL.md#pickup-report-state",
             "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/73",
             "docs/PROTOCOL.md#report127-freshness",
-            "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/87"
+            "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/87",
+            "docs/PROTOCOL.md#distinct-spawn",
+            "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/91"
           ]
         },
         "integration": {
@@ -2680,7 +2694,8 @@
             "docs/evidence/current-pair-round/README.md",
             "docs/evidence/current-pickup-race/README.md",
             "docs/evidence/report127-freshness/README.md",
-            "docs/evidence/mixed-owner-chain/README.md"
+            "docs/evidence/mixed-owner-chain/README.md",
+            "docs/evidence/distinct-spawn/README.md"
           ]
         },
         "gate": {

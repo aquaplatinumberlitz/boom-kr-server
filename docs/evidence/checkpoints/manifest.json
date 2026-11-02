@@ -1,7 +1,7 @@
 {
   "schema": "kre-checkpoints-v1",
-  "last_id": "CP064",
-  "completed_count": 64,
+  "last_id": "CP065",
+  "completed_count": 65,
   "audit_interval": 4,
   "last_periodic_audit": 64,
   "next_periodic_audit": "CP068",
@@ -133075,6 +133075,1386 @@
           "reason": "CP064partialmixedownercontrols/blocker;AUD020stalegap/authority/nextcorrection, distinctspawnnext;nogatepromotion."
         }
       ]
+    },
+    {
+      "id": "CP065",
+      "previous": "CP064",
+      "lifecycle": "complete",
+      "recorded_utc": "2026-11-02T16:22:07.401574+00:00",
+      "context_commit": "9ebc93c35940432801d3fc96d57cbc3d977a67f1",
+      "question": "Can currentclean-auth/compressed-cache/guard127 service support two AB cycles with distinct mapspawn0/1/reset onbothnativeviews; export distinctdefault whilekeeping overlapRE?",
+      "scope": "KRE-028/#90. ReuseCP024exact121/mapindex→point→actor pluscurrentCP061/063profile/oracles;no newnativebody/patch/servicecode. OneisolatedABrun/nativeledger/exact41aliasexportdefault/overlapcontrol. Exportertoolonlynewbehavior;originalsources preserved. AUD020/CP064,nextCP068. Nextactualdistinctspawnrace byPLAN.",
+      "owner": "Codex",
+      "reviewer": "Codex",
+      "artifacts": [
+        {
+          "name": "CA-r2-login-logout.exe",
+          "sha256": "660447c293ce92270cb9b5815331bca976e8f156366e1fe50b217b6c12e60ce3"
+        },
+        {
+          "name": "CA-r2-stage-social.exe",
+          "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+        },
+        {
+          "name": "CA-r2-stage-social.exe Bcopy",
+          "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+        },
+        {
+          "name": "modO.bin",
+          "sha256": "a08950c833d3acab8281049def7b3dc96b221f107eeda01da3a548e34b91dce5"
+        },
+        {
+          "name": "CA-r2-stage-social.exe Ccopy",
+          "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+        }
+      ],
+      "locators": [
+        "distinct-current 2026-11-02T16:17:01Z runSHA86401e16a9c39ed7f0f0e3bd56048d56e87823009f76208ef9324133af2f2924",
+        "ExistingCP024map278ExVillage01/index0→(3,3),1→(3,9);body121deltaoffset86/innerslot1spawn76=0→1,129outer/100inner native",
+        "Actualnativeclockbothviews bothrounds A120159/B120399;actualA124/165Roller5→6reset;A118 IDs1/2/17/19→B170/21/175/180room",
+        "Runtimee9bb47/static660447/modOa08950 rawbase400000,RVA=VA-400000"
+      ],
+      "findings": [
+        {
+          "summary": "Native known121distinctvs overlap:singlebodybytedelta/slot1spawn0→1,inner100/outer129;41defaultaliasesexactruntimecandidate,onlystartdiffersfromoverlap. No newloaderRE/nativebody.",
+          "source": "kr_static",
+          "status": "confirmed",
+          "method": "emulation",
+          "canonical": "docs/PROTOCOL.md#distinct-spawn",
+          "limits": "Winecopy/currentprofile41/A-Btwo boundedcycles; existingmapspawn0/1 fixturedata,notnewrandomspawnalgorithm. Pairedpositionssamplesnotfullgrammar/correction/transportcausality. No B-C/accountresume/generalroster/fullauth/whole reset/K4/K5/K6a/LANInternet. Nativeheap/receiver/gettercountermodels emulationonly.",
+          "evidence": [
+            "E015",
+            "E034",
+            "E040",
+            "E018"
+          ]
+        },
+        {
+          "summary": "CurrentABtwoStart/clock/keys12345→12346;nativeinitpoint0/1 andclockA120159/B120399bothviews/rounds. Bothactorssampledcoordinatesagreebefore175afterUI,resetnextclock.",
+          "source": "kr_runtime",
+          "status": "confirmed",
+          "method": "runtime",
+          "canonical": "docs/PROTOCOL.md#distinct-spawn",
+          "limits": "Winecopy/currentprofile41/A-Btwo boundedcycles; existingmapspawn0/1 fixturedata,notnewrandomspawnalgorithm. Pairedpositionssamplesnotfullgrammar/correction/transportcausality. No B-C/accountresume/generalroster/fullauth/whole reset/K4/K5/K6a/LANInternet. Nativeheap/receiver/gettercountermodels emulationonly.",
+          "evidence": [
+            "E105",
+            "E009",
+            "E003",
+            "E051"
+          ]
+        },
+        {
+          "summary": "TwoactualA124/currentkey→165/Roller5→6/reset5,twoA118/globalID1→2/159158/17/19→B170/B21, Astate1bothbefore175,two175302/1803/errors0/roomrefresh;service/controller/probeerrors0.",
+          "source": "kr_runtime",
+          "status": "confirmed",
+          "method": "runtime",
+          "canonical": "docs/PROTOCOL.md#distinct-spawn",
+          "limits": "Winecopy/currentprofile41/A-Btwo boundedcycles; existingmapspawn0/1 fixturedata,notnewrandomspawnalgorithm. Pairedpositionssamplesnotfullgrammar/correction/transportcausality. No B-C/accountresume/generalroster/fullauth/whole reset/K4/K5/K6a/LANInternet. Nativeheap/receiver/gettercountermodels emulationonly.",
+          "evidence": [
+            "E105",
+            "E025",
+            "E003",
+            "E051"
+          ]
+        },
+        {
+          "summary": "Exporter defaultselectsexistingCP024distinct121;--spawn-layoutoverlapkeepsintentionalREvariant. spawn_layoutmetadata isdesign,notwirefield. OldexportJSONnotautomigrated,B-C/generalroster notnewruntimeproof.",
+          "source": "design",
+          "status": "design",
+          "method": "design",
+          "canonical": "docs/PROTOCOL.md#distinct-spawn",
+          "limits": "Winecopy/currentprofile41/A-Btwo boundedcycles; existingmapspawn0/1 fixturedata,notnewrandomspawnalgorithm. Pairedpositionssamplesnotfullgrammar/correction/transportcausality. No B-C/accountresume/generalroster/fullauth/whole reset/K4/K5/K6a/LANInternet. Nativeheap/receiver/gettercountermodels emulationonly.",
+          "evidence": [
+            "E018"
+          ]
+        }
+      ],
+      "verification": [
+        {
+          "check": "1477relations/hash/source;726nativeframer/237packet/12native153/408secure;bothknown121nativeledgers/41aliasdefault-overlap;57server/7catalog/docs/artifacts5/5/diff/requiredlocalhistory.18checkpointunchangedbaseline reused.",
+          "result": "pass",
+          "evidence": [
+            "E051",
+            "E048",
+            "E018",
+            "E008",
+            "E017",
+            "E005"
+          ],
+          "limits": "Nativecounters/heap/receivermodelscopeexplicit;notgatesemantic/independentreviewcertification."
+        }
+      ],
+      "evidence": [
+        {
+          "id": "E001",
+          "kind": "repository",
+          "path": "docs/evidence/distinct-spawn/README.md",
+          "bytes": 4009,
+          "sha256": "b8d2aaf1a0389466332f188ee9fdbfdfb1f3bd38132a49536cc8ad95dd74538d"
+        },
+        {
+          "id": "E002",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-r1/153-check.txt",
+          "bytes": 23,
+          "sha256": "c78b0c88107aa4deac39d540ca3f97a944aa1706fe598478526d29ae3875f2a1"
+        },
+        {
+          "id": "E003",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-r1/actor-fields.json",
+          "bytes": 276319,
+          "sha256": "b8895c85653850f625f0aceeb95aa407449e52a4862943cd1688b9e535e90568"
+        },
+        {
+          "id": "E004",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-r1/append_checkpoint.py",
+          "bytes": 6716,
+          "sha256": "7ff93df06dd7b88437e90db03f72b90b935b400d638dcbbd48416f59f6f6ccdf"
+        },
+        {
+          "id": "E005",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-r1/artifacts-check.txt",
+          "bytes": 253,
+          "sha256": "649c6624aa6d317dfc1db5e16fea683cfbc9d9cf4dd3df11c0d70e57409054a0"
+        },
+        {
+          "id": "E006",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-r1/auth-check.txt",
+          "bytes": 197,
+          "sha256": "76dad76f7bfe4d621693fb07baf779dde4b253bd8bc71f59952aa7f914e55955"
+        },
+        {
+          "id": "E007",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-r1/auth-reads.json",
+          "bytes": 24289,
+          "sha256": "715bded64fe7491e4d8007fd3ec6c7dcab79d71b2f8c949f85351afc520996fa"
+        },
+        {
+          "id": "E008",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-r1/catalog-tests.txt",
+          "bytes": 105,
+          "sha256": "8e96d27fdd224c6bb86ae1a917ce85aa020a207bda4cfa2d6b3115f1b7fed450"
+        },
+        {
+          "id": "E009",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-r1/coordinate-samples.json",
+          "bytes": 34322,
+          "sha256": "f8f392e5c4b496a77e0759db8405c2ecb7f91cf10e2b64bf87f9f266cf5cfdca"
+        },
+        {
+          "id": "E010",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-r1/derive_roles.py",
+          "bytes": 1029,
+          "sha256": "2f9ab4c881508dcabbef9fc6cb1b511b2c0f9c445968d4894734350ee0c331ed"
+        },
+        {
+          "id": "E011",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-r1/distinct-current-hashes.json",
+          "bytes": 209977,
+          "sha256": "290b9ee0bceb5f21194d34217f811fa28162ea988208d6ae8b2f0a651f28ac73"
+        },
+        {
+          "id": "E012",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-r1/distinct-current-launcher.log",
+          "bytes": 106009,
+          "sha256": "e186bb4065a3888144b114730475f2fd514d5e0a483313f2b9e2c414b457022d"
+        },
+        {
+          "id": "E013",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-r1/distinct-current-recipe.json",
+          "bytes": 1013,
+          "sha256": "aaa9bd7c021cb5543e735bfe7bd578073173b3745520acf8c2161f9b3b47d338"
+        },
+        {
+          "id": "E014",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-r1/distinct121-fixture.json",
+          "bytes": 4073,
+          "sha256": "4587f0ea73d3421b6d63069066a2dfa6cd53e6b8751f6426e3d8c9de76a19cd6"
+        },
+        {
+          "id": "E015",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-r1/distinct121-native-fields.json",
+          "bytes": 5195,
+          "sha256": "4b6898d9b80fdca88fdfc44d3367a53f638b940caaf9a3b2a9c5e4210e3e969e"
+        },
+        {
+          "id": "E016",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-r1/distinct121.bin",
+          "bytes": 167,
+          "sha256": "2e6319e9e5eb55a9ad6594710ec4aeaa749b6f8eee72a1e0016beb44885a90c0"
+        },
+        {
+          "id": "E017",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-r1/docs-check.txt",
+          "bytes": 174,
+          "sha256": "af323c4f537bef9b53e2c8d39ad8398305cf0dfc5851a5a456039476763bd61a"
+        },
+        {
+          "id": "E018",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-r1/export-check.json",
+          "bytes": 437,
+          "sha256": "b9545733ac8719c361d38f76c9fcdcefb78e662169e259838486dd230119a4b9"
+        },
+        {
+          "id": "E019",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-r1/export-default.json",
+          "bytes": 10892,
+          "sha256": "a1bc14ab02de36d066625dad54883e6c66dcb7632cfc1e70d1157aa03f55d0d3"
+        },
+        {
+          "id": "E020",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-r1/export-overlap.json",
+          "bytes": 10885,
+          "sha256": "6395bcd8b45f74e069138c29f5a93cb313b51c593754e357952a9695c3f9f474"
+        },
+        {
+          "id": "E021",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-r1/fields-check.txt",
+          "bytes": 32,
+          "sha256": "fed09b5edd757844003c442f6d7d7a145afa6a67e735fbc72c32e6d6e18121b3"
+        },
+        {
+          "id": "E022",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-r1/framer-check.txt",
+          "bytes": 37,
+          "sha256": "954aaae78f78f426f8eaeb6d5f0e7ac369fd04223db1953c77df73fff20da875"
+        },
+        {
+          "id": "E023",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-r1/issue-body.md",
+          "bytes": 1202,
+          "sha256": "39d1917c9827a5b4c556abeba68984d8bf6dd5bed0b8ff8b0ecd7dd532109fe9"
+        },
+        {
+          "id": "E024",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-r1/lifecycle-check.txt",
+          "bytes": 445,
+          "sha256": "a8617e7de8f080380bd67d10b8e5a9e285832bd9e769fc19740457b5abcfbf50"
+        },
+        {
+          "id": "E025",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-r1/lifecycle-summary.json",
+          "bytes": 7981,
+          "sha256": "74f5b13632684c5325458283a6665f4980622658f2d4a5c9105bd9a72fd9ae32"
+        },
+        {
+          "id": "E026",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-r1/native-153.json",
+          "bytes": 13841,
+          "sha256": "8d1f97f897f61bbcc2c3c75e7d3c11d8b5db4f420f73b03cffc772e5725344ab"
+        },
+        {
+          "id": "E027",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-r1/native-distinct-check.txt",
+          "bytes": 38,
+          "sha256": "bbdb1d9bc85bf0db9d5d9c6da79c1875fd1bc81705a526457471426a1f2b8157"
+        },
+        {
+          "id": "E028",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-r1/native-overlap-check.txt",
+          "bytes": 38,
+          "sha256": "bbdb1d9bc85bf0db9d5d9c6da79c1875fd1bc81705a526457471426a1f2b8157"
+        },
+        {
+          "id": "E029",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-r1/native-packets.json",
+          "bytes": 96903,
+          "sha256": "a88322131ac688a6a98a3a06036a7f0f29ec8e043dd57469c179db71f5b9bfe2"
+        },
+        {
+          "id": "E030",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-r1/native_153.py",
+          "bytes": 3540,
+          "sha256": "5c998a7c37c218222f6ef79200b2f34f5480e59193f7011e70fc893bd81ae853"
+        },
+        {
+          "id": "E031",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-r1/native_names.py",
+          "bytes": 2535,
+          "sha256": "f16250a6e435e91e18c1ce3e5b3c79111690812dcb07500189f18fd01f45df80"
+        },
+        {
+          "id": "E032",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-r1/native_packets.py",
+          "bytes": 4832,
+          "sha256": "d17da6d026a5614152ba0cd5c146964396b4b4b1f13d9b7852ff621f2050a41d"
+        },
+        {
+          "id": "E033",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-r1/overlap121-fixture.json",
+          "bytes": 4073,
+          "sha256": "d08d65d8c3d5b52ad634668dec1f0d34a438cef9f92f42cac3efe80b8451138c"
+        },
+        {
+          "id": "E034",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-r1/overlap121-native-fields.json",
+          "bytes": 5194,
+          "sha256": "814776b20d29c8995a7195e44467080ce524431b69770845eb1e7cc22e5edff8"
+        },
+        {
+          "id": "E035",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-r1/overlap121.bin",
+          "bytes": 167,
+          "sha256": "2fd71d091341990f3becfbe240f9fef2dc7069d20228216c4e974bf30afdf851"
+        },
+        {
+          "id": "E036",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-r1/packets-check.txt",
+          "bytes": 29,
+          "sha256": "0e5017ee4c81e8196db3f82e8f900d677a084a3697baabc9f45b0fd3ade00dc1"
+        },
+        {
+          "id": "E037",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-r1/parse_auth.py",
+          "bytes": 1274,
+          "sha256": "b1dd3353cf3855320b40fe2b8be7f5f099ae84fbfeff4cabcf7bd0a932f7b327"
+        },
+        {
+          "id": "E038",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-r1/parse_fields.py",
+          "bytes": 3915,
+          "sha256": "d234eebc3586f81117277234d4364641e77d83a1b7824e70a3de153d4d327729"
+        },
+        {
+          "id": "E039",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-r1/parse_lifecycle.py",
+          "bytes": 2669,
+          "sha256": "de1c58577be7dc82bfebb00e0f408326b2dc1abc13521c26f72166929e597959"
+        },
+        {
+          "id": "E040",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-r1/preparation.json",
+          "bytes": 1019,
+          "sha256": "bb394df18cbe9bce0487d7cdf9c81ae3c46b58cfdc98f65cfe8efd533c03f5aa"
+        },
+        {
+          "id": "E041",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-r1/prepare.py",
+          "bytes": 3079,
+          "sha256": "49389befcb211691c24124fac5cf0ba734ff93efddcf2d1cd4cbb39557a58944"
+        },
+        {
+          "id": "E042",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-r1/profile.json",
+          "bytes": 10892,
+          "sha256": "6193b4ef256e7414ad85d484b732a269cb9319d45cf17706639ed3b852d67ee8"
+        },
+        {
+          "id": "E043",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-r1/replay-run.py",
+          "bytes": 3005,
+          "sha256": "ada854f21f10c7ff0c67caf7e57fba760e3dad901be553a248cdbdbf5c9d65d3"
+        },
+        {
+          "id": "E044",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-r1/reuse-question.json",
+          "bytes": 5693,
+          "sha256": "c8b69d770beb41b678da9aa656c6daeb93adc12deb725992a2fb6cdae9996cd5"
+        },
+        {
+          "id": "E045",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-r1/reuse.py",
+          "bytes": 3467,
+          "sha256": "b71e453587c511a3079a63c3d930de09a6233638356fb1393727ce197898fd61"
+        },
+        {
+          "id": "E046",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-r1/run_probe.py",
+          "bytes": 1077,
+          "sha256": "086eef3c468a68b916742bb1b39fc4411ca16b47d88fde03e5a8112a0fc841f9"
+        },
+        {
+          "id": "E047",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-r1/seal_run.py",
+          "bytes": 628,
+          "sha256": "13bb2c3ec0252e6305b3166413b992a77a262341856f7af7970221a87b04f331"
+        },
+        {
+          "id": "E048",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-r1/server-tests.txt",
+          "bytes": 156,
+          "sha256": "20976628c315cc3ce206c1f63c8cd14d2a14ab9c49ffc468a7ef4e78b7aaeb2a"
+        },
+        {
+          "id": "E049",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-r1/spawn.gdb",
+          "bytes": 29433,
+          "sha256": "9110f5b8d61f80c80c5b8b8c149f8a2899aff1c824a8ef0723e20ea9cbf104a9"
+        },
+        {
+          "id": "E050",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-r1/sync_docs.py",
+          "bytes": 7235,
+          "sha256": "dee9458711b133dce0ea6cd953237e31280ef9a36ce536901d1bbe937669be01"
+        },
+        {
+          "id": "E051",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-r1/verification.json",
+          "bytes": 568,
+          "sha256": "5130765215d8edb4ab912b8ef710009be2c69e0c6883c52dc4ed7ff65f6f9bcb"
+        },
+        {
+          "id": "E052",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-r1/verify.py",
+          "bytes": 7469,
+          "sha256": "5d1b8cc2d4cf9a8660fe78d17a9ed0e1606c5ce178223d33449e72b00dcd1bc6"
+        },
+        {
+          "id": "E053",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-r1/verify_start.py",
+          "bytes": 4124,
+          "sha256": "1647f61544e588a8ca20f7d59ed91fb9bf3879a0d602c3ec21590fee6d5fdca5"
+        },
+        {
+          "id": "E054",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-r1/write_evidence.py",
+          "bytes": 4498,
+          "sha256": "73fe6c07783a903c7503b5d54b339ca129af82387dd4511ada3c61f26b8dd28c"
+        },
+        {
+          "id": "E055",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-r1/cp065-snapshot/README.md",
+          "bytes": 3761,
+          "sha256": "94c8f45a79c810c9629f185f732f85809a982eda4b94e10ece1e5893581b78c2"
+        },
+        {
+          "id": "E056",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-r1/cp065-snapshot/docs/COVERAGE.md",
+          "bytes": 71052,
+          "sha256": "02ee2a9dd50cbd7b831659740cb35c748fdd080288aae9a3fb4bfc8a37ed1f80"
+        },
+        {
+          "id": "E057",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-r1/cp065-snapshot/docs/PLAN.md",
+          "bytes": 30100,
+          "sha256": "6d68f61b7a825ff77f2e6d37179fef020b96945ef75eb4593953a7cb3ffb0c4e"
+        },
+        {
+          "id": "E058",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-r1/cp065-snapshot/docs/PROTOCOL.md",
+          "bytes": 220979,
+          "sha256": "1c3a4fdbe23901808f4e6f413ca47203ebd839d3e0c39b7c4d25e11bf9f693cb"
+        },
+        {
+          "id": "E059",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-r1/cp065-snapshot/docs/RESEARCH.md",
+          "bytes": 30361,
+          "sha256": "68de143802e5115401689212e17dd2bb2a0cc179566e69b8c9dad8aa769359fd"
+        },
+        {
+          "id": "E060",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-r1/cp065-snapshot/docs/evidence/distinct-spawn/README.md",
+          "bytes": 4009,
+          "sha256": "b8d2aaf1a0389466332f188ee9fdbfdfb1f3bd38132a49536cc8ad95dd74538d"
+        },
+        {
+          "id": "E061",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-r1/cp065-snapshot/docs/features.json",
+          "bytes": 73825,
+          "sha256": "ef455dddcc9eb9207ce691b1a9495bbb590b71e0ac2059183ee74b5ddf7f5aa8"
+        },
+        {
+          "id": "E062",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-r1/cp065-snapshot/server/README.md",
+          "bytes": 11712,
+          "sha256": "4a165d742fc8925dddd2597f7872d8c01d08fe1d5f708c70e21d134bf11978c8"
+        },
+        {
+          "id": "E063",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-r1/cp065-snapshot/tools/export_probe_profile.py",
+          "bytes": 4588,
+          "sha256": "4e654ef0da6242baa4e72dcf9d7f2ea3b20fc76e92e5ef7ba928bab9cf9e1c90"
+        },
+        {
+          "id": "E064",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-r1/runtime-source/item_claims.py",
+          "bytes": 3340,
+          "sha256": "7990ae9195e9f8bba56b04101f352506194dbd0252793183993ce101a8674a2e"
+        },
+        {
+          "id": "E065",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-r1/runtime-source/probe_codec.py",
+          "bytes": 3227,
+          "sha256": "23ba54e6940953a52ff737e7e06b2761a8eb22eab444310b49b1d96efa12411d"
+        },
+        {
+          "id": "E066",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-r1/runtime-source/probe_room.py",
+          "bytes": 1468,
+          "sha256": "91292494d492c7851bd5432649adf528e1b07290316dc56ba1478f8a209a08bc"
+        },
+        {
+          "id": "E067",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-r1/runtime-source/probe_service.py",
+          "bytes": 34046,
+          "sha256": "fb970b77bd5a92f14ea999b1dcc91f0f8af1e0ced9df6379dcc6d8e7f6f946b1"
+        },
+        {
+          "id": "E068",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-r1/runtime-source/round_fence.py",
+          "bytes": 2339,
+          "sha256": "aabcc7f1d623573fc217de8df05403f83d82425bbe5d6e78872b3096a2d46708"
+        },
+        {
+          "id": "E069",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-r1/runtime-source/udp_round_keys.py",
+          "bytes": 1187,
+          "sha256": "db58ae1f25bcbeb52c2d25c7db6afbf1021ddd3af29702e756f5f41886530a0d"
+        },
+        {
+          "id": "E070",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-r1/derived/distinct-current-A/run.json",
+          "bytes": 96134,
+          "sha256": "d819b009c4226f0b9a904592cda2eafbdf693cf85dae71f4af68af6bb3ddafb4"
+        },
+        {
+          "id": "E071",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-r1/derived/distinct-current-A-oracle.json",
+          "bytes": 176305,
+          "sha256": "b04d9a944a9765ad15f7bb23e4756e7d25fa085abdd73eab7f130b23ca861e56"
+        },
+        {
+          "id": "E072",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-r1/derived/distinct-current-A-replay.txt",
+          "bytes": 2899,
+          "sha256": "cb9d7202dc596a0c24c7997da51018da7c4dd6d882d77530460c80b557e3dae1"
+        },
+        {
+          "id": "E073",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-r1/derived/distinct-current-B/run.json",
+          "bytes": 89585,
+          "sha256": "b835960e0e977d1f27462cef05f876fd620b3c7941fd470c1fdec6e4d8a5c70b"
+        },
+        {
+          "id": "E074",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-r1/derived/distinct-current-B-oracle.json",
+          "bytes": 160737,
+          "sha256": "621f0553aaad03fa103f002b181e74bdf7c377ab7e9b33bd714d9f621a395773"
+        },
+        {
+          "id": "E075",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-r1/derived/distinct-current-B-replay.txt",
+          "bytes": 2666,
+          "sha256": "ea95d87c0fa90a187518e0d30afa2f5cf83bc1c7c3dd643d112a97cff7b89d9b"
+        },
+        {
+          "id": "E076",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-r1/request-frames/distinct-current/A-F102-127.bin",
+          "bytes": 70,
+          "sha256": "fdbe9b045ef4aa5a239563641adb60581db5436e9a888b79e44a9c6751396db2"
+        },
+        {
+          "id": "E077",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-r1/request-frames/distinct-current/A-F106-127.bin",
+          "bytes": 67,
+          "sha256": "0818ab4c66b68dc5e991dcf8079f470a0048a1b217f673ef8ffc9b3fe9ba7796"
+        },
+        {
+          "id": "E078",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-r1/request-frames/distinct-current/A-F39-99.bin",
+          "bytes": 61,
+          "sha256": "9e6401867adada126605328441ce30960bf23f4a094543c1219f1b17b09b82f2"
+        },
+        {
+          "id": "E079",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-r1/request-frames/distinct-current/A-F47-124.bin",
+          "bytes": 57,
+          "sha256": "6fa48840b8d4fa09faa865bc61a9070b8f6988bc3bf6a2ec44762ce84acdc53f"
+        },
+        {
+          "id": "E080",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-r1/request-frames/distinct-current/A-F54-118.bin",
+          "bytes": 60,
+          "sha256": "a9f2cb9bdb7e5c63ccb3856ba2306598f739a3f7440e8a8e1e5424aa502c1eb2"
+        },
+        {
+          "id": "E081",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-r1/request-frames/distinct-current/A-F58-127.bin",
+          "bytes": 70,
+          "sha256": "2c72d06264135a3dc1a7153d4dae2a3839a2c3dbd5b2097faf1fd3d9cd89e1a6"
+        },
+        {
+          "id": "E082",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-r1/request-frames/distinct-current/A-F62-127.bin",
+          "bytes": 67,
+          "sha256": "98463eea83c901961604f38d93b0d2d0849feacb4c46a61bb6fc177f64c79e9f"
+        },
+        {
+          "id": "E083",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-r1/request-frames/distinct-current/A-F83-99.bin",
+          "bytes": 61,
+          "sha256": "e57b5a6ea69b56ce80b9abc513788df729f6ea26d4453bf21df96fd870240b19"
+        },
+        {
+          "id": "E084",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-r1/request-frames/distinct-current/A-F91-124.bin",
+          "bytes": 57,
+          "sha256": "7bd6db19afac4b49342cb529a020d434aaead2b30408d50df0c07060482dddc0"
+        },
+        {
+          "id": "E085",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-r1/request-frames/distinct-current/A-F97-118.bin",
+          "bytes": 60,
+          "sha256": "0a9700f0e912cdcca6e473d830bbffb9bbe1e6884cae6b33a4774412c90952e9"
+        },
+        {
+          "id": "E086",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-r1/request-frames/distinct-current/B-F12-82.bin",
+          "bytes": 49,
+          "sha256": "27d13b13f8df5db1f67451352419d49458641283683b06d40bc91f6c3f7220e7"
+        },
+        {
+          "id": "E087",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-r1/request-frames/distinct-current/B-F23-95.bin",
+          "bytes": 98,
+          "sha256": "41ec7cfe284ac427205c3029e41fd807814e254b6f15c4c80abea2e30c47b7d1"
+        },
+        {
+          "id": "E088",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-r1/request-frames/distinct-current/B-F28-99.bin",
+          "bytes": 61,
+          "sha256": "773c8dab1b8d31aa046861d05e69b3dce2382d349d7ab866e98bb94d8076f55a"
+        },
+        {
+          "id": "E089",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-r1/request-frames/distinct-current/B-F44-127.bin",
+          "bytes": 52,
+          "sha256": "e5aa0d48479920c4d4c9c715156c4483d873b43a44d629d5966e14c625e55792"
+        },
+        {
+          "id": "E090",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-r1/request-frames/distinct-current/B-F45-127.bin",
+          "bytes": 52,
+          "sha256": "71c271adc49b9b2c0ec55e349134462dbd1577b2bcdea686d25af5038a4829ed"
+        },
+        {
+          "id": "E091",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-r1/request-frames/distinct-current/B-F47-127.bin",
+          "bytes": 52,
+          "sha256": "ed3024c1d26e34a871c7f1efb91aeb13c52f9250b2cf071b630333ca45525758"
+        },
+        {
+          "id": "E092",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-r1/request-frames/distinct-current/B-F49-127.bin",
+          "bytes": 52,
+          "sha256": "ed05b9f3bc6f674ab70469dcb80acdbfc9dce27ea988dc66bd4776b50de53bc8"
+        },
+        {
+          "id": "E093",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-r1/request-frames/distinct-current/B-F50-127.bin",
+          "bytes": 52,
+          "sha256": "f543cb7717645e7f501d9c96356ae51db76eab95ab6dabf5c8496f51d8730173"
+        },
+        {
+          "id": "E094",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-r1/request-frames/distinct-current/B-F51-127.bin",
+          "bytes": 52,
+          "sha256": "ae9e55122bb4b9a79cda3a57daaf7c32c6a6c38b200e37d9da91229bc57c23c4"
+        },
+        {
+          "id": "E095",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-r1/request-frames/distinct-current/B-F52-127.bin",
+          "bytes": 52,
+          "sha256": "7774411344c01fe6c03aedc91a743d5084735e0206a5541187ed33877e0513a1"
+        },
+        {
+          "id": "E096",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-r1/request-frames/distinct-current/B-F66-95.bin",
+          "bytes": 382,
+          "sha256": "5e341a1cabf302d9929c7de9730cc4655be325ca266bd043fcdd1cff73b73112"
+        },
+        {
+          "id": "E097",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-r1/request-frames/distinct-current/B-F72-99.bin",
+          "bytes": 61,
+          "sha256": "b140cb6bb70ebf8cd7465e149a314f80db57777b7a8fd6142993a0fbf0994f2c"
+        },
+        {
+          "id": "E098",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-r1/request-frames/distinct-current/B-F89-127.bin",
+          "bytes": 52,
+          "sha256": "e3d5b8e5bc1785c202a60cc5d76507d865704ae9a08d3eca76967a7b422d4f71"
+        },
+        {
+          "id": "E099",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-r1/request-frames/distinct-current/B-F90-127.bin",
+          "bytes": 52,
+          "sha256": "89aecb4b725e7591198bb178bd95af881f8efe358af501d9caaca09ed9730a18"
+        },
+        {
+          "id": "E100",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-r1/request-frames/distinct-current/B-F91-127.bin",
+          "bytes": 52,
+          "sha256": "23275dc75866a2e59ebb9802ebdda6a0b352d04821d7b38b77af7dff423e06a8"
+        },
+        {
+          "id": "E101",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-r1/request-frames/distinct-current/B-F92-127.bin",
+          "bytes": 52,
+          "sha256": "48625d392cf32c1f906fc84f1068952c434b53625b16365979708a112b894ec4"
+        },
+        {
+          "id": "E102",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-r1/request-frames/distinct-current/B-F95-127.bin",
+          "bytes": 52,
+          "sha256": "d587e79f6509f9afd3453583cce3c2eec6f9e43c8ada836ad9e5b14944e796d4"
+        },
+        {
+          "id": "E103",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-r1/request-frames/distinct-current/B-F96-127.bin",
+          "bytes": 52,
+          "sha256": "d8e449bf4ae0c890f7582528d61b9f9c3be95dc3c2f94ba0466350f3c8b5a9f2"
+        },
+        {
+          "id": "E104",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-r1/request-frames/distinct-current/B-F97-127.bin",
+          "bytes": 52,
+          "sha256": "c03437ab5d7cfb9d72117613789af0c31e2f3cfd1bec6d4067a6dd75c7844bab"
+        },
+        {
+          "id": "E105",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-r1/distinct-current/run.json",
+          "bytes": 136963,
+          "sha256": "86401e16a9c39ed7f0f0e3bd56048d56e87823009f76208ef9324133af2f2924"
+        },
+        {
+          "id": "E106",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-r1/distinct-current/client.log",
+          "bytes": 70701,
+          "sha256": "b0e78b4cb520c609f4f97a2d452395d692130905a29ba87e9d395cd506a85005"
+        },
+        {
+          "id": "E107",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-r1/distinct-current/client-B.log",
+          "bytes": 98100,
+          "sha256": "ba8fa4a75374d68e6c82def5c9bfa343447b35a914bd420545966c182bc230ea"
+        },
+        {
+          "id": "E108",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-r1/distinct-current/debug-commands.txt",
+          "bytes": 29433,
+          "sha256": "9110f5b8d61f80c80c5b8b8c149f8a2899aff1c824a8ef0723e20ea9cbf104a9"
+        },
+        {
+          "id": "E109",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-r1/distinct-current/debug-commands-B.txt",
+          "bytes": 29433,
+          "sha256": "9110f5b8d61f80c80c5b8b8c149f8a2899aff1c824a8ef0723e20ea9cbf104a9"
+        },
+        {
+          "id": "E110",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-r1/distinct-current/service-state.json",
+          "bytes": 139079,
+          "sha256": "289bb1600fe324c1101e3e6c3def8244ba62980bd9ab3b02501bb73d4945d7aa"
+        },
+        {
+          "id": "E111",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-r1/distinct-current/A-blast158-r1-1-97.bin",
+          "bytes": 51,
+          "sha256": "74e2de4a80eccc95ca075b6b7b315a7883176c212d7f752f47cb45a80c0122e3"
+        },
+        {
+          "id": "E112",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-r1/distinct-current/A-blast158-r2-2-136.bin",
+          "bytes": 51,
+          "sha256": "64d4c380a715c392025aa97ce4b91e3dcfcb01f4ee6596e3e32257b491d7ca6f"
+        },
+        {
+          "id": "E113",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-r1/distinct-current/A-dynamic159-r1-1-94.bin",
+          "bytes": 77,
+          "sha256": "40cb01702e54e6d2af32a988af001e86dcc8435d34cb8af9adebb9c9e3c4bf0d"
+        },
+        {
+          "id": "E114",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-r1/distinct-current/A-dynamic159-r2-2-133.bin",
+          "bytes": 77,
+          "sha256": "70b2105ffde81bf37ff73f1b8b9447d9721510ed97ce70867479982044570a69"
+        },
+        {
+          "id": "E115",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-r1/distinct-current/A-floor582-115.bin",
+          "bytes": 64,
+          "sha256": "d7cfe29149c84aaa1e95b2cd935d5313540651f27c4c6eb4aa030f96981eac36"
+        },
+        {
+          "id": "E116",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-r1/distinct-current/A-floor582-76.bin",
+          "bytes": 64,
+          "sha256": "dade68ac6b12c8c7ae59bf27d007ad4f1b32b6369d9a0fcd29170b3063e42ace"
+        },
+        {
+          "id": "E117",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-r1/distinct-current/A-go197-121.bin",
+          "bytes": 52,
+          "sha256": "3380c0c80d8faad72ca646a853ed917edd2f30fd0527e83e58ce731c40aa7b3f"
+        },
+        {
+          "id": "E118",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-r1/distinct-current/A-go197-82.bin",
+          "bytes": 52,
+          "sha256": "64b95010ecb0e40bc0367f41f6710d2357fb2538ce827e205825284601237ef8"
+        },
+        {
+          "id": "E119",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-r1/distinct-current/A-guest110-r1-109.bin",
+          "bytes": 44,
+          "sha256": "f300f7803c78018bc7bb0a99ff04bd200a6843d607915cb48c84b78b557b6a61"
+        },
+        {
+          "id": "E120",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-r1/distinct-current/A-guest110-r2-148.bin",
+          "bytes": 44,
+          "sha256": "df02d8a7984631a6c13646af10eae0def798bf3d6ac4691112817b04012efdb7"
+        },
+        {
+          "id": "E121",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-r1/distinct-current/A-host110-r1-106.bin",
+          "bytes": 44,
+          "sha256": "bbbf2539317016a757afed97a98b9103e3e64fa0b31dc96c0a3ff853c815818e"
+        },
+        {
+          "id": "E122",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-r1/distinct-current/A-host110-r2-145.bin",
+          "bytes": 44,
+          "sha256": "3f61445619e55a509cbcfc153858b6fb4a8529cba6b9bad57fe91aa05570c76b"
+        },
+        {
+          "id": "E123",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-r1/distinct-current/A-item165-r1-17-91.bin",
+          "bytes": 50,
+          "sha256": "2ad2e7cbd637f553ff114fada41951a1129ca3dc52b14a540a60ccea59088bf0"
+        },
+        {
+          "id": "E124",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-r1/distinct-current/A-item165-r2-17-130.bin",
+          "bytes": 50,
+          "sha256": "1f7b0435485208c4a329795aa60112b09552104e608473b7f5057406ce53b206"
+        },
+        {
+          "id": "E125",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-r1/distinct-current/A-peer153-127.bin",
+          "bytes": 135,
+          "sha256": "ca4b979909af915bc4f4b7b8a9fc1bdb9cb4a4e3c907a2200d04a10e99b3d788"
+        },
+        {
+          "id": "E126",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-r1/distinct-current/A-peer153-88.bin",
+          "bytes": 135,
+          "sha256": "ebaaf948f38a6fb3bd37369e84077d6de1a93e4e45e13245eff5d26d79bbb566"
+        },
+        {
+          "id": "E127",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-r1/distinct-current/A-play196-124.bin",
+          "bytes": 45,
+          "sha256": "e0f364fc0becf0a2a91327c1a33e299af37f1cecc00a26d40443c5bda58b1af4"
+        },
+        {
+          "id": "E128",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-r1/distinct-current/A-play196-85.bin",
+          "bytes": 45,
+          "sha256": "d04bf155b4847f9d41b0edfdf00a32526302273271c0f1cadbb8ce22b89eb51d"
+        },
+        {
+          "id": "E129",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-r1/distinct-current/A-rank175-r1-100.bin",
+          "bytes": 340,
+          "sha256": "5b3751f4c322454005652035ed69253cac647ed0fbc24540bd0599fa2bae6c31"
+        },
+        {
+          "id": "E130",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-r1/distinct-current/A-rank175-r2-139.bin",
+          "bytes": 340,
+          "sha256": "076e2ce52df3f3450801afd1e815de8afcccc048d94546b45cd74c50f03dd959"
+        },
+        {
+          "id": "E131",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-r1/distinct-current/A-ready110-112.bin",
+          "bytes": 44,
+          "sha256": "f31c5f5630019345dc62b5027f13c5267af82643ac2dbac979f0a454192b910e"
+        },
+        {
+          "id": "E132",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-r1/distinct-current/A-ready110-73.bin",
+          "bytes": 44,
+          "sha256": "8fafd9cf652b458ee09b3751a0201f9ab1409920398e0e842e43b915c8840e25"
+        },
+        {
+          "id": "E133",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-r1/distinct-current/A-return180-r1-103.bin",
+          "bytes": 41,
+          "sha256": "996ed34682d009d8977c2571e23c636f824049fb8d962426a9c2d903ed080200"
+        },
+        {
+          "id": "E134",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-r1/distinct-current/A-return180-r2-142.bin",
+          "bytes": 41,
+          "sha256": "7e2f2c7c886e57bc6ea6b82c1aaa41fa02ca04bcebdf5e725bb7531d97d17567"
+        },
+        {
+          "id": "E135",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-r1/distinct-current/A-start121-r1-79.bin",
+          "bytes": 167,
+          "sha256": "4d85d0786f484c579ef94cd61ceaa40997df93c39589d720ea8334bc9b5ca29f"
+        },
+        {
+          "id": "E136",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-r1/distinct-current/A-start121-r2-118.bin",
+          "bytes": 167,
+          "sha256": "114870f79c6ad77dc120564851285f2b8f63e558d1df95f13a2d8dbed22ec2b7"
+        },
+        {
+          "id": "E137",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-r1/distinct-current/B-blast158-r1-1-97.bin",
+          "bytes": 51,
+          "sha256": "74e2de4a80eccc95ca075b6b7b315a7883176c212d7f752f47cb45a80c0122e3"
+        },
+        {
+          "id": "E138",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-r1/distinct-current/B-blast158-r2-2-142.bin",
+          "bytes": 51,
+          "sha256": "b12c3fbe13bba6591e62ca40687ffe6a04b44a19ffbc64d48647cd6075c91ebc"
+        },
+        {
+          "id": "E139",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-r1/distinct-current/B-dynamic159-r1-1-94.bin",
+          "bytes": 77,
+          "sha256": "40cb01702e54e6d2af32a988af001e86dcc8435d34cb8af9adebb9c9e3c4bf0d"
+        },
+        {
+          "id": "E140",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-r1/distinct-current/B-dynamic159-r2-2-139.bin",
+          "bytes": 77,
+          "sha256": "863b912df2ecdbc636ddaa7785397adce752b6eea6abfa6d02410a9b80a857dd"
+        },
+        {
+          "id": "E141",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-r1/distinct-current/B-event170-17-r1-100.bin",
+          "bytes": 48,
+          "sha256": "543c4464eae7b248ee840abf710275a6c5ac55d6a6ed5619245efd011ce89830"
+        },
+        {
+          "id": "E142",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-r1/distinct-current/B-event170-17-r2-145.bin",
+          "bytes": 48,
+          "sha256": "ee3cc4a3b126659bb109b4ffed0e591075a352a49ba3d5288b54079676abb2e0"
+        },
+        {
+          "id": "E143",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-r1/distinct-current/B-event170-19-r1-103.bin",
+          "bytes": 59,
+          "sha256": "32e1d81cf525e49ce778905d5452501714bc48955ed713ba54e53197282c78d2"
+        },
+        {
+          "id": "E144",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-r1/distinct-current/B-event170-19-r2-148.bin",
+          "bytes": 59,
+          "sha256": "ebd5d2a37aded89b5e149a6a64585210c0563693ff7fae21528833690caee3f6"
+        },
+        {
+          "id": "E145",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-r1/distinct-current/B-floor582-121.bin",
+          "bytes": 64,
+          "sha256": "b108cbc93ed5896e87a383e680b955df612b139b892fe2dc6fa7c89dc76d1eaf"
+        },
+        {
+          "id": "E146",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-r1/distinct-current/B-floor582-76.bin",
+          "bytes": 64,
+          "sha256": "dade68ac6b12c8c7ae59bf27d007ad4f1b32b6369d9a0fcd29170b3063e42ace"
+        },
+        {
+          "id": "E147",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-r1/distinct-current/B-go197-127.bin",
+          "bytes": 52,
+          "sha256": "4479c8d2bd5a138f8dd57f39fc717eabaade8d4273b394c5d4da4ac42a32ce22"
+        },
+        {
+          "id": "E148",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-r1/distinct-current/B-go197-82.bin",
+          "bytes": 52,
+          "sha256": "64b95010ecb0e40bc0367f41f6710d2357fb2538ce827e205825284601237ef8"
+        },
+        {
+          "id": "E149",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-r1/distinct-current/B-guest110-r1-115.bin",
+          "bytes": 44,
+          "sha256": "b9a562c345517aa67d96c51dfe93daedc56af471a1e386fd57cb165b0cee0bf1"
+        },
+        {
+          "id": "E150",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-r1/distinct-current/B-guest110-r2-160.bin",
+          "bytes": 44,
+          "sha256": "6e725be5eaf80cc30e3e51269018d224087c7b2b56713e255fbc72e8bb48e884"
+        },
+        {
+          "id": "E151",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-r1/distinct-current/B-host110-r1-112.bin",
+          "bytes": 44,
+          "sha256": "57460635dc0e9976e22e6b40d430710aab16e6a33c152be10c6a80b4564c3110"
+        },
+        {
+          "id": "E152",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-r1/distinct-current/B-host110-r2-157.bin",
+          "bytes": 44,
+          "sha256": "19ca60c86c873daa8df91c39edd61ebf3baafa3b8b4439c672d5dc049de76026"
+        },
+        {
+          "id": "E153",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-r1/distinct-current/B-item165-r1-17-91.bin",
+          "bytes": 50,
+          "sha256": "2ad2e7cbd637f553ff114fada41951a1129ca3dc52b14a540a60ccea59088bf0"
+        },
+        {
+          "id": "E154",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-r1/distinct-current/B-item165-r2-17-136.bin",
+          "bytes": 50,
+          "sha256": "777c46f533113967cf62ae0c9994a9aff2a2f9d88a5eb35f01042cbe0ef60d75"
+        },
+        {
+          "id": "E155",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-r1/distinct-current/B-peer153-133.bin",
+          "bytes": 135,
+          "sha256": "1753edf1cf77650ca946e324cab744aa8b9cd98e8b9fc7df557242091498fbb4"
+        },
+        {
+          "id": "E156",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-r1/distinct-current/B-peer153-88.bin",
+          "bytes": 135,
+          "sha256": "592cee734ad7418845df934e46ac6a507f947172b95aa1e1261298aa7c764c06"
+        },
+        {
+          "id": "E157",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-r1/distinct-current/B-play196-130.bin",
+          "bytes": 45,
+          "sha256": "13f2d542669df1a08be243989a4e70967313aab6c60971f9d235817f9240b651"
+        },
+        {
+          "id": "E158",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-r1/distinct-current/B-play196-85.bin",
+          "bytes": 45,
+          "sha256": "d04bf155b4847f9d41b0edfdf00a32526302273271c0f1cadbb8ce22b89eb51d"
+        },
+        {
+          "id": "E159",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-r1/distinct-current/B-rank175-r1-106.bin",
+          "bytes": 340,
+          "sha256": "af64696343b71bbddfcca524adcb34b3c8dd3b736f65508ac464a977c1810384"
+        },
+        {
+          "id": "E160",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-r1/distinct-current/B-rank175-r2-151.bin",
+          "bytes": 340,
+          "sha256": "a8f475739686a41b6fe6a6c6f2e2bceadcc320ea62dd0c7c8d819769e9fe05ee"
+        },
+        {
+          "id": "E161",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-r1/distinct-current/B-ready110-118.bin",
+          "bytes": 44,
+          "sha256": "6526e2f461589ee6ea8406ec75602e5c82bbf08353ee8d7d8b7f54952d1dac89"
+        },
+        {
+          "id": "E162",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-r1/distinct-current/B-ready110-73.bin",
+          "bytes": 44,
+          "sha256": "8fafd9cf652b458ee09b3751a0201f9ab1409920398e0e842e43b915c8840e25"
+        },
+        {
+          "id": "E163",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-r1/distinct-current/B-remove107-163.bin",
+          "bytes": 44,
+          "sha256": "018c8421718aaf84c501b8ca2f23d39e97750053b22c423b5101e2849cd4db83"
+        },
+        {
+          "id": "E164",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-r1/distinct-current/B-return180-r1-109.bin",
+          "bytes": 41,
+          "sha256": "b53daa3dda63e60a45282c346e337b4d3d97dd07a2ef4b33a42a147350601e54"
+        },
+        {
+          "id": "E165",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-r1/distinct-current/B-return180-r2-154.bin",
+          "bytes": 41,
+          "sha256": "6cfe760393700f6f5727536b029fbf72d8d3fcbd640b42da5887c4fe612b6389"
+        },
+        {
+          "id": "E166",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-r1/distinct-current/B-start121-r1-79.bin",
+          "bytes": 167,
+          "sha256": "4d85d0786f484c579ef94cd61ceaa40997df93c39589d720ea8334bc9b5ca29f"
+        },
+        {
+          "id": "E167",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-r1/distinct-current/B-start121-r2-124.bin",
+          "bytes": 167,
+          "sha256": "a0ced0d696374c0497a2cb2a20361b7eaa61a7321bc9dfaa57c97fc151fc588c"
+        },
+        {
+          "id": "E168",
+          "kind": "local",
+          "path": "local/research/codex/distinct-spawn-r1/distinct-current/B-survivor110-166.bin",
+          "bytes": 44,
+          "sha256": "dd924b4b2bec2ef2ad5e167f3e4df028f3e66365243aeca3e6718b3edf94c145"
+        },
+        {
+          "id": "E169",
+          "kind": "local",
+          "path": "local/research/codex/wine_probe_distinct_spawn.py",
+          "bytes": 39918,
+          "sha256": "7f2ac77d8e22d568ed5c4f9c78dc0f35e8d54abf2531e45ec3cb397b3b99de0e"
+        }
+      ],
+      "delta": {
+        "added": [
+          "SamecurrentABprofiletwo cycles withdistinctnativepoint/actor/reset,exportdefaultmeasured;explicitoverlapREoption."
+        ],
+        "corrected": [
+          "Currentserviceoverlapwasdeliberatedatafixture,notunknownspawnmechanism;existingCP024exact121reusedwithoutloaderRE."
+        ],
+        "superseded": [
+          "NEXT-DISTINCT-SPAWNmeasuredinscope;nextcurrentdistinctspawnactualcontestedindex/same-runconsistency."
+        ]
+      },
+      "blockers": [
+        "Currentdistinctspawnactualcontestedindexnotyetinthissame-run;CP062raceoverlapseparate.",
+        "MixedowneradjacentCP064partial;fullauth/cache/codec/validator/whole reset/Windowsvanilla/K4/K6a/LANInternet open."
+      ],
+      "next_steps": [
+        {
+          "id": "NEXT-DISTINCT-SPAWN",
+          "task": "KRE-005b",
+          "state": "superseded",
+          "action": "CP065nativeABtwo-cycledistinctspawn/reset measured;remainingvariantsinRESEARCH/gates.",
+          "owner": "Codex",
+          "reviewer": "Codex"
+        },
+        {
+          "id": "NEXT-DISTINCT-SPAWN-RACE",
+          "task": "KRE-005b",
+          "state": "active",
+          "action": "ImmediatelyreuseCP030/062actualtwo124/deliveryhold/nativeeffect andknown582layout;itembetweendistinctspawns ifneededwithfixtureprovenance. Same-run2cycles/onewinnerbothviews/reset,actualwritersnotminted;boundmissingreportgap,notgatefrom2ranks.",
+          "owner": "Codex",
+          "reviewer": "Codex"
+        }
+      ],
+      "review": {
+        "status": "waived",
+        "as_of_utc": "2026-11-02T16:22:07.401574+00:00",
+        "reference": "docs/evidence/checkpoints/review-waiver.json",
+        "scope": "Codex solo RE/code/runtime/selfcheck, not independent approval.",
+        "authorization": {
+          "by": "project_owner",
+          "reference": "docs/evidence/checkpoints/review-waiver.json",
+          "reason": "Owner explicitly requested solo without Claude review."
+        }
+      },
+      "docs_sync": [
+        {
+          "path": "README.md",
+          "state": "updated",
+          "reason": "CP065distinctnativeABspawn/resetcurrentprofile/exportdefault+overlapRE;nextdistinctrace,limitsnogatepromotion."
+        },
+        {
+          "path": "docs/PLAN.md",
+          "state": "updated",
+          "reason": "CP065distinctnativeABspawn/resetcurrentprofile/exportdefault+overlapRE;nextdistinctrace,limitsnogatepromotion."
+        },
+        {
+          "path": "docs/PROTOCOL.md",
+          "state": "updated",
+          "reason": "CP065distinctnativeABspawn/resetcurrentprofile/exportdefault+overlapRE;nextdistinctrace,limitsnogatepromotion."
+        },
+        {
+          "path": "docs/RESEARCH.md",
+          "state": "updated",
+          "reason": "CP065distinctnativeABspawn/resetcurrentprofile/exportdefault+overlapRE;nextdistinctrace,limitsnogatepromotion."
+        },
+        {
+          "path": "docs/features.json",
+          "state": "updated",
+          "reason": "CP065distinctnativeABspawn/resetcurrentprofile/exportdefault+overlapRE;nextdistinctrace,limitsnogatepromotion."
+        },
+        {
+          "path": "docs/COVERAGE.md",
+          "state": "updated",
+          "reason": "CP065distinctnativeABspawn/resetcurrentprofile/exportdefault+overlapRE;nextdistinctrace,limitsnogatepromotion."
+        },
+        {
+          "path": "server/README.md",
+          "state": "updated",
+          "reason": "CP065distinctnativeABspawn/resetcurrentprofile/exportdefault+overlapRE;nextdistinctrace,limitsnogatepromotion."
+        },
+        {
+          "path": "docs/evidence/distinct-spawn/README.md",
+          "state": "updated",
+          "reason": "CP065distinctnativeABspawn/resetcurrentprofile/exportdefault+overlapRE;nextdistinctrace,limitsnogatepromotion."
+        }
+      ]
     }
   ],
   "audits": [
@@ -133305,6 +134685,12 @@
       "state": "open",
       "canonical": "docs/PLAN.md",
       "reference": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/88"
+    },
+    {
+      "id": "KRE-028",
+      "state": "open",
+      "canonical": "docs/PLAN.md",
+      "reference": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/90"
     }
   ]
 }

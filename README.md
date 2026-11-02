@@ -29,12 +29,13 @@ runtime nào có nguồn, còn thiếu gì và phép kiểm nào giải quyết.
 evidence/hash và câu hỏi; [PLAN](docs/PLAN.md#current-order) giữ duy nhất thứ tự công việc.
 Đây là scope đường bootstrap → login → sảnh → phòng → Battle → kết quả/reset, không kiểm kê toàn client.
 
-CP064: đã đo bom hai owner cách hai ô ở cả hai view; liền kề chưa đạt, run trace gọn bị chặn trước Battle.
-[Contract/giới hạn](docs/PROTOCOL.md#mixed-owner-chain), [raw/hash](docs/evidence/mixed-owner-chain/README.md).
-Chưa K6a/fullmatch/LAN/Internet/fullvalidator/reset; tiếp spawn riêng cho hai client trên currentprofile theo PLAN.
+CP065: currentprofile đã chạy hai chu kỳ A/B với spawn riêng, native tọa độ/reset khớp hai view;
+exporter mặc định distinct, còn tùy chọn overlap phục vụ RE. [Contract/giới hạn](docs/PROTOCOL.md#distinct-spawn),
+[raw/hash](docs/evidence/distinct-spawn/README.md). Chưa K4/K6a/fullmatch/LAN/Internet/fullvalidator/reset.
 
-CP063 đã merge [PR87](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/87) tại `a0f44d0`.
-CP064 tự kiểm/tích hợp theo [PR89](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/89), review độc lập [waived](docs/evidence/checkpoints/review-waiver.json).
+CP064 đã merge [PR89](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/89) tại `9ebc93c`;
+chain liền kề khác owner còn mở tại issue88. CP065 tự kiểm/tích hợp theo [PR91](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/91),
+review độc lập [waived](docs/evidence/checkpoints/review-waiver.json).
 Audit **AUD020/CP064**, periodic kế **CP068**.
 [Yêu cầu chủ dự án](docs/evidence/owner-directives/continuous-work.json): tiếp tục ngay việc kế trong
 PLAN sau mỗi checkpoint/commit/PR, không tự dừng/chờ nhắc.
