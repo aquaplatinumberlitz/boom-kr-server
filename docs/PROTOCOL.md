@@ -1,6 +1,6 @@
 # KR 00967 — contract tương thích client gốc
 
-Revision kr-legacy-contract-r1; cập nhật03/11/2026 JST (CP072).
+Revision kr-legacy-contract-r1; cập nhật03/11/2026 JST (CP073).
 **Contract có bằng chứng từng phần; chưa nghiệm thu full codec K2**.
 Lộ trình và thứ tự task chỉ giữ ở [REWRITE_PLAN — KRE](PLAN.md).
 Đây là contract của repo server KR. ADR0009 của bản viết lại là nguồn lịch sử để so sánh;
@@ -1958,7 +1958,7 @@ liệt kê và phân biệt với nguyên bản trong mọi demo.
 <a id="authority"></a>
 ### Authority matrix hiện hành và gate review
 
-Bảng này tổng hợp bằng chứng từng phần đến CP072; chưa phải toàn contract server gốc. Mỗi hàng khi
+Bảng này tổng hợp bằng chứng từng phần đến CP073; chưa phải toàn contract server gốc. Mỗi hàng khi
 triển khai phải bổ sung riêng **creator, simulator, validator, broadcaster, peer-editable state**, với
 locator/trace và trạng thái từng ô; những vai trò không nêu dưới đây hiện `unknown` cho KR.
 
@@ -2684,3 +2684,23 @@ Forfeit/rank/timing/dispatchhold là **design**, không death/originalserver. Kh
 servicefix/force state; không gameplay/2cycles/fullreset/hostEOFvariant/accountresume/timeout/loadfail/
 K4/K5/K6a/fullmatch/LANInternet/vanilla. Next actualblocker: NMCO locale caller/input/result,
 không lặp input/proxy hoặc reopen175/180receiver đã đo. Sau startup ổn mới hoàn tất native107.
+
+<a id="launcher-error-attribution"></a>
+### Attribution popup launcher và lỗi main — CP073
+
+[Recipe/argv/ASLR/control/hash](evidence/nmco-locale-stability/README.md). **kr_runtime/confirmed hẹp**:
+standaloneCALauncher, cả emptyargv lẫn2CAargs, không gameTCP: nmcogame nativeexportRVA1D140/actualbase
+7A540000 nhận1,0/validation1/internalinit0/errors2000:0, hiển thị đúng popup. Provider/launcher là bytes
+KRnguồn/privatecopies, không patchedstub. InvalidID/code1000 và missingexport3000 là nhánh tĩnh khác.
+
+Mainnegative actualTCPclose sau6/trước17 khiến CreateProcessA gọiCALauncher.exe/emptycmd/flags20,
+return1258231, rồi mainSIGSEGV17C7F4C. Không khẳng định đây là cause của historicalSIGABRT96A.
+HaiA-only+duo/currentprofileactual67 positive, targetlocale/HTTP/fallback probes không hit trongwindow.
+96A155→96A480 là HTTPJSON `contentsUrl`, không tự nhận là locale caller từstack. ExactUIstring thuộc
+auxiliaryCALauncher, oldprocesssnapshot cũng cóprocessriêng. **Unknown:** gốc startupinterrupt/
+HTTPfatal/history và providerinitinternals; popup đồng thời không chứng minh causalroot của main.
+
+Preferredbaseprobe lỗiASLR và genericargvclaim sai giữraw/correction; actualbaseMZ/exportbytes và
+emptyargvcontrol đã đo riêng. Không locale/client/provider/servicefix/force success, không stability/
+fullauth/K5/K6a/fullmatch/LANInternet/vanilla proof. Bước kế tiếp preclocknative107 observer với
+fallback/errorstate diagnostics; không bypassauxiliary locale để giả mainổnđịnh.

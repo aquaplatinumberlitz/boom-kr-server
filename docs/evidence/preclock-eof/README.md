@@ -65,3 +65,7 @@ K5/K6a/LANInternet/vanilla/auth/originalforfeit. Native slotclear còn mở. Ưu
 input/result của NMCO locale đang cản runtime: reuse CP006–020/064, chỉ trace branch96A15A/96E300/
 9769B3 và API liên quan trên copy. Chưa kết luận lỗi do identity/cache/region/prefix; giữ positive và
 negative runtime để chọn phép kiểm nhỏ, không retry proxy/chain hoặc ép success khi chưa biết nhánh.
+
+Attribution cập nhật ở [CP073](../../PROTOCOL.md#launcher-error-attribution): cùng popup đã tái hiện
+trong auxiliary/no gameTCP; stack96A15A là HTTPcontents, chưa locale caller. Không dùng nhãn
+startupNMCO tại CP072 làm causalroot main. Raw/error/nativecleanupunknown giữ; thứ tự hiện hành ở PLAN.
