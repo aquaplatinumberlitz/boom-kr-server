@@ -19,7 +19,7 @@ Nguồn cũ và run/checkpoint giữ trong phần lịch sử bên dưới và m
 CP055 nối nguồn t, CP056 có [guard theo report](PROTOCOL.md#pickup-report-state),
 CP057 đối chiếu [codec stream trong model](PROTOCOL.md#codec-stream-boundaries);
 CP058 sửa [string/tail auth](PROTOCOL.md#auth-profile), CP059 giải [một cache representation](PROTOCOL.md#dynamic-cache-representation),
-CP060 kiểm [C với currentprofile](PROTOCOL.md#current-profile-c); chưa fullauthentication/cache. Giới hạn
+CP060 kiểm [C với currentprofile](PROTOCOL.md#current-profile-c), CP061 có [A/B2cycles hiện hành](PROTOCOL.md#current-pair-round); chưa fullauthentication/cache. Giới hạn
 [service](PROTOCOL.md#probe-service) và bảng gap dưới giữ mở; không nghiệm thu K5/K6a.
 
 | Câu hỏi / owner | Trạng thái | Khoảng trống và phép đo hiện hành |
@@ -70,7 +70,7 @@ Bảng được [coverage](COVERAGE.md) trích tự động để tra theo chứ
 | <a id="gap-result-return"></a>KR-X001 | 175/outcome do policy chọn;21/sub34/chọn rank/authority chưa phục hồi đầy đủ. | Đối chiếu deathstate hai view trước175, cursor/full blob và180/reset trong cùng service run; không coi rank thay state. |
 | <a id="gap-round-reset"></a>KR-X002 | Reset field đã đo không là toàn entity/seq/queue/timer/túi; CP049 đã loại old124 khác k, transport/forged-current-key/roster lifetime còn mở. | Tái dùng CP041–047; kiểm job/claim/key owner cùng run ở vòng2 và sau abort, đối chiếu field hiện hành với baseline vòng1. |
 | <a id="gap-disconnect-replacement"></a>KR-X003 | CP052/053 setup guest/hostEOF, CP054 C mới trước vòng1 và một B/C playedround đã đo; không account resume/full reset/idleEOF/sendfailure/timeout/loadfail proof. | Giữ source controls; nếu ca acceptance phát hiện sendfailure/timeout/latejoin thì đo đúng boundary/current roster. Không chạy lại C3/BStart hoặc mở mọi race trước validator/auth debt. |
-| <a id="gap-diagnostic-service"></a>KR-S001 | CP060 current41profile Cauth135/errors0/B-Cround và A/B137/cacheaccepted; cuối controller có Breset sau vòng. Chưa cùngprofile2playedcycles/wholeconsistency/fullauth. | Tái dùng two-cyclepath/nativeproof A/B, log actual124/key/165/reset/bomb/statepeer/result/return cùngrun theo PLAN; không dùng2rank thay K6a hoặc đọc teardownerror thành gameplayrecovery. |
+| <a id="gap-diagnostic-service"></a>KR-S001 | CP061 current41profile A/B2cycles/actualpickup/reset/bomb/state/result đã kiểm; sampled movement hai actor khớp. Chưa currentservice contestedindex/fullreset/authority/transport. | Theo PLAN tái dùng CP030race và ItemClaims với actualtwo124/sameindex; kiểm winner/stat/peer/reset cùngrun, delaydelivery đo nếu cần, không encoderrequest hoặc2rank thay K6a. |
 | <a id="gap-service-hardening"></a>KR-S002 | Chưa LAN/Internet/bốn client/restart/backpressure/rate limit/persistence đủ K7. | Sau local gate có evidence, thử hai máy theo K6b rồi loss/disconnect/restart; không lấy loopback accept làm multiplayer. |
 
 ## Diễn biến lịch sử theo checkpoint

@@ -1,6 +1,6 @@
 # KR 00967 — contract tương thích client gốc
 
-Revision kr-legacy-contract-r1; cập nhật02/11/2026 JST (CP060).
+Revision kr-legacy-contract-r1; cập nhật02/11/2026 JST (CP061).
 **Contract có bằng chứng từng phần; chưa nghiệm thu full codec K2**.
 Lộ trình và thứ tự task chỉ giữ ở [REWRITE_PLAN — KRE](PLAN.md).
 Đây là contract của repo server KR. ADR0009 của bản viết lại là nguồn lịch sử để so sánh;
@@ -2393,3 +2393,24 @@ không suy đây là gameplaydisconnect hoặc đã nghiệm thu reset recovery.
 759nativeframer cases,135packet/6native153/210secure snapshots và1865relations chỉ kiểm bằng chứng hẹp.
 No newstaticbody; originalsourcehash giữ. Theo PLAN tiếp hai vòng A/B với **currentprofile** trong cùngrun;
 AUD019periodicCP060, cadence kếCP064. Gate/auth/cache/validator/reset tổng quát vẫn mở.
+
+<a id="current-pair-round"></a>
+### Hai chu kỳ A/B trên currentprofile — CP061
+
+**kr_runtime/confirmed hẹp trên Winecopy**, [recipe/raw/hash/phép kiểm](evidence/current-pair-round/README.md).
+Tái dùng two-cyclepath CP048/055/056 và profile41 CP058–060; không newnativebody/patch/servicecode.
+Cùng8connections/IDs1,2/slots0,1, actualStart/Ready/99/121/153/clock hai lần; keys12345→12346.
+Mỗi vòng **actualA124→165 cả hai**, secureRollerA5→6, vòng2reset5 trước nhặt mới;
+Bcurrent4 giữ. Mỗi vòng A118, service cấp ID1→2,159/158→A17/19→B170/B21; stateA1 ở cả hai
+trước175, Bkhôngstate1,175302/1803/errors0/phòng/refresh hai lần. Reportmarker17/19 vòng1 không chặn
+actualpickup vòng2; claim/catalog/key/stat được reset hẹp, không toànentity/queue/transport/reset proof.
+
+Hai nativeview cùng tọa độ tại clock và trước175: đầu vòng cả haiactor(120,159); sau input,
+A=(120,289) vòng1/(120,279) vòng2, B=(200,159) cả hai, khớp ở A/B.
+Đây là đồng thuận **sampled movement hai actor trong run**, không fullgrammar/pxs/correction/UDPcausality.
+AuthA/B137/errors0/namedcacheaccepted/no528 giữ; sau chỉnh UI delay12s input2round không forcefunction.
+Không dùng processalive/encoder tựsinh hoặc2rank để nâng fullmatch/K6a/LAN/Internet.
+
+Chưa có currentservice hai người **cùng tranh index**/đảo winner/duplicate theo transport;
+[CP030](#item-pickup) đã có method/actualrace trên oldharness, không đọc thành proof profile/service mới.
+Tiếp ca này, tái dùng wire/claim/nativeeffect, không RE lại t/k/auth/cache hoặc chạy mọirace.
