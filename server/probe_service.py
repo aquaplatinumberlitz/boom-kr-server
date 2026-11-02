@@ -67,7 +67,7 @@ class ProbeService:
         self.closed = False
         self.round = {'index': 0}
         self.state = {'schema': 'kr-probe-service-v1', 'tcp_events': self.events,
-                      'round_bombs': [], 'event_reports': [], 'round_history': [],
+                      'round_bombs': [], 'bomb_requests': [], 'event_reports': [], 'round_history': [],
                       'item_requests': [], 'policy_events': [], 'errors': [],
                       'source': 'emu_choice', 'profile': profile.data,
                       'limits': 'Fixture auth/roster/rank, loopback-only, two live members/A-B then B-C by accept order; no fullmatch gate.'}
@@ -121,7 +121,8 @@ class ProbeService:
                                             'key': key, 'monotonic_ns': time.monotonic_ns()})
         for event in self.peers():
             markers = ['start_response_sent', 'init99', 'go_response_sent', 'play_response_sent',
-                       'begin_response_sent', 'peer153_sent', 'death_event', 'pickup_ineligible']
+                       'begin_response_sent', 'peer153_sent', 'death_event', 'pickup_ineligible',
+                       'bomb_serials']
             if event.get('start_response_sent'):
                 event.setdefault('rounds', []).append({key: event[key] for key in markers if key in event})
             for marker in markers:
@@ -177,7 +178,29 @@ class ProbeService:
             values = codec.read_fields(body, [4, 1, 1, 4, 1, 1, 1, 1, 1, 1, 1, 4, 1])
             if values[-1] != 0 or values[2] != ROLE_SLOTS[role]:
                 raise ValueError('unsupported bomb report')
+            request = {'round': self.room.generation, 'role': role, 'seq': sequence,
+                       'fields': values, 'monotonic_ns': time.monotonic_ns(),
+                       'frame_sha256': hashlib.sha256(frame).hexdigest(),
+                       'body_sha256': hashlib.sha256(body).hexdigest()}
+            self.state['bomb_requests'].append(request)
+            # Fixture policy, not authentication: native record+8 matches the
+            # current153 key in the measured profile. Serial is scoped to the
+            # bound owner and this round; it can repeat after Start.
+            if values[0] != self.room.key:
+                request['rejected'] = 'bomb_round_key_mismatch'
+                return
+            serials = event.setdefault('bomb_serials', {})
+            prior = serials.get(values[3])
+            if prior is not None:
+                request['rejected'] = ('duplicate_bomb_serial'
+                                       if prior['body_sha256'] == request['body_sha256']
+                                       else 'conflicting_bomb_serial')
+                request['prior_id'] = prior['id']
+                return
             ticket = self.room.bomb()
+            request['id'] = ticket.wire_id
+            serials[values[3]] = {'generation': self.room.generation, 'id': ticket.wire_id,
+                                  'body_sha256': request['body_sha256']}
             fields = [0, values[2], 0, values[3], 0, 0, values[4], values[5], values[10],
                       1, 0, ticket.wire_id, 0, 1, 0, 0, 0]
             payload = codec.pack_fields(fields, [1, 1, 2, 4, 4, 4, 1, 1, 1, 4, 1, 2, 2, 1, 8, 1, 1])

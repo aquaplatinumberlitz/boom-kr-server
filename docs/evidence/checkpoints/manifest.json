@@ -1,7 +1,7 @@
 {
   "schema": "kre-checkpoints-v1",
-  "last_id": "CP066",
-  "completed_count": 66,
+  "last_id": "CP067",
+  "completed_count": 67,
   "audit_interval": 4,
   "last_periodic_audit": 64,
   "next_periodic_audit": "CP068",
@@ -135755,6 +135755,1992 @@
           "reason": "CP066currentdistinctspawnactual2writer/onewinner/stat/reset/same-run2cycles;nextC2S118admissiongap,limitsno gatepromotion."
         }
       ]
+    },
+    {
+      "id": "CP067",
+      "previous": "CP066",
+      "lifecycle": "complete",
+      "recorded_utc": "2026-11-02T16:48:56.527943+00:00",
+      "context_commit": "40ec5441fe4a4d08b795322ff84ef8ec37ea11ab",
+      "question": "Can exact duplicate or oldC2S118 createextra ID/timer/remoteentity; canboundedfirstfieldkey/perowner-roundserialadmission protect currentservicewithoutblockingnewroundserialreuse?",
+      "scope": "KRE-030/#94. ReuseCP021/025cachedwriter/CP065profile/nativeconsumer;2nativewriterbyterangesmatch4artifacts,8prioractual118field0matchescurrentkey,readonlyrecord+8/+0Cjoinedactual. BaselineandguardWine sequential/samesources;no newnativebody/patch. RuntimecontrolpartialR2ghost;guard2completecycles/3injectionsrejected. AUD020/CP064,nextCP068. NextCP032block/list2/revealcurrentservice.",
+      "owner": "Codex",
+      "reviewer": "Codex",
+      "artifacts": [
+        {
+          "name": "CA-r2-login-logout.exe",
+          "sha256": "660447c293ce92270cb9b5815331bca976e8f156366e1fe50b217b6c12e60ce3"
+        },
+        {
+          "name": "CA-r2-stage-social.exe",
+          "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+        },
+        {
+          "name": "CA-r2-stage-social.exe Bcopy",
+          "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+        },
+        {
+          "name": "modO.bin",
+          "sha256": "a08950c833d3acab8281049def7b3dc96b221f107eeda01da3a548e34b91dce5"
+        },
+        {
+          "name": "CA-r2-stage-social.exe Ccopy",
+          "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+        }
+      ],
+      "locators": [
+        "control118 2026-11-02T16:35:10Z runSHAc57b0452b934d644e5e91cc9e19c9d3b8dcc3bcfc3d5598ebad4286439bb0cb2",
+        "guard118 2026-11-02T16:39:22Z runSHA82cb0c4635809e5fa4bd443e3a9afaf23c6fc0a2c10c93a5bb0ed436caef1364",
+        "E2DF80/E2E03Drecord+8firstu32/E2E0B3record+0Cserial;knownwriterbyteranges/static660447/runtimee9bb47/modOa08950rawbase400000,RVA=VA-400000",
+        "Controlactual118ID1/duplicateID2/oldR1bodyR2ID3;A159entity0for2/3,Bnonzero2/3,oldID3kind0Bonly",
+        "Guardactualserial0keys12345/12346→IDs1/2,newStartclearsserialmap;2duplicate+1oldkey noalloc/nojobs/no159"
+      ],
+      "findings": [
+        {
+          "summary": "Baseline duplicatesameactual118 allocatesID2/timer,oldR1bodyafterR2A39 allocatesID3/timer;nativeA159returns0forextraIDs,Bcreatesbothremoteentities;oldID3timer enterskind0BnotA. Dispatchercontrol consequence,notTCPproof.",
+          "source": "kr_runtime",
+          "status": "confirmed",
+          "method": "runtime",
+          "canonical": "docs/PROTOCOL.md#c2s118-admission",
+          "limits": "Winecopy/currentprofile41;exactC2S118replaysatdispatcher,bypassTCP/framer/seqadmission,notactualtransportreplay. Guardkey/perowner-roundserialdesign,notauthentication/originalvalidator/firstfieldconstructor/serialgenerationwrap/cap/distance/forgedcurrentkeynewserial/whole reset/K6a/LANInternet. Nativeheap/receiver/gettercountermodels emulationonly.",
+          "evidence": [
+            "E134",
+            "E139",
+            "E020",
+            "E052"
+          ]
+        },
+        {
+          "summary": "Guardfullfield0key beforeperowner-roundserial/bodySHAreserve rejects2duplicate+1oldkeywithoutID/jobs/159;actualserial0keys12345→12346passesIDs1→2,currentAB2cycles/pickup/bom/state/result/return/refresh/nativeAstate1both/errors0.",
+          "source": "kr_runtime",
+          "status": "confirmed",
+          "method": "runtime",
+          "canonical": "docs/PROTOCOL.md#c2s118-admission",
+          "limits": "Winecopy/currentprofile41;exactC2S118replaysatdispatcher,bypassTCP/framer/seqadmission,notactualtransportreplay. Guardkey/perowner-roundserialdesign,notauthentication/originalvalidator/firstfieldconstructor/serialgenerationwrap/cap/distance/forgedcurrentkeynewserial/whole reset/K6a/LANInternet. Nativeheap/receiver/gettercountermodels emulationonly.",
+          "evidence": [
+            "E189",
+            "E194",
+            "E020",
+            "E003",
+            "E052"
+          ]
+        },
+        {
+          "summary": "Firstu32record+8/serial+0Ccachedwriter ranges match4artifacts,8prioractual118currentkey. Read-onlyrecordprobe valuesjoinactualTCP/nativeframer;constructor/keysource/fullserialgeneration notnewlyrecovered.",
+          "source": "kr_static",
+          "status": "confirmed",
+          "method": "emulation",
+          "canonical": "docs/PROTOCOL.md#c2s118-admission",
+          "limits": "Winecopy/currentprofile41;exactC2S118replaysatdispatcher,bypassTCP/framer/seqadmission,notactualtransportreplay. Guardkey/perowner-roundserialdesign,notauthentication/originalvalidator/firstfieldconstructor/serialgenerationwrap/cap/distance/forgedcurrentkeynewserial/whole reset/K6a/LANInternet. Nativeheap/receiver/gettercountermodels emulationonly.",
+          "evidence": [
+            "E012",
+            "E041",
+            "E020"
+          ]
+        },
+        {
+          "summary": "Callerpolicy fullkey+per-bound-owner-currentroundserial/body map;Startclearsmap,duplicateconflictnoresend;notmonotonicclock/auth.64serverregressionsinclnewseq/key+256/conflict/resetserial0/2owners/wrapnumeric/invalid/forgednewseriallimits.",
+          "source": "design",
+          "status": "design",
+          "method": "design",
+          "canonical": "docs/PROTOCOL.md#c2s118-admission",
+          "limits": "Winecopy/currentprofile41;exactC2S118replaysatdispatcher,bypassTCP/framer/seqadmission,notactualtransportreplay. Guardkey/perowner-roundserialdesign,notauthentication/originalvalidator/firstfieldconstructor/serialgenerationwrap/cap/distance/forgedcurrentkeynewserial/whole reset/K6a/LANInternet. Nativeheap/receiver/gettercountermodels emulationonly.",
+          "evidence": [
+            "E066",
+            "E050",
+            "E007"
+          ]
+        }
+      ],
+      "verification": [
+        {
+          "check": "2557relations/hash/seals/source;1254nativeframer/411packet/24native153/648secure;64server/18checkpoint/7catalog/docs/artifacts5/5/diff/requiredlocalhistory. Baselinepartialnot2validcycles;guarderrors0.",
+          "result": "pass",
+          "evidence": [
+            "E052",
+            "E050",
+            "E011",
+            "E010",
+            "E019",
+            "E005"
+          ],
+          "limits": "Policyregressionsnotnativeauthority/serialwrap/runtimeTCPproof;no gate/independentreviewcertification."
+        }
+      ],
+      "evidence": [
+        {
+          "id": "E001",
+          "kind": "repository",
+          "path": "docs/evidence/c2s118-admission/README.md",
+          "bytes": 4569,
+          "sha256": "f10105d23013351f17c05198d6810e4f209670975d2aebbc22498f196d2b3f68"
+        },
+        {
+          "id": "E002",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/153-check.txt",
+          "bytes": 23,
+          "sha256": "cec5da6f6e9f394b35736c64cef578f53e454b7482c74e74c063650e348c1889"
+        },
+        {
+          "id": "E003",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/actor-fields.json",
+          "bytes": 429589,
+          "sha256": "56c2ebc4c2572d1c066ebfa8b154178cf108d35013c0bfb4d7b11eda8f3c6403"
+        },
+        {
+          "id": "E004",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/append_checkpoint.py",
+          "bytes": 7138,
+          "sha256": "515ba8f12be3166361f5af248049e68d30974ab4484b664737781f3f7bb53155"
+        },
+        {
+          "id": "E005",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/artifacts-check.txt",
+          "bytes": 253,
+          "sha256": "649c6624aa6d317dfc1db5e16fea683cfbc9d9cf4dd3df11c0d70e57409054a0"
+        },
+        {
+          "id": "E006",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/baseline-tests.txt",
+          "bytes": 156,
+          "sha256": "577b695a03f7a2511b901e36efab8e5e88895edf1523b20349daad60a6b9339e"
+        },
+        {
+          "id": "E007",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/bench.json",
+          "bytes": 3892,
+          "sha256": "5d8f16711250f9c1ac6f615f7601505400a80851897429a177547fe653952aa2"
+        },
+        {
+          "id": "E008",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/bench.py",
+          "bytes": 2907,
+          "sha256": "7ac76ee9df59b60acdad1c9bd3abd9fb34c66e2d3fdf7bb30554c638eb7e59be"
+        },
+        {
+          "id": "E009",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/bomb.gdb",
+          "bytes": 29649,
+          "sha256": "6f0e9d48cc15beb5669b154169233d8fdf04c3390b22dfb9ecb0bb8f0e317779"
+        },
+        {
+          "id": "E010",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/catalog-tests.txt",
+          "bytes": 105,
+          "sha256": "6e3a1ae5564d21d8a8d5bb751bf005db5b619fe7ba2ab08e90a3d324c1f87e38"
+        },
+        {
+          "id": "E011",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/checkpoint-tests.txt",
+          "bytes": 117,
+          "sha256": "df1759413564e9fff6e2dc412df3e9c1f0f4cb37164715d3cab9703520fca97e"
+        },
+        {
+          "id": "E012",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/code-match.json",
+          "bytes": 2589,
+          "sha256": "781677b0a1853cc2b8db4a8f59e30f5db7c1afa4c758525e133586981ae1f3ea"
+        },
+        {
+          "id": "E013",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/control-framer.txt",
+          "bytes": 31,
+          "sha256": "898dac8c3b32e97f8c3594e3f4367189e49cf2e0868cdcd9b8bc48693f8a73d2"
+        },
+        {
+          "id": "E014",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/control-packets.txt",
+          "bytes": 29,
+          "sha256": "66cdd39720c27f9ffc0cdca97b4ebeea97154a6a352b1492d37dd4b0bd3caf02"
+        },
+        {
+          "id": "E015",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/control118-hashes.json",
+          "bytes": 167775,
+          "sha256": "84c888abbc2b4ef6f63eb187e39f985a149ca3e21524a92d0307851a517a93b6"
+        },
+        {
+          "id": "E016",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/control118-launcher.log",
+          "bytes": 81322,
+          "sha256": "43e7a7eb94400add8dc0ce169ba3e8d2d7951d50df86224305341d239b0fcfbf"
+        },
+        {
+          "id": "E017",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/control118-recipe.json",
+          "bytes": 1006,
+          "sha256": "42af6da4110c128ff1d12f8b5fc6d2596510482d7459db85ed2091d0c94b8ecf"
+        },
+        {
+          "id": "E018",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/derive_roles.py",
+          "bytes": 1031,
+          "sha256": "a3a35ea7939b787193796f6f49484c462de96b999ba14f76b58da9bb64f38e6e"
+        },
+        {
+          "id": "E019",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/docs-check.txt",
+          "bytes": 174,
+          "sha256": "3dcc411026c9ab15675a14261be93da320ba7af0c77acf613bd15b2b5db1314b"
+        },
+        {
+          "id": "E020",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/entity-summary.json",
+          "bytes": 31898,
+          "sha256": "e0f11dbe75b2051f96a8e45cbc3ba976600760ec0541b11b5f5401ee37d8541a"
+        },
+        {
+          "id": "E021",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/fields-check.txt",
+          "bytes": 32,
+          "sha256": "46e6e727b45b972a1486a70f09198c784b1e09d622849862dc08a532deb9fb05"
+        },
+        {
+          "id": "E022",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/framer-check.txt",
+          "bytes": 29,
+          "sha256": "77eb0874cfbf1abb42a88955d78c6da3b78edd931178e18d9c4a144542b16451"
+        },
+        {
+          "id": "E023",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/guard-preparation.json",
+          "bytes": 614,
+          "sha256": "d0308e7bc7d0b25772ec1bf35197f7ffaf19836efe3fa1c621038e140ff5e5bc"
+        },
+        {
+          "id": "E024",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/guard118-hashes.json",
+          "bytes": 202288,
+          "sha256": "3207937c5634539122bf75205313ec4265e44bdcb3bf71b6fbde4483c3196f39"
+        },
+        {
+          "id": "E025",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/guard118-launcher.log",
+          "bytes": 102221,
+          "sha256": "f3f9633d2e80b996c78878ef8fcdf187b8959a529d36e6c34e7e609e238ec3fe"
+        },
+        {
+          "id": "E026",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/guard118-recipe.json",
+          "bytes": 1000,
+          "sha256": "35f9b322e7caef8e3d44e0695096eb0f7d9910b4a7240539fb623026bf0f7828"
+        },
+        {
+          "id": "E027",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/issue-body.md",
+          "bytes": 1144,
+          "sha256": "84d0022ff9337f033895175350caf8fc1125fdeb1b767e0723ffe58fc604f403"
+        },
+        {
+          "id": "E028",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/lifecycle-check.txt",
+          "bytes": 841,
+          "sha256": "cd5b8336b67123f2c0749dcfe3312740b9111fadad04e5d24c64dfec32363c3d"
+        },
+        {
+          "id": "E029",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/lifecycle-summary.json",
+          "bytes": 14815,
+          "sha256": "025eed0abe5022e3f2160516d16fc11144d9e2649a160738a9380f6bcff2047e"
+        },
+        {
+          "id": "E030",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/native-153.json",
+          "bytes": 27269,
+          "sha256": "aab359dbe70598bc1e8f6770f2945c2c8080e31dfc6ff213d357daf7ec7901f1"
+        },
+        {
+          "id": "E031",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/native-packets.json",
+          "bytes": 167288,
+          "sha256": "79c804f0d950eb91f3cf0d1d5467469fdb8c4f3d699abbc8e8b7c70a5e4f1051"
+        },
+        {
+          "id": "E032",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/native_153.py",
+          "bytes": 3542,
+          "sha256": "d1d187e50199829d9841c1ad9b8315a4c9e99364a56cc35f81772ba897129036"
+        },
+        {
+          "id": "E033",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/native_packets.py",
+          "bytes": 4834,
+          "sha256": "79609ce1b601541da52eb90de19da5f375ca347d43b98352969891f1fd04b143"
+        },
+        {
+          "id": "E034",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/packets-check.txt",
+          "bytes": 29,
+          "sha256": "444e6ad6a4b5324659fed8105db57d98ad2ef16254212a5baf54226590054cea"
+        },
+        {
+          "id": "E035",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/parse_auth.py",
+          "bytes": 1276,
+          "sha256": "f0631fd86bc725b36d34ba7bcde2253eedf2498c5015b432223f70060e74f519"
+        },
+        {
+          "id": "E036",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/parse_entities.py",
+          "bytes": 3762,
+          "sha256": "fe506b23ef3c2767625ac07dcdbf9c1dd0de3412c9abb01aad99b3df18ad4c1d"
+        },
+        {
+          "id": "E037",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/parse_fields.py",
+          "bytes": 3917,
+          "sha256": "7a16af681eca15702a1b1e640302c725f9d82251c1891f9de51eca0191cc54d2"
+        },
+        {
+          "id": "E038",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/parse_lifecycle.py",
+          "bytes": 2671,
+          "sha256": "bd358b871c2d2937a4715558d1eba06c8b39d61e97a0fe261d84bc6728322bf9"
+        },
+        {
+          "id": "E039",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/preparation.json",
+          "bytes": 1083,
+          "sha256": "e2a9551c6e8067c95e2cf6e52d923b9d351cca04aafc941dd1a51af780b50a54"
+        },
+        {
+          "id": "E040",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/prepare.py",
+          "bytes": 3007,
+          "sha256": "c77f0d92a7a0161839f2138fa09f79ff4195b978db353798b13353363ecb6ff9"
+        },
+        {
+          "id": "E041",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/prior-order.json",
+          "bytes": 4485,
+          "sha256": "df638321c544823dd3e5d1e75c689e43cb5dc89390497a450dcab656d2722d67"
+        },
+        {
+          "id": "E042",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/prior_sources.py",
+          "bytes": 2304,
+          "sha256": "c916e1ef8e33afe9bcfb1dc7e048467c43d274e94d8338d72289884282354f4c"
+        },
+        {
+          "id": "E043",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/profile.json",
+          "bytes": 10892,
+          "sha256": "6193b4ef256e7414ad85d484b732a269cb9319d45cf17706639ed3b852d67ee8"
+        },
+        {
+          "id": "E044",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/replay-run.py",
+          "bytes": 3007,
+          "sha256": "38b3f4e9d66113df82cb7cbff09e392b4787c771cec9db22e8bbbf08d395ccb4"
+        },
+        {
+          "id": "E045",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/reuse-question.json",
+          "bytes": 5595,
+          "sha256": "862ae347936d91d842f6cfa6a1bbb177a0bc73c5a47b518031569ace91edd76b"
+        },
+        {
+          "id": "E046",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/reuse.py",
+          "bytes": 3481,
+          "sha256": "df8a53a872444ddd309d69f7a15332bb728a99acf31a083107f1b4d5e1c22b83"
+        },
+        {
+          "id": "E047",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/run_probe.py",
+          "bytes": 1079,
+          "sha256": "150ead52209266b707a9f3b5fb35f9acdf695f43fdbd2460ef0342c4b3a14822"
+        },
+        {
+          "id": "E048",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/runtime_replay.py",
+          "bytes": 3746,
+          "sha256": "1ae981ad76a667888c19517ca5993fbf6fbac36273fc6e6b69356d5340c45a09"
+        },
+        {
+          "id": "E049",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/seal_run.py",
+          "bytes": 630,
+          "sha256": "80588eb6e3b544fa31dd63a45dc7d4ee7f1a3114b2fac9283211b8a3cb6b3dff"
+        },
+        {
+          "id": "E050",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/server-tests.txt",
+          "bytes": 163,
+          "sha256": "2f26782f5e72463d8508bbd4a4f28d4665b27a2e5448d64ae3f591f4c2081534"
+        },
+        {
+          "id": "E051",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/sync_docs.py",
+          "bytes": 12071,
+          "sha256": "8eec010898cff819e30ba27edf8a66f8787fe81c6c333d2c6a58f0ea320a216a"
+        },
+        {
+          "id": "E052",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/verification.json",
+          "bytes": 1037,
+          "sha256": "799034ef1c1c3def4a4a45c877b8843c39b0aa5b2e8bec78cc72841763220068"
+        },
+        {
+          "id": "E053",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/verify.py",
+          "bytes": 6736,
+          "sha256": "be93e19f0942db80661ded14bb37f72a29fcb4b339dea9f1456d88585be7566b"
+        },
+        {
+          "id": "E054",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/cp067-snapshot/README.md",
+          "bytes": 3775,
+          "sha256": "c9c6cd1790c85a7c9eef1668669544f6c36975f53ef4b5a8e2610723685a213c"
+        },
+        {
+          "id": "E055",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/cp067-snapshot/docs/COVERAGE.md",
+          "bytes": 72460,
+          "sha256": "973a3dad4fe56bec6c607e88f4dec3fa1b204ceaa6b9168750ebcd6801644c97"
+        },
+        {
+          "id": "E056",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/cp067-snapshot/docs/PLAN.md",
+          "bytes": 30159,
+          "sha256": "0f51ce587264fca9a81e92fe12fa1602e0cb1c5517a322cc746eae3a0aec99d3"
+        },
+        {
+          "id": "E057",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/cp067-snapshot/docs/PROTOCOL.md",
+          "bytes": 225414,
+          "sha256": "2001508ecaeaf7bed3f46fb687d48180fe4c89bf6c31b5d9161cb99cdaff5658"
+        },
+        {
+          "id": "E058",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/cp067-snapshot/docs/RESEARCH.md",
+          "bytes": 30446,
+          "sha256": "803919f87f2d1e7db9e3f8411221071020b576c9483d21e11c4db197c56ac3fb"
+        },
+        {
+          "id": "E059",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/cp067-snapshot/docs/evidence/c2s118-admission/README.md",
+          "bytes": 4569,
+          "sha256": "f10105d23013351f17c05198d6810e4f209670975d2aebbc22498f196d2b3f68"
+        },
+        {
+          "id": "E060",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/cp067-snapshot/docs/features.json",
+          "bytes": 75238,
+          "sha256": "5c10db10d7bcd9fc2d203355470453cc83227baadd5858caf7ff98c4842824ac"
+        },
+        {
+          "id": "E061",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/cp067-snapshot/server/README.md",
+          "bytes": 12119,
+          "sha256": "b6820509defb7c478cd819c07299c792d36e32c661a339b0fa11a2e0a2e539fa"
+        },
+        {
+          "id": "E062",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/cp067-snapshot/server/test_bomb_admission.py",
+          "bytes": 5720,
+          "sha256": "7e00660a7a4800de4ec1c8b27fd6b162692a4f3c8177ebbd9d19769a245befee"
+        },
+        {
+          "id": "E063",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/runtime-source/item_claims.py",
+          "bytes": 3340,
+          "sha256": "7990ae9195e9f8bba56b04101f352506194dbd0252793183993ce101a8674a2e"
+        },
+        {
+          "id": "E064",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/runtime-source/probe_codec.py",
+          "bytes": 3227,
+          "sha256": "23ba54e6940953a52ff737e7e06b2761a8eb22eab444310b49b1d96efa12411d"
+        },
+        {
+          "id": "E065",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/runtime-source/probe_room.py",
+          "bytes": 1468,
+          "sha256": "91292494d492c7851bd5432649adf528e1b07290316dc56ba1478f8a209a08bc"
+        },
+        {
+          "id": "E066",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/runtime-source/probe_service.py",
+          "bytes": 35466,
+          "sha256": "605dff4093ec2ad03d2335332f22b4c417096ad7cc1d1088b19ed685eef55740"
+        },
+        {
+          "id": "E067",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/runtime-source/round_fence.py",
+          "bytes": 2339,
+          "sha256": "aabcc7f1d623573fc217de8df05403f83d82425bbe5d6e78872b3096a2d46708"
+        },
+        {
+          "id": "E068",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/runtime-source/udp_round_keys.py",
+          "bytes": 1187,
+          "sha256": "db58ae1f25bcbeb52c2d25c7db6afbf1021ddd3af29702e756f5f41886530a0d"
+        },
+        {
+          "id": "E069",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/control-source/item_claims.py",
+          "bytes": 3340,
+          "sha256": "7990ae9195e9f8bba56b04101f352506194dbd0252793183993ce101a8674a2e"
+        },
+        {
+          "id": "E070",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/control-source/probe_codec.py",
+          "bytes": 3227,
+          "sha256": "23ba54e6940953a52ff737e7e06b2761a8eb22eab444310b49b1d96efa12411d"
+        },
+        {
+          "id": "E071",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/control-source/probe_room.py",
+          "bytes": 1468,
+          "sha256": "91292494d492c7851bd5432649adf528e1b07290316dc56ba1478f8a209a08bc"
+        },
+        {
+          "id": "E072",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/control-source/probe_service.py",
+          "bytes": 34046,
+          "sha256": "fb970b77bd5a92f14ea999b1dcc91f0f8af1e0ced9df6379dcc6d8e7f6f946b1"
+        },
+        {
+          "id": "E073",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/control-source/round_fence.py",
+          "bytes": 2339,
+          "sha256": "aabcc7f1d623573fc217de8df05403f83d82425bbe5d6e78872b3096a2d46708"
+        },
+        {
+          "id": "E074",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/control-source/udp_round_keys.py",
+          "bytes": 1187,
+          "sha256": "db58ae1f25bcbeb52c2d25c7db6afbf1021ddd3af29702e756f5f41886530a0d"
+        },
+        {
+          "id": "E075",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/derived/control118-A/run.json",
+          "bytes": 75373,
+          "sha256": "e08fad3391f555d409ae8fd1dc0f8ee3e7745a86a20bd79ec43ee2ea84216371"
+        },
+        {
+          "id": "E076",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/derived/control118-A-oracle.json",
+          "bytes": 130749,
+          "sha256": "a0c1e4378bba2cfd7ed87bd5b3e9de28557a0b361a148c3f3841bf74db3e96f3"
+        },
+        {
+          "id": "E077",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/derived/control118-A-replay.txt",
+          "bytes": 2159,
+          "sha256": "ed28a6299f817395cb3acf31020e809d3c3b80e26f064e5f1fb6ba80650b386f"
+        },
+        {
+          "id": "E078",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/derived/control118-B/run.json",
+          "bytes": 69438,
+          "sha256": "b49231d4728b100cf90f0a9a159b547d21b9a09791a41226fc76bb78f1d6a728"
+        },
+        {
+          "id": "E079",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/derived/control118-B-oracle.json",
+          "bytes": 121791,
+          "sha256": "c1eb79a0f949037c7b659f4013039fccc9cfff4983e579efd6abc91448f0e133"
+        },
+        {
+          "id": "E080",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/derived/control118-B-replay.txt",
+          "bytes": 2024,
+          "sha256": "37f7b32fb796d7653c702b8b0fb443e3e2cee23b306cb2dced1a7d8204068b51"
+        },
+        {
+          "id": "E081",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/derived/guard118-A/run.json",
+          "bytes": 92136,
+          "sha256": "ace692ddd77812d82584064fab06c64afddf364f7e667be2875e441c40e68d6f"
+        },
+        {
+          "id": "E082",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/derived/guard118-A-oracle.json",
+          "bytes": 167007,
+          "sha256": "6beae4af93c19b13589a5cde3747bfb562a893f1e104a5cff52ef92542059856"
+        },
+        {
+          "id": "E083",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/derived/guard118-A-replay.txt",
+          "bytes": 2751,
+          "sha256": "e0f7a3c3879832fadae6f04c5e8a098ce9ef0d69742371cec82a3af8959d5791"
+        },
+        {
+          "id": "E084",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/derived/guard118-B/run.json",
+          "bytes": 87329,
+          "sha256": "caaf5168d17a878d4a34612192b56b702216fde888b1d0a3abeae6a0964d9116"
+        },
+        {
+          "id": "E085",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/derived/guard118-B-oracle.json",
+          "bytes": 160601,
+          "sha256": "458f265d42c92e1075b224a7a67f16d88c2ea9581be16be46daa2018d6f32788"
+        },
+        {
+          "id": "E086",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/derived/guard118-B-replay.txt",
+          "bytes": 2659,
+          "sha256": "36ba2f6cfc578ec1a646e646f0e5ca5d94503eb8cb8c8b95eac877dfaa06f78f"
+        },
+        {
+          "id": "E087",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/request-frames/control118/A-F39-99.bin",
+          "bytes": 61,
+          "sha256": "83675d20b6243a43ce517690b8562bbdc4c02b32fa8c3cc64c73dbd2af2ed6bd"
+        },
+        {
+          "id": "E088",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/request-frames/control118/A-F47-124.bin",
+          "bytes": 57,
+          "sha256": "299227060e7f8f6f9e4eb27c6d662bcbba67f308719746aa01165ba7dde79432"
+        },
+        {
+          "id": "E089",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/request-frames/control118/A-F51-118.bin",
+          "bytes": 60,
+          "sha256": "0c4e6f7d91915891d1b7eada18d9dfa71f29311e007025b40188d30ade1d41a0"
+        },
+        {
+          "id": "E090",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/request-frames/control118/A-F55-127.bin",
+          "bytes": 70,
+          "sha256": "c8cd2cf7979bd378d5fb7635aed7b0da8d1059c0dc01d710dd62eeaa4d78766c"
+        },
+        {
+          "id": "E091",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/request-frames/control118/A-F60-127.bin",
+          "bytes": 67,
+          "sha256": "6a09c0db4d8a54b2d6d153ffc966066b527a698e6cf8ed14fc52d2bb2e71206b"
+        },
+        {
+          "id": "E092",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/request-frames/control118/A-F80-99.bin",
+          "bytes": 61,
+          "sha256": "e3bdc44f1929d445f10bf0b19f3949ae4b8ea85fb362d83258723d5a7d820d09"
+        },
+        {
+          "id": "E093",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/request-frames/control118/B-F12-82.bin",
+          "bytes": 49,
+          "sha256": "27d13b13f8df5db1f67451352419d49458641283683b06d40bc91f6c3f7220e7"
+        },
+        {
+          "id": "E094",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/request-frames/control118/B-F23-95.bin",
+          "bytes": 98,
+          "sha256": "41ec7cfe284ac427205c3029e41fd807814e254b6f15c4c80abea2e30c47b7d1"
+        },
+        {
+          "id": "E095",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/request-frames/control118/B-F27-99.bin",
+          "bytes": 61,
+          "sha256": "8848a32367ec63a43ea2116d31cf75ed516dfaa378ab2f5a7c6eee69ab2512d5"
+        },
+        {
+          "id": "E096",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/request-frames/control118/B-F44-127.bin",
+          "bytes": 52,
+          "sha256": "308739004bfe65830171b06070cc5f7d2fd7d5c10ca1f468e3a456e7060efbd6"
+        },
+        {
+          "id": "E097",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/request-frames/control118/B-F45-127.bin",
+          "bytes": 52,
+          "sha256": "674726eb00776e29c03979cf9029305fcc83b1ea67173e518404de0439e48590"
+        },
+        {
+          "id": "E098",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/request-frames/control118/B-F46-127.bin",
+          "bytes": 52,
+          "sha256": "1f00969474652d2fca4174845160d83ee9f9d43cc240e2ab21afda953f379b48"
+        },
+        {
+          "id": "E099",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/request-frames/control118/B-F47-127.bin",
+          "bytes": 52,
+          "sha256": "1f6cfb60b297b7e6b6ce7a92df6ecfe1a90460ab42d72ade5763cbc18d900183"
+        },
+        {
+          "id": "E100",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/request-frames/control118/B-F49-127.bin",
+          "bytes": 52,
+          "sha256": "f7d82e83642e2d4af9b41954d18c72af417cb1b7371de1778a12699126bf6595"
+        },
+        {
+          "id": "E101",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/request-frames/control118/B-F51-127.bin",
+          "bytes": 52,
+          "sha256": "b1cef0e6fd8e63f10ae0f19dc0868d76b01b5864f8d7132dd294f5df1fd97fce"
+        },
+        {
+          "id": "E102",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/request-frames/control118/B-F52-127.bin",
+          "bytes": 52,
+          "sha256": "d93fa1b78a1c0333a0096a55ce3ba93eb4d26c0f82928234fce9d5a5e161b2cf"
+        },
+        {
+          "id": "E103",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/request-frames/control118/B-F65-95.bin",
+          "bytes": 382,
+          "sha256": "21d20bc16514488ca4dca6b61aff88e6aa463a6ff550a9fd847bc1dc39bedfe3"
+        },
+        {
+          "id": "E104",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/request-frames/control118/B-F71-99.bin",
+          "bytes": 61,
+          "sha256": "9cad8e7f92345bb0c3d7d7459d7fcbd082f7d3fb3588ae0fb7c47368b1fa9389"
+        },
+        {
+          "id": "E105",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/request-frames/guard118/A-F101-127.bin",
+          "bytes": 67,
+          "sha256": "175f3a54d49032b05b46fe8af975d28ebc32c01dd0c52c0bf1b32405cce61b2f"
+        },
+        {
+          "id": "E106",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/request-frames/guard118/A-F39-99.bin",
+          "bytes": 61,
+          "sha256": "1f6ccaa794fe041bc3d127701ab033d7baf3c3a89781b57988955dc137fad654"
+        },
+        {
+          "id": "E107",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/request-frames/guard118/A-F47-124.bin",
+          "bytes": 57,
+          "sha256": "83ae22e1766f9c866c3aae4bf42a79c283fac4a02e65714d74dbed4bdb47c540"
+        },
+        {
+          "id": "E108",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/request-frames/guard118/A-F50-118.bin",
+          "bytes": 60,
+          "sha256": "1a01174e963bf797a3b63d9a7fcd46c45d8824990d059f90c91082acbbde387d"
+        },
+        {
+          "id": "E109",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/request-frames/guard118/A-F55-127.bin",
+          "bytes": 70,
+          "sha256": "79a2364b1e5aa78d5fd4ffa71c2ae2a3cfb752d6cb450e2bb070ffdca708879e"
+        },
+        {
+          "id": "E110",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/request-frames/guard118/A-F60-127.bin",
+          "bytes": 67,
+          "sha256": "30a1a344032112876a41abffb002f9952360604900a8fd2313e10e4b47adc76a"
+        },
+        {
+          "id": "E111",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/request-frames/guard118/A-F80-99.bin",
+          "bytes": 61,
+          "sha256": "1ecdc73193259e3b319ef91ee16597cb511fac77d6f2cc4e1d332a23ac649f90"
+        },
+        {
+          "id": "E112",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/request-frames/guard118/A-F88-124.bin",
+          "bytes": 57,
+          "sha256": "6c76ec4c72137b2cf7361058a19b86f0cb2c50fefce8add288d0d4eec3189c10"
+        },
+        {
+          "id": "E113",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/request-frames/guard118/A-F92-118.bin",
+          "bytes": 60,
+          "sha256": "2fa768210e45596f033b64c793ceefe0db22b7104557ca6a171a271e56297ad3"
+        },
+        {
+          "id": "E114",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/request-frames/guard118/A-F97-127.bin",
+          "bytes": 70,
+          "sha256": "c4a8687b4d80bc0643977df4cb00d1fb6731b3223c78dd7a57b44a6c1fab6482"
+        },
+        {
+          "id": "E115",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/request-frames/guard118/B-F12-82.bin",
+          "bytes": 49,
+          "sha256": "27d13b13f8df5db1f67451352419d49458641283683b06d40bc91f6c3f7220e7"
+        },
+        {
+          "id": "E116",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/request-frames/guard118/B-F23-95.bin",
+          "bytes": 98,
+          "sha256": "41ec7cfe284ac427205c3029e41fd807814e254b6f15c4c80abea2e30c47b7d1"
+        },
+        {
+          "id": "E117",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/request-frames/guard118/B-F27-99.bin",
+          "bytes": 61,
+          "sha256": "bd2a4820b890486a91f9b725d9cb8495179a428db9ddad93d8e48805107ba4b9"
+        },
+        {
+          "id": "E118",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/request-frames/guard118/B-F44-127.bin",
+          "bytes": 52,
+          "sha256": "dde9ff9399afef069fded18ad5b84652238ccd81eabdbf497ca9503b0541157c"
+        },
+        {
+          "id": "E119",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/request-frames/guard118/B-F45-127.bin",
+          "bytes": 52,
+          "sha256": "5eedd061de7384ddd58625986cc059d392d04781ffcda3cd21cac0bf001ea706"
+        },
+        {
+          "id": "E120",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/request-frames/guard118/B-F47-127.bin",
+          "bytes": 52,
+          "sha256": "d44bdf576bfb1386b9fb0f17aa190c050140192217397374e6288bc402e45fa7"
+        },
+        {
+          "id": "E121",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/request-frames/guard118/B-F49-127.bin",
+          "bytes": 52,
+          "sha256": "a84a22d00f4e6710dc90a8afae11e66460b6217494adfb52e2815e00b7256d47"
+        },
+        {
+          "id": "E122",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/request-frames/guard118/B-F50-127.bin",
+          "bytes": 52,
+          "sha256": "18ece9af62dd1c4ae06468869f3e8a7b4c3fa832da8fbbbdfa2d4fb36a6ece02"
+        },
+        {
+          "id": "E123",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/request-frames/guard118/B-F51-127.bin",
+          "bytes": 52,
+          "sha256": "452b8837c8aeed92e78e1f8942385304a267f9bca6cab06a2641c62a21c69ba4"
+        },
+        {
+          "id": "E124",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/request-frames/guard118/B-F52-127.bin",
+          "bytes": 52,
+          "sha256": "89eb31812183a2fe66ff608e9fc63b0f49c3391d2c8361918aa4d8d3634cf59f"
+        },
+        {
+          "id": "E125",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/request-frames/guard118/B-F66-95.bin",
+          "bytes": 382,
+          "sha256": "5e341a1cabf302d9929c7de9730cc4655be325ca266bd043fcdd1cff73b73112"
+        },
+        {
+          "id": "E126",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/request-frames/guard118/B-F72-99.bin",
+          "bytes": 61,
+          "sha256": "fec6eacd117a35749644c8857d77b0a630e1a10e87a257592e4d438ed855b65f"
+        },
+        {
+          "id": "E127",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/request-frames/guard118/B-F89-127.bin",
+          "bytes": 52,
+          "sha256": "298effcd82b35c3f0dccdb1e3a083fb147453dfa2cdbad49c407e23dadfddaeb"
+        },
+        {
+          "id": "E128",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/request-frames/guard118/B-F91-127.bin",
+          "bytes": 52,
+          "sha256": "0073bdc1ad104ae302d145d7cab15ef6cd6dd3a9c33e4bef6ec27b51bdb465eb"
+        },
+        {
+          "id": "E129",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/request-frames/guard118/B-F92-127.bin",
+          "bytes": 52,
+          "sha256": "2c8f455d5539644426e8d8958b56435de0e2ac82a2b554ee54de3222c35b1faf"
+        },
+        {
+          "id": "E130",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/request-frames/guard118/B-F93-127.bin",
+          "bytes": 52,
+          "sha256": "0d1aea913578b8604d59628ae91f11936f91f3d67862e9d1c411aedffa9b4be8"
+        },
+        {
+          "id": "E131",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/request-frames/guard118/B-F94-127.bin",
+          "bytes": 52,
+          "sha256": "caf8468d2e164acd452c878a02b550b6c8eabc869412b73f7eb6e903b40efbfd"
+        },
+        {
+          "id": "E132",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/request-frames/guard118/B-F97-127.bin",
+          "bytes": 52,
+          "sha256": "f269aa7b2b98d3b66b77cc69e6766fefef83866bfa91a225b079ca6223a75e29"
+        },
+        {
+          "id": "E133",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/request-frames/guard118/B-F98-127.bin",
+          "bytes": 52,
+          "sha256": "6cec1eb2b6754cc46aefadcc2d347c8575ef8c0e46526eeb0c9a4e7ccc50a319"
+        },
+        {
+          "id": "E134",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/control118/run.json",
+          "bytes": 108026,
+          "sha256": "c57b0452b934d644e5e91cc9e19c9d3b8dcc3bcfc3d5598ebad4286439bb0cb2"
+        },
+        {
+          "id": "E135",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/control118/client.log",
+          "bytes": 58145,
+          "sha256": "58b3efe279606090fc2a20ecd36d301d5d015f648a021f22891b4a32916ed218"
+        },
+        {
+          "id": "E136",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/control118/client-B.log",
+          "bytes": 69559,
+          "sha256": "3655b7b6b22684ddc71853b005da03cf2edf276964478d9a36f1200ffc72d06a"
+        },
+        {
+          "id": "E137",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/control118/debug-commands.txt",
+          "bytes": 29649,
+          "sha256": "6f0e9d48cc15beb5669b154169233d8fdf04c3390b22dfb9ecb0bb8f0e317779"
+        },
+        {
+          "id": "E138",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/control118/debug-commands-B.txt",
+          "bytes": 29649,
+          "sha256": "6f0e9d48cc15beb5669b154169233d8fdf04c3390b22dfb9ecb0bb8f0e317779"
+        },
+        {
+          "id": "E139",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/control118/service-state.json",
+          "bytes": 114413,
+          "sha256": "7ce08dc3bc1d707b3f1859537cadf3bddd88f24963d1321004c959d1a341dcae"
+        },
+        {
+          "id": "E140",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/control118/A-blast158-r1-1-100.bin",
+          "bytes": 51,
+          "sha256": "8267ecd76c85413992f106445d871cbcfb817ebeba0ff5bd1060dee651506f7e"
+        },
+        {
+          "id": "E141",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/control118/A-blast158-r1-2-103.bin",
+          "bytes": 51,
+          "sha256": "00c164201ff3771a86585828cb5f6bbef13064ffa8a944ab06d6fd1f147aa5ec"
+        },
+        {
+          "id": "E142",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/control118/A-blast158-r2-3-139.bin",
+          "bytes": 51,
+          "sha256": "70749b62713d8b49bd67e335b8012de4f2faac31526d6ab623504a8bebf8a176"
+        },
+        {
+          "id": "E143",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/control118/A-dynamic159-r1-1-94.bin",
+          "bytes": 77,
+          "sha256": "7abf03ea51fa1a7156b0e0c61d9a0da4625edc53753c9ec176df082694fdb2a1"
+        },
+        {
+          "id": "E144",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/control118/A-dynamic159-r1-2-97.bin",
+          "bytes": 77,
+          "sha256": "678470338a2f4e1294b3120af5aaa14e8386ba5177bdb537098416475445d102"
+        },
+        {
+          "id": "E145",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/control118/A-dynamic159-r2-3-136.bin",
+          "bytes": 77,
+          "sha256": "8a0cf84bc1158302ebe55c7c6d37d608254a598656c835de904b153051e9eded"
+        },
+        {
+          "id": "E146",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/control118/A-floor582-121.bin",
+          "bytes": 64,
+          "sha256": "b108cbc93ed5896e87a383e680b955df612b139b892fe2dc6fa7c89dc76d1eaf"
+        },
+        {
+          "id": "E147",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/control118/A-floor582-76.bin",
+          "bytes": 64,
+          "sha256": "dade68ac6b12c8c7ae59bf27d007ad4f1b32b6369d9a0fcd29170b3063e42ace"
+        },
+        {
+          "id": "E148",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/control118/A-go197-127.bin",
+          "bytes": 52,
+          "sha256": "4479c8d2bd5a138f8dd57f39fc717eabaade8d4273b394c5d4da4ac42a32ce22"
+        },
+        {
+          "id": "E149",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/control118/A-go197-82.bin",
+          "bytes": 52,
+          "sha256": "64b95010ecb0e40bc0367f41f6710d2357fb2538ce827e205825284601237ef8"
+        },
+        {
+          "id": "E150",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/control118/A-guest110-r1-115.bin",
+          "bytes": 44,
+          "sha256": "b9a562c345517aa67d96c51dfe93daedc56af471a1e386fd57cb165b0cee0bf1"
+        },
+        {
+          "id": "E151",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/control118/A-host110-r1-112.bin",
+          "bytes": 44,
+          "sha256": "57460635dc0e9976e22e6b40d430710aab16e6a33c152be10c6a80b4564c3110"
+        },
+        {
+          "id": "E152",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/control118/A-item165-r1-17-91.bin",
+          "bytes": 50,
+          "sha256": "2ad2e7cbd637f553ff114fada41951a1129ca3dc52b14a540a60ccea59088bf0"
+        },
+        {
+          "id": "E153",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/control118/A-peer153-133.bin",
+          "bytes": 135,
+          "sha256": "e60a9217dc175a64443df2b586c511cec15f3aac7eaac10d905cdee8f8497132"
+        },
+        {
+          "id": "E154",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/control118/A-peer153-88.bin",
+          "bytes": 135,
+          "sha256": "f8c17d3c2cb6fa02da6b493234b37f3cde6dff9cd0ce27a0a5bc7c6924ba95a3"
+        },
+        {
+          "id": "E155",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/control118/A-play196-130.bin",
+          "bytes": 45,
+          "sha256": "13f2d542669df1a08be243989a4e70967313aab6c60971f9d235817f9240b651"
+        },
+        {
+          "id": "E156",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/control118/A-play196-85.bin",
+          "bytes": 45,
+          "sha256": "d04bf155b4847f9d41b0edfdf00a32526302273271c0f1cadbb8ce22b89eb51d"
+        },
+        {
+          "id": "E157",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/control118/A-rank175-r1-106.bin",
+          "bytes": 340,
+          "sha256": "af64696343b71bbddfcca524adcb34b3c8dd3b736f65508ac464a977c1810384"
+        },
+        {
+          "id": "E158",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/control118/A-ready110-118.bin",
+          "bytes": 44,
+          "sha256": "6526e2f461589ee6ea8406ec75602e5c82bbf08353ee8d7d8b7f54952d1dac89"
+        },
+        {
+          "id": "E159",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/control118/A-ready110-73.bin",
+          "bytes": 44,
+          "sha256": "8fafd9cf652b458ee09b3751a0201f9ab1409920398e0e842e43b915c8840e25"
+        },
+        {
+          "id": "E160",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/control118/A-return180-r1-109.bin",
+          "bytes": 41,
+          "sha256": "b53daa3dda63e60a45282c346e337b4d3d97dd07a2ef4b33a42a147350601e54"
+        },
+        {
+          "id": "E161",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/control118/A-start121-r1-79.bin",
+          "bytes": 167,
+          "sha256": "4d85d0786f484c579ef94cd61ceaa40997df93c39589d720ea8334bc9b5ca29f"
+        },
+        {
+          "id": "E162",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/control118/A-start121-r2-124.bin",
+          "bytes": 167,
+          "sha256": "a0ced0d696374c0497a2cb2a20361b7eaa61a7321bc9dfaa57c97fc151fc588c"
+        },
+        {
+          "id": "E163",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/control118/B-blast158-r1-1-100.bin",
+          "bytes": 51,
+          "sha256": "8267ecd76c85413992f106445d871cbcfb817ebeba0ff5bd1060dee651506f7e"
+        },
+        {
+          "id": "E164",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/control118/B-blast158-r1-2-103.bin",
+          "bytes": 51,
+          "sha256": "00c164201ff3771a86585828cb5f6bbef13064ffa8a944ab06d6fd1f147aa5ec"
+        },
+        {
+          "id": "E165",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/control118/B-blast158-r2-3-145.bin",
+          "bytes": 51,
+          "sha256": "3f6599009da0dad6f7549a2a571b7df988a7908255763697167b843609627c82"
+        },
+        {
+          "id": "E166",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/control118/B-dynamic159-r1-1-94.bin",
+          "bytes": 77,
+          "sha256": "7abf03ea51fa1a7156b0e0c61d9a0da4625edc53753c9ec176df082694fdb2a1"
+        },
+        {
+          "id": "E167",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/control118/B-dynamic159-r1-2-97.bin",
+          "bytes": 77,
+          "sha256": "678470338a2f4e1294b3120af5aaa14e8386ba5177bdb537098416475445d102"
+        },
+        {
+          "id": "E168",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/control118/B-dynamic159-r2-3-142.bin",
+          "bytes": 77,
+          "sha256": "1daaa6cb003e7ba2e91dff20ed3a36284c86606f2dcc5f7ac01cac667268b4e0"
+        },
+        {
+          "id": "E169",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/control118/B-event170-17-r1-106.bin",
+          "bytes": 48,
+          "sha256": "f1b2e386449c684e443d5a0d5922197455395e79e0aba0807d74663aad301a45"
+        },
+        {
+          "id": "E170",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/control118/B-event170-19-r1-109.bin",
+          "bytes": 59,
+          "sha256": "a974876eedfcbb0a30d79e188d4138f359398353f4088ae718d0a59bb3072c36"
+        },
+        {
+          "id": "E171",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/control118/B-floor582-127.bin",
+          "bytes": 64,
+          "sha256": "926eb85b3a8b207cba94eb01e5388deebd7cc0dc39844d61b504c20b191d518c"
+        },
+        {
+          "id": "E172",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/control118/B-floor582-76.bin",
+          "bytes": 64,
+          "sha256": "dade68ac6b12c8c7ae59bf27d007ad4f1b32b6369d9a0fcd29170b3063e42ace"
+        },
+        {
+          "id": "E173",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/control118/B-go197-133.bin",
+          "bytes": 52,
+          "sha256": "c8e3ef9a306c801d8c383b432ce03b81ddec0e10387b51b16d811f4668bb8629"
+        },
+        {
+          "id": "E174",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/control118/B-go197-82.bin",
+          "bytes": 52,
+          "sha256": "64b95010ecb0e40bc0367f41f6710d2357fb2538ce827e205825284601237ef8"
+        },
+        {
+          "id": "E175",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/control118/B-guest110-r1-121.bin",
+          "bytes": 44,
+          "sha256": "3b78f32a3fd42c312c2d43e55d74b7be09df1fd2ff97c81d592f5f35f5b7f7e9"
+        },
+        {
+          "id": "E176",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/control118/B-host110-r1-118.bin",
+          "bytes": 44,
+          "sha256": "7f6e4c069299e39e9fda88c9a0352f1d8902f72639fcd1652de7804a20be4612"
+        },
+        {
+          "id": "E177",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/control118/B-item165-r1-17-91.bin",
+          "bytes": 50,
+          "sha256": "2ad2e7cbd637f553ff114fada41951a1129ca3dc52b14a540a60ccea59088bf0"
+        },
+        {
+          "id": "E178",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/control118/B-peer153-139.bin",
+          "bytes": 135,
+          "sha256": "8566710154e89745eb6476e2e21c2528ae9c5f08ab39aafdbbaf188cb95c0bb3"
+        },
+        {
+          "id": "E179",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/control118/B-peer153-88.bin",
+          "bytes": 135,
+          "sha256": "0842b337f2f711f4d31a66e2dabf9bec01707d1c159bdaa28844c084427462e6"
+        },
+        {
+          "id": "E180",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/control118/B-play196-136.bin",
+          "bytes": 45,
+          "sha256": "e2d195e7dc4636e2287c5c82a5b6f7128fd586d4009e54131c307500b7f57792"
+        },
+        {
+          "id": "E181",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/control118/B-play196-85.bin",
+          "bytes": 45,
+          "sha256": "d04bf155b4847f9d41b0edfdf00a32526302273271c0f1cadbb8ce22b89eb51d"
+        },
+        {
+          "id": "E182",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/control118/B-rank175-r1-112.bin",
+          "bytes": 340,
+          "sha256": "8be64203835a0cf6edbbd793ef96426e1576b0f0dd5c83858861721bcde6bf22"
+        },
+        {
+          "id": "E183",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/control118/B-ready110-124.bin",
+          "bytes": 44,
+          "sha256": "a70e4d4bae1b7aa3c74c43df15249f73bf963d8a75ee866fbd83d9d5f9fdf6fa"
+        },
+        {
+          "id": "E184",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/control118/B-ready110-73.bin",
+          "bytes": 44,
+          "sha256": "8fafd9cf652b458ee09b3751a0201f9ab1409920398e0e842e43b915c8840e25"
+        },
+        {
+          "id": "E185",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/control118/B-return180-r1-115.bin",
+          "bytes": 41,
+          "sha256": "e5aa8a7186c5b133fe7a03750941950ce962a7df6cc96cff7b4f9292e2ba6127"
+        },
+        {
+          "id": "E186",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/control118/B-start121-r1-79.bin",
+          "bytes": 167,
+          "sha256": "4d85d0786f484c579ef94cd61ceaa40997df93c39589d720ea8334bc9b5ca29f"
+        },
+        {
+          "id": "E187",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/control118/B-start121-r2-130.bin",
+          "bytes": 167,
+          "sha256": "ebf10ee58a0bc85d5c66502fcc5cad6cb4babf4296318d0e855baedb154eacca"
+        },
+        {
+          "id": "E188",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/control118/actual-A118-r1-193.bin",
+          "bytes": 60,
+          "sha256": "0c4e6f7d91915891d1b7eada18d9dfa71f29311e007025b40188d30ade1d41a0"
+        },
+        {
+          "id": "E189",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/guard118/run.json",
+          "bytes": 132877,
+          "sha256": "82cb0c4635809e5fa4bd443e3a9afaf23c6fc0a2c10c93a5bb0ed436caef1364"
+        },
+        {
+          "id": "E190",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/guard118/client.log",
+          "bytes": 70898,
+          "sha256": "a4957301234bf44a3296fcbd258fe8f8f9e36d819934ddf7d1f222e89f6f841a"
+        },
+        {
+          "id": "E191",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/guard118/client-B.log",
+          "bytes": 98170,
+          "sha256": "4435d92247bd2eaf327992a60ee4b74ee57c4ce5ebf89aa8540cb75596e96923"
+        },
+        {
+          "id": "E192",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/guard118/debug-commands.txt",
+          "bytes": 29649,
+          "sha256": "6f0e9d48cc15beb5669b154169233d8fdf04c3390b22dfb9ecb0bb8f0e317779"
+        },
+        {
+          "id": "E193",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/guard118/debug-commands-B.txt",
+          "bytes": 29649,
+          "sha256": "6f0e9d48cc15beb5669b154169233d8fdf04c3390b22dfb9ecb0bb8f0e317779"
+        },
+        {
+          "id": "E194",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/guard118/service-state.json",
+          "bytes": 145507,
+          "sha256": "3da5128978d0c00cfd72b84dbd8415826b09a45368f00807c4dd29c8a7ab2407"
+        },
+        {
+          "id": "E195",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/guard118/A-blast158-r1-1-97.bin",
+          "bytes": 51,
+          "sha256": "74e2de4a80eccc95ca075b6b7b315a7883176c212d7f752f47cb45a80c0122e3"
+        },
+        {
+          "id": "E196",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/guard118/A-blast158-r2-2-136.bin",
+          "bytes": 51,
+          "sha256": "64d4c380a715c392025aa97ce4b91e3dcfcb01f4ee6596e3e32257b491d7ca6f"
+        },
+        {
+          "id": "E197",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/guard118/A-dynamic159-r1-1-94.bin",
+          "bytes": 77,
+          "sha256": "7abf03ea51fa1a7156b0e0c61d9a0da4625edc53753c9ec176df082694fdb2a1"
+        },
+        {
+          "id": "E198",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/guard118/A-dynamic159-r2-2-133.bin",
+          "bytes": 77,
+          "sha256": "21ab35a31c09963c993ee393123e07630e7bc3ff4ae995a80353991cfde2b893"
+        },
+        {
+          "id": "E199",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/guard118/A-floor582-115.bin",
+          "bytes": 64,
+          "sha256": "d7cfe29149c84aaa1e95b2cd935d5313540651f27c4c6eb4aa030f96981eac36"
+        },
+        {
+          "id": "E200",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/guard118/A-floor582-76.bin",
+          "bytes": 64,
+          "sha256": "dade68ac6b12c8c7ae59bf27d007ad4f1b32b6369d9a0fcd29170b3063e42ace"
+        },
+        {
+          "id": "E201",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/guard118/A-go197-121.bin",
+          "bytes": 52,
+          "sha256": "3380c0c80d8faad72ca646a853ed917edd2f30fd0527e83e58ce731c40aa7b3f"
+        },
+        {
+          "id": "E202",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/guard118/A-go197-82.bin",
+          "bytes": 52,
+          "sha256": "64b95010ecb0e40bc0367f41f6710d2357fb2538ce827e205825284601237ef8"
+        },
+        {
+          "id": "E203",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/guard118/A-guest110-r1-109.bin",
+          "bytes": 44,
+          "sha256": "f300f7803c78018bc7bb0a99ff04bd200a6843d607915cb48c84b78b557b6a61"
+        },
+        {
+          "id": "E204",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/guard118/A-guest110-r2-148.bin",
+          "bytes": 44,
+          "sha256": "df02d8a7984631a6c13646af10eae0def798bf3d6ac4691112817b04012efdb7"
+        },
+        {
+          "id": "E205",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/guard118/A-host110-r1-106.bin",
+          "bytes": 44,
+          "sha256": "bbbf2539317016a757afed97a98b9103e3e64fa0b31dc96c0a3ff853c815818e"
+        },
+        {
+          "id": "E206",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/guard118/A-host110-r2-145.bin",
+          "bytes": 44,
+          "sha256": "3f61445619e55a509cbcfc153858b6fb4a8529cba6b9bad57fe91aa05570c76b"
+        },
+        {
+          "id": "E207",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/guard118/A-item165-r1-17-91.bin",
+          "bytes": 50,
+          "sha256": "2ad2e7cbd637f553ff114fada41951a1129ca3dc52b14a540a60ccea59088bf0"
+        },
+        {
+          "id": "E208",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/guard118/A-item165-r2-17-130.bin",
+          "bytes": 50,
+          "sha256": "1f7b0435485208c4a329795aa60112b09552104e608473b7f5057406ce53b206"
+        },
+        {
+          "id": "E209",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/guard118/A-peer153-127.bin",
+          "bytes": 135,
+          "sha256": "ae1d8b3ab6384e17b84a49dae9a5d1641fe6bd4a1d81873e5c75ef4c6637d57e"
+        },
+        {
+          "id": "E210",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/guard118/A-peer153-88.bin",
+          "bytes": 135,
+          "sha256": "92d109a11a9ad534fc43f3aaeaf870c48da5349ab925cd908a5ee6a2f1ff8f84"
+        },
+        {
+          "id": "E211",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/guard118/A-play196-124.bin",
+          "bytes": 45,
+          "sha256": "e0f364fc0becf0a2a91327c1a33e299af37f1cecc00a26d40443c5bda58b1af4"
+        },
+        {
+          "id": "E212",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/guard118/A-play196-85.bin",
+          "bytes": 45,
+          "sha256": "d04bf155b4847f9d41b0edfdf00a32526302273271c0f1cadbb8ce22b89eb51d"
+        },
+        {
+          "id": "E213",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/guard118/A-rank175-r1-100.bin",
+          "bytes": 340,
+          "sha256": "5b3751f4c322454005652035ed69253cac647ed0fbc24540bd0599fa2bae6c31"
+        },
+        {
+          "id": "E214",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/guard118/A-rank175-r2-139.bin",
+          "bytes": 340,
+          "sha256": "076e2ce52df3f3450801afd1e815de8afcccc048d94546b45cd74c50f03dd959"
+        },
+        {
+          "id": "E215",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/guard118/A-ready110-112.bin",
+          "bytes": 44,
+          "sha256": "f31c5f5630019345dc62b5027f13c5267af82643ac2dbac979f0a454192b910e"
+        },
+        {
+          "id": "E216",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/guard118/A-ready110-73.bin",
+          "bytes": 44,
+          "sha256": "8fafd9cf652b458ee09b3751a0201f9ab1409920398e0e842e43b915c8840e25"
+        },
+        {
+          "id": "E217",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/guard118/A-return180-r1-103.bin",
+          "bytes": 41,
+          "sha256": "996ed34682d009d8977c2571e23c636f824049fb8d962426a9c2d903ed080200"
+        },
+        {
+          "id": "E218",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/guard118/A-return180-r2-142.bin",
+          "bytes": 41,
+          "sha256": "7e2f2c7c886e57bc6ea6b82c1aaa41fa02ca04bcebdf5e725bb7531d97d17567"
+        },
+        {
+          "id": "E219",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/guard118/A-start121-r1-79.bin",
+          "bytes": 167,
+          "sha256": "4d85d0786f484c579ef94cd61ceaa40997df93c39589d720ea8334bc9b5ca29f"
+        },
+        {
+          "id": "E220",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/guard118/A-start121-r2-118.bin",
+          "bytes": 167,
+          "sha256": "114870f79c6ad77dc120564851285f2b8f63e558d1df95f13a2d8dbed22ec2b7"
+        },
+        {
+          "id": "E221",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/guard118/B-blast158-r1-1-97.bin",
+          "bytes": 51,
+          "sha256": "74e2de4a80eccc95ca075b6b7b315a7883176c212d7f752f47cb45a80c0122e3"
+        },
+        {
+          "id": "E222",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/guard118/B-blast158-r2-2-142.bin",
+          "bytes": 51,
+          "sha256": "b12c3fbe13bba6591e62ca40687ffe6a04b44a19ffbc64d48647cd6075c91ebc"
+        },
+        {
+          "id": "E223",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/guard118/B-dynamic159-r1-1-94.bin",
+          "bytes": 77,
+          "sha256": "7abf03ea51fa1a7156b0e0c61d9a0da4625edc53753c9ec176df082694fdb2a1"
+        },
+        {
+          "id": "E224",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/guard118/B-dynamic159-r2-2-139.bin",
+          "bytes": 77,
+          "sha256": "07307a178c83e41b775986c9032efddbfd5eb8d53c7f3ac9798bffec7660ff87"
+        },
+        {
+          "id": "E225",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/guard118/B-event170-17-r1-100.bin",
+          "bytes": 48,
+          "sha256": "91c9e3625e4672f587cc746eb76303c5ea637b887dbed4073bc2f5d9533eae4d"
+        },
+        {
+          "id": "E226",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/guard118/B-event170-17-r2-145.bin",
+          "bytes": 48,
+          "sha256": "d78aa19bca781045c4a5e301c4bb181045f8657937393a3a1b9066ed5aef4e39"
+        },
+        {
+          "id": "E227",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/guard118/B-event170-19-r1-103.bin",
+          "bytes": 59,
+          "sha256": "fd8447b8284afbeeb8c1c1e38e3618419c6c858b45bf7c15843e9e2596837a04"
+        },
+        {
+          "id": "E228",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/guard118/B-event170-19-r2-148.bin",
+          "bytes": 59,
+          "sha256": "1da0e2129ec9cb07ffa8661a1f34c07e365ff999580b99f287b46eaeea60111c"
+        },
+        {
+          "id": "E229",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/guard118/B-floor582-121.bin",
+          "bytes": 64,
+          "sha256": "b108cbc93ed5896e87a383e680b955df612b139b892fe2dc6fa7c89dc76d1eaf"
+        },
+        {
+          "id": "E230",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/guard118/B-floor582-76.bin",
+          "bytes": 64,
+          "sha256": "dade68ac6b12c8c7ae59bf27d007ad4f1b32b6369d9a0fcd29170b3063e42ace"
+        },
+        {
+          "id": "E231",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/guard118/B-go197-127.bin",
+          "bytes": 52,
+          "sha256": "4479c8d2bd5a138f8dd57f39fc717eabaade8d4273b394c5d4da4ac42a32ce22"
+        },
+        {
+          "id": "E232",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/guard118/B-go197-82.bin",
+          "bytes": 52,
+          "sha256": "64b95010ecb0e40bc0367f41f6710d2357fb2538ce827e205825284601237ef8"
+        },
+        {
+          "id": "E233",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/guard118/B-guest110-r1-115.bin",
+          "bytes": 44,
+          "sha256": "b9a562c345517aa67d96c51dfe93daedc56af471a1e386fd57cb165b0cee0bf1"
+        },
+        {
+          "id": "E234",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/guard118/B-guest110-r2-160.bin",
+          "bytes": 44,
+          "sha256": "6e725be5eaf80cc30e3e51269018d224087c7b2b56713e255fbc72e8bb48e884"
+        },
+        {
+          "id": "E235",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/guard118/B-host110-r1-112.bin",
+          "bytes": 44,
+          "sha256": "57460635dc0e9976e22e6b40d430710aab16e6a33c152be10c6a80b4564c3110"
+        },
+        {
+          "id": "E236",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/guard118/B-host110-r2-157.bin",
+          "bytes": 44,
+          "sha256": "19ca60c86c873daa8df91c39edd61ebf3baafa3b8b4439c672d5dc049de76026"
+        },
+        {
+          "id": "E237",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/guard118/B-item165-r1-17-91.bin",
+          "bytes": 50,
+          "sha256": "2ad2e7cbd637f553ff114fada41951a1129ca3dc52b14a540a60ccea59088bf0"
+        },
+        {
+          "id": "E238",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/guard118/B-item165-r2-17-136.bin",
+          "bytes": 50,
+          "sha256": "777c46f533113967cf62ae0c9994a9aff2a2f9d88a5eb35f01042cbe0ef60d75"
+        },
+        {
+          "id": "E239",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/guard118/B-peer153-133.bin",
+          "bytes": 135,
+          "sha256": "60a66536aa1e4f29bd225d028d649cfd998ace56e338ab8f5f7884ca4a2cb3f5"
+        },
+        {
+          "id": "E240",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/guard118/B-peer153-88.bin",
+          "bytes": 135,
+          "sha256": "a071535c6f2ec9323596ddfc18e8ff38ec7e3da99543b7e2d11590403e17074a"
+        },
+        {
+          "id": "E241",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/guard118/B-play196-130.bin",
+          "bytes": 45,
+          "sha256": "13f2d542669df1a08be243989a4e70967313aab6c60971f9d235817f9240b651"
+        },
+        {
+          "id": "E242",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/guard118/B-play196-85.bin",
+          "bytes": 45,
+          "sha256": "d04bf155b4847f9d41b0edfdf00a32526302273271c0f1cadbb8ce22b89eb51d"
+        },
+        {
+          "id": "E243",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/guard118/B-rank175-r1-106.bin",
+          "bytes": 340,
+          "sha256": "af64696343b71bbddfcca524adcb34b3c8dd3b736f65508ac464a977c1810384"
+        },
+        {
+          "id": "E244",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/guard118/B-rank175-r2-151.bin",
+          "bytes": 340,
+          "sha256": "a8f475739686a41b6fe6a6c6f2e2bceadcc320ea62dd0c7c8d819769e9fe05ee"
+        },
+        {
+          "id": "E245",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/guard118/B-ready110-118.bin",
+          "bytes": 44,
+          "sha256": "6526e2f461589ee6ea8406ec75602e5c82bbf08353ee8d7d8b7f54952d1dac89"
+        },
+        {
+          "id": "E246",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/guard118/B-ready110-73.bin",
+          "bytes": 44,
+          "sha256": "8fafd9cf652b458ee09b3751a0201f9ab1409920398e0e842e43b915c8840e25"
+        },
+        {
+          "id": "E247",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/guard118/B-remove107-163.bin",
+          "bytes": 44,
+          "sha256": "018c8421718aaf84c501b8ca2f23d39e97750053b22c423b5101e2849cd4db83"
+        },
+        {
+          "id": "E248",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/guard118/B-return180-r1-109.bin",
+          "bytes": 41,
+          "sha256": "b53daa3dda63e60a45282c346e337b4d3d97dd07a2ef4b33a42a147350601e54"
+        },
+        {
+          "id": "E249",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/guard118/B-return180-r2-154.bin",
+          "bytes": 41,
+          "sha256": "6cfe760393700f6f5727536b029fbf72d8d3fcbd640b42da5887c4fe612b6389"
+        },
+        {
+          "id": "E250",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/guard118/B-start121-r1-79.bin",
+          "bytes": 167,
+          "sha256": "4d85d0786f484c579ef94cd61ceaa40997df93c39589d720ea8334bc9b5ca29f"
+        },
+        {
+          "id": "E251",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/guard118/B-start121-r2-124.bin",
+          "bytes": 167,
+          "sha256": "a0ced0d696374c0497a2cb2a20361b7eaa61a7321bc9dfaa57c97fc151fc588c"
+        },
+        {
+          "id": "E252",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/guard118/B-survivor110-166.bin",
+          "bytes": 44,
+          "sha256": "dd924b4b2bec2ef2ad5e167f3e4df028f3e66365243aeca3e6718b3edf94c145"
+        },
+        {
+          "id": "E253",
+          "kind": "local",
+          "path": "local/research/codex/c2s118-admission-r1/guard118/actual-A118-r1-190.bin",
+          "bytes": 60,
+          "sha256": "1a01174e963bf797a3b63d9a7fcd46c45d8824990d059f90c91082acbbde387d"
+        },
+        {
+          "id": "E254",
+          "kind": "local",
+          "path": "local/research/codex/wine_probe_c2s118_control.py",
+          "bytes": 40461,
+          "sha256": "d43f6e6653fc54a2cc03ee577a588b97a3989fd7dfd1fee8141b1a4c51cfe9fe"
+        },
+        {
+          "id": "E255",
+          "kind": "local",
+          "path": "local/research/codex/wine_probe_c2s118_guard.py",
+          "bytes": 39969,
+          "sha256": "6317d4a4ac01cb18a9c1b3e44044a8d131c00249fe05dfec134c4029008aa444"
+        }
+      ],
+      "delta": {
+        "added": [
+          "ActualbaselineextraID/remoteghostbomb andoldghostblast;boundedguard/currenttwo-cyclefix.",
+          "Exactrecord+8/+0C→actualC2S118/nativegetter/sourcejoins withoutnewbody."
+        ],
+        "corrected": [
+          "CP066C2S118gapnowcontrol/fixinscope;S2C159oldpooltestsneverwereC2Sadmissionproof."
+        ],
+        "superseded": [
+          "NEXT-C2S118-ADMISSIONmeasuredinscope;nextknownblock/list2/revealcurrentservice."
+        ]
+      },
+      "blockers": [
+        "Firstfieldconstructor/serialgenerationwrap/forgednewserial/actorauth/distance/cap/actualTCPadmission/fullvalidatoropen.",
+        "CP032hiddenitemsnotcurrentserviceintegration;fullreset/Windowsvanilla/K6a/LANInternet remainopen."
+      ],
+      "next_steps": [
+        {
+          "id": "NEXT-C2S118-ADMISSION",
+          "task": "KRE-005b",
+          "state": "superseded",
+          "action": "CP067nativecontrol+guardmeasured;remainingvalidator/transport/lifetimevariantsinRESEARCHnotallclosed.",
+          "owner": "Codex",
+          "reviewer": "Codex"
+        },
+        {
+          "id": "NEXT-CURRENT-HIDDEN-ITEMS",
+          "task": "KRE-005b",
+          "state": "active",
+          "action": "ImmediatelyreuseCP032exact582list2/FixedBox/reveal142/124165/nativeeffect/reset/knownUI. Currentservicecatalog/hiddeneligibilitysource/control,2cyclesdistinctprofile/guards;onlyintegrationgapsnoREallitems. CP068manualperiodicaudit mandatory.",
+          "owner": "Codex",
+          "reviewer": "Codex"
+        }
+      ],
+      "review": {
+        "status": "waived",
+        "as_of_utc": "2026-11-02T16:48:56.527943+00:00",
+        "reference": "docs/evidence/checkpoints/review-waiver.json",
+        "scope": "Codex solo RE/code/runtime/selfcheck, not independent approval.",
+        "authorization": {
+          "by": "project_owner",
+          "reference": "docs/evidence/checkpoints/review-waiver.json",
+          "reason": "Owner explicitly requested solo without Claude review."
+        }
+      },
+      "docs_sync": [
+        {
+          "path": "README.md",
+          "state": "updated",
+          "reason": "CP067C2S118control/nativeghost/guarddesign/two-cyclefix/limits;nextCP032hiddenintegration,no gatepromotion."
+        },
+        {
+          "path": "docs/PLAN.md",
+          "state": "updated",
+          "reason": "CP067C2S118control/nativeghost/guarddesign/two-cyclefix/limits;nextCP032hiddenintegration,no gatepromotion."
+        },
+        {
+          "path": "docs/PROTOCOL.md",
+          "state": "updated",
+          "reason": "CP067C2S118control/nativeghost/guarddesign/two-cyclefix/limits;nextCP032hiddenintegration,no gatepromotion."
+        },
+        {
+          "path": "docs/RESEARCH.md",
+          "state": "updated",
+          "reason": "CP067C2S118control/nativeghost/guarddesign/two-cyclefix/limits;nextCP032hiddenintegration,no gatepromotion."
+        },
+        {
+          "path": "docs/features.json",
+          "state": "updated",
+          "reason": "CP067C2S118control/nativeghost/guarddesign/two-cyclefix/limits;nextCP032hiddenintegration,no gatepromotion."
+        },
+        {
+          "path": "docs/COVERAGE.md",
+          "state": "updated",
+          "reason": "CP067C2S118control/nativeghost/guarddesign/two-cyclefix/limits;nextCP032hiddenintegration,no gatepromotion."
+        },
+        {
+          "path": "server/README.md",
+          "state": "updated",
+          "reason": "CP067C2S118control/nativeghost/guarddesign/two-cyclefix/limits;nextCP032hiddenintegration,no gatepromotion."
+        },
+        {
+          "path": "docs/evidence/c2s118-admission/README.md",
+          "state": "updated",
+          "reason": "CP067C2S118control/nativeghost/guarddesign/two-cyclefix/limits;nextCP032hiddenintegration,no gatepromotion."
+        }
+      ]
     }
   ],
   "audits": [
@@ -135997,6 +137983,12 @@
       "state": "open",
       "canonical": "docs/PLAN.md",
       "reference": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/92"
+    },
+    {
+      "id": "KRE-030",
+      "state": "open",
+      "canonical": "docs/PLAN.md",
+      "reference": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/94"
     }
   ]
 }

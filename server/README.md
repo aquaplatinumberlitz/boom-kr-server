@@ -143,3 +143,8 @@ CP065: exporter mặc định [spawn riêng](../docs/PROTOCOL.md#distinct-spawn)
 export ra path mới, profileJSON cũ giữ nguyên hash. `--spawn-layout overlap` dành ca contact/race RE.
 Native currentA/B2cycles đã đo index0/1→point→actor/reset; B/C/accountresume/generalroster chưa kiểm
 với default này. Metadata chỉ khai báo fixture, không thêm fieldwire hoặc randomspawnpolicy.
+
+CP067 thêm [guardC2S118](../docs/PROTOCOL.md#c2s118-admission): fullfield0key và serial/bodySHA
+riêng boundowner/round trước cấpID/timer;Start xóa serialmap, fullkeymismatch/duplicate/conflict log
+không159. Policydesign hẹp, không auth/cap/distance/wholevalidator;actualtransportreplay chưa kiểm.
+64server tests;control/fix Wine/nativeentity tách với dispatcherinjection trong evidence.
