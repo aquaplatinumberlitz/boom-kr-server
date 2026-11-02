@@ -35,7 +35,7 @@ khi thiếu rồi mở lại **69/69byte/loader1, không request528**. [Contract
 chưa toàn cache/auth/reconnect/fullmatch/K6a/LAN/Internet. Tiếp kiểm client C với fixture mới.
 
 CP058 đã merge [PR77](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/77) tại `07cf48d`.
-CP059 tự kiểm/chờ PR, review độc lập [waived](docs/evidence/checkpoints/review-waiver.json).
+CP059 tự kiểm/integration theo [PR79](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/79), review độc lập [waived](docs/evidence/checkpoints/review-waiver.json).
 Audit **AUD018/CP058**, periodic kế **CP060**.
 [Yêu cầu chủ dự án](docs/evidence/owner-directives/continuous-work.json): tiếp tục ngay việc kế trong
 PLAN sau mỗi checkpoint/commit/PR, không tự dừng/chờ nhắc.

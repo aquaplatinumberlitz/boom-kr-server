@@ -1,7 +1,7 @@
 {
   "schema": "kre-feature-index-v1",
   "build": "KR00967",
-  "as_of": "2026-11-02 JST / CP059; self-check pending PR; periodic audit nextCP060",
+  "as_of": "2026-11-02 JST / CP059; integration status via PR79; periodic audit nextCP060",
   "sources": {
     "plan": "docs/PLAN.md",
     "contract": "docs/PROTOCOL.md",
@@ -592,9 +592,10 @@
           "state": "partial",
           "refs": [
             "tools/export_probe_profile.py",
-            "docs/PROTOCOL.md#dynamic-cache-representation"
+            "docs/PROTOCOL.md#dynamic-cache-representation",
+            "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/79"
           ],
-          "delivery": "branch_pending"
+          "delivery": "via_pr"
         },
         "integration": {
           "state": "partial",
