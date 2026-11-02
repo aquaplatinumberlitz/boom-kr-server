@@ -1,7 +1,7 @@
 {
   "schema": "kre-checkpoints-v1",
-  "last_id": "CP061",
-  "completed_count": 61,
+  "last_id": "CP062",
+  "completed_count": 62,
   "audit_interval": 4,
   "last_periodic_audit": 60,
   "next_periodic_audit": "CP064",
@@ -128177,6 +128177,1272 @@
           "reason": "CP061same-run2cycle/currentposition/stat/keyprooflimitsandnextcontestedindex;no gatepromotion."
         }
       ]
+    },
+    {
+      "id": "CP062",
+      "previous": "CP061",
+      "lifecycle": "complete",
+      "recorded_utc": "2026-11-02T12:50:51.595379+00:00",
+      "context_commit": "c70a4e226d99ab623d9cc2ccba782d8a2f2ffb32",
+      "question": "Can two actual A/B124 contest same index on production serialized claim policy, one winner/stat effect bothviews, reset and reversedwinner nextcycle?",
+      "scope": "KRE-025/#84. ReuseCP030/061 method/native/profile41; localwrapper holds delivery1652s only, productionclaim/consume/key/reportguard unchanged; oneisolated360sABrun,4actual124/2cycles. No syntheticcompetingbody/nativepatch/servicecode. Nextreport127stale/duplicate perPLAN;AUD019/CP060nextCP064.",
+      "owner": "Codex",
+      "reviewer": "Codex",
+      "artifacts": [
+        {
+          "name": "CA-r2-login-logout.exe",
+          "sha256": "660447c293ce92270cb9b5815331bca976e8f156366e1fe50b217b6c12e60ce3"
+        },
+        {
+          "name": "CA-r2-stage-social.exe",
+          "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+        },
+        {
+          "name": "CA-r2-stage-social.exe Bcopy",
+          "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+        },
+        {
+          "name": "modO.bin",
+          "sha256": "a08950c833d3acab8281049def7b3dc96b221f107eeda01da3a548e34b91dce5"
+        },
+        {
+          "name": "CA-r2-stage-social.exe Ccopy",
+          "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+        }
+      ],
+      "locators": [
+        "race-current2026-11-02T12:39:46Z runSHA06310de8be8ef90fd0cde9247119e0563bcf71925d1cd82b02115d122363d1a3;runtimee9bb47/static660447/modOa08950rawbase400000,RVA=VA-400000",
+        "Actual124index17/row4/col3/kind2 keys12345/12346; winnerA/slot0 thenB/slot1,loser rejected claim_not_current_or_already_consumed",
+        "NormalUI Downbarrier;2.002629184/2.045519253shold,loser1.916875127/1.959364665sbeforedelivery;secureRollerA5B4→A6B4/v1,A5B5/v2 bothviews"
+      ],
+      "findings": [
+        {
+          "summary": "Four actualTCP124 samecurrentindex/twokeys; production firstarrival winnerA thenB, otherclaim rejected; exactlyone165eachreceiver/correctwinnerslot/errors0. Native Roller onlywinner+1 bothviews, baselineA5B4atnextclock.",
+          "source": "kr_runtime",
+          "status": "confirmed",
+          "method": "runtime",
+          "canonical": "docs/PROTOCOL.md#current-pickup-race",
+          "limits": "DiagnosticWine/profile41/delivery165held2s measurement perturbation;firstarrival emulatorpolicy unchanged,not original arbitration/fairness/exactsametick/auth/fullvalidator/fullreset/K5/K6a/LANInternet. Nativeheap/receiver/gettercountermodels emulationonly.",
+          "evidence": [
+            "E092",
+            "E002",
+            "E040"
+          ]
+        },
+        {
+          "summary": "Two actualStart/clock/bomb/stateA1bothviewsbefore175/result/return/room oncurrentprofile; stable8transports; controller/service/probeerrors0. No UIretryused.",
+          "source": "kr_runtime",
+          "status": "confirmed",
+          "method": "runtime",
+          "canonical": "docs/PROTOCOL.md#current-pickup-race",
+          "limits": "DiagnosticWine/profile41/delivery165held2s measurement perturbation;firstarrival emulatorpolicy unchanged,not original arbitration/fairness/exactsametick/auth/fullvalidator/fullreset/K5/K6a/LANInternet. Nativeheap/receiver/gettercountermodels emulationonly.",
+          "evidence": [
+            "E011",
+            "E040"
+          ]
+        },
+        {
+          "summary": "ExactrequestSHA/report/nativefields joined;885nativeframer/243packet/12native153/408securechecks pass. No newnativebody, nativecountermodels emulationonly.",
+          "source": "kr_static",
+          "status": "confirmed",
+          "method": "emulation",
+          "canonical": "docs/PROTOCOL.md#current-pickup-race",
+          "limits": "DiagnosticWine/profile41/delivery165held2s measurement perturbation;firstarrival emulatorpolicy unchanged,not original arbitration/fairness/exactsametick/auth/fullvalidator/fullreset/K5/K6a/LANInternet. Nativeheap/receiver/gettercountermodels emulationonly.",
+          "evidence": [
+            "E014",
+            "E013",
+            "E040"
+          ]
+        }
+      ],
+      "verification": [
+        {
+          "check": "2124relations/seals/exactsource;885nativeframer/243packet/12native153/408secure;errors0;7catalog/docs/artifacts5/5/diff/requiredlocalhistory. CP05650server/18checkpointunchangedbaseline reused.",
+          "result": "pass",
+          "evidence": [
+            "E040",
+            "E006",
+            "E008",
+            "E004"
+          ],
+          "limits": "Deliveryhold is measurement perturbation; no gatecertificate/independentreview."
+        }
+      ],
+      "evidence": [
+        {
+          "id": "E001",
+          "kind": "repository",
+          "path": "docs/evidence/current-pickup-race/README.md",
+          "bytes": 3830,
+          "sha256": "5eee68bf698ffd90092227d7c1f1a417592c9d70df3c1092ea16c02c6fc123c7"
+        },
+        {
+          "id": "E002",
+          "kind": "local",
+          "path": "local/research/codex/current-pickup-race-r1/actor-fields.json",
+          "bytes": 275095,
+          "sha256": "0b93b6cdee4c56e5f2c30c5ca3d6abe4e40ae6e56624692f10d063d785baa0ef"
+        },
+        {
+          "id": "E003",
+          "kind": "local",
+          "path": "local/research/codex/current-pickup-race-r1/append_checkpoint.py",
+          "bytes": 5965,
+          "sha256": "42a8c5079075969779b790ec90fb7af9c1a052830a9999c51548e03a9b29186a"
+        },
+        {
+          "id": "E004",
+          "kind": "local",
+          "path": "local/research/codex/current-pickup-race-r1/artifacts-check.txt",
+          "bytes": 253,
+          "sha256": "649c6624aa6d317dfc1db5e16fea683cfbc9d9cf4dd3df11c0d70e57409054a0"
+        },
+        {
+          "id": "E005",
+          "kind": "local",
+          "path": "local/research/codex/current-pickup-race-r1/auth-reads.json",
+          "bytes": 24283,
+          "sha256": "5433352bbe43e45dfd7e4903d682e06d94a59faa818dc3e16257e9ffd6c2c7ee"
+        },
+        {
+          "id": "E006",
+          "kind": "local",
+          "path": "local/research/codex/current-pickup-race-r1/catalog-tests.txt",
+          "bytes": 105,
+          "sha256": "d6c420bbe634bdb6e87e0af3f99f6d86e85d5d92bf88034aef7383130bfbcc8e"
+        },
+        {
+          "id": "E007",
+          "kind": "local",
+          "path": "local/research/codex/current-pickup-race-r1/derive_roles.py",
+          "bytes": 1034,
+          "sha256": "a8ef793e500ef56e3fb205c8894b234bb04947e47a89fe8a9406e4d24371a55a"
+        },
+        {
+          "id": "E008",
+          "kind": "local",
+          "path": "local/research/codex/current-pickup-race-r1/docs-check.txt",
+          "bytes": 174,
+          "sha256": "12866f886ddfc54b74321c25b6a83d5ba6c81d9f9a246f5e8b564bc66a7e5f7b"
+        },
+        {
+          "id": "E009",
+          "kind": "local",
+          "path": "local/research/codex/current-pickup-race-r1/framer-replays.txt",
+          "bytes": 33,
+          "sha256": "0a6828d9b202b5e0f6df23ecd3ef1bdbc5b500cd42bee69c68be5b813c8974bc"
+        },
+        {
+          "id": "E010",
+          "kind": "local",
+          "path": "local/research/codex/current-pickup-race-r1/issue-body.md",
+          "bytes": 961,
+          "sha256": "04dc844601836475319058aa16b954f5c20c355561d8c98ff5302f8b5c8055d5"
+        },
+        {
+          "id": "E011",
+          "kind": "local",
+          "path": "local/research/codex/current-pickup-race-r1/lifecycle-summary.json",
+          "bytes": 8212,
+          "sha256": "3744fbd86ff357512a6ba0d7e386193e61b5087041fa5e1d4056b8b3b2fc7a2b"
+        },
+        {
+          "id": "E012",
+          "kind": "local",
+          "path": "local/research/codex/current-pickup-race-r1/lifecycle.txt",
+          "bytes": 502,
+          "sha256": "324be62f48e17a97e6e9f70f177d0dd57ef5e73ca72e25237f8c997bb5b9ad23"
+        },
+        {
+          "id": "E013",
+          "kind": "local",
+          "path": "local/research/codex/current-pickup-race-r1/native-153.json",
+          "bytes": 13793,
+          "sha256": "60bdb6518e72d8222d934ba6bac8c47cd4b93e4558c76f621aa5c812b1b10f66"
+        },
+        {
+          "id": "E014",
+          "kind": "local",
+          "path": "local/research/codex/current-pickup-race-r1/native-packets.json",
+          "bytes": 99450,
+          "sha256": "39474d7240888e688441ae84d8dcf425376e5bca9d471786b126403579b001ac"
+        },
+        {
+          "id": "E015",
+          "kind": "local",
+          "path": "local/research/codex/current-pickup-race-r1/native_153.py",
+          "bytes": 3545,
+          "sha256": "de2c378e1889eba1f4f918cf65797edc3daab83c43ebeafe97a10365b7e39f6d"
+        },
+        {
+          "id": "E016",
+          "kind": "local",
+          "path": "local/research/codex/current-pickup-race-r1/native_names.py",
+          "bytes": 2540,
+          "sha256": "682df5909736de5890b6866b7796f60e6656452cbc6d570c3d96f95fb49dd1ab"
+        },
+        {
+          "id": "E017",
+          "kind": "local",
+          "path": "local/research/codex/current-pickup-race-r1/native_packets.py",
+          "bytes": 4837,
+          "sha256": "bf6d11fe1fc8184b245b213e0396d309eb00e9365bc515409feedddba372c891"
+        },
+        {
+          "id": "E018",
+          "kind": "local",
+          "path": "local/research/codex/current-pickup-race-r1/packet-report.txt",
+          "bytes": 29,
+          "sha256": "7a98b39163a37bd2ad6ccc96040dc4cfa9b579027ef525b6686e347ecb6147ac"
+        },
+        {
+          "id": "E019",
+          "kind": "local",
+          "path": "local/research/codex/current-pickup-race-r1/parse_auth.py",
+          "bytes": 1279,
+          "sha256": "0bb2c1eafbefab86181b0894dcc7a54a347033cae5cf7cf591fa1d13fd8d5fda"
+        },
+        {
+          "id": "E020",
+          "kind": "local",
+          "path": "local/research/codex/current-pickup-race-r1/parse_fields.py",
+          "bytes": 3920,
+          "sha256": "abb6d6ff82ac414670e33b33c6c986565984f1cd40d46810e1c3ee1a7cedc2c7"
+        },
+        {
+          "id": "E021",
+          "kind": "local",
+          "path": "local/research/codex/current-pickup-race-r1/parse_lifecycle.py",
+          "bytes": 2674,
+          "sha256": "dec993e91cfea34abce99a7f283b40364cb8fb8f5b334b551cd7ddb40051e83a"
+        },
+        {
+          "id": "E022",
+          "kind": "local",
+          "path": "local/research/codex/current-pickup-race-r1/prepare.py",
+          "bytes": 4120,
+          "sha256": "e8ef43dd3a4d0c26522eed42a138d816ef1e6783961adf46255b6dd973950d9d"
+        },
+        {
+          "id": "E023",
+          "kind": "local",
+          "path": "local/research/codex/current-pickup-race-r1/prepare_reference.json",
+          "bytes": 1575,
+          "sha256": "a15086b6e9d54fd9732d0be8b3f50224e390c4ecee1f56ac9bbe1dd5a1871ca6"
+        },
+        {
+          "id": "E024",
+          "kind": "local",
+          "path": "local/research/codex/current-pickup-race-r1/profile.json",
+          "bytes": 10856,
+          "sha256": "f9afd7a330f8619fac1e479cd0f88013b731ae6a8e714922853bf57364c075aa"
+        },
+        {
+          "id": "E025",
+          "kind": "local",
+          "path": "local/research/codex/current-pickup-race-r1/race-current-A-actual6.bin",
+          "bytes": 81,
+          "sha256": "2cfebd3ad9a4935bb144090c4244c67ec9200ca54d4a9da71ecef00004a8bdf4"
+        },
+        {
+          "id": "E026",
+          "kind": "local",
+          "path": "local/research/codex/current-pickup-race-r1/race-current-B-actual6.bin",
+          "bytes": 81,
+          "sha256": "3faabdad6509fc688d8614823af347cc2cfa875256cdf9d02e0ff8ccaea3ea6e"
+        },
+        {
+          "id": "E027",
+          "kind": "local",
+          "path": "local/research/codex/current-pickup-race-r1/race-current-hashes.json",
+          "bytes": 345599,
+          "sha256": "e093a17bf9b906b3238a797fb19635bd6e401c841e573a13b2c6736058e0ad80"
+        },
+        {
+          "id": "E028",
+          "kind": "local",
+          "path": "local/research/codex/current-pickup-race-r1/race-current-launcher.log",
+          "bytes": 111274,
+          "sha256": "1520fbbabcdd1c73cbf38820d1dea66ce5a561fb59d38e01e41961b757bea26d"
+        },
+        {
+          "id": "E029",
+          "kind": "local",
+          "path": "local/research/codex/current-pickup-race-r1/race-current-native-names.json",
+          "bytes": 1512,
+          "sha256": "2766ecbd1ddbdac72cddf173a4ba22e6cea6a3d8db3edf7f61b630e01bae1e8a"
+        },
+        {
+          "id": "E030",
+          "kind": "local",
+          "path": "local/research/codex/current-pickup-race-r1/race-current-recipe.json",
+          "bytes": 1024,
+          "sha256": "30b45c15fd2123a08adad34dcb5cc731ed6df9b7833eb941b9df6c5d23b17361"
+        },
+        {
+          "id": "E031",
+          "kind": "local",
+          "path": "local/research/codex/current-pickup-race-r1/race.gdb",
+          "bytes": 29433,
+          "sha256": "9110f5b8d61f80c80c5b8b8c149f8a2899aff1c824a8ef0723e20ea9cbf104a9"
+        },
+        {
+          "id": "E032",
+          "kind": "local",
+          "path": "local/research/codex/current-pickup-race-r1/replay-run.py",
+          "bytes": 3010,
+          "sha256": "a1effff855125cb74b1cc2dd6e9ade1f371e3fd037332c69eb8dc16840b29184"
+        },
+        {
+          "id": "E033",
+          "kind": "local",
+          "path": "local/research/codex/current-pickup-race-r1/reuse-question.json",
+          "bytes": 4625,
+          "sha256": "08678d152fdb6b921d607874b5bf37d38b98d9500e06f3233e37a13444bba2f6"
+        },
+        {
+          "id": "E034",
+          "kind": "local",
+          "path": "local/research/codex/current-pickup-race-r1/reuse.py",
+          "bytes": 2859,
+          "sha256": "ab92f4aea07be7f71732c9a8b915af83ba1a64fca439cc5a1f5c75e572e168dc"
+        },
+        {
+          "id": "E035",
+          "kind": "local",
+          "path": "local/research/codex/current-pickup-race-r1/run_probe.py",
+          "bytes": 1082,
+          "sha256": "dab2298b2a9d581dfc2b095c1f3934347852d6e9dcc8f2c6f18e52d79912514f"
+        },
+        {
+          "id": "E036",
+          "kind": "local",
+          "path": "local/research/codex/current-pickup-race-r1/runtime-recipe.json",
+          "bytes": 511,
+          "sha256": "58742fe2dc40dbcc8b4c3c1c401b7c00aba002f42399ee4b6a58e5de9e7e7173"
+        },
+        {
+          "id": "E037",
+          "kind": "local",
+          "path": "local/research/codex/current-pickup-race-r1/runtime_hold.py",
+          "bytes": 2098,
+          "sha256": "6dfd804931be44a338cf9adae7fc629dd4fcaa580b77719abe23edc7592b3efd"
+        },
+        {
+          "id": "E038",
+          "kind": "local",
+          "path": "local/research/codex/current-pickup-race-r1/seal_run.py",
+          "bytes": 633,
+          "sha256": "2ae3b5047abe61c5ff515e72bca7ebb423eb32e8b14f86d6c412ba08eca4af9f"
+        },
+        {
+          "id": "E039",
+          "kind": "local",
+          "path": "local/research/codex/current-pickup-race-r1/sync_docs.py",
+          "bytes": 6029,
+          "sha256": "8aeec2498cfaa9fe1efe86d4821ca5ea712f87e396d1b28438b3c4082e27a44a"
+        },
+        {
+          "id": "E040",
+          "kind": "local",
+          "path": "local/research/codex/current-pickup-race-r1/verification.json",
+          "bytes": 2033,
+          "sha256": "ef3a35076c6e2bc4be91e4922e7e7f4ae57d2473b20cccfa378598439cdfb05d"
+        },
+        {
+          "id": "E041",
+          "kind": "local",
+          "path": "local/research/codex/current-pickup-race-r1/verify.py",
+          "bytes": 5405,
+          "sha256": "d2a1ff9ba93ba14c76503775d40f8c0c613b14d2984072a4a0428cac486fcd05"
+        },
+        {
+          "id": "E042",
+          "kind": "local",
+          "path": "local/research/codex/current-pickup-race-r1/cp062-snapshot/README.md",
+          "bytes": 3730,
+          "sha256": "53a1b33311f414ae9874709b2338229647f2db3bdbe675ef66cd7e00e4648399"
+        },
+        {
+          "id": "E043",
+          "kind": "local",
+          "path": "local/research/codex/current-pickup-race-r1/cp062-snapshot/docs/COVERAGE.md",
+          "bytes": 68981,
+          "sha256": "fe052df7f6c81a109333c9c4465b6e866b7ddd653271cb4e0c816a7c09a43706"
+        },
+        {
+          "id": "E044",
+          "kind": "local",
+          "path": "local/research/codex/current-pickup-race-r1/cp062-snapshot/docs/PLAN.md",
+          "bytes": 29901,
+          "sha256": "5f540cd9ce9f6ec054bf773f8b6c0c267584058dd0635e38cebf1a55bb9d340c"
+        },
+        {
+          "id": "E045",
+          "kind": "local",
+          "path": "local/research/codex/current-pickup-race-r1/cp062-snapshot/docs/PROTOCOL.md",
+          "bytes": 213025,
+          "sha256": "ff1705e7fbc7ed1604f13b65cc8ee52b7334027cc761830f249ea1ea896b4681"
+        },
+        {
+          "id": "E046",
+          "kind": "local",
+          "path": "local/research/codex/current-pickup-race-r1/cp062-snapshot/docs/RESEARCH.md",
+          "bytes": 29883,
+          "sha256": "2f5af4d15ce60d7b802f9672fd9c2fb1bca8052d3d26f9249e2b031f85027cd4"
+        },
+        {
+          "id": "E047",
+          "kind": "local",
+          "path": "local/research/codex/current-pickup-race-r1/cp062-snapshot/docs/evidence/current-pickup-race/README.md",
+          "bytes": 3830,
+          "sha256": "5eee68bf698ffd90092227d7c1f1a417592c9d70df3c1092ea16c02c6fc123c7"
+        },
+        {
+          "id": "E048",
+          "kind": "local",
+          "path": "local/research/codex/current-pickup-race-r1/cp062-snapshot/docs/features.json",
+          "bytes": 71904,
+          "sha256": "408d4ea6b35b99ca1bcee3b8c571905f5593a0c03190065d2ad633bb3a4cfaf5"
+        },
+        {
+          "id": "E049",
+          "kind": "local",
+          "path": "local/research/codex/current-pickup-race-r1/runtime-source/item_claims.py",
+          "bytes": 3340,
+          "sha256": "7990ae9195e9f8bba56b04101f352506194dbd0252793183993ce101a8674a2e"
+        },
+        {
+          "id": "E050",
+          "kind": "local",
+          "path": "local/research/codex/current-pickup-race-r1/runtime-source/probe_codec.py",
+          "bytes": 3227,
+          "sha256": "23ba54e6940953a52ff737e7e06b2761a8eb22eab444310b49b1d96efa12411d"
+        },
+        {
+          "id": "E051",
+          "kind": "local",
+          "path": "local/research/codex/current-pickup-race-r1/runtime-source/probe_room.py",
+          "bytes": 1468,
+          "sha256": "91292494d492c7851bd5432649adf528e1b07290316dc56ba1478f8a209a08bc"
+        },
+        {
+          "id": "E052",
+          "kind": "local",
+          "path": "local/research/codex/current-pickup-race-r1/runtime-source/probe_service.py",
+          "bytes": 32828,
+          "sha256": "eb19710037db3886050b5769ff733b6cb9768e3cba51bf9eccb8a9ef269967f2"
+        },
+        {
+          "id": "E053",
+          "kind": "local",
+          "path": "local/research/codex/current-pickup-race-r1/runtime-source/round_fence.py",
+          "bytes": 2339,
+          "sha256": "aabcc7f1d623573fc217de8df05403f83d82425bbe5d6e78872b3096a2d46708"
+        },
+        {
+          "id": "E054",
+          "kind": "local",
+          "path": "local/research/codex/current-pickup-race-r1/runtime-source/udp_round_keys.py",
+          "bytes": 1187,
+          "sha256": "db58ae1f25bcbeb52c2d25c7db6afbf1021ddd3af29702e756f5f41886530a0d"
+        },
+        {
+          "id": "E055",
+          "kind": "local",
+          "path": "local/research/codex/current-pickup-race-r1/derived/race-current-A/run.json",
+          "bytes": 95068,
+          "sha256": "80f15f0511f78b0bd3a3378a455e1ba14350285020e626bfe318a37fcf4efce9"
+        },
+        {
+          "id": "E056",
+          "kind": "local",
+          "path": "local/research/codex/current-pickup-race-r1/derived/race-current-A-oracle.json",
+          "bytes": 204205,
+          "sha256": "e0077d391bced871f5386fb250725c4191fb16ee07017a7c81a099f07b42938f"
+        },
+        {
+          "id": "E057",
+          "kind": "local",
+          "path": "local/research/codex/current-pickup-race-r1/derived/race-current-A-replay.txt",
+          "bytes": 3345,
+          "sha256": "99bca146a3cecd77b57582759efa30010884aeb75626f5684273cb7cf029efc7"
+        },
+        {
+          "id": "E058",
+          "kind": "local",
+          "path": "local/research/codex/current-pickup-race-r1/derived/race-current-B/run.json",
+          "bytes": 93486,
+          "sha256": "eb91074c29ac55051a6f3a4f60e4d72207e0eb7b2c066ee33fec895fedab2483"
+        },
+        {
+          "id": "E059",
+          "kind": "local",
+          "path": "local/research/codex/current-pickup-race-r1/derived/race-current-B-oracle.json",
+          "bytes": 206175,
+          "sha256": "55de06f34fa77951d84d2f7705cdc2cd51eda470241ecd4e0c860a3deb84f066"
+        },
+        {
+          "id": "E060",
+          "kind": "local",
+          "path": "local/research/codex/current-pickup-race-r1/derived/race-current-B-replay.txt",
+          "bytes": 3376,
+          "sha256": "ee9de0be44a57c895bc1564dde3a6c4d5de32a2dd208e367d3eb7434446a7ef5"
+        },
+        {
+          "id": "E061",
+          "kind": "local",
+          "path": "local/research/codex/current-pickup-race-r1/request-frames/race-current/A-F103-127.bin",
+          "bytes": 67,
+          "sha256": "70fff5f05a322a6b99e6ff9f2ce7ad6af5fd2520093b9a346e6e8a1b1df4433c"
+        },
+        {
+          "id": "E062",
+          "kind": "local",
+          "path": "local/research/codex/current-pickup-race-r1/request-frames/race-current/A-F39-99.bin",
+          "bytes": 61,
+          "sha256": "16062cc51fae0a61364d281f916d22814af0db98ecc1b52acf50496c4800603d"
+        },
+        {
+          "id": "E063",
+          "kind": "local",
+          "path": "local/research/codex/current-pickup-race-r1/request-frames/race-current/A-F48-124.bin",
+          "bytes": 57,
+          "sha256": "b10d2d326d096f906e6c9449490871a4d74815fc5d84cdf322869f1d3352e9d3"
+        },
+        {
+          "id": "E064",
+          "kind": "local",
+          "path": "local/research/codex/current-pickup-race-r1/request-frames/race-current/A-F52-118.bin",
+          "bytes": 60,
+          "sha256": "600a2b50b12994db6b2c4cab2767714525b3ff4173def0bb5fed327349cb07e9"
+        },
+        {
+          "id": "E065",
+          "kind": "local",
+          "path": "local/research/codex/current-pickup-race-r1/request-frames/race-current/A-F56-127.bin",
+          "bytes": 70,
+          "sha256": "9e162ec0224deeab7fdc4551343995458eaa1c96806b635e82490ed1fc2a2833"
+        },
+        {
+          "id": "E066",
+          "kind": "local",
+          "path": "local/research/codex/current-pickup-race-r1/request-frames/race-current/A-F61-127.bin",
+          "bytes": 67,
+          "sha256": "cb8554aa26694b84c0464eb75f675b93db915cff15df7d3049bf585fd8e9a647"
+        },
+        {
+          "id": "E067",
+          "kind": "local",
+          "path": "local/research/codex/current-pickup-race-r1/request-frames/race-current/A-F81-99.bin",
+          "bytes": 61,
+          "sha256": "2d4224ee1bfd937b7e72b685556cb43ed92d16e51f6443dff4d68d78851a1ad2"
+        },
+        {
+          "id": "E068",
+          "kind": "local",
+          "path": "local/research/codex/current-pickup-race-r1/request-frames/race-current/A-F90-124.bin",
+          "bytes": 57,
+          "sha256": "44e10c72419fd02d8d3b76e8c289d11c44a5fab44ef16102d9597af78319bbe8"
+        },
+        {
+          "id": "E069",
+          "kind": "local",
+          "path": "local/research/codex/current-pickup-race-r1/request-frames/race-current/A-F93-118.bin",
+          "bytes": 60,
+          "sha256": "dbfb0f05250faae6a344a689b2dc8dc77520dfd97f841843ee721fc19d88f156"
+        },
+        {
+          "id": "E070",
+          "kind": "local",
+          "path": "local/research/codex/current-pickup-race-r1/request-frames/race-current/A-F99-127.bin",
+          "bytes": 70,
+          "sha256": "9bef39b004c8d0ac9dc825fa266fd523875d46ceb2ca39c631df9dff61a40247"
+        },
+        {
+          "id": "E071",
+          "kind": "local",
+          "path": "local/research/codex/current-pickup-race-r1/request-frames/race-current/B-F100-127.bin",
+          "bytes": 52,
+          "sha256": "ed6a53b8dabbd28b38199a0347fceed6cc31d7a22ede6619dd98fcb400dcb12d"
+        },
+        {
+          "id": "E072",
+          "kind": "local",
+          "path": "local/research/codex/current-pickup-race-r1/request-frames/race-current/B-F101-127.bin",
+          "bytes": 52,
+          "sha256": "52427b1bcecfdbac860e9be86c06909781dae30786ae386bc0e6cd9fae3ac580"
+        },
+        {
+          "id": "E073",
+          "kind": "local",
+          "path": "local/research/codex/current-pickup-race-r1/request-frames/race-current/B-F102-127.bin",
+          "bytes": 52,
+          "sha256": "e53f0301338c96fce4ee0949ab62bf7b853678ad4b67eb6ab6514a7cac74d1bb"
+        },
+        {
+          "id": "E074",
+          "kind": "local",
+          "path": "local/research/codex/current-pickup-race-r1/request-frames/race-current/B-F104-127.bin",
+          "bytes": 52,
+          "sha256": "fef5d89fa5ddd2086ea5712a13368ca1fc41f774fb576ebd66857c7b8602b06c"
+        },
+        {
+          "id": "E075",
+          "kind": "local",
+          "path": "local/research/codex/current-pickup-race-r1/request-frames/race-current/B-F106-127.bin",
+          "bytes": 52,
+          "sha256": "246604c1736d00d6473a0c8eed592fd2fb0fb71444cbfa0a4d2e370a023bb88b"
+        },
+        {
+          "id": "E076",
+          "kind": "local",
+          "path": "local/research/codex/current-pickup-race-r1/request-frames/race-current/B-F12-82.bin",
+          "bytes": 49,
+          "sha256": "27d13b13f8df5db1f67451352419d49458641283683b06d40bc91f6c3f7220e7"
+        },
+        {
+          "id": "E077",
+          "kind": "local",
+          "path": "local/research/codex/current-pickup-race-r1/request-frames/race-current/B-F23-95.bin",
+          "bytes": 98,
+          "sha256": "41ec7cfe284ac427205c3029e41fd807814e254b6f15c4c80abea2e30c47b7d1"
+        },
+        {
+          "id": "E078",
+          "kind": "local",
+          "path": "local/research/codex/current-pickup-race-r1/request-frames/race-current/B-F27-99.bin",
+          "bytes": 61,
+          "sha256": "2cc665bd104c7558f4aa99ffc1d798caca8e0c83cc89f5d7ec11de0b027f8dff"
+        },
+        {
+          "id": "E079",
+          "kind": "local",
+          "path": "local/research/codex/current-pickup-race-r1/request-frames/race-current/B-F36-124.bin",
+          "bytes": 57,
+          "sha256": "288e40d3310306aa8bb3ded629ca036f1336a951b959683924c0def52d62a21d"
+        },
+        {
+          "id": "E080",
+          "kind": "local",
+          "path": "local/research/codex/current-pickup-race-r1/request-frames/race-current/B-F47-127.bin",
+          "bytes": 52,
+          "sha256": "a0123261e1d6a6bfe78dbca4ee8088676bc19c3845297f7ff91736cb495a87a0"
+        },
+        {
+          "id": "E081",
+          "kind": "local",
+          "path": "local/research/codex/current-pickup-race-r1/request-frames/race-current/B-F49-127.bin",
+          "bytes": 52,
+          "sha256": "4d88433883f95f771a45a18d2e15b22adca01108556b4dd073806736264e92e2"
+        },
+        {
+          "id": "E082",
+          "kind": "local",
+          "path": "local/research/codex/current-pickup-race-r1/request-frames/race-current/B-F50-127.bin",
+          "bytes": 52,
+          "sha256": "a6521a0bd5ea386cb9e01848b9a797c49b8b7765c151b1c416259d10d91a183a"
+        },
+        {
+          "id": "E083",
+          "kind": "local",
+          "path": "local/research/codex/current-pickup-race-r1/request-frames/race-current/B-F51-127.bin",
+          "bytes": 52,
+          "sha256": "c8db4af4ab13a1fbcb21e8dc8f24a780ad8be37f6204518f8eb236d77de364f3"
+        },
+        {
+          "id": "E084",
+          "kind": "local",
+          "path": "local/research/codex/current-pickup-race-r1/request-frames/race-current/B-F53-127.bin",
+          "bytes": 52,
+          "sha256": "06a126dbb54da63d10044518a5018949dd992986e16d0c2b438c5f4913b6f0b6"
+        },
+        {
+          "id": "E085",
+          "kind": "local",
+          "path": "local/research/codex/current-pickup-race-r1/request-frames/race-current/B-F55-127.bin",
+          "bytes": 52,
+          "sha256": "b1b8ecca4f9dfd717a507affa29aea0f8b219b63993fe152e17b4873bc843123"
+        },
+        {
+          "id": "E086",
+          "kind": "local",
+          "path": "local/research/codex/current-pickup-race-r1/request-frames/race-current/B-F56-127.bin",
+          "bytes": 52,
+          "sha256": "a19dd35f0c275180afbda6a69ed5b952f94942ddb751c82a79d45eff3ad32fc3"
+        },
+        {
+          "id": "E087",
+          "kind": "local",
+          "path": "local/research/codex/current-pickup-race-r1/request-frames/race-current/B-F70-95.bin",
+          "bytes": 382,
+          "sha256": "01a9722453a062aaca217b87c05ffa98c5e34afa0b148efc3fe324699eb92cf4"
+        },
+        {
+          "id": "E088",
+          "kind": "local",
+          "path": "local/research/codex/current-pickup-race-r1/request-frames/race-current/B-F76-99.bin",
+          "bytes": 61,
+          "sha256": "cfd14a38b7d994b315d162949730f9d406c0427b266852c9f86a2af83319fafb"
+        },
+        {
+          "id": "E089",
+          "kind": "local",
+          "path": "local/research/codex/current-pickup-race-r1/request-frames/race-current/B-F84-124.bin",
+          "bytes": 57,
+          "sha256": "803dca057ecaab862f51935db7e246ada754e997bd7275dd2280d7951caf241e"
+        },
+        {
+          "id": "E090",
+          "kind": "local",
+          "path": "local/research/codex/current-pickup-race-r1/request-frames/race-current/B-F96-127.bin",
+          "bytes": 52,
+          "sha256": "6c0fa63ba580b9c43b35814e2cbb4092cbc5182143f17e53e1d44d88348bb8d0"
+        },
+        {
+          "id": "E091",
+          "kind": "local",
+          "path": "local/research/codex/current-pickup-race-r1/request-frames/race-current/B-F99-127.bin",
+          "bytes": 52,
+          "sha256": "9004a53ecea216c76784adcd6d84cda21faac93af0c8f7629c3fd683570ecaaf"
+        },
+        {
+          "id": "E092",
+          "kind": "local",
+          "path": "local/research/codex/current-pickup-race-r1/race-current/run.json",
+          "bytes": 143812,
+          "sha256": "06310de8be8ef90fd0cde9247119e0563bcf71925d1cd82b02115d122363d1a3"
+        },
+        {
+          "id": "E093",
+          "kind": "local",
+          "path": "local/research/codex/current-pickup-race-r1/race-current/client.log",
+          "bytes": 70680,
+          "sha256": "d7a21c4c82f4cd0b8b479b1398d71bfe50825695493e63a890ae88634ff19975"
+        },
+        {
+          "id": "E094",
+          "kind": "local",
+          "path": "local/research/codex/current-pickup-race-r1/race-current/client-B.log",
+          "bytes": 97526,
+          "sha256": "c9e220ebb36c63c31db9bad25fa80e8bb9595bdf1940b9e87c19cf568604bbba"
+        },
+        {
+          "id": "E095",
+          "kind": "local",
+          "path": "local/research/codex/current-pickup-race-r1/race-current/debug-commands.txt",
+          "bytes": 29433,
+          "sha256": "9110f5b8d61f80c80c5b8b8c149f8a2899aff1c824a8ef0723e20ea9cbf104a9"
+        },
+        {
+          "id": "E096",
+          "kind": "local",
+          "path": "local/research/codex/current-pickup-race-r1/race-current/debug-commands-B.txt",
+          "bytes": 29433,
+          "sha256": "9110f5b8d61f80c80c5b8b8c149f8a2899aff1c824a8ef0723e20ea9cbf104a9"
+        },
+        {
+          "id": "E097",
+          "kind": "local",
+          "path": "local/research/codex/current-pickup-race-r1/race-current/service-state.json",
+          "bytes": 147809,
+          "sha256": "6431383bf8937eaea3c5f9430ca314a22a7269ab3ff6b1fd1ad8455faec7b2b8"
+        },
+        {
+          "id": "E098",
+          "kind": "local",
+          "path": "local/research/codex/current-pickup-race-r1/race-current/A-blast158-r1-1-97.bin",
+          "bytes": 51,
+          "sha256": "74e2de4a80eccc95ca075b6b7b315a7883176c212d7f752f47cb45a80c0122e3"
+        },
+        {
+          "id": "E099",
+          "kind": "local",
+          "path": "local/research/codex/current-pickup-race-r1/race-current/A-blast158-r2-2-136.bin",
+          "bytes": 51,
+          "sha256": "64d4c380a715c392025aa97ce4b91e3dcfcb01f4ee6596e3e32257b491d7ca6f"
+        },
+        {
+          "id": "E100",
+          "kind": "local",
+          "path": "local/research/codex/current-pickup-race-r1/race-current/A-dynamic159-r1-1-94.bin",
+          "bytes": 77,
+          "sha256": "71a4476e7583f1680ac0e2cf7adb90b4660b95cc002aa25d8a7a1782afd1b969"
+        },
+        {
+          "id": "E101",
+          "kind": "local",
+          "path": "local/research/codex/current-pickup-race-r1/race-current/A-dynamic159-r2-2-133.bin",
+          "bytes": 77,
+          "sha256": "6a61fe24bf5064f65a668acf421ea4a9b53dd96b570c36b05512be9e1afaab6d"
+        },
+        {
+          "id": "E102",
+          "kind": "local",
+          "path": "local/research/codex/current-pickup-race-r1/race-current/A-floor582-115.bin",
+          "bytes": 64,
+          "sha256": "d7cfe29149c84aaa1e95b2cd935d5313540651f27c4c6eb4aa030f96981eac36"
+        },
+        {
+          "id": "E103",
+          "kind": "local",
+          "path": "local/research/codex/current-pickup-race-r1/race-current/A-floor582-76.bin",
+          "bytes": 64,
+          "sha256": "dade68ac6b12c8c7ae59bf27d007ad4f1b32b6369d9a0fcd29170b3063e42ace"
+        },
+        {
+          "id": "E104",
+          "kind": "local",
+          "path": "local/research/codex/current-pickup-race-r1/race-current/A-go197-121.bin",
+          "bytes": 52,
+          "sha256": "3380c0c80d8faad72ca646a853ed917edd2f30fd0527e83e58ce731c40aa7b3f"
+        },
+        {
+          "id": "E105",
+          "kind": "local",
+          "path": "local/research/codex/current-pickup-race-r1/race-current/A-go197-82.bin",
+          "bytes": 52,
+          "sha256": "64b95010ecb0e40bc0367f41f6710d2357fb2538ce827e205825284601237ef8"
+        },
+        {
+          "id": "E106",
+          "kind": "local",
+          "path": "local/research/codex/current-pickup-race-r1/race-current/A-guest110-r1-109.bin",
+          "bytes": 44,
+          "sha256": "f300f7803c78018bc7bb0a99ff04bd200a6843d607915cb48c84b78b557b6a61"
+        },
+        {
+          "id": "E107",
+          "kind": "local",
+          "path": "local/research/codex/current-pickup-race-r1/race-current/A-guest110-r2-148.bin",
+          "bytes": 44,
+          "sha256": "df02d8a7984631a6c13646af10eae0def798bf3d6ac4691112817b04012efdb7"
+        },
+        {
+          "id": "E108",
+          "kind": "local",
+          "path": "local/research/codex/current-pickup-race-r1/race-current/A-host110-r1-106.bin",
+          "bytes": 44,
+          "sha256": "bbbf2539317016a757afed97a98b9103e3e64fa0b31dc96c0a3ff853c815818e"
+        },
+        {
+          "id": "E109",
+          "kind": "local",
+          "path": "local/research/codex/current-pickup-race-r1/race-current/A-host110-r2-145.bin",
+          "bytes": 44,
+          "sha256": "3f61445619e55a509cbcfc153858b6fb4a8529cba6b9bad57fe91aa05570c76b"
+        },
+        {
+          "id": "E110",
+          "kind": "local",
+          "path": "local/research/codex/current-pickup-race-r1/race-current/A-item165-r1-17-91.bin",
+          "bytes": 50,
+          "sha256": "2ad2e7cbd637f553ff114fada41951a1129ca3dc52b14a540a60ccea59088bf0"
+        },
+        {
+          "id": "E111",
+          "kind": "local",
+          "path": "local/research/codex/current-pickup-race-r1/race-current/A-item165-r2-17-130.bin",
+          "bytes": 50,
+          "sha256": "2c19d1209ac858ba000cd5088dd8cb15e920ae93a3ba7ea72026091f7f62b660"
+        },
+        {
+          "id": "E112",
+          "kind": "local",
+          "path": "local/research/codex/current-pickup-race-r1/race-current/A-peer153-127.bin",
+          "bytes": 135,
+          "sha256": "8048fcb2ab6b1a4a365561781e47e990447a7af896a7ba95c0c2561924fa830f"
+        },
+        {
+          "id": "E113",
+          "kind": "local",
+          "path": "local/research/codex/current-pickup-race-r1/race-current/A-peer153-88.bin",
+          "bytes": 135,
+          "sha256": "51fc3a0a354f965230b8b456370ac1151a4cab2b7805edb08e3ef64cfafdfa2b"
+        },
+        {
+          "id": "E114",
+          "kind": "local",
+          "path": "local/research/codex/current-pickup-race-r1/race-current/A-play196-124.bin",
+          "bytes": 45,
+          "sha256": "e0f364fc0becf0a2a91327c1a33e299af37f1cecc00a26d40443c5bda58b1af4"
+        },
+        {
+          "id": "E115",
+          "kind": "local",
+          "path": "local/research/codex/current-pickup-race-r1/race-current/A-play196-85.bin",
+          "bytes": 45,
+          "sha256": "d04bf155b4847f9d41b0edfdf00a32526302273271c0f1cadbb8ce22b89eb51d"
+        },
+        {
+          "id": "E116",
+          "kind": "local",
+          "path": "local/research/codex/current-pickup-race-r1/race-current/A-rank175-r1-100.bin",
+          "bytes": 340,
+          "sha256": "5b3751f4c322454005652035ed69253cac647ed0fbc24540bd0599fa2bae6c31"
+        },
+        {
+          "id": "E117",
+          "kind": "local",
+          "path": "local/research/codex/current-pickup-race-r1/race-current/A-rank175-r2-139.bin",
+          "bytes": 340,
+          "sha256": "076e2ce52df3f3450801afd1e815de8afcccc048d94546b45cd74c50f03dd959"
+        },
+        {
+          "id": "E118",
+          "kind": "local",
+          "path": "local/research/codex/current-pickup-race-r1/race-current/A-ready110-112.bin",
+          "bytes": 44,
+          "sha256": "f31c5f5630019345dc62b5027f13c5267af82643ac2dbac979f0a454192b910e"
+        },
+        {
+          "id": "E119",
+          "kind": "local",
+          "path": "local/research/codex/current-pickup-race-r1/race-current/A-ready110-73.bin",
+          "bytes": 44,
+          "sha256": "8fafd9cf652b458ee09b3751a0201f9ab1409920398e0e842e43b915c8840e25"
+        },
+        {
+          "id": "E120",
+          "kind": "local",
+          "path": "local/research/codex/current-pickup-race-r1/race-current/A-return180-r1-103.bin",
+          "bytes": 41,
+          "sha256": "996ed34682d009d8977c2571e23c636f824049fb8d962426a9c2d903ed080200"
+        },
+        {
+          "id": "E121",
+          "kind": "local",
+          "path": "local/research/codex/current-pickup-race-r1/race-current/A-return180-r2-142.bin",
+          "bytes": 41,
+          "sha256": "7e2f2c7c886e57bc6ea6b82c1aaa41fa02ca04bcebdf5e725bb7531d97d17567"
+        },
+        {
+          "id": "E122",
+          "kind": "local",
+          "path": "local/research/codex/current-pickup-race-r1/race-current/A-start121-r1-79.bin",
+          "bytes": 167,
+          "sha256": "f8a824335b4079160a4aaf0e0b425d1fabfa78c248d131503440d0414e1f26cf"
+        },
+        {
+          "id": "E123",
+          "kind": "local",
+          "path": "local/research/codex/current-pickup-race-r1/race-current/A-start121-r2-118.bin",
+          "bytes": 167,
+          "sha256": "c8bc9053b53a7ea610e29ae2928cdadeec601dd12bcf9ce25f30ac71cdad6346"
+        },
+        {
+          "id": "E124",
+          "kind": "local",
+          "path": "local/research/codex/current-pickup-race-r1/race-current/B-blast158-r1-1-97.bin",
+          "bytes": 51,
+          "sha256": "74e2de4a80eccc95ca075b6b7b315a7883176c212d7f752f47cb45a80c0122e3"
+        },
+        {
+          "id": "E125",
+          "kind": "local",
+          "path": "local/research/codex/current-pickup-race-r1/race-current/B-blast158-r2-2-142.bin",
+          "bytes": 51,
+          "sha256": "b12c3fbe13bba6591e62ca40687ffe6a04b44a19ffbc64d48647cd6075c91ebc"
+        },
+        {
+          "id": "E126",
+          "kind": "local",
+          "path": "local/research/codex/current-pickup-race-r1/race-current/B-dynamic159-r1-1-94.bin",
+          "bytes": 77,
+          "sha256": "71a4476e7583f1680ac0e2cf7adb90b4660b95cc002aa25d8a7a1782afd1b969"
+        },
+        {
+          "id": "E127",
+          "kind": "local",
+          "path": "local/research/codex/current-pickup-race-r1/race-current/B-dynamic159-r2-2-139.bin",
+          "bytes": 77,
+          "sha256": "3a84487b7e02fa906b6d8c8d5775513d3d907a4b7b99cf936023513207df4e6b"
+        },
+        {
+          "id": "E128",
+          "kind": "local",
+          "path": "local/research/codex/current-pickup-race-r1/race-current/B-event170-17-r1-100.bin",
+          "bytes": 48,
+          "sha256": "05054a65c3e50973a24f8cdb33c24b1df89202647c5c956f579429fcb07086bf"
+        },
+        {
+          "id": "E129",
+          "kind": "local",
+          "path": "local/research/codex/current-pickup-race-r1/race-current/B-event170-17-r2-145.bin",
+          "bytes": 48,
+          "sha256": "898885a62d34d1c57c99ab9b0bb0c3300653883b263aefc90ee4ca1e66fc5969"
+        },
+        {
+          "id": "E130",
+          "kind": "local",
+          "path": "local/research/codex/current-pickup-race-r1/race-current/B-event170-19-r1-103.bin",
+          "bytes": 59,
+          "sha256": "9c0e5cd46be00fe95e1309c0345fa056dfaffa236d703b7fe448234a9bb8e21b"
+        },
+        {
+          "id": "E131",
+          "kind": "local",
+          "path": "local/research/codex/current-pickup-race-r1/race-current/B-event170-19-r2-148.bin",
+          "bytes": 59,
+          "sha256": "c5982c17efde248f0e7485749193ff388f1f4221832850c0b4284022029fea7d"
+        },
+        {
+          "id": "E132",
+          "kind": "local",
+          "path": "local/research/codex/current-pickup-race-r1/race-current/B-floor582-121.bin",
+          "bytes": 64,
+          "sha256": "b108cbc93ed5896e87a383e680b955df612b139b892fe2dc6fa7c89dc76d1eaf"
+        },
+        {
+          "id": "E133",
+          "kind": "local",
+          "path": "local/research/codex/current-pickup-race-r1/race-current/B-floor582-76.bin",
+          "bytes": 64,
+          "sha256": "dade68ac6b12c8c7ae59bf27d007ad4f1b32b6369d9a0fcd29170b3063e42ace"
+        },
+        {
+          "id": "E134",
+          "kind": "local",
+          "path": "local/research/codex/current-pickup-race-r1/race-current/B-go197-127.bin",
+          "bytes": 52,
+          "sha256": "4479c8d2bd5a138f8dd57f39fc717eabaade8d4273b394c5d4da4ac42a32ce22"
+        },
+        {
+          "id": "E135",
+          "kind": "local",
+          "path": "local/research/codex/current-pickup-race-r1/race-current/B-go197-82.bin",
+          "bytes": 52,
+          "sha256": "64b95010ecb0e40bc0367f41f6710d2357fb2538ce827e205825284601237ef8"
+        },
+        {
+          "id": "E136",
+          "kind": "local",
+          "path": "local/research/codex/current-pickup-race-r1/race-current/B-guest110-r1-115.bin",
+          "bytes": 44,
+          "sha256": "b9a562c345517aa67d96c51dfe93daedc56af471a1e386fd57cb165b0cee0bf1"
+        },
+        {
+          "id": "E137",
+          "kind": "local",
+          "path": "local/research/codex/current-pickup-race-r1/race-current/B-guest110-r2-160.bin",
+          "bytes": 44,
+          "sha256": "6e725be5eaf80cc30e3e51269018d224087c7b2b56713e255fbc72e8bb48e884"
+        },
+        {
+          "id": "E138",
+          "kind": "local",
+          "path": "local/research/codex/current-pickup-race-r1/race-current/B-host110-r1-112.bin",
+          "bytes": 44,
+          "sha256": "57460635dc0e9976e22e6b40d430710aab16e6a33c152be10c6a80b4564c3110"
+        },
+        {
+          "id": "E139",
+          "kind": "local",
+          "path": "local/research/codex/current-pickup-race-r1/race-current/B-host110-r2-157.bin",
+          "bytes": 44,
+          "sha256": "19ca60c86c873daa8df91c39edd61ebf3baafa3b8b4439c672d5dc049de76026"
+        },
+        {
+          "id": "E140",
+          "kind": "local",
+          "path": "local/research/codex/current-pickup-race-r1/race-current/B-item165-r1-17-91.bin",
+          "bytes": 50,
+          "sha256": "2ad2e7cbd637f553ff114fada41951a1129ca3dc52b14a540a60ccea59088bf0"
+        },
+        {
+          "id": "E141",
+          "kind": "local",
+          "path": "local/research/codex/current-pickup-race-r1/race-current/B-item165-r2-17-136.bin",
+          "bytes": 50,
+          "sha256": "d388c7e74c6097e90bbdcc24fa5136f2889fb940c48cf23b222301dd0e14d774"
+        },
+        {
+          "id": "E142",
+          "kind": "local",
+          "path": "local/research/codex/current-pickup-race-r1/race-current/B-peer153-133.bin",
+          "bytes": 135,
+          "sha256": "cd3fc1b35368196e36774331177260f7986fe91973269d139ac9f6791b8eefb8"
+        },
+        {
+          "id": "E143",
+          "kind": "local",
+          "path": "local/research/codex/current-pickup-race-r1/race-current/B-peer153-88.bin",
+          "bytes": 135,
+          "sha256": "2e08ab1719de18c6ceb32d6a0d4ab2a60322ffb01dfdb7e5358cbce56804edd5"
+        },
+        {
+          "id": "E144",
+          "kind": "local",
+          "path": "local/research/codex/current-pickup-race-r1/race-current/B-play196-130.bin",
+          "bytes": 45,
+          "sha256": "13f2d542669df1a08be243989a4e70967313aab6c60971f9d235817f9240b651"
+        },
+        {
+          "id": "E145",
+          "kind": "local",
+          "path": "local/research/codex/current-pickup-race-r1/race-current/B-play196-85.bin",
+          "bytes": 45,
+          "sha256": "d04bf155b4847f9d41b0edfdf00a32526302273271c0f1cadbb8ce22b89eb51d"
+        },
+        {
+          "id": "E146",
+          "kind": "local",
+          "path": "local/research/codex/current-pickup-race-r1/race-current/B-rank175-r1-106.bin",
+          "bytes": 340,
+          "sha256": "af64696343b71bbddfcca524adcb34b3c8dd3b736f65508ac464a977c1810384"
+        },
+        {
+          "id": "E147",
+          "kind": "local",
+          "path": "local/research/codex/current-pickup-race-r1/race-current/B-rank175-r2-151.bin",
+          "bytes": 340,
+          "sha256": "a8f475739686a41b6fe6a6c6f2e2bceadcc320ea62dd0c7c8d819769e9fe05ee"
+        },
+        {
+          "id": "E148",
+          "kind": "local",
+          "path": "local/research/codex/current-pickup-race-r1/race-current/B-ready110-118.bin",
+          "bytes": 44,
+          "sha256": "6526e2f461589ee6ea8406ec75602e5c82bbf08353ee8d7d8b7f54952d1dac89"
+        },
+        {
+          "id": "E149",
+          "kind": "local",
+          "path": "local/research/codex/current-pickup-race-r1/race-current/B-ready110-73.bin",
+          "bytes": 44,
+          "sha256": "8fafd9cf652b458ee09b3751a0201f9ab1409920398e0e842e43b915c8840e25"
+        },
+        {
+          "id": "E150",
+          "kind": "local",
+          "path": "local/research/codex/current-pickup-race-r1/race-current/B-remove107-163.bin",
+          "bytes": 44,
+          "sha256": "018c8421718aaf84c501b8ca2f23d39e97750053b22c423b5101e2849cd4db83"
+        },
+        {
+          "id": "E151",
+          "kind": "local",
+          "path": "local/research/codex/current-pickup-race-r1/race-current/B-return180-r1-109.bin",
+          "bytes": 41,
+          "sha256": "b53daa3dda63e60a45282c346e337b4d3d97dd07a2ef4b33a42a147350601e54"
+        },
+        {
+          "id": "E152",
+          "kind": "local",
+          "path": "local/research/codex/current-pickup-race-r1/race-current/B-return180-r2-154.bin",
+          "bytes": 41,
+          "sha256": "6cfe760393700f6f5727536b029fbf72d8d3fcbd640b42da5887c4fe612b6389"
+        },
+        {
+          "id": "E153",
+          "kind": "local",
+          "path": "local/research/codex/current-pickup-race-r1/race-current/B-start121-r1-79.bin",
+          "bytes": 167,
+          "sha256": "f8a824335b4079160a4aaf0e0b425d1fabfa78c248d131503440d0414e1f26cf"
+        },
+        {
+          "id": "E154",
+          "kind": "local",
+          "path": "local/research/codex/current-pickup-race-r1/race-current/B-start121-r2-124.bin",
+          "bytes": 167,
+          "sha256": "f83868d66c8127ba318fca619743e810d900bfd1edcaab62656afbf7531b2dab"
+        },
+        {
+          "id": "E155",
+          "kind": "local",
+          "path": "local/research/codex/current-pickup-race-r1/race-current/B-survivor110-166.bin",
+          "bytes": 44,
+          "sha256": "dd924b4b2bec2ef2ad5e167f3e4df028f3e66365243aeca3e6718b3edf94c145"
+        },
+        {
+          "id": "E156",
+          "kind": "local",
+          "path": "local/research/codex/wine_probe_current_pickup_race.py",
+          "bytes": 40993,
+          "sha256": "1952844d18932c42a35d3b59740cafce85268889ac9308c2e19345cdfefa0a25"
+        }
+      ],
+      "delta": {
+        "added": [
+          "Currentserializedservice actualtwo-clientcontestedindex/onewinnerstatbothviews/twocycle reset,winnernaturallyreversed."
+        ],
+        "corrected": [
+          "CP061currentitemrace gap now measuredinscope;notwholefairness/auth/transport/resetproof."
+        ],
+        "superseded": [
+          "NEXT-CURRENT-PICKUP-RACE measuredinscope;nextreport127stale/duplicate state/result."
+        ]
+      },
+      "blockers": [
+        "Report127 lacks freshness/duplicatepolicy;oldreport could poisonpickupmarker/state/result.",
+        "Fullmovementgrammar/transport/authauthority/cachevariants/vanilla/fullreset/validator/K5/K6a/LANInternet open."
+      ],
+      "next_steps": [
+        {
+          "id": "NEXT-CURRENT-PICKUP-RACE",
+          "task": "KRE-005b",
+          "state": "superseded",
+          "action": "MeasuredCP062inboundedrecipe; remainingacceptancedimensions stayinRESEARCH/gates.",
+          "owner": "Codex",
+          "reviewer": "Codex"
+        },
+        {
+          "id": "NEXT-REPORT127-FRESHNESS",
+          "task": "KRE-005b",
+          "state": "active",
+          "action": "ReuseB53010prefix14/12580B0/CP055logicalcounter/nativeactualorder;oldreportcontrolround2aftermarker;selectboundedguardonlywithevidence/designscope. Notk124/ms/auth;dispatcher replay distinctfromactualTCP.",
+          "owner": "Codex",
+          "reviewer": "Codex"
+        }
+      ],
+      "review": {
+        "status": "waived",
+        "as_of_utc": "2026-11-02T12:50:51.595379+00:00",
+        "reference": "docs/evidence/checkpoints/review-waiver.json",
+        "scope": "Codex solo RE/code/runtime/selfcheck, not independent approval.",
+        "authorization": {
+          "by": "project_owner",
+          "reference": "docs/evidence/checkpoints/review-waiver.json",
+          "reason": "Owner explicitly requested solo without Claude review."
+        }
+      },
+      "docs_sync": [
+        {
+          "path": "README.md",
+          "state": "updated",
+          "reason": "CP062actualcontestedindex/currentservice/twoactualwriters/winnerstatreset evidence andlimits; nextreport127;nogatepromotion."
+        },
+        {
+          "path": "docs/PLAN.md",
+          "state": "updated",
+          "reason": "CP062actualcontestedindex/currentservice/twoactualwriters/winnerstatreset evidence andlimits; nextreport127;nogatepromotion."
+        },
+        {
+          "path": "docs/PROTOCOL.md",
+          "state": "updated",
+          "reason": "CP062actualcontestedindex/currentservice/twoactualwriters/winnerstatreset evidence andlimits; nextreport127;nogatepromotion."
+        },
+        {
+          "path": "docs/RESEARCH.md",
+          "state": "updated",
+          "reason": "CP062actualcontestedindex/currentservice/twoactualwriters/winnerstatreset evidence andlimits; nextreport127;nogatepromotion."
+        },
+        {
+          "path": "docs/features.json",
+          "state": "updated",
+          "reason": "CP062actualcontestedindex/currentservice/twoactualwriters/winnerstatreset evidence andlimits; nextreport127;nogatepromotion."
+        },
+        {
+          "path": "docs/COVERAGE.md",
+          "state": "updated",
+          "reason": "CP062actualcontestedindex/currentservice/twoactualwriters/winnerstatreset evidence andlimits; nextreport127;nogatepromotion."
+        },
+        {
+          "path": "docs/evidence/current-pickup-race/README.md",
+          "state": "updated",
+          "reason": "CP062actualcontestedindex/currentservice/twoactualwriters/winnerstatreset evidence andlimits; nextreport127;nogatepromotion."
+        }
+      ]
     }
   ],
   "audits": [
@@ -128384,6 +129650,12 @@
       "state": "open",
       "canonical": "docs/PLAN.md",
       "reference": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/82"
+    },
+    {
+      "id": "KRE-025",
+      "state": "open",
+      "canonical": "docs/PLAN.md",
+      "reference": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/84"
     }
   ]
 }
