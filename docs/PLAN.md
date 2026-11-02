@@ -1,7 +1,7 @@
 # Kế hoạch server giả lập KR 00967
 
 Nguồn chuẩn của project `boom-kr-server`; bản nhập từ plan đã được dsh1/dsh2 review tại `1eee46d`.
-Cập nhật03/11 JST (CP068): [hiddenitems/currentservice](PROTOCOL.md#current-hidden-items) đã đo với guards hiện hành; runpartial giữ riêng. Tiếp gom basicBattle profile theo consumer đã biết; AUD021/CP068,nextCP072.
+Cập nhật03/11 JST (CP069): [basicBattle profile](PROTOCOL.md#basic-battle) có baeffects/reset/currentguards cùngrun. Tiếp movement/UDPcausality bằng endpointcut/counter/private namespace;AUD021,nextCP072.
 
 
 ### Mục tiêu, baseline và phạm vi
@@ -37,13 +37,13 @@ với client Rust không chứng minh có thể điều khiển client KR bằng
 
 ### Tiến độ hiện hành theo bằng chứng
 
-| Task/mốc | Trạng thái tại CP068 | Nguồn chuẩn |
+| Task/mốc | Trạng thái tại CP069 | Nguồn chuẩn |
 |---|---|---|
 | KRE-004/issue6 | Đã review/merge PR7 và đóng issue:recipe r1 đến local accept;không phải full K1 | [Wine r1](evidence/wine/README.md) |
 | Bootstrap reply | PR8 đã merge;debugger ProcessPatchreturn1,không ép success | [bootstrap evidence](evidence/bootstrap-wire/README.md) |
 | KRE-005a/issue9,R2 | PR10 đã merge:3 cold start cửa sổ/second accept;issue9 còn mở | [R2 evidence](evidence/wine-r2/README.md) |
 | WCP hai-reply | Run CP001 là lịch sử chưa C→S; CP006 đã đo request đầu trên copy tham số hóa | [PROTOCOL](PROTOCOL.md#wcp),[WCP evidence](evidence/wcp/README.md) |
-| KRE-005b/issue14 | CP006–067 đã merge; CP068 hiddenintegration tự kiểm/tích hợp theo [PR97](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/97); fullround/authority/full auth còn mở | [Q-023](RESEARCH.md#q-023), [service](evidence/probe-service/README.md) |
+| KRE-005b/issue14 | CP006–068 đã merge; CP069 basicBattle tự kiểm/chờ PR; fullround/authority/full auth còn mở | [Q-023](RESEARCH.md#q-023), [service](evidence/probe-service/README.md) |
 | K0/K1 | Chưa nghiệm thu toàn gate;Windows vanilla/control ownership và các điều kiện còn thiếu giữ mở | Gate dưới,[Q-022](RESEARCH.md) |
 | K2a/K2 | Primitive/WCP, CP057stream native/model và CP058–060authcallback137/135/errors0 đã có; fullcodec/authauthority/reconnect và gate chưa pass | [PROTOCOL](PROTOCOL.md#login-auth),[Q-023](RESEARCH.md#q-023) |
 | K3 | Copy đã vẽUI/đóngnotice, A/B/Cprofile đọc sạch và mộtnamedcachewarm được nhận; identityauthority/toàncache/codec/K3 chưa nghiệm thu | [Contract sảnh](PROTOCOL.md#channel-lobby) |
@@ -60,13 +60,15 @@ KRE-005b/issue14 vẫn mở. Các bước dưới là **thứ tự ưu tiên**, 
 xong checkpoint/commit/PR thì chuyển ngay việc kế tiếp trong thứ tự này, không tự dừng/chờ nhắc.
 Một blocker chỉ kết thúc nhánh đo tương ứng; ghi rõ rồi tiếp việc độc lập có thể làm, không tự đóng gate.
 
-1. **KR-F005/F006/F007/S001 — gom basicBattle profile:** [CP068](PROTOCOL.md#current-hidden-items)
-   đã ghép list2/reveal/142/pickup/effect/reset với currentservice, không RE lại hiddenconsumer.
-   Các ca currentfloor/tranhitem vàhidden còn profile riêng. Tái dùng known582counts/list1+list2,
-   catalog vàdistinctspawn để có mộtprofile chọn rõ floorRoller+hiddenBomb/Fire; native582/fullfields
-   kiểm trước. Chạy cảbaeffects/reveal/stat/reset/state/result qua hai vòng cùngrun, giữ scope guards/
-   placement design/recipe và partial. Chỉ đổi datafixture/exportoption, không tựthêm nativebehavior
-   hoặc gộp nhiều run thành nghiệmthu. K5/K6a acceptance/malformed/transport/lifecycle vẫn mở.
+1. **KR-F002/F003/S001 — movement và UDPcausality:** [CP069](PROTOCOL.md#basic-battle) đã có
+   basicprofile/3effects/reset, không tìm lại itemreceiver/clock/auth/cache. SourceCP027/045–047/
+   CP061/065 cho nativeposition/path, nhưng pairedsamples không là phép loại transport. Trong mạng
+   private namespace của mộtcontroller, dùng endpointUDP từactual99; nếu `nft`/capability đủ thì chặn
+   mộtchiều sau peer153/clock bằng rule cócounter, so localmover với remoteview trong read-onlynative
+   snapshots, restore vàkiểm cậpnhật lại; đổichiều tươngứng. Chỉ thao tác rule trongnamespace đãkiểm
+   khôngoutbound, khônghostfirewall, không dùngproxyCP049 thấtbại khi chưa đổiđiều kiện. Rulecounter0/
+   transportfallback/khôngsnapshot giữunknown, khôngsuy từ ảnh/absencecallback. Không ép actorstate/
+   synthetickeys hoặc đòi quét fullUDPgrammar trước phép này; raw/counter/endpoint/hash đầyđủ.
 2. **KR-B003/KR-F006 — nợ có giới hạn:** [CP057](PROTOCOL.md#codec-stream-boundaries) đã đo stream/
    seq/bounds trong model, không mở lại76split hoặc cấp buffer lớn chỉ để vượt allocationguardFFFFFFFF.
    Full modes/prefix guard/live reset, distance/auth/transport/kim-cứu của reportguard giữ trong RESEARCH;

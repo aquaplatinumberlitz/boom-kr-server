@@ -1,7 +1,7 @@
 {
   "schema": "kre-feature-index-v1",
   "build": "KR00967",
-  "as_of": "2026-11-03 JST / CP068; self-check; integration via PR97; AUD021 nextCP072",
+  "as_of": "2026-11-03 JST / CP069; self-check pending PR; nextauditCP072",
   "sources": {
     "plan": "docs/PLAN.md",
     "contract": "docs/PROTOCOL.md",
@@ -1373,7 +1373,8 @@
         "evidence": [
           "docs/evidence/bomb-chain/README.md",
           "docs/evidence/mixed-owner-chain/README.md",
-          "docs/evidence/current-hidden-items/README.md"
+          "docs/evidence/current-hidden-items/README.md",
+          "docs/evidence/basic-battle/README.md"
         ]
       },
       "coverage": {
@@ -1407,7 +1408,8 @@
             "refs": [
               "docs/evidence/bomb-chain/README.md",
               "docs/evidence/mixed-owner-chain/README.md",
-              "docs/evidence/current-hidden-items/README.md"
+              "docs/evidence/current-hidden-items/README.md",
+              "docs/evidence/basic-battle/README.md"
             ]
           },
           "windows_original": {
@@ -1427,15 +1429,17 @@
           "state": "unknown",
           "refs": [
             "docs/PROTOCOL.md#current-hidden-items",
-            "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/97"
+            "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/97",
+            "docs/PROTOCOL.md#basic-battle"
           ],
-          "delivery": "via_pr"
+          "delivery": "branch_pending"
         },
         "integration": {
           "state": "unknown",
           "refs": [
             "docs/evidence/mixed-owner-chain/README.md",
-            "docs/evidence/current-hidden-items/README.md"
+            "docs/evidence/current-hidden-items/README.md",
+            "docs/evidence/basic-battle/README.md"
           ]
         },
         "gate": {
@@ -1470,7 +1474,8 @@
           "docs/evidence/current-pair-round/README.md",
           "docs/evidence/current-pickup-race/README.md",
           "docs/evidence/distinct-spawn-race/README.md",
-          "docs/evidence/current-hidden-items/README.md"
+          "docs/evidence/current-hidden-items/README.md",
+          "docs/evidence/basic-battle/README.md"
         ]
       },
       "coverage": {
@@ -1513,7 +1518,8 @@
               "docs/evidence/current-pair-round/README.md",
               "docs/evidence/current-pickup-race/README.md",
               "docs/evidence/distinct-spawn-race/README.md",
-              "docs/evidence/current-hidden-items/README.md"
+              "docs/evidence/current-hidden-items/README.md",
+              "docs/evidence/basic-battle/README.md"
             ]
           },
           "windows_original": {
@@ -1531,7 +1537,7 @@
         },
         "implementation": {
           "state": "partial",
-          "delivery": "via_pr",
+          "delivery": "branch_pending",
           "refs": [
             "server/probe_service.py",
             "docs/PROTOCOL.md#pickup-round-key",
@@ -1539,7 +1545,8 @@
             "docs/PROTOCOL.md#pickup-report-state",
             "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/73",
             "docs/PROTOCOL.md#current-hidden-items",
-            "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/97"
+            "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/97",
+            "docs/PROTOCOL.md#basic-battle"
           ]
         },
         "integration": {
@@ -1550,7 +1557,8 @@
             "docs/evidence/current-pair-round/README.md",
             "docs/evidence/current-pickup-race/README.md",
             "docs/evidence/distinct-spawn-race/README.md",
-            "docs/evidence/current-hidden-items/README.md"
+            "docs/evidence/current-hidden-items/README.md",
+            "docs/evidence/basic-battle/README.md"
           ]
         },
         "gate": {
@@ -1579,7 +1587,8 @@
         "evidence": [
           "docs/evidence/item-families/README.md",
           "docs/evidence/probe-service/README.md",
-          "docs/evidence/current-hidden-items/README.md"
+          "docs/evidence/current-hidden-items/README.md",
+          "docs/evidence/basic-battle/README.md"
         ]
       },
       "coverage": {
@@ -1612,7 +1621,8 @@
             "state": "observed",
             "refs": [
               "docs/evidence/item-families/README.md",
-              "docs/evidence/current-hidden-items/README.md"
+              "docs/evidence/current-hidden-items/README.md",
+              "docs/evidence/basic-battle/README.md"
             ]
           },
           "windows_original": {
@@ -1635,15 +1645,17 @@
             "docs/PROTOCOL.md#probe-service",
             "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/57",
             "docs/PROTOCOL.md#current-hidden-items",
-            "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/97"
+            "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/97",
+            "docs/PROTOCOL.md#basic-battle"
           ],
-          "delivery": "via_pr"
+          "delivery": "branch_pending"
         },
         "integration": {
           "state": "partial",
           "refs": [
             "docs/evidence/probe-service/README.md",
-            "docs/evidence/current-hidden-items/README.md"
+            "docs/evidence/current-hidden-items/README.md",
+            "docs/evidence/basic-battle/README.md"
           ]
         },
         "gate": {
@@ -2406,7 +2418,8 @@
           "docs/evidence/distinct-spawn/README.md",
           "docs/evidence/distinct-spawn-race/README.md",
           "docs/evidence/c2s118-admission/README.md",
-          "docs/evidence/current-hidden-items/README.md"
+          "docs/evidence/current-hidden-items/README.md",
+          "docs/evidence/basic-battle/README.md"
         ]
       },
       "coverage": {
@@ -2445,7 +2458,8 @@
               "docs/evidence/distinct-spawn/README.md",
               "docs/evidence/distinct-spawn-race/README.md",
               "docs/evidence/c2s118-admission/README.md",
-              "docs/evidence/current-hidden-items/README.md"
+              "docs/evidence/current-hidden-items/README.md",
+              "docs/evidence/basic-battle/README.md"
             ]
           },
           "windows_original": {
@@ -2474,9 +2488,10 @@
             "docs/PROTOCOL.md#c2s118-admission",
             "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/95",
             "docs/PROTOCOL.md#current-hidden-items",
-            "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/97"
+            "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/97",
+            "docs/PROTOCOL.md#basic-battle"
           ],
-          "delivery": "via_pr"
+          "delivery": "branch_pending"
         },
         "integration": {
           "state": "partial",
@@ -2488,7 +2503,8 @@
             "docs/evidence/distinct-spawn/README.md",
             "docs/evidence/distinct-spawn-race/README.md",
             "docs/evidence/c2s118-admission/README.md",
-            "docs/evidence/current-hidden-items/README.md"
+            "docs/evidence/current-hidden-items/README.md",
+            "docs/evidence/basic-battle/README.md"
           ]
         },
         "gate": {
@@ -2643,7 +2659,8 @@
           "docs/evidence/distinct-spawn/README.md",
           "docs/evidence/distinct-spawn-race/README.md",
           "docs/evidence/c2s118-admission/README.md",
-          "docs/evidence/current-hidden-items/README.md"
+          "docs/evidence/current-hidden-items/README.md",
+          "docs/evidence/basic-battle/README.md"
         ]
       },
       "coverage": {
@@ -2685,7 +2702,8 @@
               "docs/evidence/distinct-spawn/README.md",
               "docs/evidence/distinct-spawn-race/README.md",
               "docs/evidence/c2s118-admission/README.md",
-              "docs/evidence/current-hidden-items/README.md"
+              "docs/evidence/current-hidden-items/README.md",
+              "docs/evidence/basic-battle/README.md"
             ]
           },
           "windows_original": {
@@ -2703,7 +2721,7 @@
         },
         "implementation": {
           "state": "partial",
-          "delivery": "via_pr",
+          "delivery": "branch_pending",
           "refs": [
             "server/probe_service.py",
             "docs/PROTOCOL.md#service-eof",
@@ -2725,7 +2743,8 @@
             "docs/PROTOCOL.md#c2s118-admission",
             "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/95",
             "docs/PROTOCOL.md#current-hidden-items",
-            "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/97"
+            "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/97",
+            "docs/PROTOCOL.md#basic-battle"
           ]
         },
         "integration": {
@@ -2745,7 +2764,8 @@
             "docs/evidence/distinct-spawn/README.md",
             "docs/evidence/distinct-spawn-race/README.md",
             "docs/evidence/c2s118-admission/README.md",
-            "docs/evidence/current-hidden-items/README.md"
+            "docs/evidence/current-hidden-items/README.md",
+            "docs/evidence/basic-battle/README.md"
           ]
         },
         "gate": {

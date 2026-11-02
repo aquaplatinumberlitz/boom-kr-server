@@ -1,6 +1,6 @@
 # KR 00967 — contract tương thích client gốc
 
-Revision kr-legacy-contract-r1; cập nhật03/11/2026 JST (CP068).
+Revision kr-legacy-contract-r1; cập nhật03/11/2026 JST (CP069).
 **Contract có bằng chứng từng phần; chưa nghiệm thu full codec K2**.
 Lộ trình và thứ tự task chỉ giữ ở [REWRITE_PLAN — KRE](PLAN.md).
 Đây là contract của repo server KR. ADR0009 của bản viết lại là nguồn lịch sử để so sánh;
@@ -2607,3 +2607,22 @@ Exporter `--item-layout hidden` giữ exactCP032fixture27/28 vàcatalog;defaultf
 khác. Đây là deterministicfixtureplacement, không thuật toán drop gốc, không tựmigrate profilecũ.
 72serverregressions kiểmguardnegative/reset/forgerylimit; actualcapturebench khôngruntime mới.
 Chưafullvalidator/reset/auth/K5/K6a/LAN/Internet. Nghiệm thu profile dùnghànhvi nào vẫn theo PLAN/gates.
+
+<a id="basic-battle"></a>
+### Một profile floorRoller + hiddenBomb/Fire — CP069
+
+[Recipe/hash/native](evidence/basic-battle/README.md), **kr_runtime/confirmed hẹp** cho integration,
+**design** cho placement/rank/fuse/reportguards. Tái dùng CP065floor17/Roller và CP068hidden27/28/
+142/reveal/capFire, không mở consumer/thân hàm native mới hoặc sửa service/binary.
+582counts1/2/0/inner36 ghép exact3record đãbiết; nativeblob/11ED590/fullcursor/CRCpartial kiểm trước run.
+
+Một run8connections/2cycles/distinctspawn, actual12417→27→28 mỗivòng/currentkey. Nativebothviews
+A(capacity,Fire,Roller)1/1/5→1/1/6→2/1/6→2/2/6, reset1/1/5 trước lần2; B giữ. HaiFixedBox mỗi vòng
+stored→revealCGOItem→165lookup samepointer;142 hairole trướchiddenpickup.4actual118/IDs1..4/serial0,28/
+power1→2, Astate1bothbefore175/haikếtquả/return/refresh/errors0. Same-runthreeeffects, không gộprun cũ.
+
+Exporter `--item-layout battle` chọn knowncombinedfixture/catalog;floor/hidden/defaultfloor giữ;
+profileJSONcũ khôngtựmigrate. Đây là basicdiagnosticBattle profile, không toànitem/dropalgorithm/
+fullmovementauthority/chainvariants/fullvalidator/reset/K5/K6a/LANInternet. Originalbinary/DB giữ.
+Phép kiểm tiếp [PLAN](PLAN.md#current-order) tách nativepositionagreement với UDPtransportcausality;
+không cần quét toàngrammar trước đúng observable còn thiếu.

@@ -153,3 +153,7 @@ CP068: `--item-layout hidden` xuất profileknownlist2/FixedBox/Bomb+Fire;defaul
 `hidden_items` catalog riêng merged vào claimcatalog,124 chờknowncell142 saucurrent158đãphát.
 Duplicate/report/reset kiểm hẹp, **report-deriveddesign**, không collision/auth hoặc chốngold142sau
 blast. [Nativeintegration/partial/limits](../docs/PROTOCOL.md#current-hidden-items);72server tests.
+
+CP069: `--item-layout battle` chọn một [profile cảfloor+hidden](../docs/PROTOCOL.md#basic-battle)
+đãđo baeffects/reset qua hai vòngcùngrun;floor/hidden/defaultfloor giữ. Exportpathmới/profilehash,
+không tựmigrate hoặc coi basicdiagnosticprofile là wholematch/K6a/Internet/authauthority.
