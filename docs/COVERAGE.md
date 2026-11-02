@@ -438,9 +438,9 @@ Dependency: [KR-R002](#kr-r002).
 
 [Contract và giới hạn](PROTOCOL.md#start-reply) · [Câu hỏi gốc](RESEARCH.md#gap-map-spawn-loading) · [Thứ tự ở PLAN](PLAN.md#current-order).
 
-Khoảng trống (trích bảng RESEARCH): CP050 giữ actualB99 dispatch10s: chưa phase trước release, hai clock sau; timeout/loadfail/latejoin và variants/104growth còn mở.
+Khoảng trống (trích bảng RESEARCH): CP024 đã nối map/index0/1→actor; currentservice exporter dùng overlap121 cho RE, cần distinct spawn integration. CP050 wait99 có control; timeout/loadfail/latejoin/104growth vẫn mở.
 
-Phép kiểm tối thiểu (trích cùng nguồn): Reuse ca hold99, không chạy lại cùng phép để lấp unknown cũ. Khi cần kiểm loadfail/timeout, chặn đúng99 hoặc reply có log và quan sát policy/consumer còn thiếu.
+Phép kiểm tối thiểu (trích cùng nguồn): Reuse CP024 bounded native schema/map points và exactfixturedelta; kiểm spawn khác nhau/native hai view/currentprofile/two-cycle. Không chạy lại hold99 hoặc quét loader khi không có trigger.
 
 Bằng chứng/build/hash/recipe: [start-reply](evidence/start-reply/README.md), [probe-service](evidence/probe-service/README.md), [service-eof](evidence/service-eof/README.md).
 
@@ -600,11 +600,11 @@ Dependency: [KR-F004](#kr-f004).
 
 [Contract và giới hạn](PROTOCOL.md#bomb-chain) · [Câu hỏi gốc](RESEARCH.md#gap-blast-block-chain) · [Thứ tự ở PLAN](PLAN.md#current-order).
 
-Khoảng trống (trích bảng RESEARCH): Đã đo chain hai bom một owner và block/list2; nhiều owner/ba bom/vật cản/list3 chưa kiểm.
+Khoảng trống (trích bảng RESEARCH): CP064 hai owner cách hai ô đã có native control từng timer; liền kề chưa đạt và slimprobe bị chặn trước Battle. Ba bom/vật cản/list3/fullauthority chưa kiểm.
 
-Phép kiểm tối thiểu (trích cùng nguồn): Một ca chain khác owner có control cách ô và entity ID/cursor cả hai view; chỉ mở consumer biến thể gây khác biệt.
+Phép kiểm tối thiểu (trích cùng nguồn): Reuse [mixed-owner scope](PROTOCOL.md#mixed-owner-chain), không lặp helper/pointer/ID/hai timer. Mở lại liền kề khi bố trí native/probe ổn định; vật cản/list3/ba bom khi ca Battle cần; singlebombcycle không reset/K6a.
 
-Bằng chứng/build/hash/recipe: [bomb-chain](evidence/bomb-chain/README.md).
+Bằng chứng/build/hash/recipe: [bomb-chain](evidence/bomb-chain/README.md), [mixed-owner-chain](evidence/mixed-owner-chain/README.md).
 
 | Chiều chứng minh | Khai báo | Nguồn/phạm vi áp dụng |
 |---|---|---|
@@ -612,12 +612,12 @@ Bằng chứng/build/hash/recipe: [bomb-chain](evidence/bomb-chain/README.md).
 | vn_reference | both | [nguồn1](REFERENCES.md) |
 | kr_static | partial | [nguồn1](PROTOCOL.md#bomb-chain) |
 | emulation | checked | [nguồn1](evidence/bomb-chain/README.md) |
-| wine_diagnostic_copy | observed | [nguồn1](evidence/bomb-chain/README.md) |
+| wine_diagnostic_copy | observed | [nguồn1](evidence/bomb-chain/README.md), [nguồn2](evidence/mixed-owner-chain/README.md) |
 | windows_original | unknown | Chưa có bằng chứng trong phạm vi rà |
 | lan | unknown | Chưa có bằng chứng trong phạm vi rà |
 | internet | unknown | Chưa có bằng chứng trong phạm vi rà |
 | implementation | unknown / unknown | Chưa có bằng chứng trong phạm vi rà |
-| integration | unknown | Chưa có bằng chứng trong phạm vi rà |
+| integration | unknown | [nguồn1](evidence/mixed-owner-chain/README.md) |
 | gate | K5: open | [nguồn1](PLAN.md#gates) |
 
 <a id="kr-f006"></a>
@@ -978,11 +978,11 @@ Dependency: [KR-B003](#kr-b003), [KR-R003](#kr-r003), [KR-X002](#kr-x002).
 
 [Contract và giới hạn](PROTOCOL.md#probe-service) · [Câu hỏi gốc](RESEARCH.md#gap-diagnostic-service) · [Thứ tự ở PLAN](PLAN.md#current-order).
 
-Khoảng trống (trích bảng RESEARCH): CP061 current41profile A/B2cycles/actualpickup/reset/bomb/state/result đã kiểm; sampled movement hai actor khớp. Chưa currentservice contestedindex/fullreset/authority/transport.
+Khoảng trống (trích bảng RESEARCH): CP061–063 có currentprofile hai chu kỳ/actual tranh index/guard127; CP064 mixed-owner hai ô/control và blocker liền kề. Profile overlap spawn vẫn không đáp ứng spawn riêng; fullreset/authority/transport còn mở.
 
-Phép kiểm tối thiểu (trích cùng nguồn): Theo PLAN tái dùng CP030race và ItemClaims với actualtwo124/sameindex; kiểm winner/stat/peer/reset cùngrun, delaydelivery đo nếu cần, không encoderrequest hoặc2rank thay K6a.
+Phép kiểm tối thiểu (trích cùng nguồn): Theo PLAN đối chiếu CP024 index→point/fixture121 với currentprofile và đo distinct spawn A/B qua hai vòng; không lặp currentrace/auth/cache/counter. Giữ runtimecopy/policy/gate tách biệt.
 
-Bằng chứng/build/hash/recipe: [probe-service](evidence/probe-service/README.md), [stale124](evidence/stale124/README.md), [service-eof](evidence/service-eof/README.md), [service-replacement](evidence/service-replacement/README.md), [setup-eof](evidence/setup-eof/README.md), [host-setup](evidence/host-setup/README.md), [prestart-replacement](evidence/prestart-replacement/README.md), [pickup-state](evidence/pickup-state/README.md), [current-profile-c](evidence/current-profile-c/README.md), [current-pair-round](evidence/current-pair-round/README.md), [current-pickup-race](evidence/current-pickup-race/README.md), [report127-freshness](evidence/report127-freshness/README.md).
+Bằng chứng/build/hash/recipe: [probe-service](evidence/probe-service/README.md), [stale124](evidence/stale124/README.md), [service-eof](evidence/service-eof/README.md), [service-replacement](evidence/service-replacement/README.md), [setup-eof](evidence/setup-eof/README.md), [host-setup](evidence/host-setup/README.md), [prestart-replacement](evidence/prestart-replacement/README.md), [pickup-state](evidence/pickup-state/README.md), [current-profile-c](evidence/current-profile-c/README.md), [current-pair-round](evidence/current-pair-round/README.md), [current-pickup-race](evidence/current-pickup-race/README.md), [report127-freshness](evidence/report127-freshness/README.md), [mixed-owner-chain](evidence/mixed-owner-chain/README.md).
 
 | Chiều chứng minh | Khai báo | Nguồn/phạm vi áp dụng |
 |---|---|---|
@@ -990,12 +990,12 @@ Bằng chứng/build/hash/recipe: [probe-service](evidence/probe-service/README.
 | vn_reference | both | [nguồn1](REFERENCES.md) |
 | kr_static | unknown | Chưa có bằng chứng trong phạm vi rà |
 | emulation | unknown | Chưa có bằng chứng trong phạm vi rà |
-| wine_diagnostic_copy | observed | [nguồn1](evidence/probe-service/README.md), [nguồn2](evidence/stale124/README.md), [nguồn3](evidence/service-eof/README.md), [nguồn4](evidence/service-replacement/README.md), [nguồn5](evidence/setup-eof/README.md), [nguồn6](evidence/host-setup/README.md), [nguồn7](evidence/prestart-replacement/README.md), [nguồn8](evidence/pickup-state/README.md), [nguồn9](evidence/current-profile-c/README.md), [nguồn10](evidence/current-pair-round/README.md), [nguồn11](evidence/current-pickup-race/README.md), [nguồn12](evidence/report127-freshness/README.md) |
+| wine_diagnostic_copy | observed | [nguồn1](evidence/probe-service/README.md), [nguồn2](evidence/stale124/README.md), [nguồn3](evidence/service-eof/README.md), [nguồn4](evidence/service-replacement/README.md), [nguồn5](evidence/setup-eof/README.md), [nguồn6](evidence/host-setup/README.md), [nguồn7](evidence/prestart-replacement/README.md), [nguồn8](evidence/pickup-state/README.md), [nguồn9](evidence/current-profile-c/README.md), [nguồn10](evidence/current-pair-round/README.md), [nguồn11](evidence/current-pickup-race/README.md), [nguồn12](evidence/report127-freshness/README.md), [nguồn13](evidence/mixed-owner-chain/README.md) |
 | windows_original | unknown | Chưa có bằng chứng trong phạm vi rà |
 | lan | unknown | Chưa có bằng chứng trong phạm vi rà |
 | internet | unknown | Chưa có bằng chứng trong phạm vi rà |
 | implementation | partial / via_pr | [nguồn1](../server/probe_service.py), [nguồn2](PROTOCOL.md#service-eof), [nguồn3](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/61), [nguồn4](PROTOCOL.md#service-replacement), [nguồn5](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/63), [nguồn6](PROTOCOL.md#setup-eof), [nguồn7](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/65), [nguồn8](PROTOCOL.md#host-setup), [nguồn9](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/67), [nguồn10](PROTOCOL.md#prestart-replacement), [nguồn11](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/69), [nguồn12](PROTOCOL.md#pickup-report-state), [nguồn13](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/73), [nguồn14](PROTOCOL.md#report127-freshness), [nguồn15](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/87) |
-| integration | partial | [nguồn1](evidence/service-eof/README.md), [nguồn2](evidence/service-replacement/README.md), [nguồn3](evidence/setup-eof/README.md), [nguồn4](evidence/host-setup/README.md), [nguồn5](evidence/prestart-replacement/README.md), [nguồn6](evidence/pickup-state/README.md), [nguồn7](evidence/current-profile-c/README.md), [nguồn8](evidence/current-pair-round/README.md), [nguồn9](evidence/current-pickup-race/README.md), [nguồn10](evidence/report127-freshness/README.md) |
+| integration | partial | [nguồn1](evidence/service-eof/README.md), [nguồn2](evidence/service-replacement/README.md), [nguồn3](evidence/setup-eof/README.md), [nguồn4](evidence/host-setup/README.md), [nguồn5](evidence/prestart-replacement/README.md), [nguồn6](evidence/pickup-state/README.md), [nguồn7](evidence/current-profile-c/README.md), [nguồn8](evidence/current-pair-round/README.md), [nguồn9](evidence/current-pickup-race/README.md), [nguồn10](evidence/report127-freshness/README.md), [nguồn11](evidence/mixed-owner-chain/README.md) |
 | gate | K6: open | [nguồn1](PLAN.md#gates) |
 
 <a id="kr-s002"></a>

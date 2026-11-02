@@ -1,7 +1,7 @@
 {
   "schema": "kre-feature-index-v1",
   "build": "KR00967",
-  "as_of": "2026-11-02 JST / CP063; self-check; integration via PR87; nextauditCP064",
+  "as_of": "2026-11-03 JST / CP064; self-check; integration via PR89; AUD020 nextCP068",
   "sources": {
     "plan": "docs/PLAN.md",
     "contract": "docs/PROTOCOL.md",
@@ -1361,7 +1361,8 @@
         "question": "docs/RESEARCH.md#gap-blast-block-chain",
         "plan": "docs/PLAN.md#current-order",
         "evidence": [
-          "docs/evidence/bomb-chain/README.md"
+          "docs/evidence/bomb-chain/README.md",
+          "docs/evidence/mixed-owner-chain/README.md"
         ]
       },
       "coverage": {
@@ -1393,7 +1394,8 @@
           "wine_diagnostic_copy": {
             "state": "observed",
             "refs": [
-              "docs/evidence/bomb-chain/README.md"
+              "docs/evidence/bomb-chain/README.md",
+              "docs/evidence/mixed-owner-chain/README.md"
             ]
           },
           "windows_original": {
@@ -1416,7 +1418,9 @@
         },
         "integration": {
           "state": "unknown",
-          "refs": []
+          "refs": [
+            "docs/evidence/mixed-owner-chain/README.md"
+          ]
         },
         "gate": {
           "id": "K5",
@@ -2587,7 +2591,8 @@
           "docs/evidence/current-profile-c/README.md",
           "docs/evidence/current-pair-round/README.md",
           "docs/evidence/current-pickup-race/README.md",
-          "docs/evidence/report127-freshness/README.md"
+          "docs/evidence/report127-freshness/README.md",
+          "docs/evidence/mixed-owner-chain/README.md"
         ]
       },
       "coverage": {
@@ -2624,7 +2629,8 @@
               "docs/evidence/current-profile-c/README.md",
               "docs/evidence/current-pair-round/README.md",
               "docs/evidence/current-pickup-race/README.md",
-              "docs/evidence/report127-freshness/README.md"
+              "docs/evidence/report127-freshness/README.md",
+              "docs/evidence/mixed-owner-chain/README.md"
             ]
           },
           "windows_original": {
@@ -2673,7 +2679,8 @@
             "docs/evidence/current-profile-c/README.md",
             "docs/evidence/current-pair-round/README.md",
             "docs/evidence/current-pickup-race/README.md",
-            "docs/evidence/report127-freshness/README.md"
+            "docs/evidence/report127-freshness/README.md",
+            "docs/evidence/mixed-owner-chain/README.md"
           ]
         },
         "gate": {

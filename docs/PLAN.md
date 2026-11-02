@@ -1,7 +1,7 @@
 # Kế hoạch server giả lập KR 00967
 
 Nguồn chuẩn của project `boom-kr-server`; bản nhập từ plan đã được dsh1/dsh2 review tại `1eee46d`.
-Cập nhật02/11 JST (CP063): [report127 guard](PROTOCOL.md#report127-freshness) có control/fix trên copy Wine, dispatcher replay tách với TCP. Tiếp chain khác owner/control cách ô; audit định kỳ kế CP064, không đóng K6a.
+Cập nhật03/11 JST (CP064): [hai owner cách hai ô](PROTOCOL.md#mixed-owner-chain) có control/native callback scope; liền kề vẫn mở và probe gọn bị chặn trước Battle. Tiếp distinct spawn cho A/B; AUD020/CP064, audit kế CP068. Không tự đóng gate.
 
 
 ### Mục tiêu, baseline và phạm vi
@@ -37,13 +37,13 @@ với client Rust không chứng minh có thể điều khiển client KR bằng
 
 ### Tiến độ hiện hành theo bằng chứng
 
-| Task/mốc | Trạng thái tại CP063 | Nguồn chuẩn |
+| Task/mốc | Trạng thái tại CP064 | Nguồn chuẩn |
 |---|---|---|
 | KRE-004/issue6 | Đã review/merge PR7 và đóng issue:recipe r1 đến local accept;không phải full K1 | [Wine r1](evidence/wine/README.md) |
 | Bootstrap reply | PR8 đã merge;debugger ProcessPatchreturn1,không ép success | [bootstrap evidence](evidence/bootstrap-wire/README.md) |
 | KRE-005a/issue9,R2 | PR10 đã merge:3 cold start cửa sổ/second accept;issue9 còn mở | [R2 evidence](evidence/wine-r2/README.md) |
 | WCP hai-reply | Run CP001 là lịch sử chưa C→S; CP006 đã đo request đầu trên copy tham số hóa | [PROTOCOL](PROTOCOL.md#wcp),[WCP evidence](evidence/wcp/README.md) |
-| KRE-005b/issue14 | CP006–062 đã merge; CP063 report127 guard tự kiểm/tích hợp theo [PR87](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/87); fullround/authority/full auth còn mở | [Q-023](RESEARCH.md#q-023), [service](evidence/probe-service/README.md) |
+| KRE-005b/issue14 | CP006–063 đã merge; CP064 mixed-owner chain tự kiểm/tích hợp theo [PR89](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/89); fullround/authority/full auth còn mở | [Q-023](RESEARCH.md#q-023), [service](evidence/probe-service/README.md) |
 | K0/K1 | Chưa nghiệm thu toàn gate;Windows vanilla/control ownership và các điều kiện còn thiếu giữ mở | Gate dưới,[Q-022](RESEARCH.md) |
 | K2a/K2 | Primitive/WCP, CP057stream native/model và CP058–060authcallback137/135/errors0 đã có; fullcodec/authauthority/reconnect và gate chưa pass | [PROTOCOL](PROTOCOL.md#login-auth),[Q-023](RESEARCH.md#q-023) |
 | K3 | Copy đã vẽUI/đóngnotice, A/B/Cprofile đọc sạch và mộtnamedcachewarm được nhận; identityauthority/toàncache/codec/K3 chưa nghiệm thu | [Contract sảnh](PROTOCOL.md#channel-lobby) |
@@ -60,18 +60,18 @@ KRE-005b/issue14 vẫn mở. Các bước dưới là **thứ tự ưu tiên**, 
 xong checkpoint/commit/PR thì chuyển ngay việc kế tiếp trong thứ tự này, không tự dừng/chờ nhắc.
 Một blocker chỉ kết thúc nhánh đo tương ứng; ghi rõ rồi tiếp việc độc lập có thể làm, không tự đóng gate.
 
-1. **KR-F005/S001 — chain khác owner:** CP063 [guard127](PROTOCOL.md#report127-freshness) đã đo control/fix
-   trong scope dispatcher/currentprofile; không mở mọi biến thể replay. Tiếp [gap chain](RESEARCH.md#gap-blast-block-chain):
-   tái dùng CP033/helper/state/pointer mapping và service timer hiện hành; một cặp actual118 A/B liền kề,
-   control cách hai ô, theo đúng vị trí/power đã nhận. Kiểm hai view xử lý secondary trong **callback158
-   của root**, trước timer riêng của secondary; không dùng sốcallback/ảnh đơn lẻ làm chainproof.
-   Chỉ mở static/body còn thiếu nếu native route khác. Không RE lại auth/cache/t/k/itemrace.
-   Hoàn tất CP064 kèm audit định kỳ README→PLAN→PROTOCOL→RESEARCH→evidence/raw.
+1. **KR-R003/S001 — spawn riêng trên currentprofile:** [CP064](PROTOCOL.md#mixed-owner-chain) đã đo control
+   hai owner cách hai ô, chưa đạt liền kề; không lặp vô hạn input/probe đang bị blocker. Blocker nghiệm thu K4/K6a hiện hữu: exporter41
+   đang chọn `overlap121` để đo contact/race; cả hai actor cùng (120,159). Tái dùng [CP024 map/index→actor](PROTOCOL.md#bomb-position)
+   và fixture121 spawn0/1 đã đo, đối chiếu exactbody/delta/native trước. Chạy A/B currentauth/cache với
+   spawn khác nhau đúng map, native hai view/clock/movement/bom/state/result/return và vòng2 cùngrun.
+   Chỉ sửa profile/exporter có provenance nếu cần; giữ overlap variant cho RE, không force actor/
+   sửa binary hoặc RE lại loader toàn client. Originalauth/reset/K6a vẫn theo điều kiện gate.
 2. **KR-B003/KR-F006 — nợ có giới hạn:** [CP057](PROTOCOL.md#codec-stream-boundaries) đã đo stream/
    seq/bounds trong model, không mở lại76split hoặc cấp buffer lớn chỉ để vượt allocationguardFFFFFFFF.
    Full modes/prefix guard/live reset, distance/auth/transport/kim-cứu của reportguard giữ trong RESEARCH;
    chỉ mở đúng variant gây blocker integration. Không lặp nguồn t/k/forgedbody hoặc mọi EOF.
-3. **Battle tối thiểu:** chain khác owner/vật cản, runtime max/speed hoặc ability khi ca Battle dùng
+3. **Battle tối thiểu:** mixed-owner liền kề khi có bố trí native ổn định, chain qua vật cản/ba bom, runtime max/speed hoặc ability khi ca Battle dùng
    nhóm đó. Tái dùng [item families](PROTOCOL.md#item-families), không quét mọi row hoặc tìm lại kim/Roller.
 4. **Lifecycle còn thiếu:** account reconnect/general membership/idleEOF/sendfailure/timeout/loadfail/
    reset variants chưa đủ; chỉ mở ca có trigger cụ thể khi chặn integration/acceptance, không kiểm
