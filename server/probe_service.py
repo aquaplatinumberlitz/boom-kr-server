@@ -121,7 +121,7 @@ class ProbeService:
                                             'key': key, 'monotonic_ns': time.monotonic_ns()})
         for event in self.peers():
             markers = ['start_response_sent', 'init99', 'go_response_sent', 'play_response_sent',
-                       'begin_response_sent', 'peer153_sent', 'death_event']
+                       'begin_response_sent', 'peer153_sent', 'death_event', 'pickup_ineligible']
             if event.get('start_response_sent'):
                 event.setdefault('rounds', []).append({key: event[key] for key in markers if key in event})
             for marker in markers:
@@ -218,6 +218,18 @@ class ProbeService:
                                                     'expected_key': self.room.key,
                                                     'slot': slot, 'index': index})
                 return
+            # Conservative fixture policy after an accepted trap/death report.
+            # This is report-derived, not native state authority/authentication.
+            # This profile has no rescue/self-escape flow; a new Start clears it.
+            blocked = event.get('pickup_ineligible')
+            if blocked and blocked['generation'] == self.room.generation:
+                report['rejected'] = 'actor_report_ineligible'
+                report['actor_report'] = dict(blocked)
+                self.state['policy_events'].append({'op': 'item_reject_actor',
+                                                    'generation': self.room.generation,
+                                                    'role': role, 'slot': slot, 'index': index,
+                                                    'subtype': blocked['subtype']})
+                return
             claim = self.room.claim(ROLE_SLOTS[role], slot, context, ItemSpec(index, row, column, kind))
             if claim is not None and self.room.claims.consume(claim):
                 payload = codec.pack_fields([1, context, slot, row, column, index, kind, 0], [1, 1, 1, 1, 1, 4, 2, 1])
@@ -255,6 +267,9 @@ class ProbeService:
                 payload = body[:6] + codec.pack_fields([int.from_bytes(raw[10:14], 'little')], [4])
             else:
                 payload = body[:6] + body[14:]
+            event['pickup_ineligible'] = {'generation': self.room.generation,
+                                          'subtype': subtype, 'report_sequence': sequence,
+                                          'report_sha256': report['frame_sha256']}
             other = next((peer for peer in self.peers() if peer is not event), None)
             if other is None:
                 return

@@ -1,5 +1,7 @@
 # CP055 — Nguồn t124 và giới hạn validator
 
+Snapshot CP055: bước actorstate đã có [control/guard hẹp CP056](../../PROTOCOL.md#pickup-report-state); audit/công việc hiện hành tra manifest/PLAN.
+
 Baseline CP054/PR69 merge `69df506cfd32c2898abb53f83d4b1e14a4c287f0`;
 KRE-018/[issue70](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/70), Codex solo,
 review [waived](../checkpoints/review-waiver.json), tự kiểm; trạng thái tích hợp ở [PR71](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/71).

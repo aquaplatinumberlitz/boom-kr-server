@@ -1,7 +1,7 @@
 {
   "schema": "kre-feature-index-v1",
   "build": "KR00967",
-  "as_of": "2026-11-02 JST / CP055; integration status via PR71",
+  "as_of": "2026-11-02 JST / CP056; self-check pending PR, AUD017",
   "sources": {
     "plan": "docs/PLAN.md",
     "contract": "docs/PROTOCOL.md",
@@ -1415,7 +1415,8 @@
           "docs/evidence/item-pickup/README.md",
           "docs/evidence/probe-service/README.md",
           "docs/evidence/stale124/README.md",
-          "docs/evidence/pickup-time/README.md"
+          "docs/evidence/pickup-time/README.md",
+          "docs/evidence/pickup-state/README.md"
         ]
       },
       "coverage": {
@@ -1436,7 +1437,8 @@
           "state": "partial",
           "refs": [
             "docs/PROTOCOL.md#item-pickup",
-            "docs/PROTOCOL.md#pickup-tick"
+            "docs/PROTOCOL.md#pickup-tick",
+            "docs/PROTOCOL.md#pickup-report-state"
           ]
         },
         "emulation": {
@@ -1452,7 +1454,8 @@
             "refs": [
               "docs/evidence/item-pickup/README.md",
               "docs/evidence/stale124/README.md",
-              "docs/evidence/pickup-time/README.md"
+              "docs/evidence/pickup-time/README.md",
+              "docs/evidence/pickup-state/README.md"
             ]
           },
           "windows_original": {
@@ -1470,17 +1473,19 @@
         },
         "implementation": {
           "state": "partial",
-          "delivery": "via_pr",
+          "delivery": "branch_pending",
           "refs": [
             "server/probe_service.py",
             "docs/PROTOCOL.md#pickup-round-key",
-            "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/59"
+            "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/59",
+            "docs/PROTOCOL.md#pickup-report-state"
           ]
         },
         "integration": {
           "state": "partial",
           "refs": [
-            "docs/evidence/stale124/README.md"
+            "docs/evidence/stale124/README.md",
+            "docs/evidence/pickup-state/README.md"
           ]
         },
         "gate": {
@@ -2524,7 +2529,8 @@
           "docs/evidence/service-replacement/README.md",
           "docs/evidence/setup-eof/README.md",
           "docs/evidence/host-setup/README.md",
-          "docs/evidence/prestart-replacement/README.md"
+          "docs/evidence/prestart-replacement/README.md",
+          "docs/evidence/pickup-state/README.md"
         ]
       },
       "coverage": {
@@ -2556,7 +2562,8 @@
               "docs/evidence/service-replacement/README.md",
               "docs/evidence/setup-eof/README.md",
               "docs/evidence/host-setup/README.md",
-              "docs/evidence/prestart-replacement/README.md"
+              "docs/evidence/prestart-replacement/README.md",
+              "docs/evidence/pickup-state/README.md"
             ]
           },
           "windows_original": {
@@ -2574,7 +2581,7 @@
         },
         "implementation": {
           "state": "partial",
-          "delivery": "via_pr",
+          "delivery": "branch_pending",
           "refs": [
             "server/probe_service.py",
             "docs/PROTOCOL.md#service-eof",
@@ -2586,7 +2593,8 @@
             "docs/PROTOCOL.md#host-setup",
             "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/67",
             "docs/PROTOCOL.md#prestart-replacement",
-            "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/69"
+            "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/69",
+            "docs/PROTOCOL.md#pickup-report-state"
           ]
         },
         "integration": {
@@ -2596,7 +2604,8 @@
             "docs/evidence/service-replacement/README.md",
             "docs/evidence/setup-eof/README.md",
             "docs/evidence/host-setup/README.md",
-            "docs/evidence/prestart-replacement/README.md"
+            "docs/evidence/prestart-replacement/README.md",
+            "docs/evidence/pickup-state/README.md"
           ]
         },
         "gate": {

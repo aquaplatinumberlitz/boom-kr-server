@@ -1,0 +1,103 @@
+{
+  "id": "AUD017",
+  "trigger": "periodic",
+  "completed_through": "CP056",
+  "recorded_utc": "2026-11-02T11:09:41.393614+00:00",
+  "auditor": "Codex manual self-audit; independent review waived by project owner",
+  "read_files": [
+    "README.md",
+    "docs/PLAN.md",
+    "docs/PROTOCOL.md",
+    "docs/RESEARCH.md",
+    "docs/features.json",
+    "docs/COVERAGE.md",
+    "server/README.md",
+    "docs/evidence/host-setup/README.md",
+    "docs/evidence/prestart-replacement/README.md",
+    "docs/evidence/pickup-time/README.md",
+    "docs/evidence/pickup-state/README.md",
+    "docs/evidence/stale124/README.md",
+    "local/research/codex/pickup-time-r1/reuse-question.json",
+    "local/research/codex/pickup-time-r1/verification.json",
+    "local/research/codex/pickup-time-r1/clock-snapshots.json",
+    "local/research/codex/pickup-state-r1/reuse-question.json",
+    "local/research/codex/pickup-state-r1/ida/eligibility.json",
+    "local/research/codex/pickup-state-r1/ida/guards.json",
+    "local/research/codex/pickup-state-r1/ida/collision-callers.json",
+    "local/research/codex/pickup-state-r1/ida/actor-guard.json",
+    "local/research/codex/pickup-state-r1/ida/upstream-state.json",
+    "local/research/codex/pickup-state-r1/measurement-notes.json",
+    "local/research/codex/pickup-state-r1/verification.json",
+    "local/research/codex/pickup-state-r1/lifecycle-summary.json",
+    "local/research/codex/pickup-state-r1/actor-fields.json",
+    "local/research/codex/pickup-state-r1/state-control2/run.json",
+    "local/research/codex/pickup-state-r1/state-control2/client.log",
+    "local/research/codex/pickup-state-r1/state-control2/client-B.log",
+    "local/research/codex/pickup-state-r1/state-guard/run.json",
+    "local/research/codex/pickup-state-r1/state-guard/client.log",
+    "local/research/codex/pickup-state-r1/state-guard/client-B.log"
+  ],
+  "method": "Đọc README→PLAN→PROTOCOL (pickup/statepeer/itemfamilies/authority/service/lifecycle CP049–056 và giới hạn)→RESEARCH→evidence CP053–056, đối chiếu exact nguồn/field/getter/events/raw portions liên quan, actual-vs-injected frames và archived service. Không dùng script pass làm semantic review, không đọc lại toàn thân hàm binary/client hoặc mọi contract lịch sử. CP053/054 PR merge state kiểm GitHub/history; CP055 scope và parser precedingtag đã đối chiếu verifier. CP056 staticguard không gán nhầm item+1C/actor+618 thành actorstate; native stat/state/cursor mới là proof consequence.",
+  "findings": [
+    {
+      "id": "F1",
+      "stale": "RESEARCH summary dừng CP052; authority room row vẫn để host/survivor chưa map là gap hiện hành dù CP053/054 đã đo.",
+      "correction": "Đồng bộ summary hiện hành và link contract hostsetup/C-before-first; không biến narrow setup proof thành general membership/accountresume.",
+      "fixed_in": [
+        "docs/RESEARCH.md",
+        "docs/PROTOCOL.md"
+      ]
+    },
+    {
+      "id": "F2",
+      "stale": "Evidence CP053 còn next C admission, CP054 còn next source t, CP055 còn next actorstate mà không có current pointer; server README CP052 còn hostgap.",
+      "correction": "Thêm snapshot/current-contract pointers; giữ toàn run/hash/correction lịch sử, sửa server README rõ tại CP052. PLAN ưu tiên codec boundaries sau reportguard, không đo lại source t/k hoặc mọi EOF.",
+      "fixed_in": [
+        "docs/evidence/host-setup/README.md",
+        "docs/evidence/prestart-replacement/README.md",
+        "docs/evidence/pickup-time/README.md",
+        "server/README.md",
+        "docs/PLAN.md"
+      ]
+    },
+    {
+      "id": "F3",
+      "stale": "Measurement wrapper v1 outer127 reentrancy ghi đè injection provenance label thành actual_tcp_client. Có nguy cơ báo sai số request native.",
+      "correction": "Không sửa raw. Archive exact v1/harnessSHA; verifier nối exact injectionSHA/fields/trigger. Control2actual+4injected, fixed1actual(round2)+4injected. Toolv2 setdefault chưa runtime, nêu riêng. Không gọi bodyderived forgery đã đổi target/key là unchanged replay/TCP/nativewriter.",
+      "fixed_in": [
+        "docs/PROTOCOL.md",
+        "docs/evidence/pickup-state/README.md",
+        "local/research/codex/pickup-state-r1/measurement-notes.json",
+        "local/research/codex/pickup-state-r1/verify.py"
+      ]
+    },
+    {
+      "id": "F4",
+      "stale": "State56 trap effect có delta Roller6→7 nhưng dead165 diễn ra tại max7, không đủ proof tăng ở dead; fixed vòng1 không actual124 nên không được báo hai vòng pickup thành công.",
+      "correction": "Ghi riêng native accepted165/fullcursor và capped7→7, fixedround2actual5→6/reset. Không quy missed round1input cho guard. +618 chỉ observed0alive, upstream eligibility chưa giải đầy đủ; policy reportderived/design, rescue/selfescape chưa hỗ trợ và không tựunblock1/18.",
+      "fixed_in": [
+        "docs/PROTOCOL.md",
+        "docs/evidence/pickup-state/README.md",
+        "docs/RESEARCH.md",
+        "server/README.md"
+      ]
+    },
+    {
+      "id": "F5",
+      "stale": "Hai runs/two cycles, hash/nativecase/test counts dễ bị hiểu là fullmatch hoặc gatepass; current delivery chưa PR.",
+      "correction": "Giữ K0–K7/K6a/LAN/Internet mở; fixtureauth/roster/rank và report-derived marker không là authority. Catalog khai branch_pending và link evidence, implementation/runtime/gate riêng.50server+7catalog+18checkpoint/artifacts5/5 chỉ là kiểm phù hợp, không independent review.",
+      "fixed_in": [
+        "README.md",
+        "docs/features.json",
+        "docs/COVERAGE.md",
+        "docs/PLAN.md",
+        "docs/evidence/pickup-state/README.md"
+      ]
+    }
+  ],
+  "remaining": [
+    "Native collider/update actor eligibility, forged/stale127, distance/auth/transport and rescue/selfescape transitions remain; reported-state marker scoped Rollerfixture, not original server rules.",
+    "Next sole PLAN priority codec fragmentation/coalescing/CRC/bounds/reset with actualnative oracle; then auth/cache. Do not repeat124clock/k/EOF cases.",
+    "CP056 self-check pendingPR; review waived, no independent approval. History CP001–055/AUD001–016 immutable; next periodic CP060."
+  ]
+}
