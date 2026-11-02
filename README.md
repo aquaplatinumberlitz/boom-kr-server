@@ -35,7 +35,7 @@ CurrentA/B qua request67; tiếp native107/xóa slot sau preclockEOF với trace
 Chưa stabilityfix/fullmatch/K6a/LAN/Internet/fullvalidator/reset.
 
 CP072 đã merge [PR105](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/105) tại `690d955`.
-CP073 tự kiểm/chờ PR, review độc lập [waived](docs/evidence/checkpoints/review-waiver.json).
+CP073 tự kiểm/tích hợp theo [PR107](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/107), review độc lập [waived](docs/evidence/checkpoints/review-waiver.json).
 Audit **AUD022/CP072**, periodic kế **CP076**.
 [Yêu cầu chủ dự án](docs/evidence/owner-directives/continuous-work.json): tiếp tục ngay việc kế trong
 PLAN sau mỗi checkpoint/commit/PR, không tự dừng/chờ nhắc.

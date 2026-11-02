@@ -2,7 +2,7 @@
 
 Baseline CP072/[PR105](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/105) merge
 `690d9559fbbccf93e5697107ffe273d32bf7182d`; KRE-036/[issue106](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/106).
-Codex solo/tự kiểm, [review waived](../checkpoints/review-waiver.json), tích hợp chờ PR.
+Codex solo/tự kiểm, [review waived](../checkpoints/review-waiver.json), tích hợp theo [PR107](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/107).
 [Contract/giới hạn](../../PROTOCOL.md#launcher-error-attribution), [gap](../../RESEARCH.md#gap-auth-identity),
 [thứ tự](../../PLAN.md#current-order). Raw/script/probe/copy ở `local/research/codex/nmco-locale-stability-r1/`.
 
