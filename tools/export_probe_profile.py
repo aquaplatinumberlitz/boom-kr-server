@@ -5,6 +5,7 @@ import argparse
 import hashlib
 import json
 from pathlib import Path
+import struct
 
 # Paths are in this repo's ignored codex research tree, not the VN server tree.
 FIXTURES = {
@@ -60,6 +61,8 @@ def main():
                         help='known map spawn0/1, or intentional overlap for contact/race RE')
     parser.add_argument('--item-layout', choices=['floor', 'hidden', 'battle'], default='floor',
                         help='known floor Roller, hidden Bomb/Fire, or both known groups together')
+    parser.add_argument('--all-dead-rank', type=Path,
+                        help='optional measured KR175 rank2/2 fixture under source-root (base seq91)')
     args = parser.parse_args()
     local = Path(__file__).resolve().parents[1] / 'local'
     root = args.source_root.resolve(strict=True)
@@ -83,6 +86,14 @@ def main():
             {'index': 27, 'row': 2, 'column': 3, 'kind': 0},
             {'index': 28, 'row': 3, 'column': 2, 'kind': 1},
         ]
+    if args.all_dead_rank:
+        candidate = args.all_dead_rank.resolve(strict=True)
+        if not candidate.is_relative_to(root):
+            parser.error('--all-dead-rank must be under source-root')
+        raw = candidate.read_bytes()
+        if len(raw) < 38 or struct.unpack_from('<I', raw, 5)[0] != 175:
+            parser.error('--all-dead-rank must contain a KR175 frame')
+        fixtures['rank_all_dead'] = (str(candidate.relative_to(root)), 91)
     for name, (relative, sequence) in fixtures.items():
         path = (root / relative).resolve(strict=True)
         if not path.is_relative_to(root):

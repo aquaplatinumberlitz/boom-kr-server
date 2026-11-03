@@ -180,3 +180,5 @@ profile hai phía cập nhật lại trướcReady/Start.83server tests; cùngTC
 Battle/result/return saurejoin. Export metadata knownseq cho roomlist_B/join/player_B/guest_A/guest_B,
 41rawfixtures giữhash; oldprofile thiếu metadata bị logreject trước mutation. Hostlivepeer/activeleave/
 accountresume vẫn ngoài scope. Thứ tự chỉPLAN, không gọi priorharnessCP035 là productionproof.
+
+CP083: optional profile `rank_all_dead` cho policy A/B cùng accepted19, grace8s từ deathcuối, rank2/2. Profile thiếu alias explicitpending; không invent winner/fake21. [Contract/limits](../docs/PROTOCOL.md#all-dead-result), [runtime](../docs/evidence/all-dead-result/README.md). Export thêm `--all-dead-rank PATH` khi có rawfixture đã pin dưới source-root; không tự đổi profile cũ.
