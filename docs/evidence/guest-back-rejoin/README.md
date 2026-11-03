@@ -51,6 +51,8 @@ Recipeexact `<label>-recipe.json`, seal `<label>-hashes.json`; run_probe.py labe
 fixed _guest_back_fixed.py chạy productionservice, profile-fixed.json. Collect/derive/parse/native_packets/
 verify sau completed, không overwrite label/chạy chồnglease. AUD023/CP076, periodic kếCP080.
 
-Tiếp theoPLAN: guestleave/Ready/reset chỉ đo variant làm blocker; ưu tiên cùng-run Battle sau rejoin
+Bước tạiCP077 (lịch sử): guestleave/Ready/reset chỉ đo variant làm blocker; ưu tiên cùng-run Battle sau rejoin
 để kiểm hiệu ứng/bom/17,19/result/return và nextkey, dùng route CP069/075 đã biết. Không gọi clock
 sau rejoin là trận hoàn chỉnh, không quét lại toànclient hoặc mọi leavevariant trước tích hợp.
+
+[CP078 bổ sung same-runrejoin→R1Battle/resultreturn](../rejoin-battle-cycles/README.md); hai-cyclepartial/Ready2chưa95, scopeCP077/raw giữ nguyên, thứ tự chỉPLAN.
