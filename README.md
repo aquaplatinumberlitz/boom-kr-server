@@ -29,15 +29,15 @@ runtime nào có nguồn, còn thiếu gì và phép kiểm nào giải quyết.
 evidence/hash và câu hỏi; [PLAN](docs/PLAN.md#current-order) giữ duy nhất thứ tự công việc.
 Đây là scope đường bootstrap → login → sảnh → phòng → Battle → kết quả/reset, không kiểm kê toàn client.
 
-CP080: hai client đã qua guest Back/rejoin rồi chạy **hai chu kỳ thử Battle cùng run**:
-Roller/Bomb/Fire, bom, death-state, kết quả và về phòng/reset ở cả hai phía.
-[Contract/giới hạn](docs/PROTOCOL.md#ready-input), [recipe/raw/hash](docs/evidence/ready-input/README.md).
-Đã xác định writer làm mất nhấn Ready/Start sau return; chuẩn bị hover trước nhấn giúp qua ngay
-trong control, không thêm106 hoặc sửa service. Chưa fullmatch/K6a/LAN/Internet.
+CP081: đã xác nhận **bom khác owner kích nổ dây chuyền trong tầm2** ở cả hai client trên
+profile hiện hành; secondary được xử lý trong root callback, timer riêng sau đó không nổ lại.
+[Contract/giới hạn](docs/PROTOCOL.md#mixed-input), [recipe/raw/hash](docs/evidence/mixed-input/README.md).
+CP080 đã có hai chu kỳ Battle sau guest rejoin; bước tiếp ghép hai owner/chain qua hai chu kỳ/reset
+cùng run. Chưa fullmatch/K6a/LAN/Internet.
 
-CP079 đã merge [PR119](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/119) tại `be860a2`.
-CP080 tự kiểm/[PR121](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/121); review độc lập [waived](docs/evidence/checkpoints/review-waiver.json).
-Audit **AUD024/CP080**, periodic kế **CP084**. Tiếp theo: bom khác owner theo PLAN.
+CP080 đã merge [PR121](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/121) tại `cfa4307`.
+CP081 tự kiểm/chờ PR; review độc lập [waived](docs/evidence/checkpoints/review-waiver.json).
+Audit **AUD024/CP080**, periodic kế **CP084**.
 [Yêu cầu chủ dự án](docs/evidence/owner-directives/continuous-work.json): tiếp tục ngay việc kế trong
 PLAN sau mỗi checkpoint/commit/PR, không tự dừng/chờ nhắc.
 

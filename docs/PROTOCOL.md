@@ -1,6 +1,6 @@
 # KR 00967 — contract tương thích client gốc
 
-Revision kr-legacy-contract-r1; cập nhật03/11/2026 JST (CP080).
+Revision kr-legacy-contract-r1; cập nhật03/11/2026 JST (CP081).
 **Contract có bằng chứng từng phần; chưa nghiệm thu full codec K2**.
 Lộ trình và thứ tự task chỉ giữ ở [REWRITE_PLAN — KRE](PLAN.md).
 Đây là contract của repo server KR. ADR0009 của bản viết lại là nguồn lịch sử để so sánh;
@@ -1958,7 +1958,7 @@ liệt kê và phân biệt với nguyên bản trong mọi demo.
 <a id="authority"></a>
 ### Authority matrix hiện hành và gate review
 
-Bảng này tổng hợp bằng chứng từng phần đến CP080; chưa phải toàn contract server gốc. Mỗi hàng khi
+Bảng này tổng hợp bằng chứng từng phần đến CP081; chưa phải toàn contract server gốc. Mỗi hàng khi
 triển khai phải bổ sung riêng **creator, simulator, validator, broadcaster, peer-editable state**, với
 locator/trace và trạng thái từng ô; những vai trò không nêu dưới đây hiện `unknown` cho KR.
 
@@ -1966,7 +1966,7 @@ locator/trace và trạng thái từng ô; những vai trò không nêu dưới 
 |---|---|---|
 | Movement | CP027 hai chiều; CP070 [cut/counter/restore local vs remote](#current-udp-causality) đã đo trên current Wine copy;183 vẫn ghost | Full schema input/update/correction, validator và quyền sửa vị trí của peer |
 | Bomb place/ID | CP027 hai owner/ID chung1..4 tạo trên cả hai client; [phạm vi](#peer-duo); lặp/cũ CP025 | CP041 có [stale158/ID reuse và fence job local](#round-generation), CP043 có [old159/serial reuse](#late-bomb-confirm); CP067 [C2Skey/serialguard](#c2s118-admission) và CP075 [actualTCPselectedreplay](#current-tcp-replay) loại duplicate/oldbody hẹp; allocator/rollover/concurrent/race/toàn generation/authority còn mở |
-| Explode/chain | CP033 một owner; CP064 [power1/cách hai ô](#mixed-owner-chain), CP071 [power2 ngoài tầm/feedback chưa118](#mixed-owner-power) giữ partial khác owner | Mixed-owner liền kề/ba bom/vật cản/race/generation và authority server gốc còn thiếu |
+| Explode/chain | CP033 một owner; CP064 [power1/cách hai ô](#mixed-owner-chain), CP071 [power2 ngoài tầm/feedback chưa118](#mixed-owner-power) giữ partial lịch sử; CP081 [power2/distance2 mixed-owner](#mixed-input) có native callback proof | Mixed-owner liền kề/ba bom/vật cản/race/generation và authority server gốc còn thiếu |
 | Block destroy/item reveal | CP032 nativecontract; CP068 [currentservice/list2/reportgate/effect/reset](#current-hidden-items) cảhai view | Drop algorithm/server validator, variants/chain và phép loại transport riêng còn thiếu |
 | Item placement/pickup | CP030 nhặt/tranh index; CP031/032 stat/itemẩn; CP045 [bảng nhóm/Roller/MaxPower hai view/reset](#item-families) | CP042 có [old165/index reuse](#item-generation); runtime tại max, KRspeed→px/s/TTL/activevariants, drop/toàn124validator/generation/reset còn thiếu; CP062 [winner đảo trên actual tranh index](#current-pickup-race) đã có scope riêng |
 | Trap/death | CP029/036; CP037 kim và tranh chấp cứu/diệt; [kim](#needle-selfescape), [precedence](#contact-precedence) | CP063 [guard stale/duplicate](#report127-freshness) là policy hẹp; CP075 [TCPsame/old17,19](#current-tcp-replay) đã đo; fullvalidator/firstseen/forgedforward/generation/variants/result21 vẫn thiếu |
@@ -2868,3 +2868,29 @@ hoặc UI state từ địa chỉ sau lifetime; phép đo kế phải tháo watc
 chu kỳ; planned assertion/stat không bỏ. Chưa fullmatch/K5/K6a/vanilla/LAN/Internet/full auth/codec/
 validator/authority/reset/general membership; [PLAN](PLAN.md#current-order) chuyển khoảng trống bom
 khác owner, không tiếp nhánh106 hoặc lặp Ready cause.
+
+
+<a id="mixed-input"></a>
+### Hai owner trong tầm và root callback chain — CP081
+
+[Reuse/raw/control/hash](evidence/mixed-input/README.md), **kr_runtime/confirmed hẹp** trên current
+modified Wine/profile CP071, production không đổi. CP027/064/071/VN cung cấp pipeline/checklist,
+không numerical port. Source-first sửa bước tiếp CP080: CP071 live đã có B118; feedback thiếu Aroot
+sau đưa B lên, trước BSpace. Giữ failure/causeunknown; không gọi B không đặt được bom tổng quát.
+
+Run mới cùng normal input/Space0,15s/Fire profile, lean known read-only probes và durable action
+facts: A124 Fire17/6,3→165, nativeA+4BC1→2 cảhai view; Bposition nativeY≤159. Actual118 Aowner0
+(3,3)/power2/ID1, Bowner1(3,5)/power1/ID2. Native key down/up→writerE2DF80/callerE2D608/enqueue118
+cảhai; không thêm retry/hold, patch/stateforcing/reply hoặc RE lại body. Không isolate nguyên nhân
+historicalmissingAroot vì instrumentation/recording khác, không suy debugger/focus/guard đã sửa.
+
+Native159 cursor39/errors0/pointer join theo actual wire owner/ID ở từng view. Trong root158 ID1,
+cảhai view processID1 vàID2, secondary state0 qua callerEBE21A; chỉ rootkind0. Callback158 ID2 riêng
+sau đó lookupID2 nhưng khôngkind0/process lại, cursor13/errors0. Đây là mixed-owner chain trong tầm2
+trên geometry đã đo, không chỉ hai server timer. Reuse CP064 samegeometry/power1 root-only là control
+lịch sử với khác biệt profile/timing, không phải same-run can thiệp chỉ power.
+
+Chưa adjacent1cell/ba bom/vật cản/toànchain/authority/reset/two-owner hai chu kỳ/fullmatch/K5/K6a/
+vanilla/LANInternet. Models framer/heap/getter chỉ corroborate bytes; policy fuse/drop/rank là design.
+Run dừng sau hai bomdeadline+4s, không result/return. [PLAN](PLAN.md#current-order) ghép route này
+với hai chu kỳ/reset và input preparation CP080, không tìm lại writer/input/Fire/codec.

@@ -3,7 +3,7 @@
 Baseline CP079/[PR119](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/119),
 merge `be860a2eab2726f6cbc6e52c317900dc07c00a18`.
 KRE-043/[issue120](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/120);
-Codex tự kiểm, [review độc lập waived](../checkpoints/review-waiver.json), chờ PR.
+Codex tự kiểm, [review độc lập waived](../checkpoints/review-waiver.json), tích hợp theo [PR121](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/121).
 Contract duy nhất ở [PROTOCOL](../../PROTOCOL.md#ready-input), câu hỏi ở
 [RESEARCH](../../RESEARCH.md#gap-diagnostic-service), thứ tự ở [PLAN](../../PLAN.md#current-order).
 Raw/cache/recipe/model/source/seal: `local/research/codex/ready-input-r1/`.
@@ -70,3 +70,5 @@ RVA=VA−400000. Production/profile/fixture/binary không đổi; không native 
 LAN/Internet/full auth/codec/validator/authority/reset/general membership. AUD024 định kỳ qua080,
 audit kếCP084. Tiếp theo PLAN là input/placement bom khác owner trong profile hiện hành;
 tận dụng writer/control này, không lặp nhánh106 hoặc giữ phím vô hướng.
+
+[CP081](../mixed-input/README.md) bổ sung mixed-owner chain; source-first sửa target của CP071 feedback là Aroot, không B tổng quát. CP080 record giữ nguyên; thứ tự hiện hành chỉ PLAN.

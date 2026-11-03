@@ -1,7 +1,7 @@
 {
   "schema": "kre-feature-index-v1",
   "build": "KR00967",
-  "as_of": "2026-11-03 CP080",
+  "as_of": "2026-11-03 CP081",
   "sources": {
     "plan": "docs/PLAN.md",
     "contract": "docs/PROTOCOL.md",
@@ -1427,7 +1427,8 @@
           "docs/evidence/mixed-owner-chain/README.md",
           "docs/evidence/current-hidden-items/README.md",
           "docs/evidence/basic-battle/README.md",
-          "docs/evidence/mixed-owner-power/README.md"
+          "docs/evidence/mixed-owner-power/README.md",
+          "docs/evidence/mixed-input/README.md"
         ]
       },
       "coverage": {
@@ -1463,7 +1464,8 @@
               "docs/evidence/mixed-owner-chain/README.md",
               "docs/evidence/current-hidden-items/README.md",
               "docs/evidence/basic-battle/README.md",
-              "docs/evidence/mixed-owner-power/README.md"
+              "docs/evidence/mixed-owner-power/README.md",
+              "docs/evidence/mixed-input/README.md"
             ]
           },
           "windows_original": {
@@ -1490,12 +1492,13 @@
           "delivery": "via_pr"
         },
         "integration": {
-          "state": "unknown",
+          "state": "partial",
           "refs": [
             "docs/evidence/mixed-owner-chain/README.md",
             "docs/evidence/current-hidden-items/README.md",
             "docs/evidence/basic-battle/README.md",
-            "docs/evidence/mixed-owner-power/README.md"
+            "docs/evidence/mixed-owner-power/README.md",
+            "docs/evidence/mixed-input/README.md"
           ]
         },
         "gate": {
@@ -2781,7 +2784,8 @@
           "docs/evidence/guest-back-rejoin/README.md",
           "docs/evidence/rejoin-battle-cycles/README.md",
           "docs/evidence/return585-ready/README.md",
-          "docs/evidence/ready-input/README.md"
+          "docs/evidence/ready-input/README.md",
+          "docs/evidence/mixed-input/README.md"
         ]
       },
       "coverage": {
@@ -2834,7 +2838,8 @@
               "docs/evidence/guest-back-rejoin/README.md",
               "docs/evidence/rejoin-battle-cycles/README.md",
               "docs/evidence/return585-ready/README.md",
-              "docs/evidence/ready-input/README.md"
+              "docs/evidence/ready-input/README.md",
+              "docs/evidence/mixed-input/README.md"
             ]
           },
           "windows_original": {
@@ -2914,7 +2919,8 @@
             "docs/evidence/guest-back-rejoin/README.md",
             "docs/evidence/rejoin-battle-cycles/README.md",
             "docs/evidence/return585-ready/README.md",
-            "docs/evidence/ready-input/README.md"
+            "docs/evidence/ready-input/README.md",
+            "docs/evidence/mixed-input/README.md"
           ]
         },
         "gate": {
