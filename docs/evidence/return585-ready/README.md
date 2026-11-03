@@ -2,7 +2,7 @@
 
 Baseline CP078/PR117 merge `fff30b1f42abd4855a095c0f7502326801565354`;
 KRE-042/[issue118](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/118), **acceptance hai vòng chưa đạt**.
-Codex solo/tự kiểm, [review waived](../checkpoints/review-waiver.json), chờ PR.
+Codex solo/tự kiểm, [review waived](../checkpoints/review-waiver.json), tích hợp theo [PR119](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/119).
 [Contract/giới hạn](../../PROTOCOL.md#return585-ready), [câu hỏi](../../RESEARCH.md#gap-diagnostic-service),
 [thứ tự](../../PLAN.md#current-order). Raw/cache/script/seal ở `local/research/codex/return585-ready-r1/`.
 
@@ -52,8 +52,10 @@ Plannedtwo-cycle chưađủ điều kiện chạyverifierfinal/đónggate; verif
 scope cóghi. Catalog7/docs/artifacts5/5/localhistory/diff; production83server/18checkpointtests reuse
 unchangedcodeCP077. AUD023/CP076, periodicCP080; raw/historyCP001–078 giữ.
 
-Bước tiếpPLAN: reuseCP016WndProc1259C00/125C250/filter,button1509376/1509525/delegates vàCP028
+Bước tại CP079 (lịch sử): reuseCP016WndProc1259C00/125C250/filter,button1509376/1509525/delegates vàCP028
 Ready, ghi đồngthời initial vsreturnedclick trước callback. Persist progress/rolePID/display/focus/action
 trước/sau từngUI vàlúcphase mới, không chỉcuốirun; giới hạn controller dưới wrapperbudget, không
 lặp550s chỉđểchờ95. Nếu khôngnewedge, chuyểncurrenthaiownerbom theoPLAN. Chưa causefix/fullmatch/
 K5/K6a/LANInternet/Windowsvanilla/toànauth/codec/validator/reset/hostlivepeer/activeleave/accountresume.
+
+[CP080](../ready-input/README.md) bổ sung native input writer/control và hai chu kỳ sau rejoin; giới hạn interrupted CP079 giữ nguyên. Thứ tự hiện hành chỉ PLAN.

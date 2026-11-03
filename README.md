@@ -29,14 +29,15 @@ runtime nào có nguồn, còn thiếu gì và phép kiểm nào giải quyết.
 evidence/hash và câu hỏi; [PLAN](docs/PLAN.md#current-order) giữ duy nhất thứ tự công việc.
 Đây là scope đường bootstrap → login → sảnh → phòng → Battle → kết quả/reset, không kiểm kê toàn client.
 
-CP079: nguồn cũ chứng minh106mới không bắtbuộc cho Ready2 ởca đãđo; chưa cócơsởsửa service vì585.
-[Contract/giới hạn](docs/PROTOCOL.md#return585-ready), [raw/counterexample/hash](docs/evidence/return585-ready/README.md).
-Trace mới saureturn enable/pending0 nhưng chưaReadycallback2; runexit143/thiếurecordcuối, acceptancehai vòng vẫnpartial.
-Tiếp đo inputWndProc/button trướcReady và lưu progressngay; chưafullmatch/K6a/LAN/Internet.
+CP080: hai client đã qua guest Back/rejoin rồi chạy **hai chu kỳ thử Battle cùng run**:
+Roller/Bomb/Fire, bom, death-state, kết quả và về phòng/reset ở cả hai phía.
+[Contract/giới hạn](docs/PROTOCOL.md#ready-input), [recipe/raw/hash](docs/evidence/ready-input/README.md).
+Đã xác định writer làm mất nhấn Ready/Start sau return; chuẩn bị hover trước nhấn giúp qua ngay
+trong control, không thêm106 hoặc sửa service. Chưa fullmatch/K6a/LAN/Internet.
 
-CP078 đã merge [PR117](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/117) tại `fff30b1`.
-CP079 tự kiểm/[PR119](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/119); review độc lập [waived](docs/evidence/checkpoints/review-waiver.json).
-Audit **AUD023/CP076**, periodic kế **CP080**.
+CP079 đã merge [PR119](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/119) tại `be860a2`.
+CP080 tự kiểm/chờ PR; review độc lập [waived](docs/evidence/checkpoints/review-waiver.json).
+Audit **AUD024/CP080**, periodic kế **CP084**. Tiếp theo: bom khác owner theo PLAN.
 [Yêu cầu chủ dự án](docs/evidence/owner-directives/continuous-work.json): tiếp tục ngay việc kế trong
 PLAN sau mỗi checkpoint/commit/PR, không tự dừng/chờ nhắc.
 

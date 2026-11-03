@@ -1,0 +1,98 @@
+{
+  "id": "AUD024",
+  "trigger": "periodic",
+  "completed_through": "CP080",
+  "recorded_utc": "2026-11-03T13:07:32.380880+00:00",
+  "auditor": "Codex manual self-audit; independent review waived by owner",
+  "read_files": [
+    "README.md",
+    "docs/PLAN.md",
+    "docs/PROTOCOL.md",
+    "docs/RESEARCH.md",
+    "docs/features.json",
+    "docs/COVERAGE.md",
+    "docs/evidence/guest-back-rejoin/README.md",
+    "docs/evidence/rejoin-battle-cycles/README.md",
+    "docs/evidence/return585-ready/README.md",
+    "docs/evidence/ready-input/README.md",
+    "docs/evidence/checkpoints/manifest.json",
+    "local/research/codex/ready-input-r1/reuse-question.json",
+    "local/research/codex/ready-input-r1/dispatch/run.json",
+    "local/research/codex/ready-input-r1/dispatch-observer-stop.json",
+    "local/research/codex/ready-input-r1/second-analysis/input-summary.json",
+    "local/research/codex/ready-input-r1/second-analysis/verification.json",
+    "local/research/codex/ready-input-r1/watch-verification.json",
+    "local/research/codex/ready-input-r1/native-new-edge.json",
+    "local/research/codex/ready-input-r1/1504D0A.asm",
+    "local/research/codex/ready-input-r1/hover/run.json",
+    "local/research/codex/ready-input-r1/hover/client.log",
+    "local/research/codex/ready-input-r1/hover/client-B.log",
+    "local/research/codex/ready-input-r1/hover/ui-progress.jsonl",
+    "local/research/codex/ready-input-r1/hover-first-planned-integration-check.txt",
+    "local/research/codex/ready-input-r1/unwind-classification.json",
+    "local/research/codex/ready-input-r1/integration.json",
+    "local/research/codex/ready-input-r1/hover-verification.json",
+    "local/research/codex/ready-input-r1/visual-observation.json"
+  ],
+  "method": "Đọc README→PLAN(current-order/gates)→PROTOCOL(identity/reuse/authority/CP016/028/077–080)→RESEARCH current gaps→evidence và raw/report mới. Đối chiếu native callback/OS timestamp/role/display/state writer, original finalized run vs controlled/interrupted partials, raw watch stack và một helper cùng hash; kiểm hai cycle cảhai view/actual124118/stat baseline/native175180 và ảnh cuối. Không dùng script thay audit, không ghép partials hoặc suy fullmatch/gate.",
+  "findings": [
+    {
+      "id": "F1",
+      "stale": "Current README/PLAN/gaps vẫn dừng noReady2; CP079 pre-callback candidate chưa giải.",
+      "correction": "CP080 xác định native464 state restore trước up; hover control hai chu kỳ sau rejoin, source/runtime/model/design tách rõ. Chuyển PLAN current BSpace/118 gap, không106fix.",
+      "fixed_in": [
+        "README.md",
+        "docs/PLAN.md",
+        "docs/PROTOCOL.md",
+        "docs/RESEARCH.md",
+        "docs/features.json",
+        "docs/COVERAGE.md",
+        "docs/evidence/ready-input/README.md"
+      ]
+    },
+    {
+      "id": "F2",
+      "stale": "RESEARCH ghi nativeenable0 sau return trong khi trace arg1/pending0; evidenceCP079 còn chờPR dùPR119merged.",
+      "correction": "Làm rõ arg1/pending0 và PR119; current gap tiếp theo đã thay bằng CP080, raw/manifest079 giữ nguyên.",
+      "fixed_in": [
+        "docs/RESEARCH.md",
+        "docs/evidence/return585-ready/README.md"
+      ]
+    },
+    {
+      "id": "F3",
+      "stale": "Một số bước tiếp tại CP074/077/078 diễn đạt như current plan.",
+      "correction": "Đánh nhãn bước tại CP/lịch sử, link successor và duy nhất PLAN.",
+      "fixed_in": [
+        "docs/PROTOCOL.md",
+        "docs/evidence/return585-ready/README.md"
+      ]
+    },
+    {
+      "id": "F4",
+      "stale": "First planned verifier phân loại bt8 unwind truncation là probe memory-read error; có thể phủ nhận counters2/2/2/2 hoặc âm thầm bỏ lỗi.",
+      "correction": "Giữ failure gốc/raw/parser gốc; xác nhận đúng2warnings/role ởpostPC152590D sauStart2/stage13, trace tiếp đủclock/resultreturn. Tách warning riêng; checker kiểm exactcontext, không giảm cycle/stat assertions. Later old-storage watch values loại khỏi UI semantics, không kết luận free/destructor.",
+      "fixed_in": [
+        "local/research/codex/ready-input-r1/parse_lifecycle.py",
+        "local/research/codex/ready-input-r1/verify_hover.py",
+        "docs/PROTOCOL.md",
+        "docs/evidence/ready-input/README.md"
+      ]
+    },
+    {
+      "id": "F5",
+      "stale": "Không được gộp dispatch prelude failure/watch B95/AStartno104 vào proof hai vòng.",
+      "correction": "Bốn run có SHA/limits riêng; chỉ hover đủplanned1515 và baeffect mỗi vòng; firstSIGINT130/originalfinally vs previousCP079143/nofinal phân biệt. Docs đủ nguyên nhân trong scope, không gọi recipe UI là servicefix hayvanilla.",
+      "fixed_in": [
+        "docs/evidence/ready-input/README.md",
+        "docs/PROTOCOL.md"
+      ]
+    }
+  ],
+  "remaining": [
+    "Fullmatch/K5/K6a/vanilla/LANInternet/auth/codec/validator/authority/fullreset/general membership giữ mở.",
+    "Mixed-owner current Bactual118/in-range chain còn thiếu; nguồn CP027/064/071 và VN cần source-first theo PLAN.",
+    "Helper1504D0A observed edge đủ giải lostpress trong scope, không universal timing hay gánWin32 semantics cho464.",
+    "CP080 selfchecked/chờPR, waivednotapproved; auditnextCP084; CP001–079/AUD001–023 bất biến."
+  ]
+}
