@@ -465,11 +465,11 @@ Dependency: [KR-R002](#kr-r002).
 
 [Contract và giới hạn](PROTOCOL.md#room-rejoin) · [Câu hỏi gốc](RESEARCH.md#gap-room-membership) · [Thứ tự ở PLAN](PLAN.md#current-order).
 
-Khoảng trống (trích bảng RESEARCH): CP076Aemptyroomrecreate; [CP077](PROTOCOL.md#guest-back-rejoin) BidleBack khi Ahost/mapped,107IDclear/82/87/585/roster/map/ReadyStartclock cùngTCP đã đo.
+Khoảng trống (trích bảng RESEARCH): CP076/077Back/rejoin; [CP078](PROTOCOL.md#rejoin-battle-cycles) same-runrejoin→R1effects/deathstate/resultreturn, Ready2chưa95.
 
-Phép kiểm tối thiểu (trích cùng nguồn): TheoPLAN Battle sau rejoin cùngrun/nextkey/reset; hostlivepeerleave/activeleave/accountresume/generalroom vẫn mở. Không lặp nativeleave/rejoin/writers/consumer đã biết.
+Phép kiểm tối thiểu (trích cùng nguồn): TheoPLAN actual585afterreturn→own106/Readyconsumer/pending/ownslot, không tựkếtluậncause. Hostlivepeer/activeleave/accountresume/generalroom vẫn mở; reusewire/body.
 
-Bằng chứng/build/hash/recipe: [room-rejoin](evidence/room-rejoin/README.md), [service-eof](evidence/service-eof/README.md), [service-replacement](evidence/service-replacement/README.md), [setup-eof](evidence/setup-eof/README.md), [host-setup](evidence/host-setup/README.md), [prestart-replacement](evidence/prestart-replacement/README.md), [back86-membership](evidence/back86-membership/README.md), [guest-back-rejoin](evidence/guest-back-rejoin/README.md).
+Bằng chứng/build/hash/recipe: [room-rejoin](evidence/room-rejoin/README.md), [service-eof](evidence/service-eof/README.md), [service-replacement](evidence/service-replacement/README.md), [setup-eof](evidence/setup-eof/README.md), [host-setup](evidence/host-setup/README.md), [prestart-replacement](evidence/prestart-replacement/README.md), [back86-membership](evidence/back86-membership/README.md), [guest-back-rejoin](evidence/guest-back-rejoin/README.md), [rejoin-battle-cycles](evidence/rejoin-battle-cycles/README.md).
 
 | Chiều chứng minh | Khai báo | Nguồn/phạm vi áp dụng |
 |---|---|---|
@@ -477,12 +477,12 @@ Bằng chứng/build/hash/recipe: [room-rejoin](evidence/room-rejoin/README.md),
 | vn_reference | both | [nguồn1](REFERENCES.md) |
 | kr_static | partial | [nguồn1](PROTOCOL.md#room-rejoin) |
 | emulation | checked | [nguồn1](evidence/room-rejoin/README.md) |
-| wine_diagnostic_copy | observed | [nguồn1](evidence/room-rejoin/README.md), [nguồn2](evidence/service-eof/README.md), [nguồn3](evidence/service-replacement/README.md), [nguồn4](evidence/setup-eof/README.md), [nguồn5](evidence/host-setup/README.md), [nguồn6](evidence/prestart-replacement/README.md), [nguồn7](evidence/back86-membership/README.md), [nguồn8](evidence/guest-back-rejoin/README.md) |
+| wine_diagnostic_copy | observed | [nguồn1](evidence/room-rejoin/README.md), [nguồn2](evidence/service-eof/README.md), [nguồn3](evidence/service-replacement/README.md), [nguồn4](evidence/setup-eof/README.md), [nguồn5](evidence/host-setup/README.md), [nguồn6](evidence/prestart-replacement/README.md), [nguồn7](evidence/back86-membership/README.md), [nguồn8](evidence/guest-back-rejoin/README.md), [nguồn9](evidence/rejoin-battle-cycles/README.md) |
 | windows_original | unknown | Chưa có bằng chứng trong phạm vi rà |
 | lan | unknown | Chưa có bằng chứng trong phạm vi rà |
 | internet | unknown | Chưa có bằng chứng trong phạm vi rà |
 | implementation | partial / via_pr | [nguồn1](../server/probe_service.py), [nguồn2](PROTOCOL.md#service-eof), [nguồn3](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/61), [nguồn4](PROTOCOL.md#service-replacement), [nguồn5](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/63), [nguồn6](PROTOCOL.md#setup-eof), [nguồn7](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/65), [nguồn8](PROTOCOL.md#host-setup), [nguồn9](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/67), [nguồn10](PROTOCOL.md#prestart-replacement), [nguồn11](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/69), [nguồn12](PROTOCOL.md#back86-membership), [nguồn13](../server/test_room_reentry.py), [nguồn14](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/113), [nguồn15](PROTOCOL.md#guest-back-rejoin), [nguồn16](../server/test_guest_rejoin.py), [nguồn17](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/115) |
-| integration | partial | [nguồn1](evidence/service-eof/README.md), [nguồn2](evidence/service-replacement/README.md), [nguồn3](evidence/setup-eof/README.md), [nguồn4](evidence/host-setup/README.md), [nguồn5](evidence/prestart-replacement/README.md), [nguồn6](evidence/back86-membership/README.md), [nguồn7](evidence/guest-back-rejoin/README.md) |
+| integration | partial | [nguồn1](evidence/service-eof/README.md), [nguồn2](evidence/service-replacement/README.md), [nguồn3](evidence/setup-eof/README.md), [nguồn4](evidence/host-setup/README.md), [nguồn5](evidence/prestart-replacement/README.md), [nguồn6](evidence/back86-membership/README.md), [nguồn7](evidence/guest-back-rejoin/README.md), [nguồn8](evidence/rejoin-battle-cycles/README.md) |
 | gate | K4: open | [nguồn1](PLAN.md#gates) |
 
 <a id="kr-f001"></a>
@@ -577,7 +577,7 @@ Khoảng trống (trích bảng RESEARCH): CP067 guardkey/serial có dispatcherc
 
 Phép kiểm tối thiểu (trích cùng nguồn): Fullauth/cap/distance/forgedcurrentkey/freshserial/wrap còn mở; không lặp nativewriter hoặc selectedoldbody. Hai-cycle guardintegration cònpartial (R2rank chưađến trướcbudget), không fullvalidator.
 
-Bằng chứng/build/hash/recipe: [bomb-serial](evidence/bomb-serial/README.md), [probe-service](evidence/probe-service/README.md), [c2s118-admission](evidence/c2s118-admission/README.md), [current-tcp-replay](evidence/current-tcp-replay/README.md).
+Bằng chứng/build/hash/recipe: [bomb-serial](evidence/bomb-serial/README.md), [probe-service](evidence/probe-service/README.md), [c2s118-admission](evidence/c2s118-admission/README.md), [current-tcp-replay](evidence/current-tcp-replay/README.md), [rejoin-battle-cycles](evidence/rejoin-battle-cycles/README.md).
 
 | Chiều chứng minh | Khai báo | Nguồn/phạm vi áp dụng |
 |---|---|---|
@@ -585,12 +585,12 @@ Bằng chứng/build/hash/recipe: [bomb-serial](evidence/bomb-serial/README.md),
 | vn_reference | both | [nguồn1](REFERENCES.md) |
 | kr_static | partial | [nguồn1](PROTOCOL.md#bomb-serial) |
 | emulation | checked | [nguồn1](evidence/bomb-serial/README.md) |
-| wine_diagnostic_copy | observed | [nguồn1](evidence/bomb-serial/README.md), [nguồn2](evidence/c2s118-admission/README.md) |
+| wine_diagnostic_copy | observed | [nguồn1](evidence/bomb-serial/README.md), [nguồn2](evidence/c2s118-admission/README.md), [nguồn3](evidence/rejoin-battle-cycles/README.md) |
 | windows_original | unknown | Chưa có bằng chứng trong phạm vi rà |
 | lan | unknown | Chưa có bằng chứng trong phạm vi rà |
 | internet | unknown | Chưa có bằng chứng trong phạm vi rà |
 | implementation | partial / via_pr | [nguồn1](../server/probe_service.py), [nguồn2](PROTOCOL.md#probe-service), [nguồn3](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/57), [nguồn4](PROTOCOL.md#c2s118-admission), [nguồn5](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/95) |
-| integration | partial | [nguồn1](evidence/probe-service/README.md), [nguồn2](evidence/c2s118-admission/README.md), [nguồn3](PROTOCOL.md#current-tcp-replay) |
+| integration | partial | [nguồn1](evidence/probe-service/README.md), [nguồn2](evidence/c2s118-admission/README.md), [nguồn3](PROTOCOL.md#current-tcp-replay), [nguồn4](evidence/rejoin-battle-cycles/README.md) |
 | gate | K5: open | [nguồn1](PLAN.md#gates) |
 
 <a id="kr-f005"></a>
@@ -631,7 +631,7 @@ Khoảng trống (trích bảng RESEARCH): CP066 tranh124/onewinner/reset đã c
 
 Phép kiểm tối thiểu (trích cùng nguồn): Fairness/auth/distance/rescue/forgedcurrentkey còn mở. Không lặp writer/claim/selectedoldbody; CP075 không hai-cycle result/hiddenpointerjoin mới.
 
-Bằng chứng/build/hash/recipe: [item-pickup](evidence/item-pickup/README.md), [probe-service](evidence/probe-service/README.md), [stale124](evidence/stale124/README.md), [pickup-time](evidence/pickup-time/README.md), [pickup-state](evidence/pickup-state/README.md), [current-pair-round](evidence/current-pair-round/README.md), [current-pickup-race](evidence/current-pickup-race/README.md), [distinct-spawn-race](evidence/distinct-spawn-race/README.md), [current-hidden-items](evidence/current-hidden-items/README.md), [basic-battle](evidence/basic-battle/README.md), [current-tcp-replay](evidence/current-tcp-replay/README.md).
+Bằng chứng/build/hash/recipe: [item-pickup](evidence/item-pickup/README.md), [probe-service](evidence/probe-service/README.md), [stale124](evidence/stale124/README.md), [pickup-time](evidence/pickup-time/README.md), [pickup-state](evidence/pickup-state/README.md), [current-pair-round](evidence/current-pair-round/README.md), [current-pickup-race](evidence/current-pickup-race/README.md), [distinct-spawn-race](evidence/distinct-spawn-race/README.md), [current-hidden-items](evidence/current-hidden-items/README.md), [basic-battle](evidence/basic-battle/README.md), [current-tcp-replay](evidence/current-tcp-replay/README.md), [rejoin-battle-cycles](evidence/rejoin-battle-cycles/README.md).
 
 | Chiều chứng minh | Khai báo | Nguồn/phạm vi áp dụng |
 |---|---|---|
@@ -639,12 +639,12 @@ Bằng chứng/build/hash/recipe: [item-pickup](evidence/item-pickup/README.md),
 | vn_reference | both | [nguồn1](PROTOCOL.md#item-pickup), [nguồn2](REFERENCES.md) |
 | kr_static | partial | [nguồn1](PROTOCOL.md#item-pickup), [nguồn2](PROTOCOL.md#pickup-tick), [nguồn3](PROTOCOL.md#pickup-report-state) |
 | emulation | checked | [nguồn1](evidence/item-pickup/README.md), [nguồn2](evidence/pickup-time/README.md) |
-| wine_diagnostic_copy | observed | [nguồn1](evidence/item-pickup/README.md), [nguồn2](evidence/stale124/README.md), [nguồn3](evidence/pickup-time/README.md), [nguồn4](evidence/pickup-state/README.md), [nguồn5](evidence/current-pair-round/README.md), [nguồn6](evidence/current-pickup-race/README.md), [nguồn7](evidence/distinct-spawn-race/README.md), [nguồn8](evidence/current-hidden-items/README.md), [nguồn9](evidence/basic-battle/README.md) |
+| wine_diagnostic_copy | observed | [nguồn1](evidence/item-pickup/README.md), [nguồn2](evidence/stale124/README.md), [nguồn3](evidence/pickup-time/README.md), [nguồn4](evidence/pickup-state/README.md), [nguồn5](evidence/current-pair-round/README.md), [nguồn6](evidence/current-pickup-race/README.md), [nguồn7](evidence/distinct-spawn-race/README.md), [nguồn8](evidence/current-hidden-items/README.md), [nguồn9](evidence/basic-battle/README.md), [nguồn10](evidence/rejoin-battle-cycles/README.md) |
 | windows_original | unknown | Chưa có bằng chứng trong phạm vi rà |
 | lan | unknown | Chưa có bằng chứng trong phạm vi rà |
 | internet | unknown | Chưa có bằng chứng trong phạm vi rà |
 | implementation | partial / via_pr | [nguồn1](../server/probe_service.py), [nguồn2](PROTOCOL.md#pickup-round-key), [nguồn3](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/59), [nguồn4](PROTOCOL.md#pickup-report-state), [nguồn5](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/73), [nguồn6](PROTOCOL.md#current-hidden-items), [nguồn7](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/97), [nguồn8](PROTOCOL.md#basic-battle), [nguồn9](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/99) |
-| integration | partial | [nguồn1](evidence/stale124/README.md), [nguồn2](evidence/pickup-state/README.md), [nguồn3](evidence/current-pair-round/README.md), [nguồn4](evidence/current-pickup-race/README.md), [nguồn5](evidence/distinct-spawn-race/README.md), [nguồn6](evidence/current-hidden-items/README.md), [nguồn7](evidence/basic-battle/README.md), [nguồn8](PROTOCOL.md#current-tcp-replay) |
+| integration | partial | [nguồn1](evidence/stale124/README.md), [nguồn2](evidence/pickup-state/README.md), [nguồn3](evidence/current-pair-round/README.md), [nguồn4](evidence/current-pickup-race/README.md), [nguồn5](evidence/distinct-spawn-race/README.md), [nguồn6](evidence/current-hidden-items/README.md), [nguồn7](evidence/basic-battle/README.md), [nguồn8](PROTOCOL.md#current-tcp-replay), [nguồn9](evidence/rejoin-battle-cycles/README.md) |
 | gate | K5: open | [nguồn1](PLAN.md#gates) |
 
 <a id="kr-f007"></a>
@@ -658,7 +658,7 @@ Khoảng trống (trích bảng RESEARCH): Bomb/Fire/Roller/MaxPower có delta h
 
 Phép kiểm tối thiểu (trích cùng nguồn): Tái dùng CP045 và paired165/stat CP048 r3/clock2reset; chỉ đo runtime tại max hoặc pxs khi ca Battle cần, không đo lại Roller5→6 để lấp unknown cũ.
 
-Bằng chứng/build/hash/recipe: [item-families](evidence/item-families/README.md), [probe-service](evidence/probe-service/README.md), [current-hidden-items](evidence/current-hidden-items/README.md), [basic-battle](evidence/basic-battle/README.md), [mixed-owner-power](evidence/mixed-owner-power/README.md).
+Bằng chứng/build/hash/recipe: [item-families](evidence/item-families/README.md), [probe-service](evidence/probe-service/README.md), [current-hidden-items](evidence/current-hidden-items/README.md), [basic-battle](evidence/basic-battle/README.md), [mixed-owner-power](evidence/mixed-owner-power/README.md), [rejoin-battle-cycles](evidence/rejoin-battle-cycles/README.md).
 
 | Chiều chứng minh | Khai báo | Nguồn/phạm vi áp dụng |
 |---|---|---|
@@ -666,12 +666,12 @@ Bằng chứng/build/hash/recipe: [item-families](evidence/item-families/README.
 | vn_reference | both | [nguồn1](PROTOCOL.md#item-families) |
 | kr_static | partial | [nguồn1](PROTOCOL.md#item-families) |
 | emulation | checked | [nguồn1](evidence/item-families/README.md) |
-| wine_diagnostic_copy | observed | [nguồn1](evidence/item-families/README.md), [nguồn2](evidence/current-hidden-items/README.md), [nguồn3](evidence/basic-battle/README.md), [nguồn4](evidence/mixed-owner-power/README.md) |
+| wine_diagnostic_copy | observed | [nguồn1](evidence/item-families/README.md), [nguồn2](evidence/current-hidden-items/README.md), [nguồn3](evidence/basic-battle/README.md), [nguồn4](evidence/mixed-owner-power/README.md), [nguồn5](evidence/rejoin-battle-cycles/README.md) |
 | windows_original | unknown | Chưa có bằng chứng trong phạm vi rà |
 | lan | unknown | Chưa có bằng chứng trong phạm vi rà |
 | internet | unknown | Chưa có bằng chứng trong phạm vi rà |
 | implementation | partial / via_pr | [nguồn1](../server/probe_service.py), [nguồn2](PROTOCOL.md#probe-service), [nguồn3](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/57), [nguồn4](PROTOCOL.md#current-hidden-items), [nguồn5](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/97), [nguồn6](PROTOCOL.md#basic-battle), [nguồn7](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/99) |
-| integration | partial | [nguồn1](evidence/probe-service/README.md), [nguồn2](evidence/current-hidden-items/README.md), [nguồn3](evidence/basic-battle/README.md), [nguồn4](evidence/mixed-owner-power/README.md) |
+| integration | partial | [nguồn1](evidence/probe-service/README.md), [nguồn2](evidence/current-hidden-items/README.md), [nguồn3](evidence/basic-battle/README.md), [nguồn4](evidence/mixed-owner-power/README.md), [nguồn5](evidence/rejoin-battle-cycles/README.md) |
 | gate | K5: open | [nguồn1](PLAN.md#gates) |
 
 <a id="kr-f008"></a>
@@ -712,7 +712,7 @@ Khoảng trống (trích bảng RESEARCH): CP063 dispatcherold17/19/21; [CP075](
 
 Phép kiểm tối thiểu (trích cùng nguồn): Fullauthority/21/sub34/firstseen/forgedforward/reset còn mở. CP075 không đo proxyold21 hoặc secondresult/return; không chuyển tick thànhms/k124 hoặc đónggate.
 
-Bằng chứng/build/hash/recipe: [collision-rescue](evidence/collision-rescue/README.md), [probe-service](evidence/probe-service/README.md), [report127-freshness](evidence/report127-freshness/README.md), [current-tcp-replay](evidence/current-tcp-replay/README.md).
+Bằng chứng/build/hash/recipe: [collision-rescue](evidence/collision-rescue/README.md), [probe-service](evidence/probe-service/README.md), [report127-freshness](evidence/report127-freshness/README.md), [current-tcp-replay](evidence/current-tcp-replay/README.md), [rejoin-battle-cycles](evidence/rejoin-battle-cycles/README.md).
 
 | Chiều chứng minh | Khai báo | Nguồn/phạm vi áp dụng |
 |---|---|---|
@@ -720,12 +720,12 @@ Bằng chứng/build/hash/recipe: [collision-rescue](evidence/collision-rescue/R
 | vn_reference | both | [nguồn1](PROTOCOL.md#collision-rescue), [nguồn2](REFERENCES.md) |
 | kr_static | partial | [nguồn1](PROTOCOL.md#collision-rescue) |
 | emulation | checked | [nguồn1](evidence/collision-rescue/README.md) |
-| wine_diagnostic_copy | observed | [nguồn1](evidence/collision-rescue/README.md), [nguồn2](evidence/report127-freshness/README.md) |
+| wine_diagnostic_copy | observed | [nguồn1](evidence/collision-rescue/README.md), [nguồn2](evidence/report127-freshness/README.md), [nguồn3](evidence/rejoin-battle-cycles/README.md) |
 | windows_original | unknown | Chưa có bằng chứng trong phạm vi rà |
 | lan | unknown | Chưa có bằng chứng trong phạm vi rà |
 | internet | unknown | Chưa có bằng chứng trong phạm vi rà |
 | implementation | partial / via_pr | [nguồn1](../server/probe_service.py), [nguồn2](PROTOCOL.md#probe-service), [nguồn3](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/57), [nguồn4](PROTOCOL.md#report127-freshness), [nguồn5](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/87) |
-| integration | partial | [nguồn1](evidence/probe-service/README.md), [nguồn2](evidence/report127-freshness/README.md), [nguồn3](PROTOCOL.md#current-tcp-replay) |
+| integration | partial | [nguồn1](evidence/probe-service/README.md), [nguồn2](evidence/report127-freshness/README.md), [nguồn3](PROTOCOL.md#current-tcp-replay), [nguồn4](evidence/rejoin-battle-cycles/README.md) |
 | gate | K5: open | [nguồn1](PLAN.md#gates) |
 
 <a id="kr-f010"></a>
@@ -901,7 +901,7 @@ Khoảng trống (trích bảng RESEARCH): 175/outcome do policy chọn;21/sub34
 
 Phép kiểm tối thiểu (trích cùng nguồn): Đối chiếu deathstate hai view trước175, cursor/full blob và180/reset trong cùng service run; không coi rank thay state.
 
-Bằng chứng/build/hash/recipe: [round-finish](evidence/round-finish/README.md), [probe-service](evidence/probe-service/README.md).
+Bằng chứng/build/hash/recipe: [round-finish](evidence/round-finish/README.md), [probe-service](evidence/probe-service/README.md), [rejoin-battle-cycles](evidence/rejoin-battle-cycles/README.md).
 
 | Chiều chứng minh | Khai báo | Nguồn/phạm vi áp dụng |
 |---|---|---|
@@ -909,12 +909,12 @@ Bằng chứng/build/hash/recipe: [round-finish](evidence/round-finish/README.md
 | vn_reference | both | [nguồn1](REFERENCES.md) |
 | kr_static | partial | [nguồn1](PROTOCOL.md#round-finish) |
 | emulation | checked | [nguồn1](evidence/round-finish/README.md) |
-| wine_diagnostic_copy | observed | [nguồn1](evidence/round-finish/README.md) |
+| wine_diagnostic_copy | observed | [nguồn1](evidence/round-finish/README.md), [nguồn2](evidence/rejoin-battle-cycles/README.md) |
 | windows_original | unknown | Chưa có bằng chứng trong phạm vi rà |
 | lan | unknown | Chưa có bằng chứng trong phạm vi rà |
 | internet | unknown | Chưa có bằng chứng trong phạm vi rà |
 | implementation | partial / via_pr | [nguồn1](../server/probe_service.py), [nguồn2](PROTOCOL.md#probe-service), [nguồn3](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/57) |
-| integration | partial | [nguồn1](evidence/probe-service/README.md) |
+| integration | partial | [nguồn1](evidence/probe-service/README.md), [nguồn2](evidence/rejoin-battle-cycles/README.md) |
 | gate | K5: open | [nguồn1](PLAN.md#gates) |
 
 <a id="kr-x002"></a>
@@ -924,11 +924,11 @@ Dependency: [KR-X001](#kr-x001), [KR-F003](#kr-f003), [KR-F006](#kr-f006).
 
 [Contract và giới hạn](PROTOCOL.md#round-generation) · [Câu hỏi gốc](RESEARCH.md#gap-round-reset) · [Thứ tự ở PLAN](PLAN.md#current-order).
 
-Khoảng trống (trích bảng RESEARCH): Reset field đã đo không toànentity/seq/queue/túi; [CP075](PROTOCOL.md#current-tcp-replay) old118/124/17,19 quaTCP bị loại/currentR2effects, firstresultreturn/secondresult thiếu dobudget.
+Khoảng trống (trích bảng RESEARCH): [CP078](PROTOCOL.md#rejoin-battle-cycles) R1return/newroomcurrentseq nhưng oldplayer marker còn/585không106, noReady95/secondStart/key.
 
-Phép kiểm tối thiểu (trích cùng nguồn): Không lặp selectedoldbody; forgedcurrentkey/roster lifetime/fullreset/guardintegration đủhairesult còn mở; chỉ tiếp khi ca mới cótrigger, không giảm policydelay đểpass.
+Phép kiểm tối thiểu (trích cùng nguồn): Next585/Readyguard/phasesourcefirst, causalunknown. Fullreset/entities/queue/roster/forgedcurrentkey vẫn mở; CP075guardtworesultpartial riêng. Không gọi mộtresultreturn là2cycles.
 
-Bằng chứng/build/hash/recipe: [round-generation](evidence/round-generation/README.md), [probe-service](evidence/probe-service/README.md), [current-pair-round](evidence/current-pair-round/README.md), [current-pickup-race](evidence/current-pickup-race/README.md), [report127-freshness](evidence/report127-freshness/README.md), [distinct-spawn](evidence/distinct-spawn/README.md), [distinct-spawn-race](evidence/distinct-spawn-race/README.md), [c2s118-admission](evidence/c2s118-admission/README.md), [current-hidden-items](evidence/current-hidden-items/README.md), [basic-battle](evidence/basic-battle/README.md), [current-tcp-replay](evidence/current-tcp-replay/README.md).
+Bằng chứng/build/hash/recipe: [round-generation](evidence/round-generation/README.md), [probe-service](evidence/probe-service/README.md), [current-pair-round](evidence/current-pair-round/README.md), [current-pickup-race](evidence/current-pickup-race/README.md), [report127-freshness](evidence/report127-freshness/README.md), [distinct-spawn](evidence/distinct-spawn/README.md), [distinct-spawn-race](evidence/distinct-spawn-race/README.md), [c2s118-admission](evidence/c2s118-admission/README.md), [current-hidden-items](evidence/current-hidden-items/README.md), [basic-battle](evidence/basic-battle/README.md), [current-tcp-replay](evidence/current-tcp-replay/README.md), [rejoin-battle-cycles](evidence/rejoin-battle-cycles/README.md).
 
 | Chiều chứng minh | Khai báo | Nguồn/phạm vi áp dụng |
 |---|---|---|
@@ -936,12 +936,12 @@ Bằng chứng/build/hash/recipe: [round-generation](evidence/round-generation/R
 | vn_reference | both | [nguồn1](REFERENCES.md) |
 | kr_static | partial | [nguồn1](PROTOCOL.md#round-generation) |
 | emulation | checked | [nguồn1](evidence/round-generation/README.md) |
-| wine_diagnostic_copy | observed | [nguồn1](evidence/round-generation/README.md), [nguồn2](evidence/current-pair-round/README.md), [nguồn3](evidence/current-pickup-race/README.md), [nguồn4](evidence/report127-freshness/README.md), [nguồn5](evidence/distinct-spawn/README.md), [nguồn6](evidence/distinct-spawn-race/README.md), [nguồn7](evidence/c2s118-admission/README.md), [nguồn8](evidence/current-hidden-items/README.md), [nguồn9](evidence/basic-battle/README.md) |
+| wine_diagnostic_copy | observed | [nguồn1](evidence/round-generation/README.md), [nguồn2](evidence/current-pair-round/README.md), [nguồn3](evidence/current-pickup-race/README.md), [nguồn4](evidence/report127-freshness/README.md), [nguồn5](evidence/distinct-spawn/README.md), [nguồn6](evidence/distinct-spawn-race/README.md), [nguồn7](evidence/c2s118-admission/README.md), [nguồn8](evidence/current-hidden-items/README.md), [nguồn9](evidence/basic-battle/README.md), [nguồn10](evidence/rejoin-battle-cycles/README.md) |
 | windows_original | unknown | Chưa có bằng chứng trong phạm vi rà |
 | lan | unknown | Chưa có bằng chứng trong phạm vi rà |
 | internet | unknown | Chưa có bằng chứng trong phạm vi rà |
 | implementation | partial / via_pr | [nguồn1](../server/probe_service.py), [nguồn2](PROTOCOL.md#probe-service), [nguồn3](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/57), [nguồn4](PROTOCOL.md#report127-freshness), [nguồn5](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/87), [nguồn6](PROTOCOL.md#distinct-spawn), [nguồn7](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/91), [nguồn8](PROTOCOL.md#c2s118-admission), [nguồn9](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/95), [nguồn10](PROTOCOL.md#current-hidden-items), [nguồn11](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/97), [nguồn12](PROTOCOL.md#basic-battle), [nguồn13](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/99) |
-| integration | partial | [nguồn1](evidence/probe-service/README.md), [nguồn2](evidence/current-pair-round/README.md), [nguồn3](evidence/current-pickup-race/README.md), [nguồn4](evidence/report127-freshness/README.md), [nguồn5](evidence/distinct-spawn/README.md), [nguồn6](evidence/distinct-spawn-race/README.md), [nguồn7](evidence/c2s118-admission/README.md), [nguồn8](evidence/current-hidden-items/README.md), [nguồn9](evidence/basic-battle/README.md), [nguồn10](PROTOCOL.md#current-tcp-replay) |
+| integration | partial | [nguồn1](evidence/probe-service/README.md), [nguồn2](evidence/current-pair-round/README.md), [nguồn3](evidence/current-pickup-race/README.md), [nguồn4](evidence/report127-freshness/README.md), [nguồn5](evidence/distinct-spawn/README.md), [nguồn6](evidence/distinct-spawn-race/README.md), [nguồn7](evidence/c2s118-admission/README.md), [nguồn8](evidence/current-hidden-items/README.md), [nguồn9](evidence/basic-battle/README.md), [nguồn10](PROTOCOL.md#current-tcp-replay), [nguồn11](evidence/rejoin-battle-cycles/README.md) |
 | gate | K6: open | [nguồn1](PLAN.md#gates) |
 
 <a id="kr-x003"></a>
@@ -978,11 +978,11 @@ Dependency: [KR-B003](#kr-b003), [KR-R003](#kr-r003), [KR-X002](#kr-x002).
 
 [Contract và giới hạn](PROTOCOL.md#probe-service) · [Câu hỏi gốc](RESEARCH.md#gap-diagnostic-service) · [Thứ tự ở PLAN](PLAN.md#current-order).
 
-Khoảng trống (trích bảng RESEARCH): CP075selectedTCPguard/currenteffects, CP076emptyroomBackcreate và [CP077](PROTOCOL.md#guest-back-rejoin) guestrejoin/ReadyStartclock cóintegration;83service tests.
+Khoảng trống (trích bảng RESEARCH): [CP078](PROTOCOL.md#rejoin-battle-cycles) firstR1sau rejoinconfirmedhẹp; two-cyclepartial. Followup100sJoinobserver dừng1,507s sau99/trước153, khôngnativefailureproof.
 
-Phép kiểm tối thiểu (trích cùng nguồn): TheoPLAN cùng-run Battle sau rejoin/key/reset/resultreturn; fullauthority/auth/validator/codec/K6a chưađủ, CP075tworesultpartial giữ. Không quét lại auth/cache/writer/consumer/clock.
+Phép kiểm tối thiểu (trích cùng nguồn): TheoPLAN trace585/106/Ready2; plannedtwo-cycleassertfail/firstpartial/helperwrongDISPLAY giữ. Currentfullauth/authority/codec/validator/reset/K6a mở, không reusepercent hoặc lặpwholeclient.
 
-Bằng chứng/build/hash/recipe: [probe-service](evidence/probe-service/README.md), [stale124](evidence/stale124/README.md), [service-eof](evidence/service-eof/README.md), [service-replacement](evidence/service-replacement/README.md), [setup-eof](evidence/setup-eof/README.md), [host-setup](evidence/host-setup/README.md), [prestart-replacement](evidence/prestart-replacement/README.md), [pickup-state](evidence/pickup-state/README.md), [current-profile-c](evidence/current-profile-c/README.md), [current-pair-round](evidence/current-pair-round/README.md), [current-pickup-race](evidence/current-pickup-race/README.md), [report127-freshness](evidence/report127-freshness/README.md), [mixed-owner-chain](evidence/mixed-owner-chain/README.md), [distinct-spawn](evidence/distinct-spawn/README.md), [distinct-spawn-race](evidence/distinct-spawn-race/README.md), [c2s118-admission](evidence/c2s118-admission/README.md), [current-hidden-items](evidence/current-hidden-items/README.md), [basic-battle](evidence/basic-battle/README.md), [current-udp-causality](evidence/current-udp-causality/README.md), [mixed-owner-power](evidence/mixed-owner-power/README.md), [preclock-eof](evidence/preclock-eof/README.md), [nmco-locale-stability](evidence/nmco-locale-stability/README.md), [preclock-cleanup](evidence/preclock-cleanup/README.md), [current-tcp-replay](evidence/current-tcp-replay/README.md), [back86-membership](evidence/back86-membership/README.md), [guest-back-rejoin](evidence/guest-back-rejoin/README.md).
+Bằng chứng/build/hash/recipe: [probe-service](evidence/probe-service/README.md), [stale124](evidence/stale124/README.md), [service-eof](evidence/service-eof/README.md), [service-replacement](evidence/service-replacement/README.md), [setup-eof](evidence/setup-eof/README.md), [host-setup](evidence/host-setup/README.md), [prestart-replacement](evidence/prestart-replacement/README.md), [pickup-state](evidence/pickup-state/README.md), [current-profile-c](evidence/current-profile-c/README.md), [current-pair-round](evidence/current-pair-round/README.md), [current-pickup-race](evidence/current-pickup-race/README.md), [report127-freshness](evidence/report127-freshness/README.md), [mixed-owner-chain](evidence/mixed-owner-chain/README.md), [distinct-spawn](evidence/distinct-spawn/README.md), [distinct-spawn-race](evidence/distinct-spawn-race/README.md), [c2s118-admission](evidence/c2s118-admission/README.md), [current-hidden-items](evidence/current-hidden-items/README.md), [basic-battle](evidence/basic-battle/README.md), [current-udp-causality](evidence/current-udp-causality/README.md), [mixed-owner-power](evidence/mixed-owner-power/README.md), [preclock-eof](evidence/preclock-eof/README.md), [nmco-locale-stability](evidence/nmco-locale-stability/README.md), [preclock-cleanup](evidence/preclock-cleanup/README.md), [current-tcp-replay](evidence/current-tcp-replay/README.md), [back86-membership](evidence/back86-membership/README.md), [guest-back-rejoin](evidence/guest-back-rejoin/README.md), [rejoin-battle-cycles](evidence/rejoin-battle-cycles/README.md).
 
 | Chiều chứng minh | Khai báo | Nguồn/phạm vi áp dụng |
 |---|---|---|
@@ -990,12 +990,12 @@ Bằng chứng/build/hash/recipe: [probe-service](evidence/probe-service/README.
 | vn_reference | both | [nguồn1](REFERENCES.md) |
 | kr_static | unknown | Chưa có bằng chứng trong phạm vi rà |
 | emulation | unknown | Chưa có bằng chứng trong phạm vi rà |
-| wine_diagnostic_copy | observed | [nguồn1](evidence/probe-service/README.md), [nguồn2](evidence/stale124/README.md), [nguồn3](evidence/service-eof/README.md), [nguồn4](evidence/service-replacement/README.md), [nguồn5](evidence/setup-eof/README.md), [nguồn6](evidence/host-setup/README.md), [nguồn7](evidence/prestart-replacement/README.md), [nguồn8](evidence/pickup-state/README.md), [nguồn9](evidence/current-profile-c/README.md), [nguồn10](evidence/current-pair-round/README.md), [nguồn11](evidence/current-pickup-race/README.md), [nguồn12](evidence/report127-freshness/README.md), [nguồn13](evidence/mixed-owner-chain/README.md), [nguồn14](evidence/distinct-spawn/README.md), [nguồn15](evidence/distinct-spawn-race/README.md), [nguồn16](evidence/c2s118-admission/README.md), [nguồn17](evidence/current-hidden-items/README.md), [nguồn18](evidence/basic-battle/README.md), [nguồn19](evidence/current-udp-causality/README.md), [nguồn20](evidence/mixed-owner-power/README.md), [nguồn21](evidence/preclock-eof/README.md), [nguồn22](evidence/nmco-locale-stability/README.md), [nguồn23](evidence/preclock-cleanup/README.md), [nguồn24](evidence/back86-membership/README.md), [nguồn25](evidence/guest-back-rejoin/README.md) |
+| wine_diagnostic_copy | observed | [nguồn1](evidence/probe-service/README.md), [nguồn2](evidence/stale124/README.md), [nguồn3](evidence/service-eof/README.md), [nguồn4](evidence/service-replacement/README.md), [nguồn5](evidence/setup-eof/README.md), [nguồn6](evidence/host-setup/README.md), [nguồn7](evidence/prestart-replacement/README.md), [nguồn8](evidence/pickup-state/README.md), [nguồn9](evidence/current-profile-c/README.md), [nguồn10](evidence/current-pair-round/README.md), [nguồn11](evidence/current-pickup-race/README.md), [nguồn12](evidence/report127-freshness/README.md), [nguồn13](evidence/mixed-owner-chain/README.md), [nguồn14](evidence/distinct-spawn/README.md), [nguồn15](evidence/distinct-spawn-race/README.md), [nguồn16](evidence/c2s118-admission/README.md), [nguồn17](evidence/current-hidden-items/README.md), [nguồn18](evidence/basic-battle/README.md), [nguồn19](evidence/current-udp-causality/README.md), [nguồn20](evidence/mixed-owner-power/README.md), [nguồn21](evidence/preclock-eof/README.md), [nguồn22](evidence/nmco-locale-stability/README.md), [nguồn23](evidence/preclock-cleanup/README.md), [nguồn24](evidence/back86-membership/README.md), [nguồn25](evidence/guest-back-rejoin/README.md), [nguồn26](evidence/rejoin-battle-cycles/README.md) |
 | windows_original | unknown | Chưa có bằng chứng trong phạm vi rà |
 | lan | unknown | Chưa có bằng chứng trong phạm vi rà |
 | internet | unknown | Chưa có bằng chứng trong phạm vi rà |
 | implementation | partial / via_pr | [nguồn1](../server/probe_service.py), [nguồn2](PROTOCOL.md#service-eof), [nguồn3](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/61), [nguồn4](PROTOCOL.md#service-replacement), [nguồn5](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/63), [nguồn6](PROTOCOL.md#setup-eof), [nguồn7](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/65), [nguồn8](PROTOCOL.md#host-setup), [nguồn9](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/67), [nguồn10](PROTOCOL.md#prestart-replacement), [nguồn11](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/69), [nguồn12](PROTOCOL.md#pickup-report-state), [nguồn13](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/73), [nguồn14](PROTOCOL.md#report127-freshness), [nguồn15](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/87), [nguồn16](PROTOCOL.md#distinct-spawn), [nguồn17](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/91), [nguồn18](PROTOCOL.md#c2s118-admission), [nguồn19](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/95), [nguồn20](PROTOCOL.md#current-hidden-items), [nguồn21](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/97), [nguồn22](PROTOCOL.md#basic-battle), [nguồn23](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/99), [nguồn24](PROTOCOL.md#back86-membership), [nguồn25](../server/test_room_reentry.py), [nguồn26](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/113), [nguồn27](PROTOCOL.md#guest-back-rejoin), [nguồn28](../server/test_guest_rejoin.py), [nguồn29](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/115) |
-| integration | partial | [nguồn1](evidence/service-eof/README.md), [nguồn2](evidence/service-replacement/README.md), [nguồn3](evidence/setup-eof/README.md), [nguồn4](evidence/host-setup/README.md), [nguồn5](evidence/prestart-replacement/README.md), [nguồn6](evidence/pickup-state/README.md), [nguồn7](evidence/current-profile-c/README.md), [nguồn8](evidence/current-pair-round/README.md), [nguồn9](evidence/current-pickup-race/README.md), [nguồn10](evidence/report127-freshness/README.md), [nguồn11](evidence/mixed-owner-chain/README.md), [nguồn12](evidence/distinct-spawn/README.md), [nguồn13](evidence/distinct-spawn-race/README.md), [nguồn14](evidence/c2s118-admission/README.md), [nguồn15](evidence/current-hidden-items/README.md), [nguồn16](evidence/basic-battle/README.md), [nguồn17](evidence/current-udp-causality/README.md), [nguồn18](evidence/mixed-owner-power/README.md), [nguồn19](evidence/preclock-eof/README.md), [nguồn20](evidence/nmco-locale-stability/README.md), [nguồn21](evidence/preclock-cleanup/README.md), [nguồn22](PROTOCOL.md#current-tcp-replay), [nguồn23](evidence/back86-membership/README.md), [nguồn24](evidence/guest-back-rejoin/README.md) |
+| integration | partial | [nguồn1](evidence/service-eof/README.md), [nguồn2](evidence/service-replacement/README.md), [nguồn3](evidence/setup-eof/README.md), [nguồn4](evidence/host-setup/README.md), [nguồn5](evidence/prestart-replacement/README.md), [nguồn6](evidence/pickup-state/README.md), [nguồn7](evidence/current-profile-c/README.md), [nguồn8](evidence/current-pair-round/README.md), [nguồn9](evidence/current-pickup-race/README.md), [nguồn10](evidence/report127-freshness/README.md), [nguồn11](evidence/mixed-owner-chain/README.md), [nguồn12](evidence/distinct-spawn/README.md), [nguồn13](evidence/distinct-spawn-race/README.md), [nguồn14](evidence/c2s118-admission/README.md), [nguồn15](evidence/current-hidden-items/README.md), [nguồn16](evidence/basic-battle/README.md), [nguồn17](evidence/current-udp-causality/README.md), [nguồn18](evidence/mixed-owner-power/README.md), [nguồn19](evidence/preclock-eof/README.md), [nguồn20](evidence/nmco-locale-stability/README.md), [nguồn21](evidence/preclock-cleanup/README.md), [nguồn22](PROTOCOL.md#current-tcp-replay), [nguồn23](evidence/back86-membership/README.md), [nguồn24](evidence/guest-back-rejoin/README.md), [nguồn25](evidence/rejoin-battle-cycles/README.md) |
 | gate | K6: open | [nguồn1](PLAN.md#gates) |
 
 <a id="kr-s002"></a>

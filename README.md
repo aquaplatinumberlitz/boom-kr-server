@@ -29,13 +29,13 @@ runtime nào có nguồn, còn thiếu gì và phép kiểm nào giải quyết.
 evidence/hash và câu hỏi; [PLAN](docs/PLAN.md#current-order) giữ duy nhất thứ tự công việc.
 Đây là scope đường bootstrap → login → sảnh → phòng → Battle → kết quả/reset, không kiểm kê toàn client.
 
-CP077: guest Back/vào lại khi host còn phòng đã đồng bộ xóa/khôi phục slot; Ready/Start đưa cảhai tới clock.
-[Contract/giới hạn](docs/PROTOCOL.md#guest-back-rejoin), [control/fix/hash](docs/evidence/guest-back-rejoin/README.md).
-CùngTCP/ID/slot/sequence; mới mộtStart/clock sau rejoin, chưa fullmatch/hairesultreturn/K6a/LAN/Internet.
-Tiếp Battle cùngrun sau rejoin theo route đã biết; CP075 hai-cycle guardintegration vẫn partial.
+CP078: guest rời/vào lại rồi hoàn tất **một vòng thử** bom/item → trạng thái chết đồng bộ → kết quả/về phòng cùngrun.
+[Contract/giới hạn](docs/PROTOCOL.md#rejoin-battle-cycles), [raw/hash và plannedpartial](docs/evidence/rejoin-battle-cycles/README.md).
+Vòng2 chưa cóReady95; thấy585 saureturn chưa được106trả mới, quan hệcausal cònunknown. Tiếp trace585/Ready.
+Chưa fullmatch/K6a/LAN/Internet/toànvalidator/reset; không nâng hai-cycle từboundedpass.
 
-CP076 đã merge [PR113](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/113) tại `e791e96`.
-CP077 tự kiểm/tích hợp theo [PR115](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/115); review độc lập [waived](docs/evidence/checkpoints/review-waiver.json).
+CP077 đã merge [PR115](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/115) tại `a3ca2ab`.
+CP078 tự kiểm/tích hợp theo [PR117](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/117); review độc lập [waived](docs/evidence/checkpoints/review-waiver.json).
 Audit **AUD023/CP076**, periodic kế **CP080**.
 [Yêu cầu chủ dự án](docs/evidence/owner-directives/continuous-work.json): tiếp tục ngay việc kế trong
 PLAN sau mỗi checkpoint/commit/PR, không tự dừng/chờ nhắc.

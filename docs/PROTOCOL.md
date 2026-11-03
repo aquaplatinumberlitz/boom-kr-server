@@ -1,6 +1,6 @@
 # KR 00967 — contract tương thích client gốc
 
-Revision kr-legacy-contract-r1; cập nhật03/11/2026 JST (CP077).
+Revision kr-legacy-contract-r1; cập nhật03/11/2026 JST (CP078).
 **Contract có bằng chứng từng phần; chưa nghiệm thu full codec K2**.
 Lộ trình và thứ tự task chỉ giữ ở [REWRITE_PLAN — KRE](PLAN.md).
 Đây là contract của repo server KR. ADR0009 của bản viết lại là nguồn lịch sử để so sánh;
@@ -1958,7 +1958,7 @@ liệt kê và phân biệt với nguyên bản trong mọi demo.
 <a id="authority"></a>
 ### Authority matrix hiện hành và gate review
 
-Bảng này tổng hợp bằng chứng từng phần đến CP077; chưa phải toàn contract server gốc. Mỗi hàng khi
+Bảng này tổng hợp bằng chứng từng phần đến CP078; chưa phải toàn contract server gốc. Mỗi hàng khi
 triển khai phải bổ sung riêng **creator, simulator, validator, broadcaster, peer-editable state**, với
 locator/trace và trạng thái từng ô; những vai trò không nêu dưới đây hiện `unknown` cho KR.
 
@@ -2790,3 +2790,23 @@ ActualB95/StartA104 sau rejoin→121129/errors0/99/197196153/clock1 cảhai, ros
 Chưa hostleavecònpeer/activeleave/accountresume/generalroom/fullauth/fullcodec/fullvalidator/
 fullreset/vanilla/K4/K5/K6a/fullmatch/LANInternet. [Bước tiếp](PLAN.md#current-order) là Battle cùngrun
 sau rejoin theo route đã biết, không RE lại body/writer/consumer.
+
+<a id="rejoin-battle-cycles"></a>
+### Battle sau guest rejoin: một vòng confirmed, hai vòng partial — CP078
+
+[Raw/control/observer/helpercorrection/hash](evidence/rejoin-battle-cycles/README.md),
+**kr_runtime/confirmed hẹp** cho firstR1, acceptancehai vòng **unknown/partial**. ReuseCP077rejoin và
+CP069basicUIroute, productionservice/profile giữ; không nativebody/patch/forcing/semanticreplay mới.
+Firstsame-runBBack/82/87/585/roster→Ready95/Start104/clock→actual17Roller/27Bomb+2bomID1,2/power1,
+paired165/statbothviews→17/19/B170/stateA1trước175full302→180full3/refresh. NoFire28/hiddenpointerjoin.
+Saurefresh actualA585seq346/B585seq304(u32body0), oldplayer_response_sent khiếnservicekhông106mới;
+khôngactualB95/A104, chưa chứng minh thiếu106 làcause. NativeownchiefA1/B0/110error0 đã thấy.
+
+Followup intendedfocus/renderReady2 chưa được đo: controllerobserver100s từJoin dừng1,5065s sau
+actual99cảhai, trướcminimum1971961532s, khôngnativeclock; noerror/EOF saucontrolledstop. Không gọi
+là153bịreject/clientfailure. RawUIhelperB-labeledDISPLAY0image thực tếAhost (Winebootenvpicked),
+loại khỏiBproof; giữfailedhelper/setup/correction. Không suy request từOSclick hoặc ownership từpath.
+Plannedtwo-cycleassertfail giữ, boundedfirstpass không thay. Nativeframer/getter/heap làmodels, callback/
+state thực cónguồn riêng. Chưa hairesultreturn/fullreset/fullmatch/K5/K6a/vanilla/LANInternet/auth/
+codec/validator/hostlivepeer/activeleave/accountresume. [PLAN](PLAN.md#current-order) target585/Ready,
+không lặp nguyênlongrun hoặc tănghold mà thiếu observable. Service/rankpolicy không sửa trongCP078.
