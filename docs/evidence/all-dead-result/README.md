@@ -3,7 +3,7 @@
 KRE-046/[issue126](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/126), baseline
 CP082/[PR125](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/125)
 `c38a4cbc2be7f8cf57910903b34378241a5e85a7`. Codex tự kiểm;
-[review waived](../checkpoints/review-waiver.json), chờ PR. Không tự đóng gate.
+[review waived](../checkpoints/review-waiver.json), tích hợp [PR127](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/127) tại `7509747`. Không tự đóng gate.
 Contract/limits chỉ ở [PROTOCOL](../../PROTOCOL.md#all-dead-result), gap ở
 [RESEARCH](../../RESEARCH.md#gap-result-return), thứ tự ở [PLAN](../../PLAN.md#current-order).
 

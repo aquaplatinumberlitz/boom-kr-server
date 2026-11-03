@@ -54,7 +54,7 @@ synthetic118/replay. Model heap/getter/framer khác native callback runtime; fus
 
 Chưa ba bom/vật cản/adjacent1cell/allchain/authority/reset/two-owner hai chu kỳ/fullmatch/K5/K6a/
 vanilla/LAN/Internet. Catalog/docs/artifacts/localhistory/diff kiểm; reuse83server/18checkpointtests
-CP077 vì code không đổi. AUD024 qua080, audit kế084. Tiếp PLAN: ghép route hai owner đã đo với
-hai result/return/reset cùng run và hover-prepared Ready/Start CP080; không tìm lại input/codec.
+CP077 vì code không đổi. AUD024 qua080, audit kế084 là lịch tại CP081. Bước ghép hai chu kỳ khi đó
+đã được CP082 dưới đây đo; thứ tự hiện hành chỉ PLAN, không tìm lại input/codec.
 
 [CP082](../mixed-cycles/README.md) ghép hai owner/chain qua hai chu kỳ native/resultreset; controls/bothdead/geometry corrections riêng. Thứ tự hiện hành chỉ PLAN.
