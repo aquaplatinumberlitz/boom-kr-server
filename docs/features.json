@@ -1,7 +1,7 @@
 {
   "schema": "kre-feature-index-v1",
   "build": "KR00967",
-  "as_of": "2026-11-03 JST / CP077 guestBack/rejoin/nativeReadyStartclock; selfcheck branchpending; AUD023/nextCP080",
+  "as_of": "2026-11-03 JST / CP077 guestBack/rejoin/nativeReadyStartclock; selfcheck PR115; AUD023/nextCP080",
   "sources": {
     "plan": "docs/PLAN.md",
     "contract": "docs/PROTOCOL.md",
@@ -985,7 +985,7 @@
         },
         "implementation": {
           "state": "partial",
-          "delivery": "branch_pending",
+          "delivery": "via_pr",
           "refs": [
             "server/probe_service.py",
             "docs/PROTOCOL.md#service-eof",
@@ -1002,7 +1002,8 @@
             "server/test_room_reentry.py",
             "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/113",
             "docs/PROTOCOL.md#guest-back-rejoin",
-            "server/test_guest_rejoin.py"
+            "server/test_guest_rejoin.py",
+            "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/115"
           ]
         },
         "integration": {
@@ -2657,7 +2658,7 @@
         },
         "implementation": {
           "state": "partial",
-          "delivery": "branch_pending",
+          "delivery": "via_pr",
           "refs": [
             "server/probe_service.py",
             "docs/PROTOCOL.md#service-eof",
@@ -2674,7 +2675,8 @@
             "server/test_room_reentry.py",
             "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/113",
             "docs/PROTOCOL.md#guest-back-rejoin",
-            "server/test_guest_rejoin.py"
+            "server/test_guest_rejoin.py",
+            "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/115"
           ]
         },
         "integration": {
@@ -2811,7 +2813,7 @@
         },
         "implementation": {
           "state": "partial",
-          "delivery": "branch_pending",
+          "delivery": "via_pr",
           "refs": [
             "server/probe_service.py",
             "docs/PROTOCOL.md#service-eof",
@@ -2840,7 +2842,8 @@
             "server/test_room_reentry.py",
             "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/113",
             "docs/PROTOCOL.md#guest-back-rejoin",
-            "server/test_guest_rejoin.py"
+            "server/test_guest_rejoin.py",
+            "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/115"
           ]
         },
         "integration": {

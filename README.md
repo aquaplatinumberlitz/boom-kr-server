@@ -35,7 +35,7 @@ CùngTCP/ID/slot/sequence; mới mộtStart/clock sau rejoin, chưa fullmatch/ha
 Tiếp Battle cùngrun sau rejoin theo route đã biết; CP075 hai-cycle guardintegration vẫn partial.
 
 CP076 đã merge [PR113](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/113) tại `e791e96`.
-CP077 tự kiểm/chờ PR; review độc lập [waived](docs/evidence/checkpoints/review-waiver.json).
+CP077 tự kiểm/tích hợp theo [PR115](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/115); review độc lập [waived](docs/evidence/checkpoints/review-waiver.json).
 Audit **AUD023/CP076**, periodic kế **CP080**.
 [Yêu cầu chủ dự án](docs/evidence/owner-directives/continuous-work.json): tiếp tục ngay việc kế trong
 PLAN sau mỗi checkpoint/commit/PR, không tự dừng/chờ nhắc.
