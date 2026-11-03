@@ -1,6 +1,6 @@
 # KR 00967 — contract tương thích client gốc
 
-Revision kr-legacy-contract-r1; cập nhật03/11/2026 JST (CP078).
+Revision kr-legacy-contract-r1; cập nhật03/11/2026 JST (CP079).
 **Contract có bằng chứng từng phần; chưa nghiệm thu full codec K2**.
 Lộ trình và thứ tự task chỉ giữ ở [REWRITE_PLAN — KRE](PLAN.md).
 Đây là contract của repo server KR. ADR0009 của bản viết lại là nguồn lịch sử để so sánh;
@@ -1958,7 +1958,7 @@ liệt kê và phân biệt với nguyên bản trong mọi demo.
 <a id="authority"></a>
 ### Authority matrix hiện hành và gate review
 
-Bảng này tổng hợp bằng chứng từng phần đến CP078; chưa phải toàn contract server gốc. Mỗi hàng khi
+Bảng này tổng hợp bằng chứng từng phần đến CP079; chưa phải toàn contract server gốc. Mỗi hàng khi
 triển khai phải bổ sung riêng **creator, simulator, validator, broadcaster, peer-editable state**, với
 locator/trace và trạng thái từng ô; những vai trò không nêu dưới đây hiện `unknown` cho KR.
 
@@ -2810,3 +2810,23 @@ Plannedtwo-cycleassertfail giữ, boundedfirstpass không thay. Nativeframer/get
 state thực cónguồn riêng. Chưa hairesultreturn/fullreset/fullmatch/K5/K6a/vanilla/LANInternet/auth/
 codec/validator/hostlivepeer/activeleave/accountresume. [PLAN](PLAN.md#current-order) target585/Ready,
 không lặp nguyênlongrun hoặc tănghold mà thiếu observable. Service/rankpolicy không sửa trongCP078.
+
+<a id="return585-ready"></a>
+### 585 sau return và Ready2 — CP079
+
+[Counterexample/cache/native/rawinterruption/hash](evidence/return585-ready/README.md).
+**kr_runtime/confirmed hẹp:** CP069 hai vòng cóactualB95/A104 dùkhông106mới sau585. Thiếu106
+khôngnecessarycause trongmeasuredprofile; không thêmwrapper106/persistentfix chỉvìCP078 có585.
+CP078Readyclick trướcactual585 khácCP069, timingcause vẫncandidate. ReuseknownReadyguardcached.
+
+Run mới chỉlog/native snapshottrướcgiánđoạn: oneR1/rejoin/effects/resultreturn, nativeReadyentryđầu
+pending0/local1/count1/host0/build1; sau180enablearg1/pending0,ảnhBReadyUI đúngprofile nhưngkhông
+Readyentry2/noactualB95/A104. Đây làcandidateblocker trướccallback, chưa làReadyguardrejectproof.
+Toolshellsessionexit143 trước ghi originalrun.json, causeunknown; finalactionreturncode/roleenv/phase/
+isolationPIDmanifestunknown. Niêmphongraw/service-statelast riêng, khôngdựngrun.jsongốc hoặc gọi
+laststate.errors[] làfinalerrorfree. Sourcecode/profile/fixture/binarygiữ, nofunctionforcing/replay/newpatch.
+
+Counterexample cóhash/finalrun gốc; tracegiánđoạn cóscope riêng, không nângnativeproof/model/gate.
+[PLAN](PLAN.md#current-order) đoWndProc/inputfilter/button→Ready vớiprogressmetadata lưu ngay,
+khôngặp550s/vòng2chờvôhạn/đổireplythiếubằngchứng. Fullmatch/2cycles/currentreset/gates/LAN/
+Internet/vanilla/fullauth/codec/validator/membershipvariant giữmở.

@@ -1,7 +1,7 @@
 {
   "schema": "kre-feature-index-v1",
   "build": "KR00967",
-  "as_of": "2026-11-03 JST / CP078 rejoin→R1Battle/resultreturn; planned2cyclepartial/585Readygap; selfcheck PR117; AUD023/nextCP080",
+  "as_of": "2026-11-03 JST / CP079 sourcecounterexample/Readytrace interrupted/nofinalrun; selfcheck pending; AUD023/nextCP080",
   "sources": {
     "plan": "docs/PLAN.md",
     "contract": "docs/PROTOCOL.md",
@@ -929,7 +929,8 @@
           "docs/evidence/prestart-replacement/README.md",
           "docs/evidence/back86-membership/README.md",
           "docs/evidence/guest-back-rejoin/README.md",
-          "docs/evidence/rejoin-battle-cycles/README.md"
+          "docs/evidence/rejoin-battle-cycles/README.md",
+          "docs/evidence/return585-ready/README.md"
         ]
       },
       "coverage": {
@@ -969,7 +970,8 @@
               "docs/evidence/prestart-replacement/README.md",
               "docs/evidence/back86-membership/README.md",
               "docs/evidence/guest-back-rejoin/README.md",
-              "docs/evidence/rejoin-battle-cycles/README.md"
+              "docs/evidence/rejoin-battle-cycles/README.md",
+              "docs/evidence/return585-ready/README.md"
             ]
           },
           "windows_original": {
@@ -1018,7 +1020,8 @@
             "docs/evidence/prestart-replacement/README.md",
             "docs/evidence/back86-membership/README.md",
             "docs/evidence/guest-back-rejoin/README.md",
-            "docs/evidence/rejoin-battle-cycles/README.md"
+            "docs/evidence/rejoin-battle-cycles/README.md",
+            "docs/evidence/return585-ready/README.md"
           ]
         },
         "gate": {
@@ -2492,7 +2495,8 @@
           "docs/evidence/current-hidden-items/README.md",
           "docs/evidence/basic-battle/README.md",
           "docs/evidence/current-tcp-replay/README.md",
-          "docs/evidence/rejoin-battle-cycles/README.md"
+          "docs/evidence/rejoin-battle-cycles/README.md",
+          "docs/evidence/return585-ready/README.md"
         ]
       },
       "coverage": {
@@ -2533,7 +2537,8 @@
               "docs/evidence/c2s118-admission/README.md",
               "docs/evidence/current-hidden-items/README.md",
               "docs/evidence/basic-battle/README.md",
-              "docs/evidence/rejoin-battle-cycles/README.md"
+              "docs/evidence/rejoin-battle-cycles/README.md",
+              "docs/evidence/return585-ready/README.md"
             ]
           },
           "windows_original": {
@@ -2581,7 +2586,8 @@
             "docs/evidence/current-hidden-items/README.md",
             "docs/evidence/basic-battle/README.md",
             "docs/PROTOCOL.md#current-tcp-replay",
-            "docs/evidence/rejoin-battle-cycles/README.md"
+            "docs/evidence/rejoin-battle-cycles/README.md",
+            "docs/evidence/return585-ready/README.md"
           ]
         },
         "gate": {
@@ -2767,7 +2773,8 @@
           "docs/evidence/current-tcp-replay/README.md",
           "docs/evidence/back86-membership/README.md",
           "docs/evidence/guest-back-rejoin/README.md",
-          "docs/evidence/rejoin-battle-cycles/README.md"
+          "docs/evidence/rejoin-battle-cycles/README.md",
+          "docs/evidence/return585-ready/README.md"
         ]
       },
       "coverage": {
@@ -2818,7 +2825,8 @@
               "docs/evidence/preclock-cleanup/README.md",
               "docs/evidence/back86-membership/README.md",
               "docs/evidence/guest-back-rejoin/README.md",
-              "docs/evidence/rejoin-battle-cycles/README.md"
+              "docs/evidence/rejoin-battle-cycles/README.md",
+              "docs/evidence/return585-ready/README.md"
             ]
           },
           "windows_original": {
@@ -2896,7 +2904,8 @@
             "docs/PROTOCOL.md#current-tcp-replay",
             "docs/evidence/back86-membership/README.md",
             "docs/evidence/guest-back-rejoin/README.md",
-            "docs/evidence/rejoin-battle-cycles/README.md"
+            "docs/evidence/rejoin-battle-cycles/README.md",
+            "docs/evidence/return585-ready/README.md"
           ]
         },
         "gate": {

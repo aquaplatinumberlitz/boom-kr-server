@@ -66,4 +66,6 @@ Recipe `<label>-recipe.json`, rawseal `<label>-hashes.json`. Firstcontroller _re
 followup _rejoin_battle_render.py;550s budget, rank/return/refreshpolicy không rútngắn. Attempt
 `rejoin-battle` argparsercap360 từchối trướcruntime, giữlog/recipe; privatecap600 đểchophép550,
 label/prefix mới. Phép kiểmplanned/partial và correction đều cóhash trongmanifest. Không overwrite
-raw/label hoặc chạy chồnglease. Bước tiếp chỉ theoPLAN: đọcnguồn585→106/Ready và đo phầnthiếu.
+raw/label hoặc chạy chồnglease. Bước tạiCP078 (lịch sử): đọcnguồn585→106/Ready và đo phầnthiếu.
+
+[CP079counterexample/Readytracegiánđoạn](../return585-ready/README.md) khôngchứngminh cần106mới; CP078cause giữunknown, việc hiện hành chỉPLAN.
