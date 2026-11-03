@@ -2924,3 +2924,43 @@ hiện tại. Không coi policy đó là luật server gốc hoặc có tie supp
 tiếp variant cảhai chết/tie với nativecontract trước khi chọn resultpolicy. Chưa fullmatch/K5/K6a/
 vanilla/LANInternet/fullauth/codec/validator/authority/toànreset/generalmembership/ba bom/vật cản/
 allchain. Models nativeframer/getter/heap chỉ corroborate bytes/fields, khác nativecallbacks/runtime.
+
+
+<a id="all-dead-result"></a>
+### Kết quả cả hai bị loại, rank2/2 — CP083
+
+[Recipe/nguồn/raw/hash](evidence/all-dead-result/README.md), **kr_runtime/confirmed hẹp** trên
+current modified Wine/local service. CP082 đã đo cảhai actual17/19/no21, policy chờ other21 không
+ra rank trong boundedrun. Tái dùng KR CP023/039 raw175/180, header16/row131 và lossrank2/native
+consumers; VN oc_e-game/result chỉ gợi checklist all-dead/result/reset, không cung cấp enum/layout KR.
+
+Candidate raw292 chỉ đổi byte152 của rank175-v2 từ rank1→2; row0 đã rank2, không invent drawenum.
+Native header E3EB20 +16 rawrecord E4ACE0 (allocator/sidelist modeled) đọc đủ292, rankstorage+8 ở
+hai record đều2; nativeframer/actualtyped175 full302 corroborate bytes. Emulation không proof UI/
+manager runtime. Gói175 gửi bằng seq hiện hành mỗi receiver, raw/hash pin riêng; không copy opcode VN.
+
+**Policy design:** chỉ đúng hai live mapped A/B, mỗi vai có accepted subtype19/death_event cùng
+round/role/slot hiện tại; chờ8s sau death cuối rồi finish/all-dead rank2/2. Trong lúc chờ không dùng
+stray21 để chọn winner theo death đầu. Alias optional `rank_all_dead`; profile cũ thiếu alias ghi
+`all_dead_result_unsupported` một lần và giữ pending, không tự suy winner. Return5s/refresh3s và
+single-survivor cần actualother21 giữ như trước. Duplicate death không dời grace; begin vòng mới
+xóa marker; đây vẫn là report-based fixture policy, chưa authority/actor/distance validator đầy đủ.
+Exporter chỉ pin path/size/hash/seq91, kiểm basic175 trước output; không tự chứng nhận semantic.
+
+Final `postparse` run sau guest Back/rejoin: hai keys12345→12346, IDs1..4, actualA3,3/power2 và
+B3,5/power1, mỗi vòng Fire1→2/baseline1, root158 xử lý cảroot+secondary/ownlater khôngduplicate ở
+hai view. Cảhai actual17/19 accepted; state+28=1 của cảhai actor trước175 trong mỗi view, không
+actual21 sau deathcuối→rank. Native175 full302/180full3/roomrefresh hai lần. Trước native180 mỗi
+view đọc manager row0/1 type1/rank2; UI mỗi vòng/cảhai client hiện **LOSE!!** hai hàng; cuối room
+có KRLocal/KRGuest. Đây là representation “cùng bị loại”, không kết luận nguyên bản có tieenum.
+
+**Probe limitation giữ rõ:** first `all-dead` run đủ lifecycle nhưng strictplanned fail vì không có
+marker E3EDBE sau postparse. Repeat chuyển read-only probe tới callback branchjoin E5F7F8 và
+trước existing180; chỉ mẫu **before180** xuất hiện, branchjoin cũng không có mẫu. Không suy hai
+địa chỉ đó đã chạy, không gọi đây là trace đúng nhánh postparse. Native storage trước180 + actual
+blob/UI là proof dương hiện có; nguyên nhân khônghit hai probe vẫnunknown, chỉ trace khi chặn
+integration cần thiết. First failure/raw giữ, không hạ assertion hoặc tự tạo trace để pass.
+
+Chưa fullmatch/K5/K6a/vanilla/LANInternet/fullauth/codec/validator/authority/toànreset/generalmembership/
+ba bom/vật cản/allchain. Thứ tự duy nhất ở [PLAN](PLAN.md#current-order), câu hỏi ở
+[RESEARCH](RESEARCH.md#gap-result-return); CP082 single-survivor và CP083 all-dead không cộng thành gate.

@@ -29,13 +29,13 @@ runtime nào có nguồn, còn thiếu gì và phép kiểm nào giải quyết.
 evidence/hash và câu hỏi; [PLAN](docs/PLAN.md#current-order) giữ duy nhất thứ tự công việc.
 Đây là scope đường bootstrap → login → sảnh → phòng → Battle → kết quả/reset, không kiểm kê toàn client.
 
-CP082: hai client đã qua guest Back/rejoin rồi chạy **hai chu kỳ có bom khác owner kích nổ
-chain, death-state, kết quả và về phòng/reset cùng run**. Key/stat/ID/callback đã kiểm theo phạm vi.
-[Contract/giới hạn](docs/PROTOCOL.md#mixed-cycles), [recipe/raw/hash](docs/evidence/mixed-cycles/README.md).
-Ca cả hai cùng chết còn chặn policy kết quả hiện tại; đây là bước tiếp theo. Chưa fullmatch/K6a/LAN/Internet.
+CP083: hai client trên bản copy Wine đã chạy **hai vòng cùng bị loại → cả hai LOSE → về phòng/reset**
+trong một run sau guest Back/rejoin. Policy kết quả dùng rank2/2 có tên và giới hạn rõ, không cần
+fake report21. [Contract](docs/PROTOCOL.md#all-dead-result), [recipe/hash](docs/evidence/all-dead-result/README.md).
+Tiếp biến thể chain qua vật cản/ba bom theo PLAN. Chưa fullmatch/K6a/LAN/Internet.
 
-CP081 đã merge [PR123](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/123) tại `2b9e7d4`.
-CP082 tự kiểm/[PR125](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/125); review độc lập [waived](docs/evidence/checkpoints/review-waiver.json).
+CP082 đã merge [PR125](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/125) tại `c38a4cb`.
+CP083 tự kiểm/chờ PR; review độc lập [waived](docs/evidence/checkpoints/review-waiver.json).
 Audit **AUD024/CP080**, periodic kế **CP084**.
 [Yêu cầu chủ dự án](docs/evidence/owner-directives/continuous-work.json): tiếp tục ngay việc kế trong
 PLAN sau mỗi checkpoint/commit/PR, không tự dừng/chờ nhắc.

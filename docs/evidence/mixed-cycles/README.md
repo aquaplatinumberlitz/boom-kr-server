@@ -3,7 +3,7 @@
 Baseline CP081/[PR123](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/123),
 merge `2b9e7d4f73e99010f3e291c989185d4e73916461`;
 KRE-045/[issue124](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/124).
-Codex tự kiểm, [review waived](../checkpoints/review-waiver.json), chờ PR.
+Codex tự kiểm, [review waived](../checkpoints/review-waiver.json), đã tích hợp [PR125](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/125).
 Contract duy nhất ở [PROTOCOL](../../PROTOCOL.md#mixed-cycles), gap
 [RESEARCH](../../RESEARCH.md#gap-result-return), thứ tự [PLAN](../../PLAN.md#current-order).
 Raw/source/model/script/recipe/seal: `local/research/codex/mixed-cycles-r1/`.
@@ -62,3 +62,5 @@ controller/service/probe errors; initialcycles SIGINT130 không gọi là run ho
 fullauth/codec/validator/authority/toànreset/generalroom/ba bom/vật cản/allchain. Ca cảhai chết/tie
 chưa có contract/policy result đầy đủ; tiếp đúng blocker này theo PLAN, không lặp knowninput/chain.
 AUD024 quaCP080, periodic kếCP084. Lịch sử CP001–081 và rawpartial không sửa.
+
+CP083 đã tiếp đúng blocker all-dead; [nguồn hiện hành](../all-dead-result/README.md). Mô tả blocker ở trên là lịch sử CP082, không là thứ tự việc hiện tại.

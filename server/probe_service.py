@@ -564,7 +564,7 @@ class ProbeService:
                                                             'generation': self.room.generation, 'key': self.room.key})
             death = next((peer['death_event'] for peer in self.peers() if peer.get('death_event')), None)
             remote_reports = self.state['event_reports']
-            if death and now - death['monotonic_ns'] >= 8 * 10**9 and any(
+            if not self.finish_all_dead(now) and death and now - death['monotonic_ns'] >= 8 * 10**9 and any(
                 row['role'] != death['role'] and row['role'] in {peer['role'] for peer in self.peers()}
                 and row['round'] == self.room.generation and row['subtype'] == 21
                 and not row.get('rejected')
@@ -589,6 +589,49 @@ class ProbeService:
             self.round['refresh'] = {'monotonic_ns': now, 'broadcast': sent}
             for event in self.peers():
                 event.pop('guest_ready_received', None)
+
+    def finish_all_dead(self, now):
+        """Optional A/B fixture policy: both accepted dead, both rank2.
+
+        CP082 observed no report21 when both players died. This is a chosen
+        all-eliminated outcome, not a recovered tie enum or original authority.
+        Return True while this outcome is pending, so a stray report21 cannot
+        choose a winner from the first death during the final settling delay.
+        """
+        peers = self.peers()
+        if len(peers) != 2 or {peer['role'] for peer in peers} != {'A', 'B'}:
+            return False
+        deaths = [peer.get('death_event') for peer in peers]
+        if not all(death and death['round'] == self.room.generation
+                   and death['subtype'] == 19 and death['role'] == peer['role']
+                   and death['slot'] == ROLE_SLOTS[peer['role']]
+                   and not death.get('rejected')
+                   for peer, death in zip(peers, deaths)):
+            return False
+        if 'rank_all_dead' not in self.profile.frames:
+            if not self.round.get('all_dead_unsupported'):
+                self.round['all_dead_unsupported'] = True
+                self.state['policy_events'].append({
+                    'op': 'all_dead_result_unsupported', 'generation': self.room.generation,
+                    'reason': 'profile_missing_rank_all_dead'})
+            return True
+        latest = max(death['monotonic_ns'] for death in deaths)
+        if now - latest < 8 * 10**9:
+            return True
+        # Resolve/validate the optional alias before closing the round. send()
+        # uses its existing current per-connection sequence, not the base key.
+        body = self.profile.body('rank_all_dead')
+        self.room.finish()
+        self.round['rank'] = {
+            'monotonic_ns': now,
+            'policy': 'all_live_AB_accepted_dead_rank2',
+            'death_sequences': {death['role']: death['seq'] for death in deaths},
+            'broadcast': self.broadcast('rank_all_dead',
+                                        f'rank175-all-dead-r{self.room.generation}', body=body)}
+        self.state['policy_events'].append({
+            'op': 'finish_all_dead', 'generation': self.room.generation,
+            'source': 'design', 'ranks': [2, 2], 'latest_death_ns': latest})
+        return True
 
     def tick_setup(self, now):
         for event in self.events:
