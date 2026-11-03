@@ -1,6 +1,6 @@
 # KR 00967 — contract tương thích client gốc
 
-Revision kr-legacy-contract-r1; cập nhật03/11/2026 JST (CP082).
+Revision kr-legacy-contract-r1; cập nhật04/11/2026 JST (CP084).
 **Contract có bằng chứng từng phần; chưa nghiệm thu full codec K2**.
 Lộ trình và thứ tự task chỉ giữ ở [REWRITE_PLAN — KRE](PLAN.md).
 Đây là contract của repo server KR. ADR0009 của bản viết lại là nguồn lịch sử để so sánh;
@@ -1966,11 +1966,11 @@ locator/trace và trạng thái từng ô; những vai trò không nêu dưới 
 |---|---|---|
 | Movement | CP027 hai chiều; CP070 [cut/counter/restore local vs remote](#current-udp-causality) đã đo trên current Wine copy;183 vẫn ghost | Full schema input/update/correction, validator và quyền sửa vị trí của peer |
 | Bomb place/ID | CP027 hai owner/ID chung1..4 tạo trên cả hai client; [phạm vi](#peer-duo); lặp/cũ CP025 | CP041 có [stale158/ID reuse và fence job local](#round-generation), CP043 có [old159/serial reuse](#late-bomb-confirm); CP067 [C2Skey/serialguard](#c2s118-admission) và CP075 [actualTCPselectedreplay](#current-tcp-replay) loại duplicate/oldbody hẹp; allocator/rollover/concurrent/race/toàn generation/authority còn mở |
-| Explode/chain | CP033 một owner; CP064 [power1/cách hai ô](#mixed-owner-chain), CP071 [power2 ngoài tầm/feedback chưa118](#mixed-owner-power) giữ partial lịch sử; CP081 [power2/distance2 mixed-owner](#mixed-input) có native callback proof | Mixed-owner liền kề/ba bom/vật cản/race/generation và authority server gốc còn thiếu |
+| Explode/chain | CP033 một owner; CP064 [power1/cách hai ô](#mixed-owner-chain), CP071 [power2 ngoài tầm/feedback chưa118](#mixed-owner-power) giữ partial lịch sử; CP081 [power2/distance2 mixed-owner](#mixed-input), CP084 [ba bom fork hai vòng](#three-bomb-chain) có native callback proof | Mixed-owner liền kề/vật cản/chain sâu/race/generation và authority server gốc còn thiếu |
 | Block destroy/item reveal | CP032 nativecontract; CP068 [currentservice/list2/reportgate/effect/reset](#current-hidden-items) cảhai view | Drop algorithm/server validator, variants/chain và phép loại transport riêng còn thiếu |
 | Item placement/pickup | CP030 nhặt/tranh index; CP031/032 stat/itemẩn; CP045 [bảng nhóm/Roller/MaxPower hai view/reset](#item-families) | CP042 có [old165/index reuse](#item-generation); runtime tại max, KRspeed→px/s/TTL/activevariants, drop/toàn124validator/generation/reset còn thiếu; CP062 [winner đảo trên actual tranh index](#current-pickup-race) đã có scope riêng |
 | Trap/death | CP029/036; CP037 kim và tranh chấp cứu/diệt; [kim](#needle-selfescape), [precedence](#contact-precedence) | CP063 [guard stale/duplicate](#report127-freshness) là policy hẹp; CP075 [TCPsame/old17,19](#current-tcp-replay) đã đo; fullvalidator/firstseen/forgedforward/generation/variants/result21 vẫn thiếu |
-| Result/reset | CP039 hai vòng statepeer/result/21/return và reset field hẹp; CP044 [timer ở EOF và vòng B/C mới](#abort-timer); CP080 [hai chu kỳ sau rejoin với input đã kiểm](#ready-input) | CP041 có [payload cũ khi ID reuse](#round-generation); arbitration/toàn generation/entity/timer/peer/seq không rò vẫn mở; phân biệt run chờ sai origin với ca hoàn tất |
+| Result/reset | CP039 hai vòng statepeer/result/21/return và reset field hẹp; CP044 [timer ở EOF và vòng B/C mới](#abort-timer); CP080 [hai chu kỳ sau rejoin](#ready-input), CP082 [mixed-owner survivor](#mixed-cycles), CP083 [all-dead rank2/2/storage/UI](#all-dead-result), mỗi run/scope riêng | CP041 có [payload cũ khi ID reuse](#round-generation); arbitration/toàn generation/entity/timer/peer/seq không rò vẫn mở; phân biệt run chờ sai origin với ca hoàn tất |
 | Room lifecycle | CP034 leave/promotion/EOF/return; CP035 rejoin/Ready; CP040 chủ B/C Start; CP044 [B/C bom/death/result/return sau abort](#abort-timer) | Bầu chủ/giữ ID-slot/forfeit là policy stub; guest EOF trả A về phòng/xóa B đã đo riêng; CP050 có [service EOF/cleanup](#service-eof); CP051 có [C mới/Start B trong service](#service-replacement); CP052 [guest setup EOF](#setup-eof), CP053 [host với peer chưa map](#host-setup), CP054 [C trước vòng đầu](#prestart-replacement), CP072 [preclock forfeit/return](#preclock-eof), CP074 [native107/IDclear và UI](#preclock-cleanup), CP076 [Back86/emptyroomrecreate cùng channel](#back86-membership) đã đo; reconnect cùng account/disconnect variants/toàn reset còn mở |
 | Peer lifecycle | CP027 actual99→153; CP045–047 [oldUDP actor/keyguard/endpointcontrol](#udp-generation), CP070 [transport cut hai chiều](#current-udp-causality) | CP048 [service fixture](#probe-service) đã tích hợp key policy hẹp; low8reuse/roster/UDPtype khác/fullgrammar/reliability/relay/reset còn mở. Không coi đổi cổng riêng lẻ là freshness guard hoặc keybyte là auth |
 
@@ -2892,8 +2892,8 @@ lịch sử với khác biệt profile/timing, không phải same-run can thiệ
 
 Chưa adjacent1cell/ba bom/vật cản/toànchain/authority/reset/two-owner hai chu kỳ/fullmatch/K5/K6a/
 vanilla/LANInternet. Models framer/heap/getter chỉ corroborate bytes; policy fuse/drop/rank là design.
-Run dừng sau hai bomdeadline+4s, không result/return. [PLAN](PLAN.md#current-order) ghép route này
-với hai chu kỳ/reset và input preparation CP080, không tìm lại writer/input/Fire/codec.
+Run tại CP081 dừng sau hai bomdeadline+4s, không result/return. Bước ghép route hai chu kỳ đã
+được [CP082](#mixed-cycles) đo; việc hiện tại chỉ ở [PLAN](PLAN.md#current-order).
 
 
 <a id="mixed-cycles"></a>
@@ -2920,8 +2920,8 @@ không arbitraryholdincrease/forcing/nativefunctioncall/new106. Targetcoordinate
 request/state/callback; final chỉ confirmed sau kiểm. Historical CP071missingArootcause vẫnunknown.
 
 Ca một survivor ở final có actualA17/19/peerreport21, nativeAstate1 trước175→180/reset theo policy
-hiện tại. Không coi policy đó là luật server gốc hoặc có tie support. [PLAN](PLAN.md#current-order)
-tiếp variant cảhai chết/tie với nativecontract trước khi chọn resultpolicy. Chưa fullmatch/K5/K6a/
+hiện tại. Không coi policy đó là luật server gốc hoặc có tie support. Bước cảhai chết tại CP082 đã
+được [CP083](#all-dead-result) đo theo policy có tên/giới hạn; việc hiện tại chỉ ở [PLAN](PLAN.md#current-order). Chưa fullmatch/K5/K6a/
 vanilla/LANInternet/fullauth/codec/validator/authority/toànreset/generalmembership/ba bom/vật cản/
 allchain. Models nativeframer/getter/heap chỉ corroborate bytes/fields, khác nativecallbacks/runtime.
 
@@ -2964,3 +2964,33 @@ integration cần thiết. First failure/raw giữ, không hạ assertion hoặc
 Chưa fullmatch/K5/K6a/vanilla/LANInternet/fullauth/codec/validator/authority/toànreset/generalmembership/
 ba bom/vật cản/allchain. Thứ tự duy nhất ở [PLAN](PLAN.md#current-order), câu hỏi ở
 [RESEARCH](RESEARCH.md#gap-result-return); CP082 single-survivor và CP083 all-dead không cộng thành gate.
+
+
+<a id="three-bomb-chain"></a>
+### Ba bom A/B/A trong root callback qua hai vòng — CP084
+
+[Recipe/nguồn/hash/audit](evidence/three-bomb-chain/README.md), **kr_runtime/confirmed hẹp** trên
+currentmodifiedWine/local. Reuse CP033/081–083 callback/state/ID/input/result và CP042/069 Bomb/
+Firefloor/native582/securestats; VN/map/legacyserver chỉ checklist, không port opcode/offset/FIFO.
+Không thêm nativebody/binarypatch/productioncode. Lựa chọn vật cản chưa đủ actualmap/control:
+list2 của582 chỉ gắn item vào FixedBox hiện có, không phải lệnh tạo tường. Chọn ca ba bom tối thiểu.
+
+Measurementprofile ghép hai knownfloor records16/4,3/kind0 và17/6,3/kind1; nativeframer/blob/
+11ED590 đọc26inner/counts2,0,0 với CRC/partialcontrols. Emulation chưa proof liveinstall/effect.
+Actual124 A nhặt cảhai mỗi vòng;165nativecapacity+4A4 vàFire+4BC lần lượt1→2/1→2 ở cảhai view,
+clockvòng2 baseline1/1. BRight trướcUp tránh đi lại qua rootrow; thirdA Down/release trên fresh
+nativeY≥179 rồiSpace; target/hold không thay actualrequestgeometry.
+
+Cùng run sau guestBack/rejoin: keys12345→12346, IDs1,2,3 rồi4,5,6, owners0,1,0 mỗi vòng.
+Actual118 Aroot(3,3)/power2, B(3,5)/power1; A thứhai **(5,3) vòng1, (4,3) vòng2**, power2.
+Không gọi hai hình học giống hệt hoặc suy tọa độ ô từ một hostsample. Mỗi view native159 đủ39/
+errors0 cho cảba trước root158. Trong rootcallback ID1 hoặc4: kind0 chỉroot, process cảba; hai
+secondary state0 callerEBE21A. Hai ownlater158 đọc13/errors0, lookupđúngID nhưng khôngkind0/
+process lặp. Đây là fork từ root theo hai hướng, chưa chuỗi sâu kiểu root→secondary→third ngoài
+rootrange hoặc mixedowneradjacent/vật cản/allchain.
+
+Cảhai actual17/19/state1 trước175, all-dead policyCP083/latestdeath8s, native175full302/180full3,
+manager trước180 rank2/2, UI haiLOSE/cảhai view/hai vòng và finalroomrefresh. Originalrun normalexit0/
+no controller/service/probe errors. Scopephân biệt raw/nativecallbacks với model/getter/oracles;
+fixture/drop/fuse/outcome vẫn design, không fullmatch/K5/K6a/vanilla/LANInternet/fullauth/codec/
+validator/authority/toànreset. [PLAN](PLAN.md#current-order) tiếp gap guardTCP + hairesultreset.

@@ -1,0 +1,105 @@
+{
+  "id": "AUD025",
+  "trigger": "periodic",
+  "completed_through": "CP084",
+  "recorded_utc": "2026-11-03T21:19:39.428492+00:00",
+  "auditor": "Codex manual self-audit; independent review waived by owner",
+  "read_files": [
+    "README.md",
+    "docs/PLAN.md",
+    "docs/PROTOCOL.md",
+    "docs/RESEARCH.md",
+    "docs/features.json",
+    "docs/COVERAGE.md",
+    "docs/evidence/mixed-input/README.md",
+    "docs/evidence/mixed-cycles/README.md",
+    "docs/evidence/all-dead-result/README.md",
+    "docs/evidence/three-bomb-chain/README.md",
+    "docs/evidence/current-hidden-items/README.md",
+    "docs/evidence/current-tcp-replay/README.md",
+    "docs/evidence/checkpoints/manifest.json",
+    "local/research/codex/mixed-input-r1/verification.json",
+    "local/research/codex/mixed-cycles-r1/verification.json",
+    "local/research/codex/mixed-cycles-r1/partial-verification.json",
+    "local/research/codex/mixed-cycles-r1/separate-cycles-verification.json",
+    "local/research/codex/bothdead-result-r1/postparse-verification.json",
+    "local/research/codex/bothdead-result-r1/first-analysis/planned-check.txt",
+    "local/research/codex/bothdead-result-r1/visual-observation.json",
+    "local/research/codex/three-bomb-r1/reuse-question.json",
+    "local/research/codex/three-bomb-r1/floor582-fixture.json",
+    "local/research/codex/three-bomb-r1/native-layout.json",
+    "local/research/codex/three-bomb-r1/fork/run.json",
+    "local/research/codex/three-bomb-r1/fork/client.log",
+    "local/research/codex/three-bomb-r1/fork/client-B.log",
+    "local/research/codex/three-bomb-r1/fork/ui-progress.jsonl",
+    "local/research/codex/three-bomb-r1/chain-summary.json",
+    "local/research/codex/three-bomb-r1/actor-fields.json",
+    "local/research/codex/three-bomb-r1/lifecycle-summary.json",
+    "local/research/codex/three-bomb-r1/verification.json",
+    "local/research/codex/three-bomb-r1/provenance-verification.json",
+    "local/research/codex/three-bomb-r1/visual-observation.json"
+  ],
+  "method": "Đọc README→PLAN(current-order/gates)→PROTOCOL(identity/reuse/authority/itemfloor/chain/CP081–084)→RESEARCH currentgaps→evidenceCP081–084/CP068/075, rồi đối chiếu raw/report/native trường/OS actions/ảnh. Không dùng checker thay audit: đọc actual118geometry,159binding trước root158, settercaller/process/ownlater, nativegetters trước-sau165 và baselineR2, originalfinalrun vs partialfailure, actual19/rankstoragebefore180/UI/bothcycle cursors. Ghi rõ audit theo các phần liên quan; không claim đọc lại từng thânhàm/client hoặc sửa checkpoint cũ.",
+  "findings": [
+    {
+      "id": "F1",
+      "stale": "PROTOCOL revisionheader vẫnCP082 dùCP083 đãmerge; README/PLAN/evidenceCP083 còn chờPR.",
+      "correction": "Cập nhật revision/currentstateCP084, CP083 mergedPR127/7509747, CP084 selfchecked/pendingPR và reviewwaived; không tựapprove/gate.",
+      "fixed_in": [
+        "README.md",
+        "docs/PLAN.md",
+        "docs/PROTOCOL.md",
+        "docs/evidence/all-dead-result/README.md"
+      ]
+    },
+    {
+      "id": "F2",
+      "stale": "Đoạn cuốiCP081/082 và evidenceCP081 diễn đạt bước tiếp cũ nhưcurrentPLAN; authority Result/reset tổng hợp chưa dẫnCP082/083.",
+      "correction": "Gắn bước tạiCP/historical/successor, linkPLANduynhất; authority matrix dẫn survivorCP082/all-deadCP083 vàchainforkCP084 vớiscope riêng.",
+      "fixed_in": [
+        "docs/PROTOCOL.md",
+        "docs/evidence/mixed-input/README.md"
+      ]
+    },
+    {
+      "id": "F3",
+      "stale": "Gap ba bom chưa có proof trong currentcatalog; không được gọi hai hình học thirdA giốnghệt hoặc suy list2tạo tường.",
+      "correction": "Rawactual118 R1third5,3 vàR2third4,3, root3,3/B3,5; mỗi view rootcallbackprocessset3/noownlaterduplicate. SourcefirstCP068list2 chỉ item trênFixedBox hiệncó, chọnba bom; khôngphátschemawallđoán. Contract/gaps/catalog/coverage tách forkvsdeepchain/wall/mixedowneradjacent.",
+      "fixed_in": [
+        "docs/PROTOCOL.md",
+        "docs/RESEARCH.md",
+        "docs/features.json",
+        "docs/COVERAGE.md",
+        "docs/evidence/three-bomb-chain/README.md"
+      ]
+    },
+    {
+      "id": "F4",
+      "stale": "CP083 firstplanned missingpostparse marker có thể bị đọc thành nativepostparsepass vì repeatpositive.",
+      "correction": "Đối chiếu originalfailure vs actualbefore180storage/UI/typedblob. E3EDBE/E5F7F8 chưa quan sát/causeunknown giữ rõ, repeatpositive boundarykhác; CP084 cũng chỉbefore180. Không sửa raw/failure/manifest083.",
+      "fixed_in": [
+        "docs/PROTOCOL.md",
+        "docs/evidence/all-dead-result/README.md",
+        "docs/evidence/three-bomb-chain/README.md"
+      ]
+    },
+    {
+      "id": "F5",
+      "stale": "Chưa có hai-cycle selectedTCPguardintegration; CP075boundedpositive có thể bị gộp với các run hai-cycle để đónggap.",
+      "correction": "GiữCP075partial/secondrankreturnmissing dùCP084normal2cyclepositive; PLAN tiếp ghép proxy/captureorigin/noextrasideeffects và native2cycles cùngrun. Không chạy thêm arbitrarychain sweep trước integration.",
+      "fixed_in": [
+        "docs/PLAN.md",
+        "docs/RESEARCH.md",
+        "docs/PROTOCOL.md",
+        "docs/COVERAGE.md"
+      ]
+    }
+  ],
+  "remaining": [
+    "CP084 selfchecked/pendingPR, independentreviewwaived notapproved; CP001–083/AUD001–024 giữ nguyên.",
+    "CP075 transportguard+tworesultreset same-run acceptance cònpartial; next theoPLAN, khôngghépruns hoặc giảmassertion.",
+    "Wall/mixedowneradjacent/deepchain/fullvalidator/auth/codec/fullreset/generalroom/vanilla/LANInternet/fullmatch/K5/K6a giữmở.",
+    "E3EDBE/E5F7F8 missingmarker causeunknown; chỉ trace khi chặn integration.",
+    "PeriodicnextCP088, khôngresetcounter hoặc tựđónggate từsốchecks."
+  ]
+}
