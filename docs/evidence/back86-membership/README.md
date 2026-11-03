@@ -2,7 +2,7 @@
 
 Baseline CP075/PR111 merge `41f0fa9b5cf3f5f5e303d64cc0edf6ce73587699`;
 KRE-039/[issue112](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/112).
-Codex solo/tự kiểm, [review waived](../checkpoints/review-waiver.json), chờ PR.
+Codex solo/tự kiểm, [review waived](../checkpoints/review-waiver.json), tích hợp theo [PR113](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/113).
 [Contract và giới hạn](../../PROTOCOL.md#back86-membership), [câu hỏi](../../RESEARCH.md#gap-room-membership),
 [thứ tự duy nhất](../../PLAN.md#current-order). Raw/scripts/seals: `local/research/codex/back86-membership-r1/`.
 

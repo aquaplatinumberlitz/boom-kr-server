@@ -1,7 +1,7 @@
 {
   "schema": "kre-feature-index-v1",
   "build": "KR00967",
-  "as_of": "2026-11-03 JST / CP076 narrowBack86/emptyroomrecreate; selfcheck branchpending; AUD023/nextCP080",
+  "as_of": "2026-11-03 JST / CP076 narrowBack86/emptyroomrecreate; selfcheck PR113; AUD023/nextCP080",
   "sources": {
     "plan": "docs/PLAN.md",
     "contract": "docs/PROTOCOL.md",
@@ -983,7 +983,7 @@
         },
         "implementation": {
           "state": "partial",
-          "delivery": "branch_pending",
+          "delivery": "via_pr",
           "refs": [
             "server/probe_service.py",
             "docs/PROTOCOL.md#service-eof",
@@ -997,7 +997,8 @@
             "docs/PROTOCOL.md#prestart-replacement",
             "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/69",
             "docs/PROTOCOL.md#back86-membership",
-            "server/test_room_reentry.py"
+            "server/test_room_reentry.py",
+            "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/113"
           ]
         },
         "integration": {
@@ -2649,7 +2650,7 @@
         },
         "implementation": {
           "state": "partial",
-          "delivery": "branch_pending",
+          "delivery": "via_pr",
           "refs": [
             "server/probe_service.py",
             "docs/PROTOCOL.md#service-eof",
@@ -2663,7 +2664,8 @@
             "docs/PROTOCOL.md#prestart-replacement",
             "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/69",
             "docs/PROTOCOL.md#back86-membership",
-            "server/test_room_reentry.py"
+            "server/test_room_reentry.py",
+            "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/113"
           ]
         },
         "integration": {
@@ -2797,7 +2799,7 @@
         },
         "implementation": {
           "state": "partial",
-          "delivery": "branch_pending",
+          "delivery": "via_pr",
           "refs": [
             "server/probe_service.py",
             "docs/PROTOCOL.md#service-eof",
@@ -2823,7 +2825,8 @@
             "docs/PROTOCOL.md#basic-battle",
             "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/99",
             "docs/PROTOCOL.md#back86-membership",
-            "server/test_room_reentry.py"
+            "server/test_room_reentry.py",
+            "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/113"
           ]
         },
         "integration": {

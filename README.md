@@ -35,7 +35,7 @@ Sửa membership/sequence/profile metadata hẹp; tiếp guest Back/rejoin khi h
 Chưa fullmembership/accountresume/fullmatch/K6a/LAN/Internet; CP075 hai-cycle guardintegration vẫn partial.
 
 CP075 đã merge [PR111](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/111) tại `41f0fa9`.
-CP076 tự kiểm/chờ PR; review độc lập [waived](docs/evidence/checkpoints/review-waiver.json).
+CP076 tự kiểm/tích hợp theo [PR113](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/113); review độc lập [waived](docs/evidence/checkpoints/review-waiver.json).
 Audit **AUD023/CP076**, periodic kế **CP080**.
 [Yêu cầu chủ dự án](docs/evidence/owner-directives/continuous-work.json): tiếp tục ngay việc kế trong
 PLAN sau mỗi checkpoint/commit/PR, không tự dừng/chờ nhắc.
