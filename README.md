@@ -36,7 +36,7 @@ CP080 đã có hai chu kỳ Battle sau guest rejoin; bước tiếp ghép hai ow
 cùng run. Chưa fullmatch/K6a/LAN/Internet.
 
 CP080 đã merge [PR121](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/121) tại `cfa4307`.
-CP081 tự kiểm/chờ PR; review độc lập [waived](docs/evidence/checkpoints/review-waiver.json).
+CP081 tự kiểm/[PR123](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/123); review độc lập [waived](docs/evidence/checkpoints/review-waiver.json).
 Audit **AUD024/CP080**, periodic kế **CP084**.
 [Yêu cầu chủ dự án](docs/evidence/owner-directives/continuous-work.json): tiếp tục ngay việc kế trong
 PLAN sau mỗi checkpoint/commit/PR, không tự dừng/chờ nhắc.
