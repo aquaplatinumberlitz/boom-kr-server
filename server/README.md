@@ -172,3 +172,11 @@ fixture giữ hash; profile cũ thiếu metadata bị logreject trước mutatio
 realFixtureProfile regressions. Chưa guestleave/hostlivepeer/activeleave/generalmembership/accountresume.
 CP075 [actualTCPselectedreplay](../docs/PROTOCOL.md#current-tcp-replay) bổ sung các giới hạn transport
 lịch sử CP049/063/067 ở trên; planned hai-cycle result vẫnpartial. Thứ tự chỉ theo PLAN.
+
+
+CP077 mở thêm [guest B idle Back/rejoin với A cònmapped](../docs/PROTOCOL.md#guest-back-rejoin).
+107/110 xóaB/giữAhost, archiveBmembership/channellive, refresh241/91, new82/87/585/setup currentseq,
+profile hai phía cập nhật lại trướcReady/Start.83server tests; cùngTCP/IDslot/nativeclock được đo, chưa
+Battle/result/return saurejoin. Export metadata knownseq cho roomlist_B/join/player_B/guest_A/guest_B,
+41rawfixtures giữhash; oldprofile thiếu metadata bị logreject trước mutation. Hostlivepeer/activeleave/
+accountresume vẫn ngoài scope. Thứ tự chỉPLAN, không gọi priorharnessCP035 là productionproof.

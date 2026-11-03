@@ -1,7 +1,7 @@
 {
   "schema": "kre-feature-index-v1",
   "build": "KR00967",
-  "as_of": "2026-11-03 JST / CP076 narrowBack86/emptyroomrecreate; selfcheck PR113; AUD023/nextCP080",
+  "as_of": "2026-11-03 JST / CP077 guestBack/rejoin/nativeReadyStartclock; selfcheck PR115; AUD023/nextCP080",
   "sources": {
     "plan": "docs/PLAN.md",
     "contract": "docs/PROTOCOL.md",
@@ -927,7 +927,8 @@
           "docs/evidence/setup-eof/README.md",
           "docs/evidence/host-setup/README.md",
           "docs/evidence/prestart-replacement/README.md",
-          "docs/evidence/back86-membership/README.md"
+          "docs/evidence/back86-membership/README.md",
+          "docs/evidence/guest-back-rejoin/README.md"
         ]
       },
       "coverage": {
@@ -965,7 +966,8 @@
               "docs/evidence/setup-eof/README.md",
               "docs/evidence/host-setup/README.md",
               "docs/evidence/prestart-replacement/README.md",
-              "docs/evidence/back86-membership/README.md"
+              "docs/evidence/back86-membership/README.md",
+              "docs/evidence/guest-back-rejoin/README.md"
             ]
           },
           "windows_original": {
@@ -998,7 +1000,10 @@
             "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/69",
             "docs/PROTOCOL.md#back86-membership",
             "server/test_room_reentry.py",
-            "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/113"
+            "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/113",
+            "docs/PROTOCOL.md#guest-back-rejoin",
+            "server/test_guest_rejoin.py",
+            "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/115"
           ]
         },
         "integration": {
@@ -1009,7 +1014,8 @@
             "docs/evidence/setup-eof/README.md",
             "docs/evidence/host-setup/README.md",
             "docs/evidence/prestart-replacement/README.md",
-            "docs/evidence/back86-membership/README.md"
+            "docs/evidence/back86-membership/README.md",
+            "docs/evidence/guest-back-rejoin/README.md"
           ]
         },
         "gate": {
@@ -2591,7 +2597,8 @@
           "docs/evidence/preclock-eof/README.md",
           "docs/evidence/nmco-locale-stability/README.md",
           "docs/evidence/preclock-cleanup/README.md",
-          "docs/evidence/back86-membership/README.md"
+          "docs/evidence/back86-membership/README.md",
+          "docs/evidence/guest-back-rejoin/README.md"
         ]
       },
       "coverage": {
@@ -2632,7 +2639,8 @@
               "docs/evidence/preclock-eof/README.md",
               "docs/evidence/nmco-locale-stability/README.md",
               "docs/evidence/preclock-cleanup/README.md",
-              "docs/evidence/back86-membership/README.md"
+              "docs/evidence/back86-membership/README.md",
+              "docs/evidence/guest-back-rejoin/README.md"
             ]
           },
           "windows_original": {
@@ -2665,7 +2673,10 @@
             "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/69",
             "docs/PROTOCOL.md#back86-membership",
             "server/test_room_reentry.py",
-            "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/113"
+            "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/113",
+            "docs/PROTOCOL.md#guest-back-rejoin",
+            "server/test_guest_rejoin.py",
+            "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/115"
           ]
         },
         "integration": {
@@ -2679,7 +2690,8 @@
             "docs/evidence/preclock-eof/README.md",
             "docs/evidence/nmco-locale-stability/README.md",
             "docs/evidence/preclock-cleanup/README.md",
-            "docs/evidence/back86-membership/README.md"
+            "docs/evidence/back86-membership/README.md",
+            "docs/evidence/guest-back-rejoin/README.md"
           ]
         },
         "gate": {
@@ -2732,7 +2744,8 @@
           "docs/evidence/nmco-locale-stability/README.md",
           "docs/evidence/preclock-cleanup/README.md",
           "docs/evidence/current-tcp-replay/README.md",
-          "docs/evidence/back86-membership/README.md"
+          "docs/evidence/back86-membership/README.md",
+          "docs/evidence/guest-back-rejoin/README.md"
         ]
       },
       "coverage": {
@@ -2781,7 +2794,8 @@
               "docs/evidence/preclock-eof/README.md",
               "docs/evidence/nmco-locale-stability/README.md",
               "docs/evidence/preclock-cleanup/README.md",
-              "docs/evidence/back86-membership/README.md"
+              "docs/evidence/back86-membership/README.md",
+              "docs/evidence/guest-back-rejoin/README.md"
             ]
           },
           "windows_original": {
@@ -2826,7 +2840,10 @@
             "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/99",
             "docs/PROTOCOL.md#back86-membership",
             "server/test_room_reentry.py",
-            "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/113"
+            "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/113",
+            "docs/PROTOCOL.md#guest-back-rejoin",
+            "server/test_guest_rejoin.py",
+            "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/115"
           ]
         },
         "integration": {
@@ -2854,7 +2871,8 @@
             "docs/evidence/nmco-locale-stability/README.md",
             "docs/evidence/preclock-cleanup/README.md",
             "docs/PROTOCOL.md#current-tcp-replay",
-            "docs/evidence/back86-membership/README.md"
+            "docs/evidence/back86-membership/README.md",
+            "docs/evidence/guest-back-rejoin/README.md"
           ]
         },
         "gate": {

@@ -50,5 +50,7 @@ Recipeexact `<label>-recipe.json`, seal `<label>-hashes.json`. Control dùng con
 wine_probe_back86_membership.py, refresh dùng _back86_refresh.py, fix-v2 dùng _back86_membership_v2.py; observed dùng _back86_membership_observed.py;
 run_probe.py label/CA-r2-stage-social.exe/320/controller/cleanup.gdb. Không overwrite label hoặc
 chạy chồnglease. Collect→derive_roles→parse_fields/lifecycle→native_packets→verify sau completed.
-AUD023 đọc thủ công quaCP076, periodic kếCP080. Tiếp guest Back/rejoin khi A còn trong phòng,
+AUD023 đọc thủ công quaCP076, periodic kếCP080. Bước tạiCP076 (lịch sử): guest Back/rejoin khi A còn trong phòng,
 tái dùng CP035/control hiện tại, không nhận emptyroomcreate là membership tổng quát hoặc trận chơi.
+
+[CP077 bổ sung guestBack/rejoin khi A còn phòng](../guest-back-rejoin/README.md); scope/raw/failureCP076 giữ nguyên, thứ tự chỉPLAN.
