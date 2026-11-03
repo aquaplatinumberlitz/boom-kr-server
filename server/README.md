@@ -163,3 +163,12 @@ blast. [Nativeintegration/partial/limits](../docs/PROTOCOL.md#current-hidden-ite
 CP069: `--item-layout battle` chọn một [profile cảfloor+hidden](../docs/PROTOCOL.md#basic-battle)
 đãđo baeffects/reset qua hai vòngcùngrun;floor/hidden/defaultfloor giữ. Exportpathmới/profilehash,
 không tựmigrate hoặc coi basicdiagnosticprofile là wholematch/K6a/Internet/authauthority.
+
+
+CP076 thêm [Back86/emptyroomrecreate cùngchannel](../docs/PROTOCOL.md#back86-membership), chỉ A sauBEOF/
+resultcleanup. Archive membershipmarkers, giữ codecseq/identity/roundallocator/jobs; new81/setup dùng
+currentseq và không guestBfixture đã ngắt. Export mới khai báo sequencecreate/player_A/map, mọi raw
+fixture giữ hash; profile cũ thiếu metadata bị logreject trước mutation. 79server tests gồm7membership/
+realFixtureProfile regressions. Chưa guestleave/hostlivepeer/activeleave/generalmembership/accountresume.
+CP075 [actualTCPselectedreplay](../docs/PROTOCOL.md#current-tcp-replay) bổ sung các giới hạn transport
+lịch sử CP049/063/067 ở trên; planned hai-cycle result vẫnpartial. Thứ tự chỉ theo PLAN.

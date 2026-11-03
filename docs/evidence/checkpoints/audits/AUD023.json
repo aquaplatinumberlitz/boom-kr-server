@@ -1,0 +1,110 @@
+{
+  "id": "AUD023",
+  "trigger": "periodic",
+  "completed_through": "CP076",
+  "recorded_utc": "2026-11-03T11:27:26.000390+00:00",
+  "auditor": "Codex manual self-audit; independent review waived by owner",
+  "read_files": [
+    "README.md",
+    "docs/PLAN.md",
+    "docs/PROTOCOL.md",
+    "docs/RESEARCH.md",
+    "docs/features.json",
+    "docs/COVERAGE.md",
+    "server/README.md",
+    "docs/evidence/back86-membership/README.md",
+    "docs/evidence/nmco-locale-stability/README.md",
+    "docs/evidence/preclock-cleanup/README.md",
+    "docs/evidence/current-tcp-replay/README.md",
+    "docs/evidence/checkpoints/manifest.json",
+    "docs/evidence/room-leave/README.md",
+    "docs/evidence/room-rejoin/README.md",
+    "local/research/codex/nmco-locale-stability-r1/verification.json",
+    "local/research/codex/nmco-locale-stability-r1/launcher-emptyargs/run.json",
+    "local/research/codex/nmco-locale-stability-r1/channel-close/run.json",
+    "local/research/codex/preclock-cleanup-r1/first-verification.json",
+    "local/research/codex/preclock-cleanup-r1/ui-verification.json",
+    "local/research/codex/current-tcp-replay-r1/verification.json",
+    "local/research/codex/current-tcp-replay-r1/verification-scope-change.json",
+    "local/research/codex/current-tcp-replay-r1/tcp-current/run.json",
+    "local/research/codex/current-tcp-replay-r1/actor-fields.json",
+    "local/research/codex/back86-membership-r1/verification.json",
+    "local/research/codex/back86-membership-r1/request-summary.json",
+    "local/research/codex/back86-membership-r1/visual-observation.json",
+    "local/research/codex/back86-membership-r1/control-trigger.json",
+    "local/research/codex/back86-membership-r1/failed-fix.json",
+    "local/research/codex/back86-membership-r1/profile-metadata-correction.json",
+    "local/research/codex/back86-membership-r1/back-control/run.json",
+    "local/research/codex/back86-membership-r1/back-refresh/run.json",
+    "local/research/codex/back86-membership-r1/back-fixed/run.json",
+    "local/research/codex/back86-membership-r1/back-fixed/service.log",
+    "local/research/codex/back86-membership-r1/back-fixed-v2/run.json",
+    "local/research/codex/back86-membership-r1/back-fixed-v2/service-state.json",
+    "local/research/codex/back86-membership-r1/back-fixed-v2/client.log",
+    "local/research/codex/back86-membership-r1/back-observed/run.json",
+    "local/research/codex/back86-membership-r1/back-observed/service-state.json",
+    "local/research/codex/back86-membership-r1/back-observed/client.log",
+    "local/research/codex/back86-membership-r1/native-observer-followup.json"
+  ],
+  "method": "Đọc lại README→PLAN(current-order/scope/gates)→PROTOCOL(identity/reuse/currentauthority/CP034035/073–076)→RESEARCH(currentgap/historical labels)→evidence/raw/control/service traceback/currentnativecallbacks và ảnhcreate/room. Đối chiếu actualTCPfront/upstream của075 với plannedpartial, native107/UI074 với Backcontrol076 (sảnhvẽ≠usableCreate), exporterNonefailure vs v2 partial14sstop then finalnative86/585/profile/map+renderobserver, no newclock/gameplay. Không dùng checker thay xác nhậnngữ nghĩa, không reread toàn nativebody hay ghép run thànhfullmatch.",
+  "findings": [
+    {
+      "id": "F1",
+      "stale": "Current authority trap/death row vẫn ghi actualTCPmissing, bomb row chưa dẫnCP075 dù đã đo118/124/17,19 quaTCP.",
+      "correction": "Link CP075selectedactualTCPreplay, giữ21/fullvalidator/forgedforward/distance/auth/secondresult chưađo; thêm076emptyroomlifecycle đúngscope.",
+      "fixed_in": [
+        "docs/PROTOCOL.md"
+      ]
+    },
+    {
+      "id": "F2",
+      "stale": "CP073native107preclock cònmở và bước tiếpCP074TCP/CP075Back chưa có nhãn lịch sử/successor, dễ hiểu là task hiệnhành.",
+      "correction": "Đánh dấu tạiCP/lịch sử và linksuccessor074/075/076; giữraw/checkpoint/history. Currentorder chỉPLAN; no duplicateplan.",
+      "fixed_in": [
+        "docs/evidence/nmco-locale-stability/README.md",
+        "docs/evidence/preclock-cleanup/README.md",
+        "docs/evidence/current-tcp-replay/README.md"
+      ]
+    },
+    {
+      "id": "F3",
+      "stale": "CP074renderedlobby/actual86 có thể bị coi là lobbyusable/generalroomleave; CP075boundedpass có thể bị coi là hai-cycle/all3effects.",
+      "correction": "076control không81 trướcrefresh, refresh-only mới81 nhưngoldmarkerblocks; fix-v2 nativeprofile/map/UI hẹp. 075plannedpartial/FireR1absent/hiddenprobesabsent giữ nguyên, no gatepromotion.",
+      "fixed_in": [
+        "README.md",
+        "docs/PLAN.md",
+        "docs/PROTOCOL.md",
+        "docs/RESEARCH.md",
+        "docs/features.json",
+        "docs/COVERAGE.md",
+        "docs/evidence/back86-membership/README.md"
+      ]
+    },
+    {
+      "id": "F4",
+      "stale": "Profile rawcreate/player_A/map metadataNone đủinitialraw nhưng newdynamicpath dừng; initialFakeprofile test không bắt. service_errors[] có thể che controllererror/traceback.",
+      "correction": "Giữfailedrun/source/seal; exporter thêmknownseq55/58/70/41rawhashunchanged,preflight beforemutation,oldprofile explicitreject; addrealFixtureProfile tests79. Fixed-v2 cóECONNRESET227,734ms saucontrolledstop, giữserviceerror; khôngnativeclientfault hoặc âmthầmsửaraw đểpass; fixed-v2 14s trướcmap/blackimage giữpartial, finalobserver mới dựatrên native map+render12s.",
+      "fixed_in": [
+        "server/probe_service.py",
+        "server/test_room_reentry.py",
+        "tools/export_probe_profile.py",
+        "docs/evidence/back86-membership/README.md"
+      ]
+    },
+    {
+      "id": "F5",
+      "stale": "Task-state KRE-037 cònopen dù issue108 closed cùngPR109; periodiccounter cần đi tiếp sau076.",
+      "correction": "Đã kiểm ghissue108closed2026-11-02T21:45:09Z; currenttaskstateclosed, không sửaCP074immutable. AUD023through076,next080.",
+      "fixed_in": [
+        "docs/evidence/checkpoints/manifest.json"
+      ]
+    }
+  ],
+  "remaining": [
+    "GuestBack/rejoin với A cònphòng là taskkế theoPLAN; hostlivepeer/activeleave/accountresume/generalroom variants vẫnopen.",
+    "CP075selectedTCPguardintegration plannedtworesultreturnpartial; noFireR1/hiddenpointerprobes trongrun đó, không viết lạihistory.",
+    "Historicalmainstartupcause/auxproviderinit/rootcauseunknown, không locale bypass/fixclaim.",
+    "Fullauthority/auth/cache/codec/reset/fullmatch/K4/K5/K6a/vanilla/LANInternet/chainscope chưa đủ; 076forfeitkhônggameplay.",
+    "CP076branchpending/selfcheckPR; reviewwaivednotapproved, auditnextCP080. CP001–075/AUD001–022 raw/records preserved."
+  ]
+}

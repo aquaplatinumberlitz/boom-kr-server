@@ -1,6 +1,6 @@
 # KR 00967 — contract tương thích client gốc
 
-Revision kr-legacy-contract-r1; cập nhật03/11/2026 JST (CP075).
+Revision kr-legacy-contract-r1; cập nhật03/11/2026 JST (CP076).
 **Contract có bằng chứng từng phần; chưa nghiệm thu full codec K2**.
 Lộ trình và thứ tự task chỉ giữ ở [REWRITE_PLAN — KRE](PLAN.md).
 Đây là contract của repo server KR. ADR0009 của bản viết lại là nguồn lịch sử để so sánh;
@@ -1958,20 +1958,20 @@ liệt kê và phân biệt với nguyên bản trong mọi demo.
 <a id="authority"></a>
 ### Authority matrix hiện hành và gate review
 
-Bảng này tổng hợp bằng chứng từng phần đến CP075; chưa phải toàn contract server gốc. Mỗi hàng khi
+Bảng này tổng hợp bằng chứng từng phần đến CP076; chưa phải toàn contract server gốc. Mỗi hàng khi
 triển khai phải bổ sung riêng **creator, simulator, validator, broadcaster, peer-editable state**, với
 locator/trace và trạng thái từng ô; những vai trò không nêu dưới đây hiện `unknown` cho KR.
 
 | Hành vi | Đã thấy trong KR | Phần cần đóng trước demo dùng hành vi đó |
 |---|---|---|
 | Movement | CP027 hai chiều; CP070 [cut/counter/restore local vs remote](#current-udp-causality) đã đo trên current Wine copy;183 vẫn ghost | Full schema input/update/correction, validator và quyền sửa vị trí của peer |
-| Bomb place/ID | CP027 hai owner/ID chung1..4 tạo trên cả hai client; [phạm vi](#peer-duo); lặp/cũ CP025 | CP041 có [stale158/ID reuse và fence job local](#round-generation), CP043 có [old159/serial reuse](#late-bomb-confirm); CP067 [C2Skey/serialguard](#c2s118-admission) loại duplicate/oldbody hẹp; allocator/rollover/concurrent/race/toàn generation/authority còn mở |
+| Bomb place/ID | CP027 hai owner/ID chung1..4 tạo trên cả hai client; [phạm vi](#peer-duo); lặp/cũ CP025 | CP041 có [stale158/ID reuse và fence job local](#round-generation), CP043 có [old159/serial reuse](#late-bomb-confirm); CP067 [C2Skey/serialguard](#c2s118-admission) và CP075 [actualTCPselectedreplay](#current-tcp-replay) loại duplicate/oldbody hẹp; allocator/rollover/concurrent/race/toàn generation/authority còn mở |
 | Explode/chain | CP033 một owner; CP064 [power1/cách hai ô](#mixed-owner-chain), CP071 [power2 ngoài tầm/feedback chưa118](#mixed-owner-power) giữ partial khác owner | Mixed-owner liền kề/ba bom/vật cản/race/generation và authority server gốc còn thiếu |
 | Block destroy/item reveal | CP032 nativecontract; CP068 [currentservice/list2/reportgate/effect/reset](#current-hidden-items) cảhai view | Drop algorithm/server validator, variants/chain và phép loại transport riêng còn thiếu |
 | Item placement/pickup | CP030 nhặt/tranh index; CP031/032 stat/itemẩn; CP045 [bảng nhóm/Roller/MaxPower hai view/reset](#item-families) | CP042 có [old165/index reuse](#item-generation); runtime tại max, KRspeed→px/s/TTL/activevariants, drop/toàn124validator/generation/reset còn thiếu; CP062 [winner đảo trên actual tranh index](#current-pickup-race) đã có scope riêng |
-| Trap/death | CP029/036; CP037 kim và tranh chấp cứu/diệt; [kim](#needle-selfescape), [precedence](#contact-precedence) | CP063 [guard stale/duplicate](#report127-freshness) là policy hẹp; fullvalidator/firstseen/forgedforward/actualTCP/generation/variants/result21 vẫn thiếu |
+| Trap/death | CP029/036; CP037 kim và tranh chấp cứu/diệt; [kim](#needle-selfescape), [precedence](#contact-precedence) | CP063 [guard stale/duplicate](#report127-freshness) là policy hẹp; CP075 [TCPsame/old17,19](#current-tcp-replay) đã đo; fullvalidator/firstseen/forgedforward/generation/variants/result21 vẫn thiếu |
 | Result/reset | CP039 hai vòng statepeer/result/21/return và reset field hẹp; CP044 [timer ở EOF và vòng B/C mới](#abort-timer) | CP041 có [payload cũ khi ID reuse](#round-generation); arbitration/toàn generation/entity/timer/peer/seq không rò vẫn mở; phân biệt run chờ sai origin với ca hoàn tất |
-| Room lifecycle | CP034 leave/promotion/EOF/return; CP035 rejoin/Ready; CP040 chủ B/C Start; CP044 [B/C bom/death/result/return sau abort](#abort-timer) | Bầu chủ/giữ ID-slot/forfeit là policy stub; guest EOF trả A về phòng/xóa B đã đo riêng; CP050 có [service EOF/cleanup](#service-eof); CP051 có [C mới/Start B trong service](#service-replacement); CP052 [guest setup EOF](#setup-eof), CP053 [host với peer chưa map](#host-setup), CP054 [C trước vòng đầu](#prestart-replacement), CP072 [preclock forfeit/return](#preclock-eof), CP074 [native107/IDclear và UI](#preclock-cleanup) đã đo; reconnect cùng account/disconnect variants/toàn reset còn mở |
+| Room lifecycle | CP034 leave/promotion/EOF/return; CP035 rejoin/Ready; CP040 chủ B/C Start; CP044 [B/C bom/death/result/return sau abort](#abort-timer) | Bầu chủ/giữ ID-slot/forfeit là policy stub; guest EOF trả A về phòng/xóa B đã đo riêng; CP050 có [service EOF/cleanup](#service-eof); CP051 có [C mới/Start B trong service](#service-replacement); CP052 [guest setup EOF](#setup-eof), CP053 [host với peer chưa map](#host-setup), CP054 [C trước vòng đầu](#prestart-replacement), CP072 [preclock forfeit/return](#preclock-eof), CP074 [native107/IDclear và UI](#preclock-cleanup), CP076 [Back86/emptyroomrecreate cùng channel](#back86-membership) đã đo; reconnect cùng account/disconnect variants/toàn reset còn mở |
 | Peer lifecycle | CP027 actual99→153; CP045–047 [oldUDP actor/keyguard/endpointcontrol](#udp-generation), CP070 [transport cut hai chiều](#current-udp-causality) | CP048 [service fixture](#probe-service) đã tích hợp key policy hẹp; low8reuse/roster/UDPtype khác/fullgrammar/reliability/relay/reset còn mở. Không coi đổi cổng riêng lẻ là freshness guard hoặc keybyte là auth |
 
 Gate K5/K6 cần kiểm matrix và đối chứng của hành vi thực sự dùng; từ28/10 Codex tự kiểm theo miễn review của chủ dự án. Có thể giữ unknown về
@@ -2746,3 +2746,28 @@ Verifier planned giữ failure, bounded verifier ghi scope riêng. Không hidden
 probe, không baeffects mỗi vòng. CP049/063/067 dispatchercontrols lịch sử không tự biến thànhTCPproof.
 Chưa toàn127/21/34/forgedcurrentkey/freshserial/actorauth/distance/cap/fullvalidator/fullcodec/vanilla/
 fullmatch/K5/K6a/LANInternet. Không causalfix lỗi proxy cũ; reuseauth/cache là điều kiện mới, không isolate.
+
+<a id="back86-membership"></a>
+### Back86 và tạo lại phòng sau BEOF — CP076
+
+[Control/failed-fix/fix/raw/hash và recipe](evidence/back86-membership/README.md), **kr_runtime/confirmed
+hẹp** trên copy Wine/currentprofile. Reuse CP034/035 wire/stage/sequence và CP074 preclockcleanup;
+VN lobby/session chỉ cho phương pháp, không opcode/layout. Không nativebody/patch/forcing mới.
+
+Control service cũ: Back86empty→CLobbyStage/UI nhưng Create không81. Chỉ thêm knownrefresh241/91
+ở wrapper tạo được actual81 lần2; oldcreate_response_sent chặn reply86, không585. Bản sửa tách
+membership khỏi channel: chỉ A một mình sau BEOF và resultrefresh, lưu marker cũ/giữ TCPidentity/
+sequence/roundallocator/jobs, refresh241/91 sau1s, nhận new81→dynamic86→actual585→106/110/238/117.
+Fixed-v2 dừng14s trướcmap/ảnhđen là partial; followup cùngservice chờnative map+render12s.
+Native86 đọc11byte,106 own-match1,117 map; ảnh phòng mộtKRLocal/Start/map, không B106 sau recreate.
+
+**Implementation/design:** leave variants ngoài scope log reject/không đổi membership. Không tái tạo
+keyallocator hoặc reset seq khi Back. Setup reentry dùng seq tiếp tục, bỏ fixture B đã ngắt. Bản sửa
+đầu TypeError do create metadataNone; giữ run failure/controllererror/service.log. Export mới chỉ thêm
+sequence gốc create55/player_A58/map70 đã có nativecontract; mọi fixture bytes/hash giữ nguyên.
+Preflight bảy dynamicaliases trước leave; profile cũ thiếu sequence bị từ chối trước mutation.
+
+Control/refresh-only/finalobserved khôngerror; firstfix TypeError và fixed-v2 partial/ECONNRESET saucontrollerstop giữriêng, không ghép thành proof ổn định mọi variant.
+Native81 title có cả inline15 và heap16; getter/allocator model bounded đọc đúng cursor, không tự nâng
+thành heap/runtime proof. Chưa guestleave/hostleavecònpeer/activeleave/rejoinpeer/accountresume/
+password/capacity/fullmembership/fullreset/fullauth/fullcodec/vanilla/K4/K5/K6a/fullmatch/LANInternet.
