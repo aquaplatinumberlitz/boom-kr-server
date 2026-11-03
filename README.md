@@ -35,7 +35,7 @@ chain, death-state, kết quả và về phòng/reset cùng run**. Key/stat/ID/c
 Ca cả hai cùng chết còn chặn policy kết quả hiện tại; đây là bước tiếp theo. Chưa fullmatch/K6a/LAN/Internet.
 
 CP081 đã merge [PR123](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/123) tại `2b9e7d4`.
-CP082 tự kiểm/chờ PR; review độc lập [waived](docs/evidence/checkpoints/review-waiver.json).
+CP082 tự kiểm/[PR125](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/125); review độc lập [waived](docs/evidence/checkpoints/review-waiver.json).
 Audit **AUD024/CP080**, periodic kế **CP084**.
 [Yêu cầu chủ dự án](docs/evidence/owner-directives/continuous-work.json): tiếp tục ngay việc kế trong
 PLAN sau mỗi checkpoint/commit/PR, không tự dừng/chờ nhắc.
