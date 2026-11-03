@@ -3,7 +3,7 @@
 Baseline CP080/[PR121](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/121),
 merge `cfa4307a97c42a7819427d9b637460ddc4ababf9`;
 KRE-044/[issue122](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/122).
-Codex tự kiểm, [review waived](../checkpoints/review-waiver.json), chờ PR.
+Codex tự kiểm, [review waived](../checkpoints/review-waiver.json), tích hợp theo [PR123](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/123).
 Contract duy nhất [PROTOCOL](../../PROTOCOL.md#mixed-input), gap
 [RESEARCH](../../RESEARCH.md#gap-blast-block-chain), thứ tự [PLAN](../../PLAN.md#current-order).
 Raw/script/recipe/seal/source tại `local/research/codex/mixed-input-r1/`.
@@ -56,3 +56,5 @@ Chưa ba bom/vật cản/adjacent1cell/allchain/authority/reset/two-owner hai ch
 vanilla/LAN/Internet. Catalog/docs/artifacts/localhistory/diff kiểm; reuse83server/18checkpointtests
 CP077 vì code không đổi. AUD024 qua080, audit kế084. Tiếp PLAN: ghép route hai owner đã đo với
 hai result/return/reset cùng run và hover-prepared Ready/Start CP080; không tìm lại input/codec.
+
+[CP082](../mixed-cycles/README.md) ghép hai owner/chain qua hai chu kỳ native/resultreset; controls/bothdead/geometry corrections riêng. Thứ tự hiện hành chỉ PLAN.

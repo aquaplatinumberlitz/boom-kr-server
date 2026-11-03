@@ -1,7 +1,7 @@
 # Kế hoạch server giả lập KR 00967
 
 Nguồn chuẩn của project `boom-kr-server`; bản nhập từ plan đã được dsh1/dsh2 review tại `1eee46d`.
-Cập nhật03/11 JST (CP081): [mixed-owner chain trong tầm](PROTOCOL.md#mixed-input) cảhai view; historicalmissingroot là A, không B. Tiếp hai chu kỳ hai owner/chain/reset; AUD024, audit kế084.
+Cập nhật03/11 JST (CP082): [hai chu kỳ mixed-owner chain/resultreset](PROTOCOL.md#mixed-cycles) trên current copy/profile. Tiếp cảhai chết/tie resultpolicy sau blocker thật; AUD024, audit kế084.
 
 
 ### Mục tiêu, baseline và phạm vi
@@ -37,13 +37,13 @@ với client Rust không chứng minh có thể điều khiển client KR bằng
 
 ### Tiến độ hiện hành theo bằng chứng
 
-| Task/mốc | Trạng thái tại CP081 | Nguồn chuẩn |
+| Task/mốc | Trạng thái tại CP082 | Nguồn chuẩn |
 |---|---|---|
 | KRE-004/issue6 | Đã review/merge PR7 và đóng issue:recipe r1 đến local accept;không phải full K1 | [Wine r1](evidence/wine/README.md) |
 | Bootstrap reply | PR8 đã merge;debugger ProcessPatchreturn1,không ép success | [bootstrap evidence](evidence/bootstrap-wire/README.md) |
 | KRE-005a/issue9,R2 | PR10 đã merge:3 cold start cửa sổ/second accept;issue9 còn mở | [R2 evidence](evidence/wine-r2/README.md) |
 | WCP hai-reply | Run CP001 là lịch sử chưa C→S; CP006 đã đo request đầu trên copy tham số hóa | [PROTOCOL](PROTOCOL.md#wcp),[WCP evidence](evidence/wcp/README.md) |
-| KRE-005b/issue14 | CP006–080 đã merge; CP081 mixed-owner trong tầm tự kiểm/chờ PR; fullround/authority/full auth còn mở | [Q-023](RESEARCH.md#q-023), [service](evidence/probe-service/README.md) |
+| KRE-005b/issue14 | CP006–081 đã merge; CP082 hai chu kỳ mixed-owner/resultreset tự kiểm/chờ PR; fullround/authority/full auth còn mở | [Q-023](RESEARCH.md#q-023), [service](evidence/probe-service/README.md) |
 | K0/K1 | Chưa nghiệm thu toàn gate;Windows vanilla/control ownership và các điều kiện còn thiếu giữ mở | Gate dưới,[Q-022](RESEARCH.md) |
 | K2a/K2 | Primitive/WCP, CP057stream native/model và CP058–060authcallback137/135/errors0 đã có; fullcodec/authauthority/reconnect và gate chưa pass | [PROTOCOL](PROTOCOL.md#login-auth),[Q-023](RESEARCH.md#q-023) |
 | K3 | Copy đã vẽUI/đóngnotice, A/B/Cprofile đọc sạch và mộtnamedcachewarm được nhận; identityauthority/toàncache/codec/K3 chưa nghiệm thu | [Contract sảnh](PROTOCOL.md#channel-lobby) |
@@ -60,18 +60,18 @@ KRE-005b/issue14 vẫn mở. Các bước dưới là **thứ tự ưu tiên**, 
 xong checkpoint/commit/PR thì chuyển ngay việc kế tiếp trong thứ tự này, không tự dừng/chờ nhắc.
 Một blocker chỉ kết thúc nhánh đo tương ứng; ghi rõ rồi tiếp việc độc lập có thể làm, không tự đóng gate.
 
-1. **KR-F005/X002/S001 — hai chu kỳ với hai owner/chain và reset:**
-   [CP081](PROTOCOL.md#mixed-input) đã có actual118/159 hai owner(3,3)/(3,5)/power2,1 và secondary
-   process trong root158 cảhai view; không tìm lại missing-input/chainhelpers. Historical CP071
-   feedback thiếu Aroot, không generic Binput; cause cũ unknown. Source-first CP080 same-run hai
-   chu kỳ/hover input/reset + CP081 feedback/geometry/ID joins và VN round lifecycle. Ghép route đã đo
-   trên same current production/profile/guard, chờ native/result/return/refresh của hai vòng với
-   actualkey12345→12346, stat baseline/owner IDs, callback-scoped chain rồi later158 no duplicate,
-   native state trước rank. Durable UI/roleenv/phase; tháo watch khi rời lifetime UI. Controller bound
-   dựa phase thực, không cắt ngay trước rank như CP075. Không thêm speculative106/service/wirefix,
-   không chỉnh hold vô hướng/ép hàm/state, không ghép run riêng thành nghiệm thu. Gặp edge thì đo
-   phần thiếu; nếu blocker rõ/no newedge, giữ rồi chuyển variant cần thiết trong các mục dưới.
-   AUD024 qua080, audit định kỳ kế084. Fullmatch/gates còn mở.
+1. **KR-X001/X002/S001 — kết quả khi cả hai cùng chết:**
+   [CP082](PROTOCOL.md#mixed-cycles) đã có hai chu kỳ hai owner/chain/resultreturnreset;
+   không lặp writer/input/Fire/knownroute. First run có cả A/Bactual17/19, không21 và khôngrank
+   trong cửa sổ đo: service hiện đợi other21 sau death, đây là blocker policy có trigger thật.
+   Trước nhánh mới đọc CP023/039175/180/rankblob/outcome/native consumers và rawbothdeadCP082;
+   so VNoc_e-game/lobby/server kết quả, KR cachedrankdecoder/header/row/label, ghi provenance.
+   Xác định representation được KR hỗ trợ cho tie/all-dead và policy emulator có tên/giới hạn;
+   không suy rank/icon/tên hoặc copy enum/opcode VN. Chỉ model nativeconsumer đúng variant rồi
+   runtime actualbothdead→native175/180/room/reset, giữ state thật trước kết quả. Không fake21,
+   ép actorstate/callfunction, hoặc phát outcome không có layout/consumer evidence. Nếu unknown,
+   trace đúng branch rankconsumer đang cần, không quét cảclient. Fullauth/validator/gates không đóng.
+   AUD024 qua080, audit định kỳ kếCP084; ad-hoc audit nếu mâu thuẫn nghiêm trọng.
 2. **KR-B003/KR-F006 — nợ có giới hạn:** [CP057](PROTOCOL.md#codec-stream-boundaries) đã đo stream/
    seq/bounds trong model, không mở lại76split hoặc cấp buffer lớn chỉ để vượt allocationguardFFFFFFFF.
    Full modes/prefix guard/live reset, distance/auth/transport/kim-cứu của reportguard giữ trong RESEARCH;
