@@ -1,6 +1,6 @@
 # KR 00967 — contract tương thích client gốc
 
-Revision kr-legacy-contract-r1; cập nhật03/11/2026 JST (CP081).
+Revision kr-legacy-contract-r1; cập nhật03/11/2026 JST (CP082).
 **Contract có bằng chứng từng phần; chưa nghiệm thu full codec K2**.
 Lộ trình và thứ tự task chỉ giữ ở [REWRITE_PLAN — KRE](PLAN.md).
 Đây là contract của repo server KR. ADR0009 của bản viết lại là nguồn lịch sử để so sánh;
@@ -1958,7 +1958,7 @@ liệt kê và phân biệt với nguyên bản trong mọi demo.
 <a id="authority"></a>
 ### Authority matrix hiện hành và gate review
 
-Bảng này tổng hợp bằng chứng từng phần đến CP081; chưa phải toàn contract server gốc. Mỗi hàng khi
+Bảng này tổng hợp bằng chứng từng phần đến CP082; chưa phải toàn contract server gốc. Mỗi hàng khi
 triển khai phải bổ sung riêng **creator, simulator, validator, broadcaster, peer-editable state**, với
 locator/trace và trạng thái từng ô; những vai trò không nêu dưới đây hiện `unknown` cho KR.
 
@@ -2894,3 +2894,33 @@ Chưa adjacent1cell/ba bom/vật cản/toànchain/authority/reset/two-owner hai 
 vanilla/LANInternet. Models framer/heap/getter chỉ corroborate bytes; policy fuse/drop/rank là design.
 Run dừng sau hai bomdeadline+4s, không result/return. [PLAN](PLAN.md#current-order) ghép route này
 với hai chu kỳ/reset và input preparation CP080, không tìm lại writer/input/Fire/codec.
+
+
+<a id="mixed-cycles"></a>
+### Hai owner/chain qua hai kết quả và reset — CP082
+
+[Recipe/raw/correction/hash](evidence/mixed-cycles/README.md), **kr_runtime/confirmed hẹp** trên
+modified Wine copy/current local service. Reuse CP080 rejoin/hoverpreparedReadyStart và CP081
+Fire/feedback/actualpair/chain/ID joins; VN chỉ lifecycle/checklist. Profile measurement ghép metadata
+membership CP077/080 và rawFirefloor CP071/081, không hiddenitems; rawschema/servicepolicy giữ.
+
+Final aligned run: guestBack/rejoin rồi hai native121/clock/175/180/refresh cảhai view; cùng8TCP/
+IDs1,2/slots0,1, key12345→12346. Mỗi vòng actualA124Fire17/6,3→165, native+4BC1→2 và baseline1
+vòng2; actual118 A(3,3)power2/B(3,5)power1, globalIDs1,2 rồi3,4. Native159 cursor39/owner/ID/
+power/pointer joins; root158 mỗi vòng processroot+secondary/state0 callerEBE21A, ownlater158 của
+secondary khôngkind0/process lại. Mỗi158 cursor13/errors0, Astate1 trước175 ởcảhai view.
+Pointer join yêu cầu cùng round/native159entity trước event, không lấy địa chỉpool là ID suốt lifetime.
+
+**Controls và correction giữ riêng:** run đầu có chain nhưng cảhai17/19/no21, policy fixture đợi
+other21 sau death nên chưa rank trong boundedwindow; Codex dừngSIGINT130/originalfinally, plannedfail.
+Run escape sau có hai resultreset nhưng Aactual(4,3)/B(3,5) diagonal, không chain; strictverifierfail
+giữ, sửa kết luận sơ bộ dựa intendedroute. Final thêm fresh nativeA feedbackY≤159 cho rootrow,
+ngoài BUpY≤159/BDownY≥239. Tất cả là normalOSkeys/release theo read-only samples/known52A350,
+không arbitraryholdincrease/forcing/nativefunctioncall/new106. Targetcoordinates không thay actual
+request/state/callback; final chỉ confirmed sau kiểm. Historical CP071missingArootcause vẫnunknown.
+
+Ca một survivor ở final có actualA17/19/peerreport21, nativeAstate1 trước175→180/reset theo policy
+hiện tại. Không coi policy đó là luật server gốc hoặc có tie support. [PLAN](PLAN.md#current-order)
+tiếp variant cảhai chết/tie với nativecontract trước khi chọn resultpolicy. Chưa fullmatch/K5/K6a/
+vanilla/LANInternet/fullauth/codec/validator/authority/toànreset/generalmembership/ba bom/vật cản/
+allchain. Models nativeframer/getter/heap chỉ corroborate bytes/fields, khác nativecallbacks/runtime.
