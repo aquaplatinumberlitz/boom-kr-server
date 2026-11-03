@@ -35,7 +35,7 @@ Trace mới saureturn enable/pending0 nhưng chưaReadycallback2; runexit143/thi
 Tiếp đo inputWndProc/button trướcReady và lưu progressngay; chưafullmatch/K6a/LAN/Internet.
 
 CP078 đã merge [PR117](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/117) tại `fff30b1`.
-CP079 tự kiểm/chờ PR; review độc lập [waived](docs/evidence/checkpoints/review-waiver.json).
+CP079 tự kiểm/[PR119](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/119); review độc lập [waived](docs/evidence/checkpoints/review-waiver.json).
 Audit **AUD023/CP076**, periodic kế **CP080**.
 [Yêu cầu chủ dự án](docs/evidence/owner-directives/continuous-work.json): tiếp tục ngay việc kế trong
 PLAN sau mỗi checkpoint/commit/PR, không tự dừng/chờ nhắc.
