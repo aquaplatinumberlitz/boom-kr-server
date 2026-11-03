@@ -1,7 +1,7 @@
 # Kế hoạch server giả lập KR 00967
 
 Nguồn chuẩn của project `boom-kr-server`; bản nhập từ plan đã được dsh1/dsh2 review tại `1eee46d`.
-Cập nhật03/11 JST (CP079): [585/Readycounterexample](PROTOCOL.md#return585-ready) khôngchỉraphải106mới; interruptedtrace chưacallback2/nofinalrun. Tiếp inputWndProc/button→Ready/đoownership vàdurableprogress; AUD023, audit kếCP080.
+Cập nhật03/11 JST (CP080): [input writer/hover control](PROTOCOL.md#ready-input) và hai chu kỳ Battle sau rejoin cùng run; service giữ nguyên. Tiếp input/placement bom khác owner; AUD024, audit kếCP084.
 
 
 ### Mục tiêu, baseline và phạm vi
@@ -37,17 +37,17 @@ với client Rust không chứng minh có thể điều khiển client KR bằng
 
 ### Tiến độ hiện hành theo bằng chứng
 
-| Task/mốc | Trạng thái tại CP079 | Nguồn chuẩn |
+| Task/mốc | Trạng thái tại CP080 | Nguồn chuẩn |
 |---|---|---|
 | KRE-004/issue6 | Đã review/merge PR7 và đóng issue:recipe r1 đến local accept;không phải full K1 | [Wine r1](evidence/wine/README.md) |
 | Bootstrap reply | PR8 đã merge;debugger ProcessPatchreturn1,không ép success | [bootstrap evidence](evidence/bootstrap-wire/README.md) |
 | KRE-005a/issue9,R2 | PR10 đã merge:3 cold start cửa sổ/second accept;issue9 còn mở | [R2 evidence](evidence/wine-r2/README.md) |
 | WCP hai-reply | Run CP001 là lịch sử chưa C→S; CP006 đã đo request đầu trên copy tham số hóa | [PROTOCOL](PROTOCOL.md#wcp),[WCP evidence](evidence/wcp/README.md) |
-| KRE-005b/issue14 | CP006–078 đã merge; CP079585Ready/counterexample/interruptedtrace tự kiểm/chờ PR; fullround/authority/full auth còn mở | [Q-023](RESEARCH.md#q-023), [service](evidence/probe-service/README.md) |
+| KRE-005b/issue14 | CP006–079 đã merge; CP080 input writer/control và hai chu kỳ sau rejoin tự kiểm/chờ PR; fullround/authority/full auth còn mở | [Q-023](RESEARCH.md#q-023), [service](evidence/probe-service/README.md) |
 | K0/K1 | Chưa nghiệm thu toàn gate;Windows vanilla/control ownership và các điều kiện còn thiếu giữ mở | Gate dưới,[Q-022](RESEARCH.md) |
 | K2a/K2 | Primitive/WCP, CP057stream native/model và CP058–060authcallback137/135/errors0 đã có; fullcodec/authauthority/reconnect và gate chưa pass | [PROTOCOL](PROTOCOL.md#login-auth),[Q-023](RESEARCH.md#q-023) |
 | K3 | Copy đã vẽUI/đóngnotice, A/B/Cprofile đọc sạch và mộtnamedcachewarm được nhận; identityauthority/toàncache/codec/K3 chưa nghiệm thu | [Contract sảnh](PROTOCOL.md#channel-lobby) |
-| K4–K7 | CP039–040 có hai vòng statepeer/result và phục hồi EOF; CP041–043 đo stale158/165/159; CP044 có timer abort và B/C mới bom/death/result/return. CP047 byte khóa, CP049 guard124 và CP050 service EOF/cleanup/hold99 đã đo hẹp; CP051–054 có peer mới B/C/setupEOF, CP056reportguard và CP060newprofileC/B-Ccycle; CP065/066distinctspawn/tranhitem vàCP067/068C2Sguards/hiddenitems cósource hiện hành; membership tổng quát/variants/toànreset/authority chưa nghiệmthu. CP074 nativepreclock107/IDclear/UI đã có; CP07512actualTCPreplayrejected/currentR2effects, chưaR2rank trongboundedrun. Chưa K6a/LAN/Internet | [Giới hạn lifecycle](PROTOCOL.md#abort-timer) |
+| K4–K7 | CP039–040 có hai vòng statepeer/result và phục hồi EOF; CP041–043 đo stale158/165/159; CP044 có timer abort và B/C mới bom/death/result/return. CP047 byte khóa, CP049 guard124 và CP050 service EOF/cleanup/hold99 đã đo hẹp; CP051–054 có peer mới B/C/setupEOF, CP056reportguard và CP060newprofileC/B-Ccycle; CP065/066distinctspawn/tranhitem vàCP067/068C2Sguards/hiddenitems cósource hiện hành; membership tổng quát/variants/toànreset/authority chưa nghiệmthu. CP074 nativepreclock107/IDclear/UI đã có; CP07512actualTCPreplayrejected/currentR2effects, chưaR2rank trongboundedrun; CP080 hai chu kỳ sau rejoin có cả ba effect mỗi vòng, input-control đã đo. Chưa K6a/LAN/Internet | [Giới hạn lifecycle](PROTOCOL.md#abort-timer) |
 
 <a id="current-order"></a>
 ### Thứ tự công việc hiện hành
@@ -60,17 +60,18 @@ KRE-005b/issue14 vẫn mở. Các bước dưới là **thứ tự ưu tiên**, 
 xong checkpoint/commit/PR thì chuyển ngay việc kế tiếp trong thứ tự này, không tự dừng/chờ nhắc.
 Một blocker chỉ kết thúc nhánh đo tương ứng; ghi rõ rồi tiếp việc độc lập có thể làm, không tự đóng gate.
 
-1. **KR-R004/X002/S001 — UIinput trướcReadycallback:** CP079reuseCP069two-cyclecounterexample
-   bác necessitynew106; khôngservicefix/wrapper106. Availablepostreturnnativeenable1/pending0/ReadyUI
-   nhưngkhôngentryReady2,finalOSclickrecordmissingdoexit143. Trướcnhánhmới đọc CP016 input/filter/
-   WndProc1259C00→125C250/button1509376/1509525/delegates vàCP028Ready, đốichiếu initial vsreturned
-   callbacks với cachedsamehashlocators. Chỉ thêmknownread-onlyprobes/inputownership/focus/dispatch,
-   không lạicodec/packet/clock/gameplay/writer. Dùng actualstatesA/B_env; persist progress/rolePID/
-   display/focus/Xevent/action trước/sau/UI/phase/runtimefacts vàfinal, không chỉcuốirun; controllerbudget
-   nhỏhơnouterlifecycle, dừngsaukhiđãcóexactboundary, khônglặp550schờ95. No nativefunction/stateforcing.
-   Nếu chứngminhảnh/clickkhôngđivàobutton, ghiđúnginputguard/newhypothesis rồiđotiếpminimal. Nếu
-   khôngnewedge, giữblocker/chuyểncurrenthaiownerbom (CP027/071reference, noholdretry). Periodic
-   auditCP080bắtbuộc. Chưa2cycles/fullmatch/K6a/auth/fullvalidator/gates; service/profile giữ.
+1. **KR-F005/S001 — input/placement bom khác owner trong profile hiện hành:**
+   [CP080](PROTOCOL.md#ready-input) đã đo writer của Ready/Start và hai chu kỳ sau rejoin;
+   không tiếp nhánh106 hay lặp phép đo click này. Trước nhánh mới đọc CP027 hai owner actual118,
+   CP064/071 khoảng cách/power/feedback và nguồn VN bomb/input; pin nguồn đúng câu hỏi. Khoảng trống
+   là B ở vị trí đã đo nhưng chưa gửi118 trong current profile, chưa phải consumer chain đã sai.
+   Dùng normal input/focus/hover đã đo, durable roleenv/PID/action/phase; trace có mục tiêu đường
+   Space→điều kiện đặt→actual118, so A hoặc ca CP027. Chỉ thử chain khi có actual118/159 hai owner
+   trong tầm, cần native secondary process trong root158 trước timer riêng. Không tăng hold/retry
+   vô hướng, không ép state/hàm, không sửa wire/profile để tự tạo oracle. Tắt watch khi rời lifetime
+   UI; không xem storage cũ sau stage13 là button sống. Reuse current item/stat/reset/contracts.
+   Nếu có cạnh cụ thể thì đo tiếp; nếu blocker rõ mà không new edge, ghi rồi tiếp variant tích hợp
+   độc lập cần thiết. AUD024 qua080; audit định kỳ kếCP084. Gate giữ mở.
 2. **KR-B003/KR-F006 — nợ có giới hạn:** [CP057](PROTOCOL.md#codec-stream-boundaries) đã đo stream/
    seq/bounds trong model, không mở lại76split hoặc cấp buffer lớn chỉ để vượt allocationguardFFFFFFFF.
    Full modes/prefix guard/live reset, distance/auth/transport/kim-cứu của reportguard giữ trong RESEARCH;

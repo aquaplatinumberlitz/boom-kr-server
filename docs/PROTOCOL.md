@@ -1,6 +1,6 @@
 # KR 00967 — contract tương thích client gốc
 
-Revision kr-legacy-contract-r1; cập nhật03/11/2026 JST (CP079).
+Revision kr-legacy-contract-r1; cập nhật03/11/2026 JST (CP080).
 **Contract có bằng chứng từng phần; chưa nghiệm thu full codec K2**.
 Lộ trình và thứ tự task chỉ giữ ở [REWRITE_PLAN — KRE](PLAN.md).
 Đây là contract của repo server KR. ADR0009 của bản viết lại là nguồn lịch sử để so sánh;
@@ -1958,7 +1958,7 @@ liệt kê và phân biệt với nguyên bản trong mọi demo.
 <a id="authority"></a>
 ### Authority matrix hiện hành và gate review
 
-Bảng này tổng hợp bằng chứng từng phần đến CP079; chưa phải toàn contract server gốc. Mỗi hàng khi
+Bảng này tổng hợp bằng chứng từng phần đến CP080; chưa phải toàn contract server gốc. Mỗi hàng khi
 triển khai phải bổ sung riêng **creator, simulator, validator, broadcaster, peer-editable state**, với
 locator/trace và trạng thái từng ô; những vai trò không nêu dưới đây hiện `unknown` cho KR.
 
@@ -1970,7 +1970,7 @@ locator/trace và trạng thái từng ô; những vai trò không nêu dưới 
 | Block destroy/item reveal | CP032 nativecontract; CP068 [currentservice/list2/reportgate/effect/reset](#current-hidden-items) cảhai view | Drop algorithm/server validator, variants/chain và phép loại transport riêng còn thiếu |
 | Item placement/pickup | CP030 nhặt/tranh index; CP031/032 stat/itemẩn; CP045 [bảng nhóm/Roller/MaxPower hai view/reset](#item-families) | CP042 có [old165/index reuse](#item-generation); runtime tại max, KRspeed→px/s/TTL/activevariants, drop/toàn124validator/generation/reset còn thiếu; CP062 [winner đảo trên actual tranh index](#current-pickup-race) đã có scope riêng |
 | Trap/death | CP029/036; CP037 kim và tranh chấp cứu/diệt; [kim](#needle-selfescape), [precedence](#contact-precedence) | CP063 [guard stale/duplicate](#report127-freshness) là policy hẹp; CP075 [TCPsame/old17,19](#current-tcp-replay) đã đo; fullvalidator/firstseen/forgedforward/generation/variants/result21 vẫn thiếu |
-| Result/reset | CP039 hai vòng statepeer/result/21/return và reset field hẹp; CP044 [timer ở EOF và vòng B/C mới](#abort-timer) | CP041 có [payload cũ khi ID reuse](#round-generation); arbitration/toàn generation/entity/timer/peer/seq không rò vẫn mở; phân biệt run chờ sai origin với ca hoàn tất |
+| Result/reset | CP039 hai vòng statepeer/result/21/return và reset field hẹp; CP044 [timer ở EOF và vòng B/C mới](#abort-timer); CP080 [hai chu kỳ sau rejoin với input đã kiểm](#ready-input) | CP041 có [payload cũ khi ID reuse](#round-generation); arbitration/toàn generation/entity/timer/peer/seq không rò vẫn mở; phân biệt run chờ sai origin với ca hoàn tất |
 | Room lifecycle | CP034 leave/promotion/EOF/return; CP035 rejoin/Ready; CP040 chủ B/C Start; CP044 [B/C bom/death/result/return sau abort](#abort-timer) | Bầu chủ/giữ ID-slot/forfeit là policy stub; guest EOF trả A về phòng/xóa B đã đo riêng; CP050 có [service EOF/cleanup](#service-eof); CP051 có [C mới/Start B trong service](#service-replacement); CP052 [guest setup EOF](#setup-eof), CP053 [host với peer chưa map](#host-setup), CP054 [C trước vòng đầu](#prestart-replacement), CP072 [preclock forfeit/return](#preclock-eof), CP074 [native107/IDclear và UI](#preclock-cleanup), CP076 [Back86/emptyroomrecreate cùng channel](#back86-membership) đã đo; reconnect cùng account/disconnect variants/toàn reset còn mở |
 | Peer lifecycle | CP027 actual99→153; CP045–047 [oldUDP actor/keyguard/endpointcontrol](#udp-generation), CP070 [transport cut hai chiều](#current-udp-causality) | CP048 [service fixture](#probe-service) đã tích hợp key policy hẹp; low8reuse/roster/UDPtype khác/fullgrammar/reliability/relay/reset còn mở. Không coi đổi cổng riêng lẻ là freshness guard hoặc keybyte là auth |
 
@@ -2723,7 +2723,7 @@ Serviceerrors0/khôngnativefallback/errorstate tronghai window; không suy sửa
 Forfeit/timing/hold là **design**, không servergốc/death. CP072missingnativecleanup được đo bổ sung,
 không viết lại history hoặc suy causalroot oldreset/blackframe. Chưa accountresume/hostvariant/
 timeout/loadfail/wholemembership/fullreset/gameplay/2cycles/K4/K5/K6a/fullmatch/LANInternet/vanilla.
-Bước tiếp [PLAN](PLAN.md#current-order) là selectedTCPguardadmission, không tìm lại107/175/180.
+Bước tại CP074 (lịch sử) là selected TCP guard admission; CP075 bên dưới bổ sung kết quả. Thứ tự hiện hành chỉ ở [PLAN](PLAN.md#current-order).
 
 <a id="current-tcp-replay"></a>
 ### Body cũ/trùng qua TCP channel thực — CP075
@@ -2788,8 +2788,7 @@ ActualB95/StartA104 sau rejoin→121129/errors0/99/197196153/clock1 cảhai, ros
 Đây là **mộtStart/clock**, không trận/result/return hoặc hai vòng. Membership/chief/timing/fixture là
 **design** được client chấp nhận trong ca hẹp; nativehandler/slot/profile/UI có evidence riêng.
 Chưa hostleavecònpeer/activeleave/accountresume/generalroom/fullauth/fullcodec/fullvalidator/
-fullreset/vanilla/K4/K5/K6a/fullmatch/LANInternet. [Bước tiếp](PLAN.md#current-order) là Battle cùngrun
-sau rejoin theo route đã biết, không RE lại body/writer/consumer.
+fullreset/vanilla/K4/K5/K6a/fullmatch/LANInternet. Bước tại CP077 (lịch sử) là Battle cùng run sau rejoin; CP078 bổ sung kết quả. Thứ tự hiện hành chỉ ở [PLAN](PLAN.md#current-order).
 
 <a id="rejoin-battle-cycles"></a>
 ### Battle sau guest rejoin: một vòng confirmed, hai vòng partial — CP078
@@ -2808,8 +2807,7 @@ là153bịreject/clientfailure. RawUIhelperB-labeledDISPLAY0image thực tếAho
 loại khỏiBproof; giữfailedhelper/setup/correction. Không suy request từOSclick hoặc ownership từpath.
 Plannedtwo-cycleassertfail giữ, boundedfirstpass không thay. Nativeframer/getter/heap làmodels, callback/
 state thực cónguồn riêng. Chưa hairesultreturn/fullreset/fullmatch/K5/K6a/vanilla/LANInternet/auth/
-codec/validator/hostlivepeer/activeleave/accountresume. [PLAN](PLAN.md#current-order) target585/Ready,
-không lặp nguyênlongrun hoặc tănghold mà thiếu observable. Service/rankpolicy không sửa trongCP078.
+codec/validator/hostlivepeer/activeleave/accountresume. Target tại CP078 (lịch sử) là 585/Ready; CP079 bổ sung counterexample. Thứ tự chỉ ở [PLAN](PLAN.md#current-order). Service/rank policy không sửa trong CP078.
 
 <a id="return585-ready"></a>
 ### 585 sau return và Ready2 — CP079
@@ -2830,3 +2828,43 @@ Counterexample cóhash/finalrun gốc; tracegiánđoạn cóscope riêng, không
 [PLAN](PLAN.md#current-order) đoWndProc/inputfilter/button→Ready vớiprogressmetadata lưu ngay,
 khôngặp550s/vòng2chờvôhạn/đổireplythiếubằngchứng. Fullmatch/2cycles/currentreset/gates/LAN/
 Internet/vanilla/fullauth/codec/validator/membershipvariant giữmở.
+
+
+<a id="ready-input"></a>
+### Input Ready/Start sau return và hai chu kỳ sau rejoin — CP080
+
+[Source-first/control/run/hash/correction](evidence/ready-input/README.md),
+**kr_runtime/confirmed hẹp** trên modified Wine copy/current profile. CP016 cung cấp input path,
+CP028 lịch sử retry, CP069/079 counterexample không cần106 mới; VN chỉ checklist, không numeric port.
+
+So cùng run: click Ready đầu qua WndProc1259C00/filter→button1509376 command3500,
+mouse-up state1→release1509629/delegate1→callbackDD3940→DDE760→actual95. Click sau return
+cũng nhận down/up đúng tọa độ, enabled1/gateA8=1/style21, filter không consume; nhưng delegate3
+chen trước up và state0, không callback. Đây là boundary trước Ready guard, không pending/local/
+count/host/throttle từ chối hoặc thiếu reply106 đã chứng minh.
+
+Watch A/B **+148/+14C**: down instruction1509711 đặt state1 (watch post-PC150971B);
+message nội bộ **0x464** tới button, instruction1509438 chép saved+14C=0 về state+148
+(post-PC150943E), trước mouse-up. Stack1504E2E→150475D nối đúng helper1504D0A. Helper tĩnh
+có đổi control giữ ở manager+24, gửi old465/new464 khi khác, rồi lưu handle mới; không gán
+ý nghĩa Win32 cho các message nội bộ hoặc suy nguyên nhân Windows vanilla. Một thân helper mới,
+range0x300 khớp static/runtime/modO; consumer/writer còn lại tái dùng cache.
+
+Control **ordinary OS UI/design**: đưa pointer ra500,450 rồi vào605,526/chờ0,5s mỗi bước trước
+nhấn1s. 464 xảy ra trước down; watch state1→release0, không restore chen giữa. Cả BReady/AStart
+sau return đi callback ngay và actual95/104 một lần, không retry/new106/service/profile/client patch
+hoặc native forcing. Watch-run trước có B retry95 nhưng AStart đầu vẫn mất và chỉ một vòng;
+không ghép run đó thành hai vòng. Không gọi UI recipe là sửa contract server hoặc universal timing fix.
+
+**Cùng-run integration confirmed hẹp:** guest Back/rejoin rồi hai native121/clock/175/180/refresh
+ở cảhai view, tám TCP/IDs1,2/slots0,1/sequence tiếp tục, key12345→12346. Mỗi vòng actual124
+Roller17/Bomb27/Fire28, native165 delta hai phía và baseline vòng2; actual118 ID1..4/power1,2,1,2,
+159/158 tương ứng, stateA1 trước175. Hidden-pointer join không đo mới. Native framer/getter/heap
+models chỉ corroborate bytes/fields, khác native callbacks/runtime. Policy rank/drop/fuse/host là design.
+
+Old-storage watch sau Start2/stage13 có hai stack-unwind truncations mỗi role ở post-PC152590D;
+raw/failure giữ, parser/checker tách đúng warning khỏi probe evaluation error. Không suy free/destructor
+hoặc UI state từ địa chỉ sau lifetime; phép đo kế phải tháo watch lúc rời UI. Native trace vẫn đủ hai
+chu kỳ; planned assertion/stat không bỏ. Chưa fullmatch/K5/K6a/vanilla/LAN/Internet/full auth/codec/
+validator/authority/reset/general membership; [PLAN](PLAN.md#current-order) chuyển khoảng trống bom
+khác owner, không tiếp nhánh106 hoặc lặp Ready cause.
