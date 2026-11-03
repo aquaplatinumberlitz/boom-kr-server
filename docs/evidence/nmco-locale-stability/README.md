@@ -8,7 +8,7 @@ Codex solo/tự kiểm, [review waived](../checkpoints/review-waiver.json), tíc
 
 **Phát hiện:** popup2000:0 tái hiện ở auxiliary CALauncher không có gameTCP; chưa có bằng chứng lỗi
 locale là nguyên nhân mainSIGABRT. Đã sửa hướng “stack96A15A là locale caller” của CP072. Chưa sửa
-client/service/provider hay gọi force success. Startup main historicalcause và native107preclock còn mở.
+client/service/provider hay gọi force success. TạiCP073, startup main historicalcause và native107preclock còn mở.
 
 `reuse-question.json` pin CP006–020 NMCOidentity/imports/guard/copy, CP064failure, CP072raw positive/
 negative, KR/VN login/protocol/session, boom-rs/l10n/archive; followup reuse CP0041254CC0/error/fallback
@@ -91,3 +91,6 @@ slot1ID2→0/chief observer≤30s, đồng thời trace known1254CC0 errorstate/
 startupfail để giữ đúng cause. Chưa retry TCPproxy/chain hoặc bypasslocale/abort; không mở provider
 sâu hơn khi nó chưa chặn mainpositivecontrols. Khi có failure mới, dùng actualerror/caller/input để mở
 đúng nhánh; sendercleanup vẫn không là native107proof.
+
+Bổ sung sauCP073: [CP074 đã đo native107/IDclear/UI](../preclock-cleanup/README.md);
+startup main historicalcause vẫnunknown. Các bước tiếp trong đoạn trên là lịch sử CP073; traPLAN hiện hành.

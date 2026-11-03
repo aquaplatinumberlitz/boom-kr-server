@@ -1,7 +1,7 @@
 # Kế hoạch server giả lập KR 00967
 
 Nguồn chuẩn của project `boom-kr-server`; bản nhập từ plan đã được dsh1/dsh2 review tại `1eee46d`.
-Cập nhật03/11 JST (CP075): [TCPbodyreplay](PROTOCOL.md#current-tcp-replay) đã đo12reject/currentR2effects; hai-cycle acceptance partial do hếtbudget trướcR2rank. Tiếp membershipBack86/tạo lại phòng; AUD022, audit kếCP076.
+Cập nhật03/11 JST (CP076): [Back86/emptyroomrecreate](PROTOCOL.md#back86-membership) cùngTCP/nativeUI đã đo; failedfix/profileNone giữ riêng,79server tests. Tiếp guestBack/rejoin với A còn phòng; AUD023, audit kếCP080.
 
 
 ### Mục tiêu, baseline và phạm vi
@@ -37,13 +37,13 @@ với client Rust không chứng minh có thể điều khiển client KR bằng
 
 ### Tiến độ hiện hành theo bằng chứng
 
-| Task/mốc | Trạng thái tại CP075 | Nguồn chuẩn |
+| Task/mốc | Trạng thái tại CP076 | Nguồn chuẩn |
 |---|---|---|
 | KRE-004/issue6 | Đã review/merge PR7 và đóng issue:recipe r1 đến local accept;không phải full K1 | [Wine r1](evidence/wine/README.md) |
 | Bootstrap reply | PR8 đã merge;debugger ProcessPatchreturn1,không ép success | [bootstrap evidence](evidence/bootstrap-wire/README.md) |
 | KRE-005a/issue9,R2 | PR10 đã merge:3 cold start cửa sổ/second accept;issue9 còn mở | [R2 evidence](evidence/wine-r2/README.md) |
 | WCP hai-reply | Run CP001 là lịch sử chưa C→S; CP006 đã đo request đầu trên copy tham số hóa | [PROTOCOL](PROTOCOL.md#wcp),[WCP evidence](evidence/wcp/README.md) |
-| KRE-005b/issue14 | CP006–074 đã merge; CP075 TCPguardreplay/currentR2effects tự kiểm/tích hợp theo [PR111](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/111); fullround/authority/full auth còn mở | [Q-023](RESEARCH.md#q-023), [service](evidence/probe-service/README.md) |
+| KRE-005b/issue14 | CP006–075 đã merge; CP076 Back86/emptyroomrecreate tự kiểm/chờ PR; fullround/authority/full auth còn mở | [Q-023](RESEARCH.md#q-023), [service](evidence/probe-service/README.md) |
 | K0/K1 | Chưa nghiệm thu toàn gate;Windows vanilla/control ownership và các điều kiện còn thiếu giữ mở | Gate dưới,[Q-022](RESEARCH.md) |
 | K2a/K2 | Primitive/WCP, CP057stream native/model và CP058–060authcallback137/135/errors0 đã có; fullcodec/authauthority/reconnect và gate chưa pass | [PROTOCOL](PROTOCOL.md#login-auth),[Q-023](RESEARCH.md#q-023) |
 | K3 | Copy đã vẽUI/đóngnotice, A/B/Cprofile đọc sạch và mộtnamedcachewarm được nhận; identityauthority/toàncache/codec/K3 chưa nghiệm thu | [Contract sảnh](PROTOCOL.md#channel-lobby) |
@@ -60,17 +60,15 @@ KRE-005b/issue14 vẫn mở. Các bước dưới là **thứ tự ưu tiên**, 
 xong checkpoint/commit/PR thì chuyển ngay việc kế tiếp trong thứ tự này, không tự dừng/chờ nhắc.
 Một blocker chỉ kết thúc nhánh đo tương ứng; ghi rõ rồi tiếp việc độc lập có thể làm, không tự đóng gate.
 
-1. **KR-R004/X003/S001 — Back86 và room membership cùng channel:** CP075 đã đo selectedTCPguard
-   admission/currentR2effects, planned hai-cycle result còn partial; không lặp nguyên run hoặc tìm lại
-   writers/codec/auth/clock. CP074 normalBack86empty/UIsảnh nhưng service chưa explicit86/resetmarkers.
-   Reuse CP034Back/86/room81-82 và CP050/052–054cleanup/host/roster, nguồn VN lobby/session chỉ làm
-   reference; xác định room member khác TCPconnection. Nativecontrol sau Back: actual81 tạo lại/585/
-   106/map/UI, đối chiếu service markers còn cũ. Chỉ sửa service khi có trigger/bằng chứng, giữ loghistory,
-   seq/socket/identity và jobgeneration; không mặc định generalleave/hostpromotion/accountresume.
-   Kiểm one-room profile và peer còn lại trước mở rộng, không fixtureopcode/layoutVN. Runtimeprivate
-   namespace/lease/budget mới theo câu hỏi, không chạy chồng hoặc overwrite raw đãseal.
-   CP075 thiếu R2rank không được tự nâng acceptance; khi integration có điều kiện mới dùng budget
-   cho cảrank+return+refresh, không hạ delaypolicy hoặc gọi boundedpass là hai-roundpass.
+1. **KR-R004/X003/S001 — guest Back/rejoin khi host còn phòng:** CP076 đã đo Aalone sau BEOF,
+   Back86→refresh241/91→new81/86/585/106/110/map/UI trên cùngTCP, chỉ scope hẹp. Tiếp BidleBack khi
+   A cònmapped: reuse CP034107/IDclear/chief và CP035guest82/87/585/rejoin/Ready, cùng currentprofile/
+   dynamicsequence; control phải có actual86/82 trướcfix, không suy OSinput thành request. Kiểm A không
+   giữ ghostB, B vềsảnh/rejoin cùngidentity/slot/socket, không preannouncedfixture phục hồi member đã rời.
+   NativeReady/Start chỉ sau membership/map hợp lệ; freshround phải dùng allocator hiện tại, không reset
+   seq/keyhistory. Không tự mở hostleave/activeleave/accountresume/mọiroomvariant hoặc gọi rejoin làfullmatch.
+   Dùng private namespace/lease/rawhash, gom control/fix có ý nghĩa. CP075 thiếu R2result vẫnpartial;
+   khi integration có điều kiện mới dành đủbudget rank+return+refresh, không hạ policyđểpass.
 2. **KR-B003/KR-F006 — nợ có giới hạn:** [CP057](PROTOCOL.md#codec-stream-boundaries) đã đo stream/
    seq/bounds trong model, không mở lại76split hoặc cấp buffer lớn chỉ để vượt allocationguardFFFFFFFF.
    Full modes/prefix guard/live reset, distance/auth/transport/kim-cứu của reportguard giữ trong RESEARCH;

@@ -1,7 +1,7 @@
 # CP075 — Guard body cũ/trùng qua TCP thực
 
 Baseline CP074/PR109 merge `f84823dd8745930713de1d99c5e7fb45d83ee50d`; KRE-038/[issue110](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/110).
-Codex solo/tự kiểm; [review waived](../checkpoints/review-waiver.json), tích hợp theo [PR111](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/111).
+Codex solo/tự kiểm; [review waived](../checkpoints/review-waiver.json), đã merge [PR111](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/111) tại `41f0fa9`.
 [Contract/giới hạn](../../PROTOCOL.md#current-tcp-replay), [gap](../../RESEARCH.md#gap-diagnostic-service),
 [thứ tự](../../PLAN.md#current-order). Raw/scripts/seals tại `local/research/codex/current-tcp-replay-r1/`.
 
@@ -65,5 +65,7 @@ Recipeexact `tcp-current-recipe.json`; `run_probe.py tcp-current CA-r2-stage-soc
 wine_probe_current_tcp_replay.py tcp.gdb` (đườngscript đầy đủ trong recipe). Seal raw saucomplete;
 parsefields/lifecycle/hidden/derive_roles/parse_tcp/native_actual/native_reports/native153 rồi kiểm
 bounded theo scope-change. Không chạy lại cùnglabel/overwrite; không lặp run chỉ để có ảnh đẹp.
-Khoảng trống hai-cycle guard integration giữ rõ. Bước độc lập tiếp: native Back86 đã có ởCP074 nhưng
+Khoảng trống hai-cycle guard integration giữ rõ. Bước tạiCP075 (lịch sử): native Back86 đã có ởCP074 nhưng
 service còn giữ membership/setup markers; đối chiếu nguồn và đo create/join lại cùngchannel trướcfix.
+
+[CP076 bổ sung emptyroomBack/recreate](../back86-membership/README.md); CP075 hai-cycle guardacceptance vẫnpartial. Thứ tự hiện tại ởPLAN.

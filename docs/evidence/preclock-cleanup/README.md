@@ -60,9 +60,12 @@ parsefields/lifecycle/derive/native_packets/verify first, analyze_ui cho cảhai
 không chạy chồnglease. `first-verification.json` giữ scope native-first; ui-verification thêm render/input,
 không sửa CP072 raw hoặc nhận lacktrace cũ là nativefailure. Sourcebinary/DB verified nguyên.
 
-Bước tiếp theoPLAN: currentTCPcaptured-body replay qua socket/framer/currentsequence cho guard124/
+Bước tiếp tạiCP074 (lịch sử): currentTCPcaptured-body replay qua socket/framer/currentsequence cho guard124/
 118/127. Tái dùng CP049failedproxy scope và CP063/067dispatchcontrol, đổi sang currentauth/cache/
 basicprofileCP058/059/069 đã qua67 (CP073duocontrol), trướcinjection phải forward exactbyte. Một
 boundedattempt/newcondition/provenance originSHA/bodySHA/seq; replayproxyemitted không nativewriter
 mới, không auth/fullvalidator. Không tìm lại writer/consumer/clock. Nativecleanup/knownUI vừa đo không
 K4/K5/K6a/fullmatch/LANInternet/Windowsvanilla/toànreset/accountresume/mọiEOFnhiềupeer.
+
+Bổ sung sauCP074: [CP075 đã đo TCPselectedreplay](../current-tcp-replay/README.md);
+[CP076 đo Back/emptyroomrecreate](../back86-membership/README.md). Phạm vi/rawCP074 giữ nguyên; việc hiện hành chỉ ởPLAN.

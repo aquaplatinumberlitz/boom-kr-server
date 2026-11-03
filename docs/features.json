@@ -1,7 +1,7 @@
 {
   "schema": "kre-feature-index-v1",
   "build": "KR00967",
-  "as_of": "2026-11-03 JST / CP075 selectedactualTCPreplay/currentR2effects, planned2cyclepartial; selfcheck; AUD022/nextCP076",
+  "as_of": "2026-11-03 JST / CP076 narrowBack86/emptyroomrecreate; selfcheck branchpending; AUD023/nextCP080",
   "sources": {
     "plan": "docs/PLAN.md",
     "contract": "docs/PROTOCOL.md",
@@ -926,7 +926,8 @@
           "docs/evidence/service-replacement/README.md",
           "docs/evidence/setup-eof/README.md",
           "docs/evidence/host-setup/README.md",
-          "docs/evidence/prestart-replacement/README.md"
+          "docs/evidence/prestart-replacement/README.md",
+          "docs/evidence/back86-membership/README.md"
         ]
       },
       "coverage": {
@@ -963,7 +964,8 @@
               "docs/evidence/service-replacement/README.md",
               "docs/evidence/setup-eof/README.md",
               "docs/evidence/host-setup/README.md",
-              "docs/evidence/prestart-replacement/README.md"
+              "docs/evidence/prestart-replacement/README.md",
+              "docs/evidence/back86-membership/README.md"
             ]
           },
           "windows_original": {
@@ -981,7 +983,7 @@
         },
         "implementation": {
           "state": "partial",
-          "delivery": "via_pr",
+          "delivery": "branch_pending",
           "refs": [
             "server/probe_service.py",
             "docs/PROTOCOL.md#service-eof",
@@ -993,7 +995,9 @@
             "docs/PROTOCOL.md#host-setup",
             "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/67",
             "docs/PROTOCOL.md#prestart-replacement",
-            "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/69"
+            "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/69",
+            "docs/PROTOCOL.md#back86-membership",
+            "server/test_room_reentry.py"
           ]
         },
         "integration": {
@@ -1003,7 +1007,8 @@
             "docs/evidence/service-replacement/README.md",
             "docs/evidence/setup-eof/README.md",
             "docs/evidence/host-setup/README.md",
-            "docs/evidence/prestart-replacement/README.md"
+            "docs/evidence/prestart-replacement/README.md",
+            "docs/evidence/back86-membership/README.md"
           ]
         },
         "gate": {
@@ -2584,7 +2589,8 @@
           "docs/evidence/prestart-replacement/README.md",
           "docs/evidence/preclock-eof/README.md",
           "docs/evidence/nmco-locale-stability/README.md",
-          "docs/evidence/preclock-cleanup/README.md"
+          "docs/evidence/preclock-cleanup/README.md",
+          "docs/evidence/back86-membership/README.md"
         ]
       },
       "coverage": {
@@ -2624,7 +2630,8 @@
               "docs/evidence/prestart-replacement/README.md",
               "docs/evidence/preclock-eof/README.md",
               "docs/evidence/nmco-locale-stability/README.md",
-              "docs/evidence/preclock-cleanup/README.md"
+              "docs/evidence/preclock-cleanup/README.md",
+              "docs/evidence/back86-membership/README.md"
             ]
           },
           "windows_original": {
@@ -2642,7 +2649,7 @@
         },
         "implementation": {
           "state": "partial",
-          "delivery": "via_pr",
+          "delivery": "branch_pending",
           "refs": [
             "server/probe_service.py",
             "docs/PROTOCOL.md#service-eof",
@@ -2654,7 +2661,9 @@
             "docs/PROTOCOL.md#host-setup",
             "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/67",
             "docs/PROTOCOL.md#prestart-replacement",
-            "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/69"
+            "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/69",
+            "docs/PROTOCOL.md#back86-membership",
+            "server/test_room_reentry.py"
           ]
         },
         "integration": {
@@ -2667,7 +2676,8 @@
             "docs/evidence/prestart-replacement/README.md",
             "docs/evidence/preclock-eof/README.md",
             "docs/evidence/nmco-locale-stability/README.md",
-            "docs/evidence/preclock-cleanup/README.md"
+            "docs/evidence/preclock-cleanup/README.md",
+            "docs/evidence/back86-membership/README.md"
           ]
         },
         "gate": {
@@ -2719,7 +2729,8 @@
           "docs/evidence/preclock-eof/README.md",
           "docs/evidence/nmco-locale-stability/README.md",
           "docs/evidence/preclock-cleanup/README.md",
-          "docs/evidence/current-tcp-replay/README.md"
+          "docs/evidence/current-tcp-replay/README.md",
+          "docs/evidence/back86-membership/README.md"
         ]
       },
       "coverage": {
@@ -2767,7 +2778,8 @@
               "docs/evidence/mixed-owner-power/README.md",
               "docs/evidence/preclock-eof/README.md",
               "docs/evidence/nmco-locale-stability/README.md",
-              "docs/evidence/preclock-cleanup/README.md"
+              "docs/evidence/preclock-cleanup/README.md",
+              "docs/evidence/back86-membership/README.md"
             ]
           },
           "windows_original": {
@@ -2785,7 +2797,7 @@
         },
         "implementation": {
           "state": "partial",
-          "delivery": "via_pr",
+          "delivery": "branch_pending",
           "refs": [
             "server/probe_service.py",
             "docs/PROTOCOL.md#service-eof",
@@ -2809,7 +2821,9 @@
             "docs/PROTOCOL.md#current-hidden-items",
             "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/97",
             "docs/PROTOCOL.md#basic-battle",
-            "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/99"
+            "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/99",
+            "docs/PROTOCOL.md#back86-membership",
+            "server/test_room_reentry.py"
           ]
         },
         "integration": {
@@ -2836,7 +2850,8 @@
             "docs/evidence/preclock-eof/README.md",
             "docs/evidence/nmco-locale-stability/README.md",
             "docs/evidence/preclock-cleanup/README.md",
-            "docs/PROTOCOL.md#current-tcp-replay"
+            "docs/PROTOCOL.md#current-tcp-replay",
+            "docs/evidence/back86-membership/README.md"
           ]
         },
         "gate": {
