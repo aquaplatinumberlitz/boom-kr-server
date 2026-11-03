@@ -2,7 +2,7 @@
 
 Baseline CP077/PR115 merge `a3ca2ab064280b0aaf863223c5401d5e094c1b68`;
 KRE-041/[issue116](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/116), **acceptance hai vòng partial**.
-Codex solo/tự kiểm, [review waived](../checkpoints/review-waiver.json), chờ PR.
+Codex solo/tự kiểm, [review waived](../checkpoints/review-waiver.json), tích hợp theo [PR117](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/117).
 [Contract/giới hạn](../../PROTOCOL.md#rejoin-battle-cycles), [câu hỏi](../../RESEARCH.md#gap-diagnostic-service),
 [thứ tự duy nhất](../../PLAN.md#current-order). Raw/script/seal: `local/research/codex/rejoin-battle-cycles-r1/`.
 

@@ -35,7 +35,7 @@ Vòng2 chưa cóReady95; thấy585 saureturn chưa được106trả mới, quan 
 Chưa fullmatch/K6a/LAN/Internet/toànvalidator/reset; không nâng hai-cycle từboundedpass.
 
 CP077 đã merge [PR115](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/115) tại `a3ca2ab`.
-CP078 tự kiểm/chờ PR; review độc lập [waived](docs/evidence/checkpoints/review-waiver.json).
+CP078 tự kiểm/tích hợp theo [PR117](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/117); review độc lập [waived](docs/evidence/checkpoints/review-waiver.json).
 Audit **AUD023/CP076**, periodic kế **CP080**.
 [Yêu cầu chủ dự án](docs/evidence/owner-directives/continuous-work.json): tiếp tục ngay việc kế trong
 PLAN sau mỗi checkpoint/commit/PR, không tự dừng/chờ nhắc.
