@@ -142,8 +142,8 @@ class ProbeService:
                                              'round': self.round['index'], 'after_c2s_opcode': 104,
                                              'host_role': self.host_role, 'broadcast': True}
 
-    def leave_empty_room(self, event, frame, sequence, body):
-        """Bounded fixture policy: A leaves alone after B EOF/result cleanup.
+    def leave_room(self, event, frame, sequence, body):
+        """Bounded fixture leave: A alone after B EOF, or idle guest B with A mapped.
 
         The channel identity, codec sequence and round/key/job history survive.
         Other leave variants are logged as unsupported, without mutating membership.
@@ -157,22 +157,31 @@ class ProbeService:
                   and peer.get('reply_ordinal') == 4 and not peer.get('closed')
                   and peer.get('create_response_sent')]
         guest = self.channels.get('B')
+        empty_host = (event['role'] == 'A' and self.host_role == 'A' and not others
+                      and guest and guest.get('closed') and guest.get('create_response_sent')
+                      and self.round.get('refresh'))
+        idle_guest = (event['role'] == 'B' and self.host_role == 'A'
+                      and len(others) == 1 and others[0]['role'] == 'A'
+                      and others[0].get('map_response_sent'))
         if body:
             request['rejected'] = 'unsupported_leave_body'
         elif not event.get('create_response_sent'):
             request['rejected'] = 'not_room_member'
         elif self.room.active or (self.round.get('index') and not self.round.get('refresh')):
             request['rejected'] = 'round_not_returned'
-        elif (event['role'] != 'A' or self.host_role != 'A' or others
-              or not guest or not guest.get('closed') or not guest.get('create_response_sent')
-              or not self.round.get('refresh')):
+        elif not (empty_host or idle_guest):
             request['rejected'] = 'unsupported_leave_membership_variant'
         else:
             # Older exports can send fixed templates on initial setup, but lack
             # sequence metadata needed to re-encode them. Fail before releasing
             # the member or emitting refresh, rather than crashing mid-recreate.
             try:
-                for alias in ['ready', 'roomlist_A', 'create', 'player_A', 'slot_A', 'table', 'map']:
+                role = event['role']
+                aliases = ['ready', 'roomlist_' + role, 'join' if idle_guest else 'create',
+                           'player_' + role, 'slot_' + role, 'table', 'map']
+                if idle_guest:
+                    aliases += ['guest_A', 'guest_B']
+                for alias in aliases:
                     self.profile.body(alias)
             except ValueError as error:
                 request['rejected'] = 'unsupported_reentry_profile'
@@ -187,6 +196,8 @@ class ProbeService:
             event.setdefault('room_visits', []).append(request)
             event['last_room_leave'] = request
             event['room_reentry'] = True
+            if idle_guest:
+                request['departure'] = self.cleanup_departed('B')
             self.state['policy_events'].append({'op': 'room_leave', 'role': event['role'],
                                                'generation': self.room.generation,
                                                'visit': len(event['room_visits']),
@@ -204,7 +215,7 @@ class ProbeService:
         if event.get('closed'):
             return
         if opcode == 86:
-            self.leave_empty_room(event, frame, sequence, body)
+            self.leave_room(event, frame, sequence, body)
         elif opcode == 6 and not event.get('channel_response_sent'):
             self.send_raw(event, self.profile.raw('channel'))
             event['channel_response_sent'] = {'monotonic_ns': time.monotonic_ns()}
@@ -221,6 +232,13 @@ class ProbeService:
                     'role': role, 'seq': sequence, 'reason': 'lobby_refresh_pending',
                     'frame_sha256': hashlib.sha256(frame).hexdigest()})
                 return
+            if previous and role == 'B':
+                host = self.channels.get('A')
+                if not host or host.get('closed') or not host.get('map_response_sent'):
+                    self.state.setdefault('room_reentry_rejections', []).append({
+                        'role': role, 'seq': sequence, 'reason': 'host_membership_changed',
+                        'frame_sha256': hashlib.sha256(frame).hexdigest()})
+                    return
             alias = {'A': 'create', 'B': 'join', 'C': 'join_C'}[role]
             sent = self.send_setup(event, [alias], 'reentry-create')
             event['create_response_sent'] = {'monotonic_ns': time.monotonic_ns(),
@@ -235,6 +253,10 @@ class ProbeService:
             if role == 'C':
                 peer = self.channels['B']
                 event['replacement_roster_sent'] = self.send(peer, 'player_C', 'replacement106')
+            elif role == 'B' and event.get('room_reentry'):
+                peer = self.channels['A']
+                if not peer.get('closed') and peer.get('map_response_sent'):
+                    event['rejoined_peer_roster_sent'] = self.send(peer, 'guest_A', 'rejoin-peer106')
         elif opcode == 95 and role != self.host_role and not self.room.active and not event.get('guest_ready_received'):
             event['guest_ready_received'] = {'monotonic_ns': time.monotonic_ns(), 'payload_hex': body.hex()}
             self.broadcast('ready_C' if role == 'C' else 'ready_slot', 'ready110')
@@ -584,9 +606,11 @@ class ProbeService:
                 ('guest_response_sent', 'map_response_sent', 1, ['table', 'map']),
             ]:
                 if event.get(previous) and not event.get(marker) and now - event[previous]['monotonic_ns'] >= delay * 10**9:
-                    # Recreating this empty fixture room must not restore the
-                    # preannounced B profile from initial two-player setup.
-                    if event.get('room_reentry') and marker == 'guest_response_sent':
+                    other = (self.channels.get('A' if role == 'B' else 'B')
+                             if event.get('room_reentry') else None)
+                    if (event.get('room_reentry') and marker == 'guest_response_sent'
+                            and (not other or other.get('closed')
+                                 or not other.get('create_response_sent'))):
                         event[marker] = {'monotonic_ns': now, 'skipped_closed_guest': True}
                     else:
                         self.send_setup(event, aliases, 'reentry-setup')

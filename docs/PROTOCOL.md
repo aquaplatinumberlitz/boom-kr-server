@@ -1,6 +1,6 @@
 # KR 00967 — contract tương thích client gốc
 
-Revision kr-legacy-contract-r1; cập nhật03/11/2026 JST (CP076).
+Revision kr-legacy-contract-r1; cập nhật03/11/2026 JST (CP077).
 **Contract có bằng chứng từng phần; chưa nghiệm thu full codec K2**.
 Lộ trình và thứ tự task chỉ giữ ở [REWRITE_PLAN — KRE](PLAN.md).
 Đây là contract của repo server KR. ADR0009 của bản viết lại là nguồn lịch sử để so sánh;
@@ -1958,7 +1958,7 @@ liệt kê và phân biệt với nguyên bản trong mọi demo.
 <a id="authority"></a>
 ### Authority matrix hiện hành và gate review
 
-Bảng này tổng hợp bằng chứng từng phần đến CP076; chưa phải toàn contract server gốc. Mỗi hàng khi
+Bảng này tổng hợp bằng chứng từng phần đến CP077; chưa phải toàn contract server gốc. Mỗi hàng khi
 triển khai phải bổ sung riêng **creator, simulator, validator, broadcaster, peer-editable state**, với
 locator/trace và trạng thái từng ô; những vai trò không nêu dưới đây hiện `unknown` cho KR.
 
@@ -2771,3 +2771,22 @@ Control/refresh-only/finalobserved khôngerror; firstfix TypeError và fixed-v2 
 Native81 title có cả inline15 và heap16; getter/allocator model bounded đọc đúng cursor, không tự nâng
 thành heap/runtime proof. Chưa guestleave/hostleavecònpeer/activeleave/rejoinpeer/accountresume/
 password/capacity/fullmembership/fullreset/fullauth/fullcodec/vanilla/K4/K5/K6a/fullmatch/LANInternet.
+
+<a id="guest-back-rejoin"></a>
+### Guest Back/rejoin cùng channel với host còn phòng — CP077
+
+[Control/fix/native/UI/raw/hash](evidence/guest-back-rejoin/README.md), **kr_runtime/confirmed hẹp**.
+Tái dùng CP034/035 guestleave/rejoin và CP076 currentseq/preflight; không nativebody mới/patch/forcing.
+Controlwrapper chỉ refresh241/91, actualB86→82lần2 nhưng service giữoldmember/rejectvariant: AghostB/
+no107, Bno87/585. Fixed production idleBleave khi Ahost/mapped: archiveBmarkers/giữTCPidentityseq,
+107/110 cho A, Brefresh241/91; actual82→87full7/slot1/session1→585, AgetsB106 và BgetsA106/map.
+NativeAID2→0/chief1 rồi profileB lại; nativeBown-match1/map. Hai liveTCPchannelordinal4/8/IDs1,2/
+slots0,1 giữ, dynamicseq tiếp tục, không accountreconnect. Export chỉ khai báo knownseq metadata của
+roomlist_B/join/player_B/guest_A/guest_B;41rawfixtures unchanged, preflight trước mutation.
+
+ActualB95/StartA104 sau rejoin→121129/errors0/99/197196153/clock1 cảhai, rosterA-B/key12345 đầu.
+Đây là **mộtStart/clock**, không trận/result/return hoặc hai vòng. Membership/chief/timing/fixture là
+**design** được client chấp nhận trong ca hẹp; nativehandler/slot/profile/UI có evidence riêng.
+Chưa hostleavecònpeer/activeleave/accountresume/generalroom/fullauth/fullcodec/fullvalidator/
+fullreset/vanilla/K4/K5/K6a/fullmatch/LANInternet. [Bước tiếp](PLAN.md#current-order) là Battle cùngrun
+sau rejoin theo route đã biết, không RE lại body/writer/consumer.
