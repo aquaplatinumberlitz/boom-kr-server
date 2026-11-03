@@ -36,7 +36,7 @@ Roller/Bomb/Fire, bom, death-state, kết quả và về phòng/reset ở cả h
 trong control, không thêm106 hoặc sửa service. Chưa fullmatch/K6a/LAN/Internet.
 
 CP079 đã merge [PR119](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/119) tại `be860a2`.
-CP080 tự kiểm/chờ PR; review độc lập [waived](docs/evidence/checkpoints/review-waiver.json).
+CP080 tự kiểm/[PR121](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/121); review độc lập [waived](docs/evidence/checkpoints/review-waiver.json).
 Audit **AUD024/CP080**, periodic kế **CP084**. Tiếp theo: bom khác owner theo PLAN.
 [Yêu cầu chủ dự án](docs/evidence/owner-directives/continuous-work.json): tiếp tục ngay việc kế trong
 PLAN sau mỗi checkpoint/commit/PR, không tự dừng/chờ nhắc.
