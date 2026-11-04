@@ -3,7 +3,7 @@
 KRE-049/[issue132](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/132), baseline
 CP085/[PR131](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/131)
 `2876c45edd88738ba26c2908481e78b39aa342d4`. Codex solo/tự kiểm;
-[review waived](../checkpoints/review-waiver.json), chờ PR.
+[review waived](../checkpoints/review-waiver.json), tích hợp [PR133](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/133) tại `d9dbadd`.
 [Contract/giới hạn](../../PROTOCOL.md#capacity-fresh-serial), [gap](../../RESEARCH.md#gap-bomb-lifetime),
 [thứ tự](../../PLAN.md#current-order). Raw `local/research/codex/capacity-admission-r1/`.
 
@@ -52,3 +52,5 @@ AUD025 qua084, periodic kế088. Copy runtimeSHA `e9bb476652a5f428c3bbf2f4e20587
 staticSHA `660447c293ce92270cb9b5815331bca976e8f156366e1fe50b217b6c12e60ce3`,
 modO raw/base400000SHA `a08950c833d3acab8281049def7b3dc96b221f107eeda01da3a548e34b91dce5`; RVA=VA−400000.
 Chưa fullmatch/K5/K6a/fullauth/codec/validator/authority/vanilla/LANInternet/allreset.
+
+[CP087](../capacity-reservations/README.md) chặn selectedmutation bằng optionalreservationpolicy; rawnegativeCP086 vànativecapcauseunknown giữ nguyên, không gọi toànvalidator đãđủ.

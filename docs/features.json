@@ -1,7 +1,7 @@
 {
   "schema": "kre-feature-index-v1",
   "build": "KR00967",
-  "as_of": "2026-11-04 CP086",
+  "as_of": "2026-11-04 CP087",
   "sources": {
     "plan": "docs/PLAN.md",
     "contract": "docs/PROTOCOL.md",
@@ -1331,7 +1331,8 @@
           "docs/evidence/current-tcp-replay/README.md",
           "docs/evidence/rejoin-battle-cycles/README.md",
           "docs/evidence/tcp-guard-cycles/README.md",
-          "docs/evidence/capacity-admission/README.md"
+          "docs/evidence/capacity-admission/README.md",
+          "docs/evidence/capacity-reservations/README.md"
         ]
       },
       "coverage": {
@@ -1367,7 +1368,8 @@
               "docs/evidence/c2s118-admission/README.md",
               "docs/evidence/rejoin-battle-cycles/README.md",
               "docs/evidence/tcp-guard-cycles/README.md",
-              "docs/evidence/capacity-admission/README.md"
+              "docs/evidence/capacity-admission/README.md",
+              "docs/evidence/capacity-reservations/README.md"
             ]
           },
           "windows_original": {
@@ -1390,7 +1392,9 @@
             "docs/PROTOCOL.md#probe-service",
             "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/57",
             "docs/PROTOCOL.md#c2s118-admission",
-            "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/95"
+            "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/95",
+            "docs/PROTOCOL.md#capacity-reservations",
+            "server/test_capacity_reservations.py"
           ],
           "delivery": "via_pr"
         },
@@ -1402,7 +1406,8 @@
             "docs/PROTOCOL.md#current-tcp-replay",
             "docs/evidence/rejoin-battle-cycles/README.md",
             "docs/evidence/tcp-guard-cycles/README.md",
-            "docs/evidence/capacity-admission/README.md"
+            "docs/evidence/capacity-admission/README.md",
+            "docs/evidence/capacity-reservations/README.md"
           ]
         },
         "gate": {
@@ -1437,7 +1442,8 @@
           "docs/evidence/mixed-input/README.md",
           "docs/evidence/mixed-cycles/README.md",
           "docs/evidence/all-dead-result/README.md",
-          "docs/evidence/three-bomb-chain/README.md"
+          "docs/evidence/three-bomb-chain/README.md",
+          "docs/evidence/capacity-reservations/README.md"
         ]
       },
       "coverage": {
@@ -1477,7 +1483,8 @@
               "docs/evidence/mixed-input/README.md",
               "docs/evidence/mixed-cycles/README.md",
               "docs/evidence/all-dead-result/README.md",
-              "docs/evidence/three-bomb-chain/README.md"
+              "docs/evidence/three-bomb-chain/README.md",
+              "docs/evidence/capacity-reservations/README.md"
             ]
           },
           "windows_original": {
@@ -1513,7 +1520,8 @@
             "docs/evidence/mixed-input/README.md",
             "docs/evidence/mixed-cycles/README.md",
             "docs/evidence/all-dead-result/README.md",
-            "docs/evidence/three-bomb-chain/README.md"
+            "docs/evidence/three-bomb-chain/README.md",
+            "docs/evidence/capacity-reservations/README.md"
           ]
         },
         "gate": {
@@ -1675,7 +1683,8 @@
           "docs/evidence/mixed-owner-power/README.md",
           "docs/evidence/rejoin-battle-cycles/README.md",
           "docs/evidence/three-bomb-chain/README.md",
-          "docs/evidence/capacity-admission/README.md"
+          "docs/evidence/capacity-admission/README.md",
+          "docs/evidence/capacity-reservations/README.md"
         ]
       },
       "coverage": {
@@ -1713,7 +1722,8 @@
               "docs/evidence/mixed-owner-power/README.md",
               "docs/evidence/rejoin-battle-cycles/README.md",
               "docs/evidence/three-bomb-chain/README.md",
-              "docs/evidence/capacity-admission/README.md"
+              "docs/evidence/capacity-admission/README.md",
+              "docs/evidence/capacity-reservations/README.md"
             ]
           },
           "windows_original": {
@@ -1738,7 +1748,9 @@
             "docs/PROTOCOL.md#current-hidden-items",
             "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/97",
             "docs/PROTOCOL.md#basic-battle",
-            "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/99"
+            "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/99",
+            "docs/PROTOCOL.md#capacity-reservations",
+            "server/test_capacity_reservations.py"
           ],
           "delivery": "via_pr"
         },
@@ -1751,7 +1763,8 @@
             "docs/evidence/mixed-owner-power/README.md",
             "docs/evidence/rejoin-battle-cycles/README.md",
             "docs/evidence/three-bomb-chain/README.md",
-            "docs/evidence/capacity-admission/README.md"
+            "docs/evidence/capacity-admission/README.md",
+            "docs/evidence/capacity-reservations/README.md"
           ]
         },
         "gate": {
@@ -2546,7 +2559,8 @@
           "docs/evidence/mixed-cycles/README.md",
           "docs/evidence/all-dead-result/README.md",
           "docs/evidence/three-bomb-chain/README.md",
-          "docs/evidence/tcp-guard-cycles/README.md"
+          "docs/evidence/tcp-guard-cycles/README.md",
+          "docs/evidence/capacity-reservations/README.md"
         ]
       },
       "coverage": {
@@ -2593,7 +2607,8 @@
               "docs/evidence/mixed-cycles/README.md",
               "docs/evidence/all-dead-result/README.md",
               "docs/evidence/three-bomb-chain/README.md",
-              "docs/evidence/tcp-guard-cycles/README.md"
+              "docs/evidence/tcp-guard-cycles/README.md",
+              "docs/evidence/capacity-reservations/README.md"
             ]
           },
           "windows_original": {
@@ -2647,7 +2662,8 @@
             "docs/evidence/mixed-cycles/README.md",
             "docs/evidence/all-dead-result/README.md",
             "docs/evidence/three-bomb-chain/README.md",
-            "docs/evidence/tcp-guard-cycles/README.md"
+            "docs/evidence/tcp-guard-cycles/README.md",
+            "docs/evidence/capacity-reservations/README.md"
           ]
         },
         "gate": {
@@ -2846,7 +2862,8 @@
           "docs/evidence/all-dead-result/README.md",
           "docs/evidence/three-bomb-chain/README.md",
           "docs/evidence/tcp-guard-cycles/README.md",
-          "docs/evidence/capacity-admission/README.md"
+          "docs/evidence/capacity-admission/README.md",
+          "docs/evidence/capacity-reservations/README.md"
         ]
       },
       "coverage": {
@@ -2905,7 +2922,8 @@
               "docs/evidence/all-dead-result/README.md",
               "docs/evidence/three-bomb-chain/README.md",
               "docs/evidence/tcp-guard-cycles/README.md",
-              "docs/evidence/capacity-admission/README.md"
+              "docs/evidence/capacity-admission/README.md",
+              "docs/evidence/capacity-reservations/README.md"
             ]
           },
           "windows_original": {
@@ -2958,7 +2976,9 @@
             "server/test_all_dead_result.py",
             "tools/export_probe_profile.py",
             "docs/PROTOCOL.md#tcp-guard-cycles",
-            "server/test_departure_send_failure.py"
+            "server/test_departure_send_failure.py",
+            "docs/PROTOCOL.md#capacity-reservations",
+            "server/test_capacity_reservations.py"
           ]
         },
         "integration": {
@@ -2996,7 +3016,8 @@
             "docs/evidence/all-dead-result/README.md",
             "docs/evidence/three-bomb-chain/README.md",
             "docs/evidence/tcp-guard-cycles/README.md",
-            "docs/evidence/capacity-admission/README.md"
+            "docs/evidence/capacity-admission/README.md",
+            "docs/evidence/capacity-reservations/README.md"
           ]
         },
         "gate": {

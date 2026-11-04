@@ -45,6 +45,7 @@ class PickupRoundKeyTests(unittest.TestCase):
         # transport are irrelevant to this policy regression; record broadcasts.
         service = ProbeService.__new__(ProbeService)
         service.hidden_items = {}
+        service.capacity_profile = {}
         service.room = ProbeRoom([ItemSpec(17, 4, 3, 2)])
         service.room.begin()
         service.room.finish()

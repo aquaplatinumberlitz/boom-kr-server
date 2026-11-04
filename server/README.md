@@ -184,3 +184,5 @@ accountresume vẫn ngoài scope. Thứ tự chỉPLAN, không gọi priorharnes
 CP083: optional profile `rank_all_dead` cho policy A/B cùng accepted19, grace8s từ deathcuối, rank2/2. Profile thiếu alias explicitpending; không invent winner/fake21. [Contract/limits](../docs/PROTOCOL.md#all-dead-result), [runtime](../docs/evidence/all-dead-result/README.md). Export thêm `--all-dead-rank PATH` khi có rawfixture đã pin dưới source-root; không tự đổi profile cũ.
 
 CP085: `deliver_departure` ghi recipient/errno/op/successprefix và close khi send107/110 gặp expectednetworkfailure; không coi unsentpacket là đã gửi. 91server tests; [scope/runtime/model](../docs/PROTOCOL.md#tcp-guard-cycles). Chưa general send/broadcast/backpressure recovery.
+
+CP087: optional metadata `bomb_capacity` khai `initial`/`maximum` theo role cho reservationguard trướcID/job; absent giữ profilecũ. AcceptedBomb+1/clamp/Startreset, jobretire/fence là releaseboundary. [Config/source/limits](../docs/PROTOCOL.md#capacity-reservations), [runtime](../docs/evidence/capacity-reservations/README.md). Nativeearlychainrelease chưa có trongpolicy, không tựgán baseC hoặcfullvalidator.
