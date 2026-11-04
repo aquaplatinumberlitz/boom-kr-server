@@ -178,7 +178,7 @@ class ProbeService:
         for event in self.peers():
             markers = ['start_response_sent', 'init99', 'go_response_sent', 'play_response_sent',
                        'begin_response_sent', 'peer153_sent', 'death_event', 'pickup_ineligible',
-                       'bomb_serials']
+                       'bomb_serials', 'result21_forward']
             if event.get('start_response_sent'):
                 event.setdefault('rounds', []).append({key: event[key] for key in markers if key in event})
             for marker in markers:
@@ -544,6 +544,8 @@ class ProbeService:
             cursor = {'tick': client_tick, 'bodies': []}
             event['report127_cursor'] = cursor
         cursor['bodies'].append(report['body_sha256'])
+        if subtype == 21:
+            self.forward_result21(event, report, body)
         if subtype in (17, 19):
             event['pickup_ineligible'] = {'generation': self.room.generation,
                                           'subtype': subtype, 'report_sequence': sequence,
@@ -556,6 +558,36 @@ class ProbeService:
                                              opcode=170, body=payload)
             if subtype == 19:
                 event['death_event'] = report
+
+    def forward_result21(self, event, report, body):
+        """Optional measured-prefix translation; not report authentication.
+
+        Native E6F370 clears local56 via vf148 before21. Its opposite peer has
+        E86CA0 behind170/sub21. Send once per accepted17 epoch in drained mode;
+        keep pickup eligibility and accepted death history unchanged.
+        """
+        if not (self.result_freshness and self.result_drain and self.room.active):
+            return
+        peers = self.peers()
+        if not any(peer is event for peer in peers):
+            return
+        trap = event.get('pickup_ineligible')
+        if not (trap and trap['generation'] == self.room.generation and trap['subtype'] == 17
+                and self.result_candidate_current(report)):
+            return
+        previous = event.get('result21_forward')
+        if (previous and previous['generation'] == self.room.generation
+                and previous['trap_sha256'] == trap['report_sha256']):
+            return
+        other = next((peer for peer in peers if peer is not event), None)
+        if other is None:
+            return
+        sent = self.send(other, 'start', f'event170-21-r{self.room.generation}',
+                         opcode=170, body=body[:6])
+        report['forward170'] = sent
+        event['result21_forward'] = {
+            'generation': self.room.generation, 'trap_sha256': trap['report_sha256'],
+            'report_sha256': report['frame_sha256'], 'send': sent}
 
     def close_connection(self, ordinal, reason):
         """One owner serializes close, lifetime invalidation and later recovery."""
