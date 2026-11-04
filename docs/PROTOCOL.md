@@ -1,6 +1,6 @@
 # KR 00967 — contract tương thích client gốc
 
-Revision kr-legacy-contract-r1; cập nhật05/11/2026 JST (CP103; AUD031 tức thời, periodic CP104).
+Revision kr-legacy-contract-r1; cập nhật05/11/2026 JST (CP104; AUD032 định kỳ).
 **Contract có bằng chứng từng phần; chưa nghiệm thu full codec K2**.
 Lộ trình và thứ tự task chỉ giữ ở [REWRITE_PLAN — KRE](PLAN.md).
 Đây là contract của repo server KR. ADR0009 của bản viết lại là nguồn lịch sử để so sánh;
@@ -1958,7 +1958,7 @@ liệt kê và phân biệt với nguyên bản trong mọi demo.
 <a id="authority"></a>
 ### Authority matrix hiện hành và gate review
 
-Bảng này tổng hợp bằng chứng từng phần đến CP103; chưa phải toàn contract server gốc. Mỗi hàng khi
+Bảng này tổng hợp bằng chứng từng phần đến CP104; chưa phải toàn contract server gốc. Mỗi hàng khi
 triển khai phải bổ sung riêng **creator, simulator, validator, broadcaster, peer-editable state**, với
 locator/trace và trạng thái từng ô; những vai trò không nêu dưới đây hiện `unknown` cho KR.
 
@@ -1970,7 +1970,7 @@ locator/trace và trạng thái từng ô; những vai trò không nêu dưới 
 | Block destroy/item reveal | CP032 nativecontract; CP068 [currentservice/list2/reportgate/effect/reset](#current-hidden-items), CP092 [195flags/seedreset](#map-flags-snapshot), CP094/095 [pinnedpolicy/nativeboxclear](#terrain-policy) cảhai view | Drop algorithm gốc/fullvalidator, genericclass/map và transport khác còn thiếu; không dùng report142 làm worldoracle |
 | Item placement/pickup | CP030 nhặt/tranh index; CP031/032 stat/itemẩn; CP045 [bảng nhóm/Roller/MaxPower hai view/reset](#item-families) | CP042 có [old165/index reuse](#item-generation); runtime tại max, KRspeed→px/s/TTL/activevariants, drop/toàn124validator/generation/reset còn thiếu; CP062 [winner đảo trên actual tranh index](#current-pickup-race) đã có scope riêng |
 | Trap/death | CP029/036; CP037 kim và tranh chấp cứu/diệt; [kim](#needle-selfescape), [precedence](#contact-precedence) | CP063 [guard stale/duplicate](#report127-freshness) là policy hẹp; CP075 [TCPsame/old17,19](#current-tcp-replay) đã đo; fullvalidator/firstseen/forgedforward/generation/variants/result21 vẫn thiếu |
-| Result/reset | CP039 hai vòng statepeer/result/21/return và reset field hẹp; CP044 [timer ở EOF và vòng B/C mới](#abort-timer); CP080 [hai chu kỳ sau rejoin](#ready-input), CP082 [mixed-owner survivor](#mixed-cycles), CP083 [all-dead rank2/2/storage/UI](#all-dead-result), mỗi run/scope riêng; CP100 [optional result freshness](#result-freshness-guard), CP102 [drain/local21clear/peerblocker](#drained-result-local-clear) | CP041 có [payload cũ khi ID reuse](#round-generation); arbitration/toàn generation/entity/timer/peer/seq không rò vẫn mở; phân biệt run chờ sai origin với ca hoàn tất |
+| Result/reset | CP039 hai vòng statepeer/result/21/return và reset field hẹp; CP044 [timer ở EOF và vòng B/C mới](#abort-timer); CP080 [hai chu kỳ sau rejoin](#ready-input), CP082 [mixed-owner survivor](#mixed-cycles), CP083 [all-dead rank2/2/storage/UI](#all-dead-result), mỗi run/scope riêng; CP100 [optional result freshness](#result-freshness-guard), CP102 [drain/local21clear/peerblocker](#drained-result-local-clear), CP104 [native175/34/state3](#ending34-state-boundary) | CP041 có [payload cũ khi ID reuse](#round-generation); arbitration/toàn generation/entity/timer/peer/seq không rò vẫn mở; phân biệt run chờ sai origin với ca hoàn tất |
 | Room lifecycle | CP034 leave/promotion/EOF/return; CP035 rejoin/Ready; CP040 chủ B/C Start; CP044 [B/C bom/death/result/return sau abort](#abort-timer) | Bầu chủ/giữ ID-slot/forfeit là policy stub; guest EOF trả A về phòng/xóa B đã đo riêng; CP050 có [service EOF/cleanup](#service-eof); CP051 có [C mới/Start B trong service](#service-replacement); CP052 [guest setup EOF](#setup-eof), CP053 [host với peer chưa map](#host-setup), CP054 [C trước vòng đầu](#prestart-replacement), CP072 [preclock forfeit/return](#preclock-eof), CP074 [native107/IDclear và UI](#preclock-cleanup), CP076 [Back86/emptyroomrecreate cùng channel](#back86-membership) đã đo; reconnect cùng account/disconnect variants/toàn reset còn mở |
 | Peer lifecycle | CP027 actual99→153; CP045–047 [oldUDP actor/keyguard/endpointcontrol](#udp-generation), CP070 [transport cut hai chiều](#current-udp-causality) | CP048 [service fixture](#probe-service) đã tích hợp key policy hẹp; low8reuse/roster/UDPtype khác/fullgrammar/reliability/relay/reset còn mở. Không coi đổi cổng riêng lẻ là freshness guard hoặc keybyte là auth |
 
@@ -3801,3 +3801,51 @@ mode2framer/replay.3tests+realTCPbench4connectionsWCP-A2→A4→WCP-B2→B4, exa
 và2channelframes pass; newnativefixedrun chỉA4/B4 trênproxy, **không** giả đã hitWCPbranchnative.
 AUD031manualcanonical→selectedfailed/successraw sửa startupunknown/roleassumption, giữCP102raw/manifest;
 periodicCP104 khôngreset. Fullauth/codec/authority/allreset/vanilla/fullmatch/K5/K6a/LANInternet còn mở.
+
+<a id="ending34-state-boundary"></a>
+### Handler175 tự chuyển state và report34 trước lần ghi — CP104
+
+[Recipe/hash/reuse](evidence/ending34-state-boundary/README.md), gap ở
+[RESEARCH](RESEARCH.md#gap-result-return), thứ tự duy nhất ở [PLAN](PLAN.md#current-order).
+**kr_runtime/confirmed hẹp** và **kr_static/confirmed cho boundedmatchedranges**. Không production/
+profile/newpacketpolicy change; không gánstate3 là universalalive/victory hoặc report34 làauthorityACK.
+
+Source-first15refs currentCP103raw/CP023175/CP036E6F370/CP083result/VNconcept/KRdata. Existingraw2cycles
+CP103: A34front khoảng129,092/139,416ms sauown175entry, Astate3/Bstate1cảhai view tại180. Chưa cóexact
+writer34/caller, nên chỉ thêm B53010sub34/backtrace vàstackstate3/26sau175 trongobserver đã có; không
+lặpwholecodec/contact/kim hoặc dùngown-onlyACKnegative thànhpositive. Onecycleboundedstop sauactual
+175/180/returned585/refresh cảhai, không giảtwo-cycle/fullmatch.
+
+**Nativepath đã đo đúng:** ownA175entry state56 → nativecallactorvf148 trong175 tạireturn**E603E6**,
+callee path **B43320/B43427** → state26. Sau đó175callactorvf13C tại**E6049F** → **B74060/B7409A →
+B42880/B428F9** → statewriterB51CF4/B33270 đặt3. B cũngqua cùng175callpath đặt3 từ26. NativeB sauđó
+có3→0→56→3 ngắn, setters56/3 cóstack **B4EAA6←E668B2←125DF33**, là cạnh UDPapplyđã biết; exactpacket/
+argstate/time củawindow này còn thiếu, không gọi ngayoldUDP hoặcnewgenerationfailure.
+
+**Report34 không nằm sau completedstate3:** trongpathtrên A gọi B53010 subtype**34** tạireturn
+**B51CCD**, snapshot cònstate26; rồinativeframeđiTCP, sauđóB51CEF gọi B33270 vàghi3 tạipostB51CF4.
+Matchedstaticrange **B51CB0** cópush22/callvf21C/send1164D50 **trước** callB33270, khớpruntimeorder.
+Body chỉcommonprefix14: **[34,0,80,159,4800,6]** trongrun, khôngblob; timestamp4800làcounterđãbiết,
+fieldcuối6chưagánmeaning. Exactactualnativefront/upstream SHA/seq/framer/typedcursor14/errors0 khớp.
+Serviceđãclosed nên chỉinactiveenvelope, khôngadmission/forward170/outcomechange. B khôngphátown34
+trongboundedpathnày; khôngsuymọi remote sẽ khôngcó34.
+
+**Quan sátboundary:** A175entry56→26→34writerstate26→3; B175entry26→3→0→56→3; trướcnative180
+cảhaiA3/B1. Direct175→state3stack vàstaticB42880setprotected+5A0=1/callvf204(state3,aux922) làsource,
+nhưng tênphase/gatefull vẫnunknown. B74060cònbranchcallD1CD10 vớimessage1A8; không gán tênhiệuứng.
+Report/before/after lànhữngphasekhácnhau: CP102/103same-state-atown175entryassertion **khôngđủ**
+làmstandardtoànending hoặcpersistentdesync/rankwrong. Strictfail lịch sử vẫnđúngnumericboundary,
+khôngxóa/bịa pass; CP104bổsungprovedhandlerconvergence/unknowntransientUDP. #166/gate vẫnopen.
+Không cần thêmownorigin21ACK đểđạtconvergenceởrunđãđo; chưathửownACKcontrol/lawrecipientmọi mode.
+
+Run225,299s,1actual121/clock/175/180/returned585 mỗi view/7current158jobs,0controller-serviceerrors.
+27mechanicalendingjoins/60copiednative52A350fields,282typedpacketvalid/badCRC/partialcases làemulation
+riêng; sourcebinary/pack/DBgiữnguyên. Static4boundedruntime-ledrangesE60371/B74060/B42880/B51CB0
+matchedstatic/runtimePE/modO;base400000/RVA=VA−400000. Firstinterior-byte decodes/firstlinearretmislabel
+đượcgiữ/correct, khôngdùnglàwholefunction/exitproof. No newgamecalls/stateforcing/fuse/quietdelay.
+
+Proxyfixedtrongrun còn bridgebootstrap **ordinal1/WCP-A-1** trên3858: exact15bytehello/nguyênbyte,
+không C2S/channelframer; actualA4/B4vẫnroleđúng. Đây lànativebranch1proofhẹp, khôngđánhđồngbench
+WCP2/66byte vớinewrun. AUD032manualcanonical→raw/CP101–104/source/auditcadence qua104, next108.
+Fullidentity/auth/codec/authority/fullvalidator/allreset/endingUDPvariants/vanilla/fullmatch/K5/K6a/
+LANInternet vẫnchưa nghiệmthu; nexttargetedpost175UDPstateapply ở PLAN.

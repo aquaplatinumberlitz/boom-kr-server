@@ -3,7 +3,7 @@
 KRE-066/[issue166](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/166) **còn mở** vì
 pre175consistency chưa đạt. Baseline CP102/[PR165](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/165)
 `67c2ec7a96565711ecc259bdfa1328ee959260b1`. Codex solo/tự kiểm;
-[review waived](../checkpoints/review-waiver.json), CP103 chờ PR. Contract/limits tại
+[review waived](../checkpoints/review-waiver.json), CP103 đã merge [PR167](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/167) tại `b5d2d75`. Contract/limits tại
 [PROTOCOL](../../PROTOCOL.md#peer21-ending-order), câu hỏi ở [RESEARCH](../../RESEARCH.md#gap-contact-state),
 thứ tự tại [PLAN](../../PLAN.md#current-order). AUD031tức thời quaCP102, periodicCP104 vẫn due.
 
@@ -58,3 +58,6 @@ AUD031manualcanonical→selectedraw/toolbench fixes roleassumption/startupunknow
 makes pendingendingphase explicit. NohistoricalcompleteCP/raw rewritten; auditcadenceCP104unchanged.
 Remainingending21/34/175lifecycle/recipientcontract andpre175boundaryinterpretation inPLAN; no
 persistentdesync/originalranklaw/fullauth/codec/authority/allreset/vanilla/fullmatch/K5/K6a/LANInternetclaim.
+
+[CP104](../ending34-state-boundary/README.md) chứngminh175tựđặt3/report34trướclầnwrite;
+pre175entrynumericfail giữlịch sử nhưngkhôngđủ làmtoànending/persistentdesynccriterion. KhôngsửarawCP103.
