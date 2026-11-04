@@ -3,7 +3,7 @@
 KRE-048/[issue130](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/130), baseline
 CP084/[PR129](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/129)
 `455dc74199760866c0969d15b83123d78056770e`. Codex tự kiểm;
-[review waived](../checkpoints/review-waiver.json), chờ PR. Contract/limits duy nhất
+[review waived](../checkpoints/review-waiver.json), tích hợp [PR131](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/131) tại `2876c45`. Contract/limits duy nhất
 [PROTOCOL](../../PROTOCOL.md#tcp-guard-cycles), gaps ở [RESEARCH](../../RESEARCH.md#gap-diagnostic-service),
 thứ tự [PLAN](../../PLAN.md#current-order). Raw tại `local/research/codex/tcp-guard-cycles-r1/`.
 
@@ -58,3 +58,5 @@ modO raw/base400000 SHA `a08950c833d3acab8281049def7b3dc96b221f107eeda01da3a548e
 RVA=VA−400000. No nativebody/newbinarypatch. AUD025 qua084, audit kế088.
 Chưa auth/distance/cap/forgedfreshbody/toàn127/fullcodec/authority/resetvariants/vanilla/LANInternet/
 fullmatch/K5/K6a. Sourcefirst kế capacity/currentfreshserial theo PLAN, không lặp selectedoldbody.
+
+[CP086](../capacity-admission/README.md) đo serial-only mutation khác selectedold/same, lộnativeentitydivergence; CP085 không fullvalidatorclaim.
