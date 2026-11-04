@@ -1,0 +1,87 @@
+{
+  "id": "AUD026",
+  "trigger": "periodic",
+  "completed_through": "CP088",
+  "recorded_utc": "2026-11-04T13:16:32.778182+00:00",
+  "auditor": "Codex manual self-audit; independent review waived by owner",
+  "read_files": [
+    "README.md",
+    "docs/PLAN.md",
+    "docs/PROTOCOL.md",
+    "docs/RESEARCH.md",
+    "docs/features.json",
+    "docs/COVERAGE.md",
+    "docs/evidence/tcp-guard-cycles/README.md",
+    "docs/evidence/capacity-admission/README.md",
+    "docs/evidence/capacity-reservations/README.md",
+    "docs/evidence/early-chain-window/README.md",
+    "docs/evidence/checkpoints/manifest.json",
+    "local/research/codex/tcp-guard-cycles-r1/integration.json",
+    "local/research/codex/capacity-admission-r1/verification.json",
+    "local/research/codex/capacity-reservation-r1/cycles-verification.json",
+    "local/research/codex/early-chain-r1/reuse-question.json",
+    "local/research/codex/early-chain-r1/preparation.json",
+    "local/research/codex/early-chain-r1/window/run.json",
+    "local/research/codex/early-chain-r1/window/service-state.json",
+    "local/research/codex/early-chain-r1/window/client.log",
+    "local/research/codex/early-chain-r1/window/client-B.log",
+    "local/research/codex/early-chain-r1/chain-summary.json",
+    "local/research/codex/early-chain-r1/actor-fields.json",
+    "local/research/codex/early-chain-r1/lifecycle-summary.json",
+    "local/research/codex/early-chain-r1/verification.json",
+    "local/research/codex/early-chain-r1/visual-observation.json",
+    "local/research/codex/early-chain-r1/audit-pool-wording.json"
+  ],
+  "method": "Đọc README→PLAN(current-order/gates)→PROTOCOL(CP085–088/knownchain/reservation/limits)→RESEARCH currentgaps→evidence CP085–088, đối chiếu report và original runtime raw CP088: actual requests/deadlines/guard reasons, native writer timestamps,159pointer latestprior/round vàrootprocess/secondary state/ownlater, originalfinal vs progress. Xem thủ công4ảnh sau replacement/finalroom; ảnh không là proofID. Đọc CP085integrationnegative/fixlimits, CP086mutationdivergence vàCP087two-cycle protection/reset; không dùng checker thay audit, không claim đọc lại toànclient.",
+  "findings": [
+    {
+      "id": "F1",
+      "stale": "CP087 pendingPR dùPR135 đãmerge; AUD025next088 đãtới hạn.",
+      "correction": "Currentstate CP088negativecompatibility, CP087PR135/93122d6merged; auditAUD026/next092, CP088selfchecked/pendingPR, waiverkhôngapproval.",
+      "fixed_in": [
+        "README.md",
+        "docs/PLAN.md",
+        "docs/evidence/capacity-reservations/README.md"
+      ]
+    },
+    {
+      "id": "F2",
+      "stale": "CP087canonical nói native đã giải phóngsecondary; state0/process không chứng minh toànpoolslotreturn.",
+      "correction": "Giới hạn lại state0/process; CP088normalemission là bằng chứng mới requestpath, không ID5allocation/originalserverlaw. Không sửa raw hoặc manifest087.",
+      "fixed_in": [
+        "docs/PROTOCOL.md",
+        "docs/RESEARCH.md",
+        "docs/evidence/early-chain-window/README.md"
+      ]
+    },
+    {
+      "id": "F3",
+      "stale": "Gapnormalreplacement và nextCP085/086 còn như việc hiện hành sau khi các successor đã đo.",
+      "correction": "Currentgapchuyển sang releasepolicy cógeom/tile/stopsource; oldsteps gắn tạimốc hoặc linkPLAN; catalog/coverage thêm evidence khôngnânggate.",
+      "fixed_in": [
+        "docs/PLAN.md",
+        "docs/PROTOCOL.md",
+        "docs/RESEARCH.md",
+        "docs/features.json",
+        "docs/COVERAGE.md"
+      ]
+    },
+    {
+      "id": "F4",
+      "stale": "Requestnative vàproxy/newserial/no118/state0 dễ bị gộp thành cùng mức proof hoặccompatibilitypass.",
+      "correction": "CP086proxydivergence, CP087guardpositivehai-vòng, CP088normalnative-negative mộtvòng tách rõ. 24checkspass xácnhậnrejection, khôngservercompatibility. Chưa releasefix; 98server/18checkpointtestsreuse chỉvìcodeunchanged.",
+      "fixed_in": [
+        "docs/PROTOCOL.md",
+        "docs/evidence/early-chain-window/README.md",
+        "docs/RESEARCH.md"
+      ]
+    }
+  ],
+  "remaining": [
+    "CP088selfchecked/pendingPR, reviewwaived khôngapproved; oldraw/completeCPrecords giữ nguyên.",
+    "Releasepolicy chưa sửa; cần sourcefirstgeometry/raystop/block trướcdesign, khôngfree xuyênwall/tinreport.",
+    "Fullpoollaw/ID5nativeallocation/fullvalidator/auth/codec/authority/generalreset/vanilla/LANInternet/fullmatch/K5/K6a giữmở.",
+    "CP085sendfailure branch modelproof, repeatnohit; CP086nativecapcauseunknown, CP087conservativepolicy làdesign.",
+    "PeriodicnextCP092, khôngresetcounter hoặc tựđónggate."
+  ]
+}
