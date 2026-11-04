@@ -3,7 +3,7 @@
 KRE-067/[issue168](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/168), baseline
 CP103/[PR167](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/167)
 `b5d2d751ff769f96df3e9c3d887455bd7dd166ea`. Codex solo/tựkiểm;
-[review waived](../checkpoints/review-waiver.json), CP104chờPR. Contract/limits chỉở
+[review waived](../checkpoints/review-waiver.json), CP104 đã merge [PR169](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/169) tại `7b296db`. Contract/limits chỉở
 [PROTOCOL](../../PROTOCOL.md#ending34-state-boundary), gapở[RESEARCH](../../RESEARCH.md#gap-result-return),
 thứtựở[PLAN](../../PLAN.md#current-order). PeriodicAUD032qua104/next108; #166vẫnopen/no gate.
 
@@ -46,3 +46,6 @@ Narrowcorrection: numericstatekhácởown175entrykhôngđủkếtluậnpersisten
 175tựconvergeA3/B1trước180 đãđo; CP103late17/pre175failraw giữnguyên. Post175UDPargstate/packet/phase
 vẫnthiếuexactjoin, chỉđãcóstackconsumer; khônggọioldround/lawfreezewithoutproof. Fullendingauthority/
 identityauth/codec/validator/allreset/vanilla/LANInternet/fullmatch/K5/K6avẫnmở; nextchỉởPLAN.
+
+[CP105](../ending-udp-state-apply/README.md) nốiexactAPI/packetstate56/3 tớiendingconsumer;
+sourcehẹpđãđủ, khônggọiunknownđãgiải hoặcpacketvòngtrước từtimeline175trongcùngvòng.

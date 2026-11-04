@@ -29,16 +29,16 @@ runtime nào có nguồn, còn thiếu gì và phép kiểm nào giải quyết.
 evidence/hash và câu hỏi; [PLAN](docs/PLAN.md#current-order) giữ duy nhất thứ tự công việc.
 Đây là scope đường bootstrap → login → sảnh → phòng → Battle → kết quả/reset, không kiểm kê toàn client.
 
-CP104 xác nhận handler175 đặtstate3 cho actor A ở cảhai view; riêng A gọi clear56→26 trước đó;
-report34 được phát **trước** lần ghi3. Trước180, cảhai cùngA3/B1; entry175 khácstate chưa đủ để
-kết luận lệch kéo dài hoặc rank sai. Sau175 vẫn có transition ngắn từ UDP apply, cần đo đúng phase.
-[Contract/giới hạn](docs/PROTOCOL.md#ending34-state-boundary),
-[recipe/hash](docs/evidence/ending34-state-boundary/README.md). Chưa fullmatch/K6a/LAN/Internet.
+CP105 nối được UDP ending: packetstate56 vào API trước175, nằm giữa API/consumer350,064ms,
+rồi ghi BviewA3→56 sau175; packetstate3 tới sau đó đưa56→3. Cảhai view cùngA3/B1 trước180.
+Đây là queue đi qua boundary175 trong vòng1 đã đo, chưa phải dữ liệu vòng trước lọt quaStart.
+[Contract/giới hạn](docs/PROTOCOL.md#ending-udp-state-apply),
+[recipe/hash](docs/evidence/ending-udp-state-apply/README.md). Chưa fullmatch/K6a/LAN/Internet.
 
-CP103 đã merge [PR167](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/167) tại `b5d2d75`.
-CP104 tự kiểm/chờ PR; production/profile giữ nguyên. Review độc lập
+CP104 đã merge [PR169](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/169) tại `7b296db`.
+CP105 tự kiểm/chờ PR; production/profile giữ nguyên. Review độc lập
 [waived](docs/evidence/checkpoints/review-waiver.json).
-Audit định kỳ **AUD032/CP104**, mốc kế **CP108**; AUD031tức thời giữ lịch sử.
+Audit định kỳ **AUD032/CP104**, mốc kế **CP108**.
 [Yêu cầu chủ dự án](docs/evidence/owner-directives/continuous-work.json): tiếp tục ngay việc kế trong
 PLAN sau mỗi checkpoint/commit/PR, không tự dừng/chờ nhắc.
 

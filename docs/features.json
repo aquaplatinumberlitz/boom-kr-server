@@ -1,7 +1,7 @@
 {
   "schema": "kre-feature-index-v1",
   "build": "KR00967",
-  "as_of": "2026-11-05 CP104",
+  "as_of": "2026-11-05 CP105",
   "sources": {
     "plan": "docs/PLAN.md",
     "contract": "docs/PROTOCOL.md",
@@ -1156,7 +1156,8 @@
           "docs/evidence/current-pair-round/README.md",
           "docs/evidence/current-udp-causality/README.md",
           "docs/evidence/current-peer-targets/README.md",
-          "docs/evidence/ending34-state-boundary/README.md"
+          "docs/evidence/ending34-state-boundary/README.md",
+          "docs/evidence/ending-udp-state-apply/README.md"
         ]
       },
       "coverage": {
@@ -1192,7 +1193,8 @@
               "docs/evidence/current-pair-round/README.md",
               "docs/evidence/current-udp-causality/README.md",
               "docs/evidence/current-peer-targets/README.md",
-              "docs/evidence/ending34-state-boundary/README.md"
+              "docs/evidence/ending34-state-boundary/README.md",
+              "docs/evidence/ending-udp-state-apply/README.md"
             ]
           },
           "windows_original": {
@@ -1224,7 +1226,8 @@
             "docs/evidence/current-pair-round/README.md",
             "docs/evidence/current-udp-causality/README.md",
             "docs/evidence/current-peer-targets/README.md",
-            "docs/evidence/ending34-state-boundary/README.md"
+            "docs/evidence/ending34-state-boundary/README.md",
+            "docs/evidence/ending-udp-state-apply/README.md"
           ]
         },
         "gate": {
@@ -1978,7 +1981,8 @@
           "docs/evidence/result-freshness/README.md",
           "docs/evidence/drained-result-local-clear/README.md",
           "docs/evidence/peer21-ending-order/README.md",
-          "docs/evidence/ending34-state-boundary/README.md"
+          "docs/evidence/ending34-state-boundary/README.md",
+          "docs/evidence/ending-udp-state-apply/README.md"
         ]
       },
       "coverage": {
@@ -2021,7 +2025,8 @@
               "docs/evidence/result-freshness/README.md",
               "docs/evidence/drained-result-local-clear/README.md",
               "docs/evidence/peer21-ending-order/README.md",
-              "docs/evidence/ending34-state-boundary/README.md"
+              "docs/evidence/ending34-state-boundary/README.md",
+              "docs/evidence/ending-udp-state-apply/README.md"
             ]
           },
           "windows_original": {
@@ -2066,7 +2071,8 @@
             "docs/evidence/result-freshness/README.md",
             "docs/evidence/drained-result-local-clear/README.md",
             "docs/evidence/peer21-ending-order/README.md",
-            "docs/evidence/ending34-state-boundary/README.md"
+            "docs/evidence/ending34-state-boundary/README.md",
+            "docs/evidence/ending-udp-state-apply/README.md"
           ]
         },
         "gate": {
@@ -2565,7 +2571,8 @@
           "docs/evidence/result-freshness/README.md",
           "docs/evidence/drained-result-local-clear/README.md",
           "docs/evidence/peer21-ending-order/README.md",
-          "docs/evidence/ending34-state-boundary/README.md"
+          "docs/evidence/ending34-state-boundary/README.md",
+          "docs/evidence/ending-udp-state-apply/README.md"
         ]
       },
       "coverage": {
@@ -2608,7 +2615,8 @@
               "docs/evidence/result-freshness/README.md",
               "docs/evidence/drained-result-local-clear/README.md",
               "docs/evidence/peer21-ending-order/README.md",
-              "docs/evidence/ending34-state-boundary/README.md"
+              "docs/evidence/ending34-state-boundary/README.md",
+              "docs/evidence/ending-udp-state-apply/README.md"
             ]
           },
           "windows_original": {
@@ -2654,7 +2662,8 @@
             "docs/evidence/result-freshness/README.md",
             "docs/evidence/drained-result-local-clear/README.md",
             "docs/evidence/peer21-ending-order/README.md",
-            "docs/evidence/ending34-state-boundary/README.md"
+            "docs/evidence/ending34-state-boundary/README.md",
+            "docs/evidence/ending-udp-state-apply/README.md"
           ]
         },
         "gate": {
@@ -2708,7 +2717,8 @@
           "docs/evidence/terrain-tcp-guard-cycles/README.md",
           "docs/evidence/current-peer-targets/README.md",
           "docs/evidence/trap-report-rank-order/README.md",
-          "docs/evidence/ending34-state-boundary/README.md"
+          "docs/evidence/ending34-state-boundary/README.md",
+          "docs/evidence/ending-udp-state-apply/README.md"
         ]
       },
       "coverage": {
@@ -2764,7 +2774,8 @@
               "docs/evidence/terrain-tcp-guard-cycles/README.md",
               "docs/evidence/current-peer-targets/README.md",
               "docs/evidence/trap-report-rank-order/README.md",
-              "docs/evidence/ending34-state-boundary/README.md"
+              "docs/evidence/ending34-state-boundary/README.md",
+              "docs/evidence/ending-udp-state-apply/README.md"
             ]
           },
           "windows_original": {
@@ -2825,7 +2836,8 @@
             "docs/evidence/terrain-tcp-guard-cycles/README.md",
             "docs/evidence/current-peer-targets/README.md",
             "docs/evidence/trap-report-rank-order/README.md",
-            "docs/evidence/ending34-state-boundary/README.md"
+            "docs/evidence/ending34-state-boundary/README.md",
+            "docs/evidence/ending-udp-state-apply/README.md"
           ]
         },
         "gate": {
@@ -3042,7 +3054,8 @@
           "docs/evidence/selector-closed-readiness/README.md",
           "docs/evidence/drained-result-local-clear/README.md",
           "docs/evidence/peer21-ending-order/README.md",
-          "docs/evidence/ending34-state-boundary/README.md"
+          "docs/evidence/ending34-state-boundary/README.md",
+          "docs/evidence/ending-udp-state-apply/README.md"
         ]
       },
       "coverage": {
@@ -3122,7 +3135,8 @@
               "docs/evidence/result-freshness/README.md",
               "docs/evidence/drained-result-local-clear/README.md",
               "docs/evidence/peer21-ending-order/README.md",
-              "docs/evidence/ending34-state-boundary/README.md"
+              "docs/evidence/ending34-state-boundary/README.md",
+              "docs/evidence/ending-udp-state-apply/README.md"
             ]
           },
           "windows_original": {
@@ -3243,7 +3257,8 @@
             "docs/evidence/result-freshness/README.md",
             "docs/evidence/drained-result-local-clear/README.md",
             "docs/evidence/peer21-ending-order/README.md",
-            "docs/evidence/ending34-state-boundary/README.md"
+            "docs/evidence/ending34-state-boundary/README.md",
+            "docs/evidence/ending-udp-state-apply/README.md"
           ]
         },
         "gate": {
