@@ -3,7 +3,7 @@
 KRE-059/[issue152](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/152), baseline
 CP095/[PR151](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/151)
 `1c18aa266dcaceb8ac5d96eb88ba631654a8d229`. Codex solo/tự kiểm,
-[review waived](../checkpoints/review-waiver.json), CP096 chờ PR. Contract duy nhất ở
+[review waived](../checkpoints/review-waiver.json), CP096 đã merge [PR153](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/153) tại `fb3a9a2`. Contract duy nhất ở
 [PROTOCOL](../../PROTOCOL.md#adjacent-owner-control), gap ở [RESEARCH](../../RESEARCH.md#gap-blast-block-chain),
 thứ tự ở [PLAN](../../PLAN.md#current-order). Raw `local/research/codex/adjacent-owner-r1/`.
 
