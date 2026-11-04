@@ -29,14 +29,15 @@ runtime nào có nguồn, còn thiếu gì và phép kiểm nào giải quyết.
 evidence/hash và câu hỏi; [PLAN](docs/PLAN.md#current-order) giữ duy nhất thứ tự công việc.
 Đây là scope đường bootstrap → login → sảnh → phòng → Battle → kết quả/reset, không kiểm kê toàn client.
 
-CP088 xác nhận một request đặt bom **native thật bị guard từ chối** sau chain sớm: A phát hai
-request mới trên hai ô khác nhau, request thứ hai còn bị giữ reservation của secondary đã process.
-[Contract/giới hạn](docs/PROTOCOL.md#early-chain-reservation-window),
-[recipe/hash](docs/evidence/early-chain-window/README.md). Chưa sửa release policy; đây là kết quả âm
-về compatibility của guard, không phải fullmatch/K6a/LAN/Internet.
+CP089: policy capacity đã nhận đủ hai request thay thế native sau chain trong **cả hai vòng**
+trên copy Wine/profile hiện tại; hai view nhận entity và xử lý bom tương ứng. Policy chỉ áp dụng
+đường trực tiếp trong các ô clear khai báo, pin fixture map/start; timer secondary vẫn giữ nguyên.
+[Contract/giới hạn](docs/PROTOCOL.md#chain-capacity-release),
+[recipe/hash và các run partial](docs/evidence/chain-capacity-release/README.md).
+Chưa fullmatch/K6a hoặc map/collision/validator tổng quát.
 
-CP087 đã merge [PR135](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/135) tại `93122d6`.
-CP088 tự kiểm/chờ PR; review độc lập [waived](docs/evidence/checkpoints/review-waiver.json).
+CP088 đã merge [PR137](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/137) tại `0a67e74`.
+CP089 tự kiểm/chờ PR; review độc lập [waived](docs/evidence/checkpoints/review-waiver.json).
 Audit **AUD026/CP088**, periodic kế **CP092**.
 [Yêu cầu chủ dự án](docs/evidence/owner-directives/continuous-work.json): tiếp tục ngay việc kế trong
 PLAN sau mỗi checkpoint/commit/PR, không tự dừng/chờ nhắc.

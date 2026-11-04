@@ -1,7 +1,7 @@
 {
   "schema": "kre-feature-index-v1",
   "build": "KR00967",
-  "as_of": "2026-11-04 CP088",
+  "as_of": "2026-11-04 CP089",
   "sources": {
     "plan": "docs/PLAN.md",
     "contract": "docs/PROTOCOL.md",
@@ -1333,7 +1333,8 @@
           "docs/evidence/tcp-guard-cycles/README.md",
           "docs/evidence/capacity-admission/README.md",
           "docs/evidence/capacity-reservations/README.md",
-          "docs/evidence/early-chain-window/README.md"
+          "docs/evidence/early-chain-window/README.md",
+          "docs/evidence/chain-capacity-release/README.md"
         ]
       },
       "coverage": {
@@ -1371,7 +1372,8 @@
               "docs/evidence/tcp-guard-cycles/README.md",
               "docs/evidence/capacity-admission/README.md",
               "docs/evidence/capacity-reservations/README.md",
-              "docs/evidence/early-chain-window/README.md"
+              "docs/evidence/early-chain-window/README.md",
+              "docs/evidence/chain-capacity-release/README.md"
             ]
           },
           "windows_original": {
@@ -1396,7 +1398,10 @@
             "docs/PROTOCOL.md#c2s118-admission",
             "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/95",
             "docs/PROTOCOL.md#capacity-reservations",
-            "server/test_capacity_reservations.py"
+            "server/test_capacity_reservations.py",
+            "docs/PROTOCOL.md#chain-capacity-release",
+            "server/chain_capacity.py",
+            "server/test_chain_capacity.py"
           ],
           "delivery": "via_pr"
         },
@@ -1410,7 +1415,8 @@
             "docs/evidence/tcp-guard-cycles/README.md",
             "docs/evidence/capacity-admission/README.md",
             "docs/evidence/capacity-reservations/README.md",
-            "docs/evidence/early-chain-window/README.md"
+            "docs/evidence/early-chain-window/README.md",
+            "docs/evidence/chain-capacity-release/README.md"
           ]
         },
         "gate": {
@@ -1447,7 +1453,8 @@
           "docs/evidence/all-dead-result/README.md",
           "docs/evidence/three-bomb-chain/README.md",
           "docs/evidence/capacity-reservations/README.md",
-          "docs/evidence/early-chain-window/README.md"
+          "docs/evidence/early-chain-window/README.md",
+          "docs/evidence/chain-capacity-release/README.md"
         ]
       },
       "coverage": {
@@ -1489,7 +1496,8 @@
               "docs/evidence/all-dead-result/README.md",
               "docs/evidence/three-bomb-chain/README.md",
               "docs/evidence/capacity-reservations/README.md",
-              "docs/evidence/early-chain-window/README.md"
+              "docs/evidence/early-chain-window/README.md",
+              "docs/evidence/chain-capacity-release/README.md"
             ]
           },
           "windows_original": {
@@ -1511,7 +1519,10 @@
             "docs/PROTOCOL.md#current-hidden-items",
             "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/97",
             "docs/PROTOCOL.md#basic-battle",
-            "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/99"
+            "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/99",
+            "docs/PROTOCOL.md#chain-capacity-release",
+            "server/chain_capacity.py",
+            "server/test_chain_capacity.py"
           ],
           "delivery": "via_pr"
         },
@@ -1527,7 +1538,8 @@
             "docs/evidence/all-dead-result/README.md",
             "docs/evidence/three-bomb-chain/README.md",
             "docs/evidence/capacity-reservations/README.md",
-            "docs/evidence/early-chain-window/README.md"
+            "docs/evidence/early-chain-window/README.md",
+            "docs/evidence/chain-capacity-release/README.md"
           ]
         },
         "gate": {
@@ -2566,7 +2578,8 @@
           "docs/evidence/all-dead-result/README.md",
           "docs/evidence/three-bomb-chain/README.md",
           "docs/evidence/tcp-guard-cycles/README.md",
-          "docs/evidence/capacity-reservations/README.md"
+          "docs/evidence/capacity-reservations/README.md",
+          "docs/evidence/chain-capacity-release/README.md"
         ]
       },
       "coverage": {
@@ -2614,7 +2627,8 @@
               "docs/evidence/all-dead-result/README.md",
               "docs/evidence/three-bomb-chain/README.md",
               "docs/evidence/tcp-guard-cycles/README.md",
-              "docs/evidence/capacity-reservations/README.md"
+              "docs/evidence/capacity-reservations/README.md",
+              "docs/evidence/chain-capacity-release/README.md"
             ]
           },
           "windows_original": {
@@ -2669,7 +2683,8 @@
             "docs/evidence/all-dead-result/README.md",
             "docs/evidence/three-bomb-chain/README.md",
             "docs/evidence/tcp-guard-cycles/README.md",
-            "docs/evidence/capacity-reservations/README.md"
+            "docs/evidence/capacity-reservations/README.md",
+            "docs/evidence/chain-capacity-release/README.md"
           ]
         },
         "gate": {
@@ -2870,7 +2885,8 @@
           "docs/evidence/tcp-guard-cycles/README.md",
           "docs/evidence/capacity-admission/README.md",
           "docs/evidence/capacity-reservations/README.md",
-          "docs/evidence/early-chain-window/README.md"
+          "docs/evidence/early-chain-window/README.md",
+          "docs/evidence/chain-capacity-release/README.md"
         ]
       },
       "coverage": {
@@ -2931,7 +2947,8 @@
               "docs/evidence/tcp-guard-cycles/README.md",
               "docs/evidence/capacity-admission/README.md",
               "docs/evidence/capacity-reservations/README.md",
-              "docs/evidence/early-chain-window/README.md"
+              "docs/evidence/early-chain-window/README.md",
+              "docs/evidence/chain-capacity-release/README.md"
             ]
           },
           "windows_original": {
@@ -2986,7 +3003,10 @@
             "docs/PROTOCOL.md#tcp-guard-cycles",
             "server/test_departure_send_failure.py",
             "docs/PROTOCOL.md#capacity-reservations",
-            "server/test_capacity_reservations.py"
+            "server/test_capacity_reservations.py",
+            "docs/PROTOCOL.md#chain-capacity-release",
+            "server/chain_capacity.py",
+            "server/test_chain_capacity.py"
           ]
         },
         "integration": {
@@ -3026,7 +3046,8 @@
             "docs/evidence/tcp-guard-cycles/README.md",
             "docs/evidence/capacity-admission/README.md",
             "docs/evidence/capacity-reservations/README.md",
-            "docs/evidence/early-chain-window/README.md"
+            "docs/evidence/early-chain-window/README.md",
+            "docs/evidence/chain-capacity-release/README.md"
           ]
         },
         "gate": {

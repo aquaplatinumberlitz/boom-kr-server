@@ -18,6 +18,7 @@ import time
 
 from server import probe_codec as codec
 from server.item_claims import ItemSpec
+from server.chain_capacity import ClearCellChains
 from server.probe_room import ProbeRoom
 
 
@@ -74,6 +75,11 @@ class ProbeService:
                         or not 1 <= spec['initial'] <= spec['maximum'] <= 255):
                     raise ValueError('invalid bomb_capacity limits for ' + role)
                 self.capacity_profile[role] = dict(spec)
+        self.capacity_chains = None
+        if 'capacity_chain' in profile.data:
+            if not self.capacity_profile:
+                raise ValueError('capacity_chain requires bomb_capacity')
+            self.capacity_chains = ClearCellChains(profile.data['capacity_chain'], profile.frames)
         self.hidden_items = {item['index']: ItemSpec(**item)
                              for item in profile.data.get('hidden_items', [])}
         if len(self.hidden_items) != len(profile.data.get('hidden_items', [])):
@@ -95,7 +101,7 @@ class ProbeService:
                       'limits': 'Fixture auth/roster/rank, loopback-only, two live members/A-B then B-C by accept order; no fullmatch gate.'}
         self.state['policy_sources'] = []
         for filename in ['probe_service.py', 'probe_codec.py', 'probe_room.py', 'round_fence.py',
-                         'item_claims.py', 'udp_round_keys.py']:
+                         'item_claims.py', 'udp_round_keys.py', 'chain_capacity.py']:
             path = Path(__file__).with_name(filename)
             self.state['policy_sources'].append({'path': str(path.resolve()),
                                                  'sha256': hashlib.sha256(path.read_bytes()).hexdigest()})
@@ -325,12 +331,13 @@ class ProbeService:
                 request['prior_id'] = prior['id']
                 return
             if self.capacity_profile:
-                # Reserve until the server's own job retires. Native chain may
-                # release secondary bombs sooner; this deliberately conservative
-                # policy does not pretend to observe that client's entire pool.
+                # Default: own job lifetime. Optional pinned clear-cell policy
+                # can release direct secondary reservations after a root blast;
+                # neither policy pretends to observe the native client's pool.
                 reserved = [bomb['id'] for _, pending, bomb in self.jobs
                             if bomb['round'] == self.room.generation
                             and bomb['owner'] == ROLE_SLOTS[role]
+                            and not bomb.get('capacity_release')
                             and self.room.fence.rejection(pending) is None]
                 capacity = self.round['bomb_capacity'][role]
                 request['capacity_guard'] = {'capacity': capacity, 'reserved_ids': reserved,
@@ -356,6 +363,7 @@ class ProbeService:
             event.setdefault('bombs', []).append(source)
             bomb = {'round': self.room.generation, 'id': ticket.wire_id, 'owner': values[2],
                     'serial': values[3], 'source_role': role, 'source_bomb': source,
+                    'row': values[4], 'column': values[5], 'power': values[10],
                     'created_ns': time.monotonic_ns(), 'broadcast159': broadcast}
             self.state['round_bombs'].append(bomb)
             self.jobs.append((time.monotonic() + 6, ticket, bomb))
@@ -590,6 +598,19 @@ class ProbeService:
             if reason is None and self.room.fence.consume(ticket):
                 body = codec.pack_fields([1, bomb['id'], 0, 2, 0xFFFFFFFF, 255], [1, 2, 1, 4, 4, 1])
                 bomb['broadcast158'] = self.broadcast('blast', f"blast158-r{bomb['round']}-{bomb['id']}", body=body)
+                if self.capacity_chains and not bomb.get('capacity_release'):
+                    pending = [other for _, pending_ticket, other in self.jobs
+                               if other['round'] == self.room.generation
+                               and not other.get('capacity_release')
+                               and self.room.fence.rejection(pending_ticket) is None]
+                    for other in self.capacity_chains.direct_targets(bomb, pending):
+                        other['capacity_release'] = {
+                            'root_id': bomb['id'], 'generation': self.room.generation,
+                            'monotonic_ns': time.monotonic_ns(), 'source': 'design',
+                            'policy': 'pinned_clear_cells_direct_first_hit'}
+                        self.state['policy_events'].append({
+                            'op': 'chain_capacity_release', 'wire_id': other['id'],
+                            **other['capacity_release']})
             else:
                 bomb['timer_rejected'] = reason
             self.state['policy_events'].append({'op': 'bomb_deadline', 'generation': ticket.generation,

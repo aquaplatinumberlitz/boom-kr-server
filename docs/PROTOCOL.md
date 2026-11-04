@@ -1,6 +1,6 @@
 # KR 00967 — contract tương thích client gốc
 
-Revision kr-legacy-contract-r1; cập nhật04/11/2026 JST (CP088).
+Revision kr-legacy-contract-r1; cập nhật04/11/2026 JST (CP089).
 **Contract có bằng chứng từng phần; chưa nghiệm thu full codec K2**.
 Lộ trình và thứ tự task chỉ giữ ở [REWRITE_PLAN — KRE](PLAN.md).
 Đây là contract của repo server KR. ADR0009 của bản viết lại là nguồn lịch sử để so sánh;
@@ -3136,8 +3136,56 @@ emission chứng minh đường input/request chạy được ở context này. 
 ID4 được process riêng; hai view đủ4nonzero159/full39 và4full158/13/errors0, một survivor result/
 return/room cycle, không controller/service/probe errors. Không là hai vòng/fullmatch hoặc gate.
 
-CP088 chưa sửa code/release policy. Không release theo report hoặc khoảng cách Manhattan đơn thuần:
+Tại CP088 chưa sửa code/release policy; CP089 bên dưới bổ sung policy giới hạn. Không release theo report hoặc khoảng cách Manhattan đơn thuần:
 geometry/map blocker và chuỗi secondary phải có nguồn/giới hạn trước khi chọn design.
 [PLAN](PLAN.md#current-order) giữ thứ tự; [gap](RESEARCH.md#gap-bomb-lifetime) giữ phép kiểm.
 AUD026 sửa wording CP087 “đã giải phóng secondary” thành state0/processsecondary, chưa toàn pool;
 raw/manifestCP087 giữ bất biến. Review waived/tự kiểm, chưa independent approval.
+
+
+<a id="chain-capacity-release"></a>
+### Release reservation trên đường clear trực tiếp của fixture — CP089
+
+[Recipe/raw/hash/control/partial](evidence/chain-capacity-release/README.md).
+**Implementation: design**, không recovered server/pool law. **Compatibility: kr_runtime/confirmed hẹp**
+trên modified Wine/current A-B profile. Tái dùng CP033/081/084/088 root-chain/159/118 và VN pool
+reference; old KR static R139–141 có blocker theo class/hướng, không cho dùng khoảng cách đơn thuần.
+Đọc bổ sung E9F220 (step/bounds/class/direction) và EB9710 (cell/ray state); bytes match static/runtime
+copy và modO, không patch/call native. Body/cache/provenance ở evidence, không native whole-map oracle.
+
+Optional `capacity_chain` yêu cầu `bomb_capacity`, pins `fixtures.map/start` SHA256 với actual profile
+frames, `clear_cells` (cặp row/column duy nhất) và `maximum_power`. Config bounds0..255 cho cell,
+1..255 cho power là design bounds, không native map size/max law. Absent metadata giữ CP087 behavior.
+Profile đo chỉ khai (3,3)/(3,4)/(3,5)/(4,3)/(5,3), maximum_power2, đúng các đường direct đã có native
+chain evidence; pin117/121 không tự chứng minh map state tổng quát. Không tự export/migrate profile cũ.
+
+Sau **broadcast158 root thành công**, xét current-generation/fence-valid/unreleased pending jobs.
+Root ở clear cell, power trong bound mới mở bốn tia; cell ngoài whitelist dừng. Chỉ secondary đầu
+trên từng tia, một bomb không chồng/đủ power bound được bỏ reservation. Không recursive hoặc đoán
+vùng vuông/moving/overlap/tile mới. Root khác owner vẫn có thể release secondary đúng current owner;
+count quota vẫn tách owner. Không tin client report hoặc report-time để release.
+
+Marker `capacity_release` có rootID/generation/time/source design. **Jobs, ticket và deadline6s giữ**,
+secondary vẫn nhận own158 như trước; không dùng marker để consume fence hoặc tạo158 mới. Quota bỏ
+jobs đã marker. Ownlater callback của secondary đã marker không mở lại release lên bom mới (tránh
+chain giả từ job cũ). Finish/Start fence và capacity reset giữ; stale-generation root không release
+current bomb. Unknown paths/power/ambiguous overlap vẫn giữ reservation, có thể còn conservative.
+
+Runtime final có hai vòng: mỗi vòng actual A/B/A/A/A118 nhận5IDs, root process3 đầu cảhai view;
+hai normal replacements trên hai ô khác nhau đến sau bothview root complete và trước ownsecondary
+retirement, cảhai159 nonzero/full39, new bombs process đúng một lần, oldsecondary ownlater không
+process lặp. Tổng10native159/10full158/13 mỗi view, 121/clock/175full302/180full3/roomrefresh hai lần,
+keys12345/12346; native stats/getter và policy state reset kiểm riêng. Native E9F220 admits corridor
+steps trong root callbacks; không suy đã đo mọi wall/class. Không controller/service/probe errors.
+
+Các run trước giữ nguyên: thirdA(6,3) ngoài power2 chỉ native rootprocess1,2/policy chỉ releaseB2;
+run hai vòng đầu chỉ8requests, run safe9requests, không đủ scoped acceptance dù có resultreset.
+Trong run safe, Space thứ hai ởX195/Y399 trước native159END của replacement đầu; A17 đến muộn hơn.
+Đây là **ordering**, chưa causal proof ACK/pool/movement guard. Final dùng Right theo fresh nativeX
+feedback thay fixed.25s, không ép state, không tự gán nguyên nhân missing118 từ run trước.
+
+105server models (7 ca mới) kiểm geometry/unknown gap/first-hit/overlap/profile pins/current owner/
+fence/reset/preblast rejection và oldsecondary không release bom mới. Model không là native law;
+first-hit là policy conservative. Phạm vi ngoài clear-cells/fullmap/dynamic terrain/recursive chain/
+fullpool/cell-distance-auth/fullvalidator/fullcodec/authority/allreset/vanilla/LANInternet/fullmatch/
+K5/K6a còn mở. [PLAN](PLAN.md#current-order) giữ việc tiếp, AUD026/periodicCP092.
