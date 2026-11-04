@@ -885,6 +885,10 @@ class ProbeService:
     def receive(self, ordinal):
         state = self.connections[ordinal]
         connection, event = state['socket'], state['event']
+        # select() returns a batch: an earlier peer's EOF cleanup can close
+        # this recipient before its cached readiness key is dispatched.
+        if event.get('closed'):
+            return
         data = connection.recv(4096)
         if not data:
             event['peer_eof'] = True

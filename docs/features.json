@@ -1,7 +1,7 @@
 {
   "schema": "kre-feature-index-v1",
   "build": "KR00967",
-  "as_of": "2026-11-05 CP100",
+  "as_of": "2026-11-05 CP101",
   "sources": {
     "plan": "docs/PLAN.md",
     "contract": "docs/PROTOCOL.md",
@@ -3010,7 +3010,8 @@
           "docs/evidence/terrain-tcp-guard-cycles/README.md",
           "docs/evidence/current-peer-targets/README.md",
           "docs/evidence/trap-report-rank-order/README.md",
-          "docs/evidence/result-freshness/README.md"
+          "docs/evidence/result-freshness/README.md",
+          "docs/evidence/selector-closed-readiness/README.md"
         ]
       },
       "coverage": {
@@ -3151,7 +3152,9 @@
             "server/terrain_profile.py",
             "server/test_terrain_policy.py",
             "docs/PROTOCOL.md#result-freshness-guard",
-            "server/test_result_freshness.py"
+            "server/test_result_freshness.py",
+            "docs/PROTOCOL.md#selector-closed-readiness",
+            "server/test_departure_send_failure.py"
           ]
         },
         "integration": {
