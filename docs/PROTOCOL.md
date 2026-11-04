@@ -1,6 +1,6 @@
 # KR 00967 — contract tương thích client gốc
 
-Revision kr-legacy-contract-r1; cập nhật05/11/2026 JST (CP100; AUD030 định kỳ).
+Revision kr-legacy-contract-r1; cập nhật05/11/2026 JST (CP101; AUD030 quaCP100).
 **Contract có bằng chứng từng phần; chưa nghiệm thu full codec K2**.
 Lộ trình và thứ tự task chỉ giữ ở [REWRITE_PLAN — KRE](PLAN.md).
 Đây là contract của repo server KR. ADR0009 của bản viết lại là nguồn lịch sử để so sánh;
@@ -1958,7 +1958,7 @@ liệt kê và phân biệt với nguyên bản trong mọi demo.
 <a id="authority"></a>
 ### Authority matrix hiện hành và gate review
 
-Bảng này tổng hợp bằng chứng từng phần đến CP100; chưa phải toàn contract server gốc. Mỗi hàng khi
+Bảng này tổng hợp bằng chứng từng phần đến CP101; chưa phải toàn contract server gốc. Mỗi hàng khi
 triển khai phải bổ sung riêng **creator, simulator, validator, broadcaster, peer-editable state**, với
 locator/trace và trạng thái từng ô; những vai trò không nêu dưới đây hiện `unknown` cho KR.
 
@@ -3668,3 +3668,29 @@ có thể bị fence khi finish. NativeA56/writer→rank exactoldchain chưa tá
 bác oldlateA17. Report/life authority, forgedforward/location/fullauth/codec/allreset/rescuevariants/
 vanilla/fullmatch/K5/K6a/LANInternet vẫn mở. AUD030quaCP100/nextCP104. BadFD cleanup là trigger độc lập,
 không gán olderrno9 cho một stack nếu chưa có trace.
+
+<a id="selector-closed-readiness"></a>
+### Key selector còn sau cleanup đóng recipient — CP101
+
+[Recipe/hash](evidence/selector-closed-readiness/README.md), **design/currentservice implementation**,
+không là hành vi binary KR/server gốc. Tái dùng CP085departure-send-failure và CP099gatederrno9;
+không tìm lại packet/lifeenum hoặc port asyncio/session VN thành Pythonselector.
+
+Real Linux socketpair A/B đều remoteclose → actualselector trả cùng batch [A,B]. Xử lý AEOF trước
+kích hoạtcleanup gửi107 tớiB, EPIPE được CP085 ghi đúngrecipientB rồi closeB. KeyB đã nằm trongbatch
+vẫn được dispatch; `receive(B)` trước sửa gọi recv trên fd−1 → **errno9**. Đảo thứ tự tương tự vớiA.
+Đây là đường lỗi xác nhận trong service model; oldCP099gated chỉ có errorstring/ordinal8, **chưa đủ
+stack để gán chắc cùng đường**. CP100native errorfree cũng không bác hoặc tái hiện olderror.
+
+`receive` nay trả ngay nếu event đã có `closed` do serializedowner đóng; không gọi recv/advancecursor/
+parse/report/outcome. Không bắt/nuốtEBADF chung: descriptor bị đóng ngoài lifecycle mà event chưa
+marked vẫn raise OSError. Cleanup/attribution/idempotency/successprefix và lỗi fileENOSPC giữ nguyên.
+
+129server tests pass, gồm 5ca mới: actualcachedbatch hai thứ tự; repeatedclosedread no mutation;
+AEOF cùng Blivebytes vẫn đọc đúng; unmarkedbadfd vẫn lỗi; actualrunloop dispatch/save/finally không
+spuriouserrorrow. Pre-fix2tests fail trực tiếp tại recv/errno9, source/reproduction giữlocal/hash.
+Không chạy Wine lại: nhánh thay đổi chỉ already-closedno-op, live path có positivecontrol; native
+controlCP100 là baseline lịch sử riêng, không giả newnativecausalfix/fullmatch/gate.
+
+Giới hạn: chưa generalbackpressure/sendpartialrecovery/EOFvariant/accountresume/authority/fullreset/
+vanilla/LANInternet/K5/K6a; bước integration tiếp chỉ ở PLAN. AUD030qua100/next104.
