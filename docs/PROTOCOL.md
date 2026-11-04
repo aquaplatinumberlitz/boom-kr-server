@@ -1,6 +1,6 @@
 # KR 00967 — contract tương thích client gốc
 
-Revision kr-legacy-contract-r1; cập nhật05/11/2026 JST (CP099; AUD029 tức thời).
+Revision kr-legacy-contract-r1; cập nhật05/11/2026 JST (CP100; AUD030 định kỳ).
 **Contract có bằng chứng từng phần; chưa nghiệm thu full codec K2**.
 Lộ trình và thứ tự task chỉ giữ ở [REWRITE_PLAN — KRE](PLAN.md).
 Đây là contract của repo server KR. ADR0009 của bản viết lại là nguồn lịch sử để so sánh;
@@ -1958,19 +1958,19 @@ liệt kê và phân biệt với nguyên bản trong mọi demo.
 <a id="authority"></a>
 ### Authority matrix hiện hành và gate review
 
-Bảng này tổng hợp bằng chứng từng phần đến CP096; chưa phải toàn contract server gốc. Mỗi hàng khi
+Bảng này tổng hợp bằng chứng từng phần đến CP100; chưa phải toàn contract server gốc. Mỗi hàng khi
 triển khai phải bổ sung riêng **creator, simulator, validator, broadcaster, peer-editable state**, với
 locator/trace và trạng thái từng ô; những vai trò không nêu dưới đây hiện `unknown` cho KR.
 
 | Hành vi | Đã thấy trong KR | Phần cần đóng trước demo dùng hành vi đó |
 |---|---|---|
-| Movement | CP027 hai chiều; CP070 [cut/counter/restore local vs remote](#current-udp-causality) đã đo trên current Wine copy;183 vẫn ghost | Full schema input/update/correction, validator và quyền sửa vị trí của peer |
+| Movement | CP027 hai chiều; CP070 [cut/counter/restore local vs remote](#current-udp-causality), CP098 [protected peer targets](#current-peer-targets) trong scope từng run;183 vẫn ghost | Full schema input/update/correction, validator và quyền sửa vị trí của peer |
 | Bomb place/ID | CP027 hai owner/ID chung1..4 tạo trên cả hai client; [phạm vi](#peer-duo); lặp/cũ CP025 | CP041 có [stale158/ID reuse và fence job local](#round-generation), CP043 có [old159/serial reuse](#late-bomb-confirm); CP067 [C2Skey/serialguard](#c2s118-admission) và CP075 [actualTCPselectedreplay](#current-tcp-replay) loại duplicate/oldbody hẹp; allocator/rollover/concurrent/race/toàn generation/authority còn mở |
 | Explode/chain | CP033 một owner; CP064 [power1/cách hai ô](#mixed-owner-chain), CP071 [power2 ngoài tầm/feedback chưa118](#mixed-owner-power) giữ partial lịch sử; CP081 [power2/distance2 mixed-owner](#mixed-input), CP084 [ba bom fork hai vòng](#three-bomb-chain); CP094 [optional pinned terrain](#terrain-policy), CP095 [actualbox/laterfreshpair](#opposite-box-control) có native callback/195flag proof | [CP096adjacent1cell](#adjacent-owner-control) đã đo; recursive/sharedblocker/FIFO/firstbombstop tổng quát/race và authority server gốc chưa đủ |
 | Block destroy/item reveal | CP032 nativecontract; CP068 [currentservice/list2/reportgate/effect/reset](#current-hidden-items), CP092 [195flags/seedreset](#map-flags-snapshot), CP094/095 [pinnedpolicy/nativeboxclear](#terrain-policy) cảhai view | Drop algorithm gốc/fullvalidator, genericclass/map và transport khác còn thiếu; không dùng report142 làm worldoracle |
 | Item placement/pickup | CP030 nhặt/tranh index; CP031/032 stat/itemẩn; CP045 [bảng nhóm/Roller/MaxPower hai view/reset](#item-families) | CP042 có [old165/index reuse](#item-generation); runtime tại max, KRspeed→px/s/TTL/activevariants, drop/toàn124validator/generation/reset còn thiếu; CP062 [winner đảo trên actual tranh index](#current-pickup-race) đã có scope riêng |
 | Trap/death | CP029/036; CP037 kim và tranh chấp cứu/diệt; [kim](#needle-selfescape), [precedence](#contact-precedence) | CP063 [guard stale/duplicate](#report127-freshness) là policy hẹp; CP075 [TCPsame/old17,19](#current-tcp-replay) đã đo; fullvalidator/firstseen/forgedforward/generation/variants/result21 vẫn thiếu |
-| Result/reset | CP039 hai vòng statepeer/result/21/return và reset field hẹp; CP044 [timer ở EOF và vòng B/C mới](#abort-timer); CP080 [hai chu kỳ sau rejoin](#ready-input), CP082 [mixed-owner survivor](#mixed-cycles), CP083 [all-dead rank2/2/storage/UI](#all-dead-result), mỗi run/scope riêng | CP041 có [payload cũ khi ID reuse](#round-generation); arbitration/toàn generation/entity/timer/peer/seq không rò vẫn mở; phân biệt run chờ sai origin với ca hoàn tất |
+| Result/reset | CP039 hai vòng statepeer/result/21/return và reset field hẹp; CP044 [timer ở EOF và vòng B/C mới](#abort-timer); CP080 [hai chu kỳ sau rejoin](#ready-input), CP082 [mixed-owner survivor](#mixed-cycles), CP083 [all-dead rank2/2/storage/UI](#all-dead-result), mỗi run/scope riêng; CP100 [optional result freshness](#result-freshness-guard) | CP041 có [payload cũ khi ID reuse](#round-generation); arbitration/toàn generation/entity/timer/peer/seq không rò vẫn mở; phân biệt run chờ sai origin với ca hoàn tất |
 | Room lifecycle | CP034 leave/promotion/EOF/return; CP035 rejoin/Ready; CP040 chủ B/C Start; CP044 [B/C bom/death/result/return sau abort](#abort-timer) | Bầu chủ/giữ ID-slot/forfeit là policy stub; guest EOF trả A về phòng/xóa B đã đo riêng; CP050 có [service EOF/cleanup](#service-eof); CP051 có [C mới/Start B trong service](#service-replacement); CP052 [guest setup EOF](#setup-eof), CP053 [host với peer chưa map](#host-setup), CP054 [C trước vòng đầu](#prestart-replacement), CP072 [preclock forfeit/return](#preclock-eof), CP074 [native107/IDclear và UI](#preclock-cleanup), CP076 [Back86/emptyroomrecreate cùng channel](#back86-membership) đã đo; reconnect cùng account/disconnect variants/toàn reset còn mở |
 | Peer lifecycle | CP027 actual99→153; CP045–047 [oldUDP actor/keyguard/endpointcontrol](#udp-generation), CP070 [transport cut hai chiều](#current-udp-causality) | CP048 [service fixture](#probe-service) đã tích hợp key policy hẹp; low8reuse/roster/UDPtype khác/fullgrammar/reliability/relay/reset còn mở. Không coi đổi cổng riêng lẻ là freshness guard hoặc keybyte là auth |
 
@@ -1981,7 +1981,7 @@ Giới hạn và phép đo nằm ở link contract; không dùng mỗi vai trò 
 |---|---|---|---|---|---|
 | [Place159](#terrain-policy) | Native Space tạo118 | Native159 tạo/bind entity ở cả view | Role/key/serial/quota + knownvariant/power/floor/nonoverlap theo profile | Service cấp ID/phát159 | Client gửi cell/power; chưa xác thực actorlocation/distance/fullauth, không tự coi field là tin cậy |
 | [Explode158/terrain](#terrain-policy) | Timer6s của profile là emu_choice | Native158/process/chain/mapflags; service dùng bounded terrain model | Model/profile pin/kinds/power≤2/currentgeneration; semantic modelchoices có giới hạn | Service phát158 rồi commit world/release | Peer movement có thể ảnh hưởng contact/report; report142 không làm worldoracle. Original server validator/order vẫnunknown |
-| [Trap/death/result](#tcp-guard-cycles) | Native local simulation tạo127/subtype | Native170/175/180 nhận effect/UI | Guard key/slot/reportstate/selectedsame-oldbody; còn firstseen/forgedforward/location thiếu | Service170/result/return theo policy | Report/body do client gửi; acceptedreport không là authoritative world proof. [Limits](#tcp-guard-cycles) và RESEARCH giữ mở |
+| [Trap/death/result](#result-freshness-guard) | Native local simulation tạo127/subtype | Native170/175/180 nhận effect/UI | Guard key/slot/reportstate/selectedsame-oldbody; optionalcandidate21 sau latestsuccessful158/chưa accepted17/19; firstseen/forgedforward/location vẫn thiếu | Service170/result/return theo policy | Report/body do client gửi; acceptedreport không là authoritative world proof. [Limits](#tcp-guard-cycles) và RESEARCH giữ mở |
 
 Gate K5/K6 cần kiểm matrix và đối chứng của hành vi thực sự dùng; từ28/10 Codex tự kiểm theo miễn review của chủ dự án. Có thể giữ unknown về
 server gốc thất lạc nếu policy emulator được chọn `design`, client chấp nhận và ca consistency đạt;
@@ -3617,6 +3617,54 @@ Không cộng các check thành cấp chứng minh: fixed3167/control3449/gated5
 2178/2364/390copiednativeactorgetters riêng. Các run có native2resultreset/currententities/195flags
 nhưng chưa repeatpositiveoldA56chain. Moduleimportanalysisfirstfail và wrongsiteobserver được giữ;
 chỉ evidence/claims đo được nhận. AUD029manualcanonical→rawoldframes sửaabsence/sourcefilter, periodic
-CP100 khôngreset. [PLAN](PLAN.md#current-order) mở optionalresultfreshnessguard/regression/nativecontrol,
+CP100 khôngreset. Bước optionalresultfreshnessguard/regression/nativecontrol tại thời điểm CP099 đã
+được thực hiện ở [CP100](#result-freshness-guard); [PLAN](PLAN.md#current-order) giữ bước hiện hành,
 không arbitraryquietdelay hoặc gán law gốc. Fullidentity/auth/codec/authority/allreset/vanilla/LANInternet/
 fullmatch/K5/K6a vẫn chưa nghiệmthu.
+
+<a id="result-freshness-guard"></a>
+### Guard kết quả tùy chọn sau blast — CP100
+
+[Recipe/hash và reuse](evidence/result-freshness/README.md); câu hỏi/phép đo tiếp ở
+[RESEARCH](RESEARCH.md#gap-result-return), thứ tự duy nhất tại [PLAN](PLAN.md#current-order).
+**design/implementation** cho policy; **kr_runtime/confirmed hẹp** cho native control trên copy.
+Không thay luật server gốc bằng suy luận từ report21 hoặc test tự sinh.
+
+Profile khai báo `result_freshness: {"mode": "post_blast_untrapped"}`; vắng field giữ behavior cũ,
+khác schema báo lỗi trước selector/runtime. Sau mỗi broadcast158 hoàn tất thành công, service lưu
+`result_last_blast` với generation/ID/latest recipient-send timestamp. Lỗi/partialsend không commit
+mốc mới; job cũ bị fence không làm đổi vòng mới. Start thay round/clear eligibility17/19; cursor127
+qua Start vẫn giữ contract trước. Cả own158 của secondary dù native có thể no-op cũng invalidate21:
+đây là lựa chọn bảo thủ, không native law hay quiettimer mới.
+
+Candidate21 phải là report đã admission, đúng currentmember/currentgeneration, sau death và
+**sau** latestsuccessful158; timestamp bằng không đủ. Candidate đã accepted17/19 trong generation
+không được coi là survivor. Duplicate/stale rejected không tạo transition eligibility. Delay8s từ death
+và rankalias cũ giữ nguyên. Cảhai accepteddead dùng optionalrank2/2 fixture CP083/latestdeath;
+thiếu alias thì explicitpending, không gán falsewinner. Profile này **không có reset eligibility khi
+cứu/kim**; chưa áp guard ngầm cho mode/harness có rescue/selfescape.
+
+127 tới khi vòng không active được ghi `inactive_reports` (role/generation/seq/time/frame/bodySHA/
+body/prefix14 nếu đủ). Đây là envelope **chưa admission**, không cursoradvance/forward170/lifestate/
+outcome. Prefix ngắn vẫn giữ metadata; không lấy nó làm packet đã semanticvalidate. Khắc phục gap
+observability CP099, không biến log này thành authentic/authoritative report.
+
+**Kiểm mô hình:** 124server tests/4terrain kernel tests pass. Script dùng exact retained CP098
+B19/A21/root118/lateA17 bodies+seq và timestamps: legacy chốt175 tại oldranktick, guard vẫnactive và
+admit actualoldA17. Đây là mô hình service tối thiểu (emptyterrain/newID1, collapsed recipientsendtime),
+không native recurrence hoặc mô phỏng đủ thế giới CP098. Reuse source tránh tìm lại writer/codec/rank.
+
+**Native control cùng run:** 341,282s, hai actual121/clock/175/180/refresh mỗi view; 14native159entities,
+10successful158 callbacks/view, 44snapshots195flags/process/reset khớp boundedterrain model. Jobs
+6/7/13/14 bị `round_closed`, không158/terraincommit, không bịa14callbacks hay mọi entity đãprocess.
+12selectedTCPsame-oldreplays bị reject/noextraID165170. Bốn BombFire pickups/delta/reset, rankstorage
+1/2 trước180 đều có nguồn riêng. NativeAstate0R1/12R2 vàB1 cảhai view ở175; không A56recurrence.
+Candidate21 tới sau last158 lần lượt2934,963410ms/639,368130ms; 2inactive native127/sub34 khớp exactfront/
+upstream, không activeadmission. Ba cửa sổ old21→new158 đều **trước** deathdelay8s: run này chứng minh
+compatibility, không chứng minh guard đã cứu đúng oldrace bằng native. Exactoldtrace được kiểm model riêng.
+
+Giới hạn: guard chỉ xét blast đã gửi, không guarantee không còn pendingbomb trước175; futurebombs
+có thể bị fence khi finish. NativeA56/writer→rank exactoldchain chưa tái hiện; negativecontrol không
+bác oldlateA17. Report/life authority, forgedforward/location/fullauth/codec/allreset/rescuevariants/
+vanilla/fullmatch/K5/K6a/LANInternet vẫn mở. AUD030quaCP100/nextCP104. BadFD cleanup là trigger độc lập,
+không gán olderrno9 cho một stack nếu chưa có trace.

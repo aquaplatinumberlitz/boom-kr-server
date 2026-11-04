@@ -1,0 +1,83 @@
+{
+  "id": "AUD030",
+  "trigger": "periodic",
+  "completed_through": "CP100",
+  "recorded_utc": "2026-11-04T19:09:35.622373+00:00",
+  "auditor": "Codex manual self-audit; independent review waived by owner",
+  "read_files": [
+    "README.md",
+    "docs/PLAN.md",
+    "docs/PROTOCOL.md",
+    "docs/RESEARCH.md",
+    "docs/features.json",
+    "docs/COVERAGE.md",
+    "docs/evidence/terrain-tcp-guard-cycles/README.md",
+    "docs/evidence/current-peer-targets/README.md",
+    "docs/evidence/trap-report-rank-order/README.md",
+    "docs/evidence/all-dead-result/README.md",
+    "docs/evidence/result-freshness/README.md",
+    "local/research/codex/result-freshness-r1/reuse-question.json",
+    "local/research/codex/result-freshness-r1/exact-raw-replay.json",
+    "local/research/codex/result-freshness-r1/fresh/run.json",
+    "local/research/codex/result-freshness-r1/fresh/service-state.json",
+    "local/research/codex/result-freshness-r1/fresh/client.log",
+    "local/research/codex/result-freshness-r1/fresh/client-B.log",
+    "local/research/codex/result-freshness-r1/runtime-verification.json",
+    "local/research/codex/result-freshness-r1/transport-verification.json",
+    "local/research/codex/result-freshness-r1/chronology-verification.json",
+    "local/research/codex/result-freshness-r1/freshness-verification.json",
+    "server/probe_service.py",
+    "server/test_result_freshness.py"
+  ],
+  "method": "Manual README→PLAN→PROTOCOL current header/authority/CP097–100 sections→RESEARCH current gaps→evidence/raw/code. Compared exact old CP098front/order and minimal modelreplay vs currentnative rawcallbacks/rankstorage/policy sendtimestamps/127front; inspected current14entities vs10callbacks/44flag snapshots/4fencedjobs, nativeA0R1/12R2/B1 bothviews, exact2inactive127sub34 vs no activeadmission. Native3old21/newblast windows allbefore8s explicitly notcausalracefix proof; no A56recurrence. Re-read previous AUD029correction/seriouscadence, keptperiodic100→104. Mechanicalchecks after this reading cannot certify semantics.",
+  "findings": [
+    {
+      "id": "F1",
+      "stale": "README/PLAN/CP099evidence said CP099waitingPR despite PR159merged77b19c9; periodicAUD030nowdue.",
+      "correction": "Record exactmergedCP099and currentCP100selfcheckpendingPR; AUD030through100/next104, waivernotapproval.",
+      "fixed_in": [
+        "README.md",
+        "docs/PLAN.md",
+        "docs/evidence/trap-report-rank-order/README.md"
+      ]
+    },
+    {
+      "id": "F2",
+      "stale": "RESEARCH KR-X002next/current mentions CP097pendingpeerintegration/AUD028next100 though CP098targetapply and CP100new2cycles exist; CP099section activePLAN-next couldreadascurrent.",
+      "correction": "Gapnow fullqueue/allreset/actualintegrationtrigger, source scopes remainseparate; CP099nexttext dated/successorCP100 link, PLANsinglecurrentorder.",
+      "fixed_in": [
+        "docs/RESEARCH.md",
+        "docs/PROTOCOL.md",
+        "docs/COVERAGE.md"
+      ]
+    },
+    {
+      "id": "F3",
+      "stale": "Authorityindex through096 omitted currentpeer targets/resultpolicy successor; copiedverifierlimits inherited CP098A56/noA17/unchangedCP094 text.",
+      "correction": "Authorityindex through100/currenttarget/result links; boundedoptionalpolicy separated fromoriginalserverauthority. Currentreportlabels corrected; oldraw/completeCP098/099immutable. Nativewindowsbefore8s cannotclaim causalguardfix.",
+      "fixed_in": [
+        "docs/PROTOCOL.md",
+        "docs/evidence/result-freshness/README.md",
+        "local/research/codex/result-freshness-r1/verify_transport.py",
+        "local/research/codex/result-freshness-r1/verify_items_storage.py",
+        "local/research/codex/result-freshness-r1/analysis-corrections.json"
+      ]
+    },
+    {
+      "id": "F4",
+      "stale": "Native_reports invokedwithoutlabel silentlygenerated0cases; dependenttwoverifiersfailed.",
+      "correction": "Keep first-analysis outputs andrerun requiredfresh label →477nativecases then237transport/39effects pass. Not a nativefailure; no raw edits/relaxed assertion.",
+      "fixed_in": [
+        "local/research/codex/result-freshness-r1/first-analysis/native-reports.json",
+        "local/research/codex/result-freshness-r1/analysis-corrections.json",
+        "local/research/codex/result-freshness-r1/reports-launch.txt"
+      ]
+    }
+  ],
+  "remaining": [
+    "OriginalCP098A56/writer/ranktimestamp chain not reproduced; old late17positive retainslimits; model exacttrace notnewnative recurrence.",
+    "Guard optional currentAB norescue/untrap transition or guarantee allpendingbombs emitted before175; design notoriginalserverlaw/fullvalidator.",
+    "CP099gatedBadFDconnection8 source only errno9; nextsame-selector-batch/socketpair regression beforeassignment/fix, independenttrigger.",
+    "Fullauth/codec/authority/fullreset/vanilla/LANInternet/fullmatch/K5/K6a remain open; no gate auto-close."
+  ]
+}

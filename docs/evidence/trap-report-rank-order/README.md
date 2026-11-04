@@ -3,7 +3,7 @@
 KRE-062/[issue158](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/158), baseline
 CP098/[PR157](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/157)
 `a6f4ae79a93468b6c2f224462bcdd1e3312ef831`. Codex solo/tự kiểm,
-[review waived](../checkpoints/review-waiver.json), CP099 chờPR. Contract ở
+[review waived](../checkpoints/review-waiver.json), CP099 đã merge [PR159](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/159) tại `77b19c9`. Contract ở
 [PROTOCOL](../../PROTOCOL.md#trap-report-rank-order), gap ở [RESEARCH](../../RESEARCH.md#gap-result-return),
 thứ tự ở [PLAN](../../PLAN.md#current-order). Production/profile/policy giữ nguyên.
 
@@ -39,3 +39,5 @@ capturedcảpostclosed khớpphasewindow, không chỉactiveguardlog. No fullcon
 113server/4kernel/18checkpointtestsreuse production/checker unchanged. Reviewwaived không approved.
 Bước kế optionalresultfreshnessguard/tests/nativecontrol theoPLAN; không quietdelay đoán, stateforce,
 policy sửa che measurement, fullmatch/gate/K6a/vanilla/LANInternetclaim.
+
+Bước policy kế đã thực hiện ở [CP100](../result-freshness/README.md); các kết quả CP099 phía trên giữ phạm vi lịch sử.

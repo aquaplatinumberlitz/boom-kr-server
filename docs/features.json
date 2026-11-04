@@ -1,7 +1,7 @@
 {
   "schema": "kre-feature-index-v1",
   "build": "KR00967",
-  "as_of": "2026-11-05 CP099",
+  "as_of": "2026-11-05 CP100",
   "sources": {
     "plan": "docs/PLAN.md",
     "contract": "docs/PROTOCOL.md",
@@ -1971,7 +1971,8 @@
           "docs/evidence/tcp-guard-cycles/README.md",
           "docs/evidence/terrain-tcp-guard-cycles/README.md",
           "docs/evidence/current-peer-targets/README.md",
-          "docs/evidence/trap-report-rank-order/README.md"
+          "docs/evidence/trap-report-rank-order/README.md",
+          "docs/evidence/result-freshness/README.md"
         ]
       },
       "coverage": {
@@ -2010,7 +2011,8 @@
               "docs/evidence/tcp-guard-cycles/README.md",
               "docs/evidence/terrain-tcp-guard-cycles/README.md",
               "docs/evidence/current-peer-targets/README.md",
-              "docs/evidence/trap-report-rank-order/README.md"
+              "docs/evidence/trap-report-rank-order/README.md",
+              "docs/evidence/result-freshness/README.md"
             ]
           },
           "windows_original": {
@@ -2033,7 +2035,9 @@
             "docs/PROTOCOL.md#probe-service",
             "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/57",
             "docs/PROTOCOL.md#report127-freshness",
-            "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/87"
+            "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/87",
+            "docs/PROTOCOL.md#result-freshness-guard",
+            "server/test_result_freshness.py"
           ],
           "delivery": "via_pr"
         },
@@ -2047,7 +2051,8 @@
             "docs/evidence/tcp-guard-cycles/README.md",
             "docs/evidence/terrain-tcp-guard-cycles/README.md",
             "docs/evidence/current-peer-targets/README.md",
-            "docs/evidence/trap-report-rank-order/README.md"
+            "docs/evidence/trap-report-rank-order/README.md",
+            "docs/evidence/result-freshness/README.md"
           ]
         },
         "gate": {
@@ -2542,7 +2547,8 @@
           "docs/evidence/three-bomb-chain/README.md",
           "docs/evidence/terrain-tcp-guard-cycles/README.md",
           "docs/evidence/current-peer-targets/README.md",
-          "docs/evidence/trap-report-rank-order/README.md"
+          "docs/evidence/trap-report-rank-order/README.md",
+          "docs/evidence/result-freshness/README.md"
         ]
       },
       "coverage": {
@@ -2581,7 +2587,8 @@
               "docs/evidence/three-bomb-chain/README.md",
               "docs/evidence/terrain-tcp-guard-cycles/README.md",
               "docs/evidence/current-peer-targets/README.md",
-              "docs/evidence/trap-report-rank-order/README.md"
+              "docs/evidence/trap-report-rank-order/README.md",
+              "docs/evidence/result-freshness/README.md"
             ]
           },
           "windows_original": {
@@ -2605,7 +2612,9 @@
             "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/57",
             "docs/PROTOCOL.md#all-dead-result",
             "server/test_all_dead_result.py",
-            "tools/export_probe_profile.py"
+            "tools/export_probe_profile.py",
+            "docs/PROTOCOL.md#result-freshness-guard",
+            "server/test_result_freshness.py"
           ],
           "delivery": "via_pr"
         },
@@ -2619,7 +2628,8 @@
             "docs/evidence/three-bomb-chain/README.md",
             "docs/evidence/terrain-tcp-guard-cycles/README.md",
             "docs/evidence/current-peer-targets/README.md",
-            "docs/evidence/trap-report-rank-order/README.md"
+            "docs/evidence/trap-report-rank-order/README.md",
+            "docs/evidence/result-freshness/README.md"
           ]
         },
         "gate": {
@@ -2999,7 +3009,8 @@
           "docs/evidence/adjacent-owner-control/README.md",
           "docs/evidence/terrain-tcp-guard-cycles/README.md",
           "docs/evidence/current-peer-targets/README.md",
-          "docs/evidence/trap-report-rank-order/README.md"
+          "docs/evidence/trap-report-rank-order/README.md",
+          "docs/evidence/result-freshness/README.md"
         ]
       },
       "coverage": {
@@ -3075,7 +3086,8 @@
               "docs/evidence/adjacent-owner-control/README.md",
               "docs/evidence/terrain-tcp-guard-cycles/README.md",
               "docs/evidence/current-peer-targets/README.md",
-              "docs/evidence/trap-report-rank-order/README.md"
+              "docs/evidence/trap-report-rank-order/README.md",
+              "docs/evidence/result-freshness/README.md"
             ]
           },
           "windows_original": {
@@ -3137,7 +3149,9 @@
             "docs/PROTOCOL.md#terrain-policy",
             "server/terrain_model.py",
             "server/terrain_profile.py",
-            "server/test_terrain_policy.py"
+            "server/test_terrain_policy.py",
+            "docs/PROTOCOL.md#result-freshness-guard",
+            "server/test_result_freshness.py"
           ]
         },
         "integration": {
@@ -3184,7 +3198,8 @@
             "docs/evidence/adjacent-owner-control/README.md",
             "docs/evidence/terrain-tcp-guard-cycles/README.md",
             "docs/evidence/current-peer-targets/README.md",
-            "docs/evidence/trap-report-rank-order/README.md"
+            "docs/evidence/trap-report-rank-order/README.md",
+            "docs/evidence/result-freshness/README.md"
           ]
         },
         "gate": {

@@ -65,6 +65,11 @@ class ProbeService:
         if missing:
             raise ValueError('profile missing lifecycle fixtures: ' + ', '.join(sorted(missing)))
         self.profile, self.out, self.proxy_ports = profile, out, proxy_ports
+        self.result_freshness = False
+        if 'result_freshness' in profile.data:
+            if profile.data['result_freshness'] != {'mode': 'post_blast_untrapped'}:
+                raise ValueError('unsupported result_freshness policy')
+            self.result_freshness = True
         # Optional measured-profile policy, not stats inferred from a request.
         self.capacity_profile = {}
         if 'bomb_capacity' in profile.data:
@@ -475,8 +480,21 @@ class ProbeService:
             for item in matches:
                 prior = self.round['revealed_hidden'].setdefault(str(item.index), report)
                 report.setdefault('revealed_indices' if prior is report else 'already_revealed', []).append(item.index)
-        elif opcode == 127 and self.room.active:
-            self.receive_event(event, frame, sequence, body)
+        elif opcode == 127:
+            if self.room.active:
+                self.receive_event(event, frame, sequence, body)
+            elif self.result_freshness:
+                # Transport observation only: do not run admission, advance the
+                # report cursor, forward170, or change a closed round's outcome.
+                self.state.setdefault('inactive_reports', []).append({
+                    'role': role, 'generation': self.room.generation, 'seq': sequence,
+                    'monotonic_ns': time.monotonic_ns(), 'reason': 'round_not_active',
+                    'frame_sha256': hashlib.sha256(frame).hexdigest(),
+                    'body_sha256': hashlib.sha256(body).hexdigest(),
+                    'payload_hex': body.hex(),
+                    'prefix': (codec.read_fields(body[:14], [1, 1, 2, 2, 4, 4])
+                               if len(body) >= 14 else None),
+                    'limits': 'Unadmitted transport envelope; no semantic validation.'})
 
     def receive_event(self, event, frame, sequence, body):
         if len(body) < 14:
@@ -631,6 +649,14 @@ class ProbeService:
                     terrain_result = terrain_after_blast.blast(bomb['id'])
                 body = codec.pack_fields([1, bomb['id'], 0, 2, 0xFFFFFFFF, 255], [1, 2, 1, 4, 4, 1])
                 bomb['broadcast158'] = self.broadcast('blast', f"blast158-r{bomb['round']}-{bomb['id']}", body=body)
+                if self.result_freshness:
+                    # Only a successful complete broadcast invalidates earlier
+                    # survivor reports. Even a later secondary's own158 counts;
+                    # this is a conservative fixture policy, not native law.
+                    self.round['result_last_blast'] = {
+                        'id': bomb['id'], 'generation': self.room.generation,
+                        'monotonic_ns': max(sent['monotonic_ns']
+                                            for sent in bomb['broadcast158'])}
                 if terrain_after_blast:
                     # No terrain/release commit for a failed/partial broadcast.
                     # The existing transport exception still surfaces; this is
@@ -709,10 +735,14 @@ class ProbeService:
                 and row['round'] == self.room.generation and row['subtype'] == 21
                 and not row.get('rejected')
                 and row['monotonic_ns'] > death['monotonic_ns'] for row in remote_reports
+                if self.result_candidate_current(row)
             ):
                 self.room.finish()
                 alias = 'rank' if death['slot'] == 0 else 'rank_Awin'
                 self.round['rank'] = {'monotonic_ns': now, 'broadcast': self.broadcast(alias, f"rank175-r{self.room.generation}")}
+                if self.result_freshness:
+                    self.round['rank']['policy'] = 'post_blast_untrapped'
+                    self.round['rank']['last_blast'] = dict(self.round.get('result_last_blast', {}))
                 self.state['policy_events'].append({'op': 'finish', 'generation': self.room.generation})
         if self.round.get('rank') and not self.round.get('return') and now - self.round['rank']['monotonic_ns'] >= 5 * 10**9:
             self.round['return'] = {'monotonic_ns': now, 'broadcast': self.broadcast('return', f"return180-r{self.room.generation}")}
@@ -729,6 +759,23 @@ class ProbeService:
             self.round['refresh'] = {'monotonic_ns': now, 'broadcast': sent}
             for event in self.peers():
                 event.pop('guest_ready_received', None)
+
+    def result_candidate_current(self, report):
+        """Opt-in report freshness; not authoritative location or life state.
+
+        This fixture has no rescue/self-escape eligibility transition. A later
+        report21 cannot clear an accepted trap/death marker within the round.
+        """
+        if not self.result_freshness:
+            return True
+        peer = next((peer for peer in self.peers() if peer['role'] == report['role']), None)
+        if peer is None:
+            return False
+        blocked = peer.get('pickup_ineligible')
+        if blocked and blocked['generation'] == self.room.generation:
+            return False
+        blast = self.round.get('result_last_blast')
+        return not blast or report['monotonic_ns'] > blast['monotonic_ns']
 
     def finish_all_dead(self, now):
         """Optional A/B fixture policy: both accepted dead, both rank2.
