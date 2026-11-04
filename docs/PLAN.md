@@ -1,7 +1,7 @@
 # Kế hoạch server giả lập KR 00967
 
 Nguồn chuẩn của project `boom-kr-server`; bản nhập từ plan đã được dsh1/dsh2 review tại `1eee46d`.
-Cập nhật04/11 JST (CP090): [currentmap boxstop/clear-state](PROTOCOL.md#current-map-chain-state). Tiếp house/static/direction sau box bị phá, giữ policy hẹp; AUD026, audit định kỳCP092.
+Cập nhật04/11 JST (CP091): [house stop sau native box break](PROTOCOL.md#house-after-box). Tiếp storage/snapshot map+1D54 và reset, giữ release policy hẹp; AUD026, audit bắt buộcCP092.
 
 
 ### Mục tiêu, baseline và phạm vi
@@ -37,13 +37,13 @@ với client Rust không chứng minh có thể điều khiển client KR bằng
 
 ### Tiến độ hiện hành theo bằng chứng
 
-| Task/mốc | Trạng thái tại CP090 | Nguồn chuẩn |
+| Task/mốc | Trạng thái tại CP091 | Nguồn chuẩn |
 |---|---|---|
 | KRE-004/issue6 | Đã review/merge PR7 và đóng issue:recipe r1 đến local accept;không phải full K1 | [Wine r1](evidence/wine/README.md) |
 | Bootstrap reply | PR8 đã merge;debugger ProcessPatchreturn1,không ép success | [bootstrap evidence](evidence/bootstrap-wire/README.md) |
 | KRE-005a/issue9,R2 | PR10 đã merge:3 cold start cửa sổ/second accept;issue9 còn mở | [R2 evidence](evidence/wine-r2/README.md) |
 | WCP hai-reply | Run CP001 là lịch sử chưa C→S; CP006 đã đo request đầu trên copy tham số hóa | [PROTOCOL](PROTOCOL.md#wcp),[WCP evidence](evidence/wcp/README.md) |
-| KRE-005b/issue14 | CP006–089 đã merge; CP090 map-grid/TileInfo/native boxstop, tự kiểm/chờ PR; fullround/authority/full auth còn mở | [Q-023](RESEARCH.md#q-023), [service](evidence/probe-service/README.md) |
+| KRE-005b/issue14 | CP006–090 đã merge; CP091 house/mutable-cell/native stop, tự kiểm/chờ PR; fullround/authority/full auth còn mở | [Q-023](RESEARCH.md#q-023), [service](evidence/probe-service/README.md) |
 | K0/K1 | Chưa nghiệm thu toàn gate;Windows vanilla/control ownership và các điều kiện còn thiếu giữ mở | Gate dưới,[Q-022](RESEARCH.md) |
 | K2a/K2 | Primitive/WCP, CP057stream native/model và CP058–060authcallback137/135/errors0 đã có; fullcodec/authauthority/reconnect và gate chưa pass | [PROTOCOL](PROTOCOL.md#login-auth),[Q-023](RESEARCH.md#q-023) |
 | K3 | Copy đã vẽUI/đóngnotice, A/B/Cprofile đọc sạch và mộtnamedcachewarm được nhận; identityauthority/toàncache/codec/K3 chưa nghiệm thu | [Contract sảnh](PROTOCOL.md#channel-lobby) |
@@ -60,16 +60,17 @@ KRE-005b/issue14 vẫn mở. Các bước dưới là **thứ tự ưu tiên**, 
 xong checkpoint/commit/PR thì chuyển ngay việc kế tiếp trong thứ tự này, không tự dừng/chờ nhắc.
 Một blocker chỉ kết thúc nhánh đo tương ứng; ghi rõ rồi tiếp việc độc lập có thể làm, không tự đóng gate.
 
-1. **KR-F004/F005/S001 — nhánh house/static/direction và map thay đổi:**
-   [CP090](PROTOCOL.md#current-map-chain-state) đã lấy targetmap195cells/11IDs và native clear/box
-   control: E9F220 step1 chưa phải toànraypass; EA0B10→EB9710 mới stop tại9box, hai view khớp.
-   Không lặp parse/map/knownbox/query-null/clear-step. Source-first actualgrid/TileInfo/sourcebytes,
-   R139–141/currentE9F220/EA0B10/E9F9B0/class/direction helpers vàrawCP090. E9F9B0 cả80queries/view
-   đều null, nên template/classflag/direction của house chưa có instancejoin; không đoán từ tên.
-   Chọn normalroot lần sau cùng ô(3,3) sau khi box(2,3) bị native phá, để ray có thể tới house(1,3).
-   Chỉ đặt bằng OS input/actual118, actor còn sống/đủ capacity; thoát trước ownblast theo feedback,
-   không ép map state/callfunction. Nối secondnativequery/set/stop/context với actual142/firstblast và
-   staticcell, giữ unknown nếu không tới. Chưa mở policy toànmap/recursive hoặc dùng report như oracle.
+1. **KR-F004/F005/S001 — snapshot native map flags và lifecycle:**
+   [CP091](PROTOCOL.md#house-after-box) đã tới house1,3 bằng actualnewroot2,3; EA0B10=1/state2return0,
+   E9F9B0 vẫnnull. Không lặp house/query-null hoặc tiếp tìm E90A80template cho pipeline đãchạy.
+   Cùng ô2,3 có set1→0 sau xử lýfirstblast; CP090raw cũng đã chứa postprocessingzero, tái dùng.
+   Source-first currentEA0B10(map+1D54)/cachedED1350/57A870 nếu có, rawCP090/091 vàtargetgrid/TileInfo,
+   oldKR/VNcontainer/protocol references đúng câu hỏi. Chỉ phục hồi storage/reader cần cho snapshot,
+   tránh gọi gamefunction hoặc quét toànclient. Kiểm runtime flags tại initialclock, sauroot vàsauStart
+   vòng2: seed/mutable/reset đồng bộ hai view vàknownbox/house/clear controls; pin actualbytes/native
+   reader model riêng. Nếu source hỗ trợ thì snapshot finite195cells của map hiện hành, không đoán layout.
+   Chưa mở serverterraintracking/releasewider dựa142 thiếuepoch/auth; policy mới phải design riêng có
+   guard/control. CP092 đến kỳ phải audit README→PLAN→PROTOCOL→RESEARCH→evidence/raw.
 2. **KR-B003/KR-F006 — nợ có giới hạn:** [CP057](PROTOCOL.md#codec-stream-boundaries) đã đo stream/
    seq/bounds trong model, không mở lại76split hoặc cấp buffer lớn chỉ để vượt allocationguardFFFFFFFF.
    Full modes/prefix guard/live reset, distance/auth/transport/kim-cứu của reportguard giữ trong RESEARCH;

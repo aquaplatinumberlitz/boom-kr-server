@@ -1,7 +1,7 @@
 {
   "schema": "kre-feature-index-v1",
   "build": "KR00967",
-  "as_of": "2026-11-04 CP090",
+  "as_of": "2026-11-04 CP091",
   "sources": {
     "plan": "docs/PLAN.md",
     "contract": "docs/PROTOCOL.md",
@@ -826,7 +826,8 @@
           "docs/evidence/distinct-spawn/README.md",
           "docs/evidence/preclock-eof/README.md",
           "docs/evidence/preclock-cleanup/README.md",
-          "docs/evidence/current-map-chain/README.md"
+          "docs/evidence/current-map-chain/README.md",
+          "docs/evidence/house-after-box/README.md"
         ]
       },
       "coverage": {
@@ -864,7 +865,8 @@
               "docs/evidence/distinct-spawn/README.md",
               "docs/evidence/preclock-eof/README.md",
               "docs/evidence/preclock-cleanup/README.md",
-              "docs/evidence/current-map-chain/README.md"
+              "docs/evidence/current-map-chain/README.md",
+              "docs/evidence/house-after-box/README.md"
             ]
           },
           "windows_original": {
@@ -1338,7 +1340,8 @@
           "docs/evidence/capacity-reservations/README.md",
           "docs/evidence/early-chain-window/README.md",
           "docs/evidence/chain-capacity-release/README.md",
-          "docs/evidence/current-map-chain/README.md"
+          "docs/evidence/current-map-chain/README.md",
+          "docs/evidence/house-after-box/README.md"
         ]
       },
       "coverage": {
@@ -1379,7 +1382,8 @@
               "docs/evidence/capacity-reservations/README.md",
               "docs/evidence/early-chain-window/README.md",
               "docs/evidence/chain-capacity-release/README.md",
-              "docs/evidence/current-map-chain/README.md"
+              "docs/evidence/current-map-chain/README.md",
+              "docs/evidence/house-after-box/README.md"
             ]
           },
           "windows_original": {
@@ -1461,7 +1465,8 @@
           "docs/evidence/capacity-reservations/README.md",
           "docs/evidence/early-chain-window/README.md",
           "docs/evidence/chain-capacity-release/README.md",
-          "docs/evidence/current-map-chain/README.md"
+          "docs/evidence/current-map-chain/README.md",
+          "docs/evidence/house-after-box/README.md"
         ]
       },
       "coverage": {
@@ -1506,7 +1511,8 @@
               "docs/evidence/capacity-reservations/README.md",
               "docs/evidence/early-chain-window/README.md",
               "docs/evidence/chain-capacity-release/README.md",
-              "docs/evidence/current-map-chain/README.md"
+              "docs/evidence/current-map-chain/README.md",
+              "docs/evidence/house-after-box/README.md"
             ]
           },
           "windows_original": {
@@ -2896,7 +2902,8 @@
           "docs/evidence/capacity-reservations/README.md",
           "docs/evidence/early-chain-window/README.md",
           "docs/evidence/chain-capacity-release/README.md",
-          "docs/evidence/current-map-chain/README.md"
+          "docs/evidence/current-map-chain/README.md",
+          "docs/evidence/house-after-box/README.md"
         ]
       },
       "coverage": {
@@ -2961,7 +2968,8 @@
               "docs/evidence/capacity-reservations/README.md",
               "docs/evidence/early-chain-window/README.md",
               "docs/evidence/chain-capacity-release/README.md",
-              "docs/evidence/current-map-chain/README.md"
+              "docs/evidence/current-map-chain/README.md",
+              "docs/evidence/house-after-box/README.md"
             ]
           },
           "windows_original": {

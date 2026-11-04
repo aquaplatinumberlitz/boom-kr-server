@@ -3,7 +3,7 @@
 KRE-053/[issue140](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/140), baseline
 CP089/[PR139](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/139)
 `727e94255e1b501ffeb7ac74a58b0a176d5a8553`. Codex solo/tự kiểm,
-[review waived](../checkpoints/review-waiver.json), chờ PR. Contract/limits duy nhất ở
+[review waived](../checkpoints/review-waiver.json), đã merge [PR141](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/141) tại `c142c85`. Contract/limits duy nhất ở
 [PROTOCOL](../../PROTOCOL.md#current-map-chain-state), question ở
 [RESEARCH](../../RESEARCH.md#gap-blast-block-chain), thứ tự ở [PLAN](../../PLAN.md#current-order).
 Raw: `local/research/codex/map-chain-r1/`. Production giữ nguyên CP089.
@@ -55,5 +55,5 @@ reuse do production/checker không đổi; docs/catalog7/artifacts/localhistory/
 
 Chưa templateTileInfo→runtimeclassflag/direction, house/static/otherclasssets, mutabletile sau phá,
 fullmap/recursive/moving/pool/validator/auth/codec/authority/allreset/vanilla/LANInternet/fullmatch/K5/K6a.
-PLAN tiếp normal secondroot sau phá box2,3 để tới house1,3; giữ CP089 releasepolicy hẹp.
+Bước tạiCP090 là normal secondroot để tới house; [CP091](../house-after-box/README.md) đã đo house/mutableflag, [PLAN](../../PLAN.md#current-order) giữ gap hiện hành. CP089policy giữ hẹp.
 Audit AUD026 qua088, periodicCP092; CP090 không tự đónggate từ sốcheck hoặc từmetadata.

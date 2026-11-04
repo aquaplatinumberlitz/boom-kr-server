@@ -1,6 +1,6 @@
 # KR 00967 — contract tương thích client gốc
 
-Revision kr-legacy-contract-r1; cập nhật04/11/2026 JST (CP090).
+Revision kr-legacy-contract-r1; cập nhật04/11/2026 JST (CP091).
 **Contract có bằng chứng từng phần; chưa nghiệm thu full codec K2**.
 Lộ trình và thứ tự task chỉ giữ ở [REWRITE_PLAN — KRE](PLAN.md).
 Đây là contract của repo server KR. ADR0009 của bản viết lại là nguồn lịch sử để so sánh;
@@ -3237,3 +3237,34 @@ repeat200,292s; overhead chỉcandidatecause, không coi firstnegative làruntim
 
 Chưa releaseexpansion/fullmap/recursive/moving/wholepool/validator/auth/codec/authority/allreset/
 vanilla/LANInternet/fullmatch/K5/K6a. [PLAN](PLAN.md#current-order) giữ việc tiếp; AUD026/nextCP092.
+
+
+<a id="house-after-box"></a>
+### Native house stop và mutable box flag — CP091
+
+[Recipe/hash/oldsource reuse](evidence/house-after-box/README.md), **kr_runtime/confirmed hẹp** trên
+currentmodifiedWine/A-B/ExVillage01. Production CP089 không đổi; dùng lại CP090 map/data/helper/probe,
+không thêm nativebody/patch/callfunction hoặc ép map. Thử normalUp saufirstroot, Space, Downescape.
+Actual root mới là **(2,3)/serial56/ID4**, vượt target3,3 do input/feedback; giữactual118 làm nguồn,
+không sửa nhãn cho khớp dự định. ID4/159 nonzero cảhai view trên ô từng cóBox1933/rawclass2.
+
+Trong firstroot158/index1, ô(2,3) có actualEA0B10=1 callerEB975C/EB9710state2/return0; **sau xử lý
+ngaytrong cùngcallback** EA0B10=0 callerEB9BBB. Firstnative142 mỗi view báo(2,3) trước newplacement,
+service log `unknown_hidden_cell` vì ngoàihiddencatalog; đó không phải nativebox khôngbịphá vàkhông
+được dùng report này làm worldstateoracle. CP090raw đã có transition1→0 này, CP091 chỉ nêu rõ nguồn cũ.
+Không có EB9710state1 của **ownrootcell2,3** trong callback4; không bịa marker đó để gọi mutablepass.
+
+Newroot158/index4 cóstepE9F220 accepted1 tới(1,3), actualEA0B10=1 callerEB975C→EB9710state2/return0
+cảhai view. Staticcell làHouse1956/rawclass1: **cùng stop path bao gồm observedbox vàobservedhouse**,
+không suy container1D54 chỉclass2 hoặc classword==E90A80flag. Cả61E9F9B0queries/view vẫnnull,
+EA1230zero/noexplicitE9F220stopbranches; không có context/template/directionflag instancejoin.
+Đường house vừa đo đã được giải qua nativeflag, nhánh template khác chưa đo nhưng không chặn bước này.
+
+32targetrelations;4actual118/159/full39/errors0,rootprocess1,2,3/newroot4/laternoduplicate,
+4full15813/121clock175302/1803/roomrefresh một lần, khôngcontroller/service/probeerrors. Model/parser
+và securegetter tách với runtime; không mới two-cycle/fullmatchgate. Verifier đầu đoánstate1owncell
+bịStopIteration; correctedactualsamecallbackset0/caller/lineorder giữraw/strictactualhouse/new159.
+
+[PLAN](PLAN.md#current-order) tiếp storage/snapshot map+1D54/initial→postblast→Start reset để phục vụ
+terrain/release ngoài whitelist. Chưa mapwide/otherclasses/recursive/moving/reportfreshness/auth/
+fullvalidator/fullcodec/authority/allreset/vanilla/LANInternet/fullmatch/K5/K6a; AUD026/nextCP092.
