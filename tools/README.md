@@ -60,3 +60,8 @@ callbacks/flag snapshots trước khi tích hợp policy. MapSHA là metadata, c
 [Contract/giới hạn](../docs/PROTOCOL.md#terrain-shadow),
 [phép so/source](../docs/evidence/terrain-shadow/README.md). Constraints:
 `python3 tools/test_terrain_shadow.py`; tests/model output không thay native oracle hoặc đóng gate.
+
+
+`export_probe_profile.py --host-back-rejoin`: opt-in5fixtureCP035 cho normalAhostBack/Bpromotion/Aguest
+rejoin/ReadyA; chỉ thêm index path/size/SHA/sequence vàpolicyname, không phân phối binary hoặc tựchứngnhận
+hành vi. [Contract/currentlimits](../docs/PROTOCOL.md#host-normal-back). Kiểm `python3 tools/test_export_host_back.py`.

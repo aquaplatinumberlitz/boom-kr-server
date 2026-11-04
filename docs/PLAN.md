@@ -1,7 +1,7 @@
 # Kế hoạch server giả lập KR 00967
 
 Nguồn chuẩn của project `boom-kr-server`; bản nhập từ plan đã được dsh1/dsh2 review tại `1eee46d`.
-Cập nhật05/11 JST (CP106): [movement hai vòng/ending cùng run](PROTOCOL.md#current-movement-cycles); CP105/PR171 đã merge; AUD032qua104/periodicCP108.
+Cập nhật05/11 JST (CP107): [host Back/promotedrejoin hiện hành](PROTOCOL.md#host-normal-back); CP106/PR173 đã merge; audit định kỳ kếCP108.
 
 
 ### Mục tiêu, baseline và phạm vi
@@ -37,13 +37,13 @@ với client Rust không chứng minh có thể điều khiển client KR bằng
 
 ### Tiến độ hiện hành theo bằng chứng
 
-| Task/mốc | Trạng thái tại CP106 | Nguồn chuẩn |
+| Task/mốc | Trạng thái tại CP107 | Nguồn chuẩn |
 |---|---|---|
 | KRE-004/issue6 | Đã review/merge PR7 và đóng issue:recipe r1 đến local accept;không phải full K1 | [Wine r1](evidence/wine/README.md) |
 | Bootstrap reply | PR8 đã merge;debugger ProcessPatchreturn1,không ép success | [bootstrap evidence](evidence/bootstrap-wire/README.md) |
 | KRE-005a/issue9,R2 | PR10 đã merge:3 cold start cửa sổ/second accept;issue9 còn mở | [R2 evidence](evidence/wine-r2/README.md) |
 | WCP hai-reply | Run CP001 là lịch sử chưa C→S; CP006 đã đo request đầu trên copy tham số hóa | [PROTOCOL](PROTOCOL.md#wcp),[WCP evidence](evidence/wcp/README.md) |
-| KRE-005b/issue14 | CP006–105 đã merge; CP106 movement/terrain/effects/ending hai vòng cùng run tự kiểm/chờ PR; fullround/authority/full auth còn mở | [Q-023](RESEARCH.md#q-023), [service](evidence/probe-service/README.md) |
+| KRE-005b/issue14 | CP006–106 đã merge; CP107 hostBack/Bpromotion/AguestReady/BStart/clock tự kiểm/chờ PR; fullround/authority/full auth còn mở | [Q-023](RESEARCH.md#q-023), [service](evidence/probe-service/README.md) |
 | K0/K1 | Chưa nghiệm thu toàn gate;Windows vanilla/control ownership và các điều kiện còn thiếu giữ mở | Gate dưới,[Q-022](RESEARCH.md) |
 | K2a/K2 | Primitive/WCP, CP057stream native/model và CP058–060authcallback137/135/errors0 đã có; fullcodec/authauthority/reconnect và gate chưa pass | [PROTOCOL](PROTOCOL.md#login-auth),[Q-023](RESEARCH.md#q-023) |
 | K3 | Copy đã vẽUI/đóngnotice, A/B/Cprofile đọc sạch và mộtnamedcachewarm được nhận; identityauthority/toàncache/codec/K3 chưa nghiệm thu | [Contract sảnh](PROTOCOL.md#channel-lobby) |
@@ -60,20 +60,18 @@ KRE-005b/issue14 vẫn mở. Các bước dưới là **thứ tự ưu tiên**, 
 xong checkpoint/commit/PR thì chuyển ngay việc kế tiếp trong thứ tự này, không tự dừng/chờ nhắc.
 Một blocker chỉ kết thúc nhánh đo tương ứng; ghi rõ rồi tiếp việc độc lập có thể làm, không tự đóng gate.
 
-1. **KR-R004/X003/S001 — normal host Back khi guest còn live trong phòng:**
-   [CP106](PROTOCOL.md#current-movement-cycles) đã khép R2 A-Down transition: cảbốn pha có uniqueAPI/
-   targetchange/currentprogress; cùng run14 callbacks/view/terrain/TCPguards/item/hai175180/reset và
-   cùng selectedstate/XY tại180. #166 có qualification hẹp cho PR; không dùng entry175 equality hoặc
-   lặp codec/endingqueue/known movement để trì hoãn bước chơi kế. Gates vẫn mở.
-   Khoảng trống thao tác phòng cụ thể: service `leave_room` hiện chỉ hỗ trợ guest B idle hoặc A một
-   mình sau BEOF; host A Back86 còn B mapped bị log unsupported. Đây là giới hạn implementation đã
-   đọc, hậu quả native mới candidate/unknown. Tái dùng CP034107/110, CP053 promotion/deferredcleanup,
-   CP076 refresh/currentseq và CP077 guest Back/rejoin/session khác membership; đối chiếu nguồn cũ
-   đúng câu hỏi trước đo. Chạy normal ABack khi B còn idle/live, nối actual86→admission→native room/
-   slot-ID/chief và lobbyrefresh; giữ sameTCP/seq/identity. Nếu cần sửa, policy hostleave/promote là
-   design có control/fix và native proof. Không kill host để lặp EOF đã đo, không mở activeleave/
-   accountresume/toànmembership cùng lúc. Chỉ nối rejoin/Create tiếp nếu native/current service cần.
-   AUD032 qua104; audit định kỳ kếCP108. Tiếp task kế ngay sau checkpoint/PR.
+1. **KR-R004/F002/X001/X002/S001 — Battle hai vòng sau normal host Back/rejoin:**
+   [CP107](PROTOCOL.md#host-normal-back) reuseCP034035 đã tích hợp currentservice opt-in normalA86/
+   B107ID1→0/chief1/AnormalLobby/A82/585/guest0/A95/B104/native12199clock. Legacy giữ nguyên,
+   khôngRElại87/107110 hoặchostEOF. CP107 dừngtạiclock; chưa gameplay/result/reset sau Bpromotion.
+   Bước kế reuse **CP106route/terrain/14jobs/TCPguards/fourphaseUDP/ending180** và CP107sameTCP/
+   profile5knownaliases; chỉ đổi readiness/input **ReadyA/StartB** ở cảhai vòng và kiểm hostRole/
+   roster/slot-ID/chief/reset. Giữ actororigins A/B, capacity/map/items/drainedpolicy nhưđãđo;
+   không đảo geometry/role/ID theo tên chủ. Same-run actualmovement/bom/item/14callback nếuđạtroute,
+   175180/585/refresh/nativeending180 và nativeID/chief hai vòng. Nếu trigger mismatch thì tracecạnhđó,
+   khôngquéttoànroom/codec/auth/variants; khôngépstate/report/fuse/holdgiảđịnh.
+   #166/172 đã đóng quaPR173 theoqualificationhẹp, khôngđóngK5/K6a/fullmatch. Audit thủ công định kỳ
+   **CP108** phảiđọc README→PLAN→PROTOCOL→RESEARCH→evidence so rawCP105–108, khôngchỉscript.
 2. **KR-B003/KR-F006 — nợ có giới hạn:** [CP057](PROTOCOL.md#codec-stream-boundaries) đã đo stream/
    seq/bounds trong model, không mở lại76split hoặc cấp buffer lớn chỉ để vượt allocationguardFFFFFFFF.
    Full modes/prefix guard/live reset, distance/auth/transport/kim-cứu của reportguard giữ trong RESEARCH;

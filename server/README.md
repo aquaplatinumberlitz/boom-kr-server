@@ -202,3 +202,10 @@ Knownvariant/floor/nonoverlap/currentepoch/quotaguards trướcID/job, worldcomm
 keepsecondaryjobs/fence/reset, no142worldoracle. Failedbroadcast khôngterraincommit nhưngkhôngrollback
 existingID/serial/fence/jobs.113tests/newnative2cycles14entities,12callbacks/52flagsnapshots. Profileabsent
 unchanged; no automaticexport/migrate/genericmap/auth/fullvalidator. [Evidence](../docs/evidence/terrain-policy/README.md).
+
+
+CP107: optional `host_back_rejoin: {"mode":"idle_A_to_B"}` tích hợp [host Back/promotedrejoin](../docs/PROTOCOL.md#host-normal-back)
+đã biết từ CP035. Export profile với `--host-back-rejoin` để thêm5alias/hash/sequence; legacy không đổi.
+NormalA86 vớiBidle/mapped→107/110promoteB, Arefresh/rejoinsameTCP làmkhách, AReady/BStart→clock đã đo.
+ReturnguestAalias có modeltest; gameplay/result/reset hai vòng saupromotion chưa đo ởCP107.
+Kiểm `python3 -m unittest server.test_host_back_rejoin`; không originalauthority/fullmembership/gateproof.

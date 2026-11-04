@@ -3,7 +3,7 @@
 KRE-069/[issue172](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/172), baseline CP105/
 [PR171](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/171)
 `dc30e4ff49e325cb9488e4be7eb4befadd107f9b`. Codex tự kiểm, [review waived](../checkpoints/review-waiver.json),
-CP106 chờ PR. [Contract/giới hạn](../../PROTOCOL.md#current-movement-cycles),
+CP106 đã merge [PR173](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/173) tại `f67a160`. [Contract/giới hạn](../../PROTOCOL.md#current-movement-cycles),
 [câu hỏi](../../RESEARCH.md#gap-peer-movement), [thứ tự](../../PLAN.md#current-order).
 AUD032 qua CP104; audit định kỳ kế CP108. Không nâng gate.
 
