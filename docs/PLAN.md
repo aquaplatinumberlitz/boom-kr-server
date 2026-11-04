@@ -1,7 +1,7 @@
 # Kế hoạch server giả lập KR 00967
 
 Nguồn chuẩn của project `boom-kr-server`; bản nhập từ plan đã được dsh1/dsh2 review tại `1eee46d`.
-Cập nhật05/11 JST (CP094): [optionalterrainpolicy/newnative2cycles](PROTOCOL.md#terrain-policy). Tiếp actualbox-block-chain control cho modelorder gap, AUD027/nextCP096.
+Cập nhật05/11 JST (CP095): [đối chứng actualbox](PROTOCOL.md#opposite-box-control). CP094/PR149 đã merge; AUD027/nextCP096.
 
 
 ### Mục tiêu, baseline và phạm vi
@@ -37,13 +37,13 @@ với client Rust không chứng minh có thể điều khiển client KR bằng
 
 ### Tiến độ hiện hành theo bằng chứng
 
-| Task/mốc | Trạng thái tại CP094 | Nguồn chuẩn |
+| Task/mốc | Trạng thái tại CP095 | Nguồn chuẩn |
 |---|---|---|
 | KRE-004/issue6 | Đã review/merge PR7 và đóng issue:recipe r1 đến local accept;không phải full K1 | [Wine r1](evidence/wine/README.md) |
 | Bootstrap reply | PR8 đã merge;debugger ProcessPatchreturn1,không ép success | [bootstrap evidence](evidence/bootstrap-wire/README.md) |
 | KRE-005a/issue9,R2 | PR10 đã merge:3 cold start cửa sổ/second accept;issue9 còn mở | [R2 evidence](evidence/wine-r2/README.md) |
 | WCP hai-reply | Run CP001 là lịch sử chưa C→S; CP006 đã đo request đầu trên copy tham số hóa | [PROTOCOL](PROTOCOL.md#wcp),[WCP evidence](evidence/wcp/README.md) |
-| KRE-005b/issue14 | CP006–093 đã merge; CP094optionalterrain/newnative2cycles ngoàioldclearcells, tự kiểm/chờ PR; fullround/authority/full auth còn mở | [Q-023](RESEARCH.md#q-023), [service](evidence/probe-service/README.md) |
+| KRE-005b/issue14 | CP006–094 đã merge; CP095 opposite-box/fresh-pair control tự kiểm/chờ PR; fullround/authority/full auth còn mở | [Q-023](RESEARCH.md#q-023), [service](evidence/probe-service/README.md) |
 | K0/K1 | Chưa nghiệm thu toàn gate;Windows vanilla/control ownership và các điều kiện còn thiếu giữ mở | Gate dưới,[Q-022](RESEARCH.md) |
 | K2a/K2 | Primitive/WCP, CP057stream native/model và CP058–060authcallback137/135/errors0 đã có; fullcodec/authauthority/reconnect và gate chưa pass | [PROTOCOL](PROTOCOL.md#login-auth),[Q-023](RESEARCH.md#q-023) |
 | K3 | Copy đã vẽUI/đóngnotice, A/B/Cprofile đọc sạch và mộtnamedcachewarm được nhận; identityauthority/toàncache/codec/K3 chưa nghiệm thu | [Contract sảnh](PROTOCOL.md#channel-lobby) |
@@ -60,18 +60,15 @@ KRE-005b/issue14 vẫn mở. Các bước dưới là **thứ tự ưu tiên**, 
 xong checkpoint/commit/PR thì chuyển ngay việc kế tiếp trong thứ tự này, không tự dừng/chờ nhắc.
 Một blocker chỉ kết thúc nhánh đo tương ứng; ghi rõ rồi tiếp việc độc lập có thể làm, không tự đóng gate.
 
-1. **KR-F004/F005/S001 — actual blocker giữa hai bom và mutable path:**
-   [CP094](PROTOCOL.md#terrain-policy) chặnunsupported/overlap/cell/profile vànewnative2cycles14entities,
-   extraadmission trướcsecondaryownjob ởlowerchain ngoàioldwhitelist;195flags/process khớpservice.
-   Không lặpkernel/getter/normalreplacement/seed/reset. Remainingmodelchoice: immutableterrainpercascade/
-   firstbombstop/recursiveorder chưa có actual two-bombs-opposite-box control; unitmodels khôngthayKR.
-   Source-first targetExVillage01grid/known2Dspawn121/CP090–094actualflags/query/nativeprocess/cache,
-   oldKR/VNray/block refs đúng câu hỏi. Chọn hai ô floor cùngtia cách2, giữa làactualBox, actor đặt được
-   bằngnormalinputs; target3,5 /3,7 vớiBox3,6 làcandidate, cầnmởroute tới3,7 bằngnativeboxbreak/control
-   hoặcsource-backedspawnprofile (khôngteleport/épterrain/guesslayout). Verify actualactor/spawn/map.
-   Đo rootpower2 hitbox nhưng không process secondary phía sau; nativeflag chuyểnboxclear, laterroot
-   actualnew118 trênpathmới mớicó thểchainsecondary. Nếu chưađủgeometry/control giữpartial, không sửa
-   server/distance/radius đểpass. Chỉ mở recursive/sharedblocker khác khi actualmismatch cầngiải.
+1. **KR-F004/F005/S001 — ghép Battle theo trigger hiện hành:**
+   [CP095](PROTOCOL.md#opposite-box-control) đã đo actualfloor–Box–floor: root chỉ process chính nó,
+   flagbox3,6 `1→0`; cặp root/secondary mới trên path đã thông chain4→5 ở cả hai view, all195flags
+   khớpserviceCP094. Không lặp map/getter/codec/spawn/normalquota hoặc nguyên bản control này.
+   Khoảng Battle cụ thể kế là **mixed-owner adjacent1cell** chưa được đo: tái dùng cleared3,6 và
+   stable-neutral OS input CP095, actual118 A3,5/B3,6 + native159/158/process/flags ở cả hai view.
+   Source-first currentevidence/oldKR/VN đúng khoảng này; đo scope hẹp trước khi ghép acceptance.
+   Không mở recursive/sharedblocker/FIFO/genericmap nếu chưa có actualmismatch/trigger integration.
+   CP096 phải audit thủ công AUD028 theo README→PLAN→PROTOCOL→RESEARCH→raw; periodic sauCP100.
 2. **KR-B003/KR-F006 — nợ có giới hạn:** [CP057](PROTOCOL.md#codec-stream-boundaries) đã đo stream/
    seq/bounds trong model, không mở lại76split hoặc cấp buffer lớn chỉ để vượt allocationguardFFFFFFFF.
    Full modes/prefix guard/live reset, distance/auth/transport/kim-cứu của reportguard giữ trong RESEARCH;

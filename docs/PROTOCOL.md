@@ -3395,6 +3395,51 @@ no controller/service/probeerrors. 136relations/10244copiedgetters/10140addressc
 model/helperemulation/native/runtime/sourceboundary tách riêng. Chưa allreset/wholematch/gate.
 
 Scopedmodelchoicesimmutablecascade/firstbombstop/FIFO/directrays stillcandidate beyondmeasuredinputs.
-[PLAN](PLAN.md#current-order) tiếp actualboxgiữa2bomb đểtestno-sameblasttunnel/laterpathchange, không
-quétallclient/map hoặcportVNnumeric. Genericmap/template/direction/moving/recursiveorder/auth/codec/
+[CP095](#opposite-box-control) bổ sung actualboxgiữa2bomb/laterfreshpaircontrol cho khoảng này;
+ca đo đó không chứng minh toàn bộ modelorder. Việc hiện hành chỉ ở [PLAN](PLAN.md#current-order). Genericmap/template/direction/moving/recursiveorder/auth/codec/
 fullvalidator/authority/vanilla/LANInternet/fullmatch/K5/K6a cònmở; AUD027/nextCP096.
+
+
+<a id="opposite-box-control"></a>
+### Hai bom đối diện thùng thật — CP095
+
+Nguồn [recipe/hash](evidence/opposite-box-control/README.md), scope **kr_runtime/confirmed hẹp**:
+copy Wine đã sửa/cùng profile A–B/ExVillage01/local stub. Source binary/pack/DB giữ nguyên.
+Tái dùng map grid/hash và getter/consumer/callback CP090–094; bảng 121 và spawn CP024/065;
+KR flame-chain cũ cùng VN lifecycle/report làm reference cơ chế. Không chuyển số opcode, offset,
+ID hay layout VN sang KR. New fixture chỉ đổi slot1 spawn-index ở inner offset76 từ1 sang4;
+index4 trong map là `(x11,y3)`. Native frame/blob/typed-reader model trả0, inner100/outer129;
+actual clock ở cả hai view: A X120/Y159 và B X440/Y159. Model fixture và runtime tách riêng.
+
+Run `blocked`: B đặt `(3,9)` power1 phá đường qua Box `(3,8)`; input thường đưa B tới `(3,7)`.
+A đã nhận Fire, đặt root `(3,5)` power2; giữa hai bom là actual Box `(3,6)`. Actual118/159 IDs1..4:
+B1 `(3,9)`, A2 `(3,5)`, B3 `(3,7)`, A4 `(3,5)`. Cả bốn native159 trả pointer khác0/full39
+ở mỗi view. B3 đã có entity trước callback A2; callback A2 chỉ process2, không3, và snapshot195flags
+trước/sau cho Box3,6 `1→0` ở cả hai view. B3 sau đó process riêng trong callback own158/full13.
+Service dự đoán processed/195flags khớp ba callback đã gửi; đây là kiểm tương thích, không là luật server gốc.
+
+Run đầu **partial**: `oppositeboxmovementtargetmiss:A-later-escape`, chưa callback A4 trước cleanup.
+A4 đặt trước own158 của B3 chỉ0,724395057s trong khi fuse service6s; không thể dùng A4 để chứng minh
+chain chính B3. Fuse6s là emu_choice. Verifier kế hoạch ban đầu fail được giữ; verifier bounded chỉ
+xác nhận phần trên, không sửa raw/lỗi controller thành success. Repeat tách riêng chờ B3 owncallback,
+rồi đặt A4 trước B5 mới trên hai ô cũ để kiểm đường đã thông.
+
+Hai repeat trung gian `freshpair`/`aligned` đều partial trước cặp chính vì B không tới ô cần đặt.
+Mẫu mới sau nhả phím chưa đủ chứng minh đã dừng: lần aligned đọc Y163 rồi bước Left thấy Y187/X360.
+Run `stable` yêu cầu ba mẫu tọa độ mới giống nhau sau thời gian neutral250ms, pulse OS45ms để căn ô;
+đây là điều kiện controller, không là contract tick/độ trễ game. B được đưa tới ô mới trước khi bắt đầu
+fuse A4. Actual118 vẫn là điều kiện hình học, không dùng tọa độ feedback thay request.
+
+Run `stable` hoàn tất194,715s, không controller/service/probeerrors. Actual IDs1B `(3,9)` /2A `(3,5)` /
+3B `(3,7)` /4A `(3,5)` /5B `(3,7)`, power1/2/1/2/1. Mỗi view năm159pointerkhác0/full39;
+root2 chỉ process2, Box3,6 flag1→0, B3 sau đó process dưới owncallback3. B3 đã process trong owncallback trước khi đặt
+cặp mới; B5 được nhận trước deadline A4 **4,753103927s**. Callback A4 process4,5 ở cả hai view,
+Box3,6 đãclear trước callback4. Bốn native158/full13/view; own158 của5 không quan sát trước dừng phép đo,
+không gọi năm entity là năm callback hoặc chứng minh mọi disposal/reset. 18snapshot195flags (9/view)
+và processedsets của bốn rootdeadline khớp service CP094 không đổi. Verifier runtime49relations,
+3546copiednativegetters/3510addresschecks là mức emulation riêng; thêm6isolation/source/profilechecks.
+Phép đo kết thúc chủ động, không xác nhận result/fullcycle/gate.
+
+Ca hẹp này không chứng minh immutable terrain cho mọi recursive cascade, FIFO, shared blocker,
+first-bomb-stop tổng quát, direction/template/moving bomb hoặc genericmap. Auth/distance/fullvalidator/
+fullreset/fullmatch/K5/K6a/Windows nguyên bản/LAN/Internet vẫn mở.
