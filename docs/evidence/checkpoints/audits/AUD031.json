@@ -1,0 +1,86 @@
+{
+  "id": "AUD031",
+  "trigger": "serious_contradiction",
+  "completed_through": "CP102",
+  "recorded_utc": "2026-11-04T20:29:50.529757+00:00",
+  "auditor": "Codex manual self-audit; independentreviewwaived",
+  "read_files": [
+    "README.md",
+    "docs/PLAN.md",
+    "docs/PROTOCOL.md",
+    "docs/RESEARCH.md",
+    "docs/features.json",
+    "docs/COVERAGE.md",
+    "docs/evidence/drained-result-local-clear/README.md",
+    "docs/evidence/peer21-ending-order/README.md",
+    "local/research/codex/peer-result21-clear-r1/wcp-port-collision-recovery.json",
+    "local/research/codex/peer-result21-clear-r1/peer/service-state.json",
+    "local/research/codex/peer-result21-clear-r1/peer/tcp-proxy.json",
+    "local/research/codex/peer-result21-clear-r1/peer-launcher.log",
+    "local/research/codex/result21-stable-r1/stable/run.json",
+    "local/research/codex/result21-stable-r1/stable/service-state.json",
+    "local/research/codex/result21-stable-r1/stable/tcp-proxy.json",
+    "local/research/codex/result21-stable-r1/stable-launcher.log",
+    "local/research/codex/result21-repeat-r1/repeat/service-state.json",
+    "local/research/codex/result21-repeat-r1/repeat/tcp-proxy.json",
+    "local/research/codex/peer-result21-fixed-r1/bridge-bench-verification.json",
+    "local/research/codex/peer-result21-fixed-r1/peer21-branches-verification.json",
+    "local/research/codex/peer-result21-fixed-r1/late17-order-verification.json",
+    "tools/probe_channel_identity.py",
+    "server/probe_service.py"
+  ],
+  "method": "Manual canonicalREADME→PLAN→PROTOCOL currentCP102/103/authority→RESEARCH gaps→selectedfailed/successraw. Joined actualproxybacklocaltuple→servicepeer/globalordinal/replyordinal/accepttime, compared actuallauncherIndexErrorandB8reset104. FirstCP103WCP-A2tookproxyA/A4tookB; oldCP102stableWCP-B2tookproxyB; oldCP102successfulrepeatA4/B4correct. Thisisboundedhistoricalcheck, notallpastcaptureaudit. Compared newhostmetadata/rawbridge realTCPtest vsnewnativeonlyA4/B4/noWCPbranchhit. NativecurrentpeerR1gate1pre56post26andR2gate0actor0 separate, strictpre175consistencyfailure/newA17afterfirst175send retained; not2inventedclear/fullmatch. Readcodeonce-per-trap/sendcommit/pickupunchanged/cursorresetseparation; mechanicalchecks afterthisreadingcannotcertifysemantics.",
+  "findings": [
+    {
+      "id": "F1",
+      "stale": "CP102startup104exactcauseunknown andproxyassumptionall3858connectionsareA/Bchannels. WrongrolefirstCP103runcouldmislabelTCPfrontsemanticorigin.",
+      "correction": "Recoverexacttuples/ordinal2WCPportcollision, positionalrolecountIndexErroronrealBchannel. Helperclassifiescurrentlivehostmetadata; WCPrawbridge. Preservebadraw/CP102completedmanifest andlogexplicitfailedscope; sourcecorrectionnewCP103, notrewrittenoldmetadata.",
+      "fixed_in": [
+        "docs/PROTOCOL.md",
+        "docs/RESEARCH.md",
+        "docs/evidence/drained-result-local-clear/README.md",
+        "docs/evidence/peer21-ending-order/README.md",
+        "tools/probe_channel_identity.py"
+      ]
+    },
+    {
+      "id": "F2",
+      "stale": "Possibilityofinvalidatingalloldnativepositivebecauseproxyclassificationbugexists.",
+      "correction": "ExactCP102successrepeatA4/B4joinschecked; itspositiveboundedsourcekeepsvalid. No claimallhistoricrunscheckedorallstartup104alwayssamecause. Newnativefixedrun2channelscorrect, WCPbranchonlyrealTCPbenchnotnativehit.",
+      "fixed_in": [
+        "docs/PROTOCOL.md",
+        "docs/evidence/peer21-ending-order/README.md",
+        "local/research/codex/peer-result21-clear-r1/wcp-port-collision-recovery.json"
+      ]
+    },
+    {
+      "id": "F3",
+      "stale": "Peer17021dispatch/gate1atR1couldbeextrapolatedto2nativeclearsorpre175stateconsistency.",
+      "correction": "R2gate0actoralready0skipvf148; retainfirstscopedStopIterationandstrictpre175fail. New31checkbranchesreportoneclear/onegate-skip. NativeAnew56/17afterfirst175send108/95ms narrowsendingphase blocker, no persistentdesync/originalrankwrong/timerfix inference.",
+      "fixed_in": [
+        "README.md",
+        "docs/PLAN.md",
+        "docs/PROTOCOL.md",
+        "docs/RESEARCH.md",
+        "docs/evidence/peer21-ending-order/README.md",
+        "local/research/codex/peer-result21-fixed-r1/peer21-branches-verification.json"
+      ]
+    },
+    {
+      "id": "F4",
+      "stale": "CP102PR165pending andoldresetgapCP100unsentcurrentlook.",
+      "correction": "RecordCP102merge67c2ec7/currentCP103pending; resetgapreferencescurrent14sent158separatefromhistoricalCP100unsent. AUD031seriousdoesnotresetperiodicCP104.",
+      "fixed_in": [
+        "README.md",
+        "docs/PLAN.md",
+        "docs/RESEARCH.md",
+        "docs/evidence/drained-result-local-clear/README.md"
+      ]
+    }
+  ],
+  "remaining": [
+    "Nativeending175/report34/phase/recipientcontract notresolved; pre175numericstatesnotconsistent andnotglobaltick/persistentlifeproof.",
+    "Currentnewpeertranslation/harness arefixturedesign, notauth/originalserverlaw; fullauth/codec/validator/authority/allreset/fullmatch/K5/K6a/vanilla/LANInternetremainopen.",
+    "Auditselectedfailed/successruns only; not all historicproxycaptures. PeriodicCP104mustAUD032,next108."
+  ]
+}

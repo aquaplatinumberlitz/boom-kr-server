@@ -1,6 +1,6 @@
 # KR 00967 — contract tương thích client gốc
 
-Revision kr-legacy-contract-r1; cập nhật05/11/2026 JST (CP102; AUD030 quaCP100).
+Revision kr-legacy-contract-r1; cập nhật05/11/2026 JST (CP103; AUD031 tức thời, periodic CP104).
 **Contract có bằng chứng từng phần; chưa nghiệm thu full codec K2**.
 Lộ trình và thứ tự task chỉ giữ ở [REWRITE_PLAN — KRE](PLAN.md).
 Đây là contract của repo server KR. ADR0009 của bản viết lại là nguồn lịch sử để so sánh;
@@ -1958,7 +1958,7 @@ liệt kê và phân biệt với nguyên bản trong mọi demo.
 <a id="authority"></a>
 ### Authority matrix hiện hành và gate review
 
-Bảng này tổng hợp bằng chứng từng phần đến CP102; chưa phải toàn contract server gốc. Mỗi hàng khi
+Bảng này tổng hợp bằng chứng từng phần đến CP103; chưa phải toàn contract server gốc. Mỗi hàng khi
 triển khai phải bổ sung riêng **creator, simulator, validator, broadcaster, peer-editable state**, với
 locator/trace và trạng thái từng ô; những vai trò không nêu dưới đây hiện `unknown` cho KR.
 
@@ -3750,3 +3750,54 @@ Giữ inputfailure B118absence và startupreset104 trướcC2S6/clock, controlle
 StableBcolumn200 bằngOSfeedback là inputcontrol, không gánfocus/time nguyênnhân hoặc serverfix.
 No sourcebinary/pack/DBchange; currentmodifiedWine/AB/ExVillage01/localstub. Originalauthority/
 auth/codec/fullvalidator/allreset/vanilla/LANInternet vàfullmatch/gates còn mở; AUD030qua100/next104.
+
+<a id="peer21-ending-order"></a>
+### Peer170/21, native17 mới sau result và proxy identity — CP103
+
+[Recipe/hash/failedchecks](evidence/peer21-ending-order/README.md), câu hỏi ở
+[RESEARCH](RESEARCH.md#gap-contact-state), thứ tự ở [PLAN](PLAN.md#current-order).
+**design** cho optionaltranslation/harness; **kr_runtime/confirmed hẹp** cho dispatch/gates/state/timing.
+Không dùng scalar26/56 hoặc report21 riêng lẻ làm authoritativealive/winner/serverlaw.
+
+**Optional drained translation:** sau admission/currentcursor,21 mới hơn current17 và latestsuccessful158,
+đúngeventcurrentmember/active/chưaaccepted19 → service gửi **đúngbody[:6]** như170/sub21 tới oppositepeer.
+Khôngselfecho, chỉ một successfulforward cho mỗi trap-frameSHA/generation; accepted17 mới tạoepoch mới,
+Startcleartransitionmarker nhưng cursor127 giữ. Rejectedduplicate/stale/no17/closed/nopeer không gửi;
+failedsend không commitmarker, không recoverytransaction tổng quát. Không xóa pickup_ineligible hoặc
+accepteddeathhistory. ModeCP100/absentfield khôngđổi.149server tests+3proxyidentitytests+4kernel pass.
+
+**Native receiver đã đo:** cachedCP036E85E92→E86CA0/prefix6, consumerarg/returnE85EA8; actual170/21
+reader6/6/errors0 ở B cảhai vòng. R1 `E86CF3` gate1, `E86D0E` vf148=**B43320(0,0,-1)**, cùngactor
+pre56/post26 tạiE86D11, callbackend trước B175entry. R2 gate0/actorAđã0, nhánhvf148 không chạy và
+endstate vẫn0. Đây là **một clear thực + một gate-skip thực**, không bịa hai clears hoặc suy nohook
+thành mấtpacket. Exactactual12721front/upstreamSHA/bodyprefix6/emitted170/nativeargs/cursors đượcjoin.
+
+**Result boundary chưa đồng nhất:** cùngrun2native121/clock/175/180/refresh,14native159entities/
+14actual158callbacks/view/60snapshots195flags/process/reset,0controller-serviceerrors. Trướcown175,
+AviewA56; BviewA26 ởR1 và0 ởR2, cùngXY80,159; Bstate1 cảhai view. Perviewtimestamps khác nhau, không
+làsimultaneousglobaltick. Fulltargetsame-stateassertion fail giữ; scopedreceiverbranches pass riêng.
+
+Timelinepositive mới ởcảhai vòng: nativewriter21 state26 → actualaccepted21 → ranktick/first175send →
+**nativeAstate56 mới** → nativewriter17/B78373→B53010→direct → actual17front/`inactive_reports` → own175entry.
+Front17 sau first175send **108,344208ms /95,888487ms**, nhưng trước nativeA175entry. Exactnative17
+prefix32/retainedframer/cursor/hash khớp, khôngactiveadmission/forward170/outcomechange. State56 mới
+xuất hiện **sau send175** trong run này: không gán cho old17queuedtrướcfinish hoặc claim chỉ thêm
+freshness/drain đủ ổnđịnh physics tới lúc175. Room.finish vẫn bracket tick→firstsend, không exactns.
+
+Blocker tiếp là **endingphase/recipient/lifecycle**: cần đối chiếu native175→actorchanges/report34→180,
+knownE6F370 stage+6220 và E86CA0 gates trước đổipolicy. Có thể state+28 đang animation/phase khác,
+chưa kết luận persistentdesync/rankwrong hoặc ownACK21 làfix. Không arbitraryquietdelay/fusechange/
+forcedstate/forwardlateclosedreport. NguồnCP036own-onlyACK21 không dừngperiodicreports vẫn giữ phạmvi.
+
+**Harness correction có source:** WCP socket cũng có thể dùng3858. Proxycũ đếmconnection A/B theo
+vị trí, nên WCP-A2 ở firstrunCP103 hoặcWCP-B2 ở failedCP102stable chiếmrolechannel; actualchannelB
+thứba làm`IndexError` rồi upstream8reset104. Exactproxyupstreamtuple→serviceglobalordinal/replyordinal
+vàlaunchertrace xác nhận; không phải kết luận codec/clientfault từstring104. CP102successrepeat được
+kiểmtupleA4/B4đúng nênkhôngbác positivecũ. Không giả mọi lịch sử đã audittoànbộ.
+
+`tools/probe_channel_identity.py` tìm đúng currentliveupstreamtuple/listenerport trong **hostfixture
+metadata**, chưaauthenticatedidentity. WCP/nonchannel đi rawbytebridge, không tiêu rolechannel hoặc
+mode2framer/replay.3tests+realTCPbench4connectionsWCP-A2→A4→WCP-B2→B4, exactretained66byteWCPecho
+và2channelframes pass; newnativefixedrun chỉA4/B4 trênproxy, **không** giả đã hitWCPbranchnative.
+AUD031manualcanonical→selectedfailed/successraw sửa startupunknown/roleassumption, giữCP102raw/manifest;
+periodicCP104 khôngreset. Fullauth/codec/authority/allreset/vanilla/fullmatch/K5/K6a/LANInternet còn mở.

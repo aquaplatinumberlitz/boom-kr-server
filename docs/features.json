@@ -1,7 +1,7 @@
 {
   "schema": "kre-feature-index-v1",
   "build": "KR00967",
-  "as_of": "2026-11-05 CP102",
+  "as_of": "2026-11-05 CP103",
   "sources": {
     "plan": "docs/PLAN.md",
     "contract": "docs/PROTOCOL.md",
@@ -1973,7 +1973,8 @@
           "docs/evidence/current-peer-targets/README.md",
           "docs/evidence/trap-report-rank-order/README.md",
           "docs/evidence/result-freshness/README.md",
-          "docs/evidence/drained-result-local-clear/README.md"
+          "docs/evidence/drained-result-local-clear/README.md",
+          "docs/evidence/peer21-ending-order/README.md"
         ]
       },
       "coverage": {
@@ -2014,7 +2015,8 @@
               "docs/evidence/current-peer-targets/README.md",
               "docs/evidence/trap-report-rank-order/README.md",
               "docs/evidence/result-freshness/README.md",
-              "docs/evidence/drained-result-local-clear/README.md"
+              "docs/evidence/drained-result-local-clear/README.md",
+              "docs/evidence/peer21-ending-order/README.md"
             ]
           },
           "windows_original": {
@@ -2040,7 +2042,8 @@
             "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/87",
             "docs/PROTOCOL.md#result-freshness-guard",
             "server/test_result_freshness.py",
-            "docs/PROTOCOL.md#drained-result-local-clear"
+            "docs/PROTOCOL.md#drained-result-local-clear",
+            "docs/PROTOCOL.md#peer21-ending-order"
           ],
           "delivery": "via_pr"
         },
@@ -2056,7 +2059,8 @@
             "docs/evidence/current-peer-targets/README.md",
             "docs/evidence/trap-report-rank-order/README.md",
             "docs/evidence/result-freshness/README.md",
-            "docs/evidence/drained-result-local-clear/README.md"
+            "docs/evidence/drained-result-local-clear/README.md",
+            "docs/evidence/peer21-ending-order/README.md"
           ]
         },
         "gate": {
@@ -2553,7 +2557,8 @@
           "docs/evidence/current-peer-targets/README.md",
           "docs/evidence/trap-report-rank-order/README.md",
           "docs/evidence/result-freshness/README.md",
-          "docs/evidence/drained-result-local-clear/README.md"
+          "docs/evidence/drained-result-local-clear/README.md",
+          "docs/evidence/peer21-ending-order/README.md"
         ]
       },
       "coverage": {
@@ -2594,7 +2599,8 @@
               "docs/evidence/current-peer-targets/README.md",
               "docs/evidence/trap-report-rank-order/README.md",
               "docs/evidence/result-freshness/README.md",
-              "docs/evidence/drained-result-local-clear/README.md"
+              "docs/evidence/drained-result-local-clear/README.md",
+              "docs/evidence/peer21-ending-order/README.md"
             ]
           },
           "windows_original": {
@@ -2621,7 +2627,8 @@
             "tools/export_probe_profile.py",
             "docs/PROTOCOL.md#result-freshness-guard",
             "server/test_result_freshness.py",
-            "docs/PROTOCOL.md#drained-result-local-clear"
+            "docs/PROTOCOL.md#drained-result-local-clear",
+            "docs/PROTOCOL.md#peer21-ending-order"
           ],
           "delivery": "via_pr"
         },
@@ -2637,7 +2644,8 @@
             "docs/evidence/current-peer-targets/README.md",
             "docs/evidence/trap-report-rank-order/README.md",
             "docs/evidence/result-freshness/README.md",
-            "docs/evidence/drained-result-local-clear/README.md"
+            "docs/evidence/drained-result-local-clear/README.md",
+            "docs/evidence/peer21-ending-order/README.md"
           ]
         },
         "gate": {
@@ -3020,7 +3028,8 @@
           "docs/evidence/trap-report-rank-order/README.md",
           "docs/evidence/result-freshness/README.md",
           "docs/evidence/selector-closed-readiness/README.md",
-          "docs/evidence/drained-result-local-clear/README.md"
+          "docs/evidence/drained-result-local-clear/README.md",
+          "docs/evidence/peer21-ending-order/README.md"
         ]
       },
       "coverage": {
@@ -3098,7 +3107,8 @@
               "docs/evidence/current-peer-targets/README.md",
               "docs/evidence/trap-report-rank-order/README.md",
               "docs/evidence/result-freshness/README.md",
-              "docs/evidence/drained-result-local-clear/README.md"
+              "docs/evidence/drained-result-local-clear/README.md",
+              "docs/evidence/peer21-ending-order/README.md"
             ]
           },
           "windows_original": {
@@ -3165,7 +3175,10 @@
             "server/test_result_freshness.py",
             "docs/PROTOCOL.md#selector-closed-readiness",
             "server/test_departure_send_failure.py",
-            "docs/PROTOCOL.md#drained-result-local-clear"
+            "docs/PROTOCOL.md#drained-result-local-clear",
+            "docs/PROTOCOL.md#peer21-ending-order",
+            "tools/probe_channel_identity.py",
+            "tools/test_probe_channel_identity.py"
           ]
         },
         "integration": {
@@ -3214,7 +3227,8 @@
             "docs/evidence/current-peer-targets/README.md",
             "docs/evidence/trap-report-rank-order/README.md",
             "docs/evidence/result-freshness/README.md",
-            "docs/evidence/drained-result-local-clear/README.md"
+            "docs/evidence/drained-result-local-clear/README.md",
+            "docs/evidence/peer21-ending-order/README.md"
           ]
         },
         "gate": {

@@ -3,7 +3,7 @@
 KRE-065/[issue164](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/164), baseline
 CP101/[PR163](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/163)
 `ea60261deed74f4029828e67f269c13eb6f5057f`. Codex solo/tự kiểm;
-[review waived](../checkpoints/review-waiver.json), CP102 chờ PR. Contract/limits chỉ ở
+[review waived](../checkpoints/review-waiver.json), CP102 đã merge [PR165](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/165) tại `67c2ec7`. Contract/limits chỉ ở
 [PROTOCOL](../../PROTOCOL.md#drained-result-local-clear), gap ở [RESEARCH](../../RESEARCH.md#gap-contact-state),
 thứ tự ở [PLAN](../../PLAN.md#current-order). AUD030qua100/next104; không nâng gate.
 
@@ -52,3 +52,7 @@ absent in cleartrace, no needleuse claim. All-dead fixture knownCP083 optional; 
 Blocker peertransition21 next usescachedE86CA0/prefix6/vf148; currentservice hasno21forward.
 Two cycles are notstateconsistentfullmatch/K5/K6a. Originalauthority/fullauth/codec/fullvalidator/
 allreset/vanilla/LANInternet remain open; source/hash evidence and nextstep inmanifest/PLAN.
+
+Correction kế [CP103/AUD031](../peer21-ending-order/README.md): startupreset104 của `stable` đã nối
+được WCP-B2→positionalproxyrole collision→thirdacceptIndexError; CP102complete/raw bất biến.
+CP102successfulrepeat exactA4/B4 vẫn có nguồn, không suy toàn bộhistoricalruns đã đượcaudit.
