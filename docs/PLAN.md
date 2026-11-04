@@ -1,7 +1,7 @@
 # Kế hoạch server giả lập KR 00967
 
 Nguồn chuẩn của project `boom-kr-server`; bản nhập từ plan đã được dsh1/dsh2 review tại `1eee46d`.
-Cập nhật04/11 JST (CP084): [ba bom/chain/resultreset hai vòng](PROTOCOL.md#three-bomb-chain). Tiếp khoảng trống guard TCP qua hai result/reset cùngrun; AUD025, audit kế088.
+Cập nhật04/11 JST (CP085): [selectedTCPguard cùng hai result/reset](PROTOCOL.md#tcp-guard-cycles). Tiếp capacity/freshserial trong currentprofile; AUD025, audit kế088.
 
 
 ### Mục tiêu, baseline và phạm vi
@@ -37,13 +37,13 @@ với client Rust không chứng minh có thể điều khiển client KR bằng
 
 ### Tiến độ hiện hành theo bằng chứng
 
-| Task/mốc | Trạng thái tại CP084 | Nguồn chuẩn |
+| Task/mốc | Trạng thái tại CP085 | Nguồn chuẩn |
 |---|---|---|
 | KRE-004/issue6 | Đã review/merge PR7 và đóng issue:recipe r1 đến local accept;không phải full K1 | [Wine r1](evidence/wine/README.md) |
 | Bootstrap reply | PR8 đã merge;debugger ProcessPatchreturn1,không ép success | [bootstrap evidence](evidence/bootstrap-wire/README.md) |
 | KRE-005a/issue9,R2 | PR10 đã merge:3 cold start cửa sổ/second accept;issue9 còn mở | [R2 evidence](evidence/wine-r2/README.md) |
 | WCP hai-reply | Run CP001 là lịch sử chưa C→S; CP006 đã đo request đầu trên copy tham số hóa | [PROTOCOL](PROTOCOL.md#wcp),[WCP evidence](evidence/wcp/README.md) |
-| KRE-005b/issue14 | CP006–083 đã merge; CP084 ba bom/chain/resultreset hai vòng tự kiểm/chờ PR; fullround/authority/full auth còn mở | [Q-023](RESEARCH.md#q-023), [service](evidence/probe-service/README.md) |
+| KRE-005b/issue14 | CP006–084 đã merge; CP085 TCPguard/ba bom/resultreset hai vòng tự kiểm/chờ PR; fullround/authority/full auth còn mở | [Q-023](RESEARCH.md#q-023), [service](evidence/probe-service/README.md) |
 | K0/K1 | Chưa nghiệm thu toàn gate;Windows vanilla/control ownership và các điều kiện còn thiếu giữ mở | Gate dưới,[Q-022](RESEARCH.md) |
 | K2a/K2 | Primitive/WCP, CP057stream native/model và CP058–060authcallback137/135/errors0 đã có; fullcodec/authauthority/reconnect và gate chưa pass | [PROTOCOL](PROTOCOL.md#login-auth),[Q-023](RESEARCH.md#q-023) |
 | K3 | Copy đã vẽUI/đóngnotice, A/B/Cprofile đọc sạch và mộtnamedcachewarm được nhận; identityauthority/toàncache/codec/K3 chưa nghiệm thu | [Contract sảnh](PROTOCOL.md#channel-lobby) |
@@ -60,19 +60,18 @@ KRE-005b/issue14 vẫn mở. Các bước dưới là **thứ tự ưu tiên**, 
 xong checkpoint/commit/PR thì chuyển ngay việc kế tiếp trong thứ tự này, không tự dừng/chờ nhắc.
 Một blocker chỉ kết thúc nhánh đo tương ứng; ghi rõ rồi tiếp việc độc lập có thể làm, không tự đóng gate.
 
-1. **KR-F004/F006/F009/X002/S001 — guard TCP cùng hai chu kỳ:**
-   [CP084](PROTOCOL.md#three-bomb-chain) đã đo ba bom A/B/A trong callback root, stat/capacity/reset,
-   all-dead kết quả/return hai vòng. Không lặp codec/item/chainbody/knowninput. Biến thể vật cản chưa đo,
-   nhưng không chặn việc đóng khoảng trống integration cụ thể: [CP075](PROTOCOL.md#current-tcp-replay)
-   đã loại 12same/old body qua TCP thật song thiếu secondrank/return trong budget; không gọi đó là pass.
-   Source-first CP075proxy/raw/guardreports/partialplanned và CP080–084 input/currentall-deadpolicy;
-   VNprotocol/oc_e-game/session chỉ checklist, không schema/authority KR. Reuse proxy có pin/currentseq,
-   ghép currentnormalprofile/actualrequests với selected118/124/12717,19 duplicate và oldbody,
-   rồi kiểm **hai result/return/reset cùng run** ở native hai phía. Join front/upstream/servicestream,
-   no newID/job/165/170 từ rejectedframes; bình thường vẫn có stat/chain/state/result/reset.
-   Proxy emission không nativewriter mới, không packet cũ vượt crypto và không fullvalidator/auth/
-   distance/forgedfreshbody. Giữ negative/partial nếu chưa đạt; không đổi outcome/delay để pass.
-   AUD025 quaCP084, audit định kỳ kế **CP088**. Mâu thuẫn nghiêm trọng audit ngay.
+1. **KR-F004/F007/S001 — capacity và request có serial mới:**
+   [CP085](PROTOCOL.md#tcp-guard-cycles) đã khép bounded selectedTCPguard + hai result/reset cùngrun,
+   không lặp proxy/duplicate/oldbody/writer/knownchain. Service vẫn chưa kiểm cap/distance/forgedfreshbody.
+   Trước nhánh mới reuse CP025serial/pool, CP031/042capacity+4A4, CP084–085 actualA hai bom/current2,
+   cachedinput→118/159/chain và VNoc_e-game/items/server capacity; so KRconsumer, không copy offset VN.
+   Phép đo tối thiểu: currentprofile capacity1→2 được native xác nhận, A có đủ hai actualbom sống rồi
+   inputSpace ở ô trống thứba trước nổ; nối actualOS/nativewriter/118/159 và guard/activepool nếu cần.
+   Sau control đó chỉ thử **body đã capture/khóa hiện tại với serial mới** qua proxy riêng khi fieldlayout
+   có nguồn; ghi proxyemit khác nativeinput. Xác định thiếu validator bằng acceptance/ID/job/nativeentity,
+   không gọi client không gửi là serverreject hoặc xem currentkey là auth. Nếu cần policyserver, ghi
+   design rõ cách tính capacity/lifetime và giới hạn chain-release; không invent field/currentstat authority.
+   Gom nhiều phép đo liên quan, không mở quét toànclient hoặc testsinhđểpass. AUD025, periodic kếCP088.
 2. **KR-B003/KR-F006 — nợ có giới hạn:** [CP057](PROTOCOL.md#codec-stream-boundaries) đã đo stream/
    seq/bounds trong model, không mở lại76split hoặc cấp buffer lớn chỉ để vượt allocationguardFFFFFFFF.
    Full modes/prefix guard/live reset, distance/auth/transport/kim-cứu của reportguard giữ trong RESEARCH;

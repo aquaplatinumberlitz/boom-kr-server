@@ -1,6 +1,6 @@
 # KR 00967 — contract tương thích client gốc
 
-Revision kr-legacy-contract-r1; cập nhật04/11/2026 JST (CP084).
+Revision kr-legacy-contract-r1; cập nhật04/11/2026 JST (CP085).
 **Contract có bằng chứng từng phần; chưa nghiệm thu full codec K2**.
 Lộ trình và thứ tự task chỉ giữ ở [REWRITE_PLAN — KRE](PLAN.md).
 Đây là contract của repo server KR. ADR0009 của bản viết lại là nguồn lịch sử để so sánh;
@@ -2994,3 +2994,46 @@ manager trước180 rank2/2, UI haiLOSE/cảhai view/hai vòng và finalroomrefr
 no controller/service/probe errors. Scopephân biệt raw/nativecallbacks với model/getter/oracles;
 fixture/drop/fuse/outcome vẫn design, không fullmatch/K5/K6a/vanilla/LANInternet/fullauth/codec/
 validator/authority/toànreset. [PLAN](PLAN.md#current-order) tiếp gap guardTCP + hairesultreset.
+
+
+<a id="tcp-guard-cycles"></a>
+### Selected TCP guards cùng hai chu kỳ native — CP085
+
+[Recipe/negative/raw/hash](evidence/tcp-guard-cycles/README.md), **kr_runtime/confirmed hẹp** trên
+modifiedWine/local/currentprofile. Reuse CP075proxy exactsource/front-upstreamseq/bodyjoin và
+CP080–084 normalinput/BombFire/threebomb/state/all-dead/resultreset. VNprotocol/session chỉ checklist;
+không RE lại codec/schema/chain hoặc đổi outcome/timing để pass. CP075 run cũ vẫn partial tại mốc đó.
+
+Final `cleanup-fixed`: A nativefront158 frame→upstream170 (12replay), B146→146; sequence40+3n
+riêng mỗi stream, S2C nguyên byte. **8same+4oldbody** đã capture118/124/12717,19, chỉ mã hóa lại outer
+currentseq; không phải nativewriter phát frame mới hoặc gói cũ vượt crypto. Oldbody được gửi sau
+actualA127/sub39 vòng2. Same118 bị `duplicate_bomb_serial`, old118 `bomb_round_key_mismatch` trước
+ID/job; same124 `claim_not_current_or_already_consumed`, old124 `round_key_mismatch` không165;
+same127 `duplicate_report_body`, old127 `report_tick_not_forward` khôngforward170. Originbody/
+front/upstreamSHA/currentseq/serviceentry được join exactTCPstream, nativeframer/typedfields riêng.
+
+Cùng run sau guestBack/rejoin vẫn hai actualBombFirepickups/vòng, capacity/Fire1→2 mỗi view/reset1/1,
+6actual118/159/158 ID1..6, rootA3,3/B3,5/Athird4or5,3/powers2,1,2. Native rootcallback process3,
+ownlater khôngduplicate; actualaccepted17/19/cảhai state1 trước175, rank2/2 storage trước180/UIhaiLOSE,
+121/clock/175full302/180full3/roomrefresh hai lần/key12345→12346. Sáudeadline/bốnitemconsume/
+hairesult; mỗi recipient chỉ bốn165 và bốn170 phát từ actualacceptedreports. Probe hiện tại không có
+native170 entrycounter: noextra170 là **emitted-side**, runtime statepeer trước175 và typed170model
+kiểm riêng, không giả callbackcount. Encoder/proxy/heap/getteroracles không thay native proof.
+
+**Lỗi teardown và fix có phạm vi:** first `tcp-cycles` có hairesultreset nhưng strict noerror fail:
+`Broken pipe` dưới ordinal4 khi AEOF→cleanup gửi107/110 cho peer đang đóng. Errorrow khôngtimestamp,
+AEOF timestamp sau earlycompletion là boundary theo source, không trace socket target trực tiếp.
+Production `deliver_departure` bắt riêng BrokenPipe/Reset/Aborted/Timeout khi gửi107/110, ghi
+`send_failures` có recipient/connection/op/errno/time/sent_prefix rồi close recipient idempotently.
+Chỉ metadata gói đã sendall thành công giữ lại; không nuốt lỗi file/codec, không tuyên bố peer đã parse
+một partialsend. Các đường send/broadcast khác chưa có recovery/backpressure tổng quát.
+
+91servertests gồm real socketpair hai remoteclose trước readEOF và controlledreset sau107/110failure,
+kiểm đúngrecipient/successprefix/no unsentmetadata/no swallowENOSPC. Repeat actualruntime giữ
+profile/proxy/teardownorder/outcome/delay, serviceerrors[] và send_failures[]: **khônghit nhánh mới**,
+không dùng repeat làm causalproof lỗi đã tái hiện/sửa runtime. Firstfailure giữ nguyên, modelproof
+và runtimeintegration tách rõ. Không tự mở lại chỉ để tìm một cleanup race không chặn lượt hiện tại.
+
+Khép bounded acceptance CP075 cho selectedvariants trong run mới, không viết lại partial/manifest075.
+Chưa cap/distance/auth/freshserial/currentkeyforgery/toàn127/codec/authority/vanilla/LANInternet/
+fullmatch/K5/K6a/fullreset. [PLAN](PLAN.md#current-order) tiếp capacity/serial mới; auditAUD025/next088.

@@ -29,14 +29,13 @@ runtime nào có nguồn, còn thiếu gì và phép kiểm nào giải quyết.
 evidence/hash và câu hỏi; [PLAN](docs/PLAN.md#current-order) giữ duy nhất thứ tự công việc.
 Đây là scope đường bootstrap → login → sảnh → phòng → Battle → kết quả/reset, không kiểm kê toàn client.
 
-CP084: hai client trên copy Wine đã chạy **ba bom A/B/A → chain trong callback bom gốc →
-all-dead/kết quả → về phòng/reset, hai vòng cùng run** sau guest Back/rejoin. Bomb/Fire tăng và reset
-đã đối chiếu cả hai view. [Contract/giới hạn](docs/PROTOCOL.md#three-bomb-chain),
-[recipe/hash](docs/evidence/three-bomb-chain/README.md). Tiếp ghép guard TCP cũ/trùng với hai chu kỳ;
-chưa fullmatch/K6a/LAN/Internet.
+CP085: hai client copy Wine đã qua **hai vòng ba bom/chain/kết quả/reset trong cùng run có
+12 bản TCP cũ/trùng được loại**. Không có ID/job/effect thêm từ các bản bị loại trong phạm vi đo.
+[Contract/giới hạn](docs/PROTOCOL.md#tcp-guard-cycles), [recipe/hash](docs/evidence/tcp-guard-cycles/README.md).
+Tiếp capacity/field hợp lệ nhưng vượt giới hạn hiện tại; chưa fullmatch/K6a/LAN/Internet.
 
-CP083 đã merge [PR127](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/127) tại `7509747`.
-CP084 tự kiểm/chờ PR; review độc lập [waived](docs/evidence/checkpoints/review-waiver.json).
+CP084 đã merge [PR129](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/129) tại `455dc74`.
+CP085 tự kiểm/chờ PR; review độc lập [waived](docs/evidence/checkpoints/review-waiver.json).
 Audit **AUD025/CP084**, periodic kế **CP088**.
 [Yêu cầu chủ dự án](docs/evidence/owner-directives/continuous-work.json): tiếp tục ngay việc kế trong
 PLAN sau mỗi checkpoint/commit/PR, không tự dừng/chờ nhắc.
