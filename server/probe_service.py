@@ -61,6 +61,19 @@ class ProbeService:
         if missing:
             raise ValueError('profile missing lifecycle fixtures: ' + ', '.join(sorted(missing)))
         self.profile, self.out, self.proxy_ports = profile, out, proxy_ports
+        # Optional measured-profile policy, not stats inferred from a request.
+        self.capacity_profile = {}
+        if 'bomb_capacity' in profile.data:
+            limits = profile.data['bomb_capacity']
+            if (not isinstance(limits, dict) or not {'A', 'B'} <= limits.keys()
+                    or limits.keys() - ROLE_SLOTS.keys()):
+                raise ValueError('bomb_capacity must declare A/B and only supported roles')
+            for role, spec in limits.items():
+                if (not isinstance(spec, dict) or set(spec) != {'initial', 'maximum'}
+                        or any(type(spec[k]) is not int for k in spec)
+                        or not 1 <= spec['initial'] <= spec['maximum'] <= 255):
+                    raise ValueError('invalid bomb_capacity limits for ' + role)
+                self.capacity_profile[role] = dict(spec)
         self.hidden_items = {item['index']: ItemSpec(**item)
                              for item in profile.data.get('hidden_items', [])}
         if len(self.hidden_items) != len(profile.data.get('hidden_items', [])):
@@ -119,6 +132,9 @@ class ProbeService:
                 for peer in self.peers()]
 
     def start_round(self):
+        if self.capacity_profile and any(peer['role'] not in self.capacity_profile
+                                         for peer in self.peers()):
+            raise ValueError('bomb_capacity does not cover the current roster')
         key = self.room.begin()
         if self.round['index']:
             self.state['round_history'].append(self.round)
@@ -127,6 +143,9 @@ class ProbeService:
                       'roster': [{'role': e['role'], 'slot': ROLE_SLOTS[e['role']],
                                   'identity': ROLE_IDS[e['role']]} for e in self.peers()]}
         self.state['current_round'] = self.round
+        if self.capacity_profile:
+            self.round['bomb_capacity'] = {role: spec['initial']
+                                           for role, spec in self.capacity_profile.items()}
         self.state['policy_events'].append({'op': 'begin', 'generation': self.room.generation,
                                             'key': key, 'monotonic_ns': time.monotonic_ns()})
         for event in self.peers():
@@ -269,6 +288,12 @@ class ProbeService:
             # Result must have returned/refreshed before another accepted Start.
             if self.round['index'] and not self.round.get('refresh'):
                 return
+            if self.capacity_profile and any(peer['role'] not in self.capacity_profile for peer in peers):
+                self.state.setdefault('start_rejections', []).append({
+                    'reason': 'bomb_capacity_roster_not_configured',
+                    'roles': [peer['role'] for peer in peers], 'seq': sequence,
+                    'monotonic_ns': time.monotonic_ns()})
+                return
             self.start_round()
         elif opcode == 99 and self.room.active and not event.get('init99'):
             values = codec.read_fields(body, [4, 4, 2, 4, 2, 1, 1, 1, 4])
@@ -299,6 +324,20 @@ class ProbeService:
                                        else 'conflicting_bomb_serial')
                 request['prior_id'] = prior['id']
                 return
+            if self.capacity_profile:
+                # Reserve until the server's own job retires. Native chain may
+                # release secondary bombs sooner; this deliberately conservative
+                # policy does not pretend to observe that client's entire pool.
+                reserved = [bomb['id'] for _, pending, bomb in self.jobs
+                            if bomb['round'] == self.room.generation
+                            and bomb['owner'] == ROLE_SLOTS[role]
+                            and self.room.fence.rejection(pending) is None]
+                capacity = self.round['bomb_capacity'][role]
+                request['capacity_guard'] = {'capacity': capacity, 'reserved_ids': reserved,
+                                             'source': 'design'}
+                if len(reserved) >= capacity:
+                    request['rejected'] = 'bomb_capacity_reserved'
+                    return
             ticket = self.room.bomb()
             request['id'] = ticket.wire_id
             serials[values[3]] = {'generation': self.room.generation, 'id': ticket.wire_id,
@@ -365,6 +404,14 @@ class ProbeService:
                                                          opcode=165, body=payload)
                 self.state['policy_events'].append({'op': 'item_consume', 'generation': claim.generation,
                                                     'index': index, 'slot': slot})
+                if self.capacity_profile and kind == 0:
+                    before = self.round['bomb_capacity'][role]
+                    after = min(before + 1, self.capacity_profile[role]['maximum'])
+                    self.round['bomb_capacity'][role] = after
+                    self.state['policy_events'].append({
+                        'op': 'bomb_capacity_pickup', 'source': 'design',
+                        'generation': claim.generation, 'role': role, 'index': index,
+                        'before': before, 'after': after})
             else:
                 report['rejected'] = 'claim_not_current_or_already_consumed'
         elif opcode == 142 and self.room.active:

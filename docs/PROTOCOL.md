@@ -1,6 +1,6 @@
 # KR 00967 — contract tương thích client gốc
 
-Revision kr-legacy-contract-r1; cập nhật04/11/2026 JST (CP086).
+Revision kr-legacy-contract-r1; cập nhật04/11/2026 JST (CP087).
 **Contract có bằng chứng từng phần; chưa nghiệm thu full codec K2**.
 Lộ trình và thứ tự task chỉ giữ ở [REWRITE_PLAN — KRE](PLAN.md).
 Đây là contract của repo server KR. ADR0009 của bản viết lại là nguồn lịch sử để so sánh;
@@ -3075,3 +3075,42 @@ CP084/085 giữ đúng normal/selectedreplay scope, không bị nâng thành ful
 tiếp profile-scoped reservationguard trướcID/job; source stat/max và acceptedBomb effect đã có, release
 secondary sớm trong nativechain vẫnunknown phía service, phải ghi design/conservativewindow khi chọn.
 Chưa fullmatch/K5/K6a/fullauth/fullcodec/fullvalidator/authority/vanilla/LANInternet/allreset.
+
+
+<a id="capacity-reservations"></a>
+### Optional profile capacity/reservation guard — CP087
+
+[Recipe/nguồn/model/runtime](evidence/capacity-reservations/README.md). **Implementation là design**,
+compatibility **kr_runtime/confirmed hẹp** trên currentmodifiedWine/A-B/profile. Reuse CP086 exact
+serial-onlyproxy/currentbody/negativeA0-Bentity và CP031/042/086 securecapacity/max/acceptedBomb;
+VNsession111alloc khôngcapguard chỉ là reference tránh port thiếuvalidator. Không newnativebody/patch.
+
+Optional metadata `bomb_capacity` là map role→`{initial,maximum}`; profile đo khai A1/max10, B2/max7.
+A/B bắt buộc nếu khai, C chỉ khi có source/profile riêng; số nguyên1≤initial≤maximum≤255 là bounds
+cấu hình, không law max255. Absentfield giữ behavior cũ **không bảo vệ cap**; không tựmigrate/profile
+raw. Unsupportedconfiguredroster bị từ chối Start trướckey/generationadvance, không gán statC từA.
+AcceptedStart reset trackedcapacity về initial; currentcatalog Bomb/kind0 đã claim+consume và phát165
+mới increment+1/clamp, duplicate/stalekey/noncatalog khôngincrement. Không lấy stat từ requestpower
+hoặc suy effect từ tên/icon; tracking là policy server, native165effect kiểm riêng.
+
+Sau existingkey/serialdedupe, **trước ID/fence/job/159**, đếm jobs owner hiện hành/cùnggeneration/
+fencevalid chưaretire. Count≥trackedcapacity → `bomb_capacity_reserved`, logcapacity/reservedIDs,
+không reserve serial/ID/job/packet. Jobretire/finish/Startfence loại reservations theo lifetime đã có;
+không tin clientreport để release. Ownerserialize vẫngiữ, profilekhôngkhai báo không đổi duplicate/
+oldkeyreason. Đây là reservationbudget, chưa recoverednativepool hoặc toàncapacity/distance/auth.
+
+Runtime `guarded` mộtvòng lặp sameCP086variant: serial56 bị loại vớiAcurrent2/reserved1,3; native159/
+root158 cảhai có3entity/IDs, khôngID4, result175/180/room. `guarded-cycles` đo thêm **state reset mới**:
+A tracked/nativecapacity1→2/B2 ởmỗi vòng, Fire1→2 vàbaseline1; keys12345/12346, actualA/B/AIDs1..3/
+4..6. Proxy mỗi vòng giữ capturedfields/currentkey/cell, chỉ chọn field3+28 (design displacement,
+không nativegeneratorlaw). Hai bản bị loại trướcID/job/159; reservations1,3 rồi4,6, khôngstaleR1/count
+leak. Hai view đủ6nonzero159full39/6full15813; rootprocess3IDs/mỗi vòng, ownlater khôngduplicate;
+121/clock/175full302/180full3/roomrefresh hai lần. Native field/getter, emittedbody/seq/model và policy
+counter tách rõ; không suy noerrors thành fullmatch.
+
+**Giới hạn còn hoạt động:** nativechain đã giải phóng secondary trước ownserverdeadline, guardvẫn giữ
+reservation tới jobretire; có thể reject legitrapidreplacement trong cửa sổ này. CP087 chưa đo/sửa
+release sớm, chưa đóng capacity/chainauthority hoặc mọi newserial/cell/distance/auth/character/mode.
+98tests kiểm incrementonce/clamp/currentkey/serial/owner/jobretire/reset/fence/unsupportedroster/config;
+resetactual hai vòng không là mọiEOF/errorvariant. Profile mới chưa có API tựtrích statbase từnative.
+[PLAN](PLAN.md#current-order) tiếp nativeplacements sau earlychain; AUD025, periodicCP088 phảiaudit.
