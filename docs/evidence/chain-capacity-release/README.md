@@ -3,7 +3,7 @@
 KRE-052/[issue138](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/138), baseline
 CP088/[PR137](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/137)
 `0a67e74051fe0ac3ba3f7b3d4293c5f5cc45c2fe`. Codex solo/tự kiểm,
-[review waived](../checkpoints/review-waiver.json), chờ PR. Contract/config/giới hạn duy nhất ở
+[review waived](../checkpoints/review-waiver.json), đã merge [PR139](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/139) tại `727e942`. Contract/config/giới hạn duy nhất ở
 [PROTOCOL](../../PROTOCOL.md#chain-capacity-release), gap/phép kiểm ở
 [RESEARCH](../../RESEARCH.md#gap-blast-block-chain), thứ tự ở [PLAN](../../PLAN.md#current-order).
 Raw: `local/research/codex/chain-release-r1/`.
@@ -62,5 +62,5 @@ Checker/catalog scripts không đổi; reuse18checkpointtests, chạy docs/catal
 AUD026 qua088/periodicCP092; không audit kỳ mới hoặc đóng gate bằng testcount.
 
 Chưa generalmap/dynamicterrain/recursivechain/pool law/cell-distance-auth/fullvalidator/fullcodec/
-authority/allreset/vanilla/LANInternet/fullmatch/K5/K6a. PLAN tiếp tile/class/stop ngoài whitelist;
+authority/allreset/vanilla/LANInternet/fullmatch/K5/K6a. [CP090](../current-map-chain/README.md) bổ sung targetmap/boxstop; [PLAN](../../PLAN.md#current-order) giữ gap đang hoạt động;
 không lặp normal118/knownray/serial guard hoặc mở toàn client catalog.
