@@ -3,7 +3,7 @@
 KRE-058/[issue150](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/150), baseline
 CP094/[PR149](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/149)
 `5e580a4d879bbd7821d0759757891b36412ca4b6`. Codex solo/tự kiểm;
-[review waived](../checkpoints/review-waiver.json). CP095 hoàn tất ghi chép/tự kiểm, chờ PR.
+[review waived](../checkpoints/review-waiver.json). CP095 đã merge [PR151](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/151) tại `1c18aa2`; review waived, Codex tự kiểm.
 Contract/giới hạn ở [PROTOCOL](../../PROTOCOL.md#opposite-box-control),
 câu hỏi ở [RESEARCH](../../RESEARCH.md#gap-blast-block-chain), thứ tự ở [PLAN](../../PLAN.md#current-order).
 

@@ -1,6 +1,6 @@
 # KR 00967 — contract tương thích client gốc
 
-Revision kr-legacy-contract-r1; cập nhật05/11/2026 JST (CP094).
+Revision kr-legacy-contract-r1; cập nhật05/11/2026 JST (CP096/AUD028).
 **Contract có bằng chứng từng phần; chưa nghiệm thu full codec K2**.
 Lộ trình và thứ tự task chỉ giữ ở [REWRITE_PLAN — KRE](PLAN.md).
 Đây là contract của repo server KR. ADR0009 của bản viết lại là nguồn lịch sử để so sánh;
@@ -1958,7 +1958,7 @@ liệt kê và phân biệt với nguyên bản trong mọi demo.
 <a id="authority"></a>
 ### Authority matrix hiện hành và gate review
 
-Bảng này tổng hợp bằng chứng từng phần đến CP082; chưa phải toàn contract server gốc. Mỗi hàng khi
+Bảng này tổng hợp bằng chứng từng phần đến CP096; chưa phải toàn contract server gốc. Mỗi hàng khi
 triển khai phải bổ sung riêng **creator, simulator, validator, broadcaster, peer-editable state**, với
 locator/trace và trạng thái từng ô; những vai trò không nêu dưới đây hiện `unknown` cho KR.
 
@@ -1966,13 +1966,22 @@ locator/trace và trạng thái từng ô; những vai trò không nêu dưới 
 |---|---|---|
 | Movement | CP027 hai chiều; CP070 [cut/counter/restore local vs remote](#current-udp-causality) đã đo trên current Wine copy;183 vẫn ghost | Full schema input/update/correction, validator và quyền sửa vị trí của peer |
 | Bomb place/ID | CP027 hai owner/ID chung1..4 tạo trên cả hai client; [phạm vi](#peer-duo); lặp/cũ CP025 | CP041 có [stale158/ID reuse và fence job local](#round-generation), CP043 có [old159/serial reuse](#late-bomb-confirm); CP067 [C2Skey/serialguard](#c2s118-admission) và CP075 [actualTCPselectedreplay](#current-tcp-replay) loại duplicate/oldbody hẹp; allocator/rollover/concurrent/race/toàn generation/authority còn mở |
-| Explode/chain | CP033 một owner; CP064 [power1/cách hai ô](#mixed-owner-chain), CP071 [power2 ngoài tầm/feedback chưa118](#mixed-owner-power) giữ partial lịch sử; CP081 [power2/distance2 mixed-owner](#mixed-input), CP084 [ba bom fork hai vòng](#three-bomb-chain) có native callback proof | Mixed-owner liền kề/vật cản/chain sâu/race/generation và authority server gốc còn thiếu |
-| Block destroy/item reveal | CP032 nativecontract; CP068 [currentservice/list2/reportgate/effect/reset](#current-hidden-items) cảhai view | Drop algorithm/server validator, variants/chain và phép loại transport riêng còn thiếu |
+| Explode/chain | CP033 một owner; CP064 [power1/cách hai ô](#mixed-owner-chain), CP071 [power2 ngoài tầm/feedback chưa118](#mixed-owner-power) giữ partial lịch sử; CP081 [power2/distance2 mixed-owner](#mixed-input), CP084 [ba bom fork hai vòng](#three-bomb-chain); CP094 [optional pinned terrain](#terrain-policy), CP095 [actualbox/laterfreshpair](#opposite-box-control) có native callback/195flag proof | [CP096adjacent1cell](#adjacent-owner-control) đã đo; recursive/sharedblocker/FIFO/firstbombstop tổng quát/race và authority server gốc chưa đủ |
+| Block destroy/item reveal | CP032 nativecontract; CP068 [currentservice/list2/reportgate/effect/reset](#current-hidden-items), CP092 [195flags/seedreset](#map-flags-snapshot), CP094/095 [pinnedpolicy/nativeboxclear](#terrain-policy) cảhai view | Drop algorithm gốc/fullvalidator, genericclass/map và transport khác còn thiếu; không dùng report142 làm worldoracle |
 | Item placement/pickup | CP030 nhặt/tranh index; CP031/032 stat/itemẩn; CP045 [bảng nhóm/Roller/MaxPower hai view/reset](#item-families) | CP042 có [old165/index reuse](#item-generation); runtime tại max, KRspeed→px/s/TTL/activevariants, drop/toàn124validator/generation/reset còn thiếu; CP062 [winner đảo trên actual tranh index](#current-pickup-race) đã có scope riêng |
 | Trap/death | CP029/036; CP037 kim và tranh chấp cứu/diệt; [kim](#needle-selfescape), [precedence](#contact-precedence) | CP063 [guard stale/duplicate](#report127-freshness) là policy hẹp; CP075 [TCPsame/old17,19](#current-tcp-replay) đã đo; fullvalidator/firstseen/forgedforward/generation/variants/result21 vẫn thiếu |
 | Result/reset | CP039 hai vòng statepeer/result/21/return và reset field hẹp; CP044 [timer ở EOF và vòng B/C mới](#abort-timer); CP080 [hai chu kỳ sau rejoin](#ready-input), CP082 [mixed-owner survivor](#mixed-cycles), CP083 [all-dead rank2/2/storage/UI](#all-dead-result), mỗi run/scope riêng | CP041 có [payload cũ khi ID reuse](#round-generation); arbitration/toàn generation/entity/timer/peer/seq không rò vẫn mở; phân biệt run chờ sai origin với ca hoàn tất |
 | Room lifecycle | CP034 leave/promotion/EOF/return; CP035 rejoin/Ready; CP040 chủ B/C Start; CP044 [B/C bom/death/result/return sau abort](#abort-timer) | Bầu chủ/giữ ID-slot/forfeit là policy stub; guest EOF trả A về phòng/xóa B đã đo riêng; CP050 có [service EOF/cleanup](#service-eof); CP051 có [C mới/Start B trong service](#service-replacement); CP052 [guest setup EOF](#setup-eof), CP053 [host với peer chưa map](#host-setup), CP054 [C trước vòng đầu](#prestart-replacement), CP072 [preclock forfeit/return](#preclock-eof), CP074 [native107/IDclear và UI](#preclock-cleanup), CP076 [Back86/emptyroomrecreate cùng channel](#back86-membership) đã đo; reconnect cùng account/disconnect variants/toàn reset còn mở |
 | Peer lifecycle | CP027 actual99→153; CP045–047 [oldUDP actor/keyguard/endpointcontrol](#udp-generation), CP070 [transport cut hai chiều](#current-udp-causality) | CP048 [service fixture](#probe-service) đã tích hợp key policy hẹp; low8reuse/roster/UDPtype khác/fullgrammar/reliability/relay/reset còn mở. Không coi đổi cổng riêng lẻ là freshness guard hoặc keybyte là auth |
+
+Trong **optional profile hiện hành**, bảng dưới ghi vai trò emulator, không gán cho server gốc.
+Giới hạn và phép đo nằm ở link contract; không dùng mỗi vai trò này làm gate acceptance.
+
+| Cơ chế/profile | Creator | Simulator | Validator của service | Broadcaster | Peer-editable state / giới hạn |
+|---|---|---|---|---|---|
+| [Place159](#terrain-policy) | Native Space tạo118 | Native159 tạo/bind entity ở cả view | Role/key/serial/quota + knownvariant/power/floor/nonoverlap theo profile | Service cấp ID/phát159 | Client gửi cell/power; chưa xác thực actorlocation/distance/fullauth, không tự coi field là tin cậy |
+| [Explode158/terrain](#terrain-policy) | Timer6s của profile là emu_choice | Native158/process/chain/mapflags; service dùng bounded terrain model | Model/profile pin/kinds/power≤2/currentgeneration; semantic modelchoices có giới hạn | Service phát158 rồi commit world/release | Peer movement có thể ảnh hưởng contact/report; report142 không làm worldoracle. Original server validator/order vẫnunknown |
+| [Trap/death/result](#tcp-guard-cycles) | Native local simulation tạo127/subtype | Native170/175/180 nhận effect/UI | Guard key/slot/reportstate/selectedsame-oldbody; còn firstseen/forgedforward/location thiếu | Service170/result/return theo policy | Report/body do client gửi; acceptedreport không là authoritative world proof. [Limits](#tcp-guard-cycles) và RESEARCH giữ mở |
 
 Gate K5/K6 cần kiểm matrix và đối chứng của hành vi thực sự dùng; từ28/10 Codex tự kiểm theo miễn review của chủ dự án. Có thể giữ unknown về
 server gốc thất lạc nếu policy emulator được chọn `design`, client chấp nhận và ca consistency đạt;
@@ -3305,7 +3314,7 @@ checks riêng. Hai nativecycles10actual118/159nonzero/full39,10full15813/errors0
 roomrefresh hai lần, khôngcontroller/service/probeerrors; no wholematch/K5/K6a proof. Partial first
 vàmetadata/marker verifierfailures giữ đầyđủ ởevidence, không sửa checkpoint trước.
 
-**Chưa implementation terrain mới.** Mapflag là nativequeryinput thực tế trong cađo, chưa servergốc
+**Tại CP092 chưa có implementation terrain mới**; [CP094](#terrain-policy) đã tích hợp optionalprofile có giới hạn. Mapflag là nativequeryinput thực tế trong cađo, chưa servergốc
 worldauthority hoặc luật mọi class/template/direction. Servertracking phải explicitdesign/profilepin,
 model so actualdeltas/chainorder trước tích hợp, không nhận142 nhưepoch/auth/worldoracle.
 [PLAN](PLAN.md#current-order) giữ thứ tự, AUD027qua092/nextCP096. Genericmap/moving/recursive/fullpool/
@@ -3341,8 +3350,8 @@ trênoldboxclear→house1,3stop cũng khớp. Cùngraw có sẵn, khôngnewWine/
 4testconstraints kiểm atomicreject/unknownprofile, boxstoptrongcascade→laterblastqua, solidhold,
 oldcallback không đụngnewbomb/reset; tests không lànative oracle.
 
-**Chưa tích hợp service.** [PLAN](PLAN.md#current-order) tiếp optionalpinnedterrain/guards rồi native
-integration mới với input ngoài CP089clearcells; modelmatcholdraw không thay runtime production.
+**Tại CP093 chưa tích hợp service**; [CP094](#terrain-policy) đã đo optionalpinnedterrain/guards với input
+ngoài CP089clearcells. Việc hiện hành chỉ ở [PLAN](PLAN.md#current-order); modelmatcholdraw không thay runtime production.
 Genericclass/map/direction/moving/overlapvariants/recursiveorder/sharedblockers/fullvalidator/auth/
 codec/authority/fullreset/vanilla/LANInternet/fullmatch/K5/K6a mở. AUD027/nextCP096.
 
@@ -3443,3 +3452,32 @@ Phép đo kết thúc chủ động, không xác nhận result/fullcycle/gate.
 Ca hẹp này không chứng minh immutable terrain cho mọi recursive cascade, FIFO, shared blocker,
 first-bomb-stop tổng quát, direction/template/moving bomb hoặc genericmap. Auth/distance/fullvalidator/
 fullreset/fullmatch/K5/K6a/Windows nguyên bản/LAN/Internet vẫn mở.
+
+
+<a id="adjacent-owner-control"></a>
+### Hai owner sát một ô trên ô thùng đã phá — CP096
+
+[Recipe/reuse/hash/audit](evidence/adjacent-owner-control/README.md). **kr_runtime/confirmed hẹp**,
+currentmodifiedWine/ExVillage01/A-B/localstub, production CP094 không đổi. Tái dùng14sources và toàn
+CP095profile/spawn4/nativeclear/stable-neutral input/getter/framer; chỉ target B của cặp cuối đổi từ
+X280/column7 sang X240/column6. Không nativebody/patch/gamecall/force/packDBsource edit. Bảng121/
+codec/map đã giải không được tính là RE mới.
+
+Setup native1B `(3,9)`, 2A `(3,5)`/power2 và3B `(3,7)`/power1 giữ đối chứng blocked và clearBox3,6;
+B3 process owncallback trước cặp mới. New actual118: A4 `(3,5)` owner0/power2, B5 **`(3,6)`** owner1/
+power1, cách1ô. Sourcegrid ô3,6 là object1932/rawclass2 ban đầu; snapshot trước callback4 flag0,
+không suy floor từ tên/icon. Cảhai view: native159 của5 full39/nonzero hoàn tất **trước** callback4,
+latest same-round binding pointer khớp nativeprocess5. Setter state0 của5 caller`EBE21A` trước process;
+callback root4 process `[4,5]`. B5 đến trước rootdeadline theo timestamp service, không dùng hold làm tick.
+
+Run196,679s; năm native118/159/view, bốn158/full13/errors0/view, không controller/service/probeerrors.
+195before/afterflags/processedsets cả bốn callback khớp service; 18snapshots/3546copiednativegetters/
+3510addresschecks; verifier49relations +10adjacentbinding/geometrychecks +6source/isolationchecks.
+Các mức runtime/getter-emulation/hash/test tách riêng. Own158 của5 chưa quan sát trước chủ động dừng;
+không là fullresult/reset, firstbombstop/FIFO universal hoặc server gốc authority.
+
+[AUD028](evidence/checkpoints/audits/AUD028.json) sửa stale CP095PR, authority-index/roleboundary,
+CP092/093historical “chưa tích hợp” và catalog implementationchain `unknown→partial` theo optionalpolicy
+đã có; không nâng gate. [PLAN](PLAN.md#current-order) ghép currentterrain/selectedTCPguards/hai chu kỳ
+cùng run tiếp. Fullauth/codec/fullvalidator/location/distance/genericmap/recursive/sharedblocker/moving/
+allreset/Windowsvanilla/LANInternet/fullmatch/K5/K6a vẫn mở; periodic sauCP100.

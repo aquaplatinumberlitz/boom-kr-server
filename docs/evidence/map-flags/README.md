@@ -63,6 +63,6 @@ Docs/catalog7/artifacts/localhistory/diff;105server/18checkpointtestsreuse do pr
 clockmapidentityerror/staticvsnativeflag/partialmarkerboundaries vàgiữoldraw/manifestimmutable.
 [AUD027](../checkpoints/audits/AUD027.json) giữ đọc những gì/sửa ở đâu/còn thiếu gì.
 
-Chưa terrainimplementation mới/genericclasslaw/fullmapvariants/direction/moving/recursive/report142
+Tại CP092 chưa terrainimplementation mới; [CP094](../terrain-policy/README.md) đã tích hợp optionalprofile có giới hạn. Chưa genericclasslaw/fullmapvariants/direction/moving/recursive/report142
 freshness/auth/epoch/worldauthority/validator/codec/fullreset/vanilla/LANInternet/fullmatch/K5/K6a.
-[CP093](../terrain-shadow/README.md) đã soofflinecandidate vớiactualflags/deltas; [PLAN](../../PLAN.md#current-order) giữoptionalintegration kế, no142oracle.
+[CP093](../terrain-shadow/README.md) đã soofflinecandidate vớiactualflags/deltas; [CP094](../terrain-policy/README.md) đã tích hợp scopedpolicy; việc hiện hành chỉ ở [PLAN](../../PLAN.md#current-order), no142oracle.

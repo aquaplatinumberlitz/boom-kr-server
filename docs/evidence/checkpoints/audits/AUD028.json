@@ -1,0 +1,100 @@
+{
+  "id": "AUD028",
+  "trigger": "periodic",
+  "completed_through": "CP096",
+  "recorded_utc": "2026-11-04T16:00:10.478420+00:00",
+  "auditor": "Codex manual self-audit; independent review waived by owner",
+  "read_files": [
+    "README.md",
+    "docs/PLAN.md",
+    "docs/PROTOCOL.md",
+    "docs/RESEARCH.md",
+    "docs/features.json",
+    "docs/COVERAGE.md",
+    "docs/evidence/map-flags/README.md",
+    "docs/evidence/terrain-shadow/README.md",
+    "docs/evidence/terrain-policy/README.md",
+    "docs/evidence/opposite-box-control/README.md",
+    "docs/evidence/adjacent-owner-control/README.md",
+    "docs/evidence/checkpoints/manifest.json",
+    "local/research/codex/terrain-shadow-r1/verification.json",
+    "local/research/codex/terrain-policy-r1/runtime-verification.json",
+    "local/research/codex/terrain-policy-r1/lean/run.json",
+    "local/research/codex/terrain-policy-r1/lean/service-state.json",
+    "local/research/codex/opposite-box-r1/blocked/run.json",
+    "local/research/codex/opposite-box-r1/control-verification.json",
+    "local/research/codex/opposite-box-repeat-r1/freshpair/run.json",
+    "local/research/codex/opposite-box-aligned-r1/aligned/run.json",
+    "local/research/codex/opposite-box-stable-r1/stable/run.json",
+    "local/research/codex/opposite-box-stable-r1/stable/service-state.json",
+    "local/research/codex/opposite-box-stable-r1/chain-summary.json",
+    "local/research/codex/adjacent-owner-r1/audit-inputs.json",
+    "local/research/codex/adjacent-owner-r1/reuse-question.json",
+    "local/research/codex/adjacent-owner-r1/adjacent/run.json",
+    "local/research/codex/adjacent-owner-r1/adjacent/service-state.json",
+    "local/research/codex/adjacent-owner-r1/adjacent/client.log",
+    "local/research/codex/adjacent-owner-r1/adjacent/client-B.log",
+    "local/research/codex/adjacent-owner-r1/chain-summary.json",
+    "local/research/codex/adjacent-owner-r1/control-verification.json",
+    "local/research/codex/adjacent-owner-r1/adjacent-verification.json",
+    "local/research/codex/adjacent-owner-r1/flag-reader-verification.json"
+  ],
+  "method": "Manual README/full PLAN → PROTOCOL overview/reuse/authority and CP087–096 sections → RESEARCH current30gaps/historical narrative → relevantCP092–096evidence/raw. Not a wholeclient or every historicalfunction audit. Compared retained CP093432relations model boundary, CP09414entitiesvs12callbacks/ID14notprocessed/own7and14round_closed, CP095allthreepartialerrors vsstableactualnormal118/native159bindings/lookups/process andselected195flags3,6 transitions. Inspected newCP096actual118owners/cells/powers, nativecallback4 states/EBE21A beforeprocess in both rawlogs/parsedjoins,18flag snapshots beforeafter vsservice separately fromcopiedgetters. Catalog implementation declaredunknown checkedagainstactual CP094optionalproductionfiles, not inferred fromtestcount. Mechanicalcheckers run after, not substitute for this reading.",
+  "findings": [
+    {
+      "id": "F1",
+      "stale": "CP095README/evidence/PLAN stillpendingPR despitePR151merged1c18aa2; currentauditmarkersAUD027next096 nowdue.",
+      "correction": "RecordCP095merge/source andCP096selfcheckpendingPR honestly; AUD028through096/next100; no approved/gate claim.",
+      "fixed_in": [
+        "README.md",
+        "docs/PLAN.md",
+        "docs/evidence/opposite-box-control/README.md",
+        "docs/RESEARCH.md"
+      ]
+    },
+    {
+      "id": "F2",
+      "stale": "PROTOCOL headerCP094 andauthorityindex sayscurrentthroughCP082 whilealreadyincludingCP084; explode/block rows missCP094optionalterrain/CP095actualbox/laterfreshpair.",
+      "correction": "Updateauthorityindex throughCP096, add successorlinks and boundedcurrentemulator creator/simulator/validator/broadcaster/peereditable roles. Originalserverauthority/location/fullvalidator stillunknown, no authoritative claim.",
+      "fixed_in": [
+        "docs/PROTOCOL.md"
+      ]
+    },
+    {
+      "id": "F3",
+      "stale": "StandaloneCP092/093boldnoimplementation andnextoptionalintegration couldbe readasactive despiteCP094implementation; PLAN genericmissingobstacle/adjacent list alsooverlapsnewcontrols.",
+      "correction": "MarkCP092/093 claims atmeasuredtime andlinkCP094successor; currentorder/gaps onlyPLAN/RESEARCH. CP095actualbox andCP096adjacent replaceclosedcontrolnextstep; recursive/sharedblocker/generalorder remainsunknown.",
+      "fixed_in": [
+        "docs/PROTOCOL.md",
+        "docs/PLAN.md",
+        "docs/RESEARCH.md",
+        "docs/evidence/map-flags/README.md"
+      ]
+    },
+    {
+      "id": "F4",
+      "stale": "KR-F005 implementation.state unknown while refs alreadypointtoimplementedCP094terrainmodel/profile/tests andnewruntime compatibility; thishidesknownpartialimplementation.",
+      "correction": "Setimplementationpartial withsamecode/source/limitedprofile refs, no full feature/gate promotion. Generatecoverage fromcatalog.",
+      "fixed_in": [
+        "docs/features.json",
+        "docs/COVERAGE.md"
+      ]
+    },
+    {
+      "id": "F5",
+      "stale": "Failedcontrollerattempts/freshpair vsoldsecondary andentitycount vscallbackcount couldbeoverread asallpassed/fullreset.",
+      "correction": "Re-read threeCP095partialruns/originaltimingandstablepositive; CP096newB5at3,6 vsCP0953,7 explicitlynewgeometry/latestbinding. Both5entities/4callbacks; own5notobservedbeforestop. Preserveoriginalfailures/CPrecords/raw andseparate runtime49+adjacent10/source6/gettermodels, no fullmatch.",
+      "fixed_in": [
+        "docs/PROTOCOL.md",
+        "docs/evidence/adjacent-owner-control/README.md"
+      ]
+    }
+  ],
+  "remaining": [
+    "CP096selfchecked/pendingPR, reviewwaivednotindependentapproval; PRauthoritative forintegrationstatus.",
+    "Genericimmutablecascade/FIFO/firstbombstop/recursive/sharedblocker/moving/othermaps or mode unproven; no sweep withoutactualmismatch/integrationtrigger.",
+    "Originalserverauthority/fullauth/codec/location/distance/fullvalidator/transportrecovery/allreset/Windowsvanilla/LANInternet/fullmatch/K5/K6a remainopen.",
+    "NextPLANsame-run currentterrain+selectedTCPguards+twonativeresult/reset; separateCP085/094runs cannotbecombinedintoacceptance.",
+    "Periodic nextCP100; counter/historicalCP/AUD/raw notreset orrewritten."
+  ]
+}
