@@ -3,7 +3,7 @@
 KRE-068/[issue170](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/170), baseline
 CP104/[PR169](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/169)
 `7b296db8cfb69006249150d719930fd5ae8f0b63`. Codex solo/tựkiểm;
-[review waived](../checkpoints/review-waiver.json), CP105chờPR. Contract/limits chỉở
+[review waived](../checkpoints/review-waiver.json), CP105 đã merge [PR171](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/171) tại `dc30e4f`. Contract/limits chỉở
 [PROTOCOL](../../PROTOCOL.md#ending-udp-state-apply), gapở[RESEARCH](../../RESEARCH.md#gap-peer-movement),
 thứtựở[PLAN](../../PLAN.md#current-order). AUD032qua104/next108; #166/gatesvẫnopen.
 
