@@ -1,0 +1,94 @@
+{
+  "id": "AUD032",
+  "trigger": "periodic",
+  "completed_through": "CP104",
+  "recorded_utc": "2026-11-04T22:54:00.740311+00:00",
+  "auditor": "Codex manual self-audit; independentreviewwaived",
+  "read_files": [
+    "README.md",
+    "docs/PLAN.md",
+    "docs/PROTOCOL.md",
+    "docs/RESEARCH.md",
+    "docs/features.json",
+    "docs/COVERAGE.md",
+    "docs/evidence/peer21-ending-order/README.md",
+    "docs/evidence/ending34-state-boundary/README.md",
+    "docs/evidence/checkpoints/audits/AUD030.json",
+    "docs/evidence/checkpoints/audits/AUD031.json",
+    "docs/evidence/selector-closed-readiness/README.md",
+    "docs/evidence/drained-result-local-clear/README.md",
+    "docs/evidence/collision-rescue/README.md",
+    "docs/evidence/round-repeat/README.md",
+    "docs/evidence/all-dead-result/README.md",
+    "local/research/codex/ending21-34-r1/reuse-question.json",
+    "local/research/codex/ending21-34-r1/old-ending-recovery.json",
+    "local/research/codex/ending21-34-r1/ending/run.json",
+    "local/research/codex/ending21-34-r1/ending/service-state.json",
+    "local/research/codex/ending21-34-r1/ending/chronology-A.jsonl",
+    "local/research/codex/ending21-34-r1/ending/chronology-B.jsonl",
+    "local/research/codex/ending21-34-r1/ending/tcp-proxy.json",
+    "local/research/codex/ending21-34-r1/ending-verification.json",
+    "local/research/codex/ending21-34-r1/ending-caller-code-match.json",
+    "local/research/codex/ending21-34-r1/E60371-runtime-caller.asm",
+    "local/research/codex/ending21-34-r1/B42880-runtime-caller.asm",
+    "local/research/codex/ending21-34-r1/B74060-runtime-caller.asm",
+    "local/research/codex/ending21-34-r1/B51CB0-runtime-caller.asm",
+    "local/research/codex/current-peer-target-r1/B4E6F0.asm",
+    "server/probe_service.py",
+    "tools/probe_channel_identity.py"
+  ],
+  "method": "Manual README→PLAN→PROTOCOL authority/currentCP101–104/knownresult/CP036→RESEARCH gaps→relevantevidence/raw/code andAUD030031. ComparedCP101cachedselectorclose scope vsnativeclaims, CP102localvf148/native2cycles andstrictpre175fail, CP103peeractualgate1vsgate0/late17/wrongWCPproxy correction vsnewCP104native175callstack/statewrites/34writer/front/180. Newdirect175pathB74060/B42880 sets3 eachview, ownreport34insideB51C beforeB33270write; checkednativewriterstate26not3, exactactualfront14/nativefields/bodySHA. Bpost175transientsettersB4EAA6/E668B2 remainrawobservedbutexactUDPargjoinunknown. Alignedstaticrangesmatchedall3images notinteriorbytefirstattempts; originalbaddecode retained. No inferreduniversalalive/animationenum, globaltick,ownACKnecessity/rankwrong/gate. Checkednativeproxybootstrapordinal1WCP-A-1/15bytehello vsCP103benchWCP266byte andcorrectA4/B4. Mechanicalchecksafterreadnotsemanticproof.",
+  "findings": [
+    {
+      "id": "F1",
+      "stale": "CP102/103hardpre175entrysamestatecouldbeinterpretedaspersistentendingdesync/rankwrong/mandatoryownACK21despite175handlernotyetexecuted.",
+      "correction": "Keepnumericentryassertfailureandlate17rawimmutable, butnarrowinterpretation:175itselfclearsown56→26/sets3inbothviews; report34beforewrite; A3/B1bothviewbefore180. Entryboundarynotwholeendingcriterion. Do notaddownACK/delay/policysolelytomakeearlyassertpass; actualUDPpost175unknownnext.",
+      "fixed_in": [
+        "README.md",
+        "docs/PLAN.md",
+        "docs/PROTOCOL.md",
+        "docs/RESEARCH.md",
+        "docs/evidence/peer21-ending-order/README.md",
+        "docs/evidence/ending34-state-boundary/README.md"
+      ]
+    },
+    {
+      "id": "F2",
+      "stale": "Report34frontafter175couldbeassumedackafterstate3commit; writerunknown.",
+      "correction": "NativeB53010callerB51CCDsnapshot26; staticpush22/send1164D50beforeB33270. State3set afterwriter/front, notbefore. Commonprefix14finalfield6neutral/notauthorityACK; Bnoown34thisboundedpathonly.",
+      "fixed_in": [
+        "docs/PROTOCOL.md",
+        "docs/evidence/ending34-state-boundary/README.md",
+        "local/research/codex/ending21-34-r1/ending-verification.json"
+      ]
+    },
+    {
+      "id": "F3",
+      "stale": "README/PLANCP103waitingPR/AUD031periodic104due; authorityresultindexonlythroughCP102links; possibleclaimbothviewsneed56→26clear.",
+      "correction": "RecordPR167mergeb5d2d75, CP104pending/selfcheck, AUD032through104/next108. Addresultsource104, clarifyownAclear56→26andbothset3; nativeBentry26notinventedsecond56clear.",
+      "fixed_in": [
+        "README.md",
+        "docs/PLAN.md",
+        "docs/PROTOCOL.md",
+        "docs/RESEARCH.md",
+        "docs/evidence/peer21-ending-order/README.md"
+      ]
+    },
+    {
+      "id": "F4",
+      "stale": "FirstboundedstaticrangeE60380/B42850/B73FF0/B51C90insideinstructions producedinvaliddecode; consolefirstlinearretlabelmisleading; couldbeusedasfunctionexitproof.",
+      "correction": "Retainfirst-disassembly, alignedcachedflowE60371/runtimeB51CCD-rangeB51CB0/prologueB42880/B74060 +all3sourcebytes pin. 1800rangehasnoret, no guessed175exit/fullbodyclaim; runtimeentry/state/report/180proofindependent.",
+      "fixed_in": [
+        "local/research/codex/ending21-34-r1/ending-caller-code-match.json",
+        "local/research/codex/ending21-34-r1/boundedstatic-note.json",
+        "docs/evidence/ending34-state-boundary/README.md"
+      ]
+    }
+  ],
+  "remaining": [
+    "Exactpost175UDPingress13/key/actor/argstate→B4EAA3setter/after→end180unknown; currentstackshows3/56fromB4EAA6, notoldroundproof/epochauth.",
+    "#166stillopenforendingconsistencyqualification, K0–K7/no fullmatch/vanilla/LANInternet gateclosed. Fullauth/codec/authority/fullvalidator/allreset open.",
+    "OnecycleCP104only; CP103two-cycleproofhistoricalseparate. Production/profileunchanged/149server3identity4kernel reusedsourceidentity, notnewnative2cycles.",
+    "NextperiodicCP108; AUD031seriousdidnotresetperiodicCP104, AUD032nowfulfilled."
+  ]
+}

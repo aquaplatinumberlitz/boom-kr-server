@@ -29,16 +29,16 @@ runtime nào có nguồn, còn thiếu gì và phép kiểm nào giải quyết.
 evidence/hash và câu hỏi; [PLAN](docs/PLAN.md#current-order) giữ duy nhất thứ tự công việc.
 Đây là scope đường bootstrap → login → sảnh → phòng → Battle → kết quả/reset, không kiểm kê toàn client.
 
-CP103 đã đo peer170/21 thật: vòng1 B gate1/`B43320(0,0,-1)` đưa actorA56→26; vòng2 B đã0,
-gate0 không gọi clear. Hai nativecycles14/14blasts/175180/reset không lỗi, nhưng **chưa đạt kiểm
-nhất quán trước175**: A phát17 mới sau khi service đã chốt kết quả, front đến sau first175send
-108,344208ms/95,888487ms. Cần xác định contract endingphase/21/34; chưa fullmatch/K6a/LAN/Internet.
-[Contract/giới hạn](docs/PROTOCOL.md#peer21-ending-order),
-[recipe/hash](docs/evidence/peer21-ending-order/README.md).
+CP104 xác nhận handler175 đặtstate3 cho actor A ở cảhai view; riêng A gọi clear56→26 trước đó;
+report34 được phát **trước** lần ghi3. Trước180, cảhai cùngA3/B1; entry175 khácstate chưa đủ để
+kết luận lệch kéo dài hoặc rank sai. Sau175 vẫn có transition ngắn từ UDP apply, cần đo đúng phase.
+[Contract/giới hạn](docs/PROTOCOL.md#ending34-state-boundary),
+[recipe/hash](docs/evidence/ending34-state-boundary/README.md). Chưa fullmatch/K6a/LAN/Internet.
 
-CP102 đã merge [PR165](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/165) tại `67c2ec7`.
-CP103 tự kiểm/chờ PR; review độc lập [waived](docs/evidence/checkpoints/review-waiver.json).
-Audit tức thời **AUD031 quaCP102** cho lỗi proxy WCP/channel; audit định kỳ **AUD030/CP100 → CP104** giữ nguyên.
+CP103 đã merge [PR167](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/167) tại `b5d2d75`.
+CP104 tự kiểm/chờ PR; production/profile giữ nguyên. Review độc lập
+[waived](docs/evidence/checkpoints/review-waiver.json).
+Audit định kỳ **AUD032/CP104**, mốc kế **CP108**; AUD031tức thời giữ lịch sử.
 [Yêu cầu chủ dự án](docs/evidence/owner-directives/continuous-work.json): tiếp tục ngay việc kế trong
 PLAN sau mỗi checkpoint/commit/PR, không tự dừng/chờ nhắc.
 
