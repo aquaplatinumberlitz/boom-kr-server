@@ -3,7 +3,7 @@
 KRE-061/[issue156](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/156), baseline
 CP097/[PR155](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/155)
 `3a0e979754e24078340fcb4cd688081fb5828feb`. Codex solo/tự kiểm,
-[review waived](../checkpoints/review-waiver.json), CP098 chờ PR. Contract/limits ở
+[review waived](../checkpoints/review-waiver.json), CP098 đã merge [PR157](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/157) tại `a6f4ae7`. Contract/limits ở
 [PROTOCOL](../../PROTOCOL.md#current-peer-targets), gap ở [RESEARCH](../../RESEARCH.md#gap-contact-state),
 thứ tự ở [PLAN](../../PLAN.md#current-order). Raw `local/research/codex/current-peer-{apply,target}-r1/`.
 
@@ -38,7 +38,10 @@ run này. Jobs7/13/14round_closed/no158/noterraincommit/notnativeprocessedbefore
 `items-storage-verification.json`39checks chỉ BombFire/statreset/Bstate1/175302/managerstorage1,2 trước
 return hai lần; `verify_effects_A0_plan.py`/`effects-A0-failure.txt` giữA0assertionfail. Không đổiAstateexpected
 để gọiconsistency pass. `rank-boundary-observation.json` pinAown56/peer0R1/cùngXY vàR2agree; perview175
-khôngtimestamp, chưa simultaneous/persistentdesync/rankwrong/observercausalityproof. Đây là blockerkế.
+khôngtimestamp, chưa simultaneous/persistentdesync/rankwrong/observercausalityproof.
+**Correction [AUD029](../checkpoints/audits/AUD029.json)/CP099:** A17 thực có ở nativefront saufirst175send
+1,596361ms; oldanalysislọcservice_entry nên bỏ frame khôngactiveguardlog, absenceclaim cũ sai.
+Raw/completeCP098 bất biến, currentclaim sửa qua checkpoint kế. Đây là blockerkế.
 
 Earlierapply finalsourcepincheck expressionSyntaxError aftercodecompiled/shelllaunch; metadata cập nhật
 postlaunch vàghiđúngboundary. Targetcopy prepared/compiled/rolechecked/4code-rangesmatched/pins trước
