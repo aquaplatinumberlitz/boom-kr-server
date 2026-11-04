@@ -3,7 +3,7 @@
 KRE-056/[issue146](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/146), baseline
 CP092/[PR145](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/145)
 `cac815de29b9b9d15b4b82f78edc0003813723d6`. Codex solo/tự kiểm,
-[review waived](../checkpoints/review-waiver.json), chờ PR. Contract/limits duy nhất ở
+[review waived](../checkpoints/review-waiver.json), đã merge [PR147](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/147) tại `446b7cb`. Contract/limits duy nhất ở
 [PROTOCOL](../../PROTOCOL.md#terrain-shadow), gap ở [RESEARCH](../../RESEARCH.md#gap-blast-block-chain),
 thứ tự ở [PLAN](../../PLAN.md#current-order). Raw: `local/research/codex/terrain-shadow-r1/`.
 
@@ -35,6 +35,6 @@ runSHAs/locators/sourceboundaries giữởsource/evidenceCP090–092, không t�
 Docs/catalog7/artifacts/localhistory/diff;reuse105servertests/18checkpointtestsproduction/checkerunchanged.
 AUD027quaCP092/periodicCP096. Khôngworker/independentreview hoặcgatepromotion.
 
-PLAN tiếpoptionalprofileterrain/guards/atomicbroadcastcommit/reset và**newnativeintegration** bênngoài
+Bước tạiCP093 làoptionalpolicy/newnativeintegration; [CP094](../terrain-policy/README.md) đãtriểnkhaiđohẹp, [PLAN](../../PLAN.md#current-order) giữviệc hiệnhành. Newruntime bênngoài
 CP089manualclearcells. Chưa fullvalidator/capcause/auth/codec/authority/fullreset/vanilla/LANInternet/
 fullmatch/K5/K6a; candidateoldrawmatchkhông thay runtime của implementation mới.

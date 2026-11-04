@@ -194,3 +194,11 @@ release theo report; oldsecondary không mở chain giả lên newbomb. Absent g
 [Contract/config/giới hạn](../docs/PROTOCOL.md#chain-capacity-release),
 [recipe/control/partial/hash](../docs/evidence/chain-capacity-release/README.md). 105server tests;
 chưa generic map loader/recursive chain/fullvalidator hoặc tựmigrate profile cũ.
+
+
+CP094 optional `bomb_terrain` cùng capacityA/B, mutuallyexclusive `capacity_chain`: fixed15×13 seed/
+maxpower≤2/source-mapdigest+seedhash/map-startfixturepins. [Contract/config/limits](../docs/PROTOCOL.md#terrain-policy).
+Knownvariant/floor/nonoverlap/currentepoch/quotaguards trướcID/job, worldcommit sau159/158success;
+keepsecondaryjobs/fence/reset, no142worldoracle. Failedbroadcast khôngterraincommit nhưngkhôngrollback
+existingID/serial/fence/jobs.113tests/newnative2cycles14entities,12callbacks/52flagsnapshots. Profileabsent
+unchanged; no automaticexport/migrate/genericmap/auth/fullvalidator. [Evidence](../docs/evidence/terrain-policy/README.md).

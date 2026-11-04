@@ -7,6 +7,7 @@ No Wine/UI automation is imported. The caller supplies network isolation.
 """
 
 import argparse
+import copy
 import hashlib
 import json
 from pathlib import Path
@@ -19,6 +20,8 @@ import time
 from server import probe_codec as codec
 from server.item_claims import ItemSpec
 from server.chain_capacity import ClearCellChains
+from server.terrain_model import Bomb
+from server.terrain_profile import load_terrain
 from server.probe_room import ProbeRoom
 
 
@@ -80,6 +83,11 @@ class ProbeService:
             if not self.capacity_profile:
                 raise ValueError('capacity_chain requires bomb_capacity')
             self.capacity_chains = ClearCellChains(profile.data['capacity_chain'], profile.frames)
+        self.terrain = None
+        if 'bomb_terrain' in profile.data:
+            if set(self.capacity_profile) != {'A', 'B'} or self.capacity_chains:
+                raise ValueError('bomb_terrain requires capacity and excludes capacity_chain')
+            self.terrain = load_terrain(profile.data['bomb_terrain'], profile.frames)
         self.hidden_items = {item['index']: ItemSpec(**item)
                              for item in profile.data.get('hidden_items', [])}
         if len(self.hidden_items) != len(profile.data.get('hidden_items', [])):
@@ -101,7 +109,8 @@ class ProbeService:
                       'limits': 'Fixture auth/roster/rank, loopback-only, two live members/A-B then B-C by accept order; no fullmatch gate.'}
         self.state['policy_sources'] = []
         for filename in ['probe_service.py', 'probe_codec.py', 'probe_room.py', 'round_fence.py',
-                         'item_claims.py', 'udp_round_keys.py', 'chain_capacity.py']:
+                         'item_claims.py', 'udp_round_keys.py', 'chain_capacity.py',
+                         'terrain_model.py', 'terrain_profile.py']:
             path = Path(__file__).with_name(filename)
             self.state['policy_sources'].append({'path': str(path.resolve()),
                                                  'sha256': hashlib.sha256(path.read_bytes()).hexdigest()})
@@ -152,6 +161,9 @@ class ProbeService:
         if self.capacity_profile:
             self.round['bomb_capacity'] = {role: spec['initial']
                                            for role, spec in self.capacity_profile.items()}
+        if self.terrain:
+            self.terrain.begin()
+            self.round['terrain_seed'] = list(self.terrain.flags)
         self.state['policy_events'].append({'op': 'begin', 'generation': self.room.generation,
                                             'key': key, 'monotonic_ns': time.monotonic_ns()})
         for event in self.peers():
@@ -330,6 +342,21 @@ class ProbeService:
                                        else 'conflicting_bomb_serial')
                 request['prior_id'] = prior['id']
                 return
+            terrain_after_place = None
+            if self.terrain:
+                if [values[i] for i in (1, 6, 7, 8, 9, 11, 12)] != [0, 1, 0, 0, 0, 1, 0]:
+                    request['rejected'] = 'bomb_terrain_variant'
+                    return
+                # Preview geometry without taking an ID, serial or reservation.
+                # This serialized owner is the sole allocator between preview
+                # and commit; a successful159 is still required below.
+                terrain_after_place = copy.deepcopy(self.terrain)
+                try:
+                    terrain_after_place.place(Bomb(self.room._wire_id + 1, values[2],
+                                                  values[4], values[5], values[10]))
+                except ValueError:
+                    request['rejected'] = 'bomb_terrain_placement'
+                    return
             if self.capacity_profile:
                 # Default: own job lifetime. Optional pinned clear-cell policy
                 # can release direct secondary reservations after a root blast;
@@ -355,6 +382,8 @@ class ProbeService:
             if self.room.fence.rejection(ticket) is not None:
                 return
             broadcast = self.broadcast('bomb', f'dynamic159-r{self.room.generation}-{ticket.wire_id}', body=payload)
+            if terrain_after_place:
+                self.terrain = terrain_after_place
             for sent in broadcast:
                 sent['fields'] = fields
             own = next(sent for sent in broadcast if sent['role'] == role)
@@ -596,8 +625,36 @@ class ProbeService:
             self.jobs.remove((due, ticket, bomb))
             reason = self.room.fence.rejection(ticket)
             if reason is None and self.room.fence.consume(ticket):
+                terrain_after_blast, terrain_result = None, None
+                if self.terrain:
+                    terrain_after_blast = copy.deepcopy(self.terrain)
+                    terrain_result = terrain_after_blast.blast(bomb['id'])
                 body = codec.pack_fields([1, bomb['id'], 0, 2, 0xFFFFFFFF, 255], [1, 2, 1, 4, 4, 1])
                 bomb['broadcast158'] = self.broadcast('blast', f"blast158-r{bomb['round']}-{bomb['id']}", body=body)
+                if terrain_after_blast:
+                    # No terrain/release commit for a failed/partial broadcast.
+                    # The existing transport exception still surfaces; this is
+                    # not whole-service recovery or rollback of the fence.
+                    self.terrain = terrain_after_blast
+                    bomb['terrain_blast'] = {
+                        'source': 'design', 'generation': self.room.generation,
+                        'processed': list(terrain_result.processed),
+                        'cleared': [list(cell) for cell in terrain_result.cleared],
+                        'before_flags': list(terrain_result.before),
+                        'after_flags': list(terrain_result.after),
+                        'committed_ns': time.monotonic_ns()}
+                    self.round['terrain_flags'] = list(self.terrain.flags)
+                    for _, other_ticket, other in self.jobs:
+                        if (other['id'] in terrain_result.processed
+                                and other['round'] == self.room.generation
+                                and self.room.fence.rejection(other_ticket) is None):
+                            other['capacity_release'] = {
+                                'root_id': bomb['id'], 'generation': self.room.generation,
+                                'monotonic_ns': time.monotonic_ns(), 'source': 'design',
+                                'policy': 'pinned_simple_terrain_cascade'}
+                            self.state['policy_events'].append({
+                                'op': 'terrain_capacity_release', 'wire_id': other['id'],
+                                **other['capacity_release']})
                 if self.capacity_chains and not bomb.get('capacity_release'):
                     pending = [other for _, pending_ticket, other in self.jobs
                                if other['round'] == self.room.generation

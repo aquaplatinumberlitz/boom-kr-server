@@ -29,13 +29,13 @@ runtime nào có nguồn, còn thiếu gì và phép kiểm nào giải quyết.
 evidence/hash và câu hỏi; [PLAN](docs/PLAN.md#current-order) giữ duy nhất thứ tự công việc.
 Đây là scope đường bootstrap → login → sảnh → phòng → Battle → kết quả/reset, không kiểm kê toàn client.
 
-CP093 có model terrain ngoại tuyến khớp38 callback native đã lưu: processed IDs, box-delta và195
-flags/reset của CP092. [Contract/giới hạn](docs/PROTOCOL.md#terrain-shadow),
-[nguồn/kiểm](docs/evidence/terrain-shadow/README.md). Model là candidate, service vẫn dùng clear-cells
-CP089; chưa nghiệm thu policy terrain mới/fullmatch/K6a/LAN/Internet.
+CP094 tích hợp optional terrain policy và đo hai vòng mới:14native118/159,12callback158, toàn195
+flags/processed IDs khớp dự đoán service. Chain ngoài whitelist cũ nhận thêm hai request native trước
+hạn secondary mỗi vòng. [Contract/giới hạn](docs/PROTOCOL.md#terrain-policy),
+[recipe/hash](docs/evidence/terrain-policy/README.md). Chưa fullmatch/K6a/LAN/Internet/genericmap.
 
-CP092 đã merge [PR145](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/145) tại `cac815d`.
-CP093 tự kiểm/chờ PR; review độc lập [waived](docs/evidence/checkpoints/review-waiver.json).
+CP093 đã merge [PR147](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/147) tại `446b7cb`.
+CP094 tự kiểm/chờ PR; review độc lập [waived](docs/evidence/checkpoints/review-waiver.json).
 Audit **AUD027/CP092**, periodic kế **CP096**.
 [Yêu cầu chủ dự án](docs/evidence/owner-directives/continuous-work.json): tiếp tục ngay việc kế trong
 PLAN sau mỗi checkpoint/commit/PR, không tự dừng/chờ nhắc.

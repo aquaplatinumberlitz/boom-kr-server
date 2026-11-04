@@ -47,6 +47,7 @@ class PickupRoundKeyTests(unittest.TestCase):
         service.hidden_items = {}
         service.capacity_profile = {}
         service.capacity_chains = None
+        service.terrain = None
         service.room = ProbeRoom([ItemSpec(17, 4, 3, 2)])
         service.room.begin()
         service.room.finish()
