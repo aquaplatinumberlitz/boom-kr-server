@@ -54,7 +54,7 @@ chỉ chấp nhận bytes lịch sử khớp size/SHA chính xác từ Git và b
 Code/raw/local/binary vẫn so đúng file hiện tại. Negative test kiểm cả tìm đúng bytes cũ và từ chối
 hash không tồn tại; không sửa lịch sử checkpoint để cập nhật canonical docs.
 
-`terrain_shadow.py`: model ngoại tuyến candidate cho profile map tường/box/floor rõ ràng và simple
+`terrain_shadow.py`: facade offline cho purekernel `server/terrain_model.py`, model candidate cho profile map tường/box/floor rõ ràng và simple
 bombpower≤2. Không service/socket/report; dùng API `TerrainShadow`/`Bomb` để so retained native
 callbacks/flag snapshots trước khi tích hợp policy. MapSHA là metadata, caller phải kiểm actualbytes.
 [Contract/giới hạn](../docs/PROTOCOL.md#terrain-shadow),

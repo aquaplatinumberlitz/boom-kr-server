@@ -1,6 +1,6 @@
 # KR 00967 — contract tương thích client gốc
 
-Revision kr-legacy-contract-r1; cập nhật04/11/2026 JST (CP093).
+Revision kr-legacy-contract-r1; cập nhật05/11/2026 JST (CP094).
 **Contract có bằng chứng từng phần; chưa nghiệm thu full codec K2**.
 Lộ trình và thứ tự task chỉ giữ ở [REWRITE_PLAN — KRE](PLAN.md).
 Đây là contract của repo server KR. ADR0009 của bản viết lại là nguồn lịch sử để so sánh;
@@ -3345,3 +3345,56 @@ oldcallback không đụngnewbomb/reset; tests không lànative oracle.
 integration mới với input ngoài CP089clearcells; modelmatcholdraw không thay runtime production.
 Genericclass/map/direction/moving/overlapvariants/recursiveorder/sharedblockers/fullvalidator/auth/
 codec/authority/fullreset/vanilla/LANInternet/fullmatch/K5/K6a mở. AUD027/nextCP096.
+
+
+<a id="terrain-policy"></a>
+### Optional pinned terrain/capacity policy và native integration — CP094
+
+[Recipe/source/hash/partial](evidence/terrain-policy/README.md). **Implementation: design**,
+**compatibility:kr_runtime/confirmed hẹp** currentmodifiedWine/A-B/ExVillage01/power1..2. Purekernel
+CP093 chuyển về [server/terrain_model.py](../server/terrain_model.py), toolterrain_shadow giữfacade/API;
+body chỉđổidocstring và432oldnativecomparisons vẫnpass. Khônglegacycodecopy hoặc newnativebody.
+
+Optional `bomb_terrain` yêu cầu capacityprofile **chỉA/B**, excludes `capacity_chain`. Khai width15,
+height13,195kinds0floor/1solid/2box, maxpower1..2; `seed_sha256` kiểmbytes(kinds), `fixtures.map/start`
+SHA khớprawactualframes. `map_sha256` là sourceprovenancemetadata đãkiểmactualpack tạiprep, **không**
+signature/assetattestation hayserviceđọcpack. Absentmetadata giữCP089/defaultbehavior; oldprofile không
+migrate. Invalidconfig failbeforeselector; Startresetworld/seed/pendingseenIDs vàtrackedcapacity.
+
+Currentkey/serialduplicate giữlýdocũ; known118variant `[field1,6,7,8,9,11,12]=[0,1,0,0,0,1,0]`,
+ownerboundslot/currentpower1..2/insidefloor/nooverlap mớiqua. Reject `bomb_terrain_variant` hoặc
+`bomb_terrain_placement` **trướcID/job/serialreservation**, rồicurrentownerquota nhưCP087. Khôngcheck
+nativeactorlocation/auth/distance/tấtcảcharacter/mode. Previewworldplace trêncopy, commitpendingterrain
+chỉ sau successful159 broadcast; partialsendvẫnraise, existingID/serial trước159 khôngrollback.
+
+Rootdeadline: previewcascade/currentterrain theoacceptedgeometry trêncopy trước158, chỉcommitflags/
+processedpending/capacity_release sau broadcast158thànhcông. `terrain_blast` logsource/design/generation/
+processed/cleared/before-after195flags/commit_ns. Secondaryprocessed được bỏquota, **giữjob/ticket/
+own158deadline**; modelpendingkhôngcònsecondary nên ownlater khôngghostchainnewbomb. Fencestalejobs
+khôngchạmworldvòngmới; currentFinish/Startreset giữ. Failed158 khôngcommitterrain/release, nhưngjob/
+fence đãretire/consume trướcbroadcast theoarchitecturecũ; chưa whole-service transaction/recovery.
+Không142reportworldoracle: blockreport ngoàiexistinghiddencatalog vẫn logreject, worldupdate từpolicyroot.
+
+113server tests (8ca policy mới) cùng4kernelconstraints, atomicreject/profilepins/owner/quota/currentkey/
+duplicate/cell/overlap/power/oldsecondary/newround/reset/failed159and158commitboundaries; sourceclock
+fixturefirstfailure giữriêng. FirstnewWine12entities nhưng controllerindex==ID bịsai saujobfence vàR1
+extra118 sausecondarydeadline, **partial**. Repeatlean giữproduction/profile/input/delay/fuse6, bỏknown
+highfrequencytile/rayprobes, nối actualGEN_LOOKUPwireID→callbackindex→END. Không sửaraw đểmakepass.
+
+Finaltwo-cycle `lean`: mỗi vòng7actualnative118/159, IDs1..7/8..14, keys12345/6. Rootnormal3,3→B3,5/
+A4,3; lowerpair(9,3)/(9,5) cáchinput2s. Lowerroot4/11 chain5/12 **ngoàioldclearcells**;
+AthoátUp/freshfeedback vàactualextras serial112/140 được nhận budget[] rồi[6]/[13], request thứhai
+trướcsecondaryown158 **1,631533938s/1,400993019s**, bothviewactualwriters/159nonzero/full39.
+ExtraR1cells(3,5),(3,3),R2(3,5),(3,2) theoactual118; oldbox3,2đãclear nênplacementnhận.
+
+14nativeentities nhưng **12full15813callbacks/view**, không14lầnnổ: root6 process6,7; root13 chỉ13
+(vìactual14ở3,2 ngoài tầm2 từ3,5). Ownjobs7/14 bị `round_closed`, no158/terraincommit; ID14 chưa
+nativeprocess trướcreturndisposal, khôngbịtôthànhsuccess. Serverpredictedsets vàall195before/afterflags/
+boxdeltas khớp52nativephase snapshots; seed/reset cảhai vòng, native121clock175302/1803/roomrefresh2,
+no controller/service/probeerrors. 136relations/10244copiedgetters/10140addresschecks/1182actorsecure;
+model/helperemulation/native/runtime/sourceboundary tách riêng. Chưa allreset/wholematch/gate.
+
+Scopedmodelchoicesimmutablecascade/firstbombstop/FIFO/directrays stillcandidate beyondmeasuredinputs.
+[PLAN](PLAN.md#current-order) tiếp actualboxgiữa2bomb đểtestno-sameblasttunnel/laterpathchange, không
+quétallclient/map hoặcportVNnumeric. Genericmap/template/direction/moving/recursiveorder/auth/codec/
+fullvalidator/authority/vanilla/LANInternet/fullmatch/K5/K6a cònmở; AUD027/nextCP096.
