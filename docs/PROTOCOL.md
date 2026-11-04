@@ -1,6 +1,6 @@
 # KR 00967 — contract tương thích client gốc
 
-Revision kr-legacy-contract-r1; cập nhật04/11/2026 JST (CP091).
+Revision kr-legacy-contract-r1; cập nhật04/11/2026 JST (CP092).
 **Contract có bằng chứng từng phần; chưa nghiệm thu full codec K2**.
 Lộ trình và thứ tự task chỉ giữ ở [REWRITE_PLAN — KRE](PLAN.md).
 Đây là contract của repo server KR. ADR0009 của bản viết lại là nguồn lịch sử để so sánh;
@@ -3226,8 +3226,8 @@ không chứng minh flamevisual/damage/fullclass behavior từ return0 này.
 
 Cả80E9F9B0queries/view đều **null**, EA1230 đều0, khônghit các explicitstopbranches E9F220 trongrun.
 Đây là absence có boundary, không bác nhà/staticblocker; boxes nằm ở đường/set khác. Không có
-nonnull objectcontext để nối TileInfo72→runtime template/flag. House/directional flags/other sets và
-mutable terrain sauboxbreak vẫnunknown. PLAN tiếp native root sau để tiếp cận house phía trên.
+nonnull objectcontext để nối TileInfo72→runtime template/flag. Tại CP090 house/directional flags/other sets và mutable terrain sauboxbreak chưa đo;
+CP091 đã đo house/settransition, CP092 đo finiteflags/reset. Context/direction template khác vẫnunknown.
 
 5actual118/159nonzero/full39 và5full15813/errors0, rootprocess1,2,3/newroot4,5/ownlaternoduplicate,
 121clock175full302/180full3/roomrefresh một lần. 156targetrelations và secure/getter emulation kiểmriêng;
@@ -3265,6 +3265,48 @@ EA1230zero/noexplicitE9F220stopbranches; không có context/template/directionfl
 và securegetter tách với runtime; không mới two-cycle/fullmatchgate. Verifier đầu đoánstate1owncell
 bịStopIteration; correctedactualsamecallbackset0/caller/lineorder giữraw/strictactualhouse/new159.
 
-[PLAN](PLAN.md#current-order) tiếp storage/snapshot map+1D54/initial→postblast→Start reset để phục vụ
+Tại CP091 bước tiếp là storage/snapshot (CP092 đã đo bên dưới); [PLAN](PLAN.md#current-order) giữ việc hiện hành để phục vụ
 terrain/release ngoài whitelist. Chưa mapwide/otherclasses/recursive/moving/reportfreshness/auth/
 fullvalidator/fullcodec/authority/allreset/vanilla/LANInternet/fullmatch/K5/K6a; AUD026/nextCP092.
+
+
+<a id="map-flags-snapshot"></a>
+### Native map+1D54 flags và hai vòng reset — CP092
+
+[Recipe/correction/hash/audit](evidence/map-flags/README.md). **kr_static/confirmed storage hẹp**,
+**kr_runtime/confirmed finite snapshot** trên currentmodifiedWine/ExVillage01/A-B. Production CP089
+không đổi. Reuse map195cells/TileInfo/classdata CP090 và CP091 house/settransition; protectedgetter/
+checksum đã có, không RE lại cipher/codec. ED1350 trả `*(container)+12*index` (không boundscheck trong
+helper này). EA0B10 dùng map+1D54→ED1350→57A870→52A350; mỗi slot12byte là protectedwrapper.
+
+Clockreceiver E13490 **là container khác CPlayMap**; E13290 đọc field+1DF06C để lấy actualmap.
+First44snapshots trên wrongreceiver đềuchecksumfail/partial, originalrun vẫn hai nativecycles;
+không gọi đây là flag/resetfailure hoặc lấy fallback guessedpointer. Newrun dùngsource-backedfield,
+actual15×13/checksum/value0or1 rồi chụp195slots. Nativequery receiver/index và observedwrapperbind
+khớpmap/array+12*index; clockmap không suy từ process hoặc tên asset. Không gọi hàm game/mutate state.
+
+Final `fixed`: **44snapshots** = mỗi view22 (clock vàbefore/after5native158 mỗi vòng),195flags/mốc.
+149seedones =126staticBox +23House,46obj−1clear trên **đúng map này**; toàn195values giống staticobj
+presence tại cảhai clock. Sau root1/6 giảm149→144 (5Box), sau newroot4/9 giảm144→140 (4Box), later
+ownsecondary callbacks không đổi thêm. Vòng1 thirdA(5,3) nên box(5,2) đổi; vòng2 thirdA(4,3) nênbox
+(4,2) đổi, giữactual118geometry; các boxdeltakhác khớpcảhai view. House flags giữ1, clear không đổi.
+Startvòng2 khôi phục **toàn195seedvalues**, không chỉ vài ô; không là mọiresetvariant/map/gamemode.
+
+Snapshotraw pinpointer/wrapper/cipherdata/phase/begin-end_ns/sourceSHA; lấybuffer finite hiện hành,
+không biết containercapacity/allocationlength chỉ từ ED1350. Các query chạy trong callback được kiểm
+thuộc tập giá trị snapshotbefore/after, **không** tạo timestamp giả như đồngthờiquerry. Actual75queries/
+55wrapperbinds mỗi view: bindcoveragepartial vì GDBfeedbackignore dùngmutable `$bpnum` nay làprobe
+thêm cuối. Giữ marker thiếu, chỉ join observedbind→nextquery; không đổi raw để ép1:1. Địa chỉ toàn195
+được kiểm bằng copiednativeED1350 model riêng, không giả mọi nativebind đều đãquan sát.
+
+800targetrelations; copied52A350 **8668getterchecks** vàED1350 **8580addresschecks** (44×197/195)
+là emulation trên runtimebytes, counter/rekeymodelreset không làm thayclientWine. 1152actorsecure
+checks riêng. Hai nativecycles10actual118/159nonzero/full39,10full15813/errors0,121clock175302/1803/
+roomrefresh hai lần, khôngcontroller/service/probeerrors; no wholematch/K5/K6a proof. Partial first
+vàmetadata/marker verifierfailures giữ đầyđủ ởevidence, không sửa checkpoint trước.
+
+**Chưa implementation terrain mới.** Mapflag là nativequeryinput thực tế trong cađo, chưa servergốc
+worldauthority hoặc luật mọi class/template/direction. Servertracking phải explicitdesign/profilepin,
+model so actualdeltas/chainorder trước tích hợp, không nhận142 nhưepoch/auth/worldoracle.
+[PLAN](PLAN.md#current-order) giữ thứ tự, AUD027qua092/nextCP096. Genericmap/moving/recursive/fullpool/
+cell-distance-auth/fullvalidator/fullcodec/authority/allreset/vanilla/LANInternet/fullmatch/K5/K6a mở.

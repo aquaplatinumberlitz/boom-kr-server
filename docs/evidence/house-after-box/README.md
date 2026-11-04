@@ -3,7 +3,7 @@
 KRE-054/[issue142](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/142), baseline
 CP090/[PR141](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/141)
 `c142c857d913fc205ce3b4ca4db0274626d2394a`. Codex solo/tự kiểm,
-[review waived](../checkpoints/review-waiver.json), chờ PR. Contract/limits duy nhất ở
+[review waived](../checkpoints/review-waiver.json), đã merge [PR143](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/143) tại `c3d74ff`. Contract/limits duy nhất ở
 [PROTOCOL](../../PROTOCOL.md#house-after-box), gap ở [RESEARCH](../../RESEARCH.md#gap-blast-block-chain),
 thứ tự ở [PLAN](../../PLAN.md#current-order). Raw: `local/research/codex/house-after-box-r1/`.
 
@@ -38,5 +38,5 @@ reuseunchanged, docs/catalog7/artifacts/localhistory/diff theo checkpoint.
 
 Runtimecopye9bb47…/static660447…/modOa08950… vàmapaeb57ffd… giữ identityCP090; không newnativebody.
 Chưa storage/fullmap/setclasslaw/otherdirection/moving/recursive/reportfreshness/auth/validator/
-codec/authority/fullreset/vanilla/LANInternet/fullmatch/K5/K6a. PLAN tiếp bounded1D54snapshot/reset,
-CP092phảiaudit, AUD026qua088counterkhôngreset. ReleasepolicyCP089 chưa mở rộng.
+codec/authority/fullreset/vanilla/LANInternet/fullmatch/K5/K6a. Bước tạimốc làbounded1D54snapshot/reset;
+[CP092](../map-flags/README.md) đã đo/auditAUD027, [PLAN](../../PLAN.md#current-order) giữ việc hiện hành, nextCP096. ReleasepolicyCP089 chưa mở rộng.
