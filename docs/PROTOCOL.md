@@ -1,6 +1,6 @@
 # KR 00967 — contract tương thích client gốc
 
-Revision kr-legacy-contract-r1; cập nhật04/11/2026 JST (CP092).
+Revision kr-legacy-contract-r1; cập nhật04/11/2026 JST (CP093).
 **Contract có bằng chứng từng phần; chưa nghiệm thu full codec K2**.
 Lộ trình và thứ tự task chỉ giữ ở [REWRITE_PLAN — KRE](PLAN.md).
 Đây là contract của repo server KR. ADR0009 của bản viết lại là nguồn lịch sử để so sánh;
@@ -3310,3 +3310,38 @@ worldauthority hoặc luật mọi class/template/direction. Servertracking ph�
 model so actualdeltas/chainorder trước tích hợp, không nhận142 nhưepoch/auth/worldoracle.
 [PLAN](PLAN.md#current-order) giữ thứ tự, AUD027qua092/nextCP096. Genericmap/moving/recursive/fullpool/
 cell-distance-auth/fullvalidator/fullcodec/authority/allreset/vanilla/LANInternet/fullmatch/K5/K6a mở.
+
+
+<a id="terrain-shadow"></a>
+### Offline terrain candidate so native oracles đã lưu — CP093
+
+[Source/reuse/hash và phép so](evidence/terrain-shadow/README.md). **design/candidate**, kiểm bằng
+**emulation/offline model**, không native runtime mới/productionintegration/recoveredserverlaw.
+[tools/terrain_shadow.py](../tools/terrain_shadow.py) độc lập vớiservice/legacy, không socket hoặc report.
+Reuse CP090targetmap/TileInfo IDs, CP090–092nativecallbacks/queryendpoint và44snapshotsCP092 làm
+**expectedoutputs độc lập**; không dùng model tự sinhexpected đểxácnhậnbehavior.
+
+Model khai profilewidth/height/grid kinds0floor/1solid/2box/mapSHA256/power≤2. Externalcomparison
+kiểmactualmapbytes SHA, rawgrid/classes/sourcehashpins; class khôngkhai báo fail rõ. mapSHA trong
+class là metadata, không tự đọcfile/chứngthựcmap. Place nhận Bomb(id,owner,row,column,power), rejects
+unknown/outside/overlap/solid/currentseenID trước mutation; chỉowner0/1/current simplegeometry.
+Không model auth/capacity/distance hoặcmọi118variants; adapteractualfieldcheck boundedknownvalues.
+
+Khi root hiện hànhblast, bốn tia tới range/power, immutableterrain **trong cả cascade**, gặp soliddừng,
+boxdừng+ghiđểclear sau; firstoccupiedbomb dừng tia+queuechain. FIFO/directionorder/firstbombstop và
+terrainimmutable là **model choices**, chưa universalnativeorderlaw/sharedblocker/chainvariants.
+ProcessedIDs loại pending; latercallback ID đãprocess no-op, Start resetseed/pending/seenIDs. Không
+suy mọi placement/chain đều đúng từcase đãmatch, không mở serverterrain tracking ởCP này.
+
+Phépso432relations/38nativecallbacks từ CP0905callbacks×2view, CP0914×2, CP09210×2; rootdata từ
+actualaccepted118/159 geometry, expectedprocessedIDs từnativepointer/callbackjoins. Tất cảactual159
+phải nonzero/full39. NativeEA0B10query trongcallback được soendpointsetbefore/after, không fake
+exacttime. CP092actual195before+195afterflags/callback vàboxdelta/resetseed khớp; CP091newroot2,3
+trênoldboxclear→house1,3stop cũng khớp. Cùngraw có sẵn, khôngnewWine/nativeRE cho phầnđãgiải.
+4testconstraints kiểm atomicreject/unknownprofile, boxstoptrongcascade→laterblastqua, solidhold,
+oldcallback không đụngnewbomb/reset; tests không lànative oracle.
+
+**Chưa tích hợp service.** [PLAN](PLAN.md#current-order) tiếp optionalpinnedterrain/guards rồi native
+integration mới với input ngoài CP089clearcells; modelmatcholdraw không thay runtime production.
+Genericclass/map/direction/moving/overlapvariants/recursiveorder/sharedblockers/fullvalidator/auth/
+codec/authority/fullreset/vanilla/LANInternet/fullmatch/K5/K6a mở. AUD027/nextCP096.
