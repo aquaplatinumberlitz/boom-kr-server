@@ -1,7 +1,7 @@
 {
   "schema": "kre-feature-index-v1",
   "build": "KR00967",
-  "as_of": "2026-11-05 CP097",
+  "as_of": "2026-11-05 CP098",
   "sources": {
     "plan": "docs/PLAN.md",
     "contract": "docs/PROTOCOL.md",
@@ -1154,7 +1154,8 @@
           "docs/evidence/peer-duo/README.md",
           "docs/evidence/probe-service/README.md",
           "docs/evidence/current-pair-round/README.md",
-          "docs/evidence/current-udp-causality/README.md"
+          "docs/evidence/current-udp-causality/README.md",
+          "docs/evidence/current-peer-targets/README.md"
         ]
       },
       "coverage": {
@@ -1188,7 +1189,8 @@
             "refs": [
               "docs/evidence/peer-duo/README.md",
               "docs/evidence/current-pair-round/README.md",
-              "docs/evidence/current-udp-causality/README.md"
+              "docs/evidence/current-udp-causality/README.md",
+              "docs/evidence/current-peer-targets/README.md"
             ]
           },
           "windows_original": {
@@ -1218,7 +1220,8 @@
           "refs": [
             "docs/evidence/probe-service/README.md",
             "docs/evidence/current-pair-round/README.md",
-            "docs/evidence/current-udp-causality/README.md"
+            "docs/evidence/current-udp-causality/README.md",
+            "docs/evidence/current-peer-targets/README.md"
           ]
         },
         "gate": {
@@ -1966,7 +1969,8 @@
           "docs/evidence/current-tcp-replay/README.md",
           "docs/evidence/rejoin-battle-cycles/README.md",
           "docs/evidence/tcp-guard-cycles/README.md",
-          "docs/evidence/terrain-tcp-guard-cycles/README.md"
+          "docs/evidence/terrain-tcp-guard-cycles/README.md",
+          "docs/evidence/current-peer-targets/README.md"
         ]
       },
       "coverage": {
@@ -2003,7 +2007,8 @@
               "docs/evidence/report127-freshness/README.md",
               "docs/evidence/rejoin-battle-cycles/README.md",
               "docs/evidence/tcp-guard-cycles/README.md",
-              "docs/evidence/terrain-tcp-guard-cycles/README.md"
+              "docs/evidence/terrain-tcp-guard-cycles/README.md",
+              "docs/evidence/current-peer-targets/README.md"
             ]
           },
           "windows_original": {
@@ -2038,7 +2043,8 @@
             "docs/PROTOCOL.md#current-tcp-replay",
             "docs/evidence/rejoin-battle-cycles/README.md",
             "docs/evidence/tcp-guard-cycles/README.md",
-            "docs/evidence/terrain-tcp-guard-cycles/README.md"
+            "docs/evidence/terrain-tcp-guard-cycles/README.md",
+            "docs/evidence/current-peer-targets/README.md"
           ]
         },
         "gate": {
@@ -2531,7 +2537,8 @@
           "docs/evidence/mixed-cycles/README.md",
           "docs/evidence/all-dead-result/README.md",
           "docs/evidence/three-bomb-chain/README.md",
-          "docs/evidence/terrain-tcp-guard-cycles/README.md"
+          "docs/evidence/terrain-tcp-guard-cycles/README.md",
+          "docs/evidence/current-peer-targets/README.md"
         ]
       },
       "coverage": {
@@ -2568,7 +2575,8 @@
               "docs/evidence/mixed-cycles/README.md",
               "docs/evidence/all-dead-result/README.md",
               "docs/evidence/three-bomb-chain/README.md",
-              "docs/evidence/terrain-tcp-guard-cycles/README.md"
+              "docs/evidence/terrain-tcp-guard-cycles/README.md",
+              "docs/evidence/current-peer-targets/README.md"
             ]
           },
           "windows_original": {
@@ -2604,7 +2612,8 @@
             "docs/evidence/mixed-cycles/README.md",
             "docs/evidence/all-dead-result/README.md",
             "docs/evidence/three-bomb-chain/README.md",
-            "docs/evidence/terrain-tcp-guard-cycles/README.md"
+            "docs/evidence/terrain-tcp-guard-cycles/README.md",
+            "docs/evidence/current-peer-targets/README.md"
           ]
         },
         "gate": {
@@ -2655,7 +2664,8 @@
           "docs/evidence/chain-capacity-release/README.md",
           "docs/evidence/map-flags/README.md",
           "docs/evidence/terrain-policy/README.md",
-          "docs/evidence/terrain-tcp-guard-cycles/README.md"
+          "docs/evidence/terrain-tcp-guard-cycles/README.md",
+          "docs/evidence/current-peer-targets/README.md"
         ]
       },
       "coverage": {
@@ -2708,7 +2718,8 @@
               "docs/evidence/chain-capacity-release/README.md",
               "docs/evidence/map-flags/README.md",
               "docs/evidence/terrain-policy/README.md",
-              "docs/evidence/terrain-tcp-guard-cycles/README.md"
+              "docs/evidence/terrain-tcp-guard-cycles/README.md",
+              "docs/evidence/current-peer-targets/README.md"
             ]
           },
           "windows_original": {
@@ -2766,7 +2777,8 @@
             "docs/evidence/capacity-reservations/README.md",
             "docs/evidence/chain-capacity-release/README.md",
             "docs/evidence/terrain-policy/README.md",
-            "docs/evidence/terrain-tcp-guard-cycles/README.md"
+            "docs/evidence/terrain-tcp-guard-cycles/README.md",
+            "docs/evidence/current-peer-targets/README.md"
           ]
         },
         "gate": {
@@ -2976,7 +2988,8 @@
           "docs/evidence/terrain-policy/README.md",
           "docs/evidence/opposite-box-control/README.md",
           "docs/evidence/adjacent-owner-control/README.md",
-          "docs/evidence/terrain-tcp-guard-cycles/README.md"
+          "docs/evidence/terrain-tcp-guard-cycles/README.md",
+          "docs/evidence/current-peer-targets/README.md"
         ]
       },
       "coverage": {
@@ -3050,7 +3063,8 @@
               "docs/evidence/terrain-policy/README.md",
               "docs/evidence/opposite-box-control/README.md",
               "docs/evidence/adjacent-owner-control/README.md",
-              "docs/evidence/terrain-tcp-guard-cycles/README.md"
+              "docs/evidence/terrain-tcp-guard-cycles/README.md",
+              "docs/evidence/current-peer-targets/README.md"
             ]
           },
           "windows_original": {
@@ -3157,7 +3171,8 @@
             "docs/evidence/terrain-policy/README.md",
             "docs/evidence/opposite-box-control/README.md",
             "docs/evidence/adjacent-owner-control/README.md",
-            "docs/evidence/terrain-tcp-guard-cycles/README.md"
+            "docs/evidence/terrain-tcp-guard-cycles/README.md",
+            "docs/evidence/current-peer-targets/README.md"
           ]
         },
         "gate": {

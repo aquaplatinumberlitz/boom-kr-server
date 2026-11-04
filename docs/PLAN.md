@@ -1,7 +1,7 @@
 # Kế hoạch server giả lập KR 00967
 
 Nguồn chuẩn của project `boom-kr-server`; bản nhập từ plan đã được dsh1/dsh2 review tại `1eee46d`.
-Cập nhật05/11 JST (CP097): [terrain/TCPguards/hai chu kỳ](PROTOCOL.md#terrain-tcp-guard-cycles), CP096/PR153 đã merge; AUD028/nextCP100.
+Cập nhật05/11 JST (CP098): [native UDPtargets](PROTOCOL.md#current-peer-targets), CP097/PR155 đã merge; tiếp trap/report/rank boundary, AUD028/nextCP100.
 
 
 ### Mục tiêu, baseline và phạm vi
@@ -37,13 +37,13 @@ với client Rust không chứng minh có thể điều khiển client KR bằng
 
 ### Tiến độ hiện hành theo bằng chứng
 
-| Task/mốc | Trạng thái tại CP097 | Nguồn chuẩn |
+| Task/mốc | Trạng thái tại CP098 | Nguồn chuẩn |
 |---|---|---|
 | KRE-004/issue6 | Đã review/merge PR7 và đóng issue:recipe r1 đến local accept;không phải full K1 | [Wine r1](evidence/wine/README.md) |
 | Bootstrap reply | PR8 đã merge;debugger ProcessPatchreturn1,không ép success | [bootstrap evidence](evidence/bootstrap-wire/README.md) |
 | KRE-005a/issue9,R2 | PR10 đã merge:3 cold start cửa sổ/second accept;issue9 còn mở | [R2 evidence](evidence/wine-r2/README.md) |
 | WCP hai-reply | Run CP001 là lịch sử chưa C→S; CP006 đã đo request đầu trên copy tham số hóa | [PROTOCOL](PROTOCOL.md#wcp),[WCP evidence](evidence/wcp/README.md) |
-| KRE-005b/issue14 | CP006–096 đã merge; CP097 currentterrain/TCPguards/hai chu kỳ tự kiểm/chờ PR; fullround/authority/full auth còn mở | [Q-023](RESEARCH.md#q-023), [service](evidence/probe-service/README.md) |
+| KRE-005b/issue14 | CP006–097 đã merge; CP098 nativeUDPtargets/two-cycle và R1stateboundary tự kiểm/chờ PR; fullround/authority/full auth còn mở | [Q-023](RESEARCH.md#q-023), [service](evidence/probe-service/README.md) |
 | K0/K1 | Chưa nghiệm thu toàn gate;Windows vanilla/control ownership và các điều kiện còn thiếu giữ mở | Gate dưới,[Q-022](RESEARCH.md) |
 | K2a/K2 | Primitive/WCP, CP057stream native/model và CP058–060authcallback137/135/errors0 đã có; fullcodec/authauthority/reconnect và gate chưa pass | [PROTOCOL](PROTOCOL.md#login-auth),[Q-023](RESEARCH.md#q-023) |
 | K3 | Copy đã vẽUI/đóngnotice, A/B/Cprofile đọc sạch và mộtnamedcachewarm được nhận; identityauthority/toàncache/codec/K3 chưa nghiệm thu | [Contract sảnh](PROTOCOL.md#channel-lobby) |
@@ -60,16 +60,17 @@ KRE-005b/issue14 vẫn mở. Các bước dưới là **thứ tự ưu tiên**, 
 xong checkpoint/commit/PR thì chuyển ngay việc kế tiếp trong thứ tự này, không tự dừng/chờ nhắc.
 Một blocker chỉ kết thúc nhánh đo tương ứng; ghi rõ rồi tiếp việc độc lập có thể làm, không tự đóng gate.
 
-1. **KR-F002/F003/S001 — bằng chứng peer trong cùng run currentservice:**
-   [CP097](PROTOCOL.md#terrain-tcp-guard-cycles) đã ghép currentterrain/12selectedTCPsame-oldguards/
-   hai native resultreset; không lặp map/getter/codec/spawn/quota/box/adjacent hay replaybody đã kiểm.
-   Bước kế: nối **packet movement cụ thể → native apply/actor trước-sau hai chiều** trong currentprofile,
-   rồi giữ đường hai chu kỳ/result/reset đã có. Source-first CP027/045–047E66680/packet13/layout và
-   CP070cut/restore; source/cache đúng build, không quét UDP grammar hoặc lặp phép cut cũ.
-   Chỉ thêm finite probe theo cửa sổ input; lấy body/slot/key/actor pointer/source SHA cùng callback,
-   normal OS input hai phía và trở về vị trí setup bằng feedback đã kiểm. Counter tổng/UDP sendlog/
-   process alive không chứng minh remote apply; không tự mở LAN/Internet/gate.
-   AUD028 quaCP096, periodic tiếpCP100; genericorder/sharedblocker/moving giữunknown nếu chưa là blocker.
+1. **KR-F009/X001/S001 — thứ tự trap/report/rank theo blocker thật:**
+   [CP098](PROTOCOL.md#current-peer-targets) đã đo actualUDP13/key/slot/nativeapply/7BC7C8targets,
+   R1hai chiều changedtargets vàcurrentcoords tiến dần; R2-A-Down chỉ settledsample, không giả fullphase.
+   Cùng run vẫn14entities/11callback/view/48flags/12TCPguards/hairesultreset nhưng R1pre175 Aown56/
+   BviewA0 tại thời điểm nhận175 riêng. Không kết luận persistentdesync hoặc rank sai khi chưa nối thời gian.
+   Bước kế: source-first CP023/029/036/056/085127reportwriter/170/trapstate/resultpolicy/cache, CP098raw.
+   Đo timestamp/actorpointer/statewriter→127subtype/queue/send/front→servicefinish/rankemit→175entry
+   ở cảhai view; trace riêng A17 có phát không/trước hay sau closed. Không ép state0/56, injectreport
+   hay sửa outcome để che blocker. R2UDPwindowmiss chỉ mở khi readinessack cần cho cùng phép đo.
+   Giữ finite/gatedprobes, không lặp fullUDPgrammar/cut/knowncodec/getters/terrain controls.
+   AUD028 quaCP096, periodic tiếpCP100.
 2. **KR-B003/KR-F006 — nợ có giới hạn:** [CP057](PROTOCOL.md#codec-stream-boundaries) đã đo stream/
    seq/bounds trong model, không mở lại76split hoặc cấp buffer lớn chỉ để vượt allocationguardFFFFFFFF.
    Full modes/prefix guard/live reset, distance/auth/transport/kim-cứu của reportguard giữ trong RESEARCH;

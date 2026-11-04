@@ -29,14 +29,15 @@ runtime nào có nguồn, còn thiếu gì và phép kiểm nào giải quyết.
 evidence/hash và câu hỏi; [PLAN](docs/PLAN.md#current-order) giữ duy nhất thứ tự công việc.
 Đây là scope đường bootstrap → login → sảnh → phòng → Battle → kết quả/reset, không kiểm kê toàn client.
 
-CP097 đã ghép terrain policy và 12 replay TCP cùng/cũ trong một run hai chu kỳ: tất cả replay bị
-loại đúng guard, không thêm ID/165/170. Hai client có14entity,11callback158/view và48snapshot195flags
-khớp service; jobs7/13/14 bị round_closed trước deadline. Bomb/Fire và trạng thái trước result/reset
-đã kiểm cùng run. [Contract/giới hạn](docs/PROTOCOL.md#terrain-tcp-guard-cycles),
-[recipe/hash](docs/evidence/terrain-tcp-guard-cycles/README.md). Chưa fullmatch/K6a/LAN/Internet.
+CP098 đã nối packet UDP cụ thể tới native keycompare/apply và tọa độ đích của actor cả hai chiều
+ở vòng1. Native cập nhật `+7BC/+7C8`; tọa độ hiện tại `+4C/+58` có thể tiến dần sau callback.
+Run vẫn có14entity/11callback/view/48snapshot terrain và12replay TCP guards qua hai result/reset.
+Điểm chặn mới: R1pre175 A tự thấy state56 nhưng peer thấy0 tại hai mốc nhận175 riêng; chưa có
+thứ tự trap/report/rank đủ để kết luận lệch kéo dài. [Contract](docs/PROTOCOL.md#current-peer-targets),
+[recipe/hash](docs/evidence/current-peer-targets/README.md). Chưa fullmatch/K6a/LAN/Internet.
 
-CP096 đã merge [PR153](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/153) tại `fb3a9a2`.
-CP097 tự kiểm/chờ PR; review độc lập [waived](docs/evidence/checkpoints/review-waiver.json).
+CP097 đã merge [PR155](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/155) tại `3a0e979`.
+CP098 tự kiểm/chờ PR; review độc lập [waived](docs/evidence/checkpoints/review-waiver.json).
 Audit **AUD028/CP096**, periodic kế **CP100**.
 [Yêu cầu chủ dự án](docs/evidence/owner-directives/continuous-work.json): tiếp tục ngay việc kế trong
 PLAN sau mỗi checkpoint/commit/PR, không tự dừng/chờ nhắc.

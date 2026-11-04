@@ -1,6 +1,6 @@
 # KR 00967 — contract tương thích client gốc
 
-Revision kr-legacy-contract-r1; cập nhật05/11/2026 JST (CP097; audit AUD028).
+Revision kr-legacy-contract-r1; cập nhật05/11/2026 JST (CP098; audit AUD028).
 **Contract có bằng chứng từng phần; chưa nghiệm thu full codec K2**.
 Lộ trình và thứ tự task chỉ giữ ở [REWRITE_PLAN — KRE](PLAN.md).
 Đây là contract của repo server KR. ADR0009 của bản viết lại là nguồn lịch sử để so sánh;
@@ -3525,3 +3525,52 @@ originalfinal harnessSHA/policy_source/profile pins khớp file hiện hành. Fu
 location/distance/forgedfreshbody/fullvalidator/genericterrain/allreset/vanilla/LANInternet vẫn mở.
 [PLAN](PLAN.md#current-order) tiếp finite native movementapply hai chiều trong currentrun; không dùng
 pairedsamples hoặc counter tổng thay packet→callback→actor proof. AUD028/nextCP100.
+
+
+<a id="current-peer-targets"></a>
+### Native UDP áp tọa độ đích trên currentservice — CP098
+
+[Nguồn/recipe/hash/corrections](evidence/current-peer-targets/README.md).
+**kr_runtime/confirmed hẹp** currentmodifiedWine/AB/ExVillage01/localstub/packet13selector0. Reuse
+CP027/045–047E66680/key/body/52A350, CP070transport, CP097profile/proxy/two-cycle và CP096neutralinput.
+Không quét grammar; finite internalbreakpoints chỉ bật trong OSinputwindows, tối đa64entry/96ingress
+mỗi phase. NativeAPI13DE7AA capture17byte; payload `[3:-1]` khớp exactnativepacket13 tạiE66680;
+keycompareE667BE/slot/actorpointer và applyE668AD→B4E6F0→E668B2 được nối cùng nativecall.
+
+Run `apply`305,509s có hai currentcycles nhưng assertion “current4C/58 bằng packetargs ngay sau apply”
+bị runtime bác bỏ: state đổi ngay trong một số call, tọa độ tiến dần trong các callback sau. Đây không
+là packet không apply. CP046oldpayloadstate0/delta80snap không thành luật tức thời cho ordinarymovement.
+R1hai chiều có changedstate/nativebody/uniqueingressjoin; R2-A-Down thiếu transition đầu nên ghi partial.
+
+RE tĩnh có mục tiêu đọc thêm B4E6F0 VA`B4E6F0`/RVA`74E6F0`; bytes0x510 khớp static/runtimecopy/modO.
+`B4E9E5…EA04` ghi argsx/y vào protected actor`+7BC/+7C8` qua55FD30; 529C60 wrapper gọi52A350.
+`B4EA14` so `abs(x−currentX)+abs(y−currentY)` với `10×property` đọc từcontrolleractor+584/virtual38.
+Nhánh lớn gọiactorvirtual+74với x/y, semantics/runtime branch lớn chưa đo trong đợt này; nhánh nhỏ có
+state/direction/`+7EC` checks. Không gọi property làspeed/ms, không đặt thời gian hay luật interpolation.
+
+Run `target`302,534s đọc thêm protected7BC/7C8/7EC và actualcomparison; 281relations,168copiednative
+securegetters,20actualingressnativeCRC checks. R1B→A có xarg140/current120, delta20<threshold40,
+`+7BC:120→140` trong call, `+4C` giữ120; R1A→B có yarg229/current224,delta5<threshold50,
+`+7C8:179→229`, `+58` giữ224. Đây là nativearg/branch/targetstorage proof trên cùng actor, không
+chỉ pairedpositions. Có8nonzeroerrorbelowthreshold examples; zero observedlarge/snapbranch.
+Currentcoords tiến dần ở callback sau; nguyên lý/timeconstant/correctiontoànmotion vẫn chưa đủ.
+R2B→A có changedtarget; R2A→B chỉ settledtarget/currentsample, không changedtarget/progress proof.
+
+Cùng run vẫn14native159/11native158/view/48native195flags/processkhớpservice,12same-oldTCPguards
+được từ chối/noextraID165170, hai175/180/refresh. R2secondextra sauownsecondarydeadline0,769238847s:
+CP094earlyadmission inheritedassertion fail được giữ; peerquestion không dùng run này chứng minh
+hai extras đều trước deadline. CP097earlyadmission positive giữ nguồn riêng. Jobs7/13/14round_closed/
+no158/noterraincommit. Không chuyển những callback bịfence thành nativeprocess.
+
+**Blocker quan sát:** R1pre175 AviewA state56 tại(80,159), BviewA state0 cùngtọađộ; Bactorstate1 cảhai.
+R2Astate0/Bstate1/cùngtọađộ. `RANK175_BEGIN` cũ không có monotonicns, mỗi view chụp khi chính nó nhận175,
+không phải snapshots cùngtick. Front/service không có A17/19; B17/19/current+replays đủ. Managerstorage
+rowtypes1/1rank1/2 trướcreturn cảhai vòng/view. VerifierAstate0 fail được giữ; items/storagepass chỉ
+chứng minh BombFire/reset/Bdeath/storage, không consistencyA. Chưa gán persistentdesync, rank sai,
+report bị mất hay nguyên nhân cho observer. [PLAN](PLAN.md#current-order) tiếp nativeAtrap/report/
+servicefinish/rank/175entry chronology; không dùng patch hoặc policy đổi để làm state nhất quán giả.
+
+Earlierapply preparation metadata pin-update failedaftercodecompiled/shelllaunch; sourceboundary ghi
+postlaunch. Targetrepeat code/profile/GDB/prefix/role/sourcepins đã chuẩn bị/kiểm trướclaunch. Không
+binarypackDBsource/statewrite/gamecall. Fullauth/codec/location/distance/authority/fullvalidator/allreset/
+UDPgrammar/reliability/NAT/vanilla/LANInternet/fullmatch/K5/K6a vẫn mở; AUD028/nextCP100.
