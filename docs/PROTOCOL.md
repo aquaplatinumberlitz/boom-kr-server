@@ -1981,7 +1981,7 @@ Giới hạn và phép đo nằm ở link contract; không dùng mỗi vai trò 
 |---|---|---|---|---|---|
 | [Place159](#terrain-policy) | Native Space tạo118 | Native159 tạo/bind entity ở cả view | Role/key/serial/quota + knownvariant/power/floor/nonoverlap theo profile | Service cấp ID/phát159 | Client gửi cell/power; chưa xác thực actorlocation/distance/fullauth, không tự coi field là tin cậy |
 | [Explode158/terrain](#terrain-policy) | Timer6s của profile là emu_choice | Native158/process/chain/mapflags; service dùng bounded terrain model | Model/profile pin/kinds/power≤2/currentgeneration; semantic modelchoices có giới hạn | Service phát158 rồi commit world/release | Peer movement có thể ảnh hưởng contact/report; report142 không làm worldoracle. Original server validator/order vẫnunknown |
-| [Trap/death/result](#result-freshness-guard) | Native local simulation tạo127/subtype | Native170/175/180 nhận effect/UI | Guard key/slot/reportstate/selectedsame-oldbody; optionalcandidate21 sau latestsuccessful158/chưa accepted17/19; firstseen/forgedforward/location vẫn thiếu | Service170/result/return theo policy | Report/body do client gửi; acceptedreport không là authoritative world proof. [Limits](#tcp-guard-cycles) và RESEARCH giữ mở |
+| [Trap/death/result](#result-freshness-guard) | Native local simulation tạo127/subtype | Native170/175/180 nhận effect/UI | Guard key/slot/reportstate/selectedsame-oldbody; optional result freshness/drain/21 sau17 và opposite-peer170 theo [CP102](#drained-result-local-clear)/[CP103](#peer21-ending-order); firstseen/forgedforward/location vẫn thiếu | Service170/result/return theo policy | Report/body do client gửi; acceptedreport không là authoritative world proof. [Limits](#tcp-guard-cycles) và RESEARCH giữ mở |
 
 Gate K5/K6 cần kiểm matrix và đối chứng của hành vi thực sự dùng; từ28/10 Codex tự kiểm theo miễn review của chủ dự án. Có thể giữ unknown về
 server gốc thất lạc nếu policy emulator được chọn `design`, client chấp nhận và ca consistency đạt;
@@ -3531,6 +3531,7 @@ pairedsamples hoặc counter tổng thay packet→callback→actor proof. AUD028
 ### Native UDP áp tọa độ đích trên currentservice — CP098
 
 [Nguồn/recipe/hash/corrections](evidence/current-peer-targets/README.md).
+Snapshot CP098; gap R2 và nhánh distance lớn được bổ sung ở [CP106](#current-movement-cycles), không sửa raw cũ.
 **kr_runtime/confirmed hẹp** currentmodifiedWine/AB/ExVillage01/localstub/packet13selector0. Reuse
 CP027/045–047E66680/key/body/52A350, CP070transport, CP097profile/proxy/two-cycle và CP096neutralinput.
 Không quét grammar; finite internalbreakpoints chỉ bật trong OSinputwindows, tối đa64entry/96ingress
@@ -3569,8 +3570,8 @@ first175send1,596361ms; báo cáo cũ lọcservice_entry đã bỏ frame không 
 [Audit](evidence/checkpoints/audits/AUD029.json). B17/19/current+replays đủ. Managerstorage
 rowtypes1/1rank1/2 trướcreturn cảhai vòng/view. VerifierAstate0 fail được giữ; items/storagepass chỉ
 chứng minh BombFire/reset/Bdeath/storage, không consistencyA. Chưa gán persistentdesync, rank sai,
-report bị mất hay nguyên nhân cho observer. [PLAN](PLAN.md#current-order) tiếp nativeAtrap/report/
-servicefinish/rank/175entry chronology; không dùng patch hoặc policy đổi để làm state nhất quán giả.
+report bị mất hay nguyên nhân cho observer. Bước tại CP098 (lịch sử) là nativeAtrap/report/
+servicefinish/rank/175entry chronology; thứ tự hiện hành chỉ ở [PLAN](PLAN.md#current-order); không dùng patch hoặc policy đổi để làm state nhất quán giả.
 
 Earlierapply preparation metadata pin-update failedaftercodecompiled/shelllaunch; sourceboundary ghi
 postlaunch. Targetrepeat code/profile/GDB/prefix/role/sourcepins đã chuẩn bị/kiểm trướclaunch. Không
@@ -3891,7 +3892,54 @@ refresh,7current158,0errors,cảhaiA3/B1before180. Report34prefixY164 ởpreroll
 285typedpacketmodelcasespreroll và282firstrun làemulationriêng; source/copy/pack/DBkhôngđổi.
 
 Khép exactendingarg/queuegaptrongscope này; CP103entry175numericmismatch khônglàpersistentending
-failure. Khôngđóng#166/K5/K6a từhai onecycle hoặcsameendingfield. Lộtrìnhquaylạicurrenttwo-cycle
-movementtransitionpartial củaCP098 theoPLAN, khôngđào thêmendingvariant khi chưatrigger.
+failure. Khôngđóng#166/K5/K6a từhai onecycle hoặcsameendingfield. Bước tại CP105 là currenttwo-cycle
+movementtransitionpartial củaCP098; [CP106](#current-movement-cycles) đã bổ sung, thứ tự chỉ ởPLAN.
 Fullidentity/auth/codec/authority/fullvalidator/allreset/vanilla/LANInternet/fullmatch còn mở;
 AUD032qua104/next108. No ownACK/newquietdelay/fuse/stateforcing/gamecall/UDPcut trongCP105.
+
+
+<a id="current-movement-cycles"></a>
+### Movement/terrain/ending trong cùng hai vòng hiện hành — CP106
+
+[Recipe/hash/phép kiểm](evidence/current-movement-cycles/README.md); gap và phép đo tiếp ở
+[RESEARCH](RESEARCH.md#gap-peer-movement), thứ tự chỉ ở [PLAN](PLAN.md#current-order).
+**kr_runtime/confirmed hẹp**: modified Wine copy A/B, ExVillage01, local stub/current drained profile.
+Reuse CP098 API13/key/getter/B4E6F0/B4EA14, CP103 fixed-role proxy/route, CP104–105 đúng ending phase.
+Không đọc thân hàm mới, đổi production/profile/timer/packet hoặc ép state. VN chỉ tái dùng khái niệm
+P2P/tách session-membership, không port opcode/layout/offset.
+
+Observer host ghi ack sau sáu breakpoint thực đã bật; controller đợi ack và mẫu live mới ở cảhai view
+trước pulse OS0,25s. Window giữ thêm tối đa3s sau input. Ack không là gói game hoặc đồng bộ gametick.
+
+| Pha | Native apply ở recipient | Unique API join | Target đổi sau input | Current XY qua callback |
+|---|---:|---:|---:|---|
+| R1 A-Down→B |5|5|2| (120,159)→(120,214)→(120,284)→(120,274) |
+| R1 B-Right→A |6|6|2| (120,399)→(200,399) |
+| R2 A-Down→B |4|4|2| (120,159)→(120,204)→(120,344)→(120,284) |
+| R2 B-Right→A |7|7|2| (120,399)→(200,399) |
+
+Mỗi target-change có captured API17byte, payload13/keycompare/slot/args, cùng actor trước/sau và
+protected+7BC/+7C8 bằng args. Đây bổ sung gap R2A của CP098; không suy nguyên nhân gap cũ do observer.
+Có3 nonzero-error dưới threshold mà currentXY chưa đổi ngay và3 lần distance≥threshold currentXY
+bằng args sau call: 44/40, **40/40**, 60/50. Cached static comparison phù hợp; chưa đo riêng callee
+virtual74 hay toàn luật/timeconstant interpolation. Các sample không đơn điệu, không suy đường
+đi/tốc độ chỉ từ hold hoặc các điểm thưa. Getter/CRC emulation và input timestamp giữ nguồn riêng.
+
+Cùng run hai Start/clock/result175/return180/585/refresh:14actual118/159entities, **14actual158/view**,
+60native map snapshots×195 flags khớp service prediction/process/boxdelta/reset seed; không job chưa
+phát158 trong run này. Bốn Bomb/Fire pickups/stat1→2/baselineStart2; 8same/4old TCP replays bị loại,
+không thêm ID/165/170. Đây là integration của bounded policy, không nguyên tắc server gốc.
+
+Hai selected21 thực từ A được gửi prefix6 đến B; native reader6/errors0, gate1/calleeB43320(0,0,-1)
+và56→26 cảhai vòng. CP103 có một gate-skip; distribution đó không áp cố định cho mọi run.
+Entry175 vẫn có inequality; **ở native180 từng view**, A3/B1 và tọa độ khớp cảhai vòng
+(R1 A80,159/B200,159; R2 A80,169/B200,159). Không simultaneous-globaltick/allfields proof hoặc luật
+universal enum/winner. Phép kiểm này bổ sung qualification #166 theo correction CP104–105,
+không sửa những assertionfail/raw lịch sử hoặc dùng same-entry175 làm toàn-ending criterion.
+
+557 movement relations/360copied getters/44actualCRC checks;152integration/247transport/39item/
+60drained/33peerhandler/59ending relations; emulation11.820mapgetters/11.700arrayaddresses riêng.
+Analysis KeyError do nhầm path substitution được giữ và sửa bằng script riêng, không sửa raw/native.
+CP105/PR171 đã merge; CP106 tự kiểm/chờ PR. Fullauth/codec/location/validator/authority/general
+membership/allreset/vanilla/fullmatch/K5/K6a/LANInternet vẫn mở; audit kếCP108. Bước kế cần cho chơi
+là host normal Back khi còn guest live, không lặp EOF hoặc movement đã khép.
