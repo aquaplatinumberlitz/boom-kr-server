@@ -3,7 +3,7 @@
 KRE-050/[issue134](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/134), baseline
 CP086/[PR133](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/133)
 `d9dbadd77fc4b0c96e17216ecd8c1075f3005180`. Codex solo/tự kiểm;
-[review waived](../checkpoints/review-waiver.json), chờ PR.
+[review waived](../checkpoints/review-waiver.json), đã merge [PR135](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/135) tại `93122d6`.
 [Contract/limits](../../PROTOCOL.md#capacity-reservations), [gap](../../RESEARCH.md#gap-bomb-lifetime),
 [thứ tự](../../PLAN.md#current-order). Raw: `local/research/codex/capacity-reservation-r1/`.
 
@@ -16,7 +16,7 @@ Profile metadata thêm `bomb_capacity` Ainitial1maximum10/Binitial2maximum7 đú
 41parentaliases và optionalall-deadalias/floor/raw bytes giữ. AcceptedBombincrement+clamp/reset và beforeID/job
 reservationguard ở [service](../../../server/probe_service.py); absent metadata giữ profilecũ chưa
 có capguard, unsupportedroster failStartbeforekey. Jobretire/fencevalid/currentowner là reservation
-lifetime. Nativeearlychainrelease chưa có trongpolicy, có conservativewindowchưakiểm.
+lifetime. Nativeearlychainrelease chưa có trongpolicy, có conservativewindow chưa kiểm tại CP087; [CP088](../early-chain-window/README.md) đã đo normalrequest bị chặn.
 
 | Run | Phạm vi | run.json SHA256 |
 |---|---|---|
@@ -54,4 +54,4 @@ RVA=VA−400000; no newnativebody/providerconfigchange.
 
 Chỉ chặn measuredserial-onlyvariant bằng optionaldesign. Chưa nativeearlychainrelease/poollaw/
 fullcap/cell/distance/auth/allfreshbody/codec/authority/fullreset/generalprofile/fullmatch/K5/K6a/
-vanilla/LANInternet. PLAN tiếp normalplacements sauearlychain trướcsecondarydeadline, audit CP088.
+vanilla/LANInternet. Bước tại CP087 là normalplacements sauearlychain; [CP088](../early-chain-window/README.md) đã đo. [PLAN](../../PLAN.md#current-order) giữ việc hiện hành, AUD026/nextCP092.

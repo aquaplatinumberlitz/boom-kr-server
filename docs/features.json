@@ -1,7 +1,7 @@
 {
   "schema": "kre-feature-index-v1",
   "build": "KR00967",
-  "as_of": "2026-11-04 CP087",
+  "as_of": "2026-11-04 CP088",
   "sources": {
     "plan": "docs/PLAN.md",
     "contract": "docs/PROTOCOL.md",
@@ -1332,7 +1332,8 @@
           "docs/evidence/rejoin-battle-cycles/README.md",
           "docs/evidence/tcp-guard-cycles/README.md",
           "docs/evidence/capacity-admission/README.md",
-          "docs/evidence/capacity-reservations/README.md"
+          "docs/evidence/capacity-reservations/README.md",
+          "docs/evidence/early-chain-window/README.md"
         ]
       },
       "coverage": {
@@ -1369,7 +1370,8 @@
               "docs/evidence/rejoin-battle-cycles/README.md",
               "docs/evidence/tcp-guard-cycles/README.md",
               "docs/evidence/capacity-admission/README.md",
-              "docs/evidence/capacity-reservations/README.md"
+              "docs/evidence/capacity-reservations/README.md",
+              "docs/evidence/early-chain-window/README.md"
             ]
           },
           "windows_original": {
@@ -1407,7 +1409,8 @@
             "docs/evidence/rejoin-battle-cycles/README.md",
             "docs/evidence/tcp-guard-cycles/README.md",
             "docs/evidence/capacity-admission/README.md",
-            "docs/evidence/capacity-reservations/README.md"
+            "docs/evidence/capacity-reservations/README.md",
+            "docs/evidence/early-chain-window/README.md"
           ]
         },
         "gate": {
@@ -1443,7 +1446,8 @@
           "docs/evidence/mixed-cycles/README.md",
           "docs/evidence/all-dead-result/README.md",
           "docs/evidence/three-bomb-chain/README.md",
-          "docs/evidence/capacity-reservations/README.md"
+          "docs/evidence/capacity-reservations/README.md",
+          "docs/evidence/early-chain-window/README.md"
         ]
       },
       "coverage": {
@@ -1484,7 +1488,8 @@
               "docs/evidence/mixed-cycles/README.md",
               "docs/evidence/all-dead-result/README.md",
               "docs/evidence/three-bomb-chain/README.md",
-              "docs/evidence/capacity-reservations/README.md"
+              "docs/evidence/capacity-reservations/README.md",
+              "docs/evidence/early-chain-window/README.md"
             ]
           },
           "windows_original": {
@@ -1521,7 +1526,8 @@
             "docs/evidence/mixed-cycles/README.md",
             "docs/evidence/all-dead-result/README.md",
             "docs/evidence/three-bomb-chain/README.md",
-            "docs/evidence/capacity-reservations/README.md"
+            "docs/evidence/capacity-reservations/README.md",
+            "docs/evidence/early-chain-window/README.md"
           ]
         },
         "gate": {
@@ -2863,7 +2869,8 @@
           "docs/evidence/three-bomb-chain/README.md",
           "docs/evidence/tcp-guard-cycles/README.md",
           "docs/evidence/capacity-admission/README.md",
-          "docs/evidence/capacity-reservations/README.md"
+          "docs/evidence/capacity-reservations/README.md",
+          "docs/evidence/early-chain-window/README.md"
         ]
       },
       "coverage": {
@@ -2923,7 +2930,8 @@
               "docs/evidence/three-bomb-chain/README.md",
               "docs/evidence/tcp-guard-cycles/README.md",
               "docs/evidence/capacity-admission/README.md",
-              "docs/evidence/capacity-reservations/README.md"
+              "docs/evidence/capacity-reservations/README.md",
+              "docs/evidence/early-chain-window/README.md"
             ]
           },
           "windows_original": {
@@ -3017,7 +3025,8 @@
             "docs/evidence/three-bomb-chain/README.md",
             "docs/evidence/tcp-guard-cycles/README.md",
             "docs/evidence/capacity-admission/README.md",
-            "docs/evidence/capacity-reservations/README.md"
+            "docs/evidence/capacity-reservations/README.md",
+            "docs/evidence/early-chain-window/README.md"
           ]
         },
         "gate": {

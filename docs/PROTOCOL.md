@@ -1,6 +1,6 @@
 # KR 00967 — contract tương thích client gốc
 
-Revision kr-legacy-contract-r1; cập nhật04/11/2026 JST (CP087).
+Revision kr-legacy-contract-r1; cập nhật04/11/2026 JST (CP088).
 **Contract có bằng chứng từng phần; chưa nghiệm thu full codec K2**.
 Lộ trình và thứ tự task chỉ giữ ở [REWRITE_PLAN — KRE](PLAN.md).
 Đây là contract của repo server KR. ADR0009 của bản viết lại là nguồn lịch sử để so sánh;
@@ -3036,7 +3036,7 @@ và runtimeintegration tách rõ. Không tự mở lại chỉ để tìm một 
 
 Khép bounded acceptance CP075 cho selectedvariants trong run mới, không viết lại partial/manifest075.
 Chưa cap/distance/auth/freshserial/currentkeyforgery/toàn127/codec/authority/vanilla/LANInternet/
-fullmatch/K5/K6a/fullreset. [PLAN](PLAN.md#current-order) tiếp capacity/serial mới; auditAUD025/next088.
+fullmatch/K5/K6a/fullreset. Tại CP085 bước tiếp là capacity/serial; CP086–088 đã đo, [PLAN](PLAN.md#current-order) giữ việc hiện hành.
 
 
 <a id="capacity-fresh-serial"></a>
@@ -3071,8 +3071,7 @@ B cólookup. Không dùng timer/serviceaccept hoặc ảnh bom chồng để k�
 có originalfinalrecords/khôngcontroller-serviceprobeerrors, nhưng roundreturn không xóa finding lệch.
 
 **Tình trạng implementation:** CP086 chỉ đo, chưa thêm guard cap/cell/distance/freshserial. Cácpositive
-CP084/085 giữ đúng normal/selectedreplay scope, không bị nâng thành fullvalidator. [PLAN](PLAN.md#current-order)
-tiếp profile-scoped reservationguard trướcID/job; source stat/max và acceptedBomb effect đã có, release
+CP084/085 giữ đúng normal/selectedreplay scope, không bị nâng thành fullvalidator. Tại CP086 bước tiếp là profile-scoped reservationguard trướcID/job (CP087 đã triển khai); source stat/max và acceptedBomb effect đã có, release
 secondary sớm trong nativechain vẫnunknown phía service, phải ghi design/conservativewindow khi chọn.
 Chưa fullmatch/K5/K6a/fullauth/fullcodec/fullvalidator/authority/vanilla/LANInternet/allreset.
 
@@ -3108,9 +3107,37 @@ leak. Hai view đủ6nonzero159full39/6full15813; rootprocess3IDs/mỗi vòng, o
 121/clock/175full302/180full3/roomrefresh hai lần. Native field/getter, emittedbody/seq/model và policy
 counter tách rõ; không suy noerrors thành fullmatch.
 
-**Giới hạn còn hoạt động:** nativechain đã giải phóng secondary trước ownserverdeadline, guardvẫn giữ
-reservation tới jobretire; có thể reject legitrapidreplacement trong cửa sổ này. CP087 chưa đo/sửa
+**Giới hạn còn hoạt động:** nativechain đã state0/processsecondary trước ownserverdeadline; điều đó
+chưa chứng minh toàn bộ pool đã trả slot. Guard giữ reservation tới jobretire; CP088 đã đo một normal native replacement bị từ chối trong cửa sổ này. Tại CP087 chưa đo/sửa
 release sớm, chưa đóng capacity/chainauthority hoặc mọi newserial/cell/distance/auth/character/mode.
 98tests kiểm incrementonce/clamp/currentkey/serial/owner/jobretire/reset/fence/unsupportedroster/config;
 resetactual hai vòng không là mọiEOF/errorvariant. Profile mới chưa có API tựtrích statbase từnative.
-[PLAN](PLAN.md#current-order) tiếp nativeplacements sau earlychain; AUD025, periodicCP088 phảiaudit.
+Phép đo cửa sổ đã có ở CP088 bên dưới; [PLAN](PLAN.md#current-order) giữ việc hiện hành. AUD026 qua CP088, audit kế CP092.
+
+
+<a id="early-chain-reservation-window"></a>
+### Normal replacement sau early chain bị quota giữ chỗ — CP088
+
+[Recipe/hash và nguồn tái dùng](evidence/early-chain-window/README.md).
+**kr_runtime/confirmed hẹp** trên current modified Wine copy/profile A-B. Giữ production CP087,
+capacity A2/B2, fuse6s; chỉ trì hoãn input thirdA2s và dùng normal Space/Right/Space sau root callback
+đã hoàn tất cả hai view. Không proxy mutation, ép state hoặc gọi hàm native.
+
+Actual A/B/A118 tạo ID1/2/3; root158 ID1 process cả ba trong mỗi view, secondary3 state0 caller
+`EBE21A`, ownlater158 không process lặp. Sau root observation, A phát118 serial56 ô(9,3), được
+ID4/159 nonzero ở cả hai view, quota reserved[3]/capacity2. A phát118 serial84 ô(9,5), bị
+`bomb_capacity_reserved` trước ID5 với reserved[3,4]/capacity2. Request này đến **1,91992808s**
+trước own158/jobretire của ID3. Native writer/frontframe/request timestamps nối riêng, không dùng
+input completion thay thời điểm phát; request thứ hai không phải mutant CP086.
+
+Điều đã xác nhận: guard design CP087 chặn normal native request trong cửa sổ chain sớm; native
+emission chứng minh đường input/request chạy được ở context này. **Không** tự chứng minh toàn pool
+đã trả slot, original server phải accept mọi request đó hoặc native allocation của ID5 (chưa có159).
+ID4 được process riêng; hai view đủ4nonzero159/full39 và4full158/13/errors0, một survivor result/
+return/room cycle, không controller/service/probe errors. Không là hai vòng/fullmatch hoặc gate.
+
+CP088 chưa sửa code/release policy. Không release theo report hoặc khoảng cách Manhattan đơn thuần:
+geometry/map blocker và chuỗi secondary phải có nguồn/giới hạn trước khi chọn design.
+[PLAN](PLAN.md#current-order) giữ thứ tự; [gap](RESEARCH.md#gap-bomb-lifetime) giữ phép kiểm.
+AUD026 sửa wording CP087 “đã giải phóng secondary” thành state0/processsecondary, chưa toàn pool;
+raw/manifestCP087 giữ bất biến. Review waived/tự kiểm, chưa independent approval.
