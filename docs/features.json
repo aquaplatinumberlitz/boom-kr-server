@@ -1,7 +1,7 @@
 {
   "schema": "kre-feature-index-v1",
   "build": "KR00967",
-  "as_of": "2026-11-04 CP089",
+  "as_of": "2026-11-04 CP090",
   "sources": {
     "plan": "docs/PLAN.md",
     "contract": "docs/PROTOCOL.md",
@@ -825,7 +825,8 @@
           "docs/evidence/service-eof/README.md",
           "docs/evidence/distinct-spawn/README.md",
           "docs/evidence/preclock-eof/README.md",
-          "docs/evidence/preclock-cleanup/README.md"
+          "docs/evidence/preclock-cleanup/README.md",
+          "docs/evidence/current-map-chain/README.md"
         ]
       },
       "coverage": {
@@ -844,7 +845,8 @@
         "kr_static": {
           "state": "partial",
           "refs": [
-            "docs/PROTOCOL.md#start-reply"
+            "docs/PROTOCOL.md#start-reply",
+            "docs/PROTOCOL.md#current-map-chain-state"
           ]
         },
         "emulation": {
@@ -861,7 +863,8 @@
               "docs/evidence/service-eof/README.md",
               "docs/evidence/distinct-spawn/README.md",
               "docs/evidence/preclock-eof/README.md",
-              "docs/evidence/preclock-cleanup/README.md"
+              "docs/evidence/preclock-cleanup/README.md",
+              "docs/evidence/current-map-chain/README.md"
             ]
           },
           "windows_original": {
@@ -1334,7 +1337,8 @@
           "docs/evidence/capacity-admission/README.md",
           "docs/evidence/capacity-reservations/README.md",
           "docs/evidence/early-chain-window/README.md",
-          "docs/evidence/chain-capacity-release/README.md"
+          "docs/evidence/chain-capacity-release/README.md",
+          "docs/evidence/current-map-chain/README.md"
         ]
       },
       "coverage": {
@@ -1353,7 +1357,8 @@
         "kr_static": {
           "state": "partial",
           "refs": [
-            "docs/PROTOCOL.md#bomb-serial"
+            "docs/PROTOCOL.md#bomb-serial",
+            "docs/PROTOCOL.md#current-map-chain-state"
           ]
         },
         "emulation": {
@@ -1373,7 +1378,8 @@
               "docs/evidence/capacity-admission/README.md",
               "docs/evidence/capacity-reservations/README.md",
               "docs/evidence/early-chain-window/README.md",
-              "docs/evidence/chain-capacity-release/README.md"
+              "docs/evidence/chain-capacity-release/README.md",
+              "docs/evidence/current-map-chain/README.md"
             ]
           },
           "windows_original": {
@@ -1454,7 +1460,8 @@
           "docs/evidence/three-bomb-chain/README.md",
           "docs/evidence/capacity-reservations/README.md",
           "docs/evidence/early-chain-window/README.md",
-          "docs/evidence/chain-capacity-release/README.md"
+          "docs/evidence/chain-capacity-release/README.md",
+          "docs/evidence/current-map-chain/README.md"
         ]
       },
       "coverage": {
@@ -1473,7 +1480,8 @@
         "kr_static": {
           "state": "partial",
           "refs": [
-            "docs/PROTOCOL.md#bomb-chain"
+            "docs/PROTOCOL.md#bomb-chain",
+            "docs/PROTOCOL.md#current-map-chain-state"
           ]
         },
         "emulation": {
@@ -1497,7 +1505,8 @@
               "docs/evidence/three-bomb-chain/README.md",
               "docs/evidence/capacity-reservations/README.md",
               "docs/evidence/early-chain-window/README.md",
-              "docs/evidence/chain-capacity-release/README.md"
+              "docs/evidence/chain-capacity-release/README.md",
+              "docs/evidence/current-map-chain/README.md"
             ]
           },
           "windows_original": {
@@ -2886,7 +2895,8 @@
           "docs/evidence/capacity-admission/README.md",
           "docs/evidence/capacity-reservations/README.md",
           "docs/evidence/early-chain-window/README.md",
-          "docs/evidence/chain-capacity-release/README.md"
+          "docs/evidence/chain-capacity-release/README.md",
+          "docs/evidence/current-map-chain/README.md"
         ]
       },
       "coverage": {
@@ -2902,7 +2912,9 @@
         },
         "kr_static": {
           "state": "unknown",
-          "refs": []
+          "refs": [
+            "docs/PROTOCOL.md#current-map-chain-state"
+          ]
         },
         "emulation": {
           "state": "unknown",
@@ -2948,7 +2960,8 @@
               "docs/evidence/capacity-admission/README.md",
               "docs/evidence/capacity-reservations/README.md",
               "docs/evidence/early-chain-window/README.md",
-              "docs/evidence/chain-capacity-release/README.md"
+              "docs/evidence/chain-capacity-release/README.md",
+              "docs/evidence/current-map-chain/README.md"
             ]
           },
           "windows_original": {

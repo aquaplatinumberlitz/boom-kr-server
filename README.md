@@ -29,15 +29,14 @@ runtime nào có nguồn, còn thiếu gì và phép kiểm nào giải quyết.
 evidence/hash và câu hỏi; [PLAN](docs/PLAN.md#current-order) giữ duy nhất thứ tự công việc.
 Đây là scope đường bootstrap → login → sảnh → phòng → Battle → kết quả/reset, không kiểm kê toàn client.
 
-CP089: policy capacity đã nhận đủ hai request thay thế native sau chain trong **cả hai vòng**
-trên copy Wine/profile hiện tại; hai view nhận entity và xử lý bom tương ứng. Policy chỉ áp dụng
-đường trực tiếp trong các ô clear khai báo, pin fixture map/start; timer secondary vẫn giữ nguyên.
-[Contract/giới hạn](docs/PROTOCOL.md#chain-capacity-release),
-[recipe/hash và các run partial](docs/evidence/chain-capacity-release/README.md).
-Chưa fullmatch/K6a hoặc map/collision/validator tổng quát.
+CP090 nối grid/TileInfo của đúng `ExVillage01` với native ray: cảhai view có9 ô box dừng ở
+`EA0B10→EB9710`, dù step trước `E9F220` vẫn trả1;20 cell-returns clear đi tiếp.
+[Contract/giới hạn](docs/PROTOCOL.md#current-map-chain-state),
+[recipe/hash](docs/evidence/current-map-chain/README.md). Policy CP089 chưa mở rộng ngoài clear-cells;
+nhánh house/static/direction và mutable terrain còn thiếu, chưa fullmatch/K6a/LAN/Internet.
 
-CP088 đã merge [PR137](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/137) tại `0a67e74`.
-CP089 tự kiểm/chờ PR; review độc lập [waived](docs/evidence/checkpoints/review-waiver.json).
+CP089 đã merge [PR139](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/139) tại `727e942`.
+CP090 tự kiểm/chờ PR; review độc lập [waived](docs/evidence/checkpoints/review-waiver.json).
 Audit **AUD026/CP088**, periodic kế **CP092**.
 [Yêu cầu chủ dự án](docs/evidence/owner-directives/continuous-work.json): tiếp tục ngay việc kế trong
 PLAN sau mỗi checkpoint/commit/PR, không tự dừng/chờ nhắc.

@@ -1,6 +1,6 @@
 # KR 00967 — contract tương thích client gốc
 
-Revision kr-legacy-contract-r1; cập nhật04/11/2026 JST (CP089).
+Revision kr-legacy-contract-r1; cập nhật04/11/2026 JST (CP090).
 **Contract có bằng chứng từng phần; chưa nghiệm thu full codec K2**.
 Lộ trình và thứ tự task chỉ giữ ở [REWRITE_PLAN — KRE](PLAN.md).
 Đây là contract của repo server KR. ADR0009 của bản viết lại là nguồn lịch sử để so sánh;
@@ -3189,3 +3189,51 @@ fence/reset/preblast rejection và oldsecondary không release bom mới. Model 
 first-hit là policy conservative. Phạm vi ngoài clear-cells/fullmap/dynamic terrain/recursive chain/
 fullpool/cell-distance-auth/fullvalidator/fullcodec/authority/allreset/vanilla/LANInternet/fullmatch/
 K5/K6a còn mở. [PLAN](PLAN.md#current-order) giữ việc tiếp, AUD026/periodicCP092.
+
+
+<a id="current-map-chain-state"></a>
+### ExVillage01 static grid và native box-stop/clear state — CP090
+
+[Recipe/source/hash và negativecontrol](evidence/current-map-chain/README.md).
+**kr_static/confirmed data**, **kr_runtime/confirmed hẹp** trên currentmodifiedWine/profile. Reuse KR
+header80 (VN76), packindex key từdwordđầu/entryCRC, ObjectTable/TileInfo72 từnguồn cũ; không port VN
+ID/offset/opcode hoặc profile collision Village00 thành mọi map. Extract đúng FxMap/Map/ExVillage01,
+fx/ObjectTable vàTileInfo tại local; sourcepack/binary/DB không sửa, chưa mở rộng serverpolicyCP089.
+
+Map payload SHA `aeb57ffdb27a1405bd2ae3d29f229174ae5d584fc84eaf4e87884fe8518f86a4`,1814bytes,
+version1000/15columns×13rows,8spawn từoffset80, grid148..1708/exclusive,195cell×2i32. Targetmap dùng
+11IDtile/object; numeric index của ObjectTable đúngKR. Raw TileInfo Data72 wordđầu: Ground0,
+House1, Box2 trong subset này, lấy từ actualdata và classreference, không từ tên/icon.
+
+| Nhóm dữ liệu targetmap | IDs KR | Mức/giới hạn |
+|---|---|---|
+| Nền |1938/1941/1942/1943/1947|staticDataword0; không tự là mọi flame-direction rule|
+| House |1955/1956/1957|staticDataword1; native instance/classflag/direction chưa quan sát|
+| Box |1932/1933/1934|staticDataword2;9cell native stop dưới đây, không mọiclass2/allmaps|
+
+Read4smallhelpers byte-match static/runtimecopies/modO: E9F9B0 query có bounds/mapcontainer/type3/10/
+active filter vàdynamiccast; E90A80 đọc `[object+AC]→+2C`; EA1230 tra map+1D24, EA0B10 tra map+1D54.
+StaticDataword2 **không** đồng nhất với E90A80flag2 hoặc container membership. No newfunctioncall/
+stateforcing; debugger chỉ đọc nativecalls đã chạy, không dùng guessed rawfield layout.
+
+Runtime `tiles-gated`: rootA(3,3)/power2,B(3,5)/power1,lateA(5,3)/power2 vàtwo replacements(9,3)/(9,5).
+Mỗi view có29 `EB9710` cellreturns:20 `(state1,return1)` trên actualstaticobj−1/EA0B10=0;
+9 `(state2,return0)` nối preceding actual `EA0B10=1` callerEB975C và staticBox1932/3/4 tại
+(3,2),(2,3),(2,5),(3,6),(5,2),(9,2),(10,3),(9,6),(10,5). Callbackindex1 hoặc4 giữ join riêng.
+Ở các ca có preceding ray-step, **E9F220 accepted1 vẫn dẫn tới box-stop**: nhánh điều phối sau đó
+mới gọi EB9710; không được lấy step1 làm toànraypass hoặc suy tia xuyênbox. Cellbox là điểm dừng,
+không chứng minh flamevisual/damage/fullclass behavior từ return0 này.
+
+Cả80E9F9B0queries/view đều **null**, EA1230 đều0, khônghit các explicitstopbranches E9F220 trongrun.
+Đây là absence có boundary, không bác nhà/staticblocker; boxes nằm ở đường/set khác. Không có
+nonnull objectcontext để nối TileInfo72→runtime template/flag. House/directional flags/other sets và
+mutable terrain sauboxbreak vẫnunknown. PLAN tiếp native root sau để tiếp cận house phía trên.
+
+5actual118/159nonzero/full39 và5full15813/errors0, rootprocess1,2,3/newroot4,5/ownlaternoduplicate,
+121clock175full302/180full3/roomrefresh một lần. 156targetrelations và secure/getter emulation kiểmriêng;
+không two-cycle acceptance mới, CP089two-cyclepositive giữ scope cũ. Firstungated358,644s cóclock/key
+nhưng no124/118/158; ảnhblack/faint, không đo được stop. Newprobe group chỉ bật158entry→END cho
+repeat200,292s; overhead chỉcandidatecause, không coi firstnegative làruntimecollisionproof.
+
+Chưa releaseexpansion/fullmap/recursive/moving/wholepool/validator/auth/codec/authority/allreset/
+vanilla/LANInternet/fullmatch/K5/K6a. [PLAN](PLAN.md#current-order) giữ việc tiếp; AUD026/nextCP092.
