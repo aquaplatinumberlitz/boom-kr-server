@@ -29,16 +29,16 @@ runtime nào có nguồn, còn thiếu gì và phép kiểm nào giải quyết.
 evidence/hash và câu hỏi; [PLAN](docs/PLAN.md#current-order) giữ duy nhất thứ tự công việc.
 Đây là scope đường bootstrap → login → sảnh → phòng → Battle → kết quả/reset, không kiểm kê toàn client.
 
-CP106 xác nhận movement hai chiều ở cả hai vòng trong cùng run: input thật → UDP → native target
-đổi và tọa độ tiến. Cùng run có14 entity/14 callback nổ mỗi view, terrain/item/TCP guard và hai lần
-kết quả/reset; hai view cùng A3/B1 và XY tại native180.
-[Contract/giới hạn](docs/PROTOCOL.md#current-movement-cycles),
-[recipe/hash](docs/evidence/current-movement-cycles/README.md). Chưa nghiệm thu fullmatch/K6a/LAN/Internet.
-Điểm chặn kế là normal host Back khi guest vẫn ở phòng; [PLAN](docs/PLAN.md#current-order).
+CP107 tích hợp normal host Back: A rời → B lên chủ → A vào lại làm khách → A Ready/B Start →
+cảhai client đọc121 đầy đủ, gửi99 và chạy clock native trên service hiện hành.
+[Contract/giới hạn](docs/PROTOCOL.md#host-normal-back),
+[recipe/hash](docs/evidence/host-normal-back/README.md). Chưa đo trận hoàn chỉnh sau đổi chủ.
+[CP106](docs/PROTOCOL.md#current-movement-cycles) vẫn là run hai vòng movement/terrain/item/ending
+đã kiểm trên vai trò Ahost; bước kế ghép route đó sau Bpromotion, không ghép hai run thành một trận.
 
-CP105 đã merge [PR171](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/171) tại `dc30e4f`.
-CP106 tự kiểm/chờ PR; production/profile giữ nguyên. Review độc lập
-[waived](docs/evidence/checkpoints/review-waiver.json).
+CP106 đã merge [PR173](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/173) tại `f67a160`.
+CP107 tự kiểm/chờ PR; hostBack opt-in, profile legacy giữ hành vi cũ. Review độc lập
+[waived](docs/evidence/checkpoints/review-waiver.json). K5/K6a/LAN/Internet vẫn mở.
 Audit định kỳ **AUD032/CP104**, mốc kế **CP108**.
 [Yêu cầu chủ dự án](docs/evidence/owner-directives/continuous-work.json): tiếp tục ngay việc kế trong
 PLAN sau mỗi checkpoint/commit/PR, không tự dừng/chờ nhắc.

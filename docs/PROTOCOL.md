@@ -3943,3 +3943,35 @@ Analysis KeyError do nhầm path substitution được giữ và sửa bằng sc
 CP105/PR171 đã merge; CP106 tự kiểm/chờ PR. Fullauth/codec/location/validator/authority/general
 membership/allreset/vanilla/fullmatch/K5/K6a/LANInternet vẫn mở; audit kếCP108. Bước kế cần cho chơi
 là host normal Back khi còn guest live, không lặp EOF hoặc movement đã khép.
+
+
+<a id="host-normal-back"></a>
+### Host Back/chuyển chủ/rejoin trên service hiện hành — CP107
+
+[Recipe/hash/control/fix](evidence/host-normal-back/README.md), [gap](RESEARCH.md#gap-room-membership),
+[thứ tự](PLAN.md#current-order). **kr_runtime/confirmed hẹp** copyWine/AB/local/ExVillage01;
+implementation/promotion/refresh/authfixture là **design**, không luật server gốc.
+
+Contract native đã có ở [CP034](#room-leave)/[CP035](#room-rejoin), đợt này không REthân hàm mới.
+Currentservice control thực nhậnA86empty/wire38/seq139 nhưng reject unsupportedvariant;15s trước
+controllercompletion không phát107, BkhôngxóaA. Teardown sau đó có EOF→107 sau completion183,815997ms,
+không gán cho Back. Run startupSIGABRT đầu chưa tớiBack giữ riêng, không chứngminh lỗi doobserver.
+
+Opt-in `host_back_rejoin: {"mode":"idle_A_to_B"}` và exporter `--host-back-rejoin` pin5fixtureCP035:
+join_A87slot0/session1, player_A_guest106/state0, slot_A_guest110/state0, guest_B_chief106/state22,
+ready_A110/state4. Defaultlegacy/profile42 cũ không đổi; currentopt-in47fixture. Preflight metadata/
+sequence trước membershipmutation; chỉAhostidle/Bmappedlive vàrejoinđúng sameBconnection, không
+activeleave/accountresume/generalroom. Giữchannel/ID1,2/slot0,1/seq/roomowner/keyallocator/jobhistory.
+
+Fixedrun: actualA86→B107(slot0,id1,0), nativebase6/errors0→rewind0→UIrereadcursor1; slotID1→0,
+localchiefB1. Arefresh241/roomlist_B91 vào normalLobby; Aactual82→87full7→585/own106ownmatch1/
+chief0, B nhận lạiA106guest0. A95/110ready4 vàB104→121129/129/errors0 mỗi view→actual99→153→
+clock một lần cảhai. CurrentS2Cseq liên tục; không gửi107 cho leaver hoặc coi B vẫn guest theo slot1.
+Ảnh đã xem phù hợpAReady/BStart vàmaphaiactor, không thay actualrequest/readerproof.
+
+42boundedruntimejoins/72typednativepacketmodelcases và perroleframernegatives,157servertests gồm8new/
+exporter2tests. Return-refresh dùngguestAalias khiđãpromotedrejoin được modeltest; CP107 dừngclock,
+chưa nativepostresult/reset/bom/item/haiBattlecycles trên vai tròBhost. CP106hai vòngAhost giữ scope
+riêng, không ghép thành nghiệmthu saupromotion. Same-stage/globaltime/wholeauthority không suy thêm.
+Bước kế chỉđo gap gameplay/reset này theoPLAN; auditCP108. Fullauth/codec/validator/authority/
+activeleave/accountresume/generalroom/allreset/vanilla/fullmatch/K5/K6a/LANInternet vẫn mở.
