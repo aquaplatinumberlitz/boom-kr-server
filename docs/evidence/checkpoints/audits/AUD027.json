@@ -1,0 +1,100 @@
+{
+  "id": "AUD027",
+  "trigger": "periodic",
+  "completed_through": "CP092",
+  "recorded_utc": "2026-11-04T14:50:00.359904+00:00",
+  "auditor": "Codex manual self-audit; independent review waived by owner",
+  "read_files": [
+    "README.md",
+    "docs/PLAN.md",
+    "docs/PROTOCOL.md",
+    "docs/RESEARCH.md",
+    "docs/features.json",
+    "docs/COVERAGE.md",
+    "docs/evidence/chain-capacity-release/README.md",
+    "docs/evidence/current-map-chain/README.md",
+    "docs/evidence/house-after-box/README.md",
+    "docs/evidence/map-flags/README.md",
+    "docs/evidence/checkpoints/manifest.json",
+    "local/research/codex/chain-release-r1/cycles-verification.json",
+    "local/research/codex/chain-release-r1/partial-cycles-verification.json",
+    "local/research/codex/chain-release-r1/safe-partial-verification.json",
+    "local/research/codex/map-chain-r1/verification.json",
+    "local/research/codex/map-chain-r1/tile-runtime.json",
+    "local/research/codex/house-after-box-r1/verification.json",
+    "local/research/codex/house-after-box-r1/reused-mutable-set.json",
+    "local/research/codex/house-after-box-r1/verification-correction.json",
+    "local/research/codex/map-flags-r1/reuse-question.json",
+    "local/research/codex/map-flags-r1/ED1350.asm",
+    "local/research/codex/map-flags-r1/E13290.asm",
+    "local/research/codex/map-flags-r1/map-pointer-correction.json",
+    "local/research/codex/map-flags-r1/first-partial-verification.json",
+    "local/research/codex/map-flags-r1/fixed/run.json",
+    "local/research/codex/map-flags-r1/fixed/service-state.json",
+    "local/research/codex/map-flags-r1/fixed/client.log",
+    "local/research/codex/map-flags-r1/fixed/client-B.log",
+    "local/research/codex/map-flags-r1/verification.json",
+    "local/research/codex/map-flags-r1/flag-reader-verification.json",
+    "local/research/codex/map-flags-r1/visual-observation.json"
+  ],
+  "method": "ManualREADME→PLAN(current/gates)→PROTOCOL(CP089–092/authority andlimits)→RESEARCHcurrentgaps→CP089–092evidence andraw/reports. Compareoriginalnormalrequests/entities/process/timings, partial8/9vs10requests, source/helperbytes/protectedwrapper/actualmapqueryreceiver, fullfiniteflagsnapshotsphase/endpoints/reset andcopiednativegetteroracles separately. Inspectactualrecordedpointercorrection andfirst44partialrecords vsfixedpositive; do notusechecker asmanualaudit orclaimreadwholeclient.",
+  "findings": [
+    {
+      "id": "F1",
+      "stale": "CP091pendingPR/currentauditAUD026next092 nowneedsreconciliation.",
+      "correction": "CP091PR143/c3d74ffmerged,currentCP092selfchecked/pendingPR,reviewwaivednotapproved; AUD027through092next096.",
+      "fixed_in": [
+        "README.md",
+        "docs/PLAN.md",
+        "docs/evidence/house-after-box/README.md"
+      ]
+    },
+    {
+      "id": "F2",
+      "stale": "CP090PROTOCOLhouse/mutableunknown andnextroot stillreadasactive despiteCP091successor; CP091nextstorage supersededbyCP092.",
+      "correction": "MarkoldknowledgeboundaryatCP090/091 withsuccessorlinks, keepactualraw/immutablefindings;currentgaps/catalog/coveragepointtonextscopedterrainpolicy.",
+      "fixed_in": [
+        "docs/PROTOCOL.md",
+        "docs/RESEARCH.md",
+        "docs/PLAN.md",
+        "docs/features.json",
+        "docs/COVERAGE.md"
+      ]
+    },
+    {
+      "id": "F3",
+      "stale": "ClockreceivercanbemistakenforCPlayMap; guessedflagsnapshotfromwrongobject failedchecksum.",
+      "correction": "Keep44firstpartials/originalfinal/nativecyclepositive separate fromsnapshotfailure; E13290field1DF06Csource-backedbind withactualdimension/checksum/query/wrapperjoins innewrun. No rawrewrite orfallbackguessedpointer.",
+      "fixed_in": [
+        "docs/PROTOCOL.md",
+        "docs/evidence/map-flags/README.md"
+      ]
+    },
+    {
+      "id": "F4",
+      "stale": "Staticclassword/objpresence/stepaccepted1 couldbescaledintofullmapcollisionandreportworldauthority.",
+      "correction": "CP090/091actualEA0B10/EB9710stops andCP092boundedflags/seed/resetperphase; no classflagtemplatejoin, no generalmaps/law, no142worldoracle orcurrentpolicyexpansion. Separategetter/addressoraclesfromWine.",
+      "fixed_in": [
+        "docs/PROTOCOL.md",
+        "docs/RESEARCH.md",
+        "docs/evidence/map-flags/README.md"
+      ]
+    },
+    {
+      "id": "F5",
+      "stale": "Oldpositive/negativeandtestcountcouldbeoverread:CP089runtimeACKorderingnotcause,CP090ungatedclocknocapturenotcollisionfailure,CP091root2,3nottarget3,3.",
+      "correction": "Re-readpartial/correctionreports, keepordering/causeunknown andactualgeometry/bounds explicit. No checkpointrewrites/gatepromotion;105server/18checkpointtestsreusebecauseproductionunchanged.",
+      "fixed_in": [
+        "docs/evidence/map-flags/README.md",
+        "docs/PROTOCOL.md"
+      ]
+    }
+  ],
+  "remaining": [
+    "CP092selfchecked/pendingPR,reviewwaived notindependentapproval;oldraw/completeCP/AUDrecordsimmutable.",
+    "CurrentCP089manualclear-cellsrelease unchanged; scopedterrainpolicy mustremainexplicitdesignandverifywalls/postblast/reset beforewideruse.",
+    "Nativeflagstorage snapshots onlycurrentExVillage01/modifiedWine/profile; genericclass/template/directional/moving/recursive/auth/reportepoch/validator/codec/fullreset/vanilla/LANInternet/fullmatch/K5/K6aopen.",
+    "Firstclockpointererror/verifierfailurepreserved; no sciencecorrectedonlytomakecheckerpass.",
+    "NextperiodicCP096; no counterreset orautomaticgateclosure."
+  ]
+}

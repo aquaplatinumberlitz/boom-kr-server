@@ -29,15 +29,14 @@ runtime nào có nguồn, còn thiếu gì và phép kiểm nào giải quyết.
 evidence/hash và câu hỏi; [PLAN](docs/PLAN.md#current-order) giữ duy nhất thứ tự công việc.
 Đây là scope đường bootstrap → login → sảnh → phòng → Battle → kết quả/reset, không kiểm kê toàn client.
 
-CP091 đã đo house `(1,3)` dừng cùng đường `EA0B10→EB9710` như box; ô box `(2,3)` đổi flag1→0
-sau native blast và nhận bom mới bằng input thường. Không cần suy hành vi từ tên asset.
-[Contract/giới hạn](docs/PROTOCOL.md#house-after-box),
-[recipe/hash](docs/evidence/house-after-box/README.md). Policy CP089 vẫn giới hạn clear-cells;
-chưa fullmap/mutable-state/reset contract hoặc fullmatch/K6a/LAN/Internet.
+CP092 đã chụp flags của đủ195 ô map qua hai vòng: cảhai view cùng seed149 ô chặn, thay đổi sau nổ
+và khôi phục seed sau Start. [Contract/giới hạn](docs/PROTOCOL.md#map-flags-snapshot),
+[recipe/hash và audit](docs/evidence/map-flags/README.md). Đây là bằng chứng native của map hiện tại;
+service vẫn dùng policy clear-cells CP089, chưa map-wide/fullmatch/K6a/LAN/Internet.
 
-CP090 đã merge [PR141](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/141) tại `c142c85`.
-CP091 tự kiểm/chờ PR; review độc lập [waived](docs/evidence/checkpoints/review-waiver.json).
-Audit **AUD026/CP088**, periodic kế **CP092**.
+CP091 đã merge [PR143](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/143) tại `c3d74ff`.
+CP092 tự kiểm/chờ PR; review độc lập [waived](docs/evidence/checkpoints/review-waiver.json).
+Audit **AUD027/CP092**, periodic kế **CP096**.
 [Yêu cầu chủ dự án](docs/evidence/owner-directives/continuous-work.json): tiếp tục ngay việc kế trong
 PLAN sau mỗi checkpoint/commit/PR, không tự dừng/chờ nhắc.
 
