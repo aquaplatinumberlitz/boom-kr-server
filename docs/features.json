@@ -1,7 +1,7 @@
 {
   "schema": "kre-feature-index-v1",
   "build": "KR00967",
-  "as_of": "2026-11-05 CP095",
+  "as_of": "2026-11-05 CP096",
   "sources": {
     "plan": "docs/PLAN.md",
     "contract": "docs/PROTOCOL.md",
@@ -1352,7 +1352,8 @@
           "docs/evidence/map-flags/README.md",
           "docs/evidence/terrain-shadow/README.md",
           "docs/evidence/terrain-policy/README.md",
-          "docs/evidence/opposite-box-control/README.md"
+          "docs/evidence/opposite-box-control/README.md",
+          "docs/evidence/adjacent-owner-control/README.md"
         ]
       },
       "coverage": {
@@ -1399,7 +1400,8 @@
               "docs/evidence/house-after-box/README.md",
               "docs/evidence/map-flags/README.md",
               "docs/evidence/terrain-policy/README.md",
-              "docs/evidence/opposite-box-control/README.md"
+              "docs/evidence/opposite-box-control/README.md",
+              "docs/evidence/adjacent-owner-control/README.md"
             ]
           },
           "windows_original": {
@@ -1448,7 +1450,8 @@
             "docs/evidence/early-chain-window/README.md",
             "docs/evidence/chain-capacity-release/README.md",
             "docs/evidence/terrain-policy/README.md",
-            "docs/evidence/opposite-box-control/README.md"
+            "docs/evidence/opposite-box-control/README.md",
+            "docs/evidence/adjacent-owner-control/README.md"
           ]
         },
         "gate": {
@@ -1492,7 +1495,8 @@
           "docs/evidence/map-flags/README.md",
           "docs/evidence/terrain-shadow/README.md",
           "docs/evidence/terrain-policy/README.md",
-          "docs/evidence/opposite-box-control/README.md"
+          "docs/evidence/opposite-box-control/README.md",
+          "docs/evidence/adjacent-owner-control/README.md"
         ]
       },
       "coverage": {
@@ -1543,7 +1547,8 @@
               "docs/evidence/house-after-box/README.md",
               "docs/evidence/map-flags/README.md",
               "docs/evidence/terrain-policy/README.md",
-              "docs/evidence/opposite-box-control/README.md"
+              "docs/evidence/opposite-box-control/README.md",
+              "docs/evidence/adjacent-owner-control/README.md"
             ]
           },
           "windows_original": {
@@ -1560,7 +1565,7 @@
           }
         },
         "implementation": {
-          "state": "unknown",
+          "state": "partial",
           "refs": [
             "docs/PROTOCOL.md#current-hidden-items",
             "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/97",
@@ -1591,7 +1596,8 @@
             "docs/evidence/early-chain-window/README.md",
             "docs/evidence/chain-capacity-release/README.md",
             "docs/evidence/terrain-policy/README.md",
-            "docs/evidence/opposite-box-control/README.md"
+            "docs/evidence/opposite-box-control/README.md",
+            "docs/evidence/adjacent-owner-control/README.md"
           ]
         },
         "gate": {
@@ -2950,7 +2956,8 @@
           "docs/evidence/map-flags/README.md",
           "docs/evidence/terrain-shadow/README.md",
           "docs/evidence/terrain-policy/README.md",
-          "docs/evidence/opposite-box-control/README.md"
+          "docs/evidence/opposite-box-control/README.md",
+          "docs/evidence/adjacent-owner-control/README.md"
         ]
       },
       "coverage": {
@@ -3022,7 +3029,8 @@
               "docs/evidence/house-after-box/README.md",
               "docs/evidence/map-flags/README.md",
               "docs/evidence/terrain-policy/README.md",
-              "docs/evidence/opposite-box-control/README.md"
+              "docs/evidence/opposite-box-control/README.md",
+              "docs/evidence/adjacent-owner-control/README.md"
             ]
           },
           "windows_original": {
@@ -3127,7 +3135,8 @@
             "docs/evidence/early-chain-window/README.md",
             "docs/evidence/chain-capacity-release/README.md",
             "docs/evidence/terrain-policy/README.md",
-            "docs/evidence/opposite-box-control/README.md"
+            "docs/evidence/opposite-box-control/README.md",
+            "docs/evidence/adjacent-owner-control/README.md"
           ]
         },
         "gate": {

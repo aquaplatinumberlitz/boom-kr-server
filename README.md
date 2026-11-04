@@ -29,15 +29,15 @@ runtime nào có nguồn, còn thiếu gì và phép kiểm nào giải quyết.
 evidence/hash và câu hỏi; [PLAN](docs/PLAN.md#current-order) giữ duy nhất thứ tự công việc.
 Đây là scope đường bootstrap → login → sảnh → phòng → Battle → kết quả/reset, không kiểm kê toàn client.
 
-CP095 đã đo đối chứng hai bom qua thùng thật: root đầu bị chặn ở `(3,6)`; sau khi phá thùng,
-cặp bom mới `(3,5)/(3,7)` nổ dây chuyền ở cả hai client. Năm native118/159, bốn callback158/view,
-18snapshot195flags khớp service; các run input lỗi được giữ riêng.
-[Contract/giới hạn](docs/PROTOCOL.md#opposite-box-control),
-[recipe/hash](docs/evidence/opposite-box-control/README.md). Chưa fullmatch/K6a/LAN/Internet.
+CP096 đã đo hai bom khác chủ sát một ô: A `(3,5)` power2 nổ dây chuyền sang B `(3,6)` power1,
+trên ô thùng đã phá. Cả hai client có cùng process4,5 và18snapshot195flags khớp service không đổi.
+CP095 giữ đối chứng bị thùng chặn rồi cặp mới qua đường đã thông.
+[Contract/giới hạn](docs/PROTOCOL.md#adjacent-owner-control),
+[recipe/hash](docs/evidence/adjacent-owner-control/README.md). Chưa fullmatch/K6a/LAN/Internet.
 
-CP094 đã merge [PR149](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/149) tại `5e580a4`.
-CP095 tự kiểm/chờ PR; review độc lập [waived](docs/evidence/checkpoints/review-waiver.json).
-Audit **AUD027/CP092**, periodic kế **CP096**.
+CP095 đã merge [PR151](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/151) tại `1c18aa2`.
+CP096 tự kiểm/chờ PR; review độc lập [waived](docs/evidence/checkpoints/review-waiver.json).
+Audit **AUD028/CP096**, periodic kế **CP100**.
 [Yêu cầu chủ dự án](docs/evidence/owner-directives/continuous-work.json): tiếp tục ngay việc kế trong
 PLAN sau mỗi checkpoint/commit/PR, không tự dừng/chờ nhắc.
 
