@@ -41,11 +41,11 @@ return hai lần; `verify_effects_A0_plan.py`/`effects-A0-failure.txt` giữA0as
 khôngtimestamp, chưa simultaneous/persistentdesync/rankwrong/observercausalityproof.
 **Correction [AUD029](../checkpoints/audits/AUD029.json)/CP099:** A17 thực có ở nativefront saufirst175send
 1,596361ms; oldanalysislọcservice_entry nên bỏ frame khôngactiveguardlog, absenceclaim cũ sai.
-Raw/completeCP098 bất biến, currentclaim sửa qua checkpoint kế. Đây là blockerkế.
+Raw/completeCP098 bất biến, currentclaim sửa qua checkpoint kế. CP099 đã phục hồi trigger; [CP100](../result-freshness/README.md) kiểm guard riêng.
 
 Earlierapply finalsourcepincheck expressionSyntaxError aftercodecompiled/shelllaunch; metadata cập nhật
 postlaunch vàghiđúngboundary. Targetcopy prepared/compiled/rolechecked/4code-rangesmatched/pins trước
 launch; `source-verification.json`18checks originalharness/profile/proxy/policy/isolation/sourcepins.
 Docs/catalog7/artifacts/localhistory/diff;113server/4kernel/18checkpointtests reuse codeunchanged.
 AUD028qua096/nextCP100. No fullauth/codec/fullUDPgrammar/authority/allreset/vanilla/LANInternet/
-fullmatch/K5/K6a; nextnativeAtrap→reportfront→servicefinish/rank→175chronology chỉ ởPLAN.
+fullmatch/K5/K6a; bước hiện hành chỉ ởPLAN; raw/giới hạn CP098 ở trên giữ lịch sử.

@@ -1,7 +1,7 @@
 # Kế hoạch server giả lập KR 00967
 
 Nguồn chuẩn của project `boom-kr-server`; bản nhập từ plan đã được dsh1/dsh2 review tại `1eee46d`.
-Cập nhật05/11 JST (CP099): [old21/latestblast/late17](PROTOCOL.md#trap-report-rank-order); CP098/PR157 đã merge; AUD029tức thời/periodicCP100.
+Cập nhật05/11 JST (CP100): [optional result freshness](PROTOCOL.md#result-freshness-guard); CP099/PR159 đã merge; AUD030qua100/periodicCP104.
 
 
 ### Mục tiêu, baseline và phạm vi
@@ -37,13 +37,13 @@ với client Rust không chứng minh có thể điều khiển client KR bằng
 
 ### Tiến độ hiện hành theo bằng chứng
 
-| Task/mốc | Trạng thái tại CP099 | Nguồn chuẩn |
+| Task/mốc | Trạng thái tại CP100 | Nguồn chuẩn |
 |---|---|---|
 | KRE-004/issue6 | Đã review/merge PR7 và đóng issue:recipe r1 đến local accept;không phải full K1 | [Wine r1](evidence/wine/README.md) |
 | Bootstrap reply | PR8 đã merge;debugger ProcessPatchreturn1,không ép success | [bootstrap evidence](evidence/bootstrap-wire/README.md) |
 | KRE-005a/issue9,R2 | PR10 đã merge:3 cold start cửa sổ/second accept;issue9 còn mở | [R2 evidence](evidence/wine-r2/README.md) |
 | WCP hai-reply | Run CP001 là lịch sử chưa C→S; CP006 đã đo request đầu trên copy tham số hóa | [PROTOCOL](PROTOCOL.md#wcp),[WCP evidence](evidence/wcp/README.md) |
-| KRE-005b/issue14 | CP006–098 đã merge; CP099 correctedlateA17/old21trigger tự kiểm/chờ PR; fullround/authority/full auth còn mở | [Q-023](RESEARCH.md#q-023), [service](evidence/probe-service/README.md) |
+| KRE-005b/issue14 | CP006–099 đã merge; CP100 optionalresultfreshness/nativecontrol tự kiểm/chờ PR; fullround/authority/full auth còn mở | [Q-023](RESEARCH.md#q-023), [service](evidence/probe-service/README.md) |
 | K0/K1 | Chưa nghiệm thu toàn gate;Windows vanilla/control ownership và các điều kiện còn thiếu giữ mở | Gate dưới,[Q-022](RESEARCH.md) |
 | K2a/K2 | Primitive/WCP, CP057stream native/model và CP058–060authcallback137/135/errors0 đã có; fullcodec/authauthority/reconnect và gate chưa pass | [PROTOCOL](PROTOCOL.md#login-auth),[Q-023](RESEARCH.md#q-023) |
 | K3 | Copy đã vẽUI/đóngnotice, A/B/Cprofile đọc sạch và mộtnamedcachewarm được nhận; identityauthority/toàncache/codec/K3 chưa nghiệm thu | [Contract sảnh](PROTOCOL.md#channel-lobby) |
@@ -60,19 +60,19 @@ KRE-005b/issue14 vẫn mở. Các bước dưới là **thứ tự ưu tiên**, 
 xong checkpoint/commit/PR thì chuyển ngay việc kế tiếp trong thứ tự này, không tự dừng/chờ nhắc.
 Một blocker chỉ kết thúc nhánh đo tương ứng; ghi rõ rồi tiếp việc độc lập có thể làm, không tự đóng gate.
 
-1. **KR-F009/X001/S001 — sửa policy kết quả theo evidence, rồi runtime control:**
-   [CP099](PROTOCOL.md#trap-report-rank-order) phục hồi exactA17nativefront saufirst175send1,596361ms;
-   lastacceptedA21 trướclatest158105,479175ms. Existingfinish dùnganyother21afterdeath, không invalidation
-   khi cóblast/reporttrap mới. Không lặp RE codec/reportwriter/stateenum hoặc mọi oldbody.
-   Bước kế optional/profile-scoped **result freshness guard**: candidate21 phải sau latest successful158
-   hiệnvòng, đúng active/currentmember, và candidate chưa report17/19 currentgeneration. Reset atStart;
-   empty/unsupportedprofile giữ rõ legacy behavior. Policy làdesign, không claimedservergốc/quiettimer.
-   Kiểm negative stale21→newblast/old17/bodydup/reset/fencedjob/failedsend và positivefresh21; all-dead
-   dùng measuredoptionalrankfixture/policyCP083, missingalias phảiexplicitpending, không falsewinner.
-   Saumodeltests chạycopy/currentnativecontrol cólateblast/trap vớitimestampwriter/front/175 vàcurrent
-   two-cycle; không épA0/56/inject17 hay đổiresultdelay đểchecase. Needauditablelogs forignored127afterclosed
-   đểkhônglặplọcservice_entrygâymấtframe. Giữ asyncEOF/BadFDcleanup làmindependenttesttrigger.
-   CP100 bắt buộcperiodicmanualAUD030 (AUD029serious khôngresetcadence), periodic sauCP104.
+1. **KR-S001 — tiếp trigger cleanup cụ thể, rồi integration theo gap thực tế:**
+   [CP100](PROTOCOL.md#result-freshness-guard) đã có optionalresultfreshness/modelexactCP098replay và
+   currentnative hai chu kỳ; không lặp codec/writer/old21guard/knownnativebody. Bước kế tái dùng
+   CP099gated BadFDconnection8 và CP085departure-send-failure: kiểm selector đã trả cùng batch
+   readiness A/B, cleanup A đóng B khi B còn key chờ xử lý; tái hiện bằng socketpair/service model
+   trước khi sửa. Log source cũ chỉ có errno9, chưa đủ gán chính xác stack của oldrun. Nếu xác nhận,
+   chặn đọc lại connection đã đóng; giữ EOF/sendfailure attribution, không nuốt OSError chưa biết.
+   Kiểm actual descriptor close/selector batch/idempotency và positive live-read; chạy native control
+   nếu thay đổi ảnh hưởng vòng đang hoạt động. Không mở kiểm kê mọi EOF/timeout.
+   Resultguard vẫn design/profile-scoped: không rescue/untrap reset, không guarantee mọi pendingbomb
+   đã hoàn tất trước175. OriginalCP098A56chain chưa tái hiện; không épA0/56/inject17/đổi quietdelay.
+   Nếu gap đó thực sự chặn integration, lấy timestamp/source đã có rồi chỉ đo phần còn thiếu.
+   AUD030periodic quaCP100; audit định kỳ kếCP104 (AUD029serious khôngresetcadence).
 2. **KR-B003/KR-F006 — nợ có giới hạn:** [CP057](PROTOCOL.md#codec-stream-boundaries) đã đo stream/
    seq/bounds trong model, không mở lại76split hoặc cấp buffer lớn chỉ để vượt allocationguardFFFFFFFF.
    Full modes/prefix guard/live reset, distance/auth/transport/kim-cứu của reportguard giữ trong RESEARCH;

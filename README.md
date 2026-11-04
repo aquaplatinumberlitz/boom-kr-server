@@ -29,16 +29,15 @@ runtime nào có nguồn, còn thiếu gì và phép kiểm nào giải quyết.
 evidence/hash và câu hỏi; [PLAN](docs/PLAN.md#current-order) giữ duy nhất thứ tự công việc.
 Đây là scope đường bootstrap → login → sảnh → phòng → Battle → kết quả/reset, không kiểm kê toàn client.
 
-CP099 tìm được điểm chặn kết quả trong raw CP098: A17 **có** ở native TCP front, tới sau first175send
-1,596361ms. Report21 mà service dùng để chốt kết quả đã cũ trước lần nổ mới nhất105,479175ms.
-Kết luận trước “không có A17front” đã được sửa bằng audit tức thời AUD029; raw/checkpoint cũ giữ nguyên.
-Các run chronology mới không tái hiện Astate56 và không tự giải ca cũ.
-[Contract/giới hạn](docs/PROTOCOL.md#trap-report-rank-order),
-[recipe/hash](docs/evidence/trap-report-rank-order/README.md). Chưa fullmatch/K6a/LAN/Internet.
+CP100 thêm guard kết quả tùy chọn theo [contract/giới hạn](docs/PROTOCOL.md#result-freshness-guard).
+Hai copy Wine đã chạy hai chu kỳ có native175/180, terrain và TCP guards trong cùng run, không lỗi
+controller/service. Replay đúng body/seq/thời gian CP098 cho thấy guard giữ vòng mở để nhận A17;
+đây là kiểm mô hình riêng. Run mới không tái hiện A56, không chứng minh đã giải mọi race kết quả.
+[Recipe/hash](docs/evidence/result-freshness/README.md). Chưa fullmatch/K6a/LAN/Internet.
 
-CP098 đã merge [PR157](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/157) tại `a6f4ae7`.
-CP099 tự kiểm/chờ PR; review độc lập [waived](docs/evidence/checkpoints/review-waiver.json).
-Audit **AUD029 tức thời quaCP098**; periodic **AUD028/CP096 → CP100** vẫn giữ.
+CP099 đã merge [PR159](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/159) tại `77b19c9`.
+CP100 tự kiểm/chờ PR; review độc lập [waived](docs/evidence/checkpoints/review-waiver.json).
+Audit định kỳ **AUD030/CP100**, mốc kế **CP104**; AUD029 sửa mâu thuẫn CP098 vẫn giữ lịch sử.
 [Yêu cầu chủ dự án](docs/evidence/owner-directives/continuous-work.json): tiếp tục ngay việc kế trong
 PLAN sau mỗi checkpoint/commit/PR, không tự dừng/chờ nhắc.
 
