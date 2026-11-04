@@ -1,6 +1,6 @@
 # KR 00967 — contract tương thích client gốc
 
-Revision kr-legacy-contract-r1; cập nhật05/11/2026 JST (CP096/AUD028).
+Revision kr-legacy-contract-r1; cập nhật05/11/2026 JST (CP097; audit AUD028).
 **Contract có bằng chứng từng phần; chưa nghiệm thu full codec K2**.
 Lộ trình và thứ tự task chỉ giữ ở [REWRITE_PLAN — KRE](PLAN.md).
 Đây là contract của repo server KR. ADR0009 của bản viết lại là nguồn lịch sử để so sánh;
@@ -3481,3 +3481,47 @@ CP092/093historical “chưa tích hợp” và catalog implementationchain `unk
 đã có; không nâng gate. [PLAN](PLAN.md#current-order) ghép currentterrain/selectedTCPguards/hai chu kỳ
 cùng run tiếp. Fullauth/codec/fullvalidator/location/distance/genericmap/recursive/sharedblocker/moving/
 allreset/Windowsvanilla/LANInternet/fullmatch/K5/K6a vẫn mở; periodic sauCP100.
+
+
+<a id="terrain-tcp-guard-cycles"></a>
+### Terrain và TCP replay guards cùng hai chu kỳ — CP097
+
+[Recipe, nguồn tái dùng và hash](evidence/terrain-tcp-guard-cycles/README.md).
+**kr_runtime/confirmed trong scope copy Wine/A-B/ExVillage01/localstub**; production/profile CP094
+không đổi. Reuse CP094route/terrain/native195flags, CP085proxy/frame/body/seq joins và CP096neutral
+input. VN lifecycle/report-confirm giúp định hướng; VN session probe cấp khóa cố định12345 nên không
+chứng minh KR generation. Không copy opcode/layout/key VN, không thêm nativebody hoặc sửa pack/DB.
+
+Run đầu `cycles` có hai nativecycles/14entities/12callbacks/view/52flagsnaps nhưng proxy A-only
+không capture17/19 do report nhốt/chết thực sự từ B: chỉ7replay, target còn thiếu. `peer` đổi selector
+proxy sang **A118/124, B127/sub17,19**, giữ body đã capture và chỉ resequence outer C2S như recipe cũ;
+đã thấy bốn samebody nhưng controller lỗi Left sau Up overshoot, chỉ6entities vòng1. Raw/failures giữ.
+Run `stable` tái dùng ba mẫu neutral giống nhau/pulse45ms để căn A hàng3 trước extras; lowerpair
+inputgap2→3s, fuse vẫn6s. Điều kiện geometry/timing/guard không đổi để làm pass.
+
+Run cuối306,328s có12replay thực qua TCP: mỗi vòng một samebody cho118/124/17/19, cộng bốn body
+vòng1 gửi lại ở vòng2 sau actual39 của chính role. Nativefront/clientseq và upstream/serverseq/SHA/
+bodyorigin/typedfields được nối riêng; proxy-emitted replay không là native writer emission. Rejects:
+118same=`duplicate_bomb_serial`, old=`bomb_round_key_mismatch`;124same=`claim_not_current_or_already_consumed`,
+old=`round_key_mismatch`;127same=`duplicate_report_body`, old=`report_tick_not_forward`.
+Không replay nào thêm ID/broadcast165/forward170. Accepted124/118/127 đều nối actualnativefront.
+A nhận bốn165 (Bomb/Fire hai vòng), nativecapacity/Fire1→2, Start2 trở về1/1 ở cảhai view.
+ReportB17/19 được nhận và phát170 tớiA; tổng170 chỉ bằng bốn acceptedremote reports. Probe không có
+native170entrycounter, nên không suy từng callback170 đã được quan sát từ count hay logservice.
+
+14acceptednative118/159 nonzero/full39 ở mỗi view; **11native158/full13/view**, không12 hay14:
+jobs7/13/14 bị `round_closed` trước deadline, không158/terraincommit; cảba chưa nativeprocess trước
+roomdispose. Actualextra7/14 ở `(3,2)`, xa3ô so vớiroot6/13 `(3,5)`, không tự gắn expectedchain.
+48snapshot195flags/processedsets khớp service;9.456copiednativegetters/9.360arraychecks là emulation
+riêng. Verifier12callback dự kiến fail được giữ; correction nối đúng actualbroadcast158→nativecallbacks
+và exactunsent/fencereasons, không tạo callback giả hoặc sửa raw. Hai121/clock/175302/1803/refresh;
+trước175 cảhai view có Astate0/Bstate1, rankstorage rowtypes1/1 và ranks1/2 trước return ở cảhai vòng.
+Đó là scope observed/profile, không suy enum/authority server gốc hoặc mọi reset.
+
+128terrainrelations,219transportjoins,43nativeeffect/storagechecks,12sourcechecks; các tập không độc lập.
+Stable metadata preparation bị FileNotFoundError ở bước chép reuse JSON **sau khi controller/GDB/profile/
+prefix đã tạo**; shell tiếp chạy. Metadata được ghi lại sau launch và nói rõ boundary, không giả preseal;
+originalfinal harnessSHA/policy_source/profile pins khớp file hiện hành. Fullmatch/K5/K6a/fullauth/codec/
+location/distance/forgedfreshbody/fullvalidator/genericterrain/allreset/vanilla/LANInternet vẫn mở.
+[PLAN](PLAN.md#current-order) tiếp finite native movementapply hai chiều trong currentrun; không dùng
+pairedsamples hoặc counter tổng thay packet→callback→actor proof. AUD028/nextCP100.
