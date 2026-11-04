@@ -1,0 +1,48 @@
+{
+  "id": "AUD029",
+  "trigger": "serious_contradiction",
+  "completed_through": "CP098",
+  "recorded_utc": "2026-11-04T18:40:49.777770+00:00",
+  "auditor": "Codex manual self-audit; independentreviewwaived",
+  "read_files": [
+    "README.md",
+    "docs/PLAN.md",
+    "docs/PROTOCOL.md",
+    "docs/RESEARCH.md",
+    "docs/evidence/current-peer-targets/README.md",
+    "local/research/codex/current-peer-target-r1/rank-boundary-observation.json",
+    "local/research/codex/current-peer-target-r1/tcp-replays.json",
+    "local/research/codex/current-peer-target-r1/target/run.json",
+    "local/research/codex/current-peer-target-r1/target/service-state.json",
+    "local/research/codex/trap-report-rank-r1/old-front-recovery.json"
+  ],
+  "method": "Immediate manualcanonicalREADME→PLAN→PROTOCOL→RESEARCH→CP098evidence vs exactrawnativefront/upstreamproxyframes andservicefinish/rankbroadcast sequence. Decodeallactual_client127framesinR1boundaryindependentlyofservice_entry. Hash/body/seqchecked, nativegetter/callback layerseparate. Thisisnotmechanicalcheckerinferringsemantics.",
+  "findings": [
+    {
+      "id": "F1",
+      "stale": "CP098saidnoA17nativefront/report17absent. actualtcp-replays containsA12717afterrank withservice_entrynull; priorreportselectionfilteredonlyactiveguardloggedframes.",
+      "correction": "RecoverexactA17nativefront/upstreambody/seq/hash; A17front is1.596361ms afterfirst175sendand2.417852msafterrankticktimestamp, coords80,159. Changeabsenceclaimtoobservedlatefront/order; rawCP098/completefindingsimmutable, correctionnewCP099. Do notinferexactnativewriter/175orderwithoutoldtimestamps.",
+      "fixed_in": [
+        "README.md",
+        "docs/PLAN.md",
+        "docs/PROTOCOL.md",
+        "docs/RESEARCH.md",
+        "docs/evidence/current-peer-targets/README.md"
+      ]
+    },
+    {
+      "id": "F2",
+      "stale": "State56vspeer0couldbeinterpretedaspersistentdesyncorunreportedclienttrap. OriginalRANK175 markersnotcommonhosttime.",
+      "correction": "Keepperviewstateboundary unknownchronology; serviceclose/rank precedesactualA17front, creatingconcreteclosed-roundadmissiongap. Tracecurrentnativewriter/timestamp/site beforepolicyfix. Originalroot6blast is319.9274msbeforeranktick, notproofexactnativeAtrap creationtime.",
+      "fixed_in": [
+        "docs/PROTOCOL.md",
+        "docs/RESEARCH.md"
+      ]
+    }
+  ],
+  "remaining": [
+    "FullnativeA56/reportwriter/queue/direct/send→rankentrychainnotyetreproducedwithcorrectobserver; currentrunsnegative/partialcannoteraseCP098oldlatefront.",
+    "No policychange/stateforcing/injectedreport orautogateclosure. Needboundedcurrentnativechronologyandadmissionpolicydecisionwithtest beforefix.",
+    "PeriodiccadencestillAUD028throughCP096,nextCP100. Seriousauditdoesnotresetperiodiccycle."
+  ]
+}

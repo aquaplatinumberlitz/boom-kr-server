@@ -29,16 +29,16 @@ runtime nào có nguồn, còn thiếu gì và phép kiểm nào giải quyết.
 evidence/hash và câu hỏi; [PLAN](docs/PLAN.md#current-order) giữ duy nhất thứ tự công việc.
 Đây là scope đường bootstrap → login → sảnh → phòng → Battle → kết quả/reset, không kiểm kê toàn client.
 
-CP098 đã nối packet UDP cụ thể tới native keycompare/apply và tọa độ đích của actor cả hai chiều
-ở vòng1. Native cập nhật `+7BC/+7C8`; tọa độ hiện tại `+4C/+58` có thể tiến dần sau callback.
-Run vẫn có14entity/11callback/view/48snapshot terrain và12replay TCP guards qua hai result/reset.
-Điểm chặn mới: R1pre175 A tự thấy state56 nhưng peer thấy0 tại hai mốc nhận175 riêng; chưa có
-thứ tự trap/report/rank đủ để kết luận lệch kéo dài. [Contract](docs/PROTOCOL.md#current-peer-targets),
-[recipe/hash](docs/evidence/current-peer-targets/README.md). Chưa fullmatch/K6a/LAN/Internet.
+CP099 tìm được điểm chặn kết quả trong raw CP098: A17 **có** ở native TCP front, tới sau first175send
+1,596361ms. Report21 mà service dùng để chốt kết quả đã cũ trước lần nổ mới nhất105,479175ms.
+Kết luận trước “không có A17front” đã được sửa bằng audit tức thời AUD029; raw/checkpoint cũ giữ nguyên.
+Các run chronology mới không tái hiện Astate56 và không tự giải ca cũ.
+[Contract/giới hạn](docs/PROTOCOL.md#trap-report-rank-order),
+[recipe/hash](docs/evidence/trap-report-rank-order/README.md). Chưa fullmatch/K6a/LAN/Internet.
 
-CP097 đã merge [PR155](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/155) tại `3a0e979`.
-CP098 tự kiểm/chờ PR; review độc lập [waived](docs/evidence/checkpoints/review-waiver.json).
-Audit **AUD028/CP096**, periodic kế **CP100**.
+CP098 đã merge [PR157](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/157) tại `a6f4ae7`.
+CP099 tự kiểm/chờ PR; review độc lập [waived](docs/evidence/checkpoints/review-waiver.json).
+Audit **AUD029 tức thời quaCP098**; periodic **AUD028/CP096 → CP100** vẫn giữ.
 [Yêu cầu chủ dự án](docs/evidence/owner-directives/continuous-work.json): tiếp tục ngay việc kế trong
 PLAN sau mỗi checkpoint/commit/PR, không tự dừng/chờ nhắc.
 

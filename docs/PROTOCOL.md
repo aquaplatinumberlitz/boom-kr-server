@@ -1,6 +1,6 @@
 # KR 00967 — contract tương thích client gốc
 
-Revision kr-legacy-contract-r1; cập nhật05/11/2026 JST (CP098; audit AUD028).
+Revision kr-legacy-contract-r1; cập nhật05/11/2026 JST (CP099; AUD029 tức thời).
 **Contract có bằng chứng từng phần; chưa nghiệm thu full codec K2**.
 Lộ trình và thứ tự task chỉ giữ ở [REWRITE_PLAN — KRE](PLAN.md).
 Đây là contract của repo server KR. ADR0009 của bản viết lại là nguồn lịch sử để so sánh;
@@ -3564,7 +3564,9 @@ no158/noterraincommit. Không chuyển những callback bịfence thành nativep
 
 **Blocker quan sát:** R1pre175 AviewA state56 tại(80,159), BviewA state0 cùngtọađộ; Bactorstate1 cảhai.
 R2Astate0/Bstate1/cùngtọađộ. `RANK175_BEGIN` cũ không có monotonicns, mỗi view chụp khi chính nó nhận175,
-không phải snapshots cùngtick. Front/service không có A17/19; B17/19/current+replays đủ. Managerstorage
+không phải snapshots cùngtick. **Correction AUD029/CP099:** activeguardservice không logA17, nhưng raw nativefront thực cóA17 sau
+first175send1,596361ms; báo cáo cũ lọcservice_entry đã bỏ frame không activeadmission.
+[Audit](evidence/checkpoints/audits/AUD029.json). B17/19/current+replays đủ. Managerstorage
 rowtypes1/1rank1/2 trướcreturn cảhai vòng/view. VerifierAstate0 fail được giữ; items/storagepass chỉ
 chứng minh BombFire/reset/Bdeath/storage, không consistencyA. Chưa gán persistentdesync, rank sai,
 report bị mất hay nguyên nhân cho observer. [PLAN](PLAN.md#current-order) tiếp nativeAtrap/report/
@@ -3574,3 +3576,47 @@ Earlierapply preparation metadata pin-update failedaftercodecompiled/shelllaunch
 postlaunch. Targetrepeat code/profile/GDB/prefix/role/sourcepins đã chuẩn bị/kiểm trướclaunch. Không
 binarypackDBsource/statewrite/gamecall. Fullauth/codec/location/distance/authority/fullvalidator/allreset/
 UDPgrammar/reliability/NAT/vanilla/LANInternet/fullmatch/K5/K6a vẫn mở; AUD028/nextCP100.
+
+
+<a id="trap-report-rank-order"></a>
+### Kết quả dựa trên report21 cũ và A17 đến sau rank — CP099
+
+[Recipe/oldsourcehash/corrections](evidence/trap-report-rank-order/README.md),
+[serious audit AUD029](evidence/checkpoints/audits/AUD029.json).
+**kr_runtime/confirmed hẹp cho frame/timing; design/currentservice implementation cho finishpolicy.**
+Không production/profile/clientpackDB change trong CP099. Reuse14sources CP023B53010/trapB78373/
+deathE6EFDF, CP029170/state28/B33270, CP056reportguard, CP085actualTCP, CP098raw và VNconcept.
+
+**Correction nghiêm trọng của CP098:** đoạn “noA17front” sai vì reportanalysis lọc `service_entry` khácnull.
+Đây là activeadmissionlog, không đầy đủ nativefront. Raw `target/proxy-A-126-client.bin` vàupstream cùngbody
+thật có127/sub17 `[17,0,80,159,4483,5]`, blob8byte`0200000000000000`, nativeframer/typedreader đủ32.
+ExactnativefrontSHA/body/outerseq và reencodedupstream khớp retainedcapture. Report tới proxyfront
+sau first175send **1,596361ms**, sau `rank.monotonic_ns` **2,417852ms**, khôngactiveadmissionlog.
+Service nhận127 chỉ khi `room.active`; saufinish report không vào receive_event/forward170. Không
+lấy missingadmissionlog thành khôngnativewriter/phátframe. CP098completedmanifest/raw bất biến;
+CP099delta và canonical sửa lại, không viết lại thí nghiệm cũ.
+
+OldR1root6broadcast158 trước ranktick319,9274ms (ownA/receiver timestamp); latestrecipient158 trước
+ranktick319,84042ms. LastacceptedA21 trước latestsuccessful158 **105,479175ms**; policy hiện hành chỉ
+đòi bất kỳ other21 sau B19 +8s. Nó không đòi21sau latestblast hoặc invalidatecandidate khi mới trap.
+Do đó source và raw xác định trigger dùng report cũ qua event thayworld; chưa originalserveroutcomelaw.
+Room.finish nằm sau ticknow và trước first175send, là một **bracket**, không gán exactfinishtimestamp.
+NativeA56/175entry của oldCP098 vẫn thiếu hosttimestamp, chưa thứ tự nativewriter/175 hoặc persistent
+state divergence. Không kết luận rankenum sai hoặc causalobservereffect chỉ từ source/lateframe.
+
+Newread-onlychronology đặt timestamp ởB33270/B332B0(state+28)/postwrite, B53010sub17/19/21,
+queue/direct/throttle127, knowntrap/deathreturn, native170/175/180entry. First`trace` probe gán nhầm
+E5E8F0(159)là180 rồi tắt sau bom đầu: **partialobserver**, không suy report/175absence. `fixed` sửa180
+đúngE64950; `control` thêmOSalignsecondary3,3/gap1s, `gated` bỏhighfrequency probes trướcextra6 để giảm
+observeroverheadcandidate. Không runtimegamecall/statewrite/injectreport/đổirankpolicy. Clock→180
+nativechronology capture được nhưng ba run đúng **không tái hiện A56**: A0R1/A12R2cảhai view tại175.
+Negativecontrol không bác oldlateA17 hoặc chứng minh overhead là nguyênnhân. `gated` còn BadFDerror
+connection8 khi cleanup, giữqualitypartial, không nói serviceerrorfree.
+
+Không cộng các check thành cấp chứng minh: fixed3167/control3449/gated507chronorelationships và
+2178/2364/390copiednativeactorgetters riêng. Các run có native2resultreset/currententities/195flags
+nhưng chưa repeatpositiveoldA56chain. Moduleimportanalysisfirstfail và wrongsiteobserver được giữ;
+chỉ evidence/claims đo được nhận. AUD029manualcanonical→rawoldframes sửaabsence/sourcefilter, periodic
+CP100 khôngreset. [PLAN](PLAN.md#current-order) mở optionalresultfreshnessguard/regression/nativecontrol,
+không arbitraryquietdelay hoặc gán law gốc. Fullidentity/auth/codec/authority/allreset/vanilla/LANInternet/
+fullmatch/K5/K6a vẫn chưa nghiệmthu.
