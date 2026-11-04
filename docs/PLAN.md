@@ -1,7 +1,7 @@
 # Kế hoạch server giả lập KR 00967
 
 Nguồn chuẩn của project `boom-kr-server`; bản nhập từ plan đã được dsh1/dsh2 review tại `1eee46d`.
-Cập nhật05/11 JST (CP101): [closed selector readiness](PROTOCOL.md#selector-closed-readiness); CP100/PR161 đã merge; AUD030qua100/periodicCP104.
+Cập nhật05/11 JST (CP102): [drain/local21clear/peerblocker](PROTOCOL.md#drained-result-local-clear); CP101/PR163 đã merge; AUD030qua100/periodicCP104.
 
 
 ### Mục tiêu, baseline và phạm vi
@@ -37,13 +37,13 @@ với client Rust không chứng minh có thể điều khiển client KR bằng
 
 ### Tiến độ hiện hành theo bằng chứng
 
-| Task/mốc | Trạng thái tại CP101 | Nguồn chuẩn |
+| Task/mốc | Trạng thái tại CP102 | Nguồn chuẩn |
 |---|---|---|
 | KRE-004/issue6 | Đã review/merge PR7 và đóng issue:recipe r1 đến local accept;không phải full K1 | [Wine r1](evidence/wine/README.md) |
 | Bootstrap reply | PR8 đã merge;debugger ProcessPatchreturn1,không ép success | [bootstrap evidence](evidence/bootstrap-wire/README.md) |
 | KRE-005a/issue9,R2 | PR10 đã merge:3 cold start cửa sổ/second accept;issue9 còn mở | [R2 evidence](evidence/wine-r2/README.md) |
 | WCP hai-reply | Run CP001 là lịch sử chưa C→S; CP006 đã đo request đầu trên copy tham số hóa | [PROTOCOL](PROTOCOL.md#wcp),[WCP evidence](evidence/wcp/README.md) |
-| KRE-005b/issue14 | CP006–100 đã merge; CP101 closedreadiness tự kiểm/chờ PR; fullround/authority/full auth còn mở | [Q-023](RESEARCH.md#q-023), [service](evidence/probe-service/README.md) |
+| KRE-005b/issue14 | CP006–101 đã merge; CP102 drained/native21localclear/peerblocker tự kiểm/chờ PR; fullround/authority/full auth còn mở | [Q-023](RESEARCH.md#q-023), [service](evidence/probe-service/README.md) |
 | K0/K1 | Chưa nghiệm thu toàn gate;Windows vanilla/control ownership và các điều kiện còn thiếu giữ mở | Gate dưới,[Q-022](RESEARCH.md) |
 | K2a/K2 | Primitive/WCP, CP057stream native/model và CP058–060authcallback137/135/errors0 đã có; fullcodec/authauthority/reconnect và gate chưa pass | [PROTOCOL](PROTOCOL.md#login-auth),[Q-023](RESEARCH.md#q-023) |
 | K3 | Copy đã vẽUI/đóngnotice, A/B/Cprofile đọc sạch và mộtnamedcachewarm được nhận; identityauthority/toàncache/codec/K3 chưa nghiệm thu | [Contract sảnh](PROTOCOL.md#channel-lobby) |
@@ -60,19 +60,18 @@ KRE-005b/issue14 vẫn mở. Các bước dưới là **thứ tự ưu tiên**, 
 xong checkpoint/commit/PR thì chuyển ngay việc kế tiếp trong thứ tự này, không tự dừng/chờ nhắc.
 Một blocker chỉ kết thúc nhánh đo tương ứng; ghi rõ rồi tiếp việc độc lập có thể làm, không tự đóng gate.
 
-1. **KR-X001/S001 — pending bomb trước result trong current fixture:**
-   [CP101](PROTOCOL.md#selector-closed-readiness) đã tái hiện/sửa cachedselectorreadiness bằng real
-   socketpair, không lặp EOFsuite hoặc quy olderrno9 cho exactstack chưa đo. [CP100](PROTOCOL.md#result-freshness-guard)
-   đã kiểm optionalfreshness/modeloldtrace/nativecompatibility; không lặp codec/writer/selectedbody.
-   Bước kế tái dùng actualCP100jobs6/7/13/14 `round_closed`: đối chiếu request/broadcast159/time+6s,
-   nativeentity/process/state và175 để biết pendingjob nào còn hợp lệ trướcfinish, chứ không đoán
-   từ số14entities/10callbacks. Nếu còn bom chưaprocess, kiểm một policy tùy chọn drain-current-jobs
-   trước survivordecision bằng model (fenced/stale/failedsend/legacy/actualfresh21/all-dead) rồi
-   currentnativecontrol với cùng input/probes/timer. Policy làdesign, không recoveredserverlaw;
-   không thêm quietdelay/arbitraryfuse/épA0/56 hoặc inject17. Candidate21 vẫn phải mới sau last158.
-   Profile rescue/kim chưa có eligibilityreset, oldCP098A56chain chưa tái hiện; chỉ mở khi trigger.
-   Nếu drain guard lộ blocker input/report/peermovement khác, ghi raw rồi theo đúng cạnh hiện chạy.
-   AUD030periodic quaCP100; audit định kỳ kếCP104.
+1. **KR-F009/X001/S001 — đồng bộ transition21 tới peer trước kết quả:**
+   [CP102](PROTOCOL.md#drained-result-local-clear) đã có boundedoptionaldrain/141tests/exactoldrawmodel
+   và hai nativecycles14entities/14callbacks; local E6F370vf148/B43320 clears56→26 trước21 có proof.
+   Blocker hiện tại: A26/BviewA56 pre175 cảhai vòng; service chỉ forward17/19, không transition21.
+   Bước kế reuse CP036cached E85E92/E86CA0/prefix6/interface98/vf148 cùng nativeactual21/rawCP102,
+   không tìm lại codec/stateenum hoặc dùng own-onlyACK21 làm peerproof. Optionalcurrentdrainedmode
+   forward đúngprefix6 actualaccepted21 sau current17 tới đối diện, khôngselfecho; kiểm gates/currentmember/
+   active/duplicate/stale/19/reset và không clearpickupmarker theo report21. Trước implement xác định
+   scope/cursor de-dup và source; model rồi native17021 reader/prepost56→26 vàpre175cảhai view trong
+   cùng run. Không arbitrary175delay/stateforcing/injectreport/VNnumber hoặc originalserverlawclaim.
+   Hai cycle không tự fullmatch; cácinput/startupfailCP102 giữraw, không lặp broadEOF/codec.
+   Chỉ mở nextvariant theo trigger actualnativepath. AUD030qua100; audit định kỳ kếCP104.
 2. **KR-B003/KR-F006 — nợ có giới hạn:** [CP057](PROTOCOL.md#codec-stream-boundaries) đã đo stream/
    seq/bounds trong model, không mở lại76split hoặc cấp buffer lớn chỉ để vượt allocationguardFFFFFFFF.
    Full modes/prefix guard/live reset, distance/auth/transport/kim-cứu của reportguard giữ trong RESEARCH;

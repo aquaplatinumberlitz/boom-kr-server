@@ -66,10 +66,14 @@ class ProbeService:
             raise ValueError('profile missing lifecycle fixtures: ' + ', '.join(sorted(missing)))
         self.profile, self.out, self.proxy_ports = profile, out, proxy_ports
         self.result_freshness = False
+        self.result_drain = False
         if 'result_freshness' in profile.data:
-            if profile.data['result_freshness'] != {'mode': 'post_blast_untrapped'}:
+            policy = profile.data['result_freshness']
+            if policy not in ({'mode': 'post_blast_untrapped'},
+                              {'mode': 'post_blast_untrapped_drained'}):
                 raise ValueError('unsupported result_freshness policy')
             self.result_freshness = True
+            self.result_drain = policy['mode'] == 'post_blast_untrapped_drained'
         # Optional measured-profile policy, not stats inferred from a request.
         self.capacity_profile = {}
         if 'bomb_capacity' in profile.data:
@@ -543,6 +547,7 @@ class ProbeService:
         if subtype in (17, 19):
             event['pickup_ineligible'] = {'generation': self.room.generation,
                                           'subtype': subtype, 'report_sequence': sequence,
+                                          'monotonic_ns': report['monotonic_ns'],
                                           'report_sha256': report['frame_sha256']}
             other = next((peer for peer in self.peers() if peer is not event), None)
             if other is None:
@@ -736,12 +741,13 @@ class ProbeService:
                 and not row.get('rejected')
                 and row['monotonic_ns'] > death['monotonic_ns'] for row in remote_reports
                 if self.result_candidate_current(row)
-            ):
+            ) and not self.pending_result_jobs():
                 self.room.finish()
                 alias = 'rank' if death['slot'] == 0 else 'rank_Awin'
                 self.round['rank'] = {'monotonic_ns': now, 'broadcast': self.broadcast(alias, f"rank175-r{self.room.generation}")}
                 if self.result_freshness:
-                    self.round['rank']['policy'] = 'post_blast_untrapped'
+                    self.round['rank']['policy'] = ('post_blast_untrapped_drained' if self.result_drain
+                                                    else 'post_blast_untrapped')
                     self.round['rank']['last_blast'] = dict(self.round.get('result_last_blast', {}))
                 self.state['policy_events'].append({'op': 'finish', 'generation': self.room.generation})
         if self.round.get('rank') and not self.round.get('return') and now - self.round['rank']['monotonic_ns'] >= 5 * 10**9:
@@ -760,20 +766,43 @@ class ProbeService:
             for event in self.peers():
                 event.pop('guest_ready_received', None)
 
+    def pending_result_jobs(self):
+        """Experimental fixture policy; original server's finish rule unknown.
+
+        Capacity release after a native chain does not retire the secondary's
+        own server timer. Keep that successful158 boundary in this mode too.
+        The all-dead branch has no survivor and retains its separate policy.
+        """
+        if not self.result_freshness or not self.result_drain:
+            return []
+        return [bomb['id'] for _, ticket, bomb in self.jobs
+                if bomb['round'] == self.room.generation
+                and self.room.fence.rejection(ticket) is None]
+
     def result_candidate_current(self, report):
         """Opt-in report freshness; not authoritative location or life state.
 
-        This fixture has no rescue/self-escape eligibility transition. A later
-        report21 cannot clear an accepted trap/death marker within the round.
+        The drained experiment permits later accepted21 after17 for result
+        selection only: measured native E6F370 clears56 via vf148 before21.
+        It does not clear pickup eligibility or supersede accepted death19.
+        The original non-drained mode retains permanent17/19 exclusion.
         """
         if not self.result_freshness:
             return True
         peer = next((peer for peer in self.peers() if peer['role'] == report['role']), None)
         if peer is None:
             return False
+        # A subsequent accepted17 must not hide an earlier accepted death19.
+        # Pickup markers describe the latest report, not death history.
+        death = peer.get('death_event')
+        if self.result_drain and death and death['round'] == self.room.generation:
+            return False
         blocked = peer.get('pickup_ineligible')
         if blocked and blocked['generation'] == self.room.generation:
-            return False
+            if not self.result_drain or blocked['subtype'] != 17:
+                return False
+            if report['monotonic_ns'] <= blocked.get('monotonic_ns', report['monotonic_ns']):
+                return False
         blast = self.round.get('result_last_blast')
         return not blast or report['monotonic_ns'] > blast['monotonic_ns']
 

@@ -207,6 +207,151 @@ class ResultFreshnessTests(unittest.TestCase):
         self.addCleanup(service.selector.close)
         self.assertTrue(service.result_freshness)
 
+    def drain(self):
+        self.enable()
+        self.service.result_drain = True
+
+    def test_drain_future_job_blocks_old_ready_result_then_requires_post_blast21(self):
+        self.drain()
+        self.report('B', 19, 10, 1)
+        self.report('A', 21, 10, 8)
+        self.bomb(12)
+        with patch('server.probe_service.time.monotonic', return_value=9):
+            self.tick(9)
+        self.assertTrue(self.service.room.active)
+        self.assertEqual(self.service.pending_result_jobs(), [1])
+        with patch('server.probe_service.time.monotonic', return_value=12.01):
+            self.tick(12)
+        self.assertEqual(self.service.pending_result_jobs(), [])
+        self.assertTrue(self.service.room.active)
+        self.report('A', 21, 11, 13)
+        self.tick(13)
+        self.assertEqual(self.service.round['rank']['policy'], 'post_blast_untrapped_drained')
+        self.assertEqual([r['alias'] for r in self.rank_sends()], ['rank_Awin'] * 2)
+
+    def test_non_drained_mode_retains_finish_with_future_job(self):
+        self.enable()
+        self.report('B', 19, 10, 1)
+        self.report('A', 21, 10, 8)
+        self.bomb(12)
+        with patch('server.probe_service.time.monotonic', return_value=9):
+            self.tick(9)
+        self.assertFalse(self.service.room.active)
+        self.assertEqual(self.service.round['rank']['policy'], 'post_blast_untrapped')
+
+    def test_old_fenced_future_job_does_not_block_new_round_survivor(self):
+        self.drain()
+        self.bomb(30)
+        self.service.room.finish()
+        self.service.start_round()
+        self.report('B', 19, 10, 1)
+        self.report('A', 21, 10, 8)
+        with patch('server.probe_service.time.monotonic', return_value=9):
+            self.tick(9)
+        self.assertEqual(self.service.pending_result_jobs(), [])
+        self.assertFalse(self.service.room.active)
+        self.assertEqual(len(self.service.jobs), 1)
+
+    def test_drained_mode_still_uses_separate_all_dead_branch_with_pending_job(self):
+        self.drain()
+        self.bomb(30)
+        self.report('A', 19, 10, 1)
+        self.report('B', 19, 10, 2)
+        with patch('server.probe_service.time.monotonic', return_value=10):
+            self.tick(10)
+        self.assertFalse(self.service.room.active)
+        self.assertEqual([r['alias'] for r in self.rank_sends()], ['rank_all_dead'] * 2)
+        self.assertEqual(len(self.service.jobs), 1)
+
+    def test_drained_profile_validates_and_enables_only_named_mode(self):
+        profile = copy.deepcopy(self.service.profile)
+        profile.data['result_freshness'] = {'mode': 'post_blast_untrapped_drained'}
+        service = ProbeService(profile, self.service.out, {})
+        self.addCleanup(service.selector.close)
+        self.assertTrue(service.result_freshness and service.result_drain)
+
+    def test_drained_blast_failure_stops_tick_before_survivor_decision(self):
+        self.drain()
+        self.report('B', 19, 10, 1)
+        self.report('A', 21, 10, 8)
+        self.bomb(9)
+        self.service.broadcast = Mock(side_effect=BrokenPipeError('partial drained158'))
+        with self.assertRaises(BrokenPipeError):
+            with patch('server.probe_service.time.monotonic', return_value=9.01):
+                self.tick(9)
+        self.assertTrue(self.service.room.active)
+        self.assertNotIn('rank', self.service.round)
+        self.assertNotIn('result_last_blast', self.service.round)
+
+    def test_chain_released_reservation_still_has_own_job_to_drain(self):
+        self.drain()
+        self.bomb(12)
+        self.service.jobs[0][2]['capacity_release'] = {'root_id': 999}
+        self.assertEqual(self.service.pending_result_jobs(), [1])
+
+    def test_drained_result_accepts_post_trap21_without_clearing_pickup_marker(self):
+        self.drain()
+        self.report('B', 19, 10, 1)
+        self.trap(10, 8)
+        marker = copy.deepcopy(self.a['pickup_ineligible'])
+        self.report('A', 21, 11, 9)
+        self.tick(10)
+        self.assertFalse(self.service.room.active)
+        self.assertEqual(self.service.round['rank']['policy'], 'post_blast_untrapped_drained')
+        self.assertEqual(self.a['pickup_ineligible'], marker)
+        self.assertEqual(marker['subtype'], 17)
+
+    def test_drained_old_or_rejected21_cannot_supersede_newer_trap(self):
+        self.drain()
+        self.report('B', 19, 10, 1)
+        self.report('A', 21, 10, 8)
+        self.trap(11, 9)
+        self.assertEqual(self.report('A', 21, 10, 10)['rejected'], 'report_tick_not_forward')
+        self.tick(10)
+        self.assertTrue(self.service.room.active)
+        self.report('A', 21, 12, 11)
+        self.tick(11)
+        self.assertFalse(self.service.room.active)
+
+    def test_drained_death19_is_not_superseded_by21_or_missing_rank_fixture(self):
+        self.drain()
+        self.service.profile.frames.pop('rank_all_dead')
+        self.report('A', 19, 10, 1)
+        self.report('B', 19, 10, 2)
+        self.report('A', 21, 11, 3)
+        self.tick(11)
+        self.assertTrue(self.service.room.active)
+        self.assertEqual(self.rank_sends(), [])
+        self.assertEqual(self.service.state['policy_events'][-1]['op'], 'all_dead_result_unsupported')
+
+    def test_post_trap21_still_becomes_stale_at_a_later_drained_blast(self):
+        self.drain()
+        self.report('B', 19, 10, 1)
+        self.trap(10, 8)
+        self.report('A', 21, 11, 9)
+        self.bomb(10)
+        with patch('server.probe_service.time.monotonic', return_value=9):
+            self.tick(9)
+        self.assertTrue(self.service.room.active)
+        with patch('server.probe_service.time.monotonic', return_value=10.01):
+            self.tick(10)
+        self.assertTrue(self.service.room.active)
+        self.report('A', 21, 12, 11)
+        self.tick(11)
+        self.assertFalse(self.service.room.active)
+
+    def test_later17_cannot_hide_accepted_death19_when_all_dead_fixture_missing(self):
+        self.drain()
+        self.service.profile.frames.pop('rank_all_dead')
+        self.report('A', 19, 10, 1)
+        self.report('B', 19, 10, 2)
+        self.trap(11, 3)
+        self.report('A', 21, 12, 4)
+        self.tick(11)
+        self.assertEqual(self.a['pickup_ineligible']['subtype'], 17)
+        self.assertTrue(self.service.room.active)
+        self.assertEqual(self.rank_sends(), [])
+
 
 if __name__ == '__main__':
     unittest.main()
