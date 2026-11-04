@@ -1,7 +1,7 @@
 {
   "schema": "kre-checkpoints-v1",
-  "last_id": "CP092",
-  "completed_count": 92,
+  "last_id": "CP093",
+  "completed_count": 93,
   "audit_interval": 4,
   "last_periodic_audit": 92,
   "next_periodic_audit": "CP096",
@@ -554074,6 +554074,774 @@
           "reason": "CP092finiteflags/source/firstpartial+fixed/partialbindcoverage/seedreset/AUD027currentPR143/nextscopedterrainshadowmodel; no implementationexpansion or gatepromotion."
         }
       ]
+    },
+    {
+      "id": "CP093",
+      "previous": "CP092",
+      "lifecycle": "complete",
+      "recorded_utc": "2026-11-04T14:58:15.584141+00:00",
+      "context_commit": "cac815de29b9b9d15b4b82f78edc0003813723d6",
+      "question": "Can an independent explicitlyscopedterraincandidate reproduce retainednativeprocessedIDs/boxdeltas/all195phaseflags/reset beforeanyproductionintegration/newWine?",
+      "scope": "KRE-056/#146.22sourcefirstrefs currenttargetgrid/class/CP090091092nativecallbacks/195snapshots plusoldKR/VN. Newoffline tools/terrain_shadow.py no service/legacyimports/socket/report.4modelconstraintsand432relations/38retainednativecallbacks;actualmapSHA/datafieldvariant checks, independentnativeoracles. No newWine/functionbody/sourcebinarypackDB edit/productionchange. AUD027through092,next096.",
+      "owner": "Codex",
+      "reviewer": "Codex",
+      "artifacts": [
+        {
+          "name": "CA-r2-login-logout.exe",
+          "sha256": "660447c293ce92270cb9b5815331bca976e8f156366e1fe50b217b6c12e60ce3"
+        },
+        {
+          "name": "CA-r2-stage-social.exe",
+          "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+        },
+        {
+          "name": "CA-r2-stage-social.exe Bcopy",
+          "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+        },
+        {
+          "name": "modO.bin",
+          "sha256": "a08950c833d3acab8281049def7b3dc96b221f107eeda01da3a548e34b91dce5"
+        },
+        {
+          "name": "CA-r2-stage-social.exe Ccopy",
+          "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+        },
+        {
+          "name": "CALauncher.exe",
+          "sha256": "8cc2668bec7a4a0281f1acab26ab3487c4b4e5047d7ce75ab32b299ef16f527d"
+        },
+        {
+          "name": "nmcogame.dll",
+          "sha256": "25746a9a0e29deb7abb70ed1889c01072eb7343d1cafb4a9ffc76b69fac3ae9d"
+        },
+        {
+          "name": "nmco3.dll",
+          "sha256": "7e038696ec69db579f71e029da66f5b5500c56375ff77b24d93529ba7faf9493"
+        }
+      ],
+      "locators": [
+        "BaselineCP092/PR145 cac815de29b9b9d15b4b82f78edc0003813723d6;actualtargetExVillage01payloadSHAaeb57ffdb27a1405bd2ae3d29f229174ae5d584fc84eaf4e87884fe8518f86a4",
+        "RetainednativeCP090tiles-gated8362dc..5callbacksx2views;CP091housee959da..4x2;CP092fixedbdc781..10x2 plus44snapshots195cells; sourceexactfullSHAs inverification.json.",
+        "Actual118/159geometry→model inputs, nativecallbackpointerjoins→expectedprocessedsets;nativeEA0B10queryendpointvalues andCP092195beforeafterflags/boxdeltas/resetseed areexpected independentoutputs. No generatedmodelgolden acceptedasnativeproof."
+      ],
+      "findings": [
+        {
+          "summary": "NewindependentofflinecandidateTerrainShadow/Bomb/Blast: explicitgrid0floor1solid2box/mapSHAmetadata/owners0,1/power<=2;rejectunknown/outside/overlap/seenIDbeforemutation. Immutableterrainpercascade/firstoccupiedbombstop/FIFOaremodelchoices, oldcallbackno-op/newStartreset; notgeneralnativeorderlaw.",
+          "source": "design",
+          "status": "candidate",
+          "method": "design",
+          "canonical": "docs/PROTOCOL.md#terrain-shadow",
+          "limits": "CurrentExVillage01/simplepower1..2/owners0,1/nonoverlap/fourrays only. Immutableterrainpercascade/firstoccupiedbombstop/FIFO aremodelchoices, notuniversalnativeorderlaw. No productionintegration/nativefreshacceptance/fullmapvariants/codec/auth/authority/fullvalidator/gates. No newWine/nativeRE/productionchange;oldnativeexpectedoutputs independent ofcandidateimplementation. mapSHAclassmetadataonly/externalactualpayloadbyteschecked.105server/18checkpointtestsunchangedreuse,AUD027through092/next096.",
+          "evidence": [
+            "E023",
+            "E024",
+            "E009"
+          ]
+        },
+        {
+          "summary": "432offlinecomparisonrelations/38retainednativecallbacks matchactualprocessedsets andqueryendpointvalues CP090/091/092, includingCP091oldboxclear/newroot2,3→house. AllCP092195before+afterflags/callback/exactboxdeltas/secondStartseed match. Rawexpectednativeoutputsindependent,pinactualmapbytes/sourceSHAs/knownvariant118fields/nonzero159prerequisite.",
+          "source": "design",
+          "status": "candidate",
+          "method": "emulation",
+          "canonical": "docs/PROTOCOL.md#terrain-shadow",
+          "limits": "CurrentExVillage01/simplepower1..2/owners0,1/nonoverlap/fourrays only. Immutableterrainpercascade/firstoccupiedbombstop/FIFO aremodelchoices, notuniversalnativeorderlaw. No productionintegration/nativefreshacceptance/fullmapvariants/codec/auth/authority/fullvalidator/gates. No newWine/nativeRE/productionchange;oldnativeexpectedoutputs independent ofcandidateimplementation. mapSHAclassmetadataonly/externalactualpayloadbyteschecked.105server/18checkpointtestsunchangedreuse,AUD027through092/next096.",
+          "evidence": [
+            "E013",
+            "E006",
+            "E005",
+            "E010"
+          ]
+        },
+        {
+          "summary": "22sourcefirstreferences avoidnewWine/getter/mapformat/wholeclientREforalreadyretainednormalcases. ProductionCP089unchanged; onlymodelcandidate/sourceoraclecoverageadded. Beforeoptionalintegrationmustexplicitpinprofile/bounds/roster/variants/epoch/atomicbroadcastcommit andnewnative2cycleacceptance beyondoldclearcells.",
+          "source": "design",
+          "status": "design",
+          "method": "documentation",
+          "canonical": "docs/PROTOCOL.md#terrain-shadow",
+          "limits": "CurrentExVillage01/simplepower1..2/owners0,1/nonoverlap/fourrays only. Immutableterrainpercascade/firstoccupiedbombstop/FIFO aremodelchoices, notuniversalnativeorderlaw. No productionintegration/nativefreshacceptance/fullmapvariants/codec/auth/authority/fullvalidator/gates. No newWine/nativeRE/productionchange;oldnativeexpectedoutputs independent ofcandidateimplementation. mapSHAclassmetadataonly/externalactualpayloadbyteschecked.105server/18checkpointtestsunchangedreuse,AUD027through092/next096.",
+          "evidence": [
+            "E010",
+            "E016",
+            "E017"
+          ]
+        }
+      ],
+      "verification": [
+        {
+          "check": "4modelconstraints pass;432independentnativecomparisonrelations/38callbacks/CP092all195phaseflags+deltas/reset, actualpayload/sourceidentitypins",
+          "result": "pass",
+          "evidence": [
+            "E009",
+            "E013",
+            "E006"
+          ],
+          "limits": "CurrentExVillage01/simplepower1..2/owners0,1/nonoverlap/fourrays only. Immutableterrainpercascade/firstoccupiedbombstop/FIFO aremodelchoices, notuniversalnativeorderlaw. No productionintegration/nativefreshacceptance/fullmapvariants/codec/auth/authority/fullvalidator/gates. No newWine/nativeRE/productionchange;oldnativeexpectedoutputs independent ofcandidateimplementation. mapSHAclassmetadataonly/externalactualpayloadbyteschecked.105server/18checkpointtestsunchangedreuse,AUD027through092/next096."
+        },
+        {
+          "check": "docs/7catalog/artifacts5of5/diff;reuse105server/18checkpointtests unchanged,AUD027next096",
+          "result": "pass",
+          "evidence": [
+            "E007",
+            "E004",
+            "E003"
+          ],
+          "limits": "Mechanicalconsistency/models notnewnativegameexecution/productionintegration/originalauthority/gate/independentreviewproof."
+        }
+      ],
+      "evidence": [
+        {
+          "id": "E001",
+          "kind": "repository",
+          "path": "docs/evidence/terrain-shadow/README.md",
+          "bytes": 3353,
+          "sha256": "1a8136702f62585d1d17a3906a0fc05b20009ad9c2fe8d3232931412bf9b81ec"
+        },
+        {
+          "id": "E002",
+          "kind": "local",
+          "path": "local/research/codex/terrain-shadow-r1/append_checkpoint.py",
+          "bytes": 7739,
+          "sha256": "e806cc7ae1b4240545f040ba082e345a5bf2af962513b10221146cbb364c0995"
+        },
+        {
+          "id": "E003",
+          "kind": "local",
+          "path": "local/research/codex/terrain-shadow-r1/artifacts-check.txt",
+          "bytes": 253,
+          "sha256": "649c6624aa6d317dfc1db5e16fea683cfbc9d9cf4dd3df11c0d70e57409054a0"
+        },
+        {
+          "id": "E004",
+          "kind": "local",
+          "path": "local/research/codex/terrain-shadow-r1/catalog-tests.txt",
+          "bytes": 105,
+          "sha256": "56392c2158d10fbe8120bcef90768e75e56241d17ba3d92757f1baa58eb2dacc"
+        },
+        {
+          "id": "E005",
+          "kind": "local",
+          "path": "local/research/codex/terrain-shadow-r1/compare.py",
+          "bytes": 5903,
+          "sha256": "5772c04c24dd182026377c6fe2157526937bac77a52dc61ee0293a2b8538794a"
+        },
+        {
+          "id": "E006",
+          "kind": "local",
+          "path": "local/research/codex/terrain-shadow-r1/comparison.txt",
+          "bytes": 46,
+          "sha256": "69242185e6f555dcc34fa89967c385a24c5ce87248f991527789476723ba63f3"
+        },
+        {
+          "id": "E007",
+          "kind": "local",
+          "path": "local/research/codex/terrain-shadow-r1/docs-check.txt",
+          "bytes": 175,
+          "sha256": "d126812102dc4715ee6457a3c44055b5087fc683a1f42d242e10d6dd51763ebd"
+        },
+        {
+          "id": "E008",
+          "kind": "local",
+          "path": "local/research/codex/terrain-shadow-r1/issue-body.md",
+          "bytes": 1085,
+          "sha256": "a744cb4a12930853036b75c5cf5e284c4abada9ba57951229fac2366f3271de9"
+        },
+        {
+          "id": "E009",
+          "kind": "local",
+          "path": "local/research/codex/terrain-shadow-r1/model-tests.txt",
+          "bytes": 102,
+          "sha256": "feabb4add9e2ca3374e538560634d1ec97dc4f4ce89aab12f3d726e36ea9b2f6"
+        },
+        {
+          "id": "E010",
+          "kind": "local",
+          "path": "local/research/codex/terrain-shadow-r1/reuse-question.json",
+          "bytes": 5890,
+          "sha256": "0a9567b7b36cc3d3498ef1a1471069c97fd7b38567ac2cde8a567e1839d9758e"
+        },
+        {
+          "id": "E011",
+          "kind": "local",
+          "path": "local/research/codex/terrain-shadow-r1/reuse.py",
+          "bytes": 3677,
+          "sha256": "36bc94784b4c34eb2adaeef7bc3d8adbd3f144894c6923af7e2e0061d7b7f14c"
+        },
+        {
+          "id": "E012",
+          "kind": "local",
+          "path": "local/research/codex/terrain-shadow-r1/sync_docs.py",
+          "bytes": 8469,
+          "sha256": "bbca969b573ca8cf0675b0e9552fc12805850e13b18f029ad5de887cfa327974"
+        },
+        {
+          "id": "E013",
+          "kind": "local",
+          "path": "local/research/codex/terrain-shadow-r1/verification.json",
+          "bytes": 26327,
+          "sha256": "ae9646f04c40e11da2033f3487f0e411e9b2460f249d1e1a5cd97a664e7e78fc"
+        },
+        {
+          "id": "E014",
+          "kind": "local",
+          "path": "local/research/codex/terrain-shadow-r1/cp093-snapshot/README.md",
+          "bytes": 3731,
+          "sha256": "4e34d34146530dfa3160839a7ab60cc584ecab89cf1530da71938847ad036241"
+        },
+        {
+          "id": "E015",
+          "kind": "local",
+          "path": "local/research/codex/terrain-shadow-r1/cp093-snapshot/docs/COVERAGE.md",
+          "bytes": 92409,
+          "sha256": "4de5ffda88bc3421216b6777639e11f64472041e0ef65be293343f6deb2c506b"
+        },
+        {
+          "id": "E016",
+          "kind": "local",
+          "path": "local/research/codex/terrain-shadow-r1/cp093-snapshot/docs/PLAN.md",
+          "bytes": 31061,
+          "sha256": "db8166c8e71c32aeead0d301b6a5016136cc1b0d1eed37693cb950090382cf7d"
+        },
+        {
+          "id": "E017",
+          "kind": "local",
+          "path": "local/research/codex/terrain-shadow-r1/cp093-snapshot/docs/PROTOCOL.md",
+          "bytes": 288695,
+          "sha256": "13610ceebf14dd5ceba71bccafc8cf32518a27c302d007f4ab0f9564dbb3b5c7"
+        },
+        {
+          "id": "E018",
+          "kind": "local",
+          "path": "local/research/codex/terrain-shadow-r1/cp093-snapshot/docs/RESEARCH.md",
+          "bytes": 30589,
+          "sha256": "91d391ae5fad90cc9b7e00c4add3e5c20b6ed17909a93e2d96c8e32319ec2e97"
+        },
+        {
+          "id": "E019",
+          "kind": "local",
+          "path": "local/research/codex/terrain-shadow-r1/cp093-snapshot/docs/evidence/map-flags/README.md",
+          "bytes": 6014,
+          "sha256": "caca1e0c1a34b9245149fc96a59ac3caa1ea50eb18da16a709735e62ca654e31"
+        },
+        {
+          "id": "E020",
+          "kind": "local",
+          "path": "local/research/codex/terrain-shadow-r1/cp093-snapshot/docs/evidence/terrain-shadow/README.md",
+          "bytes": 3353,
+          "sha256": "1a8136702f62585d1d17a3906a0fc05b20009ad9c2fe8d3232931412bf9b81ec"
+        },
+        {
+          "id": "E021",
+          "kind": "local",
+          "path": "local/research/codex/terrain-shadow-r1/cp093-snapshot/docs/features.json",
+          "bytes": 96079,
+          "sha256": "dfdf234127409c1dac0429627b280780d43e77aa6c5ef4b221dd4d4eb4e2f290"
+        },
+        {
+          "id": "E022",
+          "kind": "local",
+          "path": "local/research/codex/terrain-shadow-r1/cp093-snapshot/tools/README.md",
+          "bytes": 4776,
+          "sha256": "03c2411895ac02031cf974e860f134101b85f521117bea2f8beabf2c926913d8"
+        },
+        {
+          "id": "E023",
+          "kind": "local",
+          "path": "local/research/codex/terrain-shadow-r1/cp093-snapshot/tools/terrain_shadow.py",
+          "bytes": 4228,
+          "sha256": "9711aba89d342c216d091e18aa9099cdfef8d1c169146a51fdaa11ef48e6a9ec"
+        },
+        {
+          "id": "E024",
+          "kind": "local",
+          "path": "local/research/codex/terrain-shadow-r1/cp093-snapshot/tools/test_terrain_shadow.py",
+          "bytes": 2384,
+          "sha256": "6aaf971b9e95fc2d77a908f6927ae5c5dc00718151602d5009b3255adde18048"
+        },
+        {
+          "id": "E025",
+          "kind": "local",
+          "path": "local/research/codex/map-chain-r1/ExVillage01.map",
+          "bytes": 1814,
+          "sha256": "aeb57ffdb27a1405bd2ae3d29f229174ae5d584fc84eaf4e87884fe8518f86a4"
+        },
+        {
+          "id": "E026",
+          "kind": "local",
+          "path": "local/research/codex/map-chain-r1/map-grid.json",
+          "bytes": 46113,
+          "sha256": "c20714d12e0cabe5667f2ea7fcd2279f5c7493f18d0913889f502f7b75344eab"
+        },
+        {
+          "id": "E027",
+          "kind": "local",
+          "path": "local/research/codex/map-chain-r1/static-classes.json",
+          "bytes": 30118,
+          "sha256": "85bf2ee5f96433bc944c3090ff12c298ba034ef951aadea89fbae5a60bcdb261"
+        },
+        {
+          "id": "E028",
+          "kind": "local",
+          "path": "local/research/codex/map-chain-r1/tiles-gated/run.json",
+          "bytes": 177526,
+          "sha256": "8362dc27134732e4468201266d57e6b1657c9dafc7bdace5b9df43c5845177fe"
+        },
+        {
+          "id": "E029",
+          "kind": "local",
+          "path": "local/research/codex/map-chain-r1/chain-summary.json",
+          "bytes": 44272,
+          "sha256": "2167a5aec236c86ee05748558365cb7066d175bebd90b5ad5bc96623c01eedfe"
+        },
+        {
+          "id": "E030",
+          "kind": "local",
+          "path": "local/research/codex/map-chain-r1/tile-runtime.json",
+          "bytes": 141972,
+          "sha256": "3ca3c847a39b6ae9cb278e4f45814001d8f6811f04de83f94ded72dcbd6ae6f3"
+        },
+        {
+          "id": "E031",
+          "kind": "local",
+          "path": "local/research/codex/house-after-box-r1/house/run.json",
+          "bytes": 193789,
+          "sha256": "e959da600fa313ce56fc274064a295b6785a263748a2460e7efabd8719cfa2e9"
+        },
+        {
+          "id": "E032",
+          "kind": "local",
+          "path": "local/research/codex/house-after-box-r1/chain-summary.json",
+          "bytes": 35914,
+          "sha256": "a3714cf287db13f26f9676052d10d9416b06634e32abf5586e468f8499e2925d"
+        },
+        {
+          "id": "E033",
+          "kind": "local",
+          "path": "local/research/codex/house-after-box-r1/tile-runtime.json",
+          "bytes": 108542,
+          "sha256": "bb2c114c3c0f798631d40f5fd2e1db15e7cd69f84f09779027508f2685e9bbe4"
+        },
+        {
+          "id": "E034",
+          "kind": "local",
+          "path": "local/research/codex/map-flags-r1/fixed/run.json",
+          "bytes": 308608,
+          "sha256": "bdc781bed7406095aa6b61fc44cae4c110aeaa5546f5c07320cbd86740eec90b"
+        },
+        {
+          "id": "E035",
+          "kind": "local",
+          "path": "local/research/codex/map-flags-r1/chain-summary.json",
+          "bytes": 87242,
+          "sha256": "358fb82929f58dc2781ef599d60ce846ee07f5506bdf1dce11787b10a1650a91"
+        },
+        {
+          "id": "E036",
+          "kind": "local",
+          "path": "local/research/codex/map-flags-r1/tile-runtime.json",
+          "bytes": 280644,
+          "sha256": "418cfc7b4dce35845c08c7b94b7b66c13937b325c1784d1e764805048f64fdfd"
+        },
+        {
+          "id": "E037",
+          "kind": "local",
+          "path": "local/research/codex/map-flags-r1/fixed/flags-A/r1-i0-clock-1763452812708503.json",
+          "bytes": 52582,
+          "sha256": "45524ffb7493728dc6f290c3200b03ba506c64f0e13aaa082165ce050ad96071"
+        },
+        {
+          "id": "E038",
+          "kind": "local",
+          "path": "local/research/codex/map-flags-r1/fixed/flags-A/r1-i1-after158-1763487880162874.json",
+          "bytes": 52585,
+          "sha256": "d91b77915bab0d67537028d43d17135e93b6ce5f3b59921e3ebb1cf5501771d5"
+        },
+        {
+          "id": "E039",
+          "kind": "local",
+          "path": "local/research/codex/map-flags-r1/fixed/flags-A/r1-i1-before158-1763483917369384.json",
+          "bytes": 52586,
+          "sha256": "b1d4ef56fd004e4d42a28a394d8cc5a0fcd5c68340ad1f6540e4a8cd41b75f51"
+        },
+        {
+          "id": "E040",
+          "kind": "local",
+          "path": "local/research/codex/map-flags-r1/fixed/flags-A/r1-i2-after158-1763488414111518.json",
+          "bytes": 52585,
+          "sha256": "dcf17baeb0bede658544b7c625b1dfd543e75da6f4a25c684e11ed6760243cee"
+        },
+        {
+          "id": "E041",
+          "kind": "local",
+          "path": "local/research/codex/map-flags-r1/fixed/flags-A/r1-i2-before158-1763488363119092.json",
+          "bytes": 52586,
+          "sha256": "4511120a3178995be2b78e7f3c3aa131e187af2189d6066be6819486c29b14cc"
+        },
+        {
+          "id": "E042",
+          "kind": "local",
+          "path": "local/research/codex/map-flags-r1/fixed/flags-A/r1-i3-after158-1763488496617393.json",
+          "bytes": 52585,
+          "sha256": "5fc96d02f486c8e6077dacf0b9fc87e19c017bfda56f1292ab600c31c24b5fcd"
+        },
+        {
+          "id": "E043",
+          "kind": "local",
+          "path": "local/research/codex/map-flags-r1/fixed/flags-A/r1-i3-before158-1763488443906205.json",
+          "bytes": 52586,
+          "sha256": "94dbfff5a4736a5cf9a5da7472d9d85d7956ade2f2ca394bc0b11d455db04503"
+        },
+        {
+          "id": "E044",
+          "kind": "local",
+          "path": "local/research/codex/map-flags-r1/fixed/flags-A/r1-i4-after158-1763497567407971.json",
+          "bytes": 52585,
+          "sha256": "17471ba8f99927896db2ab6fddc6466da5996c67bf2692f09a224d32f403b0fa"
+        },
+        {
+          "id": "E045",
+          "kind": "local",
+          "path": "local/research/codex/map-flags-r1/fixed/flags-A/r1-i4-before158-1763494785046400.json",
+          "bytes": 52586,
+          "sha256": "5e7ab9996f7c9622e050dc3298c49a4c144b0e0f020c83286456c03462ec6faf"
+        },
+        {
+          "id": "E046",
+          "kind": "local",
+          "path": "local/research/codex/map-flags-r1/fixed/flags-A/r1-i5-after158-1763498011457633.json",
+          "bytes": 52585,
+          "sha256": "54757d5f699d2cd15c88127961461cccf202b050dfe35b888eadb50d50411c0a"
+        },
+        {
+          "id": "E047",
+          "kind": "local",
+          "path": "local/research/codex/map-flags-r1/fixed/flags-A/r1-i5-before158-1763497958952045.json",
+          "bytes": 52586,
+          "sha256": "6f3be7daefd8f4ccef6f2da677c8b7d412912cdbfae7a2e82064142269854093"
+        },
+        {
+          "id": "E048",
+          "kind": "local",
+          "path": "local/research/codex/map-flags-r1/fixed/flags-A/r2-i10-after158-1763611408289409.json",
+          "bytes": 52587,
+          "sha256": "6add0e9b845430f2e7bbbc664c8683c5f30810bc29e6aaf7b29f782a10038e38"
+        },
+        {
+          "id": "E049",
+          "kind": "local",
+          "path": "local/research/codex/map-flags-r1/fixed/flags-A/r2-i10-before158-1763611361957427.json",
+          "bytes": 52588,
+          "sha256": "883a7a2a497727b895f6ecde3ce7046036aa8a7cf28d3f3c097669f90a776a4a"
+        },
+        {
+          "id": "E050",
+          "kind": "local",
+          "path": "local/research/codex/map-flags-r1/fixed/flags-A/r2-i5-clock-1763566517863489.json",
+          "bytes": 52583,
+          "sha256": "2b43e83f898d150fb8b844825748977ddb0c101003a12cbe5a6a6e9a1dee4c12"
+        },
+        {
+          "id": "E051",
+          "kind": "local",
+          "path": "local/research/codex/map-flags-r1/fixed/flags-A/r2-i6-after158-1763601386830280.json",
+          "bytes": 52586,
+          "sha256": "3373c03f3c6a2b25f541ef5783673496f737d0a2ea847867eb5df1efce1a2cb3"
+        },
+        {
+          "id": "E052",
+          "kind": "local",
+          "path": "local/research/codex/map-flags-r1/fixed/flags-A/r2-i6-before158-1763597567612900.json",
+          "bytes": 52587,
+          "sha256": "1f4f913291f19051b6466fe65e3e6b7a294873e0bf1487f267db9dbdb5d051ea"
+        },
+        {
+          "id": "E053",
+          "kind": "local",
+          "path": "local/research/codex/map-flags-r1/fixed/flags-A/r2-i7-after158-1763601851581541.json",
+          "bytes": 52586,
+          "sha256": "d2b7119507f8049924c104b07d0aa85f568ee54dc8862e804aa574ec6859c8ce"
+        },
+        {
+          "id": "E054",
+          "kind": "local",
+          "path": "local/research/codex/map-flags-r1/fixed/flags-A/r2-i7-before158-1763601798648883.json",
+          "bytes": 52587,
+          "sha256": "761a4a9dd90c7bad6541b22100bcfdc2712f80f6bc10f3b4a8222fb3cec726a7"
+        },
+        {
+          "id": "E055",
+          "kind": "local",
+          "path": "local/research/codex/map-flags-r1/fixed/flags-A/r2-i8-after158-1763601928054650.json",
+          "bytes": 52586,
+          "sha256": "1f75f04552820167e2ac69cdd862d94def1a8e59d25ff875bb9601d815c88930"
+        },
+        {
+          "id": "E056",
+          "kind": "local",
+          "path": "local/research/codex/map-flags-r1/fixed/flags-A/r2-i8-before158-1763601877239234.json",
+          "bytes": 52587,
+          "sha256": "8c4fcaa258cedd249fa7ddd8665b8ac45de177f2155fd2d7acec66f0f403c96d"
+        },
+        {
+          "id": "E057",
+          "kind": "local",
+          "path": "local/research/codex/map-flags-r1/fixed/flags-A/r2-i9-after158-1763610970515953.json",
+          "bytes": 52586,
+          "sha256": "87da09dac2295001c21241e3290c50edcbb3ab44b95374e7d39f02f5d7f1f9b3"
+        },
+        {
+          "id": "E058",
+          "kind": "local",
+          "path": "local/research/codex/map-flags-r1/fixed/flags-A/r2-i9-before158-1763608148541166.json",
+          "bytes": 52587,
+          "sha256": "43a7bacba342f6783912cd0a8801a529831394483400cb0d10990506601ebd7b"
+        },
+        {
+          "id": "E059",
+          "kind": "local",
+          "path": "local/research/codex/map-flags-r1/fixed/flags-B/r1-i0-clock-1763452805050756.json",
+          "bytes": 52583,
+          "sha256": "7d4fc259dafe577d4a3f56184f50b751e6a032ae0c74d60b36f8c2a86852a957"
+        },
+        {
+          "id": "E060",
+          "kind": "local",
+          "path": "local/research/codex/map-flags-r1/fixed/flags-B/r1-i1-after158-1763487881665285.json",
+          "bytes": 52586,
+          "sha256": "f07f3dba3a0810d19e92dd92b4d9738f5965163650089c7a82f46d707e8ecaa9"
+        },
+        {
+          "id": "E061",
+          "kind": "local",
+          "path": "local/research/codex/map-flags-r1/fixed/flags-B/r1-i1-before158-1763483971978613.json",
+          "bytes": 52587,
+          "sha256": "8205d345ed1300e2a8147ca750c299cd80c9b3a48bbce52a04edd50ad1e8ba66"
+        },
+        {
+          "id": "E062",
+          "kind": "local",
+          "path": "local/research/codex/map-flags-r1/fixed/flags-B/r1-i2-after158-1763488284330280.json",
+          "bytes": 52586,
+          "sha256": "35a011498251728090a46af21b5f3023d80558af1a73ee408c7351bd082817c8"
+        },
+        {
+          "id": "E063",
+          "kind": "local",
+          "path": "local/research/codex/map-flags-r1/fixed/flags-B/r1-i2-before158-1763488227467329.json",
+          "bytes": 52587,
+          "sha256": "91dd9ecfc1b787c0ebdd384456c8e9f0434f8c04ebadb3f2916b11220657050e"
+        },
+        {
+          "id": "E064",
+          "kind": "local",
+          "path": "local/research/codex/map-flags-r1/fixed/flags-B/r1-i3-after158-1763488370545348.json",
+          "bytes": 52586,
+          "sha256": "c0a677858672d457608a72a8023106dbb2770673a135afc4e11ad1f4e0990253"
+        },
+        {
+          "id": "E065",
+          "kind": "local",
+          "path": "local/research/codex/map-flags-r1/fixed/flags-B/r1-i3-before158-1763488314364757.json",
+          "bytes": 52587,
+          "sha256": "5e88a0c90eabb1c700328d91ae458c82d1a1450c0373a443d9b356bc1b6fef90"
+        },
+        {
+          "id": "E066",
+          "kind": "local",
+          "path": "local/research/codex/map-flags-r1/fixed/flags-B/r1-i4-after158-1763497494904115.json",
+          "bytes": 52586,
+          "sha256": "c503488dc3842836ec52f9c609d9647d5e5e3285724fd531191df381e9d66061"
+        },
+        {
+          "id": "E067",
+          "kind": "local",
+          "path": "local/research/codex/map-flags-r1/fixed/flags-B/r1-i4-before158-1763494792625777.json",
+          "bytes": 52587,
+          "sha256": "eb311f18ef241686977e43202155be2c217441d0817b956ab2645a29cc0f4a1d"
+        },
+        {
+          "id": "E068",
+          "kind": "local",
+          "path": "local/research/codex/map-flags-r1/fixed/flags-B/r1-i5-after158-1763497833870682.json",
+          "bytes": 52586,
+          "sha256": "7feed80e0fabc815545f539a4791c93a39020b7fa4fe5eb30cc6f6f800aa3ec6"
+        },
+        {
+          "id": "E069",
+          "kind": "local",
+          "path": "local/research/codex/map-flags-r1/fixed/flags-B/r1-i5-before158-1763497781051904.json",
+          "bytes": 52587,
+          "sha256": "e006bac05e14bc145b4d3cb37df5b9c4aa9e4e72104c809232599984d71d1de5"
+        },
+        {
+          "id": "E070",
+          "kind": "local",
+          "path": "local/research/codex/map-flags-r1/fixed/flags-B/r2-i10-after158-1763611334738853.json",
+          "bytes": 52587,
+          "sha256": "8fa72c08dbf2813805f7ada8684223bc80bb5bcce1e32fa0dbf695f07c03c8b7"
+        },
+        {
+          "id": "E071",
+          "kind": "local",
+          "path": "local/research/codex/map-flags-r1/fixed/flags-B/r2-i10-before158-1763611278524152.json",
+          "bytes": 52588,
+          "sha256": "0e08cfc33e43c0b2561a849923be17625b2eacafb659707553ade7ddb858e9d4"
+        },
+        {
+          "id": "E072",
+          "kind": "local",
+          "path": "local/research/codex/map-flags-r1/fixed/flags-B/r2-i5-clock-1763566546009074.json",
+          "bytes": 52583,
+          "sha256": "e28f5b87a26e186a5b7b59943817d273322549a539683d475f4144adee456ecd"
+        },
+        {
+          "id": "E073",
+          "kind": "local",
+          "path": "local/research/codex/map-flags-r1/fixed/flags-B/r2-i6-after158-1763601205987316.json",
+          "bytes": 52586,
+          "sha256": "527f1f6803cb3b52d007bdbc1bb93aa5f58b31a9afff67d43cf62cd8be0da1ca"
+        },
+        {
+          "id": "E074",
+          "kind": "local",
+          "path": "local/research/codex/map-flags-r1/fixed/flags-B/r2-i6-before158-1763597495972345.json",
+          "bytes": 52587,
+          "sha256": "6ea8d511363fb8378a9aff402a5425840e9ae947890703140aaf020d2e98233f"
+        },
+        {
+          "id": "E075",
+          "kind": "local",
+          "path": "local/research/codex/map-flags-r1/fixed/flags-B/r2-i7-after158-1763601614652756.json",
+          "bytes": 52586,
+          "sha256": "ee203081cbe57b7d2cfba0ec415c0b070ef3a63e9a151a4907ed5fc5a5189ca9"
+        },
+        {
+          "id": "E076",
+          "kind": "local",
+          "path": "local/research/codex/map-flags-r1/fixed/flags-B/r2-i7-before158-1763601570622426.json",
+          "bytes": 52587,
+          "sha256": "a66547aab916be46a51abccf239388c9d70832be8ac74f6480f63244d8c72ceb"
+        },
+        {
+          "id": "E077",
+          "kind": "local",
+          "path": "local/research/codex/map-flags-r1/fixed/flags-B/r2-i8-after158-1763601689146834.json",
+          "bytes": 52586,
+          "sha256": "6a1d5b851ee344570b4e1b6983cf8cd468885aa6fecbe4ae8f21422c35cdf181"
+        },
+        {
+          "id": "E078",
+          "kind": "local",
+          "path": "local/research/codex/map-flags-r1/fixed/flags-B/r2-i8-before158-1763601640953890.json",
+          "bytes": 52587,
+          "sha256": "4042796cb51ee032f587211b68931968017dfb60b7848aec9242b512dc5045d2"
+        },
+        {
+          "id": "E079",
+          "kind": "local",
+          "path": "local/research/codex/map-flags-r1/fixed/flags-B/r2-i9-after158-1763611013390841.json",
+          "bytes": 52586,
+          "sha256": "e95fa98efd7dd6a8449d35c3a9f742e64066d2b492cc9b5ea60fe839544b7e2e"
+        },
+        {
+          "id": "E080",
+          "kind": "local",
+          "path": "local/research/codex/map-flags-r1/fixed/flags-B/r2-i9-before158-1763608218186209.json",
+          "bytes": 52587,
+          "sha256": "16dfd5dfc693a550937710d00dffe9bc7b26fbee34a0cf9476b5a4f33b1c1ec4"
+        }
+      ],
+      "delta": {
+        "added": [
+          "Offlinecandidateindependentofproduction/legacy withscopedmap/bombvalidation/boxsolid/chain/pending/reset semantics.",
+          "Retainednative38callback/432relationcomparison inclall195flags/deltas/newStartround2; avoidsredundantWine."
+        ],
+        "corrected": [
+          "CP092pendingPR stale nowPR145mergedcac815d; no newnativeproof orproductionterrainclaim fromofflinecandidate match."
+        ],
+        "superseded": [
+          "NEXT-TERRAIN-PROFILE-SHADOW candidatecomparedretainedoracles; nextoptionalguardedproductionpolicy/newnativeintegration."
+        ]
+      },
+      "blockers": [
+        "Terraincandidateisnotproduction; profile/sourcepins/variantguards/atomicbroadcastworldcommit/oldtimer/newepoch/reset andnewnativeacceptance required.",
+        "Modelimmutablecascade/firstbombstop/FIFO/order/sharedblocker/recursive/generalclass/map/directional/movingvariants unmeasuredoutsidecurrentcases; no auth/codec/fullvalidator/authority/fullreset/vanilla/LANInternet/fullmatch/K5/K6a."
+      ],
+      "next_steps": [
+        {
+          "id": "NEXT-TERRAIN-PROFILE-SHADOW",
+          "task": "KRE-005b",
+          "state": "superseded",
+          "action": "CP0934constraints/432relations/38nativecallbacks/all195phaseflags match; do notrepeatoldrawmodelproof/newWinealreadyansweredsubset.",
+          "owner": "Codex",
+          "reviewer": "Codex"
+        },
+        {
+          "id": "NEXT-TERRAIN-PROFILE-INTEGRATION",
+          "task": "KRE-005b",
+          "state": "active",
+          "action": "ImmediatelysourcefirstCP093model/limits/raworacles andCP089jobs/fence/currentprofile. Optionalterrainpolicywithmap/start/mapdata/seedpin/currentownerpower1..2/knownvariantguards; no142worldoracle. Predictbefore158, commitstate/releaseonlyafterbroadcastsuccess; retainownjobs/tickets/oldsecondaryghostprotection andclearlegacybehavior. Testunknown/overlap/house/box/no-sameblasttunnel/epoch/duplicate/reset/sourcepins; newWine2cycleflags/entity/process/result/reset withnativeinputbeyondoldclearcells requiredbeforecompatibilityclaim. Measureconcreteordervariantifmismatch, no oracleloosening.",
+          "owner": "Codex",
+          "reviewer": "Codex"
+        }
+      ],
+      "review": {
+        "status": "waived",
+        "as_of_utc": "2026-11-04T14:58:15.584141+00:00",
+        "reference": "docs/evidence/checkpoints/review-waiver.json",
+        "scope": "Codex solo RE/code/runtime/selfcheck, not independent approval.",
+        "authorization": {
+          "by": "project_owner",
+          "reference": "docs/evidence/checkpoints/review-waiver.json",
+          "reason": "Owner explicitly requested solo without Claude review."
+        }
+      },
+      "docs_sync": [
+        {
+          "path": "README.md",
+          "state": "updated",
+          "reason": "CP093offlinecandidate/independentnativeoracles/source/testlimits/currentPR145/nextoptionalintegration; no newruntime/production/gateclaim."
+        },
+        {
+          "path": "docs/PLAN.md",
+          "state": "updated",
+          "reason": "CP093offlinecandidate/independentnativeoracles/source/testlimits/currentPR145/nextoptionalintegration; no newruntime/production/gateclaim."
+        },
+        {
+          "path": "docs/PROTOCOL.md",
+          "state": "updated",
+          "reason": "CP093offlinecandidate/independentnativeoracles/source/testlimits/currentPR145/nextoptionalintegration; no newruntime/production/gateclaim."
+        },
+        {
+          "path": "docs/RESEARCH.md",
+          "state": "updated",
+          "reason": "CP093offlinecandidate/independentnativeoracles/source/testlimits/currentPR145/nextoptionalintegration; no newruntime/production/gateclaim."
+        },
+        {
+          "path": "docs/features.json",
+          "state": "updated",
+          "reason": "CP093offlinecandidate/independentnativeoracles/source/testlimits/currentPR145/nextoptionalintegration; no newruntime/production/gateclaim."
+        },
+        {
+          "path": "docs/COVERAGE.md",
+          "state": "updated",
+          "reason": "CP093offlinecandidate/independentnativeoracles/source/testlimits/currentPR145/nextoptionalintegration; no newruntime/production/gateclaim."
+        },
+        {
+          "path": "docs/evidence/terrain-shadow/README.md",
+          "state": "updated",
+          "reason": "CP093offlinecandidate/independentnativeoracles/source/testlimits/currentPR145/nextoptionalintegration; no newruntime/production/gateclaim."
+        },
+        {
+          "path": "docs/evidence/map-flags/README.md",
+          "state": "updated",
+          "reason": "CP093offlinecandidate/independentnativeoracles/source/testlimits/currentPR145/nextoptionalintegration; no newruntime/production/gateclaim."
+        },
+        {
+          "path": "tools/README.md",
+          "state": "updated",
+          "reason": "CP093offlinecandidate/independentnativeoracles/source/testlimits/currentPR145/nextoptionalintegration; no newruntime/production/gateclaim."
+        }
+      ]
     }
   ],
   "audits": [
@@ -554504,9 +555272,15 @@
     },
     {
       "id": "KRE-055",
-      "state": "open",
+      "state": "closed",
       "canonical": "docs/PLAN.md",
       "reference": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/144"
+    },
+    {
+      "id": "KRE-056",
+      "state": "open",
+      "canonical": "docs/PLAN.md",
+      "reference": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/146"
     }
   ]
 }

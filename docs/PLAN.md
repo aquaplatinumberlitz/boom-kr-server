@@ -1,7 +1,7 @@
 # Kế hoạch server giả lập KR 00967
 
 Nguồn chuẩn của project `boom-kr-server`; bản nhập từ plan đã được dsh1/dsh2 review tại `1eee46d`.
-Cập nhật04/11 JST (CP092): [finite nativeflags/2roundreset](PROTOCOL.md#map-flags-snapshot). Tiếp policy terrain có profile/giới hạn và model so nativeflags, AUD027/nextCP096.
+Cập nhật04/11 JST (CP093): [shadowmodel so independentnativeoracles](PROTOCOL.md#terrain-shadow). Tiếp optionalterrainpolicy/guards vànewnativeintegration, AUD027/nextCP096.
 
 
 ### Mục tiêu, baseline và phạm vi
@@ -37,13 +37,13 @@ với client Rust không chứng minh có thể điều khiển client KR bằng
 
 ### Tiến độ hiện hành theo bằng chứng
 
-| Task/mốc | Trạng thái tại CP092 | Nguồn chuẩn |
+| Task/mốc | Trạng thái tại CP093 | Nguồn chuẩn |
 |---|---|---|
 | KRE-004/issue6 | Đã review/merge PR7 và đóng issue:recipe r1 đến local accept;không phải full K1 | [Wine r1](evidence/wine/README.md) |
 | Bootstrap reply | PR8 đã merge;debugger ProcessPatchreturn1,không ép success | [bootstrap evidence](evidence/bootstrap-wire/README.md) |
 | KRE-005a/issue9,R2 | PR10 đã merge:3 cold start cửa sổ/second accept;issue9 còn mở | [R2 evidence](evidence/wine-r2/README.md) |
 | WCP hai-reply | Run CP001 là lịch sử chưa C→S; CP006 đã đo request đầu trên copy tham số hóa | [PROTOCOL](PROTOCOL.md#wcp),[WCP evidence](evidence/wcp/README.md) |
-| KRE-005b/issue14 | CP006–091 đã merge; CP092195flags/seed/postblast/reset hai vòng, tự kiểm/chờ PR; fullround/authority/full auth còn mở | [Q-023](RESEARCH.md#q-023), [service](evidence/probe-service/README.md) |
+| KRE-005b/issue14 | CP006–092 đã merge; CP093offline terrain candidate so retainednative, tự kiểm/chờ PR; fullround/authority/full auth còn mở | [Q-023](RESEARCH.md#q-023), [service](evidence/probe-service/README.md) |
 | K0/K1 | Chưa nghiệm thu toàn gate;Windows vanilla/control ownership và các điều kiện còn thiếu giữ mở | Gate dưới,[Q-022](RESEARCH.md) |
 | K2a/K2 | Primitive/WCP, CP057stream native/model và CP058–060authcallback137/135/errors0 đã có; fullcodec/authauthority/reconnect và gate chưa pass | [PROTOCOL](PROTOCOL.md#login-auth),[Q-023](RESEARCH.md#q-023) |
 | K3 | Copy đã vẽUI/đóngnotice, A/B/Cprofile đọc sạch và mộtnamedcachewarm được nhận; identityauthority/toàncache/codec/K3 chưa nghiệm thu | [Contract sảnh](PROTOCOL.md#channel-lobby) |
@@ -60,18 +60,19 @@ KRE-005b/issue14 vẫn mở. Các bước dưới là **thứ tự ưu tiên**, 
 xong checkpoint/commit/PR thì chuyển ngay việc kế tiếp trong thứ tự này, không tự dừng/chờ nhắc.
 Một blocker chỉ kết thúc nhánh đo tương ứng; ghi rõ rồi tiếp việc độc lập có thể làm, không tự đóng gate.
 
-1. **KR-F004/F005/S001 — policy terrain theo profile có nguồn, tránh report oracle:**
-   [CP092](PROTOCOL.md#map-flags-snapshot) đã giải storage/snapshot195flags/seed/postblast/reset
-   hai view/hai vòng. Không lặp protectedgetter/pointer/container/seed/reset hoặc tìm templatekhôngdùng.
-   Source-first targetgrid/classes và rawCP090–092/query/cell/chain, CP089clear-cellpolicy/jobs/fence;
-   VN/oldKR chỉ phần khác biệt. Xây model độc lập có profile pinmap/start/mapdata, chỉ hỗ trợ current
-   simple bomb/power/roster đã đo; seed từ195cellsource, unknown/cấu hìnhkhác fail rõ. Tính đường
-   ray/stop tại root và statebox thay đổi bằng geometry/rootserver đã có, **không** dùng142 thiếuepoch/
-   auth để cập nhật world. So predictedrelease/boxdeltas với actualnative snapshots/processedIDs trước
-   triển khai; nếu recursive/order/direction gap gây lệch thì đo đúng gap, không loosenoracle.
-   Sau model phù hợp, tích hợp optionalpolicy giữ preblastquota/ownjobs/fence/reset và compatibility
-   clearfixture cũ, controlbox/house/nonaligned/overlap/oldround/ghosttimer; nativecurrenttwo-cycle
-   acceptance mới phải same-run. Chính sách là design, không originalserverauthority/genericmaplaw.
+1. **KR-F004/F005/S001 — optional terrain policy có scope và integration mới:**
+   [CP093](PROTOCOL.md#terrain-shadow) candidatekhớp38nativecallbacks/432relations trênCP090–092,
+   gồmall195snapshotflags/boxdeltas/reset. Không chạy lại Wine hoặc đọc getterđãgiải đểlặpmodelproof.
+   Source-first tools/terrain_shadow contract+knownlimits/nativeoracle vàCP089jobs/fence/profile.
+   Triển khai optionalprofileterrain pin map/start/mapdata/seed/classscope, current simplebombpower1..2/
+   roster/flags đã đo; explicitunsupported trướcmutation. Không đổi profilecũ hoặc tin142 cậpnhậtworld.
+   Trước phát158/root, tính snapshotclosure/deltas bằng currentserveracceptedgeometry, chỉcommit
+   state/release sau broadcast thành công; giữ ownjobs/tickets/secondarytimer và tránh oldcallback
+   mởchain giả lênbom mới. Guardnewcell/overlap/currentepoch và unknownbounds cho scopedprofile,
+   không tựgọi đây làanti-cheat/auth/distance đầyđủ. Kiểm seed/reset/owner/oldround/duplicate/sourcepins/
+   house/box/no-sameblasttunnel/chain3+depth/modelvsnative; giữ CP086 selectedmutation preblast reject.
+   Saucodechecks phải newWine same-run two-cycle flags/process/entity/result/reset vàinput ngoài
+   whitelist CP089 đểchứng minh scope mới; candidate matcholdraw khôngthay newintegration.
 2. **KR-B003/KR-F006 — nợ có giới hạn:** [CP057](PROTOCOL.md#codec-stream-boundaries) đã đo stream/
    seq/bounds trong model, không mở lại76split hoặc cấp buffer lớn chỉ để vượt allocationguardFFFFFFFF.
    Full modes/prefix guard/live reset, distance/auth/transport/kim-cứu của reportguard giữ trong RESEARCH;

@@ -1,7 +1,7 @@
 {
   "schema": "kre-feature-index-v1",
   "build": "KR00967",
-  "as_of": "2026-11-04 CP092",
+  "as_of": "2026-11-04 CP093",
   "sources": {
     "plan": "docs/PLAN.md",
     "contract": "docs/PROTOCOL.md",
@@ -1345,7 +1345,8 @@
           "docs/evidence/chain-capacity-release/README.md",
           "docs/evidence/current-map-chain/README.md",
           "docs/evidence/house-after-box/README.md",
-          "docs/evidence/map-flags/README.md"
+          "docs/evidence/map-flags/README.md",
+          "docs/evidence/terrain-shadow/README.md"
         ]
       },
       "coverage": {
@@ -1372,7 +1373,8 @@
         "emulation": {
           "state": "checked",
           "refs": [
-            "docs/evidence/bomb-serial/README.md"
+            "docs/evidence/bomb-serial/README.md",
+            "docs/evidence/terrain-shadow/README.md"
           ]
         },
         "runtime": {
@@ -1473,7 +1475,8 @@
           "docs/evidence/chain-capacity-release/README.md",
           "docs/evidence/current-map-chain/README.md",
           "docs/evidence/house-after-box/README.md",
-          "docs/evidence/map-flags/README.md"
+          "docs/evidence/map-flags/README.md",
+          "docs/evidence/terrain-shadow/README.md"
         ]
       },
       "coverage": {
@@ -1500,7 +1503,8 @@
         "emulation": {
           "state": "checked",
           "refs": [
-            "docs/evidence/bomb-chain/README.md"
+            "docs/evidence/bomb-chain/README.md",
+            "docs/evidence/terrain-shadow/README.md"
           ]
         },
         "runtime": {
@@ -2916,7 +2920,8 @@
           "docs/evidence/chain-capacity-release/README.md",
           "docs/evidence/current-map-chain/README.md",
           "docs/evidence/house-after-box/README.md",
-          "docs/evidence/map-flags/README.md"
+          "docs/evidence/map-flags/README.md",
+          "docs/evidence/terrain-shadow/README.md"
         ]
       },
       "coverage": {
@@ -2939,7 +2944,9 @@
         },
         "emulation": {
           "state": "unknown",
-          "refs": []
+          "refs": [
+            "docs/evidence/terrain-shadow/README.md"
+          ]
         },
         "runtime": {
           "wine_diagnostic_copy": {

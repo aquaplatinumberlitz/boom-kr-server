@@ -3,7 +3,7 @@
 KRE-055/[issue144](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/144), baseline
 CP091/[PR143](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/143)
 `c3d74ff77606288db0a772a49e9f4adf4fc55552`. Codex solo/tự kiểm,
-[review waived](../checkpoints/review-waiver.json), chờ PR. Contract duy nhất ở
+[review waived](../checkpoints/review-waiver.json), đã merge [PR145](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/145) tại `cac815d`. Contract duy nhất ở
 [PROTOCOL](../../PROTOCOL.md#map-flags-snapshot), gap ở [RESEARCH](../../RESEARCH.md#gap-blast-block-chain),
 thứ tự ở [PLAN](../../PLAN.md#current-order). Raw: `local/research/codex/map-flags-r1/`.
 
@@ -65,4 +65,4 @@ clockmapidentityerror/staticvsnativeflag/partialmarkerboundaries vàgiữoldraw/
 
 Chưa terrainimplementation mới/genericclasslaw/fullmapvariants/direction/moving/recursive/report142
 freshness/auth/epoch/worldauthority/validator/codec/fullreset/vanilla/LANInternet/fullmatch/K5/K6a.
-PLAN tiếpmodel profile-pinnedterrain soactualflags/deltas/chain trướcoptionalintegration; no142oracle.
+[CP093](../terrain-shadow/README.md) đã soofflinecandidate vớiactualflags/deltas; [PLAN](../../PLAN.md#current-order) giữoptionalintegration kế, no142oracle.
