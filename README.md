@@ -29,15 +29,15 @@ runtime nào có nguồn, còn thiếu gì và phép kiểm nào giải quyết.
 evidence/hash và câu hỏi; [PLAN](docs/PLAN.md#current-order) giữ duy nhất thứ tự công việc.
 Đây là scope đường bootstrap → login → sảnh → phòng → Battle → kết quả/reset, không kiểm kê toàn client.
 
-CP101 sửa xử lý key selector còn trong batch sau khi cleanup đã đóng connection đó.
-Socketpair/selector thật tái hiện errno9 trước sửa; sau sửa, cả hai thứ tự A/B và live-read control
-pass. Đây là fix lifetime service; stack cụ thể của lỗi CP099 cũ vẫn unknown.
-[Contract/giới hạn](docs/PROTOCOL.md#selector-closed-readiness),
-[recipe/hash](docs/evidence/selector-closed-readiness/README.md).
-CP100 đã có hai chu kỳ native175/180 với guard kết quả; chưa fullmatch/K6a/LAN/Internet.
+CP102 đo được đường report21 local: gate1 → `vf148/B43320(0,0,-1)` → state56→26 → actual21.
+Mode thử nghiệm drained đã cho14/14 job bom nổ qua hai chu kỳ native175/180/reset, không lỗi
+controller/service. **Còn blocker peer:** trước175, A thấy mình26 nhưng B vẫn thấy A56 ở cảhai vòng;
+chưa trận đồng bộ đầy đủ/fullmatch/K6a/LAN/Internet.
+[Contract/giới hạn](docs/PROTOCOL.md#drained-result-local-clear),
+[recipe/hash](docs/evidence/drained-result-local-clear/README.md).
 
-CP100 đã merge [PR161](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/161) tại `8c69429`.
-CP101 tự kiểm/chờ PR; review độc lập [waived](docs/evidence/checkpoints/review-waiver.json).
+CP101 đã merge [PR163](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/163) tại `ea60261`.
+CP102 tự kiểm/chờ PR; review độc lập [waived](docs/evidence/checkpoints/review-waiver.json).
 Audit định kỳ **AUD030/CP100**, mốc kế **CP104**.
 [Yêu cầu chủ dự án](docs/evidence/owner-directives/continuous-work.json): tiếp tục ngay việc kế trong
 PLAN sau mỗi checkpoint/commit/PR, không tự dừng/chờ nhắc.
