@@ -1,6 +1,6 @@
 # KR 00967 — contract tương thích client gốc
 
-Revision kr-legacy-contract-r1; cập nhật05/11/2026 JST (CP104; AUD032 định kỳ).
+Revision kr-legacy-contract-r1; cập nhật05/11/2026 JST (CP105; AUD032 quaCP104).
 **Contract có bằng chứng từng phần; chưa nghiệm thu full codec K2**.
 Lộ trình và thứ tự task chỉ giữ ở [REWRITE_PLAN — KRE](PLAN.md).
 Đây là contract của repo server KR. ADR0009 của bản viết lại là nguồn lịch sử để so sánh;
@@ -1958,7 +1958,7 @@ liệt kê và phân biệt với nguyên bản trong mọi demo.
 <a id="authority"></a>
 ### Authority matrix hiện hành và gate review
 
-Bảng này tổng hợp bằng chứng từng phần đến CP104; chưa phải toàn contract server gốc. Mỗi hàng khi
+Bảng này tổng hợp bằng chứng từng phần đến CP105; chưa phải toàn contract server gốc. Mỗi hàng khi
 triển khai phải bổ sung riêng **creator, simulator, validator, broadcaster, peer-editable state**, với
 locator/trace và trạng thái từng ô; những vai trò không nêu dưới đây hiện `unknown` cho KR.
 
@@ -3849,3 +3849,49 @@ không C2S/channelframer; actualA4/B4vẫnroleđúng. Đây lànativebranch1proo
 WCP2/66byte vớinewrun. AUD032manualcanonical→raw/CP101–104/source/auditcadence qua104, next108.
 Fullidentity/auth/codec/authority/fullvalidator/allreset/endingUDPvariants/vanilla/fullmatch/K5/K6a/
 LANInternet vẫnchưa nghiệmthu; nexttargetedpost175UDPstateapply ở PLAN.
+
+<a id="ending-udp-state-apply"></a>
+### UDP state đi qua native175 trong cùng ending — CP105
+
+[Recipe/hash/partialwindow](evidence/ending-udp-state-apply/README.md); câu hỏi ở
+[RESEARCH](RESEARCH.md#gap-peer-movement), thứtựở[PLAN](PLAN.md#current-order).
+**kr_runtime/confirmed hẹp**, no production/profile/policy change. Reuse CP098API13/key/slot/applyargs/
+securefields, CP104native175→3/34beforewrite; khôngportVNnumber hoặcREcodecs/wholeclientlạilần.
+
+**Window đầu sau175** bắt21nativeapply ởB, stateargs0/56/3 qua actualvf204 target**F73610**, args
+`(state,0x203F)`; nativeactorA3→0→56→3 vàprotected+5A0=1 giữ. Packet0/56 cóconsumerbuffer13/nativeargs/
+setterproof nhưng matchingAPIkhôngởwindow175→180; strictAPIjoinfail đượcgiữ, khônggọiđóoldround.
+State3 cóingressmatch; Aview khôngcapturematchingpacket13apply, khôngsuykhôngUDP.
+
+**Window mở sớm** từ native158callbackindex6 (hai callback cuối của7job fixture) tới180, khôngresetcap/
+phase tại175.20Bnativeapplysau175 có API17byte/contentmatch duy nhất trongfinitecapture→buffer13
+selector0→nativekeywire56=expected56/slot0→B4E6F0 argsstatebyte10/x80/y164→B4EAA3vf204/F73610→after.
+Có2statechanges:
+
+| Packetstate | API so với B175entry | API→consumerbegin | Nativeactor+28/setter |
+|---|---|---|---|
+|56|trước122,629161ms|350,064088ms|3→56,sau175;vf204args(56,203F)|
+|3|sau396,801990ms|3,508373ms|56→3;vf204args(3,203F)|
+
+ExactAPIwireSHA/payloadSHA/port/actor/prepost/cursor13 đượcpin. API sourceport9951 khớp actualA99/
+B153remoteendpoint, fullroundkey12345 vàexpectednativebyte56 cóscope riêng, khônggánbyteđó==low8fullkey/
+authentication. Queuecrossing175đượcchứngminh bằngAPI trước/consumer sau; chưa timestampnetworksend
+hayservergốc, chưapacketpreviousround/Startleak/wholequeueorder hoặcuniquepacketnonce.
+
+Protected**+5A0đã1** trước/sau selectedsetters, nên nó khôngngăn **đườngapplyđãđo này**. Cached
+B4EA77..B4EAA6 so currentstatev64 vớiarg1 rồi vf204(arg1,203F) khi khác, sauđó+7EC=1; khôngcósource
+cho universalendingfreeze ngaytừ+5A0. Không tự václient/blockUDP hoặcthêmpolicyserverdựavàođó.
+Bộ64entry/96APIcap giữ; A8/12APIđãđo theo run nhưngkhôngmatching13applywindow, ghiunknown thaynoUDP.
+
+Hai runlàhai **one-cycle** riêng, khôngghép thành nghiệmthu2trận: đầu226,441s (129boundedchecks/
+336copiednativefields, API0/56gap), preroll267,466s (140checks/308copiedfields/20exactapplies,
+2changes56/3). Prerollkhôngtáihiệnstate0change nênkhôngbịaingress0proof. Cảhaiactual175180/returned585/
+refresh,7current158,0errors,cảhaiA3/B1before180. Report34prefixY164 ởprerollkhớpnativewritersnapshot,
+175entryAđã26khôngcầnupon17556clear; inheritedCP104XY159/clearassumption failures giữ/táchnewverifier.
+285typedpacketmodelcasespreroll và282firstrun làemulationriêng; source/copy/pack/DBkhôngđổi.
+
+Khép exactendingarg/queuegaptrongscope này; CP103entry175numericmismatch khônglàpersistentending
+failure. Khôngđóng#166/K5/K6a từhai onecycle hoặcsameendingfield. Lộtrìnhquaylạicurrenttwo-cycle
+movementtransitionpartial củaCP098 theoPLAN, khôngđào thêmendingvariant khi chưatrigger.
+Fullidentity/auth/codec/authority/fullvalidator/allreset/vanilla/LANInternet/fullmatch còn mở;
+AUD032qua104/next108. No ownACK/newquietdelay/fuse/stateforcing/gamecall/UDPcut trongCP105.
