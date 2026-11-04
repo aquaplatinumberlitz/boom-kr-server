@@ -3,7 +3,7 @@
 KRE-060/[issue154](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/154), baseline
 CP096/[PR153](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/153)
 `fb3a9a257bb8f8b5b0cbb46054f6c7d031d7198f`. Codex solo/tự kiểm,
-[review waived](../checkpoints/review-waiver.json), CP097 chờ PR. Contract/limits ở
+[review waived](../checkpoints/review-waiver.json), CP097 đã merge [PR155](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/155) tại `3a0e979`. Contract/limits ở
 [PROTOCOL](../../PROTOCOL.md#terrain-tcp-guard-cycles), gap ở [RESEARCH](../../RESEARCH.md#gap-diagnostic-service),
 thứ tự ở [PLAN](../../PLAN.md#current-order). Không production change.
 
