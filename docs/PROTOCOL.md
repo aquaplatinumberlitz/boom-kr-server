@@ -1,6 +1,6 @@
 # KR 00967 — contract tương thích client gốc
 
-Revision kr-legacy-contract-r1; cập nhật04/11/2026 JST (CP085).
+Revision kr-legacy-contract-r1; cập nhật04/11/2026 JST (CP086).
 **Contract có bằng chứng từng phần; chưa nghiệm thu full codec K2**.
 Lộ trình và thứ tự task chỉ giữ ở [REWRITE_PLAN — KRE](PLAN.md).
 Đây là contract của repo server KR. ADR0009 của bản viết lại là nguồn lịch sử để so sánh;
@@ -3037,3 +3037,41 @@ và runtimeintegration tách rõ. Không tự mở lại chỉ để tìm một 
 Khép bounded acceptance CP075 cho selectedvariants trong run mới, không viết lại partial/manifest075.
 Chưa cap/distance/auth/freshserial/currentkeyforgery/toàn127/codec/authority/vanilla/LANInternet/
 fullmatch/K5/K6a/fullreset. [PLAN](PLAN.md#current-order) tiếp capacity/serial mới; auditAUD025/next088.
+
+
+<a id="capacity-fresh-serial"></a>
+### Native third-Space control và serial-only divergence — CP086
+
+[Recipe/nguồn/raw/hash](evidence/capacity-admission/README.md), **kr_runtime/confirmed hẹp** trên
+currentmodifiedWine/local. Reuse CP025serial/pool, CP031/042 Bombcapacity và CP084–085 normalroute/
+knownfloor/nativefields/chain/results; VNoc_e-game có hai bom sauBomb, VNemulator111 handler chỉ
+allocate/broadcast/timer, không tự mang capvalidator. Không tìm lại itemconsumer hoặc copy VNoffset.
+
+Hai control `native-cap`/`capacity-watch`: actualBomb/Fire124165→Acurrent2/power2 (native securegetter);
+clockbaseA1/max10, B2/max7, không giả B1. ActualA/B/A118 serial0/1/28, ba159 trướcfirst158, ownerA
+có hai bom. ADown/release theo freshY≥239, nhưng actualSpace snapshot cóYcao hơn target; không
+suy hold→cell. NativeSpace down/up được ghi với capacity2, vị trí khác trước và trướcfirstblast,
+khôngwriterE2DF80/118 thứba củaA trong boundedwindow. Đây **không là serverreject hoặc causalcapguard**.
+Sau nổ Bactual17/19, Aactual21, nativeAstate0/Bstate1 trước175/180/room: một survivorcycle mỗi run,
+khác parentall-dead; không cố giữ policyoutcome cũ. Watch trên wrapperactor+4A4+8 chỉ arm thirdnative
+keydown→keyup/max12reads, disarm ngay: **0reads**. Cached529C60→52A350 có đọc+8; không chứng minh
+nativekhôngdùng cachedcapacity/pool/earlierguard, nguyên nhân chưa biết, không lặp unchangedwatch.
+
+`fresh-serial`: sau cùng control, trướcfirstblast, localTCPproxy lấy **actualA118 serial28**, chỉ sửa
+field3/u32→56 (giá trị serial đã quan sát CP025); khóa12345 và mọi field khác/cell giữ nguyên. Outer
+seq upstream được mã hóa lại, S2C không đổi. Đây là **modified captured body**, không nativeplacement,
+không gói cũ qua cryptoguard hoặc input trên ô mới; A đã ở vị trí khác nên không isolate cap vsdistance.
+Service chỉ kiểm key/serial và cấpID4/deadlinejob/159 cho cảhai. Field generic `source_bomb.actual118`
+trong logservice không làm mutation thành nativewriter; front/upstream/originSHA/phân loại proxy pin riêng.
+
+Hai nativeviews đọc đủ15939/15813/errors0. ID4 `GEN159_ENTITY` A trả**0**, B trảnonzero; root158ID1
+processIDs**1,2,3** ởA nhưng**1,2,3,4** ởB. Later own158 khôngprocesslặp; A không cóID4lookupreturn,
+B cólookup. Không dùng timer/serviceaccept hoặc ảnh bom chồng để kết luận entity thànhcông/cause.
+Đây là **divergence có trigger concrete**, chưa nativepoollimit/receiverguard giải đầyđủ. Ba run đều
+có originalfinalrecords/khôngcontroller-serviceprobeerrors, nhưng roundreturn không xóa finding lệch.
+
+**Tình trạng implementation:** CP086 chỉ đo, chưa thêm guard cap/cell/distance/freshserial. Cácpositive
+CP084/085 giữ đúng normal/selectedreplay scope, không bị nâng thành fullvalidator. [PLAN](PLAN.md#current-order)
+tiếp profile-scoped reservationguard trướcID/job; source stat/max và acceptedBomb effect đã có, release
+secondary sớm trong nativechain vẫnunknown phía service, phải ghi design/conservativewindow khi chọn.
+Chưa fullmatch/K5/K6a/fullauth/fullcodec/fullvalidator/authority/vanilla/LANInternet/allreset.
