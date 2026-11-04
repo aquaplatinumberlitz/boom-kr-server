@@ -3,7 +3,7 @@
 KRE-051/[issue136](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/136), baseline
 CP087/[PR135](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/135)
 `93122d6222139dafdab5fa893f88873e70012dd8`. Codex solo/tự kiểm,
-[review waived](../checkpoints/review-waiver.json), chờ PR. Contract/giới hạn duy nhất ở
+[review waived](../checkpoints/review-waiver.json), đã merge [PR137](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/137) tại `0a67e74`. Contract/giới hạn duy nhất ở
 [PROTOCOL](../../PROTOCOL.md#early-chain-reservation-window), câu hỏi ở
 [RESEARCH](../../RESEARCH.md#gap-bomb-lifetime), thứ tự ở [PLAN](../../PLAN.md#current-order).
 Raw: `local/research/codex/early-chain-r1/`.
@@ -40,7 +40,7 @@ errors0 mỗi view; native121/clock/175full302/180full3 một lần; controller/
 thành proof độc lập. `visual-observation.json` pinmanual bốn ảnh afterreplacement/finalroom, không
 suy ID/pool law từ ảnh. Có pool pointer reuse: join latest prior159 theo round, không globaladdress.
 
-**Chưa release fix.** Native emission chỉ chứng minh request path chạy được ở context này; chưa
+**Tại CP088 chưa release fix.** [CP089](../chain-capacity-release/README.md) bổ sung policy giới hạn; rawnegativeCP088 giữ nguyên. Native emission chỉ chứng minh request path chạy được ở context này; chưa
 chứng minh ID5 allocate native, originalserverlaw/toànpoolreturn/fullvalidator. Không free mọi bom
 nearby/xuyênwall hoặc tin report để sửa vội. Tái dùng98server/18checkpointtests vì production/checker
 không đổi. Các lệnh docs/catalog/artifacts/requiredlocalhistory/diff được ghi trong checkpoint.
