@@ -2,7 +2,7 @@
 
 Baseline CP083/[PR127](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/127)
 `750974785b5dd6542cabbf1aa0d273b579344797`, KRE-047/[issue128](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/128).
-Codex solo/tự kiểm; [review waived](../checkpoints/review-waiver.json), chờ PR.
+Codex solo/tự kiểm; [review waived](../checkpoints/review-waiver.json), tích hợp [PR129](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/129) tại `455dc74`.
 [Contract/limits](../../PROTOCOL.md#three-bomb-chain), [gap](../../RESEARCH.md#gap-blast-block-chain),
 [thứ tự](../../PLAN.md#current-order). Raw trong `local/research/codex/three-bomb-r1/`.
 
@@ -49,3 +49,5 @@ RVA=VA−400000. Sourcebinary/pack/DB và checkpoint001–083/raw cũ bất bi�
 [Audit AUD025](../checkpoints/audits/AUD025.json) qua084; periodic kế088.
 Chưa fullmatch/K5/K6a/vanilla/LANInternet/fullauth/codec/validator/authority/toànreset/allchain.
 Bước kế dùng CP075proxy/selectedreplays, ghép guard với hai native resultreset theo PLAN.
+
+[CP085](../tcp-guard-cycles/README.md) ghép selectedTCPguard với hairesultreset theo bước tạiCP084; việc hiện tại chỉ PLAN.

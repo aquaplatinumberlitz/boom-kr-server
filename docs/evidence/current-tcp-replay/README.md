@@ -69,3 +69,5 @@ Khoảng trống hai-cycle guard integration giữ rõ. Bước tạiCP075 (lị
 service còn giữ membership/setup markers; đối chiếu nguồn và đo create/join lại cùngchannel trướcfix.
 
 [CP076 bổ sung emptyroomBack/recreate](../back86-membership/README.md); CP075 hai-cycle guardacceptance vẫnpartial. Thứ tự hiện tại ởPLAN.
+
+[CP085](../tcp-guard-cycles/README.md) có run mới ghép selectedTCPguard với hai result/reset; rawCP075 vẫnpartial như mô tả, không backfill từrunmới.

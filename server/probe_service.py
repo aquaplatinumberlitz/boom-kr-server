@@ -489,11 +489,26 @@ class ProbeService:
     def deliver_departure(self, peer, departed):
         """Send after recipient setup, so fixture roster cannot restore the slot."""
         body = codec.pack_fields([ROLE_SLOTS[departed], ROLE_IDS[departed], 0], [1, 4, 1])
-        sent = [{'role': peer['role'], **self.send(peer, 'start', 'remove107',
-                                                 opcode=107, body=body)}]
         # This diagnostic profile supports B taking over A, or A staying chief.
         alias = 'promote_B' if peer['role'] == 'B' else ('slot_C' if peer['role'] == 'C' else 'slot_A')
-        sent.append({'role': peer['role'], **self.send(peer, alias, 'survivor110')})
+        sent = []
+        for name, label, opcode, payload in [('start', 'remove107', 107, body),
+                                             (alias, 'survivor110', 110, None)]:
+            try:
+                sent.append({'role': peer['role'], **self.send(peer, name, label,
+                                                             opcode=opcode, body=payload)})
+            except (BrokenPipeError, ConnectionResetError, ConnectionAbortedError, TimeoutError) as error:
+                # A simultaneous disconnect can precede this peer's read-ready
+                # EOF. Attribute the failed delivery to its recipient, not the
+                # departing socket whose EOF initiated the cleanup. send() only
+                # records a successful frame after sendall returns.
+                self.state.setdefault('send_failures', []).append({
+                    'phase': 'departure', 'departed': departed, 'recipient': peer['role'],
+                    'connection': peer['global_ordinal'], 'opcode': opcode,
+                    'errno': error.errno, 'error': str(error),
+                    'monotonic_ns': time.monotonic_ns(), 'sent_prefix': list(sent)})
+                self.close_connection(peer['global_ordinal'], 'departure_send_failure')
+                return sent
         peer.pop('guest_ready_received', None)
         peer.setdefault('departures_sent', []).append(departed)
         return sent
