@@ -3,7 +3,7 @@
 KRE-057/[issue148](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/148), baseline
 CP093/[PR147](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/147)
 `446b7cb21bb08d8f822f59a7b8ef3fd96d414f1e`. Codex solo/tự kiểm,
-[review waived](../checkpoints/review-waiver.json), chờ PR. Contract/config/limits duy nhất ở
+[review waived](../checkpoints/review-waiver.json), đã tích hợp [PR149](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/149) tại `5e580a4`. Contract/config/limits duy nhất ở
 [PROTOCOL](../../PROTOCOL.md#terrain-policy), gap ở [RESEARCH](../../RESEARCH.md#gap-blast-block-chain),
 thứ tự ở [PLAN](../../PLAN.md#current-order). Raw: `local/research/codex/terrain-policy-r1/`.
 
@@ -61,3 +61,5 @@ Chưa nativeopposite-box-two-bombs control choimmutablecascade/order/sharedblock
 floor-box-floor3,5/3,6/3,7 nếu mởnormalroute/spawnproof, khôngteleport hoặcguesslayout. Genericmap/
 class/template/direction/moving/recursiveorder/auth/codec/fullvalidator/authority/allreset/vanilla/
 LANInternet/fullmatch/K5/K6a vẫnmở, khôngnânggate từ14entities hoặctestcount.
+
+[CP095](../opposite-box-control/README.md) đo actual đối diệnBox/laterfreshpair cho khoảng nêu tại CP094; current-order chỉ ở PLAN.
