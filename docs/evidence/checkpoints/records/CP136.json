@@ -1,0 +1,228 @@
+{
+  "artifacts": [
+    {
+      "name": "CA-r2-login-logout.exe",
+      "sha256": "660447c293ce92270cb9b5815331bca976e8f156366e1fe50b217b6c12e60ce3"
+    },
+    {
+      "name": "CA-r2-stage-social.exe",
+      "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+    },
+    {
+      "name": "CA-r2-stage-social.exe Bcopy",
+      "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+    },
+    {
+      "name": "modO.bin",
+      "sha256": "a08950c833d3acab8281049def7b3dc96b221f107eeda01da3a548e34b91dce5"
+    }
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-11-05T15:14:23.538131+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "Codex solo RE/code/runtime/selfcheck, not independent approval.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Owner explicitly requested solo without Claude review."
+    }
+  },
+  "owner": "Codex",
+  "reviewer": "Codex",
+  "id": "CP136",
+  "previous": "CP135",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-05T15:14:23.538131+00:00",
+  "context_commit": "57b3b53b8fa3057c96e313e150251be84a71f6a5",
+  "question": "Normal two-round path with optional30s deadline: actual both99/barrier beforeexpiry/no falseclose/rearmedgeneration/resultreturnreset?",
+  "scope": "Reuse CP134 exactcontroller/profile/geometry/probes and checks; only add known loadingtimeout30s/no hold. No new native body or chain RE. Manual audit periodic136, next140; combined movement/currenttrap/resultdrain remains separate next test.",
+  "locators": [
+    "BaselineCP135PR206head039269c53789a750fb6bdbaaab9fff3445cc2b24/merge57b3b53b8fa3057c96e313e150251be84a71f6a5/exactCLEANMERGEABLEchecks[].226server tests reused unchanged code.",
+    "Run1fb9db23bbfedcc8ef291f071f01189b21f97270872b1fb208c682711fad3a47/374.591957157s/exit0/1209raw/1453reusedcyclejoins+24deadlinejoins; sameA4/B8/gen1,2/key12345→12346/IDs1..8.",
+    "Barrier1=15.164697089s/2=16.187968537s; results69.640777733/64.059603018s aftertheirdeadlines. Bothactual99/native121129/197196153/clocks twice/no timeoutabortbeforecompletion. Sharedcascade/actualboth19/rank2,2/native175180/secondroom195seedreset same run.",
+    "KnownVA121DC7F30/DC9363/clockE134B0/159E5F450/175E5F610/180E64950;modOa08950/base400000/RVA=VA−400000/runtimee9bb4766/static660447. Nativegetters4542actors/7092flags/7020array/354packet12peer153 separatefromruntimeproof."
+  ],
+  "findings": [
+    {
+      "summary": "BothactualA/B99 complete pinnedbarrier before30s ineachgeneration; roundsplaypastdeadline/no falseclose; Start2 freshdeadlinegen2/key12346, sameA4/B8.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#loading-timeout-positive",
+      "limits": "Two real modifiedWine A/B/same pinnedCP134profile+loadingdeadline30s/nohold wrapper. Two normal barriers/results/reset; copiednative checks separate from Winecallbacks. Currentprofile does not enable death_lifecycle/result_freshness, those integration next. No originalauth/authority/fullmatch/K5/K6a/vanilla/LANInternet/gate. Source/config frozen through cleanup/rawseal; no sourcebinaryDBpackchange.",
+      "evidence": [
+        "RUN-01243",
+        "RUN-01218",
+        "RUN-01219"
+      ]
+    },
+    {
+      "summary": "ExactexistingCP134normalsharedgeometry/195flags/nativeprocess/actualboth19/chosenrank2,2/result175180/returnreset repeated2 withpolicyenabled; same8TCP/IDs1..8/finaltwo-roomUI. Integration proof only, no newchainmechanism.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#loading-timeout-positive",
+      "limits": "Two real modifiedWine A/B/same pinnedCP134profile+loadingdeadline30s/nohold wrapper. Two normal barriers/results/reset; copiednative checks separate from Winecallbacks. Currentprofile does not enable death_lifecycle/result_freshness, those integration next. No originalauth/authority/fullmatch/K5/K6a/vanilla/LANInternet/gate. Source/config frozen through cleanup/rawseal; no sourcebinaryDBpackchange.",
+      "evidence": [
+        "RUN-01228",
+        "RUN-01329"
+      ]
+    },
+    {
+      "summary": "Profiledoesnotenablecurrenttrap/resultfreshness. ReuseCP106normalmovement/survivor/resultdrainplusCP124guardanddeadline to measure missingcombinedprofile; not claim existing separate runs compose.",
+      "source": "design",
+      "status": "design",
+      "method": "documentation",
+      "canonical": "docs/PROTOCOL.md#loading-timeout-positive",
+      "limits": "Two real modifiedWine A/B/same pinnedCP134profile+loadingdeadline30s/nohold wrapper. Two normal barriers/results/reset; copiednative checks separate from Winecallbacks. Currentprofile does not enable death_lifecycle/result_freshness, those integration next. No originalauth/authority/fullmatch/K5/K6a/vanilla/LANInternet/gate. Source/config frozen through cleanup/rawseal; no sourcebinaryDBpackchange.",
+      "evidence": [
+        "RUN-01252",
+        "RUN-00009"
+      ]
+    },
+    {
+      "summary": "AUD042 manualdocs→rawaudit correctsauthoritysharedgap/nextstep/merge and distinguishesnormalprofileoptions; preservesCP135rejecteddraft/schemafixbeforefirstcommit, no committedhistory/rawrewrite.",
+      "source": "design",
+      "status": "design",
+      "method": "documentation",
+      "canonical": "docs/PROTOCOL.md#loading-timeout-positive",
+      "limits": "Two real modifiedWine A/B/same pinnedCP134profile+loadingdeadline30s/nohold wrapper. Two normal barriers/results/reset; copiednative checks separate from Winecallbacks. Currentprofile does not enable death_lifecycle/result_freshness, those integration next. No originalauth/authority/fullmatch/K5/K6a/vanilla/LANInternet/gate. Source/config frozen through cleanup/rawseal; no sourcebinaryDBpackchange.",
+      "evidence": [
+        "RUN-00004",
+        "RUN-01339"
+      ]
+    }
+  ],
+  "verification": [
+    {
+      "check": "1453reusedsame-runcyclejoins+24deadlinepositivejoins/1209sealedraw/sourcefreeze/2manualfinalroomimages",
+      "result": "pass",
+      "evidence": [
+        "RUN-01226",
+        "RUN-01242",
+        "RUN-01253",
+        "RUN-01329"
+      ],
+      "limits": "Two real modifiedWine A/B/same pinnedCP134profile+loadingdeadline30s/nohold wrapper. Two normal barriers/results/reset; copiednative checks separate from Winecallbacks. Currentprofile does not enable death_lifecycle/result_freshness, those integration next. No originalauth/authority/fullmatch/K5/K6a/vanilla/LANInternet/gate. Source/config frozen through cleanup/rawseal; no sourcebinaryDBpackchange."
+    },
+    {
+      "check": "354copiednativepacket/12peer153/4542actor/7092flaggetters7020array modelchecks distinctfromWineexecution",
+      "result": "pass",
+      "evidence": [
+        "RUN-01246",
+        "RUN-01244",
+        "RUN-01231",
+        "RUN-01232"
+      ],
+      "limits": "Modelcodec/getterchecks, not extra gameplay orprogress counts."
+    },
+    {
+      "check": "Docs/catalog/issues/artifacts/diff;226baselineunchangedcodetests reused;CP135correctedhistory204587evidence0error",
+      "result": "pass",
+      "evidence": [
+        "RUN-01230",
+        "RUN-01239",
+        "RUN-00003",
+        "RUN-01335",
+        "RUN-01334"
+      ],
+      "limits": "Mechanical consistency only; gates/acceptance not certified."
+    }
+  ],
+  "evidence": [],
+  "evidence_manifests": [
+    {
+      "path": "docs/evidence/checkpoints/evidence/CP136-loading-deadline-positive.json",
+      "bytes": 345570,
+      "sha256": "7de4e54b0a182a499731dfb8676c01f9e34cea884cdc78df1391102dc209f9eb",
+      "count": 1339
+    }
+  ],
+  "delta": {
+    "added": [
+      "Normal loadingdeadline positive across2generations inonecompletecapturedrun; AUD042periodic136→140."
+    ],
+    "corrected": [
+      "Authoritymatrix sharedblocker gap qualifiedbyCP133/134, obsolete connectedloading next-step replacedwithcombinednormalintegration.",
+      "CP135schemaerror was uncommitted draft; rejection/correction preserved, completecommittedobjectsunchanged."
+    ],
+    "superseded": [
+      "NEXT-LOADING-DEADLINE-POSITIVE closed; NEXT-INTEGRATED-SURVIVOR-GUARDS active."
+    ]
+  },
+  "blockers": [
+    "CombinedCP106movement/survivor/resultdrain +currenttrap/deadline runtime notyetverified.",
+    "Fullauth/authority/generalreset/membership/fullmatch/vanilla/LANInternet/gates open."
+  ],
+  "next_steps": [
+    {
+      "id": "NEXT-LOADING-DEADLINE-POSITIVE",
+      "task": "KRE-005b",
+      "state": "closed",
+      "action": "CP136twoactualnormalbarriersbeforedeadline/no falseclose/resetgeneration/nativefulltwooutcomes verified.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-INTEGRATED-SURVIVOR-GUARDS",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "PLAN reuseCP106controller/profile+currenttrapCP124+deadline30s; same-run4phasemovement/survivor/drained21/current17→19/tworesultsreset/currentterrainitems/TCPguards. Oldinit99timingreferenceonly; keep30s/notforge orsourcechangebetweenrun. AuditnextCP140.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    }
+  ],
+  "docs_sync": [
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "CP136normaldeadline2/sourceboundlimits/profileoptions/combinednextstep/catalog/issue andperiodicAUD042 synced beforecomplete."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "CP136normaldeadline2/sourceboundlimits/profileoptions/combinednextstep/catalog/issue andperiodicAUD042 synced beforecomplete."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "updated",
+      "reason": "CP136normaldeadline2/sourceboundlimits/profileoptions/combinednextstep/catalog/issue andperiodicAUD042 synced beforecomplete."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "updated",
+      "reason": "CP136normaldeadline2/sourceboundlimits/profileoptions/combinednextstep/catalog/issue andperiodicAUD042 synced beforecomplete."
+    },
+    {
+      "path": "docs/features.json",
+      "state": "updated",
+      "reason": "CP136normaldeadline2/sourceboundlimits/profileoptions/combinednextstep/catalog/issue andperiodicAUD042 synced beforecomplete."
+    },
+    {
+      "path": "docs/COVERAGE.md",
+      "state": "updated",
+      "reason": "CP136normaldeadline2/sourceboundlimits/profileoptions/combinednextstep/catalog/issue andperiodicAUD042 synced beforecomplete."
+    },
+    {
+      "path": "server/README.md",
+      "state": "updated",
+      "reason": "CP136normaldeadline2/sourceboundlimits/profileoptions/combinednextstep/catalog/issue andperiodicAUD042 synced beforecomplete."
+    },
+    {
+      "path": "docs/evidence/loading-timeout/README.md",
+      "state": "updated",
+      "reason": "CP136normaldeadline2/sourceboundlimits/profileoptions/combinednextstep/catalog/issue andperiodicAUD042 synced beforecomplete."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/review.json",
+      "state": "updated",
+      "reason": "CP136normaldeadline2/sourceboundlimits/profileoptions/combinednextstep/catalog/issue andperiodicAUD042 synced beforecomplete."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
+      "state": "updated",
+      "reason": "CP136normaldeadline2/sourceboundlimits/profileoptions/combinednextstep/catalog/issue andperiodicAUD042 synced beforecomplete."
+    }
+  ]
+}

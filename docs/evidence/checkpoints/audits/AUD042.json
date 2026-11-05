@@ -1,0 +1,89 @@
+{
+  "id": "AUD042",
+  "trigger": "periodic",
+  "completed_through": "CP136",
+  "recorded_utc": "2026-11-05T15:11:55.588801+00:00",
+  "auditor": "Codex manual self-audit; independent review waived",
+  "read_files": [
+    "README.md",
+    "docs/PLAN.md",
+    "docs/PROTOCOL.md",
+    "docs/RESEARCH.md",
+    "docs/evidence/loading-timeout/README.md",
+    "docs/evidence/three-bomb-chain/README.md",
+    "docs/evidence/current-movement-cycles/README.md",
+    "docs/evidence/life-admission/README.md",
+    "docs/evidence/checkpoints/README.md",
+    "docs/features.json",
+    "docs/COVERAGE.md",
+    "server/probe_service.py",
+    "local/research/codex/loading-timeout-positive-r1/cycles/run.json",
+    "local/research/codex/loading-timeout-positive-r1/cycles/service-state.json",
+    "local/research/codex/loading-timeout-positive-r1/cycles/client.log",
+    "local/research/codex/loading-timeout-positive-r1/cycles/client-B.log",
+    "local/research/codex/loading-timeout-positive-r1/raw-seal.json",
+    "local/research/codex/loading-timeout-positive-r1/cycles-verification.json",
+    "local/research/codex/loading-timeout-positive-r1/loading-verification.json",
+    "local/research/codex/loading-timeout-positive-r1/visual-review.json",
+    "local/research/codex/loading-timeout-positive-r1/runtime-preflight.json",
+    "local/research/codex/loading-timeout-r1/fixed-verification.json",
+    "local/research/codex/loading-timeout-r1/checkpoint-final-corrected.txt",
+    "local/research/codex/loading-timeout-r1/schema-validation/correction.json",
+    "local/research/codex/loading-timeout-r1/schema-validation/CP135-before-validation.json",
+    "local/research/codex/loading-timeout-r1/schema-validation/checker-rejected.txt",
+    "local/research/codex/loading-timeout-r1/pr-exact-head.json",
+    "local/research/codex/loading-timeout-r1/pr-merged.json"
+  ],
+  "method": "Đọc README→PLAN→PROTOCOL→RESEARCH→evidence rồi đối chiếu run/service/native121175180107/slotclear/chief, 195flags/geometry/report joins, rawseal, actual TCP samples, normal deadline generation và profile options. Reuse CP106/124 giải thích giới hạn tổ hợp; không đọc lại mọi raw index hay dùng checker thay audit. Kiểm CP133–136 raw/history không đổi, lỗi draft CP135 giữ/correction trước firstcommit. Periodic136→140.",
+  "findings": [
+    {
+      "id": "F1",
+      "stale": "Authority matrix còn ghi sharedblocker chưa đủ mà không phân biệt local query/cellstate và hai shared cycles CP133–134 đã giải.",
+      "correction": "Liên kết trực tiếp CP133/134 trong ô authority; giữ FIFO/generalrace/originalauthority unknown.",
+      "fixed_in": [
+        "docs/PROTOCOL.md"
+      ]
+    },
+    {
+      "id": "F2",
+      "stale": "Current docs/loading section/server README và issue14 vẫn đặt normal deadline positive là bước kế, PR206 còn pending sau merge.",
+      "correction": "Ghi CP136 two-barrier normal positive/24joins/1453reusedgeometryjoins/scope, CP135PR206merge57b3b53; chuyển PLAN sang tổ hợp movement/survivor/currenttrap/resultdrain, sync catalog/coverage/issues.",
+      "fixed_in": [
+        "README.md",
+        "docs/PLAN.md",
+        "docs/PROTOCOL.md",
+        "docs/RESEARCH.md",
+        "server/README.md",
+        "docs/evidence/loading-timeout/README.md",
+        "docs/features.json",
+        "docs/COVERAGE.md",
+        "docs/evidence/issue-reconciliation/review.json",
+        "docs/evidence/issue-reconciliation/github-snapshot.json"
+      ]
+    },
+    {
+      "id": "F3",
+      "stale": "Risk de qualifier normal all-dead profile như đã bật life/result guards từ các run cũ; thực tế profile CP136 thiếu death_lifecycle/result_freshness.",
+      "correction": "Nêu rõ options chưa bật trong CP136. Chọn reuse CP106 resultdrain/controller cộng currenttrapCP124/deadline để đo đúng tổ hợp; không quét cơ chế mới.",
+      "fixed_in": [
+        "docs/PLAN.md",
+        "docs/PROTOCOL.md",
+        "docs/RESEARCH.md",
+        "docs/evidence/loading-timeout/README.md"
+      ]
+    },
+    {
+      "id": "F4",
+      "stale": "Bản draft CP135 chưa commit bị checker reject thiếu evidence[] và method implementation không thuộc enum.",
+      "correction": "Đối chiếu saved rejected draft/index/log và correction; schema repaired before firstcommit, findings/raw unchanged. Finalcheck204587 evidence/history0errors. Không sửa complete history để che lỗi.",
+      "fixed_in": [
+        "docs/evidence/loading-timeout/README.md"
+      ]
+    }
+  ],
+  "remaining": [
+    "CP136/AUD042 đang selfcheck, cần commit/push/PR/exacthead/merge; periodic kếCP140.",
+    "Normal movement/survivor/resultdrain/currenttrap/deadline combined runtime chưa đo; khoảng25,7s init99 CP106 là reference không guarantee.",
+    "Fullauth/codec/originalserverauthority/genericreset/membership/K5/K6a/vanilla/LANInternet gates mở."
+  ]
+}

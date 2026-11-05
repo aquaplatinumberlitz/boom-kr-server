@@ -41,17 +41,17 @@ Hai copy KR Wine đã chạy login/sảnh/phòng/Battle và các chu kỳ kết 
 [kim/reset](docs/PROTOCOL.md#needle-round-reset), [cứu hai chiều và hai kết quả](docs/PROTOCOL.md#rescue-two-results),
 [deep chain/reset](docs/PROTOCOL.md#recursive-chain-cycles) giữ phạm vi và giới hạn tại nguồn chuẩn.
 
-**Mốc mới CP135:** đã đo loading barrier kẹt khi giữB99/TCP còn mở, rồi thử deadline tùy chọn:
-service đóng riêng B, A nhận cleanup native và về phòng/nútStart. [Contract/giới hạn](docs/PROTOCOL.md#loading-timeout),
-[raw/hash/recipe](docs/evidence/loading-timeout/README.md). Đây là fault injection và policy emulator;
-không phải trận đã chơi hay timeout server gốc. Hai chu kỳ shared cascade CP134 giữ nguyên bằng chứng.
+**Mốc mới CP136:** deadline tùy chọn đã qua positive hai vòng bình thường: hai barrier hoàn tất
+trước hạn, không đóng nhầm khi trận vượt30s, deadline mới ởStart2; cả hai về phòng lần hai.
+[Contract/giới hạn](docs/PROTOCOL.md#loading-timeout-positive), [raw/hash](docs/evidence/loading-timeout/README.md#cp136).
+Ca thiếuB99/cleanup ởCP135 là thí nghiệm riêng; không ghép chúng thành fullmatch/K6a.
 
-CP134 đã merge [PR205](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/205) tại `c2b2de4`.
-CP135 code/docs/evidence đang tự kiểm; review độc lập [waived](docs/evidence/checkpoints/review-waiver.json).
-#1/#2/#3/#9/#14 và K0–K7 vẫn mở. AUD041 qua132; audit kế **CP136**.
+CP135 đã merge [PR206](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/206) tại `57b3b53`.
+CP136/AUD042 docs/evidence đang tự kiểm; [review độc lập waived](docs/evidence/checkpoints/review-waiver.json).
+#1/#2/#3/#9/#14 và K0–K7 vẫn mở. Audit qua136; mốc audit kế **CP140**.
 
-Theo [PLAN](docs/PLAN.md#current-order), kiểm đường bình thường với deadline bật qua hai vòng:
-actualA/B99 phải hoàn tất barrier, không đóng nhầm sau30s hoặc khi sang vòng mới.
+Theo [PLAN](docs/PLAN.md#current-order), kiểm tích hợp movement/survivor/result-drain với current-trap
+guard và deadline. Tái dùng CP106/124, chỉ đo tổ hợp chưa có bằng chứng trong cùng run/profile.
 
 Đích đầu: hai client thật chơi hai trận liên tiếp; mở bốn client và hardening sau đó.
 

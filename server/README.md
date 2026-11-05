@@ -228,4 +228,5 @@ current dispatched barrier thắng expiry trong owner tick; hết hạn đóng r
 vô hiệu hóa fence và tái dùng close/forfeit/return/cleanup hiện hành. Không giả99/death/cancelpacket.
 [Contract/giới hạn và runtime control/fixed](../docs/PROTOCOL.md#loading-timeout);
 `python3 -m unittest server.test_loading_timeout` kiểm local policy, không là original-server oracle.
-Positive normal/reset với policy bật đang là phép kiểm tiếp theo ở PLAN.
+[CP136 positive normal/reset](../docs/PROTOCOL.md#loading-timeout-positive) đã qua trên same-profile all-dead;
+tổ hợp normal movement/survivor/current-trap/result-drain theo PLAN vẫn cần cùng-run proof.

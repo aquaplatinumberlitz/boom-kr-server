@@ -1,6 +1,6 @@
 # KR 00967 — contract tương thích client gốc
 
-Revision kr-legacy-contract-r1; cập nhật05/11/2026 JST (CP135; AUD041 quaCP132, kếCP136).
+Revision kr-legacy-contract-r1; cập nhật06/11/2026 JST (CP136; AUD042 quaCP136, kếCP140).
 **Contract có bằng chứng từng phần; chưa nghiệm thu full codec K2**.
 Lộ trình và thứ tự task chỉ giữ ở [REWRITE_PLAN — KRE](PLAN.md).
 Đây là contract của repo server KR. ADR0009 của bản viết lại là nguồn lịch sử để so sánh;
@@ -1966,12 +1966,12 @@ locator/trace và trạng thái từng ô; những vai trò không nêu dưới 
 |---|---|---|
 | Movement | CP027 hai chiều; CP070 [cut/counter/restore local vs remote](#current-udp-causality), CP098 [protected peer targets](#current-peer-targets), CP106 [four-phase/two-cycle integration](#current-movement-cycles) trong scope từng run;183 vẫn ghost | Full schema input/update/correction, validator và quyền sửa vị trí của peer |
 | Bomb place/ID | CP027 hai owner/ID chung1..4 tạo trên cả hai client; [phạm vi](#peer-duo); lặp/cũ CP025 | CP041 có [stale158/ID reuse và fence job local](#round-generation), CP043 có [old159/serial reuse](#late-bomb-confirm); CP067 [C2Skey/serialguard](#c2s118-admission) và CP075 [actualTCPselectedreplay](#current-tcp-replay) loại duplicate/oldbody hẹp; allocator/rollover/concurrent/race/toàn generation/authority còn mở |
-| Explode/chain | CP033 một owner; CP064 [power1/cách hai ô](#mixed-owner-chain), CP071 [power2 ngoài tầm/feedback chưa118](#mixed-owner-power) giữ partial lịch sử; CP081 [power2/distance2 mixed-owner](#mixed-input), CP084 [ba bom fork hai vòng](#three-bomb-chain); CP094 [optional pinned terrain](#terrain-policy), CP095 [actualbox/laterfreshpair](#opposite-box-control) có native callback/195flag proof | [CP096adjacent1cell](#adjacent-owner-control) và [CP122 chain sâu](#recursive-chain) đã đo trong ca hẹp; sharedblocker/FIFO/firstbombstop/immutable tổng quát/race và authority server gốc chưa đủ |
+| Explode/chain | CP033 một owner; CP064 [power1/cách hai ô](#mixed-owner-chain), CP071 [power2 ngoài tầm/feedback chưa118](#mixed-owner-power) giữ partial lịch sử; CP081 [power2/distance2 mixed-owner](#mixed-input), CP084 [ba bom fork hai vòng](#three-bomb-chain); CP094 [optional pinned terrain](#terrain-policy), CP095 [actualbox/laterfreshpair](#opposite-box-control) có native callback/195flag proof | [CP096adjacent1cell](#adjacent-owner-control) và [CP122 chain sâu](#recursive-chain) đã đo trong ca hẹp; [CP133 shared cellstate/query](#shared-cell-state) và [CP134 hai shared cycles](#shared-cascade-cycles) đã giải ca cố định; FIFO/firstbombstop/immutable tổng quát/race và authority server gốc chưa đủ |
 | Block destroy/item reveal | CP032 nativecontract; CP068 [currentservice/list2/reportgate/effect/reset](#current-hidden-items), CP092 [195flags/seedreset](#map-flags-snapshot), CP094/095 [pinnedpolicy/nativeboxclear](#terrain-policy) cảhai view | Drop algorithm gốc/fullvalidator, genericclass/map và transport khác còn thiếu; không dùng report142 làm worldoracle |
 | Item placement/pickup | CP030 nhặt/tranh index; CP031/032 stat/itemẩn; CP045 [bảng nhóm/Roller/MaxPower hai view/reset](#item-families) | CP042 có [old165/index reuse](#item-generation); runtime tại max, KRspeed→px/s/TTL/activevariants, drop/toàn124validator/generation/reset còn thiếu; CP062 [winner đảo trên actual tranh index](#current-pickup-race) đã có scope riêng |
 | Trap/death | CP029/036; CP037 kim và tranh chấp cứu/diệt; [kim](#needle-selfescape), [precedence](#contact-precedence) | CP063 [guard stale/duplicate](#report127-freshness) là policy hẹp; CP075 [TCPsame/old17,19](#current-tcp-replay) đã đo; [CP112](#death-envelope-admission) thêm structural17/19admission; semanticfirstseen/forgedforward/generation/variants/result21 vẫn thiếu |
 | Result/reset | CP039 hai vòng statepeer/result/21/return và reset field hẹp; CP044 [timer ở EOF và vòng B/C mới](#abort-timer); CP080 [hai chu kỳ sau rejoin](#ready-input), CP082 [mixed-owner survivor](#mixed-cycles), CP083 [all-dead rank2/2/storage/UI](#all-dead-result), mỗi run/scope riêng; CP100 [optional result freshness](#result-freshness-guard), CP102 [drain/local21clear/peerblocker](#drained-result-local-clear), CP104 [native175/34/state3](#ending34-state-boundary), CP105 [exactendingUDPqueue](#ending-udp-state-apply), CP106 [same-run selected180boundaries](#current-movement-cycles) | CP041 có [payload cũ khi ID reuse](#round-generation); arbitration/toàn generation/entity/timer/peer/seq không rò vẫn mở; phân biệt run chờ sai origin với ca hoàn tất |
-| Room lifecycle | CP034 leave/promotion/EOF/return; CP035 rejoin/Ready; CP040 chủ B/C Start; CP044 [B/C bom/death/result/return sau abort](#abort-timer) | Bầu chủ/giữ ID-slot/forfeit là policy stub; guest EOF trả A về phòng/xóa B đã đo riêng; CP050 có [service EOF/cleanup](#service-eof); CP051 có [C mới/Start B trong service](#service-replacement); CP052 [guest setup EOF](#setup-eof), CP053 [host với peer chưa map](#host-setup), CP054 [C trước vòng đầu](#prestart-replacement), CP072 [preclock forfeit/return](#preclock-eof), CP074 [native107/IDclear và UI](#preclock-cleanup), CP076 [Back86/emptyroomrecreate cùng channel](#back86-membership), CP107 [currentservicehostBack/promotedrejoin tới clock](#host-normal-back) đã đo; reconnect cùng account/disconnect variants/toàn reset còn mở |
+| Room lifecycle | CP034 leave/promotion/EOF/return; CP035 rejoin/Ready; CP040 chủ B/C Start; CP044 [B/C bom/death/result/return sau abort](#abort-timer) | Bầu chủ/giữ ID-slot/forfeit là policy stub; guest EOF trả A về phòng/xóa B đã đo riêng; CP050 có [service EOF/cleanup](#service-eof); CP051 có [C mới/Start B trong service](#service-replacement); CP052 [guest setup EOF](#setup-eof), CP053 [host với peer chưa map](#host-setup), CP054 [C trước vòng đầu](#prestart-replacement), CP072 [preclock forfeit/return](#preclock-eof), CP074 [native107/IDclear và UI](#preclock-cleanup), CP076 [Back86/emptyroomrecreate cùng channel](#back86-membership), CP107 [currentservicehostBack/promotedrejoin tới clock](#host-normal-back) đã đo; [CP135 deadline và native cleanup](#loading-timeout) đã đo ca B99 bị giữ; reconnect cùng account/disconnect variants/toàn reset còn mở |
 | Peer lifecycle | CP027 actual99→153; CP045–047 [oldUDP actor/keyguard/endpointcontrol](#udp-generation), CP070 [transport cut hai chiều](#current-udp-causality) | CP048 [service fixture](#probe-service) đã tích hợp key policy hẹp; low8reuse/roster/UDPtype khác/fullgrammar/reliability/relay/reset còn mở. Không coi đổi cổng riêng lẻ là freshness guard hoặc keybyte là auth |
 
 Trong **optional profile hiện hành**, bảng dưới ghi vai trò emulator, không gán cho server gốc.
@@ -4772,5 +4772,23 @@ B hiện dialog mất kết nối/error10. Callback cleanup được kiểm sau1
 Forfeit/rank/30s là lựa chọn emulator, không báo cáo trận đã chơi hoặc luật server gốc.
 
 Giới hạn: runtime mới kiểm B99 bị giữ với A99 thật/hostA/hai copy Wine; cả hai thiếu, replacement,
-đổi vòng/defaultoff/boundary có regression model, chưa phải runtime mọi variant. Đường bình thường
-với policy bật cần kiểm tiếp theo PLAN. Không K5/K6a/fullmatch/vanilla/LANInternet/general recovery.
+đổi vòng/defaultoff/boundary có regression model, chưa phải runtime mọi variant. Đường bình thường với policy bật có positive CP136 bên dưới. Không K5/K6a/fullmatch/vanilla/LANInternet/general recovery.
+
+
+<a id="loading-timeout-positive"></a>
+### Positive loading deadline qua hai vòng — CP136
+
+**kr_runtime/confirmed hẹp**, [recipe/hash/phép kiểm](evidence/loading-timeout/README.md#cp136).
+Exact normal CP134 controller/profile, thêm duy nhất loading_timeout30s, không hold wrapper.
+Cùng run có hai actualA/B99, barrier_complete ởgeneration1/2 sau15,165/16,188s, native121129/
+197/196/153/clock hai lần mỗi view; cùng channelA4/B8. Trận tiếp tục qua deadline, actualA/B17→19
+mỗi vòng, chosen all-dead rank2,2/full175180 và về phòng hai lần; không loading_timeout/abort hoặc
+channelclose trước mốc đo. Start2 pin deadline mới/key12346; callback/195flags geometry được kiểm
+bằng assertions đã có ởCP134, không phục hồi thêm cơ chế native.
+
+Runtime này chứng minh policy tương thích đường normal của **profile này**. Nó chưa bật
+`death_lifecycle` hoặc `result_freshness`; các guard đã có từCP124/106 nhưng tích hợp chung với
+current deadline/survivor/movement cần phép kiểm riêng theo PLAN. Không suy cùng enum/field hoặc
+các kết quả khác run là proof một profile tích hợp. Source/code production không đổi sauCP135;
+226server tests reuse, local/raw/hash và auditAUD042 qua136. Fullmatch/K5/K6a/vanilla/LANInternet/
+originalauth/serverauthority và genericloading/membership vẫn mở.

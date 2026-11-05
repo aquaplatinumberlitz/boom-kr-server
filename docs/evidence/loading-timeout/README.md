@@ -46,6 +46,35 @@ SHA đầy đủ ở checkpoint; base400000/RVA=VA−400000. Không thay binary/
 6regressions deadline/boundary/defaultoff/bothmissing/roundreset/replacement/fence. Docs/catalog/issues/
 requiredlocalhistory/diff kiểm lúc bàn giao; checker không tự xác nhận ngữ nghĩa/gate.
 
-CP135 self-check trong thay đổi hiện tại; AUD041 qua132, audit kếCP136. Tiếp theo PLAN là positive
-normal A/B99 với deadline bật qua hai vòng, chưa tuyên bố không regression từ test policy đơn lẻ.
+CP135 đã merge [PR206](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/206) tại `57b3b53`.
+Positive normal sau đó được ghi riêng ởCP136 bên dưới; raw/history CP135 giữ nguyên.
 Không native load failure/network loss/original timeout/fullmatch/K5/K6a/vanilla/LANInternet proof.
+
+
+<a id="cp136"></a>
+## CP136 — Positive hai vòng với deadline bật; AUD042
+
+Raw `local/research/codex/loading-timeout-positive-r1`, recipe/controller/preflight/runtime-source/
+raw-seal và `reuse-question.json`. Dùng nguyên CP134 normal controller/geometry/client/map/fuse/probes,
+chỉ thêm optional30s trong profile; không hold wrapper, không RE lại chain hoặc đọc thân hàm mới.
+Run374,592s/exit0/1209raw, SHA256 run.json
+`1fb9db23bbfedcc8ef291f071f01189b21f97270872b1fb208c682711fad3a47`.
+
+`loading-verification.json`:24 quan hệ: generation1/2 pin cùng A4/B8, hai actual99 resolve barrier
+sau15,165/16,188s, đều trước30s; result sau deadline69,641/64,060s. Không timeout/abort/close trước
+mốc đo. Start2 deadline mới, key12345→12346. `cycles-verification.json`:1453 joins dùng lại exact
+CP134 geometry/native195/sharedcascade/actualboth19/rank2,2/175180/secondroom assertions; không coi
+đây là RE cơ chế mới. Copied-native354packet/12peer153,4542actorgetters,7092flaggetters/7020array
+là model checks riêng. Hai ảnhfinal-both đã đọc: AhostStart/BReady/cùngphòng, chưa Start3.
+Source/config giữ nguyên tới cleanup, raw seal trước chuyển việc; không sourcebinary/DB/packmutation.
+
+CP135 checkpoint draft chưa commit ban đầu thiếu evidence[]/method enum; bản bị reject, index/log và
+correction metadata được giữ ở `loading-timeout-r1/schema-validation/`, auditCP136 đối chiếu. Chỉ
+sửa metadata trước firstcommit; không sửa findings/conclusion/raw hoặc record complete trong Git.
+CP135 finalcheck204587evidence/0missing/0errors;226servertests reuse vì production không đổi sauPR206.
+
+CP136/AUD042 self-check trong thay đổi hiện tại, audit qua136/kế140. Khép scoped positive loading;
+PLAN chuyển sang tích hợp normal movement/survivor/result-drain với current-trap guard và deadline
+đã biết. Không suy current all-dead profile đã bật life/result guards: nó chưa bật hai option đó.
+Hai run fault/control và run positive là các thí nghiệm riêng; không ghép thành fullmatch/K5/K6a/
+vanilla/LANInternet hoặc toàn bộ thời gian load/membership đã được nghiệm thu.
