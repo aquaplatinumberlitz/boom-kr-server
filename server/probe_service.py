@@ -102,7 +102,8 @@ class ProbeService:
         self.battle_exit_mode = None
         if 'battle_exit' in profile.data:
             if (profile.data['battle_exit'] not in (
-                    {'mode': 'guest_B_202_86'}, {'mode': 'guest_B_pending_202_86'})
+                    {'mode': 'guest_B_202_86'}, {'mode': 'guest_B_pending_202_86'},
+                    {'mode': 'host_A_202_86'})
                     or 'rescue_contact' in profile.data):
                 raise ValueError('unsupported battle_exit policy')
             self.battle_exit = True
@@ -141,6 +142,8 @@ class ProbeService:
             for alias in HOST_BACK_ALIASES + ('ready', 'roomlist_A', 'table', 'map'):
                 profile.body(alias)
             self.host_back_rejoin = True
+        if self.battle_exit_mode == 'host_A_202_86' and not self.host_back_rejoin:
+            raise ValueError('host Battle exit requires host_back_rejoin fixtures/policy')
         self.result_freshness = False
         self.result_drain = False
         if 'result_freshness' in profile.data:
@@ -302,11 +305,17 @@ class ProbeService:
                         and exit_report['generation'] == self.room.generation
                         and sequence > exit_report['seq']
                         and self.battle_exit_scope_rejection() is None)
+        active_host = (self.battle_exit_mode == 'host_A_202_86' and self.room.active
+                       and idle_host and self.channels.get('A') is event
+                       and exit_report and exit_report['generation'] == self.room.generation
+                       and sequence > exit_report['seq']
+                       and self.battle_exit_scope_rejection() is None)
+        active_exit = active_guest or active_host
         if body:
             request['rejected'] = 'unsupported_leave_body'
         elif not event.get('create_response_sent'):
             request['rejected'] = 'not_room_member'
-        elif not active_guest and (self.room.active or (self.round.get('index') and not self.round.get('refresh'))):
+        elif not active_exit and (self.room.active or (self.round.get('index') and not self.round.get('refresh'))):
             request['rejected'] = 'round_not_returned'
         elif not (empty_host or idle_guest or idle_host):
             request['rejected'] = 'unsupported_leave_membership_variant'
@@ -338,13 +347,15 @@ class ProbeService:
             event.setdefault('room_visits', []).append(request)
             event['last_room_leave'] = request
             event['room_reentry'] = True
-            if active_guest:
+            if active_exit:
                 self.room.finish()
-                self.round['abort'] = {'role': 'B', 'reason': 'normal_Battle_exit',
+                self.round['abort'] = {'role': event['role'], 'reason': 'normal_Battle_exit',
                                        'generation': self.room.generation,
                                        'monotonic_ns': now}
-                request['variant'] = 'active_guest_B'
+                request['variant'] = 'active_host_A' if active_host else 'active_guest_B'
                 request['report202_sha256'] = exit_report['frame_sha256']
+                if active_host:
+                    request['survivor_connection'] = others[0]['global_ordinal']
                 # The peer is still in Battle. Reuse measured post-return107/
                 # 110 cleanup rather than sending a prepare-only removal now.
             elif idle_guest:
@@ -383,7 +394,7 @@ class ProbeService:
         elif opcode in (81, 82) and not event.get('create_response_sent'):
             previous = event.get('last_room_leave')
             promoted = (self.host_back_rejoin and role == 'A' and previous
-                        and previous.get('variant') == 'host_A_to_B')
+                        and previous.get('variant') in ('host_A_to_B', 'active_host_A'))
             if promoted and opcode != 82:
                 self.state.setdefault('room_reentry_rejections', []).append({
                     'role': role, 'seq': sequence, 'reason': 'promoted_room_requires_join',
@@ -756,15 +767,16 @@ class ProbeService:
                 event['death_event'] = report
 
     def receive_battle_exit(self, event, frame, sequence, body):
-        """Stage the supported guest202 -> 86 pair, not death or auth."""
+        """Stage an opt-in role-specific202 -> 86 pair, not death or auth."""
         report = {'role': event['role'], 'generation': self.room.generation,
                   'seq': sequence, 'frame_sha256': hashlib.sha256(frame).hexdigest(),
                   'monotonic_ns': time.monotonic_ns(), 'body_hex': body.hex()}
         self.state.setdefault('battle_exit_reports', []).append(report)
         if len(body) != 22 or codec.read_fields(body[:2], [1, 1]) != [0, 1]:
             report['rejected'] = 'unsupported_battle_exit_body'
-        elif (not self.room.active or self.host_role != 'A' or event['role'] != 'B'
-              or self.channels.get('B') is not event
+        elif (not self.room.active or self.host_role != 'A'
+              or event['role'] != ('A' if self.battle_exit_mode == 'host_A_202_86' else 'B')
+              or self.channels.get(event['role']) is not event
               or not any(peer is event for peer in self.peers())
               or {p['role'] for p in self.peers()} != {'A', 'B'}):
             report['rejected'] = 'unsupported_battle_exit_membership'
@@ -779,6 +791,13 @@ class ProbeService:
     def battle_exit_scope_rejection(self):
         """Only the measured unbombed case or one live B-owned pending ticket."""
         bombs = [b for b in self.state['round_bombs'] if b['round'] == self.room.generation]
+        if self.battle_exit_mode == 'host_A_202_86':
+            if bombs:
+                return 'unsupported_battle_exit_after_bomb'
+            if any(q['round'] == self.room.generation and q['subtype'] in (17, 19)
+                   and not q.get('rejected') for q in self.state['event_reports']):
+                return 'unsupported_battle_exit_after_trap'
+            return None
         if not bombs:
             return None
         if self.battle_exit_mode != 'guest_B_pending_202_86':
@@ -1238,7 +1257,7 @@ class ProbeService:
             if (left and not left.get('refresh')
                     and now - left['monotonic_ns'] >= 10**9):
                 left['refresh'] = [self.send(event, 'ready', 'return-lobby241'),
-                                   self.send(event, 'roomlist_B' if left.get('variant') == 'host_A_to_B' else 'roomlist_' + role, 'return-lobby91')]
+                                   self.send(event, 'roomlist_B' if left.get('variant') in ('host_A_to_B', 'active_host_A') else 'roomlist_' + role, 'return-lobby91')]
             for previous, marker, delay, aliases in [
                 ('player_response_sent', 'slot_response_sent', 2, [f'slot_{role}']),
                 ('slot_response_sent', 'guest_response_sent', 1, [f'guest_{role}']),

@@ -1,7 +1,7 @@
 # Kế hoạch server giả lập KR 00967
 
 Nguồn chuẩn của project `boom-kr-server`; bản nhập từ plan đã được dsh1/dsh2 review tại `1eee46d`.
-Cập nhật05/11 JST (CP128): postbomb exit/rejoin/Start2 cùng run đã đo; một forfeit rồi R2 active. CP127/PR198 merged `c5f07c1`; CP128 tự kiểm trong thay đổi hiện tại. AUD040 qua128, kế132.
+Cập nhật05/11 JST (CP129): host normalexit/control→opt-infixed/Breturn-chief→sameTCPArejoin/Ready/BStart2 đã đo; mộtforfeit rồiR2active. CP128/PR199 merged `1b11fe4`; CP129 tự kiểm trong thay đổi hiện tại. AUD040 qua128, kế132.
 
 
 ### Mục tiêu, baseline và phạm vi
@@ -37,13 +37,13 @@ với client Rust không chứng minh có thể điều khiển client KR bằng
 
 ### Tiến độ hiện hành theo bằng chứng
 
-| Task/mốc | Trạng thái tại CP128 | Nguồn chuẩn |
+| Task/mốc | Trạng thái tại CP129 | Nguồn chuẩn |
 |---|---|---|
 | KRE-004/issue6 | Đã review/merge PR7 và đóng issue:recipe r1 đến local accept;không phải full K1 | [Wine r1](evidence/wine/README.md) |
 | Bootstrap reply | PR8 đã merge;debugger ProcessPatchreturn1,không ép success | [bootstrap evidence](evidence/bootstrap-wire/README.md) |
 | KRE-005a/issue9,R2 | PR10 đã merge:3 cold start cửa sổ/second accept;issue9 còn mở | [R2 evidence](evidence/wine-r2/README.md) |
 | WCP hai-reply | Run CP001 là lịch sử chưa C→S; CP006 đã đo request đầu trên copy tham số hóa | [PROTOCOL](PROTOCOL.md#wcp),[WCP evidence](evidence/wcp/README.md) |
-| KRE-005b/issue14 | CP006–127 đã merge; CP128 postbombexit/rejoinStart2 cùng run đã đo; fullround/authority/full auth còn mở | [Q-023](RESEARCH.md#q-023), [service](evidence/probe-service/README.md) |
+| KRE-005b/issue14 | CP006–128 đã merge; CP129 hostexit/Breturn/promotion/ArejoinStart2 cùng run đã đo; fullround/authority/full auth còn mở | [Q-023](RESEARCH.md#q-023), [service](evidence/probe-service/README.md) |
 | K0/K1 | Chưa nghiệm thu toàn gate;Windows vanilla/control ownership và các điều kiện còn thiếu giữ mở | Gate dưới,[Q-022](RESEARCH.md) |
 | K2a/K2 | Primitive/WCP, CP057stream native/model và CP058–060authcallback137/135/errors0 đã có; fullcodec/authauthority/reconnect và gate chưa pass | [PROTOCOL](PROTOCOL.md#login-auth),[Q-023](RESEARCH.md#q-023) |
 | K3 | Copy đã vẽUI/đóngnotice, A/B/Cprofile đọc sạch và mộtnamedcachewarm được nhận; identityauthority/toàncache/codec/K3 chưa nghiệm thu | [Contract sảnh](PROTOCOL.md#channel-lobby) |
@@ -63,15 +63,16 @@ Một blocker chỉ kết thúc nhánh đo tương ứng; ghi rõ rồi tiếp v
 KRE-073/[#188](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/188) đã giao
 [PR189](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/189)/merge`dae23b7`, CP118 vàđóng;
 selectiveCLI/historicalmigration xong, không còn taskactive tổ chức. CP119 đãtiếpactualRE sau merge.
-1. **KR-R004/X003/S001 — normal host Battle exit:**
-   [CP128](PROTOCOL.md#postbomb-exit-rejoin) đã ghép oneBpendingexit/fence/no158 với actualsameTCP
-   B82/585/95/A104/Start2/key12346/native121/clocks; không đo lại guest case này.
-   K6a cần peer còn lại không treo khi host rời. CP107 chỉ host Back ở phòng; CP125–128 chỉ guest
-   Battle exit. Reuse đúng nguồn/consumer20286 và post-return107/110/promotion, không coi hai trigger là một.
-   Phép thử tối thiểu: cùng hai copy/current service, không bom, host A bấm normal Battle exit;
-   nối actual202/86/native stage/capture với service reject hoặc admit và B survivor/result/return.
-   Control có bound, không ép gói/native call hoặc kill; nếu bị chặn, chỉ triển khai opt-in theo khoảng
-   trống thực tế rồi chạy fixed. Host pending/dead/multiple chưa thuộc phép thử này.
+1. **KR-F003/R004/X003 — UDP qua membership lifetime/host exit-rejoin:**
+   [CP129](PROTOCOL.md#host-battle-exit) đã đo normalhostAexit/Breturn-chief/AguestReady/BStart2,
+   không đo lại host unbombed UI/20286/promotion/rejoin riêng. Hostpending/dead/multiple vẫn ngoài scope.
+   Reuse CP045–048 queue/drain/exactraw/oldkeydrop và CP070 transport causal controls. Khoảng trống:
+   UDP của membership cũ khi A bị remove107 rồi rejoin, trước/sau key mới; CP048 không chứng minh
+   lifetime/roster boundary này. Đọc lại raw/cache/probes đúng branch, không tìm lại CRC/grammar.
+   Trước hết preflight capture/proxy hiện hành có giới hạn; nếu cần chỉ lấy một actual R1A packet,
+   replay nguyên byte từ endpoint thử được kiểm soát sau Bnative107clear và sau Start2; current packet
+   là positivecontrol. Nối ingress→queue/drain→consumer/actorID/secureXY trước-sau; sendlog không đủ.
+   Không sửa nativekey/state, suy low8 làauth, ghép run thành gate hoặc mở mọi packettype/NAT.
    [#14](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/14) epic giữ mở.
    <!-- active-issue: 14 --> AUD040 qua128; periodic audit kế **CP132**.
 2. **KR-B003/KR-F006 — nợ có giới hạn:** [CP057](PROTOCOL.md#codec-stream-boundaries) đã đo stream/
@@ -99,7 +100,7 @@ Bảng này chỉ phân công/thứtự; acceptance/PR/bằngchứng ởissue. [
 
 | Thứ tự/scope | Issue | Trạng thái/phần còn thiếu |
 |---|---|---|
-| Hiện hành RE | [#14/KRE-005b](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/14) | CP006–127 merged; CP128 postbombexit/rejoin/Start2 cùng run đã đo/tự kiểm, xem [contract](PROTOCOL.md#postbomb-exit-rejoin). Normal host Battle exit là bước1; full auth/authority/reset/gate vẫn mở. |
+| Hiện hành RE | [#14/KRE-005b](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/14) | CP006–128 merged; CP129 hostexit/Bpromotion/ArejoinStart2 đã đo/tự kiểm, [contract](PROTOCOL.md#host-battle-exit). UDP membership lifetime là bước1; authority/fullmatch/gates vẫn mở. |
 | Control theo trigger/gate | [#1/KRE-001](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/1), [#2/KRE-002](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/2) | Windowsoriginal/ownership/K0K1/fullbootstrapconfig; reuseWine/import/replyđãđo. |
 | Codec/identity khi cần | [#3/KRE-003](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/3), [#9/KRE-005a](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/9) | Fullcodec/livebounds vàintermittentmainstartupcause cònthiếu; khônglặpprimitive/auxiliarylocale. |
 

@@ -1,7 +1,7 @@
 {
   "schema": "kre-feature-index-v1",
   "build": "KR00967",
-  "as_of": "CP128",
+  "as_of": "CP129",
   "sources": {
     "plan": "docs/PLAN.md",
     "contract": "docs/PROTOCOL.md",
@@ -996,7 +996,8 @@
           "docs/evidence/rescue-service/README.md#cp119",
           "docs/evidence/battle-exit/README.md",
           "docs/evidence/battle-exit/README.md#cp126",
-          "docs/evidence/battle-exit/README.md#cp128"
+          "docs/evidence/battle-exit/README.md#cp128",
+          "docs/evidence/battle-exit/README.md#cp129"
         ]
       },
       "coverage": {
@@ -1046,7 +1047,8 @@
               "docs/PROTOCOL.md#rescue-slot-refresh",
               "docs/PROTOCOL.md#normal-battle-exit",
               "docs/PROTOCOL.md#battle-exit-rejoin",
-              "docs/PROTOCOL.md#postbomb-exit-rejoin"
+              "docs/PROTOCOL.md#postbomb-exit-rejoin",
+              "docs/PROTOCOL.md#host-battle-exit"
             ]
           },
           "windows_original": {
@@ -1084,7 +1086,8 @@
             "server/test_guest_rejoin.py",
             "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/115",
             "server/test_host_back_rejoin.py",
-            "docs/PROTOCOL.md#host-normal-back"
+            "docs/PROTOCOL.md#host-normal-back",
+            "server/test_host_battle_exit.py"
           ]
         },
         "integration": {
@@ -1105,7 +1108,8 @@
             "docs/evidence/promoted-outcome/README.md",
             "docs/PROTOCOL.md#normal-battle-exit",
             "docs/PROTOCOL.md#battle-exit-rejoin",
-            "docs/PROTOCOL.md#postbomb-exit-rejoin"
+            "docs/PROTOCOL.md#postbomb-exit-rejoin",
+            "docs/PROTOCOL.md#host-battle-exit"
           ]
         },
         "gate": {
@@ -3190,7 +3194,8 @@
           "docs/evidence/battle-exit/README.md",
           "docs/evidence/battle-exit/README.md#cp126",
           "docs/evidence/battle-exit/README.md#cp127",
-          "docs/evidence/battle-exit/README.md#cp128"
+          "docs/evidence/battle-exit/README.md#cp128",
+          "docs/evidence/battle-exit/README.md#cp129"
         ]
       },
       "coverage": {
@@ -3238,7 +3243,8 @@
               "docs/PROTOCOL.md#normal-battle-exit",
               "docs/PROTOCOL.md#battle-exit-rejoin",
               "docs/PROTOCOL.md#battle-exit-pending-bomb",
-              "docs/PROTOCOL.md#postbomb-exit-rejoin"
+              "docs/PROTOCOL.md#postbomb-exit-rejoin",
+              "docs/PROTOCOL.md#host-battle-exit"
             ]
           },
           "windows_original": {
@@ -3278,7 +3284,8 @@
             "docs/PROTOCOL.md#tcp-guard-cycles",
             "server/test_departure_send_failure.py",
             "server/test_host_back_rejoin.py",
-            "docs/PROTOCOL.md#host-normal-back"
+            "docs/PROTOCOL.md#host-normal-back",
+            "server/test_host_battle_exit.py"
           ]
         },
         "integration": {
@@ -3299,7 +3306,8 @@
             "docs/PROTOCOL.md#normal-battle-exit",
             "docs/PROTOCOL.md#battle-exit-rejoin",
             "docs/PROTOCOL.md#battle-exit-pending-bomb",
-            "docs/PROTOCOL.md#postbomb-exit-rejoin"
+            "docs/PROTOCOL.md#postbomb-exit-rejoin",
+            "docs/PROTOCOL.md#host-battle-exit"
           ]
         },
         "gate": {
@@ -3406,7 +3414,8 @@
           "docs/evidence/battle-exit/README.md",
           "docs/evidence/battle-exit/README.md#cp126",
           "docs/evidence/battle-exit/README.md#cp127",
-          "docs/evidence/battle-exit/README.md#cp128"
+          "docs/evidence/battle-exit/README.md#cp128",
+          "docs/evidence/battle-exit/README.md#cp129"
         ]
       },
       "coverage": {
@@ -3510,7 +3519,8 @@
               "docs/PROTOCOL.md#normal-battle-exit",
               "docs/PROTOCOL.md#battle-exit-rejoin",
               "docs/PROTOCOL.md#battle-exit-pending-bomb",
-              "docs/PROTOCOL.md#postbomb-exit-rejoin"
+              "docs/PROTOCOL.md#postbomb-exit-rejoin",
+              "docs/PROTOCOL.md#host-battle-exit"
             ]
           },
           "windows_original": {
@@ -3595,7 +3605,8 @@
             "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/186",
             "server/test_death_lifecycle.py",
             "server/test_battle_exit.py",
-            "server/test_battle_exit_pending.py"
+            "server/test_battle_exit_pending.py",
+            "server/test_host_battle_exit.py"
           ]
         },
         "integration": {
@@ -3664,7 +3675,8 @@
             "docs/PROTOCOL.md#normal-battle-exit",
             "docs/PROTOCOL.md#battle-exit-rejoin",
             "docs/PROTOCOL.md#battle-exit-pending-bomb",
-            "docs/PROTOCOL.md#postbomb-exit-rejoin"
+            "docs/PROTOCOL.md#postbomb-exit-rejoin",
+            "docs/PROTOCOL.md#host-battle-exit"
           ]
         },
         "gate": {
