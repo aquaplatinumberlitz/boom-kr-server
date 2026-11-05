@@ -1,16 +1,16 @@
 {
   "schema": "kre-github-snapshot-v1",
   "repo": "aquaplatinumberlitz/boom-kr-server",
-  "captured_utc": "2026-11-05T05:40:25.593863+00:00",
+  "captured_utc": "2026-11-05T05:56:09.786959+00:00",
   "limits": "State as of capture only; body/declarations are not semantic acceptance; no GitHub mutation.",
   "issues": [
     {
-      "body": "KRE-073 — refactor checkpoint store for selective reading without losing history. Owner/reviewer Codex; independent review waived by project owner. Feature KR-S001. Baseline CP117/PR187 c2ca94d; 47,358,804-byte inline manifest,117 checkpoints/166881 evidence rows/36 audits. Current runtime completed/raw hashes/cleanup before source/config changes.\n\nScope: small v2 index→immutable per-CP JSON, unchanged legacy objects, pinned external run/batch evidence for new checkpoints; shared selective loader/CLI and v1↔v2 history verification. No new task tracker/current-status or gate changes.\n\nAcceptance:\n\n- [ ] Re-runnable scripted migration proves full checkpoint/evidence/audit equivalence and retains all old IDs/counters/review waivers.\n- [ ] Checker validates references/SHA/continuous counters/audit cadence/external evidence and detects committed record-only/evidence-only tampering across old/new schemas.\n- [ ] latest/show/evidence summary/page/full-verify CLI and LLM instructions; no whole-manifest reads needed for navigation.\n- [ ] Required docs/checkpoint/history/diff and meaningful mutation/consumer tests; size/file-count report; commit/push/PR/exact-head merge.\n- [ ] Resume actual RE after migration using saved slot2/group0 Startguard evidence, no rerun of solved observations.\n\nKnown: migration objects compared; candidate tests/checks ongoing. Remaining: final CP118/evidence/checks/PR and next runtime fix. Gate/acceptance semantic decisions remain manual; PLAN is sole work order.\n\nCanonical links:\n\n- https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/PLAN.md#current-order\n- https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/PROTOCOL.md#rescue-start-slot\n- https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/RESEARCH.md#gap-diagnostic-service\n- https://github.com/aquaplatinumberlitz/boom-kr-server/blob/docs/checkpoint-store-v2/docs/evidence/checkpoints/README.md\n- https://github.com/aquaplatinumberlitz/boom-kr-server/blob/docs/checkpoint-store-v2/docs/evidence/checkpoints/migration-v2.json\n",
-      "closedAt": null,
+      "body": "KRE-073 — refactor checkpoint store for selective reading without losing history. Owner/reviewer Codex; independent review waived by project owner. Feature KR-S001. Baseline CP117/PR187 c2ca94d; 47,358,804-byte inline manifest,117 checkpoints/166881 evidence rows/36 audits. Current runtime completed/raw hashes/cleanup before source/config changes.\n\nScope: small v2 index→immutable per-CP JSON, unchanged legacy objects, pinned external run/batch evidence for new checkpoints; shared selective loader/CLI and v1↔v2 history verification. No new task tracker/current-status or gate changes.\n\nAcceptance:\n\n- [x] Re-runnable scripted migration proves full checkpoint/evidence/audit equivalence and retains all old IDs/counters/review waivers.\n- [x] Checker validates references/SHA/continuous counters/audit cadence/external evidence and detects committed record-only/evidence-only tampering across old/new schemas.\n- [x] latest/show/evidence summary/page/full-verify CLI and LLM instructions; no whole-manifest reads needed for navigation.\n- [x] Required docs/checkpoint/history/diff and meaningful mutation/consumer tests; size/file-count report; commit/push/PR/exact-head merge.\n- [x] Resumed actual RE after merge on kre/rescue-slot-refresh: candidate bounded110slot2readyrefresh implemented,191server tests pass, isolated sameprofile native runtime started. No repeat of solved slotcause.\n\nResult: PR189 merged dae23b761b9ad1f8e88ac9441979751b44d325bf. 117 whole checkpoint objects,166881 legacy evidence rows and36 audit files equivalent; rerun after CP118 preserves counter/index/record bytes. Index47358804→53747 bytes;118recordfiles/3new externalbatchmanifests. 50tools tests; full --require-local --require-history:118complete/170314verified/0missing/errors. AUD036/nextCP120. Remaining RE is #14/PLAN saved slot2guard→bounded110refresh/actual104/Start2, not migration acceptance. Gate/acceptance semantic decisions remain manual; PLAN is sole work order.\n\nCanonical links:\n\n- https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/PLAN.md#current-order\n- https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/PROTOCOL.md#rescue-start-slot\n- https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/RESEARCH.md#gap-diagnostic-service\n- https://github.com/aquaplatinumberlitz/boom-kr-server/blob/docs/checkpoint-store-v2/docs/evidence/checkpoints/README.md\n- https://github.com/aquaplatinumberlitz/boom-kr-server/blob/docs/checkpoint-store-v2/docs/evidence/checkpoints/migration-v2.json\n\nEvidence: [PR189](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/189), [migration mapping](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/evidence/checkpoints/migration-v2.json), [size/comparison report](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/evidence/checkpoints/storage-validation-v2.json). No gates closed; KRE073 scope organization delivered. RE resume checklist is reported below after the actual action.\n\nRE execution evidence remains in local/research/codex/rescue-slot-refresh-r1 with preflight/source copies/recipe; this is a candidate runtime in progress, not a Start2/freshrescue claim. Organization acceptance is complete; actual RE remains #14 under PLAN.\n",
+      "closedAt": "2026-11-05T05:50:52Z",
       "number": 188,
-      "state": "OPEN",
+      "state": "CLOSED",
       "title": "KRE-073: selective checkpoint store with preserved history and full evidence checks",
-      "updatedAt": "2026-11-05T05:41:03Z",
+      "updatedAt": "2026-11-05T05:50:52Z",
       "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/188"
     },
     {
@@ -636,6 +636,17 @@
     }
   ],
   "pull_requests": [
+    {
+      "headRefOid": "4c711d6120edb6cd532fa97ca6578781c9b59c45",
+      "mergeCommit": {
+        "oid": "dae23b761b9ad1f8e88ac9441979751b44d325bf"
+      },
+      "mergedAt": "2026-11-05T05:49:37Z",
+      "number": 189,
+      "state": "MERGED",
+      "title": "refactor: lossless checkpoint store v2 and selective CLI (CP118)",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/189"
+    },
     {
       "headRefOid": "ec52df3f7264372ae19a0701b724462dd61639c6",
       "mergeCommit": {

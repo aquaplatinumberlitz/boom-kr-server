@@ -1,7 +1,7 @@
 # Kế hoạch server giả lập KR 00967
 
 Nguồn chuẩn của project `boom-kr-server`; bản nhập từ plan đã được dsh1/dsh2 review tại `1eee46d`.
-Cập nhật05/11 JST (CP117): sau cứu đãresult/room/ReadyB; nativeStartguard3 chặn104. CP116/PR186 mergef33f3b8; CP117/PR187 mergec2ca94d; CP118 kho checkpoint v2 tựkiểm/chờPR. AUD036 qua116/kế120.
+Cập nhật05/11 JST (CP117): sau cứu đãresult/room/ReadyB; nativeStartguard3 chặn104. CP116/PR186 mergef33f3b8; CP117/PR187 mergec2ca94d; CP118/PR189merge/issue188closed; CP119slot2refreshStart2/R2rescuepartial tựkiểm/chờPR. AUD036 qua116/kế120.
 
 
 ### Mục tiêu, baseline và phạm vi
@@ -60,23 +60,19 @@ KRE-005b/issue14 vẫn mở. Các bước dưới là **thứ tự ưu tiên**, 
 xong checkpoint/commit/PR thì chuyển ngay việc kế tiếp trong thứ tự này, không tự dừng/chờ nhắc.
 Một blocker chỉ kết thúc nhánh đo tương ứng; ghi rõ rồi tiếp việc độc lập có thể làm, không tự đóng gate.
 
-0. **KRE-073 / [#188](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/188) — kho checkpoint v2 theo chủ dự án:**
-   Migration nguyên117object/lịch sử→index/records, pinnedrunmanifest choCPmới, selectiveCLI và
-   checkerold/new đang kiểm/giao một PR. <!-- active-issue: 188 --> Không resetCP/audit/gate hoặc
-   dedup lại evidence cũ. Sau merge/đóngscope tổ chức, tiếp ngay bước1 bằng kết quảslot2đãlưu, khôngRElại.
-1. **KR-R004/F009/X002/S001 — Start sau rescue/result bị native room guard3:**
-   [CP117](PROTOCOL.md#rescue-return-start-guard) đã có actualA/B19/native175180/room/actualB95;
-   ba normalStartA không104. Targetedread-onlytrace: DE0310/pending0/predicate1,1,
-   DCAD80returned3/errorbranchDE0434, trongkhiinitial0/build104. **ChưaStart2**, khôngđóngreset.
-   [Run đã lưu trước migrationCP118](PROTOCOL.md#rescue-start-slot) đo actualslot2/group0,
-   703A90=1/1240D70=0→DCB7DAreturn3; initialslot2group1. Failedobserverquota/raw giữ nguyên.
-   **Sau migration/PR, tiếp ngay:** bounded diagnostic110slot2/state0x24 refresh saureturn theo layout
-   đãđo; giữ sameprofile/firstStart/realA/BReady, control/nativeguard0/actual104/Start2/key mới/freshrescue.
-   Candidate là server policy cho actor tổng hợp, không originalreadiness law; chưa gọi fix khi chưa đo.
-   Khôngpatch stateclient/mint95/104/19/đổioutcome hoặc fuse. Reusecode/native/probes/capture,
-   khônglàm lại oldfocus/codec/kim. Tra checkpoint chọnlọc bằng`tools/checkpoints.py`, không cat kho lớn.
-   [#14](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/14) giữ epic.
-   <!-- active-issue: 14 --> AUD036qua116; audit kế **CP120**.
+KRE-073/[#188](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/188) đã giao
+[PR189](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/189)/merge`dae23b7`, CP118 vàđóng;
+selectiveCLI/historicalmigration xong, không còn taskactive tổ chức. CP119 đãtiếpactualRE sau merge.
+1. **KR-F009/X002/S001 — R2freshrescue cònpartial sauStart2:**
+   [CP119](PROTOCOL.md#rescue-slot-refresh) boundeddiagnostic110slot2readyrefresh đãquaactualguard0/
+   A104/Start2/key12346/native121clock. R2B17→19/no18 làmplannedrescuefail; khôngđóngreset.
+   Reusesame-runraw/currentactorXY/knownsecuregetter/normalOSkey/peerUDPapplyprobe CP111,
+   đối chiếu A/B sauDown/Up/vịtrímỗi bước; ảnhhai view khácApositionkhôngđủcausalclaim.
+   Phépđotối thiểu: read-onlyfreshnativefeedback và UDPapply trongwindowR2input, không fixedhold
+   suyđãchạm; nếu currentXY chưađủ thìnormalrelease theofeedback trước chạm. Giữcode/profile/fuse/
+   guardreporteddeath, khôngmint18 hoặcpatchactor. KhônglặpknownStartguard/kim/codec/wholeclient.
+   [#14](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/14) epic giữmở.
+   <!-- active-issue: 14 --> AUD036qua116; periodic audit kế **CP120**.
 2. **KR-B003/KR-F006 — nợ có giới hạn:** [CP057](PROTOCOL.md#codec-stream-boundaries) đã đo stream/
    seq/bounds trong model, không mở lại76split hoặc cấp buffer lớn chỉ để vượt allocationguardFFFFFFFF.
    Full modes/prefix guard/live reset, distance/auth/transport/kim-cứu của reportguard giữ trong RESEARCH;

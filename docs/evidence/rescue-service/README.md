@@ -157,3 +157,25 @@ kind bị ambient DCAD80call round0 dùng hết; **không dùng để kết lu�
 initialslot2group1. [Contract/giới hạn](../../PROTOCOL.md#rescue-start-slot). Phép đo này đã kết thúc/lưu
 rawhash/cleanup trước migration theo yêu cầu chủ dự án; CP118 pin batchlist bên ngoài, không sửaCP117.
 Chưa bounded110refreshfix/Start2/freshrescue; tiếp PLAN sauPRmigration. Không wholewordenum/auth/gate.
+
+
+<a id="cp119"></a>
+## CP119 — Refresh synthetic2 mở Start2; R2 rescue còn partial
+
+[Contract/giới hạn](../../PROTOCOL.md#rescue-slot-refresh), [phép thử](../../RESEARCH.md#gap-round-reset),
+[PLAN](../../PLAN.md#current-order). SauCP118/PR189migrationmerged `dae23b7`, Codex tiếp ngayruntimefix
+slot2đãlưu, không đo lại sourcecause. `local/research/codex/rescue-slot-refresh-r1/reuse-question.json`
+đọc CP118actualslot/group/known106110layout/source/probes; newservice chỉ110readyrefresh saureturn.
+`runtime-preflight.json` pin code/profile/client/probe; sameprofiletrue, source/config frozen trongrun,
+namespace/lease/lo-only/no-route/filesNSS/A/Bprefix-display riêng và cleanup theo controller.
+
+Run SHA `8db983a170ce9ca17bd86a1be7b204a9d9926b000a2c51ae8651f1abb9cde532`, 313.107640202s, exit1 vì R2freshrescue khôngđạtbound,
+serviceerrors0. `start2-verification.json`: **1894** joins gồm **1840raw size/SHA**;
+slot2group1/roomguard0/build104/actualreturnedA104/two121155/clocks/key12345→12346/native153
+được xácnhận. FreshR2B17→19/no18 là **partial/fail plannedreset**, không sửa assertion thànhpass.
+`actor-fields.json`, `native-reports.json`, `native-153.json` nativecopygetter/framer khác runtime;
+`R2-contact-observation.png` manualhai view cònHELP/Apositionkhác, chưagán exactXY/tácnhân.
+191server tests; oldCP118guard3control giữ nguyên. Không originalserverready law hoặc fullreset/gate.
+
+CP118record/migrationreport nguyênbytes; #188 tổ chức đãđóng sauPR189và actualREresume,
+localissue/task/PLANđồng bộtrongCP119, không sửa snapshotCP118. Audit kếCP120/AUD036.

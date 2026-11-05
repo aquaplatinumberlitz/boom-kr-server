@@ -4304,3 +4304,22 @@ roster refresh110/slot2/state0x24 saureturn từ layout đã có, có control/na
 Start2freshrescue mới xác nhận fix. **Chưa chạy fix**, không suy law server gốc hoặc ghi Start2 đã qua.
 Raw/hash/cleanup được lưu xong trước đợt migration; source/profile không đổi giữa run. CP118 chính là
 refactor kho checkpoint; recordCP117/failedobserverraw giữ nguyên, gate/auditcounter không reset.
+
+
+<a id="rescue-slot-refresh"></a>
+### Diagnostic slot2 ready refresh mở lại Start2 — CP119
+
+[Metadata/control/hash](evidence/rescue-service/README.md#cp119). **design/emu_choice**: chỉ khi
+`rescue_contact` đã bật với fixed-profile, sau return gửi thêm110/slot2/state0x24/tail0 tới hai peer,
+ngoài110host/guest hiện có. Đây là ready của actor tổng hợp, không giả clientC hoặc actualC95.
+Defaultoff không thêmgói. Không sửa stateclient/binary, không đổi profile/fuse/outcome.
+
+**kr_runtime/confirmed hẹp**: controlCP118slot2group0/DCB7DAguard3 so với run này slot2group1,
+roomguard0/build104 và actualA104 sauB95, R2native121155/clock/haipeer153key12345→12346.
+Mộtresult/return hoàn tất rồiStart2, không hai trậnhoànchỉnh/gate. 191server tests qua.
+
+**Phần chưa đạt giữ rõ:** R2B17→19, không18 trong bound dù có normalAUp; runexit1/
+`current rescue integration not observed before bound`, serviceerrors0. Không gọi freshrescue/reset
+đãgiải từ việc quaStart. ẢnhR2A/B sauchạm cònHELP và vịtríA khác nhau, cần đối chiếu nativecurrentXY/
+input/peerapply, khôngsuy tọađộ hoặc nguyênnhân từảnh. Bước kế theo PLAN, không nới guard báo chết/
+consume/report đểche lỗi. Scope2realWineAB+synthetic2; auth/authority/fullmatch/LANInternet chưađạt.
