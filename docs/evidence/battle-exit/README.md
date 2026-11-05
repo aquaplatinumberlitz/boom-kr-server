@@ -88,4 +88,28 @@ Job vẫn giữ tới deadline, không tựcancelalready-sent158 hoặc chứng 
 PYTHONPATH=. không đổi raw/criteria. Nativepacketmodel separate, cácu32 chưa cósemantics.
 Runtime107basecursor/IDfield không thêmprobe: chỉPreparearrival+packetmodel+UIempty nhưCP125.
 Mộtexit/resultreturn, chưa postbombexitrejoinStart2/twomatches/fullmatch/gates/generalvariants.
-CP127selfcheck/pendingPR/reviewwaived; AUD039/kế128, không sửaoldcomplete hoặcresetcounter.
+CP127/PR198 merged`c5f07c1`, reviewwaived; AUD039/kế128, không sửaoldcomplete hoặcresetcounter.
+
+
+<a id="cp128"></a>
+## CP128 — Pending bomb exit/rejoin/Start2 cùng run
+
+[Contract/giới hạn](../../PROTOCOL.md#postbomb-exit-rejoin), [gap](../../RESEARCH.md#gap-disconnect-replacement).
+Raw `local/research/codex/postbomb-exit-rejoin-r1/`; recipe/preflight/runtime-source/sourcefirst
+`reuse-question.json` pin CP126/127/CP044 và VNlobby/KRdata. Tránh RE lại codec/gói/UI/consumer20286;
+không thân hàm native mới. Chuỗi actualinput/handler theo contract, source/profile/client/fuse6 giữ
+nguyên tới controller exit0/namespace cleanup, rồi seal1091file. Run242,080503262s/noerror,
+SHA256 `74791105ecce5f25347f9122da0950f56d23c94e7dbb87f0667a7f323ea18bed`.
+
+`rejoin-verification.json`1385joins/raw+sourcefreeze/actual118159→20286/fence/oldjobdrop/no158→
+actual82/585/95/A104/12199,153/twoepochs/clocks/key12346/same8TCP/202markerreset.
+`native-exit-packets.json`144cases và `native-153.json`12cases là copied-native emulation, không
+ngữ nghĩa thế giới. `visual-review.json` hai ảnhR2active/clock/roster, không probe native pool;
+không đồng nhất no158wire với toàn bộ entity/queue reset hoặc hai trận hoàn chỉnh.
+
+Preparation lần đầu thiếu file `parse_chain.py` trong nguồnCP126; fail trước launch, không runfailed.
+`preparation-correction.json` giữ giải thích; preparation hoàn tất trước sourcefreeze. Sau cleanup chỉ
+sửa limits trong report cho đúng CP127mode/nativepoolunknown; verifier/assertions/raw giữ nguyên.
+215server tests chạy lại; AUD040 periodic qua128/kế132 đọc canonical/raw/source, sửa headerPROTOCOL
+staleCP105, README/PLAN/issue pendingPR198/auditCP124 và gap guest đã giải. Oldcomplete/raw không sửa.
+CP128 tự kiểm trong thay đổi hiện tại, reviewwaived; K0–K7 vẫn mở. Việc tiếp chỉ PLAN.

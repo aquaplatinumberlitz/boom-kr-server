@@ -1,0 +1,82 @@
+{
+  "id": "AUD040",
+  "trigger": "periodic",
+  "completed_through": "CP128",
+  "recorded_utc": "2026-11-05T11:20:06.487617+00:00",
+  "auditor": "Codex manual self-audit; independent review waived",
+  "read_files": [
+    "README.md",
+    "docs/PLAN.md",
+    "docs/PROTOCOL.md",
+    "docs/RESEARCH.md",
+    "docs/evidence/battle-exit/README.md",
+    "docs/evidence/abort-timer/README.md",
+    "docs/evidence/host-normal-back/README.md",
+    "docs/evidence/checkpoints/README.md",
+    "docs/features.json",
+    "docs/COVERAGE.md",
+    "docs/evidence/issue-reconciliation/review.json",
+    "server/probe_service.py",
+    "server/test_battle_exit_pending.py",
+    "local/research/codex/postbomb-exit-rejoin-r1/reuse-question.json",
+    "local/research/codex/postbomb-exit-rejoin-r1/runtime-preflight.json",
+    "local/research/codex/postbomb-exit-rejoin-r1/raw-seal.json",
+    "local/research/codex/postbomb-exit-rejoin-r1/cycles/run.json",
+    "local/research/codex/postbomb-exit-rejoin-r1/cycles/service-state.json",
+    "local/research/codex/postbomb-exit-rejoin-r1/cycles/client.log",
+    "local/research/codex/postbomb-exit-rejoin-r1/cycles/client-B.log",
+    "local/research/codex/postbomb-exit-rejoin-r1/rejoin-verification.json",
+    "local/research/codex/postbomb-exit-rejoin-r1/visual-review.json",
+    "local/research/codex/postbomb-exit-rejoin-r1/native-exit-packets.json",
+    "local/research/codex/postbomb-exit-rejoin-r1/native-153.json",
+    "local/research/codex/postbomb-exit-rejoin-r1/issue14-before.json"
+  ],
+  "method": "Manual ordered README→PLAN→PROTOCOL scope/header/CP125–128→RESEARCH feature gaps→evidence; compared actual capture and native121/159/175/180/clocks, old-job rejection/no158/marker reset/source freeze/raw seal with reports/source. Read CP107 idlehost vs CP125–128 guest trigger boundaries. Reviewed both final R2 images. Observed R2 abort from cleanup AEOF406.489ms/BEOF1175.208ms after completion, not user-exit or second result. No new native pool/UDP queue evidence; cadence128→132 unchanged.",
+  "findings": [
+    {
+      "id": "F1",
+      "stale": "PROTOCOL header still CP105/AUD032 despite appended CP127 contracts.",
+      "correction": "Header now CP128/AUD040/next132. Historical CP paragraphs and complete objects remain scoped/immutable.",
+      "fixed_in": [
+        "docs/PROTOCOL.md"
+      ]
+    },
+    {
+      "id": "F2",
+      "stale": "README long chronological merge/pending list and issue14 stale pending CP122/127, old audit CP120/124; Git PR198 already merged.",
+      "correction": "README current summary links contracts/history; issue14 concise epic scope/current known/gap/test/evidence, updated title; PR198 merged acknowledged, no gate closed.",
+      "fixed_in": [
+        "README.md",
+        "docs/PLAN.md",
+        "docs/evidence/issue-reconciliation/review.json",
+        "docs/evidence/issue-reconciliation/github-snapshot.json"
+      ]
+    },
+    {
+      "id": "F3",
+      "stale": "Current PLAN/RESEARCH say postbombexit/rejoinStart2 missing; now same-run evidence exists.",
+      "correction": "Scoped gap resolved by CP128; next bounded normal host Battle exit distinct from idle host Back/guest exit. Catalog links CP128; coverage generated.",
+      "fixed_in": [
+        "docs/PLAN.md",
+        "docs/RESEARCH.md",
+        "docs/features.json",
+        "docs/COVERAGE.md",
+        "docs/evidence/battle-exit/README.md"
+      ]
+    },
+    {
+      "id": "F4",
+      "stale": "Inherited report prose names CP125 option and might imply full entity reset from no158.",
+      "correction": "Current report limits CP127 pendingmode/source; native bomb pool/transport queues not instrumented. R2active only; cleanup EOF/abort after completion. No raw/assertion changes.",
+      "fixed_in": [
+        "docs/PROTOCOL.md",
+        "docs/evidence/battle-exit/README.md"
+      ]
+    }
+  ],
+  "remaining": [
+    "CP128 self-check in current change awaiting exact-head PR/merge; audit nextCP132.",
+    "Normal host Battle exit control/fixed still absent; idlehost/guest proof cannot substitute.",
+    "Nativepool/UDPqueue/generalreset/auth/authority/fullmatch/K5/K6a/vanilla/LANInternet remain open."
+  ]
+}
