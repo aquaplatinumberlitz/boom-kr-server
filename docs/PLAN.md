@@ -1,7 +1,7 @@
 # Kế hoạch server giả lập KR 00967
 
 Nguồn chuẩn của project `boom-kr-server`; bản nhập từ plan đã được dsh1/dsh2 review tại `1eee46d`.
-Cập nhật06/11 JST (CP142): same-run production virtualmovement/item/basic2cycles/reset/Ready đã đo; CP141/PR212 merged b1f2c72. CP142 tự kiểm; AUD043 qua140/kế144.
+Cập nhật06/11 JST (CP143): selected8same4oldTCPguards cùngproductionvirtualmovement/item/2cycles/reset/Ready đã đo; CP142/PR213merged062906a. CP143tựkiểm; AUD043through140/next144.
 
 
 ### Mục tiêu, baseline và phạm vi
@@ -37,13 +37,13 @@ với client Rust không chứng minh có thể điều khiển client KR bằng
 
 ### Tiến độ hiện hành theo bằng chứng
 
-| Task/mốc | Trạng thái tại CP142 | Nguồn chuẩn |
+| Task/mốc | Trạng thái tại CP143 | Nguồn chuẩn |
 |---|---|---|
 | KRE-004/issue6 | Đã review/merge PR7 và đóng issue:recipe r1 đến local accept;không phải full K1 | [Wine r1](evidence/wine/README.md) |
 | Bootstrap reply | PR8 đã merge;debugger ProcessPatchreturn1,không ép success | [bootstrap evidence](evidence/bootstrap-wire/README.md) |
 | KRE-005a/issue9,R2 | PR10 đã merge:3 cold start cửa sổ/second accept;issue9 còn mở | [R2 evidence](evidence/wine-r2/README.md) |
 | WCP hai-reply | Run CP001 là lịch sử chưa C→S; CP006 đã đo request đầu trên copy tham số hóa | [PROTOCOL](PROTOCOL.md#wcp),[WCP evidence](evidence/wcp/README.md) |
-| KRE-005b/issue14 | CP006–141 đã merge; CP142 same-run virtualmovement/item/basic2cycles/Ready có nguồn; shared/complexUIgaps giữ; fullround/authority/full auth còn mở | [Q-023](RESEARCH.md#q-023), [service](evidence/probe-service/README.md) |
+| KRE-005b/issue14 | CP006–142 đã merge; CP143 same-run selectedTCPguards/virtualcycles có nguồn; shared/complexUIgaps giữ; fullround/authority/full auth còn mở | [Q-023](RESEARCH.md#q-023), [service](evidence/probe-service/README.md) |
 | K0/K1 | Chưa nghiệm thu toàn gate;Windows vanilla/control ownership và các điều kiện còn thiếu giữ mở | Gate dưới,[Q-022](RESEARCH.md) |
 | K2a/K2 | Primitive/WCP, CP057stream native/model và CP058–060authcallback137/135/errors0 đã có; fullcodec/authauthority/reconnect và gate chưa pass | [PROTOCOL](PROTOCOL.md#login-auth),[Q-023](RESEARCH.md#q-023) |
 | K3 | Copy đã vẽUI/đóngnotice, A/B/Cprofile đọc sạch và mộtnamedcachewarm được nhận; identityauthority/toàncache/codec/K3 chưa nghiệm thu | [Contract sảnh](PROTOCOL.md#channel-lobby) |
@@ -63,22 +63,23 @@ Một blocker chỉ kết thúc nhánh đo tương ứng; ghi rõ rồi tiếp v
 KRE-073/[#188](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/188) đã giao
 [PR189](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/189)/merge`dae23b7`, CP118 vàđóng;
 selectiveCLI/historicalmigration xong, không còn taskactive tổ chức. CP119 đãtiếpactualRE sau merge.
-1. **KR-F004/F006/F009/S001 — selected TCP guard trong production movement/lifecycle:**
-   [CP142](PROTOCOL.md#virtual-movement-cycles) đã ghép4nativepeerwindows/itemeffects/2ending/reset/
-   Ready cuối trong một run không shim. Tái dùng CP106/137 ReplayProxy: actualfront frames riêng,
-   upstream currentseq re-encode capturedbody, S2C unchanged; current/fresh origin và response counts.
-   Ghép vào topology hiện hành: root proxy explicitprivateIP3858→productionprivate23858, childTCP
-   forwards giữ đích3858; **UDP vẫn direct**, proxy không tự là nativeclient emission. Actual lifecycle
-   nay A chết, chọn A118/124/127:17,19 làm nguồn (thay B17/19 của route cũ), không mint unknownbody.
-   Đo8same (4mỗi vòng) +4oldbody sau fresh round2 report39/key mới như recipe cũ; giữ proxy/native/
-   upstream SHA/seq và loại bỏ/noextra159165170/IDs/jobs, currenttrap/drain/deadline/reset2/Ready cuối.
-   Không gọi duplicateold capturedbody là arbitraryforged/auth/wholegrammarvalidator. Nếu TCPidentity/
-   input bị chặn, seal partial và giải đúng scope; không sửa production/config giữa run.
-   Same-runmovement/item/native2cycles vànormalReady95/native110/noStart3 giữ; không crossrunfullmatch.
-   Disconnect/accountresume/fullinventory/authority/LAN thật/K6b/Internet/K6c/gate vẫn riêng; CP137UI/
-   sharedgeometrydebt giữ. Mainintegration qua PR/exacthead theoAGENTS.
+1. **KR-X003/F004/S001 — actual guest EOF với bom chờ sau hai vòng hoàn tất:**
+   [CP143](PROTOCOL.md#virtual-tcp-guard-cycles) khép selectedTCPguard cùngproductionvirtualmovement/
+   item/2cycles/Ready. Tái dùng CP050 actualpendingEOF/fence/forfeit/return107110 và CP128 pendingB
+   normalexit; khác biệt cần đo là actualguestEOF qua TCPmeasurementproxy/topology/profile hiện hành.
+   Trước runtime, bench ReplayProxy frontendEOF→upstreamEOF/reverse/readbeforeEOF. Codehelper hiện
+   các loop break khi EOF nhưng không đóng pair cho tới stop; kiểm bằng sockets, sửa bản copy helper
+   mới nếu cần, không sửa frozenhelper củaCP143 hoặc gán proxyhang là native/servicecause.
+   Sau đó reuse CP143 cùngrun2completecycles/Ready, normal StartA3→actual99/nativeclock3/BnormalSpace
+   tạoactualB118 còn chờ6s. Chỉ kill đúng ownedCA-B PID/prefix/netns sau actual118 trước deadline,
+   giữ A/service/proxy tiếp tục; không fakeEOF bằng callback hoặc đóng nhầm process/service.
+   Ghép frontendEOF/upstream/socketserviceEOF/fence/currentjobdeadline `round_closed`/no158bomB,
+   nofakeB17/19; A nhận chosenforfeit175180107110/fullread/slotID2→0/chief vàrenderphòng. Observe
+   beyondpendingdeadline, khôngStart4. Forfeit/timeout là emuchoice; hai trận normal +abort3 riêng.
+   Nếu input/EOF/observer bị chặn, cleanup/seal partial và giải đúng blocker; source/config frozen.
+   Không đóng accountresume/allEOF/fullinventory/auth/authority/K6a/LAN/Internet/CP137UI/gates.
    [#14](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/14) epic giữ mở.
-   <!-- active-issue: 14 --> AUD043 qua140; periodic audit kế **CP144**.
+   <!-- active-issue: 14 --> CP144 phải audit thủ công theo chu kỳ, AUD043qua140.
 2. **KR-B003/KR-F006 — nợ có giới hạn:** [CP057](PROTOCOL.md#codec-stream-boundaries) đã đo stream/
    seq/bounds trong model, không mở lại76split hoặc cấp buffer lớn chỉ để vượt allocationguardFFFFFFFF.
    Full modes/prefix guard/live reset, distance/auth/transport/kim-cứu của reportguard giữ trong RESEARCH;
@@ -104,7 +105,7 @@ Bảng này chỉ phân công/thứtự; acceptance/PR/bằngchứng ởissue. [
 
 | Thứ tự/scope | Issue | Trạng thái/phần còn thiếu |
 |---|---|---|
-| Hiện hành RE | [#14/KRE-005b](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/14) | CP006–141 merged; CP142 same-run movement/item/basic2cycles/Ready có nguồn/tựkiểm. Selected TCP guard integration làbước1; gaps giữ; fullauth/authority/fullmatch/gates mở. |
+| Hiện hành RE | [#14/KRE-005b](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/14) | CP006–142 merged; CP143 selectedTCPguard cùngvirtual2cycles có nguồn/tựkiểm. PendingguestEOF/proxybench làbước1; gaps giữ; fullauth/authority/fullmatch/gates mở. |
 | Control theo trigger/gate | [#1/KRE-001](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/1), [#2/KRE-002](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/2) | Windowsoriginal/ownership/K0K1/fullbootstrapconfig; reuseWine/import/replyđãđo. |
 | Codec/identity khi cần | [#3/KRE-003](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/3), [#9/KRE-005a](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/9) | Fullcodec/livebounds vàintermittentmainstartupcause cònthiếu; khônglặpprimitive/auxiliarylocale. |
 

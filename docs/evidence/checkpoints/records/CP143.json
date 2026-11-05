@@ -1,0 +1,229 @@
+{
+  "artifacts": [
+    {
+      "name": "CA-r2-login-logout.exe",
+      "sha256": "660447c293ce92270cb9b5815331bca976e8f156366e1fe50b217b6c12e60ce3"
+    },
+    {
+      "name": "CA-r2-stage-social.exe",
+      "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+    },
+    {
+      "name": "CA-r2-stage-social.exe Bcopy",
+      "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+    },
+    {
+      "name": "modO.bin",
+      "sha256": "a08950c833d3acab8281049def7b3dc96b221f107eeda01da3a548e34b91dce5"
+    }
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-11-05T18:03:12.779502+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "Codex solo RE/code/runtime/selfcheck, not independent approval.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Owner explicitly requested solo without Claude review."
+    }
+  },
+  "owner": "Codex",
+  "reviewer": "Codex",
+  "id": "CP143",
+  "previous": "CP142",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-05T18:03:12.779502+00:00",
+  "context_commit": "062906aef57b42aec00057b1d0b48f4f1c795d87",
+  "question": "Do selectedsame/oldcapturedTCPbodyguards rejectwithoutnativeextras whileproductionvirtualmovement/pickup/tworesult/reset/Ready completes?",
+  "scope": "ReuseCP106/137ReplayProxy+CP142currentprofile/topology/finiteobservers/lifecycle. OnlyexplicitprivateTCPbind/upstream andactualA17/19source selectionnew; no newnativebody/productionchange.",
+  "locators": [
+    "BaselineCP142PR213headfd2d48601679bd765b8ded6669e63785a13f6d7e/merge062906a; exactCLEANMERGEABLEchecks[]. Production231tests reused. AUD043through140/periodicCP144due nextcomplete.",
+    "Run4eb9bf57efcecd6eb69a3a313abf73e690e94a5a410b0623a92fb6d7a7900dca/344.196159838s/exit0/1882raw/624vethrecords.87guardchecks/3950basicjoins/632peer+1423wirejoins/70pickup/25addressReady. A135front→147upstream/B141→141;876frontframeremulationcases.",
+    "8same4oldactualcapturedbodyTCP/currentseq/sourceSHA; same118duplicate_bomb_serial/124claim_not_current_or_already_consumed/17,19duplicate_report_body; old118bomb_round_key_mismatch/124round_key_mismatch/17,19report_tick_not_forward afterfreshR2A39; noextraID165170.",
+    "4peerwindows/26recipientapplies/8targetchanges/currentprogress; twoactualA1183,3power2/currenttrapSHA/death/B21/rank2,1/native1753021803errors0/110/195keyIDreset. Barrier25.65182629/25.539600639s<30; finalB95seq457SHA c94d21262a645dfe9f2786dc065a88e8e322706a5949cccf79c0b8350948c914/native110both/manualrenderbadge/noStart3.",
+    "KnownE66680/E667BE/E668AD/B4EA14/52A350/E8A340/14EF300/121DC7F30; static660447/runtimee9bb4766/modOa08950/base400000/RVA=VA−400000; no newnativebody."
+  ],
+  "findings": [
+    {
+      "summary": "TwelveactualTCPproxyemittedcapturedbody/currentseqreplays joinoriginalfrontbodySHA/currentupstreamseqSHA/actualserviceguard/nativeframergetters; exact8same4old rejectedbeforeextraID165170/policy/nativeeffects.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#virtual-tcp-guard-cycles",
+      "limits": "ModifiedWine/twoactualCA+wineserverprivatevirtualnetns/samephysicalhost/productionexplicitIPv4/noaddressshim/UDPdirect. RootTCPcapturedbodyproxy/private3858→23858/actualfrontupstreamsource separate/S2Cunchangedarchive. Eight same+four oldselectedA11812417,19/currentouterseq/guardrejects/noextraeffects plus4finitepeerwindows/items/native2endings/reset/Ready95native110/noStart3. Notarbitraryforgedcurrentkey/freshserial/location/auth/fullcodec/wholeUDP/reliability/originalauthority/fullinventory/disconnect/fullmatch/K5/K6a/physicalLAN/NAT/Internet/gate. CP137complexUI/sharedgeometry/IP1/subtype39 remain;39onlyfreshnessmarkerunknownsemantics. Sourcebinary/DBpackunchanged; frozenuntilcleanup/rawseal.",
+      "evidence": [
+        "RUN-01927",
+        "RUN-02047",
+        "RUN-01894"
+      ]
+    },
+    {
+      "summary": "Same-runproductionvirtual4nativepeerwindows/sourcekeyXORID/targets/currentprogress/BombFireeffectsbothviews/2native175180110/currenttrap+death/195reset/keyID/normalReady95native110/render completes, noaddressshim/UDPproxy.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#virtual-tcp-guard-cycles",
+      "limits": "ModifiedWine/twoactualCA+wineserverprivatevirtualnetns/samephysicalhost/productionexplicitIPv4/noaddressshim/UDPdirect. RootTCPcapturedbodyproxy/private3858→23858/actualfrontupstreamsource separate/S2Cunchangedarchive. Eight same+four oldselectedA11812417,19/currentouterseq/guardrejects/noextraeffects plus4finitepeerwindows/items/native2endings/reset/Ready95native110/noStart3. Notarbitraryforgedcurrentkey/freshserial/location/auth/fullcodec/wholeUDP/reliability/originalauthority/fullinventory/disconnect/fullmatch/K5/K6a/physicalLAN/NAT/Internet/gate. CP137complexUI/sharedgeometry/IP1/subtype39 remain;39onlyfreshnessmarkerunknownsemantics. Sourcebinary/DBpackunchanged; frozenuntilcleanup/rawseal.",
+      "evidence": [
+        "RUN-00009",
+        "RUN-01935",
+        "RUN-01948",
+        "RUN-00004",
+        "RUN-02063"
+      ]
+    },
+    {
+      "summary": "Proxy bindsprivate3858/service23858; nativefront/upstreamemission distinction retained. S2Cforward/archive notindependentfullnetworkcapture; selectedoldbodies notarbitraryforgedcurrentauth. ActualEOFduringbattle notmeasured byfinalcleanup; PLANscopedpendingguestEOFnext withproxyEOFbenchfirst.",
+      "source": "emu_choice",
+      "status": "design",
+      "method": "design",
+      "canonical": "docs/PROTOCOL.md#virtual-tcp-guard-cycles",
+      "limits": "ModifiedWine/twoactualCA+wineserverprivatevirtualnetns/samephysicalhost/productionexplicitIPv4/noaddressshim/UDPdirect. RootTCPcapturedbodyproxy/private3858→23858/actualfrontupstreamsource separate/S2Cunchangedarchive. Eight same+four oldselectedA11812417,19/currentouterseq/guardrejects/noextraeffects plus4finitepeerwindows/items/native2endings/reset/Ready95native110/noStart3. Notarbitraryforgedcurrentkey/freshserial/location/auth/fullcodec/wholeUDP/reliability/originalauthority/fullinventory/disconnect/fullmatch/K5/K6a/physicalLAN/NAT/Internet/gate. CP137complexUI/sharedgeometry/IP1/subtype39 remain;39onlyfreshnessmarkerunknownsemantics. Sourcebinary/DBpackunchanged; frozenuntilcleanup/rawseal.",
+      "evidence": [
+        "RUN-02002",
+        "RUN-02049",
+        "RUN-01893"
+      ]
+    }
+  ],
+  "verification": [
+    {
+      "check": "87TCPorigin/upstream/guard/noextraseffectjoins/8same4old/876frontframeremulationcases",
+      "result": "pass",
+      "evidence": [
+        "RUN-01927",
+        "RUN-01926",
+        "RUN-02046"
+      ],
+      "limits": "ModifiedWine/twoactualCA+wineserverprivatevirtualnetns/samephysicalhost/productionexplicitIPv4/noaddressshim/UDPdirect. RootTCPcapturedbodyproxy/private3858→23858/actualfrontupstreamsource separate/S2Cunchangedarchive. Eight same+four oldselectedA11812417,19/currentouterseq/guardrejects/noextraeffects plus4finitepeerwindows/items/native2endings/reset/Ready95native110/noStart3. Notarbitraryforgedcurrentkey/freshserial/location/auth/fullcodec/wholeUDP/reliability/originalauthority/fullinventory/disconnect/fullmatch/K5/K6a/physicalLAN/NAT/Internet/gate. CP137complexUI/sharedgeometry/IP1/subtype39 remain;39onlyfreshnessmarkerunknownsemantics. Sourcebinary/DBpackunchanged; frozenuntilcleanup/rawseal."
+    },
+    {
+      "check": "3950raw/source/lifecyclejoins/1882sealedraw/624vethrecords/632peer+1423wirejoins/4windows/twoendingresetReady",
+      "result": "pass",
+      "evidence": [
+        "RUN-00009",
+        "RUN-01909",
+        "RUN-01935",
+        "RUN-01950"
+      ],
+      "limits": "ModifiedWine/twoactualCA+wineserverprivatevirtualnetns/samephysicalhost/productionexplicitIPv4/noaddressshim/UDPdirect. RootTCPcapturedbodyproxy/private3858→23858/actualfrontupstreamsource separate/S2Cunchangedarchive. Eight same+four oldselectedA11812417,19/currentouterseq/guardrejects/noextraeffects plus4finitepeerwindows/items/native2endings/reset/Ready95native110/noStart3. Notarbitraryforgedcurrentkey/freshserial/location/auth/fullcodec/wholeUDP/reliability/originalauthority/fullinventory/disconnect/fullmatch/K5/K6a/physicalLAN/NAT/Internet/gate. CP137complexUI/sharedgeometry/IP1/subtype39 remain;39onlyfreshnessmarkerunknownsemantics. Sourcebinary/DBpackunchanged; frozenuntilcleanup/rawseal."
+    },
+    {
+      "check": "70pickup/25addressReadychecks/manualrender;1386actor408peergetters/333typedpackets12native153/46UDPCRC/2364flaggetter+2340array emulation",
+      "result": "pass",
+      "evidence": [
+        "RUN-01948",
+        "RUN-00004",
+        "RUN-02063",
+        "RUN-01910",
+        "RUN-01945",
+        "RUN-01953",
+        "RUN-00001",
+        "RUN-00022",
+        "RUN-01912"
+      ],
+      "limits": "Models andmanualrenderseparatedfromruntime; notfullgameinventory/originalauthority."
+    },
+    {
+      "check": "Docs/catalog/issues/artifacts;231unchangedproductiontestsreused",
+      "result": "pass",
+      "evidence": [
+        "RUN-01907",
+        "RUN-01929",
+        "RUN-00007",
+        "RUN-02068"
+      ],
+      "limits": "Mechanicalconsistencyonly; nosemanticacceptance/gate."
+    }
+  ],
+  "evidence": [],
+  "evidence_manifests": [
+    {
+      "path": "docs/evidence/checkpoints/evidence/CP143-virtual-tcp-guard.json",
+      "bytes": 518818,
+      "sha256": "c45efa498a6528a8ab3a74085b42a274ccd5b0bf2f96da6989d597115a42d2b6",
+      "count": 2068
+    }
+  ],
+  "delta": {
+    "added": [
+      "SelectedTCPguard8same4oldwithsource/nativeupstream/noextraeffects nowinsamevirtualproductionmovement/item/tworesultresetReady run."
+    ],
+    "corrected": [
+      "ActualEOFacceptance separatefromendcleanup; measurementproxypairclosemustbenchbeforefaultattribution."
+    ],
+    "superseded": [
+      "NEXT-VIRTUAL-TCP-GUARD-CYCLES closedscopedproof; NEXT-VIRTUAL-PENDING-GUEST-EOF active."
+    ]
+  },
+  "blockers": [
+    "ActualpendingguestEOF throughcurrentTCPmeasurementproxy aftertwo virtualnormalcycles notmeasured; benchproxyEOF/readbeforeEOFfirst.",
+    "Sharedcrossvirtualgeometry/CP137complexUIdebt/fullinventoryreset/auth/authority/physicalLAN/NAT/Internet/gatesremain."
+  ],
+  "next_steps": [
+    {
+      "id": "NEXT-VIRTUAL-TCP-GUARD-CYCLES",
+      "task": "KRE-005b",
+      "state": "closed",
+      "action": "Selected8same4old actualTCP/nativeguard/noextras withvirtual4movementwindows/tworesultresetReadyverified.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-VIRTUAL-PENDING-GUEST-EOF",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "PLAN bench/fixnewcopyproxyEOF then2completecycles+Ready/normalStart3/actualB118pending/killownedCA-Bonlybeforedeadline; front-upstream-serviceEOF/fence/no158/noBdeath/nativeAforfeit175180107110/IDclear/render/noStart4. CP144manualauditdue.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    }
+  ],
+  "docs_sync": [
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "CP143same-runselectedTCPguard/sources/limits/lifecycle/EOFgap/issue14 syncedbeforecomplete."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "CP143same-runselectedTCPguard/sources/limits/lifecycle/EOFgap/issue14 syncedbeforecomplete."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "updated",
+      "reason": "CP143same-runselectedTCPguard/sources/limits/lifecycle/EOFgap/issue14 syncedbeforecomplete."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "updated",
+      "reason": "CP143same-runselectedTCPguard/sources/limits/lifecycle/EOFgap/issue14 syncedbeforecomplete."
+    },
+    {
+      "path": "docs/features.json",
+      "state": "updated",
+      "reason": "CP143same-runselectedTCPguard/sources/limits/lifecycle/EOFgap/issue14 syncedbeforecomplete."
+    },
+    {
+      "path": "docs/COVERAGE.md",
+      "state": "updated",
+      "reason": "CP143same-runselectedTCPguard/sources/limits/lifecycle/EOFgap/issue14 syncedbeforecomplete."
+    },
+    {
+      "path": "docs/evidence/peer-endpoints/README.md",
+      "state": "updated",
+      "reason": "CP143same-runselectedTCPguard/sources/limits/lifecycle/EOFgap/issue14 syncedbeforecomplete."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/review.json",
+      "state": "updated",
+      "reason": "CP143same-runselectedTCPguard/sources/limits/lifecycle/EOFgap/issue14 syncedbeforecomplete."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
+      "state": "updated",
+      "reason": "CP143same-runselectedTCPguard/sources/limits/lifecycle/EOFgap/issue14 syncedbeforecomplete."
+    }
+  ]
+}

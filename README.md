@@ -41,17 +41,17 @@ Hai copy KR Wine đã chạy login/sảnh/phòng/Battle và các chu kỳ kết 
 [kim/reset](docs/PROTOCOL.md#needle-round-reset), [cứu hai chiều và hai kết quả](docs/PROTOCOL.md#rescue-two-results),
 [deep chain/reset](docs/PROTOCOL.md#recursive-chain-cycles) giữ phạm vi và giới hạn tại nguồn chuẩn.
 
-**Mốc mới CP142:** cùng một run production không shim đã có movement hai chiều qua hai vòng,
-nhặt Bomb/Fire với native effect cảhai view, bom/trap/death → hai kết quả/reset và Ready sau return2.
-[Contract/giới hạn](docs/PROTOCOL.md#virtual-movement-cycles), [raw/hash](docs/evidence/peer-endpoints/README.md#cp142).
-Đây là modifiedWine/hai virtualhost cùng máy; **chưa fullmatch/K6a/LAN thật/Internet**.
+**Mốc mới CP143:** cùng run production virtualhosts đã có movement/item/hai kết quả/reset/Ready
+và **12 selected same/old TCP replays bị guard loại**, không thừa ID/165/170/native effect.
+[Contract/giới hạn](docs/PROTOCOL.md#virtual-tcp-guard-cycles), [raw/hash](docs/evidence/peer-endpoints/README.md#cp143).
+Chưa fullmatch/K6a/LAN thật/Internet; không gọi captured-body replay là toàn validator/auth.
 
-CP141 đã merge [PR212](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/212) tại`b1f2c72`.
-CP142 docs/evidence đang tự kiểm; [review độc lập waived](docs/evidence/checkpoints/review-waiver.json).
-Audit qua140, kế **CP144**; giữ run observer partial, shared geometry và CP137 complex-route UI debt.
+CP142 đã merge [PR213](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/213) tại`062906a`.
+CP143 docs/evidence đang tự kiểm; [review độc lập waived](docs/evidence/checkpoints/review-waiver.json).
+Audit qua140, kế **CP144**; observer partial/sharedgeometry/CP137complex-route UI debt giữ riêng.
 
-Theo [PLAN](docs/PLAN.md#current-order), ghép selected same/old TCP replay vào cùng production
-movement/lifecycle profile, phân biệt frame native và frame proxy; không RE lại cơ chế đã biết.
+Theo [PLAN](docs/PLAN.md#current-order), kiểm TCP proxy truyền EOF rồi đo actualguestEOF khi có
+bom chờ ở vòng ba sau hai vòng hoàn tất; phân biệt forfeit policy với deathreport/native ending.
 
 Đích đầu: hai client thật chơi hai trận liên tiếp; mở bốn client và hardening sau đó.
 
