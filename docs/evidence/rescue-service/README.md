@@ -136,7 +136,7 @@ khác runtimecallback. `r1/returned-live-observation.png` preview chọnscreen99
 **ảnh cũ, khôngcurrentstatus**; `returned-live-observation-latest.png` dùngmtimechohai phòng,
 correctiongiữ trongpartial-verification. Khônggọiảnhcũ làhangproof.
 
-Read-onlyslotmeasurement kế ở `rescue-start-slot-r1` đang thực hiện ngoàiCP117; không tính là
+Tại thời điểm CP117, read-onlyslotmeasurement `rescue-start-slot-r1` chưa xong; CP118 đã bổ sung actualslot2cause; không tính là
 bằngchứng CP117 hoặc checkpointcomplete. Preparedpositive-docs draft ởr2 chưa chạy vàđược đánhdấu
 unexecuted; không kếtluậnStart2/freshrescue từverifier/draft chưapass. Mọi partial giữnguyên.
 
@@ -156,7 +156,7 @@ kind bị ambient DCAD80call round0 dùng hết; **không dùng để kết lu�
 `slot-verification.json` pin1.693raw/sourcehash/cleanup; actualreturnedslot2group0/helper1/hostflag0→DCB7DA,
 initialslot2group1. [Contract/giới hạn](../../PROTOCOL.md#rescue-start-slot). Phép đo này đã kết thúc/lưu
 rawhash/cleanup trước migration theo yêu cầu chủ dự án; CP118 pin batchlist bên ngoài, không sửaCP117.
-Chưa bounded110refreshfix/Start2/freshrescue; tiếp PLAN sauPRmigration. Không wholewordenum/auth/gate.
+Giới hạn lịch sử CP118: khi đó chưa refreshfix/Start2/freshrescue; CP119/120 bên dưới bổ sung, việc hiện hành chỉ PLAN. Không wholewordenum/auth/gate.
 
 
 <a id="cp119"></a>
@@ -179,3 +179,36 @@ slot2group1/roomguard0/build104/actualreturnedA104/two121155/clocks/key12345→1
 
 CP118record/migrationreport nguyênbytes; #188 tổ chức đãđóng sauPR189và actualREresume,
 localissue/task/PLANđồng bộtrongCP119, không sửa snapshotCP118. Audit kếCP120/AUD036.
+
+
+<a id="cp120"></a>
+## CP120 — Fresh R2 rescue theo current epoch, audit AUD037
+
+[Contract/giới hạn](../../PROTOCOL.md#rescue-round2-feedback), [phép thử](../../RESEARCH.md#gap-round-reset),
+[PLAN](../../PLAN.md#current-order). CP119/PR190 đãmerge`bfd526b`, code/profile khôngđổi.
+`local/research/codex/rescue-R2-contact-r1/reuse-question.json` source-first CP119raw/CP111peerapply/
+CP084freshfeedback/cachedgetter; khôngRElạicodec/Start/rescueconsumer hoặcportnumericVN.
+
+Raw/recipe `rescue-R2-feedback-r1`/`rescue-R2-feedback-r2`, controller
+`wine_probe_rescue_R2_feedback.py` và`wine_probe_rescue_R2_feedback_retry.py` trong local/research/codex.
+Private namespace/lo-only/no-route/filesNSS/singlelease/two-prefix-display/sourcefreeze; rawsealed saucleanup.
+r1failedBwineboot35s/noBattle/146raw đượcgiữ; cuốiscriptprepare.with_name lỗi trướcghi provenance,
+input/preflight đã ghi vàshell vẫn chạy. Correctionr2 hoàn tấtprepare trướclaunch; baselineprefixcopies và
+Winebootstartup60s riêng, khônggamedeadlinechange. Khônghạassertion hoặcgiảrawmissing.
+
+Positive r2run SHA `e83b5d91de9eb43f5f86c3e2f223a9ce44d4209d69acfdc6abe30d1cb2efed7f`,
+300,388426598s/exit0/error0, source/service/profilecùngCP119. `reset-verification.json`: **1863joins**
+gồm**1782rawsizeSHA**, actualB95seq262/A104seq304/2keys/two121clocks/oneresultreturn/freshB17→18R2,
+local/peer56→26/full1707/7/errors0. `actor-fields.json`621copiednativegetters;
+`native-reports.json`213nativepacketcases, `native-153.json`12cases (valid/CRC/partial) táchWine.
+`feedback-verification.json`1002capturedlive/peerfieldnative52A350checks; rawwrapper/data đượcpin,
+emulationcounterreset chỉmodel, khôngsửa runtimeclient. `reset-visual.png`/`visual-review.json` manual.
+
+**Khôngnângnghĩa feedback:** park sample304đạt279, Up4s khôngđạt159/actual18muộnhơn;
+BlocalrescueentryA(120,189), B(120,159) làsnapshotkhôngfullcontactthreshold. PeerB64quota/touchonly,
+park noack; fullUptrajectory/CP119causalinput-orUDPdifference cònunknown. Hai view finalAposition
+khác khônglàm mất factBescape, cũngkhônglàprooffullmovementconsistency. Limits ởPROTOCOL.
+
+MộtR1result vàR2activeescape, **chưaR2result/secondreturn/Ready saurescue**, khôngK5/K6a/fullmatch.
+191server tests CP119reuse/sourceunchanged. AuditthủcôngAUD037quaCP120/kếCP124;
+CP120selfcheck/chờPR/reviewwaived. CompleteCP119vàoldfailure/rawgiữ nguyên, externalbatchmanifest mới.

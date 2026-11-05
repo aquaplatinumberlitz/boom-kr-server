@@ -1,0 +1,251 @@
+{
+  "id": "CP120",
+  "previous": "CP119",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-05T06:19:48.991585+00:00",
+  "context_commit": "bfd526bcc740230eb0d4a7063a77b2240b35623a",
+  "owner": "Codex",
+  "reviewer": "Codex",
+  "question": "AfterCP119Start2/freshrescuefailure, doesread-onlycurrentnativefeedback/peerwindowmeasurementyieldactualR2rescueandsupportedresetproof? Whatmeasurementlimitsremain?",
+  "scope": "Source-firstCP119rawsecurefields/CP111peerapply/CP084feedbackreuse, no newnativebody orproductioncode. R2normalDown/UpkeyreleasebasedfreshnativeYplusrawcapturedwrapperdata/knownpeerwindow, removesolvedStartprobes. FirstprefixBwineboot35fail/noBattlepreserved, retryfreshbaselineprefix/startup60only; samegameplayprofile/fuse/deadline. PeriodicAUD037manual24sources/raw/native/photos/canonicalstalescopefixes.",
+  "artifacts": [
+    {
+      "name": "CA-r2-login-logout.exe",
+      "sha256": "660447c293ce92270cb9b5815331bca976e8f156366e1fe50b217b6c12e60ce3"
+    },
+    {
+      "name": "CA-r2-stage-social.exe",
+      "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+    },
+    {
+      "name": "CA-r2-stage-social.exe Bcopy",
+      "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+    },
+    {
+      "name": "modO.bin",
+      "sha256": "a08950c833d3acab8281049def7b3dc96b221f107eeda01da3a548e34b91dce5"
+    }
+  ],
+  "locators": [
+    "CP119PR190headf84bfbcbd81cf977d77e40dca9f4e9f7599fb5bf/mergebfd526bcc740230eb0d4a7063a77b2240b35623a/CLEANMERGEABLEchecks[]; unchanged191testsreused/sourcepreflightpinned.",
+    "PositiveRune83b5d91de9eb43f5f86c3e2f223a9ce44d4209d69acfdc6abe30d1cb2efed7f/300.388426598s/exit0/error0/1782raw/1863joins. R1B17→18/A,B17,19/result; actualreturnedB95seq262/A104seq304/R2B17seq322→18seq331/aux0/peer170full7/clockskeys12345→12346.",
+    "KnownE6F060/E6F10A localB andE86820/E86892/E863CA peerA56→26bothrounds; securegetter52A350/liveframe1256B3B/UDPconsumerE66680/E668AD/E668B2 reused. ModOa08950/base400000/RVA=VA−400000/runtimee9bb4766/static660447.",
+    "FeedbackparkY304target279/UpY399→339not159within4s. LaterB18localentryAonBworldXY120189/B120159; no threshold30causalclaim. PeerB64packetscorrectkeys/touchonlyquotaexhausted/parknoack. 1002rawfeedbackpeerfieldgetters+621capturedsnapshotgetters/213typedpacket+12native153models separatefromWine.",
+    "AUD037periodicthroughCP120/nextCP124. Prefixpreparationfailure146raw/noBattle/provenancewriteexceptionknown/cleanupretained, notREnegativecontactproof."
+  ],
+  "findings": [
+    {
+      "summary": "SamecurrentCP119source/profile chosenR1rescue/deathresultreturn/actualB95A104→Start2key12346/native121clock→freshB17→18aux0/admittedone170A/full7/7/errors0/nativeboth56→26. Currenttrap/deathstateadmissionresetobservedbounded, onecompletedresult/R2active only.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#rescue-round2-feedback",
+      "limits": "SameCP119service/profile/fuse/current2realmodifiedWineAB+synthetic2. OnecompleteR1chosenresult/return/actualB95A104/Start2key12346/freshB18aux0/nativeboth56→26; R2activeNOTtwofinishedresults/fullmatch/gate. Upfeedbacktarget159NOTattainedin4s/actual18later/AonBworldY189snapshotnotthreshold30orcausalinputUDPfix. Peer64quota/touchonly/parknoack/fulltrajectoryunknown. Nativecopiedgetter/framerheapmodelsseparate; sourcebinaryDBunchanged. Reviewwaived/AUD037periodic120next124.",
+      "evidence": [
+        "R2-01855",
+        "R2-00001",
+        "R2-01916",
+        "R2-01856"
+      ]
+    },
+    {
+      "summary": "Read-onlyfeedbackparkreachesY304≥279, Up159notreachedwithin4s; actual18lateratAonBworldY189/B159, so doNOTcalltargetsuccesscausalrescue/threshold30. Peerwindow64correctkeypackets/quota/touchonly, parknoack; no fulltrajectory/CP119failurecausalfix inferred. 1002capturedfieldscopiednativegettervalidated.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#rescue-round2-feedback",
+      "limits": "SameCP119service/profile/fuse/current2realmodifiedWineAB+synthetic2. OnecompleteR1chosenresult/return/actualB95A104/Start2key12346/freshB18aux0/nativeboth56→26; R2activeNOTtwofinishedresults/fullmatch/gate. Upfeedbacktarget159NOTattainedin4s/actual18later/AonBworldY189snapshotnotthreshold30orcausalinputUDPfix. Peer64quota/touchonly/parknoack/fulltrajectoryunknown. Nativecopiedgetter/framerheapmodelsseparate; sourcebinaryDBunchanged. Reviewwaived/AUD037periodic120next124.",
+      "evidence": [
+        "R2-01807",
+        "R2-01336",
+        "R2-01341"
+      ]
+    },
+    {
+      "summary": "621capturedactorfields/213typedpacket/12peer153cases nativecodecopy corroboratewire/state butemulationheap/counterresetnotruntime. FirstBprefixwineboot35fail146raw noBattle, cleanupsealed; retrybaselineprefix/startup60samegameplay/service. No binary/DB/function/stateforce/newnativebody.",
+      "source": "kr_static",
+      "status": "confirmed",
+      "method": "emulation",
+      "canonical": "docs/PROTOCOL.md#rescue-round2-feedback",
+      "limits": "SameCP119service/profile/fuse/current2realmodifiedWineAB+synthetic2. OnecompleteR1chosenresult/return/actualB95A104/Start2key12346/freshB18aux0/nativeboth56→26; R2activeNOTtwofinishedresults/fullmatch/gate. Upfeedbacktarget159NOTattainedin4s/actual18later/AonBworldY189snapshotnotthreshold30orcausalinputUDPfix. Peer64quota/touchonly/parknoack/fulltrajectoryunknown. Nativecopiedgetter/framerheapmodelsseparate; sourcebinaryDBunchanged. Reviewwaived/AUD037periodic120next124.",
+      "evidence": [
+        "R2-01808",
+        "R2-01823",
+        "R2-01825",
+        "R2-01806",
+        "BOOT-00147"
+      ]
+    },
+    {
+      "summary": "AUD037manualordered24sources/currentraw/photos/code/v2migration found5stalescope/currentheader/pendingPR/CP118historicalnextstep issues. CP119PR190merge andCP120freshrescue/currentlimits synced; previous119completeobjectsimmutable, auditcounter120→124.",
+      "source": "design",
+      "status": "design",
+      "method": "documentation",
+      "canonical": "docs/PROTOCOL.md#rescue-round2-feedback",
+      "limits": "SameCP119service/profile/fuse/current2realmodifiedWineAB+synthetic2. OnecompleteR1chosenresult/return/actualB95A104/Start2key12346/freshB18aux0/nativeboth56→26; R2activeNOTtwofinishedresults/fullmatch/gate. Upfeedbacktarget159NOTattainedin4s/actual18later/AonBworldY189snapshotnotthreshold30orcausalinputUDPfix. Peer64quota/touchonly/parknoack/fulltrajectoryunknown. Nativecopiedgetter/framerheapmodelsseparate; sourcebinaryDBunchanged. Reviewwaived/AUD037periodic120next124.",
+      "evidence": [
+        "R2-01925",
+        "R2-00012",
+        "R2-00013",
+        "R2-01818"
+      ]
+    }
+  ],
+  "verification": [
+    {
+      "check": "1863same-runrelations including1782rawhash/nativecurrentreports/actualreturned95,104/two121clocks/oneresult/freshR2escape",
+      "result": "pass",
+      "evidence": [
+        "R2-01855",
+        "R2-01854",
+        "R2-01916"
+      ],
+      "limits": "SameCP119service/profile/fuse/current2realmodifiedWineAB+synthetic2. OnecompleteR1chosenresult/return/actualB95A104/Start2key12346/freshB18aux0/nativeboth56→26; R2activeNOTtwofinishedresults/fullmatch/gate. Upfeedbacktarget159NOTattainedin4s/actual18later/AonBworldY189snapshotnotthreshold30orcausalinputUDPfix. Peer64quota/touchonly/parknoack/fulltrajectoryunknown. Nativecopiedgetter/framerheapmodelsseparate; sourcebinaryDBunchanged. Reviewwaived/AUD037periodic120next124."
+    },
+    {
+      "check": "1002feedbackpeerfieldnativegetter/621actorsnapshots/213typedpacket/12peer153models; unchanged191server tests reused",
+      "result": "pass",
+      "evidence": [
+        "R2-01806",
+        "R2-01808",
+        "R2-01823",
+        "R2-01825",
+        "R2-01924"
+      ],
+      "limits": "SameCP119service/profile/fuse/current2realmodifiedWineAB+synthetic2. OnecompleteR1chosenresult/return/actualB95A104/Start2key12346/freshB18aux0/nativeboth56→26; R2activeNOTtwofinishedresults/fullmatch/gate. Upfeedbacktarget159NOTattainedin4s/actual18later/AonBworldY189snapshotnotthreshold30orcausalinputUDPfix. Peer64quota/touchonly/parknoack/fulltrajectoryunknown. Nativecopiedgetter/framerheapmodelsseparate; sourcebinaryDBunchanged. Reviewwaived/AUD037periodic120next124."
+    },
+    {
+      "check": "Upfeedbacktarget159within4s",
+      "result": "observed",
+      "evidence": [
+        "R2-01807"
+      ],
+      "limits": "Notattained; actualB18laterpositiveindependentofcontrollerfeedbacksuccess. No requirementloweredtoassertcausalfix."
+    },
+    {
+      "check": "ManualperiodicAUD037/docs/catalog/issuelive/sourceartifacts/diff",
+      "result": "pass",
+      "evidence": [
+        "R2-01925",
+        "R2-01805",
+        "R2-01821",
+        "R2-00008"
+      ],
+      "limits": "Mechanicalconsistency/selectedmanualreview notautoacceptance/gates."
+    }
+  ],
+  "evidence": [],
+  "evidence_manifests": [
+    {
+      "path": "docs/evidence/checkpoints/evidence/CP120-prefix-preparation-control.json",
+      "bytes": 37696,
+      "sha256": "235b0fed2aab05574ee8894f1ba41ba5b81d0042535e9313c0ad97cba29c9c0b",
+      "count": 150
+    },
+    {
+      "path": "docs/evidence/checkpoints/evidence/CP120-rescue-R2-feedback.json",
+      "bytes": 482520,
+      "sha256": "3060498db31b599260d98b03518bbaf4097b73b57f10973ecb11798eedc37027",
+      "count": 1925
+    }
+  ],
+  "delta": {
+    "added": [
+      "FreshR2currentrescueafterresult/return/actualStart2/key/nativeboth56→26samecodeprofile.",
+      "Read-onlynativefeedback/rawsecurefields/finitepeerwindow/provenance/runtimecontrols andexplicitUpnotreached/quota limits.",
+      "AUD037periodic24sources/5stalescopefixes, nextaudit124."
+    ],
+    "corrected": [
+      "CP119currentR2freshrescueunknown nowpositiveboundedonnewrun; CP119failedrunpreserved/no causalfixclaim orfullreset.",
+      "CP119PR190merged/currentREADME/PLANstaleguard3/noStart2 qualified; oldcheckpointobjects/evidenceimmutable."
+    ],
+    "superseded": [
+      "NEXT-RESCUE18-R2-CONTACT scopedfreshrescueobserved, generalinput/peercausalquestionunknown; nextR2result/secondreturn afterbothrescueepochs."
+    ]
+  },
+  "blockers": [
+    "NoR2result/secondreturn/Readyafterfreshrescue yet; onecompletedresult/R2active nottwofinishedrounds/gate.",
+    "CP119input/UDP/timingcause/generalcontactthreshold/fullmovement/auth/inventory/membership/vanilla/LANInternet remainunknown."
+  ],
+  "next_steps": [
+    {
+      "id": "NEXT-RESCUE18-R2-CONTACT",
+      "task": "KRE-005b",
+      "state": "closed",
+      "action": "CP120actualfreshR2B18/170/nativeboth56→26 afterStart2 observedscope, no claimedgeneraltrajectory/causalCP119fix.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-RESCUE18-TWO-RESULTS",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "SameCP119service/profile/currentpositiveOSfeedback/probes, afterR2escape normalASpaceBSpace→actualA/B17,19/chosen175180/secondroom/UI/actualB95. NoStart3/force/reportmint/fusedelay. IfcontactnotrepeatedmeasurecurrentXY/windowonly. AUD037next124.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    }
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-11-05T06:19:48.991585+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "Codex solo RE/code/runtime/selfcheck, not independent approval.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Owner explicitly requested solo without Claude review."
+    }
+  },
+  "docs_sync": [
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "CP120freshR2rescue/currentepoch/feedbacklimits/nextsecondresult, CP119merge/AUD037periodic/fivestalescopefixes; nooldrecord/gatechange."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "CP120freshR2rescue/currentepoch/feedbacklimits/nextsecondresult, CP119merge/AUD037periodic/fivestalescopefixes; nooldrecord/gatechange."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "updated",
+      "reason": "CP120freshR2rescue/currentepoch/feedbacklimits/nextsecondresult, CP119merge/AUD037periodic/fivestalescopefixes; nooldrecord/gatechange."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "updated",
+      "reason": "CP120freshR2rescue/currentepoch/feedbacklimits/nextsecondresult, CP119merge/AUD037periodic/fivestalescopefixes; nooldrecord/gatechange."
+    },
+    {
+      "path": "docs/features.json",
+      "state": "updated",
+      "reason": "CP120freshR2rescue/currentepoch/feedbacklimits/nextsecondresult, CP119merge/AUD037periodic/fivestalescopefixes; nooldrecord/gatechange."
+    },
+    {
+      "path": "docs/COVERAGE.md",
+      "state": "updated",
+      "reason": "CP120freshR2rescue/currentepoch/feedbacklimits/nextsecondresult, CP119merge/AUD037periodic/fivestalescopefixes; nooldrecord/gatechange."
+    },
+    {
+      "path": "docs/evidence/rescue-service/README.md",
+      "state": "updated",
+      "reason": "CP120freshR2rescue/currentepoch/feedbacklimits/nextsecondresult, CP119merge/AUD037periodic/fivestalescopefixes; nooldrecord/gatechange."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/review.json",
+      "state": "updated",
+      "reason": "CP120freshR2rescue/currentepoch/feedbacklimits/nextsecondresult, CP119merge/AUD037periodic/fivestalescopefixes; nooldrecord/gatechange."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
+      "state": "updated",
+      "reason": "CP120freshR2rescue/currentepoch/feedbacklimits/nextsecondresult, CP119merge/AUD037periodic/fivestalescopefixes; nooldrecord/gatechange."
+    },
+    {
+      "path": "docs/evidence/checkpoints/audits/AUD037.json",
+      "state": "updated",
+      "reason": "CP120freshR2rescue/currentepoch/feedbacklimits/nextsecondresult, CP119merge/AUD037periodic/fivestalescopefixes; nooldrecord/gatechange."
+    }
+  ]
+}
