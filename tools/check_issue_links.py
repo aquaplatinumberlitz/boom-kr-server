@@ -7,6 +7,7 @@ import re
 import subprocess
 
 from feature_catalog import ROOT, link_error
+from checkpoint_store import load as load_checkpoints, current_view
 
 REPO = 'aquaplatinumberlitz/boom-kr-server'
 SNAPSHOT = 'docs/evidence/issue-reconciliation/github-snapshot.json'
@@ -131,7 +132,7 @@ def main():
         return
     errors, warnings = validate(snapshot, json.loads((ROOT / REVIEWS).read_text()),
                                 json.loads((ROOT / 'docs/features.json').read_text()),
-                                json.loads((ROOT / 'docs/evidence/checkpoints/manifest.json').read_text()),
+                                current_view(load_checkpoints(ROOT), ROOT),
                                 (ROOT / 'docs/PLAN.md').read_text())
     for warning in warnings:
         print('WARNING:', warning)

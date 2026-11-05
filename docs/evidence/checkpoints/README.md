@@ -85,3 +85,73 @@ Nếu bytes hiện tại khác, checker phải tìm **đúng size/SHA lịch s�
 được bytes cũ vẫn lỗi. Quy tắc này chỉ cho documentation repository, không cho code/raw/binary/
 local evidence; record cũ không sửa, không nới hash hoặc tự suy ngữ nghĩa đồng bộ. Clone thiếu
 Git blob cần khôi phục lịch sử để kiểm, không tạo bytes thay thế từ docs mới.
+
+## Kho checkpoint v2 và cách đọc chọn lọc
+
+Từ CP118, `manifest.json` là **index nhỏ** (`kre-checkpoints-v2`, version2): counter, audit,
+current task declarations và ID→`records/CPxxx.json`/size/SHA/lifecycle/ngày. Không giữ bản
+current-status hoặc thứ tự việc khác; chỉ [PLAN](../../PLAN.md#current-order) giao việc.
+Records CP001–117 chuyển nguyên JSON object; findings/review/waiver/inline evidence không sửa.
+[Report migration](migration-v2.json) giữ baseline commit/SHA, mapping từng record, object digest,
+đối chiếu toàn bộ evidence/audit và kích thước. Audit lịch sử vẫn trong `audits/`; [đo kích thước/file count](storage-validation-v2.json)
+phân biệt mức giảm index với tổng dữ liệu legacy được giữ.
+
+**LLM bắt đầu bằng CLI, không `cat` toàn manifest/history/raw index:**
+
+```bash
+python3 tools/checkpoints.py latest
+python3 tools/checkpoints.py show CP117
+python3 tools/checkpoints.py evidence CP117
+python3 tools/checkpoints.py evidence CP117 --offset 0 --limit 20
+python3 tools/checkpoints.py evidence CP117 --verify --require-local
+```
+
+`latest` chỉ đọc index/counter/đường dẫn PLAN. `show` mặc định bỏ inline raw index, giữ nội dung
+checkpoint và số evidence; `--full` chỉ dùng khi thực sự cần **toàn bộ record đã chọn**. `evidence`
+mặc định summary; page tối đa200 dòng. `--verify` kiểm **mọi evidence của CP**, kể cả ngoài page;
+không in mọi dòng raw. `--root` đặt trước subcommand dùng cho fixture/checkout khác.
+Kiểm toàn repo/lịch sử vẫn là `python3 tools/check_checkpoints.py --require-local --require-history`.
+
+Checkpoint mới có thể dùng `evidence_manifests`:
+
+```json
+{
+  "evidence": [],
+  "evidence_manifests": [{
+    "path": "docs/evidence/checkpoints/evidence/run-or-batch.json",
+    "sha256": "<sha256 bytes của file JSON>",
+    "bytes": 1234,
+    "count": 42
+  }]
+}
+```
+
+File tham chiếu có `schema: kre-evidence-manifest-v1` và `evidence: [...]` dùng nguyên schema dòng
+`id/kind/path/bytes/sha256`. Không nested manifest; ID evidence phải duy nhất khi ghép inline và
+các manifest ngoài trong một CP. Findings/verification trỏ ID đó như trước. Một run/batch pin một
+list, CP chỉ giữ path/size/SHA/count; có thể tái dùng cùng file đã pin thay vì sao chép list.
+**Không deduplicate/viết lại evidence trong record complete cũ.** Binary/log vẫn ở local; chỉ metadata
+được commit. Index dùng `checkpoint_store.record_reference` để pin file record sau khi docs đã sync.
+
+### Tái chạy và giới hạn migration
+
+Script `tools/migrate_checkpoints.py` nhận baseline v1 đã pin. Nó kiểm bytes nguồn khớp manifest
+trong baseline Git, tách theo object (không chia dòng), so toàn bộ records/evidence, pin36audit,
+refuse ghi đè record khác nội dung. Tái chạy giữ nguyên file/report hiện có và không reset các CP
+mới đã append. Sau lỗi giữa chừng có thể còn một số file record đã tạo; tái chạy sẽ đối chiếu chúng
+trước khi hoàn tất index. Không dùng migration như công cụ sửa checkpoint.
+
+Recipe lấy **đúng baseline SHA trong report**, lưu vào local, không đổ JSON vào hội thoại:
+
+```bash
+git show c2ca94d1e2a77bbfcf67c052542e37d0a1577e94:docs/evidence/checkpoints/manifest.json > local/checkpoint-v1-baseline.json
+python3 tools/migrate_checkpoints.py --source local/checkpoint-v1-baseline.json --baseline-commit c2ca94d1e2a77bbfcf67c052542e37d0a1577e94
+```
+
+Loader/checker hỗ trợ v1 lịch sử và v2 hiện tại. Checker đọc từng record và từng manifest evidence,
+không cần LLM tải toàn kho; khi đọc revision v1, Python vẫn phải decode JSON cũ nguyên file.
+Git history đọc **cả thư mục checkpoints/** trên first-parent, nên record/audit/evidence-only commit
+cũng được kiểm: size/SHA ở revision đó, fingerprint nguyên object qua ranh giới schema, append-only,
+review approved/waived bất biến. Chỉ giữ fingerprint nhỏ giữa revision, không giữ toàn bộ records lịch sử
+trong bộ nhớ cùng lúc. Dữ liệu inline cũ vẫn lớn và lặp, cố ý giữ để bảo toàn object; tổng dữ liệu không
+được hứa giảm theo tỷ lệ của index. Clone thiếu Git/local vẫn báo UNVERIFIED/error theo cờ cũ.

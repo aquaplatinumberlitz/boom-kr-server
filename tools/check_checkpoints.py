@@ -7,6 +7,12 @@ from pathlib import Path
 import re
 import subprocess
 import sys
+from collections.abc import Sequence
+
+# Also support importlib-based legacy test runners.
+if str(Path(__file__).resolve().parent) not in sys.path:
+    sys.path.insert(0, str(Path(__file__).resolve().parent))
+import checkpoint_store as store
 
 ROOT = Path(__file__).resolve().parents[1]
 MANIFEST = Path("docs/evidence/checkpoints/manifest.json")
@@ -71,6 +77,53 @@ def historical_repository_blob(root, relative, expected_sha, expected_bytes):
     return None
 
 
+def verify_evidence_item(item, root=ROOT, require_local=False, where="evidence"):
+    errors, warnings, checked, unavailable = [], [], 0, 0
+    root = Path(root).resolve()
+    if not require_fields(item, ("id", "kind", "path", "sha256", "bytes"), where, errors):
+        return errors, warnings, checked, unavailable
+    kind = item.get("kind")
+    if kind not in {"local", "repository", "artifact"}:
+        errors.append(f"{where}: invalid evidence kind")
+        return errors, warnings, checked, unavailable
+    value = item.get("path")
+    try:
+        if kind == "artifact":
+            path = Path(value)
+            if not path.is_absolute():
+                raise ValueError("artifact path must be an explicit absolute host path")
+        else:
+            path = local_target(root, value)
+            is_local = path.is_relative_to(root / "local")
+            if is_local != (kind == "local"):
+                raise ValueError("kind/path mismatch")
+    except (ValueError, TypeError) as error:
+        errors.append(f"{where}: {error}")
+        return errors, warnings, checked, unavailable
+    if not isinstance(item.get("sha256"), str) or not SHA.fullmatch(item["sha256"]):
+        errors.append(f"{where}: invalid SHA-256")
+    if not isinstance(item.get("bytes"), int) or isinstance(item["bytes"], bool) or item["bytes"] < 0:
+        errors.append(f"{where}: invalid byte count")
+    if not path.is_file():
+        unavailable += 1
+        message = f"{where}: UNVERIFIED unavailable host evidence {value}"
+        (errors if require_local or kind == "repository" else warnings).append(message)
+        return errors, warnings, checked, unavailable
+    checked += 1
+    if path.stat().st_size != item.get("bytes") or digest(path) != item.get("sha256"):
+        # Canonical docs can evolve while old checkpoint bytes remain immutable.
+        # Recover the old exact content only for repository documentation. Code,
+        # binaries, raw captures and local evidence still require the pinned bytes.
+        revision = None
+        if kind == "repository" and path.suffix == ".md":
+            revision = historical_repository_blob(root, value, item.get("sha256"), item.get("bytes"))
+        if revision:
+            warnings.append(f"{where}: HISTORICAL DOC VERIFIED {value} at {revision}; current file differs; checkpoint bytes unchanged")
+        else:
+            errors.append(f"{where}: evidence size/hash mismatch {value}")
+    return errors, warnings, checked, unavailable
+
+
 def validate(manifest, root=ROOT, require_local=False):
     errors, warnings = [], []
     checked, unavailable = 0, 0
@@ -80,12 +133,15 @@ def validate(manifest, root=ROOT, require_local=False):
         "checkpoints", "audits", "task_states",
     ), "manifest", errors):
         return errors, warnings, {}
-    if manifest.get("schema") != "kre-checkpoints-v1":
+    if manifest.get("schema") not in {store.V1, store.V2}:
         errors.append("manifest: unsupported schema")
-    records = manifest.get("checkpoints")
+    try:
+        records = store.records(manifest, root)
+    except (ValueError, OSError, TypeError) as error:
+        return [f"manifest: {error}"], warnings, {}
     audits = manifest.get("audits")
     tasks = manifest.get("task_states")
-    if not isinstance(records, list) or not records:
+    if not isinstance(records, Sequence) or not records:
         errors.append("manifest: checkpoints must be a nonempty list")
         records = []
     if not isinstance(audits, list):
@@ -109,47 +165,11 @@ def validate(manifest, root=ROOT, require_local=False):
 
     def evidence_file(item, where):
         nonlocal checked, unavailable
-        if not require_fields(item, ("id", "kind", "path", "sha256", "bytes"), where, errors):
-            return
-        kind = item.get("kind")
-        if kind not in {"local", "repository", "artifact"}:
-            errors.append(f"{where}: invalid evidence kind")
-            return
-        value = item.get("path")
-        try:
-            if kind == "artifact":
-                path = Path(value)
-                if not path.is_absolute():
-                    raise ValueError("artifact path must be an explicit absolute host path")
-            else:
-                path = local_target(root, value)
-                is_local = path.is_relative_to(root / "local")
-                if is_local != (kind == "local"):
-                    raise ValueError("kind/path mismatch")
-        except (ValueError, TypeError) as error:
-            errors.append(f"{where}: {error}")
-            return
-        if not isinstance(item.get("sha256"), str) or not SHA.fullmatch(item["sha256"]):
-            errors.append(f"{where}: invalid SHA-256")
-        if not isinstance(item.get("bytes"), int) or isinstance(item["bytes"], bool) or item["bytes"] < 0:
-            errors.append(f"{where}: invalid byte count")
-        if not path.is_file():
-            unavailable += 1
-            message = f"{where}: UNVERIFIED unavailable host evidence {value}"
-            (errors if require_local or kind == "repository" else warnings).append(message)
-            return
-        checked += 1
-        if path.stat().st_size != item.get("bytes") or digest(path) != item.get("sha256"):
-            # Canonical docs can evolve while old checkpoint bytes remain immutable.
-            # Recover the old exact content only for repository documentation. Code,
-            # binaries, raw captures and local evidence still require the pinned bytes.
-            revision = None
-            if kind == "repository" and path.suffix == ".md":
-                revision = historical_repository_blob(root, value, item.get("sha256"), item.get("bytes"))
-            if revision:
-                warnings.append(f"{where}: HISTORICAL DOC VERIFIED {value} at {revision}; current file differs; checkpoint bytes unchanged")
-            else:
-                errors.append(f"{where}: evidence size/hash mismatch {value}")
+        item_errors, item_warnings, good, missing = verify_evidence_item(item, root, require_local, where)
+        errors.extend(item_errors)
+        warnings.extend(item_warnings)
+        checked += good
+        unavailable += missing
 
     completed, saw_draft = 0, False
     ids, current_steps = [], {}
@@ -186,7 +206,7 @@ def validate(manifest, root=ROOT, require_local=False):
         if not record.get("artifacts") or not record.get("locators"):
             errors.append(f"{where}: artifact identity and locators/run IDs required")
         evidence_ids = set()
-        for item in record.get("evidence", []):
+        for item in store.evidence(record, root):
             evidence_file(item, where)
             if isinstance(item, dict):
                 if item.get("id") in evidence_ids:
@@ -349,41 +369,104 @@ def continuity(previous, current):
     return errors
 
 
+def history_signature(manifest, root=ROOT, read=None):
+    """Logical record identities across inline/ref schemas; never normalize stored records."""
+    entries = []
+    completed = 0
+    for index, record in enumerate(store.records(manifest, root, read), 1):
+        if (record.get('id') != cp_id(index)
+                or record.get('previous') != (cp_id(index - 1) if index > 1 else 'origin')):
+            raise ValueError('checkpoint counter reset/noncontiguous ID/previous in history')
+        completed += record.get('lifecycle') == 'complete'
+        # Validate external manifests in committed snapshots too. This also
+        # detects manifest-only changes without any checkpoint/index mutation.
+        for _ in store.evidence(record, root, read):
+            pass
+        entries.append({"id": record.get("id"), "lifecycle": record.get("lifecycle"),
+                        "content": store.object_digest({k: v for k, v in record.items() if k != "review"}),
+                        "review": record.get("review")})
+    if (manifest.get('last_id') != (entries[-1]['id'] if entries else None)
+            or manifest.get('completed_count') != completed):
+        raise ValueError('checkpoint counter reset/count mismatch in history')
+    return {"checkpoints": entries, "audits": manifest.get("audits", [])}
+
+
+def signature_continuity(previous, current):
+    errors = []
+    before, after = previous['checkpoints'], current['checkpoints']
+    if len(after) < len(before) or [x['id'] for x in before] != [x['id'] for x in after[:len(before)]]:
+        errors.append('checkpoint history deleted, reordered or counter reset')
+    for old, new in zip(before, after):
+        if old['lifecycle'] != 'complete':
+            continue
+        if old['content'] != new['content']:
+            errors.append(f"{old['id']}: completed record changed; append a correction checkpoint")
+        if old.get('review', {}).get('status') in {'approved', 'waived'} and old['review'] != new['review']:
+            errors.append(f"{old['id']}: {old['review']['status']} review is immutable; append a correction checkpoint")
+    if previous['audits'] != current['audits'][:len(previous['audits'])]:
+        errors.append('manual audit history deleted or changed')
+    return errors
+
+
 def check_history(root, relative_manifest, current, availability=None):
     def unverified(message):
         if availability is None:
             raise ValueError(message)
         availability.append(message)
 
-    command = ["git", "-C", str(root)]
+    command = ['git', '-c', 'core.fsmonitor=false', '-C', str(root)]
     try:
-        shallow = subprocess.run(command + ["rev-parse", "--is-shallow-repository"], capture_output=True, text=True)
-        revisions = subprocess.run(command + ["log", "--first-parent", "--reverse", "--format=%H", "HEAD", "--", str(relative_manifest)],
+        shallow = subprocess.run(command + ['rev-parse', '--is-shallow-repository'], capture_output=True, text=True)
+        # Watch the entire checkpoint directory: record/audit/evidence-only
+        # tampering must not escape detection when the index does not change.
+        revisions = subprocess.run(command + ['log', '--first-parent', '--reverse', '--format=%H',
+                                              'HEAD', '--', relative_manifest.parent.as_posix()],
                                    capture_output=True, text=True)
     except OSError as error:
-        raise ValueError(f"Git unavailable: {error}") from error
+        raise ValueError(f'Git unavailable: {error}') from error
     if revisions.returncode:
-        raise ValueError("Git history unavailable")
-    if shallow.returncode == 0 and shallow.stdout.strip() == "true":
-        unverified("shallow Git history; earlier counter continuity UNVERIFIED")
+        raise ValueError('Git history unavailable')
+    if shallow.returncode == 0 and shallow.stdout.strip() == 'true':
+        unverified('shallow Git history; earlier counter continuity UNVERIFIED')
     if not revisions.stdout.strip():
-        unverified("no committed manifest history; counter rollback UNVERIFIED")
-    previous, errors = None, []
+        unverified('no committed manifest history; counter rollback UNVERIFIED')
+    previous, errors, seen_manifest = None, [], False
     for revision in revisions.stdout.splitlines():
-        content = subprocess.run(command + ["show", f"{revision}:{relative_manifest.as_posix()}"], capture_output=True, text=True)
-        if content.returncode:
-            errors.append(f"{revision[:8]}: checkpoint manifest removed from committed history")
-            continue
+        def read(path):
+            target = store.target(root, path)  # validate repository-relative path
+            relative = target.relative_to(Path(root).resolve()).as_posix()
+            result = subprocess.run(command + ['show', f'{revision}:{relative}'], capture_output=True)
+            if result.returncode:
+                raise ValueError(f'missing committed file {relative}')
+            return result.stdout
         try:
-            snapshot = json.loads(content.stdout)
+            content = read(relative_manifest.as_posix())
         except ValueError:
-            errors.append(f"{revision[:8]}: invalid committed checkpoint JSON")
+            if seen_manifest:
+                errors.append(f'{revision[:8]}: checkpoint manifest removed from committed history')
+            continue  # documentation may predate the first manifest
+        seen_manifest = True
+        try:
+            snapshot = json.loads(content)
+            signature = history_signature(snapshot, root, read)
+            # Audit bodies are pinned, even on commits changing only an audit file.
+            for audit in snapshot.get('audits', []):
+                if hashlib.sha256(read(audit['path'])).hexdigest() != audit['sha256']:
+                    raise ValueError(f"audit hash mismatch: {audit['path']}")
+        except (ValueError, OSError, KeyError, TypeError) as error:
+            errors.append(f'{revision[:8]}: invalid committed checkpoint data: {error}')
             continue
         if previous is not None:
-            errors.extend(f"{revision[:8]}: {e}" for e in continuity(previous, snapshot))
-        previous = snapshot
+            errors.extend(f'{revision[:8]}: {e}' for e in signature_continuity(previous, signature))
+        previous = signature
+    if not seen_manifest and revisions.stdout.strip():
+        unverified('no committed manifest history; counter rollback UNVERIFIED')
     if previous is not None:
-        errors.extend(continuity(previous, current))
+        try:
+            current_signature = history_signature(current, root)
+            errors.extend(signature_continuity(previous, current_signature))
+        except (ValueError, OSError, TypeError, KeyError) as error:
+            errors.append(f'current checkpoint history invalid: {error}')
     return errors
 
 

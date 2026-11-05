@@ -1,0 +1,795 @@
+{
+  "id": "CP006",
+  "previous": "CP005",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-10-27T07:13:38.034267+00:00",
+  "question": "Can the Wine copy leave the launcher branch, send its first post-WCP request, consume synthetic replies, and reach the next concrete blocker?",
+  "scope": "Grouped dynamic Wine and native-oracle work under issue14; local offline diagnostic copies/stub only; no K1/K2/login/gameplay promotion",
+  "context_commit": "fee997be6ac5d990c8770c29fa7c66ad397637d9",
+  "artifacts": [
+    {
+      "name": "KR modO memory image base400000",
+      "sha256": "a08950c833d3acab8281049def7b3dc96b221f107eeda01da3a548e34b91dce5"
+    },
+    {
+      "name": "R2 copy error-reset diagnostic",
+      "sha256": "60e981698ed8c4adb3ca070a9612212d7cefa14d29453eb895513367cf197ce7"
+    },
+    {
+      "name": "copy omitting two NMCO calls",
+      "sha256": "018583cb330cc1ad69d032450cb5c86f27e0c7a24bcdac02179c764ae4be9420"
+    },
+    {
+      "name": "copy additionally substituting NMCO status0",
+      "sha256": "8f9fc6c59eab472a2276150432972c0731977288567ed224f878c4e57c086ca8"
+    }
+  ],
+  "locators": [
+    "VA 1236133/123614E/12323A4/1232468/12386D8; RVA=VA-400000",
+    "VA 1238770/CD3660/123882A/1394770/1238A69/1421450/1238C2F/124D4C0",
+    "VA 1238DE2/13A7EF0/1238EB1/137B4C0/1239090/8BE790/123917D/4914E0/123246D",
+    "VA 13C9EF1/13C9F03/13CA179/13CA130, traps2265790/2265800/22657F8",
+    "runs debug-args/plain-args/plain-noarg/debug-next/debug-three/debug-four/debug-eight/debug-eight-v2/debug-nmco/debug-nmco-status 2026-10-27"
+  ],
+  "owner": "Codex",
+  "reviewer": "Claude Sonnet 5.5 independent reviewer",
+  "findings": [
+    {
+      "summary": "With multiserveridx:0, the error-reset copy reached setter +E78 and sent 66 C2S bytes in debug and plain runs; no-arg control sent none within observation",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "limits": "Modified Wine copy and reused/copy prefixes; no-arg control unmatched; 66 bytes may be segmented, no vanilla/login or independent ID claim.",
+      "canonical": "docs/PROTOCOL.md#wcp",
+      "evidence": [
+        "E002",
+        "E001",
+        "E005",
+        "E008",
+        "E050",
+        "E043"
+      ]
+    },
+    {
+      "summary": "Synthetic mode2/3 frames for opcodes13,2,12,21,1,43,62,719 reached client consumers and guard12349E0 returned1 in debug-eight-v2",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "limits": "Fixtures are emu_choice with mostly minimal/empty payloads; observed modified-copy debug only, no server-native data or K2 gate. Different stages confirmed across debug-three/four/eight-v2.",
+      "canonical": "docs/PROTOCOL.md#wcp",
+      "evidence": [
+        "E016",
+        "E020",
+        "E028",
+        "E027",
+        "E062",
+        "E043"
+      ]
+    },
+    {
+      "summary": "KR native receive parser accepted synthetic mode2/3 frames and rejected wrong checksum or incomplete frame for eight cases",
+      "source": "kr_static",
+      "status": "confirmed",
+      "method": "emulation",
+      "limits": "Native 14EF300 with synthetic socket/context and allocator hook; encoder candidate uses VN and only these fixtures; no full two-way codec or reconnect.",
+      "canonical": "docs/PROTOCOL.md#wcp",
+      "evidence": [
+        "E068",
+        "E070",
+        "E072",
+        "E074",
+        "E076",
+        "E078",
+        "E080",
+        "E082",
+        "E052",
+        "E055"
+      ]
+    },
+    {
+      "summary": "Diagnostic NMCO init/callback omission and status0 substitution reached trap NMCOGetMyIdCode; caller wrapper uses EDX:EAX as 64-bit value",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "limits": "Two different patched copies; NMCO semantics and valid local identity unknown; slot names are build-report candidates; status0 is emu_choice.",
+      "canonical": "docs/RESEARCH.md#q-023",
+      "evidence": [
+        "E028",
+        "E032",
+        "E036",
+        "E044",
+        "E045",
+        "E061",
+        "E060"
+      ]
+    },
+    {
+      "summary": "oneclickuser is a static key path for setter +E9C; primary RE dynamic work groups related probes into milestone checkpoints",
+      "source": "kr_static",
+      "status": "candidate",
+      "method": "static",
+      "limits": "oneclickuser has not been measured at runtime, map lookup behavior scoped to static assembly.",
+      "canonical": "docs/RESEARCH.md#q-023",
+      "evidence": [
+        "E050",
+        "E049",
+        "E051"
+      ]
+    }
+  ],
+  "verification": [
+    {
+      "check": "60 scripted assertions over run isolation, breakpoint values, candidate frame negative tests and exact copy patch bytes",
+      "result": "pass",
+      "evidence": [
+        "E043"
+      ],
+      "limits": "Run-bounded structural checks do not prove authentic server semantics."
+    },
+    {
+      "check": "Five source artifact hashes match locked manifest",
+      "result": "pass",
+      "evidence": [
+        "E083"
+      ],
+      "limits": "Host-local identities only."
+    }
+  ],
+  "evidence": [
+    {
+      "id": "E001",
+      "kind": "local",
+      "path": "local/research/codex/wcp-fields-r1/debug-args/run.json",
+      "bytes": 3635,
+      "sha256": "5c4ac685f7774613b3fc80e7da24c329deed91750a785503bc35d2d0e5aeca27"
+    },
+    {
+      "id": "E002",
+      "kind": "local",
+      "path": "local/research/codex/wcp-fields-r1/debug-args/client.log",
+      "bytes": 388836,
+      "sha256": "9fe1285a99eba0b9e51a8d782d4ff38339d88efd8636eeb9dffe6613cacd421b"
+    },
+    {
+      "id": "E003",
+      "kind": "local",
+      "path": "local/research/codex/wcp-fields-r1/debug-args/CALog-run.txt",
+      "bytes": 105,
+      "sha256": "ee3b51cbe338e8b77935ba9e6ea90d1eaea24ee504e39c6aa9eeb10d84b5ebe6"
+    },
+    {
+      "id": "E004",
+      "kind": "local",
+      "path": "local/research/codex/wcp-fields-r1/debug-args/debug-commands.txt",
+      "bytes": 673,
+      "sha256": "f192b072c644736f16305a34e22c56d1b5e87066152a882537248562539e2463"
+    },
+    {
+      "id": "E005",
+      "kind": "local",
+      "path": "local/research/codex/wcp-fields-r1/plain-args/run.json",
+      "bytes": 3264,
+      "sha256": "c72b81ad780ff7157e0afde1d8259ea1d3de1ccd055c7fae2f9a41638be67194"
+    },
+    {
+      "id": "E006",
+      "kind": "local",
+      "path": "local/research/codex/wcp-fields-r1/plain-args/client.log",
+      "bytes": 399591,
+      "sha256": "a740d46d442671cc601cff0a9a249fbdc33c433d6d071b80dd8e4bd44e503292"
+    },
+    {
+      "id": "E007",
+      "kind": "local",
+      "path": "local/research/codex/wcp-fields-r1/plain-args/CALog-run.txt",
+      "bytes": 105,
+      "sha256": "ee3b51cbe338e8b77935ba9e6ea90d1eaea24ee504e39c6aa9eeb10d84b5ebe6"
+    },
+    {
+      "id": "E008",
+      "kind": "local",
+      "path": "local/research/codex/wcp-fields-r1/plain-noarg/run.json",
+      "bytes": 3039,
+      "sha256": "93132321560e52a408998b2a61695627fe61ce81b5bd6ef11810fa155bc1f7dc"
+    },
+    {
+      "id": "E009",
+      "kind": "local",
+      "path": "local/research/codex/wcp-fields-r1/plain-noarg/client.log",
+      "bytes": 248740,
+      "sha256": "4b6159b3e3343d477f6d8a90b66af2c8c7e4657427cdf3c7bd2ec07b50e815e0"
+    },
+    {
+      "id": "E010",
+      "kind": "local",
+      "path": "local/research/codex/wcp-fields-r1/plain-noarg/CALog-run.txt",
+      "bytes": 103,
+      "sha256": "d01f884fc902a3628e4848b82fbb0c806c74e8d82fed0eabd6ea190142aee339"
+    },
+    {
+      "id": "E011",
+      "kind": "local",
+      "path": "local/research/codex/wcp-fields-r1/debug-next/run.json",
+      "bytes": 4071,
+      "sha256": "16b6001cc45373230b8aba3153e3d721c254954587b583d5452d0a80ca91aa64"
+    },
+    {
+      "id": "E012",
+      "kind": "local",
+      "path": "local/research/codex/wcp-fields-r1/debug-next/client.log",
+      "bytes": 235951,
+      "sha256": "664119229caf9778a11883480017aa387a2ebf2cd9ac2b5e7951a1fcb03a6097"
+    },
+    {
+      "id": "E013",
+      "kind": "local",
+      "path": "local/research/codex/wcp-fields-r1/debug-next/CALog-run.txt",
+      "bytes": 86,
+      "sha256": "ec0c9d15b149458d37c2eeba0e03b9e4cd95ce9dc4340d063716882ff1848cb4"
+    },
+    {
+      "id": "E014",
+      "kind": "local",
+      "path": "local/research/codex/wcp-fields-r1/debug-next/debug-commands.txt",
+      "bytes": 471,
+      "sha256": "d7f89f74c0d3ad1c1a33b7656fadfabb693e74dfb85c84ca74ad80d2121fa99f"
+    },
+    {
+      "id": "E015",
+      "kind": "local",
+      "path": "local/research/codex/wcp-fields-r1/debug-three/run.json",
+      "bytes": 4156,
+      "sha256": "d5f11577a7639424c3ccc006266ac65ee3cbfd8603fe247785c2e80b7afd0892"
+    },
+    {
+      "id": "E016",
+      "kind": "local",
+      "path": "local/research/codex/wcp-fields-r1/debug-three/client.log",
+      "bytes": 242878,
+      "sha256": "5d883d7e6b222be5a74f0f5bc5b6b6141cd7babbf9395e89c9427f8a13ce218a"
+    },
+    {
+      "id": "E017",
+      "kind": "local",
+      "path": "local/research/codex/wcp-fields-r1/debug-three/CALog-run.txt",
+      "bytes": 86,
+      "sha256": "ec0c9d15b149458d37c2eeba0e03b9e4cd95ce9dc4340d063716882ff1848cb4"
+    },
+    {
+      "id": "E018",
+      "kind": "local",
+      "path": "local/research/codex/wcp-fields-r1/debug-three/debug-commands.txt",
+      "bytes": 626,
+      "sha256": "db356e9dba9871f0619bbb1592204f259d4f436f97739fa729985794f97e56a8"
+    },
+    {
+      "id": "E019",
+      "kind": "local",
+      "path": "local/research/codex/wcp-fields-r1/debug-four/run.json",
+      "bytes": 4153,
+      "sha256": "6b4c29654b1c8f80bbe89024ed44a90f9a0bbf894b25008b729cf4758b47a81d"
+    },
+    {
+      "id": "E020",
+      "kind": "local",
+      "path": "local/research/codex/wcp-fields-r1/debug-four/client.log",
+      "bytes": 236857,
+      "sha256": "fa81f351c483b4d0baa1121a76d2766eaa6abaeb73b54df9b9e263d969615f7b"
+    },
+    {
+      "id": "E021",
+      "kind": "local",
+      "path": "local/research/codex/wcp-fields-r1/debug-four/CALog-run.txt",
+      "bytes": 86,
+      "sha256": "ec0c9d15b149458d37c2eeba0e03b9e4cd95ce9dc4340d063716882ff1848cb4"
+    },
+    {
+      "id": "E022",
+      "kind": "local",
+      "path": "local/research/codex/wcp-fields-r1/debug-four/debug-commands.txt",
+      "bytes": 593,
+      "sha256": "a925b98027e1305141ad5c51c092c1d7f9e316ca76b48db18be52f0a7b8e361b"
+    },
+    {
+      "id": "E023",
+      "kind": "local",
+      "path": "local/research/codex/wcp-fields-r1/debug-eight/run.json",
+      "bytes": 3534,
+      "sha256": "820408a77a5804ffa69ea04dbded53f5317c49db2c871efb8525d3430247fd19"
+    },
+    {
+      "id": "E024",
+      "kind": "local",
+      "path": "local/research/codex/wcp-fields-r1/debug-eight/client.log",
+      "bytes": 141302,
+      "sha256": "2c3462c37c9a28efa7b0f6de5365a88b96503ac84019b631f5d2f533004b1629"
+    },
+    {
+      "id": "E025",
+      "kind": "local",
+      "path": "local/research/codex/wcp-fields-r1/debug-eight/CALog-run.txt",
+      "bytes": 86,
+      "sha256": "ec0c9d15b149458d37c2eeba0e03b9e4cd95ce9dc4340d063716882ff1848cb4"
+    },
+    {
+      "id": "E026",
+      "kind": "local",
+      "path": "local/research/codex/wcp-fields-r1/debug-eight/debug-commands.txt",
+      "bytes": 671,
+      "sha256": "dc0501fb6e3a2f9138922a9ec6ea5b7c91a2541f36265da47959cefb283aef8e"
+    },
+    {
+      "id": "E027",
+      "kind": "local",
+      "path": "local/research/codex/wcp-fields-r1/debug-eight-v2/run.json",
+      "bytes": 3267,
+      "sha256": "f00329c010adc3a17b22486e47cf9374017c36056660d8b1ae26c81e88c21747"
+    },
+    {
+      "id": "E028",
+      "kind": "local",
+      "path": "local/research/codex/wcp-fields-r1/debug-eight-v2/client.log",
+      "bytes": 98129,
+      "sha256": "c276c6bfc756df225d4bdd55b6c48f741901d6f2db015febc459c78896930d0a"
+    },
+    {
+      "id": "E029",
+      "kind": "local",
+      "path": "local/research/codex/wcp-fields-r1/debug-eight-v2/CALog-run.txt",
+      "bytes": 86,
+      "sha256": "ec0c9d15b149458d37c2eeba0e03b9e4cd95ce9dc4340d063716882ff1848cb4"
+    },
+    {
+      "id": "E030",
+      "kind": "local",
+      "path": "local/research/codex/wcp-fields-r1/debug-eight-v2/debug-commands.txt",
+      "bytes": 608,
+      "sha256": "48916dbb24b6cc1c9c3dcdd115dcb18a6ba79efaa9e7953675840d1a20e03054"
+    },
+    {
+      "id": "E031",
+      "kind": "local",
+      "path": "local/research/codex/wcp-fields-r1/debug-nmco/run.json",
+      "bytes": 3262,
+      "sha256": "0693f627bbde33a9afb95020f0929a8b5d8bc8b2f080a5fa9c904ef64f288666"
+    },
+    {
+      "id": "E032",
+      "kind": "local",
+      "path": "local/research/codex/wcp-fields-r1/debug-nmco/client.log",
+      "bytes": 119316,
+      "sha256": "b880c1081fe7f7406abbb87332161ebef6f1904ae2a1b7342bfa56235e303174"
+    },
+    {
+      "id": "E033",
+      "kind": "local",
+      "path": "local/research/codex/wcp-fields-r1/debug-nmco/CALog-run.txt",
+      "bytes": 86,
+      "sha256": "ec0c9d15b149458d37c2eeba0e03b9e4cd95ce9dc4340d063716882ff1848cb4"
+    },
+    {
+      "id": "E034",
+      "kind": "local",
+      "path": "local/research/codex/wcp-fields-r1/debug-nmco/debug-commands.txt",
+      "bytes": 622,
+      "sha256": "413277afbdc70e0a4577bf7aad3d822215cfe23ba21ecee706819f6df25cfa79"
+    },
+    {
+      "id": "E035",
+      "kind": "local",
+      "path": "local/research/codex/wcp-fields-r1/debug-nmco-status/run.json",
+      "bytes": 3269,
+      "sha256": "4946b7f786b82105bdccba7ecf2f913e3bdbca28ec84deb898661eb7d55368d3"
+    },
+    {
+      "id": "E036",
+      "kind": "local",
+      "path": "local/research/codex/wcp-fields-r1/debug-nmco-status/client.log",
+      "bytes": 123518,
+      "sha256": "0abcd354c8106271466bd3b4ec304f7827cc43b5e598c5de0af26acfea5fe5d9"
+    },
+    {
+      "id": "E037",
+      "kind": "local",
+      "path": "local/research/codex/wcp-fields-r1/debug-nmco-status/CALog-run.txt",
+      "bytes": 86,
+      "sha256": "ec0c9d15b149458d37c2eeba0e03b9e4cd95ce9dc4340d063716882ff1848cb4"
+    },
+    {
+      "id": "E038",
+      "kind": "local",
+      "path": "local/research/codex/wcp-fields-r1/debug-nmco-status/debug-commands.txt",
+      "bytes": 530,
+      "sha256": "9b428b0eaafe65d68e11ca86c9d9790686ea77ad48d9e4326a09a085f10f719d"
+    },
+    {
+      "id": "E039",
+      "kind": "local",
+      "path": "local/research/codex/wcp-fields-r1/debug-state/run.json",
+      "bytes": 3339,
+      "sha256": "dabf4ad1f16df575f1251456bdf7f772cda9cb7a3d93aa442e61098091431e1d"
+    },
+    {
+      "id": "E040",
+      "kind": "local",
+      "path": "local/research/codex/wcp-fields-r1/debug-state/client.log",
+      "bytes": 288934,
+      "sha256": "adf35812992aed90835c1181b001ca454281fb2647d7ebf0d9b990020653cacf"
+    },
+    {
+      "id": "E041",
+      "kind": "local",
+      "path": "local/research/codex/wcp-fields-r1/debug-state/CALog-run.txt",
+      "bytes": 86,
+      "sha256": "ec0c9d15b149458d37c2eeba0e03b9e4cd95ce9dc4340d063716882ff1848cb4"
+    },
+    {
+      "id": "E042",
+      "kind": "local",
+      "path": "local/research/codex/wcp-fields-r1/debug-state/debug-commands.txt",
+      "bytes": 327,
+      "sha256": "d6137f4f83c9b657f0698ed4782f9fa4537af6e06b1200b3129e775eaa937954"
+    },
+    {
+      "id": "E043",
+      "kind": "local",
+      "path": "local/research/codex/wcp-fields-r1/milestone-assertions.json",
+      "bytes": 3025,
+      "sha256": "4e5ef39791ceb29f527542df4975cf256f46dd54705698048e36ad65e3fdfbef"
+    },
+    {
+      "id": "E044",
+      "kind": "local",
+      "path": "local/research/codex/wcp-fields-r1/nmco-patch.json",
+      "bytes": 723,
+      "sha256": "e4d250885ca4c8e464911116c57b1553a37fb865f30d2c8c1ec788399ba9ec94"
+    },
+    {
+      "id": "E045",
+      "kind": "local",
+      "path": "local/research/codex/wcp-fields-r1/nmco-status-patch.json",
+      "bytes": 489,
+      "sha256": "63f4c1fb11c83832f9b55a1f77b96dea1ad7905aea14c4cb32c95e4b9c0d3aea"
+    },
+    {
+      "id": "E046",
+      "kind": "local",
+      "path": "local/research/codex/wcp-fields-r1/nmco-context.txt",
+      "bytes": 634,
+      "sha256": "7785c9c62ecddf1c2ab763909d3e5a04bf92fb1e4133dd07d7cb8684379d89e4"
+    },
+    {
+      "id": "E047",
+      "kind": "local",
+      "path": "local/research/codex/wcp-fields-r1/callsite-scan.json",
+      "bytes": 369,
+      "sha256": "4118de797b5e5f9426d9648f0c6f46228edff9669ef32441da2e61f6756e3417"
+    },
+    {
+      "id": "E048",
+      "kind": "local",
+      "path": "local/research/codex/wcp-fields-r1/122ae20.asm",
+      "bytes": 825,
+      "sha256": "a925bc8b8beeb5dd8b430feed5c5de1d670a3f2a1abf7560d5dbcf2e37b06df2"
+    },
+    {
+      "id": "E049",
+      "kind": "local",
+      "path": "local/research/codex/wcp-fields-r1/122af10.asm",
+      "bytes": 644,
+      "sha256": "bbf3663f2a29e5f05295abab580e528dea0e0b6275c0b3e416a8d71d689d92ce"
+    },
+    {
+      "id": "E050",
+      "kind": "local",
+      "path": "local/research/codex/wcp-fields-r1/1236040.asm",
+      "bytes": 5813,
+      "sha256": "3aef65118bc9f75018acc351ac59b531aedccd9a0e565782a35087792148192f"
+    },
+    {
+      "id": "E051",
+      "kind": "local",
+      "path": "local/research/codex/wcp-fields-r1/138d4d0.asm",
+      "bytes": 5774,
+      "sha256": "aa2b31e9e883c4675da779c8fe0e94d23c59e56b4b76dd0907ef15d370250413"
+    },
+    {
+      "id": "E052",
+      "kind": "local",
+      "path": "local/research/codex/wcp-fields-r1/14ed2b0.asm",
+      "bytes": 3836,
+      "sha256": "9bc067ce0c48e11734330350027da080227ad27181b05d320c0fe81b92296dc6"
+    },
+    {
+      "id": "E053",
+      "kind": "local",
+      "path": "local/research/codex/wcp-fields-r1/14ed340.asm",
+      "bytes": 3119,
+      "sha256": "22094c2d1b4dff93ed3a3eedbfbd2249b4220d39f7c72438c44910d6cdd296aa"
+    },
+    {
+      "id": "E054",
+      "kind": "local",
+      "path": "local/research/codex/wcp-fields-r1/14ec7f0.asm",
+      "bytes": 10149,
+      "sha256": "b786d0933bc0a2f958b7d094f5b027a558604e76fd7bc215459b44c52f33ac2b"
+    },
+    {
+      "id": "E055",
+      "kind": "local",
+      "path": "local/research/codex/wcp-fields-r1/14eb510.asm",
+      "bytes": 10267,
+      "sha256": "e866622adca6dba1547dc544ceed7342e7931642d3ce076dbaa3f853e986e358"
+    },
+    {
+      "id": "E056",
+      "kind": "local",
+      "path": "local/research/codex/wcp-fields-r1/1394770.asm",
+      "bytes": 2417,
+      "sha256": "95a13682dc5d635db8734a1453eff7f64836c33c9879b4fb5faab8a8f1648729"
+    },
+    {
+      "id": "E057",
+      "kind": "local",
+      "path": "local/research/codex/wcp-fields-r1/123881f.asm",
+      "bytes": 10951,
+      "sha256": "2e26714df5c7c9eaca82883fd01514be78c5965337a3364c82b59400d5c405df"
+    },
+    {
+      "id": "E058",
+      "kind": "local",
+      "path": "local/research/codex/wcp-fields-r1/1238dd7.asm",
+      "bytes": 7374,
+      "sha256": "f268eb1ae536cacbd92af5ceac934ae3c40f8088d2e0836772a8e4c740fb17dd"
+    },
+    {
+      "id": "E059",
+      "kind": "local",
+      "path": "local/research/codex/wcp-fields-r1/137b4c0.asm",
+      "bytes": 3048,
+      "sha256": "d0ef01da89071c5805f5dedae2446544be779cf617ed4ab264bdac095d4d778c"
+    },
+    {
+      "id": "E060",
+      "kind": "local",
+      "path": "local/research/codex/wcp-fields-r1/13c9e60.asm",
+      "bytes": 3671,
+      "sha256": "23270e1a517fe4016700ea7321a192db7c2bc09cf7b8ec8c9fec76337c680df7"
+    },
+    {
+      "id": "E061",
+      "kind": "local",
+      "path": "local/research/codex/wcp-fields-r1/13ca120.asm",
+      "bytes": 953,
+      "sha256": "3015501aae4a5eac483fd156d517fdcf604e5d88884d72b1ef88f49bbc934e52"
+    },
+    {
+      "id": "E062",
+      "kind": "local",
+      "path": "local/research/codex/wcp-fields-r1/eight-v2-responses.bin",
+      "bytes": 317,
+      "sha256": "5930ad297fc2c1540d8cbd894e88d3c1d2831bd4565dfb8ad96644568b87ad38"
+    },
+    {
+      "id": "E063",
+      "kind": "local",
+      "path": "local/research/codex/wcp-fields-r1/three-responses.bin",
+      "bytes": 117,
+      "sha256": "d203c21c0ba3569be7fa3d80e470376bdd252c2782acee596af6a65ed944575a"
+    },
+    {
+      "id": "E064",
+      "kind": "local",
+      "path": "local/research/codex/wcp-fields-r1/four-responses.bin",
+      "bytes": 156,
+      "sha256": "d92891dd2504535b403ac189ee17b9dc00186f280b2239af9dafa51c2a16e6aa"
+    },
+    {
+      "id": "E065",
+      "kind": "local",
+      "path": "local/research/codex/wine_probe_wcp_args.py",
+      "bytes": 16862,
+      "sha256": "67ca7fbabd4c8f1b4e56b190d2076d7e6ca4dd5922a0ae5eeaadce204a8d1b7e"
+    },
+    {
+      "id": "E066",
+      "kind": "local",
+      "path": "local/research/codex/wine_probe_wcp_next.py",
+      "bytes": 18064,
+      "sha256": "1b209968953551e8dd8a35ef4ba927d1ec8adda088daae539868b804a5ebdbe5"
+    },
+    {
+      "id": "E067",
+      "kind": "local",
+      "path": "local/research/codex/wcp-fields-r1/mode23-dynamic-oracle.py",
+      "bytes": 2208,
+      "sha256": "9a76928fa3792121261da71fb4d077ff2eaf7b970e3bbaa33d77a89059b77212"
+    },
+    {
+      "id": "E068",
+      "kind": "local",
+      "path": "local/research/codex/wcp-fields-r1/mode23-dynamic-oracle.json",
+      "bytes": 2036,
+      "sha256": "8e9d58d6dbdc8884f4fa4229a91a511e422bc6b377078be537f87de5b4eba086"
+    },
+    {
+      "id": "E069",
+      "kind": "local",
+      "path": "local/research/codex/wcp-fields-r1/mode23-string-oracle.py",
+      "bytes": 2206,
+      "sha256": "2be6cd79536060197c01c20ba925be7c4d071ad0d207791a9149a6b5dca954ca"
+    },
+    {
+      "id": "E070",
+      "kind": "local",
+      "path": "local/research/codex/wcp-fields-r1/mode23-string-oracle.json",
+      "bytes": 2034,
+      "sha256": "cd307d8f3bd36a6ae6dfce9bc2f134d3a5913399bd8cb023e564f8409f0e5e56"
+    },
+    {
+      "id": "E071",
+      "kind": "local",
+      "path": "local/research/codex/wcp-fields-r1/mode23-resource-oracle.py",
+      "bytes": 2209,
+      "sha256": "346ad299719ac9533eb4b5090b8cc434728de84a59d3b7cbdfa818439da0eec7"
+    },
+    {
+      "id": "E072",
+      "kind": "local",
+      "path": "local/research/codex/wcp-fields-r1/mode23-resource-oracle.json",
+      "bytes": 2036,
+      "sha256": "80b4cc50e76b37b92923b97152051026b850fb03e82b06dd7bbf1ee64c32bda4"
+    },
+    {
+      "id": "E073",
+      "kind": "local",
+      "path": "local/research/codex/wcp-fields-r1/mode23-fourth-oracle.py",
+      "bytes": 2207,
+      "sha256": "98f4a0452fae0da85809ed49927373c0ef536447951c17625c75469d1b1e83e6"
+    },
+    {
+      "id": "E074",
+      "kind": "local",
+      "path": "local/research/codex/wcp-fields-r1/mode23-fourth-oracle.json",
+      "bytes": 2036,
+      "sha256": "483a063d120e7a6266381157c26a658a0063184820b9fda34a314b24fea6bac7"
+    },
+    {
+      "id": "E075",
+      "kind": "local",
+      "path": "local/research/codex/wcp-fields-r1/mode23-one-oracle.py",
+      "bytes": 2203,
+      "sha256": "2585077e2bdfd991044e0eaaacfa714ba9962783d4588e9c340df0513805ce17"
+    },
+    {
+      "id": "E076",
+      "kind": "local",
+      "path": "local/research/codex/wcp-fields-r1/mode23-one-oracle.json",
+      "bytes": 2030,
+      "sha256": "a44315d514860d151681b539fed28f89a14210cc32026c8ca699f5909faae9c7"
+    },
+    {
+      "id": "E077",
+      "kind": "local",
+      "path": "local/research/codex/wcp-fields-r1/mode23-items-valid-oracle.py",
+      "bytes": 2220,
+      "sha256": "15d03ea31bcba6e29d5916b2c05dc678ac387943ae82e7d92e2907b82cbdf047"
+    },
+    {
+      "id": "E078",
+      "kind": "local",
+      "path": "local/research/codex/wcp-fields-r1/mode23-items-valid-oracle.json",
+      "bytes": 2068,
+      "sha256": "638f34fce90218b8c7f65df19d56dc5a7518debbf74e2bdabb1a5892dd5812ef"
+    },
+    {
+      "id": "E079",
+      "kind": "local",
+      "path": "local/research/codex/wcp-fields-r1/mode23-optional-oracle.py",
+      "bytes": 2211,
+      "sha256": "acf5b05d4819ef03eef7944371dc6a49b543b8806786d3c4630131e0e4de6d5a"
+    },
+    {
+      "id": "E080",
+      "kind": "local",
+      "path": "local/research/codex/wcp-fields-r1/mode23-optional-oracle.json",
+      "bytes": 2044,
+      "sha256": "7482c3f499489fa0d82faaab8045d0fbc3d2d8052381069de5b52f50a68fcb99"
+    },
+    {
+      "id": "E081",
+      "kind": "local",
+      "path": "local/research/codex/wcp-fields-r1/mode23-last-oracle.py",
+      "bytes": 2206,
+      "sha256": "83e158ea13363a93749f967fb7dc5b340c2f237770aa7d2d00938eab77c54037"
+    },
+    {
+      "id": "E082",
+      "kind": "local",
+      "path": "local/research/codex/wcp-fields-r1/mode23-last-oracle.json",
+      "bytes": 2038,
+      "sha256": "54fe4f804304465b8072e1a873d4691edc5b996237db1dda6145c3a6e2e48c89"
+    },
+    {
+      "id": "E083",
+      "kind": "local",
+      "path": "local/research/codex/wcp-fields-r1/artifact-verification.txt",
+      "bytes": 253,
+      "sha256": "649c6624aa6d317dfc1db5e16fea683cfbc9d9cf4dd3df11c0d70e57409054a0"
+    }
+  ],
+  "delta": {
+    "added": [
+      "Two client request observations, synthetic eight-frame sequence, native reader checksum/partial tests, targeted NMCO blocker and local RE route map."
+    ],
+    "corrected": [
+      "CP005 next step no longer stalled at launcher under tested multiserveridx argument; field +E78 has runtime setter evidence.",
+      "Prior zero C2S state applies to runs without successful mode/launcher setup, not current parameterized experiment."
+    ],
+    "superseded": [
+      "NEXT-WCP-FIELDS static/runtime investigation has initial answer for +E78; +E9C semantics and runtime remain open."
+    ]
+  },
+  "blockers": [
+    "NMCOGetMyIdCode identity import unbound in diagnostic copy; EDX:EAX valid value and dependent side effects unknown.",
+    "Empty synthetic data permits traversal but may omit required assets; no genuine login or gameplay.",
+    "Full codec, seq/reconnect, original Windows and oneclickuser runtime remain open."
+  ],
+  "next_steps": [
+    {
+      "id": "NEXT-WCP-FIELDS",
+      "task": "KRE-005b",
+      "state": "closed",
+      "action": "+E78 key path and parameterized runtime measured; +E9C remains a separate follow-up.",
+      "owner": "Codex",
+      "reviewer": "Claude Sonnet 5.5 independent reviewer"
+    },
+    {
+      "id": "NEXT-NMCO-IDENTITY",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "Trace 13CA130/13BE369 identity consumers and test local-only identity/messenger on copy with controls; continue Q-023.",
+      "owner": "Codex",
+      "reviewer": "Claude Sonnet 5.5 independent reviewer"
+    }
+  ],
+  "review": {
+    "status": "approved",
+    "as_of_utc": "2026-10-27T07:18:10Z",
+    "reference": "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/16#issuecomment-6436080188",
+    "scope": "Independent CP006 review, PR16 merged b28a6e94d5977864c63bc0ed4aced1420d809157",
+    "head": "74e7bf69d38cd7e1e8cd9cb11d29cf6861c02f22"
+  },
+  "docs_sync": [
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "First request and current NMCO blocker."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "Compact route map, current stage and RE priority."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "updated",
+      "reason": "Scoped codec/request/runtime contract and limitations."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "updated",
+      "reason": "Next NMCO identity and remaining field questions."
+    },
+    {
+      "path": "docs/evidence/wcp-sequence/README.md",
+      "state": "updated",
+      "reason": "Recipe, controls, limits, fixtures and new measurements."
+    },
+    {
+      "path": "docs/evidence/wcp-sequence/verification.json",
+      "state": "updated",
+      "reason": "Raw evidence size/hash and local paths."
+    }
+  ]
+}

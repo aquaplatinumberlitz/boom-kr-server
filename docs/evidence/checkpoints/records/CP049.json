@@ -1,0 +1,2141 @@
+{
+  "id": "CP049",
+  "previous": "CP048",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-01T12:25:34.138646+00:00",
+  "context_commit": "4d77eafb9d30e8f40b7bc9d5a066089ba95aa035",
+  "question": "Can the current153-key policy reject old124 before itemclaim whileactualcurrentpickup/effect/reset/twotrialroundscontinue?",
+  "scope": "KRE-012/issue58, solo/source-reuse currentCP030/042/047/048+legacy beforemeasurement. Implement fullu32k equality inservice beforeclaim, meaningfulregressions. Twofailedproxysetupcontrols retained; twoboundedWineclientpairrunscaptured-bodydispatcherreplay baselinevsfixed, native165secureeffect/result/reset. InjectedoldbodybypassesC2Stransport; do notclaimnativeemission/TCPadmission/originalserverauth/fullvalidator/fullmatch/gate. No newclientpatch/staticbodyRE/worker.",
+  "owner": "Codex",
+  "reviewer": "Codex",
+  "artifacts": [
+    {
+      "name": "CA-r2-login-logout.exe",
+      "sha256": "660447c293ce92270cb9b5815331bca976e8f156366e1fe50b217b6c12e60ce3"
+    },
+    {
+      "name": "CA-r2-stage-social.exe",
+      "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+    },
+    {
+      "name": "CA-r2-stage-social.exe Bcopy",
+      "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+    },
+    {
+      "name": "modO.bin",
+      "sha256": "a08950c833d3acab8281049def7b3dc96b221f107eeda01da3a548e34b91dce5"
+    }
+  ],
+  "locators": [
+    "CP049unguarded-control/unguarded-trace/dispatch-control/dispatch-guard",
+    "CP030cacheE2E390/RVAA2E390/E2E5ABrecord+20;CP048actual124nativebody",
+    "E63260/E63E1A165callback/1191840/B48350/actor+5E8current/+5DCmax",
+    "14EF300nativeframer/52A350securegetter;runtimecopye9bb47/static660447/modOa08950rawbase400000;RVA=VA-400000",
+    "server/probe_service.py receive_channel opcode124 kguard beforeItemClaims; no wirelayoutchange"
+  ],
+  "findings": [
+    {
+      "summary": "Service compares fullu32k to currentlyissued153key beforeclaim/consume; mismatchrecordsround_key_mismatch/no165/noitemwinner. Origin/catalogchecksretained.",
+      "source": "design",
+      "status": "design",
+      "method": "design",
+      "canonical": "docs/PROTOCOL.md#pickup-round-key",
+      "limits": "Equality isemulatorpolicy notnative/originalserverauth. t/distance/actorstate/forgedcurrentk,variants/keylifetimeremainopen.",
+      "evidence": [
+        "E060",
+        "E005",
+        "E047"
+      ]
+    },
+    {
+      "summary": "CP048servicecontrol: actualR1bodyk12345 injectedatdispatcherR2/key12346 accepted;165full12/secureRoller5→6bothviews beforeinputR2, noactual124R2.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#pickup-round-key",
+      "limits": "C2Sdispatchersemanticinjectiononly, noTCPadmission/newnativewriterproof. Nativeclient165effectverified, notsourceauthority. Rank/fuse/profilechoicesremain.",
+      "evidence": [
+        "E098",
+        "E020",
+        "E002"
+      ]
+    },
+    {
+      "summary": "Guardrunrejects sameoldbody beforeclaim; actualTCP124currentk12346 thenaccepted and165full12/Roller5→6bothviews. Clock2reset5; twotrialrounds statepeer1before175/180/roomeachclient inbothruns.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#pickup-round-key",
+      "limits": "TwoWinecopies/stableIDs1/2slots0/1/kind2catalog17 only. Notfullreset/inventory/authority/auth/K5/K6a/LAN/Internet orallinputreproducibility.",
+      "evidence": [
+        "E162",
+        "E036",
+        "E020",
+        "E049"
+      ]
+    },
+    {
+      "summary": "TwoTCPproxysetup runs stoppedbeforeitem atSIGILL2260DF8/launcherroute afterrequest6; traced75bytechannel17forwardedexactly, noframerreplyhandlingobserved.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/evidence/stale124/README.md",
+      "limits": "Causeunknown, nocausalproxyclaim;controllererrorNone/return0notgamepass. Proxyv1notarchivedatload,reconstructionnotruntimehash. No stale124measurement inthose2runs.",
+      "evidence": [
+        "E082",
+        "E090",
+        "E021"
+      ]
+    },
+    {
+      "summary": "CachedKR124/165/153/stat/nativegetter and VNpickupmethod reused; no receiver/table/movement rediscovery. Nativechecks369packet/24peer/187UDP/1110secure/123codec-prefixcomparisons.",
+      "source": "kr_static",
+      "status": "confirmed",
+      "method": "emulation",
+      "canonical": "docs/evidence/stale124/README.md",
+      "limits": "Syntheticnativeframer/storage/allocation/gettercountermodel; notcompletegameworld/originalserver. VNopcodes/IDs/layoutnotported.",
+      "evidence": [
+        "E033",
+        "E023",
+        "E022",
+        "E024",
+        "E009"
+      ]
+    }
+  ],
+  "verification": [
+    {
+      "check": "4133mechanicalrelationships/4sealedcontrollers including2failedsetup; nativecallback/secure snapshots/actualcurrentC2S attribution;12sourceimages viewed in2composites",
+      "result": "pass",
+      "evidence": [
+        "E049",
+        "E051"
+      ],
+      "limits": "Notsemanticconfirmation/gate bychecker; explicitinjectionprovenance andfailureclassification. Onlytwodispatchruns aretrial-roundevidence."
+    },
+    {
+      "check": "28server tests incl3newguardregressions; native-checkedcapturedbodyold/current/duplicatecheck;7catalog+18checkpointtests/artifacts5/5",
+      "result": "pass",
+      "evidence": [
+        "E047",
+        "E006",
+        "E008",
+        "E005",
+        "E004"
+      ],
+      "limits": "Unitchecksdesign/fullu32vs+256policy,nativeproofseparate. Independentreviewwaived,selfcheckonly; noauditdueCP049,nextCP052."
+    },
+    {
+      "check": "C2S TCPsemanticreplay admission onWine",
+      "result": "not_run",
+      "evidence": [
+        "E021"
+      ],
+      "limits": "Twoinitialproxysetupsdidnotreachmeasurement;livecomparisonsuseproductiondispatcher+realS2Ceffects,notC2Stransportinjection."
+    }
+  ],
+  "evidence": [
+    {
+      "id": "E001",
+      "kind": "repository",
+      "path": "docs/evidence/stale124/README.md",
+      "sha256": "761155d4ab183e5279019c0eac1e09f85d3fcdc3ed592686aaadb8b16627602f",
+      "bytes": 7356
+    },
+    {
+      "id": "E002",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/actor-fields.json",
+      "sha256": "6ee74d19ae319d10804fc7aca182d70dc1cac0aa199994562cd4ed1a1ffbba26",
+      "bytes": 755387
+    },
+    {
+      "id": "E003",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/append_checkpoint.py",
+      "sha256": "a6e64304a83a5fb22ae0e61dcb3fde7d08f16974307069460ae37105859f7232",
+      "bytes": 10273
+    },
+    {
+      "id": "E004",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/artifacts-check.txt",
+      "sha256": "649c6624aa6d317dfc1db5e16fea683cfbc9d9cf4dd3df11c0d70e57409054a0",
+      "bytes": 253
+    },
+    {
+      "id": "E005",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/captured-policy-check.json",
+      "sha256": "80c32cb0cfe15da900c0b9271ed6d5c16a8c71d7bf8e2530677a3f6301992052",
+      "bytes": 5324
+    },
+    {
+      "id": "E006",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/catalog-tests.txt",
+      "sha256": "f57a6d2445fe750e7bffb5f0e7553d706a5084cf44721dcb9e1170a7278c2ba0",
+      "bytes": 105
+    },
+    {
+      "id": "E007",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/check_captured_policy.py",
+      "sha256": "7ec9d1523d9e64c0bdae6baca0998b1a83dd48d3aab59bf961a308b315e56ffe",
+      "bytes": 2158
+    },
+    {
+      "id": "E008",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/checkpoint-tests.txt",
+      "sha256": "3e85363e7d5ecd5a073bc6bd1b0049e0e1428a42464fcc3e4ae5bc9403a8c2e4",
+      "bytes": 117
+    },
+    {
+      "id": "E009",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/codec-native-comparison.json",
+      "sha256": "bb0612efebcd41d2c13b32c999bc4bf24f32313b82237c9a61e83a9f55bb50a7",
+      "bytes": 69012
+    },
+    {
+      "id": "E010",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/compare_codec.py",
+      "sha256": "febbb873030ea8df8406c5ce31f1ff72145227b4f1ae2f54e5c88bac6b431f30",
+      "bytes": 1672
+    },
+    {
+      "id": "E011",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/derive-control.txt",
+      "sha256": "74948888199c62963631ce4b996ebc34b77d862dac235f324416473239dc4dbb",
+      "bytes": 37
+    },
+    {
+      "id": "E012",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/derive-final.txt",
+      "sha256": "166ddb44f52f561e987a135608901843ff56b829154989d4b443dcee9c35ad80",
+      "bytes": 72
+    },
+    {
+      "id": "E013",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/derive_roles.py",
+      "sha256": "9a7b8578d2b312346bfc34a21ad07fb9bcc195d9780a58b807351077431e73e0",
+      "bytes": 803
+    },
+    {
+      "id": "E014",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/dispatch-control-hashes.json",
+      "sha256": "c019925da640cca8a486d5306342381e9f135e1b6463f03bd22664291a9ecf4d",
+      "bytes": 276648
+    },
+    {
+      "id": "E015",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/dispatch-control-recipe.json",
+      "sha256": "17b597c57ae5818a7d1d45cde3a6e1e58a152b650d50061902f4e27aa87375c0",
+      "bytes": 1004
+    },
+    {
+      "id": "E016",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/dispatch-guard-hashes.json",
+      "sha256": "85a907626c619e51f74a774746aa6c63a3031f630191275268391fef05739029",
+      "bytes": 273909
+    },
+    {
+      "id": "E017",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/dispatch-guard-recipe.json",
+      "sha256": "7ed6c152f426b054d626d49c742ab4c61c7ab6788945312969080a6697f3897a",
+      "bytes": 998
+    },
+    {
+      "id": "E018",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/downstream-summary.json",
+      "sha256": "a36804ef51b14a3e86fff0097033dad4e0b9f062d8a7771059dbd5f49e61da7a",
+      "bytes": 196211
+    },
+    {
+      "id": "E019",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/guard-source-sha.json",
+      "sha256": "bc89ac122fa6247c8bc3eee6b3d8d5672aed4f1716173328cf2b70532eb4170d",
+      "bytes": 1118
+    },
+    {
+      "id": "E020",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/item-summary.json",
+      "sha256": "655684b3d41a7af5bfa61cf3f367aad6d00ebe12a80818c1fc1fa01221a27ba7",
+      "bytes": 22627
+    },
+    {
+      "id": "E021",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/measurement-change.json",
+      "sha256": "4bbedf585d59b57ab9a81eeff0478db5cbc946a3b8b92fa4293b4d8e38596d23",
+      "bytes": 970
+    },
+    {
+      "id": "E022",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/native-153.json",
+      "sha256": "00cdfa8e5b6a2465a23049eb73da302f6a7558aacd025f9875e503373a8a8fb4",
+      "bytes": 27421
+    },
+    {
+      "id": "E023",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/native-packets.json",
+      "sha256": "3ccd4c77c0487f879862c136c9d025a44099b0c92ea21bad2dc7fe47d0f47bea",
+      "bytes": 152866
+    },
+    {
+      "id": "E024",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/native-udp.json",
+      "sha256": "182ed3dfb9c7e95789e3c972b14192a2e938026c132bfdf03d0641f6effbbc1a",
+      "bytes": 50076
+    },
+    {
+      "id": "E025",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/native_153.py",
+      "sha256": "ee4bb708cf6d819e288879b70781f53488b8e97672dbe1e335e734738e37a323",
+      "bytes": 3490
+    },
+    {
+      "id": "E026",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/native_packets.py",
+      "sha256": "50fecdc63e519677d59ff9d3a34bb0c4bb85600abbcbe5b20d53387ce81b339e",
+      "bytes": 4764
+    },
+    {
+      "id": "E027",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/native_udp.py",
+      "sha256": "45f9e37adf3844b01c155ebf9bd820a58959632d7b3af91365fed0e3cde2843f",
+      "bytes": 1533
+    },
+    {
+      "id": "E028",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/parse_downstream.py",
+      "sha256": "e0faaa5f57a823b8b6cb22dd175335ee90243f5c1766a95f83b7e22395db11e4",
+      "bytes": 4317
+    },
+    {
+      "id": "E029",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/parse_fields.py",
+      "sha256": "1f7c1883b4e5e281b20a7f5caa0dae23e1ddc2b3089e371b42640aadcd8bdb43",
+      "bytes": 3909
+    },
+    {
+      "id": "E030",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/parse_items.py",
+      "sha256": "653851030041ed1c1bbba958735258d83c9650810c26ce512e1735cf10d4f235",
+      "bytes": 3422
+    },
+    {
+      "id": "E031",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/parse_runtime.py",
+      "sha256": "5a3f95fd71f7c9a53f90faf953bf4027cc4ca9a25e34d1bc4d087ebc4e2c2cae",
+      "bytes": 4847
+    },
+    {
+      "id": "E032",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/replay-run.py",
+      "sha256": "0b3fd3d806ea941ffba4f055000901f02bc6f28eb0d1313fd9dc4f0ae239c6f5",
+      "bytes": 2999
+    },
+    {
+      "id": "E033",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/reuse-question.json",
+      "sha256": "c08e738baea7766d8fa430f5ebfbbf3bacc34b05865d8ca14ffcf0c3121f5e3b",
+      "bytes": 4381
+    },
+    {
+      "id": "E034",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/run_probe.py",
+      "sha256": "b0701c7e19d6dca2f820b527f623664d827ce23dc2ebc0dcb969d022d76568c6",
+      "bytes": 1064
+    },
+    {
+      "id": "E035",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/runtime-recipes-source.json",
+      "sha256": "2fbd68d57f71ef664e22514c6ff16d42d7eb226adfe26a1e57c913cf9614ad1a",
+      "bytes": 723
+    },
+    {
+      "id": "E036",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/runtime-summary.json",
+      "sha256": "a32793e3d742dff4adae8ca332365f76e8aa9aa6ab3291fd7824a9bcbe13333f",
+      "bytes": 450934
+    },
+    {
+      "id": "E037",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/runtime_dispatch.py",
+      "sha256": "a8b9e04b6fde75a8c02d037321f6d18e2462c2420357f0c33e33097b715bbd3d",
+      "bytes": 2516
+    },
+    {
+      "id": "E038",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/seal_run.py",
+      "sha256": "310e6679fe4371ba01627fdb6828a442c70a28158b374489144b9c15c9c7438b",
+      "bytes": 622
+    },
+    {
+      "id": "E039",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/service-v2.gdb",
+      "sha256": "57002f7a894f9ad164829ceb3bc17dc96e552edd5417400a0712c3d9832a2103",
+      "bytes": 24693
+    },
+    {
+      "id": "E040",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/summarize_replays.py",
+      "sha256": "65cda5bb38257daebefa34b825870fd57b94a1a5761995f4d21d5ee982e348cc",
+      "bytes": 2529
+    },
+    {
+      "id": "E041",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/tcp_replay-v1-reconstructed.py",
+      "sha256": "8f84cdc73885778ccc5cc7cc77ecd6daeecf37b8d0a205c3681e99cd04f5b669",
+      "bytes": 4403
+    },
+    {
+      "id": "E042",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/tcp_replay.py",
+      "sha256": "d25057e00e484f5b537e6aee9e167b71706048fc0550f49a5829a9fcdcea17a7",
+      "bytes": 4499
+    },
+    {
+      "id": "E043",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/unguarded-control-hashes.json",
+      "sha256": "1df425971d34f30caae90e843108c7dd6acea03e475dcfc1b481325809422385",
+      "bytes": 19838
+    },
+    {
+      "id": "E044",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/unguarded-control-recipe.json",
+      "sha256": "95459a1a1e9e43d9d160a022774484d8b9119aab8d90664c3d78628bf5834932",
+      "bytes": 997
+    },
+    {
+      "id": "E045",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/unguarded-trace-hashes.json",
+      "sha256": "2bf6ec671aa9a0ed6bb24ab1658a506655c02e940811e2231d17d17122b24a6e",
+      "bytes": 19637
+    },
+    {
+      "id": "E046",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/unguarded-trace-recipe.json",
+      "sha256": "dcac8ea3f72707b439dda54e603cff22053227a076a2a8844f5f9b8870b55116",
+      "bytes": 993
+    },
+    {
+      "id": "E047",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/unit-tests-final.txt",
+      "sha256": "e2fa3b5a9362b9ae3eab05e3c8beac15b9736072d59dad26f539f437b5f6c0b0",
+      "bytes": 127
+    },
+    {
+      "id": "E048",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/unit-tests.txt",
+      "sha256": "e2fa3b5a9362b9ae3eab05e3c8beac15b9736072d59dad26f539f437b5f6c0b0",
+      "bytes": 127
+    },
+    {
+      "id": "E049",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/verification.json",
+      "sha256": "cd6c716bed6a76c0233965d7c0d1f51f8c14abe52b39fad6561323f06750d0fd",
+      "bytes": 546
+    },
+    {
+      "id": "E050",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/verify.py",
+      "sha256": "7015a04a19bc927ac2339197fd5ff0ff07a2a0bc415d0a278c722d677e85d604",
+      "bytes": 5383
+    },
+    {
+      "id": "E051",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/visual-index.json",
+      "sha256": "71edce6a6b64997fd645a15c6fa39b637d833e1772649642bd4a0b3578ad3256",
+      "bytes": 2306
+    },
+    {
+      "id": "E052",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/visuals.py",
+      "sha256": "58b3aa9837e5c24d9ba41bee5baa0c11fb700020d9a65ac776446596dbee165d",
+      "bytes": 891
+    },
+    {
+      "id": "E053",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/cp049-snapshot/README.md",
+      "sha256": "35d09adaf30fbd294cce15ec8417a8c70cb6d54644f4228dfee89ffb8dc98880",
+      "bytes": 3907
+    },
+    {
+      "id": "E054",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/cp049-snapshot/docs/COVERAGE.md",
+      "sha256": "68bd0285dcbd1720c50e7ca02c836775f1b748bf29d5f424052c4fbae736c748",
+      "bytes": 61100
+    },
+    {
+      "id": "E055",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/cp049-snapshot/docs/PLAN.md",
+      "sha256": "0d72f00e5ac9d692064f8a0354e138187484335b957d11fd266b59619fcc45af",
+      "bytes": 28020
+    },
+    {
+      "id": "E056",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/cp049-snapshot/docs/PROTOCOL.md",
+      "sha256": "01724321867c3a771d96e77dccce05ffe5640abd19b1239e62ce6f8321082069",
+      "bytes": 178467
+    },
+    {
+      "id": "E057",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/cp049-snapshot/docs/RESEARCH.md",
+      "sha256": "291b99a4f364bcc49cbe3356ac02a03cf9244bf4a08a6a7412854a06898f7741",
+      "bytes": 28490
+    },
+    {
+      "id": "E058",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/cp049-snapshot/docs/features.json",
+      "sha256": "ba0f062be43a9ba5c69e342b2d28e86b10331e0625f468a7135a608ef0cbd6a8",
+      "bytes": 63854
+    },
+    {
+      "id": "E059",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/cp049-snapshot/server/README.md",
+      "sha256": "73fc541545c48a6b1f4cec5a2c985a4bafd03a2f9d9dead5d29440572f6ad0aa",
+      "bytes": 6155
+    },
+    {
+      "id": "E060",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/cp049-snapshot/server/probe_service.py",
+      "sha256": "2fb2cca3949e9da746379bb6bd7ffed3778869bcb876e5a3d50975fc8cd65ac2",
+      "bytes": 24206
+    },
+    {
+      "id": "E061",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/cp049-snapshot/server/test_probe_service.py",
+      "sha256": "06fe9717f941f311087c0877e818357de9949f614c0cc1ee61e118b9a42b51c9",
+      "bytes": 4652
+    },
+    {
+      "id": "E062",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/baseline/server/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "id": "E063",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/baseline/server/item_claims.py",
+      "sha256": "7990ae9195e9f8bba56b04101f352506194dbd0252793183993ce101a8674a2e",
+      "bytes": 3340
+    },
+    {
+      "id": "E064",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/baseline/server/probe_codec.py",
+      "sha256": "23ba54e6940953a52ff737e7e06b2761a8eb22eab444310b49b1d96efa12411d",
+      "bytes": 3227
+    },
+    {
+      "id": "E065",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/baseline/server/probe_room.py",
+      "sha256": "91292494d492c7851bd5432649adf528e1b07290316dc56ba1478f8a209a08bc",
+      "bytes": 1468
+    },
+    {
+      "id": "E066",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/baseline/server/probe_service.py",
+      "sha256": "5bf9470502a3b0539e2ecc1ec7549987d25b9b95011e76947a9a162d545d2e29",
+      "bytes": 23418
+    },
+    {
+      "id": "E067",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/baseline/server/round_fence.py",
+      "sha256": "aabcc7f1d623573fc217de8df05403f83d82425bbe5d6e78872b3096a2d46708",
+      "bytes": 2339
+    },
+    {
+      "id": "E068",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/baseline/server/test_item_claims.py",
+      "sha256": "63d68da46f91bcc9d4d3517bfd4ebc0d8f0a08c283a83715ac5b14a6efb71eea",
+      "bytes": 2832
+    },
+    {
+      "id": "E069",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/baseline/server/test_probe_codec.py",
+      "sha256": "ddb2cd6303aaf99af43d7add3735fec1b7c41461deb38f482d4a1b113a21367c",
+      "bytes": 1366
+    },
+    {
+      "id": "E070",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/baseline/server/test_probe_room.py",
+      "sha256": "4ace7f5828661d891fa2006731f0aceed081a527c09be335bbee47e9a721e783",
+      "bytes": 1605
+    },
+    {
+      "id": "E071",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/baseline/server/test_probe_service.py",
+      "sha256": "2f4f4696aa9b22ae8bd651018c8b30eef817c83c8a97946e25567565d8d11ea7",
+      "bytes": 1634
+    },
+    {
+      "id": "E072",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/baseline/server/test_round_fence.py",
+      "sha256": "6923d90f30636dfe05b09d45f5bbaceaf3ef32223d48eba0213a6c3cc40b037a",
+      "bytes": 2455
+    },
+    {
+      "id": "E073",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/baseline/server/test_udp_round_keys.py",
+      "sha256": "cfb36ee95d48c79b1800081a73b54498242f366eb08a2e3be850ff4a3503ce96",
+      "bytes": 1224
+    },
+    {
+      "id": "E074",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/baseline/server/udp_round_keys.py",
+      "sha256": "db58ae1f25bcbeb52c2d25c7db6afbf1021ddd3af29702e756f5f41886530a0d",
+      "bytes": 1187
+    },
+    {
+      "id": "E075",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/guard-source/item_claims.py",
+      "sha256": "7990ae9195e9f8bba56b04101f352506194dbd0252793183993ce101a8674a2e",
+      "bytes": 3340
+    },
+    {
+      "id": "E076",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/guard-source/probe_codec.py",
+      "sha256": "23ba54e6940953a52ff737e7e06b2761a8eb22eab444310b49b1d96efa12411d",
+      "bytes": 3227
+    },
+    {
+      "id": "E077",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/guard-source/probe_room.py",
+      "sha256": "91292494d492c7851bd5432649adf528e1b07290316dc56ba1478f8a209a08bc",
+      "bytes": 1468
+    },
+    {
+      "id": "E078",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/guard-source/probe_service.py",
+      "sha256": "2fb2cca3949e9da746379bb6bd7ffed3778869bcb876e5a3d50975fc8cd65ac2",
+      "bytes": 24206
+    },
+    {
+      "id": "E079",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/guard-source/round_fence.py",
+      "sha256": "aabcc7f1d623573fc217de8df05403f83d82425bbe5d6e78872b3096a2d46708",
+      "bytes": 2339
+    },
+    {
+      "id": "E080",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/guard-source/udp_round_keys.py",
+      "sha256": "db58ae1f25bcbeb52c2d25c7db6afbf1021ddd3af29702e756f5f41886530a0d",
+      "bytes": 1187
+    },
+    {
+      "id": "E081",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/baseline/run.py",
+      "sha256": "e1a718eed78f2c1feebdff3bd59d08cf553fc4251b5c0db12a07f5266d550b29",
+      "bytes": 45
+    },
+    {
+      "id": "E082",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/unguarded-control/run.json",
+      "sha256": "182cfd7a279064f91d1f5a9dfc8f0451e94463cca95a0dbd3a9a4e547c151767",
+      "bytes": 13295
+    },
+    {
+      "id": "E083",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/unguarded-control/client.log",
+      "sha256": "3aee9692ee4b81960a5fc15a3484bb345f5a23d917b96ed1392ce9744ceb5532",
+      "bytes": 18514
+    },
+    {
+      "id": "E084",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/unguarded-control/service-state.json",
+      "sha256": "63ca07ed337b07531157c71461c243424eabf18f806510fd89cd8ae317508513",
+      "bytes": 14443
+    },
+    {
+      "id": "E085",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/unguarded-control/service.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "id": "E086",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/unguarded-control/tcp-proxy.json",
+      "sha256": "fe6f1ea4d8ec7f58bd92bfdb91f5aa0a7ccd01ab432e341cfdbb7edcb71f419e",
+      "bytes": 1014
+    },
+    {
+      "id": "E087",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/unguarded-control/debug-commands.txt",
+      "sha256": "57002f7a894f9ad164829ceb3bc17dc96e552edd5417400a0712c3d9832a2103",
+      "bytes": 24693
+    },
+    {
+      "id": "E088",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/unguarded-control/proxy-A-0-client.bin",
+      "sha256": "76983068130629700df259852d6e91e3d51d195273a309e2a0cde11a1a6f4761",
+      "bytes": 74
+    },
+    {
+      "id": "E089",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/unguarded-control/proxy-A-0-server.bin",
+      "sha256": "76983068130629700df259852d6e91e3d51d195273a309e2a0cde11a1a6f4761",
+      "bytes": 74
+    },
+    {
+      "id": "E090",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/unguarded-trace/run.json",
+      "sha256": "e3e45e97d7969b9b008e9e1721f5b64c2f4f70dc03bf4c8631a75bd0c09cbdce",
+      "bytes": 13291
+    },
+    {
+      "id": "E091",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/unguarded-trace/client.log",
+      "sha256": "2d6a6919eba8ade6e3838ea5186f42cb76bea54951a6615355e695581003ad55",
+      "bytes": 18514
+    },
+    {
+      "id": "E092",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/unguarded-trace/service-state.json",
+      "sha256": "a1e792d2742937972925ae3c21b3e2b6918e00744a5c3a2b5f7f6eeeee721199",
+      "bytes": 14443
+    },
+    {
+      "id": "E093",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/unguarded-trace/service.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "id": "E094",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/unguarded-trace/tcp-proxy.json",
+      "sha256": "85c7a1506f5062cea1f4be30a2812bc2bc1c51b7a19903310aca93c847225176",
+      "bytes": 1424
+    },
+    {
+      "id": "E095",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/unguarded-trace/debug-commands.txt",
+      "sha256": "57002f7a894f9ad164829ceb3bc17dc96e552edd5417400a0712c3d9832a2103",
+      "bytes": 24693
+    },
+    {
+      "id": "E096",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/unguarded-trace/proxy-A-0-client.bin",
+      "sha256": "76983068130629700df259852d6e91e3d51d195273a309e2a0cde11a1a6f4761",
+      "bytes": 74
+    },
+    {
+      "id": "E097",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/unguarded-trace/proxy-A-0-server.bin",
+      "sha256": "76983068130629700df259852d6e91e3d51d195273a309e2a0cde11a1a6f4761",
+      "bytes": 74
+    },
+    {
+      "id": "E098",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/dispatch-control/run.json",
+      "sha256": "6acf3a54467ff127d745b320f7ee5b24d2c425bf03ada5f65ddc02a2f5b68519",
+      "bytes": 291312
+    },
+    {
+      "id": "E099",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/dispatch-control/client.log",
+      "sha256": "ecf3ed7135af9d8572607c8bef71cb30de6d21daf7aeb35fa217e4143e000e2f",
+      "bytes": 176904
+    },
+    {
+      "id": "E100",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/dispatch-control/client-B.log",
+      "sha256": "3bec5e1933a162dd92008eed07d016609b7667cfbe0b6cb5606ac496a424a3f5",
+      "bytes": 263360
+    },
+    {
+      "id": "E101",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/dispatch-control/service-state.json",
+      "sha256": "70b79daca61788f12e73c509aafe58be80eec8849958342f8e204eca68b68539",
+      "bytes": 162703
+    },
+    {
+      "id": "E102",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/dispatch-control/service.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "id": "E103",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/dispatch-control/debug-commands.txt",
+      "sha256": "57002f7a894f9ad164829ceb3bc17dc96e552edd5417400a0712c3d9832a2103",
+      "bytes": 24693
+    },
+    {
+      "id": "E104",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/dispatch-control/debug-commands-B.txt",
+      "sha256": "57002f7a894f9ad164829ceb3bc17dc96e552edd5417400a0712c3d9832a2103",
+      "bytes": 24693
+    },
+    {
+      "id": "E105",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/dispatch-control/A-blast158-r1-1-97.bin",
+      "sha256": "74e2de4a80eccc95ca075b6b7b315a7883176c212d7f752f47cb45a80c0122e3",
+      "bytes": 51
+    },
+    {
+      "id": "E106",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/dispatch-control/A-blast158-r2-2-136.bin",
+      "sha256": "64d4c380a715c392025aa97ce4b91e3dcfcb01f4ee6596e3e32257b491d7ca6f",
+      "bytes": 51
+    },
+    {
+      "id": "E107",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/dispatch-control/A-dynamic159-r1-1-94.bin",
+      "sha256": "9eabef752de5cb32d752c4092e28f9affa41d42bbbc417099612d800129055ff",
+      "bytes": 77
+    },
+    {
+      "id": "E108",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/dispatch-control/A-dynamic159-r2-2-133.bin",
+      "sha256": "21ab35a31c09963c993ee393123e07630e7bc3ff4ae995a80353991cfde2b893",
+      "bytes": 77
+    },
+    {
+      "id": "E109",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/dispatch-control/A-floor582-115.bin",
+      "sha256": "d7cfe29149c84aaa1e95b2cd935d5313540651f27c4c6eb4aa030f96981eac36",
+      "bytes": 64
+    },
+    {
+      "id": "E110",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/dispatch-control/A-floor582-76.bin",
+      "sha256": "dade68ac6b12c8c7ae59bf27d007ad4f1b32b6369d9a0fcd29170b3063e42ace",
+      "bytes": 64
+    },
+    {
+      "id": "E111",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/dispatch-control/A-go197-121.bin",
+      "sha256": "3380c0c80d8faad72ca646a853ed917edd2f30fd0527e83e58ce731c40aa7b3f",
+      "bytes": 52
+    },
+    {
+      "id": "E112",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/dispatch-control/A-go197-82.bin",
+      "sha256": "64b95010ecb0e40bc0367f41f6710d2357fb2538ce827e205825284601237ef8",
+      "bytes": 52
+    },
+    {
+      "id": "E113",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/dispatch-control/A-guest110-r1-109.bin",
+      "sha256": "f300f7803c78018bc7bb0a99ff04bd200a6843d607915cb48c84b78b557b6a61",
+      "bytes": 44
+    },
+    {
+      "id": "E114",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/dispatch-control/A-guest110-r2-148.bin",
+      "sha256": "df02d8a7984631a6c13646af10eae0def798bf3d6ac4691112817b04012efdb7",
+      "bytes": 44
+    },
+    {
+      "id": "E115",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/dispatch-control/A-host110-r1-106.bin",
+      "sha256": "bbbf2539317016a757afed97a98b9103e3e64fa0b31dc96c0a3ff853c815818e",
+      "bytes": 44
+    },
+    {
+      "id": "E116",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/dispatch-control/A-host110-r2-145.bin",
+      "sha256": "3f61445619e55a509cbcfc153858b6fb4a8529cba6b9bad57fe91aa05570c76b",
+      "bytes": 44
+    },
+    {
+      "id": "E117",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/dispatch-control/A-item165-r1-17-91.bin",
+      "sha256": "2ad2e7cbd637f553ff114fada41951a1129ca3dc52b14a540a60ccea59088bf0",
+      "bytes": 50
+    },
+    {
+      "id": "E118",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/dispatch-control/A-item165-r2-17-130.bin",
+      "sha256": "1f7b0435485208c4a329795aa60112b09552104e608473b7f5057406ce53b206",
+      "bytes": 50
+    },
+    {
+      "id": "E119",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/dispatch-control/A-peer153-127.bin",
+      "sha256": "c3009fce673defebd78e234a0027e51db1cb5e9c4e6f11510224c10280ecba67",
+      "bytes": 135
+    },
+    {
+      "id": "E120",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/dispatch-control/A-peer153-88.bin",
+      "sha256": "7c2f1b0e160165140d2144733f32fecbfe2fb8178a563d9f84810f2edaf14f26",
+      "bytes": 135
+    },
+    {
+      "id": "E121",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/dispatch-control/A-play196-124.bin",
+      "sha256": "e0f364fc0becf0a2a91327c1a33e299af37f1cecc00a26d40443c5bda58b1af4",
+      "bytes": 45
+    },
+    {
+      "id": "E122",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/dispatch-control/A-play196-85.bin",
+      "sha256": "d04bf155b4847f9d41b0edfdf00a32526302273271c0f1cadbb8ce22b89eb51d",
+      "bytes": 45
+    },
+    {
+      "id": "E123",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/dispatch-control/A-rank175-r1-100.bin",
+      "sha256": "5b3751f4c322454005652035ed69253cac647ed0fbc24540bd0599fa2bae6c31",
+      "bytes": 340
+    },
+    {
+      "id": "E124",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/dispatch-control/A-rank175-r2-139.bin",
+      "sha256": "076e2ce52df3f3450801afd1e815de8afcccc048d94546b45cd74c50f03dd959",
+      "bytes": 340
+    },
+    {
+      "id": "E125",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/dispatch-control/A-ready110-112.bin",
+      "sha256": "f31c5f5630019345dc62b5027f13c5267af82643ac2dbac979f0a454192b910e",
+      "bytes": 44
+    },
+    {
+      "id": "E126",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/dispatch-control/A-ready110-73.bin",
+      "sha256": "8fafd9cf652b458ee09b3751a0201f9ab1409920398e0e842e43b915c8840e25",
+      "bytes": 44
+    },
+    {
+      "id": "E127",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/dispatch-control/A-return180-r1-103.bin",
+      "sha256": "996ed34682d009d8977c2571e23c636f824049fb8d962426a9c2d903ed080200",
+      "bytes": 41
+    },
+    {
+      "id": "E128",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/dispatch-control/A-return180-r2-142.bin",
+      "sha256": "7e2f2c7c886e57bc6ea6b82c1aaa41fa02ca04bcebdf5e725bb7531d97d17567",
+      "bytes": 41
+    },
+    {
+      "id": "E129",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/dispatch-control/A-start121-r1-79.bin",
+      "sha256": "f8a824335b4079160a4aaf0e0b425d1fabfa78c248d131503440d0414e1f26cf",
+      "bytes": 167
+    },
+    {
+      "id": "E130",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/dispatch-control/A-start121-r2-118.bin",
+      "sha256": "c8bc9053b53a7ea610e29ae2928cdadeec601dd12bcf9ce25f30ac71cdad6346",
+      "bytes": 167
+    },
+    {
+      "id": "E131",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/dispatch-control/B-blast158-r1-1-97.bin",
+      "sha256": "74e2de4a80eccc95ca075b6b7b315a7883176c212d7f752f47cb45a80c0122e3",
+      "bytes": 51
+    },
+    {
+      "id": "E132",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/dispatch-control/B-blast158-r2-2-142.bin",
+      "sha256": "b12c3fbe13bba6591e62ca40687ffe6a04b44a19ffbc64d48647cd6075c91ebc",
+      "bytes": 51
+    },
+    {
+      "id": "E133",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/dispatch-control/B-dynamic159-r1-1-94.bin",
+      "sha256": "9eabef752de5cb32d752c4092e28f9affa41d42bbbc417099612d800129055ff",
+      "bytes": 77
+    },
+    {
+      "id": "E134",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/dispatch-control/B-dynamic159-r2-2-139.bin",
+      "sha256": "07307a178c83e41b775986c9032efddbfd5eb8d53c7f3ac9798bffec7660ff87",
+      "bytes": 77
+    },
+    {
+      "id": "E135",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/dispatch-control/B-event170-17-r1-100.bin",
+      "sha256": "6a402694c712090aaa8289ab445df237698b9375ed92f44d9739febed6a0d449",
+      "bytes": 48
+    },
+    {
+      "id": "E136",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/dispatch-control/B-event170-17-r2-145.bin",
+      "sha256": "e168c8caaf8001f04bd97eff2c672581124cad05c007996caf1f73bac0945300",
+      "bytes": 48
+    },
+    {
+      "id": "E137",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/dispatch-control/B-event170-19-r1-103.bin",
+      "sha256": "4da110a362a18e12431eda5a74a44baac7a046d132204dceb8f01e9ed8176760",
+      "bytes": 59
+    },
+    {
+      "id": "E138",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/dispatch-control/B-event170-19-r2-148.bin",
+      "sha256": "95aecb5a3b379e82f57669f1301e5c52e97affba1d7993afe7759e5a731bb16a",
+      "bytes": 59
+    },
+    {
+      "id": "E139",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/dispatch-control/B-floor582-121.bin",
+      "sha256": "b108cbc93ed5896e87a383e680b955df612b139b892fe2dc6fa7c89dc76d1eaf",
+      "bytes": 64
+    },
+    {
+      "id": "E140",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/dispatch-control/B-floor582-76.bin",
+      "sha256": "dade68ac6b12c8c7ae59bf27d007ad4f1b32b6369d9a0fcd29170b3063e42ace",
+      "bytes": 64
+    },
+    {
+      "id": "E141",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/dispatch-control/B-go197-127.bin",
+      "sha256": "4479c8d2bd5a138f8dd57f39fc717eabaade8d4273b394c5d4da4ac42a32ce22",
+      "bytes": 52
+    },
+    {
+      "id": "E142",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/dispatch-control/B-go197-82.bin",
+      "sha256": "64b95010ecb0e40bc0367f41f6710d2357fb2538ce827e205825284601237ef8",
+      "bytes": 52
+    },
+    {
+      "id": "E143",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/dispatch-control/B-guest110-r1-115.bin",
+      "sha256": "b9a562c345517aa67d96c51dfe93daedc56af471a1e386fd57cb165b0cee0bf1",
+      "bytes": 44
+    },
+    {
+      "id": "E144",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/dispatch-control/B-guest110-r2-160.bin",
+      "sha256": "6e725be5eaf80cc30e3e51269018d224087c7b2b56713e255fbc72e8bb48e884",
+      "bytes": 44
+    },
+    {
+      "id": "E145",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/dispatch-control/B-host110-r1-112.bin",
+      "sha256": "57460635dc0e9976e22e6b40d430710aab16e6a33c152be10c6a80b4564c3110",
+      "bytes": 44
+    },
+    {
+      "id": "E146",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/dispatch-control/B-host110-r2-157.bin",
+      "sha256": "19ca60c86c873daa8df91c39edd61ebf3baafa3b8b4439c672d5dc049de76026",
+      "bytes": 44
+    },
+    {
+      "id": "E147",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/dispatch-control/B-item165-r1-17-91.bin",
+      "sha256": "2ad2e7cbd637f553ff114fada41951a1129ca3dc52b14a540a60ccea59088bf0",
+      "bytes": 50
+    },
+    {
+      "id": "E148",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/dispatch-control/B-item165-r2-17-136.bin",
+      "sha256": "777c46f533113967cf62ae0c9994a9aff2a2f9d88a5eb35f01042cbe0ef60d75",
+      "bytes": 50
+    },
+    {
+      "id": "E149",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/dispatch-control/B-peer153-133.bin",
+      "sha256": "62f8bda9542fd3a0827e109028733fa6ec662dd2658cf92ab4a47bd3a57534c1",
+      "bytes": 135
+    },
+    {
+      "id": "E150",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/dispatch-control/B-peer153-88.bin",
+      "sha256": "633073ea9359a6f679e8087e1cd641b9909f5b46ba068ff08b68eacfc4dbd611",
+      "bytes": 135
+    },
+    {
+      "id": "E151",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/dispatch-control/B-play196-130.bin",
+      "sha256": "13f2d542669df1a08be243989a4e70967313aab6c60971f9d235817f9240b651",
+      "bytes": 45
+    },
+    {
+      "id": "E152",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/dispatch-control/B-play196-85.bin",
+      "sha256": "d04bf155b4847f9d41b0edfdf00a32526302273271c0f1cadbb8ce22b89eb51d",
+      "bytes": 45
+    },
+    {
+      "id": "E153",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/dispatch-control/B-rank175-r1-106.bin",
+      "sha256": "af64696343b71bbddfcca524adcb34b3c8dd3b736f65508ac464a977c1810384",
+      "bytes": 340
+    },
+    {
+      "id": "E154",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/dispatch-control/B-rank175-r2-151.bin",
+      "sha256": "a8f475739686a41b6fe6a6c6f2e2bceadcc320ea62dd0c7c8d819769e9fe05ee",
+      "bytes": 340
+    },
+    {
+      "id": "E155",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/dispatch-control/B-ready110-118.bin",
+      "sha256": "6526e2f461589ee6ea8406ec75602e5c82bbf08353ee8d7d8b7f54952d1dac89",
+      "bytes": 44
+    },
+    {
+      "id": "E156",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/dispatch-control/B-ready110-73.bin",
+      "sha256": "8fafd9cf652b458ee09b3751a0201f9ab1409920398e0e842e43b915c8840e25",
+      "bytes": 44
+    },
+    {
+      "id": "E157",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/dispatch-control/B-return180-r1-109.bin",
+      "sha256": "b53daa3dda63e60a45282c346e337b4d3d97dd07a2ef4b33a42a147350601e54",
+      "bytes": 41
+    },
+    {
+      "id": "E158",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/dispatch-control/B-return180-r2-154.bin",
+      "sha256": "6cfe760393700f6f5727536b029fbf72d8d3fcbd640b42da5887c4fe612b6389",
+      "bytes": 41
+    },
+    {
+      "id": "E159",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/dispatch-control/B-start121-r1-79.bin",
+      "sha256": "f8a824335b4079160a4aaf0e0b425d1fabfa78c248d131503440d0414e1f26cf",
+      "bytes": 167
+    },
+    {
+      "id": "E160",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/dispatch-control/B-start121-r2-124.bin",
+      "sha256": "f83868d66c8127ba318fca619743e810d900bfd1edcaab62656afbf7531b2dab",
+      "bytes": 167
+    },
+    {
+      "id": "E161",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/dispatch-control/injected-old124-original-frame.bin",
+      "sha256": "b17a75f75512f2cd4f9314ee60cf86b5d8c5f542b6a1445a99638bf0d5b4f13b",
+      "bytes": 57
+    },
+    {
+      "id": "E162",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/dispatch-guard/run.json",
+      "sha256": "943296dfafdf226c753d7bafe3384a7cb1c101274bba8e67beef05c16cc4a2da",
+      "bytes": 340773
+    },
+    {
+      "id": "E163",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/dispatch-guard/client.log",
+      "sha256": "986ea33a635522f2b859d3c2b69914100607a92f5701913d8ceafbbb351c8227",
+      "bytes": 251910
+    },
+    {
+      "id": "E164",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/dispatch-guard/client-B.log",
+      "sha256": "3e75ae1f58874a1b442d53ecde9190430d11ac8a7ba73d2725547ea8bcc67114",
+      "bytes": 251714
+    },
+    {
+      "id": "E165",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/dispatch-guard/service-state.json",
+      "sha256": "74dff817183e3fb3bddaa419cfa2447823cd8df7f0b897e1eae65fe3b39eb079",
+      "bytes": 176840
+    },
+    {
+      "id": "E166",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/dispatch-guard/service.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "id": "E167",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/dispatch-guard/debug-commands.txt",
+      "sha256": "57002f7a894f9ad164829ceb3bc17dc96e552edd5417400a0712c3d9832a2103",
+      "bytes": 24693
+    },
+    {
+      "id": "E168",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/dispatch-guard/debug-commands-B.txt",
+      "sha256": "57002f7a894f9ad164829ceb3bc17dc96e552edd5417400a0712c3d9832a2103",
+      "bytes": 24693
+    },
+    {
+      "id": "E169",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/dispatch-guard/A-blast158-r1-1-97.bin",
+      "sha256": "74e2de4a80eccc95ca075b6b7b315a7883176c212d7f752f47cb45a80c0122e3",
+      "bytes": 51
+    },
+    {
+      "id": "E170",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/dispatch-guard/A-blast158-r2-2-136.bin",
+      "sha256": "64d4c380a715c392025aa97ce4b91e3dcfcb01f4ee6596e3e32257b491d7ca6f",
+      "bytes": 51
+    },
+    {
+      "id": "E171",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/dispatch-guard/A-dynamic159-r1-1-94.bin",
+      "sha256": "9eabef752de5cb32d752c4092e28f9affa41d42bbbc417099612d800129055ff",
+      "bytes": 77
+    },
+    {
+      "id": "E172",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/dispatch-guard/A-dynamic159-r2-2-133.bin",
+      "sha256": "6a61fe24bf5064f65a668acf421ea4a9b53dd96b570c36b05512be9e1afaab6d",
+      "bytes": 77
+    },
+    {
+      "id": "E173",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/dispatch-guard/A-floor582-115.bin",
+      "sha256": "d7cfe29149c84aaa1e95b2cd935d5313540651f27c4c6eb4aa030f96981eac36",
+      "bytes": 64
+    },
+    {
+      "id": "E174",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/dispatch-guard/A-floor582-76.bin",
+      "sha256": "dade68ac6b12c8c7ae59bf27d007ad4f1b32b6369d9a0fcd29170b3063e42ace",
+      "bytes": 64
+    },
+    {
+      "id": "E175",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/dispatch-guard/A-go197-121.bin",
+      "sha256": "3380c0c80d8faad72ca646a853ed917edd2f30fd0527e83e58ce731c40aa7b3f",
+      "bytes": 52
+    },
+    {
+      "id": "E176",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/dispatch-guard/A-go197-82.bin",
+      "sha256": "64b95010ecb0e40bc0367f41f6710d2357fb2538ce827e205825284601237ef8",
+      "bytes": 52
+    },
+    {
+      "id": "E177",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/dispatch-guard/A-guest110-r1-109.bin",
+      "sha256": "f300f7803c78018bc7bb0a99ff04bd200a6843d607915cb48c84b78b557b6a61",
+      "bytes": 44
+    },
+    {
+      "id": "E178",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/dispatch-guard/A-guest110-r2-148.bin",
+      "sha256": "df02d8a7984631a6c13646af10eae0def798bf3d6ac4691112817b04012efdb7",
+      "bytes": 44
+    },
+    {
+      "id": "E179",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/dispatch-guard/A-host110-r1-106.bin",
+      "sha256": "bbbf2539317016a757afed97a98b9103e3e64fa0b31dc96c0a3ff853c815818e",
+      "bytes": 44
+    },
+    {
+      "id": "E180",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/dispatch-guard/A-host110-r2-145.bin",
+      "sha256": "3f61445619e55a509cbcfc153858b6fb4a8529cba6b9bad57fe91aa05570c76b",
+      "bytes": 44
+    },
+    {
+      "id": "E181",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/dispatch-guard/A-item165-r1-17-91.bin",
+      "sha256": "2ad2e7cbd637f553ff114fada41951a1129ca3dc52b14a540a60ccea59088bf0",
+      "bytes": 50
+    },
+    {
+      "id": "E182",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/dispatch-guard/A-item165-r2-17-130.bin",
+      "sha256": "1f7b0435485208c4a329795aa60112b09552104e608473b7f5057406ce53b206",
+      "bytes": 50
+    },
+    {
+      "id": "E183",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/dispatch-guard/A-peer153-127.bin",
+      "sha256": "d6ac3b9e0ef22cbff89154493396e312532b01e5eb6df908a274c2add9b10545",
+      "bytes": 135
+    },
+    {
+      "id": "E184",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/dispatch-guard/A-peer153-88.bin",
+      "sha256": "409c99dcb8a7381a319b72b6bda0da5ffefef51b42e27194aedbf903a3b04f57",
+      "bytes": 135
+    },
+    {
+      "id": "E185",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/dispatch-guard/A-play196-124.bin",
+      "sha256": "e0f364fc0becf0a2a91327c1a33e299af37f1cecc00a26d40443c5bda58b1af4",
+      "bytes": 45
+    },
+    {
+      "id": "E186",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/dispatch-guard/A-play196-85.bin",
+      "sha256": "d04bf155b4847f9d41b0edfdf00a32526302273271c0f1cadbb8ce22b89eb51d",
+      "bytes": 45
+    },
+    {
+      "id": "E187",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/dispatch-guard/A-rank175-r1-100.bin",
+      "sha256": "5b3751f4c322454005652035ed69253cac647ed0fbc24540bd0599fa2bae6c31",
+      "bytes": 340
+    },
+    {
+      "id": "E188",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/dispatch-guard/A-rank175-r2-139.bin",
+      "sha256": "076e2ce52df3f3450801afd1e815de8afcccc048d94546b45cd74c50f03dd959",
+      "bytes": 340
+    },
+    {
+      "id": "E189",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/dispatch-guard/A-ready110-112.bin",
+      "sha256": "f31c5f5630019345dc62b5027f13c5267af82643ac2dbac979f0a454192b910e",
+      "bytes": 44
+    },
+    {
+      "id": "E190",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/dispatch-guard/A-ready110-73.bin",
+      "sha256": "8fafd9cf652b458ee09b3751a0201f9ab1409920398e0e842e43b915c8840e25",
+      "bytes": 44
+    },
+    {
+      "id": "E191",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/dispatch-guard/A-return180-r1-103.bin",
+      "sha256": "996ed34682d009d8977c2571e23c636f824049fb8d962426a9c2d903ed080200",
+      "bytes": 41
+    },
+    {
+      "id": "E192",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/dispatch-guard/A-return180-r2-142.bin",
+      "sha256": "7e2f2c7c886e57bc6ea6b82c1aaa41fa02ca04bcebdf5e725bb7531d97d17567",
+      "bytes": 41
+    },
+    {
+      "id": "E193",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/dispatch-guard/A-start121-r1-79.bin",
+      "sha256": "f8a824335b4079160a4aaf0e0b425d1fabfa78c248d131503440d0414e1f26cf",
+      "bytes": 167
+    },
+    {
+      "id": "E194",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/dispatch-guard/A-start121-r2-118.bin",
+      "sha256": "c8bc9053b53a7ea610e29ae2928cdadeec601dd12bcf9ce25f30ac71cdad6346",
+      "bytes": 167
+    },
+    {
+      "id": "E195",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/dispatch-guard/B-blast158-r1-1-97.bin",
+      "sha256": "74e2de4a80eccc95ca075b6b7b315a7883176c212d7f752f47cb45a80c0122e3",
+      "bytes": 51
+    },
+    {
+      "id": "E196",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/dispatch-guard/B-blast158-r2-2-142.bin",
+      "sha256": "b12c3fbe13bba6591e62ca40687ffe6a04b44a19ffbc64d48647cd6075c91ebc",
+      "bytes": 51
+    },
+    {
+      "id": "E197",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/dispatch-guard/B-dynamic159-r1-1-94.bin",
+      "sha256": "9eabef752de5cb32d752c4092e28f9affa41d42bbbc417099612d800129055ff",
+      "bytes": 77
+    },
+    {
+      "id": "E198",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/dispatch-guard/B-dynamic159-r2-2-139.bin",
+      "sha256": "3a84487b7e02fa906b6d8c8d5775513d3d907a4b7b99cf936023513207df4e6b",
+      "bytes": 77
+    },
+    {
+      "id": "E199",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/dispatch-guard/B-event170-17-r1-100.bin",
+      "sha256": "6a402694c712090aaa8289ab445df237698b9375ed92f44d9739febed6a0d449",
+      "bytes": 48
+    },
+    {
+      "id": "E200",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/dispatch-guard/B-event170-17-r2-145.bin",
+      "sha256": "9ab59398630133c349b76d6000ef2917a2753765937896d87e50ffdec9855341",
+      "bytes": 48
+    },
+    {
+      "id": "E201",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/dispatch-guard/B-event170-19-r1-103.bin",
+      "sha256": "4da110a362a18e12431eda5a74a44baac7a046d132204dceb8f01e9ed8176760",
+      "bytes": 59
+    },
+    {
+      "id": "E202",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/dispatch-guard/B-event170-19-r2-148.bin",
+      "sha256": "de36d539c0cf8b3bc9e49256a9cf8b501c070f348ebb20007ea90d9656b2817b",
+      "bytes": 59
+    },
+    {
+      "id": "E203",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/dispatch-guard/B-floor582-121.bin",
+      "sha256": "b108cbc93ed5896e87a383e680b955df612b139b892fe2dc6fa7c89dc76d1eaf",
+      "bytes": 64
+    },
+    {
+      "id": "E204",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/dispatch-guard/B-floor582-76.bin",
+      "sha256": "dade68ac6b12c8c7ae59bf27d007ad4f1b32b6369d9a0fcd29170b3063e42ace",
+      "bytes": 64
+    },
+    {
+      "id": "E205",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/dispatch-guard/B-go197-127.bin",
+      "sha256": "4479c8d2bd5a138f8dd57f39fc717eabaade8d4273b394c5d4da4ac42a32ce22",
+      "bytes": 52
+    },
+    {
+      "id": "E206",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/dispatch-guard/B-go197-82.bin",
+      "sha256": "64b95010ecb0e40bc0367f41f6710d2357fb2538ce827e205825284601237ef8",
+      "bytes": 52
+    },
+    {
+      "id": "E207",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/dispatch-guard/B-guest110-r1-115.bin",
+      "sha256": "b9a562c345517aa67d96c51dfe93daedc56af471a1e386fd57cb165b0cee0bf1",
+      "bytes": 44
+    },
+    {
+      "id": "E208",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/dispatch-guard/B-guest110-r2-160.bin",
+      "sha256": "6e725be5eaf80cc30e3e51269018d224087c7b2b56713e255fbc72e8bb48e884",
+      "bytes": 44
+    },
+    {
+      "id": "E209",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/dispatch-guard/B-host110-r1-112.bin",
+      "sha256": "57460635dc0e9976e22e6b40d430710aab16e6a33c152be10c6a80b4564c3110",
+      "bytes": 44
+    },
+    {
+      "id": "E210",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/dispatch-guard/B-host110-r2-157.bin",
+      "sha256": "19ca60c86c873daa8df91c39edd61ebf3baafa3b8b4439c672d5dc049de76026",
+      "bytes": 44
+    },
+    {
+      "id": "E211",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/dispatch-guard/B-item165-r1-17-91.bin",
+      "sha256": "2ad2e7cbd637f553ff114fada41951a1129ca3dc52b14a540a60ccea59088bf0",
+      "bytes": 50
+    },
+    {
+      "id": "E212",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/dispatch-guard/B-item165-r2-17-136.bin",
+      "sha256": "777c46f533113967cf62ae0c9994a9aff2a2f9d88a5eb35f01042cbe0ef60d75",
+      "bytes": 50
+    },
+    {
+      "id": "E213",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/dispatch-guard/B-peer153-133.bin",
+      "sha256": "0e01e084da30cec9821577a23a1e4f52df265271d2fe49ade23a024395711df7",
+      "bytes": 135
+    },
+    {
+      "id": "E214",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/dispatch-guard/B-peer153-88.bin",
+      "sha256": "bee8aada81417c30240aae45a1ad63570046432890684da4842ab06e088fdb59",
+      "bytes": 135
+    },
+    {
+      "id": "E215",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/dispatch-guard/B-play196-130.bin",
+      "sha256": "13f2d542669df1a08be243989a4e70967313aab6c60971f9d235817f9240b651",
+      "bytes": 45
+    },
+    {
+      "id": "E216",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/dispatch-guard/B-play196-85.bin",
+      "sha256": "d04bf155b4847f9d41b0edfdf00a32526302273271c0f1cadbb8ce22b89eb51d",
+      "bytes": 45
+    },
+    {
+      "id": "E217",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/dispatch-guard/B-rank175-r1-106.bin",
+      "sha256": "af64696343b71bbddfcca524adcb34b3c8dd3b736f65508ac464a977c1810384",
+      "bytes": 340
+    },
+    {
+      "id": "E218",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/dispatch-guard/B-rank175-r2-151.bin",
+      "sha256": "a8f475739686a41b6fe6a6c6f2e2bceadcc320ea62dd0c7c8d819769e9fe05ee",
+      "bytes": 340
+    },
+    {
+      "id": "E219",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/dispatch-guard/B-ready110-118.bin",
+      "sha256": "6526e2f461589ee6ea8406ec75602e5c82bbf08353ee8d7d8b7f54952d1dac89",
+      "bytes": 44
+    },
+    {
+      "id": "E220",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/dispatch-guard/B-ready110-73.bin",
+      "sha256": "8fafd9cf652b458ee09b3751a0201f9ab1409920398e0e842e43b915c8840e25",
+      "bytes": 44
+    },
+    {
+      "id": "E221",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/dispatch-guard/B-return180-r1-109.bin",
+      "sha256": "b53daa3dda63e60a45282c346e337b4d3d97dd07a2ef4b33a42a147350601e54",
+      "bytes": 41
+    },
+    {
+      "id": "E222",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/dispatch-guard/B-return180-r2-154.bin",
+      "sha256": "6cfe760393700f6f5727536b029fbf72d8d3fcbd640b42da5887c4fe612b6389",
+      "bytes": 41
+    },
+    {
+      "id": "E223",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/dispatch-guard/B-start121-r1-79.bin",
+      "sha256": "f8a824335b4079160a4aaf0e0b425d1fabfa78c248d131503440d0414e1f26cf",
+      "bytes": 167
+    },
+    {
+      "id": "E224",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/dispatch-guard/B-start121-r2-124.bin",
+      "sha256": "f83868d66c8127ba318fca619743e810d900bfd1edcaab62656afbf7531b2dab",
+      "bytes": 167
+    },
+    {
+      "id": "E225",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/dispatch-guard/injected-old124-original-frame.bin",
+      "sha256": "625772ab0e68b64bdb03979d13b5bfc4043bd871c1043546d3984d5252b80ef3",
+      "bytes": 57
+    },
+    {
+      "id": "E226",
+      "kind": "local",
+      "path": "local/research/codex/wine_probe_stale124_control.py",
+      "sha256": "c11b534342c09243ec4929b158a22aec4e5742a1d53b8432996011d3bf36de2d",
+      "bytes": 40132
+    },
+    {
+      "id": "E227",
+      "kind": "local",
+      "path": "local/research/codex/wine_probe_stale124_guard.py",
+      "sha256": "1bd7f384067b9a44aa486f65e52e423970843123992e5377043e59a8f6a9f744",
+      "bytes": 40011
+    },
+    {
+      "id": "E228",
+      "kind": "local",
+      "path": "local/research/codex/wine_probe_stale124_dispatch_control.py",
+      "sha256": "a655d5b9ffca827c70788a36d6e6e013328103d6ee13346e9437c6f1b2d38585",
+      "bytes": 39925
+    },
+    {
+      "id": "E229",
+      "kind": "local",
+      "path": "local/research/codex/wine_probe_stale124_dispatch_guard.py",
+      "sha256": "dc07568a66ab0092865151235413a4cb04cfdfd295cc5ef656cd4d11c2a8e442",
+      "bytes": 39912
+    },
+    {
+      "id": "E230",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/request-frames/dispatch-control/A-F143-118.bin",
+      "sha256": "f3dc469cf7a9eda986e0676e1b9d69611028a0dc2b3be0c65934f32577e19e01",
+      "bytes": 60
+    },
+    {
+      "id": "E231",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/request-frames/dispatch-control/A-F153-127.bin",
+      "sha256": "2dddc402f45c75325f3a6933ae702ef627ce759e99f1df129eb1e6bee8fc3c75",
+      "bytes": 70
+    },
+    {
+      "id": "E232",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/request-frames/dispatch-control/A-F163-127.bin",
+      "sha256": "fa5176fe4c8637c31cc7cbe546ea8e9db03a4f7a2610d879f298dd90ae49b7f5",
+      "bytes": 67
+    },
+    {
+      "id": "E233",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/request-frames/dispatch-control/A-F52-124.bin",
+      "sha256": "b17a75f75512f2cd4f9314ee60cf86b5d8c5f542b6a1445a99638bf0d5b4f13b",
+      "bytes": 57
+    },
+    {
+      "id": "E234",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/request-frames/dispatch-control/A-F59-118.bin",
+      "sha256": "ab99b58baefd0ddc6c4fc2c70c008524feaed4c785fd1cb089521547f4932adf",
+      "bytes": 60
+    },
+    {
+      "id": "E235",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/request-frames/dispatch-control/A-F71-127.bin",
+      "sha256": "142447add13c4ca6e87f0f8db66dc34718fa5aa47aed177ff9aac1a772a9ac36",
+      "bytes": 70
+    },
+    {
+      "id": "E236",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/request-frames/dispatch-control/A-F85-127.bin",
+      "sha256": "8c4769d9c2f15fba2dc8e5c9b407e0801a7dc413ad9f0c3ac8f545fe81053a93",
+      "bytes": 67
+    },
+    {
+      "id": "E237",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/request-frames/dispatch-control/B-F100-95.bin",
+      "sha256": "4a4f1e58aaba0b7ea120ee4e37ee09bda453f337cdbcc15c6c7f67dadb515e3f",
+      "bytes": 382
+    },
+    {
+      "id": "E238",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/request-frames/dispatch-control/B-F121-127.bin",
+      "sha256": "190e86aa68e77cf9aba76514c678a29f327e6765731d92da4accdbccf21dfc0f",
+      "bytes": 52
+    },
+    {
+      "id": "E239",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/request-frames/dispatch-control/B-F126-127.bin",
+      "sha256": "bc710cd71e257affa2c396dde0fc581cec91dc527c78b7af51327c7aed5fc8f0",
+      "bytes": 52
+    },
+    {
+      "id": "E240",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/request-frames/dispatch-control/B-F13-82.bin",
+      "sha256": "1746130345929e482c425aa463e6bf34d6da555c86c6474cf235330227f74f47",
+      "bytes": 49
+    },
+    {
+      "id": "E241",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/request-frames/dispatch-control/B-F130-127.bin",
+      "sha256": "9330095476c027c7e38ccf32caef905b57e1d31ee16a521c7ffe060bd50e7543",
+      "bytes": 52
+    },
+    {
+      "id": "E242",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/request-frames/dispatch-control/B-F24-95.bin",
+      "sha256": "730e662309a1a5abb7556e5f500168850ae220a9b7f288c1c62d18904206398c",
+      "bytes": 98
+    },
+    {
+      "id": "E243",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/request-frames/dispatch-control/B-F68-127.bin",
+      "sha256": "988a7525f934d78c76fff10a3a0b65713441e198ca3d7f371cdf861a2de45f39",
+      "bytes": 52
+    },
+    {
+      "id": "E244",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/request-frames/dispatch-control/B-F71-127.bin",
+      "sha256": "07c579fcd13a85678ecd46c3f8021e6a0a4d997d941a0cb05ee2a786071e14a1",
+      "bytes": 52
+    },
+    {
+      "id": "E245",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/request-frames/dispatch-control/B-F74-127.bin",
+      "sha256": "afa71be0c65334600f5e3e9b7508b33c3a44b1fac54714eec2258683f61bbeeb",
+      "bytes": 52
+    },
+    {
+      "id": "E246",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/request-frames/dispatch-control/B-F76-127.bin",
+      "sha256": "101bc747fb6505c680232c15929c2cd87d4dc4ca4f7e9c934c0c52aaa57ae0d7",
+      "bytes": 52
+    },
+    {
+      "id": "E247",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/request-frames/dispatch-control/B-F79-127.bin",
+      "sha256": "340eabe4c1b19ef6412a8e2a534188d4a6f253db14f5724e49498ac350c9cff1",
+      "bytes": 52
+    },
+    {
+      "id": "E248",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/request-frames/dispatch-control/B-F82-127.bin",
+      "sha256": "9125ab70d8aedc56eb33dfcf4c92e7e7b5fea5beafeb05ddc27094cffdf56bb1",
+      "bytes": 52
+    },
+    {
+      "id": "E249",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/request-frames/dispatch-guard/A-F138-124.bin",
+      "sha256": "044b8dfcf883fee4df5e59cd239fcaf8ef71890790beb857b5a45cc14bf15daf",
+      "bytes": 57
+    },
+    {
+      "id": "E250",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/request-frames/dispatch-guard/A-F141-118.bin",
+      "sha256": "2ed8535504e032c626985c47c6ce6d833649a9cf2471f4bdfbd232f8a35a1d74",
+      "bytes": 60
+    },
+    {
+      "id": "E251",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/request-frames/dispatch-guard/A-F150-127.bin",
+      "sha256": "3a039473600dd1fa1ec500dd7227f5e4f6283ea738244bd3766006cfb500ce07",
+      "bytes": 70
+    },
+    {
+      "id": "E252",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/request-frames/dispatch-guard/A-F176-127.bin",
+      "sha256": "21cfe2d7414719aa290f3942c2baf34353fef3929473d1831e8d1c9671c5abf8",
+      "bytes": 67
+    },
+    {
+      "id": "E253",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/request-frames/dispatch-guard/A-F53-124.bin",
+      "sha256": "625772ab0e68b64bdb03979d13b5bfc4043bd871c1043546d3984d5252b80ef3",
+      "bytes": 57
+    },
+    {
+      "id": "E254",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/request-frames/dispatch-guard/A-F59-118.bin",
+      "sha256": "96bcc63356bec9f426c0d7dcbb296fa6532813c976a54ad2e9487c2498b75ae4",
+      "bytes": 60
+    },
+    {
+      "id": "E255",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/request-frames/dispatch-guard/A-F71-127.bin",
+      "sha256": "409d3d5815f183a3de6bc86a2817bbf31c4eedd99d38770a879e1d097d864f98",
+      "bytes": 70
+    },
+    {
+      "id": "E256",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/request-frames/dispatch-guard/A-F84-127.bin",
+      "sha256": "8eb92ee85f43ecb69cc71b626e0769addfb2d14c29f278bd4a5b30f381331169",
+      "bytes": 67
+    },
+    {
+      "id": "E257",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/request-frames/dispatch-guard/B-F13-82.bin",
+      "sha256": "1746130345929e482c425aa463e6bf34d6da555c86c6474cf235330227f74f47",
+      "bytes": 49
+    },
+    {
+      "id": "E258",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/request-frames/dispatch-guard/B-F149-127.bin",
+      "sha256": "b8a7a74f9165ed1249277c9bfdcd82cf654391ca232be71eb0af3897fb206529",
+      "bytes": 52
+    },
+    {
+      "id": "E259",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/request-frames/dispatch-guard/B-F151-127.bin",
+      "sha256": "488e0437b37dc4255c3ab44c3a15e5b663737f9b7af0c5fd5751317399475527",
+      "bytes": 52
+    },
+    {
+      "id": "E260",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/request-frames/dispatch-guard/B-F155-127.bin",
+      "sha256": "2b867e42fdbb89432b4bcbac584a60d52e48c9cc6addf6e0c82d9be80273cd05",
+      "bytes": 52
+    },
+    {
+      "id": "E261",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/request-frames/dispatch-guard/B-F157-127.bin",
+      "sha256": "bf875876cbbf6afdcf014d9252f3d49c8b3bafdf42158f8ad0c69261d64901c2",
+      "bytes": 52
+    },
+    {
+      "id": "E262",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/request-frames/dispatch-guard/B-F159-127.bin",
+      "sha256": "39359f09ce74beb9cd6d5156bbdb003d977ee7fd69df1c89d0decfd6348ecf76",
+      "bytes": 52
+    },
+    {
+      "id": "E263",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/request-frames/dispatch-guard/B-F161-127.bin",
+      "sha256": "e00645bb3b61cab0ed5a74cce4d409a66378fb5bd4a89badb682fa80749933d2",
+      "bytes": 52
+    },
+    {
+      "id": "E264",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/request-frames/dispatch-guard/B-F24-95.bin",
+      "sha256": "730e662309a1a5abb7556e5f500168850ae220a9b7f288c1c62d18904206398c",
+      "bytes": 98
+    },
+    {
+      "id": "E265",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/request-frames/dispatch-guard/B-F66-127.bin",
+      "sha256": "18f7b508dea7ed7640546eaf3348188e07284657cd8ff68d4b5d20f0cb84c30a",
+      "bytes": 52
+    },
+    {
+      "id": "E266",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/request-frames/dispatch-guard/B-F69-127.bin",
+      "sha256": "4230c8e2ae53bbeb8a9e77d5b4ceaea6e4d74df12951a6c92ed49c61d772786d",
+      "bytes": 52
+    },
+    {
+      "id": "E267",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/request-frames/dispatch-guard/B-F71-127.bin",
+      "sha256": "55f751d313c463763bda0fd76a0905b343316c2b5da3f5c85cbb6da448bff3b7",
+      "bytes": 52
+    },
+    {
+      "id": "E268",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/request-frames/dispatch-guard/B-F74-127.bin",
+      "sha256": "833c65d988a4b1154864fb6b263a614c14e66cd81d8c9aeedc0479d93e732069",
+      "bytes": 52
+    },
+    {
+      "id": "E269",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/request-frames/dispatch-guard/B-F76-127.bin",
+      "sha256": "343daaba9bd10a1709602f5b98e7233039d1c780807bc9d4c1beb0fc7a345538",
+      "bytes": 52
+    },
+    {
+      "id": "E270",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/request-frames/dispatch-guard/B-F79-127.bin",
+      "sha256": "231f38a4038eb4f74cc0f2d58aa3a950dd640358198caf4aba392ae73ca99668",
+      "bytes": 52
+    },
+    {
+      "id": "E271",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/request-frames/dispatch-guard/B-F81-127.bin",
+      "sha256": "623910f5d99322cad96417a9fbf186cd3e84697be0b20c4dd26355bdf32b2f45",
+      "bytes": 52
+    },
+    {
+      "id": "E272",
+      "kind": "local",
+      "path": "local/research/codex/stale124-r1/request-frames/dispatch-guard/B-F99-95.bin",
+      "sha256": "d2ea0e8e4899abaa5a5ea0f72f3dd1105e3e9a9bcad1710f3283bb3340c21dc8",
+      "bytes": 382
+    }
+  ],
+  "delta": {
+    "added": [
+      "Guard124k beforeclaim+diagnosticreason and3meaningfulregressions.",
+      "Livecontrol/guard samehelper/copy/profile: oldbodyeffectvsdrop/currentactualpickup/peerstat/result/reset;rawprovenancepinned."
+    ],
+    "corrected": [
+      "CP048service-no-k-check nowhistorical; newsourceguardpartialonly,notfullvalidator/auth.",
+      "Oldbodyinjected atdispatcher isnotnewactualTCPclientrequest;errorNone/launcher0fromproxysetupisnotpass."
+    ],
+    "superseded": [
+      "PLANfirststale124basicguardmeasurement answeredbounded; moveprioritytoEOFlifecycle/loadingbarrier,keepremainingvalidator/transportscopeexplicit.",
+      "KRE-011issue56closedafterPR57merge, noactiveworkorderforcatalogrefactor."
+    ]
+  },
+  "blockers": [
+    "C2Stransportreplayadmissionnotmeasured;proxysetupstopcauseunknown. Dispatcherreplay provesguard/live165effectonly.",
+    "t/distance/actorstate/forgedcurrentk/fullvalidator/variants/keylifetime/roster/otherUDP remain.",
+    "ServiceEOFfinishonly;forfeit/cleanup/promotion/newpeer/loadingbarrier notintegrated;fullauth/profile/cache/codec/vanilla/reconnect/fullmatch/K5/K6a/LAN/Internetnotaccepted."
+  ],
+  "next_steps": [
+    {
+      "id": "NEXT-DUO-ROUND",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "Followdocs/PLAN.md#current-order: nextEOFlifecycle/timerticket/forfeit/cleanup/promotion/newpeer/delayedload;reuseCP034–044andCP049actualinput/nativeproof,donotrediscoverhandlers.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-ITEM-PICKUP",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "CanonicalRESEARCH#gap-floor-pickup: basicold/currentkguardansweredCP049;neededt/distance/actorstate/forgedcurrentk/transportcontrols only,notfulliteminventory.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-FULL-LOGIN-FIELDS",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "CanonicalPLANthirdpriority/authcachequestion;fixtureidentity/profileisnotfullauth/codec/cache/vanilla/reconnectgate.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    }
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-11-01T12:25:34.138646+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "Codex solo RE/code/runtime/selfcheck, not independent approval.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Owner explicitly requested solo without Claude review."
+    }
+  },
+  "docs_sync": [
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "Currentguard/nativeeffect/partiallimits/CP048merge;no gatepromotion."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "Solepriority shiftsfrombasicstale124toEOFlifecycle;KRE-012issue58andKRE-011closed."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "updated",
+      "reason": "Newcanonicalguardanchor/designvsnativeconsequence/transportlimits;CP048noguardwordinghistorical."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "updated",
+      "reason": "CurrentgapF006/serviceupdatedtoansweronlymeasuredscope; noactivealreadyansweredtest."
+    },
+    {
+      "path": "docs/features.json",
+      "state": "updated",
+      "reason": "AffectedF006/S001codependingdelivery/evidencerefs only;IDs/keysdimensionsretained."
+    },
+    {
+      "path": "docs/COVERAGE.md",
+      "state": "updated",
+      "reason": "Generatedfromcanonicalcatalog/RESEARCHgaps."
+    },
+    {
+      "path": "server/README.md",
+      "state": "updated",
+      "reason": "Guardcallerpolicy/limits/recipe."
+    },
+    {
+      "path": "docs/evidence/stale124/README.md",
+      "state": "updated",
+      "reason": "4runs/provenance/nativehash/source/recipe/limits."
+    }
+  ]
+}

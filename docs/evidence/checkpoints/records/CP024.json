@@ -1,0 +1,1592 @@
+{
+  "id": "CP024",
+  "previous": "CP023",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-10-30T10:08:26.254016+00:00",
+  "question": "Can first-bomb159 follow actual118, where do100/4039 and spawn points originate, and can coherent KR Village00/ExVillage01 profiles repeat the measured cycle?",
+  "scope": "Five sequential isolated Wine145s runs on unchanged CP020 copy; baseline versus bounded dynamic159, actual actor/bomb secure-box snapshots/native getter, index→map point→spawn chain and two coherent map profiles. One client/synthetic guest/chosen outcomes, no multiplayer/full-match/gate claim. Periodic AUD007.",
+  "context_commit": "561acc5fbf036806c4cceea91e9355dba1c08f76",
+  "owner": "Codex",
+  "reviewer": "Codex",
+  "artifacts": [
+    {
+      "name": "CA-r2-login-logout.exe",
+      "sha256": "660447c293ce92270cb9b5815331bca976e8f156366e1fe50b217b6c12e60ce3"
+    },
+    {
+      "name": "CA-r2-stage-social.exe",
+      "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+    },
+    {
+      "name": "modO.bin",
+      "sha256": "a08950c833d3acab8281049def7b3dc96b221f107eeda01da3a548e34b91dce5"
+    }
+  ],
+  "locators": [
+    "VA base400000/RVA=VA-400000; static660447/runtimeE9BB47/nativeA08950.13targetedcode ranges byte match; no new binary/DB patch.",
+    "E2DF80 actual118 record+10/+14/+30 →payload10/11/12;159payload16/17/18→info+18/+24/+30. Owner and serial candidate echo, branchflag0/base22→base39; first serial0/id1 only.",
+    "B335C0/B335E0 actor+4C/+58→57A870→52A350. Captured wrapper/data/checksum and56actual native getter replays; four initial AI-component invalid snapshots excluded.",
+    "E14600 parentvt1775F08/CGOAIBattleBomber is interface, not actor base. Actual actor capture E0F970/E0F973; CGOGameBomb returnE5ECA8 vt16FC0CC.",
+    "E57D76→12418A0 gets slot+7C spawn0/1. CGameStage/v2D0→E59F30→E5A290→E0F6C0→EAF910(mapinfo+368 vector8byte point); E0F770→vf/B3D170 actualactorinit.",
+    "Antarctic0 spawn(6,100)/(4,100), nativeactor(240,4039)/(160,4039). Echo118100/1→100/3 yieldsbomb(40,4039)→(120,4039), not fixed159.15/101 metadata fields candidate dimensions.",
+    "Village00code1101 spawn(13,11)/(1,11), actor(520,479)/(40,479), actual118/15911/11,bomb440/479;121127/127/errors0. CentralUFO-like object mode semantics unproved.",
+    "ExVillage01code278 spawn(3,3)/(3,9),actor(120,159)/(120,399),actual118/1593/3,bomb120/159;121129/129/errors0. Two stage13/HELP/result175/return180 on same channel4.",
+    "New map profiles update241expected Adler32/238row/name/localcode/117ack/121code-name/196code coherently, both rounds. Village00/ExVillage01 measured blast→reported19~6.46..6.49s twice; Antarctic second~0.9s persists.",
+    "AUD007/CP024 manual audit; nextCP028. K6a samehost,K6bLAN,K6cInternet/NAT/relay clarified as future unpassed gates."
+  ],
+  "findings": [
+    {
+      "summary": "VN §5a-7 points to spawn-index→map-point→actor flow; KR getters/layout/code/name were recovered separately.",
+      "source": "vn_static",
+      "status": "confirmed",
+      "method": "documentation",
+      "canonical": "docs/PROTOCOL.md#bomb-position",
+      "evidence": [
+        "E188",
+        "E073"
+      ],
+      "limits": "Historical VN reference only; no new VN runtime or index/opcode translation."
+    },
+    {
+      "summary": "Actual118 drives bounded159 owner/serial candidate andthree bytes, native reply39 and live callback39/39/errors0 across four two-cycle runs.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#bomb-position",
+      "evidence": [
+        "E128",
+        "E129",
+        "E132",
+        "E133",
+        "E138",
+        "E139",
+        "E144",
+        "E145",
+        "E122",
+        "E123",
+        "E047",
+        "E057",
+        "E024",
+        "E159"
+      ],
+      "limits": "Only first bomb/flag0/serialcandidate0/id1 each round; remaining fields fixed choices. No multi-bomb ID allocation/dup/stale/general protocol or peer proof."
+    },
+    {
+      "summary": "Captured valid coordinate wrappers decode to observed actor/bomb values; native52A350 independently corroborates56getter samples and checksums.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "emulation",
+      "canonical": "docs/PROTOCOL.md#bomb-position",
+      "evidence": [
+        "E062",
+        "E080",
+        "E104",
+        "E029",
+        "E001"
+      ],
+      "limits": "Synthetic allocation/global context outside process. Invalid4AI-component snapshots not coordinate evidence. Observed x=40B,y=40A+39 does not prove all modes/collision semantics."
+    },
+    {
+      "summary": "Spawn0/1 source is slot+7C→mapinfo point vector→actual actor init;100 originates in Antarctic map points before actor creation.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#bomb-position",
+      "evidence": [
+        "E138",
+        "E139",
+        "E144",
+        "E145",
+        "E122",
+        "E123",
+        "E016",
+        "E010",
+        "E014",
+        "E048"
+      ],
+      "limits": "Source chain and bounded points confirmed.15/101 versus15/13 width/height interpretation candidate; not complete collision/map feature bounds or corrupt-reset proof."
+    },
+    {
+      "summary": "Coherent KR1101/Village00 and278/ExVillage01 inputs render corresponding geometry/spawns, support dynamic first bomb/HELP/chosen result and room return twice.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#bomb-position",
+      "evidence": [
+        "E144",
+        "E145",
+        "E122",
+        "E123",
+        "E106",
+        "E031",
+        "E152",
+        "E153",
+        "E154",
+        "E156"
+      ],
+      "limits": "Modified one client/synthetic guest. Village00 central UFO/boss-like object and mode applicability not resolved; no ordinary-Battle blanket claim/full-match/multiplayer gate."
+    },
+    {
+      "summary": "Two new map profiles measure reported19~6.46..6.49s after kind0 twice, while Antarctic second~0.9s persists with dynamic159.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#bomb-position",
+      "evidence": [
+        "E070",
+        "E049"
+      ],
+      "limits": "Timing/context observation only; no causal claim that echo/map fixes reset/timer. Pointer can be reused despite actual re-init."
+    },
+    {
+      "summary": "Echo/profile map values and chosen result policy remain explicit emulator choices; LAN/Internet acceptance broken intoK6a/b/c, all unpassed.",
+      "source": "design",
+      "status": "design",
+      "method": "documentation",
+      "canonical": "docs/PROTOCOL.md#bomb-position",
+      "evidence": [
+        "E189",
+        "E106",
+        "E031"
+      ],
+      "limits": "No live Internet/LAN or two-client test performed. Existing isolation and authority/gate requirements retained."
+    }
+  ],
+  "verification": [
+    {
+      "check": "2788mechanicalchecks/5sequentialruns: rawhash/isolation/lease/pinnedcopy/harness, nativeallC2Sframing withCRC/partial controls,66framingcases/22fixtures,10actual118/base22 and8dynamic159/base39,56nativewrappergetters,13codebyte ranges,spawn chain andtwo-cycle callbacks.",
+      "result": "pass",
+      "evidence": [
+        "E095",
+        "E070",
+        "E049"
+      ],
+      "limits": "Manual code/images/timeline separate; no independent review, collision/authority/peer/full-auth or new gate."
+    },
+    {
+      "check": "AUD007periodic manual README→PLAN→PROTOCOL→RESEARCH→evidence CP021–024 versus raw/runtime/native/image, stale statuses/source assumptions/acceptance repaired.",
+      "result": "pass",
+      "evidence": [
+        "E189"
+      ],
+      "limits": "Codex self-audit under owner waiver; no independent approval or gate closure."
+    }
+  ],
+  "evidence": [
+    {
+      "id": "E001",
+      "kind": "local",
+      "path": "local/research/codex/bomb-position-r1/52A350.asm",
+      "bytes": 4358,
+      "sha256": "96f35d3cc20ba5a233e1979b98869c5ece8be27f56b8e21dce7c989aa429b59a"
+    },
+    {
+      "id": "E002",
+      "kind": "local",
+      "path": "local/research/codex/bomb-position-r1/52A450.asm",
+      "bytes": 1685,
+      "sha256": "6b24b6ea0e23d8a115a869dfca552fbc671435c023919c96e8062493e8de3f0e"
+    },
+    {
+      "id": "E003",
+      "kind": "local",
+      "path": "local/research/codex/bomb-position-r1/57A870.asm",
+      "bytes": 2241,
+      "sha256": "05689977f57050cde8a658b3781c894d5341dc506121f873f6c884cd3d3c09e8"
+    },
+    {
+      "id": "E004",
+      "kind": "local",
+      "path": "local/research/codex/bomb-position-r1/AEF700.asm",
+      "bytes": 21623,
+      "sha256": "1fb09feb2380f19d09a583043c642534ad95098dd9dbeaf733864cb56df6da6c"
+    },
+    {
+      "id": "E005",
+      "kind": "local",
+      "path": "local/research/codex/bomb-position-r1/AF0BE0.asm",
+      "bytes": 8872,
+      "sha256": "b2f669643c4e24007b5a24257fd5deea1d33230b224f9b9d5c14accc6fab8bb0"
+    },
+    {
+      "id": "E006",
+      "kind": "local",
+      "path": "local/research/codex/bomb-position-r1/B32390.asm",
+      "bytes": 6272,
+      "sha256": "e2dda583f417f547fc860be75a57b9908b29c0b75409b843093d04b8386fa451"
+    },
+    {
+      "id": "E007",
+      "kind": "local",
+      "path": "local/research/codex/bomb-position-r1/B335C0.asm",
+      "bytes": 1726,
+      "sha256": "4de4a1d9e17223d735e9cb06d908b96e178c4d1a38f51e63eabc431ce2f14931"
+    },
+    {
+      "id": "E008",
+      "kind": "local",
+      "path": "local/research/codex/bomb-position-r1/B36520.asm",
+      "bytes": 11817,
+      "sha256": "719e32d90279828933055316acea7e843dccf0d844a1ddca2e9a14c83c8da1c2"
+    },
+    {
+      "id": "E009",
+      "kind": "local",
+      "path": "local/research/codex/bomb-position-r1/B3D170.asm",
+      "bytes": 7751,
+      "sha256": "e0574d17239dd81b332bc9e88a3f57037cce61f01db95a865e4c359af1752ad8"
+    },
+    {
+      "id": "E010",
+      "kind": "local",
+      "path": "local/research/codex/bomb-position-r1/E0F6C0.asm",
+      "bytes": 19033,
+      "sha256": "363766f170f72cc1cf6fd88e1debdc022c2cf1c9eae67a46fd137e08aee87ca2"
+    },
+    {
+      "id": "E011",
+      "kind": "local",
+      "path": "local/research/codex/bomb-position-r1/E2D-caller.asm",
+      "bytes": 1702,
+      "sha256": "0cfbdec16e156444f8fb560565f29d447cd2e8edf99f7cf6f53a9b2d0dc81d4a"
+    },
+    {
+      "id": "E012",
+      "kind": "local",
+      "path": "local/research/codex/bomb-position-r1/E57D40.asm",
+      "bytes": 2632,
+      "sha256": "46037ea21f9b5e8538deaf3a64e632639b7701a97ddeddafcf18574cc7186fa3"
+    },
+    {
+      "id": "E013",
+      "kind": "local",
+      "path": "local/research/codex/bomb-position-r1/E59F30.asm",
+      "bytes": 9311,
+      "sha256": "1234097d80afc0dea2e97dd29f0ad26399dbf77cd2432bd35a8aa0abe346378e"
+    },
+    {
+      "id": "E014",
+      "kind": "local",
+      "path": "local/research/codex/bomb-position-r1/E5A290.asm",
+      "bytes": 5110,
+      "sha256": "fa91f5bcfd2b716d9cb6f72e13dac0e4d995439b7fa4d009cb6d5178f1957370"
+    },
+    {
+      "id": "E015",
+      "kind": "local",
+      "path": "local/research/codex/bomb-position-r1/E739D0.asm",
+      "bytes": 2678,
+      "sha256": "ae295708c19c80198cb487c91248659defa5633b25897075924a5a9545c722d1"
+    },
+    {
+      "id": "E016",
+      "kind": "local",
+      "path": "local/research/codex/bomb-position-r1/EAF910.asm",
+      "bytes": 3377,
+      "sha256": "8b88775a6aff1387ab5af1f8bc7ac4af61a2ceb38d2b64849be7df154e2eacb7"
+    },
+    {
+      "id": "E017",
+      "kind": "local",
+      "path": "local/research/codex/bomb-position-r1/EDC7D0.asm",
+      "bytes": 2517,
+      "sha256": "0c56098f4a4797b1ee08b78d3be690e948120b6da9f287ece4259d9295591684"
+    },
+    {
+      "id": "E018",
+      "kind": "local",
+      "path": "local/research/codex/bomb-position-r1/build-exvillage.py",
+      "bytes": 2074,
+      "sha256": "68c430a6b5c1a609929904aa1c12594ea328b312142231e5dd9b18af6b0f6427"
+    },
+    {
+      "id": "E019",
+      "kind": "local",
+      "path": "local/research/codex/bomb-position-r1/build-village.py",
+      "bytes": 3573,
+      "sha256": "f8b732e1b925df0887f3c79f36159c9da3b95ebaabdd0ede9de64f3d3f802956"
+    },
+    {
+      "id": "E020",
+      "kind": "local",
+      "path": "local/research/codex/bomb-position-r1/control-replay-output.txt",
+      "bytes": 2601,
+      "sha256": "9d0a0cc6feb50e4ed95c2d1a922ace5f2605a605d954f7d6c270c1028986faa4"
+    },
+    {
+      "id": "E021",
+      "kind": "local",
+      "path": "local/research/codex/bomb-position-r1/decode118.py",
+      "bytes": 1639,
+      "sha256": "6c15f645e46222b5bec3c71d71a7d9e4a8c0c5a3ac4054a4a7077806cf4c1256"
+    },
+    {
+      "id": "E022",
+      "kind": "local",
+      "path": "local/research/codex/bomb-position-r1/dynamic-replay-output.txt",
+      "bytes": 2601,
+      "sha256": "c9ba7bff59896776507213fe0748f32eaeb017635bd95bc1a7a6f064fef5f69d"
+    },
+    {
+      "id": "E023",
+      "kind": "local",
+      "path": "local/research/codex/bomb-position-r1/encoded-wrapper-snapshots.json",
+      "bytes": 4173,
+      "sha256": "5bd86bd141d977a759937d27682616c006b9d556bc50e8b6d7138e58f19ce4de"
+    },
+    {
+      "id": "E024",
+      "kind": "local",
+      "path": "local/research/codex/bomb-position-r1/exvillage-dynamic-118-native.json",
+      "bytes": 907,
+      "sha256": "983a5c34cad400113d01f2c8a08a9bf8e9f9aec885f9938da0971994dd53a87a"
+    },
+    {
+      "id": "E025",
+      "kind": "local",
+      "path": "local/research/codex/bomb-position-r1/exvillage-dynamic-hashes.json",
+      "bytes": 35282,
+      "sha256": "4f5a12b927e870399dc514279cc80da3376687acad147b0a0be1d8de1633927c"
+    },
+    {
+      "id": "E026",
+      "kind": "local",
+      "path": "local/research/codex/bomb-position-r1/exvillage-dynamic-launcher.log",
+      "bytes": 41821,
+      "sha256": "0a49f38dfdddc5ac2404de18c0d7527a4e26a41135cb3d090a1d20dfa8265474"
+    },
+    {
+      "id": "E027",
+      "kind": "local",
+      "path": "local/research/codex/bomb-position-r1/exvillage-dynamic-oracle.json",
+      "bytes": 160350,
+      "sha256": "92887bb615e9823d421f6badfe0655a165a2404bc7b5f8c6be6d66d648ec7434"
+    },
+    {
+      "id": "E028",
+      "kind": "local",
+      "path": "local/research/codex/bomb-position-r1/exvillage-dynamic-recipe.json",
+      "bytes": 1011,
+      "sha256": "38b09dae6692e6e0a0bad3a15aba9ca87fcba73d0502651a69d10dad91269201"
+    },
+    {
+      "id": "E029",
+      "kind": "local",
+      "path": "local/research/codex/bomb-position-r1/exvillage-dynamic-snapshots-native.json",
+      "bytes": 2624,
+      "sha256": "9af2963b9a40faaec3cd0c04dd6097e90a1c3bb3c3c5cb65a8856d04e97f1a0a"
+    },
+    {
+      "id": "E030",
+      "kind": "local",
+      "path": "local/research/codex/bomb-position-r1/exvillage-dynamic-wrappers.json",
+      "bytes": 6386,
+      "sha256": "7a5bc3e3aeae25d9f0dae13b316255d6e461b06563862c3446fe351f2cb10d2b"
+    },
+    {
+      "id": "E031",
+      "kind": "local",
+      "path": "local/research/codex/bomb-position-r1/exvillage-fixtures.json",
+      "bytes": 3941,
+      "sha256": "c588992aaf9bbe8f627c84cac69a9340ae6db0e8c5d48dc4e43b12bd50145adc"
+    },
+    {
+      "id": "E032",
+      "kind": "local",
+      "path": "local/research/codex/bomb-position-r1/exvillage-replay-output.txt",
+      "bytes": 2649,
+      "sha256": "9f3b533299cc07d1a6dc8cc968d40cb5c2eed143b2383ec9158c01a6b3509011"
+    },
+    {
+      "id": "E033",
+      "kind": "local",
+      "path": "local/research/codex/bomb-position-r1/exvillage-second-play196-fixture.json",
+      "bytes": 397,
+      "sha256": "6b0f1765f1c0ecdb1332133ad29f3424029f6d172ddea21c4c4292d11f57aaf1"
+    },
+    {
+      "id": "E034",
+      "kind": "local",
+      "path": "local/research/codex/bomb-position-r1/exvillage-second-play196.bin",
+      "bytes": 45,
+      "sha256": "93370d067f3adafa89b6fde6898954b5cd55dc1b6e98e1a29168e68376a50e60"
+    },
+    {
+      "id": "E035",
+      "kind": "local",
+      "path": "local/research/codex/bomb-position-r1/exvillage-second-start121-fixture.json",
+      "bytes": 649,
+      "sha256": "1af4e509fd211d5e354a10cdda392f95522a3e003252e22d60147980c62cf266"
+    },
+    {
+      "id": "E036",
+      "kind": "local",
+      "path": "local/research/codex/bomb-position-r1/exvillage-second-start121.bin",
+      "bytes": 167,
+      "sha256": "ae6da08a5c5114379f30b4a23c1e74d15fb5e42d457df15190e63283f4657cf7"
+    },
+    {
+      "id": "E037",
+      "kind": "local",
+      "path": "local/research/codex/bomb-position-r1/exvillage117-fixture.json",
+      "bytes": 387,
+      "sha256": "df55cbed35e193ad84315869b7a6e53143cd6b8dff3355054dba7f25a5718fdc"
+    },
+    {
+      "id": "E038",
+      "kind": "local",
+      "path": "local/research/codex/bomb-position-r1/exvillage117.bin",
+      "bytes": 46,
+      "sha256": "7fd36d5d2b8ff284fe763e138280ff7ce1b50db83dca2355f33fced8283bc0bc"
+    },
+    {
+      "id": "E039",
+      "kind": "local",
+      "path": "local/research/codex/bomb-position-r1/exvillage121-fixture.json",
+      "bytes": 640,
+      "sha256": "7fce75ae3dbde2e5a2905abb6e55977211c65ee27f2737f3e120a899f4b095d8"
+    },
+    {
+      "id": "E040",
+      "kind": "local",
+      "path": "local/research/codex/bomb-position-r1/exvillage121.bin",
+      "bytes": 167,
+      "sha256": "2e6319e9e5eb55a9ad6594710ec4aeaa749b6f8eee72a1e0016beb44885a90c0"
+    },
+    {
+      "id": "E041",
+      "kind": "local",
+      "path": "local/research/codex/bomb-position-r1/exvillage196-fixture.json",
+      "bytes": 379,
+      "sha256": "80c5626549b3f9e436f630d6efe1301153cdf63d646b6c41bc3f9d46ef8e1fae"
+    },
+    {
+      "id": "E042",
+      "kind": "local",
+      "path": "local/research/codex/bomb-position-r1/exvillage196.bin",
+      "bytes": 45,
+      "sha256": "387d6f2b6c3e0eeda401498af890635110016b3756d181d89930c2a4a7a2dcde"
+    },
+    {
+      "id": "E043",
+      "kind": "local",
+      "path": "local/research/codex/bomb-position-r1/exvillage238-fixture.json",
+      "bytes": 599,
+      "sha256": "5fd24d691e28fc29a33acd391accef8515066bde32f0200da36f0fb712227782"
+    },
+    {
+      "id": "E044",
+      "kind": "local",
+      "path": "local/research/codex/bomb-position-r1/exvillage238.bin",
+      "bytes": 117,
+      "sha256": "f5f5c0e33ddf01a6c8d32ab18e6874a2ed5c86784e3dea16ed3fd8a0f73ca750"
+    },
+    {
+      "id": "E045",
+      "kind": "local",
+      "path": "local/research/codex/bomb-position-r1/exvillage241-fixture.json",
+      "bytes": 400,
+      "sha256": "b780e812a3567e49f67ee24042aaf556ffd7cddbdd64000da1c433f119139148"
+    },
+    {
+      "id": "E046",
+      "kind": "local",
+      "path": "local/research/codex/bomb-position-r1/exvillage241.bin",
+      "bytes": 69,
+      "sha256": "f5f8daefcbe7071aef852946961dc60e4f2583828a6359064c7505afd8cc7d43"
+    },
+    {
+      "id": "E047",
+      "kind": "local",
+      "path": "local/research/codex/bomb-position-r1/fixtures-native.json",
+      "bytes": 23449,
+      "sha256": "e927d4a3738ab941f9d8af3acc05b43f1ab20e35f6f2ff6286e2ff37128ddd84"
+    },
+    {
+      "id": "E048",
+      "kind": "local",
+      "path": "local/research/codex/bomb-position-r1/map-candidates.json",
+      "bytes": 832,
+      "sha256": "2808ff2b9563c0bc6f77be3e397f082a07b98dd1ed2b6d1037f34d88b2b85b4c"
+    },
+    {
+      "id": "E049",
+      "kind": "local",
+      "path": "local/research/codex/bomb-position-r1/measurement-notes.json",
+      "bytes": 2884,
+      "sha256": "7613ed08cf661730de47f4c2585b580077cb7e05ecd485176569661401e7bfce"
+    },
+    {
+      "id": "E050",
+      "kind": "local",
+      "path": "local/research/codex/bomb-position-r1/parse-snapshots.py",
+      "bytes": 1624,
+      "sha256": "1939f6b3d25280cde1df235fbc117558d89e1cfa24d2e9d1001213bc0241ed97"
+    },
+    {
+      "id": "E051",
+      "kind": "local",
+      "path": "local/research/codex/bomb-position-r1/position-control-118-native.json",
+      "bytes": 911,
+      "sha256": "f3fb38655c2c53d718b6d77d4172e3bae2cf43eace68b3393eb1c9106333c528"
+    },
+    {
+      "id": "E052",
+      "kind": "local",
+      "path": "local/research/codex/bomb-position-r1/position-control-hashes.json",
+      "bytes": 34694,
+      "sha256": "8b077f3239d830225a7b2de2e56d39297afe800755e124aa7a3320c217cd4061"
+    },
+    {
+      "id": "E053",
+      "kind": "local",
+      "path": "local/research/codex/bomb-position-r1/position-control-launcher.log",
+      "bytes": 40558,
+      "sha256": "f0c92959f78f212a83cfedf1af0c0461a586008b0ffba44800f761f6f731b57f"
+    },
+    {
+      "id": "E054",
+      "kind": "local",
+      "path": "local/research/codex/bomb-position-r1/position-control-oracle.json",
+      "bytes": 157355,
+      "sha256": "cfaff64d6eaac49d1b07db46639f9eb242c78534950120cc74b9d5f7c0628538"
+    },
+    {
+      "id": "E055",
+      "kind": "local",
+      "path": "local/research/codex/bomb-position-r1/position-control-recipe.json",
+      "bytes": 1013,
+      "sha256": "165082fc7cdef58fda7f166f037fada1f773e58c06557a395d39d78228223f83"
+    },
+    {
+      "id": "E056",
+      "kind": "local",
+      "path": "local/research/codex/bomb-position-r1/position-control.gdb",
+      "bytes": 8622,
+      "sha256": "da59d4921534eca788c7909da76c3b5bfd03cd7d7c318cc0bb8b3c4c612f2390"
+    },
+    {
+      "id": "E057",
+      "kind": "local",
+      "path": "local/research/codex/bomb-position-r1/position-dynamic-118-native.json",
+      "bytes": 911,
+      "sha256": "f3fb38655c2c53d718b6d77d4172e3bae2cf43eace68b3393eb1c9106333c528"
+    },
+    {
+      "id": "E058",
+      "kind": "local",
+      "path": "local/research/codex/bomb-position-r1/position-dynamic-hashes.json",
+      "bytes": 35112,
+      "sha256": "3b76fd547b4317d0715f4ebb777b5d8462a1e4cbc049bec759d88f6688893845"
+    },
+    {
+      "id": "E059",
+      "kind": "local",
+      "path": "local/research/codex/bomb-position-r1/position-dynamic-launcher.log",
+      "bytes": 41346,
+      "sha256": "59e8556deeae9286368abf2f043bfe3a52b9078bb4f430c99ae99c9da14a0426"
+    },
+    {
+      "id": "E060",
+      "kind": "local",
+      "path": "local/research/codex/bomb-position-r1/position-dynamic-oracle.json",
+      "bytes": 157361,
+      "sha256": "b45d72097305a478ce5d8071a339ba689b360add085e18987a60678307a5dcb8"
+    },
+    {
+      "id": "E061",
+      "kind": "local",
+      "path": "local/research/codex/bomb-position-r1/position-dynamic-recipe.json",
+      "bytes": 1012,
+      "sha256": "5715f15ffc5301da516dfa85848f708b4ccea537922c209f9e5c02b6396640cc"
+    },
+    {
+      "id": "E062",
+      "kind": "local",
+      "path": "local/research/codex/bomb-position-r1/position-dynamic-snapshots-native.json",
+      "bytes": 1486,
+      "sha256": "a30c1d9ae73df73e5aefceeb873b897cd4d2a0fdf234e48f297779234b0bcc28"
+    },
+    {
+      "id": "E063",
+      "kind": "local",
+      "path": "local/research/codex/bomb-position-r1/position-dynamic-wrappers.json",
+      "bytes": 4949,
+      "sha256": "7750e7847371565a39ffc7ea1ae6980f22cdf44fed6a33fda55df670faa7c521"
+    },
+    {
+      "id": "E064",
+      "kind": "local",
+      "path": "local/research/codex/bomb-position-r1/position-dynamic.gdb",
+      "bytes": 9215,
+      "sha256": "a8662ee8edc0fb52075389295e06e7d10a2a0e722822327246fef748738a2773"
+    },
+    {
+      "id": "E065",
+      "kind": "local",
+      "path": "local/research/codex/bomb-position-r1/prepare-dynamic.py",
+      "bytes": 4631,
+      "sha256": "e10db3f3b44d61c66abfe4dccd0382a5ca650f00e475dd0941ef83730b12cf2e"
+    },
+    {
+      "id": "E066",
+      "kind": "local",
+      "path": "local/research/codex/bomb-position-r1/rea-route.json",
+      "bytes": 481,
+      "sha256": "97f90380b67f317933834a039ccf7ab81fe919d4817f262c14bcf42d92c82750"
+    },
+    {
+      "id": "E067",
+      "kind": "local",
+      "path": "local/research/codex/bomb-position-r1/read_static.py",
+      "bytes": 672,
+      "sha256": "644086b26556659dcfcca0107367132ffe5929772efeb3836b4e3518b630a62d"
+    },
+    {
+      "id": "E068",
+      "kind": "local",
+      "path": "local/research/codex/bomb-position-r1/replay-run.py",
+      "bytes": 3004,
+      "sha256": "d7d51fad0c7947200ea87e5e3b02627f0cd81f346285c2e612cd519148560710"
+    },
+    {
+      "id": "E069",
+      "kind": "local",
+      "path": "local/research/codex/bomb-position-r1/run_probe.py",
+      "bytes": 1069,
+      "sha256": "789c585107246b1f8d8700e99e5e48f368389e2fdda204e3817bc305bb5201d8"
+    },
+    {
+      "id": "E070",
+      "kind": "local",
+      "path": "local/research/codex/bomb-position-r1/runtime-summary.json",
+      "bytes": 6192,
+      "sha256": "1ad5b371511a09b09c1a14be56a518e7d66edea1870ac4f1796293d21ca5d2be"
+    },
+    {
+      "id": "E071",
+      "kind": "local",
+      "path": "local/research/codex/bomb-position-r1/seal_run.py",
+      "bytes": 627,
+      "sha256": "fa11f078ad4894837e41c46701dfa1b8166c7e5521ec79c52bd62939f0e35143"
+    },
+    {
+      "id": "E072",
+      "kind": "local",
+      "path": "local/research/codex/bomb-position-r1/snapshots-native.json",
+      "bytes": 1486,
+      "sha256": "a30c1d9ae73df73e5aefceeb873b897cd4d2a0fdf234e48f297779234b0bcc28"
+    },
+    {
+      "id": "E073",
+      "kind": "local",
+      "path": "local/research/codex/bomb-position-r1/spawn-getter-calls.json",
+      "bytes": 246,
+      "sha256": "1b4da0c11ea6089989894d77e20efc31a3cd889a4abfec73aee67826f303fcc5"
+    },
+    {
+      "id": "E074",
+      "kind": "local",
+      "path": "local/research/codex/bomb-position-r1/spawn-replay-output.txt",
+      "bytes": 2552,
+      "sha256": "aa4e02aef0dfe2c32282a9785d5c44ef29c87cdb65c3ad955e8c375632f46af6"
+    },
+    {
+      "id": "E075",
+      "kind": "local",
+      "path": "local/research/codex/bomb-position-r1/spawn-track-118-native.json",
+      "bytes": 911,
+      "sha256": "0423762bf2ad84f1798edcdd2fa0a2f6113ff454dee55b4a076e516e2cc7c55e"
+    },
+    {
+      "id": "E076",
+      "kind": "local",
+      "path": "local/research/codex/bomb-position-r1/spawn-track-hashes.json",
+      "bytes": 34252,
+      "sha256": "820e0685c015fd75ffc145e3b202175beca7ffc4961a07d53527b59ca2a2e15a"
+    },
+    {
+      "id": "E077",
+      "kind": "local",
+      "path": "local/research/codex/bomb-position-r1/spawn-track-launcher.log",
+      "bytes": 40963,
+      "sha256": "1fc1714f535e6584e4e95f2202697047ea3beda584f59d179ac3306fe793f4f1"
+    },
+    {
+      "id": "E078",
+      "kind": "local",
+      "path": "local/research/codex/bomb-position-r1/spawn-track-oracle.json",
+      "bytes": 154526,
+      "sha256": "8b0aab5f5fec69c8d0cfa45cb34fca2b1dbdd5d9fd18a1b6d85c569631e741b5"
+    },
+    {
+      "id": "E079",
+      "kind": "local",
+      "path": "local/research/codex/bomb-position-r1/spawn-track-recipe.json",
+      "bytes": 997,
+      "sha256": "69d1ebc7d29499258fb95d2d60040a4c693f66cd2a30818f29ed2b16a99c2634"
+    },
+    {
+      "id": "E080",
+      "kind": "local",
+      "path": "local/research/codex/bomb-position-r1/spawn-track-snapshots-native.json",
+      "bytes": 2642,
+      "sha256": "8d3b6b1eab25e64816ba838eafb35fecd4db481012b3915b296596a817f8e1c7"
+    },
+    {
+      "id": "E081",
+      "kind": "local",
+      "path": "local/research/codex/bomb-position-r1/spawn-track-wrappers.json",
+      "bytes": 6398,
+      "sha256": "380c142a1563576a24ccfc3ee96807d7c2c7b159b439d42f060fb306784631e4"
+    },
+    {
+      "id": "E082",
+      "kind": "local",
+      "path": "local/research/codex/bomb-position-r1/spawn-track.gdb",
+      "bytes": 10002,
+      "sha256": "50db65e1106c2ef971e23228e14808f44cf1232b3837eb271dd964e725b8f5ba"
+    },
+    {
+      "id": "E083",
+      "kind": "local",
+      "path": "local/research/codex/bomb-position-r1/static-actor-init.txt",
+      "bytes": 7752,
+      "sha256": "8e20d07057b84bf448e46d21cbb59d3e68ba14a73b2f3effff241843599ff211"
+    },
+    {
+      "id": "E084",
+      "kind": "local",
+      "path": "local/research/codex/bomb-position-r1/static-follow-output.txt",
+      "bytes": 13232,
+      "sha256": "a4f7aafb74ec0038b0cb324c09ee8bd2210d0fa5e69a2feb91593237cf74a5e7"
+    },
+    {
+      "id": "E085",
+      "kind": "local",
+      "path": "local/research/codex/bomb-position-r1/static-getter-output.txt",
+      "bytes": 13545,
+      "sha256": "b4602b30177c53c6f657773e544594f08b79d4fac53469bae03c6f2509827634"
+    },
+    {
+      "id": "E086",
+      "kind": "local",
+      "path": "local/research/codex/bomb-position-r1/static-getter-tail-output.txt",
+      "bytes": 1686,
+      "sha256": "1a946774b2ff36124334dde986c2b4e25952aea0651b4aa338ba0c2d374db684"
+    },
+    {
+      "id": "E087",
+      "kind": "local",
+      "path": "local/research/codex/bomb-position-r1/static-interface-output.txt",
+      "bytes": 27897,
+      "sha256": "5f8a36c94cfa0dc066f215eec369f14fbb2deccbb97410a0ab30238a9dbf12e9"
+    },
+    {
+      "id": "E088",
+      "kind": "local",
+      "path": "local/research/codex/bomb-position-r1/static-map-name.txt",
+      "bytes": 2518,
+      "sha256": "e671cd3244b5fc51e2a9ebb1bbf43e0eb84c21324ac847431b3c6a54edf4691b"
+    },
+    {
+      "id": "E089",
+      "kind": "local",
+      "path": "local/research/codex/bomb-position-r1/static-runtime-code-match.json",
+      "bytes": 2857,
+      "sha256": "d51406a9041d5b8863952a1e1fae6dc483cf246cf8303b3d8ca3c7c3f3b15efc"
+    },
+    {
+      "id": "E090",
+      "kind": "local",
+      "path": "local/research/codex/bomb-position-r1/static-spawn-caller.txt",
+      "bytes": 5111,
+      "sha256": "aefaf94025a0677b40a42fff0cd63880527d11f52fadf2f2d66f0dd8629c6e57"
+    },
+    {
+      "id": "E091",
+      "kind": "local",
+      "path": "local/research/codex/bomb-position-r1/static-spawn-loop.txt",
+      "bytes": 19034,
+      "sha256": "ee04bd3076cf9046c7a68bf8243ae913e0c04d493231daed6a204163bde02986"
+    },
+    {
+      "id": "E092",
+      "kind": "local",
+      "path": "local/research/codex/bomb-position-r1/static-spawn-navigation.txt",
+      "bytes": 5312,
+      "sha256": "14c4fb5dd2250c9a83dd6bc02fe1abca3f973a47151bb0e18d3c5eeefa4ded69"
+    },
+    {
+      "id": "E093",
+      "kind": "local",
+      "path": "local/research/codex/bomb-position-r1/static-spawn-point.txt",
+      "bytes": 3378,
+      "sha256": "821b3c5f482b4001e2d441dfd2319af4b652bcb0d75bf8dba7ebaa7f1adfc232"
+    },
+    {
+      "id": "E094",
+      "kind": "local",
+      "path": "local/research/codex/bomb-position-r1/sync_docs.py",
+      "bytes": 11814,
+      "sha256": "e5cb37941934ebb581c079e5598f129ac57078b138c8dcc77ed3a73c5678323d"
+    },
+    {
+      "id": "E095",
+      "kind": "local",
+      "path": "local/research/codex/bomb-position-r1/verification.json",
+      "bytes": 167376,
+      "sha256": "363d958927f780645b9e9a2820df87877bc386757ac333df240d58cc9956a052"
+    },
+    {
+      "id": "E096",
+      "kind": "local",
+      "path": "local/research/codex/bomb-position-r1/verify-fixtures.py",
+      "bytes": 2556,
+      "sha256": "be860f6ce8ddccfc1779c690ad1925b651ed2bc700ab327d8e645b56c679be69"
+    },
+    {
+      "id": "E097",
+      "kind": "local",
+      "path": "local/research/codex/bomb-position-r1/verify-snapshots.py",
+      "bytes": 1188,
+      "sha256": "3c99f684384b60ae508a2d1c73a669dce0ecff5fffce6cddd88eff92d1d375b7"
+    },
+    {
+      "id": "E098",
+      "kind": "local",
+      "path": "local/research/codex/bomb-position-r1/verify.py",
+      "bytes": 6144,
+      "sha256": "298ab529c4d4b9e9d3392f8721a34d3b8520f983013919cc8ae6102a91432cda"
+    },
+    {
+      "id": "E099",
+      "kind": "local",
+      "path": "local/research/codex/bomb-position-r1/village-dynamic-118-native.json",
+      "bytes": 911,
+      "sha256": "f8240711203b30b2c7f0fa24465027f0b311fbaa50943847ea4152ff321fa337"
+    },
+    {
+      "id": "E100",
+      "kind": "local",
+      "path": "local/research/codex/bomb-position-r1/village-dynamic-hashes.json",
+      "bytes": 34938,
+      "sha256": "9f275cf22c496864bc3e1bae19c47405cdc19e51a9be1ce827cd0dd2ac9af1a6"
+    },
+    {
+      "id": "E101",
+      "kind": "local",
+      "path": "local/research/codex/bomb-position-r1/village-dynamic-launcher.log",
+      "bytes": 39562,
+      "sha256": "57892dc83f430b7aad140ec6041289f7efc3a9a934116eede2b2094f745a6ab8"
+    },
+    {
+      "id": "E102",
+      "kind": "local",
+      "path": "local/research/codex/bomb-position-r1/village-dynamic-oracle.json",
+      "bytes": 148484,
+      "sha256": "de92736c096f8d2384c8ca3877bc5d879842acf0fefb63849740b8a2b2c266bb"
+    },
+    {
+      "id": "E103",
+      "kind": "local",
+      "path": "local/research/codex/bomb-position-r1/village-dynamic-recipe.json",
+      "bytes": 1005,
+      "sha256": "4952266c0cf2f0e3044ca518106e104ab1b6088f25efdfd7d9a9ada850968558"
+    },
+    {
+      "id": "E104",
+      "kind": "local",
+      "path": "local/research/codex/bomb-position-r1/village-dynamic-snapshots-native.json",
+      "bytes": 2628,
+      "sha256": "125efb6bd46d4d14c210c7061d2bc9e1bd657c40279574c148cdc9b7947eea88"
+    },
+    {
+      "id": "E105",
+      "kind": "local",
+      "path": "local/research/codex/bomb-position-r1/village-dynamic-wrappers.json",
+      "bytes": 6388,
+      "sha256": "359cc3a0311a931ba460d546172d78e763d56ce5e5c491fc1be28482c206d656"
+    },
+    {
+      "id": "E106",
+      "kind": "local",
+      "path": "local/research/codex/bomb-position-r1/village-fixtures.json",
+      "bytes": 3915,
+      "sha256": "6e98256eb5689bfa77b6660ba79059d7a074a3bfc049fca3d0842851f74fc2fd"
+    },
+    {
+      "id": "E107",
+      "kind": "local",
+      "path": "local/research/codex/bomb-position-r1/village-replay-output.txt",
+      "bytes": 2458,
+      "sha256": "d27b43341bc9d4dfb75b9c5f6ffecc811c6b4e37ee01ba07e57853a6fdcbb808"
+    },
+    {
+      "id": "E108",
+      "kind": "local",
+      "path": "local/research/codex/bomb-position-r1/village-second-play196-fixture.json",
+      "bytes": 398,
+      "sha256": "7a2993ca2a07e6caef6f6b45f5cd3c658926f5cd07b6ad0930179cf3f4077656"
+    },
+    {
+      "id": "E109",
+      "kind": "local",
+      "path": "local/research/codex/bomb-position-r1/village-second-play196.bin",
+      "bytes": 45,
+      "sha256": "04cb953e605b788599e7a6ccd2ce38d60c84b637e9facff7e696b12dde473502"
+    },
+    {
+      "id": "E110",
+      "kind": "local",
+      "path": "local/research/codex/bomb-position-r1/village-second-start121-fixture.json",
+      "bytes": 644,
+      "sha256": "ffc9da033dfcb14bb5bfd7526912899625f9121b8dd24f2a47a6f536cb5b1422"
+    },
+    {
+      "id": "E111",
+      "kind": "local",
+      "path": "local/research/codex/bomb-position-r1/village-second-start121.bin",
+      "bytes": 165,
+      "sha256": "be5e484952c278e6be043a9410639855831ee2bcaae1698f3f9cf306b304c175"
+    },
+    {
+      "id": "E112",
+      "kind": "local",
+      "path": "local/research/codex/bomb-position-r1/village117-fixture.json",
+      "bytes": 388,
+      "sha256": "75bf2e1532ba168c0a8a2ccbe995d51a129db27de90e18078a21f27c4a4e6a8b"
+    },
+    {
+      "id": "E113",
+      "kind": "local",
+      "path": "local/research/codex/bomb-position-r1/village117.bin",
+      "bytes": 46,
+      "sha256": "a68c27c466780fae3b0a9a52732b4da793ab477147bc9c5d580935f5c42510b3"
+    },
+    {
+      "id": "E114",
+      "kind": "local",
+      "path": "local/research/codex/bomb-position-r1/village121-fixture.json",
+      "bytes": 635,
+      "sha256": "26629e70d27837a2e2ba5727a416571a93e0b4320448e6126e2cfe7b027ad7fe"
+    },
+    {
+      "id": "E115",
+      "kind": "local",
+      "path": "local/research/codex/bomb-position-r1/village121.bin",
+      "bytes": 165,
+      "sha256": "9c84df6c0fec27c8830c9fefb35a8cd0cb310d6a417e7e8bd3b55511e2b8577b"
+    },
+    {
+      "id": "E116",
+      "kind": "local",
+      "path": "local/research/codex/bomb-position-r1/village196-fixture.json",
+      "bytes": 380,
+      "sha256": "ecb42697e4de295d230af11f217df19c761f2ed94a97c133d55735101b70dc0d"
+    },
+    {
+      "id": "E117",
+      "kind": "local",
+      "path": "local/research/codex/bomb-position-r1/village196.bin",
+      "bytes": 45,
+      "sha256": "7d7f2b5404ef5f5a52b82baa0a08592a7b591ad514698d664d62c97e37512678"
+    },
+    {
+      "id": "E118",
+      "kind": "local",
+      "path": "local/research/codex/bomb-position-r1/village238-fixture.json",
+      "bytes": 594,
+      "sha256": "b39cab4532e13c0b26864bdff8ef5fe2090f6f47c8ffa2536e0ee076527ae945"
+    },
+    {
+      "id": "E119",
+      "kind": "local",
+      "path": "local/research/codex/bomb-position-r1/village238.bin",
+      "bytes": 115,
+      "sha256": "a86861b63c6027e0d0dc93f278a923ce9804c3fbfe53fc73c91a555fccb9854e"
+    },
+    {
+      "id": "E120",
+      "kind": "local",
+      "path": "local/research/codex/bomb-position-r1/village241-fixture.json",
+      "bytes": 400,
+      "sha256": "6bdfe194f3f4548442d9e574f8f5cc88f3049426cc0d7e8d5eda8925578bd675"
+    },
+    {
+      "id": "E121",
+      "kind": "local",
+      "path": "local/research/codex/bomb-position-r1/village241.bin",
+      "bytes": 69,
+      "sha256": "cb4af960b35a70772c64920fc64b2452f6637d016677aa219e1156c93a6271aa"
+    },
+    {
+      "id": "E122",
+      "kind": "local",
+      "path": "local/research/codex/bomb-position-r1/exvillage-dynamic/run.json",
+      "bytes": 52061,
+      "sha256": "da1135cdcddba060313260dfc064d4fbbb96e8b16e0846020f2ce34bdf79f5de"
+    },
+    {
+      "id": "E123",
+      "kind": "local",
+      "path": "local/research/codex/bomb-position-r1/exvillage-dynamic/client.log",
+      "bytes": 36827,
+      "sha256": "7eeca04ddd4fb3d8ec8ed267bbcefca2b173e6e30e6763f244e94b9f46a4508b"
+    },
+    {
+      "id": "E124",
+      "kind": "local",
+      "path": "local/research/codex/bomb-position-r1/exvillage-dynamic/CALog-run.txt",
+      "bytes": 5390,
+      "sha256": "9c1bebc83f5339747d41a95b6084c279ea6c06c50e52931c95977321033b079b"
+    },
+    {
+      "id": "E125",
+      "kind": "local",
+      "path": "local/research/codex/bomb-position-r1/exvillage-dynamic/debug-commands.txt",
+      "bytes": 10002,
+      "sha256": "50db65e1106c2ef971e23228e14808f44cf1232b3837eb271dd964e725b8f5ba"
+    },
+    {
+      "id": "E126",
+      "kind": "local",
+      "path": "local/research/codex/bomb-position-r1/exvillage-dynamic/dynamic159-round1.bin",
+      "bytes": 77,
+      "sha256": "f5b00dc36dddcba138ee6f96a437b46d4c5ae0e233b47947332ef2d91f624703"
+    },
+    {
+      "id": "E127",
+      "kind": "local",
+      "path": "local/research/codex/bomb-position-r1/exvillage-dynamic/dynamic159-round2.bin",
+      "bytes": 77,
+      "sha256": "a85191303744f5b2691870721bf26021e88eb47a14a54667ee043dc4d61b6438"
+    },
+    {
+      "id": "E128",
+      "kind": "local",
+      "path": "local/research/codex/bomb-position-r1/position-control/run.json",
+      "bytes": 49896,
+      "sha256": "e2169bb2a5225f2daeff9301308210fe73a4229ad108a7039f5f334431bb0dff"
+    },
+    {
+      "id": "E129",
+      "kind": "local",
+      "path": "local/research/codex/bomb-position-r1/position-control/client.log",
+      "bytes": 26679,
+      "sha256": "2aef24239190e4207bfa58ce11609329a190b80ccd54e74aecf2e1830509cb9e"
+    },
+    {
+      "id": "E130",
+      "kind": "local",
+      "path": "local/research/codex/bomb-position-r1/position-control/CALog-run.txt",
+      "bytes": 5314,
+      "sha256": "c222e4bdddcf60fde117a52e956a48610617e5f52747650e86a8cbb3530172d6"
+    },
+    {
+      "id": "E131",
+      "kind": "local",
+      "path": "local/research/codex/bomb-position-r1/position-control/debug-commands.txt",
+      "bytes": 8622,
+      "sha256": "da59d4921534eca788c7909da76c3b5bfd03cd7d7c318cc0bb8b3c4c612f2390"
+    },
+    {
+      "id": "E132",
+      "kind": "local",
+      "path": "local/research/codex/bomb-position-r1/position-dynamic/run.json",
+      "bytes": 51586,
+      "sha256": "d38e44fa7d3f7135dc0f1fbb0189d9e78c625c1a16693a49bc0ae5275c237d9d"
+    },
+    {
+      "id": "E133",
+      "kind": "local",
+      "path": "local/research/codex/bomb-position-r1/position-dynamic/client.log",
+      "bytes": 29006,
+      "sha256": "fcaa49809edf0aa6f105f06d62e42cf17448ba674acde75b99485c37253361ba"
+    },
+    {
+      "id": "E134",
+      "kind": "local",
+      "path": "local/research/codex/bomb-position-r1/position-dynamic/CALog-run.txt",
+      "bytes": 5261,
+      "sha256": "d6da6f9ed716526b6e1cc37f8c789610c1c3ff5ae830aa7f81c1036fef3df404"
+    },
+    {
+      "id": "E135",
+      "kind": "local",
+      "path": "local/research/codex/bomb-position-r1/position-dynamic/debug-commands.txt",
+      "bytes": 9215,
+      "sha256": "a8662ee8edc0fb52075389295e06e7d10a2a0e722822327246fef748738a2773"
+    },
+    {
+      "id": "E136",
+      "kind": "local",
+      "path": "local/research/codex/bomb-position-r1/position-dynamic/dynamic159-round1.bin",
+      "bytes": 77,
+      "sha256": "aafc349b2b6f518fffbac1a02df7e7c7c94a2c328fdb35d68c8fd67bb1ebef01"
+    },
+    {
+      "id": "E137",
+      "kind": "local",
+      "path": "local/research/codex/bomb-position-r1/position-dynamic/dynamic159-round2.bin",
+      "bytes": 77,
+      "sha256": "ea3f47aea2a2b3d1342960128f3805d94dd2501ee587d016247d87be467f110d"
+    },
+    {
+      "id": "E138",
+      "kind": "local",
+      "path": "local/research/codex/bomb-position-r1/spawn-track/run.json",
+      "bytes": 51165,
+      "sha256": "cdc52c36c1877003b4a2ecda78f745195509d21a75d9a3a85a252815af13bf82"
+    },
+    {
+      "id": "E139",
+      "kind": "local",
+      "path": "local/research/codex/bomb-position-r1/spawn-track/client.log",
+      "bytes": 36819,
+      "sha256": "496b9135061b0ef97850ffbe948cce5787e034bfb849500d15cc17b2d29ca109"
+    },
+    {
+      "id": "E140",
+      "kind": "local",
+      "path": "local/research/codex/bomb-position-r1/spawn-track/CALog-run.txt",
+      "bytes": 5232,
+      "sha256": "5d03c635ec6407484f0ea133f77b8bd29ffa5e28855f902487904989b9184fc9"
+    },
+    {
+      "id": "E141",
+      "kind": "local",
+      "path": "local/research/codex/bomb-position-r1/spawn-track/debug-commands.txt",
+      "bytes": 10002,
+      "sha256": "50db65e1106c2ef971e23228e14808f44cf1232b3837eb271dd964e725b8f5ba"
+    },
+    {
+      "id": "E142",
+      "kind": "local",
+      "path": "local/research/codex/bomb-position-r1/spawn-track/dynamic159-round1.bin",
+      "bytes": 77,
+      "sha256": "aafc349b2b6f518fffbac1a02df7e7c7c94a2c328fdb35d68c8fd67bb1ebef01"
+    },
+    {
+      "id": "E143",
+      "kind": "local",
+      "path": "local/research/codex/bomb-position-r1/spawn-track/dynamic159-round2.bin",
+      "bytes": 77,
+      "sha256": "ea3f47aea2a2b3d1342960128f3805d94dd2501ee587d016247d87be467f110d"
+    },
+    {
+      "id": "E144",
+      "kind": "local",
+      "path": "local/research/codex/bomb-position-r1/village-dynamic/run.json",
+      "bytes": 49460,
+      "sha256": "019d7d4572a20039f138f16fee752ca204967b47a1f315a07fa102733cf517d1"
+    },
+    {
+      "id": "E145",
+      "kind": "local",
+      "path": "local/research/codex/bomb-position-r1/village-dynamic/client.log",
+      "bytes": 36843,
+      "sha256": "dda79e70557e02234206cdfc6eb0e4d17ddc6972d002b3e267a0277c9fa8735f"
+    },
+    {
+      "id": "E146",
+      "kind": "local",
+      "path": "local/research/codex/bomb-position-r1/village-dynamic/CALog-run.txt",
+      "bytes": 4924,
+      "sha256": "89e105682752f01b93fc597f167c1c2a68895696153aba7ab64cfe4ead73143d"
+    },
+    {
+      "id": "E147",
+      "kind": "local",
+      "path": "local/research/codex/bomb-position-r1/village-dynamic/debug-commands.txt",
+      "bytes": 10002,
+      "sha256": "50db65e1106c2ef971e23228e14808f44cf1232b3837eb271dd964e725b8f5ba"
+    },
+    {
+      "id": "E148",
+      "kind": "local",
+      "path": "local/research/codex/bomb-position-r1/village-dynamic/dynamic159-round1.bin",
+      "bytes": 77,
+      "sha256": "fd3e72c950988db9047676b3ad3f52a5487c7a1c39807308a4e7b33cd209a4b6"
+    },
+    {
+      "id": "E149",
+      "kind": "local",
+      "path": "local/research/codex/bomb-position-r1/village-dynamic/dynamic159-round2.bin",
+      "bytes": 77,
+      "sha256": "1bc05fc87c33ed1f05bcf159223ad0a2dabd324ff936903b6cc58e8538d8c3cc"
+    },
+    {
+      "id": "E150",
+      "kind": "local",
+      "path": "local/research/codex/bomb-position-r1/village-dynamic/input-after-space-8.png",
+      "bytes": 153984,
+      "sha256": "2917aee63e9fcf93397b304b73a1c8c2a480a9bae96ea7380d57adb85125a0bf"
+    },
+    {
+      "id": "E151",
+      "kind": "local",
+      "path": "local/research/codex/bomb-position-r1/village-dynamic/second-after-space.png",
+      "bytes": 153564,
+      "sha256": "5a172c8dd2e13215cf40687583f3a31ec76c9327fa3a47f4a4e154f7ab361a9c"
+    },
+    {
+      "id": "E152",
+      "kind": "local",
+      "path": "local/research/codex/bomb-position-r1/exvillage-dynamic/second-after-space.png",
+      "bytes": 127548,
+      "sha256": "a7c2ce7f0960f901b800ce525f1a1eba469d1351ce14f78020d891636d7f52ca"
+    },
+    {
+      "id": "E153",
+      "kind": "local",
+      "path": "local/research/codex/bomb-position-r1/exvillage-dynamic/screen-31.png",
+      "bytes": 135086,
+      "sha256": "8822c1cc0ac452be27402961770cac77d6675f25268ffc5b9003fd5c6993378a"
+    },
+    {
+      "id": "E154",
+      "kind": "local",
+      "path": "local/research/codex/bomb-position-r1/exvillage-dynamic/screen-33.png",
+      "bytes": 149796,
+      "sha256": "7f00a5ff2a1a0d34f0d4ed8be756c4ffb8de275c4ec858576b741641718e270a"
+    },
+    {
+      "id": "E155",
+      "kind": "local",
+      "path": "local/research/codex/bomb-position-r1/exvillage-dynamic/screen-34.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "E156",
+      "kind": "local",
+      "path": "local/research/codex/bomb-position-r1/exvillage-dynamic/screen-36.png",
+      "bytes": 179387,
+      "sha256": "0cdc4cefa603be7aaebf8b96bdda99835fb0e963e727eb01bbaa3c153f0e3719"
+    },
+    {
+      "id": "E157",
+      "kind": "local",
+      "path": "local/research/codex/bomb-position-r1/exvillage-dynamic/screen-38.png",
+      "bytes": 176399,
+      "sha256": "468717662f0e2c70d9bff0443b5a44692b8961af7e9513201cfbbe8f63f98888"
+    },
+    {
+      "id": "E158",
+      "kind": "local",
+      "path": "local/research/codex/wine_probe_repeat2_ready.py",
+      "bytes": 46386,
+      "sha256": "1e4e06bc7b2329e911cb7ffee49c16a56a708fa2c27f43f28f00c861e5db2e07"
+    },
+    {
+      "id": "E159",
+      "kind": "local",
+      "path": "local/research/codex/wine_probe_bomb_dynamic.py",
+      "bytes": 48052,
+      "sha256": "f31433ab556f6253799650c2000c83cc52e8a4ca73a00b1a5f9b3192fb4dcbeb"
+    },
+    {
+      "id": "E160",
+      "kind": "local",
+      "path": "local/research/codex/wine_probe_bomb_village.py",
+      "bytes": 48181,
+      "sha256": "19c7f724b26fa26641d531db70cd23b3531ff3693ef1ecdbb6ee8c3e1d7b290a"
+    },
+    {
+      "id": "E161",
+      "kind": "local",
+      "path": "local/research/codex/wine_probe_bomb_exvillage.py",
+      "bytes": 48199,
+      "sha256": "4eeceb6756a5b94a9c7f9660f638065b04ba109e33eaf1c4bb741367932d3074"
+    },
+    {
+      "id": "E162",
+      "kind": "local",
+      "path": "local/research/codex/bootstrap-copy-oracle.py",
+      "bytes": 2377,
+      "sha256": "8127e0f2fbc385360e878bb68ae3a6680eabbf7456335f0f3db75c7c3b73a8c0"
+    },
+    {
+      "id": "E163",
+      "kind": "local",
+      "path": "local/research/codex/bootstrap-recv-oracle.py",
+      "bytes": 2104,
+      "sha256": "1e86c06540e8fe654564c5bd403f859070f77c9af0d5d11c70c9351198e00ae2"
+    },
+    {
+      "id": "E164",
+      "kind": "local",
+      "path": "local/research/codex/round-go-r1/E2DF80.asm",
+      "bytes": 17188,
+      "sha256": "497c1cb658c639e0f615b7cc0a14b7a3531f827292c2c61a67cd43ddc034b209"
+    },
+    {
+      "id": "E165",
+      "kind": "local",
+      "path": "local/research/codex/round-go-r1/E5E8F0.asm",
+      "bytes": 23601,
+      "sha256": "24acf8073d564072cda5a7b0d41ad9318934a33dae6e07755401f29904254a2a"
+    },
+    {
+      "id": "E166",
+      "kind": "local",
+      "path": "local/research/codex/round-go-r1/E14600.asm",
+      "bytes": 21429,
+      "sha256": "b845e182cc257f2f0835bfda4fcd3052809fe35dd16c74ab431d3e14d4c842ec"
+    },
+    {
+      "id": "E167",
+      "kind": "local",
+      "path": "local/research/codex/round-go-r1/reply159.bin",
+      "bytes": 77,
+      "sha256": "aafc349b2b6f518fffbac1a02df7e7c7c94a2c328fdb35d68c8fd67bb1ebef01"
+    },
+    {
+      "id": "E168",
+      "kind": "local",
+      "path": "local/research/codex/round-go-r1/go197-time30.bin",
+      "bytes": 52,
+      "sha256": "1e3437fc0f52910e218c69570a4e7e6c83f73a66ba11f5313ac6ad0d50b34881"
+    },
+    {
+      "id": "E169",
+      "kind": "local",
+      "path": "local/research/codex/round-go-r1/play196.bin",
+      "bytes": 45,
+      "sha256": "3a18b79220fefa06560caabfe4d1de27574e3835ac1cedbf800006258264f0d4"
+    },
+    {
+      "id": "E170",
+      "kind": "local",
+      "path": "local/research/codex/round-go-r1/begin198.bin",
+      "bytes": 51,
+      "sha256": "c6704c3997e319a8f2ed4bfdaf20a2d600fb1ca1af3d5bae0c6f6ea1b07fce64"
+    },
+    {
+      "id": "E171",
+      "kind": "local",
+      "path": "local/research/codex/bomb-calc-r1/kind0.bin",
+      "bytes": 51,
+      "sha256": "5095a65ab689b03ac91e11a9d306341cf9995b5bf8dc8ac146706908c60496b7"
+    },
+    {
+      "id": "E172",
+      "kind": "local",
+      "path": "local/research/codex/bomb-calc-r1/result180-full.bin",
+      "bytes": 41,
+      "sha256": "b2e1c6e22b2210d0ac198fea278d2b7d70d982935e88acb641b36cb45afaa8b0"
+    },
+    {
+      "id": "E173",
+      "kind": "local",
+      "path": "local/research/codex/room-player-r1/slot110-team0.bin",
+      "bytes": 44,
+      "sha256": "d571c6b47965e1d5ed04df838818ce9e5f7de1fcac720a71d5a811137405f9d9"
+    },
+    {
+      "id": "E174",
+      "kind": "local",
+      "path": "local/research/codex/room-map-r1/playmap-list.bin",
+      "bytes": 59852,
+      "sha256": "49727b4d68bca96e7a71ea842c9fe03fe4fd92f032e8510bbcade62b2b796714"
+    },
+    {
+      "id": "E175",
+      "kind": "local",
+      "path": "local/research/codex/room-map-r1/playmap-list-summary.json",
+      "bytes": 1644,
+      "sha256": "aa134e49aa3c4321a29bc641a2169e726cd68c168c63d6b3ee00214928155311"
+    },
+    {
+      "id": "E176",
+      "kind": "local",
+      "path": "local/research/codex/room-map-r1/map238-enabled-fixture.json",
+      "bytes": 2471,
+      "sha256": "4a43660e4aa39d7bdad62a7172c8f36f1f6c062b747cd6b8e66c0f9a159cc3fd"
+    },
+    {
+      "id": "E177",
+      "kind": "local",
+      "path": "local/research/codex/room-map-r1/config241-enabled-fixture.json",
+      "bytes": 449,
+      "sha256": "9b3be77bff1952f42c2f0b99b0e22e45438804862cddf23705e4148e92cbcb67"
+    },
+    {
+      "id": "E178",
+      "kind": "local",
+      "path": "local/research/codex/start-reply-r1/start121-final.bin",
+      "bytes": 167,
+      "sha256": "a19f169cf30af78f51e8a82d8c4ba26d36324b8016ac3c7deb14c82ea3e16a76"
+    },
+    {
+      "id": "E179",
+      "kind": "local",
+      "path": "local/research/codex/start-reply-r1/start121-final-fixture.json",
+      "bytes": 4649,
+      "sha256": "c389df84bc14539990106872e32a609ecd65ebc3ff9631c978c95adc89a16510"
+    },
+    {
+      "id": "E180",
+      "kind": "local",
+      "path": "local/research/codex/round-repeat-r1/ready-fixtures.json",
+      "bytes": 4012,
+      "sha256": "8438a169b51b81cd6178d922acc91ad8a3b8b2a0a08e346e69a2498c29cb02d0"
+    },
+    {
+      "id": "E181",
+      "kind": "local",
+      "path": "local/research/codex/round-repeat-r1/repeat118-native-fields.json",
+      "bytes": 911,
+      "sha256": "a4048dbb1537f30ccf4671753b1af9e2ccee66077d36c519574cc56b41af2f23"
+    },
+    {
+      "id": "E182",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/oracle-dependencies/bootstrap-copy-oracle.py",
+      "bytes": 2377,
+      "sha256": "8127e0f2fbc385360e878bb68ae3a6680eabbf7456335f0f3db75c7c3b73a8c0"
+    },
+    {
+      "id": "E183",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/oracle-dependencies/bootstrap-recv-oracle.py",
+      "bytes": 2104,
+      "sha256": "1e86c06540e8fe654564c5bd403f859070f77c9af0d5d11c70c9351198e00ae2"
+    },
+    {
+      "id": "E184",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/oracle-dependencies/boomproto.py",
+      "bytes": 7779,
+      "sha256": "e9642ec10e53cfed6c24c0c5ade07b34a46ce02073a8d316f724776686855bbd"
+    },
+    {
+      "id": "E185",
+      "kind": "local",
+      "path": "local/research/codex/wcp-guard-r1/game/CA-r2-login-logout.exe",
+      "bytes": 31874560,
+      "sha256": "660447c293ce92270cb9b5815331bca976e8f156366e1fe50b217b6c12e60ce3"
+    },
+    {
+      "id": "E186",
+      "kind": "local",
+      "path": "local/research/codex/wcp-guard-r1/game/CA-r2-stage-social.exe",
+      "bytes": 31874560,
+      "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+    },
+    {
+      "id": "E187",
+      "kind": "artifact",
+      "path": "/home/admin/boom/repos/boomkr-re/out/modO.bin",
+      "bytes": 31858688,
+      "sha256": "a08950c833d3acab8281049def7b3dc96b221f107eeda01da3a548e34b91dce5"
+    },
+    {
+      "id": "E188",
+      "kind": "artifact",
+      "path": "/home/admin/boom/repos/boom-re/docs/oc_e-game.md",
+      "bytes": 70895,
+      "sha256": "9e80ecea3fb7d152f58a4a0d60ac6e1f6759b18be23bf53d908bb896dbad0b6a"
+    },
+    {
+      "id": "E189",
+      "kind": "repository",
+      "path": "docs/evidence/checkpoints/audits/AUD007.json",
+      "bytes": 4383,
+      "sha256": "a429c3f9f67f2ee35ff85bc89920fde1784cfae63e40d19195036786ab42243e"
+    }
+  ],
+  "delta": {
+    "added": [
+      "Bounded first-bomb dynamic118→159 and56snapshot/native coordinate checks.",
+      "KR spawn source chain, map-derived100, coherent Village00/ExVillage01 profiles and two cycles perrun.",
+      "AUD007periodic atCP024; nextCP028; explicit unpassed K6a/b/c acceptance."
+    ],
+    "corrected": [
+      "CP023 fixed159 now historical; echo observed on current copy, complete CP023/raw unchanged.",
+      "100/4039 is traced to Antarctic spawn input/map, not by itself invalid tile/corrupt-reset evidence.",
+      "Initial parent4C/58 navigation was AI interface, failedsecurechecks; actual actor now captured before/afterinit.",
+      "Pointer new/reused cannot prove reset. Native frame success does not prove mode/authority/collision.",
+      "Authority matrix heading before-runtime was stale relative to its rows; current partial wording and first-bomb scope fixed.",
+      "CP023/PR31 merged561acc5. CP024 integration pending snapshot, independent review waived."
+    ],
+    "superseded": [
+      "NEXT-ROUND-STATE-PEER superseded by NEXT-MULTIBOMB-PEER after bounded echo/spawn milestone; deeper reset/body104 remains open."
+    ]
+  },
+  "blockers": [
+    "Only first bomb/serialcandidate0/id1; multi-bomb ID/duplicate/stale/optional flags and full authority/items/chain/collision unresolved.",
+    "Peer/99 discovery/movement/UDP/relay, identity-separated two clients and LAN/Internet acceptance untested.",
+    "Antarctic second death timing,104bodygrowth and full reset/control semantics unclear; auth/profile/cache/codec/reconnect/vanilla gaps remain."
+  ],
+  "next_steps": [
+    {
+      "id": "NEXT-ROUND-STATE-PEER",
+      "task": "KRE-005b",
+      "state": "superseded",
+      "action": "Bounded118→159echo and index→point→actor source recovered; retain deeper serial/reset/collision gaps in new next-step.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-MULTIBOMB-PEER",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "On measured ExVillage01 profile, trace multiple actual bombs/serial/ID and duplicate/stale controls; then99/peer/movement and two real clients in isolated samehost network, followed by K6bLAN/K6cInternet gates. Keep collision/item/reset/104growth checks.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-FULL-LOGIN-FIELDS",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "Complete full auth/profile/identity/cache/reconnect/codec controls before K2/K3 acceptance.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    }
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-10-30T10:08:26.254016+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "Codex solo RE/code/runtime and self-check; no independent approval.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Owner explicitly instructed solo work without Claude review."
+    }
+  },
+  "docs_sync": [
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "Current dynamic first-bomb/spawn/map milestone, one-client limits and PR31 merged;AUD007/nextCP028."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "Current map/echo path and multiple-bomb/peer next; explicit unpassedK6a/b/c, no new gate."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "updated",
+      "reason": "Canonical bounded dynamic159/securegetters/spawn chain/map profiles and scoped corrections; authority matrix heading."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "updated",
+      "reason": "Bounded echo/spawn answered, next multiple-bomb/peer and remaining reset/collision/auth gaps."
+    },
+    {
+      "path": "docs/evidence/bomb-position/README.md",
+      "state": "updated",
+      "reason": "Grouped five sequential runs, recipes/hash/oracles/images/failed probes and limits."
+    },
+    {
+      "path": "docs/evidence/checkpoints/audits/AUD007.json",
+      "state": "updated",
+      "reason": "Periodic manual audit of canonical docs/evidence against raw/runtime; nextCP028."
+    }
+  ]
+}

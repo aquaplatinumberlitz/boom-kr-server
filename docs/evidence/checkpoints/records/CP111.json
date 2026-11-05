@@ -1,0 +1,465 @@
+{
+  "id": "CP111",
+  "previous": "CP110",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-05T01:25:26.937908+00:00",
+  "context_commit": "7c5d4eae6aac367049c73851d3b012e1a336aa4a",
+  "question": "DoesCP110R1A-Downprogressfail meannativecurrentXYdidnotadvance, ordoesbefore-onlycallbackstatisticmisslastcallbackafterstate? Canexistingraw proveall4prepostprogressphaseswithfreshsamples?",
+  "scope": "Source-firstCP098106API/key/target/current/distancebranch andCP110raw. New boundedanalysis retainsoldbyte/actor/target/key/distance/freshsamples, includes actualpre+post currentXY, observedvariant inventory4snap/0nonzerodeferred explicit. No newruntime/body/code/policy; avoidsrepeatingY389/Ready/fullroute.",
+  "owner": "Codex",
+  "reviewer": "Codex",
+  "artifacts": [
+    {
+      "name": "CA-r2-login-logout.exe",
+      "sha256": "660447c293ce92270cb9b5815331bca976e8f156366e1fe50b217b6c12e60ce3"
+    },
+    {
+      "name": "CA-r2-stage-social.exe",
+      "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+    },
+    {
+      "name": "CA-r2-stage-social.exe Bcopy",
+      "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+    },
+    {
+      "name": "modO.bin",
+      "sha256": "a08950c833d3acab8281049def7b3dc96b221f107eeda01da3a548e34b91dce5"
+    },
+    {
+      "name": "CA-r2-stage-social.exe Ccopy",
+      "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+    },
+    {
+      "name": "CALauncher.exe",
+      "sha256": "8cc2668bec7a4a0281f1acab26ab3487c4b4e5047d7ce75ab32b299ef16f527d"
+    },
+    {
+      "name": "nmcogame.dll",
+      "sha256": "25746a9a0e29deb7abb70ed1889c01072eb7343d1cafb4a9ffc76b69fac3ae9d"
+    },
+    {
+      "name": "nmco3.dll",
+      "sha256": "7e038696ec69db579f71e029da66f5b5500c56375ff77b24d93529ba7faf9493"
+    }
+  ],
+  "locators": [
+    "BaselineCP110/PR180merge7c5d4eae6aac367049c73851d3b012e1a336aa4a exacthead32790b960c378ebd07b36081e7cad0c9062ed0f8 CLEAN/MERGEABLE/checks[].",
+    "CP110run b289d1d10257302ae73c06571b054e414303bf9d541d1922af044c874e76bc11/457.296629636s retainedimmutable. R1A-DownBfourapplies lastbegin1800886409666530/end1800886422022831; sameactor1649223808/beforeY159→after219/target219/distance60threshold50, laterfreshrecipientY219→294.",
+    "KnownAPI13DE7AA/E66680/E667BE/E668AD/B4E6F0/B4EA14/E668B2/current4C58/target7BC7C8/nativegetter52A350/CRC14A5860; mappedmodOrawbase400000/RVA=VA-400000. No 64quota exhaustion:only4R1A applies."
+  ],
+  "findings": [
+    {
+      "summary": "Oldstatistic appendsbeforeXYonly: R1Apre159forall4, finalsameactorpost219 andlaterfreshrecipient219294 alreadyexist. Exactfourphaseprepostprogressnewquestion passes556relationships; 4snap/0nonzerodeferred, no originalstrict/bothbranch coverageclaim. Oldfaildoesnotimplynomovement.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#receiver-prepost",
+      "limits": "ExistingCP110modifiedWine/Bhost/Aguest/localExVillage01/profile47 raw only; no new runtime/nativebody/service/profile/client/source mutation. Newprepostprogressquestion is notoldbefore-onlystatisticpass; originalstrictfailure/firstmandatorydeferredvariantfailure retained. Actual4snap/0nonzerodeferred; CP106bothbranchrun separate. No motionlaw/fullvalidator/authority/auth/codec/allreset/vanilla/fullmatch/K5/K6a/LANInternet proof. PeriodicCP112 unchanged.",
+      "evidence": [
+        "E020",
+        "E023",
+        "E001",
+        "E031"
+      ]
+    },
+    {
+      "summary": "Copiednative52A350verifies360runtime wrappers/data; actual49ingressCRC14A5860pass. SameknownKRbytes/no gamecall, not independentruntime or fullmotionlaw.",
+      "source": "kr_static",
+      "status": "confirmed",
+      "method": "emulation",
+      "canonical": "docs/PROTOCOL.md#receiver-prepost",
+      "limits": "ExistingCP110modifiedWine/Bhost/Aguest/localExVillage01/profile47 raw only; no new runtime/nativebody/service/profile/client/source mutation. Newprepostprogressquestion is notoldbefore-onlystatisticpass; originalstrictfailure/firstmandatorydeferredvariantfailure retained. Actual4snap/0nonzerodeferred; CP106bothbranchrun separate. No motionlaw/fullvalidator/authority/auth/codec/allreset/vanilla/fullmatch/K5/K6a/LANInternet proof. PeriodicCP112 unchanged.",
+      "evidence": [
+        "E019",
+        "E018"
+      ]
+    },
+    {
+      "summary": "CP110PR180 merged7c5d4ea recorded; currentissue14known/gap/nexttest/catalog updated. ClosedNEXT-RECEIVER-R1-SAMPLE fromraw beforeanotherWineattempt; currentPLAN nextfirstseen/current-generation124/127admission shadowscope, no gateclosure.",
+      "source": "design",
+      "status": "design",
+      "method": "documentation",
+      "canonical": "docs/PLAN.md#current-order",
+      "limits": "ExistingCP110modifiedWine/Bhost/Aguest/localExVillage01/profile47 raw only; no new runtime/nativebody/service/profile/client/source mutation. Newprepostprogressquestion is notoldbefore-onlystatisticpass; originalstrictfailure/firstmandatorydeferredvariantfailure retained. Actual4snap/0nonzerodeferred; CP106bothbranchrun separate. No motionlaw/fullvalidator/authority/auth/codec/allreset/vanilla/fullmatch/K5/K6a/LANInternet proof. PeriodicCP112 unchanged.",
+      "evidence": [
+        "E006",
+        "E010",
+        "E016"
+      ]
+    }
+  ],
+  "verification": [
+    {
+      "check": "All4phaseprepost/freshsample556relations +360copiednativegetters+49actualCRC",
+      "result": "pass",
+      "evidence": [
+        "E020",
+        "E019",
+        "E018",
+        "E021",
+        "E015",
+        "E013"
+      ],
+      "limits": "ExistingCP110modifiedWine/Bhost/Aguest/localExVillage01/profile47 raw only; no new runtime/nativebody/service/profile/client/source mutation. Newprepostprogressquestion is notoldbefore-onlystatisticpass; originalstrictfailure/firstmandatorydeferredvariantfailure retained. Actual4snap/0nonzerodeferred; CP106bothbranchrun separate. No motionlaw/fullvalidator/authority/auth/codec/allreset/vanilla/fullmatch/K5/K6a/LANInternet proof. PeriodicCP112 unchanged."
+    },
+    {
+      "check": "Originalbefore-only4phase/mandatorydeferredvariant",
+      "result": "fail",
+      "evidence": [
+        "E031",
+        "E022",
+        "E002"
+      ],
+      "limits": "Originalconditionsstillnotmet. NewquestionreportsobservedvariantinventoryinsteadrequiringoldCP106nonzerodefer; no raw/expectedfieldmutation."
+    },
+    {
+      "check": "Docs/catalog/snapshotmechanicallinks/diff",
+      "result": "pass",
+      "evidence": [
+        "E014",
+        "E016"
+      ],
+      "limits": "Notsemanticacceptance/gateautomation; productionunchanged/testsreuseCP107157."
+    }
+  ],
+  "evidence": [
+    {
+      "id": "E001",
+      "kind": "local",
+      "path": "local/research/codex/receiver-prepost-r1/analyze_prepost.py",
+      "bytes": 6888,
+      "sha256": "2b45aec3879d9f112fa47f69a03b55e1dd8625a73eb14225fd2136a27d5e5071"
+    },
+    {
+      "id": "E002",
+      "kind": "local",
+      "path": "local/research/codex/receiver-prepost-r1/analyze_prepost_initial.py",
+      "bytes": 6628,
+      "sha256": "61754ade427db883aea4a8b33f26f7e4aa0f1046b1b4d7e526517b60f732ea54"
+    },
+    {
+      "id": "E003",
+      "kind": "local",
+      "path": "local/research/codex/receiver-prepost-r1/append_checkpoint.py",
+      "bytes": 7558,
+      "sha256": "b74060b1fa5447b281309bd1131773aadcdf4265c43f4fc0f8fe99f8a46a25e5"
+    },
+    {
+      "id": "E004",
+      "kind": "local",
+      "path": "local/research/codex/receiver-prepost-r1/cp111-snapshot/README.md",
+      "bytes": 4434,
+      "sha256": "db761288f8b1287e40dce9602b10d1fafd208661d62f098bc087e7a03e1df197"
+    },
+    {
+      "id": "E005",
+      "kind": "local",
+      "path": "local/research/codex/receiver-prepost-r1/cp111-snapshot/docs/COVERAGE.md",
+      "bytes": 112099,
+      "sha256": "1bfa34a21856a7d070d7ec0659067312578b4281eaafd303f2c04ac4980c4e32"
+    },
+    {
+      "id": "E006",
+      "kind": "local",
+      "path": "local/research/codex/receiver-prepost-r1/cp111-snapshot/docs/PLAN.md",
+      "bytes": 31955,
+      "sha256": "11160992297c9ee530a89e1d4a8ffcfb884dc5c5821356c6bedb8b984d2ea4f0"
+    },
+    {
+      "id": "E007",
+      "kind": "local",
+      "path": "local/research/codex/receiver-prepost-r1/cp111-snapshot/docs/PROTOCOL.md",
+      "bytes": 353321,
+      "sha256": "7ec41a3238181f64eb4b7aa33b75ba845397f168c51c60e47e88813d04ef0bac"
+    },
+    {
+      "id": "E008",
+      "kind": "local",
+      "path": "local/research/codex/receiver-prepost-r1/cp111-snapshot/docs/RESEARCH.md",
+      "bytes": 30056,
+      "sha256": "a480285411409a5586265867ac7485302810a202f8d213e65827077150efbd51"
+    },
+    {
+      "id": "E009",
+      "kind": "local",
+      "path": "local/research/codex/receiver-prepost-r1/cp111-snapshot/docs/evidence/issue-reconciliation/github-snapshot.json",
+      "bytes": 174482,
+      "sha256": "f52f87c97412b32071179213ad0d9d2221308b2043d6a91c35c9f95a344a9ca0"
+    },
+    {
+      "id": "E010",
+      "kind": "local",
+      "path": "local/research/codex/receiver-prepost-r1/cp111-snapshot/docs/evidence/issue-reconciliation/review.json",
+      "bytes": 18577,
+      "sha256": "118ca4ba284a440e2188d714a934ac37eee6fd9d6bfb136d1b4b72dac6e5c8fe"
+    },
+    {
+      "id": "E011",
+      "kind": "local",
+      "path": "local/research/codex/receiver-prepost-r1/cp111-snapshot/docs/evidence/promoted-outcome/README.md",
+      "bytes": 7798,
+      "sha256": "9aeb2faac6f1e67cc5a69a28f357f2e353d761c9f4209a86ccf213279a5609a1"
+    },
+    {
+      "id": "E012",
+      "kind": "local",
+      "path": "local/research/codex/receiver-prepost-r1/cp111-snapshot/docs/features.json",
+      "bytes": 116923,
+      "sha256": "5ea89d0b00bbb1e7d55a8a83a303a7effebb136aabd03f2c234fcab3ed24fc83"
+    },
+    {
+      "id": "E013",
+      "kind": "local",
+      "path": "local/research/codex/receiver-prepost-r1/crc-check.txt",
+      "bytes": 33,
+      "sha256": "78867acf02706b027c5f7c7bcd6ea34d3ce8bddd515f0e04adebf7e0cc3ba80b"
+    },
+    {
+      "id": "E014",
+      "kind": "local",
+      "path": "local/research/codex/receiver-prepost-r1/docs-check.txt",
+      "bytes": 175,
+      "sha256": "e55edec74fa076e24491a0960b6a1ca1cb42970d3ac1de36e755d66ecbf0d499"
+    },
+    {
+      "id": "E015",
+      "kind": "local",
+      "path": "local/research/codex/receiver-prepost-r1/getter-check.txt",
+      "bytes": 38,
+      "sha256": "69a8c5661e6bd8ecf156b69f6ca2b57c237b87a01f41f83b265f887a314e388c"
+    },
+    {
+      "id": "E016",
+      "kind": "local",
+      "path": "local/research/codex/receiver-prepost-r1/github-current.json",
+      "bytes": 174482,
+      "sha256": "f52f87c97412b32071179213ad0d9d2221308b2043d6a91c35c9f95a344a9ca0"
+    },
+    {
+      "id": "E017",
+      "kind": "local",
+      "path": "local/research/codex/receiver-prepost-r1/issue14-body.md",
+      "bytes": 4130,
+      "sha256": "a13a444fabe1c227f8579a4a72e6f5ef34560a7744855cb2e4f76f7aa3f5972d"
+    },
+    {
+      "id": "E018",
+      "kind": "local",
+      "path": "local/research/codex/receiver-prepost-r1/peer-crc-verification.json",
+      "bytes": 10450,
+      "sha256": "56ef72d0d8103e1080366f3458980ac240b9e1edf12ab1a5ba2b741f8c78b0da"
+    },
+    {
+      "id": "E019",
+      "kind": "local",
+      "path": "local/research/codex/receiver-prepost-r1/peer-getter-verification.json",
+      "bytes": 419,
+      "sha256": "9706a50c96571a7c1c6e718d91153383aa45529d7d5dfa1e5e5a4d2a852712db"
+    },
+    {
+      "id": "E020",
+      "kind": "local",
+      "path": "local/research/codex/receiver-prepost-r1/peer-prepost-verification.json",
+      "bytes": 162679,
+      "sha256": "d433319f7d9e05bd284294ea95d7f5e17d79c5b8264e552e23906ddc6265785b"
+    },
+    {
+      "id": "E021",
+      "kind": "local",
+      "path": "local/research/codex/receiver-prepost-r1/prepost-check.txt",
+      "bytes": 62,
+      "sha256": "79479dc0c0758552878bcb645e2a2e3ed478c831c2d51c7901cb9aeed00fde68"
+    },
+    {
+      "id": "E022",
+      "kind": "local",
+      "path": "local/research/codex/receiver-prepost-r1/prepost-variant-failure.txt",
+      "bytes": 966,
+      "sha256": "9a5736ba5882b2a5df3fddaa36abc3e27430b30ae7dbadf3ec557245d494508c"
+    },
+    {
+      "id": "E023",
+      "kind": "local",
+      "path": "local/research/codex/receiver-prepost-r1/reuse-question.json",
+      "bytes": 1724,
+      "sha256": "b8ea7965f5dd83bad0ad2ffcc5c94b1067f37fecde1f37d09a097cf86ce806fd"
+    },
+    {
+      "id": "E024",
+      "kind": "local",
+      "path": "local/research/codex/receiver-prepost-r1/sync_docs.py",
+      "bytes": 8575,
+      "sha256": "da61b239a9e8d335bcc50e839ed9ee4ddb3556ac1d97111607bc34ee070c4375"
+    },
+    {
+      "id": "E025",
+      "kind": "local",
+      "path": "local/research/codex/receiver-prepost-r1/verify_crc.py",
+      "bytes": 1057,
+      "sha256": "145b34725dbc90901324437a452072cdfbf46494f2d9ac5a7bc86883367c44be"
+    },
+    {
+      "id": "E026",
+      "kind": "local",
+      "path": "local/research/codex/receiver-prepost-r1/verify_getters.py",
+      "bytes": 1255,
+      "sha256": "11d812b4fd15030f0974f858160a81dc8fb9bc14efcb55388927e991d5fb54cc"
+    },
+    {
+      "id": "E027",
+      "kind": "local",
+      "path": "local/research/codex/return2-visual-r3/cycles/run.json",
+      "bytes": 579086,
+      "sha256": "b289d1d10257302ae73c06571b054e414303bf9d541d1922af044c874e76bc11"
+    },
+    {
+      "id": "E028",
+      "kind": "local",
+      "path": "local/research/codex/return2-visual-r3/cycles/peer-A.jsonl",
+      "bytes": 66212,
+      "sha256": "8806ae31e84f1139d4a70cddea0276f9af81bee976c81d983cc04ea82e0a0232"
+    },
+    {
+      "id": "E029",
+      "kind": "local",
+      "path": "local/research/codex/return2-visual-r3/cycles/peer-B.jsonl",
+      "bytes": 86016,
+      "sha256": "a002203c0dfe94aa990ddbdf07d7552dc928882d3265200d80c35fda23b85617"
+    },
+    {
+      "id": "E030",
+      "kind": "local",
+      "path": "local/research/codex/return2-visual-r3/analyze_targets_strict.py",
+      "bytes": 6492,
+      "sha256": "0d9c1773f791153db800a62ef2192474b8a5d63b29185dce5ab6ac75c8a64def"
+    },
+    {
+      "id": "E031",
+      "kind": "local",
+      "path": "local/research/codex/return2-visual-r3/return2-target-check.txt",
+      "bytes": 951,
+      "sha256": "daf1cd89b18b3922516893f60f5bfc4f463bc10eac0947de6f124eb6355e6786"
+    },
+    {
+      "id": "E032",
+      "kind": "local",
+      "path": "local/research/codex/return2-visual-r3/return2-verification.json",
+      "bytes": 7841,
+      "sha256": "73d82343a2949e9acf82cd00b8ab90ce52392c381b487563a8bf68ce6a15c259"
+    },
+    {
+      "id": "E033",
+      "kind": "local",
+      "path": "local/research/codex/return2-visual-r3/actor-fields.json",
+      "bytes": 1137753,
+      "sha256": "62a0467180a5a38bb5ff1caf701235da0efbd14240e3eb9acf0b61128ad9856e"
+    },
+    {
+      "id": "E034",
+      "kind": "local",
+      "path": "local/research/codex/return2-visual-r3/pr180-exact-head.json",
+      "bytes": 147,
+      "sha256": "bd25d363fee7bca43079d36dcb8b3f4f37264614e5195215794d783ba28fa990"
+    },
+    {
+      "id": "E035",
+      "kind": "local",
+      "path": "local/research/codex/return2-visual-r3/pr180-merged.json",
+      "bytes": 211,
+      "sha256": "626a163fef304792b1a2235ef8b7ac3b1e55d6cefc651fdc6b03c34b84da3b54"
+    }
+  ],
+  "delta": {
+    "added": [
+      "SameCP110run exact4phasepreposttarget/currentprogress/freshsamples, observed4snap/0nonzerodeferred.",
+      "360getter/49CRCemulation andspecificbefore-onlystatisticscope explanation; avoided newruntime/nativeRE."
+    ],
+    "corrected": [
+      "CP110gapnativecurrentprogressunknown resolvedfromexistinglastcallbackafter219/fresh294; oldstatisticlackotherbeforeXY remainsvalidwithoutinferenceofnomovement.",
+      "FirstnewanalysisstilldemandedoldCP106deferredcase, failedandpreserved; finalprepostquestionscopenotbothbranchcoverage."
+    ],
+    "superseded": [
+      "NEXT-RECEIVER-R1-SAMPLE resolved fromraw; nextcurrentfirstseen124127inventory/location/life-contextguardquestion asPLAN."
+    ]
+  },
+  "blockers": [
+    "Firstseen/current-generation124127rightkey/slot/seq context not fullinventory/location/life-state validation; scopedemulatorpolicycannotimplyoriginalauthority.",
+    "No fullauth/codec/resetvariants/vanilla/fullmatch/K5/K6a/LANInternet; no gateprogresspercentage."
+  ],
+  "next_steps": [
+    {
+      "id": "NEXT-RECEIVER-R1-SAMPLE",
+      "task": "KRE-005b",
+      "state": "closed",
+      "action": "CP111 existingrawprovesprepost/freshsampleprogress, no runtime redo.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-FIRSTSEEN-ADMISSION",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "Source-firstCP062063067085/server/roomclaims/actual124127bodies/VNitems; boundedmodel/control forfreshfirstseen current-generationinventory/location/life-context. Separateemu_choice/design/nativeKR; onlyruntime ifactualmissingconsumeredge. No portVNopcode orarbitraryauthority.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    }
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-11-05T01:25:26.937908+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "Codex solo RE/code/runtime/selfcheck, not independent approval.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Owner explicitly requested solo without Claude review."
+    }
+  },
+  "docs_sync": [
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "CP111prepostsource-onlygapresolved/limits/pendingPR/currentissue14/nextadmission; completedrecordsunchanged."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "CP111prepostsource-onlygapresolved/limits/pendingPR/currentissue14/nextadmission; completedrecordsunchanged."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "updated",
+      "reason": "CP111prepostsource-onlygapresolved/limits/pendingPR/currentissue14/nextadmission; completedrecordsunchanged."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "updated",
+      "reason": "CP111prepostsource-onlygapresolved/limits/pendingPR/currentissue14/nextadmission; completedrecordsunchanged."
+    },
+    {
+      "path": "docs/features.json",
+      "state": "updated",
+      "reason": "CP111prepostsource-onlygapresolved/limits/pendingPR/currentissue14/nextadmission; completedrecordsunchanged."
+    },
+    {
+      "path": "docs/COVERAGE.md",
+      "state": "updated",
+      "reason": "CP111prepostsource-onlygapresolved/limits/pendingPR/currentissue14/nextadmission; completedrecordsunchanged."
+    },
+    {
+      "path": "docs/evidence/promoted-outcome/README.md",
+      "state": "updated",
+      "reason": "CP111prepostsource-onlygapresolved/limits/pendingPR/currentissue14/nextadmission; completedrecordsunchanged."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/review.json",
+      "state": "updated",
+      "reason": "CP111prepostsource-onlygapresolved/limits/pendingPR/currentissue14/nextadmission; completedrecordsunchanged."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
+      "state": "updated",
+      "reason": "CP111prepostsource-onlygapresolved/limits/pendingPR/currentissue14/nextadmission; completedrecordsunchanged."
+    }
+  ]
+}

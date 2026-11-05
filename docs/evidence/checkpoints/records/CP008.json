@@ -1,0 +1,266 @@
+{
+  "id": "CP008",
+  "previous": "CP007",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-10-27T07:52:04.460954+00:00",
+  "question": "Does a plain isolated run reproduce the Wine audio assertion, and where does execution stop after targeted window-import bindings?",
+  "scope": "Follow-up control and PR17 review corrections; private copies and offline stub, no K2/K3/login promotion.",
+  "context_commit": "dd73b2d9f4e998948ea9954384ed9c897578a642",
+  "artifacts": [
+    {
+      "name": "KR modO image",
+      "sha256": "a08950c833d3acab8281049def7b3dc96b221f107eeda01da3a548e34b91dce5"
+    },
+    {
+      "name": "ClientToScreen candidate copy",
+      "sha256": "e32ff2a0c18fa3f5d2c9819b73d11cafa9dce8c7d7a467e620be918735b0c4ba"
+    },
+    {
+      "name": "GetWindowRect candidate copy",
+      "sha256": "02d58db969faf5f29aca54fc39d6c076f6ba6e3854a38ef130dc5129b4c2bede"
+    }
+  ],
+  "locators": [
+    "runtime traps VA 22642D4/2263F94/22642CC; slots 16EA63C/16EA5CC/16EA638; RVA=VA-400000",
+    "static call sites VA CD64F9/CD6519/14CDA00/14CDA11; runs plain-null-audio/plain-screenpoint/plain-windowrect 2026-10-27"
+  ],
+  "owner": "Codex",
+  "reviewer": "Claude Sonnet 5.5 independent reviewer",
+  "findings": [
+    {
+      "summary": "Plain null-audio run with the CP007 clientrect copy reaches audio render and later trap slot16EA63C; no same assertion seen",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "limits": "Separate prefix/time, no debugger, ALSA null and trace; absence in this run does not prove cause or permanent audio fix.",
+      "canonical": "docs/evidence/nmco-identity/README.md",
+      "evidence": [
+        "E001",
+        "E002"
+      ]
+    },
+    {
+      "summary": "Candidate ClientToScreen and GetWindowRect imports allow later plain runs to advance to traps slot16EA5CC and then16EA638",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "limits": "On synthetic modified copies; API identity and semantics not proven, no login.",
+      "canonical": "docs/evidence/nmco-identity/README.md",
+      "evidence": [
+        "E003",
+        "E004",
+        "E005",
+        "E006",
+        "E007",
+        "E008"
+      ]
+    },
+    {
+      "summary": "Initial CP007 review identified two P2 documentation/verification limitations, addressed with explicit disclosure and import byte diff",
+      "source": "design",
+      "status": "confirmed",
+      "method": "documentation",
+      "limits": "Second exact-head review pending; import byte comparison does not validate original names or untested users of slot16EA66C.",
+      "canonical": "docs/evidence/nmco-identity/README.md",
+      "evidence": [
+        "E015",
+        "E012",
+        "E011"
+      ]
+    }
+  ],
+  "verification": [
+    {
+      "check": "21 bounded assertions of run hashes, isolation, audio trace, trap byte-to-slot mapping and import diff metadata",
+      "result": "pass",
+      "evidence": [
+        "E014",
+        "E013",
+        "E012"
+      ],
+      "limits": "Absence of assertion is run-scoped; no semantics or login proof."
+    }
+  ],
+  "evidence": [
+    {
+      "id": "E001",
+      "kind": "local",
+      "path": "local/research/codex/nmco-identity-r1/plain-null-audio/run.json",
+      "bytes": 4087,
+      "sha256": "84ce0e375e7e1ae8c842cf123e3d80cfb8088c5fb63e683308b01b3367f5cd7b"
+    },
+    {
+      "id": "E002",
+      "kind": "local",
+      "path": "local/research/codex/nmco-identity-r1/plain-null-audio/client.log",
+      "bytes": 151171,
+      "sha256": "48bcf80b30d99c3c1f26b1173d2a2d142859554d6a4bbc477562d73ae2fd5c4a"
+    },
+    {
+      "id": "E003",
+      "kind": "local",
+      "path": "local/research/codex/nmco-identity-r1/plain-screenpoint/run.json",
+      "bytes": 4088,
+      "sha256": "1c44d395c29532f58a459ed8250afc0daca799acaa0e3c654396064dc5fc5b60"
+    },
+    {
+      "id": "E004",
+      "kind": "local",
+      "path": "local/research/codex/nmco-identity-r1/plain-screenpoint/client.log",
+      "bytes": 151475,
+      "sha256": "ec5e5a26bf2c7e0ef22271515d88e708c878dc852129d7e28587463abb995e5c"
+    },
+    {
+      "id": "E005",
+      "kind": "local",
+      "path": "local/research/codex/nmco-identity-r1/plain-windowrect/run.json",
+      "bytes": 4089,
+      "sha256": "90903be3146a855be72f2b741adefdb03c3d86c5d1e56f21bc25483b1ddd93bc"
+    },
+    {
+      "id": "E006",
+      "kind": "local",
+      "path": "local/research/codex/nmco-identity-r1/plain-windowrect/client.log",
+      "bytes": 155459,
+      "sha256": "106d26458a208fcdbc7fe084162d773d8003c488401ccf25fb285bc5d0f1b0b5"
+    },
+    {
+      "id": "E007",
+      "kind": "local",
+      "path": "local/research/codex/nmco-identity-r1/clienttoscreen-import-patch.json",
+      "bytes": 522,
+      "sha256": "241ea2de08e711bb012fbc50d1a1b5b3945fa4cf2793a99a6662a4520ec9e719"
+    },
+    {
+      "id": "E008",
+      "kind": "local",
+      "path": "local/research/codex/nmco-identity-r1/windowrect-import-patch.json",
+      "bytes": 524,
+      "sha256": "f8539a3327018bba9128863fa09df55c28dab2666c57d180ae917d2369ad93e6"
+    },
+    {
+      "id": "E009",
+      "kind": "local",
+      "path": "local/research/codex/nmco-identity-r1/patch-clienttoscreen-import.py",
+      "bytes": 1787,
+      "sha256": "1dc4b64c9e773ced3c94c29579aa6acb0277016cc437eafa6e54d28ab19ebdd4"
+    },
+    {
+      "id": "E010",
+      "kind": "local",
+      "path": "local/research/codex/nmco-identity-r1/patch-windowrect-import.py",
+      "bytes": 1783,
+      "sha256": "4c721310ddccc86f20653e21564e1d1e4bbe4bdbb1f80ab3e805eb45c9e5cff8"
+    },
+    {
+      "id": "E011",
+      "kind": "local",
+      "path": "local/research/codex/nmco-identity-r1/verify-import-patches.py",
+      "bytes": 2017,
+      "sha256": "1122e427786857595a18704e4b293170126560797c79d9bdb68d0613d75f23d6"
+    },
+    {
+      "id": "E012",
+      "kind": "local",
+      "path": "local/research/codex/nmco-identity-r1/import-diffs.json",
+      "bytes": 7277,
+      "sha256": "065c252ad76fa682c128bcc57bf077159ee59824b546a294ee1e8f9c0e89126d"
+    },
+    {
+      "id": "E013",
+      "kind": "local",
+      "path": "local/research/codex/nmco-identity-r1/verify-cp008.py",
+      "bytes": 1798,
+      "sha256": "4be19c3440a77d8fa284b79f9887f3f55e6d89b9b0035571bdd886661c4fc7ab"
+    },
+    {
+      "id": "E014",
+      "kind": "local",
+      "path": "local/research/codex/nmco-identity-r1/verification-cp008.json",
+      "bytes": 871,
+      "sha256": "8e288b31b0432779ebda0d3ca797fe40bd032b0ff6afd57c771f4633aed2b52d"
+    },
+    {
+      "id": "E015",
+      "kind": "local",
+      "path": "local/research/codex/nmco-identity-r1/review-report.md",
+      "bytes": 5333,
+      "sha256": "0ebc9609cfe074d472fa4c1f01563c2b426629c118bb57ab48d524c879ac0e7d"
+    }
+  ],
+  "delta": {
+    "added": [
+      "Three non-debug audio/render runs, two candidate import mappings, 5 exact import diffs, independent review feedback and periodic audit AUD003."
+    ],
+    "corrected": [
+      "CP007 Wine audio assertion is not the current blocker in plain null-audio run; cause remains unknown.",
+      "CP007 55 assertions verify exact bytes for five listed patches, not import patch byte coverage; CP008 supplies import diffs.",
+      "Default and ALSA null debugger runs differ in trace/config and are not matched control."
+    ],
+    "superseded": [
+      "NEXT-WINE-AUDIO as sole next step; audio debugging remains open as a separate follow-up when needed."
+    ]
+  },
+  "blockers": [
+    "Latest plain copy stops in trap slot16EA638, API/call site unknown.",
+    "NMCO identity/callback validity, oneclickuser runtime and complete protocol/login remain unknown.",
+    "Debug-only audio assertion cause is unresolved; runs use separate prefixes."
+  ],
+  "next_steps": [
+    {
+      "id": "NEXT-WINE-AUDIO",
+      "task": "KRE-005b",
+      "state": "superseded",
+      "action": "Plain ALSA-null path passes audio; retain debug assertion cause as open follow-up rather than current sole blocker.",
+      "owner": "Codex",
+      "reviewer": "Claude Sonnet 5.5 independent reviewer"
+    },
+    {
+      "id": "NEXT-WINDOW-IMPORT",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "Identify slot16EA638 call site and ABI, choose evidence-based copy-only test, continue toward client request/state.",
+      "owner": "Codex",
+      "reviewer": "Claude Sonnet 5.5 independent reviewer"
+    }
+  ],
+  "review": {
+    "status": "approved",
+    "as_of_utc": "2026-10-27T07:57:04Z",
+    "reference": "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/17#issuecomment-6436661958",
+    "scope": "Independent review CP007 corrections, CP008 and AUD003; PR17 merged 50c2327daa35317e9af3db5c02ba219b505e9ed3.",
+    "head": "bd057a926eb3adb105a24fd41a98f2742cf92141"
+  },
+  "docs_sync": [
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "Current plain-run blocker and pending state."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "Current path and task priority."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "updated",
+      "reason": "Link to corrected current evidence; no wire contract change."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "updated",
+      "reason": "Run-scoped audio and new import question."
+    },
+    {
+      "path": "docs/evidence/nmco-identity/README.md",
+      "state": "updated",
+      "reason": "Control settings, import limits and new run chain."
+    },
+    {
+      "path": "docs/evidence/checkpoints/audits/AUD003.json",
+      "state": "updated",
+      "reason": "Periodic manual audit at CP008."
+    }
+  ]
+}

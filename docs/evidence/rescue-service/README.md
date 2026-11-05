@@ -142,5 +142,18 @@ unexecuted; không kếtluậnStart2/freshrescue từverifier/draft chưapass. M
 
 Giới hạn: mộtchosenresult/return/actualReadyB saucứu, **chưaStart2**, chưafreshrescue/reset/2finishedrounds.
 Sourceartifact/modO/currentclienthash vàknownVA giốngCP115–116. Outcome làpolicyemulator,
-không fullmembership/auth/authority/fullmatch/vanilla/K5/K6a/LANInternet. CP117selfcheck/chờPR;
+không fullmembership/auth/authority/fullmatch/vanilla/K5/K6a/LANInternet. CP117/PR187 đã merge `c2ca94d`;
 AUD036qua116/kế120, recordcompletecũkhôngsửa.
+
+
+<a id="start-slot"></a>
+## Run slot trước migration CP118
+
+Raw/recipe `local/research/codex/rescue-start-slot-r1`/`rescue-start-slot-r2`, singlelease/namespace/
+lo-only/filesNSS/separateA/B/sourcefreeze như trên. `r1/quota-limitation.json`: 1.682raw, quota24 theo
+kind bị ambient DCAD80call round0 dùng hết; **không dùng để kết luận slot saureturn**.
+`r2` chỉ đổi observer scopeStartentry→switch và quota perstartindex, không đổi service/profile/client/fuse.
+`slot-verification.json` pin1.693raw/sourcehash/cleanup; actualreturnedslot2group0/helper1/hostflag0→DCB7DA,
+initialslot2group1. [Contract/giới hạn](../../PROTOCOL.md#rescue-start-slot). Phép đo này đã kết thúc/lưu
+rawhash/cleanup trước migration theo yêu cầu chủ dự án; CP118 pin batchlist bên ngoài, không sửaCP117.
+Chưa bounded110refreshfix/Start2/freshrescue; tiếp PLAN sauPRmigration. Không wholewordenum/auth/gate.

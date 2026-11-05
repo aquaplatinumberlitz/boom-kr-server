@@ -1,0 +1,1805 @@
+{
+  "id": "CP021",
+  "previous": "CP020",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-10-30T00:01:36.780045+00:00",
+  "question": "Which KR inputs start the gameplay clock and local input after start121, and where does actual request118 enter the send path?",
+  "scope": "Eleven completed isolated Wine runs, nine without overlap and two exploratory159 runs, with unchanged CP020 diagnostic copy; actual99 writer, targeted196/197/198 readers and map-clock edge, OS input/image comparison and request118 tracing. Local bomb visible,158 enters calc without demonstrated explosion; no full match or source/DB mutation. Recovery overlap and stale preliminary seal explicitly corrected.",
+  "context_commit": "9b02ab160bebe3806bc5054156fa84a18ee3abe6",
+  "owner": "Codex",
+  "reviewer": "Codex",
+  "artifacts": [
+    {
+      "name": "CA-r2-login-logout.exe",
+      "sha256": "660447c293ce92270cb9b5815331bca976e8f156366e1fe50b217b6c12e60ce3"
+    },
+    {
+      "name": "CA-r2-stage-social.exe",
+      "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+    },
+    {
+      "name": "modO.bin",
+      "sha256": "a08950c833d3acab8281049def7b3dc96b221f107eeda01da3a548e34b91dce5"
+    }
+  ],
+  "locators": [
+    "VA base400000; RVA=VA-400000. Static660447 / runtimeE9BB47 / nativeA08950; four targeted ranges byte-matched.",
+    "Actual99 stack13ADD10←E7F4DD←E59587←E57F33←E57C11; writerE7F2A0, guard+6410, native23-byte payload.",
+    "KR E5D3A0 jump tables E5DE9C/E5DDC4:196→E73760,197→E751F0,198→E74410.",
+    "197 phase2/E78620;196mode0→E75A50 phase3 and E0DF10 stage-clock unpause;198→E13490→E0DC60 play-map+1DF088 clock starts.",
+    "begin198-input image timer01:56→01:50→01:47; local actor moves, guest synthetic and unchanged. capture118 frame46/seq178/payload22/wire60.",
+    "request118-winsend: IAT16EA78C→Wine send;14F50AE←14EF29B←E2D654←E2D163←E7D2DB←E7C4F3. Queue producer probe13ADCC0 follows measured flush13ADC90."
+  ],
+  "findings": [
+    {
+      "summary": "VN loading/GO/map-clock sources guided focused KR experiments; KR dispatch/readers verified independently.",
+      "source": "vn_static",
+      "status": "confirmed",
+      "method": "documentation",
+      "canonical": "docs/PROTOCOL.md#round-go",
+      "evidence": [
+        "E139"
+      ],
+      "limits": "Historical source only; no new VN runtime, opcode-offset or KR policy proof."
+    },
+    {
+      "summary": "Actual99 writer and init stack recovered; native nine getters consume all23 bytes.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#round-go",
+      "evidence": [
+        "E180",
+        "E181",
+        "E024",
+        "E048",
+        "E047"
+      ],
+      "limits": "Only captured one-local-user/sentinel layout; endpoint-like fields do not establish complete peer discovery or loaded ACK."
+    },
+    {
+      "summary": "KR197 and196mode0 consume14/7 bytes with zero errors, phase0→2→3 and stage-clock unpause; two controls still show00:00.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#round-go",
+      "evidence": [
+        "E152",
+        "E153",
+        "E156",
+        "E157",
+        "E075",
+        "E121"
+      ],
+      "limits": "Other modes/flag0 lists/loading barrier untested. Missing hot CLOCK_SAMPLE is probe limitation, not clock absence proof."
+    },
+    {
+      "summary": "Adding198 consumes13/13 with zero errors and starts distinct map clock; images show decreasing time and local displacement after input, repeated with Up input.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#round-go",
+      "evidence": [
+        "E140",
+        "E141",
+        "E144",
+        "E145",
+        "E187",
+        "E188",
+        "E189",
+        "E190",
+        "E017",
+        "E007"
+      ],
+      "limits": "Modified offline copy, one client/synthetic guest; visual input proof only, not collision/coordinate getter/peer sync or full match."
+    },
+    {
+      "summary": "Fixture values/sequence/timing are emulator choices; native frame/typed oracles and actual runtime readers checked separately.",
+      "source": "emu_choice",
+      "status": "candidate",
+      "method": "emulation",
+      "canonical": "docs/PROTOCOL.md#round-go",
+      "evidence": [
+        "E067",
+        "E076",
+        "E069",
+        "E026",
+        "E075"
+      ],
+      "limits": "Native receiver/buffer context modeled; choices do not recover historical server defaults or broader mode variants."
+    },
+    {
+      "summary": "Actual118/60-byte frame is captured after Space. Winsock breakpoint sees queue-flush stack despite no118 hit in13ADD10/13ADD60 probes.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#round-go",
+      "evidence": [
+        "E168",
+        "E169",
+        "E176",
+        "E177",
+        "E172",
+        "E173",
+        "E073",
+        "E043",
+        "E002",
+        "E113",
+        "E044",
+        "E012"
+      ],
+      "limits": "Packet semantics/bomb creation and reply still require targeted writer/consumer proof; absence at earlier probes is bounded."
+    },
+    {
+      "summary": "KR159 full39-byte fixture returns a CGOGameBomb; moving off the actor reveals water bomb on the map in the independent explode158 run.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#round-go",
+      "evidence": [
+        "E148",
+        "E149",
+        "E087",
+        "E014",
+        "E009",
+        "E193"
+      ],
+      "limits": "First record serial0/flag0, id1/zeros chosen offline; only one local case, no general schema or full bomb lifecycle."
+    },
+    {
+      "summary": "KR158 kind1 reads4/4/errors0, looks up the same bomb pointer/id1 and enters E9C520, yet subsequent images still show the bomb.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#round-go",
+      "evidence": [
+        "E148",
+        "E149",
+        "E054",
+        "E015",
+        "E008",
+        "E195",
+        "E196"
+      ],
+      "limits": "Calc entry is not successful explosion/blast/block/trap. Kind0 extra2u32/u8 not runtime-tested; delay2.5s/kind1 are test choices, not recovered fuse/authority."
+    },
+    {
+      "summary": "Daemon recovery interrupted supervision but original159 client completed;159/retry overlapped and are exploratory only. Three preliminary seal entries changed before final completion.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#round-go",
+      "evidence": [
+        "E126",
+        "E085",
+        "E084",
+        "E081",
+        "E160",
+        "E161",
+        "E164",
+        "E165",
+        "E148",
+        "E149"
+      ],
+      "limits": "Initial inference that client stopped was wrong. Earlier mutable contents of three stale entries unavailable; final raw hashes verified. Independent bomb evidence is later non-overlapping explode158."
+    }
+  ],
+  "verification": [
+    {
+      "check": "4026 mechanical checks / 11 isolated runs; pinned artifacts/harness/raw hashes, native replay plus CRC/partial negatives,18 fixture framing cases,6 full typed fixtures,99/118 full typed captures, runtime markers.",
+      "result": "pass",
+      "evidence": [
+        "E131",
+        "E127",
+        "E074"
+      ],
+      "limits": "Codex self-check plus manual code/images/timeline; two overlapping159 runs excluded from independent proof, three stale preliminary entries explicitly unverified. No independent review or gate closure; native models do not prove runtime callbacks."
+    }
+  ],
+  "evidence": [
+    {
+      "id": "E001",
+      "kind": "local",
+      "path": "local/research/codex/round-go-r1/115D9B0.asm",
+      "bytes": 2457,
+      "sha256": "8045060b68d0f521b82d3f524d2eb652c94f8378e437cc2aeb87e84c216fe122"
+    },
+    {
+      "id": "E002",
+      "kind": "local",
+      "path": "local/research/codex/round-go-r1/13ADC90.asm",
+      "bytes": 6369,
+      "sha256": "23c751ea7d8c3b6dece99af557daf7ab82246633bc2fb64c37605e75f9b50d4e"
+    },
+    {
+      "id": "E003",
+      "kind": "local",
+      "path": "local/research/codex/round-go-r1/B7A760.asm",
+      "bytes": 8259,
+      "sha256": "ead4bccd850970195bb2f4dd676a912635fc7d6df3d4bef7c3934c117e608b6f"
+    },
+    {
+      "id": "E004",
+      "kind": "local",
+      "path": "local/research/codex/round-go-r1/E0DC20.asm",
+      "bytes": 3219,
+      "sha256": "7caf89b6c3694a9a211cff9942d8c322d3530646aa3f3064d1e210f2afe84304"
+    },
+    {
+      "id": "E005",
+      "kind": "local",
+      "path": "local/research/codex/round-go-r1/E0DD20.asm",
+      "bytes": 5032,
+      "sha256": "84bff00b46b4547cac347328a3b55544322d0deeed2b682d9af76b8f2b1af02d"
+    },
+    {
+      "id": "E006",
+      "kind": "local",
+      "path": "local/research/codex/round-go-r1/E0DF10.asm",
+      "bytes": 5196,
+      "sha256": "87c4d94f0689e56a21898f9b9464c3eaa4fcc6f79fab892d7b8e284309bbfefa"
+    },
+    {
+      "id": "E007",
+      "kind": "local",
+      "path": "local/research/codex/round-go-r1/E13490.asm",
+      "bytes": 1844,
+      "sha256": "992294223050d7492baac7abe125ab5f88d1d5a7d3a3bc4f83401f8cf2ac334c"
+    },
+    {
+      "id": "E008",
+      "kind": "local",
+      "path": "local/research/codex/round-go-r1/E14360.asm",
+      "bytes": 11198,
+      "sha256": "f64091621363cdf2a38aedc078855251e26f9aebd9d81244bd422c86d728483e"
+    },
+    {
+      "id": "E009",
+      "kind": "local",
+      "path": "local/research/codex/round-go-r1/E14600.asm",
+      "bytes": 21429,
+      "sha256": "b845e182cc257f2f0835bfda4fcd3052809fe35dd16c74ab431d3e14d4c842ec"
+    },
+    {
+      "id": "E010",
+      "kind": "local",
+      "path": "local/research/codex/round-go-r1/E2D100.asm",
+      "bytes": 3401,
+      "sha256": "77ab5e327e54e299fa71c121c4fc881bac51134980b4693e2aff5b56395817bd"
+    },
+    {
+      "id": "E011",
+      "kind": "local",
+      "path": "local/research/codex/round-go-r1/E2D570.asm",
+      "bytes": 5504,
+      "sha256": "4f4f258fe1e8a6799e46bc5c8e2e4887b9ec24dcffcf41a9d267549cfed22fb3"
+    },
+    {
+      "id": "E012",
+      "kind": "local",
+      "path": "local/research/codex/round-go-r1/E2DF80.asm",
+      "bytes": 17188,
+      "sha256": "497c1cb658c639e0f615b7cc0a14b7a3531f827292c2c61a67cd43ddc034b209"
+    },
+    {
+      "id": "E013",
+      "kind": "local",
+      "path": "local/research/codex/round-go-r1/E5D3A0.asm",
+      "bytes": 16770,
+      "sha256": "8202be92089d9954b982ab19e23fd52d7ee7c67c1d23a93f8dcf386a09eb2da5"
+    },
+    {
+      "id": "E014",
+      "kind": "local",
+      "path": "local/research/codex/round-go-r1/E5E8F0.asm",
+      "bytes": 23601,
+      "sha256": "24acf8073d564072cda5a7b0d41ad9318934a33dae6e07755401f29904254a2a"
+    },
+    {
+      "id": "E015",
+      "kind": "local",
+      "path": "local/research/codex/round-go-r1/E5F450.asm",
+      "bytes": 11490,
+      "sha256": "afb3d07781c400722fb2ccfefefe9e539d029573886402e002beba03dc188407"
+    },
+    {
+      "id": "E016",
+      "kind": "local",
+      "path": "local/research/codex/round-go-r1/E73760.asm",
+      "bytes": 39383,
+      "sha256": "97b3aa165ce762b8000ea9b2654e49fb5a8e00ddbf10ae13b39e8444e561e4f6"
+    },
+    {
+      "id": "E017",
+      "kind": "local",
+      "path": "local/research/codex/round-go-r1/E74410.asm",
+      "bytes": 19721,
+      "sha256": "57458956400893042922e4ff600079debe2f2a56bafc3c1d80b49ee324a55ad9"
+    },
+    {
+      "id": "E018",
+      "kind": "local",
+      "path": "local/research/codex/round-go-r1/E7495C.asm",
+      "bytes": 1023,
+      "sha256": "3b495ebc41f5b15d453ee89dedc114c7d5a69bc5c4bffdb975c4f57016f6de79"
+    },
+    {
+      "id": "E019",
+      "kind": "local",
+      "path": "local/research/codex/round-go-r1/E751F0.asm",
+      "bytes": 17373,
+      "sha256": "8823af5d3eeb69779d666b5055aefccd550698a991cee72f381530c2c9b766f2"
+    },
+    {
+      "id": "E020",
+      "kind": "local",
+      "path": "local/research/codex/round-go-r1/E75A50.asm",
+      "bytes": 6488,
+      "sha256": "306dd48207945063df126076d4eb1d4811101b3b4ee69619eaea280811fe611d"
+    },
+    {
+      "id": "E021",
+      "kind": "local",
+      "path": "local/research/codex/round-go-r1/E78620.asm",
+      "bytes": 2211,
+      "sha256": "4e80566a67aa1d34562cfb707271d552b087e6e4f1d393e2c5dfdf90035f19dd"
+    },
+    {
+      "id": "E022",
+      "kind": "local",
+      "path": "local/research/codex/round-go-r1/E7C480.asm",
+      "bytes": 315,
+      "sha256": "1891432e2644c8858e661ec0b6cf580fb7540cb5f859de643a911c5c481de85d"
+    },
+    {
+      "id": "E023",
+      "kind": "local",
+      "path": "local/research/codex/round-go-r1/E7D200.asm",
+      "bytes": 6837,
+      "sha256": "39d5c337e2ccf80adf4745a7d2528e7f0c857e9ff32b3649f9a5db650c73c6a6"
+    },
+    {
+      "id": "E024",
+      "kind": "local",
+      "path": "local/research/codex/round-go-r1/E7F2A0.asm",
+      "bytes": 4043,
+      "sha256": "0abe4ad771b670e7b23073b26dcaa3b1241a1b1e344fcacbd57fbf3437ebed8b"
+    },
+    {
+      "id": "E025",
+      "kind": "local",
+      "path": "local/research/codex/round-go-r1/E7F3B0.asm",
+      "bytes": 5046,
+      "sha256": "a084e91c5a6e77672725ebbf5c0083b058e21220b6a6e82cde3bbfa98541f3ca"
+    },
+    {
+      "id": "E026",
+      "kind": "local",
+      "path": "local/research/codex/round-go-r1/begin198-fixture.json",
+      "bytes": 599,
+      "sha256": "29e5c4077bdc29262e202003f0d130138bc10d85f6a3ca51d6532a0b576e94f6"
+    },
+    {
+      "id": "E027",
+      "kind": "local",
+      "path": "local/research/codex/round-go-r1/begin198-frame-oracle.json",
+      "bytes": 1199,
+      "sha256": "065a541169c7321f84c3ae7892030d4bee9b8d3d7bf64c574657bb6236af1976"
+    },
+    {
+      "id": "E028",
+      "kind": "local",
+      "path": "local/research/codex/round-go-r1/begin198-input-hashes.json",
+      "bytes": 17459,
+      "sha256": "d1aae817e0ebd8149531168971195acbb7f754aa495bd3e43e1fdb83811dcb65"
+    },
+    {
+      "id": "E029",
+      "kind": "local",
+      "path": "local/research/codex/round-go-r1/begin198-input-launcher.log",
+      "bytes": 22254,
+      "sha256": "c925cd9fb8e05da644d5888bbdb6f1aa00202f0b9ccfaff35c39798944747922"
+    },
+    {
+      "id": "E030",
+      "kind": "local",
+      "path": "local/research/codex/round-go-r1/begin198-input-oracle.json",
+      "bytes": 79101,
+      "sha256": "468a03d5b2c1c91ed1695aecec83e7d9779958e078465b1c51077d0c7bec394d"
+    },
+    {
+      "id": "E031",
+      "kind": "local",
+      "path": "local/research/codex/round-go-r1/begin198-input-recipe.json",
+      "bytes": 986,
+      "sha256": "3e065f3779f1a4b082a8ef4ba3dfafa467a3022bfdb47a3ae4cf0c61fe081075"
+    },
+    {
+      "id": "E032",
+      "kind": "local",
+      "path": "local/research/codex/round-go-r1/begin198.bin",
+      "bytes": 51,
+      "sha256": "c6704c3997e319a8f2ed4bfdaf20a2d600fb1ca1af3d5bae0c6f6ea1b07fce64"
+    },
+    {
+      "id": "E033",
+      "kind": "local",
+      "path": "local/research/codex/round-go-r1/bomb-dispatch-candidates.json",
+      "bytes": 1803,
+      "sha256": "fea4e44d6b22f3111d263065150a5abc25953a820a4d4c98463892d5fd3cb185"
+    },
+    {
+      "id": "E034",
+      "kind": "local",
+      "path": "local/research/codex/round-go-r1/bomb-request-hashes.json",
+      "bytes": 17491,
+      "sha256": "f6208373f7abd5c45b741130fc000493b46f580c9eb2e56b915d694568c4a45e"
+    },
+    {
+      "id": "E035",
+      "kind": "local",
+      "path": "local/research/codex/round-go-r1/bomb-request-launcher.log",
+      "bytes": 22844,
+      "sha256": "40a0725a34dd3618f84f448e5e119bb01544937679d9a1028f3425880c9b3bde"
+    },
+    {
+      "id": "E036",
+      "kind": "local",
+      "path": "local/research/codex/round-go-r1/bomb-request-oracle.json",
+      "bytes": 80972,
+      "sha256": "3b185db2fda7218892c95901f7d220870714bfd97647e7da324a18e967fced2a"
+    },
+    {
+      "id": "E037",
+      "kind": "local",
+      "path": "local/research/codex/round-go-r1/bomb-request-recipe.json",
+      "bytes": 984,
+      "sha256": "84bdd797dad0e726c07cbb807f1fd8bd60a1ce21b45fc8b3f80a4464c701c624"
+    },
+    {
+      "id": "E038",
+      "kind": "local",
+      "path": "local/research/codex/round-go-r1/bomb-request.gdb",
+      "bytes": 3153,
+      "sha256": "68313e5d120ebb42db8122dedee7911bc4ca2ebdec13c742f392478038156d90"
+    },
+    {
+      "id": "E039",
+      "kind": "local",
+      "path": "local/research/codex/round-go-r1/build_begin.py",
+      "bytes": 3029,
+      "sha256": "14fd59e8b1142300f53cb11d16f62042a2f4371dfafffa1811d2b2eba3467217"
+    },
+    {
+      "id": "E040",
+      "kind": "local",
+      "path": "local/research/codex/round-go-r1/build_explode158.py",
+      "bytes": 3280,
+      "sha256": "a79fab1f817423812cd874f963dc2ce062dd66500647e9df95dc729879266321"
+    },
+    {
+      "id": "E041",
+      "kind": "local",
+      "path": "local/research/codex/round-go-r1/build_reply159.py",
+      "bytes": 2970,
+      "sha256": "d2df117ef20b8a788e65d16a46e3b3c47697fc9ae17814202d863a68dbcd1ba9"
+    },
+    {
+      "id": "E042",
+      "kind": "local",
+      "path": "local/research/codex/round-go-r1/build_round.py",
+      "bytes": 2752,
+      "sha256": "f07c511bef0f4b1eabac5a05aba264a037460d2ad0802e43a84cf0c1b37d8c78"
+    },
+    {
+      "id": "E043",
+      "kind": "local",
+      "path": "local/research/codex/round-go-r1/capture118-frame46.bin",
+      "bytes": 60,
+      "sha256": "2628ddc525863a6fd67e821ce2f106db5fdfa38d8ab1a3412ca6d8f9a53420be"
+    },
+    {
+      "id": "E044",
+      "kind": "local",
+      "path": "local/research/codex/round-go-r1/capture118-native-fields.json",
+      "bytes": 521,
+      "sha256": "56b41de05a7c1490f727eb80a97f6b7ffa255bc532c32e715ab4196a001f5e28"
+    },
+    {
+      "id": "E045",
+      "kind": "local",
+      "path": "local/research/codex/round-go-r1/capture132-frame35.bin",
+      "bytes": 51,
+      "sha256": "14156161a693317892f09626948fc162344a127bfc2bbf7892cb334de6bee01b"
+    },
+    {
+      "id": "E046",
+      "kind": "local",
+      "path": "local/research/codex/round-go-r1/capture132-frame36.bin",
+      "bytes": 51,
+      "sha256": "b902fbc88a73600fad2d355ed271a6d22ee5004e853de37a79d5b40f9bf9db9b"
+    },
+    {
+      "id": "E047",
+      "kind": "local",
+      "path": "local/research/codex/round-go-r1/captured99-metadata.json",
+      "bytes": 249,
+      "sha256": "45f316d947938f217ae4c4f0ce8abe899e1af3002693d6192640fd2baefda6b7"
+    },
+    {
+      "id": "E048",
+      "kind": "local",
+      "path": "local/research/codex/round-go-r1/captured99-native-fields.json",
+      "bytes": 492,
+      "sha256": "5c369eae991340388843429b7552983ba7d9d68d7f2eeb81baf563ad7b62bbac"
+    },
+    {
+      "id": "E049",
+      "kind": "local",
+      "path": "local/research/codex/round-go-r1/captured99.bin",
+      "bytes": 61,
+      "sha256": "3276f7b24cab5965bc9205597b70579008e22a40da07f43737fc0a090d23e114"
+    },
+    {
+      "id": "E050",
+      "kind": "local",
+      "path": "local/research/codex/round-go-r1/explode158-fixture.json",
+      "bytes": 580,
+      "sha256": "5758e3bd80235dec55bbcd4847605a8d86e0096b83f4123a2b71c0afeaf81301"
+    },
+    {
+      "id": "E051",
+      "kind": "local",
+      "path": "local/research/codex/round-go-r1/explode158-frame-oracle.json",
+      "bytes": 1209,
+      "sha256": "76f621a9338a187275765a0a31f4bea22e73469818ebd15d07c9f0697933afac"
+    },
+    {
+      "id": "E052",
+      "kind": "local",
+      "path": "local/research/codex/round-go-r1/explode158-hashes.json",
+      "bytes": 17313,
+      "sha256": "86f6ea713a90eb5810ae8b1e4eb32743a536e89a46f5b112daa7189a14515ae6"
+    },
+    {
+      "id": "E053",
+      "kind": "local",
+      "path": "local/research/codex/round-go-r1/explode158-launcher.log",
+      "bytes": 25440,
+      "sha256": "d9b9bb56c3e059f9670297a0046bb505172bc31be8ea41d12f3cf1063777df6e"
+    },
+    {
+      "id": "E054",
+      "kind": "local",
+      "path": "local/research/codex/round-go-r1/explode158-native-fields.json",
+      "bytes": 396,
+      "sha256": "e504da0eaefa427baeaaba9fca67131b33df6ce1393812e1615cd9a1f124f966"
+    },
+    {
+      "id": "E055",
+      "kind": "local",
+      "path": "local/research/codex/round-go-r1/explode158-oracle.json",
+      "bytes": 88843,
+      "sha256": "d40e76f74a67483aeb7c0b6bcd3868b33a79f08ddba1e6482578e93ef410d375"
+    },
+    {
+      "id": "E056",
+      "kind": "local",
+      "path": "local/research/codex/round-go-r1/explode158-recipe.json",
+      "bytes": 976,
+      "sha256": "94fbe14e7a946e5d2c56c9de17fc3c3c0e121edc92c7f6f9222c5027d3b65d2a"
+    },
+    {
+      "id": "E057",
+      "kind": "local",
+      "path": "local/research/codex/round-go-r1/explode158.bin",
+      "bytes": 42,
+      "sha256": "ec49cc969d27b0a543826b2a10d66ff2b502645579145e40f484bfa8f94d4905"
+    },
+    {
+      "id": "E058",
+      "kind": "local",
+      "path": "local/research/codex/round-go-r1/explode158.gdb",
+      "bytes": 4581,
+      "sha256": "61343d900122246c30331d9f72775bcf5471da0c5a9963cafe0d587500c49c65"
+    },
+    {
+      "id": "E059",
+      "kind": "local",
+      "path": "local/research/codex/round-go-r1/go-play-hashes.json",
+      "bytes": 15667,
+      "sha256": "4866b4e61e1667ec9cf27cac98c3092562034f508ab76c28bc488b9f053e029d"
+    },
+    {
+      "id": "E060",
+      "kind": "local",
+      "path": "local/research/codex/round-go-r1/go-play-launcher.log",
+      "bytes": 18515,
+      "sha256": "3eef6ba3e4b63c471d7edec621d2332b39a99242b3c8e158640f772a36c60486"
+    },
+    {
+      "id": "E061",
+      "kind": "local",
+      "path": "local/research/codex/round-go-r1/go-play-oracle.json",
+      "bytes": 61272,
+      "sha256": "6cc529c45dd00b09c3e01ee2fbce9ba41d376ff9b6f40bc3cd3c379fa2971889"
+    },
+    {
+      "id": "E062",
+      "kind": "local",
+      "path": "local/research/codex/round-go-r1/go-play-recipe.json",
+      "bytes": 966,
+      "sha256": "1f91fa9f52a30eea1e48056298fcc0e19ba71f989b1139dd01570d4c45d44731"
+    },
+    {
+      "id": "E063",
+      "kind": "local",
+      "path": "local/research/codex/round-go-r1/go-time30-input-hashes.json",
+      "bytes": 17548,
+      "sha256": "1271b389bd7947adc89cf9ffe896ae335c916b33b9038bfce28ef3114f8eda0a"
+    },
+    {
+      "id": "E064",
+      "kind": "local",
+      "path": "local/research/codex/round-go-r1/go-time30-input-launcher.log",
+      "bytes": 18892,
+      "sha256": "6969dd77f4f0781e310d7b0f95404c77e01bd0e9f481cc0b7114c4f02defff93"
+    },
+    {
+      "id": "E065",
+      "kind": "local",
+      "path": "local/research/codex/round-go-r1/go-time30-input-oracle.json",
+      "bytes": 62667,
+      "sha256": "362a8f6656d1d64fe8a4e50961425b6bde3e09ec171e6ace40efc30e48775870"
+    },
+    {
+      "id": "E066",
+      "kind": "local",
+      "path": "local/research/codex/round-go-r1/go-time30-input-recipe.json",
+      "bytes": 993,
+      "sha256": "f32ddb1940aaa0898ea4a4225e3fdda90cafd0d1bd92a0fdbec3eb2720ab5fff"
+    },
+    {
+      "id": "E067",
+      "kind": "local",
+      "path": "local/research/codex/round-go-r1/go197-fixture.json",
+      "bytes": 581,
+      "sha256": "401dbad3388a99673d812b6fd8afdbfe015504a37b5d13566e7885796e0e5c8f"
+    },
+    {
+      "id": "E068",
+      "kind": "local",
+      "path": "local/research/codex/round-go-r1/go197-frame-oracle.json",
+      "bytes": 1194,
+      "sha256": "c91740748658b9de3ad8666d254d4b8b3ccd236262b08ad5e860e86753e1e5ef"
+    },
+    {
+      "id": "E069",
+      "kind": "local",
+      "path": "local/research/codex/round-go-r1/go197-time30-fixture.json",
+      "bytes": 611,
+      "sha256": "234c51e70fc926a955d6d4f6631dc47a330894846fa1562306ff69550f57ba91"
+    },
+    {
+      "id": "E070",
+      "kind": "local",
+      "path": "local/research/codex/round-go-r1/go197-time30-frame-oracle.json",
+      "bytes": 1215,
+      "sha256": "55f9faa9008e454043c13c5fd0227d111b25f37715daef5309626bba263a8d3c"
+    },
+    {
+      "id": "E071",
+      "kind": "local",
+      "path": "local/research/codex/round-go-r1/go197-time30.bin",
+      "bytes": 52,
+      "sha256": "1e3437fc0f52910e218c69570a4e7e6c83f73a66ba11f5313ac6ad0d50b34881"
+    },
+    {
+      "id": "E072",
+      "kind": "local",
+      "path": "local/research/codex/round-go-r1/go197.bin",
+      "bytes": 52,
+      "sha256": "a2dd0197b6fe211c148b559e42d52a883d0644de87a7117b77dbb98df59e2a63"
+    },
+    {
+      "id": "E073",
+      "kind": "local",
+      "path": "local/research/codex/round-go-r1/input-capture-anchors.json",
+      "bytes": 1203,
+      "sha256": "c57e4b8ea40950507c0897cef1aae9e01c1708465dfe7029eab0e7f2503c7568"
+    },
+    {
+      "id": "E074",
+      "kind": "local",
+      "path": "local/research/codex/round-go-r1/measurement-notes.json",
+      "bytes": 3139,
+      "sha256": "087a6b507141ea0e08722cfd34ddfe955b30ef466cf50edd4e17d5fc8e32114d"
+    },
+    {
+      "id": "E075",
+      "kind": "local",
+      "path": "local/research/codex/round-go-r1/native-round-fields.json",
+      "bytes": 910,
+      "sha256": "8580b133a35b9d8fc64b551721d6295d774ab1ac945b37f6c5ac96da0024a274"
+    },
+    {
+      "id": "E076",
+      "kind": "local",
+      "path": "local/research/codex/round-go-r1/play196-fixture.json",
+      "bytes": 510,
+      "sha256": "6dd61cb65f2a598a72221d11b6a79d53be2480911cd9e4a96ae1c812ef8706e8"
+    },
+    {
+      "id": "E077",
+      "kind": "local",
+      "path": "local/research/codex/round-go-r1/play196-frame-oracle.json",
+      "bytes": 1200,
+      "sha256": "757dccd27a1ed2fc75a2c2a10daa1cec96492693655154ec2e7666c2cf96ab2e"
+    },
+    {
+      "id": "E078",
+      "kind": "local",
+      "path": "local/research/codex/round-go-r1/play196.bin",
+      "bytes": 45,
+      "sha256": "3a18b79220fefa06560caabfe4d1de27574e3835ac1cedbf800006258264f0d4"
+    },
+    {
+      "id": "E079",
+      "kind": "local",
+      "path": "local/research/codex/round-go-r1/read_static.py",
+      "bytes": 667,
+      "sha256": "56bcf3418ecb2f625f35f9fc14414629834478075435c34683eb334253660418"
+    },
+    {
+      "id": "E080",
+      "kind": "local",
+      "path": "local/research/codex/round-go-r1/replay-run.py",
+      "bytes": 2999,
+      "sha256": "3a0fdc5315bc4af4522745a4993f143bf999040112314bff378199fd2a4e1bfe"
+    },
+    {
+      "id": "E081",
+      "kind": "local",
+      "path": "local/research/codex/round-go-r1/reply159-final-hashes.json",
+      "bytes": 17054,
+      "sha256": "4d9209a6d7194c93ce21c40957c1ffa0979fa31320f298c78eea110737457613"
+    },
+    {
+      "id": "E082",
+      "kind": "local",
+      "path": "local/research/codex/round-go-r1/reply159-fixture.json",
+      "bytes": 1247,
+      "sha256": "09f981cb7e3ca7e5aba63a2588082fd6b57d20ed21e327d7ad6c08ec0da4f38b"
+    },
+    {
+      "id": "E083",
+      "kind": "local",
+      "path": "local/research/codex/round-go-r1/reply159-frame-oracle.json",
+      "bytes": 1203,
+      "sha256": "e54c760ceccb5bef90c524b8c20ac850cc73114628b9714541b24cb2c1e2d0b1"
+    },
+    {
+      "id": "E084",
+      "kind": "local",
+      "path": "local/research/codex/round-go-r1/reply159-hashes.json",
+      "bytes": 8458,
+      "sha256": "0c4a4bfb59fe81f524cb282254663e4ea6c0c59bae62c1ef0c7c8e906e293c7d"
+    },
+    {
+      "id": "E085",
+      "kind": "local",
+      "path": "local/research/codex/round-go-r1/reply159-interrupted.json",
+      "bytes": 369,
+      "sha256": "7dece3c09ae4139867fb752d595fa075f9bc78e479ac44232e5584cb43297f1e"
+    },
+    {
+      "id": "E086",
+      "kind": "local",
+      "path": "local/research/codex/round-go-r1/reply159-launcher.log",
+      "bytes": 22459,
+      "sha256": "a20ff60cc38255db5b015d14c3d6ad896cff7df8a378f4f13aa1b9af1b1cea36"
+    },
+    {
+      "id": "E087",
+      "kind": "local",
+      "path": "local/research/codex/round-go-r1/reply159-native-fields.json",
+      "bytes": 551,
+      "sha256": "75ebc2c0e1599b0fea2c1a89e1d9782f77c0e62ee42ff778743e02b2b42db62a"
+    },
+    {
+      "id": "E088",
+      "kind": "local",
+      "path": "local/research/codex/round-go-r1/reply159-oracle.json",
+      "bytes": 79049,
+      "sha256": "f1ad4720bc39143d44ea65a5fd64baebc5228a8fddb68b871ae7b32979fea7dc"
+    },
+    {
+      "id": "E089",
+      "kind": "local",
+      "path": "local/research/codex/round-go-r1/reply159-recipe.json",
+      "bytes": 968,
+      "sha256": "c74ebd71f6b71fb5d11361c5db503c281f6e72d2f013793100ca3ae744c8aafc"
+    },
+    {
+      "id": "E090",
+      "kind": "local",
+      "path": "local/research/codex/round-go-r1/reply159-rerun-hashes.json",
+      "bytes": 17459,
+      "sha256": "bf6fb898ce48b53101efe6cf9c8d137ebc6a3e32a23c4d6417e954b69d10b57b"
+    },
+    {
+      "id": "E091",
+      "kind": "local",
+      "path": "local/research/codex/round-go-r1/reply159-rerun-launcher.log",
+      "bytes": 22528,
+      "sha256": "b652b31641d45f1bfe5c0dff840673e0b77acbc3da8875751df93de469c4493a"
+    },
+    {
+      "id": "E092",
+      "kind": "local",
+      "path": "local/research/codex/round-go-r1/reply159-rerun-oracle.json",
+      "bytes": 79103,
+      "sha256": "d349586555d753acdb4aa6c5560f111acfd0bf5f5d0c534b4228e08a51d7c0a8"
+    },
+    {
+      "id": "E093",
+      "kind": "local",
+      "path": "local/research/codex/round-go-r1/reply159-rerun-recipe.json",
+      "bytes": 980,
+      "sha256": "5e35ea121c52dd2d3bd7de45135da21f5018510f3d367a35d0dcf1df2ac9a992"
+    },
+    {
+      "id": "E094",
+      "kind": "local",
+      "path": "local/research/codex/round-go-r1/reply159.bin",
+      "bytes": 77,
+      "sha256": "aafc349b2b6f518fffbac1a02df7e7c7c94a2c328fdb35d68c8fd67bb1ebef01"
+    },
+    {
+      "id": "E095",
+      "kind": "local",
+      "path": "local/research/codex/round-go-r1/reply159.gdb",
+      "bytes": 3819,
+      "sha256": "64b5e4b285efb214306abfc10eebf89684e07e37dae4514c9f6c4e969487c4ef"
+    },
+    {
+      "id": "E096",
+      "kind": "local",
+      "path": "local/research/codex/round-go-r1/request118-anchors.json",
+      "bytes": 94,
+      "sha256": "da94aa9468cb01a29d93a82edffb92d770d64a55091f223f76b49ba11c78a638"
+    },
+    {
+      "id": "E097",
+      "kind": "local",
+      "path": "local/research/codex/round-go-r1/request118-code-match.json",
+      "bytes": 807,
+      "sha256": "c73cd432da7abf57152f84173cd8cd8d8ec237f21a645be38e08ed72c63cf60f"
+    },
+    {
+      "id": "E098",
+      "kind": "local",
+      "path": "local/research/codex/round-go-r1/request118-direct-hashes.json",
+      "bytes": 17723,
+      "sha256": "2e55da01581c392bc9372c45264796260a706dbe90beaae6128f2413f0fbc69b"
+    },
+    {
+      "id": "E099",
+      "kind": "local",
+      "path": "local/research/codex/round-go-r1/request118-direct-launcher.log",
+      "bytes": 22105,
+      "sha256": "af65db60c59b8ed389e6d8b435062b320ef0af315cb50aee6255ac0b630619ed"
+    },
+    {
+      "id": "E100",
+      "kind": "local",
+      "path": "local/research/codex/round-go-r1/request118-direct-oracle.json",
+      "bytes": 79094,
+      "sha256": "6e77fd3e495119dcfd102243d0ea6498536ce251e814f62849e0f1508e6e6380"
+    },
+    {
+      "id": "E101",
+      "kind": "local",
+      "path": "local/research/codex/round-go-r1/request118-direct-recipe.json",
+      "bytes": 998,
+      "sha256": "1f50f8276a7dbf4fbcffa078113c4ab5308e3cfe01a83b673c1d0e559430fcf1"
+    },
+    {
+      "id": "E102",
+      "kind": "local",
+      "path": "local/research/codex/round-go-r1/request118-direct.gdb",
+      "bytes": 3235,
+      "sha256": "937df5a87a901cf0669d5ec6774275f9dc952eaaa98bac0d23a930037011759e"
+    },
+    {
+      "id": "E103",
+      "kind": "local",
+      "path": "local/research/codex/round-go-r1/request118-queue-hashes.json",
+      "bytes": 17637,
+      "sha256": "a464b07036d2df4d071feaff7f38d2e3f22f96896f165b7f79f610f90d1bede3"
+    },
+    {
+      "id": "E104",
+      "kind": "local",
+      "path": "local/research/codex/round-go-r1/request118-queue-launcher.log",
+      "bytes": 22113,
+      "sha256": "5e8c52dd47f82cde69431e31b85f8ce54b79f0aebf077e1f4decd0bfe230981a"
+    },
+    {
+      "id": "E105",
+      "kind": "local",
+      "path": "local/research/codex/round-go-r1/request118-queue-oracle.json",
+      "bytes": 79085,
+      "sha256": "d596d967bf4e479140cc6eb32b2e18d632df38d0eccb3fb5b8e9f73d337bfc3e"
+    },
+    {
+      "id": "E106",
+      "kind": "local",
+      "path": "local/research/codex/round-go-r1/request118-queue-recipe.json",
+      "bytes": 995,
+      "sha256": "091ed00e5096e8c4932dc6f149f49ad2ea49dabd53c03965ac0166f17c9c666f"
+    },
+    {
+      "id": "E107",
+      "kind": "local",
+      "path": "local/research/codex/round-go-r1/request118-queue.gdb",
+      "bytes": 3182,
+      "sha256": "50f4c678dba3571b622ee2d714c1f195d2a89a6d06fc2e29fdd42f0976e3690a"
+    },
+    {
+      "id": "E108",
+      "kind": "local",
+      "path": "local/research/codex/round-go-r1/request118-winsend-hashes.json",
+      "bytes": 17816,
+      "sha256": "fb87b1e902b78d2d3f0d0e9a76ed79b25ce4e81a8275084d8c4536bd6aebd4b7"
+    },
+    {
+      "id": "E109",
+      "kind": "local",
+      "path": "local/research/codex/round-go-r1/request118-winsend-launcher.log",
+      "bytes": 22415,
+      "sha256": "cd6529cb10304ece118da01ef9ee17eca4caa8c6958974bf831a6b06125a08b5"
+    },
+    {
+      "id": "E110",
+      "kind": "local",
+      "path": "local/research/codex/round-go-r1/request118-winsend-oracle.json",
+      "bytes": 79087,
+      "sha256": "f270fd572b752804c739217bedc372d1084c271e004638dac3714b6e03c3014e"
+    },
+    {
+      "id": "E111",
+      "kind": "local",
+      "path": "local/research/codex/round-go-r1/request118-winsend-recipe.json",
+      "bytes": 1001,
+      "sha256": "16d11ab140cb8767605502382a9e154b6daf20202b509a715620b7bcb8b4bdf1"
+    },
+    {
+      "id": "E112",
+      "kind": "local",
+      "path": "local/research/codex/round-go-r1/request118-winsend.gdb",
+      "bytes": 3341,
+      "sha256": "8d88a39c4c0da39de4364b0a363f96c3f75e83ffeb6f10a20cdf4bb0bb141f49"
+    },
+    {
+      "id": "E113",
+      "kind": "local",
+      "path": "local/research/codex/round-go-r1/request118-writer.json",
+      "bytes": 1896,
+      "sha256": "b95924f706e993f81aae6d56da61d474451fa8e884940db0d63f387811ed5fdd"
+    },
+    {
+      "id": "E114",
+      "kind": "local",
+      "path": "local/research/codex/round-go-r1/request99-entry.json",
+      "bytes": 221,
+      "sha256": "662e253ff17bf690496da8ffe8320f8b24ca774a81c5adcb8c0a7e1cd31961ac"
+    },
+    {
+      "id": "E115",
+      "kind": "local",
+      "path": "local/research/codex/round-go-r1/round-begin.gdb",
+      "bytes": 3021,
+      "sha256": "d23633386673a1a340aa5d795f6fa6f301f4f92b757a33cbaba6ab8e3ccfbb99"
+    },
+    {
+      "id": "E116",
+      "kind": "local",
+      "path": "local/research/codex/round-go-r1/round-control-hashes.json",
+      "bytes": 14983,
+      "sha256": "bc1df3ebcf66d908efc2472603b5bf67fa92cf4520668032d623c0c9e31580ac"
+    },
+    {
+      "id": "E117",
+      "kind": "local",
+      "path": "local/research/codex/round-go-r1/round-control-launcher.log",
+      "bytes": 17629,
+      "sha256": "04234a3c37fab0711f40782504d4df5b99ec39f641c66c93b5338cfb36ae702b"
+    },
+    {
+      "id": "E118",
+      "kind": "local",
+      "path": "local/research/codex/round-go-r1/round-control-oracle.json",
+      "bytes": 59887,
+      "sha256": "be06e75c4780a8b711037bcea2937083911bbd91528b22eb9040dd24311790e7"
+    },
+    {
+      "id": "E119",
+      "kind": "local",
+      "path": "local/research/codex/round-go-r1/round-control-recipe.json",
+      "bytes": 987,
+      "sha256": "7cd27489b60b50c5bed842732e512a9919fea8d57cceb8ff9d137c8bf430e3aa"
+    },
+    {
+      "id": "E120",
+      "kind": "local",
+      "path": "local/research/codex/round-go-r1/round-control.gdb",
+      "bytes": 1279,
+      "sha256": "2d3ba452bb0cd804532ef39d60a5badffc7e5e02e8601c2e3bd486a21edc7563"
+    },
+    {
+      "id": "E121",
+      "kind": "local",
+      "path": "local/research/codex/round-go-r1/round-dispatch-candidates.json",
+      "bytes": 7867,
+      "sha256": "bd1e2183fcfc1e9188e0368a9490ddc6cc91f2c6b5e1267b9658735297ee687c"
+    },
+    {
+      "id": "E122",
+      "kind": "local",
+      "path": "local/research/codex/round-go-r1/round-go.gdb",
+      "bytes": 2387,
+      "sha256": "de0e56f642dde2bc02c3fe2bff1e1c0a5947519c362d2f8db22e49499bce5631"
+    },
+    {
+      "id": "E123",
+      "kind": "local",
+      "path": "local/research/codex/round-go-r1/round-input.gdb",
+      "bytes": 2726,
+      "sha256": "534fddee56ac3a53fc42c025f7191707937cc2bed8f6b5cb96277d3a96565a02"
+    },
+    {
+      "id": "E124",
+      "kind": "local",
+      "path": "local/research/codex/round-go-r1/round-time30.gdb",
+      "bytes": 2886,
+      "sha256": "e6b5c3e541317e2875419503e4f8325c5735bcba72a0a732026f3de33865748e"
+    },
+    {
+      "id": "E125",
+      "kind": "local",
+      "path": "local/research/codex/round-go-r1/run_probe.py",
+      "bytes": 1064,
+      "sha256": "60cea7a33f77d1cba9802b064e180f9f81d5807113666c8664095ca4c148a978"
+    },
+    {
+      "id": "E126",
+      "kind": "local",
+      "path": "local/research/codex/round-go-r1/runtime-recovery-correction.json",
+      "bytes": 875,
+      "sha256": "532b9db68986ef1df21645200d6da73f1d1beb549117e318549bc9d6a9d13a1a"
+    },
+    {
+      "id": "E127",
+      "kind": "local",
+      "path": "local/research/codex/round-go-r1/runtime-summary.json",
+      "bytes": 66079,
+      "sha256": "ffc01ecaa4e7418950638f3671b4106b6e50ce6ef6f31784f8ded98f4c8baec7"
+    },
+    {
+      "id": "E128",
+      "kind": "local",
+      "path": "local/research/codex/round-go-r1/seal_run.py",
+      "bytes": 484,
+      "sha256": "f712a5007fb76a6f78a300113a9c1f9d861ed358dceea2bb126504f6da0cc827"
+    },
+    {
+      "id": "E129",
+      "kind": "local",
+      "path": "local/research/codex/round-go-r1/static-runtime-code-match.json",
+      "bytes": 945,
+      "sha256": "b0425218dc391e65715955efc507d1470459e7fc815509de2fd47536b2a8a7c7"
+    },
+    {
+      "id": "E130",
+      "kind": "local",
+      "path": "local/research/codex/round-go-r1/timerfield-targeted-refs.json",
+      "bytes": 257,
+      "sha256": "7c8656c2ed0dcdc658cbabe7bfa39b8d0a84a90d438b65d48fbbc769cf4fa3fd"
+    },
+    {
+      "id": "E131",
+      "kind": "local",
+      "path": "local/research/codex/round-go-r1/verification.json",
+      "bytes": 193505,
+      "sha256": "e483480f80824e57794bf1e549bc4a7aecd40db589f5162734ae7769cdbdcae9"
+    },
+    {
+      "id": "E132",
+      "kind": "local",
+      "path": "local/research/codex/round-go-r1/verify-fields.py",
+      "bytes": 1485,
+      "sha256": "5fe420247bc2a6637a66e0f9d931f7df251db13d73c225c3c3a331efb76eabe5"
+    },
+    {
+      "id": "E133",
+      "kind": "local",
+      "path": "local/research/codex/round-go-r1/verify-frame.py",
+      "bytes": 2069,
+      "sha256": "dc3fc80368dfbdfbf9cf7ce2d22664552aac638b70de039864f5a853d3bbddcd"
+    },
+    {
+      "id": "E134",
+      "kind": "local",
+      "path": "local/research/codex/round-go-r1/verify.py",
+      "bytes": 7198,
+      "sha256": "9db75832e0e34332e5d2e6ae2f9e45de311c7ce1d25d591d097a546d692ba176"
+    },
+    {
+      "id": "E135",
+      "kind": "local",
+      "path": "local/research/codex/round-go-r1/verify118.py",
+      "bytes": 1466,
+      "sha256": "7e74dd0c695075a7342d9850b40c77d13d5478569c818150ee5c2f41415451ea"
+    },
+    {
+      "id": "E136",
+      "kind": "local",
+      "path": "local/research/codex/round-go-r1/verify158.py",
+      "bytes": 1533,
+      "sha256": "a653d85bef5ceac8bbd34112b33e482edf8c7c09d0e0a47fa53bb77996228509"
+    },
+    {
+      "id": "E137",
+      "kind": "local",
+      "path": "local/research/codex/round-go-r1/verify159.py",
+      "bytes": 1529,
+      "sha256": "b47c67bc6164b14680fb0a08c7f608d01759c8de04ccc0edb42106074198e51d"
+    },
+    {
+      "id": "E138",
+      "kind": "local",
+      "path": "local/research/codex/round-go-r1/verify99.py",
+      "bytes": 1475,
+      "sha256": "856cded0b6a039aaf12421543abdbe2673c86ba4be63c59ed1786878480ba454"
+    },
+    {
+      "id": "E139",
+      "kind": "local",
+      "path": "local/research/codex/round-go-r1/vn-round-reuse.json",
+      "bytes": 1005,
+      "sha256": "8d28a357047419e47f9a0652638b7fd25413b2ad7609e7f508928a46b473b5e1"
+    },
+    {
+      "id": "E140",
+      "kind": "local",
+      "path": "local/research/codex/round-go-r1/begin198-input/run.json",
+      "bytes": 26852,
+      "sha256": "e181f9fd7143391e4592cc577e0bad03de5b056842ddd172a3c9871b09fabbe1"
+    },
+    {
+      "id": "E141",
+      "kind": "local",
+      "path": "local/research/codex/round-go-r1/begin198-input/client.log",
+      "bytes": 12421,
+      "sha256": "71730ffb60e8cf50f3bf36eb6b21eb614996f93b739fc990de798e579615db87"
+    },
+    {
+      "id": "E142",
+      "kind": "local",
+      "path": "local/research/codex/round-go-r1/begin198-input/CALog-run.txt",
+      "bytes": 2802,
+      "sha256": "815a6d8a9ceca129d2761b3e8b95834440836daa20a54ce67c4ed64aabefb499"
+    },
+    {
+      "id": "E143",
+      "kind": "local",
+      "path": "local/research/codex/round-go-r1/begin198-input/debug-commands.txt",
+      "bytes": 3021,
+      "sha256": "d23633386673a1a340aa5d795f6fa6f301f4f92b757a33cbaba6ab8e3ccfbb99"
+    },
+    {
+      "id": "E144",
+      "kind": "local",
+      "path": "local/research/codex/round-go-r1/bomb-request/run.json",
+      "bytes": 27368,
+      "sha256": "f7ba869c571a17aa7c6247806d2d0a92132652d483f10c57fe8c0c72e1424811"
+    },
+    {
+      "id": "E145",
+      "kind": "local",
+      "path": "local/research/codex/round-go-r1/bomb-request/client.log",
+      "bytes": 14327,
+      "sha256": "9842ca6273e24c70dfcc38a4e3e83aea303ef39d5f3816ac6f05e1c0e4d380ee"
+    },
+    {
+      "id": "E146",
+      "kind": "local",
+      "path": "local/research/codex/round-go-r1/bomb-request/CALog-run.txt",
+      "bytes": 2933,
+      "sha256": "914be675cc6bebf81ebf12c0b677d0729b37426989162f04968c5705f13604d3"
+    },
+    {
+      "id": "E147",
+      "kind": "local",
+      "path": "local/research/codex/round-go-r1/bomb-request/debug-commands.txt",
+      "bytes": 3153,
+      "sha256": "68313e5d120ebb42db8122dedee7911bc4ca2ebdec13c742f392478038156d90"
+    },
+    {
+      "id": "E148",
+      "kind": "local",
+      "path": "local/research/codex/round-go-r1/explode158/run.json",
+      "bytes": 30444,
+      "sha256": "508506c4d5a835bbe6e678a0cd9780c1c013712f91a72d0735022f2f29a6de41"
+    },
+    {
+      "id": "E149",
+      "kind": "local",
+      "path": "local/research/codex/round-go-r1/explode158/client.log",
+      "bytes": 14617,
+      "sha256": "2fcb5fdab9a144a7056a02ee85d40a14a7a0da6492172d26cc2f2769b1b0a201"
+    },
+    {
+      "id": "E150",
+      "kind": "local",
+      "path": "local/research/codex/round-go-r1/explode158/CALog-run.txt",
+      "bytes": 3286,
+      "sha256": "1fe9bfabea224071081f5ca26a15940e5b43526b30cfda080a9709ffdea83bab"
+    },
+    {
+      "id": "E151",
+      "kind": "local",
+      "path": "local/research/codex/round-go-r1/explode158/debug-commands.txt",
+      "bytes": 4581,
+      "sha256": "61343d900122246c30331d9f72775bcf5471da0c5a9963cafe0d587500c49c65"
+    },
+    {
+      "id": "E152",
+      "kind": "local",
+      "path": "local/research/codex/round-go-r1/go-play/run.json",
+      "bytes": 22589,
+      "sha256": "a18a137866d089dc67c6a5e94ae73e1b653f7a5d57c546c8bf919f98a2d13e0f"
+    },
+    {
+      "id": "E153",
+      "kind": "local",
+      "path": "local/research/codex/round-go-r1/go-play/client.log",
+      "bytes": 12095,
+      "sha256": "cd7e769bccdc79965568f854500ad4ad3ef808fe3a2123a4ba3ca3e66de1a073"
+    },
+    {
+      "id": "E154",
+      "kind": "local",
+      "path": "local/research/codex/round-go-r1/go-play/CALog-run.txt",
+      "bytes": 2098,
+      "sha256": "2c4b5dde1ba0b191a97a0b5a4b66604842b2633e8c75efe54e5b66720bc8a186"
+    },
+    {
+      "id": "E155",
+      "kind": "local",
+      "path": "local/research/codex/round-go-r1/go-play/debug-commands.txt",
+      "bytes": 2387,
+      "sha256": "de0e56f642dde2bc02c3fe2bff1e1c0a5947519c362d2f8db22e49499bce5631"
+    },
+    {
+      "id": "E156",
+      "kind": "local",
+      "path": "local/research/codex/round-go-r1/go-time30-input/run.json",
+      "bytes": 22996,
+      "sha256": "b602aff9523458babb76720de4281244ab111cc7a8b3bcfcf64b9e8a4ba5fd1e"
+    },
+    {
+      "id": "E157",
+      "kind": "local",
+      "path": "local/research/codex/round-go-r1/go-time30-input/client.log",
+      "bytes": 12230,
+      "sha256": "1ad428a89c05210ffe057c1d5412cf4a71c4ce448ab45633c2b7d55bdc203fb5"
+    },
+    {
+      "id": "E158",
+      "kind": "local",
+      "path": "local/research/codex/round-go-r1/go-time30-input/CALog-run.txt",
+      "bytes": 2192,
+      "sha256": "a96bf6e658f59aa2d1bdb87a9d01392dc0c7512d2a17d96a582af570cbf1408e"
+    },
+    {
+      "id": "E159",
+      "kind": "local",
+      "path": "local/research/codex/round-go-r1/go-time30-input/debug-commands.txt",
+      "bytes": 2886,
+      "sha256": "e6b5c3e541317e2875419503e4f8325c5735bcba72a0a732026f3de33865748e"
+    },
+    {
+      "id": "E160",
+      "kind": "local",
+      "path": "local/research/codex/round-go-r1/reply159/run.json",
+      "bytes": 27073,
+      "sha256": "e7d94a17dffa893ef583e81e3882b49a8e719d753f674ea5e2bf5005ea058c85"
+    },
+    {
+      "id": "E161",
+      "kind": "local",
+      "path": "local/research/codex/round-go-r1/reply159/client.log",
+      "bytes": 12854,
+      "sha256": "4afcea6eb1afe8dec55013aa1646175b1eb50b02ffd628cef6f4535e021e2b35"
+    },
+    {
+      "id": "E162",
+      "kind": "local",
+      "path": "local/research/codex/round-go-r1/reply159/CALog-run.txt",
+      "bytes": 2357,
+      "sha256": "e78358cac4371f7ab740261eda6469f4546dfb995248470ea5ac40982e5086fa"
+    },
+    {
+      "id": "E163",
+      "kind": "local",
+      "path": "local/research/codex/round-go-r1/reply159/debug-commands.txt",
+      "bytes": 3819,
+      "sha256": "64b5e4b285efb214306abfc10eebf89684e07e37dae4514c9f6c4e969487c4ef"
+    },
+    {
+      "id": "E164",
+      "kind": "local",
+      "path": "local/research/codex/round-go-r1/reply159-rerun/run.json",
+      "bytes": 27180,
+      "sha256": "a7fc8a64addec6c7afa70e1ee24452231cf59c78a7eed38c13c1911f318adfc6"
+    },
+    {
+      "id": "E165",
+      "kind": "local",
+      "path": "local/research/codex/round-go-r1/reply159-rerun/client.log",
+      "bytes": 12854,
+      "sha256": "3cd26b1416bedd0bf441bbd5ce8a7cd4bdd397d9d6aec971e169855a542d1ec2"
+    },
+    {
+      "id": "E166",
+      "kind": "local",
+      "path": "local/research/codex/round-go-r1/reply159-rerun/CALog-run.txt",
+      "bytes": 4121,
+      "sha256": "d7a78f93ed0002ee8a84e87c1a70cbcacca9b07b05748d4a1f7131f065dec570"
+    },
+    {
+      "id": "E167",
+      "kind": "local",
+      "path": "local/research/codex/round-go-r1/reply159-rerun/debug-commands.txt",
+      "bytes": 3819,
+      "sha256": "64b5e4b285efb214306abfc10eebf89684e07e37dae4514c9f6c4e969487c4ef"
+    },
+    {
+      "id": "E168",
+      "kind": "local",
+      "path": "local/research/codex/round-go-r1/request118-direct/run.json",
+      "bytes": 26589,
+      "sha256": "1183bd455121dfca40b64058814e3ec04dccc26c561999c1d73a4a90565dfb58"
+    },
+    {
+      "id": "E169",
+      "kind": "local",
+      "path": "local/research/codex/round-go-r1/request118-direct/client.log",
+      "bytes": 12486,
+      "sha256": "87b7f42ad218d0853d49e4379c2c81f720e85db5227264c27265452a3e134902"
+    },
+    {
+      "id": "E170",
+      "kind": "local",
+      "path": "local/research/codex/round-go-r1/request118-direct/CALog-run.txt",
+      "bytes": 2855,
+      "sha256": "9b09d0fd6dcc60a82fd19581d2ddebf8837f565f66d4d29b1dea3473c4987951"
+    },
+    {
+      "id": "E171",
+      "kind": "local",
+      "path": "local/research/codex/round-go-r1/request118-direct/debug-commands.txt",
+      "bytes": 3235,
+      "sha256": "937df5a87a901cf0669d5ec6774275f9dc952eaaa98bac0d23a930037011759e"
+    },
+    {
+      "id": "E172",
+      "kind": "local",
+      "path": "local/research/codex/round-go-r1/request118-queue/run.json",
+      "bytes": 26597,
+      "sha256": "bb155f3ee67690ed87ec3170ecf2e57a4a5999be69842d880599a927274bf27e"
+    },
+    {
+      "id": "E173",
+      "kind": "local",
+      "path": "local/research/codex/round-go-r1/request118-queue/client.log",
+      "bytes": 14228,
+      "sha256": "e1fd99706a6a635bac4245ceecdbd270896e6c18d97c3d5baa01abca59e05bdf"
+    },
+    {
+      "id": "E174",
+      "kind": "local",
+      "path": "local/research/codex/round-go-r1/request118-queue/CALog-run.txt",
+      "bytes": 2802,
+      "sha256": "0178fdd8838f51247380814b8488482e33c16cdbf80398fcac86c47f6b509c16"
+    },
+    {
+      "id": "E175",
+      "kind": "local",
+      "path": "local/research/codex/round-go-r1/request118-queue/debug-commands.txt",
+      "bytes": 3182,
+      "sha256": "50f4c678dba3571b622ee2d714c1f195d2a89a6d06fc2e29fdd42f0976e3690a"
+    },
+    {
+      "id": "E176",
+      "kind": "local",
+      "path": "local/research/codex/round-go-r1/request118-winsend/run.json",
+      "bytes": 27165,
+      "sha256": "a07b2d37c0e07a33b1bc693743551c5eb78ec2334f638281ab31c96395086bbe"
+    },
+    {
+      "id": "E177",
+      "kind": "local",
+      "path": "local/research/codex/round-go-r1/request118-winsend/client.log",
+      "bytes": 14448,
+      "sha256": "19691807b3ea1af67177b31456ed8ed0f0b9a9f428d83e9017d991c3fe047fb3"
+    },
+    {
+      "id": "E178",
+      "kind": "local",
+      "path": "local/research/codex/round-go-r1/request118-winsend/CALog-run.txt",
+      "bytes": 2802,
+      "sha256": "f296647a439c641260bf0f5a1d8f9e5fa141ecb7d31d6b8706df68dbda5560be"
+    },
+    {
+      "id": "E179",
+      "kind": "local",
+      "path": "local/research/codex/round-go-r1/request118-winsend/debug-commands.txt",
+      "bytes": 3341,
+      "sha256": "8d88a39c4c0da39de4364b0a363f96c3f75e83ffeb6f10a20cdf4bb0bb141f49"
+    },
+    {
+      "id": "E180",
+      "kind": "local",
+      "path": "local/research/codex/round-go-r1/round-control/run.json",
+      "bytes": 21309,
+      "sha256": "61ee4a2b591ade28d483113aedd14504ba82fa459e04242e5790db00bcf6fb40"
+    },
+    {
+      "id": "E181",
+      "kind": "local",
+      "path": "local/research/codex/round-go-r1/round-control/client.log",
+      "bytes": 11404,
+      "sha256": "78ad285882fd30bed507f5f9b11d8da475512b16ad926b61350895a3c790c515"
+    },
+    {
+      "id": "E182",
+      "kind": "local",
+      "path": "local/research/codex/round-go-r1/round-control/CALog-run.txt",
+      "bytes": 2110,
+      "sha256": "162ec0aad178ba6d3afcdc7b981aa10433167b7900a00feb19186a88f2fb87e2"
+    },
+    {
+      "id": "E183",
+      "kind": "local",
+      "path": "local/research/codex/round-go-r1/round-control/debug-commands.txt",
+      "bytes": 1279,
+      "sha256": "2d3ba452bb0cd804532ef39d60a5badffc7e5e02e8601c2e3bd486a21edc7563"
+    },
+    {
+      "id": "E184",
+      "kind": "local",
+      "path": "local/research/codex/round-go-r1/go-play/screen-18.png",
+      "bytes": 188446,
+      "sha256": "6f23da825e40c9ad52803bbac9e40b3503d53c1261dab0a2b24ab73849fcd8b8"
+    },
+    {
+      "id": "E185",
+      "kind": "local",
+      "path": "local/research/codex/round-go-r1/go-time30-input/screen-18.png",
+      "bytes": 188446,
+      "sha256": "6f23da825e40c9ad52803bbac9e40b3503d53c1261dab0a2b24ab73849fcd8b8"
+    },
+    {
+      "id": "E186",
+      "kind": "local",
+      "path": "local/research/codex/round-go-r1/begin198-input/screen-16.png",
+      "bytes": 124031,
+      "sha256": "9b88c0913609c747c3ce1d9b770c2f91c098662e22e6e5d508a5900965303ce3"
+    },
+    {
+      "id": "E187",
+      "kind": "local",
+      "path": "local/research/codex/round-go-r1/begin198-input/input-after-Right.png",
+      "bytes": 195003,
+      "sha256": "c0ae80b23253a861b3494326e61b00a77a2e9e8710cf06f8940e70b92ba47bed"
+    },
+    {
+      "id": "E188",
+      "kind": "local",
+      "path": "local/research/codex/round-go-r1/begin198-input/input-after-space.png",
+      "bytes": 195097,
+      "sha256": "8d828bc10fcea44c049764c332f860a41f22a902f6aadcd751a5444904b4fcf6"
+    },
+    {
+      "id": "E189",
+      "kind": "local",
+      "path": "local/research/codex/round-go-r1/begin198-input/screen-18.png",
+      "bytes": 194879,
+      "sha256": "7e938c17cfb04c3800f78ea4833a4497c8103e39bb049449e222d1f2091d7abf"
+    },
+    {
+      "id": "E190",
+      "kind": "local",
+      "path": "local/research/codex/round-go-r1/bomb-request/input-after-space-7.png",
+      "bytes": 192968,
+      "sha256": "20d9c9b5058e6b60995f04f71e7729caf672d2eb0d7743ab494f799232119aaf"
+    },
+    {
+      "id": "E191",
+      "kind": "local",
+      "path": "local/research/codex/round-go-r1/reply159-rerun/screen-19.png",
+      "bytes": 195035,
+      "sha256": "79cf00b1434ba6d35534eec189531f3379f5784653751486b0f2bbdf07874d89"
+    },
+    {
+      "id": "E192",
+      "kind": "local",
+      "path": "local/research/codex/round-go-r1/reply159-rerun/screen-20.png",
+      "bytes": 194947,
+      "sha256": "2f56da561d604cabda353a886aca1cf79f405b0e3ac32cce698f5af69e49f195"
+    },
+    {
+      "id": "E193",
+      "kind": "local",
+      "path": "local/research/codex/round-go-r1/explode158/input-after-Right-9.png",
+      "bytes": 196185,
+      "sha256": "42bacdea8e7ba499f34b78186d1242eb4736f5c6d218b081dac4eb37612b6ec2"
+    },
+    {
+      "id": "E194",
+      "kind": "local",
+      "path": "local/research/codex/round-go-r1/explode158/screen-18.png",
+      "bytes": 196470,
+      "sha256": "e6222ccee587c8d74bc4128c45ce854a9f277f6a8357cd05ab82eeb469063875"
+    },
+    {
+      "id": "E195",
+      "kind": "local",
+      "path": "local/research/codex/round-go-r1/explode158/screen-19.png",
+      "bytes": 196326,
+      "sha256": "18eb5ca6ff0ff9c093bb16c95f3e3b1f3d4cb915b299ad90cf528f370ee896f0"
+    },
+    {
+      "id": "E196",
+      "kind": "local",
+      "path": "local/research/codex/round-go-r1/explode158/screen-23.png",
+      "bytes": 194972,
+      "sha256": "69066161857800a8c12d42405b4c207be713d861de2786e9e0657d2419d53dc3"
+    },
+    {
+      "id": "E197",
+      "kind": "local",
+      "path": "local/research/codex/wine_probe_start121_id1.py",
+      "bytes": 33554,
+      "sha256": "39116a4a26eaa8a0f1a4f412efb27cd15f86bc7c9eeb12b00574287a141af3ce"
+    },
+    {
+      "id": "E198",
+      "kind": "local",
+      "path": "local/research/codex/wine_probe_round_go.py",
+      "bytes": 34462,
+      "sha256": "53f49f3265e2d26e80a71984bc5817ca2ac80780f7b8fad09c0463eb9bb8b666"
+    },
+    {
+      "id": "E199",
+      "kind": "local",
+      "path": "local/research/codex/wine_probe_round_go_time30.py",
+      "bytes": 35635,
+      "sha256": "0079653c27ff29bb6c6da91c8c1b47e74ca3f9386b8dfda9629860e19967f0d6"
+    },
+    {
+      "id": "E200",
+      "kind": "local",
+      "path": "local/research/codex/wine_probe_round_begin.py",
+      "bytes": 36138,
+      "sha256": "e1b4d7234bc231ec39f8c800bebf5f73aa622c84e1dc292e2beb00672d57d282"
+    },
+    {
+      "id": "E201",
+      "kind": "local",
+      "path": "local/research/codex/wine_probe_bomb_request.py",
+      "bytes": 36187,
+      "sha256": "8621fb64db3c3718b0ddb2c53cf766b633e76c4ab66e92c7fc59ed6f7e026089"
+    },
+    {
+      "id": "E202",
+      "kind": "local",
+      "path": "local/research/codex/wine_probe_reply159.py",
+      "bytes": 36701,
+      "sha256": "47b98902a9e431d48bc1a83bb58fb2236cf0331817eb626a7ee53f346ffde8f3"
+    },
+    {
+      "id": "E203",
+      "kind": "local",
+      "path": "local/research/codex/wine_probe_explode158.py",
+      "bytes": 37360,
+      "sha256": "7636fd2b5d86e7bea98edd30eb0b04574150ec599d12b43450064fe22975c509"
+    },
+    {
+      "id": "E204",
+      "kind": "local",
+      "path": "local/research/codex/bootstrap-copy-oracle.py",
+      "bytes": 2377,
+      "sha256": "8127e0f2fbc385360e878bb68ae3a6680eabbf7456335f0f3db75c7c3b73a8c0"
+    },
+    {
+      "id": "E205",
+      "kind": "local",
+      "path": "local/research/codex/bootstrap-recv-oracle.py",
+      "bytes": 2104,
+      "sha256": "1e86c06540e8fe654564c5bd403f859070f77c9af0d5d11c70c9351198e00ae2"
+    },
+    {
+      "id": "E206",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/oracle-dependencies/boomproto.py",
+      "bytes": 7779,
+      "sha256": "e9642ec10e53cfed6c24c0c5ade07b34a46ce02073a8d316f724776686855bbd"
+    },
+    {
+      "id": "E207",
+      "kind": "local",
+      "path": "local/research/codex/start-reply-r1/auth-id1-prefix.bin",
+      "bytes": 72,
+      "sha256": "d7454be4b23a5aa0e81156b38886aa6171d3f044ca1d6064fa5e0b060000d84c"
+    },
+    {
+      "id": "E208",
+      "kind": "local",
+      "path": "local/research/codex/start-reply-r1/start121-final.bin",
+      "bytes": 167,
+      "sha256": "a19f169cf30af78f51e8a82d8c4ba26d36324b8016ac3c7deb14c82ea3e16a76"
+    },
+    {
+      "id": "E209",
+      "kind": "local",
+      "path": "local/research/codex/start-reply-r1/player106-id1-team0.bin",
+      "bytes": 242,
+      "sha256": "f2c9caf15bf008d8df6dcf33ce10da603dc7c8f7335cf413f0454692ce7f9934"
+    },
+    {
+      "id": "E210",
+      "kind": "local",
+      "path": "local/research/codex/auth-request-r1/vn-login-references/docs/lobby.md",
+      "bytes": 69790,
+      "sha256": "13bac46134fc2255c32ac539b7e0072b31cd78dcb71122996ba003d1a2256ca4"
+    },
+    {
+      "id": "E211",
+      "kind": "local",
+      "path": "local/research/codex/auth-request-r1/vn-login-references/server/src/packets.rs",
+      "bytes": 29566,
+      "sha256": "b7c8ff9899b94b307c62137cb1ed7aaf1196125b01125fef4f800381e5748f76"
+    },
+    {
+      "id": "E212",
+      "kind": "local",
+      "path": "local/research/codex/wcp-guard-r1/game/CA-r2-login-logout.exe",
+      "bytes": 31874560,
+      "sha256": "660447c293ce92270cb9b5815331bca976e8f156366e1fe50b217b6c12e60ce3"
+    },
+    {
+      "id": "E213",
+      "kind": "local",
+      "path": "local/research/codex/wcp-guard-r1/game/CA-r2-stage-social.exe",
+      "bytes": 31874560,
+      "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+    },
+    {
+      "id": "E214",
+      "kind": "local",
+      "path": "local/research/codex/wcp-guard-r1/game/nmco3.dll",
+      "bytes": 323584,
+      "sha256": "7e038696ec69db579f71e029da66f5b5500c56375ff77b24d93529ba7faf9493"
+    },
+    {
+      "id": "E215",
+      "kind": "artifact",
+      "path": "/home/admin/boom/repos/boomkr-re/out/modO.bin",
+      "bytes": 31858688,
+      "sha256": "a08950c833d3acab8281049def7b3dc96b221f107eeda01da3a548e34b91dce5"
+    },
+    {
+      "id": "E216",
+      "kind": "artifact",
+      "path": "/home/admin/boom/repos/boom-re/server/src/session.rs",
+      "bytes": 35262,
+      "sha256": "0d32f8eff705a2f731b799ae3e68ba6d7dff52b1f97678bafc1341b83078e8ec"
+    },
+    {
+      "id": "E217",
+      "kind": "artifact",
+      "path": "/home/admin/boom/repos/boom-re/docs/oc_e-game.md",
+      "bytes": 70895,
+      "sha256": "9e80ecea3fb7d152f58a4a0d60ac6e1f6759b18be23bf53d908bb896dbad0b6a"
+    }
+  ],
+  "delta": {
+    "added": [
+      "Actual99 writer/native fields,197/196/198 contract and map-clock initialization.",
+      "Runtime clock countdown and local input/movement, actual118 writer/queue/send-path,159 bomb entity/visual placement and158 calc evidence."
+    ],
+    "corrected": [
+      "CP020 clock/input unknown now measured on diagnostic copy; original record/raw remain immutable.",
+      "Phase3 and stage-clock unpause do not by themselves prove map clock starts;198 initializes a different clock.",
+      "Misaligned and overlong disassembly / data-cut linear searches retain explicit coverage limits; no exhaustive absence claim.",
+      "Recovery process-absence inference corrected;159/retry overlap and three stale preliminary entries declared, not silently resealed.",
+      "CP020 PR28 merged at9b02ab1; CP021 integration remains pending snapshot with independent review waived."
+    ],
+    "superseded": [
+      "NEXT-ROUND99-GO superseded by NEXT-BOMB118-ROUND after99/phase/map-clock/local-input milestone."
+    ]
+  },
+  "blockers": [
+    "Bomb visible in one local case; no successful explosion/result/return-to-room/full match or multiplayer.158 reaches calc but bomb persists;127/132/190 semantics incomplete.",
+    "Full auth/profile tail after34 bytes, identity/reconnect/cache/codec reset and vanilla controls remain open.",
+    "Shared game-dir/cache not normalized; exact map asset variant/path/spawn collision not traced."
+  ],
+  "next_steps": [
+    {
+      "id": "NEXT-ROUND99-GO",
+      "task": "KRE-005b",
+      "state": "superseded",
+      "action": "Actual99 writer, phase/clock and input local measured; continue bomb/request118 and round cycle.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-BOMB118-ROUND",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "Inspect guard/state/clock in158/E9C520, test explosion then trap/death/result/return-to-room; use VN only as navigation.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-FULL-LOGIN-FIELDS",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "Complete auth/profile/tail and stable identity/cache/reconnect/codec controls before K2/K3 acceptance.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    }
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-10-30T00:01:36.780045+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "Codex solo RE/code/runtime and self-check; no independent approval.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Owner explicitly instructed solo work without Claude review."
+    }
+  },
+  "docs_sync": [
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "Current countdown/input/bomb milestone and explosion/full-match blockers; CP020 merged snapshot."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "Measured path and next bomb/round order, gates remain open."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "updated",
+      "reason": "Canonical99/197/196/198/118/159/158 contract, map-clock distinction, bomb visual/calc limits and exploratory overlap."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "updated",
+      "reason": "Resolve bounded99/clock/input questions, focus118/bomb/round and full-auth remaining."
+    },
+    {
+      "path": "docs/evidence/round-go/README.md",
+      "state": "updated",
+      "reason": "Grouped runs, reproducible recipe, native/runtime/visual provenance, corrections and hash references."
+    }
+  ]
+}

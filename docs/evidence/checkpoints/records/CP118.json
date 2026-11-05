@@ -1,0 +1,260 @@
+{
+  "id": "CP118",
+  "previous": "CP117",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-05T05:42:04.426193+00:00",
+  "context_commit": "c2ca94d1e2a77bbfcf67c052542e37d0a1577e94",
+  "owner": "Codex",
+  "reviewer": "Codex",
+  "question": "Refactor47MBinlinecheckpointmanifestforsmallselectiveentry whilepreservingallcompleteobjects/audits/evidence/oldnewGithistory/fullverification; aftercurrentruntimecleanup thenresumesavedslot2StartguardRE.",
+  "scope": "KRE073/issue188 oneorganizationbatchafterownerruntimefinishdirective. Surveyv1schema/consumers, scriptedre-runnableobjectmigration/sharedlazyloader/newpinnedrunlists/selectiveCLI/checkeroldnewhistory/negativecontrols/docs. No oldcompletefinding/review/evidencerewrite/manualsplit/linechunk/historyreset/newtracker. Recordcurrentpriorrunactualslot2causeonlytosaveREhandoff; no servicepolicyfixmixed.",
+  "artifacts": [
+    {
+      "name": "CA-r2-login-logout.exe",
+      "sha256": "660447c293ce92270cb9b5815331bca976e8f156366e1fe50b217b6c12e60ce3"
+    },
+    {
+      "name": "CA-r2-stage-social.exe",
+      "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+    },
+    {
+      "name": "CA-r2-stage-social.exe Bcopy",
+      "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+    },
+    {
+      "name": "modO.bin",
+      "sha256": "a08950c833d3acab8281049def7b3dc96b221f107eeda01da3a548e34b91dce5"
+    }
+  ],
+  "locators": [
+    "Baselinec2ca94d1e2a77bbfcf67c052542e37d0a1577e94/CP117PR187merge; source47358804bytes/1196377lines/SHAeb892487ec8f26b9d4ed3361004230687792cd28fddb804cd0c88ff00ee465dc. 117checkpoints/166881inlineevidencerows/36audits.",
+    "Migrationreportdocs/evidence/checkpoints/migration-v2.json: v2initialindex53277bytes/117recordfiles42556345bytes, wholeobject/evidence/auditcomparison/rerunimmutable. LaterCP118index/countersdistinctfrommigrationprefix.",
+    "Codeconsumerscheck_checkpoints/check_docs/check_issue_links updatedsharedloader; cataloghistorylinkunchanged. Firstparentfullcheckpointdirectorytracksrecord/audit/evidencemanifestonlycommits. Legacyv1JSONoneperrevisionstilldecoded, fingerprintsmemorybetweenrevisions.",
+    "Pre-migrationruntimeactualinitialslot2group1/returnedslot2group0/703A90=1/1240D70=0/DCB7DA→guard3. Failedambientobserverquota24retained; scopedread-onlyStartentry→switch/48perStart runsealed1693raw beforemigration. KnownmodOa08950/base400000/RVA=VA−400000."
+  ],
+  "findings": [
+    {
+      "summary": "Scriptmigrationcopies117legacycompleteobjectsandtheir166881evidencerowsverbatimasJSONobjectsintoindividualrecords; mappingsfilebyte/objecthash and36originalauditfilesverified. Counter/auditcadencepreserved; rerunrecords/indexbytesunchangedanddoesnotresetlaterappends. No oldevidencededup/review/findingssemanticrewrite.",
+      "source": "design",
+      "status": "design",
+      "method": "documentation",
+      "canonical": "docs/evidence/checkpoints/README.md",
+      "limits": "Storage/consistencychange, no semanticacceptance/gateclosing. Legacy117wholeobjects/evidence166881/audits36unchanged andGitnotrewritten, oldduplicatesretained. NewCPevidencemanifestsmetadataonly/fullrawSHAverification, no wholemanifestLLMreads. RErunbeforemigrationended/rawhashcleanup/sourcefreeze; actualslot2group0→DCB7DA, no readinessrefreshfix/Start2/freshrescueyet. AUD036through116/next120/reviewwaived.",
+      "evidence": [
+        "MIG-00033",
+        "MIG-00005",
+        "MIG-00031",
+        "MIG-00029",
+        "MIG-00018"
+      ]
+    },
+    {
+      "summary": "V2smallindex53KB vs47.36MBsource; onerecordperaccess/selectedCLIlatest/show/evidencesummarypages/fullverify. Sharedcurrentissueconsumerreadslastrecordonly. Newevidencemanifestsoneperrun/batch pinnedsizeSHA/count, everyrowstillverified; oldinlineformatremainssupported. PLANonlyorder, notnewtracker/statuscopy.",
+      "source": "design",
+      "status": "design",
+      "method": "documentation",
+      "canonical": "docs/evidence/checkpoints/README.md",
+      "limits": "Storage/consistencychange, no semanticacceptance/gateclosing. Legacy117wholeobjects/evidence166881/audits36unchanged andGitnotrewritten, oldduplicatesretained. NewCPevidencemanifestsmetadataonly/fullrawSHAverification, no wholemanifestLLMreads. RErunbeforemigrationended/rawhashcleanup/sourcefreeze; actualslot2group0→DCB7DA, no readinessrefreshfix/Start2/freshrescueyet. AUD036through116/next120/reviewwaived.",
+      "evidence": [
+        "MIG-00036",
+        "MIG-00037",
+        "MIG-00009",
+        "MIG-00010",
+        "MIG-00006",
+        "MIG-00008"
+      ]
+    },
+    {
+      "summary": "CheckerkeepscontinuousIDs/counters/audits/docs/source/evidencehash, logicalappend-onlycompletefingerprintsacrossv1→v2, approved/waivedimmutability. Gitwatchwholecheckpointdirfindsrecord-only/audit-only/evidence-onlytamperandrepinnedfindingrewrite, includingintermediatebadcommitrestoredlater. Doesnotinferacceptance/semantics/gates.",
+      "source": "design",
+      "status": "design",
+      "method": "documentation",
+      "canonical": "docs/evidence/checkpoints/README.md",
+      "limits": "Storage/consistencychange, no semanticacceptance/gateclosing. Legacy117wholeobjects/evidence166881/audits36unchanged andGitnotrewritten, oldduplicatesretained. NewCPevidencemanifestsmetadataonly/fullrawSHAverification, no wholemanifestLLMreads. RErunbeforemigrationended/rawhashcleanup/sourcefreeze; actualslot2group0→DCB7DA, no readinessrefreshfix/Start2/freshrescueyet. AUD036through116/next120/reviewwaived.",
+      "evidence": [
+        "MIG-00039",
+        "MIG-00040",
+        "MIG-00032",
+        "MIG-00034",
+        "MIG-00004"
+      ]
+    },
+    {
+      "summary": "Runtimefinishedbeforemigration/sourcechange: scopedreadonlyStartguardloopshowsinitialslot2group1; returnedslot1group1/slot2group0/helper1/hostflag0→actualDCB7DAreturn3. Thisidentifiesactualdiagnosticsyntheticactorblocking104, notonlynumericroomguard. Bounded110slot2state0x24refreshisnextcandidate, notimplementedfix/originalauthority/Start2proof. Failedobserverquotalimitationpreserved.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#rescue-start-slot",
+      "limits": "Storage/consistencychange, no semanticacceptance/gateclosing. Legacy117wholeobjects/evidence166881/audits36unchanged andGitnotrewritten, oldduplicatesretained. NewCPevidencemanifestsmetadataonly/fullrawSHAverification, no wholemanifestLLMreads. RErunbeforemigrationended/rawhashcleanup/sourcefreeze; actualslot2group0→DCB7DA, no readinessrefreshfix/Start2/freshrescueyet. AUD036through116/next120/reviewwaived.",
+      "evidence": [
+        "SLOT1-01683",
+        "SLOT2-01694",
+        "SLOT2-01686",
+        "SLOT2-01683"
+      ]
+    }
+  ],
+  "verification": [
+    {
+      "check": "117fullobjects/166881inlineevidencerows/36auditbyteshash; scriptedrerun/indexrecordbytesunchanged, nooldrecorddedup",
+      "result": "pass",
+      "evidence": [
+        "MIG-00031",
+        "MIG-00030",
+        "MIG-00029"
+      ],
+      "limits": "Storage/consistencychange, no semanticacceptance/gateclosing. Legacy117wholeobjects/evidence166881/audits36unchanged andGitnotrewritten, oldduplicatesretained. NewCPevidencemanifestsmetadataonly/fullrawSHAverification, no wholemanifestLLMreads. RErunbeforemigrationended/rawhashcleanup/sourcefreeze; actualslot2group0→DCB7DA, no readinessrefreshfix/Start2/freshrescueyet. AUD036through116/next120/reviewwaived."
+    },
+    {
+      "check": "50tools tests including28checkpoint/storage migration/negative/history/CLI; consumer tests andselectedCP117full8029rawverifyevenemptypage",
+      "result": "pass",
+      "evidence": [
+        "MIG-00032",
+        "MIG-00034",
+        "MIG-00008"
+      ],
+      "limits": "Storage/consistencychange, no semanticacceptance/gateclosing. Legacy117wholeobjects/evidence166881/audits36unchanged andGitnotrewritten, oldduplicatesretained. NewCPevidencemanifestsmetadataonly/fullrawSHAverification, no wholemanifestLLMreads. RErunbeforemigrationended/rawhashcleanup/sourcefreeze; actualslot2group0→DCB7DA, no readinessrefreshfix/Start2/freshrescueyet. AUD036through116/next120/reviewwaived."
+    },
+    {
+      "check": "v2baselinefullcheck117/166881/zeroerrors/historyverified; docs/catalog/issuelive/artifacts/diff, finalCP118externalfulllistsrequiredchecknext",
+      "result": "pass",
+      "evidence": [
+        "MIG-00004",
+        "MIG-00023",
+        "MIG-00027",
+        "MIG-00002"
+      ],
+      "limits": "HistoricalproofbeforeCP118append, finalnewrecord/externalmanifestvalidationrunafterappend. Noautoacceptance."
+    }
+  ],
+  "evidence": [],
+  "evidence_manifests": [
+    {
+      "path": "docs/evidence/checkpoints/evidence/rescue-start-slot-r1.json",
+      "bytes": 426023,
+      "sha256": "3f7f0d9e70d30a09f6483f4bcc8ab9398a00f77c5e79e912446229a124caa3f1",
+      "count": 1688
+    },
+    {
+      "path": "docs/evidence/checkpoints/evidence/rescue-start-slot-r2.json",
+      "bytes": 428817,
+      "sha256": "8c3d5bb258936b0cd912aed576cff2a4c7ec1841014553d12ff029183b0cad75",
+      "count": 1699
+    },
+    {
+      "path": "docs/evidence/checkpoints/evidence/CP118-checkpoint-store-migration.json",
+      "bytes": 11778,
+      "sha256": "0800e6d41d092fffc63f0326ad573e64ae82febfac78e73889574931c01bcf48",
+      "count": 46
+    }
+  ],
+  "delta": {
+    "added": [
+      "Smallv2index/perCPimmutablefile/sharedselectiveCLI/loader andpinnedexternalrunbatchmanifestsfornewcheckpoints.",
+      "Scriptedmigrationreport/fullobjectevidenceauditcomparison/rerunproof/oldnewhistoryandtampernegativecontrols.",
+      "Savedactualslot2/group0/DCB7DAcause andfailedobserverquota evidencebeforemigration, preciseREhandoff."
+    ],
+    "corrected": [
+      "WholemanifestLLMentry/unnecessarycurrentissueconsumerfullhistoryloads replacedselectivepaths; totallegacydataintentionallyretained.",
+      "CP117PR187merged/currentdocssynced; nooldcompleteobject/review/evidence/gatechange."
+    ],
+    "superseded": [
+      "All futurecheckpointreadersuseCLI/storeloader; oneorganizationalCPnotperfilemigrationtask."
+    ]
+  },
+  "blockers": [
+    "RE: boundeddiagnosticsynthetic2readinessrefreshnotyetimplemented/runtimeverified; stillnoStart2/freshrescue/authority/fullmatch/gates.",
+    "Storage: legacyrecordsretainlargeinlineevidencelists/duplicates; v1revisionJSONrequiresfullPythondecodeoneatatime, no historicaldedup/rewrite."
+  ],
+  "next_steps": [
+    {
+      "id": "NEXT-CHECKPOINT-STORE-V2",
+      "task": "KRE-073",
+      "state": "active",
+      "action": "FinalCP118externalfullchecks/diff/commitpushPRexactheadmerge, closeorganizationissueafteracceptance; thensavedactualREstep, notnewtracker.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-RESCUE18-START-GUARD",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "Actualslot2/group0/helper1/hostflag0/DCB7DAcausemeasuredbeforemigration. Aftermigrationmerge testminimaldiagnostic110slot2/state0x24refreshafterreturn, control/nativeguard0/actual104/Start2freshrescue/currentkey; no sourcebinary/stateforce/fuse/outcomechange orrepeatknownslotRE.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    }
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-11-05T05:42:04.426193+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "Codex solo RE/code/runtime/selfcheck, not independent approval.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Owner explicitly requested solo without Claude review."
+    }
+  },
+  "docs_sync": [
+    {
+      "path": "AGENTS.md",
+      "state": "updated",
+      "reason": "CP118storagev2/schema/CLI/migrationvalidation/evidence/auditpreservation; savedactualslot2blocker/currentCP117merge, no gates/oldrecordrewrite."
+    },
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "CP118storagev2/schema/CLI/migrationvalidation/evidence/auditpreservation; savedactualslot2blocker/currentCP117merge, no gates/oldrecordrewrite."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "CP118storagev2/schema/CLI/migrationvalidation/evidence/auditpreservation; savedactualslot2blocker/currentCP117merge, no gates/oldrecordrewrite."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "updated",
+      "reason": "CP118storagev2/schema/CLI/migrationvalidation/evidence/auditpreservation; savedactualslot2blocker/currentCP117merge, no gates/oldrecordrewrite."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "updated",
+      "reason": "CP118storagev2/schema/CLI/migrationvalidation/evidence/auditpreservation; savedactualslot2blocker/currentCP117merge, no gates/oldrecordrewrite."
+    },
+    {
+      "path": "docs/features.json",
+      "state": "updated",
+      "reason": "CP118storagev2/schema/CLI/migrationvalidation/evidence/auditpreservation; savedactualslot2blocker/currentCP117merge, no gates/oldrecordrewrite."
+    },
+    {
+      "path": "docs/COVERAGE.md",
+      "state": "updated",
+      "reason": "CP118storagev2/schema/CLI/migrationvalidation/evidence/auditpreservation; savedactualslot2blocker/currentCP117merge, no gates/oldrecordrewrite."
+    },
+    {
+      "path": "docs/evidence/checkpoints/README.md",
+      "state": "updated",
+      "reason": "CP118storagev2/schema/CLI/migrationvalidation/evidence/auditpreservation; savedactualslot2blocker/currentCP117merge, no gates/oldrecordrewrite."
+    },
+    {
+      "path": "docs/evidence/checkpoints/migration-v2.json",
+      "state": "updated",
+      "reason": "CP118storagev2/schema/CLI/migrationvalidation/evidence/auditpreservation; savedactualslot2blocker/currentCP117merge, no gates/oldrecordrewrite."
+    },
+    {
+      "path": "docs/evidence/rescue-service/README.md",
+      "state": "updated",
+      "reason": "CP118storagev2/schema/CLI/migrationvalidation/evidence/auditpreservation; savedactualslot2blocker/currentCP117merge, no gates/oldrecordrewrite."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/review.json",
+      "state": "updated",
+      "reason": "CP118storagev2/schema/CLI/migrationvalidation/evidence/auditpreservation; savedactualslot2blocker/currentCP117merge, no gates/oldrecordrewrite."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
+      "state": "updated",
+      "reason": "CP118storagev2/schema/CLI/migrationvalidation/evidence/auditpreservation; savedactualslot2blocker/currentCP117merge, no gates/oldrecordrewrite."
+    }
+  ]
+}

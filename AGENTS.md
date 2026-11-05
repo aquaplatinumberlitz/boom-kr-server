@@ -59,6 +59,9 @@ contract/limits,RESEARCH câu hỏi/phép kiểm tiếp,evidence metadata/recipe
 Tóm tắt delta và link nguồn chuẩn,không tạo plan/contract theo phiên.
 Theo [workflow](docs/evidence/checkpoints/README.md),lấy ID/counter tăng liên tục từ
 [manifest](docs/evidence/checkpoints/manifest.json),kể cả đổi phiên/compact/worker.
+Từ kho v2, dùng `python3 tools/checkpoints.py latest`, rồi `show CPxxx`/`evidence CPxxx`
+(summary/page/`--verify`). Không cat toàn manifest/records/raw index vào context; đọc đúng câu hỏi.
+Record complete và run/batch evidence manifest đã pin giữ bất biến; [hướng dẫn](docs/evidence/checkpoints/README.md).
 Phân biệt source/status/loại kiểm với review/merge/gate;chưa review vẫn ghi pending/candidate.
 Không nâng gate từ alive,TCP accept,cửa sổ hoặc encoder tự sinh;không báo phần trăm thiếu bằng chứng.
 Mỗi 4 checkpoint complete audit thủ công README→PLAN→PROTOCOL→RESEARCH→evidence với raw mới,

@@ -1,0 +1,756 @@
+{
+  "id": "CP053",
+  "previous": "CP052",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-01T14:23:49.458078+00:00",
+  "context_commit": "bb640f70709ac520cf6757fc06c1df6c3a0988ce",
+  "question": "Host EOF while B still setup: native ghost/chief and safe per-recipient cleanup ordering?",
+  "scope": "KRE-016/#66; exact source reuse CP034/050–052/VN before native control/fix, per-recipient pending107/110 after setup;3regressions. Owner request to continue immediately across CP/PR boundaries recorded in AGENTS/PLAN/directive, commitbb640f7. No new binarybody/patch/worker. Interrupted initial run preserved incomplete. Audit nextCP056.",
+  "owner": "Codex",
+  "reviewer": "Codex",
+  "artifacts": [
+    {
+      "name": "CA-r2-login-logout.exe",
+      "sha256": "660447c293ce92270cb9b5815331bca976e8f156366e1fe50b217b6c12e60ce3"
+    },
+    {
+      "name": "CA-r2-stage-social.exe",
+      "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+    },
+    {
+      "name": "CA-r2-stage-social.exe Bcopy",
+      "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+    },
+    {
+      "name": "modO.bin",
+      "sha256": "a08950c833d3acab8281049def7b3dc96b221f107eeda01da3a548e34b91dce5"
+    }
+  ],
+  "locators": [
+    "host-setup-baseline-r2/fixed 2026-11-01; initial host-setup-baseline incomplete/interruption.json",
+    "D603A0/DC6329/12400D0/12401A9/1240D5E reused; native107/chief B0→1;14EF300 native packet oracle",
+    "ProbeService.cleanup_departed/deliver_departure/tick_setup/close_connection; mapped initialseq61/64/67/70 then dynamic73/76"
+  ],
+  "findings": [
+    {
+      "summary": "Choose logical host among live accepted members, queue departure for unmapped recipient; flush107/110 after initial map, drop queue on recipient close; no early seq/fixture overwrite.",
+      "source": "design",
+      "status": "design",
+      "method": "design",
+      "canonical": "docs/PROTOCOL.md#host-setup",
+      "limits": "Diagnostic Wine/profile41 and policy bounds only; no general membership/auth/original host election, no match/K5/K6a/LAN/Internet. Native proof separate from code tests and incomplete interrupted run.",
+      "evidence": [
+        "E046",
+        "E031"
+      ]
+    },
+    {
+      "summary": "Baseline actual hostEOF after Bown106 before Bmap leaves slotA/chiefB0; UI B sendsReady95/110, no107. Fixed same boundary native ID1→0 once/chiefB0→1 after map andpair73/76, nofalsephase/result.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#host-setup",
+      "limits": "Diagnostic Wine/profile41 and policy bounds only; no general membership/auth/original host election, no match/K5/K6a/LAN/Internet. Native proof separate from code tests and incomplete interrupted run.",
+      "evidence": [
+        "E063",
+        "E070",
+        "E022",
+        "E032",
+        "E034"
+      ]
+    },
+    {
+      "summary": "932relations/hash,18native packet cases (82/95/107110 validCRCpartial); initial interrupted run has96indexedfiles/no finalrun and is not counted as control.",
+      "source": "kr_static",
+      "status": "confirmed",
+      "method": "emulation",
+      "canonical": "docs/PROTOCOL.md#host-setup",
+      "limits": "Diagnostic Wine/profile41 and policy bounds only; no general membership/auth/original host election, no match/K5/K6a/LAN/Internet. Native proof separate from code tests and incomplete interrupted run.",
+      "evidence": [
+        "E032",
+        "E023",
+        "E020"
+      ]
+    },
+    {
+      "summary": "C admission still requires refresh even before first round; cleanup/promotion does not prove acceptance/start. Continue this concrete blocker next without stopping at merge.",
+      "source": "design",
+      "status": "confirmed",
+      "method": "design",
+      "canonical": "docs/PROTOCOL.md#host-setup",
+      "limits": "Diagnostic Wine/profile41 and policy bounds only; no general membership/auth/original host election, no match/K5/K6a/LAN/Internet. Native proof separate from code tests and incomplete interrupted run.",
+      "evidence": [
+        "E046"
+      ]
+    }
+  ],
+  "verification": [
+    {
+      "check": "932relations/hash and18native cases;42server+7catalog+18checkpoint tests;docs/catalog/artifacts5/5/diff; local/history checker after append",
+      "result": "pass",
+      "evidence": [
+        "E032",
+        "E031",
+        "E006",
+        "E007",
+        "E009",
+        "E004"
+      ],
+      "limits": "No semantics/gate inferred from checker. Independentreview waived, no audit dueCP053;AUD016/nextCP056."
+    }
+  ],
+  "evidence": [
+    {
+      "id": "E001",
+      "kind": "repository",
+      "path": "docs/evidence/host-setup/README.md",
+      "sha256": "9dbb3a5f2b7aca9b747f4a7e0722ddfe0bd63fea897cca73f33ebacd1e8396b6",
+      "bytes": 4463
+    },
+    {
+      "id": "E002",
+      "kind": "repository",
+      "path": "docs/evidence/owner-directives/continuous-work.json",
+      "sha256": "ac50f8446ff7be466a9b93da78e5cf416fda852ce4610517460b397a5bf94586",
+      "bytes": 735
+    },
+    {
+      "id": "E003",
+      "kind": "local",
+      "path": "local/research/codex/host-setup-r1/append_checkpoint.py",
+      "sha256": "8ac467d3357031d7c620bcd54d75432e13d2cf03ce79b0e3ece484b53549f68a",
+      "bytes": 6939
+    },
+    {
+      "id": "E004",
+      "kind": "local",
+      "path": "local/research/codex/host-setup-r1/artifacts-check.txt",
+      "sha256": "649c6624aa6d317dfc1db5e16fea683cfbc9d9cf4dd3df11c0d70e57409054a0",
+      "bytes": 253
+    },
+    {
+      "id": "E005",
+      "kind": "local",
+      "path": "local/research/codex/host-setup-r1/catalog-check.txt",
+      "sha256": "07cfdc4671ab13f3320ca868da10e2f29adb3799625c524fd7e8975cb45a5554",
+      "bytes": 264
+    },
+    {
+      "id": "E006",
+      "kind": "local",
+      "path": "local/research/codex/host-setup-r1/catalog-tests.txt",
+      "sha256": "c038bb2a00d5eb060273e1536549a3bba56ac81a0c0ca6bedf9213608f7e7f34",
+      "bytes": 105
+    },
+    {
+      "id": "E007",
+      "kind": "local",
+      "path": "local/research/codex/host-setup-r1/checkpoint-tests.txt",
+      "sha256": "41eb2927b487cf7bec7e420b78f4086d4f86f17cd4fe03a53a1fd2eeffad641b",
+      "bytes": 117
+    },
+    {
+      "id": "E008",
+      "kind": "local",
+      "path": "local/research/codex/host-setup-r1/derive_roles.py",
+      "sha256": "fe0eaf83f66549713dbce23c94ddbbc31eca958fb5c878084aea75dd8390f204",
+      "bytes": 854
+    },
+    {
+      "id": "E009",
+      "kind": "local",
+      "path": "local/research/codex/host-setup-r1/docs-check.txt",
+      "sha256": "db4c3bdf394f3945bc5dd64e4baab751a141978054f143a10e16c5cdf99aeab9",
+      "bytes": 173
+    },
+    {
+      "id": "E010",
+      "kind": "local",
+      "path": "local/research/codex/host-setup-r1/fix-hypothesis.json",
+      "sha256": "59499afd2858476fa9b615cfd7761c4f376eed65dbce0f56863683784faa4f27",
+      "bytes": 856
+    },
+    {
+      "id": "E011",
+      "kind": "local",
+      "path": "local/research/codex/host-setup-r1/host-setup-baseline-launcher.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "id": "E012",
+      "kind": "local",
+      "path": "local/research/codex/host-setup-r1/host-setup-baseline-r2-hashes.json",
+      "sha256": "9c316037281de2d438a42b254a0483ccd801335a2e1762f85a0b864fc384f834",
+      "bytes": 92561
+    },
+    {
+      "id": "E013",
+      "kind": "local",
+      "path": "local/research/codex/host-setup-r1/host-setup-baseline-r2-launcher.log",
+      "sha256": "ea9f469c5a31c6cfe3520c51c54c9191f1c497ed4e7650ea7fc0060efb4328cf",
+      "bytes": 26046
+    },
+    {
+      "id": "E014",
+      "kind": "local",
+      "path": "local/research/codex/host-setup-r1/host-setup-baseline-r2-recipe.json",
+      "sha256": "de9ed5c345416132d4c50a96a4cbd72d2c6e9388be88f2838ebe33998401b1dc",
+      "bytes": 1007
+    },
+    {
+      "id": "E015",
+      "kind": "local",
+      "path": "local/research/codex/host-setup-r1/host-setup-baseline-recipe.json",
+      "sha256": "146aecc8fb3b8bef6386b4cd02cfc47c46674a5c2475fc9564ee42e10f903161",
+      "bytes": 1001
+    },
+    {
+      "id": "E016",
+      "kind": "local",
+      "path": "local/research/codex/host-setup-r1/host-setup-fixed-hashes.json",
+      "sha256": "758c1384e760050d56caa64639396a8db81544dbe851ae7c5655c223fec847a8",
+      "bytes": 89504
+    },
+    {
+      "id": "E017",
+      "kind": "local",
+      "path": "local/research/codex/host-setup-r1/host-setup-fixed-launcher.log",
+      "sha256": "aafec7673922fd5ac44e3fd452f6f11a898edc2e268905108bcee4478bca09d1",
+      "bytes": 26632
+    },
+    {
+      "id": "E018",
+      "kind": "local",
+      "path": "local/research/codex/host-setup-r1/host-setup-fixed-recipe.json",
+      "sha256": "fd787b6c049a4d8bfc0461109bb2264add0fc1145531812acdd8d02ff3ad05bc",
+      "bytes": 995
+    },
+    {
+      "id": "E019",
+      "kind": "local",
+      "path": "local/research/codex/host-setup-r1/host-setup.gdb",
+      "sha256": "90f53ef6e1527e04db68609d275833899ee662b071f53f666d6b7803b0b7a77d",
+      "bytes": 24712
+    },
+    {
+      "id": "E020",
+      "kind": "local",
+      "path": "local/research/codex/host-setup-r1/interruption.json",
+      "sha256": "cc5dfcc36856115942b3b5db8e34da250f2f6b9e66b037b98065132ba00ff17c",
+      "bytes": 20126
+    },
+    {
+      "id": "E021",
+      "kind": "local",
+      "path": "local/research/codex/host-setup-r1/issue-body.md",
+      "sha256": "acec2ab743e2251a8548f55efd934ed66e722cf8936f685d05892fd4db4fa436",
+      "bytes": 1073
+    },
+    {
+      "id": "E022",
+      "kind": "local",
+      "path": "local/research/codex/host-setup-r1/lifecycle-summary.json",
+      "sha256": "56c17e8216ef014e043c88b60218935eb400e563e13690fafc84bca95c63f102",
+      "bytes": 10398
+    },
+    {
+      "id": "E023",
+      "kind": "local",
+      "path": "local/research/codex/host-setup-r1/native-packets.json",
+      "sha256": "7d344e048689ec431d6fae3e8f537ef609c528cf11f832fe0ea1e4602c611147",
+      "bytes": 7209
+    },
+    {
+      "id": "E024",
+      "kind": "local",
+      "path": "local/research/codex/host-setup-r1/native_packets.py",
+      "sha256": "11a228a4336e822ba388b94bb20f8bf900f6af68afa284bc5ebf63dacfd98fe9",
+      "bytes": 4828
+    },
+    {
+      "id": "E025",
+      "kind": "local",
+      "path": "local/research/codex/host-setup-r1/parse_lifecycle.py",
+      "sha256": "3b2c69d14d2830d8777589b77e925e7ba8bae38d79205fd53c3ac42313458f9f",
+      "bytes": 2665
+    },
+    {
+      "id": "E026",
+      "kind": "local",
+      "path": "local/research/codex/host-setup-r1/profile.json",
+      "sha256": "922cce0ba24ede668fb44b3b82f937c5c2a0af478bb5b8905fde272bbd564b5f",
+      "bytes": 10845
+    },
+    {
+      "id": "E027",
+      "kind": "local",
+      "path": "local/research/codex/host-setup-r1/replay-run.py",
+      "sha256": "6598d99fd6f9c8ca3eda5e720289d2c6e8eb694b8d4cb3243e225751b905922f",
+      "bytes": 3001
+    },
+    {
+      "id": "E028",
+      "kind": "local",
+      "path": "local/research/codex/host-setup-r1/reuse-question.json",
+      "sha256": "de71957bb7cd61192038ddb816293aafd02269e82ad4632595c0dc8dc59080a3",
+      "bytes": 3349
+    },
+    {
+      "id": "E029",
+      "kind": "local",
+      "path": "local/research/codex/host-setup-r1/run_probe.py",
+      "sha256": "c8940593657cec8aaf25125d647634693493ee82f294ef9ca64e9ba3068dc645",
+      "bytes": 1066
+    },
+    {
+      "id": "E030",
+      "kind": "local",
+      "path": "local/research/codex/host-setup-r1/seal_run.py",
+      "sha256": "b4e4ad304ab1361a5dd1bfabd37029c3afd2186840e66369ac0950d8e3a910e1",
+      "bytes": 624
+    },
+    {
+      "id": "E031",
+      "kind": "local",
+      "path": "local/research/codex/host-setup-r1/server-tests.txt",
+      "sha256": "2f44c5cf8d70033fcb27235baf302041dabba9f6b92483648bdec58ded5cd4b0",
+      "bytes": 141
+    },
+    {
+      "id": "E032",
+      "kind": "local",
+      "path": "local/research/codex/host-setup-r1/verification.json",
+      "sha256": "8068be17cf11f1e4e379b447649aad88da0b5c60edd02f0fb3b828ac7fa889b9",
+      "bytes": 2776
+    },
+    {
+      "id": "E033",
+      "kind": "local",
+      "path": "local/research/codex/host-setup-r1/verify.py",
+      "sha256": "3e9d32149039a84e6029838c1e018829b5bc69a5f8c4420a66d2865cbc619887",
+      "bytes": 4489
+    },
+    {
+      "id": "E034",
+      "kind": "local",
+      "path": "local/research/codex/host-setup-r1/visual-index.json",
+      "sha256": "461acbcf8024e197139e2bc88aa2279e4eabe1f59de0b7eefccb520616fdb94c",
+      "bytes": 798
+    },
+    {
+      "id": "E035",
+      "kind": "local",
+      "path": "local/research/codex/host-setup-r1/visual.png",
+      "sha256": "2e1ca153b9d39b4ded007638ab95cf4c6b051180a4f00295bfeb6418acb7f31a",
+      "bytes": 215382
+    },
+    {
+      "id": "E036",
+      "kind": "local",
+      "path": "local/research/codex/host-setup-r1/cp053-snapshot/AGENTS.md",
+      "sha256": "52ac69e0ec757e555a68a940af8d39adbfc28e6fb9870fbe2504f3d200346358",
+      "bytes": 7560
+    },
+    {
+      "id": "E037",
+      "kind": "local",
+      "path": "local/research/codex/host-setup-r1/cp053-snapshot/README.md",
+      "sha256": "017809bc91cb374bf751f71723c6b77d0b175cbff894e51505b2831b13c2715a",
+      "bytes": 3935
+    },
+    {
+      "id": "E038",
+      "kind": "local",
+      "path": "local/research/codex/host-setup-r1/cp053-snapshot/docs/COVERAGE.md",
+      "sha256": "7d7372e9f1c03ff4b9c9d9fc8844ccdf32b9afc1380c6fb143cca1d376f16ebd",
+      "bytes": 64391
+    },
+    {
+      "id": "E039",
+      "kind": "local",
+      "path": "local/research/codex/host-setup-r1/cp053-snapshot/docs/PLAN.md",
+      "sha256": "cccc5edc295604bf67ee21648e7a0ed7dbadde5bddd46f142904d783f51d720c",
+      "bytes": 29741
+    },
+    {
+      "id": "E040",
+      "kind": "local",
+      "path": "local/research/codex/host-setup-r1/cp053-snapshot/docs/PROTOCOL.md",
+      "sha256": "48ef3ee268582a7235efdaccbaa6e8e0a72975685be129cc3bbd95eed1c0dc65",
+      "bytes": 187848
+    },
+    {
+      "id": "E041",
+      "kind": "local",
+      "path": "local/research/codex/host-setup-r1/cp053-snapshot/docs/RESEARCH.md",
+      "sha256": "104e05aab2d54c61228f9cb9b7b549bfe3659ee1cfd6d6884aa177cf349f7671",
+      "bytes": 29008
+    },
+    {
+      "id": "E042",
+      "kind": "local",
+      "path": "local/research/codex/host-setup-r1/cp053-snapshot/docs/evidence/host-setup/README.md",
+      "sha256": "9dbb3a5f2b7aca9b747f4a7e0722ddfe0bd63fea897cca73f33ebacd1e8396b6",
+      "bytes": 4463
+    },
+    {
+      "id": "E043",
+      "kind": "local",
+      "path": "local/research/codex/host-setup-r1/cp053-snapshot/docs/evidence/owner-directives/continuous-work.json",
+      "sha256": "ac50f8446ff7be466a9b93da78e5cf416fda852ce4610517460b397a5bf94586",
+      "bytes": 735
+    },
+    {
+      "id": "E044",
+      "kind": "local",
+      "path": "local/research/codex/host-setup-r1/cp053-snapshot/docs/features.json",
+      "sha256": "bfb837e8f5672e1436e770ef5876e00cefe80e9053dacaa9db8623543f307d7a",
+      "bytes": 67221
+    },
+    {
+      "id": "E045",
+      "kind": "local",
+      "path": "local/research/codex/host-setup-r1/cp053-snapshot/server/README.md",
+      "sha256": "1e3bba41d7d9e058657dad6c121c8e4af9995be7167a04a83acba2cfdb7a7632",
+      "bytes": 8407
+    },
+    {
+      "id": "E046",
+      "kind": "local",
+      "path": "local/research/codex/host-setup-r1/cp053-snapshot/server/probe_service.py",
+      "sha256": "26eb81a733e4f2f55047d0f28a53074be9a18cd53808a28764b52212924994a9",
+      "bytes": 30881
+    },
+    {
+      "id": "E047",
+      "kind": "local",
+      "path": "local/research/codex/host-setup-r1/cp053-snapshot/server/test_probe_eof.py",
+      "sha256": "6456b237ce138fc179f9acf23436af18eefae96c2babb0d677682df66102a018",
+      "bytes": 9629
+    },
+    {
+      "id": "E048",
+      "kind": "local",
+      "path": "local/research/codex/host-setup-r1/baseline/server/item_claims.py",
+      "sha256": "7990ae9195e9f8bba56b04101f352506194dbd0252793183993ce101a8674a2e",
+      "bytes": 3340
+    },
+    {
+      "id": "E049",
+      "kind": "local",
+      "path": "local/research/codex/host-setup-r1/baseline/server/probe_codec.py",
+      "sha256": "23ba54e6940953a52ff737e7e06b2761a8eb22eab444310b49b1d96efa12411d",
+      "bytes": 3227
+    },
+    {
+      "id": "E050",
+      "kind": "local",
+      "path": "local/research/codex/host-setup-r1/baseline/server/probe_room.py",
+      "sha256": "91292494d492c7851bd5432649adf528e1b07290316dc56ba1478f8a209a08bc",
+      "bytes": 1468
+    },
+    {
+      "id": "E051",
+      "kind": "local",
+      "path": "local/research/codex/host-setup-r1/baseline/server/probe_service.py",
+      "sha256": "1bcd3e8892fd2a5149aa62ef59384ecbb337653556753019dfe2d302eb988ce6",
+      "bytes": 29764
+    },
+    {
+      "id": "E052",
+      "kind": "local",
+      "path": "local/research/codex/host-setup-r1/baseline/server/round_fence.py",
+      "sha256": "aabcc7f1d623573fc217de8df05403f83d82425bbe5d6e78872b3096a2d46708",
+      "bytes": 2339
+    },
+    {
+      "id": "E053",
+      "kind": "local",
+      "path": "local/research/codex/host-setup-r1/baseline/server/udp_round_keys.py",
+      "sha256": "db58ae1f25bcbeb52c2d25c7db6afbf1021ddd3af29702e756f5f41886530a0d",
+      "bytes": 1187
+    },
+    {
+      "id": "E054",
+      "kind": "local",
+      "path": "local/research/codex/host-setup-r1/fixed-source/item_claims.py",
+      "sha256": "7990ae9195e9f8bba56b04101f352506194dbd0252793183993ce101a8674a2e",
+      "bytes": 3340
+    },
+    {
+      "id": "E055",
+      "kind": "local",
+      "path": "local/research/codex/host-setup-r1/fixed-source/probe_codec.py",
+      "sha256": "23ba54e6940953a52ff737e7e06b2761a8eb22eab444310b49b1d96efa12411d",
+      "bytes": 3227
+    },
+    {
+      "id": "E056",
+      "kind": "local",
+      "path": "local/research/codex/host-setup-r1/fixed-source/probe_room.py",
+      "sha256": "91292494d492c7851bd5432649adf528e1b07290316dc56ba1478f8a209a08bc",
+      "bytes": 1468
+    },
+    {
+      "id": "E057",
+      "kind": "local",
+      "path": "local/research/codex/host-setup-r1/fixed-source/probe_service.py",
+      "sha256": "26eb81a733e4f2f55047d0f28a53074be9a18cd53808a28764b52212924994a9",
+      "bytes": 30881
+    },
+    {
+      "id": "E058",
+      "kind": "local",
+      "path": "local/research/codex/host-setup-r1/fixed-source/round_fence.py",
+      "sha256": "aabcc7f1d623573fc217de8df05403f83d82425bbe5d6e78872b3096a2d46708",
+      "bytes": 2339
+    },
+    {
+      "id": "E059",
+      "kind": "local",
+      "path": "local/research/codex/host-setup-r1/fixed-source/udp_round_keys.py",
+      "sha256": "db58ae1f25bcbeb52c2d25c7db6afbf1021ddd3af29702e756f5f41886530a0d",
+      "bytes": 1187
+    },
+    {
+      "id": "E060",
+      "kind": "local",
+      "path": "local/research/codex/host-setup-r1/request-frames/host-setup-baseline-r2/B-F12-82.bin",
+      "sha256": "27d13b13f8df5db1f67451352419d49458641283683b06d40bc91f6c3f7220e7",
+      "bytes": 49
+    },
+    {
+      "id": "E061",
+      "kind": "local",
+      "path": "local/research/codex/host-setup-r1/request-frames/host-setup-baseline-r2/B-F22-95.bin",
+      "sha256": "38eeff06df1cda4991e6860d5e77cabcb5d78c9a82bc217363b4899b10d3aedd",
+      "bytes": 98
+    },
+    {
+      "id": "E062",
+      "kind": "local",
+      "path": "local/research/codex/host-setup-r1/request-frames/host-setup-fixed/B-F13-82.bin",
+      "sha256": "1746130345929e482c425aa463e6bf34d6da555c86c6474cf235330227f74f47",
+      "bytes": 49
+    },
+    {
+      "id": "E063",
+      "kind": "local",
+      "path": "local/research/codex/host-setup-r1/host-setup-baseline-r2/run.json",
+      "sha256": "d97f812b7af945c2f9b33708a2911990e059881fd4899bec4edbd75380fa91c6",
+      "bytes": 32340
+    },
+    {
+      "id": "E064",
+      "kind": "local",
+      "path": "local/research/codex/host-setup-r1/host-setup-baseline-r2/client.log",
+      "sha256": "7b785875bb20140408549660b61c8659032208368e6f3471f58b87249047a8bb",
+      "bytes": 18080
+    },
+    {
+      "id": "E065",
+      "kind": "local",
+      "path": "local/research/codex/host-setup-r1/host-setup-baseline-r2/client-B.log",
+      "sha256": "1b3f0d7e5a75b8c267a3aacf761fa05904edd6c3a29dcde7de3415833862020b",
+      "bytes": 18899
+    },
+    {
+      "id": "E066",
+      "kind": "local",
+      "path": "local/research/codex/host-setup-r1/host-setup-baseline-r2/service-state.json",
+      "sha256": "d62a05edf75762272a234f9ef75c1b0ddfd584d2ccf53a1690df85bfb43e9df2",
+      "bytes": 34930
+    },
+    {
+      "id": "E067",
+      "kind": "local",
+      "path": "local/research/codex/host-setup-r1/host-setup-baseline-r2/debug-commands.txt",
+      "sha256": "90f53ef6e1527e04db68609d275833899ee662b071f53f666d6b7803b0b7a77d",
+      "bytes": 24712
+    },
+    {
+      "id": "E068",
+      "kind": "local",
+      "path": "local/research/codex/host-setup-r1/host-setup-baseline-r2/debug-commands-B.txt",
+      "sha256": "90f53ef6e1527e04db68609d275833899ee662b071f53f666d6b7803b0b7a77d",
+      "bytes": 24712
+    },
+    {
+      "id": "E069",
+      "kind": "local",
+      "path": "local/research/codex/host-setup-r1/host-setup-baseline-r2/B-ready110-73.bin",
+      "sha256": "8fafd9cf652b458ee09b3751a0201f9ab1409920398e0e842e43b915c8840e25",
+      "bytes": 44
+    },
+    {
+      "id": "E070",
+      "kind": "local",
+      "path": "local/research/codex/host-setup-r1/host-setup-fixed/run.json",
+      "sha256": "611923168ca47d227b11bf3da408b6d9765e9f80dccc919d76aca1f303e80425",
+      "bytes": 33296
+    },
+    {
+      "id": "E071",
+      "kind": "local",
+      "path": "local/research/codex/host-setup-r1/host-setup-fixed/client.log",
+      "sha256": "43990303deaf753ad9364ce8e684df994ce86c8549649a99b6f5695ba393bd28",
+      "bytes": 18135
+    },
+    {
+      "id": "E072",
+      "kind": "local",
+      "path": "local/research/codex/host-setup-r1/host-setup-fixed/client-B.log",
+      "sha256": "fe513f5198aac21c0cdacb1530c0e758405edee4bb0f8f5f4afac79261d6146a",
+      "bytes": 19375
+    },
+    {
+      "id": "E073",
+      "kind": "local",
+      "path": "local/research/codex/host-setup-r1/host-setup-fixed/service-state.json",
+      "sha256": "cf2c7bd57106c10c70146556a42d11c5587fe65fd96fd0d3927a75fe38744fb3",
+      "bytes": 35904
+    },
+    {
+      "id": "E074",
+      "kind": "local",
+      "path": "local/research/codex/host-setup-r1/host-setup-fixed/debug-commands.txt",
+      "sha256": "90f53ef6e1527e04db68609d275833899ee662b071f53f666d6b7803b0b7a77d",
+      "bytes": 24712
+    },
+    {
+      "id": "E075",
+      "kind": "local",
+      "path": "local/research/codex/host-setup-r1/host-setup-fixed/debug-commands-B.txt",
+      "sha256": "90f53ef6e1527e04db68609d275833899ee662b071f53f666d6b7803b0b7a77d",
+      "bytes": 24712
+    },
+    {
+      "id": "E076",
+      "kind": "local",
+      "path": "local/research/codex/host-setup-r1/host-setup-fixed/B-remove107-73.bin",
+      "sha256": "080a2a02737ae7e0dbbace69ad20e9c0c0b9cb6da610f5e75f75b28f33f88a4f",
+      "bytes": 44
+    },
+    {
+      "id": "E077",
+      "kind": "local",
+      "path": "local/research/codex/host-setup-r1/host-setup-fixed/B-survivor110-76.bin",
+      "sha256": "67c2f21980ce4b68ed14c23c18e831065a18ed4056b43e34a94288cdbb7149bd",
+      "bytes": 44
+    },
+    {
+      "id": "E078",
+      "kind": "local",
+      "path": "local/research/codex/wine_probe_host_setup.py",
+      "sha256": "1a9920215ea565e2cf0e069b863bfe259f28aed30a175889abffb8158b3e29f4",
+      "bytes": 45419
+    }
+  ],
+  "delta": {
+    "added": [
+      "Native host setup control/fix and deferred107/110 ownership/recipient lifetime;3regressions.",
+      "Durable explicit owner directive: continue immediately to next PLAN task after CP/commit/PR, no voluntary stop."
+    ],
+    "corrected": [
+      "CP052 host-unmapped code-only gap now KRruntime answered narrowly; not every setup race/general membership.",
+      "Baseline UI sends95/110Ready; no107, do not claim zero packets or actual104."
+    ],
+    "superseded": [
+      "Next hostEOF during Bsetup measured; next C admission before first round remains concrete blocker."
+    ]
+  },
+  "blockers": [
+    "replacement_allowed requires refresh so fresh C before first round cannot enter; native C-before-first integration not measured yet.",
+    "General membership/account resume/auth/cache/codec/validator/reset/timeout/sendfailure/Windows vanilla and gates/LAN/Internet remain."
+  ],
+  "next_steps": [
+    {
+      "id": "NEXT-DUO-ROUND",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "Immediately follow PLAN: admit freshC after host setupEOF before round1 with mappedpromotedB/idle, actualJoinReady/BStart/bomb/peerstate/result/return; preserve per-socketseq/IDslot/key.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-ITEM-PICKUP",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "Canonical validator gaps t/distance/actorstate/forgedcurrentkey/transport; do not redoCP049old/currentk.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-FULL-LOGIN-FIELDS",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "Canonical auth/cache/codec debt after concrete lifecycle;Cnewidentity notaccountresume.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    }
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-11-01T14:23:49.458078+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "Codex solo RE/code/runtime/selfcheck, not independent approval.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Owner explicitly requested solo without Claude review."
+    }
+  },
+  "docs_sync": [
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "CP053 current host/setup proof, policy/limits/next admission and explicit owner continuous-work instruction, stable history."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "CP053 current host/setup proof, policy/limits/next admission and explicit owner continuous-work instruction, stable history."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "updated",
+      "reason": "CP053 current host/setup proof, policy/limits/next admission and explicit owner continuous-work instruction, stable history."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "updated",
+      "reason": "CP053 current host/setup proof, policy/limits/next admission and explicit owner continuous-work instruction, stable history."
+    },
+    {
+      "path": "docs/features.json",
+      "state": "updated",
+      "reason": "CP053 current host/setup proof, policy/limits/next admission and explicit owner continuous-work instruction, stable history."
+    },
+    {
+      "path": "docs/COVERAGE.md",
+      "state": "updated",
+      "reason": "CP053 current host/setup proof, policy/limits/next admission and explicit owner continuous-work instruction, stable history."
+    },
+    {
+      "path": "server/README.md",
+      "state": "updated",
+      "reason": "CP053 current host/setup proof, policy/limits/next admission and explicit owner continuous-work instruction, stable history."
+    },
+    {
+      "path": "docs/evidence/host-setup/README.md",
+      "state": "updated",
+      "reason": "CP053 current host/setup proof, policy/limits/next admission and explicit owner continuous-work instruction, stable history."
+    },
+    {
+      "path": "AGENTS.md",
+      "state": "updated",
+      "reason": "CP053 current host/setup proof, policy/limits/next admission and explicit owner continuous-work instruction, stable history."
+    },
+    {
+      "path": "docs/evidence/owner-directives/continuous-work.json",
+      "state": "updated",
+      "reason": "CP053 current host/setup proof, policy/limits/next admission and explicit owner continuous-work instruction, stable history."
+    }
+  ]
+}

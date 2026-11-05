@@ -1,0 +1,1566 @@
+{
+  "id": "CP015",
+  "previous": "CP014",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-10-28T06:50:58.700460+00:00",
+  "question": "What blocks the modified KR client after auth wait, and can the actual channel/lobby receive path produce the lobby UI without forcing ready or modal success?",
+  "scope": "12 sequential isolated Wine runs, targeted NMCO/inline flag/redirect/channel/lobby analysis, native frame and serializer oracles; two UI create-room attempts. No source binary/DB edits, live Nexon or gate completion.",
+  "context_commit": "cb9e0b5550aea9fbfe8564c989113284ccd8d57b",
+  "owner": "Codex",
+  "reviewer": "Codex",
+  "artifacts": [
+    {
+      "name": "CP014 postmessage diagnostic baseline",
+      "sha256": "de2df3ba68f2e7deff892186d51571e3eae7b613d7cb02227066015a2eb4789d"
+    },
+    {
+      "name": "NMCO friend import copy",
+      "sha256": "7171659f64fedfe154b55ba0169c882248911fa80101ff1b4fcfe3cc3269e415"
+    },
+    {
+      "name": "NMCO logout import copy",
+      "sha256": "660447c293ce92270cb9b5815331bca976e8f156366e1fe50b217b6c12e60ce3"
+    },
+    {
+      "name": "nmco3.dll reference",
+      "sha256": "7e038696ec69db579f71e029da66f5b5500c56375ff77b24d93529ba7faf9493"
+    },
+    {
+      "name": "modO native oracle/base400000",
+      "sha256": "a08950c833d3acab8281049def7b3dc96b221f107eeda01da3a548e34b91dce5"
+    }
+  ],
+  "locators": [
+    "12 runs dated2026-10-28 UTC in postwait-r1/runtime-summary.json; ordinal3 login and4 channel loopback",
+    "16EA8FC/16EA8C4; nmco3 preferred10000000 exports10BB0/10970 and matching adjacent IAT cluster",
+    "1103BB0→1107B00;D665F0;10FA3A0;13B27C0/13B2810 boxes+4C0/+4D8",
+    "D68C90 opcode62→D6B117 subtype1→D88280→13B27E0; status2 then1107170/1107C90 request5",
+    "1101EA0/11036AA/1107300 pending+3748, redirect→socket4 request6; receiverseq reset",
+    "D6E230→D82020→840320→840470; CApp next11; CLobbyStage vt1766A2C+CC→DA1F30",
+    "DA1F30 opcode241→base D6E6B0 thenDA5F90 ready+6738 and notice+61F8;12D4C70/getterDA1510",
+    "D9BCF0 request715, pollDA824D BigBattle; TimerNotice125C63D/mainDisconnected;RVA=VA-400000"
+  ],
+  "findings": [
+    {
+      "summary": "Real NMCOGetFriendList binding returns0 and wrapper0 while client proceeds past old trap; original slot cluster/ABI supports mapping. Logout binding prepared after cleanup trap.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#channel-lobby",
+      "limits": "Inherited diagnostic modifications and real DLL without init; preferred export matching is original-name candidate, not original module-load proof. Logout descriptor loaded but no isolated return probe.",
+      "evidence": [
+        "E043",
+        "E049",
+        "E094",
+        "E105",
+        "E104"
+      ]
+    },
+    {
+      "summary": "Inline post-login initialization returns1; pending predicate reads a/b0/0 and stays false. Global1A31F30 is0. S2C62 subtype1/slot0/status2 updates a2 through native setter; predicate becomes true and request40/5 follows.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#channel-lobby",
+      "limits": "Status semantic unknown; fixture value2 is emu_choice. Shared game cache/timing differs between runs, no strict cache/vanilla control. No forced ready/modal or stage.",
+      "evidence": [
+        "E161",
+        "E053",
+        "E032",
+        "E027",
+        "E062"
+      ]
+    },
+    {
+      "summary": "KR predicate accepts a2 or a1+b1; packet62 field ledger and request5 [10,FFFFFFFF,0] verified by native readers/oracles.",
+      "source": "kr_static",
+      "status": "confirmed",
+      "method": "emulation",
+      "canonical": "docs/PROTOCOL.md#channel-lobby",
+      "limits": "Native synthetic receiver/allocator and bounded predicate matrix, not original server state/policy.",
+      "evidence": [
+        "E036",
+        "E039",
+        "E177"
+      ]
+    },
+    {
+      "summary": "S2C7 local redirect is consumed with pending1/result1, opens fresh loopback3858 socket4 and emits C2S6/74byte; per-connection native replay verifies seq40+3n and CRC/partial negatives.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#channel-lobby",
+      "limits": "Local selected kind/index/IP/port and optional empty string are design; full variants/encoding/identity/reconnect not established.",
+      "evidence": [
+        "E127",
+        "E129",
+        "E136",
+        "E131",
+        "E137"
+      ]
+    },
+    {
+      "summary": "KR17 zero-vector serializer has37byte body; native serializer decodes timestamp and runtime handler requests stage11/CLobbyStage.",
+      "source": "kr_static",
+      "status": "confirmed",
+      "method": "emulation",
+      "canonical": "docs/PROTOCOL.md#channel-lobby",
+      "limits": "Count>0/bounds and historical field semantics not checked. Stage runtime is separately logged; values local design.",
+      "evidence": [
+        "E021",
+        "E013",
+        "E012",
+        "E008",
+        "E083"
+      ]
+    },
+    {
+      "summary": "S2C241 base blob/tail reader and lobby handler execute; lobby ready changes0→1 and notice result1 closes channel notice. Lobby UI rendered without connecting overlay.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#channel-lobby",
+      "limits": "Diagnostic copy with deliberately truncated result0, blank profile/name and design zero-data241. UI/receive proof only; no valid complete auth, room or K2/K3 acceptance.",
+      "evidence": [
+        "E116",
+        "E118",
+        "E119",
+        "E121",
+        "E076",
+        "E081"
+      ]
+    },
+    {
+      "summary": "Two injected create-room clicks have no captured request77 or control-hit proof; TimerNotice at end is mainDisconnected, not an observed create-room error. Poll715 belongs to BigBattle rather than proven channel-ready ACK.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#channel-lobby",
+      "limits": "Bounded negative observations; no universal input or room failure claim. No716 injected. Duplicate send breakpoint in first probe did not capture intended stack; direct sender probe corrected measurement.",
+      "evidence": [
+        "E151",
+        "E140",
+        "E170",
+        "E068",
+        "E088"
+      ]
+    }
+  ],
+  "verification": [
+    {
+      "check": "1014 assertions/12 runs, raw/hash/isolation markers, actual capture native replay and frame negatives; native17 serializer/count0,18 predicate cases and12 fixture cases",
+      "result": "pass",
+      "evidence": [
+        "E174",
+        "E178",
+        "E160",
+        "E175",
+        "E176"
+      ],
+      "limits": "Mechanical consistency/oracles do not validate original server rules, full identity/cache, UI hit or gates."
+    }
+  ],
+  "evidence": [
+    {
+      "id": "E001",
+      "kind": "local",
+      "path": "local/research/codex/bootstrap-copy-oracle.py",
+      "bytes": 2377,
+      "sha256": "8127e0f2fbc385360e878bb68ae3a6680eabbf7456335f0f3db75c7c3b73a8c0"
+    },
+    {
+      "id": "E002",
+      "kind": "local",
+      "path": "local/research/codex/bootstrap-recv-oracle.py",
+      "bytes": 2104,
+      "sha256": "1e86c06540e8fe654564c5bd403f859070f77c9af0d5d11c70c9351198e00ae2"
+    },
+    {
+      "id": "E003",
+      "kind": "local",
+      "path": "local/research/codex/postwait-r1/after-login-routine.asm",
+      "bytes": 6586,
+      "sha256": "fca3f5b32a6df583baad0ec7bf697f1f70b7e66891300fe606a7ecf0f368eb86"
+    },
+    {
+      "id": "E004",
+      "kind": "local",
+      "path": "local/research/codex/postwait-r1/base-dispatch-fragments.asm",
+      "bytes": 6059,
+      "sha256": "bb6066eeaaf77a08089be77778ac71c81d74f5f21d86c08d3d4d07544cf9cd9e"
+    },
+    {
+      "id": "E005",
+      "kind": "local",
+      "path": "local/research/codex/postwait-r1/channel-inline.asm",
+      "bytes": 1654,
+      "sha256": "a139811b67ebe0dd281f645785821574666f77243e0da85747342fd43ed3cac6"
+    },
+    {
+      "id": "E006",
+      "kind": "local",
+      "path": "local/research/codex/postwait-r1/channel-login-dispatch.json",
+      "bytes": 288,
+      "sha256": "1d76920a05a944911a9e25d78baf3c74330415a4b0d7b889459a31c31f71cdb0"
+    },
+    {
+      "id": "E007",
+      "kind": "local",
+      "path": "local/research/codex/postwait-r1/channel-wait-block.asm",
+      "bytes": 2931,
+      "sha256": "9300e151608108b1b36c68fa5e5ab398063e508456e475ff291aa0b493c26c74"
+    },
+    {
+      "id": "E008",
+      "kind": "local",
+      "path": "local/research/codex/postwait-r1/channel17/client.log",
+      "bytes": 132067,
+      "sha256": "3e853e6f60d1d8d9bd2c6bf43b1a2b8f33b81d16882b81e3311aec852143ca37"
+    },
+    {
+      "id": "E009",
+      "kind": "local",
+      "path": "local/research/codex/postwait-r1/channel17/debug-commands.txt",
+      "bytes": 5413,
+      "sha256": "75655a2ae54ae0fa97b7ce85e11a07caefb720103d5d6c6efc67fcccb24dde0e"
+    },
+    {
+      "id": "E010",
+      "kind": "local",
+      "path": "local/research/codex/postwait-r1/channel17/run.json",
+      "bytes": 14634,
+      "sha256": "cf024baf2fa61a643a365ac6db5ddfadd3dfe18b8b8a26f04432843bb60c8b75"
+    },
+    {
+      "id": "E011",
+      "kind": "local",
+      "path": "local/research/codex/postwait-r1/channel17/screen-17.png",
+      "bytes": 140638,
+      "sha256": "f8181d740ace90f50a52d0592f494fcaff90ff0208bb7d4760c403e65ea123bb"
+    },
+    {
+      "id": "E012",
+      "kind": "local",
+      "path": "local/research/codex/postwait-r1/channel17-field-helpers.asm",
+      "bytes": 8585,
+      "sha256": "fa2d77bcc3efa68b0304f0914983dd13c09e084439900418e01d4e2b074bac21"
+    },
+    {
+      "id": "E013",
+      "kind": "local",
+      "path": "local/research/codex/postwait-r1/channel17-field-serializer.asm",
+      "bytes": 5804,
+      "sha256": "33ff51ca02a2d35abef1aa1aeac211b71503234d092a045569870fbe0c1dadac"
+    },
+    {
+      "id": "E014",
+      "kind": "local",
+      "path": "local/research/codex/postwait-r1/channel17-handler.asm",
+      "bytes": 2781,
+      "sha256": "6e7e8444eeb3d10bdb9dc02cd6cd470a4e74c46205a2bd552ebae93a1b0916aa"
+    },
+    {
+      "id": "E015",
+      "kind": "local",
+      "path": "local/research/codex/postwait-r1/channel17-hashes.json",
+      "bytes": 13367,
+      "sha256": "15e06bc0ef3899a1d316fb72fe42ff57175b5f239c912cd846bbb3cbfa71ed6a"
+    },
+    {
+      "id": "E016",
+      "kind": "local",
+      "path": "local/research/codex/postwait-r1/channel17-launcher.log",
+      "bytes": 11854,
+      "sha256": "a3b7113c960a7b9b7d11f2bc7fe17c9a1af4ac326a864862cc916990779945bd"
+    },
+    {
+      "id": "E017",
+      "kind": "local",
+      "path": "local/research/codex/postwait-r1/channel17-oracle.json",
+      "bytes": 29725,
+      "sha256": "b97df4649f86ed928d145d277123fc63f1826913a99bad49bd592f9186a58fb9"
+    },
+    {
+      "id": "E018",
+      "kind": "local",
+      "path": "local/research/codex/postwait-r1/channel17-reader-prefix.asm",
+      "bytes": 9676,
+      "sha256": "052e6ca1af131c537e330e06652d8d594f32fca6aaf1da5871795330ddaa814f"
+    },
+    {
+      "id": "E019",
+      "kind": "local",
+      "path": "local/research/codex/postwait-r1/channel17-recipe.json",
+      "bytes": 972,
+      "sha256": "5436f61f22461e868c11c84a5565f417dbb83145fa41cfa4482c4857dd5217a9"
+    },
+    {
+      "id": "E020",
+      "kind": "local",
+      "path": "local/research/codex/postwait-r1/channel17-serializer-body.asm",
+      "bytes": 577,
+      "sha256": "1bb96839c5d5f43d1c37fe01077f7c52d10bc4231b05f4a44303a834f9ca16a1"
+    },
+    {
+      "id": "E021",
+      "kind": "local",
+      "path": "local/research/codex/postwait-r1/channel17-serializer-oracle.json",
+      "bytes": 787,
+      "sha256": "c2f12202ee6d600ff9f8653cd5481fdc469b14169a86661d90a7b4209ffd4b5d"
+    },
+    {
+      "id": "E022",
+      "kind": "local",
+      "path": "local/research/codex/postwait-r1/channel17-serializer.asm",
+      "bytes": 690,
+      "sha256": "156afd64a007b60ea4f40585ca4247d7d08c46f5acff9b032d74fd61ff771e4e"
+    },
+    {
+      "id": "E023",
+      "kind": "local",
+      "path": "local/research/codex/postwait-r1/channel17-timeout.gdb",
+      "bytes": 5674,
+      "sha256": "5d2a9c56d2cb198727c4672d9aaba82590d3a7f059838708be8387923b82ebe8"
+    },
+    {
+      "id": "E024",
+      "kind": "local",
+      "path": "local/research/codex/postwait-r1/channel17-zero-arrays.bin",
+      "bytes": 75,
+      "sha256": "5bb5a42cb1ea4fe8967d50ed39649cc886a493c0a13a25ceb2df589a2b9bcd37"
+    },
+    {
+      "id": "E025",
+      "kind": "local",
+      "path": "local/research/codex/postwait-r1/channel17.gdb",
+      "bytes": 5413,
+      "sha256": "75655a2ae54ae0fa97b7ce85e11a07caefb720103d5d6c6efc67fcccb24dde0e"
+    },
+    {
+      "id": "E026",
+      "kind": "local",
+      "path": "local/research/codex/postwait-r1/fixtures-oracle.json",
+      "bytes": 3657,
+      "sha256": "b1b522ac187cb869797c0ee7b830a9d70cad00862a63e732428455735623af1b"
+    },
+    {
+      "id": "E027",
+      "kind": "local",
+      "path": "local/research/codex/postwait-r1/flag-dispatch-map.json",
+      "bytes": 291,
+      "sha256": "8f555c4a9fc3cf9ccf3cc6b525246f67ace8a1cd185617772a076fa9c28009c1"
+    },
+    {
+      "id": "E028",
+      "kind": "local",
+      "path": "local/research/codex/postwait-r1/flag-handler-callers.json",
+      "bytes": 75,
+      "sha256": "c98126b1ca54e003a8785419ea00218b888092747e2d2c104a0551a2cf96de54"
+    },
+    {
+      "id": "E029",
+      "kind": "local",
+      "path": "local/research/codex/postwait-r1/flag-handler-entry.asm",
+      "bytes": 4015,
+      "sha256": "0cbf4ab0e2d620e18680379cc55fb96245f11f23a6e24b1ee383bbdf2f565d6c"
+    },
+    {
+      "id": "E030",
+      "kind": "local",
+      "path": "local/research/codex/postwait-r1/flag-setter-xrefs.asm",
+      "bytes": 7416,
+      "sha256": "fa79178968686afd2193090dd9139481f1a7729e1055a9b87024df0c455bf283"
+    },
+    {
+      "id": "E031",
+      "kind": "local",
+      "path": "local/research/codex/postwait-r1/flag-setter-xrefs.json",
+      "bytes": 671,
+      "sha256": "4f908a025b21dd50a672a095b88faa2cd7f7dec50974d96f2d3836a73695c73a"
+    },
+    {
+      "id": "E032",
+      "kind": "local",
+      "path": "local/research/codex/postwait-r1/flags62/client.log",
+      "bytes": 130232,
+      "sha256": "f5619f65bdeba2235c6298204e764932a19bf45c71411112f527925232f7100b"
+    },
+    {
+      "id": "E033",
+      "kind": "local",
+      "path": "local/research/codex/postwait-r1/flags62/debug-commands.txt",
+      "bytes": 4266,
+      "sha256": "2a22cd8bb1b60abe32de1a44f938a4932bbb9412d6a7d2fd190c24e410b84ec1"
+    },
+    {
+      "id": "E034",
+      "kind": "local",
+      "path": "local/research/codex/postwait-r1/flags62/run.json",
+      "bytes": 10322,
+      "sha256": "6283c2dc4851ef64a5798f860259f2d7568aeca4948221abcd1578bcb51edde6"
+    },
+    {
+      "id": "E035",
+      "kind": "local",
+      "path": "local/research/codex/postwait-r1/flags62/screen-15.png",
+      "bytes": 504243,
+      "sha256": "f0bd8852a8047048cbe31833573aedcd903b2d7448afea605209973558ec6aa2"
+    },
+    {
+      "id": "E036",
+      "kind": "local",
+      "path": "local/research/codex/postwait-r1/flags62-fixture-oracle.json",
+      "bytes": 2114,
+      "sha256": "d30fcad4ef1e4fc1001b43bab59f4fb69803da40adccc81fdcbe5e82511df11e"
+    },
+    {
+      "id": "E037",
+      "kind": "local",
+      "path": "local/research/codex/postwait-r1/flags62-hashes.json",
+      "bytes": 12085,
+      "sha256": "378d91eedcd5a6c1bf4faca6b84dcca08139593c7c5e34102edb724c87a1304d"
+    },
+    {
+      "id": "E038",
+      "kind": "local",
+      "path": "local/research/codex/postwait-r1/flags62-launcher.log",
+      "bytes": 8466,
+      "sha256": "914abfc169757fb1633330226b007de1c08f6371fd2248186c463691992f8874"
+    },
+    {
+      "id": "E039",
+      "kind": "local",
+      "path": "local/research/codex/postwait-r1/flags62-oracle.json",
+      "bytes": 12708,
+      "sha256": "f80c26cf636733ac2070266cac8d343707c1387e66630a71cc2e084f5efc5d33"
+    },
+    {
+      "id": "E040",
+      "kind": "local",
+      "path": "local/research/codex/postwait-r1/flags62-recipe.json",
+      "bytes": 973,
+      "sha256": "01c6d310aab31bae47d017defe26a53e8320ebbfc5b5fb5a493d598161e5d689"
+    },
+    {
+      "id": "E041",
+      "kind": "local",
+      "path": "local/research/codex/postwait-r1/flags62-status2.bin",
+      "bytes": 41,
+      "sha256": "f0199e6a5f835884fec25568a342f42d247c2bfa720f677866957c2299437ab9"
+    },
+    {
+      "id": "E042",
+      "kind": "local",
+      "path": "local/research/codex/postwait-r1/flags62.gdb",
+      "bytes": 4266,
+      "sha256": "2a22cd8bb1b60abe32de1a44f938a4932bbb9412d6a7d2fd190c24e410b84ec1"
+    },
+    {
+      "id": "E043",
+      "kind": "local",
+      "path": "local/research/codex/postwait-r1/friend-api/client.log",
+      "bytes": 128679,
+      "sha256": "60e979be96fbd0a3b8ce08508edd04b6ab98e72c33ecabab8eab102abae4ff8b"
+    },
+    {
+      "id": "E044",
+      "kind": "local",
+      "path": "local/research/codex/postwait-r1/friend-api/debug-commands.txt",
+      "bytes": 2684,
+      "sha256": "e41f87ca2b642ae7d0bd2072bfc529528a35c36a7236ee10f7f7410261e7dab5"
+    },
+    {
+      "id": "E045",
+      "kind": "local",
+      "path": "local/research/codex/postwait-r1/friend-api/run.json",
+      "bytes": 9642,
+      "sha256": "142cd25bbbc7bf42da583887131518697fd70de759f756adc97b797b5b0dee43"
+    },
+    {
+      "id": "E046",
+      "kind": "local",
+      "path": "local/research/codex/postwait-r1/friend-api/screen-15.png",
+      "bytes": 504243,
+      "sha256": "f0bd8852a8047048cbe31833573aedcd903b2d7448afea605209973558ec6aa2"
+    },
+    {
+      "id": "E047",
+      "kind": "local",
+      "path": "local/research/codex/postwait-r1/friend-api-hashes.json",
+      "bytes": 12273,
+      "sha256": "239a383263727a719df6fa8cfda6f519cce09cc59b4e05d7b012eae9df6ffa37"
+    },
+    {
+      "id": "E048",
+      "kind": "local",
+      "path": "local/research/codex/postwait-r1/friend-api-launcher.log",
+      "bytes": 7918,
+      "sha256": "9f501d609039daf5d972b1db46484679c54f6b061fa4b4a65ad653bec41a44ed"
+    },
+    {
+      "id": "E049",
+      "kind": "local",
+      "path": "local/research/codex/postwait-r1/friend-api-patch.json",
+      "bytes": 726,
+      "sha256": "4c8b094400cc9cbe5fc7241296a721f5ff98dfbc9b3276d7e1dafa5d3eb5d684"
+    },
+    {
+      "id": "E050",
+      "kind": "local",
+      "path": "local/research/codex/postwait-r1/friend-api-recipe.json",
+      "bytes": 982,
+      "sha256": "eda080bcf28a4c8b6dc6cad42f4b80a668a603ea97ec38cbe1de07879d9b9058"
+    },
+    {
+      "id": "E051",
+      "kind": "local",
+      "path": "local/research/codex/postwait-r1/friend-api.gdb",
+      "bytes": 2684,
+      "sha256": "e41f87ca2b642ae7d0bd2072bfc529528a35c36a7236ee10f7f7410261e7dab5"
+    },
+    {
+      "id": "E052",
+      "kind": "local",
+      "path": "local/research/codex/postwait-r1/friend-caller.asm",
+      "bytes": 6980,
+      "sha256": "39e2bfb71911cccfe0cee142b21085bc347166e51bbad69782a7ca053085dbf2"
+    },
+    {
+      "id": "E053",
+      "kind": "local",
+      "path": "local/research/codex/postwait-r1/inline-block/client.log",
+      "bytes": 129751,
+      "sha256": "7b5d73a07e3c3678782f944a4fbe65595fb67c5e8455fd9b2db66151a27e8b5b"
+    },
+    {
+      "id": "E054",
+      "kind": "local",
+      "path": "local/research/codex/postwait-r1/inline-block/debug-commands.txt",
+      "bytes": 3935,
+      "sha256": "a56687e991d2cc1f985c7146196d7c86a2074ec54ec5fbf08049dbe95ee677b1"
+    },
+    {
+      "id": "E055",
+      "kind": "local",
+      "path": "local/research/codex/postwait-r1/inline-block/run.json",
+      "bytes": 9638,
+      "sha256": "fe8549aa8c477ebc232322129b20d755128abf55a86f1d4adc0e2fc9bca2cb4b"
+    },
+    {
+      "id": "E056",
+      "kind": "local",
+      "path": "local/research/codex/postwait-r1/inline-block/screen-15.png",
+      "bytes": 504243,
+      "sha256": "f0bd8852a8047048cbe31833573aedcd903b2d7448afea605209973558ec6aa2"
+    },
+    {
+      "id": "E057",
+      "kind": "local",
+      "path": "local/research/codex/postwait-r1/inline-block-hashes.json",
+      "bytes": 12404,
+      "sha256": "6def2322978fd613e3159b3294f43e3f56e36630ee9f9a7c4e11c20aa5fc045c"
+    },
+    {
+      "id": "E058",
+      "kind": "local",
+      "path": "local/research/codex/postwait-r1/inline-block-launcher.log",
+      "bytes": 7914,
+      "sha256": "f5d04e30e8377896cb822ff06653e8cf9747cdf79cebf81bae044e505ffbff8e"
+    },
+    {
+      "id": "E059",
+      "kind": "local",
+      "path": "local/research/codex/postwait-r1/inline-block-recipe.json",
+      "bytes": 988,
+      "sha256": "65f26c03aba7c4167d4b1b56c84b6e22938fdf48e1ac5e743b83429920a21246"
+    },
+    {
+      "id": "E060",
+      "kind": "local",
+      "path": "local/research/codex/postwait-r1/inline-block.gdb",
+      "bytes": 3935,
+      "sha256": "a56687e991d2cc1f985c7146196d7c86a2074ec54ec5fbf08049dbe95ee677b1"
+    },
+    {
+      "id": "E061",
+      "kind": "local",
+      "path": "local/research/codex/postwait-r1/inline-flag-xrefs.asm",
+      "bytes": 3678,
+      "sha256": "2a4108e760dfc43ce254658f6db0bd85fac61f92ab490dc12f857f880a2932e5"
+    },
+    {
+      "id": "E062",
+      "kind": "local",
+      "path": "local/research/codex/postwait-r1/inline-predicate-fields.asm",
+      "bytes": 5013,
+      "sha256": "fe6fd6dad658e1fc50abc7377bda49bf3380a26b9fb28f8372eb016f6a22a3d1"
+    },
+    {
+      "id": "E063",
+      "kind": "local",
+      "path": "local/research/codex/postwait-r1/inline-update-fragment.asm",
+      "bytes": 3559,
+      "sha256": "06062575038cef5c5a6b46429b9c2bec2e6821e6e4fe854310986e8ba8974a86"
+    },
+    {
+      "id": "E064",
+      "kind": "local",
+      "path": "local/research/codex/postwait-r1/inline-wait-functions.asm",
+      "bytes": 11138,
+      "sha256": "9003f970cae8c1bebdbb37a9abfe72938005a9ef094cbd8ca63ef969127223fc"
+    },
+    {
+      "id": "E065",
+      "kind": "local",
+      "path": "local/research/codex/postwait-r1/lobby-base241-dispatch.asm",
+      "bytes": 3065,
+      "sha256": "2ecc93432a7b88b0981d373eed3bb72859602c88da2a455c536a2760ef13d2d4"
+    },
+    {
+      "id": "E066",
+      "kind": "local",
+      "path": "local/research/codex/postwait-r1/lobby-base241-route.asm",
+      "bytes": 660,
+      "sha256": "d4476c65e3af480da176e1f0e5ea492f8e8b121ae099e09f0db5a0aab0bfa173"
+    },
+    {
+      "id": "E067",
+      "kind": "local",
+      "path": "local/research/codex/postwait-r1/lobby-dispatch-ready.asm",
+      "bytes": 3755,
+      "sha256": "144d86882fd95076d6471a9c3ecd95fb3bcf2582ab8db1a3c3859d115bba7bb2"
+    },
+    {
+      "id": "E068",
+      "kind": "local",
+      "path": "local/research/codex/postwait-r1/lobby-notice/client.log",
+      "bytes": 135145,
+      "sha256": "ff956cea7ff529718aedd3a02cf1ad8ef4ea08e5106261db2bf4a33efac4759c"
+    },
+    {
+      "id": "E069",
+      "kind": "local",
+      "path": "local/research/codex/postwait-r1/lobby-notice/debug-commands.txt",
+      "bytes": 5747,
+      "sha256": "3f5db5dfd8f340677c26f8ef45135ff21f3bf7540ab5728636644a96779fa937"
+    },
+    {
+      "id": "E070",
+      "kind": "local",
+      "path": "local/research/codex/postwait-r1/lobby-notice/run.json",
+      "bytes": 14399,
+      "sha256": "1eb073b7a8f92dbd405aa49fe27d7f89e0572e19989222e5519ab9a4020ddbd0"
+    },
+    {
+      "id": "E071",
+      "kind": "local",
+      "path": "local/research/codex/postwait-r1/lobby-notice/screen-16.png",
+      "bytes": 139725,
+      "sha256": "41478f8a9f430d55cbc094c1f12547cef33043f7d084f7f0218fb589aac0a551"
+    },
+    {
+      "id": "E072",
+      "kind": "local",
+      "path": "local/research/codex/postwait-r1/lobby-notice-hashes.json",
+      "bytes": 12994,
+      "sha256": "f16a78a6ef469e1ca0ec9b9817bf51c5583a8b8f7e21fa23d5747c1033257a8a"
+    },
+    {
+      "id": "E073",
+      "kind": "local",
+      "path": "local/research/codex/postwait-r1/lobby-notice-launcher.log",
+      "bytes": 11679,
+      "sha256": "f02083f884dd71c6983a8e56f15a32d1962a52692ca82969c2b83d9581516119"
+    },
+    {
+      "id": "E074",
+      "kind": "local",
+      "path": "local/research/codex/postwait-r1/lobby-notice-recipe.json",
+      "bytes": 981,
+      "sha256": "c1b7e06a84067198051ae1cccc96cc0312e631ee0c8fd16687a93b4a6898c957"
+    },
+    {
+      "id": "E075",
+      "kind": "local",
+      "path": "local/research/codex/postwait-r1/lobby-notice.gdb",
+      "bytes": 5747,
+      "sha256": "3f5db5dfd8f340677c26f8ef45135ff21f3bf7540ab5728636644a96779fa937"
+    },
+    {
+      "id": "E076",
+      "kind": "local",
+      "path": "local/research/codex/postwait-r1/lobby-ready-barrier.asm",
+      "bytes": 3751,
+      "sha256": "5ad06ca025edfe5c9285b6b2f64d96f5fdfb8ff44f79674d6d731cb2d8f3b2f5"
+    },
+    {
+      "id": "E077",
+      "kind": "local",
+      "path": "local/research/codex/postwait-r1/lobby-ready-field-xrefs.asm",
+      "bytes": 1383,
+      "sha256": "fce88638e7c3def39a6de0955143c8504ca43232de55b3cf59b0ea8ca5187a18"
+    },
+    {
+      "id": "E078",
+      "kind": "local",
+      "path": "local/research/codex/postwait-r1/lobby-ready-field-xrefs.json",
+      "bytes": 222,
+      "sha256": "faf019b59df2de5808deba370a3e888a25900c574b6d1706cdc6009b08a1331a"
+    },
+    {
+      "id": "E079",
+      "kind": "local",
+      "path": "local/research/codex/postwait-r1/lobby-ready-handler-callers.json",
+      "bytes": 17,
+      "sha256": "5aa39a73fdd99dd014836234e63e29b737cab93ebc74c130323324b83526b97d"
+    },
+    {
+      "id": "E080",
+      "kind": "local",
+      "path": "local/research/codex/postwait-r1/lobby-ready-handler-data-xrefs.json",
+      "bytes": 3,
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    },
+    {
+      "id": "E081",
+      "kind": "local",
+      "path": "local/research/codex/postwait-r1/lobby-ready-handler.asm",
+      "bytes": 2094,
+      "sha256": "aea5066114394b3ec9dab29aca2e18051501cee213909a89c874b1883205b92a"
+    },
+    {
+      "id": "E082",
+      "kind": "local",
+      "path": "local/research/codex/postwait-r1/lobby-ready241.bin",
+      "bytes": 68,
+      "sha256": "808ca8fe8318b79084f5306d2fafcfc98a34101b14ba4dfde7366fbab561d251"
+    },
+    {
+      "id": "E083",
+      "kind": "local",
+      "path": "local/research/codex/postwait-r1/lobby-rtti.json",
+      "bytes": 126,
+      "sha256": "c483280453210ccc93fc88d9ef21d0f32c3595198c78d31cbe54020cd70ca445"
+    },
+    {
+      "id": "E084",
+      "kind": "local",
+      "path": "local/research/codex/postwait-r1/lobby-wait/client.log",
+      "bytes": 132265,
+      "sha256": "3f8381c4b73742e962e453ada4dfe0ebc41be8b30f78842295547e7c53efd1f5"
+    },
+    {
+      "id": "E085",
+      "kind": "local",
+      "path": "local/research/codex/postwait-r1/lobby-wait/debug-commands.txt",
+      "bytes": 5811,
+      "sha256": "b7676232111151293cc8a852845ea48aa08021ea2ec099295af0ab38d30a2e74"
+    },
+    {
+      "id": "E086",
+      "kind": "local",
+      "path": "local/research/codex/postwait-r1/lobby-wait/run.json",
+      "bytes": 14933,
+      "sha256": "c2f6f8da24163caaee21c232a1d7eae86c1bef36c3379652fa8e7ab23abe0024"
+    },
+    {
+      "id": "E087",
+      "kind": "local",
+      "path": "local/research/codex/postwait-r1/lobby-wait/screen-18.png",
+      "bytes": 140945,
+      "sha256": "1196a564f836d347c8e6535adc56880fd198d3e6238eee3304721e45c8c5c18a"
+    },
+    {
+      "id": "E088",
+      "kind": "local",
+      "path": "local/research/codex/postwait-r1/lobby-wait-handlers.asm",
+      "bytes": 8488,
+      "sha256": "424ae81a4d7097c0411e6e6b86712db87764d480ebcb659c752fffcb17dfab5c"
+    },
+    {
+      "id": "E089",
+      "kind": "local",
+      "path": "local/research/codex/postwait-r1/lobby-wait-hashes.json",
+      "bytes": 14025,
+      "sha256": "cf13fa144172084614a465e486212767b94245bb31a07d07e263d8de9008d61f"
+    },
+    {
+      "id": "E090",
+      "kind": "local",
+      "path": "local/research/codex/postwait-r1/lobby-wait-launcher.log",
+      "bytes": 12093,
+      "sha256": "5a475814ae67bed1e821877a5515e7d8eb0026e59fac77e6fa564f4aae2ce087"
+    },
+    {
+      "id": "E091",
+      "kind": "local",
+      "path": "local/research/codex/postwait-r1/lobby-wait-recipe.json",
+      "bytes": 975,
+      "sha256": "7d07e04028012b83d61c9a403eda1434b67487fd662323ed7a46924b109abc00"
+    },
+    {
+      "id": "E092",
+      "kind": "local",
+      "path": "local/research/codex/postwait-r1/lobby-wait.gdb",
+      "bytes": 5811,
+      "sha256": "b7676232111151293cc8a852845ea48aa08021ea2ec099295af0ab38d30a2e74"
+    },
+    {
+      "id": "E093",
+      "kind": "local",
+      "path": "local/research/codex/postwait-r1/login62-chain.asm",
+      "bytes": 1961,
+      "sha256": "554ccea56aa7d34fcbe772459275f80b439e4a376818d3b93fb1b30b6f19c884"
+    },
+    {
+      "id": "E094",
+      "kind": "local",
+      "path": "local/research/codex/postwait-r1/logout-patch.json",
+      "bytes": 547,
+      "sha256": "b386e3bcdf547ae454e7241f2eb29af855965ad8bff99bdd4ae84fdeed23057a"
+    },
+    {
+      "id": "E095",
+      "kind": "local",
+      "path": "local/research/codex/postwait-r1/next-stage/client.log",
+      "bytes": 128919,
+      "sha256": "86776e799fabfc26f398ba09881520d682e964824570b2d7c5c80bad52b38a9f"
+    },
+    {
+      "id": "E096",
+      "kind": "local",
+      "path": "local/research/codex/postwait-r1/next-stage/debug-commands.txt",
+      "bytes": 2955,
+      "sha256": "f4729cdfd84e3a0636e89e705218758a9f30d410d85bd2fb47f2a92c6630b091"
+    },
+    {
+      "id": "E097",
+      "kind": "local",
+      "path": "local/research/codex/postwait-r1/next-stage/run.json",
+      "bytes": 9640,
+      "sha256": "7e474e95c48d0aa20f68be1631adb44d9a2e46ac2966f4a64439c3c16fc824ef"
+    },
+    {
+      "id": "E098",
+      "kind": "local",
+      "path": "local/research/codex/postwait-r1/next-stage/screen-15.png",
+      "bytes": 504225,
+      "sha256": "802e1c061a47e33908637da4c5eebc02bb23dd24439e0e190530729756f8ca03"
+    },
+    {
+      "id": "E099",
+      "kind": "local",
+      "path": "local/research/codex/postwait-r1/next-stage-branches.asm",
+      "bytes": 11114,
+      "sha256": "fcc111f2a33d91c05819ad929e30e155826cc599c2b82822a1399bc8a13876b7"
+    },
+    {
+      "id": "E100",
+      "kind": "local",
+      "path": "local/research/codex/postwait-r1/next-stage-hashes.json",
+      "bytes": 12273,
+      "sha256": "cdf92c4110eb2a2f7c05fc431b778f10ed3bc737c59d407020cd1fe555e5d04f"
+    },
+    {
+      "id": "E101",
+      "kind": "local",
+      "path": "local/research/codex/postwait-r1/next-stage-launcher.log",
+      "bytes": 7916,
+      "sha256": "296ed2cbe5111b2883747bcbb99cffc3d450a4dcb15988da1bd9c759b6287208"
+    },
+    {
+      "id": "E102",
+      "kind": "local",
+      "path": "local/research/codex/postwait-r1/next-stage-recipe.json",
+      "bytes": 982,
+      "sha256": "6654127152f823acdb564fe004ee8ff1acc751a19542e14abdfff9b8250d1821"
+    },
+    {
+      "id": "E103",
+      "kind": "local",
+      "path": "local/research/codex/postwait-r1/next-stage.gdb",
+      "bytes": 2955,
+      "sha256": "f4729cdfd84e3a0636e89e705218758a9f30d410d85bd2fb47f2a92c6630b091"
+    },
+    {
+      "id": "E104",
+      "kind": "local",
+      "path": "local/research/codex/postwait-r1/nmco-friend-export.asm",
+      "bytes": 1035,
+      "sha256": "916d30b33af0736325106e837403a7d3516783bc99f7a0a3828eb92147128d97"
+    },
+    {
+      "id": "E105",
+      "kind": "local",
+      "path": "local/research/codex/postwait-r1/nmco-slot-cluster.json",
+      "bytes": 4090,
+      "sha256": "16a215741b49c85a2059d7435e4d2033317802ae60a4a6210c586a8cc5156598"
+    },
+    {
+      "id": "E106",
+      "kind": "local",
+      "path": "local/research/codex/postwait-r1/notice-owner-xrefs.asm",
+      "bytes": 3263,
+      "sha256": "1831b7c8bcc714877a2af616d9b7cc2e0f14b28ed383ae7124d7a41f0518ac51"
+    },
+    {
+      "id": "E107",
+      "kind": "local",
+      "path": "local/research/codex/postwait-r1/notice-owner-xrefs.json",
+      "bytes": 416,
+      "sha256": "a126e42b35827609d8f9027838022468cbe7676353c51897af7bb74df8b6aa2d"
+    },
+    {
+      "id": "E108",
+      "kind": "local",
+      "path": "local/research/codex/postwait-r1/notice-queue-fields.asm",
+      "bytes": 6823,
+      "sha256": "2d156ce095f71eee38df068b8106f18ce53c206435b157ee068c03e1e0b5e246"
+    },
+    {
+      "id": "E109",
+      "kind": "local",
+      "path": "local/research/codex/postwait-r1/notice-ready-getter.asm",
+      "bytes": 3065,
+      "sha256": "b965b30b7c1cbbbb2a6d051cc385e61e0a492355f33bc0fe04e8435fda920af3"
+    },
+    {
+      "id": "E110",
+      "kind": "local",
+      "path": "local/research/codex/postwait-r1/op6-handler.asm",
+      "bytes": 3422,
+      "sha256": "ede947fa2f5cd0d276750d66e8698b7ea5cc062a884ffdd2148955f9d658c564"
+    },
+    {
+      "id": "E111",
+      "kind": "local",
+      "path": "local/research/codex/postwait-r1/opcode715-716-path.asm",
+      "bytes": 2345,
+      "sha256": "162e129e8baed5f8badddf815c8d0b3d190f97c358e9ea30f77df1550f80337c"
+    },
+    {
+      "id": "E112",
+      "kind": "local",
+      "path": "local/research/codex/postwait-r1/opcode715-builders.json",
+      "bytes": 309,
+      "sha256": "ce1297d26e654ccdd9df5fd5d568aa62d6a5b643bad094710d03c41392e4fb44"
+    },
+    {
+      "id": "E113",
+      "kind": "local",
+      "path": "local/research/codex/postwait-r1/patch-friend-api.py",
+      "bytes": 1862,
+      "sha256": "331a4bcb03201ce834a00b3938930a5df743625987f4fd2f8b4341cfef3e8d29"
+    },
+    {
+      "id": "E114",
+      "kind": "local",
+      "path": "local/research/codex/postwait-r1/patch-logout.py",
+      "bytes": 1797,
+      "sha256": "75d9bfdb764906918d328def05192d7a0815f7677dd6bb0f7a8da4e5d86faf37"
+    },
+    {
+      "id": "E115",
+      "kind": "local",
+      "path": "local/research/codex/postwait-r1/post-attempt-chain.asm",
+      "bytes": 8255,
+      "sha256": "74a7956a213ee7dee9b0c78077089d9d52cdc9310cd90975ae1e42c02931f5e8"
+    },
+    {
+      "id": "E116",
+      "kind": "local",
+      "path": "local/research/codex/postwait-r1/ready241/client.log",
+      "bytes": 135755,
+      "sha256": "a4e06cfe2c3c0f9ddc29e0292b2e1e627ef11a0ed6b8f53c7f256e2b8fb03e31"
+    },
+    {
+      "id": "E117",
+      "kind": "local",
+      "path": "local/research/codex/postwait-r1/ready241/debug-commands.txt",
+      "bytes": 6316,
+      "sha256": "42db062825d266a3f714fe94aeb760f2a11fa11cc38f4465e2e5a08dc159278d"
+    },
+    {
+      "id": "E118",
+      "kind": "local",
+      "path": "local/research/codex/postwait-r1/ready241/run.json",
+      "bytes": 15316,
+      "sha256": "d008119f935c654731d6c5e6720018e45f6d8ec7575d0b331b1a583e1d6cff15"
+    },
+    {
+      "id": "E119",
+      "kind": "local",
+      "path": "local/research/codex/postwait-r1/ready241/screen-16.png",
+      "bytes": 143193,
+      "sha256": "51aa37b2b3f3548eb94820cd4a54585d9334b87301f891d6d246b1e6e87d806f"
+    },
+    {
+      "id": "E120",
+      "kind": "local",
+      "path": "local/research/codex/postwait-r1/ready241/screen-17.png",
+      "bytes": 143577,
+      "sha256": "f95476701df0fd263c0b0f48b5b248b510a5e6cef1c55d21c14fb8b0e1c4582f"
+    },
+    {
+      "id": "E121",
+      "kind": "local",
+      "path": "local/research/codex/postwait-r1/ready241-base-handler.asm",
+      "bytes": 6698,
+      "sha256": "0e37b4ed5d7a53060076dc0cbb0b189f071b03faf531772e9fc70181fa213ac9"
+    },
+    {
+      "id": "E122",
+      "kind": "local",
+      "path": "local/research/codex/postwait-r1/ready241-hashes.json",
+      "bytes": 13300,
+      "sha256": "4e387c67a47d73c56d70601edfb1af3bbc4e5b694cdd41aa4a6f6000974aa9ea"
+    },
+    {
+      "id": "E123",
+      "kind": "local",
+      "path": "local/research/codex/postwait-r1/ready241-launcher.log",
+      "bytes": 12434,
+      "sha256": "8e75de31354dc4d9b1b9dc0b2bd2d57874ca3ce4715bd5d7e38349e300de466e"
+    },
+    {
+      "id": "E124",
+      "kind": "local",
+      "path": "local/research/codex/postwait-r1/ready241-oracle.json",
+      "bytes": 31714,
+      "sha256": "16a3f53c46cb2f2e66e39e15a50486172842a1f46ee71ea2ed843479e596a199"
+    },
+    {
+      "id": "E125",
+      "kind": "local",
+      "path": "local/research/codex/postwait-r1/ready241-recipe.json",
+      "bytes": 974,
+      "sha256": "1a551cf94850235396bc5969100b9279423599c9a91cbf496e9694125b966b49"
+    },
+    {
+      "id": "E126",
+      "kind": "local",
+      "path": "local/research/codex/postwait-r1/ready241.gdb",
+      "bytes": 6316,
+      "sha256": "42db062825d266a3f714fe94aeb760f2a11fa11cc38f4465e2e5a08dc159278d"
+    },
+    {
+      "id": "E127",
+      "kind": "local",
+      "path": "local/research/codex/postwait-r1/redirect7/client.log",
+      "bytes": 124562,
+      "sha256": "9bd06bec59916bcf5119281dd53c806cf32367cb5a8a26bda333a7b3c24020a4"
+    },
+    {
+      "id": "E128",
+      "kind": "local",
+      "path": "local/research/codex/postwait-r1/redirect7/debug-commands.txt",
+      "bytes": 5005,
+      "sha256": "67385bd897acb921a9daab18e9f0fb4f9e881b165da68a3a70a81d5569e46412"
+    },
+    {
+      "id": "E129",
+      "kind": "local",
+      "path": "local/research/codex/postwait-r1/redirect7/run.json",
+      "bytes": 8938,
+      "sha256": "63c8bbcbf9bd0c045c97f3668bb5ff9eded9f5097dd373e3ebc61e23d5bc9243"
+    },
+    {
+      "id": "E130",
+      "kind": "local",
+      "path": "local/research/codex/postwait-r1/redirect7/screen-07.png",
+      "bytes": 503973,
+      "sha256": "7fd31ef47a10876e2a061f2c8007e2662b635d3b593d3836f3f3ecee050fce5a"
+    },
+    {
+      "id": "E131",
+      "kind": "local",
+      "path": "local/research/codex/postwait-r1/redirect7-handler-full.asm",
+      "bytes": 77594,
+      "sha256": "ca690398c9eac9c8a7ff27c5d5698dbb5ddf86ce6184aecff21d2e068b1f619b"
+    },
+    {
+      "id": "E132",
+      "kind": "local",
+      "path": "local/research/codex/postwait-r1/redirect7-handler.asm",
+      "bytes": 22477,
+      "sha256": "05a9da78e465b36160512b801eb950fe02988d6dedbb7ce8e72da46f8a3e5c3a"
+    },
+    {
+      "id": "E133",
+      "kind": "local",
+      "path": "local/research/codex/postwait-r1/redirect7-hashes.json",
+      "bytes": 6365,
+      "sha256": "279ee351a9d3a8e21a3ece504a2e0b00cd60eb97195e11aadcadbc3aca58af47"
+    },
+    {
+      "id": "E134",
+      "kind": "local",
+      "path": "local/research/codex/postwait-r1/redirect7-launcher.log",
+      "bytes": 7428,
+      "sha256": "c0d47d1e8a0177d64c71461989db70a61bb3f383b51d5d32f2a10d7d81de7762"
+    },
+    {
+      "id": "E135",
+      "kind": "local",
+      "path": "local/research/codex/postwait-r1/redirect7-loopback.bin",
+      "bytes": 52,
+      "sha256": "b514742b5e0feb58f64f6f8b1427ca1c34c7494202607b7fb8ee78e02d0caa15"
+    },
+    {
+      "id": "E136",
+      "kind": "local",
+      "path": "local/research/codex/postwait-r1/redirect7-oracle.json",
+      "bytes": 8500,
+      "sha256": "bd7ce0377e4f53f36a364dc18f444ccbf703d55a82edd9cdc18e60529f9bcc9f"
+    },
+    {
+      "id": "E137",
+      "kind": "local",
+      "path": "local/research/codex/postwait-r1/redirect7-recipe.json",
+      "bytes": 981,
+      "sha256": "7902ddb6c48dafe813748aab1bceaf31708bacf162f7522f3897c31cda0d0035"
+    },
+    {
+      "id": "E138",
+      "kind": "local",
+      "path": "local/research/codex/postwait-r1/redirect7.gdb",
+      "bytes": 5005,
+      "sha256": "67385bd897acb921a9daab18e9f0fb4f9e881b165da68a3a70a81d5569e46412"
+    },
+    {
+      "id": "E139",
+      "kind": "local",
+      "path": "local/research/codex/postwait-r1/replay-run.py",
+      "bytes": 2618,
+      "sha256": "24ed26424a589aa149971bec0ea960fe187602a380ff84134665c628f2593fea"
+    },
+    {
+      "id": "E140",
+      "kind": "local",
+      "path": "local/research/codex/postwait-r1/room-notice/client.log",
+      "bytes": 144455,
+      "sha256": "cd249df2f9d14b360259ff5fa45f6ffbfcca9b6ac06ea4ae04860be87105da43"
+    },
+    {
+      "id": "E141",
+      "kind": "local",
+      "path": "local/research/codex/postwait-r1/room-notice/debug-commands.txt",
+      "bytes": 6493,
+      "sha256": "e8b1caf4e232f062783b7260449a84673a96f1eb7d526652cd1d1f9466df5a02"
+    },
+    {
+      "id": "E142",
+      "kind": "local",
+      "path": "local/research/codex/postwait-r1/room-notice/run.json",
+      "bytes": 15040,
+      "sha256": "8ed7d13b3887cb3dd62f61000feb57be205a26d3484c7d03d939091e4267e975"
+    },
+    {
+      "id": "E143",
+      "kind": "local",
+      "path": "local/research/codex/postwait-r1/room-notice/screen-15.png",
+      "bytes": 142348,
+      "sha256": "8fb229377a1ba31b33550fa29d4003e144562e798eb23c0d27e9ac4d5a62c3be"
+    },
+    {
+      "id": "E144",
+      "kind": "local",
+      "path": "local/research/codex/postwait-r1/room-notice-hashes.json",
+      "bytes": 12339,
+      "sha256": "069bd19dbb7531c1bbe33058e1a55f41c8140925aaaedafa72bcbec9b362a76e"
+    },
+    {
+      "id": "E145",
+      "kind": "local",
+      "path": "local/research/codex/postwait-r1/room-notice-launcher.log",
+      "bytes": 12206,
+      "sha256": "a83c4e4b6bfe51b07a36f99ad0a431b5a0af49f6b9975ed8323dcdf076221274"
+    },
+    {
+      "id": "E146",
+      "kind": "local",
+      "path": "local/research/codex/postwait-r1/room-notice-oracle.json",
+      "bytes": 29655,
+      "sha256": "a4dd6ea2ae76b538290c65d4bbda8a4c96918802b867a80c3f621b7b69002e0e"
+    },
+    {
+      "id": "E147",
+      "kind": "local",
+      "path": "local/research/codex/postwait-r1/room-notice-recipe.json",
+      "bytes": 978,
+      "sha256": "40688e065706b4c793ed84e1fbeb4ec7587dd5917f958d7f637cde51d2f47fa8"
+    },
+    {
+      "id": "E148",
+      "kind": "local",
+      "path": "local/research/codex/postwait-r1/room-notice.gdb",
+      "bytes": 6493,
+      "sha256": "e8b1caf4e232f062783b7260449a84673a96f1eb7d526652cd1d1f9466df5a02"
+    },
+    {
+      "id": "E149",
+      "kind": "local",
+      "path": "local/research/codex/postwait-r1/room-open/client.log",
+      "bytes": 143169,
+      "sha256": "d2516e2f6d5f54d60abd349587d5990ae3df9fd2b4b7d32deb7fd19122263131"
+    },
+    {
+      "id": "E150",
+      "kind": "local",
+      "path": "local/research/codex/postwait-r1/room-open/debug-commands.txt",
+      "bytes": 6413,
+      "sha256": "58f47e582502b091bb1f556271f4b21a02202601c79d99f0be7e32c5930793e2"
+    },
+    {
+      "id": "E151",
+      "kind": "local",
+      "path": "local/research/codex/postwait-r1/room-open/run.json",
+      "bytes": 15569,
+      "sha256": "5f1af0a38f1ab781ed0e7ce98bb13fecd84330323eda4b98bda1a1a370f5efba"
+    },
+    {
+      "id": "E152",
+      "kind": "local",
+      "path": "local/research/codex/postwait-r1/room-open/screen-16.png",
+      "bytes": 143076,
+      "sha256": "543cc6ca6e185067a091086ff9aa597d87fa3e70807d7dfcb95d8df0ad0bf2b5"
+    },
+    {
+      "id": "E153",
+      "kind": "local",
+      "path": "local/research/codex/postwait-r1/room-open/screen-17.png",
+      "bytes": 143615,
+      "sha256": "34f335600f1e85127965989add0017d3b6f8d82cb96de8f85b6895d32d42849f"
+    },
+    {
+      "id": "E154",
+      "kind": "local",
+      "path": "local/research/codex/postwait-r1/room-open-hashes.json",
+      "bytes": 13367,
+      "sha256": "393dc73daaa184c6934a13d4f7452a46541a04b2233b69e49f6b3e0ff39c2545"
+    },
+    {
+      "id": "E155",
+      "kind": "local",
+      "path": "local/research/codex/postwait-r1/room-open-launcher.log",
+      "bytes": 12615,
+      "sha256": "e1d2ec378cc5732da1beef44eed43297a745716490ee123526bb5962eddca456"
+    },
+    {
+      "id": "E156",
+      "kind": "local",
+      "path": "local/research/codex/postwait-r1/room-open-oracle.json",
+      "bytes": 31719,
+      "sha256": "244becca2d4840fec328c230c199ee9de51cd24a5d7b6ac5bb792a30b3f023d5"
+    },
+    {
+      "id": "E157",
+      "kind": "local",
+      "path": "local/research/codex/postwait-r1/room-open-recipe.json",
+      "bytes": 972,
+      "sha256": "1bd7bf184d205796371de0d7ee463a14c4acd8f2d67eca45f35c4e68b6eacd6c"
+    },
+    {
+      "id": "E158",
+      "kind": "local",
+      "path": "local/research/codex/postwait-r1/room-open.gdb",
+      "bytes": 6413,
+      "sha256": "58f47e582502b091bb1f556271f4b21a02202601c79d99f0be7e32c5930793e2"
+    },
+    {
+      "id": "E159",
+      "kind": "local",
+      "path": "local/research/codex/postwait-r1/run_probe.py",
+      "bytes": 1064,
+      "sha256": "00b69c55a3787b521665c7386739d60579b50adfe9720657affc124b98cb1e46"
+    },
+    {
+      "id": "E160",
+      "kind": "local",
+      "path": "local/research/codex/postwait-r1/runtime-summary.json",
+      "bytes": 33216,
+      "sha256": "846dda4a949b5ea0e40c4e3e20d87cd5bd71d9dafa56e49d20a8a0182e8ce42b"
+    },
+    {
+      "id": "E161",
+      "kind": "local",
+      "path": "local/research/codex/postwait-r1/stage-init/client.log",
+      "bytes": 129208,
+      "sha256": "dc5eb73b56d5d02ae6c0581eb79c8b00159c2ea9cd53a10d51b2f8075bdc540a"
+    },
+    {
+      "id": "E162",
+      "kind": "local",
+      "path": "local/research/codex/postwait-r1/stage-init/debug-commands.txt",
+      "bytes": 3286,
+      "sha256": "b54cca2f7692ba0b6eb3aaf08d5d340eb288d08fa41b8943b160cb75c6d7dbfa"
+    },
+    {
+      "id": "E163",
+      "kind": "local",
+      "path": "local/research/codex/postwait-r1/stage-init/run.json",
+      "bytes": 9634,
+      "sha256": "783abba78ad8ee666e6280d39fc9f34d660034955dbbe9e031a9197cbf0a1f54"
+    },
+    {
+      "id": "E164",
+      "kind": "local",
+      "path": "local/research/codex/postwait-r1/stage-init/screen-15.png",
+      "bytes": 504243,
+      "sha256": "f0bd8852a8047048cbe31833573aedcd903b2d7448afea605209973558ec6aa2"
+    },
+    {
+      "id": "E165",
+      "kind": "local",
+      "path": "local/research/codex/postwait-r1/stage-init-function.asm",
+      "bytes": 10636,
+      "sha256": "c86a5edbe3af5252f90346d119252c621911e7cf8a2e4cc791f66b2e9eb62c92"
+    },
+    {
+      "id": "E166",
+      "kind": "local",
+      "path": "local/research/codex/postwait-r1/stage-init-hashes.json",
+      "bytes": 12273,
+      "sha256": "13c3c0796beaef108473b4dd887cd808db34bbe6f28b102e45fe9993683d7cab"
+    },
+    {
+      "id": "E167",
+      "kind": "local",
+      "path": "local/research/codex/postwait-r1/stage-init-launcher.log",
+      "bytes": 7910,
+      "sha256": "c0b5f7d0858fa7f84325fb897a6a81e365a72af7bfda9ca5dd1ed68916d0b614"
+    },
+    {
+      "id": "E168",
+      "kind": "local",
+      "path": "local/research/codex/postwait-r1/stage-init-recipe.json",
+      "bytes": 982,
+      "sha256": "ab3e026c956a018bc50ac95d7b4c615fb0f858242cc4bbde78a89fa7b5230c41"
+    },
+    {
+      "id": "E169",
+      "kind": "local",
+      "path": "local/research/codex/postwait-r1/stage-init.gdb",
+      "bytes": 3286,
+      "sha256": "b54cca2f7692ba0b6eb3aaf08d5d340eb288d08fa41b8943b160cb75c6d7dbfa"
+    },
+    {
+      "id": "E170",
+      "kind": "local",
+      "path": "local/research/codex/postwait-r1/timer-notice-branch.asm",
+      "bytes": 1223,
+      "sha256": "ec677acd32a1da56e8f702bfdc0a7a3e367e233b263a622fa1b09ac325a539d2"
+    },
+    {
+      "id": "E171",
+      "kind": "local",
+      "path": "local/research/codex/postwait-r1/timer-notice-origin.asm",
+      "bytes": 1161,
+      "sha256": "0d571d05e7501bc415c8c3822cb5bd648c91d523b39f82442fdc6215e29aee05"
+    },
+    {
+      "id": "E172",
+      "kind": "local",
+      "path": "local/research/codex/postwait-r1/transition-guard-full.asm",
+      "bytes": 7469,
+      "sha256": "8512e1e8a7196096450d5c8de92685ee865ab4471b28e7b2e4f6d62133afd03e"
+    },
+    {
+      "id": "E173",
+      "kind": "local",
+      "path": "local/research/codex/postwait-r1/transition-guard.asm",
+      "bytes": 1117,
+      "sha256": "7a35484e061cb4d559bfb1b602da957f69b88fd8bdcab828bb55ee223667c737"
+    },
+    {
+      "id": "E174",
+      "kind": "local",
+      "path": "local/research/codex/postwait-r1/verification.json",
+      "bytes": 37163,
+      "sha256": "a85490f4c68bce52eae549067a3258a950a9ba0d9bd35aecda6b83199a1315f5"
+    },
+    {
+      "id": "E175",
+      "kind": "local",
+      "path": "local/research/codex/postwait-r1/verify-channel17.py",
+      "bytes": 1587,
+      "sha256": "2674be432c2551a8fe4e8957f2507415a50b62493a4fa82f8150e7b6c9f5d458"
+    },
+    {
+      "id": "E176",
+      "kind": "local",
+      "path": "local/research/codex/postwait-r1/verify-fixtures.py",
+      "bytes": 2285,
+      "sha256": "25ea43a89099194e219d97362ff813430a6e8fa22c59c776d33f28bb90bfc963"
+    },
+    {
+      "id": "E177",
+      "kind": "local",
+      "path": "local/research/codex/postwait-r1/verify-flags62.py",
+      "bytes": 2326,
+      "sha256": "b1a1abc755510f9a3f4342f1f43b1be33cffc4e10d3397cfa64575cb9793ce61"
+    },
+    {
+      "id": "E178",
+      "kind": "local",
+      "path": "local/research/codex/postwait-r1/verify.py",
+      "bytes": 6337,
+      "sha256": "fd046fe71d8e718d26a0bb89bd7e120252c00699eb10935325fb983c244ed8d1"
+    },
+    {
+      "id": "E179",
+      "kind": "local",
+      "path": "local/research/codex/wcp-guard-r1/game/CA-r2-login-friend-api.exe",
+      "bytes": 31874560,
+      "sha256": "7171659f64fedfe154b55ba0169c882248911fa80101ff1b4fcfe3cc3269e415"
+    },
+    {
+      "id": "E180",
+      "kind": "local",
+      "path": "local/research/codex/wcp-guard-r1/game/CA-r2-login-logout.exe",
+      "bytes": 31874560,
+      "sha256": "660447c293ce92270cb9b5815331bca976e8f156366e1fe50b217b6c12e60ce3"
+    },
+    {
+      "id": "E181",
+      "kind": "local",
+      "path": "local/research/codex/wcp-guard-r1/game/CA-r2-login-postmsg.exe",
+      "bytes": 31874560,
+      "sha256": "de2df3ba68f2e7deff892186d51571e3eae7b613d7cb02227066015a2eb4789d"
+    },
+    {
+      "id": "E182",
+      "kind": "local",
+      "path": "local/research/codex/wcp-guard-r1/game/nmco3.dll",
+      "bytes": 323584,
+      "sha256": "7e038696ec69db579f71e029da66f5b5500c56375ff77b24d93529ba7faf9493"
+    },
+    {
+      "id": "E183",
+      "kind": "local",
+      "path": "local/research/codex/wine_probe_auth_flags62.py",
+      "bytes": 23080,
+      "sha256": "97c43a8ee299a18dfe11e4185838e8a3efa5b70000561d9bdc0f3e350895b7a2"
+    },
+    {
+      "id": "E184",
+      "kind": "local",
+      "path": "local/research/codex/wine_probe_auth_netinfo.py",
+      "bytes": 22654,
+      "sha256": "0e70b2aa889d9d1a6a2ab18f79ff50f8e21e1067bdff166669888f52c6f9a9b7"
+    },
+    {
+      "id": "E185",
+      "kind": "local",
+      "path": "local/research/codex/wine_probe_auth_redirect7.py",
+      "bytes": 23693,
+      "sha256": "a5d039a104cd8b632aa5d3f920d278f193657e91fac2385caf3237c2ac8dc781"
+    },
+    {
+      "id": "E186",
+      "kind": "local",
+      "path": "local/research/codex/wine_probe_channel17.py",
+      "bytes": 24919,
+      "sha256": "868d8c6542b70eea987c40ee7e90d6c88506233799834d20d0ee7848700020f7"
+    },
+    {
+      "id": "E187",
+      "kind": "local",
+      "path": "local/research/codex/wine_probe_lobby_ready241.py",
+      "bytes": 25521,
+      "sha256": "5396a8690ad555b2254cc88c3397c0377f7f384136382f784b400a96a34fd136"
+    },
+    {
+      "id": "E188",
+      "kind": "local",
+      "path": "local/research/codex/wine_probe_room_open.py",
+      "bytes": 26574,
+      "sha256": "fdc472b515e8e8739ff1acdd882609c8d5ff8cefc02893c69f2f0829f80a7650"
+    }
+  ],
+  "delta": {
+    "added": [
+      "Modified Wine copy renders CLobbyStage and closes connecting notice through actual62/7/17/241 handler path.",
+      "Fresh channel socket and C2S6 verified independently from login socket sequence; request5/40 and complete17 zero-count serializer identified."
+    ],
+    "corrected": [
+      "CP014 blocker8FC narrowed to NMCO friend export cluster and passed with real DLL binding; CP014 already merged PR22.",
+      "No init-return-false or stale-global1A31F30 explanation supported: init1/global0 observed.",
+      "Rejected opcode715-as-channel-ACK hypothesis using BigBattle literals/stack; actual notice readiness is241.",
+      "Do not attribute TimerNotice to create-room click; mainDisconnected origin and end-of-probe timing retained.",
+      "Fixture and capture oracle output-name collision corrected; same-input serializer/predicate oracles rerun under distinct names."
+    ],
+    "superseded": [
+      "NEXT-POSTWAIT-HELPER, replaced by active lobby input/full user contract work."
+    ]
+  },
+  "blockers": [
+    "Create-room click injected but actual hit-control/command and request77 not observed.",
+    "Result0 still only diagnostic prefix; blank user/profile/cache and complete identity contract unresolved.",
+    "Original globals/oneclickuser/count2, positive vector variants, full codec/reset and vanilla/K3 controls remain open."
+  ],
+  "next_steps": [
+    {
+      "id": "NEXT-POSTWAIT-HELPER",
+      "task": "KRE-005b",
+      "state": "closed",
+      "action": "Old helper passed via NMCO friend binding; channel/lobby route and next missing inputs now identified.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-FULL-LOGIN-FIELDS",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "Recover complete result0/user/cache and validate identity plus codec/count>0 variants before accepting K2/K3. UI state alone is insufficient.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-LOBBY-ROOM-INPUT",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "Trace actual CLobbyStage mouse hit→command/callback for create-room, measure guard/profile and capture request if produced; keep TimerNotice cleanup separate. Audit README→PLAN→PROTOCOL→RESEARCH→raw at CP016 before completing that checkpoint.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    }
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-10-28T06:50:58.700460+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "Owner waiver persists; Codex solo static/runtime/native-oracle and self-check; no independent approval.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Explicit owner instruction to continue solo without Claude review."
+    }
+  },
+  "docs_sync": [
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "Current lobby UI/notice milestone and full-auth/input limits; CP014 merge."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "K3 partial UI milestone, gates remain open; next room input and full user contract."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "updated",
+      "reason": "KR62/7/17/241 path, schemas, sequence limits and failed hypotheses."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "updated",
+      "reason": "Replace solved helper search with measured input/profile work and CP016 audit due."
+    },
+    {
+      "path": "docs/evidence/postwait/README.md",
+      "state": "updated",
+      "reason": "Recipes/artifacts/raw/control/oracle/history/corrections and limitations."
+    }
+  ]
+}

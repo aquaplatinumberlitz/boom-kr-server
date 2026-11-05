@@ -1,7 +1,7 @@
 {
   "schema": "kre-issue-review-v1",
   "as_of": "2026-11-05",
-  "baseline": "f33f3b86f812d5645914ff1543b961f275c34767",
+  "baseline": "c2ca94d1e2a77bbfcf67c052542e37d0a1577e94",
   "method": "Codex manual acceptance review; native/static/model/design/merge/gate distinct; originalissuebodies archivedlocalbeforeedit, no completecheckpoint rewrite",
   "issues": [
     {
@@ -132,9 +132,9 @@
         "KR-S001",
         "KR-S002"
       ],
-      "known": "CP116PR186mergedf33f3b8. CP117sameprofile/source rescue→actualA/B19/chosen175180/room/actualB95; nativeStartentrypending0/pred1,1/DCAD80guard3/errorbranch/nobuild104.",
-      "remaining": "Actualslot/state/helpercausingguard3 unknown; noStart2/freshrescue. Generalteam/aux2/membership/auth/authority/fullcodec/control/gates/LANInternet remain.",
-      "next_test": "PLANread-onlyDCAD80loopslot/rawpackedgroup/helper703A90/1240D70 andactualreturn3siteDCB7DA/7FD; thenboundedrosterpolicyfix/runtime104Start2freshrescuewithoutforcing/mint/fusechange.",
+      "known": "CP117PR187mergedc2ca94d; savedruntimeactualslot2/group0/helper1/hostflag0/DCB7DA→guard3 versusinitialgroup1. Raw/hash/cleanupbeforemigration.",
+      "remaining": "Boundeddiagnostic110slot2readyrefreshcandidate notimplemented/runtimefixyet; noStart2/freshrescue/fullauthority/gates.",
+      "next_test": "AfterKRE073migrationPR, continueactualslot2guardcausealreadymeasured: known110state0x24diagnosticrefreshcontrol→nativeguard0/actual104/Start2currentkey/freshrescue. No repeatedoldslot/codecRE.",
       "acceptance": "Epic checklist: linkedscopedtask/evidence+authoritymatrix vàacceptancegate ởPLAN; từngtaskđóng khôngđóngepic/K5/K6a.",
       "reason": "Keep epic/gatesopen: result/roomReadyboundedprogress, actualnativeblocker insteadguessfocus/rosterCcause; completedhistoryimmutable.",
       "sources": [
@@ -162,7 +162,8 @@
         183,
         184,
         185,
-        186
+        186,
+        187
       ],
       "successors": []
     },
@@ -460,6 +461,30 @@
       "prs": [
         179
       ],
+      "successors": []
+    },
+    {
+      "number": 188,
+      "kre": "KRE-073",
+      "classification": "in_progress",
+      "features": [
+        "KR-S001"
+      ],
+      "known": "Scripted117wholeobjectmigration/evidence166881/audits36equivalent; v2index53KB/records, currentreaders/selectiveCLI, v1v2history+mutationtests. No gate change.",
+      "remaining": "CP118externalbatchpinnings/finalrequiredchecks/PRexactheadmerge thenresumeactualslot2guardRE.",
+      "next_test": "Fullschemaoldnewhistory/localevidence/auditcadence/append-only andCLI/consumernegativecontrols; re-runmigrationafterappendprovesnoreset.",
+      "acceptance": "Ownerrequest: preservecompleteobjects/counters/audits/evidence; selectiveinterfaceandfullverification/migrationreport/PR; no tracker/semanticgateclosure.",
+      "reason": "Oneboundedorganizationchangeafterruntimecompletedrawhashcleanup; PLANretainssoleorder, no worker.",
+      "sources": [
+        "docs/PLAN.md#current-order",
+        "docs/PROTOCOL.md#rescue-start-slot",
+        "docs/RESEARCH.md#gap-diagnostic-service",
+        "docs/evidence/checkpoints/README.md"
+      ],
+      "evidence": [
+        "docs/evidence/checkpoints/migration-v2.json"
+      ],
+      "prs": [],
       "successors": []
     }
   ],

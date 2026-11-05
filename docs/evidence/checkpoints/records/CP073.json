@@ -1,0 +1,1327 @@
+{
+  "id": "CP073",
+  "previous": "CP072",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-02T21:24:17.818525+00:00",
+  "context_commit": "690d9559fbbccf93e5697107ffe273d32bf7182d",
+  "question": "Is SetLocaleAndRegion2000:0 a native mainclientlocale blocker, and what exact auxiliary input/return/fallback does currentoffline runtime show?",
+  "scope": "KRE-036/#106; sourcefirstCP006–020/064/072 plusCP004knownerrorfallback, KR/VN/l10n/archive. TargetedmainHTTP/A90wrapper andexactauxiliaryPE/export metadata, thenmain2Aonlypositive/duopositive/actualTCPEOFnegative, auxiliarypreferredbaseprobe setupfailure +relocated2CAargs +exactemptyargvcontrol. Sevensealedruns/Codexsolo. No locale/provider/client/servicefix justified; mainhistoricalcauseunknown. Nextpreclocknative107observer withknownerrorstate/fallbackHTTPdiagnostics. AUD022/CP072,nextCP076.",
+  "owner": "Codex",
+  "reviewer": "Codex",
+  "artifacts": [
+    {
+      "name": "CA-r2-login-logout.exe",
+      "sha256": "660447c293ce92270cb9b5815331bca976e8f156366e1fe50b217b6c12e60ce3"
+    },
+    {
+      "name": "CA-r2-stage-social.exe",
+      "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+    },
+    {
+      "name": "CA-r2-stage-social.exe Bcopy",
+      "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+    },
+    {
+      "name": "modO.bin",
+      "sha256": "a08950c833d3acab8281049def7b3dc96b221f107eeda01da3a548e34b91dce5"
+    },
+    {
+      "name": "CA-r2-stage-social.exe Ccopy",
+      "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+    },
+    {
+      "name": "CALauncher.exe",
+      "sha256": "8cc2668bec7a4a0281f1acab26ab3487c4b4e5047d7ce75ab32b299ef16f527d"
+    },
+    {
+      "name": "nmcogame.dll",
+      "sha256": "25746a9a0e29deb7abb70ed1889c01072eb7343d1cafb4a9ffc76b69fac3ae9d"
+    },
+    {
+      "name": "nmco3.dll",
+      "sha256": "7e038696ec69db579f71e029da66f5b5500c56375ff77b24d93529ba7faf9493"
+    }
+  ],
+  "locators": [
+    "locale-observe 2026-11-02T18:16:15Z runSHA 7281aea89d843d7f92485d0f74ad231ec6d85efaaba78b324bbb3c76bb15bb94",
+    "content-observe 2026-11-02T21:11:19Z runSHA f713bdcaf40f009e2c0de9327361bfd7044124587d6ab169b10e641e074c8a71",
+    "content-duo 2026-11-02T21:13:07Z runSHA 2a7c5a6837489494fcbb1e5fe96fd4d1fa806aaea3a42d8751003be5ac888860",
+    "channel-close 2026-11-02T21:15:18Z runSHA abc374495450514d67d3a26110aeabdc9c1c3cf55e3d3191ed329a4e0e7b567e",
+    "launcher-direct 2026-11-02T21:16:20Z runSHA b9d883045d25294dee49b537e6bc673637f2207f0c9395e291855327e70e536c",
+    "launcher-relocated 2026-11-02T21:17:24Z runSHA 92df2666bbbee91f60cb389770557447f4e9933301e81b0f69e4ea87d873a421",
+    "launcher-emptyargs 2026-11-02T21:18:57Z runSHA e10719dd0b59dd17ea3326392abeec22077438f00c48ea531b93c239a5359ba1",
+    "Main96A155→96A480 HTTPJSONcontentsUrl, exactA/B/static/modObytes; A90B90/C00export wrappers; RVA=VA-400000",
+    "CALauncherUI4FBF08/ref449439/IAT4FA630; nmcogameexportRVA1D140/actualbase7A540000/MZ+6bytesvalidated/caller49959A/args1,0/valid1/init0/errors2000,0",
+    "Controlledactualchannel6close→CreateProcessAreturn1258231 appCALauncher.exe/emptycmd/flags20→mainSIGSEGV17C7F4C, notoldSIGABRT96A"
+  ],
+  "findings": [
+    {
+      "summary": "Standaloneauxiliaryexport actualargs1,0→validation1→internalinit0/main2000sub0/samepopup, no gameTCP. Repeatedwithgeneric2CAargs andexactemptyargv; originalCALauncher/nmcogame/nmco3bytesmatchbothcopies. Popupnotproofmainlocalerootcause.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#launcher-error-attribution",
+      "limits": "MaincurrentWinecopies/currentsyntheticprofile/privatepositiveactual67 vscontrolledEOFafter6before17; auxiliarysameoriginalbytes/standaloneproviderinit1,0→false2000:0/noTCP. Notmainlocale rootcause/stabilityfix/originalauth/vanilla/fullmatch/K5/K6a/LANInternet. HistoricalSIGABRT96A andnegativeSIGSEGV17C7F4C distinct; positiveunhitmarkersbounded, notabsenceproof. No clientpatch/forcing/service/globalconfig/sourceDBmutation. Nativeframerreceiver models emulationonly.",
+      "evidence": [
+        "E142",
+        "E146",
+        "E009",
+        "E010",
+        "E086"
+      ]
+    },
+    {
+      "summary": "TwoAonlyandduocurrentprofileactual67positive/noerrors, targetmarkersnotobservedinwindow. ControlledTCPcloseafteractual6before17 triggersmainCreateProcessA CALauncher.exe/emptycmd/flags20/return1258231, thenSIGSEGV17C7F4C. Fifthacceptservice-roleB ispolicy, notrealclientB. DoesnotproveCP072startupcause orsameSIGABRT.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#launcher-error-attribution",
+      "limits": "MaincurrentWinecopies/currentsyntheticprofile/privatepositiveactual67 vscontrolledEOFafter6before17; auxiliarysameoriginalbytes/standaloneproviderinit1,0→false2000:0/noTCP. Notmainlocale rootcause/stabilityfix/originalauth/vanilla/fullmatch/K5/K6a/LANInternet. HistoricalSIGABRT96A andnegativeSIGSEGV17C7F4C distinct; positiveunhitmarkersbounded, notabsenceproof. No clientpatch/forcing/service/globalconfig/sourceDBmutation. Nativeframerreceiver models emulationonly.",
+      "evidence": [
+        "E127",
+        "E133",
+        "E026",
+        "E017",
+        "E086"
+      ]
+    },
+    {
+      "summary": "Historical96Astack leadsHTTPJSONcontentsUrl/placementURI, notprovenmainlocale call. FullUIformat residesCALauncherPE; mainwrappersA90 andauxproviderexport separate. InvalidID/code1000 andunresolvedexport3000 aredistinctstaticbranches. Excludedmisalignedfragmentprefixes, no semanticsfromfalseprologues.",
+      "source": "kr_static",
+      "status": "confirmed",
+      "method": "static",
+      "canonical": "docs/PROTOCOL.md#launcher-error-attribution",
+      "limits": "MaincurrentWinecopies/currentsyntheticprofile/privatepositiveactual67 vscontrolledEOFafter6before17; auxiliarysameoriginalbytes/standaloneproviderinit1,0→false2000:0/noTCP. Notmainlocale rootcause/stabilityfix/originalauth/vanilla/fullmatch/K5/K6a/LANInternet. HistoricalSIGABRT96A andnegativeSIGSEGV17C7F4C distinct; positiveunhitmarkersbounded, notabsenceproof. No clientpatch/forcing/service/globalconfig/sourceDBmutation. Nativeframerreceiver models emulationonly.",
+      "evidence": [
+        "E082",
+        "E019",
+        "E011",
+        "E047",
+        "E027",
+        "E086"
+      ]
+    },
+    {
+      "summary": "FirstauxpreferredVA10000000breakpointsfailedtoinsert dueactualbase7A540000, continueabortednotnativefailure; relocatedread-onlyMZ/exportRVAcorrected. Genericargvclaimednoargsbutpassed2CAargs, explicitemptyargvcontrol measuredwithouteditingoldraw.",
+      "source": "design",
+      "status": "design",
+      "method": "design",
+      "canonical": "docs/PROTOCOL.md#launcher-error-attribution",
+      "limits": "MaincurrentWinecopies/currentsyntheticprofile/privatepositiveactual67 vscontrolledEOFafter6before17; auxiliarysameoriginalbytes/standaloneproviderinit1,0→false2000:0/noTCP. Notmainlocale rootcause/stabilityfix/originalauth/vanilla/fullmatch/K5/K6a/LANInternet. HistoricalSIGABRT96A andnegativeSIGSEGV17C7F4C distinct; positiveunhitmarkersbounded, notabsenceproof. No clientpatch/forcing/service/globalconfig/sourceDBmutation. Nativeframerreceiver models emulationonly.",
+      "evidence": [
+        "E138",
+        "E038",
+        "E009",
+        "E146"
+      ]
+    },
+    {
+      "summary": "Rootcause historicalstartupinterrupt/mainSIGABRT96A chain andproviderinitinternals remainunknown. No fix/forcedsuccess; nextboundednative107preclock withrealerrorstate/input/callers iffailure, notwholeprovider scan/unchangedproxyretry.",
+      "source": "kr_runtime",
+      "status": "unknown",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#launcher-error-attribution",
+      "limits": "MaincurrentWinecopies/currentsyntheticprofile/privatepositiveactual67 vscontrolledEOFafter6before17; auxiliarysameoriginalbytes/standaloneproviderinit1,0→false2000:0/noTCP. Notmainlocale rootcause/stabilityfix/originalauth/vanilla/fullmatch/K5/K6a/LANInternet. HistoricalSIGABRT96A andnegativeSIGSEGV17C7F4C distinct; positiveunhitmarkersbounded, notabsenceproof. No clientpatch/forcing/service/globalconfig/sourceDBmutation. Nativeframerreceiver models emulationonly.",
+      "evidence": [
+        "E086",
+        "E077"
+      ]
+    }
+  ],
+  "verification": [
+    {
+      "check": "1169 relations/seals/source/crossartifactranges, 423 nativeactualframer/3 nativepacketcases, 7catalog/docs/artifacts5/5/diff/requiredlocalhistory. Baseline72server/18checkpoint tests reused unchangedcode. AUD022,nextCP076.",
+      "result": "pass",
+      "evidence": [
+        "E086",
+        "E013",
+        "E032",
+        "E008"
+      ],
+      "limits": "Pass verifiesattribution/negative/setupfailures/boundedpositive, notstabilityfix/fullauth/gameplay/gate. Selfchecknotindependentreview."
+    }
+  ],
+  "evidence": [
+    {
+      "id": "E001",
+      "kind": "repository",
+      "path": "docs/evidence/preclock-eof/README.md",
+      "bytes": 6363,
+      "sha256": "ad16d3aec0eb40453623f008ab6c36a6f1e1de26b5d0d89bafa0a349ad8755bf"
+    },
+    {
+      "id": "E002",
+      "kind": "repository",
+      "path": "docs/evidence/nmco-locale-stability/README.md",
+      "bytes": 8382,
+      "sha256": "970b8ae80c8f0bde6e6fac73d83b11800de724ce00a2b35c9c7187c90df81361"
+    },
+    {
+      "id": "E003",
+      "kind": "local",
+      "path": "local/research/codex/nmco-locale-stability-r1/96A100.asm",
+      "bytes": 2384,
+      "sha256": "ac701f5495ee7eb5931d9cb153ae5a98a2efd07da80d548129f46abcaf47cda3"
+    },
+    {
+      "id": "E004",
+      "kind": "local",
+      "path": "local/research/codex/nmco-locale-stability-r1/96E300.asm",
+      "bytes": 4703,
+      "sha256": "b33d8e03c04c7ac32ab0bd0edce410937750fe5568b22ec0333556bc2c7d94f4"
+    },
+    {
+      "id": "E005",
+      "kind": "local",
+      "path": "local/research/codex/nmco-locale-stability-r1/A90B80.asm",
+      "bytes": 3976,
+      "sha256": "ceceb1c847058bb678662e526edd0e45f95c1dcc7a87ec3b16cbb8ff58d294a1"
+    },
+    {
+      "id": "E006",
+      "kind": "local",
+      "path": "local/research/codex/nmco-locale-stability-r1/analyze_completed.py",
+      "bytes": 703,
+      "sha256": "f4583820ebaa0b5cc564f9871982125d497ae9707f3495304d42d5786406bf0e"
+    },
+    {
+      "id": "E007",
+      "kind": "local",
+      "path": "local/research/codex/nmco-locale-stability-r1/append_checkpoint.py",
+      "bytes": 9293,
+      "sha256": "f9505fcfbc63c982c3aa86cb8b3c87d61219f4d1a7e8737d3e4ece9c49d4cac1"
+    },
+    {
+      "id": "E008",
+      "kind": "local",
+      "path": "local/research/codex/nmco-locale-stability-r1/artifacts-check.txt",
+      "bytes": 253,
+      "sha256": "649c6624aa6d317dfc1db5e16fea683cfbc9d9cf4dd3df11c0d70e57409054a0"
+    },
+    {
+      "id": "E009",
+      "kind": "local",
+      "path": "local/research/codex/nmco-locale-stability-r1/aux-argv-correction.json",
+      "bytes": 768,
+      "sha256": "39f9573689eef8d73ed6cad0902d4888d685c49ed2f3e4d3f5f40752b8698fcc"
+    },
+    {
+      "id": "E010",
+      "kind": "local",
+      "path": "local/research/codex/nmco-locale-stability-r1/auxiliary-identities.json",
+      "bytes": 2102,
+      "sha256": "5ae4f99c4f1a3b64c3e48b0caaba9cdaf6ba154e49511ad604f734965ceb2a93"
+    },
+    {
+      "id": "E011",
+      "kind": "local",
+      "path": "local/research/codex/nmco-locale-stability-r1/branch-code-metadata.json",
+      "bytes": 1533,
+      "sha256": "72561256441c9baa16600185213043b52c72dad7015e7701f7ca5bb787223a0b"
+    },
+    {
+      "id": "E012",
+      "kind": "local",
+      "path": "local/research/codex/nmco-locale-stability-r1/branch_static.py",
+      "bytes": 1434,
+      "sha256": "a867dbd0271e7f7c56d28796100f59849496ff204790dd8405ace050a27afdb8"
+    },
+    {
+      "id": "E013",
+      "kind": "local",
+      "path": "local/research/codex/nmco-locale-stability-r1/catalog-tests.txt",
+      "bytes": 105,
+      "sha256": "2fa3a82f9a9908430344ee98172b353d93f2013937ecc3fd29e6dff3f0a56ca4"
+    },
+    {
+      "id": "E014",
+      "kind": "local",
+      "path": "local/research/codex/nmco-locale-stability-r1/channel-close-hashes.json",
+      "bytes": 24968,
+      "sha256": "109815868253a424dbb3ceba202700ebb6542b87d3ca3611947ca6282f6c715e"
+    },
+    {
+      "id": "E015",
+      "kind": "local",
+      "path": "local/research/codex/nmco-locale-stability-r1/channel-close-launcher.log",
+      "bytes": 11917,
+      "sha256": "b731cf27e8c6b573cf894fef2379580a14ae4162c0602de436e85793e82726e4"
+    },
+    {
+      "id": "E016",
+      "kind": "local",
+      "path": "local/research/codex/nmco-locale-stability-r1/channel-close-recipe.json",
+      "bytes": 1033,
+      "sha256": "477532a26140cc92038b279df0c788023e71242a18fbe1c4d4e3db43f3359f18"
+    },
+    {
+      "id": "E017",
+      "kind": "local",
+      "path": "local/research/codex/nmco-locale-stability-r1/channel-negative-recipe.json",
+      "bytes": 982,
+      "sha256": "a487ecf89fbcb72932a1088cea9cddba6341ccaec819678ca9e4f1414347f436"
+    },
+    {
+      "id": "E018",
+      "kind": "local",
+      "path": "local/research/codex/nmco-locale-stability-r1/channel_close.py",
+      "bytes": 990,
+      "sha256": "78bfc4f71fab4f4e87435e90b9a7b9af7dd30c9cab1dc7cf53f67808afd1cf14"
+    },
+    {
+      "id": "E019",
+      "kind": "local",
+      "path": "local/research/codex/nmco-locale-stability-r1/code-match.json",
+      "bytes": 1420,
+      "sha256": "63791972771839d08a91b49e0fe6d894cd638d23cc8b855e08b8ec96a2c3c6b8"
+    },
+    {
+      "id": "E020",
+      "kind": "local",
+      "path": "local/research/codex/nmco-locale-stability-r1/content-duo-hashes.json",
+      "bytes": 64955,
+      "sha256": "711a8d1a5a73bcbf180a2add1e64a51e7d7449e8fb00e58e35b9a444bdd30789"
+    },
+    {
+      "id": "E021",
+      "kind": "local",
+      "path": "local/research/codex/nmco-locale-stability-r1/content-duo-launcher.log",
+      "bytes": 20916,
+      "sha256": "85dfab070537057c61e7521a34f09c3a093f67deb228d890a5d39857e8ed83ec"
+    },
+    {
+      "id": "E022",
+      "kind": "local",
+      "path": "local/research/codex/nmco-locale-stability-r1/content-duo-recipe.json",
+      "bytes": 1020,
+      "sha256": "469c1d651d584a0fec2a79217121145e426830e01e37946bc3670a7a94ea8aac"
+    },
+    {
+      "id": "E023",
+      "kind": "local",
+      "path": "local/research/codex/nmco-locale-stability-r1/content-observe-hashes.json",
+      "bytes": 54250,
+      "sha256": "1861710e62450d46ee2178556ba5fdedfe203e581e7470d3bdbc143cac2a09cb"
+    },
+    {
+      "id": "E024",
+      "kind": "local",
+      "path": "local/research/codex/nmco-locale-stability-r1/content-observe-launcher.log",
+      "bytes": 16252,
+      "sha256": "2ee81e2143df38ba1ecccb5b10702de002ebe65071c4d4c97c3ba335255959f8"
+    },
+    {
+      "id": "E025",
+      "kind": "local",
+      "path": "local/research/codex/nmco-locale-stability-r1/content-observe-recipe.json",
+      "bytes": 1031,
+      "sha256": "00531c03158846ec5158297c78a79ca49513d77dbd30386abe7b9cc73fc13e72"
+    },
+    {
+      "id": "E026",
+      "kind": "local",
+      "path": "local/research/codex/nmco-locale-stability-r1/content-probe.json",
+      "bytes": 817,
+      "sha256": "408a55a3ae79f1336091482b5bbd76be6cde7c1059995f44128fbac01a4e9379"
+    },
+    {
+      "id": "E027",
+      "kind": "local",
+      "path": "local/research/codex/nmco-locale-stability-r1/content-request-metadata.json",
+      "bytes": 425,
+      "sha256": "5aa5d00c97cfb96dddef1f1a2ca4c81fa1644008e684b641b5bf0619f2685612"
+    },
+    {
+      "id": "E028",
+      "kind": "local",
+      "path": "local/research/codex/nmco-locale-stability-r1/content-request.asm",
+      "bytes": 7796,
+      "sha256": "2808b1800aa8b2f3ca9dcb890c77e559361afeddbe0f081bb91059731b8644d1"
+    },
+    {
+      "id": "E029",
+      "kind": "local",
+      "path": "local/research/codex/nmco-locale-stability-r1/content.gdb",
+      "bytes": 32740,
+      "sha256": "6e0e0bd893ef404212d72d696dcd2212c6654eaf974963ba1cc9cedbd7fef36e"
+    },
+    {
+      "id": "E030",
+      "kind": "local",
+      "path": "local/research/codex/nmco-locale-stability-r1/content_request_static.py",
+      "bytes": 892,
+      "sha256": "5445ef9bd170187098dc8fb1803f5f12ec07712085a5ec92ff3c1eadbe61a3dc"
+    },
+    {
+      "id": "E031",
+      "kind": "local",
+      "path": "local/research/codex/nmco-locale-stability-r1/derive_roles.py",
+      "bytes": 1081,
+      "sha256": "1215993c1ff35488edb1f7415e5d7a71b470aec6f0d8f81925fc863d6c7ccb11"
+    },
+    {
+      "id": "E032",
+      "kind": "local",
+      "path": "local/research/codex/nmco-locale-stability-r1/docs-check.txt",
+      "bytes": 174,
+      "sha256": "2d1fd548be935923b1f8bc79b698e081db31ce13cd18ddc4286eeb465fbe19a4"
+    },
+    {
+      "id": "E033",
+      "kind": "local",
+      "path": "local/research/codex/nmco-locale-stability-r1/duo-probe.json",
+      "bytes": 941,
+      "sha256": "b6f6258d1c6d818006e5e0b5b53bf3e2ed99cbc64b5c0af8c0bd59675956bda1"
+    },
+    {
+      "id": "E034",
+      "kind": "local",
+      "path": "local/research/codex/nmco-locale-stability-r1/focused_static.py",
+      "bytes": 1497,
+      "sha256": "abd2c5bff317e8f60e2e80f1e294c76bc68d6924457208b356ae5cf8e530707c"
+    },
+    {
+      "id": "E035",
+      "kind": "local",
+      "path": "local/research/codex/nmco-locale-stability-r1/framer-check.txt",
+      "bytes": 137,
+      "sha256": "a4cdbc2069922f33c4caaefb7be9b130dcc21e36ce14786aee2094735081def1"
+    },
+    {
+      "id": "E036",
+      "kind": "local",
+      "path": "local/research/codex/nmco-locale-stability-r1/full-string-locators.json",
+      "bytes": 936,
+      "sha256": "6514eeb20a6a58d1dd83ee802adfe0ad685678f05520fe2d8ebd1c6f1cade978"
+    },
+    {
+      "id": "E037",
+      "kind": "local",
+      "path": "local/research/codex/nmco-locale-stability-r1/issue-body.md",
+      "bytes": 1585,
+      "sha256": "6a124557d5f8c13175ce27abc303b47c91e3a70d2910c224981bb09a9f0267f7"
+    },
+    {
+      "id": "E038",
+      "kind": "local",
+      "path": "local/research/codex/nmco-locale-stability-r1/launcher-aslr-correction.json",
+      "bytes": 748,
+      "sha256": "4f1dfaa0b51bb06d19fbb9353bbf66b89b468789ecd144b0849f2384cefd5dc8"
+    },
+    {
+      "id": "E039",
+      "kind": "local",
+      "path": "local/research/codex/nmco-locale-stability-r1/launcher-direct-hashes.json",
+      "bytes": 7014,
+      "sha256": "caa8f0da2a8fd770db67b93ceea630b5f4cbf4bca37d9fe9abf16119dc2c8c10"
+    },
+    {
+      "id": "E040",
+      "kind": "local",
+      "path": "local/research/codex/nmco-locale-stability-r1/launcher-direct-launcher.log",
+      "bytes": 8395,
+      "sha256": "a7abd58f41807e199d47948ab0513d611406dc616b6c91191699a746134017b3"
+    },
+    {
+      "id": "E041",
+      "kind": "local",
+      "path": "local/research/codex/nmco-locale-stability-r1/launcher-direct-recipe.json",
+      "bytes": 1025,
+      "sha256": "1e1480fa84d491c7fc3888010f047a2264ba80c02652085d1d30970dc485ab19"
+    },
+    {
+      "id": "E042",
+      "kind": "local",
+      "path": "local/research/codex/nmco-locale-stability-r1/launcher-emptyargs-hashes.json",
+      "bytes": 8192,
+      "sha256": "be90042a299eeb0ab250c29a0f2f06f36baa34cc8a38be0688a632c0c293e535"
+    },
+    {
+      "id": "E043",
+      "kind": "local",
+      "path": "local/research/codex/nmco-locale-stability-r1/launcher-emptyargs-launcher.log",
+      "bytes": 8418,
+      "sha256": "34d176c3e18f78f33499b129f24425ded7c7d6014209ab629f39a28842e44cc0"
+    },
+    {
+      "id": "E044",
+      "kind": "local",
+      "path": "local/research/codex/nmco-locale-stability-r1/launcher-emptyargs-recipe.json",
+      "bytes": 956,
+      "sha256": "a433f779cb639820bd1a68722cae32b2a6e583dfed428ae73b33fa2bec56bf1f"
+    },
+    {
+      "id": "E045",
+      "kind": "local",
+      "path": "local/research/codex/nmco-locale-stability-r1/launcher-emptyargs.gdb",
+      "bytes": 1701,
+      "sha256": "2d777167f5639b919f27b86592ac5b29bbefeb00a64e199ea88bdbacdd4e26fe"
+    },
+    {
+      "id": "E046",
+      "kind": "local",
+      "path": "local/research/codex/nmco-locale-stability-r1/launcher-locale.asm",
+      "bytes": 3794,
+      "sha256": "acb8e8dbc194df90fa52c95e9489eb90971985ae505b7b9271c33c0743ee43eb"
+    },
+    {
+      "id": "E047",
+      "kind": "local",
+      "path": "local/research/codex/nmco-locale-stability-r1/launcher-locators.json",
+      "bytes": 6359,
+      "sha256": "bf4fa18b25afc6120257555fc7fc809202f92e453da5bf01a9f8b9e7ab7b1cfb"
+    },
+    {
+      "id": "E048",
+      "kind": "local",
+      "path": "local/research/codex/nmco-locale-stability-r1/launcher-probe.json",
+      "bytes": 848,
+      "sha256": "06d99f5359d076cc90fcbb30cf822c09bd86523a9d3bda4837af80c5047a2dd1"
+    },
+    {
+      "id": "E049",
+      "kind": "local",
+      "path": "local/research/codex/nmco-locale-stability-r1/launcher-relocated-hashes.json",
+      "bytes": 8193,
+      "sha256": "b47e8ee00e53b9347303497d5fe85cfd15fc1d4a7b1cd0c6ee8c452381c6a88f"
+    },
+    {
+      "id": "E050",
+      "kind": "local",
+      "path": "local/research/codex/nmco-locale-stability-r1/launcher-relocated-launcher.log",
+      "bytes": 8461,
+      "sha256": "2beeff8312bae8ec9af45c0c6e2781c89146182c73673d3c5aacdf9bf382a1fa"
+    },
+    {
+      "id": "E051",
+      "kind": "local",
+      "path": "local/research/codex/nmco-locale-stability-r1/launcher-relocated-recipe.json",
+      "bytes": 1041,
+      "sha256": "e802af6bb7132eb818e2b06ff39db80e5e9113bbafa89e8cac5783facfb1a1de"
+    },
+    {
+      "id": "E052",
+      "kind": "local",
+      "path": "local/research/codex/nmco-locale-stability-r1/launcher-relocated.gdb",
+      "bytes": 1701,
+      "sha256": "1cc7ef913f2bad1c5f053cbd2a9bb002a3c82342ee1b2e41261e078cf09515d5"
+    },
+    {
+      "id": "E053",
+      "kind": "local",
+      "path": "local/research/codex/nmco-locale-stability-r1/launcher.gdb",
+      "bytes": 1004,
+      "sha256": "8039ee1f8d7275a34f2fd8af21dedc366a9aea27e7e22d7e847df42a0026cd6b"
+    },
+    {
+      "id": "E054",
+      "kind": "local",
+      "path": "local/research/codex/nmco-locale-stability-r1/launcher_locators.py",
+      "bytes": 1728,
+      "sha256": "9e4f87e1d6f9851367a0500f27178e787f1e92f1a24733e4badd538c7909aded"
+    },
+    {
+      "id": "E055",
+      "kind": "local",
+      "path": "local/research/codex/nmco-locale-stability-r1/locale-observe-hashes.json",
+      "bytes": 54003,
+      "sha256": "f47052cb755af1feb425a7f66f6e3c9c108c711c1c00de5fbd44ae1848d0e965"
+    },
+    {
+      "id": "E056",
+      "kind": "local",
+      "path": "local/research/codex/nmco-locale-stability-r1/locale-observe-launcher.log",
+      "bytes": 16435,
+      "sha256": "df4409b1f39472fbd03c2d6d69cda92b738f763d8145ea3f359ade84383beca5"
+    },
+    {
+      "id": "E057",
+      "kind": "local",
+      "path": "local/research/codex/nmco-locale-stability-r1/locale-observe-recipe.json",
+      "bytes": 1027,
+      "sha256": "36acd84e6ba9607eb9ac0d1b63bffc027b4c78922f4c3094391a34f28383e51c"
+    },
+    {
+      "id": "E058",
+      "kind": "local",
+      "path": "local/research/codex/nmco-locale-stability-r1/locale-wrapper-code-match.json",
+      "bytes": 398,
+      "sha256": "c64f01c149e72a6ee04676aa2275af935dc509b9d475202a9ae338d8c1a25da2"
+    },
+    {
+      "id": "E059",
+      "kind": "local",
+      "path": "local/research/codex/nmco-locale-stability-r1/locale.gdb",
+      "bytes": 31686,
+      "sha256": "d36a888bcfe9b7bb7dcadad0ea0d02f1250ee930ca9dcd5b1c63efaf1b6a398b"
+    },
+    {
+      "id": "E060",
+      "kind": "local",
+      "path": "local/research/codex/nmco-locale-stability-r1/locale_wrapper_static.py",
+      "bytes": 2065,
+      "sha256": "6fb86fb15cf3d56be58232a58989651c9c1b3f1ded94c15343707cd4ca17c4d5"
+    },
+    {
+      "id": "E061",
+      "kind": "local",
+      "path": "local/research/codex/nmco-locale-stability-r1/main-content.asm",
+      "bytes": 8937,
+      "sha256": "5273dc33f5ebb3dc19b98b59c317a92f7e2eb8f969ee37c0d8b0d364dc252f32"
+    },
+    {
+      "id": "E062",
+      "kind": "local",
+      "path": "local/research/codex/nmco-locale-stability-r1/native-packets.json",
+      "bytes": 1362,
+      "sha256": "2025b21fd6082df64271c41d5487dbfc9a487d71dc3fd21f7873cbd86fb19941"
+    },
+    {
+      "id": "E063",
+      "kind": "local",
+      "path": "local/research/codex/nmco-locale-stability-r1/native_packets.py",
+      "bytes": 4839,
+      "sha256": "a362756f7bb6f13b02b232602ea77ca1f302448083875fb927ab3ab8d53ca1cd"
+    },
+    {
+      "id": "E064",
+      "kind": "local",
+      "path": "local/research/codex/nmco-locale-stability-r1/nmco-export-metadata.json",
+      "bytes": 687,
+      "sha256": "ad31534e27d4ab416bea07a4ef260dce722c763bec396cb5c29381dd2a13f91c"
+    },
+    {
+      "id": "E065",
+      "kind": "local",
+      "path": "local/research/codex/nmco-locale-stability-r1/packets-check.txt",
+      "bytes": 27,
+      "sha256": "de0cf2deefca36c9860e5514125c55cfabfb0353aa0142c2e3ae89518679aab6"
+    },
+    {
+      "id": "E066",
+      "kind": "local",
+      "path": "local/research/codex/nmco-locale-stability-r1/preparation.json",
+      "bytes": 934,
+      "sha256": "90b289194803cfb38679c1cb74ad4bdf9cfb66462523ef1984a1de1e88d70f96"
+    },
+    {
+      "id": "E067",
+      "kind": "local",
+      "path": "local/research/codex/nmco-locale-stability-r1/prepare_channel_control.py",
+      "bytes": 2769,
+      "sha256": "deef4aabc9dc25c62071c5084dda88bf9db7f0c3e9e5f060bd37ee868310dc80"
+    },
+    {
+      "id": "E068",
+      "kind": "local",
+      "path": "local/research/codex/nmco-locale-stability-r1/prepare_content_probe.py",
+      "bytes": 2469,
+      "sha256": "7aa738776fb7335cbbe40c7615839b30e43189d7686372afc2f63f128a7e53a1"
+    },
+    {
+      "id": "E069",
+      "kind": "local",
+      "path": "local/research/codex/nmco-locale-stability-r1/prepare_duo_probe.py",
+      "bytes": 2213,
+      "sha256": "504de21d5858bfbcaa6c123ef9facec8d7d882f18914d7c319bcbffd3df91cb1"
+    },
+    {
+      "id": "E070",
+      "kind": "local",
+      "path": "local/research/codex/nmco-locale-stability-r1/prepare_launcher_probe.py",
+      "bytes": 2609,
+      "sha256": "7fec44c03a62ed2b613ae4f663fea8eb2dc00320630d760e402f3ae316ee65d4"
+    },
+    {
+      "id": "E071",
+      "kind": "local",
+      "path": "local/research/codex/nmco-locale-stability-r1/prepare_launcher_relocated.py",
+      "bytes": 1958,
+      "sha256": "57a8dfb491cafee2e5606ee8a27b35d1b513ec62f201f8dbe10a478e15cb39ca"
+    },
+    {
+      "id": "E072",
+      "kind": "local",
+      "path": "local/research/codex/nmco-locale-stability-r1/prepare_runtime.py",
+      "bytes": 4642,
+      "sha256": "81a88d403cc4b2615240d642654b1344adafdff4872f323ba168fea35c55f765"
+    },
+    {
+      "id": "E073",
+      "kind": "local",
+      "path": "local/research/codex/nmco-locale-stability-r1/process-locators.json",
+      "bytes": 394,
+      "sha256": "b3bd1ca46fa5e6e9ebf2fa8e1febc01843e544e4530d84a863a2334928f63670"
+    },
+    {
+      "id": "E074",
+      "kind": "local",
+      "path": "local/research/codex/nmco-locale-stability-r1/profile.json",
+      "bytes": 11102,
+      "sha256": "7607f5dbc3b61fa136eb5505fe29cafce688aae014e0a00a393d7469659888ff"
+    },
+    {
+      "id": "E075",
+      "kind": "local",
+      "path": "local/research/codex/nmco-locale-stability-r1/provider-locale.asm",
+      "bytes": 5526,
+      "sha256": "129993cf6dd217273db09cd87a018d2d011891ea8bbdb5a66de72a09d3f64ae1"
+    },
+    {
+      "id": "E076",
+      "kind": "local",
+      "path": "local/research/codex/nmco-locale-stability-r1/replay-run.py",
+      "bytes": 3012,
+      "sha256": "84493c121093d0e4d919d37f6bb92f7be56bc368a342329e76797b470e78b1f5"
+    },
+    {
+      "id": "E077",
+      "kind": "local",
+      "path": "local/research/codex/nmco-locale-stability-r1/reuse-question.json",
+      "bytes": 7977,
+      "sha256": "cb5d7bebd3bd0a65ca33e3730452e629f61f6532f6ecb7437ded4ca61ea62964"
+    },
+    {
+      "id": "E078",
+      "kind": "local",
+      "path": "local/research/codex/nmco-locale-stability-r1/reuse.py",
+      "bytes": 4291,
+      "sha256": "4c4a0fab44663fdbb507da0b01aeaf5e86d4ecad448d8cefe03bbb739ced9bcb"
+    },
+    {
+      "id": "E079",
+      "kind": "local",
+      "path": "local/research/codex/nmco-locale-stability-r1/run_launcher_empty.py",
+      "bytes": 1554,
+      "sha256": "85cd8973493e1f45783d98c8701d3aa0d3a9091e7ba8e0bcb727255086bbb5cc"
+    },
+    {
+      "id": "E080",
+      "kind": "local",
+      "path": "local/research/codex/nmco-locale-stability-r1/run_probe.py",
+      "bytes": 1084,
+      "sha256": "b4babc08e4c06161a626c5ba18d47df97e7e0b3edf61f1f3cf4dbbdac8422a59"
+    },
+    {
+      "id": "E081",
+      "kind": "local",
+      "path": "local/research/codex/nmco-locale-stability-r1/seal_run.py",
+      "bytes": 635,
+      "sha256": "e1f90389972cc99b5dc9a3612403ca7d764baf894f72d4552cf7c1884b464089"
+    },
+    {
+      "id": "E082",
+      "kind": "local",
+      "path": "local/research/codex/nmco-locale-stability-r1/stack-scope-correction.json",
+      "bytes": 849,
+      "sha256": "20adf00724d2c653e0d733c6d9b7c684dbbdee0ef84623909c03a1c039d25fe5"
+    },
+    {
+      "id": "E083",
+      "kind": "local",
+      "path": "local/research/codex/nmco-locale-stability-r1/sync_docs.py",
+      "bytes": 14936,
+      "sha256": "cfcd0181e69b93c3ceb8aa5529a255d1c63831e723c6446405659cc8a67c7c76"
+    },
+    {
+      "id": "E084",
+      "kind": "local",
+      "path": "local/research/codex/nmco-locale-stability-r1/target-strings.json",
+      "bytes": 2599,
+      "sha256": "646417fd3716d07020ff66254401cb1b236b50e4e32bd81b7582da3587a34992"
+    },
+    {
+      "id": "E085",
+      "kind": "local",
+      "path": "local/research/codex/nmco-locale-stability-r1/target_strings.py",
+      "bytes": 1148,
+      "sha256": "a213b19d7404972fb8a010dcaf3a4d3804950a2e76e6eb72cd24d4fdcfc1d8ec"
+    },
+    {
+      "id": "E086",
+      "kind": "local",
+      "path": "local/research/codex/nmco-locale-stability-r1/verification.json",
+      "bytes": 4077,
+      "sha256": "f3d30097657a416b2c17a5e54fdb2806938c29971dd9d1e165c190090e2c69ab"
+    },
+    {
+      "id": "E087",
+      "kind": "local",
+      "path": "local/research/codex/nmco-locale-stability-r1/verify-check.txt",
+      "bytes": 4077,
+      "sha256": "f3d30097657a416b2c17a5e54fdb2806938c29971dd9d1e165c190090e2c69ab"
+    },
+    {
+      "id": "E088",
+      "kind": "local",
+      "path": "local/research/codex/nmco-locale-stability-r1/verify.py",
+      "bytes": 8414,
+      "sha256": "bc8e33d2a822f34f9e9263991a08853d173581e81f381c76b13662dfaad234a1"
+    },
+    {
+      "id": "E089",
+      "kind": "local",
+      "path": "local/research/codex/nmco-locale-stability-r1/cp073-snapshot/README.md",
+      "bytes": 3775,
+      "sha256": "9beedaa4ef3f40b92e4f2b39a45c4be4e6df1c9c59679579d306a0084c0c9ad9"
+    },
+    {
+      "id": "E090",
+      "kind": "local",
+      "path": "local/research/codex/nmco-locale-stability-r1/cp073-snapshot/docs/COVERAGE.md",
+      "bytes": 78358,
+      "sha256": "95be8260c358c312a496328c272e080f948eaa932945ab4e57a554e47d9bf09d"
+    },
+    {
+      "id": "E091",
+      "kind": "local",
+      "path": "local/research/codex/nmco-locale-stability-r1/cp073-snapshot/docs/PLAN.md",
+      "bytes": 30447,
+      "sha256": "bbb8aa878b003c24074cea1b00b1017643a1b6aff33e2d0de5fe0f30ef937eb4"
+    },
+    {
+      "id": "E092",
+      "kind": "local",
+      "path": "local/research/codex/nmco-locale-stability-r1/cp073-snapshot/docs/PROTOCOL.md",
+      "bytes": 235135,
+      "sha256": "208960af503cbfcab0547dbe69a7169fbe85b2d695675051c1c4f8ba383b8129"
+    },
+    {
+      "id": "E093",
+      "kind": "local",
+      "path": "local/research/codex/nmco-locale-stability-r1/cp073-snapshot/docs/RESEARCH.md",
+      "bytes": 30663,
+      "sha256": "7dcbf68bf10041422eefa97c7ee314e1af166a1fb0cc972fdadfd23f62d1e12d"
+    },
+    {
+      "id": "E094",
+      "kind": "local",
+      "path": "local/research/codex/nmco-locale-stability-r1/cp073-snapshot/docs/evidence/nmco-locale-stability/README.md",
+      "bytes": 8382,
+      "sha256": "970b8ae80c8f0bde6e6fac73d83b11800de724ce00a2b35c9c7187c90df81361"
+    },
+    {
+      "id": "E095",
+      "kind": "local",
+      "path": "local/research/codex/nmco-locale-stability-r1/cp073-snapshot/docs/evidence/preclock-eof/README.md",
+      "bytes": 6363,
+      "sha256": "ad16d3aec0eb40453623f008ab6c36a6f1e1de26b5d0d89bafa0a349ad8755bf"
+    },
+    {
+      "id": "E096",
+      "kind": "local",
+      "path": "local/research/codex/nmco-locale-stability-r1/cp073-snapshot/docs/features.json",
+      "bytes": 80982,
+      "sha256": "9e545cfc48557128bf1b6e702c7a98025cffeaf402672f5093116f5cdd540f5b"
+    },
+    {
+      "id": "E097",
+      "kind": "local",
+      "path": "local/research/codex/nmco-locale-stability-r1/runtime-source/item_claims.py",
+      "bytes": 3340,
+      "sha256": "7990ae9195e9f8bba56b04101f352506194dbd0252793183993ce101a8674a2e"
+    },
+    {
+      "id": "E098",
+      "kind": "local",
+      "path": "local/research/codex/nmco-locale-stability-r1/runtime-source/probe_codec.py",
+      "bytes": 3227,
+      "sha256": "23ba54e6940953a52ff737e7e06b2761a8eb22eab444310b49b1d96efa12411d"
+    },
+    {
+      "id": "E099",
+      "kind": "local",
+      "path": "local/research/codex/nmco-locale-stability-r1/runtime-source/probe_room.py",
+      "bytes": 1468,
+      "sha256": "91292494d492c7851bd5432649adf528e1b07290316dc56ba1478f8a209a08bc"
+    },
+    {
+      "id": "E100",
+      "kind": "local",
+      "path": "local/research/codex/nmco-locale-stability-r1/runtime-source/probe_service.py",
+      "bytes": 37600,
+      "sha256": "91be840fe16d77070e130882940be478aa80651df59de9dc3af204d1b9ce05e2"
+    },
+    {
+      "id": "E101",
+      "kind": "local",
+      "path": "local/research/codex/nmco-locale-stability-r1/runtime-source/round_fence.py",
+      "bytes": 2339,
+      "sha256": "aabcc7f1d623573fc217de8df05403f83d82425bbe5d6e78872b3096a2d46708"
+    },
+    {
+      "id": "E102",
+      "kind": "local",
+      "path": "local/research/codex/nmco-locale-stability-r1/runtime-source/udp_round_keys.py",
+      "bytes": 1187,
+      "sha256": "db58ae1f25bcbeb52c2d25c7db6afbf1021ddd3af29702e756f5f41886530a0d"
+    },
+    {
+      "id": "E103",
+      "kind": "local",
+      "path": "local/research/codex/nmco-locale-stability-r1/derived/channel-close-A/run.json",
+      "bytes": 14083,
+      "sha256": "efd4039e039eac695feb0426510e6bafeafe942460b339768e46d44ee8ebc4d4"
+    },
+    {
+      "id": "E104",
+      "kind": "local",
+      "path": "local/research/codex/nmco-locale-stability-r1/derived/channel-close-A-oracle.json",
+      "bytes": 11176,
+      "sha256": "c8b455b6b14f8ee6fc1f1ad1bf01dc6b9c287ab55512338721495781a924c882"
+    },
+    {
+      "id": "E105",
+      "kind": "local",
+      "path": "local/research/codex/nmco-locale-stability-r1/derived/channel-close-A-replay.txt",
+      "bytes": 214,
+      "sha256": "77fd735fcf106ebd008290f2beff6c16f7301412efb759db0280b9dea05c26dd"
+    },
+    {
+      "id": "E106",
+      "kind": "local",
+      "path": "local/research/codex/nmco-locale-stability-r1/derived/content-duo-A/run.json",
+      "bytes": 20099,
+      "sha256": "fff866d23bdd488529e6d4ebb7d1f1a0b2b95c0def1eb5e261e79507acf94d67"
+    },
+    {
+      "id": "E107",
+      "kind": "local",
+      "path": "local/research/codex/nmco-locale-stability-r1/derived/content-duo-A-oracle.json",
+      "bytes": 49047,
+      "sha256": "5bd962467ebe6935310dd673ab4d6212eea28e8ba4e0585e584ba824a9382405"
+    },
+    {
+      "id": "E108",
+      "kind": "local",
+      "path": "local/research/codex/nmco-locale-stability-r1/derived/content-duo-A-replay.txt",
+      "bytes": 846,
+      "sha256": "464411484a6d2288596b7a6ac2b22a3c357aa76f773fc81467d07b1155441da6"
+    },
+    {
+      "id": "E109",
+      "kind": "local",
+      "path": "local/research/codex/nmco-locale-stability-r1/derived/content-duo-B/run.json",
+      "bytes": 16507,
+      "sha256": "5424839b1b3dd54360a9400d6b79a7130b4b72b169f60986878f2b737f0fb108"
+    },
+    {
+      "id": "E110",
+      "kind": "local",
+      "path": "local/research/codex/nmco-locale-stability-r1/derived/content-duo-B-oracle.json",
+      "bytes": 27135,
+      "sha256": "74e8e748d9ea2ca5a6028406105cd62b83fe0cd62de0dfb5e0d801e84ab3a4a5"
+    },
+    {
+      "id": "E111",
+      "kind": "local",
+      "path": "local/research/codex/nmco-locale-stability-r1/derived/content-duo-B-replay.txt",
+      "bytes": 485,
+      "sha256": "db163dd4be59c5ca78df308bca177f94da65fbdba3ddb52d0e0fe82f4c520192"
+    },
+    {
+      "id": "E112",
+      "kind": "local",
+      "path": "local/research/codex/nmco-locale-stability-r1/derived/content-observe-A/run.json",
+      "bytes": 20024,
+      "sha256": "583aae6888ddbd170f3ed078c5a8f2f4ce3337a077279698a93395379388ef62"
+    },
+    {
+      "id": "E113",
+      "kind": "local",
+      "path": "local/research/codex/nmco-locale-stability-r1/derived/content-observe-A-oracle.json",
+      "bytes": 51835,
+      "sha256": "e98dc0db92c8db7d41cbeadfa56d8c2285d6bd823d59ccbee47ddc3bc049f89e"
+    },
+    {
+      "id": "E114",
+      "kind": "local",
+      "path": "local/research/codex/nmco-locale-stability-r1/derived/content-observe-A-replay.txt",
+      "bytes": 894,
+      "sha256": "33f2e5858b6d6e21de0629da69e68e94a66d98dc437df6b572a117083cb1c26e"
+    },
+    {
+      "id": "E115",
+      "kind": "local",
+      "path": "local/research/codex/nmco-locale-stability-r1/derived/locale-observe-A/run.json",
+      "bytes": 20244,
+      "sha256": "0b9a52f5297ac2d9ebc083e98e5ecd700e5c3ec17aeed5288c665ec6d0f884e7"
+    },
+    {
+      "id": "E116",
+      "kind": "local",
+      "path": "local/research/codex/nmco-locale-stability-r1/derived/locale-observe-A-oracle.json",
+      "bytes": 53207,
+      "sha256": "e2f2501a426c8afc5d984129e6205e2b9aef811d4f02bac430c0fd26f3734f1d"
+    },
+    {
+      "id": "E117",
+      "kind": "local",
+      "path": "local/research/codex/nmco-locale-stability-r1/derived/locale-observe-A-replay.txt",
+      "bytes": 915,
+      "sha256": "03ebf55a228f8588eada53ca71ac6547e1bd5932d971da7e06bad835729bdaf7"
+    },
+    {
+      "id": "E118",
+      "kind": "local",
+      "path": "local/research/codex/nmco-locale-stability-r1/request-frames/content-duo/B-F12-82.bin",
+      "bytes": 49,
+      "sha256": "27d13b13f8df5db1f67451352419d49458641283683b06d40bc91f6c3f7220e7"
+    },
+    {
+      "id": "E119",
+      "kind": "local",
+      "path": "local/research/codex/nmco-locale-stability-r1/locale-observe/run.json",
+      "bytes": 19973,
+      "sha256": "7281aea89d843d7f92485d0f74ad231ec6d85efaaba78b324bbb3c76bb15bb94"
+    },
+    {
+      "id": "E120",
+      "kind": "local",
+      "path": "local/research/codex/nmco-locale-stability-r1/locale-observe/client.log",
+      "bytes": 25180,
+      "sha256": "ba8d29f7c073fd86da4bc628484d3ce37343ab3305274f593dcf6959ef41c8b0"
+    },
+    {
+      "id": "E121",
+      "kind": "local",
+      "path": "local/research/codex/nmco-locale-stability-r1/locale-observe/debug-commands.txt",
+      "bytes": 31686,
+      "sha256": "d36a888bcfe9b7bb7dcadad0ea0d02f1250ee930ca9dcd5b1c63efaf1b6a398b"
+    },
+    {
+      "id": "E122",
+      "kind": "local",
+      "path": "local/research/codex/nmco-locale-stability-r1/locale-observe/service-state.json",
+      "bytes": 23935,
+      "sha256": "ecb322c13d3d0876fe843a685a9b5b081d18caa73d58d0ed950c942d804895fd"
+    },
+    {
+      "id": "E123",
+      "kind": "local",
+      "path": "local/research/codex/nmco-locale-stability-r1/content-observe/run.json",
+      "bytes": 19752,
+      "sha256": "f713bdcaf40f009e2c0de9327361bfd7044124587d6ab169b10e641e074c8a71"
+    },
+    {
+      "id": "E124",
+      "kind": "local",
+      "path": "local/research/codex/nmco-locale-stability-r1/content-observe/client.log",
+      "bytes": 25528,
+      "sha256": "7de93e35bff0a05656f918b4411cfe743f4c5461a9d9a44526b2d0307804db2e"
+    },
+    {
+      "id": "E125",
+      "kind": "local",
+      "path": "local/research/codex/nmco-locale-stability-r1/content-observe/debug-commands.txt",
+      "bytes": 32740,
+      "sha256": "6e0e0bd893ef404212d72d696dcd2212c6654eaf974963ba1cc9cedbd7fef36e"
+    },
+    {
+      "id": "E126",
+      "kind": "local",
+      "path": "local/research/codex/nmco-locale-stability-r1/content-observe/service-state.json",
+      "bytes": 23712,
+      "sha256": "3a2f8ce19f46550eea2e0d39bc20a1469a09078e81e60ee9f343ad1b92a83cb8"
+    },
+    {
+      "id": "E127",
+      "kind": "local",
+      "path": "local/research/codex/nmco-locale-stability-r1/content-duo/run.json",
+      "bytes": 25940,
+      "sha256": "2a7c5a6837489494fcbb1e5fe96fd4d1fa806aaea3a42d8751003be5ac888860"
+    },
+    {
+      "id": "E128",
+      "kind": "local",
+      "path": "local/research/codex/nmco-locale-stability-r1/content-duo/client.log",
+      "bytes": 25600,
+      "sha256": "78c39f88870582bb1c45df279c2bccc68a9657d41ffbfa8bb19eb10b147a73e8"
+    },
+    {
+      "id": "E129",
+      "kind": "local",
+      "path": "local/research/codex/nmco-locale-stability-r1/content-duo/client-B.log",
+      "bytes": 24479,
+      "sha256": "71778f946cbb0f9b218b81018ba785fb3280abd15296c3061efe644cb728c64d"
+    },
+    {
+      "id": "E130",
+      "kind": "local",
+      "path": "local/research/codex/nmco-locale-stability-r1/content-duo/debug-commands.txt",
+      "bytes": 32740,
+      "sha256": "6e0e0bd893ef404212d72d696dcd2212c6654eaf974963ba1cc9cedbd7fef36e"
+    },
+    {
+      "id": "E131",
+      "kind": "local",
+      "path": "local/research/codex/nmco-locale-stability-r1/content-duo/debug-commands-B.txt",
+      "bytes": 32740,
+      "sha256": "6e0e0bd893ef404212d72d696dcd2212c6654eaf974963ba1cc9cedbd7fef36e"
+    },
+    {
+      "id": "E132",
+      "kind": "local",
+      "path": "local/research/codex/nmco-locale-stability-r1/content-duo/service-state.json",
+      "bytes": 29388,
+      "sha256": "fd3534b853ef385c886073641416d020877ad746db9b74dc93001b3bab505610"
+    },
+    {
+      "id": "E133",
+      "kind": "local",
+      "path": "local/research/codex/nmco-locale-stability-r1/channel-close/run.json",
+      "bytes": 14233,
+      "sha256": "abc374495450514d67d3a26110aeabdc9c1c3cf55e3d3191ed329a4e0e7b567e"
+    },
+    {
+      "id": "E134",
+      "kind": "local",
+      "path": "local/research/codex/nmco-locale-stability-r1/channel-close/client.log",
+      "bytes": 25991,
+      "sha256": "30beffa7055b065ce57e937fc6019956ad42f5bc333313c76b69dfa98428f419"
+    },
+    {
+      "id": "E135",
+      "kind": "local",
+      "path": "local/research/codex/nmco-locale-stability-r1/channel-close/debug-commands.txt",
+      "bytes": 32740,
+      "sha256": "6e0e0bd893ef404212d72d696dcd2212c6654eaf974963ba1cc9cedbd7fef36e"
+    },
+    {
+      "id": "E136",
+      "kind": "local",
+      "path": "local/research/codex/nmco-locale-stability-r1/channel-close/service-state.json",
+      "bytes": 18028,
+      "sha256": "6b0b667a9270333d43d6b88b6e21ae6f94a1fdd752b46d2433b23e9325da569a"
+    },
+    {
+      "id": "E137",
+      "kind": "local",
+      "path": "local/research/codex/nmco-locale-stability-r1/channel-close/negative-channel6.bin",
+      "bytes": 81,
+      "sha256": "2cfebd3ad9a4935bb144090c4244c67ec9200ca54d4a9da71ecef00004a8bdf4"
+    },
+    {
+      "id": "E138",
+      "kind": "local",
+      "path": "local/research/codex/nmco-locale-stability-r1/launcher-direct/run.json",
+      "bytes": 9557,
+      "sha256": "b9d883045d25294dee49b537e6bc673637f2207f0c9395e291855327e70e536c"
+    },
+    {
+      "id": "E139",
+      "kind": "local",
+      "path": "local/research/codex/nmco-locale-stability-r1/launcher-direct/client.log",
+      "bytes": 6575,
+      "sha256": "b6095c8b9a8ecd296ad04026c162c9c093df6ae15c02d9e64b618f08fb13b8e5"
+    },
+    {
+      "id": "E140",
+      "kind": "local",
+      "path": "local/research/codex/nmco-locale-stability-r1/launcher-direct/debug-commands.txt",
+      "bytes": 1004,
+      "sha256": "8039ee1f8d7275a34f2fd8af21dedc366a9aea27e7e22d7e847df42a0026cd6b"
+    },
+    {
+      "id": "E141",
+      "kind": "local",
+      "path": "local/research/codex/nmco-locale-stability-r1/launcher-direct/service-state.json",
+      "bytes": 13424,
+      "sha256": "8c6d111134a615e27aaec3fdd1516169bb5ed9e3179beb630e03a7608a48afae"
+    },
+    {
+      "id": "E142",
+      "kind": "local",
+      "path": "local/research/codex/nmco-locale-stability-r1/launcher-relocated/run.json",
+      "bytes": 9625,
+      "sha256": "92df2666bbbee91f60cb389770557447f4e9933301e81b0f69e4ea87d873a421"
+    },
+    {
+      "id": "E143",
+      "kind": "local",
+      "path": "local/research/codex/nmco-locale-stability-r1/launcher-relocated/client.log",
+      "bytes": 6815,
+      "sha256": "7e942318b294768ce446ef93bfe6a9512eca150201a01a5022fe1ef771e54e21"
+    },
+    {
+      "id": "E144",
+      "kind": "local",
+      "path": "local/research/codex/nmco-locale-stability-r1/launcher-relocated/debug-commands.txt",
+      "bytes": 1701,
+      "sha256": "1cc7ef913f2bad1c5f053cbd2a9bb002a3c82342ee1b2e41261e078cf09515d5"
+    },
+    {
+      "id": "E145",
+      "kind": "local",
+      "path": "local/research/codex/nmco-locale-stability-r1/launcher-relocated/service-state.json",
+      "bytes": 13424,
+      "sha256": "2ea3f1dc2c98f50230c8a09ed28c855896dcb50c3f7d6163afc98827e84b9851"
+    },
+    {
+      "id": "E146",
+      "kind": "local",
+      "path": "local/research/codex/nmco-locale-stability-r1/launcher-emptyargs/run.json",
+      "bytes": 9570,
+      "sha256": "e10719dd0b59dd17ea3326392abeec22077438f00c48ea531b93c239a5359ba1"
+    },
+    {
+      "id": "E147",
+      "kind": "local",
+      "path": "local/research/codex/nmco-locale-stability-r1/launcher-emptyargs/client.log",
+      "bytes": 6815,
+      "sha256": "73dcc08cab19fe8e68b76083e00b22e237523b866e821566e8d401b27a3224ac"
+    },
+    {
+      "id": "E148",
+      "kind": "local",
+      "path": "local/research/codex/nmco-locale-stability-r1/launcher-emptyargs/debug-commands.txt",
+      "bytes": 1701,
+      "sha256": "2d777167f5639b919f27b86592ac5b29bbefeb00a64e199ea88bdbacdd4e26fe"
+    },
+    {
+      "id": "E149",
+      "kind": "local",
+      "path": "local/research/codex/nmco-locale-stability-r1/launcher-emptyargs/service-state.json",
+      "bytes": 13424,
+      "sha256": "45244b0364fd53ab5ab3c2086fb437c9fc6e76a2441c7fd4fe6338133a96f479"
+    },
+    {
+      "id": "E150",
+      "kind": "local",
+      "path": "local/research/codex/nmco-locale-stability-r1/launcher-relocated/A/locale-ready.png",
+      "bytes": 5671,
+      "sha256": "a02bb97a945223b187ce3c992a4f2634dbcc02783afd22726bfc9fcfc43ae835"
+    },
+    {
+      "id": "E151",
+      "kind": "local",
+      "path": "local/research/codex/nmco-locale-stability-r1/launcher-emptyargs/A/locale-ready.png",
+      "bytes": 5671,
+      "sha256": "a02bb97a945223b187ce3c992a4f2634dbcc02783afd22726bfc9fcfc43ae835"
+    },
+    {
+      "id": "E152",
+      "kind": "local",
+      "path": "local/research/codex/wine_probe_nmco_locale.py",
+      "bytes": 39627,
+      "sha256": "aed6e8f9c4701088356496e5fe248140501ac8fccd702b99d2f4e620f395a410"
+    },
+    {
+      "id": "E153",
+      "kind": "local",
+      "path": "local/research/codex/wine_probe_nmco_content.py",
+      "bytes": 39588,
+      "sha256": "9c42acfae1f578b64a77ba8c62ac717bafa350c0e123c8e4ce00eb6b35626fdb"
+    },
+    {
+      "id": "E154",
+      "kind": "local",
+      "path": "local/research/codex/wine_probe_nmco_duo.py",
+      "bytes": 39726,
+      "sha256": "2993c3ff391a6b385a87af6f0582e9dfd7394bc0a0b402d579e13fb6ca6ac3cd"
+    },
+    {
+      "id": "E155",
+      "kind": "local",
+      "path": "local/research/codex/wine_probe_nmco_channel_close.py",
+      "bytes": 39664,
+      "sha256": "51fc8d2584774a70fb6b171b8efaee54c4dcaa47c606bcde38e71c51640209ac"
+    },
+    {
+      "id": "E156",
+      "kind": "local",
+      "path": "local/research/codex/wine_probe_nmco_launcher.py",
+      "bytes": 39574,
+      "sha256": "dc40b830d12ea0e571a8146ab4ab64ca06a1f588573c95bf7b980128151954a2"
+    }
+  ],
+  "delta": {
+    "added": [
+      "Nativeauxiliarydefault1,0/valid/initfalse2000:0popup/noTCP; originalauxbytes andactualASLR/export identity pinned.",
+      "ControlledrealTCPchannelEOFfallback actualCreateProcessargs/knowncaller/mainSIGSEGV, distinctfromhistoricalmainSIGABRT.",
+      "CurrentAonly/duoactual67positive withread-onlytargetprobes/unchangedprofile/service."
+    ],
+    "corrected": [
+      "CP072stack96A15Aasdirectlocale expectation wrong: HTTPcontents path; popupcooccurrence notcausalmainroot.",
+      "AuxpreferredVAprobe setupfailure andincorrectmetadataemptyargvclaim documented/correctedbynewASLR/argvconditions; oldrawnotrewritten."
+    ],
+    "superseded": [
+      "NEXT-NMCO-LOCALE-STABILITY asblanketprovider/clientlocalefix unsupported. Reopenexactmainerrorbranchonlyifactualevidence; nextnativepreclock107withdiagnosticobserver."
+    ]
+  },
+  "blockers": [
+    "HistoricalmainSIGABRT/HTTPstartupcauseunknown; negativeEOFdifferentstop, no prooftransientprefix/probe/localeisroot.",
+    "Nativepreclock107/slotIDclear/chiefstillunobserved; CP071inrangeactualbombs/authority/reset/fullmatch/K5/K6a/LANInternet remainopen."
+  ],
+  "next_steps": [
+    {
+      "id": "NEXT-NMCO-LOCALE-STABILITY",
+      "task": "KRE-005b",
+      "state": "superseded",
+      "action": "CP073separatesauxiliarypopup/init frommainHTTP/SIGABRT andmeasurescontrolfallback/current67positive; no main/providerfixjustified. Causeunknownremainscanonical, no untouchedprovider/argv/prefixretry.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-PRECLOCK-DIAGNOSTIC",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "ImmediatelyreuseCP072nativecleanupobserver/currenthold99/currentbasicprofile plusCP0041254CC0errorstate/CP073CreateProcessHTTPprobes. ActualBEOFafterStartbeforeclock; waitnative107/slot1ID2→0/chief<=30s, notsenderrefreshstop. Onstartupfailurecaptureexacterror/input/caller ratherthanassignpopup; no175/180rediscovery/providerbypass/unchangedTCPproxy/chain.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    }
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-11-02T21:24:17.818525+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "Codex solo RE/code/runtime/selfcheck, not independent approval.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Owner explicitly requested solo without Claude review."
+    }
+  },
+  "docs_sync": [
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "CP073aux/mainattribution/nativecontrols/ASLRargvcorrections/limits; nextpreclocknativeobserverdiagnostics, no stabilityfix/gatepromotion."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "CP073aux/mainattribution/nativecontrols/ASLRargvcorrections/limits; nextpreclocknativeobserverdiagnostics, no stabilityfix/gatepromotion."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "updated",
+      "reason": "CP073aux/mainattribution/nativecontrols/ASLRargvcorrections/limits; nextpreclocknativeobserverdiagnostics, no stabilityfix/gatepromotion."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "updated",
+      "reason": "CP073aux/mainattribution/nativecontrols/ASLRargvcorrections/limits; nextpreclocknativeobserverdiagnostics, no stabilityfix/gatepromotion."
+    },
+    {
+      "path": "docs/features.json",
+      "state": "updated",
+      "reason": "CP073aux/mainattribution/nativecontrols/ASLRargvcorrections/limits; nextpreclocknativeobserverdiagnostics, no stabilityfix/gatepromotion."
+    },
+    {
+      "path": "docs/COVERAGE.md",
+      "state": "updated",
+      "reason": "CP073aux/mainattribution/nativecontrols/ASLRargvcorrections/limits; nextpreclocknativeobserverdiagnostics, no stabilityfix/gatepromotion."
+    },
+    {
+      "path": "docs/evidence/preclock-eof/README.md",
+      "state": "updated",
+      "reason": "CP073aux/mainattribution/nativecontrols/ASLRargvcorrections/limits; nextpreclocknativeobserverdiagnostics, no stabilityfix/gatepromotion."
+    },
+    {
+      "path": "docs/evidence/nmco-locale-stability/README.md",
+      "state": "updated",
+      "reason": "CP073aux/mainattribution/nativecontrols/ASLRargvcorrections/limits; nextpreclocknativeobserverdiagnostics, no stabilityfix/gatepromotion."
+    }
+  ]
+}

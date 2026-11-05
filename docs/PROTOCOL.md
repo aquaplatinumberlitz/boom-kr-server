@@ -4286,5 +4286,21 @@ Site/nativebody cólocator/hash trong evidence; không sửa DB/sourcebinary. Ph
 slot/state/return3site, rồi mới chọn refresh roster/policy cần thiết.
 
 CP117 chưaStart2/freshrescue/reset saucứu; chỉ mộtresult/room/actualReadyB và nativeblocker,
-không fullmatch/K5/K6a/vanilla/LANInternet. 190tests CP116 reuse do service khôngđổi. Selfcheck/chờPR;
+không fullmatch/K5/K6a/vanilla/LANInternet. 190tests CP116 reuse do service khôngđổi. CP117/PR187 đã merge `c2ca94d`;
 AUD036 qua116/kế120. ChuỗiCP114kimStart2 giữ scope riêng, không dùng lấp bằng chứng rescue.
+
+
+<a id="rescue-start-slot"></a>
+### Slot gây guard3 sau return — run lưu trước migration CP118
+
+**kr_runtime/confirmed hẹp**, [metadata/hash](evidence/rescue-service/README.md#start-slot).
+Run `rescue-start-slot-r2` dùng probe chỉ đọc trong actualStartentry→switch, khắc phục observerquota
+cũ hết trước câu hỏi. InitialStart loopslot1/slot2 đều group1. ReturnedStart slot1 group1, **slot2 group0**,
+703A90return1,1240D70return0, actualPC**DCB7DA**→DCAD80return3/error trước104.
+Raw packedword phần cao cònopaque; chỉ group `(word>>2)&7` đã đọc, không gọi toànword là enum.
+
+Slot2 là actor đối địch tổng hợp, không có client thật phát Ready. Phép thử kế là bounded diagnostic
+roster refresh110/slot2/state0x24 saureturn từ layout đã có, có control/native guard0/actual104/
+Start2freshrescue mới xác nhận fix. **Chưa chạy fix**, không suy law server gốc hoặc ghi Start2 đã qua.
+Raw/hash/cleanup được lưu xong trước đợt migration; source/profile không đổi giữa run. CP118 chính là
+refactor kho checkpoint; recordCP117/failedobserverraw giữ nguyên, gate/auditcounter không reset.

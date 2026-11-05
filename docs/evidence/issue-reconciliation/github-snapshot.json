@@ -1,9 +1,18 @@
 {
   "schema": "kre-github-snapshot-v1",
   "repo": "aquaplatinumberlitz/boom-kr-server",
-  "captured_utc": "2026-11-05T05:23:04.139946+00:00",
+  "captured_utc": "2026-11-05T05:40:25.593863+00:00",
   "limits": "State as of capture only; body/declarations are not semantic acceptance; no GitHub mutation.",
   "issues": [
+    {
+      "body": "KRE-073 — refactor checkpoint store for selective reading without losing history. Owner/reviewer Codex; independent review waived by project owner. Feature KR-S001. Baseline CP117/PR187 c2ca94d; 47,358,804-byte inline manifest,117 checkpoints/166881 evidence rows/36 audits. Current runtime completed/raw hashes/cleanup before source/config changes.\n\nScope: small v2 index→immutable per-CP JSON, unchanged legacy objects, pinned external run/batch evidence for new checkpoints; shared selective loader/CLI and v1↔v2 history verification. No new task tracker/current-status or gate changes.\n\nAcceptance:\n\n- [ ] Re-runnable scripted migration proves full checkpoint/evidence/audit equivalence and retains all old IDs/counters/review waivers.\n- [ ] Checker validates references/SHA/continuous counters/audit cadence/external evidence and detects committed record-only/evidence-only tampering across old/new schemas.\n- [ ] latest/show/evidence summary/page/full-verify CLI and LLM instructions; no whole-manifest reads needed for navigation.\n- [ ] Required docs/checkpoint/history/diff and meaningful mutation/consumer tests; size/file-count report; commit/push/PR/exact-head merge.\n- [ ] Resume actual RE after migration using saved slot2/group0 Startguard evidence, no rerun of solved observations.\n\nKnown: migration objects compared; candidate tests/checks ongoing. Remaining: final CP118/evidence/checks/PR and next runtime fix. Gate/acceptance semantic decisions remain manual; PLAN is sole work order.\n\nCanonical links:\n\n- https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/PLAN.md#current-order\n- https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/PROTOCOL.md#rescue-start-slot\n- https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/RESEARCH.md#gap-diagnostic-service\n- https://github.com/aquaplatinumberlitz/boom-kr-server/blob/docs/checkpoint-store-v2/docs/evidence/checkpoints/README.md\n- https://github.com/aquaplatinumberlitz/boom-kr-server/blob/docs/checkpoint-store-v2/docs/evidence/checkpoints/migration-v2.json\n",
+      "closedAt": null,
+      "number": 188,
+      "state": "OPEN",
+      "title": "KRE-073: selective checkpoint store with preserved history and full evidence checks",
+      "updatedAt": "2026-11-05T05:41:03Z",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/188"
+    },
     {
       "body": "KRE-072 — cập nhật05/11/2026 bởi Codex tự kiểm; review độc lập waived theo [chủ dự án](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/evidence/checkpoints/review-waiver.json). Scope KR00967/localmodifiedWine, không Nexon/liveauth. Baseline điều phối CP108/PR177 `985a01d`; đối chiếu raw/runtime mới ở CP109. Lịch sử mô tả trước sửa lưu trong issue-reconciliation evidence/snapshot; không sửa checkpoint complete.\n\n**Phân loại:** completed. Feature: KR-S001.\n\n**Đã biết:** Đãrà14openissues/acceptanceto code/PR/evidence, runtime4runssealed noactiveWine.\n\n**Còn thiếu/giới hạn:** Scope tổ chức đã giao PR179/merge8f3ea2f. Gate/RE vẫn ở #14; snapshot hiện hành được refresh ở checkpoint kế khi runtime đang chạy hoàn tất, không sửa CP109 complete.\n\n**Phép thử/bước kế:** Đã tiếp RE#14 secondreturnvisual/input trên controller riêng, không dừng sau merge. Thứ tự duy nhất tại [PLAN](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/PLAN.md#current-order).\n\n**Acceptance của scope này:** MọiopenissuefeatureID/canon/known/gap/test/acceptance/evidence; closescopedmanualonly; mechanicalchecker/snapshotdated; immutablehistory; commitPRmerge vàtiếpRE.\n\n**Quyết định theo bằng chứng:** Đã đối chiếu acceptance thủ công, checker tests6/catalog7/checkpoints18/docs123/requiredlocalhistory109complete142622verified0missing0errors. PR179 exacthead7c1230d CLEAN/MERGEABLE/checks[] rồi merge8f3ea2f; đã tiếp phép thử RE dưới #14. Không semanticgateautoclosure. Đóng task hẹp không đóng gate K0–K7.\n\nNguồn chuẩn (chỉ dẫn, không sao chép contract):\n\n- [docs/PROTOCOL.md#authority](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/PROTOCOL.md#authority)\n- [docs/RESEARCH.md#gap-diagnostic-service](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/RESEARCH.md#gap-diagnostic-service)\n- [docs/PLAN.md#current-order](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/PLAN.md#current-order)\n\nPR/bằng chứng đáp ứng hoặc giới hạn:\n\n- [docs/evidence/issue-reconciliation/README.md](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/evidence/issue-reconciliation/README.md)\n\n- [PR179 đã merge](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/179), commit `7c1230d72cdc6365a9a8622950a98f9a28821458`, merge `8f3ea2f987c9ef7428898502294d75415d048828`.\n",
       "closedAt": "2026-11-05T00:54:30Z",
@@ -627,6 +636,17 @@
     }
   ],
   "pull_requests": [
+    {
+      "headRefOid": "ec52df3f7264372ae19a0701b724462dd61639c6",
+      "mergeCommit": {
+        "oid": "c2ca94d1e2a77bbfcf67c052542e37d0a1577e94"
+      },
+      "mergedAt": "2026-11-05T05:29:01Z",
+      "number": 187,
+      "state": "MERGED",
+      "title": "docs: verify rescue result/Ready and native Start guard3 blocker (CP117)",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/187"
+    },
     {
       "headRefOid": "e3cd5471e8a6285e468193a3a3f92936cfa0eeb5",
       "mergeCommit": {
