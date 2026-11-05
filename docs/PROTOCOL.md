@@ -1966,7 +1966,7 @@ locator/trace và trạng thái từng ô; những vai trò không nêu dưới 
 |---|---|---|
 | Movement | CP027 hai chiều; CP070 [cut/counter/restore local vs remote](#current-udp-causality), CP098 [protected peer targets](#current-peer-targets), CP106 [four-phase/two-cycle integration](#current-movement-cycles) trong scope từng run;183 vẫn ghost | Full schema input/update/correction, validator và quyền sửa vị trí của peer |
 | Bomb place/ID | CP027 hai owner/ID chung1..4 tạo trên cả hai client; [phạm vi](#peer-duo); lặp/cũ CP025 | CP041 có [stale158/ID reuse và fence job local](#round-generation), CP043 có [old159/serial reuse](#late-bomb-confirm); CP067 [C2Skey/serialguard](#c2s118-admission) và CP075 [actualTCPselectedreplay](#current-tcp-replay) loại duplicate/oldbody hẹp; allocator/rollover/concurrent/race/toàn generation/authority còn mở |
-| Explode/chain | CP033 một owner; CP064 [power1/cách hai ô](#mixed-owner-chain), CP071 [power2 ngoài tầm/feedback chưa118](#mixed-owner-power) giữ partial lịch sử; CP081 [power2/distance2 mixed-owner](#mixed-input), CP084 [ba bom fork hai vòng](#three-bomb-chain); CP094 [optional pinned terrain](#terrain-policy), CP095 [actualbox/laterfreshpair](#opposite-box-control) có native callback/195flag proof | [CP096adjacent1cell](#adjacent-owner-control) đã đo; recursive/sharedblocker/FIFO/firstbombstop tổng quát/race và authority server gốc chưa đủ |
+| Explode/chain | CP033 một owner; CP064 [power1/cách hai ô](#mixed-owner-chain), CP071 [power2 ngoài tầm/feedback chưa118](#mixed-owner-power) giữ partial lịch sử; CP081 [power2/distance2 mixed-owner](#mixed-input), CP084 [ba bom fork hai vòng](#three-bomb-chain); CP094 [optional pinned terrain](#terrain-policy), CP095 [actualbox/laterfreshpair](#opposite-box-control) có native callback/195flag proof | [CP096adjacent1cell](#adjacent-owner-control) và [CP122 chain sâu](#recursive-chain) đã đo trong ca hẹp; sharedblocker/FIFO/firstbombstop/immutable tổng quát/race và authority server gốc chưa đủ |
 | Block destroy/item reveal | CP032 nativecontract; CP068 [currentservice/list2/reportgate/effect/reset](#current-hidden-items), CP092 [195flags/seedreset](#map-flags-snapshot), CP094/095 [pinnedpolicy/nativeboxclear](#terrain-policy) cảhai view | Drop algorithm gốc/fullvalidator, genericclass/map và transport khác còn thiếu; không dùng report142 làm worldoracle |
 | Item placement/pickup | CP030 nhặt/tranh index; CP031/032 stat/itemẩn; CP045 [bảng nhóm/Roller/MaxPower hai view/reset](#item-families) | CP042 có [old165/index reuse](#item-generation); runtime tại max, KRspeed→px/s/TTL/activevariants, drop/toàn124validator/generation/reset còn thiếu; CP062 [winner đảo trên actual tranh index](#current-pickup-race) đã có scope riêng |
 | Trap/death | CP029/036; CP037 kim và tranh chấp cứu/diệt; [kim](#needle-selfescape), [precedence](#contact-precedence) | CP063 [guard stale/duplicate](#report127-freshness) là policy hẹp; CP075 [TCPsame/old17,19](#current-tcp-replay) đã đo; [CP112](#death-envelope-admission) thêm structural17/19admission; semanticfirstseen/forgedforward/generation/variants/result21 vẫn thiếu |
@@ -4370,3 +4370,30 @@ copy riêng; không thay thế runtime semantics. Giới hạn feedback/peer quo
 [CP120](#rescue-round2-feedback) giữ nguyên, không kết luận causal fix/contact threshold/fullmovement.
 General reset/inventory/authority/auth/vanilla/LAN/Internet và K5/K6a vẫn mở; không ghép thành fullmatch.
 Bước kế duy nhất ở [PLAN](PLAN.md#current-order).
+
+
+<a id="recursive-chain"></a>
+### Chain sâu ngoài tia bom gốc và so candidate terrain — CP122
+
+**kr_runtime/confirmed hẹp**, [nguồn/recipe/hash](evidence/three-bomb-chain/README.md#cp122).
+Tái dùng CP033/084 native ID/setter/process/typed packets, CP094–096 terrain195flags và known
+Bomb/Firefloor. VN chỉ hỗ trợ khái niệm/item checklist; KR opcode/field/power/cell đã đo riêng.
+CP084 vẫn là fork lịch sử. Không nativebody mới, không production/binary/pack/DB/fuse change.
+
+Run179,891290309s/exit0/error0, một epoch key12345, hai copy Wine đối địch/distinct spawn. Actual118
+ownersA/B/A, IDs1/2/3, cells/power **(3,3,p2)/(3,5,p1)/(4,5,p2)**; native159 ba entity đủ39 trước
+root158 trên từng view. Third khác cả hàng và cột root, ngoài tia root, nhưng kề Bsecondary.
+Trong callback root158/ID1: chỉ một kind0 root, native process **1→2→3**, setter secondary2/3
+state0/callerEBE21A. Later own158/ID2/3 lookup đúng ID, đủ13/lỗi0, không kind0/setter/process lặp.
+Không dùng riêng số lần kind0 hoặc model tự sinh để suy chain. Rawprintf row/col cũ đảo; cell chuẩn
+lấy actual118, pointer ghép native159 cùng epoch/trước callback.
+
+Cả hai view có195flags clock/before/after từng158; root chỉ clear **(2,3),(2,5),(3,2),(3,6),(4,6)**,
+khớp toàn195 phần tử với `TerrainShadow` trên pinned profile; later own callbacks không đổi flags.
+Model process/release/terrain là `emu_choice/design`; native agreement này chỉ mở rộng scope đã đo,
+không chứng minh FIFO/immutable/first-bomb-stop/sharedblocker/moving/universal map hoặc server gốc.
+Normal A Down(targetY169) rồi Right(targetX190), actual118 là oracle cell; không teleport/forged118.
+
+929 joins gồm774raw SHA,438 actor getter/150 packet/6 peer153 cases;14 flag snapshots có2758
+native getter và2730 array-address checks là copied-native emulation riêng. Run dừng sau owncallback
+bound, **không claim result/return/vòng2**, fullmatch/K5/K6a/LAN/Internet. Bước kế chỉ ở PLAN.

@@ -1,7 +1,7 @@
 {
   "schema": "kre-feature-index-v1",
   "build": "KR00967",
-  "as_of": "CP121",
+  "as_of": "CP122",
   "sources": {
     "plan": "docs/PLAN.md",
     "contract": "docs/PROTOCOL.md",
@@ -1451,7 +1451,8 @@
           "docs/evidence/terrain-tcp-guard-cycles/README.md",
           "docs/evidence/current-movement-cycles/README.md",
           "docs/evidence/promoted-battle-cycles/README.md",
-          "docs/evidence/promoted-outcome/README.md"
+          "docs/evidence/promoted-outcome/README.md",
+          "docs/evidence/three-bomb-chain/README.md#cp122"
         ]
       },
       "coverage": {
@@ -1503,7 +1504,8 @@
               "docs/evidence/terrain-tcp-guard-cycles/README.md",
               "docs/evidence/current-movement-cycles/README.md",
               "docs/evidence/promoted-battle-cycles/README.md",
-              "docs/evidence/promoted-outcome/README.md"
+              "docs/evidence/promoted-outcome/README.md",
+              "docs/PROTOCOL.md#recursive-chain"
             ]
           },
           "windows_original": {
@@ -1557,7 +1559,8 @@
             "docs/evidence/terrain-tcp-guard-cycles/README.md",
             "docs/evidence/current-movement-cycles/README.md",
             "docs/evidence/promoted-battle-cycles/README.md",
-            "docs/evidence/promoted-outcome/README.md"
+            "docs/evidence/promoted-outcome/README.md",
+            "docs/PROTOCOL.md#recursive-chain"
           ]
         },
         "gate": {
@@ -1610,7 +1613,8 @@
           "docs/evidence/adjacent-owner-control/README.md",
           "docs/evidence/terrain-tcp-guard-cycles/README.md",
           "docs/evidence/current-movement-cycles/README.md",
-          "docs/evidence/promoted-outcome/README.md"
+          "docs/evidence/promoted-outcome/README.md",
+          "docs/evidence/three-bomb-chain/README.md#cp122"
         ]
       },
       "coverage": {
@@ -1665,7 +1669,8 @@
               "docs/evidence/adjacent-owner-control/README.md",
               "docs/evidence/terrain-tcp-guard-cycles/README.md",
               "docs/evidence/current-movement-cycles/README.md",
-              "docs/evidence/promoted-outcome/README.md"
+              "docs/evidence/promoted-outcome/README.md",
+              "docs/PROTOCOL.md#recursive-chain"
             ]
           },
           "windows_original": {
@@ -1717,7 +1722,8 @@
             "docs/evidence/adjacent-owner-control/README.md",
             "docs/evidence/terrain-tcp-guard-cycles/README.md",
             "docs/evidence/current-movement-cycles/README.md",
-            "docs/evidence/promoted-outcome/README.md"
+            "docs/evidence/promoted-outcome/README.md",
+            "docs/PROTOCOL.md#recursive-chain"
           ]
         },
         "gate": {
@@ -1913,7 +1919,8 @@
           "docs/evidence/rejoin-battle-cycles/README.md",
           "docs/evidence/three-bomb-chain/README.md",
           "docs/evidence/capacity-admission/README.md",
-          "docs/evidence/capacity-reservations/README.md"
+          "docs/evidence/capacity-reservations/README.md",
+          "docs/evidence/three-bomb-chain/README.md#cp122"
         ]
       },
       "coverage": {
@@ -1952,7 +1959,8 @@
               "docs/evidence/rejoin-battle-cycles/README.md",
               "docs/evidence/three-bomb-chain/README.md",
               "docs/evidence/capacity-admission/README.md",
-              "docs/evidence/capacity-reservations/README.md"
+              "docs/evidence/capacity-reservations/README.md",
+              "docs/PROTOCOL.md#recursive-chain"
             ]
           },
           "windows_original": {
@@ -1993,7 +2001,8 @@
             "docs/evidence/rejoin-battle-cycles/README.md",
             "docs/evidence/three-bomb-chain/README.md",
             "docs/evidence/capacity-admission/README.md",
-            "docs/evidence/capacity-reservations/README.md"
+            "docs/evidence/capacity-reservations/README.md",
+            "docs/PROTOCOL.md#recursive-chain"
           ]
         },
         "gate": {
@@ -3345,7 +3354,8 @@
           "docs/evidence/rescue-service/README.md#cp117",
           "docs/evidence/rescue-service/README.md#cp119",
           "docs/evidence/rescue-service/README.md#cp120",
-          "docs/evidence/rescue-service/README.md#cp121"
+          "docs/evidence/rescue-service/README.md#cp121",
+          "docs/evidence/three-bomb-chain/README.md#cp122"
         ]
       },
       "coverage": {
@@ -3442,7 +3452,8 @@
               "docs/PROTOCOL.md#rescue-return-start-guard",
               "docs/PROTOCOL.md#rescue-slot-refresh",
               "docs/PROTOCOL.md#rescue-round2-feedback",
-              "docs/PROTOCOL.md#rescue-two-results"
+              "docs/PROTOCOL.md#rescue-two-results",
+              "docs/PROTOCOL.md#recursive-chain"
             ]
           },
           "windows_original": {
@@ -3586,7 +3597,8 @@
             "docs/PROTOCOL.md#needle-round-reset",
             "docs/PROTOCOL.md#rescue-service",
             "docs/PROTOCOL.md#rescue-reverse",
-            "docs/PROTOCOL.md#rescue-two-results"
+            "docs/PROTOCOL.md#rescue-two-results",
+            "docs/PROTOCOL.md#recursive-chain"
           ]
         },
         "gate": {
