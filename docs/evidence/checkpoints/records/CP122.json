@@ -1,0 +1,226 @@
+{
+  "id": "CP122",
+  "previous": "CP121",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-05T06:47:32.953071+00:00",
+  "context_commit": "c24687a7fd91795efa5f9f8e8e18c259b75b33d1",
+  "owner": "Codex",
+  "reviewer": "Codex",
+  "question": "Does actual KR chain reach a third bomb outside root rays through a secondary, and agree with candidate terrain flags/later own callbacks?",
+  "scope": "Source-first CP033/084/094–096 native ID/state/process/map probes, known BombFire and VN conceptual sources. Old fork controller only normalthirdADown/Right route/currentpinnedterrain/known195flagprobes/singleepochbound/Winebootstartup60. Sameclient/production/fuse6, isolated2realWine cleanup and rawseal before docs.",
+  "artifacts": [
+    {
+      "name": "CA-r2-login-logout.exe",
+      "sha256": "660447c293ce92270cb9b5815331bca976e8f156366e1fe50b217b6c12e60ce3"
+    },
+    {
+      "name": "CA-r2-stage-social.exe",
+      "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+    },
+    {
+      "name": "CA-r2-stage-social.exe Bcopy",
+      "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+    },
+    {
+      "name": "modO.bin",
+      "sha256": "a08950c833d3acab8281049def7b3dc96b221f107eeda01da3a548e34b91dce5"
+    }
+  ],
+  "locators": [
+    "CP121 PR192 head89f9075ebeef8d72cfafc3f1847a355c5d34af55 mergedc24687a; unchangedproduction191tests/sourcepreflight snapshots.",
+    "Run78e096db889dd3f9ae80d9d61758802bc4bcc9b1ca15c09ef45b735209b41b9e/179.891290309s/exit0/errors0/774raw/929joins. Actual118 ownersA/B/A/IDs1,2,3/cells3,3p2→3,5p1→4,5p2; all3native159 before root158 onbothviews.",
+    "NativeE5F450/E5F5FD callbacks13; E9E660 rootkind0; EBE180/EBE21A secondary state0→EB80E3 process1→2→3 inside rootcallback; ownlater2/3 no kind0/state/process. Rawrowcol swapped perCP033; actual118 canonical.",
+    "Knownmapcontainer+1D54/195flags, native52A350 securegetter/ED1350 arrayaddress;14snapshots all195matchmodel androotclears2,3/2,5/3,2/3,6/4,6; laternoop. modOa08950/base400000/RVA=VA−400000/runtimee9bb4766/static660447.",
+    "AUD037through120/next124 unchanged; no newperiodicaudit due. CP084fork remainshistoricalscopedfact, notrewritten."
+  ],
+  "findings": [
+    {
+      "summary": "Actual third4,5p2 is outside root3,3p2 rays but adjacent to Bsecondary3,5p1. Bothviews have3native159entities before root158, onlyrootkind0 and process1→2→3 inside rootcallback; secondary2/3 state0 callerEBE21A; later own2/3 full13 no kind0/state/process duplicate.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#recursive-chain",
+      "limits": "One modifiedWine2realAB/opposing/distinctspawn/pinnedmap epoch/key12345/power2,1,2. Actual third4,5 outside root3,3p2 rays, native process1,2,3 and all195flags/laterownnoop scoped only. CandidateTerrainShadow/fuse6/capacityrelease emulator policy; notgeneralFIFO/immutable/firstbombstop/sharedblocker/moving/originalauthority/fullmatch/K5/K6a/vanilla/LANInternet. No result/return/reset2 claim. Copiednativeheap/getter models separate from Wine. No newnativebodies/binary/production changes.",
+      "evidence": [
+        "DEEP-00819",
+        "DEEP-00005",
+        "DEEP-00782"
+      ]
+    },
+    {
+      "summary": "Bothviews native195flags clock/before/after all3callbacks match pinnedmodel; rootclearsfivecells2,3/2,5/3,2/3,6/4,6; laterown flags unchanged. Agreement is scoped case, not universal immutable/FIFO/first-hit law.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#recursive-chain",
+      "limits": "One modifiedWine2realAB/opposing/distinctspawn/pinnedmap epoch/key12345/power2,1,2. Actual third4,5 outside root3,3p2 rays, native process1,2,3 and all195flags/laterownnoop scoped only. CandidateTerrainShadow/fuse6/capacityrelease emulator policy; notgeneralFIFO/immutable/firstbombstop/sharedblocker/moving/originalauthority/fullmatch/K5/K6a/vanilla/LANInternet. No result/return/reset2 claim. Copiednativeheap/getter models separate from Wine. No newnativebodies/binary/production changes.",
+      "evidence": [
+        "DEEP-00819",
+        "DEEP-00883"
+      ]
+    },
+    {
+      "summary": "2758 securegetter/2730 arrayaddress checks across14flag snapshots plus438actorfield/150packet/6peer153 cases execute copiednative code separately. No Winefunctioncalls/statewrites for these models.",
+      "source": "kr_static",
+      "status": "confirmed",
+      "method": "emulation",
+      "canonical": "docs/PROTOCOL.md#recursive-chain",
+      "limits": "One modifiedWine2realAB/opposing/distinctspawn/pinnedmap epoch/key12345/power2,1,2. Actual third4,5 outside root3,3p2 rays, native process1,2,3 and all195flags/laterownnoop scoped only. CandidateTerrainShadow/fuse6/capacityrelease emulator policy; notgeneralFIFO/immutable/firstbombstop/sharedblocker/moving/originalauthority/fullmatch/K5/K6a/vanilla/LANInternet. No result/return/reset2 claim. Copiednativeheap/getter models separate from Wine. No newnativebodies/binary/production changes.",
+      "evidence": [
+        "DEEP-00796",
+        "DEEP-00794",
+        "DEEP-00804",
+        "DEEP-00806"
+      ]
+    },
+    {
+      "summary": "TerrainShadow model process1,2,3/cleared5 andcapacityrelease/laterownnopolicy agree with measured callbacks/flags for this fixture only; recursivemodel notoriginalserverauthority. Normalinputactualgeometry met planned differentiator, no forced118/fusechange.",
+      "source": "emu_choice",
+      "status": "design",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#recursive-chain",
+      "limits": "One modifiedWine2realAB/opposing/distinctspawn/pinnedmap epoch/key12345/power2,1,2. Actual third4,5 outside root3,3p2 rays, native process1,2,3 and all195flags/laterownnoop scoped only. CandidateTerrainShadow/fuse6/capacityrelease emulator policy; notgeneralFIFO/immutable/firstbombstop/sharedblocker/moving/originalauthority/fullmatch/K5/K6a/vanilla/LANInternet. No result/return/reset2 claim. Copiednativeheap/getter models separate from Wine. No newnativebodies/binary/production changes.",
+      "evidence": [
+        "DEEP-00841",
+        "DEEP-00816",
+        "DEEP-00819"
+      ]
+    }
+  ],
+  "verification": [
+    {
+      "check": "929 scoped joins including774 raw hashes/sourcefreeze/actualgeometry/159-before158/IDstateprocess/all195flags/laterownnoops",
+      "result": "pass",
+      "evidence": [
+        "DEEP-00818",
+        "DEEP-00819",
+        "DEEP-00817"
+      ],
+      "limits": "One modifiedWine2realAB/opposing/distinctspawn/pinnedmap epoch/key12345/power2,1,2. Actual third4,5 outside root3,3p2 rays, native process1,2,3 and all195flags/laterownnoop scoped only. CandidateTerrainShadow/fuse6/capacityrelease emulator policy; notgeneralFIFO/immutable/firstbombstop/sharedblocker/moving/originalauthority/fullmatch/K5/K6a/vanilla/LANInternet. No result/return/reset2 claim. Copiednativeheap/getter models separate from Wine. No newnativebodies/binary/production changes."
+    },
+    {
+      "check": "2758getter/2730array/438actor/150packet/6peer153 copiednative checks;191unchangedserver tests reused",
+      "result": "pass",
+      "evidence": [
+        "DEEP-00796",
+        "DEEP-00794",
+        "DEEP-00804",
+        "DEEP-00806",
+        "DEEP-00889"
+      ],
+      "limits": "One modifiedWine2realAB/opposing/distinctspawn/pinnedmap epoch/key12345/power2,1,2. Actual third4,5 outside root3,3p2 rays, native process1,2,3 and all195flags/laterownnoop scoped only. CandidateTerrainShadow/fuse6/capacityrelease emulator policy; notgeneralFIFO/immutable/firstbombstop/sharedblocker/moving/originalauthority/fullmatch/K5/K6a/vanilla/LANInternet. No result/return/reset2 claim. Copiednativeheap/getter models separate from Wine. No newnativebodies/binary/production changes."
+    },
+    {
+      "check": "Manualimages/docs/catalog/issuelinks/artifacts/diff",
+      "result": "pass",
+      "evidence": [
+        "DEEP-00883",
+        "DEEP-00793",
+        "DEEP-00802",
+        "DEEP-00004"
+      ],
+      "limits": "Mechanical consistency/manual selectedUI only; no automatic semantics/gate approval."
+    }
+  ],
+  "evidence": [],
+  "evidence_manifests": [
+    {
+      "path": "docs/evidence/checkpoints/evidence/CP122-recursive-chain.json",
+      "bytes": 221703,
+      "sha256": "5c9ff78ade6c09387eaa2dedec74d32bcbf8a4cee1f761b065f15e5439be5ea9",
+      "count": 889
+    }
+  ],
+  "delta": {
+    "added": [
+      "Deep chain outside root rays observed in real KRcopy2views with full195flags/modelagreement/laterownnoop."
+    ],
+    "corrected": [
+      "Currentunknownrecursivegap nowresolvedforonegeometry/epoch; CP084forkwasnotdeepchain andunchanged.",
+      "CP121 PR192 nowmerged/currentdocs/issue aligned; completeCP121recordraw immutable."
+    ],
+    "superseded": [
+      "NEXT-RECURSIVE-CHAIN closed scopedcase; next currentterrain survivor integration usingCP082/100–106/122."
+    ]
+  },
+  "blockers": [
+    "Currentterrain/guard survivor outcome/reset2 notjoined bythisoneepochchainrun; historicalCP082survivor earlierprofile.",
+    "Generalchainorder/sharedblocker/moving/validator/authority/auth/fullreset/vanilla/LANInternet/gates remain."
+  ],
+  "next_steps": [
+    {
+      "id": "NEXT-RECURSIVE-CHAIN",
+      "task": "KRE-005b",
+      "state": "closed",
+      "action": "CP122actualthirdoutside root rays/nativeprocess1→2→3/all195flags/laterownnoop bothviews scoped proof.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-CURRENT-TERRAIN-SURVIVOR",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "PLAN source-firstCP082/100–106/122; sameknownroute normalADown afterthirdtosafecell→actualB19/A21/native175ranks1,2/180/return/reset2/normalReadyStart; no forcedreports/fusechange. Verifycurrentgeometry/endingfreshness. Auditnext124.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    }
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-11-05T06:47:32.953071+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "Codex solo RE/code/runtime/selfcheck, not independent approval.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Owner explicitly requested solo without Claude review."
+    }
+  },
+  "docs_sync": [
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "CP122 scopeddeepchain/195flags/limits, CP121merged, currentterrain survivor next solelyPLAN; oldrecords/raw/gates unchanged."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "CP122 scopeddeepchain/195flags/limits, CP121merged, currentterrain survivor next solelyPLAN; oldrecords/raw/gates unchanged."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "updated",
+      "reason": "CP122 scopeddeepchain/195flags/limits, CP121merged, currentterrain survivor next solelyPLAN; oldrecords/raw/gates unchanged."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "updated",
+      "reason": "CP122 scopeddeepchain/195flags/limits, CP121merged, currentterrain survivor next solelyPLAN; oldrecords/raw/gates unchanged."
+    },
+    {
+      "path": "docs/features.json",
+      "state": "updated",
+      "reason": "CP122 scopeddeepchain/195flags/limits, CP121merged, currentterrain survivor next solelyPLAN; oldrecords/raw/gates unchanged."
+    },
+    {
+      "path": "docs/COVERAGE.md",
+      "state": "updated",
+      "reason": "CP122 scopeddeepchain/195flags/limits, CP121merged, currentterrain survivor next solelyPLAN; oldrecords/raw/gates unchanged."
+    },
+    {
+      "path": "docs/evidence/three-bomb-chain/README.md",
+      "state": "updated",
+      "reason": "CP122 scopeddeepchain/195flags/limits, CP121merged, currentterrain survivor next solelyPLAN; oldrecords/raw/gates unchanged."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/review.json",
+      "state": "updated",
+      "reason": "CP122 scopeddeepchain/195flags/limits, CP121merged, currentterrain survivor next solelyPLAN; oldrecords/raw/gates unchanged."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
+      "state": "updated",
+      "reason": "CP122 scopeddeepchain/195flags/limits, CP121merged, currentterrain survivor next solelyPLAN; oldrecords/raw/gates unchanged."
+    }
+  ]
+}

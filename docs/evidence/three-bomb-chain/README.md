@@ -51,3 +51,33 @@ Chưa fullmatch/K5/K6a/vanilla/LANInternet/fullauth/codec/validator/authority/to
 Bước kế dùng CP075proxy/selectedreplays, ghép guard với hai native resultreset theo PLAN.
 
 [CP085](../tcp-guard-cycles/README.md) ghép selectedTCPguard với hairesultreset theo bước tạiCP084; việc hiện tại chỉ PLAN.
+
+
+<a id="cp122"></a>
+## CP122 — Chain sâu ngoài tia root, hai view và195flags
+
+[Contract/giới hạn](../../PROTOCOL.md#recursive-chain), [gap](../../RESEARCH.md#gap-blast-block-chain),
+[bước tiếp](../../PLAN.md#current-order). CP121/PR192 đã merge `c24687a` trước nhánh này.
+`local/research/codex/recursive-chain-r1/runtime-reuse.json` cập nhật source-first; giữ nguyên
+`reuse-question.json` model-only cũ. Reuse CP033/084 code-match/callback/ID/input/BombFire,
+CP094–096 pinnedmap/195flags, VNitems/oc_e-game và KRdata. Không RE lại codec/item/map/fullclient.
+
+`cycles-recipe.json`, `runtime-preflight.json`, `prepare_recursive_chain.py`, controller
+`wine_probe_recursive_chain.py`: private namespace/lo-only/no route/files NSS/exclusive lease/
+separate A/B prefix/display; prepare trước launch/source frozen; cleanup hoàn tất trước raw-seal.
+Giữ fuse6 và current production; chỉ A third normalDown/Right, startupWineboot60, flagsprobe đã biết
+và single-epoch stop sau later-own bound. Không nativefunctioncall/newbinarypatch/forged118.
+
+Run SHA `78e096db889dd3f9ae80d9d61758802bc4bcc9b1ca15c09ef45b735209b41b9e`,
+179,891290309s/exit0/serviceerrors0; `raw-seal.json` **774files**, `recursive-verification.json`
+**929joins**. Actual118 cells/power3,3/2→3,5/1→4,5/2 và ba native159 trướcroot158. `chain-summary.json`
+ghép nativepointer/ID/caller/process1→2→3 trong rootcallback cả hai view; laterown2/3 no-op.
+14 nativeflagsnapshots/195cells: rootclear5cells/full195 khớp candidate, laterown không đổi.
+`flag-reader-verification.json`2758getter/2730address checks, `actor-fields.json`438checks,
+`native-reports.json`150cases/`native-153.json`6cases là copied-native emulation riêng.
+`recursive-visual.png`/manual `visual-review.json` giữ ảnh trướcroot/final; sprite che một số bom,
+không lấy ảnh chứng minh exact entity count. Actual packets/native pointers/flags là bằng chứng chính.
+
+Một epoch, không result/return/reset2 claim. Model FIFO/immutable/firstbombstop/sharedblocker/moving/
+original authority/fullmatch/K5/K6a/vanilla/LANInternet chưa đủ. CP084 raw/fork conclusion không sửa.
+191 server tests CP119 reuse/source unchanged. CP122 tự kiểm/chờ PR/review waived; audit kếCP124.

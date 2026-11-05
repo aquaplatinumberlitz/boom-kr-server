@@ -1,7 +1,7 @@
 {
   "schema": "kre-issue-review-v1",
   "as_of": "2026-11-05",
-  "baseline": "18b73f1dbaece084f5cd9806028f297cf6676958",
+  "baseline": "c24687a7fd91795efa5f9f8e8e18c259b75b33d1",
   "method": "Codex manual acceptance review; native/static/model/design/merge/gate distinct; originalissuebodies archivedlocalbeforeedit, no completecheckpoint rewrite",
   "issues": [
     {
@@ -132,9 +132,9 @@
         "KR-S001",
         "KR-S002"
       ],
-      "known": "CP120/PR191 merged18b73f1; CP121 same service/profile, two rescue/result/return epochs and actual secondroom B95seq439;2227 joins/2147 raw.",
-      "remaining": "Recursive chain outside root rays; full movement/inventory/auth/authority/generalreset/vanilla/LANInternet/gates. Fixed teams/synthetic opponent/chosenresult limitations remain.",
-      "next_test": "PLAN root3,3p2→secondary3,5p1→third4,5p2; actual118/159 before158/195flags/process/later callbacks, normal input unchanged fuse.",
+      "known": "CP121/PR192 mergedc24687a; CP122 actual deepchain outside root rays/native1→2→3/all195flags/laterownnoop bothviews,929 joins/774 raw; oneepoch/noresult.",
+      "remaining": "Currentterrain survivor result integration; general chain/authority/auth/validator/reset/LANInternet/gates.",
+      "next_test": "PLAN reuse CP082/100–106/122 normal safe ADown afterthird; actualB19/A21/native175ranks1,2/180/return/reset2 sameprofile without syntheticreports/fusechange.",
       "acceptance": "Epic checklist: linkedscopedtask/evidence+authoritymatrix vàacceptancegate ởPLAN; từngtaskđóng khôngđóngepic/K5/K6a.",
       "reason": "Keep epic/gatesopen. CP120scopedfreshrescuepositivewhileCP119negativecontrolimmutable; cycleauditAUD037due120/next124, noreset.",
       "sources": [
@@ -166,7 +166,8 @@
         186,
         187,
         190,
-        191
+        191,
+        192
       ],
       "successors": []
     },
