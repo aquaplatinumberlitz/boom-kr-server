@@ -41,17 +41,17 @@ Hai copy KR Wine đã chạy login/sảnh/phòng/Battle và các chu kỳ kết 
 [kim/reset](docs/PROTOCOL.md#needle-round-reset), [cứu hai chiều và hai kết quả](docs/PROTOCOL.md#rescue-two-results),
 [deep chain/reset](docs/PROTOCOL.md#recursive-chain-cycles) giữ phạm vi và giới hạn tại nguồn chuẩn.
 
-**Mốc mới CP136:** deadline tùy chọn đã qua positive hai vòng bình thường: hai barrier hoàn tất
-trước hạn, không đóng nhầm khi trận vượt30s, deadline mới ởStart2; cả hai về phòng lần hai.
-[Contract/giới hạn](docs/PROTOCOL.md#loading-timeout-positive), [raw/hash](docs/evidence/loading-timeout/README.md#cp136).
-Ca thiếuB99/cleanup ởCP135 là thí nghiệm riêng; không ghép chúng thành fullmatch/K6a.
+**Mốc mới CP137:** một run đã ghép movement hai chiều, terrain/item, current-trap guard,
+loading deadline và hai kết quả survivor/reset. [Contract/giới hạn](docs/PROTOCOL.md#integrated-survivor),
+[raw/hash và partial](docs/evidence/integrated-survivor/README.md). Ảnh cuối đen; hai followup bị
+chặn input trướcreturn2, nên chưa xác nhận UI phòng dùng được trên profile tích hợp này.
 
-CP135 đã merge [PR206](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/206) tại `57b3b53`.
-CP136/AUD042 docs/evidence đang tự kiểm; [review độc lập waived](docs/evidence/checkpoints/review-waiver.json).
-#1/#2/#3/#9/#14 và K0–K7 vẫn mở. Audit qua136; mốc audit kế **CP140**.
+CP136/AUD042 đã merge [PR207](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/207) tại`f1d3e9e`.
+CP137 docs/evidence đang tự kiểm; [review độc lập waived](docs/evidence/checkpoints/review-waiver.json).
+#1/#2/#3/#9/#14 và K0–K7 vẫn mở; audit kế **CP140**.
 
-Theo [PLAN](docs/PLAN.md#current-order), kiểm tích hợp movement/survivor/result-drain với current-trap
-guard và deadline. Tái dùng CP106/124, chỉ đo tổ hợp chưa có bằng chứng trong cùng run/profile.
+Theo [PLAN](docs/PLAN.md#current-order), đo IP endpoint153/UDPsource trên alias loopback trước
+bước nhiều máy; chưa LAN/Internet. Blocker observer/input UI được giữ, không lặp route vô hạn.
 
 Đích đầu: hai client thật chơi hai trận liên tiếp; mở bốn client và hardening sau đó.
 
