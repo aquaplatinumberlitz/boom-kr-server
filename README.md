@@ -29,17 +29,18 @@ runtime nào có nguồn, còn thiếu gì và phép kiểm nào giải quyết.
 evidence/hash và câu hỏi; [PLAN](docs/PLAN.md#current-order) giữ duy nhất thứ tự công việc.
 Đây là scope đường bootstrap → login → sảnh → phòng → Battle → kết quả/reset, không kiểm kê toàn client.
 
-CP107 tích hợp normal host Back: A rời → B lên chủ → A vào lại làm khách → A Ready/B Start →
-cảhai client đọc121 đầy đủ, gửi99 và chạy clock native trên service hiện hành.
-[Contract/giới hạn](docs/PROTOCOL.md#host-normal-back),
-[recipe/hash](docs/evidence/host-normal-back/README.md). Chưa đo trận hoàn chỉnh sau đổi chủ.
-[CP106](docs/PROTOCOL.md#current-movement-cycles) vẫn là run hai vòng movement/terrain/item/ending
-đã kiểm trên vai trò Ahost; bước kế ghép route đó sau Bpromotion, không ghép hai run thành một trận.
+CP108 thử Battle sau B lên chủ nhưng **chưa hoàn tất hai vòng**: R1 đã đo movement hai chiều,
+Bomb/Fire và ba entity bom ở cảhai view; controller dừng ở giới hạn input trước kết quả/reset.
+Hai158 service đã phát chưa được xác nhận callback native hoàn tất.
+[Contract/điểm chặn](docs/PROTOCOL.md#promoted-battle-cycles),
+[recipe/hash](docs/evidence/promoted-battle-cycles/README.md). Bước kế sửa cửa sổ đo input Y389 theoPLAN.
+[CP106](docs/PROTOCOL.md#current-movement-cycles) vẫn là run hai vòng đã kiểm với Ahost;
+[CP107](docs/PROTOCOL.md#host-normal-back) normalhostBack/Bpromotion/rejoin tới clock đã merge.
 
-CP106 đã merge [PR173](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/173) tại `f67a160`.
-CP107 tự kiểm/chờ PR; hostBack opt-in, profile legacy giữ hành vi cũ. Review độc lập
-[waived](docs/evidence/checkpoints/review-waiver.json). K5/K6a/LAN/Internet vẫn mở.
-Audit định kỳ **AUD032/CP104**, mốc kế **CP108**.
+CP107 đã merge [PR175](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/175) tại `ac6562e`.
+CP108 partial/tự kiểm/chờ PR; task176 và K5/K6a/LAN/Internet vẫn mở. Review độc lập
+[waived](docs/evidence/checkpoints/review-waiver.json).
+Audit định kỳ **AUD033/CP108**, mốc kế **CP112**.
 [Yêu cầu chủ dự án](docs/evidence/owner-directives/continuous-work.json): tiếp tục ngay việc kế trong
 PLAN sau mỗi checkpoint/commit/PR, không tự dừng/chờ nhắc.
 

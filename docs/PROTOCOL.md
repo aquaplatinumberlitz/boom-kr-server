@@ -1958,20 +1958,20 @@ liệt kê và phân biệt với nguyên bản trong mọi demo.
 <a id="authority"></a>
 ### Authority matrix hiện hành và gate review
 
-Bảng này tổng hợp bằng chứng từng phần đến CP105; chưa phải toàn contract server gốc. Mỗi hàng khi
+Bảng này dẫn nguồn bằng chứng từng phần; chưa phải toàn contract server gốc. Mỗi hàng khi
 triển khai phải bổ sung riêng **creator, simulator, validator, broadcaster, peer-editable state**, với
 locator/trace và trạng thái từng ô; những vai trò không nêu dưới đây hiện `unknown` cho KR.
 
 | Hành vi | Đã thấy trong KR | Phần cần đóng trước demo dùng hành vi đó |
 |---|---|---|
-| Movement | CP027 hai chiều; CP070 [cut/counter/restore local vs remote](#current-udp-causality), CP098 [protected peer targets](#current-peer-targets) trong scope từng run;183 vẫn ghost | Full schema input/update/correction, validator và quyền sửa vị trí của peer |
+| Movement | CP027 hai chiều; CP070 [cut/counter/restore local vs remote](#current-udp-causality), CP098 [protected peer targets](#current-peer-targets), CP106 [four-phase/two-cycle integration](#current-movement-cycles) trong scope từng run;183 vẫn ghost | Full schema input/update/correction, validator và quyền sửa vị trí của peer |
 | Bomb place/ID | CP027 hai owner/ID chung1..4 tạo trên cả hai client; [phạm vi](#peer-duo); lặp/cũ CP025 | CP041 có [stale158/ID reuse và fence job local](#round-generation), CP043 có [old159/serial reuse](#late-bomb-confirm); CP067 [C2Skey/serialguard](#c2s118-admission) và CP075 [actualTCPselectedreplay](#current-tcp-replay) loại duplicate/oldbody hẹp; allocator/rollover/concurrent/race/toàn generation/authority còn mở |
 | Explode/chain | CP033 một owner; CP064 [power1/cách hai ô](#mixed-owner-chain), CP071 [power2 ngoài tầm/feedback chưa118](#mixed-owner-power) giữ partial lịch sử; CP081 [power2/distance2 mixed-owner](#mixed-input), CP084 [ba bom fork hai vòng](#three-bomb-chain); CP094 [optional pinned terrain](#terrain-policy), CP095 [actualbox/laterfreshpair](#opposite-box-control) có native callback/195flag proof | [CP096adjacent1cell](#adjacent-owner-control) đã đo; recursive/sharedblocker/FIFO/firstbombstop tổng quát/race và authority server gốc chưa đủ |
 | Block destroy/item reveal | CP032 nativecontract; CP068 [currentservice/list2/reportgate/effect/reset](#current-hidden-items), CP092 [195flags/seedreset](#map-flags-snapshot), CP094/095 [pinnedpolicy/nativeboxclear](#terrain-policy) cảhai view | Drop algorithm gốc/fullvalidator, genericclass/map và transport khác còn thiếu; không dùng report142 làm worldoracle |
 | Item placement/pickup | CP030 nhặt/tranh index; CP031/032 stat/itemẩn; CP045 [bảng nhóm/Roller/MaxPower hai view/reset](#item-families) | CP042 có [old165/index reuse](#item-generation); runtime tại max, KRspeed→px/s/TTL/activevariants, drop/toàn124validator/generation/reset còn thiếu; CP062 [winner đảo trên actual tranh index](#current-pickup-race) đã có scope riêng |
 | Trap/death | CP029/036; CP037 kim và tranh chấp cứu/diệt; [kim](#needle-selfescape), [precedence](#contact-precedence) | CP063 [guard stale/duplicate](#report127-freshness) là policy hẹp; CP075 [TCPsame/old17,19](#current-tcp-replay) đã đo; fullvalidator/firstseen/forgedforward/generation/variants/result21 vẫn thiếu |
-| Result/reset | CP039 hai vòng statepeer/result/21/return và reset field hẹp; CP044 [timer ở EOF và vòng B/C mới](#abort-timer); CP080 [hai chu kỳ sau rejoin](#ready-input), CP082 [mixed-owner survivor](#mixed-cycles), CP083 [all-dead rank2/2/storage/UI](#all-dead-result), mỗi run/scope riêng; CP100 [optional result freshness](#result-freshness-guard), CP102 [drain/local21clear/peerblocker](#drained-result-local-clear), CP104 [native175/34/state3](#ending34-state-boundary) | CP041 có [payload cũ khi ID reuse](#round-generation); arbitration/toàn generation/entity/timer/peer/seq không rò vẫn mở; phân biệt run chờ sai origin với ca hoàn tất |
-| Room lifecycle | CP034 leave/promotion/EOF/return; CP035 rejoin/Ready; CP040 chủ B/C Start; CP044 [B/C bom/death/result/return sau abort](#abort-timer) | Bầu chủ/giữ ID-slot/forfeit là policy stub; guest EOF trả A về phòng/xóa B đã đo riêng; CP050 có [service EOF/cleanup](#service-eof); CP051 có [C mới/Start B trong service](#service-replacement); CP052 [guest setup EOF](#setup-eof), CP053 [host với peer chưa map](#host-setup), CP054 [C trước vòng đầu](#prestart-replacement), CP072 [preclock forfeit/return](#preclock-eof), CP074 [native107/IDclear và UI](#preclock-cleanup), CP076 [Back86/emptyroomrecreate cùng channel](#back86-membership) đã đo; reconnect cùng account/disconnect variants/toàn reset còn mở |
+| Result/reset | CP039 hai vòng statepeer/result/21/return và reset field hẹp; CP044 [timer ở EOF và vòng B/C mới](#abort-timer); CP080 [hai chu kỳ sau rejoin](#ready-input), CP082 [mixed-owner survivor](#mixed-cycles), CP083 [all-dead rank2/2/storage/UI](#all-dead-result), mỗi run/scope riêng; CP100 [optional result freshness](#result-freshness-guard), CP102 [drain/local21clear/peerblocker](#drained-result-local-clear), CP104 [native175/34/state3](#ending34-state-boundary), CP105 [exactendingUDPqueue](#ending-udp-state-apply), CP106 [same-run selected180boundaries](#current-movement-cycles) | CP041 có [payload cũ khi ID reuse](#round-generation); arbitration/toàn generation/entity/timer/peer/seq không rò vẫn mở; phân biệt run chờ sai origin với ca hoàn tất |
+| Room lifecycle | CP034 leave/promotion/EOF/return; CP035 rejoin/Ready; CP040 chủ B/C Start; CP044 [B/C bom/death/result/return sau abort](#abort-timer) | Bầu chủ/giữ ID-slot/forfeit là policy stub; guest EOF trả A về phòng/xóa B đã đo riêng; CP050 có [service EOF/cleanup](#service-eof); CP051 có [C mới/Start B trong service](#service-replacement); CP052 [guest setup EOF](#setup-eof), CP053 [host với peer chưa map](#host-setup), CP054 [C trước vòng đầu](#prestart-replacement), CP072 [preclock forfeit/return](#preclock-eof), CP074 [native107/IDclear và UI](#preclock-cleanup), CP076 [Back86/emptyroomrecreate cùng channel](#back86-membership), CP107 [currentservicehostBack/promotedrejoin tới clock](#host-normal-back) đã đo; reconnect cùng account/disconnect variants/toàn reset còn mở |
 | Peer lifecycle | CP027 actual99→153; CP045–047 [oldUDP actor/keyguard/endpointcontrol](#udp-generation), CP070 [transport cut hai chiều](#current-udp-causality) | CP048 [service fixture](#probe-service) đã tích hợp key policy hẹp; low8reuse/roster/UDPtype khác/fullgrammar/reliability/relay/reset còn mở. Không coi đổi cổng riêng lẻ là freshness guard hoặc keybyte là auth |
 
 Trong **optional profile hiện hành**, bảng dưới ghi vai trò emulator, không gán cho server gốc.
@@ -3940,9 +3940,9 @@ không sửa những assertionfail/raw lịch sử hoặc dùng same-entry175 l�
 557 movement relations/360copied getters/44actualCRC checks;152integration/247transport/39item/
 60drained/33peerhandler/59ending relations; emulation11.820mapgetters/11.700arrayaddresses riêng.
 Analysis KeyError do nhầm path substitution được giữ và sửa bằng script riêng, không sửa raw/native.
-CP105/PR171 đã merge; CP106 tự kiểm/chờ PR. Fullauth/codec/location/validator/authority/general
-membership/allreset/vanilla/fullmatch/K5/K6a/LANInternet vẫn mở; audit kếCP108. Bước kế cần cho chơi
-là host normal Back khi còn guest live, không lặp EOF hoặc movement đã khép.
+CP106 đã merge PR173 tại `f67a160`; CP107/PR175 merge `ac6562e` bổ sung [current hostBack](#host-normal-back).
+Bước host Back nêu tại CP106 là lịch sử; thứ tự hiện hành chỉ ởPLAN. Fullauth/codec/location/validator/
+authority/general membership/allreset/vanilla/fullmatch/K5/K6a/LANInternet vẫn mở; cadence ởmanifest.
 
 
 <a id="host-normal-back"></a>
@@ -3975,3 +3975,39 @@ chưa nativepostresult/reset/bom/item/haiBattlecycles trên vai tròBhost. CP106
 riêng, không ghép thành nghiệmthu saupromotion. Same-stage/globaltime/wholeauthority không suy thêm.
 Bước kế chỉđo gap gameplay/reset này theoPLAN; auditCP108. Fullauth/codec/validator/authority/
 activeleave/accountresume/generalroom/allreset/vanilla/fullmatch/K5/K6a/LANInternet vẫn mở.
+
+
+<a id="promoted-battle-cycles"></a>
+### Battle sau Bpromotion: partial tại input-control — CP108
+
+[Recipe/hash/strictfail/boundedproof](evidence/promoted-battle-cycles/README.md),
+[gap](RESEARCH.md#gap-room-membership), [thứ tự](PLAN.md#current-order).
+**kr_runtime/confirmed hẹp** R1 trên modifiedWine/AB/ExVillage01/local/CP107opt-inprofile47;
+**unknown** haiBattlecycles/ending/reset saupromotion. Hai partialruns khôngghép thành hai trận.
+
+Reuse CP106currentAPI/key/target/route/terrain/guard và CP107A86/B107/chief1/A82/guest0/ReadyA95/
+StartB104. Khôngnewnativebody/codecRE hoặcđảoactororigin theo chủ; production/profile/fuse/IDslot/
+geometry/items khôngđổi. r1controller3sneutralBstability timeout trước118; r2chỉmởneutralbound6s,
+vẫn3equalfreshsamples, quaBcolumnalignment. Khôngkhẳngđịnh thaywindowlàcausalfix củađợtr1.
+
+Mỗirun R1có uniqueAPI→packet13/key/args→targetchange/currentXYprogress cảhai chiều, haiBombFire
+pickup/native165callback12/errors0. r1/R1:223relations/144copiedgetters/18CRC; r2/R1:337/216/27.
+r2statBomb/Fire1→2 cảhai view có8copiednativegetterjoins, chưa secondStartbaseline/reset.
+
+r2 actual118/159IDs1..3/ownerA,B,A/cells(3,3),(3,5),(4,3), native159full39/3entity/view. Hai service158
+được phát ID1/2; **nativeA first158 begin/end=1/0, B=0/0** khi controllerstop, khônghai callback hoàn tất.
+Before158flagsA đãđọc nhưng khôngafter; full-completion chainverifierfail giữ. Ba195flagsnapshots/
+591copiedgetters/585arrayaddresses chỉclockA/B vàAbefore158, không chứngminhterraincommit/resetmatch.
+
+Capacityphase bắtđầu1796500329337866ns; cachedsample9,306s trướcstart khôngfresh. Hai freshsample
+Astate23/Y294 lúc1796501086073221 vàY339 lúc1796502153465798; targetY≥389 chưađạt khirelease/
+controllerbound~3,049s. FirstA158 đangcallback cuốiwindow; không175180/report17/19/bằngchứngAtrap.
+Khônggán hỏnghostrole/transport/observer từtimeout. Bound6s/freshfeedback/handlerboundary là phép thử
+kế theoPLAN, khôngsửathời gian nổ/policy hoặc ép actor đạt target.
+
+48boundedchecks chỉpartial/controlscope; strict4phase/two-cycle remainsfailed. Oldemptyround_history
+assumptionfail đượcgiữ: controllerarchivepartialroundonexitkhôngphảicompletedresult. Scopedverifier
+kiểmkhôngrank/return, không xoáraw. Source/profilesealed/checks/hash riêng, 157server tests reuse.
+AUD033manualperiodic qua108/kế112 sửa stale navigation/PRstatus, không đổi scientifichistory.
+CP107/PR175 đãmerge; CP108partial/chờPR/task176open. Fullauth/codec/validator/authority/general
+membership/fullreset/vanilla/fullmatch/K5/K6a/LANInternet vẫn mở.

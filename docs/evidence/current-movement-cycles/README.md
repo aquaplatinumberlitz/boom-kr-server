@@ -57,5 +57,5 @@ Nguồn cũ tránh toàn bộ vòng RE codec/consumer/item/ending mới. CP098 R
 run này, không sửa history CP098 hoặc khẳng định observer timing là nguyên nhân của gap cũ.
 #166 có qualification cùng run theo mốc native180, thay tiêu chí entry175 đã bị CP104–105 bác bỏ;
 việc tích hợp chỉ qua PR. Full identity/auth/codec/validator/authority/general membership/all reset/
-vanilla/fullmatch/K5/K6a/LAN/Internet còn mở. Bước kế theo PLAN: normal host Back còn guest live,
-reuse107/110/refresh/currentseq; không lặp host EOF hoặc guest Back đã biết.
+vanilla/fullmatch/K5/K6a/LAN/Internet còn mở. Bước tại CP106 (lịch sử) là normal host Back còn guest live;
+[CP107](../../PROTOCOL.md#host-normal-back) đã tích hợp tới clock. Thứ tự hiện hành chỉ ởPLAN.
