@@ -1,7 +1,7 @@
 {
   "schema": "kre-feature-index-v1",
   "build": "KR00967",
-  "as_of": "CP113",
+  "as_of": "CP114",
   "sources": {
     "plan": "docs/PLAN.md",
     "contract": "docs/PROTOCOL.md",
@@ -1764,7 +1764,8 @@
           "docs/evidence/promoted-battle-cycles/README.md",
           "docs/evidence/promoted-outcome/README.md",
           "docs/evidence/firstseen-admission/README.md",
-          "docs/evidence/needle-service/README.md"
+          "docs/evidence/needle-service/README.md",
+          "docs/PROTOCOL.md#needle-round-reset"
         ]
       },
       "coverage": {
@@ -1816,7 +1817,8 @@
               "docs/evidence/promoted-battle-cycles/README.md",
               "docs/evidence/promoted-outcome/README.md",
               "docs/evidence/firstseen-admission/README.md",
-              "docs/evidence/needle-service/README.md"
+              "docs/evidence/needle-service/README.md",
+              "docs/PROTOCOL.md#needle-round-reset"
             ]
           },
           "windows_original": {
@@ -1865,7 +1867,8 @@
             "docs/evidence/promoted-battle-cycles/README.md",
             "docs/evidence/promoted-outcome/README.md",
             "docs/evidence/firstseen-admission/README.md",
-            "docs/evidence/needle-service/README.md"
+            "docs/evidence/needle-service/README.md",
+            "docs/PROTOCOL.md#needle-round-reset"
           ]
         },
         "gate": {
@@ -2018,7 +2021,8 @@
         "plan": "docs/PLAN.md#current-order",
         "evidence": [
           "docs/evidence/needle-repeat/README.md",
-          "docs/evidence/needle-service/README.md"
+          "docs/evidence/needle-service/README.md",
+          "docs/PROTOCOL.md#needle-round-reset"
         ]
       },
       "coverage": {
@@ -2052,7 +2056,8 @@
             "state": "observed",
             "refs": [
               "docs/evidence/needle-repeat/README.md",
-              "docs/evidence/needle-service/README.md"
+              "docs/evidence/needle-service/README.md",
+              "docs/PROTOCOL.md#needle-round-reset"
             ]
           },
           "windows_original": {
@@ -2072,14 +2077,16 @@
           "state": "partial",
           "refs": [
             "docs/PROTOCOL.md#needle-service",
-            "server/test_needle_escape.py"
+            "server/test_needle_escape.py",
+            "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/183"
           ],
-          "delivery": "branch_pending"
+          "delivery": "via_pr"
         },
         "integration": {
           "state": "unknown",
           "refs": [
-            "docs/evidence/needle-service/README.md"
+            "docs/evidence/needle-service/README.md",
+            "docs/PROTOCOL.md#needle-round-reset"
           ]
         },
         "gate": {
@@ -2126,7 +2133,8 @@
           "docs/evidence/ending-udp-state-apply/README.md",
           "docs/evidence/current-movement-cycles/README.md",
           "docs/evidence/firstseen-admission/README.md",
-          "docs/evidence/needle-service/README.md"
+          "docs/evidence/needle-service/README.md",
+          "docs/PROTOCOL.md#needle-round-reset"
         ]
       },
       "coverage": {
@@ -2173,7 +2181,8 @@
               "docs/evidence/ending-udp-state-apply/README.md",
               "docs/evidence/current-movement-cycles/README.md",
               "docs/evidence/firstseen-admission/README.md",
-              "docs/evidence/needle-service/README.md"
+              "docs/evidence/needle-service/README.md",
+              "docs/PROTOCOL.md#needle-round-reset"
             ]
           },
           "windows_original": {
@@ -2204,7 +2213,8 @@
             "docs/PROTOCOL.md#death-envelope-admission",
             "server/test_death_envelope.py",
             "docs/PROTOCOL.md#needle-service",
-            "server/test_needle_escape.py"
+            "server/test_needle_escape.py",
+            "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/183"
           ],
           "delivery": "via_pr"
         },
@@ -2226,7 +2236,8 @@
             "docs/evidence/ending-udp-state-apply/README.md",
             "docs/evidence/current-movement-cycles/README.md",
             "docs/evidence/firstseen-admission/README.md",
-            "docs/evidence/needle-service/README.md"
+            "docs/evidence/needle-service/README.md",
+            "docs/PROTOCOL.md#needle-round-reset"
           ]
         },
         "gate": {
@@ -2912,7 +2923,8 @@
           "docs/evidence/promoted-battle-cycles/README.md",
           "docs/evidence/promoted-outcome/README.md",
           "docs/evidence/firstseen-admission/README.md",
-          "docs/evidence/needle-service/README.md"
+          "docs/evidence/needle-service/README.md",
+          "docs/PROTOCOL.md#needle-round-reset"
         ]
       },
       "coverage": {
@@ -2975,7 +2987,8 @@
               "docs/evidence/promoted-outcome/README.md",
               "docs/PROTOCOL.md#receiver-prepost",
               "docs/evidence/firstseen-admission/README.md",
-              "docs/evidence/needle-service/README.md"
+              "docs/evidence/needle-service/README.md",
+              "docs/PROTOCOL.md#needle-round-reset"
             ]
           },
           "windows_original": {
@@ -3042,7 +3055,8 @@
             "docs/evidence/promoted-battle-cycles/README.md",
             "docs/evidence/promoted-outcome/README.md",
             "docs/evidence/firstseen-admission/README.md",
-            "docs/evidence/needle-service/README.md"
+            "docs/evidence/needle-service/README.md",
+            "docs/PROTOCOL.md#needle-round-reset"
           ]
         },
         "gate": {
@@ -3283,7 +3297,8 @@
           "docs/evidence/promoted-battle-cycles/README.md",
           "docs/evidence/promoted-outcome/README.md",
           "docs/evidence/firstseen-admission/README.md",
-          "docs/evidence/needle-service/README.md"
+          "docs/evidence/needle-service/README.md",
+          "docs/PROTOCOL.md#needle-round-reset"
         ]
       },
       "coverage": {
@@ -3370,7 +3385,8 @@
               "docs/evidence/promoted-battle-cycles/README.md",
               "docs/evidence/promoted-outcome/README.md",
               "docs/evidence/firstseen-admission/README.md",
-              "docs/evidence/needle-service/README.md"
+              "docs/evidence/needle-service/README.md",
+              "docs/PROTOCOL.md#needle-round-reset"
             ]
           },
           "windows_original": {
@@ -3446,7 +3462,8 @@
             "docs/PROTOCOL.md#death-envelope-admission",
             "server/test_death_envelope.py",
             "docs/PROTOCOL.md#needle-service",
-            "server/test_needle_escape.py"
+            "server/test_needle_escape.py",
+            "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/183"
           ]
         },
         "integration": {
@@ -3504,7 +3521,8 @@
             "docs/evidence/promoted-battle-cycles/README.md",
             "docs/evidence/promoted-outcome/README.md",
             "docs/evidence/firstseen-admission/README.md",
-            "docs/evidence/needle-service/README.md"
+            "docs/evidence/needle-service/README.md",
+            "docs/PROTOCOL.md#needle-round-reset"
           ]
         },
         "gate": {
