@@ -1,7 +1,7 @@
 {
   "schema": "kre-feature-index-v1",
   "build": "KR00967",
-  "as_of": "2026-11-06 CP138",
+  "as_of": "2026-11-06 CP139",
   "sources": {
     "plan": "docs/PLAN.md",
     "contract": "docs/PROTOCOL.md",
@@ -1265,7 +1265,8 @@
           "docs/evidence/promoted-battle-cycles/README.md",
           "docs/evidence/promoted-outcome/README.md",
           "docs/evidence/integrated-survivor/README.md",
-          "docs/evidence/peer-endpoints/README.md"
+          "docs/evidence/peer-endpoints/README.md",
+          "docs/evidence/peer-endpoints/README.md#cp139"
         ]
       },
       "coverage": {
@@ -1308,7 +1309,8 @@
               "docs/evidence/promoted-outcome/README.md",
               "docs/PROTOCOL.md#receiver-prepost",
               "docs/evidence/integrated-survivor/README.md",
-              "docs/evidence/peer-endpoints/README.md"
+              "docs/evidence/peer-endpoints/README.md",
+              "docs/evidence/peer-endpoints/README.md#cp139"
             ]
           },
           "windows_original": {
@@ -1346,7 +1348,8 @@
             "docs/evidence/promoted-battle-cycles/README.md",
             "docs/evidence/promoted-outcome/README.md",
             "docs/PROTOCOL.md#integrated-survivor",
-            "docs/PROTOCOL.md#peer-endpoint-ip"
+            "docs/PROTOCOL.md#peer-endpoint-ip",
+            "docs/PROTOCOL.md#virtual-peer"
           ]
         },
         "gate": {
@@ -2788,7 +2791,8 @@
         "plan": "docs/PLAN.md#current-order",
         "evidence": [
           "docs/evidence/peer153/README.md",
-          "docs/evidence/peer-endpoints/README.md"
+          "docs/evidence/peer-endpoints/README.md",
+          "docs/evidence/peer-endpoints/README.md#cp139"
         ]
       },
       "coverage": {
@@ -2818,7 +2822,8 @@
           "wine_diagnostic_copy": {
             "state": "unknown",
             "refs": [
-              "docs/evidence/peer-endpoints/README.md"
+              "docs/evidence/peer-endpoints/README.md",
+              "docs/evidence/peer-endpoints/README.md#cp139"
             ]
           },
           "windows_original": {
@@ -3515,7 +3520,8 @@
           "docs/evidence/loading-timeout/README.md",
           "docs/evidence/loading-timeout/README.md#cp136",
           "docs/evidence/integrated-survivor/README.md",
-          "docs/evidence/peer-endpoints/README.md"
+          "docs/evidence/peer-endpoints/README.md",
+          "docs/evidence/peer-endpoints/README.md#cp139"
         ]
       },
       "coverage": {
@@ -3629,7 +3635,8 @@
               "docs/evidence/loading-timeout/README.md",
               "docs/evidence/loading-timeout/README.md#cp136",
               "docs/evidence/integrated-survivor/README.md",
-              "docs/evidence/peer-endpoints/README.md"
+              "docs/evidence/peer-endpoints/README.md",
+              "docs/evidence/peer-endpoints/README.md#cp139"
             ]
           },
           "windows_original": {
@@ -3796,7 +3803,8 @@
             "docs/PROTOCOL.md#loading-timeout",
             "docs/PROTOCOL.md#loading-timeout-positive",
             "docs/PROTOCOL.md#integrated-survivor",
-            "docs/PROTOCOL.md#peer-endpoint-ip"
+            "docs/PROTOCOL.md#peer-endpoint-ip",
+            "docs/PROTOCOL.md#virtual-peer"
           ]
         },
         "gate": {

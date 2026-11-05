@@ -1,6 +1,6 @@
 # KR 00967 — contract tương thích client gốc
 
-Revision kr-legacy-contract-r1; cập nhật06/11/2026 JST (CP138; AUD042 quaCP136, kếCP140).
+Revision kr-legacy-contract-r1; cập nhật06/11/2026 JST (CP139; AUD042 quaCP136, kếCP140).
 **Contract có bằng chứng từng phần; chưa nghiệm thu full codec K2**.
 Lộ trình và thứ tự task chỉ giữ ở [REWRITE_PLAN — KRE](PLAN.md).
 Đây là contract của repo server KR. ADR0009 của bản viết lại là nguồn lịch sử để so sánh;
@@ -4836,3 +4836,24 @@ target+laterfreshmemoryprogress, khôngsửa chúng thànhpass hay suy interpola
 progress nằm trong/giữa calls. Hai run chỉmộtclock/haiinput/no bom/result, khôngfullmatch hoặcCP137
 UIproof. Loopbackalias cùnghost khôngLAN/NAT/Internet. Bước kế chỉPLAN: virtualhosts/IP riêng và
 kiểm source tuple/directUDP; realLAN/K6b/Internet/gate giữunknown/open.
+
+
+<a id="virtual-peer"></a>
+### Direct native UDP giữa hai virtualhost — CP139
+
+**kr_runtime/confirmed hẹp**, [recipe/raw/hash/ownership](evidence/peer-endpoints/README.md#cp139).
+Hai CA/wineserver thật thuộc netnsriêng/prefixriêng, kiểmactualPID trướcinput; rootstub/bridge là
+namespace thứba, khôngdefault route/physicalinterface. TCPchild127→stub10.77.0.1 cóforward; UDP
+đi directqua veth, sourceIP/port đúngactual99=.2:9753/.3:9832,153remoteIPpeer+actual99port.
+C2S99fieldIP0 khớpIPvirtualNICvàsourceđãđo, fieldIP1 khôngđổi/opaque, khôngxácnhận publicIP/NAT.
+
+140PCAPrecords được nốiexactpayload vớiactualnativeingress, key/slot/apply/target/currentprogress
+củaR1ADown/BRight. Có4/6nativeapply/2targetchangesmỗiphase; currentpositions tiến trong/giữacalls.
+Đây khôngchỉsocketaccept haynamespacefrontend. Parentlegacymetadataudp_proxy.mode=stale vẫngiữ
+trongraw nhưng0forward/replay/serviceproxyports0; route đượcchứngminh bằngvethsrc/dst/actual99port,
+khôngdựa vào nhãn.12C2S127/subtype39 cósemanticsunknown, khôngđổi thànhACK/result.
+
+Runchỉclock/haiinput/no bom/result/reset2. Servicebind/address/TCPforwardlà shimdesign thực nghiệm,
+chưa productionLANconfig/auth; mộtphysicalhost/two virtualnetns khôngrealLAN/K6b/Internet/K6c/NAT/
+relay/fullmatch/K6a/gate. CP137finalUIdebt giữ. Bước kế PLAN ghép nativehairesults/reset trên topology
+này; khôngghépruncũ thànhmộttrậnđãnghiệmthu.

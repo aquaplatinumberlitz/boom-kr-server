@@ -135,11 +135,11 @@
         "KR-F001",
         "KR-F015"
       ],
-      "known": "CP137/PR208merged15270fb; CP138twoisolatedaliasruns show153IPsendtarget, mismatchedsourceingress/noapply andmatchingtupleproxyregisteredpeer/nativeapply/target/freshprogress.4317joins, noLANclaim.",
-      "remaining": "Productionbind/advertise127; virtualhost directUDP withreal processnamespace ownership notyetchecked. CP137finalUIdebt/fullauth/authority/gatesremain.",
-      "next_test": "PLAN smoke usernetnamespace/bridge/veth/privateIP/no-default-route then separateCA+wineservernetns/TCPforwardstub/directUDP/noUDPproxy; observe99/153/nativeclock/srcdst/actor. VirtualhostnotrealLAN.",
+      "known": "CP138/PR209mergedcb98a51; CP139actualCA+wineserver separatechildnetns/99IP0/private153/directvethUDP/nativekeytargetprogress2R1inputs.1423joins/702raw; noUDPproxyinroute.",
+      "remaining": "Virtualtworesult/resetcycles notyetmeasured; realLAN/NAT/productionbindpolicy/fullauth/authority/gates andCP137finalUIdebt remain.",
+      "next_test": "PLAN reuse sharedcascade/bothactual17→19/native175180/return/reset2/currentkeysIDs195seed oncurrentvirtualtopology/guards; finalrender4/8/12knownobserver, noStart3/sourceconfigeditsmidrun. PeriodicauditCP140.",
       "acceptance": "Epic checklist: linkedscopedtask/evidence+authoritymatrix vàacceptancegate ởPLAN; từngtaskđóng khôngđóngepic/K5/K6a.",
-      "reason": "Scoped endpointIPbranch measured; sourceauthentication/generalNAT/exactnegativefallback notgeneralized. Preserve oldstrictmovement/checkerfailures and explicit fresh-after-lastapply scope; AUD042/next140.",
+      "reason": "Namespacefrontendaloneinsufficient, actualCA+serverownersverifiedbeforeinput; keep12subtype39opaque/inertlegacyproxymetadata/initialcheckerassumptions ratheralterraw.",
       "sources": [
         "docs/PROTOCOL.md#authority",
         "docs/RESEARCH.md#feature-gaps",
@@ -159,7 +159,8 @@
         "docs/PROTOCOL.md#loading-timeout",
         "docs/PROTOCOL.md#loading-timeout-positive",
         "docs/PROTOCOL.md#integrated-survivor",
-        "docs/PROTOCOL.md#peer-endpoint-ip"
+        "docs/PROTOCOL.md#peer-endpoint-ip",
+        "docs/PROTOCOL.md#virtual-peer"
       ],
       "evidence": [
         "docs/evidence/current-movement-cycles/README.md",
@@ -176,7 +177,8 @@
         "docs/evidence/loading-timeout/README.md",
         "docs/evidence/loading-timeout/README.md#cp136",
         "docs/evidence/integrated-survivor/README.md",
-        "docs/evidence/peer-endpoints/README.md"
+        "docs/evidence/peer-endpoints/README.md",
+        "docs/evidence/peer-endpoints/README.md#cp139"
       ],
       "prs": [
         173,
@@ -209,7 +211,8 @@
         205,
         206,
         207,
-        208
+        208,
+        209
       ],
       "successors": []
     },
@@ -536,6 +539,6 @@
       "successors": []
     }
   ],
-  "as_of_utc": "2026-11-05T16:03:13.146709+00:00",
-  "limits": "Dated manual dispositions; #14 updated through CP138. Snapshot capture UTC only; no semantic/gate auto-certification, immutable completed records preserved."
+  "as_of_utc": "2026-11-05T16:25:51.862966+00:00",
+  "limits": "Dated manual dispositions; #14 updated through CP139. SnapshotcaptureUTC only/no semanticgatecertification/completehistory immutable."
 }
