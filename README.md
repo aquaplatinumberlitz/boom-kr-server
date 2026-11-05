@@ -29,17 +29,18 @@ runtime nào có nguồn, còn thiếu gì và phép kiểm nào giải quyết.
 evidence/hash và câu hỏi; [PLAN](docs/PLAN.md#current-order) giữ duy nhất thứ tự công việc.
 Đây là scope đường bootstrap → login → sảnh → phòng → Battle → kết quả/reset, không kiểm kê toàn client.
 
-CP109 có cùng-run **hai kết quả/return/reset native sau B lên chủ**: movement4pha,12entity/12callback
-nổ mỗi view, terrain195flags/item/TCPguard/ReadyA–StartB đã kiểm. Y389 đã giải; R2report17 làm
-controller nhảUp và bỏhai bomphụ, không éproute14bom.
-[Contract/giới hạn](docs/PROTOCOL.md#promoted-outcome), [evidence](docs/evidence/promoted-outcome/README.md).
-Điểm chặn kế: ảnh sau return vòng2 cònđen, cần kiểm render/input cóowner/focus/wait; chưa fullmatch/K6a.
+CP110 xác nhận **sau hai vòng Battle trên copy Wine, cả A/B hiện lại phòng và A Ready được**:
+ảnh đầu đen, tới mốc chờ4giây đã vẽ phòng trước thao tác focus mới; native110 đủ6/6/lỗi0,
+A phát95/seq868 và cảhai đọc110 sau đó. [Contract/giới hạn](docs/PROTOCOL.md#return2-visual),
+[evidence](docs/evidence/promoted-outcome/README.md). Chưa thử Start trận3, fullmatch/K6a/LAN/Internet.
+CP109 vẫn là nguồn4pha movement/12callback; kiểm movement4pha của run CP110 thiếu tiến triển R1,
+không dùng UI thành công để che failure này. Bước kế đối chiếu mẫu receiver R1 với native snapshot muộn.
 
-[Liên kết issue và quyết định rà acceptance](docs/evidence/issue-reconciliation/README.md) dẫn tới
-catalog/nguồnchuẩn/issueGitHub; snapshot có thời điểm, không tự xácnhận acceptance hoặc đónggate.
-CP108 đã merge [PR177](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/177) tại `985a01d`.
-CP109 tựkiểm/chờPR; review [waived](docs/evidence/checkpoints/review-waiver.json).
-Audit **AUD034/CP109** (đối chiếu issue), periodic kế **CP112**; K0–K7/LAN/Internet vẫn mở.
+[Đối chiếu issue](docs/evidence/issue-reconciliation/README.md): #178 đã giao và đóng sau
+[PR179](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/179), merge `8f3ea2f`;
+#1/#2/#3/#9/#14 còn mở. Snapshot có UTC; lịch sử checkpoint không sửa.
+CP110 tự kiểm/chờPR, review [waived](docs/evidence/checkpoints/review-waiver.json).
+Audit gần nhất **AUD034/CP109**, periodic kế **CP112**; K0–K7 vẫn mở.
 [Yêu cầu chủ dự án](docs/evidence/owner-directives/continuous-work.json): tiếp tục ngay việc kế trong
 PLAN sau mỗi checkpoint/commit/PR, không tự dừng/chờ nhắc.
 

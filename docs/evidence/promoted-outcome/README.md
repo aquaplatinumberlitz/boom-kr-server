@@ -51,3 +51,23 @@ hai ảnhđen, **chưa chứngminh render/input responsive**. Đây là nextactu
 #176 đượcđóngtheonarrowtwo-native-cycleacceptance; finalUI/gates vẫnở#14/PLAN. NextREreusesCP074focus/
 wait4/8/12/currentwindowPID+CP080nativeReadywriter, đo finalsecondreturn không newpackets/stateforcing.
 Fullauth/codec/authority/fullvalidator/allreset/vanilla/fullmatch/K5/K6a/LANInternet vẫn mở.
+
+
+<a id="cp110"></a>
+## CP110 — Secondreturn UI/Ready đã kiểm, không nâng toàn integration
+
+Baseline PR179/merge `8f3ea2f987c9ef7428898502294d75415d048828`; CP109/PR179 là lịch sử đãmerge,
+record complete giữ nguyên. Codex solo/tự kiểm/waived; CP110 chờPR, audit kếCP112.
+Raw `local/research/codex/return2-visual-r{1,2,3}/`; recipes exact, originalseals1232+1116+2292=4640files.
+`r3/return2-verification.json` SHA/runtime/image/phase/actual95/ownerPID; `return2-contact.png` đãxem
+thủcông cảhai phòng ởunfocused4/12, sauReadycảhaihiệnready. Contractchỉở [PROTOCOL](../../PROTOCOL.md#return2-visual),
+[gapreceiver](../../RESEARCH.md#gap-peer-movement), [thứtự](../../PLAN.md#current-order).
+
+Hai partial vàfailurescript giữnguyên; run3 controller/serviceerror0/457,296629636s. SourcefirstpinCP074/
+080/109/KRdata/VNlobby, táidùng mọi site/profile/route. GiảiUI bằngnativePrepareInit/Enable/110/fullcursor
+và actualA95seq868/nativewriter→native110cảhai; khônggọiactual95bodyempty hoặc chỉOSreturn0 làReady.
+4.686checks gồm4640hashraw; typedpacket/framer/1734copiedsecurefields/flagreader emulation riêng.
+StrictfourphaseR1currentprogress failed giữ `return2-target-check.txt`, khôngthay bằng UIpass haygom
+runCP1094phase. Bước kế tra đúngreceiver/window/quota/late snapshots trênraw trước thêmruntime.
+Service/profile/sourcebinary/pack/DB giữ nguyên; prefix copies riêng, namespace/lease/lo-only/filesNSS.
+611feedbackedges Aexplicitrole, khôngrecordAdoBwrite, khônggọi timingchange causalfix. Không gate/fullmatch.

@@ -4044,3 +4044,35 @@ responsive vẫn **unknown**. Khônggọilàhanghoặcfullmatch; kếreuseCP074f
 Readywriter theoPLAN. Fullauth/codec/authority/fullvalidator/generalroom/allreset/Windowsvanilla/
 K5/K6a/LANInternet/fullmatch vẫn mở. Giữ cả4rawrun/startup/partialfailures; sourcefirstreuse/typedprefix/
 missinganalysisartifactcorrections ghiởevidence, khôngsửa scientificraw/historicalcheckpoint.
+
+
+<a id="return2-visual"></a>
+### Render/Ready sau return2 trên Bhost — CP110
+
+**kr_runtime/confirmed hẹp**: [recipe/raw/hash và giới hạn](evidence/promoted-outcome/README.md#cp110).
+Reuse CP074 focus/wait/windowPID và CP080 Readywriter/hover, CP109sameprofile47/knownroute;
+không nativebody/codec mới, không port numeric VN. Baseline PR179/merge8f3ea2f, review waived.
+
+Run457,296629636s/SHA `b289d1d10257302ae73c06571b054e414303bf9d541d1922af044c874e76bc11`:
+hai native121/clock/175/180/view, Aguest/Bchief/sameTCP/12entities. **Sau return2** stage12 gọi→
+PrepareInitDC1AB0→EnableDDF330(arg1,pending0)→hai110DC6ADC/role đủ6/6/errors0.
+Ảnhunfocused0đen; mốc4 và12s đãhiện phòng cảhai trướcthao tác focus mới. Window16777217ở
+DISPLAY0/1 trỏ actualgamePID136/489/gameA/B, không phải cửa sổ launcher. Không tách nguyênnhân
+focus trước đó/thời gian; không suy ảnhđenCP109 là enginehang hoặc đãsửa lỗi runtime.
+
+Sau mốc focus/wait, normalCP080hover AReady→DDE760(currentPrepare/pending0)→DDEAB7→actualC2S95
+**seq868**, body425bytes giữopaque/hash theo currentnativefront/upstream; cảhai native110 đọc6/6
+sau95 và UIhiện ready. Không mặcđịnh95emptybody: assertionempty củascriptphântích đầu đãfail,
+được giữ cùngscriptcũ; mới chỉ xác nhận exactopaque425/bodySHA/currentseq, chưa thêm layout95.
+Không Start trận3, không biến95/110 thành fullauthority hoặcnghiệmthu gate.
+
+Hai runpartial trước giữriêng:225,616s Up8s chỉcachedsample, final158 hoàn tất trướcbound0,643s;
+204,173s capacity6s cũng chỉcachedsample. Run3 giữprofile/service/fuse; thêm read-onlykey/frame/
+end158E5F5FD tạicửa sổ feedbackA vàboundcapacity/Up12s. 611edgeevents/key439/frame167/end1585,
+không forcefield/gamecall. Đây là điều kiện quan sát khác, không causalfix/motionlaw/đổi tốc độ.
+
+**Giới hạn tích hợp:** strict4phase kếthừa fail `currentpositionprogressacrosslatercallbacks R1-A-Down`;
+CP110 không thaythế CP109run4phase proof, không gọi cảrunCP110 là mọiintegrationpass. Nativefield
+getters/framer/typedpacket/flagreader chỉ emulation khácUI/native95. 4.686scopedchecks gồm4.640raw
+size/SHA vàjoins, không ngữ nghĩa/gateoracle. RESEARCH/PLAN giữ gapreceiver/samplemuộn; fullauth/
+codec/validator/authority/allreset/vanilla/K5/K6a/fullmatch/LANInternet còn mở.
