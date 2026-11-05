@@ -4132,10 +4132,10 @@ Guard malformed chỉ kiểm offline; khôngclaimnativeclientđãphátmalformed.
 
 **Phần chưa có:** validfirstseen19 vẫn setdeath mà không trustedlocation/life-state;124 dùng boundslot/
 context/exactcatalog/currentkey/oneconsume vàreported-ineligible, khôngactorposition/inventoryauth.
-Guardtrước đây đã có các điều kiện này nên không RE lại. Report1/18/0 vàkim/rescue CP036–038 đãphục hồi
-nhưng currentservice chưaforward hoặcconsumeinventory choescape, pickupblock17/19chỉxóa ởStart.
-Không tự clear bằng21 hoặc portVNopcode. Bước kế ởRESEARCH/PLAN làsource-firstactualinventory/
-escapepair/peercontrol trước chính sách mới; fullauth/codec/authority/gates/LANInternet vẫn mở.
+Đó là giới hạn lịch sử CP112: CP113–121 đã tích hợp kim/rescue, marker được clear khi commit0/18.
+[CP124](#death-lifecycle-policy) thêm optional19 currenttrap prerequisite; default vẫn nhận firstseen
+hợp envelope. Không tự clear marker bằng21 hoặc gọi reported17 là trustedlife/location. Fullauth/
+codec/authority/gates/LANInternet vẫn mở; việc tiếp chỉ ở PLAN.
 
 
 <a id="needle-service"></a>
@@ -4425,3 +4425,37 @@ riêng chỉ scope129, giữ script/logfail/raw/geometry/result assertions; khô
 là copied-native emulation riêng. Scope modifiedWine/currentpinnedmap/power1–2/normalinput/chosendrain
 outcome; không chứng minh universalchain/wholemovement/auth/lifeauthority/fullmatch/K5/K6a/LAN/Internet.
 AUD038 bổ sung sửa nguồn/gap ngay, không reset cadenceCP124. Bước tiếp chỉ ở PLAN.
+
+
+<a id="death-lifecycle-policy"></a>
+### Corpus17→escape→fresh17→19 và admission19 opt-in — CP124
+
+[Recipe/raw/source/hash](evidence/life-admission/README.md), **kr_runtime confirmed cho corpus/
+run trong scope; emu_choice/design cho guard**, không server gốc hoặc full lifeauthority.
+Tái dùng CP112 blob/cursor, CP113–121 kim/rescue/reset và CP122–123 directTCP/nativeframer.
+12 run đã seal cho64 actualreport:33trap17/20death19/11escape0 hoặc18;14death nối proxyfront,
+6death nối directsocketchunks, tất cả có frame/seq/bodySHA/typednativeparser đã lưu. 6127checks;
+không RE lại writer/codec/nativebody. Cả20death có17 còn mở theo role/epoch bookkeeping;6death sau
+escape đều có17 mới. Corpus chọn lọc không phủ mọi mode/deathcause, không coi marker là worldoracle.
+
+`death_lifecycle: {"mode":"current_trap"}` opt-in trên profile. Với19 hợp envelope/freshness,
+trước cursor/needle state/marker/death/forward: đòi connection là current bound mapped live member,
+không accepted19 cùnggeneration, marker17 cùnggeneration. Reject ghi reason riêng nhưng không
+poisoncursor, forward hoặc mutate actor/inventory. Accepted19 ghi `source:design/generation/trap_sha256`
+rồi giữ đường cũ. Không option giữdefault cũ. Một forged17 rồi19 vẫn có thể qua; không location,
+distance/timer/auth/genericmode oracle. Existing17/19 sendfailure vẫn exceptionclose/abort, cursor/
+marker có thể đã commit trước send; option này không thêm whole-service transaction.
+
+Replay full captured124/127 vào recordingdispatchmodel defaultoff vsopt-in:2229checks,20accepted19/
+forwardpayload/rejection khớp. 202server tests gồm11new test firstseenhightick/nocursorpoison/current17/
+escape0/18/fresh17/reset/member/accepteddeathhistory/malformed/sendfailure/default/config. Model tách Wine.
+
+Runtime control270,594767466s có R1rescue/fresh17/death2/hashlinks/result/return/Start2; R2park5s
+nativeY159→224 chưa279, lỗi controller trước Bbomb/trap/death.1566raw/1651joins giữ, không guardcausality.
+Retry355,750586207s/exit0/error0 giữ guard/profile/client/fuse/probes, chỉ parkwindow5→9s/target279
+không đổi: haiB17→18/aux0/full1707/nativeboth56→26, sauđó mỗi epoch freshA/B17→19/4guardtraplinks,
+chosenrank2/175180/return2/actualReadyB, noStart3.2246basejoins/2130raw+89guardjoins;726actorgetter/
+312packet/12peer153 là copied-native emulation riêng. Park đạt299; Up4s399→334→269→194 **chưa159**,
+actual18 sau đó; peerquota/fulltrajectory/contactthreshold/causalfix vẫn giới hạn như CP120.
+Hai realWineAB/fixedteam/syntheticopponent2/chosentwooutcomes; không fullmatch/K5/K6a/LAN/Internet.
+AUD039 định kỳ qua124/kế128; sourcebinary/pack/DB và completeCP001123 không sửa. Bước kế ở PLAN.

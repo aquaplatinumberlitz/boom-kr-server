@@ -1,0 +1,264 @@
+{
+  "schema": "kre-evidence-manifest-v1",
+  "evidence": [
+    {
+      "id": "CORP-00001",
+      "kind": "local",
+      "path": "local/research/codex/life-admission-corpus-r1/analyze_retained.py",
+      "bytes": 3759,
+      "sha256": "75ed94bb4d63f7bf7093a97039c666d23aca11d7d6bc319ea680bf7defc4bb3c"
+    },
+    {
+      "id": "CORP-00002",
+      "kind": "local",
+      "path": "local/research/codex/life-admission-corpus-r1/append_checkpoint.py",
+      "bytes": 10085,
+      "sha256": "c5e3a50e93416dd0242009757318dbbb1073d9e932b63ab307a54635be2e596a"
+    },
+    {
+      "id": "CORP-00003",
+      "kind": "local",
+      "path": "local/research/codex/life-admission-corpus-r1/artifacts-check.txt",
+      "bytes": 253,
+      "sha256": "649c6624aa6d317dfc1db5e16fea683cfbc9d9cf4dd3df11c0d70e57409054a0"
+    },
+    {
+      "id": "CORP-00004",
+      "kind": "local",
+      "path": "local/research/codex/life-admission-corpus-r1/before-source/probe_service.py",
+      "bytes": 77880,
+      "sha256": "a0c8408757e19f7fc8a68dfe578f1105735e61effc7260baa3af366ad0eb9674"
+    },
+    {
+      "id": "CORP-00005",
+      "kind": "local",
+      "path": "local/research/codex/life-admission-corpus-r1/corpus-check.txt",
+      "bytes": 351,
+      "sha256": "dc1b729791c3197e2f285aca69b249973bb8550a760976d0bd28b95d89a9d4af"
+    },
+    {
+      "id": "CORP-00006",
+      "kind": "local",
+      "path": "local/research/codex/life-admission-corpus-r1/cp124-snapshot/README.md",
+      "bytes": 8508,
+      "sha256": "7a6d4e00fdae39d45c7edd6241cfbcfa96e847c484c04f7f07270b15e5e658b0"
+    },
+    {
+      "id": "CORP-00007",
+      "kind": "local",
+      "path": "local/research/codex/life-admission-corpus-r1/cp124-snapshot/docs/COVERAGE.md",
+      "bytes": 120068,
+      "sha256": "d03677d7d28c4e3fddee6d50f90e4ef5d6304c783b62403d2c8063b1cd2f0aa0"
+    },
+    {
+      "id": "CORP-00008",
+      "kind": "local",
+      "path": "local/research/codex/life-admission-corpus-r1/cp124-snapshot/docs/PLAN.md",
+      "bytes": 32896,
+      "sha256": "811e92e9640366617b62ff5fec16975053ed7246cae9d5dd8b47194d2df8d870"
+    },
+    {
+      "id": "CORP-00009",
+      "kind": "local",
+      "path": "local/research/codex/life-admission-corpus-r1/cp124-snapshot/docs/PROTOCOL.md",
+      "bytes": 381415,
+      "sha256": "07cd73a13d443795a4a6850e167ae4923efcc1e0cc23e826b957848f8f1c7ead"
+    },
+    {
+      "id": "CORP-00010",
+      "kind": "local",
+      "path": "local/research/codex/life-admission-corpus-r1/cp124-snapshot/docs/RESEARCH.md",
+      "bytes": 30254,
+      "sha256": "02951c1983aa0dd1fc9cc0f50046c110a7d4a6a6d8e3eb7a7279a66c58843ca3"
+    },
+    {
+      "id": "CORP-00011",
+      "kind": "local",
+      "path": "local/research/codex/life-admission-corpus-r1/cp124-snapshot/docs/evidence/checkpoints/audits/AUD039.json",
+      "bytes": 3832,
+      "sha256": "bda15ad019d0cfe480456e6eabefef386079f7a7880bd00758d66c63c22acb11"
+    },
+    {
+      "id": "CORP-00012",
+      "kind": "local",
+      "path": "local/research/codex/life-admission-corpus-r1/cp124-snapshot/docs/evidence/issue-reconciliation/github-snapshot.json",
+      "bytes": 185601,
+      "sha256": "a6e045c1a774dc248d4d68999f2432c6f1c4680e40d348a76ae05e9890188ce8"
+    },
+    {
+      "id": "CORP-00013",
+      "kind": "local",
+      "path": "local/research/codex/life-admission-corpus-r1/cp124-snapshot/docs/evidence/issue-reconciliation/review.json",
+      "bytes": 20184,
+      "sha256": "ed8c5ea8f19a0cdaae030a965692e90ef813596e2bf996c11be7c3e524f90f6e"
+    },
+    {
+      "id": "CORP-00014",
+      "kind": "local",
+      "path": "local/research/codex/life-admission-corpus-r1/cp124-snapshot/docs/evidence/life-admission/README.md",
+      "bytes": 3486,
+      "sha256": "5964b144f1bf159bf68a700fd1e4b4a3de109ea0f98d6873b7e62961f96cdad5"
+    },
+    {
+      "id": "CORP-00015",
+      "kind": "local",
+      "path": "local/research/codex/life-admission-corpus-r1/cp124-snapshot/docs/features.json",
+      "bytes": 125615,
+      "sha256": "e238e7353796187f19fd73a937cd5930444b96627dc4934358f4c88f7007869f"
+    },
+    {
+      "id": "CORP-00016",
+      "kind": "local",
+      "path": "local/research/codex/life-admission-corpus-r1/dispatch-check.txt",
+      "bytes": 496,
+      "sha256": "a15b38fdef52f41ae7218f84a5b54d67671b0a55445a4ee2010cade835d9b03d"
+    },
+    {
+      "id": "CORP-00017",
+      "kind": "local",
+      "path": "local/research/codex/life-admission-corpus-r1/dispatch-check2.txt",
+      "bytes": 152,
+      "sha256": "d1954163a486372970712cceadd6700528e263b034ce4611020901be201783f3"
+    },
+    {
+      "id": "CORP-00018",
+      "kind": "local",
+      "path": "local/research/codex/life-admission-corpus-r1/dispatch-compatibility.json",
+      "bytes": 132575,
+      "sha256": "9628300f35989cf26328905b80d1c4c35f090deb2c254db9633b91a11bc64d5d"
+    },
+    {
+      "id": "CORP-00019",
+      "kind": "local",
+      "path": "local/research/codex/life-admission-corpus-r1/docs-check.txt",
+      "bytes": 175,
+      "sha256": "3935824c11a77b880dbc216a11ece608b895bebbde8b5fdbd5dcae021502658f"
+    },
+    {
+      "id": "CORP-00020",
+      "kind": "local",
+      "path": "local/research/codex/life-admission-corpus-r1/github-current.json",
+      "bytes": 185601,
+      "sha256": "a6e045c1a774dc248d4d68999f2432c6f1c4680e40d348a76ae05e9890188ce8"
+    },
+    {
+      "id": "CORP-00021",
+      "kind": "local",
+      "path": "local/research/codex/life-admission-corpus-r1/issue14-before.json",
+      "bytes": 6136,
+      "sha256": "5c09bc22e5f11847f8f09dfa673275e8ef3f66bb641638da323618b71b085592"
+    },
+    {
+      "id": "CORP-00022",
+      "kind": "local",
+      "path": "local/research/codex/life-admission-corpus-r1/issue14-body.md",
+      "bytes": 6149,
+      "sha256": "cce90d922adf4165916cc262c9b576a2d302bafee84f03636ba99a98c260b100"
+    },
+    {
+      "id": "CORP-00023",
+      "kind": "local",
+      "path": "local/research/codex/life-admission-corpus-r1/issues-check.txt",
+      "bytes": 130,
+      "sha256": "bcf9b6f7dd1f236c19681262fa9b62e27457d4825f2f91bdf10299b2b2b1bed4"
+    },
+    {
+      "id": "CORP-00024",
+      "kind": "local",
+      "path": "local/research/codex/life-admission-corpus-r1/join_wire.py",
+      "bytes": 5110,
+      "sha256": "9cf3b88aaa33f234ad4615e757ebf6ccba46f5f9f7cf5b504f75849c707847ef"
+    },
+    {
+      "id": "CORP-00025",
+      "kind": "local",
+      "path": "local/research/codex/life-admission-corpus-r1/new-tests.txt",
+      "bytes": 110,
+      "sha256": "1d83585b97486319bb9c2fff2996c7435fd78e26e63e611aae2ad6791d35db6b"
+    },
+    {
+      "id": "CORP-00026",
+      "kind": "local",
+      "path": "local/research/codex/life-admission-corpus-r1/pending-scope.json",
+      "bytes": 809,
+      "sha256": "36d8c48ca4c28f094ab036128af69869452916e3393995318be90868c3c85367"
+    },
+    {
+      "id": "CORP-00027",
+      "kind": "local",
+      "path": "local/research/codex/life-admission-corpus-r1/policy-decision.json",
+      "bytes": 1358,
+      "sha256": "d7a396ddf10711758d963a8b5fa6792b12fba1edf3898ccedeb740370c4ef425"
+    },
+    {
+      "id": "CORP-00028",
+      "kind": "local",
+      "path": "local/research/codex/life-admission-corpus-r1/replay_dispatch.py",
+      "bytes": 3810,
+      "sha256": "84808bf2298cc368dd3c728c42e37a2244fedbea8033e05158bac198604166d1"
+    },
+    {
+      "id": "CORP-00029",
+      "kind": "local",
+      "path": "local/research/codex/life-admission-corpus-r1/reuse-question.json",
+      "bytes": 3463,
+      "sha256": "809976bc43cb95aaeb36154a2aad49b85d62284e20ef8c68859c3547f4bedf6d"
+    },
+    {
+      "id": "CORP-00030",
+      "kind": "local",
+      "path": "local/research/codex/life-admission-corpus-r1/sequence-corpus.json",
+      "bytes": 70229,
+      "sha256": "25ccfd757a0bd217b31f12b6cd7278f86b5d3e029eaac66e46a35cb96fc2f2b1"
+    },
+    {
+      "id": "CORP-00031",
+      "kind": "local",
+      "path": "local/research/codex/life-admission-corpus-r1/server-tests.txt",
+      "bytes": 302,
+      "sha256": "1e7396c8cc1bd11f1f3794a1b65b087119eab0c2dab1239c61369228dc2e2cbe"
+    },
+    {
+      "id": "CORP-00032",
+      "kind": "local",
+      "path": "local/research/codex/life-admission-corpus-r1/sync_docs_cp124.py",
+      "bytes": 13306,
+      "sha256": "34f7059988aa8c0f6e4a5d266a116fcb994413ee770c41da862d90f7c53cc3d7"
+    },
+    {
+      "id": "CORP-00033",
+      "kind": "local",
+      "path": "local/research/codex/life-admission-corpus-r1/wire-check.txt",
+      "bytes": 183,
+      "sha256": "7373082448084b87d79d76d3d92726fac8d8b1be9753a33a55002af9b79c4bc7"
+    },
+    {
+      "id": "CORP-00034",
+      "kind": "local",
+      "path": "local/research/codex/life-admission-corpus-r1/wire-joins.json",
+      "bytes": 96470,
+      "sha256": "4a384b3c598fae4464103c6c140d08b68450a3b1fa1f547827aba805b26788a1"
+    },
+    {
+      "id": "CORP-00035",
+      "kind": "repository",
+      "path": "docs/evidence/checkpoints/audits/AUD039.json",
+      "bytes": 3832,
+      "sha256": "bda15ad019d0cfe480456e6eabefef386079f7a7880bd00758d66c63c22acb11"
+    },
+    {
+      "id": "CORP-00036",
+      "kind": "local",
+      "path": "local/research/codex/deep-chain-cycles-r2/pr194-exact-head.json",
+      "bytes": 218,
+      "sha256": "b85be596d6320f4a8b78eace40aded348117423ae9d7deff601cc6612829a434"
+    },
+    {
+      "id": "CORP-00037",
+      "kind": "local",
+      "path": "local/research/codex/deep-chain-cycles-r2/pr194-merged.json",
+      "bytes": 211,
+      "sha256": "1b2125b5f4a091a84320872cdb0d686232f5c0b2218adbe9309b569c35f345d8"
+    }
+  ]
+}
