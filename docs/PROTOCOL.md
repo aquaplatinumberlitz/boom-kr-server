@@ -4255,6 +4255,36 @@ và không tiêu credit145 giữ nguyên. Đây là design policy cho fixed rost
 
 Positive sau thay đổi: actual B17→18/aux0, một170/18 tới A;
 E86820(slot1,120,159,0,0) trước56→E86892 sau26/full1707/7/errors0. B local56→26,
-ảnh sau normalBRight cho thấy B thoát/di chuyển trên cả hai view. 190 tests qua; CP116 tự kiểm/chờ PR.
+ảnh sau normalBRight cho thấy B thoát/di chuyển trên cả hai view. 190 tests tại CP116; [PR186](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/186) đã merge `f33f3b8`.
 Cả hai run chỉ một vòng đang active; chưa result/Start2 sau cứu, generalmembership/aux2/fullauthority,
 vanilla/fullmatch/K5/K6a/LAN/Internet. Audit định kỳ AUD036 quaCP116, kếCP120.
+
+
+<a id="rescue-return-start-guard"></a>
+### Sau cứu: result/return có, Start2 bị room guard3 — CP117
+
+**kr_runtime/confirmed hẹp**, [recipe, control, raw/hash](evidence/rescue-service/README.md#cp117).
+Giữ CP116 service/profile/client/fuse; fixedfriendlyAB + synthetic2, B cứu/di chuyển rồi normalASpace/
+BSpace tại chỗ. ActualA/B17→19, existing `all_live_AB_accepted_dead_rank2` chọn175/180; native175/180
+và hai phòng trở lại được quan sát. Đây là **emu_choice**, không originaltie/teamrule hoặc “mọi actor chết”:
+slot2 đối địch tổng hợp vẫn không là client thứ ba.
+
+Nhóm run phân biệt rõ: r1 dùngReady6s từservicerefresh chưa95; r2 timedBLeft cho actualbomb(3,2)/power1,
+chỉB19, chưaresult nên không kiểmReady; r3 đổi sanghaiSpace→cảhai19/result/room, dùng cảhai
+actualreturned585/focus12s→**B95 thật**, mộtStartA không104. r4 giữrecipe và tốiđa3Startclick vẫnkhông104.
+Raw/ảnh/logpartial giữ nguyên; không đổi outcome/fuse hoặc tạo report/state để qua.
+
+Run có breakpoint chỉ đọc tại site Start đã cache: lần đầu `DE0310` pending0, predicate12201A0/12202A0
+đều trả1, `DCAD80` trả0, tớiDE0463build104. Sau return/ReadyB, actualStarthandler vẫn vào,
+pending0/predicate1,1 nhưng **DCAD80 trả3** →switch tạiDE0422 chọnDE0434/error, khôngbuild104.
+Đây định danh nhánh runtime thực, không quy lỗi cho thiếufocus, socket hay actorC bằng suy đoán.
+
+RE tĩnh có mục tiêu từ cùngmodOa08950 cho thấy hai site trả3 tạiDCB7DA/DCB7FD trong vòngslot0..15;
+đường đọc packedstate qua1240A50, group `(word>>2)&7`, helper703A90 và1240D70. Chưa quan sát
+slot/state/helper nào gây nhánh nên **nguyên nhân cụ thể unknown**. Không gán code3 thành “C chưaReady”.
+Site/nativebody cólocator/hash trong evidence; không sửa DB/sourcebinary. Phép đo kế đọc đúng
+slot/state/return3site, rồi mới chọn refresh roster/policy cần thiết.
+
+CP117 chưaStart2/freshrescue/reset saucứu; chỉ mộtresult/room/actualReadyB và nativeblocker,
+không fullmatch/K5/K6a/vanilla/LANInternet. 190tests CP116 reuse do service khôngđổi. Selfcheck/chờPR;
+AUD036 qua116/kế120. ChuỗiCP114kimStart2 giữ scope riêng, không dùng lấp bằng chứng rescue.

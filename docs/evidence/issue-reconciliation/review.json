@@ -1,7 +1,7 @@
 {
   "schema": "kre-issue-review-v1",
   "as_of": "2026-11-05",
-  "baseline": "80e4d48ade43d539ee6ffcc51e912c446160b265",
+  "baseline": "f33f3b86f812d5645914ff1543b961f275c34767",
   "method": "Codex manual acceptance review; native/static/model/design/merge/gate distinct; originalissuebodies archivedlocalbeforeedit, no completecheckpoint rewrite",
   "issues": [
     {
@@ -132,17 +132,18 @@
         "KR-S001",
         "KR-S002"
       ],
-      "known": "CP115PR185merged80e4d48; CP116reverseB18aux0/controlno170/positivecurrentA170/nativeboth56→26/movementvisual/190tests, selfcheckpendingPR.",
-      "remaining": "Result/Start2 afterrescue; aux2/generalteam/roster/life/location/inventoryauth/fullcodec/control/gates/LANInternet unknown.",
-      "next_test": "PLAN: afterrescueB normalBSpace→actualA/B17/19, reuseall-liveABaccepteddead rank2emulatorpolicy/175180/room/actualB95A104/Start2freshrescue, compatibilitysynthetic2mustmeasure.",
+      "known": "CP116PR186mergedf33f3b8. CP117sameprofile/source rescue→actualA/B19/chosen175180/room/actualB95; nativeStartentrypending0/pred1,1/DCAD80guard3/errorbranch/nobuild104.",
+      "remaining": "Actualslot/state/helpercausingguard3 unknown; noStart2/freshrescue. Generalteam/aux2/membership/auth/authority/fullcodec/control/gates/LANInternet remain.",
+      "next_test": "PLANread-onlyDCAD80loopslot/rawpackedgroup/helper703A90/1240D70 andactualreturn3siteDCB7DA/7FD; thenboundedrosterpolicyfix/runtime104Start2freshrescuewithoutforcing/mint/fusechange.",
       "acceptance": "Epic checklist: linkedscopedtask/evidence+authoritymatrix vàacceptancegate ởPLAN; từngtaskđóng khôngđóngepic/K5/K6a.",
-      "reason": "Keep epic/gatesopen; reverseboundedtarget0/1 auxpeercontrolsolved only, nowlifecycleafterrescue. AUD036due116manualrawaudit; completedhistoryunchanged.",
+      "reason": "Keep epic/gatesopen: result/roomReadyboundedprogress, actualnativeblocker insteadguessfocus/rosterCcause; completedhistoryimmutable.",
       "sources": [
         "docs/PROTOCOL.md#authority",
         "docs/RESEARCH.md#feature-gaps",
         "docs/PLAN.md#current-order",
         "docs/PROTOCOL.md#rescue-service",
-        "docs/PROTOCOL.md#rescue-reverse"
+        "docs/PROTOCOL.md#rescue-reverse",
+        "docs/PROTOCOL.md#rescue-return-start-guard"
       ],
       "evidence": [
         "docs/evidence/current-movement-cycles/README.md",
@@ -160,7 +161,8 @@
         182,
         183,
         184,
-        185
+        185,
+        186
       ],
       "successors": []
     },
