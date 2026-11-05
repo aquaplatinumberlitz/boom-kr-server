@@ -30,6 +30,16 @@ def main():
     errors = validate(catalog, previous=previous_catalog())
     if (ROOT / OUTPUT).read_text() != render(catalog):
         errors.append("COVERAGE stale: run python3 tools/feature_catalog.py --generate")
+    # Offline dated snapshot only: current declarations, never semantic acceptance/history rewrite.
+    from check_issue_links import validate as issue_validate, SNAPSHOT, REVIEWS
+    import json
+    issue_errors, issue_warnings = issue_validate(
+        json.loads((ROOT / SNAPSHOT).read_text()), json.loads((ROOT / REVIEWS).read_text()),
+        catalog, json.loads((ROOT / 'docs/evidence/checkpoints/manifest.json').read_text()),
+        (ROOT / 'docs/PLAN.md').read_text())
+    errors.extend(issue_errors)
+    for warning in issue_warnings:
+        print('WARNING:', warning)
     if errors:
         raise SystemExit("\n".join(errors))
     print("Feature catalog declarations/links/anchors/dependencies/generated view OK; semantics/gates not certified.")

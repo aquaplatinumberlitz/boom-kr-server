@@ -1,7 +1,7 @@
 {
   "schema": "kre-feature-index-v1",
   "build": "KR00967",
-  "as_of": "2026-11-05 CP108",
+  "as_of": "2026-11-05 CP109",
   "sources": {
     "plan": "docs/PLAN.md",
     "contract": "docs/PROTOCOL.md",
@@ -163,7 +163,13 @@
             "docs/PLAN.md#gates"
           ]
         }
-      }
+      },
+      "issues": [
+        "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/14",
+        "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/1",
+        "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/2",
+        "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/9"
+      ]
     },
     {
       "id": "KR-B002",
@@ -251,7 +257,11 @@
             "docs/PLAN.md#gates"
           ]
         }
-      }
+      },
+      "issues": [
+        "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/14",
+        "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/2"
+      ]
     },
     {
       "id": "KR-B003",
@@ -344,7 +354,11 @@
             "docs/PLAN.md#gates"
           ]
         }
-      }
+      },
+      "issues": [
+        "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/14",
+        "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/3"
+      ]
     },
     {
       "id": "KR-L001",
@@ -449,7 +463,12 @@
             "docs/PLAN.md#gates"
           ]
         }
-      }
+      },
+      "issues": [
+        "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/14",
+        "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/9",
+        "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/106"
+      ]
     },
     {
       "id": "KR-L002",
@@ -537,7 +556,10 @@
             "docs/PLAN.md#gates"
           ]
         }
-      }
+      },
+      "issues": [
+        "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/14"
+      ]
     },
     {
       "id": "KR-L003",
@@ -627,7 +649,10 @@
             "docs/PLAN.md#gates"
           ]
         }
-      }
+      },
+      "issues": [
+        "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/14"
+      ]
     },
     {
       "id": "KR-R001",
@@ -720,7 +745,10 @@
             "docs/PLAN.md#gates"
           ]
         }
-      }
+      },
+      "issues": [
+        "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/14"
+      ]
     },
     {
       "id": "KR-R002",
@@ -813,7 +841,10 @@
             "docs/PLAN.md#gates"
           ]
         }
-      }
+      },
+      "issues": [
+        "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/14"
+      ]
     },
     {
       "id": "KR-R003",
@@ -926,7 +957,11 @@
             "docs/PLAN.md#gates"
           ]
         }
-      }
+      },
+      "issues": [
+        "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/14",
+        "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/104"
+      ]
     },
     {
       "id": "KR-R004",
@@ -955,7 +990,8 @@
           "docs/evidence/return585-ready/README.md",
           "docs/evidence/ready-input/README.md",
           "docs/evidence/host-normal-back/README.md",
-          "docs/evidence/promoted-battle-cycles/README.md"
+          "docs/evidence/promoted-battle-cycles/README.md",
+          "docs/evidence/promoted-outcome/README.md"
         ]
       },
       "coverage": {
@@ -999,7 +1035,8 @@
               "docs/evidence/return585-ready/README.md",
               "docs/evidence/ready-input/README.md",
               "docs/evidence/host-normal-back/README.md",
-              "docs/evidence/promoted-battle-cycles/README.md"
+              "docs/evidence/promoted-battle-cycles/README.md",
+              "docs/evidence/promoted-outcome/README.md"
             ]
           },
           "windows_original": {
@@ -1054,7 +1091,8 @@
             "docs/evidence/return585-ready/README.md",
             "docs/evidence/ready-input/README.md",
             "docs/evidence/host-normal-back/README.md",
-            "docs/evidence/promoted-battle-cycles/README.md"
+            "docs/evidence/promoted-battle-cycles/README.md",
+            "docs/evidence/promoted-outcome/README.md"
           ]
         },
         "gate": {
@@ -1064,7 +1102,12 @@
             "docs/PLAN.md#gates"
           ]
         }
-      }
+      },
+      "issues": [
+        "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/14",
+        "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/60",
+        "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/176"
+      ]
     },
     {
       "id": "KR-F001",
@@ -1152,7 +1195,10 @@
             "docs/PLAN.md#gates"
           ]
         }
-      }
+      },
+      "issues": [
+        "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/14"
+      ]
     },
     {
       "id": "KR-F002",
@@ -1177,7 +1223,8 @@
           "docs/evidence/ending34-state-boundary/README.md",
           "docs/evidence/ending-udp-state-apply/README.md",
           "docs/evidence/current-movement-cycles/README.md",
-          "docs/evidence/promoted-battle-cycles/README.md"
+          "docs/evidence/promoted-battle-cycles/README.md",
+          "docs/evidence/promoted-outcome/README.md"
         ]
       },
       "coverage": {
@@ -1216,7 +1263,8 @@
               "docs/evidence/ending34-state-boundary/README.md",
               "docs/evidence/ending-udp-state-apply/README.md",
               "docs/evidence/current-movement-cycles/README.md",
-              "docs/evidence/promoted-battle-cycles/README.md"
+              "docs/evidence/promoted-battle-cycles/README.md",
+              "docs/evidence/promoted-outcome/README.md"
             ]
           },
           "windows_original": {
@@ -1251,7 +1299,8 @@
             "docs/evidence/ending34-state-boundary/README.md",
             "docs/evidence/ending-udp-state-apply/README.md",
             "docs/evidence/current-movement-cycles/README.md",
-            "docs/evidence/promoted-battle-cycles/README.md"
+            "docs/evidence/promoted-battle-cycles/README.md",
+            "docs/evidence/promoted-outcome/README.md"
           ]
         },
         "gate": {
@@ -1261,7 +1310,11 @@
             "docs/PLAN.md#gates"
           ]
         }
-      }
+      },
+      "issues": [
+        "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/14",
+        "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/176"
+      ]
     },
     {
       "id": "KR-F003",
@@ -1352,7 +1405,10 @@
             "docs/PLAN.md#gates"
           ]
         }
-      }
+      },
+      "issues": [
+        "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/14"
+      ]
     },
     {
       "id": "KR-F004",
@@ -1389,7 +1445,8 @@
           "docs/evidence/adjacent-owner-control/README.md",
           "docs/evidence/terrain-tcp-guard-cycles/README.md",
           "docs/evidence/current-movement-cycles/README.md",
-          "docs/evidence/promoted-battle-cycles/README.md"
+          "docs/evidence/promoted-battle-cycles/README.md",
+          "docs/evidence/promoted-outcome/README.md"
         ]
       },
       "coverage": {
@@ -1440,7 +1497,8 @@
               "docs/evidence/adjacent-owner-control/README.md",
               "docs/evidence/terrain-tcp-guard-cycles/README.md",
               "docs/evidence/current-movement-cycles/README.md",
-              "docs/evidence/promoted-battle-cycles/README.md"
+              "docs/evidence/promoted-battle-cycles/README.md",
+              "docs/evidence/promoted-outcome/README.md"
             ]
           },
           "windows_original": {
@@ -1493,7 +1551,8 @@
             "docs/evidence/adjacent-owner-control/README.md",
             "docs/evidence/terrain-tcp-guard-cycles/README.md",
             "docs/evidence/current-movement-cycles/README.md",
-            "docs/evidence/promoted-battle-cycles/README.md"
+            "docs/evidence/promoted-battle-cycles/README.md",
+            "docs/evidence/promoted-outcome/README.md"
           ]
         },
         "gate": {
@@ -1503,7 +1562,12 @@
             "docs/PLAN.md#gates"
           ]
         }
-      }
+      },
+      "issues": [
+        "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/14",
+        "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/110",
+        "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/176"
+      ]
     },
     {
       "id": "KR-F005",
@@ -1540,7 +1604,8 @@
           "docs/evidence/opposite-box-control/README.md",
           "docs/evidence/adjacent-owner-control/README.md",
           "docs/evidence/terrain-tcp-guard-cycles/README.md",
-          "docs/evidence/current-movement-cycles/README.md"
+          "docs/evidence/current-movement-cycles/README.md",
+          "docs/evidence/promoted-outcome/README.md"
         ]
       },
       "coverage": {
@@ -1594,7 +1659,8 @@
               "docs/evidence/opposite-box-control/README.md",
               "docs/evidence/adjacent-owner-control/README.md",
               "docs/evidence/terrain-tcp-guard-cycles/README.md",
-              "docs/evidence/current-movement-cycles/README.md"
+              "docs/evidence/current-movement-cycles/README.md",
+              "docs/evidence/promoted-outcome/README.md"
             ]
           },
           "windows_original": {
@@ -1645,7 +1711,8 @@
             "docs/evidence/opposite-box-control/README.md",
             "docs/evidence/adjacent-owner-control/README.md",
             "docs/evidence/terrain-tcp-guard-cycles/README.md",
-            "docs/evidence/current-movement-cycles/README.md"
+            "docs/evidence/current-movement-cycles/README.md",
+            "docs/evidence/promoted-outcome/README.md"
           ]
         },
         "gate": {
@@ -1655,7 +1722,13 @@
             "docs/PLAN.md#gates"
           ]
         }
-      }
+      },
+      "issues": [
+        "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/14",
+        "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/88",
+        "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/102",
+        "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/176"
+      ]
     },
     {
       "id": "KR-F006",
@@ -1687,7 +1760,8 @@
           "docs/evidence/tcp-guard-cycles/README.md",
           "docs/evidence/terrain-tcp-guard-cycles/README.md",
           "docs/evidence/current-movement-cycles/README.md",
-          "docs/evidence/promoted-battle-cycles/README.md"
+          "docs/evidence/promoted-battle-cycles/README.md",
+          "docs/evidence/promoted-outcome/README.md"
         ]
       },
       "coverage": {
@@ -1736,7 +1810,8 @@
               "docs/evidence/tcp-guard-cycles/README.md",
               "docs/evidence/terrain-tcp-guard-cycles/README.md",
               "docs/evidence/current-movement-cycles/README.md",
-              "docs/evidence/promoted-battle-cycles/README.md"
+              "docs/evidence/promoted-battle-cycles/README.md",
+              "docs/evidence/promoted-outcome/README.md"
             ]
           },
           "windows_original": {
@@ -1782,7 +1857,8 @@
             "docs/evidence/tcp-guard-cycles/README.md",
             "docs/evidence/terrain-tcp-guard-cycles/README.md",
             "docs/evidence/current-movement-cycles/README.md",
-            "docs/evidence/promoted-battle-cycles/README.md"
+            "docs/evidence/promoted-battle-cycles/README.md",
+            "docs/evidence/promoted-outcome/README.md"
           ]
         },
         "gate": {
@@ -1792,7 +1868,13 @@
             "docs/PLAN.md#gates"
           ]
         }
-      }
+      },
+      "issues": [
+        "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/14",
+        "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/58",
+        "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/110",
+        "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/176"
+      ]
     },
     {
       "id": "KR-F007",
@@ -1907,7 +1989,10 @@
             "docs/PLAN.md#gates"
           ]
         }
-      }
+      },
+      "issues": [
+        "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/14"
+      ]
     },
     {
       "id": "KR-F008",
@@ -1990,7 +2075,10 @@
             "docs/PLAN.md#gates"
           ]
         }
-      }
+      },
+      "issues": [
+        "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/14"
+      ]
     },
     {
       "id": "KR-F009",
@@ -2124,7 +2212,11 @@
             "docs/PLAN.md#gates"
           ]
         }
-      }
+      },
+      "issues": [
+        "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/14",
+        "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/110"
+      ]
     },
     {
       "id": "KR-F010",
@@ -2201,7 +2293,10 @@
             "docs/PLAN.md#gates"
           ]
         }
-      }
+      },
+      "issues": [
+        "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/14"
+      ]
     },
     {
       "id": "KR-F011",
@@ -2278,7 +2373,10 @@
             "docs/PLAN.md#gates"
           ]
         }
-      }
+      },
+      "issues": [
+        "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/14"
+      ]
     },
     {
       "id": "KR-F012",
@@ -2355,7 +2453,10 @@
             "docs/PLAN.md#gates"
           ]
         }
-      }
+      },
+      "issues": [
+        "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/14"
+      ]
     },
     {
       "id": "KR-F013",
@@ -2432,7 +2533,10 @@
             "docs/PLAN.md#gates"
           ]
         }
-      }
+      },
+      "issues": [
+        "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/14"
+      ]
     },
     {
       "id": "KR-F014",
@@ -2507,7 +2611,10 @@
             "docs/PLAN.md#gates"
           ]
         }
-      }
+      },
+      "issues": [
+        "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/14"
+      ]
     },
     {
       "id": "KR-F015",
@@ -2584,7 +2691,10 @@
             "docs/PLAN.md#gates"
           ]
         }
-      }
+      },
+      "issues": [
+        "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/14"
+      ]
     },
     {
       "id": "KR-X001",
@@ -2616,7 +2726,8 @@
           "docs/evidence/ending34-state-boundary/README.md",
           "docs/evidence/ending-udp-state-apply/README.md",
           "docs/evidence/current-movement-cycles/README.md",
-          "docs/evidence/promoted-battle-cycles/README.md"
+          "docs/evidence/promoted-battle-cycles/README.md",
+          "docs/evidence/promoted-outcome/README.md"
         ]
       },
       "coverage": {
@@ -2662,7 +2773,8 @@
               "docs/evidence/ending34-state-boundary/README.md",
               "docs/evidence/ending-udp-state-apply/README.md",
               "docs/evidence/current-movement-cycles/README.md",
-              "docs/evidence/promoted-battle-cycles/README.md"
+              "docs/evidence/promoted-battle-cycles/README.md",
+              "docs/evidence/promoted-outcome/README.md"
             ]
           },
           "windows_original": {
@@ -2711,7 +2823,8 @@
             "docs/evidence/ending34-state-boundary/README.md",
             "docs/evidence/ending-udp-state-apply/README.md",
             "docs/evidence/current-movement-cycles/README.md",
-            "docs/evidence/promoted-battle-cycles/README.md"
+            "docs/evidence/promoted-battle-cycles/README.md",
+            "docs/evidence/promoted-outcome/README.md"
           ]
         },
         "gate": {
@@ -2721,7 +2834,11 @@
             "docs/PLAN.md#gates"
           ]
         }
-      }
+      },
+      "issues": [
+        "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/14",
+        "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/176"
+      ]
     },
     {
       "id": "KR-X002",
@@ -2768,7 +2885,8 @@
           "docs/evidence/ending34-state-boundary/README.md",
           "docs/evidence/ending-udp-state-apply/README.md",
           "docs/evidence/current-movement-cycles/README.md",
-          "docs/evidence/promoted-battle-cycles/README.md"
+          "docs/evidence/promoted-battle-cycles/README.md",
+          "docs/evidence/promoted-outcome/README.md"
         ]
       },
       "coverage": {
@@ -2827,7 +2945,8 @@
               "docs/evidence/ending34-state-boundary/README.md",
               "docs/evidence/ending-udp-state-apply/README.md",
               "docs/evidence/current-movement-cycles/README.md",
-              "docs/evidence/promoted-battle-cycles/README.md"
+              "docs/evidence/promoted-battle-cycles/README.md",
+              "docs/evidence/promoted-outcome/README.md"
             ]
           },
           "windows_original": {
@@ -2891,7 +3010,8 @@
             "docs/evidence/ending34-state-boundary/README.md",
             "docs/evidence/ending-udp-state-apply/README.md",
             "docs/evidence/current-movement-cycles/README.md",
-            "docs/evidence/promoted-battle-cycles/README.md"
+            "docs/evidence/promoted-battle-cycles/README.md",
+            "docs/evidence/promoted-outcome/README.md"
           ]
         },
         "gate": {
@@ -2901,7 +3021,13 @@
             "docs/PLAN.md#gates"
           ]
         }
-      }
+      },
+      "issues": [
+        "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/14",
+        "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/60",
+        "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/110",
+        "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/176"
+      ]
     },
     {
       "id": "KR-X003",
@@ -3042,7 +3168,13 @@
             "docs/PLAN.md#gates"
           ]
         }
-      }
+      },
+      "issues": [
+        "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/14",
+        "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/60",
+        "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/104",
+        "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/162"
+      ]
     },
     {
       "id": "KR-S001",
@@ -3117,7 +3249,8 @@
           "docs/evidence/ending-udp-state-apply/README.md",
           "docs/evidence/current-movement-cycles/README.md",
           "docs/evidence/host-normal-back/README.md",
-          "docs/evidence/promoted-battle-cycles/README.md"
+          "docs/evidence/promoted-battle-cycles/README.md",
+          "docs/evidence/promoted-outcome/README.md"
         ]
       },
       "coverage": {
@@ -3201,7 +3334,8 @@
               "docs/evidence/ending-udp-state-apply/README.md",
               "docs/evidence/current-movement-cycles/README.md",
               "docs/evidence/host-normal-back/README.md",
-              "docs/evidence/promoted-battle-cycles/README.md"
+              "docs/evidence/promoted-battle-cycles/README.md",
+              "docs/evidence/promoted-outcome/README.md"
             ]
           },
           "windows_original": {
@@ -3328,7 +3462,8 @@
             "docs/evidence/ending-udp-state-apply/README.md",
             "docs/evidence/current-movement-cycles/README.md",
             "docs/evidence/host-normal-back/README.md",
-            "docs/evidence/promoted-battle-cycles/README.md"
+            "docs/evidence/promoted-battle-cycles/README.md",
+            "docs/evidence/promoted-outcome/README.md"
           ]
         },
         "gate": {
@@ -3338,7 +3473,14 @@
             "docs/PLAN.md#gates"
           ]
         }
-      }
+      },
+      "issues": [
+        "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/14",
+        "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/110",
+        "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/162",
+        "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/176",
+        "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/178"
+      ]
     },
     {
       "id": "KR-S002",
@@ -3413,7 +3555,10 @@
             "docs/PLAN.md#gates"
           ]
         }
-      }
+      },
+      "issues": [
+        "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/14"
+      ]
     }
   ]
 }

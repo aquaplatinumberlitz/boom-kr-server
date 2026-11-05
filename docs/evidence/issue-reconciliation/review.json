@@ -1,0 +1,454 @@
+{
+  "schema": "kre-issue-review-v1",
+  "as_of": "2026-11-05",
+  "baseline": "985a01db1fa2db339d1f4e51008c719ad9188547",
+  "method": "Codex manual acceptance review; native/static/model/design/merge/gate distinct; originalissuebodies archivedlocalbeforeedit, no completecheckpoint rewrite",
+  "issues": [
+    {
+      "number": 1,
+      "kre": "KRE-001",
+      "classification": "backlog",
+      "features": [
+        "KR-B001"
+      ],
+      "known": "SHA/layout/source-copy-DB và namespace/lease/ownership recipe đã có; modifiedWine có nativeflows.",
+      "remaining": "Windows original/control PID/window/effective-token/ba coldstart đúngrecipe chưa đủ gate.",
+      "next_test": "TheoPLAN khi mở control: privateWindows/bảncopyfixedlocal/egressblocked, ownership+API/capture cùngrun.",
+      "acceptance": "K0 source/copy/dbidentity và control ownership/isolation/cleanup cósource; Windows/control chưa tự xácnhận từWine.",
+      "reason": "Giữ mở phần control còn thiếu; bỏ quy tắc worker/review cũ, backlogtheoPLAN.",
+      "sources": [
+        "docs/PROTOCOL.md#wcp",
+        "docs/RESEARCH.md#gap-process-patch",
+        "docs/PLAN.md#current-order"
+      ],
+      "evidence": [
+        "docs/evidence/artifacts.json",
+        "docs/evidence/wine/README.md"
+      ],
+      "prs": [
+        7
+      ],
+      "successors": []
+    },
+    {
+      "number": 2,
+      "kre": "KRE-002",
+      "classification": "backlog",
+      "features": [
+        "KR-B001",
+        "KR-B002"
+      ],
+      "known": "ProcessPatch/bootstrap local response/consumer modes cósource; PR8/10 và CP004–007 mở WCP qua nhánhđãđo.",
+      "remaining": "Windows control/fullbootstrap IPC/oneclickuser/configtoànpath chưa đủ; khônggiữ nextstep ngclienttrap đãqua.",
+      "next_test": "Dùng lại bootstrap/WCPsource, chỉ trace consumer/config đangchặn control thực theoPLAN.",
+      "acceptance": "Nativecaller/guard/replyconstraints cóSHA/VA và control recipe; phầnK1/vanilla/fullcontract giữmở ởparent, khônglặpboundedPR8.",
+      "reason": "Thu gọn thành bootstrap residual; code/replyboundedđãmerged khôngtựđóngK1.",
+      "sources": [
+        "docs/PROTOCOL.md#wcp",
+        "docs/RESEARCH.md#gap-wcp-config",
+        "docs/PLAN.md#current-order"
+      ],
+      "evidence": [
+        "docs/evidence/bootstrap-wire/README.md",
+        "docs/evidence/wcp-guard/README.md"
+      ],
+      "prs": [
+        8,
+        10
+      ],
+      "successors": []
+    },
+    {
+      "number": 3,
+      "kre": "KRE-003",
+      "classification": "backlog",
+      "features": [
+        "KR-B003"
+      ],
+      "known": "KRprimitive/framer/typedreader/capturedframes cóoracle, CP057stream/seq/caps model.",
+      "remaining": "Fullmodes/prefixguard/live reconnect/stringblob/reset chưanghiệmthu.",
+      "next_test": "Chỉconsumer socket/mode/bounds cótrigger; khônglặp76split hoặcnớiallocationFFFFFFFF.",
+      "acceptance": "Primitive→framebuilder KR cólocator/hash đãđạt; residualfullcodec/livebounds cónative/modelnegative control rồimớiđóngscope cònlại.",
+      "reason": "Scopeworkerstaticr1 lịch sử; giữ issuecodec tổng hợp cóchecklist thiếu, khôngđổiunknownthànhdone.",
+      "sources": [
+        "docs/PROTOCOL.md#codec-stream-boundaries",
+        "docs/RESEARCH.md#gap-socket-codec",
+        "docs/PLAN.md#current-order"
+      ],
+      "evidence": [
+        "docs/evidence/primitives/README.md",
+        "docs/evidence/codec-boundaries/README.md"
+      ],
+      "prs": [
+        75
+      ],
+      "successors": []
+    },
+    {
+      "number": 9,
+      "kre": "KRE-005a",
+      "classification": "backlog",
+      "features": [
+        "KR-B001",
+        "KR-L001"
+      ],
+      "known": "R2PR10 rebuild/coldstarts/ABI/import và laterlogin/runtime đãqua; main/auxiliarylocale đượcCP073 tách.",
+      "remaining": "Startupintermittent SIGABRT/loginconn3noC2S/rootcause và Windowsvanilla chưagiải.",
+      "next_test": "Chỉ mở error/caller thực tái hiện, phân biệtBconn3none/auxiliarypopup/mainfatal; khôngpatchABIguess hoặc retryoldNGtrap.",
+      "acceptance": "BoundedR2recipe/rebuild/coldstarts đãđạtPR10; residualstartupfault phảiattribution/control trướcfix, khônggánlocalehoặcprobe theoảnh.",
+      "reason": "Giữ startup umbrella; tiếpnhận residual #106 causeunknown, khônggọiawaitworker làblocker.",
+      "sources": [
+        "docs/PROTOCOL.md#launcher-error-attribution",
+        "docs/RESEARCH.md#gap-auth-identity",
+        "docs/PLAN.md#current-order"
+      ],
+      "evidence": [
+        "docs/evidence/wine-r2/README.md",
+        "docs/evidence/nmco-locale-stability/README.md"
+      ],
+      "prs": [
+        10,
+        107
+      ],
+      "successors": []
+    },
+    {
+      "number": 14,
+      "kre": "KRE-005b",
+      "classification": "in_progress",
+      "features": [
+        "KR-L001",
+        "KR-R004",
+        "KR-F002",
+        "KR-F003",
+        "KR-F004",
+        "KR-F005",
+        "KR-F006",
+        "KR-F008",
+        "KR-F009",
+        "KR-X001",
+        "KR-X002",
+        "KR-X003",
+        "KR-S001",
+        "KR-S002"
+      ],
+      "known": "Localmodifiedcopy đã có login/sảnh/phòng/Battle; CP109samerun Bhost haiending/reset/nativeproof riêng, nofullgate.",
+      "remaining": "Cácgate/control/fullauth/codec/authority/fullvalidator/visualsecondreturn/LANInternet chưa nghiệmthu.",
+      "next_test": "TheoPLAN sauđợtreconcile: finalsecondreturnblackframe focus/wait/native95currentroom control, reuseCP074/080; khônglạiY389đãqua.",
+      "acceptance": "Epic checklist: linkedscopedtask/evidence+authoritymatrix vàacceptancegate ởPLAN; từngtaskđóng khôngđóngepic/K5/K6a.",
+      "reason": "Thay scope CP004postWCP cũ bằng epic bảo trì/compatibility; không tạo duplicatecontract/plan.",
+      "sources": [
+        "docs/PROTOCOL.md#authority",
+        "docs/RESEARCH.md#feature-gaps",
+        "docs/PLAN.md#current-order"
+      ],
+      "evidence": [
+        "docs/evidence/current-movement-cycles/README.md",
+        "docs/evidence/host-normal-back/README.md",
+        "docs/evidence/promoted-outcome/README.md"
+      ],
+      "prs": [
+        173,
+        175,
+        177
+      ],
+      "successors": []
+    },
+    {
+      "number": 58,
+      "kre": "KRE-012",
+      "classification": "completed",
+      "features": [
+        "KR-F006"
+      ],
+      "known": "CP049control/guardold124 trướcclaim/current165/secureeffectbothviews; CP075/085/106 bổ sungactualTCPold/sameadmission hẹp.",
+      "remaining": "Fullforged-currentkey/distance/auth/fullvalidator ngoàiacceptance vẫnở#14.",
+      "next_test": "Khônglặpoldbody; triggervariant theoPLAN/#14.",
+      "acceptance": "Stale124rejectedbeforeclaim; currentactual124/effectbothviews/duplicateonce/controlprovenance vàlateractualTCPproof.",
+      "reason": "Đủacceptancehẹp quaCP049vàlaterTCP; khônggán dispatcherinjectionthànhnativewriter.",
+      "sources": [
+        "docs/PROTOCOL.md#pickup-round-key",
+        "docs/RESEARCH.md#gap-floor-pickup",
+        "docs/PLAN.md#current-order"
+      ],
+      "evidence": [
+        "docs/evidence/stale124/README.md",
+        "docs/evidence/tcp-guard-cycles/README.md",
+        "docs/evidence/current-movement-cycles/README.md"
+      ],
+      "prs": [
+        59,
+        129,
+        173
+      ],
+      "successors": []
+    },
+    {
+      "number": 60,
+      "kre": "KRE-013",
+      "classification": "completed",
+      "features": [
+        "KR-X003",
+        "KR-X002",
+        "KR-R004"
+      ],
+      "known": "CP050host/guestpendingEOF:ticketsfenced/175180/107IDclear/chief/provenance; CP052–054/074/101 latervariantscoped.",
+      "remaining": "Accountresume/activeleave/generalroom/allsendfailures ngoàiacceptance, #14.",
+      "next_test": "TheoPLAN chỉactualintegrationtrigger, khônglặphost/guestEOF.",
+      "acceptance": "Host+guestWine175180107110/nativeID/chief, originalticketdrop/no deadpeer sends/idempotentpolicytests.",
+      "reason": "CP050đủboundedacceptance; ghi forfeitdesign vàretainedscheduler kháccancel.",
+      "sources": [
+        "docs/PROTOCOL.md#service-eof",
+        "docs/RESEARCH.md#gap-disconnect-replacement",
+        "docs/PLAN.md#current-order"
+      ],
+      "evidence": [
+        "docs/evidence/service-eof/README.md",
+        "docs/evidence/preclock-cleanup/README.md",
+        "docs/evidence/selector-closed-readiness/README.md"
+      ],
+      "prs": [
+        61,
+        109,
+        163
+      ],
+      "successors": []
+    },
+    {
+      "number": 88,
+      "kre": "KRE-027",
+      "classification": "superseded",
+      "features": [
+        "KR-F005"
+      ],
+      "known": "CP064distance2/power1control; CP081power2distance2root+secondary/no ownlaterdup; CP096actualadjacentmixedownerroot.",
+      "remaining": "CP064adjacentinput khôngđạt; CP096ownlaternotobserved, generaladjacentlifetime/order khôngclaimresolved.",
+      "next_test": "Giữ residualgenericchain ở #14/RESEARCH; khôngretryoldoverlapmovement.",
+      "acceptance": "Originaladjacentmixedowner+distancecontrol được tách sang targetedissues; không ghi toànacceptanceoriginalđãđạt nếuownlateradjacentchưađo.",
+      "reason": "Đóng superseded, khôngcompleted: chuyển positiveadjacent sang#152/CP096, distance/control sang#102, residualgeneralvariants sang#14.",
+      "sources": [
+        "docs/PROTOCOL.md#adjacent-owner-control",
+        "docs/RESEARCH.md#gap-blast-block-chain",
+        "docs/PLAN.md#current-order"
+      ],
+      "evidence": [
+        "docs/evidence/mixed-owner-chain/README.md",
+        "docs/evidence/mixed-input/README.md",
+        "docs/evidence/adjacent-owner-control/README.md"
+      ],
+      "prs": [
+        89,
+        123,
+        153
+      ],
+      "successors": [
+        152,
+        102,
+        14
+      ]
+    },
+    {
+      "number": 102,
+      "kre": "KRE-034",
+      "classification": "completed",
+      "features": [
+        "KR-F005"
+      ],
+      "known": "CP071partial thiếu118; CP081reuseknownFire/input cóactualA3,3power2/B3,5power1, same-rootprocessB/callerEBE21A, laterBcallbacknodupbothviews.",
+      "remaining": "Genericorder/moving/sharedblocker/fullauthority còn#14, khôngcausalityoldinputfailure.",
+      "next_test": "ReuseCP081positive/CP064negative theoPLAN, khônglạicùnggeometry.",
+      "acceptance": "Actualtwoowners/IDs/rootpower2/distance2/secondaryinsidefirstroot/beforeownlater/no duplicatebothviews.",
+      "reason": "Acceptancecủa#102đượcCP081đápứng, CP071khôngbịviếtlạithànhpass.",
+      "sources": [
+        "docs/PROTOCOL.md#mixed-input",
+        "docs/RESEARCH.md#gap-blast-block-chain",
+        "docs/PLAN.md#current-order"
+      ],
+      "evidence": [
+        "docs/evidence/mixed-owner-power/README.md",
+        "docs/evidence/mixed-input/README.md"
+      ],
+      "prs": [
+        103,
+        123
+      ],
+      "successors": []
+    },
+    {
+      "number": 104,
+      "kre": "KRE-035",
+      "classification": "completed",
+      "features": [
+        "KR-R003",
+        "KR-X003"
+      ],
+      "known": "CP072accepted121/A99/B99held/realEOF/175180partial; CP074native107base6/rewind0/final1/ID2→0/chief1/renderroom/Back86 bổsung.",
+      "remaining": "Timeout/loadfail/hostvariant/accountresume ngoàiscope#14.",
+      "next_test": "KhônglạikillBpreclock, reusenative107/path theoPLAN.",
+      "acceptance": "AcceptedStart/preclockrealEOF/discardheld99/no197196153/clock/native175180107slotID/chief/honestpolicy.",
+      "reason": "CP074điền gapnativecleanup củaCP072; khôngdùngserviceemitthaynativeparse.",
+      "sources": [
+        "docs/PROTOCOL.md#preclock-cleanup",
+        "docs/RESEARCH.md#gap-map-spawn-loading",
+        "docs/PLAN.md#current-order"
+      ],
+      "evidence": [
+        "docs/evidence/preclock-eof/README.md",
+        "docs/evidence/preclock-cleanup/README.md"
+      ],
+      "prs": [
+        105,
+        109
+      ],
+      "successors": []
+    },
+    {
+      "number": 106,
+      "kre": "KRE-036",
+      "classification": "superseded",
+      "features": [
+        "KR-L001"
+      ],
+      "known": "CP073đãtáchauxiliarylocalevalid1/0→initfalse2000:0/noTCP; main96A155JSONHTTP khônglàlocale; mainpositive67 vàcontrolledEOF riêng.",
+      "remaining": "RootcausehistoricalmainSIGABRT/startupintermittent chưađóng.",
+      "next_test": "Chuyển attributionstartup residual về#9/RESEARCHgap-auth-identity; probeonlyexactnewmainfault.",
+      "acceptance": "Boundedattribution/clearblockerđãghi; khôngcóstabilityfix hoặcmainrootcauseproven.",
+      "reason": "Supersededby#9 residualstartup, #108/104 đãhoànnativecleanup; khôngđóngnhưđãsửaLocale.",
+      "sources": [
+        "docs/PROTOCOL.md#launcher-error-attribution",
+        "docs/RESEARCH.md#gap-auth-identity",
+        "docs/PLAN.md#current-order"
+      ],
+      "evidence": [
+        "docs/evidence/nmco-locale-stability/README.md",
+        "docs/evidence/preclock-cleanup/README.md"
+      ],
+      "prs": [
+        107,
+        109
+      ],
+      "successors": [
+        9,
+        14
+      ]
+    },
+    {
+      "number": 110,
+      "kre": "KRE-038",
+      "classification": "completed",
+      "features": [
+        "KR-F004",
+        "KR-F006",
+        "KR-F009",
+        "KR-X002",
+        "KR-S001"
+      ],
+      "known": "CP075actualTCP12replay/partialR2; CP085same-run2ending/effects/chain/guards; CP106/109current2cycles tiếpqualifysource.",
+      "remaining": "Fullcurrentforgedbody/auth/location/codec/authority chưađủ #14.",
+      "next_test": "Khônglặpsame-oldselectedbodies; nextPLANactualvisual/integrationgap.",
+      "acceptance": "CurrentseqTCP/bodyorigin/SHA/frontvsproxy/nativeframer/effects/noextras haiending/reset cùngrun.",
+      "reason": "LaterCP085completeacceptanceCP075partial, giữnegativeprobe170scope/notinventcallback.",
+      "sources": [
+        "docs/PROTOCOL.md#tcp-guard-cycles",
+        "docs/RESEARCH.md#gap-diagnostic-service",
+        "docs/PLAN.md#current-order"
+      ],
+      "evidence": [
+        "docs/evidence/current-tcp-replay/README.md",
+        "docs/evidence/tcp-guard-cycles/README.md",
+        "docs/evidence/current-movement-cycles/README.md"
+      ],
+      "prs": [
+        111,
+        129,
+        173
+      ],
+      "successors": []
+    },
+    {
+      "number": 162,
+      "kre": "KRE-064",
+      "classification": "completed",
+      "features": [
+        "KR-S001",
+        "KR-X003"
+      ],
+      "known": "CP101/PR163guardalreadyclosedeventbefore recv; real socketpair/selectbatchrepro/fix/reverse/live/unmarkedbadfd/idempotent129tests.",
+      "remaining": "OldCP099errno9exactstack unknown, no causalhistoricalfix/fullmatchclaim.",
+      "next_test": "ĐồngbộcurrentGitHubclosed; khôngsửacompletedCP101/history.",
+      "acceptance": "Closedbatchno-op/livebytesnotdrop/genuineunmarkedbadfdraises/recipientEPIPEattribution unchanged.",
+      "reason": "GitHubneverclosedtimeline despite PR163closingreference; manifestalreadyclosed. Đóngsauđốichiếubằngchứngcode/test, khôngautoclosefromPR alone.",
+      "sources": [
+        "docs/PROTOCOL.md#selector-closed-readiness",
+        "docs/RESEARCH.md#gap-diagnostic-service",
+        "docs/PLAN.md#current-order"
+      ],
+      "evidence": [
+        "docs/evidence/selector-closed-readiness/README.md",
+        "server/test_departure_send_failure.py"
+      ],
+      "prs": [
+        163
+      ],
+      "successors": []
+    },
+    {
+      "number": 176,
+      "kre": "KRE-071",
+      "classification": "completed",
+      "features": [
+        "KR-R004",
+        "KR-F002",
+        "KR-F004",
+        "KR-F005",
+        "KR-F006",
+        "KR-X001",
+        "KR-X002",
+        "KR-S001"
+      ],
+      "known": "CP108partialđượcgiữ; CP109runBhostsameTCP:4phaseUDP/12actualentitiesand12native158perview/52flagsnapshots/items/12TCPguards/hai175180/585refresh/chiefreset.",
+      "remaining": "14entityoptionalroute khôngđạt/khiA17thìbỏ2extras; finalsecondreturnframesblack, visual/inputresponsive chưađo; gates#14.",
+      "next_test": "TheoPLAN#14nextnarrowvisualroom input; khônglạiY389hayBattlehaiendingđãkiểm.",
+      "acceptance": "Originalnative2Battlecyclemovement/terrain/callback/guard/items/175180/reset/ReadyAStartB/chief/slotID proof, countactualperoutcome.",
+      "reason": "Đủscopehaiendingnative (7+5entities), khôngclaim14optional/fullUI/fullmatch. FinalUIgap chuyển#14/narrowfollowup thayđể#176làtasktrùng.",
+      "sources": [
+        "docs/PROTOCOL.md#promoted-outcome",
+        "docs/RESEARCH.md#gap-room-membership",
+        "docs/PLAN.md#current-order"
+      ],
+      "evidence": [
+        "docs/evidence/promoted-outcome/README.md"
+      ],
+      "prs": [
+        175,
+        177
+      ],
+      "successors": []
+    },
+    {
+      "number": 178,
+      "kre": "KRE-072",
+      "classification": "in_progress",
+      "features": [
+        "KR-S001"
+      ],
+      "known": "Đãrà14openissues/acceptanceto code/PR/evidence, runtime4runssealed noactiveWine.",
+      "remaining": "Commit/PR/exactheadmerge vàsnapshotaftermutations/check cònđanglàm.",
+      "next_test": "HoàntấtcùngCP109 rồiRE#14narrowvisualinputgap.",
+      "acceptance": "MọiopenissuefeatureID/canon/known/gap/test/acceptance/evidence; closescopedmanualonly; mechanicalchecker/snapshotdated; immutablehistory; commitPRmerge vàtiếpRE.",
+      "reason": "Đợt tổ chức hiện hành theochỉđạochủdựán; khôngtracker/semanticgateautoclosure.",
+      "sources": [
+        "docs/PROTOCOL.md#authority",
+        "docs/RESEARCH.md#gap-diagnostic-service",
+        "docs/PLAN.md#current-order"
+      ],
+      "evidence": [
+        "docs/evidence/issue-reconciliation/README.md"
+      ],
+      "prs": [],
+      "successors": []
+    }
+  ],
+  "as_of_utc": "2026-11-05T00:41:28.854544+00:00",
+  "limits": "Manual acceptance review as of CP109; GitHub is source for current work status, snapshot ages. No newtracker/plan/contract/gate acceptance. Completedmanifestrecords immutable, currenttask_states reconciled only in appendedcheckpoint."
+}

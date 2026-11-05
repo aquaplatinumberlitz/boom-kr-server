@@ -3,7 +3,8 @@
 KRE-071/[issue176](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/176), baseline CP107/
 [PR175](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/175)
 `ac6562e5e02a528034e85dfd13554e5d5e789116`. Codex tự kiểm/[review waived](../checkpoints/review-waiver.json),
-CP108 chờ PR; task176 **còn mở**, chưa đạt hai vòng. [Contract/limits](../../PROTOCOL.md#promoted-battle-cycles),
+CP108 đãmerge [PR177](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/177) tại `985a01d`;
+task176 tại snapshotCP108 cònmở/chưađủ2vòng. [CP109](../../PROTOCOL.md#promoted-outcome) bổsung2nativeoutcomes. [Contract/limits](../../PROTOCOL.md#promoted-battle-cycles),
 [câu hỏi](../../RESEARCH.md#gap-room-membership), [thứ tự](../../PLAN.md#current-order).
 Audit định kỳ [AUD033](../checkpoints/audits/AUD033.json) quaCP108; mốc kếCP112.
 
