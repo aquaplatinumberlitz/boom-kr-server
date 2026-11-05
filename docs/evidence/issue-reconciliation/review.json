@@ -1,7 +1,7 @@
 {
   "schema": "kre-issue-review-v1",
   "as_of": "2026-11-05",
-  "baseline": "989dd3a8812c053d9308dad54ce5082bd096befc",
+  "baseline": "80e4d48ade43d539ee6ffcc51e912c446160b265",
   "method": "Codex manual acceptance review; native/static/model/design/merge/gate distinct; originalissuebodies archivedlocalbeforeedit, no completecheckpoint rewrite",
   "issues": [
     {
@@ -132,16 +132,17 @@
         "KR-S001",
         "KR-S002"
       ],
-      "known": "CP110–114/PR180–184 merged; CP115 bounded current rescue18 A/aux1 nativeboth56→26/full7/7/movementvisual, 188tests, selfcheck pendingPR. 2realclients+synthetic2, no fullmatch/gate.",
-      "remaining": "B trapped/A rescue actual18/aux0 and result/Start2 afterrescue; generic roster/life/location/inventory/auth/codec/control/fullgates/LANInternet unknown.",
-      "next_test": "PLAN: sameknownprofile/nativeprobes, normalBtrap/Atouch; actualB18/aux/currentAonlyrejection control then boundedimplementation/runtime, no repeatedhandler/needleRE.",
+      "known": "CP115PR185merged80e4d48; CP116reverseB18aux0/controlno170/positivecurrentA170/nativeboth56→26/movementvisual/190tests, selfcheckpendingPR.",
+      "remaining": "Result/Start2 afterrescue; aux2/generalteam/roster/life/location/inventoryauth/fullcodec/control/gates/LANInternet unknown.",
+      "next_test": "PLAN: afterrescueB normalBSpace→actualA/B17/19, reuseall-liveABaccepteddead rank2emulatorpolicy/175180/room/actualB95A104/Start2freshrescue, compatibilitysynthetic2mustmeasure.",
       "acceptance": "Epic checklist: linkedscopedtask/evidence+authoritymatrix vàacceptancegate ởPLAN; từngtaskđóng khôngđóngepic/K5/K6a.",
-      "reason": "Keep epic open. Fix stale CP110 secondreturn checkbox and old pendingPR paragraphs; beforebody archived CP115 local. Bounded rescue not broadacceptance.",
+      "reason": "Keep epic/gatesopen; reverseboundedtarget0/1 auxpeercontrolsolved only, nowlifecycleafterrescue. AUD036due116manualrawaudit; completedhistoryunchanged.",
       "sources": [
         "docs/PROTOCOL.md#authority",
         "docs/RESEARCH.md#feature-gaps",
         "docs/PLAN.md#current-order",
-        "docs/PROTOCOL.md#rescue-service"
+        "docs/PROTOCOL.md#rescue-service",
+        "docs/PROTOCOL.md#rescue-reverse"
       ],
       "evidence": [
         "docs/evidence/current-movement-cycles/README.md",
@@ -158,7 +159,8 @@
         181,
         182,
         183,
-        184
+        184,
+        185
       ],
       "successors": []
     },

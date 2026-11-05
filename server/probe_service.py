@@ -658,7 +658,7 @@ class ProbeService:
             other = next(peer for peer in self.peers() if peer is not event)
             report['forward170'] = self.send(
                 other, 'start', f'rescue170-18-r{self.room.generation}',
-                opcode=170, body=body[:6] + codec.pack_fields([1], [1]))
+                opcode=170, body=body[:6] + codec.pack_fields([rescue['aux']], [1]))
         if getattr(self, 'needle_escape', False) and subtype in (0, 1):
             needle, reason = self.prepare_needle_escape(event, report, body)
             if reason:
@@ -715,7 +715,7 @@ class ProbeService:
                 event['death_event'] = report
 
     def prepare_rescue_contact(self, event, report, body):
-        """Read-only admission for CP036's actual A18/aux1 variant.
+        """Read-only admission for measured A18/aux1 and B18/aux0 variants.
 
         This validates a declared diagnostic roster and report history, not
         contact distance, authenticated rescuer identity or original authority.
@@ -725,13 +725,15 @@ class ProbeService:
         peers = self.peers()
         if (not self.room.active or self.host_role != 'A' or len(peers) != 2
                 or {peer['role'] for peer in peers} != {'A', 'B'}
-                or not any(peer is event for peer in peers) or event['role'] != 'A'):
+                or not any(peer is event for peer in peers)):
             return None, 'rescue_not_supported_AB_member'
         if len(body) != 28:
             return None, 'unsupported_rescue_shape'
-        # Exact measured uncompressed envelope, including u32 aux=1. Do not
+        other = next(peer for peer in peers if peer is not event)
+        aux = ROLE_SLOTS[other['role']]
+        # Exact measured uncompressed envelope, including peer's slot0/1 aux. Do not
         # narrow arbitrary u32 values into an unchecked u8 peer argument.
-        tail = codec.pack_fields([10, 0x00000518, 0x00010000, 0], [4, 4, 4, 2])
+        tail = codec.pack_fields([10, 0x00000518, aux << 16, 0], [4, 4, 4, 2])
         if body[14:] != tail:
             return None, 'unsupported_rescue_envelope_or_aux'
         if any(peer.get('death_event', {}).get('round') == self.room.generation for peer in peers):
@@ -739,12 +741,12 @@ class ProbeService:
         trap = event.get('pickup_ineligible')
         if not (trap and trap['generation'] == self.room.generation and trap['subtype'] == 17):
             return None, 'rescue_no_current_trap'
-        other = next(peer for peer in peers if peer is not event)
         blocked = other.get('pickup_ineligible')
         if blocked and blocked['generation'] == self.room.generation:
             return None, 'rescue_peer_report_ineligible'
-        return {'trap_sha256': trap['report_sha256'], 'aux': 1,
-                'peer_role': 'B', 'limits': 'declared friendly fixture; contact/life not authenticated'}, None
+        return {'trap_sha256': trap['report_sha256'], 'aux': aux,
+                'peer_role': other['role'],
+                'limits': 'declared friendly fixture; contact/life not authenticated'}, None
 
     def prepare_needle_escape(self, event, report, body):
         """Read-only admission for the bounded CP037/038 report1→0 pair.

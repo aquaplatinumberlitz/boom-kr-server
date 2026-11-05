@@ -2,7 +2,7 @@
 
 Nguồn chuẩn: [contract/giới hạn](../../PROTOCOL.md#rescue-service),
 [câu hỏi/phép thử](../../RESEARCH.md#gap-contact-state), [thứ tự](../../PLAN.md#current-order).
-Codex tự kiểm; review độc lập [waived](../checkpoints/review-waiver.json). CP115 chờ PR;
+Codex tự kiểm; review độc lập [waived](../checkpoints/review-waiver.json). CP115 đã merge [PR185](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/185), `80e4d48`;
 CP114 đã merge [PR184](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/184), `989dd3a`.
 Không sửa record complete hoặc raw cũ; gate giữ mở.
 
@@ -63,3 +63,38 @@ VA/RVA: image base400000, RVA=VA−400000. Controller
 Khác biệt trước/sau106 chỉ giải recipe hiện tại; chưa định danh đầy đủ nguyên nhân native chặn Start.
 Không có aux0/aux2 runtime, cứu chiều B, kết quả sau cứu/Start2, đa inventory, distance/life authority,
 ba client thật, vanilla Windows, fullmatch/K5/K6a/LAN/Internet. Phép thử kế ở RESEARCH; không tạo plan riêng.
+
+
+<a id="cp116"></a>
+## CP116 — Reverse rescue B/aux0
+
+Contract ở[PROTOCOL](../../PROTOCOL.md#rescue-reverse), next test ở
+[RESEARCH](../../RESEARCH.md#gap-contact-state). Source-first dùng đúng CP115/control CP036,
+VN chỉ hướng khái niệm teammate; không thêm native body hoặc đổi profile/binary/DB nguồn.
+`local/research/codex/rescue-reverse-r1/reuse-question.json` giữ sources/hash/known/reuse/gap/minimum.
+
+| Run | Kết quả | SHA run.json |
+|---|---|---|
+| `rescue-reverse-r1/cycles` | 163.670107134s; actualB17seq157→B18seq163/aux0, currentA-onlyguard rejection/no170; local56→26, peerAview vẫnHELP. **Control**, không integrationpass. 915raw sealed. | `a3a0f2b345fab0d87f7c6b7c322365559a3187ea90d68dc1d77ed1e27f44188c` |
+| `rescue-reverse-r2/cycles` | 163.271083062s; measuredreverseguard/170 A/nativeboth56→26/full7/7, movementvisual. 920raw sealed. Oneactivecycle, no result/reset. | `a59808d7093005ce4ef92e96e3eb7ea75e0b1c0a4fb93e672af6878be8c1f04b` |
+
+
+Mỗi root có `cycles-recipe.json`, `runtime-preflight.json`, `runtime-source/`, capture và native probes.
+Controller `local/research/codex/wine_probe_rescue_reverse.py`/`wine_probe_rescue_reverse_forward.py`;
+singlelease/private namespace/lo-only/no-route/filesNSS và A/B prefix/display riêng. Không thay
+source/config giữa run; control hoàn tất/lưu raw trước sửa service rồi chạy positive riêng.
+
+Control: `control-verification.json`, `control-visual.png`, `visual-review.json`, 120 capturedfields/
+66 copiednativepacketcases. Positive: `runtime-verification.json`, `actor-fields.json`,
+`native-reports.json`, `native-153.json`, `reverse-visual.png`/`visual-review.json`.
+**1000** positivejoins gồm **920** rawsizeSHA;
+raw thật/native front/upstream joined, không replay. Native getter/framer là emulation riêng.
+190tests/15rescue methods; oppositeaux/directioninvalid/failedsend/credit/cursor guards giữ.
+Source/runtimeartifact/hash/VA/RVA chung với CP115 ở trên. Peer170/18 SHA:
+`60d5aadf20cf46e9a8fd8fafbb2e7ccddb60fc5011fcc253f294fd14e46d891e`.
+
+
+Chưa kết quả/return/Ready/Start2 sau rescue trong hai run. Next reuse CP083 all-liveAB accepteddead
+rank2 là **emulator policy**, profile có syntheticactor nên phải đo compatibility, không gọi originaltie/teamrule.
+AUD036 thủ công đọc docs→raw/control/positive/code và sửa stale current-status; audit kếCP120.
+CP116 chờ PR, selfcheck/waived; không đóng issue14/gate.

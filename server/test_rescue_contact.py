@@ -14,6 +14,8 @@ class RescueContactTests(unittest.TestCase):
     # CP036 actual A196/199; captured, not generated compatibility oracles.
     trap = bytes.fromhex('4b5aa511a5f696ca59ae96ca539096ca539b96ca5a8d96c8539596ca5395a569')
     rescue = bytes.fromhex('485aa511a5f696ca591c96ca539096ca539f96ca568d96cb5395a569')
+    reverse_trap = bytes.fromhex('4b5ba511a5f696ca57fe96ca539096ca539b96ca5a8d96c8539596ca5395a569')
+    reverse_rescue = bytes.fromhex('485ba511a5f696ca574c96ca539096ca539f96ca568d96ca5395a569')
 
     def setUp(self):
         self.s = service.ProbeService(needle_tests.NeedleEscapeTests().profile(False), Path('/tmp'), {})
@@ -144,12 +146,35 @@ class RescueContactTests(unittest.TestCase):
         self.assertEqual(self.s.room.generation, generation)
         self.assertFalse(self.s.room.active)
 
-    def test_wrong_direction_and_chief_are_not_supported(self):
+    def test_reverse_actual_aux0_clears_B_and_sends170_to_A(self):
+        self.dispatch(self.reverse_trap, self.b)
+        self.sent.clear()
+        row = self.dispatch(self.reverse_rescue, self.b)
+        self.assertNotIn('rejected', row)
+        self.assertEqual(row['rescue_cleared']['aux'], 0)
+        self.assertEqual(row['rescue_cleared']['peer_role'], 'A')
+        self.assertEqual([(r['role'], r['body']) for r in self.sent],
+                         [('A', self.reverse_rescue[:6] + codec.pack_fields([0], [1]))])
+        self.assertNotIn('pickup_ineligible', self.b)
+        self.assertEqual(self.dispatch(self.reverse_rescue, self.b)['rejected'], 'duplicate_report_body')
+
+    def test_other_direction_aux_and_chief_are_not_supported(self):
         body = self.rescue[:1] + codec.pack_fields([1], [1]) + self.rescue[2:]
-        self.assertEqual(self.dispatch(body, self.b)['rejected'], 'rescue_not_supported_AB_member')
+        self.assertEqual(self.dispatch(body, self.b)['rejected'], 'unsupported_rescue_envelope_or_aux')
         self.s.host_role = 'B'
         with self.assertRaisesRegex(ValueError, 'A chief'):
             self.s.start_round()
+
+    def test_reverse_send_failure_preserves_B_trap_cursor_and_inventory(self):
+        self.dispatch(self.reverse_trap, self.b)
+        self.b['needle_inventory'] = dict(generation=1, count=1)
+        before = copy.deepcopy(self.b)
+        def fail(*args, **kwargs):
+            raise BrokenPipeError('direct model reverse failure')
+        self.s.send = fail
+        with self.assertRaises(BrokenPipeError):
+            self.dispatch(self.reverse_rescue, self.b)
+        self.assertEqual(self.b, before)
 
     def test_profile_rejects_unknown_policy_conflicting_promotion_and_missing_fixed_roster(self):
         for policy in [{'mode': 'any'}, {'mode': 'friendly_AB_synthetic2_aux1'}]:

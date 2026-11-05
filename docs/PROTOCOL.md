@@ -4170,7 +4170,8 @@ actualnative afterRightA/B XY200309, ôkimtrống vàsecondCtrlkhông1/0 mới. 
 1consume, defaultoff/onactualoldpairmodels36joins/175server tests. Nativegetters162+12/typed108models
 khácactualcallbacks. Noresult/secondStart/depletedsecondtrap trênnewservice trongrun này.
 
-Phầncònthiếu: runtimecredit/resetquaStart2, secondtrapkhihếtkim, rescue18/team/aux/eligibility vàmulti-charge.
+Giới hạn lịch sử CP113: run này chưa có Start2/depleted. Phần đó được đo tiếp ở
+[CP114](#needle-round-reset), rescue A/aux1 ở[CP115](#rescue-service); multi-charge vẫn unknown.
 Fullinventory/forgedfirstseen/location/authority/auth/fullmatch/K5/K6a/vanilla/LANInternet vẫn mở.
 
 
@@ -4197,9 +4198,8 @@ không nâng K5/K6a/fullmatch/resetmọibiếnthể. Baactualbomb/3complete158/v
 17,1,0,17,19 và R2 17,1,0. 2.082joins gồm1.977rawhash, copiednativefields408/typed264models riêng.
 Nguồn CP113oneescape giữnguyên; oldCP038depletedvà CP114currentreset khácscope rõ.
 
-Next rescue18: nativeCP036consumer/prefix/aux vàcontrolgiữprofileC đãcó; currentservice chưa forward18.
-Trước code phải đối chiếu activeAB/team/auxcandidate/current121/153/profileC cógiữidentityđúng haykhông;
-không gộp kimcredit hoặc suyrescuer/authority từtên/fieldu32. PLAN/RESEARCH giữphépkiểm tối thiểu.
+Bước kế tại thời điểm CP114 là rescue18/profile; đã được giải trong scope fixed A/aux1 ở
+[CP115](#rescue-service), chiều B/aux0 ở[CP116](#rescue-reverse). Thứ tự hiện hành chỉ ở PLAN.
 
 
 <a id="rescue-service"></a>
@@ -4229,8 +4229,32 @@ Run162,695s: actual A17 seq193 → A18 seq199; TCP front/upstream nguyên byte, 
 Native A56→26 tại local callback; B `E86820(slot0,120,159,0,1)`56→26, full7/7/errors0;
 ảnh sau normalRight cho thấy A di chuyển trên hai view. Một run trước chưa phát104 khi106 bị đặt
 sauStart đã được dừng có cleanup/seal, giữ lịch sử; không suy riêng timing106 là toàn nguyên nhân.
-188 tests qua; CP115 tự kiểm/chờ PR, review waived. Cứu chiều ngược/aux0/aux2/full authority/gates vẫn mở.
+188 tests tại CP115; [PR185](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/185) đã merge `80e4d48`, review waived.
+Giới hạn chiều ngược/aux0 của CP115 được đo tiếp ở[CP116](#rescue-reverse); aux2/full authority/gates giữ mở.
 
 Native copied-model tái dùng CP037 xác nhận getter ởE6ED03 trả1/2 được giữ quaframe−6C→−70 và
 E6EF10 đẩy vàoarg3/vf2E0(E6F060). List/gate/profile getter được mô hình hóa; **runtime aux2 unknown**,
 quan hệ authenticated rescuer chưa chứng minh. Không chuyển opcode/offset VN sang KR.
+
+
+<a id="rescue-reverse"></a>
+### Cứu chiều B mắc bóng / A chạm — CP116
+
+Tái dùng [fixed-profile rescue service](#rescue-service),
+[control/positive/raw/hash](evidence/rescue-service/README.md#cp116). **kr_runtime/confirmed hẹp**:
+đổi vai thao tác normalOS, A Down/ B Space/ A Up/ B Right; không đổi client/profile/team121/153/probe.
+Control trên service CP115 cho actual B17→B18 với **inneru32=0**, local E6F060(arg2=1,aux=0)
+56→26/E6F10A; A-only guard từ chối, không170. Ảnh cửa sổ A vẫn HELP trong khi B đã thoát/đi sang phải.
+Không suy trạng thái peer vĩnh viễn56 hoặc mọi đường UDP từ ảnh.
+
+Service mở đúng target B/slot1 và aux0 tới peerA, giữ legacy tên option
+`friendly_AB_synthetic2_aux1` để profile CP115 tiếp tục dùng được. Bản này hỗ trợ hai cặp đã đo:
+A/aux1 hoặc B/aux0. Envelope vẫn28/blob10/header180500000000, aux phải đúng slot của member đối diện;
+không nhận aux2 hoặc tùy ý truncateu32. Freshness/matching17/no19/peer-eligible/send-success-commit
+và không tiêu credit145 giữ nguyên. Đây là design policy cho fixed roster, không xác thực contact/identity.
+
+Positive sau thay đổi: actual B17→18/aux0, một170/18 tới A;
+E86820(slot1,120,159,0,0) trước56→E86892 sau26/full1707/7/errors0. B local56→26,
+ảnh sau normalBRight cho thấy B thoát/di chuyển trên cả hai view. 190 tests qua; CP116 tự kiểm/chờ PR.
+Cả hai run chỉ một vòng đang active; chưa result/Start2 sau cứu, generalmembership/aux2/fullauthority,
+vanilla/fullmatch/K5/K6a/LAN/Internet. Audit định kỳ AUD036 quaCP116, kếCP120.

@@ -1,0 +1,95 @@
+{
+  "id": "AUD036",
+  "trigger": "periodic",
+  "completed_through": "CP116",
+  "recorded_utc": "2026-11-05T04:50:35.440972+00:00",
+  "auditor": "Codex manual self-audit; independent review waived",
+  "read_files": [
+    "README.md",
+    "docs/PLAN.md",
+    "docs/PROTOCOL.md",
+    "docs/RESEARCH.md",
+    "docs/evidence/rescue-service/README.md",
+    "docs/evidence/needle-service/README.md",
+    "docs/features.json",
+    "docs/COVERAGE.md",
+    "server/README.md",
+    "server/probe_service.py",
+    "server/test_rescue_contact.py",
+    "docs/evidence/issue-reconciliation/review.json",
+    "docs/evidence/issue-reconciliation/github-snapshot.json",
+    "local/research/codex/needle-reset-r1/reset-verification.json",
+    "local/research/codex/rescue-service-r2/runtime-verification.json",
+    "local/research/codex/rescue-reverse-r1/control-verification.json",
+    "local/research/codex/rescue-reverse-r1/visual-review.json",
+    "local/research/codex/rescue-reverse-r2/runtime-verification.json",
+    "local/research/codex/rescue-reverse-r2/visual-review.json",
+    "local/research/codex/rescue-reverse-r2/actor-fields.json",
+    "local/research/codex/rescue-reverse-r2/native-reports.json",
+    "local/research/codex/rescue-reverse-r2/native-153.json"
+  ],
+  "method": "Manualordered README→PLAN→PROTOCOLselectedCP113116/CP036/authority→RESEARCHfeaturegaps→evidence→oldCP114reset/currentCP115positive andCP116negative/positive rawreports/code/nativefields/packetmodels/photos. Viewedbothfourpanelcontrols: B18aux0 localclear butAHELPwithout170; withmeasuredpeer170A7/7 bothclear. Checkedactualfront/upstream/noinjection/sourcepreflighthashes/2real+synthetic2 scope. Nativeaux1/2model notruntimeaux2. Readaccepteddeath all-deadresultemulatorpolicy/tests before nextlifecycle, notoriginaltie/teamlaw. Thismanualauditselectedactivepaths, notalllegacyclient/fullrawsemanticreview and notscript-only.",
+  "findings": [
+    {
+      "id": "F1",
+      "stale": "CP113 service remaining paragraph and needle evidence nextstep still read as current Start2 unknown although CP114 solved; qualify historical and link current sources.",
+      "correction": "Qualify CP113 historicallimits andlinkCP114 currentdepleted/Start2; preserve run/currentgap and historical records.",
+      "fixed_in": [
+        "docs/PROTOCOL.md",
+        "docs/evidence/needle-service/README.md"
+      ]
+    },
+    {
+      "id": "F2",
+      "stale": "CP114 protocol nextstep says currentservice noforward18 although CP115 implemented; label as historical and link new contract instead repeating obsolete active work.",
+      "correction": "Replaceobsoleteactive noforward18 nextstep withhistoricalCP114context andlinks CP115/116 contract; currentorder onlyPLAN.",
+      "fixed_in": [
+        "docs/PROTOCOL.md"
+      ]
+    },
+    {
+      "id": "F3",
+      "stale": "PLAN headline still CP108/PR177 summary though CP115 merged; revise current source rather than historical checkpoint.",
+      "correction": "PLANheadline/status currentCP116/reverseactualaux0, nextresultStart2afterrescue; no fullmatch/gates.",
+      "fixed_in": [
+        "docs/PLAN.md"
+      ]
+    },
+    {
+      "id": "F4",
+      "stale": "CP115 pendingPR references currentREADME/PLAN/PROTOCOL/evidence/catalog now stale after exact PR185 merge; update current sources, not completedCP115.",
+      "correction": "CurrentREADME/evidence/catalog updatedPR185merged80e4d48; CP116 selfcheckpendingPR separatefromscope/runtimeproof. OldcompleteCP115snapshotunchanged.",
+      "fixed_in": [
+        "README.md",
+        "docs/PROTOCOL.md",
+        "docs/RESEARCH.md",
+        "docs/features.json",
+        "docs/COVERAGE.md",
+        "docs/evidence/rescue-service/README.md"
+      ]
+    },
+    {
+      "id": "F5",
+      "stale": "serverREADME lacks new bounded rescue config/control provenance; add canonical link and clarify fixed 2real+synthetic actor, no general membership.",
+      "correction": "Linkcanonicalfixed-profile/rescueoption/measuredtwo-way/legacyoptionname retained; no generalmembership/supportinference.",
+      "fixed_in": [
+        "server/README.md"
+      ]
+    },
+    {
+      "id": "F6",
+      "stale": "Issue14 stale CP110 checkbox and accumulating pendingPR paragraphs already corrected CP115 with beforebody evidence; preserve completed snapshot and refresh current state for CP116.",
+      "correction": "Currentissue14before/afterbodies/rawsnapshotkept; CP116newknown/reversegapclosedscoped/nextlifecycle; 5existingopenissuesremain, no narrowtask/gateclose.",
+      "fixed_in": [
+        "docs/evidence/issue-reconciliation/review.json",
+        "docs/evidence/issue-reconciliation/github-snapshot.json"
+      ]
+    }
+  ],
+  "remaining": [
+    "CP116selfcheckpendingcommitPRexactmerge; do not callindependentapproved. Periodicauditnext120; completeCP001115raw/records immutable.",
+    "Result/return/ReadyStart2 afterrescue notmeasured, nextreuseall-liveABaccepteddead rank2policywithsynthetic2compatibility runtime, no force/mint/endmatchsuccessclaim.",
+    "Aux0/1samefixedprofile2realclients provenbounded; aux2/genericteam/roster/contactdistance/life/inventory/auth/fullcodec/vanilla/fullmatch/K5/K6a/LANInternet unknown.",
+    "Outerwrite_stdinreported143 oncewhilelauncherfileexit0/runfullysealed163.271s/noerror; discrepancyrecordedlocal, no causeinvented orruntimeproofsolelyfromexit."
+  ]
+}
