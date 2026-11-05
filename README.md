@@ -41,17 +41,17 @@ Hai copy KR Wine đã chạy login/sảnh/phòng/Battle và các chu kỳ kết 
 [kim/reset](docs/PROTOCOL.md#needle-round-reset), [cứu hai chiều và hai kết quả](docs/PROTOCOL.md#rescue-two-results),
 [deep chain/reset](docs/PROTOCOL.md#recursive-chain-cycles) giữ phạm vi và giới hạn tại nguồn chuẩn.
 
-**Mốc mới CP137:** một run đã ghép movement hai chiều, terrain/item, current-trap guard,
-loading deadline và hai kết quả survivor/reset. [Contract/giới hạn](docs/PROTOCOL.md#integrated-survivor),
-[raw/hash và partial](docs/evidence/integrated-survivor/README.md). Ảnh cuối đen; hai followup bị
-chặn input trướcreturn2, nên chưa xác nhận UI phòng dùng được trên profile tích hợp này.
+**Mốc mới CP138:** đã đo client dùng IP trong153 làm đích UDP; ca nguồnkhácquảngbá cóingress
+nhưng khôngmovementapply. Proxy giữ nguyênpayload với tuple nguồnkhớp đã nối nativepeer/handler/
+target vàmovementhai chiều. [Contract/giới hạn](docs/PROTOCOL.md#peer-endpoint-ip),
+[raw/hash](docs/evidence/peer-endpoints/README.md). Đây là loopbackalias, chưa LAN/NAT/Internet.
 
-CP136/AUD042 đã merge [PR207](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/207) tại`f1d3e9e`.
-CP137 docs/evidence đang tự kiểm; [review độc lập waived](docs/evidence/checkpoints/review-waiver.json).
-#1/#2/#3/#9/#14 và K0–K7 vẫn mở; audit kế **CP140**.
+CP137 đã merge [PR208](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/208) tại`15270fb`;
+finalUIblocker của profiletíchhợp giữ nguyên. CP138 docs/evidence đang tự kiểm;
+[review độc lập waived](docs/evidence/checkpoints/review-waiver.json). Audit kế **CP140**; gates giữmở.
 
-Theo [PLAN](docs/PLAN.md#current-order), đo IP endpoint153/UDPsource trên alias loopback trước
-bước nhiều máy; chưa LAN/Internet. Blocker observer/input UI được giữ, không lặp route vô hạn.
+Theo [PLAN](docs/PLAN.md#current-order), chuyển sang hai virtualhost/networknamespace cóIP riêng
+để đo source tuple vàdirectUDP. Không gọi mô phỏnghaihost là nghiệmthu LAN thật.
 
 Đích đầu: hai client thật chơi hai trận liên tiếp; mở bốn client và hardening sau đó.
 
