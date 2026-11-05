@@ -33,9 +33,10 @@ def main():
     # Offline dated snapshot only: current declarations, never semantic acceptance/history rewrite.
     from check_issue_links import validate as issue_validate, SNAPSHOT, REVIEWS
     import json
+    from checkpoint_store import load as load_checkpoints, current_view
     issue_errors, issue_warnings = issue_validate(
         json.loads((ROOT / SNAPSHOT).read_text()), json.loads((ROOT / REVIEWS).read_text()),
-        catalog, json.loads((ROOT / 'docs/evidence/checkpoints/manifest.json').read_text()),
+        catalog, current_view(load_checkpoints(ROOT), ROOT),
         (ROOT / 'docs/PLAN.md').read_text())
     errors.extend(issue_errors)
     for warning in issue_warnings:

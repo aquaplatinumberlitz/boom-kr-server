@@ -1,0 +1,325 @@
+{
+  "id": "CP001",
+  "previous": "origin",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-10-27T06:24:42.869762+00:00",
+  "question": "Which current KR/Wine facts are missing or contradicted in canonical docs?",
+  "scope": "Initial manual reconciliation; preserve historical runs, record WCP and corrections; no new runtime or gate change",
+  "context_commit": "616542a8bbaa86c631146fce0fd1a935959dbe57",
+  "artifacts": [
+    {
+      "name": "modO memory/base400000",
+      "sha256": "a08950c833d3acab8281049def7b3dc96b221f107eeda01da3a548e34b91dce5"
+    },
+    {
+      "name": "modified Wine R2",
+      "sha256": "7b3b435b5d8e110185359107376b736615ceabe9452cea8154d02c8628f44c29"
+    }
+  ],
+  "locators": [
+    "VA13AD6F0/13AEFE0/13AD782/13AD79C",
+    "VA1234E70/12349E0;RVA=VA-400000",
+    "wcp-probe/cold-1/run 2026-10-27T00:16:39Z20s",
+    "wcp-probe/cold-1/debug 2026-10-27T06:02:03Z15s"
+  ],
+  "owner": "Codex",
+  "reviewer": "Claude Sonnet 5.5 independent reviewer",
+  "findings": [
+    {
+      "summary": "Restore WCP observations and actual caller to the canonical contract",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "limits": "Modified Wine single debug run; no C2S/login/gate; pending synthesis review",
+      "canonical": "docs/PROTOCOL.md#wcp",
+      "evidence": [
+        "E002",
+        "E003",
+        "E004",
+        "E006"
+      ]
+    },
+    {
+      "summary": "Native WCP consumer accepted synthetic payload; mode values2/3 independent of proof for seed storage",
+      "source": "kr_static",
+      "status": "confirmed",
+      "method": "emulation",
+      "limits": "Synthetic socket/allocator; zero input cannot prove +48 stores seed; live fields not read",
+      "canonical": "docs/PROTOCOL.md#wcp",
+      "evidence": [
+        "E001",
+        "E006",
+        "E008"
+      ]
+    },
+    {
+      "summary": "Guard after connect is the next hypothesis, not an observed failed guard",
+      "source": "kr_static",
+      "status": "candidate",
+      "method": "static",
+      "limits": "Existing ASM only; no new function analysis; MW_SEP10 root cause unknown",
+      "canonical": "docs/RESEARCH.md#q-023",
+      "evidence": [
+        "E006",
+        "E015",
+        "E016"
+      ]
+    },
+    {
+      "summary": "Record merged R2/worker policy separately from private WCP pending work",
+      "source": "design",
+      "status": "design",
+      "method": "documentation",
+      "limits": "Integration facts from existing merge commits/review reports; not semantic gate approval",
+      "canonical": "docs/PLAN.md",
+      "evidence": [
+        "E017",
+        "E018",
+        "E008"
+      ]
+    }
+  ],
+  "verification": [
+    {
+      "check": "Hash all new WCP metadata and inspect saved breakpoint/register/run observations",
+      "result": "pass",
+      "evidence": [
+        "E009"
+      ],
+      "limits": "Read-only assertions; no new runtime/semantic root-cause test"
+    },
+    {
+      "check": "Source artifact verify5/5 unchanged",
+      "result": "pass",
+      "evidence": [
+        "E010"
+      ],
+      "limits": "Host-local identities, not client compatibility"
+    },
+    {
+      "check": "Manual audit raw/docs and errata",
+      "result": "observed",
+      "evidence": [
+        "E008"
+      ],
+      "limits": "Claude source audit plus Codex final core-doc reading; no fresh disassembly or runtime"
+    }
+  ],
+  "evidence": [
+    {
+      "id": "E001",
+      "kind": "local",
+      "path": "local/research/codex/wcp-consumer-oracle-r1.json",
+      "bytes": 699,
+      "sha256": "108daaaada2bffd9a7ac286a7f9f4ed4fd158a97aec874d916d4cf70d730157b"
+    },
+    {
+      "id": "E002",
+      "kind": "local",
+      "path": "local/research/wcp-probe/cold-1/debug/run.json",
+      "bytes": 2827,
+      "sha256": "07c411e832dfc9fdf88e1134ba183b6564ed3a0e88ab8727c4d8332dba7a30bc"
+    },
+    {
+      "id": "E003",
+      "kind": "local",
+      "path": "local/research/wcp-probe/cold-1/debug/client.log",
+      "bytes": 350236,
+      "sha256": "521adbcb89338b468b2fb8d531e89d95842ac7eec01fd440403579dd357d28b6"
+    },
+    {
+      "id": "E004",
+      "kind": "local",
+      "path": "local/research/wcp-probe/cold-1/debug/CALog-run.txt",
+      "bytes": 65,
+      "sha256": "5e234c309190b81be7af6b4c7d9f838f70ca90230075cf84b724c407d34af3d3"
+    },
+    {
+      "id": "E005",
+      "kind": "local",
+      "path": "local/research/claude/wcp/wcp-r1.md",
+      "bytes": 9855,
+      "sha256": "8d7f39b84fee3dd5a5c2b26245a8d4aeadf6ee9d2adc36524dc7ed3c3e83dbcc"
+    },
+    {
+      "id": "E006",
+      "kind": "local",
+      "path": "local/research/claude/wcp/wcp-r2.md",
+      "bytes": 6779,
+      "sha256": "46cfa286f83215cd937837f3091fd07cde6b654f4753b16acc08bf4664047e15"
+    },
+    {
+      "id": "E007",
+      "kind": "local",
+      "path": "local/research/codex/wcp-next-checkpoint.json",
+      "bytes": 4548,
+      "sha256": "83c3cc3e3105120c111212c5296c5c0055cfe68e52c5d79c1a1b23b7737bc9ca"
+    },
+    {
+      "id": "E008",
+      "kind": "local",
+      "path": "local/research/doc-workflow/claude-audit.md",
+      "bytes": 21660,
+      "sha256": "7e7da0476d895ad8d4966c4174c7a6b8ae4821b640d1989323933e9accf7d8c0"
+    },
+    {
+      "id": "E009",
+      "kind": "local",
+      "path": "local/research/doc-workflow/reconciliation-checks.json",
+      "bytes": 342,
+      "sha256": "472a3e768a989ae6125ea3dc9f4cbd51bc72fa81ffd4ca08b8d291a6473e9bbe"
+    },
+    {
+      "id": "E010",
+      "kind": "local",
+      "path": "local/research/doc-workflow/artifact-verification.txt",
+      "bytes": 253,
+      "sha256": "649c6624aa6d317dfc1db5e16fea683cfbc9d9cf4dd3df11c0d70e57409054a0"
+    },
+    {
+      "id": "E011",
+      "kind": "local",
+      "path": "local/research/codex/wine_probe_wcp.py",
+      "bytes": 16570,
+      "sha256": "8c61e88f537f6dcfc995b64835f394923c517d7edd2b891b04eafecf249fc860"
+    },
+    {
+      "id": "E012",
+      "kind": "local",
+      "path": "local/research/wcp-probe/cold-1/run/run.json",
+      "bytes": 2974,
+      "sha256": "7ea693991ce856e52541d579674a0d71727809ea030ab9caa133975d1ef979b7"
+    },
+    {
+      "id": "E013",
+      "kind": "local",
+      "path": "local/research/wcp-probe/cold-1/run/windows-01.txt",
+      "bytes": 1273,
+      "sha256": "05ab81573cc0d94e8d97cbd1c93505b76ab11e48967da0eb4e95686aff5569ab"
+    },
+    {
+      "id": "E014",
+      "kind": "local",
+      "path": "local/research/wcp-probe/cold-1/debug/windows-04.txt",
+      "bytes": 1273,
+      "sha256": "02c5faabae1aa9cfc3358cd5b627dc2e5337b406ef6dfe5b0cfdc477ab65c591"
+    },
+    {
+      "id": "E015",
+      "kind": "local",
+      "path": "local/research/claude/wcp/raw2/1234e40-near.asm",
+      "bytes": 3377,
+      "sha256": "1d125cf897d28655be5dda624735366deebf81e7c8c103c714902ff5a0d98b4c"
+    },
+    {
+      "id": "E016",
+      "kind": "local",
+      "path": "local/research/claude/wcp/raw2/1232458-post-connect.asm",
+      "bytes": 4941,
+      "sha256": "c3a08fdcf727f34b7debe6931468ac8572b9ce67096a7105e776d0c47864ba79"
+    },
+    {
+      "id": "E017",
+      "kind": "local",
+      "path": "local/research/claude/review/r2-review-final.md",
+      "bytes": 4466,
+      "sha256": "aa644391de8d2d6d8628bdbaee14375070b0ac90c15783f334198ef3b05d0c7a"
+    },
+    {
+      "id": "E018",
+      "kind": "local",
+      "path": "local/research/claude/review/worker-policy-review.md",
+      "bytes": 3136,
+      "sha256": "ca834c30751f4dd72c6b065d42f840f67119129ead7354d6c14caf990555ae40"
+    },
+    {
+      "id": "E019",
+      "kind": "artifact",
+      "path": "/home/admin/boom/repos/boomkr-re/out/modO.bin",
+      "bytes": 31858688,
+      "sha256": "a08950c833d3acab8281049def7b3dc96b221f107eeda01da3a548e34b91dce5"
+    }
+  ],
+  "delta": {
+    "added": [
+      "First durable checkpoint; WCP contract/metadata published before review"
+    ],
+    "corrected": [
+      "Old socket2-silent claim is only historical R2 scope",
+      "WCP r1 caller1255350 not actual run1255AC0",
+      "+48zero does not establish seed storage",
+      "1234E70return1 not WCP acceptance proof"
+    ],
+    "superseded": [
+      {
+        "path": "local/research/codex/wcp-next-checkpoint.json",
+        "sha256": "83c3cc3e3105120c111212c5296c5c0055cfe68e52c5d79c1a1b23b7737bc9ca",
+        "reason": "Old no-proof-until-debugger and PR11-pending/next-step text superseded by new canonical sources; raw not changed"
+      }
+    ]
+  },
+  "blockers": [
+    "First C2S/login absent",
+    "Cause of MW_SEP10 unknown",
+    "Full K0/K1/K2 and Windows control unapproved"
+  ],
+  "next_steps": [
+    {
+      "id": "NEXT-WCP-GUARD",
+      "task": "KRE-005a",
+      "state": "active",
+      "action": "Follow RESEARCH Q-023 narrow debugger guard/error measurement; no speculative next packet",
+      "owner": "Codex runtime + Claude RE",
+      "reviewer": "Claude Sonnet 5.5 independent reviewer"
+    }
+  ],
+  "review": {
+    "status": "approved",
+    "as_of_utc": "2026-10-27T06:32:24.351386+00:00",
+    "reference": "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/13#issuecomment-6435434555",
+    "scope": "Checkpoint/docs/workflow code at reviewed head; no runtime gate approval; source observations re-verified",
+    "head": "4f64ad2a0e3bab7a8d94bca895647c85b5384510"
+  },
+  "docs_sync": [
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "Current state links latest evidence rather than stale silent-only observation"
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "Current task/gate/merged table separated from historical plan"
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "updated",
+      "reason": "WCP contract and scoped corrections, no false root cause"
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "updated",
+      "reason": "Resolve old consumer question; activate guard/unknown measurements"
+    },
+    {
+      "path": "docs/evidence/wcp/README.md",
+      "state": "updated",
+      "reason": "New recipe/run metadata and review snapshot"
+    },
+    {
+      "path": "docs/evidence/checkpoints/README.md",
+      "state": "updated",
+      "reason": "Durable recording/audit policy"
+    },
+    {
+      "path": "docs/evidence/bootstrap-wire/README.md",
+      "state": "updated",
+      "reason": "Historical next trap relabelled"
+    },
+    {
+      "path": "docs/evidence/primitives/README.md",
+      "state": "updated",
+      "reason": "Historical ownership/next-step source linked"
+    }
+  ]
+}

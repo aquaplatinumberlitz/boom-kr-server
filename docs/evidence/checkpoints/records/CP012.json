@@ -1,0 +1,1894 @@
+{
+  "id": "CP012",
+  "previous": "CP011",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-10-28T00:11:27.290292+00:00",
+  "question": "Where do KR UI inputs go, what blocks login endpoint/connect, and why does the wait dialog return1 before another request? Can runtime-guided recovery produce captured C2S beyond bootstrap?",
+  "scope": "Grouped16 sequential isolated Wine probes plus bounded targeted static interpretation/native parser replay under issue14. Same immutable diagnostic file copy; two runtime-only global reset experiments; periodic manual audit.",
+  "context_commit": "e5ff916d69d41a214ab9afd23a90743eaef99f73",
+  "owner": "Codex",
+  "reviewer": "Codex",
+  "artifacts": [
+    {
+      "name": "KR UI copy unchanged",
+      "sha256": "70708abab77ebd1cfd230a35f4997b8e84330f74442ed77b0b74c7b03180c82c"
+    },
+    {
+      "name": "KR modO image native oracle",
+      "sha256": "a08950c833d3acab8281049def7b3dc96b221f107eeda01da3a548e34b91dce5"
+    }
+  ],
+  "locators": [
+    "VA1259C00→125A5A0;125C250→1504563;1504770→1504C10; imagebase400000/RVA=VA-400000",
+    "CCtrlButton vt16F105C/key1508006/mouse1509376; click callback10FC540 command1002; stage+AC interface",
+    "1101E20→1101BA0→11047D0→1255A30→1255AC0→13A8300; DNS dream-login-ca.nexon.com loopback; ports3838/3848 in captures",
+    "13AD782/13AD79C return1 after guard;11049C0 caller return11013FE; stage+2C04 wait vt1751764/vf98=15037F7",
+    "Modal150398C checks global1A966FC; setter1503C82 receives1 return15039A5; static write1503DFD; runtime-only reset1→0",
+    "send-zero:13ADD21 guard1→14EF650→WinSock send69;4 captured C2S15 frames with31-byte payload each; native14EF300 seq40,43,46,49 plus CRC/partial negatives"
+  ],
+  "findings": [
+    {
+      "summary": "Input reaches KR WndProc/UI manager; click confirm invokes command1002 through live interface callback, while tested character target is a button",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/evidence/ui-handler/README.md",
+      "evidence": [
+        "E136",
+        "E137",
+        "E142",
+        "E143",
+        "E148",
+        "E149",
+        "E154",
+        "E155",
+        "E160",
+        "E161",
+        "E019",
+        "E054"
+      ],
+      "limits": "Private-copy callback/coordinate scope; no edit control observed at two tested points, not proof manual login absent. RTTI/static vtable must not replace actual interface callback."
+    },
+    {
+      "summary": "Unmapped login hostname causes null DNS/resolver0; explicit local mapping leads resolver1 and third local connect",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#wcp",
+      "evidence": [
+        "E178",
+        "E179",
+        "E184",
+        "E185",
+        "E112"
+      ],
+      "limits": "Prefix and timing differ; all egress isolated and names files-only loopback. Observed two ports not whole endpoint inventory. Third connect precedes injected click; do not infer click causality."
+    },
+    {
+      "summary": "Third-connection hello reaches native WCP poll/consumer1; subsequent attempt enters CWaitForLoginDlg and returns1/attempt0 in baseline diagnostic state",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/evidence/ui-handler/README.md",
+      "evidence": [
+        "E196",
+        "E197",
+        "E202",
+        "E203",
+        "E117"
+      ],
+      "limits": "Later no-hello retry timeout belongs another connection. No original-client/auth success from poll or UI."
+    },
+    {
+      "summary": "Modal resets its result0, then global1A966FC branch sets1; in two runtime-only1→0 experiments the wait persists and capture gains4x69 C2S bytes",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/evidence/ui-handler/README.md",
+      "evidence": [
+        "E208",
+        "E209",
+        "E214",
+        "E215",
+        "E220",
+        "E221",
+        "E072",
+        "E070"
+      ],
+      "limits": "Same file, distinct prefix/timing/instrumentation; bounded observed difference supports targeted hypothesis, not exclusive cause or original global lifecycle. Both completed reset captures inspected; earlier live66-only assumption corrected."
+    },
+    {
+      "summary": "C2S15 is now connected through logical send guard/virtual14EF650/WinSock69 to four captured frames on socket3",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#wcp",
+      "evidence": [
+        "E220",
+        "E221",
+        "E100",
+        "E099"
+      ],
+      "limits": "Preconnect guard0/socketNULL contrasted with postconnect guard1. Opcode15 semantic remains unresolved; no auth request/success or lobby."
+    },
+    {
+      "summary": "Actual KR parser consumes each captured69-byte C2S15 frame with seq40+3n and matching CRC; bad-CRC and partial negatives reject",
+      "source": "kr_static",
+      "status": "confirmed",
+      "method": "emulation",
+      "canonical": "docs/PROTOCOL.md#wcp",
+      "evidence": [
+        "E087",
+        "E086",
+        "E088",
+        "E084"
+      ],
+      "limits": "Synthetic receiver/prefix-check disabled; native parser independent of VN candidate decryption. Wrong fixed55 and fixed40 trials retained, no general rollover/reconnect/key derivation conclusion."
+    },
+    {
+      "summary": "Runtime global reset and third-connection fixture are diagnostic emulator choices; original binary/DB unchanged",
+      "source": "emu_choice",
+      "status": "design",
+      "method": "design",
+      "canonical": "docs/evidence/ui-handler/README.md",
+      "evidence": [
+        "E076",
+        "E107",
+        "E110"
+      ],
+      "limits": "Memory reset dies with run; no extra file patch. Existing NMCO/identity/overlay omissions still inherited; no gate promotion."
+    }
+  ],
+  "verification": [
+    {
+      "check": "137 mechanical assertions over16 run identities/isolation/sequential timing/sealed hashes, input markers, capture sizes and12 native frame cases",
+      "result": "pass",
+      "evidence": [
+        "E116",
+        "E115"
+      ],
+      "limits": "Count measures verification scope, not percent progress; source interpretations manually audited."
+    },
+    {
+      "check": "Five source artifact/DB hashes unchanged",
+      "result": "pass",
+      "evidence": [
+        "E110"
+      ],
+      "limits": "Does not prove modified-copy equivalence."
+    },
+    {
+      "check": "Periodic manual audit AUD004 throughCP012",
+      "result": "observed",
+      "evidence": [
+        "E112"
+      ],
+      "limits": "Audit itself retained in audits manifest; self-audit under owner waiver, not independent approval."
+    }
+  ],
+  "evidence": [
+    {
+      "id": "E001",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/auth-after-hello-hashes.json",
+      "bytes": 11203,
+      "sha256": "3ec42943e823c5a88ea84097918d8deb60b2b514f40a47a0e1663cc4398dd3a3"
+    },
+    {
+      "id": "E002",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/auth-after-hello-launcher.log",
+      "bytes": 5224,
+      "sha256": "9e5cdf54fa6cc0df334561834b0b39964e18c0db2b0103cf130eb934cb73ef30"
+    },
+    {
+      "id": "E003",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/auth-after-hello-recipe.json",
+      "bytes": 962,
+      "sha256": "4ebc8e71b5f5354b89dc7b1e313bcfaebb4af0143e1bb6076e7c9f26fb42ff71"
+    },
+    {
+      "id": "E004",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/auth-after-hello.gdb",
+      "bytes": 1155,
+      "sha256": "d305d247973b843676f2dc4553d94c381f0f21e17995dad4cbdfc37136aa10b6"
+    },
+    {
+      "id": "E005",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/auth-builder.asm",
+      "bytes": 7595,
+      "sha256": "597d544f107c7386da3822c7aa2a42c84bd976b88d068f753243d0ad168a7174"
+    },
+    {
+      "id": "E006",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/auth-dialog-hashes.json",
+      "bytes": 10919,
+      "sha256": "59d22046e79d0b228081c98fe913e888bd21ad4f12cb0047d03500703d5d8a31"
+    },
+    {
+      "id": "E007",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/auth-dialog-launcher.log",
+      "bytes": 5221,
+      "sha256": "b01e6017aff2dada4c3e1b38c8f2243c99fc1502700347cbc22b3486978d858b"
+    },
+    {
+      "id": "E008",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/auth-dialog-recipe.json",
+      "bytes": 947,
+      "sha256": "b1edf5d750d7522186e8b3e5d4622e6698b8b78a0847d708258d3d66d8d4f314"
+    },
+    {
+      "id": "E009",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/auth-dialog.gdb",
+      "bytes": 947,
+      "sha256": "d45aa48cfb21ed2b78f052ad9abece654607d8d0ec012b8570fd7bd4a5fcab7b"
+    },
+    {
+      "id": "E010",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/button-command-hashes.json",
+      "bytes": 9708,
+      "sha256": "6e848337b366273cd2fb5f64b4688f5a5187aa37d90c9ebdf1aa7bd5731af4e5"
+    },
+    {
+      "id": "E011",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/button-command-launcher.log",
+      "bytes": 5651,
+      "sha256": "645594a74b6152923aa64db195d798b17935545d5fb08ee1cc53dcfed8bd3389"
+    },
+    {
+      "id": "E012",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/button-command-recipe.json",
+      "bytes": 906,
+      "sha256": "bc41bf2274d6d0874a3e94b02a50685f4fc6e10d320898c7fff286b0cfe4986e"
+    },
+    {
+      "id": "E013",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/button-command.gdb",
+      "bytes": 803,
+      "sha256": "5521cbe2d9835b2b124112a23ca8467f1c58eb197edd96b76fac9e357cd01bdc"
+    },
+    {
+      "id": "E014",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/button-up.asm",
+      "bytes": 5955,
+      "sha256": "3a51d2509a08ba0f15ca7f1639ff1aa1e099c851d7c16b90c17562df7b1ddd9a"
+    },
+    {
+      "id": "E015",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/click-signal.asm",
+      "bytes": 1015,
+      "sha256": "26c507817dae75fe63cca4b33bfed19aaa2a43f116976a997e426e3af07ec3fe"
+    },
+    {
+      "id": "E016",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/command-id.asm",
+      "bytes": 546,
+      "sha256": "57bbe73e74fbf131c348b2ce569d35eeaa162cb14881b89463e5617f0e94ced1"
+    },
+    {
+      "id": "E017",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/confirm-chain.asm",
+      "bytes": 9653,
+      "sha256": "d6a42c863e2d9e0975bb98c3577fe1a18ba67677cef18f74171ad8c74c444fc2"
+    },
+    {
+      "id": "E018",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/control-callbacks.asm",
+      "bytes": 7745,
+      "sha256": "a1f75eed538b1f263ea5990cbb382ee44e80899a4d5ab06fa657cb072aa4dfc3"
+    },
+    {
+      "id": "E019",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/control-types.json",
+      "bytes": 530,
+      "sha256": "2c4fea0e0d3e7d26afcd90dc1ade46fe4921fffd9e10b6cb4df19741ff7a2255"
+    },
+    {
+      "id": "E020",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/dream-local-hello-c2s-1.bin",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "E021",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/dream-local-hello-c2s-2.bin",
+      "bytes": 66,
+      "sha256": "ba1ed0f5373e023c288c889488b6e1186d097959407ef931fa87582dd48fe43f"
+    },
+    {
+      "id": "E022",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/dream-local-hello-c2s-3.bin",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "E023",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/dream-local-hello-c2s-4.bin",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "E024",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/dream-local-hello-hashes.json",
+      "bytes": 12293,
+      "sha256": "54025e4cd952648d143aa9905acd567b93619a4b2de80bd0d59bc09cf572c9a8"
+    },
+    {
+      "id": "E025",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/dream-local-hello-launcher.log",
+      "bytes": 5417,
+      "sha256": "3c2222da74b03939558ca9b95e708ab01dab9ff63816cef4f803f5f3d334c1cb"
+    },
+    {
+      "id": "E026",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/dream-local-hello-recipe.json",
+      "bytes": 960,
+      "sha256": "714bcd5b7948cc0c754030673bb232815391c525914f7cade2a0d70f78ee2664"
+    },
+    {
+      "id": "E027",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/dream-local-silent-hashes.json",
+      "bytes": 11315,
+      "sha256": "956a188ae55c7605055df86ee46d974de881361242ecbb82fdef119b2db49be5"
+    },
+    {
+      "id": "E028",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/dream-local-silent-launcher.log",
+      "bytes": 4911,
+      "sha256": "0059ca3c0bc487c406451e78bb0a2e94f11e86948ac716fbb31ce973d1accf4f"
+    },
+    {
+      "id": "E029",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/dream-local-silent-recipe.json",
+      "bytes": 960,
+      "sha256": "df98519da7c9c69cbabbb126d5169f272f11f220ead58c9281ead4425129de1f"
+    },
+    {
+      "id": "E030",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/endpoint-dns-hashes.json",
+      "bytes": 10978,
+      "sha256": "9e38d857edabd356df39421a6b4e995419bef040db74e61991c7bc7659ee4aab"
+    },
+    {
+      "id": "E031",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/endpoint-dns-launcher.log",
+      "bytes": 4508,
+      "sha256": "15d7ebf7e14e7edbe5e3dbc4f05d8d11c2a21d3d4154905f51b91aa3fe365d4c"
+    },
+    {
+      "id": "E032",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/endpoint-dns-recipe.json",
+      "bytes": 902,
+      "sha256": "f1bfe6aa859ff358595f9ef22b7e1e0db6c2a6facb641672f12e84f994e01cba"
+    },
+    {
+      "id": "E033",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/endpoint-dns.gdb",
+      "bytes": 1284,
+      "sha256": "0e91c3bb2541651b9877f20c596612c877ff0b346ff848197bfdb5652e3f8dcf"
+    },
+    {
+      "id": "E034",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/endpoint-resolver.asm",
+      "bytes": 11764,
+      "sha256": "d56c957fbc63d4be0d5089cb197843fe2c77b2ad9ab4ad8ee0d5dc9c92098538"
+    },
+    {
+      "id": "E035",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/hello-wire-summary.json",
+      "bytes": 839,
+      "sha256": "0c2c549f49a07786b6037597cb3a52dfbdaec0fc8a5c670891fc01706aa5b6d3"
+    },
+    {
+      "id": "E036",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/hit-controls-hashes.json",
+      "bytes": 9610,
+      "sha256": "e22335b0e122ec1949ebe07d5e669206298fee2e525371bd5b0fe8a65c11c5e7"
+    },
+    {
+      "id": "E037",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/hit-controls-launcher.log",
+      "bytes": 5652,
+      "sha256": "b1bdb0fa4da17dbdeb18a9a768062335f9bf5a63143913ec09ac18b24ecf4eea"
+    },
+    {
+      "id": "E038",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/hit-controls-recipe.json",
+      "bytes": 900,
+      "sha256": "2d4830f70efc987652517db8b0874d834dff5ee159f493ea520b9d5da29967f2"
+    },
+    {
+      "id": "E039",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/hit-controls.gdb",
+      "bytes": 757,
+      "sha256": "6d6961857530d8e4a5666bc14bdfeefa659e801c44d04a91e6a19b12d13184f7"
+    },
+    {
+      "id": "E040",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/identity-check.asm",
+      "bytes": 9371,
+      "sha256": "3a184ce7f56b6900d807e943ebded7ecc15c848da6ec16e35fa48a427ec955e1"
+    },
+    {
+      "id": "E041",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/identity-validation.asm",
+      "bytes": 6602,
+      "sha256": "13aec6b66a5981bc6312cffd54171d9f0c1766310b660239da02181d90b2112e"
+    },
+    {
+      "id": "E042",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/input-entry.asm",
+      "bytes": 1119,
+      "sha256": "58933907dd3c5846be389ffe43b0b7ecd3c48ae84dcfac138d3ca39c29ae9259"
+    },
+    {
+      "id": "E043",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/input-manager-hashes.json",
+      "bytes": 9659,
+      "sha256": "dd1b63332cb14afd358ced233c74951a16632d9d8ba42217282c90c57a18b524"
+    },
+    {
+      "id": "E044",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/input-manager-launcher.log",
+      "bytes": 5652,
+      "sha256": "e9e5bca42d55322a46a5ea229f5b3e3f1378d7ff66b476c4ae4bb9dca822fecc"
+    },
+    {
+      "id": "E045",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/input-manager-recipe.json",
+      "bytes": 903,
+      "sha256": "1b4eddca7572fcf13553c58e5ff81b60b97f03d24e9217b8acfe5c6db283aad0"
+    },
+    {
+      "id": "E046",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/input-manager.asm",
+      "bytes": 9722,
+      "sha256": "2b78a786ae2b8a0263e07fe1eea3e5e91ab5c58023e3b0fc22da3842ad8c4878"
+    },
+    {
+      "id": "E047",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/input-manager.gdb",
+      "bytes": 915,
+      "sha256": "c21e7946dadb7c7e6a7f0d8c30e0ec207c62f166955656d2a9050a04b55cb60e"
+    },
+    {
+      "id": "E048",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/login-action-hashes.json",
+      "bytes": 9610,
+      "sha256": "ec8938500c2f03ffc86ccd9b1eebe1c911bb2453ab3a5eecfdc5fc6baedbc21c"
+    },
+    {
+      "id": "E049",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/login-action-launcher.log",
+      "bytes": 5654,
+      "sha256": "bd786bef935ab61ad463e4fa5a387a06af44ce0e8440ffdf2824e4ca1df2665d"
+    },
+    {
+      "id": "E050",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/login-action-recipe.json",
+      "bytes": 900,
+      "sha256": "6f35a8b3ad8529687b303153ce4a78f7605dba9885ca3239e52bfa2f8e40b116"
+    },
+    {
+      "id": "E051",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/login-action-tail.asm",
+      "bytes": 6027,
+      "sha256": "086271a6b7371adaf7cd51daaad3d1bf365fab7e6937a0b11a40eca5e661f3c6"
+    },
+    {
+      "id": "E052",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/login-action.gdb",
+      "bytes": 637,
+      "sha256": "5c07333859c17f2db48b97381a78e552a4b2f3db06c4feaa66eaec6be2209c11"
+    },
+    {
+      "id": "E053",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/login-actions.asm",
+      "bytes": 5364,
+      "sha256": "bbb3a85e13a327752fb944bcf960da84af029414ae23d5ce03d1ed079c47007f"
+    },
+    {
+      "id": "E054",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/login-click-native.asm",
+      "bytes": 7467,
+      "sha256": "521e360ba9bb194ce5d977b51f7406b5af701a2bf8f40866af8d2e7c22259833"
+    },
+    {
+      "id": "E055",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/login-click.asm",
+      "bytes": 34,
+      "sha256": "f5b797f9af750ea3bd03734a736fcefdedaf2737c79c5417a2f1caebd4fe3263"
+    },
+    {
+      "id": "E056",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/login-command.asm",
+      "bytes": 142,
+      "sha256": "c2f0e8d693e9f4ec78ed5e84f099f99653d3a0c962de5a27128bfb3d87fca980"
+    },
+    {
+      "id": "E057",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/login-connect-hashes.json",
+      "bytes": 12044,
+      "sha256": "3af5413fe2259655aab02ed9af06b3789cfaf078b6324a7934d8d351a2345153"
+    },
+    {
+      "id": "E058",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/login-connect-launcher.log",
+      "bytes": 4701,
+      "sha256": "4a830e515eb0bcfa0f0d45b7bea2111f94eac9542013c5b9c76575cb77871dd2"
+    },
+    {
+      "id": "E059",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/login-connect-recipe.json",
+      "bytes": 905,
+      "sha256": "f38c582a8128e0e9468f2a296ee1b0bf0a95400060ee4dfee5063abf00e9e96e"
+    },
+    {
+      "id": "E060",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/login-connect.gdb",
+      "bytes": 944,
+      "sha256": "78a618bd907ae83b1f36d2d0b195e1972076aabc9952709e632586a9bf24a2b7"
+    },
+    {
+      "id": "E061",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/login-feature-gates.asm",
+      "bytes": 1853,
+      "sha256": "a6ed8075cbaaf82c025eb71b5820ace4b9b9d80698c62feb7bb7d11c147938df"
+    },
+    {
+      "id": "E062",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/login-gates-hashes.json",
+      "bytes": 9561,
+      "sha256": "66e195249c8a1e524cc04f8ee2e5902219ae705fc760f21be11f5608efe5b6a0"
+    },
+    {
+      "id": "E063",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/login-gates-launcher.log",
+      "bytes": 5653,
+      "sha256": "718bf3d6c7e0a2965e84caa579753c9294448a283edc9be16e799e7d5e6880af"
+    },
+    {
+      "id": "E064",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/login-gates-recipe.json",
+      "bytes": 897,
+      "sha256": "d22427785dd50cb3ab7b3088b8a07441980b2e1e02c4c6a51b9330f49c942696"
+    },
+    {
+      "id": "E065",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/login-gates.gdb",
+      "bytes": 977,
+      "sha256": "ff67ddddb046a4b79440713b3efb40e30d31c1ca57ba0a392c405534eddcb573"
+    },
+    {
+      "id": "E066",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/login-send-decision.asm",
+      "bytes": 1527,
+      "sha256": "2b877b8d41212fd3872a26e99b8355c6fd9a986747b4e3aaacb2e534aef9906b"
+    },
+    {
+      "id": "E067",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/login-socket-config.asm",
+      "bytes": 2816,
+      "sha256": "24ddd457aafde819df79f784a30b154b811ddfcbb6fb4af4fe106ed915b541de"
+    },
+    {
+      "id": "E068",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/login-vtable.json",
+      "bytes": 505,
+      "sha256": "b951407ecbace62ce8e8e7d1436e4edb7397b7593dfc4eb0ec2e97c57de20d16"
+    },
+    {
+      "id": "E069",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/login-wcp.asm",
+      "bytes": 5476,
+      "sha256": "70504585a2c34c36ac360460964096fd115d8441c49eb2f3edf9e8fe3fe9c59d"
+    },
+    {
+      "id": "E070",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/modal-core.asm",
+      "bytes": 10571,
+      "sha256": "5135721c1256fe02b66a603221eadfaed4557e55c5b1f49262d8b1724f693db2"
+    },
+    {
+      "id": "E071",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/modal-global-set.asm",
+      "bytes": 1147,
+      "sha256": "f12f299550fda8541a0ddb8120ec41d8f6ab0e80a270f8dd72103214e97d5c5b"
+    },
+    {
+      "id": "E072",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/modal-global-xrefs.json",
+      "bytes": 400,
+      "sha256": "f0ece2e82bde1b322b6343f20ce7798faa7f52a0f5d6b0d56722e320f5a77274"
+    },
+    {
+      "id": "E073",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/modal-global-zero-hashes.json",
+      "bytes": 11258,
+      "sha256": "2b7770db62012935535cdec91da829d8d756d7ed2ee47bffcda826d97fd4bea0"
+    },
+    {
+      "id": "E074",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/modal-global-zero-launcher.log",
+      "bytes": 5827,
+      "sha256": "c75ac6a070db8aaf162f2b68c5dde5b295b21fb9b75f45320d15395fc913db7f"
+    },
+    {
+      "id": "E075",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/modal-global-zero-recipe.json",
+      "bytes": 965,
+      "sha256": "be4615c178e2622f0c56f28f705c2cbfcb53b5dc607f73d7d2067da882ee04e6"
+    },
+    {
+      "id": "E076",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/modal-global-zero.gdb",
+      "bytes": 1270,
+      "sha256": "47433ef3b02710a55c968106a705eba8a9b1d446559cc70e8cfde20eb99b597b"
+    },
+    {
+      "id": "E077",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/modal-result-hashes.json",
+      "bytes": 10979,
+      "sha256": "58d0053ab51616a340c52b0c278d8fad9d58f245a3b87a1e8ea2021ec2c6d2d6"
+    },
+    {
+      "id": "E078",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/modal-result-launcher.log",
+      "bytes": 5225,
+      "sha256": "acf022bc43f36686afb36398f1d18a2f58e0cb22506d96a70b7a69584d2cc2e9"
+    },
+    {
+      "id": "E079",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/modal-result-recipe.json",
+      "bytes": 950,
+      "sha256": "8bab757ce796f7ccb4faf75a4d37a9b9a47d22038d0d281b3c1a665af1c5ec28"
+    },
+    {
+      "id": "E080",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/modal-result.gdb",
+      "bytes": 1103,
+      "sha256": "25d7c2e88e733125b086ea2f83e31e196b634c19dac523f90c96976dfb4258fd"
+    },
+    {
+      "id": "E081",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/mouse-key-gates.asm",
+      "bytes": 16270,
+      "sha256": "073da9364764324fc5245a62470fc4919a7e4cfa80adb48a17bb28955420255d"
+    },
+    {
+      "id": "E082",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/native-send.asm",
+      "bytes": 813,
+      "sha256": "9f7dbff30c777e3953d518b5ee80e5710afbe0482143a348090d6d630c29ff26"
+    },
+    {
+      "id": "E083",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/oracle-dependencies.json",
+      "bytes": 920,
+      "sha256": "a18869507502345cbaf4c3be20f4d3b2fda8a11807ed6cfec301babd123ad11e"
+    },
+    {
+      "id": "E084",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/packet15-oracle-key40.json",
+      "bytes": 5167,
+      "sha256": "cd0f5e51e42139c7b71ec66eb43217d83f6a710df6d83bdf15a77b40bb5c0b6b"
+    },
+    {
+      "id": "E085",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/packet15-oracle-key40.py",
+      "bytes": 2792,
+      "sha256": "9ee1d432a85e96668bb8e6233814010ea378b74d0b065de75e78040b29db4e6c"
+    },
+    {
+      "id": "E086",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/packet15-oracle-seq.json",
+      "bytes": 5166,
+      "sha256": "6c1d310cbe61858da45f47a38dd3aadca42630b4dac795c5b4cbcbf733cfcf9e"
+    },
+    {
+      "id": "E087",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/packet15-oracle-seq.py",
+      "bytes": 2807,
+      "sha256": "75fed93522ecaf58ecb0a8074edf92455f1e9d99a09b7cb9824b8919c95b07ff"
+    },
+    {
+      "id": "E088",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/packet15-oracle.json",
+      "bytes": 5176,
+      "sha256": "03b75933e37d5c0db65c196d7628d1298bb99633f44b04402b0432a9fd269c30"
+    },
+    {
+      "id": "E089",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/packet15-oracle.py",
+      "bytes": 2786,
+      "sha256": "0eb30448f1f0d2c36ce69bb58557602bf41769b52f4dbdef927f8976acf2e101"
+    },
+    {
+      "id": "E090",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/profile-validation.asm",
+      "bytes": 2953,
+      "sha256": "c8c3bde2917c21fa912f87bb761fe1ce1f69313241d1aad6df44db8e79b3cba7"
+    },
+    {
+      "id": "E091",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/pump-register.asm",
+      "bytes": 3399,
+      "sha256": "d345ac1a27cc8199f95a99708c22c74d423152d1ace6b4f98a02b96b0e2d8457"
+    },
+    {
+      "id": "E092",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/register-proc-hashes.json",
+      "bytes": 9660,
+      "sha256": "973cc7859f46ad84616703824ea1f797364070e03c8681ee3f64c8397df830b5"
+    },
+    {
+      "id": "E093",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/register-proc-launcher.log",
+      "bytes": 5654,
+      "sha256": "d21d1b87ffd0679cf4a30a99da691ef1a4a04c56a8e6b8122fd51b059881f5bd"
+    },
+    {
+      "id": "E094",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/register-proc-recipe.json",
+      "bytes": 903,
+      "sha256": "8faeab4d642a062df3f03c8fce9c4ea738d00ebb4a82b184c9c22231c2347ac7"
+    },
+    {
+      "id": "E095",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/register-proc.gdb",
+      "bytes": 1026,
+      "sha256": "565e07ec031c7aaa5e5061d2788095151b8e6fe0c7c4c3b4ca84176ebe8bbbd1"
+    },
+    {
+      "id": "E096",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/run_mapped.py",
+      "bytes": 1027,
+      "sha256": "d1aedaa970fea95b4008646c5ac5b7dfdeb042d491b229bec47ebd750653dea3"
+    },
+    {
+      "id": "E097",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/run_probe.py",
+      "bytes": 972,
+      "sha256": "8e1abf64e2c3337a476928858c49087c5669556a8d84d0ae43194a1cd4878467"
+    },
+    {
+      "id": "E098",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/runtime-summary.json",
+      "bytes": 4641,
+      "sha256": "5e728bb5415f9ada18c5493c99c05047135406e22d24640208512c2b8b7de8a5"
+    },
+    {
+      "id": "E099",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/send-guard.asm",
+      "bytes": 1221,
+      "sha256": "5e1a843d6042a3425801ff15ff63b93a7153a9f820ae16f2576fe006ceb02ca4"
+    },
+    {
+      "id": "E100",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/send-wire-summary.json",
+      "bytes": 212,
+      "sha256": "8ecadaaf4447a195898fe1484d1bb71675da72675c4a5c03a79e35e03ee74591"
+    },
+    {
+      "id": "E101",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/send-zero-c2s-1.bin",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "E102",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/send-zero-c2s-2.bin",
+      "bytes": 66,
+      "sha256": "ba1ed0f5373e023c288c889488b6e1186d097959407ef931fa87582dd48fe43f"
+    },
+    {
+      "id": "E103",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/send-zero-c2s-3.bin",
+      "bytes": 276,
+      "sha256": "e831f2b7dcbcb47afc6c4a32b24043b576bcea61589ab1c322bc4768f48ec5f5"
+    },
+    {
+      "id": "E104",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/send-zero-hashes.json",
+      "bytes": 10811,
+      "sha256": "4794ddd0ae523c0e484c56116cbfe67b6b17ffad37966277baa05698ad91b399"
+    },
+    {
+      "id": "E105",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/send-zero-launcher.log",
+      "bytes": 5819,
+      "sha256": "807a1a0e606d0b75eb507a33c329f2486e348fe31fe1ff5aecd7d8b1f8640634"
+    },
+    {
+      "id": "E106",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/send-zero-recipe.json",
+      "bytes": 941,
+      "sha256": "695285aade2f760b25f3b2c9a018db84d37a11df45e418f65e389462639cea95"
+    },
+    {
+      "id": "E107",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/send-zero.gdb",
+      "bytes": 1216,
+      "sha256": "b6aa9f5dd67dbc64e5ee8d1505b0d56f7103b2be49a77fcd040882dfc6b46f2b"
+    },
+    {
+      "id": "E108",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/signal-emit.asm",
+      "bytes": 650,
+      "sha256": "8ec54759691581dad236551fa1f04d27cd71b780f297624653ce4d63dee97e99"
+    },
+    {
+      "id": "E109",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/socket-state.asm",
+      "bytes": 1908,
+      "sha256": "de465cef01953c643edaf0d40deaa55876c9bc8008261b303f2336cda7559315"
+    },
+    {
+      "id": "E110",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/source-verify.json",
+      "bytes": 366,
+      "sha256": "52df776eec04d94137c88f6851def2a228b0cf0b3a4f6841374b2957ead760e3"
+    },
+    {
+      "id": "E111",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/static-context.json",
+      "bytes": 827,
+      "sha256": "7ece87eeac3d448e4e00e095de3acacf094996c8e5d448b4b18ca512c4590797"
+    },
+    {
+      "id": "E112",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/timeline.json",
+      "bytes": 945,
+      "sha256": "e9fc183efea6c2c6673559164643e7104629fb33c221a9795d2f3af581a2dc1c"
+    },
+    {
+      "id": "E113",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/tree-key.asm",
+      "bytes": 9915,
+      "sha256": "bc405a1d66bf6475ad47e35200b5305d2dd6b56c97932aebbfd5deb8778c7bbd"
+    },
+    {
+      "id": "E114",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/ui-dispatch.asm",
+      "bytes": 25791,
+      "sha256": "5d33aff55380f03a4c7341f127d2048d59707b0f6ddb90e998168ceb5d203009"
+    },
+    {
+      "id": "E115",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/verification.json",
+      "bytes": 5801,
+      "sha256": "24816a3de467160385a910f1c330dd7a2c693ab73720c1fc06836d2a9eb9b949"
+    },
+    {
+      "id": "E116",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/verify.py",
+      "bytes": 5774,
+      "sha256": "9036c215e644c58b408f902dbfce34f88d6c9dae182b3b2c240387f1bc6ad554"
+    },
+    {
+      "id": "E117",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/wait-dialog-type.json",
+      "bytes": 146,
+      "sha256": "3c45889ffec622e96260eeb66335ee2d3bce2041faadb806c4089d312132592a"
+    },
+    {
+      "id": "E118",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/wait-lifecycle.asm",
+      "bytes": 9485,
+      "sha256": "97fc4b8a4d6f47a2a1981c7d2f866b0e1cce66528260f60fb222c4a337b88229"
+    },
+    {
+      "id": "E119",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/wait-update.asm",
+      "bytes": 2957,
+      "sha256": "b76b39eb6efb3b19e0878419a1a2efe1cac85b22834839444b345ca1c6916a4e"
+    },
+    {
+      "id": "E120",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/wait-vtable.json",
+      "bytes": 2500,
+      "sha256": "92cbef20488b36d9dad8ca7792f6abcdf7e7325e7bd987303fd614ced0bb4f29"
+    },
+    {
+      "id": "E121",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/window-api-sites.json",
+      "bytes": 795,
+      "sha256": "35003d24c4cd4443a89339775c62a240cf6ebd20f56778ec80d91f6bc18a1d37"
+    },
+    {
+      "id": "E122",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/wndproc-hashes.json",
+      "bytes": 9366,
+      "sha256": "8d2476f675a26438b015082571252966cdeafc6909633ce87ca2e1ede69adf0d"
+    },
+    {
+      "id": "E123",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/wndproc-launcher.log",
+      "bytes": 5647,
+      "sha256": "1bf06a686cb1ad220c5667e3f91ca49402f9d61ddb2218050ba01394fa0f1dd8"
+    },
+    {
+      "id": "E124",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/wndproc-pump.asm",
+      "bytes": 13653,
+      "sha256": "bbbb02753da388644809ecbbc4cf5400c34aed6a51cf7b0bfa8add932c8075ec"
+    },
+    {
+      "id": "E125",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/wndproc-recipe.json",
+      "bytes": 885,
+      "sha256": "3ae346cea6e829638b37ab7398b1cb7536c3b2191529add1737b43e6572f2fc4"
+    },
+    {
+      "id": "E126",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/wndproc.gdb",
+      "bytes": 1110,
+      "sha256": "0af0d5806954152f3827e30f1d78b42a898af43838650daa75b42549e5093c06"
+    },
+    {
+      "id": "E127",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/oracle-dependencies/boomproto.py",
+      "bytes": 7779,
+      "sha256": "e9642ec10e53cfed6c24c0c5ade07b34a46ce02073a8d316f724776686855bbd"
+    },
+    {
+      "id": "E128",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/oracle-dependencies/bootstrap-copy-oracle.py",
+      "bytes": 2377,
+      "sha256": "8127e0f2fbc385360e878bb68ae3a6680eabbf7456335f0f3db75c7c3b73a8c0"
+    },
+    {
+      "id": "E129",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/oracle-dependencies/bootstrap-recv-oracle.py",
+      "bytes": 2104,
+      "sha256": "1e86c06540e8fe654564c5bd403f859070f77c9af0d5d11c70c9351198e00ae2"
+    },
+    {
+      "id": "E130",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/register-proc/run.json",
+      "bytes": 7124,
+      "sha256": "b4a04ef5f45acb5ed7a93ece3f2b10031105f009534c1c1e3576bd73c0c8ce7e"
+    },
+    {
+      "id": "E131",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/register-proc/client.log",
+      "bytes": 384678,
+      "sha256": "27e2e4aec7a69cbbedf2efe81bdde8f6513096ddf0d32c075bbb2ed97c266d89"
+    },
+    {
+      "id": "E132",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/register-proc/CALog-run.txt",
+      "bytes": 466,
+      "sha256": "39092b4c43b27246a0826abf992768f9470b2b7d2f8a7c3ca9de65c0b76d3fd8"
+    },
+    {
+      "id": "E133",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/register-proc/debug-commands.txt",
+      "bytes": 1026,
+      "sha256": "565e07ec031c7aaa5e5061d2788095151b8e6fe0c7c4c3b4ca84176ebe8bbbd1"
+    },
+    {
+      "id": "E134",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/register-proc/ui-before-confirm-1.png",
+      "bytes": 504857,
+      "sha256": "bb616818a5e9e40f1fb3a3568d4014294d9c39260fc2087b6b7968ffe44b997f"
+    },
+    {
+      "id": "E135",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/register-proc/ui-after-confirm-1.png",
+      "bytes": 504499,
+      "sha256": "f7010068a3a02695348ae5a5de36fbc5a3db6ddc1fc93748aa165737e805b79c"
+    },
+    {
+      "id": "E136",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/wndproc/run.json",
+      "bytes": 7117,
+      "sha256": "474d5cc1edbbd095221bc4a50fbad9ac62316dfb382973bc238bab2c075fbb34"
+    },
+    {
+      "id": "E137",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/wndproc/client.log",
+      "bytes": 389459,
+      "sha256": "d824c9644554a391d76d5e34618ccfd6503d807f8c32d472c945fa4ee75ccf25"
+    },
+    {
+      "id": "E138",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/wndproc/CALog-run.txt",
+      "bytes": 507,
+      "sha256": "a8b2baa0e93d42a6412e0ebecb815ee7155cbc67028855bd33e856520ed7c173"
+    },
+    {
+      "id": "E139",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/wndproc/debug-commands.txt",
+      "bytes": 1110,
+      "sha256": "0af0d5806954152f3827e30f1d78b42a898af43838650daa75b42549e5093c06"
+    },
+    {
+      "id": "E140",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/wndproc/ui-before-confirm-1.png",
+      "bytes": 504857,
+      "sha256": "bb616818a5e9e40f1fb3a3568d4014294d9c39260fc2087b6b7968ffe44b997f"
+    },
+    {
+      "id": "E141",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/wndproc/ui-after-confirm-1.png",
+      "bytes": 504499,
+      "sha256": "f7010068a3a02695348ae5a5de36fbc5a3db6ddc1fc93748aa165737e805b79c"
+    },
+    {
+      "id": "E142",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/input-manager/run.json",
+      "bytes": 7122,
+      "sha256": "41115ccaf959a2633e37679a53150935b2a712b9352a23fa58c2dbcde37afa39"
+    },
+    {
+      "id": "E143",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/input-manager/client.log",
+      "bytes": 386172,
+      "sha256": "2ed27b49caa0d008408d6775a44e5ddb8f5e840bd798e6e1564c90f01c62f2a6"
+    },
+    {
+      "id": "E144",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/input-manager/CALog-run.txt",
+      "bytes": 507,
+      "sha256": "a8b2baa0e93d42a6412e0ebecb815ee7155cbc67028855bd33e856520ed7c173"
+    },
+    {
+      "id": "E145",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/input-manager/debug-commands.txt",
+      "bytes": 915,
+      "sha256": "c21e7946dadb7c7e6a7f0d8c30e0ec207c62f166955656d2a9050a04b55cb60e"
+    },
+    {
+      "id": "E146",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/input-manager/ui-before-confirm-1.png",
+      "bytes": 504857,
+      "sha256": "bb616818a5e9e40f1fb3a3568d4014294d9c39260fc2087b6b7968ffe44b997f"
+    },
+    {
+      "id": "E147",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/input-manager/ui-after-confirm-1.png",
+      "bytes": 504499,
+      "sha256": "f7010068a3a02695348ae5a5de36fbc5a3db6ddc1fc93748aa165737e805b79c"
+    },
+    {
+      "id": "E148",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/hit-controls/run.json",
+      "bytes": 7122,
+      "sha256": "2b37db3354cb5250271dd32c7cd8548e3062692f04a656287d054ae26b8a48d9"
+    },
+    {
+      "id": "E149",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/hit-controls/client.log",
+      "bytes": 402921,
+      "sha256": "34c4c0256db6daf4b693d5358ff9aa1c269aaa738391c3d23bffe790f18230a8"
+    },
+    {
+      "id": "E150",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/hit-controls/CALog-run.txt",
+      "bytes": 507,
+      "sha256": "a8b2baa0e93d42a6412e0ebecb815ee7155cbc67028855bd33e856520ed7c173"
+    },
+    {
+      "id": "E151",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/hit-controls/debug-commands.txt",
+      "bytes": 757,
+      "sha256": "6d6961857530d8e4a5666bc14bdfeefa659e801c44d04a91e6a19b12d13184f7"
+    },
+    {
+      "id": "E152",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/hit-controls/ui-before-confirm-1.png",
+      "bytes": 504857,
+      "sha256": "bb616818a5e9e40f1fb3a3568d4014294d9c39260fc2087b6b7968ffe44b997f"
+    },
+    {
+      "id": "E153",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/hit-controls/ui-after-confirm-1.png",
+      "bytes": 504499,
+      "sha256": "f7010068a3a02695348ae5a5de36fbc5a3db6ddc1fc93748aa165737e805b79c"
+    },
+    {
+      "id": "E154",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/button-command/run.json",
+      "bytes": 7121,
+      "sha256": "17dc9daeef4dbcd8d2615691cbbdecd06c197b25873bc3ef942654b293fadde5"
+    },
+    {
+      "id": "E155",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/button-command/client.log",
+      "bytes": 379477,
+      "sha256": "e6c35f7400a11afed57c8bd66ea6ebe8a0c44eea911d2e01c05a919b1826665a"
+    },
+    {
+      "id": "E156",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/button-command/CALog-run.txt",
+      "bytes": 507,
+      "sha256": "a8b2baa0e93d42a6412e0ebecb815ee7155cbc67028855bd33e856520ed7c173"
+    },
+    {
+      "id": "E157",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/button-command/debug-commands.txt",
+      "bytes": 803,
+      "sha256": "5521cbe2d9835b2b124112a23ca8467f1c58eb197edd96b76fac9e357cd01bdc"
+    },
+    {
+      "id": "E158",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/button-command/ui-before-confirm-1.png",
+      "bytes": 504857,
+      "sha256": "bb616818a5e9e40f1fb3a3568d4014294d9c39260fc2087b6b7968ffe44b997f"
+    },
+    {
+      "id": "E159",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/button-command/ui-after-confirm-1.png",
+      "bytes": 504499,
+      "sha256": "f7010068a3a02695348ae5a5de36fbc5a3db6ddc1fc93748aa165737e805b79c"
+    },
+    {
+      "id": "E160",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/login-action/run.json",
+      "bytes": 7124,
+      "sha256": "6c6c6d6ee25c0967f43d74e62ce1bca4fbadf70f8098898354644bb5fbbe342e"
+    },
+    {
+      "id": "E161",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/login-action/client.log",
+      "bytes": 379139,
+      "sha256": "396b95a8bb67d3221449db73fc7ae3c8cfa2025e1162336395be63def8d0017b"
+    },
+    {
+      "id": "E162",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/login-action/CALog-run.txt",
+      "bytes": 507,
+      "sha256": "a8b2baa0e93d42a6412e0ebecb815ee7155cbc67028855bd33e856520ed7c173"
+    },
+    {
+      "id": "E163",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/login-action/debug-commands.txt",
+      "bytes": 637,
+      "sha256": "5c07333859c17f2db48b97381a78e552a4b2f3db06c4feaa66eaec6be2209c11"
+    },
+    {
+      "id": "E164",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/login-action/ui-before-confirm-1.png",
+      "bytes": 504857,
+      "sha256": "bb616818a5e9e40f1fb3a3568d4014294d9c39260fc2087b6b7968ffe44b997f"
+    },
+    {
+      "id": "E165",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/login-action/ui-after-confirm-1.png",
+      "bytes": 504499,
+      "sha256": "f7010068a3a02695348ae5a5de36fbc5a3db6ddc1fc93748aa165737e805b79c"
+    },
+    {
+      "id": "E166",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/login-gates/run.json",
+      "bytes": 7123,
+      "sha256": "8845f995c0da128de4c2b9410e44ca311c0979a1b11873ebb548f62e2fd40b4b"
+    },
+    {
+      "id": "E167",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/login-gates/client.log",
+      "bytes": 379494,
+      "sha256": "6a98466d71b0d83f6b556955316df27af15d9efe1234851a0031a3dc7bc3122c"
+    },
+    {
+      "id": "E168",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/login-gates/CALog-run.txt",
+      "bytes": 507,
+      "sha256": "a8b2baa0e93d42a6412e0ebecb815ee7155cbc67028855bd33e856520ed7c173"
+    },
+    {
+      "id": "E169",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/login-gates/debug-commands.txt",
+      "bytes": 977,
+      "sha256": "ff67ddddb046a4b79440713b3efb40e30d31c1ca57ba0a392c405534eddcb573"
+    },
+    {
+      "id": "E170",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/login-gates/ui-before-confirm-1.png",
+      "bytes": 504857,
+      "sha256": "bb616818a5e9e40f1fb3a3568d4014294d9c39260fc2087b6b7968ffe44b997f"
+    },
+    {
+      "id": "E171",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/login-gates/ui-after-confirm-1.png",
+      "bytes": 504499,
+      "sha256": "f7010068a3a02695348ae5a5de36fbc5a3db6ddc1fc93748aa165737e805b79c"
+    },
+    {
+      "id": "E172",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/login-connect/run.json",
+      "bytes": 5755,
+      "sha256": "d231972e4eea1a02e44dbab1f59eb2e2380ac1255725ebf2931931f61c73df57"
+    },
+    {
+      "id": "E173",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/login-connect/client.log",
+      "bytes": 126979,
+      "sha256": "8ab34f10a61d1c9943ae8c884c8d02ca837d270bf930a99bf93ca9b61c8facc1"
+    },
+    {
+      "id": "E174",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/login-connect/CALog-run.txt",
+      "bytes": 466,
+      "sha256": "39092b4c43b27246a0826abf992768f9470b2b7d2f8a7c3ca9de65c0b76d3fd8"
+    },
+    {
+      "id": "E175",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/login-connect/debug-commands.txt",
+      "bytes": 944,
+      "sha256": "78a618bd907ae83b1f36d2d0b195e1972076aabc9952709e632586a9bf24a2b7"
+    },
+    {
+      "id": "E176",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/login-connect/ui-before-confirm-1.png",
+      "bytes": 504246,
+      "sha256": "5dfb108fcc70e6491607d246f712ce498ef0f74c50e8104a841076e66011df61"
+    },
+    {
+      "id": "E177",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/login-connect/ui-after-confirm-1.png",
+      "bytes": 504499,
+      "sha256": "f7010068a3a02695348ae5a5de36fbc5a3db6ddc1fc93748aa165737e805b79c"
+    },
+    {
+      "id": "E178",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/endpoint-dns/run.json",
+      "bytes": 5484,
+      "sha256": "2e01755965395e549de8a4bdb79a28f4aaecef753d753b3b0036a9c1d0e489d2"
+    },
+    {
+      "id": "E179",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/endpoint-dns/client.log",
+      "bytes": 124109,
+      "sha256": "6c1ef3dd2d096d292193e84839ee204bd6a2bc8110fb9d72171ebc41a90db0f8"
+    },
+    {
+      "id": "E180",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/endpoint-dns/CALog-run.txt",
+      "bytes": 425,
+      "sha256": "ed0a0a67a42a6065d2450f1b580fec28b5aea9c47e1049ae0ad5cb55680e8abf"
+    },
+    {
+      "id": "E181",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/endpoint-dns/debug-commands.txt",
+      "bytes": 1284,
+      "sha256": "0e91c3bb2541651b9877f20c596612c877ff0b346ff848197bfdb5652e3f8dcf"
+    },
+    {
+      "id": "E182",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/endpoint-dns/ui-before-confirm-1.png",
+      "bytes": 504246,
+      "sha256": "5dfb108fcc70e6491607d246f712ce498ef0f74c50e8104a841076e66011df61"
+    },
+    {
+      "id": "E183",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/endpoint-dns/ui-after-confirm-1.png",
+      "bytes": 504499,
+      "sha256": "f7010068a3a02695348ae5a5de36fbc5a3db6ddc1fc93748aa165737e805b79c"
+    },
+    {
+      "id": "E184",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/dream-local-silent/run.json",
+      "bytes": 5977,
+      "sha256": "d9bf973e3a93a7897546d4ebcacb16197e539d86b76d61abbccd7517a2b46805"
+    },
+    {
+      "id": "E185",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/dream-local-silent/client.log",
+      "bytes": 123756,
+      "sha256": "bf2f77bf7f4f3e2377575ba15d814e6fe63cdf3a3143224f5f350f1f7a39de8b"
+    },
+    {
+      "id": "E186",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/dream-local-silent/CALog-run.txt",
+      "bytes": 414,
+      "sha256": "47bf3da98feb69171c40d74f0567ee8d42da3747bd7e1e87c55d8aca10939a88"
+    },
+    {
+      "id": "E187",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/dream-local-silent/debug-commands.txt",
+      "bytes": 1284,
+      "sha256": "0e91c3bb2541651b9877f20c596612c877ff0b346ff848197bfdb5652e3f8dcf"
+    },
+    {
+      "id": "E188",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/dream-local-silent/ui-before-confirm-1.png",
+      "bytes": 107898,
+      "sha256": "2b53c13ed3561c9eceddc40ce928aa768531af69e02b82883ac6d9fa952695c4"
+    },
+    {
+      "id": "E189",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/dream-local-silent/ui-after-confirm-1.png",
+      "bytes": 107898,
+      "sha256": "2b53c13ed3561c9eceddc40ce928aa768531af69e02b82883ac6d9fa952695c4"
+    },
+    {
+      "id": "E190",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/dream-local-hello/run.json",
+      "bytes": 6669,
+      "sha256": "98fe12383460887082f65d6224c0043bcbc006877a642631a256be60d976b133"
+    },
+    {
+      "id": "E191",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/dream-local-hello/client.log",
+      "bytes": 127803,
+      "sha256": "5ee97a2f0cbe10d79a83e8363d85cdc0942dc5af6105565dbe2add48d481596a"
+    },
+    {
+      "id": "E192",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/dream-local-hello/CALog-run.txt",
+      "bytes": 414,
+      "sha256": "74d4cfd19ac113288e61a2b82935ae7050a3f30aa5bf650c8a06a51b97e365d9"
+    },
+    {
+      "id": "E193",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/dream-local-hello/debug-commands.txt",
+      "bytes": 1284,
+      "sha256": "0e91c3bb2541651b9877f20c596612c877ff0b346ff848197bfdb5652e3f8dcf"
+    },
+    {
+      "id": "E194",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/dream-local-hello/ui-before-confirm-1.png",
+      "bytes": 504246,
+      "sha256": "5dfb108fcc70e6491607d246f712ce498ef0f74c50e8104a841076e66011df61"
+    },
+    {
+      "id": "E195",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/dream-local-hello/ui-after-confirm-1.png",
+      "bytes": 504499,
+      "sha256": "f7010068a3a02695348ae5a5de36fbc5a3db6ddc1fc93748aa165737e805b79c"
+    },
+    {
+      "id": "E196",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/auth-after-hello/run.json",
+      "bytes": 6398,
+      "sha256": "15b673349bf98638604b66a568935ba721383e9e5bb38a8bc91d0a1b44667adc"
+    },
+    {
+      "id": "E197",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/auth-after-hello/client.log",
+      "bytes": 123566,
+      "sha256": "fc964183429d53351c2ecb92a95d9c16d7d5d481cb619b19ba2dd4116573872c"
+    },
+    {
+      "id": "E198",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/auth-after-hello/CALog-run.txt",
+      "bytes": 414,
+      "sha256": "74d4cfd19ac113288e61a2b82935ae7050a3f30aa5bf650c8a06a51b97e365d9"
+    },
+    {
+      "id": "E199",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/auth-after-hello/debug-commands.txt",
+      "bytes": 1155,
+      "sha256": "d305d247973b843676f2dc4553d94c381f0f21e17995dad4cbdfc37136aa10b6"
+    },
+    {
+      "id": "E200",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/auth-after-hello/ui-before-confirm-1.png",
+      "bytes": 504263,
+      "sha256": "7a5114e1918fa8b6e8d6481cd1951599c95a6e705b1e8a6a99b7e38eae322ac7"
+    },
+    {
+      "id": "E201",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/auth-after-hello/ui-after-confirm-1.png",
+      "bytes": 504499,
+      "sha256": "f7010068a3a02695348ae5a5de36fbc5a3db6ddc1fc93748aa165737e805b79c"
+    },
+    {
+      "id": "E202",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/auth-dialog/run.json",
+      "bytes": 6395,
+      "sha256": "a27a8ad1ee783a48975d7af8f745f11f2cc2f7424baacff0973b1b560e9f871d"
+    },
+    {
+      "id": "E203",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/auth-dialog/client.log",
+      "bytes": 123540,
+      "sha256": "fa7a1c8669be952e579ddbb87f7286dbb82f8f21b0f8eed4202dfebf982f7586"
+    },
+    {
+      "id": "E204",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/auth-dialog/CALog-run.txt",
+      "bytes": 414,
+      "sha256": "74d4cfd19ac113288e61a2b82935ae7050a3f30aa5bf650c8a06a51b97e365d9"
+    },
+    {
+      "id": "E205",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/auth-dialog/debug-commands.txt",
+      "bytes": 947,
+      "sha256": "d45aa48cfb21ed2b78f052ad9abece654607d8d0ec012b8570fd7bd4a5fcab7b"
+    },
+    {
+      "id": "E206",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/auth-dialog/ui-before-confirm-1.png",
+      "bytes": 504246,
+      "sha256": "5dfb108fcc70e6491607d246f712ce498ef0f74c50e8104a841076e66011df61"
+    },
+    {
+      "id": "E207",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/auth-dialog/ui-after-confirm-1.png",
+      "bytes": 504499,
+      "sha256": "f7010068a3a02695348ae5a5de36fbc5a3db6ddc1fc93748aa165737e805b79c"
+    },
+    {
+      "id": "E208",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/modal-result/run.json",
+      "bytes": 6399,
+      "sha256": "c2e53856fb23e734be3608225c85d822c7eb0dbe284a984118166af259afb7f5"
+    },
+    {
+      "id": "E209",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/modal-result/client.log",
+      "bytes": 125621,
+      "sha256": "9f5478f50c198cd4d45176cc98d5898d0d4c80e5a233310b4114e2d3522344be"
+    },
+    {
+      "id": "E210",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/modal-result/CALog-run.txt",
+      "bytes": 373,
+      "sha256": "3264d550f7ad6062ff8324351ee08c6d24b10434a98f09c25ec6c0d140638059"
+    },
+    {
+      "id": "E211",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/modal-result/debug-commands.txt",
+      "bytes": 1103,
+      "sha256": "25d7c2e88e733125b086ea2f83e31e196b634c19dac523f90c96976dfb4258fd"
+    },
+    {
+      "id": "E212",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/modal-result/ui-before-confirm-1.png",
+      "bytes": 504263,
+      "sha256": "7a5114e1918fa8b6e8d6481cd1951599c95a6e705b1e8a6a99b7e38eae322ac7"
+    },
+    {
+      "id": "E213",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/modal-result/ui-after-confirm-1.png",
+      "bytes": 504499,
+      "sha256": "f7010068a3a02695348ae5a5de36fbc5a3db6ddc1fc93748aa165737e805b79c"
+    },
+    {
+      "id": "E214",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/modal-global-zero/run.json",
+      "bytes": 7091,
+      "sha256": "163a84adff5e40c214e793473616baedc32c66a0d1f8019c1decee17f0ccebb0"
+    },
+    {
+      "id": "E215",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/modal-global-zero/client.log",
+      "bytes": 124968,
+      "sha256": "853243e06ab30c483014a1e093c5748be6c90dd3f88aa2eb38bc3c69d89ace65"
+    },
+    {
+      "id": "E216",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/modal-global-zero/CALog-run.txt",
+      "bytes": 425,
+      "sha256": "ed0a0a67a42a6065d2450f1b580fec28b5aea9c47e1049ae0ad5cb55680e8abf"
+    },
+    {
+      "id": "E217",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/modal-global-zero/debug-commands.txt",
+      "bytes": 1270,
+      "sha256": "47433ef3b02710a55c968106a705eba8a9b1d446559cc70e8cfde20eb99b597b"
+    },
+    {
+      "id": "E218",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/modal-global-zero/ui-before-confirm-1.png",
+      "bytes": 443083,
+      "sha256": "90614284d7fc975c3a022a3377cfdb2ae60d21dea732064dd518e739e51507e1"
+    },
+    {
+      "id": "E219",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/modal-global-zero/ui-after-confirm-1.png",
+      "bytes": 442972,
+      "sha256": "feebb9d823322c4d1b4ae310efccce5098cde3bbd43310344523d3df95a24450"
+    },
+    {
+      "id": "E220",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/send-zero/run.json",
+      "bytes": 7083,
+      "sha256": "c8f6d27ad9b9aa6dc3512ec047376d0f1664e02d76dabcdaeb15d5f32d8bb32c"
+    },
+    {
+      "id": "E221",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/send-zero/client.log",
+      "bytes": 125182,
+      "sha256": "768d720a88f2bc519d21d1bd4f8c4a9efac33f252d5f8f5a968be8ff992bef44"
+    },
+    {
+      "id": "E222",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/send-zero/CALog-run.txt",
+      "bytes": 478,
+      "sha256": "7ceb6cecf5a8974e40b623338048200fb2e4c787483ecac3df37ca6be11757a1"
+    },
+    {
+      "id": "E223",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/send-zero/debug-commands.txt",
+      "bytes": 1216,
+      "sha256": "b6aa9f5dd67dbc64e5ee8d1505b0d56f7103b2be49a77fcd040882dfc6b46f2b"
+    },
+    {
+      "id": "E224",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/send-zero/ui-before-confirm-1.png",
+      "bytes": 443082,
+      "sha256": "5b7b706f99e43dbf8d8e6781fb9f8bfb42cc9e7b33abb39769f4832eacddf875"
+    },
+    {
+      "id": "E225",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/send-zero/ui-after-confirm-1.png",
+      "bytes": 442972,
+      "sha256": "feebb9d823322c4d1b4ae310efccce5098cde3bbd43310344523d3df95a24450"
+    },
+    {
+      "id": "E226",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/hit-controls/screen-10.png",
+      "bytes": 504716,
+      "sha256": "4850ff3aec6f7fcaad38a1dcc87e847b4b7a1dc03da21acea90d2ad3ae90f29e"
+    },
+    {
+      "id": "E227",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/modal-global-zero/screen-09.png",
+      "bytes": 442769,
+      "sha256": "74813a12a95dc5e3170c875517cec74f456e30709195341919b2fa4f23498416"
+    },
+    {
+      "id": "E228",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/send-zero/screen-09.png",
+      "bytes": 442692,
+      "sha256": "e5d9a4306ba95e43b4b1d5938dde3399c9966a90d13f63c62d5f8643101cd71e"
+    },
+    {
+      "id": "E229",
+      "kind": "local",
+      "path": "local/research/codex/wine_probe_ui_handler.py",
+      "bytes": 21386,
+      "sha256": "78e998f8794ec1ae6f22b256eb1cd3b3524b2f319b0b5528d24ccc9a9e14c2c4"
+    },
+    {
+      "id": "E230",
+      "kind": "local",
+      "path": "local/research/codex/wine_probe_confirm_only.py",
+      "bytes": 20837,
+      "sha256": "90a6e6e5a68bb0fc0725e9a2e1664e7a4d8c713b5de35b9302f908ed81a709e8"
+    },
+    {
+      "id": "E231",
+      "kind": "local",
+      "path": "local/research/codex/wine_probe_confirm_hello3.py",
+      "bytes": 20877,
+      "sha256": "dbddc4769e66b871f7336ea3ec60353616e834323f4dbf4681276ff67a33e6f9"
+    },
+    {
+      "id": "E232",
+      "kind": "artifact",
+      "path": "/home/admin/boom/repos/boomkr-re/out/modO.bin",
+      "bytes": 31858688,
+      "sha256": "a08950c833d3acab8281049def7b3dc96b221f107eeda01da3a548e34b91dce5"
+    }
+  ],
+  "delta": {
+    "added": [
+      "Measured input→command1002 and auto-attempt timeline, login hostname/local third connect, WCP on new connection, wait-dialog modal result path.",
+      "Runtime global reset yields4x69 captured C2S15; bounded native parser/CRC sequential replay and negatives.",
+      "AUD004 periodic audit; next periodicCP016."
+    ],
+    "corrected": [
+      "Do not infer all input broken from static field screenshots; button handler and command observed.",
+      "Do not attribute auto third connection to injected click; accept precedes first click.",
+      "Do not call endpoint/connect check an identity-only validator; null DNS was actual blocker.",
+      "Earlier uncommitted/live66-only statement for reset runs was premature; completed captures have276 additional bytes.",
+      "Replace only-R2-copy runtime wording and generic pending review prose; preserve historical completed findings."
+    ],
+    "superseded": [
+      "NEXT-UI-HANDLER reaches command callback and endpoint; not current main blocker.",
+      "Immediate wait-dialog return1 bounded to baseline with global1; reset trials advance to wait/state0 and wire15."
+    ]
+  },
+  "blockers": [
+    "Wait-dialog state0 and real auth request/response data dependencies unresolved despite C2S15 traffic.",
+    "Global1A966FC original lifecycle and auto-attempt source unknown; runtime reset remains diagnostic.",
+    "Full mode/seq/reconnect, oneclickuser/+E9C runtime, vanilla controls and gate acceptance remain open."
+  ],
+  "next_steps": [
+    {
+      "id": "NEXT-UI-HANDLER",
+      "task": "KRE-005b",
+      "state": "superseded",
+      "action": "Measured live callback and command; endpoint/global blockers now characterized.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-WAIT-AUTH",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "Trace wait state0/lifecycle and native auth data/builder dependencies; distinguish captured C2S15 from auth request, preserve socket-local mode/seq and prove each new transition by runtime/capture.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    }
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-10-28T00:11:27.290292+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "Codex solo/self-checks; no independent approval per owner instruction.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Explicit owner instruction to continue solo without Claude review."
+    }
+  },
+  "docs_sync": [
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "Current dialog/global and new wire milestone, no auth."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "Next order follows state0/auth dependency; gates stay open."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "updated",
+      "reason": "New connection and measured C2S15/native parse limits; diagnostic copy identity."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "updated",
+      "reason": "Replace input API blocker with wait/auth dependency and global lifecycle."
+    },
+    {
+      "path": "docs/evidence/ui-handler/README.md",
+      "state": "updated",
+      "reason": "Grouped runtime recipes, measured call chain, chronology and limitations."
+    },
+    {
+      "path": "docs/evidence/login-ui/README.md",
+      "state": "updated",
+      "reason": "Historical link forward."
+    },
+    {
+      "path": "docs/evidence/vn-reuse/README.md",
+      "state": "updated",
+      "reason": "Historical link forward."
+    },
+    {
+      "path": "docs/evidence/object-state/README.md",
+      "state": "updated",
+      "reason": "Review waiver wording."
+    },
+    {
+      "path": "docs/evidence/checkpoints/audits/AUD004.json",
+      "state": "updated",
+      "reason": "Manual audit required atCP012."
+    }
+  ]
+}

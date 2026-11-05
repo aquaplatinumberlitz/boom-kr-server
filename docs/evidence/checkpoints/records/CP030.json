@@ -1,0 +1,2011 @@
+{
+  "id": "CP030",
+  "previous": "CP029",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-10-30T14:29:42.475354+00:00",
+  "question": "KR item layout/request/confirm có dựng/nhặt cùng item ở hai client và xử lý hai request tranh một index không?",
+  "scope": "Grouped four sequential isolated Wine pair runs: placement/path controls, noack, positive two origins, sameindex race; native readers and exact callback/visual evidence. No added binary patch, no full stat/authority/gate claim.",
+  "context_commit": "99f0ea92713166bc54ed3fec23d7b5ed59b6d93f",
+  "owner": "Codex",
+  "reviewer": "Codex",
+  "artifacts": [
+    {
+      "name": "CA-r2-login-logout.exe",
+      "sha256": "660447c293ce92270cb9b5815331bca976e8f156366e1fe50b217b6c12e60ce3"
+    },
+    {
+      "name": "CA-r2-stage-social.exe",
+      "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+    },
+    {
+      "name": "CA-r2-stage-social.exe Bcopy",
+      "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+    },
+    {
+      "name": "modO.bin",
+      "sha256": "a08950c833d3acab8281049def7b3dc96b221f107eeda01da3a548e34b91dce5"
+    }
+  ],
+  "locators": [
+    "VA base400000/RVA=VA-400000. Runtime e9bb47/static660447/modOa08950 unchanged;7 code ranges match static/runtimeA/runtimeB/native raw-memory image.",
+    "Prepare582 DC5378→14EB410→D824D0,guard5725B0 observed1;11ED590 u32index,u8row,u8col,u32kind. List1 full26 or16, list2/3 empty.",
+    "Actual124 queue stack E2E5EC/E2D4B1/E2D163/E7D2DB; E2E390 writes12419byte from cache record/slot.",
+    "165 E5D570→E63260; pending E2C660 ctx/index removal before ok/context. Context0; actor lookup→interface+588/F73D30→B52840→E14DA0 static next edge.",
+    "near-control A124 index17, no165; positive B18/A17 each full165 on both and final items gone; race19 two actual requests beforeone ackwinnerA/slot0.",
+    "Counterpart source copy B reused CP028; separate prefix/display/wineserver. No client/pack/DB source mutation."
+  ],
+  "findings": [
+    {
+      "summary": "KR prepare582→DC5378/blob→D824D0/guard5725B0→three u16 lists;11ED590 records u32index/u8row/u8column/u32kind. Native/live full26/36 or16/26bytes, list1 items render on both clients.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#item-pickup",
+      "limits": "List2/3 empty; hiddenitem/drop semantics unknown. Diagnostic Wine copy, no vanilla or full authority proof.",
+      "evidence": [
+        "E043",
+        "E009",
+        "E007",
+        "E098",
+        "E097",
+        "E179",
+        "E178",
+        "E196"
+      ]
+    },
+    {
+      "summary": "Actual C2S124 traced through E2E5EC/E2E390 writer: 4u8,u32index,u16kind,2u32,bool =19byte; CRC/seq/socket/native getters corroborated.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#item-pickup",
+      "limits": "Two u32 t/k names/validator remain bounded; measured k12345 chosen by peer profile. No general request grammar/authority.",
+      "evidence": [
+        "E011",
+        "E137",
+        "E097",
+        "E220"
+      ]
+    },
+    {
+      "summary": "KR165 dispatcher E5D570→E63260(packet,0):5u8,u32index,u16kind,bool =12byte. E2C660 removes pending ctx/index before ok/context guard; actor+588 interface F73D30, then item coords/kind checks.",
+      "source": "kr_static",
+      "status": "confirmed",
+      "method": "static",
+      "canonical": "docs/PROTOCOL.md#item-pickup",
+      "limits": "Positive effects/caps not quantified; native165 reject/context branches model cache/world. F73D30→B52840→E14DA0 is next effect edge, not +stat proof.",
+      "evidence": [
+        "E012",
+        "E010",
+        "E015",
+        "E008",
+        "E099",
+        "E017"
+      ]
+    },
+    {
+      "summary": "near-control A actual124 index17 row4col3kind0 has no165; item visible again after leaving. floor-control wrong path has no124 and is retained.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#item-pickup",
+      "limits": "Bnear-control has no124 for placement near brick, exact causal isolation not performed; noabsencewireclaim.",
+      "evidence": [
+        "E140",
+        "E137",
+        "E112",
+        "E127",
+        "E084",
+        "E096"
+      ]
+    },
+    {
+      "summary": "pickup-ack BFire/index18 then ABomb/index17 actual124; each165 broadcast toAB, full12/12/errors0, matched actor/item/coords/kind, own pending removed and both final maps lack items.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#item-pickup",
+      "limits": "Ainput/placement matches noack control; Bplacement changed to row8, not single-variable control for entire run. No measured stat/cap/fullmatch.",
+      "evidence": [
+        "E182",
+        "E179",
+        "E178",
+        "E152",
+        "E169",
+        "E097"
+      ]
+    },
+    {
+      "summary": "pickup-race actual A/B124 for same index19 both arrive before ACK; one positive165 slot0/index19 on both clients, each own pending removed, item absent both final maps.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#item-pickup",
+      "limits": "One direction/winner/run/round and limited policy; not duplicate replay/stale/generation/generalrace or stat-only-once proof.",
+      "evidence": [
+        "E216",
+        "E213",
+        "E212",
+        "E196",
+        "E193",
+        "E206",
+        "E097",
+        "E226"
+      ]
+    },
+    {
+      "summary": "Stub placement and first-arrival reservation/2s delay/single positive165 are emulator design. Harness checks CRC/origin-slot/item allowlist; loser request ignored after reservation.",
+      "source": "emu_choice",
+      "status": "design",
+      "method": "design",
+      "canonical": "docs/PROTOCOL.md#item-pickup",
+      "limits": "No original server law; room/round generation/reconnect/anti-replay/timing validation and full authority still open.",
+      "evidence": [
+        "E096",
+        "E216"
+      ]
+    },
+    {
+      "summary": "VN oc_e-game item/two-client and session.rs placement-before-start/report-confirm guided experiment; KR582/124/165 and index32bit recovered independently. E9E660 clarified as bomb kind0 path, not pickup receiver.",
+      "source": "vn_static",
+      "status": "confirmed",
+      "method": "static",
+      "canonical": "docs/PROTOCOL.md#item-pickup",
+      "limits": "Historical reference only; no copying VN553/117/158 or index16; no fresh VN runtime claimed.",
+      "evidence": [
+        "E096",
+        "E043",
+        "E012"
+      ]
+    },
+    {
+      "summary": "Stat capacity/range/speed/caps after165 and hidden item list/reveal remain unresolved; observed render/handler/pending is not +stat proof.",
+      "source": "kr_runtime",
+      "status": "unknown",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#item-pickup",
+      "limits": "Follow F73D30→B52840→E14DA0 and measure before/after actual state/input; retain K5/K6a open.",
+      "evidence": [
+        "E096",
+        "E015",
+        "E008"
+      ]
+    }
+  ],
+  "verification": [
+    {
+      "check": "4251 mechanical checks,4sealedruns,isolation/lease/sequential/hash, roleC2S native replay/negativeCRCpartial, dynamicseq/fields/callbacks/timeline.",
+      "result": "pass",
+      "evidence": [
+        "E235",
+        "E226"
+      ],
+      "limits": "Mechanical consistency only; no semantic gate/independent review."
+    },
+    {
+      "check": "57 native actual frames +3layout +9reject/context-mismatch cases;7 code ranges match4artifacts.",
+      "result": "pass",
+      "evidence": [
+        "E097",
+        "E098",
+        "E099",
+        "E017"
+      ],
+      "limits": "Allocator/world/cache endpoints modeled where declared; no full positiveeffect/game/authority emulator."
+    },
+    {
+      "check": "Manual code/log and image comparison: noack item returns, positive bothitems absent, race item before/after and same winner callbacks.",
+      "result": "observed",
+      "evidence": [
+        "E096",
+        "E112",
+        "E152",
+        "E169",
+        "E196",
+        "E193",
+        "E206"
+      ],
+      "limits": "No pixelidentity/stat increment/vanilla/fullmatch claim; no independent review."
+    }
+  ],
+  "evidence": [
+    {
+      "id": "E001",
+      "kind": "artifact",
+      "path": "/home/admin/boom/repos/boom-re/docs/oc_e-game.md",
+      "bytes": 70895,
+      "sha256": "9e80ecea3fb7d152f58a4a0d60ac6e1f6759b18be23bf53d908bb896dbad0b6a"
+    },
+    {
+      "id": "E002",
+      "kind": "artifact",
+      "path": "/home/admin/boom/repos/boom-re/server/src/session.rs",
+      "bytes": 35262,
+      "sha256": "0d32f8eff705a2f731b799ae3e68ba6d7dff52b1f97678bafc1341b83078e8ec"
+    },
+    {
+      "id": "E003",
+      "kind": "artifact",
+      "path": "/home/admin/boom/repos/boomkr-re/out/modO.bin",
+      "bytes": 31858688,
+      "sha256": "a08950c833d3acab8281049def7b3dc96b221f107eeda01da3a548e34b91dce5"
+    },
+    {
+      "id": "E004",
+      "kind": "repository",
+      "path": "docs/evidence/item-pickup/README.md",
+      "bytes": 6877,
+      "sha256": "ce6cac3bd16d6710524e4675bd6d66e9bd566da9e2345a61b7ae7935724b44f2"
+    },
+    {
+      "id": "E005",
+      "kind": "local",
+      "path": "local/research/codex/bootstrap-recv-oracle.py",
+      "bytes": 2104,
+      "sha256": "1e86c06540e8fe654564c5bd403f859070f77c9af0d5d11c70c9351198e00ae2"
+    },
+    {
+      "id": "E006",
+      "kind": "local",
+      "path": "local/research/codex/duo-round-r1/game-B/CA-r2-stage-social.exe",
+      "bytes": 31874560,
+      "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+    },
+    {
+      "id": "E007",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/11ED520.asm",
+      "bytes": 5749,
+      "sha256": "d3f8f19bcebfc17659569024ddb888a986701edc3495ad362f034f3e35fa2029"
+    },
+    {
+      "id": "E008",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/B52840.asm",
+      "bytes": 9476,
+      "sha256": "62f8f308160bbe656a7c9d99eb359a87dd6fe90f1fab8eb7e4b8798169f10772"
+    },
+    {
+      "id": "E009",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/D824D0.asm",
+      "bytes": 10626,
+      "sha256": "4aa7a21e7fd3c1c5fe40d567409fdae568ef6264a5e30e757269e5fdcad9aed7"
+    },
+    {
+      "id": "E010",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/E2C660.asm",
+      "bytes": 9529,
+      "sha256": "a0e5e2533a1860a9863efc9a0abd02fe0c064b51fe550cdbfeb318b2a5d0597f"
+    },
+    {
+      "id": "E011",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/E2E390.asm",
+      "bytes": 11847,
+      "sha256": "3eb5b07f463420153afb69fd920e9812d3d6240a46329544815b05f7d8635f1d"
+    },
+    {
+      "id": "E012",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/E63260.asm",
+      "bytes": 43413,
+      "sha256": "1edbaa7e962dbcf0fc4c572a9affb4b1b1cc59d386e79c197a0b45ddef6c2a9b"
+    },
+    {
+      "id": "E013",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/E69D80.asm",
+      "bytes": 4309,
+      "sha256": "7c6e2847c19328c427b29e21dee10dfdbc48db7f60afc8b480c89226e58a83b9"
+    },
+    {
+      "id": "E014",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/E9E660.asm",
+      "bytes": 12649,
+      "sha256": "5b58f8332a39687480ea2c398569856ebfdee032e5e8b8c51a45295cf3ba2036"
+    },
+    {
+      "id": "E015",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/F73D30.asm",
+      "bytes": 4537,
+      "sha256": "98d26811814b4b71be9b9af30b9bf472c019a98216c916b87a3123bb4ccf6b03"
+    },
+    {
+      "id": "E016",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/base-dispatch.json",
+      "bytes": 1562,
+      "sha256": "35981e490c56e3e4338557c2b28186ceee436a89c654fb2dd8bd9b241e18917d"
+    },
+    {
+      "id": "E017",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/code-match.json",
+      "bytes": 1972,
+      "sha256": "c6aa5662493b636e6a9ca690e7547a3487db784733ebf7f94a7315c4281cf713"
+    },
+    {
+      "id": "E018",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/derive_roles.py",
+      "bytes": 802,
+      "sha256": "3db2075a66ce52608cbd6a1ecf6fed05fab6597007d4636aab5a1b845de03c6c"
+    },
+    {
+      "id": "E019",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/derived/floor-control-A-oracle.json",
+      "bytes": 94389,
+      "sha256": "807f0510d80d7ab6ce631131a5f9175bce12568b2fcba481e99c01adbe5eb965"
+    },
+    {
+      "id": "E020",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/derived/floor-control-A-replay.txt",
+      "bytes": 1571,
+      "sha256": "a4036db0ae57798eb115a85660cd74642425e2f3b6906b08976fea5253ccac3f"
+    },
+    {
+      "id": "E021",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/derived/floor-control-A/run.json",
+      "bytes": 36796,
+      "sha256": "b53cfad77091f7e9a910bd7d14435f99f9ca4030ba6c46ae21a5d71fedaf4e34"
+    },
+    {
+      "id": "E022",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/derived/floor-control-B-oracle.json",
+      "bytes": 76430,
+      "sha256": "c8a6bb1917e9204c81547145628b9d82fd80bfcfd6fabafbbab298f53c9fadf4"
+    },
+    {
+      "id": "E023",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/derived/floor-control-B-replay.txt",
+      "bytes": 1278,
+      "sha256": "2453b0d79dbce0584c4ad6db8d6d9a99d888117db9b56a2f0ebd9363bb298675"
+    },
+    {
+      "id": "E024",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/derived/floor-control-B/run.json",
+      "bytes": 34737,
+      "sha256": "2f94da9bbad4d5c3625f555923f2eef9115c96a355603dfec87e6e8c2e84cbf3"
+    },
+    {
+      "id": "E025",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/derived/near-control-A-oracle.json",
+      "bytes": 97680,
+      "sha256": "9271d53adfeb27b8f5e460522741d24845962104f87426466a7412cfc1cc8a7d"
+    },
+    {
+      "id": "E026",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/derived/near-control-A-replay.txt",
+      "bytes": 1618,
+      "sha256": "fd174e75c087662f23e90c249c8d5a34894c7908676b178149d19ee97a9a5698"
+    },
+    {
+      "id": "E027",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/derived/near-control-A/run.json",
+      "bytes": 38292,
+      "sha256": "79e65cb2801b9ff04982b7288fefa95dc758eccf3a606e88b35929f12496abb8"
+    },
+    {
+      "id": "E028",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/derived/near-control-B-oracle.json",
+      "bytes": 76055,
+      "sha256": "26491af390481517326dc76282c12b263a0f0fa289d948a7efe8f380b464b2f1"
+    },
+    {
+      "id": "E029",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/derived/near-control-B-replay.txt",
+      "bytes": 1276,
+      "sha256": "232a24bd921f41328d09cdf2a76459d2de1d9a21aa05959f4478a4ab684fa59d"
+    },
+    {
+      "id": "E030",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/derived/near-control-B/run.json",
+      "bytes": 35016,
+      "sha256": "13c1b6873574e26fa7c09f4e08360f5e8d60392eca1ee03e9b2e0598c8f2346e"
+    },
+    {
+      "id": "E031",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/derived/pickup-ack-A-oracle.json",
+      "bytes": 103664,
+      "sha256": "408b0f9d2a468a38e286ccfc6632f54116864d44792d6ac15ca6f443fc15089a"
+    },
+    {
+      "id": "E032",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/derived/pickup-ack-A-replay.txt",
+      "bytes": 1708,
+      "sha256": "5fe701031fc91efedd693f6ec8941357a0f11c94974068d7176898aced2e7695"
+    },
+    {
+      "id": "E033",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/derived/pickup-ack-A/run.json",
+      "bytes": 43524,
+      "sha256": "f8c4d1603f5b07857bec3334e91ae8e12bea1ec214b6b37d9019e757183cc07b"
+    },
+    {
+      "id": "E034",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/derived/pickup-ack-B-oracle.json",
+      "bytes": 78885,
+      "sha256": "2d80f630bc5bcd2f5fa29ea06a59eafdb8d5e40db8f8ddb2851d426d4840b878"
+    },
+    {
+      "id": "E035",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/derived/pickup-ack-B-replay.txt",
+      "bytes": 1318,
+      "sha256": "7b0d151c25b9797d3643d9aa70fc357b6327345391e55a1be300930709f9926b"
+    },
+    {
+      "id": "E036",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/derived/pickup-ack-B/run.json",
+      "bytes": 39325,
+      "sha256": "328b4a80ca4238ce4fb770379754438746e8c5c3d777f4bf2373bd7072f7a0a8"
+    },
+    {
+      "id": "E037",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/derived/pickup-race-A-oracle.json",
+      "bytes": 97089,
+      "sha256": "3f4f34aabf5c0f4038c69ba50966b6669b637e82628a29ae3edcdce84442a43b"
+    },
+    {
+      "id": "E038",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/derived/pickup-race-A-replay.txt",
+      "bytes": 1613,
+      "sha256": "cc62314e6c53d968fc0e0e2cb7d178f1e66e82a797da60e10558ba29627f9a44"
+    },
+    {
+      "id": "E039",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/derived/pickup-race-A/run.json",
+      "bytes": 39988,
+      "sha256": "5a1c6253b88ba1c5c4c6ec0c357d50e81c63c89e86febce440fc3f83e76df9ab"
+    },
+    {
+      "id": "E040",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/derived/pickup-race-B-oracle.json",
+      "bytes": 78840,
+      "sha256": "2a9167835a924d93e7928a199db19d830e69900b35a432287a71ec9edb018895"
+    },
+    {
+      "id": "E041",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/derived/pickup-race-B-replay.txt",
+      "bytes": 1319,
+      "sha256": "b31e7cfbbb01e79c0bfb6ca034a94a9a8f6c71d11994706c1f985505eb6a0747"
+    },
+    {
+      "id": "E042",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/derived/pickup-race-B/run.json",
+      "bytes": 37639,
+      "sha256": "f6524b4067383c1fca4667163faa66d81c91c4307889351112c7eab341c8c038"
+    },
+    {
+      "id": "E043",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/dispatch.json",
+      "bytes": 13332,
+      "sha256": "e5faca37bef5f8e55937e162a615ab6c1be0e04d53f95fa5d5d675a421a18f37"
+    },
+    {
+      "id": "E044",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/finish_evidence.py",
+      "bytes": 8940,
+      "sha256": "dd0f12f78b45657c58220cec02d4ae90e9286e3bb16176c1953be236ca549f7d"
+    },
+    {
+      "id": "E045",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/floor-control-hashes.json",
+      "bytes": 118839,
+      "sha256": "d41e01ed2200ee0f72b3fbae418a7c71634dfdb19e359819bcbba2c7022ee84d"
+    },
+    {
+      "id": "E046",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/floor-control-launcher.log",
+      "bytes": 47651,
+      "sha256": "d4b6420749a3d8826712696e0a90e1efae582870218b466d3a4f6e31880fc6aa"
+    },
+    {
+      "id": "E047",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/floor-control-recipe.json",
+      "bytes": 990,
+      "sha256": "dffdf8f7bc71ade08ebc9e0078a497a6840465166790d23b59b60d2bc2486915"
+    },
+    {
+      "id": "E048",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/floor-control/A-floor582-76.bin",
+      "bytes": 74,
+      "sha256": "ea91ec7b2fb62eb098b8f3b3c1e7f9d3f0b9f05f5c66ee20d52b1b634adedca1"
+    },
+    {
+      "id": "E049",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/floor-control/A-go197-82.bin",
+      "bytes": 52,
+      "sha256": "64b95010ecb0e40bc0367f41f6710d2357fb2538ce827e205825284601237ef8"
+    },
+    {
+      "id": "E050",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/floor-control/A-peer153-88.bin",
+      "bytes": 135,
+      "sha256": "2d33a2cb5917839742e5b6228ec1fe042be402b32c685bfa441d8c87fee2cebd"
+    },
+    {
+      "id": "E051",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/floor-control/A-play196-85.bin",
+      "bytes": 45,
+      "sha256": "d04bf155b4847f9d41b0edfdf00a32526302273271c0f1cadbb8ce22b89eb51d"
+    },
+    {
+      "id": "E052",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/floor-control/A-ready110-73.bin",
+      "bytes": 44,
+      "sha256": "8fafd9cf652b458ee09b3751a0201f9ab1409920398e0e842e43b915c8840e25"
+    },
+    {
+      "id": "E053",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/floor-control/A-start121-r1-79.bin",
+      "bytes": 167,
+      "sha256": "4d85d0786f484c579ef94cd61ceaa40997df93c39589d720ea8334bc9b5ca29f"
+    },
+    {
+      "id": "E054",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/floor-control/A/final-both.png",
+      "bytes": 130842,
+      "sha256": "08fd2e0e747488a5e60f1f088d127c46aace565e88ca93b8ffb23ad9d9cc3d48"
+    },
+    {
+      "id": "E055",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/floor-control/A/r1-multi-after-0-Right.png",
+      "bytes": 131225,
+      "sha256": "fc57522cda619e73ebd98c161345e82d4751507d065778125b560668575dd2aa"
+    },
+    {
+      "id": "E056",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/floor-control/A/r1-multi-after-1-Left.png",
+      "bytes": 130538,
+      "sha256": "c163047e2a2994019bf1afc7cfd2c37f9f4091fabb8eaf8bdb2ee0e326f1704c"
+    },
+    {
+      "id": "E057",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/floor-control/A/r1-seen-after-A-0-Right.png",
+      "bytes": 131535,
+      "sha256": "dd069062848878bada23157004bf2f6f655dd303e322342173e13c528ee46c1d"
+    },
+    {
+      "id": "E058",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/floor-control/A/r1-seen-after-A-1-Left.png",
+      "bytes": 130716,
+      "sha256": "9ab052dd427f2539952bc32c49c60fbff8f4971d917074d3f112658a0590fddd"
+    },
+    {
+      "id": "E059",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/floor-control/A/r1-seen-after-B-0-Right.png",
+      "bytes": 129368,
+      "sha256": "a1f0017575360796c93db50d1cd78858a35bd3388b47a0e6e8839ae15d638ec9"
+    },
+    {
+      "id": "E060",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/floor-control/A/r1-seen-after-B-1-Left.png",
+      "bytes": 129676,
+      "sha256": "37b284546c982ac649b707486d89034c333407dd5720549930b153c000cef3bf"
+    },
+    {
+      "id": "E061",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/floor-control/A/run.json",
+      "bytes": 32405,
+      "sha256": "689cb083a709b05049fccc1bf6b347734bd580186076379acf48aa76d92a2a27"
+    },
+    {
+      "id": "E062",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/floor-control/A/screen-66.png",
+      "bytes": 129744,
+      "sha256": "54095b6b6de1cf9ff764ba38a0100f3f0fd1eda220090a88d48e37c02f88d7f3"
+    },
+    {
+      "id": "E063",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/floor-control/B-floor582-76.bin",
+      "bytes": 74,
+      "sha256": "ea91ec7b2fb62eb098b8f3b3c1e7f9d3f0b9f05f5c66ee20d52b1b634adedca1"
+    },
+    {
+      "id": "E064",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/floor-control/B-go197-82.bin",
+      "bytes": 52,
+      "sha256": "64b95010ecb0e40bc0367f41f6710d2357fb2538ce827e205825284601237ef8"
+    },
+    {
+      "id": "E065",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/floor-control/B-peer153-88.bin",
+      "bytes": 135,
+      "sha256": "c5d289f0aaa74942fb445c976f6a6b4e56b52f411ad6499a50224756270d84ab"
+    },
+    {
+      "id": "E066",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/floor-control/B-play196-85.bin",
+      "bytes": 45,
+      "sha256": "d04bf155b4847f9d41b0edfdf00a32526302273271c0f1cadbb8ce22b89eb51d"
+    },
+    {
+      "id": "E067",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/floor-control/B-ready110-73.bin",
+      "bytes": 44,
+      "sha256": "8fafd9cf652b458ee09b3751a0201f9ab1409920398e0e842e43b915c8840e25"
+    },
+    {
+      "id": "E068",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/floor-control/B-start121-r1-79.bin",
+      "bytes": 167,
+      "sha256": "4d85d0786f484c579ef94cd61ceaa40997df93c39589d720ea8334bc9b5ca29f"
+    },
+    {
+      "id": "E069",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/floor-control/B/CALog-run.txt",
+      "bytes": 2752,
+      "sha256": "69dcd772f395e5ec2ee19e2fca84ba33e0f5eb67a59412f37edda28a0b6b41be"
+    },
+    {
+      "id": "E070",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/floor-control/B/final-both.png",
+      "bytes": 130778,
+      "sha256": "c3e72d15bbe635631abf16dca81e3a2c3d028032ecebf01d14cfb1bafb861898"
+    },
+    {
+      "id": "E071",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/floor-control/B/r1-multi-after-0-Right.png",
+      "bytes": 129344,
+      "sha256": "11ea0493041a8cf9c75447116ef39803f69b831d3f7dc8c736518c5f241b1d1a"
+    },
+    {
+      "id": "E072",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/floor-control/B/r1-multi-after-1-Left.png",
+      "bytes": 129949,
+      "sha256": "9a3ca5d1c1c28e21a5e5ebc0b1c974d0309fad0f1050f8fac09b4e3433b40036"
+    },
+    {
+      "id": "E073",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/floor-control/B/r1-seen-after-A-0-Right.png",
+      "bytes": 131658,
+      "sha256": "f20ac7478a08da11d6315062a65c609c5a285ee888ba837720696fc87a07a96c"
+    },
+    {
+      "id": "E074",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/floor-control/B/r1-seen-after-A-1-Left.png",
+      "bytes": 130686,
+      "sha256": "08da086b0ac31fa9cf1bf60c523c6e7a37f218228a664b534d4ad69ae65b81a4"
+    },
+    {
+      "id": "E075",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/floor-control/B/r1-seen-after-B-0-Right.png",
+      "bytes": 129391,
+      "sha256": "4d29344e4a42f558257f9155c3c5f81e98cf3ddbf2ed329f8e3e6e9afa521201"
+    },
+    {
+      "id": "E076",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/floor-control/B/r1-seen-after-B-1-Left.png",
+      "bytes": 129908,
+      "sha256": "c46574039d9c23773719784f5c242c0756f5b394a2431862965bedfdcaf726aa"
+    },
+    {
+      "id": "E077",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/floor-control/B/run.json",
+      "bytes": 28355,
+      "sha256": "dde37624842864ecb07042c6f827d288324f188f44ed945832c5312b7a59185f"
+    },
+    {
+      "id": "E078",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/floor-control/B/screen-42.png",
+      "bytes": 129830,
+      "sha256": "657a2fa25cf6073593cfd094727ebce756ff308b2b34bfb1e5840ff7048c6413"
+    },
+    {
+      "id": "E079",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/floor-control/CALog-run.txt",
+      "bytes": 3275,
+      "sha256": "906da3b6dd69d0b70fd9c783743b95ba241edee75c8e9f726dd4c3b62150031d"
+    },
+    {
+      "id": "E080",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/floor-control/client-B.log",
+      "bytes": 11897,
+      "sha256": "58ff0816a20cd0cc0d1adf999c5e332584fc3939aaed3f045228103ef7e6a614"
+    },
+    {
+      "id": "E081",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/floor-control/client.log",
+      "bytes": 11666,
+      "sha256": "e1ee8f292458120e3bc04758f18edf2b1b54d33809687b466e4ebecad007bb7f"
+    },
+    {
+      "id": "E082",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/floor-control/debug-commands-B.txt",
+      "bytes": 3990,
+      "sha256": "9a4cfe13b5d5b26229afe540fbc00b0ebe6de27f0d16b9486393fa38a143e5e2"
+    },
+    {
+      "id": "E083",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/floor-control/debug-commands.txt",
+      "bytes": 3990,
+      "sha256": "9a4cfe13b5d5b26229afe540fbc00b0ebe6de27f0d16b9486393fa38a143e5e2"
+    },
+    {
+      "id": "E084",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/floor-control/run.json",
+      "bytes": 57685,
+      "sha256": "644284b66eee1e812ee8c3b97ff0fb221ea3c5adbe359c61549db1c1335b7fd4"
+    },
+    {
+      "id": "E085",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/floor582-fixture.json",
+      "bytes": 397,
+      "sha256": "4c26715f218f979a1766d83672b4a8467ef4093d8f09732e732cc41c47fc8bf1"
+    },
+    {
+      "id": "E086",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/floor582-near-fixture.json",
+      "bytes": 384,
+      "sha256": "2ef16549fbc781f7b830a0feedad621930783f97845c8d5eed3086063719f73f"
+    },
+    {
+      "id": "E087",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/floor582-near.bin",
+      "bytes": 74,
+      "sha256": "1491d4ba0ed88602c4269e9f3f20b633ea07805f774cda02760244925aef0044"
+    },
+    {
+      "id": "E088",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/floor582-passable-fixture.json",
+      "bytes": 362,
+      "sha256": "358c7b1eadefbebeb2ed983182b15dfaf99842a349e7b3ff4bfb10dfb419cfdf"
+    },
+    {
+      "id": "E089",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/floor582-passable.bin",
+      "bytes": 74,
+      "sha256": "977fbb796a01388edf19629a996705b295ca861401bd1c93fb170a5287342f4c"
+    },
+    {
+      "id": "E090",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/floor582-race-fixture.json",
+      "bytes": 336,
+      "sha256": "ca640ce6f883c0d26fc2b8f2cc717c459c33a441999871f5dc7cae3fa01b91ec"
+    },
+    {
+      "id": "E091",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/floor582-race.bin",
+      "bytes": 64,
+      "sha256": "00cee5e939da8307b5882b882bb938092a296707dde18c3e0aa1b0bc36183e7d"
+    },
+    {
+      "id": "E092",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/floor582.bin",
+      "bytes": 74,
+      "sha256": "399f7bf8fa847e7d710c0ccee251709ef1f96809d91897022abca19be3a44ba0"
+    },
+    {
+      "id": "E093",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/items-ack.gdb",
+      "bytes": 4985,
+      "sha256": "24364135b76800c0e9c9b06762f4cf5886563deb40f0a53a40188aa06c7485d4"
+    },
+    {
+      "id": "E094",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/items.gdb",
+      "bytes": 3990,
+      "sha256": "9a4cfe13b5d5b26229afe540fbc00b0ebe6de27f0d16b9486393fa38a143e5e2"
+    },
+    {
+      "id": "E095",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/measurement-notes-draft.json",
+      "bytes": 2380,
+      "sha256": "701b9a054dadc553b85d9821c9f8e0e1a74a09322ce77ae36f521170ad01c756"
+    },
+    {
+      "id": "E096",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/measurement-notes.json",
+      "bytes": 4395,
+      "sha256": "6365cda62ed0a949ce0b248b745a32a9aadca151c093b9fb7497ffe190fef458"
+    },
+    {
+      "id": "E097",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/native-actual.json",
+      "bytes": 23050,
+      "sha256": "541231ccd41ac91e40647d0ce811b1e3581573c84d4cc8de619d619b72174c48"
+    },
+    {
+      "id": "E098",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/native-layout.json",
+      "bytes": 1377,
+      "sha256": "ce955e27e635f2d55f33a6f85828f8818e39f0f63e8eabc75fd26effbce2edda"
+    },
+    {
+      "id": "E099",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/native-pick.json",
+      "bytes": 3564,
+      "sha256": "11097ee699bdf1a29000764f843487ef6c57ccbfa5da99d9b67bd2592e200886"
+    },
+    {
+      "id": "E100",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/native_actual.py",
+      "bytes": 3228,
+      "sha256": "8ad36f764c5301ddc38fcdccafdaa5785a145d0b46ba5c810b80581662b71ea8"
+    },
+    {
+      "id": "E101",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/native_layout.py",
+      "bytes": 2367,
+      "sha256": "495dda0d2d51af9f02983cabb4bf0e580ae0341b365c57785294f10c8cb1da57"
+    },
+    {
+      "id": "E102",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/native_pick.py",
+      "bytes": 2836,
+      "sha256": "3cef153407b6acadb4a6738345d70fdeb329398000d08253a2c236cadf67dc20"
+    },
+    {
+      "id": "E103",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/near-control-hashes.json",
+      "bytes": 117020,
+      "sha256": "683ccdd3efaf7a490f99a94ff82d836e6320d426eea37d5912a00799e1202d56"
+    },
+    {
+      "id": "E104",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/near-control-launcher.log",
+      "bytes": 48705,
+      "sha256": "3a821845bb9f74f7d1be96b98202efb396184fa3f41bc7f57b80fb898f337ba8"
+    },
+    {
+      "id": "E105",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/near-control-recipe.json",
+      "bytes": 993,
+      "sha256": "c008f858bf6aac4fda3204bf44e5b28645f17c87e5bb7d80fed8e47eacd1eb3a"
+    },
+    {
+      "id": "E106",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/near-control/A-floor582-76.bin",
+      "bytes": 74,
+      "sha256": "d09bfd40eae5036667160bba4a57dbcf6c587ef42f9d89e22e12dc80a93f2ab3"
+    },
+    {
+      "id": "E107",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/near-control/A-go197-82.bin",
+      "bytes": 52,
+      "sha256": "64b95010ecb0e40bc0367f41f6710d2357fb2538ce827e205825284601237ef8"
+    },
+    {
+      "id": "E108",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/near-control/A-peer153-88.bin",
+      "bytes": 135,
+      "sha256": "806e04ad5ad7e99c731b1ac6a15e9a01ae70cf86809cb149b0cd2ec4f383d606"
+    },
+    {
+      "id": "E109",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/near-control/A-play196-85.bin",
+      "bytes": 45,
+      "sha256": "d04bf155b4847f9d41b0edfdf00a32526302273271c0f1cadbb8ce22b89eb51d"
+    },
+    {
+      "id": "E110",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/near-control/A-ready110-73.bin",
+      "bytes": 44,
+      "sha256": "8fafd9cf652b458ee09b3751a0201f9ab1409920398e0e842e43b915c8840e25"
+    },
+    {
+      "id": "E111",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/near-control/A-start121-r1-79.bin",
+      "bytes": 167,
+      "sha256": "4d85d0786f484c579ef94cd61ceaa40997df93c39589d720ea8334bc9b5ca29f"
+    },
+    {
+      "id": "E112",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/near-control/A/final-both.png",
+      "bytes": 131134,
+      "sha256": "8a14c49239ee5b8fef3b35f468814c85aba493fce274cb90022f54ae076c9144"
+    },
+    {
+      "id": "E113",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/near-control/A/r1-multi-after-0-Down.png",
+      "bytes": 130770,
+      "sha256": "581dfb4a95bee1f0b035abb2d6c078389dbf52220beaa0a76986a11cf422495d"
+    },
+    {
+      "id": "E114",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/near-control/A/r1-multi-after-1-Up.png",
+      "bytes": 131639,
+      "sha256": "813055206360efe31ec36eeb0391e63a8454ca7c528251c4f6e89e7e6dd42bd5"
+    },
+    {
+      "id": "E115",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/near-control/A/r1-seen-after-A-0-Down.png",
+      "bytes": 131029,
+      "sha256": "cff59b9ed76ed941beebd954d9fcb069b79d6ab3a50256dc40278275d813b6ab"
+    },
+    {
+      "id": "E116",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/near-control/A/r1-seen-after-A-1-Up.png",
+      "bytes": 131597,
+      "sha256": "63490d3bcdf4f8356116c7d5d652aa9b944f8d698668ae5f6514ea2bdfe18e32"
+    },
+    {
+      "id": "E117",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/near-control/A/r1-seen-after-B-0-Down.png",
+      "bytes": 131016,
+      "sha256": "88154b280727fb589a2edfeb07c1b57a47a0afc0aa7f2db79848355bbab083fe"
+    },
+    {
+      "id": "E118",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/near-control/A/r1-seen-after-B-1-Up.png",
+      "bytes": 131292,
+      "sha256": "0ed45ec1621fe8128c228066ae627edd81f100cbb6bb9e205e4c6ef67efe6a2e"
+    },
+    {
+      "id": "E119",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/near-control/A/run.json",
+      "bytes": 33260,
+      "sha256": "0d6164450d8760d67f02e0493cfa086dab793c1f11aaecc830f83d9e45fc3ef0"
+    },
+    {
+      "id": "E120",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/near-control/B-floor582-76.bin",
+      "bytes": 74,
+      "sha256": "d09bfd40eae5036667160bba4a57dbcf6c587ef42f9d89e22e12dc80a93f2ab3"
+    },
+    {
+      "id": "E121",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/near-control/B-go197-82.bin",
+      "bytes": 52,
+      "sha256": "64b95010ecb0e40bc0367f41f6710d2357fb2538ce827e205825284601237ef8"
+    },
+    {
+      "id": "E122",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/near-control/B-peer153-88.bin",
+      "bytes": 135,
+      "sha256": "6051245919f29992dad9feeff87418e0f23ec0411f713c190be525c84acc1d49"
+    },
+    {
+      "id": "E123",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/near-control/B-play196-85.bin",
+      "bytes": 45,
+      "sha256": "d04bf155b4847f9d41b0edfdf00a32526302273271c0f1cadbb8ce22b89eb51d"
+    },
+    {
+      "id": "E124",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/near-control/B-ready110-73.bin",
+      "bytes": 44,
+      "sha256": "8fafd9cf652b458ee09b3751a0201f9ab1409920398e0e842e43b915c8840e25"
+    },
+    {
+      "id": "E125",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/near-control/B-start121-r1-79.bin",
+      "bytes": 167,
+      "sha256": "4d85d0786f484c579ef94cd61ceaa40997df93c39589d720ea8334bc9b5ca29f"
+    },
+    {
+      "id": "E126",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/near-control/B/CALog-run.txt",
+      "bytes": 2713,
+      "sha256": "8ac30e47fff3e63b52f24c5904c38a230b00304ac8df1488a24adaea6b0ba425"
+    },
+    {
+      "id": "E127",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/near-control/B/final-both.png",
+      "bytes": 132018,
+      "sha256": "38934f089fc4583e835ed5149617be6d933c20bb7e82d41de2ef2484dc6f1ea7"
+    },
+    {
+      "id": "E128",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/near-control/B/r1-multi-after-0-Down.png",
+      "bytes": 131116,
+      "sha256": "fa5c89e3bacc48afb0b2055150bf51c3c99f619a2005da2659fdc3e179321ec9"
+    },
+    {
+      "id": "E129",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/near-control/B/r1-multi-after-1-Up.png",
+      "bytes": 131815,
+      "sha256": "d8409c2c4885d076ee23a20633926cd4b514888024a96e34a43ecbec792d5cf4"
+    },
+    {
+      "id": "E130",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/near-control/B/r1-seen-after-A-0-Down.png",
+      "bytes": 130766,
+      "sha256": "855ab3b51d6758381ae6bf7ac0ac1376c4329d4e79fab1716037c0560a371cd1"
+    },
+    {
+      "id": "E131",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/near-control/B/r1-seen-after-A-1-Up.png",
+      "bytes": 131756,
+      "sha256": "0d7ab6c540b24b3280495ec040b69794a90ebc774eded27fc5f95011d641de3e"
+    },
+    {
+      "id": "E132",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/near-control/B/r1-seen-after-B-0-Down.png",
+      "bytes": 131398,
+      "sha256": "a68e4ebd40edabdb64bb2bc299b842a7f44dcbd180581e0a2048e097d76a745e"
+    },
+    {
+      "id": "E133",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/near-control/B/r1-seen-after-B-1-Up.png",
+      "bytes": 131179,
+      "sha256": "9afc39023b50313306509327156d14319bbcd3fc3497205f2d8f5f62f5e01cb6"
+    },
+    {
+      "id": "E134",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/near-control/B/run.json",
+      "bytes": 28009,
+      "sha256": "54e71aea12bd3d6032c5c50335a2a508966d6b36ecec2796c2d1590b07bff206"
+    },
+    {
+      "id": "E135",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/near-control/CALog-run.txt",
+      "bytes": 3431,
+      "sha256": "2da5090a44d75a80e6c436ee067463654ac88283954047b59b4e5c2f0c64ee7f"
+    },
+    {
+      "id": "E136",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/near-control/client-B.log",
+      "bytes": 12111,
+      "sha256": "b4d32fb5431183c07e65764dde5040a375879739c1f7d548555e75e9477ea2c3"
+    },
+    {
+      "id": "E137",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/near-control/client.log",
+      "bytes": 12509,
+      "sha256": "ffc454c72af668813ae201e1f90ec98f39d7927c7650d8a5965fd84ed0698495"
+    },
+    {
+      "id": "E138",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/near-control/debug-commands-B.txt",
+      "bytes": 3990,
+      "sha256": "9a4cfe13b5d5b26229afe540fbc00b0ebe6de27f0d16b9486393fa38a143e5e2"
+    },
+    {
+      "id": "E139",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/near-control/debug-commands.txt",
+      "bytes": 3990,
+      "sha256": "9a4cfe13b5d5b26229afe540fbc00b0ebe6de27f0d16b9486393fa38a143e5e2"
+    },
+    {
+      "id": "E140",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/near-control/run.json",
+      "bytes": 58917,
+      "sha256": "ee9ee409917dae45c92c5863fc6a86d15906f72d02358f7df2ac2122f70d9360"
+    },
+    {
+      "id": "E141",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/pickup-ack-hashes.json",
+      "bytes": 126228,
+      "sha256": "31b07ec7a0ef10bd190d033cbada72ec19b4e82d604dfe968f5763e189bdf795"
+    },
+    {
+      "id": "E142",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/pickup-ack-launcher.log",
+      "bytes": 53574,
+      "sha256": "3af1a7733ef9442b0065f577805a0c9cf59a6d01bf9ba94e9696c86d0db1cf18"
+    },
+    {
+      "id": "E143",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/pickup-ack-recipe.json",
+      "bytes": 984,
+      "sha256": "d3642dabe9cc22452573ddd4bf7472e0c07d7cc69555adb25e05fe3fa2fad616"
+    },
+    {
+      "id": "E144",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/pickup-ack/A-floor582-76.bin",
+      "bytes": 74,
+      "sha256": "e35a08ee21eae99c5bdbc4dd7abc099330a21ed5b1b3a9e572a44a57b801c846"
+    },
+    {
+      "id": "E145",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/pickup-ack/A-go197-82.bin",
+      "bytes": 52,
+      "sha256": "64b95010ecb0e40bc0367f41f6710d2357fb2538ce827e205825284601237ef8"
+    },
+    {
+      "id": "E146",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/pickup-ack/A-item165-17-94.bin",
+      "bytes": 50,
+      "sha256": "7e90ec22aa06a19821f477c0da5ee5da61c814a81a9c7d32aa07df12f5af2c37"
+    },
+    {
+      "id": "E147",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/pickup-ack/A-item165-18-91.bin",
+      "bytes": 50,
+      "sha256": "512ecc6d01a8017950bd5e46808e080d3ad08afcb88c3be15eac91ab5ca4e604"
+    },
+    {
+      "id": "E148",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/pickup-ack/A-peer153-88.bin",
+      "bytes": 135,
+      "sha256": "2e61a12a2839b2e3bae5a6493cc5f0c83bc3918b97dfe238ab0cf12433f92248"
+    },
+    {
+      "id": "E149",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/pickup-ack/A-play196-85.bin",
+      "bytes": 45,
+      "sha256": "d04bf155b4847f9d41b0edfdf00a32526302273271c0f1cadbb8ce22b89eb51d"
+    },
+    {
+      "id": "E150",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/pickup-ack/A-ready110-73.bin",
+      "bytes": 44,
+      "sha256": "8fafd9cf652b458ee09b3751a0201f9ab1409920398e0e842e43b915c8840e25"
+    },
+    {
+      "id": "E151",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/pickup-ack/A-start121-r1-79.bin",
+      "bytes": 167,
+      "sha256": "4d85d0786f484c579ef94cd61ceaa40997df93c39589d720ea8334bc9b5ca29f"
+    },
+    {
+      "id": "E152",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/pickup-ack/A/final-both.png",
+      "bytes": 128446,
+      "sha256": "d1d8a54a8fdb173e885d531c2bbd559a75b61c31eff2b7253393f3db529d660c"
+    },
+    {
+      "id": "E153",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/pickup-ack/A/r1-multi-after-0-Down.png",
+      "bytes": 128130,
+      "sha256": "6c669ac3f61844f7c087435c7c672622bb5a0a7fbabd1bb1dd95d539a7994571"
+    },
+    {
+      "id": "E154",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/pickup-ack/A/r1-multi-after-1-Up.png",
+      "bytes": 127816,
+      "sha256": "4a9090eb4ead2078c2e7840d09532dd9c6e68f681b85b3d8c0479fe962171079"
+    },
+    {
+      "id": "E155",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/pickup-ack/A/r1-seen-after-A-0-Down.png",
+      "bytes": 126626,
+      "sha256": "a69894f5cb641d3980c155f825b76d20646d8742d99c57430d9865e74eb744e7"
+    },
+    {
+      "id": "E156",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/pickup-ack/A/r1-seen-after-A-1-Up.png",
+      "bytes": 127982,
+      "sha256": "046dc6e4abb4f97c9c6c14d6b2238cb4f93fb8824930b56d3dc36514db44e1a4"
+    },
+    {
+      "id": "E157",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/pickup-ack/A/r1-seen-after-B-0-Down.png",
+      "bytes": 129699,
+      "sha256": "f4ad5c650d104d25c9d997d5dc540013af66ffd4c7719c79c6207db3b3579d9f"
+    },
+    {
+      "id": "E158",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/pickup-ack/A/r1-seen-after-B-1-Up.png",
+      "bytes": 128913,
+      "sha256": "6a715c9b7f00e76a5f1b2fb643b786d50c3a408b6285ddc1cefe9f2625e13372"
+    },
+    {
+      "id": "E159",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/pickup-ack/A/run.json",
+      "bytes": 35889,
+      "sha256": "aba43ba5670f22d7779e944f44c7654bc5909f16c00063effd13405b64d4d06a"
+    },
+    {
+      "id": "E160",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/pickup-ack/B-floor582-76.bin",
+      "bytes": 74,
+      "sha256": "e35a08ee21eae99c5bdbc4dd7abc099330a21ed5b1b3a9e572a44a57b801c846"
+    },
+    {
+      "id": "E161",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/pickup-ack/B-go197-82.bin",
+      "bytes": 52,
+      "sha256": "64b95010ecb0e40bc0367f41f6710d2357fb2538ce827e205825284601237ef8"
+    },
+    {
+      "id": "E162",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/pickup-ack/B-item165-17-94.bin",
+      "bytes": 50,
+      "sha256": "7e90ec22aa06a19821f477c0da5ee5da61c814a81a9c7d32aa07df12f5af2c37"
+    },
+    {
+      "id": "E163",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/pickup-ack/B-item165-18-91.bin",
+      "bytes": 50,
+      "sha256": "512ecc6d01a8017950bd5e46808e080d3ad08afcb88c3be15eac91ab5ca4e604"
+    },
+    {
+      "id": "E164",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/pickup-ack/B-peer153-88.bin",
+      "bytes": 135,
+      "sha256": "f5160ff123b2a4ccff790f2f62ab4aea33a243b656b6579022fb1e8be6fc8e66"
+    },
+    {
+      "id": "E165",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/pickup-ack/B-play196-85.bin",
+      "bytes": 45,
+      "sha256": "d04bf155b4847f9d41b0edfdf00a32526302273271c0f1cadbb8ce22b89eb51d"
+    },
+    {
+      "id": "E166",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/pickup-ack/B-ready110-73.bin",
+      "bytes": 44,
+      "sha256": "8fafd9cf652b458ee09b3751a0201f9ab1409920398e0e842e43b915c8840e25"
+    },
+    {
+      "id": "E167",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/pickup-ack/B-start121-r1-79.bin",
+      "bytes": 167,
+      "sha256": "4d85d0786f484c579ef94cd61ceaa40997df93c39589d720ea8334bc9b5ca29f"
+    },
+    {
+      "id": "E168",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/pickup-ack/B/CALog-run.txt",
+      "bytes": 2795,
+      "sha256": "5b23f603c430d38bdfa796d9da7fae9cca7143698ef259804ea6bc01545c9150"
+    },
+    {
+      "id": "E169",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/pickup-ack/B/final-both.png",
+      "bytes": 128559,
+      "sha256": "a90ca8efdf0b74c6d97e7d9c7d496dab14651e4f535849a04dd5a855d14aa840"
+    },
+    {
+      "id": "E170",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/pickup-ack/B/r1-multi-after-0-Down.png",
+      "bytes": 129837,
+      "sha256": "7a4bad27f1018c905195368f68999b85e581394a7d4513b18efcf86ab420b6fa"
+    },
+    {
+      "id": "E171",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/pickup-ack/B/r1-multi-after-1-Up.png",
+      "bytes": 130871,
+      "sha256": "20da66ac113c558d2029bf78b9f5e693c6c8a44fd8f192fd4437b7cb6636d573"
+    },
+    {
+      "id": "E172",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/pickup-ack/B/r1-seen-after-A-0-Down.png",
+      "bytes": 126504,
+      "sha256": "c90c55c3165d00fa6918146e396480b4351a860a74f9cc62c0b22ee5dd2fcf02"
+    },
+    {
+      "id": "E173",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/pickup-ack/B/r1-seen-after-A-1-Up.png",
+      "bytes": 128041,
+      "sha256": "f98030d121d9fb7fabb8a53026c53567658dc9580c54444324ad5d8e8e41991a"
+    },
+    {
+      "id": "E174",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/pickup-ack/B/r1-seen-after-B-0-Down.png",
+      "bytes": 129922,
+      "sha256": "a56516ccea49096a2e365d99584c31af20ca3afb27e5e0f5e6af55fea9a96519"
+    },
+    {
+      "id": "E175",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/pickup-ack/B/r1-seen-after-B-1-Up.png",
+      "bytes": 129261,
+      "sha256": "f8cc59c45ffd901383f8b4772668c0298fddd736fa0b986bf90f20d0489f2875"
+    },
+    {
+      "id": "E176",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/pickup-ack/B/run.json",
+      "bytes": 29706,
+      "sha256": "aedf7574c60d2902031980f495bb2055d8cb557e2a14b60a2cef4263aae34dae"
+    },
+    {
+      "id": "E177",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/pickup-ack/CALog-run.txt",
+      "bytes": 3669,
+      "sha256": "4a6eb31ff59c448f7a0207fd2aeb1593b7cceb7f8928930be0c40700240a53dd"
+    },
+    {
+      "id": "E178",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/pickup-ack/client-B.log",
+      "bytes": 14098,
+      "sha256": "35648b669e64764dd7faf0841aaf3cde9835aa6e4afe8bebd129c2c736879a18"
+    },
+    {
+      "id": "E179",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/pickup-ack/client.log",
+      "bytes": 13855,
+      "sha256": "20a605570c676f62b5f6d689209f86dd7f9f446d58da73c2c226a4bbd4d1a8bf"
+    },
+    {
+      "id": "E180",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/pickup-ack/debug-commands-B.txt",
+      "bytes": 4985,
+      "sha256": "24364135b76800c0e9c9b06762f4cf5886563deb40f0a53a40188aa06c7485d4"
+    },
+    {
+      "id": "E181",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/pickup-ack/debug-commands.txt",
+      "bytes": 4985,
+      "sha256": "24364135b76800c0e9c9b06762f4cf5886563deb40f0a53a40188aa06c7485d4"
+    },
+    {
+      "id": "E182",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/pickup-ack/run.json",
+      "bytes": 65248,
+      "sha256": "c151d8a8133c628954612e54128bd47bacb2cfa4533e23c41f156dee070a83e5"
+    },
+    {
+      "id": "E183",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/pickup-race-hashes.json",
+      "bytes": 137167,
+      "sha256": "68e1d294820988d913bc71acf49349b240bc755486952e879441bdc41e03e81f"
+    },
+    {
+      "id": "E184",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/pickup-race-launcher.log",
+      "bytes": 50013,
+      "sha256": "26d089e3707e1c7bfe5ed7a5938077286f0e18106ce5b12072f0908e49122e4b"
+    },
+    {
+      "id": "E185",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/pickup-race-recipe.json",
+      "bytes": 987,
+      "sha256": "2c82f2dfc090ac94b58fddd7dde60ff089b23a7db02f45f2bbc2559c17d76522"
+    },
+    {
+      "id": "E186",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/pickup-race/A-floor582-76.bin",
+      "bytes": 64,
+      "sha256": "874effa6b12a95c19787b79b2272d60f5e5ee9d56edd2554f1cc77bbd81b2eab"
+    },
+    {
+      "id": "E187",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/pickup-race/A-go197-82.bin",
+      "bytes": 52,
+      "sha256": "64b95010ecb0e40bc0367f41f6710d2357fb2538ce827e205825284601237ef8"
+    },
+    {
+      "id": "E188",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/pickup-race/A-item165-19-91.bin",
+      "bytes": 50,
+      "sha256": "3b52f173d58d2039a36d61e9118dd52bb2512c29d14d01c8993a674d2816a773"
+    },
+    {
+      "id": "E189",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/pickup-race/A-peer153-88.bin",
+      "bytes": 135,
+      "sha256": "c26db2fd6233a82cbf1576cc439c981e6e14cc644c9c3ffea0081194d4498518"
+    },
+    {
+      "id": "E190",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/pickup-race/A-play196-85.bin",
+      "bytes": 45,
+      "sha256": "d04bf155b4847f9d41b0edfdf00a32526302273271c0f1cadbb8ce22b89eb51d"
+    },
+    {
+      "id": "E191",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/pickup-race/A-ready110-73.bin",
+      "bytes": 44,
+      "sha256": "8fafd9cf652b458ee09b3751a0201f9ab1409920398e0e842e43b915c8840e25"
+    },
+    {
+      "id": "E192",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/pickup-race/A-start121-r1-79.bin",
+      "bytes": 167,
+      "sha256": "4d85d0786f484c579ef94cd61ceaa40997df93c39589d720ea8334bc9b5ca29f"
+    },
+    {
+      "id": "E193",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/pickup-race/A/final-both.png",
+      "bytes": 128192,
+      "sha256": "863e595dceca16574796ece570bf817bdca6e56266d741191fadd88a38f24c2d"
+    },
+    {
+      "id": "E194",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/pickup-race/A/race-after-A.png",
+      "bytes": 127645,
+      "sha256": "78f3a4cf16d51bcdf0b261ec94e1eb548e4cae93484f973ae43d3d8dcd8ab884"
+    },
+    {
+      "id": "E195",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/pickup-race/A/race-after-B.png",
+      "bytes": 128067,
+      "sha256": "37feb5ff15b1c4a7a77adfff2206b905bdb547f64499f08befb4c20bc281b1ba"
+    },
+    {
+      "id": "E196",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/pickup-race/A/race-before.png",
+      "bytes": 130594,
+      "sha256": "f3349fd8782c4f5ca87e4353b3f698747a2f4ad9e42fb5a94936fc7bb670f6c3"
+    },
+    {
+      "id": "E197",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/pickup-race/A/run.json",
+      "bytes": 34187,
+      "sha256": "a2b6eee1d34127ffeb29ed79bad0842d2eaa7f9a8d48c1af89022b3a6207381d"
+    },
+    {
+      "id": "E198",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/pickup-race/B-floor582-76.bin",
+      "bytes": 64,
+      "sha256": "874effa6b12a95c19787b79b2272d60f5e5ee9d56edd2554f1cc77bbd81b2eab"
+    },
+    {
+      "id": "E199",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/pickup-race/B-go197-82.bin",
+      "bytes": 52,
+      "sha256": "64b95010ecb0e40bc0367f41f6710d2357fb2538ce827e205825284601237ef8"
+    },
+    {
+      "id": "E200",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/pickup-race/B-item165-19-91.bin",
+      "bytes": 50,
+      "sha256": "3b52f173d58d2039a36d61e9118dd52bb2512c29d14d01c8993a674d2816a773"
+    },
+    {
+      "id": "E201",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/pickup-race/B-peer153-88.bin",
+      "bytes": 135,
+      "sha256": "e2a85fbeff51a2c6477c29bf7543c486634cbb3a5215b72415d4594317accd68"
+    },
+    {
+      "id": "E202",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/pickup-race/B-play196-85.bin",
+      "bytes": 45,
+      "sha256": "d04bf155b4847f9d41b0edfdf00a32526302273271c0f1cadbb8ce22b89eb51d"
+    },
+    {
+      "id": "E203",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/pickup-race/B-ready110-73.bin",
+      "bytes": 44,
+      "sha256": "8fafd9cf652b458ee09b3751a0201f9ab1409920398e0e842e43b915c8840e25"
+    },
+    {
+      "id": "E204",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/pickup-race/B-start121-r1-79.bin",
+      "bytes": 167,
+      "sha256": "4d85d0786f484c579ef94cd61ceaa40997df93c39589d720ea8334bc9b5ca29f"
+    },
+    {
+      "id": "E205",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/pickup-race/B/CALog-run.txt",
+      "bytes": 2795,
+      "sha256": "f39d6c01155cf0f9cba6debe716460948e32f08dfe171a71ebfc47e37f1fb415"
+    },
+    {
+      "id": "E206",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/pickup-race/B/final-both.png",
+      "bytes": 128416,
+      "sha256": "e67b1ccc7eeb02c43b7ab02521d582282993a19bffdddcdef5f196b0686653e1"
+    },
+    {
+      "id": "E207",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/pickup-race/B/race-after-A.png",
+      "bytes": 128171,
+      "sha256": "508d4342f940b7645b0026bc4b62378b95543c2229ae053049b8e0ec7b57204f"
+    },
+    {
+      "id": "E208",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/pickup-race/B/race-after-B.png",
+      "bytes": 128171,
+      "sha256": "508d4342f940b7645b0026bc4b62378b95543c2229ae053049b8e0ec7b57204f"
+    },
+    {
+      "id": "E209",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/pickup-race/B/race-before.png",
+      "bytes": 130695,
+      "sha256": "eb7b7a79b786a2cdb0a3d980ed67e5007c57d08c43d68e8902cd9b8afa63c136"
+    },
+    {
+      "id": "E210",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/pickup-race/B/run.json",
+      "bytes": 29851,
+      "sha256": "aa7d8c0b09a9c381876c793c64b6eb5a80d9b3c79039a5116eede9f367f3bf4a"
+    },
+    {
+      "id": "E211",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/pickup-race/CALog-run.txt",
+      "bytes": 3357,
+      "sha256": "ec8a97e7c3f88c152ea21afdf676acc78d6a23b0e07ad264df9e9d76202ba930"
+    },
+    {
+      "id": "E212",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/pickup-race/client-B.log",
+      "bytes": 13877,
+      "sha256": "ada9aaa6f543a484e7fb5359adae3d2d278510c5d7a6a5b1c24d2da3a5a916db"
+    },
+    {
+      "id": "E213",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/pickup-race/client.log",
+      "bytes": 13423,
+      "sha256": "a2820965c6c6f9c96003a145654c80b45b924435000488ef463f03c9923470a7"
+    },
+    {
+      "id": "E214",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/pickup-race/debug-commands-B.txt",
+      "bytes": 4985,
+      "sha256": "24364135b76800c0e9c9b06762f4cf5886563deb40f0a53a40188aa06c7485d4"
+    },
+    {
+      "id": "E215",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/pickup-race/debug-commands.txt",
+      "bytes": 4985,
+      "sha256": "24364135b76800c0e9c9b06762f4cf5886563deb40f0a53a40188aa06c7485d4"
+    },
+    {
+      "id": "E216",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/pickup-race/run.json",
+      "bytes": 61429,
+      "sha256": "12dad52173c6c98a0e36d293228130258b3c16598d710df50d58e223934d98c9"
+    },
+    {
+      "id": "E217",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/prepare_race.py",
+      "bytes": 4485,
+      "sha256": "76e116c57b1638339c065d3ed63be87924607a1021345ae78f0826e609339249"
+    },
+    {
+      "id": "E218",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/read_static.py",
+      "bytes": 670,
+      "sha256": "aad7e6c8c7c91bf548b208b926752c4a5546d6f4e0fba509ffce0fc229e65330"
+    },
+    {
+      "id": "E219",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/replay-run.py",
+      "bytes": 3002,
+      "sha256": "d2a8b43848a6972f0f30f5954e1cd8d3495cf1479d9b98f2c02b62844961151e"
+    },
+    {
+      "id": "E220",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/request-frames/near-control/A-F47-124.bin",
+      "bytes": 57,
+      "sha256": "821f4137c0f98ddf3d0c98907ec6490b6dbd160043aff65f9ebca624059436dc"
+    },
+    {
+      "id": "E221",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/request-frames/pickup-ack/A-F46-124.bin",
+      "bytes": 57,
+      "sha256": "8adaae7f4b60ccfb5d1a387d1b2a12d756920cea36c66bb60549d669ae620534"
+    },
+    {
+      "id": "E222",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/request-frames/pickup-ack/B-F34-124.bin",
+      "bytes": 57,
+      "sha256": "710c9c448549669df2489bae26d8d017bd22ff522d903182191caea4e2584076"
+    },
+    {
+      "id": "E223",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/request-frames/pickup-race/A-F49-124.bin",
+      "bytes": 57,
+      "sha256": "1b420fff6e78f072f62ecee521c282bc284c20dda3d19d196b78ae40724f9a89"
+    },
+    {
+      "id": "E224",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/request-frames/pickup-race/B-F37-124.bin",
+      "bytes": 57,
+      "sha256": "268eb95daca306deaf9ee60366fb843cede11ed98a39d1e814c17e5eeee7e4a0"
+    },
+    {
+      "id": "E225",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/run_probe.py",
+      "bytes": 1067,
+      "sha256": "658f669a770bb7e2692e4e9a53010d6583b3468f279b15a3bb02109602633446"
+    },
+    {
+      "id": "E226",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/runtime-summary.json",
+      "bytes": 6298,
+      "sha256": "b153a9c05ae47150396b761095d0eaf99912163129861067632dafb387a6ecb6"
+    },
+    {
+      "id": "E227",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/seal_run.py",
+      "bytes": 625,
+      "sha256": "e59e1e4f380600cf6e496837acf5c2bc2c1c4e3b06b2ac7e0cf9ff294f27f54b"
+    },
+    {
+      "id": "E228",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/static-cache.log",
+      "bytes": 9530,
+      "sha256": "7d03439868628b9f7e8e9ec16ea5f6fcbd5afab54fb55d7add862a856e2b6441"
+    },
+    {
+      "id": "E229",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/static-effect-interface-full.log",
+      "bytes": 4538,
+      "sha256": "288f74a11125cf7fb776491cfe4422622d8e8543ae5ca3d4820ec27cb9bbceb6"
+    },
+    {
+      "id": "E230",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/static-effect-interface.log",
+      "bytes": 1702,
+      "sha256": "6c2f9ad1d688b54668e9415e890d105a0d55cb299f43cffdae43e55bdcba0b6f"
+    },
+    {
+      "id": "E231",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/static-item-effect-target.log",
+      "bytes": 9477,
+      "sha256": "c5335223dc078d6ff5f71c38c0c365fd9da5de2c3ce020a59ddb01604c197f98"
+    },
+    {
+      "id": "E232",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/static-pass2.log",
+      "bytes": 8456,
+      "sha256": "80df0ddf8858a54714c645030240b667337d465a6af0eea772bd3a138c5955ca"
+    },
+    {
+      "id": "E233",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/static-pass3.log",
+      "bytes": 16377,
+      "sha256": "e7fe7cd12d57c7e5db097d078acd4e937d02c20aea7fadd42d0a3701e9b7984f"
+    },
+    {
+      "id": "E234",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/static-writer.log",
+      "bytes": 11848,
+      "sha256": "27b768af4109ed0a63697383fd8543fac688bd64cd1611dec988d0209c2b153a"
+    },
+    {
+      "id": "E235",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/verification.json",
+      "bytes": 252,
+      "sha256": "da68421d12078c6ca0e205a1bd803bf323bf3fe348b7812666d67aef2a37f82f"
+    },
+    {
+      "id": "E236",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/verify.py",
+      "bytes": 6633,
+      "sha256": "69e6b0d8d05a682d282fa3ab8e6ea5f6f5c3047443cd076243c7819c553d1b00"
+    },
+    {
+      "id": "E237",
+      "kind": "local",
+      "path": "local/research/codex/item-pickup-r1/writer-entry.txt",
+      "bytes": 72,
+      "sha256": "c9bb9792cb2e64a2ff7f8a2ae8e1a8caa805e68cbc5f41b75323703d60c81a4b"
+    },
+    {
+      "id": "E238",
+      "kind": "local",
+      "path": "local/research/codex/peer-events-r1/native_events.py",
+      "bytes": 6400,
+      "sha256": "f5d2d30da905e248e1dc555146351dd4c00e65a78f126f1e9833e68425f61730"
+    },
+    {
+      "id": "E239",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/oracle-dependencies/boomproto.py",
+      "bytes": 7779,
+      "sha256": "e9642ec10e53cfed6c24c0c5ade07b34a46ce02073a8d316f724776686855bbd"
+    },
+    {
+      "id": "E240",
+      "kind": "local",
+      "path": "local/research/codex/wcp-guard-r1/game/CA-r2-login-logout.exe",
+      "bytes": 31874560,
+      "sha256": "660447c293ce92270cb9b5815331bca976e8f156366e1fe50b217b6c12e60ce3"
+    },
+    {
+      "id": "E241",
+      "kind": "local",
+      "path": "local/research/codex/wcp-guard-r1/game/CA-r2-stage-social.exe",
+      "bytes": 31874560,
+      "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+    },
+    {
+      "id": "E242",
+      "kind": "local",
+      "path": "local/research/codex/wine_probe_items_ack.py",
+      "bytes": 60142,
+      "sha256": "c9cb6579cc7ee6870a66944bac53481678b3072f3241cbb2426ce3e0f291a898"
+    },
+    {
+      "id": "E243",
+      "kind": "local",
+      "path": "local/research/codex/wine_probe_items_control.py",
+      "bytes": 58181,
+      "sha256": "0700e462aa7fa11af3ca28be191e9827575559cf7559188af5576e423860dbc9"
+    },
+    {
+      "id": "E244",
+      "kind": "local",
+      "path": "local/research/codex/wine_probe_items_near_control.py",
+      "bytes": 58183,
+      "sha256": "b7cec90c9cf9f3881300196d7328f81366c168ee099812a638e05222d816ea5c"
+    },
+    {
+      "id": "E245",
+      "kind": "local",
+      "path": "local/research/codex/wine_probe_items_race.py",
+      "bytes": 61767,
+      "sha256": "374b57a8197e56d77e30233551c78fce58d05fe40e2528db775d4fcc53510a12"
+    }
+  ],
+  "delta": {
+    "added": [
+      "KR582 list1 layout, actual12419byte and16512byte, noack control/positivebothorigins and one actual sameindexrace.",
+      "Native actualframe/reader checks, fullcallback/context/actor/coords/type/pending, source hash and raw indexes."
+    ],
+    "corrected": [
+      "Old E9E660 ItemAttr receiver anchor clarified as bomb kind0 path; pickup receiver now E63260/KR165.",
+      "First pathmiss and Bnear-brick placement did not prove layout/parserfailure; retain raw failedgoals and measured nextrecipe.",
+      "CP029/PR37 merged99f0ea9; CP030 snapshot priorintegration. No stat/cap claim fromBomb/Fireicon or genericmethodhit."
+    ],
+    "superseded": [
+      "NEXT-ITEM-PICKUP floor layout/request/confirm and one sameindex subquestion answered; continue stat/cap, hidden reveal and validator/reset/disconnect. No gateclosed."
+    ]
+  },
+  "blockers": [
+    "Stat capacity/range/speed and caps/only-once effects after165 unmeasured; hiddenitem/block/drop/reveal/chain/rescue variants still open.",
+    "Race order reversal, duplicate/stale/roundgeneration, resetno-leak/hostleave/disconnect/rejoin and fullauthority matrix notaccepted.",
+    "Fullauth/profile/cache/reconnect/codec/vanilla/UDPgrammar/relay/NAT/LAN/Internet and gates remainopen."
+  ],
+  "next_steps": [
+    {
+      "id": "NEXT-ITEM-PICKUP",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "Floor582/124/165 andone sameindex race answered; measure stat/cap/only-once after165 via F73D30→B52840→E14DA0; then hidden list/block/reveal and validator variants.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-DUO-ROUND",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "Keep trap/death variants/origin/roundgeneration/duplicate/stale/reset/hostleave/disconnect beforeK6a; do not combine separate bounded runs into fullmatch proof.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-FULL-LOGIN-FIELDS",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "Keep fullauth/profile/cache/reconnect/codec controls beforeK2/K3; IDprefix not authcompletion.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    }
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-10-30T14:29:42.475354+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "Codex solo RE/code/runtime/selfcheck, not independent approval.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Owner explicitly requested solo without Claude review."
+    }
+  },
+  "docs_sync": [
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "Current item/pickup/race milestone/limits, PR37merge/CP030snapshot."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "Progress/map/nextstat-hiddenitem-validation, gatesopen."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "updated",
+      "reason": "Canonical582/124/165/authority/control/race/limits; clarifyE9E660."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "updated",
+      "reason": "Answered boundedpickup, nextstat/cap/hiddenreveal and remainingvalidation/reset/fullauth."
+    },
+    {
+      "path": "docs/evidence/item-pickup/README.md",
+      "state": "updated",
+      "reason": "Fourrecipes/controls/native/visual/hash and scopedracepolicy."
+    }
+  ]
+}

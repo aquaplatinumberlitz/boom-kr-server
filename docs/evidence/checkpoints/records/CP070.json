@@ -1,0 +1,1125 @@
+{
+  "id": "CP070",
+  "previous": "CP069",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-02T17:32:15.007393+00:00",
+  "context_commit": "03f1afbeb6eb6d638f47f4a4ce5ea9845ae95fa3",
+  "question": "Does cutting the actual UDP endpoint flow cause local movement/remote frozen positions, with restoration in both directions on current production service?",
+  "scope": "KRE-033/#100. Reuse CP027/045–047/061/065/069 actual99→153/nativegetters/cached1256B3B and VN method; private namespace inputhook/counter only. Original metadataassertion failure + sparseV2 partial preserved; V3 changes sampling/windows, not service/client/profile/wire. Next bounded mixedowner-power2 experiment using CP066 boundary routes/CP068 Fire; AUD021, nextCP072.",
+  "owner": "Codex",
+  "reviewer": "Codex",
+  "artifacts": [
+    {
+      "name": "CA-r2-login-logout.exe",
+      "sha256": "660447c293ce92270cb9b5815331bca976e8f156366e1fe50b217b6c12e60ce3"
+    },
+    {
+      "name": "CA-r2-stage-social.exe",
+      "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+    },
+    {
+      "name": "CA-r2-stage-social.exe Bcopy",
+      "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+    },
+    {
+      "name": "modO.bin",
+      "sha256": "a08950c833d3acab8281049def7b3dc96b221f107eeda01da3a548e34b91dce5"
+    },
+    {
+      "name": "CA-r2-stage-social.exe Ccopy",
+      "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+    }
+  ],
+  "locators": [
+    "cut-v3 2026-11-02T17:26:34Z runSHA 94a19f73fcef7834eba9d99b49332bb114f5da4d7762bf600f16d1da5532edf5",
+    "Actual99 A9701 B9618/153 advertised remote endpoints; native1256B3B hostphase snapshots state+28/x+4C/y+58 via52A350; RVA=VA-400000",
+    "Acut own120159→120279/remote120159/drop34; Bcut own120399→172399/remote120399/drop37; restored339/200 bothviews; runtimee9bb47/static660447/modOa08950rawbase400000"
+  ],
+  "findings": [
+    {
+      "summary": "Exact one-way inputhook UDP drop/counter produces native own-movement/remote-freeze, restoration observed both directions, current service/profile unchanged; before next UI input remote reaches cut-final position, without packet/queue attribution.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#current-udp-causality",
+      "limits": "Wine diagnostic copies/one local round/current CP065 profile; rule cuts entire exact UDP flow, not packet grammar. Native snapshots timestamped per view/hostclock. Restore-before-input not queue/retransmit attribution. No nativebody/patch/service change, bomb/result/reset/2cycles/fullmatch/K5/K6a/LANInternet/NAT/auth/fallback/fullreliability/vanilla.",
+      "evidence": [
+        "E113",
+        "E003",
+        "E046",
+        "E053"
+      ]
+    },
+    {
+      "summary": "Initial controller assertion compared interfaces/routes wrong types, error key empty-string before any nft commands; V2 controls/counters24/28 positive but planned paired native phases missing. V3 read-only sampling every6hits/windows changed and seals retained. No client/netfilter causality for initial failure.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#current-udp-causality",
+      "limits": "Wine diagnostic copies/one local round/current CP065 profile; rule cuts entire exact UDP flow, not packet grammar. Native snapshots timestamped per view/hostclock. Restore-before-input not queue/retransmit attribution. No nativebody/patch/service change, bomb/result/reset/2cycles/fullmatch/K5/K6a/LANInternet/NAT/auth/fallback/fullreliability/vanilla.",
+      "evidence": [
+        "E075",
+        "E093",
+        "E009",
+        "E047",
+        "E053"
+      ]
+    },
+    {
+      "summary": "Inputhook rule/preflight/phase metadata are measurement design, not KR wire contract; native-framer/153/getter values independently checked under explicit emulation models. No productioncode/client change.",
+      "source": "design",
+      "status": "design",
+      "method": "design",
+      "canonical": "docs/PROTOCOL.md#current-udp-causality",
+      "limits": "Wine diagnostic copies/one local round/current CP065 profile; rule cuts entire exact UDP flow, not packet grammar. Native snapshots timestamped per view/hostclock. Restore-before-input not queue/retransmit attribution. No nativebody/patch/service change, bomb/result/reset/2cycles/fullmatch/K5/K6a/LANInternet/NAT/auth/fallback/fullreliability/vanilla.",
+      "evidence": [
+        "E036",
+        "E038",
+        "E042",
+        "E029"
+      ]
+    }
+  ],
+  "verification": [
+    {
+      "check": "2795 relations/seals/source; 378 nativeframer/6 native153/1170 secure-field snapshots/146phase samples V3; 7catalog/docs/artifacts5/5/diff/requiredlocalhistory. Unchangedcode uses baseline72server/18checkpoint tests.",
+      "result": "pass",
+      "evidence": [
+        "E053",
+        "E008",
+        "E023",
+        "E007"
+      ],
+      "limits": "Mechanical consistency plus declared runtime control; not full semantic/gate/reliability certification; independentreview waived."
+    }
+  ],
+  "evidence": [
+    {
+      "id": "E001",
+      "kind": "repository",
+      "path": "docs/evidence/current-udp-causality/README.md",
+      "bytes": 5907,
+      "sha256": "02f27ce72a4597b99e268655a9c48ad360d48e24234ba5cd11dedff2db126644"
+    },
+    {
+      "id": "E002",
+      "kind": "local",
+      "path": "local/research/codex/current-udp-causality-r1/153-check.txt",
+      "bytes": 22,
+      "sha256": "ccd17ab225f185be8f6f969644e409ad9041beea1919b7944f3ddb40fbbb024c"
+    },
+    {
+      "id": "E003",
+      "kind": "local",
+      "path": "local/research/codex/current-udp-causality-r1/actor-fields.json",
+      "bytes": 788150,
+      "sha256": "2fc260d031b4eae0b21998c7a07ec31a828a52bd129b9e30f54a2e80db19a854"
+    },
+    {
+      "id": "E004",
+      "kind": "local",
+      "path": "local/research/codex/current-udp-causality-r1/analyze_completed.py",
+      "bytes": 928,
+      "sha256": "81d1dee6a733ff6b62fef5d84d0671dfb6c2d3f56bdf1dab93f1976d1d00dde6"
+    },
+    {
+      "id": "E005",
+      "kind": "local",
+      "path": "local/research/codex/current-udp-causality-r1/analyze_samples.py",
+      "bytes": 1478,
+      "sha256": "98df304568b3cbeafc3b074441fcd28dfa3a6dad9e5b37b24c9374b171bcc04a"
+    },
+    {
+      "id": "E006",
+      "kind": "local",
+      "path": "local/research/codex/current-udp-causality-r1/append_checkpoint.py",
+      "bytes": 7249,
+      "sha256": "5946134374abbb285ea6e7065172ddf95e321b40454d5114acf74865e456687a"
+    },
+    {
+      "id": "E007",
+      "kind": "local",
+      "path": "local/research/codex/current-udp-causality-r1/artifacts-check.txt",
+      "bytes": 253,
+      "sha256": "649c6624aa6d317dfc1db5e16fea683cfbc9d9cf4dd3df11c0d70e57409054a0"
+    },
+    {
+      "id": "E008",
+      "kind": "local",
+      "path": "local/research/codex/current-udp-causality-r1/catalog-tests.txt",
+      "bytes": 105,
+      "sha256": "f4745038baadc9089b6a8edb955d4735e455dfb9bb0d9930ba99e7be3f8d9748"
+    },
+    {
+      "id": "E009",
+      "kind": "local",
+      "path": "local/research/codex/current-udp-causality-r1/controller-preflight-fix.json",
+      "bytes": 883,
+      "sha256": "4219476dcff673142c782901aa5d41f4166d744140e3ceb1f68d1f9ef71734fd"
+    },
+    {
+      "id": "E010",
+      "kind": "local",
+      "path": "local/research/codex/current-udp-causality-r1/cut-current-hashes.json",
+      "bytes": 96434,
+      "sha256": "5e5fe4a3801175324ba1eea2557b37ce7af74916c6c661a53b1f8548343a958c"
+    },
+    {
+      "id": "E011",
+      "kind": "local",
+      "path": "local/research/codex/current-udp-causality-r1/cut-current-launcher.log",
+      "bytes": 35543,
+      "sha256": "9c7af345a8cb0cd7f8ba1fe44da3f508b5ab8aa88df070fd373bd41ca652b856"
+    },
+    {
+      "id": "E012",
+      "kind": "local",
+      "path": "local/research/codex/current-udp-causality-r1/cut-current-recipe.json",
+      "bytes": 1015,
+      "sha256": "4521ece8451a84cdac05d75d5144537cfabcb6c32dbb181b9c4caf6f42054e97"
+    },
+    {
+      "id": "E013",
+      "kind": "local",
+      "path": "local/research/codex/current-udp-causality-r1/cut-v2-hashes.json",
+      "bytes": 100358,
+      "sha256": "3c7fbe6ac941809930281c4a6bf0b098eb15a09733c7171421589d302373c881"
+    },
+    {
+      "id": "E014",
+      "kind": "local",
+      "path": "local/research/codex/current-udp-causality-r1/cut-v2-launcher.log",
+      "bytes": 53571,
+      "sha256": "394b521c572db089f32ff04b9f9382f7fc3102f26ec84585acc30abdff4a331b"
+    },
+    {
+      "id": "E015",
+      "kind": "local",
+      "path": "local/research/codex/current-udp-causality-r1/cut-v2-recipe.json",
+      "bytes": 1011,
+      "sha256": "44d205c8e276f33e985643e449aa64559bd4b2e1b6bea6d6940bcb9022d4b8b0"
+    },
+    {
+      "id": "E016",
+      "kind": "local",
+      "path": "local/research/codex/current-udp-causality-r1/cut-v2.gdb",
+      "bytes": 29775,
+      "sha256": "64d7800684f0eba3e0336288833e7ff4f4193b546d263a8be9d7c5907c6ff2d1"
+    },
+    {
+      "id": "E017",
+      "kind": "local",
+      "path": "local/research/codex/current-udp-causality-r1/cut-v3-hashes.json",
+      "bytes": 100360,
+      "sha256": "1f40c7bd811ca9cd8f2a8df86d64064964437c7b343ef08374c68c99ca3a6a03"
+    },
+    {
+      "id": "E018",
+      "kind": "local",
+      "path": "local/research/codex/current-udp-causality-r1/cut-v3-launcher.log",
+      "bytes": 53855,
+      "sha256": "8f6a6ef735016688ff5e61d7a4bfe28521e4b80e55939a51df9c4f3b87906209"
+    },
+    {
+      "id": "E019",
+      "kind": "local",
+      "path": "local/research/codex/current-udp-causality-r1/cut-v3-recipe.json",
+      "bytes": 1011,
+      "sha256": "da347fbae0eac5a6649a9b9b1f6e5971e38a4e7e65b3ca9b98b92c514d014f72"
+    },
+    {
+      "id": "E020",
+      "kind": "local",
+      "path": "local/research/codex/current-udp-causality-r1/cut-v3.gdb",
+      "bytes": 29774,
+      "sha256": "bccc48484785e83da7eba27a2f62fb3deea2b7380909c70f56d25f5859862cad"
+    },
+    {
+      "id": "E021",
+      "kind": "local",
+      "path": "local/research/codex/current-udp-causality-r1/cut.gdb",
+      "bytes": 29780,
+      "sha256": "4b3baa0557262b4d881f1bb62dd1ecf485c61697c949273145868a6dce373cc6"
+    },
+    {
+      "id": "E022",
+      "kind": "local",
+      "path": "local/research/codex/current-udp-causality-r1/derive_roles.py",
+      "bytes": 1036,
+      "sha256": "35937b58faf6cfa9cef92106cb4634768896ac4e7b6ebedce37292f9049ddf5c"
+    },
+    {
+      "id": "E023",
+      "kind": "local",
+      "path": "local/research/codex/current-udp-causality-r1/docs-check.txt",
+      "bytes": 174,
+      "sha256": "5da56587ff6090cd7a7e37cd5f8d5de581ea1b3d58be0b799b5fbf44d7e4ec01"
+    },
+    {
+      "id": "E024",
+      "kind": "local",
+      "path": "local/research/codex/current-udp-causality-r1/fields-check.txt",
+      "bytes": 33,
+      "sha256": "68d39a0299e24284bf1066398c9350d220fd4df555467739e54dfc0f7249f2be"
+    },
+    {
+      "id": "E025",
+      "kind": "local",
+      "path": "local/research/codex/current-udp-causality-r1/first-fields.txt",
+      "bytes": 31,
+      "sha256": "8dd16069f77c8485475749dbc51b441afe7a4aecd7d0a6b76cb8b9b816c1aed8"
+    },
+    {
+      "id": "E026",
+      "kind": "local",
+      "path": "local/research/codex/current-udp-causality-r1/first-samples.txt",
+      "bytes": 130,
+      "sha256": "4d23a7310f1346a2791a17dd66892902798670bf44129623bb3a4c56c529a061"
+    },
+    {
+      "id": "E027",
+      "kind": "local",
+      "path": "local/research/codex/current-udp-causality-r1/framer-check.txt",
+      "bytes": 27,
+      "sha256": "31eb169be303e8cc4c4eb76477e8171814f297257d07bad7ad9e89d5a1a2a622"
+    },
+    {
+      "id": "E028",
+      "kind": "local",
+      "path": "local/research/codex/current-udp-causality-r1/issue-body.md",
+      "bytes": 1090,
+      "sha256": "4da879df336df3cbbfb1db903037e821de64837cb20f4f4c67e3015b2f50cd19"
+    },
+    {
+      "id": "E029",
+      "kind": "local",
+      "path": "local/research/codex/current-udp-causality-r1/native-153.json",
+      "bytes": 6977,
+      "sha256": "e527a7607e5d621900e06e8ad74d52b056e79097f042a8c36705ecf441b18801"
+    },
+    {
+      "id": "E030",
+      "kind": "local",
+      "path": "local/research/codex/current-udp-causality-r1/native_153.py",
+      "bytes": 3547,
+      "sha256": "131884c24b317b7a9c164747bb5b6f75283af7685e5bf6a777b673fe5fc3563b"
+    },
+    {
+      "id": "E031",
+      "kind": "local",
+      "path": "local/research/codex/current-udp-causality-r1/parse_fields.py",
+      "bytes": 3939,
+      "sha256": "86c70b05098a454a34b09d517d29d3110363b17d6b201f056029915a4951d95d"
+    },
+    {
+      "id": "E032",
+      "kind": "local",
+      "path": "local/research/codex/current-udp-causality-r1/preflight-output.json",
+      "bytes": 2122,
+      "sha256": "b89c8b8738f16622fc67a8bbc42b5c40966200f1d82f90a3f08e10d484cdce24"
+    },
+    {
+      "id": "E033",
+      "kind": "local",
+      "path": "local/research/codex/current-udp-causality-r1/preflight-output.py",
+      "bytes": 2181,
+      "sha256": "8c156322d71b9bf42ddb158423a8e53d1ba88add279bee0a2d4bcccce15b8a3a"
+    },
+    {
+      "id": "E034",
+      "kind": "local",
+      "path": "local/research/codex/current-udp-causality-r1/preflight-v1.json",
+      "bytes": 490,
+      "sha256": "9e3edd0705a8f1ad19126a47d52beadd07833d2b0150752b72f32578debc99dc"
+    },
+    {
+      "id": "E035",
+      "kind": "local",
+      "path": "local/research/codex/current-udp-causality-r1/preflight-v1.py",
+      "bytes": 2083,
+      "sha256": "fd8bff3f573356b58bf268ab116266fe2f6a553891bb103a9e1ab181ddbcb326"
+    },
+    {
+      "id": "E036",
+      "kind": "local",
+      "path": "local/research/codex/current-udp-causality-r1/preflight.json",
+      "bytes": 2085,
+      "sha256": "d71057486663154230c596f20291f57f9a9509992ae115bc56e2139790513b50"
+    },
+    {
+      "id": "E037",
+      "kind": "local",
+      "path": "local/research/codex/current-udp-causality-r1/preflight.py",
+      "bytes": 2178,
+      "sha256": "a5d7455bd745e86fb23430b44afa161478d447057cacc2dfb652fdf986c0e2ab"
+    },
+    {
+      "id": "E038",
+      "kind": "local",
+      "path": "local/research/codex/current-udp-causality-r1/preparation.json",
+      "bytes": 1043,
+      "sha256": "82f94019f229c86a37ae88dc943571aa0be93463151e824733849dac02c54455"
+    },
+    {
+      "id": "E039",
+      "kind": "local",
+      "path": "local/research/codex/current-udp-causality-r1/prepare.py",
+      "bytes": 4896,
+      "sha256": "d9699665586ecdf599ca919170728cdd051bc08c5e73c20783e8acbaab2546af"
+    },
+    {
+      "id": "E040",
+      "kind": "local",
+      "path": "local/research/codex/current-udp-causality-r1/profile.json",
+      "bytes": 10892,
+      "sha256": "6193b4ef256e7414ad85d484b732a269cb9319d45cf17706639ed3b852d67ee8"
+    },
+    {
+      "id": "E041",
+      "kind": "local",
+      "path": "local/research/codex/current-udp-causality-r1/replay-run.py",
+      "bytes": 3012,
+      "sha256": "a59cd1d8bd366c9e3a40b9861312c7c7f6849b6319194a35963b48acab9b9ef9"
+    },
+    {
+      "id": "E042",
+      "kind": "local",
+      "path": "local/research/codex/current-udp-causality-r1/reuse-question.json",
+      "bytes": 5500,
+      "sha256": "66dfa543494c4f123cc2ede63dc93f79cb9d093978bced7183fac4c8b8d77c5f"
+    },
+    {
+      "id": "E043",
+      "kind": "local",
+      "path": "local/research/codex/current-udp-causality-r1/reuse.py",
+      "bytes": 3567,
+      "sha256": "168e6172cb0108bfe0052d91d5713cce69ae2da278f40cd1e62527326653e99f"
+    },
+    {
+      "id": "E044",
+      "kind": "local",
+      "path": "local/research/codex/current-udp-causality-r1/run_probe.py",
+      "bytes": 1084,
+      "sha256": "2926badc693053962301d04fb5bf6849717bb1f9336e0f01b1c39d62f85a0b65"
+    },
+    {
+      "id": "E045",
+      "kind": "local",
+      "path": "local/research/codex/current-udp-causality-r1/samples-check.txt",
+      "bytes": 2258,
+      "sha256": "9afdddf417d99f2e45a47dd53affdd1b206ce6d12648142f618ddd2926c7795e"
+    },
+    {
+      "id": "E046",
+      "kind": "local",
+      "path": "local/research/codex/current-udp-causality-r1/samples.json",
+      "bytes": 86677,
+      "sha256": "6a3dad4e81b0c631c794f9241793f46d2d83820851d68489bc02ca03b1130e94"
+    },
+    {
+      "id": "E047",
+      "kind": "local",
+      "path": "local/research/codex/current-udp-causality-r1/sampling-retry.json",
+      "bytes": 832,
+      "sha256": "ce358cdc8ec080a671d8286640e8c10705c1d695ddf7f69a8974be2f1fe61bf3"
+    },
+    {
+      "id": "E048",
+      "kind": "local",
+      "path": "local/research/codex/current-udp-causality-r1/seal-check.txt",
+      "bytes": 18,
+      "sha256": "bd0560cae2444caac9f11b1da29ed1fa35f0e182858e66befc8fb1c39d618bcc"
+    },
+    {
+      "id": "E049",
+      "kind": "local",
+      "path": "local/research/codex/current-udp-causality-r1/seal_run.py",
+      "bytes": 635,
+      "sha256": "a2b55ec2a31e736e01cdef4ff95ea2ea4e4676b6e8bdbf09ed586ccd1ca3dabe"
+    },
+    {
+      "id": "E050",
+      "kind": "local",
+      "path": "local/research/codex/current-udp-causality-r1/sync_docs.py",
+      "bytes": 13235,
+      "sha256": "2a2ff6ebba5d2aaf60b541c5055f92d8847a6dac3186eec55d7cbbe03f61688e"
+    },
+    {
+      "id": "E051",
+      "kind": "local",
+      "path": "local/research/codex/current-udp-causality-r1/v2-fields-check.txt",
+      "bytes": 32,
+      "sha256": "441f54fa299502d817fe547659a9a33ae4777bc10417edf2db4359df244e64c0"
+    },
+    {
+      "id": "E052",
+      "kind": "local",
+      "path": "local/research/codex/current-udp-causality-r1/v2-samples-check.txt",
+      "bytes": 859,
+      "sha256": "19dd4db8faab7aaab6bed28092b6171cdd93015168c87819f6f2540bc6f2695f"
+    },
+    {
+      "id": "E053",
+      "kind": "local",
+      "path": "local/research/codex/current-udp-causality-r1/verification.json",
+      "bytes": 3647,
+      "sha256": "e9b3474d16ca9d05a11023181b8d67b9e7afd40a8e6ebf05435c73a0759ae47c"
+    },
+    {
+      "id": "E054",
+      "kind": "local",
+      "path": "local/research/codex/current-udp-causality-r1/verify-check.txt",
+      "bytes": 3647,
+      "sha256": "e9b3474d16ca9d05a11023181b8d67b9e7afd40a8e6ebf05435c73a0759ae47c"
+    },
+    {
+      "id": "E055",
+      "kind": "local",
+      "path": "local/research/codex/current-udp-causality-r1/verify.py",
+      "bytes": 7943,
+      "sha256": "386867f0af7fe5028baa6205053f1b5577a92ac5a0da4c73353fb6bda4ff4c66"
+    },
+    {
+      "id": "E056",
+      "kind": "local",
+      "path": "local/research/codex/current-udp-causality-r1/cp070-snapshot/README.md",
+      "bytes": 3809,
+      "sha256": "30ff080133e2d55182b09c60ba552ee1976dd1958a31a462b961ff38cb8b4370"
+    },
+    {
+      "id": "E057",
+      "kind": "local",
+      "path": "local/research/codex/current-udp-causality-r1/cp070-snapshot/docs/COVERAGE.md",
+      "bytes": 76192,
+      "sha256": "e1bc19aa67968f9a834a3063b50f88d35c2f0a515884cbf7d1f61f168e5e4538"
+    },
+    {
+      "id": "E058",
+      "kind": "local",
+      "path": "local/research/codex/current-udp-causality-r1/cp070-snapshot/docs/PLAN.md",
+      "bytes": 30390,
+      "sha256": "fec1fd303599eb10c3061c25c8eeb97dee0b43e4c4e270361f3ceeab78d6ef66"
+    },
+    {
+      "id": "E059",
+      "kind": "local",
+      "path": "local/research/codex/current-udp-causality-r1/cp070-snapshot/docs/PROTOCOL.md",
+      "bytes": 230491,
+      "sha256": "be967a6567be18b0a69bbc1338a0d912f2a49edcf5932962d2536f28efbce886"
+    },
+    {
+      "id": "E060",
+      "kind": "local",
+      "path": "local/research/codex/current-udp-causality-r1/cp070-snapshot/docs/RESEARCH.md",
+      "bytes": 30789,
+      "sha256": "a218f08efd2fb7e892ca57e6ee18d1ded5dff9a4c326d7fa7366ec6597fc3f98"
+    },
+    {
+      "id": "E061",
+      "kind": "local",
+      "path": "local/research/codex/current-udp-causality-r1/cp070-snapshot/docs/evidence/current-udp-causality/README.md",
+      "bytes": 5907,
+      "sha256": "02f27ce72a4597b99e268655a9c48ad360d48e24234ba5cd11dedff2db126644"
+    },
+    {
+      "id": "E062",
+      "kind": "local",
+      "path": "local/research/codex/current-udp-causality-r1/cp070-snapshot/docs/features.json",
+      "bytes": 78943,
+      "sha256": "de6ce89655b99e07ce1ce435dc87cbb5a0185335a2eeaf9c5bd5e8117a4b5fba"
+    },
+    {
+      "id": "E063",
+      "kind": "local",
+      "path": "local/research/codex/current-udp-causality-r1/runtime-source/item_claims.py",
+      "bytes": 3340,
+      "sha256": "7990ae9195e9f8bba56b04101f352506194dbd0252793183993ce101a8674a2e"
+    },
+    {
+      "id": "E064",
+      "kind": "local",
+      "path": "local/research/codex/current-udp-causality-r1/runtime-source/probe_codec.py",
+      "bytes": 3227,
+      "sha256": "23ba54e6940953a52ff737e7e06b2761a8eb22eab444310b49b1d96efa12411d"
+    },
+    {
+      "id": "E065",
+      "kind": "local",
+      "path": "local/research/codex/current-udp-causality-r1/runtime-source/probe_room.py",
+      "bytes": 1468,
+      "sha256": "91292494d492c7851bd5432649adf528e1b07290316dc56ba1478f8a209a08bc"
+    },
+    {
+      "id": "E066",
+      "kind": "local",
+      "path": "local/research/codex/current-udp-causality-r1/runtime-source/probe_service.py",
+      "bytes": 37600,
+      "sha256": "91be840fe16d77070e130882940be478aa80651df59de9dc3af204d1b9ce05e2"
+    },
+    {
+      "id": "E067",
+      "kind": "local",
+      "path": "local/research/codex/current-udp-causality-r1/runtime-source/round_fence.py",
+      "bytes": 2339,
+      "sha256": "aabcc7f1d623573fc217de8df05403f83d82425bbe5d6e78872b3096a2d46708"
+    },
+    {
+      "id": "E068",
+      "kind": "local",
+      "path": "local/research/codex/current-udp-causality-r1/runtime-source/udp_round_keys.py",
+      "bytes": 1187,
+      "sha256": "db58ae1f25bcbeb52c2d25c7db6afbf1021ddd3af29702e756f5f41886530a0d"
+    },
+    {
+      "id": "E069",
+      "kind": "local",
+      "path": "local/research/codex/current-udp-causality-r1/derived/cut-v3-A/run.json",
+      "bytes": 48432,
+      "sha256": "fb48630f149fc42ad1e17ed7901e26be7eb662f408ea163b3cade99c5b6d6c44"
+    },
+    {
+      "id": "E070",
+      "kind": "local",
+      "path": "local/research/codex/current-udp-causality-r1/derived/cut-v3-A-oracle.json",
+      "bytes": 97536,
+      "sha256": "b42bc809c4a0505cfa285342c5075a5f53d2b786c3c8f8c7437ac386c41420cd"
+    },
+    {
+      "id": "E071",
+      "kind": "local",
+      "path": "local/research/codex/current-udp-causality-r1/derived/cut-v3-A-replay.txt",
+      "bytes": 1609,
+      "sha256": "f488a0b0cec0bde651add6d3cdb2e69428c01a6638f2cc57940ca126e3ba45dc"
+    },
+    {
+      "id": "E072",
+      "kind": "local",
+      "path": "local/research/codex/current-udp-causality-r1/derived/cut-v3-B/run.json",
+      "bytes": 44760,
+      "sha256": "4a74ed656aa907bdf165eaf9b045e56f687c8bd7a89663bce989dd48f977026f"
+    },
+    {
+      "id": "E073",
+      "kind": "local",
+      "path": "local/research/codex/current-udp-causality-r1/derived/cut-v3-B-oracle.json",
+      "bytes": 77346,
+      "sha256": "b170c717c0783a10ee63bbdf48b2cb9869eeb26d30f44f9f4411f9f8ab1c76f2"
+    },
+    {
+      "id": "E074",
+      "kind": "local",
+      "path": "local/research/codex/current-udp-causality-r1/derived/cut-v3-B-replay.txt",
+      "bytes": 1290,
+      "sha256": "8bce9e3e213748152265f30dd195e8d41bb69a4fa3a45e55ae373754e4516a02"
+    },
+    {
+      "id": "E075",
+      "kind": "local",
+      "path": "local/research/codex/current-udp-causality-r1/cut-current/run.json",
+      "bytes": 44845,
+      "sha256": "f6a172328344f924dd18ecf4e63600326efddb05a4b2ebd929119d7a33b457d2"
+    },
+    {
+      "id": "E076",
+      "kind": "local",
+      "path": "local/research/codex/current-udp-causality-r1/cut-current/client.log",
+      "bytes": 32800,
+      "sha256": "836109bca48f74bed03e44302742e0f1bbc069009176d8ed48445d5772d8f879"
+    },
+    {
+      "id": "E077",
+      "kind": "local",
+      "path": "local/research/codex/current-udp-causality-r1/cut-current/client-B.log",
+      "bytes": 32388,
+      "sha256": "ee2f0690ea2cf5195676dd7681e7c54abfe0c208ee1839f948edad7640d4ab37"
+    },
+    {
+      "id": "E078",
+      "kind": "local",
+      "path": "local/research/codex/current-udp-causality-r1/cut-current/debug-commands.txt",
+      "bytes": 29780,
+      "sha256": "4b3baa0557262b4d881f1bb62dd1ecf485c61697c949273145868a6dce373cc6"
+    },
+    {
+      "id": "E079",
+      "kind": "local",
+      "path": "local/research/codex/current-udp-causality-r1/cut-current/debug-commands-B.txt",
+      "bytes": 29780,
+      "sha256": "4b3baa0557262b4d881f1bb62dd1ecf485c61697c949273145868a6dce373cc6"
+    },
+    {
+      "id": "E080",
+      "kind": "local",
+      "path": "local/research/codex/current-udp-causality-r1/cut-current/service-state.json",
+      "bytes": 47872,
+      "sha256": "3147410ebd5572cbf430a45d04535900b57afd1cafe5862d2e2b0d558c62d812"
+    },
+    {
+      "id": "E081",
+      "kind": "local",
+      "path": "local/research/codex/current-udp-causality-r1/cut-current/A-floor582-76.bin",
+      "bytes": 64,
+      "sha256": "dade68ac6b12c8c7ae59bf27d007ad4f1b32b6369d9a0fcd29170b3063e42ace"
+    },
+    {
+      "id": "E082",
+      "kind": "local",
+      "path": "local/research/codex/current-udp-causality-r1/cut-current/A-go197-82.bin",
+      "bytes": 52,
+      "sha256": "64b95010ecb0e40bc0367f41f6710d2357fb2538ce827e205825284601237ef8"
+    },
+    {
+      "id": "E083",
+      "kind": "local",
+      "path": "local/research/codex/current-udp-causality-r1/cut-current/A-peer153-88.bin",
+      "bytes": 135,
+      "sha256": "5c982ec17bfe01070f8a00e6b1c69b9800d5c738ef33acb2ccf164d3fd1772cc"
+    },
+    {
+      "id": "E084",
+      "kind": "local",
+      "path": "local/research/codex/current-udp-causality-r1/cut-current/A-play196-85.bin",
+      "bytes": 45,
+      "sha256": "d04bf155b4847f9d41b0edfdf00a32526302273271c0f1cadbb8ce22b89eb51d"
+    },
+    {
+      "id": "E085",
+      "kind": "local",
+      "path": "local/research/codex/current-udp-causality-r1/cut-current/A-ready110-73.bin",
+      "bytes": 44,
+      "sha256": "8fafd9cf652b458ee09b3751a0201f9ab1409920398e0e842e43b915c8840e25"
+    },
+    {
+      "id": "E086",
+      "kind": "local",
+      "path": "local/research/codex/current-udp-causality-r1/cut-current/A-start121-r1-79.bin",
+      "bytes": 167,
+      "sha256": "4d85d0786f484c579ef94cd61ceaa40997df93c39589d720ea8334bc9b5ca29f"
+    },
+    {
+      "id": "E087",
+      "kind": "local",
+      "path": "local/research/codex/current-udp-causality-r1/cut-current/B-floor582-76.bin",
+      "bytes": 64,
+      "sha256": "dade68ac6b12c8c7ae59bf27d007ad4f1b32b6369d9a0fcd29170b3063e42ace"
+    },
+    {
+      "id": "E088",
+      "kind": "local",
+      "path": "local/research/codex/current-udp-causality-r1/cut-current/B-go197-82.bin",
+      "bytes": 52,
+      "sha256": "64b95010ecb0e40bc0367f41f6710d2357fb2538ce827e205825284601237ef8"
+    },
+    {
+      "id": "E089",
+      "kind": "local",
+      "path": "local/research/codex/current-udp-causality-r1/cut-current/B-peer153-88.bin",
+      "bytes": 135,
+      "sha256": "bc68d6d00e7435277a08ced3bd0d5bdcbb4a647a4ad4ae85f9b9d9c93bfe65dd"
+    },
+    {
+      "id": "E090",
+      "kind": "local",
+      "path": "local/research/codex/current-udp-causality-r1/cut-current/B-play196-85.bin",
+      "bytes": 45,
+      "sha256": "d04bf155b4847f9d41b0edfdf00a32526302273271c0f1cadbb8ce22b89eb51d"
+    },
+    {
+      "id": "E091",
+      "kind": "local",
+      "path": "local/research/codex/current-udp-causality-r1/cut-current/B-ready110-73.bin",
+      "bytes": 44,
+      "sha256": "8fafd9cf652b458ee09b3751a0201f9ab1409920398e0e842e43b915c8840e25"
+    },
+    {
+      "id": "E092",
+      "kind": "local",
+      "path": "local/research/codex/current-udp-causality-r1/cut-current/B-start121-r1-79.bin",
+      "bytes": 167,
+      "sha256": "4d85d0786f484c579ef94cd61ceaa40997df93c39589d720ea8334bc9b5ca29f"
+    },
+    {
+      "id": "E093",
+      "kind": "local",
+      "path": "local/research/codex/current-udp-causality-r1/cut-v2/run.json",
+      "bytes": 66851,
+      "sha256": "7776fa5532bc5f843f85595e215b09162aa23e5a1f717219587ccc6a3cdbb787"
+    },
+    {
+      "id": "E094",
+      "kind": "local",
+      "path": "local/research/codex/current-udp-causality-r1/cut-v2/client.log",
+      "bytes": 44784,
+      "sha256": "3f3a48521101d4da6db97f03be2a81ae1804d79e0d1185576dc80a4bd54291aa"
+    },
+    {
+      "id": "E095",
+      "kind": "local",
+      "path": "local/research/codex/current-udp-causality-r1/cut-v2/client-B.log",
+      "bytes": 45509,
+      "sha256": "1e057d299923d81d3b3574427467c2cbee0763a224ff5debba9641da2829c072"
+    },
+    {
+      "id": "E096",
+      "kind": "local",
+      "path": "local/research/codex/current-udp-causality-r1/cut-v2/debug-commands.txt",
+      "bytes": 29775,
+      "sha256": "64d7800684f0eba3e0336288833e7ff4f4193b546d263a8be9d7c5907c6ff2d1"
+    },
+    {
+      "id": "E097",
+      "kind": "local",
+      "path": "local/research/codex/current-udp-causality-r1/cut-v2/debug-commands-B.txt",
+      "bytes": 29775,
+      "sha256": "64d7800684f0eba3e0336288833e7ff4f4193b546d263a8be9d7c5907c6ff2d1"
+    },
+    {
+      "id": "E098",
+      "kind": "local",
+      "path": "local/research/codex/current-udp-causality-r1/cut-v2/service-state.json",
+      "bytes": 63010,
+      "sha256": "982e9df39c7baf3e5fea2ac56f8e6138179cdd65c1cce587323ccb1b9699a9bb"
+    },
+    {
+      "id": "E099",
+      "kind": "local",
+      "path": "local/research/codex/current-udp-causality-r1/cut-v2/A-floor582-76.bin",
+      "bytes": 64,
+      "sha256": "dade68ac6b12c8c7ae59bf27d007ad4f1b32b6369d9a0fcd29170b3063e42ace"
+    },
+    {
+      "id": "E100",
+      "kind": "local",
+      "path": "local/research/codex/current-udp-causality-r1/cut-v2/A-go197-82.bin",
+      "bytes": 52,
+      "sha256": "64b95010ecb0e40bc0367f41f6710d2357fb2538ce827e205825284601237ef8"
+    },
+    {
+      "id": "E101",
+      "kind": "local",
+      "path": "local/research/codex/current-udp-causality-r1/cut-v2/A-item165-r1-17-91.bin",
+      "bytes": 50,
+      "sha256": "2ad2e7cbd637f553ff114fada41951a1129ca3dc52b14a540a60ccea59088bf0"
+    },
+    {
+      "id": "E102",
+      "kind": "local",
+      "path": "local/research/codex/current-udp-causality-r1/cut-v2/A-peer153-88.bin",
+      "bytes": 135,
+      "sha256": "f8c17d3c2cb6fa02da6b493234b37f3cde6dff9cd0ce27a0a5bc7c6924ba95a3"
+    },
+    {
+      "id": "E103",
+      "kind": "local",
+      "path": "local/research/codex/current-udp-causality-r1/cut-v2/A-play196-85.bin",
+      "bytes": 45,
+      "sha256": "d04bf155b4847f9d41b0edfdf00a32526302273271c0f1cadbb8ce22b89eb51d"
+    },
+    {
+      "id": "E104",
+      "kind": "local",
+      "path": "local/research/codex/current-udp-causality-r1/cut-v2/A-ready110-73.bin",
+      "bytes": 44,
+      "sha256": "8fafd9cf652b458ee09b3751a0201f9ab1409920398e0e842e43b915c8840e25"
+    },
+    {
+      "id": "E105",
+      "kind": "local",
+      "path": "local/research/codex/current-udp-causality-r1/cut-v2/A-start121-r1-79.bin",
+      "bytes": 167,
+      "sha256": "4d85d0786f484c579ef94cd61ceaa40997df93c39589d720ea8334bc9b5ca29f"
+    },
+    {
+      "id": "E106",
+      "kind": "local",
+      "path": "local/research/codex/current-udp-causality-r1/cut-v2/B-floor582-76.bin",
+      "bytes": 64,
+      "sha256": "dade68ac6b12c8c7ae59bf27d007ad4f1b32b6369d9a0fcd29170b3063e42ace"
+    },
+    {
+      "id": "E107",
+      "kind": "local",
+      "path": "local/research/codex/current-udp-causality-r1/cut-v2/B-go197-82.bin",
+      "bytes": 52,
+      "sha256": "64b95010ecb0e40bc0367f41f6710d2357fb2538ce827e205825284601237ef8"
+    },
+    {
+      "id": "E108",
+      "kind": "local",
+      "path": "local/research/codex/current-udp-causality-r1/cut-v2/B-item165-r1-17-91.bin",
+      "bytes": 50,
+      "sha256": "2ad2e7cbd637f553ff114fada41951a1129ca3dc52b14a540a60ccea59088bf0"
+    },
+    {
+      "id": "E109",
+      "kind": "local",
+      "path": "local/research/codex/current-udp-causality-r1/cut-v2/B-peer153-88.bin",
+      "bytes": 135,
+      "sha256": "0842b337f2f711f4d31a66e2dabf9bec01707d1c159bdaa28844c084427462e6"
+    },
+    {
+      "id": "E110",
+      "kind": "local",
+      "path": "local/research/codex/current-udp-causality-r1/cut-v2/B-play196-85.bin",
+      "bytes": 45,
+      "sha256": "d04bf155b4847f9d41b0edfdf00a32526302273271c0f1cadbb8ce22b89eb51d"
+    },
+    {
+      "id": "E111",
+      "kind": "local",
+      "path": "local/research/codex/current-udp-causality-r1/cut-v2/B-ready110-73.bin",
+      "bytes": 44,
+      "sha256": "8fafd9cf652b458ee09b3751a0201f9ab1409920398e0e842e43b915c8840e25"
+    },
+    {
+      "id": "E112",
+      "kind": "local",
+      "path": "local/research/codex/current-udp-causality-r1/cut-v2/B-start121-r1-79.bin",
+      "bytes": 167,
+      "sha256": "4d85d0786f484c579ef94cd61ceaa40997df93c39589d720ea8334bc9b5ca29f"
+    },
+    {
+      "id": "E113",
+      "kind": "local",
+      "path": "local/research/codex/current-udp-causality-r1/cut-v3/run.json",
+      "bytes": 67203,
+      "sha256": "94a19f73fcef7834eba9d99b49332bb114f5da4d7762bf600f16d1da5532edf5"
+    },
+    {
+      "id": "E114",
+      "kind": "local",
+      "path": "local/research/codex/current-udp-causality-r1/cut-v3/client.log",
+      "bytes": 137342,
+      "sha256": "2d677b45332ea41abdcb1c34d0aaeee98a96c5b4bb9782cc9c49a4fcf65e65cf"
+    },
+    {
+      "id": "E115",
+      "kind": "local",
+      "path": "local/research/codex/current-udp-causality-r1/cut-v3/client-B.log",
+      "bytes": 140735,
+      "sha256": "dccb1462bf812531b6f228e480e521ac8ed72b3d416f5e1cca6a53e25a790fac"
+    },
+    {
+      "id": "E116",
+      "kind": "local",
+      "path": "local/research/codex/current-udp-causality-r1/cut-v3/debug-commands.txt",
+      "bytes": 29774,
+      "sha256": "bccc48484785e83da7eba27a2f62fb3deea2b7380909c70f56d25f5859862cad"
+    },
+    {
+      "id": "E117",
+      "kind": "local",
+      "path": "local/research/codex/current-udp-causality-r1/cut-v3/debug-commands-B.txt",
+      "bytes": 29774,
+      "sha256": "bccc48484785e83da7eba27a2f62fb3deea2b7380909c70f56d25f5859862cad"
+    },
+    {
+      "id": "E118",
+      "kind": "local",
+      "path": "local/research/codex/current-udp-causality-r1/cut-v3/service-state.json",
+      "bytes": 63362,
+      "sha256": "f1bd6e30d7a1ca84cef06854addd338e643d32147076a79eb713c108d4ea56f1"
+    },
+    {
+      "id": "E119",
+      "kind": "local",
+      "path": "local/research/codex/current-udp-causality-r1/cut-v3/A-floor582-76.bin",
+      "bytes": 64,
+      "sha256": "dade68ac6b12c8c7ae59bf27d007ad4f1b32b6369d9a0fcd29170b3063e42ace"
+    },
+    {
+      "id": "E120",
+      "kind": "local",
+      "path": "local/research/codex/current-udp-causality-r1/cut-v3/A-go197-82.bin",
+      "bytes": 52,
+      "sha256": "64b95010ecb0e40bc0367f41f6710d2357fb2538ce827e205825284601237ef8"
+    },
+    {
+      "id": "E121",
+      "kind": "local",
+      "path": "local/research/codex/current-udp-causality-r1/cut-v3/A-item165-r1-17-91.bin",
+      "bytes": 50,
+      "sha256": "2ad2e7cbd637f553ff114fada41951a1129ca3dc52b14a540a60ccea59088bf0"
+    },
+    {
+      "id": "E122",
+      "kind": "local",
+      "path": "local/research/codex/current-udp-causality-r1/cut-v3/A-peer153-88.bin",
+      "bytes": 135,
+      "sha256": "9c46bfbd6c397c513678e949e888a63b54b6a92865aad075ea0f94560893a7b4"
+    },
+    {
+      "id": "E123",
+      "kind": "local",
+      "path": "local/research/codex/current-udp-causality-r1/cut-v3/A-play196-85.bin",
+      "bytes": 45,
+      "sha256": "d04bf155b4847f9d41b0edfdf00a32526302273271c0f1cadbb8ce22b89eb51d"
+    },
+    {
+      "id": "E124",
+      "kind": "local",
+      "path": "local/research/codex/current-udp-causality-r1/cut-v3/A-ready110-73.bin",
+      "bytes": 44,
+      "sha256": "8fafd9cf652b458ee09b3751a0201f9ab1409920398e0e842e43b915c8840e25"
+    },
+    {
+      "id": "E125",
+      "kind": "local",
+      "path": "local/research/codex/current-udp-causality-r1/cut-v3/A-start121-r1-79.bin",
+      "bytes": 167,
+      "sha256": "4d85d0786f484c579ef94cd61ceaa40997df93c39589d720ea8334bc9b5ca29f"
+    },
+    {
+      "id": "E126",
+      "kind": "local",
+      "path": "local/research/codex/current-udp-causality-r1/cut-v3/B-floor582-76.bin",
+      "bytes": 64,
+      "sha256": "dade68ac6b12c8c7ae59bf27d007ad4f1b32b6369d9a0fcd29170b3063e42ace"
+    },
+    {
+      "id": "E127",
+      "kind": "local",
+      "path": "local/research/codex/current-udp-causality-r1/cut-v3/B-go197-82.bin",
+      "bytes": 52,
+      "sha256": "64b95010ecb0e40bc0367f41f6710d2357fb2538ce827e205825284601237ef8"
+    },
+    {
+      "id": "E128",
+      "kind": "local",
+      "path": "local/research/codex/current-udp-causality-r1/cut-v3/B-item165-r1-17-91.bin",
+      "bytes": 50,
+      "sha256": "2ad2e7cbd637f553ff114fada41951a1129ca3dc52b14a540a60ccea59088bf0"
+    },
+    {
+      "id": "E129",
+      "kind": "local",
+      "path": "local/research/codex/current-udp-causality-r1/cut-v3/B-peer153-88.bin",
+      "bytes": 135,
+      "sha256": "448a9f02ec4beb61ecb1e44ed50379375f57767916db100a496909fbd2630194"
+    },
+    {
+      "id": "E130",
+      "kind": "local",
+      "path": "local/research/codex/current-udp-causality-r1/cut-v3/B-play196-85.bin",
+      "bytes": 45,
+      "sha256": "d04bf155b4847f9d41b0edfdf00a32526302273271c0f1cadbb8ce22b89eb51d"
+    },
+    {
+      "id": "E131",
+      "kind": "local",
+      "path": "local/research/codex/current-udp-causality-r1/cut-v3/B-ready110-73.bin",
+      "bytes": 44,
+      "sha256": "8fafd9cf652b458ee09b3751a0201f9ab1409920398e0e842e43b915c8840e25"
+    },
+    {
+      "id": "E132",
+      "kind": "local",
+      "path": "local/research/codex/current-udp-causality-r1/cut-v3/B-start121-r1-79.bin",
+      "bytes": 167,
+      "sha256": "4d85d0786f484c579ef94cd61ceaa40997df93c39589d720ea8334bc9b5ca29f"
+    },
+    {
+      "id": "E133",
+      "kind": "local",
+      "path": "local/research/codex/wine_probe_udp_cut.py",
+      "bytes": 41151,
+      "sha256": "ae3b2160676cfddbb587b5d8986bc4129925cfe3c39c9aac2ff593b1588ee1e4"
+    },
+    {
+      "id": "E134",
+      "kind": "local",
+      "path": "local/research/codex/wine_probe_udp_cut_v2.py",
+      "bytes": 41219,
+      "sha256": "4efe45a7f8a209b7aa5a6c21e43dcc686ee01905cfed3d2aeac204c7a573f7ec"
+    },
+    {
+      "id": "E135",
+      "kind": "local",
+      "path": "local/research/codex/wine_probe_udp_cut_v3.py",
+      "bytes": 41219,
+      "sha256": "d425818bff23c6374e70bbdc7701342834013108ef12fb8bc9effba07050aa5f"
+    }
+  ],
+  "delta": {
+    "added": [
+      "Current service UDP cut/restore native local-vs-remote control in both directions with positive counters.",
+      "Preserved failed metadataassertion and V2 partial; read-only sampling condition changed for V3 proof."
+    ],
+    "corrected": [
+      "Current pairedpositions are no longer the only evidence for transport causality in this local copy/profile; not generalized to other transports or LAN."
+    ],
+    "superseded": [
+      "NEXT-CURRENT-UDP-CAUSALITY measured in bounded scope; next mixedowner rootpower2/controlpower1 with actual geometry and callback evidence."
+    ]
+  },
+  "blockers": [
+    "Full UDP grammar/reliability/fallback/relay/NAT/auth/Windowsvanilla/LANInternet remain open.",
+    "Mixedowner CP064 partial/threebombs/obstacle/fullvalidator/reset/K5/K6a/fullmatch remain open; midpoint pickup does not imply stopped at midpoint."
+  ],
+  "next_steps": [
+    {
+      "id": "NEXT-CURRENT-UDP-CAUSALITY",
+      "task": "KRE-005b",
+      "state": "superseded",
+      "action": "CP070 directendpoint inputhook/counter/native ownmove/remotefreeze/restore bothdirections measured; remaining UDPvariants stay canonical RESEARCH.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-MIXED-OWNER-POWER",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "Immediately reuse CP066 Down/Up boundary routes and CP068 Fire +1, CP033/064 state/process/callback probes. Return A with Fire to row3, B to same boundary, root/secondary actual cell3/5; compare power1 control vs rootpower2. Actual118/159/ID/owner and rootcallback before later secondary timer decide. Bounded raw partial if geometry fails, no actorforcing/inputtuning loop.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    }
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-11-02T17:32:15.007393+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "Codex solo RE/code/runtime/selfcheck, not independent approval.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Owner explicitly requested solo without Claude review."
+    }
+  },
+  "docs_sync": [
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "CP070 current UDP transport control, preserved partial/failure, scope/limits; next bounded mixedowner power2 condition; no gatepromotion."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "CP070 current UDP transport control, preserved partial/failure, scope/limits; next bounded mixedowner power2 condition; no gatepromotion."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "updated",
+      "reason": "CP070 current UDP transport control, preserved partial/failure, scope/limits; next bounded mixedowner power2 condition; no gatepromotion."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "updated",
+      "reason": "CP070 current UDP transport control, preserved partial/failure, scope/limits; next bounded mixedowner power2 condition; no gatepromotion."
+    },
+    {
+      "path": "docs/features.json",
+      "state": "updated",
+      "reason": "CP070 current UDP transport control, preserved partial/failure, scope/limits; next bounded mixedowner power2 condition; no gatepromotion."
+    },
+    {
+      "path": "docs/COVERAGE.md",
+      "state": "updated",
+      "reason": "CP070 current UDP transport control, preserved partial/failure, scope/limits; next bounded mixedowner power2 condition; no gatepromotion."
+    },
+    {
+      "path": "docs/evidence/current-udp-causality/README.md",
+      "state": "updated",
+      "reason": "CP070 current UDP transport control, preserved partial/failure, scope/limits; next bounded mixedowner power2 condition; no gatepromotion."
+    }
+  ]
+}

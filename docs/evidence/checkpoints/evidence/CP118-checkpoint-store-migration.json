@@ -1,0 +1,328 @@
+{
+  "schema": "kre-evidence-manifest-v1",
+  "scope": "CP118storage/refactor or sealedpriorruntime; metadataonly/notsemanticgateproof",
+  "evidence": [
+    {
+      "id": "MIG-00001",
+      "kind": "local",
+      "path": "local/research/codex/checkpoint-store-r1/append_checkpoint.py",
+      "bytes": 10870,
+      "sha256": "df3c72a45839c2ea68f6398764b2c580160b7c3b0bf229cf2ab72594ee8ff698"
+    },
+    {
+      "id": "MIG-00002",
+      "kind": "local",
+      "path": "local/research/codex/checkpoint-store-r1/artifacts-check.txt",
+      "bytes": 253,
+      "sha256": "649c6624aa6d317dfc1db5e16fea683cfbc9d9cf4dd3df11c0d70e57409054a0"
+    },
+    {
+      "id": "MIG-00003",
+      "kind": "local",
+      "path": "local/research/codex/checkpoint-store-r1/baseline-manifest-v1.json",
+      "bytes": 47358804,
+      "sha256": "eb892487ec8f26b9d4ed3361004230687792cd28fddb804cd0c88ff00ee465dc"
+    },
+    {
+      "id": "MIG-00004",
+      "kind": "local",
+      "path": "local/research/codex/checkpoint-store-r1/baseline-v2-check.txt",
+      "bytes": 25480,
+      "sha256": "eed589bdc5307f9db28144424920b01c6857dc2a3cf0e8edea160c6adbfbcade"
+    },
+    {
+      "id": "MIG-00005",
+      "kind": "local",
+      "path": "local/research/codex/checkpoint-store-r1/baseline.json",
+      "bytes": 251,
+      "sha256": "25ba91335d6ffc8fc2a304155085e32beabf020d71d2e8ac38dede7162bfa932"
+    },
+    {
+      "id": "MIG-00006",
+      "kind": "local",
+      "path": "local/research/codex/checkpoint-store-r1/cli-evidence-page.json",
+      "bytes": 882,
+      "sha256": "4b94a9729de233eae8d5c2243e65271650af0ebe1ee83e8b0a63de9b45a7e942"
+    },
+    {
+      "id": "MIG-00007",
+      "kind": "local",
+      "path": "local/research/codex/checkpoint-store-r1/cli-evidence-summary.json",
+      "bytes": 101,
+      "sha256": "ce6fe2ef65e66b316d0f2e6c3fa80da139879513e046ba32a15c4b27dd53d3f4"
+    },
+    {
+      "id": "MIG-00008",
+      "kind": "local",
+      "path": "local/research/codex/checkpoint-store-r1/cli-evidence-verify.json",
+      "bytes": 278,
+      "sha256": "ec0d9dbfd2020209b96bc05434527abc8ee4f20ffd76a2d4e06683a01f4afbbd"
+    },
+    {
+      "id": "MIG-00009",
+      "kind": "local",
+      "path": "local/research/codex/checkpoint-store-r1/cli-latest.json",
+      "bytes": 282,
+      "sha256": "9bbb09ce82ab5c92476deb039cc306349a05e2c5e32bb2492e9fcde973558fd8"
+    },
+    {
+      "id": "MIG-00010",
+      "kind": "local",
+      "path": "local/research/codex/checkpoint-store-r1/cli-show-CP117.json",
+      "bytes": 13252,
+      "sha256": "b7a83f9d79633ddccdd09fdc208faedca47cf38efad746d618d10727901c53ee"
+    },
+    {
+      "id": "MIG-00011",
+      "kind": "local",
+      "path": "local/research/codex/checkpoint-store-r1/cp118-snapshot/AGENTS.md",
+      "bytes": 7897,
+      "sha256": "3b961c0e14538cfd84724119bc1dd2b1379b6c118d7198ad5673a0821367b766"
+    },
+    {
+      "id": "MIG-00012",
+      "kind": "local",
+      "path": "local/research/codex/checkpoint-store-r1/cp118-snapshot/README.md",
+      "bytes": 6853,
+      "sha256": "9e113c5925123fe5bc65a6433f07464d697667594c4326b0076d166e441f7810"
+    },
+    {
+      "id": "MIG-00013",
+      "kind": "local",
+      "path": "local/research/codex/checkpoint-store-r1/cp118-snapshot/docs/COVERAGE.md",
+      "bytes": 116801,
+      "sha256": "c7461371f1bdc9eb78c6937150ed8fd4e816ef0a55434351930177406029ee68"
+    },
+    {
+      "id": "MIG-00014",
+      "kind": "local",
+      "path": "local/research/codex/checkpoint-store-r1/cp118-snapshot/docs/PLAN.md",
+      "bytes": 32870,
+      "sha256": "3ee4d05e9f664dccd46e0ac0424b8dac52b3720f38e4a00487faa26a85f53262"
+    },
+    {
+      "id": "MIG-00015",
+      "kind": "local",
+      "path": "local/research/codex/checkpoint-store-r1/cp118-snapshot/docs/PROTOCOL.md",
+      "bytes": 369112,
+      "sha256": "242aa718367840d4de8333dc925223b2ef88becb83ecc39cf2d9161068cbae81"
+    },
+    {
+      "id": "MIG-00016",
+      "kind": "local",
+      "path": "local/research/codex/checkpoint-store-r1/cp118-snapshot/docs/RESEARCH.md",
+      "bytes": 30166,
+      "sha256": "50ca26d88be9c14718f4626df1dcb6beacca82869b192bf1288e56cd41b091ee"
+    },
+    {
+      "id": "MIG-00017",
+      "kind": "local",
+      "path": "local/research/codex/checkpoint-store-r1/cp118-snapshot/docs/evidence/checkpoints/README.md",
+      "bytes": 10758,
+      "sha256": "d1c9a099749158e0cb6e95d3357c4a2c19e1bfe43a192ed577f4dae3ac07a494"
+    },
+    {
+      "id": "MIG-00018",
+      "kind": "local",
+      "path": "local/research/codex/checkpoint-store-r1/cp118-snapshot/docs/evidence/checkpoints/migration-v2.json",
+      "bytes": 56378,
+      "sha256": "01b22c9bc6a6751e8f5dbdd109e4463bb23bb224e6d82c5b9458ffdd205284f1"
+    },
+    {
+      "id": "MIG-00019",
+      "kind": "local",
+      "path": "local/research/codex/checkpoint-store-r1/cp118-snapshot/docs/evidence/issue-reconciliation/github-snapshot.json",
+      "bytes": 180817,
+      "sha256": "3a87a88079db654cd7ccb41cf749a638353a8a3a18f4540a842c13497fe6e08c"
+    },
+    {
+      "id": "MIG-00020",
+      "kind": "local",
+      "path": "local/research/codex/checkpoint-store-r1/cp118-snapshot/docs/evidence/issue-reconciliation/review.json",
+      "bytes": 20090,
+      "sha256": "2084eeebe3b2fc9a7fc699c8395bbebe369080ba5b141c83fa05bb7654300eea"
+    },
+    {
+      "id": "MIG-00021",
+      "kind": "local",
+      "path": "local/research/codex/checkpoint-store-r1/cp118-snapshot/docs/evidence/rescue-service/README.md",
+      "bytes": 12332,
+      "sha256": "294874133f0d3de32d76637edecc25a709480fb82e661f09dc6774dec9845aa7"
+    },
+    {
+      "id": "MIG-00022",
+      "kind": "local",
+      "path": "local/research/codex/checkpoint-store-r1/cp118-snapshot/docs/features.json",
+      "bytes": 122201,
+      "sha256": "cbd4feff77d9c70f093ab9bc4611bdfc9a9eb56ea18d9019ad9526a56b6f797c"
+    },
+    {
+      "id": "MIG-00023",
+      "kind": "local",
+      "path": "local/research/codex/checkpoint-store-r1/docs-check.txt",
+      "bytes": 175,
+      "sha256": "4a97774d2876b43692dcc02c6647c6323781e8753be15458b4a773b31beddd20"
+    },
+    {
+      "id": "MIG-00024",
+      "kind": "local",
+      "path": "local/research/codex/checkpoint-store-r1/github-capture-check.txt",
+      "bytes": 65,
+      "sha256": "6167de2473ed0fe89a9af9a2de176df2c5490281edb8859976e343363eea59db"
+    },
+    {
+      "id": "MIG-00025",
+      "kind": "local",
+      "path": "local/research/codex/checkpoint-store-r1/github-current.json",
+      "bytes": 180817,
+      "sha256": "3a87a88079db654cd7ccb41cf749a638353a8a3a18f4540a842c13497fe6e08c"
+    },
+    {
+      "id": "MIG-00026",
+      "kind": "local",
+      "path": "local/research/codex/checkpoint-store-r1/issue-body.md",
+      "bytes": 2081,
+      "sha256": "b7cfc4ac25971d4d03f06d72c462228c2c400f5b7e0342c359f8f8b6922b228e"
+    },
+    {
+      "id": "MIG-00027",
+      "kind": "local",
+      "path": "local/research/codex/checkpoint-store-r1/issues-live-check.txt",
+      "bytes": 130,
+      "sha256": "f3d139ad71b09994e452d685e35c99a5f924daa61926554a26c16d6b231a5100"
+    },
+    {
+      "id": "MIG-00028",
+      "kind": "local",
+      "path": "local/research/codex/checkpoint-store-r1/migration-check.txt",
+      "bytes": 384,
+      "sha256": "dabc84e8742357839de505b631e14ca64b33f1d4c9477b7b719c0a67e9319945"
+    },
+    {
+      "id": "MIG-00029",
+      "kind": "local",
+      "path": "local/research/codex/checkpoint-store-r1/migration-rerun-check.txt",
+      "bytes": 384,
+      "sha256": "2c57a92cff975e934957fdefed97ef9c2e442400dfe820b47b3b58915db8c3a5"
+    },
+    {
+      "id": "MIG-00030",
+      "kind": "local",
+      "path": "local/research/codex/checkpoint-store-r1/migration-verification-check.txt",
+      "bytes": 97,
+      "sha256": "fddbabc026a923aac19e4c0e062e1e0d4ced064e96b81daa65e29ac2253a70f7"
+    },
+    {
+      "id": "MIG-00031",
+      "kind": "local",
+      "path": "local/research/codex/checkpoint-store-r1/migration-verification.json",
+      "bytes": 13067,
+      "sha256": "cd28486801f8b372fd96da23a2429d83045bfa20c1f67d0542d2e0792e24c98a"
+    },
+    {
+      "id": "MIG-00032",
+      "kind": "local",
+      "path": "local/research/codex/checkpoint-store-r1/storage-tests.txt",
+      "bytes": 127,
+      "sha256": "99f6cf37f3195c2529b5c5edd794df77252188a784fa3ec0c987607803252560"
+    },
+    {
+      "id": "MIG-00033",
+      "kind": "local",
+      "path": "local/research/codex/checkpoint-store-r1/survey.json",
+      "bytes": 3050,
+      "sha256": "525dc46ea99b84b3c12de94fabf67d0847fee476c963e2a229608ce519f83bec"
+    },
+    {
+      "id": "MIG-00034",
+      "kind": "local",
+      "path": "local/research/codex/checkpoint-store-r1/tool-tests.txt",
+      "bytes": 150,
+      "sha256": "db12e5932c6eb2fca2317fbd3e906009cdcc69f49511c91a5599ae4357762751"
+    },
+    {
+      "id": "MIG-00035",
+      "kind": "local",
+      "path": "local/research/codex/checkpoint-store-r1/verify_migration.py",
+      "bytes": 2840,
+      "sha256": "809ea560202948a54fb6db8284c2dc8bd46c972d822ed976d1dd665397cdfb93"
+    },
+    {
+      "id": "MIG-00036",
+      "kind": "local",
+      "path": "local/research/codex/checkpoint-store-r1/source-snapshot/tools/checkpoint_store.py",
+      "bytes": 5681,
+      "sha256": "3f3c9b30e73127601832f38c0d7eb118254671020112ad19ccc5dd3c2e92ec8c"
+    },
+    {
+      "id": "MIG-00037",
+      "kind": "local",
+      "path": "local/research/codex/checkpoint-store-r1/source-snapshot/tools/checkpoints.py",
+      "bytes": 4689,
+      "sha256": "cd25124cd5583c23ff20f6bb6cbe891526b2594a2af0ae34347ac38b23baade2"
+    },
+    {
+      "id": "MIG-00038",
+      "kind": "local",
+      "path": "local/research/codex/checkpoint-store-r1/source-snapshot/tools/migrate_checkpoints.py",
+      "bytes": 7076,
+      "sha256": "29e864a5a7ef546b331381be8a23a127993319a931d4ff9688a8bf1346e116e3"
+    },
+    {
+      "id": "MIG-00039",
+      "kind": "local",
+      "path": "local/research/codex/checkpoint-store-r1/source-snapshot/tools/check_checkpoints.py",
+      "bytes": 26587,
+      "sha256": "bc50ad948cf74715d19e0d4cf2a70a4874ddc208eaa4b3561d5ac095b081b81c"
+    },
+    {
+      "id": "MIG-00040",
+      "kind": "local",
+      "path": "local/research/codex/checkpoint-store-r1/source-snapshot/tools/test_checkpoint_store.py",
+      "bytes": 12902,
+      "sha256": "3f8041826a354c9032f58cd58050d688f4a0ce1ba615712de1fb47858f2c5a0e"
+    },
+    {
+      "id": "MIG-00041",
+      "kind": "local",
+      "path": "local/research/codex/checkpoint-store-r1/source-snapshot/tools/check_docs.py",
+      "bytes": 2385,
+      "sha256": "f279d369b80b9aa0c588f362e4ee54b072a7f67276b465a2d9338e3f8846e678"
+    },
+    {
+      "id": "MIG-00042",
+      "kind": "local",
+      "path": "local/research/codex/checkpoint-store-r1/source-snapshot/tools/check_issue_links.py",
+      "bytes": 8290,
+      "sha256": "7b0090890ef00dd3a984d9945d0a4a2ba2ad11a3ebbe2d53e792f637b35127b5"
+    },
+    {
+      "id": "MIG-00043",
+      "kind": "local",
+      "path": "local/research/codex/rescue-start-guard-r1/pr187-exact-head.json",
+      "bytes": 252,
+      "sha256": "3ac28f9f53cdb21345b365db5e09818127bcd5df69b951418cfd1497bb0c8427"
+    },
+    {
+      "id": "MIG-00044",
+      "kind": "local",
+      "path": "local/research/codex/rescue-start-guard-r1/pr187-merged.json",
+      "bytes": 258,
+      "sha256": "f6ba534a11d4a7e5602456bb372177b62171ce38d0994e88d7f39fb0cdfcb5ed"
+    },
+    {
+      "id": "MIG-00045",
+      "kind": "local",
+      "path": "local/research/codex/wine_probe_rescue_start_slot.py",
+      "bytes": 52230,
+      "sha256": "cd79614cadc7030d864b06a831deb060deaec45c4860ea50fcf1eb62211d3db4"
+    },
+    {
+      "id": "MIG-00046",
+      "kind": "local",
+      "path": "local/research/codex/wine_probe_rescue_start_slot_scoped.py",
+      "bytes": 52230,
+      "sha256": "3f7d6a27d8b166542c12acfc67cb5100abbeeff9f2e95569d7075684dbf1d529"
+    }
+  ]
+}

@@ -1,0 +1,1255 @@
+{
+  "id": "CP061",
+  "previous": "CP060",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-02T12:36:32.822102+00:00",
+  "context_commit": "97e5afceda970caba3c0bd071938d5d1cac142ef",
+  "question": "Does currentclean-auth/compressed-cacheprofile supporttwoactualA/Bpickup/bomb/statepeer/result/return cycles onstableconnections,withnative stat/key/positionreset evidence?",
+  "scope": "KRE-024/#82. ReuseknownAB2cycle/nativeconsumers/CP058–060profile,12sinputdelaypreviouslymeasured;no newnativebody/patch/servicecode. One360sisolatedABrun,same8transports/2keys/pickupstatreset andsampledpositionsbothviews. NoUIretryused. Nextactualcontestedindexonserializedservice perPLAN;AUD019/CP060nextCP064.",
+  "owner": "Codex",
+  "reviewer": "Codex",
+  "artifacts": [
+    {
+      "name": "CA-r2-login-logout.exe",
+      "sha256": "660447c293ce92270cb9b5815331bca976e8f156366e1fe50b217b6c12e60ce3"
+    },
+    {
+      "name": "CA-r2-stage-social.exe",
+      "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+    },
+    {
+      "name": "CA-r2-stage-social.exe Bcopy",
+      "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+    },
+    {
+      "name": "modO.bin",
+      "sha256": "a08950c833d3acab8281049def7b3dc96b221f107eeda01da3a548e34b91dce5"
+    },
+    {
+      "name": "CA-r2-stage-social.exe Ccopy",
+      "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+    }
+  ],
+  "locators": [
+    "current-pair2026-11-02T12:19:54Z run4e62c1e4d672c1f5a999c1e727b9f9920c31b3a48a9e6824e9facbd67f5f0013;runtimee9bb47/static660447/modOa08950rawbase400000,RVA=VA-400000",
+    "Actual124t2609/k12345 then4695/12346;153currentkeys/165Astat5→6bothviews;clockround2stat5;reportmarker17/19clearedbynewStart",
+    "A118IDs1/2→159/158/A17/19→B170/B21;Astate1bothbefore175302/1803,2roomrefresh;52A350nativevalues",
+    "Coordinatesclockbothslots(120,159),beforerankA(120,289)/(120,279),B(200,159),sameA/Bviews;Sampledagreementnotfullwiresemantics"
+  ],
+  "findings": [
+    {
+      "summary": "CurrentprofileA/Bauth137/errors0/cacheacceptedno528;2Start/clock/actualA124keys12345/12346,165/Roller5to6bothrounds/bothviews,statreset5beforenewpickup. Stable8connections/IDs1,2/slots0,1;reportguardround1doesnotblockround2pickup.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#current-pair-round",
+      "limits": "DiagnosticWine/currentfixture41/twoboundedcycles;sampledpositionagreementnotfullmovementgrammar/pxs/transportcausality. No currentcontesteditemrace/fullauth/cache/whole reset/K5/K6a/LAN/Internet proof. Nativeheap/receiver/gettercountermodels emulationonly.",
+      "evidence": [
+        "E088",
+        "E005",
+        "E002",
+        "E040"
+      ]
+    },
+    {
+      "summary": "TwoactualA118/globalIDs1→2/159158, A17/19→B170/B21,secureAstate1bothbeforerank/Bnot1;2native175302/1803/errors0/roomrefresh. One same-run2cycle integration,notfullmatchgate.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#current-pair-round",
+      "limits": "DiagnosticWine/currentfixture41/twoboundedcycles;sampledpositionagreementnotfullmovementgrammar/pxs/transportcausality. No currentcontesteditemrace/fullauth/cache/whole reset/K5/K6a/LAN/Internet proof. Nativeheap/receiver/gettercountermodels emulationonly.",
+      "evidence": [
+        "E088",
+        "E018",
+        "E040"
+      ]
+    },
+    {
+      "summary": "Bothviewnativecoordsagreeatclockandbeforerankforbothactorsineachround,changingafterA/BnormalUIinputs. Positionsresetatnextclock;notUDPcausality/fullgrammar/correction/pxsproof.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#current-pair-round",
+      "limits": "DiagnosticWine/currentfixture41/twoboundedcycles;sampledpositionagreementnotfullmovementgrammar/pxs/transportcausality. No currentcontesteditemrace/fullauth/cache/whole reset/K5/K6a/LAN/Internet proof. Nativeheap/receiver/gettercountermodels emulationonly.",
+      "evidence": [
+        "E007",
+        "E002",
+        "E040"
+      ]
+    },
+    {
+      "summary": "Actualnativeframing/CRCpartialtyped/blob/vector/securecheckspass;153adapterformerlyonekey12345nowjoinsrunround_historybyindexand12nativecasespass. No nativecode/rawmutation,nonewnativefunctionbody.",
+      "source": "kr_static",
+      "status": "confirmed",
+      "method": "emulation",
+      "canonical": "docs/PROTOCOL.md#current-pair-round",
+      "limits": "DiagnosticWine/currentfixture41/twoboundedcycles;sampledpositionagreementnotfullmovementgrammar/pxs/transportcausality. No currentcontesteditemrace/fullauth/cache/whole reset/K5/K6a/LAN/Internet proof. Nativeheap/receiver/gettercountermodels emulationonly.",
+      "evidence": [
+        "E022",
+        "E021",
+        "E020"
+      ]
+    }
+  ],
+  "verification": [
+    {
+      "check": "2097relations/hash/seals/exactsource;870nativeframer/231packet/12native153/396secure;controller/service/probeerrors0;7catalog/docs/artifacts5/5/diff/requiredlocalhistory afterappend. CP05650server/18checkpointunchangedcodebaseline reused.",
+      "result": "pass",
+      "evidence": [
+        "E040",
+        "E006",
+        "E015",
+        "E004"
+      ],
+      "limits": "Nativeemulationmodels explicit,notgatecertificate/independentreview. No space retryused;two-rank alone notacceptance."
+    }
+  ],
+  "evidence": [
+    {
+      "id": "E001",
+      "kind": "repository",
+      "path": "docs/evidence/current-pair-round/README.md",
+      "bytes": 3696,
+      "sha256": "798eb0026f575d9f144ee240e1cb4b74131e02eff72000e4e74400fa9063f3c4"
+    },
+    {
+      "id": "E002",
+      "kind": "local",
+      "path": "local/research/codex/current-pair-round-r1/actor-fields.json",
+      "bytes": 266327,
+      "sha256": "26323328096a6439e38981edb1e716ab753400727f1af05499f7950e1d1ad64d"
+    },
+    {
+      "id": "E003",
+      "kind": "local",
+      "path": "local/research/codex/current-pair-round-r1/append_checkpoint.py",
+      "bytes": 6741,
+      "sha256": "a8a12bdbb2da9a93134e0a95c8ff4f04df5e6401bf5bd167a114e7777e5001ea"
+    },
+    {
+      "id": "E004",
+      "kind": "local",
+      "path": "local/research/codex/current-pair-round-r1/artifacts-check.txt",
+      "bytes": 253,
+      "sha256": "649c6624aa6d317dfc1db5e16fea683cfbc9d9cf4dd3df11c0d70e57409054a0"
+    },
+    {
+      "id": "E005",
+      "kind": "local",
+      "path": "local/research/codex/current-pair-round-r1/auth-reads.json",
+      "bytes": 24281,
+      "sha256": "1a1756483a3257d282b25b26b40ab3cf896c7203953e4d8395d90362ca85937a"
+    },
+    {
+      "id": "E006",
+      "kind": "local",
+      "path": "local/research/codex/current-pair-round-r1/catalog-tests.txt",
+      "bytes": 105,
+      "sha256": "741c99fd9e1e9b32be1ea6eb09c811a2468f3feb6de595993b2f01206154d426"
+    },
+    {
+      "id": "E007",
+      "kind": "local",
+      "path": "local/research/codex/current-pair-round-r1/coordinate-samples.json",
+      "bytes": 32698,
+      "sha256": "6fea8f014927f9f6765621d41fa33e3f7252498469582513e6a37246a565cca2"
+    },
+    {
+      "id": "E008",
+      "kind": "local",
+      "path": "local/research/codex/current-pair-round-r1/current-pair-A-actual6.bin",
+      "bytes": 81,
+      "sha256": "2cfebd3ad9a4935bb144090c4244c67ec9200ca54d4a9da71ecef00004a8bdf4"
+    },
+    {
+      "id": "E009",
+      "kind": "local",
+      "path": "local/research/codex/current-pair-round-r1/current-pair-B-actual6.bin",
+      "bytes": 81,
+      "sha256": "3faabdad6509fc688d8614823af347cc2cfa875256cdf9d02e0ff8ccaea3ea6e"
+    },
+    {
+      "id": "E010",
+      "kind": "local",
+      "path": "local/research/codex/current-pair-round-r1/current-pair-hashes.json",
+      "bytes": 343527,
+      "sha256": "c1ed217b1193f980c322da3dd13688d22940a26f8de20f7faf7d65e3a6ac8177"
+    },
+    {
+      "id": "E011",
+      "kind": "local",
+      "path": "local/research/codex/current-pair-round-r1/current-pair-launcher.log",
+      "bytes": 107134,
+      "sha256": "7bd630541bdde19bcf137188471e5ffb18bb7859115648a2ea08aa24fc248740"
+    },
+    {
+      "id": "E012",
+      "kind": "local",
+      "path": "local/research/codex/current-pair-round-r1/current-pair-native-names.json",
+      "bytes": 1508,
+      "sha256": "043591019fbf3a5f1c17da3d75662cee4240d80e890a66ee979847b661e5076d"
+    },
+    {
+      "id": "E013",
+      "kind": "local",
+      "path": "local/research/codex/current-pair-round-r1/current-pair-recipe.json",
+      "bytes": 1020,
+      "sha256": "ecf5990807fa820539da9261b5eedaf4ef02bf4b10f306d16e75f1bb9b4cb929"
+    },
+    {
+      "id": "E014",
+      "kind": "local",
+      "path": "local/research/codex/current-pair-round-r1/derive_roles.py",
+      "bytes": 1033,
+      "sha256": "0bb5271756253e21c03f5c9a627d5f10629e3b6a58f8c27cb0b94cfd8d6a0f58"
+    },
+    {
+      "id": "E015",
+      "kind": "local",
+      "path": "local/research/codex/current-pair-round-r1/docs-check.txt",
+      "bytes": 174,
+      "sha256": "b9f64b2b534cb943e565e42cf49a4229108de8609b89543499e96edd959153ed"
+    },
+    {
+      "id": "E016",
+      "kind": "local",
+      "path": "local/research/codex/current-pair-round-r1/framer-replays.txt",
+      "bytes": 33,
+      "sha256": "16ae0bd5876ac11306aab752b91b61c89c97f4f801afacfb42ae8ea6432d8171"
+    },
+    {
+      "id": "E017",
+      "kind": "local",
+      "path": "local/research/codex/current-pair-round-r1/issue-body.md",
+      "bytes": 827,
+      "sha256": "3c791243c84da993b152a26e21dc6b4fdc7fb031fe7912161173eba4b5434160"
+    },
+    {
+      "id": "E018",
+      "kind": "local",
+      "path": "local/research/codex/current-pair-round-r1/lifecycle-summary.json",
+      "bytes": 8272,
+      "sha256": "65169bb6f9ef83539dd86cee31fbc7ddc2e57c7c32c166716e87f154c14f3317"
+    },
+    {
+      "id": "E019",
+      "kind": "local",
+      "path": "local/research/codex/current-pair-round-r1/lifecycle.txt",
+      "bytes": 502,
+      "sha256": "f5694397c7643385afc88b81315a1546bc4e23cec1a76faabb6cdc338b9234f4"
+    },
+    {
+      "id": "E020",
+      "kind": "local",
+      "path": "local/research/codex/current-pair-round-r1/measurement-notes.json",
+      "bytes": 458,
+      "sha256": "4bba4ac15bed2ab9229e173fe01f2746736d0f90f370a8d98af37e7d1511269d"
+    },
+    {
+      "id": "E021",
+      "kind": "local",
+      "path": "local/research/codex/current-pair-round-r1/native-153.json",
+      "bytes": 13793,
+      "sha256": "7ca07c27b3eb38cd1faecb42d7f7b56712792373e211104664cddd104279049a"
+    },
+    {
+      "id": "E022",
+      "kind": "local",
+      "path": "local/research/codex/current-pair-round-r1/native-packets.json",
+      "bytes": 94674,
+      "sha256": "6e3e94181c2bdd438001efe2abbb6e706f16332233fa64f0c4f015067566059d"
+    },
+    {
+      "id": "E023",
+      "kind": "local",
+      "path": "local/research/codex/current-pair-round-r1/native_153.py",
+      "bytes": 3544,
+      "sha256": "11d61b0b10daa22b2dbdbea3cd65e7f88b5ef61777b3911400c6b488ac28cc07"
+    },
+    {
+      "id": "E024",
+      "kind": "local",
+      "path": "local/research/codex/current-pair-round-r1/native_names.py",
+      "bytes": 2539,
+      "sha256": "e51bc7ee2be52d994f6607823002636a6ab851ea9b422f0b6fb0eba3025d5f90"
+    },
+    {
+      "id": "E025",
+      "kind": "local",
+      "path": "local/research/codex/current-pair-round-r1/native_packets.py",
+      "bytes": 4836,
+      "sha256": "a1a10764de23182d7b45e6c50445d694333916518b56aa349463bc99a66b0069"
+    },
+    {
+      "id": "E026",
+      "kind": "local",
+      "path": "local/research/codex/current-pair-round-r1/packet-report.txt",
+      "bytes": 29,
+      "sha256": "8f6bb1d5d650e5c4d4778c377fbad27b1c911511b26b57fcf0e04e967007aac5"
+    },
+    {
+      "id": "E027",
+      "kind": "local",
+      "path": "local/research/codex/current-pair-round-r1/pair.gdb",
+      "bytes": 29433,
+      "sha256": "9110f5b8d61f80c80c5b8b8c149f8a2899aff1c824a8ef0723e20ea9cbf104a9"
+    },
+    {
+      "id": "E028",
+      "kind": "local",
+      "path": "local/research/codex/current-pair-round-r1/parse_auth.py",
+      "bytes": 1278,
+      "sha256": "26a2ce96a1af0ece0c359ced9c1689d0d1f3aad2cdea8dfa4f25a70701b6d9c3"
+    },
+    {
+      "id": "E029",
+      "kind": "local",
+      "path": "local/research/codex/current-pair-round-r1/parse_fields.py",
+      "bytes": 3919,
+      "sha256": "8dc6c2f364ee59a48c0bdd86eb5441bde983bc761092ffb434d63f92afcba80a"
+    },
+    {
+      "id": "E030",
+      "kind": "local",
+      "path": "local/research/codex/current-pair-round-r1/parse_lifecycle.py",
+      "bytes": 2673,
+      "sha256": "843205edafe1dee97fa033483d811ec80304528a961cff1d8315bd8fdefd2f87"
+    },
+    {
+      "id": "E031",
+      "kind": "local",
+      "path": "local/research/codex/current-pair-round-r1/prepare.py",
+      "bytes": 2757,
+      "sha256": "309d93a1998bd9e2bc48fc08d791c46e9529ad6c8d5167d236b9604c5608e731"
+    },
+    {
+      "id": "E032",
+      "kind": "local",
+      "path": "local/research/codex/current-pair-round-r1/profile.json",
+      "bytes": 10856,
+      "sha256": "f9afd7a330f8619fac1e479cd0f88013b731ae6a8e714922853bf57364c075aa"
+    },
+    {
+      "id": "E033",
+      "kind": "local",
+      "path": "local/research/codex/current-pair-round-r1/replay-run.py",
+      "bytes": 3009,
+      "sha256": "4750949aa788127ed04d09a5b90fdb5c5ad7ade174c253d71388268a33c3d4e7"
+    },
+    {
+      "id": "E034",
+      "kind": "local",
+      "path": "local/research/codex/current-pair-round-r1/reuse-question.json",
+      "bytes": 4222,
+      "sha256": "89035ea8fa62c1ae04a088cb6285dfa1c0f98c88f7c216d02b9e5bf5c29113c2"
+    },
+    {
+      "id": "E035",
+      "kind": "local",
+      "path": "local/research/codex/current-pair-round-r1/reuse.py",
+      "bytes": 2535,
+      "sha256": "822045bffc4270fc736ab945e1b9e551fcc0a3932eac740f60e53b068d0a5224"
+    },
+    {
+      "id": "E036",
+      "kind": "local",
+      "path": "local/research/codex/current-pair-round-r1/run_probe.py",
+      "bytes": 1081,
+      "sha256": "57e0504cf2b4f8f1d30ddb260eb681394019d01c5ad6a603151305e592a54912"
+    },
+    {
+      "id": "E037",
+      "kind": "local",
+      "path": "local/research/codex/current-pair-round-r1/runtime-recipe.json",
+      "bytes": 812,
+      "sha256": "ba975cd426a35676da12c856f6ded74779540311552e826192d9ab49e624f911"
+    },
+    {
+      "id": "E038",
+      "kind": "local",
+      "path": "local/research/codex/current-pair-round-r1/seal_run.py",
+      "bytes": 632,
+      "sha256": "f16d3328ef5f22659d1d3869f413ecf58d9b3f758de7055b2c5fef75fb8541bc"
+    },
+    {
+      "id": "E039",
+      "kind": "local",
+      "path": "local/research/codex/current-pair-round-r1/sync_docs.py",
+      "bytes": 5708,
+      "sha256": "a494de6df2d9040dc8ec62493941f2c9de7da9b02f6312001fb8849eb97a391c"
+    },
+    {
+      "id": "E040",
+      "kind": "local",
+      "path": "local/research/codex/current-pair-round-r1/verification.json",
+      "bytes": 537,
+      "sha256": "f802a5d7e3257d30bfe2ab9cea5803ddf8f4e895bf7731c32b68068f93d50a21"
+    },
+    {
+      "id": "E041",
+      "kind": "local",
+      "path": "local/research/codex/current-pair-round-r1/verify.py",
+      "bytes": 6786,
+      "sha256": "4b1b24bc4235df0a3a05cd2dc6b075a8f0a13dff7e1ec425a102400865f714c3"
+    },
+    {
+      "id": "E042",
+      "kind": "local",
+      "path": "local/research/codex/current-pair-round-r1/cp061-snapshot/README.md",
+      "bytes": 3773,
+      "sha256": "aa1095af8f5f439e469f8a0d52b678e2a5c8c455c4a27d87f1e3cce7c12ff4ae"
+    },
+    {
+      "id": "E043",
+      "kind": "local",
+      "path": "local/research/codex/current-pair-round-r1/cp061-snapshot/docs/COVERAGE.md",
+      "bytes": 68539,
+      "sha256": "4af4d1906687d32280346420ffab9358f3219a9d674f731492b350a5fd08a760"
+    },
+    {
+      "id": "E044",
+      "kind": "local",
+      "path": "local/research/codex/current-pair-round-r1/cp061-snapshot/docs/PLAN.md",
+      "bytes": 30026,
+      "sha256": "4490657d1e221bbd2b182195b6190fdd2e580feefb466baa529ad6d0cafbc992"
+    },
+    {
+      "id": "E045",
+      "kind": "local",
+      "path": "local/research/codex/current-pair-round-r1/cp061-snapshot/docs/PROTOCOL.md",
+      "bytes": 210915,
+      "sha256": "2f7ac1c511c6418f7d6ada9d141ce143d4e084eaa058231f0dd595ef1de45237"
+    },
+    {
+      "id": "E046",
+      "kind": "local",
+      "path": "local/research/codex/current-pair-round-r1/cp061-snapshot/docs/RESEARCH.md",
+      "bytes": 29943,
+      "sha256": "bfdff76259e1c002b31364688fcfc2e9eca9948ff340c0fbdfcb31e35d78f739"
+    },
+    {
+      "id": "E047",
+      "kind": "local",
+      "path": "local/research/codex/current-pair-round-r1/cp061-snapshot/docs/evidence/current-pair-round/README.md",
+      "bytes": 3696,
+      "sha256": "798eb0026f575d9f144ee240e1cb4b74131e02eff72000e4e74400fa9063f3c4"
+    },
+    {
+      "id": "E048",
+      "kind": "local",
+      "path": "local/research/codex/current-pair-round-r1/cp061-snapshot/docs/features.json",
+      "bytes": 71373,
+      "sha256": "49e13663272cbc02f68ac6e135fda9318b9d0695b6404af6bcb038c85ded560d"
+    },
+    {
+      "id": "E049",
+      "kind": "local",
+      "path": "local/research/codex/current-pair-round-r1/runtime-source/item_claims.py",
+      "bytes": 3340,
+      "sha256": "7990ae9195e9f8bba56b04101f352506194dbd0252793183993ce101a8674a2e"
+    },
+    {
+      "id": "E050",
+      "kind": "local",
+      "path": "local/research/codex/current-pair-round-r1/runtime-source/probe_codec.py",
+      "bytes": 3227,
+      "sha256": "23ba54e6940953a52ff737e7e06b2761a8eb22eab444310b49b1d96efa12411d"
+    },
+    {
+      "id": "E051",
+      "kind": "local",
+      "path": "local/research/codex/current-pair-round-r1/runtime-source/probe_room.py",
+      "bytes": 1468,
+      "sha256": "91292494d492c7851bd5432649adf528e1b07290316dc56ba1478f8a209a08bc"
+    },
+    {
+      "id": "E052",
+      "kind": "local",
+      "path": "local/research/codex/current-pair-round-r1/runtime-source/probe_service.py",
+      "bytes": 32828,
+      "sha256": "eb19710037db3886050b5769ff733b6cb9768e3cba51bf9eccb8a9ef269967f2"
+    },
+    {
+      "id": "E053",
+      "kind": "local",
+      "path": "local/research/codex/current-pair-round-r1/runtime-source/round_fence.py",
+      "bytes": 2339,
+      "sha256": "aabcc7f1d623573fc217de8df05403f83d82425bbe5d6e78872b3096a2d46708"
+    },
+    {
+      "id": "E054",
+      "kind": "local",
+      "path": "local/research/codex/current-pair-round-r1/runtime-source/udp_round_keys.py",
+      "bytes": 1187,
+      "sha256": "db58ae1f25bcbeb52c2d25c7db6afbf1021ddd3af29702e756f5f41886530a0d"
+    },
+    {
+      "id": "E055",
+      "kind": "local",
+      "path": "local/research/codex/current-pair-round-r1/derived/current-pair-A/run.json",
+      "bytes": 92504,
+      "sha256": "5f637b6da9955551a5daf6c5f8c4e4cac204d3646b08a680c9a30869eeb8e752"
+    },
+    {
+      "id": "E056",
+      "kind": "local",
+      "path": "local/research/codex/current-pair-round-r1/derived/current-pair-A-oracle.json",
+      "bytes": 207405,
+      "sha256": "57d2f8e4014068fa41e67d9ce59d96a229d3db8fb99c6f95587740b911a85b58"
+    },
+    {
+      "id": "E057",
+      "kind": "local",
+      "path": "local/research/codex/current-pair-round-r1/derived/current-pair-A-replay.txt",
+      "bytes": 3393,
+      "sha256": "51d39180c7b58fd2033da8083484a12bdf4c6fb1fcfc5342be1491ea11d5114a"
+    },
+    {
+      "id": "E058",
+      "kind": "local",
+      "path": "local/research/codex/current-pair-round-r1/derived/current-pair-B/run.json",
+      "bytes": 87621,
+      "sha256": "6612ca9d101e1f4e65e1ad86c61e33239cf468a36a2a2b343908287f8e207708"
+    },
+    {
+      "id": "E059",
+      "kind": "local",
+      "path": "local/research/codex/current-pair-round-r1/derived/current-pair-B-oracle.json",
+      "bytes": 195513,
+      "sha256": "af6502b0fa17a7c84c161b084768e7594bd90553254b58767cc92a8e4a76706e"
+    },
+    {
+      "id": "E060",
+      "kind": "local",
+      "path": "local/research/codex/current-pair-round-r1/derived/current-pair-B-replay.txt",
+      "bytes": 3210,
+      "sha256": "f819b5f0624ff6217978a9aa39baf41e71286b9723ee3b171d82f17b9029d2dd"
+    },
+    {
+      "id": "E061",
+      "kind": "local",
+      "path": "local/research/codex/current-pair-round-r1/request-frames/current-pair/A-F103-127.bin",
+      "bytes": 67,
+      "sha256": "a83db02884dae4cd126f7e48a9730437b3ad9ddc519c93f5b19ef6fde572b0a3"
+    },
+    {
+      "id": "E062",
+      "kind": "local",
+      "path": "local/research/codex/current-pair-round-r1/request-frames/current-pair/A-F39-99.bin",
+      "bytes": 61,
+      "sha256": "ce053fb060c2f7874cb60d891a730d3da84ca48f62c72460f066f22f010d168c"
+    },
+    {
+      "id": "E063",
+      "kind": "local",
+      "path": "local/research/codex/current-pair-round-r1/request-frames/current-pair/A-F48-124.bin",
+      "bytes": 57,
+      "sha256": "961f2fd5e468077a8ab0769abe884a9f8b4f69458a8d072769b38f94716b5206"
+    },
+    {
+      "id": "E064",
+      "kind": "local",
+      "path": "local/research/codex/current-pair-round-r1/request-frames/current-pair/A-F52-118.bin",
+      "bytes": 60,
+      "sha256": "9be52ca0ea06e8cb2fdf101e40742af3808b58aed906cf72878f6642e9279fd2"
+    },
+    {
+      "id": "E065",
+      "kind": "local",
+      "path": "local/research/codex/current-pair-round-r1/request-frames/current-pair/A-F57-127.bin",
+      "bytes": 70,
+      "sha256": "c2685d55d92441fdbd11f523aa17242d949995e2cabed690e336cc2df48551de"
+    },
+    {
+      "id": "E066",
+      "kind": "local",
+      "path": "local/research/codex/current-pair-round-r1/request-frames/current-pair/A-F61-127.bin",
+      "bytes": 67,
+      "sha256": "5681bac5d2ceec84bfde883868f2cc02c70f90edbf9b0b0a6efbc6c115584ebf"
+    },
+    {
+      "id": "E067",
+      "kind": "local",
+      "path": "local/research/codex/current-pair-round-r1/request-frames/current-pair/A-F81-99.bin",
+      "bytes": 61,
+      "sha256": "6eb4c5a3926a1e6012854a5872c0a9ab205fae320e3cc741610431d4d6538eee"
+    },
+    {
+      "id": "E068",
+      "kind": "local",
+      "path": "local/research/codex/current-pair-round-r1/request-frames/current-pair/A-F90-124.bin",
+      "bytes": 57,
+      "sha256": "1521f543b08222b20710ee2abe0d1e8b42de81a968588df442e96842b9174db6"
+    },
+    {
+      "id": "E069",
+      "kind": "local",
+      "path": "local/research/codex/current-pair-round-r1/request-frames/current-pair/A-F94-118.bin",
+      "bytes": 60,
+      "sha256": "fb34489e56a34d97ccc5aeb828af6a0beb95524f9fc8d61b228639797bda130a"
+    },
+    {
+      "id": "E070",
+      "kind": "local",
+      "path": "local/research/codex/current-pair-round-r1/request-frames/current-pair/A-F99-127.bin",
+      "bytes": 70,
+      "sha256": "a54a95c2356d667f2601e1d183670706c2409069ed3f754f35d8ad1bc97263ba"
+    },
+    {
+      "id": "E071",
+      "kind": "local",
+      "path": "local/research/codex/current-pair-round-r1/request-frames/current-pair/B-F12-82.bin",
+      "bytes": 49,
+      "sha256": "27d13b13f8df5db1f67451352419d49458641283683b06d40bc91f6c3f7220e7"
+    },
+    {
+      "id": "E072",
+      "kind": "local",
+      "path": "local/research/codex/current-pair-round-r1/request-frames/current-pair/B-F23-95.bin",
+      "bytes": 98,
+      "sha256": "41ec7cfe284ac427205c3029e41fd807814e254b6f15c4c80abea2e30c47b7d1"
+    },
+    {
+      "id": "E073",
+      "kind": "local",
+      "path": "local/research/codex/current-pair-round-r1/request-frames/current-pair/B-F27-99.bin",
+      "bytes": 61,
+      "sha256": "c9deec13e11b56326faf38258609345297695f9471abd6872179aab1b0e1cbd6"
+    },
+    {
+      "id": "E074",
+      "kind": "local",
+      "path": "local/research/codex/current-pair-round-r1/request-frames/current-pair/B-F44-127.bin",
+      "bytes": 52,
+      "sha256": "9d4e24b459e912dfd3a7c7692807fb56b4a1913d5e1e92a0b1be5febf7c4cf1e"
+    },
+    {
+      "id": "E075",
+      "kind": "local",
+      "path": "local/research/codex/current-pair-round-r1/request-frames/current-pair/B-F45-127.bin",
+      "bytes": 52,
+      "sha256": "29bd2972127f35a29f915634f2482e874446373ecb757d04db655bf162d9eff1"
+    },
+    {
+      "id": "E076",
+      "kind": "local",
+      "path": "local/research/codex/current-pair-round-r1/request-frames/current-pair/B-F46-127.bin",
+      "bytes": 52,
+      "sha256": "57848c165e780bc29e3e2a3f07e9c2150e3e377283c467f7d9fd04837a14e86c"
+    },
+    {
+      "id": "E077",
+      "kind": "local",
+      "path": "local/research/codex/current-pair-round-r1/request-frames/current-pair/B-F47-127.bin",
+      "bytes": 52,
+      "sha256": "67c696bf7a11b4304b3e9f84fdc6985942a0089d1c54a2cbb1ec247383785578"
+    },
+    {
+      "id": "E078",
+      "kind": "local",
+      "path": "local/research/codex/current-pair-round-r1/request-frames/current-pair/B-F49-127.bin",
+      "bytes": 52,
+      "sha256": "af85ff7364408f1faf61550a7332d5648ece06a9c4f0cd4ccc19fb6e895111c9"
+    },
+    {
+      "id": "E079",
+      "kind": "local",
+      "path": "local/research/codex/current-pair-round-r1/request-frames/current-pair/B-F51-127.bin",
+      "bytes": 52,
+      "sha256": "d223fbd6db6c48234639f743642b567019c0f0862646c9cc60ee8a5fe6918449"
+    },
+    {
+      "id": "E080",
+      "kind": "local",
+      "path": "local/research/codex/current-pair-round-r1/request-frames/current-pair/B-F65-95.bin",
+      "bytes": 382,
+      "sha256": "21d20bc16514488ca4dca6b61aff88e6aa463a6ff550a9fd847bc1dc39bedfe3"
+    },
+    {
+      "id": "E081",
+      "kind": "local",
+      "path": "local/research/codex/current-pair-round-r1/request-frames/current-pair/B-F70-99.bin",
+      "bytes": 61,
+      "sha256": "33ca602e20f2ae3a57ecc36c7ec3413f2e5d843c2d51ab68c3c408e3fcac735f"
+    },
+    {
+      "id": "E082",
+      "kind": "local",
+      "path": "local/research/codex/current-pair-round-r1/request-frames/current-pair/B-F88-127.bin",
+      "bytes": 52,
+      "sha256": "0e8611b5de276cb225bd859e711e3833a521260f090370fb7a17fb79240bebbe"
+    },
+    {
+      "id": "E083",
+      "kind": "local",
+      "path": "local/research/codex/current-pair-round-r1/request-frames/current-pair/B-F89-127.bin",
+      "bytes": 52,
+      "sha256": "a2ae885dd601c2a9077d2d82297a41914fefba3cacdcdaacd3e6b6782d0aefc1"
+    },
+    {
+      "id": "E084",
+      "kind": "local",
+      "path": "local/research/codex/current-pair-round-r1/request-frames/current-pair/B-F91-127.bin",
+      "bytes": 52,
+      "sha256": "92ced70245a317bc8472bf425162971d8e327a5f40fd09fa1b86f591f77d00b8"
+    },
+    {
+      "id": "E085",
+      "kind": "local",
+      "path": "local/research/codex/current-pair-round-r1/request-frames/current-pair/B-F92-127.bin",
+      "bytes": 52,
+      "sha256": "7fcdfe9b7b953725d5b77ffc94faf55389cdba0e3b092d0d1ce1f1b0730c4759"
+    },
+    {
+      "id": "E086",
+      "kind": "local",
+      "path": "local/research/codex/current-pair-round-r1/request-frames/current-pair/B-F94-127.bin",
+      "bytes": 52,
+      "sha256": "22767dab73c8923b6cc253fecc9942c93a9a7ffa17a7d492e572ab868bc2dbf8"
+    },
+    {
+      "id": "E087",
+      "kind": "local",
+      "path": "local/research/codex/current-pair-round-r1/request-frames/current-pair/B-F95-127.bin",
+      "bytes": 52,
+      "sha256": "8fbd8285782a77d5561600058bf9f1ff9a780cd58c7764621918e4db3f3b129a"
+    },
+    {
+      "id": "E088",
+      "kind": "local",
+      "path": "local/research/codex/current-pair-round-r1/current-pair/run.json",
+      "bytes": 138818,
+      "sha256": "4e62c1e4d672c1f5a999c1e727b9f9920c31b3a48a9e6824e9facbd67f5f0013"
+    },
+    {
+      "id": "E089",
+      "kind": "local",
+      "path": "local/research/codex/current-pair-round-r1/current-pair/client.log",
+      "bytes": 70735,
+      "sha256": "f8096c585a37febce65bff5b9c2cc6e590aeb4485ca7617c59ad7b132e6e397c"
+    },
+    {
+      "id": "E090",
+      "kind": "local",
+      "path": "local/research/codex/current-pair-round-r1/current-pair/client-B.log",
+      "bytes": 94733,
+      "sha256": "15d482cae357355a625c8edf865a40b796b3e0fe97b6ac17904095d0088fb714"
+    },
+    {
+      "id": "E091",
+      "kind": "local",
+      "path": "local/research/codex/current-pair-round-r1/current-pair/debug-commands.txt",
+      "bytes": 29433,
+      "sha256": "9110f5b8d61f80c80c5b8b8c149f8a2899aff1c824a8ef0723e20ea9cbf104a9"
+    },
+    {
+      "id": "E092",
+      "kind": "local",
+      "path": "local/research/codex/current-pair-round-r1/current-pair/debug-commands-B.txt",
+      "bytes": 29433,
+      "sha256": "9110f5b8d61f80c80c5b8b8c149f8a2899aff1c824a8ef0723e20ea9cbf104a9"
+    },
+    {
+      "id": "E093",
+      "kind": "local",
+      "path": "local/research/codex/current-pair-round-r1/current-pair/service-state.json",
+      "bytes": 140996,
+      "sha256": "cf804251f75a99f8eb20b388d3dcbfd0d4a29adc9efbba4a8ba64ee8f5783bc7"
+    },
+    {
+      "id": "E094",
+      "kind": "local",
+      "path": "local/research/codex/current-pair-round-r1/current-pair/A-blast158-r1-1-97.bin",
+      "bytes": 51,
+      "sha256": "74e2de4a80eccc95ca075b6b7b315a7883176c212d7f752f47cb45a80c0122e3"
+    },
+    {
+      "id": "E095",
+      "kind": "local",
+      "path": "local/research/codex/current-pair-round-r1/current-pair/A-blast158-r2-2-136.bin",
+      "bytes": 51,
+      "sha256": "64d4c380a715c392025aa97ce4b91e3dcfcb01f4ee6596e3e32257b491d7ca6f"
+    },
+    {
+      "id": "E096",
+      "kind": "local",
+      "path": "local/research/codex/current-pair-round-r1/current-pair/A-dynamic159-r1-1-94.bin",
+      "bytes": 77,
+      "sha256": "7abf03ea51fa1a7156b0e0c61d9a0da4625edc53753c9ec176df082694fdb2a1"
+    },
+    {
+      "id": "E097",
+      "kind": "local",
+      "path": "local/research/codex/current-pair-round-r1/current-pair/A-dynamic159-r2-2-133.bin",
+      "bytes": 77,
+      "sha256": "21ab35a31c09963c993ee393123e07630e7bc3ff4ae995a80353991cfde2b893"
+    },
+    {
+      "id": "E098",
+      "kind": "local",
+      "path": "local/research/codex/current-pair-round-r1/current-pair/A-floor582-115.bin",
+      "bytes": 64,
+      "sha256": "d7cfe29149c84aaa1e95b2cd935d5313540651f27c4c6eb4aa030f96981eac36"
+    },
+    {
+      "id": "E099",
+      "kind": "local",
+      "path": "local/research/codex/current-pair-round-r1/current-pair/A-floor582-76.bin",
+      "bytes": 64,
+      "sha256": "dade68ac6b12c8c7ae59bf27d007ad4f1b32b6369d9a0fcd29170b3063e42ace"
+    },
+    {
+      "id": "E100",
+      "kind": "local",
+      "path": "local/research/codex/current-pair-round-r1/current-pair/A-go197-121.bin",
+      "bytes": 52,
+      "sha256": "3380c0c80d8faad72ca646a853ed917edd2f30fd0527e83e58ce731c40aa7b3f"
+    },
+    {
+      "id": "E101",
+      "kind": "local",
+      "path": "local/research/codex/current-pair-round-r1/current-pair/A-go197-82.bin",
+      "bytes": 52,
+      "sha256": "64b95010ecb0e40bc0367f41f6710d2357fb2538ce827e205825284601237ef8"
+    },
+    {
+      "id": "E102",
+      "kind": "local",
+      "path": "local/research/codex/current-pair-round-r1/current-pair/A-guest110-r1-109.bin",
+      "bytes": 44,
+      "sha256": "f300f7803c78018bc7bb0a99ff04bd200a6843d607915cb48c84b78b557b6a61"
+    },
+    {
+      "id": "E103",
+      "kind": "local",
+      "path": "local/research/codex/current-pair-round-r1/current-pair/A-guest110-r2-148.bin",
+      "bytes": 44,
+      "sha256": "df02d8a7984631a6c13646af10eae0def798bf3d6ac4691112817b04012efdb7"
+    },
+    {
+      "id": "E104",
+      "kind": "local",
+      "path": "local/research/codex/current-pair-round-r1/current-pair/A-host110-r1-106.bin",
+      "bytes": 44,
+      "sha256": "bbbf2539317016a757afed97a98b9103e3e64fa0b31dc96c0a3ff853c815818e"
+    },
+    {
+      "id": "E105",
+      "kind": "local",
+      "path": "local/research/codex/current-pair-round-r1/current-pair/A-host110-r2-145.bin",
+      "bytes": 44,
+      "sha256": "3f61445619e55a509cbcfc153858b6fb4a8529cba6b9bad57fe91aa05570c76b"
+    },
+    {
+      "id": "E106",
+      "kind": "local",
+      "path": "local/research/codex/current-pair-round-r1/current-pair/A-item165-r1-17-91.bin",
+      "bytes": 50,
+      "sha256": "2ad2e7cbd637f553ff114fada41951a1129ca3dc52b14a540a60ccea59088bf0"
+    },
+    {
+      "id": "E107",
+      "kind": "local",
+      "path": "local/research/codex/current-pair-round-r1/current-pair/A-item165-r2-17-130.bin",
+      "bytes": 50,
+      "sha256": "1f7b0435485208c4a329795aa60112b09552104e608473b7f5057406ce53b206"
+    },
+    {
+      "id": "E108",
+      "kind": "local",
+      "path": "local/research/codex/current-pair-round-r1/current-pair/A-peer153-127.bin",
+      "bytes": 135,
+      "sha256": "fe0e9d1c9841ae84840719d027dcee4aa09da77a22ddc100312cbbb8a32f288f"
+    },
+    {
+      "id": "E109",
+      "kind": "local",
+      "path": "local/research/codex/current-pair-round-r1/current-pair/A-peer153-88.bin",
+      "bytes": 135,
+      "sha256": "ab62540ff27411d0e454eedf3ace87f767ac13f5743352c56ab19d67c216fda2"
+    },
+    {
+      "id": "E110",
+      "kind": "local",
+      "path": "local/research/codex/current-pair-round-r1/current-pair/A-play196-124.bin",
+      "bytes": 45,
+      "sha256": "e0f364fc0becf0a2a91327c1a33e299af37f1cecc00a26d40443c5bda58b1af4"
+    },
+    {
+      "id": "E111",
+      "kind": "local",
+      "path": "local/research/codex/current-pair-round-r1/current-pair/A-play196-85.bin",
+      "bytes": 45,
+      "sha256": "d04bf155b4847f9d41b0edfdf00a32526302273271c0f1cadbb8ce22b89eb51d"
+    },
+    {
+      "id": "E112",
+      "kind": "local",
+      "path": "local/research/codex/current-pair-round-r1/current-pair/A-rank175-r1-100.bin",
+      "bytes": 340,
+      "sha256": "5b3751f4c322454005652035ed69253cac647ed0fbc24540bd0599fa2bae6c31"
+    },
+    {
+      "id": "E113",
+      "kind": "local",
+      "path": "local/research/codex/current-pair-round-r1/current-pair/A-rank175-r2-139.bin",
+      "bytes": 340,
+      "sha256": "076e2ce52df3f3450801afd1e815de8afcccc048d94546b45cd74c50f03dd959"
+    },
+    {
+      "id": "E114",
+      "kind": "local",
+      "path": "local/research/codex/current-pair-round-r1/current-pair/A-ready110-112.bin",
+      "bytes": 44,
+      "sha256": "f31c5f5630019345dc62b5027f13c5267af82643ac2dbac979f0a454192b910e"
+    },
+    {
+      "id": "E115",
+      "kind": "local",
+      "path": "local/research/codex/current-pair-round-r1/current-pair/A-ready110-73.bin",
+      "bytes": 44,
+      "sha256": "8fafd9cf652b458ee09b3751a0201f9ab1409920398e0e842e43b915c8840e25"
+    },
+    {
+      "id": "E116",
+      "kind": "local",
+      "path": "local/research/codex/current-pair-round-r1/current-pair/A-return180-r1-103.bin",
+      "bytes": 41,
+      "sha256": "996ed34682d009d8977c2571e23c636f824049fb8d962426a9c2d903ed080200"
+    },
+    {
+      "id": "E117",
+      "kind": "local",
+      "path": "local/research/codex/current-pair-round-r1/current-pair/A-return180-r2-142.bin",
+      "bytes": 41,
+      "sha256": "7e2f2c7c886e57bc6ea6b82c1aaa41fa02ca04bcebdf5e725bb7531d97d17567"
+    },
+    {
+      "id": "E118",
+      "kind": "local",
+      "path": "local/research/codex/current-pair-round-r1/current-pair/A-start121-r1-79.bin",
+      "bytes": 167,
+      "sha256": "f8a824335b4079160a4aaf0e0b425d1fabfa78c248d131503440d0414e1f26cf"
+    },
+    {
+      "id": "E119",
+      "kind": "local",
+      "path": "local/research/codex/current-pair-round-r1/current-pair/A-start121-r2-118.bin",
+      "bytes": 167,
+      "sha256": "c8bc9053b53a7ea610e29ae2928cdadeec601dd12bcf9ce25f30ac71cdad6346"
+    },
+    {
+      "id": "E120",
+      "kind": "local",
+      "path": "local/research/codex/current-pair-round-r1/current-pair/B-blast158-r1-1-97.bin",
+      "bytes": 51,
+      "sha256": "74e2de4a80eccc95ca075b6b7b315a7883176c212d7f752f47cb45a80c0122e3"
+    },
+    {
+      "id": "E121",
+      "kind": "local",
+      "path": "local/research/codex/current-pair-round-r1/current-pair/B-blast158-r2-2-142.bin",
+      "bytes": 51,
+      "sha256": "b12c3fbe13bba6591e62ca40687ffe6a04b44a19ffbc64d48647cd6075c91ebc"
+    },
+    {
+      "id": "E122",
+      "kind": "local",
+      "path": "local/research/codex/current-pair-round-r1/current-pair/B-dynamic159-r1-1-94.bin",
+      "bytes": 77,
+      "sha256": "7abf03ea51fa1a7156b0e0c61d9a0da4625edc53753c9ec176df082694fdb2a1"
+    },
+    {
+      "id": "E123",
+      "kind": "local",
+      "path": "local/research/codex/current-pair-round-r1/current-pair/B-dynamic159-r2-2-139.bin",
+      "bytes": 77,
+      "sha256": "07307a178c83e41b775986c9032efddbfd5eb8d53c7f3ac9798bffec7660ff87"
+    },
+    {
+      "id": "E124",
+      "kind": "local",
+      "path": "local/research/codex/current-pair-round-r1/current-pair/B-event170-17-r1-100.bin",
+      "bytes": 48,
+      "sha256": "e079c20384a8134a404deb1a97ae2732cf117f07bb25ed924d4ffeaa6d29fce4"
+    },
+    {
+      "id": "E125",
+      "kind": "local",
+      "path": "local/research/codex/current-pair-round-r1/current-pair/B-event170-17-r2-145.bin",
+      "bytes": 48,
+      "sha256": "dfcc9796c1b30b909ecaacaaceecb5ac794571c15fa6f27d3f4b0efb38ade96f"
+    },
+    {
+      "id": "E126",
+      "kind": "local",
+      "path": "local/research/codex/current-pair-round-r1/current-pair/B-event170-19-r1-103.bin",
+      "bytes": 59,
+      "sha256": "f87ab8b10335991b25087136ba7409688bd0386d7f38bcffea81385305e33cc8"
+    },
+    {
+      "id": "E127",
+      "kind": "local",
+      "path": "local/research/codex/current-pair-round-r1/current-pair/B-event170-19-r2-148.bin",
+      "bytes": 59,
+      "sha256": "d35b4209664ee4e45b075e2755fd7190771ef8abb9e192552882d08f640af380"
+    },
+    {
+      "id": "E128",
+      "kind": "local",
+      "path": "local/research/codex/current-pair-round-r1/current-pair/B-floor582-121.bin",
+      "bytes": 64,
+      "sha256": "b108cbc93ed5896e87a383e680b955df612b139b892fe2dc6fa7c89dc76d1eaf"
+    },
+    {
+      "id": "E129",
+      "kind": "local",
+      "path": "local/research/codex/current-pair-round-r1/current-pair/B-floor582-76.bin",
+      "bytes": 64,
+      "sha256": "dade68ac6b12c8c7ae59bf27d007ad4f1b32b6369d9a0fcd29170b3063e42ace"
+    },
+    {
+      "id": "E130",
+      "kind": "local",
+      "path": "local/research/codex/current-pair-round-r1/current-pair/B-go197-127.bin",
+      "bytes": 52,
+      "sha256": "4479c8d2bd5a138f8dd57f39fc717eabaade8d4273b394c5d4da4ac42a32ce22"
+    },
+    {
+      "id": "E131",
+      "kind": "local",
+      "path": "local/research/codex/current-pair-round-r1/current-pair/B-go197-82.bin",
+      "bytes": 52,
+      "sha256": "64b95010ecb0e40bc0367f41f6710d2357fb2538ce827e205825284601237ef8"
+    },
+    {
+      "id": "E132",
+      "kind": "local",
+      "path": "local/research/codex/current-pair-round-r1/current-pair/B-guest110-r1-115.bin",
+      "bytes": 44,
+      "sha256": "b9a562c345517aa67d96c51dfe93daedc56af471a1e386fd57cb165b0cee0bf1"
+    },
+    {
+      "id": "E133",
+      "kind": "local",
+      "path": "local/research/codex/current-pair-round-r1/current-pair/B-guest110-r2-160.bin",
+      "bytes": 44,
+      "sha256": "6e725be5eaf80cc30e3e51269018d224087c7b2b56713e255fbc72e8bb48e884"
+    },
+    {
+      "id": "E134",
+      "kind": "local",
+      "path": "local/research/codex/current-pair-round-r1/current-pair/B-host110-r1-112.bin",
+      "bytes": 44,
+      "sha256": "57460635dc0e9976e22e6b40d430710aab16e6a33c152be10c6a80b4564c3110"
+    },
+    {
+      "id": "E135",
+      "kind": "local",
+      "path": "local/research/codex/current-pair-round-r1/current-pair/B-host110-r2-157.bin",
+      "bytes": 44,
+      "sha256": "19ca60c86c873daa8df91c39edd61ebf3baafa3b8b4439c672d5dc049de76026"
+    },
+    {
+      "id": "E136",
+      "kind": "local",
+      "path": "local/research/codex/current-pair-round-r1/current-pair/B-item165-r1-17-91.bin",
+      "bytes": 50,
+      "sha256": "2ad2e7cbd637f553ff114fada41951a1129ca3dc52b14a540a60ccea59088bf0"
+    },
+    {
+      "id": "E137",
+      "kind": "local",
+      "path": "local/research/codex/current-pair-round-r1/current-pair/B-item165-r2-17-136.bin",
+      "bytes": 50,
+      "sha256": "777c46f533113967cf62ae0c9994a9aff2a2f9d88a5eb35f01042cbe0ef60d75"
+    },
+    {
+      "id": "E138",
+      "kind": "local",
+      "path": "local/research/codex/current-pair-round-r1/current-pair/B-peer153-133.bin",
+      "bytes": 135,
+      "sha256": "618d75d7092325c86bff68425df6ddb9fdc70dcb19c730434be91f6393da0faf"
+    },
+    {
+      "id": "E139",
+      "kind": "local",
+      "path": "local/research/codex/current-pair-round-r1/current-pair/B-peer153-88.bin",
+      "bytes": 135,
+      "sha256": "be7c6e24d5412a3c85af396b00655c7c503e0ed2554ed2f414d3dba5c9e37c8e"
+    },
+    {
+      "id": "E140",
+      "kind": "local",
+      "path": "local/research/codex/current-pair-round-r1/current-pair/B-play196-130.bin",
+      "bytes": 45,
+      "sha256": "13f2d542669df1a08be243989a4e70967313aab6c60971f9d235817f9240b651"
+    },
+    {
+      "id": "E141",
+      "kind": "local",
+      "path": "local/research/codex/current-pair-round-r1/current-pair/B-play196-85.bin",
+      "bytes": 45,
+      "sha256": "d04bf155b4847f9d41b0edfdf00a32526302273271c0f1cadbb8ce22b89eb51d"
+    },
+    {
+      "id": "E142",
+      "kind": "local",
+      "path": "local/research/codex/current-pair-round-r1/current-pair/B-rank175-r1-106.bin",
+      "bytes": 340,
+      "sha256": "af64696343b71bbddfcca524adcb34b3c8dd3b736f65508ac464a977c1810384"
+    },
+    {
+      "id": "E143",
+      "kind": "local",
+      "path": "local/research/codex/current-pair-round-r1/current-pair/B-rank175-r2-151.bin",
+      "bytes": 340,
+      "sha256": "a8f475739686a41b6fe6a6c6f2e2bceadcc320ea62dd0c7c8d819769e9fe05ee"
+    },
+    {
+      "id": "E144",
+      "kind": "local",
+      "path": "local/research/codex/current-pair-round-r1/current-pair/B-ready110-118.bin",
+      "bytes": 44,
+      "sha256": "6526e2f461589ee6ea8406ec75602e5c82bbf08353ee8d7d8b7f54952d1dac89"
+    },
+    {
+      "id": "E145",
+      "kind": "local",
+      "path": "local/research/codex/current-pair-round-r1/current-pair/B-ready110-73.bin",
+      "bytes": 44,
+      "sha256": "8fafd9cf652b458ee09b3751a0201f9ab1409920398e0e842e43b915c8840e25"
+    },
+    {
+      "id": "E146",
+      "kind": "local",
+      "path": "local/research/codex/current-pair-round-r1/current-pair/B-remove107-163.bin",
+      "bytes": 44,
+      "sha256": "018c8421718aaf84c501b8ca2f23d39e97750053b22c423b5101e2849cd4db83"
+    },
+    {
+      "id": "E147",
+      "kind": "local",
+      "path": "local/research/codex/current-pair-round-r1/current-pair/B-return180-r1-109.bin",
+      "bytes": 41,
+      "sha256": "b53daa3dda63e60a45282c346e337b4d3d97dd07a2ef4b33a42a147350601e54"
+    },
+    {
+      "id": "E148",
+      "kind": "local",
+      "path": "local/research/codex/current-pair-round-r1/current-pair/B-return180-r2-154.bin",
+      "bytes": 41,
+      "sha256": "6cfe760393700f6f5727536b029fbf72d8d3fcbd640b42da5887c4fe612b6389"
+    },
+    {
+      "id": "E149",
+      "kind": "local",
+      "path": "local/research/codex/current-pair-round-r1/current-pair/B-start121-r1-79.bin",
+      "bytes": 167,
+      "sha256": "f8a824335b4079160a4aaf0e0b425d1fabfa78c248d131503440d0414e1f26cf"
+    },
+    {
+      "id": "E150",
+      "kind": "local",
+      "path": "local/research/codex/current-pair-round-r1/current-pair/B-start121-r2-124.bin",
+      "bytes": 167,
+      "sha256": "f83868d66c8127ba318fca619743e810d900bfd1edcaab62656afbf7531b2dab"
+    },
+    {
+      "id": "E151",
+      "kind": "local",
+      "path": "local/research/codex/current-pair-round-r1/current-pair/B-survivor110-166.bin",
+      "bytes": 44,
+      "sha256": "dd924b4b2bec2ef2ad5e167f3e4df028f3e66365243aeca3e6718b3edf94c145"
+    },
+    {
+      "id": "E152",
+      "kind": "local",
+      "path": "local/research/codex/wine_probe_current_pair_round.py",
+      "bytes": 39653,
+      "sha256": "a1deb74bde8ac17ebc29d57d120da710b83e4144dae18efa197ed3a17972c25c"
+    }
+  ],
+  "delta": {
+    "added": [
+      "SamecurrentprofileA/B2cycles withnativeactualpickup/stat/key/reportguardreset,bomb/state/result,pairedposition samples."
+    ],
+    "corrected": [
+      "Reused153adapterfirstassumedCP054onekey;nowexactcurrentrunroundkey,raw/nativebodyunchanged.",
+      "Currentprofile2cyclegapCP060nowmeasured;do notgeneralize2ranks/fullmovementfromsamples."
+    ],
+    "superseded": [
+      "NEXT-CURRENT-PAIR-ROUNDmeasuredinscope;nextactualitemraceproductionclaimpolicy,notrepeatlogin/cache/clock/Cadmission."
+    ]
+  },
+  "blockers": [
+    "Currentserviceactualcontestedindex/oneeffectperwinner/roundreset raceproof stillneeded;oldCP030harnessnotcurrentintegration.",
+    "Fullmovementgrammar/transport/authauthority/cachevariants/vanilla/fullreset/validator/K5/K6a/LANInternet remainopen."
+  ],
+  "next_steps": [
+    {
+      "id": "NEXT-CURRENT-PAIR-ROUND",
+      "task": "KRE-005b",
+      "state": "superseded",
+      "action": "Currentprofile2cyclesmeasuredCP061;remainingfullacceptancedimensionsinRESEARCH/gates.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-CURRENT-PICKUP-RACE",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "ImmediatelyreuseCP030race/124165/stat/ItemClaims. NormalUIbothclientscontestindex;localmeasurementhold165deliveryifneededforactualtworeports,keepclaim/key/reportguard unchanged;onewinner/effectbothviews/resetnextcycle. No mintedcompetingrequests/fullgateclaim.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    }
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-11-02T12:36:32.822102+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "Codex solo RE/code/runtime/selfcheck, not independent approval.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Owner explicitly requested solo without Claude review."
+    }
+  },
+  "docs_sync": [
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "CP061same-run2cycle/currentposition/stat/keyprooflimitsandnextcontestedindex;no gatepromotion."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "CP061same-run2cycle/currentposition/stat/keyprooflimitsandnextcontestedindex;no gatepromotion."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "updated",
+      "reason": "CP061same-run2cycle/currentposition/stat/keyprooflimitsandnextcontestedindex;no gatepromotion."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "updated",
+      "reason": "CP061same-run2cycle/currentposition/stat/keyprooflimitsandnextcontestedindex;no gatepromotion."
+    },
+    {
+      "path": "docs/features.json",
+      "state": "updated",
+      "reason": "CP061same-run2cycle/currentposition/stat/keyprooflimitsandnextcontestedindex;no gatepromotion."
+    },
+    {
+      "path": "docs/COVERAGE.md",
+      "state": "updated",
+      "reason": "CP061same-run2cycle/currentposition/stat/keyprooflimitsandnextcontestedindex;no gatepromotion."
+    },
+    {
+      "path": "docs/evidence/current-pair-round/README.md",
+      "state": "updated",
+      "reason": "CP061same-run2cycle/currentposition/stat/keyprooflimitsandnextcontestedindex;no gatepromotion."
+    }
+  ]
+}

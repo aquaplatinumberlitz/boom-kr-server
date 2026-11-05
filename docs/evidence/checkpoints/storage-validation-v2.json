@@ -1,0 +1,28 @@
+{
+  "schema": "kre-checkpoint-storage-validation-v1",
+  "baseline_commit": "c2ca94d1e2a77bbfcf67c052542e37d0a1577e94",
+  "before": {
+    "manifest_bytes": 47358804,
+    "manifest_lines": 1196377,
+    "directory_files": 39,
+    "directory_bytes": 47545806,
+    "records_inline": 117,
+    "evidence_rows": 166881,
+    "audits": 36
+  },
+  "after": {
+    "index_bytes": 53747,
+    "index_lines": 1560,
+    "record_files": 118,
+    "record_bytes": 42570979,
+    "evidence_manifest_files": 3,
+    "evidence_manifest_bytes": 866618,
+    "directory_files_before_this_report": 161,
+    "directory_bytes_before_this_report": 43739054,
+    "counter": "CP118",
+    "audit_next": "CP120"
+  },
+  "equivalence": "117wholeobjects/evidence166881/audits36 compared; migration-v2.json contains individual mappings/object and fileSHA. Rerun afternewCP118 leftindexandallrecordbytes unchanged.",
+  "validation": "50tools tests incl28checkpoint/storage cases; old/newhistory/record-only/evidence-only mutation/deletion/repinnedfinding/counter/cadence/CLIallverify; fullraw/history finalcheck recordedinPR. No semanticacceptance or gateclaims.",
+  "limits": "Totallegacyrecordbytes andduplicateevidence intentionallyretained; externalmanifests onlyfornewCP118. Directory size adds newrunmetadata andmigrationtools report; reductionclaim appliesentryindex. v1historyJSON parsedwholebyPython onerevisionatatime; LLMusesselectiveCLI. Host-local evidence requiresoriginalmachine; shallow/missingGit remainsUNVERIFIED/failurewithflags."
+}

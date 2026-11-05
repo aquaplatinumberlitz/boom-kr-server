@@ -1,0 +1,2405 @@
+{
+  "id": "CP058",
+  "previous": "CP057",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-02T11:45:16.018725+00:00",
+  "context_commit": "956f31b1265bc25183115dbf4fa85ec1d73aec2a",
+  "question": "Where does bounded authprefix fail, can native S4/profile branch parse cleanly without force-state, and does next actual requestcarry perclientidentity/name?",
+  "scope": "KRE-021/#76. ReuseCP014/020/cached53readers/KR106string/VNmethod;6targetedprivateIDAbodies withconcreteexiterr edges,4isolatedABruns34→125→133→137body. Exporter3authaliases updated,service/codecunchanged. Correction oldstringimmediateAUD018seriouscontradiction, cadenceCP060 unchanged. Continue namedcache present/missing perPLAN.",
+  "owner": "Codex",
+  "reviewer": "Codex",
+  "artifacts": [
+    {
+      "name": "CA-r2-login-logout.exe",
+      "sha256": "660447c293ce92270cb9b5815331bca976e8f156366e1fe50b217b6c12e60ce3"
+    },
+    {
+      "name": "CA-r2-stage-social.exe",
+      "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+    },
+    {
+      "name": "CA-r2-stage-social.exe Bcopy",
+      "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+    },
+    {
+      "name": "modO.bin",
+      "sha256": "a08950c833d3acab8281049def7b3dc96b221f107eeda01da3a548e34b91dce5"
+    },
+    {
+      "name": "CA-r2-stage-social.exe Ccopy",
+      "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+    }
+  ],
+  "locators": [
+    "Runtimee9bb47/static660447/modOa08950rawbase400000,RVA=VA-400000;6bodyregionsmatchruntimecopy",
+    "10FD540/RVACFD540;10FD8CEvf4C→14EB9E0→14EBA90u16string;10FD90B→13B09E0ID beforemalformedstringerror",
+    "After53directfields:10FEC8A→12F6A60→1386790 reads125/129count (AE25E0conditional);53E230/53E269reads133count;final137A/B,135Cnative",
+    "auth-short11:24:58Z/full11:28:27Z/tail11:32:31Z/final11:36:07Z2026-11-02;actualC2S6/81bytes,nameatbodyoffset2nativeSSOreader"
+  ],
+  "findings": [
+    {
+      "summary": "Old34byteprefix IDsetterproof remains valid, but u32zero atstringnameoffset29 decodesu16len33A3hex/error54,cursorstuck,followinghead204. BothA/Bruntime andthreeoldrolefixturesnative confirm; correctemptystrrequiresu16length notu32padding.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#auth-profile",
+      "limits": "KR00967diagnosticWine/count1/measuredfeatures/emptylists;values0/nameIDdesign,notoriginalserverdefaults/fullauth/profilemeaning/accounttokenauthority/allvariants. Sharedwarmedgame-dir,notcoldcache;Cnativeonly,notnewCruntime.180snot2fullresults/gate.",
+      "evidence": [
+        "E146",
+        "E025",
+        "E051",
+        "E069"
+      ]
+    },
+    {
+      "summary": "Targeted53executed directreaders then3helperu32zero counts, usingKR106stringencoding/native;125and133candidates stillcallbackexiterr1. FinalA/B137cursor/errors0 andID1/2, actualnativeC2S6 namesKRLocal/KRGuest each81bytes.59tracecalls include3nestedbool/u8,56logicalwirefields.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#auth-profile",
+      "limits": "KR00967diagnosticWine/count1/measuredfeatures/emptylists;values0/nameIDdesign,notoriginalserverdefaults/fullauth/profilemeaning/accounttokenauthority/allvariants. Sharedwarmedgame-dir,notcoldcache;Cnativeonly,notnewCruntime.180snot2fullresults/gate.",
+      "evidence": [
+        "E194",
+        "E242",
+        "E260",
+        "E025",
+        "E020",
+        "E069"
+      ]
+    },
+    {
+      "summary": "3candidatefinalfixtures nativeframe/primitive/stringreader168fieldvalues/cursor/errors0;SSOsyntheticreceiver/prefixguardoff. C135name5byte is nativeonly, notC run.6bodybytes matchruntimecopy;privatebatchIDA fallback, no config/sourceDBmutation.",
+      "source": "kr_static",
+      "status": "confirmed",
+      "method": "emulation",
+      "canonical": "docs/PROTOCOL.md#auth-profile",
+      "limits": "KR00967diagnosticWine/count1/measuredfeatures/emptylists;values0/nameIDdesign,notoriginalserverdefaults/fullauth/profilemeaning/accounttokenauthority/allvariants. Sharedwarmedgame-dir,notcoldcache;Cnativeonly,notnewCruntime.180snot2fullresults/gate.",
+      "evidence": [
+        "E049",
+        "E035",
+        "E004"
+      ]
+    },
+    {
+      "summary": "Exporter41fixtures nowauth_A/B/C newframes/seq43;all41bytes identical to measuredprofile-final,38otheraliasesunchanged,oldexportedJSONpreserved. Unknownnumeric0/emptylists/nameID remain design,not fullauth.",
+      "source": "design",
+      "status": "design",
+      "method": "design",
+      "canonical": "docs/PROTOCOL.md#auth-profile",
+      "limits": "KR00967diagnosticWine/count1/measuredfeatures/emptylists;values0/nameIDdesign,notoriginalserverdefaults/fullauth/profilemeaning/accounttokenauthority/allvariants. Sharedwarmedgame-dir,notcoldcache;Cnativeonly,notnewCruntime.180snot2fullresults/gate.",
+      "evidence": [
+        "E041",
+        "E042",
+        "E081"
+      ]
+    }
+  ],
+  "verification": [
+    {
+      "check": "3573relations/hash/sealed4runs;2085nativeframer validCRCbadpartial actualcases;168finalfieldchecks/3roles,actualname6A/B;export41exactbytes;7catalog/docs/artifacts5/5/diff/requiredlocalhistory afterappend. CP05650server+18checkpoint baseline reused unchangedservercodec.",
+      "result": "pass",
+      "evidence": [
+        "E069",
+        "E051",
+        "E049",
+        "E020",
+        "E041",
+        "E038",
+        "E040",
+        "E006"
+      ],
+      "limits": "AUD018manualcorrection notindependentreview;counter/checksnotsemantics/gate. Runlifecyclepartial:short/full/final2Starts1result,tail1Start0result;nocausalclaimforinputdifferences."
+    }
+  ],
+  "evidence": [
+    {
+      "id": "E001",
+      "kind": "repository",
+      "path": "docs/evidence/auth-profile/README.md",
+      "bytes": 6034,
+      "sha256": "81a2b542a7e3d61dca7a3f9b6e4ef1fe1aa44383d7894e860b5aa591e5498bb0"
+    },
+    {
+      "id": "E002",
+      "kind": "repository",
+      "path": "docs/evidence/auth-profile/field-shape.json",
+      "bytes": 8965,
+      "sha256": "d0fb21b7b646ed68cf12b82c7100c07bf701c8ec5b706399af5525a96dcce266"
+    },
+    {
+      "id": "E003",
+      "kind": "repository",
+      "path": "docs/evidence/checkpoints/audits/AUD018.json",
+      "bytes": 5352,
+      "sha256": "d776917fedac02b488a8bb59d8398b07be0447d5fedf0e4eb6e806145ad091ae"
+    },
+    {
+      "id": "E004",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/analysis-ledger.json",
+      "bytes": 761,
+      "sha256": "237fd2923732659fa3d452a4463c81b5756d226fcf2740244c33c780c3ab99cb"
+    },
+    {
+      "id": "E005",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/append_checkpoint.py",
+      "bytes": 8275,
+      "sha256": "71cfcac12be70775144bed7dcb766592f8b762f9224c72db9b28bc14740e81c6"
+    },
+    {
+      "id": "E006",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/artifacts-check.txt",
+      "bytes": 253,
+      "sha256": "649c6624aa6d317dfc1db5e16fea683cfbc9d9cf4dd3df11c0d70e57409054a0"
+    },
+    {
+      "id": "E007",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/auth-A-final.bin",
+      "bytes": 175,
+      "sha256": "fe0f99796dbaff2ca37ed90552139d125a5a8bff5ac7feba516d3f235fa5e3e7"
+    },
+    {
+      "id": "E008",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/auth-A-full-zero.bin",
+      "bytes": 163,
+      "sha256": "5e250d8ee6942a532e9cbd6cfd76db3a51015d714932d591dfe93286fe610f07"
+    },
+    {
+      "id": "E009",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/auth-A-tail.bin",
+      "bytes": 171,
+      "sha256": "e739165fc41014aa4d081e37429d754be9be01802683fe42862e07d914063b25"
+    },
+    {
+      "id": "E010",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/auth-B-final.bin",
+      "bytes": 175,
+      "sha256": "8ae2e5f61c9bb29508e819e1f83a68fddead3906c4e212ef6ed162bc7a621774"
+    },
+    {
+      "id": "E011",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/auth-B-full-zero.bin",
+      "bytes": 163,
+      "sha256": "f966b89b2a78404efbeeee1d1d5b923c5baf30932a1f16eb219123d1681ac381"
+    },
+    {
+      "id": "E012",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/auth-B-tail.bin",
+      "bytes": 171,
+      "sha256": "8dd81f7ae851f433d501d9412e38be277f31eaac6e669d566d7c7a1fb1e8d492"
+    },
+    {
+      "id": "E013",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/auth-C-final.bin",
+      "bytes": 173,
+      "sha256": "24f4146726929e8655a1246d28b79cf1785532c715841da874ed723f8ba1322a"
+    },
+    {
+      "id": "E014",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/auth-C-full-zero.bin",
+      "bytes": 161,
+      "sha256": "dc5d920c01737c88ba4a3751b75dac0e0c2bb422358a6301d9cd182d5924f518"
+    },
+    {
+      "id": "E015",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/auth-C-tail.bin",
+      "bytes": 169,
+      "sha256": "cd55700fcbd3f892dcfa3c01c88e5292502ee9d8b83e9697519a3f7db6c5f977"
+    },
+    {
+      "id": "E016",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/auth-final-A-actual6.bin",
+      "bytes": 81,
+      "sha256": "2cfebd3ad9a4935bb144090c4244c67ec9200ca54d4a9da71ecef00004a8bdf4"
+    },
+    {
+      "id": "E017",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/auth-final-B-actual6.bin",
+      "bytes": 81,
+      "sha256": "3faabdad6509fc688d8614823af347cc2cfa875256cdf9d02e0ff8ccaea3ea6e"
+    },
+    {
+      "id": "E018",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/auth-final-hashes.json",
+      "bytes": 152241,
+      "sha256": "cbbdc465533bdfe7ea9b88b0924f8389bf632256a9480b2188b626448750ae18"
+    },
+    {
+      "id": "E019",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/auth-final-launcher.log",
+      "bytes": 77780,
+      "sha256": "2df6b581bf748b0da8052a7054c8b4843131de04d940c5592a2bcd78f1f9bab8"
+    },
+    {
+      "id": "E020",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/auth-final-native-names.json",
+      "bytes": 1476,
+      "sha256": "9c5028163f0b7e7c20c71d64087db3020906070af6fd7b6a0299ce9a69155dd7"
+    },
+    {
+      "id": "E021",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/auth-final-recipe.json",
+      "bytes": 988,
+      "sha256": "2e447c2101e9f6fbb6493fd512089ca9aaf254663c1a057dbde8c5c2c737f4d0"
+    },
+    {
+      "id": "E022",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/auth-full-hashes.json",
+      "bytes": 151490,
+      "sha256": "3eb4819537192358b96c480cb110da2870c023d536449e8b796f65b079dc1c56"
+    },
+    {
+      "id": "E023",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/auth-full-launcher.log",
+      "bytes": 76074,
+      "sha256": "d4a4619b2052e5f73741c6d33995338bbb4fb61a1b7e8fd783cfdb98e696b902"
+    },
+    {
+      "id": "E024",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/auth-full-recipe.json",
+      "bytes": 980,
+      "sha256": "335aa964c2356ec2065d7980ec6a2ab1ef28a4a125231ec7eefc951d003161af"
+    },
+    {
+      "id": "E025",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/auth-reads.json",
+      "bytes": 92243,
+      "sha256": "3ab990b862c3f2cc551d7a82433992a1bf64c3cdf32ab62a9151ebb9f5a1d73f"
+    },
+    {
+      "id": "E026",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/auth-short-hashes.json",
+      "bytes": 152241,
+      "sha256": "48177ed3cec06709e0b5264accb3e36d0e9c7faef641c852b93d68c3e164f992"
+    },
+    {
+      "id": "E027",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/auth-short-launcher.log",
+      "bytes": 77751,
+      "sha256": "58f9e7d6520fea856f6ab70800f018c8a6ed1f9391a6562d0e7f080f345db166"
+    },
+    {
+      "id": "E028",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/auth-short-recipe.json",
+      "bytes": 985,
+      "sha256": "2153bd0b6061585b471ad759167021520823c2f47d5cf29ed255a1925d2ee025"
+    },
+    {
+      "id": "E029",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/auth-tail-hashes.json",
+      "bytes": 151444,
+      "sha256": "6d68a2c9919cdab03b25ecdc972a534a08dd95cdf69a402f5815cb8dbd2178cc"
+    },
+    {
+      "id": "E030",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/auth-tail-launcher.log",
+      "bytes": 42606,
+      "sha256": "191a8f2446b4ee6014be1eab288785d7c9925c5275bf303af1bebf990f6e818a"
+    },
+    {
+      "id": "E031",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/auth-tail-recipe.json",
+      "bytes": 985,
+      "sha256": "98df8a48241b6cccd7cf85f5274348cd028a0823032c3930ea887d07393dbda7"
+    },
+    {
+      "id": "E032",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/auth-tail.gdb",
+      "bytes": 30567,
+      "sha256": "9e6c75e1b9aba42fc3c0b67ccc882cf53bc94e0e971ac02ae4c2febd92636a6e"
+    },
+    {
+      "id": "E033",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/auth.gdb",
+      "bytes": 31119,
+      "sha256": "3144a639c3c20636e6ded4b5c53ae8019ffdf5ff4588b5e14f3ef2a16bd2711e"
+    },
+    {
+      "id": "E034",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/body-comparison.json",
+      "bytes": 271,
+      "sha256": "04234100dcc54e2ac73e07005acab5578a2b7913f1a70a4e52ce6caf6a1c47c3"
+    },
+    {
+      "id": "E035",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/body-comparisons.json",
+      "bytes": 1307,
+      "sha256": "35242051df27fa049e2324e539c824a5e9338822da77555b8b95cb358be33ce6"
+    },
+    {
+      "id": "E036",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/build_full.py",
+      "bytes": 2369,
+      "sha256": "58bad863e54249d697019276c48c9d499d9a2ead51337f11c2854913be54b7ab"
+    },
+    {
+      "id": "E037",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/cache-before-final.json",
+      "bytes": 3252,
+      "sha256": "7334be756dd3ca076067ed54bb602bd8ca1ffcee5bed39c8a67c620f82a890f7"
+    },
+    {
+      "id": "E038",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/catalog-tests.txt",
+      "bytes": 105,
+      "sha256": "7ec39450057401d18ad4a99e5e467987ff4cb3a4fdaee2f3a79e0fa9c495be16"
+    },
+    {
+      "id": "E039",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/derive_roles.py",
+      "bytes": 856,
+      "sha256": "a1ec321188f2a702c6f3936d65cd292f7969aef192f15cb83f040944666ae1bb"
+    },
+    {
+      "id": "E040",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/docs-check.txt",
+      "bytes": 174,
+      "sha256": "c36e9da6622222ad87028858efa1dd417f62bbb42f8b1708f56823513f889a3e"
+    },
+    {
+      "id": "E041",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/export-check.json",
+      "bytes": 553,
+      "sha256": "d241f244de9031ea343e16f6a067d4a8d2848f1b361eb7a1d244dbecaf325373"
+    },
+    {
+      "id": "E042",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/exported-profile.json",
+      "bytes": 10854,
+      "sha256": "d52224e4a3876b24d5dfbc513aa712e6ac1b07eb4858885029a40f9d80c15d45"
+    },
+    {
+      "id": "E043",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/final-recipe.json",
+      "bytes": 864,
+      "sha256": "c3d0da27d47d36520875102a6fb201b006bf2b469a2d21dfb6880a1d1038aa49"
+    },
+    {
+      "id": "E044",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/framer-replays.txt",
+      "bytes": 122,
+      "sha256": "200bfb49e31c61bb44192190bb2c6cf146a09443e2ddb043437ee31189fc8996"
+    },
+    {
+      "id": "E045",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/full-recipe.json",
+      "bytes": 33420,
+      "sha256": "744d1a6c2630d1e96db27d159162467d1661225bfa235dd488bff29f6cef6d5a"
+    },
+    {
+      "id": "E046",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/issue-body.md",
+      "bytes": 990,
+      "sha256": "f3ec7af5f98022d75c0ca268f21c58d33790693d292019266f796c5378c0fd57"
+    },
+    {
+      "id": "E047",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/lifecycle-summary.json",
+      "bytes": 23163,
+      "sha256": "a729c6b04d0ea699a67efa13a7e224039c1249367c4ad9ce8892907a08d18457"
+    },
+    {
+      "id": "E048",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/lifecycle.txt",
+      "bytes": 1226,
+      "sha256": "791445a2f0f6cb46c726f867f88c018e062d882dc9902cea7f2dd368dbfad322"
+    },
+    {
+      "id": "E049",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/native-final.json",
+      "bytes": 23974,
+      "sha256": "caa96f260857a73c3d588bea0dbd61a4be39065300f520392d4b80912678bf37"
+    },
+    {
+      "id": "E050",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/native-full.json",
+      "bytes": 22724,
+      "sha256": "96355f7377b5d603a8eef201ed9d6ae93344b4184125220223cbcdc283db7d9f"
+    },
+    {
+      "id": "E051",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/native-short.json",
+      "bytes": 2002,
+      "sha256": "18fb50d262ceeb61093bba4f5cb7a63759bbd3f2d2b36b09446bd410d2bc47c4"
+    },
+    {
+      "id": "E052",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/native_final.py",
+      "bytes": 2354,
+      "sha256": "eccb1e17edd69b27c5a003abac7543e67e913f54f45d88fe920d24b0b92f9ead"
+    },
+    {
+      "id": "E053",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/native_full.py",
+      "bytes": 2211,
+      "sha256": "25221fbc364ad6946768afe5d52549c75eb3d1588b3e48fbedecbf9dc5e145b2"
+    },
+    {
+      "id": "E054",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/native_names.py",
+      "bytes": 2531,
+      "sha256": "ff642bf65c8337fa22ed0040081271c4fc68f3b2f143fbefe72c9a5b2275a720"
+    },
+    {
+      "id": "E055",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/native_short.py",
+      "bytes": 2154,
+      "sha256": "52ff0280548000a2db6eb90c0a1d88690deac8404a2b1f96936758fac61e4a65"
+    },
+    {
+      "id": "E056",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/parse_auth.py",
+      "bytes": 1251,
+      "sha256": "6d32c10f19b17e88b5dd97c950c2ae899b3b57459f016de93e7d1b443058645b"
+    },
+    {
+      "id": "E057",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/parse_lifecycle.py",
+      "bytes": 2667,
+      "sha256": "df212c70ae296f04e5f8ba21427cf936f0cba8d17a5cd11763020bc924390448"
+    },
+    {
+      "id": "E058",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/prepare.py",
+      "bytes": 2679,
+      "sha256": "a87915859f30fdf3a08ae884c10b91de75138e638d28eb25d51ddc546d41b9ff"
+    },
+    {
+      "id": "E059",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/profile-final.json",
+      "bytes": 10740,
+      "sha256": "7480f1ee74b88492ef6b02d38a8e92f171a8c6ed1e5ef8e1f58d7b9d96b1d82a"
+    },
+    {
+      "id": "E060",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/profile-full.json",
+      "bytes": 10752,
+      "sha256": "1538d200490ba72aa074529b7530882d615ccfa8e5fd321694aaf412a010a12a"
+    },
+    {
+      "id": "E061",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/profile-tail.json",
+      "bytes": 10737,
+      "sha256": "f68481b059c39cf9319d91fb4249e21707cd7c47256e7e68116e1b87acc494cc"
+    },
+    {
+      "id": "E062",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/replay-run.py",
+      "bytes": 3003,
+      "sha256": "6f2ad8fff88aa4a8aa4cc029d5e7a7525a92e3f6ad896ede71e4eaa7336fb9c7"
+    },
+    {
+      "id": "E063",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/reuse-question.json",
+      "bytes": 4361,
+      "sha256": "0a6f27a4e39ba0c1ecda68c67591c18394e6770487a404632fd6ddaa59119fca"
+    },
+    {
+      "id": "E064",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/reuse.py",
+      "bytes": 2850,
+      "sha256": "2a5070756f5b3a2d85215dbb63d51954ae75b55e68f9571c257a99259eeebcd7"
+    },
+    {
+      "id": "E065",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/run_probe.py",
+      "bytes": 1068,
+      "sha256": "65d2a812f1a09280d827bb8488d1f8e2f816c7a6d0a6b6484d5dce171607d135"
+    },
+    {
+      "id": "E066",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/seal_run.py",
+      "bytes": 626,
+      "sha256": "6f02310e1dbbc31e92becc8e84d9576edeaa89bcff6ebffbe3fc8091e0dd13fc"
+    },
+    {
+      "id": "E067",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/sync_docs.py",
+      "bytes": 9206,
+      "sha256": "37ac1ab64d0a0a3e3d0e89be93313882d8a6367198e015dc174e8d2b6fd68749"
+    },
+    {
+      "id": "E068",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/tail-recipe.json",
+      "bytes": 781,
+      "sha256": "7448560aaa3edfc6e08d480b31ccdbfc28a7a010280ab27626a714d40359aabc"
+    },
+    {
+      "id": "E069",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/verification.json",
+      "bytes": 1999,
+      "sha256": "2f37b32df29ef405fc5680430d70aded24c4ae275e1dc0a402ff47059161e9e4"
+    },
+    {
+      "id": "E070",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/verify.py",
+      "bytes": 4565,
+      "sha256": "083aa7757d30db40594e750b6f97a2cbefc646886ead6b184ab3b7ecad164469"
+    },
+    {
+      "id": "E071",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/cp058-snapshot/README.md",
+      "bytes": 3885,
+      "sha256": "10f2063aceb426946c200f6845e025447d7ace1d1c83aec3a3c4ba0c51df0375"
+    },
+    {
+      "id": "E072",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/cp058-snapshot/docs/COVERAGE.md",
+      "bytes": 67053,
+      "sha256": "43650fc75e5a06750be0dc3bf4b91e0539cb26254c3193860e03b044e75c610f"
+    },
+    {
+      "id": "E073",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/cp058-snapshot/docs/PLAN.md",
+      "bytes": 29807,
+      "sha256": "7b005189a820bd056b2288c93f63cff523052355b4da443de3814aedbe21d340"
+    },
+    {
+      "id": "E074",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/cp058-snapshot/docs/PROTOCOL.md",
+      "bytes": 203342,
+      "sha256": "2d80ed0d26aea4881f462cb13f35c3f126718d3bb8b7a479639dcd2ca4a0dac7"
+    },
+    {
+      "id": "E075",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/cp058-snapshot/docs/RESEARCH.md",
+      "bytes": 29550,
+      "sha256": "93b5d13d0225bcebda8acacd7b488f230843a202843d1b107ab4e7fa9674170b"
+    },
+    {
+      "id": "E076",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/cp058-snapshot/docs/evidence/auth-profile/README.md",
+      "bytes": 6034,
+      "sha256": "81a2b542a7e3d61dca7a3f9b6e4ef1fe1aa44383d7894e860b5aa591e5498bb0"
+    },
+    {
+      "id": "E077",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/cp058-snapshot/docs/evidence/auth-profile/field-shape.json",
+      "bytes": 8965,
+      "sha256": "d0fb21b7b646ed68cf12b82c7100c07bf701c8ec5b706399af5525a96dcce266"
+    },
+    {
+      "id": "E078",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/cp058-snapshot/docs/evidence/start-reply/README.md",
+      "bytes": 6343,
+      "sha256": "bf2918c868393be37eb9436d6eb10b7c2bbe084cde81c931f9f560324a2c3d2b"
+    },
+    {
+      "id": "E079",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/cp058-snapshot/docs/features.json",
+      "bytes": 69730,
+      "sha256": "bcb687f752ff6d1bd959f1897570cf24b78fecb935c35f369877d4ec43bbc2e3"
+    },
+    {
+      "id": "E080",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/cp058-snapshot/server/README.md",
+      "bytes": 10072,
+      "sha256": "b39e5d8ea12daf69d864722e04393261469b1872c0995270b823f31cb17bfca5"
+    },
+    {
+      "id": "E081",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/cp058-snapshot/tools/export_probe_profile.py",
+      "bytes": 4191,
+      "sha256": "726fb82760fba3f885575ca136a51bc0d34f0099d65bb15f05b9c0f0f833f214"
+    },
+    {
+      "id": "E082",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/runtime-source/item_claims.py",
+      "bytes": 3340,
+      "sha256": "7990ae9195e9f8bba56b04101f352506194dbd0252793183993ce101a8674a2e"
+    },
+    {
+      "id": "E083",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/runtime-source/probe_codec.py",
+      "bytes": 3227,
+      "sha256": "23ba54e6940953a52ff737e7e06b2761a8eb22eab444310b49b1d96efa12411d"
+    },
+    {
+      "id": "E084",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/runtime-source/probe_room.py",
+      "bytes": 1468,
+      "sha256": "91292494d492c7851bd5432649adf528e1b07290316dc56ba1478f8a209a08bc"
+    },
+    {
+      "id": "E085",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/runtime-source/probe_service.py",
+      "bytes": 32828,
+      "sha256": "eb19710037db3886050b5769ff733b6cb9768e3cba51bf9eccb8a9ef269967f2"
+    },
+    {
+      "id": "E086",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/runtime-source/round_fence.py",
+      "bytes": 2339,
+      "sha256": "aabcc7f1d623573fc217de8df05403f83d82425bbe5d6e78872b3096a2d46708"
+    },
+    {
+      "id": "E087",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/runtime-source/udp_round_keys.py",
+      "bytes": 1187,
+      "sha256": "db58ae1f25bcbeb52c2d25c7db6afbf1021ddd3af29702e756f5f41886530a0d"
+    },
+    {
+      "id": "E088",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/ida/extra-consumer-launcher.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "E089",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/ida/extra-consumer.json",
+      "bytes": 6839,
+      "sha256": "de5899c56ebd1328d4b94bd340d58c059784b9766c40f7a9516a74a0b0ec4ad0"
+    },
+    {
+      "id": "E090",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/ida/extra-consumer.log",
+      "bytes": 1631,
+      "sha256": "e0223848de0888fd6eaa1258f600771c1e8798eb5d23c7b1cbcf2b45e1b06f28"
+    },
+    {
+      "id": "E091",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/ida/extra-consumer.py",
+      "bytes": 621,
+      "sha256": "5a9f29a3887524c029d19727d56d4f86191589619a6c0d4e3ad5d46986af7ee6"
+    },
+    {
+      "id": "E092",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/ida/string-leaf-launcher.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "E093",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/ida/string-leaf.json",
+      "bytes": 4223,
+      "sha256": "67c0bbaac1eae5bda2b86b839a5891682d1e4729a3a336e772be38227483374d"
+    },
+    {
+      "id": "E094",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/ida/string-leaf.log",
+      "bytes": 1629,
+      "sha256": "460697849a4deca76c1d5a37273f4265a1a4c820c50dfde12beeb720e16800be"
+    },
+    {
+      "id": "E095",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/ida/string-leaf.py",
+      "bytes": 619,
+      "sha256": "8c02f000ba2edf01855d30a2d3e0852ec6727440ca0dcb06fbe50ff72ccc4bb3"
+    },
+    {
+      "id": "E096",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/ida/string-reader-launcher.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "E097",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/ida/string-reader.json",
+      "bytes": 1944,
+      "sha256": "8171bc5f2f56ca691baaf62eaeafe254223411588c2ef51d64b99aa535e7de97"
+    },
+    {
+      "id": "E098",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/ida/string-reader.log",
+      "bytes": 1631,
+      "sha256": "958aa4792c5b1637f0f7e6a79ca90bb05f9cb681537693648529c8e2edea96d4"
+    },
+    {
+      "id": "E099",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/ida/string-reader.py",
+      "bytes": 621,
+      "sha256": "a4cee03a4cecdce624745010cf3fce3db63ca359ada2cc3849530f80dcfb3b46"
+    },
+    {
+      "id": "E100",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/ida/success-launcher.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "E101",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/ida/success.json",
+      "bytes": 90377,
+      "sha256": "4e6bfe83705c9c1ed07e0210bb2df1f522e8f7ce4f71e3cc98947276e1f7ccf4"
+    },
+    {
+      "id": "E102",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/ida/success.log",
+      "bytes": 1625,
+      "sha256": "6417d280049e28a7a63aaea34736ef47e4b4324e22df0e0a5015262325b7a58b"
+    },
+    {
+      "id": "E103",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/ida/success.py",
+      "bytes": 615,
+      "sha256": "a5a4f2646526aecba1ae93e50e4341b5302d87603b1c8cd69aa964d32bf2fab8"
+    },
+    {
+      "id": "E104",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/ida/tail-consumer-launcher.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "E105",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/ida/tail-consumer.json",
+      "bytes": 651,
+      "sha256": "18552f1f28e10ef63ab5507f51cd57b9c318419e03fe1c9f4a008b35c67a4310"
+    },
+    {
+      "id": "E106",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/ida/tail-consumer.log",
+      "bytes": 1631,
+      "sha256": "2310485553b4a8797e9979547749288f974e0fc2d98c22348ea660eb88e954ed"
+    },
+    {
+      "id": "E107",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/ida/tail-consumer.py",
+      "bytes": 621,
+      "sha256": "2639e5a417ace7cb1a1733820b24d3e04fed742d9bda895a766a24b77f37b30f"
+    },
+    {
+      "id": "E108",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/ida/tail-leaf-launcher.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "E109",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/ida/tail-leaf.json",
+      "bytes": 10062,
+      "sha256": "e1cf219eb530593ea6248e77c2a8cf1dedd3209374273b505b5d3e30241a06cb"
+    },
+    {
+      "id": "E110",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/ida/tail-leaf.log",
+      "bytes": 1627,
+      "sha256": "03dc569dbec3a92c1845ba302f305f1b958ed2457c0eeb633ca684788aeb28aa"
+    },
+    {
+      "id": "E111",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/ida/tail-leaf.py",
+      "bytes": 617,
+      "sha256": "0556fc89f8f03eeeb5ad63b891d00c972a610b08e28e1ac95f2b1c2b438f2f43"
+    },
+    {
+      "id": "E112",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/derived/auth-final-A/run.json",
+      "bytes": 68355,
+      "sha256": "8b5c21e8aacbf7c65927ffb41dc1fc089f7c2ba4c65ba41625c59b31225a3f97"
+    },
+    {
+      "id": "E113",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/derived/auth-final-A-oracle.json",
+      "bytes": 134860,
+      "sha256": "9644ff4ea6c06628e21ad112c10c6dceb8f0a4893a8a352317b380113860b17d"
+    },
+    {
+      "id": "E114",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/derived/auth-final-A-replay.txt",
+      "bytes": 2228,
+      "sha256": "8c226f7b664ac70e2db9cbaea694e17d7332e5530dd328c74b429db55c9d867a"
+    },
+    {
+      "id": "E115",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/derived/auth-final-B/run.json",
+      "bytes": 64765,
+      "sha256": "a4c05cfcfc891c745d5c26401df65a9268c8cbac8456abca62dce7ca0e2873ac"
+    },
+    {
+      "id": "E116",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/derived/auth-final-B-oracle.json",
+      "bytes": 129240,
+      "sha256": "62b3524478c078d2b97de07ba221253510cd387f6346a086b87cd497a3c3fe08"
+    },
+    {
+      "id": "E117",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/derived/auth-final-B-replay.txt",
+      "bytes": 2140,
+      "sha256": "1ec51a07d7923c7d49eb7f47dc7db03e99da5b027f5dca58e67e79edbd064d84"
+    },
+    {
+      "id": "E118",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/derived/auth-full-A/run.json",
+      "bytes": 67739,
+      "sha256": "ee8bbdaede73cff6ba7908d95b42f0d83403866048af5a2e7b0c6e3a33b2c759"
+    },
+    {
+      "id": "E119",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/derived/auth-full-A-oracle.json",
+      "bytes": 136310,
+      "sha256": "206d72053500f877c232c649805aefad0c3466ad6619f4165b432bb1a4866acd"
+    },
+    {
+      "id": "E120",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/derived/auth-full-A-replay.txt",
+      "bytes": 2249,
+      "sha256": "f28f4dffd44d10bb1bc0d448bbf26fc1fac342ad8294158927e436037e9249e4"
+    },
+    {
+      "id": "E121",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/derived/auth-full-B/run.json",
+      "bytes": 62643,
+      "sha256": "d6cd0ddc1a3fb254edb87115fe29f49709d962e55ef13e69d909ea468c8a7089"
+    },
+    {
+      "id": "E122",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/derived/auth-full-B-oracle.json",
+      "bytes": 124520,
+      "sha256": "b8d7e85564b64f3a997641892a3409b9c232d73b29c66b2030be13349d7ef7f7"
+    },
+    {
+      "id": "E123",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/derived/auth-full-B-replay.txt",
+      "bytes": 2069,
+      "sha256": "644b68c2a521bd67f4483cd6c36fdff43dde49be7903410714960fade0bd2195"
+    },
+    {
+      "id": "E124",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/derived/auth-short-A/run.json",
+      "bytes": 68683,
+      "sha256": "f82a11dfef7abb3bcfd7f3915b14dc39bb812039b8a476baffd3219f32d4f3f5"
+    },
+    {
+      "id": "E125",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/derived/auth-short-A-oracle.json",
+      "bytes": 136051,
+      "sha256": "9270ca2880bb3b3c39fd77680e23dcaf910ed2075dd9e1f7c5e0057aec2083f2"
+    },
+    {
+      "id": "E126",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/derived/auth-short-A-replay.txt",
+      "bytes": 2251,
+      "sha256": "74856cca9068b3f3910f5f44b9d06c134196a39d7715a82921570e86ed70d1a1"
+    },
+    {
+      "id": "E127",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/derived/auth-short-B/run.json",
+      "bytes": 64747,
+      "sha256": "8e33656d2d8aeaa4beeb98c2751b9defae669c5ef796f3cbdb74dea14086336d"
+    },
+    {
+      "id": "E128",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/derived/auth-short-B-oracle.json",
+      "bytes": 127799,
+      "sha256": "18aadf95a47ce535d635136a9dcfbade45c7306aaeb38ca8f623a35c6d0b2e2b"
+    },
+    {
+      "id": "E129",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/derived/auth-short-B-replay.txt",
+      "bytes": 2118,
+      "sha256": "ab992b4efd3bd14afcb89e5fa45dad256cbb6101a8f16f3d1896952430a6bb9b"
+    },
+    {
+      "id": "E130",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/derived/auth-tail-A/run.json",
+      "bytes": 34383,
+      "sha256": "064074655b6d8fc6a0c94e4f376d390f14c92e222d982073a166b0e68934e167"
+    },
+    {
+      "id": "E131",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/derived/auth-tail-A-oracle.json",
+      "bytes": 93551,
+      "sha256": "147d43c33242accaac1cc38ced5ae41bc660a6ed070425dc928b741ba0e790f5"
+    },
+    {
+      "id": "E132",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/derived/auth-tail-A-replay.txt",
+      "bytes": 1557,
+      "sha256": "6bf80d8b84e39f5c56a5d9e20fd94abebc097b66af3d9bdbaab043dd8fa35430"
+    },
+    {
+      "id": "E133",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/derived/auth-tail-B/run.json",
+      "bytes": 32778,
+      "sha256": "94f85e2b464b0069ccd294eaee18d2040e04a5d70c7cf8d6f1479ace7aa8df9f"
+    },
+    {
+      "id": "E134",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/derived/auth-tail-B-oracle.json",
+      "bytes": 81418,
+      "sha256": "77a4c7122cb0cd1fb957084d3b1ba908853aecaa7fdc681d08e6441581690683"
+    },
+    {
+      "id": "E135",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/derived/auth-tail-B-replay.txt",
+      "bytes": 1360,
+      "sha256": "6de38ba8037f5e55b0d874d1b3037ee2da26b414f913e00e39714557dbac4044"
+    },
+    {
+      "id": "E136",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/cache-before-final/A/channel2_000.ssd",
+      "bytes": 38,
+      "sha256": "522390e144106a04b6aca885f232e3ab43aad4555cf1385f04eacc7303124852"
+    },
+    {
+      "id": "E137",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/cache-before-final/A/channel2_001.ssd",
+      "bytes": 323,
+      "sha256": "4e193db600bbc2f6b2a8f00d7c51590ef79dec274356c470a297272f10552df2"
+    },
+    {
+      "id": "E138",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/cache-before-final/A/fxdynimginfo.ssd",
+      "bytes": 105,
+      "sha256": "49594ffd72d495a8a4420e2a0aa7e4f8fe8be318967469dee0517df765516a6b"
+    },
+    {
+      "id": "E139",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/cache-before-final/A/fxdynmapinfo.ssd",
+      "bytes": 76,
+      "sha256": "6a4745c6010378a50ab4bf34827bbe122d7eb270c78051391cd21bd7378b1053"
+    },
+    {
+      "id": "E140",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/cache-before-final/A/multisvr.ssd",
+      "bytes": 372,
+      "sha256": "effc1139f198117a7a112fc95befe44da0d0b0a787e8004f6c48243f8afbd086"
+    },
+    {
+      "id": "E141",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/cache-before-final/B/channel2_000.ssd",
+      "bytes": 38,
+      "sha256": "522390e144106a04b6aca885f232e3ab43aad4555cf1385f04eacc7303124852"
+    },
+    {
+      "id": "E142",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/cache-before-final/B/channel2_001.ssd",
+      "bytes": 323,
+      "sha256": "4e193db600bbc2f6b2a8f00d7c51590ef79dec274356c470a297272f10552df2"
+    },
+    {
+      "id": "E143",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/cache-before-final/B/fxdynimginfo.ssd",
+      "bytes": 105,
+      "sha256": "49594ffd72d495a8a4420e2a0aa7e4f8fe8be318967469dee0517df765516a6b"
+    },
+    {
+      "id": "E144",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/cache-before-final/B/fxdynmapinfo.ssd",
+      "bytes": 76,
+      "sha256": "6a4745c6010378a50ab4bf34827bbe122d7eb270c78051391cd21bd7378b1053"
+    },
+    {
+      "id": "E145",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/cache-before-final/B/multisvr.ssd",
+      "bytes": 372,
+      "sha256": "effc1139f198117a7a112fc95befe44da0d0b0a787e8004f6c48243f8afbd086"
+    },
+    {
+      "id": "E146",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/auth-short/run.json",
+      "bytes": 101737,
+      "sha256": "07dc2fe1a834db57aa72b64f21651cbc9b0977a31fb49ad65ff0d32cface03d3"
+    },
+    {
+      "id": "E147",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/auth-short/client.log",
+      "bytes": 69699,
+      "sha256": "4d5fc56470137b8f9fd65758bc65765002463e219a0bb79c1070c65fc096b2ff"
+    },
+    {
+      "id": "E148",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/auth-short/client-B.log",
+      "bytes": 80214,
+      "sha256": "e4b652b3e80795a92c4ac9eb7b1a3ba7b9d3f2a852c556f6369a2a5b58a57078"
+    },
+    {
+      "id": "E149",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/auth-short/debug-commands.txt",
+      "bytes": 31119,
+      "sha256": "3144a639c3c20636e6ded4b5c53ae8019ffdf5ff4588b5e14f3ef2a16bd2711e"
+    },
+    {
+      "id": "E150",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/auth-short/debug-commands-B.txt",
+      "bytes": 31119,
+      "sha256": "3144a639c3c20636e6ded4b5c53ae8019ffdf5ff4588b5e14f3ef2a16bd2711e"
+    },
+    {
+      "id": "E151",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/auth-short/service-state.json",
+      "bytes": 104145,
+      "sha256": "3238400191467af9c849220847a7a0cfa10069b28d14e3cf83acb8009e7e1942"
+    },
+    {
+      "id": "E152",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/auth-short/A-blast158-r1-1-94.bin",
+      "bytes": 51,
+      "sha256": "31e41726c0deaa834ef2fa20813c84199f3f94023a8f3b7d0f64f9d5241eede1"
+    },
+    {
+      "id": "E153",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/auth-short/A-dynamic159-r1-1-91.bin",
+      "bytes": 77,
+      "sha256": "ce45fc947aabc22d29d1361e7f576818a1665b9a9f617af2c2cec7116d89591e"
+    },
+    {
+      "id": "E154",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/auth-short/A-dynamic159-r2-2-130.bin",
+      "bytes": 77,
+      "sha256": "c2abd74a35c7666efa73b5ca95bac09867b2a6ec0a014481e0545cb82159d1d9"
+    },
+    {
+      "id": "E155",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/auth-short/A-floor582-112.bin",
+      "bytes": 64,
+      "sha256": "956a562107a3853c400511f576ac75e95df99fc17551d1b2b11b2f017bd8bc5a"
+    },
+    {
+      "id": "E156",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/auth-short/A-floor582-76.bin",
+      "bytes": 64,
+      "sha256": "dade68ac6b12c8c7ae59bf27d007ad4f1b32b6369d9a0fcd29170b3063e42ace"
+    },
+    {
+      "id": "E157",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/auth-short/A-go197-118.bin",
+      "bytes": 52,
+      "sha256": "aa70380f2f8ac732b32002b998ecd874353865d9e3853102c01a72d06b327970"
+    },
+    {
+      "id": "E158",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/auth-short/A-go197-82.bin",
+      "bytes": 52,
+      "sha256": "64b95010ecb0e40bc0367f41f6710d2357fb2538ce827e205825284601237ef8"
+    },
+    {
+      "id": "E159",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/auth-short/A-guest110-r1-106.bin",
+      "bytes": 44,
+      "sha256": "34aa966e0eef0cee7af15360322ee98baf2f023eb2b8528674b6115d7889a313"
+    },
+    {
+      "id": "E160",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/auth-short/A-host110-r1-103.bin",
+      "bytes": 44,
+      "sha256": "f8c269431038bc985afb79961f89b6e2509d0829ed8046e397aa5acfb962c596"
+    },
+    {
+      "id": "E161",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/auth-short/A-item165-r2-17-127.bin",
+      "bytes": 50,
+      "sha256": "57205d0248db95f454bebb2a464bac816912b4615dca4bff2d8c2d8473f6fe32"
+    },
+    {
+      "id": "E162",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/auth-short/A-peer153-124.bin",
+      "bytes": 135,
+      "sha256": "3f2f6799cc7c82ba2cfdc8d6ae5ff86aefc73f1a523710e2ac74e0647c55a6f6"
+    },
+    {
+      "id": "E163",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/auth-short/A-peer153-88.bin",
+      "bytes": 135,
+      "sha256": "cac9932e0d79a2a5904a0b1c3f7e0e1791b44b0867c1aa4d96959ef388da60d7"
+    },
+    {
+      "id": "E164",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/auth-short/A-play196-121.bin",
+      "bytes": 45,
+      "sha256": "c36a9aaa4674958645f4db690772261f39607eb5fb712a80827259d710da962d"
+    },
+    {
+      "id": "E165",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/auth-short/A-play196-85.bin",
+      "bytes": 45,
+      "sha256": "d04bf155b4847f9d41b0edfdf00a32526302273271c0f1cadbb8ce22b89eb51d"
+    },
+    {
+      "id": "E166",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/auth-short/A-rank175-r1-97.bin",
+      "bytes": 340,
+      "sha256": "6be30231b79508f47dfe49eaf4b8d6c1fe69ae1e8976654096d7eb50ae1f47f7"
+    },
+    {
+      "id": "E167",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/auth-short/A-ready110-109.bin",
+      "bytes": 44,
+      "sha256": "d61e0dec5dd42f6d9359359420df2fed9723478d5554aebb09cb7fa7d9ca1754"
+    },
+    {
+      "id": "E168",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/auth-short/A-ready110-73.bin",
+      "bytes": 44,
+      "sha256": "8fafd9cf652b458ee09b3751a0201f9ab1409920398e0e842e43b915c8840e25"
+    },
+    {
+      "id": "E169",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/auth-short/A-return180-r1-100.bin",
+      "bytes": 41,
+      "sha256": "1560d1178af0e8cea05c74affdc46a79d86c425250a71210b94da25e4073df4a"
+    },
+    {
+      "id": "E170",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/auth-short/A-start121-r1-79.bin",
+      "bytes": 167,
+      "sha256": "f8a824335b4079160a4aaf0e0b425d1fabfa78c248d131503440d0414e1f26cf"
+    },
+    {
+      "id": "E171",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/auth-short/A-start121-r2-115.bin",
+      "bytes": 167,
+      "sha256": "2c2f633223459f50f3c83b215e3438d816637d3fcedf6adc5177f166c3f45901"
+    },
+    {
+      "id": "E172",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/auth-short/B-blast158-r1-1-94.bin",
+      "bytes": 51,
+      "sha256": "31e41726c0deaa834ef2fa20813c84199f3f94023a8f3b7d0f64f9d5241eede1"
+    },
+    {
+      "id": "E173",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/auth-short/B-dynamic159-r1-1-91.bin",
+      "bytes": 77,
+      "sha256": "ce45fc947aabc22d29d1361e7f576818a1665b9a9f617af2c2cec7116d89591e"
+    },
+    {
+      "id": "E174",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/auth-short/B-dynamic159-r2-2-136.bin",
+      "bytes": 77,
+      "sha256": "6bb4fb199a28c45fbaf81fdd0591aa3284c2d65845872ddb08c5689787cbc21c"
+    },
+    {
+      "id": "E175",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/auth-short/B-event170-17-r1-97.bin",
+      "bytes": 48,
+      "sha256": "02b5985a867bc19e3bb91236bc8816d3f6f25bc4f8c5f7bddba4579c9a56e15b"
+    },
+    {
+      "id": "E176",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/auth-short/B-event170-19-r1-100.bin",
+      "bytes": 59,
+      "sha256": "bd8bf772c0329942ba758585caf140131b8b59be9138cb03a2c34fd4d1ba22b3"
+    },
+    {
+      "id": "E177",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/auth-short/B-floor582-118.bin",
+      "bytes": 64,
+      "sha256": "6b74dc5c6cb1f1e0e68452aeb761534637bdc8138fe0bd9ba3feadd75372d040"
+    },
+    {
+      "id": "E178",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/auth-short/B-floor582-76.bin",
+      "bytes": 64,
+      "sha256": "dade68ac6b12c8c7ae59bf27d007ad4f1b32b6369d9a0fcd29170b3063e42ace"
+    },
+    {
+      "id": "E179",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/auth-short/B-go197-124.bin",
+      "bytes": 52,
+      "sha256": "94f616295ccb42b1d65f119531b5965ade54edc4e9034b76dbf7c2d89697e0e9"
+    },
+    {
+      "id": "E180",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/auth-short/B-go197-82.bin",
+      "bytes": 52,
+      "sha256": "64b95010ecb0e40bc0367f41f6710d2357fb2538ce827e205825284601237ef8"
+    },
+    {
+      "id": "E181",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/auth-short/B-guest110-r1-112.bin",
+      "bytes": 44,
+      "sha256": "5459dc7d1e715e0523e24981ce67a04e72b6949c2274e3cc6b7577cf62fe6a9d"
+    },
+    {
+      "id": "E182",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/auth-short/B-host110-r1-109.bin",
+      "bytes": 44,
+      "sha256": "1464734628e1b0aa271c48a50c2ed3ceb0fb0d4ba99dac113b20b2ea74dc0d7e"
+    },
+    {
+      "id": "E183",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/auth-short/B-item165-r2-17-133.bin",
+      "bytes": 50,
+      "sha256": "88436f73200bca25c50e3254e24b9e99209ad66bdb326f6c4f60a238a6035caa"
+    },
+    {
+      "id": "E184",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/auth-short/B-peer153-130.bin",
+      "bytes": 135,
+      "sha256": "16d8912c761eded8c26db933f476fa41aff1df3b06e826b795957ffbc73130e4"
+    },
+    {
+      "id": "E185",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/auth-short/B-peer153-88.bin",
+      "bytes": 135,
+      "sha256": "539d0bb812c8ea197167688fb4bfbcc1dd95b8ced8d42863f456c9282c7110cc"
+    },
+    {
+      "id": "E186",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/auth-short/B-play196-127.bin",
+      "bytes": 45,
+      "sha256": "010276ee96d43eb798c4cbd8f0d661c416e8d7faa30a083f459303b635c75c2f"
+    },
+    {
+      "id": "E187",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/auth-short/B-play196-85.bin",
+      "bytes": 45,
+      "sha256": "d04bf155b4847f9d41b0edfdf00a32526302273271c0f1cadbb8ce22b89eb51d"
+    },
+    {
+      "id": "E188",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/auth-short/B-rank175-r1-103.bin",
+      "bytes": 340,
+      "sha256": "8f755c898994d478f38d2b807ece591b2ad2d1da7c950eba60859a5e338aa315"
+    },
+    {
+      "id": "E189",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/auth-short/B-ready110-115.bin",
+      "bytes": 44,
+      "sha256": "71ab3449f204c7354574438ac4952909165942f1abaf832f65a4463c57f8a476"
+    },
+    {
+      "id": "E190",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/auth-short/B-ready110-73.bin",
+      "bytes": 44,
+      "sha256": "8fafd9cf652b458ee09b3751a0201f9ab1409920398e0e842e43b915c8840e25"
+    },
+    {
+      "id": "E191",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/auth-short/B-return180-r1-106.bin",
+      "bytes": 41,
+      "sha256": "6a49bc7222df4957e03d3ebe2382217d1988daab1844150f76558baf634da81b"
+    },
+    {
+      "id": "E192",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/auth-short/B-start121-r1-79.bin",
+      "bytes": 167,
+      "sha256": "f8a824335b4079160a4aaf0e0b425d1fabfa78c248d131503440d0414e1f26cf"
+    },
+    {
+      "id": "E193",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/auth-short/B-start121-r2-121.bin",
+      "bytes": 167,
+      "sha256": "90884970c6bbda9491a5a3408cea9f6d47a3b1e0019b1aefd6d83b2764810fec"
+    },
+    {
+      "id": "E194",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/auth-full/run.json",
+      "bytes": 99868,
+      "sha256": "9c8261dcfec1c2d88d7dc08c08c65cc56928955da2b6b928b969c563c1e90274"
+    },
+    {
+      "id": "E195",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/auth-full/client.log",
+      "bytes": 72779,
+      "sha256": "557d46a9680ed1de2b0210a10cd686fe19643fea04b22ee41ef77c1b4593d66b"
+    },
+    {
+      "id": "E196",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/auth-full/client-B.log",
+      "bytes": 80655,
+      "sha256": "2a6dec00bfe96f9373da534dc38ce6032624a5551ef2c1f4f375f70ed5faabb1"
+    },
+    {
+      "id": "E197",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/auth-full/debug-commands.txt",
+      "bytes": 31119,
+      "sha256": "3144a639c3c20636e6ded4b5c53ae8019ffdf5ff4588b5e14f3ef2a16bd2711e"
+    },
+    {
+      "id": "E198",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/auth-full/debug-commands-B.txt",
+      "bytes": 31119,
+      "sha256": "3144a639c3c20636e6ded4b5c53ae8019ffdf5ff4588b5e14f3ef2a16bd2711e"
+    },
+    {
+      "id": "E199",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/auth-full/service-state.json",
+      "bytes": 102180,
+      "sha256": "7fe316d2ac9293e4f5ffac0f5241ecd0989120b4d5033d9cd99798d16e363492"
+    },
+    {
+      "id": "E200",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/auth-full/A-blast158-r1-1-94.bin",
+      "bytes": 51,
+      "sha256": "31e41726c0deaa834ef2fa20813c84199f3f94023a8f3b7d0f64f9d5241eede1"
+    },
+    {
+      "id": "E201",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/auth-full/A-dynamic159-r1-1-91.bin",
+      "bytes": 77,
+      "sha256": "ce45fc947aabc22d29d1361e7f576818a1665b9a9f617af2c2cec7116d89591e"
+    },
+    {
+      "id": "E202",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/auth-full/A-dynamic159-r2-2-130.bin",
+      "bytes": 77,
+      "sha256": "c2abd74a35c7666efa73b5ca95bac09867b2a6ec0a014481e0545cb82159d1d9"
+    },
+    {
+      "id": "E203",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/auth-full/A-floor582-112.bin",
+      "bytes": 64,
+      "sha256": "956a562107a3853c400511f576ac75e95df99fc17551d1b2b11b2f017bd8bc5a"
+    },
+    {
+      "id": "E204",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/auth-full/A-floor582-76.bin",
+      "bytes": 64,
+      "sha256": "dade68ac6b12c8c7ae59bf27d007ad4f1b32b6369d9a0fcd29170b3063e42ace"
+    },
+    {
+      "id": "E205",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/auth-full/A-go197-118.bin",
+      "bytes": 52,
+      "sha256": "aa70380f2f8ac732b32002b998ecd874353865d9e3853102c01a72d06b327970"
+    },
+    {
+      "id": "E206",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/auth-full/A-go197-82.bin",
+      "bytes": 52,
+      "sha256": "64b95010ecb0e40bc0367f41f6710d2357fb2538ce827e205825284601237ef8"
+    },
+    {
+      "id": "E207",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/auth-full/A-guest110-r1-106.bin",
+      "bytes": 44,
+      "sha256": "34aa966e0eef0cee7af15360322ee98baf2f023eb2b8528674b6115d7889a313"
+    },
+    {
+      "id": "E208",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/auth-full/A-host110-r1-103.bin",
+      "bytes": 44,
+      "sha256": "f8c269431038bc985afb79961f89b6e2509d0829ed8046e397aa5acfb962c596"
+    },
+    {
+      "id": "E209",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/auth-full/A-item165-r2-17-127.bin",
+      "bytes": 50,
+      "sha256": "57205d0248db95f454bebb2a464bac816912b4615dca4bff2d8c2d8473f6fe32"
+    },
+    {
+      "id": "E210",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/auth-full/A-peer153-124.bin",
+      "bytes": 135,
+      "sha256": "127030d23f8dc6b8f3ee711f97dcc75aa88afc49a29026911acb0bdb5cf4c759"
+    },
+    {
+      "id": "E211",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/auth-full/A-peer153-88.bin",
+      "bytes": 135,
+      "sha256": "fee80d9fb5d9322f56e9c9fa417a2bfe83ce3653d2e82cd72d99aa0de6e74260"
+    },
+    {
+      "id": "E212",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/auth-full/A-play196-121.bin",
+      "bytes": 45,
+      "sha256": "c36a9aaa4674958645f4db690772261f39607eb5fb712a80827259d710da962d"
+    },
+    {
+      "id": "E213",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/auth-full/A-play196-85.bin",
+      "bytes": 45,
+      "sha256": "d04bf155b4847f9d41b0edfdf00a32526302273271c0f1cadbb8ce22b89eb51d"
+    },
+    {
+      "id": "E214",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/auth-full/A-rank175-r1-97.bin",
+      "bytes": 340,
+      "sha256": "6be30231b79508f47dfe49eaf4b8d6c1fe69ae1e8976654096d7eb50ae1f47f7"
+    },
+    {
+      "id": "E215",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/auth-full/A-ready110-109.bin",
+      "bytes": 44,
+      "sha256": "d61e0dec5dd42f6d9359359420df2fed9723478d5554aebb09cb7fa7d9ca1754"
+    },
+    {
+      "id": "E216",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/auth-full/A-ready110-73.bin",
+      "bytes": 44,
+      "sha256": "8fafd9cf652b458ee09b3751a0201f9ab1409920398e0e842e43b915c8840e25"
+    },
+    {
+      "id": "E217",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/auth-full/A-return180-r1-100.bin",
+      "bytes": 41,
+      "sha256": "1560d1178af0e8cea05c74affdc46a79d86c425250a71210b94da25e4073df4a"
+    },
+    {
+      "id": "E218",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/auth-full/A-start121-r1-79.bin",
+      "bytes": 167,
+      "sha256": "f8a824335b4079160a4aaf0e0b425d1fabfa78c248d131503440d0414e1f26cf"
+    },
+    {
+      "id": "E219",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/auth-full/A-start121-r2-115.bin",
+      "bytes": 167,
+      "sha256": "2c2f633223459f50f3c83b215e3438d816637d3fcedf6adc5177f166c3f45901"
+    },
+    {
+      "id": "E220",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/auth-full/B-blast158-r1-1-94.bin",
+      "bytes": 51,
+      "sha256": "31e41726c0deaa834ef2fa20813c84199f3f94023a8f3b7d0f64f9d5241eede1"
+    },
+    {
+      "id": "E221",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/auth-full/B-dynamic159-r1-1-91.bin",
+      "bytes": 77,
+      "sha256": "ce45fc947aabc22d29d1361e7f576818a1665b9a9f617af2c2cec7116d89591e"
+    },
+    {
+      "id": "E222",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/auth-full/B-dynamic159-r2-2-136.bin",
+      "bytes": 77,
+      "sha256": "6bb4fb199a28c45fbaf81fdd0591aa3284c2d65845872ddb08c5689787cbc21c"
+    },
+    {
+      "id": "E223",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/auth-full/B-event170-17-r1-97.bin",
+      "bytes": 48,
+      "sha256": "02b5985a867bc19e3bb91236bc8816d3f6f25bc4f8c5f7bddba4579c9a56e15b"
+    },
+    {
+      "id": "E224",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/auth-full/B-event170-19-r1-100.bin",
+      "bytes": 59,
+      "sha256": "bd8bf772c0329942ba758585caf140131b8b59be9138cb03a2c34fd4d1ba22b3"
+    },
+    {
+      "id": "E225",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/auth-full/B-floor582-118.bin",
+      "bytes": 64,
+      "sha256": "6b74dc5c6cb1f1e0e68452aeb761534637bdc8138fe0bd9ba3feadd75372d040"
+    },
+    {
+      "id": "E226",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/auth-full/B-floor582-76.bin",
+      "bytes": 64,
+      "sha256": "dade68ac6b12c8c7ae59bf27d007ad4f1b32b6369d9a0fcd29170b3063e42ace"
+    },
+    {
+      "id": "E227",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/auth-full/B-go197-124.bin",
+      "bytes": 52,
+      "sha256": "94f616295ccb42b1d65f119531b5965ade54edc4e9034b76dbf7c2d89697e0e9"
+    },
+    {
+      "id": "E228",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/auth-full/B-go197-82.bin",
+      "bytes": 52,
+      "sha256": "64b95010ecb0e40bc0367f41f6710d2357fb2538ce827e205825284601237ef8"
+    },
+    {
+      "id": "E229",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/auth-full/B-guest110-r1-112.bin",
+      "bytes": 44,
+      "sha256": "5459dc7d1e715e0523e24981ce67a04e72b6949c2274e3cc6b7577cf62fe6a9d"
+    },
+    {
+      "id": "E230",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/auth-full/B-host110-r1-109.bin",
+      "bytes": 44,
+      "sha256": "1464734628e1b0aa271c48a50c2ed3ceb0fb0d4ba99dac113b20b2ea74dc0d7e"
+    },
+    {
+      "id": "E231",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/auth-full/B-item165-r2-17-133.bin",
+      "bytes": 50,
+      "sha256": "88436f73200bca25c50e3254e24b9e99209ad66bdb326f6c4f60a238a6035caa"
+    },
+    {
+      "id": "E232",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/auth-full/B-peer153-130.bin",
+      "bytes": 135,
+      "sha256": "d9c26cb99ac64a393686836de953c3908f578111344e0be4eb1e58914a32e2e9"
+    },
+    {
+      "id": "E233",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/auth-full/B-peer153-88.bin",
+      "bytes": 135,
+      "sha256": "a3a9098ae33e75483c5d2423ee113808a62485f32d785b88061683f64d3fa956"
+    },
+    {
+      "id": "E234",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/auth-full/B-play196-127.bin",
+      "bytes": 45,
+      "sha256": "010276ee96d43eb798c4cbd8f0d661c416e8d7faa30a083f459303b635c75c2f"
+    },
+    {
+      "id": "E235",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/auth-full/B-play196-85.bin",
+      "bytes": 45,
+      "sha256": "d04bf155b4847f9d41b0edfdf00a32526302273271c0f1cadbb8ce22b89eb51d"
+    },
+    {
+      "id": "E236",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/auth-full/B-rank175-r1-103.bin",
+      "bytes": 340,
+      "sha256": "8f755c898994d478f38d2b807ece591b2ad2d1da7c950eba60859a5e338aa315"
+    },
+    {
+      "id": "E237",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/auth-full/B-ready110-115.bin",
+      "bytes": 44,
+      "sha256": "71ab3449f204c7354574438ac4952909165942f1abaf832f65a4463c57f8a476"
+    },
+    {
+      "id": "E238",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/auth-full/B-ready110-73.bin",
+      "bytes": 44,
+      "sha256": "8fafd9cf652b458ee09b3751a0201f9ab1409920398e0e842e43b915c8840e25"
+    },
+    {
+      "id": "E239",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/auth-full/B-return180-r1-106.bin",
+      "bytes": 41,
+      "sha256": "6a49bc7222df4957e03d3ebe2382217d1988daab1844150f76558baf634da81b"
+    },
+    {
+      "id": "E240",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/auth-full/B-start121-r1-79.bin",
+      "bytes": 167,
+      "sha256": "f8a824335b4079160a4aaf0e0b425d1fabfa78c248d131503440d0414e1f26cf"
+    },
+    {
+      "id": "E241",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/auth-full/B-start121-r2-121.bin",
+      "bytes": 167,
+      "sha256": "90884970c6bbda9491a5a3408cea9f6d47a3b1e0019b1aefd6d83b2764810fec"
+    },
+    {
+      "id": "E242",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/auth-tail/run.json",
+      "bytes": 53176,
+      "sha256": "c07df71a7ce1148d1e38142e9ac2cc3c8b711791ae4b3bd3ef496768d74d843f"
+    },
+    {
+      "id": "E243",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/auth-tail/client.log",
+      "bytes": 35662,
+      "sha256": "9281b9a86bae486f14405446853b0d3405d22aafa49ff275562876576568d79e"
+    },
+    {
+      "id": "E244",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/auth-tail/client-B.log",
+      "bytes": 37049,
+      "sha256": "bdf78887e7acb603316faa216cbbb503d1856ab10176273ba19f200533d32f45"
+    },
+    {
+      "id": "E245",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/auth-tail/debug-commands.txt",
+      "bytes": 30567,
+      "sha256": "9e6c75e1b9aba42fc3c0b67ccc882cf53bc94e0e971ac02ae4c2febd92636a6e"
+    },
+    {
+      "id": "E246",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/auth-tail/debug-commands-B.txt",
+      "bytes": 30567,
+      "sha256": "9e6c75e1b9aba42fc3c0b67ccc882cf53bc94e0e971ac02ae4c2febd92636a6e"
+    },
+    {
+      "id": "E247",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/auth-tail/service-state.json",
+      "bytes": 55912,
+      "sha256": "d8ef469fe5c411ad137cd6c3e0c64be3e96ab788cf525616ae9e15d08dce304c"
+    },
+    {
+      "id": "E248",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/auth-tail/A-floor582-76.bin",
+      "bytes": 64,
+      "sha256": "dade68ac6b12c8c7ae59bf27d007ad4f1b32b6369d9a0fcd29170b3063e42ace"
+    },
+    {
+      "id": "E249",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/auth-tail/A-go197-82.bin",
+      "bytes": 52,
+      "sha256": "64b95010ecb0e40bc0367f41f6710d2357fb2538ce827e205825284601237ef8"
+    },
+    {
+      "id": "E250",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/auth-tail/A-peer153-88.bin",
+      "bytes": 135,
+      "sha256": "3862cf91c0af6c453455740b7a18b77b8228b9312fee7ee494b182ed3d64f02f"
+    },
+    {
+      "id": "E251",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/auth-tail/A-play196-85.bin",
+      "bytes": 45,
+      "sha256": "d04bf155b4847f9d41b0edfdf00a32526302273271c0f1cadbb8ce22b89eb51d"
+    },
+    {
+      "id": "E252",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/auth-tail/A-ready110-73.bin",
+      "bytes": 44,
+      "sha256": "8fafd9cf652b458ee09b3751a0201f9ab1409920398e0e842e43b915c8840e25"
+    },
+    {
+      "id": "E253",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/auth-tail/A-start121-r1-79.bin",
+      "bytes": 167,
+      "sha256": "f8a824335b4079160a4aaf0e0b425d1fabfa78c248d131503440d0414e1f26cf"
+    },
+    {
+      "id": "E254",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/auth-tail/B-floor582-76.bin",
+      "bytes": 64,
+      "sha256": "dade68ac6b12c8c7ae59bf27d007ad4f1b32b6369d9a0fcd29170b3063e42ace"
+    },
+    {
+      "id": "E255",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/auth-tail/B-go197-82.bin",
+      "bytes": 52,
+      "sha256": "64b95010ecb0e40bc0367f41f6710d2357fb2538ce827e205825284601237ef8"
+    },
+    {
+      "id": "E256",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/auth-tail/B-peer153-88.bin",
+      "bytes": 135,
+      "sha256": "24b0abf55eb1338e47e8a590e964e2dc5c3fe784a939bb16f14c8f43d015aa46"
+    },
+    {
+      "id": "E257",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/auth-tail/B-play196-85.bin",
+      "bytes": 45,
+      "sha256": "d04bf155b4847f9d41b0edfdf00a32526302273271c0f1cadbb8ce22b89eb51d"
+    },
+    {
+      "id": "E258",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/auth-tail/B-ready110-73.bin",
+      "bytes": 44,
+      "sha256": "8fafd9cf652b458ee09b3751a0201f9ab1409920398e0e842e43b915c8840e25"
+    },
+    {
+      "id": "E259",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/auth-tail/B-start121-r1-79.bin",
+      "bytes": 167,
+      "sha256": "f8a824335b4079160a4aaf0e0b425d1fabfa78c248d131503440d0414e1f26cf"
+    },
+    {
+      "id": "E260",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/auth-final/run.json",
+      "bytes": 101708,
+      "sha256": "d77056145360bc162508d44c87b8e3a6bd6d138ebcc31cd859357947f00a6780"
+    },
+    {
+      "id": "E261",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/auth-final/client.log",
+      "bytes": 70302,
+      "sha256": "48e4d5c52e59d7bbe4ab0ead8c433a0d3825072789a74a212720a1825d9c0da0"
+    },
+    {
+      "id": "E262",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/auth-final/client-B.log",
+      "bytes": 81332,
+      "sha256": "c0dff8e3dcf1ffd31bd8a749e64c3ff6c7e9dea7a1085ceb7f8dd8c7cd994294"
+    },
+    {
+      "id": "E263",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/auth-final/debug-commands.txt",
+      "bytes": 30567,
+      "sha256": "9e6c75e1b9aba42fc3c0b67ccc882cf53bc94e0e971ac02ae4c2febd92636a6e"
+    },
+    {
+      "id": "E264",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/auth-final/debug-commands-B.txt",
+      "bytes": 30567,
+      "sha256": "9e6c75e1b9aba42fc3c0b67ccc882cf53bc94e0e971ac02ae4c2febd92636a6e"
+    },
+    {
+      "id": "E265",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/auth-final/service-state.json",
+      "bytes": 104004,
+      "sha256": "cb0e2304bf5def7cfe8f39e35f4a0304ebfd3491e70c942d2120b306c0392fb8"
+    },
+    {
+      "id": "E266",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/auth-final/A-blast158-r1-1-94.bin",
+      "bytes": 51,
+      "sha256": "31e41726c0deaa834ef2fa20813c84199f3f94023a8f3b7d0f64f9d5241eede1"
+    },
+    {
+      "id": "E267",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/auth-final/A-dynamic159-r1-1-91.bin",
+      "bytes": 77,
+      "sha256": "ce45fc947aabc22d29d1361e7f576818a1665b9a9f617af2c2cec7116d89591e"
+    },
+    {
+      "id": "E268",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/auth-final/A-dynamic159-r2-2-130.bin",
+      "bytes": 77,
+      "sha256": "c2abd74a35c7666efa73b5ca95bac09867b2a6ec0a014481e0545cb82159d1d9"
+    },
+    {
+      "id": "E269",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/auth-final/A-floor582-112.bin",
+      "bytes": 64,
+      "sha256": "956a562107a3853c400511f576ac75e95df99fc17551d1b2b11b2f017bd8bc5a"
+    },
+    {
+      "id": "E270",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/auth-final/A-floor582-76.bin",
+      "bytes": 64,
+      "sha256": "dade68ac6b12c8c7ae59bf27d007ad4f1b32b6369d9a0fcd29170b3063e42ace"
+    },
+    {
+      "id": "E271",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/auth-final/A-go197-118.bin",
+      "bytes": 52,
+      "sha256": "aa70380f2f8ac732b32002b998ecd874353865d9e3853102c01a72d06b327970"
+    },
+    {
+      "id": "E272",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/auth-final/A-go197-82.bin",
+      "bytes": 52,
+      "sha256": "64b95010ecb0e40bc0367f41f6710d2357fb2538ce827e205825284601237ef8"
+    },
+    {
+      "id": "E273",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/auth-final/A-guest110-r1-106.bin",
+      "bytes": 44,
+      "sha256": "34aa966e0eef0cee7af15360322ee98baf2f023eb2b8528674b6115d7889a313"
+    },
+    {
+      "id": "E274",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/auth-final/A-host110-r1-103.bin",
+      "bytes": 44,
+      "sha256": "f8c269431038bc985afb79961f89b6e2509d0829ed8046e397aa5acfb962c596"
+    },
+    {
+      "id": "E275",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/auth-final/A-item165-r2-17-127.bin",
+      "bytes": 50,
+      "sha256": "57205d0248db95f454bebb2a464bac816912b4615dca4bff2d8c2d8473f6fe32"
+    },
+    {
+      "id": "E276",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/auth-final/A-peer153-124.bin",
+      "bytes": 135,
+      "sha256": "5959dea3150cb207ed5afda46e05669cb473abb36d639737a5664ec5e2d8d698"
+    },
+    {
+      "id": "E277",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/auth-final/A-peer153-88.bin",
+      "bytes": 135,
+      "sha256": "99c06467dffceceeac72c1ed457020d6639131cf59c059993cd72a095be7217d"
+    },
+    {
+      "id": "E278",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/auth-final/A-play196-121.bin",
+      "bytes": 45,
+      "sha256": "c36a9aaa4674958645f4db690772261f39607eb5fb712a80827259d710da962d"
+    },
+    {
+      "id": "E279",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/auth-final/A-play196-85.bin",
+      "bytes": 45,
+      "sha256": "d04bf155b4847f9d41b0edfdf00a32526302273271c0f1cadbb8ce22b89eb51d"
+    },
+    {
+      "id": "E280",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/auth-final/A-rank175-r1-97.bin",
+      "bytes": 340,
+      "sha256": "6be30231b79508f47dfe49eaf4b8d6c1fe69ae1e8976654096d7eb50ae1f47f7"
+    },
+    {
+      "id": "E281",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/auth-final/A-ready110-109.bin",
+      "bytes": 44,
+      "sha256": "d61e0dec5dd42f6d9359359420df2fed9723478d5554aebb09cb7fa7d9ca1754"
+    },
+    {
+      "id": "E282",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/auth-final/A-ready110-73.bin",
+      "bytes": 44,
+      "sha256": "8fafd9cf652b458ee09b3751a0201f9ab1409920398e0e842e43b915c8840e25"
+    },
+    {
+      "id": "E283",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/auth-final/A-return180-r1-100.bin",
+      "bytes": 41,
+      "sha256": "1560d1178af0e8cea05c74affdc46a79d86c425250a71210b94da25e4073df4a"
+    },
+    {
+      "id": "E284",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/auth-final/A-start121-r1-79.bin",
+      "bytes": 167,
+      "sha256": "f8a824335b4079160a4aaf0e0b425d1fabfa78c248d131503440d0414e1f26cf"
+    },
+    {
+      "id": "E285",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/auth-final/A-start121-r2-115.bin",
+      "bytes": 167,
+      "sha256": "2c2f633223459f50f3c83b215e3438d816637d3fcedf6adc5177f166c3f45901"
+    },
+    {
+      "id": "E286",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/auth-final/B-blast158-r1-1-94.bin",
+      "bytes": 51,
+      "sha256": "31e41726c0deaa834ef2fa20813c84199f3f94023a8f3b7d0f64f9d5241eede1"
+    },
+    {
+      "id": "E287",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/auth-final/B-dynamic159-r1-1-91.bin",
+      "bytes": 77,
+      "sha256": "ce45fc947aabc22d29d1361e7f576818a1665b9a9f617af2c2cec7116d89591e"
+    },
+    {
+      "id": "E288",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/auth-final/B-dynamic159-r2-2-136.bin",
+      "bytes": 77,
+      "sha256": "6bb4fb199a28c45fbaf81fdd0591aa3284c2d65845872ddb08c5689787cbc21c"
+    },
+    {
+      "id": "E289",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/auth-final/B-event170-17-r1-97.bin",
+      "bytes": 48,
+      "sha256": "02b5985a867bc19e3bb91236bc8816d3f6f25bc4f8c5f7bddba4579c9a56e15b"
+    },
+    {
+      "id": "E290",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/auth-final/B-event170-19-r1-100.bin",
+      "bytes": 59,
+      "sha256": "bd8bf772c0329942ba758585caf140131b8b59be9138cb03a2c34fd4d1ba22b3"
+    },
+    {
+      "id": "E291",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/auth-final/B-floor582-118.bin",
+      "bytes": 64,
+      "sha256": "6b74dc5c6cb1f1e0e68452aeb761534637bdc8138fe0bd9ba3feadd75372d040"
+    },
+    {
+      "id": "E292",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/auth-final/B-floor582-76.bin",
+      "bytes": 64,
+      "sha256": "dade68ac6b12c8c7ae59bf27d007ad4f1b32b6369d9a0fcd29170b3063e42ace"
+    },
+    {
+      "id": "E293",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/auth-final/B-go197-124.bin",
+      "bytes": 52,
+      "sha256": "94f616295ccb42b1d65f119531b5965ade54edc4e9034b76dbf7c2d89697e0e9"
+    },
+    {
+      "id": "E294",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/auth-final/B-go197-82.bin",
+      "bytes": 52,
+      "sha256": "64b95010ecb0e40bc0367f41f6710d2357fb2538ce827e205825284601237ef8"
+    },
+    {
+      "id": "E295",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/auth-final/B-guest110-r1-112.bin",
+      "bytes": 44,
+      "sha256": "5459dc7d1e715e0523e24981ce67a04e72b6949c2274e3cc6b7577cf62fe6a9d"
+    },
+    {
+      "id": "E296",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/auth-final/B-host110-r1-109.bin",
+      "bytes": 44,
+      "sha256": "1464734628e1b0aa271c48a50c2ed3ceb0fb0d4ba99dac113b20b2ea74dc0d7e"
+    },
+    {
+      "id": "E297",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/auth-final/B-item165-r2-17-133.bin",
+      "bytes": 50,
+      "sha256": "88436f73200bca25c50e3254e24b9e99209ad66bdb326f6c4f60a238a6035caa"
+    },
+    {
+      "id": "E298",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/auth-final/B-peer153-130.bin",
+      "bytes": 135,
+      "sha256": "aac91d44d3427657358d0708a751e4f210fec8d9b20b1c091335c57341bc302e"
+    },
+    {
+      "id": "E299",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/auth-final/B-peer153-88.bin",
+      "bytes": 135,
+      "sha256": "a5d68c7b19f2e1f093539fff8a6be002cca4e6996f83dfc8e98a311cc572ba2e"
+    },
+    {
+      "id": "E300",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/auth-final/B-play196-127.bin",
+      "bytes": 45,
+      "sha256": "010276ee96d43eb798c4cbd8f0d661c416e8d7faa30a083f459303b635c75c2f"
+    },
+    {
+      "id": "E301",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/auth-final/B-play196-85.bin",
+      "bytes": 45,
+      "sha256": "d04bf155b4847f9d41b0edfdf00a32526302273271c0f1cadbb8ce22b89eb51d"
+    },
+    {
+      "id": "E302",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/auth-final/B-rank175-r1-103.bin",
+      "bytes": 340,
+      "sha256": "8f755c898994d478f38d2b807ece591b2ad2d1da7c950eba60859a5e338aa315"
+    },
+    {
+      "id": "E303",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/auth-final/B-ready110-115.bin",
+      "bytes": 44,
+      "sha256": "71ab3449f204c7354574438ac4952909165942f1abaf832f65a4463c57f8a476"
+    },
+    {
+      "id": "E304",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/auth-final/B-ready110-73.bin",
+      "bytes": 44,
+      "sha256": "8fafd9cf652b458ee09b3751a0201f9ab1409920398e0e842e43b915c8840e25"
+    },
+    {
+      "id": "E305",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/auth-final/B-return180-r1-106.bin",
+      "bytes": 41,
+      "sha256": "6a49bc7222df4957e03d3ebe2382217d1988daab1844150f76558baf634da81b"
+    },
+    {
+      "id": "E306",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/auth-final/B-start121-r1-79.bin",
+      "bytes": 167,
+      "sha256": "f8a824335b4079160a4aaf0e0b425d1fabfa78c248d131503440d0414e1f26cf"
+    },
+    {
+      "id": "E307",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/auth-final/B-start121-r2-121.bin",
+      "bytes": 167,
+      "sha256": "90884970c6bbda9491a5a3408cea9f6d47a3b1e0019b1aefd6d83b2764810fec"
+    },
+    {
+      "id": "E308",
+      "kind": "local",
+      "path": "local/research/codex/wine_probe_auth_profile.py",
+      "bytes": 39076,
+      "sha256": "3baadbddb759e77fe5dbd7f8101b5063949e4aecc11cffc9ce27c8e8533249b4"
+    },
+    {
+      "id": "E309",
+      "kind": "local",
+      "path": "local/research/codex/wine_probe_auth_full.py",
+      "bytes": 39082,
+      "sha256": "a32df825be62669690d6afff894788dceb1f2991eab3c00759b04a1ea2b6afbc"
+    },
+    {
+      "id": "E310",
+      "kind": "local",
+      "path": "local/research/codex/wine_probe_auth_tail.py",
+      "bytes": 39082,
+      "sha256": "4f5f9335c36b2ce5818ead96f474b56771dfbdf76bc16afbf148f994a5e19248"
+    },
+    {
+      "id": "E311",
+      "kind": "local",
+      "path": "local/research/codex/wine_probe_auth_final.py",
+      "bytes": 39083,
+      "sha256": "7bdb6c1bde1dd1d444f49139b53d6a3b7d02c4af674bab76bd84d3b01703d857"
+    },
+    {
+      "id": "E312",
+      "kind": "local",
+      "path": "local/research/codex/pickup-state-r1/server-tests.txt",
+      "bytes": 149,
+      "sha256": "c18a18b2a4e2b64d035f0125d0a8e516dcd8a9e0f59115dda75a1f6ce2b3017d"
+    },
+    {
+      "id": "E313",
+      "kind": "local",
+      "path": "local/research/codex/pickup-state-r1/checkpoint-tests.txt",
+      "bytes": 117,
+      "sha256": "f6b876ffa307f534b382c184a2c63348880c65dca89738ee971589a0a3262287"
+    }
+  ],
+  "delta": {
+    "added": [
+      "Executedauth/profilecount1shape/56logicalfields,twoA/B137/errors0,actual6names,exporternewprofile;nativeCcandidate andAUD018seriouscontradiction."
+    ],
+    "corrected": [
+      "CP020string(empty) was intendedu32zero,malformedKRu16string at29;IDbeforeerrorremainsvalid,profileparsersuccessclaimsnotinferredfromoldgameplay.",
+      "Direct53fields notcallbackfullbody:125/133candidateexiterr1,thirdtailcountrequiredforobservedfeaturebranch;allintermediatefailedschemasretained.",
+      "59getterentries not59independentfields due3nestedboolcalls;Cnewfixturenativeonly/sharedgame-dirnotcoldcache."
+    ],
+    "superseded": [
+      "NextauthpostIDfieldtrace solvedfornarrowbranch; PLANnowonenamedcachepresent/missing oncopy,notrepeat53fields/encoding."
+    ]
+  },
+  "blockers": [
+    "Fullprofilefieldsemantics/originalauth/token/accountauthority/count2/otherfeatures/nonzerolistentries unknown;Cnewprofile nativeonly.",
+    "Cachecoldwarm/missing/reconnect/Windowsvanilla/fullcodec/validator/reset/K2/K3/K5/K6a/LAN/Internet remain;fixtureparsererrors0notfullauthentication."
+  ],
+  "next_steps": [
+    {
+      "id": "NEXT-FULL-LOGIN-FIELDS",
+      "task": "KRE-005b",
+      "state": "superseded",
+      "action": "CP058count1fields/string/tailsclean; broadersemantics/variants remain inRESEARCH; nextfocusedcache ID prevents repeating solvedprefixtrace.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-CACHE-PRESENT-MISSING",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "Immediately reuseCP016/019channel2/dynamiccachefilenameCRC/flags andVNmethod;copyprivategame-dir/snapshotcache,holdnewauthfixturethenmeasureonenamedconsumerpresent→missing/fallbackrequest/write withnativeproof. No freshprefix=coldcacheclaim.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    }
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-11-02T11:45:16.018725+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "Codex solo RE/code/runtime/selfcheck, not independent approval.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Owner explicitly requested solo without Claude review."
+    }
+  },
+  "docs_sync": [
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "CP058authstringcorrection/profileclean scope/newfieldindex/exporter/nextcachetask/AUD018,immutablehistory preserved."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "CP058authstringcorrection/profileclean scope/newfieldindex/exporter/nextcachetask/AUD018,immutablehistory preserved."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "updated",
+      "reason": "CP058authstringcorrection/profileclean scope/newfieldindex/exporter/nextcachetask/AUD018,immutablehistory preserved."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "updated",
+      "reason": "CP058authstringcorrection/profileclean scope/newfieldindex/exporter/nextcachetask/AUD018,immutablehistory preserved."
+    },
+    {
+      "path": "docs/features.json",
+      "state": "updated",
+      "reason": "CP058authstringcorrection/profileclean scope/newfieldindex/exporter/nextcachetask/AUD018,immutablehistory preserved."
+    },
+    {
+      "path": "docs/COVERAGE.md",
+      "state": "updated",
+      "reason": "CP058authstringcorrection/profileclean scope/newfieldindex/exporter/nextcachetask/AUD018,immutablehistory preserved."
+    },
+    {
+      "path": "server/README.md",
+      "state": "updated",
+      "reason": "CP058authstringcorrection/profileclean scope/newfieldindex/exporter/nextcachetask/AUD018,immutablehistory preserved."
+    },
+    {
+      "path": "docs/evidence/auth-profile/README.md",
+      "state": "updated",
+      "reason": "CP058authstringcorrection/profileclean scope/newfieldindex/exporter/nextcachetask/AUD018,immutablehistory preserved."
+    },
+    {
+      "path": "docs/evidence/auth-profile/field-shape.json",
+      "state": "updated",
+      "reason": "CP058authstringcorrection/profileclean scope/newfieldindex/exporter/nextcachetask/AUD018,immutablehistory preserved."
+    },
+    {
+      "path": "docs/evidence/start-reply/README.md",
+      "state": "updated",
+      "reason": "CP058authstringcorrection/profileclean scope/newfieldindex/exporter/nextcachetask/AUD018,immutablehistory preserved."
+    }
+  ]
+}

@@ -1,7 +1,7 @@
 {
   "schema": "kre-feature-index-v1",
   "build": "KR00967",
-  "as_of": "CP117",
+  "as_of": "CP118",
   "sources": {
     "plan": "docs/PLAN.md",
     "contract": "docs/PROTOCOL.md",
@@ -3574,7 +3574,8 @@
         "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/110",
         "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/162",
         "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/176",
-        "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/178"
+        "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/178",
+        "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/188"
       ]
     },
     {

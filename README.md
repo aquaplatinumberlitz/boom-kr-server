@@ -28,6 +28,9 @@ boom-kr-server/
 runtime nào có nguồn, còn thiếu gì và phép kiểm nào giải quyết. Mỗi ID dẫn thẳng contract/giới hạn,
 evidence/hash và câu hỏi; [PLAN](docs/PLAN.md#current-order) giữ duy nhất thứ tự công việc.
 Đây là scope đường bootstrap → login → sảnh → phòng → Battle → kết quả/reset, không kiểm kê toàn client.
+Tra checkpoint: `python3 tools/checkpoints.py latest`, `show CPxxx`, `evidence CPxxx`
+(summary/page hoặc `--verify --require-local`); [kho v2/migration](docs/evidence/checkpoints/README.md#kho-checkpoint-v2-và-cách-đọc-chọn-lọc)
+giữ record cũ nguyên object. Không cần đọc manifest lớn.
 
 [CP115](docs/PROTOCOL.md#rescue-service) đã tích hợp và đo **cứu đồng đội** trên service opt-in:
 report18 thật, peer170/18 đủ7byte/lỗi0, native hai phía56→26 và di chuyển sau cứu trên hai view.
@@ -45,7 +48,7 @@ failurecũgiữnguyên, không thêmruntime hoặc nânggate. Bước kế truy 
 [Đối chiếu issue](docs/evidence/issue-reconciliation/README.md): #178 đã giao và đóng sau
 [PR179](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/179), merge `8f3ea2f`;
 #1/#2/#3/#9/#14 còn mở. Snapshot có UTC; lịch sử checkpoint không sửa.
-CP110 [PR180](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/180) đãmerge `7c5d4ea`; CP111 [PR181](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/181) đãmerge `248e118`; CP112 [PR182](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/182) đãmerge `1b7f210`; CP113 [PR183](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/183) đãmerge `2695042`; CP114 [PR184](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/184) đãmerge `989dd3a`; CP115 [PR185](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/185) đãmerge `80e4d48`; CP116 [PR186](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/186) đãmerge `f33f3b8`; CP117 tự kiểm/chờPR, review [waived](docs/evidence/checkpoints/review-waiver.json).
+CP110 [PR180](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/180) đãmerge `7c5d4ea`; CP111 [PR181](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/181) đãmerge `248e118`; CP112 [PR182](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/182) đãmerge `1b7f210`; CP113 [PR183](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/183) đãmerge `2695042`; CP114 [PR184](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/184) đãmerge `989dd3a`; CP115 [PR185](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/185) đãmerge `80e4d48`; CP116 [PR186](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/186) đãmerge `f33f3b8`; CP117 [PR187](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/187) đãmerge `c2ca94d`; CP118 kho checkpoint v2 tự kiểm/chờPR, review [waived](docs/evidence/checkpoints/review-waiver.json).
 CP112 thêm [guard envelope17/19](docs/PROTOCOL.md#death-envelope-admission) trước side effect;
 161tests và runhai-vòngBhost438,2s/actualA95seq823/native110 đãqua. Validfirstseen semantic vẫnthiếu.
 CP113 thêm [kim145 opt-in](docs/PROTOCOL.md#needle-service): actualpickup/17→1→0, một170/1,

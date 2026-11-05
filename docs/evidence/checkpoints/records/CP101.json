@@ -1,0 +1,413 @@
+{
+  "id": "CP101",
+  "previous": "CP100",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-04T19:14:28.470278+00:00",
+  "context_commit": "8c69429acc27f847cc699f1dc6efa83d9484082a",
+  "question": "Does actualselect cachedA/Breadiness dispatch a recipient already closed by earlierEOFcleanup, and can a narrow lifecycle guard preventEBADF without swallowing live errors?",
+  "scope": "KRE-064/#162. Sourcefirst currentcontract/CP085departurefailure/CP099gatederrno9/currentcode/tests/VNsession/KRdocs; actualLinuxsocketpairselectbatch reproducebeforeproductionedit. Narrowalreadyclosedno-op before recv;5meaningfulnegative/positive tests includingactualrunloop. No binary/packetnativeRE/Winererunneeded.",
+  "owner": "Codex",
+  "reviewer": "Codex",
+  "artifacts": [
+    {
+      "name": "CA-r2-login-logout.exe",
+      "sha256": "660447c293ce92270cb9b5815331bca976e8f156366e1fe50b217b6c12e60ce3"
+    },
+    {
+      "name": "CA-r2-stage-social.exe",
+      "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+    },
+    {
+      "name": "CA-r2-stage-social.exe Bcopy",
+      "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+    },
+    {
+      "name": "modO.bin",
+      "sha256": "a08950c833d3acab8281049def7b3dc96b221f107eeda01da3a548e34b91dce5"
+    },
+    {
+      "name": "CA-r2-stage-social.exe Ccopy",
+      "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+    },
+    {
+      "name": "CALauncher.exe",
+      "sha256": "8cc2668bec7a4a0281f1acab26ab3487c4b4e5047d7ce75ab32b299ef16f527d"
+    },
+    {
+      "name": "nmcogame.dll",
+      "sha256": "25746a9a0e29deb7abb70ed1889c01072eb7343d1cafb4a9ffc76b69fac3ae9d"
+    },
+    {
+      "name": "nmco3.dll",
+      "sha256": "7e038696ec69db579f71e029da66f5b5500c56375ff77b24d93529ba7faf9493"
+    }
+  ],
+  "locators": [
+    "BaselineCP100/PR161merge 8c69429acc27f847cc699f1dc6efa83d9484082a; currentservice receive/run/close_connection/deliver_departure source-before/after hashes in source-verification.json.",
+    "actualselector batch ordinals1/2/socketpairLinux fds4/-1: AEOF→send107B EPIPE→closeB→pendingBrecv EBADF9. ReverseB-first equivalent, not exactoldruntimeordinals.",
+    "OldCP099gated service-state errors connection8 errno9 no timestamp/stack; currentpositive modelpath not historicalexactstackproof.",
+    "CP100raw/CP complete/AUD030 unchanged; AUD030periodicthrough100,next104."
+  ],
+  "findings": [
+    {
+      "summary": "RealLinuxsocketpair actualselector returnsA/Bsamebatch; firstAEOFcleanup fails107toB/EPIPE andclosesB. CachedBkeystilldispatchesrecv fd-1→EBADF9; directbefore-fix2tests catchactualstack. Thiscurrentservicepathconfirmed, oldCP099historicalstackremainsunknown.",
+      "source": "design",
+      "status": "confirmed",
+      "method": "emulation",
+      "canonical": "docs/PROTOCOL.md#selector-closed-readiness",
+      "limits": "CurrentserializedPythonservice Linuxsocketpair/selectormodel only; no nativeKR/Wine newrun. OldCP099gatederrno9connection8 exactstackunknown, notcausalruntimefix claim. CP100nativecontrolhistoricalseparate. Guardonlymarkedclosed; unexpectedOSError stillpropagates. No fullbackpressure/partialsendtransaction/allEOF/identityauth/codec/fullvalidator/authority/allreset/vanilla/LANInternet/fullmatch/K5/K6a/gatepromotion.",
+      "evidence": [
+        "E017",
+        "E018",
+        "E028",
+        "E024"
+      ]
+    },
+    {
+      "summary": "receive now returnsbefore recv when serializedowner already marked eventclosed. No OSErrorcatch/globalbadfd suppression/no cursor/body/stateupdate. Positive liveBbytesafterAEOFstillread, unmarkedcloseddescriptorstillraisesEBADF, bothbatchorders/repeatedclosedread preserveattribution/idempotency.",
+      "source": "design",
+      "status": "design",
+      "method": "design",
+      "canonical": "docs/PROTOCOL.md#selector-closed-readiness",
+      "limits": "CurrentserializedPythonservice Linuxsocketpair/selectormodel only; no nativeKR/Wine newrun. OldCP099gatederrno9connection8 exactstackunknown, notcausalruntimefix claim. CP100nativecontrolhistoricalseparate. Guardonlymarkedclosed; unexpectedOSError stillpropagates. No fullbackpressure/partialsendtransaction/allEOF/identityauth/codec/fullvalidator/authority/allreset/vanilla/LANInternet/fullmatch/K5/K6a/gatepromotion.",
+      "evidence": [
+        "E022",
+        "E023",
+        "E013",
+        "E020"
+      ]
+    },
+    {
+      "summary": "129servertests pass incl5newtests actualbatchbothorders/repeatedno-mutation/livebytes/unmarkedfd and actualrunloop/save/finally0spuriouserror. ExistingENOSPC/partialsendmetadata tests unchangedpass. No newWine run because onlyalreadyclosedbranchchanges; do not label historicalCP100nativecontrol as CP101runtime. Docs/catalog synced/currentPR161merged/AUD030next104.",
+      "source": "design",
+      "status": "design",
+      "method": "documentation",
+      "canonical": "docs/PROTOCOL.md#selector-closed-readiness",
+      "limits": "CurrentserializedPythonservice Linuxsocketpair/selectormodel only; no nativeKR/Wine newrun. OldCP099gatederrno9connection8 exactstackunknown, notcausalruntimefix claim. CP100nativecontrolhistoricalseparate. Guardonlymarkedclosed; unexpectedOSError stillpropagates. No fullbackpressure/partialsendtransaction/allEOF/identityauth/codec/fullvalidator/authority/allreset/vanilla/LANInternet/fullmatch/K5/K6a/gatepromotion.",
+      "evidence": [
+        "E020",
+        "E026",
+        "E012",
+        "E003",
+        "E006"
+      ]
+    }
+  ],
+  "verification": [
+    {
+      "check": "Before productionedit actualLinuxsocketpair/selectorBatch AEOF closesB then pendingBrecv EBADF9;2regressionerrors atrecv, notnativebinaryfailure",
+      "result": "observed",
+      "evidence": [
+        "E017",
+        "E028"
+      ],
+      "limits": "CurrentserializedPythonservice Linuxsocketpair/selectormodel only; no nativeKR/Wine newrun. OldCP099gatederrno9connection8 exactstackunknown, notcausalruntimefix claim. CP100nativecontrolhistoricalseparate. Guardonlymarkedclosed; unexpectedOSError stillpropagates. No fullbackpressure/partialsendtransaction/allEOF/identityauth/codec/fullvalidator/authority/allreset/vanilla/LANInternet/fullmatch/K5/K6a/gatepromotion."
+    },
+    {
+      "check": "Postfix sameactualselector batch/no-op alreadyclosedB/oneattributedEPIPE;129servertests incllivebytes/reversebatch/unmarkedfd/actualrunloop/idempotency/ENOSPC/partial107",
+      "result": "pass",
+      "evidence": [
+        "E013",
+        "E020",
+        "E026"
+      ],
+      "limits": "CurrentserializedPythonservice Linuxsocketpair/selectormodel only; no nativeKR/Wine newrun. OldCP099gatederrno9connection8 exactstackunknown, notcausalruntimefix claim. CP100nativecontrolhistoricalseparate. Guardonlymarkedclosed; unexpectedOSError stillpropagates. No fullbackpressure/partialsendtransaction/allEOF/identityauth/codec/fullvalidator/authority/allreset/vanilla/LANInternet/fullmatch/K5/K6a/gatepromotion."
+    },
+    {
+      "check": "Docs/catalog7/generatedfeaturemap/diff andrequiredcheckpointlocalhistory mechanicalchecks; AUD030through100 next104 unchanged",
+      "result": "pass",
+      "evidence": [
+        "E012",
+        "E003"
+      ],
+      "limits": "Mechanicalconsistency only, no semantic/gatecertification. No newperiodicauditneeded101."
+    }
+  ],
+  "evidence": [
+    {
+      "id": "E001",
+      "kind": "repository",
+      "path": "docs/evidence/selector-closed-readiness/README.md",
+      "bytes": 2355,
+      "sha256": "eb57e674a226aafd1bb381f97c2e392230fe77e762d54ed55795673e083bedf2"
+    },
+    {
+      "id": "E002",
+      "kind": "local",
+      "path": "local/research/codex/selector-closed-readiness-r1/append_checkpoint.py",
+      "bytes": 7590,
+      "sha256": "c05ba9fb49ab9b466e853d8a5c503429346d2162768d18a475e6be644ea46bf6"
+    },
+    {
+      "id": "E003",
+      "kind": "local",
+      "path": "local/research/codex/selector-closed-readiness-r1/catalog-tests.txt",
+      "bytes": 106,
+      "sha256": "fa92c5436aefea81f42e4f53b5bd3c83c5252347264bc2c995ee7a55b99913ab"
+    },
+    {
+      "id": "E004",
+      "kind": "local",
+      "path": "local/research/codex/selector-closed-readiness-r1/cp101-snapshot/README.md",
+      "bytes": 3907,
+      "sha256": "7495886650519bfa0f030b578c6404a2f322cc4fec79d27355b3e5f50a716589"
+    },
+    {
+      "id": "E005",
+      "kind": "local",
+      "path": "local/research/codex/selector-closed-readiness-r1/cp101-snapshot/docs/COVERAGE.md",
+      "bytes": 98801,
+      "sha256": "4a28cabbdd3a2b90632aabb5fa32598241e3ef6d0e16e063ea973ef9e63a959d"
+    },
+    {
+      "id": "E006",
+      "kind": "local",
+      "path": "local/research/codex/selector-closed-readiness-r1/cp101-snapshot/docs/PLAN.md",
+      "bytes": 31028,
+      "sha256": "011cab3103c7e36546b4a2e44971620b561ccbd6764e284c36209f3e93e51f55"
+    },
+    {
+      "id": "E007",
+      "kind": "local",
+      "path": "local/research/codex/selector-closed-readiness-r1/cp101-snapshot/docs/PROTOCOL.md",
+      "bytes": 319720,
+      "sha256": "64dbffd02fd7e71234b9b822c0dcbe04c0358ddbdad74d9469e5bbf7cca1263f"
+    },
+    {
+      "id": "E008",
+      "kind": "local",
+      "path": "local/research/codex/selector-closed-readiness-r1/cp101-snapshot/docs/RESEARCH.md",
+      "bytes": 30748,
+      "sha256": "90cbbded66f4498aed0043011f0ef93a02f657fef8c354bdc9c23f96e3e2eced"
+    },
+    {
+      "id": "E009",
+      "kind": "local",
+      "path": "local/research/codex/selector-closed-readiness-r1/cp101-snapshot/docs/evidence/result-freshness/README.md",
+      "bytes": 4522,
+      "sha256": "09d6ea34ee9e5d89726d880139bc142a7b1ce2444cfe4cda0ce3777c106f6536"
+    },
+    {
+      "id": "E010",
+      "kind": "local",
+      "path": "local/research/codex/selector-closed-readiness-r1/cp101-snapshot/docs/evidence/selector-closed-readiness/README.md",
+      "bytes": 2355,
+      "sha256": "eb57e674a226aafd1bb381f97c2e392230fe77e762d54ed55795673e083bedf2"
+    },
+    {
+      "id": "E011",
+      "kind": "local",
+      "path": "local/research/codex/selector-closed-readiness-r1/cp101-snapshot/docs/features.json",
+      "bytes": 102553,
+      "sha256": "29cd6b563aa4e6876dd8185e29a98c44251476b986dda60bf3adcffed00e7440"
+    },
+    {
+      "id": "E012",
+      "kind": "local",
+      "path": "local/research/codex/selector-closed-readiness-r1/docs-check.txt",
+      "bytes": 175,
+      "sha256": "7a66aa571eb10c207d8bc00dd039732339c3659fef838652183c8884982c3690"
+    },
+    {
+      "id": "E013",
+      "kind": "local",
+      "path": "local/research/codex/selector-closed-readiness-r1/postfix-batch.json",
+      "bytes": 1128,
+      "sha256": "b14872152fdff0b3e7487d552c8542cd3ced821eeaf186e8af0f59557c834449"
+    },
+    {
+      "id": "E014",
+      "kind": "local",
+      "path": "local/research/codex/selector-closed-readiness-r1/postfix-batch.txt",
+      "bytes": 1128,
+      "sha256": "b14872152fdff0b3e7487d552c8542cd3ced821eeaf186e8af0f59557c834449"
+    },
+    {
+      "id": "E015",
+      "kind": "local",
+      "path": "local/research/codex/selector-closed-readiness-r1/postfix_batch.py",
+      "bytes": 1491,
+      "sha256": "ee91685da35bfd344f07eb87b9e18954bf3cd4a3a8dd1437cef0d460596c3400"
+    },
+    {
+      "id": "E016",
+      "kind": "local",
+      "path": "local/research/codex/selector-closed-readiness-r1/reproduce.py",
+      "bytes": 1459,
+      "sha256": "6df8bd1a7fe1ba2b209418c7aa8330ac2191e50bfdd1c3b8b73797e8c751c765"
+    },
+    {
+      "id": "E017",
+      "kind": "local",
+      "path": "local/research/codex/selector-closed-readiness-r1/reproduction.json",
+      "bytes": 1197,
+      "sha256": "1d044e395b5edb779307d7ad6cb7d72ee7df8ff6bc06b9b7b8f9a3d527adb4c1"
+    },
+    {
+      "id": "E018",
+      "kind": "local",
+      "path": "local/research/codex/selector-closed-readiness-r1/reproduction.txt",
+      "bytes": 1197,
+      "sha256": "1d044e395b5edb779307d7ad6cb7d72ee7df8ff6bc06b9b7b8f9a3d527adb4c1"
+    },
+    {
+      "id": "E019",
+      "kind": "local",
+      "path": "local/research/codex/selector-closed-readiness-r1/reuse-question.json",
+      "bytes": 3232,
+      "sha256": "f38c9836d19e7587994a985e3f364d23a218a344ce549df0d1b1dd914f4f7f43"
+    },
+    {
+      "id": "E020",
+      "kind": "local",
+      "path": "local/research/codex/selector-closed-readiness-r1/server-tests-final.txt",
+      "bytes": 229,
+      "sha256": "9dede96387927347c80c2106df1ceaaabc15d5ffea651123f08de6b214c12051"
+    },
+    {
+      "id": "E021",
+      "kind": "local",
+      "path": "local/research/codex/selector-closed-readiness-r1/server-tests.txt",
+      "bytes": 228,
+      "sha256": "56f18dc3069e1239abfd7624ca9e1bde86eabf42ea3ada010cc9b8818a6b42c4"
+    },
+    {
+      "id": "E022",
+      "kind": "local",
+      "path": "local/research/codex/selector-closed-readiness-r1/source-after/probe_service.py",
+      "bytes": 58538,
+      "sha256": "d9935346e4868e9845c85e8aa67ed3f208f670914c0d2c011ac9d7cf66fb28e7"
+    },
+    {
+      "id": "E023",
+      "kind": "local",
+      "path": "local/research/codex/selector-closed-readiness-r1/source-after/test_departure_send_failure.py",
+      "bytes": 8675,
+      "sha256": "16670b0a677895ce7d09ae3bfd555e474acc83dc623f4f96123ffac772f5da7d"
+    },
+    {
+      "id": "E024",
+      "kind": "local",
+      "path": "local/research/codex/selector-closed-readiness-r1/source-before/probe_service.py",
+      "bytes": 58339,
+      "sha256": "91bebd1b6c5bebd5593eac6b82d53408a5d1a767819b06d4b95b08e765add253"
+    },
+    {
+      "id": "E025",
+      "kind": "local",
+      "path": "local/research/codex/selector-closed-readiness-r1/source-before/test_departure_send_failure.py",
+      "bytes": 4941,
+      "sha256": "2d50498bc648e1a7710b6f0e8d82392ec662e3b261e8785db7423301d17543c2"
+    },
+    {
+      "id": "E026",
+      "kind": "local",
+      "path": "local/research/codex/selector-closed-readiness-r1/source-verification.json",
+      "bytes": 1100,
+      "sha256": "63bfe9711997b1775cf14b034ec53a326cd1e67fad40aa3eee832f6f22a4f8d3"
+    },
+    {
+      "id": "E027",
+      "kind": "local",
+      "path": "local/research/codex/selector-closed-readiness-r1/sync_docs.py",
+      "bytes": 10278,
+      "sha256": "610c50d3b06804e00458cbeffe6682ab4d800d1f1c1a4e18e8291a3e181b0648"
+    },
+    {
+      "id": "E028",
+      "kind": "local",
+      "path": "local/research/codex/selector-closed-readiness-r1/tests-before.txt",
+      "bytes": 3040,
+      "sha256": "889cdba75ba26d5474705fa9ec19c6b4f8edaab4950d1df07862a6bd450196cc"
+    }
+  ],
+  "delta": {
+    "added": [
+      "Narrowclosed-event receive guard afteractualcachedselectorbatchEBADF reproduction.",
+      "5newrealdescriptor/selector/actualrunloopnegativepositive tests;129server tests pass."
+    ],
+    "corrected": [
+      "CP100PR161merged8c69429; pendingcurrenttextupdated.",
+      "Do not attributeoldCP099errno9toexactstackwithouttrace; no newnativecontrolclaim."
+    ],
+    "superseded": [
+      "NEXT-SELECTOR-CLOSED-READINESS narrowlifecyclefix/modelacceptance fulfilled."
+    ]
+  },
+  "blockers": [
+    "OldCP099gated exactEBADFstack notrecorded; no runtimecausalclaim, modelknownbugfixed.",
+    "CP100guards do notguaranteeallpendingcurrentbombsblastbeforeresult; nextsource/raw inspection beforepolicy, no broadRE.",
+    "Nooriginalserverauthority/fullvalidator/authcodec/allreset/vanilla/LANInternet/fullmatch/K5/K6a."
+  ],
+  "next_steps": [
+    {
+      "id": "NEXT-SELECTOR-CLOSED-READINESS",
+      "task": "KRE-005b",
+      "state": "closed",
+      "action": "CP101actualselector/socketpairreproduce+narrowalreadyclosedguard+129tests inclrunloop pass; no newnative/oldstackclaim. Do notrepeatEOFvariantwithoutnewtrigger.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-PENDING-BOMB-RESULT-DRAIN",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "Immediately reuseCP100actualjobs6/7/13/14round_closed/nativeentity/process/broadcast159/time+6/175raw, provependingcurrentbomb state/deadline beforedesignchange. Ifrealunprocessedpending scope, optionaldraincurrentjobsbefore survivorresult model+currentnativecontrol; keep candidate21afterlast158, all-deadfixture, no arbitraryquietdelay/fuse/state/reportinjection oroldA56causalclaim. Continue runtimeactualblocker. AuditnextCP104.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    }
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-11-04T19:14:28.470278+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "Codex solo RE/code/runtime/selfcheck, not independent approval.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Owner explicitly requested solo without Claude review."
+    }
+  },
+  "docs_sync": [
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "CP101boundedclosedselectorfix/modelvsnative/mergedPR161/currentnextpendingbombsourcecheck, nextauditCP104."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "CP101boundedclosedselectorfix/modelvsnative/mergedPR161/currentnextpendingbombsourcecheck, nextauditCP104."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "updated",
+      "reason": "CP101boundedclosedselectorfix/modelvsnative/mergedPR161/currentnextpendingbombsourcecheck, nextauditCP104."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "updated",
+      "reason": "CP101boundedclosedselectorfix/modelvsnative/mergedPR161/currentnextpendingbombsourcecheck, nextauditCP104."
+    },
+    {
+      "path": "docs/features.json",
+      "state": "updated",
+      "reason": "CP101boundedclosedselectorfix/modelvsnative/mergedPR161/currentnextpendingbombsourcecheck, nextauditCP104."
+    },
+    {
+      "path": "docs/COVERAGE.md",
+      "state": "updated",
+      "reason": "CP101boundedclosedselectorfix/modelvsnative/mergedPR161/currentnextpendingbombsourcecheck, nextauditCP104."
+    },
+    {
+      "path": "docs/evidence/result-freshness/README.md",
+      "state": "updated",
+      "reason": "CP101boundedclosedselectorfix/modelvsnative/mergedPR161/currentnextpendingbombsourcecheck, nextauditCP104."
+    },
+    {
+      "path": "docs/evidence/selector-closed-readiness/README.md",
+      "state": "updated",
+      "reason": "CP101boundedclosedselectorfix/modelvsnative/mergedPR161/currentnextpendingbombsourcecheck, nextauditCP104."
+    }
+  ]
+}
