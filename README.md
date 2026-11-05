@@ -41,21 +41,20 @@ Hai copy KR Wine đã chạy login/sảnh/phòng/Battle và các chu kỳ kết 
 [kim/reset](docs/PROTOCOL.md#needle-round-reset), [cứu hai chiều và hai kết quả](docs/PROTOCOL.md#rescue-two-results),
 [deep chain/reset](docs/PROTOCOL.md#recursive-chain-cycles) giữ phạm vi và giới hạn tại nguồn chuẩn.
 
-**Mốc mới CP129:** host A normal exit202/86 → B nhận kết quả/về phòng/chuyển chủ → A vào lại làm
-guest/Ready → B Start2, cùng8TCP/key12346/native121/clocks cả hai. Control đã bắt đúng lỗi policy;
-fixed đo native107 xóa ID1→0 và chiefB=1. [Contract/giới hạn](docs/PROTOCOL.md#host-battle-exit),
-[raw/hash/recipe](docs/evidence/battle-exit/README.md#cp129). Chế độ opt-in chỉ host A khôngbom/no17,19;
-guest modes cũ giữ nguyên. Một forfeit rồi R2active, không hai trận hoàn chỉnh.
+**Mốc mới CP130:** sau host exit/107 xóa ID1→0, gói UDP R1 được replay vẫn tới endpoint/queue/drain
+ở phòng. Sau A rejoin/B Start2, cùng hash tới consumer rồi key-drop56≠59, không apply;
+gói hiện hành vẫn apply/full13. [Contract/giới hạn](docs/PROTOCOL.md#udp-membership-lifetime),
+[raw/hash/recipe](docs/evidence/udp-generation/README.md#cp130). Probe có armed-ack, không suy chỉ từ sendlog.
+Scope hai copy Wine, một gói/endpoint và một host exit/rejoin, không toàn grammar/queue reset/auth.
 
-CP128 đã merge [PR199](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/199) tại `1b11fe4`.
-CP129 hoàn tất docs/evidence/tự kiểm trong thay đổi hiện tại; review độc lập
-[waived](docs/evidence/checkpoints/review-waiver.json). Tra lịch sử bằng CLI/Git;
-[đối chiếu issue](docs/evidence/issue-reconciliation/README.md) có snapshot theo thời điểm.
-#1/#2/#3/#9/#14 và K0–K7 giữ mở theo acceptance.
+CP129 đã merge [PR200](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/200) tại `f5ab2df`.
+CP130 docs/evidence/tự kiểm trong thay đổi hiện tại; review độc lập
+[waived](docs/evidence/checkpoints/review-waiver.json). Lịch sử CLI/Git giữ nguyên; #1/#2/#3/#9/#14 và
+K0–K7 còn mở. Một forfeit rồiR2active không phải hai trận hoàn chỉnh/K6a/LANInternet.
 
-Khoảng trống kế: UDP/queue qua lifetime membership khi host exit/rejoin; không đo lại old-key guard
-đã có. [PLAN](docs/PLAN.md#current-order) giữ duy nhất thứ tự. Full auth/validator/authority,
-general reset và nhiều máy vẫn thiếu.
+Theo [PLAN](docs/PLAN.md#current-order), bước kế quay về Battle: kiểm shared blocker giữa các tia nổ
+trên current map bằng known native195 flags/model; không quét toàn client hoặc lặp key-only case.
+Full auth/authority/generalreset và nhiều máy vẫn thiếu.
 Audit định kỳ **AUD040 qua CP128**, kế **CP132**. Theo [yêu cầu chủ dự án](docs/evidence/owner-directives/continuous-work.json),
 tiếp tục ngay việc kế sau checkpoint/PR.
 
