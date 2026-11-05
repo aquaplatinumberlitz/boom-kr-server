@@ -255,5 +255,3 @@ class StoreTests(unittest.TestCase):
         path.write_bytes(before)
         self.commit('restore external manifest')
         self.assertTrue(any('hash mismatch' in e for e in checker.check_history(self.root, store.MANIFEST, v2)))
-
-
