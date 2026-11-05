@@ -41,20 +41,20 @@ Hai copy KR Wine đã chạy login/sảnh/phòng/Battle và các chu kỳ kết 
 [kim/reset](docs/PROTOCOL.md#needle-round-reset), [cứu hai chiều và hai kết quả](docs/PROTOCOL.md#rescue-two-results),
 [deep chain/reset](docs/PROTOCOL.md#recursive-chain-cycles) giữ phạm vi và giới hạn tại nguồn chuẩn.
 
-**Mốc mới CP132:** trong shared cascade đã đo, flag thùng(2,3) còn1 tại process-entry root2,
-bridge4 và secondary3 trên cả hai client; tới root158 return mới thấy0. Ô(2,2) giữ1.
-[Contract/giới hạn](docs/PROTOCOL.md#shared-flag-timing), [raw/hash/recipe](docs/evidence/three-bomb-chain/README.md#cp132).
-Đây là mốc quan sát, chưa xác định chính xác instruction/pha xóa flag hoặc chứng minh globalimmutable/FIFO.
+**Mốc mới CP133:** đã nối query với cellstate của shared blocker: cùng pointer ô(2,3), root gặp
+state0 → queryflag1 → state2/return0; secondary gặp lại state2 → return0, không query lần hai.
+Hai client cùng kết quả. [Contract/giới hạn](docs/PROTOCOL.md#shared-cell-state),
+[raw/hash/recipe](docs/evidence/three-bomb-chain/README.md#cp133). Cơ chế cellstate trong ca này
+khác với kết luận “mọi mapflag bất biến”; globalchain/authority vẫn thiếu.
 
-CP131 đã merge [PR202](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/202) tại `9e9824a`.
-CP132 docs/evidence/tự kiểm trong thay đổi hiện tại; review độc lập
-[waived](docs/evidence/checkpoints/review-waiver.json). #1/#2/#3/#9/#14 và K0–K7 vẫn mở;
-ca mới chỉ một Battle cascade/noresult, không fullmatch/K6a/LANInternet. Raw/complete history giữ nguyên.
+CP132/AUD041 đã merge [PR203](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/203) tại `435b107`.
+CP133 docs/evidence/tự kiểm trong thay đổi hiện tại; review độc lập
+[waived](docs/evidence/checkpoints/review-waiver.json). Raw/complete history giữ nguyên;
+#1/#2/#3/#9/#14 và K0–K7 vẫn mở. Audit kế **CP136**.
 
-Audit thủ công **AUD041 qua CP132**, kế **CP136**, đã đối chiếu canonical docs với raw/source và sửa
-các pending-merge/gap stale. Bước kế chỉ [PLAN](docs/PLAN.md#current-order): nối query native của đúng
-thùng chung với snapshot vừa đo; không lặp before/after hoặc quét toàn chain/client.
-Theo [yêu cầu chủ dự án](docs/evidence/owner-directives/continuous-work.json), tiếp tục việc kế sau PR.
+Theo [PLAN](docs/PLAN.md#current-order), chuyển sang ghép shared cascade với hai lần chết/kết quả/
+về phòng/reset trong cùng run, dùng lại các đường đã đo; không mở tiếp mọi chainvariant.
+Ca mới hiện một cascade/noresult, chưa fullmatch/K6a/vanilla/LANInternet.
 
 Đích đầu: hai client thật chơi hai trận liên tiếp; mở bốn client và hardening sau đó.
 
