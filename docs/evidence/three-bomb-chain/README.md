@@ -144,5 +144,33 @@ thayowner/power/route được côngbố, không singlevariableproof. `retry-rea
 Mutabledepthfirstimmediateclearcounterhypothesis bịbác cho geometry này; chưa chứng minh native dùng
 immutablesnapshot/globalFIFO hoặcflagmutationtiming. Kết quả modelagreementkhông tự nângthành law.
 220servertests từCP129reused vìsourcekhôngđổi. CP130PR201head65cba0f/merge25b8884 exactCLEAN/
-MERGEABLE/checks[]. CP131selfcheck/currentchange/reviewwaived; AUD040qua128/next132, periodicmanual
+MERGEABLE/checks[]. CP131/PR202merged`9e9824a`, reviewwaived; AUD040qua128/next132, periodicmanual
 audit bắtbuộcCP132. CanonicalnextonlyPLAN, oldcomplete/raw/gates không đổi.
+
+
+<a id="cp132"></a>
+## CP132 — Hai flag tại ba nativeprocess-entry và rootreturn
+
+[Contract/giới hạn](../../PROTOCOL.md#shared-flag-timing), [gap](../../RESEARCH.md#gap-blast-block-chain).
+Raw local/research/codex/shared-flag-timing-r1, `cycles-recipe.json`/`runtime-preflight.json`/
+`runtime-source`/postcleanup`raw-seal.json`. SameCP131R3service/profile/client/map/fuse/input,
+thêmreadonly2flag snapshots ở knownEB80E3/E5F5FD; no newbody/watchallmap/gamecall/statewrite.
+`reuse-question.json`pinCP131proof/knownflagreader/VNgame/KRdata; khôngRElạicodec/consumer/items.
+Privateuser/net/mount/PID/chỉlo/no-route/filesNSS/onelease/twoprefix-display/sourcefreezeuntilcleanup.
+
+Run209,060284766s/exit0/noerrors/696raw, SHA256
+`a05b7b7d9083f4a2373e81afb00012e264edebe49b2f24a510964b405dfe5c84`.
+`shared-verification.json`843basejoins/fullactualgeometry/all195/order2→4→3/laterownnoops,
+`phase-flags.json`8samples/16native52A350getterchecks/actual159pointerIDjoin:
+2,3=1tạiprocess-entryroot2/bridge4/secondary3,0tạirootreturn;2,2=1mọimốc/hai view.
+`shared-{A,B}.jsonl`raw8rows, nativewrapper/cipher/hash/source, no automaticmechanismcertification.
+18flag snapshots/3546copiedgetters3510arraychecks/153packet6peer153cases separatefromruntime.
+
+Chưa exactquery/sharedcell ray branch: không suy deferreduntilallrays/globalimmutable/FIFO. CP091
+EA0B10=1→0 trongsamecallbackgeometrykhác làsourceđãđọc/giữ nguyên. NextqueryonlyPLAN.
+220server tests CP129reused unchangedsource; docs/catalog/issues/artifacts/history/diffchecked.
+AUD041 periodicqua132/next136: orderedcanonical/core→evidence→CP129–132raw/source/actualcallbacks/
+getters; sửaCP124pendingPR195, CP131pendingPR202 vàPLANgenericsharedblocker gapquárộng.
+`pre-audit/`/`audit-inputs.json`giữ trướcchỉnh; auditjson ghi findings/remaining cụthể. Oldrecords/raw/
+reviewwaiver bấtbiến; gate/fullmatch/K6a/LANInternet chưađạt.
+CP131PR202head25492a1/merge9e9824a exactCLEAN/MERGEABLE/checks[]; CP132selfcheck/currentchange/reviewwaived.

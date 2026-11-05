@@ -1,6 +1,6 @@
 # KR 00967 — contract tương thích client gốc
 
-Revision kr-legacy-contract-r1; cập nhật05/11/2026 JST (CP131; AUD040 quaCP128, kếCP132).
+Revision kr-legacy-contract-r1; cập nhật05/11/2026 JST (CP132; AUD041 quaCP132, kếCP136).
 **Contract có bằng chứng từng phần; chưa nghiệm thu full codec K2**.
 Lộ trình và thứ tự task chỉ giữ ở [REWRITE_PLAN — KRE](PLAN.md).
 Đây là contract của repo server KR. ADR0009 của bản viết lại là nguồn lịch sử để so sánh;
@@ -4659,3 +4659,33 @@ power, không singlevariableclaim hoặc sửafailedraw. NormalOSkeys/read-onlyf
 geometry, khôngduration/target. Runtimecopye9bb4766/static660447/modOa08950/base400000/RVA=VA−400000.
 NextchỉPLAN: knownprocessphaseflag timing để giải nguyênnhân scopedcounterhypothesisfail, không
 mởmọi chain/moving/validator/auth/gate. AUD040/kế132; reviewwaived khôngđóngK5/K6a.
+
+
+<a id="shared-flag-timing"></a>
+### Sharedbox flag tại process-entry và root return — CP132
+
+**kr_runtime/confirmed cho bốn mốc/case**, [recipe/hash](evidence/three-bomb-chain/README.md#cp132).
+Reuse nguyên CP131R3source/profile/client/map/fuse6/inputgeometry, chỉ thêm readonly2flagwrappers
+ở knownEB80E3/process-entry (root2/bridge4/secondary3 trong mainroot158index2) vàE5F5FD/rootreturn.
+Actual118 vẫn openingA3,4p2/ID1, Broot3,3p1/ID2, Asecondary2,4p2/ID3, Abridge3,4p2/ID4;
+nativeprocess2→4→3/full15939/full15813/laterown3,4noops/all195flags vẫn khớp cảhai view.
+
+| Phase trong callback2 | Shared(2,3) | Diagnostic(2,2) | Phạm vi |
+|---|---|---|---|
+|process-entryroot2|1|1|hai client/ptrIDjoin159|
+|process-entrybridge4|1|1|chưa đo mọi query ởbêntrong|
+|process-entrysecondary3|1|1|cònflag khi vào process3|
+|root158return|0|1|sau xử lýroot trướccallback thoát|
+
+Kết luận hẹp: chưa thấy flag2,3clear tại ba process-entry, đãclear tạirootreturn; loại cách giải thích
+“flagđã0trướckhi vào secondaryprocess” cho case này. **Không** suy flag chỉđổi sau mọi ray/cảcallback,
+native dùng globalimmutable/FIFO hoặc mapflagduynhất quyếtđịnhray. [CP091](#house-after-box) có
+queryEA0B10=1 rồi0 trong cùngcallback geometrykhác; giữ nguyên, không mâu thuẫn với bốn mẫu này.
+Actualquery của sharedcell/caller/return trong geometryCP132 chưa bắt, bước kế duy nhấtPLAN.
+
+Run209,060284766s/exit0/controller/service/probeerror0/696raw/843basechecks,18flagsnapshots/
+3546native52A350/3510ED1350checks,8phase-samples/16nativephasegetterchecks,153packet+6peer153models.
+Read-onlywrapperraw/cipher/checksum/gdbrolepaths riêng, không gamecall/statewrite/nativecounterchange.
+ActualA17/B17 sau blast, không19/rank/return/no2rounds/fullmatch/K5/K6a/vanilla/LANInternet/gate.
+Observer overhead khácCP131 được nêu, actualgeometry/order đã kiểm lại; không timer/fuse/sourceđổi giữa run.
+AUD041 periodicqua132/kế136, reviewwaived; oldcomplete/raw giữ nguyên.

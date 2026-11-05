@@ -41,20 +41,20 @@ Hai copy KR Wine đã chạy login/sảnh/phòng/Battle và các chu kỳ kết 
 [kim/reset](docs/PROTOCOL.md#needle-round-reset), [cứu hai chiều và hai kết quả](docs/PROTOCOL.md#rescue-two-results),
 [deep chain/reset](docs/PROTOCOL.md#recursive-chain-cycles) giữ phạm vi và giới hạn tại nguồn chuẩn.
 
-**Mốc mới CP131:** shared blocker trên map thật: bom mở ô rồi root B(3,3)p1 → bridge A(3,4)p2 →
-secondary A(2,4)p2; native cả hai view xử lý2→4→3, toàn195 flags khớp model hiện tại, ô(2,2) vẫn chắn.
-[Contract/giới hạn](docs/PROTOCOL.md#shared-blocker), [raw/hash/recipe](docs/evidence/three-bomb-chain/README.md#cp131).
-Chỉ bác giả thuyết mutable-depth-first cụ thể cho geometry này, chưa chứng minh globalFIFO/immutable
-hoặc thời điểm native xóa thùng. Bước kế đo đúng flag tại các phase trong callback, xem PLAN.
+**Mốc mới CP132:** trong shared cascade đã đo, flag thùng(2,3) còn1 tại process-entry root2,
+bridge4 và secondary3 trên cả hai client; tới root158 return mới thấy0. Ô(2,2) giữ1.
+[Contract/giới hạn](docs/PROTOCOL.md#shared-flag-timing), [raw/hash/recipe](docs/evidence/three-bomb-chain/README.md#cp132).
+Đây là mốc quan sát, chưa xác định chính xác instruction/pha xóa flag hoặc chứng minh globalimmutable/FIFO.
 
-CP130 đã merge [PR201](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/201) tại `25b8884`.
-CP131 docs/evidence/tự kiểm trong thay đổi hiện tại; review độc lập
-[waived](docs/evidence/checkpoints/review-waiver.json). Raw/complete history giữ nguyên;
-#1/#2/#3/#9/#14 và K0–K7 vẫn mở. Ca mới chỉ một Battle cascade/noresult, không fullmatch/K6a/LANInternet.
+CP131 đã merge [PR202](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/202) tại `9e9824a`.
+CP132 docs/evidence/tự kiểm trong thay đổi hiện tại; review độc lập
+[waived](docs/evidence/checkpoints/review-waiver.json). #1/#2/#3/#9/#14 và K0–K7 vẫn mở;
+ca mới chỉ một Battle cascade/noresult, không fullmatch/K6a/LANInternet. Raw/complete history giữ nguyên.
 
-Full auth/authority/generalreset và nhiều máy vẫn thiếu; thứ tự duy nhất ở [PLAN](docs/PLAN.md#current-order).
-Audit định kỳ **AUD040 qua CP128**, kế **CP132**. Theo [yêu cầu chủ dự án](docs/evidence/owner-directives/continuous-work.json),
-tiếp tục ngay việc kế sau checkpoint/PR.
+Audit thủ công **AUD041 qua CP132**, kế **CP136**, đã đối chiếu canonical docs với raw/source và sửa
+các pending-merge/gap stale. Bước kế chỉ [PLAN](docs/PLAN.md#current-order): nối query native của đúng
+thùng chung với snapshot vừa đo; không lặp before/after hoặc quét toàn chain/client.
+Theo [yêu cầu chủ dự án](docs/evidence/owner-directives/continuous-work.json), tiếp tục việc kế sau PR.
 
 Đích đầu: hai client thật chơi hai trận liên tiếp; mở bốn client và hardening sau đó.
 

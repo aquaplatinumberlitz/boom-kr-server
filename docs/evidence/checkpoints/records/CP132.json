@@ -1,0 +1,229 @@
+{
+  "artifacts": [
+    {
+      "name": "CA-r2-login-logout.exe",
+      "sha256": "660447c293ce92270cb9b5815331bca976e8f156366e1fe50b217b6c12e60ce3"
+    },
+    {
+      "name": "CA-r2-stage-social.exe",
+      "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+    },
+    {
+      "name": "CA-r2-stage-social.exe Bcopy",
+      "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+    },
+    {
+      "name": "modO.bin",
+      "sha256": "a08950c833d3acab8281049def7b3dc96b221f107eeda01da3a548e34b91dce5"
+    }
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-11-05T12:45:27.448175+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "Codex solo RE/code/runtime/selfcheck, not independent approval.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Owner explicitly requested solo without Claude review."
+    }
+  },
+  "owner": "Codex",
+  "reviewer": "Codex",
+  "id": "CP132",
+  "previous": "CP131",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-05T12:45:27.448175+00:00",
+  "context_commit": "9e9824ad36f3db8ca362f4fc4425f92883cffeb3",
+  "question": "Sharedbox2,3/diagnostic2,2 flags atnativeprocess-entry root2/bridge4/secondary3 androotreturn: alreadyclearedatsecondaryentry oronlylater? Requiredperiodicaudit.",
+  "scope": "SourcefirstCP131actualgeometry/nativeprocess/all195flags/knownmapflagreader/CP091queryscope; add2readonlywrappers atknownEB80E3andE5F5FD, no newbody orproduction/client/profile/input/fusechange. Oneisolatedrun/rawseal/nativephasegetters+baselineflagverification; manualAUD041.",
+  "locators": [
+    "BaselineCP131PR202head25492a12d5541a41b87326386f5c050ebd8222e2/merge9e9824ad36f3db8ca362f4fc4425f92883cffeb3/exactCLEANMERGEABLEchecks[].220servertestsreusedsourceunchanged.",
+    "Runa05b7b7d9083f4a2373e81afb00012e264edebe49b2f24a510964b405dfe5c84/209.060284766s/exit0/errors0/696raw/843basechecks/8phasepoints16nativephasegetterchecks/18nativeflagsnaps3546getters3510array/153packet6peer153cases.",
+    "ActualopeningID1A3,4p2; mainID2B3,3p1/ID3A2,4p2/ID4A3,4p2/native2→4→3/all195match/laterown3,4noops. Bothviewsprocess-entry2,4,3shared2,3=1/diagnostic2,2=1;returnshared0/diagnostic1.",
+    "CachedEB80E3process-callsite/E5F5FDrootreturn/map+1D54securearray/ED1350/52A350readonlywrappers; no newbody. StaticEA0B10cachedmapquery andCP091insidecallback1→0keepdifferentgeometryscope. modOa08950/base400000/RVA=VA−400000/runtimee9bb4766/static660447."
+  ],
+  "findings": [
+    {
+      "summary": "Bothviewsactualshared2,3flagstill1 atnativeprocess-entryroot2/bridge4/secondary3 then0atrootreturn;diagnostic2,2=1allfourpoints. Actual159pointer→ID/processorder2→4→3/geometry/all195nativeflagsverifiedagain.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#shared-flag-timing",
+      "limits": "ModifiedWine2realAB/currentpinnedmap/sameCP131R3source/profile/client/fuse6/inputgeometry, onlyreadonly2flagwrapperprocessentry+returnprobes. Shared2,3=1atentryroot2/bridge4/secondary3then0atrootreturn;diagnostic2,2=1. Fourphasepoints notallqueries/writes/globalimmutable/FIFO/allraysdeferredclear/nativeinstruction/originalauthority. CP091differentgeometryquery1→0preserved. Actual17afterblast/no19/rank/return/fullmatch/K5/K6a/vanilla/LANInternet/gate. Raw/oldcomplete/binary/DB/packimmutable;AUD041through132next136.",
+      "evidence": [
+        "RUN-00736",
+        "RUN-00706",
+        "RUN-00707",
+        "RUN-00807"
+      ]
+    },
+    {
+      "summary": "Read-only8phasepoints/16copied52A350getterchecks plus18fullflagsnaps/3546getter/3510arraychecks/153packet6peer153cases; models separatefromruntime andnotworldserverauthority. Source/profile/client/fuse/inputunchanged, addedobserveroverheaddisclosed.",
+      "source": "kr_static",
+      "status": "confirmed",
+      "method": "emulation",
+      "canonical": "docs/PROTOCOL.md#shared-flag-timing",
+      "limits": "ModifiedWine2realAB/currentpinnedmap/sameCP131R3source/profile/client/fuse6/inputgeometry, onlyreadonly2flagwrapperprocessentry+returnprobes. Shared2,3=1atentryroot2/bridge4/secondary3then0atrootreturn;diagnostic2,2=1. Fourphasepoints notallqueries/writes/globalimmutable/FIFO/allraysdeferredclear/nativeinstruction/originalauthority. CP091differentgeometryquery1→0preserved. Actual17afterblast/no19/rank/return/fullmatch/K5/K6a/vanilla/LANInternet/gate. Raw/oldcomplete/binary/DB/packimmutable;AUD041through132next136.",
+      "evidence": [
+        "RUN-00735",
+        "RUN-00716",
+        "RUN-00728",
+        "RUN-00726",
+        "RUN-00766"
+      ]
+    },
+    {
+      "summary": "Fourpointflagmeasurements do notestablishallraysdeferredclear/globalimmutable/FIFO/nativewriteinstruction. CP091insidecallbackquery1→0geometry differs/preserved. NextactualEA0B10sharedcellquery filter/caller/map/wrapper/order only. AUD041manualsyncrepairsCP124pendingPR195/CP131pendingPR202/genericsharedblocker gapwithoutoldrecordrewrite.",
+      "source": "design",
+      "status": "design",
+      "method": "documentation",
+      "canonical": "docs/PROTOCOL.md#shared-flag-timing",
+      "limits": "ModifiedWine2realAB/currentpinnedmap/sameCP131R3source/profile/client/fuse6/inputgeometry, onlyreadonly2flagwrapperprocessentry+returnprobes. Shared2,3=1atentryroot2/bridge4/secondary3then0atrootreturn;diagnostic2,2=1. Fourphasepoints notallqueries/writes/globalimmutable/FIFO/allraysdeferredclear/nativeinstruction/originalauthority. CP091differentgeometryquery1→0preserved. Actual17afterblast/no19/rank/return/fullmatch/K5/K6a/vanilla/LANInternet/gate. Raw/oldcomplete/binary/DB/packimmutable;AUD041through132next136.",
+      "evidence": [
+        "RUN-00004",
+        "RUN-00010",
+        "RUN-00009",
+        "RUN-00014"
+      ]
+    }
+  ],
+  "verification": [
+    {
+      "check": "843basejoins/rawfreeze/isolation/exactactualgeometry/159before158/native2→4→3/all195/laterownnoops",
+      "result": "pass",
+      "evidence": [
+        "RUN-00805",
+        "RUN-00807",
+        "RUN-00749"
+      ],
+      "limits": "ModifiedWine2realAB/currentpinnedmap/sameCP131R3source/profile/client/fuse6/inputgeometry, onlyreadonly2flagwrapperprocessentry+returnprobes. Shared2,3=1atentryroot2/bridge4/secondary3then0atrootreturn;diagnostic2,2=1. Fourphasepoints notallqueries/writes/globalimmutable/FIFO/allraysdeferredclear/nativeinstruction/originalauthority. CP091differentgeometryquery1→0preserved. Actual17afterblast/no19/rank/return/fullmatch/K5/K6a/vanilla/LANInternet/gate. Raw/oldcomplete/binary/DB/packimmutable;AUD041through132next136."
+    },
+    {
+      "check": "8rawphasepoints/16copiednativephasegetters/3546fullflaggetters3510array/153packet6peer153/models/docs/catalog/issues/artifacts/diff;220baseline testsreuse",
+      "result": "pass",
+      "evidence": [
+        "RUN-00735",
+        "RUN-00736",
+        "RUN-00716",
+        "RUN-00728",
+        "RUN-00726",
+        "RUN-00715",
+        "RUN-00725",
+        "RUN-00003",
+        "RUN-00816"
+      ],
+      "limits": "Mechanical/modelchecks notsemantic/gatecertification."
+    },
+    {
+      "check": "RequiredperiodicmanualAUD041canonical/raw/source/oldscopecontrasts",
+      "result": "observed",
+      "evidence": [
+        "RUN-00004",
+        "RUN-00010",
+        "RUN-00011"
+      ],
+      "limits": "AuditorCodexselfcheck/reviewwaived; cadence132→136, noreset/gateclosure."
+    }
+  ],
+  "evidence": [],
+  "evidence_manifests": [
+    {
+      "path": "docs/evidence/checkpoints/evidence/CP132-shared-flag-timing.json",
+      "bytes": 205603,
+      "sha256": "d418135853b225c2830429b69cd8a97aa5ee6a096a22eb7b650479ff4f7e4a7c",
+      "count": 816
+    }
+  ],
+  "delta": {
+    "added": [
+      "Scopedsharedflagvalues atthreeprocessentries androotreturn bothviews, actualsamegeometry/order/control;AUD041periodic."
+    ],
+    "corrected": [
+      "Before/afterCP131unknown nowfourpointtimingknown butexactqueries/writephase stillunknown, avoidglobaldeferredclaim vsCP091.",
+      "StaleCP124pendingPR195/CP131pendingPR202 andPLANgenericsharedblocker updated; oldobjects/rawkept."
+    ],
+    "superseded": [
+      "NEXT-SHARED-FLAG-TIMING closedscope; NEXT-SHARED-QUERY active."
+    ]
+  },
+  "blockers": [
+    "ExactsharedcellEA0B10query/caller/returnflag withinsecondaryray notyetobserved; nativewriteinstruction/generalchainmechanismremainunknown.",
+    "Fullauth/lifeauthority/allreset/UDPgrammar/fullmatch/vanilla/LANInternet/gates remain."
+  ],
+  "next_steps": [
+    {
+      "id": "NEXT-SHARED-FLAG-TIMING",
+      "task": "KRE-005b",
+      "state": "closed",
+      "action": "CP132actualflag1atprocess-entry2/4/3→0rootreturn/diagnosticstays1, scopednative16getterproof.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-SHARED-QUERY",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "PLANreuseEA0B10cachedbody/sourceproof/filteronly2,3and2,2 callback2; currentmap/wrapper/getter/nativecaller/processID join toknowsharedqueryreturn. Noallterrainwatch/newbroadscan/inferfromentryflag; AUD041periodicdone132 next136.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    }
+  ],
+  "docs_sync": [
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "CP132phaseflag/scope/CP091contrast/currentquerygap/issue/catalog/AUD041sync, oldcomplete/gatesunchanged."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "CP132phaseflag/scope/CP091contrast/currentquerygap/issue/catalog/AUD041sync, oldcomplete/gatesunchanged."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "updated",
+      "reason": "CP132phaseflag/scope/CP091contrast/currentquerygap/issue/catalog/AUD041sync, oldcomplete/gatesunchanged."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "updated",
+      "reason": "CP132phaseflag/scope/CP091contrast/currentquerygap/issue/catalog/AUD041sync, oldcomplete/gatesunchanged."
+    },
+    {
+      "path": "docs/features.json",
+      "state": "updated",
+      "reason": "CP132phaseflag/scope/CP091contrast/currentquerygap/issue/catalog/AUD041sync, oldcomplete/gatesunchanged."
+    },
+    {
+      "path": "docs/COVERAGE.md",
+      "state": "updated",
+      "reason": "CP132phaseflag/scope/CP091contrast/currentquerygap/issue/catalog/AUD041sync, oldcomplete/gatesunchanged."
+    },
+    {
+      "path": "docs/evidence/three-bomb-chain/README.md",
+      "state": "updated",
+      "reason": "CP132phaseflag/scope/CP091contrast/currentquerygap/issue/catalog/AUD041sync, oldcomplete/gatesunchanged."
+    },
+    {
+      "path": "docs/evidence/life-admission/README.md",
+      "state": "updated",
+      "reason": "CP132phaseflag/scope/CP091contrast/currentquerygap/issue/catalog/AUD041sync, oldcomplete/gatesunchanged."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/review.json",
+      "state": "updated",
+      "reason": "CP132phaseflag/scope/CP091contrast/currentquerygap/issue/catalog/AUD041sync, oldcomplete/gatesunchanged."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
+      "state": "updated",
+      "reason": "CP132phaseflag/scope/CP091contrast/currentquerygap/issue/catalog/AUD041sync, oldcomplete/gatesunchanged."
+    },
+    {
+      "path": "docs/evidence/checkpoints/audits/AUD041.json",
+      "state": "updated",
+      "reason": "MandatoryperiodicmanualAUD041through132 next136."
+    }
+  ]
+}

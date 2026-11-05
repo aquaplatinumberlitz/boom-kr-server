@@ -1,0 +1,89 @@
+{
+  "id": "AUD041",
+  "trigger": "periodic",
+  "completed_through": "CP132",
+  "recorded_utc": "2026-11-05T12:45:27.448175+00:00",
+  "auditor": "Codex manual self-audit; independent review waived",
+  "read_files": [
+    "README.md",
+    "docs/PLAN.md",
+    "docs/PROTOCOL.md",
+    "docs/RESEARCH.md",
+    "docs/evidence/three-bomb-chain/README.md",
+    "docs/evidence/udp-generation/README.md",
+    "docs/evidence/battle-exit/README.md",
+    "docs/evidence/life-admission/README.md",
+    "docs/evidence/map-flags/README.md",
+    "docs/evidence/checkpoints/README.md",
+    "docs/evidence/checkpoints/review-waiver.json",
+    "docs/features.json",
+    "docs/COVERAGE.md",
+    "server/probe_service.py",
+    "server/terrain_model.py",
+    "local/research/codex/shared-flag-timing-r1/audit-inputs.json",
+    "local/research/codex/shared-flag-timing-r1/cycles/run.json",
+    "local/research/codex/shared-flag-timing-r1/cycles/service-state.json",
+    "local/research/codex/shared-flag-timing-r1/cycles/client.log",
+    "local/research/codex/shared-flag-timing-r1/cycles/client-B.log",
+    "local/research/codex/shared-flag-timing-r1/cycles/shared-A.jsonl",
+    "local/research/codex/shared-flag-timing-r1/cycles/shared-B.jsonl",
+    "local/research/codex/shared-flag-timing-r1/phase-flags.json",
+    "local/research/codex/shared-flag-timing-r1/shared-verification.json",
+    "local/research/codex/shared-flag-timing-r1/shared-observations.json",
+    "local/research/codex/shared-flag-timing-r1/flag-reader-verification.json",
+    "local/research/codex/shared-blocker-r3/shared-verification.json",
+    "local/research/codex/shared-blocker-r2/shared-observations.json",
+    "local/research/codex/udp-membership-r3/membership-verification.json",
+    "local/research/codex/host-battle-exit-rejoin-r1/rejoin-verification.json",
+    "local/research/codex/map-chain-r1/EA0B10.asm"
+  ],
+  "method": "OrderedmanualREADME→PLAN→PROTOCOL→RESEARCH→relatedevidence thenretainedraw/sourceCP129–132. Comparednativeactual118 geometry/159pointerIDs/process2→4→3/all195flags/cipherwrappers and8processentry-returnphase rows vsreports. Re-read CP091query1→0insidecallback toavoidgeneraldeferredclearclaim, comparedcachedEA0B10body toexactnextquestion. ReviewedR1collector/R2geometrypartial/preservedsource/nobinarychanges; previousUDPactualhash/keybranch andhostexitreader/cleanup evidence remainseparatescope. Auditsemanticlimits/currentvsdatedhistory/pendingintegration/gates, noautoacceptance; periodic132→136.",
+  "findings": [
+    {
+      "id": "F1",
+      "stale": "CP124lifeadmissionfooter stillselfcheck/pendingPR despite mergedPR195.",
+      "correction": "LinkPR195merge728b79f inmutableevidence README; historicalCP124object/raw/AUD039cadence preserved.",
+      "fixed_in": [
+        "docs/evidence/life-admission/README.md"
+      ]
+    },
+    {
+      "id": "F2",
+      "stale": "CurrentCP131README/PLAN pendingintegration afterPR202merged; PLAN genericsharedblocker entrydoesnotdistinguishCP131scopedresolvedcase.",
+      "correction": "RecordCP131PR202merge9e9824a/currentCP132phaseflagresult; qualifysharedblockerknownvsremaininggenericmoving/order; replaceonlycurrentPLANstep withactualsharedquery.",
+      "fixed_in": [
+        "README.md",
+        "docs/PLAN.md",
+        "docs/PROTOCOL.md",
+        "docs/RESEARCH.md",
+        "docs/evidence/three-bomb-chain/README.md",
+        "docs/features.json",
+        "docs/COVERAGE.md"
+      ]
+    },
+    {
+      "id": "F3",
+      "stale": "Risk of interpretingCP131modelmatch orCP132entryflag1 asglobalimmutable/FIFO/deferreduntilallrays, inconsistentwithCP091cachedquery1→0inonecallback.",
+      "correction": "Explicitfourpointscope/unknownexactinstruction/query, linkCP091differentgeometry; readonlynextqueryfilteronlyshared2,3/diagnostic2,2. No completedfindingrewritten.",
+      "fixed_in": [
+        "docs/PROTOCOL.md",
+        "docs/RESEARCH.md",
+        "docs/PLAN.md"
+      ]
+    },
+    {
+      "id": "F4",
+      "stale": "Issue14currentbody/review nextstep stillonlyphaseflagmeasurement/auditdue132.",
+      "correction": "Source-linkedCP132results/limits/queryacceptance andAUD041through132/next136; snapshotcaptureUTC, keepallgate/epicopen.",
+      "fixed_in": [
+        "docs/evidence/issue-reconciliation/review.json",
+        "docs/evidence/issue-reconciliation/github-snapshot.json"
+      ]
+    }
+  ],
+  "remaining": [
+    "CP132selfcheckinchange awaitscommit/PRexacthead/merge; nextperiodicauditCP136.",
+    "Sharedcellactualquery/caller/nativeflagwriteinstruction notyetobserved; processentryonly cannotgeneralize.",
+    "Fullauth/codec/lifeauthority/UDPgrammar/allreset/fullmatch/K5/K6a/vanilla/LANInternet/gates remainopen; no record/raw rewrite."
+  ]
+}

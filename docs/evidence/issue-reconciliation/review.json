@@ -132,11 +132,11 @@
         "KR-S001",
         "KR-S002"
       ],
-      "known": "CP130PR201merged25b8884; CP131actualopening3,4p2 thenrootB3,3p1/secondaryA2,4p2/bridgeA3,4p2/native2→4→3/both195flagsmatch/diagnostic2,2stays1. R3exit0/703raw849checks, R1collectorerror/R2overshootpartial preserved.",
-      "remaining": "Sharedboxflag timing inrootcallback; modelagreement notglobalimmutable/FIFO/authority. Generalreset/auth/fullmatch/gates remain.",
-      "next_test": "PLAN knownprocessphase readonlytwoflag snapshots atroot/bridge/secondary/return, samegeometry/source. Ifsharedflag0beforesecondarybutraystops, targetcachedquerybranch; CP132manualauditdue.",
+      "known": "CP131PR202merged9e9824a; CP132actualsamegeometry/process2→4→3/195flagsmatch, shared2,3flag1atprocess-entry2/4/3→0rootreturn;diagnostic2,2stays1bothviews/843base+16phasegetterchecks/696raw.",
+      "remaining": "Exactsharedcellquery/caller/rayreturn inrootcallback; no allraysdeferredclear/globalimmutable/FIFO claim. Generalauth/authority/reset/fullmatch/gates remain.",
+      "next_test": "PLAN knownEA0B10querybody/filteronly2,3and2,2 callback2/currentmap/nativeptr/order; values/caller decide sharedquerybranch. AuditAUD041through132/next136.",
       "acceptance": "Epic checklist: linkedscopedtask/evidence+authoritymatrix vàacceptancegate ởPLAN; từngtaskđóng khôngđóngepic/K5/K6a.",
-      "reason": "Scopedsharedblocker contrast nowanswered; no generalizedlaw/gate. AUD040through128/next132.",
+      "reason": "Fourphaseflag observations confirmed, exactquery remains. CP091differentgeometry1→0query preserved, no globalcontradiction/nativeinstructionclaim.",
       "sources": [
         "docs/PROTOCOL.md#authority",
         "docs/RESEARCH.md#feature-gaps",
@@ -149,7 +149,8 @@
         "docs/RESEARCH.md#gap-disconnect-replacement",
         "docs/PROTOCOL.md#host-battle-exit",
         "docs/PROTOCOL.md#udp-membership-lifetime",
-        "docs/PROTOCOL.md#shared-blocker"
+        "docs/PROTOCOL.md#shared-blocker",
+        "docs/PROTOCOL.md#shared-flag-timing"
       ],
       "evidence": [
         "docs/evidence/current-movement-cycles/README.md",
@@ -159,7 +160,8 @@
         "docs/evidence/battle-exit/README.md#cp128",
         "docs/evidence/battle-exit/README.md#cp129",
         "docs/evidence/udp-generation/README.md#cp130",
-        "docs/evidence/three-bomb-chain/README.md#cp131"
+        "docs/evidence/three-bomb-chain/README.md#cp131",
+        "docs/evidence/three-bomb-chain/README.md#cp132"
       ],
       "prs": [
         173,
@@ -185,7 +187,8 @@
         198,
         199,
         200,
-        201
+        201,
+        202
       ],
       "successors": []
     },
@@ -512,6 +515,6 @@
       "successors": []
     }
   ],
-  "as_of_utc": "2026-11-05T12:31:45.215640+00:00",
+  "as_of_utc": "2026-11-05T12:43:25.230044+00:00",
   "limits": "Manual initial issue review has its dated baseline; #14 incrementally updated through CP129. GitHub snapshot has capture UTC only; no semantic/acceptance/gate auto-certification. Completed checkpoint records remain immutable."
 }
