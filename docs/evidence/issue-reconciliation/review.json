@@ -1,7 +1,7 @@
 {
   "schema": "kre-issue-review-v1",
   "as_of": "2026-11-05",
-  "baseline": "c24687a7fd91795efa5f9f8e8e18c259b75b33d1",
+  "baseline": "1cc76af75cb8cec90a84e1fcd8c72a292756b58c",
   "method": "Codex manual acceptance review; native/static/model/design/merge/gate distinct; originalissuebodies archivedlocalbeforeedit, no completecheckpoint rewrite",
   "issues": [
     {
@@ -132,9 +132,9 @@
         "KR-S001",
         "KR-S002"
       ],
-      "known": "CP121/PR192 mergedc24687a; CP122 actual deepchain outside root rays/native1→2→3/all195flags/laterownnoop bothviews,929 joins/774 raw; oneepoch/noresult.",
-      "remaining": "Currentterrain survivor result integration; general chain/authority/auth/validator/reset/LANInternet/gates.",
-      "next_test": "PLAN reuse CP082/100–106/122 normal safe ADown afterthird; actualB19/A21/native175ranks1,2/180/return/reset2 sameprofile without syntheticreports/fusechange.",
+      "known": "CP122/PR193 merged1cc76af; CP123 twoexactdeepchains/all195flags/survivor/result/reset2 verified1453joins/1238raw. CP106alreadycurrentterrain survivor; CP122gapoverstatement corrected AUD038. Priornegative1244raw preserved.",
+      "remaining": "Firstseen lifeauthority17/19, generalchain/sharedblocker/moving/auth/validator/whole reset/LANInternet/gates.",
+      "next_test": "PLAN selectedsealedcorpus17→needle0/rescue18→fresh17→19 perrole/epoch/hash; identifyexceptions/capturegaps before opt-in currenttrap policy. No duplicateRE/automaticguard/gate.",
       "acceptance": "Epic checklist: linkedscopedtask/evidence+authoritymatrix vàacceptancegate ởPLAN; từngtaskđóng khôngđóngepic/K5/K6a.",
       "reason": "Keep epic/gatesopen. CP120scopedfreshrescuepositivewhileCP119negativecontrolimmutable; cycleauditAUD037due120/next124, noreset.",
       "sources": [
@@ -167,7 +167,8 @@
         187,
         190,
         191,
-        192
+        192,
+        193
       ],
       "successors": []
     },

@@ -1,0 +1,71 @@
+{
+  "id": "AUD038",
+  "trigger": "ad_hoc",
+  "completed_through": "CP123",
+  "recorded_utc": "2026-11-05T07:06:37.176833+00:00",
+  "auditor": "Codex manual self-audit; independent review waived",
+  "read_files": [
+    "README.md",
+    "docs/PLAN.md",
+    "docs/PROTOCOL.md",
+    "docs/RESEARCH.md",
+    "docs/evidence/three-bomb-chain/README.md",
+    "docs/evidence/current-movement-cycles/README.md",
+    "docs/evidence/rescue-service/README.md",
+    "docs/evidence/checkpoints/README.md",
+    "docs/features.json",
+    "docs/COVERAGE.md",
+    "server/probe_service.py",
+    "local/research/codex/current-movement-cycles-r1/cycles/client.log",
+    "local/research/codex/current-movement-cycles-r1/cycles/client-B.log",
+    "local/research/codex/current-movement-cycles-r1/cycles/service-state.json",
+    "local/research/codex/current-terrain-survivor-r1/scope-correction.json",
+    "local/research/codex/current-terrain-survivor-r1/chain-summary.json",
+    "local/research/codex/current-terrain-survivor-r1/strict-check.txt",
+    "local/research/codex/deep-chain-cycles-r2/cycles-verification.json",
+    "local/research/codex/deep-chain-cycles-r2/chain-summary.json",
+    "local/research/codex/deep-chain-cycles-r2/analysis-correction.json",
+    "local/research/codex/deep-chain-cycles-r2/visual-review.json"
+  ],
+  "method": "Manual README→PLAN→PROTOCOL→RESEARCH→evidence then CP106 raw actual reports/native before-return ranks bothviews/twoepochs, CP122 deepchain and current2runs geometry/callback/flags/packet/nativeoracles/manual images. Source-first summary overstated oldgap: primaryraw corrects it. Compared r1R2third5,5/separate6 with r2exact4,5/deeproot4,5,6 and129native121for2actors. Not script-only semantic certification. No complete record/history edits; adhoc123 doesnotreset periodic124.",
+  "findings": [
+    {
+      "id": "F1",
+      "stale": "CP122 currentterrain survivor gap conflicts with CP106 existing B19/A21/native ranks1,2/tworesults/reset.",
+      "correction": "Declare CP106 reused known; CP123 only newdeepgeometry/resultreset2. Remove redundant active survivor task, next admissioncorpus perPLAN.",
+      "fixed_in": [
+        "README.md",
+        "docs/PLAN.md",
+        "docs/RESEARCH.md",
+        "docs/PROTOCOL.md",
+        "docs/evidence/three-bomb-chain/README.md",
+        "docs/COVERAGE.md",
+        "docs/evidence/issue-reconciliation/review.json"
+      ]
+    },
+    {
+      "id": "F2",
+      "stale": "PLAN Battle row still lists recursion unknown afterCP122.",
+      "correction": "Separate scopedCP122123deeprecursion from generic sharedblocker/order/moving unknown; preservecompletehistorical findings.",
+      "fixed_in": [
+        "docs/PLAN.md",
+        "docs/RESEARCH.md"
+      ]
+    },
+    {
+      "id": "F3",
+      "stale": "Inherited verifier demanded121155 for twoactor profile, or controller target mightbe mistaken for exactgeometry.",
+      "correction": "Retain original155failure, newseparate exact129verifier with samegeometry/semantic assertions. R1control R2third5,5 strictfailure retained; pulse is hypothesisnot universalcausality.",
+      "fixed_in": [
+        "docs/PROTOCOL.md",
+        "docs/evidence/three-bomb-chain/README.md",
+        "local/research/codex/deep-chain-cycles-r2/analysis-correction.json"
+      ]
+    }
+  ],
+  "remaining": [
+    "CP123selfcheck/pendingPRexactmerge; periodic remainsAUD037through120/nextCP124 (expectednextAUD039).",
+    "No fullmatch/K5/K6a/vanilla/LANInternet/generalchain/fullauth/lifeauthority claims. Corpusnext usesretainedraw before newanalysis/guard.",
+    "Legacy storage/evidence/history unchanged andhostlocal; gateacceptance semantic/manual remains separate."
+  ]
+}
