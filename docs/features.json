@@ -1,7 +1,7 @@
 {
   "schema": "kre-feature-index-v1",
   "build": "KR00967",
-  "as_of": "2026-11-06 CP136",
+  "as_of": "2026-11-06 CP137",
   "sources": {
     "plan": "docs/PLAN.md",
     "contract": "docs/PROTOCOL.md",
@@ -1155,7 +1155,8 @@
           "docs/evidence/round-go/README.md",
           "docs/evidence/probe-service/README.md",
           "docs/evidence/loading-timeout/README.md",
-          "docs/evidence/loading-timeout/README.md#cp136"
+          "docs/evidence/loading-timeout/README.md#cp136",
+          "docs/evidence/integrated-survivor/README.md"
         ]
       },
       "coverage": {
@@ -1189,7 +1190,8 @@
             "refs": [
               "docs/evidence/round-go/README.md",
               "docs/evidence/loading-timeout/README.md",
-              "docs/evidence/loading-timeout/README.md#cp136"
+              "docs/evidence/loading-timeout/README.md#cp136",
+              "docs/evidence/integrated-survivor/README.md"
             ]
           },
           "windows_original": {
@@ -1221,7 +1223,8 @@
           "refs": [
             "docs/evidence/probe-service/README.md",
             "docs/PROTOCOL.md#loading-timeout",
-            "docs/PROTOCOL.md#loading-timeout-positive"
+            "docs/PROTOCOL.md#loading-timeout-positive",
+            "docs/PROTOCOL.md#integrated-survivor"
           ]
         },
         "gate": {
@@ -1260,7 +1263,8 @@
           "docs/evidence/ending-udp-state-apply/README.md",
           "docs/evidence/current-movement-cycles/README.md",
           "docs/evidence/promoted-battle-cycles/README.md",
-          "docs/evidence/promoted-outcome/README.md"
+          "docs/evidence/promoted-outcome/README.md",
+          "docs/evidence/integrated-survivor/README.md"
         ]
       },
       "coverage": {
@@ -1301,7 +1305,8 @@
               "docs/evidence/current-movement-cycles/README.md",
               "docs/evidence/promoted-battle-cycles/README.md",
               "docs/evidence/promoted-outcome/README.md",
-              "docs/PROTOCOL.md#receiver-prepost"
+              "docs/PROTOCOL.md#receiver-prepost",
+              "docs/evidence/integrated-survivor/README.md"
             ]
           },
           "windows_original": {
@@ -1337,7 +1342,8 @@
             "docs/evidence/ending-udp-state-apply/README.md",
             "docs/evidence/current-movement-cycles/README.md",
             "docs/evidence/promoted-battle-cycles/README.md",
-            "docs/evidence/promoted-outcome/README.md"
+            "docs/evidence/promoted-outcome/README.md",
+            "docs/PROTOCOL.md#integrated-survivor"
           ]
         },
         "gate": {
@@ -1669,7 +1675,8 @@
           "docs/evidence/three-bomb-chain/README.md#cp131",
           "docs/evidence/three-bomb-chain/README.md#cp132",
           "docs/evidence/three-bomb-chain/README.md#cp133",
-          "docs/evidence/three-bomb-chain/README.md#cp134"
+          "docs/evidence/three-bomb-chain/README.md#cp134",
+          "docs/evidence/integrated-survivor/README.md"
         ]
       },
       "coverage": {
@@ -1730,7 +1737,8 @@
               "docs/PROTOCOL.md#shared-blocker",
               "docs/PROTOCOL.md#shared-flag-timing",
               "docs/PROTOCOL.md#shared-cell-state",
-              "docs/PROTOCOL.md#shared-cascade-cycles"
+              "docs/PROTOCOL.md#shared-cascade-cycles",
+              "docs/evidence/integrated-survivor/README.md"
             ]
           },
           "windows_original": {
@@ -1788,7 +1796,8 @@
             "docs/PROTOCOL.md#shared-blocker",
             "docs/PROTOCOL.md#shared-flag-timing",
             "docs/PROTOCOL.md#shared-cell-state",
-            "docs/PROTOCOL.md#shared-cascade-cycles"
+            "docs/PROTOCOL.md#shared-cascade-cycles",
+            "docs/PROTOCOL.md#integrated-survivor"
           ]
         },
         "gate": {
@@ -1840,7 +1849,8 @@
           "docs/evidence/promoted-outcome/README.md",
           "docs/evidence/firstseen-admission/README.md",
           "docs/evidence/needle-service/README.md",
-          "docs/PROTOCOL.md#needle-round-reset"
+          "docs/PROTOCOL.md#needle-round-reset",
+          "docs/evidence/integrated-survivor/README.md"
         ]
       },
       "coverage": {
@@ -1893,7 +1903,8 @@
               "docs/evidence/promoted-outcome/README.md",
               "docs/evidence/firstseen-admission/README.md",
               "docs/evidence/needle-service/README.md",
-              "docs/PROTOCOL.md#needle-round-reset"
+              "docs/PROTOCOL.md#needle-round-reset",
+              "docs/evidence/integrated-survivor/README.md"
             ]
           },
           "windows_original": {
@@ -1943,7 +1954,8 @@
             "docs/evidence/promoted-outcome/README.md",
             "docs/evidence/firstseen-admission/README.md",
             "docs/evidence/needle-service/README.md",
-            "docs/PROTOCOL.md#needle-round-reset"
+            "docs/PROTOCOL.md#needle-round-reset",
+            "docs/PROTOCOL.md#integrated-survivor"
           ]
         },
         "gate": {
@@ -2218,7 +2230,8 @@
           "docs/evidence/rescue-service/README.md#cp119",
           "docs/evidence/rescue-service/README.md#cp120",
           "docs/evidence/rescue-service/README.md#cp121",
-          "docs/evidence/life-admission/README.md"
+          "docs/evidence/life-admission/README.md",
+          "docs/evidence/integrated-survivor/README.md"
         ]
       },
       "coverage": {
@@ -2276,7 +2289,8 @@
               "docs/PROTOCOL.md#rescue-slot-refresh",
               "docs/PROTOCOL.md#rescue-round2-feedback",
               "docs/PROTOCOL.md#rescue-two-results",
-              "docs/PROTOCOL.md#death-lifecycle-policy"
+              "docs/PROTOCOL.md#death-lifecycle-policy",
+              "docs/evidence/integrated-survivor/README.md"
             ]
           },
           "windows_original": {
@@ -2340,7 +2354,8 @@
             "docs/PROTOCOL.md#rescue-service",
             "docs/PROTOCOL.md#rescue-reverse",
             "docs/PROTOCOL.md#rescue-two-results",
-            "docs/PROTOCOL.md#death-lifecycle-policy"
+            "docs/PROTOCOL.md#death-lifecycle-policy",
+            "docs/PROTOCOL.md#integrated-survivor"
           ]
         },
         "gate": {
@@ -2870,7 +2885,8 @@
           "docs/evidence/rescue-service/README.md#cp120",
           "docs/evidence/rescue-service/README.md#cp121",
           "docs/evidence/three-bomb-chain/README.md#cp123",
-          "docs/evidence/three-bomb-chain/README.md#cp134"
+          "docs/evidence/three-bomb-chain/README.md#cp134",
+          "docs/evidence/integrated-survivor/README.md"
         ]
       },
       "coverage": {
@@ -2922,7 +2938,8 @@
               "docs/PROTOCOL.md#rescue-round2-feedback",
               "docs/PROTOCOL.md#rescue-two-results",
               "docs/PROTOCOL.md#recursive-chain-cycles",
-              "docs/PROTOCOL.md#shared-cascade-cycles"
+              "docs/PROTOCOL.md#shared-cascade-cycles",
+              "docs/evidence/integrated-survivor/README.md"
             ]
           },
           "windows_original": {
@@ -2975,7 +2992,8 @@
             "docs/evidence/promoted-outcome/README.md",
             "docs/PROTOCOL.md#rescue-two-results",
             "docs/PROTOCOL.md#recursive-chain-cycles",
-            "docs/PROTOCOL.md#shared-cascade-cycles"
+            "docs/PROTOCOL.md#shared-cascade-cycles",
+            "docs/PROTOCOL.md#integrated-survivor"
           ]
         },
         "gate": {
@@ -3049,7 +3067,8 @@
           "docs/evidence/life-admission/README.md",
           "docs/evidence/battle-exit/README.md#cp126",
           "docs/evidence/three-bomb-chain/README.md#cp134",
-          "docs/evidence/loading-timeout/README.md#cp136"
+          "docs/evidence/loading-timeout/README.md#cp136",
+          "docs/evidence/integrated-survivor/README.md"
         ]
       },
       "coverage": {
@@ -3122,7 +3141,8 @@
               "docs/PROTOCOL.md#death-lifecycle-policy",
               "docs/PROTOCOL.md#battle-exit-rejoin",
               "docs/PROTOCOL.md#shared-cascade-cycles",
-              "docs/evidence/loading-timeout/README.md#cp136"
+              "docs/evidence/loading-timeout/README.md#cp136",
+              "docs/evidence/integrated-survivor/README.md"
             ]
           },
           "windows_original": {
@@ -3197,7 +3217,8 @@
             "docs/PROTOCOL.md#death-lifecycle-policy",
             "docs/PROTOCOL.md#battle-exit-rejoin",
             "docs/PROTOCOL.md#shared-cascade-cycles",
-            "docs/PROTOCOL.md#loading-timeout-positive"
+            "docs/PROTOCOL.md#loading-timeout-positive",
+            "docs/PROTOCOL.md#integrated-survivor"
           ]
         },
         "gate": {
@@ -3486,7 +3507,8 @@
           "docs/evidence/three-bomb-chain/README.md#cp133",
           "docs/evidence/three-bomb-chain/README.md#cp134",
           "docs/evidence/loading-timeout/README.md",
-          "docs/evidence/loading-timeout/README.md#cp136"
+          "docs/evidence/loading-timeout/README.md#cp136",
+          "docs/evidence/integrated-survivor/README.md"
         ]
       },
       "coverage": {
@@ -3598,7 +3620,8 @@
               "docs/PROTOCOL.md#shared-cell-state",
               "docs/PROTOCOL.md#shared-cascade-cycles",
               "docs/evidence/loading-timeout/README.md",
-              "docs/evidence/loading-timeout/README.md#cp136"
+              "docs/evidence/loading-timeout/README.md#cp136",
+              "docs/evidence/integrated-survivor/README.md"
             ]
           },
           "windows_original": {
@@ -3763,7 +3786,8 @@
             "docs/PROTOCOL.md#shared-cell-state",
             "docs/PROTOCOL.md#shared-cascade-cycles",
             "docs/PROTOCOL.md#loading-timeout",
-            "docs/PROTOCOL.md#loading-timeout-positive"
+            "docs/PROTOCOL.md#loading-timeout-positive",
+            "docs/PROTOCOL.md#integrated-survivor"
           ]
         },
         "gate": {

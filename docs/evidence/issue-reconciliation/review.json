@@ -132,13 +132,14 @@
         "KR-S001",
         "KR-S002",
         "KR-R003",
-        "KR-F001"
+        "KR-F001",
+        "KR-F015"
       ],
-      "known": "CP135/PR206 merged57b3b53; CP136 same-run normal deadline2/barrier15.165/16.188s/fullnativephases/twosharedcascade+actualboth19/result/return/reset/no falseclose. AUD042through136/next140.",
-      "remaining": "Combined CP106normal movement/survivor/drained-result with current-trap/deadline options not measured; fullauth/authority/generalreset/fullmatch/LANInternet/gates remain.",
-      "next_test": "PLAN sourcefirst CP106 exact controller/profile plus known death_lifecycle/current_trap and loading_timeout30s; retain resultdrain. Fourphase movement/current17→19/nativeclock/barrier/tworesults/reset/guards in same run; no source edits midrun.",
+      "known": "CP136PR207mergedf1d3e9e; CP137R1native4phasemovement/14entities/195flags/items/currenttrap/deadline/drainedsurvivor/resultsreset2 inonerun. Finalimagesblack; r2/r3inputpartials sealed separately.",
+      "remaining": "Currentintegratedprofile finalusableUI notproved; advertisedpeerIP vsactualsourceUDP notmeasured. Fullauth/authority/generalreset/fullmatch/LANInternet/gatesremain.",
+      "next_test": "PLAN shimonly153remoteIP127.0.0.2/3, actual99ports/key/seq/bodyrestunchanged; captureprivate-loUDPdst/src/nativeingress/target/currentXYtwoR1inputs. NoLANclaim. UIboundeddebt kept independently.",
       "acceptance": "Epic checklist: linkedscopedtask/evidence+authoritymatrix vàacceptancegate ởPLAN; từngtaskđóng khôngđóngepic/K5/K6a.",
-      "reason": "Scoped loading missingB and normal path now measured separately; next integration reuses already recovered mechanisms rather than re-RE. Audit periodic136→140.",
+      "reason": "Nativecombinedintegration resolved; visualgap cannotbeclosedfromnative180/otherprofile. Twochanged-inputobserverattempts partial; continueindependentendpointbranch, notendlessroute retries.",
       "sources": [
         "docs/PROTOCOL.md#authority",
         "docs/RESEARCH.md#feature-gaps",
@@ -156,7 +157,8 @@
         "docs/PROTOCOL.md#shared-cell-state",
         "docs/PROTOCOL.md#shared-cascade-cycles",
         "docs/PROTOCOL.md#loading-timeout",
-        "docs/PROTOCOL.md#loading-timeout-positive"
+        "docs/PROTOCOL.md#loading-timeout-positive",
+        "docs/PROTOCOL.md#integrated-survivor"
       ],
       "evidence": [
         "docs/evidence/current-movement-cycles/README.md",
@@ -171,7 +173,8 @@
         "docs/evidence/three-bomb-chain/README.md#cp133",
         "docs/evidence/three-bomb-chain/README.md#cp134",
         "docs/evidence/loading-timeout/README.md",
-        "docs/evidence/loading-timeout/README.md#cp136"
+        "docs/evidence/loading-timeout/README.md#cp136",
+        "docs/evidence/integrated-survivor/README.md"
       ],
       "prs": [
         173,
@@ -202,7 +205,8 @@
         203,
         204,
         205,
-        206
+        206,
+        207
       ],
       "successors": []
     },
@@ -529,6 +533,6 @@
       "successors": []
     }
   ],
-  "as_of_utc": "2026-11-05T15:03:40.148593+00:00",
-  "limits": "Dated manual dispositions; #14 updated through CP136. GitHub snapshot freshness is capture UTC only; no semantic acceptance/gate auto-certification, immutable completed checkpoint history."
+  "as_of_utc": "2026-11-05T15:42:43.595142+00:00",
+  "limits": "Dated manual issue dispositions; #14 updated through CP137. Snapshot freshness capture UTC only; no semantic/gate certification or immutable checkpoint rewrite."
 }

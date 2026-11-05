@@ -1,6 +1,6 @@
 # KR 00967 — contract tương thích client gốc
 
-Revision kr-legacy-contract-r1; cập nhật06/11/2026 JST (CP136; AUD042 quaCP136, kếCP140).
+Revision kr-legacy-contract-r1; cập nhật06/11/2026 JST (CP137; AUD042 quaCP136, kếCP140).
 **Contract có bằng chứng từng phần; chưa nghiệm thu full codec K2**.
 Lộ trình và thứ tự task chỉ giữ ở [REWRITE_PLAN — KRE](PLAN.md).
 Đây là contract của repo server KR. ADR0009 của bản viết lại là nguồn lịch sử để so sánh;
@@ -4792,3 +4792,23 @@ current deadline/survivor/movement cần phép kiểm riêng theo PLAN. Không s
 các kết quả khác run là proof một profile tích hợp. Source/code production không đổi sauCP135;
 226server tests reuse, local/raw/hash và auditAUD042 qua136. Fullmatch/K5/K6a/vanilla/LANInternet/
 originalauth/serverauthority và genericloading/membership vẫn mở.
+
+
+<a id="integrated-survivor"></a>
+### Normal survivor/movement với current-trap và deadline — CP137
+
+**kr_runtime/confirmed hẹp**, [raw/hash/recipe và các run partial](evidence/integrated-survivor/README.md).
+Reuse CP106 normalprofile/resultdrain/controller/probes, chỉ thêm death_lifecycle/current_trap và
+loading_timeout30s; productioncode giữCP135. R1 cùngrun cóactualA/B99/barrier26,612/25,803s trước
+hạn, hai nativeclock,4pha peer movement,14actual118/159/158 mỗi view/195flags/boxdelta/seedreset,
+BombFire/statreset/selectedsame-oldTCPguards. Hai actualB19 chỉ được nhận saucurrentB17, report
+metadata pin exacttrapSHA/currentgeneration. B19/A21 sauA17/localclear56→26 dẫn currentdrained
+survivorresult,175/180 vànativePrepare/110/reset hai vòng. Trước180 hai view cùngselectedA3/B1/XY;
+không globaltick/toànworldauthority. Đây là tổ hợp policyprofile mới đã đo, không sum ba run cũ.
+
+**Giới hạn UI:** hai ảnh cuốiR1 đen; native180/110 không đủ gọi finalroom usable. R2/R3 thử observer
+CP110 nhưng bị chặn trướcreturn2 bởi boundedinput (Y374<389 rồi cachedUp sample); raw/exit1 giữ.
+Y389 đã đạt ởR3, không suycapacity/inputtiming law hoặc wait/focus causalfix. Cảhai partial không
+thaythế R1nativeintegration hoặc bổ sung finalUIproof. Originalauth/authority/generalreset/Windows/
+fullmatch/K5/K6a/LANInternet vẫn mở. Hướng độc lập kế theoPLAN: servicehardcodedpeerIP127.0.0.1,
+153advertisedIP/sourceendpoint cần đo trước mạng nhiều máy; loopbackalias không làLAN/NAT/relay.

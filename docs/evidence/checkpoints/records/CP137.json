@@ -1,0 +1,233 @@
+{
+  "artifacts": [
+    {
+      "name": "CA-r2-login-logout.exe",
+      "sha256": "660447c293ce92270cb9b5815331bca976e8f156366e1fe50b217b6c12e60ce3"
+    },
+    {
+      "name": "CA-r2-stage-social.exe",
+      "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+    },
+    {
+      "name": "CA-r2-stage-social.exe Bcopy",
+      "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+    },
+    {
+      "name": "modO.bin",
+      "sha256": "a08950c833d3acab8281049def7b3dc96b221f107eeda01da3a548e34b91dce5"
+    }
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-11-05T15:44:50.320092+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "Codex solo RE/code/runtime/selfcheck, not independent approval.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Owner explicitly requested solo without Claude review."
+    }
+  },
+  "owner": "Codex",
+  "reviewer": "Codex",
+  "id": "CP137",
+  "previous": "CP136",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-05T15:44:50.320092+00:00",
+  "context_commit": "f1d3e9ee3e2850c615ae94a6cbcb68dcef33dd7b",
+  "question": "CombineknownCP106movement/survivor/resultdrain withCP124currenttrap andCP135deadline in one2roundrun; finalUI gap attribution?",
+  "scope": "Reuse exactCP106controller/profile/probes, onlytwoexistingoptions added. R1nativeintegrationcomplete/finalblack, twoCP110observerfollowups inputpartial sealed before next run. No new nativebody, codec/chain/wholeitem/corpus RE. Keep UIblocker andcontinueindependentendpointbranch perPLAN.",
+  "locators": [
+    "CP136PR207head3e634da69ba43f34b20d5c4078fb7eb5943383b5/mergef1d3e9ee3e2850c615ae94a6cbcb68dcef33dd7b/exactCLEANMERGEABLEchecks[].AUD042through136/next140.226baselineunchangedcodetests reused.",
+    "R1a5fbfddf7c4143c44067967dd7d24758168103c9fd7fdec7347dd8f33f9fc011/356.401085296s/exit0/2187raw/2293integration+557peer+152runtime+249transport+39items+59drain+33peer21+59endingjoins; overlapping counts notprogress. Barrier26.612107261/25.803417228s.",
+    "R2c12b08bb9de6deabc328d028e007f3551c5541dfcf2792b8e6a0bbfe994f6ac0/198.621638529s/exit1/1081raw/Y374<389 at3s/3bombs/noresult. R3d333af9e01480160ae87059131a64839a339294f7d5e3a608ea62c3acd04ffcd/203.342234806s/exit1/1176raw/Y389reached/inputbound3→6 thenUp4s onlycachedsample/5bombs/noresult.2442partialchecks preservefailures.",
+    "KnownnativepeerE66680/E667BE/E668AD/B4EA14,159E5F450/158E5F450-kind0/175E5F610/180E64950, PrepareEnableDDF330/ReadyDDE760 are cachedsites; no newbody. Runtimee9bb4766/static660447/modOa08950/base400000/RVA=VA−400000."
+  ],
+  "findings": [
+    {
+      "summary": "R1same-run4phaseactualpeer/key/target/currentXY,14actual118/159/158view/all195flags/items/statreset/TCPguards pluscurrenttrapB19/exactB17hash/deadline/drainedsurvivorresultreturnreset2. No falseclose; exactending180A3/B1/XY bothviews.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#integrated-survivor",
+      "limits": "ModifiedWine2realAB/pinnedCP106profile+currenttrap+loadingdeadline30s/resultdrain alreadyenabled. R1same-run4phasemovement/14entities/195flags/items/actualB17→19/survivorresultreturnreset2, finalA/Bimagesblack and no finalusableUIproof. R2/R3inputpartials not2results. Originalauth/authority/generalreset/fullmatch/K5/K6a/vanilla/LANInternet/gates open; no gamecall/stateforcing/sourcebinaryDBpackchange; code/profilefrozen throughcleanup/rawseal.",
+      "evidence": [
+        "RUN-02691",
+        "RUN-02718",
+        "RUN-02839",
+        "RUN-02848",
+        "RUN-02673",
+        "RUN-02841"
+      ]
+    },
+    {
+      "summary": "R1finalimagesblack; no finalusableUIproof fromnative180110. CP110observer followupsR2/R3 neverreachreturn2 dueinputbounds; Y389reachedR3only, Upcachegap distinct. Failuresnotenginehang orcausalpolicyfix.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#integrated-survivor",
+      "limits": "ModifiedWine2realAB/pinnedCP106profile+currenttrap+loadingdeadline30s/resultdrain alreadyenabled. R1same-run4phasemovement/14entities/195flags/items/actualB17→19/survivorresultreturnreset2, finalA/Bimagesblack and no finalusableUIproof. R2/R3inputpartials not2results. Originalauth/authority/generalreset/fullmatch/K5/K6a/vanilla/LANInternet/gates open; no gamecall/stateforcing/sourcebinaryDBpackchange; code/profilefrozen throughcleanup/rawseal.",
+      "evidence": [
+        "RUN-02862",
+        "RUN-02713",
+        "RUN-03940",
+        "RUN-05215"
+      ]
+    },
+    {
+      "summary": "Copiednativepeergetters/UDPCRC/flagarray/actor/typedcodec checks validate measurements distinctfromWineexecution. ReusedCP106andCP124knowledge avoidsallnewnativebody/codec/chain/life-corpuswork.",
+      "source": "kr_static",
+      "status": "confirmed",
+      "method": "emulation",
+      "canonical": "docs/PROTOCOL.md#integrated-survivor",
+      "limits": "ModifiedWine2realAB/pinnedCP106profile+currenttrap+loadingdeadline30s/resultdrain alreadyenabled. R1same-run4phasemovement/14entities/195flags/items/actualB17→19/survivorresultreturnreset2, finalA/Bimagesblack and no finalusableUIproof. R2/R3inputpartials not2results. Originalauth/authority/generalreset/fullmatch/K5/K6a/vanilla/LANInternet/gates open; no gamecall/stateforcing/sourcebinaryDBpackchange; code/profilefrozen throughcleanup/rawseal.",
+      "evidence": [
+        "RUN-00453",
+        "RUN-02795",
+        "RUN-02713"
+      ]
+    },
+    {
+      "summary": "Nativeintegrationbranchscopedresolved, UI observer debt remains. Independentnextmeasure153advertisedIP/actualUDPsource withprivate127.0.0.2/3aliases beforevirtualLAN; servicecurrentlyhardcodes127.0.0.1, noLANgateclaim.",
+      "source": "design",
+      "status": "design",
+      "method": "documentation",
+      "canonical": "docs/PROTOCOL.md#integrated-survivor",
+      "limits": "ModifiedWine2realAB/pinnedCP106profile+currenttrap+loadingdeadline30s/resultdrain alreadyenabled. R1same-run4phasemovement/14entities/195flags/items/actualB17→19/survivorresultreturnreset2, finalA/Bimagesblack and no finalusableUIproof. R2/R3inputpartials not2results. Originalauth/authority/generalreset/fullmatch/K5/K6a/vanilla/LANInternet/gates open; no gamecall/stateforcing/sourcebinaryDBpackchange; code/profilefrozen throughcleanup/rawseal.",
+      "evidence": [
+        "RUN-00468"
+      ]
+    }
+  ],
+  "verification": [
+    {
+      "check": "R1nativeintegration2:2293joins+557peer/152runtime/249transport/39items/59drain/33peer21/59ending andsourcefreeze/seal",
+      "result": "pass",
+      "evidence": [
+        "RUN-02691",
+        "RUN-00453",
+        "RUN-02724"
+      ],
+      "limits": "ModifiedWine2realAB/pinnedCP106profile+currenttrap+loadingdeadline30s/resultdrain alreadyenabled. R1same-run4phasemovement/14entities/195flags/items/actualB17→19/survivorresultreturnreset2, finalA/Bimagesblack and no finalusableUIproof. R2/R3inputpartials not2results. Originalauth/authority/generalreset/fullmatch/K5/K6a/vanilla/LANInternet/gates open; no gamecall/stateforcing/sourcebinaryDBpackchange; code/profilefrozen throughcleanup/rawseal."
+    },
+    {
+      "check": "FinalusableUI onintegratedprofile:finalR1black/R2andR3partialbeforeobserver",
+      "result": "fail",
+      "evidence": [
+        "RUN-02862",
+        "RUN-02713"
+      ],
+      "limits": "Native2resultsnotUIproof; no fabricatedpass orcrossprofilecomposition."
+    },
+    {
+      "check": "Docs/catalog/issues/artifacts/diff;226unchangedsourcebaseline tests reused;2442partialprovenancechecks",
+      "result": "pass",
+      "evidence": [
+        "RUN-02671",
+        "RUN-02694",
+        "RUN-00458",
+        "RUN-05333",
+        "RUN-02713"
+      ],
+      "limits": "Mechanical checks/model separatefromsemanticacceptance andgate."
+    }
+  ],
+  "evidence": [],
+  "evidence_manifests": [
+    {
+      "path": "docs/evidence/checkpoints/evidence/CP137-integrated-survivor.json",
+      "bytes": 1353634,
+      "sha256": "6c38948548c31b78f1956e5d611ff8fe7f869721a1e49868f886194030ab0b5c",
+      "count": 5333
+    }
+  ],
+  "delta": {
+    "added": [
+      "Native combinednormalcurrenttrap/deadline/resultdrain/survivor/movement2 sameprofile/run proof."
+    ],
+    "corrected": [
+      "CP136separateprofileintegrationgap resolvednativeinR1, but finalUI is notproved by native180/otherprofileimages.",
+      "Changedcapacityinputbound reachesY389inR3, no capacitylawclaim; newcachedUpobservationblockerkept ratherretrywholeRE."
+    ],
+    "superseded": [
+      "NEXT-INTEGRATED-SURVIVOR-GUARDS closed fornativeintegration; NEXT-INTEGRATED-RETURN2-UI activewithboundednewconditions andNEXT-PEER-ENDPOINT-IP activeindependent perPLAN."
+    ]
+  },
+  "blockers": [
+    "Finalroom usableUI notconfirmed inintegratedprofile; twoobserverfollowups failedinputbeforequestion; futurelate-arm/freshfeedback perknownCP110 only.",
+    "Advertised153IPvsactualUDPsource/virtualLAN/NAT/relay unknown; originalauth/authority/generalreset/fullmatch/gates open."
+  ],
+  "next_steps": [
+    {
+      "id": "NEXT-INTEGRATED-SURVIVOR-GUARDS",
+      "task": "KRE-005b",
+      "state": "closed",
+      "action": "R1nativefullcombinedtwo-cycleproofverified; finalUI explicitly separate unresolved step.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-INTEGRATED-RETURN2-UI",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "BoundedUIdebt:reuseCP110late-armobserver/freshfeedback/newconditions whenneeded; no repeatY389/shortUpbounds orforcedstate. PLAN prioritizesindependentendpoint beforethisfollowup.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-PEER-ENDPOINT-IP",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "PLAN shimonlyremoteIP153127.0.0.2/3/actual99ports/key/seqrestunchanged; isolate/captureactualUDPdstsrc/nativeingress/key/target/currentXY2R1inputs. NoLANNATrelayclaim. CachedCP045lookup/fallback onlyifblocker.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    }
+  ],
+  "docs_sync": [
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "CP137nativecombined2 confirmed/failedUIpartials distinguished, sourceboundedlimits/endpointnextstep/issue/catalog synced beforecomplete."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "CP137nativecombined2 confirmed/failedUIpartials distinguished, sourceboundedlimits/endpointnextstep/issue/catalog synced beforecomplete."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "updated",
+      "reason": "CP137nativecombined2 confirmed/failedUIpartials distinguished, sourceboundedlimits/endpointnextstep/issue/catalog synced beforecomplete."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "updated",
+      "reason": "CP137nativecombined2 confirmed/failedUIpartials distinguished, sourceboundedlimits/endpointnextstep/issue/catalog synced beforecomplete."
+    },
+    {
+      "path": "docs/features.json",
+      "state": "updated",
+      "reason": "CP137nativecombined2 confirmed/failedUIpartials distinguished, sourceboundedlimits/endpointnextstep/issue/catalog synced beforecomplete."
+    },
+    {
+      "path": "docs/COVERAGE.md",
+      "state": "updated",
+      "reason": "CP137nativecombined2 confirmed/failedUIpartials distinguished, sourceboundedlimits/endpointnextstep/issue/catalog synced beforecomplete."
+    },
+    {
+      "path": "docs/evidence/integrated-survivor/README.md",
+      "state": "updated",
+      "reason": "CP137nativecombined2 confirmed/failedUIpartials distinguished, sourceboundedlimits/endpointnextstep/issue/catalog synced beforecomplete."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/review.json",
+      "state": "updated",
+      "reason": "CP137nativecombined2 confirmed/failedUIpartials distinguished, sourceboundedlimits/endpointnextstep/issue/catalog synced beforecomplete."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
+      "state": "updated",
+      "reason": "CP137nativecombined2 confirmed/failedUIpartials distinguished, sourceboundedlimits/endpointnextstep/issue/catalog synced beforecomplete."
+    }
+  ]
+}
