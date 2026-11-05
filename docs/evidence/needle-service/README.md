@@ -67,17 +67,17 @@ Codex đã xem `needle-current-contact.png`: Ctrl×1 trước dùng, immediateaf
 sauđó cảhai view thoát/di chuyển/ôtrống. Ctrl lầnhai ghiOSkeydown/up nhưng không1/0 mới trongwindow.
 `runtime-verification.json`:1.221joins gồm1.145originalrawhash; originalseal/hash/sourcefreezeverified.
 
-Scope chỉ mộtpickup/trap/escape hiện hành; chưasecondtrapdepleted hoặcStart2→credit/consume reset
-trênnewservice bằng runtime, chưarescue18/multi-charge/fullinventory/location/auth/authority. Start/
-leave/EOF/reset chỉ modeltests trong scope đãnêu. Không result/fullround/K5/K6a/LANInternet.
-Bước kế giữsameprofile/service vàmở đúngsecondtrap/Start2 đểkiểmcredit/marker qua lifecycle, khônglặpREkim/receiver.
+Giới hạn lịch sử CP113: run này chỉ mộtpickup/trap/escape; Start/reset khi đó mới có model.
+[CP114 bên dưới](#cp114) đã bổ sung currentdepleted/Start2, [CP115–116](../rescue-service/README.md)
+đã đo rescue độc lập. Không suy fullinventory/location/auth/fullmatch/K5/K6a/LANInternet.
+Thứ tự hiện tại chỉ ở PLAN; không dùng nextstep CP113 làm việc hiện hành.
 
 
 <a id="cp114"></a>
 ## CP114 — Current service depleted và Start2
 
 Baseline CP113/PR183merge `269504268d942597fedc1e0a0affee275e936b23`; Codexselfcheck/waived,
-CP114chờPR; AUD035qua112/kế116. Contract mới chỉ[PROTOCOL](../../PROTOCOL.md#needle-round-reset),
+CP114/PR184 đã merge `989dd3a`; audit hiện hành AUD036/CP116, kế120. Contract mới chỉ[PROTOCOL](../../PROTOCOL.md#needle-round-reset),
 [gap](../../RESEARCH.md#gap-needle), [thứtự](../../PLAN.md#current-order).
 
 Raw `local/research/codex/needle-reset-r1/`: `reuse-question.json` pin CP038olddepleted/CP113currentescape/

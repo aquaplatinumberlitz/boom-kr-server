@@ -213,3 +213,10 @@ Kiểm `python3 -m unittest server.test_host_back_rejoin`; không originalauthor
 Report17/19 chỉ nhận serialized envelope variant đãđo trướccursor/marker/death/forward; xem [contract và giới hạn](../docs/PROTOCOL.md#death-envelope-admission). Malformedpacket theo exceptionclose/abort hiện hành; semanticfirstseen/location/inventory chưa làauthority. Không coi guard này làhỗtrợmọi mode/report.
 
 `needle_escape: {"mode":"needle_145_report_pair"}` chỉopt-inmộtkim145/two-liveAB; credit/same-trapreport1→0/peer1701/commit/reset có [contract](../docs/PROTOCOL.md#needle-service). Không bậtrescue18/activeitemkhác hoặc giả inventoryauth.
+
+
+`rescue_contact: {"mode":"friendly_AB_synthetic2_aux1"}` là legacy option name của fixed-profile
+CP115; CP116 hỗ trợ hai variant đã đo A/aux1 và B/aux0. Profilehash/106 trướcStart/153 giữ slot2
+và admission/send-success-commit có [contract/giới hạn](../docs/PROTOCOL.md#rescue-reverse).
+Hai client thật cộng actor đối địch tổng hợp, không generalteam/roster/auth; defaultoff.
+[Control/positive/provenance](../docs/evidence/rescue-service/README.md#cp116), 190tests tại CP116.
