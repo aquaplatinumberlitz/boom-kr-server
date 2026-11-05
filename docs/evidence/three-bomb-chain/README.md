@@ -203,3 +203,29 @@ notactorstate. Cleanupquery0aftersecondaryreturn notproofexactflagwriteinstructi
 No19/result/return/fullmatch/K6a; nextPLANsamegeometry twoactualdeath/result/resetcycles.
 CP132PR203head32f29df/merge435b107 exactCLEAN/MERGEABLE/checks[]. 220unchangedservertestsreused;
 docs/catalog/issues/artifacts/history/diff checked; AUD041through132next136/reviewwaived.
+
+
+<a id="cp134"></a>
+## CP134 — Sharedcascade/actualbothdeath/result/reset hai epoch cùngrun
+
+[Contract/giới hạn](../../PROTOCOL.md#shared-cascade-cycles), [gap](../../RESEARCH.md#gap-round-reset).
+Raw local/research/codex/shared-cascade-cycles-r1, sourcefirst`reuse-question.json` pinCP131–133,
+CP084all-dead/CP123tworesult/normalReadyStart/VNgame/KRdata. Reuse exactsource/profile/client/map/
+fuse/inputgeometry; onlycontrollerstop→waitboth19/return/ReadyBStartA/repeatsamegeometry/return2.
+KnownminimalCP131GDBprobes giảmqueryoverhead; no newbody/codec/gamecall/statewrite/forged19.
+
+Run378,168184386s/exit0/noerrors/1212raw, SHA256
+`76f9fd1d4e3dc4b26e6e5b44952bd4d44c0b404b805ea7d82591e1e99d55d672`.
+Recipe/preflight/runtime-source/postcleanuprawseal/privateuser-net-mount-PID/chỉlo/no-route/filesNSS/
+onelease/twoprefix-display. `cycles-verification.json`1454relations: exact4bombs/epoch/IDs1..8/key12345→
+12346/native2→4→3 và6→8→7/all195flags/seedreset/actualboth17→19/chosenrank2,2/full175180/second110/
+noEOFbeforecompletion. `stat-reset-verification.json`24clockbaselines(capacity/power/logicalspeed),
+khôngfullinventoryreset. `actor-fields.json`5178copiedgetters, flagreader36snapshots/7092getters7020array,
+354packet12peer153models separatefromruntime/originalauthority; counterskhôngphầntrămtiếnđộ.
+`visual-review.json` finaltwo-roomimages/sourceSHA manuallyread, Native/captureproof chính.
+
+CP133PR204headb328043/mergeee61b5b exactCLEAN/MERGEABLE/checks[]. 220baseline server testsreused
+unchangedsource, docs/catalog/issues/artifacts/history/diffchecked. Twochosenall-deadcycles notfullmatch/
+K5/K6a/vanilla/LANInternet/authority/allreset certification; oldcomplete/raw/sourcebinaryDBpackgiữ nguyên.
+CP134selfcheck/currentchange/reviewwaived, AUD041through132/next136. NextonlyPLAN connectedloading
+stall/noinit99/TCPlive control, notredoCP050delayrelease/preclockEOF orscanmorechainvariants.

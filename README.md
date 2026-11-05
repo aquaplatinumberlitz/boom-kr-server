@@ -41,20 +41,20 @@ Hai copy KR Wine đã chạy login/sảnh/phòng/Battle và các chu kỳ kết 
 [kim/reset](docs/PROTOCOL.md#needle-round-reset), [cứu hai chiều và hai kết quả](docs/PROTOCOL.md#rescue-two-results),
 [deep chain/reset](docs/PROTOCOL.md#recursive-chain-cycles) giữ phạm vi và giới hạn tại nguồn chuẩn.
 
-**Mốc mới CP133:** đã nối query với cellstate của shared blocker: cùng pointer ô(2,3), root gặp
-state0 → queryflag1 → state2/return0; secondary gặp lại state2 → return0, không query lần hai.
-Hai client cùng kết quả. [Contract/giới hạn](docs/PROTOCOL.md#shared-cell-state),
-[raw/hash/recipe](docs/evidence/three-bomb-chain/README.md#cp133). Cơ chế cellstate trong ca này
-khác với kết luận “mọi mapflag bất biến”; globalchain/authority vẫn thiếu.
+**Mốc mới CP134:** cùng hai client đã hoàn tất hai chu kỳ shared cascade → A/B chết thật →
+rank2/2 →175/180 → về phòng. Geometry lặp đúng, ID1–4→5–8, key12345→12346, toàn195 seed flags
+và24 giá trị stat tại clock reset khớp. [Contract/giới hạn](docs/PROTOCOL.md#shared-cascade-cycles),
+[raw/hash/recipe](docs/evidence/three-bomb-chain/README.md#cp134). Hai chu kỳ thử có đầy đủ bằng chứng
+trong profile Wine này; fullmatch/K6a/vanilla/LANInternet vẫn chưa nghiệm thu.
 
-CP132/AUD041 đã merge [PR203](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/203) tại `435b107`.
-CP133 docs/evidence/tự kiểm trong thay đổi hiện tại; review độc lập
+CP133 đã merge [PR204](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/204) tại `ee61b5b`.
+CP134 docs/evidence/tự kiểm trong thay đổi hiện tại; review độc lập
 [waived](docs/evidence/checkpoints/review-waiver.json). Raw/complete history giữ nguyên;
-#1/#2/#3/#9/#14 và K0–K7 vẫn mở. Audit kế **CP136**.
+#1/#2/#3/#9/#14 và K0–K7 vẫn mở. AUD041 qua132; audit kế **CP136**.
 
-Theo [PLAN](docs/PLAN.md#current-order), chuyển sang ghép shared cascade với hai lần chết/kết quả/
-về phòng/reset trong cùng run, dùng lại các đường đã đo; không mở tiếp mọi chainvariant.
-Ca mới hiện một cascade/noresult, chưa fullmatch/K6a/vanilla/LANInternet.
+Theo [PLAN](docs/PLAN.md#current-order), bước kế là loading không hoàn tất nhưng TCP còn mở:
+đo currentservice với actualB99 được giữ, không lặp ca delay10s-release hoặc EOF đã giải.
+Không mở tiếp mọi biến thể chain khi chưa có trigger.
 
 Đích đầu: hai client thật chơi hai trận liên tiếp; mở bốn client và hardening sau đó.
 

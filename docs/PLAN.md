@@ -1,7 +1,7 @@
 # Kế hoạch server giả lập KR 00967
 
 Nguồn chuẩn của project `boom-kr-server`; bản nhập từ plan đã được dsh1/dsh2 review tại `1eee46d`.
-Cập nhật05/11 JST (CP133): sharedcellstate samepointer0→2/query1 rồi2→2/noquery/bothreturn0 hai view đã đo. CP132/PR203 merged `435b107`; CP133 tự kiểm trong thay đổi hiện tại. AUD041 qua132, kế136.
+Cập nhật05/11 JST (CP134): same-run sharedcascade/actualboth19/rank2,2/175180/return/reset hai vòng đã đo. CP133/PR204 merged `ee61b5b`; CP134 tự kiểm trong thay đổi hiện tại. AUD041 qua132, kế136.
 
 
 ### Mục tiêu, baseline và phạm vi
@@ -37,13 +37,13 @@ với client Rust không chứng minh có thể điều khiển client KR bằng
 
 ### Tiến độ hiện hành theo bằng chứng
 
-| Task/mốc | Trạng thái tại CP133 | Nguồn chuẩn |
+| Task/mốc | Trạng thái tại CP134 | Nguồn chuẩn |
 |---|---|---|
 | KRE-004/issue6 | Đã review/merge PR7 và đóng issue:recipe r1 đến local accept;không phải full K1 | [Wine r1](evidence/wine/README.md) |
 | Bootstrap reply | PR8 đã merge;debugger ProcessPatchreturn1,không ép success | [bootstrap evidence](evidence/bootstrap-wire/README.md) |
 | KRE-005a/issue9,R2 | PR10 đã merge:3 cold start cửa sổ/second accept;issue9 còn mở | [R2 evidence](evidence/wine-r2/README.md) |
 | WCP hai-reply | Run CP001 là lịch sử chưa C→S; CP006 đã đo request đầu trên copy tham số hóa | [PROTOCOL](PROTOCOL.md#wcp),[WCP evidence](evidence/wcp/README.md) |
-| KRE-005b/issue14 | CP006–132 đã merge; CP133 sharedquery/cellstate scoped đã đo; fullround/authority/full auth còn mở | [Q-023](RESEARCH.md#q-023), [service](evidence/probe-service/README.md) |
+| KRE-005b/issue14 | CP006–133 đã merge; CP134 sharedcascade/result/reset2 scoped đã đo; fullround/authority/full auth còn mở | [Q-023](RESEARCH.md#q-023), [service](evidence/probe-service/README.md) |
 | K0/K1 | Chưa nghiệm thu toàn gate;Windows vanilla/control ownership và các điều kiện còn thiếu giữ mở | Gate dưới,[Q-022](RESEARCH.md) |
 | K2a/K2 | Primitive/WCP, CP057stream native/model và CP058–060authcallback137/135/errors0 đã có; fullcodec/authauthority/reconnect và gate chưa pass | [PROTOCOL](PROTOCOL.md#login-auth),[Q-023](RESEARCH.md#q-023) |
 | K3 | Copy đã vẽUI/đóngnotice, A/B/Cprofile đọc sạch và mộtnamedcachewarm được nhận; identityauthority/toàncache/codec/K3 chưa nghiệm thu | [Contract sảnh](PROTOCOL.md#channel-lobby) |
@@ -63,15 +63,17 @@ Một blocker chỉ kết thúc nhánh đo tương ứng; ghi rõ rồi tiếp v
 KRE-073/[#188](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/188) đã giao
 [PR189](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/189)/merge`dae23b7`, CP118 vàđóng;
 selectiveCLI/historicalmigration xong, không còn taskactive tổ chức. CP119 đãtiếpactualRE sau merge.
-1. **KR-F005/X001/X002 — shared cascade/kết quả/reset hai vòng:**
-   [CP133](PROTOCOL.md#shared-cell-state) đã giải localcellstate/query của geometrysharedblocker;
-   không tiếp tục tìm globalFIFO/immutable/allmaps khi chưa có trigger integration.
-   Reuse nguyên CP131–133actualopening/threebombs/native195flags và CP084all-dead result/CP123Ready/
-   Start2. Giữ source/profile/client/map/fuse6, bỏ early-stop sau root; chờ actual17/19hai phía,
-   chosenrank2/2/175180/room, ReadyB/AStart2, lặp sameactualgeometry/currentkey/IDs/seed/statreset;
-   kết thúc sau secondreturn/native110/UI. Không ghép các run hiện có thành proof này, không fake19.
-   Nếu không actualboth19 hoặc geometry lần2 sai, giữ partial và sửa đúng input/barrier, khôngreset
-   map/actor/nativeclock. Đây là integration scope, không tự nghiệm thu fullmatch/K6a/gates.
+1. **KR-R003/F001/X003 — loading không hoàn tất, TCP còn mở:**
+   [CP134](PROTOCOL.md#shared-cascade-cycles) đã ghép sharedcascade/twoactualdeath/result/reset,
+   không lặp chainquery/cellstate hoặc hai chu kỳ này khi không có trigger mới.
+   CP050 actualB99hold10s-release/barrier vàCP072/074preclockEOFcleanup đã có proof riêng;
+   chúng chưa chứng minh xử lý client connected nhưng không hoàn tất load. Currentservice chờ2init99,
+   chưa có deadline theo round. Reuse exacthold99 wrapper/native121/phaseprobes/source, khôngRElại99/153.
+   Control tối thiểu giữ actualB99 dispatch, không release/EOF/killclient trong45s; kiểm actualA99,
+   both121/no197196153/clock/finiteUI/service và TCP cònmở. Đây là fault injection ở dispatcher,
+   không gọi là client thật khôngload/networkloss hoặc originalserverpolicy.
+   Sau khi xác định blocker runtime mới chọn opt-in deadline/cancel policy theo consumer đã có,
+   chạy fixed; khôngmint99/death hoặc tựnânggate từcounter. Không đổi source/config giữa run.
    [#14](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/14) epic giữ mở.
    <!-- active-issue: 14 --> AUD041 qua132; periodic audit kế **CP136**.
 2. **KR-B003/KR-F006 — nợ có giới hạn:** [CP057](PROTOCOL.md#codec-stream-boundaries) đã đo stream/
@@ -99,7 +101,7 @@ Bảng này chỉ phân công/thứtự; acceptance/PR/bằngchứng ởissue. [
 
 | Thứ tự/scope | Issue | Trạng thái/phần còn thiếu |
 |---|---|---|
-| Hiện hành RE | [#14/KRE-005b](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/14) | CP006–132 merged; CP133 scopedsharedquery/cellstate có nguồn/tự kiểm. Ghép sharedcascade/result/reset2 là bước1; fullauth/authority/fullmatch/gates mở. |
+| Hiện hành RE | [#14/KRE-005b](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/14) | CP006–133 merged; CP134 same-runsharedcascade/tworesult/reset có nguồn/tự kiểm. Connectedstalledload là bước1; fullauth/authority/fullmatch/gates mở. |
 | Control theo trigger/gate | [#1/KRE-001](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/1), [#2/KRE-002](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/2) | Windowsoriginal/ownership/K0K1/fullbootstrapconfig; reuseWine/import/replyđãđo. |
 | Codec/identity khi cần | [#3/KRE-003](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/3), [#9/KRE-005a](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/9) | Fullcodec/livebounds vàintermittentmainstartupcause cònthiếu; khônglặpprimitive/auxiliarylocale. |
 

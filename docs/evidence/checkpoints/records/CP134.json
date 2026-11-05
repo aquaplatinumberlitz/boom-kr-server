@@ -1,0 +1,227 @@
+{
+  "artifacts": [
+    {
+      "name": "CA-r2-login-logout.exe",
+      "sha256": "660447c293ce92270cb9b5815331bca976e8f156366e1fe50b217b6c12e60ce3"
+    },
+    {
+      "name": "CA-r2-stage-social.exe",
+      "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+    },
+    {
+      "name": "CA-r2-stage-social.exe Bcopy",
+      "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+    },
+    {
+      "name": "modO.bin",
+      "sha256": "a08950c833d3acab8281049def7b3dc96b221f107eeda01da3a548e34b91dce5"
+    }
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-11-05T14:38:16.420124+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "Codex solo RE/code/runtime/selfcheck, not independent approval.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Owner explicitly requested solo without Claude review."
+    }
+  },
+  "owner": "Codex",
+  "reviewer": "Codex",
+  "id": "CP134",
+  "previous": "CP133",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-05T14:38:16.420124+00:00",
+  "context_commit": "ee61b5b2e84d8ebcdabad93e5328c2f9d0ef4a07",
+  "question": "Same-run sharedcascade actualbothdeath/chosenresult/return/reset twice: exactgeometry/native195/nativeprocess/currentIDskeys/clockstats/secondroom?",
+  "scope": "ReuseCP131–133sharedgeometry/mechanism/knownminimalGDB/full195, CP084all-deadfixturealreadyprofile/CP123ReadyBStartA. Source/profile/client/map/fuse6unchanged; onlyremoveearlyrootstop/waitactual19/return/repeatroute/return2. Oneisolatedrun/rawseal/capture/native/gettermodels, no newnativebody/forgeddeath.",
+  "locators": [
+    "BaselineCP133PR204headb3280434a8a9b029291ea1fde6d18152da17cf22/mergeee61b5b2e84d8ebcdabad93e5328c2f9d0ef4a07/exactCLEANMERGEABLEchecks[].220baseline testsreusedunchangedsource;AUD041through132/next136.",
+    "Run76f9fd1d4e3dc4b26e6e5b44952bd4d44c0b404b805ea7d82591e1e99d55d672/378.168184386s/exit0/controller-service-probeerrors0/1212raw/1454checks. Same8TCP/R1IDs1..4/R2IDs5..8/key12345→12346.",
+    "BothroundsactualopeningA3,4p2 thenBroot3,3p1/Asecondary2,4p2/Abridge3,4p2/nativeprocess2→4→3then6→8→7/all195flagsmatch/laterownnoops. AcceptedactualA17→19/B17→19eachround/chosenall_live_AB_accepted_dead_rank2/two175302ranks2,2/1803/room1106bothviews. R1return→actualB95/A104/two121129/clocks/key2; no EOFbeforecompletion.",
+    "36nativeflagsnaps7092copied52A350/7020ED1350arraychecks/5178actorfieldgetters/24clockcapacity-power-logicalspeedbaselines/354packet12peer153models; overlappingcountsnotprogress. KnownVA159/158/rootE9EDFF/secondaryEBE21A/native175E5F610/180E64950/map+1D54, no newbody. modOa08950/base400000/RVA=VA−400000/runtimee9bb4766/static660447."
+  ],
+  "findings": [
+    {
+      "summary": "Twoactualsharedcascades/exactopening+threebombgeometry/IDs1..8/native2→4→3then6→8→7/full15939/full15813/laterownnoops/all195flags bothviews. Actualboth17→19eachround triggersknownchosenrank2,2/native175302/1803/room1106 twice, same8TCP/key2/ReadyBStartA; finalbothroomUI.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#shared-cascade-cycles",
+      "limits": "ModifiedWine2realAB/currentpinnedmap/sameCP131–133production/profile/client/fuse6/normalOSgeometry. Twoactualsharedcascades/4actual19/twochosenall-deadrank2,2/native175180/room110/195seed/currentIDskeys/24clockstatbaselines. Fuse/drop/rank/profile emulatorchoice, notoriginalauthority/fullmatch/K5/K6a/vanilla/LANInternet/generalinventory/character/mode/TTL/pxs/allreset/auth/gate. No forgeddeath/gamecall/stateforce/sourcebinaryDBpackchange; oldcomplete/rawimmutable/AUD041through132next136.",
+      "evidence": [
+        "RUN-01229",
+        "RUN-01219",
+        "RUN-01325"
+      ]
+    },
+    {
+      "summary": "All195seed resetatStart2;24clockbaselines A capacity1/power1/logicalspeed5,B2/1/4 acrossbothviews/epochs, actualBombFirepickupsagain. Notfullinventory/character/mode/TTL/pxs/resetauthority.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#shared-cascade-cycles",
+      "limits": "ModifiedWine2realAB/currentpinnedmap/sameCP131–133production/profile/client/fuse6/normalOSgeometry. Twoactualsharedcascades/4actual19/twochosenall-deadrank2,2/native175180/room110/195seed/currentIDskeys/24clockstatbaselines. Fuse/drop/rank/profile emulatorchoice, notoriginalauthority/fullmatch/K5/K6a/vanilla/LANInternet/generalinventory/character/mode/TTL/pxs/allreset/auth/gate. No forgeddeath/gamecall/stateforce/sourcebinaryDBpackchange; oldcomplete/rawimmutable/AUD041through132next136.",
+      "evidence": [
+        "RUN-01321",
+        "RUN-00001",
+        "RUN-01229"
+      ]
+    },
+    {
+      "summary": "Copied-native7092flaggetters7020arraychecks/5178actorfields/354packet12peer153models distinctfromWinecallbacks;production/profile/client/fuseunchangedthroughcleanup, oldrawimmutable. Localcellstatemechanismreused/notre-researched, no newnativebody.",
+      "source": "kr_static",
+      "status": "confirmed",
+      "method": "emulation",
+      "canonical": "docs/PROTOCOL.md#shared-cascade-cycles",
+      "limits": "ModifiedWine2realAB/currentpinnedmap/sameCP131–133production/profile/client/fuse6/normalOSgeometry. Twoactualsharedcascades/4actual19/twochosenall-deadrank2,2/native175180/room110/195seed/currentIDskeys/24clockstatbaselines. Fuse/drop/rank/profile emulatorchoice, notoriginalauthority/fullmatch/K5/K6a/vanilla/LANInternet/generalinventory/character/mode/TTL/pxs/allreset/auth/gate. No forgeddeath/gamecall/stateforce/sourcebinaryDBpackchange; oldcomplete/rawimmutable/AUD041through132next136.",
+      "evidence": [
+        "RUN-01233",
+        "RUN-01232",
+        "RUN-01243",
+        "RUN-01241",
+        "RUN-01282"
+      ]
+    },
+    {
+      "summary": "Scopedsharedmechanismintegrationcomplete; noautomaticfullmatch/K5/K6agate. NextconnectedloadstallwithTCPlive/noinit99notCP050delayreleaseorCP074EOF, sourcefirstknownbarrier/hold/nativecleanup.",
+      "source": "design",
+      "status": "design",
+      "method": "documentation",
+      "canonical": "docs/PROTOCOL.md#shared-cascade-cycles",
+      "limits": "ModifiedWine2realAB/currentpinnedmap/sameCP131–133production/profile/client/fuse6/normalOSgeometry. Twoactualsharedcascades/4actual19/twochosenall-deadrank2,2/native175180/room110/195seed/currentIDskeys/24clockstatbaselines. Fuse/drop/rank/profile emulatorchoice, notoriginalauthority/fullmatch/K5/K6a/vanilla/LANInternet/generalinventory/character/mode/TTL/pxs/allreset/auth/gate. No forgeddeath/gamecall/stateforce/sourcebinaryDBpackchange; oldcomplete/rawimmutable/AUD041through132next136.",
+      "evidence": [
+        "RUN-00008",
+        "RUN-00009"
+      ]
+    }
+  ],
+  "verification": [
+    {
+      "check": "1454same-runjoins/exacttwoepochgeometry/nativeprocess/195flags/actual4deaths/twochosenrank2,2/native175180/room110/sourcefreeze/isolation/raw",
+      "result": "pass",
+      "evidence": [
+        "RUN-01227",
+        "RUN-01229",
+        "RUN-01250"
+      ],
+      "limits": "ModifiedWine2realAB/currentpinnedmap/sameCP131–133production/profile/client/fuse6/normalOSgeometry. Twoactualsharedcascades/4actual19/twochosenall-deadrank2,2/native175180/room110/195seed/currentIDskeys/24clockstatbaselines. Fuse/drop/rank/profile emulatorchoice, notoriginalauthority/fullmatch/K5/K6a/vanilla/LANInternet/generalinventory/character/mode/TTL/pxs/allreset/auth/gate. No forgeddeath/gamecall/stateforce/sourcebinaryDBpackchange; oldcomplete/rawimmutable/AUD041through132next136."
+    },
+    {
+      "check": "24clockstatreset/5178actorgetters/7092flaggetters7020array/354packet12peer153/models/manual2finalroomimages",
+      "result": "pass",
+      "evidence": [
+        "RUN-01321",
+        "RUN-01232",
+        "RUN-01233",
+        "RUN-01243",
+        "RUN-01241",
+        "RUN-01325"
+      ],
+      "limits": "Models/visual/mechanicalcountsnotoriginalauthority orallreset/fullgate."
+    },
+    {
+      "check": "Docs/catalog/issues/artifacts/diff;220baselineunchangedsource testsreused",
+      "result": "pass",
+      "evidence": [
+        "RUN-01231",
+        "RUN-01240",
+        "RUN-00003",
+        "RUN-01330"
+      ],
+      "limits": "No semantic/gatecertification bycheckers."
+    }
+  ],
+  "evidence": [],
+  "evidence_manifests": [
+    {
+      "path": "docs/evidence/checkpoints/evidence/CP134-shared-cascade-cycles.json",
+      "bytes": 339287,
+      "sha256": "da0998582a988db4772d45d80cfd2c2c11bf320b7e86ac299600ea3da3966638",
+      "count": 1330
+    }
+  ],
+  "delta": {
+    "added": [
+      "Same-runactualsharedcascade+bothdeath/result/return/resettwoepochs/currentIDskeys/seed/stats, notcrossruncomposition."
+    ],
+    "corrected": [
+      "CP133same-runintegrationgap resolved inprofileonly, generalauthority/fullmatch/gatesstillopen.",
+      "CP133PR204merged/currentdocs/issues/catalog synced; nooldcompletechange."
+    ],
+    "superseded": [
+      "NEXT-SHARED-CASCADE-CYCLES closedscopedrun; NEXT-CONNECTED-LOAD-STALL active."
+    ]
+  },
+  "blockers": [
+    "Connectedclientloadingstall/noBinit99withTCPlive/currentservicedeadline notruntimeverified; prior10srelease/EOFproofdifferenttrigger.",
+    "Generalinventory/identity/auth/authority/fullmatch/vanilla/LANInternet/gatesremain."
+  ],
+  "next_steps": [
+    {
+      "id": "NEXT-SHARED-CASCADE-CYCLES",
+      "task": "KRE-005b",
+      "state": "closed",
+      "action": "CP134actualsamegeometry/sharedcascade/both19/chosenrank2,2/resultreturnreset2 inonerun/keyIDsseedclockstats/nativeflagsproof.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-CONNECTED-LOAD-STALL",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "PLANsourcefirstCP050actual99holdrelease/CP072074preclockEOF/currentbothinit99barrier; holdactualB99withoutrelease/EOF45s withTCPlive/nativeboth121/A99/no197196153/clock/UI/capture. Notnetworkloss/nativefail; onlyafteractualblockerchooseopt-indeadline/cancelpolicy, no minted99/death/sourcechangesmidrun.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    }
+  ],
+  "docs_sync": [
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "CP134twoactualsharedcycles/nativeoutcomes/reset/scope/currentloadstallgap/issue/catalog synced, oldcomplete/gatesunchanged."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "CP134twoactualsharedcycles/nativeoutcomes/reset/scope/currentloadstallgap/issue/catalog synced, oldcomplete/gatesunchanged."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "updated",
+      "reason": "CP134twoactualsharedcycles/nativeoutcomes/reset/scope/currentloadstallgap/issue/catalog synced, oldcomplete/gatesunchanged."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "updated",
+      "reason": "CP134twoactualsharedcycles/nativeoutcomes/reset/scope/currentloadstallgap/issue/catalog synced, oldcomplete/gatesunchanged."
+    },
+    {
+      "path": "docs/features.json",
+      "state": "updated",
+      "reason": "CP134twoactualsharedcycles/nativeoutcomes/reset/scope/currentloadstallgap/issue/catalog synced, oldcomplete/gatesunchanged."
+    },
+    {
+      "path": "docs/COVERAGE.md",
+      "state": "updated",
+      "reason": "CP134twoactualsharedcycles/nativeoutcomes/reset/scope/currentloadstallgap/issue/catalog synced, oldcomplete/gatesunchanged."
+    },
+    {
+      "path": "docs/evidence/three-bomb-chain/README.md",
+      "state": "updated",
+      "reason": "CP134twoactualsharedcycles/nativeoutcomes/reset/scope/currentloadstallgap/issue/catalog synced, oldcomplete/gatesunchanged."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/review.json",
+      "state": "updated",
+      "reason": "CP134twoactualsharedcycles/nativeoutcomes/reset/scope/currentloadstallgap/issue/catalog synced, oldcomplete/gatesunchanged."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
+      "state": "updated",
+      "reason": "CP134twoactualsharedcycles/nativeoutcomes/reset/scope/currentloadstallgap/issue/catalog synced, oldcomplete/gatesunchanged."
+    }
+  ]
+}
