@@ -4172,3 +4172,31 @@ khácactualcallbacks. Noresult/secondStart/depletedsecondtrap trênnewservice tr
 
 Phầncònthiếu: runtimecredit/resetquaStart2, secondtrapkhihếtkim, rescue18/team/aux/eligibility vàmulti-charge.
 Fullinventory/forgedfirstseen/location/authority/auth/fullmatch/K5/K6a/vanilla/LANInternet vẫn mở.
+
+
+<a id="needle-round-reset"></a>
+### Kim cạn và freshcredit sau Start2 trên current service — CP114
+
+**kr_runtime/confirmed hẹp**, [metadata/raw/hash](evidence/needle-service/README.md#cp114).
+Không code/profile/fuse/client/probe mới: giữ CP113option và floor145, reuse CP038depletedcontrol/
+CP110BhostreturnedReadyAStartB. Chỉ normalOSinput thêmSpace/emptyCtrl và knownStart2.
+
+Run339,135766083s/SHA9356d26d11f03676d1ccdc388ccb06f317f2d0b4c9d381c2a3e82893616825db:
+R1actual124145→17→1→0/credit1→0/peer1701/nativeA,B56→26. SauRight/Space thứhai A nhận17,
+Ctrlrỗng không1/0 mới, rồi **actual19** trước chosenrank175/return180/585/110/fullnativeerrors0.
+Khôngsuytimer/gamephysics law từkhoảngchờCtrl hoặc giả19do service tạo.
+
+CùngTCP/IDslot/Bchief/Aguest, actualAReady95/BStart104→R2native121129/clock/currentkey12346.
+Old124bodykey12345 replay bịloại trướccredit/165. Fresh124index41/kind145/key12346 đượcclaim/lạihai165;
+A nativeCtrl×1, report17→1→0 mới/cặpđúngXYtick, ledgercredit1→0 lần2 vàpeer1701/nativeA,B56→26.
+Duplicate124hai vòng khôngcredit thêm. Native4lầnescape-after26/hairole×hairound, localpairsource/nativegetters
+/cursor/hashvàảnh tách ledger; modelStartclear không tựlàoracleclient.
+
+Chỉ **một result/return hoàn tất**, R2 dừngactive sauescape. HaiStart/hai lần dùngkim khác hai trậnđãkếtthúc;
+không nâng K5/K6a/fullmatch/resetmọibiếnthể. Baactualbomb/3complete158/view; reportsequenceR1
+17,1,0,17,19 và R2 17,1,0. 2.082joins gồm1.977rawhash, copiednativefields408/typed264models riêng.
+Nguồn CP113oneescape giữnguyên; oldCP038depletedvà CP114currentreset khácscope rõ.
+
+Next rescue18: nativeCP036consumer/prefix/aux vàcontrolgiữprofileC đãcó; currentservice chưa forward18.
+Trước code phải đối chiếu activeAB/team/auxcandidate/current121/153/profileC cógiữidentityđúng haykhông;
+không gộp kimcredit hoặc suyrescuer/authority từtên/fieldu32. PLAN/RESEARCH giữphépkiểm tối thiểu.

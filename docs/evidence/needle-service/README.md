@@ -2,7 +2,7 @@
 
 Baseline CP112/[PR182](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/182), merge
 `1b7f210f036661147bbfa61142e3057e43b46bf3`; Codex solo/tự kiểm,
-[review waived](../checkpoints/review-waiver.json). CP113 chờPR. Contract duy nhất tại
+[review waived](../checkpoints/review-waiver.json). SnapshotCP113chờPR khi ghi; đãmerge [PR183](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/183)/2695042. Contract duy nhất tại
 [PROTOCOL](../../PROTOCOL.md#needle-service), câu hỏi ở[RESEARCH](../../RESEARCH.md#gap-needle),
 thứ tự chỉ[PLAN](../../PLAN.md#current-order). AUD035qua112/kế116.
 
@@ -71,3 +71,32 @@ Scope chỉ mộtpickup/trap/escape hiện hành; chưasecondtrapdepleted hoặc
 trênnewservice bằng runtime, chưarescue18/multi-charge/fullinventory/location/auth/authority. Start/
 leave/EOF/reset chỉ modeltests trong scope đãnêu. Không result/fullround/K5/K6a/LANInternet.
 Bước kế giữsameprofile/service vàmở đúngsecondtrap/Start2 đểkiểmcredit/marker qua lifecycle, khônglặpREkim/receiver.
+
+
+<a id="cp114"></a>
+## CP114 — Current service depleted và Start2
+
+Baseline CP113/PR183merge `269504268d942597fedc1e0a0affee275e936b23`; Codexselfcheck/waived,
+CP114chờPR; AUD035qua112/kế116. Contract mới chỉ[PROTOCOL](../../PROTOCOL.md#needle-round-reset),
+[gap](../../RESEARCH.md#gap-needle), [thứtự](../../PLAN.md#current-order).
+
+Raw `local/research/codex/needle-reset-r1/`: `reuse-question.json` pin CP038olddepleted/CP113currentescape/
+CP110ReadyAStartB, `preflight.json` kiểmsource/probe/profile vàprofileequaltrue. Không thêmnativebody/
+codec/patch hoặcsourceconfigchangegiữa run. Prefixcopy riêng/namespace/lo-only/filesNSS/singlelease
+nhưCP113. `cycles-recipe.json`argv; `cycles-hashes.json`pin1.977originalraw saucleanup.
+
+`run.json`339,135766083s/error0/SHA
+`9356d26d11f03676d1ccdc388ccb06f317f2d0b4c9d381c2a3e82893616825db`:
+R1dùngkim→secondSpace/trap/emptyCtrl/no1,0/actual19→1native175180/returnrefresh→A95/B104/Start2.
+R2old124key12345 bịloại, fresh145index41/key12346 nhặt/credit1→escape/currentpair/1701/consume0.
+R2 khôngkếtthúc, giữnhãnpartial-round-contextkháccompletedoutcome. Tổng3bomb/3completed158/view.
+
+`reset-verification.json`2.082relations gồm1.977rawSHA: exactfront/upstream/report1,0/pair/trapSHA/credit/
+claim/native121clock175180/role/sequence; hai165mỗi pickup, oldbody/duplicates khônggrantcredit.
+NativeA/B56→26 sauescapeởhai vòng;408copiedsecurefields/264nativepacketmodelcases riêng.
+Codexđãxem `needle-reset-contact.png`: R1depletedbubble/emptySlot, returnedroom, R2freshneedle×1,
+R2finalcảhaiuntrapped/emptyslot. Input/ledger khôngthay thế native/imageproof.
+
+NguồnCP113đãcó175servertests/14policycases, sourcekhôngđổi nênreusekhôngclaimtestruntimeauthority.
+Fullinventory/location/lifeforgedreport/auth/vanilla/multi-charge/rescue18/toànreset/gates/LANInternet cònmở.
+Next source-firstrescue18/aux/team/CP036keptthirdprofile/current153identity; khôngRElại1/0kim.

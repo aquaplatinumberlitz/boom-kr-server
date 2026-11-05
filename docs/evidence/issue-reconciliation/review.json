@@ -132,9 +132,9 @@
         "KR-S001",
         "KR-S002"
       ],
-      "known": "CP112guard/PR182merged; CP113opt-inneedle145/currentservice exact17→1→0/one1701/credit1→0/nativeA,B56→26/lateXY200309/emptysecondCtrl/175tests, selfcheckpendingPR.",
-      "remaining": "Fullgates/control/auth/codec/authority/validator/LANInternet open. Needlecurrentservice secondtrapdepleted andStart2credit/reset runtime notyetproved; rescue18/team/aux separate.",
-      "next_test": "PLANreuseCP038depleted andCP110BhostreturnReadyAStartB; sameprofile/service secondtrap→Ctrl-empty→actualdeath/result/return thenStart2fresh145credit/consume; no repeatwriter/receiver/codec.",
+      "known": "CP113needleopt-in/175tests/PR183merged; CP114sameprofile/source run339.136s R1depletedemptyCtrl→actual19/resultreturn→Start2/currentkeyfresh145/credit/escape/nativeA,B56→26; selfcheckpendingPR, R2notfinished.",
+      "remaining": "Fullgates/control/auth/codec/authority/validator/LANInternet open; rescue18currentservice/team/aux/diagnosticthirdprofile notintegrated, multicharge/fullinventory/locationlifeauth unknown.",
+      "next_test": "PLANreuseCP036rescue-kept/CP037contactcontrols/exact18tail+17018aux/current121153/rosteridentity; defineboundedopt-inteam/target/auxadmission beforeimplementation; no needle/Ready/codec RErepeat.",
       "acceptance": "Epic checklist: linkedscopedtask/evidence+authoritymatrix vàacceptancegate ởPLAN; từngtaskđóng khôngđóngepic/K5/K6a.",
       "reason": "Thay scope CP004postWCP cũ bằng epic bảo trì/compatibility; không tạo duplicatecontract/plan.",
       "sources": [
@@ -154,7 +154,8 @@
         179,
         180,
         181,
-        182
+        182,
+        183
       ],
       "successors": []
     },
