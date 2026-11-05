@@ -1,0 +1,247 @@
+{
+  "artifacts": [
+    {
+      "name": "CA-r2-login-logout.exe",
+      "sha256": "660447c293ce92270cb9b5815331bca976e8f156366e1fe50b217b6c12e60ce3"
+    },
+    {
+      "name": "CA-r2-stage-social.exe",
+      "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+    },
+    {
+      "name": "CA-r2-stage-social.exe Bcopy",
+      "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+    },
+    {
+      "name": "modO.bin",
+      "sha256": "a08950c833d3acab8281049def7b3dc96b221f107eeda01da3a548e34b91dce5"
+    }
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-11-05T11:08:29.674442+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "Codex solo RE/code/runtime/selfcheck, not independent approval.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Owner explicitly requested solo without Claude review."
+    }
+  },
+  "owner": "Codex",
+  "reviewer": "Codex",
+  "id": "CP127",
+  "previous": "CP126",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-05T11:08:29.674442+00:00",
+  "context_commit": "408c535bb7028b626c5ac7bde583e979f7e3a658",
+  "question": "NormalguestexitwhenoneactualBbombpending: currentcontrol20286rejection/timer158 vsnewboundedpendingmodefence/drop andnativeAreturn/Blobby withoutEOF?",
+  "scope": "Source-firstCP044EOFfence/12520286/126rejoin/known118159158/nativeprobes; no newnativebody/codec. TwoisolatednormalSpace→actual159→normalUIexit/fuse6runs/controlandfixed; newnamedmodeonlyoneBpending/untrapped/recheckat202and86/finishsamefence. 215server tests incl4new; native/capture/raw/UI checks, originalverifieropaque-zeroassumption/runnerfailures retained.",
+  "locators": [
+    "CP126PR197 head165364f9dc45db86b5c588786fc3f2b0e816cff1/merge408c535bb7028b626c5ac7bde583e979f7e3a658/CLEANMERGEABLEchecks[]. 215tests/newmodeexplicit, sourcefrozenperrun/runtime snapshots.",
+    "Control976e5f765b714416f20f8bcbccdd573bafa3c3cc2428d9c235399e8263148371/201.095886510s/880raw/971joins/exit0errors0. actualBSpace118/15939bothviews→20286 precedes1584.617702294s,202rejectafterBomb/86round_not_returned/Agame15813/Bnative11noGame158/noEOFbeforecompletion.",
+    "Fixeded69fe49a57c11f92eb107d880c7decc7667f3b548eed5fcb6f0708850d9c6a1/203.696107317s/891raw/1009joins/93nativepacketcases/exit0errors0. actualoneB159→20286admitted/round_closedoldjob/no158/no terraincommit/Asurvivor175302ranks1,2/1803/post107110/B24191full50/no17,19/noEOFbeforecompletion.",
+    "Nativeknown118/159/158readers/E72490/E84FF0send202/normal11/E5F610/E64950/fullframer14EF300; no newnativefunction ranges. modOa08950/base400000/RVA=VA−400000/runtimee9bb4766/static660447. 202Bopaque5fields16066,0,0,0,1 comparedactualcapture/nativefields notsemanticzero rule.",
+    "Rawopaqueverifierinherited[0]*5assertionfailed; newscriptcomparesactualdecode toservicefields sameothercriteria; runnerfirstwithoutPYTHONPATHfailedModuleNotFoundError thenPYTHONPATH=. pass, logsretained. AUD039through124next128, CP128periodicauditdue next."
+  ],
+  "findings": [
+    {
+      "summary": "ControlnormalBactual118/159full39→20286 before1584.6177sec triggersoldunbombedpolicy202afterBombreject/86round_not_returned; oldtimer158still sent/Anativegame13/Bstage11notGame158, noEOFbeforecompletion.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#battle-exit-pending-bomb",
+      "limits": "ModifiedWine2realAB/Ahost/Bguest/currentpinnedmap/fuse6/normalUI withonlyoneBownedpendingbomb/untrapped. Newguest_B_pending_202_86mode retainsunbombed, oldguest_B_202_86/defaultunchanged. No multiple/Aowner/alreadyblast/trap/dead/host/synthetic/genericexit/auth/lifeauthority. Localfence/drop andforfeit/cleanup chosenemulatorpolicy, not originalserverlaw/cancelalreadysent158. 202fiveu32opaque16066,0,0,0,1 notunbombedzeros. Verifierzeroassumptionfailure/runnerPYTHONPATHfailure retained, newcapturefieldcomparisononly. No postbombexitrejoinStart2/fullmatch/K5/K6a/vanilla/LANInternet/gate. Raw/binary/DB/pack/oldcompleteimmutable; AUD039through124next128.",
+      "evidence": [
+        "CTRL-00907",
+        "CTRL-00885"
+      ]
+    },
+    {
+      "summary": "Explicitnewpendingmode checksat202AND86: noBomboronlyoneBownedcurrentpendingticket/no158/timerreject/noaccepted17,19. Finishexistingfence atpaired86, jobkeptuntildeadline→round_closeddrop/no158/no terraincommit, existingchosenforfeit/lobbyrefresh. Oldunbombed/defaultunchanged;215tests incl4pending/race/multiple/owner/trap/ticket/config.",
+      "source": "emu_choice",
+      "status": "design",
+      "method": "design",
+      "canonical": "docs/PROTOCOL.md#battle-exit-pending-bomb",
+      "limits": "ModifiedWine2realAB/Ahost/Bguest/currentpinnedmap/fuse6/normalUI withonlyoneBownedpendingbomb/untrapped. Newguest_B_pending_202_86mode retainsunbombed, oldguest_B_202_86/defaultunchanged. No multiple/Aowner/alreadyblast/trap/dead/host/synthetic/genericexit/auth/lifeauthority. Localfence/drop andforfeit/cleanup chosenemulatorpolicy, not originalserverlaw/cancelalreadysent158. 202fiveu32opaque16066,0,0,0,1 notunbombedzeros. Verifierzeroassumptionfailure/runnerPYTHONPATHfailure retained, newcapturefieldcomparisononly. No postbombexitrejoinStart2/fullmatch/K5/K6a/vanilla/LANInternet/gate. Raw/binary/DB/pack/oldcompleteimmutable; AUD039through124next128.",
+      "evidence": [
+        "CTRL-00908",
+        "CTRL-00951",
+        "CTRL-00909",
+        "FIX-00929",
+        "FIX-00935"
+      ]
+    },
+    {
+      "summary": "FixedactualpendingB159→normal20286/admit/oldjobround_closed/no158/no nativeGame158 either view/no17,19, Asurvivor175302/ranks1,2/1803/Prepare107arrival1106/roomonlyA andB24191/full50/lobby, noEOFbeforecompletion. Oneexit/resultreturn only; postbombrejoinStart2missing.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#battle-exit-pending-bomb",
+      "limits": "ModifiedWine2realAB/Ahost/Bguest/currentpinnedmap/fuse6/normalUI withonlyoneBownedpendingbomb/untrapped. Newguest_B_pending_202_86mode retainsunbombed, oldguest_B_202_86/defaultunchanged. No multiple/Aowner/alreadyblast/trap/dead/host/synthetic/genericexit/auth/lifeauthority. Localfence/drop andforfeit/cleanup chosenemulatorpolicy, not originalserverlaw/cancelalreadysent158. 202fiveu32opaque16066,0,0,0,1 notunbombedzeros. Verifierzeroassumptionfailure/runnerPYTHONPATHfailure retained, newcapturefieldcomparisononly. No postbombexitrejoinStart2/fullmatch/K5/K6a/vanilla/LANInternet/gate. Raw/binary/DB/pack/oldcompleteimmutable; AUD039through124next128.",
+      "evidence": [
+        "FIX-00898",
+        "FIX-00964",
+        "FIX-00886"
+      ]
+    },
+    {
+      "summary": "Actualpostbomb202fields16066,0,0,0,1 differoldunbombedzeros; semanticsopaque. InheritedverifierzeroassertionandnewrunnerPYTHONPATHfailure retained; separatecapturedfieldcompare preservesothercriteria andraw/source. Copiednative93packet cases remainemulation separatefromruntime.",
+      "source": "kr_static",
+      "status": "confirmed",
+      "method": "emulation",
+      "canonical": "docs/PROTOCOL.md#battle-exit-pending-bomb",
+      "limits": "ModifiedWine2realAB/Ahost/Bguest/currentpinnedmap/fuse6/normalUI withonlyoneBownedpendingbomb/untrapped. Newguest_B_pending_202_86mode retainsunbombed, oldguest_B_202_86/defaultunchanged. No multiple/Aowner/alreadyblast/trap/dead/host/synthetic/genericexit/auth/lifeauthority. Localfence/drop andforfeit/cleanup chosenemulatorpolicy, not originalserverlaw/cancelalreadysent158. 202fiveu32opaque16066,0,0,0,1 notunbombedzeros. Verifierzeroassumptionfailure/runnerPYTHONPATHfailure retained, newcapturefieldcomparisononly. No postbombexitrejoinStart2/fullmatch/K5/K6a/vanilla/LANInternet/gate. Raw/binary/DB/pack/oldcompleteimmutable; AUD039through124next128.",
+      "evidence": [
+        "FIX-00901",
+        "FIX-00001",
+        "FIX-00909",
+        "FIX-00907",
+        "FIX-00908"
+      ]
+    }
+  ],
+  "verification": [
+    {
+      "check": "Control971same-runjoins/880raw/actualpending159→20286 before158/controlreject/nativeA13/Bstage11/noEOF",
+      "result": "pass",
+      "evidence": [
+        "CTRL-00906",
+        "CTRL-00907",
+        "CTRL-00911"
+      ],
+      "limits": "ModifiedWine2realAB/Ahost/Bguest/currentpinnedmap/fuse6/normalUI withonlyoneBownedpendingbomb/untrapped. Newguest_B_pending_202_86mode retainsunbombed, oldguest_B_202_86/defaultunchanged. No multiple/Aowner/alreadyblast/trap/dead/host/synthetic/genericexit/auth/lifeauthority. Localfence/drop andforfeit/cleanup chosenemulatorpolicy, not originalserverlaw/cancelalreadysent158. 202fiveu32opaque16066,0,0,0,1 notunbombedzeros. Verifierzeroassumptionfailure/runnerPYTHONPATHfailure retained, newcapturefieldcomparisononly. No postbombexitrejoinStart2/fullmatch/K5/K6a/vanilla/LANInternet/gate. Raw/binary/DB/pack/oldcompleteimmutable; AUD039through124next128."
+    },
+    {
+      "check": "Fixed1009joins/891raw/sourcefreeze/actual159/admission/fence/jobdrop/no158/no terraincommit/nativeAresultreturn/B24191/noEOF/no17,19",
+      "result": "pass",
+      "evidence": [
+        "FIX-00908",
+        "FIX-00898",
+        "FIX-00911"
+      ],
+      "limits": "ModifiedWine2realAB/Ahost/Bguest/currentpinnedmap/fuse6/normalUI withonlyoneBownedpendingbomb/untrapped. Newguest_B_pending_202_86mode retainsunbombed, oldguest_B_202_86/defaultunchanged. No multiple/Aowner/alreadyblast/trap/dead/host/synthetic/genericexit/auth/lifeauthority. Localfence/drop andforfeit/cleanup chosenemulatorpolicy, not originalserverlaw/cancelalreadysent158. 202fiveu32opaque16066,0,0,0,1 notunbombedzeros. Verifierzeroassumptionfailure/runnerPYTHONPATHfailure retained, newcapturefieldcomparisononly. No postbombexitrejoinStart2/fullmatch/K5/K6a/vanilla/LANInternet/gate. Raw/binary/DB/pack/oldcompleteimmutable; AUD039through124next128."
+    },
+    {
+      "check": "Inherited202opaquezeroassertionandrunnerpath",
+      "result": "observed",
+      "evidence": [
+        "FIX-00001",
+        "FIX-00909",
+        "FIX-00907"
+      ],
+      "limits": "Analysis failures retained; compareexactcapture vsnative/servicefields notarbitraryzero; rerunenvfixonly. Nofieldmeaning/criteria invented."
+    },
+    {
+      "check": "215server tests incl4new/93nativepacketcases/manualUI/docs/catalog/issues/artifacts/diff",
+      "result": "pass",
+      "evidence": [
+        "CTRL-00951",
+        "CTRL-00909",
+        "FIX-00901",
+        "FIX-00964",
+        "CTRL-00895",
+        "CTRL-00901",
+        "CTRL-00003"
+      ],
+      "limits": "Models andselectedmanualobservation/mechanicalchecks notautomaticallynative/originalauthority or gate."
+    }
+  ],
+  "evidence": [],
+  "evidence_manifests": [
+    {
+      "path": "docs/evidence/checkpoints/evidence/CP127-pending-exit-fixed.json",
+      "bytes": 246404,
+      "sha256": "a756dbee95223f6bf8d531cdae3f09c828fa93722913ff6461872cc505d38c51",
+      "count": 966
+    },
+    {
+      "path": "docs/evidence/checkpoints/evidence/CP127-pending-exit-control.json",
+      "bytes": 247026,
+      "sha256": "ef61e86059d2e62a047df16f57bd953b24f62bdc8ed017672cb5172d2e3c2ebd",
+      "count": 957
+    }
+  ],
+  "delta": {
+    "added": [
+      "ActualnormalUIexitwithoneBpendingbombcontrolvsnewmode/fencejobdrop/no158/nativestages/resultreturn/Lobby proof."
+    ],
+    "corrected": [
+      "CP126postbombexitunknown nowresolvedonlyoneBpending/untrappednewmode, genericpostblast/multiple/host/dead remainsunknown.",
+      "202fiveopaqueu32 cannotbeassumedzeros afterBomb, failedverifierandnewcapturecompare documented.",
+      "CP126PR197merged/currentdocs sync, oldcompleteunchanged."
+    ],
+    "superseded": [
+      "NEXT-BATTLE-EXIT-PENDING-BOMB closedscopedcase; nextsame-runpostbombexit/rejoinStart2/entitytimerresetintegration andperiodicCP128audit."
+    ]
+  },
+  "blockers": [
+    "Postbombexit+normalrejoin/ReadyStart2same-run/oldjobnocrossgeneration notyetmeasured; CP126unbombedrejoinseparatescope.",
+    "Genericmultiple/Aowner/alreadyblast/trap/death/hostexit/earlyjoin/generalroom/auth/fullreset/lifeauthority/fullmatch/vanilla/LANInternet/gatesremain."
+  ],
+  "next_steps": [
+    {
+      "id": "NEXT-BATTLE-EXIT-PENDING-BOMB",
+      "task": "KRE-005b",
+      "state": "closed",
+      "action": "CP127actualpendingoneBticket20286/fenceoldjobdrop/no158/nativeAreturn/Blobbyscopedcontrolfixedpositive.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-POSTBOMB-EXIT-REJOIN",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "PLANsameCP127pendingmode/Spaceactual159/UIexit/Aactual180cleanup/B24191 thenknownnormalB82/585/95/A104/currentkey121/99/153/clock2; verifyoldjobno158overepoch2/202markerreset. No mintedrequests/fuse/sourcechangesmidrun. CP128periodicmanualaudit due/AUD040 expected.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    }
+  ],
+  "docs_sync": [
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "CP127pendingbombcontrol/fixed/namedmode/fence/no158/opaquefieldlimits/nextpostbombrejoinCP128audit; oldrecord/raw/gateunchanged."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "CP127pendingbombcontrol/fixed/namedmode/fence/no158/opaquefieldlimits/nextpostbombrejoinCP128audit; oldrecord/raw/gateunchanged."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "updated",
+      "reason": "CP127pendingbombcontrol/fixed/namedmode/fence/no158/opaquefieldlimits/nextpostbombrejoinCP128audit; oldrecord/raw/gateunchanged."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "updated",
+      "reason": "CP127pendingbombcontrol/fixed/namedmode/fence/no158/opaquefieldlimits/nextpostbombrejoinCP128audit; oldrecord/raw/gateunchanged."
+    },
+    {
+      "path": "docs/features.json",
+      "state": "updated",
+      "reason": "CP127pendingbombcontrol/fixed/namedmode/fence/no158/opaquefieldlimits/nextpostbombrejoinCP128audit; oldrecord/raw/gateunchanged."
+    },
+    {
+      "path": "docs/COVERAGE.md",
+      "state": "updated",
+      "reason": "CP127pendingbombcontrol/fixed/namedmode/fence/no158/opaquefieldlimits/nextpostbombrejoinCP128audit; oldrecord/raw/gateunchanged."
+    },
+    {
+      "path": "docs/evidence/battle-exit/README.md",
+      "state": "updated",
+      "reason": "CP127pendingbombcontrol/fixed/namedmode/fence/no158/opaquefieldlimits/nextpostbombrejoinCP128audit; oldrecord/raw/gateunchanged."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/review.json",
+      "state": "updated",
+      "reason": "CP127pendingbombcontrol/fixed/namedmode/fence/no158/opaquefieldlimits/nextpostbombrejoinCP128audit; oldrecord/raw/gateunchanged."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
+      "state": "updated",
+      "reason": "CP127pendingbombcontrol/fixed/namedmode/fence/no158/opaquefieldlimits/nextpostbombrejoinCP128audit; oldrecord/raw/gateunchanged."
+    }
+  ]
+}

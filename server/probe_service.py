@@ -99,11 +99,14 @@ class ProbeService:
             raise ValueError('profile missing lifecycle fixtures: ' + ', '.join(sorted(missing)))
         self.profile, self.out, self.proxy_ports = profile, out, proxy_ports
         self.battle_exit = False
+        self.battle_exit_mode = None
         if 'battle_exit' in profile.data:
-            if (profile.data['battle_exit'] != {'mode': 'guest_B_202_86'}
+            if (profile.data['battle_exit'] not in (
+                    {'mode': 'guest_B_202_86'}, {'mode': 'guest_B_pending_202_86'})
                     or 'rescue_contact' in profile.data):
                 raise ValueError('unsupported battle_exit policy')
             self.battle_exit = True
+            self.battle_exit_mode = profile.data['battle_exit']['mode']
         self.death_lifecycle = False
         if 'death_lifecycle' in profile.data:
             if profile.data['death_lifecycle'] != {'mode': 'current_trap'}:
@@ -298,8 +301,7 @@ class ProbeService:
                         and event.get('map_response_sent') and exit_report
                         and exit_report['generation'] == self.room.generation
                         and sequence > exit_report['seq']
-                        and not any(b['round'] == self.room.generation
-                                    for b in self.state['round_bombs']))
+                        and self.battle_exit_scope_rejection() is None)
         if body:
             request['rejected'] = 'unsupported_leave_body'
         elif not event.get('create_response_sent'):
@@ -754,7 +756,7 @@ class ProbeService:
                 event['death_event'] = report
 
     def receive_battle_exit(self, event, frame, sequence, body):
-        """Stage the measured unbombed guest202 -> 86 pair, not death or auth."""
+        """Stage the supported guest202 -> 86 pair, not death or auth."""
         report = {'role': event['role'], 'generation': self.room.generation,
                   'seq': sequence, 'frame_sha256': hashlib.sha256(frame).hexdigest(),
                   'monotonic_ns': time.monotonic_ns(), 'body_hex': body.hex()}
@@ -766,13 +768,30 @@ class ProbeService:
               or not any(peer is event for peer in self.peers())
               or {p['role'] for p in self.peers()} != {'A', 'B'}):
             report['rejected'] = 'unsupported_battle_exit_membership'
-        elif any(b['round'] == self.room.generation for b in self.state['round_bombs']):
-            report['rejected'] = 'unsupported_battle_exit_after_bomb'
+        elif self.battle_exit_scope_rejection() is not None:
+            report['rejected'] = self.battle_exit_scope_rejection()
         elif event.get('battle_exit202'):
             report['rejected'] = 'battle_exit_already_staged'
         else:
             report['opaque_fields'] = codec.read_fields(body[2:], [4] * 5)
             event['battle_exit202'] = report
+
+    def battle_exit_scope_rejection(self):
+        """Only the measured unbombed case or one live B-owned pending ticket."""
+        bombs = [b for b in self.state['round_bombs'] if b['round'] == self.room.generation]
+        if not bombs:
+            return None
+        if self.battle_exit_mode != 'guest_B_pending_202_86':
+            return 'unsupported_battle_exit_after_bomb'
+        if (len(bombs) != 1 or bombs[0]['owner'] != 1
+                or bombs[0].get('broadcast158') or bombs[0].get('timer_rejected')
+                or not any(bomb is bombs[0] and self.room.fence.rejection(ticket) is None
+                           for _, ticket, bomb in self.jobs)):
+            return 'unsupported_battle_exit_pending_bomb'
+        if any(q['round'] == self.room.generation and q['subtype'] in (17, 19)
+               and not q.get('rejected') for q in self.state['event_reports']):
+            return 'unsupported_battle_exit_after_trap'
+        return None
 
     def death_lifecycle_rejection(self, event):
         """Opt-in measured Battle compatibility policy, not a life-state oracle.
