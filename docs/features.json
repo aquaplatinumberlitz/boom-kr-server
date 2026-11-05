@@ -1,7 +1,7 @@
 {
   "schema": "kre-feature-index-v1",
   "build": "KR00967",
-  "as_of": "CP124",
+  "as_of": "CP125",
   "sources": {
     "plan": "docs/PLAN.md",
     "contract": "docs/PROTOCOL.md",
@@ -993,7 +993,8 @@
           "docs/evidence/promoted-battle-cycles/README.md",
           "docs/evidence/promoted-outcome/README.md",
           "docs/evidence/rescue-service/README.md#cp117",
-          "docs/evidence/rescue-service/README.md#cp119"
+          "docs/evidence/rescue-service/README.md#cp119",
+          "docs/evidence/battle-exit/README.md"
         ]
       },
       "coverage": {
@@ -1040,7 +1041,8 @@
               "docs/evidence/promoted-battle-cycles/README.md",
               "docs/evidence/promoted-outcome/README.md",
               "docs/PROTOCOL.md#rescue-return-start-guard",
-              "docs/PROTOCOL.md#rescue-slot-refresh"
+              "docs/PROTOCOL.md#rescue-slot-refresh",
+              "docs/PROTOCOL.md#normal-battle-exit"
             ]
           },
           "windows_original": {
@@ -1096,7 +1098,8 @@
             "docs/evidence/ready-input/README.md",
             "docs/evidence/host-normal-back/README.md",
             "docs/evidence/promoted-battle-cycles/README.md",
-            "docs/evidence/promoted-outcome/README.md"
+            "docs/evidence/promoted-outcome/README.md",
+            "docs/PROTOCOL.md#normal-battle-exit"
           ]
         },
         "gate": {
@@ -3168,7 +3171,8 @@
           "docs/evidence/back86-membership/README.md",
           "docs/evidence/guest-back-rejoin/README.md",
           "docs/evidence/tcp-guard-cycles/README.md",
-          "docs/evidence/host-normal-back/README.md"
+          "docs/evidence/host-normal-back/README.md",
+          "docs/evidence/battle-exit/README.md"
         ]
       },
       "coverage": {
@@ -3212,7 +3216,8 @@
               "docs/evidence/back86-membership/README.md",
               "docs/evidence/guest-back-rejoin/README.md",
               "docs/evidence/tcp-guard-cycles/README.md",
-              "docs/evidence/host-normal-back/README.md"
+              "docs/evidence/host-normal-back/README.md",
+              "docs/PROTOCOL.md#normal-battle-exit"
             ]
           },
           "windows_original": {
@@ -3269,7 +3274,8 @@
             "docs/evidence/back86-membership/README.md",
             "docs/evidence/guest-back-rejoin/README.md",
             "docs/evidence/tcp-guard-cycles/README.md",
-            "docs/evidence/host-normal-back/README.md"
+            "docs/evidence/host-normal-back/README.md",
+            "docs/PROTOCOL.md#normal-battle-exit"
           ]
         },
         "gate": {
@@ -3372,7 +3378,8 @@
           "docs/evidence/rescue-service/README.md#cp121",
           "docs/evidence/three-bomb-chain/README.md#cp122",
           "docs/evidence/three-bomb-chain/README.md#cp123",
-          "docs/evidence/life-admission/README.md"
+          "docs/evidence/life-admission/README.md",
+          "docs/evidence/battle-exit/README.md"
         ]
       },
       "coverage": {
@@ -3472,7 +3479,8 @@
               "docs/PROTOCOL.md#rescue-two-results",
               "docs/PROTOCOL.md#recursive-chain",
               "docs/PROTOCOL.md#recursive-chain-cycles",
-              "docs/PROTOCOL.md#death-lifecycle-policy"
+              "docs/PROTOCOL.md#death-lifecycle-policy",
+              "docs/PROTOCOL.md#normal-battle-exit"
             ]
           },
           "windows_original": {
@@ -3555,7 +3563,8 @@
             "docs/PROTOCOL.md#rescue-reverse",
             "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/185",
             "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/186",
-            "server/test_death_lifecycle.py"
+            "server/test_death_lifecycle.py",
+            "server/test_battle_exit.py"
           ]
         },
         "integration": {
@@ -3620,7 +3629,8 @@
             "docs/PROTOCOL.md#rescue-two-results",
             "docs/PROTOCOL.md#recursive-chain",
             "docs/PROTOCOL.md#recursive-chain-cycles",
-            "docs/PROTOCOL.md#death-lifecycle-policy"
+            "docs/PROTOCOL.md#death-lifecycle-policy",
+            "docs/PROTOCOL.md#normal-battle-exit"
           ]
         },
         "gate": {

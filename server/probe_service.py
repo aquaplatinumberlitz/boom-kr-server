@@ -98,6 +98,12 @@ class ProbeService:
         if missing:
             raise ValueError('profile missing lifecycle fixtures: ' + ', '.join(sorted(missing)))
         self.profile, self.out, self.proxy_ports = profile, out, proxy_ports
+        self.battle_exit = False
+        if 'battle_exit' in profile.data:
+            if (profile.data['battle_exit'] != {'mode': 'guest_B_202_86'}
+                    or 'rescue_contact' in profile.data):
+                raise ValueError('unsupported battle_exit policy')
+            self.battle_exit = True
         self.death_lifecycle = False
         if 'death_lifecycle' in profile.data:
             if profile.data['death_lifecycle'] != {'mode': 'current_trap'}:
@@ -251,7 +257,8 @@ class ProbeService:
         for event in self.peers():
             markers = ['start_response_sent', 'init99', 'go_response_sent', 'play_response_sent',
                        'begin_response_sent', 'peer153_sent', 'death_event', 'pickup_ineligible',
-                       'bomb_serials', 'result21_forward', 'needle_inventory', 'needle_pending']
+                       'bomb_serials', 'result21_forward', 'needle_inventory', 'needle_pending',
+                       'battle_exit202']
             if event.get('start_response_sent'):
                 event.setdefault('rounds', []).append({key: event[key] for key in markers if key in event})
             for marker in markers:
@@ -285,11 +292,19 @@ class ProbeService:
         idle_host = (self.host_back_rejoin and event['role'] == 'A' and self.host_role == 'A'
                      and len(others) == 1 and others[0]['role'] == 'B'
                      and others[0].get('map_response_sent') and event.get('map_response_sent'))
+        exit_report = event.get('battle_exit202')
+        active_guest = (self.battle_exit and self.room.active and idle_guest
+                        and self.channels.get('B') is event
+                        and event.get('map_response_sent') and exit_report
+                        and exit_report['generation'] == self.room.generation
+                        and sequence > exit_report['seq']
+                        and not any(b['round'] == self.room.generation
+                                    for b in self.state['round_bombs']))
         if body:
             request['rejected'] = 'unsupported_leave_body'
         elif not event.get('create_response_sent'):
             request['rejected'] = 'not_room_member'
-        elif self.room.active or (self.round.get('index') and not self.round.get('refresh')):
+        elif not active_guest and (self.room.active or (self.round.get('index') and not self.round.get('refresh'))):
             request['rejected'] = 'round_not_returned'
         elif not (empty_host or idle_guest or idle_host):
             request['rejected'] = 'unsupported_leave_membership_variant'
@@ -316,12 +331,21 @@ class ProbeService:
                        'floor582_sent', 'start_response_sent', 'init99', 'go_response_sent',
                        'play_response_sent', 'begin_response_sent', 'peer153_sent', 'death_event',
                        'pickup_ineligible', 'bomb_serials', 'pending_departures', 'departures_sent',
-                       'needle_inventory', 'needle_pending']
+                       'needle_inventory', 'needle_pending', 'battle_exit202']
             request['previous_membership'] = {key: event.pop(key) for key in markers if key in event}
             event.setdefault('room_visits', []).append(request)
             event['last_room_leave'] = request
             event['room_reentry'] = True
-            if idle_guest:
+            if active_guest:
+                self.room.finish()
+                self.round['abort'] = {'role': 'B', 'reason': 'normal_Battle_exit',
+                                       'generation': self.room.generation,
+                                       'monotonic_ns': now}
+                request['variant'] = 'active_guest_B'
+                request['report202_sha256'] = exit_report['frame_sha256']
+                # The peer is still in Battle. Reuse measured post-return107/
+                # 110 cleanup rather than sending a prepare-only removal now.
+            elif idle_guest:
                 request['departure'] = self.cleanup_departed('B')
             elif idle_host:
                 request['variant'] = 'host_A_to_B'
@@ -345,6 +369,8 @@ class ProbeService:
             return
         if opcode == 86:
             self.leave_room(event, frame, sequence, body)
+        elif opcode == 202 and self.battle_exit:
+            self.receive_battle_exit(event, frame, sequence, body)
         elif opcode == 6 and not event.get('channel_response_sent'):
             self.send_raw(event, self.profile.raw('channel'))
             event['channel_response_sent'] = {'monotonic_ns': time.monotonic_ns()}
@@ -726,6 +752,27 @@ class ProbeService:
                                              opcode=170, body=payload)
             if subtype == 19:
                 event['death_event'] = report
+
+    def receive_battle_exit(self, event, frame, sequence, body):
+        """Stage the measured unbombed guest202 -> 86 pair, not death or auth."""
+        report = {'role': event['role'], 'generation': self.room.generation,
+                  'seq': sequence, 'frame_sha256': hashlib.sha256(frame).hexdigest(),
+                  'monotonic_ns': time.monotonic_ns(), 'body_hex': body.hex()}
+        self.state.setdefault('battle_exit_reports', []).append(report)
+        if len(body) != 22 or codec.read_fields(body[:2], [1, 1]) != [0, 1]:
+            report['rejected'] = 'unsupported_battle_exit_body'
+        elif (not self.room.active or self.host_role != 'A' or event['role'] != 'B'
+              or self.channels.get('B') is not event
+              or not any(peer is event for peer in self.peers())
+              or {p['role'] for p in self.peers()} != {'A', 'B'}):
+            report['rejected'] = 'unsupported_battle_exit_membership'
+        elif any(b['round'] == self.room.generation for b in self.state['round_bombs']):
+            report['rejected'] = 'unsupported_battle_exit_after_bomb'
+        elif event.get('battle_exit202'):
+            report['rejected'] = 'battle_exit_already_staged'
+        else:
+            report['opaque_fields'] = codec.read_fields(body[2:], [4] * 5)
+            event['battle_exit202'] = report
 
     def death_lifecycle_rejection(self, event):
         """Opt-in measured Battle compatibility policy, not a life-state oracle.

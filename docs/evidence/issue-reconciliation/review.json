@@ -1,7 +1,7 @@
 {
   "schema": "kre-issue-review-v1",
   "as_of": "2026-11-05",
-  "baseline": "06765c7d58c171a9fdebd7bd68fecda0445b61d1",
+  "baseline": "728b79fcfa60284a5f32989fc6f37b94a7c30251",
   "method": "Codex manual acceptance review; native/static/model/design/merge/gate distinct; originalissuebodies archivedlocalbeforeedit, no completecheckpoint rewrite",
   "issues": [
     {
@@ -132,9 +132,9 @@
         "KR-S001",
         "KR-S002"
       ],
-      "known": "CP123/PR194merged06765c7; CP124 corpus64/20death/11escape andopt-in19currenttrap/202tests/2229dispatchmodel/2246+89runtimejoins/2130raw/tworescueresultreturnReadyB. AUD039next128.",
-      "remaining": "NormalBguestBattleexit/modal/request/peerreturn unknown; general lifeauthority/auth/location/variants/reset/gates.",
-      "next_test": "PLAN source-firstCP034044107/retainedUI,2realABcurrentterrain121clock/noBomb normalBclickexit/modal/capture request/native/socket/stage, noassumed86/EOF.",
+      "known": "CP124/PR195merged728b79f; CP125normalB20286guestexit/controlfixed/nolocalEOF/lobbyB/Asurvivorreturn/cleanup,929joins820raw/211tests. 202notexitexclusive/12oldnormalendingexamples.",
+      "remaining": "Exitrejoin/Ready/Start2sameTCP; hostexit/postbomb/deadexit/genericlifecycle/fullauthority/gates.",
+      "next_test": "PLAN afterAactual180cleanup+B24191 normalBroomdoubleclick82/87/585/117/Ready95/A104→Start2key121/99/153/clock. ReuseCP035107125; no forgedrequests/accountresume.",
       "acceptance": "Epic checklist: linkedscopedtask/evidence+authoritymatrix vàacceptancegate ởPLAN; từngtaskđóng khôngđóngepic/K5/K6a.",
       "reason": "Keep epic/gatesopen. CP120scopedfreshrescuepositivewhileCP119negativecontrolimmutable; cycleauditAUD037due120/next124, noreset.",
       "sources": [
@@ -169,7 +169,8 @@
         191,
         192,
         193,
-        194
+        194,
+        195
       ],
       "successors": []
     },

@@ -4459,3 +4459,40 @@ chosenrank2/175180/return2/actualReadyB, noStart3.2246basejoins/2130raw+89guardj
 actual18 sau đó; peerquota/fulltrajectory/contactthreshold/causalfix vẫn giới hạn như CP120.
 Hai realWineAB/fixedteam/syntheticopponent2/chosentwooutcomes; không fullmatch/K5/K6a/LAN/Internet.
 AUD039 định kỳ qua124/kế128; sourcebinary/pack/DB và completeCP001123 không sửa. Bước kế ở PLAN.
+
+
+<a id="normal-battle-exit"></a>
+### Normal guest Battle exit202→86, lobby và survivor return — CP125
+
+**kr_runtime/kr_static confirmed trong scope; emulatorpolicy design**, [raw/recipe/hash](evidence/battle-exit/README.md).
+Source-first CP034 idleBack/CP044activeEOF/CP107idlehostBack/VNmembership concepts chỉ phần tái dùng;
+không gọi chúng là proof normalBattleexit. Hai realWineAB/Ahost/Bguest/ExVillage01/currentterrain,
+không đặt bom. Nút 나가기 client-relative715,578, không có confirmmodal trong hai ca đo.
+
+Control182,674759821s: Bactual202seq202/payload22, sau đó86seq205/bodyempty, native13→11 qua
+callerE724F0; service86reject`round_not_returned`. Bviewlobbyempty, A vẫnBattle/no175180 trong30s.
+AEOF do cleanup **247,169634ms sau controllercompletion**, không gán cho click. Source/capture giữ.
+
+Targetedstatic2newbodies **E72490/E84FF0** byte-match static/runtimeA/B/modO. E72490 gọiE84FF0,
+123F820(1), normal12562F0(11)→1256100, không chờ reply202. E84FF0 guardstage+6E08, constructor
+1164C10(op202), u8stage+6C58/u8min(getter13B07C0,2), mỗi record5u32/14EBD90, send1164D50.
+Ca đo [0,1,0,0,0,0,0]/22byte; nghĩa cácu32 opaque. RawfirstsliceE72380 mởgiữainstruction không
+được dùng; alignedfullbody/code-match giữ riêng. Không newnativebody khác hoặc sửa sourceDB/binary.
+**202 khôngexitexclusive:** retainedCP106/121/123 có12example normalending; fixedA gửi202 từE60F5F
+trước180, Bexit sendstackE724A1/E85241. Không dùng202mộtmình như leave request/death/authority.
+
+`battle_exit: {"mode":"guest_B_202_86"}` opt-in/defaultoff. Chỉ Ahost/Bguest/currentbound/mapped/
+live2real/unbombed, exclude syntheticrescueprofile. Stage valid202variant22/context0/count1/fiveopaqueu32,
+không reply/finish/death. Subsequent86empty seqforward cùnggeneration mới releaseBmembership giữTCP,
+finishfence/abort reasonnormal_Battle_exit. Validate reentryfixtures trước mutate; reject default/unsupported
+không đổi member/fence. Chosenforfeit12s/rankA1B2→1805s→postreturn1071103s và B24191sau1s tái dùng
+policy cũ, không luật Nexon hoặc body202đủ chứng minh chết. Không send107prepare-only lúcAstillBattle.
+
+Fixed228,339129183s/exit0/error0: B202seq205→86seq208 được nhận, native11/24191/room91đủ50;
+A175đủ302/native manager ranks1,2→180đủ3/stage12→107arrival/110đủ6, ảnh room chỉA/chief và Bởsảnh
+córoomrowWAITING. KhôngEOF trướcboundcompletion, khôngactual/synthetic17/19; identity/channel khôngđóng.
+Runtime107basecursor/IDfield không probe riêng ở đây; copiednative6byteparser+Preparearrival/UIslotempty
+khác mức chứng minh đó. 929joins/820raw+84nativepacketcases; control877joins/790raw+69nativecases.
+211server tests gồm9new regression; noBomb/role/context/count/reset/pair/duplicate/default/preflight.
+Chưa rejoin/Start2 sauexit/activehost/postbomb/deadexit/generalroom/auth/fullmatch/K5/K6a/LANInternet.
+Bước kế duy nhất PLAN; AUD039qua124/kế128, completehistory/raw cũ không sửa.
