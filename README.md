@@ -41,17 +41,17 @@ Hai copy KR Wine đã chạy login/sảnh/phòng/Battle và các chu kỳ kết 
 [kim/reset](docs/PROTOCOL.md#needle-round-reset), [cứu hai chiều và hai kết quả](docs/PROTOCOL.md#rescue-two-results),
 [deep chain/reset](docs/PROTOCOL.md#recursive-chain-cycles) giữ phạm vi và giới hạn tại nguồn chuẩn.
 
-**Mốc mới CP141:** service nhận bind/peer IPv4 tường minh, mặc định loopback. Hai virtualhost chạy
-hai basic cycles bằng module production, **đã bỏ shim địa chỉ**; sau return2, normal BReady tạo actual95
-và cả hai nhận native110, ảnh phòng hiện ready badge. [Contract/giới hạn](docs/PROTOCOL.md#service-address-config),
-[raw/hash](docs/evidence/peer-endpoints/README.md#cp141). Chưa fullmatch/K6a/LAN thật/Internet.
+**Mốc mới CP142:** cùng một run production không shim đã có movement hai chiều qua hai vòng,
+nhặt Bomb/Fire với native effect cảhai view, bom/trap/death → hai kết quả/reset và Ready sau return2.
+[Contract/giới hạn](docs/PROTOCOL.md#virtual-movement-cycles), [raw/hash](docs/evidence/peer-endpoints/README.md#cp142).
+Đây là modifiedWine/hai virtualhost cùng máy; **chưa fullmatch/K6a/LAN thật/Internet**.
 
-CP140/AUD043 đã merge [PR211](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/211) tại`f4f3371`.
-CP141 code/runtime/docs đang tự kiểm; [review độc lập waived](docs/evidence/checkpoints/review-waiver.json).
-Audit qua140, kế **CP144**; shared-route partial và CP137 complex-route UI debt giữ riêng.
+CP141 đã merge [PR212](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/212) tại`b1f2c72`.
+CP142 docs/evidence đang tự kiểm; [review độc lập waived](docs/evidence/checkpoints/review-waiver.json).
+Audit qua140, kế **CP144**; giữ run observer partial, shared geometry và CP137 complex-route UI debt.
 
-Theo [PLAN](docs/PLAN.md#current-order), ghép native movement hai chiều qua hai vòng với production
-addresses/basic lifecycle trong cùng run. Tái dùng observer và input đã đo; không lặp shared geometry.
+Theo [PLAN](docs/PLAN.md#current-order), ghép selected same/old TCP replay vào cùng production
+movement/lifecycle profile, phân biệt frame native và frame proxy; không RE lại cơ chế đã biết.
 
 Đích đầu: hai client thật chơi hai trận liên tiếp; mở bốn client và hardening sau đó.
 
