@@ -1,7 +1,11 @@
 # Boom KR Server
 
-Server giả lập cho **client Crazy Arcade KR gốc build 00967**, dựa trên RE KR và kiến thức từ client
-VN VBNB_116. Đây là project độc lập với bản viết lại client/server Rust `boom-rs`.
+Server giả lập cho **the lastest client Crazy Arcade KR build00967 before end of service**, dựa trên kiến thức từ client
+VN VBNB_116. 
+Chú ý:
+1- dự án không cung cấp client game
+2- dự án chứa lượng lớn text và kiến thức RE được viết bằng agents, ko phải con người, nếu đọc không hiểu thì hãy hỏi AI giải thích. 
+<img width="1024" height="1230" alt="fixed-contact" src="https://github.com/user-attachments/assets/739b9237-b44a-47f0-87a3-97ccd3c9f669" />
 
 **Thư mục làm việc hiện tại trên host:** `/home/admin/boom/repos/boom-kr-server`.
 Docs, tools, code và evidence mới đều ở đây. Không cần mở worktree của repo Rust cũ để làm project này.
