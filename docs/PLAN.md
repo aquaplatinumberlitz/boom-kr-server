@@ -1,7 +1,7 @@
 # Kế hoạch server giả lập KR 00967
 
 Nguồn chuẩn của project `boom-kr-server`; bản nhập từ plan đã được dsh1/dsh2 review tại `1eee46d`.
-Cập nhật05/11 JST (CP125): normalB Battleexit202→86/currentopt-in vềsảnh, Aforfeitresult/roomcleanup đã đo khôngEOF. CP124/PR195 merged `728b79f`; CP125 tự kiểm/chờ PR. AUD039/kế128.
+Cập nhật05/11 JST (CP126): sameTCP B normalBattleexit/rejoin/Ready/AStart2/currentkey/nativeclock2 đã đo, R2active. CP125/PR196 merged `0ac85d2`; CP126 tự kiểm/chờ PR. AUD039/kế128.
 
 
 ### Mục tiêu, baseline và phạm vi
@@ -37,13 +37,13 @@ với client Rust không chứng minh có thể điều khiển client KR bằng
 
 ### Tiến độ hiện hành theo bằng chứng
 
-| Task/mốc | Trạng thái tại CP125 | Nguồn chuẩn |
+| Task/mốc | Trạng thái tại CP126 | Nguồn chuẩn |
 |---|---|---|
 | KRE-004/issue6 | Đã review/merge PR7 và đóng issue:recipe r1 đến local accept;không phải full K1 | [Wine r1](evidence/wine/README.md) |
 | Bootstrap reply | PR8 đã merge;debugger ProcessPatchreturn1,không ép success | [bootstrap evidence](evidence/bootstrap-wire/README.md) |
 | KRE-005a/issue9,R2 | PR10 đã merge:3 cold start cửa sổ/second accept;issue9 còn mở | [R2 evidence](evidence/wine-r2/README.md) |
 | WCP hai-reply | Run CP001 là lịch sử chưa C→S; CP006 đã đo request đầu trên copy tham số hóa | [PROTOCOL](PROTOCOL.md#wcp),[WCP evidence](evidence/wcp/README.md) |
-| KRE-005b/issue14 | CP006–124 đã merge; CP125 normalBattleexit guest20286 đã đo/chờ PR; fullround/authority/full auth còn mở | [Q-023](RESEARCH.md#q-023), [service](evidence/probe-service/README.md) |
+| KRE-005b/issue14 | CP006–125 đã merge; CP126 exitrejoin/Start2sameTCP đã đo/chờ PR; fullround/authority/full auth còn mở | [Q-023](RESEARCH.md#q-023), [service](evidence/probe-service/README.md) |
 | K0/K1 | Chưa nghiệm thu toàn gate;Windows vanilla/control ownership và các điều kiện còn thiếu giữ mở | Gate dưới,[Q-022](RESEARCH.md) |
 | K2a/K2 | Primitive/WCP, CP057stream native/model và CP058–060authcallback137/135/errors0 đã có; fullcodec/authauthority/reconnect và gate chưa pass | [PROTOCOL](PROTOCOL.md#login-auth),[Q-023](RESEARCH.md#q-023) |
 | K3 | Copy đã vẽUI/đóngnotice, A/B/Cprofile đọc sạch và mộtnamedcachewarm được nhận; identityauthority/toàncache/codec/K3 chưa nghiệm thu | [Contract sảnh](PROTOCOL.md#channel-lobby) |
@@ -63,15 +63,14 @@ Một blocker chỉ kết thúc nhánh đo tương ứng; ghi rõ rồi tiếp v
 KRE-073/[#188](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/188) đã giao
 [PR189](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/189)/merge`dae23b7`, CP118 vàđóng;
 selectiveCLI/historicalmigration xong, không còn taskactive tổ chức. CP119 đãtiếpactualRE sau merge.
-1. **KR-R004/X003/S001 — rejoin/Start2 sau normal Battle exit:**
-   [CP125](PROTOCOL.md#normal-battle-exit) xong ca unbombedBguest/Ahost: B202→86/native11/lobby,
-   A175180/room107110/noEOF. 202 cũng có ở ending bình thường, khôngexitexclusive. Policy opt-in
-   chỉ ca trước bom; hostexit/postbomb/deadexit/generalroom giữ unknown, không mở rộng ngầm.
-   Reuse CP035/107 room82/87/585/106/110/Ready/Start và current control/fixed CP125: cùng TCP/IDslot,
-   đợi Aactual180/roomcleanup và B24191 rồi normalB doubleclick roomrow→rejoin/native117/ReadyB95/
-   A104→Start2/currentkey/native121/99/153/clock. Không reconnectaccount hoặc mint82/95/104.
-   Quan sát earlyjoin/roundbarrier chỉ nếu actualUI sinh trigger; không quét mọi race. Nếu failure,
-   trace đúng currentmembership/nativeguard; không đổi source trong run hoặc ghép run thành gate.
+1. **KR-F004/X003/S001 — guest Battle exit với bom đang chờ:**
+   [CP126](PROTOCOL.md#battle-exit-rejoin) samechannel Bexit/rejoin/Ready/AStart2/nativeclock2 đã đo;
+   không mở lại knownrejoin/schema/codec. CP125 option chỉ unbombed; postbomb vẫn reject theo thiết kế.
+   Reuse CP044 EOF/pendingtimerfence và CP125 actualnormalUI20286: cùng2realAB/currentprofile,
+   normal BSpace→actual118/native159 trước clickexit khi fuse6 chưa tới. Capture actual202/86/active
+   reject/membership/stage/oldjob158 trước–sau; không coi EOFcontrol lànormalexitproof.
+   Control giữ option hiện hành để định danh đúng khác biệt; chỉ mở policy/timer fence phần còn thiếu
+   sau raw. Không đổi fuse để dễ đạt, giả202/86/death/kill hoặc source giữa run. Native202u32 opaque.
    [#14](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/14) epic giữ mở.
    <!-- active-issue: 14 --> AUD039 qua124; periodic audit kế **CP128**.
 2. **KR-B003/KR-F006 — nợ có giới hạn:** [CP057](PROTOCOL.md#codec-stream-boundaries) đã đo stream/
@@ -99,7 +98,7 @@ Bảng này chỉ phân công/thứtự; acceptance/PR/bằngchứng ởissue. [
 
 | Thứ tự/scope | Issue | Trạng thái/phần còn thiếu |
 |---|---|---|
-| Hiện hành RE | [#14/KRE-005b](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/14) | CP110UI/Ready/CP111receiverprepostđãđo; CP112structuralguardđãđo; CP113kimcurrentserviceđãđo; CP114secondtrapcạn/Start2freshcreditđãđo/PR184merged; CP115/PR185merged; CP116rescue B/aux0/PR186merged; CP119/PR190mergedStart2; CP120/PR191 merged; CP121 hai rescue/result/return và actualReadyB đã đo, CP122 recursivechain đã đo; CP123 deepchain/result/reset2 đã đo; CP124 admission guard/corpus đã đo; CP125 normalunbombedguestexit đã đo; exitrejoinStart2 là bước1, semanticvalidatorcònmở. #178 đã hoàn thành theo PR179. |
+| Hiện hành RE | [#14/KRE-005b](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/14) | CP110UI/Ready/CP111receiverprepostđãđo; CP112structuralguardđãđo; CP113kimcurrentserviceđãđo; CP114secondtrapcạn/Start2freshcreditđãđo/PR184merged; CP115/PR185merged; CP116rescue B/aux0/PR186merged; CP119/PR190mergedStart2; CP120/PR191 merged; CP121 hai rescue/result/return và actualReadyB đã đo, CP122 recursivechain đã đo; CP123 deepchain/result/reset2 đã đo; CP124 admission guard/corpus đã đo; CP125 normalunbombedguestexit đã đo; CP126 exitrejoinStart2 đã đo; pendingbombexit là bước1, semanticvalidatorcònmở. #178 đã hoàn thành theo PR179. |
 | Control theo trigger/gate | [#1/KRE-001](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/1), [#2/KRE-002](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/2) | Windowsoriginal/ownership/K0K1/fullbootstrapconfig; reuseWine/import/replyđãđo. |
 | Codec/identity khi cần | [#3/KRE-003](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/3), [#9/KRE-005a](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/9) | Fullcodec/livebounds vàintermittentmainstartupcause cònthiếu; khônglặpprimitive/auxiliarylocale. |
 

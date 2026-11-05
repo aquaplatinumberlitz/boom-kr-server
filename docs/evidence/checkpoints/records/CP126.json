@@ -1,0 +1,212 @@
+{
+  "artifacts": [
+    {
+      "name": "CA-r2-login-logout.exe",
+      "sha256": "660447c293ce92270cb9b5815331bca976e8f156366e1fe50b217b6c12e60ce3"
+    },
+    {
+      "name": "CA-r2-stage-social.exe",
+      "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+    },
+    {
+      "name": "CA-r2-stage-social.exe Bcopy",
+      "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+    },
+    {
+      "name": "modO.bin",
+      "sha256": "a08950c833d3acab8281049def7b3dc96b221f107eeda01da3a548e34b91dce5"
+    }
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-11-05T10:51:58.737857+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "Codex solo RE/code/runtime/selfcheck, not independent approval.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Owner explicitly requested solo without Claude review."
+    }
+  },
+  "owner": "Codex",
+  "reviewer": "Codex",
+  "id": "CP126",
+  "previous": "CP125",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-05T10:51:58.737857+00:00",
+  "context_commit": "0ac85d2cd005f15af23f11e43191e744cea73748",
+  "question": "DoesBnormalBattleexit→Aresultroom/BnormalLobby permit actualsamechannelBroomrejoin/Ready/AStart2/currentkey/nativeclocks withoutreconnect?",
+  "scope": "ReuseCP035107125schema/normalroomrow/Readyhover/currentnativeprobes andVNmembershipconceptsonly; no newnativebody/production/profile/fuse/client change. AppendnormalrejoinafterA180cleanup/B24191 thenReadyStart2 andstopR2clock8s. Privateisolatedrun/rawcleanup. Analysisfailureperroleframeorderfixedseparatelybyactualtimestamps, originalretained.",
+  "locators": [
+    "CP125PR196 head4d48e14ee1f298f2c80f499bb29fad27075d1082/merge0ac85d2cd005f15af23f11e43191e744cea73748/CLEANMERGEABLEchecks[]; unchanged211tests/sourcefrozen.",
+    "Runf322ffef3377e8ef0c122a0355d9434b41a683c7150bfd5c67fc36c9873aa432/243.779083202s/exit0errors0/1095raw/1379joins. B20286/11/lobby/Aforfeit175180/cleanup thenB82seq268/585283/95301/A104250 chronological/same8connections/IDs1,2/slots0,1/nativekey12346/121129/99/153/clock2.",
+    "KnownB87full7thirdjoin/ownslot1/Prepare117/95/104/native121/clockpoints reused, no newfunction/staticbody. runtimecopye9bb4766/static660447/modOa08950/base400000/RVA=VA−400000.135packet/12peer153models separate.",
+    "Originalverifier appendsAthenBframesbutassertedcrosssocket chronologicalorder; actualB82 captured127.661595msbeforeOSactionend withinwindow; newscript sortmonotonic_ns only sameassertions/expectedfields, oldfailure/raw retained. AUD039next128."
+  ],
+  "findings": [
+    {
+      "summary": "SameCP125source/profile normalBexit/currentforfeitAreturncleanup/B24191 then actualB82/585/95/A104/Start2key12346/native121full129/two nativeclocks bothviews. Bthirdjoin87full7/ownslot1/same8channels/rosterIDs1,2/slots0,1. Oneforfeitreturn+R2active, notaccountresume/tworesults.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#battle-exit-rejoin",
+      "limits": "SameCP125service/profile/2realmodifiedWineAB/Ahost/Bguest/ExVillage01/unbombednormalexit/chosensurvivorforfeit. Same8TCP/IDs1,2/slots0,1 actualB82/585/95 thenA104/key12346/native2full121/clocks; R2activeonly/onecompletedresultreturn. Notaccountresume/2completedmatches/generalroom/hostexit/postbomb/deadexit/earlyjoinbarrier/lifeauthority/fullmatch/K5/K6a/vanilla/LANInternet/gate. Nativeframer/typed/153models copiedcode separatefromruntime. Originalrole-groupedverifierfailurekept; onlysorttimestampfix no rawcriteriachanges. No production/client/fuse/source changes midrun. AUD039through124next128.",
+      "evidence": [
+        "REJOIN-01129",
+        "REJOIN-01100",
+        "REJOIN-01186"
+      ]
+    },
+    {
+      "summary": "135actualpacket nativeframer/typed reader and12peer153 CRC/partial models corroboratecapturednewjoin/Ready/start/endpointwire, separatefromnativegame runtime. 211server tests CP125reuse becauseproductionunchanged.",
+      "source": "kr_static",
+      "status": "confirmed",
+      "method": "emulation",
+      "canonical": "docs/PROTOCOL.md#battle-exit-rejoin",
+      "limits": "SameCP125service/profile/2realmodifiedWineAB/Ahost/Bguest/ExVillage01/unbombednormalexit/chosensurvivorforfeit. Same8TCP/IDs1,2/slots0,1 actualB82/585/95 thenA104/key12346/native2full121/clocks; R2activeonly/onecompletedresultreturn. Notaccountresume/2completedmatches/generalroom/hostexit/postbomb/deadexit/earlyjoinbarrier/lifeauthority/fullmatch/K5/K6a/vanilla/LANInternet/gate. Nativeframer/typed/153models copiedcode separatefromruntime. Originalrole-groupedverifierfailurekept; onlysorttimestampfix no rawcriteriachanges. No production/client/fuse/source changes midrun. AUD039through124next128.",
+      "evidence": [
+        "REJOIN-01118",
+        "REJOIN-01120",
+        "REJOIN-01191"
+      ]
+    },
+    {
+      "summary": "Verifierfirst failed becauseactualframes groupedbyrole beforecrosssocketorderassertion. Separatechronologicalsort makesidenticalcriteria pass onretainedtimestamps, no expectation/raw/runtimechange; oldfailurestored. Capturetimingnotglobalgametick.",
+      "source": "design",
+      "status": "design",
+      "method": "documentation",
+      "canonical": "docs/PROTOCOL.md#battle-exit-rejoin",
+      "limits": "SameCP125service/profile/2realmodifiedWineAB/Ahost/Bguest/ExVillage01/unbombednormalexit/chosensurvivorforfeit. Same8TCP/IDs1,2/slots0,1 actualB82/585/95 thenA104/key12346/native2full121/clocks; R2activeonly/onecompletedresultreturn. Notaccountresume/2completedmatches/generalroom/hostexit/postbomb/deadexit/earlyjoinbarrier/lifeauthority/fullmatch/K5/K6a/vanilla/LANInternet/gate. Nativeframer/typed/153models copiedcode separatefromruntime. Originalrole-groupedverifierfailurekept; onlysorttimestampfix no rawcriteriachanges. No production/client/fuse/source changes midrun. AUD039through124next128.",
+      "evidence": [
+        "REJOIN-00001",
+        "REJOIN-01127",
+        "REJOIN-01128"
+      ]
+    }
+  ],
+  "verification": [
+    {
+      "check": "1379same-runrelations/1095rawSHA/frozen/isolation/actualexit/rejoin/currentroles/82,585,95,104/key/native12199,153,clock2",
+      "result": "pass",
+      "evidence": [
+        "REJOIN-01129",
+        "REJOIN-01128",
+        "REJOIN-01126"
+      ],
+      "limits": "SameCP125service/profile/2realmodifiedWineAB/Ahost/Bguest/ExVillage01/unbombednormalexit/chosensurvivorforfeit. Same8TCP/IDs1,2/slots0,1 actualB82/585/95 thenA104/key12346/native2full121/clocks; R2activeonly/onecompletedresultreturn. Notaccountresume/2completedmatches/generalroom/hostexit/postbomb/deadexit/earlyjoinbarrier/lifeauthority/fullmatch/K5/K6a/vanilla/LANInternet/gate. Nativeframer/typed/153models copiedcode separatefromruntime. Originalrole-groupedverifierfailurekept; onlysorttimestampfix no rawcriteriachanges. No production/client/fuse/source changes midrun. AUD039through124next128."
+    },
+    {
+      "check": "Originalperroleframeordercomparedaschronological",
+      "result": "observed",
+      "evidence": [
+        "REJOIN-00001",
+        "REJOIN-01127"
+      ],
+      "limits": "Analysisassertionfailurekept; onlytimestamp sortingfixedbynewscript. No schema/nativecriteriarelaxation."
+    },
+    {
+      "check": "135packet/12peer153models andunchanged211server tests reused;manualimages/docs/catalog/issues/artifacts/diff",
+      "result": "pass",
+      "evidence": [
+        "REJOIN-01118",
+        "REJOIN-01120",
+        "REJOIN-01191",
+        "REJOIN-01186",
+        "REJOIN-01110",
+        "REJOIN-01116",
+        "REJOIN-00003"
+      ],
+      "limits": "Models/manualscopedobservation/mechanicalconsistency, notautoauthority/gate."
+    }
+  ],
+  "evidence": [],
+  "evidence_manifests": [
+    {
+      "path": "docs/evidence/checkpoints/evidence/CP126-Battle-exit-rejoin.json",
+      "bytes": 302707,
+      "sha256": "af0cc369ac5aa8818dcaea0f6b9e953b007476c6deec906d6ad6cfa7fc2958ab",
+      "count": 1191
+    }
+  ],
+  "delta": {
+    "added": [
+      "NormalBattleexit/resultreturn→sameTCPBnormalrejoin/Ready/AStart2/freshkey/nativeclocks actualpositive."
+    ],
+    "corrected": [
+      "CP125exitrejoin/Start2unknown nowpositiveonlyunbombednewrun; CP125PR196merged/currentdocs sync.",
+      "Perrolecapturegroupingnotcrosssockettimeorder; originalfailedanalysispreserved withtimestampsortcorrection."
+    ],
+    "superseded": [
+      "NEXT-BATTLE-EXIT-REJOIN scopedgapresolved; nextpendingbombnormalUIexit vsCP044EOFfence."
+    ]
+  },
+  "blockers": [
+    "NormalguestexitafteractualBomb/pendingtimer notmeasured, currentoptionintentionallyrejectsafteranyBomb; need controlbeforepolicyexpansion.",
+    "Hostexit/deadexit/earlyjoinbarrier/generalroom/accountresume/auth/wholeauthority/fullreset/vanilla/LANInternet/gatesremain."
+  ],
+  "next_steps": [
+    {
+      "id": "NEXT-BATTLE-EXIT-REJOIN",
+      "task": "KRE-005b",
+      "state": "closed",
+      "action": "CP126sameTCPactualB82/585/95/A104/native121129/currentkey/clock2 afterguestexit/Areturnobserved scoped.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-BATTLE-EXIT-PENDING-BOMB",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "PLAN sourcefirstCP044EOF/fence/CP125126normalUI20286/nativereaders; current2realAB normalBSpaceactual118/159 thenUIexitbeforefuse6, controlknownafterBombreject/membership/stage/oldjob158. No fusechange/forgedrequests/kill; sourcefrozenuntilcleanup. AUD039next128.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    }
+  ],
+  "docs_sync": [
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "CP126samechannelexitrejoin/ReadyStart2/R2active/limits/chronologycorrection/nextpendingBombexit; oldcomplete/raw/gates unchanged."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "CP126samechannelexitrejoin/ReadyStart2/R2active/limits/chronologycorrection/nextpendingBombexit; oldcomplete/raw/gates unchanged."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "updated",
+      "reason": "CP126samechannelexitrejoin/ReadyStart2/R2active/limits/chronologycorrection/nextpendingBombexit; oldcomplete/raw/gates unchanged."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "updated",
+      "reason": "CP126samechannelexitrejoin/ReadyStart2/R2active/limits/chronologycorrection/nextpendingBombexit; oldcomplete/raw/gates unchanged."
+    },
+    {
+      "path": "docs/features.json",
+      "state": "updated",
+      "reason": "CP126samechannelexitrejoin/ReadyStart2/R2active/limits/chronologycorrection/nextpendingBombexit; oldcomplete/raw/gates unchanged."
+    },
+    {
+      "path": "docs/COVERAGE.md",
+      "state": "updated",
+      "reason": "CP126samechannelexitrejoin/ReadyStart2/R2active/limits/chronologycorrection/nextpendingBombexit; oldcomplete/raw/gates unchanged."
+    },
+    {
+      "path": "docs/evidence/battle-exit/README.md",
+      "state": "updated",
+      "reason": "CP126samechannelexitrejoin/ReadyStart2/R2active/limits/chronologycorrection/nextpendingBombexit; oldcomplete/raw/gates unchanged."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/review.json",
+      "state": "updated",
+      "reason": "CP126samechannelexitrejoin/ReadyStart2/R2active/limits/chronologycorrection/nextpendingBombexit; oldcomplete/raw/gates unchanged."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
+      "state": "updated",
+      "reason": "CP126samechannelexitrejoin/ReadyStart2/R2active/limits/chronologycorrection/nextpendingBombexit; oldcomplete/raw/gates unchanged."
+    }
+  ]
+}

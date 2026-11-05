@@ -4496,3 +4496,22 @@ khác mức chứng minh đó. 929joins/820raw+84nativepacketcases; control877jo
 211server tests gồm9new regression; noBomb/role/context/count/reset/pair/duplicate/default/preflight.
 Chưa rejoin/Start2 sauexit/activehost/postbomb/deadexit/generalroom/auth/fullmatch/K5/K6a/LANInternet.
 Bước kế duy nhất PLAN; AUD039qua124/kế128, completehistory/raw cũ không sửa.
+
+
+<a id="battle-exit-rejoin"></a>
+### Same-channel rejoin/Ready/Start2 sau normal B Battle exit — CP126
+
+**kr_runtime/confirmed hẹp**, [recipe/hash](evidence/battle-exit/README.md#cp126).
+Giữ CP125 service/profile/client/probes/fuse, chỉ thêm normalBdoubleclickroom sauAactual180/cleanup và
+B24191→rejoin117+8s→ReadyB→AStart. Không mint82/95/104 hoặc reconnectaccount. Run243,779083202s/
+exit0/error0: actualB202→86/currentoption/forfeitA175180/room, cùng8TCP connections/ID1,2/slot0,1.
+Saucleanup: B82seq268→585seq283→95seq301, A104seq250 (seq từng socket, không so số giữa hai vai).
+Bnative87 đủ7 lần3/ownslot1, actualmemberrecreateSHA khớp82, native121 đủ129 cảhai lần/key12345→
+12346/actual99/peer153/clocks hai view; ảnh R2active. Chỉ mộtchosenresult/return trướcStart2.
+
+1379joins/1095raw,135nativepacket/12peer153 copied-native cases riêng. Verifierđầu gomframes theo
+roleA/B rồi đòi chronologicalorder nên fail; bản riêng sort theo capturemonotonic_ns, giữ nguyên
+assertion/raw/failedscript. Actual82 tới127,662ms trướcOSdoubleclickend, trong actionwindow, không
+làinputminted. Không dùng arrivalorder thay globalgametick. 211servertestsCP125 reuse/sourceunchanged.
+Chưa Battle2completedresult/exitafterBomb/hostexit/deadexit/earlyjoinbarrier/accountresume/genericreset/
+auth/fullmatch/K5/K6a/vanilla/LANInternet. Bước kế chỉ PLAN; AUD039/kế128.

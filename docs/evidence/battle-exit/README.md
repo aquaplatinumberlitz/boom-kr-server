@@ -32,5 +32,30 @@ FixednativeB202stackE724A1/E85241→stage11E724F0; A202 từE60F5Fnormalending, 
 noBomb/role/currentmember/generation/seq/duplicates/defaultoff/reset/opaqueu32. Unsupportedhost/postbomb/
 rescueprofile/generalvariant giữ reject/unknown; no originalserverlaw/death/auth inference.
 
-CP125 selfcheck/chờPR/reviewwaived; chưaexitrejoin/Start2/2Battlecycles/fullmatch/K5/K6a/LANInternet.
+CP125/PR196 merged`0ac85d2`, reviewwaived; chưaexitrejoin/Start2/2Battlecycles/fullmatch/K5/K6a/LANInternet.
 Oldcomplete/history/raw giữ nguyên; bước kế chỉ PLAN, không kết luận202 là riêngleave packet.
+
+
+<a id="cp126"></a>
+## CP126 — Exit/rejoin/Ready/Start2 cùng TCP
+
+[Contract/giới hạn](../../PROTOCOL.md#battle-exit-rejoin), [gap](../../RESEARCH.md#gap-room-membership).
+CP125/PR196 đã merge`0ac85d2`. `local/research/codex/active-exit-rejoin-r1/reuse-question.json` pin
+CP035/107/125/knownVNlobbyconcepts, tái dùngschema/Readyhover/currentnativeprobes; no newnativebody.
+`cycles-recipe.json`/preflight/sourcefreeze/private namespace/chỉlo/no-route/filesNSS/exclusivelease/
+two-prefix-display; sameproduction/profile/client/fuse. SauAactual180/refresh/B24191 và30s từexit,
+normalBroomrow270180/doubleclick→117+8s→ReadyB/AStart, stopclock2+8s; rawseal saucleanup.
+
+RunSHA`f322ffef3377e8ef0c122a0355d9434b41a683c7150bfd5c67fc36c9873aa432`,
+243,779083202s/exit0/error0,1095raw/1379joins. Same8connections/actualB20286/forfeitA175180/cleanup,
+B82seq268/585seq283/95seq301→A104seq250/currentkey12346/native121129/99/153/clock2 cảhai view.
+Bnative87full7 lần3/ownslot1, membershiprecreateSHA nối actual82; ID1,2/slot0,1 được giữ trongprofile/
+roster/ownslot checks, khôngaccountresume. `rejoin-visual.png`/manual`visual-review.json` xemhaiR2views.
+`native-exit-packets.json`135cases/`native-153.json`12cases là copied-nativeemulation riêng.
+
+`rejoin-check.txt` verifierfail cũ giữ: frames theo roleAthenB bị so với cross-socketchronologicalorder.
+`analysis-correction.json` và`verify_rejoin_chronological.py` chỉsortcapturedmonotonic_ns, giữ cùng
+criteria/expectedsequence; `rejoin-chrono-check.txt` pass. B82arrives127,662ms trướcOSactionend trong
+windowdoubleclick, không đổi raw/time/source hoặc dùng globalgametick. 211unchangedserver tests reuse.
+Chỉ mộtforfeitresult/return+R2active, chưa2completedresults/fullmatch/gates/hostexit/postbomb/deadexit/
+generalroom/accountresume/LANInternet. CP126selfcheck/pendingPR/reviewwaived; audit kế128.
