@@ -79,6 +79,16 @@ class FixtureProfile:
 ROLE_SLOTS = {'A': 0, 'B': 1, 'C': 0}
 ROLE_IDS = {'A': 1, 'B': 2, 'C': 3}
 HOST_BACK_ALIASES = ('join_A', 'player_A_guest', 'slot_A_guest', 'guest_B_chief', 'ready_A')
+# Bounded CP036 diagnostic roster: A/B team0, shared spawn0; synthetic
+# slot2/ID3/team1 has no socket. Hash bodies rather than transport sequences.
+RESCUE_PROFILE_BODIES = {
+    'start': 'd072338979d92b47bdb5ace25660727f070ed45abc35ec18d6e186ea60df9046',
+    'synthetic_opponent': '4351dfd44debaeea207515a367f1bb77237b75fc427df5c95e2e44eed72cbbb0',
+    'player_B': '1317d6479b63ffcd8f1f57b46c8a145b9925eb8832405209e628ec47ae9ee8d1',
+    'guest_A': '1317d6479b63ffcd8f1f57b46c8a145b9925eb8832405209e628ec47ae9ee8d1',
+    'slot_B': '08e98098610ddc0ea0c455e3f8108f3b2517867328bebf795351c42b8151f229',
+    'ready_slot': '0dda561bec566d5964c3c443bffa58dfe0d767a5d335fc9d0b7066b822401775',
+}
 
 
 class ProbeService:
@@ -88,6 +98,16 @@ class ProbeService:
         if missing:
             raise ValueError('profile missing lifecycle fixtures: ' + ', '.join(sorted(missing)))
         self.profile, self.out, self.proxy_ports = profile, out, proxy_ports
+        self.rescue_contact = False
+        if 'rescue_contact' in profile.data:
+            if (profile.data['rescue_contact'] != {'mode': 'friendly_AB_synthetic2_aux1'}
+                    or 'host_back_rejoin' in profile.data or profile.data['initial_key'] != 12345):
+                raise ValueError('unsupported rescue_contact policy')
+            for alias, digest in RESCUE_PROFILE_BODIES.items():
+                if (alias not in profile.frames
+                        or hashlib.sha256(profile.body(alias)).hexdigest() != digest):
+                    raise ValueError('unsupported rescue_contact fixture: ' + alias)
+            self.rescue_contact = True
         self.needle_escape = False
         if 'needle_escape' in profile.data:
             if profile.data['needle_escape'] != {'mode': 'needle_145_report_pair'}:
@@ -198,6 +218,10 @@ class ProbeService:
                 for peer in self.peers()]
 
     def start_round(self):
+        if self.rescue_contact and (self.host_role != 'A'
+                or {peer['role'] for peer in self.peers()} != {'A', 'B'}
+                or any(not peer.get('synthetic_opponent_sent') for peer in self.peers())):
+            raise ValueError('rescue_contact requires live mapped A/B and A chief')
         if self.needle_escape and {peer['role'] for peer in self.peers()} != {'A', 'B'}:
             raise ValueError('needle_escape requires live mapped A/B')
         if self.capacity_profile and any(peer['role'] not in self.capacity_profile
@@ -625,6 +649,16 @@ class ProbeService:
                 report['rejected'] = 'duplicate_report_body'
                 return
         needle = None
+        rescue = None
+        if getattr(self, 'rescue_contact', False) and subtype == 18:
+            rescue, reason = self.prepare_rescue_contact(event, report, body)
+            if reason:
+                report['rejected'] = reason
+                return
+            other = next(peer for peer in self.peers() if peer is not event)
+            report['forward170'] = self.send(
+                other, 'start', f'rescue170-18-r{self.room.generation}',
+                opcode=170, body=body[:6] + codec.pack_fields([1], [1]))
         if getattr(self, 'needle_escape', False) and subtype in (0, 1):
             needle, reason = self.prepare_needle_escape(event, report, body)
             if reason:
@@ -641,6 +675,14 @@ class ProbeService:
             cursor = {'tick': client_tick, 'bodies': []}
             event['report127_cursor'] = cursor
         cursor['bodies'].append(report['body_sha256'])
+        if rescue is not None:
+            event.pop('pickup_ineligible')
+            event.pop('needle_pending', None)
+            report['rescue_cleared'] = rescue
+            self.state['policy_events'].append({
+                'op': 'rescue_contact', 'source': 'design', 'role': event['role'],
+                'generation': self.room.generation, **rescue,
+                'report_sha256': report['frame_sha256']})
         if needle is not None:
             if subtype == 1:
                 event['needle_pending'] = needle
@@ -671,6 +713,38 @@ class ProbeService:
                                              opcode=170, body=payload)
             if subtype == 19:
                 event['death_event'] = report
+
+    def prepare_rescue_contact(self, event, report, body):
+        """Read-only admission for CP036's actual A18/aux1 variant.
+
+        This validates a declared diagnostic roster and report history, not
+        contact distance, authenticated rescuer identity or original authority.
+        Successful peer delivery precedes clearing the matching trap/cursor.
+        Needle credit is deliberately untouched.
+        """
+        peers = self.peers()
+        if (not self.room.active or self.host_role != 'A' or len(peers) != 2
+                or {peer['role'] for peer in peers} != {'A', 'B'}
+                or not any(peer is event for peer in peers) or event['role'] != 'A'):
+            return None, 'rescue_not_supported_AB_member'
+        if len(body) != 28:
+            return None, 'unsupported_rescue_shape'
+        # Exact measured uncompressed envelope, including u32 aux=1. Do not
+        # narrow arbitrary u32 values into an unchecked u8 peer argument.
+        tail = codec.pack_fields([10, 0x00000518, 0x00010000, 0], [4, 4, 4, 2])
+        if body[14:] != tail:
+            return None, 'unsupported_rescue_envelope_or_aux'
+        if any(peer.get('death_event', {}).get('round') == self.room.generation for peer in peers):
+            return None, 'rescue_member_report_dead'
+        trap = event.get('pickup_ineligible')
+        if not (trap and trap['generation'] == self.room.generation and trap['subtype'] == 17):
+            return None, 'rescue_no_current_trap'
+        other = next(peer for peer in peers if peer is not event)
+        blocked = other.get('pickup_ineligible')
+        if blocked and blocked['generation'] == self.room.generation:
+            return None, 'rescue_peer_report_ineligible'
+        return {'trap_sha256': trap['report_sha256'], 'aux': 1,
+                'peer_role': 'B', 'limits': 'declared friendly fixture; contact/life not authenticated'}, None
 
     def prepare_needle_escape(self, event, report, body):
         """Read-only admission for the bounded CP037/038 report1→0 pair.
@@ -913,9 +987,10 @@ class ProbeService:
                         body = bytearray(self.profile.body('peer')[:35])
                         body[15:19] = codec.pack_fields([self.room.key], [4])
                         for slot in range(26):
-                            body.extend(codec.pack_fields([int(slot < 2)], [1]))
-                            if slot < 2:
-                                remote = slot != ROLE_SLOTS[event['role']]
+                            active = slot < (3 if self.rescue_contact else 2)
+                            body.extend(codec.pack_fields([int(active)], [1]))
+                            if active:
+                                remote = slot < 2 and slot != ROLE_SLOTS[event['role']]
                                 for ip, endpoint in ([(0x7F000001, port), (0, 0), (0, 0)] if remote else [(0, 0)] * 3):
                                     body.extend(codec.pack_fields([ip, endpoint], [4, 2]))
                         event['begin_response_sent'] = self.send(event, 'peer', 'peer153', body=bytes(body))
@@ -1074,6 +1149,22 @@ class ProbeService:
                     self.state['policy_events'].append({'op': 'deferred_cleanup', 'role': departed,
                                                         'recipient': role, 'broadcast': sent,
                                                         'monotonic_ns': time.monotonic_ns()})
+        self.prepare_rescue_roster()
+
+    def prepare_rescue_roster(self):
+        """Declare the CP036 synthetic opponent in the room, before Start.
+
+        Explicit diagnostic actor, not replacement identity C or a third live
+        member. The corresponding 153 slot keeps this profile after load.
+        """
+        peers = self.peers()
+        if (not self.rescue_contact or self.room.active or self.host_role != 'A'
+                or len(peers) != 2 or {p['role'] for p in peers} != {'A', 'B'}):
+            return
+        for event in peers:
+            if not event.get('synthetic_opponent_sent'):
+                event['synthetic_opponent_sent'] = self.send(
+                    event, 'synthetic_opponent', 'synthetic-slot2-106', opcode=106)
 
     def replacement_allowed(self):
         departed, survivor = self.channels.get('A'), self.channels.get('B')

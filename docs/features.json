@@ -1,7 +1,7 @@
 {
   "schema": "kre-feature-index-v1",
   "build": "KR00967",
-  "as_of": "CP114",
+  "as_of": "CP115",
   "sources": {
     "plan": "docs/PLAN.md",
     "contract": "docs/PROTOCOL.md",
@@ -2134,7 +2134,8 @@
           "docs/evidence/current-movement-cycles/README.md",
           "docs/evidence/firstseen-admission/README.md",
           "docs/evidence/needle-service/README.md",
-          "docs/PROTOCOL.md#needle-round-reset"
+          "docs/PROTOCOL.md#needle-round-reset",
+          "docs/evidence/rescue-service/README.md"
         ]
       },
       "coverage": {
@@ -2154,13 +2155,15 @@
         "kr_static": {
           "state": "partial",
           "refs": [
-            "docs/PROTOCOL.md#collision-rescue"
+            "docs/PROTOCOL.md#collision-rescue",
+            "docs/PROTOCOL.md#rescue-service"
           ]
         },
         "emulation": {
           "state": "checked",
           "refs": [
-            "docs/evidence/collision-rescue/README.md"
+            "docs/evidence/collision-rescue/README.md",
+            "docs/PROTOCOL.md#rescue-service"
           ]
         },
         "runtime": {
@@ -2182,7 +2185,8 @@
               "docs/evidence/current-movement-cycles/README.md",
               "docs/evidence/firstseen-admission/README.md",
               "docs/evidence/needle-service/README.md",
-              "docs/PROTOCOL.md#needle-round-reset"
+              "docs/PROTOCOL.md#needle-round-reset",
+              "docs/evidence/rescue-service/README.md"
             ]
           },
           "windows_original": {
@@ -2214,9 +2218,11 @@
             "server/test_death_envelope.py",
             "docs/PROTOCOL.md#needle-service",
             "server/test_needle_escape.py",
-            "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/183"
+            "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/183",
+            "docs/PROTOCOL.md#rescue-service",
+            "server/test_rescue_contact.py"
           ],
-          "delivery": "via_pr"
+          "delivery": "branch_pending"
         },
         "integration": {
           "state": "partial",
@@ -2237,7 +2243,8 @@
             "docs/evidence/current-movement-cycles/README.md",
             "docs/evidence/firstseen-admission/README.md",
             "docs/evidence/needle-service/README.md",
-            "docs/PROTOCOL.md#needle-round-reset"
+            "docs/PROTOCOL.md#needle-round-reset",
+            "docs/PROTOCOL.md#rescue-service"
           ]
         },
         "gate": {
@@ -3298,7 +3305,8 @@
           "docs/evidence/promoted-outcome/README.md",
           "docs/evidence/firstseen-admission/README.md",
           "docs/evidence/needle-service/README.md",
-          "docs/PROTOCOL.md#needle-round-reset"
+          "docs/PROTOCOL.md#needle-round-reset",
+          "docs/evidence/rescue-service/README.md"
         ]
       },
       "coverage": {
@@ -3316,13 +3324,15 @@
           "state": "unknown",
           "refs": [
             "docs/PROTOCOL.md#current-map-chain-state",
-            "docs/PROTOCOL.md#map-flags-snapshot"
+            "docs/PROTOCOL.md#map-flags-snapshot",
+            "docs/PROTOCOL.md#rescue-service"
           ]
         },
         "emulation": {
           "state": "unknown",
           "refs": [
-            "docs/evidence/terrain-shadow/README.md"
+            "docs/evidence/terrain-shadow/README.md",
+            "docs/PROTOCOL.md#rescue-service"
           ]
         },
         "runtime": {
@@ -3386,7 +3396,8 @@
               "docs/evidence/promoted-outcome/README.md",
               "docs/evidence/firstseen-admission/README.md",
               "docs/evidence/needle-service/README.md",
-              "docs/PROTOCOL.md#needle-round-reset"
+              "docs/PROTOCOL.md#needle-round-reset",
+              "docs/evidence/rescue-service/README.md"
             ]
           },
           "windows_original": {
@@ -3404,7 +3415,7 @@
         },
         "implementation": {
           "state": "partial",
-          "delivery": "via_pr",
+          "delivery": "branch_pending",
           "refs": [
             "server/probe_service.py",
             "docs/PROTOCOL.md#service-eof",
@@ -3463,7 +3474,9 @@
             "server/test_death_envelope.py",
             "docs/PROTOCOL.md#needle-service",
             "server/test_needle_escape.py",
-            "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/183"
+            "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/183",
+            "docs/PROTOCOL.md#rescue-service",
+            "server/test_rescue_contact.py"
           ]
         },
         "integration": {
@@ -3522,7 +3535,8 @@
             "docs/evidence/promoted-outcome/README.md",
             "docs/evidence/firstseen-admission/README.md",
             "docs/evidence/needle-service/README.md",
-            "docs/PROTOCOL.md#needle-round-reset"
+            "docs/PROTOCOL.md#needle-round-reset",
+            "docs/PROTOCOL.md#rescue-service"
           ]
         },
         "gate": {

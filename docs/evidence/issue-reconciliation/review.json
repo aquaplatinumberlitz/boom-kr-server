@@ -1,7 +1,7 @@
 {
   "schema": "kre-issue-review-v1",
   "as_of": "2026-11-05",
-  "baseline": "985a01db1fa2db339d1f4e51008c719ad9188547",
+  "baseline": "989dd3a8812c053d9308dad54ce5082bd096befc",
   "method": "Codex manual acceptance review; native/static/model/design/merge/gate distinct; originalissuebodies archivedlocalbeforeedit, no completecheckpoint rewrite",
   "issues": [
     {
@@ -132,20 +132,22 @@
         "KR-S001",
         "KR-S002"
       ],
-      "known": "CP113needleopt-in/175tests/PR183merged; CP114sameprofile/source run339.136s R1depletedemptyCtrl→actual19/resultreturn→Start2/currentkeyfresh145/credit/escape/nativeA,B56→26; selfcheckpendingPR, R2notfinished.",
-      "remaining": "Fullgates/control/auth/codec/authority/validator/LANInternet open; rescue18currentservice/team/aux/diagnosticthirdprofile notintegrated, multicharge/fullinventory/locationlifeauth unknown.",
-      "next_test": "PLANreuseCP036rescue-kept/CP037contactcontrols/exact18tail+17018aux/current121153/rosteridentity; defineboundedopt-inteam/target/auxadmission beforeimplementation; no needle/Ready/codec RErepeat.",
+      "known": "CP110–114/PR180–184 merged; CP115 bounded current rescue18 A/aux1 nativeboth56→26/full7/7/movementvisual, 188tests, selfcheck pendingPR. 2realclients+synthetic2, no fullmatch/gate.",
+      "remaining": "B trapped/A rescue actual18/aux0 and result/Start2 afterrescue; generic roster/life/location/inventory/auth/codec/control/fullgates/LANInternet unknown.",
+      "next_test": "PLAN: sameknownprofile/nativeprobes, normalBtrap/Atouch; actualB18/aux/currentAonlyrejection control then boundedimplementation/runtime, no repeatedhandler/needleRE.",
       "acceptance": "Epic checklist: linkedscopedtask/evidence+authoritymatrix vàacceptancegate ởPLAN; từngtaskđóng khôngđóngepic/K5/K6a.",
-      "reason": "Thay scope CP004postWCP cũ bằng epic bảo trì/compatibility; không tạo duplicatecontract/plan.",
+      "reason": "Keep epic open. Fix stale CP110 secondreturn checkbox and old pendingPR paragraphs; beforebody archived CP115 local. Bounded rescue not broadacceptance.",
       "sources": [
         "docs/PROTOCOL.md#authority",
         "docs/RESEARCH.md#feature-gaps",
-        "docs/PLAN.md#current-order"
+        "docs/PLAN.md#current-order",
+        "docs/PROTOCOL.md#rescue-service"
       ],
       "evidence": [
         "docs/evidence/current-movement-cycles/README.md",
         "docs/evidence/host-normal-back/README.md",
-        "docs/evidence/promoted-outcome/README.md"
+        "docs/evidence/promoted-outcome/README.md",
+        "docs/evidence/rescue-service/README.md"
       ],
       "prs": [
         173,
@@ -155,7 +157,8 @@
         180,
         181,
         182,
-        183
+        183,
+        184
       ],
       "successors": []
     },

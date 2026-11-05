@@ -29,24 +29,29 @@ runtime nào có nguồn, còn thiếu gì và phép kiểm nào giải quyết.
 evidence/hash và câu hỏi; [PLAN](docs/PLAN.md#current-order) giữ duy nhất thứ tự công việc.
 Đây là scope đường bootstrap → login → sảnh → phòng → Battle → kết quả/reset, không kiểm kê toàn client.
 
+[CP115](docs/PROTOCOL.md#rescue-service) đã tích hợp và đo **cứu đồng đội** trên service opt-in:
+report18 thật, peer170/18 đủ7byte/lỗi0, native hai phía56→26 và di chuyển sau cứu trên hai view.
+Scope hai copy Wine cùng đội + một actor đối địch tổng hợp; chưa cứu chiều ngược/kết quả sau cứu.
+[Nguồn/hash/giới hạn](docs/evidence/rescue-service/README.md); bước kế theo PLAN, gate giữ mở.
+
 CP110 xác nhận **sau hai vòng Battle trên copy Wine, cả A/B hiện lại phòng và A Ready được**:
 ảnh đầu đen, tới mốc chờ4giây đã vẽ phòng trước thao tác focus mới; native110 đủ6/6/lỗi0,
 A phát95/seq868 và cảhai đọc110 sau đó. [Contract/giới hạn](docs/PROTOCOL.md#return2-visual),
 [evidence](docs/evidence/promoted-outcome/README.md). Chưa thử Start trận3, fullmatch/K6a/LAN/Internet.
 [CP111](docs/PROTOCOL.md#receiver-prepost) giải gapreceiver từrawCP110: verifier cũ chỉthốngkê
 beforeXY, callbackcuối đãđổi159→219 rồifreshsample294. Proof4phaseprepost mới giữscopebranch4snap/0deferred;
-failurecũgiữnguyên, không thêmruntime hoặc nânggate. Bước kế tíchhợp rescue18 theo nguồn/control đãcó trongPLAN.
+failurecũgiữnguyên, không thêmruntime hoặc nânggate. Bước kế cứu chiều ngược theo PLAN; CP115 đã đo biến thể A/aux1.
 
 [Đối chiếu issue](docs/evidence/issue-reconciliation/README.md): #178 đã giao và đóng sau
 [PR179](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/179), merge `8f3ea2f`;
 #1/#2/#3/#9/#14 còn mở. Snapshot có UTC; lịch sử checkpoint không sửa.
-CP110 [PR180](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/180) đãmerge `7c5d4ea`; CP111 [PR181](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/181) đãmerge `248e118`; CP112 [PR182](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/182) đãmerge `1b7f210`; CP113 [PR183](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/183) đãmerge `2695042`; CP114 tự kiểm/chờPR, review [waived](docs/evidence/checkpoints/review-waiver.json).
+CP110 [PR180](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/180) đãmerge `7c5d4ea`; CP111 [PR181](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/181) đãmerge `248e118`; CP112 [PR182](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/182) đãmerge `1b7f210`; CP113 [PR183](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/183) đãmerge `2695042`; CP114 [PR184](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/184) đãmerge `989dd3a`; CP115 tự kiểm/chờPR, review [waived](docs/evidence/checkpoints/review-waiver.json).
 CP112 thêm [guard envelope17/19](docs/PROTOCOL.md#death-envelope-admission) trước side effect;
 161tests và runhai-vòngBhost438,2s/actualA95seq823/native110 đãqua. Validfirstseen semantic vẫnthiếu.
 CP113 thêm [kim145 opt-in](docs/PROTOCOL.md#needle-service): actualpickup/17→1→0, một170/1,
 A/B native56→26, ôkimtrống vàmovement sauđó. 175tests qua; CP113run chỉmộtescape.
 [CP114](docs/PROTOCOL.md#needle-round-reset) thêmcurrentsecondtrapcạn→actualdeath/result/return→Start2/
-fresh145/escape, giữcùngsource/profile. R2chưa kếtthúc; rescue18/fullinventory/gate vẫn mở.
+fresh145/escape, giữcùngsource/profile. R2chưa kếtthúc; cứu chiều ngược/fullinventory/gate vẫn mở.
 Audit định kỳ **AUD035/CP112**, mốc kế **CP116**; K0–K7 vẫn mở.
 [Yêu cầu chủ dự án](docs/evidence/owner-directives/continuous-work.json): tiếp tục ngay việc kế trong
 PLAN sau mỗi checkpoint/commit/PR, không tự dừng/chờ nhắc.

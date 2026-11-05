@@ -4200,3 +4200,37 @@ Nguồn CP113oneescape giữnguyên; oldCP038depletedvà CP114currentreset khác
 Next rescue18: nativeCP036consumer/prefix/aux vàcontrolgiữprofileC đãcó; currentservice chưa forward18.
 Trước code phải đối chiếu activeAB/team/auxcandidate/current121/153/profileC cógiữidentityđúng haykhông;
 không gộp kimcredit hoặc suyrescuer/authority từtên/fieldu32. PLAN/RESEARCH giữphépkiểm tối thiểu.
+
+
+<a id="rescue-service"></a>
+### Rescue18 opt-in trên current service — CP115
+
+[Wire/consumer CP036](#collision-rescue) được tái dùng;
+[metadata, source/hash, recipe và kiểm](evidence/rescue-service/README.md).
+**kr_runtime/confirmed hẹp**: hai copy Wine thật A/B; fixed roster A/B team0/sharedspawn0 và
+actor đối địch tổng hợp slot2/ID3/team1. Không đại diện ba client hoặc roster/team tổng quát.
+
+`rescue_contact: {"mode":"friendly_AB_synthetic2_aux1"}` là **design/emu_choice**, mặc định tắt.
+Hash body của sáu fixture start121/playerB/guestA/slotB/readyB/synthetic106 phải khớp control CP036;
+không kết hợp host Back/promotion, initial key12345. Service gửi synthetic106 khi cả A/B đã map,
+trước Ready/Start;153 khai báo0/1/2, slot2 ba endpoint0. Start yêu cầu live A/B, chiefA và marker106
+đã gửi; đây là supported-profile policy, không full membership/authentication.
+
+Admission18 kiểm freshness cùng connection trước side effect; chỉ targetA/slot0 với đúng28byte,
+blob10/header `180500000000`/inneru32=1. Phải có current accepted17, không accepted19 trên hai member,
+peerB không có current marker mắc bóng/chết. Chưa kiểm contact distance hoặc xác thực rescuer;
+aux1 chỉ là biến thể đã đo, không truncate u32 bất kỳ thànhu8. Các guard này là lựa chọn emulator.
+
+Gửi một170/18 prefix6 của report18 +u8(1) tới B. Chỉ sau send thành công mới commit cursor,
+bỏ đúng trap marker và needle pending nếu có; **không tiêu credit145**. Rejection không đổi cursor/trap.
+Start reset trap theo lifecycle hiện có; chưa có runtime kết quả/Start2 sau cứu ở nhánh này.
+
+Run162,695s: actual A17 seq193 → A18 seq199; TCP front/upstream nguyên byte, không chèn report.
+Native A56→26 tại local callback; B `E86820(slot0,120,159,0,1)`56→26, full7/7/errors0;
+ảnh sau normalRight cho thấy A di chuyển trên hai view. Một run trước chưa phát104 khi106 bị đặt
+sauStart đã được dừng có cleanup/seal, giữ lịch sử; không suy riêng timing106 là toàn nguyên nhân.
+188 tests qua; CP115 tự kiểm/chờ PR, review waived. Cứu chiều ngược/aux0/aux2/full authority/gates vẫn mở.
+
+Native copied-model tái dùng CP037 xác nhận getter ởE6ED03 trả1/2 được giữ quaframe−6C→−70 và
+E6EF10 đẩy vàoarg3/vf2E0(E6F060). List/gate/profile getter được mô hình hóa; **runtime aux2 unknown**,
+quan hệ authenticated rescuer chưa chứng minh. Không chuyển opcode/offset VN sang KR.
