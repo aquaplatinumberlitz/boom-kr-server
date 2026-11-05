@@ -251,3 +251,35 @@ AUD044 đọc core docs→authority/currentcontracts→evidence/raw/reports/prod
 sharedpartial/oldfailures scope, sửa activeEOFnextstep/110semantics/timeoutmargin/currentmerge/counter.
 CP144selfcheck/pendingPR; reviewwaived, periodicnext **CP148**. Không fullmatch/K6a/LAN/NAT/Internet/
 fullinventory/authauthority. TiếpPLAN exactoldUDP/currentkey trên directvirtualtopology, reuseCP047/130.
+
+
+<a id="cp145"></a>
+## CP145 — Exact old UDP/directvirtual key-drop, offload control và R2positive
+
+Baseline CP144/PR215 merge`13b9f3a`; productionunchanged/reuse231tests. [Contract](../../PROTOCOL.md#virtual-exact-old-udp),
+[câu hỏi](../../RESEARCH.md#gap-peer-movement), [thứ tự](../../PLAN.md#current-order). Reusequestions
+ở`virtual-old-udp-r{1,2}` pinCP047/130known12sites/queueframe/keydrop/source/oldKR-VNscope;
+không nativebodyRE hoặc port opcode/layout. Ownednamespace control khôngđụnghostinterfaces.
+
+|Run local/research/codex/|Kết quả|run.json SHA256|
+|---|---|---|
+|virtual-old-udp-r1|352,402s/exit0/1896raw/2normalcycles; exactoldreplay khôngexactnativeingress, storedUDPchecksumresidue2485. Partialmục tiêukeydrop, khônggọiKRdrop.|`dc6dd3b69bed85a36928100140089906bf3a99385882cc2739036d499f129e37`|
+|virtual-old-udp-r2|349,084s/exit0/1905raw/637vethrecords; exactoldingress/endpoint/queue+19/drain−19/59≠56keydrop/noapply,current13applypositive/tworesultresetReady.|`a4cb131280e20d85538157af34ce1953a2ae746f78c085d9dc21ea1967698b1b`|
+
+R1`checksum-observation.json` và`offload-control-01/report.json` giữ candidate/control: synthetictest
+ởprivateveth defaultcsumresidue42515/receive1; txrxoff csum0/receive2. Rawframes/socketscope/hostnet
+beforeafter/cleanup pin; không gọi model là KRruntime. R2 topologytắt4vethoffload trướcclientlaunch,
+exact59byteEthernetSHA`a2f3e898ae68a10c82099e02c0736659079a39e9f30de5d0486a561f6bbd8318`,
+UDP17SHA`4a1f34f7dd63e7fd80c5255bd1af153af873419e490678033f5390a800f7c15d`, IP/UDPchecksums0.
+`exact-old-verification.json`19joins/source+replayPCAP/nativeingress→endpoint→15queue19/drain→13key
+wire59expected56→E667C2/noexactapply; armedA12beforeAF_PACKETsend. Cùngphase13currentnormalapply,
+BRightpositive sau đó currentprogress. `native-getters.json`162copied52A350wrappers model riêng.
+`basic-verification.json`4013joins/2nativeendings/reset/Ready;594peer+1444wirejoins/4windows;
+70pickup/87TCPguard/25addressReadychecks;1560actor/384peergetters/333typedpacket/12native153/
+43UDPCRC/2364flaggetter+2340array models riêng. `visual-review.json` pin4originals đãxem/bothroom/
+Readybadge. Preflight/sourcefrozen/ownedcleanup/rawseal đầyđủ; binary/DB/packsource bấtbiến.
+
+Khôngnânggate hoặcgộpCP144EOFvàoR2này. Low8wrap/currentforgery/wholeUDP/NAT/LAN/Internet/authority/
+fullinventory/CP137complexUI/sharedgeometry mở. CP145selfcheck/pendingPR/reviewwaived; AUD044qua144/
+kế148. TiếpPLAN endpointTCPchain/directbootstrap-login đểbỏchildloopbackforward, reuseCP008/015;
+không tuyênbố IPpeerconfig là hoànthiện TCPLANflow.
