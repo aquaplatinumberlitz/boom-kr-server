@@ -4348,4 +4348,25 @@ trajectory. Observerpark khôngready/khôngsamples, touchquotaexhausted; không 
 CP119controlR2B17→19/no18 giữ nguyên; runmới khácOSrelease/probe/sourceboot nên chưa định danh
 causalfix hoặc loại trừ UDP/input/timing/state. Capturedsecurefield/1002getter+621snapshotcheck là
 copied-native emulation riêng, không runtime thứba. Sourcebinary/DB/pack không đổi.
-Bước kế hairesult/return saurescue theo PLAN; fullauthority/vanilla/LANInternet/gates giữ mở.
+Phép thử kế của CP120 đã có kết quả [CP121](#rescue-two-results); giới hạn feedback/causal ở trên vẫn giữ. Fullauthority/vanilla/LANInternet/gates giữ mở.
+
+
+<a id="rescue-two-results"></a>
+### Hai vòng cứu → kết quả → về phòng và ReadyB lần hai — CP121
+
+**kr_runtime/confirmed trong scope**, [recipe/hash](evidence/rescue-service/README.md#cp121).
+Run357,734178034s/exit0/error0, giữ nguyên CP119 service/profile/fuse/client và các probe hữu hạn
+của CP120. Delta chỉ normal A Space/B Space sau R2 escape và recipe return/Ready đã biết;
+không phát hộ report18/19/118 hoặc ép actor/outcome. Hai epoch key12345/12346, native121 đủ155,
+clock/153 mới; mỗi epoch actual B17→18/aux0, một peer170A đủ7/7/lỗi0, native B local/A peer56→26.
+Sau mỗi escape mới có actual A/B17→19; service chọn `all_live_AB_accepted_dead_rank2`, cả hai đọc
+175/180, về phòng. Sau return2, **actual B95 seq439**, frame proxy/client/server cùng SHA,
+không104/Start3. Ảnh hai view đã vẽ phòng và nhãn ready; ảnh không là oracle tọa độ.
+
+Đây là **hai chu kỳ rescue/result/return có bằng chứng cùng run** với hai client Wine sửa bản copy,
+đội cố định + đối thủ tổng hợp slot2. Result/rank và roster là `emu_choice`, không luật server gốc.
+771 captured actor getter checks,312 native packet cases và12 peer153 cases là emulation trên code
+copy riêng; không thay thế runtime semantics. Giới hạn feedback/peer quota và CP119 negative ở
+[CP120](#rescue-round2-feedback) giữ nguyên, không kết luận causal fix/contact threshold/fullmovement.
+General reset/inventory/authority/auth/vanilla/LAN/Internet và K5/K6a vẫn mở; không ghép thành fullmatch.
+Bước kế duy nhất ở [PLAN](PLAN.md#current-order).
