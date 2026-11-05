@@ -1,7 +1,7 @@
 {
   "schema": "kre-feature-index-v1",
   "build": "KR00967",
-  "as_of": "CP133",
+  "as_of": "CP134",
   "sources": {
     "plan": "docs/PLAN.md",
     "contract": "docs/PROTOCOL.md",
@@ -1652,7 +1652,8 @@
           "docs/evidence/three-bomb-chain/README.md#cp123",
           "docs/evidence/three-bomb-chain/README.md#cp131",
           "docs/evidence/three-bomb-chain/README.md#cp132",
-          "docs/evidence/three-bomb-chain/README.md#cp133"
+          "docs/evidence/three-bomb-chain/README.md#cp133",
+          "docs/evidence/three-bomb-chain/README.md#cp134"
         ]
       },
       "coverage": {
@@ -1712,7 +1713,8 @@
               "docs/PROTOCOL.md#recursive-chain-cycles",
               "docs/PROTOCOL.md#shared-blocker",
               "docs/PROTOCOL.md#shared-flag-timing",
-              "docs/PROTOCOL.md#shared-cell-state"
+              "docs/PROTOCOL.md#shared-cell-state",
+              "docs/PROTOCOL.md#shared-cascade-cycles"
             ]
           },
           "windows_original": {
@@ -1769,7 +1771,8 @@
             "docs/PROTOCOL.md#recursive-chain-cycles",
             "docs/PROTOCOL.md#shared-blocker",
             "docs/PROTOCOL.md#shared-flag-timing",
-            "docs/PROTOCOL.md#shared-cell-state"
+            "docs/PROTOCOL.md#shared-cell-state",
+            "docs/PROTOCOL.md#shared-cascade-cycles"
           ]
         },
         "gate": {
@@ -2850,7 +2853,8 @@
           "docs/evidence/rescue-service/README.md#cp117",
           "docs/evidence/rescue-service/README.md#cp120",
           "docs/evidence/rescue-service/README.md#cp121",
-          "docs/evidence/three-bomb-chain/README.md#cp123"
+          "docs/evidence/three-bomb-chain/README.md#cp123",
+          "docs/evidence/three-bomb-chain/README.md#cp134"
         ]
       },
       "coverage": {
@@ -2901,7 +2905,8 @@
               "docs/PROTOCOL.md#rescue-return-start-guard",
               "docs/PROTOCOL.md#rescue-round2-feedback",
               "docs/PROTOCOL.md#rescue-two-results",
-              "docs/PROTOCOL.md#recursive-chain-cycles"
+              "docs/PROTOCOL.md#recursive-chain-cycles",
+              "docs/PROTOCOL.md#shared-cascade-cycles"
             ]
           },
           "windows_original": {
@@ -2953,7 +2958,8 @@
             "docs/evidence/promoted-battle-cycles/README.md",
             "docs/evidence/promoted-outcome/README.md",
             "docs/PROTOCOL.md#rescue-two-results",
-            "docs/PROTOCOL.md#recursive-chain-cycles"
+            "docs/PROTOCOL.md#recursive-chain-cycles",
+            "docs/PROTOCOL.md#shared-cascade-cycles"
           ]
         },
         "gate": {
@@ -3025,7 +3031,8 @@
           "docs/evidence/rescue-service/README.md#cp121",
           "docs/evidence/three-bomb-chain/README.md#cp123",
           "docs/evidence/life-admission/README.md",
-          "docs/evidence/battle-exit/README.md#cp126"
+          "docs/evidence/battle-exit/README.md#cp126",
+          "docs/evidence/three-bomb-chain/README.md#cp134"
         ]
       },
       "coverage": {
@@ -3096,7 +3103,8 @@
               "docs/PROTOCOL.md#rescue-two-results",
               "docs/PROTOCOL.md#recursive-chain-cycles",
               "docs/PROTOCOL.md#death-lifecycle-policy",
-              "docs/PROTOCOL.md#battle-exit-rejoin"
+              "docs/PROTOCOL.md#battle-exit-rejoin",
+              "docs/PROTOCOL.md#shared-cascade-cycles"
             ]
           },
           "windows_original": {
@@ -3168,7 +3176,8 @@
             "docs/PROTOCOL.md#rescue-two-results",
             "docs/PROTOCOL.md#recursive-chain-cycles",
             "docs/PROTOCOL.md#death-lifecycle-policy",
-            "docs/PROTOCOL.md#battle-exit-rejoin"
+            "docs/PROTOCOL.md#battle-exit-rejoin",
+            "docs/PROTOCOL.md#shared-cascade-cycles"
           ]
         },
         "gate": {
@@ -3446,7 +3455,8 @@
           "docs/evidence/udp-generation/README.md#cp130",
           "docs/evidence/three-bomb-chain/README.md#cp131",
           "docs/evidence/three-bomb-chain/README.md#cp132",
-          "docs/evidence/three-bomb-chain/README.md#cp133"
+          "docs/evidence/three-bomb-chain/README.md#cp133",
+          "docs/evidence/three-bomb-chain/README.md#cp134"
         ]
       },
       "coverage": {
@@ -3555,7 +3565,8 @@
               "docs/PROTOCOL.md#udp-membership-lifetime",
               "docs/PROTOCOL.md#shared-blocker",
               "docs/PROTOCOL.md#shared-flag-timing",
-              "docs/PROTOCOL.md#shared-cell-state"
+              "docs/PROTOCOL.md#shared-cell-state",
+              "docs/PROTOCOL.md#shared-cascade-cycles"
             ]
           },
           "windows_original": {
@@ -3715,7 +3726,8 @@
             "docs/PROTOCOL.md#udp-membership-lifetime",
             "docs/PROTOCOL.md#shared-blocker",
             "docs/PROTOCOL.md#shared-flag-timing",
-            "docs/PROTOCOL.md#shared-cell-state"
+            "docs/PROTOCOL.md#shared-cell-state",
+            "docs/PROTOCOL.md#shared-cascade-cycles"
           ]
         },
         "gate": {

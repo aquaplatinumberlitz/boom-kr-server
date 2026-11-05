@@ -1,6 +1,6 @@
 # KR 00967 — contract tương thích client gốc
 
-Revision kr-legacy-contract-r1; cập nhật05/11/2026 JST (CP133; AUD041 quaCP132, kếCP136).
+Revision kr-legacy-contract-r1; cập nhật05/11/2026 JST (CP134; AUD041 quaCP132, kếCP136).
 **Contract có bằng chứng từng phần; chưa nghiệm thu full codec K2**.
 Lộ trình và thứ tự task chỉ giữ ở [REWRITE_PLAN — KRE](PLAN.md).
 Đây là contract của repo server KR. ADR0009 của bản viết lại là nguồn lịch sử để so sánh;
@@ -4721,3 +4721,28 @@ riêng; modelgetters táchWineexecution. Actual17sau blast, không19/result/retu
 K5/K6a/vanilla/LANInternet/gate. Khôngclientfunctioncall/statewrite/sourcebinary/DB/packmutation.
 Bước kế chỉPLAN ghép result/reset2 bằng knownpolicy/actualreports, không mởmọi chainvariant.
 AUD041qua132/kế136, reviewwaived; completedraw/checkpoint history bất biến.
+
+
+<a id="shared-cascade-cycles"></a>
+### Shared cascade/actual all-dead/result/return/reset hai vòng — CP134
+
+**kr_runtime/confirmed hẹp; result/fuse/profile là emu_choice/design**, [recipe/hash](evidence/three-bomb-chain/README.md#cp134).
+Reuse CP131–133actualopening/sharedgeometry/native195/cellstatemechanism, CP084all-deadfixture đãcó
+trongprofile vàCP123ReadyB/StartA. Giữ source/profile/client/map/fuse6/inputroute, bỏ early-stop sau
+rootđểchờ report chết thật; dùng minimalCP131probes, khôngđo lạimọi query/cellstate hoặcgọi hàm game.
+
+Same-run378,168184386s/exit0/errors0: R1Aopening3,4p2/ID1 rồiBroot3,3p1/ID2/Asecondary2,4p2/ID3/
+Abridge3,4p2/ID4; R2samegeometry/powers/owners/IDs5,6,7,8. Nativeprocessroot2→4→3 rồi6→8→7,
+full15939/full15813/laterownnoops vàfull195before/afterflags mỗi callback khớp hai view. A/Bactual17
+rồi19 mỗi epoch, khôngfake19/forfeit; chosenall-deadrank2/2 sauactualboth19, native175302/ranks2,2/
+1803/room1106 hai lần/cảhai view. R1return→actualB95/A104→121129/clock2/key12346; cùng8TCP.
+
+Toàn195seed reset ởclock2,24clockstatvalues khớp A1/1/5 vàB2/1/4 (capacity/power/logicalspeed)
+ởhai view/hai epoch; actualA124 Bomb/Fire lại hai vòng. Đây khôngfullinventory/character/mode/pxs/TTL
+reset law. FinalUIhai phòng cóAhost/Bguest/Start-Ready, không thêmReady2 hoặcStart3chưađo.
+1212sealedraw/1454cycleschecks/36flagsnaps7092copied52A350/7020ED1350arraychecks/5178actorfields/
+354packet12peer153models; overlappingchecks không là các proof độc lập hoặc phần trăm tiến độ.
+Modelgettercounter reset chỉemulation, khôngWine. Sourcebinary/DB/pack/oldcomplete/raw giữ nguyên.
+Hai chu kỳ thử hoàn tất cùngrun/profilemodifiedWine/localstub, không tựnghiệmthu fullmatch/K5/K6a/
+vanilla/LANInternet/authority/allreset. Bước kế chỉPLAN connectedstalledload; không mởchainvariantvôhạn.
+AUD041qua132/kế136, reviewwaived khônggateclosure.
