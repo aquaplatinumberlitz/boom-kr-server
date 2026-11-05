@@ -135,11 +135,11 @@
         "KR-F001",
         "KR-F015"
       ],
-      "known": "CP136PR207mergedf1d3e9e; CP137R1native4phasemovement/14entities/195flags/items/currenttrap/deadline/drainedsurvivor/resultsreset2 inonerun. Finalimagesblack; r2/r3inputpartials sealed separately.",
-      "remaining": "Currentintegratedprofile finalusableUI notproved; advertisedpeerIP vsactualsourceUDP notmeasured. Fullauth/authority/generalreset/fullmatch/LANInternet/gatesremain.",
-      "next_test": "PLAN shimonly153remoteIP127.0.0.2/3, actual99ports/key/seq/bodyrestunchanged; captureprivate-loUDPdst/src/nativeingress/target/currentXYtwoR1inputs. NoLANclaim. UIboundeddebt kept independently.",
+      "known": "CP137/PR208merged15270fb; CP138twoisolatedaliasruns show153IPsendtarget, mismatchedsourceingress/noapply andmatchingtupleproxyregisteredpeer/nativeapply/target/freshprogress.4317joins, noLANclaim.",
+      "remaining": "Productionbind/advertise127; virtualhost directUDP withreal processnamespace ownership notyetchecked. CP137finalUIdebt/fullauth/authority/gatesremain.",
+      "next_test": "PLAN smoke usernetnamespace/bridge/veth/privateIP/no-default-route then separateCA+wineservernetns/TCPforwardstub/directUDP/noUDPproxy; observe99/153/nativeclock/srcdst/actor. VirtualhostnotrealLAN.",
       "acceptance": "Epic checklist: linkedscopedtask/evidence+authoritymatrix vàacceptancegate ởPLAN; từngtaskđóng khôngđóngepic/K5/K6a.",
-      "reason": "Nativecombinedintegration resolved; visualgap cannotbeclosedfromnative180/otherprofile. Twochanged-inputobserverattempts partial; continueindependentendpointbranch, notendlessroute retries.",
+      "reason": "Scoped endpointIPbranch measured; sourceauthentication/generalNAT/exactnegativefallback notgeneralized. Preserve oldstrictmovement/checkerfailures and explicit fresh-after-lastapply scope; AUD042/next140.",
       "sources": [
         "docs/PROTOCOL.md#authority",
         "docs/RESEARCH.md#feature-gaps",
@@ -158,7 +158,8 @@
         "docs/PROTOCOL.md#shared-cascade-cycles",
         "docs/PROTOCOL.md#loading-timeout",
         "docs/PROTOCOL.md#loading-timeout-positive",
-        "docs/PROTOCOL.md#integrated-survivor"
+        "docs/PROTOCOL.md#integrated-survivor",
+        "docs/PROTOCOL.md#peer-endpoint-ip"
       ],
       "evidence": [
         "docs/evidence/current-movement-cycles/README.md",
@@ -174,7 +175,8 @@
         "docs/evidence/three-bomb-chain/README.md#cp134",
         "docs/evidence/loading-timeout/README.md",
         "docs/evidence/loading-timeout/README.md#cp136",
-        "docs/evidence/integrated-survivor/README.md"
+        "docs/evidence/integrated-survivor/README.md",
+        "docs/evidence/peer-endpoints/README.md"
       ],
       "prs": [
         173,
@@ -206,7 +208,8 @@
         204,
         205,
         206,
-        207
+        207,
+        208
       ],
       "successors": []
     },
@@ -533,6 +536,6 @@
       "successors": []
     }
   ],
-  "as_of_utc": "2026-11-05T15:42:43.595142+00:00",
-  "limits": "Dated manual issue dispositions; #14 updated through CP137. Snapshot freshness capture UTC only; no semantic/gate certification or immutable checkpoint rewrite."
+  "as_of_utc": "2026-11-05T16:03:13.146709+00:00",
+  "limits": "Dated manual dispositions; #14 updated through CP138. Snapshot capture UTC only; no semantic/gate auto-certification, immutable completed records preserved."
 }

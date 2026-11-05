@@ -1,6 +1,6 @@
 # KR 00967 — contract tương thích client gốc
 
-Revision kr-legacy-contract-r1; cập nhật06/11/2026 JST (CP137; AUD042 quaCP136, kếCP140).
+Revision kr-legacy-contract-r1; cập nhật06/11/2026 JST (CP138; AUD042 quaCP136, kếCP140).
 **Contract có bằng chứng từng phần; chưa nghiệm thu full codec K2**.
 Lộ trình và thứ tự task chỉ giữ ở [REWRITE_PLAN — KRE](PLAN.md).
 Đây là contract của repo server KR. ADR0009 của bản viết lại là nguồn lịch sử để so sánh;
@@ -4812,3 +4812,27 @@ Y389 đã đạt ởR3, không suycapacity/inputtiming law hoặc wait/focus cau
 thaythế R1nativeintegration hoặc bổ sung finalUIproof. Originalauth/authority/generalreset/Windows/
 fullmatch/K5/K6a/LANInternet vẫn mở. Hướng độc lập kế theoPLAN: servicehardcodedpeerIP127.0.0.1,
 153advertisedIP/sourceendpoint cần đo trước mạng nhiều máy; loopbackalias không làLAN/NAT/relay.
+
+
+<a id="peer-endpoint-ip"></a>
+### IP endpoint153 và UDPsource tuple — CP138
+
+**kr_runtime/confirmed scoped; tuple-cause ngoài ca đo là candidate**, [recipe/raw/hash/limits](evidence/peer-endpoints/README.md).
+Reuse153/99 layout CP027 và cached13DE880lookup/fallback14E57B0 CP045. Đổi duy nhất IP remote
+trong153 sang127.0.0.2/3, giữ99port/key/seq/restbody: actualPCAP cho native127.0.0.1 gửi tớialias;
+receiver cóAPIingress, nhưng hai cửa sổ input không cóE66680handlerpacket hoặc remoteprogress dù
+origin di chuyển. Đây khônglostpacket trên đường gửi hoặc bằngchứng chắcchắn về exactfallback.
+
+Ca positive chỉquảngbá ownedaliasproxy IP+port; forward nguyênUDPpayload từorigin proxy tuple đã
+quảngbá tớiactualrecipient99port. Có actualingress→key/slot/handlerapply/targetchange vàfreshremote
+progress ởhai input. 192selectedpeer samples trùng pointer setendpoint;155branch-site samples
+đãquan sát missing0, không ghép sốquota thành eventpairs. Negativebranch chưa probe; khôngsuy
+universal sourceIPauthentication hoặc trường hợp mọi NAT/portchange. Alias controls/proxy là design
+đo, không luật server gốc hoặc relay production. Service vẫn hardcode127.0.0.1 trong production.
+
+ADown lasttrackedcall before/afterY159, target204/distance45<threshold50; freshsample saucallY246
+vàrawnativegetter246. Hai strictreaders before/across-call vẫnfail; scope endpoint dùngnativeapply/
+target+laterfreshmemoryprogress, khôngsửa chúng thànhpass hay suy interpolationlaw. BRight current
+progress nằm trong/giữa calls. Hai run chỉmộtclock/haiinput/no bom/result, khôngfullmatch hoặcCP137
+UIproof. Loopbackalias cùnghost khôngLAN/NAT/Internet. Bước kế chỉPLAN: virtualhosts/IP riêng và
+kiểm source tuple/directUDP; realLAN/K6b/Internet/gate giữunknown/open.

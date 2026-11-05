@@ -1,0 +1,248 @@
+{
+  "artifacts": [
+    {
+      "name": "CA-r2-login-logout.exe",
+      "sha256": "660447c293ce92270cb9b5815331bca976e8f156366e1fe50b217b6c12e60ce3"
+    },
+    {
+      "name": "CA-r2-stage-social.exe",
+      "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+    },
+    {
+      "name": "CA-r2-stage-social.exe Bcopy",
+      "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+    },
+    {
+      "name": "modO.bin",
+      "sha256": "a08950c833d3acab8281049def7b3dc96b221f107eeda01da3a548e34b91dce5"
+    }
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-11-05T16:06:07.530644+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "Codex solo RE/code/runtime/selfcheck, not independent approval.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Owner explicitly requested solo without Claude review."
+    }
+  },
+  "owner": "Codex",
+  "reviewer": "Codex",
+  "id": "CP138",
+  "previous": "CP137",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-05T16:06:07.530644+00:00",
+  "context_commit": "15270fb444f0f1a0f85252a568253c9e9933ba34",
+  "question": "153advertisedIP sendtarget andactualUDPsource tuple: negativealias vs ownedmatching-sourceproxy, nativepeer/handler/currentprogress?",
+  "scope": "ReuseCP027/045cachedendpointlookup/fallback/99/153 andCP098/106/111runtimeobservers; no newnativebody/codecRE. Measurementshim+loPCAP thenCP045styleunchangedpayloadproxy. TwoR1inputwindows only/noresults; record oldstrictreaderfailures/endpoint-scopepositive separately.",
+  "locators": [
+    "BaselineCP137PR208headaa729b00af82e495585e883e3985ee625c94ee66/merge15270fb444f0f1a0f85252a568253c9e9933ba34/exactCLEANMERGEABLEchecks[].Productionunchanged/226baseline testsreused;AUD042through136/next140.",
+    "Negative38712fd08061cdffbdbc814c3e48b5eb129ca0f0c8f740fc74a50c1a85a7b98b/178.950786668s/exit0/956raw/346pcaprecords(native.1→.2/.3); ADowningress12/packet0/remoteY159, BRightingress17/packet0/remoteX120, originsmove.",
+    "Positivee85db6f28b67d3f8b7b8d4c27f2739ca14d2f2c2e2e08b0a399f401cb3b20c54/178.496153895s/exit0/974raw/622pcaprecords; matching-source.2:14022/.3:14023→actual99ports/unchangedpayloadSHA. ADowningress6/packet3/remoteY159→246; BRightingress9/packet9/remoteX120→164→200.",
+    "Known13DE7AAingress/13DE906lookupbranch/13DE949selectedpeer/14E7370endpointsetter/cached13DE880+14E57B0; positive192selectedsameptrand155branchmissing0samples distinctnotpaired. NativeE66680/E667BE/E668AD/B4EA14/getter52A350; no newbody. static660447/runtimee9bb4766/modOa08950/base400000/RVA=VA−400000."
+  ],
+  "findings": [
+    {
+      "summary": "Only153remoteIPchanged to127.0.0.2/3 withactual99port/key/seqrestunchanged; PCAPnative.1 sends toaliases, nativeAPIingress exists butnoE66680packet/remoteprogress acrossbothinputs whileoriginmoves.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#peer-endpoint-ip",
+      "limits": "Two isolatedsame-hostloopbackalias experiments/currentpinnedprofile/modifiedWineAB. Negativeonly153IPchanged/nativeactualsource.1/nohandlerapply; positivematching-sourceownedproxy/unchangedUDPpayload/nativepeerlookup/apply/target/freshprogress. NotLAN/NAT/productionrelay/fullUDPsourceauthentication/generalfilter/negativeexactfallback/gameplayresult/fullmatch/K6a/gate. StrictCP106before-only andCP111across-callreadersremainfailed forADown; freshafterlastapplyscope separate. CP137finalUIdebt retained; no sourcebinaryDBpackchanges/midrunconfigchange.",
+      "evidence": [
+        "RUN-00977",
+        "RUN-00966",
+        "RUN-00715",
+        "RUN-00716"
+      ]
+    },
+    {
+      "summary": "Matching-sourceproxypositive preservesUDPpayload, nativeingress selectsregisteredendpointpeerpointer192samples;155observedbranchsamplesmissing0. Handler/key/targetchanges andfreshremoteprogressbothinputs; subsetcountsnotallpacketcontrolflow proof.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#peer-endpoint-ip",
+      "limits": "Two isolatedsame-hostloopbackalias experiments/currentpinnedprofile/modifiedWineAB. Negativeonly153IPchanged/nativeactualsource.1/nohandlerapply; positivematching-sourceownedproxy/unchangedUDPpayload/nativepeerlookup/apply/target/freshprogress. NotLAN/NAT/productionrelay/fullUDPsourceauthentication/generalfilter/negativeexactfallback/gameplayresult/fullmatch/K6a/gate. StrictCP106before-only andCP111across-callreadersremainfailed forADown; freshafterlastapplyscope separate. CP137finalUIdebt retained; no sourcebinaryDBpackchanges/midrunconfigchange.",
+      "evidence": [
+        "RUN-00977",
+        "RUN-02026",
+        "RUN-01758",
+        "RUN-01759"
+      ]
+    },
+    {
+      "summary": "ADownstrictbefore-only andacross-call checks fail: lasttrackedtarget204/beforeafter159/distance45<threshold50; freshafterlastapplyY246 andrawcopiedgetter246. Endpointscope positive retainsfailures, no interpolationlaw/newruntimeto hideerror.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#peer-endpoint-ip",
+      "limits": "Two isolatedsame-hostloopbackalias experiments/currentpinnedprofile/modifiedWineAB. Negativeonly153IPchanged/nativeactualsource.1/nohandlerapply; positivematching-sourceownedproxy/unchangedUDPpayload/nativepeerlookup/apply/target/freshprogress. NotLAN/NAT/productionrelay/fullUDPsourceauthentication/generalfilter/negativeexactfallback/gameplayresult/fullmatch/K6a/gate. StrictCP106before-only andCP111across-callreadersremainfailed forADown; freshafterlastapplyscope separate. CP137finalUIdebt retained; no sourcebinaryDBpackchanges/midrunconfigchange.",
+      "evidence": [
+        "RUN-02090",
+        "RUN-02045",
+        "RUN-02026",
+        "RUN-02028",
+        "RUN-01043"
+      ]
+    },
+    {
+      "summary": "Tupleconsistency hypothesis fits scopednegative/positive; exactnegativefallback/notuniversalIPauthentication/NAT remainsunobserved. Next directUDP two virtualhosts mustverifyactualCA/wineserver namespace, not frontendonly.",
+      "source": "design",
+      "status": "candidate",
+      "method": "documentation",
+      "canonical": "docs/PROTOCOL.md#peer-endpoint-ip",
+      "limits": "Two isolatedsame-hostloopbackalias experiments/currentpinnedprofile/modifiedWineAB. Negativeonly153IPchanged/nativeactualsource.1/nohandlerapply; positivematching-sourceownedproxy/unchangedUDPpayload/nativepeerlookup/apply/target/freshprogress. NotLAN/NAT/productionrelay/fullUDPsourceauthentication/generalfilter/negativeexactfallback/gameplayresult/fullmatch/K6a/gate. StrictCP106before-only andCP111across-callreadersremainfailed forADown; freshafterlastapplyscope separate. CP137finalUIdebt retained; no sourcebinaryDBpackchanges/midrunconfigchange.",
+      "evidence": [
+        "RUN-00009",
+        "RUN-00008"
+      ]
+    },
+    {
+      "summary": "Ownedproxy/shim onlyexperimentdesign, productionaddresspolicy/relayunchanged. Native15312cases/192peergetters/570actors/23+54CRC arecopied-codechecks separatefromruntime.",
+      "source": "emu_choice",
+      "status": "design",
+      "method": "emulation",
+      "canonical": "docs/PROTOCOL.md#peer-endpoint-ip",
+      "limits": "Two isolatedsame-hostloopbackalias experiments/currentpinnedprofile/modifiedWineAB. Negativeonly153IPchanged/nativeactualsource.1/nohandlerapply; positivematching-sourceownedproxy/unchangedUDPpayload/nativepeerlookup/apply/target/freshprogress. NotLAN/NAT/productionrelay/fullUDPsourceauthentication/generalfilter/negativeexactfallback/gameplayresult/fullmatch/K6a/gate. StrictCP106before-only andCP111across-callreadersremainfailed forADown; freshafterlastapplyscope separate. CP137finalUIdebt retained; no sourcebinaryDBpackchanges/midrunconfigchange.",
+      "evidence": [
+        "RUN-00001",
+        "RUN-01040",
+        "RUN-02025",
+        "RUN-02028",
+        "RUN-00015",
+        "RUN-01048"
+      ]
+    }
+  ],
+  "verification": [
+    {
+      "check": "4317raw/sourcefreeze/153onlydeclaredbytes/PCAPpayload-native/proxyhash/lookups/observedtwoinputprogressrelations",
+      "result": "pass",
+      "evidence": [
+        "RUN-00976",
+        "RUN-00977",
+        "RUN-00993",
+        "RUN-02047"
+      ],
+      "limits": "Two isolatedsame-hostloopbackalias experiments/currentpinnedprofile/modifiedWineAB. Negativeonly153IPchanged/nativeactualsource.1/nohandlerapply; positivematching-sourceownedproxy/unchangedUDPpayload/nativepeerlookup/apply/target/freshprogress. NotLAN/NAT/productionrelay/fullUDPsourceauthentication/generalfilter/negativeexactfallback/gameplayresult/fullmatch/K6a/gate. StrictCP106before-only andCP111across-callreadersremainfailed forADown; freshafterlastapplyscope separate. CP137finalUIdebt retained; no sourcebinaryDBpackchanges/midrunconfigchange."
+    },
+    {
+      "check": "Originalstrictbefore-only andprepost-across-callmovementcriteria forADown; firstequalquota assumption",
+      "result": "fail",
+      "evidence": [
+        "RUN-02090",
+        "RUN-02045",
+        "RUN-00975"
+      ],
+      "limits": "Preserve stronger/differentquestionfailures; positiveendpointreportdoesnotlabeltheseaspass. Measured192selected/155branchsamples reportedseparately."
+    },
+    {
+      "check": "298scopedendpoint/nativeprogress/192copiedpeergetters/570rawgetters/12native153cases/77nativeactualCRCcases;docs/catalog/issues/artifacts/diff/226baseline testsreuse",
+      "result": "pass",
+      "evidence": [
+        "RUN-02027",
+        "RUN-02025",
+        "RUN-02028",
+        "RUN-00001",
+        "RUN-01040",
+        "RUN-00974",
+        "RUN-00986",
+        "RUN-00004",
+        "RUN-02101"
+      ],
+      "limits": "Models/measurements/consistency notgateororiginalauthoritycertification."
+    }
+  ],
+  "evidence": [],
+  "evidence_manifests": [
+    {
+      "path": "docs/evidence/checkpoints/evidence/CP138-peer-endpoint-ip.json",
+      "bytes": 529921,
+      "sha256": "17504b41320a3dd701a8d7ef3d10bbda835a34fa37ddae46064d2537ce26e2da",
+      "count": 2101
+    }
+  ],
+  "delta": {
+    "added": [
+      "Advertised153IPcontrolsactualsendtarget/negativeversusmatchingtupleproxy/nativepeerhandlerprogress inownedloopbackexperiments."
+    ],
+    "corrected": [
+      "Do notconflate APIingress withgamehandlerapply oruse strictinterpolationreaderFAIL todenyactualfreshprogress; reportbothscopes.",
+      "Endpointbranch/selectedprobequotas differ, notone-to-onepair/eventcoverage."
+    ],
+    "superseded": [
+      "NEXT-PEER-ENDPOINT-IP closedscopedtwoexperiments; NEXT-VIRTUAL-HOST-DIRECT-UDP active. CP137return2UIstepstillactiveboundeddebt."
+    ]
+  },
+  "blockers": [
+    "Productionbind/advertise127; virtualhost actualCA/wineserver netns/directUDP notyetmeasured.",
+    "Negativeexactfallback/universalfilter/NAT/relay/generalgrammar unknown; CP137finalusableUIdebt/fullauth/authority/gatesremain."
+  ],
+  "next_steps": [
+    {
+      "id": "NEXT-PEER-ENDPOINT-IP",
+      "task": "KRE-005b",
+      "state": "closed",
+      "action": "CP138scoped153IPsendtarget/mismatchnoapply vsmatchingtupleproxy/nativepeerhandler/freshprogress observed andlimits recorded.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-VIRTUAL-HOST-DIRECT-UDP",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "PLANsmokeprivateusernetns/bridge/veth/privateIP/no-default-route thenactualCA+wineserverinper-prefixnetns/TCPforwardstub/directUDP/noUDPproxy; captureactualsrcdst/99/153/nativeclock/key/target/freshprogress. VirtualhostnotrealLAN; no midrunconfigchange/auditnext140.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    }
+  ],
+  "docs_sync": [
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "CP138scopedIPsourceobservations/limits/retainedreaderfailures/virtualhostnextstep/issuecatalog synced; broadrelayNAT/gatesnotpromoted."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "CP138scopedIPsourceobservations/limits/retainedreaderfailures/virtualhostnextstep/issuecatalog synced; broadrelayNAT/gatesnotpromoted."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "updated",
+      "reason": "CP138scopedIPsourceobservations/limits/retainedreaderfailures/virtualhostnextstep/issuecatalog synced; broadrelayNAT/gatesnotpromoted."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "updated",
+      "reason": "CP138scopedIPsourceobservations/limits/retainedreaderfailures/virtualhostnextstep/issuecatalog synced; broadrelayNAT/gatesnotpromoted."
+    },
+    {
+      "path": "docs/features.json",
+      "state": "updated",
+      "reason": "CP138scopedIPsourceobservations/limits/retainedreaderfailures/virtualhostnextstep/issuecatalog synced; broadrelayNAT/gatesnotpromoted."
+    },
+    {
+      "path": "docs/COVERAGE.md",
+      "state": "updated",
+      "reason": "CP138scopedIPsourceobservations/limits/retainedreaderfailures/virtualhostnextstep/issuecatalog synced; broadrelayNAT/gatesnotpromoted."
+    },
+    {
+      "path": "docs/evidence/peer-endpoints/README.md",
+      "state": "updated",
+      "reason": "CP138scopedIPsourceobservations/limits/retainedreaderfailures/virtualhostnextstep/issuecatalog synced; broadrelayNAT/gatesnotpromoted."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/review.json",
+      "state": "updated",
+      "reason": "CP138scopedIPsourceobservations/limits/retainedreaderfailures/virtualhostnextstep/issuecatalog synced; broadrelayNAT/gatesnotpromoted."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
+      "state": "updated",
+      "reason": "CP138scopedIPsourceobservations/limits/retainedreaderfailures/virtualhostnextstep/issuecatalog synced; broadrelayNAT/gatesnotpromoted."
+    }
+  ]
+}
