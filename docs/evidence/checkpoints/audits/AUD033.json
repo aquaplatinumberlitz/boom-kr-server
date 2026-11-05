@@ -1,0 +1,101 @@
+{
+  "id": "AUD033",
+  "trigger": "periodic",
+  "completed_through": "CP108",
+  "recorded_utc": "2026-11-05T00:00:18.111255+00:00",
+  "auditor": "Codex manual self-audit; independent review waived",
+  "read_files": [
+    "README.md",
+    "docs/PLAN.md",
+    "docs/PROTOCOL.md",
+    "docs/RESEARCH.md",
+    "docs/features.json",
+    "docs/COVERAGE.md",
+    "docs/evidence/ending-udp-state-apply/README.md",
+    "docs/evidence/current-movement-cycles/README.md",
+    "docs/evidence/host-normal-back/README.md",
+    "docs/evidence/promoted-battle-cycles/README.md",
+    "docs/evidence/checkpoints/audits/AUD032.json",
+    "local/research/codex/ending-udp-preroll-r1/ending-udp-verification.json",
+    "local/research/codex/current-movement-cycles-r1/peer-verification.json",
+    "local/research/codex/current-movement-cycles-r1/cycles/peer-B.jsonl",
+    "local/research/codex/current-movement-cycles-r1/semantic-boundaries-verification.json",
+    "local/research/codex/host-normal-back-r1/fixed/client-B.log",
+    "local/research/codex/host-normal-back-r1/control-r2/run.json",
+    "server/probe_service.py",
+    "server/test_host_back_rejoin.py",
+    "tools/export_probe_profile.py",
+    "tools/test_export_host_back.py",
+    "local/research/codex/promoted-battle-cycles-r1/reuse-question.json",
+    "local/research/codex/promoted-battle-cycles-r1/cycles/run.json",
+    "local/research/codex/promoted-battle-cycles-r1/cycles/service-state.json",
+    "local/research/codex/promoted-battle-cycles-r1/cycles/client.log",
+    "local/research/codex/promoted-battle-cycles-r1/cycles/client-B.log",
+    "local/research/codex/promoted-battle-cycles-r1/peer-r1-partial-verification.json",
+    "local/research/codex/promoted-battle-cycles-r1/peer-fulltarget-check.txt",
+    "local/research/codex/promoted-battle-cycles-r2/reuse-question.json",
+    "local/research/codex/promoted-battle-cycles-r2/cycles/run.json",
+    "local/research/codex/promoted-battle-cycles-r2/cycles/service-state.json",
+    "local/research/codex/promoted-battle-cycles-r2/cycles/client.log",
+    "local/research/codex/promoted-battle-cycles-r2/cycles/client-B.log",
+    "local/research/codex/promoted-battle-cycles-r2/peer-r1-partial-verification.json",
+    "local/research/codex/promoted-battle-cycles-r2/peer-fulltarget-check.txt",
+    "local/research/codex/promoted-battle-cycles-r2/partial-verification.json",
+    "local/research/codex/promoted-battle-cycles-r2/item-effects-partial-verification.json",
+    "local/research/codex/promoted-battle-cycles-r2/analysis-boundaries.json",
+    "local/research/codex/promoted-battle-cycles-r2/sealed-verification.json",
+    "local/research/codex/promoted-battle-cycles-r2/chain-check.txt"
+  ],
+  "method": "Manual README→PLAN→PROTOCOL authority/currentCP105108+knownroomCP034035→RESEARCH gaps→catalog/evidence, then comparedraw/API/key/getter/phasecounts/controllererrors andAUD032. Read CP10520exactpost175applies/state56/3 same-roundqueue limits; CP106rawR2A packet00003b0000c17800d1001700c5/key59/target159→209/current204/distance5<50 andR2endingY169not159. CP107native107ID1→0/base6rewind0final1/chief andteardown107aftercompletion183.815997ms. CP108twoactualpartialruns/controllerbounds/R1APIapply/effects/3actual159perview/service2emitted158vsnativeAfirstbegin/end1/0/B0/0/noending. Comparedsource/profile/no newservicebehavior; fulltargetfailed retained andboundedreportsnotautomaticgate. Rereadfinalcanonicaldocs aftercorrections, generatedcatalogonlynavigation notsemanticapproval.",
+  "findings": [
+    {
+      "id": "F1",
+      "stale": "AuthorityindexstilluntilCP105/movementCP098/resultCP104/lifecycleCP076 whilelaterboundedproofexists.",
+      "correction": "Removefixedstaleendcounter/addcanonicalCP106movement/CP105queue/CP106semantic180/CP107hostBacklinks. Keeporiginalauthority/fullvalidatorunknown andno duplicatedcontract.",
+      "fixed_in": [
+        "docs/PROTOCOL.md"
+      ]
+    },
+    {
+      "id": "F2",
+      "stale": "CP106protocolselfcheck/pendingPR andCP105#166open/R2movementnextstep orCP106normalhostBacknextstep couldbeunderstoodcurrent.",
+      "correction": "RecordPR173mergef67a160/PR175mergeac6562e, explicitlylabelCP105106nextsteps/issuesasdatedsnapshotsandlinkcurrentPLAN. Oldraw/manifestrecordsimmutable.",
+      "fixed_in": [
+        "docs/PROTOCOL.md",
+        "docs/evidence/ending-udp-state-apply/README.md",
+        "docs/evidence/current-movement-cycles/README.md",
+        "docs/evidence/host-normal-back/README.md"
+      ]
+    },
+    {
+      "id": "F3",
+      "stale": "CurrentPLANsummaryrowstoppedCP080 andcouldhidecurrentAhost2cycleproof/Bhostpartialdifference.",
+      "correction": "CurrentrowlinksCP106Ahost2cycles/CP107hostBackclock/CP108Bhostpartial andactualinputblocker; allgatesstillopen.",
+      "fixed_in": [
+        "docs/PLAN.md",
+        "README.md",
+        "docs/RESEARCH.md",
+        "docs/features.json",
+        "docs/COVERAGE.md"
+      ]
+    },
+    {
+      "id": "F4",
+      "stale": "Preliminary2service158emitscouldbeconfusedwith2completednativecallbacks; missingR2/partialround_history couldaccidentallylooklikeendingproof.",
+      "correction": "RawA158begin/end1/0/B0/0,3native159fullperview andno175180 explicit. Preservestrict4phase/chain/emptyhistoryassertfail; scoped48checksnotwholequestionpass. Explaincontrollerarchivespartialroundandteardownboundaries. No field/timingexpectedvalueschangedtopass.",
+      "fixed_in": [
+        "docs/PROTOCOL.md",
+        "docs/evidence/promoted-battle-cycles/README.md",
+        "README.md",
+        "docs/RESEARCH.md",
+        "local/research/codex/promoted-battle-cycles-r2/analysis-boundaries.json"
+      ]
+    }
+  ],
+  "remaining": [
+    "KRE071/#176 open: currentBhost/AguesttwoBattlecycles/ending/reset notmet, nextcapacityfreshY389/6sbound/native158boundary; no newhostrole/observercausalclaim.",
+    "CP106Ahost2cycles validseparatescope; CP105twoonecyclesnotoldroundStartproof, CP107firstclocknotpostresultguestAproof.",
+    "Fullidentity/auth/codec/validator/authority/generalroom/activeleave/accountresume/allreset/vanilla/fullmatch/K5/K6a/LANInternetopen.",
+    "NextperiodicCP112; periodic108fulfilledonlywithCP108append, no cadence resetfromseriousaudits."
+  ]
+}

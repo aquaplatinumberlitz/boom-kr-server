@@ -5,7 +5,8 @@ CP104/[PR169](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/169)
 `7b296db8cfb69006249150d719930fd5ae8f0b63`. Codex solo/tựkiểm;
 [review waived](../checkpoints/review-waiver.json), CP105 đã merge [PR171](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/171) tại `dc30e4f`. Contract/limits chỉở
 [PROTOCOL](../../PROTOCOL.md#ending-udp-state-apply), gapở[RESEARCH](../../RESEARCH.md#gap-peer-movement),
-thứtựở[PLAN](../../PLAN.md#current-order). AUD032qua104/next108; #166/gatesvẫnopen.
+thứtựở[PLAN](../../PLAN.md#current-order). Audit/counter tại snapshot CP105: AUD032qua104/next108; #166 khi đó còn open,
+[CP106](../../PROTOCOL.md#current-movement-cycles)/PR173 đã đóng scope hẹp; gates vẫn open.
 
 Raw `local/research/codex/{ending-udp-state,ending-udp-preroll}-r1/`.
 Sourcefirst12refsCP098API13/key/currenttargetB4E6F0/cache+CP104ending/caller+VNconcept/KRdata,
@@ -41,6 +42,6 @@ records why, notchangingraw/payload/nativebehavior. Initial0change notobservedpr
 
 Production/profileidentitywithCP104checked; reuseCP103149server/3identity/4kernel tests validunchanged,
 no extraimplementationtests. Docs/catalog/artifacts/localhistory/diff checked; periodicnext108 unchanged.
-Concludephasequeuehẹpansweredwithoutfreeze/ownACK/quietdelay/newpolicy. NextsourcegapCP098R2movement
-transitionpartial incurrent2cycles, notmoreendingvariantsscan. Fullauth/codec/authority/fullvalidator/
+Concludephasequeuehẹpansweredwithoutfreeze/ownACK/quietdelay/newpolicy. Bước tạiCP105 (lịch sử) là
+CP098R2movementtransitionpartial; CP106 đã bổ sung. Thứ tự hiện hành chỉ ởPLAN. Fullauth/codec/authority/fullvalidator/
 allreset/vanilla/LANInternet/fullmatch/K5/K6avẫnopen. No semantic/gateautocheckinference.

@@ -1,7 +1,7 @@
 {
   "schema": "kre-feature-index-v1",
   "build": "KR00967",
-  "as_of": "2026-11-05 CP107",
+  "as_of": "2026-11-05 CP108",
   "sources": {
     "plan": "docs/PLAN.md",
     "contract": "docs/PROTOCOL.md",
@@ -954,7 +954,8 @@
           "docs/evidence/rejoin-battle-cycles/README.md",
           "docs/evidence/return585-ready/README.md",
           "docs/evidence/ready-input/README.md",
-          "docs/evidence/host-normal-back/README.md"
+          "docs/evidence/host-normal-back/README.md",
+          "docs/evidence/promoted-battle-cycles/README.md"
         ]
       },
       "coverage": {
@@ -997,7 +998,8 @@
               "docs/evidence/rejoin-battle-cycles/README.md",
               "docs/evidence/return585-ready/README.md",
               "docs/evidence/ready-input/README.md",
-              "docs/evidence/host-normal-back/README.md"
+              "docs/evidence/host-normal-back/README.md",
+              "docs/evidence/promoted-battle-cycles/README.md"
             ]
           },
           "windows_original": {
@@ -1051,7 +1053,8 @@
             "docs/evidence/rejoin-battle-cycles/README.md",
             "docs/evidence/return585-ready/README.md",
             "docs/evidence/ready-input/README.md",
-            "docs/evidence/host-normal-back/README.md"
+            "docs/evidence/host-normal-back/README.md",
+            "docs/evidence/promoted-battle-cycles/README.md"
           ]
         },
         "gate": {
@@ -1173,7 +1176,8 @@
           "docs/evidence/current-peer-targets/README.md",
           "docs/evidence/ending34-state-boundary/README.md",
           "docs/evidence/ending-udp-state-apply/README.md",
-          "docs/evidence/current-movement-cycles/README.md"
+          "docs/evidence/current-movement-cycles/README.md",
+          "docs/evidence/promoted-battle-cycles/README.md"
         ]
       },
       "coverage": {
@@ -1211,7 +1215,8 @@
               "docs/evidence/current-peer-targets/README.md",
               "docs/evidence/ending34-state-boundary/README.md",
               "docs/evidence/ending-udp-state-apply/README.md",
-              "docs/evidence/current-movement-cycles/README.md"
+              "docs/evidence/current-movement-cycles/README.md",
+              "docs/evidence/promoted-battle-cycles/README.md"
             ]
           },
           "windows_original": {
@@ -1245,7 +1250,8 @@
             "docs/evidence/current-peer-targets/README.md",
             "docs/evidence/ending34-state-boundary/README.md",
             "docs/evidence/ending-udp-state-apply/README.md",
-            "docs/evidence/current-movement-cycles/README.md"
+            "docs/evidence/current-movement-cycles/README.md",
+            "docs/evidence/promoted-battle-cycles/README.md"
           ]
         },
         "gate": {
@@ -1382,7 +1388,8 @@
           "docs/evidence/opposite-box-control/README.md",
           "docs/evidence/adjacent-owner-control/README.md",
           "docs/evidence/terrain-tcp-guard-cycles/README.md",
-          "docs/evidence/current-movement-cycles/README.md"
+          "docs/evidence/current-movement-cycles/README.md",
+          "docs/evidence/promoted-battle-cycles/README.md"
         ]
       },
       "coverage": {
@@ -1432,7 +1439,8 @@
               "docs/evidence/opposite-box-control/README.md",
               "docs/evidence/adjacent-owner-control/README.md",
               "docs/evidence/terrain-tcp-guard-cycles/README.md",
-              "docs/evidence/current-movement-cycles/README.md"
+              "docs/evidence/current-movement-cycles/README.md",
+              "docs/evidence/promoted-battle-cycles/README.md"
             ]
           },
           "windows_original": {
@@ -1484,7 +1492,8 @@
             "docs/evidence/opposite-box-control/README.md",
             "docs/evidence/adjacent-owner-control/README.md",
             "docs/evidence/terrain-tcp-guard-cycles/README.md",
-            "docs/evidence/current-movement-cycles/README.md"
+            "docs/evidence/current-movement-cycles/README.md",
+            "docs/evidence/promoted-battle-cycles/README.md"
           ]
         },
         "gate": {
@@ -1677,7 +1686,8 @@
           "docs/evidence/rejoin-battle-cycles/README.md",
           "docs/evidence/tcp-guard-cycles/README.md",
           "docs/evidence/terrain-tcp-guard-cycles/README.md",
-          "docs/evidence/current-movement-cycles/README.md"
+          "docs/evidence/current-movement-cycles/README.md",
+          "docs/evidence/promoted-battle-cycles/README.md"
         ]
       },
       "coverage": {
@@ -1725,7 +1735,8 @@
               "docs/evidence/rejoin-battle-cycles/README.md",
               "docs/evidence/tcp-guard-cycles/README.md",
               "docs/evidence/terrain-tcp-guard-cycles/README.md",
-              "docs/evidence/current-movement-cycles/README.md"
+              "docs/evidence/current-movement-cycles/README.md",
+              "docs/evidence/promoted-battle-cycles/README.md"
             ]
           },
           "windows_original": {
@@ -1770,7 +1781,8 @@
             "docs/evidence/rejoin-battle-cycles/README.md",
             "docs/evidence/tcp-guard-cycles/README.md",
             "docs/evidence/terrain-tcp-guard-cycles/README.md",
-            "docs/evidence/current-movement-cycles/README.md"
+            "docs/evidence/current-movement-cycles/README.md",
+            "docs/evidence/promoted-battle-cycles/README.md"
           ]
         },
         "gate": {
@@ -2603,7 +2615,8 @@
           "docs/evidence/peer21-ending-order/README.md",
           "docs/evidence/ending34-state-boundary/README.md",
           "docs/evidence/ending-udp-state-apply/README.md",
-          "docs/evidence/current-movement-cycles/README.md"
+          "docs/evidence/current-movement-cycles/README.md",
+          "docs/evidence/promoted-battle-cycles/README.md"
         ]
       },
       "coverage": {
@@ -2648,7 +2661,8 @@
               "docs/evidence/peer21-ending-order/README.md",
               "docs/evidence/ending34-state-boundary/README.md",
               "docs/evidence/ending-udp-state-apply/README.md",
-              "docs/evidence/current-movement-cycles/README.md"
+              "docs/evidence/current-movement-cycles/README.md",
+              "docs/evidence/promoted-battle-cycles/README.md"
             ]
           },
           "windows_original": {
@@ -2696,7 +2710,8 @@
             "docs/evidence/peer21-ending-order/README.md",
             "docs/evidence/ending34-state-boundary/README.md",
             "docs/evidence/ending-udp-state-apply/README.md",
-            "docs/evidence/current-movement-cycles/README.md"
+            "docs/evidence/current-movement-cycles/README.md",
+            "docs/evidence/promoted-battle-cycles/README.md"
           ]
         },
         "gate": {
@@ -2752,7 +2767,8 @@
           "docs/evidence/trap-report-rank-order/README.md",
           "docs/evidence/ending34-state-boundary/README.md",
           "docs/evidence/ending-udp-state-apply/README.md",
-          "docs/evidence/current-movement-cycles/README.md"
+          "docs/evidence/current-movement-cycles/README.md",
+          "docs/evidence/promoted-battle-cycles/README.md"
         ]
       },
       "coverage": {
@@ -2810,7 +2826,8 @@
               "docs/evidence/trap-report-rank-order/README.md",
               "docs/evidence/ending34-state-boundary/README.md",
               "docs/evidence/ending-udp-state-apply/README.md",
-              "docs/evidence/current-movement-cycles/README.md"
+              "docs/evidence/current-movement-cycles/README.md",
+              "docs/evidence/promoted-battle-cycles/README.md"
             ]
           },
           "windows_original": {
@@ -2873,7 +2890,8 @@
             "docs/evidence/trap-report-rank-order/README.md",
             "docs/evidence/ending34-state-boundary/README.md",
             "docs/evidence/ending-udp-state-apply/README.md",
-            "docs/evidence/current-movement-cycles/README.md"
+            "docs/evidence/current-movement-cycles/README.md",
+            "docs/evidence/promoted-battle-cycles/README.md"
           ]
         },
         "gate": {
@@ -3098,7 +3116,8 @@
           "docs/evidence/ending34-state-boundary/README.md",
           "docs/evidence/ending-udp-state-apply/README.md",
           "docs/evidence/current-movement-cycles/README.md",
-          "docs/evidence/host-normal-back/README.md"
+          "docs/evidence/host-normal-back/README.md",
+          "docs/evidence/promoted-battle-cycles/README.md"
         ]
       },
       "coverage": {
@@ -3181,7 +3200,8 @@
               "docs/evidence/ending34-state-boundary/README.md",
               "docs/evidence/ending-udp-state-apply/README.md",
               "docs/evidence/current-movement-cycles/README.md",
-              "docs/evidence/host-normal-back/README.md"
+              "docs/evidence/host-normal-back/README.md",
+              "docs/evidence/promoted-battle-cycles/README.md"
             ]
           },
           "windows_original": {
@@ -3307,7 +3327,8 @@
             "docs/evidence/ending34-state-boundary/README.md",
             "docs/evidence/ending-udp-state-apply/README.md",
             "docs/evidence/current-movement-cycles/README.md",
-            "docs/evidence/host-normal-back/README.md"
+            "docs/evidence/host-normal-back/README.md",
+            "docs/evidence/promoted-battle-cycles/README.md"
           ]
         },
         "gate": {

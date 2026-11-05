@@ -3,7 +3,7 @@
 KRE-070/[issue174](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/174), baseline CP106/
 [PR173](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/173)
 `f67a160d20e9cb0d4b964da7a132aa009b129102`. Codex tự kiểm, [review waived](../checkpoints/review-waiver.json),
-CP107 chờ PR. [Contract/giới hạn](../../PROTOCOL.md#host-normal-back),
+CP107 đã merge [PR175](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/175) tại `ac6562e`. [Contract/giới hạn](../../PROTOCOL.md#host-normal-back),
 [câu hỏi](../../RESEARCH.md#gap-room-membership), [thứ tự](../../PLAN.md#current-order).
 AUD032 qua CP104; audit định kỳ kế **CP108**, không reset chu kỳ.
 
@@ -51,6 +51,6 @@ không gán teardown107 cho Back86; `analysis-boundary-correction.json` giải t
 kiểm. Control source/finalsource snapshots riêng, không đổi code đang chạy giữa run.
 
 CP106/PR173 đã merge; issue166/172 đóng theo qualification hẹp, không gate. CP107 chỉ tới clock,
-chưa bom/item/result/reset/hai trận sau đổi chủ. Bước kế reuse CP106route/observers/currentpolicy,
+chưa bom/item/result/reset/hai trận sau đổi chủ. Bước tạiCP107 (lịch sử) là reuse CP106route/observers/currentpolicy,
 đổi roleinputReadyA/StartB và ghép hai Battlecycles; auditCP108. Fullauth/codec/authority/validator/
 activeleave/accountresume/generalroom/fullreset/vanilla/fullmatch/K5/K6a/LANInternet còn mở.
