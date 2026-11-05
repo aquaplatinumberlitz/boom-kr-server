@@ -1,0 +1,231 @@
+{
+  "artifacts": [
+    {
+      "name": "CA-r2-login-logout.exe",
+      "sha256": "660447c293ce92270cb9b5815331bca976e8f156366e1fe50b217b6c12e60ce3"
+    },
+    {
+      "name": "CA-r2-stage-social.exe",
+      "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+    },
+    {
+      "name": "CA-r2-stage-social.exe Bcopy",
+      "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+    },
+    {
+      "name": "modO.bin",
+      "sha256": "a08950c833d3acab8281049def7b3dc96b221f107eeda01da3a548e34b91dce5"
+    }
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-11-05T17:09:23.620539+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "Codex solo RE/code/runtime/selfcheck, not independent approval.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Owner explicitly requested solo without Claude review."
+    }
+  },
+  "owner": "Codex",
+  "reviewer": "Codex",
+  "id": "CP140",
+  "previous": "CP139",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-05T17:09:23.620539+00:00",
+  "context_commit": "1ecd3febfb36555cc4f66c05f78518bfa74b0100",
+  "question": "Can actual two virtualhosts complete two basic native bomb/death/survivor/result/reset cycles and render finalroom with existing guards?",
+  "scope": "Reuse CP139 topology/endpoint and CP061 Space/stay method after sharedroute partial; measure only missing same-run virtualbasic2cycles/render, preserve all limits. AUD043 periodic140→144.",
+  "locators": [
+    "BaselineCP139PR210head938477cbe03abcc92f1ac07567df438b5425f404/merge1ecd3febfb36555cc4f66c05f78518bfa74b0100. Production unchanged;226server tests reused.",
+    "Basicrunf24fb76318391a951b3d2b987409581dba2bd4d176850f337b2045e70daae043/289.290066034s/exit0/1149raw/526pcaprecords/2917scopechecks. Keys12345→12346/bombIDs1→2/twoactualA118cell3,3power1/A17→19/currenttrapSHA/B21/rank2,1/native175outer302/180full3/errors0/110/195seedreset.",
+    "Partialrun2ce3020edeeb8cd602731aecabb042c73458614018f05325b8822ecafbe3a717/319.097112239s/exit1/1051raw/1146attributionchecks; alignmiss:r2-A-neutral-opening-col4, bridge4,4not3,4/noA19/one survivorreturn.",
+    "Known CP098E66680/E667BE/E668AD/B4EA14/native52A350/121DC7F30/clockE134B0; static660447/runtimee9bb4766/modOa08950/base400000/RVA=VA−400000; no newnativebody."
+  ],
+  "findings": [
+    {
+      "summary": "Two same-run actualvirtualhost basicA118/17→19/freshtrapHash/peer170/B21→survivorrank2,1/native175180/room110/reset cycles; ReadyB/StartA between. Barrier15.300/15.332s<30; currentIDs/keys/195seed/24clockstatcombos checked.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#virtual-basic-cycles",
+      "limits": "ModifiedWine/two actualCA+wineserver privatevirtualnetns/samephysicalhost/directvethUDP/TCPforwardstub, measurementbind/addressshims. BasicAoneSpace/stay2cycles/currenttrap/deadline/resultdrain/survivorpolicy; notshared/all-dead/4phasemovement/itempickup/fullmatch/K6a/physicalLAN/K6b/NAT/Internet/gates. No finalReady95/Start3. CP137complex-routeUIdebt/IP1/subtype39 unknown retained. Sourcebinary/pack/DB unchanged; source/config frozen untilcleanup/seal.",
+      "evidence": [
+        "RUN-00007",
+        "RUN-01157",
+        "RUN-01191"
+      ]
+    },
+    {
+      "summary": "ActualCA+wineserver in separate childnetns beforeinput; actual99/private153/veth526records/noUDPproxy. Renderall8frames room both; no finalReady95 or focuscausalclaim.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#virtual-basic-cycles",
+      "limits": "ModifiedWine/two actualCA+wineserver privatevirtualnetns/samephysicalhost/directvethUDP/TCPforwardstub, measurementbind/addressshims. BasicAoneSpace/stay2cycles/currenttrap/deadline/resultdrain/survivorpolicy; notshared/all-dead/4phasemovement/itempickup/fullmatch/K6a/physicalLAN/K6b/NAT/Internet/gates. No finalReady95/Start3. CP137complex-routeUIdebt/IP1/subtype39 unknown retained. Sourcebinary/pack/DB unchanged; source/config frozen untilcleanup/seal.",
+      "evidence": [
+        "RUN-00007",
+        "RUN-01273",
+        "RUN-01165"
+      ]
+    },
+    {
+      "summary": "Sharedroute partial: actualbridge4,4 not3,4/noA19/onlyone result thenStart2clock/inputalignmiss. Not sharedcascade/all-dead/2result proof; scope changed transparently to basic method without forcing outcome.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#virtual-basic-cycles",
+      "limits": "ModifiedWine/two actualCA+wineserver privatevirtualnetns/samephysicalhost/directvethUDP/TCPforwardstub, measurementbind/addressshims. BasicAoneSpace/stay2cycles/currenttrap/deadline/resultdrain/survivorpolicy; notshared/all-dead/4phasemovement/itempickup/fullmatch/K6a/physicalLAN/K6b/NAT/Internet/gates. No finalReady95/Start3. CP137complex-routeUIdebt/IP1/subtype39 unknown retained. Sourcebinary/pack/DB unchanged; source/config frozen untilcleanup/seal.",
+      "evidence": [
+        "RUN-02347",
+        "RUN-02349"
+      ]
+    },
+    {
+      "summary": "Reused prior endpoint/native readers/topology/CP061 input method, not VNopcode/profile/Roller import. Production stillhard127; explicitaddressconfig/no-shim/runtimeReady is next PLAN task. AUD043manual audit synced canonicaldocs, independentreviewwaived.",
+      "source": "design",
+      "status": "design",
+      "method": "documentation",
+      "canonical": "docs/PROTOCOL.md#virtual-basic-cycles",
+      "limits": "ModifiedWine/two actualCA+wineserver privatevirtualnetns/samephysicalhost/directvethUDP/TCPforwardstub, measurementbind/addressshims. BasicAoneSpace/stay2cycles/currenttrap/deadline/resultdrain/survivorpolicy; notshared/all-dead/4phasemovement/itempickup/fullmatch/K6a/physicalLAN/K6b/NAT/Internet/gates. No finalReady95/Start3. CP137complex-routeUIdebt/IP1/subtype39 unknown retained. Sourcebinary/pack/DB unchanged; source/config frozen untilcleanup/seal.",
+      "evidence": [
+        "RUN-01225",
+        "RUN-00016"
+      ]
+    }
+  ],
+  "verification": [
+    {
+      "check": "2917scopedbasicjoins/1149sealedraw/526PCAPrecords/2epochsnative175180110/flags/currenttrap+death",
+      "result": "pass",
+      "evidence": [
+        "RUN-00007",
+        "RUN-00006"
+      ],
+      "limits": "ModifiedWine/two actualCA+wineserver privatevirtualnetns/samephysicalhost/directvethUDP/TCPforwardstub, measurementbind/addressshims. BasicAoneSpace/stay2cycles/currenttrap/deadline/resultdrain/survivorpolicy; notshared/all-dead/4phasemovement/itempickup/fullmatch/K6a/physicalLAN/K6b/NAT/Internet/gates. No finalReady95/Start3. CP137complex-routeUIdebt/IP1/subtype39 unknown retained. Sourcebinary/pack/DB unchanged; source/config frozen untilcleanup/seal."
+    },
+    {
+      "check": "Sharedroute 2cycles target",
+      "result": "fail",
+      "evidence": [
+        "RUN-02347",
+        "RUN-02349"
+      ],
+      "limits": "1146partial attributionchecks pass; actual two-shared targetfailed, raw unchanged."
+    },
+    {
+      "check": "192actor/252packet/12native153/2364flaggetter+2340array modelchecks; manualrender pinnedoriginals",
+      "result": "pass",
+      "evidence": [
+        "RUN-00002",
+        "RUN-01185",
+        "RUN-01184",
+        "RUN-01174",
+        "RUN-01273"
+      ],
+      "limits": "Models and render not fullnativegame oracle; no finalReady95."
+    },
+    {
+      "check": "Docs/catalog/issue/artifacts;226unchangedserverbaseline tests reused",
+      "result": "pass",
+      "evidence": [
+        "RUN-01172",
+        "RUN-01181",
+        "RUN-00005",
+        "RUN-02428"
+      ],
+      "limits": "Mechanicalchecks do notcertifyacceptance/gates."
+    }
+  ],
+  "evidence": [],
+  "evidence_manifests": [
+    {
+      "path": "docs/evidence/checkpoints/evidence/CP140-virtual-basic-cycles.json",
+      "bytes": 608611,
+      "sha256": "617e0c14d6020ef4e7545b64b57e4bcdc1ee391d9512bdd3f17cd96766ce653b",
+      "count": 2428
+    }
+  ],
+  "delta": {
+    "added": [
+      "Actualvirtualhosts two basic result/reset cycles and finalroom render same-run; AUD043manual audit."
+    ],
+    "corrected": [
+      "Sharedroute failedscope explicit; use CP061basicmethod not forcedgeometry/outcome.",
+      "Render not Readyresponse or focuscausalfix; CP137debt distinct."
+    ],
+    "superseded": [
+      "NEXT-VIRTUAL-HOST-CYCLES closed for basic scopedcycles only; sharedroute remainspartial. NEXT-SERVICE-ADDRESS-CONFIG active."
+    ]
+  },
+  "blockers": [
+    "Production address config/native no-shim regression + postreturn2Ready response not implemented yet.",
+    "Shared-route geometry/CP137 UI debt/fullinventory-reset/fullauth/authority/vanilla/physicalLAN/NAT/Internet/gates remain."
+  ],
+  "next_steps": [
+    {
+      "id": "NEXT-VIRTUAL-HOST-CYCLES",
+      "task": "KRE-005b",
+      "state": "closed",
+      "action": "Scoped basic2cycles/native/reset/render achieved; sharedroute targetpartial retained.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-SERVICE-ADDRESS-CONFIG",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "PLAN explicitbind/peerIPv4 default127/validation/regression then actualvirtualbasic2cycles withoutshim and normalBReady95/native110 afterreturn2/noStart3.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    }
+  ],
+  "docs_sync": [
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "CP140basicvirtual2cycles/partialscope/renderlimits/addressconfiggap/AUD043/issue14 synced beforecomplete."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "CP140basicvirtual2cycles/partialscope/renderlimits/addressconfiggap/AUD043/issue14 synced beforecomplete."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "updated",
+      "reason": "CP140basicvirtual2cycles/partialscope/renderlimits/addressconfiggap/AUD043/issue14 synced beforecomplete."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "updated",
+      "reason": "CP140basicvirtual2cycles/partialscope/renderlimits/addressconfiggap/AUD043/issue14 synced beforecomplete."
+    },
+    {
+      "path": "docs/features.json",
+      "state": "updated",
+      "reason": "CP140basicvirtual2cycles/partialscope/renderlimits/addressconfiggap/AUD043/issue14 synced beforecomplete."
+    },
+    {
+      "path": "docs/COVERAGE.md",
+      "state": "updated",
+      "reason": "CP140basicvirtual2cycles/partialscope/renderlimits/addressconfiggap/AUD043/issue14 synced beforecomplete."
+    },
+    {
+      "path": "docs/evidence/peer-endpoints/README.md",
+      "state": "updated",
+      "reason": "CP140basicvirtual2cycles/partialscope/renderlimits/addressconfiggap/AUD043/issue14 synced beforecomplete."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/review.json",
+      "state": "updated",
+      "reason": "CP140basicvirtual2cycles/partialscope/renderlimits/addressconfiggap/AUD043/issue14 synced beforecomplete."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
+      "state": "updated",
+      "reason": "CP140basicvirtual2cycles/partialscope/renderlimits/addressconfiggap/AUD043/issue14 synced beforecomplete."
+    }
+  ]
+}

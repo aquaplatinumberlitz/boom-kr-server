@@ -1,0 +1,85 @@
+{
+  "id": "AUD043",
+  "trigger": "periodic",
+  "completed_through": "CP140",
+  "recorded_utc": "2026-11-05T17:09:23.620539+00:00",
+  "auditor": "Codex manual self-audit; independent review waived",
+  "read_files": [
+    "README.md",
+    "docs/PLAN.md",
+    "docs/PROTOCOL.md",
+    "docs/RESEARCH.md",
+    "docs/evidence/peer-endpoints/README.md",
+    "docs/evidence/integrated-survivor/README.md",
+    "docs/evidence/current-pair-round/README.md",
+    "docs/evidence/checkpoints/README.md",
+    "docs/features.json",
+    "docs/COVERAGE.md",
+    "server/probe_service.py",
+    "local/research/codex/virtual-basic-cycles-r1/reuse-question.json",
+    "local/research/codex/virtual-basic-cycles-r1/runtime-preflight.json",
+    "local/research/codex/virtual-basic-cycles-r1/raw-seal.json",
+    "local/research/codex/virtual-basic-cycles-r1/basic-verification.json",
+    "local/research/codex/virtual-basic-cycles-r1/visual-review.json",
+    "local/research/codex/virtual-basic-cycles-r1/cycles/run.json",
+    "local/research/codex/virtual-basic-cycles-r1/cycles/service-state.json",
+    "local/research/codex/virtual-basic-cycles-r1/cycles/virtual-network.json",
+    "local/research/codex/virtual-cycles-r1/partial-verification.json",
+    "local/research/codex/virtual-cycles-r1/raw-seal.json"
+  ],
+  "method": "Read core docs in order, affected authority/endpoint contracts and reports; compare actual run epochs/trap/death SHA/native175180110/195 resets/namespace ownership/veth and partial geometry. Reuse cached native readers; no new native body. Mechanical checks are not semantic audit.",
+  "findings": [
+    {
+      "id": "F1",
+      "stale": "CP139 next shared/all-dead target was not achieved by the first virtual-cycles run.",
+      "correction": "Preserve failed alignment/actual4,4 versus3,4/noA19 as partial; explicitly change scope to CP061 basic Space/stay method. Basic2cycles are not sharedcascade proof.",
+      "fixed_in": [
+        "docs/PLAN.md",
+        "docs/PROTOCOL.md",
+        "docs/RESEARCH.md",
+        "docs/evidence/peer-endpoints/README.md"
+      ]
+    },
+    {
+      "id": "F2",
+      "stale": "Render observations could be confused with input response or a focus causal fix, closing CP137 debt.",
+      "correction": "All8images already show room including nativegate. No finalReady95/Start3; CP137 complex-route debt separate.",
+      "fixed_in": [
+        "README.md",
+        "docs/PROTOCOL.md",
+        "docs/RESEARCH.md",
+        "docs/evidence/peer-endpoints/README.md"
+      ]
+    },
+    {
+      "id": "F3",
+      "stale": "Current docs/issue14 still requested virtual two-result cycles, and peer authority lacked the recovered endpoint scope.",
+      "correction": "CP140 basic two-result/reset/render narrow scope documented; production127 bind/peerIP shim is next blocker. ActualCA+wineserver namespace and directwire proof distinct from smoke; IP1/subtype39 unknown.",
+      "fixed_in": [
+        "README.md",
+        "docs/PLAN.md",
+        "docs/PROTOCOL.md",
+        "docs/RESEARCH.md",
+        "docs/features.json",
+        "docs/COVERAGE.md",
+        "docs/evidence/peer-endpoints/README.md",
+        "docs/evidence/issue-reconciliation/review.json",
+        "docs/evidence/issue-reconciliation/github-snapshot.json"
+      ]
+    },
+    {
+      "id": "F4",
+      "stale": "CP138 strict-reader failures risk being treated as fixed by later run scopes.",
+      "correction": "Retain original failure evidence/scope; CP139 movement and CP140 basiccycles remain distinct runs, no fullmatch/gate aggregation.",
+      "fixed_in": [
+        "docs/PROTOCOL.md",
+        "docs/evidence/peer-endpoints/README.md"
+      ]
+    }
+  ],
+  "remaining": [
+    "CP140/AUD043 selfcheck pending commit/push/PR/exacthead/merge. Next periodic CP144.",
+    "Production address config/native no-shim regression + postreturn2Ready response not implemented yet.",
+    "Shared-route geometry/CP137 UI debt/fullinventory-reset/fullauth/authority/vanilla/physicalLAN/NAT/Internet/gates remain."
+  ]
+}

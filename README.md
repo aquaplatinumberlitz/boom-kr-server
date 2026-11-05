@@ -41,17 +41,17 @@ Hai copy KR Wine đã chạy login/sảnh/phòng/Battle và các chu kỳ kết 
 [kim/reset](docs/PROTOCOL.md#needle-round-reset), [cứu hai chiều và hai kết quả](docs/PROTOCOL.md#rescue-two-results),
 [deep chain/reset](docs/PROTOCOL.md#recursive-chain-cycles) giữ phạm vi và giới hạn tại nguồn chuẩn.
 
-**Mốc mới CP139:** hai client/Wine server đã chạy trong hai namespace mạng riêng, IPriêng;
-direct UDP qua veth đã nối tớinativehandler/target/movementhai chiều. [Scope/giới hạn](docs/PROTOCOL.md#virtual-peer),
-[raw/hash](docs/evidence/peer-endpoints/README.md#cp139). Mộtclock/haiinput, chưa hai trậntrên topology này;
-virtualhost cùngmáy chưaLANthật/Internet.
+**Mốc mới CP140:** hai virtualhost đã hoàn tất hai basic cycles cùngrun: bom A → trap/deaththật →
+kếtquảsurvivor → vềphòng/reset → vònghai. [Contract/giới hạn](docs/PROTOCOL.md#virtual-basic-cycles),
+[raw/hash và sharedpartial](docs/evidence/peer-endpoints/README.md#cp140). Ảnhcuối cảhai hiệnphòng;
+chưafinalReadyinput, fullmatch/K6a/realLAN/Internet.
 
-CP138 đã merge [PR209](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/209) tại`cb98a51`.
-CP139 docs/evidence đang tự kiểm; [review độc lập waived](docs/evidence/checkpoints/review-waiver.json).
-FinalUIdebt CP137/gates giữmở. Audit địnhkỳ kế **CP140**.
+CP139 đã merge [PR210](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/210) tại`1ecd3fe`.
+CP140/AUD043 docs/evidence đangtựkiểm; [review độc lập waived](docs/evidence/checkpoints/review-waiver.json).
+Audit qua140/kế **CP144**; gates vàcomplex-routeUIdebt giữmở.
 
-Theo [PLAN](docs/PLAN.md#current-order), chạy hai chu kỳ kết quả/reset trên topology directUDP này,
-dùng route đãđo và quan sát render sau native return; không ghép các run riêng thànhfullmatch.
+Theo [PLAN](docs/PLAN.md#current-order), đưa bind/peerIPtườngminh vào service đểbỏmeasurementshim,
+kiểmlạibasic2cyclesvàReady saureturn2. Mạngđãđo làhai virtualhost cùngmáy, chưaLANthật.
 
 Đích đầu: hai client thật chơi hai trận liên tiếp; mở bốn client và hardening sau đó.
 

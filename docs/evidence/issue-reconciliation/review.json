@@ -135,11 +135,11 @@
         "KR-F001",
         "KR-F015"
       ],
-      "known": "CP138/PR209mergedcb98a51; CP139actualCA+wineserver separatechildnetns/99IP0/private153/directvethUDP/nativekeytargetprogress2R1inputs.1423joins/702raw; noUDPproxyinroute.",
-      "remaining": "Virtualtworesult/resetcycles notyetmeasured; realLAN/NAT/productionbindpolicy/fullauth/authority/gates andCP137finalUIdebt remain.",
-      "next_test": "PLAN reuse sharedcascade/bothactual17→19/native175180/return/reset2/currentkeysIDs195seed oncurrentvirtualtopology/guards; finalrender4/8/12knownobserver, noStart3/sourceconfigeditsmidrun. PeriodicauditCP140.",
+      "known": "CP139/PR210merged1ecd3fe; CP140basic2cycles virtualCA+serverNS/directUDP/native159158/A17→19/peer170/B21/175180/room110/resetkeyID195seed/statbaseline andrender. Sharedrunpartial preserved; AUD043through140/next144.",
+      "remaining": "Productionaddressconfig still127/measuredthroughshims; noactual95afterreturn2/complexrouteUI/sharedcrossvirtual proof. RealLAN/NAT/fullauth/authority/gatesremain.",
+      "next_test": "PLAN explicitbindIPv4/peerIPbyrole/default127 withregressions; productionservicewithoutaddressshim onknownvirtualtopology/basic2cycles thennormalReadyB/actual95+native110aftersecondreturn/noStart3.",
       "acceptance": "Epic checklist: linkedscopedtask/evidence+authoritymatrix vàacceptancegate ởPLAN; từngtaskđóng khôngđóngepic/K5/K6a.",
-      "reason": "Namespacefrontendaloneinsufficient, actualCA+serverownersverifiedbeforeinput; keep12subtype39opaque/inertlegacyproxymetadata/initialcheckerassumptions ratheralterraw.",
+      "reason": "Scoped basic2 cycles closed, notshared/all-dead ormovement/itempickupfullmatch. Auditqualifiesauthority/source/currentstate/partialhistory; no gateautoclose.",
       "sources": [
         "docs/PROTOCOL.md#authority",
         "docs/RESEARCH.md#feature-gaps",
@@ -160,7 +160,8 @@
         "docs/PROTOCOL.md#loading-timeout-positive",
         "docs/PROTOCOL.md#integrated-survivor",
         "docs/PROTOCOL.md#peer-endpoint-ip",
-        "docs/PROTOCOL.md#virtual-peer"
+        "docs/PROTOCOL.md#virtual-peer",
+        "docs/PROTOCOL.md#virtual-basic-cycles"
       ],
       "evidence": [
         "docs/evidence/current-movement-cycles/README.md",
@@ -178,7 +179,8 @@
         "docs/evidence/loading-timeout/README.md#cp136",
         "docs/evidence/integrated-survivor/README.md",
         "docs/evidence/peer-endpoints/README.md",
-        "docs/evidence/peer-endpoints/README.md#cp139"
+        "docs/evidence/peer-endpoints/README.md#cp139",
+        "docs/evidence/peer-endpoints/README.md#cp140"
       ],
       "prs": [
         173,
@@ -212,7 +214,8 @@
         206,
         207,
         208,
-        209
+        209,
+        210
       ],
       "successors": []
     },
@@ -539,6 +542,6 @@
       "successors": []
     }
   ],
-  "as_of_utc": "2026-11-05T16:25:51.862966+00:00",
-  "limits": "Dated manual dispositions; #14 updated through CP139. SnapshotcaptureUTC only/no semanticgatecertification/completehistory immutable."
+  "as_of_utc": "2026-11-05T17:02:43.331826+00:00",
+  "limits": "Dated manual dispositions; #14 updated through CP140/AUD043. SnapshotcaptureUTC only/no semanticgatecertification/completehistory immutable."
 }

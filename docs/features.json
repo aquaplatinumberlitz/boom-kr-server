@@ -1,7 +1,7 @@
 {
   "schema": "kre-feature-index-v1",
   "build": "KR00967",
-  "as_of": "2026-11-06 CP139",
+  "as_of": "2026-11-06 CP140",
   "sources": {
     "plan": "docs/PLAN.md",
     "contract": "docs/PROTOCOL.md",
@@ -1156,7 +1156,8 @@
           "docs/evidence/probe-service/README.md",
           "docs/evidence/loading-timeout/README.md",
           "docs/evidence/loading-timeout/README.md#cp136",
-          "docs/evidence/integrated-survivor/README.md"
+          "docs/evidence/integrated-survivor/README.md",
+          "docs/evidence/peer-endpoints/README.md#cp140"
         ]
       },
       "coverage": {
@@ -1191,7 +1192,8 @@
               "docs/evidence/round-go/README.md",
               "docs/evidence/loading-timeout/README.md",
               "docs/evidence/loading-timeout/README.md#cp136",
-              "docs/evidence/integrated-survivor/README.md"
+              "docs/evidence/integrated-survivor/README.md",
+              "docs/evidence/peer-endpoints/README.md#cp140"
             ]
           },
           "windows_original": {
@@ -1224,7 +1226,8 @@
             "docs/evidence/probe-service/README.md",
             "docs/PROTOCOL.md#loading-timeout",
             "docs/PROTOCOL.md#loading-timeout-positive",
-            "docs/PROTOCOL.md#integrated-survivor"
+            "docs/PROTOCOL.md#integrated-survivor",
+            "docs/PROTOCOL.md#virtual-basic-cycles"
           ]
         },
         "gate": {
@@ -1504,7 +1507,8 @@
           "docs/evidence/battle-exit/README.md#cp128",
           "docs/evidence/three-bomb-chain/README.md#cp131",
           "docs/evidence/three-bomb-chain/README.md#cp132",
-          "docs/evidence/three-bomb-chain/README.md#cp133"
+          "docs/evidence/three-bomb-chain/README.md#cp133",
+          "docs/evidence/peer-endpoints/README.md#cp140"
         ]
       },
       "coverage": {
@@ -1562,7 +1566,8 @@
               "docs/PROTOCOL.md#postbomb-exit-rejoin",
               "docs/PROTOCOL.md#shared-blocker",
               "docs/PROTOCOL.md#shared-flag-timing",
-              "docs/PROTOCOL.md#shared-cell-state"
+              "docs/PROTOCOL.md#shared-cell-state",
+              "docs/evidence/peer-endpoints/README.md#cp140"
             ]
           },
           "windows_original": {
@@ -1622,7 +1627,8 @@
             "docs/PROTOCOL.md#postbomb-exit-rejoin",
             "docs/PROTOCOL.md#shared-blocker",
             "docs/PROTOCOL.md#shared-flag-timing",
-            "docs/PROTOCOL.md#shared-cell-state"
+            "docs/PROTOCOL.md#shared-cell-state",
+            "docs/PROTOCOL.md#virtual-basic-cycles"
           ]
         },
         "gate": {
@@ -2237,7 +2243,8 @@
           "docs/evidence/rescue-service/README.md#cp120",
           "docs/evidence/rescue-service/README.md#cp121",
           "docs/evidence/life-admission/README.md",
-          "docs/evidence/integrated-survivor/README.md"
+          "docs/evidence/integrated-survivor/README.md",
+          "docs/evidence/peer-endpoints/README.md#cp140"
         ]
       },
       "coverage": {
@@ -2296,7 +2303,8 @@
               "docs/PROTOCOL.md#rescue-round2-feedback",
               "docs/PROTOCOL.md#rescue-two-results",
               "docs/PROTOCOL.md#death-lifecycle-policy",
-              "docs/evidence/integrated-survivor/README.md"
+              "docs/evidence/integrated-survivor/README.md",
+              "docs/evidence/peer-endpoints/README.md#cp140"
             ]
           },
           "windows_original": {
@@ -2361,7 +2369,8 @@
             "docs/PROTOCOL.md#rescue-reverse",
             "docs/PROTOCOL.md#rescue-two-results",
             "docs/PROTOCOL.md#death-lifecycle-policy",
-            "docs/PROTOCOL.md#integrated-survivor"
+            "docs/PROTOCOL.md#integrated-survivor",
+            "docs/PROTOCOL.md#virtual-basic-cycles"
           ]
         },
         "gate": {
@@ -2792,7 +2801,8 @@
         "evidence": [
           "docs/evidence/peer153/README.md",
           "docs/evidence/peer-endpoints/README.md",
-          "docs/evidence/peer-endpoints/README.md#cp139"
+          "docs/evidence/peer-endpoints/README.md#cp139",
+          "docs/evidence/peer-endpoints/README.md#cp140"
         ]
       },
       "coverage": {
@@ -2823,7 +2833,8 @@
             "state": "unknown",
             "refs": [
               "docs/evidence/peer-endpoints/README.md",
-              "docs/evidence/peer-endpoints/README.md#cp139"
+              "docs/evidence/peer-endpoints/README.md#cp139",
+              "docs/evidence/peer-endpoints/README.md#cp140"
             ]
           },
           "windows_original": {
@@ -2897,7 +2908,8 @@
           "docs/evidence/rescue-service/README.md#cp121",
           "docs/evidence/three-bomb-chain/README.md#cp123",
           "docs/evidence/three-bomb-chain/README.md#cp134",
-          "docs/evidence/integrated-survivor/README.md"
+          "docs/evidence/integrated-survivor/README.md",
+          "docs/evidence/peer-endpoints/README.md#cp140"
         ]
       },
       "coverage": {
@@ -2950,7 +2962,8 @@
               "docs/PROTOCOL.md#rescue-two-results",
               "docs/PROTOCOL.md#recursive-chain-cycles",
               "docs/PROTOCOL.md#shared-cascade-cycles",
-              "docs/evidence/integrated-survivor/README.md"
+              "docs/evidence/integrated-survivor/README.md",
+              "docs/evidence/peer-endpoints/README.md#cp140"
             ]
           },
           "windows_original": {
@@ -3004,7 +3017,8 @@
             "docs/PROTOCOL.md#rescue-two-results",
             "docs/PROTOCOL.md#recursive-chain-cycles",
             "docs/PROTOCOL.md#shared-cascade-cycles",
-            "docs/PROTOCOL.md#integrated-survivor"
+            "docs/PROTOCOL.md#integrated-survivor",
+            "docs/PROTOCOL.md#virtual-basic-cycles"
           ]
         },
         "gate": {
@@ -3079,7 +3093,8 @@
           "docs/evidence/battle-exit/README.md#cp126",
           "docs/evidence/three-bomb-chain/README.md#cp134",
           "docs/evidence/loading-timeout/README.md#cp136",
-          "docs/evidence/integrated-survivor/README.md"
+          "docs/evidence/integrated-survivor/README.md",
+          "docs/evidence/peer-endpoints/README.md#cp140"
         ]
       },
       "coverage": {
@@ -3153,7 +3168,8 @@
               "docs/PROTOCOL.md#battle-exit-rejoin",
               "docs/PROTOCOL.md#shared-cascade-cycles",
               "docs/evidence/loading-timeout/README.md#cp136",
-              "docs/evidence/integrated-survivor/README.md"
+              "docs/evidence/integrated-survivor/README.md",
+              "docs/evidence/peer-endpoints/README.md#cp140"
             ]
           },
           "windows_original": {
@@ -3229,7 +3245,8 @@
             "docs/PROTOCOL.md#battle-exit-rejoin",
             "docs/PROTOCOL.md#shared-cascade-cycles",
             "docs/PROTOCOL.md#loading-timeout-positive",
-            "docs/PROTOCOL.md#integrated-survivor"
+            "docs/PROTOCOL.md#integrated-survivor",
+            "docs/PROTOCOL.md#virtual-basic-cycles"
           ]
         },
         "gate": {
@@ -3521,7 +3538,8 @@
           "docs/evidence/loading-timeout/README.md#cp136",
           "docs/evidence/integrated-survivor/README.md",
           "docs/evidence/peer-endpoints/README.md",
-          "docs/evidence/peer-endpoints/README.md#cp139"
+          "docs/evidence/peer-endpoints/README.md#cp139",
+          "docs/evidence/peer-endpoints/README.md#cp140"
         ]
       },
       "coverage": {
@@ -3636,7 +3654,8 @@
               "docs/evidence/loading-timeout/README.md#cp136",
               "docs/evidence/integrated-survivor/README.md",
               "docs/evidence/peer-endpoints/README.md",
-              "docs/evidence/peer-endpoints/README.md#cp139"
+              "docs/evidence/peer-endpoints/README.md#cp139",
+              "docs/evidence/peer-endpoints/README.md#cp140"
             ]
           },
           "windows_original": {
@@ -3804,7 +3823,8 @@
             "docs/PROTOCOL.md#loading-timeout-positive",
             "docs/PROTOCOL.md#integrated-survivor",
             "docs/PROTOCOL.md#peer-endpoint-ip",
-            "docs/PROTOCOL.md#virtual-peer"
+            "docs/PROTOCOL.md#virtual-peer",
+            "docs/PROTOCOL.md#virtual-basic-cycles"
           ]
         },
         "gate": {

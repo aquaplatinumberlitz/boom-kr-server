@@ -1,6 +1,6 @@
 # KR 00967 — contract tương thích client gốc
 
-Revision kr-legacy-contract-r1; cập nhật06/11/2026 JST (CP139; AUD042 quaCP136, kếCP140).
+Revision kr-legacy-contract-r1; cập nhật06/11/2026 JST (CP140; AUD043 quaCP140, kếCP144).
 **Contract có bằng chứng từng phần; chưa nghiệm thu full codec K2**.
 Lộ trình và thứ tự task chỉ giữ ở [REWRITE_PLAN — KRE](PLAN.md).
 Đây là contract của repo server KR. ADR0009 của bản viết lại là nguồn lịch sử để so sánh;
@@ -1972,7 +1972,7 @@ locator/trace và trạng thái từng ô; những vai trò không nêu dưới 
 | Trap/death | CP029/036; CP037 kim và tranh chấp cứu/diệt; [kim](#needle-selfescape), [precedence](#contact-precedence) | CP063 [guard stale/duplicate](#report127-freshness) là policy hẹp; CP075 [TCPsame/old17,19](#current-tcp-replay) đã đo; [CP112](#death-envelope-admission) thêm structural17/19admission; semanticfirstseen/forgedforward/generation/variants/result21 vẫn thiếu |
 | Result/reset | CP039 hai vòng statepeer/result/21/return và reset field hẹp; CP044 [timer ở EOF và vòng B/C mới](#abort-timer); CP080 [hai chu kỳ sau rejoin](#ready-input), CP082 [mixed-owner survivor](#mixed-cycles), CP083 [all-dead rank2/2/storage/UI](#all-dead-result), mỗi run/scope riêng; CP100 [optional result freshness](#result-freshness-guard), CP102 [drain/local21clear/peerblocker](#drained-result-local-clear), CP104 [native175/34/state3](#ending34-state-boundary), CP105 [exactendingUDPqueue](#ending-udp-state-apply), CP106 [same-run selected180boundaries](#current-movement-cycles) | CP041 có [payload cũ khi ID reuse](#round-generation); arbitration/toàn generation/entity/timer/peer/seq không rò vẫn mở; phân biệt run chờ sai origin với ca hoàn tất |
 | Room lifecycle | CP034 leave/promotion/EOF/return; CP035 rejoin/Ready; CP040 chủ B/C Start; CP044 [B/C bom/death/result/return sau abort](#abort-timer) | Bầu chủ/giữ ID-slot/forfeit là policy stub; guest EOF trả A về phòng/xóa B đã đo riêng; CP050 có [service EOF/cleanup](#service-eof); CP051 có [C mới/Start B trong service](#service-replacement); CP052 [guest setup EOF](#setup-eof), CP053 [host với peer chưa map](#host-setup), CP054 [C trước vòng đầu](#prestart-replacement), CP072 [preclock forfeit/return](#preclock-eof), CP074 [native107/IDclear và UI](#preclock-cleanup), CP076 [Back86/emptyroomrecreate cùng channel](#back86-membership), CP107 [currentservicehostBack/promotedrejoin tới clock](#host-normal-back) đã đo; [CP135 deadline và native cleanup](#loading-timeout) đã đo ca B99 bị giữ; reconnect cùng account/disconnect variants/toàn reset còn mở |
-| Peer lifecycle | CP027 actual99→153; CP045–047 [oldUDP actor/keyguard/endpointcontrol](#udp-generation), CP070 [transport cut hai chiều](#current-udp-causality) | CP048 [service fixture](#probe-service) đã tích hợp key policy hẹp; low8reuse/roster/UDPtype khác/fullgrammar/reliability/relay/reset còn mở. Không coi đổi cổng riêng lẻ là freshness guard hoặc keybyte là auth |
+| Peer lifecycle | CP027 actual99→153; CP045–047 [oldUDP actor/keyguard/endpointcontrol](#udp-generation), CP070 [transport cut hai chiều](#current-udp-causality) | CP048 [service fixture](#probe-service) có key policy hẹp; [CP138](#peer-endpoint-ip) và [CP139](#virtual-peer) thêm IPtuple/actualvirtualowners/directUDP; low8reuse/roster/UDPtype khác/fullgrammar/reliability/relay/reset tổngquát còn mở. Không coi đổi cổng riêng lẻ là freshness guard hoặc keybyte là auth |
 
 Trong **optional profile hiện hành**, bảng dưới ghi vai trò emulator, không gán cho server gốc.
 Giới hạn và phép đo nằm ở link contract; không dùng mỗi vai trò này làm gate acceptance.
@@ -1982,6 +1982,7 @@ Giới hạn và phép đo nằm ở link contract; không dùng mỗi vai trò 
 | [Place159](#terrain-policy) | Native Space tạo118 | Native159 tạo/bind entity ở cả view | Role/key/serial/quota + knownvariant/power/floor/nonoverlap theo profile | Service cấp ID/phát159 | Client gửi cell/power; chưa xác thực actorlocation/distance/fullauth, không tự coi field là tin cậy |
 | [Explode158/terrain](#terrain-policy) | Timer6s của profile là emu_choice | Native158/process/chain/mapflags; service dùng bounded terrain model | Model/profile pin/kinds/power≤2/currentgeneration; semantic modelchoices có giới hạn | Service phát158 rồi commit world/release | Peer movement có thể ảnh hưởng contact/report; report142 không làm worldoracle. Original server validator/order vẫnunknown |
 | [Trap/death/result](#result-freshness-guard) | Native local simulation tạo127/subtype | Native170/175/180 nhận effect/UI | Guard key/slot/reportstate/selectedsame-oldbody; optional result freshness/drain/21 sau17 và opposite-peer170 theo [CP102](#drained-result-local-clear)/[CP103](#peer21-ending-order); firstseen/forgedforward/location vẫn thiếu | Service170/result/return theo policy | Report/body do client gửi; acceptedreport không là authoritative world proof. [Limits](#tcp-guard-cycles) và RESEARCH giữ mở |
+| [Peer endpoint/directUDP](#virtual-peer) | Native99 báoIP0/UDPport; configđo chọnIP153 | NativeWinsock/lookup/handler/actor; actualCA+wineserverNS kiểmđộc lập | Currenttuple/key/slot trongcađãđo; no fullIPauth/NAT law | Stub153traobảng; nativeUDPđi direct | IP0khớpNIC/source trongvirtualcase; IP1opaque; bind/peerIPmeasurementpolicy, productioncấuhìnhchưađổi. [CP140basic2](#virtual-basic-cycles) khôngmovementgate |
 
 Gate K5/K6 cần kiểm matrix và đối chứng của hành vi thực sự dùng; từ28/10 Codex tự kiểm theo miễn review của chủ dự án. Có thể giữ unknown về
 server gốc thất lạc nếu policy emulator được chọn `design`, client chấp nhận và ca consistency đạt;
@@ -4857,3 +4858,26 @@ Runchỉclock/haiinput/no bom/result/reset2. Servicebind/address/TCPforwardlà s
 chưa productionLANconfig/auth; mộtphysicalhost/two virtualnetns khôngrealLAN/K6b/Internet/K6c/NAT/
 relay/fullmatch/K6a/gate. CP137finalUIdebt giữ. Bước kế PLAN ghép nativehairesults/reset trên topology
 này; khôngghépruncũ thànhmộttrậnđãnghiệmthu.
+
+
+<a id="virtual-basic-cycles"></a>
+### Hai basic bomb/result/reset cycles trên virtualhosts — CP140
+
+**kr_runtime/confirmed hẹp; fuse/rank/addressshims là emu_choice/design**, [raw/hash/recipe/audit](evidence/peer-endpoints/README.md#cp140).
+Run basic cùnghai actualCA+wineserver/netnsriêng/directvethUDP/TCPforwardstub, giữcurrentprofile/
+current-trap/deadline/resultdrain. Reuse CP061oneA Space/stay method, khôngportRoller/layoutVN.
+Hai actualA118 tại3,3/power1/currentkeys12345→12346/IDs1→2, native15939/15813/processcurrentID ở
+cảhai view,195flags/seedreset/clockstatcapacity-power-logicalspeedkhớp hai epochs. Hai actualA17→19
+đượcguardbindexactfreshtrapSHA, peer170/B21 sauactualdeath dẫnchosensurvivorrank2,1, native175302/
+1803/errors0 vàroom110hai lần. ReadyB/StartAgiữa2cycles, barrier15,300/15,332s trước30s, noEOF.
+
+Đây là **hai basic cycles cùngrun**, khôngphảisharedcascade/all-dead/fourphasemovement/itempickup
+hoặcwholematchvalidator. Trướcđóvirtualsharedrun chỉ1survivorreturn/Start2rồialignmiss; bridge4,4
+khác3,4vàkhôngA19. Bảnnàygiữpartial, khônggáncausaldoIP/guardhoặctiming. Khôngépdesiredoutcome.
+
+ActualwindowPID/prefixkhớpCAowner; sausecondnative180/110cảhai đãhiệnphòngAStart/BReady ởnativegate,
+unfocused4/12vàfocused4. Khôngthử95Ready saureturn2, khôngchứngminhfocuscầnthiết/cócausalfix,
+khôngxoáCP137complex-routeUIdebt. Vethtraffic526records actual99IPporthai epochsdirect, nhưngnative
+movementhandler4phasestừCP139làrunkhác; khôngghépchúngthànhfullmatch/K6a. AUD043qua140/kế144.
+Serviceproductionbind/153IPvẫnhard127; private-addressshims hiện làmeasurementdesign. RealLAN/K6b/
+Internet/K6c/NAT/relay/fullauth/authority/generalreset/gates mở; field99IP1/subtype39 vẫnunknown.
