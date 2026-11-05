@@ -1,0 +1,237 @@
+{
+  "artifacts": [
+    {
+      "name": "CA-r2-login-logout.exe",
+      "sha256": "660447c293ce92270cb9b5815331bca976e8f156366e1fe50b217b6c12e60ce3"
+    },
+    {
+      "name": "CA-r2-stage-social.exe",
+      "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+    },
+    {
+      "name": "CA-r2-stage-social.exe Bcopy",
+      "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+    },
+    {
+      "name": "modO.bin",
+      "sha256": "a08950c833d3acab8281049def7b3dc96b221f107eeda01da3a548e34b91dce5"
+    }
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-11-05T16:30:12.460122+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "Codex solo RE/code/runtime/selfcheck, not independent approval.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Owner explicitly requested solo without Claude review."
+    }
+  },
+  "owner": "Codex",
+  "reviewer": "Codex",
+  "id": "CP139",
+  "previous": "CP138",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-05T16:30:12.460122+00:00",
+  "context_commit": "cb98a5105a34d0bdabff43375d6a434faf958c34",
+  "question": "ActualKRCA+wineserver in distinctvirtualhostnetns/privateIPs: directUDP/nativepeerprogress vs namespacefrontend-only illusion?",
+  "scope": "ReuseCP138endpointsource/nativeobservers andsmoked bridge/veth/usernetns. Experimentalstubbind/private153IP+TCPforwardchild127rootstub; actualCA/serverownercheckbeforeinput. Oneclock/twoR1inputwindows, no newnativebody or fullmatchclaim.",
+  "locators": [
+    "BaselineCP138PR209head7a89f115b3f67e8d45f0a58993c4ece77ef2bef6/mergecb98a5105a34d0bdabff43375d6a434faf958c34/exactCLEANMERGEABLEchecks[].Initialcommit_refs_rulespusherror retriedsamehead/remoteverifiedbeforePR; rawGitbookkeepingretained.226unchangedcodebaseline testsreused/AUD042through136/next140.",
+    "Run9d8dd3570c463e52da4c445c52f150625954e502eb762d1d60d5c4958aa6827d/173.269628611s/exit0/702raw/140pcaprecords/1423virtualjoins. Rootnetnsdistinct; AactualCA203/wineserver89net4026533790/BCA554/wineserver441net4026534063 beforeinput.",
+    "Actual99IP0A10.77.0.2/B10.77.0.3/sourceports9753/9832; IP1opaque2131501624. 153advertisedprivateIPs+actual99ports/vethkv-a exactpayload→nativeingress/key/apply/currentprogress, ADown4/BRight6nativeapplies/2targetchanges each/260scopedpeerjoins. NoUDPforward/replay/serviceproxyports0.",
+    "KnownsitesCP098E66680/E667BE/E668AD/B4EA14/native52A350/121DC7F30/clockE134B0; static660447/runtimee9bb4766/modOa08950/base400000/RVA=VA−400000. No newnativebody.168peergetters/612actors/20UDPCRC/6native153 modelcases distinctruntime."
+  ],
+  "findings": [
+    {
+      "summary": "ActualCA+wineserverperprefix verifiedindistinctchildnetns beforeOSinputs; rootstub/bridge thirdNS/no-default-route. C2S99IP0/rootTCPpeer/private153 endpoints matchvirtualNICs, fieldIP1opaque.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#virtual-peer",
+      "limits": "Onephysicalhost/twoactualCA+wineserverprocessgroupsinverifieddifferentvirtualnetns/privatebridgeIPs10.77.0.2/.3/TCPforward127→rootstub10.77.0.1only. DirectUDPvethactual99ports/noUDPproxyroute/nativekey/target/progress. Oneclock/twoR1inputs/no bombs/results/reset2; notphysicalLAN/K6b/NAT/Internet/K6c/fullmatch/K6a/gate. 12subtype39opaque/IP1opaque, legacyunusedstaleproxymetadata preserved. Productionaddresspolicyunchanged/privatehelperdesign; CP137UIdebt remains. No sourcebinaryDBpackchange/sourceconfigfrozenuntilcleanup/rawseal.",
+      "evidence": [
+        "RUN-00806",
+        "RUN-00717",
+        "RUN-00709"
+      ]
+    },
+    {
+      "summary": "DirectvethUDP140pcaprecords withactual99IPports/exactpayload→nativeingress/key/actorapply/target/currentprogressinbothR1inputs. NoUDPproxyinroute; oneclock/no bom/result/reset2scope.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#virtual-peer",
+      "limits": "Onephysicalhost/twoactualCA+wineserverprocessgroupsinverifieddifferentvirtualnetns/privatebridgeIPs10.77.0.2/.3/TCPforward127→rootstub10.77.0.1only. DirectUDPvethactual99ports/noUDPproxyroute/nativekey/target/progress. Oneclock/twoR1inputs/no bombs/results/reset2; notphysicalLAN/K6b/NAT/Internet/K6c/fullmatch/K6a/gate. 12subtype39opaque/IP1opaque, legacyunusedstaleproxymetadata preserved. Productionaddresspolicyunchanged/privatehelperdesign; CP137UIdebt remains. No sourcebinaryDBpackchange/sourceconfigfrozenuntilcleanup/rawseal.",
+      "evidence": [
+        "RUN-00806",
+        "RUN-00726",
+        "RUN-00715"
+      ]
+    },
+    {
+      "summary": "Legacyparentmode=stale remainsraw butzeroevents/serviceproxyports0; routeprovenactualwire notlabel.12actualsubtype39reports preservedunknown, notACK/result. Draftmetadata/emptyreport assumptions failed and retained.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#virtual-peer",
+      "limits": "Onephysicalhost/twoactualCA+wineserverprocessgroupsinverifieddifferentvirtualnetns/privatebridgeIPs10.77.0.2/.3/TCPforward127→rootstub10.77.0.1only. DirectUDPvethactual99ports/noUDPproxyroute/nativekey/target/progress. Oneclock/twoR1inputs/no bombs/results/reset2; notphysicalLAN/K6b/NAT/Internet/K6c/fullmatch/K6a/gate. 12subtype39opaque/IP1opaque, legacyunusedstaleproxymetadata preserved. Productionaddresspolicyunchanged/privatehelperdesign; CP137UIdebt remains. No sourcebinaryDBpackchange/sourceconfigfrozenuntilcleanup/rawseal.",
+      "evidence": [
+        "RUN-00004",
+        "RUN-00803",
+        "RUN-00804",
+        "RUN-00710"
+      ]
+    },
+    {
+      "summary": "Bridge/veth/TCPforwardstub/addressshims areownedmeasurementdesign. Infrastructure smoke TCP/UDPsource/nohostnetworkchange separatefromclientproof; newnativegamebodies/codec/wholeUDPsearch avoided.",
+      "source": "emu_choice",
+      "status": "design",
+      "method": "design",
+      "canonical": "docs/PROTOCOL.md#virtual-peer",
+      "limits": "Onephysicalhost/twoactualCA+wineserverprocessgroupsinverifieddifferentvirtualnetns/privatebridgeIPs10.77.0.2/.3/TCPforward127→rootstub10.77.0.1only. DirectUDPvethactual99ports/noUDPproxyroute/nativekey/target/progress. Oneclock/twoR1inputs/no bombs/results/reset2; notphysicalLAN/K6b/NAT/Internet/K6c/fullmatch/K6a/gate. 12subtype39opaque/IP1opaque, legacyunusedstaleproxymetadata preserved. Productionaddresspolicyunchanged/privatehelperdesign; CP137UIdebt remains. No sourcebinaryDBpackchange/sourceconfigfrozenuntilcleanup/rawseal.",
+      "evidence": [
+        "RUN-00792",
+        "RUN-00795",
+        "RUN-00748",
+        "RUN-00750"
+      ]
+    }
+  ],
+  "verification": [
+    {
+      "check": "1423ownership/source/raw/allowlist/routes/99/153/vethpayload/nativeingress/progressjoins;702sealedraw",
+      "result": "pass",
+      "evidence": [
+        "RUN-00805",
+        "RUN-00806",
+        "RUN-00747"
+      ],
+      "limits": "Onephysicalhost/twoactualCA+wineserverprocessgroupsinverifieddifferentvirtualnetns/privatebridgeIPs10.77.0.2/.3/TCPforward127→rootstub10.77.0.1only. DirectUDPvethactual99ports/noUDPproxyroute/nativekey/target/progress. Oneclock/twoR1inputs/no bombs/results/reset2; notphysicalLAN/K6b/NAT/Internet/K6c/fullmatch/K6a/gate. 12subtype39opaque/IP1opaque, legacyunusedstaleproxymetadata preserved. Productionaddresspolicyunchanged/privatehelperdesign; CP137UIdebt remains. No sourcebinaryDBpackchange/sourceconfigfrozenuntilcleanup/rawseal."
+    },
+    {
+      "check": "260peer-runtimejoins/168copiedgetters/612actorrawgetters/20UDPCRC/6native153cases",
+      "result": "pass",
+      "evidence": [
+        "RUN-00727",
+        "RUN-00725",
+        "RUN-00728",
+        "RUN-00019",
+        "RUN-00001"
+      ],
+      "limits": "Models/actualobservationsseparated; notgeneralinterpolation/UDPgrammarorLANgate."
+    },
+    {
+      "check": "Initialdraftlegacyproxymode andempty-event-report assumptions",
+      "result": "fail",
+      "evidence": [
+        "RUN-00803",
+        "RUN-00804",
+        "RUN-00004"
+      ],
+      "limits": "Retainedfailedassumptions; correctedcheckuses actualconfiguration/wire and keepssubtype39unknown, no rawrewrite."
+    },
+    {
+      "check": "Docs/catalog/issues/artifacts/diff,226unchangedsourcebaseline tests reused",
+      "result": "pass",
+      "evidence": [
+        "RUN-00724",
+        "RUN-00737",
+        "RUN-00008",
+        "RUN-00812"
+      ],
+      "limits": "Mechanicalconsistency; gate/acceptancenotcertified."
+    }
+  ],
+  "evidence": [],
+  "evidence_manifests": [
+    {
+      "path": "docs/evidence/checkpoints/evidence/CP139-virtual-peer.json",
+      "bytes": 198763,
+      "sha256": "966ca128c3f246688965510719f7b3cbe7a592b8ad243375c2c2f2b6a890091b",
+      "count": 812
+    }
+  ],
+  "delta": {
+    "added": [
+      "Actual two virtualhostnativeprocessgroups/directUDP/nativepeerprogress proof; infrastructure smoke is separateinput."
+    ],
+    "corrected": [
+      "CP138onlyloopbackendpointscopeextendedtoactualdistinctnetns/privateIPs; notphysicalLAN.",
+      "Inertlegacyproxylabeland12subtype39reports cannotdrivefalseproxy/resultclaims; draftassumptions corrected withrawpreserved."
+    ],
+    "superseded": [
+      "NEXT-VIRTUAL-HOST-DIRECT-UDP closedscopednativeinputs; NEXT-VIRTUAL-HOST-CYCLES active. CP137return2UIdebt stillseparate."
+    ]
+  },
+  "blockers": [
+    "Virtualtwoactualsharedcycles/results/reset2 notyetverified; CP140periodicauditdueatcompletion.",
+    "Productionaddresspolicy/fullauth/authority/physicalLAN/NAT/Internet/gates andCP137finalusableUIdebt remain."
+  ],
+  "next_steps": [
+    {
+      "id": "NEXT-VIRTUAL-HOST-DIRECT-UDP",
+      "task": "KRE-005b",
+      "state": "closed",
+      "action": "CP139actualCA+serverownerNS/privateIP/99/153/directvethnativekeytargetprogress2R1inputsverified.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-VIRTUAL-HOST-CYCLES",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "PLAN knownCP134sharedcascade/full195/bothactual17→19/native175180/returnreset2/currentkeysIDs onCP139virtualtopology withknowncurrenttrap/deadline/resultdrain. Native180110thenrender4/8/12+focusknownCP110/noStart3. No crossrunfullmatch/sourcechangesmidrun. CP140manualauditdue.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    }
+  ],
+  "docs_sync": [
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "CP139actualvirtualhostnativeproof/limits/metadataunknowncorrections/virtual2cyclesnextstep andissue/catalog synced beforecomplete."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "CP139actualvirtualhostnativeproof/limits/metadataunknowncorrections/virtual2cyclesnextstep andissue/catalog synced beforecomplete."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "updated",
+      "reason": "CP139actualvirtualhostnativeproof/limits/metadataunknowncorrections/virtual2cyclesnextstep andissue/catalog synced beforecomplete."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "updated",
+      "reason": "CP139actualvirtualhostnativeproof/limits/metadataunknowncorrections/virtual2cyclesnextstep andissue/catalog synced beforecomplete."
+    },
+    {
+      "path": "docs/features.json",
+      "state": "updated",
+      "reason": "CP139actualvirtualhostnativeproof/limits/metadataunknowncorrections/virtual2cyclesnextstep andissue/catalog synced beforecomplete."
+    },
+    {
+      "path": "docs/COVERAGE.md",
+      "state": "updated",
+      "reason": "CP139actualvirtualhostnativeproof/limits/metadataunknowncorrections/virtual2cyclesnextstep andissue/catalog synced beforecomplete."
+    },
+    {
+      "path": "docs/evidence/peer-endpoints/README.md",
+      "state": "updated",
+      "reason": "CP139actualvirtualhostnativeproof/limits/metadataunknowncorrections/virtual2cyclesnextstep andissue/catalog synced beforecomplete."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/review.json",
+      "state": "updated",
+      "reason": "CP139actualvirtualhostnativeproof/limits/metadataunknowncorrections/virtual2cyclesnextstep andissue/catalog synced beforecomplete."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
+      "state": "updated",
+      "reason": "CP139actualvirtualhostnativeproof/limits/metadataunknowncorrections/virtual2cyclesnextstep andissue/catalog synced beforecomplete."
+    }
+  ]
+}
