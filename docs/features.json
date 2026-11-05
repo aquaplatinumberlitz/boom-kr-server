@@ -1,7 +1,7 @@
 {
   "schema": "kre-feature-index-v1",
   "build": "KR00967",
-  "as_of": "2026-11-06 CP140",
+  "as_of": "2026-11-06 CP141",
   "sources": {
     "plan": "docs/PLAN.md",
     "contract": "docs/PROTOCOL.md",
@@ -2802,7 +2802,8 @@
           "docs/evidence/peer153/README.md",
           "docs/evidence/peer-endpoints/README.md",
           "docs/evidence/peer-endpoints/README.md#cp139",
-          "docs/evidence/peer-endpoints/README.md#cp140"
+          "docs/evidence/peer-endpoints/README.md#cp140",
+          "docs/evidence/peer-endpoints/README.md#cp141"
         ]
       },
       "coverage": {
@@ -2834,7 +2835,8 @@
             "refs": [
               "docs/evidence/peer-endpoints/README.md",
               "docs/evidence/peer-endpoints/README.md#cp139",
-              "docs/evidence/peer-endpoints/README.md#cp140"
+              "docs/evidence/peer-endpoints/README.md#cp140",
+              "docs/evidence/peer-endpoints/README.md#cp141"
             ]
           },
           "windows_original": {
@@ -2909,7 +2911,8 @@
           "docs/evidence/three-bomb-chain/README.md#cp123",
           "docs/evidence/three-bomb-chain/README.md#cp134",
           "docs/evidence/integrated-survivor/README.md",
-          "docs/evidence/peer-endpoints/README.md#cp140"
+          "docs/evidence/peer-endpoints/README.md#cp140",
+          "docs/evidence/peer-endpoints/README.md#cp141"
         ]
       },
       "coverage": {
@@ -2963,7 +2966,8 @@
               "docs/PROTOCOL.md#recursive-chain-cycles",
               "docs/PROTOCOL.md#shared-cascade-cycles",
               "docs/evidence/integrated-survivor/README.md",
-              "docs/evidence/peer-endpoints/README.md#cp140"
+              "docs/evidence/peer-endpoints/README.md#cp140",
+              "docs/evidence/peer-endpoints/README.md#cp141"
             ]
           },
           "windows_original": {
@@ -3094,7 +3098,8 @@
           "docs/evidence/three-bomb-chain/README.md#cp134",
           "docs/evidence/loading-timeout/README.md#cp136",
           "docs/evidence/integrated-survivor/README.md",
-          "docs/evidence/peer-endpoints/README.md#cp140"
+          "docs/evidence/peer-endpoints/README.md#cp140",
+          "docs/evidence/peer-endpoints/README.md#cp141"
         ]
       },
       "coverage": {
@@ -3169,7 +3174,8 @@
               "docs/PROTOCOL.md#shared-cascade-cycles",
               "docs/evidence/loading-timeout/README.md#cp136",
               "docs/evidence/integrated-survivor/README.md",
-              "docs/evidence/peer-endpoints/README.md#cp140"
+              "docs/evidence/peer-endpoints/README.md#cp140",
+              "docs/evidence/peer-endpoints/README.md#cp141"
             ]
           },
           "windows_original": {
@@ -3539,7 +3545,8 @@
           "docs/evidence/integrated-survivor/README.md",
           "docs/evidence/peer-endpoints/README.md",
           "docs/evidence/peer-endpoints/README.md#cp139",
-          "docs/evidence/peer-endpoints/README.md#cp140"
+          "docs/evidence/peer-endpoints/README.md#cp140",
+          "docs/evidence/peer-endpoints/README.md#cp141"
         ]
       },
       "coverage": {
@@ -3655,7 +3662,8 @@
               "docs/evidence/integrated-survivor/README.md",
               "docs/evidence/peer-endpoints/README.md",
               "docs/evidence/peer-endpoints/README.md#cp139",
-              "docs/evidence/peer-endpoints/README.md#cp140"
+              "docs/evidence/peer-endpoints/README.md#cp140",
+              "docs/evidence/peer-endpoints/README.md#cp141"
             ]
           },
           "windows_original": {
@@ -3743,7 +3751,8 @@
             "server/test_battle_exit_pending.py",
             "server/test_host_battle_exit.py",
             "docs/PROTOCOL.md#loading-timeout",
-            "docs/PROTOCOL.md#loading-timeout-positive"
+            "docs/PROTOCOL.md#loading-timeout-positive",
+            "docs/PROTOCOL.md#service-address-config"
           ]
         },
         "integration": {

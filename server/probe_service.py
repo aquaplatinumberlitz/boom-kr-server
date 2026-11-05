@@ -9,6 +9,7 @@ No Wine/UI automation is imported. The caller supplies network isolation.
 import argparse
 import copy
 import hashlib
+import ipaddress
 import json
 from pathlib import Path
 import selectors
@@ -78,6 +79,42 @@ class FixtureProfile:
 
 ROLE_SLOTS = {'A': 0, 'B': 1, 'C': 0}
 ROLE_IDS = {'A': 1, 'B': 2, 'C': 3}
+
+
+def network_config(bind_ip, peer_ips=None):
+    """Explicit operator addresses, never inferred from untrusted init99 fields."""
+    def ipv4(value, *, peer=False):
+        try:
+            if not isinstance(value, str):
+                raise ValueError('expected an IPv4 string')
+            address = ipaddress.IPv4Address(value)
+        except ipaddress.AddressValueError as error:
+            raise ValueError('invalid IPv4 address: ' + str(value)) from error
+        if address.is_multicast or int(address) == 0xFFFFFFFF or (peer and address.is_unspecified):
+            raise ValueError('unsupported IPv4 address: ' + value)
+        return str(address)
+
+    bind_ip = ipv4(bind_ip)
+    if peer_ips is not None and not isinstance(peer_ips, dict):
+        raise ValueError('peer addresses must map roles to IPv4 strings')
+    peers = {role: '127.0.0.1' for role in ROLE_SLOTS}
+    for role, address in (peer_ips or {}).items():
+        if role not in ROLE_SLOTS:
+            raise ValueError('unsupported peer role: ' + str(role))
+        peers[role] = ipv4(address, peer=True)
+    return bind_ip, peers
+
+
+def peer_ip_options(options):
+    peers = {}
+    for option in options:
+        role, separator, address = option.partition('=')
+        if not separator or role in peers:
+            raise ValueError('expected unique --peer-ip ROLE=IPv4: ' + option)
+        peers[role] = address
+    return peers
+
+
 HOST_BACK_ALIASES = ('join_A', 'player_A_guest', 'slot_A_guest', 'guest_B_chief', 'ready_A')
 # Bounded CP036 diagnostic roster: A/B team0, shared spawn0; synthetic
 # slot2/ID3/team1 has no socket. Hash bodies rather than transport sequences.
@@ -92,7 +129,9 @@ RESCUE_PROFILE_BODIES = {
 
 
 class ProbeService:
-    def __init__(self, profile: FixtureProfile, out: Path, proxy_ports: dict):
+    def __init__(self, profile: FixtureProfile, out: Path, proxy_ports: dict, *,
+                 bind_ip='127.0.0.1', peer_ips=None):
+        self.bind_ip, self.peer_ips = network_config(bind_ip, peer_ips)
         missing = {'rank_Awin', 'promote_B', 'auth_C', 'roomlist_C', 'join_C',
                    'player_C', 'slot_C', 'guest_C', 'ready_C'} - profile.frames.keys()
         if missing:
@@ -202,7 +241,9 @@ class ProbeService:
                       'event_reports': [], 'round_history': [],
                       'item_requests': [], 'policy_events': [], 'errors': [],
                       'source': 'emu_choice', 'profile': profile.data,
-                      'limits': 'Fixture auth/roster/rank, loopback-only, two live members/A-B then B-C by accept order; no fullmatch gate.'}
+                      'network': {'bind_ip': self.bind_ip, 'peer_ips': dict(self.peer_ips),
+                                  'source': 'design', 'policy': 'explicit_operator_ipv4'},
+                      'limits': 'Fixture auth/roster/rank, explicit addresses default loopback, two live members/A-B then B-C by accept order; no fullmatch gate.'}
         self.state['policy_sources'] = []
         for filename in ['probe_service.py', 'probe_codec.py', 'probe_room.py', 'round_fence.py',
                          'item_claims.py', 'udp_round_keys.py', 'chain_capacity.py',
@@ -1149,6 +1190,7 @@ class ProbeService:
                     elif event.get('play_response_sent') and not event.get('peer153_sent') and now - event['play_response_sent']['monotonic_ns'] >= 10**9:
                         other = next(peer for peer in peers if peer['role'] != event['role'])
                         port = self.proxy_ports.get(other['role'], 0) or other['init99']['fields'][2]
+                        peer_ip = int(ipaddress.IPv4Address(self.peer_ips[other['role']]))
                         body = bytearray(self.profile.body('peer')[:35])
                         body[15:19] = codec.pack_fields([self.room.key], [4])
                         for slot in range(26):
@@ -1156,10 +1198,11 @@ class ProbeService:
                             body.extend(codec.pack_fields([int(active)], [1]))
                             if active:
                                 remote = slot < 2 and slot != ROLE_SLOTS[event['role']]
-                                for ip, endpoint in ([(0x7F000001, port), (0, 0), (0, 0)] if remote else [(0, 0)] * 3):
+                                for ip, endpoint in ([(peer_ip, port), (0, 0), (0, 0)] if remote else [(0, 0)] * 3):
                                     body.extend(codec.pack_fields([ip, endpoint], [4, 2]))
                         event['begin_response_sent'] = self.send(event, 'peer', 'peer153', body=bytes(body))
-                        event['peer153_sent'] = {**event['begin_response_sent'], 'remote_port': port}
+                        event['peer153_sent'] = {**event['begin_response_sent'], 'remote_port': port,
+                                                'remote_ip': self.peer_ips[other['role']]}
                         self.state['policy_events'].append({'op': 'peer_key', 'role': event['role'],
                                                             'generation': self.room.generation, 'key': self.room.key})
             death = next((peer['death_event'] for peer in self.peers() if peer.get('death_event')), None)
@@ -1425,11 +1468,12 @@ class ProbeService:
             for port in ports:
                 listener = socket.socket()
                 listener.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
-                listener.bind(('127.0.0.1', port))
+                listener.bind((self.bind_ip, port))
                 listener.listen(8)
                 listeners.append(listener)
                 self.selector.register(listener, selectors.EVENT_READ, None)
             self.state['listen_ports'] = [listener.getsockname()[1] for listener in listeners]
+            self.state['listen_addresses'] = [listener.getsockname() for listener in listeners]
             self.state['ready'] = True
             self.save()
             while not self.closed:
@@ -1461,11 +1505,18 @@ def main():
     parser.add_argument('--port', action='append', type=int, required=True)
     parser.add_argument('--proxy-a', type=int, default=0)
     parser.add_argument('--proxy-b', type=int, default=0)
+    parser.add_argument('--bind-ip', default='127.0.0.1')
+    parser.add_argument('--peer-ip', action='append', default=[], metavar='ROLE=IPv4')
     args = parser.parse_args()
     if any(not 0 <= port <= 65535 for port in [*args.port, args.proxy_a, args.proxy_b]):
         parser.error('invalid port')
+    try:
+        bind_ip, peer_ips = network_config(args.bind_ip, peer_ip_options(args.peer_ip))
+    except ValueError as error:
+        parser.error(str(error))
     args.out.mkdir(parents=True, exist_ok=True)
-    service = ProbeService(FixtureProfile(args.profile), args.out, {'A': args.proxy_a, 'B': args.proxy_b})
+    service = ProbeService(FixtureProfile(args.profile), args.out, {'A': args.proxy_a, 'B': args.proxy_b},
+                           bind_ip=bind_ip, peer_ips=peer_ips)
     def stop(_signal, _frame):
         service.closed = True
     signal.signal(signal.SIGTERM, stop)

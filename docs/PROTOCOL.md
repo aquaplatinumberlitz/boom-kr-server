@@ -1,6 +1,6 @@
 # KR 00967 — contract tương thích client gốc
 
-Revision kr-legacy-contract-r1; cập nhật06/11/2026 JST (CP140; AUD043 quaCP140, kếCP144).
+Revision kr-legacy-contract-r1; cập nhật06/11/2026 JST (CP141; AUD043 quaCP140, kếCP144).
 **Contract có bằng chứng từng phần; chưa nghiệm thu full codec K2**.
 Lộ trình và thứ tự task chỉ giữ ở [REWRITE_PLAN — KRE](PLAN.md).
 Đây là contract của repo server KR. ADR0009 của bản viết lại là nguồn lịch sử để so sánh;
@@ -1982,7 +1982,7 @@ Giới hạn và phép đo nằm ở link contract; không dùng mỗi vai trò 
 | [Place159](#terrain-policy) | Native Space tạo118 | Native159 tạo/bind entity ở cả view | Role/key/serial/quota + knownvariant/power/floor/nonoverlap theo profile | Service cấp ID/phát159 | Client gửi cell/power; chưa xác thực actorlocation/distance/fullauth, không tự coi field là tin cậy |
 | [Explode158/terrain](#terrain-policy) | Timer6s của profile là emu_choice | Native158/process/chain/mapflags; service dùng bounded terrain model | Model/profile pin/kinds/power≤2/currentgeneration; semantic modelchoices có giới hạn | Service phát158 rồi commit world/release | Peer movement có thể ảnh hưởng contact/report; report142 không làm worldoracle. Original server validator/order vẫnunknown |
 | [Trap/death/result](#result-freshness-guard) | Native local simulation tạo127/subtype | Native170/175/180 nhận effect/UI | Guard key/slot/reportstate/selectedsame-oldbody; optional result freshness/drain/21 sau17 và opposite-peer170 theo [CP102](#drained-result-local-clear)/[CP103](#peer21-ending-order); firstseen/forgedforward/location vẫn thiếu | Service170/result/return theo policy | Report/body do client gửi; acceptedreport không là authoritative world proof. [Limits](#tcp-guard-cycles) và RESEARCH giữ mở |
-| [Peer endpoint/directUDP](#virtual-peer) | Native99 báoIP0/UDPport; configđo chọnIP153 | NativeWinsock/lookup/handler/actor; actualCA+wineserverNS kiểmđộc lập | Currenttuple/key/slot trongcađãđo; no fullIPauth/NAT law | Stub153traobảng; nativeUDPđi direct | IP0khớpNIC/source trongvirtualcase; IP1opaque; bind/peerIPmeasurementpolicy, productioncấuhìnhchưađổi. [CP140basic2](#virtual-basic-cycles) khôngmovementgate |
+| [Peer endpoint/directUDP](#virtual-peer) | Native99 báoIP0/UDPport; configđo chọnIP153 | NativeWinsock/lookup/handler/actor; actualCA+wineserverNS kiểmđộc lập | Currenttuple/key/slot trongcađãđo; no fullIPauth/NAT law | Stub153traobảng; nativeUDPđi direct | IP0khớpNIC/source trongvirtualcase; IP1opaque; [CP141 cấu hình tường minh](#service-address-config) thay measurement shim; operator policy, không NAT/auth. Hai basic cycles không là movement gate |
 
 Gate K5/K6 cần kiểm matrix và đối chứng của hành vi thực sự dùng; từ28/10 Codex tự kiểm theo miễn review của chủ dự án. Có thể giữ unknown về
 server gốc thất lạc nếu policy emulator được chọn `design`, client chấp nhận và ca consistency đạt;
@@ -4881,3 +4881,39 @@ khôngxoáCP137complex-routeUIdebt. Vethtraffic526records actual99IPporthai epoc
 movementhandler4phasestừCP139làrunkhác; khôngghépchúngthànhfullmatch/K6a. AUD043qua140/kế144.
 Serviceproductionbind/153IPvẫnhard127; private-addressshims hiện làmeasurementdesign. RealLAN/K6b/
 Internet/K6c/NAT/relay/fullauth/authority/generalreset/gates mở; field99IP1/subtype39 vẫnunknown.
+
+
+<a id="service-address-config"></a>
+### Cấu hình IPv4 service và Ready sau return2 — CP141
+
+**Implementation/emu_choice/design; kr_runtime/confirmed trong phạm vi đã đo.**
+[Recipe, raw/hash và kiểm tra](evidence/peer-endpoints/README.md#cp141). `ProbeService` nhận keyword
+`bind_ip`, `peer_ips`; CLI `--bind-ip IPv4` và repeat `--peer-ip ROLE=IPv4` cho A/B/C. Mặc định bind
+và mọi role là127.0.0.1, thiếu role giữ default; không tự lấy IP0/IP1 từ99. Đây là cấu hình operator,
+không phục hồi NAT/identity/auth server gốc. IPv4 syntax/role được kiểm trước tạo selector; CLI cấm
+role lặp và kiểm trước tạo output/đọc fixture. Không nhận multicast/limited broadcast, peer không
+nhận0.0.0.0; bind0.0.0.0 được khai tường minh. Caller vẫn phải cô lập mạng theo recipe.
+
+153 giữ prefix/key hiện hành,26 slot, zero-self và hai fallback zero; remote primary IPv4 lấy theo
+role đối diện, port lấy actual99 hoặc proxy-port override đã có. Không đổi codec/seq/layout97byte
+của profile hai active slot. C mới dùng địa chỉ C, không lấy lại A chỉ vì dùng chung slot0. State ghi
+operator policy và địa chỉ listener thực. Unit test kiểm default/explicit/invalid/actual bind/roleC;
+chúng không thay bằng chứng native.
+
+Run CP141 dùng **module production trực tiếp**, bind10.77.0.1/peerA10.77.0.2/B10.77.0.3, bỏ cả
+socket shim và packet153 shim; TCP forward local→stub vẫn giữ, không UDP proxy. Hai actual CA và
+wineserver ở childnetns riêng,521 veth PCAP records, actual99port và bốn153/key/seq khớp. Cùng run
+hai basic A118/17→19/currenttrapSHA/peer170/B21 → chosen survivor rank2,1/native175302/1803/110,
+reset195/ID1→2/key12345→12346; barrier15,417/15,429s trước30s. Profile/guards giống CP140.
+
+Sau return2, normal BReady tạo **actual C2S95 seq427**, SHA
+`9c5c8820e607e8618c7363779d484305fdb38d18348e348863bef61713fc0c3b`.
+A/B đọc thêm native110 full6/errors0 trước cleanup107; B pending4→0. Ảnh phòng hiện ready badge
+cả hai view. Không Start3. Đếm toàn log B có110 cleanup muộn hơn observation; verifier cũ giả exact+1
+trên toàn log đã fail và được giữ, phép kiểm cuối giới hạn trước cleanup107, ghép actual95/110 send.
+Đây không là sửa raw hoặc hạ acceptance để bỏ lỗi parser.
+
+Không movement bốn pha/item pickup/shared cascade/all-dead trong run này; không cộng CP139 vào thành
+một fullmatch/K6a. Không đóng CP137 complex-route UI debt, auth/authority/generalreset/Windows vanilla/
+LAN thật/NAT/Internet/gates. IP1/subtype39 vẫn opaque. Code đã kiểm, trạng thái PR/merge ở README;
+AUD043 qua140, audit kếCP144. Bước tiếp duy nhất tại PLAN.

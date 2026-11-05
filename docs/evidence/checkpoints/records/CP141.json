@@ -1,0 +1,256 @@
+{
+  "artifacts": [
+    {
+      "name": "CA-r2-login-logout.exe",
+      "sha256": "660447c293ce92270cb9b5815331bca976e8f156366e1fe50b217b6c12e60ce3"
+    },
+    {
+      "name": "CA-r2-stage-social.exe",
+      "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+    },
+    {
+      "name": "CA-r2-stage-social.exe Bcopy",
+      "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+    },
+    {
+      "name": "modO.bin",
+      "sha256": "a08950c833d3acab8281049def7b3dc96b221f107eeda01da3a548e34b91dce5"
+    }
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-11-05T17:26:53.167235+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "Codex solo RE/code/runtime/selfcheck, not independent approval.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Owner explicitly requested solo without Claude review."
+    }
+  },
+  "owner": "Codex",
+  "reviewer": "Codex",
+  "id": "CP141",
+  "previous": "CP140",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-05T17:26:53.167235+00:00",
+  "context_commit": "f4f33712bb93d683a3c8d12fbc05685e22993f18",
+  "question": "Can explicit production bind/peerIPv4 replace measurementshims while preserving KR153 contract, basic2cycles andnormalReady afterreturn2?",
+  "scope": "Implement operatorconfig/default127/validation; reuseCP138–140nativewire/topology/lifecycles and oldKR/VNreferences withoutopcode/layoutport or newnativebody. Measureonly productionreplacement/postreturn2Ready gap.",
+  "locators": [
+    "BaselineCP140PR211headd70e5fb06b13d3d3b2a2e67f8de8512479406963/mergef4f3371; exactheadCLEANMERGEABLEchecks[]. AUD043through140/next144 unchanged.",
+    "Runaa05fbfaead45ec8e7b85aeb607dfe5afe2741e925ec3c56845792ee5566e152/296.619565114s/exit0/1167raw/521pcap/2921scopejoins/25addressreadychecks. ActualCA A202/server89/B547/server435 inverifieddifferentchildnetns.20productionlisteners10.77.0.1/A.2/B.3/no153orsocketshim.",
+    "Actual99portsA9633/B9227;153Aseq97/133→B.3 andBseq112/154→A.2; IDs1→2/key12345→12346/currenttrapSHA/actualA17→19/B21/rank2,1/native175302/1803/errors0/110/195reset/24clockstatcombos; barrier15.417099438/15.429249328s<30.",
+    "NormalOSBReadyafterreturn2 actualC2S95seq427/SHA9c5c8820e607e8618c7363779d484305fdb38d18348e348863bef61713fc0c3b; native110full6/errors0both/precleanup107/Bpending4→0/manualrenderbadge/noStart3.",
+    "Knownnative153E8A340/52A350/121DC7F30/CP098E66680/E667BE/E668AD/B4EA14; static660447/runtimee9bb4766/modOa08950/base400000/RVA=VA−400000; nativebodybudget0."
+  ],
+  "findings": [
+    {
+      "summary": "Production API/CLI explicitbindIPv4 andpeerIPbyA/B/C/default127; validateinvalidrole/duplicateCLI/IPv4/multicast/broadcast/unspecifiedpeer beforelisten,CLIbeforeoutput/fixture. Keepactual99port/proxyoverride/keyseq/zero-self/fallback/layout. Nevertrust99IP.",
+      "source": "emu_choice",
+      "status": "design",
+      "method": "design",
+      "canonical": "docs/PROTOCOL.md#service-address-config",
+      "limits": "ModifiedWine/twoactualCA+wineserverchildnetns/privateIPs/samephysicalhost/directvethUDP/TCPforwardstub/noUDPproxy. Production explicitoperatorIPv4 policy notoriginalNAT/auth; defaultsloopback. Two basicA Space/stay/currenttrap/deadline/drainsurvivorcycles+normalBReady95/native110bothafterreturn2/noStart3, notsame-runmovement/itempickup/shared/all-dead/fullmatch/K6a/physicalLAN/Internet/gate. CP137complexrouteUIdebt/IP1/subtype39opaque remain. Sourcebinary/DB/packunchanged; source/config frozen untilcleanup/rawseal.",
+      "evidence": [
+        "RUN-01256",
+        "RUN-01276",
+        "RUN-01210"
+      ]
+    },
+    {
+      "summary": "Actualproductionmodule/private20listeners/noaddressshim; directveth/actual99/full97byte153/currentkey+port, two same-runbasicbomb/trap/death/survivor175180110/resetcycles withcurrenttrap/deadline/drain.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#service-address-config",
+      "limits": "ModifiedWine/twoactualCA+wineserverchildnetns/privateIPs/samephysicalhost/directvethUDP/TCPforwardstub/noUDPproxy. Production explicitoperatorIPv4 policy notoriginalNAT/auth; defaultsloopback. Two basicA Space/stay/currenttrap/deadline/drainsurvivorcycles+normalBReady95/native110bothafterreturn2/noStart3, notsame-runmovement/itempickup/shared/all-dead/fullmatch/K6a/physicalLAN/Internet/gate. CP137complexrouteUIdebt/IP1/subtype39opaque remain. Sourcebinary/DB/packunchanged; source/config frozen untilcleanup/rawseal.",
+      "evidence": [
+        "RUN-00010",
+        "RUN-00005",
+        "RUN-01215"
+      ]
+    },
+    {
+      "summary": "NormalBReadyafterreturn2 actual95seq427 andoneadditionalnative110full6 eachbeforecleanup107; imagesroom/readybadgeboth; noStart3. DoesnotcloseCP137complex-routeUIdebt.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#service-address-config",
+      "limits": "ModifiedWine/twoactualCA+wineserverchildnetns/privateIPs/samephysicalhost/directvethUDP/TCPforwardstub/noUDPproxy. Production explicitoperatorIPv4 policy notoriginalNAT/auth; defaultsloopback. Two basicA Space/stay/currenttrap/deadline/drainsurvivorcycles+normalBReady95/native110bothafterreturn2/noStart3, notsame-runmovement/itempickup/shared/all-dead/fullmatch/K6a/physicalLAN/Internet/gate. CP137complexrouteUIdebt/IP1/subtype39opaque remain. Sourcebinary/DB/packunchanged; source/config frozen untilcleanup/rawseal.",
+      "evidence": [
+        "RUN-00005",
+        "RUN-01301",
+        "RUN-01178"
+      ]
+    },
+    {
+      "summary": "Whole-final-log exact+1native110 draftfailed becauseBcleanup107/survivor110 laterthanobservation. Retainfailedscript/check; finalcheckboundsnativebeforecleanup+joinsactual95andboth110sends. InvocationPYTHONPATHerrorfixedwithoutnewruntime.",
+      "source": "design",
+      "status": "design",
+      "method": "documentation",
+      "canonical": "docs/PROTOCOL.md#service-address-config",
+      "limits": "ModifiedWine/twoactualCA+wineserverchildnetns/privateIPs/samephysicalhost/directvethUDP/TCPforwardstub/noUDPproxy. Production explicitoperatorIPv4 policy notoriginalNAT/auth; defaultsloopback. Two basicA Space/stay/currenttrap/deadline/drainsurvivorcycles+normalBReady95/native110bothafterreturn2/noStart3, notsame-runmovement/itempickup/shared/all-dead/fullmatch/K6a/physicalLAN/Internet/gate. CP137complexrouteUIdebt/IP1/subtype39opaque remain. Sourcebinary/DB/packunchanged; source/config frozen untilcleanup/rawseal.",
+      "evidence": [
+        "RUN-00006",
+        "RUN-00004",
+        "RUN-00003"
+      ]
+    }
+  ],
+  "verification": [
+    {
+      "check": "231servertestsincluding5configregressions/default/explicit/roleC/proxy/actualbind/invalidbeforemutation",
+      "result": "pass",
+      "evidence": [
+        "RUN-01292",
+        "RUN-01210"
+      ],
+      "limits": "Implementationpolicyregressions; notnativeprotocoloracle."
+    },
+    {
+      "check": "2921scopejoins/1167sealedraw/521vethrecords/2epochs/native175180110/195reset/currenttrap",
+      "result": "pass",
+      "evidence": [
+        "RUN-00010",
+        "RUN-00009",
+        "RUN-01215"
+      ],
+      "limits": "ModifiedWine/twoactualCA+wineserverchildnetns/privateIPs/samephysicalhost/directvethUDP/TCPforwardstub/noUDPproxy. Production explicitoperatorIPv4 policy notoriginalNAT/auth; defaultsloopback. Two basicA Space/stay/currenttrap/deadline/drainsurvivorcycles+normalBReady95/native110bothafterreturn2/noStart3, notsame-runmovement/itempickup/shared/all-dead/fullmatch/K6a/physicalLAN/Internet/gate. CP137complexrouteUIdebt/IP1/subtype39opaque remain. Sourcebinary/DB/packunchanged; source/config frozen untilcleanup/rawseal."
+    },
+    {
+      "check": "25productionaddress/actual95seq427/native110precleanup/noStart3joins; manualrender",
+      "result": "pass",
+      "evidence": [
+        "RUN-00005",
+        "RUN-01301"
+      ],
+      "limits": "ModifiedWine/twoactualCA+wineserverchildnetns/privateIPs/samephysicalhost/directvethUDP/TCPforwardstub/noUDPproxy. Production explicitoperatorIPv4 policy notoriginalNAT/auth; defaultsloopback. Two basicA Space/stay/currenttrap/deadline/drainsurvivorcycles+normalBReady95/native110bothafterreturn2/noStart3, notsame-runmovement/itempickup/shared/all-dead/fullmatch/K6a/physicalLAN/Internet/gate. CP137complexrouteUIdebt/IP1/subtype39opaque remain. Sourcebinary/DB/packunchanged; source/config frozen untilcleanup/rawseal."
+    },
+    {
+      "check": "Wholelogexact+1native110 draft",
+      "result": "fail",
+      "evidence": [
+        "RUN-00004",
+        "RUN-01297",
+        "RUN-00006"
+      ],
+      "limits": "Analysisassumptionnotnativeparserfailure; latercleanupB110preservedandboundedratherthanrawedited."
+    },
+    {
+      "check": "192actor/261typedpacket/12native153/2364flaggetter+2340arrayemulation",
+      "result": "pass",
+      "evidence": [
+        "RUN-01194",
+        "RUN-01217",
+        "RUN-00001",
+        "RUN-01196"
+      ],
+      "limits": "Copiedruntimebytes/model/heapgettercounterstubs separatefromlivegame."
+    },
+    {
+      "check": "Docs/catalog/issue/artifacts",
+      "result": "pass",
+      "evidence": [
+        "RUN-01193",
+        "RUN-01201",
+        "RUN-00008"
+      ],
+      "limits": "Mechanicalconsistencyonly; notsemanticacceptance/gates."
+    }
+  ],
+  "evidence": [],
+  "evidence_manifests": [
+    {
+      "path": "docs/evidence/checkpoints/evidence/CP141-service-peer-address.json",
+      "bytes": 330788,
+      "sha256": "6c529d67438c82d0193834a344fde8af8c32b876381d81067a40203a0961e3b2",
+      "count": 1305
+    }
+  ],
+  "delta": {
+    "added": [
+      "ProductionexplicitIPv4configuration/default127 andsame-runbasic2cycles+postreturn2normalReady95/native110renderwithoutshims."
+    ],
+    "corrected": [
+      "FinalBnative110includespost-observationcleanup; failedwholelogdraftretained, scopedproofbefore107."
+    ],
+    "superseded": [
+      "NEXT-SERVICE-ADDRESS-CONFIG closedscopedcode/nativeproof; NEXT-VIRTUAL-MOVEMENT-CYCLES active, noCP137debtorfullgateclosure."
+    ]
+  },
+  "blockers": [
+    "Same-runvirtualproductionmovement4windows/lifecycle2cyclesnotyetcombined; reuseCP139windows/returnsetup+CP141basiccycleprofile.",
+    "Sharedcrossvirtualgeometry/CP137complexUIdebt/fullinventoryreset/auth/authority/physicalLAN/NAT/Internet/gatesremain."
+  ],
+  "next_steps": [
+    {
+      "id": "NEXT-SERVICE-ADDRESS-CONFIG",
+      "task": "KRE-005b",
+      "state": "closed",
+      "action": "Explicitproductionconfig/regression/nativeshimfreebasic2cycles/postreturn2Ready95and110bothverified.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-VIRTUAL-MOVEMENT-CYCLES",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "PLAN reuseCP139ADown/BRightfinitewindows eachround4total/nativewirekeytargetfreshprogress/OSreturnsetup andCP141productionbasic2cycles/Readyafterreturn2/noStart3.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    }
+  ],
+  "docs_sync": [
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "CP141productionaddress/no-shim2basiccycles/normalReadyproof/limits/corrections/newmovementgap/issue14 syncedbeforecomplete."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "CP141productionaddress/no-shim2basiccycles/normalReadyproof/limits/corrections/newmovementgap/issue14 syncedbeforecomplete."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "updated",
+      "reason": "CP141productionaddress/no-shim2basiccycles/normalReadyproof/limits/corrections/newmovementgap/issue14 syncedbeforecomplete."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "updated",
+      "reason": "CP141productionaddress/no-shim2basiccycles/normalReadyproof/limits/corrections/newmovementgap/issue14 syncedbeforecomplete."
+    },
+    {
+      "path": "docs/features.json",
+      "state": "updated",
+      "reason": "CP141productionaddress/no-shim2basiccycles/normalReadyproof/limits/corrections/newmovementgap/issue14 syncedbeforecomplete."
+    },
+    {
+      "path": "docs/COVERAGE.md",
+      "state": "updated",
+      "reason": "CP141productionaddress/no-shim2basiccycles/normalReadyproof/limits/corrections/newmovementgap/issue14 syncedbeforecomplete."
+    },
+    {
+      "path": "server/README.md",
+      "state": "updated",
+      "reason": "CP141productionaddress/no-shim2basiccycles/normalReadyproof/limits/corrections/newmovementgap/issue14 syncedbeforecomplete."
+    },
+    {
+      "path": "docs/evidence/peer-endpoints/README.md",
+      "state": "updated",
+      "reason": "CP141productionaddress/no-shim2basiccycles/normalReadyproof/limits/corrections/newmovementgap/issue14 syncedbeforecomplete."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/review.json",
+      "state": "updated",
+      "reason": "CP141productionaddress/no-shim2basiccycles/normalReadyproof/limits/corrections/newmovementgap/issue14 syncedbeforecomplete."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
+      "state": "updated",
+      "reason": "CP141productionaddress/no-shim2basiccycles/normalReadyproof/limits/corrections/newmovementgap/issue14 syncedbeforecomplete."
+    }
+  ]
+}

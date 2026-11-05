@@ -60,7 +60,11 @@ python3 -m server.probe_service --profile local/new-profile.json --out local/new
 python3 -m unittest discover -s server -p 'test_*.py'
 ```
 
-Service chỉ bind loopback. Khi chạy Wine phải dùng namespace/lease/files-only NSS của recipe đã đo;
+Service mặc định bind loopback; [CP141](../docs/PROTOCOL.md#service-address-config) thêm `--bind-ip IPv4` và
+repeat `--peer-ip ROLE=IPv4` (A/B/C), địa chỉ thiếu giữ127.0.0.1. API có keyword `bind_ip`, `peer_ips`.
+CLI kiểm IPv4/role/duplicate trước tạo output; không tự lấy IP từ99 hoặc triển khai NAT/relay. Ví dụ
+`--bind-ip 10.77.0.1 --peer-ip A=10.77.0.2 --peer-ip B=10.77.0.3` chỉ dùng trên mạng thử đã cô lập.
+Khi chạy Wine phải dùng namespace/lease/files-only NSS của recipe đã đo;
 loopback binding riêng nó không cô lập outbound client. Cần đủ các port của fixture/harness, không
 chỉ3808 cho chuỗi runtime. Profile CP051 cho identity A/B rồi C thay A theo accept-order (4connection/vai),
 synthetic auth/map/roster/rank và stable slots. Không là public server hoặc login/auth hoàn chỉnh.
