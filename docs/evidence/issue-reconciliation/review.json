@@ -132,9 +132,9 @@
         "KR-S001",
         "KR-S002"
       ],
-      "known": "CP109samerunBhost2nativeoutcomes/4phase; CP110secondreturnnative110/roomrender/unfocused4s/A95seq868/two-sided110/UIready onotherboundedrun, nofullgate.",
-      "remaining": "Fullgate/control/auth/codec/authority/validator/LANInternet unresolved; CP110strictR1-A-Down currentprogressmissing despiteUIproof, classifyreceiverwindow versusnative progress.",
-      "next_test": "OnlyPLANorder: source-firstCP098/106 andCP110receiverBtargets/packetquota/window/lateactorroundsnapshots; noY389/focus/Readywriter re-RE.",
+      "known": "CP109two-nativecycleproof; CP110secondreturnUI/A95seq868/two-sided110; CP111sameCP110raw4phaseprepost/currentprogress/freshsamples resolvesbefore-only statistic, nofullgate.",
+      "remaining": "Fullgates/control/auth/codec/authority/validator/LANInternet open; firstseen/current-generation124/127 inventory/location/life-context admission remainsboundedfixturepolicy.",
+      "next_test": "PLANsource-firstCP062063067085/actualbody/claim/service/VNreference: boundedfirstseen124/127control; noY389/Ready/receiver repeat.",
       "acceptance": "Epic checklist: linkedscopedtask/evidence+authoritymatrix vàacceptancegate ởPLAN; từngtaskđóng khôngđóngepic/K5/K6a.",
       "reason": "Thay scope CP004postWCP cũ bằng epic bảo trì/compatibility; không tạo duplicatecontract/plan.",
       "sources": [
@@ -151,7 +151,8 @@
         173,
         175,
         177,
-        179
+        179,
+        180
       ],
       "successors": []
     },

@@ -541,9 +541,9 @@ Dependency: [KR-F001](#kr-f001).
 
 [Contract và giới hạn](PROTOCOL.md#peer-duo) · [Câu hỏi gốc](RESEARCH.md#gap-peer-movement) · [Thứ tự ở PLAN](PLAN.md#current-order).
 
-Khoảng trống (trích bảng RESEARCH): CP109 currentBhost4phase targetchange/currentprogress validriêng. [CP110](PROTOCOL.md#return2-visual) sameUIrun thiếu R1-A-Downcurrentprogress tronglatercallbacksamples; chưa biết window/quota haynativeprogress.
+Khoảng trống (trích bảng RESEARCH): [CP111](PROTOCOL.md#receiver-prepost) CP110same-run4phaseprepost/currentprogress+freshsamples đãđo; oldbefore-onlystatistic bỏafter219. Branch4snap/0nonzerodeferred, CP106bothbranchproofriêng.
 
-Phép kiểm tối thiểu (trích cùng nguồn): ReuseCP098/106API/key/target/current; joinCP110receiverBpacket/cap64/snapshotmuộn/cùngactorround. Chỉđo edge cònthiếu, khôngsửaassertion/raw/luậtđểpass.
+Phép kiểm tối thiểu (trích cùng nguồn): Gapreceiverđãgiải từraw; fullmotionlaw/otherUDPgrammar/loss cònmởtheotrigger. Khônglặpruntime hoặc gọioldstrictpass.
 
 Issue/phạm vi công việc: [#14](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/14), [#176](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/176).
 
@@ -555,7 +555,7 @@ Bằng chứng/build/hash/recipe: [peer-duo](evidence/peer-duo/README.md), [prob
 | vn_reference | both | [nguồn1](REFERENCES.md) |
 | kr_static | partial | [nguồn1](PROTOCOL.md#peer-duo) |
 | emulation | checked | [nguồn1](evidence/peer-duo/README.md) |
-| wine_diagnostic_copy | observed | [nguồn1](evidence/peer-duo/README.md), [nguồn2](evidence/current-pair-round/README.md), [nguồn3](evidence/current-udp-causality/README.md), [nguồn4](evidence/current-peer-targets/README.md), [nguồn5](evidence/ending34-state-boundary/README.md), [nguồn6](evidence/ending-udp-state-apply/README.md), [nguồn7](evidence/current-movement-cycles/README.md), [nguồn8](evidence/promoted-battle-cycles/README.md), [nguồn9](evidence/promoted-outcome/README.md) |
+| wine_diagnostic_copy | observed | [nguồn1](evidence/peer-duo/README.md), [nguồn2](evidence/current-pair-round/README.md), [nguồn3](evidence/current-udp-causality/README.md), [nguồn4](evidence/current-peer-targets/README.md), [nguồn5](evidence/ending34-state-boundary/README.md), [nguồn6](evidence/ending-udp-state-apply/README.md), [nguồn7](evidence/current-movement-cycles/README.md), [nguồn8](evidence/promoted-battle-cycles/README.md), [nguồn9](evidence/promoted-outcome/README.md), [nguồn10](PROTOCOL.md#receiver-prepost) |
 | windows_original | unknown | Chưa có bằng chứng trong phạm vi rà |
 | lan | unknown | Chưa có bằng chứng trong phạm vi rà |
 | internet | unknown | Chưa có bằng chứng trong phạm vi rà |
@@ -949,7 +949,7 @@ Dependency: [KR-F009](#kr-f009).
 
 Khoảng trống (trích bảng RESEARCH): [CP110](PROTOCOL.md#return2-visual) Bhost2cycles→nativePrepare/110→cảhairoomrender/unfocused4s→actualA95seq868→two-sided110/UIready. CP109blackfinal làsnapshotquásớm, khôngcausalhangproof.
 
-Phép kiểm tối thiểu (trích cùng nguồn): UI/Ready scope đãgiải; chưaStart3/fullmatch. Tiếp receiverR1 gap theoPLAN; khônglặpfocus/Readywriter/codec.
+Phép kiểm tối thiểu (trích cùng nguồn): UI/Ready scope đãgiải; chưaStart3/fullmatch. ReceiverR1đãgiảiCP111; tiếpadmissiongap theoPLAN; khônglặpfocus/Readywriter/codec.
 
 Issue/phạm vi công việc: [#14](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/14), [#176](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/176).
 
@@ -976,9 +976,9 @@ Dependency: [KR-X001](#kr-x001), [KR-F003](#kr-f003), [KR-F006](#kr-f006).
 
 [Contract và giới hạn](PROTOCOL.md#round-generation) · [Câu hỏi gốc](RESEARCH.md#gap-round-reset) · [Thứ tự ở PLAN](PLAN.md#current-order).
 
-Khoảng trống (trích bảng RESEARCH): CP109native2cycle/selected180; [CP110](PROTOCOL.md#return2-visual) thêm actualsecondreturn110/render/Ready. Strict4phaseCP110 failR1currentprogress, khôngghép run thànhgate.
+Khoảng trống (trích bảng RESEARCH): CP109native2cycle/selected180; CP110actualsecondreturn110/render/Ready; [CP111](PROTOCOL.md#receiver-prepost) 4phaseprepost cùngrawCP110 mới giải thiếustatisticbefore-only.
 
-Phép kiểm tối thiểu (trích cùng nguồn): Read-onlyđốichiếureceiverB R1target/actualsamplequota/window với snapshotmuộn/cùngactor/round trước khiruntime. Fullresetvariants chưađủ; periodicCP112.
+Phép kiểm tối thiểu (trích cùng nguồn): Fullresetvariants/generation/authority cònthiếu; firstseen/currentgenerationguard theoPLAN, khônglặpfocus/receiver/Y389; periodicCP112.
 
 Issue/phạm vi công việc: [#14](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/14), [#60](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/60), [#110](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/110), [#176](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/176).
 
@@ -990,7 +990,7 @@ Bằng chứng/build/hash/recipe: [round-generation](evidence/round-generation/R
 | vn_reference | both | [nguồn1](REFERENCES.md) |
 | kr_static | partial | [nguồn1](PROTOCOL.md#round-generation), [nguồn2](PROTOCOL.md#map-flags-snapshot) |
 | emulation | checked | [nguồn1](evidence/round-generation/README.md) |
-| wine_diagnostic_copy | observed | [nguồn1](evidence/round-generation/README.md), [nguồn2](evidence/current-pair-round/README.md), [nguồn3](evidence/current-pickup-race/README.md), [nguồn4](evidence/report127-freshness/README.md), [nguồn5](evidence/distinct-spawn/README.md), [nguồn6](evidence/distinct-spawn-race/README.md), [nguồn7](evidence/c2s118-admission/README.md), [nguồn8](evidence/current-hidden-items/README.md), [nguồn9](evidence/basic-battle/README.md), [nguồn10](evidence/rejoin-battle-cycles/README.md), [nguồn11](evidence/return585-ready/README.md), [nguồn12](evidence/ready-input/README.md), [nguồn13](evidence/mixed-cycles/README.md), [nguồn14](evidence/all-dead-result/README.md), [nguồn15](evidence/three-bomb-chain/README.md), [nguồn16](evidence/tcp-guard-cycles/README.md), [nguồn17](evidence/capacity-reservations/README.md), [nguồn18](evidence/chain-capacity-release/README.md), [nguồn19](evidence/map-flags/README.md), [nguồn20](evidence/terrain-policy/README.md), [nguồn21](evidence/terrain-tcp-guard-cycles/README.md), [nguồn22](evidence/current-peer-targets/README.md), [nguồn23](evidence/trap-report-rank-order/README.md), [nguồn24](evidence/ending34-state-boundary/README.md), [nguồn25](evidence/ending-udp-state-apply/README.md), [nguồn26](evidence/current-movement-cycles/README.md), [nguồn27](evidence/promoted-battle-cycles/README.md), [nguồn28](evidence/promoted-outcome/README.md) |
+| wine_diagnostic_copy | observed | [nguồn1](evidence/round-generation/README.md), [nguồn2](evidence/current-pair-round/README.md), [nguồn3](evidence/current-pickup-race/README.md), [nguồn4](evidence/report127-freshness/README.md), [nguồn5](evidence/distinct-spawn/README.md), [nguồn6](evidence/distinct-spawn-race/README.md), [nguồn7](evidence/c2s118-admission/README.md), [nguồn8](evidence/current-hidden-items/README.md), [nguồn9](evidence/basic-battle/README.md), [nguồn10](evidence/rejoin-battle-cycles/README.md), [nguồn11](evidence/return585-ready/README.md), [nguồn12](evidence/ready-input/README.md), [nguồn13](evidence/mixed-cycles/README.md), [nguồn14](evidence/all-dead-result/README.md), [nguồn15](evidence/three-bomb-chain/README.md), [nguồn16](evidence/tcp-guard-cycles/README.md), [nguồn17](evidence/capacity-reservations/README.md), [nguồn18](evidence/chain-capacity-release/README.md), [nguồn19](evidence/map-flags/README.md), [nguồn20](evidence/terrain-policy/README.md), [nguồn21](evidence/terrain-tcp-guard-cycles/README.md), [nguồn22](evidence/current-peer-targets/README.md), [nguồn23](evidence/trap-report-rank-order/README.md), [nguồn24](evidence/ending34-state-boundary/README.md), [nguồn25](evidence/ending-udp-state-apply/README.md), [nguồn26](evidence/current-movement-cycles/README.md), [nguồn27](evidence/promoted-battle-cycles/README.md), [nguồn28](evidence/promoted-outcome/README.md), [nguồn29](PROTOCOL.md#receiver-prepost) |
 | windows_original | unknown | Chưa có bằng chứng trong phạm vi rà |
 | lan | unknown | Chưa có bằng chứng trong phạm vi rà |
 | internet | unknown | Chưa có bằng chứng trong phạm vi rà |

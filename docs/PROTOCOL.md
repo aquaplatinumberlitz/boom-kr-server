@@ -4076,3 +4076,29 @@ CP110 không thaythế CP109run4phase proof, không gọi cảrunCP110 là mọi
 getters/framer/typedpacket/flagreader chỉ emulation khácUI/native95. 4.686scopedchecks gồm4.640raw
 size/SHA vàjoins, không ngữ nghĩa/gateoracle. RESEARCH/PLAN giữ gapreceiver/samplemuộn; fullauth/
 codec/validator/authority/allreset/vanilla/K5/K6a/fullmatch/LANInternet còn mở.
+
+
+<a id="receiver-prepost"></a>
+### Receiver pre/post giải missing-progress của CP110 — CP111
+
+**kr_runtime/confirmed hẹp từ raw đã có**, đối chiếu nguồn trướcphân tích: CP098/106knownAPI/key/
+B4E6F0/B4EA14/getter52A350, CP110actualpeerB/framewindow/freshsamples. Không runtime mới/nativebody/
+codepolicy mới; [metadata/hash](evidence/promoted-outcome/README.md#cp111), [gap](RESEARCH.md#gap-peer-movement).
+
+Oldstrict chỉappend **before XY** từngapply. R1A-Down→B có4callbacks, trước cảbốnY159; callbackcuối
+trong chínhraw đổi currentY159→219/target219, distance60/threshold50 (snapbranch), sauđó
+freshrecipientpostinputY219→294. Vìkhôngcó callback kếtiếp trongwindow, thốngkê before-only vẫnchỉ159.
+Đây giải thích **assertion thiếu before-state khác**, không phải nativekhôngdịchchuyển. Khôngquota64hit,
+không cầnchạyY389/Ready/observerlại hoặc suy chínhobserver lànguyênnhân lịch sử.
+
+Phépkiểm mới giữuniqueAPI17→packet13/key/slot/args/actor/prepost/target/distancebranch vàfreshpostinput
+ởcảhai view; chỉ đổi câu hỏi thành currentprogress **trong hoặc giữa actualapplies**.
+4pha: R1A-DownB4apply/1targetchange/Y159→219; R2A-DownB6/1/Y159→219;
+R1B-RightA6/2/X120→164→200; R2B-RightA6/2/X120→168→200.
+556relations/360copiednativegetters/49actualCRC; fullprepost securewords/data pinned.
+
+Tách branchcoverage: runnày có4distance≥threshold snap, **0nonzero-error-below-thresholddeferred**.
+OldCP106 cócảhai branch vẫn giữriêng; oldstrict/CP110failure và firstnewanalysis mandatorydeferred
+failure giữ nguyên. Newscopedproof không báo oldstrictpass hay chứngminh toàninterpolationlaw.
+CùngrawCP110cóUI/native95/110 vàcurrentcoordinate4pha theođịnhnghĩa mới, khônglấytoạđộ từảnh hoặc
+hai runriêng. Vẫn khôngfullvalidator/auth/authority/allreset/vanilla/K5/K6a/fullmatch/LANInternet.
