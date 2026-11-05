@@ -98,6 +98,14 @@ class ProbeService:
         if missing:
             raise ValueError('profile missing lifecycle fixtures: ' + ', '.join(sorted(missing)))
         self.profile, self.out, self.proxy_ports = profile, out, proxy_ports
+        self.loading_timeout_ns = None
+        if 'loading_timeout' in profile.data:
+            policy = profile.data['loading_timeout']
+            if (not isinstance(policy, dict) or set(policy) != {'mode', 'seconds'}
+                    or policy['mode'] != 'close_missing_init99'
+                    or type(policy['seconds']) is not int or not 1 <= policy['seconds'] <= 300):
+                raise ValueError('unsupported loading_timeout policy')
+            self.loading_timeout_ns = policy['seconds'] * 10**9
         self.battle_exit = False
         self.battle_exit_mode = None
         if 'battle_exit' in profile.data:
@@ -273,6 +281,44 @@ class ProbeService:
             event['start_response_sent'] = {**self.send(event, 'start', f"start121-r{self.round['index']}"),
                                              'round': self.round['index'], 'after_c2s_opcode': 104,
                                              'host_role': self.host_role, 'broadcast': True}
+        if self.loading_timeout_ns is not None:
+            now = time.monotonic_ns()
+            self.round['loading'] = {
+                'generation': self.room.generation, 'started_ns': now,
+                'deadline_ns': now + self.loading_timeout_ns,
+                'members': [{'role': e['role'], 'connection': e['global_ordinal']}
+                            for e in self.peers()]}
+
+    def tick_loading(self, now):
+        """Opt-in local deadline, not a native load failure or an original server rule.
+
+        Pin the starting channels, never a replacement. Current init99 wins when
+        already dispatched before this owner tick. Reuse close/abort/return rather
+        than inventing init99, death, a cancellation packet or a match result.
+        """
+        loading = self.round.get('loading')
+        if (not loading or loading.get('resolved_ns') is not None
+                or not self.room.active or loading['generation'] != self.room.generation):
+            return
+        members = [self.channels.get(row['role']) for row in loading['members']]
+        if any(event is None or event.get('closed')
+               or event['global_ordinal'] != row['connection']
+               or not event.get('map_response_sent')
+               for row, event in zip(loading['members'], members)):
+            loading.update(resolved_ns=now, resolution='membership_changed')
+            return
+        missing = [event for event in members if not event.get('init99')]
+        if not missing:
+            loading.update(resolved_ns=now, resolution='barrier_complete')
+        elif now >= loading['deadline_ns']:
+            loading.update(resolved_ns=now, resolution='deadline',
+                           closed_connections=[e['global_ordinal'] for e in missing])
+            self.state['policy_events'].append({
+                'op': 'loading_timeout', 'generation': self.room.generation,
+                'monotonic_ns': now, 'deadline_ns': loading['deadline_ns'],
+                'connections': loading['closed_connections'], 'source': 'emu_choice'})
+            for event in missing:
+                self.close_connection(event['global_ordinal'], 'loading_timeout')
 
     def leave_room(self, event, frame, sequence, body):
         """Bounded fixture leave, with opt-in idle A-to-B promotion/rejoin.
@@ -1085,6 +1131,7 @@ class ProbeService:
             self.state['policy_events'].append({'op': 'bomb_deadline', 'generation': ticket.generation,
                                                 'wire_id': ticket.wire_id, 'rejected': reason})
         self.tick_setup(now)
+        self.tick_loading(now)
         abort = self.round.get('abort')
         if abort and not self.round.get('rank') and now - abort['monotonic_ns'] >= 12 * 10**9:
             alias = 'rank' if ROLE_SLOTS[abort['role']] == 0 else 'rank_Awin'

@@ -1,6 +1,6 @@
 # KR 00967 — contract tương thích client gốc
 
-Revision kr-legacy-contract-r1; cập nhật05/11/2026 JST (CP134; AUD041 quaCP132, kếCP136).
+Revision kr-legacy-contract-r1; cập nhật05/11/2026 JST (CP135; AUD041 quaCP132, kếCP136).
 **Contract có bằng chứng từng phần; chưa nghiệm thu full codec K2**.
 Lộ trình và thứ tự task chỉ giữ ở [REWRITE_PLAN — KRE](PLAN.md).
 Đây là contract của repo server KR. ADR0009 của bản viết lại là nguồn lịch sử để so sánh;
@@ -4746,3 +4746,31 @@ Modelgettercounter reset chỉemulation, khôngWine. Sourcebinary/DB/pack/oldcom
 Hai chu kỳ thử hoàn tất cùngrun/profilemodifiedWine/localstub, không tựnghiệmthu fullmatch/K5/K6a/
 vanilla/LANInternet/authority/allreset. Bước kế chỉPLAN connectedstalledload; không mởchainvariantvôhạn.
 AUD041qua132/kế136, reviewwaived khônggateclosure.
+
+
+<a id="loading-timeout"></a>
+### Loading barrier và deadline tùy chọn — CP135
+
+**kr_runtime/confirmed trong fault injection; policy là emu_choice/design.**
+[Recipe, raw/hash và phép kiểm](evidence/loading-timeout/README.md). Control current service giữ
+frame99 thực của B ở dispatcher46,349s, A99 đã dispatch; cả hai đọc121129/errors0, không có
+197/196/153/nativeclock. TCP được quan sát ESTABLISHED trước cleanup; hai client đã load/vẽ map.
+Đây không bằng chứng client gốc không load, network loss hoặc timeout của server Nexon.
+
+Profile cũ **mặc định không có deadline**. Profile mới có thể khai:
+`"loading_timeout": {"mode":"close_missing_init99","seconds":30}`; seconds là số nguyên1–300,
+giá trị30s do emulator chọn. Sau khi phát121, service pin generation, từng role/connection và deadline.
+Một owner tick thấy mọi init99 đã dispatch thì resolve `barrier_complete` trước khi xét expiry;
+đã resolve/round inactive/generation khác không chạy lại. Channel bị thay hoặc mất membership thì
+resolve `membership_changed`, không đóng nhầm replacement. Đây không validator epoch trên wire.
+
+Nếu hết hạn mà barrier còn thiếu, chỉ đóng các channel được pin chưa cóinit99, với reason
+`loading_timeout`. Đường close hiện hành invalidates fence ngay rồi dùng abort/forfeit175→180→
+107/110 cleanup; không mint99, death hoặc một cancellation opcode mới. Fixed đã đóng riêng B8
+ởStart+30,043s; A đọc175302/1803/errors0,107 xóaID2→0 rồi110/chief1 và hiện phòng/nútStart.
+B hiện dialog mất kết nối/error10. Callback cleanup được kiểm sau180 hiện tại; không nhầm idleBack107.
+Forfeit/rank/30s là lựa chọn emulator, không báo cáo trận đã chơi hoặc luật server gốc.
+
+Giới hạn: runtime mới kiểm B99 bị giữ với A99 thật/hostA/hai copy Wine; cả hai thiếu, replacement,
+đổi vòng/defaultoff/boundary có regression model, chưa phải runtime mọi variant. Đường bình thường
+với policy bật cần kiểm tiếp theo PLAN. Không K5/K6a/fullmatch/vanilla/LANInternet/general recovery.

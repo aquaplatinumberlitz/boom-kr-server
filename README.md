@@ -41,20 +41,17 @@ Hai copy KR Wine đã chạy login/sảnh/phòng/Battle và các chu kỳ kết 
 [kim/reset](docs/PROTOCOL.md#needle-round-reset), [cứu hai chiều và hai kết quả](docs/PROTOCOL.md#rescue-two-results),
 [deep chain/reset](docs/PROTOCOL.md#recursive-chain-cycles) giữ phạm vi và giới hạn tại nguồn chuẩn.
 
-**Mốc mới CP134:** cùng hai client đã hoàn tất hai chu kỳ shared cascade → A/B chết thật →
-rank2/2 →175/180 → về phòng. Geometry lặp đúng, ID1–4→5–8, key12345→12346, toàn195 seed flags
-và24 giá trị stat tại clock reset khớp. [Contract/giới hạn](docs/PROTOCOL.md#shared-cascade-cycles),
-[raw/hash/recipe](docs/evidence/three-bomb-chain/README.md#cp134). Hai chu kỳ thử có đầy đủ bằng chứng
-trong profile Wine này; fullmatch/K6a/vanilla/LANInternet vẫn chưa nghiệm thu.
+**Mốc mới CP135:** đã đo loading barrier kẹt khi giữB99/TCP còn mở, rồi thử deadline tùy chọn:
+service đóng riêng B, A nhận cleanup native và về phòng/nútStart. [Contract/giới hạn](docs/PROTOCOL.md#loading-timeout),
+[raw/hash/recipe](docs/evidence/loading-timeout/README.md). Đây là fault injection và policy emulator;
+không phải trận đã chơi hay timeout server gốc. Hai chu kỳ shared cascade CP134 giữ nguyên bằng chứng.
 
-CP133 đã merge [PR204](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/204) tại `ee61b5b`.
-CP134 docs/evidence/tự kiểm trong thay đổi hiện tại; review độc lập
-[waived](docs/evidence/checkpoints/review-waiver.json). Raw/complete history giữ nguyên;
+CP134 đã merge [PR205](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/205) tại `c2b2de4`.
+CP135 code/docs/evidence đang tự kiểm; review độc lập [waived](docs/evidence/checkpoints/review-waiver.json).
 #1/#2/#3/#9/#14 và K0–K7 vẫn mở. AUD041 qua132; audit kế **CP136**.
 
-Theo [PLAN](docs/PLAN.md#current-order), bước kế là loading không hoàn tất nhưng TCP còn mở:
-đo currentservice với actualB99 được giữ, không lặp ca delay10s-release hoặc EOF đã giải.
-Không mở tiếp mọi biến thể chain khi chưa có trigger.
+Theo [PLAN](docs/PLAN.md#current-order), kiểm đường bình thường với deadline bật qua hai vòng:
+actualA/B99 phải hoàn tất barrier, không đóng nhầm sau30s hoặc khi sang vòng mới.
 
 Đích đầu: hai client thật chơi hai trận liên tiếp; mở bốn client và hardening sau đó.
 

@@ -130,13 +130,15 @@
         "KR-X002",
         "KR-X003",
         "KR-S001",
-        "KR-S002"
+        "KR-S002",
+        "KR-R003",
+        "KR-F001"
       ],
-      "known": "CP133PR204mergedee61b5b; CP134same-runsharedcascade/twoactualA+B19pairs/chosenrank2,2/full175180/secondroom110/native195seedreset/ID1..8/key12345→12346/24clockstats.378.168s/1212raw/1454checks.",
-      "remaining": "Connectedstalledload withTCPlive/noBinit99 deadline notruntimeconfirmed; fullauth/authority/generalreset/fullmatch/LANInternet/gates remain.",
-      "next_test": "PLAN actualB99heldwithoutrelease/EOF45s currentservice; actualA99/bothnative121/no197196153/clocks/captureTCPPIDUI. ReuseCP050delaywrapper/CP074cleanup, notnative99rediscovery orfakefailure.",
+      "known": "CP134/PR205 merged c2b2de4; CP135 held actualB99 control/TCP live, opt-in30s deadline closes B8 and native A175/180/107/ID2→0/110/chief1/room.226server tests; policy is emulator choice.",
+      "remaining": "Normal two-cycle positive with deadline enabled; fullauth/authority/generalreset/fullmatch/LANInternet/gates remain.",
+      "next_test": "PLAN exact CP134 normal controller with optional deadline/no hold; bothactual99/barrier complete each round, no late closure, fresh generation/deadline at Start2.",
       "acceptance": "Epic checklist: linkedscopedtask/evidence+authoritymatrix vàacceptancegate ởPLAN; từngtaskđóng khôngđóngepic/K5/K6a.",
-      "reason": "Sharedmechanismbranch integratedtwice; stopsfurtherchainvariant expansion withouttrigger. AUD041through132/next136.",
+      "reason": "Current stalled loading trigger resolved in scoped control/fixed; normal regression is next. AUD041through132/next136.",
       "sources": [
         "docs/PROTOCOL.md#authority",
         "docs/RESEARCH.md#feature-gaps",
@@ -152,7 +154,8 @@
         "docs/PROTOCOL.md#shared-blocker",
         "docs/PROTOCOL.md#shared-flag-timing",
         "docs/PROTOCOL.md#shared-cell-state",
-        "docs/PROTOCOL.md#shared-cascade-cycles"
+        "docs/PROTOCOL.md#shared-cascade-cycles",
+        "docs/PROTOCOL.md#loading-timeout"
       ],
       "evidence": [
         "docs/evidence/current-movement-cycles/README.md",
@@ -165,7 +168,8 @@
         "docs/evidence/three-bomb-chain/README.md#cp131",
         "docs/evidence/three-bomb-chain/README.md#cp132",
         "docs/evidence/three-bomb-chain/README.md#cp133",
-        "docs/evidence/three-bomb-chain/README.md#cp134"
+        "docs/evidence/three-bomb-chain/README.md#cp134",
+        "docs/evidence/loading-timeout/README.md"
       ],
       "prs": [
         173,
@@ -194,7 +198,8 @@
         201,
         202,
         203,
-        204
+        204,
+        205
       ],
       "successors": []
     },
@@ -521,6 +526,6 @@
       "successors": []
     }
   ],
-  "as_of_utc": "2026-11-05T14:36:46.029327+00:00",
-  "limits": "Manual initial issue review has its dated baseline; #14 incrementally updated through CP129. GitHub snapshot has capture UTC only; no semantic/acceptance/gate auto-certification. Completed checkpoint records remain immutable."
+  "as_of_utc": "2026-11-05T14:53:21.219087+00:00",
+  "limits": "Dated manual issue dispositions; #14 updated through CP135. Snapshot freshness is capture UTC only, no automatic semantic acceptance/gate certification. Completed checkpoints remain immutable."
 }
