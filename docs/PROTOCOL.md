@@ -1,6 +1,6 @@
 # KR 00967 — contract tương thích client gốc
 
-Revision kr-legacy-contract-r1; cập nhật06/11/2026 JST (CP143; AUD043 quaCP140, kếCP144).
+Revision kr-legacy-contract-r1; cập nhật06/11/2026 JST (CP144; AUD044 quaCP144, kếCP148).
 **Contract có bằng chứng từng phần; chưa nghiệm thu full codec K2**.
 Lộ trình và thứ tự task chỉ giữ ở [REWRITE_PLAN — KRE](PLAN.md).
 Đây là contract của repo server KR. ADR0009 của bản viết lại là nguồn lịch sử để so sánh;
@@ -1971,7 +1971,7 @@ locator/trace và trạng thái từng ô; những vai trò không nêu dưới 
 | Item placement/pickup | CP030 nhặt/tranh index; CP031/032 stat/itemẩn; CP045 [bảng nhóm/Roller/MaxPower hai view/reset](#item-families) | CP042 có [old165/index reuse](#item-generation); runtime tại max, KRspeed→px/s/TTL/activevariants, drop/toàn124validator/generation/reset còn thiếu; CP062 [winner đảo trên actual tranh index](#current-pickup-race) đã có scope riêng |
 | Trap/death | CP029/036; CP037 kim và tranh chấp cứu/diệt; [kim](#needle-selfescape), [precedence](#contact-precedence) | CP063 [guard stale/duplicate](#report127-freshness) là policy hẹp; CP075 [TCPsame/old17,19](#current-tcp-replay) đã đo; [CP112](#death-envelope-admission) thêm structural17/19admission; semanticfirstseen/forgedforward/generation/variants/result21 vẫn thiếu |
 | Result/reset | CP039 hai vòng statepeer/result/21/return và reset field hẹp; CP044 [timer ở EOF và vòng B/C mới](#abort-timer); CP080 [hai chu kỳ sau rejoin](#ready-input), CP082 [mixed-owner survivor](#mixed-cycles), CP083 [all-dead rank2/2/storage/UI](#all-dead-result), mỗi run/scope riêng; CP100 [optional result freshness](#result-freshness-guard), CP102 [drain/local21clear/peerblocker](#drained-result-local-clear), CP104 [native175/34/state3](#ending34-state-boundary), CP105 [exactendingUDPqueue](#ending-udp-state-apply), CP106 [same-run selected180boundaries](#current-movement-cycles) | CP041 có [payload cũ khi ID reuse](#round-generation); arbitration/toàn generation/entity/timer/peer/seq không rò vẫn mở; phân biệt run chờ sai origin với ca hoàn tất |
-| Room lifecycle | CP034 leave/promotion/EOF/return; CP035 rejoin/Ready; CP040 chủ B/C Start; CP044 [B/C bom/death/result/return sau abort](#abort-timer) | Bầu chủ/giữ ID-slot/forfeit là policy stub; guest EOF trả A về phòng/xóa B đã đo riêng; CP050 có [service EOF/cleanup](#service-eof); CP051 có [C mới/Start B trong service](#service-replacement); CP052 [guest setup EOF](#setup-eof), CP053 [host với peer chưa map](#host-setup), CP054 [C trước vòng đầu](#prestart-replacement), CP072 [preclock forfeit/return](#preclock-eof), CP074 [native107/IDclear và UI](#preclock-cleanup), CP076 [Back86/emptyroomrecreate cùng channel](#back86-membership), CP107 [currentservicehostBack/promotedrejoin tới clock](#host-normal-back) đã đo; [CP135 deadline và native cleanup](#loading-timeout) đã đo ca B99 bị giữ; reconnect cùng account/disconnect variants/toàn reset còn mở |
+| Room lifecycle | CP034 leave/promotion/EOF/return; CP035 rejoin/Ready; CP040 chủ B/C Start; CP044 [B/C bom/death/result/return sau abort](#abort-timer) | Bầu chủ/giữ ID-slot/forfeit là policy stub; guest EOF trả A về phòng/xóa B đã đo riêng; CP050 có [service EOF/cleanup](#service-eof); CP051 có [C mới/Start B trong service](#service-replacement); CP052 [guest setup EOF](#setup-eof), CP053 [host với peer chưa map](#host-setup), CP054 [C trước vòng đầu](#prestart-replacement), CP072 [preclock forfeit/return](#preclock-eof), CP074 [native107/IDclear và UI](#preclock-cleanup), CP076 [Back86/emptyroomrecreate cùng channel](#back86-membership), CP107 [currentservicehostBack/promotedrejoin tới clock](#host-normal-back) đã đo; [CP135 deadline và native cleanup](#loading-timeout) đã đo ca B99 bị giữ; [CP144](#virtual-pending-guest-eof) có actualpendingguestEOF/nativeAcleanup sau2normalcycles trênproductionvirtualprofile; reconnect cùng account/disconnect variants/toàn reset còn mở |
 | Peer lifecycle | CP027 actual99→153; CP045–047 [oldUDP actor/keyguard/endpointcontrol](#udp-generation), CP070 [transport cut hai chiều](#current-udp-causality) | CP048 [service fixture](#probe-service) có key policy hẹp; [CP138](#peer-endpoint-ip) và [CP139](#virtual-peer) thêm IPtuple/actualvirtualowners/directUDP; low8reuse/roster/UDPtype khác/fullgrammar/reliability/relay/reset tổngquát còn mở. Không coi đổi cổng riêng lẻ là freshness guard hoặc keybyte là auth |
 
 Trong **optional profile hiện hành**, bảng dưới ghi vai trò emulator, không gán cho server gốc.
@@ -4990,3 +4990,37 @@ identity/fullcodec/auth/fullUDPgrammar/reliability. Không actual guestEOF giữ
 shutdown cleanup cuối phép thử không phải disconnect acceptance. Không fullmatch/K5/K6a/physicalLAN/
 NAT/Internet hoặc đóng CP137complexUI/sharedgeometry/fullinventory/authority debt. Operator IP/rank/
 fuse/drop vẫn policy. Bước tiếp duy nhất PLAN; AUD043qua140, audit kếCP144.
+
+
+<a id="virtual-pending-guest-eof"></a>
+### Actual pending guest EOF sau hai normal cycles — CP144
+
+**kr_runtime/confirmed trong owned fault; forfeit/helperclose là design/emu_choice.**
+[Recipe, raw/hash và audit](evidence/peer-endpoints/README.md#cp144). Reuse CP050 pendingEOF,
+CP074/135 native107/slot-clear/chief, CP128 pendingnormalexit và CP143 virtualTCPguard/two cycles.
+Không RE thêm nativebody hoặc chuyển opcode/layout VN. Bench socketpair mới xác nhận measurement
+proxy cũ forward đúng bytes nhưng không truyền EOF ởc2s/raw_c2s/s2c. Bản copy helper mới đóng cặp
+socket khi loop thoát, cùng3bench qua byte+EOF; không sửa frozenhelper/raw củaCP143. Đây là fullclose
+measurement policy, không chứng minh TCP halfclose/backpressure/loss hoặc semantics native.
+
+Cùng run mới vẫn đủ hai normal cycles/movement/item/12selectedTCPguard/reset/Ready, rồi normal
+AStart3/current99/clock3/key12347; BnormalSpace tạo actual118 → ID3/slot1/cell9,3/power1,159 cảhai.
+Chỉ sau actual118, revalidate `/proc/PID` comm/prefix/netns bằng actualownership rồi SIGKILL **CA-B
+PID543**; A/service/proxy vẫn chạy. Fault khi bom còn4,877s trước fuse6s. ProxyB c2s EOF/pairclose
+đi trước actualserviceBEOF (`peer_eof=true`, reason`eof`) sau46,569ms; hai hướng helper đóng cặp.
+
+Service finish generation3 ngay, deadlinejob3→`round_closed`, **không158 bomB** dù quan sát quá hạn.
+Không có B17/19 vòng3. Chosenforfeit chỉ phát175/180 cho A (Bđãdừng), không gọi đây là deathreport
+hoặc luật server gốc. A đọc175302/1803/errors0 lầnba,107base6→rewind0→final1, slot1 expectedID2/
+actual2→0,110full6/errors0 và chiefgetter1; ảnh cuối A phòng/slotBtrống/Start.110wire dùng pinned
+slot_A body `[0,2,0]`, không suy `[0,1,1]` từ chief1/identity; draft giả định đó fail/được giữ.
+Không Start4. Hai normal endings và thirdabort được phân biệt, không gọi thành ba trận hoàn chỉnh.
+
+Barrier ba epochs29,724/29,037/29,337s trước deadline30s, margin vòng1 chỉ~0,276s. Đây là quan sát
+của probe nặng, không kết luận do proxy/probe hoặc bảo đảm coldstart. Không kéo dài timeout chỉ
+để gọi checkpass. Mặc định deadlineoff/chosenprofile30s giữ nguyên; giới hạn tái lập được ghi rõ.
+
+Còn thiếu same-endpoint oldUDP trên directvirtualtopology trong chính run này; CP047/130 có scope
+riêng. Fullinventory/accountresume/EOFvariants/halfclose/originalauthauthority/fullcodec/UDPgrammar/
+physicalLAN/NAT/Internet/K6a/gates và CP137complexUI/sharedgeometry mở. AUD044qua144/kếCP148;
+nextwork chỉ PLAN, không suy gate từbench/ảnh/kiểm script.

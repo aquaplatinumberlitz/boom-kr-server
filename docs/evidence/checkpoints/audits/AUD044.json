@@ -1,0 +1,100 @@
+{
+  "id": "AUD044",
+  "trigger": "periodic",
+  "completed_through": "CP144",
+  "recorded_utc": "2026-11-05T18:23:33.523848+00:00",
+  "auditor": "Codex manual self-audit; independent review waived",
+  "read_files": [
+    "README.md",
+    "docs/PLAN.md",
+    "docs/PROTOCOL.md",
+    "docs/RESEARCH.md",
+    "docs/evidence/peer-endpoints/README.md",
+    "docs/evidence/service-eof/README.md",
+    "docs/evidence/battle-exit/README.md",
+    "docs/evidence/preclock-cleanup/README.md",
+    "docs/evidence/loading-timeout/README.md",
+    "docs/evidence/checkpoints/README.md",
+    "docs/features.json",
+    "docs/COVERAGE.md",
+    "server/probe_service.py",
+    "local/research/codex/virtual-pending-eof-r1/reuse-question.json",
+    "local/research/codex/virtual-pending-eof-r1/proxy-eof-baseline.json",
+    "local/research/codex/virtual-pending-eof-r1/proxy-eof-fixed.json",
+    "local/research/codex/virtual-pending-eof-r1/tcp_replay.py",
+    "local/research/codex/virtual-pending-eof-r1/runtime-preflight.json",
+    "local/research/codex/virtual-pending-eof-r1/raw-seal.json",
+    "local/research/codex/virtual-pending-eof-r1/cycles/run.json",
+    "local/research/codex/virtual-pending-eof-r1/cycles/service-state.json",
+    "local/research/codex/virtual-pending-eof-r1/cycles/tcp-proxy.json",
+    "local/research/codex/virtual-pending-eof-r1/cycles/client.log",
+    "local/research/codex/virtual-pending-eof-r1/pending-eof-verification.json",
+    "local/research/codex/virtual-pending-eof-r1/basic-verification.json",
+    "local/research/codex/virtual-pending-eof-r1/guard-integration-verification.json",
+    "local/research/codex/virtual-pending-eof-r1/visual-review.json",
+    "local/research/codex/virtual-pending-eof-r1/analysis-corrections.json"
+  ],
+  "method": "Read README→PLAN→PROTOCOL→RESEARCH→affected evidence then compare raw currentrun/actualCAownership/SIGKILL timestamp/pendingactual118/frontproxyEOF/serviceEOF/fenceddeadline/native175180107slotclear110chief/render. Compare priorCP141–143 limits/failures/merge andsocketpairbaselinefixedhelper/provenance. Staticcode andmodelchecks separatedfromruntime; no fullindexdump or nativebodyRE. Periodic144→148.",
+  "findings": [
+    {
+      "id": "F1",
+      "stale": "Current result-return gap still requested pendingguestEOF after runtime resolved it.",
+      "correction": "LinkCP144scoped2normal+thirdabort/nativeAcleanup in RESEARCH andauthorityroomlifecycle; keepgeneralEOF/accountresume/halfclose separate.",
+      "fixed_in": [
+        "docs/PROTOCOL.md",
+        "docs/RESEARCH.md",
+        "docs/PLAN.md"
+      ]
+    },
+    {
+      "id": "F2",
+      "stale": "CouldmisattributeEOFdelay toKR/servicebecausemeasurementproxyforwarderonlybreaks onEOF.",
+      "correction": "Retainbaseline3directionsbytepass/EOFfail; newcopyclosepair passesbench andactualCA-Bfault→proxyexit→serviceEOF. Do noteditCP143frozenhelper or callfullclosehalfcloseproof.",
+      "fixed_in": [
+        "docs/PROTOCOL.md",
+        "docs/evidence/peer-endpoints/README.md"
+      ]
+    },
+    {
+      "id": "F3",
+      "stale": "EOFdraft guessed110fields fromchief1/identity ratherthanpinnedslot_Afixture.",
+      "correction": "Actualslot_Awire[0,2,0]; nativechiefgetter1 independentlymeasured. Failedverifier/script preserved; correctedjoin usesfixturebody, notinventedsemanticlayout.",
+      "fixed_in": [
+        "docs/PROTOCOL.md",
+        "docs/evidence/peer-endpoints/README.md"
+      ]
+    },
+    {
+      "id": "F4",
+      "stale": "Two normalcycles+thirdforfeit couldbeinterpretedas3completedmatches; deadline positives couldbeassumedstable.",
+      "correction": "Two175180bothviews +thirdforfeitonlyA/killedB separate. NoB17/19/no158pendingbomb, actualfaulttimestamp andslotclear/native/render. Recordbarriers29.724/29.037/29.337s<30/margin0.276s, nocausalprobe/helperattribution orcoldstartguarantee.",
+      "fixed_in": [
+        "README.md",
+        "docs/PROTOCOL.md",
+        "docs/evidence/peer-endpoints/README.md",
+        "docs/RESEARCH.md"
+      ]
+    },
+    {
+      "id": "F5",
+      "stale": "Merge/status/issue/audit counter andnextsteppendingEOF previouslyactive; CP137UI/sharedpartial/strict-readerfailures mustnotbecleared bybasicprofile.",
+      "correction": "RecordCP143PR214mergec692c83; CP144selfcheck/AUD044/next148; issue14/currentPLAN moveexactoldUDPdirectvirtualscope. Keepcompletedrecords/pinnedmanifests/failures/gates/complexUI/sourceprovenance immutable.",
+      "fixed_in": [
+        "README.md",
+        "docs/PLAN.md",
+        "docs/PROTOCOL.md",
+        "docs/RESEARCH.md",
+        "docs/features.json",
+        "docs/COVERAGE.md",
+        "docs/evidence/peer-endpoints/README.md",
+        "docs/evidence/issue-reconciliation/review.json",
+        "docs/evidence/issue-reconciliation/github-snapshot.json"
+      ]
+    }
+  ],
+  "remaining": [
+    "CP144/AUD044 selfcheck pendingcommit/push/PR/exacthead/merge; nextperiodicCP148.",
+    "DirectvirtualexactoldUDP/currentkey/sourcequeuebehaviormissing inthisrun; CP047/130scope/recoveredkeyconsumers reused next.",
+    "GeneralEOF/accountresume/halfclose/fullinventory/authauthority/physicalLAN/NAT/Internet/K6a/gates/CP137complexUI/sharedgeometry remain; near30sbarriersnotstabilityguarantee."
+  ]
+}
