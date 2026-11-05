@@ -541,9 +541,9 @@ Dependency: [KR-F001](#kr-f001).
 
 [Contract và giới hạn](PROTOCOL.md#peer-duo) · [Câu hỏi gốc](RESEARCH.md#gap-peer-movement) · [Thứ tự ở PLAN](PLAN.md#current-order).
 
-Khoảng trống (trích bảng RESEARCH): [CP109](PROTOCOL.md#promoted-outcome) currentBhostcùngrun4phaAPI/key/targetchange/currentprogress; CP106Ahostsource riêng. Fullgrammar/loss/motionlaw vẫnthiếu.
+Khoảng trống (trích bảng RESEARCH): CP109 currentBhost4phase targetchange/currentprogress validriêng. [CP110](PROTOCOL.md#return2-visual) sameUIrun thiếu R1-A-Downcurrentprogress tronglatercallbacksamples; chưa biết window/quota haynativeprogress.
 
-Phép kiểm tối thiểu (trích cùng nguồn): Reuse currentpeerproof; chỉmởvariant khiintegrationtrigger, khônggọi4pha làmọiUDPgrammar/auth.
+Phép kiểm tối thiểu (trích cùng nguồn): ReuseCP098/106API/key/target/current; joinCP110receiverBpacket/cap64/snapshotmuộn/cùngactorround. Chỉđo edge cònthiếu, khôngsửaassertion/raw/luậtđểpass.
 
 Issue/phạm vi công việc: [#14](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/14), [#176](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/176).
 
@@ -947,9 +947,9 @@ Dependency: [KR-F009](#kr-f009).
 
 [Contract và giới hạn](PROTOCOL.md#round-finish) · [Câu hỏi gốc](RESEARCH.md#gap-result-return) · [Thứ tự ở PLAN](PLAN.md#current-order).
 
-Khoảng trống (trích bảng RESEARCH): [CP109](PROTOCOL.md#promoted-outcome) hai native175180/selectedstateXY/585refresh trênBhost. R1roomReady/Start hiểnthị; finalsecondreturnhaiảnhđen.
+Khoảng trống (trích bảng RESEARCH): [CP110](PROTOCOL.md#return2-visual) Bhost2cycles→nativePrepare/110→cảhairoomrender/unfocused4s→actualA95seq868→two-sided110/UIready. CP109blackfinal làsnapshotquásớm, khôngcausalhangproof.
 
-Phép kiểm tối thiểu (trích cùng nguồn): Actualblocker/#14: ownerwindow/scene/focuscontrol/wait4,8,12/native95/110. Khôngsuyhang từđen/newdelaypolicy hoặc fullUI từnativeparse.
+Phép kiểm tối thiểu (trích cùng nguồn): UI/Ready scope đãgiải; chưaStart3/fullmatch. Tiếp receiverR1 gap theoPLAN; khônglặpfocus/Readywriter/codec.
 
 Issue/phạm vi công việc: [#14](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/14), [#176](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/176).
 
@@ -976,9 +976,9 @@ Dependency: [KR-X001](#kr-x001), [KR-F003](#kr-f003), [KR-F006](#kr-f006).
 
 [Contract và giới hạn](PROTOCOL.md#round-generation) · [Câu hỏi gốc](RESEARCH.md#gap-round-reset) · [Thứ tự ở PLAN](PLAN.md#current-order).
 
-Khoảng trống (trích bảng RESEARCH): [CP109](PROTOCOL.md#promoted-outcome) 2nativecycles/Bchief/Aguest/12entities12callbacks52flags/itembaseline/currentkeys/selected180 proof; fullreset/visualpostreturnunknown.
+Khoảng trống (trích bảng RESEARCH): CP109native2cycle/selected180; [CP110](PROTOCOL.md#return2-visual) thêm actualsecondreturn110/render/Ready. Strict4phaseCP110 failR1currentprogress, khôngghép run thànhgate.
 
-Phép kiểm tối thiểu (trích cùng nguồn): Finalroomrender/input theoPLAN; khônglặpcapacityY389, khôngclaim14extras/resetmọivariant. AUD033qua108/kế112.
+Phép kiểm tối thiểu (trích cùng nguồn): Read-onlyđốichiếureceiverB R1target/actualsamplequota/window với snapshotmuộn/cùngactor/round trước khiruntime. Fullresetvariants chưađủ; periodicCP112.
 
 Issue/phạm vi công việc: [#14](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/14), [#60](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/60), [#110](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/110), [#176](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/176).
 

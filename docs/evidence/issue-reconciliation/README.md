@@ -36,3 +36,10 @@ warning, rawcompletehistorykhôngso nhưlive taskstatus. `check_docs.py` gọi c
 Đóngtask khôngđónggate K0–K7. #176nativeacceptanceđủ12actualentities/2outcomes, không14optionalbom/
 finalsecondreturnresponsive. Đợt docs này xong phảitiếp #14theoPLAN: focus/wait/windowownership/native95
 sau return2; Y389 đã giải, khônglàm lại oldwork. PRdelivery/selfcheckkhônglàindependentapproval.
+
+
+CP110 delivery/currentstate update: PR179 merged `8f3ea2f`; #178 đóng sau merge vàđãtiếpRE,
+[CP110UI/Ready](../../PROTOCOL.md#return2-visual) là kếtquả thực. Current snapshot lấy UTC trongJSON,
+#1/#2/#3/#9/#14 cònopen; #178completed, khôngcònPLANactive. CP109snapshotpending/raw đượcpin
+local/cp109-snapshot, khôngsửa complete record. Checker live đãbáo3lệch sauclosure trước refresh;
+loggiữởlocal/return2-visual-r2/github-pending-refresh-check.txt, khôngsửa lời kết đểcheckerpass.
