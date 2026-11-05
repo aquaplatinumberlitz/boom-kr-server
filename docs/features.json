@@ -1,7 +1,7 @@
 {
   "schema": "kre-feature-index-v1",
   "build": "KR00967",
-  "as_of": "CP126",
+  "as_of": "CP127",
   "sources": {
     "plan": "docs/PLAN.md",
     "contract": "docs/PROTOCOL.md",
@@ -1458,7 +1458,8 @@
           "docs/evidence/current-movement-cycles/README.md",
           "docs/evidence/promoted-battle-cycles/README.md",
           "docs/evidence/promoted-outcome/README.md",
-          "docs/evidence/three-bomb-chain/README.md#cp122"
+          "docs/evidence/three-bomb-chain/README.md#cp122",
+          "docs/evidence/battle-exit/README.md#cp127"
         ]
       },
       "coverage": {
@@ -1511,7 +1512,8 @@
               "docs/evidence/current-movement-cycles/README.md",
               "docs/evidence/promoted-battle-cycles/README.md",
               "docs/evidence/promoted-outcome/README.md",
-              "docs/PROTOCOL.md#recursive-chain"
+              "docs/PROTOCOL.md#recursive-chain",
+              "docs/PROTOCOL.md#battle-exit-pending-bomb"
             ]
           },
           "windows_original": {
@@ -1566,7 +1568,8 @@
             "docs/evidence/current-movement-cycles/README.md",
             "docs/evidence/promoted-battle-cycles/README.md",
             "docs/evidence/promoted-outcome/README.md",
-            "docs/PROTOCOL.md#recursive-chain"
+            "docs/PROTOCOL.md#recursive-chain",
+            "docs/PROTOCOL.md#battle-exit-pending-bomb"
           ]
         },
         "gate": {
@@ -3179,7 +3182,8 @@
           "docs/evidence/tcp-guard-cycles/README.md",
           "docs/evidence/host-normal-back/README.md",
           "docs/evidence/battle-exit/README.md",
-          "docs/evidence/battle-exit/README.md#cp126"
+          "docs/evidence/battle-exit/README.md#cp126",
+          "docs/evidence/battle-exit/README.md#cp127"
         ]
       },
       "coverage": {
@@ -3225,7 +3229,8 @@
               "docs/evidence/tcp-guard-cycles/README.md",
               "docs/evidence/host-normal-back/README.md",
               "docs/PROTOCOL.md#normal-battle-exit",
-              "docs/PROTOCOL.md#battle-exit-rejoin"
+              "docs/PROTOCOL.md#battle-exit-rejoin",
+              "docs/PROTOCOL.md#battle-exit-pending-bomb"
             ]
           },
           "windows_original": {
@@ -3284,7 +3289,8 @@
             "docs/evidence/tcp-guard-cycles/README.md",
             "docs/evidence/host-normal-back/README.md",
             "docs/PROTOCOL.md#normal-battle-exit",
-            "docs/PROTOCOL.md#battle-exit-rejoin"
+            "docs/PROTOCOL.md#battle-exit-rejoin",
+            "docs/PROTOCOL.md#battle-exit-pending-bomb"
           ]
         },
         "gate": {
@@ -3389,7 +3395,8 @@
           "docs/evidence/three-bomb-chain/README.md#cp123",
           "docs/evidence/life-admission/README.md",
           "docs/evidence/battle-exit/README.md",
-          "docs/evidence/battle-exit/README.md#cp126"
+          "docs/evidence/battle-exit/README.md#cp126",
+          "docs/evidence/battle-exit/README.md#cp127"
         ]
       },
       "coverage": {
@@ -3491,7 +3498,8 @@
               "docs/PROTOCOL.md#recursive-chain-cycles",
               "docs/PROTOCOL.md#death-lifecycle-policy",
               "docs/PROTOCOL.md#normal-battle-exit",
-              "docs/PROTOCOL.md#battle-exit-rejoin"
+              "docs/PROTOCOL.md#battle-exit-rejoin",
+              "docs/PROTOCOL.md#battle-exit-pending-bomb"
             ]
           },
           "windows_original": {
@@ -3575,7 +3583,8 @@
             "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/185",
             "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/186",
             "server/test_death_lifecycle.py",
-            "server/test_battle_exit.py"
+            "server/test_battle_exit.py",
+            "server/test_battle_exit_pending.py"
           ]
         },
         "integration": {
@@ -3642,7 +3651,8 @@
             "docs/PROTOCOL.md#recursive-chain-cycles",
             "docs/PROTOCOL.md#death-lifecycle-policy",
             "docs/PROTOCOL.md#normal-battle-exit",
-            "docs/PROTOCOL.md#battle-exit-rejoin"
+            "docs/PROTOCOL.md#battle-exit-rejoin",
+            "docs/PROTOCOL.md#battle-exit-pending-bomb"
           ]
         },
         "gate": {

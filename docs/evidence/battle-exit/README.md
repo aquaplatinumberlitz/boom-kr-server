@@ -58,4 +58,34 @@ roster/ownslot checks, khôngaccountresume. `rejoin-visual.png`/manual`visual-re
 criteria/expectedsequence; `rejoin-chrono-check.txt` pass. B82arrives127,662ms trướcOSactionend trong
 windowdoubleclick, không đổi raw/time/source hoặc dùng globalgametick. 211unchangedserver tests reuse.
 Chỉ mộtforfeitresult/return+R2active, chưa2completedresults/fullmatch/gates/hostexit/postbomb/deadexit/
-generalroom/accountresume/LANInternet. CP126selfcheck/pendingPR/reviewwaived; audit kế128.
+generalroom/accountresume/LANInternet. CP126/PR197 merged`408c535`, reviewwaived; audit kế128.
+
+
+<a id="cp127"></a>
+## CP127 — Pending B bomb/normalexit/fence control và fixed
+
+[Contract/giới hạn](../../PROTOCOL.md#battle-exit-pending-bomb), [gap](../../RESEARCH.md#gap-bomb-lifetime).
+CP126/PR197 merge`408c535`; raw`active-exit-bomb-control-r1`/`active-exit-bomb-fixed-r1` trong local/research/codex.
+`reuse-question.json`pin CP044EOF/125UI/126rejoin/knownnative118159158/VNgame+KRdata; không portnumeric
+hoặc gọiEOFcontrol lànormalUI. No newnativebody. `pending-policy-decision.json` explicitdesignscope.
+
+| Run | Kết quả | run.json SHA256 |
+|---|---|---|
+|control|201,095886510s/exit0/noerrors/880raw/971joins: Bactual118/159→20286before1584,617702294s, oldmode rejectsafterBomb, A158full13/B11khônggame158; noEOFbeforecompletion.|`976e5f765b714416f20f8bcbccdd573bafa3c3cc2428d9c235399e8263148371`|
+|fixed|203,696107317s/exit0/noerrors/891raw/1009joins/93nativecases: currentoneBpendingticket20286admitted/fencefinish/deadlineround_closed/no158/noterraincommit, A175180/room107arrival110/B24191/lobby/no17,19/noEOFbeforecompletion.|`ed69fe49a57c11f92eb107d880c7decc7667f3b548eed5fcb6f0708850d9c6a1`|
+
+`cycles-recipe.json`/preflight/runtime-source/rawseal saucleanup: privateuser/net/mount/PID/chỉlo/no-route/
+filesNSS/exclusivelease/two-prefix-display. SameSpace.15→actual118/native159max3s→click715578/fuse6/
+45swindow/client/map/probes; fixed chỉ source/namedmode. No forged20286/death/nativecalls/kill/fusechange.
+Mode `guest_B_pending_202_86` onlyunbombed oronecurrentBpendingticket/untrapped, recheck202AND86;
+oldmodeunchanged. 215tests/4new kiểmno158jobdrop/raceafter202/owner/multiple/trap/ticket/defaultconfig.
+Job vẫn giữ tới deadline, không tựcancelalready-sent158 hoặc chứng minh originalserverauthority.
+
+`pending-control-verification.json`971joins/`exit-verification.json`1009joins vàpostseals hashes.
+202u32Bcapture16066,0,0,0,1 kháczeros nên inheritedverifierfailed; `analysis-correction.json` giữ
+`pending-fixed-check.txt`, `verify_pending_fixed_fields.py` so exactdecodedcapture/servicefield,
+`pending-fields-check2.txt`pass. Firstnewrunner thiếuPYTHONPATH giữ`pending-fields-check.txt`; rerunenv
+PYTHONPATH=. không đổi raw/criteria. Nativepacketmodel separate, cácu32 chưa cósemantics.
+Runtime107basecursor/IDfield không thêmprobe: chỉPreparearrival+packetmodel+UIempty nhưCP125.
+Mộtexit/resultreturn, chưa postbombexitrejoinStart2/twomatches/fullmatch/gates/generalvariants.
+CP127selfcheck/pendingPR/reviewwaived; AUD039/kế128, không sửaoldcomplete hoặcresetcounter.

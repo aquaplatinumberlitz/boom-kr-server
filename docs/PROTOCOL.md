@@ -4515,3 +4515,31 @@ assertion/raw/failedscript. Actual82 tới127,662ms trướcOSdoubleclickend, tr
 làinputminted. Không dùng arrivalorder thay globalgametick. 211servertestsCP125 reuse/sourceunchanged.
 Chưa Battle2completedresult/exitafterBomb/hostexit/deadexit/earlyjoinbarrier/accountresume/genericreset/
 auth/fullmatch/K5/K6a/vanilla/LANInternet. Bước kế chỉ PLAN; AUD039/kế128.
+
+
+<a id="battle-exit-pending-bomb"></a>
+### Một bom B đang chờ khi normal guest exit — CP127
+
+**kr_runtime/confirmed hẹp; emu_choice/design cho timer/forfeit/scope**, [metadata/hash](evidence/battle-exit/README.md#cp127).
+Reuse CP044 EOF fence, CP12520286/CP126rejoin và actual118/159/158/currentfuse6; không nativebody mới.
+CP044 là EOF, không thay proof triggernormalUI. Control201,095886510s: actualBSpace→118/159đủ39 hai
+view, B20286 trước158 **4,617702294s**, policyunbombed từchối202`unsupported_battle_exit_after_bomb`/
+86`round_not_returned`; timer vẫn158/Afullgame13/Bstage11khônggame158. NoEOFtrướccompletion.
+Control971joins/880raw giữ nguyên; không gọi Bstage11 receipt là full158reader hoặc crash proof.
+
+Mode mới `battle_exit: {"mode":"guest_B_pending_202_86"}` giữ caunbombed và thêm **đúng1current
+Bownedticket cònpending**, chưa158/timerreject, khôngaccepted17/19tronggeneration. Kiểm scope tại202
+vàlại86, sauđó dùng đườngmembershiprelease/finishfence/abort/knownforfeit-lobby củaCP125.
+Job không bị xóa ngay: tới deadline gặp`round_closed`, không158/no terraincommit. Cũ`guest_B_202_86`
+vàdefaultoff khôngđổi. Multiple/Aowner/alreadyblast/trapped/dead/host/syntheticvariant vẫnunsupported.
+Khôngcancel158đãsend, không đặt thêmwireepoch hoặc gán native/originalserverauthority cho localfence.
+
+Fixed203,696107317s/exit0/serviceerrors0: mộtactualB118/159 trước20286/admit→timer`round_closed`/
+không158 ởwire hoặc nativegame hai view, Aforfeit175302/ranks1,2/1803/prepare107arrival1106,
+B24191/full50/lobby; no17/19 vànoEOFtrướccompletion. 1009joins/891raw/93copiednativepacket cases;
+215server tests gồm4newticket/no158drop/race/multiple/nonowner/trap/defaultconfig. Model tách runtime.
+B202fiveu32 lần này `[16066,0,0,0,1]`, khácunbombedzeros; vẫnopaque, không gán thời gian/bombcount.
+Verifierkếthừa sozero sai giữfailure; bản riêng so đúng decodedcapture vớiservice/nativefields, không
+đổi body/scope/criteria. Lần chạy bản mới thiếuPYTHONPATHcũng giữlog; runnerenvsửa, rawkhôngđổi.
+Chưa postbombexit/rejoinStart2/hostexit/afterblast/multiple/deadexit/generalreset/auth/fullmatch/gates.
+Bước kế chỉ PLAN, AUD039/kếCP128; sourcebinary/DB/pack/oldcomplete/raw bất biến.

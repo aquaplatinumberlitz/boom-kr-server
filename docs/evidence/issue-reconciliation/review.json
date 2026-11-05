@@ -1,7 +1,7 @@
 {
   "schema": "kre-issue-review-v1",
   "as_of": "2026-11-05",
-  "baseline": "0ac85d2cd005f15af23f11e43191e744cea73748",
+  "baseline": "408c535bb7028b626c5ac7bde583e979f7e3a658",
   "method": "Codex manual acceptance review; native/static/model/design/merge/gate distinct; originalissuebodies archivedlocalbeforeedit, no completecheckpoint rewrite",
   "issues": [
     {
@@ -132,9 +132,9 @@
         "KR-S001",
         "KR-S002"
       ],
-      "known": "CP125/PR196merged0ac85d2; CP126sameTCPguestexit/rejoin82/87/585/95/A104/freshkey121/99/153/two clocks,1379joins1095raw/211testsreuse. Oneforfeitreturn/R2active only.",
-      "remaining": "Postbombnormalguestexit/pending158 unknown; hostexit/deadexit/generalroom/accountresume/authority/gates.",
-      "next_test": "PLAN BSpace→actual118/native159 thennormalexit20286beforefuse6; currentpolicycontrolreject/timer158/peerstage. ReuseCP044fence andCP125126UI, no forgedinput/fusechange/EOF.",
+      "known": "CP126/PR197merged408c535; CP127oneBpendingnormalexit/fence/timerround_closed/no158/no terraincommit/Areturn/Bsảnh/control971joins880raw/fixed1009joins891raw/215tests.",
+      "remaining": "Postbombeexit+rejoinStart2same-run/oldjobnocrossgeneration/markerreset; generalvariants/auth/authority/gates.",
+      "next_test": "PLAN samependingmode/normalSpace159exit thenA180cleanup/B24191/normalB82/585/95/A104/currentkey12199,153/clock2; oldjobno158/newgenerationproof; CP128manualaudit.",
       "acceptance": "Epic checklist: linkedscopedtask/evidence+authoritymatrix vàacceptancegate ởPLAN; từngtaskđóng khôngđóngepic/K5/K6a.",
       "reason": "Keep epic/gatesopen. CP120scopedfreshrescuepositivewhileCP119negativecontrolimmutable; cycleauditAUD037due120/next124, noreset.",
       "sources": [
@@ -171,7 +171,8 @@
         193,
         194,
         195,
-        196
+        196,
+        197
       ],
       "successors": []
     },
