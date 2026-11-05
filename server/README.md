@@ -211,3 +211,5 @@ ReturnguestAalias có modeltest; gameplay/result/reset hai vòng saupromotion ch
 Kiểm `python3 -m unittest server.test_host_back_rejoin`; không originalauthority/fullmembership/gateproof.
 
 Report17/19 chỉ nhận serialized envelope variant đãđo trướccursor/marker/death/forward; xem [contract và giới hạn](../docs/PROTOCOL.md#death-envelope-admission). Malformedpacket theo exceptionclose/abort hiện hành; semanticfirstseen/location/inventory chưa làauthority. Không coi guard này làhỗtrợmọi mode/report.
+
+`needle_escape: {"mode":"needle_145_report_pair"}` chỉopt-inmộtkim145/two-liveAB; credit/same-trapreport1→0/peer1701/commit/reset có [contract](../docs/PROTOCOL.md#needle-service). Không bậtrescue18/activeitemkhác hoặc giả inventoryauth.

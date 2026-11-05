@@ -132,9 +132,9 @@
         "KR-S001",
         "KR-S002"
       ],
-      "known": "CP109two-nativecycles; CP110UI/Ready; CP111receiverprepostrawresolved/PR181merged. CP112structural17/19guard baselinefix/nativeblobmodel/33captures/test161/newWine438.2s2cycles/actual95seq823/native110/selfcheckpendingPR.",
-      "remaining": "Fullgates/control/auth/codec/authority/validator/LANInternet open; validfirstseensemantic notsolved byblobguard. Currentservice lacksinventory/needleescape/rescue forwarding/reseteligibility.",
-      "next_test": "PLANsource-firstCP036038actual124165kind145/sub1then0/18/native170controls, defineboundedopt-ininventory/pairadmission beforeimplementation; noY389/Ready/codec re-RE.",
+      "known": "CP112guard/PR182merged; CP113opt-inneedle145/currentservice exact17→1→0/one1701/credit1→0/nativeA,B56→26/lateXY200309/emptysecondCtrl/175tests, selfcheckpendingPR.",
+      "remaining": "Fullgates/control/auth/codec/authority/validator/LANInternet open. Needlecurrentservice secondtrapdepleted andStart2credit/reset runtime notyetproved; rescue18/team/aux separate.",
+      "next_test": "PLANreuseCP038depleted andCP110BhostreturnReadyAStartB; sameprofile/service secondtrap→Ctrl-empty→actualdeath/result/return thenStart2fresh145credit/consume; no repeatwriter/receiver/codec.",
       "acceptance": "Epic checklist: linkedscopedtask/evidence+authoritymatrix vàacceptancegate ởPLAN; từngtaskđóng khôngđóngepic/K5/K6a.",
       "reason": "Thay scope CP004postWCP cũ bằng epic bảo trì/compatibility; không tạo duplicatecontract/plan.",
       "sources": [
@@ -153,7 +153,8 @@
         177,
         179,
         180,
-        181
+        181,
+        182
       ],
       "successors": []
     },

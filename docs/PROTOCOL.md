@@ -4136,3 +4136,39 @@ Guardtrước đây đã có các điều kiện này nên không RE lại. Repo
 nhưng currentservice chưaforward hoặcconsumeinventory choescape, pickupblock17/19chỉxóa ởStart.
 Không tự clear bằng21 hoặc portVNopcode. Bước kế ởRESEARCH/PLAN làsource-firstactualinventory/
 escapepair/peercontrol trước chính sách mới; fullauth/codec/authority/gates/LANInternet vẫn mở.
+
+
+<a id="needle-service"></a>
+### Kim145 trong current service: credit và report-pair opt-in — CP113
+
+[Metadata/raw/control/hash](evidence/needle-service/README.md); [gap](RESEARCH.md#gap-needle).
+**design/implementation** trênmodeltrước, **kr_runtime/confirmed hẹp** sau currentcopyrun; không
+servergốc/inventoryauth. CP037038nguồnnative táidùng trực tiếp, khôngnativebody/codec mới hoặc portVN117.
+
+Profile có `needle_escape: {"mode":"needle_145_report_pair"}` mới bật. Chỉ đúngmột catalogkind145
+(kểcảhiddenlist), Start đòihai live mappedA/B. Khôngoption giữdefault, không tựbật theo tênitem.
+Accepted124 đúngcurrentclaim/key/catalog/boundmember, hai165sendxong mớicredit1 cho boundconnection/
+currentgeneration. Dedupeclaim cũ ngăncreditlặp. Credit không làaccountinventory hoặc locationvalidation.
+
+Actual1 chỉcommonprefix14; actual0 đúng22 với typedtail widths1/2/1/4=`1,145,0,0`.
+Sau freshnessread-only, admission đòicurrenttrap17/noaccepted19/credit1 và đúngliveboundmember.
+1 chỉstagecandidate cógeneration/trapSHA/report1SHA/seq/prefix6/tick; khôngconsume hoặcforward.
+0 phảikhớpcandidate trap/slot/XY/logicaltick; haioldcontrolsCP037038cùngtick nhưng rulepairing là
+designvariant, khôngguaranteemọi mode. Actor_field5→6 không đòikhớp. Service gửi170/sub1 exactprefix6
+của1tớipeer, rồi mớicommitcursor0/credit1→0/clear17/pending. No170/sub0 guessed.
+
+Thiếukim/sai_shape/cặp/tick/XY/crossconnection/dead khôngforward/unblock/consume hoặcthaycursor.
+Accepted17/19mới hủypending; accepted19history khôngbị17sauđóche. Start/acceptedleave/EOF xóastate
+kim của member (survivor trongroundabort khôngadmitkhiinactive); connectionreportcursor giữCP063.
+Sendfailure chưa consume/clear/cursorcommit, nhưngrealserviceexception vẫnclose/abort; directmodelretry
+không lànetworkrecoveryproof. Rescue18 vàreport21 không tựclearinventory/pickupmarker.
+
+Runtime199,834777498s/SHA6074f0ea… trêncopyWine/profile47+CP037needlefloor/index41/AB/BchiefAguest:
+actual124/165→17→1→0/tick3220/slot0XY120309, report1frontseq274/service280 vàreport0front277/service283
+khácnhauvìTCPproxy replay; only170/sub1Bseq112/full6. A local56→26/Bpeer56→26/reader6/6/lỗi0;
+actualnative afterRightA/B XY200309, ôkimtrống vàsecondCtrlkhông1/0 mới. Ledger source/design logs1credit/
+1consume, defaultoff/onactualoldpairmodels36joins/175server tests. Nativegetters162+12/typed108models
+khácactualcallbacks. Noresult/secondStart/depletedsecondtrap trênnewservice trongrun này.
+
+Phầncònthiếu: runtimecredit/resetquaStart2, secondtrapkhihếtkim, rescue18/team/aux/eligibility vàmulti-charge.
+Fullinventory/forgedfirstseen/location/authority/auth/fullmatch/K5/K6a/vanilla/LANInternet vẫn mở.
