@@ -1,0 +1,267 @@
+{
+  "id": "CP124",
+  "previous": "CP123",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-05T09:47:32.341518+00:00",
+  "context_commit": "06765c7d58c171a9fdebd7bd68fecda0445b61d1",
+  "owner": "Codex",
+  "reviewer": "Codex",
+  "question": "Do selectednative Battle19 followcurrent17 afterescape/reset; canoptionalcurrenttrap19policyrejectunsupportedfirstseenwithoutsideseffectswhilepreservingnative2rescue/result/return cycles?",
+  "scope": "Source-firstCP112structural/cursor/CP113–121escape/currentraw+CP122123directnativeframes. 64capturedreportjoins/12run/fullrecordingdispatchdefaultoffvsopt-in,11newtests/202total, boundednewpolicyimplementation. ControlR1compatibility/R2parkY224failed, retrysameprofile/client/fuse/guardonlypark5→9; actual2rescues4guarddeaths/tworesultsReadyB. AUD039manualperiodic124→128.",
+  "artifacts": [
+    {
+      "name": "CA-r2-login-logout.exe",
+      "sha256": "660447c293ce92270cb9b5815331bca976e8f156366e1fe50b217b6c12e60ce3"
+    },
+    {
+      "name": "CA-r2-stage-social.exe",
+      "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+    },
+    {
+      "name": "CA-r2-stage-social.exe Bcopy",
+      "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+    },
+    {
+      "name": "modO.bin",
+      "sha256": "a08950c833d3acab8281049def7b3dc96b221f107eeda01da3a548e34b91dce5"
+    }
+  ],
+  "locators": [
+    "CP123 PR194 heada40ced8839199affcbced9718845590da0b72a02/merge06765c7d58c171a9fdebd7bd68fecda0445b61d1/CLEANMERGEABLEchecks[]. Before-source pinned/runtime-source newcode.",
+    "wire-joinsSHA4a384b3c598fae4464103c6c140d08b68450a3b1fa1f547827aba805b26788a1/6127checks/33trap20death11escape/14proxy6directdeaths/6freshtrapafterescape. dispatchSHA9628300f35989cf26328905b80d1c4c35f090deb2c254db9633b91a11bc64d5d/2229compatibilitychecks.",
+    "Controlrun3ba219d5b58bf1f02e5a1d88b4b346de113015fd2576ab3f0883088a5505166c/270.594767466s/1566raw/1651partialjoins/exit1parknotreachedY224target279beforeR2Bomb. Retry7853159bcf8c86cb9af23fe2bf74a78a27753db3b4cbdca2195384836ca1c39b/355.750586207s/2130raw/2246base+89guardjoins/exit0/errors0.",
+    "KnownlocalE6F060/E6F10A/peerE86820/E86892/E863CA rescueboth56→26; B53010C2S127/14EF300nativeframer/getters/52A350;modOa08950/base400000/RVA=VA−400000/runtimee9bb4766/static660447. Native726actor/312packet/12peer153 separate. R2park299/up399334269194not159/actual18later.",
+    "AUD039periodicthrough124/next128; historicalCP112escape-notimplementedparagraph qualifiedcurrentCP113–124, CP123PR194merge synced."
+  ],
+  "findings": [
+    {
+      "summary": "Retained12runs64actualreports/33trap20death11escape allcapturedwire/body/seq/nativeparser joined,20deathallpriorcurrent17,6postescapehavefresh17. Includes6directsocketdeathframes notproxyabsence. Corpus/bookkeepingnotworldauthority.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#death-lifecycle-policy",
+      "limits": "SupportedmodifiedWineAB/pinnedBattle/fixedfriendlyteams+syntheticopponent/chosentwoall-deadresults; guard death_lifecycle current_trap emu_choice/defaultoff, forged17→19canstillpass/noauth/location/timer/allmodes/lifeauthority. Corpus12selectedruns64reports/20death/11escape notuniversal. R1onlyguardpositive/parkR2failedpreserved; retryonlypark5→9same279target. Park299/up194not159/actual18later/peerquota/wholemovementcausalitylimits. No fullmatch/K5/K6a/vanilla/LANInternet/gate. Copiednativeparser/getter separate fromWine; originalbinary/DB/pack/oldcompleteimmutable.",
+      "evidence": [
+        "CORP-00034",
+        "CORP-00030"
+      ]
+    },
+    {
+      "summary": "Explicitoptional death_lifecycle current_trap: boundmappedlivecurrentmember/noaccepteddeath/generation17prerequisite beforecursor/marker/inventory/forward; defaultoffunchanged. Rejectreasonlogged/no effects, accepted19pintrapSHA. Forged17then19stillpossible; nooriginalserverlifeoracle. 2229actualdispatchcompatibilitychecks/202tests incl11new.",
+      "source": "emu_choice",
+      "status": "design",
+      "method": "design",
+      "canonical": "docs/PROTOCOL.md#death-lifecycle-policy",
+      "limits": "SupportedmodifiedWineAB/pinnedBattle/fixedfriendlyteams+syntheticopponent/chosentwoall-deadresults; guard death_lifecycle current_trap emu_choice/defaultoff, forged17→19canstillpass/noauth/location/timer/allmodes/lifeauthority. Corpus12selectedruns64reports/20death/11escape notuniversal. R1onlyguardpositive/parkR2failedpreserved; retryonlypark5→9same279target. Park299/up194not159/actual18later/peerquota/wholemovementcausalitylimits. No fullmatch/K5/K6a/vanilla/LANInternet/gate. Copiednativeparser/getter separate fromWine; originalbinary/DB/pack/oldcompleteimmutable.",
+      "evidence": [
+        "CORP-00027",
+        "CORP-00018",
+        "CORP-00031",
+        "LIVE-02200",
+        "LIVE-02209"
+      ]
+    },
+    {
+      "summary": "Nativecurrentopt-inruntime2rescueepochs/B18aux0/full1707/both56→26 thenfreshA/B17→19/4linkedtrapSHA/twochosen175180/room/actualReadyB/noStart3. Source/profile/fusefrozen; R1controlonly2deaths/oneresultR2parkfailed beforeguard.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#death-lifecycle-policy",
+      "limits": "SupportedmodifiedWineAB/pinnedBattle/fixedfriendlyteams+syntheticopponent/chosentwoall-deadresults; guard death_lifecycle current_trap emu_choice/defaultoff, forged17→19canstillpass/noauth/location/timer/allmodes/lifeauthority. Corpus12selectedruns64reports/20death/11escape notuniversal. R1onlyguardpositive/parkR2failedpreserved; retryonlypark5→9same279target. Park299/up194not159/actual18later/peerquota/wholemovementcausalitylimits. No fullmatch/K5/K6a/vanilla/LANInternet/gate. Copiednativeparser/getter separate fromWine; originalbinary/DB/pack/oldcompleteimmutable.",
+      "evidence": [
+        "LIVE-02234",
+        "LIVE-02151",
+        "LIVE-02256",
+        "CTRL-01598"
+      ]
+    },
+    {
+      "summary": "726capturedactorgetter/312packet/12peer153 copiednativechecks corroboratefield/wirevalues separately; preexistingnativeparsercases reusedfor64corpusrows, no newnativebody/codec RE. AUD039manualperiodic qualifiesstaleCP112escapeparagraph/currentPR/nextwork andsamefeedbacklimits, next128.",
+      "source": "kr_static",
+      "status": "confirmed",
+      "method": "emulation",
+      "canonical": "docs/PROTOCOL.md#death-lifecycle-policy",
+      "limits": "SupportedmodifiedWineAB/pinnedBattle/fixedfriendlyteams+syntheticopponent/chosentwoall-deadresults; guard death_lifecycle current_trap emu_choice/defaultoff, forged17→19canstillpass/noauth/location/timer/allmodes/lifeauthority. Corpus12selectedruns64reports/20death/11escape notuniversal. R1onlyguardpositive/parkR2failedpreserved; retryonlypark5→9same279target. Park299/up194not159/actual18later/peerquota/wholemovementcausalitylimits. No fullmatch/K5/K6a/vanilla/LANInternet/gate. Copiednativeparser/getter separate fromWine; originalbinary/DB/pack/oldcompleteimmutable.",
+      "evidence": [
+        "LIVE-02141",
+        "LIVE-02154",
+        "LIVE-02156",
+        "CORP-00035"
+      ]
+    }
+  ],
+  "verification": [
+    {
+      "check": "12runcorpus64reports/6127actualtransportandnativeparserjoins;2229fullrecordingdispatchcompatibility20deaths",
+      "result": "pass",
+      "evidence": [
+        "CORP-00033",
+        "CORP-00017",
+        "CORP-00034",
+        "CORP-00018"
+      ],
+      "limits": "SupportedmodifiedWineAB/pinnedBattle/fixedfriendlyteams+syntheticopponent/chosentwoall-deadresults; guard death_lifecycle current_trap emu_choice/defaultoff, forged17→19canstillpass/noauth/location/timer/allmodes/lifeauthority. Corpus12selectedruns64reports/20death/11escape notuniversal. R1onlyguardpositive/parkR2failedpreserved; retryonlypark5→9same279target. Park299/up194not159/actual18later/peerquota/wholemovementcausalitylimits. No fullmatch/K5/K6a/vanilla/LANInternet/gate. Copiednativeparser/getter separate fromWine; originalbinary/DB/pack/oldcompleteimmutable."
+    },
+    {
+      "check": "202server tests incl11newdefault/reject/reset/needle/rescue/member/high-tick/nosideeffects/sendfailure/config",
+      "result": "pass",
+      "evidence": [
+        "CORP-00031",
+        "CORP-00025"
+      ],
+      "limits": "Emulatorregression/model notoriginalserver/nativeworldoracle."
+    },
+    {
+      "check": "Native2rescue/current17/4guard19/tworesultreturn/finalReadyB/2246base89guard/2130rawSHA",
+      "result": "pass",
+      "evidence": [
+        "LIVE-02233",
+        "LIVE-02150",
+        "LIVE-02165"
+      ],
+      "limits": "SupportedmodifiedWineAB/pinnedBattle/fixedfriendlyteams+syntheticopponent/chosentwoall-deadresults; guard death_lifecycle current_trap emu_choice/defaultoff, forged17→19canstillpass/noauth/location/timer/allmodes/lifeauthority. Corpus12selectedruns64reports/20death/11escape notuniversal. R1onlyguardpositive/parkR2failedpreserved; retryonlypark5→9same279target. Park299/up194not159/actual18later/peerquota/wholemovementcausalitylimits. No fullmatch/K5/K6a/vanilla/LANInternet/gate. Copiednativeparser/getter separate fromWine; originalbinary/DB/pack/oldcompleteimmutable."
+    },
+    {
+      "check": "FirstplannedR2parkbeforeBtrap",
+      "result": "fail",
+      "evidence": [
+        "CTRL-01598",
+        "CTRL-01600"
+      ],
+      "limits": "Y224not279in5sec; R1guardpositiveonly/R2predeathinputfailure serviceerrors0; no2resultclaimorguardcausality."
+    },
+    {
+      "check": "Copiednative726fields/312packet/12peer153 plusmanualAUD039/docs/catalog/issues/artifacts/diff",
+      "result": "pass",
+      "evidence": [
+        "LIVE-02141",
+        "LIVE-02154",
+        "LIVE-02156",
+        "CORP-00035",
+        "CORP-00019",
+        "CORP-00023",
+        "CORP-00003"
+      ],
+      "limits": "Mechanicalconsistency/manualscopedreview notautoacceptance/gate."
+    }
+  ],
+  "evidence": [],
+  "evidence_manifests": [
+    {
+      "path": "docs/evidence/checkpoints/evidence/CP124-park-control.json",
+      "bytes": 419099,
+      "sha256": "238dd9ee27abe125aff5e1b3730656ae7b8d0a1a9c2f5f08a0f9933dc97f3435",
+      "count": 1680
+    },
+    {
+      "path": "docs/evidence/checkpoints/evidence/CP124-death-lifecycle-runtime.json",
+      "bytes": 564278,
+      "sha256": "75ef914e3caff9a932ebfc0db2b3638b63604983958a81ed72ba6081df98b251",
+      "count": 2258
+    },
+    {
+      "path": "docs/evidence/checkpoints/evidence/CP124-life-corpus.json",
+      "bytes": 9468,
+      "sha256": "f6470d3d16d1944ecb0567a71f051c89ef8681ff2f90b2e05ae1a75068d9d207",
+      "count": 37
+    }
+  ],
+  "delta": {
+    "added": [
+      "64actualcorpusjoins/sourceproof/explicitopt-incurrenttrap19policy/202tests/native2rescueguardpositivecycles.",
+      "AUD039periodic124→128 andcurrentdocsissue sync."
+    ],
+    "corrected": [
+      "CP112historicalescapeunimplementedparagraph qualifiedCP113–124currentstate; completeoldrecordunchanged.",
+      "CP123PR194merged; firstcandidatependingcorpusmetadata historical, currentoutcomesinCP124."
+    ],
+    "superseded": [
+      "NEXT-LIFE-ADMISSION-CORPUS scopedsourcegapresolvedandpolicymeasured; full17/19lifeauthority unknown notclosed."
+    ]
+  },
+  "blockers": [
+    "NormalguestBattleUIexit/request/modal/reply/peerstate unknown; idleBack/activeEOF donotproveit.",
+    "Firstseen17/forged17then19/auth/location/timer/allmodes/genericreset/fullmatch/vanilla/LANInternet/gates remain."
+  ],
+  "next_steps": [
+    {
+      "id": "NEXT-LIFE-ADMISSION-CORPUS",
+      "task": "KRE-005b",
+      "state": "closed",
+      "action": "CP12464actualcorpus/20death/replaycompatibility/explicitoption202tests/native2epochguard implemented; fullauthoritystillunknown.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-NORMAL-BATTLE-EXIT",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "PLANsourcefirstCP034044107/VNconcepts/retainedUI; normalBguestclickBattleexitafter121clock/noBomb2realABprofile/capturemodal/request/writer/body/socket/peerstage; noassumed86/kill/forgedreply, targetedstaticonlyactualedge. Auditnext128.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    }
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-11-05T09:47:32.341518+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "Codex solo RE/code/runtime/selfcheck, not independent approval.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Owner explicitly requested solo without Claude review."
+    }
+  },
+  "docs_sync": [
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "CP124corpus/currenttrapguard/runtime/control/limits/AUD039next128/nextnormalBattleexit; oldrecords/raw/gates unchanged."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "CP124corpus/currenttrapguard/runtime/control/limits/AUD039next128/nextnormalBattleexit; oldrecords/raw/gates unchanged."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "updated",
+      "reason": "CP124corpus/currenttrapguard/runtime/control/limits/AUD039next128/nextnormalBattleexit; oldrecords/raw/gates unchanged."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "updated",
+      "reason": "CP124corpus/currenttrapguard/runtime/control/limits/AUD039next128/nextnormalBattleexit; oldrecords/raw/gates unchanged."
+    },
+    {
+      "path": "docs/features.json",
+      "state": "updated",
+      "reason": "CP124corpus/currenttrapguard/runtime/control/limits/AUD039next128/nextnormalBattleexit; oldrecords/raw/gates unchanged."
+    },
+    {
+      "path": "docs/COVERAGE.md",
+      "state": "updated",
+      "reason": "CP124corpus/currenttrapguard/runtime/control/limits/AUD039next128/nextnormalBattleexit; oldrecords/raw/gates unchanged."
+    },
+    {
+      "path": "docs/evidence/life-admission/README.md",
+      "state": "updated",
+      "reason": "CP124corpus/currenttrapguard/runtime/control/limits/AUD039next128/nextnormalBattleexit; oldrecords/raw/gates unchanged."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/review.json",
+      "state": "updated",
+      "reason": "CP124corpus/currenttrapguard/runtime/control/limits/AUD039next128/nextnormalBattleexit; oldrecords/raw/gates unchanged."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
+      "state": "updated",
+      "reason": "CP124corpus/currenttrapguard/runtime/control/limits/AUD039next128/nextnormalBattleexit; oldrecords/raw/gates unchanged."
+    },
+    {
+      "path": "docs/evidence/checkpoints/audits/AUD039.json",
+      "state": "updated",
+      "reason": "CP124corpus/currenttrapguard/runtime/control/limits/AUD039next128/nextnormalBattleexit; oldrecords/raw/gates unchanged."
+    }
+  ]
+}

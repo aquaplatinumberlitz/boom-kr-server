@@ -1,0 +1,71 @@
+{
+  "id": "AUD039",
+  "trigger": "periodic",
+  "completed_through": "CP124",
+  "recorded_utc": "2026-11-05T09:46:10.299896+00:00",
+  "auditor": "Codex manual self-audit; independent review waived",
+  "read_files": [
+    "README.md",
+    "docs/PLAN.md",
+    "docs/PROTOCOL.md",
+    "docs/RESEARCH.md",
+    "docs/evidence/life-admission/README.md",
+    "docs/evidence/firstseen-admission/README.md",
+    "docs/evidence/needle-service/README.md",
+    "docs/evidence/rescue-service/README.md",
+    "docs/evidence/three-bomb-chain/README.md",
+    "docs/evidence/checkpoints/README.md",
+    "docs/features.json",
+    "docs/COVERAGE.md",
+    "server/probe_service.py",
+    "server/test_death_lifecycle.py",
+    "local/research/codex/life-admission-corpus-r1/wire-joins.json",
+    "local/research/codex/life-admission-corpus-r1/dispatch-compatibility.json",
+    "local/research/codex/life-admission-corpus-r1/policy-decision.json",
+    "local/research/codex/life-admission-corpus-r1/server-tests.txt",
+    "local/research/codex/death-lifecycle-r1/partial-verification.json",
+    "local/research/codex/death-lifecycle-r1/cycles/run.json",
+    "local/research/codex/death-lifecycle-r2/guard-verification.json",
+    "local/research/codex/death-lifecycle-r2/two-result-verification.json",
+    "local/research/codex/death-lifecycle-r2/cycles/service-state.json",
+    "local/research/codex/death-lifecycle-r2/visual-review.json"
+  ],
+  "method": "ManualorderedREADME→PLAN→PROTOCOLcurrentdeathguard+historicalCP112→RESEARCH→evidence then selectedraw nativeframes/proxy/directjoins/currentrunreport17/18/19 guardhashlinks/fullnativecallbacks/visualbothrooms. Read6postescape freshtrap/deathchains and12run64report provenance/nativeparser; verified20death include6direct notproxyabsence. Readsourceguardbeforecursor/marker/forward,11newtests/sendfailure/defaultoff limitations;2229dispatchmodel distinctfromWine. ComparedR1Y224not279controllerbound beforeBtrap withretryY299park/Up194not159andlater18. No source/runtime changes midrun, no semantic/gateautoapproval; cadence124→128.",
+  "findings": [
+    {
+      "id": "F1",
+      "stale": "CP112paragraph read as current says escape notforwarded/markeronlyclearedatStart althoughCP113–121 implemented0/18.",
+      "correction": "Markhistorical CP112 andlinkCP113–121/124; preservecompleteCP112/oldraw/findings.",
+      "fixed_in": [
+        "docs/PROTOCOL.md"
+      ]
+    },
+    {
+      "id": "F2",
+      "stale": "CurrentCP123README/PLANpendingPR andactiveadmissioncorpus unknown afterPR194/newresults.",
+      "correction": "LinkCP123merged194, CP124scopedcorpus/guard/newnative2epochs; moveonlyPLAN nextnormalBattleexit. Syncquestion/catalog/issue.",
+      "fixed_in": [
+        "README.md",
+        "docs/PLAN.md",
+        "docs/RESEARCH.md",
+        "docs/features.json",
+        "docs/COVERAGE.md",
+        "docs/evidence/issue-reconciliation/review.json"
+      ]
+    },
+    {
+      "id": "F3",
+      "stale": "Riskofcalling20current17deaths proofallmodes/auth, orUpfeedbacktargetreached/fromsuccessfulrescue.",
+      "correction": "Explicitguardemu_choice/defaultoff/forged17then19stillpossible;No invented worldoracle. Runtimepark299/Up194not159/actual18later/Aviewdifference/peerquota limitations retained. Firstfailedparkbeforedeathno guardcausality.",
+      "fixed_in": [
+        "docs/PROTOCOL.md",
+        "docs/evidence/life-admission/README.md"
+      ]
+    }
+  ],
+  "remaining": [
+    "CP124selfcheck/pendingcommitPRexactmerge; nextperiodicauditCP128, noresetbyAUD038adhoc.",
+    "NormalBattleUIexit unknown distinct fromCP034idleBack/CP044activeEOF; prepare sourcequestion only untilhandoff.",
+    "Fullauth/lifeauthority/mode/location/timer/inventory/generalchain/allreset/vanilla/fullmatch/K5/K6a/LANInternet remainopen. Oldcompleteobjects/evidence immutable."
+  ]
+}

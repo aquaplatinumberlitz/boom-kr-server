@@ -98,6 +98,11 @@ class ProbeService:
         if missing:
             raise ValueError('profile missing lifecycle fixtures: ' + ', '.join(sorted(missing)))
         self.profile, self.out, self.proxy_ports = profile, out, proxy_ports
+        self.death_lifecycle = False
+        if 'death_lifecycle' in profile.data:
+            if profile.data['death_lifecycle'] != {'mode': 'current_trap'}:
+                raise ValueError('unsupported death_lifecycle policy')
+            self.death_lifecycle = True
         self.rescue_contact = False
         if 'rescue_contact' in profile.data:
             if (profile.data['rescue_contact'] != {'mode': 'friendly_AB_synthetic2_aux1'}
@@ -648,6 +653,14 @@ class ProbeService:
             if delta == 0 and report['body_sha256'] in cursor['bodies']:
                 report['rejected'] = 'duplicate_report_body'
                 return
+        if self.death_lifecycle and subtype == 19:
+            reason = self.death_lifecycle_rejection(event)
+            if reason:
+                report['rejected'] = reason
+                return
+            report['death_lifecycle'] = {
+                'source': 'design', 'generation': self.room.generation,
+                'trap_sha256': event['pickup_ineligible']['report_sha256']}
         needle = None
         rescue = None
         if getattr(self, 'rescue_contact', False) and subtype == 18:
@@ -713,6 +726,24 @@ class ProbeService:
                                              opcode=170, body=payload)
             if subtype == 19:
                 event['death_event'] = report
+
+    def death_lifecycle_rejection(self, event):
+        """Opt-in measured Battle compatibility policy, not a life-state oracle.
+
+        Retained native reports support 17 -> 19, with a fresh17 after an
+        escape. A forged17 followed by19 is still outside this policy's scope.
+        No cursor, inventory, marker or transport mutation on rejection.
+        """
+        if (self.channels.get(event['role']) is not event
+                or not any(peer is event for peer in self.peers())):
+            return 'death_member_not_current'
+        if event.get('death_event', {}).get('round') == self.room.generation:
+            return 'death_already_accepted'
+        trap = event.get('pickup_ineligible')
+        if (not trap or trap.get('generation') != self.room.generation
+                or trap.get('subtype') != 17):
+            return 'death_no_current_trap'
+        return None
 
     def prepare_rescue_contact(self, event, report, body):
         """Read-only admission for measured A18/aux1 and B18/aux0 variants.

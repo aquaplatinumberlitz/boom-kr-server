@@ -1,7 +1,7 @@
 {
   "schema": "kre-feature-index-v1",
   "build": "KR00967",
-  "as_of": "CP123",
+  "as_of": "CP124",
   "sources": {
     "plan": "docs/PLAN.md",
     "contract": "docs/PROTOCOL.md",
@@ -2155,7 +2155,8 @@
           "docs/evidence/rescue-service/README.md#cp117",
           "docs/evidence/rescue-service/README.md#cp119",
           "docs/evidence/rescue-service/README.md#cp120",
-          "docs/evidence/rescue-service/README.md#cp121"
+          "docs/evidence/rescue-service/README.md#cp121",
+          "docs/evidence/life-admission/README.md"
         ]
       },
       "coverage": {
@@ -2212,7 +2213,8 @@
               "docs/PROTOCOL.md#rescue-return-start-guard",
               "docs/PROTOCOL.md#rescue-slot-refresh",
               "docs/PROTOCOL.md#rescue-round2-feedback",
-              "docs/PROTOCOL.md#rescue-two-results"
+              "docs/PROTOCOL.md#rescue-two-results",
+              "docs/PROTOCOL.md#death-lifecycle-policy"
             ]
           },
           "windows_original": {
@@ -2275,7 +2277,8 @@
             "docs/PROTOCOL.md#needle-round-reset",
             "docs/PROTOCOL.md#rescue-service",
             "docs/PROTOCOL.md#rescue-reverse",
-            "docs/PROTOCOL.md#rescue-two-results"
+            "docs/PROTOCOL.md#rescue-two-results",
+            "docs/PROTOCOL.md#death-lifecycle-policy"
           ]
         },
         "gate": {
@@ -2977,7 +2980,8 @@
           "docs/evidence/rescue-service/README.md#cp119",
           "docs/evidence/rescue-service/README.md#cp120",
           "docs/evidence/rescue-service/README.md#cp121",
-          "docs/evidence/three-bomb-chain/README.md#cp123"
+          "docs/evidence/three-bomb-chain/README.md#cp123",
+          "docs/evidence/life-admission/README.md"
         ]
       },
       "coverage": {
@@ -3046,7 +3050,8 @@
               "docs/PROTOCOL.md#rescue-slot-refresh",
               "docs/PROTOCOL.md#rescue-round2-feedback",
               "docs/PROTOCOL.md#rescue-two-results",
-              "docs/PROTOCOL.md#recursive-chain-cycles"
+              "docs/PROTOCOL.md#recursive-chain-cycles",
+              "docs/PROTOCOL.md#death-lifecycle-policy"
             ]
           },
           "windows_original": {
@@ -3116,7 +3121,8 @@
             "docs/evidence/needle-service/README.md",
             "docs/PROTOCOL.md#needle-round-reset",
             "docs/PROTOCOL.md#rescue-two-results",
-            "docs/PROTOCOL.md#recursive-chain-cycles"
+            "docs/PROTOCOL.md#recursive-chain-cycles",
+            "docs/PROTOCOL.md#death-lifecycle-policy"
           ]
         },
         "gate": {
@@ -3365,7 +3371,8 @@
           "docs/evidence/rescue-service/README.md#cp120",
           "docs/evidence/rescue-service/README.md#cp121",
           "docs/evidence/three-bomb-chain/README.md#cp122",
-          "docs/evidence/three-bomb-chain/README.md#cp123"
+          "docs/evidence/three-bomb-chain/README.md#cp123",
+          "docs/evidence/life-admission/README.md"
         ]
       },
       "coverage": {
@@ -3464,7 +3471,8 @@
               "docs/PROTOCOL.md#rescue-round2-feedback",
               "docs/PROTOCOL.md#rescue-two-results",
               "docs/PROTOCOL.md#recursive-chain",
-              "docs/PROTOCOL.md#recursive-chain-cycles"
+              "docs/PROTOCOL.md#recursive-chain-cycles",
+              "docs/PROTOCOL.md#death-lifecycle-policy"
             ]
           },
           "windows_original": {
@@ -3546,7 +3554,8 @@
             "server/test_rescue_contact.py",
             "docs/PROTOCOL.md#rescue-reverse",
             "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/185",
-            "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/186"
+            "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/186",
+            "server/test_death_lifecycle.py"
           ]
         },
         "integration": {
@@ -3610,7 +3619,8 @@
             "docs/PROTOCOL.md#rescue-reverse",
             "docs/PROTOCOL.md#rescue-two-results",
             "docs/PROTOCOL.md#recursive-chain",
-            "docs/PROTOCOL.md#recursive-chain-cycles"
+            "docs/PROTOCOL.md#recursive-chain-cycles",
+            "docs/PROTOCOL.md#death-lifecycle-policy"
           ]
         },
         "gate": {
