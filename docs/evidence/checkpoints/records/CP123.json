@@ -1,0 +1,253 @@
+{
+  "id": "CP123",
+  "previous": "CP122",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-05T07:07:41.794808+00:00",
+  "context_commit": "1cc76af75cb8cec90a84e1fcd8c72a292756b58c",
+  "owner": "Codex",
+  "reviewer": "Codex",
+  "question": "Can CP122exactdeepchain integrate two actualsurvivor/result/resetepochs, and what priorCP106 knowledge prevents redundant currentterrain survivor RE?",
+  "scope": "SourcefirstCP082/106/112/122 reused knownnative/codec/175180/195flags/feedback. CP122gapoverstatement detected/directCP106raw corrected. ControlR2actualthird5,5failsdeepgeometry; retryonlynormal.10thirdDown pulsefromCP094 insteadDownfeedback169, sameRight/laterescapeDown/profile/fuse/client/production. Two isolated2epochruns complete/cleanup/seals; AUD038manualadhoc noresetperiodic124.",
+  "artifacts": [
+    {
+      "name": "CA-r2-login-logout.exe",
+      "sha256": "660447c293ce92270cb9b5815331bca976e8f156366e1fe50b217b6c12e60ce3"
+    },
+    {
+      "name": "CA-r2-stage-social.exe",
+      "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+    },
+    {
+      "name": "CA-r2-stage-social.exe Bcopy",
+      "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+    },
+    {
+      "name": "modO.bin",
+      "sha256": "a08950c833d3acab8281049def7b3dc96b221f107eeda01da3a548e34b91dce5"
+    }
+  ],
+  "locators": [
+    "CP122 PR193 head27f56962c0fcd5554aac66acec42fec78c548dde merged1cc76af75cb8cec90a84e1fcd8c72a292756b58c/CLEANMERGEABLEchecks[]. Production191testsreused unchanged.",
+    "Control69ff39815350fc55d74507bc1b5db9c2ce68059f860f5ff16b7895a970c6dfa1/300.247027271s/1244raw/exit0: R1deep1,2,3; R2third5,5 root4process4,5 own6separate; strict geometry2fail. Feedback189beforekeyup→214,239duringRight notcellproof.",
+    "Retry747b9a576eeb32c1a80c189b9fffdc09cf26aabb8e3981d69a54cde21b7ed411/300.138278672s/1238raw/1453joins/exit0/errors0. Actualtwo3,3p2→3,5p1→4,5p2/IDs1..6/keys12345,12346; all195flags/nativeprocess/laterownnoops; B19/A21/latest158/drained175nativeA1B2/180/returnrefresh2.",
+    "Known E5F450/E5F5FD/E9E660/EBE21A/EB80E3/52A350/ED1350/E5F610/E64950, modOa08950/base400000/RVA=VA−400000/runtimee9bb4766/static660447. 882actors/348packets/12peer153/5516flaggetters/5460arraymodels separate. Twoactor121129 notsynthetic3actor155; originalverifier155FAIL retained, copyactualroster129 allotherassertionssame.",
+    "CP106 e5c9a897c3c43a7efd480b3f3cd85b59837b8b5a95d619d0d23fab8d256dadce alreadyactualB19/A21/nativepre180ranks1,2bothviews2epochs; gapnotfirstsurvivor. AUD038adhocthrough123/lastperiodic120/next124 unchanged."
+  ],
+  "findings": [
+    {
+      "summary": "Exactdeepthirdoutside rootrays both epochs: actual1183,3p2→3,5p1→4,5p2 IDs1..3/4..6, native1593before158/processall3/all195flags/resetseed/laterownnoopbothviews. ActualB19/A21afterlatest158/drained175nativeA1B2/full180/roomrefresh2 integratedsame run.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#recursive-chain-cycles",
+      "limits": "Two real modifiedWineAB/currentCP106drainedprofile/pinnedmap/fuse6/outcome design. CP106already had survivorA/B19/A21/rank1,2/reset2; NEW onlydeepthirdoutside rootrays integratedtwoepochs. Controlr1R2third5,5/own6strictFAILpreserved. Retryr2exact4,5both; no universal inputcausalfix/FIFO/immutable/sharedblocker/moving/lifeauthority/auth/fullmatch/K5/K6a/vanilla/LANInternet. Copiednative models separate; source/client/config frozen untilcleanup. CompleteCP001122 unchanged; AUD038adhoc/periodic124.",
+      "evidence": [
+        "CYCLE-01259",
+        "CYCLE-00007",
+        "CYCLE-01249",
+        "CYCLE-01375"
+      ]
+    },
+    {
+      "summary": "Control priorR1deep3butR2third5,5→onlyroot4secondary5/own6separate; strictgeometryfailureretained despite2survivorresultreturns. Sample189beforekeyup→214,239duringRight doesnotprove placementtarget or causal inputlaw. Retry .10pulseactualgeometrypositive isscoped only.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#recursive-chain-cycles",
+      "limits": "Two real modifiedWineAB/currentCP106drainedprofile/pinnedmap/fuse6/outcome design. CP106already had survivorA/B19/A21/rank1,2/reset2; NEW onlydeepthirdoutside rootrays integratedtwoepochs. Controlr1R2third5,5/own6strictFAILpreserved. Retryr2exact4,5both; no universal inputcausalfix/FIFO/immutable/sharedblocker/moving/lifeauthority/auth/fullmatch/K5/K6a/vanilla/LANInternet. Copiednative models separate; source/client/config frozen untilcleanup. CompleteCP001122 unchanged; AUD038adhoc/periodic124.",
+      "evidence": [
+        "CTRL-01353",
+        "CTRL-00004",
+        "CTRL-01242",
+        "CYCLE-01328"
+      ]
+    },
+    {
+      "summary": "CP106alreadyhad currentterrain A21/B19/nativepre180ranks1,2bothviews2epochs; CP122activegapoverstated. CorrectcurrentPLAN/RESEARCH/issue/README toonlynewdeepchain2reset andthen admissioncorpus. CompleteCP106/122 immutable. AUD038manualadhoc corrected3sourcescope/stalerow/oracle issues, nextperiodic124notreset.",
+      "source": "design",
+      "status": "design",
+      "method": "documentation",
+      "canonical": "docs/PROTOCOL.md#recursive-chain-cycles",
+      "limits": "Two real modifiedWineAB/currentCP106drainedprofile/pinnedmap/fuse6/outcome design. CP106already had survivorA/B19/A21/rank1,2/reset2; NEW onlydeepthirdoutside rootrays integratedtwoepochs. Controlr1R2third5,5/own6strictFAILpreserved. Retryr2exact4,5both; no universal inputcausalfix/FIFO/immutable/sharedblocker/moving/lifeauthority/auth/fullmatch/K5/K6a/vanilla/LANInternet. Copiednative models separate; source/client/config frozen untilcleanup. CompleteCP001122 unchanged; AUD038adhoc/periodic124.",
+      "evidence": [
+        "CTRL-01351",
+        "CYCLE-01382"
+      ]
+    },
+    {
+      "summary": "Copiednative882actor/348packet/12peer153/5516flaggetter/5460arraychecks corroboratecapturedfield/reader values separatefromruntime. Initialverifier155 copiedfromCP121synthetic3roster fails foractual2actor121129; newscript onlychangesexactlength129/full/errors0, originalfail/raw retained.",
+      "source": "kr_static",
+      "status": "confirmed",
+      "method": "emulation",
+      "canonical": "docs/PROTOCOL.md#recursive-chain-cycles",
+      "limits": "Two real modifiedWineAB/currentCP106drainedprofile/pinnedmap/fuse6/outcome design. CP106already had survivorA/B19/A21/rank1,2/reset2; NEW onlydeepthirdoutside rootrays integratedtwoepochs. Controlr1R2third5,5/own6strictFAILpreserved. Retryr2exact4,5both; no universal inputcausalfix/FIFO/immutable/sharedblocker/moving/lifeauthority/auth/fullmatch/K5/K6a/vanilla/LANInternet. Copiednative models separate; source/client/config frozen untilcleanup. CompleteCP001122 unchanged; AUD038adhoc/periodic124.",
+      "evidence": [
+        "CYCLE-01264",
+        "CYCLE-01274",
+        "CYCLE-01276",
+        "CYCLE-01266",
+        "CYCLE-00002"
+      ]
+    }
+  ],
+  "verification": [
+    {
+      "check": "1453same-runjoins/1238rawSHA/exacttwoepochdeepgeometry/native195flags/resultreset/175ranks1,2/full129121",
+      "result": "pass",
+      "evidence": [
+        "CYCLE-01257",
+        "CYCLE-01259",
+        "CYCLE-01287"
+      ],
+      "limits": "Two real modifiedWineAB/currentCP106drainedprofile/pinnedmap/fuse6/outcome design. CP106already had survivorA/B19/A21/rank1,2/reset2; NEW onlydeepthirdoutside rootrays integratedtwoepochs. Controlr1R2third5,5/own6strictFAILpreserved. Retryr2exact4,5both; no universal inputcausalfix/FIFO/immutable/sharedblocker/moving/lifeauthority/auth/fullmatch/K5/K6a/vanilla/LANInternet. Copiednative models separate; source/client/config frozen untilcleanup. CompleteCP001122 unchanged; AUD038adhoc/periodic124."
+    },
+    {
+      "check": "ControlplanneddeepgeometryR2",
+      "result": "fail",
+      "evidence": [
+        "CTRL-01353",
+        "CTRL-01272",
+        "CTRL-00004"
+      ],
+      "limits": "Actual5,5 not4,5; root4doesnotreachthird6viaBpower1. Tworesultcycles do not fix missingdeepchain. 1244raw kept."
+    },
+    {
+      "check": "Initialretryverifier inherited121155scope",
+      "result": "observed",
+      "evidence": [
+        "CYCLE-01367",
+        "CYCLE-00002"
+      ],
+      "limits": "Analysisassertionfailed; separateactualroster129verifier passes identicalothercriteria. No runtimechanged/replayed."
+    },
+    {
+      "check": "Copiednativegetter/packet models and191productiontestsreused;manualAUD038/images/docs/catalog/issues/artifacts/diff",
+      "result": "pass",
+      "evidence": [
+        "CYCLE-01264",
+        "CYCLE-01274",
+        "CYCLE-01276",
+        "CYCLE-01266",
+        "CYCLE-01380",
+        "CYCLE-01382",
+        "CYCLE-01263",
+        "CYCLE-01272",
+        "CYCLE-00005"
+      ],
+      "limits": "Mechanical checks and selectedmanualaudit notautomaticsemantic/gateapproval."
+    }
+  ],
+  "evidence": [],
+  "evidence_manifests": [
+    {
+      "path": "docs/evidence/checkpoints/evidence/CP123-control-geometry.json",
+      "bytes": 351828,
+      "sha256": "a8446e24f6d630d69f6476a4236d32612c2e0a231d86e7ff1b396478fb9fc1a2",
+      "count": 1360
+    },
+    {
+      "path": "docs/evidence/checkpoints/evidence/CP123-deep-chain-cycles.json",
+      "bytes": 349300,
+      "sha256": "adfdd04bb7e8a24cfd78471c1c940f3b37f3e31ecc56ad2a19e28a2a3efacbfc",
+      "count": 1382
+    }
+  ],
+  "delta": {
+    "added": [
+      "Exactdeepchain+survivor/result/reset2 samejoinedrun/native195flags/laterownnoops.",
+      "AUD038adhoc sourcecorrection/currenttaskdedup andexplicitanalysisrosterfailure retained."
+    ],
+    "corrected": [
+      "CP122currentterrain survivor missingclaimoverbroad: CP106alreadyconfirmed; CP123newonlydeepgeometryresetintegration.",
+      "PLANgenericrecursionstalerow qualifiedCP122123; nextonlyadmissioncorpus."
+    ],
+    "superseded": [
+      "NEXT-CURRENT-TERRAIN-SURVIVOR closed knownCP106survivor/reframednewdeepgeometryintegrationCP123; no generalgateclosure."
+    ]
+  },
+  "blockers": [
+    "Firstseenwellformed17/19 still notlifeauthority/location/authoracle; corpusknowntrap/escape/death sequence notsummarized yet.",
+    "Generalchain/FIFO/sharedblocker/moving/fullinventory/fullreset/vanilla/LANInternet/gates remainopen."
+  ],
+  "next_steps": [
+    {
+      "id": "NEXT-CURRENT-TERRAIN-SURVIVOR",
+      "task": "KRE-005b",
+      "state": "closed",
+      "action": "Currentterrain survivor alreadyCP106; CP123onlynewexactdeepgeometry tworesults/reset integrated, oldgapoverstatement corrected.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-LIFE-ADMISSION-CORPUS",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "PLAN hashselectedsealedCP106110112113–123actual17→needle0/rescue18→fresh17→19 perrole/epoch; identifyexceptions/capturegaps before optionalcurrenttrap prerequisite. Reuseknownreaders/controls, notnativefullauthority/autoguard/gate. AUD038adhoc, periodic124.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    }
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-11-05T07:07:41.794808+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "Codex solo RE/code/runtime/selfcheck, not independent approval.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Owner explicitly requested solo without Claude review."
+    }
+  },
+  "docs_sync": [
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "CP123newdeepchain2reset/scopedcontrols/CP106reusecorrection/AUD038/currentnextcorpus, nooldrecord/gatechange."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "CP123newdeepchain2reset/scopedcontrols/CP106reusecorrection/AUD038/currentnextcorpus, nooldrecord/gatechange."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "updated",
+      "reason": "CP123newdeepchain2reset/scopedcontrols/CP106reusecorrection/AUD038/currentnextcorpus, nooldrecord/gatechange."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "updated",
+      "reason": "CP123newdeepchain2reset/scopedcontrols/CP106reusecorrection/AUD038/currentnextcorpus, nooldrecord/gatechange."
+    },
+    {
+      "path": "docs/features.json",
+      "state": "updated",
+      "reason": "CP123newdeepchain2reset/scopedcontrols/CP106reusecorrection/AUD038/currentnextcorpus, nooldrecord/gatechange."
+    },
+    {
+      "path": "docs/COVERAGE.md",
+      "state": "updated",
+      "reason": "CP123newdeepchain2reset/scopedcontrols/CP106reusecorrection/AUD038/currentnextcorpus, nooldrecord/gatechange."
+    },
+    {
+      "path": "docs/evidence/three-bomb-chain/README.md",
+      "state": "updated",
+      "reason": "CP123newdeepchain2reset/scopedcontrols/CP106reusecorrection/AUD038/currentnextcorpus, nooldrecord/gatechange."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/review.json",
+      "state": "updated",
+      "reason": "CP123newdeepchain2reset/scopedcontrols/CP106reusecorrection/AUD038/currentnextcorpus, nooldrecord/gatechange."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
+      "state": "updated",
+      "reason": "CP123newdeepchain2reset/scopedcontrols/CP106reusecorrection/AUD038/currentnextcorpus, nooldrecord/gatechange."
+    },
+    {
+      "path": "docs/evidence/checkpoints/audits/AUD038.json",
+      "state": "updated",
+      "reason": "CP123newdeepchain2reset/scopedcontrols/CP106reusecorrection/AUD038/currentnextcorpus, nooldrecord/gatechange."
+    }
+  ]
+}

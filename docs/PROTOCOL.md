@@ -4397,3 +4397,31 @@ Normal A Down(targetY169) rồi Right(targetX190), actual118 là oracle cell; kh
 929 joins gồm774raw SHA,438 actor getter/150 packet/6 peer153 cases;14 flag snapshots có2758
 native getter và2730 array-address checks là copied-native emulation riêng. Run dừng sau owncallback
 bound, **không claim result/return/vòng2**, fullmatch/K5/K6a/LAN/Internet. Bước kế chỉ ở PLAN.
+
+
+<a id="recursive-chain-cycles"></a>
+### Chain sâu cùng survivor/result/reset hai epoch — CP123
+
+**kr_runtime/confirmed hẹp**, [raw/recipe/control/hash](evidence/three-bomb-chain/README.md#cp123).
+Correction nguồn: **CP106 đã có currentterrain survivorA/B19/A21/native ranks1,2/result/reset2**;
+CP122 PLAN/RESEARCH mô tả gap survivor hiện hành quá rộng. Phần mới ở đây chỉ deepthird ngoài tia
+root được ghép cùng lifecycle hai epoch, không claim firstsurvivor hay sửa CP106/122 complete.
+
+Run đầu300,247027271s có hai result/return nhưng R1third(4,5), **R2third(5,5)**: root4 chỉ process4,5,
+bom6 nổ riêng; strict deepgeometry vòng2 fail giữ nguyên. Fresh Down sample189 trướckeyup nhưng lúc
+Right có214→239; không gọi sample/target/hold là actualcell hoặc causalproof cho mọi input.
+Retry300,138278672s/exit0/error0 chỉ thay firstthirdDown bằng normal pulse0,10s đã biết CP094;
+Rightfeedback/laterADownescape299/profile/currentproduction/fuse6 không đổi. Actual118 hai vòng đều
+**(3,3,p2)/(3,5,p1)/(4,5,p2)** ownersA/B/A, IDs1..3 rồi4..6, keys12345/12346. Mỗi view mỗi epoch
+ba native159 đủ39 trướcroot158; process1→2→3 hoặc4→5→6 trongrootcallback, secondarycallerEBE21A,
+laterown2/3/5/6 đọc13/lỗi0/no-op. All195flags/callback/clockseed reset khớp candidate cùng run.
+
+ActualB17/19 và actualA21 sau death/latestown158, drained rank chọnA1/B2; native175 đủ302 và ở180
+manager hai view ranks1/2 cả hai vòng,180 đủ3/roomrefresh/ảnh finalroom. **Start121 đủ129/129**
+với hai realactors, không155 của synthetic3roster CP121. Verifier đầu dùng nhầm155 fail; bản sửa
+riêng chỉ scope129, giữ script/logfail/raw/geometry/result assertions; không hạ tiêu chí native đọc đủ.
+
+1453joins/1238raw,882 actor getter/348packet/12peer153;28flag snapshots có5516getter/5460arraychecks
+là copied-native emulation riêng. Scope modifiedWine/currentpinnedmap/power1–2/normalinput/chosendrain
+outcome; không chứng minh universalchain/wholemovement/auth/lifeauthority/fullmatch/K5/K6a/LAN/Internet.
+AUD038 bổ sung sửa nguồn/gap ngay, không reset cadenceCP124. Bước tiếp chỉ ở PLAN.

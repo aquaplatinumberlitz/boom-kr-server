@@ -80,4 +80,37 @@ không lấy ảnh chứng minh exact entity count. Actual packets/native pointe
 
 Một epoch, không result/return/reset2 claim. Model FIFO/immutable/firstbombstop/sharedblocker/moving/
 original authority/fullmatch/K5/K6a/vanilla/LANInternet chưa đủ. CP084 raw/fork conclusion không sửa.
-191 server tests CP119 reuse/source unchanged. CP122 tự kiểm/chờ PR/review waived; audit kếCP124.
+191 server tests CP119 reuse/source unchanged. CP122/PR193 đã merge `1cc76af`, review waived; audit kếCP124.
+
+
+<a id="cp123"></a>
+## CP123 — Deepchain/result/reset2 và correction nguồn CP106
+
+[Contract/giới hạn](../../PROTOCOL.md#recursive-chain-cycles), [gap](../../RESEARCH.md#gap-result-return),
+[PLAN](../../PLAN.md#current-order). CP122/PR193 merge `1cc76af`. Raw ở
+`local/research/codex/current-terrain-survivor-r1` (control) và`deep-chain-cycles-r2` (retry).
+`scope-correction.json` đối chiếu CP106 actualB19/A21/nativeALL_DEAD_BEFORE_RETURN rank1,2 cảhai
+view/hai epoch: survivor currentterrain **đã biết**, CP122 mô tả phần thiếu quá rộng. Phần mới chỉ
+same-run exactdeepgeometry/result/reset2; không sửa completedCP106/122 hoặc nhận lại firstsurvivor.
+
+Hai recipe/private namespace/lo-only/no-route/filesNSS/exclusive lease/A/B separate prefix-display,
+source frozen/cleanup xong trước `raw-seal.json`. Profile lấy CP106, khác CP122 chỉ flagdrained đã biết;
+production/client/fuse6 không đổi. Control300,247027271s/runSHA
+`69ff39815350fc55d74507bc1b5db9c2ce68059f860f5ff16b7895a970c6dfa1`/1244raw:
+R1deep3/2results nhưng R2third5,5, process4,5 rồiown6, strictdeepgeometry2 fail/log/script giữ nguyên.
+R2 feedbackDown189 trướckeyup, Right thấy214→239; sampletarget không bảo đảm actualcell.
+
+Retry chỉ đổi firstthirdDown sang pulse0,10s từ CP094, giữ Rightfeedback/laterescapeDown299.
+RunSHA `747b9a576eeb32c1a80c189b9fffdc09cf26aabb8e3981d69a54cde21b7ed411`,
+300,138278672s/exit0/error0/serviceerrors0. `cycles-verification.json`: **1453joins/1238raw**, hai
+actual3,3p2→3,5p1→4,5p2/currentkeys/IDs/native159-before158/deepprocess/all195flags/resetseed/laternoop,
+actualB19/A21/latest158/drained175ranks1,2/180/room. `analysis-correction.json`: inherited3roster121155
+expectation fail giữ `strict-check.txt`; `verify_cycles_actual_roster.py` sửa duy nhất exact129 của2actor,
+không đổi raw/deepgeometry/rank/fullreader acceptance. Retry không chứng minh universal timing fix.
+
+`actor-fields.json`882checks/`native-reports.json`348cases/`native-153.json`12cases và28flag snapshots/
+5516getter/5460arraychecks là copied-native model riêng. `cycles-visual.png`/manual`visual-review.json`
+cho hai roomviews; native/rank/cell không suy từảnh. Wholemovement/auth/lifeauthority/generalchain/
+fullmatch/K5/K6a/vanilla/LANInternet chưa đủ. 191unchangedserver tests CP119 reuse.
+AUD038 ad-hoc sửa gap CP106 trùng/CP122stale recursive row/121roster scope, periodic kếCP124 khôngreset.
+CP123 self-check/chờPR/reviewwaived; control/priorCP objects/raw giữ nguyên.
