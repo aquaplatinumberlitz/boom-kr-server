@@ -1,7 +1,7 @@
 {
   "schema": "kre-feature-index-v1",
   "build": "KR00967",
-  "as_of": "CP118",
+  "as_of": "CP119",
   "sources": {
     "plan": "docs/PLAN.md",
     "contract": "docs/PROTOCOL.md",
@@ -992,7 +992,8 @@
           "docs/evidence/host-normal-back/README.md",
           "docs/evidence/promoted-battle-cycles/README.md",
           "docs/evidence/promoted-outcome/README.md",
-          "docs/evidence/rescue-service/README.md#cp117"
+          "docs/evidence/rescue-service/README.md#cp117",
+          "docs/evidence/rescue-service/README.md#cp119"
         ]
       },
       "coverage": {
@@ -1038,7 +1039,8 @@
               "docs/evidence/host-normal-back/README.md",
               "docs/evidence/promoted-battle-cycles/README.md",
               "docs/evidence/promoted-outcome/README.md",
-              "docs/PROTOCOL.md#rescue-return-start-guard"
+              "docs/PROTOCOL.md#rescue-return-start-guard",
+              "docs/PROTOCOL.md#rescue-slot-refresh"
             ]
           },
           "windows_original": {
@@ -2138,7 +2140,8 @@
           "docs/evidence/needle-service/README.md",
           "docs/PROTOCOL.md#needle-round-reset",
           "docs/evidence/rescue-service/README.md",
-          "docs/evidence/rescue-service/README.md#cp117"
+          "docs/evidence/rescue-service/README.md#cp117",
+          "docs/evidence/rescue-service/README.md#cp119"
         ]
       },
       "coverage": {
@@ -2192,7 +2195,8 @@
               "docs/PROTOCOL.md#needle-round-reset",
               "docs/evidence/rescue-service/README.md",
               "docs/evidence/rescue-service/README.md#cp116",
-              "docs/PROTOCOL.md#rescue-return-start-guard"
+              "docs/PROTOCOL.md#rescue-return-start-guard",
+              "docs/PROTOCOL.md#rescue-slot-refresh"
             ]
           },
           "windows_original": {
@@ -2944,7 +2948,8 @@
           "docs/evidence/firstseen-admission/README.md",
           "docs/evidence/needle-service/README.md",
           "docs/PROTOCOL.md#needle-round-reset",
-          "docs/evidence/rescue-service/README.md#cp117"
+          "docs/evidence/rescue-service/README.md#cp117",
+          "docs/evidence/rescue-service/README.md#cp119"
         ]
       },
       "coverage": {
@@ -3009,7 +3014,8 @@
               "docs/evidence/firstseen-admission/README.md",
               "docs/evidence/needle-service/README.md",
               "docs/PROTOCOL.md#needle-round-reset",
-              "docs/PROTOCOL.md#rescue-return-start-guard"
+              "docs/PROTOCOL.md#rescue-return-start-guard",
+              "docs/PROTOCOL.md#rescue-slot-refresh"
             ]
           },
           "windows_original": {
@@ -3321,7 +3327,8 @@
           "docs/evidence/needle-service/README.md",
           "docs/PROTOCOL.md#needle-round-reset",
           "docs/evidence/rescue-service/README.md",
-          "docs/evidence/rescue-service/README.md#cp117"
+          "docs/evidence/rescue-service/README.md#cp117",
+          "docs/evidence/rescue-service/README.md#cp119"
         ]
       },
       "coverage": {
@@ -3415,7 +3422,8 @@
               "docs/PROTOCOL.md#needle-round-reset",
               "docs/evidence/rescue-service/README.md",
               "docs/evidence/rescue-service/README.md#cp116",
-              "docs/PROTOCOL.md#rescue-return-start-guard"
+              "docs/PROTOCOL.md#rescue-return-start-guard",
+              "docs/PROTOCOL.md#rescue-slot-refresh"
             ]
           },
           "windows_original": {

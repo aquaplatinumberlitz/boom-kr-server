@@ -146,6 +146,20 @@ class RescueContactTests(unittest.TestCase):
         self.assertEqual(self.s.room.generation, generation)
         self.assertFalse(self.s.room.active)
 
+    def test_return_opponent_refresh_declares_slot2_ready_without_real95_or_trap_mutation(self):
+        self.trapped()
+        before = copy.deepcopy(self.a)
+        result = self.s.refresh_rescue_opponent()
+        self.assertEqual([(q['role'], q['opcode'], codec.read_fields(q['body'], [1, 4, 1]))
+                          for q in result], [('A', 110, [2, 0x24, 0]), ('B', 110, [2, 0x24, 0])])
+        self.assertEqual(self.a, before)
+        self.assertNotIn('guest_ready_received', self.a)
+        self.assertNotIn('guest_ready_received', self.b)
+        self.s.rescue_contact = False
+        self.sent.clear()
+        self.assertEqual(self.s.refresh_rescue_opponent(), [])
+        self.assertEqual(self.sent, [])
+
     def test_reverse_actual_aux0_clears_B_and_sends170_to_A(self):
         self.dispatch(self.reverse_trap, self.b)
         self.sent.clear()

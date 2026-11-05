@@ -132,9 +132,9 @@
         "KR-S001",
         "KR-S002"
       ],
-      "known": "CP117PR187mergedc2ca94d; savedruntimeactualslot2/group0/helper1/hostflag0/DCB7DA→guard3 versusinitialgroup1. Raw/hash/cleanupbeforemigration.",
-      "remaining": "Boundeddiagnostic110slot2readyrefreshcandidate notimplemented/runtimefixyet; noStart2/freshrescue/fullauthority/gates.",
-      "next_test": "AfterKRE073migrationPR, continueactualslot2guardcausealreadymeasured: known110state0x24diagnosticrefreshcontrol→nativeguard0/actual104/Start2currentkey/freshrescue. No repeatedoldslot/codecRE.",
+      "known": "CP118PR189organizationcomplete; CP119diagnostic110slot2refresh restoresnativeguard0/actual104/Start2/key12346,191tests. R2B17→19/no18plannedfreshrescuefail/sourcefrozen.",
+      "remaining": "CurrentR2XY/input/UDPpeerapply divergence causeunknown; freshrescue/reset/fullauthority/gates remain.",
+      "next_test": "PLANreusecurrentrunraw/knownfeedback/peerapplywindow/currentsecureXYbeforecham; normalreleasebasedfreshsample, do notmint18/patchstateorrelaxdeathguard.",
       "acceptance": "Epic checklist: linkedscopedtask/evidence+authoritymatrix vàacceptancegate ởPLAN; từngtaskđóng khôngđóngepic/K5/K6a.",
       "reason": "Keep epic/gatesopen: result/roomReadyboundedprogress, actualnativeblocker insteadguessfocus/rosterCcause; completedhistoryimmutable.",
       "sources": [
@@ -466,15 +466,15 @@
     {
       "number": 188,
       "kre": "KRE-073",
-      "classification": "in_progress",
+      "classification": "completed",
       "features": [
         "KR-S001"
       ],
-      "known": "Scripted117wholeobjectmigration/evidence166881/audits36equivalent; v2index53KB/records, currentreaders/selectiveCLI, v1v2history+mutationtests. No gate change.",
-      "remaining": "CP118externalbatchpinnings/finalrequiredchecks/PRexactheadmerge thenresumeactualslot2guardRE.",
-      "next_test": "Fullschemaoldnewhistory/localevidence/auditcadence/append-only andCLI/consumernegativecontrols; re-runmigrationafterappendprovesnoreset.",
+      "known": "CP118PR189mergeddae23b7/full117objectevidenceauditcomparison/50tests/118complete170314verified/0missingerrors; actualREresumed191tests/isolate candidate run.",
+      "remaining": "Organizationacceptancecomplete; actualRE#14/R2rescuepartialremains, no gateclosed.",
+      "next_test": "No activeorganizationnextstep; followPLAN/#14actualR2XY/input/peerapply, do notrepeatmigration.",
       "acceptance": "Ownerrequest: preservecompleteobjects/counters/audits/evidence; selectiveinterfaceandfullverification/migrationreport/PR; no tracker/semanticgateclosure.",
-      "reason": "Oneboundedorganizationchangeafterruntimecompletedrawhashcleanup; PLANretainssoleorder, no worker.",
+      "reason": "AllownerorganizationacceptancecheckedandPR189exactheadmerged; resumeREperformedbeforeclosingGitHub188. CP118snapshotimmutable.",
       "sources": [
         "docs/PLAN.md#current-order",
         "docs/PROTOCOL.md#rescue-start-slot",
@@ -484,7 +484,9 @@
       "evidence": [
         "docs/evidence/checkpoints/migration-v2.json"
       ],
-      "prs": [],
+      "prs": [
+        189
+      ],
       "successors": []
     }
   ],

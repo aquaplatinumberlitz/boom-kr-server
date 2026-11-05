@@ -1030,9 +1030,24 @@ class ProbeService:
                 else:
                     sent = self.broadcast('slot_A', f"host110-r{self.room.generation}")
                     sent += self.broadcast('slot_B', f"guest110-r{self.room.generation}")
+                sent += self.refresh_rescue_opponent()
             self.round['refresh'] = {'monotonic_ns': now, 'broadcast': sent}
             for event in self.peers():
                 event.pop('guest_ready_received', None)
+
+    def refresh_rescue_opponent(self):
+        """Restore the declared diagnostic actor's readiness after return.
+
+        Read-only runtime observed slot2 group1 before Start, group0 after
+        return, then DCB7DA/room guard3. This is emulator roster policy for
+        the fixed opt-in profile, never a fabricated live client's Ready95.
+        The native104/Start2/fresh-rescue path still needs runtime verification.
+        """
+        if not self.rescue_contact:
+            return []
+        body = codec.pack_fields([2, 0x24, 0], [1, 4, 1])
+        return self.broadcast('slot_B', f'synthetic-slot2-ready110-r{self.room.generation}',
+                              opcode=110, body=body)
 
     def pending_result_jobs(self):
         """Experimental fixture policy; original server's finish rule unknown.

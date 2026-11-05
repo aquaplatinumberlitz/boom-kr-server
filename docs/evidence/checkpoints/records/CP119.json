@@ -1,0 +1,229 @@
+{
+  "id": "CP119",
+  "previous": "CP118",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-05T05:58:27.730341+00:00",
+  "context_commit": "dae23b761b9ad1f8e88ac9441979751b44d325bf",
+  "owner": "Codex",
+  "reviewer": "Codex",
+  "question": "ResumeREaftermigration: bounded110slot2readyrefresh resolvesactualStartguard3/104barrier, andfreshrescueafterStart2?",
+  "scope": "AfterCP118PR189merge source-firstsavedslot2/group0/DCB7DA/known110layout. Addoneopt-in-onlydiagnosticreadyrefreshafterreturn,191tests; singleboundedisolatedsameprofileWinewithknownOS/readonlynativeguards. ActualStart2verifiedbutR2rescuefailedbound; no newnativebody/binary/stateforce.",
+  "artifacts": [
+    {
+      "name": "CA-r2-login-logout.exe",
+      "sha256": "660447c293ce92270cb9b5815331bca976e8f156366e1fe50b217b6c12e60ce3"
+    },
+    {
+      "name": "CA-r2-stage-social.exe",
+      "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+    },
+    {
+      "name": "CA-r2-stage-social.exe Bcopy",
+      "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+    },
+    {
+      "name": "modO.bin",
+      "sha256": "a08950c833d3acab8281049def7b3dc96b221f107eeda01da3a548e34b91dce5"
+    }
+  ],
+  "locators": [
+    "CP118PR189head4c711d6120edb6cd532fa97ca6578781c9b59c45/mergedae23b761b9ad1f8e88ac9441979751b44d325bf/CLEANMERGEABLEchecks[]; migration117objects166881rows36auditswholeequivalent/118complete170314verified/0missingerrors.",
+    "Run8db983a170ce9ca17bd86a1be7b204a9d9926b000a2c51ae8651f1abb9cde532/313.107640202s/1840raw/1894joins/exit1R2norescue/serviceerrors0. R1rescue/resultreturn/B95/A104/R2key12346/native121155clocks.",
+    "Actualslot2group1/DCAD80return0/DE0463build104 versusCP118slot2group0/DCB7DAreturn3. One110slot2state0x24tail0perpeer, noactualC95/thirdliveclient. KnownVADE0310/DCB750/DE03F3/DE0463/E6F060/E86820/getter52A350; modOa08950/base400000/RVA=VA−400000."
+  ],
+  "findings": [
+    {
+      "summary": "Opt-infixedrescueprofileonly110synthetic2readyrefreshafterexistinghostguestrefresh, defaultoffnoextra110. 191tests; doesnotfake95orchangeactortrap/cursor/credit. Emulatorrosterpolicy, notoriginalready/teamlaw.",
+      "source": "emu_choice",
+      "status": "design",
+      "method": "design",
+      "canonical": "docs/PROTOCOL.md#rescue-slot-refresh",
+      "limits": "FixedfriendlyAB+synthetic2/2realmodifiedWineclients. OnlyStartbarrierfixed:slot2group1/guard0/actual104/Start2/key/clocks. R2B17→19/no18/freshrescueboundexit1 retained, no fullreset/fullmatch/gate/auth/vanilla/LANInternet. Sourceprofilefrozenperrun, rawcleanupcomplete; oldcheckpointobjectsimmutable/reviewwaived/AUD036next120.",
+      "evidence": [
+        "R-01916",
+        "R-01938",
+        "R-01947"
+      ]
+    },
+    {
+      "summary": "Afterrefreshnativeactualslot2group1/roomguard0/build104/returnedA104→Start2/native121clocks/153key12346, sameprofile/OS/control. BoundeddiagnosticStartbarrierresolved; nofreshrescueresetsuccessclaim.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#rescue-slot-refresh",
+      "limits": "FixedfriendlyAB+synthetic2/2realmodifiedWineclients. OnlyStartbarrierfixed:slot2group1/guard0/actual104/Start2/key/clocks. R2B17→19/no18/freshrescueboundexit1 retained, no fullreset/fullmatch/gate/auth/vanilla/LANInternet. Sourceprofilefrozenperrun, rawcleanupcomplete; oldcheckpointobjectsimmutable/reviewwaived/AUD036next120.",
+      "evidence": [
+        "R-01948",
+        "R-01851",
+        "R-01876"
+      ]
+    },
+    {
+      "summary": "R2plannedfreshrescuefailed: actualB17→19/no18afterordinaryAUp/boundexit1/serviceerrors0. Native/imageA/BpositiondiffneedsfreshXY/input/peerapplymeasurement, no causefromimage or minted18/relaxdeathguard.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#rescue-slot-refresh",
+      "limits": "FixedfriendlyAB+synthetic2/2realmodifiedWineclients. OnlyStartbarrierfixed:slot2group1/guard0/actual104/Start2/key/clocks. R2B17→19/no18/freshrescueboundexit1 retained, no fullreset/fullmatch/gate/auth/vanilla/LANInternet. Sourceprofilefrozenperrun, rawcleanupcomplete; oldcheckpointobjectsimmutable/reviewwaived/AUD036next120.",
+      "evidence": [
+        "R-01948",
+        "R-00001",
+        "R-00002",
+        "R-01848"
+      ]
+    },
+    {
+      "summary": "CP118PR189mergedandissue188closedafterorganizationacceptance+actualREresume. Currenttaskstates/PLANsyncclosedwithnewclosedstep; oldCP118record/evidencemanifests/migrationdataunchanged, nextaudit120.",
+      "source": "design",
+      "status": "design",
+      "method": "documentation",
+      "canonical": "docs/PROTOCOL.md#rescue-slot-refresh",
+      "limits": "FixedfriendlyAB+synthetic2/2realmodifiedWineclients. OnlyStartbarrierfixed:slot2group1/guard0/actual104/Start2/key/clocks. R2B17→19/no18/freshrescueboundexit1 retained, no fullreset/fullmatch/gate/auth/vanilla/LANInternet. Sourceprofilefrozenperrun, rawcleanupcomplete; oldcheckpointobjectsimmutable/reviewwaived/AUD036next120.",
+      "evidence": [
+        "R-01970",
+        "R-01971",
+        "R-00012"
+      ]
+    }
+  ],
+  "verification": [
+    {
+      "check": "191server tests; nativecopiedsecuregetter/typedpacket/153checks",
+      "result": "pass",
+      "evidence": [
+        "R-01947",
+        "R-01864",
+        "R-01877",
+        "R-01879"
+      ],
+      "limits": "FixedfriendlyAB+synthetic2/2realmodifiedWineclients. OnlyStartbarrierfixed:slot2group1/guard0/actual104/Start2/key/clocks. R2B17→19/no18/freshrescueboundexit1 retained, no fullreset/fullmatch/gate/auth/vanilla/LANInternet. Sourceprofilefrozenperrun, rawcleanupcomplete; oldcheckpointobjectsimmutable/reviewwaived/AUD036next120."
+    },
+    {
+      "check": "1894same-runrelations incl1840rawhash/sourcefreeze/nativeguard0/actual104/Start2/currentkey",
+      "result": "pass",
+      "evidence": [
+        "R-01948"
+      ],
+      "limits": "FixedfriendlyAB+synthetic2/2realmodifiedWineclients. OnlyStartbarrierfixed:slot2group1/guard0/actual104/Start2/key/clocks. R2B17→19/no18/freshrescueboundexit1 retained, no fullreset/fullmatch/gate/auth/vanilla/LANInternet. Sourceprofilefrozenperrun, rawcleanupcomplete; oldcheckpointobjectsimmutable/reviewwaived/AUD036next120."
+    },
+    {
+      "check": "PlannedR2freshrescue",
+      "result": "fail",
+      "evidence": [
+        "R-01848",
+        "R-01948",
+        "R-00001"
+      ],
+      "limits": "ActualB17→19/no18, boundexit1; keepplannedfailure, notfullresetacceptance."
+    }
+  ],
+  "evidence": [],
+  "evidence_manifests": [
+    {
+      "path": "docs/evidence/checkpoints/evidence/CP119-rescue-slot-refresh.json",
+      "bytes": 494475,
+      "sha256": "bf146c24a8bb43fe8b7f8cb76e5d0759c79c8d052d07eabd508a6438f68e7c95",
+      "count": 1973
+    }
+  ],
+  "delta": {
+    "added": [
+      "Diagnostic110synthetic2readyrefresh/191tests/nativeguard0/104/Start2.",
+      "R2freshrescuefailed/raw/hash/positiondifference preserved, nextcurrentXYinput/peerapply."
+    ],
+    "corrected": [
+      "CP117118Startbarrierresolvedonlyfixedpolicyprofile; freshrescue/fullresetremainsfailed.",
+      "CP118PR189/issue188complete/currentdeclarationssync, oldrecordsunchanged."
+    ],
+    "superseded": [
+      "NEXT-RESCUE18-START-GUARD scopedresolved; NEXT-RESCUE18-R2-CONTACT active."
+    ]
+  },
+  "blockers": [
+    "R2B17→19/no18afterAUp: nativecurrentpositions/input/UDPapplycauseunknown. NoStart2freshrescue/fullreset/authority/gates/LANInternet."
+  ],
+  "next_steps": [
+    {
+      "id": "NEXT-CHECKPOINT-STORE-V2",
+      "task": "KRE-073",
+      "state": "closed",
+      "action": "CP118PR189merged170314verified/issue188closedafterREresume; migrationacceptancecomplete, no gateclosed.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-RESCUE18-START-GUARD",
+      "task": "KRE-005b",
+      "state": "closed",
+      "action": "CP119diagnostic110slot2refresh restoresguard0/actual104/Start2. Freshrescuepartialseparate.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-RESCUE18-R2-CONTACT",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "Source-firstCP119currentR2nativeXY/input/peerapplyCP111. B17→19/no18, measurefreshfeedbackwindowDown/Up andnormalreleasebasednativeposition; do notmint18/forceactor/relaxdeathguard. ManualperiodicauditdueCP120.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    }
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-11-05T05:58:27.730341+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "Codex solo RE/code/runtime/selfcheck, not independent approval.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Owner explicitly requested solo without Claude review."
+    }
+  },
+  "docs_sync": [
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "CP119scopedStartfix/R2failure/nextXYinputpeer; CP118PR189issue188closed; nooldrecord/gate/auditreset."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "CP119scopedStartfix/R2failure/nextXYinputpeer; CP118PR189issue188closed; nooldrecord/gate/auditreset."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "updated",
+      "reason": "CP119scopedStartfix/R2failure/nextXYinputpeer; CP118PR189issue188closed; nooldrecord/gate/auditreset."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "updated",
+      "reason": "CP119scopedStartfix/R2failure/nextXYinputpeer; CP118PR189issue188closed; nooldrecord/gate/auditreset."
+    },
+    {
+      "path": "docs/features.json",
+      "state": "updated",
+      "reason": "CP119scopedStartfix/R2failure/nextXYinputpeer; CP118PR189issue188closed; nooldrecord/gate/auditreset."
+    },
+    {
+      "path": "docs/COVERAGE.md",
+      "state": "updated",
+      "reason": "CP119scopedStartfix/R2failure/nextXYinputpeer; CP118PR189issue188closed; nooldrecord/gate/auditreset."
+    },
+    {
+      "path": "docs/evidence/rescue-service/README.md",
+      "state": "updated",
+      "reason": "CP119scopedStartfix/R2failure/nextXYinputpeer; CP118PR189issue188closed; nooldrecord/gate/auditreset."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/review.json",
+      "state": "updated",
+      "reason": "CP119scopedStartfix/R2failure/nextXYinputpeer; CP118PR189issue188closed; nooldrecord/gate/auditreset."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
+      "state": "updated",
+      "reason": "CP119scopedStartfix/R2failure/nextXYinputpeer; CP118PR189issue188closed; nooldrecord/gate/auditreset."
+    }
+  ]
+}
