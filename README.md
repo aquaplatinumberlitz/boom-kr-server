@@ -41,17 +41,17 @@ Hai copy KR Wine đã chạy login/sảnh/phòng/Battle và các chu kỳ kết 
 [kim/reset](docs/PROTOCOL.md#needle-round-reset), [cứu hai chiều và hai kết quả](docs/PROTOCOL.md#rescue-two-results),
 [deep chain/reset](docs/PROTOCOL.md#recursive-chain-cycles) giữ phạm vi và giới hạn tại nguồn chuẩn.
 
-**Mốc mới CP140:** hai virtualhost đã hoàn tất hai basic cycles cùngrun: bom A → trap/deaththật →
-kếtquảsurvivor → vềphòng/reset → vònghai. [Contract/giới hạn](docs/PROTOCOL.md#virtual-basic-cycles),
-[raw/hash và sharedpartial](docs/evidence/peer-endpoints/README.md#cp140). Ảnhcuối cảhai hiệnphòng;
-chưafinalReadyinput, fullmatch/K6a/realLAN/Internet.
+**Mốc mới CP141:** service nhận bind/peer IPv4 tường minh, mặc định loopback. Hai virtualhost chạy
+hai basic cycles bằng module production, **đã bỏ shim địa chỉ**; sau return2, normal BReady tạo actual95
+và cả hai nhận native110, ảnh phòng hiện ready badge. [Contract/giới hạn](docs/PROTOCOL.md#service-address-config),
+[raw/hash](docs/evidence/peer-endpoints/README.md#cp141). Chưa fullmatch/K6a/LAN thật/Internet.
 
-CP139 đã merge [PR210](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/210) tại`1ecd3fe`.
-CP140/AUD043 docs/evidence đangtựkiểm; [review độc lập waived](docs/evidence/checkpoints/review-waiver.json).
-Audit qua140/kế **CP144**; gates vàcomplex-routeUIdebt giữmở.
+CP140/AUD043 đã merge [PR211](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/211) tại`f4f3371`.
+CP141 code/runtime/docs đang tự kiểm; [review độc lập waived](docs/evidence/checkpoints/review-waiver.json).
+Audit qua140, kế **CP144**; shared-route partial và CP137 complex-route UI debt giữ riêng.
 
-Theo [PLAN](docs/PLAN.md#current-order), đưa bind/peerIPtườngminh vào service đểbỏmeasurementshim,
-kiểmlạibasic2cyclesvàReady saureturn2. Mạngđãđo làhai virtualhost cùngmáy, chưaLANthật.
+Theo [PLAN](docs/PLAN.md#current-order), ghép native movement hai chiều qua hai vòng với production
+addresses/basic lifecycle trong cùng run. Tái dùng observer và input đã đo; không lặp shared geometry.
 
 Đích đầu: hai client thật chơi hai trận liên tiếp; mở bốn client và hardening sau đó.
 

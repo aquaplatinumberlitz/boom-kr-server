@@ -129,3 +129,33 @@ TiếpPLAN: thayprivatebind/153address shim bằng cấu hình tườngminh ởs
 khôngđổi; verifywire/nativebasic2cycles vàReadyB/110saureturn2, khôngStart3. KhôngtựtinIPclient99,
 khônggánIP1làpublicIP hoặc triểnkhaiNAT/relay. Đây là virtualhosts/mộtphysicalhost, chưarealLAN/K6b/
 Internet/K6c/fullmatch/K5/K6a/originalauthauthority.
+
+
+<a id="cp141"></a>
+## CP141 — Production bind/peer IPv4, basic2cycles và Ready sau return2
+
+Baseline CP140/PR211 merge`f4f3371`; tái sử dụng CP138–140 layout/namespace/directUDP/basic Space-stay
+và các native reader hiện có. [Contract/giới hạn](../../PROTOCOL.md#service-address-config),
+[câu hỏi](../../RESEARCH.md#gap-peer-relay), [thứ tự](../../PLAN.md#current-order). Nguồn cũ KR/VN
+và hash/build/locator trong `local/research/codex/service-peer-address-r1/reuse-question.json`;
+không đọc thêm body native, port opcode VN hoặc tìm lại cơ chế bom/codec.
+
+Run `service-peer-address-r1/cycles`:296,620s/exit0/**1167 raw**; run.json SHA256
+`aa05fbfaead45ec8e7b85aeb607dfe5afe2741e925ec3c56845792ee5566e152`.
+`cycles-recipe.json` chạy module production với explicit bind10.77.0.1/A.2/B.3; không alias_service.py,
+không socket/153 shim.20 listener thực privateIP, actual CA+wineserver namespace trước input;521
+veth PCAP records/noUDPproxy/actual99ports và bốn153 khớp toàn97byte theo profile/key/role.
+
+`basic-verification.json`2921 checks xác minh hai cycles/current17→19hash/IDs/keys/195seed/statbaseline/
+native159158175180110/ReadyStart giữa vòng; `address-ready-verification.json`25 checks xác minh
+module/config/wire/actual95seq427/SHA/native110 cả hai trước cleanup/noStart3. 231server tests pass,
+trong đó5 address regressions;192 actor/261 typedpacket/12 native153/2364flaggetter+2340array checks
+là emulation trên copied runtime bytes, tách khỏi runtime. `visual-review.json` pin bốn ảnh gốc
+và contact đã xem: phòng cả hai, ready badge sau BReady. Recipe/preflight/rawseal ghi source frozen,
+cleanup hoàn tất trước seal; không thay binary/DB/pack nguồn.
+
+`analysis-corrections.json` giữ lỗi invocation thiếu PYTHONPATH và failed exact+1native110 draft:
+B có thêm survivor110 sau observation khi cleanup A; final verifier giới hạn native trước107,
+đối chiếu actual95 chunk và hai ready110 sends trước observation. Không đổi raw/conclusion/gate.
+Không movement/itempickup/sharedcascade/fullmatch/K6a/LAN/NAT/Internet; CP137 complexUI debt riêng.
+IP1/subtype39 opaque. CP141 selfcheck/pendingPR, review waived; AUD043 qua140/kế144.
