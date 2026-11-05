@@ -1,6 +1,6 @@
 # KR 00967 — contract tương thích client gốc
 
-Revision kr-legacy-contract-r1; cập nhật06/11/2026 JST (CP144; AUD044 quaCP144, kếCP148).
+Revision kr-legacy-contract-r1; cập nhật06/11/2026 JST (CP145; AUD044 quaCP144, kếCP148).
 **Contract có bằng chứng từng phần; chưa nghiệm thu full codec K2**.
 Lộ trình và thứ tự task chỉ giữ ở [REWRITE_PLAN — KRE](PLAN.md).
 Đây là contract của repo server KR. ADR0009 của bản viết lại là nguồn lịch sử để so sánh;
@@ -5024,3 +5024,40 @@ Còn thiếu same-endpoint oldUDP trên directvirtualtopology trong chính run n
 riêng. Fullinventory/accountresume/EOFvariants/halfclose/originalauthauthority/fullcodec/UDPgrammar/
 physicalLAN/NAT/Internet/K6a/gates và CP137complexUI/sharedgeometry mở. AUD044qua144/kếCP148;
 nextwork chỉ PLAN, không suy gate từbench/ảnh/kiểm script.
+
+
+<a id="virtual-exact-old-udp"></a>
+### Exact old UDP từ cùng endpoint trên direct virtualhosts — CP145
+
+**kr_runtime/confirmed hẹp; AF_PACKET replay/offload policy là design.**
+[Recipe/raw/hash/control](evidence/peer-endpoints/README.md#cp145). Reuse CP047 key XORprofileID,
+CP13012known readonly ingress/endpoint/queue/drain/consumer/drop probes và CP143–144 production
+virtualprofiles. Không nativebody mới/port opcode/layout VN, không mở toànUDPgrammar.
+
+R1 đã chạy hai normalcycles nhưng **không đạt mục tiêu key-drop cũ**: rootkv-a lưu frame trước
+checksumoffload, bytes IP checksum hợp lệ/UDPchecksum không hợp lệ, exact replay không có exactnative
+oldingress. Không suy KRdrop từ im lặng. Owned isolated-veth control với payload tự sinh: default
+receive1/originalonly/checksumresidue≠0; txrxoff nhận2/capturedframechecksum0. Control chứng minh lỗi
+bytes-only replay trong topology này, không nói mạng gốc làm mất UDP hoặc biến model thành KRproof.
+
+R2 mới tắt tx/rx offload **trên bốn ownedveth trướcclientlaunch**, dùng rawsend socket riêng để capture
+thấy cả original vàreplay. Source/profile/client/tuple/CRC/payload giữ, frame checksum tự hợp lệ,
+không sửa header hoặc gamebytes. ActualR1B→AEthernet59byte/UDP17byte/SHA có hai exactPCAPcopies:
+originalvòng1 và AF_PACKETinject sau153/clock2/currentkey. Đây không nativeB emission lầnhai.
+
+A12probesarmed trướcsend; exactnativeingress source10.77.0.3/actual99port→registeredpeer≠0→inner15
+vàoqueue tăng19/drain giảm19→selector0consumer13. NativeE667BE so **wire59/expected56**, slot1,
+round2→**E667C2key-drop**, không exactE668ADapply/after. MAC/IP/port/UDPchecksum/KRCRC/payload
+đều không rewrite. Cùng phase có13 currentnormal full13 apply; cửa sổ BRight sau đó có target/current
+progress. Không gọi việc thiếu displacement là negativeoracle; keybranch đã được quan sát.
+
+Cùng R2 có4normalmovementwindows/BombFireeffect/resetbothviews/8same4oldTCPguard/twoactualA118
+power2/current17→19hash/survivor175180110/195keyIDreset/finalnormalReady95native110/render; không
+Start3/guestEOF trong run này. Barrier25,603/25,038s<30 là run riêng, không sửa marginCP144 thành
+stabilityfix. R1partial/control/R2 được giữ riêng; AUD044through144/next148.
+
+Scope chỉ IDs1/2, keys12345→12346, stableactual99sourceIP/port/two virtualhosts samephysicalhost.
+Low8wrap256, forgedcurrentkey/auth, UDPtypemode/reliability/fullgrammar/NAT/realLAN/Internet/fullmatch/
+K6a/gates/CP137complexUI/sharedgeometry/fullinventory vẫn mở. TCP vẫn dùng childloopbackforward và
+fixturelocalredirect; native sourceIP crossvirtual proof không đồng nghĩa bootstrap/login trực tiếp
+trên LAN. Bước tiếp duy nhất PLAN là gỡ dependency TCPforward bằng đối chiếu endpoint chain.

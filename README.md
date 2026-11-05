@@ -41,17 +41,17 @@ Hai copy KR Wine đã chạy login/sảnh/phòng/Battle và các chu kỳ kết 
 [kim/reset](docs/PROTOCOL.md#needle-round-reset), [cứu hai chiều và hai kết quả](docs/PROTOCOL.md#rescue-two-results),
 [deep chain/reset](docs/PROTOCOL.md#recursive-chain-cycles) giữ phạm vi và giới hạn tại nguồn chuẩn.
 
-**Mốc mới CP144:** sau hai normal cycles có movement/item/selectedTCPguards/reset/Ready, run tiếp
-Start3/bomB rồi dừng đúng CA-B: actualEOF/fence/no158, A nhận forfeit và về phòng, slotB/ID2 được xóa.
-[Contract/giới hạn](docs/PROTOCOL.md#virtual-pending-guest-eof), [raw/hash](docs/evidence/peer-endpoints/README.md#cp144).
-Hai normal cycles và thirdabort tách rõ; chưa fullmatch/K6a/LAN thật/Internet.
+**Mốc mới CP145:** trên directvirtualUDP, frame thật vòng1 được replay nguyên source tuple ở vòng2:
+native queue/drain → key59≠56 → key-drop, không apply gói cũ; gói mới vẫn apply/progress. Cùngrun
+có movement/item/selectedTCPguards/hai kết quả/reset/Ready. [Contract/giới hạn](docs/PROTOCOL.md#virtual-exact-old-udp),
+[raw/hash và offloadcontrol](docs/evidence/peer-endpoints/README.md#cp145). Chưa fullmatch/K6a/LAN/Internet.
 
-CP143 đã merge [PR214](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/214) tại`c692c83`.
-CP144/AUD044 đang tự kiểm; [review độc lập waived](docs/evidence/checkpoints/review-waiver.json).
-Audit qua144, kế **CP148**. Barrier probe sát30s nên chưa bảo đảm coldstart; CP137UI/sharedgeometry giữ.
+CP144/AUD044 đã merge [PR215](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/215) tại`13b9f3a`.
+CP145 docs/evidence đang tự kiểm; [review độc lập waived](docs/evidence/checkpoints/review-waiver.json).
+Audit qua144, kế **CP148**; giữ R1partial/checksumcontrol/CP137UI/sharedgeometry và timeout limits.
 
-Theo [PLAN](docs/PLAN.md#current-order), reuse CP047/130 để kiểm exactoldUDP cùng source tuple ở
-vòng mới trên directvirtualtopology, pin native key/rejection/actor; không mở lại toàn UDPgrammar.
+Theo [PLAN](docs/PLAN.md#current-order), đối chiếu endpoint bootstrap→WCP→auth/redirect→channel để
+bỏ childTCPforward. PeerIPv4 đã cấu hình nhưng TCP flow hiện vẫn dựa fixtureloopback/measurementforward.
 
 Đích đầu: hai client thật chơi hai trận liên tiếp; mở bốn client và hardening sau đó.
 

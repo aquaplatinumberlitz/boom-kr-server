@@ -1,7 +1,7 @@
 # Kế hoạch server giả lập KR 00967
 
 Nguồn chuẩn của project `boom-kr-server`; bản nhập từ plan đã được dsh1/dsh2 review tại `1eee46d`.
-Cập nhật06/11 JST (CP144):2normalvirtualguardcycles rồiactualpendingBEOF/fence/nativeAforfeitcleanup đã đo; CP143/PR214mergedc692c83. CP144/AUD044tựkiểm/through144/next148.
+Cập nhật06/11 JST (CP145):exactoldUDP/directvirtualnativekeydrop/currentpositive+2guardcycles đãđo; CP144/AUD044PR215merged13b9f3a. CP145tựkiểm; auditthrough144/next148.
 
 
 ### Mục tiêu, baseline và phạm vi
@@ -37,13 +37,13 @@ với client Rust không chứng minh có thể điều khiển client KR bằng
 
 ### Tiến độ hiện hành theo bằng chứng
 
-| Task/mốc | Trạng thái tại CP144 | Nguồn chuẩn |
+| Task/mốc | Trạng thái tại CP145 | Nguồn chuẩn |
 |---|---|---|
 | KRE-004/issue6 | Đã review/merge PR7 và đóng issue:recipe r1 đến local accept;không phải full K1 | [Wine r1](evidence/wine/README.md) |
 | Bootstrap reply | PR8 đã merge;debugger ProcessPatchreturn1,không ép success | [bootstrap evidence](evidence/bootstrap-wire/README.md) |
 | KRE-005a/issue9,R2 | PR10 đã merge:3 cold start cửa sổ/second accept;issue9 còn mở | [R2 evidence](evidence/wine-r2/README.md) |
 | WCP hai-reply | Run CP001 là lịch sử chưa C→S; CP006 đã đo request đầu trên copy tham số hóa | [PROTOCOL](PROTOCOL.md#wcp),[WCP evidence](evidence/wcp/README.md) |
-| KRE-005b/issue14 | CP006–143 đã merge; CP144 2normalcycles+thirdpendingEOF/nativecleanup có nguồn; shared/complexUIgaps giữ; fullround/authority/full auth còn mở | [Q-023](RESEARCH.md#q-023), [service](evidence/probe-service/README.md) |
+| KRE-005b/issue14 | CP006–144 đã merge; CP145 directvirtualoldUDPkeydrop/currentpositive và2guardcycles có nguồn; shared/complexUIgaps giữ; fullround/authority/full auth còn mở | [Q-023](RESEARCH.md#q-023), [service](evidence/probe-service/README.md) |
 | K0/K1 | Chưa nghiệm thu toàn gate;Windows vanilla/control ownership và các điều kiện còn thiếu giữ mở | Gate dưới,[Q-022](RESEARCH.md) |
 | K2a/K2 | Primitive/WCP, CP057stream native/model và CP058–060authcallback137/135/errors0 đã có; fullcodec/authauthority/reconnect và gate chưa pass | [PROTOCOL](PROTOCOL.md#login-auth),[Q-023](RESEARCH.md#q-023) |
 | K3 | Copy đã vẽUI/đóngnotice, A/B/Cprofile đọc sạch và mộtnamedcachewarm được nhận; identityauthority/toàncache/codec/K3 chưa nghiệm thu | [Contract sảnh](PROTOCOL.md#channel-lobby) |
@@ -63,21 +63,22 @@ Một blocker chỉ kết thúc nhánh đo tương ứng; ghi rõ rồi tiếp v
 KRE-073/[#188](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/188) đã giao
 [PR189](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/189)/merge`dae23b7`, CP118 vàđóng;
 selectiveCLI/historicalmigration xong, không còn taskactive tổ chức. CP119 đãtiếpactualRE sau merge.
-1. **KR-F002/X002 — exact old UDP giữ source tuple trên directvirtualtopology:**
-   [CP144](PROTOCOL.md#virtual-pending-guest-eof) đã có2normalguardcycles rồipendingguestEOF/fence/
-   nativeAcleanup, khônglặpEOF/finalReady riêng. Reuse CP047/130 exactoldUDP/queue/key/handler probes,
-   CP143–144 currentproduction/private153/directveth/4nativewindows/profile/lifecycle/guard sources.
-   Trướcnhánh đọc oldCP047/130 cachedsites/recipes; chỉđo khácbiệt directvirtual/matchedsource/currentepoch.
-   Lưu actualB→A epoch1movement Ethernet/datagram vàmetadata/SHA; chỉ phátlại nguyênframe khi153/
-   clock2/currentkeyđãđặt, cùngsourceIP/port, CRC/payload khôngđổi. RootAF_PACKET replay ownedveth có
-   thể tái dùng capturedframe nếu recipe chứngminh egress/ingress đúng; bench topology trước nếu cần.
-   Đây là fault-injection, không nativeB emission. Nativeingress/exactwire→currentregisteredpeer/key
-   reject/noactorapply vs freshnormalmovement positive cùngepoch; không suy vắnghandlerlàkeyreject
-   nếu chưaprobe nhánh. Quota/readiness phải tách replay vànormal windows, no endpoint/key/body rewrite.
-   Reuse2cycles/currenttrap/deadline/drain/TCPselectedguards/Ready nếukhônglàmobserverheavyblocking;
-   nếu margin30s trởthànhblocker ghiactualboundary/control, khôngquytimingcause hoặc nângtimeouttùytiện.
-   Unknown fullUDPgrammar/reliability/auth/fullinventory/physicalLAN/NAT/Internet/K6a/gate riêng;
-   CP137complexUI/sharedgeometrydebt giữ. Khôngsửa source/config giữa run; cleanup/seal vànative/rawhash.
+1. **KR-L001/S001 — endpoint chain để bỏ childTCPforward:**
+   [CP145](PROTOCOL.md#virtual-exact-old-udp) đã chứngminh exactoldUDP/currentkeydrop/matchedtuple
+   vàfreshpositive/directvirtual2cycles. Khônglặpoldqueue/keybranch hoặcgiảiNAT/grammartrước TCPpath.
+   PeerIPv4configCP141 chưađổi bootstrap/WCP/authredirect/channelTCPloopback fixtures. Currentvirtual
+   client vẫn localTCPforward127→rootprivate10.77.0.1, thêmmeasurementTCPproxy3858→23858 choselectedguards.
+   Reuse CP006–008 WCPfields, CP014/015redirect7/channelendpoints/nativecallers và profileexport/current
+   rawconnections. Trướcnhánh lập gọn bảng từngconnection/caller/sourceendpoint/fixturefield/seq/IPendian
+   đangchạy; đọc cache/oldKR/VNđúngcâuhỏi, chỉtrace fieldthiếu, khôngre lại fullauth/codec.
+   Chuẩnbị profile/bảncopy/harnessmới choconnecttrực tiếp rootprivate stub từhai childnetns, hostresolution
+   files-only/côlập/no-default-routegiữ. IP/portdooperatorchọn làdesign; patchclientcopy nếuconsumer buộc
+   hardcode phải pinbeforeafter/control/rollback, khôngsửasourceclient/DB/pack. Khôngsửafrozenfixtures.
+   Đo actualconnect endpoints/99/153/owners vànativeWCP/login/sảnh/phòng/clock; tiếphai cycles nếu route
+   đãđiđược. Khônglấyaccept/alive thaylogin/nativeflow, khôngtuyênbốrealLANhoặcK6b từvirtualhosts.
+   TCPproxyselectedguard cóthểgiữroot đểtách nókhỏichildforward, ghi rõscope/no crossrunfullmatch.
+   Unknown auth/identity/codec/fullinventory/physicalLAN/NAT/Internet/gates vàCP137UI/sharedgeometry
+   giữriêng. Source/configfrozenwhilerun; cleanup/rawseal/docs theo meaningfulmilestone.
    [#14](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/14) epic giữ mở.
    <!-- active-issue: 14 --> AUD044through144; periodic audit kế **CP148**.
 2. **KR-B003/KR-F006 — nợ có giới hạn:** [CP057](PROTOCOL.md#codec-stream-boundaries) đã đo stream/
@@ -105,7 +106,7 @@ Bảng này chỉ phân công/thứtự; acceptance/PR/bằngchứng ởissue. [
 
 | Thứ tự/scope | Issue | Trạng thái/phần còn thiếu |
 |---|---|---|
-| Hiện hành RE | [#14/KRE-005b](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/14) | CP006–143 merged; CP144 pendingguestEOF sau2normalcycles/nativecleanup có nguồn/tựkiểm. ExactoldUDPdirectvirtual làbước1; gaps giữ; fullauth/authority/fullmatch/gates mở. |
+| Hiện hành RE | [#14/KRE-005b](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/14) | CP006–144 merged; CP145 exactoldUDP/currentpositive/directvirtual2cycles có nguồn/tựkiểm. DirectTCPendpointchain/bỏchildforward làbước1; gaps giữ; fullauth/authority/fullmatch/gates mở. |
 | Control theo trigger/gate | [#1/KRE-001](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/1), [#2/KRE-002](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/2) | Windowsoriginal/ownership/K0K1/fullbootstrapconfig; reuseWine/import/replyđãđo. |
 | Codec/identity khi cần | [#3/KRE-003](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/3), [#9/KRE-005a](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/9) | Fullcodec/livebounds vàintermittentmainstartupcause cònthiếu; khônglặpprimitive/auxiliarylocale. |
 

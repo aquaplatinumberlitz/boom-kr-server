@@ -1,0 +1,263 @@
+{
+  "artifacts": [
+    {
+      "name": "CA-r2-login-logout.exe",
+      "sha256": "660447c293ce92270cb9b5815331bca976e8f156366e1fe50b217b6c12e60ce3"
+    },
+    {
+      "name": "CA-r2-stage-social.exe",
+      "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+    },
+    {
+      "name": "CA-r2-stage-social.exe Bcopy",
+      "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+    },
+    {
+      "name": "modO.bin",
+      "sha256": "a08950c833d3acab8281049def7b3dc96b221f107eeda01da3a548e34b91dce5"
+    }
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-11-05T23:37:21.543759+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "Codex solo RE/code/runtime/selfcheck, not independent approval.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Owner explicitly requested solo without Claude review."
+    }
+  },
+  "owner": "Codex",
+  "reviewer": "Codex",
+  "id": "CP145",
+  "previous": "CP144",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-05T23:37:21.543759+00:00",
+  "context_commit": "13b9f3ab1eede62a83e2652cd888ec5a7aae3192",
+  "question": "DoesexactoldUDP retainmatchedsourceendpoint yetreachR2nativekeydrop/noapplyondirectvirtualhosts withcurrentpositive andtworesultresetcycles?",
+  "scope": "ReuseCP047keyXORID/CP13012knownreadonlyqueue/drain/consumer/drop andCP143/144virtualproductionprofile. Newownedvethcapture/replaytransport/offloadcontrol only; no newnativebody orproductionchange.",
+  "locators": [
+    "BaselineCP144PR215heade725759792be33d86e1beb1133743306f41a2818/merge13b9f3a/exactCLEANMERGEABLEchecks[]. Production231testsreused. AUD044through144/next148.",
+    "R2runa4cb131280e20d85538157af34ce1953a2ae746f78c085d9dc21ea1967698b1b/349.083540466s/exit0/1905raw/637vethrecords.19exactoldjoins/4013basic/594peer+1444wire/70pickup/87guard/25addressReady. 13samephasecurrentapply;4normalpeerwindows/freshR2BRighttargetcurrentprogress.",
+    "R1rundc6dd3b69bed85a36928100140089906bf3a99385882cc2739036d499f129e37/352.402302423s/exit0/1896raw/twonormalnativecycles butnoexactoldnativeingress. StoredIPchecksum0/UDPchecksumresidue2485, noKRkeydropproof. Ownedcontrol defaultUDPchecksum42515/receive1 vs txrxoff0/receive2/syntheticmodel.",
+    "R2exactEthernet59SHAa2f3e898ae68a10c82099e02c0736659079a39e9f30de5d0486a561f6bbd8318/UDP17SHA4a1f34f7dd63e7fd80c5255bd1af153af873419e490678033f5390a800f7c15d; actualsourceB.3/port pinned99→A.2. 12AarmedbeforeAF_PACKETsend/exactframePCAPtwooccurrences/checksums0/endpointpeer≠0/queue+19/drain−19/key59expected56/slot1/E667C2/noexactapply.",
+    "Known13DE7AA/13DE949/14E8280/14E8378/14E8480/14E8577/14E85B7/E66680/E667BE/E667C2/E668AD/E668B2/52A350/E8A340/14EF300; static660447/runtimee9bb4766/modOa08950/base400000/RVA=VA−400000; no newnativebody."
+  ],
+  "findings": [
+    {
+      "summary": "R2exactR1B→Aframe sameMACIPport/checksumCRCpayload→actualnativeingress/registeredendpoint≠0/inner15queue+19drain−19/consumer13wire59expected56→keydrop/noexactapply; current13samephaseapply/freshR2BRightpositive.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#virtual-exact-old-udp",
+      "limits": "ModifiedWine/twoactualCA+wineserverprivatevirtualnetns/samephysicalhost/directUDP/productionIPv4/TCPforwardstub+capturedbodyTCPproxy. R2ownedvethprelaunchtxrxoff/separaterawsendsocket/exactR1B→AEthernetMACIPportUDPchecksumKRCRCpayloadunchanged, AF_PACKETinjectnotnativeBemission. Nativeexactoldingress/registeredendpoint/15queue19drain/13consumerwire59expected56/E667C2drop/noexactapply/current13samephaseapply/freshR2positive plus2guardcycles/items/reset/Ready/noStart3. Notlow8wrap/forgedcurrentauth/fullUDP/reliability/NAT/physicalLAN/Internet/fullmatch/K6a/gates/CP137complexUI/sharedgeometry/fullinventory. R1invalidstoredchecksum/noexactingress partialnotKRdrop; ownedcontrolmodelseparate. Sourcebinary/DBpackunchanged; frozenuntilcleanup/seal.",
+      "evidence": [
+        "RUN-03922",
+        "RUN-03904",
+        "RUN-03909"
+      ]
+    },
+    {
+      "summary": "Same-runproductionvirtual4normalpeerwindows/BombFire/native2survivor175180110/currenttrap/195keyIDreset/8same4oldTCPguard/finalReady95native110/render, noaddressshim/UDPproxy. NoEOFfaultinR2; keepCP144scope separate.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#virtual-exact-old-udp",
+      "limits": "ModifiedWine/twoactualCA+wineserverprivatevirtualnetns/samephysicalhost/directUDP/productionIPv4/TCPforwardstub+capturedbodyTCPproxy. R2ownedvethprelaunchtxrxoff/separaterawsendsocket/exactR1B→AEthernetMACIPportUDPchecksumKRCRCpayloadunchanged, AF_PACKETinjectnotnativeBemission. Nativeexactoldingress/registeredendpoint/15queue19drain/13consumerwire59expected56/E667C2drop/noexactapply/current13samephaseapply/freshR2positive plus2guardcycles/items/reset/Ready/noStart3. Notlow8wrap/forgedcurrentauth/fullUDP/reliability/NAT/physicalLAN/Internet/fullmatch/K6a/gates/CP137complexUI/sharedgeometry/fullinventory. R1invalidstoredchecksum/noexactingress partialnotKRdrop; ownedcontrolmodelseparate. Sourcebinary/DBpackunchanged; frozenuntilcleanup/seal.",
+      "evidence": [
+        "RUN-01997",
+        "RUN-03941",
+        "RUN-03949",
+        "RUN-04081"
+      ]
+    },
+    {
+      "summary": "R1targetpartial: invalidstoredUDPchecksum/noexactoldnativeingress; noKRdropclaim. Ownedvethsyntheticcontrol defaultreceive1/csuminvalid vs txrxoffreceive2/csum0 establishesbytes-onlyreplaytransportproblem. R2prelaunchoffloadsoffprivateveth/separatesendsocket, no payloadheaderrewrite.",
+      "source": "design",
+      "status": "design",
+      "method": "design",
+      "canonical": "docs/PROTOCOL.md#virtual-exact-old-udp",
+      "limits": "ModifiedWine/twoactualCA+wineserverprivatevirtualnetns/samephysicalhost/directUDP/productionIPv4/TCPforwardstub+capturedbodyTCPproxy. R2ownedvethprelaunchtxrxoff/separaterawsendsocket/exactR1B→AEthernetMACIPportUDPchecksumKRCRCpayloadunchanged, AF_PACKETinjectnotnativeBemission. Nativeexactoldingress/registeredendpoint/15queue19drain/13consumerwire59expected56/E667C2drop/noexactapply/current13samephaseapply/freshR2positive plus2guardcycles/items/reset/Ready/noStart3. Notlow8wrap/forgedcurrentauth/fullUDP/reliability/NAT/physicalLAN/Internet/fullmatch/K6a/gates/CP137complexUI/sharedgeometry/fullinventory. R1invalidstoredchecksum/noexactingress partialnotKRdrop; ownedcontrolmodelseparate. Sourcebinary/DBpackunchanged; frozenuntilcleanup/seal.",
+      "evidence": [
+        "RUN-00003",
+        "RUN-01920",
+        "RUN-03911",
+        "RUN-01928"
+      ]
+    },
+    {
+      "summary": "TCPvirtualroute stilldependschildloopbackforward/bootstrapWCPauthredirectchannelfixtures despitepeerIPv4config. PLANnexttargetendpointchain/directTCP usesexistingCP006–008/014015fields/callers ratherthanfullauthRE.",
+      "source": "design",
+      "status": "design",
+      "method": "documentation",
+      "canonical": "docs/PROTOCOL.md#virtual-exact-old-udp",
+      "limits": "ModifiedWine/twoactualCA+wineserverprivatevirtualnetns/samephysicalhost/directUDP/productionIPv4/TCPforwardstub+capturedbodyTCPproxy. R2ownedvethprelaunchtxrxoff/separaterawsendsocket/exactR1B→AEthernetMACIPportUDPchecksumKRCRCpayloadunchanged, AF_PACKETinjectnotnativeBemission. Nativeexactoldingress/registeredendpoint/15queue19drain/13consumerwire59expected56/E667C2drop/noexactapply/current13samephaseapply/freshR2positive plus2guardcycles/items/reset/Ready/noStart3. Notlow8wrap/forgedcurrentauth/fullUDP/reliability/NAT/physicalLAN/Internet/fullmatch/K6a/gates/CP137complexUI/sharedgeometry/fullinventory. R1invalidstoredchecksum/noexactingress partialnotKRdrop; ownedcontrolmodelseparate. Sourcebinary/DBpackunchanged; frozenuntilcleanup/seal.",
+      "evidence": [
+        "RUN-04017",
+        "RUN-02003"
+      ]
+    }
+  ],
+  "verification": [
+    {
+      "check": "19exactoldEthernet/source/checksum/nativeingressqueuekeydrop/noapply/currentpositivejoins;162copied52A350getters",
+      "result": "pass",
+      "evidence": [
+        "RUN-03922",
+        "RUN-03921",
+        "RUN-04066"
+      ],
+      "limits": "ModifiedWine/twoactualCA+wineserverprivatevirtualnetns/samephysicalhost/directUDP/productionIPv4/TCPforwardstub+capturedbodyTCPproxy. R2ownedvethprelaunchtxrxoff/separaterawsendsocket/exactR1B→AEthernetMACIPportUDPchecksumKRCRCpayloadunchanged, AF_PACKETinjectnotnativeBemission. Nativeexactoldingress/registeredendpoint/15queue19drain/13consumerwire59expected56/E667C2drop/noexactapply/current13samephaseapply/freshR2positive plus2guardcycles/items/reset/Ready/noStart3. Notlow8wrap/forgedcurrentauth/fullUDP/reliability/NAT/physicalLAN/Internet/fullmatch/K6a/gates/CP137complexUI/sharedgeometry/fullinventory. R1invalidstoredchecksum/noexactingress partialnotKRdrop; ownedcontrolmodelseparate. Sourcebinary/DBpackunchanged; frozenuntilcleanup/seal."
+    },
+    {
+      "check": "R1exactoldkeydropgoal",
+      "result": "fail",
+      "evidence": [
+        "RUN-01928",
+        "RUN-00003",
+        "RUN-01930"
+      ],
+      "limits": "Twoactualnormalnativecyclespassscope butoldingressmissing/invalidstoredUDPchecksum; notKRdrop."
+    },
+    {
+      "check": "Ownedvethoffloadcontrol defaultvsdisabled/nohostnetworkchange",
+      "result": "pass",
+      "evidence": [
+        "RUN-01920",
+        "RUN-01919",
+        "RUN-01924"
+      ],
+      "limits": "Synthetictest/transportdesignmodel notKRgameproof; capturedbytesandkernelmetadataoffloadscope."
+    },
+    {
+      "check": "4013lifecycle/raw/sourcejoins/1905sealedraw/637veth/594peer1444wire/70pickup/87TCPguard/25addressReady",
+      "result": "pass",
+      "evidence": [
+        "RUN-01997",
+        "RUN-03949",
+        "RUN-03941",
+        "RUN-03963",
+        "RUN-01992",
+        "RUN-03965"
+      ],
+      "limits": "ModifiedWine/twoactualCA+wineserverprivatevirtualnetns/samephysicalhost/directUDP/productionIPv4/TCPforwardstub+capturedbodyTCPproxy. R2ownedvethprelaunchtxrxoff/separaterawsendsocket/exactR1B→AEthernetMACIPportUDPchecksumKRCRCpayloadunchanged, AF_PACKETinjectnotnativeBemission. Nativeexactoldingress/registeredendpoint/15queue19drain/13consumerwire59expected56/E667C2drop/noexactapply/current13samephaseapply/freshR2positive plus2guardcycles/items/reset/Ready/noStart3. Notlow8wrap/forgedcurrentauth/fullUDP/reliability/NAT/physicalLAN/Internet/fullmatch/K6a/gates/CP137complexUI/sharedgeometry/fullinventory. R1invalidstoredchecksum/noexactingress partialnotKRdrop; ownedcontrolmodelseparate. Sourcebinary/DBpackunchanged; frozenuntilcleanup/seal."
+    },
+    {
+      "check": "1560actor384peergetters333typedpacket12native15343UDPCRC2364flaggetter2340arrayemulation/manualrender",
+      "result": "pass",
+      "evidence": [
+        "RUN-03923",
+        "RUN-03960",
+        "RUN-03968",
+        "RUN-01989",
+        "RUN-02010",
+        "RUN-03925",
+        "RUN-04081"
+      ],
+      "limits": "Copiednativeemulation/renderseparatefromruntime/originalauthority."
+    },
+    {
+      "check": "Docs/catalog/issues/artifacts;231unchangedproductiontestsreused",
+      "result": "pass",
+      "evidence": [
+        "RUN-03918",
+        "RUN-03943",
+        "RUN-01995",
+        "RUN-04088"
+      ],
+      "limits": "Mechanicalconsistencyonly; nogateorsemanticcertification."
+    }
+  ],
+  "evidence": [],
+  "evidence_manifests": [
+    {
+      "path": "docs/evidence/checkpoints/evidence/CP145-virtual-old-udp.json",
+      "bytes": 1017178,
+      "sha256": "da9d295a601c9a5072a1ca4af040cff43d76ae5590303f4aed0d377f3b01a09c",
+      "count": 4088
+    }
+  ],
+  "delta": {
+    "added": [
+      "Directvirtualexactoldmatchedtuple/keybranch/nooldapply/currentfreshpositive nowinsame2guardcycles.",
+      "Ownedvethoffloadbeforecapture transportcontrol explainsinvalidbytes-onlyreplaycondition withoutrewritinggamebytes."
+    ],
+    "corrected": [
+      "R1noexactingressnotKRkeydrop; preservepartial/rawandcontrolscope.",
+      "PeerIPv4supportnotdirectTCPbootstrap/login; childforwardstillmeasurementdependency."
+    ],
+    "superseded": [
+      "NEXT-VIRTUAL-EXACT-OLD-UDP closedscopedproof; NEXT-DIRECT-TCP-ENDPOINT-CHAIN active."
+    ]
+  },
+  "blockers": [
+    "ChildTCPforward/fixtureloopbackbootstrap-WCP-authredirect-channel flow notdirectprivateTCPyet; mapknownendpointchainandtestnewprofile/copy/harness.",
+    "GeneralEOF/accountresume/halfclose/fullinventory/authauthority/physicalLAN/NAT/Internet/K6a/gates/CP137complexUI/sharedgeometry remain; near30sbarriersnotstabilityguarantee."
+  ],
+  "next_steps": [
+    {
+      "id": "NEXT-VIRTUAL-EXACT-OLD-UDP",
+      "task": "KRE-005b",
+      "state": "closed",
+      "action": "R2exactframe/source/checksum/nativequeuekey59expected56drop/noapply/currentpositive+2guardcyclesverified; R1misspreservedpartial.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-DIRECT-TCP-ENDPOINT-CHAIN",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "PLAN reuseCP006–008WCP/CP014015redirect/knowncaller/currentprofiles; mapconnectionendpoint/fixturefield/seq/endian; newprofile/copy/harnessdirectchildrootTCPwithoutchildforward/nativeWCP-login-sảnh-phòng-clock then2cyclesifrouteworks. No sourcefixture/binaryDBmutation.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    }
+  ],
+  "docs_sync": [
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "CP145exactoldUDPnativekeydrop/currentpositive/transportpartialcontrol/limits/currentTCPchain/issue14 syncedbeforecomplete."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "CP145exactoldUDPnativekeydrop/currentpositive/transportpartialcontrol/limits/currentTCPchain/issue14 syncedbeforecomplete."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "updated",
+      "reason": "CP145exactoldUDPnativekeydrop/currentpositive/transportpartialcontrol/limits/currentTCPchain/issue14 syncedbeforecomplete."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "updated",
+      "reason": "CP145exactoldUDPnativekeydrop/currentpositive/transportpartialcontrol/limits/currentTCPchain/issue14 syncedbeforecomplete."
+    },
+    {
+      "path": "docs/features.json",
+      "state": "updated",
+      "reason": "CP145exactoldUDPnativekeydrop/currentpositive/transportpartialcontrol/limits/currentTCPchain/issue14 syncedbeforecomplete."
+    },
+    {
+      "path": "docs/COVERAGE.md",
+      "state": "updated",
+      "reason": "CP145exactoldUDPnativekeydrop/currentpositive/transportpartialcontrol/limits/currentTCPchain/issue14 syncedbeforecomplete."
+    },
+    {
+      "path": "docs/evidence/peer-endpoints/README.md",
+      "state": "updated",
+      "reason": "CP145exactoldUDPnativekeydrop/currentpositive/transportpartialcontrol/limits/currentTCPchain/issue14 syncedbeforecomplete."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/review.json",
+      "state": "updated",
+      "reason": "CP145exactoldUDPnativekeydrop/currentpositive/transportpartialcontrol/limits/currentTCPchain/issue14 syncedbeforecomplete."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
+      "state": "updated",
+      "reason": "CP145exactoldUDPnativekeydrop/currentpositive/transportpartialcontrol/limits/currentTCPchain/issue14 syncedbeforecomplete."
+    }
+  ]
+}
