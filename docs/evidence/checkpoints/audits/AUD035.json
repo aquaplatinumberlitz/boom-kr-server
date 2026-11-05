@@ -1,0 +1,99 @@
+{
+  "id": "AUD035",
+  "trigger": "periodic",
+  "completed_through": "CP112",
+  "recorded_utc": "2026-11-05T01:52:09.709814+00:00",
+  "auditor": "Codex manual self-audit; independent review waived",
+  "read_files": [
+    "README.md",
+    "docs/PLAN.md",
+    "docs/PROTOCOL.md",
+    "docs/RESEARCH.md",
+    "docs/evidence/firstseen-admission/README.md",
+    "docs/features.json",
+    "docs/COVERAGE.md",
+    "server/README.md",
+    "server/probe_service.py",
+    "server/test_death_envelope.py",
+    "server/test_all_dead_result.py",
+    "server/test_report127_freshness.py",
+    "server/test_pickup_state.py",
+    "server/test_probe_replacement.py",
+    "docs/evidence/promoted-outcome/README.md",
+    "docs/evidence/current-pickup-race/README.md",
+    "docs/evidence/report127-freshness/README.md",
+    "docs/evidence/needle-contact/README.md",
+    "docs/evidence/issue-reconciliation/review.json",
+    "docs/evidence/issue-reconciliation/github-snapshot.json",
+    "local/research/codex/firstseen-admission-r1/reuse-question.json",
+    "local/research/codex/firstseen-admission-r1/baseline-matrix.json",
+    "local/research/codex/firstseen-admission-r1/after-matrix.json",
+    "local/research/codex/firstseen-admission-r1/native-death-envelope.json",
+    "local/research/codex/firstseen-admission-r1/positive-corpus.json",
+    "local/research/codex/firstseen-admission-r1/socket-receive-verification.json",
+    "local/research/codex/firstseen-admission-r1/verification.json",
+    "local/research/codex/firstseen-admission-r1/runtime-verification.json",
+    "local/research/codex/firstseen-admission-r1/analysis-corrections.json",
+    "local/research/codex/firstseen-admission-r1/server-guard-tests.txt",
+    "local/research/codex/firstseen-admission-r1/server-guard-tests-final.txt",
+    "local/research/codex/death-envelope-runtime-r1/cycles/run.json",
+    "local/research/codex/death-envelope-runtime-r1/cycles/service-state.json",
+    "local/research/codex/death-envelope-runtime-r1/cycles/return-ui-A.jsonl",
+    "local/research/codex/death-envelope-runtime-r1/cycles/return-ui-B.jsonl",
+    "local/research/codex/death-envelope-runtime-r1/visual-review.json",
+    "local/research/codex/death-envelope-runtime-r1/guard-return2-contact.png"
+  ],
+  "method": "Manual ordered README→PLAN currentorder/status/gates→PROTOCOL authority/currentCP109112 and CP023/063/036038 sources→RESEARCHfeaturegaps→evidence/raw/code/currentGitHub. Comparedbaseline/fixsamebody dispatch/malformedsideeffects with nativebloberrors/extrabytecursor; checked exactsourcehash/profileidentity/nativetrace2round4actual17+2actual19,12callbacks/view,95seq823/two-sided110 and viewedbothroomimages. Readbefore-onlyCP110failure versusCP111prepostscope/no inventeddeferredvariant. Checkedtestfixturechanges preserveoldpolicytests, final161notduplicated168. This manualaudit notsubstituted bychecker, selectedcurrentpaths notalllegacyraw/globalclientcoverage.",
+  "findings": [
+    {
+      "id": "F1",
+      "stale": "PLANsummarystillCP109pendingPR/UIunknown andCP110movementmissing despitePR179181/CP111proof.",
+      "correction": "CurrentPLAN/readme linkmergedPR179/180/181 andboundedCP111prepost; historicalCP110oldstrictfailurekept, no claimoldbefore-onlystatisticpass.",
+      "fixed_in": [
+        "README.md",
+        "docs/PLAN.md",
+        "docs/evidence/promoted-outcome/README.md"
+      ]
+    },
+    {
+      "id": "F2",
+      "stale": "RESEARCHroommembership/disconnect/diagnosticservice stillnextfocus/render/#178delivery afterCP110111/PR179done; KRE001002003 labeledinprogress despitebacklogissueclassification.",
+      "correction": "UseCP110/112actual110/UI/Ready, currentescapeinventorygap, no repeatedfocus/Y389; alignKREbacklog wordingwithPLAN/issues. #14 staysactive, no gateclosed.",
+      "fixed_in": [
+        "docs/RESEARCH.md",
+        "docs/COVERAGE.md",
+        "docs/features.json"
+      ]
+    },
+    {
+      "id": "F3",
+      "stale": "Service19tailopaque letmalformedprefix/truncation setacceptedcursor/death/170; arbitrarytesttailspassedwithoutstructuraloracle.",
+      "correction": "Narrowmeasured17/19envelopebeforeadmission; offlinebaseline/native/sockets controls,33positivecaptures andnewWine2cyclecompatibility. Existingtests keepresult/freshness/lifecycleacceptance withvalidserializedtail. Nativeextra1ignore isNOTnativeguardproof; exactsupportedvariantpolicy explicitlyseparate.",
+      "fixed_in": [
+        "server/probe_service.py",
+        "server/test_death_envelope.py",
+        "server/test_all_dead_result.py",
+        "server/test_pickup_state.py",
+        "server/test_probe_replacement.py",
+        "server/test_report127_freshness.py",
+        "docs/PROTOCOL.md",
+        "docs/evidence/firstseen-admission/README.md"
+      ]
+    },
+    {
+      "id": "F4",
+      "stale": "Potentialtestcount168/sourceartifactbytes/malformedmodelinterpretationoverclaims; serializerfailureoriginalstderrnotlocallyretained.",
+      "correction": "Final161uniqueunittests; preserve168log, recordmoduleimportfix. Nativefailedreaderoldbytesnotvalidinner. Explicitcorrectionrecordfromtranscript ratherthan fabricatedrawlog. PositiveWine versusofflineinvalidmutation keptseparate.",
+      "fixed_in": [
+        "docs/evidence/firstseen-admission/README.md",
+        "local/research/codex/firstseen-admission-r1/analysis-corrections.json"
+      ]
+    }
+  ],
+  "remaining": [
+    "CP112selfcheck/pendingcommitPRexactheadmerge; no independent approval. AppendCP112 plusAUD035 fulfillsperiodic112, next116 unchanged4cadence.",
+    "Validfirstseendeath/location/inventory/auth/fullvalidator stilluntrusted; malformed realserviceclosesandaborts, notkeepsclientinmatch. Uncompressedexact17/19variant only.",
+    "Currentserviceignoresescape/rescue1/18/sub0inventorypair beyondcursor; sourceCP036038alreadyexists, nextboundedopt-ininventory/peertranslation question inPLAN. Report21 mustnotclearpickupeligibilityimplicitly.",
+    "No thirdStart/fullmotionlaw/resetallvariants/Windowsvanilla/K0K7gates/K5/K6a/LANInternet."
+  ]
+}

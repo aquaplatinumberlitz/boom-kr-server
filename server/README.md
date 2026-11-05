@@ -209,3 +209,5 @@ CP107: optional `host_back_rejoin: {"mode":"idle_A_to_B"}` tích hợp [host Bac
 NormalA86 vớiBidle/mapped→107/110promoteB, Arefresh/rejoinsameTCP làmkhách, AReady/BStart→clock đã đo.
 ReturnguestAalias có modeltest; gameplay/result/reset hai vòng saupromotion chưa đo ởCP107.
 Kiểm `python3 -m unittest server.test_host_back_rejoin`; không originalauthority/fullmembership/gateproof.
+
+Report17/19 chỉ nhận serialized envelope variant đãđo trướccursor/marker/death/forward; xem [contract và giới hạn](../docs/PROTOCOL.md#death-envelope-admission). Malformedpacket theo exceptionclose/abort hiện hành; semanticfirstseen/location/inventory chưa làauthority. Không coi guard này làhỗtrợmọi mode/report.

@@ -39,10 +39,10 @@ class AllDeadResultTests(unittest.TestCase):
         slot = 0 if role == 'A' else 1
         body = codec.pack_fields([subtype, slot, 120, 159, tick, 0],
                                  [1, 1, 2, 2, 4, 4])
-        # The existing policy preserves this opaque tail. This is not native
-        # packet/original-authority evidence; the runtime fixture has its own RE.
+        # Measured envelope replaces the former arbitrary test tail; this model
+        # still tests result policy, not native authority.
         if subtype == 19:
-            body += b'fixture-death-tail'
+            body += codec.pack_fields([11, int.from_bytes(bytes.fromhex('18060000'), 'little'), 0, 0, 0], [4, 4, 4, 2, 1])
         frame = codec.encode(bytes(37), 127, body, 100 + tick * 3)
         with patch('server.probe_service.time.monotonic_ns', return_value=seconds * 10**9):
             self.service.receive_channel(event, frame, 100 + tick * 3, body)

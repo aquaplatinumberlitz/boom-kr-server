@@ -68,13 +68,13 @@ class ReplacementTests(unittest.TestCase):
     def test_b_death_forwards_to_current_c_and_result_selects_slot1_loss(self):
         self.c['guest_ready_received'] = True
         self.dispatch(self.b, 104)
-        # prefix + opaque measured serialized tail; this path preserves the tail.
-        body = codec.pack_fields([19, 1, 120, 159, 1234, 0], [1, 1, 2, 2, 4, 4]) + b'preserved-tail'
+        # Measured serialized tail, preserved byte-for-byte by the bounded guard.
+        body = codec.pack_fields([19, 1, 120, 159, 1234, 0], [1, 1, 2, 2, 4, 4]) + codec.pack_fields([11, int.from_bytes(bytes.fromhex('18060000'), 'little'), 0, 0, 0], [4, 4, 4, 2, 1])
         with patch('server.probe_service.time.monotonic_ns', return_value=1):
             self.service.receive_event(self.b, b'frame', 40, body)
         forwarded = self.sent[-1]
         self.assertEqual(forwarded['role'], 'C')
-        self.assertEqual(forwarded['body'], body[:6] + b'preserved-tail')
+        self.assertEqual(forwarded['body'], body[:6] + codec.pack_fields([11, int.from_bytes(bytes.fromhex('18060000'), 'little'), 0, 0, 0], [4, 4, 4, 2, 1]))
         self.service.state['event_reports'].append({'role': 'A', 'round': 2, 'subtype': 21, 'monotonic_ns': 2})
         with patch('server.probe_service.time.monotonic_ns', return_value=9 * 10**9):
             self.service.tick()
