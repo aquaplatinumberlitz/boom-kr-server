@@ -1,0 +1,262 @@
+{
+  "artifacts": [
+    {
+      "name": "CA-r2-login-logout.exe",
+      "sha256": "660447c293ce92270cb9b5815331bca976e8f156366e1fe50b217b6c12e60ce3"
+    },
+    {
+      "name": "CA-r2-stage-social.exe",
+      "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+    },
+    {
+      "name": "CA-r2-stage-social.exe Bcopy",
+      "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+    },
+    {
+      "name": "modO.bin",
+      "sha256": "a08950c833d3acab8281049def7b3dc96b221f107eeda01da3a548e34b91dce5"
+    }
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-11-05T18:23:33.523848+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "Codex solo RE/code/runtime/selfcheck, not independent approval.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Owner explicitly requested solo without Claude review."
+    }
+  },
+  "owner": "Codex",
+  "reviewer": "Codex",
+  "id": "CP144",
+  "previous": "CP143",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-05T18:23:33.523848+00:00",
+  "context_commit": "c692c83509f40c7c09429ac3a49ff488617feea2",
+  "question": "DoesactualownedguestCA-Btermination withpendingbombafter2normalvirtualguardcycles propagateEOF/fence/no158 andnativeAforfeitroomcleanup?",
+  "scope": "ReuseCP050/074/128/135EOF/nativecleanup+CP143virtualguardcycles. NewcopyproxyEOFclosepairbench andactualStart3/Bpendingfault only; no newnativebody/productionchange. AUD044periodic144→148.",
+  "locators": [
+    "BaselineCP143PR214head450efaf65c890f37e485c548b9653c9b631a28e7/mergec692c83/exactCLEANMERGEABLEchecks[]. Production231testsreused; AUD044through144/next148.",
+    "Run9b12adfb084aa65ab911cdb9df03ccf1e5931460ba29a395868c27dafb824d27/434.087452679s/exit0/2253raw/771vethrecords;47EOFjoins/4762basic/87guard/987frontframer/70pickup/29addressReady/current4peerwindows. Twonormalreturnsbothviews/thirdepochabortforfeitonlyA.",
+    "OwnedCA-BPID543/prefix/net4026534063checkedbeforeSIGKILL1862527366865387→1862527370428620; actualB118/ID3/cell9,3/power1created1862526247811483/deadline1862532247811483/4.877382863sremain. ProxyBfrontEOF1862527413999719→serviceEOF1862527416997762/46.569142ms; no158ID3/jobround_closed/noB17,19.",
+    "NativeA1753021803/errors0third/107base6rewind0final1/slot1ID2→0/1106errors0/chiefgetter1/renderAroomBempty. slot_Awire[0,2,0] pinnedfixture independentlychief1. Keys12345→12346→12347/IDs1→2→3;29.72412856/29.036726227/29.337281259sbarriers<30butmargin0.276snotguarantee.",
+    "Known107DC62D0/D603F5/D60617/D6062C/DC6329/DC6637/slotclear12400D0/12401A9/chief1240D5E/110DC6700/DC6ADC; knownpeerE66680/E667BE/E668AD/B4EA14/52A350/E8A340/14EF300. static660447/runtimee9bb4766/modOa08950/base400000/RVA=VA−400000; nativebody0."
+  ],
+  "findings": [
+    {
+      "summary": "OwnedactualCA-BSIGKILL afterB118pending/4.877sremaining→actualfrontproxyEOF/pairclose→serviceBEOF46.569ms; generation3finish/pendingdeadline round_closed/no158/noB17,19, notnormalleave/deathreport.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#virtual-pending-guest-eof",
+      "limits": "ModifiedWine/twoactualCA+wineserverprivatevirtualnetns/samephysicalhost/productionIPv4/noaddressshim/UDPdirect/TCPcapturedbodyproxy. 2normalcycles/movement/items/8same4oldguards/Ready thennormalStart3/B118pending/ownedCA-BSIGKILL/realEOF/fence/no158/noBdeath/nativeAforfeit175180107ID2→0/110chief/render. Two normal+oneabortnot3matches/noStart4; killedBcannotreceiveforfeit. Helperfullcloseoperatorpolicy/notTCP halfclose/loss/originalforfeitlaw/accountresume/fullinventory/authauthority/fullcodec/UDPgrammar/fullmatch/K6a/physicalLAN/NAT/Internet/gate. CP137complexUI/sharedgeometry/IP1/subtype39 remain; barriersnear30snotcoldstartguarantee. Sourcebinary/DBpackunchanged; frozenuntilcleanup/seal.",
+      "evidence": [
+        "RUN-02324",
+        "RUN-02263",
+        "RUN-02330"
+      ]
+    },
+    {
+      "summary": "A receiveschosenforfeit175180107/ID2→0/110/chief1 andrendersroomBempty; Bkilledreceivesonlytwonormalendings. First2normalcycles stillmovement/item/selectedTCPguard/reset/Ready; thirdabort separate/noStart4.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#virtual-pending-guest-eof",
+      "limits": "ModifiedWine/twoactualCA+wineserverprivatevirtualnetns/samephysicalhost/productionIPv4/noaddressshim/UDPdirect/TCPcapturedbodyproxy. 2normalcycles/movement/items/8same4oldguards/Ready thennormalStart3/B118pending/ownedCA-BSIGKILL/realEOF/fence/no158/noBdeath/nativeAforfeit175180107ID2→0/110chief/render. Two normal+oneabortnot3matches/noStart4; killedBcannotreceiveforfeit. Helperfullcloseoperatorpolicy/notTCP halfclose/loss/originalforfeitlaw/accountresume/fullinventory/authauthority/fullcodec/UDPgrammar/fullmatch/K6a/physicalLAN/NAT/Internet/gate. CP137complexUI/sharedgeometry/IP1/subtype39 remain; barriersnear30snotcoldstartguarantee. Sourcebinary/DBpackunchanged; frozenuntilcleanup/seal.",
+      "evidence": [
+        "RUN-02324",
+        "RUN-00010",
+        "RUN-02302",
+        "RUN-02447"
+      ]
+    },
+    {
+      "summary": "Proxybaseline3directionsbyteforwardpass/EOFfails; newcopyfinallyclosepair3benchpasses plusactualEOFroute. HistoricalCP143helper/pinnedraw unchanged; helperfullclosemeasurementpolicy nothalfclose/loss/generalTCPbehavior.",
+      "source": "design",
+      "status": "design",
+      "method": "design",
+      "canonical": "docs/PROTOCOL.md#virtual-pending-guest-eof",
+      "limits": "ModifiedWine/twoactualCA+wineserverprivatevirtualnetns/samephysicalhost/productionIPv4/noaddressshim/UDPdirect/TCPcapturedbodyproxy. 2normalcycles/movement/items/8same4oldguards/Ready thennormalStart3/B118pending/ownedCA-BSIGKILL/realEOF/fence/no158/noBdeath/nativeAforfeit175180107ID2→0/110chief/render. Two normal+oneabortnot3matches/noStart4; killedBcannotreceiveforfeit. Helperfullcloseoperatorpolicy/notTCP halfclose/loss/originalforfeitlaw/accountresume/fullinventory/authauthority/fullcodec/UDPgrammar/fullmatch/K6a/physicalLAN/NAT/Internet/gate. CP137complexUI/sharedgeometry/IP1/subtype39 remain; barriersnear30snotcoldstartguarantee. Sourcebinary/DBpackunchanged; frozenuntilcleanup/seal.",
+      "evidence": [
+        "RUN-02328",
+        "RUN-02329",
+        "RUN-00011",
+        "RUN-02431"
+      ]
+    },
+    {
+      "summary": "Threecurrentbarriers29.724/29.037/29.337s<30/verylittlemargin, causeunknownnotstabilityguarantee. Draft110layoutguessfailed; usepinnedslot_Awire[0,2,0]/nativechiefgetter1separate. AUD044manualauditcorrectedcurrentEOFgap/authority/status/counter withoutclosinggates.",
+      "source": "design",
+      "status": "design",
+      "method": "documentation",
+      "canonical": "docs/PROTOCOL.md#virtual-pending-guest-eof",
+      "limits": "ModifiedWine/twoactualCA+wineserverprivatevirtualnetns/samephysicalhost/productionIPv4/noaddressshim/UDPdirect/TCPcapturedbodyproxy. 2normalcycles/movement/items/8same4oldguards/Ready thennormalStart3/B118pending/ownedCA-BSIGKILL/realEOF/fence/no158/noBdeath/nativeAforfeit175180107ID2→0/110chief/render. Two normal+oneabortnot3matches/noStart4; killedBcannotreceiveforfeit. Helperfullcloseoperatorpolicy/notTCP halfclose/loss/originalforfeitlaw/accountresume/fullinventory/authauthority/fullcodec/UDPgrammar/fullmatch/K6a/physicalLAN/NAT/Internet/gate. CP137complexUI/sharedgeometry/IP1/subtype39 remain; barriersnear30snotcoldstartguarantee. Sourcebinary/DBpackunchanged; frozenuntilcleanup/seal.",
+      "evidence": [
+        "RUN-02324",
+        "RUN-00005",
+        "RUN-00020"
+      ]
+    }
+  ],
+  "verification": [
+    {
+      "check": "47actualEOF/ownedkill/pendingdeadline/nativeAcleanupjoins;3directionbaselinefail/fixedbyteEOFpass",
+      "result": "pass",
+      "evidence": [
+        "RUN-02324",
+        "RUN-02322",
+        "RUN-02329"
+      ],
+      "limits": "ModifiedWine/twoactualCA+wineserverprivatevirtualnetns/samephysicalhost/productionIPv4/noaddressshim/UDPdirect/TCPcapturedbodyproxy. 2normalcycles/movement/items/8same4oldguards/Ready thennormalStart3/B118pending/ownedCA-BSIGKILL/realEOF/fence/no158/noBdeath/nativeAforfeit175180107ID2→0/110chief/render. Two normal+oneabortnot3matches/noStart4; killedBcannotreceiveforfeit. Helperfullcloseoperatorpolicy/notTCP halfclose/loss/originalforfeitlaw/accountresume/fullinventory/authauthority/fullcodec/UDPgrammar/fullmatch/K6a/physicalLAN/NAT/Internet/gate. CP137complexUI/sharedgeometry/IP1/subtype39 remain; barriersnear30snotcoldstartguarantee. Sourcebinary/DBpackunchanged; frozenuntilcleanup/seal."
+    },
+    {
+      "check": "HistoricalmeasurementproxyEOFpropagationbaseline",
+      "result": "fail",
+      "evidence": [
+        "RUN-02328"
+      ],
+      "limits": "OwnedAF_UNIXsocketpair/model; bytespassbutEOFnotpropagated beforefixedcopy, notKRfailure."
+    },
+    {
+      "check": "Draft110fields[0,1,1]guess",
+      "result": "fail",
+      "evidence": [
+        "RUN-02323",
+        "RUN-02442",
+        "RUN-00005"
+      ],
+      "limits": "Wirefixturepinned[0,2,0]/chief1isindependentnativegetter; raw unchanged."
+    },
+    {
+      "check": "4762source/lifecycle/rawjoins/2253sealedraw/771veth/87guard8same4old987frontframer/70pickup29addressReady/4nativepeerwindows",
+      "result": "pass",
+      "evidence": [
+        "RUN-00010",
+        "RUN-02310",
+        "RUN-02302",
+        "RUN-02326",
+        "RUN-00004",
+        "RUN-02330"
+      ],
+      "limits": "ModifiedWine/twoactualCA+wineserverprivatevirtualnetns/samephysicalhost/productionIPv4/noaddressshim/UDPdirect/TCPcapturedbodyproxy. 2normalcycles/movement/items/8same4oldguards/Ready thennormalStart3/B118pending/ownedCA-BSIGKILL/realEOF/fence/no158/noBdeath/nativeAforfeit175180107ID2→0/110chief/render. Two normal+oneabortnot3matches/noStart4; killedBcannotreceiveforfeit. Helperfullcloseoperatorpolicy/notTCP halfclose/loss/originalforfeitlaw/accountresume/fullinventory/authauthority/fullcodec/UDPgrammar/fullmatch/K6a/physicalLAN/NAT/Internet/gate. CP137complexUI/sharedgeometry/IP1/subtype39 remain; barriersnear30snotcoldstartguarantee. Sourcebinary/DBpackunchanged; frozenuntilcleanup/seal."
+    },
+    {
+      "check": "1416actor/372typedpacket/18native153/copiedpeergetters/CRC/14flagsnapshots;manualrender",
+      "result": "pass",
+      "evidence": [
+        "RUN-02285",
+        "RUN-02332",
+        "RUN-00001",
+        "RUN-02320",
+        "RUN-00025",
+        "RUN-02287",
+        "RUN-02447"
+      ],
+      "limits": "Copiednativeemulation/model/renderseparatedfromlivegame/originalauthority."
+    },
+    {
+      "check": "Docs/catalog/issues/artifacts;231unchangedproductiontestsreused;AUD044manual",
+      "result": "pass",
+      "evidence": [
+        "RUN-02281",
+        "RUN-02304",
+        "RUN-00008",
+        "RUN-02452",
+        "RUN-00020"
+      ],
+      "limits": "Mechanicalconsistencyandmanualscopeaudit donotcertifygate/semanticcompleteness."
+    }
+  ],
+  "evidence": [],
+  "evidence_manifests": [
+    {
+      "path": "docs/evidence/checkpoints/evidence/CP144-virtual-pending-eof.json",
+      "bytes": 619873,
+      "sha256": "28083bf363b27ae629f86a60404eac9117791521ed92c60bcd867a162ec95b9c",
+      "count": 2452
+    }
+  ],
+  "delta": {
+    "added": [
+      "ActualpendingguestEOF/fence/noblast/nativeAcleanup aftertwo normalvirtualguardcycles;helperEOFbench/fixedcopy;AUD044periodic."
+    ],
+    "corrected": [
+      "ProxybaselineEOFnotpropagated/fullclosecopyfix preventsfalseKRhangattribution.",
+      "110wirefieldsnotchiefidentity;near30sbarriersnotcoldstartguarantee; thirdforfeitnotnormalmatch."
+    ],
+    "superseded": [
+      "NEXT-VIRTUAL-PENDING-GUEST-EOF closedscopedproof; NEXT-VIRTUAL-EXACT-OLD-UDP active."
+    ]
+  },
+  "blockers": [
+    "DirectvirtualexactoldUDP/currentkey/sourcequeuebehaviormissing inthisrun; CP047/130scope/recoveredkeyconsumers reused next.",
+    "GeneralEOF/accountresume/halfclose/fullinventory/authauthority/physicalLAN/NAT/Internet/K6a/gates/CP137complexUI/sharedgeometry remain; near30sbarriersnotstabilityguarantee."
+  ],
+  "next_steps": [
+    {
+      "id": "NEXT-VIRTUAL-PENDING-GUEST-EOF",
+      "task": "KRE-005b",
+      "state": "closed",
+      "action": "SocketpairEOFhelperbaseline/fixedcopybench andactualownedCA-BpendingEOF/fence/nativeAcleanupafter2normalcyclesverified.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-VIRTUAL-EXACT-OLD-UDP",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "PLAN reuseCP047/130knownkeyqueue/handler andcurrentvirtualtopology; captureR1B→AexactEthernet/datagram/SHA/sourceIPport andreplayafter153/clock2/currentkey; actualingress/keybranch/noapply/currentfreshpositive. Noendpoint/key/CRC/payloadrewrite/fullUDPsearch.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    }
+  ],
+  "docs_sync": [
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "CP144actualEOF/nativecleanup/helpercontrols/110correction/timinglimits/AUD044/nextoldUDP/issue14 syncedbeforecomplete."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "CP144actualEOF/nativecleanup/helpercontrols/110correction/timinglimits/AUD044/nextoldUDP/issue14 syncedbeforecomplete."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "updated",
+      "reason": "CP144actualEOF/nativecleanup/helpercontrols/110correction/timinglimits/AUD044/nextoldUDP/issue14 syncedbeforecomplete."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "updated",
+      "reason": "CP144actualEOF/nativecleanup/helpercontrols/110correction/timinglimits/AUD044/nextoldUDP/issue14 syncedbeforecomplete."
+    },
+    {
+      "path": "docs/features.json",
+      "state": "updated",
+      "reason": "CP144actualEOF/nativecleanup/helpercontrols/110correction/timinglimits/AUD044/nextoldUDP/issue14 syncedbeforecomplete."
+    },
+    {
+      "path": "docs/COVERAGE.md",
+      "state": "updated",
+      "reason": "CP144actualEOF/nativecleanup/helpercontrols/110correction/timinglimits/AUD044/nextoldUDP/issue14 syncedbeforecomplete."
+    },
+    {
+      "path": "docs/evidence/peer-endpoints/README.md",
+      "state": "updated",
+      "reason": "CP144actualEOF/nativecleanup/helpercontrols/110correction/timinglimits/AUD044/nextoldUDP/issue14 syncedbeforecomplete."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/review.json",
+      "state": "updated",
+      "reason": "CP144actualEOF/nativecleanup/helpercontrols/110correction/timinglimits/AUD044/nextoldUDP/issue14 syncedbeforecomplete."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
+      "state": "updated",
+      "reason": "CP144actualEOF/nativecleanup/helpercontrols/110correction/timinglimits/AUD044/nextoldUDP/issue14 syncedbeforecomplete."
+    }
+  ]
+}

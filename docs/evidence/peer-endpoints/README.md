@@ -221,3 +221,33 @@ Không fullmatch/K6a/LAN/NAT/Internet/fullinventory/originalauthauthority/CP137c
 selectedcapturedbody guards không là arbitraryforgedinputvalidator. CP143selfcheck/pendingPR,
 reviewwaived/AUD043through140/next144. TiếpPLAN actualpendingguestEOF sau hai vòng, trước đó kiểm
 TCPmeasurementproxyEOFpropagation để không nhầm proxy giữ upstream với client/server lỗi.
+
+
+<a id="cp144"></a>
+## CP144 — Pending guest EOF sau hai completed cycles, AUD044
+
+Baseline CP143/PR214 merge`c692c83`; productionkhôngđổi/reuse231tests. [Contract](../../PROTOCOL.md#virtual-pending-guest-eof),
+[câu hỏi](../../RESEARCH.md#gap-disconnect-replacement), [thứ tự](../../PLAN.md#current-order).
+`virtual-pending-eof-r1/reuse-question.json` pin CP050/074/128/135/143/oldsource/hash/build/locator;
+no newnativebody/VNlayoutport. Bench `proxy-eof-baseline.json` fail EOF3directions/deliveredbytespass;
+`proxy-eof-fixed.json` cùng3cases pass với newcopyhelperclosepair. Không rewrite historicalhelper.
+
+Run`virtual-pending-eof-r1/cycles`:434,087s/exit0/**2253raw**, run.json SHA256
+`9b12adfb084aa65ab911cdb9df03ccf1e5931460ba29a395868c27dafb824d27`.
+`pending-eof-verification.json`47joins:hai completedcycles+Ready→Start3/actualB118pending→ownedCA-B
+PID543/prefix/netnsrevalidate→SIGKILL còn4,877s→frontproxyEOF/serviceEOF46,569ms/fence/no158/không
+B17,19/nativeAforfeit175180107/slotID2→0/110chief1/render. NoStart4; killedB khôngnhậnforfeit.
+Actualclock3/1593 nhưng158chỉ2 mỗi view; two normalresult2/bothviews, thirdforfeit chỉA.771vethrecords.
+`basic-verification.json`4762checks xác minh first2normal/thirdcount tách; `guard-integration-verification.json`
+87checks/8same4old/987frontframeremulationcases;70pickupchecks/29addressReadychecks/4peerwindows/
+sourcekeytargetcurrentprogress cócùngrun. Modelcounts rawreport kiểmriêng, không cộng thành gameplay.
+`visual-review.json` pin4originals/contactđãxem:bothReadyafterreturn2/map3/finalAroomBempty.
+Source/config frozen/ownedcleanup/rawseal đầyđủ; sourcebinary/DB/pack bấtbiến.
+
+DraftEOFchecker đoán110fields[0,1,1] đãfail; `analysis-corrections.json` pin actualslot_Afixture[0,2,0]
+và nativechief1 độc lập. Failedscript/log giữ nguyên, không sửa raw. Ba barrier29,724/29,037/29,337s
+<30 nhưng margin nhỏ; không attributiondohelper/probe và khôngcoldstartguarantee.
+AUD044 đọc core docs→authority/currentcontracts→evidence/raw/reports/production/helper; giữ CP137UI/
+sharedpartial/oldfailures scope, sửa activeEOFnextstep/110semantics/timeoutmargin/currentmerge/counter.
+CP144selfcheck/pendingPR; reviewwaived, periodicnext **CP148**. Không fullmatch/K6a/LAN/NAT/Internet/
+fullinventory/authauthority. TiếpPLAN exactoldUDP/currentkey trên directvirtualtopology, reuseCP047/130.
