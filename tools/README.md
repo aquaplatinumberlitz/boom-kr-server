@@ -65,3 +65,11 @@ callbacks/flag snapshots trước khi tích hợp policy. MapSHA là metadata, c
 `export_probe_profile.py --host-back-rejoin`: opt-in5fixtureCP035 cho normalAhostBack/Bpromotion/Aguest
 rejoin/ReadyA; chỉ thêm index path/size/SHA/sequence vàpolicyname, không phân phối binary hoặc tựchứngnhận
 hành vi. [Contract/currentlimits](../docs/PROTOCOL.md#host-normal-back). Kiểm `python3 tools/test_export_host_back.py`.
+
+
+`check_issue_links.py`: read-only GitHub ↔ currentcatalog/PLAN/taskdeclarations, dùng
+[datedsnapshot/review](../docs/evidence/issue-reconciliation/README.md) mặc định; `--live` chỉ đọcGitHub,
+`--capture PATH` tạo snapshot mới cóUTC/caplimit. Check open/closed/backlinks/URL/PRexistence/PLANactive
+markers vàclosedtask-active-step; không tự đọc hiểu acceptance, đóngtask/gate hoặc sửacompletedhistory.
+`check_docs.py` gọi offlinecheck; snapshotcũwarning>24h, output luôn nêuas-of. Kiểmnegative:
+`python3 tools/test_issue_links.py`. Thứ tự công việc vẫn chỉ ởPLAN, issue là nguồn workstatus.

@@ -1,0 +1,1830 @@
+{
+  "schema": "kre-github-snapshot-v1",
+  "repo": "aquaplatinumberlitz/boom-kr-server",
+  "captured_utc": "2026-11-05T00:42:03.494898+00:00",
+  "limits": "State as of capture only; body/declarations are not semantic acceptance; no GitHub mutation.",
+  "issues": [
+    {
+      "body": "KRE-072 — cập nhật05/11/2026 bởi Codex tự kiểm; review độc lập waived theo [chủ dự án](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/evidence/checkpoints/review-waiver.json). Scope KR00967/localmodifiedWine, không Nexon/liveauth. Baseline điều phối CP108/PR177 `985a01d`; đối chiếu raw/runtime mới ở CP109. Lịch sử mô tả trước sửa lưu trong issue-reconciliation evidence/snapshot; không sửa checkpoint complete.\n\n**Phân loại:** in_progress. Feature: KR-S001.\n\n**Đã biết:** Đãrà14openissues/acceptanceto code/PR/evidence, runtime4runssealed noactiveWine.\n\n**Còn thiếu/giới hạn:** Commit/PR/exactheadmerge vàsnapshotaftermutations/check cònđanglàm.\n\n**Phép thử/bước kế:** HoàntấtcùngCP109 rồiRE#14narrowvisualinputgap. Thứ tự duy nhất tại [PLAN](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/PLAN.md#current-order).\n\n**Acceptance của scope này:** MọiopenissuefeatureID/canon/known/gap/test/acceptance/evidence; closescopedmanualonly; mechanicalchecker/snapshotdated; immutablehistory; commitPRmerge vàtiếpRE.\n\n**Quyết định theo bằng chứng:** Đợt tổ chức hiện hành theochỉđạochủdựán; khôngtracker/semanticgateautoclosure. Đóng task hẹp không đóng gate K0–K7.\n\nNguồn chuẩn (chỉ dẫn, không sao chép contract):\n\n- [docs/PROTOCOL.md#authority](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/PROTOCOL.md#authority)\n- [docs/RESEARCH.md#gap-diagnostic-service](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/RESEARCH.md#gap-diagnostic-service)\n- [docs/PLAN.md#current-order](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/PLAN.md#current-order)\n\nPR/bằng chứng đáp ứng hoặc giới hạn:\n\n- [docs/evidence/issue-reconciliation/README.md](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/evidence/issue-reconciliation/README.md)\n",
+      "closedAt": null,
+      "number": 178,
+      "state": "OPEN",
+      "title": "KRE-072: reconcile open issue acceptance and docs links, then resume RE",
+      "updatedAt": "2026-11-05T00:42:50Z",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/178"
+    },
+    {
+      "body": "KRE-071 — cập nhật05/11/2026 bởi Codex tự kiểm; review độc lập waived theo [chủ dự án](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/evidence/checkpoints/review-waiver.json). Scope KR00967/localmodifiedWine, không Nexon/liveauth. Baseline điều phối CP108/PR177 `985a01d`; đối chiếu raw/runtime mới ở CP109. Lịch sử mô tả trước sửa lưu trong issue-reconciliation evidence/snapshot; không sửa checkpoint complete.\n\n**Phân loại:** completed. Feature: KR-R004, KR-F002, KR-F004, KR-F005, KR-F006, KR-X001, KR-X002, KR-S001.\n\n**Đã biết:** CP108partialđượcgiữ; CP109runBhostsameTCP:4phaseUDP/12actualentitiesand12native158perview/52flagsnapshots/items/12TCPguards/hai175180/585refresh/chiefreset.\n\n**Còn thiếu/giới hạn:** 14entityoptionalroute khôngđạt/khiA17thìbỏ2extras; finalsecondreturnframesblack, visual/inputresponsive chưađo; gates#14.\n\n**Phép thử/bước kế:** TheoPLAN#14nextnarrowvisualroom input; khônglạiY389hayBattlehaiendingđãkiểm. Thứ tự duy nhất tại [PLAN](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/PLAN.md#current-order).\n\n**Acceptance của scope này:** Originalnative2Battlecyclemovement/terrain/callback/guard/items/175180/reset/ReadyAStartB/chief/slotID proof, countactualperoutcome.\n\n**Quyết định theo bằng chứng:** Đủscopehaiendingnative (7+5entities), khôngclaim14optional/fullUI/fullmatch. FinalUIgap chuyển#14/narrowfollowup thayđể#176làtasktrùng. Đóng task hẹp không đóng gate K0–K7.\n\nNguồn chuẩn (chỉ dẫn, không sao chép contract):\n\n- [docs/PROTOCOL.md#promoted-outcome](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/PROTOCOL.md#promoted-outcome)\n- [docs/RESEARCH.md#gap-room-membership](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/RESEARCH.md#gap-room-membership)\n- [docs/PLAN.md#current-order](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/PLAN.md#current-order)\n\nPR/bằng chứng đáp ứng hoặc giới hạn:\n\n- [docs/evidence/promoted-outcome/README.md](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/evidence/promoted-outcome/README.md)\n\n[PR175](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/175), [PR177](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/177) (đã merge; scope tại evidence).\n",
+      "closedAt": "2026-11-05T00:42:49Z",
+      "number": 176,
+      "state": "CLOSED",
+      "title": "KRE-071: qualify current two Battle cycles after host Back and B promotion",
+      "updatedAt": "2026-11-05T00:42:49Z",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/176"
+    },
+    {
+      "body": "KRE-070. Baseline CP106/PR173 merge f67a160d20e9cb0d4b964da7a132aa009b129102. Owner/reviewer Codex solo/self-check; independent review waived. Dependencies/source-first: CP034 nativeBack86/107110, CP035 promotedrejoin-A/ReadyA95/StartB104 exactfixtures/runtime; CP053cleanup, CP076refresh/currentseq and CP077guestserviceintegration. Nativecontract is already known; currentservice hostBack-with-liveguest unsupported.\n\nTask: normalA Back while B idle/live/mapped; capture actual86/admission/nativeconsequence withsameTCP. Then minimaloptionalfixture-backed hostleave/promote/rejoin integration ifneeded; currentseq/slotID/chief/normal-lobbyrefresh/Aguest/Bchief/realReadyStart/nativeclock proof. Keep sourcebinary/DB/pack untouched, offlinecopies/privateisolatedWine/singlelease. No workers/newbody/codecs scan, EOF notsubstitute forBack, no activeleave/accountresume/fullmembership/gameplaygate claim.\n\nFiles server/probe_service.py, focusedtest, exporter metadata ifneeded, docs/catalog/evidence/CP107; detailedraw local/research/codex/host-normal-back-r1. Control/fix/sourcehashes/tests required. Preserve allchanges/checkpoint history; checkpointatmeaningfulmilestone, nextperiodicauditCP108.\n",
+      "closedAt": "2026-11-04T23:46:01Z",
+      "number": 174,
+      "state": "CLOSED",
+      "title": "KRE-070: integrate known KR host Back/promotion/rejoin into current service",
+      "updatedAt": "2026-11-04T23:46:01Z",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/174"
+    },
+    {
+      "body": "KRE-069: bổ sung current two-cycle native movement transition còn thiếu từ CP098.\n\nBaseline: CP105/PR171 dc30e4ff49e325cb9488e4be7eb4befadd107f9b. Dependency: CP098 protectedtarget/API/key/getter; CP103 fixedproxy/two-cycle drainedprofile; CP105 endingphase interpretation. Owner/reviewer: Codex solo; independent review waived by owner.\n\nFiles: local/research/codex/current-movement-cycles-r1/* và controller copy local; docs/PROTOCOL, RESEARCH, PLAN, README, catalog/evidence/checkpoint khi đạt mốc. Production unchanged unless real blocker warrants separate measured fix.\n\nAcceptance: one isolated modifiedWine/AB/currentprofile run, R1/R2 A-Down/B-Right exact uniqueAPI13→native key/args→7BC7C8 targetchange and subsequent currentXYprogress, host-only observerready ack/fresh baseline before real OSinput, native175180/return/reset and same-run actualbomb/items/TCPguard evidence. If missing, preserve partial/failure and identify precise blocker; no assumed movement from hold or automatic K6a/fullmatch claim. No sourcebinary/pack/DB edits.\n\nSourcefirst reuse: local reuse-question.json (13pins) and targeted docs/static sources, no repeated codec/wholeclient scan. Periodic nextaudit CP108.\n",
+      "closedAt": "2026-11-04T23:31:37Z",
+      "number": 172,
+      "state": "CLOSED",
+      "title": "KRE-069: current two-cycle native movement transitions with observer readiness",
+      "updatedAt": "2026-11-04T23:31:37Z",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/172"
+    },
+    {
+      "body": "KRE-068. Baseline CP104/PR169 merge; exact SHA in preparation/source. Codex solo/self-check/reviewwaived, no workers. Dependencies CP098exactAPI17→payload13/currentkey/actorapply, CP104native175→state3/report34→180 and current post175remote0/56/3 stack B4EAA6/E668B2; #166 remains open.\n\nSource-first12refs already pinned in local/research/codex/ending-udp-state-r1. Existing controller relay capture is empty because service proxy-a/b=0 uses direct native P2P; empty relay log is not no-UDP proof. Reuse actual native API/window probes instead of scanning codec or guessing old-round traffic.\n\nNo production/profile/newpolicy. Read-only own175entry→180 window per view; reuse ingress13DE7AA, packetE66680/keyE667BE/applyE668AD/afterE668B2 plus currentstate setter preB4EAA3/postB4EAA6. Capture actual13payload state byte10/key/slot, nativeargs, sameactor pre/post secure+28 and measured+5A0; link current ingress bytes and timestamps to setter56/3 and ending180. Cap64packetentries/96APIingress, no gamecalls/actorwrites. Use samecurrentcopy/profile/stableOSinput/fuse/fixedproxy/onecycleendingstop. Do not assume samekey authentic or packet old/new generation without provenance.\n\nAcceptance: exact packet→nativekey/args→setstate pre/post and ending window, scope/negative/partial honestly; phaseguard interpretation only from selected code/runtime. No UDPcut/loss control unless a concrete remaining causal question requires it. No ownACK/quietdelay/fuse/stateforcing/fullmatch/gate claim. Commit/PR/docs/evidence/CP105, audit nextCP108. Continue actual next integration trigger aftercheckpoint.\n",
+      "closedAt": "2026-11-04T23:17:09Z",
+      "number": 170,
+      "state": "CLOSED",
+      "title": "KRE-068: join ending-phase UDP13 arguments to native state updates",
+      "updatedAt": "2026-11-04T23:17:09Z",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/170"
+    },
+    {
+      "body": "KRE-067. Baseline CP103/PR167 merge b5d2d751ff769f96df3e9c3d887455bd7dd166ea. Codex solo/self-check/reviewwaived; dependencies #166 remains open, CP103nativepeer21/late17/endingstates, CP023/036/083knownresultconsumer/cachedE6F370.\n\nSource-first currentraw confirms both views reach state3 before native180, despite own175entry A56/B26or0 and transient56 after175. Do not assume +28 universally encodes life or identical entry snapshots are required for correct ending. First analyze exact current175→statewrites/front127sub34→180, reuse source/rankstorage and frames. Missing exactsub34writer/caller andstate3caller requires only targetedread-only probes.\n\nRun currentcopiedclient sameprofile/input/fuse/fixedproxy; add B53010sub34/caller/bt, state3/26 callers after175 and bounded onecycle stop after actual175180/refresh if sufficient. No newpolicy,packet,ownACK,quietdelay,stateforcing/reportinjection. Decode actual34prefix/nativeframe/secureactor snapshot andtie tostate3/rankconsumer path; staticonlycallee thatruntimeactuallyshows, max4newbodies perpass. Correct simplistic pre175 fullmatch interpretation if evidence warrants, but never auto-close gate/#166. Distinguish transientendinganimation/life/physics/generalunknown.\n\nCP104must periodicmanual AUD032canonical→raw; next108, AUD031seriousdidnotreset. Canonicaldocs/catalog/evidence/manifest/rawhash, commit/push/PR exacthead merge. Continue nextnativecontracttrigger independently aftercheckpoint.\n",
+      "closedAt": "2026-11-04T22:58:42Z",
+      "number": 168,
+      "state": "CLOSED",
+      "title": "KRE-067: trace native ending phase and report34 after175",
+      "updatedAt": "2026-11-04T22:58:42Z",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/168"
+    },
+    {
+      "body": "KRE-066. Baseline CP102/PR165 merged; exact merge SHA recorded in source/evidence. Codex solo/self-check/review waived, no workers. Dependencies CP102nativeE6F370vf148B43320 localclear/peer26vs56 and CP036cached17021E85E92/E86CA0prefix6; CP101closedreadiness/CP100freshness/CP094terrain.\n\nImplement bounded optional drained-profile translation: actual accepted21 newer than latest current17 and latestsuccessful158, currentmember/active/no accepteddeath19 → forward exactbody[:6] as170/21 only to opposite live peer. One successful forward per acceptedtrap-frame epoch/currentgeneration; repeated/rejected stale/duplicate21 no retransmit; new accepted17/newStart allows new transition. Successfulsend-only marker, no broad send recovery. Keep reportcursor, pickup_ineligible and resultpolicy separate; no selfecho/no enabling item pickup.\n\nTest actualsemanticprefix/recipient, epochde-dup, stale/duplicate/legacy/no17/death19/newer17/closed/reset/currentmember/failedsend. Then same two copied clients/stableBinput/profile/timer in isolated Wine, add read-onlypeer17021 dispatch/fullreader6/interface98gate/vf148actualcallee/pre56post26/end and timestamp before175. Require same-run perview stateconsistency before175,14currentbombcallbacks/terrain/TCPguard/effects/tworesultreset if route reached. No arbitrary175delay, forcedstates/reports, guessed semantics or originalserverlaw/fullmatch/gate claim.\n\nFiles service/newfocusedtests/docs/catalog/evidence/CP103manifest; raw local/research/codex/peer-result21-clear-r1, source-first13pins already. Preserve all CP102raw/failedruns. Next periodic audit CP104 after AUD030/100. Commit→push→PR exacthead checks→merge, then continue actual integration blocker.\n\n\nCP104–106 qualification update (2026-11-05): yêu cầu numericstate bằng nhau ngay tại hai entry175 khác pha không đủ để đánh giá toàn ending. CP104 phục hồi175→state3/report34beforewrite, CP105 exactAPI/consumer queuecross175/state56→3 và convergencebefore180. CP106 currentdrained/cùng một run hai vòng xác minh movement cảbốn pha,14actualcallbacks/view/terrain/TCPguards/items/reset, selected17021 native reader6/errors0/gate1/B43320pre56post26 cảhai vòng, và cùng selectedstate A3/B1/XY tại native180 từng view. Raw pre175entryinequality giữ nguyên. Qualification dùng same-semantic-boundary180 và giới hạn này; không đổi originalserver authority hoặc đóng K5/K6a/fullmatch/LANInternet. Docs/evidence/current-movement-cycles/README.md và CP106manifest giữ recipe/hash/provenance. Review độc lập waived theo chủ dự án, Codex tự kiểm; tích hợp qua PR.\n",
+      "closedAt": "2026-11-04T23:31:35Z",
+      "number": 166,
+      "state": "CLOSED",
+      "title": "KRE-066: forward native result21 clear to opposite peer in drained mode",
+      "updatedAt": "2026-11-04T23:31:35Z",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/166"
+    },
+    {
+      "body": "KRE-065. Baseline CP101/PR163 merge ea60261deed74f4029828e67f269c13eb6f5057f. Codex solo/self-check/reviewwaived. Dependencies CP100freshness/nativecontrol/CP083all-dead/CP094terrain/fence and CP101closedreadiness.\n\nReuse question and exact CP100 raw recovery in local/research/codex/pending-bomb-result-r1: jobs6/7/13/14 each have nonzero native159 entity in both views and no observed process callback before finish. Their creation+6s earliestdeadline lies after rank by0.679..4.900s; they are then fenced round_closed. Native175-time bombstate not sampled. Originalserverlaw unknown; VN current emulator closes on survivingteams and does not prove a drain mandate.\n\nImplement optional experimental profile mode post_blast_untrapped_drained: retain existing CP100mode/absent behavior; survivor result additionally waits for zero current valid unfenced jobs. After final158 candidate21 must be newer as already required. Both-accepted-dead branch keeps CP083latestdeath/knownrank2fixture and may finish without draining (no survivor). No quiettimer/fuse/actorstate/report injection or numeric VN migration. Log pending job IDs and candidate/lastblast decisions where useful.\n\nTests meaningful pendingfuturejob blocks despite valid21/8s, currentlate158 requiresnew21, stale/fencedoldjobs don't block, reset/sendfailure/legacy/non-drained unchanged, bothdead fixture/unsupported explicit. Then same two native copies/controller/input/probes/6s timers with only newmode profile; capture actual extra158/trap/death/result, keep partial/blocker if path changes. Do not force old outcome or claim causalA56recurrence/fullmatch/gate.\n\nFiles service/focusedtests/docs/catalog/evidence/CP102manifest; raw newlocal only, binary/pack/DB unchanged. AUD030through100 next104. Commit/push/PR exacthead merge then continue actual blocker inPLAN.\n",
+      "closedAt": "2026-11-04T20:01:51Z",
+      "number": 164,
+      "state": "CLOSED",
+      "title": "KRE-065: opt-in drain current bomb jobs before survivor result",
+      "updatedAt": "2026-11-04T20:01:51Z",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/164"
+    },
+    {
+      "body": "KRE-064 — cập nhật05/11/2026 bởi Codex tự kiểm; review độc lập waived theo [chủ dự án](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/evidence/checkpoints/review-waiver.json). Scope KR00967/localmodifiedWine, không Nexon/liveauth. Baseline điều phối CP108/PR177 `985a01d`; đối chiếu raw/runtime mới ở CP109. Lịch sử mô tả trước sửa lưu trong issue-reconciliation evidence/snapshot; không sửa checkpoint complete.\n\n**Phân loại:** completed. Feature: KR-S001, KR-X003.\n\n**Đã biết:** CP101/PR163guardalreadyclosedeventbefore recv; real socketpair/selectbatchrepro/fix/reverse/live/unmarkedbadfd/idempotent129tests.\n\n**Còn thiếu/giới hạn:** OldCP099errno9exactstack unknown, no causalhistoricalfix/fullmatchclaim.\n\n**Phép thử/bước kế:** ĐồngbộcurrentGitHubclosed; khôngsửacompletedCP101/history. Thứ tự duy nhất tại [PLAN](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/PLAN.md#current-order).\n\n**Acceptance của scope này:** Closedbatchno-op/livebytesnotdrop/genuineunmarkedbadfdraises/recipientEPIPEattribution unchanged.\n\n**Quyết định theo bằng chứng:** GitHubneverclosedtimeline despite PR163closingreference; manifestalreadyclosed. Đóngsauđốichiếubằngchứngcode/test, khôngautoclosefromPR alone. Đóng task hẹp không đóng gate K0–K7.\n\nNguồn chuẩn (chỉ dẫn, không sao chép contract):\n\n- [docs/PROTOCOL.md#selector-closed-readiness](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/PROTOCOL.md#selector-closed-readiness)\n- [docs/RESEARCH.md#gap-diagnostic-service](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/RESEARCH.md#gap-diagnostic-service)\n- [docs/PLAN.md#current-order](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/PLAN.md#current-order)\n\nPR/bằng chứng đáp ứng hoặc giới hạn:\n\n- [docs/evidence/selector-closed-readiness/README.md](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/evidence/selector-closed-readiness/README.md)\n- [server/test_departure_send_failure.py](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/server/test_departure_send_failure.py)\n\n[PR163](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/163) (đã merge; scope tại evidence).\n",
+      "closedAt": "2026-11-05T00:42:46Z",
+      "number": 162,
+      "state": "CLOSED",
+      "title": "KRE-064: skip closed connections from cached selector readiness",
+      "updatedAt": "2026-11-05T00:42:46Z",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/162"
+    },
+    {
+      "body": "KRE-063. Baseline CP099/PR159 merge77b19c9c70794a90ac82cf7635fb98d059be67ab. Codex solo/self-check/reviewwaived. Dependencies CP099exactoldnativeA17postrank/old21beforelatestblast trigger, CP083optionalall-deadfixture, CP094pinnedterrain, CP097TCPguards.\n\nImplement optionalprofile result_freshness guard (explicitdesign currentABfixture): survivorcandidate21 must be afterlatestcurrent successfulbroadcast158 and currentmember/untrapped/undeadreport17/19 in generation. Legacyabsentunchanged; configinvalidfailbefore runtime. Lastblast commit onlyaftersuccessfulbroadcast, resetStart; duplicate/stalereports notneweligibility; no arbitraryquietdelay/fuse/state/gamecall changes. Loginactive127 envelope/body metadata withoutactiveadmission/statemutation so frontendframeabsence neverinferredfrommissingactiveguardlog.\n\nMeaningfulregressions actualCP099ordering replay/stale21→newblast, fresh21, trapped/deadcandidate, reset/generation/failedsend/fencedjob/legacy; optionalall-deadCP083fixture or explicitunsupportedpending, no falsewinner. Runnewcopy/currentnativechronology withprofileonlyoptin, sameclient/timer/input/terrain/12TCPguards/tworesultreset iffullgeometryreachable; no forcedA0/56/reportinjection. KeepBadFDcleanupindependenttrigger, no unapprovedscopecreep. Source-firstexistingKR/VNdocs/cachebeforegap only.\n\nFiles server/probe_service.py,newfocusedtests,docs/catalog/PLAN/PROTOCOL/RESEARCH/evidence/CP100manifest. Rawlocal/research/codex/result-freshness-r1. CP100mustmanualAUD030canonical→raw;AUD029seriousdidnotresetperiodic,nextCP104. Commit/PR/selfmerge exacthead afterchecks. Notfullmatch/K6a/originalauthority/vanilla/LANInternetgate.\n",
+      "closedAt": "2026-11-04T19:12:49Z",
+      "number": 160,
+      "state": "CLOSED",
+      "title": "KRE-063: optional result freshness guard after current blasts",
+      "updatedAt": "2026-11-04T19:12:50Z",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/160"
+    },
+    {
+      "body": "KRE-062. Baseline CP098/PR157 mergea6f4ae79a93468b6c2f224462bcdd1e3312ef831. Codex solo/self-check/reviewwaived. Dependencies CP023/029/036/056/085cachedtrap/reportwriter170/result; CP098same-run/currenttargetstateboundary.\n\nObservedCP098R1perviewpre175 Aown56/BviewA0sameXY; rankmarkerslackhosttime, noA17front; do notdeclarepersistentdesync/wrongrank/cause. Source-firstknownB33270actorstate28setter/B53010(packet,subtype)/B78373trap17/E6EFDFdeath19/13ADCC0/13ADD10/13ADD60packet127/170E85B60/175E5F610 andservicefinish+rank policy. Addboundedtimestampednativeactorprepost/eventchain only; unchangedclient/profile/production/outcome/proxy/inputroute. Traceactorpointer/statewrite→reportwriter/queue/direct/nativefront→servicefinish/rankemit→perview175/180 snapshots.\n\nCurrentUDPtargetwindows/readinessack only ifneeded forsamequestion; no forcingA0/56/report17 injection/policychange/vanilla/gateclaim. Runtimecopy lo-only namespace/noexternalnetwork/onecontrollerlease; sourcebinarypackDBunchanged. Rawlocal/research/codex/trap-report-rank-r1; meaningfulCP099docs/evidence/catalog/manifest/commit/PR, notperprobecheckpoint. AUD028through096/nextCP100.\n",
+      "closedAt": "2026-11-04T18:52:43Z",
+      "number": 158,
+      "state": "CLOSED",
+      "title": "KRE-062: timestamp native trap report and rank boundary",
+      "updatedAt": "2026-11-04T18:52:43Z",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/158"
+    },
+    {
+      "body": "KRE-061. Baseline CP097/PR155 merge3a0e979754e24078340fcb4cd688081fb5828feb. Codex solo/self-check, review waived. Dependencies currentCP094/097terrain/TCPguards/2cycles and CP027/045–047nativeUDP13/E66680/52A350, CP070bidirectionaltransportcut, CP096neutralinput.\n\nPLAN next: phase-gated finite native movementpacket→keycompare→applycall→actorpre/post on both receiving clients, using currentprofile and normalOSinputs then restoring setup positions before normal two-cycle route. KnownE66680/E667BE/E668AD/E668B2 bytes/cache matched exactcurrentartifacts; no newnativebody/patch/gamecall/sourcepackDBwrite. Read-only protected actorwrappers/checksum retained for separate nativegetteroracle. Target currentpayload13/selector0/body-slot/x/y and exactsamecallback/actorpointer, not counter/sendlog. Keep per-view host timestamps/limits; do not claim same-tick or fullUDPgrammar/NAT/authority.\n\nFinite input windows only; breakpoints disabled outside and bounded perphase to avoid oldungatedobserveroverhead. Samecurrentterrain+TCPguard2cycles intended after movement/returnsetup. Missingpacket/apply/window stayspartial; no syntheticactor forcing. Rawlocal/research/codex/current-peer-apply-r1; canonicaldocs/evidence/catalog/checkpoint/PR. AUD028through096/nextCP100. No fullmatch/K6a/gate/LANInternetclaim.\n",
+      "closedAt": "2026-11-04T18:15:13Z",
+      "number": 156,
+      "state": "CLOSED",
+      "title": "KRE-061: current UDP packets to native actor apply in both directions",
+      "updatedAt": "2026-11-04T18:15:13Z",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/156"
+    },
+    {
+      "body": "KRE-060. Baseline CP096/PR153 mergefb3a9a257bb8f8b5b0cbb46054f6c7d031d7198f. Codex solo/self-check, review waived. Dependencies CP094native2cycles/pinnedterrain; CP095–096 actualbox/adjacent controls; CP085actualTCPproxy/selectedreplays.\n\nPLAN next: combine unchangedCP094production/profile/normal14bomb two-cycle route with unchangedCP085ReplayProxy (same/old118124127sub17,19 capturedbody/currentseq, S2Cunchanged). No fresh forgedbody/newgamepatch/nativefunction/actorforce/sourcepackDB edits. Distinguish actualfront nativewrites vs proxy-emitted replay and upstream guardlogs; require exactseq/SHA/fieldjoins, noextra159165170/ghostjobs, nativecurrenteffects/195flags/process/two175180resultreset same run. Do not reuse old6bomb verifier cardinalities or count allrequests as actual placements after proxy injection.\n\nSource-first CP094/CP085/currentprotocol/research/knownKR/VNsource before minimum delta only. Newraw local/research/codex/terrain-tcp-cycles-r1; canonical docs/evidence/catalog/manifest/commit/PR. AUD028 complete through096/next100. Not fullvalidator/fullcodec/auth/location/transport/gate/fullmatch acceptance; no combining old runs into success.\n",
+      "closedAt": "2026-11-04T17:28:42Z",
+      "number": 154,
+      "state": "CLOSED",
+      "title": "KRE-060: current terrain and selected TCP guards in two native cycles",
+      "updatedAt": "2026-11-04T17:28:42Z",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/154"
+    },
+    {
+      "body": "KRE-059. Baseline CP095/PR151 merge1c18aa266dcaceb8ac5d96eb88ba631654a8d229. Codex solo/self-check, review waived; no worker. Dependencies CP090–095 map/flags/terrain/oppositebox/stable-neutral input.\n\nPLAN concrete gap: mixed-owner adjacent1cell. Reuse same production/profile/spawn4/ExVillage01/fuse6/controller path; native opening and blocked pair clear Box3,6 as setup, originalB3 owncallback retires before new pair. Stage B on newly cleared3,6 before A4 at3,5, then native B5 at3,6 power1 vs A4power2. Actual118 geometry/nonzero159/full158/process/195flags bothviews required. No actor teleport/terrainforcing/guessed layout/sourcebinarypackDB changes. Copied native oracle and actual callbacks remain separate.\n\nSource-first reuse CP095/CP094/CP084/currentKR/VN/local cache before new branch; only newadjacent geometry difference. Stop scoped measurement, not fullmatch/K5/K6a. Raw local/research/codex/adjacent-owner-r1; canonical docs/evidence/catalog/manifest/commit/PR. CP096 requires manual AUD028 README→PLAN→PROTOCOL→RESEARCH→evidence/raw; nextperiodicCP100. Preserve earlier raw/history/failures. If geometry/control missing, record partial and choose concrete next trigger, no radius/state relaxation.\n",
+      "closedAt": "2026-11-04T16:04:39Z",
+      "number": 152,
+      "state": "CLOSED",
+      "title": "KRE-059: native mixed-owner adjacent-cell bomb control",
+      "updatedAt": "2026-11-04T16:04:39Z",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/152"
+    },
+    {
+      "body": "KRE-058. Baseline CP094/PR149 merge5e580a4d879bbd7821d0759757891b36412ca4b6. Codex solo/self-check; review waived. Dependencies CP090–094 map/flag/terrain and CP024/065121spawn table.\n\nMeasure native two bombs across an actual box, avoiding same-cascade tunneling assumptions. CandidateA3,5/Box3,6/B3,7 power2/1; open B's route from source-backed map point4=(11,3) by normal bomb3,9 destroying3,8. Only change known121slot1spawn index1→4 on offline synthetic fixture; native typed-reader/model and actualspawn/actor controls required. No teleport/terrainforcing/sourcebinarypackDB edits. Production CP094 unchanged.\n\nUse normal keyboard/read-only feedback for placement; capture actual118/159/nativeprocess/flags. RootA should stop at3,6 withoutprocessing B3,7; later newroot afteractualboxclear maychainB if ownsecondarywindow reached. Missing geometry/window is partial, never change expectedradius or state to pass. Rawlocal/research/codex/opposite-box-r1, canonical docs/evidence/manifest/catalog/commit/PR. AUD027next096.\n",
+      "closedAt": "2026-11-04T15:54:56Z",
+      "number": 150,
+      "state": "CLOSED",
+      "title": "KRE-058: native opposite-box bomb chain control",
+      "updatedAt": "2026-11-04T15:54:56Z",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/150"
+    },
+    {
+      "body": "KRE-057. Baseline CP093/PR147 merge 446b7cb21bb08d8f822f59a7b8ef3fd96d414f1e. Codex solo/self-check; review waived. Dependencies CP089capacity/CP090–092nativeflags/reset/CP093candidate432checks38callbacks.\n\nImplement optional source-pinned terrain policy for currentExVillage01/simplepower1–2/A-B. Pin map/start fixtures/map payload/seed, reject unsupported variants/cells/overlap before ID/job/serial mutation. Predict cascade before root158 and commit after successful broadcast; retain jobs/tickets/ownsecondaryblasts and no oldtimer ghostrelease. Absent metadata keeps legacyCP089 behavior. Do not update world from142 reports.\n\nShare pure candidate kernel with server via a source module, preserving old tool entry/API and immutable CP093 evidence. Tests sourcepins/guards/house/box/sameblast/reset/oldround/duplicate/owner/failedbroadcast and independent retainednative regressions. Then fresh isolatedWine two-cycle same-run flags/entities/process/result/reset with normal placements beyondCP089clearcells; no gate promotion. Sourcebinary/pack/DB untouched. Rawlocal/research/codex/terrain-policy-r1, docs/catalog/evidence/manifest, commit/PR. AUD027next096.\n",
+      "closedAt": "2026-11-04T15:28:40Z",
+      "number": 148,
+      "state": "CLOSED",
+      "title": "KRE-057: integrate pinned terrain capacity policy and native cycles",
+      "updatedAt": "2026-11-04T15:28:40Z",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/148"
+    },
+    {
+      "body": "KRE-056. Baseline CP092/PR145 merge cac815de29b9b9d15b4b82f78edc0003813723d6. Codex solo/self-check; review waived. Dependencies CP089 capacity and CP090–092 targetmap/nativecellflags/stops/reset.\n\nBuild an independent offline shadow model from source-pinned target grid/classes and current simple bomb geometry, with explicit unsupported/malformed rejection. Compare predicted processed bomb IDs and terrain deltas against original native runtime snapshots/processed IDs; no142 worldoracle, no reuse emulator output as its own expected oracle. Reuse old raw before new Wine.\n\nFiles tools/ plus canonical docs/catalog/evidence/manifest; raw local/research/codex/terrain-shadow-r1. Sourcebinary/pack/DB untouched. Production remains unchanged during shadow evaluation. Preserve mismatch and limits; adjust model only from source/runtime evidence, do not loosen assertions. If mismatch uncovers new concrete branch, targeted RE/runtime next. After model matches, implement optional profile policy with guards/tests and new same-run native acceptance in subsequent work. AUD027next096.\n",
+      "closedAt": "2026-11-04T15:02:01Z",
+      "number": 146,
+      "state": "CLOSED",
+      "title": "KRE-056: source-pinned terrain shadow model against native evidence",
+      "updatedAt": "2026-11-04T15:02:01Z",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/146"
+    },
+    {
+      "body": "KRE-055. Baseline CP091/PR143 merge c3d74ff77606288db0a772a49e9f4adf4fc55552. Codex solo/self-check, independent review waived. Dependencies CP089 capacity policy, CP090 grid/box/clear stops, CP091 house and mutable1→0.\n\nRecover only map+1D54 storage/reader needed for finite current-map native flag snapshots. Source-first current helpers/cache, existing protected getter/decoder, old KR/VN references. Capture initial clock, post-root blast and second Start/reset in both views; compare actual195cells with target grid and known clear/box/house, preserving native-reader emulation vs runtime distinctions. No gamefunctioncalls, sourcebinary/pack/DB changes or guessed container layout.\n\nProduction remains unchanged unless a concrete separate justified fix is needed. No report142 world-state oracle or generic terrain/release expansion. CP092 must include periodic manual AUD027 canonical→raw, nextCP096. Keep original final records, failures/partial evidence; checkpoint/docs/catalog/manifest and commit/PR, then continue PLAN.\n",
+      "closedAt": "2026-11-04T14:54:31Z",
+      "number": 144,
+      "state": "CLOSED",
+      "title": "KRE-055: native map flags snapshot and round reset",
+      "updatedAt": "2026-11-04T14:54:31Z",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/144"
+    },
+    {
+      "body": "KRE-054. Baseline CP090/PR141 merge c142c857d913fc205ce3b4ca4db0274626d2394a. Codex solo/self-check; independent review waived. Dependencies CP089 bounded capacity policy and CP090 target grid/rawboxstop/nullquery limitation.\n\nQuestion: after a first native blast removes the box at (2,3), can a second normal root at (3,3) reach house (1,3) and expose native tile context/direction stop? Static house/class data alone is insufficient.\n\nScope local/research/codex/house-after-box-r1 raw/copy/harness and canonical docs/evidence/catalog/manifest. Production unchanged unless an independently justified concrete blocker appears. Preserve source binaries/packs/DB and all existing evidence.\n\nAcceptance: source-first CP090 exact map/table/sourcehelper/raw and old KR/VN relevant references; actual118/159/firstblast/current142 and alive/position/input joins, query/context/set/stop on secondroot. Unknown if unreachable; no forcedmap/gamefunctioncalls, no report-as-collision-oracle, no generic release expansion/gate promotion. Record recipe failures and meaningful checkpoint; continue PLAN.\n",
+      "closedAt": "2026-11-04T14:30:12Z",
+      "number": 142,
+      "state": "CLOSED",
+      "title": "KRE-054: native house direction stop after box destruction",
+      "updatedAt": "2026-11-04T14:30:12Z",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/142"
+    },
+    {
+      "body": "KRE-053. Baseline CP089/PR139 merge 727e94255e1b501ffeb7ac74a58b0a176d5a8553. Owner/reviewer Codex solo/self-check, review waived. Dependencies CP033/081/084/088/089, R139–141 and existing KR map/TileInfo format.\n\nQuestion: recover only map/tile/class/stop data needed beyond CP089 explicit clear cells on current ExVillage01; avoid deriving collision from assets/names or porting VN layout.\n\nScope server repo tools/docs/evidence and local/research/codex/map-chain-r1; no sourcebinary/pack/DB writes. Source-first reuse existing map parser/KR ObjectTable/TileInfo/class references; extract target map only, classify only IDs with evidence, unknown stays unknown. Then read-only native probes for actual clear corridor and blocker with joins to current map/geometry and ray state. No immediate map-wide release policy before evidence.\n\nAcceptance: pin pack/map/class provenance/hashes, separate static data/model/native runtime/design; minimum observed native clear and blocker conditions with pointer/VA/run boundaries. Record gaps and limits; update canonical docs only at meaningful milestone, checkpoint contiguous/audit cadence unchanged. Continue PLAN, no worker/gate promotion.\n",
+      "closedAt": "2026-11-04T14:18:19Z",
+      "number": 140,
+      "state": "CLOSED",
+      "title": "KRE-053: recover current map tile state for bounded chain release",
+      "updatedAt": "2026-11-04T14:18:19Z",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/140"
+    },
+    {
+      "body": "KRE-052. Baseline CP088/PR137 merge 0a67e74051fe0ac3ba3f7b3d4293c5f5cc45c2fe.\n\nOwner/reviewer: Codex solo/self-check; independent review waived by owner. Dependencies CP033/081/084 chain, CP086 serial-only divergence, CP087 capacity quota, CP088 normal-native rejection.\n\nScope: source-first reuse of KR chain/ray/block cache and old KR/VN reference, then a bounded optional fixture policy to release reservations for demonstrable chain paths without weakening the preblast quota or trusting client reports. Files server/probe_service.py and focused helper/tests, canonical docs/catalog/evidence/manifest. Raw in local/research/codex/chain-release-r1; source binaries/DB unchanged.\n\nAcceptance: explicitly state geometry/profile/map boundaries and design vs recovered law; negative blocked/nonaligned/current-owner/generation models; CP086 selected preblast mutation still rejected. Runtime normal replacements after both native views process root, before late secondary deadline, must receive both159/nonzero entities and process consistently. If new state added, verify reset across two rounds. Preserve failures/partial runs and no gate promotion. Continue next PLAN blocker after merge.\n",
+      "closedAt": "2026-11-04T13:58:03Z",
+      "number": 138,
+      "state": "CLOSED",
+      "title": "KRE-052: release capacity reservations on bounded native chain paths",
+      "updatedAt": "2026-11-04T13:58:03Z",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/138"
+    },
+    {
+      "body": "KRE-051. Baseline CP087/PR135, Codex solo/self-check/reviewwaived. Source-firstCP087quota/job/fence lifetime,CP033081084knownsecondarynativechain processing early,CP086Aescape/survivor/newcell/currentprofile,KRdata/VNpool/chain/legacy.\n\nMeasure normalreplacementrequests afterrootnativechain andbeforeownsecondarydeadline withcurrentcapacity2/actoralive. Existingfuse6s unchanged; delayAthirdnormalOSplacement by2s toopen3swindow. Afternativerootbothviews processsecondary, Aatknownsafeverticalcorridor placesfirstnewbomb thenmovesRighttoemptycellandplacessecond. Actual118/native159/guard/deadline/rootprocessed/timestamps determinewhetherconservativequota rejectslegitnormalnativeemission. No nativefunctioncall/stateforcing/binarypatch orassumedcell/velocity. Ifwindowmissed, retainboundedpartial, nextedge only; no inventreleasepolicy fromintention.\n\nFiles localexperiment/canonicals/catalog/evidence/CP088;productionunchangeduntilactualtrigger. CP088mustperiodicmanualaudit README→PLAN→PROTOCOL→RESEARCH→raw/evidence, AUD026/next092 withoutresetcounter. Gate/fullmatch/LAN/fullpoolauthoritynotclaimed.\n",
+      "closedAt": "2026-11-04T13:20:53Z",
+      "number": 136,
+      "state": "CLOSED",
+      "title": "KRE-051: normal bomb replacement during early-chain reservation window",
+      "updatedAt": "2026-11-04T13:20:53Z",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/136"
+    },
+    {
+      "body": "KRE-050. Baseline CP086/PR133; Codex solo owner/self-check, reviewwaived. DependencyactualCP086serial-only28→56 ID4/nativeA0/Bnonzero/processsetdivergence. SourcefirstCP086raw +CP031042capacity/knownBomb+max/CP085currentguards, VNsession111lackcapacityvalidator.\n\nImplement optionalprofile bomb_capacity base/max perrole withknownA1max10/B2max7. OnStart resetcapacity; accepted/currentcatalog Bombkind0 incrementsonce/maxclamps; beforeID/job requirecountofunretiredvalidcurrentroundownerjobs belowtrackedcapacity. Releaseonjobschedulingretirement/fence lifecycle, notassumednativechain-release. Rejectatcapacity withoutreservingserial/ID/job/159. Unsupportedconfiguredrole failstartbeforekeyadvance. Existingprofilesunchanged/unprotectedexplicitly; no universalnativepool/auth/distancevalidator claim.\n\nTests duplicate/stale/key/reset/EOF/timer/oneincrement/max/unsupportedprofile andpolicyboundaries. Runtime sameCP086normalcontrol+serial-onlymutation mustrejectbeforeID/job/159, nativeA/B processsame3IDs/normalresultreturn; repeattwo-roundnormalintegration onlyifrequirednewresetconcern. Conservativeearlychainsecondaryreservationwindow explicit. Sourcebinary/DB/packimmutable/privatecopiedWine namespace/lease. Docs/catalog/evidence/CP087;AUD025next088.\n",
+      "closedAt": "2026-11-04T13:06:54Z",
+      "number": 134,
+      "state": "CLOSED",
+      "title": "KRE-050: optional capacity reservations before bomb ID/job admission",
+      "updatedAt": "2026-11-04T13:06:54Z",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/134"
+    },
+    {
+      "body": "KRE-049. Baseline CP085/PR131 2876c45edd88738ba26c2908481e78b39aa342d4. Codex solo owner/self-check, review waived. Dependencies CP031/042knowncapacity/itemeffects, CP025serial/pool, CP084085actualA2bom/currentcap2/normalinput/currentprofile.\n\nSource-first currentcanonical/cache/raw→KRdata→VNoc_e-game/items/servercapacity plusrelevantboom-rs/l10n/archive. CP031 threeSpace attempt had A1/B2 orA2/B2 actual118 but did not isolate missingthirdcause; do notrediscoverstatconsumer or assumecapguard. Currentfreshnativefeedback/read-onlyinputtrace supplies specific changedcondition.\n\nMeasure A two actualactivebombs/currentcap2 then normalSpace atnewcell beforefirst158. Join OS/nativeWndProc/writer/front118/159/state/getter/timerbound, targetguard/pool onlyifneeded; no118 isnotserverreject. Aftercontrol, iffieldlayoutprovenance sufficient, minimalcurrentkey/capturedbody/newserial throughlocalproxy toresolve serviceadmissiongap, separateproxy/native emission. Designservercapacity/lifetime onlyafterevidence; chain-release limits explicit. No fullvalidator/auth/distance/gate/fullmatchclaim.\n\nFiles localmeasurement/copies/raw, canonicaldocs/catalog/evidence/CP086, server/tools onlyifrequired byactualblocker. Preserve sourcebinary/DB/pack. PrivatecopiedWine namespaces/lo-only/lease, no stateforcing/newpatch. AUD025through084/next088.\n",
+      "closedAt": "2026-11-04T12:43:24Z",
+      "number": 132,
+      "state": "CLOSED",
+      "title": "KRE-049: native capacity control and current-key fresh-serial admission",
+      "updatedAt": "2026-11-04T12:43:24Z",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/132"
+    },
+    {
+      "body": "KRE-048. Baseline CP084/PR129 455dc74199760866c0969d15b83123d78056770e. Codex solo owner/self-check; independent review waived.\n\nSource-first CP075 exactTCPproxy/front-upstream-seq/bodyjoins/rejections/partialplanned, CP080–084 currentnormalUI/threebomb/stat/all-deadresultreset, KR/VN protocol/oc_e-game/session and relevant legacy references. Reuse existing proxy unchanged and known native probes/schema; no new nativebody or binary/service patch.\n\nClose scoped integration gap: currentseq proxy-emitted captured-body same/old118/124/12717,19 through realTCP, rejection before ID/job/165/170 and no extrasideeffects; normal actual requests/nativechain/state/resultreturn/reset twice in same isolatedcopiedWine run. Front native emissions separate from replay. No all127types/forgedcurrentkey/freshserial/distance/cap/fullvalidator/gate/LAN claims.\n\nFiles local measurement sources/results, canonicaldocs/catalog/evidence/CP085. AUD025 through084, next088. Preserve historicalCP075failure and originalfiles/checkpoints. Partial/negative stays explicit; do not alterdelay/outcome to force acceptance.\n\nScope update after first run: native2cycles/currentguard traces reached, but originalstrictcheck fails on cleanup Brokenpipe attributed to departing A while sending B. Preserve failure. Narrow production departure delivery fix records recipient/op/errno/successfulprefix and closes failedrecipient; no packet success metadata on failure. 91server tests pass, including real socketpair and partialdelivery; repeat same proxyclose order/normal scenario with strict no-unhandled-error assertion. Not general send/backpressure recovery.\n",
+      "closedAt": "2026-11-04T12:14:17Z",
+      "number": 130,
+      "state": "CLOSED",
+      "title": "KRE-048: selected TCP replay guards with two native result/reset cycles",
+      "updatedAt": "2026-11-04T12:14:17Z",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/130"
+    },
+    {
+      "body": "KRE-047. Baseline CP083/PR127 750974785b5dd6542cabbf1aa0d273b579344797. Codex solo owner/self-check; review waived. Dependencies current actualmixed-owner/nativechain and all-deadresult.\n\nSource-first CP033/042/064/069/081/082/083, KR extracteddata, VNoc_e-game/items/map/legacyserver, boom-rs/l10n/archive. Choose minimal three-bomb fork using known Bomb+Fire floor records (capacity2/power2), not inventing a block from hidden582 list2. Wall variant deferred until actual map block/control known.\n\nMeasure actualA/B/A118 and159 IDs/currentround/capacity/positions, root158 processing set and later own callbacks in bothviews; actualdeath/resultreturn/reset if reached. Copied Wine private namespaces/lease/lo-only, no binary/sourceDB edits or forcedactor/bombstate. Unknown/partial stays explicit. CP084 includes periodic manual docs audit. No gate/fullmatch/LAN claims.\n\nFiles local experiment, canonical docs/catalog/evidence/manifest. Production change only if concrete blocker requires it; no rescan knowncodec/item/chain bodies. Acceptance is scoped three-bomb native callback behavior and declared reset evidence, not intended keyboard geometry or timer alone.\n",
+      "closedAt": "2026-11-03T21:23:57Z",
+      "number": 128,
+      "state": "CLOSED",
+      "title": "KRE-047: native three-bomb chain variant with reused capacity/Fire knowledge",
+      "updatedAt": "2026-11-03T21:23:57Z",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/128"
+    },
+    {
+      "body": "KRE-046. Baseline CP082/PR125 c38a4cbc2be7f8cf57910903b34378241a5e85a7. Codex solo owner/self-review; independent review waived.\n\nObserved currentbothdead actual17/19/no21, fixturepolicywaits foreverwithinbound. Source-first KRCP023039 rank175 raw292/2row131/rank2loss, VNresult all-dead pattern only. Candidate2/2 nativeheader/16records parser passes, newUIruntime pending.\n\nImplement optional knownrank_all_dead profile alias and bounded A/B allaccepteddead policy:8safterlatestdeath→rank2/2 withoutfalsewinner/fake21/nativeforcing, existingone-survivor21 policy unchanged. Tests for noearlyresult/singledeath/legacyprofile/staleround/report21 race; actualbothdead runtime→native175180/room/reset and UI. Do not call originaltieenum or gate/fullmatch proof.\n\nFiles server/probe_service.py, tests, tools/export_probe_profile.py, canonicaldocs/catalog/evidence/CP083. Sourcebinary/pack/DB immutable; run copied Wine inprivatelease/namespace. Next auditCP084.\n",
+      "closedAt": "2026-11-03T21:09:47Z",
+      "number": 126,
+      "state": "CLOSED",
+      "title": "KRE-046: explicit all-dead KR result without a fabricated survivor report",
+      "updatedAt": "2026-11-03T21:09:47Z",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/126"
+    },
+    {
+      "body": "KRE-045. Baseline CP081/PR123 2b9e7d4f73e99010f3e291c989185d4e73916461. Owner/reviewer Codex solo self-check; independent review waived. Dependency CP080 two native cycles/rejoin/hoverinput and CP081 currentmixedownerinrange.\n\nCombine known routes for same-run twoownerchain→naturalAtrap/death→native175/180/refresh twice/newkey/allocator/statbaseline/no duplicate secondary own158. Bescapes/Astays via ordinary input; no stateforcing/productioncode/fuse/rankpolicy changes. Profile combines proven Firefloor and currentmembership metadata, documented measurementdesign.\n\nFiles: local copied controllers/read-onlyprobes/raw/hashes; canonicaldocs/catalog/evidence/CP082 at meaningful boundary. Acceptance actual118159cells/owner/ID joins, nativecallback secondary processing beforeown timer, stateA1before175, two resultreturnrefresh/currentkeys/Firebaseline. Preserve partial/unknown, no fullmatch/gates/LANclaim.\n",
+      "closedAt": "2026-11-03T13:49:04Z",
+      "number": 124,
+      "state": "CLOSED",
+      "title": "KRE-045: two same-run mixed-owner chain and result/reset cycles",
+      "updatedAt": "2026-11-03T13:49:04Z",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/124"
+    },
+    {
+      "body": "KRE-044. Baseline CP080/PR121 cfa4307a97c42a7819427d9b637460ddc4ababf9. Owner/reviewer Codex solo self-check; independent review waived. Dependency CP071 placement partial and CP080 durable input method.\n\nExact source correction: CP071 power-live already has actual118 for A/B; power-feedback fails Aroot118 after B positioning, before BSpace. Trace that actual input/placement edge first; no generic Bkeyboard or codec/schema rediscovery.\n\nFiles: local copied Wine controller/read-only probes/source comparison/raw; docs PLAN/PROTOCOL/RESEARCH/catalog/evidence/checkpoint CP081 at meaningful edge/blocker. No source binary/DB/production service changes.\n\nAcceptance: actual per-role keyboard/native action/writer/current118 attribution; if two owner bombs obtained, verify actual in-range geometry and callback-scoped secondary native processing before independent timer. OS input/position alone do not pass; preserve partial/failure. Reuse CP027/064/071/VN sources, no unbounded hold tuning/forcing.\n",
+      "closedAt": "2026-11-03T13:25:36Z",
+      "number": 122,
+      "state": "CLOSED",
+      "title": "KRE-044: trace A root bomb input after mixed-owner positioning",
+      "updatedAt": "2026-11-03T13:25:36Z",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/122"
+    },
+    {
+      "body": "Baseline CP079/PR119 be860a2eab2726f6cbc6e52c317900dc07c00a18. Owner/reviewer Codex solo self-check; independent review waived by owner. Dependency KRE-042/#118 and CP016 known input path.\n\nQuestion: returned Ready click reaches WndProc/filter/button/delegate or stops earlier? Compare with initial successful callback, no speculative106/service/state forcing.\n\nFiles: local read-only GDB probes/controller/raw; canonical README/PLAN/PROTOCOL/RESEARCH/catalog/evidence/checkpoint CP080 + periodic manual audit. Original binary/DB and production service unchanged.\n\nAcceptance: durable roleenv/PID/focus/action before/after UI + phase facts, bounded native path attribution and actual95/104/secondclock when reached. Preserve negative/partial outcome, no automatic gates/fullmatch claim. On precise boundary follow minimal hypothesis; if no edge, independent two-owner bomb task.\n",
+      "closedAt": "2026-11-03T13:13:07Z",
+      "number": 120,
+      "state": "CLOSED",
+      "title": "KRE-043: compare returned Ready input dispatch with durable runtime progress",
+      "updatedAt": "2026-11-03T13:13:07Z",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/120"
+    },
+    {
+      "body": "KRE-042. Baseline CP078 merge fff30b1f42abd4855a095c0f7502326801565354; owner/reviewer Codex, review waived by owner.\n\nSource-first comparison answers the immediate hypothesis: CP069's successful second Ready95/Start104 also had no new106 after return585. Therefore missing106 is not a necessary explanation in this measured profile. CP078 clicked Ready before the actual post-return585; its followup stopped before153/clock and never reached the intended changed Ready2 observation.\n\nReuse CP018/028 native Ready entry/pending/local/count/state/host/throttle/build probes and the current rejoin/Battle route. One private550s run anchors Ready2 to actual post-return585 on both channels, then known focus/render delay; require actual B95 before AStart. The initial observer is anchored to actualStart instead of100s fromJoin. Production service/profile/41 fixture bytes remain unchanged; no106 wrapper or persistent fix based only on opcode.\n\nAcceptance: native guard/input→actual95/104→secondkey/reset/nativeeffects/state/result/return, or an exact bounded blocker with no unchanged retry. Raw/copies/private scripts under local/research/codex/return585-ready-r1; canonical docs/catalog/evidence/checkpoint when a milestone or blocker is established. No gate/fullmatch/vanilla/LAN/general authority claim. Audit nextCP080.\n",
+      "closedAt": "2026-11-03T13:13:03Z",
+      "number": 118,
+      "state": "CLOSED",
+      "title": "KRE-042: phase-anchored Ready after return585 and native guard attribution",
+      "updatedAt": "2026-11-03T13:13:03Z",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/118"
+    },
+    {
+      "body": "KRE-041. Baseline CP077 PR115 merge; owner/reviewer Codex (independent review waived by owner).\n\nCP077 reaches native clock after guest Back/rejoin on the same channels, while CP069 has the basic item/bomb/death/result/reset route and CP075 has selected transport guards. Reuse these exact contracts/oracles and the normal UI route. Measure same-run rejoin→Battle effects/state/peer reports→result/return/refresh→second Start/next key/baseline reset.\n\nNo production service or binary patch is planned. Private namespace/loopback/lease, one bounded550s controller; preserve partial runs and actual field/body/hash provenance. Allow the existing rank/return/refresh delays to complete; do not shorten policy or silently replace expected evidence. No transport semantic replay in this integration.\n\nFiles: canonical docs/catalog/evidence/manifest when a meaningful milestone or blocker is reached; raw/copy/scripts in local/research/codex/rejoin-battle-cycles-r1. Acceptance: actual124/118/17/19/peer21 and native effects/state/result/return/reset on both clients in the same run, or explicit bounded partial. No fullmatch/gate/LAN/original-server authority claim from assembled separate runs. Next periodic audit CP080.\n",
+      "closedAt": "2026-11-03T13:12:58Z",
+      "number": 116,
+      "state": "CLOSED",
+      "title": "KRE-041: same-run Battle and round reset after guest rejoin",
+      "updatedAt": "2026-11-03T13:12:58Z",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/116"
+    },
+    {
+      "body": "KRE-040. Baseline CP076 merge e791e964f18e092d9fbd6737dd0ee916456755ce. Owner/reviewer Codex; independent review waived by owner.\n\nCP076 supports A alone after guest EOF. Continue PLAN with native guest Back86 while host A remains mapped, then actual82 rejoin on the same channel. Reuse CP034107/slot clear/chief and CP03582/87/585/profile/map/Ready; no body/writer/codec/auth rediscovery. VN lobby/session is method reference only.\n\nControl uses an explicit measurement wrapper returning the known241/91 lobby refresh while preserving production membership and old setup markers; capture actual86/82 and absence/presence of107/87/585/native effects. Only then fix the demonstrated variant, preserving IDs/slots/socket sequence, round allocators and history. Ready/Start only after valid rejoin; no general host/active leave/account resume/fullmatch claim.\n\nFiles: server/probe_service.py, targeted regressions/export metadata if needed; canonical docs/catalog/evidence/manifest. Raw/copies/private controller under local/research/codex/guest-back-rejoin-r1. Private namespaces/loopback/lease; no source binary/DB/pack edits.\n\nAcceptance: actual request→service→native own and peer roster/map, no ghost member, same connection sequences; meaningful tests, local/history/docs/artifacts. Audit next CP080. Continue PLAN immediately after integration.\n",
+      "closedAt": "2026-11-03T11:45:25Z",
+      "number": 114,
+      "state": "CLOSED",
+      "title": "KRE-040: guest Back86 and same-channel rejoin with host still mapped",
+      "updatedAt": "2026-11-03T11:45:25Z",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/114"
+    },
+    {
+      "body": "KRE-039. Baseline CP075 merge 41f0fa9b5cf3f5f5e303d64cc0edf6ce73587699. Owner/reviewer Codex (independent review waived by owner).\n\nCP074 captured native Back86 on the same channel after preclock guest EOF, but the production service has no explicit leave/reset/recreate handling. Reuse CP034/035 native leave/rejoin/sequence contracts and CP050/052–054/074 cleanup; VN lobby/session is a method reference only.\n\nControl: unchanged service, normal Back/Create/confirm, actual81/585/response/setup capture and native trace. Fix only a demonstrated blocker, initially bounded to empty room after guest EOF; preserve socket identity, sequence and log/round/job history. No general membership/account resume/fullmatch claim.\n\nFiles: server/probe_service.py and targeted tests if justified; canonical docs/catalog/evidence/checkpoint. Runtime/raw/copies in ignored local/research/codex/back86-membership-r1. Private user/net/mount/PID namespace and one runtime lease, no source binary/DB/pack changes.\n\nAcceptance: evidence joins actual native request→same TCP/service state→native reply/roster/map/UI; reject or explicitly retain unsupported variants; meaningful service regression plus docs/catalog/artifacts/local-history checks. Audit CP076 due. Continue PLAN immediately afterward.\n",
+      "closedAt": "2026-11-03T11:31:00Z",
+      "number": 112,
+      "state": "CLOSED",
+      "title": "KRE-039: Back86 membership and recreate on the same channel",
+      "updatedAt": "2026-11-03T11:31:00Z",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/112"
+    },
+    {
+      "body": "KRE-038 — cập nhật05/11/2026 bởi Codex tự kiểm; review độc lập waived theo [chủ dự án](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/evidence/checkpoints/review-waiver.json). Scope KR00967/localmodifiedWine, không Nexon/liveauth. Baseline điều phối CP108/PR177 `985a01d`; đối chiếu raw/runtime mới ở CP109. Lịch sử mô tả trước sửa lưu trong issue-reconciliation evidence/snapshot; không sửa checkpoint complete.\n\n**Phân loại:** completed. Feature: KR-F004, KR-F006, KR-F009, KR-X002, KR-S001.\n\n**Đã biết:** CP075actualTCP12replay/partialR2; CP085same-run2ending/effects/chain/guards; CP106/109current2cycles tiếpqualifysource.\n\n**Còn thiếu/giới hạn:** Fullcurrentforgedbody/auth/location/codec/authority chưađủ #14.\n\n**Phép thử/bước kế:** Khônglặpsame-oldselectedbodies; nextPLANactualvisual/integrationgap. Thứ tự duy nhất tại [PLAN](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/PLAN.md#current-order).\n\n**Acceptance của scope này:** CurrentseqTCP/bodyorigin/SHA/frontvsproxy/nativeframer/effects/noextras haiending/reset cùngrun.\n\n**Quyết định theo bằng chứng:** LaterCP085completeacceptanceCP075partial, giữnegativeprobe170scope/notinventcallback. Đóng task hẹp không đóng gate K0–K7.\n\nNguồn chuẩn (chỉ dẫn, không sao chép contract):\n\n- [docs/PROTOCOL.md#tcp-guard-cycles](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/PROTOCOL.md#tcp-guard-cycles)\n- [docs/RESEARCH.md#gap-diagnostic-service](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/RESEARCH.md#gap-diagnostic-service)\n- [docs/PLAN.md#current-order](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/PLAN.md#current-order)\n\nPR/bằng chứng đáp ứng hoặc giới hạn:\n\n- [docs/evidence/current-tcp-replay/README.md](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/evidence/current-tcp-replay/README.md)\n- [docs/evidence/tcp-guard-cycles/README.md](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/evidence/tcp-guard-cycles/README.md)\n- [docs/evidence/current-movement-cycles/README.md](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/evidence/current-movement-cycles/README.md)\n\n[PR111](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/111), [PR129](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/129), [PR173](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/173) (đã merge; scope tại evidence).\n",
+      "closedAt": "2026-11-05T00:42:43Z",
+      "number": 110,
+      "state": "CLOSED",
+      "title": "KRE-038: current guards qua captured-body TCP replay và native integration",
+      "updatedAt": "2026-11-05T00:42:43Z",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/110"
+    },
+    {
+      "body": "KRE-037. Baseline CP073/PR107 exactmerge in HEAD. Codex solo RE/runtime/code/self-check; review independently waived. Dependencies #14/#104/#106, CP050/052–054/072/073. Preserve sourcebinary/DB/pack/existingchanges; tools/raw/copies inlocal, canonicaldocs/catalog/evidence/checkpointCP074 only unlessactualpolicyfix justified.\n\nQuestion remaining from CP072: does realpreclockBEOF allow nativeA107/slot1ID2→0/chief completion when observer waits actualnativecleanup (<=30s afterservicecleanup), rather than refresh+3s stop? Already native175302/1803/stage12; do notredo schema/receiver. CP073separatesaux2000:0/noTCP frommainfallback/SIGABRTcauseunknown andhascurrentduoactual67positive. Addreadonly1254CC0errorstate/knownCreateProcessHTTPprobes forprecisefailureattribution, notcallpopuproot.\n\nOneprivateuser/net/mount/PIDnamespace/lease/WineABcurrentbasicprofile run; actualB99dispatchheld<=30s, A99thenBprefixEOF afterhold+2s. Productionservice/guards/forfeit/return/cleanup unchanged; noautoUIafterEOF/nativeforcing/newbody/patch. Successonlyactualnative107/IDclear/chief afterclear, no197196153/clock/death/bomb; iffailurecaptureexactargs/caller/errorstate fornextminimaltest, notunchangedretry.\n\nSealraw/hash; meaningfulCP074/docssync/checks/explicitcommit/push/PR/latestexactheadCLEAN+checks/selfmerge thennextPLAN. AUD022throughCP072,nextCP076. No fullmatch/K5/K6a/LAN/auth/vanilla claims. Accountresume/hostvariant/timeout/loadfail outsideboundedboundary.\n",
+      "closedAt": "2026-11-02T21:45:09Z",
+      "number": 108,
+      "state": "CLOSED",
+      "title": "KRE-037: native107 sau preclockEOF với diagnostics đúng nhánh",
+      "updatedAt": "2026-11-02T21:45:09Z",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/108"
+    },
+    {
+      "body": "KRE-036 — cập nhật05/11/2026 bởi Codex tự kiểm; review độc lập waived theo [chủ dự án](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/evidence/checkpoints/review-waiver.json). Scope KR00967/localmodifiedWine, không Nexon/liveauth. Baseline điều phối CP108/PR177 `985a01d`; đối chiếu raw/runtime mới ở CP109. Lịch sử mô tả trước sửa lưu trong issue-reconciliation evidence/snapshot; không sửa checkpoint complete.\n\n**Phân loại:** superseded. Feature: KR-L001.\n\n**Đã biết:** CP073đãtáchauxiliarylocalevalid1/0→initfalse2000:0/noTCP; main96A155JSONHTTP khônglàlocale; mainpositive67 vàcontrolledEOF riêng.\n\n**Còn thiếu/giới hạn:** RootcausehistoricalmainSIGABRT/startupintermittent chưađóng.\n\n**Phép thử/bước kế:** Chuyển attributionstartup residual về#9/RESEARCHgap-auth-identity; probeonlyexactnewmainfault. Thứ tự duy nhất tại [PLAN](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/PLAN.md#current-order).\n\n**Acceptance của scope này:** Boundedattribution/clearblockerđãghi; khôngcóstabilityfix hoặcmainrootcauseproven.\n\n**Quyết định theo bằng chứng:** Supersededby#9 residualstartup, #108/104 đãhoànnativecleanup; khôngđóngnhưđãsửaLocale. Đóng task hẹp không đóng gate K0–K7.\n\nNguồn chuẩn (chỉ dẫn, không sao chép contract):\n\n- [docs/PROTOCOL.md#launcher-error-attribution](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/PROTOCOL.md#launcher-error-attribution)\n- [docs/RESEARCH.md#gap-auth-identity](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/RESEARCH.md#gap-auth-identity)\n- [docs/PLAN.md#current-order](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/PLAN.md#current-order)\n\nPR/bằng chứng đáp ứng hoặc giới hạn:\n\n- [docs/evidence/nmco-locale-stability/README.md](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/evidence/nmco-locale-stability/README.md)\n- [docs/evidence/preclock-cleanup/README.md](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/evidence/preclock-cleanup/README.md)\n\n[PR107](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/107), [PR109](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/109) (đã merge; scope tại evidence).\n\n**Phần việc chuyển sang:** [#9](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/9), [#14](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/14). Không giả originalacceptance đãpass toàn bộ.\n",
+      "closedAt": "2026-11-05T00:42:40Z",
+      "number": 106,
+      "state": "CLOSED",
+      "title": "KRE-036: truy NMCO locale2000:0 đang cản runtime",
+      "updatedAt": "2026-11-05T00:42:40Z",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/106"
+    },
+    {
+      "body": "KRE-035 — cập nhật05/11/2026 bởi Codex tự kiểm; review độc lập waived theo [chủ dự án](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/evidence/checkpoints/review-waiver.json). Scope KR00967/localmodifiedWine, không Nexon/liveauth. Baseline điều phối CP108/PR177 `985a01d`; đối chiếu raw/runtime mới ở CP109. Lịch sử mô tả trước sửa lưu trong issue-reconciliation evidence/snapshot; không sửa checkpoint complete.\n\n**Phân loại:** completed. Feature: KR-R003, KR-X003.\n\n**Đã biết:** CP072accepted121/A99/B99held/realEOF/175180partial; CP074native107base6/rewind0/final1/ID2→0/chief1/renderroom/Back86 bổsung.\n\n**Còn thiếu/giới hạn:** Timeout/loadfail/hostvariant/accountresume ngoàiscope#14.\n\n**Phép thử/bước kế:** KhônglạikillBpreclock, reusenative107/path theoPLAN. Thứ tự duy nhất tại [PLAN](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/PLAN.md#current-order).\n\n**Acceptance của scope này:** AcceptedStart/preclockrealEOF/discardheld99/no197196153/clock/native175180107slotID/chief/honestpolicy.\n\n**Quyết định theo bằng chứng:** CP074điền gapnativecleanup củaCP072; khôngdùngserviceemitthaynativeparse. Đóng task hẹp không đóng gate K0–K7.\n\nNguồn chuẩn (chỉ dẫn, không sao chép contract):\n\n- [docs/PROTOCOL.md#preclock-cleanup](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/PROTOCOL.md#preclock-cleanup)\n- [docs/RESEARCH.md#gap-map-spawn-loading](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/RESEARCH.md#gap-map-spawn-loading)\n- [docs/PLAN.md#current-order](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/PLAN.md#current-order)\n\nPR/bằng chứng đáp ứng hoặc giới hạn:\n\n- [docs/evidence/preclock-eof/README.md](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/evidence/preclock-eof/README.md)\n- [docs/evidence/preclock-cleanup/README.md](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/evidence/preclock-cleanup/README.md)\n\n[PR105](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/105), [PR109](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/109) (đã merge; scope tại evidence).\n",
+      "closedAt": "2026-11-05T00:42:37Z",
+      "number": 104,
+      "state": "CLOSED",
+      "title": "KRE-035: EOF sau Start trước clock, kiểm native return/cleanup",
+      "updatedAt": "2026-11-05T00:42:37Z",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/104"
+    },
+    {
+      "body": "KRE-034 — cập nhật05/11/2026 bởi Codex tự kiểm; review độc lập waived theo [chủ dự án](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/evidence/checkpoints/review-waiver.json). Scope KR00967/localmodifiedWine, không Nexon/liveauth. Baseline điều phối CP108/PR177 `985a01d`; đối chiếu raw/runtime mới ở CP109. Lịch sử mô tả trước sửa lưu trong issue-reconciliation evidence/snapshot; không sửa checkpoint complete.\n\n**Phân loại:** completed. Feature: KR-F005.\n\n**Đã biết:** CP071partial thiếu118; CP081reuseknownFire/input cóactualA3,3power2/B3,5power1, same-rootprocessB/callerEBE21A, laterBcallbacknodupbothviews.\n\n**Còn thiếu/giới hạn:** Genericorder/moving/sharedblocker/fullauthority còn#14, khôngcausalityoldinputfailure.\n\n**Phép thử/bước kế:** ReuseCP081positive/CP064negative theoPLAN, khônglạicùnggeometry. Thứ tự duy nhất tại [PLAN](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/PLAN.md#current-order).\n\n**Acceptance của scope này:** Actualtwoowners/IDs/rootpower2/distance2/secondaryinsidefirstroot/beforeownlater/no duplicatebothviews.\n\n**Quyết định theo bằng chứng:** Acceptancecủa#102đượcCP081đápứng, CP071khôngbịviếtlạithànhpass. Đóng task hẹp không đóng gate K0–K7.\n\nNguồn chuẩn (chỉ dẫn, không sao chép contract):\n\n- [docs/PROTOCOL.md#mixed-input](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/PROTOCOL.md#mixed-input)\n- [docs/RESEARCH.md#gap-blast-block-chain](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/RESEARCH.md#gap-blast-block-chain)\n- [docs/PLAN.md#current-order](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/PLAN.md#current-order)\n\nPR/bằng chứng đáp ứng hoặc giới hạn:\n\n- [docs/evidence/mixed-owner-power/README.md](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/evidence/mixed-owner-power/README.md)\n- [docs/evidence/mixed-input/README.md](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/evidence/mixed-input/README.md)\n\n[PR103](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/103), [PR123](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/123) (đã merge; scope tại evidence).\n",
+      "closedAt": "2026-11-05T00:42:33Z",
+      "number": 102,
+      "state": "CLOSED",
+      "title": "KRE-034: mixed-owner chain trong tầm power2, tái dùng control CP064",
+      "updatedAt": "2026-11-05T00:42:33Z",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/102"
+    },
+    {
+      "body": "KRE-033. Baseline CP069/PR99 merge03f1afb. Codex solo/self-check; reviewwaived. Depends #14/CP027/045–047/065/069. No planned production/nativecode changes;docs/catalog/evidenceCP070/privateharness only.\n\nCurrentpairednativecoordinatesamples do not isolate UDP. Reuseactual99/153endpoints/nativeE66680/apply/snapshots; no fullgrammar scan or unchangedfailedCP049TCPproxy. Preflight nftinputcounter/drop/restore inthrowawayuser/netnamespace. Runtime one-wayUDPcut exactactualports/private namespace only; localnativeactor vsremoteview whilecut thenrestore/counter/currentupdate, reverse direction. Neverhostfirewall/outbound/nativefunctionforcing/packetmint.\n\nKnown1256B3B mainlogicreturn periodic read-only encryptedwrapper snapshots +hostmonotonicphase metadata;native52A350oracle afterward. Artifact/copyhash sameprofileCP065distinct, onecontroller/lease/no route/files-onlyNSS/privatecopies/warm-prefixes. Endaftercontrols;notfullmatch/twogames/K6a/NAT/UDPgrammar/authproof. Counter0/no snapshots keepunknown. Checks/CP070commitPR/exactselfmerge then nextPLAN. AUD021/CP068,nextCP072.\n",
+      "closedAt": "2026-11-02T17:35:02Z",
+      "number": 100,
+      "state": "CLOSED",
+      "title": "KRE-033: current movement causality with private UDP cut and restore",
+      "updatedAt": "2026-11-02T17:35:02Z",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/100"
+    },
+    {
+      "body": "KRE-032. Baseline CP068/PR97 merge. Codex solo/self-check, reviewwaived. Depends #14/CP030/032/065–068. Files tools/export_probe_profile.py/serverREADME/canonicaldocs/catalog/evidenceCP069;no plannedservice/nativecode change.\n\nCombine existingfloor17row4col3Roller +hidden27row2col3Bomb/28row3col2Fire in known582groups1/2/0/36inner. Nativeblob/11ED590/CRCpartial first;exact41aliasprofile/cataloganddistinctspawn/guards unchangedexceptfloorfixture. Addexplicit battle item-layout option,retainfloor/hidden variants/defaultpolicyunlessmeasureddefaultchangejustified. No newnativebody/patch/randomdrop/serverauthclaim.\n\nOne isolated sequential Winecontroller/lease/privatecopies/prefix/no route/files-onlyNSS;reuseCP068normalUI ASpaceat3,3→DownescapeandRoller→Up/hiddenroute→finalbom;captureactual118cell/124/capFireRollerbeforeafter/peer/reset/state/result2cycles. SpeedchangedviaRoller soUIexpectednotproof,keepboundedfailures. Nativeall3effects/resetinone run,notmergeoldrunsintogate. Checks/CP069commit/PR/exactheadselfmerge then nextPLAN. AUD021throughCP068,nextCP072.\n",
+      "closedAt": "2026-11-02T17:18:34Z",
+      "number": 98,
+      "state": "CLOSED",
+      "title": "KRE-032: combine floor and hidden effects in one basic Battle profile",
+      "updatedAt": "2026-11-02T17:18:34Z",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/98"
+    },
+    {
+      "body": "KRE-031. Baseline CP067/PR95 merge bf4761d. Codex solo/self-check;review waived. Depends #14/CP032/065/067. Files server/probe_service.py/focusedtests/canonicaldocs/catalog/evidenceCP068;privatefixtures/harness/raw local only.\n\nIntegrate knownCP032 hidden582list2/FixedBox/reveal142/actual124165/capFire1→2/reset into currentdistinctprofile/auth/cache/key+serial+reportguards. Exactknownfixtureindices27/28 and knownUI;no newnativebody/patch/receiver/itemRE. Addoptionalhidden_items catalog and conservative report-derived eligibility: knowncell142/boundselectedslot/auxFFFFFFFF after currentround emitted158;124beforeknownrevealdenied, duplicateidempotent/resetperround. Declarepolicy design,notservercollision/drop/auth;142old/forgedafterblastnot solved bypayloadwithoutknownkey.\n\nOne isolated sequential Winecontroller/lease/privatecopies/prefix/no route/files-onlyNSS;twoactualcycles/nativetilestore/revealpointer/native165effects/reset/state/resultbothviews. Negativepolicyregressions/knownnativefixture+framer/sourcehash;no scriptsemantic/gateclosure. CP068periodicmanualAUD021mandatory README→PLAN→PROTOCOL→RESEARCH→evidence/raw;nextCP072. Commit/PR/exactheadselfmerge then nextPLANtask.\n",
+      "closedAt": "2026-11-02T17:07:21Z",
+      "number": 96,
+      "state": "CLOSED",
+      "title": "KRE-031: current-service hidden items, reveal reports and reset",
+      "updatedAt": "2026-11-02T17:07:21Z",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/96"
+    },
+    {
+      "body": "KRE-030. Baseline CP066/PR93 merge. Codex solo/self-check;review waived. Depends #14/CP021/025/041/043/065/066. Target server/probe_service.py/focusedregression/canonicaldocs/catalog/evidenceCP067;private raw/localcopies only.\n\nQuestion: actual C2S118duplicate/oldroundbody currently can allocateextra ID/timer; establish cached writer field0/serial and prior runtimeorder before boundedpolicy. Reuse CP025 fullu32serial/159localpool, CP065 firstfield12345→12346/current153key, VNproducerreference. Do notconflate S2C159duplicate tests or k124/authentication.\n\nBaseline isolated Wine control freezes current service; wrapper captures exact native118R1, immediate duplicate then oldafterR2A39. Injections atdispatcher explicitly bypass TCP/framer/seq, actualC2S/nativewriter keptseparate. Native159entity/ID andtimer/control consequences; then guard/currenttwo-cycle compatibility if justified. Candidatepolicy fullkey/per-owner/roundserial, no monotonic/wrap/authclaim. Originalsourcebinary/pack/DB preserved;onecontroller/lease/no route/files-onlyNSS/privatecopies. Checks/CP067/commit/PR/exactheadselfmerge then nextPLAN. AUD020,nextCP068.\n",
+      "closedAt": "2026-11-02T16:51:38Z",
+      "number": 94,
+      "state": "CLOSED",
+      "title": "KRE-030: C2S118 stale and duplicate admission before ID allocation",
+      "updatedAt": "2026-11-02T16:51:38Z",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/94"
+    },
+    {
+      "body": "KRE-029. Baseline CP065/PR91 merge. Codex solo/self-check; review waived. Depends #14/CP030/CP062/CP065. No planned productionservice/nativecode change; canonical docs/catalog/evidence/CP066 only plus private fixtures/harness.\n\nActual sameindex pickup across2rounds/currentdistinctspawns: reuse CP030 row6col3 midpoint/Down-Up1s method, CP062 hold only positive165delivery2s/productionclaim unchanged and native stats, CP065 exactspawn0/1/currentauth/cache/guard127. Move knownfloorindex17/kind2row4→6 in datafixture/catalog;native582record/layout verify first. No minted competitor/nativeforcing/newbody/patch. Distinguish deliveryperturbation/originalserverarbitration and actualTCPwriters.\n\nOne isolated Wine controller/lease/no route/files-onlyNSS/privatecopies/warm-prefixes atatime;actualtwo124/winner165/nativeeffectbothviews/loserunchanged/round2reset;normalUIBRight/Aspacefinish cycles. If missingtwoactualwriters recordpartial/boundedgap, not2rankgateclaim. Nativeoracles/fixture/hash/checks reuse exactsources. AUD020/CP064,nextCP068. Commit/PR/exacthead selfmerge then immediately next PLAN task.\n",
+      "closedAt": "2026-11-02T16:34:41Z",
+      "number": 92,
+      "state": "CLOSED",
+      "title": "KRE-029: actual contested pickup across two rounds with distinct spawns",
+      "updatedAt": "2026-11-02T16:34:41Z",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/92"
+    },
+    {
+      "body": "KRE-028. Baseline CP064/PR89 merge; depends #14/CP024/CP058–064. Codex solo/self-check, independent review waived. Target files tools/export_probe_profile.py, server/README.md, canonical docs/catalog/evidence/CP065; service code only if concrete integration bug.\n\nCurrent exporter41 selects overlap121 for contact/race RE, but K4 expects distinct spawns. Reuse CP024 map278 point0/1→actor and exact existing ExVillage121. Verify native frame/blob/ledger, compare body/inner delta with overlap. No new loader/native function/patch or random spawn policy. Export explicit distinct default and preserve overlap option only after measured compatibility.\n\nOne isolated sequential Wine AB currentauth/cache/guard127 run on private copies/warm-prefixes/namespace loopback/no route/files-onlyNSS/lease. Actual native two cycles, distinctspawn coordinates onbothviews/reset, clock/movement/item/bomb/state/result/return; no synthetic nativewriter. Record failures/limits; no K4/K6a/fullmatch/LAN claim merely from two ranks. Reuse controls/oracles, unchanged57server baseline; docs/catalog/artifacts/checkpoints checks. AuditAUD020,nextCP068. Commit/PR/exact-head selfmerge then immediately next PLAN task.\n",
+      "closedAt": "2026-11-02T16:25:21Z",
+      "number": 90,
+      "state": "CLOSED",
+      "title": "KRE-028: distinct map spawns on the current service profile",
+      "updatedAt": "2026-11-02T16:25:21Z",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/90"
+    },
+    {
+      "body": "KRE-027 — cập nhật05/11/2026 bởi Codex tự kiểm; review độc lập waived theo [chủ dự án](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/evidence/checkpoints/review-waiver.json). Scope KR00967/localmodifiedWine, không Nexon/liveauth. Baseline điều phối CP108/PR177 `985a01d`; đối chiếu raw/runtime mới ở CP109. Lịch sử mô tả trước sửa lưu trong issue-reconciliation evidence/snapshot; không sửa checkpoint complete.\n\n**Phân loại:** superseded. Feature: KR-F005.\n\n**Đã biết:** CP064distance2/power1control; CP081power2distance2root+secondary/no ownlaterdup; CP096actualadjacentmixedownerroot.\n\n**Còn thiếu/giới hạn:** CP064adjacentinput khôngđạt; CP096ownlaternotobserved, generaladjacentlifetime/order khôngclaimresolved.\n\n**Phép thử/bước kế:** Giữ residualgenericchain ở #14/RESEARCH; khôngretryoldoverlapmovement. Thứ tự duy nhất tại [PLAN](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/PLAN.md#current-order).\n\n**Acceptance của scope này:** Originaladjacentmixedowner+distancecontrol được tách sang targetedissues; không ghi toànacceptanceoriginalđãđạt nếuownlateradjacentchưađo.\n\n**Quyết định theo bằng chứng:** Đóng superseded, khôngcompleted: chuyển positiveadjacent sang#152/CP096, distance/control sang#102, residualgeneralvariants sang#14. Đóng task hẹp không đóng gate K0–K7.\n\nNguồn chuẩn (chỉ dẫn, không sao chép contract):\n\n- [docs/PROTOCOL.md#adjacent-owner-control](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/PROTOCOL.md#adjacent-owner-control)\n- [docs/RESEARCH.md#gap-blast-block-chain](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/RESEARCH.md#gap-blast-block-chain)\n- [docs/PLAN.md#current-order](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/PLAN.md#current-order)\n\nPR/bằng chứng đáp ứng hoặc giới hạn:\n\n- [docs/evidence/mixed-owner-chain/README.md](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/evidence/mixed-owner-chain/README.md)\n- [docs/evidence/mixed-input/README.md](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/evidence/mixed-input/README.md)\n- [docs/evidence/adjacent-owner-control/README.md](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/evidence/adjacent-owner-control/README.md)\n\n[PR89](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/89), [PR123](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/123), [PR153](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/153) (đã merge; scope tại evidence).\n\n**Phần việc chuyển sang:** [#152](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/152), [#102](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/102), [#14](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/14). Không giả originalacceptance đãpass toàn bộ.\n",
+      "closedAt": "2026-11-05T00:42:30Z",
+      "number": 88,
+      "state": "CLOSED",
+      "title": "KRE-027: mixed-owner bomb chain with a distance control",
+      "updatedAt": "2026-11-05T00:42:30Z",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/88"
+    },
+    {
+      "body": "KRE-026. Baseline CP062 / PR85 merge46cbbfd. Owner/reviewer Codex solo/self-check, independent review waived by owner. Depends #14 / CP023 / CP055 / CP056 / CP061–062.\n\nQuestion: stale/duplicate127 can affect fixture marker/170/death/result. Reuse commonB53010 prefix14 and CMainSystem logicalcounter, actualperconnectionorder from captures, VN report/confirm knowledge. No newnativebody/patch/login/cache/wholeclient scan.\n\nMeasure minimal baseline dispatcher replay of exact captured old17/19/21 after new current39 and same-round duplicates; label injections separately from actual nativeTCP. Then bounded connection-lifetime tick/equal-distinct/duplicate guard only if justified; keep source limitations/noauth/firstseen/half-range/reconnect explicit. Actual native two-cycle run verifies compatibility. Files server/probe_service.py + focused regression if needed; canonical docs/catalog/evidence/CP063. Private raw in local/research/codex/report127-freshness-r1. Oneisolatedcontroller/lease/privatecopies/loopbacknamespace at a time; preserve original binaries/DB. Audit remainsAUD019, nextCP064. Commit/PR/selfmerge exacthead then immediately next PLAN task.\n",
+      "closedAt": "2026-11-02T13:17:16Z",
+      "number": 86,
+      "state": "CLOSED",
+      "title": "KRE-026: report127 stale and duplicate admission across rounds",
+      "updatedAt": "2026-11-02T13:17:16Z",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/86"
+    },
+    {
+      "body": "KRE-025, baseline CP061/PR83 merge; depends #14/CP030/056/061. Owner/reviewer Codex solo/selfcheck, review waived.\n\nNextPLAN: actual A/B contestedindex on current serializedservice. Reuse CP030race/delayed165method and CP061ABcurrentprofile/overlapfloor17/Roller/stat/reset/keys, no newnativebody/patch/protocol/login/cacheRE. Localmeasurementwrapper only holds outgoing1652s so bothnativewriters canreport; keep actual productionclaim/key/reportguard/winner logic unchanged. BothDown viaUIbarrier, no encoder competingrequests. Check onepositive165/winnerstatbothviews/losernocharge/round2reset. Record delay/firstarrival as emulatorchoice, notoriginalserverarbitration/auth.\n\nOneisolatedWinecontroller/lease/privateA-Bcopies/rawhashes. Filescanonical docs/catalog/evidenceCP062;service onlyif concretebug (notcurrentlyrequested). Checks/commit/PR, AUD019nextCP064. Ifinsufficientactualreports preservepartialandtargetinput; continue nextPLANtask immediately.\n",
+      "closedAt": "2026-11-02T12:53:37Z",
+      "number": 84,
+      "state": "CLOSED",
+      "title": "KRE-025: actual two-client pickup race on serialized current service",
+      "updatedAt": "2026-11-02T12:53:37Z",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/84"
+    },
+    {
+      "body": "KRE-024, baseline CP060/PR81 merge; owner/reviewer Codex solo/self-check, review waived. Depends #14/CP048/055/056/058/059/060.\n\nFollowPLAN samecurrentprofileA/Btwo-cycle integration. Reuse knownnativeconsumers/ABrecipe/actualcaptures andoldVNmethod, nonewnativebody/login/cache/Cadmission RE. StableIDs/sockets, current41clean-auth/compressed-cacheprofile, native124/currentkey/165/statreset+claim/reportmarker/bombID/statepeer/rankreturn. One isolated360sWinecontroller/lease/privatecopies; sourcebinary/DB/packs unchanged. BoundedUIretryifmissing118 only, log/no nativefunction/stateforcing.\n\nAcceptance same-runproof and honestmissingK6a dimensions (two-waymovement/itemrace/fullreset/transport/auth), not gateclosefrom2rank. Docs/catalog/evidenceCP061,checks/commit/PR;AUD019nextCP064. Continue nextPLAN task immediately.\n",
+      "closedAt": "2026-11-02T12:39:44Z",
+      "number": 82,
+      "state": "CLOSED",
+      "title": "KRE-024: two played cycles on current A/B auth and cache profile",
+      "updatedAt": "2026-11-02T12:39:44Z",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/82"
+    },
+    {
+      "body": "KRE-023, baseline CP059/PR79 merge; depends #14/CP054/058/059. Owner/reviewer Codex solo/self-check, review waived.\n\nIntegration gap: C135byte auth newfixture onlynative sofar. Reuse exact old C3/ownmatch/Ready/BStart/prestartAEOF recipe, not redo EOFcontrol/107110/protocol/static RE. Use current41profile exporter/cleanA-Bauth/compressedcache and privatecopies; capture realCauthcallback135/errors0/ID3/actual6name, then same-run B/CStart/bomb/statepeer/result/return. NewC identity not accountresume/fullmembership/gateproof.\n\nRaw local/research/codex/current-profile-c-r1; canonical docs/catalog/evidenceCP060 with periodicAUD019/nextCP064. Sourcebinary/DB/packs unchanged; one isolatedWinecontroller/lease. Checks/commit/PR; aftercompletion immediately follow nextPLAN acceptance task, no workers/permission question.\n",
+      "closedAt": "2026-11-02T12:20:32Z",
+      "number": 80,
+      "state": "CLOSED",
+      "title": "KRE-023: integrate current auth/cache fixtures with real replacement C",
+      "updatedAt": "2026-11-02T12:20:32Z",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/80"
+    },
+    {
+      "body": "KRE-022, baseline CP058/PR77 merge; owner/reviewer Codex solo/self-check, review waived, depends #14/CP019/058.\n\nQuestion: one named fxdynmapinfo.ssd present→missing boundary with new clean authfixture held fixed. Reuse CP019nativeCRC/blob/loader/writer and VNcachemethod first, then private reflinked A/B copy and native read-only cacheloader/parserCRC/528/238/write markers. Only remove namedfile on experimental copy; sourcebinary/packDB/cache originals unchanged. Freshprefix or retainedothercache is not coldclient/allcacheproof.\n\nRaw local/research/codex/cache-boundary-r1; canonical docs/catalog/evidence/CP059. Acceptance exactbefore/afterfilehash/recipe/nativefallback+load/write result orboundedblocker; no fullauth/persistence/reset/gateclaim. Checks/commit/PR; periodicaudit dueCP060 next. Continue nextPLAN task immediately.\n",
+      "closedAt": "2026-11-02T12:07:30Z",
+      "number": 78,
+      "state": "CLOSED",
+      "title": "KRE-022: named dynamic-map cache present/missing runtime boundary",
+      "updatedAt": "2026-11-02T12:07:30Z",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/78"
+    },
+    {
+      "body": "KRE-021, baseline CP057/PR75 merge, depends #14/CP014/020/057. Owner/reviewer Codex solo/self-check, independent review waived.\n\nFollow PLAN auth/profile/cache. Reuse KRbounded34byteauth-ID prefix, cached53reader sites, VNoc_d-login/lobby method and oldrepo/cache sources before target10FD540. Read-only native runtime trace of actually consumed fields/cursor/errors; identify first missingfield and only then construct bounded input/control. Do not port VN31field layout or claim fullauth/coldcache from fixtureID/sharedgame-dir.\n\nFiles canonical contract/research/plan/catalog/evidence and targeted service/diagnostic tool if needed; raw/privateDB/copies local/research/codex/auth-profile-r1. Sourcebinary/DB/pack preserved; Wine isolated/lease onecontroller. Acceptance meaningful native discovery/input-control or explicitboundedblocker, exacthash/VA/run/prooflevel, docs/checkpoint checks/commit/PR. Audit nextCP060. Continue next PLAN task immediately, no worker/permission question.\n",
+      "closedAt": "2026-11-02T11:48:23Z",
+      "number": 76,
+      "state": "CLOSED",
+      "title": "KRE-021: native auth success/profile consumer beyond bounded ID prefix",
+      "updatedAt": "2026-11-02T11:48:23Z",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/76"
+    },
+    {
+      "body": "KRE-020, baseline CP056/PR73 merge (record exact hash in evidence). Owner/reviewer Codex solo/self-check, review waived. Depends #14/CP012/048/056. Follow PLAN codec before auth/cache.\n\nQuestion: native mode2/selector3 retention/consumption/sequence at fragmented/coalesced actual frames and malformed/limit/reset boundaries versus service incremental parser. Reuse cached14EF300/actual captures/nativeoracles/VNmethod first; no wholeclient scan, no opcode/layout/seq portVN. Runtime not necessary where native bounded emulation answers question; don't call it Wine/TCP proof. Preserve originalbinary/DB, use rawmodO samehash.\n\nFiles codec/service/tests only if mismatch justifies; canonical docs/catalog/evidence/CP057; raw local/research/codex/codec-boundaries-r1. Acceptance exactactualframeidentity/native comparison incl buffer left/seq/no advance on partial/error, justified limits if design, checks/commit/PR; audit nextCP060. Continue next PLAN task immediately.\n",
+      "closedAt": "2026-11-02T11:24:09Z",
+      "number": 74,
+      "state": "CLOSED",
+      "title": "KRE-020: native incremental codec boundaries on actual frames",
+      "updatedAt": "2026-11-02T11:24:09Z",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/74"
+    },
+    {
+      "body": "KRE-019, baseline CP055/PR71 merge 76766e7, depends KRE-005b/#14 and CP030/049/055. Owner/reviewer Codex solo/self-check; independent review waived by owner.\n\nQuestion: native actor eligibility at pickup producer/collision vs fixture service accepting current-key forged pickup. Reuse old KR/VN sources by exact question before targeted static/runtime. Preserve original binary/DB/pack; copy offline Wine namespace/lease, one controller. No blanket state enum or server-original policy claim. Bound static passes to concrete edges.\n\nFiles: service/targeted tests only if evidence justifies; canonical README/PLAN/PROTOCOL/RESEARCH/catalog/evidence and CP056 with periodic AUD017. Raw/private static scripts in local/research/codex/pickup-state-r1. Acceptance: native branch/state evidence, explicit minimal control/injection versus real transport, policy scope and limits, regression checks, immutable checkpoint/audit, commit/PR. Continue next PLAN task without asking/stopping.\n",
+      "closedAt": "2026-11-02T11:14:17Z",
+      "number": 72,
+      "state": "CLOSED",
+      "title": "KRE-019: native pickup eligibility and current-key validator control",
+      "updatedAt": "2026-11-02T11:14:17Z",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/72"
+    },
+    {
+      "body": "KRE-018, baseline CP054/PR69 69df506cfd32c2898abb53f83d4b1e14a4c287f0, dependent KRE-005b/#14 and CP030/049/054. Owner Codex solo/self-check, review waived; continue per owner directive.\n\nQuestion: source/unit/lifetime of KR124 t(record+1C), with VN6EFBB8/time producer as method only. Reuse cached KRwriterE2E390/actualrecord/nativeframer and oldsource ledgers before targeted producer/static/runtime. Do not rename into elapsedms or enforce arbitrary timing without KR proof. Limit4new bodies/8requests per pass; runtime copy isolated/lease, no source binary/DB/pack mutation.\n\nFiles canonical PROTOCOL/RESEARCH/PLAN/README/catalog/evidence CP055, targeted diagnostic tool/service only if justified. Raw/privateDB/scripts local/pickup-time-r1. Observed IDA MCP worker missing ida_nexus; no configuration mutation, use privateDB+batch IDAPython/cached Capstone fallback, preserve source hash/build/VA. Native t producer/writer/time correlation and minimal controls if available, else bounded gap not invented oracle. Tests/docs/history/artifacts/commit/PR, audit nextCP056. On completion continue next actualPLAN task, no voluntary stop.\n",
+      "closedAt": "2026-11-01T21:54:03Z",
+      "number": 70,
+      "state": "CLOSED",
+      "title": "KRE-018: nguồn và lifetime field t của KR124",
+      "updatedAt": "2026-11-01T21:54:03Z",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/70"
+    },
+    {
+      "body": "KRE-017, baseline CP053/PR67, dependent KRE-005b/#14 and CP040/051/053. Owner Codex solo/self-check; review waived. Continue immediately per owner directive.\n\nAdmit fresh C/ID3/slot0 after AEOF during Bsetup before first round. CP053 has native cleanup/Bchief1 but replacement_allowed requires refresh, so C remains denied. Add admission rejection observability, preserve old policy for baseline, then allow narrow idle generation0 path only with live mapped promoted B/closedA/no pending cleanup; keep existing post-round path. Same isolated ABC recipe control/fix, actual C JoinReady/BStart/round1 key12345/bombID1/peerstate/result/return; guard live/lobby/active/pending cases with code tests.\n\nFiles: server/probe_service.py/tests and canonical docs/catalog/evidence CP054, raw local/prestart-replacement-r1. Reuse known native wire/consumers; no source binary/DB/pack change, no workers, preserve immutable CP history/audit nextCP056. Validation native/runtime/tests/docs/history/artifacts then PR/exacthead selfmerge. Do not call identity3 account resume or imply fullmatch/K6a/LAN gates. On completion continue next PLAN blocker without stopping.\n",
+      "closedAt": "2026-11-01T15:14:14Z",
+      "number": 68,
+      "state": "CLOSED",
+      "title": "KRE-017: C thay slot trước trận đầu sau host setup EOF",
+      "updatedAt": "2026-11-01T15:14:14Z",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/68"
+    },
+    {
+      "body": "Baseline 3617e69a3536cac9ac9f8a05ae826cbb0cc803be (CP052/PR65), KRE-016 dependent KRE-005b/#14 and CP034/050/051/052. Owner Codex solo/self-check, independent review waived. No workers.\n\nHost A EOF while B has own106 but not map: CP052 code bench no cleanup recipient, setup later emits guest_A fixture and chief stays stale; native consequence not measured. Reuse known107/110/IDclear/chief, isolated control/fix same recipe, minimal per-recipient deferred cleanup if confirmed. Test lifetime/duplicate/recipient-ready boundaries, actual native ID/chief and no false phase.\n\nFiles: AGENTS.md + PLAN + owner-directive durable record for new direct user request to continue immediately across checkpoint/commit/PR boundaries; server/probe_service.py/tests; canonical docs/catalog/evidence CP053. Raw/copies local/host-setup-r1; no source binaries/DB/pack changes. Preserve checkpoint history; audit nextCP056. Acceptance with native runtime proof, tests/docs/history/artifacts and PR/exact-head merge. After CP053 continue next actual PLAN task, no voluntary stop at merge.\n",
+      "closedAt": "2026-11-01T14:29:22Z",
+      "number": 66,
+      "state": "CLOSED",
+      "title": "KRE-016: host EOF khi survivor chưa hoàn tất setup",
+      "updatedAt": "2026-11-01T14:29:22Z",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/66"
+    },
+    {
+      "body": "Baseline c764aa555d0318322a4f67ef0628e14d3e95d0c9 / CP051 PR63. KRE-015, dependent KRE-005b/#14 and CP034/050/051. Owner Codex solo/self-check; independent review waived per AGENTS. No workers.\n\nQuestion: guest channel EOF after own106 before map/Start; does preannounced member remain on host, or false phase/rank/closedpeer reuse occur? Reuse exact KR leave/cleanup consumers, VN session-cleanup method and existing isolation/profile. Code candidate gap: inactive close only cleans mapped event; setup callback already skips closed events.\n\nFiles: server/probe_service.py and targeted tests; canonical README/PLAN/PROTOCOL/RESEARCH/catalog and CP052/evidence/AUD016. Runtime copies/raw local/setup-eof-r1, source binary/DB/pack untouched. Run isolated bounded baseline and fixed control using same recipe; native107 IDclear/chief/protocol evidence, no full auth/gate claims. Group checkpoint and periodic auditCP052, preserve immutable histories; commit/PR/exact-head selfmerge.\n",
+      "closedAt": "2026-11-01T14:01:42Z",
+      "number": 64,
+      "state": "CLOSED",
+      "title": "KRE-015: guest EOF trước map/Start và roster setup",
+      "updatedAt": "2026-11-01T14:01:42Z",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/64"
+    },
+    {
+      "body": "Baseline main `9c6ac926630431c246a98475039fdde69a4f03f9` (CP050/PR61). KRE-014, dependency KRE-005b/#14 and CP040/044 native/harness contracts + CP050 service EOF. Owner Codex solo/self-check; independent review waived by owner per AGENTS/review-waiver.json, no workers.\n\nScope: replace hardcoded two-role limit with narrowly measured third identity C after A EOF/cleanup; C is new ID3/slot0, not account reconnect. Keep B promoted host, send updated106 to B, use actual C82/95 and B104; per-socket seq/role-ID-slot/peer key/current round fence; origin-independent measured170/17,19 and chosen rank for B/C. Use direct peer endpoints from99, not obsolete A/B proxy mapping. Add hash-indexed existing CP040/044 fixture refs, no binary/assets in Git.\n\nFiles: server/probe_service.py + targeted tests, tools/export_probe_profile.py; canonical docs/catalog/evidence/CP051. Raw/copies/log/native metadata local/service-replacement-r1. Preserve source client/DB/pack and CP001–050. Before new RE reuse sources by question; only investigate actual runtime gap. No worker/permission request.\n\nAcceptance: isolated bounded three-process lifecycle A→B/C with actual new C identity/slot/Join/Ready and BStart; new-round B bomb/death170 peerstate/result/return native checked, original timer rejected/no sendA; code regression tests and docs/history/localhash/artifacts checks; honest partial outcomes. Keep auth/reconnect/vanilla/fullvalidator/gates/LAN open. CP051 meaningful checkpoint/commit/PR/exact-head merge, audit next CP052.\n",
+      "closedAt": "2026-11-01T13:37:29Z",
+      "number": 62,
+      "state": "CLOSED",
+      "title": "[KRE-014] Service C mới sau abort, B Start và B/C result",
+      "updatedAt": "2026-11-01T13:37:29Z",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/62"
+    },
+    {
+      "body": "KRE-013 — cập nhật05/11/2026 bởi Codex tự kiểm; review độc lập waived theo [chủ dự án](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/evidence/checkpoints/review-waiver.json). Scope KR00967/localmodifiedWine, không Nexon/liveauth. Baseline điều phối CP108/PR177 `985a01d`; đối chiếu raw/runtime mới ở CP109. Lịch sử mô tả trước sửa lưu trong issue-reconciliation evidence/snapshot; không sửa checkpoint complete.\n\n**Phân loại:** completed. Feature: KR-X003, KR-X002, KR-R004.\n\n**Đã biết:** CP050host/guestpendingEOF:ticketsfenced/175180/107IDclear/chief/provenance; CP052–054/074/101 latervariantscoped.\n\n**Còn thiếu/giới hạn:** Accountresume/activeleave/generalroom/allsendfailures ngoàiacceptance, #14.\n\n**Phép thử/bước kế:** TheoPLAN chỉactualintegrationtrigger, khônglặphost/guestEOF. Thứ tự duy nhất tại [PLAN](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/PLAN.md#current-order).\n\n**Acceptance của scope này:** Host+guestWine175180107110/nativeID/chief, originalticketdrop/no deadpeer sends/idempotentpolicytests.\n\n**Quyết định theo bằng chứng:** CP050đủboundedacceptance; ghi forfeitdesign vàretainedscheduler kháccancel. Đóng task hẹp không đóng gate K0–K7.\n\nNguồn chuẩn (chỉ dẫn, không sao chép contract):\n\n- [docs/PROTOCOL.md#service-eof](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/PROTOCOL.md#service-eof)\n- [docs/RESEARCH.md#gap-disconnect-replacement](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/RESEARCH.md#gap-disconnect-replacement)\n- [docs/PLAN.md#current-order](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/PLAN.md#current-order)\n\nPR/bằng chứng đáp ứng hoặc giới hạn:\n\n- [docs/evidence/service-eof/README.md](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/evidence/service-eof/README.md)\n- [docs/evidence/preclock-cleanup/README.md](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/evidence/preclock-cleanup/README.md)\n- [docs/evidence/selector-closed-readiness/README.md](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/evidence/selector-closed-readiness/README.md)\n\n[PR61](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/61), [PR109](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/109), [PR163](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/163) (đã merge; scope tại evidence).\n",
+      "closedAt": "2026-11-05T00:42:27Z",
+      "number": 60,
+      "state": "CLOSED",
+      "title": "[KRE-013] Service EOF: fence, forfeit, cleanup và chuyển chủ",
+      "updatedAt": "2026-11-05T00:42:27Z",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/60"
+    },
+    {
+      "body": "KRE-012 — cập nhật05/11/2026 bởi Codex tự kiểm; review độc lập waived theo [chủ dự án](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/evidence/checkpoints/review-waiver.json). Scope KR00967/localmodifiedWine, không Nexon/liveauth. Baseline điều phối CP108/PR177 `985a01d`; đối chiếu raw/runtime mới ở CP109. Lịch sử mô tả trước sửa lưu trong issue-reconciliation evidence/snapshot; không sửa checkpoint complete.\n\n**Phân loại:** completed. Feature: KR-F006.\n\n**Đã biết:** CP049control/guardold124 trướcclaim/current165/secureeffectbothviews; CP075/085/106 bổ sungactualTCPold/sameadmission hẹp.\n\n**Còn thiếu/giới hạn:** Fullforged-currentkey/distance/auth/fullvalidator ngoàiacceptance vẫnở#14.\n\n**Phép thử/bước kế:** Khônglặpoldbody; triggervariant theoPLAN/#14. Thứ tự duy nhất tại [PLAN](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/PLAN.md#current-order).\n\n**Acceptance của scope này:** Stale124rejectedbeforeclaim; currentactual124/effectbothviews/duplicateonce/controlprovenance vàlateractualTCPproof.\n\n**Quyết định theo bằng chứng:** Đủacceptancehẹp quaCP049vàlaterTCP; khônggán dispatcherinjectionthànhnativewriter. Đóng task hẹp không đóng gate K0–K7.\n\nNguồn chuẩn (chỉ dẫn, không sao chép contract):\n\n- [docs/PROTOCOL.md#pickup-round-key](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/PROTOCOL.md#pickup-round-key)\n- [docs/RESEARCH.md#gap-floor-pickup](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/RESEARCH.md#gap-floor-pickup)\n- [docs/PLAN.md#current-order](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/PLAN.md#current-order)\n\nPR/bằng chứng đáp ứng hoặc giới hạn:\n\n- [docs/evidence/stale124/README.md](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/evidence/stale124/README.md)\n- [docs/evidence/tcp-guard-cycles/README.md](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/evidence/tcp-guard-cycles/README.md)\n- [docs/evidence/current-movement-cycles/README.md](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/evidence/current-movement-cycles/README.md)\n\n[PR59](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/59), [PR129](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/129), [PR173](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/173) (đã merge; scope tại evidence).\n",
+      "closedAt": "2026-11-05T00:42:24Z",
+      "number": 58,
+      "state": "CLOSED",
+      "title": "[KRE-012] Chặn stale124 trước claim và kiểm old/current trên Wine",
+      "updatedAt": "2026-11-05T00:42:24Z",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/58"
+    },
+    {
+      "body": "Baseline: `5ffd9258ac52068f6ee42786fd4cdca2c4a2a382` (CP047/PR55).\nOwner: Codex solo. Reviewer: Codex self-check; independent review waived by project owner (AGENTS + review-waiver.json).\nDependencies: KRE-005b/#14, current PROTOCOL/RESEARCH/evidence/cache. Preserve all existing changes and CP001–047 history.\n\nProblem: mechanism knowledge is difficult to locate across chronological checkpoints. Build a stable-ID function catalog for bootstrap → login → lobby → room → Battle → result/reset, with source links, scenario dependencies and separate presence/VN/static/emulation/runtime environments/implementation/integration/gate declarations. Keep PLAN as the only work order, PROTOCOL contracts, RESEARCH gaps/experiments and manifest history.\n\nFiles: docs/features.json, generated docs/COVERAGE.md, tools/feature_catalog.py + negative tests, tools/check_docs.py, core docs/navigation, docs/evidence/feature-catalog, CP048/AUD015. Existing uncommitted probe service work stays in the same branch and is verified under #14; no independent-review claim or gate promotion.\n\nAcceptance: every scoped feature links directly to evidence/build/hash/limits, a current gap and minimum experiment; generator is reproducible; checker detects ID changes, cycles, missing refs/files/anchors and invalid declarations without semantic confirmation; preserve unknowns; manual periodic audit at CP048, next CP052; required doc/history/local hash checks; commit/PR/exact-head merge. Resume targeted service/runtime after organization against the actual blocker.\n",
+      "closedAt": "2026-11-01T12:14:04Z",
+      "number": 56,
+      "state": "CLOSED",
+      "title": "[KRE-011] Catalog chức năng KR, coverage và nguồn chuẩn tra cứu",
+      "updatedAt": "2026-11-01T12:14:04Z",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/56"
+    },
+    {
+      "body": "KRE-005b — cập nhật05/11/2026 bởi Codex tự kiểm; review độc lập waived theo [chủ dự án](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/evidence/checkpoints/review-waiver.json). Scope KR00967/localmodifiedWine, không Nexon/liveauth. Baseline điều phối CP108/PR177 `985a01d`; đối chiếu raw/runtime mới ở CP109. Lịch sử mô tả trước sửa lưu trong issue-reconciliation evidence/snapshot; không sửa checkpoint complete.\n\n**Phân loại:** in_progress. Feature: KR-L001, KR-R004, KR-F002, KR-F003, KR-F004, KR-F005, KR-F006, KR-F008, KR-F009, KR-X001, KR-X002, KR-X003, KR-S001, KR-S002.\n\n**Đã biết:** Localmodifiedcopy đã có login/sảnh/phòng/Battle; CP109samerun Bhost haiending/reset/nativeproof riêng, nofullgate.\n\n**Còn thiếu/giới hạn:** Cácgate/control/fullauth/codec/authority/fullvalidator/visualsecondreturn/LANInternet chưa nghiệmthu.\n\n**Phép thử/bước kế:** TheoPLAN sauđợtreconcile: finalsecondreturnblackframe focus/wait/native95currentroom control, reuseCP074/080; khônglạiY389đãqua. Thứ tự duy nhất tại [PLAN](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/PLAN.md#current-order).\n\n**Acceptance của scope này:** Epic checklist: linkedscopedtask/evidence+authoritymatrix vàacceptancegate ởPLAN; từngtaskđóng khôngđóngepic/K5/K6a.\n\n**Quyết định theo bằng chứng:** Thay scope CP004postWCP cũ bằng epic bảo trì/compatibility; không tạo duplicatecontract/plan. Đóng task hẹp không đóng gate K0–K7.\n\nNguồn chuẩn (chỉ dẫn, không sao chép contract):\n\n- [docs/PROTOCOL.md#authority](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/PROTOCOL.md#authority)\n- [docs/RESEARCH.md#feature-gaps](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/RESEARCH.md#feature-gaps)\n- [docs/PLAN.md#current-order](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/PLAN.md#current-order)\n\nPR/bằng chứng đáp ứng hoặc giới hạn:\n\n- [docs/evidence/current-movement-cycles/README.md](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/evidence/current-movement-cycles/README.md)\n- [docs/evidence/host-normal-back/README.md](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/evidence/host-normal-back/README.md)\n- [docs/evidence/promoted-outcome/README.md](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/evidence/promoted-outcome/README.md)\n\n[PR173](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/173), [PR175](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/175), [PR177](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/177) (đã merge; scope tại evidence).\n\nChecklist tổng hợp (gate/điều kiện đầy đủ ở PLAN, không coi taskđóng là gatepassed):\n\n- [x] Local modified-copy login/sảnh/phòng/Battle và 2 nativeoutcome/reset; #176/evidence scope.\n- [x] Selected stale/duplicate guard và narrowEOF/Back/promotion; #58/#60/#104/#110/#162 có nguồn.\n- [ ] Finalsecondreturnrender/input có currentwindow/native95 evidence.\n- [ ] Windows/control/ownership/fullbootstrap: #1/#2.\n- [ ] Fullsocketcodec/livebounds/reconnect: #3.\n- [ ] Intermittentmainstartup attribution/identitylimits: #9.\n- [ ] Authority/fullvalidator/generalreset/membership/LANInternet theo PLAN; không port giả định VN.\n- [ ] Nghiệmthu K5/K6a/K6b/K6c/K7 theo actualacceptance, chưapass.\n",
+      "closedAt": null,
+      "number": 14,
+      "state": "OPEN",
+      "title": "[KRE-005b] RE chính: lỗi sau WCP và guard trước login",
+      "updatedAt": "2026-11-05T00:42:21Z",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/14"
+    },
+    {
+      "body": "Baseline616542a8bbaa86c631146fce0fd1a935959dbe57. User27/10 requires RE documentation updates as mandatory checkpoint work, not only conversation/local reports.\nOwnerCodex (coordination/code/docs/runtime), independent reviewerClaudeSonnet5.5. No client runtime needed. Preserve sources/worktree; all new code/docs here; PR after exacthead independent review.\nScope: reconcile current README/PLAN/PROTOCOL/RESEARCH/evidence against merged PR5/7/8/10/11 and latest WCP plain/debug+Claude R1/R2 reports. Keep historical recipe runs scoped/date-labelled. Persist CP IDs/counters and every-four-completed manual audit, with immediate initial audit for stale contradictions.\nFiles: AGENTS.md, main docs, docs/evidence/wcp, docs/evidence/checkpoints, tools/check_checkpoints.py, tests and existingcheck_docs integration.\nAcceptance: latest WCP facts and pending distinctions canonical-linked; no false login/K1/K2 promotion. Checkpoint required fields/evidence SHA/docs-sync/review state; contiguous append-only IDs verified against Git history; completed tasks cannot have active nextsteps; periodic audit due at CP004 thenCP008. Pending/missinglocal evidence explicit, require-local verification on host. Meaningful negative tests. Manual initial audit lists docs/raw read and actual corrections. Finalcheckpoint+nextaudit reported. Claude exactheadreview beforemerge.\n",
+      "closedAt": "2026-10-27T06:39:18Z",
+      "number": 12,
+      "state": "CLOSED",
+      "title": "RE docs: reconcile evidence and persist checkpoint/audit workflow",
+      "updatedAt": "2026-10-27T06:39:18Z",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/12"
+    },
+    {
+      "body": "KRE-005a — cập nhật05/11/2026 bởi Codex tự kiểm; review độc lập waived theo [chủ dự án](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/evidence/checkpoints/review-waiver.json). Scope KR00967/localmodifiedWine, không Nexon/liveauth. Baseline điều phối CP108/PR177 `985a01d`; đối chiếu raw/runtime mới ở CP109. Lịch sử mô tả trước sửa lưu trong issue-reconciliation evidence/snapshot; không sửa checkpoint complete.\n\n**Phân loại:** backlog. Feature: KR-B001, KR-L001.\n\n**Đã biết:** R2PR10 rebuild/coldstarts/ABI/import và laterlogin/runtime đãqua; main/auxiliarylocale đượcCP073 tách.\n\n**Còn thiếu/giới hạn:** Startupintermittent SIGABRT/loginconn3noC2S/rootcause và Windowsvanilla chưagiải.\n\n**Phép thử/bước kế:** Chỉ mở error/caller thực tái hiện, phân biệtBconn3none/auxiliarypopup/mainfatal; khôngpatchABIguess hoặc retryoldNGtrap. Thứ tự duy nhất tại [PLAN](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/PLAN.md#current-order).\n\n**Acceptance của scope này:** BoundedR2recipe/rebuild/coldstarts đãđạtPR10; residualstartupfault phảiattribution/control trướcfix, khônggánlocalehoặcprobe theoảnh.\n\n**Quyết định theo bằng chứng:** Giữ startup umbrella; tiếpnhận residual #106 causeunknown, khônggọiawaitworker làblocker. Đóng task hẹp không đóng gate K0–K7.\n\nNguồn chuẩn (chỉ dẫn, không sao chép contract):\n\n- [docs/PROTOCOL.md#launcher-error-attribution](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/PROTOCOL.md#launcher-error-attribution)\n- [docs/RESEARCH.md#gap-auth-identity](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/RESEARCH.md#gap-auth-identity)\n- [docs/PLAN.md#current-order](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/PLAN.md#current-order)\n\nPR/bằng chứng đáp ứng hoặc giới hạn:\n\n- [docs/evidence/wine-r2/README.md](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/evidence/wine-r2/README.md)\n- [docs/evidence/nmco-locale-stability/README.md](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/evidence/nmco-locale-stability/README.md)\n\n[PR10](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/10), [PR107](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/107) (đã merge; scope tại evidence).\n\nChecklist scope sau rà (mụcđãđạt giữ provenance, phầnthiếu nằmtrongcùngissue):\n\n- [x] Kết quả bounded đã có ở PR/evidence phía trên.\n- [ ] Acceptance residual nêu tại “Còn thiếu” và phép thử cótrigger theoPLAN.\n",
+      "closedAt": null,
+      "number": 9,
+      "state": "OPEN",
+      "title": "[KRE-005a] Wine sau bootstrap: NGClient init và import còn thiếu",
+      "updatedAt": "2026-11-05T00:42:19Z",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/9"
+    },
+    {
+      "body": "KRE-004: Chạy bản copy KR unpack/patch dưới Wine theo yêu cầu chủ dự án.\n\nBaseline: boom-kr-server main3202efc. Owner Codex; reviewers dsh1 và dsh2 session hiện có.\nScope: tools/build_wine_copy.py, tools/wine_probe.py, docs/evidence/wine; không sửa client/DB nguồn.\n\nAcceptance: dựng artifact SHA khóa; ba cold start game/prefix copy mới đi CRT/WinMain/ProcessPatch tới listener loopback accept; có fresh CALog, Winsock log, process/window/screenshot, raw hashes; không gọi Nexon thật. Không claim hello/login/gameplay.\n\nKết quả local: SHA a0c3b9867dae5fe2ff7c315cfe851117661c2cafead45196ce999329f67432f5, ba accept 3868/3878/3898, listener không trả lời và client chưa gửi payload. IAT partial 449 imports/105 traps, analytics/CrashReporter omission thuộc emu_choice. Source immutable5/5verify.\n\nPhụ thuộc kế tiếp: KRE-002/003 phục hồi response bootstrap/frame và bản đối chứng Windows; CI chưa cấu hình. Main qua PR sau independent exact-head review.\n",
+      "closedAt": "2026-10-26T23:24:54Z",
+      "number": 6,
+      "state": "CLOSED",
+      "title": "KRE-004: chạy copy KR unpack/patch dưới Wine với control local",
+      "updatedAt": "2026-10-26T23:24:54Z",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/6"
+    },
+    {
+      "body": "KRE-003 — cập nhật05/11/2026 bởi Codex tự kiểm; review độc lập waived theo [chủ dự án](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/evidence/checkpoints/review-waiver.json). Scope KR00967/localmodifiedWine, không Nexon/liveauth. Baseline điều phối CP108/PR177 `985a01d`; đối chiếu raw/runtime mới ở CP109. Lịch sử mô tả trước sửa lưu trong issue-reconciliation evidence/snapshot; không sửa checkpoint complete.\n\n**Phân loại:** backlog. Feature: KR-B003.\n\n**Đã biết:** KRprimitive/framer/typedreader/capturedframes cóoracle, CP057stream/seq/caps model.\n\n**Còn thiếu/giới hạn:** Fullmodes/prefixguard/live reconnect/stringblob/reset chưanghiệmthu.\n\n**Phép thử/bước kế:** Chỉconsumer socket/mode/bounds cótrigger; khônglặp76split hoặcnớiallocationFFFFFFFF. Thứ tự duy nhất tại [PLAN](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/PLAN.md#current-order).\n\n**Acceptance của scope này:** Primitive→framebuilder KR cólocator/hash đãđạt; residualfullcodec/livebounds cónative/modelnegative control rồimớiđóngscope cònlại.\n\n**Quyết định theo bằng chứng:** Scopeworkerstaticr1 lịch sử; giữ issuecodec tổng hợp cóchecklist thiếu, khôngđổiunknownthànhdone. Đóng task hẹp không đóng gate K0–K7.\n\nNguồn chuẩn (chỉ dẫn, không sao chép contract):\n\n- [docs/PROTOCOL.md#codec-stream-boundaries](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/PROTOCOL.md#codec-stream-boundaries)\n- [docs/RESEARCH.md#gap-socket-codec](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/RESEARCH.md#gap-socket-codec)\n- [docs/PLAN.md#current-order](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/PLAN.md#current-order)\n\nPR/bằng chứng đáp ứng hoặc giới hạn:\n\n- [docs/evidence/primitives/README.md](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/evidence/primitives/README.md)\n- [docs/evidence/codec-boundaries/README.md](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/evidence/codec-boundaries/README.md)\n\n[PR75](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/75) (đã merge; scope tại evidence).\n\nChecklist scope sau rà (mụcđãđạt giữ provenance, phầnthiếu nằmtrongcùngissue):\n\n- [x] Kết quả bounded đã có ở PR/evidence phía trên.\n- [ ] Acceptance residual nêu tại “Còn thiếu” và phép thử cótrigger theoPLAN.\n",
+      "closedAt": null,
+      "number": 3,
+      "state": "OPEN",
+      "title": "[KRE-003] RE codec KR từ packet167/184 tới primitive/framer",
+      "updatedAt": "2026-11-05T00:42:18Z",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/3"
+    },
+    {
+      "body": "KRE-002 — cập nhật05/11/2026 bởi Codex tự kiểm; review độc lập waived theo [chủ dự án](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/evidence/checkpoints/review-waiver.json). Scope KR00967/localmodifiedWine, không Nexon/liveauth. Baseline điều phối CP108/PR177 `985a01d`; đối chiếu raw/runtime mới ở CP109. Lịch sử mô tả trước sửa lưu trong issue-reconciliation evidence/snapshot; không sửa checkpoint complete.\n\n**Phân loại:** backlog. Feature: KR-B001, KR-B002.\n\n**Đã biết:** ProcessPatch/bootstrap local response/consumer modes cósource; PR8/10 và CP004–007 mở WCP qua nhánhđãđo.\n\n**Còn thiếu/giới hạn:** Windows control/fullbootstrap IPC/oneclickuser/configtoànpath chưa đủ; khônggiữ nextstep ngclienttrap đãqua.\n\n**Phép thử/bước kế:** Dùng lại bootstrap/WCPsource, chỉ trace consumer/config đangchặn control thực theoPLAN. Thứ tự duy nhất tại [PLAN](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/PLAN.md#current-order).\n\n**Acceptance của scope này:** Nativecaller/guard/replyconstraints cóSHA/VA và control recipe; phầnK1/vanilla/fullcontract giữmở ởparent, khônglặpboundedPR8.\n\n**Quyết định theo bằng chứng:** Thu gọn thành bootstrap residual; code/replyboundedđãmerged khôngtựđóngK1. Đóng task hẹp không đóng gate K0–K7.\n\nNguồn chuẩn (chỉ dẫn, không sao chép contract):\n\n- [docs/PROTOCOL.md#wcp](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/PROTOCOL.md#wcp)\n- [docs/RESEARCH.md#gap-wcp-config](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/RESEARCH.md#gap-wcp-config)\n- [docs/PLAN.md#current-order](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/PLAN.md#current-order)\n\nPR/bằng chứng đáp ứng hoặc giới hạn:\n\n- [docs/evidence/bootstrap-wire/README.md](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/evidence/bootstrap-wire/README.md)\n- [docs/evidence/wcp-guard/README.md](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/evidence/wcp-guard/README.md)\n\n[PR8](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/8), [PR10](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/10) (đã merge; scope tại evidence).\n\nChecklist scope sau rà (mụcđãđạt giữ provenance, phầnthiếu nằmtrongcùngissue):\n\n- [x] Kết quả bounded đã có ở PR/evidence phía trên.\n- [ ] Acceptance residual nêu tại “Còn thiếu” và phép thử cótrigger theoPLAN.\n",
+      "closedAt": null,
+      "number": 2,
+      "state": "OPEN",
+      "title": "[KRE-002] RE CA ProcessPatch và đường bootstrap native",
+      "updatedAt": "2026-11-05T00:42:16Z",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/2"
+    },
+    {
+      "body": "KRE-001 — cập nhật05/11/2026 bởi Codex tự kiểm; review độc lập waived theo [chủ dự án](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/evidence/checkpoints/review-waiver.json). Scope KR00967/localmodifiedWine, không Nexon/liveauth. Baseline điều phối CP108/PR177 `985a01d`; đối chiếu raw/runtime mới ở CP109. Lịch sử mô tả trước sửa lưu trong issue-reconciliation evidence/snapshot; không sửa checkpoint complete.\n\n**Phân loại:** backlog. Feature: KR-B001.\n\n**Đã biết:** SHA/layout/source-copy-DB và namespace/lease/ownership recipe đã có; modifiedWine có nativeflows.\n\n**Còn thiếu/giới hạn:** Windows original/control PID/window/effective-token/ba coldstart đúngrecipe chưa đủ gate.\n\n**Phép thử/bước kế:** TheoPLAN khi mở control: privateWindows/bảncopyfixedlocal/egressblocked, ownership+API/capture cùngrun. Thứ tự duy nhất tại [PLAN](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/PLAN.md#current-order).\n\n**Acceptance của scope này:** K0 source/copy/dbidentity và control ownership/isolation/cleanup cósource; Windows/control chưa tự xácnhận từWine.\n\n**Quyết định theo bằng chứng:** Giữ mở phần control còn thiếu; bỏ quy tắc worker/review cũ, backlogtheoPLAN. Đóng task hẹp không đóng gate K0–K7.\n\nNguồn chuẩn (chỉ dẫn, không sao chép contract):\n\n- [docs/PROTOCOL.md#wcp](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/PROTOCOL.md#wcp)\n- [docs/RESEARCH.md#gap-process-patch](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/RESEARCH.md#gap-process-patch)\n- [docs/PLAN.md#current-order](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/PLAN.md#current-order)\n\nPR/bằng chứng đáp ứng hoặc giới hạn:\n\n- [docs/evidence/artifacts.json](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/evidence/artifacts.json)\n- [docs/evidence/wine/README.md](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/evidence/wine/README.md)\n\n[PR7](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/7) (đã merge; scope tại evidence).\n\nChecklist scope sau rà (mụcđãđạt giữ provenance, phầnthiếu nằmtrongcùngissue):\n\n- [x] Kết quả bounded đã có ở PR/evidence phía trên.\n- [ ] Acceptance residual nêu tại “Còn thiếu” và phép thử cótrigger theoPLAN.\n",
+      "closedAt": null,
+      "number": 1,
+      "state": "OPEN",
+      "title": "[KRE-001] Khóa artifact KR và dựng harness bootstrap control",
+      "updatedAt": "2026-11-05T00:42:14Z",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/1"
+    }
+  ],
+  "pull_requests": [
+    {
+      "headRefOid": "607da7a8d21dc98b6596a8f6c3f5b56fceb91677",
+      "mergeCommit": {
+        "oid": "985a01db1fa2db339d1f4e51008c719ad9188547"
+      },
+      "mergedAt": "2026-11-05T00:04:45Z",
+      "number": 177,
+      "state": "MERGED",
+      "title": "RE: bound promoted Battle input failures and complete audit CP108",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/177"
+    },
+    {
+      "headRefOid": "5483162f0ce006b80927be63ecc303273732efb0",
+      "mergeCommit": {
+        "oid": "ac6562e5e02a528034e85dfd13554e5d5e789116"
+      },
+      "mergedAt": "2026-11-04T23:46:00Z",
+      "number": 175,
+      "state": "MERGED",
+      "title": "Probe: support opt-in host Back, B promotion and A rejoin (CP107)",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/175"
+    },
+    {
+      "headRefOid": "08c0a274930c0644b287eb0e749d224aa94b18b3",
+      "mergeCommit": {
+        "oid": "f67a160d20e9cb0d4b964da7a132aa009b129102"
+      },
+      "mergedAt": "2026-11-04T23:31:34Z",
+      "number": 173,
+      "state": "MERGED",
+      "title": "RE: qualify current two-cycle movement and ending (CP106)",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/173"
+    },
+    {
+      "headRefOid": "7bed13c4a873e65da8bf78ee2d2127d061f80af1",
+      "mergeCommit": {
+        "oid": "dc30e4ff49e325cb9488e4be7eb4befadd107f9b"
+      },
+      "mergedAt": "2026-11-04T23:17:08Z",
+      "number": 171,
+      "state": "MERGED",
+      "title": "RE: join ending UDP state applies across native 175 (CP105)",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/171"
+    },
+    {
+      "headRefOid": "9593ce1d47d4b9e0711881ec800bc8a64450c9c7",
+      "mergeCommit": {
+        "oid": "7b296db8cfb69006249150d719930fd5ae8f0b63"
+      },
+      "mergedAt": "2026-11-04T22:58:40Z",
+      "number": 169,
+      "state": "MERGED",
+      "title": "CP104: native175 ending transition and report34 ordering",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/169"
+    },
+    {
+      "headRefOid": "97c6c95e76e6f82d7b216a9640bfa680f2f110d5",
+      "mergeCommit": {
+        "oid": "b5d2d751ff769f96df3e9c3d887455bd7dd166ea"
+      },
+      "mergedAt": "2026-11-04T20:35:48Z",
+      "number": 167,
+      "state": "MERGED",
+      "title": "CP103: native peer21 branches and late17 ending evidence",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/167"
+    },
+    {
+      "headRefOid": "810f0f563e57f12d8aa3d26742731002c92b74e6",
+      "mergeCommit": {
+        "oid": "67c2ec7a96565711ecc259bdfa1328ee959260b1"
+      },
+      "mergedAt": "2026-11-04T20:01:49Z",
+      "number": 165,
+      "state": "MERGED",
+      "title": "CP102: drain current jobs and recover native local report21 transition",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/165"
+    },
+    {
+      "headRefOid": "615ae111be3df5da571e54b7dd83fe5dcde3a999",
+      "mergeCommit": {
+        "oid": "ea60261deed74f4029828e67f269c13eb6f5057f"
+      },
+      "mergedAt": "2026-11-04T19:17:54Z",
+      "number": 163,
+      "state": "MERGED",
+      "title": "CP101: skip closed connections in cached selector batches",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/163"
+    },
+    {
+      "headRefOid": "8b20d02fa27c566cc144864f335b406acc936c90",
+      "mergeCommit": {
+        "oid": "8c69429acc27f847cc699f1dc6efa83d9484082a"
+      },
+      "mergedAt": "2026-11-04T19:12:48Z",
+      "number": 161,
+      "state": "MERGED",
+      "title": "CP100: guard optional result freshness after current blasts",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/161"
+    },
+    {
+      "headRefOid": "d2e4942cd7d01cd93e26b5ac1a38e17ee746ce19",
+      "mergeCommit": {
+        "oid": "77b19c9c70794a90ac82cf7635fb98d059be67ab"
+      },
+      "mergedAt": "2026-11-04T18:52:42Z",
+      "number": 159,
+      "state": "MERGED",
+      "title": "CP099: recover late native trap report and stale result trigger",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/159"
+    },
+    {
+      "headRefOid": "8417f9f878f6c8fb48684269d9dfe6f910c7312c",
+      "mergeCommit": {
+        "oid": "a6f4ae79a93468b6c2f224462bcdd1e3312ef831"
+      },
+      "mergedAt": "2026-11-04T18:15:11Z",
+      "number": 157,
+      "state": "MERGED",
+      "title": "CP098: native UDP target apply and result-boundary evidence",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/157"
+    },
+    {
+      "headRefOid": "4bfae4e00274306099b4f43e7338a31f09538fb1",
+      "mergeCommit": {
+        "oid": "3a0e979754e24078340fcb4cd688081fb5828feb"
+      },
+      "mergedAt": "2026-11-04T17:28:41Z",
+      "number": 155,
+      "state": "MERGED",
+      "title": "CP097: current terrain and TCP guards in two native cycles",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/155"
+    },
+    {
+      "headRefOid": "b34a0ef15b852940f974177464bae7cf5fbade23",
+      "mergeCommit": {
+        "oid": "fb3a9a257bb8f8b5b0cbb46054f6c7d031d7198f"
+      },
+      "mergedAt": "2026-11-04T16:04:38Z",
+      "number": 153,
+      "state": "MERGED",
+      "title": "CP096: verify native adjacent-owner bomb chain and audit docs",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/153"
+    },
+    {
+      "headRefOid": "f23345269bd1d0e92315fbe22a4a76e48b051bd3",
+      "mergeCommit": {
+        "oid": "1c18aa266dcaceb8ac5d96eb88ba631654a8d229"
+      },
+      "mergedAt": "2026-11-04T15:54:54Z",
+      "number": 151,
+      "state": "MERGED",
+      "title": "CP095: verify native bomb chains across a destroyed box",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/151"
+    },
+    {
+      "headRefOid": "82abe39416c7ab5059a8861cd32211e564822b32",
+      "mergeCommit": {
+        "oid": "5e580a4d879bbd7821d0759757891b36412ca4b6"
+      },
+      "mergedAt": "2026-11-04T15:28:39Z",
+      "number": 149,
+      "state": "MERGED",
+      "title": "Integrate pinned terrain policy with two native cycles (CP094)",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/149"
+    },
+    {
+      "headRefOid": "1e5554200cd240302dbb3c513dba030033b61200",
+      "mergeCommit": {
+        "oid": "446b7cb21bb08d8f822f59a7b8ef3fd96d414f1e"
+      },
+      "mergedAt": "2026-11-04T15:02:00Z",
+      "number": 147,
+      "state": "MERGED",
+      "title": "Terrain shadow candidate compared to native evidence (CP093)",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/147"
+    },
+    {
+      "headRefOid": "e343c3803e56d6f25ecf0d7b5a519088b2bd143b",
+      "mergeCommit": {
+        "oid": "cac815de29b9b9d15b4b82f78edc0003813723d6"
+      },
+      "mergedAt": "2026-11-04T14:54:29Z",
+      "number": 145,
+      "state": "MERGED",
+      "title": "RE: native map flags and two-round reset (CP092)",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/145"
+    },
+    {
+      "headRefOid": "aac2f8740f373e36296eceadcc2de07ea184721a",
+      "mergeCommit": {
+        "oid": "c3d74ff77606288db0a772a49e9f4adf4fc55552"
+      },
+      "mergedAt": "2026-11-04T14:30:10Z",
+      "number": 143,
+      "state": "MERGED",
+      "title": "RE: house stop after native box destruction (CP091)",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/143"
+    },
+    {
+      "headRefOid": "42042a7bbb056b121c5c6f24b6db409007d4adb8",
+      "mergeCommit": {
+        "oid": "c142c857d913fc205ce3b4ca4db0274626d2394a"
+      },
+      "mergedAt": "2026-11-04T14:18:17Z",
+      "number": 141,
+      "state": "MERGED",
+      "title": "RE: current KR map and native box-stop control (CP090)",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/141"
+    },
+    {
+      "headRefOid": "1b853f228fe308e72d2cc13d72b0dc11077fd34d",
+      "mergeCommit": {
+        "oid": "727e94255e1b501ffeb7ac74a58b0a176d5a8553"
+      },
+      "mergedAt": "2026-11-04T13:58:02Z",
+      "number": 139,
+      "state": "MERGED",
+      "title": "Fix bounded chain capacity release with two native replacement cycles (CP089)",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/139"
+    },
+    {
+      "headRefOid": "b97901fe4cbfc3b81b534e976c75b9576e5a52e8",
+      "mergeCommit": {
+        "oid": "0a67e74051fe0ac3ba3f7b3d4293c5f5cc45c2fe"
+      },
+      "mergedAt": "2026-11-04T13:20:51Z",
+      "number": 137,
+      "state": "MERGED",
+      "title": "RE: normal native replacement blocked after early chain (CP088)",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/137"
+    },
+    {
+      "headRefOid": "8c531fa1cf2d62f08bf9c9f0369a447d660c0a29",
+      "mergeCommit": {
+        "oid": "93122d6222139dafdab5fa893f88873e70012dd8"
+      },
+      "mergedAt": "2026-11-04T13:06:53Z",
+      "number": 135,
+      "state": "MERGED",
+      "title": "Guard measured bomb capacity reservations and record CP087",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/135"
+    },
+    {
+      "headRefOid": "5f4f19b80c7811e4946d25b093d63024b622f3d8",
+      "mergeCommit": {
+        "oid": "d9dbadd77fc4b0c96e17216ecd8c1075f3005180"
+      },
+      "mergedAt": "2026-11-04T12:43:22Z",
+      "number": 133,
+      "state": "MERGED",
+      "title": "Record CP086 serial-only native entity divergence",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/133"
+    },
+    {
+      "headRefOid": "a2de67ef5c37ce5b819ea970b7670299e89c708d",
+      "mergeCommit": {
+        "oid": "2876c45edd88738ba26c2908481e78b39aa342d4"
+      },
+      "mergedAt": "2026-11-04T12:14:15Z",
+      "number": 131,
+      "state": "MERGED",
+      "title": "Record CP085 guarded TCP cycles and handle departure send failures",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/131"
+    },
+    {
+      "headRefOid": "c519bfa2076d7c9e10dd30ab14aca5665d227bcb",
+      "mergeCommit": {
+        "oid": "455dc74199760866c0969d15b83123d78056770e"
+      },
+      "mergedAt": "2026-11-03T21:23:56Z",
+      "number": 129,
+      "state": "MERGED",
+      "title": "Record three-bomb native cycles CP084 and periodic AUD025",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/129"
+    },
+    {
+      "headRefOid": "561cd7395964dd7779138ac313fb9aa5677f93ae",
+      "mergeCommit": {
+        "oid": "750974785b5dd6542cabbf1aa0d273b579344797"
+      },
+      "mergedAt": "2026-11-03T21:09:45Z",
+      "number": 127,
+      "state": "MERGED",
+      "title": "Handle all-dead KR results and record CP083 native cycles",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/127"
+    },
+    {
+      "headRefOid": "2a0f1b5a2c30eb0ce5ea94fbe643b67b59fe97bc",
+      "mergeCommit": {
+        "oid": "c38a4cbc2be7f8cf57910903b34378241a5e85a7"
+      },
+      "mergedAt": "2026-11-03T13:49:02Z",
+      "number": 125,
+      "state": "MERGED",
+      "title": "CP082: two current mixed-owner chain and result/reset cycles after rejoin",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/125"
+    },
+    {
+      "headRefOid": "336150c925adf1e43cd3d972817d9af66509e53c",
+      "mergeCommit": {
+        "oid": "2b9e7d4f73e99010f3e291c989185d4e73916461"
+      },
+      "mergedAt": "2026-11-03T13:25:34Z",
+      "number": 123,
+      "state": "MERGED",
+      "title": "CP081: confirm current mixed-owner chain and correct missing-input owner",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/123"
+    },
+    {
+      "headRefOid": "94d93c5580dd9559d9343f9581cd2e5434243d52",
+      "mergeCommit": {
+        "oid": "cfa4307a97c42a7819427d9b637460ddc4ababf9"
+      },
+      "mergedAt": "2026-11-03T13:11:29Z",
+      "number": 121,
+      "state": "MERGED",
+      "title": "CP080: trace Ready state writer and validate two Battle cycles after rejoin",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/121"
+    },
+    {
+      "headRefOid": "df8ff8d9f0cb1f6efe2ea39bcf1d6e875e79d72a",
+      "mergeCommit": {
+        "oid": "be860a2eab2726f6cbc6e52c317900dc07c00a18"
+      },
+      "mergedAt": "2026-11-03T12:37:55Z",
+      "number": 119,
+      "state": "MERGED",
+      "title": "CP079: return585 counterexample and bounded interrupted Ready trace",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/119"
+    },
+    {
+      "headRefOid": "058d3576e222a81d09a49a3523dbc10250dfd25d",
+      "mergeCommit": {
+        "oid": "fff30b1f42abd4855a095c0f7502326801565354"
+      },
+      "mergedAt": "2026-11-03T12:14:12Z",
+      "number": 117,
+      "state": "MERGED",
+      "title": "RE CP078: first Battle after rejoin and explicit two-cycle blockers",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/117"
+    },
+    {
+      "headRefOid": "e20b8cdb03b308c17118cbef73debd47cd423978",
+      "mergeCommit": {
+        "oid": "a3ca2ab064280b0aaf863223c5401d5e094c1b68"
+      },
+      "mergedAt": "2026-11-03T11:45:24Z",
+      "number": 115,
+      "state": "MERGED",
+      "title": "Service CP077: idle guest leave and rejoin with native Ready/Start/clock",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/115"
+    },
+    {
+      "headRefOid": "21fab2ce8bbb547fa25020fc1b94ffd500d14cef",
+      "mergeCommit": {
+        "oid": "e791e964f18e092d9fbd6737dd0ee916456755ce"
+      },
+      "mergedAt": "2026-11-03T11:30:59Z",
+      "number": 113,
+      "state": "MERGED",
+      "title": "Service CP076: Back86 room recreate on the same channel",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/113"
+    },
+    {
+      "headRefOid": "e015e01e4a1825e556a2b9be0c77e0fa6ae55918",
+      "mergeCommit": {
+        "oid": "41f0fa9b5cf3f5f5e303d64cc0edf6ce73587699"
+      },
+      "mergedAt": "2026-11-02T21:58:58Z",
+      "number": 111,
+      "state": "MERGED",
+      "title": "RE CP075: actual TCP replay rejection with bounded native integration",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/111"
+    },
+    {
+      "headRefOid": "7bcc9b9c3d714037e01a602be76c70b4c285f0ba",
+      "mergeCommit": {
+        "oid": "f84823dd8745930713de1d99c5e7fb45d83ee50d"
+      },
+      "mergedAt": "2026-11-02T21:45:07Z",
+      "number": 109,
+      "state": "MERGED",
+      "title": "CP074: native107 trước clock, phòng survivor và Back thật",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/109"
+    },
+    {
+      "headRefOid": "2d06493a84d8f03834b3d5b4618caff7e7b542dc",
+      "mergeCommit": {
+        "oid": "5c642930ed6c9ac40993055c9a01ca2a819c0778"
+      },
+      "mergedAt": "2026-11-02T21:27:35Z",
+      "number": 107,
+      "state": "MERGED",
+      "title": "CP073: phân biệt popup launcher, lỗi main và điều kiện runtime",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/107"
+    },
+    {
+      "headRefOid": "88c7c0bcdae18b9a3320f0aca5cf9a42de47e8dd",
+      "mergeCommit": {
+        "oid": "690d9559fbbccf93e5697107ffe273d32bf7182d"
+      },
+      "mergedAt": "2026-11-02T18:14:29Z",
+      "number": 105,
+      "state": "MERGED",
+      "title": "CP072: preclock EOF partial, blocker NMCO và audit AUD022",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/105"
+    },
+    {
+      "headRefOid": "c12551f621cdfe321a45b65de7db457dca2e58c4",
+      "mergeCommit": {
+        "oid": "d95c5ba12c49fe10488c5afbdc00809ba719fd86"
+      },
+      "mergedAt": "2026-11-02T17:56:33Z",
+      "number": 103,
+      "state": "MERGED",
+      "title": "CP071: giữ partial chain khác owner, sửa giả định vị trí và chuyển blocker",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/103"
+    },
+    {
+      "headRefOid": "122bd169a520c1eba7bb2b40db2412c7eda9348a",
+      "mergeCommit": {
+        "oid": "b0ddb1271c9027392d1f90631cd6b2a1538b884d"
+      },
+      "mergedAt": "2026-11-02T17:35:00Z",
+      "number": 101,
+      "state": "MERGED",
+      "title": "CP070: kiểm UDP cut/restore hai chiều bằng native positions",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/101"
+    },
+    {
+      "headRefOid": "8e82bde297522999cb68ce7bc068bda875f7354e",
+      "mergeCommit": {
+        "oid": "03f1afbeb6eb6d638f47f4a4ce5ea9845ae95fa3"
+      },
+      "mergedAt": "2026-11-02T17:18:33Z",
+      "number": 99,
+      "state": "MERGED",
+      "title": "CP069: one basic Battle profile with floor and hidden effects",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/99"
+    },
+    {
+      "headRefOid": "f896b09df600c72428428fa416f6b4b61934d7ce",
+      "mergeCommit": {
+        "oid": "f94efe10efbb5943acb10055619072b225a21498"
+      },
+      "mergedAt": "2026-11-02T17:07:19Z",
+      "number": 97,
+      "state": "MERGED",
+      "title": "CP068: current-service hidden item reveal, effects and reset",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/97"
+    },
+    {
+      "headRefOid": "5d0cfd195ec7cadd2b1b3185bfd6833bc54f03e8",
+      "mergeCommit": {
+        "oid": "bf4761d0efec4da40d9bc5531aefb833ed1c46a4"
+      },
+      "mergedAt": "2026-11-02T16:51:36Z",
+      "number": 95,
+      "state": "MERGED",
+      "title": "CP067: fence stale and duplicate bomb requests before allocation",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/95"
+    },
+    {
+      "headRefOid": "1e8f6479935e1784acc8a4516f6c38f325ea9431",
+      "mergeCommit": {
+        "oid": "40ec5441fe4a4d08b795322ff84ef8ec37ea11ab"
+      },
+      "mergedAt": "2026-11-02T16:34:39Z",
+      "number": 93,
+      "state": "MERGED",
+      "title": "CP066: actual contested pickup on distinct spawns across two cycles",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/93"
+    },
+    {
+      "headRefOid": "262aa6db47704114c2e10aae51b62f1799e4f47e",
+      "mergeCommit": {
+        "oid": "fbdf5f32bd44ddc347c21fad362a7532277682ef"
+      },
+      "mergedAt": "2026-11-02T16:25:19Z",
+      "number": 91,
+      "state": "MERGED",
+      "title": "CP065: distinct map spawns on the current two-client service profile",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/91"
+    },
+    {
+      "headRefOid": "abcbd5ed87e3a8e8e8bebfea0f2e359ed2a03540",
+      "mergeCommit": {
+        "oid": "9ebc93c35940432801d3fc96d57cbc3d977a67f1"
+      },
+      "mergedAt": "2026-11-02T16:17:28Z",
+      "number": 89,
+      "state": "MERGED",
+      "title": "CP064: record mixed-owner controls, adjacency blocker and periodic audit",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/89"
+    },
+    {
+      "headRefOid": "8efd60f4bf0c370cc689622179ff626ae1580988",
+      "mergeCommit": {
+        "oid": "a0f44d001faf2acddb334b3834da907703cb46b3"
+      },
+      "mergedAt": "2026-11-02T13:17:14Z",
+      "number": 87,
+      "state": "MERGED",
+      "title": "CP063: reject stale and duplicate report127 effects across rounds",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/87"
+    },
+    {
+      "headRefOid": "360973bb015261440146cb0fb0f5653220666366",
+      "mergeCommit": {
+        "oid": "46cbbfd1e9c2f5b01133fbff8d6f104c52d6ab0f"
+      },
+      "mergedAt": "2026-11-02T12:53:33Z",
+      "number": 85,
+      "state": "MERGED",
+      "title": "CP062: verify actual contested pickup and reset on current service",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/85"
+    },
+    {
+      "headRefOid": "9e0c4f2585f3d66935f540ee88e0c5e3cebc45b2",
+      "mergeCommit": {
+        "oid": "c70a4e226d99ab623d9cc2ccba782d8a2f2ffb32"
+      },
+      "mergedAt": "2026-11-02T12:39:42Z",
+      "number": 83,
+      "state": "MERGED",
+      "title": "CP061: two cycles with current profile and native state agreement",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/83"
+    },
+    {
+      "headRefOid": "047bd73dde2352f21e7311c7fa37f3788a821717",
+      "mergeCommit": {
+        "oid": "97e5afceda970caba3c0bd071938d5d1cac142ef"
+      },
+      "mergedAt": "2026-11-02T12:20:31Z",
+      "number": 81,
+      "state": "MERGED",
+      "title": "CP060: current profile C integration and periodic audit",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/81"
+    },
+    {
+      "headRefOid": "6623c432c7375d8e527a1f4eb035f86bb9f5c9cc",
+      "mergeCommit": {
+        "oid": "6920ae2c53412adae84c33a17d3d543707375980"
+      },
+      "mergedAt": "2026-11-02T12:07:28Z",
+      "number": 79,
+      "state": "MERGED",
+      "title": "CP059: match compressed map cache checksum and prove warm load",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/79"
+    },
+    {
+      "headRefOid": "cc7000f9f966605bcce55f11162ea1ee9eecbe41",
+      "mergeCommit": {
+        "oid": "07cf48d3f90cd308ded49bc35a56bfd82c20b4a2"
+      },
+      "mergedAt": "2026-11-02T11:48:21Z",
+      "number": 77,
+      "state": "MERGED",
+      "title": "CP058: repair auth name encoding and complete measured profile branch",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/77"
+    },
+    {
+      "headRefOid": "24e6eb97304813b1c514abe9a8b1720c3e9dabcf",
+      "mergeCommit": {
+        "oid": "956f31b1265bc25183115dbf4fa85ec1d73aec2a"
+      },
+      "mergedAt": "2026-11-02T11:24:03Z",
+      "number": 75,
+      "state": "MERGED",
+      "title": "CP057: native incremental codec boundaries and explicit model limits",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/75"
+    },
+    {
+      "headRefOid": "a00a530fa938468fc19d31c92822967473168f56",
+      "mergeCommit": {
+        "oid": "c367bab3851ebc6ab71c5bf6389c8282fd1d58e3"
+      },
+      "mergedAt": "2026-11-02T11:14:15Z",
+      "number": 73,
+      "state": "MERGED",
+      "title": "CP056: guard pickup after trap/death reports and audit docs",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/73"
+    },
+    {
+      "headRefOid": "45b6b0d69283b37540a65704a12252914e5cdfb7",
+      "mergeCommit": {
+        "oid": "76766e78c840da02f068ba2e3607536cf2fb00f4"
+      },
+      "mergedAt": "2026-11-01T21:54:01Z",
+      "number": 71,
+      "state": "MERGED",
+      "title": "CP055: recover native pickup logical tick and preserve validator limits",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/71"
+    },
+    {
+      "headRefOid": "68fee5d424a99466f43e58542ca83957e5419cd2",
+      "mergeCommit": {
+        "oid": "69df506cfd32c2898abb53f83d4b1e14a4c287f0"
+      },
+      "mergedAt": "2026-11-01T15:14:13Z",
+      "number": 69,
+      "state": "MERGED",
+      "title": "Service: C vào trước vòng đầu sau setup EOF (CP054)",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/69"
+    },
+    {
+      "headRefOid": "29e40d1e45fe18ac9dca6f6c207f6b6c4af1775a",
+      "mergeCommit": {
+        "oid": "75606eb0353e7ef51d6a41e6bf6ac56b6cb56ad7"
+      },
+      "mergedAt": "2026-11-01T14:29:21Z",
+      "number": 67,
+      "state": "MERGED",
+      "title": "Service: cleanup host sau survivor setup (CP053)",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/67"
+    },
+    {
+      "headRefOid": "9490aea786c80aefd2bb982b19b0d85cb1577750",
+      "mergeCommit": {
+        "oid": "3617e69a3536cac9ac9f8a05ae826cbb0cc803be"
+      },
+      "mergedAt": "2026-11-01T14:01:41Z",
+      "number": 65,
+      "state": "MERGED",
+      "title": "Service: dọn slot guest rời trước map (CP052)",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/65"
+    },
+    {
+      "headRefOid": "5a06fd9c6d1340e073f4e787c8b5f53277f0d1f9",
+      "mergeCommit": {
+        "oid": "c764aa555d0318322a4f67ef0628e14d3e95d0c9"
+      },
+      "mergedAt": "2026-11-01T13:37:28Z",
+      "number": 63,
+      "state": "MERGED",
+      "title": "Service: client C thay slot A và B khởi động vòng mới (CP051)",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/63"
+    },
+    {
+      "headRefOid": "83ee5808b984622f571f504833ee515d7b1ee7f2",
+      "mergeCommit": {
+        "oid": "9c6ac926630431c246a98475039fdde69a4f03f9"
+      },
+      "mergedAt": "2026-11-01T12:49:56Z",
+      "number": 61,
+      "state": "MERGED",
+      "title": "server/re: EOF recovery và kiểm loading chờ đủ99 (CP050)",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/61"
+    },
+    {
+      "headRefOid": "295fc2b44388e7b3f077db5052de9b55d1302cf5",
+      "mergeCommit": {
+        "oid": "a6b62cd93bb96a30a5e7fc55b697d90dbbce9703"
+      },
+      "mergedAt": "2026-11-01T12:28:56Z",
+      "number": 59,
+      "state": "MERGED",
+      "title": "server/re: chặn124 sai khóa trước claim, kiểm native effect CP049",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/59"
+    },
+    {
+      "headRefOid": "5534fa3157ca440cd3d130892a4fa86753ed22dd",
+      "mergeCommit": {
+        "oid": "4d77eafb9d30e8f40b7bc9d5a066089ba95aa035"
+      },
+      "mergedAt": "2026-11-01T11:34:04Z",
+      "number": 57,
+      "state": "MERGED",
+      "title": "docs/re: catalog chức năng KR và service fixture CP048",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/57"
+    },
+    {
+      "headRefOid": "92f5f121ee8b05a1c538816b1eac0cadbf03814d",
+      "mergeCommit": {
+        "oid": "5ffd9258ac52068f6ee42786fd4cdca2c4a2a382"
+      },
+      "mergedAt": "2026-10-31T15:31:55Z",
+      "number": 55,
+      "state": "MERGED",
+      "title": "RE: verify movement key rotation and bound round-key reuse (CP047)",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/55"
+    },
+    {
+      "headRefOid": "4d9ae83329ff5b0243f29e8a896751ea4b5bf4fb",
+      "mergeCommit": {
+        "oid": "f85cda4146dd48a5a476400c9851bb8ca1c2f8c4"
+      },
+      "mergedAt": "2026-10-31T14:52:41Z",
+      "number": 54,
+      "state": "MERGED",
+      "title": "RE: confirm old UDP changes next-round actor coordinates (CP046)",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/54"
+    },
+    {
+      "headRefOid": "8ce360c29fd779d9cd781115172ddd21f774c90a",
+      "mergeCommit": {
+        "oid": "6fe17b0665f952964abe4360116b621f3ae56919"
+      },
+      "mergedAt": "2026-10-31T13:46:26Z",
+      "number": 53,
+      "state": "MERGED",
+      "title": "RE: reuse item families and trace stale UDP to game consumer (CP045)",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/53"
+    },
+    {
+      "headRefOid": "d6d985d45a4b0a05ddb14a1bb2e5ae96ee7a2c3f",
+      "mergeCommit": {
+        "oid": "b947a9d62507a9aef9625cc2c4586198c53ddbf1"
+      },
+      "mergedAt": "2026-10-31T10:19:58Z",
+      "number": 52,
+      "state": "MERGED",
+      "title": "RE CP044: timer abort và vòng B/C sau thay peer",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/52"
+    },
+    {
+      "headRefOid": "c7e2e0fecc277febac57f07274a0a86ae5f2d473",
+      "mergeCommit": {
+        "oid": "f8569d8822b62fb2f917f00fb415b3c4e3771cdb"
+      },
+      "mergedAt": "2026-10-31T09:49:09Z",
+      "number": 51,
+      "state": "MERGED",
+      "title": "CP043: 159 cũ khi serial dùng lại làm lệch ID bom giữa hai client",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/51"
+    },
+    {
+      "headRefOid": "400c1ace6fb32c8fb7bf816c4010c0797bfe7e0b",
+      "mergeCommit": {
+        "oid": "ed47c9723d5951bb521fe99b96ec6f928685b29d"
+      },
+      "mergedAt": "2026-10-31T09:24:59Z",
+      "number": 50,
+      "state": "MERGED",
+      "title": "CP042: old165 khi tái dùng index và policy xác nhận item theo vòng",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/50"
+    },
+    {
+      "headRefOid": "bb6135dae5eaf0e50bf0a89006519b99518bd2a6",
+      "mergeCommit": {
+        "oid": "97320ca02115a6de538aa0f38b7a12fed971aa4c"
+      },
+      "mergedAt": "2026-10-31T08:50:15Z",
+      "number": 49,
+      "state": "MERGED",
+      "title": "CP041: chặn job nổ cũ qua vòng và kiểm ID reuse trên KR",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/49"
+    },
+    {
+      "headRefOid": "369369a4c10cbd719873f7b26fc9005010697a97",
+      "mergeCommit": {
+        "oid": "99d1835cad8e2d99dec301b88f504e61356f09fc"
+      },
+      "mergedAt": "2026-10-31T08:15:30Z",
+      "number": 48,
+      "state": "MERGED",
+      "title": "RE CP040: Start với peer mới sau host EOF và guest recovery",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/48"
+    },
+    {
+      "headRefOid": "ab521dd871412e882fde9b8d86adca5598576479",
+      "mergeCommit": {
+        "oid": "e19bc9e9e255d160efc90a68474cab742f360781"
+      },
+      "mergedAt": "2026-10-31T07:23:32Z",
+      "number": 47,
+      "state": "MERGED",
+      "title": "docs(re): CP039 round results and host EOF recovery",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/47"
+    },
+    {
+      "headRefOid": "0d2ba8c802ae3f4903aceb728c915e3e39a0d349",
+      "mergeCommit": {
+        "oid": "1fb2c667d94d72ddcef1526445df37d1e49c1d1b"
+      },
+      "mergedAt": "2026-10-31T07:00:36Z",
+      "number": 46,
+      "state": "MERGED",
+      "title": "docs(re): CP038 spent needle and contact control",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/46"
+    },
+    {
+      "headRefOid": "3351258fe7eb5a4818a413136c7d3ab37cc58fe9",
+      "mergeCommit": {
+        "oid": "1e2ac9a26c5c1e036ed02faaf9a3bc043f72a7bb"
+      },
+      "mergedAt": "2026-10-31T06:41:29Z",
+      "number": 45,
+      "state": "MERGED",
+      "title": "docs(re): CP037 needle selfescape and contact ordering",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/45"
+    },
+    {
+      "headRefOid": "5b4f815395201a9bf8a8814a10f2880448726696",
+      "mergeCommit": {
+        "oid": "7ab702f8ceee0cb60e38e2bf5bba15d505a4c465"
+      },
+      "mergedAt": "2026-10-31T04:39:38Z",
+      "number": 44,
+      "state": "MERGED",
+      "title": "RE CP036: rescue state synchronization and contact controls",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/44"
+    },
+    {
+      "headRefOid": "5f446808cde47e0a11c980da682d908ae6059f15",
+      "mergeCommit": {
+        "oid": "1e78035f60ad9de1329f6f0d983e5e5ac1519dc3"
+      },
+      "mergedAt": "2026-10-31T04:06:22Z",
+      "number": 43,
+      "state": "MERGED",
+      "title": "RE CP035: rejoin and promoted host starts both clients",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/43"
+    },
+    {
+      "headRefOid": "0ae5113f23db3843bad395399b7b834fd1f76909",
+      "mergeCommit": {
+        "oid": "0779bc71b6a23d9262e3d4bec522ef18b3681b5c"
+      },
+      "mergedAt": "2026-10-31T03:52:21Z",
+      "number": 42,
+      "state": "MERGED",
+      "title": "RE CP034: room leave, chief promotion and lobby return",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/42"
+    },
+    {
+      "headRefOid": "0e891d95a68c625555add9ee12e63c2d0e1f8cc3",
+      "mergeCommit": {
+        "oid": "fbf4dc5ada459578a76280cd7197d5e20698ee9d"
+      },
+      "mergedAt": "2026-10-31T02:27:35Z",
+      "number": 41,
+      "state": "MERGED",
+      "title": "KRE-005b: chain hai bom và replay hai client (CP033)",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/41"
+    },
+    {
+      "headRefOid": "37800bbc4df6841079db7efaaac7cd34e13195de",
+      "mergeCommit": {
+        "oid": "fe46beb76291e5dda2d2fdd14c97e40b7cbe0602"
+      },
+      "mergedAt": "2026-10-31T01:55:32Z",
+      "number": 40,
+      "state": "MERGED",
+      "title": "KRE-005b: item ẩn, reveal hai client và reset vòng kế (CP032)",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/40"
+    },
+    {
+      "headRefOid": "e238a9aa6cc44702f71f5a446b65d0bb90ceac83",
+      "mergeCommit": {
+        "oid": "4de4e2ef2e0de4bba4c6a365cf669b97db618790"
+      },
+      "mergedAt": "2026-10-30T22:57:41Z",
+      "number": 39,
+      "state": "MERGED",
+      "title": "KRE-005b: đo stat Bomb/Fire hai client và sửa mapping power (CP031)",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/39"
+    },
+    {
+      "headRefOid": "b61012fa851c64d59e69934ff87fd022a6119553",
+      "mergeCommit": {
+        "oid": "1f70d4fdfd707099bfabdfbafa8bed69ae9be9af"
+      },
+      "mergedAt": "2026-10-30T22:33:44Z",
+      "number": 38,
+      "state": "MERGED",
+      "title": "KRE-005b: phục hồi layout, nhặt item và kiểm tranh cùng index",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/38"
+    },
+    {
+      "headRefOid": "3100d90812393a1ce2e7b6a2a58a1a8401423600",
+      "mergeCommit": {
+        "oid": "99f0ea92713166bc54ed3fec23d7b5ed59b6d93f"
+      },
+      "mergedAt": "2026-10-30T14:03:16Z",
+      "number": 37,
+      "state": "MERGED",
+      "title": "KRE-005b: đồng bộ trap/death peer và kiểm hai vòng đảo chiều",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/37"
+    },
+    {
+      "headRefOid": "d76734e71d7e8a317d3aa18a90009de7cbf3fe22",
+      "mergeCommit": {
+        "oid": "79acacddbbaff2854dfbd74d947a9e58dab79e48"
+      },
+      "mergedAt": "2026-10-30T12:41:16Z",
+      "number": 36,
+      "state": "MERGED",
+      "title": "KRE-005b: KR join/Ready và hai chu kỳ thử với hai client",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/36"
+    },
+    {
+      "headRefOid": "3d569679070cbb6f46279c2fcd35db10df1e0054",
+      "mergeCommit": {
+        "oid": "b55ec6cb4e1202f0f6007fa614f3c3a8b4363c79"
+      },
+      "mergedAt": "2026-10-30T12:04:49Z",
+      "number": 35,
+      "state": "MERGED",
+      "title": "RE CP027: bidirectional movement and bombs between real KR clients",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/35"
+    },
+    {
+      "headRefOid": "cb196e8c8140f2eb3859a08b270ac29573777f9a",
+      "mergeCommit": {
+        "oid": "2030e77ca938925a6368b9a225350ba7b409c98a"
+      },
+      "mergedAt": "2026-10-30T11:32:59Z",
+      "number": 34,
+      "state": "MERGED",
+      "title": "RE CP026: full KR153 consumer and captured peer UDP",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/34"
+    },
+    {
+      "headRefOid": "04ce358ba91a2109f052e61db69803bc355a42e2",
+      "mergeCommit": {
+        "oid": "80bc6efb8f462513dd14225eabf17dfa4878588a"
+      },
+      "mergedAt": "2026-10-30T11:16:43Z",
+      "number": 33,
+      "state": "MERGED",
+      "title": "RE CP025: actual bomb serial reconciliation and KR peer entry",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/33"
+    },
+    {
+      "headRefOid": "b0449c9fb154a8c2299e9f55e47d7c1adc682525",
+      "mergeCommit": {
+        "oid": "d14c708e47a5a80851e1c2e752d658e6bc934ac3"
+      },
+      "mergedAt": "2026-10-30T10:11:00Z",
+      "number": 32,
+      "state": "MERGED",
+      "title": "RE KR: echo bom, nguồn spawn và profile Village00/ExVillage01",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/32"
+    },
+    {
+      "headRefOid": "ca1d04f69123554dfd0ef8b11fe22b9507f4c258",
+      "mergeCommit": {
+        "oid": "561acc5fbf036806c4cceea91e9355dba1c08f76"
+      },
+      "mergedAt": "2026-10-30T09:20:28Z",
+      "number": 31,
+      "state": "MERGED",
+      "title": "RE KR: event127, result175 và hai vòng thử trên Wine",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/31"
+    },
+    {
+      "headRefOid": "209819dd43ea76050fbac0aaedc11fe1a96df7db",
+      "mergeCommit": {
+        "oid": "5eafd6698eb85ca301040b30d568d940fc3e2eff"
+      },
+      "mergedAt": "2026-10-30T04:33:31Z",
+      "number": 30,
+      "state": "MERGED",
+      "title": "RE KR CP022: kind0 blast, HELP and return to room",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/30"
+    },
+    {
+      "headRefOid": "c4932eadd7fef25b26aa6afb5b980fb1e3520e5b",
+      "mergeCommit": {
+        "oid": "96a0e48efd76a50d174c889b18c1f8b9cfcb397e"
+      },
+      "mergedAt": "2026-10-30T00:04:03Z",
+      "number": 29,
+      "state": "MERGED",
+      "title": "RE KR CP021: clock, movement and visible bomb on Wine copy",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/29"
+    },
+    {
+      "headRefOid": "ed779af40bc45203ae1d72b2a655395eabd9dff3",
+      "mergeCommit": {
+        "oid": "9b02ab160bebe3806bc5054156fa84a18ee3abe6"
+      },
+      "mergedAt": "2026-10-29T05:09:47Z",
+      "number": 28,
+      "state": "MERGED",
+      "title": "RE CP020: render KR game scene after start121 and audit docs",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/28"
+    },
+    {
+      "headRefOid": "28b31d3b95025616f04cee514dbebc65370e70ba",
+      "mergeCommit": {
+        "oid": "759f60e6a0eddfded855aa6471444b8e12234bfd"
+      },
+      "mergedAt": "2026-10-29T04:37:41Z",
+      "number": 27,
+      "state": "MERGED",
+      "title": "RE CP019: accept KR map inputs and capture actual start104",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/27"
+    },
+    {
+      "headRefOid": "c3edb7135765487513937c1ec699483061d2589c",
+      "mergeCommit": {
+        "oid": "8cd42ce8e909e73a5dc5e9ce613c04084f05f14b"
+      },
+      "mergedAt": "2026-10-28T23:48:50Z",
+      "number": 26,
+      "state": "MERGED",
+      "title": "RE CP018: KR players, own-slot controls and start guards",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/26"
+    },
+    {
+      "headRefOid": "7fae32a7f74d1cebcca2a66476a78bf57248e419",
+      "mergeCommit": {
+        "oid": "624cef14a89737c5b6e1324dc9d898a511201f5b"
+      },
+      "mergedAt": "2026-10-28T23:19:02Z",
+      "number": 25,
+      "state": "MERGED",
+      "title": "RE CP017: KR create86 transitions into waiting-room stage12",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/25"
+    },
+    {
+      "headRefOid": "1fc8948054e332779bfb7e747fbf08c2286fe35f",
+      "mergeCommit": {
+        "oid": "a4d28a9af3837710813652a3ab79f3907590027e"
+      },
+      "mergedAt": "2026-10-28T08:19:53Z",
+      "number": 24,
+      "state": "MERGED",
+      "title": "RE: open create-room dialog and capture request81 (CP016)",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/24"
+    },
+    {
+      "headRefOid": "365fc98255588450f20b488830cac15e3ed1c536",
+      "mergeCommit": {
+        "oid": "49b78b12d82711f3e686a45d11e77c94131a3d65"
+      },
+      "mergedAt": "2026-10-28T06:54:42Z",
+      "number": 23,
+      "state": "MERGED",
+      "title": "RE: reach KR lobby UI through channel handlers (CP015)",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/23"
+    },
+    {
+      "headRefOid": "44157defe17843a436bd8c22fa715d72c67b5883",
+      "mergeCommit": {
+        "oid": "cb9e0b5550aea9fbfe8564c989113284ccd8d57b"
+      },
+      "mergedAt": "2026-10-28T01:10:14Z",
+      "number": 22,
+      "state": "MERGED",
+      "title": "RE: capture KR auth and measure login wait transitions (CP014)",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/22"
+    },
+    {
+      "headRefOid": "6d717f8b258e3e0255b3154f0981489e2bfa6541",
+      "mergeCommit": {
+        "oid": "42f4c03f3163fd24ec02c1e3c50e24e7d0e146e0"
+      },
+      "mergedAt": "2026-10-28T00:37:16Z",
+      "number": 21,
+      "state": "MERGED",
+      "title": "Map proven VN login flow onto KR response handlers",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/21"
+    },
+    {
+      "headRefOid": "1b068b4b61e86e0ac743306271e8708c4daa0777",
+      "mergeCommit": {
+        "oid": "2bcee732659bc4170eb869a491bdb0744e680d0b"
+      },
+      "mergedAt": "2026-10-28T00:13:53Z",
+      "number": 20,
+      "state": "MERGED",
+      "title": "Trace KR login command, endpoint and captured C2S15 frames",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/20"
+    },
+    {
+      "headRefOid": "ef1fde5aa7201141a44ec4123902ccedb9651bfd",
+      "mergeCommit": {
+        "oid": "e5ff916d69d41a214ab9afd23a90743eaef99f73"
+      },
+      "mergedAt": "2026-10-27T23:43:08Z",
+      "number": 19,
+      "state": "MERGED",
+      "title": "Reach KR login UI and trace input using VN GDB methods",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/19"
+    },
+    {
+      "headRefOid": "ffdca5b7a812c7f19c32fde3e117dceb7e1c0149",
+      "mergeCommit": {
+        "oid": "7ec7f6674ba3aef8048370133ce19e36f5587176"
+      },
+      "mergedAt": "2026-10-27T08:09:05Z",
+      "number": 18,
+      "state": "MERGED",
+      "title": "Trace Wine startup splash to memory write fault",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/18"
+    },
+    {
+      "headRefOid": "bd057a926eb3adb105a24fd41a98f2742cf92141",
+      "mergeCommit": {
+        "oid": "50c2327daa35317e9af3db5c02ba219b505e9ed3"
+      },
+      "mergedAt": "2026-10-27T07:57:29Z",
+      "number": 17,
+      "state": "MERGED",
+      "title": "Trace local identity through Wine initialization",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/17"
+    },
+    {
+      "headRefOid": "74e7bf69d38cd7e1e8cd9cb11d29cf6861c02f22",
+      "mergeCommit": {
+        "oid": "b28a6e94d5977864c63bc0ed4aced1420d809157"
+      },
+      "mergedAt": "2026-10-27T07:18:11Z",
+      "number": 16,
+      "state": "MERGED",
+      "title": "Drive KR Wine copy past WCP and trace identity blocker",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/16"
+    },
+    {
+      "headRefOid": "97823f3f910a0852ec652642116b42cd04accea2",
+      "mergeCommit": {
+        "oid": "fee997be6ac5d990c8770c29fa7c66ad397637d9"
+      },
+      "mergedAt": "2026-10-27T06:55:15Z",
+      "number": 15,
+      "state": "MERGED",
+      "title": "Trace post-WCP error state and record CP004 audit",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/15"
+    },
+    {
+      "headRefOid": "12bb085526d8f9c8acc04be29af0948009e88f1e",
+      "mergeCommit": {
+        "oid": "7bd5c3a8ddfa1dd7e1d0a5fe57affef8b07cafdd"
+      },
+      "mergedAt": "2026-10-27T06:39:17Z",
+      "number": 13,
+      "state": "MERGED",
+      "title": "RE docs: reconcile WCP and enforce durable checkpoints and manual audits",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/13"
+    },
+    {
+      "headRefOid": "166db4bf3abc9ee55a191fdf34c637bc83821ba0",
+      "mergeCommit": {
+        "oid": "616542a8bbaa86c631146fce0fd1a935959dbe57"
+      },
+      "mergedAt": "2026-10-27T06:06:24Z",
+      "number": 11,
+      "state": "MERGED",
+      "title": "Use Claude Sonnet 5.5 for future RE and review tasks",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/11"
+    },
+    {
+      "headRefOid": "23c4ed32aa2ca29140ec6ecc7a5540a5c3b70679",
+      "mergeCommit": {
+        "oid": "2dbbf32fb1807ca7527cbdc469c04629c80e3137"
+      },
+      "mergedAt": "2026-10-27T06:04:14Z",
+      "number": 10,
+      "state": "MERGED",
+      "title": "KR Wine R2: native window and second local connection",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/10"
+    },
+    {
+      "headRefOid": "9cd20a7ca20a24040d68ccc36c4cf59601435089",
+      "mergeCommit": {
+        "oid": "e633736947bd04277a3f64485ce8148368e8d7bd"
+      },
+      "mergedAt": "2026-10-26T23:42:06Z",
+      "number": 8,
+      "state": "MERGED",
+      "title": "KR Wine: accept local bootstrap reply and verify native framing",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/8"
+    },
+    {
+      "headRefOid": "b4e678ea6a2f763d09d1c46dd09502ddbefd19c5",
+      "mergeCommit": {
+        "oid": "fcf5dfbbade1fc9a451a22f69c3cc9f47a80ef96"
+      },
+      "mergedAt": "2026-10-26T23:24:52Z",
+      "number": 7,
+      "state": "MERGED",
+      "title": "Chạy copy KR unpack/patch dưới Wine tới bootstrap TCP local",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/7"
+    },
+    {
+      "headRefOid": "166d9a9bc8b9ddbcb3ddbfa16ef8129092ef88b1",
+      "mergeCommit": {
+        "oid": "3202efc596159013f4876dae21c15c20ca177ceb"
+      },
+      "mergedAt": "2026-10-26T07:43:22Z",
+      "number": 5,
+      "state": "MERGED",
+      "title": "Verify isolated KR writer helpers with a binary-backed oracle",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/5"
+    },
+    {
+      "headRefOid": "96c1d1aa102679728da20971cf7f9cc741212244",
+      "mergeCommit": {
+        "oid": "4ed5905a3115330437b91240b72a4297326e7199"
+      },
+      "mergedAt": "2026-10-26T07:25:39Z",
+      "number": 4,
+      "state": "MERGED",
+      "title": "Clarify independent KR server scope and artifact provenance",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/4"
+    }
+  ]
+}

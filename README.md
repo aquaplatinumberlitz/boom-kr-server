@@ -29,18 +29,17 @@ runtime nào có nguồn, còn thiếu gì và phép kiểm nào giải quyết.
 evidence/hash và câu hỏi; [PLAN](docs/PLAN.md#current-order) giữ duy nhất thứ tự công việc.
 Đây là scope đường bootstrap → login → sảnh → phòng → Battle → kết quả/reset, không kiểm kê toàn client.
 
-CP108 thử Battle sau B lên chủ nhưng **chưa hoàn tất hai vòng**: R1 đã đo movement hai chiều,
-Bomb/Fire và ba entity bom ở cảhai view; controller dừng ở giới hạn input trước kết quả/reset.
-Hai158 service đã phát chưa được xác nhận callback native hoàn tất.
-[Contract/điểm chặn](docs/PROTOCOL.md#promoted-battle-cycles),
-[recipe/hash](docs/evidence/promoted-battle-cycles/README.md). Bước kế sửa cửa sổ đo input Y389 theoPLAN.
-[CP106](docs/PROTOCOL.md#current-movement-cycles) vẫn là run hai vòng đã kiểm với Ahost;
-[CP107](docs/PROTOCOL.md#host-normal-back) normalhostBack/Bpromotion/rejoin tới clock đã merge.
+CP109 có cùng-run **hai kết quả/return/reset native sau B lên chủ**: movement4pha,12entity/12callback
+nổ mỗi view, terrain195flags/item/TCPguard/ReadyA–StartB đã kiểm. Y389 đã giải; R2report17 làm
+controller nhảUp và bỏhai bomphụ, không éproute14bom.
+[Contract/giới hạn](docs/PROTOCOL.md#promoted-outcome), [evidence](docs/evidence/promoted-outcome/README.md).
+Điểm chặn kế: ảnh sau return vòng2 cònđen, cần kiểm render/input cóowner/focus/wait; chưa fullmatch/K6a.
 
-CP107 đã merge [PR175](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/175) tại `ac6562e`.
-CP108 partial/tự kiểm/chờ PR; task176 và K5/K6a/LAN/Internet vẫn mở. Review độc lập
-[waived](docs/evidence/checkpoints/review-waiver.json).
-Audit định kỳ **AUD033/CP108**, mốc kế **CP112**.
+[Liên kết issue và quyết định rà acceptance](docs/evidence/issue-reconciliation/README.md) dẫn tới
+catalog/nguồnchuẩn/issueGitHub; snapshot có thời điểm, không tự xácnhận acceptance hoặc đónggate.
+CP108 đã merge [PR177](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/177) tại `985a01d`.
+CP109 tựkiểm/chờPR; review [waived](docs/evidence/checkpoints/review-waiver.json).
+Audit **AUD034/CP109** (đối chiếu issue), periodic kế **CP112**; K0–K7/LAN/Internet vẫn mở.
 [Yêu cầu chủ dự án](docs/evidence/owner-directives/continuous-work.json): tiếp tục ngay việc kế trong
 PLAN sau mỗi checkpoint/commit/PR, không tự dừng/chờ nhắc.
 

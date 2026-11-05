@@ -91,6 +91,9 @@ def validate(data, root=ROOT, previous=None):
             check(dep in by_id and by_id[dep].get('kind') == 'feature', f'{ident}: missing/non-feature dependency {dep}')
         if kind == 'group':
             continue
+        issue_urls = node.get('issues', [])
+        check(bool(issue_urls) and len(issue_urls) == len(set(issue_urls)), f'{ident}: issue navigation missing/duplicate')
+        check(all(re.fullmatch(r'https://github.com/aquaplatinumberlitz/boom-kr-server/issues/[0-9]+', u) for u in issue_urls), f'{ident}: invalid issue URL')
         refs = node.get('refs', {})
         check(set(refs) == {'contract', 'question', 'plan', 'evidence'}, f'{ident}: canonical refs invalid')
         check(refs.get('contract', '').startswith('docs/PROTOCOL.md#'), f'{ident}: contract must have locator')
@@ -215,6 +218,7 @@ def render(data, root=ROOT):
                 mdlink(refs['contract'], 'Contract và giới hạn') + ' · ' + mdlink(refs['question'], 'Câu hỏi gốc') + ' · ' + mdlink(refs['plan'], 'Thứ tự ở PLAN') + '.', '',
                 'Khoảng trống (trích bảng RESEARCH): ' + q['gap'], '',
                 'Phép kiểm tối thiểu (trích cùng nguồn): ' + q['test'], '',
+                'Issue/phạm vi công việc: ' + ', '.join(mdlink(u, '#' + u.rsplit('/', 1)[-1]) for u in n['issues']) + '.', '',
                 'Bằng chứng/build/hash/recipe: ' + ', '.join(mdlink(r, r.split('/')[-2]) for r in refs['evidence']) + '.', '',
                 '| Chiều chứng minh | Khai báo | Nguồn/phạm vi áp dụng |', '|---|---|---|']
         for dimension in STATES:

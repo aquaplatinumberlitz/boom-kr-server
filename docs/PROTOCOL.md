@@ -4009,5 +4009,38 @@ kế theoPLAN, khôngsửathời gian nổ/policy hoặc ép actor đạt target
 assumptionfail đượcgiữ: controllerarchivepartialroundonexitkhôngphảicompletedresult. Scopedverifier
 kiểmkhôngrank/return, không xoáraw. Source/profilesealed/checks/hash riêng, 157server tests reuse.
 AUD033manualperiodic qua108/kế112 sửa stale navigation/PRstatus, không đổi scientifichistory.
-CP107/PR175 đãmerge; CP108partial/chờPR/task176open. Fullauth/codec/validator/authority/general
+Snapshot CP108: CP107/PR175 đãmerge; CP108 khi đó partial/chờPR/task176open. Hiện CP108/PR177 đãmerge và CP109 dưới đây giải phạm vi hai native cycles; không sửa raw/record CP108. Fullauth/codec/validator/authority/general
 membership/fullreset/vanilla/fullmatch/K5/K6a/LANInternet vẫn mở.
+
+
+<a id="promoted-outcome"></a>
+### Hai nativeoutcome/reset sau host đổi vai — CP109
+
+[Recipe/hash/phases/giới hạn](evidence/promoted-outcome/README.md); [gap](RESEARCH.md#gap-result-return),
+[thứ tự/issue](PLAN.md#current-order). **kr_runtime/confirmed hẹp** modifiedWine/AB/local/ExVillage01/
+CP107profile47/sameTCP/Bhost/Aguest, production/timer/profile/binarypackDB không đổi.
+
+CP108capacity3sboundkhôngđủ: runmớiY294→339→399 tại3,130s/release3,179s, firstA158đãcomplete;
+khôngsuy mọioldfailure cócausenàychỉtừrepeat. Upbound4→8 choR1nativeY119 sau4,245s, R1endingreturn.
+R2runpartial bắtactualA17/native56→53/freshY302→258; aliveescapeY199 khôngđạt trong8s.
+Reuse CP036actual17trap/report19 vàCP083existingoutcomepolicy; controllercuối **nhảUp khiacceptedfreshA17
+sauinputstart/cùnground**, khôngtiếphaiSpacephụ, chờnativeoutcome. Không épstate/report/fuse/coordinate.
+
+Finalrun382,456695112s cùnghai175180/585/refresh/actualReadyA95/StartB104/hostB/IDs1,2/slots0,1:
+R1IDs1..7/R2IDs8..12, **12actual159entities/12complete158 mỗi view**,52map snapshots×195flags/process/
+boxdelta/seedreset khớp. BốnBombFire165/stat1→2/secondStartbaseline1, 8same/4oldTCPbody11812412717,19
+bịloại/khôngID165170thêm; proxywriteremissionkhácactualfront. FourUDPphases uniqueAPI/key/args/
+targetchange/currentprogress. 500peer/132integration/232transport/25membershiprelations,324copied
+peergetters/40CRC/10244mapgetters/10140addressmodelchecks riêng, khôngcộngthànhproofnghĩa.
+
+Cảhai outcome là **post_blast_untrapped_drained**, cóB19/A21; all-deadaliasprofileđãcó nhưngkhônghit.
+KhônggọiA17làAdeath hoặc2extrasđãđặt. **Native180selectedstate/XY** hai view khớpA3/B1:
+R1A80,164/B200,159, R2A200,317/B200,159. Nativepostreturn110Bchief22/Aguest0/ReadyA/BStart2cycles
+đãkiểm; perview175entrykhôngphảiglobaltick/equalitycriterion. ID/host/policy lựa chọnemulator.
+
+#176narrowacceptancehai nativecycles cóbằngchứng; review/PRdelivery theo [reconciliation](evidence/issue-reconciliation/README.md),
+khôngđónggate. Ảnh R1returnedroom đãthấyReady/Start; finalsecondreturn haiảnhđen nên render/input
+responsive vẫn **unknown**. Khônggọilàhanghoặcfullmatch; kếreuseCP074focus/wait/owner/nativePrepare/
+Readywriter theoPLAN. Fullauth/codec/authority/fullvalidator/generalroom/allreset/Windowsvanilla/
+K5/K6a/LANInternet/fullmatch vẫn mở. Giữ cả4rawrun/startup/partialfailures; sourcefirstreuse/typedprefix/
+missinganalysisartifactcorrections ghiởevidence, khôngsửa scientificraw/historicalcheckpoint.

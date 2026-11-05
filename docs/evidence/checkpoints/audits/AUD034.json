@@ -1,0 +1,73 @@
+{
+  "id": "AUD034",
+  "trigger": "serious_contradiction",
+  "completed_through": "CP109",
+  "recorded_utc": "2026-11-05T00:47:41.772050+00:00",
+  "auditor": "Codex manual self-audit; independent review waived",
+  "read_files": [
+    "README.md",
+    "docs/PLAN.md",
+    "docs/PROTOCOL.md",
+    "docs/RESEARCH.md",
+    "docs/features.json",
+    "docs/COVERAGE.md",
+    "docs/evidence/issue-reconciliation/README.md",
+    "docs/evidence/issue-reconciliation/review.json",
+    "docs/evidence/issue-reconciliation/github-snapshot.json",
+    "docs/evidence/promoted-outcome/README.md",
+    "docs/evidence/checkpoints/audits/AUD033.json",
+    "local/research/codex/issue-reconciliation-r1/issues-before.json",
+    "local/research/codex/issue-reconciliation-r1/prs-before.json",
+    "local/research/codex/issue-reconciliation-r1/issue162-timeline.json",
+    "local/research/codex/issue-reconciliation-r1/task-state-reconciliation.json",
+    "local/research/codex/promoted-trap-outcome-r1/visual-review.json",
+    "local/research/codex/promoted-trap-outcome-r1/outcome-integration-verification.json",
+    "local/research/codex/promoted-trap-outcome-r1/promoted-membership-verification.json",
+    "local/research/codex/promoted-trap-outcome-r1/transport-verification.json",
+    "local/research/codex/promoted-trap-outcome-r1/peer-verification.json",
+    "local/research/codex/promoted-trap-outcome-r1/sealed-verification.json",
+    "server/probe_service.py"
+  ],
+  "method": "Manual README→PLAN→PROTOCOL→RESEARCH→evidence/currentGitHub acceptance review, compared mergedPR/code/CP references, #162 timeline and mutabletaskdelta; read native integration/transport/phase/visual limits against run locators. Initial14open reviewed individually, 9 manually closed with explicit completed versus superseded, 6remain after new organizational #178. Mechanicalcheck follows manual disposition, never establishes acceptance. Rechecked CP108 historical partial wording versus CP109 new native result, finalsecondreturn black remains unknown.",
+  "findings": [
+    {
+      "id": "F1",
+      "stale": "#162 GitHub open despite current manifest closed, PR163 cross-reference without close event; 27 other mutable current task states lagged GitHub.",
+      "correction": "Manually close #162 from bounded CP101 acceptance; sync current task_states only. Archive before/actions/timeline. No completed checkpoint rewritten, no cause assigned to old CP099.",
+      "fixed_in": [
+        "docs/evidence/issue-reconciliation/README.md",
+        "docs/evidence/issue-reconciliation/review.json",
+        "docs/evidence/checkpoints/manifest.json"
+      ]
+    },
+    {
+      "id": "F2",
+      "stale": "Old broad issue bodies/worker workflow and CP071/072/075 partial gaps obscured later CP081/074/085 completed acceptance.",
+      "correction": "Review all open issues against later native/code evidence, close7completed/2superseded with explicit residual successors, retain6open and epic checklist; catalog issue navigation and dated read-only checker. Narrow closure does not close gate.",
+      "fixed_in": [
+        "docs/PLAN.md",
+        "docs/features.json",
+        "docs/COVERAGE.md",
+        "docs/evidence/issue-reconciliation/README.md"
+      ]
+    },
+    {
+      "id": "F3",
+      "stale": "CP108 partial/pendingPR/open176 wording and inputY389 next step could look current after new run.",
+      "correction": "Mark CP108 history/PR177 merged, CP109 final2nativeoutcomes/reset/12actualentities. Current gap finalblackUI/Ready input; no14entity/fullmatch proof. Preserve startup/partial failures and all raw.",
+      "fixed_in": [
+        "README.md",
+        "docs/PLAN.md",
+        "docs/PROTOCOL.md",
+        "docs/RESEARCH.md",
+        "docs/evidence/promoted-battle-cycles/README.md",
+        "docs/evidence/promoted-outcome/README.md"
+      ]
+    }
+  ],
+  "remaining": [
+    "Secondreturn finalbothblackframes: no render/input responsive proof; next focus/wait/window PID/scene/current native Ready95 under #14.",
+    "Issue #178 delivery commit/PR/merge pending as of this audit; keep open until actual delivery and resumeRE, then dated currentstate refresh.",
+    "Full identity/auth/codec/originalauthority/validator/vanilla/fullmatch/K5/K6a/LANInternet remain open. PeriodicAUD033through108 remains valid; nextCP112 unchanged."
+  ]
+}
