@@ -1,0 +1,218 @@
+{
+  "artifacts": [
+    {
+      "name": "CA-r2-login-logout.exe",
+      "sha256": "660447c293ce92270cb9b5815331bca976e8f156366e1fe50b217b6c12e60ce3"
+    },
+    {
+      "name": "CA-r2-stage-social.exe",
+      "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+    },
+    {
+      "name": "CA-r2-stage-social.exe Bcopy",
+      "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+    },
+    {
+      "name": "modO.bin",
+      "sha256": "a08950c833d3acab8281049def7b3dc96b221f107eeda01da3a548e34b91dce5"
+    }
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-11-05T14:55:05.414420+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "Codex solo RE/code/runtime/selfcheck, not independent approval.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Owner explicitly requested solo without Claude review."
+    }
+  },
+  "owner": "Codex",
+  "reviewer": "Codex",
+  "id": "CP135",
+  "previous": "CP134",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-05T14:55:05.414420+00:00",
+  "context_commit": "c2b2de4b77bda41b5ef0b0333a4a01b6159ee23a",
+  "question": "Connected loading barrier without B99 dispatch: bounded runtime blocker and optional pinned-channel deadline recovery?",
+  "scope": "Reuse CP050actual99hold/CP074preclockcleanup/CP134sameprofile and native consumers; control45s no release/EOF then optional30s close_missing_init99 with native return/cleanup. No new native body or opcode/layout port. Normal positive is next, not claimed complete.",
+  "locators": [
+    "BaselineCP134PR205head79b8da1f277bd63553b106475ae94f975a5ecb29/mergec2b2de4b77bda41b5ef0b0333a4a01b6159ee23a, exact CLEAN/MERGEABLE/checks[]. AUD041 through132/next136.",
+    "Controlrun5e87eaa428cb52c0c992dde8c43e1cb57483cb7245a5e8a91ffac3d3738b7e07/181.661870204s/exit0/781raw/896relations; held46.348967402s, six kernelESTABLISHEDsamples34.814..44.839s beforecleanup, AEOF afterobservation.",
+    "Fixedrunafb906fbef71d0b66dd1579388712b7d5504ae02f640b0ca886247ba166e36c9/180.259699714s/exit0/787raw/898relations; deadline30.043183529s after121, Bheld10.855049384s beforeclose. Exact Bconnection8 closed, noAcloseuntilcleanup/no197196153/clock/death.",
+    "KnownVA121DC7F30/DC9363, native175E5F610/180E64950/107DC62D0/slotclear12400D0/12401A9/chief1240D5E. Base400000/RVA=VA−400000/runtimee9bb4766/static660447c2/modOa08950c8. No new native body."
+  ],
+  "findings": [
+    {
+      "summary": "Both native121129/errors0 and actual99, but B99 dispatch suppressed46.349s prevents197196153/clock. Both TCP ESTABLISHED in six precleanup samples; bounded stall only, actual clients already loaded map.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#loading-timeout",
+      "limits": "Modified Wine A/B, exact pinned map/profile. Actual B99 sent but suppressed at dispatcher; not native load failure/network loss/original timeout. Local30s close/forfeit policy. A native return/ID2clear/chief/room; B expected disconnect. Positive normal two cycles with policy enabled not yet complete. No fabricated99/death, source/config changed only after control cleanup/seal. No fullmatch/K5/K6a/vanilla/LANInternet/authority/gate.",
+      "evidence": [
+        "RUN-00002",
+        "RUN-00776",
+        "RUN-00846"
+      ]
+    },
+    {
+      "summary": "Optional30s pinned generation/channel deadline closes only missing B8 then existing abort/forfeit/return cleanup. Current dispatched barrier wins expiry; resolved/inactive/replaced generations are guarded. Default remains off.",
+      "source": "emu_choice",
+      "status": "design",
+      "method": "design",
+      "canonical": "docs/PROTOCOL.md#loading-timeout",
+      "limits": "Modified Wine A/B, exact pinned map/profile. Actual B99 sent but suppressed at dispatcher; not native load failure/network loss/original timeout. Local30s close/forfeit policy. A native return/ID2clear/chief/room; B expected disconnect. Positive normal two cycles with policy enabled not yet complete. No fabricated99/death, source/config changed only after control cleanup/seal. No fullmatch/K5/K6a/vanilla/LANInternet/authority/gate.",
+      "evidence": [
+        "RUN-01682",
+        "RUN-01700",
+        "RUN-00845"
+      ]
+    },
+    {
+      "summary": "Fixed A native175302→1803→107base6/rewind0/wrapper1→ID2→0→110/chief1 occurs after current return; final Aroom/Start/Bempty. B expected disconnect error10; no fake99/death/nativeclock or result to closed B.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#loading-timeout",
+      "limits": "Modified Wine A/B, exact pinned map/profile. Actual B99 sent but suppressed at dispatcher; not native load failure/network loss/original timeout. Local30s close/forfeit policy. A native return/ID2clear/chief/room; B expected disconnect. Positive normal two cycles with policy enabled not yet complete. No fabricated99/death, source/config changed only after control cleanup/seal. No fullmatch/K5/K6a/vanilla/LANInternet/authority/gate.",
+      "evidence": [
+        "RUN-01651",
+        "RUN-01632",
+        "RUN-01719"
+      ]
+    },
+    {
+      "summary": "Known copied-native framer/getters117 valid/CRC/partial cases are model checks separate from Wine callbacks. Both runs source/config frozen through cleanup, raw sealed before changing control source.",
+      "source": "kr_static",
+      "status": "confirmed",
+      "method": "emulation",
+      "canonical": "docs/PROTOCOL.md#loading-timeout",
+      "limits": "Modified Wine A/B, exact pinned map/profile. Actual B99 sent but suppressed at dispatcher; not native load failure/network loss/original timeout. Local30s close/forfeit policy. A native return/ID2clear/chief/room; B expected disconnect. Positive normal two cycles with policy enabled not yet complete. No fabricated99/death, source/config changed only after control cleanup/seal. No fullmatch/K5/K6a/vanilla/LANInternet/authority/gate.",
+      "evidence": [
+        "RUN-00792",
+        "RUN-01662",
+        "RUN-00797",
+        "RUN-01667"
+      ]
+    }
+  ],
+  "verification": [
+    {
+      "check": "896control/898fixed relations, 1568sealedraw, sourcefreeze/isolation/currentnativecleanup/4manualimages",
+      "result": "pass",
+      "evidence": [
+        "RUN-00001",
+        "RUN-01650",
+        "RUN-01719"
+      ],
+      "limits": "Modified Wine A/B, exact pinned map/profile. Actual B99 sent but suppressed at dispatcher; not native load failure/network loss/original timeout. Local30s close/forfeit policy. A native return/ID2clear/chief/room; B expected disconnect. Positive normal two cycles with policy enabled not yet complete. No fabricated99/death, source/config changed only after control cleanup/seal. No fullmatch/K5/K6a/vanilla/LANInternet/authority/gate."
+    },
+    {
+      "check": "226server tests incl6deadline regressions; docs/catalog/issues/artifacts/diff",
+      "result": "pass",
+      "evidence": [
+        "RUN-00845",
+        "RUN-01649",
+        "RUN-01658",
+        "RUN-00849"
+      ],
+      "limits": "Policy regression and measurable consistency, not native semantics or gate certification."
+    }
+  ],
+  "evidence_manifests": [
+    {
+      "path": "docs/evidence/checkpoints/evidence/CP135-loading-timeout.json",
+      "bytes": 431926,
+      "sha256": "776ca09288b35b2c5d1d198a525dc4eec49144ad1a36135a82e81268619e2ab2",
+      "count": 1725
+    }
+  ],
+  "delta": {
+    "added": [
+      "Connected service barrier control and optional pinned-channel deadline with native survivor recovery."
+    ],
+    "corrected": [
+      "CP134connectedstall gap measured; loading_timeout defaultoff is deliberate emulatorchoice. RESEARCH obsolete Battle/sharedquery next-step replaced with current normal policy positive."
+    ],
+    "superseded": [
+      "NEXT-CONNECTED-LOAD-STALL closed in scopedcontrol/fixed; NEXT-LOADING-DEADLINE-POSITIVE active."
+    ]
+  },
+  "blockers": [
+    "Normal two-cycle positive with policy enabled not yet complete; both missing/host/replacement/general recovery only model/unknown outside measured scope.",
+    "Fullauth/authority/fullmatch/vanilla/LANInternet/gates remain."
+  ],
+  "next_steps": [
+    {
+      "id": "NEXT-CONNECTED-LOAD-STALL",
+      "task": "KRE-005b",
+      "state": "closed",
+      "action": "CP135controlandoptionaldeadlinefixed/nativeAreturncleanup complete in scopedfaultinjection.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-LOADING-DEADLINE-POSITIVE",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "PLAN exactCP134normalcontroller/profileplusoptional30sdeadline/nohold; bothactual99/barriercomplete/clock/tworesults/reset, no falsecloseafter30s, newgeneration/deadlineatStart2. AUD periodicdueCP136; no sourceconfigchangesmidrun.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    }
+  ],
+  "docs_sync": [
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "CP135 scoped control/fixed deadline native recovery, new policy contract/limits, positive next step and issue/catalog navigation synced before completion."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "CP135 scoped control/fixed deadline native recovery, new policy contract/limits, positive next step and issue/catalog navigation synced before completion."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "updated",
+      "reason": "CP135 scoped control/fixed deadline native recovery, new policy contract/limits, positive next step and issue/catalog navigation synced before completion."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "updated",
+      "reason": "CP135 scoped control/fixed deadline native recovery, new policy contract/limits, positive next step and issue/catalog navigation synced before completion."
+    },
+    {
+      "path": "docs/features.json",
+      "state": "updated",
+      "reason": "CP135 scoped control/fixed deadline native recovery, new policy contract/limits, positive next step and issue/catalog navigation synced before completion."
+    },
+    {
+      "path": "docs/COVERAGE.md",
+      "state": "updated",
+      "reason": "CP135 scoped control/fixed deadline native recovery, new policy contract/limits, positive next step and issue/catalog navigation synced before completion."
+    },
+    {
+      "path": "server/README.md",
+      "state": "updated",
+      "reason": "CP135 scoped control/fixed deadline native recovery, new policy contract/limits, positive next step and issue/catalog navigation synced before completion."
+    },
+    {
+      "path": "docs/evidence/loading-timeout/README.md",
+      "state": "updated",
+      "reason": "CP135 scoped control/fixed deadline native recovery, new policy contract/limits, positive next step and issue/catalog navigation synced before completion."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/review.json",
+      "state": "updated",
+      "reason": "CP135 scoped control/fixed deadline native recovery, new policy contract/limits, positive next step and issue/catalog navigation synced before completion."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
+      "state": "updated",
+      "reason": "CP135 scoped control/fixed deadline native recovery, new policy contract/limits, positive next step and issue/catalog navigation synced before completion."
+    }
+  ],
+  "evidence": []
+}

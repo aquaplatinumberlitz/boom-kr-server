@@ -220,3 +220,12 @@ CP115; CP116 hỗ trợ hai variant đã đo A/aux1 và B/aux0. Profilehash/106 
 và admission/send-success-commit có [contract/giới hạn](../docs/PROTOCOL.md#rescue-reverse).
 Hai client thật cộng actor đối địch tổng hợp, không generalteam/roster/auth; defaultoff.
 [Control/positive/provenance](../docs/evidence/rescue-service/README.md#cp116), 190tests tại CP116.
+
+
+CP135: profile có thể bật `loading_timeout: {"mode":"close_missing_init99","seconds":30}`.
+Default off; số giây nguyên1–300 do emulator chọn. Deadline pin generation/channel sau121,
+current dispatched barrier thắng expiry trong owner tick; hết hạn đóng riêng thành viên chưainit99,
+vô hiệu hóa fence và tái dùng close/forfeit/return/cleanup hiện hành. Không giả99/death/cancelpacket.
+[Contract/giới hạn và runtime control/fixed](../docs/PROTOCOL.md#loading-timeout);
+`python3 -m unittest server.test_loading_timeout` kiểm local policy, không là original-server oracle.
+Positive normal/reset với policy bật đang là phép kiểm tiếp theo ở PLAN.
