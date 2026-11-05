@@ -1,7 +1,7 @@
 {
   "schema": "kre-feature-index-v1",
   "build": "KR00967",
-  "as_of": "2026-11-05 CP135",
+  "as_of": "2026-11-06 CP136",
   "sources": {
     "plan": "docs/PLAN.md",
     "contract": "docs/PROTOCOL.md",
@@ -871,7 +871,8 @@
           "docs/evidence/house-after-box/README.md",
           "docs/evidence/map-flags/README.md",
           "docs/evidence/opposite-box-control/README.md",
-          "docs/evidence/loading-timeout/README.md"
+          "docs/evidence/loading-timeout/README.md",
+          "docs/evidence/loading-timeout/README.md#cp136"
         ]
       },
       "coverage": {
@@ -915,7 +916,8 @@
               "docs/evidence/house-after-box/README.md",
               "docs/evidence/map-flags/README.md",
               "docs/evidence/opposite-box-control/README.md",
-              "docs/evidence/loading-timeout/README.md"
+              "docs/evidence/loading-timeout/README.md",
+              "docs/evidence/loading-timeout/README.md#cp136"
             ]
           },
           "windows_original": {
@@ -940,7 +942,8 @@
             "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/61",
             "docs/PROTOCOL.md#distinct-spawn",
             "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/91",
-            "docs/PROTOCOL.md#loading-timeout"
+            "docs/PROTOCOL.md#loading-timeout",
+            "docs/PROTOCOL.md#loading-timeout-positive"
           ]
         },
         "integration": {
@@ -951,7 +954,8 @@
             "docs/evidence/preclock-eof/README.md",
             "docs/evidence/preclock-cleanup/README.md",
             "docs/evidence/opposite-box-control/README.md",
-            "docs/PROTOCOL.md#loading-timeout"
+            "docs/PROTOCOL.md#loading-timeout",
+            "docs/PROTOCOL.md#loading-timeout-positive"
           ]
         },
         "gate": {
@@ -1150,7 +1154,8 @@
         "evidence": [
           "docs/evidence/round-go/README.md",
           "docs/evidence/probe-service/README.md",
-          "docs/evidence/loading-timeout/README.md"
+          "docs/evidence/loading-timeout/README.md",
+          "docs/evidence/loading-timeout/README.md#cp136"
         ]
       },
       "coverage": {
@@ -1183,7 +1188,8 @@
             "state": "observed",
             "refs": [
               "docs/evidence/round-go/README.md",
-              "docs/evidence/loading-timeout/README.md"
+              "docs/evidence/loading-timeout/README.md",
+              "docs/evidence/loading-timeout/README.md#cp136"
             ]
           },
           "windows_original": {
@@ -1205,7 +1211,8 @@
             "server/probe_service.py",
             "docs/PROTOCOL.md#probe-service",
             "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/57",
-            "docs/PROTOCOL.md#loading-timeout"
+            "docs/PROTOCOL.md#loading-timeout",
+            "docs/PROTOCOL.md#loading-timeout-positive"
           ],
           "delivery": "via_pr"
         },
@@ -1213,7 +1220,8 @@
           "state": "partial",
           "refs": [
             "docs/evidence/probe-service/README.md",
-            "docs/PROTOCOL.md#loading-timeout"
+            "docs/PROTOCOL.md#loading-timeout",
+            "docs/PROTOCOL.md#loading-timeout-positive"
           ]
         },
         "gate": {
@@ -3040,7 +3048,8 @@
           "docs/evidence/three-bomb-chain/README.md#cp123",
           "docs/evidence/life-admission/README.md",
           "docs/evidence/battle-exit/README.md#cp126",
-          "docs/evidence/three-bomb-chain/README.md#cp134"
+          "docs/evidence/three-bomb-chain/README.md#cp134",
+          "docs/evidence/loading-timeout/README.md#cp136"
         ]
       },
       "coverage": {
@@ -3112,7 +3121,8 @@
               "docs/PROTOCOL.md#recursive-chain-cycles",
               "docs/PROTOCOL.md#death-lifecycle-policy",
               "docs/PROTOCOL.md#battle-exit-rejoin",
-              "docs/PROTOCOL.md#shared-cascade-cycles"
+              "docs/PROTOCOL.md#shared-cascade-cycles",
+              "docs/evidence/loading-timeout/README.md#cp136"
             ]
           },
           "windows_original": {
@@ -3143,7 +3153,8 @@
             "docs/PROTOCOL.md#current-hidden-items",
             "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/97",
             "docs/PROTOCOL.md#basic-battle",
-            "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/99"
+            "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/99",
+            "docs/PROTOCOL.md#loading-timeout-positive"
           ],
           "delivery": "via_pr"
         },
@@ -3185,7 +3196,8 @@
             "docs/PROTOCOL.md#recursive-chain-cycles",
             "docs/PROTOCOL.md#death-lifecycle-policy",
             "docs/PROTOCOL.md#battle-exit-rejoin",
-            "docs/PROTOCOL.md#shared-cascade-cycles"
+            "docs/PROTOCOL.md#shared-cascade-cycles",
+            "docs/PROTOCOL.md#loading-timeout-positive"
           ]
         },
         "gate": {
@@ -3238,7 +3250,8 @@
           "docs/evidence/battle-exit/README.md#cp128",
           "docs/evidence/battle-exit/README.md#cp129",
           "docs/evidence/udp-generation/README.md#cp130",
-          "docs/evidence/loading-timeout/README.md"
+          "docs/evidence/loading-timeout/README.md",
+          "docs/evidence/loading-timeout/README.md#cp136"
         ]
       },
       "coverage": {
@@ -3289,7 +3302,8 @@
               "docs/PROTOCOL.md#postbomb-exit-rejoin",
               "docs/PROTOCOL.md#host-battle-exit",
               "docs/PROTOCOL.md#udp-membership-lifetime",
-              "docs/evidence/loading-timeout/README.md"
+              "docs/evidence/loading-timeout/README.md",
+              "docs/evidence/loading-timeout/README.md#cp136"
             ]
           },
           "windows_original": {
@@ -3331,7 +3345,8 @@
             "server/test_host_back_rejoin.py",
             "docs/PROTOCOL.md#host-normal-back",
             "server/test_host_battle_exit.py",
-            "docs/PROTOCOL.md#loading-timeout"
+            "docs/PROTOCOL.md#loading-timeout",
+            "docs/PROTOCOL.md#loading-timeout-positive"
           ]
         },
         "integration": {
@@ -3355,7 +3370,8 @@
             "docs/PROTOCOL.md#postbomb-exit-rejoin",
             "docs/PROTOCOL.md#host-battle-exit",
             "docs/PROTOCOL.md#udp-membership-lifetime",
-            "docs/PROTOCOL.md#loading-timeout"
+            "docs/PROTOCOL.md#loading-timeout",
+            "docs/PROTOCOL.md#loading-timeout-positive"
           ]
         },
         "gate": {
@@ -3469,7 +3485,8 @@
           "docs/evidence/three-bomb-chain/README.md#cp132",
           "docs/evidence/three-bomb-chain/README.md#cp133",
           "docs/evidence/three-bomb-chain/README.md#cp134",
-          "docs/evidence/loading-timeout/README.md"
+          "docs/evidence/loading-timeout/README.md",
+          "docs/evidence/loading-timeout/README.md#cp136"
         ]
       },
       "coverage": {
@@ -3580,7 +3597,8 @@
               "docs/PROTOCOL.md#shared-flag-timing",
               "docs/PROTOCOL.md#shared-cell-state",
               "docs/PROTOCOL.md#shared-cascade-cycles",
-              "docs/evidence/loading-timeout/README.md"
+              "docs/evidence/loading-timeout/README.md",
+              "docs/evidence/loading-timeout/README.md#cp136"
             ]
           },
           "windows_original": {
@@ -3667,7 +3685,8 @@
             "server/test_battle_exit.py",
             "server/test_battle_exit_pending.py",
             "server/test_host_battle_exit.py",
-            "docs/PROTOCOL.md#loading-timeout"
+            "docs/PROTOCOL.md#loading-timeout",
+            "docs/PROTOCOL.md#loading-timeout-positive"
           ]
         },
         "integration": {
@@ -3743,7 +3762,8 @@
             "docs/PROTOCOL.md#shared-flag-timing",
             "docs/PROTOCOL.md#shared-cell-state",
             "docs/PROTOCOL.md#shared-cascade-cycles",
-            "docs/PROTOCOL.md#loading-timeout"
+            "docs/PROTOCOL.md#loading-timeout",
+            "docs/PROTOCOL.md#loading-timeout-positive"
           ]
         },
         "gate": {

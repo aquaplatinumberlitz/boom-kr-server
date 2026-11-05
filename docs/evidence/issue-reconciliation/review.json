@@ -134,11 +134,11 @@
         "KR-R003",
         "KR-F001"
       ],
-      "known": "CP134/PR205 merged c2b2de4; CP135 held actualB99 control/TCP live, opt-in30s deadline closes B8 and native A175/180/107/ID2→0/110/chief1/room.226server tests; policy is emulator choice.",
-      "remaining": "Normal two-cycle positive with deadline enabled; fullauth/authority/generalreset/fullmatch/LANInternet/gates remain.",
-      "next_test": "PLAN exact CP134 normal controller with optional deadline/no hold; bothactual99/barrier complete each round, no late closure, fresh generation/deadline at Start2.",
+      "known": "CP135/PR206 merged57b3b53; CP136 same-run normal deadline2/barrier15.165/16.188s/fullnativephases/twosharedcascade+actualboth19/result/return/reset/no falseclose. AUD042through136/next140.",
+      "remaining": "Combined CP106normal movement/survivor/drained-result with current-trap/deadline options not measured; fullauth/authority/generalreset/fullmatch/LANInternet/gates remain.",
+      "next_test": "PLAN sourcefirst CP106 exact controller/profile plus known death_lifecycle/current_trap and loading_timeout30s; retain resultdrain. Fourphase movement/current17→19/nativeclock/barrier/tworesults/reset/guards in same run; no source edits midrun.",
       "acceptance": "Epic checklist: linkedscopedtask/evidence+authoritymatrix vàacceptancegate ởPLAN; từngtaskđóng khôngđóngepic/K5/K6a.",
-      "reason": "Current stalled loading trigger resolved in scoped control/fixed; normal regression is next. AUD041through132/next136.",
+      "reason": "Scoped loading missingB and normal path now measured separately; next integration reuses already recovered mechanisms rather than re-RE. Audit periodic136→140.",
       "sources": [
         "docs/PROTOCOL.md#authority",
         "docs/RESEARCH.md#feature-gaps",
@@ -155,7 +155,8 @@
         "docs/PROTOCOL.md#shared-flag-timing",
         "docs/PROTOCOL.md#shared-cell-state",
         "docs/PROTOCOL.md#shared-cascade-cycles",
-        "docs/PROTOCOL.md#loading-timeout"
+        "docs/PROTOCOL.md#loading-timeout",
+        "docs/PROTOCOL.md#loading-timeout-positive"
       ],
       "evidence": [
         "docs/evidence/current-movement-cycles/README.md",
@@ -169,7 +170,8 @@
         "docs/evidence/three-bomb-chain/README.md#cp132",
         "docs/evidence/three-bomb-chain/README.md#cp133",
         "docs/evidence/three-bomb-chain/README.md#cp134",
-        "docs/evidence/loading-timeout/README.md"
+        "docs/evidence/loading-timeout/README.md",
+        "docs/evidence/loading-timeout/README.md#cp136"
       ],
       "prs": [
         173,
@@ -199,7 +201,8 @@
         202,
         203,
         204,
-        205
+        205,
+        206
       ],
       "successors": []
     },
@@ -526,6 +529,6 @@
       "successors": []
     }
   ],
-  "as_of_utc": "2026-11-05T14:53:21.219087+00:00",
-  "limits": "Dated manual issue dispositions; #14 updated through CP135. Snapshot freshness is capture UTC only, no automatic semantic acceptance/gate certification. Completed checkpoints remain immutable."
+  "as_of_utc": "2026-11-05T15:03:40.148593+00:00",
+  "limits": "Dated manual dispositions; #14 updated through CP136. GitHub snapshot freshness is capture UTC only; no semantic acceptance/gate auto-certification, immutable completed checkpoint history."
 }
