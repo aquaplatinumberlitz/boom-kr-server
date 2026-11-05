@@ -2,7 +2,7 @@
 
 Baseline CP111/[PR181](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/181), merge
 `248e11847e11358566997816f9212c63d9abe201`. Codex solo/tự kiểm,
-[review waived](../checkpoints/review-waiver.json); CP112 chờ PR. Contract/giới hạn chỉ ở
+[review waived](../checkpoints/review-waiver.json); SnapshotCP112chờPR lúcghi; đãmerge [PR182](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/182)/1b7f210. Contract/giới hạn chỉ ở
 [PROTOCOL](../../PROTOCOL.md#death-envelope-admission), câu hỏi ở
 [RESEARCH](../../RESEARCH.md#gap-contact-state), thứ tự chỉ [PLAN](../../PLAN.md#current-order).
 Audit định kỳ AUD035 qua112, kế116; lịch sử/raw hoàn tất không sửa.
@@ -65,3 +65,5 @@ Kiểm emulation/framer/typedpacket/securefields/flags tách native runtime. Exa
 firstseen hợp cấu trúc, forged-forward/tick/location/inventory/fullauth vẫn unknown hoặc ngoài policy.
 Bước kế tận dụng CP036–038 report1/18/0: service hiện chưa forward escape/rescue hoặc quản lý kim;
 phải nối inventory/phase bằng actual controls trước chọn policy, không tự coi result21 là rescue.
+
+Bổ sung CP113: [kim145 opt-in/currentruntime](../needle-service/README.md) đãcó; bướcđầu CP112ởtrên làlịch sử, thứtự hiện hành chỉPLAN.

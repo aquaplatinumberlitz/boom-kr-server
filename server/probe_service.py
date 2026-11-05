@@ -88,6 +88,14 @@ class ProbeService:
         if missing:
             raise ValueError('profile missing lifecycle fixtures: ' + ', '.join(sorted(missing)))
         self.profile, self.out, self.proxy_ports = profile, out, proxy_ports
+        self.needle_escape = False
+        if 'needle_escape' in profile.data:
+            if profile.data['needle_escape'] != {'mode': 'needle_145_report_pair'}:
+                raise ValueError('unsupported needle_escape policy')
+            items = profile.data['items'] + profile.data.get('hidden_items', [])
+            if sum(item['kind'] == 145 for item in items) != 1:
+                raise ValueError('needle_escape requires exactly one catalog needle145')
+            self.needle_escape = True
         self.host_back_rejoin = False
         if 'host_back_rejoin' in profile.data:
             if profile.data['host_back_rejoin'] != {'mode': 'idle_A_to_B'}:
@@ -190,6 +198,8 @@ class ProbeService:
                 for peer in self.peers()]
 
     def start_round(self):
+        if self.needle_escape and {peer['role'] for peer in self.peers()} != {'A', 'B'}:
+            raise ValueError('needle_escape requires live mapped A/B')
         if self.capacity_profile and any(peer['role'] not in self.capacity_profile
                                          for peer in self.peers()):
             raise ValueError('bomb_capacity does not cover the current roster')
@@ -212,7 +222,7 @@ class ProbeService:
         for event in self.peers():
             markers = ['start_response_sent', 'init99', 'go_response_sent', 'play_response_sent',
                        'begin_response_sent', 'peer153_sent', 'death_event', 'pickup_ineligible',
-                       'bomb_serials', 'result21_forward']
+                       'bomb_serials', 'result21_forward', 'needle_inventory', 'needle_pending']
             if event.get('start_response_sent'):
                 event.setdefault('rounds', []).append({key: event[key] for key in markers if key in event})
             for marker in markers:
@@ -276,7 +286,8 @@ class ProbeService:
                        'guest_response_sent', 'map_response_sent', 'guest_ready_received',
                        'floor582_sent', 'start_response_sent', 'init99', 'go_response_sent',
                        'play_response_sent', 'begin_response_sent', 'peer153_sent', 'death_event',
-                       'pickup_ineligible', 'bomb_serials', 'pending_departures', 'departures_sent']
+                       'pickup_ineligible', 'bomb_serials', 'pending_departures', 'departures_sent',
+                       'needle_inventory', 'needle_pending']
             request['previous_membership'] = {key: event.pop(key) for key in markers if key in event}
             event.setdefault('room_visits', []).append(request)
             event['last_room_leave'] = request
@@ -503,7 +514,8 @@ class ProbeService:
                 return
             # Conservative fixture policy after an accepted trap/death report.
             # This is report-derived, not native state authority/authentication.
-            # This profile has no rescue/self-escape flow; a new Start clears it.
+            # Start clears this marker. Only the opt-in needle pair below can
+            # clear a matching trap; report21 and rescue are separate paths.
             blocked = event.get('pickup_ineligible')
             if blocked and blocked['generation'] == self.room.generation:
                 report['rejected'] = 'actor_report_ineligible'
@@ -513,6 +525,12 @@ class ProbeService:
                                                     'role': role, 'slot': slot, 'index': index,
                                                     'subtype': blocked['subtype']})
                 return
+            if getattr(self, 'needle_escape', False) and kind == 145:
+                peers = self.peers()
+                if (len(peers) != 2 or {peer['role'] for peer in peers} != {'A', 'B'}
+                        or not any(peer is event for peer in peers)):
+                    report['rejected'] = 'needle_not_current_AB_member'
+                    return
             claim = self.room.claim(ROLE_SLOTS[role], slot, context, ItemSpec(index, row, column, kind))
             if claim is not None and self.room.claims.consume(claim):
                 payload = codec.pack_fields([1, context, slot, row, column, index, kind, 0], [1, 1, 1, 1, 1, 4, 2, 1])
@@ -520,6 +538,13 @@ class ProbeService:
                                                          opcode=165, body=payload)
                 self.state['policy_events'].append({'op': 'item_consume', 'generation': claim.generation,
                                                     'index': index, 'slot': slot})
+                if (getattr(self, 'needle_escape', False) and kind == 145
+                        and len(report['broadcast165']) == 2):
+                    event['needle_inventory'] = {'generation': claim.generation, 'count': 1,
+                                                 'pickup_sha256': report['frame_sha256']}
+                    self.state['policy_events'].append({
+                        'op': 'needle_credit', 'source': 'design', 'generation': claim.generation,
+                        'role': role, 'count': 1, 'pickup_sha256': report['frame_sha256']})
                 if self.capacity_profile and kind == 0:
                     before = self.round['bomb_capacity'][role]
                     after = min(before + 1, self.capacity_profile[role]['maximum'])
@@ -599,13 +624,42 @@ class ProbeService:
             if delta == 0 and report['body_sha256'] in cursor['bodies']:
                 report['rejected'] = 'duplicate_report_body'
                 return
+        needle = None
+        if getattr(self, 'needle_escape', False) and subtype in (0, 1):
+            needle, reason = self.prepare_needle_escape(event, report, body)
+            if reason:
+                report['rejected'] = reason
+                return
+            if subtype == 0:
+                # Delivery must succeed before consuming inventory, clearing
+                # the trap, or committing this report's freshness cursor.
+                other = next(peer for peer in self.peers() if peer is not event)
+                report['forward170'] = self.send(
+                    other, 'start', f'needle170-1-r{self.room.generation}',
+                    opcode=170, body=bytes.fromhex(needle['prefix_hex']))
         if cursor is None or client_tick != cursor['tick']:
             cursor = {'tick': client_tick, 'bodies': []}
             event['report127_cursor'] = cursor
         cursor['bodies'].append(report['body_sha256'])
+        if needle is not None:
+            if subtype == 1:
+                event['needle_pending'] = needle
+                report['needle_staged'] = dict(needle)
+            else:
+                event['needle_inventory']['count'] = 0
+                event.pop('pickup_ineligible')
+                event.pop('needle_pending')
+                report['needle_consumed'] = {'generation': self.room.generation,
+                                             'report1_sha256': needle['report1_sha256'],
+                                             'trap_sha256': needle['trap_sha256'],
+                                             'before': 1, 'after': 0}
+                self.state['policy_events'].append({
+                    'op': 'needle_escape', 'source': 'design', 'role': event['role'],
+                    **report['needle_consumed'], 'report0_sha256': report['frame_sha256']})
         if subtype == 21:
             self.forward_result21(event, report, body)
         if subtype in (17, 19):
+            event.pop('needle_pending', None)
             event['pickup_ineligible'] = {'generation': self.room.generation,
                                           'subtype': subtype, 'report_sequence': sequence,
                                           'monotonic_ns': report['monotonic_ns'],
@@ -617,6 +671,48 @@ class ProbeService:
                                              opcode=170, body=payload)
             if subtype == 19:
                 event['death_event'] = report
+
+    def prepare_needle_escape(self, event, report, body):
+        """Read-only admission for the bounded CP037/038 report1→0 pair.
+
+        Credit and matching reported trap are emulator policy, not authenticated
+        inventory/life state. Rescue18 and arbitrary active items are excluded.
+        """
+        peers = self.peers()
+        if (not self.room.active or len(peers) != 2
+                or {peer['role'] for peer in peers} != {'A', 'B'}
+                or not any(peer is event for peer in peers)):
+            return None, 'needle_not_current_AB_member'
+        subtype = report['subtype']
+        if subtype == 1:
+            if len(body) != 14:
+                return None, 'unsupported_needle_escape_shape'
+        elif (len(body) != 22
+              or codec.read_fields(body[14:], [1, 2, 1, 4]) != [1, 145, 0, 0]):
+            return None, 'unsupported_needle_use_shape'
+        death = event.get('death_event')
+        if death and death['round'] == self.room.generation:
+            return None, 'needle_actor_report_dead'
+        trap = event.get('pickup_ineligible')
+        if not (trap and trap['generation'] == self.room.generation and trap['subtype'] == 17):
+            return None, 'needle_no_current_trap'
+        inventory = event.get('needle_inventory')
+        if not (inventory and inventory['generation'] == self.room.generation
+                and inventory['count'] == 1):
+            return None, 'needle_no_credit'
+        if subtype == 1:
+            if event.get('needle_pending'):
+                return None, 'needle_pair_already_pending'
+            return {'generation': self.room.generation, 'trap_sha256': trap['report_sha256'],
+                    'prefix_hex': body[:6].hex(), 'tick': report['client_tick'],
+                    'report1_sha256': report['frame_sha256'], 'report1_seq': report['seq']}, None
+        pending = event.get('needle_pending')
+        if not (pending and pending['generation'] == self.room.generation
+                and pending['trap_sha256'] == trap['report_sha256']
+                and pending['prefix_hex'] == (codec.pack_fields([1], [1]) + body[1:6]).hex()
+                and pending['tick'] == report['client_tick']):
+            return None, 'needle_pair_mismatch'
+        return pending, None
 
     def forward_result21(self, event, report, body):
         """Optional measured-prefix translation; not report authentication.
@@ -655,6 +751,8 @@ class ProbeService:
         if event.get('closed'):
             return
         event['closed'] = {'reason': reason, 'monotonic_ns': time.monotonic_ns()}
+        event.pop('needle_pending', None)
+        event.pop('needle_inventory', None)
         try:
             self.selector.unregister(state['socket'])
         except KeyError:
