@@ -87,7 +87,7 @@ source/config giữa run; control hoàn tất/lưu raw trước sửa service r�
 Control: `control-verification.json`, `control-visual.png`, `visual-review.json`, 120 capturedfields/
 66 copiednativepacketcases. Positive: `runtime-verification.json`, `actor-fields.json`,
 `native-reports.json`, `native-153.json`, `reverse-visual.png`/`visual-review.json`.
-**1000** positivejoins gồm **920** rawsizeSHA; 
+**1000** positivejoins gồm **920** rawsizeSHA;
 raw thật/native front/upstream joined, không replay. Native getter/framer là emulation riêng.
 190tests/15rescue methods; oppositeaux/directioninvalid/failedsend/credit/cursor guards giữ.
 Source/runtimeartifact/hash/VA/RVA chung với CP115 ở trên. Peer170/18 SHA:
