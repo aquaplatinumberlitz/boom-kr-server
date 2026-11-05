@@ -1,0 +1,211 @@
+{
+  "id": "CP121",
+  "previous": "CP120",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-05T06:34:53.353123+00:00",
+  "context_commit": "18b73f1dbaece084f5cd9806028f297cf6676958",
+  "owner": "Codex",
+  "reviewer": "Codex",
+  "question": "Can same current service/profile finish R2 native deaths/chosen result/secondroom/actualReadyB after rescue in both epochs?",
+  "scope": "Source-first CP120 rescue feedback/CP110 room Ready recipe/CP119 service/known copied native getters/readers. Only normal A Space/B Space after R2 escape and existing return/wait12/ReadyB. No new native bodies or production code/profile/fuse changes; private isolated Wine copy runtime complete/cleanup before docs.",
+  "artifacts": [
+    {
+      "name": "CA-r2-login-logout.exe",
+      "sha256": "660447c293ce92270cb9b5815331bca976e8f156366e1fe50b217b6c12e60ce3"
+    },
+    {
+      "name": "CA-r2-stage-social.exe",
+      "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+    },
+    {
+      "name": "CA-r2-stage-social.exe Bcopy",
+      "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+    },
+    {
+      "name": "modO.bin",
+      "sha256": "a08950c833d3acab8281049def7b3dc96b221f107eeda01da3a548e34b91dce5"
+    }
+  ],
+  "locators": [
+    "CP120 PR191 head5ab0c867dc657af5b6e50b6128831134b950ef0b merged18b73f1; source frozen/preflight;191 server tests unchanged reused.",
+    "Run32191e0eab3c5168d9383b1f2df0e15a86b52f568c7cb6a85b5f514b6fa9093c/357.734178034s/exit0/errors0;2227joins/2147raw. Epochkeys12345,12346; actualB18/aux0/localpeer56→26 thenactualA/B19;two175180/return;secondroomactualB95seq439/no104Start3.",
+    "Known nativeE6F060/E6F10A local rescue, E86820/E86892/E863CA peer170, securegetter52A350, rankE5F610/resultE64950. modOa08950/base400000/RVA=VA−400000/runtimee9bb4766/static660447.",
+    "AUD037 throughCP120/nextCP124 unchanged;CP120feedbacktargetnotattained/peerquota/causal limits andCP119negative preserved."
+  ],
+  "findings": [
+    {
+      "summary": "Both epochs actual B17→18 aux0, one forwarded170A full7/errors0/native B local and A peer56→26 before later actual A/B17→19. Two selected175180/resultreturn on same frozen source/profile; aftersecondroom actualB95seq439/no104.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#rescue-two-results",
+      "limits": "Two real modified Wine AB + synthetic opponent2/fixed teams/unchanged CP119 service/profile/fuse. Two chosen all_live_AB_accepted_dead_rank2 outcomes after native rescue each epoch; no fullmatch/K5/K6a/originalserverlaw/vanilla/LANInternet/generalreset. CP120 feedback target not attained/peerquota/trajectory and CP119 negative causal limits retained. NoStart3/forgedreports/nativeforce; copied-native model checks separate.",
+      "evidence": [
+        "TWO-02267",
+        "TWO-02157",
+        "TWO-00001",
+        "TWO-02289"
+      ]
+    },
+    {
+      "summary": "771 captured actor getter checks,312 native packet cases and12 peer153 cases corroborate wire/field values using copied native code. Synthetic heap/counter model remains separate from Wine execution.",
+      "source": "kr_static",
+      "status": "confirmed",
+      "method": "emulation",
+      "canonical": "docs/PROTOCOL.md#rescue-two-results",
+      "limits": "Two real modified Wine AB + synthetic opponent2/fixed teams/unchanged CP119 service/profile/fuse. Two chosen all_live_AB_accepted_dead_rank2 outcomes after native rescue each epoch; no fullmatch/K5/K6a/originalserverlaw/vanilla/LANInternet/generalreset. CP120 feedback target not attained/peerquota/trajectory and CP119 negative causal limits retained. NoStart3/forgedreports/nativeforce; copied-native model checks separate.",
+      "evidence": [
+        "TWO-02171",
+        "TWO-02186",
+        "TWO-02188"
+      ]
+    },
+    {
+      "summary": "Fixedfriendly AB plus synthetic opposing slot2, readiness refresh and all-live AB rank2 remain diagnostic emulator policy. Two rescue/result/return cycles do not establish original authority/fullmatch/gates.",
+      "source": "emu_choice",
+      "status": "design",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#rescue-two-results",
+      "limits": "Two real modified Wine AB + synthetic opponent2/fixed teams/unchanged CP119 service/profile/fuse. Two chosen all_live_AB_accepted_dead_rank2 outcomes after native rescue each epoch; no fullmatch/K5/K6a/originalserverlaw/vanilla/LANInternet/generalreset. CP120 feedback target not attained/peerquota/trajectory and CP119 negative causal limits retained. NoStart3/forgedreports/nativeforce; copied-native model checks separate.",
+      "evidence": [
+        "TWO-02196",
+        "TWO-02227",
+        "TWO-02267"
+      ]
+    }
+  ],
+  "verification": [
+    {
+      "check": "2227 scoped same-run joins including2147 raw hashes/native reports/no replay/two121clocks/two rescues/two results/secondroom actualB95/noStart3",
+      "result": "pass",
+      "evidence": [
+        "TWO-02267",
+        "TWO-02266"
+      ],
+      "limits": "Two real modified Wine AB + synthetic opponent2/fixed teams/unchanged CP119 service/profile/fuse. Two chosen all_live_AB_accepted_dead_rank2 outcomes after native rescue each epoch; no fullmatch/K5/K6a/originalserverlaw/vanilla/LANInternet/generalreset. CP120 feedback target not attained/peerquota/trajectory and CP119 negative causal limits retained. NoStart3/forgedreports/nativeforce; copied-native model checks separate."
+    },
+    {
+      "check": "771 actor fields/312 typed packets/12 peer153 copied-native emulation;191 unchanged production server tests reused",
+      "result": "pass",
+      "evidence": [
+        "TWO-02171",
+        "TWO-02186",
+        "TWO-02188",
+        "TWO-02294"
+      ],
+      "limits": "Two real modified Wine AB + synthetic opponent2/fixed teams/unchanged CP119 service/profile/fuse. Two chosen all_live_AB_accepted_dead_rank2 outcomes after native rescue each epoch; no fullmatch/K5/K6a/originalserverlaw/vanilla/LANInternet/generalreset. CP120 feedback target not attained/peerquota/trajectory and CP119 negative causal limits retained. NoStart3/forgedreports/nativeforce; copied-native model checks separate."
+    },
+    {
+      "check": "Manual two room images/docs/catalog/issue state/artifact/diff verification",
+      "result": "pass",
+      "evidence": [
+        "TWO-02289",
+        "TWO-02170",
+        "TWO-02184",
+        "TWO-00008"
+      ],
+      "limits": "Mechanical consistency/manual scoped UI observation only, no gate or automatic semantic approval."
+    }
+  ],
+  "evidence": [],
+  "evidence_manifests": [
+    {
+      "path": "docs/evidence/checkpoints/evidence/CP121-rescue-two-results.json",
+      "bytes": 577885,
+      "sha256": "32752ded878bb4c33e83f577ccd3a25bae899ab1ddcd8706ab371704255ce2bd",
+      "count": 2294
+    }
+  ],
+  "delta": {
+    "added": [
+      "Same-run two rescue epochs/two chosen results/secondreturn actualReadyB/native joins and UI."
+    ],
+    "corrected": [
+      "CP120 one result/R2active limitation resolved for scoped new run; CP120 record preserved with historical run limits.",
+      "Current canonical docs and issue14 now link solved narrow rescue lifecycle and next recursive-chain gap; CP120 PR191 merged."
+    ],
+    "superseded": [
+      "NEXT-RESCUE18-TWO-RESULTS closed scoped objective, next actual recursive chain outside root rays."
+    ]
+  },
+  "blockers": [
+    "No deep-recursive chain outside root rays runtime proof; CP084 only fork.",
+    "General authority/validator/reset/inventory/membership/auth/codec/vanilla/LANInternet and gates remain; chosen synthetic policy not fullmatch."
+  ],
+  "next_steps": [
+    {
+      "id": "NEXT-RESCUE18-TWO-RESULTS",
+      "task": "KRE-005b",
+      "state": "closed",
+      "action": "CP121 both rescue/result/return epochs and secondroom actualB95 scoped proof complete.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-RECURSIVE-CHAIN",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "PLAN root3,3p2→secondary3,5p1→third4,5p2; reuse CP084/094–096 known floor items/currentmap/normalfeedback; require actual118/159 before158/195flags/process/latercallbacks unchanged fuse, noforged118. Auditnext124.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    }
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-11-05T06:34:53.353123+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "Codex solo RE/code/runtime/selfcheck, not independent approval.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Owner explicitly requested solo without Claude review."
+    }
+  },
+  "docs_sync": [
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "CP121 two rescue/result/return/actualBReady and explicit limits, CP120 merged; next recursive chain per PLAN; no oldrecord/gate change."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "CP121 two rescue/result/return/actualBReady and explicit limits, CP120 merged; next recursive chain per PLAN; no oldrecord/gate change."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "updated",
+      "reason": "CP121 two rescue/result/return/actualBReady and explicit limits, CP120 merged; next recursive chain per PLAN; no oldrecord/gate change."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "updated",
+      "reason": "CP121 two rescue/result/return/actualBReady and explicit limits, CP120 merged; next recursive chain per PLAN; no oldrecord/gate change."
+    },
+    {
+      "path": "docs/features.json",
+      "state": "updated",
+      "reason": "CP121 two rescue/result/return/actualBReady and explicit limits, CP120 merged; next recursive chain per PLAN; no oldrecord/gate change."
+    },
+    {
+      "path": "docs/COVERAGE.md",
+      "state": "updated",
+      "reason": "CP121 two rescue/result/return/actualBReady and explicit limits, CP120 merged; next recursive chain per PLAN; no oldrecord/gate change."
+    },
+    {
+      "path": "docs/evidence/rescue-service/README.md",
+      "state": "updated",
+      "reason": "CP121 two rescue/result/return/actualBReady and explicit limits, CP120 merged; next recursive chain per PLAN; no oldrecord/gate change."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/review.json",
+      "state": "updated",
+      "reason": "CP121 two rescue/result/return/actualBReady and explicit limits, CP120 merged; next recursive chain per PLAN; no oldrecord/gate change."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
+      "state": "updated",
+      "reason": "CP121 two rescue/result/return/actualBReady and explicit limits, CP120 merged; next recursive chain per PLAN; no oldrecord/gate change."
+    }
+  ]
+}

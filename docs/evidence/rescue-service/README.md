@@ -211,4 +211,28 @@ khác khônglàm mất factBescape, cũngkhônglàprooffullmovementconsistency. 
 
 MộtR1result vàR2activeescape, **chưaR2result/secondreturn/Ready saurescue**, khôngK5/K6a/fullmatch.
 191server tests CP119reuse/sourceunchanged. AuditthủcôngAUD037quaCP120/kếCP124;
-CP120selfcheck/chờPR/reviewwaived. CompleteCP119vàoldfailure/rawgiữ nguyên, externalbatchmanifest mới.
+CP120/PR191 đã merge `18b73f1`; review waived. CompleteCP119vàoldfailure/rawgiữ nguyên, externalbatchmanifest mới.
+
+
+<a id="cp121"></a>
+## CP121 — Hai rescue/result/return và actual ReadyB sau return2
+
+[Contract/giới hạn](../../PROTOCOL.md#rescue-two-results), [câu hỏi](../../RESEARCH.md#gap-round-reset),
+[bước kế](../../PLAN.md#current-order). CP120/PR191 merge `18b73f1`; toàn bộ code/profile CP119 giữ nguyên.
+Tái dùng CP120 rescue/feedback, CP110 room/Ready và copied native getters/readers; không RE lại codec,
+slot2 hay consumer18. `local/research/codex/rescue-two-results-r1/reuse-question.json` ghi nguồn/giới hạn.
+
+Recipe/controller `cycles-recipe.json`/`wine_probe_rescue_two_results.py`; prepare hoàn tất trước run,
+private namespace/lo-only/no-route/files NSS/exclusive lease/two-prefix-display/source frozen.
+Cleanup đã hoàn tất trước verification/docs. Run SHA
+`32191e0eab3c5168d9383b1f2df0e15a86b52f568c7cb6a85b5f514b6fa9093c`,
+357,734178034s/exit0/error0/serviceerrors0. `two-result-verification.json`: **2227 joins**, **2147 raw**
+size/SHA, mỗi epoch actualB18aux0/peer170full7/nativeboth56→26 trước actualA/B19, hai chosen175180/
+room và actualB95seq439 sau return2/no104. `two-result-visual.png` và manual `visual-review.json`
+cho hai room views; không đọc tọa độ chính xác từ ảnh. `actor-fields.json`771 checks,
+`native-reports.json`312 cases, `native-153.json`12 cases là copied-native emulation riêng.
+
+Đối thủ slot2 tổng hợp, fixed teams và chosen all-live-AB rank2 là emulator policy; chưa fullmatch/
+K5/K6a/vanilla/LAN/Internet/general reset. CP120 target159 chưa đạt/peer quota và CP119 negative
+không bị sửa hay loại bỏ; run mới không chứng minh causal fix. KhôngStart3. Source191 tests CP119
+reuse vì production không đổi. CP121 tự kiểm/chờ PR, review waived; audit kếCP124, không reset counter.
