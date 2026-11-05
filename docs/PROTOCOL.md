@@ -1,6 +1,6 @@
 # KR 00967 — contract tương thích client gốc
 
-Revision kr-legacy-contract-r1; cập nhật05/11/2026 JST (CP130; AUD040 quaCP128, kếCP132).
+Revision kr-legacy-contract-r1; cập nhật05/11/2026 JST (CP131; AUD040 quaCP128, kếCP132).
 **Contract có bằng chứng từng phần; chưa nghiệm thu full codec K2**.
 Lộ trình và thứ tự task chỉ giữ ở [REWRITE_PLAN — KRE](PLAN.md).
 Đây là contract của repo server KR. ADR0009 của bản viết lại là nguồn lịch sử để so sánh;
@@ -4631,3 +4631,31 @@ không gọi làdrop. R3thêmack/window8s, giữ source/profile/payloadcontract;
 duynhất cho R2miss. Draftanalyzer slicing sửa riêng raw[1:-1]15 và[3:-1]13 theo actualnative bytes;
 oldreport giữ, runtime/raw không sửa. Generalqueue/nativepool/fullmatch/K5/K6a/LANInternet vẫn mở.
 Bước tiếp chỉPLAN; AUD040/kế132, reviewwaived khôngđónggate.
+
+
+<a id="shared-blocker"></a>
+### Shared blocker hai tia trong một root cascade — CP131
+
+**kr_runtime/confirmed hẹp; hai model là design**, [metadata/hash](evidence/three-bomb-chain/README.md#cp131).
+Reuse CP090/095 actualmap/native195/boxcontrol, CP122–123recursivechain/currentmodel và VNgame/items
+chỉ làm reference. Không body/codec/mapformat mới, không List2tạo tường/actorforce/terrainwrite.
+MapSHAaeb57ffd…/seed/source/profile/client/fuse6 giữ nguyên tới cleanup.
+
+R3 actual Aopening118 **(3,4)p2/ID1** → native158clears(2,4),(3,2),(3,6), full195 hai view khớp;
+(2,3) và(2,2) vẫn1. Dàn vị trí trước fuse, actual Broot**(3,3)p1/ID2**, Asecondary**(2,4)p2/ID3**,
+Abridge**(3,4)p2/ID4**, cả159full39 trướcroot158. Native hai view cùngprocess **2→4→3** trong
+rootcallback, rootstate0callerE9EDFF, secondary4/3callerEBE21A; full15813/errors0.
+Laterown158IDs3,4 chỉlookup/no kind0/process/state, không nổ trùng. Sau root: sharedbox**(2,3)=0**,
+diagnostic**(2,2)=1**, all195flags khớp immutablecandidate; counterpart mutabledepthfirst
+(clearboxngaygiữatraversal) dự đoán(2,2)=0 nên **bị bác cho input này**. Không tự suy toàn luật
+globalFIFO/BFS/immutable hoặc thời điểm flag chuyển từ1→0: hiện mớibefore/afterroot snapshots.
+
+R3198,045742258s/exit0/errors0/703raw/849checks,18nativeflagsnapshots/3546copiednativegetter/
+3510arraychecks/153packet+6peer153 cases riêng; actual17sau blast cảA/B, không19/result/return/fullmatch.
+Hai preparation/run trước giữ nguyên: R1thiếuimportre ởhelperwaitroot sauopening118/159, trướcfuse,
+671raw/collectorerror; R2thêmimportonly, openingnative195đúng nhưngpostrootRighttarget160feedback
+thấy225→280/Upblocked, khôngsecondary/bridge,675raw/partial. R3đổi dàn vị trí trướcfuse vàrootowner/
+power, không singlevariableclaim hoặc sửafailedraw. NormalOSkeys/read-onlyfeedback; actual118quyếtđịnh
+geometry, khôngduration/target. Runtimecopye9bb4766/static660447/modOa08950/base400000/RVA=VA−400000.
+NextchỉPLAN: knownprocessphaseflag timing để giải nguyênnhân scopedcounterhypothesisfail, không
+mởmọi chain/moving/validator/auth/gate. AUD040/kế132; reviewwaived khôngđóngK5/K6a.

@@ -41,20 +41,18 @@ Hai copy KR Wine đã chạy login/sảnh/phòng/Battle và các chu kỳ kết 
 [kim/reset](docs/PROTOCOL.md#needle-round-reset), [cứu hai chiều và hai kết quả](docs/PROTOCOL.md#rescue-two-results),
 [deep chain/reset](docs/PROTOCOL.md#recursive-chain-cycles) giữ phạm vi và giới hạn tại nguồn chuẩn.
 
-**Mốc mới CP130:** sau host exit/107 xóa ID1→0, gói UDP R1 được replay vẫn tới endpoint/queue/drain
-ở phòng. Sau A rejoin/B Start2, cùng hash tới consumer rồi key-drop56≠59, không apply;
-gói hiện hành vẫn apply/full13. [Contract/giới hạn](docs/PROTOCOL.md#udp-membership-lifetime),
-[raw/hash/recipe](docs/evidence/udp-generation/README.md#cp130). Probe có armed-ack, không suy chỉ từ sendlog.
-Scope hai copy Wine, một gói/endpoint và một host exit/rejoin, không toàn grammar/queue reset/auth.
+**Mốc mới CP131:** shared blocker trên map thật: bom mở ô rồi root B(3,3)p1 → bridge A(3,4)p2 →
+secondary A(2,4)p2; native cả hai view xử lý2→4→3, toàn195 flags khớp model hiện tại, ô(2,2) vẫn chắn.
+[Contract/giới hạn](docs/PROTOCOL.md#shared-blocker), [raw/hash/recipe](docs/evidence/three-bomb-chain/README.md#cp131).
+Chỉ bác giả thuyết mutable-depth-first cụ thể cho geometry này, chưa chứng minh globalFIFO/immutable
+hoặc thời điểm native xóa thùng. Bước kế đo đúng flag tại các phase trong callback, xem PLAN.
 
-CP129 đã merge [PR200](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/200) tại `f5ab2df`.
-CP130 docs/evidence/tự kiểm trong thay đổi hiện tại; review độc lập
-[waived](docs/evidence/checkpoints/review-waiver.json). Lịch sử CLI/Git giữ nguyên; #1/#2/#3/#9/#14 và
-K0–K7 còn mở. Một forfeit rồiR2active không phải hai trận hoàn chỉnh/K6a/LANInternet.
+CP130 đã merge [PR201](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/201) tại `25b8884`.
+CP131 docs/evidence/tự kiểm trong thay đổi hiện tại; review độc lập
+[waived](docs/evidence/checkpoints/review-waiver.json). Raw/complete history giữ nguyên;
+#1/#2/#3/#9/#14 và K0–K7 vẫn mở. Ca mới chỉ một Battle cascade/noresult, không fullmatch/K6a/LANInternet.
 
-Theo [PLAN](docs/PLAN.md#current-order), bước kế quay về Battle: kiểm shared blocker giữa các tia nổ
-trên current map bằng known native195 flags/model; không quét toàn client hoặc lặp key-only case.
-Full auth/authority/generalreset và nhiều máy vẫn thiếu.
+Full auth/authority/generalreset và nhiều máy vẫn thiếu; thứ tự duy nhất ở [PLAN](docs/PLAN.md#current-order).
 Audit định kỳ **AUD040 qua CP128**, kế **CP132**. Theo [yêu cầu chủ dự án](docs/evidence/owner-directives/continuous-work.json),
 tiếp tục ngay việc kế sau checkpoint/PR.
 

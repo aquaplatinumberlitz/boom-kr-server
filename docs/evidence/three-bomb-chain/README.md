@@ -113,4 +113,36 @@ không đổi raw/deepgeometry/rank/fullreader acceptance. Retry không chứng 
 cho hai roomviews; native/rank/cell không suy từảnh. Wholemovement/auth/lifeauthority/generalchain/
 fullmatch/K5/K6a/vanilla/LANInternet chưa đủ. 191unchangedserver tests CP119 reuse.
 AUD038 ad-hoc sửa gap CP106 trùng/CP122stale recursive row/121roster scope, periodic kếCP124 khôngreset.
-CP123 self-check/chờPR/reviewwaived; control/priorCP objects/raw giữ nguyên.
+CP123/PR194 merged`06765c7`, reviewwaived; control/priorCP objects/raw giữ nguyên.
+
+
+<a id="cp131"></a>
+## CP131 — Shared blocker/diagnostic cell trên actual map
+
+[Contract/giới hạn](../../PROTOCOL.md#shared-blocker), [gap](../../RESEARCH.md#gap-blast-block-chain).
+Raw local/research/codex/shared-blocker-r{1,2,3}; `reuse-question.json` pin CP090/095/096/122123,
+VNgame/items/KRdata/currentmodel/map. No newbody/codec/mapformat; geometry chọn từ actualseed,
+`geometry-candidate.json` hai model khác đúngô2,2, không runtimeoracle.
+
+|Run|Kết quả|run.json SHA256|
+|---|---|---|
+|R1|174,40603245s/exit1/671raw, actualopening118159; helperwaitroot thiếuimportre trước158, khôngchainnegative.|`a906e9eb15db81cd83acdf03a7d55a73e2f5d7205fb7d618119657c5a87dcf03`|
+|R2|190,672498057s/exit1/675raw; openingall195match, mainAroot3,3p2 nhưngRightovershoot225→280/Upblocked/no secondary; partial.|`862d36a086c1ef0e7caf35f8d9a5a6ecefe7c65e7d66db878b44f8dc83e3788d`|
+|R3|198,045742258s/exit0/noerrors/703raw/849checks; exactopening+threeactualmain/native2→4→3/all195match/shared2,3clear/diagnostic2,2stays1.|`df2c88e1fdec26264aab425fe7613d62464bd2ff4b7b76f09c0c8effc6db714f`|
+
+Recipes/preflight/runtime-source/raw-seal pinargv/sourceuntilcleanup; privateuser/net/mount/PID/chỉlo/
+no-route/filesNSS/onelease/twoprefix-display. Sameproduction/profile/map/client/fuse6; raw/binary/DB/pack
+không sửa. R2importsreonly; R3prestageA2,4/B3,3 trướcfuse, Brootp1 rồiAsecondary+Down.1+bridge,
+thayowner/power/route được côngbố, không singlevariableproof. `retry-reason.json` giữfailure/partial.
+
+`shared-verification.json`849joins; `shared-observations.json`chronologicalactual159/158/modelallflags;
+`chain-summary.json`actualS2C/ptr/nativeprocess/caller join hai view, full39/full13/laterownnoops.
+`flag-reader-verification.json`18snap/3546native52A350/3510ED1350arraychecks, `native-reports.json`153/
+`native-153.json`6cases là emulation riêng. R2opening6snap/1182getters/1170arraychecks; R1clock2snap/
+394getters/390arraychecks. `visual-review.json` hai viewHELP/terrain, không suycell/order từảnh.
+
+Mutabledepthfirstimmediateclearcounterhypothesis bịbác cho geometry này; chưa chứng minh native dùng
+immutablesnapshot/globalFIFO hoặcflagmutationtiming. Kết quả modelagreementkhông tự nângthành law.
+220servertests từCP129reused vìsourcekhôngđổi. CP130PR201head65cba0f/merge25b8884 exactCLEAN/
+MERGEABLE/checks[]. CP131selfcheck/currentchange/reviewwaived; AUD040qua128/next132, periodicmanual
+audit bắtbuộcCP132. CanonicalnextonlyPLAN, oldcomplete/raw/gates không đổi.

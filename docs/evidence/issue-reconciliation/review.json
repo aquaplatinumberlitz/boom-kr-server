@@ -132,11 +132,11 @@
         "KR-S001",
         "KR-S002"
       ],
-      "known": "CP129/PR200mergedf5ab2df; CP130sameactualR1UDP afterhostremove107 exactingress/endpoint/queue/drain, R2consumer56≠59keydrop/noapply/currentpositive31apply/full13. R3armedack/1226checks/1112raw/852nativegetters; R1failure/R2observergap retained.",
-      "remaining": "GenericUDPgrammar/rosterID/keyreuse256/allreset/authority/auth/fullmatch/gates. Sharedblocker currentmap still unknown.",
-      "next_test": "PLAN sourcefirstCP090/095/122123/currentmapgeometry/known195flags+terrainmodel; sharedblocker between twoactualbomb rays only, nofakewall/List2redefinition.",
+      "known": "CP130PR201merged25b8884; CP131actualopening3,4p2 thenrootB3,3p1/secondaryA2,4p2/bridgeA3,4p2/native2→4→3/both195flagsmatch/diagnostic2,2stays1. R3exit0/703raw849checks, R1collectorerror/R2overshootpartial preserved.",
+      "remaining": "Sharedboxflag timing inrootcallback; modelagreement notglobalimmutable/FIFO/authority. Generalreset/auth/fullmatch/gates remain.",
+      "next_test": "PLAN knownprocessphase readonlytwoflag snapshots atroot/bridge/secondary/return, samegeometry/source. Ifsharedflag0beforesecondarybutraystops, targetcachedquerybranch; CP132manualauditdue.",
       "acceptance": "Epic checklist: linkedscopedtask/evidence+authoritymatrix vàacceptancegate ởPLAN; từngtaskđóng khôngđóngepic/K5/K6a.",
-      "reason": "ScopedUDPmembership case now nativeconfirmed; noqueueclear/auth/fullgateclaim. AUD040through128 next132.",
+      "reason": "Scopedsharedblocker contrast nowanswered; no generalizedlaw/gate. AUD040through128/next132.",
       "sources": [
         "docs/PROTOCOL.md#authority",
         "docs/RESEARCH.md#feature-gaps",
@@ -148,7 +148,8 @@
         "docs/PROTOCOL.md#postbomb-exit-rejoin",
         "docs/RESEARCH.md#gap-disconnect-replacement",
         "docs/PROTOCOL.md#host-battle-exit",
-        "docs/PROTOCOL.md#udp-membership-lifetime"
+        "docs/PROTOCOL.md#udp-membership-lifetime",
+        "docs/PROTOCOL.md#shared-blocker"
       ],
       "evidence": [
         "docs/evidence/current-movement-cycles/README.md",
@@ -157,7 +158,8 @@
         "docs/evidence/rescue-service/README.md",
         "docs/evidence/battle-exit/README.md#cp128",
         "docs/evidence/battle-exit/README.md#cp129",
-        "docs/evidence/udp-generation/README.md#cp130"
+        "docs/evidence/udp-generation/README.md#cp130",
+        "docs/evidence/three-bomb-chain/README.md#cp131"
       ],
       "prs": [
         173,
@@ -182,7 +184,8 @@
         197,
         198,
         199,
-        200
+        200,
+        201
       ],
       "successors": []
     },
@@ -509,6 +512,6 @@
       "successors": []
     }
   ],
-  "as_of_utc": "2026-11-05T12:09:27.211581+00:00",
+  "as_of_utc": "2026-11-05T12:31:45.215640+00:00",
   "limits": "Manual initial issue review has its dated baseline; #14 incrementally updated through CP129. GitHub snapshot has capture UTC only; no semantic/acceptance/gate auto-certification. Completed checkpoint records remain immutable."
 }

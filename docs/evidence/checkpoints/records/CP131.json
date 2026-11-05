@@ -1,0 +1,245 @@
+{
+  "artifacts": [
+    {
+      "name": "CA-r2-login-logout.exe",
+      "sha256": "660447c293ce92270cb9b5815331bca976e8f156366e1fe50b217b6c12e60ce3"
+    },
+    {
+      "name": "CA-r2-stage-social.exe",
+      "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+    },
+    {
+      "name": "CA-r2-stage-social.exe Bcopy",
+      "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+    },
+    {
+      "name": "modO.bin",
+      "sha256": "a08950c833d3acab8281049def7b3dc96b221f107eeda01da3a548e34b91dce5"
+    }
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-11-05T12:33:15.865324+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "Codex solo RE/code/runtime/selfcheck, not independent approval.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Owner explicitly requested solo without Claude review."
+    }
+  },
+  "owner": "Codex",
+  "reviewer": "Codex",
+  "id": "CP131",
+  "previous": "CP130",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-05T12:33:15.865324+00:00",
+  "context_commit": "25b8884fe7ab7a5fbb8ece7a8ddf97b6df683238",
+  "question": "Actualmap sharedbox2,3 seen byroot andsecondary: diagnostic2,2 nativeflag matchesimmutablecandidate ormutableDFS immediateclear? Actualprocessorder/lifetime/control?",
+  "scope": "SourcefirstCP090/095/096/122123/currentmodel/actualmap/VNgameitems/KRdata. Modelselectonegeometry/no newnativebody; threeisolatednormalUIattempts/currentproduction/profile/client/map/fuse6. Openingnativecontrol+rootcascade/all195flagsbothviews/typedpackets/securegetteremulation. No result/fullcycle claim.",
+  "locators": [
+    "BaselineCP130PR201head65cba0f7529424ae01d765c29b48597a6b058e5b/merge25b8884fe7ab7a5fbb8ece7a8ddf97b6df683238/exactCLEANMERGEABLEchecks[].220servertests reusedunchangedsource.",
+    "R1a906e9eb15db81cd83acdf03a7d55a73e2f5d7205fb7d618119657c5a87dcf03/174.406032450s/exit1/671raw/missingimportre afteractualopening118159beforewait158; collectorerrornotnativechainnegative.",
+    "R2862d36a086c1ef0e7caf35f8d9a5a6ecefe7c65e7d66db878b44f8dc83e3788d/190.672498057s/exit1/675raw/openingnative195allmatch/mainA3,3p2butRighttarget160 saw225→280/Upblocked/no secondary.1182getters1170arraychecks/sixflagsnaps.",
+    "R3df2c88e1fdec26264aab425fe7613d62464bd2ff4b7b76f09c0c8effc6db714f/198.045742258s/exit0/errors0/703raw/849checks/18flagsnaps/3546getters3510arraychecks/153packet+6peer153models. OpeningID1A3,4p2clear2,4/3,2/3,6, shared2,3anddiagnostic2,2remain1. ActualmainID2B3,3p1/ID3A2,4p2/ID4A3,4p2/native2→4→3bothviews/laterown3,4noops/shared2,3clear/diagnostic2,2still1/all195match.",
+    "Reusednative159/158E5F450/E5F5FD/E9E660/E9EDFF/EBE21A/EB80E3/52A350/ED1350/map195flags; no newbody/runtimeactorwrites. modOa08950/base400000/RVA=VA−400000/runtimee9bb4766/static660447."
+  ],
+  "findings": [
+    {
+      "summary": "ActualopeningA1183,4p2/native159→158controlall195bothviews matches; 2,4floor opens while2,3/2,2 stayblocked. MainactualB3,3p1/A2,4p2/A3,4p2 allnative159before root158; process2→4→3/callers rootE9EDFF/secondariesEBE21A/full13, laterown3,4 noops.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#shared-blocker",
+      "limits": "ModifiedWine2realAB/pinnedmapaeb57ffd/currentprofile/client/fuse6/sourceunchanged, actualopening3,4p2 thenBroot3,3p1/Asecondary2,4p2/Abridge3,4p2. Nativeorder2→4→3/all195flagsmatchonlygeometry. RejectexplicitmutableDFS counterhypothesis diagnostic2,2 only, notgeneralimmutable/globalBFS/FIFO/nativeboxmutationtiming/originalauthority. R1collectorimportfail/R2inputovershootpartial retained. No19/result/return/fullmatch/K5/K6a/vanilla/LANInternet/gate/terrainforce/clientgamecall. AUD040through128/next132.",
+      "evidence": [
+        "R3-00800",
+        "R3-00005",
+        "R3-00710"
+      ]
+    },
+    {
+      "summary": "Rootafter shared2,3=0/diagnostic2,2=1, all195flags matchcurrentimmutablecandidate bothviews. ExplicitmutableDFS immediateclearcounterhypothesis predicted2,2=0 therefore rejectedforinput. Before/afteronly cannotestablishflagmutationtiming/globalimmutable/BFS/FIFO.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#shared-blocker",
+      "limits": "ModifiedWine2realAB/pinnedmapaeb57ffd/currentprofile/client/fuse6/sourceunchanged, actualopening3,4p2 thenBroot3,3p1/Asecondary2,4p2/Abridge3,4p2. Nativeorder2→4→3/all195flagsmatchonlygeometry. RejectexplicitmutableDFS counterhypothesis diagnostic2,2 only, notgeneralimmutable/globalBFS/FIFO/nativeboxmutationtiming/originalauthority. R1collectorimportfail/R2inputovershootpartial retained. No19/result/return/fullmatch/K5/K6a/vanilla/LANInternet/gate/terrainforce/clientgamecall. AUD040through128/next132.",
+      "evidence": [
+        "R3-00799",
+        "R3-00725",
+        "R3-00800"
+      ]
+    },
+    {
+      "summary": "3546copiednative52A350flaggetters/3510ED1350arrayaddress/18snapshots and153packet+6peer153cases passseparateemulation. Nativecallback/hash/actualgeometry source distinct from modelworldoracle; source/profile/client/map/fuse unchanged throughcleanup.",
+      "source": "kr_static",
+      "status": "confirmed",
+      "method": "emulation",
+      "canonical": "docs/PROTOCOL.md#shared-blocker",
+      "limits": "ModifiedWine2realAB/pinnedmapaeb57ffd/currentprofile/client/fuse6/sourceunchanged, actualopening3,4p2 thenBroot3,3p1/Asecondary2,4p2/Abridge3,4p2. Nativeorder2→4→3/all195flagsmatchonlygeometry. RejectexplicitmutableDFS counterhypothesis diagnostic2,2 only, notgeneralimmutable/globalBFS/FIFO/nativeboxmutationtiming/originalauthority. R1collectorimportfail/R2inputovershootpartial retained. No19/result/return/fullmatch/K5/K6a/vanilla/LANInternet/gate/terrainforce/clientgamecall. AUD040through128/next132.",
+      "evidence": [
+        "R3-00721",
+        "R3-00722",
+        "R3-00732",
+        "R3-00730",
+        "R3-00759"
+      ]
+    },
+    {
+      "summary": "R1missingimportre thenR2postrootRightfeedbackovershoot failedbeforemaincascade, retainedascollector/inputpartialnotnative-negative. R3prestageA2,4/B3,3 beforemainfuse/swaprootownerpower, differencesexplicit/not singlevariablecausalfix. Actual118notinputtargetdecidesgeometry.",
+      "source": "design",
+      "status": "design",
+      "method": "documentation",
+      "canonical": "docs/PROTOCOL.md#shared-blocker",
+      "limits": "ModifiedWine2realAB/pinnedmapaeb57ffd/currentprofile/client/fuse6/sourceunchanged, actualopening3,4p2 thenBroot3,3p1/Asecondary2,4p2/Abridge3,4p2. Nativeorder2→4→3/all195flagsmatchonlygeometry. RejectexplicitmutableDFS counterhypothesis diagnostic2,2 only, notgeneralimmutable/globalBFS/FIFO/nativeboxmutationtiming/originalauthority. R1collectorimportfail/R2inputovershootpartial retained. No19/result/return/fullmatch/K5/K6a/vanilla/LANInternet/gate/terrainforce/clientgamecall. AUD040through128/next132.",
+      "evidence": [
+        "R2-00692",
+        "R3-00756",
+        "R1-00686",
+        "R2-00734"
+      ]
+    }
+  ],
+  "verification": [
+    {
+      "check": "R3isolation/raw/sourcefreeze/actual118159geometry/control/lifetime/native2→4→3/all195flags/laterownnoops/shared-diagnosticcontrast",
+      "result": "pass",
+      "evidence": [
+        "R3-00798",
+        "R3-00800",
+        "R3-00741"
+      ],
+      "limits": "ModifiedWine2realAB/pinnedmapaeb57ffd/currentprofile/client/fuse6/sourceunchanged, actualopening3,4p2 thenBroot3,3p1/Asecondary2,4p2/Abridge3,4p2. Nativeorder2→4→3/all195flagsmatchonlygeometry. RejectexplicitmutableDFS counterhypothesis diagnostic2,2 only, notgeneralimmutable/globalBFS/FIFO/nativeboxmutationtiming/originalauthority. R1collectorimportfail/R2inputovershootpartial retained. No19/result/return/fullmatch/K5/K6a/vanilla/LANInternet/gate/terrainforce/clientgamecall. AUD040through128/next132."
+    },
+    {
+      "check": "Native3546getters3510arraychecks/153packet6peer153/docs/catalog/issues/artifacts/diff/manual2views;220baseline tests reusedunchangedsource",
+      "result": "pass",
+      "evidence": [
+        "R3-00721",
+        "R3-00732",
+        "R3-00730",
+        "R3-00804",
+        "R3-00720",
+        "R3-00729",
+        "R3-00003",
+        "R3-00809"
+      ],
+      "limits": "Model/mechanical/visual checks notglobalnativeauthority/gatecertification."
+    },
+    {
+      "check": "R1collectorimportfail/R2inputovershootbeforesecondary",
+      "result": "observed",
+      "evidence": [
+        "R1-00686",
+        "R2-00691",
+        "R2-00734",
+        "R3-00756"
+      ],
+      "limits": "Notsharedchainnegative; allraw/recipes/scripts unchanged, newout/prefix before eachretry."
+    }
+  ],
+  "evidence": [],
+  "evidence_manifests": [
+    {
+      "path": "docs/evidence/checkpoints/evidence/CP131-shared-blocker-R1.json",
+      "bytes": 179811,
+      "sha256": "499583863276056e2fdc4eb8ed36e7a97cfeb3b1734c484c244357a0d6c3ae5e",
+      "count": 731
+    },
+    {
+      "path": "docs/evidence/checkpoints/evidence/CP131-shared-blocker-R2.json",
+      "bytes": 181437,
+      "sha256": "2efd87f5b26188c4f63c66c516accb456fb8b97900305ef9a2a1d788f87e10c0",
+      "count": 737
+    },
+    {
+      "path": "docs/evidence/checkpoints/evidence/CP131-shared-blocker-R3.json",
+      "bytes": 199686,
+      "sha256": "8ae23572a42b18dccb31215ed88302001e65c008a7088a9d305174e199558d64",
+      "count": 809
+    }
+  ],
+  "delta": {
+    "added": [
+      "Actualsharedboxgeometry/control/native195flags discriminates explicitmutableDFS hypothesis, nativechainorder2→4→3."
+    ],
+    "corrected": [
+      "Sharedblocker unknown nowresolvedonlygeometry, notgeneralnativeimmutable/FIFO/mutationtiming.",
+      "CP123pendingfooter correctedPR194merged;CP130PR201merged/currentdocs/issues synced; oldrecordsimmutable.",
+      "OSfeedbacktarget160 wasnotactualcell, R2values225→280/preservedpartial; prestage variants disclosed."
+    ],
+    "superseded": [
+      "NEXT-SHARED-BLOCKER closedscopedinput; NEXT-SHARED-FLAG-TIMING active andperiodicCP132auditdue."
+    ]
+  },
+  "blockers": [
+    "Sharedboxflag mutationtiming withinrootcascade notread; currentbefore/after agreement cannotchoose deferredclear/snapshot/localbranch mechanism.",
+    "Generalmoving/firstbombstop/FIFO/allmaps/fullvalidator/auth/authority/fullmatch/vanilla/LANInternet/gates remain."
+  ],
+  "next_steps": [
+    {
+      "id": "NEXT-SHARED-BLOCKER",
+      "task": "KRE-005b",
+      "state": "closed",
+      "action": "CP131actualopening/rootB/sharedgeometry/nativeprocess/all195flags/diagnosticcontrast scopedproof.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-SHARED-FLAG-TIMING",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "PLAN samegeometry/read-onlytwoflags at knownroot/bridge/secondaryprocess/return; iff sharedflagalready0yetstop tracecachedquerybranch. No broadscan/newstateforce; CP132manualperiodic auditmandatory/readcanonical+raw, AUD041expected/cadence132→136.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    }
+  ],
+  "docs_sync": [
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "CP131scope/geometry/control/nativeflags/modelhypothesislimits/partials/nexttiming/audit synced, oldcomplete/gates unchanged."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "CP131scope/geometry/control/nativeflags/modelhypothesislimits/partials/nexttiming/audit synced, oldcomplete/gates unchanged."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "updated",
+      "reason": "CP131scope/geometry/control/nativeflags/modelhypothesislimits/partials/nexttiming/audit synced, oldcomplete/gates unchanged."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "updated",
+      "reason": "CP131scope/geometry/control/nativeflags/modelhypothesislimits/partials/nexttiming/audit synced, oldcomplete/gates unchanged."
+    },
+    {
+      "path": "docs/features.json",
+      "state": "updated",
+      "reason": "CP131scope/geometry/control/nativeflags/modelhypothesislimits/partials/nexttiming/audit synced, oldcomplete/gates unchanged."
+    },
+    {
+      "path": "docs/COVERAGE.md",
+      "state": "updated",
+      "reason": "CP131scope/geometry/control/nativeflags/modelhypothesislimits/partials/nexttiming/audit synced, oldcomplete/gates unchanged."
+    },
+    {
+      "path": "docs/evidence/three-bomb-chain/README.md",
+      "state": "updated",
+      "reason": "CP131scope/geometry/control/nativeflags/modelhypothesislimits/partials/nexttiming/audit synced, oldcomplete/gates unchanged."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/review.json",
+      "state": "updated",
+      "reason": "CP131scope/geometry/control/nativeflags/modelhypothesislimits/partials/nexttiming/audit synced, oldcomplete/gates unchanged."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
+      "state": "updated",
+      "reason": "CP131scope/geometry/control/nativeflags/modelhypothesislimits/partials/nexttiming/audit synced, oldcomplete/gates unchanged."
+    }
+  ]
+}

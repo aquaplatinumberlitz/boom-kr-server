@@ -1,7 +1,7 @@
 {
   "schema": "kre-feature-index-v1",
   "build": "KR00967",
-  "as_of": "CP130",
+  "as_of": "CP131",
   "sources": {
     "plan": "docs/PLAN.md",
     "contract": "docs/PROTOCOL.md",
@@ -1473,7 +1473,8 @@
           "docs/evidence/promoted-outcome/README.md",
           "docs/evidence/three-bomb-chain/README.md#cp122",
           "docs/evidence/battle-exit/README.md#cp127",
-          "docs/evidence/battle-exit/README.md#cp128"
+          "docs/evidence/battle-exit/README.md#cp128",
+          "docs/evidence/three-bomb-chain/README.md#cp131"
         ]
       },
       "coverage": {
@@ -1528,7 +1529,8 @@
               "docs/evidence/promoted-outcome/README.md",
               "docs/PROTOCOL.md#recursive-chain",
               "docs/PROTOCOL.md#battle-exit-pending-bomb",
-              "docs/PROTOCOL.md#postbomb-exit-rejoin"
+              "docs/PROTOCOL.md#postbomb-exit-rejoin",
+              "docs/PROTOCOL.md#shared-blocker"
             ]
           },
           "windows_original": {
@@ -1585,7 +1587,8 @@
             "docs/evidence/promoted-outcome/README.md",
             "docs/PROTOCOL.md#recursive-chain",
             "docs/PROTOCOL.md#battle-exit-pending-bomb",
-            "docs/PROTOCOL.md#postbomb-exit-rejoin"
+            "docs/PROTOCOL.md#postbomb-exit-rejoin",
+            "docs/PROTOCOL.md#shared-blocker"
           ]
         },
         "gate": {
@@ -1640,7 +1643,8 @@
           "docs/evidence/current-movement-cycles/README.md",
           "docs/evidence/promoted-outcome/README.md",
           "docs/evidence/three-bomb-chain/README.md#cp122",
-          "docs/evidence/three-bomb-chain/README.md#cp123"
+          "docs/evidence/three-bomb-chain/README.md#cp123",
+          "docs/evidence/three-bomb-chain/README.md#cp131"
         ]
       },
       "coverage": {
@@ -1697,7 +1701,8 @@
               "docs/evidence/current-movement-cycles/README.md",
               "docs/evidence/promoted-outcome/README.md",
               "docs/PROTOCOL.md#recursive-chain",
-              "docs/PROTOCOL.md#recursive-chain-cycles"
+              "docs/PROTOCOL.md#recursive-chain-cycles",
+              "docs/PROTOCOL.md#shared-blocker"
             ]
           },
           "windows_original": {
@@ -1751,7 +1756,8 @@
             "docs/evidence/current-movement-cycles/README.md",
             "docs/evidence/promoted-outcome/README.md",
             "docs/PROTOCOL.md#recursive-chain",
-            "docs/PROTOCOL.md#recursive-chain-cycles"
+            "docs/PROTOCOL.md#recursive-chain-cycles",
+            "docs/PROTOCOL.md#shared-blocker"
           ]
         },
         "gate": {
@@ -3425,7 +3431,8 @@
           "docs/evidence/battle-exit/README.md#cp127",
           "docs/evidence/battle-exit/README.md#cp128",
           "docs/evidence/battle-exit/README.md#cp129",
-          "docs/evidence/udp-generation/README.md#cp130"
+          "docs/evidence/udp-generation/README.md#cp130",
+          "docs/evidence/three-bomb-chain/README.md#cp131"
         ]
       },
       "coverage": {
@@ -3531,7 +3538,8 @@
               "docs/PROTOCOL.md#battle-exit-pending-bomb",
               "docs/PROTOCOL.md#postbomb-exit-rejoin",
               "docs/PROTOCOL.md#host-battle-exit",
-              "docs/PROTOCOL.md#udp-membership-lifetime"
+              "docs/PROTOCOL.md#udp-membership-lifetime",
+              "docs/PROTOCOL.md#shared-blocker"
             ]
           },
           "windows_original": {
@@ -3688,7 +3696,8 @@
             "docs/PROTOCOL.md#battle-exit-pending-bomb",
             "docs/PROTOCOL.md#postbomb-exit-rejoin",
             "docs/PROTOCOL.md#host-battle-exit",
-            "docs/PROTOCOL.md#udp-membership-lifetime"
+            "docs/PROTOCOL.md#udp-membership-lifetime",
+            "docs/PROTOCOL.md#shared-blocker"
           ]
         },
         "gate": {
