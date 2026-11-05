@@ -1,7 +1,7 @@
 {
   "schema": "kre-feature-index-v1",
   "build": "KR00967",
-  "as_of": "CP111",
+  "as_of": "CP112",
   "sources": {
     "plan": "docs/PLAN.md",
     "contract": "docs/PROTOCOL.md",
@@ -1762,7 +1762,8 @@
           "docs/evidence/terrain-tcp-guard-cycles/README.md",
           "docs/evidence/current-movement-cycles/README.md",
           "docs/evidence/promoted-battle-cycles/README.md",
-          "docs/evidence/promoted-outcome/README.md"
+          "docs/evidence/promoted-outcome/README.md",
+          "docs/evidence/firstseen-admission/README.md"
         ]
       },
       "coverage": {
@@ -1812,7 +1813,8 @@
               "docs/evidence/terrain-tcp-guard-cycles/README.md",
               "docs/evidence/current-movement-cycles/README.md",
               "docs/evidence/promoted-battle-cycles/README.md",
-              "docs/evidence/promoted-outcome/README.md"
+              "docs/evidence/promoted-outcome/README.md",
+              "docs/evidence/firstseen-admission/README.md"
             ]
           },
           "windows_original": {
@@ -1859,7 +1861,8 @@
             "docs/evidence/terrain-tcp-guard-cycles/README.md",
             "docs/evidence/current-movement-cycles/README.md",
             "docs/evidence/promoted-battle-cycles/README.md",
-            "docs/evidence/promoted-outcome/README.md"
+            "docs/evidence/promoted-outcome/README.md",
+            "docs/evidence/firstseen-admission/README.md"
           ]
         },
         "gate": {
@@ -2111,7 +2114,8 @@
           "docs/evidence/peer21-ending-order/README.md",
           "docs/evidence/ending34-state-boundary/README.md",
           "docs/evidence/ending-udp-state-apply/README.md",
-          "docs/evidence/current-movement-cycles/README.md"
+          "docs/evidence/current-movement-cycles/README.md",
+          "docs/evidence/firstseen-admission/README.md"
         ]
       },
       "coverage": {
@@ -2156,7 +2160,8 @@
               "docs/evidence/peer21-ending-order/README.md",
               "docs/evidence/ending34-state-boundary/README.md",
               "docs/evidence/ending-udp-state-apply/README.md",
-              "docs/evidence/current-movement-cycles/README.md"
+              "docs/evidence/current-movement-cycles/README.md",
+              "docs/evidence/firstseen-admission/README.md"
             ]
           },
           "windows_original": {
@@ -2183,7 +2188,9 @@
             "docs/PROTOCOL.md#result-freshness-guard",
             "server/test_result_freshness.py",
             "docs/PROTOCOL.md#drained-result-local-clear",
-            "docs/PROTOCOL.md#peer21-ending-order"
+            "docs/PROTOCOL.md#peer21-ending-order",
+            "docs/PROTOCOL.md#death-envelope-admission",
+            "server/test_death_envelope.py"
           ],
           "delivery": "via_pr"
         },
@@ -2203,7 +2210,8 @@
             "docs/evidence/peer21-ending-order/README.md",
             "docs/evidence/ending34-state-boundary/README.md",
             "docs/evidence/ending-udp-state-apply/README.md",
-            "docs/evidence/current-movement-cycles/README.md"
+            "docs/evidence/current-movement-cycles/README.md",
+            "docs/evidence/firstseen-admission/README.md"
           ]
         },
         "gate": {
@@ -2887,7 +2895,8 @@
           "docs/evidence/ending-udp-state-apply/README.md",
           "docs/evidence/current-movement-cycles/README.md",
           "docs/evidence/promoted-battle-cycles/README.md",
-          "docs/evidence/promoted-outcome/README.md"
+          "docs/evidence/promoted-outcome/README.md",
+          "docs/evidence/firstseen-admission/README.md"
         ]
       },
       "coverage": {
@@ -2948,7 +2957,8 @@
               "docs/evidence/current-movement-cycles/README.md",
               "docs/evidence/promoted-battle-cycles/README.md",
               "docs/evidence/promoted-outcome/README.md",
-              "docs/PROTOCOL.md#receiver-prepost"
+              "docs/PROTOCOL.md#receiver-prepost",
+              "docs/evidence/firstseen-admission/README.md"
             ]
           },
           "windows_original": {
@@ -3013,7 +3023,8 @@
             "docs/evidence/ending-udp-state-apply/README.md",
             "docs/evidence/current-movement-cycles/README.md",
             "docs/evidence/promoted-battle-cycles/README.md",
-            "docs/evidence/promoted-outcome/README.md"
+            "docs/evidence/promoted-outcome/README.md",
+            "docs/evidence/firstseen-admission/README.md"
           ]
         },
         "gate": {
@@ -3252,7 +3263,8 @@
           "docs/evidence/current-movement-cycles/README.md",
           "docs/evidence/host-normal-back/README.md",
           "docs/evidence/promoted-battle-cycles/README.md",
-          "docs/evidence/promoted-outcome/README.md"
+          "docs/evidence/promoted-outcome/README.md",
+          "docs/evidence/firstseen-admission/README.md"
         ]
       },
       "coverage": {
@@ -3337,7 +3349,8 @@
               "docs/evidence/current-movement-cycles/README.md",
               "docs/evidence/host-normal-back/README.md",
               "docs/evidence/promoted-battle-cycles/README.md",
-              "docs/evidence/promoted-outcome/README.md"
+              "docs/evidence/promoted-outcome/README.md",
+              "docs/evidence/firstseen-admission/README.md"
             ]
           },
           "windows_original": {
@@ -3409,7 +3422,9 @@
             "tools/probe_channel_identity.py",
             "tools/test_probe_channel_identity.py",
             "server/test_host_back_rejoin.py",
-            "docs/PROTOCOL.md#host-normal-back"
+            "docs/PROTOCOL.md#host-normal-back",
+            "docs/PROTOCOL.md#death-envelope-admission",
+            "server/test_death_envelope.py"
           ]
         },
         "integration": {
@@ -3465,7 +3480,8 @@
             "docs/evidence/current-movement-cycles/README.md",
             "docs/evidence/host-normal-back/README.md",
             "docs/evidence/promoted-battle-cycles/README.md",
-            "docs/evidence/promoted-outcome/README.md"
+            "docs/evidence/promoted-outcome/README.md",
+            "docs/evidence/firstseen-admission/README.md"
           ]
         },
         "gate": {
@@ -3501,7 +3517,8 @@
         "question": "docs/RESEARCH.md#gap-service-hardening",
         "plan": "docs/PLAN.md#current-order",
         "evidence": [
-          "docs/evidence/udp-freshness/README.md"
+          "docs/evidence/udp-freshness/README.md",
+          "docs/evidence/firstseen-admission/README.md"
         ]
       },
       "coverage": {
@@ -3526,7 +3543,9 @@
         "runtime": {
           "wine_diagnostic_copy": {
             "state": "unknown",
-            "refs": []
+            "refs": [
+              "docs/evidence/firstseen-admission/README.md"
+            ]
           },
           "windows_original": {
             "state": "unknown",
@@ -3548,7 +3567,9 @@
         },
         "integration": {
           "state": "unknown",
-          "refs": []
+          "refs": [
+            "docs/evidence/firstseen-admission/README.md"
+          ]
         },
         "gate": {
           "id": "K7",

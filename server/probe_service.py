@@ -25,6 +25,28 @@ from server.terrain_profile import load_terrain
 from server.probe_room import ProbeRoom
 
 
+def supported_event_blob(body, subtype):
+    """Decode the measured uncompressed 17/19 variant, before admission.
+
+    CP023 and current native captures establish these bounded envelopes.
+    The inner fields remain opaque; this is not a life-state validator.
+    Other serialization variants require their own compatibility evidence.
+    """
+    size = {17: 14, 19: 11}[subtype]
+    name = 'trap' if subtype == 17 else 'death'
+    if len(body) != 18 + size or codec.read_fields(body[14:18], [4])[0] != size:
+        raise ValueError(f'unsupported {name} blob')
+    raw, offset = bytearray(), 0
+    while offset < size:
+        width = 4 if size - offset >= 4 else 2 if size - offset >= 2 else 1
+        raw.extend(codec.read_fields(body[18 + offset:18 + offset + width], [width])[0]
+                   .to_bytes(width, 'little'))
+        offset += width
+    if raw[:6] != b'\x18' + struct.pack('<I', size - 5) + b'\x00':
+        raise ValueError(f'unsupported {name} envelope')
+    return bytes(raw)
+
+
 class FixtureProfile:
     def __init__(self, path: Path):
         self.data = json.loads(path.read_text())
@@ -554,27 +576,16 @@ class ProbeService:
         subtype, slot, x, y, client_tick, actor_field = codec.read_fields(body[:14], [1, 1, 2, 2, 4, 4])
         if slot != ROLE_SLOTS[event['role']]:
             raise ValueError('event slot does not match connection')
+        if subtype in (17, 19):
+            raw = supported_event_blob(body, subtype)
+            payload = (body[:6] + codec.pack_fields([int.from_bytes(raw[10:14], 'little')], [4])
+                       if subtype == 17 else body[:6] + body[14:])
         report = {'role': event['role'], 'round': self.room.generation, 'subtype': subtype,
                   'slot': slot, 'seq': sequence, 'monotonic_ns': time.monotonic_ns(),
                   'payload_hex': body.hex(), 'frame_sha256': hashlib.sha256(frame).hexdigest(),
                   'client_tick': client_tick, 'actor_field': actor_field,
                   'body_sha256': hashlib.sha256(body).hexdigest()}
         self.state['event_reports'].append(report)
-        if subtype in (17, 19):
-            if subtype == 17:
-                length = codec.read_fields(body[14:18], [4])[0]
-                if length != 14 or len(body) != 32:
-                    raise ValueError('unsupported trap blob')
-                raw, offset = bytearray(), 0
-                while offset < length:
-                    width = 4 if length - offset >= 4 else 2 if length - offset >= 2 else 1
-                    raw.extend(codec.read_fields(body[18 + offset:18 + offset + width], [width])[0].to_bytes(width, 'little'))
-                    offset += width
-                if raw[:6] != bytes.fromhex('180900000000'):
-                    raise ValueError('unsupported trap envelope')
-                payload = body[:6] + codec.pack_fields([int.from_bytes(raw[10:14], 'little')], [4])
-            else:
-                payload = body[:6] + body[14:]
         # Diagnostic policy: compare only reports on this connection. The native
         # CMainSystem counter continues through Start; do not clear this cursor
         # with round markers or compare it with another peer/124's cached tick.

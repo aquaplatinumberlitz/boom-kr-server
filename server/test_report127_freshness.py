@@ -43,9 +43,8 @@ class Report127FreshnessTests(unittest.TestCase):
             body += codec.pack_fields([int.from_bytes(blob[i:i + 4], 'little')
                                        for i in range(0, len(blob), 4)], [4, 4, 4, 2])
         elif subtype == 19:
-            # This test does not establish the death-tail contract. Admission
-            # preserves the existing service's opaque-tail behavior.
-            body += b'fixture-tail'
+            # Measured uncompressed death envelope; inner life semantics stay opaque.
+            body += codec.pack_fields([11, int.from_bytes(bytes.fromhex('18060000'), 'little'), 0, 0, 0], [4, 4, 4, 2, 1])
         return body
 
     def receive(self, body, event=None, seq=100):

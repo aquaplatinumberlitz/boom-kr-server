@@ -26,7 +26,7 @@ class PickupEligibilityTests(unittest.TestCase):
         if subtype==17:
             blob=bytes.fromhex('180900000000')+struct.pack('<II',0,7)
             body+=codec.pack_fields([14],[4])+codec.pack_fields([int.from_bytes(blob[i:i+min(4,len(blob)-i)],'little') for i in range(0,len(blob),4)],[4,4,4,2])
-        elif subtype==19:body+=b'fixture-tail'
+        elif subtype==19:body+=codec.pack_fields([11, int.from_bytes(bytes.fromhex('18060000'), 'little'), 0, 0, 0], [4, 4, 4, 2, 1])
         frame=codec.encode(bytes(37),127,body,103);self.s.receive_channel(event,frame,103,body)
     def test_trap_and_death_reject_before_consuming_claim(self):
         for subtype in [17,19]:

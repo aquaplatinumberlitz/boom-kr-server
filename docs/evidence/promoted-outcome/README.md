@@ -2,7 +2,7 @@
 
 KRE-071/[#176](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/176), baseline CP108/
 [PR177](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/177) `985a01db1fa2db339d1f4e51008c719ad9188547`.
-Codex solo/tự kiểm/[review waived](../checkpoints/review-waiver.json), CP109 chờ PR.
+Codex solo/tự kiểm/[review waived](../checkpoints/review-waiver.json), Snapshot CP109 khi ghi chờPR; đãmerge PR179/8f3ea2f.
 [Contract/limits](../../PROTOCOL.md#promoted-outcome), [gap](../../RESEARCH.md#gap-result-return),
 [thứ tự duy nhất](../../PLAN.md#current-order). Cùng checkpoint có [issue reconciliation](../issue-reconciliation/README.md).
 AUD034 đối chiếu issue qua109; periodic AUD033 qua108, kế112. Không nâng gate.
@@ -57,7 +57,7 @@ Fullauth/codec/authority/fullvalidator/allreset/vanilla/fullmatch/K5/K6a/LANInte
 ## CP110 — Secondreturn UI/Ready đã kiểm, không nâng toàn integration
 
 Baseline PR179/merge `8f3ea2f987c9ef7428898502294d75415d048828`; CP109/PR179 là lịch sử đãmerge,
-record complete giữ nguyên. Codex solo/tự kiểm/waived; CP110 chờPR, audit kếCP112.
+record complete giữ nguyên. Codex solo/tự kiểm/waived; Snapshot CP110 khi ghi chờPR; đãmerge PR180/7c5d4ea.
 Raw `local/research/codex/return2-visual-r{1,2,3}/`; recipes exact, originalseals1232+1116+2292=4640files.
 `r3/return2-verification.json` SHA/runtime/image/phase/actual95/ownerPID; `return2-contact.png` đãxem
 thủcông cảhai phòng ởunfocused4/12, sauReadycảhaihiệnready. Contractchỉở [PROTOCOL](../../PROTOCOL.md#return2-visual),
@@ -86,4 +86,4 @@ Rawreceiver/runtime giữnguyênởreturn2-visual-r3; analysismớiở`local/res
 vẫnfail đúng statistic của nó; callbackcuốicóafter219 vàfreshsample294 giải missingprogress.
 Firstnewanalysis vẫnđòideferredvariant vàfail; `analyze_prepost_initial.py`/failure giữ, finalquestion
 chỉđòi4phaseprepostprogress+existingpercallbranch checks, report4snap/0nonzerodeferred, khônggiả
-coverageCP106branch. CP110completehistory/evidence unchanged. CP111selfcheck/chờPR, auditperiodic112.
+coverageCP106branch. CP110completehistory/evidence unchanged. Snapshot CP111 khi ghi selfcheck/chờPR; đãmerge PR181/248e118. Thứ tự hiện hành chỉPLAN.

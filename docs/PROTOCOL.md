@@ -1969,7 +1969,7 @@ locator/trace và trạng thái từng ô; những vai trò không nêu dưới 
 | Explode/chain | CP033 một owner; CP064 [power1/cách hai ô](#mixed-owner-chain), CP071 [power2 ngoài tầm/feedback chưa118](#mixed-owner-power) giữ partial lịch sử; CP081 [power2/distance2 mixed-owner](#mixed-input), CP084 [ba bom fork hai vòng](#three-bomb-chain); CP094 [optional pinned terrain](#terrain-policy), CP095 [actualbox/laterfreshpair](#opposite-box-control) có native callback/195flag proof | [CP096adjacent1cell](#adjacent-owner-control) đã đo; recursive/sharedblocker/FIFO/firstbombstop tổng quát/race và authority server gốc chưa đủ |
 | Block destroy/item reveal | CP032 nativecontract; CP068 [currentservice/list2/reportgate/effect/reset](#current-hidden-items), CP092 [195flags/seedreset](#map-flags-snapshot), CP094/095 [pinnedpolicy/nativeboxclear](#terrain-policy) cảhai view | Drop algorithm gốc/fullvalidator, genericclass/map và transport khác còn thiếu; không dùng report142 làm worldoracle |
 | Item placement/pickup | CP030 nhặt/tranh index; CP031/032 stat/itemẩn; CP045 [bảng nhóm/Roller/MaxPower hai view/reset](#item-families) | CP042 có [old165/index reuse](#item-generation); runtime tại max, KRspeed→px/s/TTL/activevariants, drop/toàn124validator/generation/reset còn thiếu; CP062 [winner đảo trên actual tranh index](#current-pickup-race) đã có scope riêng |
-| Trap/death | CP029/036; CP037 kim và tranh chấp cứu/diệt; [kim](#needle-selfescape), [precedence](#contact-precedence) | CP063 [guard stale/duplicate](#report127-freshness) là policy hẹp; CP075 [TCPsame/old17,19](#current-tcp-replay) đã đo; fullvalidator/firstseen/forgedforward/generation/variants/result21 vẫn thiếu |
+| Trap/death | CP029/036; CP037 kim và tranh chấp cứu/diệt; [kim](#needle-selfescape), [precedence](#contact-precedence) | CP063 [guard stale/duplicate](#report127-freshness) là policy hẹp; CP075 [TCPsame/old17,19](#current-tcp-replay) đã đo; [CP112](#death-envelope-admission) thêm structural17/19admission; semanticfirstseen/forgedforward/generation/variants/result21 vẫn thiếu |
 | Result/reset | CP039 hai vòng statepeer/result/21/return và reset field hẹp; CP044 [timer ở EOF và vòng B/C mới](#abort-timer); CP080 [hai chu kỳ sau rejoin](#ready-input), CP082 [mixed-owner survivor](#mixed-cycles), CP083 [all-dead rank2/2/storage/UI](#all-dead-result), mỗi run/scope riêng; CP100 [optional result freshness](#result-freshness-guard), CP102 [drain/local21clear/peerblocker](#drained-result-local-clear), CP104 [native175/34/state3](#ending34-state-boundary), CP105 [exactendingUDPqueue](#ending-udp-state-apply), CP106 [same-run selected180boundaries](#current-movement-cycles) | CP041 có [payload cũ khi ID reuse](#round-generation); arbitration/toàn generation/entity/timer/peer/seq không rò vẫn mở; phân biệt run chờ sai origin với ca hoàn tất |
 | Room lifecycle | CP034 leave/promotion/EOF/return; CP035 rejoin/Ready; CP040 chủ B/C Start; CP044 [B/C bom/death/result/return sau abort](#abort-timer) | Bầu chủ/giữ ID-slot/forfeit là policy stub; guest EOF trả A về phòng/xóa B đã đo riêng; CP050 có [service EOF/cleanup](#service-eof); CP051 có [C mới/Start B trong service](#service-replacement); CP052 [guest setup EOF](#setup-eof), CP053 [host với peer chưa map](#host-setup), CP054 [C trước vòng đầu](#prestart-replacement), CP072 [preclock forfeit/return](#preclock-eof), CP074 [native107/IDclear và UI](#preclock-cleanup), CP076 [Back86/emptyroomrecreate cùng channel](#back86-membership), CP107 [currentservicehostBack/promotedrejoin tới clock](#host-normal-back) đã đo; reconnect cùng account/disconnect variants/toàn reset còn mở |
 | Peer lifecycle | CP027 actual99→153; CP045–047 [oldUDP actor/keyguard/endpointcontrol](#udp-generation), CP070 [transport cut hai chiều](#current-udp-causality) | CP048 [service fixture](#probe-service) đã tích hợp key policy hẹp; low8reuse/roster/UDPtype khác/fullgrammar/reliability/relay/reset còn mở. Không coi đổi cổng riêng lẻ là freshness guard hoặc keybyte là auth |
@@ -4102,3 +4102,37 @@ OldCP106 cócảhai branch vẫn giữriêng; oldstrict/CP110failure và firstne
 failure giữ nguyên. Newscopedproof không báo oldstrictpass hay chứngminh toàninterpolationlaw.
 CùngrawCP110cóUI/native95/110 vàcurrentcoordinate4pha theođịnhnghĩa mới, khônglấytoạđộ từảnh hoặc
 hai runriêng. Vẫn khôngfullvalidator/auth/authority/allreset/vanilla/K5/K6a/fullmatch/LANInternet.
+
+
+<a id="death-envelope-admission"></a>
+### Envelope report17/19 trước admission — CP112
+
+[Recipe/hash/control/runtime](evidence/firstseen-admission/README.md). Tái dùng CP023fullblob,
+CP063connectioncursor, CP062claim/actualrace, CP067key/serial, CP075/085TCP và CP110capture;
+VN chỉ report/confirm pattern, không portnumeric. **kr_static/emulation** native14EB410 đối chứng cấu trúc;
+**design/implementation** guard thuộc emulator, không xác thực chết hoặc server gốc.
+
+C→S127 subtype19 variant đãđo có commonprefix14 +typedu32N=11 +raw11 obfuscated4/4/2/1;
+raw=`18 06 00 00 00 00` +inner5byte. Đã có inner `0000000000` và`ffffffff00`, không đặt nghĩa enum.
+Subtype17 giữN14/header`18 09 00 00 00 00`/inner8. Helper `supported_event_blob` kiểm exactbody29/32,
+N/header trước logacceptedreport/cursor/marker/death/forward; inner tiếp tục opaque. Gói19 hợp lệ
+được forward nguyên tail trong170 sauprefix6,17 giữ translationu32 từraw+10.
+
+Baseline nhận prefix-only/truncated/lengthsai và setdeath/phát170. NativeframeCRC vẫn hợp vì góiđộtbiến
+đãencode lại, nhưng nativeblobreader readerror54=1. Native extra1 đọc29/30/lỗi0; service exactbodyguard
+là policyvariant hỗtrợ, không native-rejectionclaim. Compressed/otherenvelope variant chưa kiểm.
+Error mới đi theo service exceptionclose/abort, không silence-drop trong trận hoặc synthesize death.
+Unit/directdispatcher có thể tiếp sauexception chỉ làmodel, không mô tả lifecycle socket thật.
+
+**kr_runtime/confirmed hẹp** đối chứngcopyWine/sourceguard mới: run438,200581995s/SHA399d12f6…,
+profile47/ExVillage01/Bchief/Aguest/sameTCP. 4actual17/2actual19/12entity+12complete158/view,
+2native121clock175180/2outcomesreset, postreturn2actualA95seq823→native110cảhai/errors0/UIready.
+Guard malformed chỉ kiểm offline; khôngclaimnativeclientđãphátmalformed. 33oldcaptures qua guard,
+161server tests/34matrixjoins/4socketcases/5nativeblobcases riêng, không cộng thànhauthorityproof.
+
+**Phần chưa có:** validfirstseen19 vẫn setdeath mà không trustedlocation/life-state;124 dùng boundslot/
+context/exactcatalog/currentkey/oneconsume vàreported-ineligible, khôngactorposition/inventoryauth.
+Guardtrước đây đã có các điều kiện này nên không RE lại. Report1/18/0 vàkim/rescue CP036–038 đãphục hồi
+nhưng currentservice chưaforward hoặcconsumeinventory choescape, pickupblock17/19chỉxóa ởStart.
+Không tự clear bằng21 hoặc portVNopcode. Bước kế ởRESEARCH/PLAN làsource-firstactualinventory/
+escapepair/peercontrol trước chính sách mới; fullauth/codec/authority/gates/LANInternet vẫn mở.
