@@ -1,7 +1,7 @@
 {
   "schema": "kre-feature-index-v1",
   "build": "KR00967",
-  "as_of": "CP125",
+  "as_of": "CP126",
   "sources": {
     "plan": "docs/PLAN.md",
     "contract": "docs/PROTOCOL.md",
@@ -994,7 +994,8 @@
           "docs/evidence/promoted-outcome/README.md",
           "docs/evidence/rescue-service/README.md#cp117",
           "docs/evidence/rescue-service/README.md#cp119",
-          "docs/evidence/battle-exit/README.md"
+          "docs/evidence/battle-exit/README.md",
+          "docs/evidence/battle-exit/README.md#cp126"
         ]
       },
       "coverage": {
@@ -1042,7 +1043,8 @@
               "docs/evidence/promoted-outcome/README.md",
               "docs/PROTOCOL.md#rescue-return-start-guard",
               "docs/PROTOCOL.md#rescue-slot-refresh",
-              "docs/PROTOCOL.md#normal-battle-exit"
+              "docs/PROTOCOL.md#normal-battle-exit",
+              "docs/PROTOCOL.md#battle-exit-rejoin"
             ]
           },
           "windows_original": {
@@ -1099,7 +1101,8 @@
             "docs/evidence/host-normal-back/README.md",
             "docs/evidence/promoted-battle-cycles/README.md",
             "docs/evidence/promoted-outcome/README.md",
-            "docs/PROTOCOL.md#normal-battle-exit"
+            "docs/PROTOCOL.md#normal-battle-exit",
+            "docs/PROTOCOL.md#battle-exit-rejoin"
           ]
         },
         "gate": {
@@ -2984,7 +2987,8 @@
           "docs/evidence/rescue-service/README.md#cp120",
           "docs/evidence/rescue-service/README.md#cp121",
           "docs/evidence/three-bomb-chain/README.md#cp123",
-          "docs/evidence/life-admission/README.md"
+          "docs/evidence/life-admission/README.md",
+          "docs/evidence/battle-exit/README.md#cp126"
         ]
       },
       "coverage": {
@@ -3054,7 +3058,8 @@
               "docs/PROTOCOL.md#rescue-round2-feedback",
               "docs/PROTOCOL.md#rescue-two-results",
               "docs/PROTOCOL.md#recursive-chain-cycles",
-              "docs/PROTOCOL.md#death-lifecycle-policy"
+              "docs/PROTOCOL.md#death-lifecycle-policy",
+              "docs/PROTOCOL.md#battle-exit-rejoin"
             ]
           },
           "windows_original": {
@@ -3125,7 +3130,8 @@
             "docs/PROTOCOL.md#needle-round-reset",
             "docs/PROTOCOL.md#rescue-two-results",
             "docs/PROTOCOL.md#recursive-chain-cycles",
-            "docs/PROTOCOL.md#death-lifecycle-policy"
+            "docs/PROTOCOL.md#death-lifecycle-policy",
+            "docs/PROTOCOL.md#battle-exit-rejoin"
           ]
         },
         "gate": {
@@ -3172,7 +3178,8 @@
           "docs/evidence/guest-back-rejoin/README.md",
           "docs/evidence/tcp-guard-cycles/README.md",
           "docs/evidence/host-normal-back/README.md",
-          "docs/evidence/battle-exit/README.md"
+          "docs/evidence/battle-exit/README.md",
+          "docs/evidence/battle-exit/README.md#cp126"
         ]
       },
       "coverage": {
@@ -3217,7 +3224,8 @@
               "docs/evidence/guest-back-rejoin/README.md",
               "docs/evidence/tcp-guard-cycles/README.md",
               "docs/evidence/host-normal-back/README.md",
-              "docs/PROTOCOL.md#normal-battle-exit"
+              "docs/PROTOCOL.md#normal-battle-exit",
+              "docs/PROTOCOL.md#battle-exit-rejoin"
             ]
           },
           "windows_original": {
@@ -3275,7 +3283,8 @@
             "docs/evidence/guest-back-rejoin/README.md",
             "docs/evidence/tcp-guard-cycles/README.md",
             "docs/evidence/host-normal-back/README.md",
-            "docs/PROTOCOL.md#normal-battle-exit"
+            "docs/PROTOCOL.md#normal-battle-exit",
+            "docs/PROTOCOL.md#battle-exit-rejoin"
           ]
         },
         "gate": {
@@ -3379,7 +3388,8 @@
           "docs/evidence/three-bomb-chain/README.md#cp122",
           "docs/evidence/three-bomb-chain/README.md#cp123",
           "docs/evidence/life-admission/README.md",
-          "docs/evidence/battle-exit/README.md"
+          "docs/evidence/battle-exit/README.md",
+          "docs/evidence/battle-exit/README.md#cp126"
         ]
       },
       "coverage": {
@@ -3480,7 +3490,8 @@
               "docs/PROTOCOL.md#recursive-chain",
               "docs/PROTOCOL.md#recursive-chain-cycles",
               "docs/PROTOCOL.md#death-lifecycle-policy",
-              "docs/PROTOCOL.md#normal-battle-exit"
+              "docs/PROTOCOL.md#normal-battle-exit",
+              "docs/PROTOCOL.md#battle-exit-rejoin"
             ]
           },
           "windows_original": {
@@ -3630,7 +3641,8 @@
             "docs/PROTOCOL.md#recursive-chain",
             "docs/PROTOCOL.md#recursive-chain-cycles",
             "docs/PROTOCOL.md#death-lifecycle-policy",
-            "docs/PROTOCOL.md#normal-battle-exit"
+            "docs/PROTOCOL.md#normal-battle-exit",
+            "docs/PROTOCOL.md#battle-exit-rejoin"
           ]
         },
         "gate": {
