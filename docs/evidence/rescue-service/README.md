@@ -97,4 +97,50 @@ Source/runtimeartifact/hash/VA/RVA chung với CP115 ở trên. Peer170/18 SHA:
 Chưa kết quả/return/Ready/Start2 sau rescue trong hai run. Next reuse CP083 all-liveAB accepteddead
 rank2 là **emulator policy**, profile có syntheticactor nên phải đo compatibility, không gọi originaltie/teamrule.
 AUD036 thủ công đọc docs→raw/control/positive/code và sửa stale current-status; audit kếCP120.
-CP116 chờ PR, selfcheck/waived; không đóng issue14/gate.
+CP116/PR186 đã merge `f33f3b8`, selfcheck/waived; không đóng issue14/gate.
+
+
+<a id="cp117"></a>
+## CP117 — Result/return sau cứu và blocker Start guard3
+
+[Contract/giới hạn](../../PROTOCOL.md#rescue-return-start-guard),
+[gap/phép thử](../../RESEARCH.md#gap-round-reset), [thứ tự](../../PLAN.md#current-order).
+CP116/PR186 mergef33f3b8; source/runtimeprofile giữ nguyên, 190tests reuse theo sourcehash.
+Source-first đọcCP083all-liveABaccepteddead/CP110actual585focus12/CP028boundedStartretry và
+CP115–116rescue, existingDE0310/DCAD80cache. Không lặpwriter/codec/kim/ReadyRE trước đo khác biệt.
+
+Raw `local/research/codex/rescue-reset-r1`…`rescue-reset-r4` và `rescue-start-guard-r1`;
+mỗi root córecipe/preflighthash/runtime-source/capture/observation+seal. Singlelease/privateuser/net/
+mount/PID/lo-only/noIPv4route/filesNSS; A/Bprefix/display riêng. Chỉ normalOS input/read-onlyprobes,
+không đổi code/config giữa run, khôngmint report/endmatch hoặc forceactor. Binary/DB nguồn bất biến.
+
+| Run | Kết quả và giới hạn | SHA run.json |
+|---|---|---|
+| `rescue-reset-r1/cycles` | 258.967659672s; Rescue→A/B19/native175180/room; Ready6s từrefresh chưa95. Partial. 1530 rawsealed. | `4c45c88653816b4fb6a09f4b42efd1f8d5573e3fcb007cfa5d251bb5930c7e45` |
+| `rescue-reset-r2/cycles` | 227.738011608s; BLefttimed→actualbomb3,2; chỉB19/noresult; chưa kiểmReadyrecipe. 1297 rawsealed. | `2d33b1259799643f9b34074044cc1aa98cf068f59398a25771c4802eb5e95266` |
+| `rescue-reset-r3/cycles` | 271.154490803s; HaiSpace→actualA/B19/result/room; actualB95 theo585focus12, mộtStartA chưa104. 1335 rawsealed. | `687d0abde52d28efa903798bbce28b5217acd352916c027e0ee8e20033284d7a` |
+| `rescue-reset-r4/cycles` | 292.207587007s; Cùngroute; actualB95, tốiđa3StartA chưa104. Blocker rõ. 1646 rawsealed. | `bd37c3a7da62707e7eee53644f75becba58e1703ed2477c628993eeae202d820` |
+| `rescue-start-guard-r1/cycles` | 297.138212744s; Read-onlyStarttrace: initialguard0/build104, returnedguard3/error/nobuild. Slot/cause chưađo. 1672 rawsealed. | `005862078acd5e42c246465ebe7f27a0dda3c62720f6119d4276996e6d149d69` |
+
+
+`rescue-start-guard-r1/guard-observations.json` giữ source-bound nativeStarttrace và1.672raw;
+`DCAD80-return3-focused.asm` đọc một thân hàm đã cachemộtphần, mở nốt cạnh runtime trả3,
+modO SHAa08950…/base400000/RVA=VA−400000, không quétclient hoặc sửaDB.
+`DE0310→DE0354/DE03A0→DE03F3→DE0422` đủ phân biệt pending/predicates/roomguard;
+initial0→DE0463, returned3→table[3]=DE0434. Hai site trả3 DCB7DA/DCB7FD chưa actualhit,
+slot/packedgroup/helper703A90/1240D70 cònunknown. `rea-availability.json` là inventorykhảdụngIDA,
+không phải provideranalysis/REmới hoặc thay đổi config.
+
+`actor-fields.json`/`native-reports.json` từngroot kiểmsecurefield/typedpacket bằng code nativecopy,
+khác runtimecallback. `r1/returned-live-observation.png` preview chọnscreen99 theo lexicalsort là
+**ảnh cũ, khôngcurrentstatus**; `returned-live-observation-latest.png` dùngmtimechohai phòng,
+correctiongiữ trongpartial-verification. Khônggọiảnhcũ làhangproof.
+
+Read-onlyslotmeasurement kế ở `rescue-start-slot-r1` đang thực hiện ngoàiCP117; không tính là
+bằngchứng CP117 hoặc checkpointcomplete. Preparedpositive-docs draft ởr2 chưa chạy vàđược đánhdấu
+unexecuted; không kếtluậnStart2/freshrescue từverifier/draft chưapass. Mọi partial giữnguyên.
+
+Giới hạn: mộtchosenresult/return/actualReadyB saucứu, **chưaStart2**, chưafreshrescue/reset/2finishedrounds.
+Sourceartifact/modO/currentclienthash vàknownVA giốngCP115–116. Outcome làpolicyemulator,
+không fullmembership/auth/authority/fullmatch/vanilla/K5/K6a/LANInternet. CP117selfcheck/chờPR;
+AUD036qua116/kế120, recordcompletecũkhôngsửa.
