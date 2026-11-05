@@ -1,7 +1,7 @@
 # Kế hoạch server giả lập KR 00967
 
 Nguồn chuẩn của project `boom-kr-server`; bản nhập từ plan đã được dsh1/dsh2 review tại `1eee46d`.
-Cập nhật05/11 JST (CP117): sau cứu đãresult/room/ReadyB; nativeStartguard3 chặn104. CP116/PR186 mergef33f3b8; CP117/PR187 mergec2ca94d; CP118/PR189merge/issue188closed; CP119slot2refreshStart2/R2rescuepartial tựkiểm/chờPR. AUD036 qua116/kế120.
+Cập nhật05/11 JST (CP120): currentrescue→result/return/Start2freshrescue đãđo, mộtresult/R2active. CP119/PR190merge bfd526b; CP120tựkiểm/chờPR. AUD037qua120/kế124.
 
 
 ### Mục tiêu, baseline và phạm vi
@@ -37,7 +37,7 @@ với client Rust không chứng minh có thể điều khiển client KR bằng
 
 ### Tiến độ hiện hành theo bằng chứng
 
-| Task/mốc | Trạng thái tại CP117 | Nguồn chuẩn |
+| Task/mốc | Trạng thái tại CP120 | Nguồn chuẩn |
 |---|---|---|
 | KRE-004/issue6 | Đã review/merge PR7 và đóng issue:recipe r1 đến local accept;không phải full K1 | [Wine r1](evidence/wine/README.md) |
 | Bootstrap reply | PR8 đã merge;debugger ProcessPatchreturn1,không ép success | [bootstrap evidence](evidence/bootstrap-wire/README.md) |
@@ -63,16 +63,16 @@ Một blocker chỉ kết thúc nhánh đo tương ứng; ghi rõ rồi tiếp v
 KRE-073/[#188](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/188) đã giao
 [PR189](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/189)/merge`dae23b7`, CP118 vàđóng;
 selectiveCLI/historicalmigration xong, không còn taskactive tổ chức. CP119 đãtiếpactualRE sau merge.
-1. **KR-F009/X002/S001 — R2freshrescue cònpartial sauStart2:**
-   [CP119](PROTOCOL.md#rescue-slot-refresh) boundeddiagnostic110slot2readyrefresh đãquaactualguard0/
-   A104/Start2/key12346/native121clock. R2B17→19/no18 làmplannedrescuefail; khôngđóngreset.
-   Reusesame-runraw/currentactorXY/knownsecuregetter/normalOSkey/peerUDPapplyprobe CP111,
-   đối chiếu A/B sauDown/Up/vịtrímỗi bước; ảnhhai view khácApositionkhôngđủcausalclaim.
-   Phépđotối thiểu: read-onlyfreshnativefeedback và UDPapply trongwindowR2input, không fixedhold
-   suyđãchạm; nếu currentXY chưađủ thìnormalrelease theofeedback trước chạm. Giữcode/profile/fuse/
-   guardreporteddeath, khôngmint18 hoặcpatchactor. KhônglặpknownStartguard/kim/codec/wholeclient.
+1. **KR-F009/X001/X002/S001 — R2result/secondreturn sau hai rescueepochs:**
+   [CP120](PROTOCOL.md#rescue-round2-feedback) có mộtresult/room/actualB95A104/Start2/key12346/
+   freshB17→18/nativeboth56→26. FeedbackUpchưađạt159, actual18later; khôngcausalfix/wholemovementlaw.
+   ReusesameCP119service/profile/knownnormalASpace+BSpace afterR2escape đểactualA/B17→19,
+   existingchosenresult/175180/secondroom/UI/actualB95. KhôngStart3/mintdeath/result/actorforce,
+   giữsameprofile/fuse/guard/slot2readyrefresh và finiteprobes/control. NếuR2contactkhônglặpđược,
+   đođúngfreshnativegeometry/input/window, khôngsuytimeholdlàcontact.
+   Mục tiêu hẹp hairesult/return córescue mỗi epoch; vẫnkhôngtựpassfullmatch/K5/K6a.
    [#14](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/14) epic giữmở.
-   <!-- active-issue: 14 --> AUD036qua116; periodic audit kế **CP120**.
+   <!-- active-issue: 14 --> AUD037qua120; periodic audit kế **CP124**.
 2. **KR-B003/KR-F006 — nợ có giới hạn:** [CP057](PROTOCOL.md#codec-stream-boundaries) đã đo stream/
    seq/bounds trong model, không mở lại76split hoặc cấp buffer lớn chỉ để vượt allocationguardFFFFFFFF.
    Full modes/prefix guard/live reset, distance/auth/transport/kim-cứu của reportguard giữ trong RESEARCH;
@@ -98,7 +98,7 @@ Bảng này chỉ phân công/thứtự; acceptance/PR/bằngchứng ởissue. [
 
 | Thứ tự/scope | Issue | Trạng thái/phần còn thiếu |
 |---|---|---|
-| Hiện hành RE | [#14/KRE-005b](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/14) | CP110UI/Ready/CP111receiverprepostđãđo; CP112structuralguardđãđo; CP113kimcurrentserviceđãđo; CP114secondtrapcạn/Start2freshcreditđãđo/PR184merged; CP115/PR185merged; CP116rescue B/aux0/PR186merged; CP117nativeguard3 làbước1 sauresult/ReadyB, chưaStart2, semanticvalidatorcònmở. #178 đã hoàn thành theo PR179. |
+| Hiện hành RE | [#14/KRE-005b](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/14) | CP110UI/Ready/CP111receiverprepostđãđo; CP112structuralguardđãđo; CP113kimcurrentserviceđãđo; CP114secondtrapcạn/Start2freshcreditđãđo/PR184merged; CP115/PR185merged; CP116rescue B/aux0/PR186merged; CP119/PR190mergedStart2; CP120freshrescue đãđo, R2result/secondreturn làbước1, semanticvalidatorcònmở. #178 đã hoàn thành theo PR179. |
 | Control theo trigger/gate | [#1/KRE-001](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/1), [#2/KRE-002](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/2) | Windowsoriginal/ownership/K0K1/fullbootstrapconfig; reuseWine/import/replyđãđo. |
 | Codec/identity khi cần | [#3/KRE-003](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/3), [#9/KRE-005a](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/9) | Fullcodec/livebounds vàintermittentmainstartupcause cònthiếu; khônglặpprimitive/auxiliarylocale. |
 

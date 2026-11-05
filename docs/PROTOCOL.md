@@ -4323,3 +4323,29 @@ Mộtresult/return hoàn tất rồiStart2, không hai trậnhoànchỉnh/gate. 
 đãgiải từ việc quaStart. ẢnhR2A/B sauchạm cònHELP và vịtríA khác nhau, cần đối chiếu nativecurrentXY/
 input/peerapply, khôngsuy tọađộ hoặc nguyênnhân từảnh. Bước kế theo PLAN, không nới guard báo chết/
 consume/report đểche lỗi. Scope2realWineAB+synthetic2; auth/authority/fullmatch/LANInternet chưađạt.
+
+
+<a id="rescue-round2-feedback"></a>
+### Fresh rescue sau result/return/Start2 — CP120
+
+**kr_runtime/confirmed hẹp**, [raw/control/hash](evidence/rescue-service/README.md#cp120).
+Giữ CP119 service/profile/fuse/client; đổi normalR2input sang read-only feedback/release và finite
+peerapplywindow; bỏ probe Start đã giải. Mộtattempt dựngprefixB quá35s, noBattle/146raw giữnguyên;
+retryprefixcopybaseline/Winebootstartup60s, không đổi deadline gameplay/guard/outcome.
+
+Run300,388426598s: R1B17→18/aux0, sau normalASpace/BSpace actualA/B17→19, chosen175/180/
+room; actualB95seq262/A104seq304, R2native121155/clock/153key12346 (R1key12345), cùngconnections.
+FreshR2B17seq322→18seq331/aux0, một170A/full7/7/errors0, B local56→26 vàApeer56→26 lần hai.
+KhôngacceptedR2death19 trước rescue, marker/death reset cho phépadmission theo service. Đây chỉ
+**mộtchosenresult/return hoàn tất + R2activeescape**, không hai trận hoàn chỉnh/toànreset/K5/K6a.
+
+**Feedback/peer giới hạn:** parkA nhảDown khi sampleY304 vượt target279; mẫu đầu lúcUpY399,
+trong4s chỉ thấy399→339, **không đạt target159**. Saukeyup, actualB18 vẫn xuất hiện khi nativeBworld
+snapshotA(120,189), Btrap(120,159). Không suy ngưỡngchạm30 hoặc feedbacktarget gâyrescue.
+PeerBwindow nhận64packet/quota, keywire59=expected59, cótargetchange/modelprepost, khôngđủ toàn
+trajectory. Observerpark khôngready/khôngsamples, touchquotaexhausted; không gọi đầy đủ mọi peer.
+
+CP119controlR2B17→19/no18 giữ nguyên; runmới khácOSrelease/probe/sourceboot nên chưa định danh
+causalfix hoặc loại trừ UDP/input/timing/state. Capturedsecurefield/1002getter+621snapshotcheck là
+copied-native emulation riêng, không runtime thứba. Sourcebinary/DB/pack không đổi.
+Bước kế hairesult/return saurescue theo PLAN; fullauthority/vanilla/LANInternet/gates giữ mở.

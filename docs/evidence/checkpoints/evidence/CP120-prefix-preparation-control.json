@@ -1,0 +1,1055 @@
+{
+  "schema": "kre-evidence-manifest-v1",
+  "evidence": [
+    {
+      "id": "BOOT-00001",
+      "kind": "local",
+      "path": "local/research/codex/rescue-R2-feedback-r1/cycles/A/processes-00.txt",
+      "bytes": 3754,
+      "sha256": "609a8baa1e86469d8e04355296ecf6ffed86b58f64be93476f866ed4eea5b1d8"
+    },
+    {
+      "id": "BOOT-00002",
+      "kind": "local",
+      "path": "local/research/codex/rescue-R2-feedback-r1/cycles/A/processes-01.txt",
+      "bytes": 4479,
+      "sha256": "dd436531e21b2ffd9c1d6186bd2342e4f9b966992317686b92c5e1cc13f09c3c"
+    },
+    {
+      "id": "BOOT-00003",
+      "kind": "local",
+      "path": "local/research/codex/rescue-R2-feedback-r1/cycles/A/processes-02.txt",
+      "bytes": 4479,
+      "sha256": "c9a8b7681946152a9b1003f0fedc73685fad4a06aa19829219f4d337b3ab7c64"
+    },
+    {
+      "id": "BOOT-00004",
+      "kind": "local",
+      "path": "local/research/codex/rescue-R2-feedback-r1/cycles/A/processes-03.txt",
+      "bytes": 4479,
+      "sha256": "170a5f0e685dc53d3bb820fe388ba6a1225acbd026417e8129909a2e812f8def"
+    },
+    {
+      "id": "BOOT-00005",
+      "kind": "local",
+      "path": "local/research/codex/rescue-R2-feedback-r1/cycles/A/processes-04.txt",
+      "bytes": 4479,
+      "sha256": "a6957f24da0f9d22c0e718709a37cb4005909bb400bfec6a1ef3381ec80d2cfd"
+    },
+    {
+      "id": "BOOT-00006",
+      "kind": "local",
+      "path": "local/research/codex/rescue-R2-feedback-r1/cycles/A/processes-05.txt",
+      "bytes": 4479,
+      "sha256": "652956e2528f727469a51a5327b71335a93091a678c5bbf916bca7c46e83ce45"
+    },
+    {
+      "id": "BOOT-00007",
+      "kind": "local",
+      "path": "local/research/codex/rescue-R2-feedback-r1/cycles/A/processes-06.txt",
+      "bytes": 4479,
+      "sha256": "b33edbaf79c6ec2b99fe08a9143b46034317e28d151f666d4236c3cb7ee20a1b"
+    },
+    {
+      "id": "BOOT-00008",
+      "kind": "local",
+      "path": "local/research/codex/rescue-R2-feedback-r1/cycles/A/processes-07.txt",
+      "bytes": 4479,
+      "sha256": "4dd489410c0eb4d2e7ebcca0e0f4132890df201d00aab987590bc73d3cdaa05a"
+    },
+    {
+      "id": "BOOT-00009",
+      "kind": "local",
+      "path": "local/research/codex/rescue-R2-feedback-r1/cycles/A/processes-08.txt",
+      "bytes": 4479,
+      "sha256": "26795b8c9f688850faef96487044f1cbaa67b64c63423be955c229d641c79bd4"
+    },
+    {
+      "id": "BOOT-00010",
+      "kind": "local",
+      "path": "local/research/codex/rescue-R2-feedback-r1/cycles/A/processes-09.txt",
+      "bytes": 4479,
+      "sha256": "63275467afcd89905452d9292b759daad9ccaf91a2b23ce7f5737d3c04e2877c"
+    },
+    {
+      "id": "BOOT-00011",
+      "kind": "local",
+      "path": "local/research/codex/rescue-R2-feedback-r1/cycles/A/processes-10.txt",
+      "bytes": 4479,
+      "sha256": "317615a34cab7b7e046446dcf3af4c1d07d6e8f871c262b229a4115aee8bb7d0"
+    },
+    {
+      "id": "BOOT-00012",
+      "kind": "local",
+      "path": "local/research/codex/rescue-R2-feedback-r1/cycles/A/processes-11.txt",
+      "bytes": 4479,
+      "sha256": "a67525dbd822cc65172074e94b8ddddd169d8cc298ccf156cd6940e1198be86d"
+    },
+    {
+      "id": "BOOT-00013",
+      "kind": "local",
+      "path": "local/research/codex/rescue-R2-feedback-r1/cycles/A/processes-12.txt",
+      "bytes": 4479,
+      "sha256": "0eaa2f5b80e58752a3d76c509f8c3729b61bd6ed653c2d5960d548720333827a"
+    },
+    {
+      "id": "BOOT-00014",
+      "kind": "local",
+      "path": "local/research/codex/rescue-R2-feedback-r1/cycles/A/processes-13.txt",
+      "bytes": 4479,
+      "sha256": "a2315a14418844aebe3352f16cdfd8c455a23684b251c86227803e2e2ee657c3"
+    },
+    {
+      "id": "BOOT-00015",
+      "kind": "local",
+      "path": "local/research/codex/rescue-R2-feedback-r1/cycles/A/processes-14.txt",
+      "bytes": 4479,
+      "sha256": "5cd7cfa9c9605a5721a65dc129f6f3bf6417f24300316a891ca0c94541149bd0"
+    },
+    {
+      "id": "BOOT-00016",
+      "kind": "local",
+      "path": "local/research/codex/rescue-R2-feedback-r1/cycles/A/processes-15.txt",
+      "bytes": 4479,
+      "sha256": "3c61b49e39a4ab3fd71eb10b79edcca4e90d2a2ae2baf628949d94b917ba6304"
+    },
+    {
+      "id": "BOOT-00017",
+      "kind": "local",
+      "path": "local/research/codex/rescue-R2-feedback-r1/cycles/A/processes-16.txt",
+      "bytes": 4479,
+      "sha256": "12e639e8221b56e94142015de57ae2e36aa0cf890bee9af6e6773dd7a69326e7"
+    },
+    {
+      "id": "BOOT-00018",
+      "kind": "local",
+      "path": "local/research/codex/rescue-R2-feedback-r1/cycles/A/processes-17.txt",
+      "bytes": 4479,
+      "sha256": "0af4ff2b7955e9110f2dd97316d02f4acc599f1a751328e1e7226cb18d369506"
+    },
+    {
+      "id": "BOOT-00019",
+      "kind": "local",
+      "path": "local/research/codex/rescue-R2-feedback-r1/cycles/A/processes-18.txt",
+      "bytes": 4479,
+      "sha256": "79aa5b857b2dec9a3b8692c11982911fce32408f496487d57ee4650e99b2ea4c"
+    },
+    {
+      "id": "BOOT-00020",
+      "kind": "local",
+      "path": "local/research/codex/rescue-R2-feedback-r1/cycles/A/processes-19.txt",
+      "bytes": 4479,
+      "sha256": "49f9be95dcd52a51f456c6d02283a4a0573fa8f147cdf7f4fc284d561a5f5da2"
+    },
+    {
+      "id": "BOOT-00021",
+      "kind": "local",
+      "path": "local/research/codex/rescue-R2-feedback-r1/cycles/A/processes-20.txt",
+      "bytes": 4479,
+      "sha256": "574999ed2ad8866650b448638fd17099b87ae23aa64bc969b35ed753d1419080"
+    },
+    {
+      "id": "BOOT-00022",
+      "kind": "local",
+      "path": "local/research/codex/rescue-R2-feedback-r1/cycles/A/processes-21.txt",
+      "bytes": 4479,
+      "sha256": "c0616480064032a2976bfaeba6633169fb943482146df8915db767513939c532"
+    },
+    {
+      "id": "BOOT-00023",
+      "kind": "local",
+      "path": "local/research/codex/rescue-R2-feedback-r1/cycles/A/processes-22.txt",
+      "bytes": 4479,
+      "sha256": "29fcb1f2d81a1f537cdcf023ccd06d43929ed02670a3f294af62b6987c54d75d"
+    },
+    {
+      "id": "BOOT-00024",
+      "kind": "local",
+      "path": "local/research/codex/rescue-R2-feedback-r1/cycles/A/processes-23.txt",
+      "bytes": 4479,
+      "sha256": "9050f3b11992eac9f87042881370508c5df73012229e92204cc137fd5c4f2519"
+    },
+    {
+      "id": "BOOT-00025",
+      "kind": "local",
+      "path": "local/research/codex/rescue-R2-feedback-r1/cycles/A/processes-24.txt",
+      "bytes": 4479,
+      "sha256": "5162e9abeccb7cac71fcd74327247c8a8195e076f8f5d525bcf66e738505aac4"
+    },
+    {
+      "id": "BOOT-00026",
+      "kind": "local",
+      "path": "local/research/codex/rescue-R2-feedback-r1/cycles/A/processes-25.txt",
+      "bytes": 4479,
+      "sha256": "63e249a20ad6ad6642ebc9ef8e04f857090b4e25ae31ee7fd61b10e4ddc48ea2"
+    },
+    {
+      "id": "BOOT-00027",
+      "kind": "local",
+      "path": "local/research/codex/rescue-R2-feedback-r1/cycles/A/processes-26.txt",
+      "bytes": 4479,
+      "sha256": "8fb74e5e5a63007025356a5e66ac26d586bd908a6ff7f523ffccd008ab2965eb"
+    },
+    {
+      "id": "BOOT-00028",
+      "kind": "local",
+      "path": "local/research/codex/rescue-R2-feedback-r1/cycles/A/run.json",
+      "bytes": 9722,
+      "sha256": "90aa867eeb215c4bd3ecd0d6eee854c3a07f830d5efdc75913092978ffffcf64"
+    },
+    {
+      "id": "BOOT-00029",
+      "kind": "local",
+      "path": "local/research/codex/rescue-R2-feedback-r1/cycles/A/screen-00.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "BOOT-00030",
+      "kind": "local",
+      "path": "local/research/codex/rescue-R2-feedback-r1/cycles/A/screen-01.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "BOOT-00031",
+      "kind": "local",
+      "path": "local/research/codex/rescue-R2-feedback-r1/cycles/A/screen-02.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "BOOT-00032",
+      "kind": "local",
+      "path": "local/research/codex/rescue-R2-feedback-r1/cycles/A/screen-03.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "BOOT-00033",
+      "kind": "local",
+      "path": "local/research/codex/rescue-R2-feedback-r1/cycles/A/screen-04.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "BOOT-00034",
+      "kind": "local",
+      "path": "local/research/codex/rescue-R2-feedback-r1/cycles/A/screen-05.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "BOOT-00035",
+      "kind": "local",
+      "path": "local/research/codex/rescue-R2-feedback-r1/cycles/A/screen-06.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "BOOT-00036",
+      "kind": "local",
+      "path": "local/research/codex/rescue-R2-feedback-r1/cycles/A/screen-07.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "BOOT-00037",
+      "kind": "local",
+      "path": "local/research/codex/rescue-R2-feedback-r1/cycles/A/screen-08.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "BOOT-00038",
+      "kind": "local",
+      "path": "local/research/codex/rescue-R2-feedback-r1/cycles/A/screen-09.png",
+      "bytes": 1670,
+      "sha256": "2938793d36112554332f0c109ace2f58404e02633a2b304393ee766c0772d871"
+    },
+    {
+      "id": "BOOT-00039",
+      "kind": "local",
+      "path": "local/research/codex/rescue-R2-feedback-r1/cycles/A/screen-10.png",
+      "bytes": 19847,
+      "sha256": "2178ceb11e92e5f95694ca8a855de0750fb1a93dfe6e02a13c1856b080d16654"
+    },
+    {
+      "id": "BOOT-00040",
+      "kind": "local",
+      "path": "local/research/codex/rescue-R2-feedback-r1/cycles/A/screen-11.png",
+      "bytes": 13437,
+      "sha256": "e47c2919c72588bea5f3e5b8ebda4d9823a66e8864f6b86ed6f85d9e19598218"
+    },
+    {
+      "id": "BOOT-00041",
+      "kind": "local",
+      "path": "local/research/codex/rescue-R2-feedback-r1/cycles/A/screen-12.png",
+      "bytes": 13437,
+      "sha256": "e47c2919c72588bea5f3e5b8ebda4d9823a66e8864f6b86ed6f85d9e19598218"
+    },
+    {
+      "id": "BOOT-00042",
+      "kind": "local",
+      "path": "local/research/codex/rescue-R2-feedback-r1/cycles/A/screen-13.png",
+      "bytes": 146955,
+      "sha256": "8a24098a2297495b12bf7e0fbd5fc8339a907f804cfbec0ba095d89187774585"
+    },
+    {
+      "id": "BOOT-00043",
+      "kind": "local",
+      "path": "local/research/codex/rescue-R2-feedback-r1/cycles/A/screen-14.png",
+      "bytes": 176090,
+      "sha256": "8858df96c8cc06c59be449ec4fd8f565f807e465cc46a39ecbaab3f30c118378"
+    },
+    {
+      "id": "BOOT-00044",
+      "kind": "local",
+      "path": "local/research/codex/rescue-R2-feedback-r1/cycles/A/screen-15.png",
+      "bytes": 193700,
+      "sha256": "cd0294a374a38dece2ac45c18d6b40744f7f18e92689339bd97427e8c254eb41"
+    },
+    {
+      "id": "BOOT-00045",
+      "kind": "local",
+      "path": "local/research/codex/rescue-R2-feedback-r1/cycles/A/screen-16.png",
+      "bytes": 183279,
+      "sha256": "84cbc0d4cdc0ffbfc3ebfcd5adbb86da599bead152edd6a618e29285146b2fdf"
+    },
+    {
+      "id": "BOOT-00046",
+      "kind": "local",
+      "path": "local/research/codex/rescue-R2-feedback-r1/cycles/A/screen-17.png",
+      "bytes": 192711,
+      "sha256": "5c5c23014d57460a377147ce38096ac0eef7eede14b53232dd7f9195e2bfbcb7"
+    },
+    {
+      "id": "BOOT-00047",
+      "kind": "local",
+      "path": "local/research/codex/rescue-R2-feedback-r1/cycles/A/screen-18.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "BOOT-00048",
+      "kind": "local",
+      "path": "local/research/codex/rescue-R2-feedback-r1/cycles/A/screen-19.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "BOOT-00049",
+      "kind": "local",
+      "path": "local/research/codex/rescue-R2-feedback-r1/cycles/A/screen-20.png",
+      "bytes": 259715,
+      "sha256": "de723ec3500c63ee7a670fa3e1f45dac5386898d6833084727b6983e96c5b61f"
+    },
+    {
+      "id": "BOOT-00050",
+      "kind": "local",
+      "path": "local/research/codex/rescue-R2-feedback-r1/cycles/A/screen-21.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "BOOT-00051",
+      "kind": "local",
+      "path": "local/research/codex/rescue-R2-feedback-r1/cycles/A/screen-22.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "BOOT-00052",
+      "kind": "local",
+      "path": "local/research/codex/rescue-R2-feedback-r1/cycles/A/screen-23.png",
+      "bytes": 148008,
+      "sha256": "357518cc75ee8a9d5fcb8aaf08217770d4b78852dc4bb5d0c0ff30b2d083e786"
+    },
+    {
+      "id": "BOOT-00053",
+      "kind": "local",
+      "path": "local/research/codex/rescue-R2-feedback-r1/cycles/A/screen-24.png",
+      "bytes": 148384,
+      "sha256": "c2f6abbddc6e912ea534eec1de34d4d857b6dd8efe724d2f6c1c5cdaad1f3f8f"
+    },
+    {
+      "id": "BOOT-00054",
+      "kind": "local",
+      "path": "local/research/codex/rescue-R2-feedback-r1/cycles/A/screen-25.png",
+      "bytes": 229812,
+      "sha256": "13a16f8632e19d201999c0006056745396b1903182e539fa9f8206020dcdde3f"
+    },
+    {
+      "id": "BOOT-00055",
+      "kind": "local",
+      "path": "local/research/codex/rescue-R2-feedback-r1/cycles/A/screen-26.png",
+      "bytes": 229042,
+      "sha256": "f5e4004f0ac3f65f52cd0d38fd63ece851e52f8db762e28c4ce2f9664701d4a0"
+    },
+    {
+      "id": "BOOT-00056",
+      "kind": "local",
+      "path": "local/research/codex/rescue-R2-feedback-r1/cycles/A/windows-00.txt",
+      "bytes": 166,
+      "sha256": "28ae29836d791dcd3302b447a52a8f0fa3f9a192abbc33a27751e23d7ebe0d43"
+    },
+    {
+      "id": "BOOT-00057",
+      "kind": "local",
+      "path": "local/research/codex/rescue-R2-feedback-r1/cycles/A/windows-01.txt",
+      "bytes": 872,
+      "sha256": "c8c8cfe9c5b9bb2ccde16b4b959b165ed33d50824f3fbd29834c16b6f0e63586"
+    },
+    {
+      "id": "BOOT-00058",
+      "kind": "local",
+      "path": "local/research/codex/rescue-R2-feedback-r1/cycles/A/windows-02.txt",
+      "bytes": 872,
+      "sha256": "c8c8cfe9c5b9bb2ccde16b4b959b165ed33d50824f3fbd29834c16b6f0e63586"
+    },
+    {
+      "id": "BOOT-00059",
+      "kind": "local",
+      "path": "local/research/codex/rescue-R2-feedback-r1/cycles/A/windows-03.txt",
+      "bytes": 872,
+      "sha256": "c8c8cfe9c5b9bb2ccde16b4b959b165ed33d50824f3fbd29834c16b6f0e63586"
+    },
+    {
+      "id": "BOOT-00060",
+      "kind": "local",
+      "path": "local/research/codex/rescue-R2-feedback-r1/cycles/A/windows-04.txt",
+      "bytes": 872,
+      "sha256": "c8c8cfe9c5b9bb2ccde16b4b959b165ed33d50824f3fbd29834c16b6f0e63586"
+    },
+    {
+      "id": "BOOT-00061",
+      "kind": "local",
+      "path": "local/research/codex/rescue-R2-feedback-r1/cycles/A/windows-05.txt",
+      "bytes": 872,
+      "sha256": "c8c8cfe9c5b9bb2ccde16b4b959b165ed33d50824f3fbd29834c16b6f0e63586"
+    },
+    {
+      "id": "BOOT-00062",
+      "kind": "local",
+      "path": "local/research/codex/rescue-R2-feedback-r1/cycles/A/windows-06.txt",
+      "bytes": 872,
+      "sha256": "c8c8cfe9c5b9bb2ccde16b4b959b165ed33d50824f3fbd29834c16b6f0e63586"
+    },
+    {
+      "id": "BOOT-00063",
+      "kind": "local",
+      "path": "local/research/codex/rescue-R2-feedback-r1/cycles/A/windows-07.txt",
+      "bytes": 1186,
+      "sha256": "a2ea27d4422f1c9ec003994c0fcc9a03a12ea0aef15ee50e7700ccccead29c9b"
+    },
+    {
+      "id": "BOOT-00064",
+      "kind": "local",
+      "path": "local/research/codex/rescue-R2-feedback-r1/cycles/A/windows-08.txt",
+      "bytes": 1305,
+      "sha256": "2ea219015d24e371bd5be2632e2b1432dbb3ec211585b3163a982a765dd40e1e"
+    },
+    {
+      "id": "BOOT-00065",
+      "kind": "local",
+      "path": "local/research/codex/rescue-R2-feedback-r1/cycles/A/windows-09.txt",
+      "bytes": 1311,
+      "sha256": "79f14ed4dc9ec340cb32d82ec0c77a2262196d736b814194ac0ee379704f762b"
+    },
+    {
+      "id": "BOOT-00066",
+      "kind": "local",
+      "path": "local/research/codex/rescue-R2-feedback-r1/cycles/A/windows-10.txt",
+      "bytes": 1311,
+      "sha256": "79f14ed4dc9ec340cb32d82ec0c77a2262196d736b814194ac0ee379704f762b"
+    },
+    {
+      "id": "BOOT-00067",
+      "kind": "local",
+      "path": "local/research/codex/rescue-R2-feedback-r1/cycles/A/windows-11.txt",
+      "bytes": 1311,
+      "sha256": "79f14ed4dc9ec340cb32d82ec0c77a2262196d736b814194ac0ee379704f762b"
+    },
+    {
+      "id": "BOOT-00068",
+      "kind": "local",
+      "path": "local/research/codex/rescue-R2-feedback-r1/cycles/A/windows-12.txt",
+      "bytes": 1311,
+      "sha256": "79f14ed4dc9ec340cb32d82ec0c77a2262196d736b814194ac0ee379704f762b"
+    },
+    {
+      "id": "BOOT-00069",
+      "kind": "local",
+      "path": "local/research/codex/rescue-R2-feedback-r1/cycles/A/windows-13.txt",
+      "bytes": 1311,
+      "sha256": "79f14ed4dc9ec340cb32d82ec0c77a2262196d736b814194ac0ee379704f762b"
+    },
+    {
+      "id": "BOOT-00070",
+      "kind": "local",
+      "path": "local/research/codex/rescue-R2-feedback-r1/cycles/A/windows-14.txt",
+      "bytes": 1311,
+      "sha256": "79f14ed4dc9ec340cb32d82ec0c77a2262196d736b814194ac0ee379704f762b"
+    },
+    {
+      "id": "BOOT-00071",
+      "kind": "local",
+      "path": "local/research/codex/rescue-R2-feedback-r1/cycles/A/windows-15.txt",
+      "bytes": 1311,
+      "sha256": "79f14ed4dc9ec340cb32d82ec0c77a2262196d736b814194ac0ee379704f762b"
+    },
+    {
+      "id": "BOOT-00072",
+      "kind": "local",
+      "path": "local/research/codex/rescue-R2-feedback-r1/cycles/A/windows-16.txt",
+      "bytes": 1311,
+      "sha256": "79f14ed4dc9ec340cb32d82ec0c77a2262196d736b814194ac0ee379704f762b"
+    },
+    {
+      "id": "BOOT-00073",
+      "kind": "local",
+      "path": "local/research/codex/rescue-R2-feedback-r1/cycles/A/windows-17.txt",
+      "bytes": 1311,
+      "sha256": "79f14ed4dc9ec340cb32d82ec0c77a2262196d736b814194ac0ee379704f762b"
+    },
+    {
+      "id": "BOOT-00074",
+      "kind": "local",
+      "path": "local/research/codex/rescue-R2-feedback-r1/cycles/A/windows-18.txt",
+      "bytes": 1311,
+      "sha256": "79f14ed4dc9ec340cb32d82ec0c77a2262196d736b814194ac0ee379704f762b"
+    },
+    {
+      "id": "BOOT-00075",
+      "kind": "local",
+      "path": "local/research/codex/rescue-R2-feedback-r1/cycles/A/windows-19.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "BOOT-00076",
+      "kind": "local",
+      "path": "local/research/codex/rescue-R2-feedback-r1/cycles/A/windows-20.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "BOOT-00077",
+      "kind": "local",
+      "path": "local/research/codex/rescue-R2-feedback-r1/cycles/A/windows-21.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "BOOT-00078",
+      "kind": "local",
+      "path": "local/research/codex/rescue-R2-feedback-r1/cycles/A/windows-22.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "BOOT-00079",
+      "kind": "local",
+      "path": "local/research/codex/rescue-R2-feedback-r1/cycles/A/windows-23.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "BOOT-00080",
+      "kind": "local",
+      "path": "local/research/codex/rescue-R2-feedback-r1/cycles/A/windows-24.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "BOOT-00081",
+      "kind": "local",
+      "path": "local/research/codex/rescue-R2-feedback-r1/cycles/A/windows-25.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "BOOT-00082",
+      "kind": "local",
+      "path": "local/research/codex/rescue-R2-feedback-r1/cycles/A/windows-26.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "BOOT-00083",
+      "kind": "local",
+      "path": "local/research/codex/rescue-R2-feedback-r1/cycles/CALog-before.txt",
+      "bytes": 6250,
+      "sha256": "6bf575f9c3aa5ead842000f7f45e76ab9694011061332f18bec630c7dd0595ea"
+    },
+    {
+      "id": "BOOT-00084",
+      "kind": "local",
+      "path": "local/research/codex/rescue-R2-feedback-r1/cycles/CALog-run.txt",
+      "bytes": 1692,
+      "sha256": "3e1bc91aa997659de57d2cc7faf7e440ff16a6d2b268a1000e324c8483b54e59"
+    },
+    {
+      "id": "BOOT-00085",
+      "kind": "local",
+      "path": "local/research/codex/rescue-R2-feedback-r1/cycles/client.log",
+      "bytes": 13729,
+      "sha256": "6bef24e2686b504a73b86c5946f6284523e1bfeef490014a60347c0eafaff1b9"
+    },
+    {
+      "id": "BOOT-00086",
+      "kind": "local",
+      "path": "local/research/codex/rescue-R2-feedback-r1/cycles/debug-commands.txt",
+      "bytes": 16899,
+      "sha256": "8e820acbe3f113e1ab9a9ef5c97d0b49ac6f9310ca1bbea1355e031c595a7507"
+    },
+    {
+      "id": "BOOT-00087",
+      "kind": "local",
+      "path": "local/research/codex/rescue-R2-feedback-r1/cycles/hosts",
+      "bytes": 121,
+      "sha256": "32a007c62d2887ae9f8d3c30d1ff7cb3902e6e1e0c75c5a978ee556cc8ea71f8"
+    },
+    {
+      "id": "BOOT-00088",
+      "kind": "local",
+      "path": "local/research/codex/rescue-R2-feedback-r1/cycles/nsswitch.conf",
+      "bytes": 307,
+      "sha256": "c18e474cd61df8648ee02ac7a9c76b8d6c7782d8b212f925e6980f20af5cc838"
+    },
+    {
+      "id": "BOOT-00089",
+      "kind": "local",
+      "path": "local/research/codex/rescue-R2-feedback-r1/cycles/progress.json",
+      "bytes": 1978,
+      "sha256": "dbd4230d12328d06d892360608aa676de1ba2a538b67667fd4c8933a78bba90d"
+    },
+    {
+      "id": "BOOT-00090",
+      "kind": "local",
+      "path": "local/research/codex/rescue-R2-feedback-r1/cycles/proxy-A-0-client.bin",
+      "bytes": 81,
+      "sha256": "2cfebd3ad9a4935bb144090c4244c67ec9200ca54d4a9da71ecef00004a8bdf4"
+    },
+    {
+      "id": "BOOT-00091",
+      "kind": "local",
+      "path": "local/research/codex/rescue-R2-feedback-r1/cycles/proxy-A-0-upstream.bin",
+      "bytes": 81,
+      "sha256": "2cfebd3ad9a4935bb144090c4244c67ec9200ca54d4a9da71ecef00004a8bdf4"
+    },
+    {
+      "id": "BOOT-00092",
+      "kind": "local",
+      "path": "local/research/codex/rescue-R2-feedback-r1/cycles/proxy-A-1-client.bin",
+      "bytes": 48,
+      "sha256": "e8ff3d74c4a26ecb82c2c295b8eb385f68e655bb6581dec8977eb062bb672f18"
+    },
+    {
+      "id": "BOOT-00093",
+      "kind": "local",
+      "path": "local/research/codex/rescue-R2-feedback-r1/cycles/proxy-A-1-upstream.bin",
+      "bytes": 48,
+      "sha256": "e8ff3d74c4a26ecb82c2c295b8eb385f68e655bb6581dec8977eb062bb672f18"
+    },
+    {
+      "id": "BOOT-00094",
+      "kind": "local",
+      "path": "local/research/codex/rescue-R2-feedback-r1/cycles/proxy-A-10-client.bin",
+      "bytes": 38,
+      "sha256": "e28443e89692e21f334f5aa5c8e92b60d62d26bdb830d2818bf27263995ec2f0"
+    },
+    {
+      "id": "BOOT-00095",
+      "kind": "local",
+      "path": "local/research/codex/rescue-R2-feedback-r1/cycles/proxy-A-10-upstream.bin",
+      "bytes": 38,
+      "sha256": "e28443e89692e21f334f5aa5c8e92b60d62d26bdb830d2818bf27263995ec2f0"
+    },
+    {
+      "id": "BOOT-00096",
+      "kind": "local",
+      "path": "local/research/codex/rescue-R2-feedback-r1/cycles/proxy-A-11-client.bin",
+      "bytes": 69,
+      "sha256": "11363eea5e72986442afc4a5eb87a4be0e839cda779354738cbd471a635e10fc"
+    },
+    {
+      "id": "BOOT-00097",
+      "kind": "local",
+      "path": "local/research/codex/rescue-R2-feedback-r1/cycles/proxy-A-11-upstream.bin",
+      "bytes": 69,
+      "sha256": "11363eea5e72986442afc4a5eb87a4be0e839cda779354738cbd471a635e10fc"
+    },
+    {
+      "id": "BOOT-00098",
+      "kind": "local",
+      "path": "local/research/codex/rescue-R2-feedback-r1/cycles/proxy-A-12-client.bin",
+      "bytes": 38,
+      "sha256": "b7cbff89b0dd17619737b562f9d8749fb5f5fc3fa03aefbc4053100b27d30c93"
+    },
+    {
+      "id": "BOOT-00099",
+      "kind": "local",
+      "path": "local/research/codex/rescue-R2-feedback-r1/cycles/proxy-A-12-upstream.bin",
+      "bytes": 38,
+      "sha256": "b7cbff89b0dd17619737b562f9d8749fb5f5fc3fa03aefbc4053100b27d30c93"
+    },
+    {
+      "id": "BOOT-00100",
+      "kind": "local",
+      "path": "local/research/codex/rescue-R2-feedback-r1/cycles/proxy-A-13-client.bin",
+      "bytes": 69,
+      "sha256": "517a0567eb36ddb3331cd8104b00280af81ea3d9359f1f255fcfda795a8df4d8"
+    },
+    {
+      "id": "BOOT-00101",
+      "kind": "local",
+      "path": "local/research/codex/rescue-R2-feedback-r1/cycles/proxy-A-13-upstream.bin",
+      "bytes": 69,
+      "sha256": "517a0567eb36ddb3331cd8104b00280af81ea3d9359f1f255fcfda795a8df4d8"
+    },
+    {
+      "id": "BOOT-00102",
+      "kind": "local",
+      "path": "local/research/codex/rescue-R2-feedback-r1/cycles/proxy-A-14-client.bin",
+      "bytes": 105,
+      "sha256": "d6671cd18705669fcb1efe505184fd44ccf9a72cffeb4af7ae7b352682b33567"
+    },
+    {
+      "id": "BOOT-00103",
+      "kind": "local",
+      "path": "local/research/codex/rescue-R2-feedback-r1/cycles/proxy-A-14-upstream.bin",
+      "bytes": 105,
+      "sha256": "d6671cd18705669fcb1efe505184fd44ccf9a72cffeb4af7ae7b352682b33567"
+    },
+    {
+      "id": "BOOT-00104",
+      "kind": "local",
+      "path": "local/research/codex/rescue-R2-feedback-r1/cycles/proxy-A-15-client.bin",
+      "bytes": 48,
+      "sha256": "3650c62a8f75715e701b92bfac282ac259951280682e7c2d2f5ffb81e785fa7f"
+    },
+    {
+      "id": "BOOT-00105",
+      "kind": "local",
+      "path": "local/research/codex/rescue-R2-feedback-r1/cycles/proxy-A-15-upstream.bin",
+      "bytes": 48,
+      "sha256": "3650c62a8f75715e701b92bfac282ac259951280682e7c2d2f5ffb81e785fa7f"
+    },
+    {
+      "id": "BOOT-00106",
+      "kind": "local",
+      "path": "local/research/codex/rescue-R2-feedback-r1/cycles/proxy-A-16-client.bin",
+      "bytes": 41,
+      "sha256": "e5c5de58f5717c91372e8f696e34ff9769cdb8ee94c7d97ab0071123071e7da2"
+    },
+    {
+      "id": "BOOT-00107",
+      "kind": "local",
+      "path": "local/research/codex/rescue-R2-feedback-r1/cycles/proxy-A-16-upstream.bin",
+      "bytes": 41,
+      "sha256": "e5c5de58f5717c91372e8f696e34ff9769cdb8ee94c7d97ab0071123071e7da2"
+    },
+    {
+      "id": "BOOT-00108",
+      "kind": "local",
+      "path": "local/research/codex/rescue-R2-feedback-r1/cycles/proxy-A-17-client.bin",
+      "bytes": 42,
+      "sha256": "75ba88143a835114c5880173f9965c5fac27c1e5144a216c4315e659865b4f58"
+    },
+    {
+      "id": "BOOT-00109",
+      "kind": "local",
+      "path": "local/research/codex/rescue-R2-feedback-r1/cycles/proxy-A-17-upstream.bin",
+      "bytes": 42,
+      "sha256": "75ba88143a835114c5880173f9965c5fac27c1e5144a216c4315e659865b4f58"
+    },
+    {
+      "id": "BOOT-00110",
+      "kind": "local",
+      "path": "local/research/codex/rescue-R2-feedback-r1/cycles/proxy-A-18-client.bin",
+      "bytes": 38,
+      "sha256": "3e3b643e9fe09371fb59c6689f9d97b31905f795a467e3127e26eba898827501"
+    },
+    {
+      "id": "BOOT-00111",
+      "kind": "local",
+      "path": "local/research/codex/rescue-R2-feedback-r1/cycles/proxy-A-18-upstream.bin",
+      "bytes": 38,
+      "sha256": "3e3b643e9fe09371fb59c6689f9d97b31905f795a467e3127e26eba898827501"
+    },
+    {
+      "id": "BOOT-00112",
+      "kind": "local",
+      "path": "local/research/codex/rescue-R2-feedback-r1/cycles/proxy-A-19-client.bin",
+      "bytes": 42,
+      "sha256": "0833d00f0ec07a250ff87a4c1ee5157f615987a201a2fcb9b5e2a10c80abaf3e"
+    },
+    {
+      "id": "BOOT-00113",
+      "kind": "local",
+      "path": "local/research/codex/rescue-R2-feedback-r1/cycles/proxy-A-19-upstream.bin",
+      "bytes": 42,
+      "sha256": "0833d00f0ec07a250ff87a4c1ee5157f615987a201a2fcb9b5e2a10c80abaf3e"
+    },
+    {
+      "id": "BOOT-00114",
+      "kind": "local",
+      "path": "local/research/codex/rescue-R2-feedback-r1/cycles/proxy-A-2-client.bin",
+      "bytes": 41,
+      "sha256": "683c014bbc8fbf2dcc1325c3788bfd26adb70ed576b02ef2b22903c4d00d65ee"
+    },
+    {
+      "id": "BOOT-00115",
+      "kind": "local",
+      "path": "local/research/codex/rescue-R2-feedback-r1/cycles/proxy-A-2-upstream.bin",
+      "bytes": 41,
+      "sha256": "683c014bbc8fbf2dcc1325c3788bfd26adb70ed576b02ef2b22903c4d00d65ee"
+    },
+    {
+      "id": "BOOT-00116",
+      "kind": "local",
+      "path": "local/research/codex/rescue-R2-feedback-r1/cycles/proxy-A-20-client.bin",
+      "bytes": 38,
+      "sha256": "353c685ef30fdb1b92f9fb819844cf39221d908e0e6b48245c86c923098cabea"
+    },
+    {
+      "id": "BOOT-00117",
+      "kind": "local",
+      "path": "local/research/codex/rescue-R2-feedback-r1/cycles/proxy-A-20-upstream.bin",
+      "bytes": 38,
+      "sha256": "353c685ef30fdb1b92f9fb819844cf39221d908e0e6b48245c86c923098cabea"
+    },
+    {
+      "id": "BOOT-00118",
+      "kind": "local",
+      "path": "local/research/codex/rescue-R2-feedback-r1/cycles/proxy-A-21-client.bin",
+      "bytes": 69,
+      "sha256": "dbad336ad3e5ddc3a001af04f8c479f22207099d6c63b691af48eb286a6894e6"
+    },
+    {
+      "id": "BOOT-00119",
+      "kind": "local",
+      "path": "local/research/codex/rescue-R2-feedback-r1/cycles/proxy-A-21-upstream.bin",
+      "bytes": 69,
+      "sha256": "dbad336ad3e5ddc3a001af04f8c479f22207099d6c63b691af48eb286a6894e6"
+    },
+    {
+      "id": "BOOT-00120",
+      "kind": "local",
+      "path": "local/research/codex/rescue-R2-feedback-r1/cycles/proxy-A-22-client.bin",
+      "bytes": 69,
+      "sha256": "0b964dec48ff40473d72cd464a1dc7885f84c7fe1a8f5d0a94ac0a66fe286667"
+    },
+    {
+      "id": "BOOT-00121",
+      "kind": "local",
+      "path": "local/research/codex/rescue-R2-feedback-r1/cycles/proxy-A-22-upstream.bin",
+      "bytes": 69,
+      "sha256": "0b964dec48ff40473d72cd464a1dc7885f84c7fe1a8f5d0a94ac0a66fe286667"
+    },
+    {
+      "id": "BOOT-00122",
+      "kind": "local",
+      "path": "local/research/codex/rescue-R2-feedback-r1/cycles/proxy-A-23-client.bin",
+      "bytes": 69,
+      "sha256": "e259e6eb9f83eea9dfdba1afb8faf78fffec07aed0ed85a4c21c400f51796c23"
+    },
+    {
+      "id": "BOOT-00123",
+      "kind": "local",
+      "path": "local/research/codex/rescue-R2-feedback-r1/cycles/proxy-A-23-upstream.bin",
+      "bytes": 69,
+      "sha256": "e259e6eb9f83eea9dfdba1afb8faf78fffec07aed0ed85a4c21c400f51796c23"
+    },
+    {
+      "id": "BOOT-00124",
+      "kind": "local",
+      "path": "local/research/codex/rescue-R2-feedback-r1/cycles/proxy-A-3-client.bin",
+      "bytes": 42,
+      "sha256": "7704fb1aa46a1a17c430094ff6033bdd25cfffc9f43664b86c605e2cd4d8f5c6"
+    },
+    {
+      "id": "BOOT-00125",
+      "kind": "local",
+      "path": "local/research/codex/rescue-R2-feedback-r1/cycles/proxy-A-3-upstream.bin",
+      "bytes": 42,
+      "sha256": "7704fb1aa46a1a17c430094ff6033bdd25cfffc9f43664b86c605e2cd4d8f5c6"
+    },
+    {
+      "id": "BOOT-00126",
+      "kind": "local",
+      "path": "local/research/codex/rescue-R2-feedback-r1/cycles/proxy-A-4-client.bin",
+      "bytes": 38,
+      "sha256": "e364b3f507e8bcd3a04056368ce580a0b2810d22f2c808190022fa53d0d4fff5"
+    },
+    {
+      "id": "BOOT-00127",
+      "kind": "local",
+      "path": "local/research/codex/rescue-R2-feedback-r1/cycles/proxy-A-4-upstream.bin",
+      "bytes": 38,
+      "sha256": "e364b3f507e8bcd3a04056368ce580a0b2810d22f2c808190022fa53d0d4fff5"
+    },
+    {
+      "id": "BOOT-00128",
+      "kind": "local",
+      "path": "local/research/codex/rescue-R2-feedback-r1/cycles/proxy-A-5-client.bin",
+      "bytes": 38,
+      "sha256": "63b34eaa82ebde5a2c2225d69d05afa03434b1023f40242e8ecfecab8f726132"
+    },
+    {
+      "id": "BOOT-00129",
+      "kind": "local",
+      "path": "local/research/codex/rescue-R2-feedback-r1/cycles/proxy-A-5-upstream.bin",
+      "bytes": 38,
+      "sha256": "63b34eaa82ebde5a2c2225d69d05afa03434b1023f40242e8ecfecab8f726132"
+    },
+    {
+      "id": "BOOT-00130",
+      "kind": "local",
+      "path": "local/research/codex/rescue-R2-feedback-r1/cycles/proxy-A-6-client.bin",
+      "bytes": 40,
+      "sha256": "40e9433aba62af57815aa75adb3b377070436ce1808f30ba92f2743b0cc13bf9"
+    },
+    {
+      "id": "BOOT-00131",
+      "kind": "local",
+      "path": "local/research/codex/rescue-R2-feedback-r1/cycles/proxy-A-6-upstream.bin",
+      "bytes": 40,
+      "sha256": "40e9433aba62af57815aa75adb3b377070436ce1808f30ba92f2743b0cc13bf9"
+    },
+    {
+      "id": "BOOT-00132",
+      "kind": "local",
+      "path": "local/research/codex/rescue-R2-feedback-r1/cycles/proxy-A-7-client.bin",
+      "bytes": 38,
+      "sha256": "768c6b873a917d64829d8deb4be52621958429c073bcd7d8dc49c5825accb585"
+    },
+    {
+      "id": "BOOT-00133",
+      "kind": "local",
+      "path": "local/research/codex/rescue-R2-feedback-r1/cycles/proxy-A-7-upstream.bin",
+      "bytes": 38,
+      "sha256": "768c6b873a917d64829d8deb4be52621958429c073bcd7d8dc49c5825accb585"
+    },
+    {
+      "id": "BOOT-00134",
+      "kind": "local",
+      "path": "local/research/codex/rescue-R2-feedback-r1/cycles/proxy-A-8-client.bin",
+      "bytes": 38,
+      "sha256": "09c3725ce35013984ef15850245356016f977c5904ffa210e0c442b608ab42dd"
+    },
+    {
+      "id": "BOOT-00135",
+      "kind": "local",
+      "path": "local/research/codex/rescue-R2-feedback-r1/cycles/proxy-A-8-upstream.bin",
+      "bytes": 38,
+      "sha256": "09c3725ce35013984ef15850245356016f977c5904ffa210e0c442b608ab42dd"
+    },
+    {
+      "id": "BOOT-00136",
+      "kind": "local",
+      "path": "local/research/codex/rescue-R2-feedback-r1/cycles/proxy-A-9-client.bin",
+      "bytes": 38,
+      "sha256": "8fb085a1d446d195a6b271221a9894c5a88191f70f6ff621718f4f159293b7a4"
+    },
+    {
+      "id": "BOOT-00137",
+      "kind": "local",
+      "path": "local/research/codex/rescue-R2-feedback-r1/cycles/proxy-A-9-upstream.bin",
+      "bytes": 38,
+      "sha256": "8fb085a1d446d195a6b271221a9894c5a88191f70f6ff621718f4f159293b7a4"
+    },
+    {
+      "id": "BOOT-00138",
+      "kind": "local",
+      "path": "local/research/codex/rescue-R2-feedback-r1/cycles/return-ui-A.jsonl",
+      "bytes": 1082,
+      "sha256": "60bedb67fd530baebf496714c14e6fe329e889ff42b098d20964532db5627b7f"
+    },
+    {
+      "id": "BOOT-00139",
+      "kind": "local",
+      "path": "local/research/codex/rescue-R2-feedback-r1/cycles/run.json",
+      "bytes": 18749,
+      "sha256": "61b3b26a0afa8e4e12073eeb27cf16e99b8b1e6f5a77aeed2ded550455559452"
+    },
+    {
+      "id": "BOOT-00140",
+      "kind": "local",
+      "path": "local/research/codex/rescue-R2-feedback-r1/cycles/service-state.json",
+      "bytes": 23707,
+      "sha256": "1992f730f84d3f96efc0cdcc774b1154db09b0afdebd64316f4b336b92ae7f9d"
+    },
+    {
+      "id": "BOOT-00141",
+      "kind": "local",
+      "path": "local/research/codex/rescue-R2-feedback-r1/cycles/service.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "BOOT-00142",
+      "kind": "local",
+      "path": "local/research/codex/rescue-R2-feedback-r1/cycles/tcp-proxy.json",
+      "bytes": 16718,
+      "sha256": "64dad4a79a341c6db81a3b3feee0358ed9ae853f9d92dce888a4198d9a29623d"
+    },
+    {
+      "id": "BOOT-00143",
+      "kind": "local",
+      "path": "local/research/codex/rescue-R2-feedback-r1/cycles/ui-progress.jsonl",
+      "bytes": 39857,
+      "sha256": "2952df6ec6d49312abdea05b9979881e09f7139d42231fee9411733ae880bf16"
+    },
+    {
+      "id": "BOOT-00144",
+      "kind": "local",
+      "path": "local/research/codex/rescue-R2-feedback-r1/cycles/wineboot-B.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "BOOT-00145",
+      "kind": "local",
+      "path": "local/research/codex/rescue-R2-feedback-r1/cycles/wineboot.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "BOOT-00146",
+      "kind": "local",
+      "path": "local/research/codex/rescue-R2-feedback-r1/cycles/xvfb.log",
+      "bytes": 2340,
+      "sha256": "ec4b7c90b13b3abb21877599fe9cbec75c5db1971bb50cdb18042cf7133f1a8e"
+    },
+    {
+      "id": "BOOT-00147",
+      "kind": "local",
+      "path": "local/research/codex/rescue-R2-feedback-r1/preparation-failure-seal.json",
+      "bytes": 30062,
+      "sha256": "6a72497fcc61251b0b8623137fa460231248d9faf6af5ec198f2027cb85324d3"
+    },
+    {
+      "id": "BOOT-00148",
+      "kind": "local",
+      "path": "local/research/codex/rescue-R2-feedback-r1/runtime-preflight.json",
+      "bytes": 9119,
+      "sha256": "3190f53312aee83b021ad971b12abe494f59abc3e7cdc674f392216a2790c8e5"
+    },
+    {
+      "id": "BOOT-00149",
+      "kind": "local",
+      "path": "local/research/codex/rescue-R2-feedback-r1/cycles-recipe.json",
+      "bytes": 1010,
+      "sha256": "6bbf8941d497cba7ea13fd91fe5d93ce921cd11604f4923e94fb42914a9b159a"
+    },
+    {
+      "id": "BOOT-00150",
+      "kind": "local",
+      "path": "local/research/codex/wine_probe_rescue_R2_feedback.py",
+      "bytes": 55144,
+      "sha256": "d3442081b03d774a7587b73cf2a21252840d8021342558f69f477357e0875fb6"
+    }
+  ]
+}

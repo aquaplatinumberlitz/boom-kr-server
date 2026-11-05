@@ -1,0 +1,90 @@
+{
+  "id": "AUD037",
+  "trigger": "periodic",
+  "completed_through": "CP120",
+  "recorded_utc": "2026-11-05T06:18:52.576853+00:00",
+  "auditor": "Codex manual self-audit; independent review waived",
+  "read_files": [
+    "README.md",
+    "docs/PLAN.md",
+    "docs/PROTOCOL.md",
+    "docs/RESEARCH.md",
+    "docs/evidence/rescue-service/README.md",
+    "docs/evidence/checkpoints/README.md",
+    "docs/evidence/checkpoints/migration-v2.json",
+    "docs/evidence/checkpoints/storage-validation-v2.json",
+    "docs/features.json",
+    "docs/COVERAGE.md",
+    "server/probe_service.py",
+    "docs/evidence/issue-reconciliation/review.json",
+    "docs/evidence/issue-reconciliation/github-snapshot.json",
+    "local/research/codex/rescue-slot-refresh-r1/start2-verification.json",
+    "local/research/codex/rescue-slot-refresh-r1/actor-fields.json",
+    "local/research/codex/rescue-R2-contact-r1/reuse-question.json",
+    "local/research/codex/rescue-R2-feedback-r2/reset-verification.json",
+    "local/research/codex/rescue-R2-feedback-r2/feedback-verification.json",
+    "local/research/codex/rescue-R2-feedback-r2/actor-fields.json",
+    "local/research/codex/rescue-R2-feedback-r2/native-reports.json",
+    "local/research/codex/rescue-R2-feedback-r2/native-153.json",
+    "local/research/codex/rescue-R2-feedback-r2/visual-review.json",
+    "local/research/codex/rescue-R2-feedback-r1/preparation-failure-seal.json",
+    "docs/evidence/promoted-outcome/README.md"
+  ],
+  "method": "ManualorderedREADME→PLAN→PROTOCOLCP117119120→RESEARCHfeaturegaps→evidence/raw/code/migrationreports. ComparedCP119plannedR2no18/currentsecureYnegativecontrol withCP120actualR2B18/nativeboth56→26/full7 andsame-runR1result/returnedactual95,104/two121clocks/key12346. Viewed4panelreturnedrooms/R2escape, readfeedbacksamples/1002gettermodelandpeerquota64/correctkeyscope: Up159targetnotreachedandactual18later, no inferredcontactthreshold30/causalUDPfix. CheckedBwinebootfailurebeforeBattle/raw146seal/preparationexceptionprovenance; startup60onlynobodydeadline. Readv2migration117wholeobjects/166881rows/36auditsandselectiveCLI/counter120cadence. Thismanualboundedactivebranchreviewnotallclient/nativeworldsemanticverification.",
+  "findings": [
+    {
+      "id": "F1",
+      "stale": "PLANheader stillCP117/guard3active andprogressissue-rownoStart2 thoughCP119merged190/start2verified.",
+      "correction": "CurrentPLANatCP120/nextR2resultreturn afterfreshrescue; CP117guard3historical andCP119controlfailurekept, no generalreset/gateclaim.",
+      "fixed_in": [
+        "docs/PLAN.md",
+        "README.md",
+        "docs/RESEARCH.md",
+        "docs/COVERAGE.md"
+      ]
+    },
+    {
+      "id": "F2",
+      "stale": "CurrentREADMECP119pendingPR andadjacentCP117noStart2 wording looks current afterPR190/CP119Start2 andCP120freshrescue.",
+      "correction": "LinkPR190mergedbfd526b andCP120sourceforfreshR2rescue; explicitlyonlyonecompletedresult/R2active. PreserveownerREADMEintro/assets separately/no rewrite.",
+      "fixed_in": [
+        "README.md",
+        "docs/evidence/issue-reconciliation/review.json",
+        "docs/evidence/issue-reconciliation/github-snapshot.json"
+      ]
+    },
+    {
+      "id": "F3",
+      "stale": "EvidenceCP117nextslotmeasurementongoing andpre-migrationCP118noStart2 textunqualifiedhistorical; couldoverridecurrentprogress.",
+      "correction": "MarkCP117/118limitatetimeandlinklaterCP119120; nextworkonlyPLAN, no completedrecordedit.",
+      "fixed_in": [
+        "docs/evidence/rescue-service/README.md"
+      ]
+    },
+    {
+      "id": "F4",
+      "stale": "Riskoffalsecausalfeedbacktargetsuccess/contactthreshold orcompletepeertrajectory frompositive18.",
+      "correction": "CP120nativeUpfeedbacknotattained159within4s, later18atA-on-BworldY189/B159 isonesnapshot;64packetquota/touchonly/parknoack excludesfulltrajectory. CP119failurecauseunknownretained. Storepositiveobservationseparatelyfrommodelcounters/nativegetters.",
+      "fixed_in": [
+        "docs/PROTOCOL.md",
+        "docs/RESEARCH.md",
+        "docs/evidence/rescue-service/README.md"
+      ]
+    },
+    {
+      "id": "F5",
+      "stale": "Runpreparationfailurecouldbeignoredorcalledcontactfailure; provenancefilemissingduetowith_nameexception.",
+      "correction": "Preservefirst146raw/noBattle/wineboot35timeout; explainprepareexception/runtimeinputswrite/shelllaunch, r2successsetup60andcompleteprovenance. Notgameplaydeadline/policyrelaxation.",
+      "fixed_in": [
+        "docs/evidence/rescue-service/README.md",
+        "local/research/codex/rescue-R2-feedback-r1/preparation-failure-seal.json"
+      ]
+    }
+  ],
+  "remaining": [
+    "CP120selfcheckpendingcommitPRexactmerge; nextCP124/AUD037notresetperiodiccadence. CompleteCP001119records/evidence immutable.",
+    "NoR2result/secondreturn/Readyafterfreshrescue, nextsameknownnormalbothSpaceactualdeath/result, notmintedorforced; twofinishedrescuecyclesstillnotfullmatch/gate.",
+    "CP119negativecontrolR2deathno18causeunknown; currentpositivechangesnormalOSfeedback/probe/startup, no causalattribution/wholemovement/threshold/auth/lifeauthority proof.",
+    "Generalteam/aux2/fullinventory/membership/auth/codec/vanilla/K5/K6a/LANInternet remainopen; v2storeoldduplicatesretained/hostlocalrequirements explicit."
+  ]
+}
