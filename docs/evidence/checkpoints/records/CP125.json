@@ -1,0 +1,245 @@
+{
+  "id": "CP125",
+  "previous": "CP124",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-05T10:33:11.220365+00:00",
+  "context_commit": "728b79fcfa60284a5f32989fc6f37b94a7c30251",
+  "owner": "Codex",
+  "reviewer": "Codex",
+  "question": "What actualnativebranch/packets doesnormalBguestBattleexit produce, distinctfromidleBack/EOF, andcanboundednewservicepolicyreturnBtolobby/Asurvivortoroomwithoutsyntheticdeath/transportclose?",
+  "scope": "SourcefirstCP034/044/107/currentrecipe/retainedUI/VNmembershipconcepts. IsolatednoBombnormalBclick715578/control182s→actual202/86/11/service86reject; targeted2newnativebodiesE72490/E84FF0/code-match3copies/modO/native202parser. Explicitopt-inpairpolicy9tests/211total; fixed228s/normalclick/nativestacks/B24191/A175180postreturn107110/noEOF. 202retainednormalendingreuse disambiguatesnotleaveexclusive; no broadclient scan.",
+  "artifacts": [
+    {
+      "name": "CA-r2-login-logout.exe",
+      "sha256": "660447c293ce92270cb9b5815331bca976e8f156366e1fe50b217b6c12e60ce3"
+    },
+    {
+      "name": "CA-r2-stage-social.exe",
+      "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+    },
+    {
+      "name": "CA-r2-stage-social.exe Bcopy",
+      "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+    },
+    {
+      "name": "modO.bin",
+      "sha256": "a08950c833d3acab8281049def7b3dc96b221f107eeda01da3a548e34b91dce5"
+    }
+  ],
+  "locators": [
+    "CP124PR195 heade9f92e2f1f26a539813c03ae214c60efa30d2376/merge728b79fcfa60284a5f32989fc6f37b94a7c30251/CLEANMERGEABLEchecks[]. Before-source andruntime-source snapshots retained.",
+    "Control49c3fc4ba590933771cb4f0c29d1cfed27da8bfe43f835c7a53b9c844433f2e5/182.674759821s/790raw/877joins/exit0. B202seq202/payload22→86seq205empty/native11/service86rejectedround_not_returned/Bemptylobby/Ano175180; AEOF247.169634msaftercompletionteardownonly.",
+    "Fixed11a02435b108ed03584372a5a18abcb78b6a6778fe4430d2af17a51bf744e136/228.339129183s/820raw/929joins/84nativepacketcases/exit0errors0. Bactual202seq205→86seq208→lobby24191/full50; A175302/ranks1,2/1803/prepare12/107arrival1106/UIonlyA, no17/19/noEOFbeforecompletion.",
+    "New2functionsbodiesE72490→E84FF0: opcode202ctor1164C10/u8context+6C58/u8min13B07C0,2/5u32perrecord/14EBD90/send1164D50, guard6E08. stage11from12562F0(11)E724EB→1256100 atE724F7. ActualBsendstackE724A1/E85241; AendingE60F5Falso202. 12oldCP106121123normalending202 retained.",
+    "Byteequalitystatic660447/runtimeA,B e9bb4766/modOa08950/base400000/RVA=VA−400000,2ranges exportedfullaligned. InitialE72380slice startsinsideinstruction excludedbeforeE72490; notnewfinding. No othernativebodies/codecs reread. AUD039through124/next128 unchanged."
+  ],
+  "findings": [
+    {
+      "summary": "NormalBguestBattleclick noBomb emitsactual202payload22→86empty/seq+3/native13→11. Controlservice86rejectround_not_returned leavesBUIemptylobby/AstillBattle30s; teardownEOFaftercompletion notuserexit.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#normal-battle-exit",
+      "limits": "Unbombed2realmodifiedWineAB/Ahost/Bguest/ExVillage01/currentterrain; namedopt-in guest_B_202_86/defaultoff/excludesrescue. Native202NOTexitexclusive(12oldnormalendingcaptures/AcurrentE60F5Fstack). Fiveu32opaque, no originalserverauthority/death/reportauth. B202AND86/currentrole/generation/seq/unbombed prerequisite/policyforfeit/lobbyrefresh; noEOFbeforecompletion. Runtime107fullbasecursor/IDfieldnotprobedhere, onlypacketmodel6/Preparearrival/UIempty; 110runtime6. No rejoin/Start2/hostexit/postbomb/deadexit/generalroom/accountresume/fullmatch/K5/K6a/vanilla/LANInternet/gate. Copybinary/DB/pack andoldcomplete/raw immutable; AUD039through124next128.",
+      "evidence": [
+        "CTRL-00007",
+        "CTRL-00811",
+        "CTRL-00799"
+      ]
+    },
+    {
+      "summary": "E72490 sendsviaE84FF0thenresetcontext/stage11 withoutawait202reply. E84FF0guard6E08/ctor202/u8context/u8boundedcount/5u32records; knowncase22bytes0,1,0x5. Functionbytesmatch3copies/modO; nativeparser202full22/CRC7partial2. 202notexitexclusive: actualAendingE60F5Fand12priornormalendingexamples.",
+      "source": "kr_static",
+      "status": "confirmed",
+      "method": "static",
+      "canonical": "docs/PROTOCOL.md#normal-battle-exit",
+      "limits": "Unbombed2realmodifiedWineAB/Ahost/Bguest/ExVillage01/currentterrain; namedopt-in guest_B_202_86/defaultoff/excludesrescue. Native202NOTexitexclusive(12oldnormalendingcaptures/AcurrentE60F5Fstack). Fiveu32opaque, no originalserverauthority/death/reportauth. B202AND86/currentrole/generation/seq/unbombed prerequisite/policyforfeit/lobbyrefresh; noEOFbeforecompletion. Runtime107fullbasecursor/IDfieldnotprobedhere, onlypacketmodel6/Preparearrival/UIempty; 110runtime6. No rejoin/Start2/hostexit/postbomb/deadexit/generalroom/accountresume/fullmatch/K5/K6a/vanilla/LANInternet/gate. Copybinary/DB/pack andoldcomplete/raw immutable; AUD039through124next128.",
+      "evidence": [
+        "CTRL-00005",
+        "CTRL-00812",
+        "CTRL-00813",
+        "CTRL-00834",
+        "CTRL-00822"
+      ]
+    },
+    {
+      "summary": "Explicitopt-inunbombedcurrentBguest202→86pair releasesmembershipkeepsTCP/fenceabortB/no19; Bknownlobby24191, Asurvivorforfeit175180postreturn107110. Metadata/policy/fieldsopaque/defaultoff/unsupportedvariantsbounded; 211tests incl9new. No newreply202guessed.",
+      "source": "emu_choice",
+      "status": "design",
+      "method": "design",
+      "canonical": "docs/PROTOCOL.md#normal-battle-exit",
+      "limits": "Unbombed2realmodifiedWineAB/Ahost/Bguest/ExVillage01/currentterrain; namedopt-in guest_B_202_86/defaultoff/excludesrescue. Native202NOTexitexclusive(12oldnormalendingcaptures/AcurrentE60F5Fstack). Fiveu32opaque, no originalserverauthority/death/reportauth. B202AND86/currentrole/generation/seq/unbombed prerequisite/policyforfeit/lobbyrefresh; noEOFbeforecompletion. Runtime107fullbasecursor/IDfieldnotprobedhere, onlypacketmodel6/Preparearrival/UIempty; 110runtime6. No rejoin/Start2/hostexit/postbomb/deadexit/generalroom/accountresume/fullmatch/K5/K6a/vanilla/LANInternet/gate. Copybinary/DB/pack andoldcomplete/raw immutable; AUD039through124next128.",
+      "evidence": [
+        "CTRL-00830",
+        "CTRL-00881",
+        "FIX-00856",
+        "FIX-00861"
+      ]
+    },
+    {
+      "summary": "FixednormalUIactual202/86accepted/Bnative11/24191full50/lobbyroomWAITING; Achosen175302/ranks1,2/1803/native12/postreturn107arrival1106/UIBslotempty, noEOFbeforecompletion/no17,19. 929joins820raw/84packetmodels separate; onlyscopeunbombedguestexit, rejoin/Start2unmeasured.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#normal-battle-exit",
+      "limits": "Unbombed2realmodifiedWineAB/Ahost/Bguest/ExVillage01/currentterrain; namedopt-in guest_B_202_86/defaultoff/excludesrescue. Native202NOTexitexclusive(12oldnormalendingcaptures/AcurrentE60F5Fstack). Fiveu32opaque, no originalserverauthority/death/reportauth. B202AND86/currentrole/generation/seq/unbombed prerequisite/policyforfeit/lobbyrefresh; noEOFbeforecompletion. Runtime107fullbasecursor/IDfieldnotprobedhere, onlypacketmodel6/Preparearrival/UIempty; 110runtime6. No rejoin/Start2/hostexit/postbomb/deadexit/generalroom/accountresume/fullmatch/K5/K6a/vanilla/LANInternet/gate. Copybinary/DB/pack andoldcomplete/raw immutable; AUD039through124next128.",
+      "evidence": [
+        "FIX-00826",
+        "FIX-00889",
+        "FIX-00814"
+      ]
+    }
+  ],
+  "verification": [
+    {
+      "check": "Control877joins/790raw/actual20286/native11/active86reject/teardownEOFaftercompletion247ms",
+      "result": "pass",
+      "evidence": [
+        "CTRL-00006",
+        "CTRL-00007",
+        "CTRL-00832"
+      ],
+      "limits": "Unbombed2realmodifiedWineAB/Ahost/Bguest/ExVillage01/currentterrain; namedopt-in guest_B_202_86/defaultoff/excludesrescue. Native202NOTexitexclusive(12oldnormalendingcaptures/AcurrentE60F5Fstack). Fiveu32opaque, no originalserverauthority/death/reportauth. B202AND86/currentrole/generation/seq/unbombed prerequisite/policyforfeit/lobbyrefresh; noEOFbeforecompletion. Runtime107fullbasecursor/IDfieldnotprobedhere, onlypacketmodel6/Preparearrival/UIempty; 110runtime6. No rejoin/Start2/hostexit/postbomb/deadexit/generalroom/accountresume/fullmatch/K5/K6a/vanilla/LANInternet/gate. Copybinary/DB/pack andoldcomplete/raw immutable; AUD039through124next128."
+    },
+    {
+      "check": "Fixed929joins/820raw/sourcefreeze/native202sendstack/B24191/A175180cleanup/noEOF/no17,19",
+      "result": "pass",
+      "evidence": [
+        "FIX-00827",
+        "FIX-00826",
+        "FIX-00839"
+      ],
+      "limits": "Unbombed2realmodifiedWineAB/Ahost/Bguest/ExVillage01/currentterrain; namedopt-in guest_B_202_86/defaultoff/excludesrescue. Native202NOTexitexclusive(12oldnormalendingcaptures/AcurrentE60F5Fstack). Fiveu32opaque, no originalserverauthority/death/reportauth. B202AND86/currentrole/generation/seq/unbombed prerequisite/policyforfeit/lobbyrefresh; noEOFbeforecompletion. Runtime107fullbasecursor/IDfieldnotprobedhere, onlypacketmodel6/Preparearrival/UIempty; 110runtime6. No rejoin/Start2/hostexit/postbomb/deadexit/generalroom/accountresume/fullmatch/K5/K6a/vanilla/LANInternet/gate. Copybinary/DB/pack andoldcomplete/raw immutable; AUD039through124next128."
+    },
+    {
+      "check": "211server tests incl9newprofile/default/pair/reset/seq/member/body/nobomb/preflight;153nativepacketcases control69fixed84",
+      "result": "pass",
+      "evidence": [
+        "CTRL-00881",
+        "CTRL-00826",
+        "CTRL-00821",
+        "FIX-00830"
+      ],
+      "limits": "Emulatorregressions andcopiednativeframer/typedreader notoriginalserveroruntimefull107basecursor."
+    },
+    {
+      "check": "Manualimages/docs/catalog/issuelinks/artifacts/diff",
+      "result": "pass",
+      "evidence": [
+        "FIX-00889",
+        "CTRL-00809",
+        "CTRL-00819",
+        "CTRL-00003"
+      ],
+      "limits": "Scopedmanualobservation/mechanical consistency, no acceptance/gateautoclosure."
+    }
+  ],
+  "evidence": [],
+  "evidence_manifests": [
+    {
+      "path": "docs/evidence/checkpoints/evidence/CP125-Battle-exit-fixed.json",
+      "bytes": 222817,
+      "sha256": "413fc66aa18bc5e3d2a3846b17b688510e3593535a1fe039ffe25f00a80b9367",
+      "count": 891
+    },
+    {
+      "path": "docs/evidence/checkpoints/evidence/CP125-Battle-exit-control.json",
+      "bytes": 218081,
+      "sha256": "542e45510d1b6a229666b9637cbbdb34052276ccaf1c7fc5f4731a8e84b02d4a",
+      "count": 890
+    }
+  ],
+  "delta": {
+    "added": [
+      "NormalBattleB20286nativebranch/body/controlandboundedopt-inservicecompatibility/lobbyAreturn/noEOF with2newnativefunction ranges.",
+      "202commonnormalending12oldcaptures/Acurrentruntime, notexitexclusive orstatsmeaningrecovered."
+    ],
+    "corrected": [
+      "CP124normalBattleexitunknown nowresolvedonlyunbombedAhost/Bguestcase; idleBack/EOFscope staysseparate.",
+      "CP124PR195merged/currentdocsissue sync; historicalcompleteCP124 unchanged."
+    ],
+    "superseded": [
+      "NEXT-NORMAL-BATTLE-EXIT closedscopednative/servicecase; nextsameTCPBexitrejoinReadyStart2 actualpackets."
+    ]
+  },
+  "blockers": [
+    "SameTCPBnormalrejoin/Ready/Start2afterguestBattleexit notyetmeasured; earlyjoinbarrier variants unverified.",
+    "Hostexit/postbomb/deadexit/genericmember/accountresume/authority/auth/fullreset/vanilla/fullmatch/LANInternet/gatesremain."
+  ],
+  "next_steps": [
+    {
+      "id": "NEXT-NORMAL-BATTLE-EXIT",
+      "task": "KRE-005b",
+      "state": "closed",
+      "action": "CP125actualunbombedB20286/11/lobby24191/Aforfeit175180/107110room/noEOFbeforecompletion;202notexclusive, optionlimited.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-BATTLE-EXIT-REJOIN",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "PLANreuseCP035107125 samechannels/IDslot afterA180cleanup/B24191 normalBroomdoubleclick82/87/585/117/95/A104→Start2freshkey121/99/153/clock; no mintedrequests/accountreconnect/sourcechangesmidrun; actualearlyjointriggeronly. Auditnext128.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    }
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-11-05T10:33:11.220365+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "Codex solo RE/code/runtime/selfcheck, not independent approval.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Owner explicitly requested solo without Claude review."
+    }
+  },
+  "docs_sync": [
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "CP125native/control/fixed/optionalunbombedpair/202notexclusive/limits/nextrejoinStart2; nooldrecord/gatechange."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "CP125native/control/fixed/optionalunbombedpair/202notexclusive/limits/nextrejoinStart2; nooldrecord/gatechange."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "updated",
+      "reason": "CP125native/control/fixed/optionalunbombedpair/202notexclusive/limits/nextrejoinStart2; nooldrecord/gatechange."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "updated",
+      "reason": "CP125native/control/fixed/optionalunbombedpair/202notexclusive/limits/nextrejoinStart2; nooldrecord/gatechange."
+    },
+    {
+      "path": "docs/features.json",
+      "state": "updated",
+      "reason": "CP125native/control/fixed/optionalunbombedpair/202notexclusive/limits/nextrejoinStart2; nooldrecord/gatechange."
+    },
+    {
+      "path": "docs/COVERAGE.md",
+      "state": "updated",
+      "reason": "CP125native/control/fixed/optionalunbombedpair/202notexclusive/limits/nextrejoinStart2; nooldrecord/gatechange."
+    },
+    {
+      "path": "docs/evidence/battle-exit/README.md",
+      "state": "updated",
+      "reason": "CP125native/control/fixed/optionalunbombedpair/202notexclusive/limits/nextrejoinStart2; nooldrecord/gatechange."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/review.json",
+      "state": "updated",
+      "reason": "CP125native/control/fixed/optionalunbombedpair/202notexclusive/limits/nextrejoinStart2; nooldrecord/gatechange."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
+      "state": "updated",
+      "reason": "CP125native/control/fixed/optionalunbombedpair/202notexclusive/limits/nextrejoinStart2; nooldrecord/gatechange."
+    }
+  ]
+}
