@@ -1,6 +1,6 @@
 # KR 00967 — contract tương thích client gốc
 
-Revision kr-legacy-contract-r1; cập nhật05/11/2026 JST (CP129; AUD040 quaCP128, kếCP132).
+Revision kr-legacy-contract-r1; cập nhật05/11/2026 JST (CP130; AUD040 quaCP128, kếCP132).
 **Contract có bằng chứng từng phần; chưa nghiệm thu full codec K2**.
 Lộ trình và thứ tự task chỉ giữ ở [REWRITE_PLAN — KRE](PLAN.md).
 Đây là contract của repo server KR. ADR0009 của bản viết lại là nguồn lịch sử để so sánh;
@@ -4597,3 +4597,37 @@ cases riêng, 220servertests/5new. Chỉ mộtforfeit rồiR2active, chưa2compl
 Windowsvanilla/LANInternet/accountresume. Không đo UDPqueue/nativepool reset trong cácrun này.
 Verifierfailures giảđịnh noeventreports và statehost_role khôngtồn tại được giữ; sửa riêng theo no17/18/19
 và nativechief/currentR2host, không sửa raw hoặc bịa semantics39. Bước tiếp chỉPLAN, audit kếCP132.
+
+
+<a id="udp-membership-lifetime"></a>
+### Exact old UDP sau host remove107/rejoin — CP130
+
+**kr_runtime/confirmed hẹp**, [metadata/hash/recipe](evidence/udp-generation/README.md#cp130).
+Reuse CP045queue/drain, CP047–048key branch, CP070direct endpoints, CP105API→consumer/securegetters
+và CP129 hostexit/rejoin/currentservice. Không nativebody mới, không payload/CRC/key/state rewrite.
+Raw IPv4/UDP transport chỉ loopback/owned endpoints trong private namespace, preflight synthetic;
+native ingress/hash sau đó mới chứng minh client nhận. Source/profile/client/fuse giữ nguyên tới cleanup.
+
+R3 actual R1A→B17byte `10010000003800006178009f0018000475`, SHA256
+`cfca3fda346c8878609c87b8173b8c3ad7329e471781da06a10da59037e93bf1`;
+replay nguyên payload từ actualR1A99 tới actualB99, kiểm port với archived`previous_membership.init99`.
+Sau Bnative107clear ID1→0/chief1/Prepare, trướcArejoin: exacthash ingress13DE7AA/endpoint13DE949peer≠0,
+inner15 vào14E8280queue/+19byte,14E8480drain/−19byte; **không exact E66680 consumer trong cửa sổ**.
+Không suy queue đượcclear khi release membership hoặc endpoint đãbịhủy từ chỉ IDclear.
+
+Sau Arejoin/Ready/BStart2/key12346, cùnghash lại ingress→endpoint→queue/drain→E66680entry/
+E667BEcompare wire**56**/expected**59** → **E667C2key-drop**, khôngE668ADapply cho exactpayload.
+Gói R2current cùng phase vẫn có13apply, phase positive sau đó31apply/fullcursor13; R1positive29apply.
+Đây là mỏ neo gate key ở consumer, không identity/auth/wholeepoch: low8 reuse256/mode/roster-ID khác/
+source endpoint mới và toànUDPgrammar chưa đủ. R1Right có thểbịblockởx120, không gán displacement
+cho mọi callback; positive là native currentpacket apply/fullread, wrapper kiểm độc lập.
+
+R3299,981878580s/exit0/errors0/probeerrors0/1112sealedraw/1226checks/852copiednative52A350wrappers,
+135packet+12peer153 cases riêng; cùng8TCP/two121clocks/key12345→12346/oneforfeit+R2active.
+Mỗi cửa sổ chỉ bật12knownreadonlyprobes sau **Barmedack**, cap128/kind/phase; ack là observerready,
+không làreceipt. R1collectorKeyErrorinit99 sau membershiprelease trướcreplay giữ807raw/138getters.
+R2sửa archivedport,256,2825s/1146raw/336getters/2sends nhưng khôngexactoldingress vì thiếuarmedproof;
+không gọi làdrop. R3thêmack/window8s, giữ source/profile/payloadcontract; không khẳngđịnh mộtnguyênnhân
+duynhất cho R2miss. Draftanalyzer slicing sửa riêng raw[1:-1]15 và[3:-1]13 theo actualnative bytes;
+oldreport giữ, runtime/raw không sửa. Generalqueue/nativepool/fullmatch/K5/K6a/LANInternet vẫn mở.
+Bước tiếp chỉPLAN; AUD040/kế132, reviewwaived khôngđónggate.

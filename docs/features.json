@@ -1,7 +1,7 @@
 {
   "schema": "kre-feature-index-v1",
   "build": "KR00967",
-  "as_of": "CP129",
+  "as_of": "CP130",
   "sources": {
     "plan": "docs/PLAN.md",
     "contract": "docs/PROTOCOL.md",
@@ -997,7 +997,8 @@
           "docs/evidence/battle-exit/README.md",
           "docs/evidence/battle-exit/README.md#cp126",
           "docs/evidence/battle-exit/README.md#cp128",
-          "docs/evidence/battle-exit/README.md#cp129"
+          "docs/evidence/battle-exit/README.md#cp129",
+          "docs/evidence/udp-generation/README.md#cp130"
         ]
       },
       "coverage": {
@@ -1048,7 +1049,8 @@
               "docs/PROTOCOL.md#normal-battle-exit",
               "docs/PROTOCOL.md#battle-exit-rejoin",
               "docs/PROTOCOL.md#postbomb-exit-rejoin",
-              "docs/PROTOCOL.md#host-battle-exit"
+              "docs/PROTOCOL.md#host-battle-exit",
+              "docs/PROTOCOL.md#udp-membership-lifetime"
             ]
           },
           "windows_original": {
@@ -1109,7 +1111,8 @@
             "docs/PROTOCOL.md#normal-battle-exit",
             "docs/PROTOCOL.md#battle-exit-rejoin",
             "docs/PROTOCOL.md#postbomb-exit-rejoin",
-            "docs/PROTOCOL.md#host-battle-exit"
+            "docs/PROTOCOL.md#host-battle-exit",
+            "docs/PROTOCOL.md#udp-membership-lifetime"
           ]
         },
         "gate": {
@@ -1351,7 +1354,8 @@
         "evidence": [
           "docs/evidence/udp-freshness/README.md",
           "docs/evidence/probe-service/README.md",
-          "docs/evidence/current-udp-causality/README.md"
+          "docs/evidence/current-udp-causality/README.md",
+          "docs/evidence/udp-generation/README.md#cp130"
         ]
       },
       "coverage": {
@@ -1384,7 +1388,8 @@
             "state": "observed",
             "refs": [
               "docs/evidence/udp-freshness/README.md",
-              "docs/evidence/current-udp-causality/README.md"
+              "docs/evidence/current-udp-causality/README.md",
+              "docs/PROTOCOL.md#udp-membership-lifetime"
             ]
           },
           "windows_original": {
@@ -1413,7 +1418,8 @@
           "state": "partial",
           "refs": [
             "docs/evidence/probe-service/README.md",
-            "docs/evidence/current-udp-causality/README.md"
+            "docs/evidence/current-udp-causality/README.md",
+            "docs/PROTOCOL.md#udp-membership-lifetime"
           ]
         },
         "gate": {
@@ -3195,7 +3201,8 @@
           "docs/evidence/battle-exit/README.md#cp126",
           "docs/evidence/battle-exit/README.md#cp127",
           "docs/evidence/battle-exit/README.md#cp128",
-          "docs/evidence/battle-exit/README.md#cp129"
+          "docs/evidence/battle-exit/README.md#cp129",
+          "docs/evidence/udp-generation/README.md#cp130"
         ]
       },
       "coverage": {
@@ -3244,7 +3251,8 @@
               "docs/PROTOCOL.md#battle-exit-rejoin",
               "docs/PROTOCOL.md#battle-exit-pending-bomb",
               "docs/PROTOCOL.md#postbomb-exit-rejoin",
-              "docs/PROTOCOL.md#host-battle-exit"
+              "docs/PROTOCOL.md#host-battle-exit",
+              "docs/PROTOCOL.md#udp-membership-lifetime"
             ]
           },
           "windows_original": {
@@ -3307,7 +3315,8 @@
             "docs/PROTOCOL.md#battle-exit-rejoin",
             "docs/PROTOCOL.md#battle-exit-pending-bomb",
             "docs/PROTOCOL.md#postbomb-exit-rejoin",
-            "docs/PROTOCOL.md#host-battle-exit"
+            "docs/PROTOCOL.md#host-battle-exit",
+            "docs/PROTOCOL.md#udp-membership-lifetime"
           ]
         },
         "gate": {
@@ -3415,7 +3424,8 @@
           "docs/evidence/battle-exit/README.md#cp126",
           "docs/evidence/battle-exit/README.md#cp127",
           "docs/evidence/battle-exit/README.md#cp128",
-          "docs/evidence/battle-exit/README.md#cp129"
+          "docs/evidence/battle-exit/README.md#cp129",
+          "docs/evidence/udp-generation/README.md#cp130"
         ]
       },
       "coverage": {
@@ -3520,7 +3530,8 @@
               "docs/PROTOCOL.md#battle-exit-rejoin",
               "docs/PROTOCOL.md#battle-exit-pending-bomb",
               "docs/PROTOCOL.md#postbomb-exit-rejoin",
-              "docs/PROTOCOL.md#host-battle-exit"
+              "docs/PROTOCOL.md#host-battle-exit",
+              "docs/PROTOCOL.md#udp-membership-lifetime"
             ]
           },
           "windows_original": {
@@ -3676,7 +3687,8 @@
             "docs/PROTOCOL.md#battle-exit-rejoin",
             "docs/PROTOCOL.md#battle-exit-pending-bomb",
             "docs/PROTOCOL.md#postbomb-exit-rejoin",
-            "docs/PROTOCOL.md#host-battle-exit"
+            "docs/PROTOCOL.md#host-battle-exit",
+            "docs/PROTOCOL.md#udp-membership-lifetime"
           ]
         },
         "gate": {

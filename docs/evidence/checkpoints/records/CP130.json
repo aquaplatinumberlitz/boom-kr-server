@@ -1,0 +1,246 @@
+{
+  "artifacts": [
+    {
+      "name": "CA-r2-login-logout.exe",
+      "sha256": "660447c293ce92270cb9b5815331bca976e8f156366e1fe50b217b6c12e60ce3"
+    },
+    {
+      "name": "CA-r2-stage-social.exe",
+      "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+    },
+    {
+      "name": "CA-r2-stage-social.exe Bcopy",
+      "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+    },
+    {
+      "name": "modO.bin",
+      "sha256": "a08950c833d3acab8281049def7b3dc96b221f107eeda01da3a548e34b91dce5"
+    }
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-11-05T12:10:56.804239+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "Codex solo RE/code/runtime/selfcheck, not independent approval.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Owner explicitly requested solo without Claude review."
+    }
+  },
+  "owner": "Codex",
+  "reviewer": "Codex",
+  "id": "CP130",
+  "previous": "CP129",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-05T12:10:56.804239+00:00",
+  "context_commit": "f5ab2df2ff3dfe4b1dc7171213d9996bb508c49b",
+  "question": "ExactR1AUDP afterhostremove107/IDclear andafterArejoin/Start2: nativeendpoint/queue/drain/gameconsumer/key/apply vs currentpositive?",
+  "scope": "ReuseCP045queue/047048key/070directendpoint/105APIconsumer/nativegetters/129hostexit/rejoin, no newnativebody. Rawtransportpreflight/threeisolatedattempts/sourcefrozenuntilcleanup/seals; R3observerarmedackbeforeactualreplays. Production/profile/client/DB/pack unchanged, docs/canonicalgap synced.",
+  "locators": [
+    "BaselineCP129PR200heada57f7486cff9ff9d395a4249991551bc7459373e/mergef5ab2df2ff3dfe4b1dc7171213d9996bb508c49b/exactCLEANMERGEABLEchecks[].220tests sourceunchanged reused.",
+    "R1run2bffae1c8b8f290770224b4550c087564326e7b1b7e99d93d8e2968ceafc9d41/194.166617553s/exit1/807raw/KeyErrorinit99 afterrelease beforeanyreplay/no nativeprobeerrors/R1currentpositive/138getters.",
+    "R2run7abfc8641ae8041391f0e80103b1b903f85ae0da48eb949f2792b2bc6a9b266d/256.282527719s/exit0/noerrors/1146raw/336getters/twosends/exactoldnativehashabsent inwindow, notdrop/queueclear. Sourceendpointlookuponly corrected archivedprevious_membership.init99.",
+    "R3run0b0d48b9db9c612aea62bc254f88276264297c86028b84d7c8455babb2ab7169/299.981878580s/exit0/errors0/probeerror0/1112raw/1226checks/852nativegetters/135packet+12peer153cases. Same8TCP/actualhostexit/107clear/ArejoinReadyStartB2/two121clocks/currentkeys12345→12346.",
+    "R3actualoldwire10010000003800006178009f0018000475/SHA cfca3fda346c8878609c87b8173b8c3ad7329e471781da06a10da59037e93bf1. After107exactingress/endpointpeer/15queue+19/drain−19/noexactgameconsumerinwindow. R2samehashgameentry/key56expected59/drop/noapply; current13+31apply/fullcursor13.",
+    "ReusedVA13DE7AA/13DE949/14E8280/14E8378/14E8480/14E8577/14E85B7/E66680/E667BE/E667C2/E668AD/E668B2/52A350, no newbody; modOa08950/base400000/RVA=VA−400000/runtimee9bb4766/static660447."
+  ],
+  "findings": [
+    {
+      "summary": "AfterBnative107ID1→0/Prepare/beforeArejoin, exactactualR1A17bytehash replay fromactualoldA99 still reaches13DE7AA/endpointpeer≠0/15bytequeue+19/drain−19; noexactE66680gameconsumer inboundedwindow. MembershipIDclear didnotprove endpointdestroyed/queuecleared.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#udp-membership-lifetime",
+      "limits": "ModifiedWine2realAB/sameCP129production/profile/client/fuse6, privateownedloonly/no-route. ExactactualR1A17bytepayload replay via generatedIPv4UDPtransportheaders/sameactualA99source/B99destination. R3readonlyBarmedack/finite8s128eventwindows. Onehostexit/rejoin/key12346, oneforfeit+R2active. No allqueueclear/auth/wholeUDPgrammar/rosterIDchange/keyreuse256/nativepool/accountresume/fullmatch/K5/K6a/vanilla/LANInternet/gate. R1collectorfailurebeforereplay/R2noexactoldingress remainsnotdrop; allraw/oldcompleteimmutable/AUD040next132.",
+      "evidence": [
+        "R3-01136",
+        "R3-01206",
+        "R3-01112"
+      ]
+    },
+    {
+      "summary": "AfterArejoin/Ready/BStart2/currentkey12346, exactsameR1hash ingress→endpoint→queue/drain→E66680entry/E667BEwire56expected59/E667C2keydrop/noE668ADapply. CurrentR2native13applysamephase and31laterpositive/fullcursor13; no auth/wholeepoch/allqueues inference.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#udp-membership-lifetime",
+      "limits": "ModifiedWine2realAB/sameCP129production/profile/client/fuse6, privateownedloonly/no-route. ExactactualR1A17bytepayload replay via generatedIPv4UDPtransportheaders/sameactualA99source/B99destination. R3readonlyBarmedack/finite8s128eventwindows. Onehostexit/rejoin/key12346, oneforfeit+R2active. No allqueueclear/auth/wholeUDPgrammar/rosterIDchange/keyreuse256/nativepool/accountresume/fullmatch/K5/K6a/vanilla/LANInternet/gate. R1collectorfailurebeforereplay/R2noexactoldingress remainsnotdrop; allraw/oldcompleteimmutable/AUD040next132.",
+      "evidence": [
+        "R3-01136",
+        "R3-01206",
+        "R3-01116"
+      ]
+    },
+    {
+      "summary": "Observerarmack onlyproofall12readonlybreakpoints enabled before replay; rawtransportpreflight synthetic plusactualnativehashjoins prove scopedreceipt, not transportlogalone. Payload/key/CRC intact, generatedIPUDPheaders/sameownedendpoints; source/profile/fuse unchanged.852copied52A350wrappers/135packet+12peer153 models separatefromruntime.",
+      "source": "kr_static",
+      "status": "confirmed",
+      "method": "emulation",
+      "canonical": "docs/PROTOCOL.md#udp-membership-lifetime",
+      "limits": "ModifiedWine2realAB/sameCP129production/profile/client/fuse6, privateownedloonly/no-route. ExactactualR1A17bytepayload replay via generatedIPv4UDPtransportheaders/sameactualA99source/B99destination. R3readonlyBarmedack/finite8s128eventwindows. Onehostexit/rejoin/key12346, oneforfeit+R2active. No allqueueclear/auth/wholeUDPgrammar/rosterIDchange/keyreuse256/nativepool/accountresume/fullmatch/K5/K6a/vanilla/LANInternet/gate. R1collectorfailurebeforereplay/R2noexactoldingress remainsnotdrop; allraw/oldcompleteimmutable/AUD040next132.",
+      "evidence": [
+        "R3-01141",
+        "R3-01142",
+        "R3-01137",
+        "R1-00824",
+        "R3-01166"
+      ]
+    },
+    {
+      "summary": "R1metadataKeyError before replay retained; R2archivedportfix butobserverreadinessunknown/exacthashabsent notdrop. R3armedack resolvesactualmeasurement; no proofsolecauseR2miss. Draftanalyzerwrongrawslices separatelycorrectedto[1:-1]15/[3:-1]13 fromnativebytes; raw/oldreports/source unchanged.",
+      "source": "design",
+      "status": "design",
+      "method": "documentation",
+      "canonical": "docs/PROTOCOL.md#udp-membership-lifetime",
+      "limits": "ModifiedWine2realAB/sameCP129production/profile/client/fuse6, privateownedloonly/no-route. ExactactualR1A17bytepayload replay via generatedIPv4UDPtransportheaders/sameactualA99source/B99destination. R3readonlyBarmedack/finite8s128eventwindows. Onehostexit/rejoin/key12346, oneforfeit+R2active. No allqueueclear/auth/wholeUDPgrammar/rosterIDchange/keyreuse256/nativepool/accountresume/fullmatch/K5/K6a/vanilla/LANInternet/gate. R1collectorfailurebeforereplay/R2noexactoldingress remainsnotdrop; allraw/oldcompleteimmutable/AUD040next132.",
+      "evidence": [
+        "R1-00818",
+        "R2-01164",
+        "R2-00001",
+        "R3-01163"
+      ]
+    }
+  ],
+  "verification": [
+    {
+      "check": "R3raw/sourcefreeze/isolation/same8TCP/twoepochs/native121clock2/2exactnativepayloadreplays/Barmacks/queue19drain19/key56≠59drop/currentfull13",
+      "result": "pass",
+      "evidence": [
+        "R3-01135",
+        "R3-01136",
+        "R3-01149"
+      ],
+      "limits": "ModifiedWine2realAB/sameCP129production/profile/client/fuse6, privateownedloonly/no-route. ExactactualR1A17bytepayload replay via generatedIPv4UDPtransportheaders/sameactualA99source/B99destination. R3readonlyBarmedack/finite8s128eventwindows. Onehostexit/rejoin/key12346, oneforfeit+R2active. No allqueueclear/auth/wholeUDPgrammar/rosterIDchange/keyreuse256/nativepool/accountresume/fullmatch/K5/K6a/vanilla/LANInternet/gate. R1collectorfailurebeforereplay/R2noexactoldingress remainsnotdrop; allraw/oldcompleteimmutable/AUD040next132."
+    },
+    {
+      "check": "852nativegetter/135packet/12peer153/docs/catalog/issues/artifacts/diff;220baseline server tests reused unchanged source",
+      "result": "pass",
+      "evidence": [
+        "R3-01140",
+        "R3-01142",
+        "R3-01137",
+        "R3-01127",
+        "R3-01134",
+        "R3-00003",
+        "R3-01213"
+      ],
+      "limits": "Mechanical/model checks not semantic/gateapproval."
+    },
+    {
+      "check": "R1failedcollector before replay/R2partialobserver window and draftanalyzer framing",
+      "result": "observed",
+      "evidence": [
+        "R1-00823",
+        "R1-00867",
+        "R2-01163",
+        "R2-01206",
+        "R2-00001"
+      ],
+      "limits": "R1errorinit99 notclientfailure; R2noexacthash notnative-drop. Sourcefailure/raw retained/newoutretry."
+    }
+  ],
+  "evidence": [],
+  "evidence_manifests": [
+    {
+      "path": "docs/evidence/checkpoints/evidence/CP130-udp-membership-R1.json",
+      "bytes": 213968,
+      "sha256": "0093a9d24721759677d820ae519e51e4a1508b3d0de006a2ff821585c91b5dbe",
+      "count": 870
+    },
+    {
+      "path": "docs/evidence/checkpoints/evidence/CP130-udp-membership-R2.json",
+      "bytes": 297521,
+      "sha256": "2af53716d16eae3224659f3e002897dfba6d88090cae1617a8a6dddb4f7d31bd",
+      "count": 1209
+    },
+    {
+      "path": "docs/evidence/checkpoints/evidence/CP130-udp-membership-R3.json",
+      "bytes": 298678,
+      "sha256": "b478d335a10090bf105765dc808cd1a07927476d7c57220f11f13f41b29a46d8",
+      "count": 1213
+    }
+  ],
+  "delta": {
+    "added": [
+      "Same-runoldpayload afterhostmembershipremove107 thenrejoinStart2 nativeendpointqueue/drain/keydrop/currentpositive evidence."
+    ],
+    "corrected": [
+      "CurrentUDPmembershiplifetime gap nowansweredonlyactualA/BsameIDs/sources/onekey transition, notallqueueclear/auth.",
+      "Collector mustreadarchivedR1init99 aftermembershiprelease; observerackrequired beforeciting replayabsence; nativewirequeue/gameoffsets corrected innewanalyzeronly.",
+      "CP129PR200merged/currentdocs and issue14 synced."
+    ],
+    "superseded": [
+      "NEXT-UDP-MEMBERSHIP-LIFETIME closedscope, NEXT-SHARED-BLOCKER active perPLAN."
+    ]
+  },
+  "blockers": [
+    "Sharedblocker/nativeorder/currentterrainmodel equivalence notyetmeasured, needactualmapgeometry/control.",
+    "GenericrosterID/keyreuse256/otherUDPgrammar/allqueue/nativepool/generalreset/auth/authority/fullmatch/vanilla/LANInternet/gates remain."
+  ],
+  "next_steps": [
+    {
+      "id": "NEXT-UDP-MEMBERSHIP-LIFETIME",
+      "task": "KRE-005b",
+      "state": "closed",
+      "action": "CP130R3exactnativepayload endpoint/queue/drainafter107 thenStart2keydrop/currentapply withobserverack; scope/limitslinked.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-SHARED-BLOCKER",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "PLAN sourcefirstCP090/095/122123/currentmap195flags/model, selectactualsharedblocker/twoactualbombgeometry+control andorder/readnativeflags; nofakewall/List2override/allmapscan.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    }
+  ],
+  "docs_sync": [
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "CP130exactnativejoins/scope/attemptfailures/provenance/currentgap/issue/catalog synchronized, no oldcomplete/gate changes."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "CP130exactnativejoins/scope/attemptfailures/provenance/currentgap/issue/catalog synchronized, no oldcomplete/gate changes."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "updated",
+      "reason": "CP130exactnativejoins/scope/attemptfailures/provenance/currentgap/issue/catalog synchronized, no oldcomplete/gate changes."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "updated",
+      "reason": "CP130exactnativejoins/scope/attemptfailures/provenance/currentgap/issue/catalog synchronized, no oldcomplete/gate changes."
+    },
+    {
+      "path": "docs/features.json",
+      "state": "updated",
+      "reason": "CP130exactnativejoins/scope/attemptfailures/provenance/currentgap/issue/catalog synchronized, no oldcomplete/gate changes."
+    },
+    {
+      "path": "docs/COVERAGE.md",
+      "state": "updated",
+      "reason": "CP130exactnativejoins/scope/attemptfailures/provenance/currentgap/issue/catalog synchronized, no oldcomplete/gate changes."
+    },
+    {
+      "path": "docs/evidence/udp-generation/README.md",
+      "state": "updated",
+      "reason": "CP130exactnativejoins/scope/attemptfailures/provenance/currentgap/issue/catalog synchronized, no oldcomplete/gate changes."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/review.json",
+      "state": "updated",
+      "reason": "CP130exactnativejoins/scope/attemptfailures/provenance/currentgap/issue/catalog synchronized, no oldcomplete/gate changes."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
+      "state": "updated",
+      "reason": "CP130exactnativejoins/scope/attemptfailures/provenance/currentgap/issue/catalog synchronized, no oldcomplete/gate changes."
+    }
+  ]
+}

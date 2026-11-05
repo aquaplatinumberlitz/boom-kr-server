@@ -92,3 +92,34 @@ python3 local/research/codex/udp-generation-r1/seal_run.py new-stale
 Mỗi run giữ recipe argv/harnessSHA; read-only breakpoint probes, copy-only và isolation như trên.
 Không K6a/fullmatch/LAN/Internet. CP045 record/tự kiểm hoàn tất, review độc lập waived;
 CP044/PR52 là baseline đã merge, tích hợp CP045 qua PR nhánh. AUD014/CP044, audit định kỳ kếCP048.
+
+
+<a id="cp130"></a>
+## CP130 — Membership remove/rejoin và exactoldUDP trên currentservice
+
+[Contract/giới hạn](../../PROTOCOL.md#udp-membership-lifetime), [gap](../../RESEARCH.md#gap-udp-freshness).
+Raw local/research/codex/udp-membership-r{1,2,3}; sourcefirst`reuse-question.json` CP045/047048/070/105/
+129/VNgame/KRdata; reuseknown12sites/no newnativebody/codec. Production/profile/client/map/fuse6
+khôngđổi trong3run hoặc giữa bất kỳrun nào. Privateuser/net/mount/PID/onlylo/no-route/filesNSS/
+onelease/twoprefix-display, aftercleanup seal từng cycles. Binary/DB/pack/oldcomplete bấtbiến.
+
+|Run|Kết quả|run.json SHA256|
+|---|---|---|
+|R1|194,166617553s/exit1/807raw; metadataKeyError init99 saurelease, trướcanyreplay; R1currentpositive/no probeerror/138copiedgetters.|`2bffae1c8b8f290770224b4550c087564326e7b1b7e99d93d8e2968ceafc9d41`|
+|R2|256,282527719s/exit0/1146raw; archivedR1portlookupfixed,2rawsends/currentnativepositive/336getters; noexactoldhashingress trongwindow, khôngdropclaim.|`7abfc8641ae8041391f0e80103b1b903f85ae0da48eb949f2792b2bc6a9b266d`|
+|R3|299,981878580s/exit0/noerrors/1112raw/1226checks/852getters; nativeBarmedackbefore2sends/exactingressqueue/drainafter107; Start2oldkeydrop/currentapply.|`0b0d48b9db9c612aea62bc254f88276264297c86028b84d7c8455babb2ab7169`|
+
+R1 `raw-udp-preflight.json` synthetic ownedloopbacksockets/IP_HDRINCLpayload/sourceendpoint pass;
+actualreplay uses capturednativeR1wire, onlyIPv4/UDPheadersgenerated, checksumvalidatedoffline0.
+AckaddedR3onlyreadonlyBprobeready;128/kind/phase/8swindows/final6s. Exact17byteR1SHA/sourceport→
+endpointpeer/15queue19/drain19→13consumer/key/applysource in `udp-observations.json`, primaryproof
+`membership-verification.json`; wrapper native52A350 in `native-getters.json`. R3full135packet+12peer153
+models separate from runtime, not worldserveroracle. R1+R2+R3raw=3065, no2completedmatch/gateclaim.
+
+R1failedscript/log retained, metadataendpointfrom`last_room_leave.previous_membership.init99` only after
+cleanup/newoutretry; R2miss notnative-drop. `analysis-framing-correction.json` retains draftwrongoffsets,
+new`analyze_udp_membership_framing.py` exact[1:-1]/[3:-1] validatedagainstnative. R3probeack differsR2,
+noassertunobserved singlecause, no rewritingrawtosucceed. No clientgamecall/statepatch/keyrewrite.
+CP129PR200head`a57f748`/merge`f5ab2df` exactCLEAN/MERGEABLE/checks[], receipt inhostcontrolroot.
+CP130selfcheck/currentchange/reviewwaived; AUD040through128/next132. NextworkonlyPLAN; semantic
+acceptance/authority/gates notautomatic from checker/hash/clock/window.
