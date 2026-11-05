@@ -112,4 +112,38 @@ Preparation lần đầu thiếu file `parse_chain.py` trong nguồnCP126; fail 
 sửa limits trong report cho đúng CP127mode/nativepoolunknown; verifier/assertions/raw giữ nguyên.
 215server tests chạy lại; AUD040 periodic qua128/kế132 đọc canonical/raw/source, sửa headerPROTOCOL
 staleCP105, README/PLAN/issue pendingPR198/auditCP124 và gap guest đã giải. Oldcomplete/raw không sửa.
-CP128 tự kiểm trong thay đổi hiện tại, reviewwaived; K0–K7 vẫn mở. Việc tiếp chỉ PLAN.
+CP128/PR199 merged`1b11fe4`, reviewwaived; K0–K7 vẫn mở. Việc tiếp chỉ PLAN.
+
+
+<a id="cp129"></a>
+## CP129 — Host normalexit/control/fixed và same-channel rejoin/Start2
+
+[Contract/giới hạn](../../PROTOCOL.md#host-battle-exit), [gap](../../RESEARCH.md#gap-room-membership).
+Raw trong local/research/codex/host-battle-exit-{control,fixed,rejoin}-r1; mỗi run có recipe/preflight/
+runtime-source/raw-seal, privateuser/net/mount/PID/chỉlo/no-route/filesNSS/exclusivelease/two-prefix-display.
+`reuse-question.json` pin CP107/125–128/known20286/107110/VNlobby+game/KRdata; khôngbody/codec mới.
+
+| Run | Kết quả | run.json SHA256 |
+|---|---|---|
+|control|199,685678163s/exit0/errors0/874raw/969joins/69nativecases; actualA202190/86193/native11, guestpolicyreject/Bno17518045s/noEOF.|`a1e2fe1ae4d532d079eb40a26cb2221e47258b9392b8afd2a205ca88a576e501`|
+|fixed|205,688539272s/exit0/errors0/913raw/1023joins/84nativecases; hostmode20286admit/A24191/full50/sảnh; B175302/1803/107ID1→0/base6→0→1/chief1/phòng.|`46cde7ef10ca0747478a091864fdc5879228893805cdbcf447030b5d5380e62e`|
+|rejoin|256,568428149s/exit0/errors0/1149raw/1271joins/135native+12peer153; actualArejoin82/585/95/B104/currentkey12346/two121clocks/same8TCP/202markerreset/R2hostB.|`33d968a725980a63b1a87289c95133af791f46f308db210987250d97c1f54e64`|
+
+`policy-decision.json` namedhostmode/unbombed/no17,19/knownhostBackprofile; default/oldguest không đổi.
+Control chỉ đổi người bấm exit B→A từ recipe known; fixed source/namedmode+5CP107fixtures+readonly107
+probes khác được công bố. Samecopy/map/fuse6/normalUI, không nativecall/mintframe/killthayexit hoặc
+sourceconfig giữa run. Rejoin giữ nguyên fixedsource/profile/probes, đổi OSactions có precondition.
+`visual-review-control-fixed.json`/rejoin`visual-review.json` xem6ảnh nguồn; runtime logs/capture là
+proof chính, không UIalone/fullmatch. Model nativeframer/getters/checksum tách runtime/originalauthority.
+
+Failures giữ nguyên: controlchecker giảđịnh event_reports rỗng, thực có2subtype39opaque → bản riêng
+kiểm no17/18/19; fixedchecker hỏi statehost_role khôngtồn tại → bản riêng giữ sameBconnection và
+nativechief1/107clear, rejoin thêm R2hostB/actualB104. Mỗi root có `analysis-correction.json`; không
+đổi raw/criteria còn lại hoặc phân loại39 theo suy đoán. 220servertests gồm5hostpolicy/config/race/seq/
+preflight/earlyjoin/rejoinStartB; currentnativepool/transportqueue/generalreset vẫn chưa đo.
+
+CP128/PR199 head`e480cd2` merge`1b11fe4` exactCLEAN/MERGEABLE/checks[]. FirstqueryUNKNOWN bịassert;
+outer shell thiếu fail-fast đã launch control trước merge. Source/config không đổi/preflightintact,
+giữ runcleanup và lỗiđiềuphối tại postbomb-exit-rejoin-r1/handoff-shell-correction.json; merge chỉ sau
+retry exacthead hợp lệ. First `pr199-merged.json` thực ghiOPEN, receipt đúng `pr199-merged-confirmed.json`.
+CP129selfcheck trong thay đổi hiện tại/reviewwaived/AUD040qua128/kế132; gate/oldcomplete/raw giữ nguyên.

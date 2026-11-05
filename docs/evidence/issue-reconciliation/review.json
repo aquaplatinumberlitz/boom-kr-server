@@ -1,6 +1,6 @@
 {
   "schema": "kre-issue-review-v1",
-  "as_of": "CP128",
+  "as_of": "2026-11-05",
   "baseline": "408c535bb7028b626c5ac7bde583e979f7e3a658",
   "method": "Codex manual acceptance review; native/static/model/design/merge/gate distinct; originalissuebodies archivedlocalbeforeedit, no completecheckpoint rewrite",
   "issues": [
@@ -132,11 +132,11 @@
         "KR-S001",
         "KR-S002"
       ],
-      "known": "CP127/PR198 merged c5f07c1; CP128 same-run pendingBexit/fence/no158/rejoin/Ready/Start2/native121/clocks/same8TCP/key12346, one forfeit then R2active;1385joins1091raw/144+12nativecases/215tests.",
-      "remaining": "Normal host Battle exit/Bsurvivor; generic variants/nativepool/fullauth/authority/reset/LANInternet/gates.",
-      "next_test": "PLAN bounded unbombed normal A Battle exit control: actual20286/native stage/service rejection or admission/B survivor; reuse guest consumer and idle host promotion only where applicable.",
+      "known": "CP128/PR199merged1b11fe4. CP129hostAactual20286/native11/controlguestpolicyreject; newhostunbombedmode/fixedA24191/B175180/107ID1→0/chief1; sameTCPArejoinReady/BStart2/native121clocks/key12346,3runs2936raw3263joins/220tests.",
+      "remaining": "UDP membership lifetime/remove107/rejoin boundary; nativepool/generalreset/auth/authority/fullmatch/LANInternet/gates.",
+      "next_test": "PLAN sourcefirst knownUDPqueue/oldkeyguard/currentnetfilter/proxy; boundedactualR1A capture/replay afterB107clear andafterStart2key vs currentpositive, nativeconsumer/actorID/XY. No duplicate key-only experiment.",
       "acceptance": "Epic checklist: linkedscopedtask/evidence+authoritymatrix vàacceptancegate ởPLAN; từngtaskđóng khôngđóngepic/K5/K6a.",
-      "reason": "Keep epic/gates open; scoped guest integration resolved, not fullmatch/K6a. AUD040 periodic through128/next132; oldcomplete immutable.",
+      "reason": "Host unbombed scope resolved; oneforfeit+R2active notfullmatch/gate. AUD040through128 next132; full otherissue reviews keep dated baseline.",
       "sources": [
         "docs/PROTOCOL.md#authority",
         "docs/RESEARCH.md#feature-gaps",
@@ -146,14 +146,16 @@
         "docs/PROTOCOL.md#rescue-return-start-guard",
         "docs/PROTOCOL.md#rescue-round2-feedback",
         "docs/PROTOCOL.md#postbomb-exit-rejoin",
-        "docs/RESEARCH.md#gap-disconnect-replacement"
+        "docs/RESEARCH.md#gap-disconnect-replacement",
+        "docs/PROTOCOL.md#host-battle-exit"
       ],
       "evidence": [
         "docs/evidence/current-movement-cycles/README.md",
         "docs/evidence/host-normal-back/README.md",
         "docs/evidence/promoted-outcome/README.md",
         "docs/evidence/rescue-service/README.md",
-        "docs/evidence/battle-exit/README.md#cp128"
+        "docs/evidence/battle-exit/README.md#cp128",
+        "docs/evidence/battle-exit/README.md#cp129"
       ],
       "prs": [
         173,
@@ -176,7 +178,8 @@
         195,
         196,
         197,
-        198
+        198,
+        199
       ],
       "successors": []
     },
@@ -503,6 +506,6 @@
       "successors": []
     }
   ],
-  "as_of_utc": "2026-11-05T11:18:09.262162+00:00",
-  "limits": "Manual acceptance review as of CP109; GitHub is source for current work status, snapshot ages. No newtracker/plan/contract/gate acceptance. Completedmanifestrecords immutable, currenttask_states reconciled only in appendedcheckpoint."
+  "as_of_utc": "2026-11-05T11:40:20.606187+00:00",
+  "limits": "Manual initial issue review has its dated baseline; #14 incrementally updated through CP129. GitHub snapshot has capture UTC only; no semantic/acceptance/gate auto-certification. Completed checkpoint records remain immutable."
 }

@@ -41,20 +41,21 @@ Hai copy KR Wine đã chạy login/sảnh/phòng/Battle và các chu kỳ kết 
 [kim/reset](docs/PROTOCOL.md#needle-round-reset), [cứu hai chiều và hai kết quả](docs/PROTOCOL.md#rescue-two-results),
 [deep chain/reset](docs/PROTOCOL.md#recursive-chain-cycles) giữ phạm vi và giới hạn tại nguồn chuẩn.
 
-**Mốc mới CP128:** một bom B đang chờ → normal exit → kết quả forfeit/A về phòng → B vào lại/Ready →
-A Start lần hai, cùng 8 TCP connections; key12345→12346/native121/clock cả hai. Job cũ bị `round_closed`,
-không158; marker202 không lọt sang Start2. [Contract/giới hạn](docs/PROTOCOL.md#postbomb-exit-rejoin),
-[raw/hash/recipe](docs/evidence/battle-exit/README.md#cp128). Một kết quả rồi R2 đang chạy,
-không phải hai trận hoàn chỉnh; native pool reset chưa được probe riêng.
+**Mốc mới CP129:** host A normal exit202/86 → B nhận kết quả/về phòng/chuyển chủ → A vào lại làm
+guest/Ready → B Start2, cùng8TCP/key12346/native121/clocks cả hai. Control đã bắt đúng lỗi policy;
+fixed đo native107 xóa ID1→0 và chiefB=1. [Contract/giới hạn](docs/PROTOCOL.md#host-battle-exit),
+[raw/hash/recipe](docs/evidence/battle-exit/README.md#cp129). Chế độ opt-in chỉ host A khôngbom/no17,19;
+guest modes cũ giữ nguyên. Một forfeit rồi R2active, không hai trận hoàn chỉnh.
 
-CP127 đã merge [PR198](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/198) tại `c5f07c1`.
-CP128 hoàn tất docs/evidence/tự kiểm trong thay đổi hiện tại; review độc lập
-[waived](docs/evidence/checkpoints/review-waiver.json). Lịch sử checkpoint/merge tra bằng CLI/Git;
+CP128 đã merge [PR199](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/199) tại `1b11fe4`.
+CP129 hoàn tất docs/evidence/tự kiểm trong thay đổi hiện tại; review độc lập
+[waived](docs/evidence/checkpoints/review-waiver.json). Tra lịch sử bằng CLI/Git;
 [đối chiếu issue](docs/evidence/issue-reconciliation/README.md) có snapshot theo thời điểm.
-#1/#2/#3/#9/#14 và K0–K7 giữ mở theo acceptance, không nâng gate từ checkpoint.
+#1/#2/#3/#9/#14 và K0–K7 giữ mở theo acceptance.
 
-Blocker kế: host thoát Battle bằng UI chưa được hỗ trợ/đo như guest; phép thử và thứ tự chỉ ở
-[PLAN](docs/PLAN.md#current-order). Full auth/validator/authority, general reset và nhiều máy vẫn thiếu.
+Khoảng trống kế: UDP/queue qua lifetime membership khi host exit/rejoin; không đo lại old-key guard
+đã có. [PLAN](docs/PLAN.md#current-order) giữ duy nhất thứ tự. Full auth/validator/authority,
+general reset và nhiều máy vẫn thiếu.
 Audit định kỳ **AUD040 qua CP128**, kế **CP132**. Theo [yêu cầu chủ dự án](docs/evidence/owner-directives/continuous-work.json),
 tiếp tục ngay việc kế sau checkpoint/PR.
 

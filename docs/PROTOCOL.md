@@ -1,6 +1,6 @@
 # KR 00967 — contract tương thích client gốc
 
-Revision kr-legacy-contract-r1; cập nhật05/11/2026 JST (CP128; AUD040 quaCP128, kếCP132).
+Revision kr-legacy-contract-r1; cập nhật05/11/2026 JST (CP129; AUD040 quaCP128, kếCP132).
 **Contract có bằng chứng từng phần; chưa nghiệm thu full codec K2**.
 Lộ trình và thứ tự task chỉ giữ ở [REWRITE_PLAN — KRE](PLAN.md).
 Đây là contract của repo server KR. ADR0009 của bản viết lại là nguồn lịch sử để so sánh;
@@ -4564,3 +4564,36 @@ Chỉ một chosen forfeit/result/return rồi R2active, không hai completed ma
 K5/K6a/vanilla/LANInternet. Host/dead/multiple/alreadyblast/earlyjoin/generalreset/authority vẫn thiếu.
 Phạm vi lịch sử CP126/127 giữ nguyên; gap postbombexit+rejoin trong scope này đã giải ở CP128.
 Bước tiếp chỉ PLAN; AUD040 qua128/kế132, review độc lập waived, gate giữ mở.
+
+
+<a id="host-battle-exit"></a>
+### Host A normal Battle exit/B promotion/Arejoin/Start2 — CP129
+
+**kr_runtime/confirmed hẹp; emu_choice/design cho admission/result/cleanup**, [recipe/hash](evidence/battle-exit/README.md#cp129).
+Tái dùng CP125 E72490/E84FF0/20286, CP107 idlehost promotion/guestA fixtures và CP126–128 normalrejoin;
+không thêm thân hàm native hoặc port số VN. Control199,685678163s: actual host A202seq190/22byte →
+86seq193/empty/native11/E724F0, currentguestmode reject202membership/86round_not_returned; B không175/
+180 trong45s, A sảnh trống/B còn Battle, noEOF trước completion. Có hai subtype39 tự phát, semantics
+chưa gán; không gọi control là không có report. 202 vẫn không phải gói chỉ riêng quit: B gửi từ ending.
+
+Opt-in `battle_exit: {"mode":"host_A_202_86"}` yêu cầu known `host_back_rejoin.mode=idle_A_to_B`/
+5fixture guestA và preflight trước release. Chỉ Ahost/currentmappedlive2realAB/noBomb/noaccepted17,19;
+202 context0/count1/fiveu32 opaque →86empty/forwardseq/samegeneration, kiểm lại scope tại86.
+Release Amembership, giữ TCP, finishfence/abortA; reuse chosenforfeit Bwin175 sau12s/180 sau5s/
+postreturn107+110chief sau3s, không gửi107 khi B còn Battle, không giả19 hoặc thêm202reply.
+A nhận241/91(roomlistB) sau1s. Promotion tại cleanup sau Breturn; earlyAjoin trước Bchief bị reject,
+sau cleanup reuse known CP10782/585/guestA95/B104. Oldguest/default giữ nguyên; mode mới chỉAhost,
+không mode gộp mọi leave, hostpending/dead/multiple/synthetic/authority đều ngoài scope.
+
+Fixed205,688539272s/noerror: actualA20286/admit/native11/A24191/full50/sảnh KRoomWAITING;
+B175302/ranks2,1/1803/stage12/post107 slot0/id1→0, basecursor6/rewind0/UIreread1 khônglỗi,
+nativechief1/full1106, UIphòng chỉB. NoEOF trướccompletion/noBomb/no17,18,19. Source/profile thêm
+namedmode+5knownfixtures và readonly107/chiefprobes, nêu rõ nhiều thay đổi, không single-variableclaim.
+
+Rejoin256,568428149s cùngsource/profile/probes: Aexit/B175180/107clear-chief → actualA82/585/95/B104,
+cùng8TCP, ID1,2/slot0,1/key12345→12346, native121129/clocks2 mỗi view/actual99/153; marker202reset.
+A87full7/ownmatch1/chief0, R2hostB. Tổng3run2936raw/3263joins, 288copied-native packet+12peer153
+cases riêng, 220servertests/5new. Chỉ mộtforfeit rồiR2active, chưa2completedresults/fullmatch/K5/K6a/
+Windowsvanilla/LANInternet/accountresume. Không đo UDPqueue/nativepool reset trong cácrun này.
+Verifierfailures giảđịnh noeventreports và statehost_role khôngtồn tại được giữ; sửa riêng theo no17/18/19
+và nativechief/currentR2host, không sửa raw hoặc bịa semantics39. Bước tiếp chỉPLAN, audit kếCP132.
