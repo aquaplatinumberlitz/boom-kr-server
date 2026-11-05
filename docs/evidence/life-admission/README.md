@@ -37,4 +37,4 @@ cócapture/proxy/currentepochs/2native121/clocks/full1707/nativeboth56→26/two1
 Parktarget đạt299; Up399→334→269→194trong4s không159, actual18later; khôngcausalinput/thresholdfix,
 peerquota/trajectory giữ giới hạnCP120. Fullauth/lifeauthority/vanilla/fullmatch/K5/K6a/LAN/Internet mở.
 
-CP124selfcheck/chờPR/reviewwaived, gate khôngđóng. Sourcebinary/DB/pack vàcompletedrecords bất biến.
+CP124/PR195 merged`728b79f`, reviewwaived, gate khôngđóng. Sourcebinary/DB/pack vàcompletedrecords bất biến.
