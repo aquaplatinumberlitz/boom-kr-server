@@ -1,6 +1,6 @@
 # KR 00967 — contract tương thích client gốc
 
-Revision kr-legacy-contract-r1; cập nhật06/11/2026 JST (CP142; AUD043 quaCP140, kếCP144).
+Revision kr-legacy-contract-r1; cập nhật06/11/2026 JST (CP143; AUD043 quaCP140, kếCP144).
 **Contract có bằng chứng từng phần; chưa nghiệm thu full codec K2**.
 Lộ trình và thứ tự task chỉ giữ ở [REWRITE_PLAN — KRE](PLAN.md).
 Đây là contract của repo server KR. ADR0009 của bản viết lại là nguồn lịch sử để so sánh;
@@ -4954,3 +4954,39 @@ máy**, chưa fullmatch/K5/K6a/physicalLAN/K6b/Internet/K6c. Chưa selected malf
 run mới hoặc disconnect giữa trận, không tự đóng consistency/authority/gate. Không giải general UDP
 reliability/NAT/fullgrammar/fullinventory/CP137complexUI/sharedgeometry. IP1/subtype39 opaque;
 rank/fuse/drop/address là emulator policy. Bước tiếp duy nhất ở PLAN; AUD043qua140/kếCP144.
+
+
+<a id="virtual-tcp-guard-cycles"></a>
+### Selected TCP replay guard cùng virtual movement/two cycles — CP143
+
+**kr_runtime/confirmed trong fault injection; proxy/validator/rank là design/emu_choice.**
+[Recipe/raw/hash/giới hạn](evidence/peer-endpoints/README.md#cp143). Reuse CP106/137 ReplayProxy,
+CP142 profile/production/observers/input; chỉ đổi proxy bind10.77.0.1:3858→service23858 và chọn
+actualA118/124/127:17,19 (A là bên chết hiện tại). Hai childTCPforward vẫn đích3858; **UDP direct**.
+Proxy giữ client-front native frames riêng, re-encode upstream/currentouterseq khi cần, giữ body;
+S2C forward nguyên byte/archive, không coi proxy frame là client native writer hoặc original auth.
+
+Cùng run có **8 same body** (4 mỗi vòng) và **4 old body** (vòng1→2 sau actualA39 current marker).
+Mỗi frame ghép originbodySHA/frontseq/upstreamseq+SHA/serviceguard/nativeframer/getters. Same118
+bị `duplicate_bomb_serial`, old118 `bomb_round_key_mismatch`, không cấpID. Same124 bị
+`claim_not_current_or_already_consumed`, old124 `round_key_mismatch`, không165. Same17/19 bị
+`duplicate_report_body`, old17/19 `report_tick_not_forward`, không170. Đây là policy guard hẹp;
+không suy report39 có nghĩa ACK hoặc chọn nó làm world oracle, chỉ dùng marker freshness của recipe.
+
+Có87 guard/integration checks; A135 actualfrontframes→147upstream (12proxy replay), B141→141.
+876 front framer emulation cases kiểm valid/CRC/partial; upstream typed getter/report model tách
+khỏi runtime. Không thừa acceptedbombID (1,2), native159/158 mỗi view2,165 mỗi view4,175180 mỗi
+view2;170 phát đúng report accepted, không replay effect. Policy begin/finish2/itemconsume4/
+bombdeadline2. Raw source/config frozen và không service/controller error.
+
+Cùng run vẫn bốn finite movement windows/nativekeyXORID/target/currentprogress, BombFire effects
+1,1→2,1→2,2 và reset clock2 ở cảhai view, hai actualA118power2/currenttrapSHA/death/survivorresult/
+175180110/195seed/keyIDreset. Barrier25,652/25,540s<30. FinalactualB95seq457/SHA
+`c94d21262a645dfe9f2786dc065a88e8e322706a5949cccf79c0b8350948c914` ghép front/upstream,
+additional native110full6/errors0 và ảnh readybadge cảhai; không Start3.
+
+Giới hạn: exact captured same/old body, không arbitrary forgedcurrentkey/freshserial/location/tick/
+identity/fullcodec/auth/fullUDPgrammar/reliability. Không actual guestEOF giữa trận trong run này;
+shutdown cleanup cuối phép thử không phải disconnect acceptance. Không fullmatch/K5/K6a/physicalLAN/
+NAT/Internet hoặc đóng CP137complexUI/sharedgeometry/fullinventory/authority debt. Operator IP/rank/
+fuse/drop vẫn policy. Bước tiếp duy nhất PLAN; AUD043qua140, audit kếCP144.

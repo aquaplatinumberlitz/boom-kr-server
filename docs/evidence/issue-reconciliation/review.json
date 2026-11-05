@@ -135,11 +135,11 @@
         "KR-F001",
         "KR-F015"
       ],
-      "known": "CP141/PR212 mergedb1f2c72; CP142 same-run productionvirtual4peerwindows/currentkeytargetfreshprogress/BombFireeffectsbothviews/basic2survivorendings/reset/Ready95seq457-native110. R1observermappingfailuresealed/r2roleBfix/nativecodeunchanged.",
-      "remaining": "SelectedTCPguardinsameproductionprofile/disconnect/fullinventoryreset/authority/fullauth/LAN/NAT/gates/CP137complexUI/sharedgeometry remain.",
-      "next_test": "PLAN reuseCP106/137capturedbodyReplayProxyonprivatebind3858→23858/currentseq/S2Cunchanged/directUDP. ActualA11812417,19 source/8same+4oldaftercurrent39; verifyupstreamvsnativeSHA/rejection/noextras/2resetReady.",
+      "known": "CP142/PR213merged062906a; CP143selected8same4oldcapturedbodyTCPguards/currentseq/frontupstreamSHA/noextraID165170 cùngvirtual4movementwindows/BombFire/native2endings/reset/Ready.",
+      "remaining": "ActualpendingguestEOF after2normalcycles oncurrentvirtualprofile; proxyEOFpropagationrequiresbench. Fullauth/authority/forgedcurrentbody/fullreset/physicalLAN/NAT/gates/CP137complexUI/sharedgeometry remain.",
+      "next_test": "PLAN socketsbenchprivateTCPproxyEOFbidirectional/readbeforeEOF thensame-run2completecycles+Ready→normalStart3/B118pending→killownedCA-Bonly/beforedeadline; actualfront/upstream/serviceEOF/fence/no158/nofakedeath/nativeAforfeit175180107110/slotIDclear/render/noStart4. CP144periodicauditdue.",
       "acceptance": "Epic checklist: linkedscopedtask/evidence+authoritymatrix vàacceptancegate ởPLAN; từngtaskđóng khôngđóngepic/K5/K6a.",
-      "reason": "Scoped same-runmovement+2lifecyclegapclosed; noarbitraryforgedbody/auth/fullmatch/gateclaim; preserveobserverpartial/failedanalysisdrafts.",
+      "reason": "Selectedcapturedsame/oldTCPguardintegrationclosed; notwholevalidator/auth/gate. Endcleanupnotdisconnectproof; realfaultnext scopedreuse.",
       "sources": [
         "docs/PROTOCOL.md#authority",
         "docs/RESEARCH.md#feature-gaps",
@@ -163,7 +163,8 @@
         "docs/PROTOCOL.md#virtual-peer",
         "docs/PROTOCOL.md#virtual-basic-cycles",
         "docs/PROTOCOL.md#service-address-config",
-        "docs/PROTOCOL.md#virtual-movement-cycles"
+        "docs/PROTOCOL.md#virtual-movement-cycles",
+        "docs/PROTOCOL.md#virtual-tcp-guard-cycles"
       ],
       "evidence": [
         "docs/evidence/current-movement-cycles/README.md",
@@ -184,7 +185,8 @@
         "docs/evidence/peer-endpoints/README.md#cp139",
         "docs/evidence/peer-endpoints/README.md#cp140",
         "docs/evidence/peer-endpoints/README.md#cp141",
-        "docs/evidence/peer-endpoints/README.md#cp142"
+        "docs/evidence/peer-endpoints/README.md#cp142",
+        "docs/evidence/peer-endpoints/README.md#cp143"
       ],
       "prs": [
         173,
@@ -221,7 +223,8 @@
         209,
         210,
         211,
-        212
+        212,
+        213
       ],
       "successors": []
     },
@@ -548,6 +551,6 @@
       "successors": []
     }
   ],
-  "as_of_utc": "2026-11-05T17:46:04.633689+00:00",
-  "limits": "Dated manual dispositions through CP142; capture snapshot UTC only, no semantic/gate certification; complete history immutable."
+  "as_of_utc": "2026-11-05T18:01:35.717679+00:00",
+  "limits": "Dated manual dispositions through CP143; snapshotcapture UTC only/no semantic or gate certification; immutable completehistory."
 }

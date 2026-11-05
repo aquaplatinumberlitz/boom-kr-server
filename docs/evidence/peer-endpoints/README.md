@@ -192,3 +192,32 @@ phòng cảhai/readybadge sauinput. Native/emulation:1314actor/408peergetters/29
 pass hoặc giấu. Known complex-routeCP137UI/sharedgeometry/physicalLAN/NAT/Internet/fullauth/authority/
 fullmatch/gates mở. CP142 pendingPR/selfcheck; reviewwaived, AUD043qua140/kế144. Tiếp PLAN ghép
 selected current/same-old TCP bodies vào profile này, tránh thêm tracker hoặc RE lại codec.
+
+
+<a id="cp143"></a>
+## CP143 — Selected same/old TCP guard trên production virtual2cycles
+
+Baseline CP142/PR213 merge`062906a`, production không đổi/reuse231tests; nguồn/hash/build/locator
+pin trong `local/research/codex/virtual-tcp-guard-r1/reuse-question.json`. [Contract](../../PROTOCOL.md#virtual-tcp-guard-cycles),
+[câu hỏi](../../RESEARCH.md#gap-diagnostic-service), [thứ tự](../../PLAN.md#current-order).
+CP106/137 proxy đổi rootprivatebind3858→23858 và actualA17/19 source; CP142 input/profile/consumer
+reused, không body native mới/portVN opcode/layout. S2C forward/archive, UDPdirect/noaddressshim.
+
+Run`virtual-tcp-guard-r1/cycles`:344,196s/exit0/**1882raw**, run.json SHA256
+`4eb9bf57efcecd6eb69a3a313abf73e690e94a5a410b0623a92fb6d7a7900dca`.
+`guard-integration-verification.json`87checks/8same4old/actualbodySHA/front-upstreamseq/nativegetter/
+guardrejection/noextraIDs165170; A135front→147upstream/B141→141,876frontoraclecases. Replays do
+proxy phát, không gán emission cho nativeclient. Source S2Cunchanged/archive không thay fullwirecapture.
+`basic-verification.json`3950joins/2native175180110/reset/currenttrap/195/keyID/Ready cuối;
+`endpoint-peer-verification.json`632joins/4windows/26recipientapplies/8targetchanges/currentprogress,
+`movement-wire-verification.json`1423joins/624vethrecords/sourceactual99/ownership/currentepoch.
+70pickupchecks/eight viewrounditemjoins,25addressReadychecks/actualB95seq457/native110both/noStart3.
+Actor1386/peer408copiedgetters,333typedpacket/12native153/46UDPCRC và2364flaggetter+2340arraychecks là model riêng; không cộng thành gameplayproof. Metadata nguồn
+emulation ở actor-fields/peer-getter/native-reports/native153/CRC/flag-readers; full index pin tất cả.
+`visual-review.json` pin4ảnhgốc/contact đã xem:phòng/badgeReady sau input cảhai. Preflight/rawseal
+sourcefrozen/cleanup hoàn tất, không binary/DB/packsourcechange.
+
+Không fullmatch/K6a/LAN/NAT/Internet/fullinventory/originalauthauthority/CP137complexUI/sharedgeometry;
+selectedcapturedbody guards không là arbitraryforgedinputvalidator. CP143selfcheck/pendingPR,
+reviewwaived/AUD043through140/next144. TiếpPLAN actualpendingguestEOF sau hai vòng, trước đó kiểm
+TCPmeasurementproxyEOFpropagation để không nhầm proxy giữ upstream với client/server lỗi.
