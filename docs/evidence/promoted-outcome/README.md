@@ -71,3 +71,19 @@ StrictfourphaseR1currentprogress failed giữ `return2-target-check.txt`, không
 runCP1094phase. Bước kế tra đúngreceiver/window/quota/late snapshots trênraw trước thêmruntime.
 Service/profile/sourcebinary/pack/DB giữ nguyên; prefix copies riêng, namespace/lease/lo-only/filesNSS.
 611feedbackedges Aexplicitrole, khôngrecordAdoBwrite, khônggọi timingchange causalfix. Không gate/fullmatch.
+
+
+<a id="cp111"></a>
+## CP111 — Phân tích lại receiver pre/post, không chạy runtime mới
+
+CP110/PR180 đãmerge `7c5d4eae6aac367049c73851d3b012e1a336aa4a`; baseline này cho CP111.
+Rawreceiver/runtime giữnguyênởreturn2-visual-r3; analysismớiở`local/research/codex/receiver-prepost-r1/`.
+`reuse-question.json`pin cache/raw/CP098106consumer; `peer-prepost-verification.json`556checks/
+4pha/targetchange/currentprogress+freshpostinputs, `peer-getter-verification.json`360native52A350/
+`peer-crc-verification.json`49CRC. Không thêm nativebody, gamecall, forcefield hoặc runtime.
+
+[Contract/giới hạn](../../PROTOCOL.md#receiver-prepost) lànguồnduynhất. OldCP110strictbefore-only
+vẫnfail đúng statistic của nó; callbackcuốicóafter219 vàfreshsample294 giải missingprogress.
+Firstnewanalysis vẫnđòideferredvariant vàfail; `analyze_prepost_initial.py`/failure giữ, finalquestion
+chỉđòi4phaseprepostprogress+existingpercallbranch checks, report4snap/0nonzerodeferred, khônggiả
+coverageCP106branch. CP110completehistory/evidence unchanged. CP111selfcheck/chờPR, auditperiodic112.

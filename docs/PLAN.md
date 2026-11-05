@@ -1,7 +1,7 @@
 # Kế hoạch server giả lập KR 00967
 
 Nguồn chuẩn của project `boom-kr-server`; bản nhập từ plan đã được dsh1/dsh2 review tại `1eee46d`.
-Cập nhật05/11 JST (CP110): [hai nativeoutcome/reset Bhost](PROTOCOL.md#promoted-outcome); CP108/PR177 đãmerge; AUD034qua109; periodicAUD033qua108/kế112.
+Cập nhật05/11 JST (CP111): [hai nativeoutcome/reset Bhost](PROTOCOL.md#promoted-outcome); CP108/PR177 đãmerge; AUD034qua109; periodicAUD033qua108/kế112.
 
 
 ### Mục tiêu, baseline và phạm vi
@@ -37,7 +37,7 @@ với client Rust không chứng minh có thể điều khiển client KR bằng
 
 ### Tiến độ hiện hành theo bằng chứng
 
-| Task/mốc | Trạng thái tại CP110 | Nguồn chuẩn |
+| Task/mốc | Trạng thái tại CP111 | Nguồn chuẩn |
 |---|---|---|
 | KRE-004/issue6 | Đã review/merge PR7 và đóng issue:recipe r1 đến local accept;không phải full K1 | [Wine r1](evidence/wine/README.md) |
 | Bootstrap reply | PR8 đã merge;debugger ProcessPatchreturn1,không ép success | [bootstrap evidence](evidence/bootstrap-wire/README.md) |
@@ -60,18 +60,17 @@ KRE-005b/issue14 vẫn mở. Các bước dưới là **thứ tự ưu tiên**, 
 xong checkpoint/commit/PR thì chuyển ngay việc kế tiếp trong thứ tự này, không tự dừng/chờ nhắc.
 Một blocker chỉ kết thúc nhánh đo tương ứng; ghi rõ rồi tiếp việc độc lập có thể làm, không tự đóng gate.
 
-1. **KR-F002/X002 — đối chiếu receiver R1 sau mẫu movement quá sớm:**
-   [CP110](PROTOCOL.md#return2-visual) đã giải secondreturnUI: phòng vẽ ởmốcunfocused4s,
-   nativePrepareStage/110 lỗi0/A95seq868/two-sided110 sauReady. Không cần lặpY389/focus hoặc
-   RE lại Ready writer. CP109 giữ nguyên proof4pha trên run riêng; strict4pha runCP110 thiếu
-   currentpositionprogress R1-A-Down, không tự coi thành công UI là movementgate.
-   Trước runtime nữa, đọc CP098/106known API→key→target/current và rawCP110: phân biệt quota/window
-   sampling với nativechưa tiến triển. Đối chiếu receiverB protectedtarget/prepost, snapshotmuộn
-   đãpin/cùngactor/round; chỉ thêm phép đo edge cònthiếu nếu raw không đủ, không đổi law/time đểpass.
-   Epic [#14](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/14) giữ acceptance/gates;
-   #178đãgiaoPR179/merge8f3ea2f/đóng vàđãtiếpRE. Không tạotasktrùng.
-   <!-- active-issue: 14 -->
-   AUD034qua109; periodicAUD033qua108/kế112; khôngtựnângK5/K6a/fullmatch/LANInternet.
+1. **KR-F006/F008/S001 — firstseen/current-generation admission còn thiếu:**
+   [CP111](PROTOCOL.md#receiver-prepost) đãgiảireceiverR1 từrawCP110: before-onlystatistic bỏafter219,
+   freshpostinput294 cósẵn;4phaseprepost556relations/360getters/49CRC. CP110UI/95/110 cũngđãmergePR180.
+   KhôngchạylạiY389/Ready/4phase hoặc nhầmbranchcoverage4snap/0deferred vớitoànmotionlaw.
+   Tiếp source-firstCP062/063/067/085/currentservice/roomclaim vàVNitems/game reference đúngcâu hỏi:
+   firstseen124/127đúngkey/seq/slot nhưngsaiinventory/location/life-context cònđượcadmit thế nào?
+   Lập bounded model/control từactualbody đãpin, phânbiệt fixturepolicy/validation shadow với nativeKR;
+   khôngtựthêmpositionauthority/portVNopcode hoặc gọichặnduplicate làfullvalidator. Chỉruntime nếu cần
+   giải consumer/effect chưađo. [#14](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/14) giữepic,
+   acceptancegates chưađóng, khôngtạo tasktrùng. <!-- active-issue: 14 -->
+   AUD034qua109; periodicAUD033qua108/kế112.
 2. **KR-B003/KR-F006 — nợ có giới hạn:** [CP057](PROTOCOL.md#codec-stream-boundaries) đã đo stream/
    seq/bounds trong model, không mở lại76split hoặc cấp buffer lớn chỉ để vượt allocationguardFFFFFFFF.
    Full modes/prefix guard/live reset, distance/auth/transport/kim-cứu của reportguard giữ trong RESEARCH;
@@ -97,7 +96,7 @@ Bảng này chỉ phân công/thứtự; acceptance/PR/bằngchứng ởissue. [
 
 | Thứ tự/scope | Issue | Trạng thái/phần còn thiếu |
 |---|---|---|
-| Hiện hành RE | [#14/KRE-005b](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/14) | CP110 UI/Ready sau return2 đã đo; thiếu receiver R1 tiến triển trong run này, xem mục1. #178 đã hoàn thành theo PR179. |
+| Hiện hành RE | [#14/KRE-005b](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/14) | CP110UI/Ready/CP111receiverprepostđãđo; firstseen/currentgenerationadmission cònthiếu, xem mục1. #178 đã hoàn thành theo PR179. |
 | Control theo trigger/gate | [#1/KRE-001](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/1), [#2/KRE-002](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/2) | Windowsoriginal/ownership/K0K1/fullbootstrapconfig; reuseWine/import/replyđãđo. |
 | Codec/identity khi cần | [#3/KRE-003](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/3), [#9/KRE-005a](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/9) | Fullcodec/livebounds vàintermittentmainstartupcause cònthiếu; khônglặpprimitive/auxiliarylocale. |
 

@@ -33,13 +33,14 @@ CP110 xác nhận **sau hai vòng Battle trên copy Wine, cả A/B hiện lại 
 ảnh đầu đen, tới mốc chờ4giây đã vẽ phòng trước thao tác focus mới; native110 đủ6/6/lỗi0,
 A phát95/seq868 và cảhai đọc110 sau đó. [Contract/giới hạn](docs/PROTOCOL.md#return2-visual),
 [evidence](docs/evidence/promoted-outcome/README.md). Chưa thử Start trận3, fullmatch/K6a/LAN/Internet.
-CP109 vẫn là nguồn4pha movement/12callback; kiểm movement4pha của run CP110 thiếu tiến triển R1,
-không dùng UI thành công để che failure này. Bước kế đối chiếu mẫu receiver R1 với native snapshot muộn.
+[CP111](docs/PROTOCOL.md#receiver-prepost) giải gapreceiver từrawCP110: verifier cũ chỉthốngkê
+beforeXY, callbackcuối đãđổi159→219 rồifreshsample294. Proof4phaseprepost mới giữscopebranch4snap/0deferred;
+failurecũgiữnguyên, không thêmruntime hoặc nânggate. Bước kế firstseen/current-generation guards theoPLAN.
 
 [Đối chiếu issue](docs/evidence/issue-reconciliation/README.md): #178 đã giao và đóng sau
 [PR179](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/179), merge `8f3ea2f`;
 #1/#2/#3/#9/#14 còn mở. Snapshot có UTC; lịch sử checkpoint không sửa.
-CP110 tự kiểm/chờPR, review [waived](docs/evidence/checkpoints/review-waiver.json).
+CP110 [PR180](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/180) đãmerge `7c5d4ea`; CP111 tự kiểm/chờPR, review [waived](docs/evidence/checkpoints/review-waiver.json).
 Audit gần nhất **AUD034/CP109**, periodic kế **CP112**; K0–K7 vẫn mở.
 [Yêu cầu chủ dự án](docs/evidence/owner-directives/continuous-work.json): tiếp tục ngay việc kế trong
 PLAN sau mỗi checkpoint/commit/PR, không tự dừng/chờ nhắc.
