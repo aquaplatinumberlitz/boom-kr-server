@@ -1,7 +1,7 @@
 {
   "schema": "kre-feature-index-v1",
   "build": "KR00967",
-  "as_of": "CP127",
+  "as_of": "CP128",
   "sources": {
     "plan": "docs/PLAN.md",
     "contract": "docs/PROTOCOL.md",
@@ -995,7 +995,8 @@
           "docs/evidence/rescue-service/README.md#cp117",
           "docs/evidence/rescue-service/README.md#cp119",
           "docs/evidence/battle-exit/README.md",
-          "docs/evidence/battle-exit/README.md#cp126"
+          "docs/evidence/battle-exit/README.md#cp126",
+          "docs/evidence/battle-exit/README.md#cp128"
         ]
       },
       "coverage": {
@@ -1044,7 +1045,8 @@
               "docs/PROTOCOL.md#rescue-return-start-guard",
               "docs/PROTOCOL.md#rescue-slot-refresh",
               "docs/PROTOCOL.md#normal-battle-exit",
-              "docs/PROTOCOL.md#battle-exit-rejoin"
+              "docs/PROTOCOL.md#battle-exit-rejoin",
+              "docs/PROTOCOL.md#postbomb-exit-rejoin"
             ]
           },
           "windows_original": {
@@ -1102,7 +1104,8 @@
             "docs/evidence/promoted-battle-cycles/README.md",
             "docs/evidence/promoted-outcome/README.md",
             "docs/PROTOCOL.md#normal-battle-exit",
-            "docs/PROTOCOL.md#battle-exit-rejoin"
+            "docs/PROTOCOL.md#battle-exit-rejoin",
+            "docs/PROTOCOL.md#postbomb-exit-rejoin"
           ]
         },
         "gate": {
@@ -1459,7 +1462,8 @@
           "docs/evidence/promoted-battle-cycles/README.md",
           "docs/evidence/promoted-outcome/README.md",
           "docs/evidence/three-bomb-chain/README.md#cp122",
-          "docs/evidence/battle-exit/README.md#cp127"
+          "docs/evidence/battle-exit/README.md#cp127",
+          "docs/evidence/battle-exit/README.md#cp128"
         ]
       },
       "coverage": {
@@ -1513,7 +1517,8 @@
               "docs/evidence/promoted-battle-cycles/README.md",
               "docs/evidence/promoted-outcome/README.md",
               "docs/PROTOCOL.md#recursive-chain",
-              "docs/PROTOCOL.md#battle-exit-pending-bomb"
+              "docs/PROTOCOL.md#battle-exit-pending-bomb",
+              "docs/PROTOCOL.md#postbomb-exit-rejoin"
             ]
           },
           "windows_original": {
@@ -1569,7 +1574,8 @@
             "docs/evidence/promoted-battle-cycles/README.md",
             "docs/evidence/promoted-outcome/README.md",
             "docs/PROTOCOL.md#recursive-chain",
-            "docs/PROTOCOL.md#battle-exit-pending-bomb"
+            "docs/PROTOCOL.md#battle-exit-pending-bomb",
+            "docs/PROTOCOL.md#postbomb-exit-rejoin"
           ]
         },
         "gate": {
@@ -3183,7 +3189,8 @@
           "docs/evidence/host-normal-back/README.md",
           "docs/evidence/battle-exit/README.md",
           "docs/evidence/battle-exit/README.md#cp126",
-          "docs/evidence/battle-exit/README.md#cp127"
+          "docs/evidence/battle-exit/README.md#cp127",
+          "docs/evidence/battle-exit/README.md#cp128"
         ]
       },
       "coverage": {
@@ -3230,7 +3237,8 @@
               "docs/evidence/host-normal-back/README.md",
               "docs/PROTOCOL.md#normal-battle-exit",
               "docs/PROTOCOL.md#battle-exit-rejoin",
-              "docs/PROTOCOL.md#battle-exit-pending-bomb"
+              "docs/PROTOCOL.md#battle-exit-pending-bomb",
+              "docs/PROTOCOL.md#postbomb-exit-rejoin"
             ]
           },
           "windows_original": {
@@ -3290,7 +3298,8 @@
             "docs/evidence/host-normal-back/README.md",
             "docs/PROTOCOL.md#normal-battle-exit",
             "docs/PROTOCOL.md#battle-exit-rejoin",
-            "docs/PROTOCOL.md#battle-exit-pending-bomb"
+            "docs/PROTOCOL.md#battle-exit-pending-bomb",
+            "docs/PROTOCOL.md#postbomb-exit-rejoin"
           ]
         },
         "gate": {
@@ -3396,7 +3405,8 @@
           "docs/evidence/life-admission/README.md",
           "docs/evidence/battle-exit/README.md",
           "docs/evidence/battle-exit/README.md#cp126",
-          "docs/evidence/battle-exit/README.md#cp127"
+          "docs/evidence/battle-exit/README.md#cp127",
+          "docs/evidence/battle-exit/README.md#cp128"
         ]
       },
       "coverage": {
@@ -3499,7 +3509,8 @@
               "docs/PROTOCOL.md#death-lifecycle-policy",
               "docs/PROTOCOL.md#normal-battle-exit",
               "docs/PROTOCOL.md#battle-exit-rejoin",
-              "docs/PROTOCOL.md#battle-exit-pending-bomb"
+              "docs/PROTOCOL.md#battle-exit-pending-bomb",
+              "docs/PROTOCOL.md#postbomb-exit-rejoin"
             ]
           },
           "windows_original": {
@@ -3652,7 +3663,8 @@
             "docs/PROTOCOL.md#death-lifecycle-policy",
             "docs/PROTOCOL.md#normal-battle-exit",
             "docs/PROTOCOL.md#battle-exit-rejoin",
-            "docs/PROTOCOL.md#battle-exit-pending-bomb"
+            "docs/PROTOCOL.md#battle-exit-pending-bomb",
+            "docs/PROTOCOL.md#postbomb-exit-rejoin"
           ]
         },
         "gate": {

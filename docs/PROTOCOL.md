@@ -1,6 +1,6 @@
 # KR 00967 — contract tương thích client gốc
 
-Revision kr-legacy-contract-r1; cập nhật05/11/2026 JST (CP105; AUD032 quaCP104).
+Revision kr-legacy-contract-r1; cập nhật05/11/2026 JST (CP128; AUD040 quaCP128, kếCP132).
 **Contract có bằng chứng từng phần; chưa nghiệm thu full codec K2**.
 Lộ trình và thứ tự task chỉ giữ ở [REWRITE_PLAN — KRE](PLAN.md).
 Đây là contract của repo server KR. ADR0009 của bản viết lại là nguồn lịch sử để so sánh;
@@ -4543,3 +4543,24 @@ Verifierkếthừa sozero sai giữfailure; bản riêng so đúng decodedcaptur
 đổi body/scope/criteria. Lần chạy bản mới thiếuPYTHONPATHcũng giữlog; runnerenvsửa, rawkhôngđổi.
 Chưa postbombexit/rejoinStart2/hostexit/afterblast/multiple/deadexit/generalreset/auth/fullmatch/gates.
 Bước kế chỉ PLAN, AUD039/kếCP128; sourcebinary/DB/pack/oldcomplete/raw bất biến.
+
+
+<a id="postbomb-exit-rejoin"></a>
+### Pending B bomb/normal exit/rejoin/Start2 cùng run — CP128
+
+**kr_runtime/confirmed trong scope copy Wine; policy vẫn emu_choice/design**, [metadata/hash](evidence/battle-exit/README.md#cp128).
+Tái dùng nguyên service/profile pending-mode CP127 và recipe rejoin CP126; không thêm native function,
+opcode hoặc sửa binary. Trong242,080503262s/exit0/errors0, actual B118/native159 đủ39 hai view →
+normal B202/86/admit → finishfence/oldjob `round_closed`/no158/no terraincommit → A175302/1803/
+postreturn cleanup và B241/91 → normal B82seq274/585seq289/95seq307 → A104seq250.
+Seq chỉ so trên cùng socket; cùng8TCP connections/ID1,2/slot0,1, key12345→12346, hai native121 đủ129,
+actual99/153 và hai clock trên mỗi client. `battle_exit202` đã được xóa trước Start2.
+
+1385joins/1091raw,144copied-native packet và12peer153 cases tách khỏi runtime. Job bom R1 được giữ
+tới deadline rồi reject; toàn capture không158, chỉ một native159/view trong R1. Ảnh R2 vẽ hai actor/
+clock và không còn bom B tại ô9,3; **không probe native bomb pool/transport queue**, nên không kết luận
+toàn bộ entity/UDP reset đã sạch. Giữ source/profile/fuse6 tới cleanup, không mint request/call/kill.
+Chỉ một chosen forfeit/result/return rồi R2active, không hai completed matches/accountresume/fullmatch/
+K5/K6a/vanilla/LANInternet. Host/dead/multiple/alreadyblast/earlyjoin/generalreset/authority vẫn thiếu.
+Phạm vi lịch sử CP126/127 giữ nguyên; gap postbombexit+rejoin trong scope này đã giải ở CP128.
+Bước tiếp chỉ PLAN; AUD040 qua128/kế132, review độc lập waived, gate giữ mở.

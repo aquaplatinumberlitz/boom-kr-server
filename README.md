@@ -36,32 +36,27 @@ Tra checkpoint: `python3 tools/checkpoints.py latest`, `show CPxxx`, `evidence C
 (summary/page hoặc `--verify --require-local`); [kho v2/migration](docs/evidence/checkpoints/README.md#kho-checkpoint-v2-và-cách-đọc-chọn-lọc)
 giữ record cũ nguyên object. Không cần đọc manifest lớn.
 
-[CP115](docs/PROTOCOL.md#rescue-service) đã tích hợp và đo **cứu đồng đội** trên service opt-in:
-report18 thật, peer170/18 đủ7byte/lỗi0, native hai phía56→26 và di chuyển sau cứu trên hai view.
-Scope hai copy Wine cùng đội + một actor đối địch tổng hợp; [CP116](docs/PROTOCOL.md#rescue-reverse) thêm B được A cứu/aux0, có control khôngforward và positive native hai phía. [CP117](docs/PROTOCOL.md#rescue-return-start-guard) có result/return/ReadyB sau cứu; [CP119](docs/PROTOCOL.md#rescue-slot-refresh) đã mở Start2 bằng diagnostic slot2 refresh; [CP120](docs/PROTOCOL.md#rescue-round2-feedback) đãđo freshR2rescue/nativeboth56→26; controlCP119no18 giữnguyên. [CP121](docs/PROTOCOL.md#rescue-two-results) đã hoàn tất hai chu kỳ cứu → kết quả được chọn → về phòng, B Ready lần hai; chưa nghiệm thu fullmatch/K6a.
-[Nguồn/hash/giới hạn](docs/evidence/rescue-service/README.md); bước kế theo PLAN, gate giữ mở.
+Hai copy KR Wine đã chạy login/sảnh/phòng/Battle và các chu kỳ kết quả/reset có bằng chứng;
+**chưa nghiệm thu trận đầy đủ/K6a, LAN hoặc Internet**. [Movement/terrain hai vòng](docs/PROTOCOL.md#current-movement-cycles),
+[kim/reset](docs/PROTOCOL.md#needle-round-reset), [cứu hai chiều và hai kết quả](docs/PROTOCOL.md#rescue-two-results),
+[deep chain/reset](docs/PROTOCOL.md#recursive-chain-cycles) giữ phạm vi và giới hạn tại nguồn chuẩn.
 
-CP110 xác nhận **sau hai vòng Battle trên copy Wine, cả A/B hiện lại phòng và A Ready được**:
-ảnh đầu đen, tới mốc chờ4giây đã vẽ phòng trước thao tác focus mới; native110 đủ6/6/lỗi0,
-A phát95/seq868 và cảhai đọc110 sau đó. [Contract/giới hạn](docs/PROTOCOL.md#return2-visual),
-[evidence](docs/evidence/promoted-outcome/README.md). Chưa thử Start trận3, fullmatch/K6a/LAN/Internet.
-[CP111](docs/PROTOCOL.md#receiver-prepost) giải gapreceiver từrawCP110: verifier cũ chỉthốngkê
-beforeXY, callbackcuối đãđổi159→219 rồifreshsample294. Proof4phaseprepost mới giữscopebranch4snap/0deferred;
-failurecũgiữnguyên, không thêmruntime hoặc nânggate. [CP122](docs/PROTOCOL.md#recursive-chain) đã đo chain sâu ngoài tia root, all195flags khớp model trong ca hẹp; [CP123](docs/PROTOCOL.md#recursive-chain-cycles) ghép chain sâu với survivor/result/reset hai epoch; survivor currentterrain đã có từ CP106, không mở lại; [CP124](docs/PROTOCOL.md#death-lifecycle-policy) có corpus64report/nativeframe và guard19 opt-in đã đo hai rescue/result/return epochs; [CP125](docs/PROTOCOL.md#normal-battle-exit) đã đo B thoát Battle202→86 về sảnh, A result/return/phòng không EOF; [CP126](docs/PROTOCOL.md#battle-exit-rejoin) đã đo cùng TCP B rejoin/Ready/AStart2 tới nativeclock/key mới; [CP127](docs/PROTOCOL.md#battle-exit-pending-bomb) thêm ca đúng một bom B đang chờ: exit được nhận, timer fenced không158, Areturn/Bsảnh; bước kế postbombexit/rejoinStart2 theo PLAN; CP115–116 đã đo hai chiều A/aux1 và B/aux0.
+**Mốc mới CP128:** một bom B đang chờ → normal exit → kết quả forfeit/A về phòng → B vào lại/Ready →
+A Start lần hai, cùng 8 TCP connections; key12345→12346/native121/clock cả hai. Job cũ bị `round_closed`,
+không158; marker202 không lọt sang Start2. [Contract/giới hạn](docs/PROTOCOL.md#postbomb-exit-rejoin),
+[raw/hash/recipe](docs/evidence/battle-exit/README.md#cp128). Một kết quả rồi R2 đang chạy,
+không phải hai trận hoàn chỉnh; native pool reset chưa được probe riêng.
 
-[Đối chiếu issue](docs/evidence/issue-reconciliation/README.md): #178 đã giao và đóng sau
-[PR179](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/179), merge `8f3ea2f`;
-#1/#2/#3/#9/#14 còn mở. Snapshot có UTC; lịch sử checkpoint không sửa.
-CP110 [PR180](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/180) đãmerge `7c5d4ea`; CP111 [PR181](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/181) đãmerge `248e118`; CP112 [PR182](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/182) đãmerge `1b7f210`; CP113 [PR183](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/183) đãmerge `2695042`; CP114 [PR184](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/184) đãmerge `989dd3a`; CP115 [PR185](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/185) đãmerge `80e4d48`; CP116 [PR186](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/186) đãmerge `f33f3b8`; CP117 [PR187](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/187) đãmerge `c2ca94d`; CP118 [PR189](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/189) đãmerge `dae23b7`; CP119 [PR190](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/190) đãmerge `bfd526b`; CP120 [PR191](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/191) đã merge `18b73f1`; CP121 [PR192](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/192) đã merge `c24687a`; CP122 [PR193](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/193) đã merge `1cc76af`; CP123 [PR194](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/194) đã merge `06765c7`; CP124 [PR195](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/195) đã merge `728b79f`; CP125 [PR196](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/196) đã merge `0ac85d2`; CP126 [PR197](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/197) đã merge `408c535`; CP127 tự kiểm/chờ PR, review [waived](docs/evidence/checkpoints/review-waiver.json).
-CP112 thêm [guard envelope17/19](docs/PROTOCOL.md#death-envelope-admission) trước side effect;
-161tests và runhai-vòngBhost438,2s/actualA95seq823/native110 đãqua. Validfirstseen semantic vẫnthiếu.
-CP113 thêm [kim145 opt-in](docs/PROTOCOL.md#needle-service): actualpickup/17→1→0, một170/1,
-A/B native56→26, ôkimtrống vàmovement sauđó. 175tests qua; CP113run chỉmộtescape.
-[CP114](docs/PROTOCOL.md#needle-round-reset) thêmcurrentsecondtrapcạn→actualdeath/result/return→Start2/
-fresh145/escape, giữcùngsource/profile. R2chưa kếtthúc; CP120 đã có result/Start2freshrescue; fullinventory/gate vẫn mở.
-Audit định kỳ **AUD039/CP124**, mốc kế **CP128**; AUD038 giữ correction CP106; K0–K7 vẫn mở.
-[Yêu cầu chủ dự án](docs/evidence/owner-directives/continuous-work.json): tiếp tục ngay việc kế trong
-PLAN sau mỗi checkpoint/commit/PR, không tự dừng/chờ nhắc.
+CP127 đã merge [PR198](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/198) tại `c5f07c1`.
+CP128 hoàn tất docs/evidence/tự kiểm trong thay đổi hiện tại; review độc lập
+[waived](docs/evidence/checkpoints/review-waiver.json). Lịch sử checkpoint/merge tra bằng CLI/Git;
+[đối chiếu issue](docs/evidence/issue-reconciliation/README.md) có snapshot theo thời điểm.
+#1/#2/#3/#9/#14 và K0–K7 giữ mở theo acceptance, không nâng gate từ checkpoint.
+
+Blocker kế: host thoát Battle bằng UI chưa được hỗ trợ/đo như guest; phép thử và thứ tự chỉ ở
+[PLAN](docs/PLAN.md#current-order). Full auth/validator/authority, general reset và nhiều máy vẫn thiếu.
+Audit định kỳ **AUD040 qua CP128**, kế **CP132**. Theo [yêu cầu chủ dự án](docs/evidence/owner-directives/continuous-work.json),
+tiếp tục ngay việc kế sau checkpoint/PR.
 
 Đích đầu: hai client thật chơi hai trận liên tiếp; mở bốn client và hardening sau đó.
 
