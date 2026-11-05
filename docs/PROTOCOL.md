@@ -1,6 +1,6 @@
 # KR 00967 — contract tương thích client gốc
 
-Revision kr-legacy-contract-r1; cập nhật05/11/2026 JST (CP132; AUD041 quaCP132, kếCP136).
+Revision kr-legacy-contract-r1; cập nhật05/11/2026 JST (CP133; AUD041 quaCP132, kếCP136).
 **Contract có bằng chứng từng phần; chưa nghiệm thu full codec K2**.
 Lộ trình và thứ tự task chỉ giữ ở [REWRITE_PLAN — KRE](PLAN.md).
 Đây là contract của repo server KR. ADR0009 của bản viết lại là nguồn lịch sử để so sánh;
@@ -4689,3 +4689,35 @@ Read-onlywrapperraw/cipher/checksum/gdbrolepaths riêng, không gamecall/statewr
 ActualA17/B17 sau blast, không19/rank/return/no2rounds/fullmatch/K5/K6a/vanilla/LANInternet/gate.
 Observer overhead khácCP131 được nêu, actualgeometry/order đã kiểm lại; không timer/fuse/sourceđổi giữa run.
 AUD041 periodicqua132/kế136, reviewwaived; oldcomplete/raw giữ nguyên.
+
+
+<a id="shared-cell-state"></a>
+### Shared traversal cellstate chặn query lặp — CP133
+
+**kr_runtime/confirmed hẹp + kr_static/cachedbranch**, [recipe/hash](evidence/three-bomb-chain/README.md#cp133).
+SourcefirstCP132phaseflags/CP091query/CP092storage, cachedEA0B10vàEB9710; no newnativebody.
+Hai run cùngproduction/profile/client/map/fuse6/inputgeometry CP132, first thêmEA0B70queryreturn
+chỉô(2,3)/(2,2) maincallback2/cap32; second thêmEB9719entry/EB982Creturn samecellfilter/cap32.
+Cached2ranges EB9710/EA0B10 byteequal runtimeA/B/static/modO, không dùng equality làm runtimeproof.
+
+Runquery217,712989226s/exit0/noerrors/716raw/864basechecks: hai view mỗi phía chỉEA0B10(2,3)=1
+caller**EB975C**, rồi0caller**EB9BBB**cleanup. Khôngquery2,2trongwindow; không suyglobalabsence.
+Map/currentlinear33/wrapper/nativeEAX khớp securegetter độc lập. Phasemarker vẫnsharedflag1trước
+process2/4/3,0return. Temporal“latestprocess” chỉcontext, chưa gán calltree từthời gian.
+
+Followup216,732498767s/exit0/noerrors/712raw/861base+821celljoins: nativeEB9710 root2 vàsecondary3
+thực sự dùng **cùngcellstatepointer** ở ô(2,3), cùngmap, hai entry/returnstackframes/thread khớp.
+Rootentry state**0**, EA0B10query1 bêntrong đúngstackwindow, returnstate**2**, EAX**0**.
+Secondaryentry state**2**, returnstate**2**/EAX**0**, khôngEA0B10querytrongstackwindow.
+CachedEB9710 **EB971Ccmp[cellstate],2→EB9721…EB9745return0** đi trước EA0B10callEB9757;
+nhánh query1 đặtstate2tạiEB9763. Runtimeentry/return/queryjoin xác nhận shortcircuit trong case này,
+không phải chỉ suy từmodel. Sausecondaryreturn mớiquery0cleanupEB9BBB, trướclastrootreturn.
+
+Đây làcellstate của traversal, không nativeactortrappedstate hayallmapimmutablesnapshot. Không
+chứng minh generalglobalFIFO/BFS/everyfirstbombstop/moving/allmaps, thờiđiểm/instructionxóaflagmap,
+hoặcserverauthority. All195flags/native2→4→3/actualgeometry/laterownnoops vẫnkhớp cảhairun.
+Mỗi run18flagsnaps/3546copiedgetters3510arraychecks/153packet6peer153,4querygetters và16phasegetters
+riêng; modelgetters táchWineexecution. Actual17sau blast, không19/result/return/two-round/fullmatch/
+K5/K6a/vanilla/LANInternet/gate. Khôngclientfunctioncall/statewrite/sourcebinary/DB/packmutation.
+Bước kế chỉPLAN ghép result/reset2 bằng knownpolicy/actualreports, không mởmọi chainvariant.
+AUD041qua132/kế136, reviewwaived; completedraw/checkpoint history bất biến.

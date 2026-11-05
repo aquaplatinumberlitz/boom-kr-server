@@ -1,0 +1,240 @@
+{
+  "artifacts": [
+    {
+      "name": "CA-r2-login-logout.exe",
+      "sha256": "660447c293ce92270cb9b5815331bca976e8f156366e1fe50b217b6c12e60ce3"
+    },
+    {
+      "name": "CA-r2-stage-social.exe",
+      "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+    },
+    {
+      "name": "CA-r2-stage-social.exe Bcopy",
+      "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+    },
+    {
+      "name": "modO.bin",
+      "sha256": "a08950c833d3acab8281049def7b3dc96b221f107eeda01da3a548e34b91dce5"
+    }
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-11-05T13:02:09.627598+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "Codex solo RE/code/runtime/selfcheck, not independent approval.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Owner explicitly requested solo without Claude review."
+    }
+  },
+  "owner": "Codex",
+  "reviewer": "Codex",
+  "id": "CP133",
+  "previous": "CP132",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-05T13:02:09.627598+00:00",
+  "context_commit": "435b1079ee55c20e85d833f0362a22c6202ee3f7",
+  "question": "Sharedcell2,3actualEA0B10query/caller: doescachedEB9710samecellstate2skiprequeryforsecondary? Nativeptr/stackentryreturn/queryjoin?",
+  "scope": "SourcefirstCP132phaseflags/CP091092query/storage/cachedEA0B10andEB9710/VNgame/KRdata. Twoisolatedsameinput/source/profile/client/map/fuse6runs: boundedqueryreturnthenconcretecellstatefollowup, no newnativebody. Actualsamegeometry/native195/process/cipher/nativeframerchecks; oneCPcombinesprobes.",
+  "locators": [
+    "BaselineCP132PR203head32f29dfe7c9feb38e29050df09d23208e06fdbb1/merge435b1079ee55c20e85d833f0362a22c6202ee3f7/exactCLEANMERGEABLEchecks[].AUD041through132/next136/220server testsreusedunchangedsource.",
+    "Queryrun511931870504c04e5766eb72a2883fa3abc13286b11a69802d316880f4666c34/217.712989226s/exit0/errors0/716raw/864basechecks/4querygetters/16phasegetters/18flagsnaps3546getters3510array/153packet6peer153models. Bothviewsquery2,3=1callerEB975C then0EB9BBB, no2,2querywindow.",
+    "Cellrun776c81703b3daef45c0139eaf24176d47c7ae11140967f548346f88894ee14d8/216.732498767s/exit0/errors0/712raw/861base+821celljoins. Nativeactualroot2/secondary3samecellstateptr2,3 first0→2/EAX0/query1insidestackwindow, second2→2/EAX0/noqueryinsidestackwindow. Each4querygetters16phasegetters/3546flags3510array/153packet6peer153models.",
+    "CachedEB9710VAEB9710..EB9832/entryEB9719/returnEB982C/state2cmpEB971C/shortcircuitreturnEB9745/querycallEB9757/query1setstate2EB9763; EA0B10VA..EA0B76/returnEA0B70.2ranges×runtimeA/B/static/modOequal, no newbody. modOa08950/base400000/RVA=VA−400000/runtimee9bb4766/static660447."
+  ],
+  "findings": [
+    {
+      "summary": "Eachactualqueryrun bothviewsEA0B10shared2,3 returns1/callerEB975C then0/cleanupEB9BBB; nativeEAX/currentwrapper/maplinear33/copied52A350match, no2,2queryintheboundedcallback. Temporalcontextalone notcalltree.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#shared-cell-state",
+      "limits": "ModifiedWine2realAB/sameCP132actualgeometry/map/source/profile/client/fuse6/input; readonlyselected2cellqueries+EB9710entryreturn max32. Actualsamecellptrshared2,3 rootstate0→query1→2/return0, secondary2→2/return0/noqueryinsidematchedstackwindow; nativequery0cleanupafter. Cachedbranchstate2shortcircuit confirmedonlycase, notallmapimmutable/globalFIFO/BFS/allrays/nativewriteinstruction/authority. Eachrunonecascade/17/no19/rank/return/fullmatch/K5/K6a/vanilla/LANInternet/gate; oldcomplete/raw/binaryDBpackimmutable/AUD041through132next136.",
+      "evidence": [
+        "QUERY-00741",
+        "QUERY-00708",
+        "QUERY-00709"
+      ]
+    },
+    {
+      "summary": "Concretefollowup: exactsamecellstateptrshared2,3 usedbyroot2/secondary3, matchingthread/entryreturnstackframe. Firstentry0/query1insidewindow/return2,EAX0; secondentry2/return2,EAX0/noqueryinsidewindow. Query0cleanupaftersecondreturn/beforerootreturn. Nativeactualobservations confirmcachedstate2earlyreturnbeforequeryonlycase.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#shared-cell-state",
+      "limits": "ModifiedWine2realAB/sameCP132actualgeometry/map/source/profile/client/fuse6/input; readonlyselected2cellqueries+EB9710entryreturn max32. Actualsamecellptrshared2,3 rootstate0→query1→2/return0, secondary2→2/return0/noqueryinsidematchedstackwindow; nativequery0cleanupafter. Cachedbranchstate2shortcircuit confirmedonlycase, notallmapimmutable/globalFIFO/BFS/allrays/nativewriteinstruction/authority. Eachrunonecascade/17/no19/rank/return/fullmatch/K5/K6a/vanilla/LANInternet/gate; oldcomplete/raw/binaryDBpackimmutable/AUD041through132next136.",
+      "evidence": [
+        "CELL-00006",
+        "CELL-00687",
+        "CELL-00688",
+        "CELL-00757",
+        "CELL-00755"
+      ]
+    },
+    {
+      "summary": "CachedEB9710state2cmp/earlyreturn andquery1setter matchesactualread-onlybranch, 2cachedranges/fourartifactsbyteequal; eachrun195nativeflags/process2→4→3/geometry/laterownnoops unchanged and153packet6peer153models/3546flaggetters3510arraychecks. Models notoriginalworldauthority.",
+      "source": "kr_static",
+      "status": "confirmed",
+      "method": "emulation",
+      "canonical": "docs/PROTOCOL.md#shared-cell-state",
+      "limits": "ModifiedWine2realAB/sameCP132actualgeometry/map/source/profile/client/fuse6/input; readonlyselected2cellqueries+EB9710entryreturn max32. Actualsamecellptrshared2,3 rootstate0→query1→2/return0, secondary2→2/return0/noqueryinsidematchedstackwindow; nativequery0cleanupafter. Cachedbranchstate2shortcircuit confirmedonlycase, notallmapimmutable/globalFIFO/BFS/allrays/nativewriteinstruction/authority. Eachrunonecascade/17/no19/rank/return/fullmatch/K5/K6a/vanilla/LANInternet/gate; oldcomplete/raw/binaryDBpackimmutable/AUD041through132next136.",
+      "evidence": [
+        "CELL-00004",
+        "CELL-00817",
+        "CELL-00733",
+        "CELL-00747",
+        "CELL-00745"
+      ]
+    },
+    {
+      "summary": "Localtraversalcellstate notactorstate orglobalimmutablesnapshot/FIFO. Exactmapflagclearinstruction/allcasesremainunknown; branchscopeclosed, nextintegration sharedcascade/result/reset2 usingexistingactualreports/policy withoutfake19.",
+      "source": "design",
+      "status": "design",
+      "method": "documentation",
+      "canonical": "docs/PROTOCOL.md#shared-cell-state",
+      "limits": "ModifiedWine2realAB/sameCP132actualgeometry/map/source/profile/client/fuse6/input; readonlyselected2cellqueries+EB9710entryreturn max32. Actualsamecellptrshared2,3 rootstate0→query1→2/return0, secondary2→2/return0/noqueryinsidematchedstackwindow; nativequery0cleanupafter. Cachedbranchstate2shortcircuit confirmedonlycase, notallmapimmutable/globalFIFO/BFS/allrays/nativewriteinstruction/authority. Eachrunonecascade/17/no19/rank/return/fullmatch/K5/K6a/vanilla/LANInternet/gate; oldcomplete/raw/binaryDBpackimmutable/AUD041through132next136.",
+      "evidence": [
+        "CELL-00774",
+        "CELL-00011",
+        "CELL-00012"
+      ]
+    }
+  ],
+  "verification": [
+    {
+      "check": "Query864basejoins/716raw/exactsharedgetter/querycaller/4querygetters/16phasegetters/actualsamegeometry/native195",
+      "result": "pass",
+      "evidence": [
+        "QUERY-00799",
+        "QUERY-00742",
+        "QUERY-00738",
+        "QUERY-00743"
+      ],
+      "limits": "ModifiedWine2realAB/sameCP132actualgeometry/map/source/profile/client/fuse6/input; readonlyselected2cellqueries+EB9710entryreturn max32. Actualsamecellptrshared2,3 rootstate0→query1→2/return0, secondary2→2/return0/noqueryinsidematchedstackwindow; nativequery0cleanupafter. Cachedbranchstate2shortcircuit confirmedonlycase, notallmapimmutable/globalFIFO/BFS/allrays/nativewriteinstruction/authority. Eachrunonecascade/17/no19/rank/return/fullmatch/K5/K6a/vanilla/LANInternet/gate; oldcomplete/raw/binaryDBpackimmutable/AUD041through132next136."
+    },
+    {
+      "check": "Cell861base+821celljoins/712raw/sameptr0→2then2→2/queryonlyfirst/exactthreadframe/EAX0/currentmap/latercleanup0",
+      "result": "pass",
+      "evidence": [
+        "CELL-00815",
+        "CELL-00005",
+        "CELL-00758",
+        "CELL-00754",
+        "CELL-00759"
+      ],
+      "limits": "ModifiedWine2realAB/sameCP132actualgeometry/map/source/profile/client/fuse6/input; readonlyselected2cellqueries+EB9710entryreturn max32. Actualsamecellptrshared2,3 rootstate0→query1→2/return0, secondary2→2/return0/noqueryinsidematchedstackwindow; nativequery0cleanupafter. Cachedbranchstate2shortcircuit confirmedonlycase, notallmapimmutable/globalFIFO/BFS/allrays/nativewriteinstruction/authority. Eachrunonecascade/17/no19/rank/return/fullmatch/K5/K6a/vanilla/LANInternet/gate; oldcomplete/raw/binaryDBpackimmutable/AUD041through132next136."
+    },
+    {
+      "check": "Both2rangefourartifactidentity/nativegetter/framer/153/docs/catalog/issues/artifacts/diff;220unchangedsource testsreuse",
+      "result": "pass",
+      "evidence": [
+        "CELL-00004",
+        "CELL-00733",
+        "CELL-00747",
+        "CELL-00745",
+        "CELL-00732",
+        "CELL-00744",
+        "CELL-00003",
+        "CELL-00828"
+      ],
+      "limits": "Mechanical/models notruntimeallcases/semanticgatecertification."
+    }
+  ],
+  "evidence": [],
+  "evidence_manifests": [
+    {
+      "path": "docs/evidence/checkpoints/evidence/CP133-shared-cell-QUERY.json",
+      "bytes": 199854,
+      "sha256": "6fbfe78ab6fc667f1ecb2c6223adc7fc4139757cd3001cebad007dbcf8aca03d",
+      "count": 807
+    },
+    {
+      "path": "docs/evidence/checkpoints/evidence/CP133-shared-cell-CELL.json",
+      "bytes": 208394,
+      "sha256": "a6577aa3a0f2cee124be3fbc5ad1734c7d2b18ba30841b2ca7f79419ae9c1c7a",
+      "count": 828
+    }
+  ],
+  "delta": {
+    "added": [
+      "Actualquery/stackmatchedsharedcellstate confirmscachedshortcircuit mechanism behindnoqueryrepeat inonegeometry/twoviews."
+    ],
+    "corrected": [
+      "CP132actualsharedquery gap answered: localcellstate2reuse, notglobalimmutableinference.",
+      "CP132PR203merged/currentdocs/catalog/issue synch; closemechanismbranch beforeintegration, nooldrecordrewrite."
+    ],
+    "superseded": [
+      "NEXT-SHARED-QUERY closedscopedquery/mechanism; NEXT-SHARED-CASCADE-CYCLES active."
+    ]
+  },
+  "blockers": [
+    "Same-runsharedcascade+actualbothdeath/result/reset2 notyetmeasured; CP123deepchain2cyclesdifferentgeometry.",
+    "Globalchain/moving/nativeflagclearinstruction/identity/auth/authority/allreset/fullmatch/vanilla/LANInternet/gatesremain."
+  ],
+  "next_steps": [
+    {
+      "id": "NEXT-SHARED-QUERY",
+      "task": "KRE-005b",
+      "state": "closed",
+      "action": "CP133actualquerycaller/wrapper/samecellptr/root0→2query1thensecondary2→2/noquery/EAX0 scopednativeproof.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-SHARED-CASCADE-CYCLES",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "PLANsameproduction/profile/client/map/fuse6/sharedopeningactualgeometry; waitboth17/19/chosenall-deadrank2/2/175180/roomReadyB/AStart2/repeatkeyIDsseedstatsandsecondreturn. ReuseCP084/123routes, no minteddeath/gameforce/crossrunproof.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    }
+  ],
+  "docs_sync": [
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "CP133query/cellstate/mechanism/scope/cachedsource/nextintegration/catalog/issue sync; oldcomplete/gatesunchanged."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "CP133query/cellstate/mechanism/scope/cachedsource/nextintegration/catalog/issue sync; oldcomplete/gatesunchanged."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "updated",
+      "reason": "CP133query/cellstate/mechanism/scope/cachedsource/nextintegration/catalog/issue sync; oldcomplete/gatesunchanged."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "updated",
+      "reason": "CP133query/cellstate/mechanism/scope/cachedsource/nextintegration/catalog/issue sync; oldcomplete/gatesunchanged."
+    },
+    {
+      "path": "docs/features.json",
+      "state": "updated",
+      "reason": "CP133query/cellstate/mechanism/scope/cachedsource/nextintegration/catalog/issue sync; oldcomplete/gatesunchanged."
+    },
+    {
+      "path": "docs/COVERAGE.md",
+      "state": "updated",
+      "reason": "CP133query/cellstate/mechanism/scope/cachedsource/nextintegration/catalog/issue sync; oldcomplete/gatesunchanged."
+    },
+    {
+      "path": "docs/evidence/three-bomb-chain/README.md",
+      "state": "updated",
+      "reason": "CP133query/cellstate/mechanism/scope/cachedsource/nextintegration/catalog/issue sync; oldcomplete/gatesunchanged."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/review.json",
+      "state": "updated",
+      "reason": "CP133query/cellstate/mechanism/scope/cachedsource/nextintegration/catalog/issue sync; oldcomplete/gatesunchanged."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
+      "state": "updated",
+      "reason": "CP133query/cellstate/mechanism/scope/cachedsource/nextintegration/catalog/issue sync; oldcomplete/gatesunchanged."
+    }
+  ]
+}

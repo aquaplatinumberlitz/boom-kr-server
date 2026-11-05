@@ -173,4 +173,33 @@ AUD041 periodicqua132/next136: orderedcanonical/core→evidence→CP129–132raw
 getters; sửaCP124pendingPR195, CP131pendingPR202 vàPLANgenericsharedblocker gapquárộng.
 `pre-audit/`/`audit-inputs.json`giữ trướcchỉnh; auditjson ghi findings/remaining cụthể. Oldrecords/raw/
 reviewwaiver bấtbiến; gate/fullmatch/K6a/LANInternet chưađạt.
-CP131PR202head25492a1/merge9e9824a exactCLEAN/MERGEABLE/checks[]; CP132selfcheck/currentchange/reviewwaived.
+CP131PR202head25492a1/merge9e9824a exactCLEAN/MERGEABLE/checks[]; CP132/PR203merged`435b107`, reviewwaived.
+
+
+<a id="cp133"></a>
+## CP133 — Actualsharedquery và samecellstate shortcircuit
+
+[Contract/giới hạn](../../PROTOCOL.md#shared-cell-state), [gap](../../RESEARCH.md#gap-blast-block-chain).
+Raw local/research/codex/shared-query-r1 vàshared-cell-state-r1, `reuse-question.json` pinCP132/091092/
+cachedEA0B10/EB9710/VNgame/KRdata. Khôngbodymới, source/profile/client/map/fuse/inputgiữ nguyên;
+readonlyquery2cells/callback2/cap32 vànext2knownentryreturnprobes. No allterrainwatch/gamecall/statewrite.
+
+|Run|Kết quả|run.json SHA256|
+|---|---|---|
+|query|217,712989226s/exit0/noerrors/716raw/864basechecks: shared2,3query1callerEB975C rồi0callerEB9BBB/hai view, noquery2,2window.|`511931870504c04e5766eb72a2883fa3abc13286b11a69802d316880f4666c34`|
+|cellstate|216,732498767s/exit0/noerrors/712raw/861base+821celljoins: sameptrsharedstate0→2/query1/rootreturn0, secondary2→2/return0/noqueryinsidewindow, bothviews.|`776c81703b3daef45c0139eaf24176d47c7ae11140967f548346f88894ee14d8`|
+
+Eachrecipe/preflight/runtime-source/raw-seal: privateuser/net/mount/PID/chỉlo/no-route/filesNSS/
+onelease/twoprefix-display/sourcefreezeuntilcleanup. Firstqueryrun promptedconcretemissingbranch,
+followup confirmscachedstate2shortcircuit, gomCP133khôngCPmỗiprobe. No originalserverlaw/gate claim.
+`queries-verification.json`4actualquery/native52A350getterchecks/run, source/hash/maplinear33/nativeEAX;
+`cellstate-verification.json`821joins entryreturnstackthread/sameptr/currentbomber/queryinsidefirstonly.
+`cached-code-match.json`2ranges×4artifacts includesVA/RVA/artifact/rangeSHA, no newnativebody.
+Bothactual118geometry/native2→4→3/all195match/laterownnoops; each18flagsnaps3546getters3510array/
+153packet6peer153cases/16phasegetters distinctfromruntime. Sourcebinary/DB/pack/oldcomplete/rawimmutable.
+
+Temporalcontextnotcalltree fixedbyactualmatchedEB9710stackwindows; cellstate is traversalmetadatastate,
+notactorstate. Cleanupquery0aftersecondaryreturn notproofexactflagwriteinstruction/globalimmutable/FIFO.
+No19/result/return/fullmatch/K6a; nextPLANsamegeometry twoactualdeath/result/resetcycles.
+CP132PR203head32f29df/merge435b107 exactCLEAN/MERGEABLE/checks[]. 220unchangedservertestsreused;
+docs/catalog/issues/artifacts/history/diff checked; AUD041through132next136/reviewwaived.

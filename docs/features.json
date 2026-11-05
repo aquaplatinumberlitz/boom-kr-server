@@ -1,7 +1,7 @@
 {
   "schema": "kre-feature-index-v1",
   "build": "KR00967",
-  "as_of": "CP132",
+  "as_of": "CP133",
   "sources": {
     "plan": "docs/PLAN.md",
     "contract": "docs/PROTOCOL.md",
@@ -1475,7 +1475,8 @@
           "docs/evidence/battle-exit/README.md#cp127",
           "docs/evidence/battle-exit/README.md#cp128",
           "docs/evidence/three-bomb-chain/README.md#cp131",
-          "docs/evidence/three-bomb-chain/README.md#cp132"
+          "docs/evidence/three-bomb-chain/README.md#cp132",
+          "docs/evidence/three-bomb-chain/README.md#cp133"
         ]
       },
       "coverage": {
@@ -1532,7 +1533,8 @@
               "docs/PROTOCOL.md#battle-exit-pending-bomb",
               "docs/PROTOCOL.md#postbomb-exit-rejoin",
               "docs/PROTOCOL.md#shared-blocker",
-              "docs/PROTOCOL.md#shared-flag-timing"
+              "docs/PROTOCOL.md#shared-flag-timing",
+              "docs/PROTOCOL.md#shared-cell-state"
             ]
           },
           "windows_original": {
@@ -1591,7 +1593,8 @@
             "docs/PROTOCOL.md#battle-exit-pending-bomb",
             "docs/PROTOCOL.md#postbomb-exit-rejoin",
             "docs/PROTOCOL.md#shared-blocker",
-            "docs/PROTOCOL.md#shared-flag-timing"
+            "docs/PROTOCOL.md#shared-flag-timing",
+            "docs/PROTOCOL.md#shared-cell-state"
           ]
         },
         "gate": {
@@ -1648,7 +1651,8 @@
           "docs/evidence/three-bomb-chain/README.md#cp122",
           "docs/evidence/three-bomb-chain/README.md#cp123",
           "docs/evidence/three-bomb-chain/README.md#cp131",
-          "docs/evidence/three-bomb-chain/README.md#cp132"
+          "docs/evidence/three-bomb-chain/README.md#cp132",
+          "docs/evidence/three-bomb-chain/README.md#cp133"
         ]
       },
       "coverage": {
@@ -1707,7 +1711,8 @@
               "docs/PROTOCOL.md#recursive-chain",
               "docs/PROTOCOL.md#recursive-chain-cycles",
               "docs/PROTOCOL.md#shared-blocker",
-              "docs/PROTOCOL.md#shared-flag-timing"
+              "docs/PROTOCOL.md#shared-flag-timing",
+              "docs/PROTOCOL.md#shared-cell-state"
             ]
           },
           "windows_original": {
@@ -1763,7 +1768,8 @@
             "docs/PROTOCOL.md#recursive-chain",
             "docs/PROTOCOL.md#recursive-chain-cycles",
             "docs/PROTOCOL.md#shared-blocker",
-            "docs/PROTOCOL.md#shared-flag-timing"
+            "docs/PROTOCOL.md#shared-flag-timing",
+            "docs/PROTOCOL.md#shared-cell-state"
           ]
         },
         "gate": {
@@ -3439,7 +3445,8 @@
           "docs/evidence/battle-exit/README.md#cp129",
           "docs/evidence/udp-generation/README.md#cp130",
           "docs/evidence/three-bomb-chain/README.md#cp131",
-          "docs/evidence/three-bomb-chain/README.md#cp132"
+          "docs/evidence/three-bomb-chain/README.md#cp132",
+          "docs/evidence/three-bomb-chain/README.md#cp133"
         ]
       },
       "coverage": {
@@ -3547,7 +3554,8 @@
               "docs/PROTOCOL.md#host-battle-exit",
               "docs/PROTOCOL.md#udp-membership-lifetime",
               "docs/PROTOCOL.md#shared-blocker",
-              "docs/PROTOCOL.md#shared-flag-timing"
+              "docs/PROTOCOL.md#shared-flag-timing",
+              "docs/PROTOCOL.md#shared-cell-state"
             ]
           },
           "windows_original": {
@@ -3706,7 +3714,8 @@
             "docs/PROTOCOL.md#host-battle-exit",
             "docs/PROTOCOL.md#udp-membership-lifetime",
             "docs/PROTOCOL.md#shared-blocker",
-            "docs/PROTOCOL.md#shared-flag-timing"
+            "docs/PROTOCOL.md#shared-flag-timing",
+            "docs/PROTOCOL.md#shared-cell-state"
           ]
         },
         "gate": {
