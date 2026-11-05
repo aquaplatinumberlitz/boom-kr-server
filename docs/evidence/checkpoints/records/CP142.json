@@ -1,0 +1,258 @@
+{
+  "artifacts": [
+    {
+      "name": "CA-r2-login-logout.exe",
+      "sha256": "660447c293ce92270cb9b5815331bca976e8f156366e1fe50b217b6c12e60ce3"
+    },
+    {
+      "name": "CA-r2-stage-social.exe",
+      "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+    },
+    {
+      "name": "CA-r2-stage-social.exe Bcopy",
+      "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+    },
+    {
+      "name": "modO.bin",
+      "sha256": "a08950c833d3acab8281049def7b3dc96b221f107eeda01da3a548e34b91dce5"
+    }
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-11-05T17:47:40.503074+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "Codex solo RE/code/runtime/selfcheck, not independent approval.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Owner explicitly requested solo without Claude review."
+    }
+  },
+  "owner": "Codex",
+  "reviewer": "Codex",
+  "id": "CP142",
+  "previous": "CP141",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-05T17:47:40.503074+00:00",
+  "context_commit": "b1f2c7210ac8ec015399db5565c28d3d4177a339",
+  "question": "Can nativepeer movement/pickup andtworesult/reset/Ready coexist inonevirtualhost runusingproductionaddresses andexistingguards?",
+  "scope": "ReuseCP139finiteobservers/OSreturnsetup andCP141productionconfig/basiccycles/Ready; no newnativebody. PreserveR1role/pathcompositionfailurebeforeinput; R2mappingfix usesalreadyknownCP139roles.",
+  "locators": [
+    "BaselineCP141PR212heade812ed54044ea344bc2884b1d8e93c65390b86a7/mergeb1f2c72; exactheadCLEANMERGEABLEchecks[]. Productionunchanged/231testsreused; AUD043through140/next144.",
+    "R2run8ea46808a0a31324ef0f0b13b8698c6deb24b6d6109fd44372d923b9e51be964/344.96013178s/exit0/1320raw/590vethrecords.4windows/632peerjoins/1356wirejoins/26recipientapplies/8targetchanges/0unknown/6delayed+1snapbranchobserved. ActualA202/server89/B552/server440 distinctNSbeforeinput.",
+    "R1runff0c0697b9057437fabaf758e6ce53d32821243a2b054bbbf998a804860e1143/169.070738606s/exit1/691raw/peerobserverackfreshbaseline timeout:R1-A-Down beforeOSinput. GeneratedBcommands stillroleA/pathA; R2freshoutput/prefix/explicitroleBmappingassert.",
+    "FouractualA124 index16kind0/17kind1/currentkeys12345→12346/native165full12/bothviews stat1,1→2,1→2,2/resetclock2; actualA118power2cell3,3 IDs1→2/currentA17→19hash/B21/rank2,1/native1753021803errors0/110/195seed; barrier25.901037346/25.755356184s<30.",
+    "FinalactualB95seq457/d028d7997f2fccd885e2a490528f7dcf1d13dd6382f4574b6588b0bc25da75c7/native110bothprecleanup107/manualrenderbadge/noStart3. KnownE66680/E667BE/E668AD/B4EA14/52A350/E8A340/121DC7F30; static660447/runtimee9bb4766/modOa08950/base400000/RVA=VA−400000."
+  ],
+  "findings": [
+    {
+      "summary": "Fourfinitepeerwindows/twoepochs sourceactual99/veth→nativeingress/keyXORID/slot/apply/protectedtargets/currentprogress; actualCA+wineservernamespace explicit beforeinput, noUDPproxy/addressshim.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#virtual-movement-cycles",
+      "limits": "ModifiedWine/twoactualCA+wineserverprivatevirtualnetns/samephysicalhost/directUDP/productionexplicitoperatorIPv4/TCPforwardstub/noaddressshim. FourADown/BRightwindows overtwoepochs/actualkeyXORprofileID/targetcurrentprogress/BombFireeffects/basic2survivorendings/reset/Ready95native110/noStart3. NotselectedTCPguard/currentforgedbody/disconnect/fullinventory/originalauthauthority/fullmatch/K5/K6a/physicalLAN/K6b/NAT/Internet/gate. CP137complexUI/sharedgeometry/IP1/subtype39 remain. Sourcebinary/DBpackunchanged; sourceconfigfrozen untilcleanup/seal.",
+      "evidence": [
+        "RUN-02106",
+        "RUN-02125",
+        "RUN-02140"
+      ]
+    },
+    {
+      "summary": "Same-runfouractualBombFireclaims/native165bothviews/capacitypower1,1→2,1→2,2/resetclock2; twoactualA118power2/current17→19hash/peer170/survivor175180110/195reset/keyIDs/Ready95native110/renderbadge.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#virtual-movement-cycles",
+      "limits": "ModifiedWine/twoactualCA+wineserverprivatevirtualnetns/samephysicalhost/directUDP/productionexplicitoperatorIPv4/TCPforwardstub/noaddressshim. FourADown/BRightwindows overtwoepochs/actualkeyXORprofileID/targetcurrentprogress/BombFireeffects/basic2survivorendings/reset/Ready95native110/noStart3. NotselectedTCPguard/currentforgedbody/disconnect/fullinventory/originalauthauthority/fullmatch/K5/K6a/physicalLAN/K6b/NAT/Internet/gate. CP137complexUI/sharedgeometry/IP1/subtype39 remain. Sourcebinary/DBpackunchanged; sourceconfigfrozen untilcleanup/seal.",
+      "evidence": [
+        "RUN-02137",
+        "RUN-00768",
+        "RUN-00762",
+        "RUN-02234"
+      ]
+    },
+    {
+      "summary": "R1compositionerror beforeinput: B GDB installroleA/outputA soacksbothnotavailable. Controllerabortedcorrectly; 691sealedrawpreserved. R2reusedknownroleBmapping/freshprefix/output, no product/networkfailureclaim.",
+      "source": "design",
+      "status": "design",
+      "method": "documentation",
+      "canonical": "docs/PROTOCOL.md#virtual-movement-cycles",
+      "limits": "ModifiedWine/twoactualCA+wineserverprivatevirtualnetns/samephysicalhost/directUDP/productionexplicitoperatorIPv4/TCPforwardstub/noaddressshim. FourADown/BRightwindows overtwoepochs/actualkeyXORprofileID/targetcurrentprogress/BombFireeffects/basic2survivorendings/reset/Ready95native110/noStart3. NotselectedTCPguard/currentforgedbody/disconnect/fullinventory/originalauthauthority/fullmatch/K5/K6a/physicalLAN/K6b/NAT/Internet/gate. CP137complexUI/sharedgeometry/IP1/subtype39 remain. Sourcebinary/DBpackunchanged; sourceconfigfrozen untilcleanup/seal.",
+      "evidence": [
+        "RUN-00707",
+        "RUN-00711",
+        "RUN-02138"
+      ]
+    },
+    {
+      "summary": "Draftpickupeventphasefilterincludedlaterfeedback; boundexactGEN165context. DraftbytekeyomittedknownXORidentity; reuseCP047contractformula. Failedscripts/log/correctionsretained; no rawrewrite/nativeRE.",
+      "source": "design",
+      "status": "design",
+      "method": "documentation",
+      "canonical": "docs/PROTOCOL.md#virtual-movement-cycles",
+      "limits": "ModifiedWine/twoactualCA+wineserverprivatevirtualnetns/samephysicalhost/directUDP/productionexplicitoperatorIPv4/TCPforwardstub/noaddressshim. FourADown/BRightwindows overtwoepochs/actualkeyXORprofileID/targetcurrentprogress/BombFireeffects/basic2survivorendings/reset/Ready95native110/noStart3. NotselectedTCPguard/currentforgedbody/disconnect/fullinventory/originalauthauthority/fullmatch/K5/K6a/physicalLAN/K6b/NAT/Internet/gate. CP137complexUI/sharedgeometry/IP1/subtype39 remain. Sourcebinary/DBpackunchanged; sourceconfigfrozen untilcleanup/seal.",
+      "evidence": [
+        "RUN-00763",
+        "RUN-02136",
+        "RUN-02124"
+      ]
+    }
+  ],
+  "verification": [
+    {
+      "check": "3284lifecycle/raw/sourcejoins/1320sealedraw/590vethrecords/2nativeendings/reset/Ready",
+      "result": "pass",
+      "evidence": [
+        "RUN-00768",
+        "RUN-02140"
+      ],
+      "limits": "ModifiedWine/twoactualCA+wineserverprivatevirtualnetns/samephysicalhost/directUDP/productionexplicitoperatorIPv4/TCPforwardstub/noaddressshim. FourADown/BRightwindows overtwoepochs/actualkeyXORprofileID/targetcurrentprogress/BombFireeffects/basic2survivorendings/reset/Ready95native110/noStart3. NotselectedTCPguard/currentforgedbody/disconnect/fullinventory/originalauthauthority/fullmatch/K5/K6a/physicalLAN/K6b/NAT/Internet/gate. CP137complexUI/sharedgeometry/IP1/subtype39 remain. Sourcebinary/DBpackunchanged; sourceconfigfrozen untilcleanup/seal."
+    },
+    {
+      "check": "632peer-runtime+1356wire/source/epochjoins/fourwindows;408getters/45UDPCRCemulation",
+      "result": "pass",
+      "evidence": [
+        "RUN-02106",
+        "RUN-02125",
+        "RUN-02133",
+        "RUN-00781"
+      ],
+      "limits": "Runtimejoins/modelseparated; observed6belowthreshold/1snapbranch notgenerallaw."
+    },
+    {
+      "check": "70itemeffectjoins/eightviewrounditems/1314actorcopiedgetters/297typedpacket/12native153/2364flaggetter+2340array;25addressReadychecks/manualrender",
+      "result": "pass",
+      "evidence": [
+        "RUN-02137",
+        "RUN-02107",
+        "RUN-02142",
+        "RUN-00759",
+        "RUN-02109",
+        "RUN-00762",
+        "RUN-02234"
+      ],
+      "limits": "Nativeitembeforeaftercontext exact; notcontestedpickup/fullinventoryauthority."
+    },
+    {
+      "check": "R1same-runmovement/lifecycletarget",
+      "result": "fail",
+      "evidence": [
+        "RUN-00707",
+        "RUN-00711"
+      ],
+      "limits": "Observercompositionrole/patherrorbeforeOSinput; preservedpartialnotgamefailure."
+    },
+    {
+      "check": "Draftpickupeventphase-only/bytekeywithoutXORidentitychecks",
+      "result": "fail",
+      "evidence": [
+        "RUN-02136",
+        "RUN-02124",
+        "RUN-00763"
+      ],
+      "limits": "Analysisassumptions correctedusingexistingcontractandrawcontext; no target/sourcechange."
+    },
+    {
+      "check": "Docs/catalog/issues/artifacts;231productiontestsreused unchanged",
+      "result": "pass",
+      "evidence": [
+        "RUN-02104",
+        "RUN-02118",
+        "RUN-00766",
+        "RUN-02241"
+      ],
+      "limits": "Mechanicalconsistencyonly; notsemanticacceptance/gates."
+    }
+  ],
+  "evidence": [],
+  "evidence_manifests": [
+    {
+      "path": "docs/evidence/checkpoints/evidence/CP142-virtual-production-movement.json",
+      "bytes": 582757,
+      "sha256": "f41352b4d9bff8276198d72737ca77663dca2bf35165e460c56f2ffe8727737a",
+      "count": 2241
+    }
+  ],
+  "delta": {
+    "added": [
+      "Same-runvirtualproduction4movementwindows/itemeffects/basic2endings/reset/Ready proof."
+    ],
+    "corrected": [
+      "MissingBrole/pathmapping incomposedharness fixedonfreshR2; previousrawsealed.",
+      "Gettersselectedbyexacthandlercontext andkeycompareusespreviouslyrecoveredXORidentity."
+    ],
+    "superseded": [
+      "NEXT-VIRTUAL-MOVEMENT-CYCLES closedscopedproof; NEXT-VIRTUAL-TCP-GUARD-CYCLES active."
+    ]
+  },
+  "blockers": [
+    "Selectedsame/oldTCPguardnotyetinsameproductionvirtualmovement/lifecycleprofile; reuseCP106/137capturedbodyproxyandactualA17/19.",
+    "Sharedcrossvirtualgeometry/CP137complexUIdebt/fullinventoryreset/auth/authority/physicalLAN/NAT/Internet/gatesremain."
+  ],
+  "next_steps": [
+    {
+      "id": "NEXT-VIRTUAL-MOVEMENT-CYCLES",
+      "task": "KRE-005b",
+      "state": "closed",
+      "action": "Fourwindows/twoepochs/itemeffects/basic2endings/reset/finalReady same-runproductionvirtualhostsverified.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-VIRTUAL-TCP-GUARD-CYCLES",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "PLAN reuseprivatebindReplayProxy/currentseq/actualA11812417,19/8same+4oldfreshR2report39/S2Cunchanged/directUDP/noextras/native2endingresetReady/noStart3.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    }
+  ],
+  "docs_sync": [
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "CP142same-runproof/limits/observerpartial/analysiscorrections/currentTCPguardgap/issue14 syncedbeforecomplete."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "CP142same-runproof/limits/observerpartial/analysiscorrections/currentTCPguardgap/issue14 syncedbeforecomplete."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "updated",
+      "reason": "CP142same-runproof/limits/observerpartial/analysiscorrections/currentTCPguardgap/issue14 syncedbeforecomplete."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "updated",
+      "reason": "CP142same-runproof/limits/observerpartial/analysiscorrections/currentTCPguardgap/issue14 syncedbeforecomplete."
+    },
+    {
+      "path": "docs/features.json",
+      "state": "updated",
+      "reason": "CP142same-runproof/limits/observerpartial/analysiscorrections/currentTCPguardgap/issue14 syncedbeforecomplete."
+    },
+    {
+      "path": "docs/COVERAGE.md",
+      "state": "updated",
+      "reason": "CP142same-runproof/limits/observerpartial/analysiscorrections/currentTCPguardgap/issue14 syncedbeforecomplete."
+    },
+    {
+      "path": "docs/evidence/peer-endpoints/README.md",
+      "state": "updated",
+      "reason": "CP142same-runproof/limits/observerpartial/analysiscorrections/currentTCPguardgap/issue14 syncedbeforecomplete."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/review.json",
+      "state": "updated",
+      "reason": "CP142same-runproof/limits/observerpartial/analysiscorrections/currentTCPguardgap/issue14 syncedbeforecomplete."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
+      "state": "updated",
+      "reason": "CP142same-runproof/limits/observerpartial/analysiscorrections/currentTCPguardgap/issue14 syncedbeforecomplete."
+    }
+  ]
+}

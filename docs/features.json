@@ -1,7 +1,7 @@
 {
   "schema": "kre-feature-index-v1",
   "build": "KR00967",
-  "as_of": "2026-11-06 CP141",
+  "as_of": "2026-11-06 CP142",
   "sources": {
     "plan": "docs/PLAN.md",
     "contract": "docs/PROTOCOL.md",
@@ -1269,7 +1269,8 @@
           "docs/evidence/promoted-outcome/README.md",
           "docs/evidence/integrated-survivor/README.md",
           "docs/evidence/peer-endpoints/README.md",
-          "docs/evidence/peer-endpoints/README.md#cp139"
+          "docs/evidence/peer-endpoints/README.md#cp139",
+          "docs/evidence/peer-endpoints/README.md#cp142"
         ]
       },
       "coverage": {
@@ -1313,7 +1314,8 @@
               "docs/PROTOCOL.md#receiver-prepost",
               "docs/evidence/integrated-survivor/README.md",
               "docs/evidence/peer-endpoints/README.md",
-              "docs/evidence/peer-endpoints/README.md#cp139"
+              "docs/evidence/peer-endpoints/README.md#cp139",
+              "docs/evidence/peer-endpoints/README.md#cp142"
             ]
           },
           "windows_original": {
@@ -1508,7 +1510,8 @@
           "docs/evidence/three-bomb-chain/README.md#cp131",
           "docs/evidence/three-bomb-chain/README.md#cp132",
           "docs/evidence/three-bomb-chain/README.md#cp133",
-          "docs/evidence/peer-endpoints/README.md#cp140"
+          "docs/evidence/peer-endpoints/README.md#cp140",
+          "docs/evidence/peer-endpoints/README.md#cp142"
         ]
       },
       "coverage": {
@@ -1567,7 +1570,8 @@
               "docs/PROTOCOL.md#shared-blocker",
               "docs/PROTOCOL.md#shared-flag-timing",
               "docs/PROTOCOL.md#shared-cell-state",
-              "docs/evidence/peer-endpoints/README.md#cp140"
+              "docs/evidence/peer-endpoints/README.md#cp140",
+              "docs/evidence/peer-endpoints/README.md#cp142"
             ]
           },
           "windows_original": {
@@ -1688,7 +1692,8 @@
           "docs/evidence/three-bomb-chain/README.md#cp132",
           "docs/evidence/three-bomb-chain/README.md#cp133",
           "docs/evidence/three-bomb-chain/README.md#cp134",
-          "docs/evidence/integrated-survivor/README.md"
+          "docs/evidence/integrated-survivor/README.md",
+          "docs/evidence/peer-endpoints/README.md#cp142"
         ]
       },
       "coverage": {
@@ -1750,7 +1755,8 @@
               "docs/PROTOCOL.md#shared-flag-timing",
               "docs/PROTOCOL.md#shared-cell-state",
               "docs/PROTOCOL.md#shared-cascade-cycles",
-              "docs/evidence/integrated-survivor/README.md"
+              "docs/evidence/integrated-survivor/README.md",
+              "docs/evidence/peer-endpoints/README.md#cp142"
             ]
           },
           "windows_original": {
@@ -1862,7 +1868,8 @@
           "docs/evidence/firstseen-admission/README.md",
           "docs/evidence/needle-service/README.md",
           "docs/PROTOCOL.md#needle-round-reset",
-          "docs/evidence/integrated-survivor/README.md"
+          "docs/evidence/integrated-survivor/README.md",
+          "docs/evidence/peer-endpoints/README.md#cp142"
         ]
       },
       "coverage": {
@@ -1916,7 +1923,8 @@
               "docs/evidence/firstseen-admission/README.md",
               "docs/evidence/needle-service/README.md",
               "docs/PROTOCOL.md#needle-round-reset",
-              "docs/evidence/integrated-survivor/README.md"
+              "docs/evidence/integrated-survivor/README.md",
+              "docs/evidence/peer-endpoints/README.md#cp142"
             ]
           },
           "windows_original": {
@@ -2244,7 +2252,8 @@
           "docs/evidence/rescue-service/README.md#cp121",
           "docs/evidence/life-admission/README.md",
           "docs/evidence/integrated-survivor/README.md",
-          "docs/evidence/peer-endpoints/README.md#cp140"
+          "docs/evidence/peer-endpoints/README.md#cp140",
+          "docs/evidence/peer-endpoints/README.md#cp142"
         ]
       },
       "coverage": {
@@ -2304,7 +2313,8 @@
               "docs/PROTOCOL.md#rescue-two-results",
               "docs/PROTOCOL.md#death-lifecycle-policy",
               "docs/evidence/integrated-survivor/README.md",
-              "docs/evidence/peer-endpoints/README.md#cp140"
+              "docs/evidence/peer-endpoints/README.md#cp140",
+              "docs/evidence/peer-endpoints/README.md#cp142"
             ]
           },
           "windows_original": {
@@ -2803,7 +2813,8 @@
           "docs/evidence/peer-endpoints/README.md",
           "docs/evidence/peer-endpoints/README.md#cp139",
           "docs/evidence/peer-endpoints/README.md#cp140",
-          "docs/evidence/peer-endpoints/README.md#cp141"
+          "docs/evidence/peer-endpoints/README.md#cp141",
+          "docs/evidence/peer-endpoints/README.md#cp142"
         ]
       },
       "coverage": {
@@ -2836,7 +2847,8 @@
               "docs/evidence/peer-endpoints/README.md",
               "docs/evidence/peer-endpoints/README.md#cp139",
               "docs/evidence/peer-endpoints/README.md#cp140",
-              "docs/evidence/peer-endpoints/README.md#cp141"
+              "docs/evidence/peer-endpoints/README.md#cp141",
+              "docs/evidence/peer-endpoints/README.md#cp142"
             ]
           },
           "windows_original": {
@@ -2912,7 +2924,8 @@
           "docs/evidence/three-bomb-chain/README.md#cp134",
           "docs/evidence/integrated-survivor/README.md",
           "docs/evidence/peer-endpoints/README.md#cp140",
-          "docs/evidence/peer-endpoints/README.md#cp141"
+          "docs/evidence/peer-endpoints/README.md#cp141",
+          "docs/evidence/peer-endpoints/README.md#cp142"
         ]
       },
       "coverage": {
@@ -2967,7 +2980,8 @@
               "docs/PROTOCOL.md#shared-cascade-cycles",
               "docs/evidence/integrated-survivor/README.md",
               "docs/evidence/peer-endpoints/README.md#cp140",
-              "docs/evidence/peer-endpoints/README.md#cp141"
+              "docs/evidence/peer-endpoints/README.md#cp141",
+              "docs/evidence/peer-endpoints/README.md#cp142"
             ]
           },
           "windows_original": {
@@ -3099,7 +3113,8 @@
           "docs/evidence/loading-timeout/README.md#cp136",
           "docs/evidence/integrated-survivor/README.md",
           "docs/evidence/peer-endpoints/README.md#cp140",
-          "docs/evidence/peer-endpoints/README.md#cp141"
+          "docs/evidence/peer-endpoints/README.md#cp141",
+          "docs/evidence/peer-endpoints/README.md#cp142"
         ]
       },
       "coverage": {
@@ -3175,7 +3190,8 @@
               "docs/evidence/loading-timeout/README.md#cp136",
               "docs/evidence/integrated-survivor/README.md",
               "docs/evidence/peer-endpoints/README.md#cp140",
-              "docs/evidence/peer-endpoints/README.md#cp141"
+              "docs/evidence/peer-endpoints/README.md#cp141",
+              "docs/evidence/peer-endpoints/README.md#cp142"
             ]
           },
           "windows_original": {
@@ -3546,7 +3562,8 @@
           "docs/evidence/peer-endpoints/README.md",
           "docs/evidence/peer-endpoints/README.md#cp139",
           "docs/evidence/peer-endpoints/README.md#cp140",
-          "docs/evidence/peer-endpoints/README.md#cp141"
+          "docs/evidence/peer-endpoints/README.md#cp141",
+          "docs/evidence/peer-endpoints/README.md#cp142"
         ]
       },
       "coverage": {
@@ -3663,7 +3680,8 @@
               "docs/evidence/peer-endpoints/README.md",
               "docs/evidence/peer-endpoints/README.md#cp139",
               "docs/evidence/peer-endpoints/README.md#cp140",
-              "docs/evidence/peer-endpoints/README.md#cp141"
+              "docs/evidence/peer-endpoints/README.md#cp141",
+              "docs/evidence/peer-endpoints/README.md#cp142"
             ]
           },
           "windows_original": {

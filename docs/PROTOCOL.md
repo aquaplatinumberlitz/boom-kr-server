@@ -1,6 +1,6 @@
 # KR 00967 — contract tương thích client gốc
 
-Revision kr-legacy-contract-r1; cập nhật06/11/2026 JST (CP141; AUD043 quaCP140, kếCP144).
+Revision kr-legacy-contract-r1; cập nhật06/11/2026 JST (CP142; AUD043 quaCP140, kếCP144).
 **Contract có bằng chứng từng phần; chưa nghiệm thu full codec K2**.
 Lộ trình và thứ tự task chỉ giữ ở [REWRITE_PLAN — KRE](PLAN.md).
 Đây là contract của repo server KR. ADR0009 của bản viết lại là nguồn lịch sử để so sánh;
@@ -4917,3 +4917,40 @@ Không movement bốn pha/item pickup/shared cascade/all-dead trong run này; kh
 một fullmatch/K6a. Không đóng CP137 complex-route UI debt, auth/authority/generalreset/Windows vanilla/
 LAN thật/NAT/Internet/gates. IP1/subtype39 vẫn opaque. Code đã kiểm, trạng thái PR/merge ở README;
 AUD043 qua140, audit kếCP144. Bước tiếp duy nhất tại PLAN.
+
+
+<a id="virtual-movement-cycles"></a>
+### Movement hai chiều, item và hai lifecycle trên production virtualhosts — CP142
+
+**kr_runtime/confirmed hẹp**, [raw/hash/recipe](evidence/peer-endpoints/README.md#cp142).
+Reuse finite observer/ADown-BRight/OS returnsetup CP139 và production CLI/profile/basic lifecycle
+CP141. Run mới có bốn cửa sổ (hai hướng × hai vòng), actual CA+wineserver/namespace được kiểm trước
+input, native ingress→key/slot→actor apply/protected target→fresh current position. Packet selector0
+vẫn13byte; key byte so theo **low8(roundkey) XOR low8(profileID(slot))** đã phục hồi CP047, không
+phải low8key đơn lẻ và không là auth. Có632 runtime joins và1356 source/wire/ownership joins;
+26 recipient applies,8 target changes, cả bốn current progress trong/giữa calls.45 actual API CRC và
+408 secure getters là emulation riêng.590 veth PCAP records, UDP direct, không shim/UDPproxy.
+
+ADown thực tế nhặt Bomb index16/kind0 và Fire17/kind1 ở cả hai vòng. Actual124/currentkey/winnerA
+→ native165full12/errors0 ở cả hai view; capacity/power1,1→2,1→2,2, clock2 trở lại1,1. B giữ baseline.
+Bốn request/eight view-item joins/70 checks;1314 actor copied-getter checks tách riêng. Không phải
+tranh item/fairness/location validator/fullinventory/max/TTL. Feedback snapshot giữ counterevent cũ;
+chỉ GEN165_BEGIN/END exact context được dùng cho effect, không đếm mọi event/phase thành handler.
+
+Cùng run có hai actual A118 tại3,3/power2 sauFire, IDs1→2/keys12345→12346, currentA17→19 bind
+exactfreshtrapSHA, peer170/B21 dẫn chosen survivor rank2,1/native175302/1803/110 ở cả hai view;
+195flags before/after/seedreset và clockstatbaseline được kiểm. Barrier25,901/25,755s<30s; không
+suy chắc chắn mọi coldstart sẽ trước deadline. Normal ReadyB/StartA giữa vòng, normal BReady sau
+return2 tạo actual95seq457/SHA`d028d7997f2fccd885e2a490528f7dcf1d13dd6382f4574b6588b0bc25da75c7`;
+additional native110full6/errors0 cảhai trướccleanup107, render phòng/readybadge; không Start3.
+
+Run r1 trước input dừng do composition harness bỏ mapping GDB B→roleB/pathB. Hai process cùng
+outputA khiến thiếu ackB; không dùng đó làm lỗi gameplay/network.691raw giữ nguyên, r2 dùng mapping
+đã có CP139 và output/prefix mới. Các draft checker thiếu XOR identity hoặc chọn snapshot lẫn feedback
+đều giữ failedscript/log/correction; không có rawrewrite hoặc nativeRE mới chỉ để vượt check.
+
+Đây là cùng-run movement/item/basic2ending/reset/Ready **trên modifiedWine và hai virtualhost cùng
+máy**, chưa fullmatch/K5/K6a/physicalLAN/K6b/Internet/K6c. Chưa selected malformed/stale TCP trong
+run mới hoặc disconnect giữa trận, không tự đóng consistency/authority/gate. Không giải general UDP
+reliability/NAT/fullgrammar/fullinventory/CP137complexUI/sharedgeometry. IP1/subtype39 opaque;
+rank/fuse/drop/address là emulator policy. Bước tiếp duy nhất ở PLAN; AUD043qua140/kếCP144.

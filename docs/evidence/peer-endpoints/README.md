@@ -159,3 +159,36 @@ B có thêm survivor110 sau observation khi cleanup A; final verifier giới h�
 đối chiếu actual95 chunk và hai ready110 sends trước observation. Không đổi raw/conclusion/gate.
 Không movement/itempickup/sharedcascade/fullmatch/K6a/LAN/NAT/Internet; CP137 complexUI debt riêng.
 IP1/subtype39 opaque. CP141 selfcheck/pendingPR, review waived; AUD043 qua140/kế144.
+
+
+<a id="cp142"></a>
+## CP142 — Cùng-run movement/item/basic2cycles/Ready trên production virtualhosts
+
+Baseline CP141/PR212 merge`b1f2c72`, code production không đổi; reuse231 server tests.
+[Contract/giới hạn](../../PROTOCOL.md#virtual-movement-cycles), [câu hỏi](../../RESEARCH.md#gap-peer-movement),
+[thứ tự](../../PLAN.md#current-order). Sourcefirst CP139 finite observers/knownreturnsetup + CP141
+productionconfig/basic lifecycle/Ready cuối; nguồn cũ/hash/build/locator đã pin ở reuse-question.
+Không đọc thêm nativebody hoặc port opcode/layout/profile VN.
+
+| Run local/research/codex/ | Kết quả | run.json SHA256 |
+|---|---|---|
+|virtual-production-movement-r1|169,071s/exit1/691raw; observer ackB timeout trướcOSinput. Bcommands cònexplicitroleA/pathA; khôngbom/result, khôngnetworkfailureclaim.|`ff0c0697b9057437fabaf758e6ce53d32821243a2b054bbbf998a804860e1143`|
+|virtual-production-movement-r2|344,960s/exit0/1320raw;4finitewindows/590vethrecords;actualBombFire mỗi vòng/native effects/bompower2/2survivorresults/reset/Ready cuối.|`8ea46808a0a31324ef0f0b13b8698c6deb24b6d6109fd44372d923b9e51be964`|
+
+R1 rawseal/sourcefrozen/cleanup giữ nguyên; `observer-attribution.json` pin generated Bcommands,
+r2 prelaunch assert roleB/pathB và output/prefix mới. Không sửa cấu hình/source giữa run.
+R2 `endpoint-peer-verification.json`632joins/4phases/26recipientapplies/8targetchanges/currentprogress,
+`movement-wire-verification.json`1356joins ghép actual99IP/port/veth/nativeingress/currentkeyXORID/
+actualowners/freshackboth/currentbombordering; không lấy nhãn namespacefrontend làm ownershipproof.
+`basic-verification.json`3284checks/two175180110/currenttrap+deathSHA/IDskeys/195seed/clockbaseline;
+barrier25,901/25,755s<30. `pickup-verification.json`70checks/eight viewrounditemjoins với165full12,
+A1,1→2,1→2,2 và reset clock2; không contestedpickup/fullinventory. `address-ready-verification.json`
+25checks/no-shim/module/actual95seq457+native110both/noStart3. `visual-review.json` pin ảnh gốc đã xem:
+phòng cảhai/readybadge sauinput. Native/emulation:1314actor/408peergetters/297typedpackets/12native153/
+45UDPCRC/2364flaggetter+2340arraychecks, tách khỏi livegameproof.
+
+`analysis-corrections.json` giữ draft pickup selector lẫn feedback và thiếu XORprofileID trong check:
+đối chiếu contract CP047 trước sửa verifier; raw không đổi. Các failure lịch sử không được nâng thành
+pass hoặc giấu. Known complex-routeCP137UI/sharedgeometry/physicalLAN/NAT/Internet/fullauth/authority/
+fullmatch/gates mở. CP142 pendingPR/selfcheck; reviewwaived, AUD043qua140/kế144. Tiếp PLAN ghép
+selected current/same-old TCP bodies vào profile này, tránh thêm tracker hoặc RE lại codec.
