@@ -1320,3 +1320,55 @@ False, oldAclosed/BhostTrue; ROLE_SLOTS C0trùngA0. Đây là emulatordesign/sou
 connection/identity/slot1contract. NextactualCcontrol/boundedvacant-slotpath chỉPLAN. Server270tests
 reuseexactunchangedhashCP172; no newnativebody/opcode/legacywireport. CP174selfcheck/chờPR,
 reviewwaived/AUD051qua172/kế176; nogates/fullmatch/Windows/LANInternet/8client/accountresume.
+
+
+<a id="cp175"></a>
+## CP175 — actual admission control, Cslot1/AStart4 và preReady consistency
+
+Checkpoint CP175 gom control/implementation/native/visual delta; không tự đóng gate. CP174 đã merge [PR246](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/246),
+head `a441215093911ee73e01badbb5e3a27a0962ca30`, merge `281ca375218f26e3240f1172630db265b4000b27`.
+[Contract/giới hạn duy nhất](../../PROTOCOL.md#a-survivor-admission), [phép đo](../../RESEARCH.md#gap-disconnect-replacement),
+[thứ tự](../../PLAN.md#current-order). Codex solo; review waived; audit kế CP176.
+
+| Run dưới `local/research/codex/` | Kết quả và hash run.json |
+|---|---|
+| A-survivor-control-r1 | Partial trước fault/C: alignmiss x80/y399;715 raw,222.793s; `b217aecf93af4a2ac3c3da964b8eb2fff82d59a1d0cea80b9d436a7e09df6a9a` |
+| A-survivor-control-r2 | Actual C→ordinal9/replacement_not_ready;1459 raw,494.542s; `6c8adff39c6a0982d628e721742a0fe9a0f3d501cf509ec2d8104fb900f2c153` |
+| A-survivor-positive-r1 | Prelisten policy preflight từ chối battle_exit; chưa client,8 raw/0.390s; `47b04af84b0bd391d1b971b5927b8054fa818423f81d618fd014abc9f0d79e82` |
+| A-survivor-positive-r2 | Native Cslot1/ID3/Join/Ready/AStart4/clock;1691 raw,573.565s; preReady color discrepancy giữ riêng; `974fa4133611c48dd3ee2fa4bfc8c5a03cedbc74c9d32742022a335f5a908c3b` |
+| A-survivor-positive-r3 | Tổng thời gian hết, chưa C auth/Join/slot110 mới;1598 raw,609.271s,exit0 nhưng không completion; `f4aea2d72f2ac6465ea504adf8700d59acc4526ec1c0c3a1574bdce24c78fb8f` |
+| A-survivor-prestart-r2 | Native CJoin/Ready/AStart1/clock; Asetup110 trước C95/ảnh A đúng đội, CpreReady đen/unknown;586 raw,184.868s; `7717bb65d998b44bcd1b1552336baa25b08fae71d977ea9119601a25e8d1b1bf` |
+
+Mỗi run có `cycles-recipe.json`, `runtime-preflight.json`, `launch-exit.json`, `raw-seal.json` sau cleanup;
+raw list/size/SHA giữ tại local. Binary Wine copy SHA `e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef`,
+source binary/DB/pack không đổi. R1→R2 control chỉ thêm OS alignment về hành lang đã có, không nới20pulse/
+45ms/tolerance12/loading30s/fuse6s. Positive opt-in dùng8bodypins/instance slot map; profile C khai báo1/10
+để thử Start, không coi đó là gameplay stats đã kiểm. R3 source chỉ thêm slot110 sang A nhưng chưa chạy tới nó. Control prestart tiếp theo giữ fixture,
+đổi entry recipe và Ccapacity2/7; không coi là đối chứng runtime chỉ đổi một biến.
+
+Control `admission-control-verification.json`:1488 checks/1459 raw; native baseline1771,
+243 packet cases/876 secure fields, peer632/EOF55. Positive R2:2003 firsttwo,
+249 native packet cases/912 secure fields, peer670, admission43. `visual-review.json` ghi bốn ảnh đã
+đọc; `C-capacity-gap.json` gắn initial slot1 stats với secure native getters/report SHA.
+`analyze_A_survivor_positive.py` tách cleanup abort/Ready marker bị xóa khỏi captured C95/104;
+report lỗi đầu giữ nguyên, không sửa raw để làm pass.
+
+`A-survivor-positive-r1/source-recovery-report.json` và `source-recovery/` giữ đúng bytes recipe/harness/source
+R1 so SHA preflight sau khi helper chuyển R2. Trong khôi phục, preparation script không dùng bởi runtime
+bị tạm ghi bytes R1 rồi khôi phục ngay đúng SHA R2; không đổi harness/production/profile/config đang
+chạy. Kiểm hash đầu/cuối không là giám sát filesystem liên tục. R3 dùng helper tên riêng để giữ locator.
+Không đổi preflight/raw/seal hoặc complete checkpoint cũ. Snapshot issue có thời điểm, không là plan.
+
+
+Focused recipe `prepare_A_survivor_prestart_r2.py`/`wine_probe_A_survivor_prestart_r2.py`/
+`run_A_survivor_prestart_r2.py`:300s total,120s C phase/loading30s giữ; B guest EOF trước trận đầu,
+Acleanup/chief, fresh C/12 transports/ownslot1/ID3/Join87/Ready95/A104/121full/clock/153 và8s quan sát.
+Không hai vòng AB hoặc forfeit trong run này. `native-analysis.log`, `admission-positive-verification.json`,
+`preReady-slot-verification.json`, `C-initial-capacity-verification.json`, `visual-review.json` giữ phép kiểm/giới hạn.
+Ảnh `B/` lúc này là display của C trên host B đã rời; nhãn `Start4` kế thừa tên file, actual epoch1/key12345.
+Không dùng tên file để nâng epoch. `C-before-ready-contact.png` giữ sáu frame đen đã đọc, không bỏ ảnh xấu.
+`A-survivor-prestart-r1` chỉ preparation lỗi shadow variable, chưa launch/preflight; không tính thành runtime.
+
+Profile C2/7 ở focused run khớp initial capacity2 native getter; maximum7/reservation/C118 còn chưa kiểm.
+Hai view map active sau Start không thay AC outcome/reset/peer movement. CpreReady render unknown.
+CP175 hoàn tất ghi chép không đồng nghĩa merge, gate hoặc fullmatch; PR/Git giữ trạng thái tích hợp.

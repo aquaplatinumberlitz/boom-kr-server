@@ -26,6 +26,7 @@ from server.chain_capacity import ClearCellChains
 from server.terrain_model import Bomb
 from server.terrain_profile import load_terrain
 from server.probe_room import ProbeRoom
+from server import replacement_slots
 
 
 def supported_event_blob(body, subtype):
@@ -179,6 +180,11 @@ class ProbeService:
         if missing:
             raise ValueError('profile missing lifecycle fixtures: ' + ', '.join(sorted(missing)))
         self.profile, self.out, self.proxy_ports = profile, out, proxy_ports
+        self.role_slots = dict(ROLE_SLOTS)
+        self.replacement_slot = 'replacement_slot' in profile.data
+        self.replacement_binding = None
+        if self.replacement_slot:
+            replacement_slots.validate(profile)
         self.room_title_mode = False
         self.room_title_bytes = None
         if 'room_title' in profile.data:
@@ -286,7 +292,8 @@ class ProbeService:
             self.capacity_chains = ClearCellChains(profile.data['capacity_chain'], profile.frames)
         self.terrain = None
         if 'bomb_terrain' in profile.data:
-            if set(self.capacity_profile) != {'A', 'B'} or self.capacity_chains:
+            if (set(self.capacity_profile) != ({'A', 'B', 'C'} if self.replacement_slot else {'A', 'B'})
+                    or self.capacity_chains):
                 raise ValueError('bomb_terrain requires capacity and excludes capacity_chain')
             self.terrain = load_terrain(profile.data['bomb_terrain'], profile.frames)
         self.hidden_items = {item['index']: ItemSpec(**item)
@@ -311,13 +318,28 @@ class ProbeService:
                                   'channel_endpoint': self.channel_endpoint,
                                   'source': 'design', 'policy': 'explicit_operator_ipv4'},
                       'limits': 'Fixture auth/roster/rank, explicit addresses default loopback, two live members/A-B then B-C by accept order; no fullmatch gate.'}
+        if self.replacement_slot:
+            self.state['replacement_slot_policy'] = {'mode': 'vacant_AB_slot', 'source': 'design',
+                                                       'limits': 'Fresh C identity, not account resume; one replacement.'}
         self.state['policy_sources'] = []
         for filename in ['probe_service.py', 'probe_codec.py', 'probe_room.py', 'round_fence.py',
                          'item_claims.py', 'udp_round_keys.py', 'chain_capacity.py',
-                         'terrain_model.py', 'terrain_profile.py', 'room_title.py', 'room_team_mode.py']:
+                         'terrain_model.py', 'terrain_profile.py', 'room_title.py', 'room_team_mode.py',
+                         'replacement_slots.py']:
             path = Path(__file__).with_name(filename)
             self.state['policy_sources'].append({'path': str(path.resolve()),
                                                  'sha256': hashlib.sha256(path.read_bytes()).hexdigest()})
+
+    def slot(self, role):
+        return getattr(self, 'role_slots', ROLE_SLOTS)[role]
+
+    def c_replaces_b(self):
+        return bool(getattr(self, 'replacement_binding', None) and self.slot('C') == 1)
+
+    def fixture_body(self, alias):
+        if self.c_replaces_b():
+            return replacement_slots.slot1_body(self.profile, alias)
+        return self.profile.body(alias)
 
     def peers(self, marker='map_response_sent'):
         return [event for event in self.events if event.get('reply_ordinal') == 4
@@ -331,7 +353,7 @@ class ProbeService:
     def send(self, event, name, label, *, body=None, opcode=None):
         template = self.profile.raw(name)
         if body is None:
-            body = self.profile.body(name)
+            body = self.fixture_body(name)
             if (getattr(self, 'room_title_mode', False) and name == 'roomlist_B'
                     and self.room_title_bytes is not None):
                 body = replace_listing_title(body, self.room_title_bytes)
@@ -371,7 +393,7 @@ class ProbeService:
             self.state['round_history'].append(self.round)
         self.round = {'index': self.room.generation, 'key': key, 'host_role': self.host_role,
                       'revealed_hidden': {},
-                      'roster': [{'role': e['role'], 'slot': ROLE_SLOTS[e['role']],
+                      'roster': [{'role': e['role'], 'slot': self.slot(e['role']),
                                   'identity': ROLE_IDS[e['role']]} for e in self.peers()]}
         self.state['current_round'] = self.round
         if self.capacity_profile:
@@ -530,7 +552,11 @@ class ProbeService:
                                                'monotonic_ns': now})
 
     def send_setup(self, event, aliases, label, body_overrides=None):
-        body_overrides = body_overrides or {}
+        body_overrides = dict(body_overrides or {})
+        if self.c_replaces_b():
+            for alias in aliases:
+                if alias in replacement_slots.PINS and alias.endswith('_C'):
+                    body_overrides.setdefault(alias, self.fixture_body(alias))
         if event.get('room_reentry'):
             return [self.send(event, alias, label + '-' + alias, body=body_overrides.get(alias))
                     for alias in aliases]
@@ -566,8 +592,9 @@ class ProbeService:
             self.send_raw(event, self.profile.raw('channel'))
             event['channel_response_sent'] = {'monotonic_ns': time.monotonic_ns()}
         elif opcode == 67 and not event.get('ready_response_sent'):
-            listing = self.profile.raw(f'roomlist_{role}')
-            if (getattr(self, 'room_title_mode', False) and role == 'B'
+            listing_alias = 'roomlist_B' if role == 'C' and self.c_replaces_b() else f'roomlist_{role}'
+            listing = self.profile.raw(listing_alias)
+            if (getattr(self, 'room_title_mode', False) and (role == 'B' or (role == 'C' and self.c_replaces_b()))
                     and self.room_title_bytes is not None):
                 sequence91 = self.profile.data['fixtures']['roomlist_B']['sequence']
                 listing = codec.encode(listing[:37], 91, replace_listing_title(
@@ -575,8 +602,8 @@ class ProbeService:
             self.send_raw(event, self.profile.raw('ready') + listing
                           + self.profile.raw('channel_list'))
             event['ready_response_sent'] = {'monotonic_ns': time.monotonic_ns()}
-            if getattr(self, 'room_title_mode', False) and role == 'B':
-                path = f"B-title-initial91-{event['global_ordinal']}.bin"
+            if getattr(self, 'room_title_mode', False) and (role == 'B' or (role == 'C' and self.c_replaces_b())):
+                path = f"{role}-title-initial91-{event['global_ordinal']}.bin"
                 (self.out / path).write_bytes(listing)
                 event['initial_roomlist_title'] = {
                     'fixture': path, 'sha256': hashlib.sha256(listing).hexdigest(),
@@ -584,6 +611,10 @@ class ProbeService:
                     'title_sha256': hashlib.sha256(self.room_title_bytes).hexdigest()
                     if self.room_title_bytes is not None else None}
         elif opcode in (81, 82) and not event.get('create_response_sent'):
+            if role == 'C' and self.replacement_binding and not self.replacement_allowed():
+                self.state.setdefault('room_reentry_rejections', []).append({
+                    'role': role, 'seq': sequence, 'reason': 'replacement_survivor_changed'})
+                return
             previous = event.get('last_room_leave')
             promoted = (self.host_back_rejoin and role == 'A' and previous
                         and previous.get('variant') in ('host_A_to_B', 'active_host_A'))
@@ -629,17 +660,18 @@ class ProbeService:
             reply_bodies = {}
             if getattr(self, 'room_team_mode', False):
                 try:
-                    if alias not in ('create', 'join') and not (promoted and alias == 'join_A'):
+                    replacing = alias == 'join_C' and bool(self.replacement_binding)
+                    if alias not in ('create', 'join') and not (promoted and alias == 'join_A') and not replacing:
                         raise ValueError('room team mode supports current A/B membership only')
                     if alias == 'create' and opcode == 81:
                         pending_selector = create_selector(body)
                         selector = pending_selector
-                    elif alias in ('join', 'join_A') and self.room_team_selector is not None:
+                    elif alias in ('join', 'join_A', 'join_C') and self.room_team_selector is not None:
                         selector = self.room_team_selector
                     else:
                         raise ValueError('room team mode requires current create81')
                     reply_bodies[alias] = replace_reply_selector(
-                        self.profile.body(alias), 86 if alias == 'create' else 87, selector)
+                        self.fixture_body(alias), 86 if alias == 'create' else 87, selector)
                 except ValueError as error:
                     self.state.setdefault('room_team_rejections', []).append({
                         'role': role, 'seq': sequence, 'reason': str(error),
@@ -680,7 +712,7 @@ class ProbeService:
             self.send_setup(event, [alias], 'reentry-profile')
             event['player_response_sent'] = {'monotonic_ns': time.monotonic_ns()}
             if role == 'C':
-                peer = self.channels['B']
+                peer = self.channels[self.replacement_binding['survivor'] if self.replacement_binding else 'B']
                 event['replacement_roster_sent'] = self.send(peer, 'player_C', 'replacement106')
             elif role == 'B' and event.get('room_reentry'):
                 peer = self.channels['A']
@@ -691,7 +723,9 @@ class ProbeService:
                 if not peer.get('closed') and peer.get('map_response_sent'):
                     event['rejoined_peer_roster_sent'] = self.send(peer, 'player_A_guest', 'rejoin-peer106')
         elif opcode == 95 and role != self.host_role and not self.room.active and not event.get('guest_ready_received'):
-            if role == 'A' and (not event.get('promoted_rejoin') or not event.get('map_response_sent')):
+            if ((role == 'A' and (not event.get('promoted_rejoin') or not event.get('map_response_sent')))
+                    or (role == 'C' and self.replacement_binding
+                        and (not event.get('map_response_sent') or event not in self.peers()))):
                 self.state.setdefault('ready_rejections', []).append({
                     'role': role, 'seq': sequence, 'reason': 'not_rejoined_member'})
                 return
@@ -721,7 +755,7 @@ class ProbeService:
                                'sha256': hashlib.sha256(frame).hexdigest()}
         elif opcode == 118 and self.room.active:
             values = codec.read_fields(body, [4, 1, 1, 4, 1, 1, 1, 1, 1, 1, 1, 4, 1])
-            if values[-1] != 0 or values[2] != ROLE_SLOTS[role]:
+            if values[-1] != 0 or values[2] != self.slot(role):
                 raise ValueError('unsupported bomb report')
             request = {'round': self.room.generation, 'role': role, 'seq': sequence,
                        'fields': values, 'monotonic_ns': time.monotonic_ns(),
@@ -763,7 +797,7 @@ class ProbeService:
                 # neither policy pretends to observe the native client's pool.
                 reserved = [bomb['id'] for _, pending, bomb in self.jobs
                             if bomb['round'] == self.room.generation
-                            and bomb['owner'] == ROLE_SLOTS[role]
+                            and bomb['owner'] == self.slot(role)
                             and not bomb.get('capacity_release')
                             and self.room.fence.rejection(pending) is None]
                 capacity = self.round['bomb_capacity'][role]
@@ -841,7 +875,7 @@ class ProbeService:
                         or not any(peer is event for peer in peers)):
                     report['rejected'] = 'needle_not_current_AB_member'
                     return
-            claim = self.room.claim(ROLE_SLOTS[role], slot, context, ItemSpec(index, row, column, kind))
+            claim = self.room.claim(self.slot(role), slot, context, ItemSpec(index, row, column, kind))
             if claim is not None and self.room.claims.consume(claim):
                 payload = codec.pack_fields([1, context, slot, row, column, index, kind, 0], [1, 1, 1, 1, 1, 4, 2, 1])
                 report['broadcast165'] = self.broadcast('start', f'item165-r{self.room.generation}-{index}',
@@ -872,7 +906,7 @@ class ProbeService:
                       'monotonic_ns': time.monotonic_ns(),
                       'frame_sha256': hashlib.sha256(frame).hexdigest()}
             self.state['block_reports'].append(report)
-            if selected_slot != ROLE_SLOTS[role] or aux != 0xFFFFFFFF:
+            if selected_slot != self.slot(role) or aux != 0xFFFFFFFF:
                 report['rejected'] = 'unsupported_block_report'
                 return
             matches = [item for item in self.hidden_items.values()
@@ -926,7 +960,7 @@ class ProbeService:
         if len(body) < 14:
             raise ValueError('unsupported event prefix')
         subtype, slot, x, y, client_tick, actor_field = codec.read_fields(body[:14], [1, 1, 2, 2, 4, 4])
-        if slot != ROLE_SLOTS[event['role']]:
+        if slot != self.slot(event['role']):
             raise ValueError('event slot does not match connection')
         if subtype in (17, 19):
             raw = supported_event_blob(body, subtype)
@@ -1105,7 +1139,7 @@ class ProbeService:
         if len(body) != 28:
             return None, 'unsupported_rescue_shape'
         other = next(peer for peer in peers if peer is not event)
-        aux = ROLE_SLOTS[other['role']]
+        aux = self.slot(other['role'])
         # Exact measured uncompressed envelope, including peer's slot0/1 aux. Do not
         # narrow arbitrary u32 values into an unchecked u8 peer argument.
         tail = codec.pack_fields([10, 0x00000518, aux << 16, 0], [4, 4, 4, 2])
@@ -1235,7 +1269,7 @@ class ProbeService:
 
     def deliver_departure(self, peer, departed):
         """Send after recipient setup, so fixture roster cannot restore the slot."""
-        body = codec.pack_fields([ROLE_SLOTS[departed], ROLE_IDS[departed], 0], [1, 4, 1])
+        body = codec.pack_fields([self.slot(departed), ROLE_IDS[departed], 0], [1, 4, 1])
         # This diagnostic profile supports B taking over A, or A staying chief.
         alias = 'promote_B' if peer['role'] == 'B' else ('slot_C' if peer['role'] == 'C' else 'slot_A')
         sent = []
@@ -1347,7 +1381,7 @@ class ProbeService:
         self.tick_loading(now)
         abort = self.round.get('abort')
         if abort and not self.round.get('rank') and now - abort['monotonic_ns'] >= 12 * 10**9:
-            alias = 'rank' if ROLE_SLOTS[abort['role']] == 0 else 'rank_Awin'
+            alias = 'rank' if self.slot(abort['role']) == 0 else 'rank_Awin'
             self.round['rank'] = {'monotonic_ns': now,
                                   'broadcast': self.broadcast(alias, 'forfeit175'),
                                   'policy': 'forfeit on channel close, no synthetic death'}
@@ -1369,7 +1403,7 @@ class ProbeService:
                             active = slot < (3 if self.rescue_contact else 2)
                             body.extend(codec.pack_fields([int(active)], [1]))
                             if active:
-                                remote = slot < 2 and slot != ROLE_SLOTS[event['role']]
+                                remote = slot < 2 and slot != self.slot(event['role'])
                                 for ip, endpoint in ([(peer_ip, port), (0, 0), (0, 0)] if remote else [(0, 0)] * 3):
                                     body.extend(codec.pack_fields([ip, endpoint], [4, 2]))
                         event['begin_response_sent'] = self.send(event, 'peer', 'peer153', body=bytes(body))
@@ -1481,7 +1515,7 @@ class ProbeService:
         deaths = [peer.get('death_event') for peer in peers]
         if not all(death and death['round'] == self.room.generation
                    and death['subtype'] == 19 and death['role'] == peer['role']
-                   and death['slot'] == ROLE_SLOTS[peer['role']]
+                   and death['slot'] == self.slot(peer['role'])
                    and not death.get('rejected')
                    for peer, death in zip(peers, deaths)):
             return False
@@ -1537,6 +1571,14 @@ class ProbeService:
                             substitutions = {'slot_A': 'slot_A_guest', 'guest_A': 'guest_B_chief'}
                             aliases = [substitutions.get(alias, alias) for alias in aliases]
                         self.send_setup(event, aliases, 'reentry-setup')
+                        if role == 'C' and self.c_replaces_b() and marker == 'slot_response_sent':
+                            # C's preserved 106 profile starts with the old slot0
+                            # state. Both views need the same known slot1/team1
+                            # 110 now, rather than waiting for Ready95 to echo it.
+                            survivor = self.channels[self.replacement_binding['survivor']]
+                            if not survivor.get('closed') and survivor.get('map_response_sent'):
+                                event['replacement_slot_sent'] = self.send(
+                                    survivor, 'slot_C', 'replacement-slot110')
                         event[marker] = {'monotonic_ns': now}
             if event.get('map_response_sent'):
                 for departed in event.pop('pending_departures', []):
@@ -1561,14 +1603,32 @@ class ProbeService:
                 event['synthetic_opponent_sent'] = self.send(
                     event, 'synthetic_opponent', 'synthetic-slot2-106', opcode=106)
 
+    def replacement_target(self):
+        """Return a stable survivor/departure only after the existing cleanup barrier."""
+        pairs = [('A', 'B')]
+        if getattr(self, 'replacement_slot', False):
+            pairs.append(('B', 'A'))
+        for departed_role, survivor_role in pairs:
+            departed, survivor = self.channels.get(departed_role), self.channels.get(survivor_role)
+            if not (departed and departed.get('closed') and survivor and not survivor.get('closed')
+                    and self.host_role == survivor_role and survivor.get('map_response_sent')
+                    and not survivor.get('pending_departures') and not self.room.active):
+                continue
+            before_first = self.round['index'] == 0 and departed_role in survivor.get('departures_sent', [])
+            if not (before_first or self.round.get('refresh')):
+                continue
+            binding = getattr(self, 'replacement_binding', None)
+            if binding and (binding['survivor'] != survivor_role
+                            or binding['connection'] != survivor['global_ordinal']):
+                continue
+            if departed_role == 'B' and (not survivor.get('create_response_sent')
+                    or departed_role not in survivor.get('departures_sent', [])):
+                continue
+            return departed_role, survivor_role, survivor
+        return None
+
     def replacement_allowed(self):
-        departed, survivor = self.channels.get('A'), self.channels.get('B')
-        if not (departed and departed.get('closed') and survivor and not survivor.get('closed')
-                and self.host_role == 'B' and survivor.get('map_response_sent')
-                and not survivor.get('pending_departures') and not self.room.active):
-            return False
-        before_first = self.round['index'] == 0 and 'A' in survivor.get('departures_sent', [])
-        return bool(before_first or self.round.get('refresh'))
+        return self.replacement_target() is not None
 
     def accept(self, listener):
         connection, peer = listener.accept()
@@ -1579,6 +1639,17 @@ class ProbeService:
                 'reason': 'capacity' if ordinal > 12 else 'replacement_not_ready'})
             connection.close()
             return
+        if ordinal == 9 and getattr(self, 'replacement_slot', False):
+            departed, survivor_role, survivor = self.replacement_target()
+            slot = self.slot(departed)
+            if slot == self.slot(survivor_role):
+                connection.close()
+                raise ValueError('replacement slot conflicts with survivor')
+            self.role_slots['C'] = slot
+            self.replacement_binding = {'departed': departed, 'survivor': survivor_role,
+                                        'connection': survivor['global_ordinal'], 'slot': slot,
+                                        'identity': ROLE_IDS['C'], 'monotonic_ns': time.monotonic_ns()}
+            self.state['replacement_binding'] = dict(self.replacement_binding)
         connection.settimeout(2)
         event = {'global_ordinal': ordinal, 'role': 'ABC'[(ordinal - 1) // 4],
                  'reply_ordinal': (ordinal - 1) % 4 + 1, 'peer': list(peer),

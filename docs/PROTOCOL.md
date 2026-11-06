@@ -6195,3 +6195,55 @@ actualadmissioncontrol rồi path hẹp vacant-slot1/CID3 nếu contract đủ; 
 Không dùng code source này làm KRnativebehavior. [PLAN](PLAN.md#current-order) giữ thứ tự; newC
 không là resumeaccountB. Fullauth/142freshness/generalreset/dependencies/K5K6a/fullmatch/LAN/Internet/
 8actualclients/Windows vẫn mở. AUD051qua172/kế176, reviewownerwaived.
+
+
+<a id="a-survivor-admission"></a>
+### A ở lại nhận identity mới C vào slot B đã rời — CP175
+
+Nguồn [CP051](#service-replacement), [CP174](#basic-host-b-eof), fixture KR87/106/110/121/153;
+[recipe, run và hash](evidence/peer-endpoints/README.md#cp175). Legacy VN/KR chỉ dùng checklist
+host/ready/slot khác identity; không nhập opcode/ID/layout VN. Không RE lại consumer đã phục hồi.
+
+**Control `kr_runtime/confirmed`:** `A-survivor-control-r1` dừng trước EOF/C, 20 nhịp Up vẫn
+x80/y399. R2 đưa A về hành lang x120 trước khi lên, giữ20 nhịp/45ms/tolerance12 và bounds cũ;
+đạt hai vòng AB bình thường, B pendingEOF, A cleanup/chief và C plain Wine mới kết nối thực.
+PID/startticks/prefix/mapped copied image SHA/namespace gắn với source10.77.0.3; service từ chối
+ordinal9/`replacement_not_ready`, không nhận transport C hoặc xác lập ID3. C control khác host-model.
+715 raw R1 và1459 raw R2 giữ nguyên; không gọi R1 đã kiểm admission.
+
+**Implementation `design`:** flag profile `replacement_slot={"mode":"vacant_AB_slot"}` là opt-in;
+default không đổi. Tám body hash/opcode KR được kiểm trước listen. Map slot theo từng service,
+C vẫn identity3; chỉ đổi field slot đã biết trong87/106, giữ đuôi profile opaque. Slot1/unready và
+Ready110 tái dùng trạng thái KR đã đo, guest106 phía C mô tả A hiện hành. Selector create hiện tại
+được echo; sequence của A tiếp tục, C có sequence riêng. Admission giữ host/alive/map/cleanup/
+refresh/no-pending-departure/no-active-round và pin connection survivor; không chỉ bỏ guard ordinal9.
+Old B-survivor/Cslot0 và default regressions giữ. Specialized needle/rescue policy không được bật
+cùng flag; Battle-exit A/B cũ vẫn giữ guard A/B, không tuyên bố C Back/reconnect tổng quát.
+
+**Positive R2 `kr_runtime/confirmed` hẹp:** fresh C có auth setter ID3, ownslot1, ownmatch1,
+Join87 đọc7/7/errors0, Ready95 và A104; roomgeneration4/key12348/roster A1-slot0+C3-slot1,
+hai actual99/barrier30s, native121 đọc129/129/errors0 và cả A/C clock/endpoint, quan sát thêm8s.
+Auth setter argument `slot=0` là context của setter, không nhầm với ownroomslot1. Hai vòng AB bình
+thường, forfeit B vòng3 và A+C active vòng4 là ba phạm vi riêng; không AC outcome/reset/fullmatch.
+Cleanup sau mốc quan sát có thể ghi abort, không tính đó là kết quả trận.
+
+**PreReady discrepancy R2 và phép kiểm fix:** ảnh A thấy C đỏ trong khi C thấy mình vàng; sau Ready
+và Start hai view đều vàng. Setup gửi C slot1/state32/unready110 chỉ sang C, còn A mới nhận player106
+có state slot0 cũ. Fix gửi cùng110 sang A/currentseq ngay lúc C setup; không sửa đuôi106 hoặc ép actor.
+R3 hết tổng thời gian sau11transport/Cchưa auth, chưa thực thi slot110 mới; không xác nhận fix.
+Đối chứng `A-survivor-prestart-r2` dùng lại CP052/054: BguestEOF/Ahost→C Join/Ready/Start1.
+Actual A110 có cùng body Cslot1/state32/unready, sequence tiếp bước3 sau C106 và trước C95;
+native A đọc đầy đủ110, ảnh A trước Ready có redA/yellowC đúng. Ảnh C trước Ready còn đen,
+kể cả screen35–40; không xác nhận render phòng C hoặc đoán nguyên nhân. Sau actual Ready/A104,
+hai view render cùng map và native clock/121/153. Entry state/Ccapacity khác R2, không gọi đây
+là runtime chỉ có một biến đổi hoặc backfill preReady/postpendingEOF/general team authority. 279 server tests kiểm mapping riêng,
+old/default path, hash, slot/opaque tail/sequence, current selector, Ready/host/cleanup negative cases
+và110 tới survivor trước Ready; unit test không là native oracle.
+
+**Khoảng trống C capacity:** ở clock R2, secure getter native slot1 trên C đọc capacity/power/speed
+2/1/4, khác policy C1/10 sao từ A trong profile thử. Start không dùng C118 nên không xác nhận policy
+này phù hợp gameplay. Control prestart đã khai báo C2/7 theo slot1 B và getter native initial2 khớp. C118/reservation/
+release/gameplay chưa đo; maximum7 vẫn là lựa chọn profile/reference tới khi kiểm. Không suy ID3 phải có stat của A hoặc biến
+mỗi identity thành một cơ chế mới. [Phép kiểm tiếp](RESEARCH.md#gap-disconnect-replacement),
+[thứ tự](PLAN.md#current-order). Windows nguyên bản, fullauth, general membership/authority/reset,
+K0–K7/K5/K6a, LAN/Internet/tám client và gate giữ mở.

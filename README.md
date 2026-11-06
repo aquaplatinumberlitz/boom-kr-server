@@ -41,16 +41,16 @@ Hai copy KR Wine đã chạy login/sảnh/phòng/Battle và các chu kỳ kết 
 [kim/reset](docs/PROTOCOL.md#needle-round-reset), [cứu hai chiều và hai kết quả](docs/PROTOCOL.md#rescue-two-results),
 [deep chain/reset](docs/PROTOCOL.md#recursive-chain-cycles) giữ phạm vi và giới hạn tại nguồn chuẩn.
 
-**Mốc mới CP174:** sau hai vòng basic/B-A bom/movement hai chiều/reset và Start3, B chủ
-phòng tạo bom rồi mất kết nối có kiểm soát. A nhận forfeit riêng, xóa slot B, lên chủ phòng và về
-phòng; job bom còn chờ bị `round_closed` chặn, không phát158. Native trace và ảnh A đã đối chiếu.
-[Contract/giới hạn](docs/PROTOCOL.md#basic-host-b-eof), [raw/hash](docs/evidence/peer-endpoints/README.md#cp174).
+**Mốc mới CP175:** C identity mới đã vào slot B bỏ trống khi A ở lại, Join/Ready và cùng A
+vào trận/clock. Đã sửa thiếu gói slot/unready gửi sang A: ảnh A trước Ready hiển thị đội đúng;
+ảnh C trước Ready còn đen nên phần render đó giữ unknown. Hai view đã render cùng map sau Start.
+[Contract/giới hạn](docs/PROTOCOL.md#a-survivor-admission),
+[run và hash](docs/evidence/peer-endpoints/README.md#cp175). Baseline CP174 đã merge
+[PR246](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/246) tại `281ca37`.
 
-CP173 đã merge [PR245](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/245) tại `0d4da2e`;
-CP174 tự kiểm/chờ PR. **Chưa nghiệm thu K5/K6a/fullmatch/LAN/Internet/tám client**; third forfeit
-không tính thành trận bình thường thứ ba. [PLAN](docs/PLAN.md#current-order) tiếp admission sau B rời:
-code hiện chỉ hỗ trợ người thay A khi B ở lại, chưa hỗ trợ A ở lại nhận người thay B.
-Default preset giữ nguyên; full auth/142freshness/dependency gate còn mở.
+Native initial capacity của Cslot1 là2; profile đối chứng ngắn đã khớp2, còn C118/bom/kết quả/reset
+chưa đo. [PLAN](docs/PLAN.md#current-order) tiếp gameplay A+C, không lặp hai vòng A/B đã biết.
+**K5/K6a/fullmatch/LAN/Internet/tám client vẫn chưa nghiệm thu**; default preset giữ nguyên.
 AUD051 qua CP172; audit kế **CP176**. [Review waived](docs/evidence/checkpoints/review-waiver.json).
 
 Đích đầu: hai client thật chơi hai trận liên tiếp; mở bốn client và hardening sau đó.

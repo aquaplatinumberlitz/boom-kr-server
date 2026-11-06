@@ -1,0 +1,285 @@
+{
+  "id": "CP175",
+  "previous": "CP174",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-06T17:26:52.872630+00:00",
+  "context_commit": "281ca375218f26e3240f1172630db265b4000b27",
+  "owner": "Codex",
+  "reviewer": "Codex",
+  "question": "Sau B chủ phòng EOF/A ở lại: actual fresh C bị admission guard nào chặn; có thể nhận ID3/slot1, đồng nhất đội trước Ready, rồi A Start/C clock bằng layout KR đã biết không?",
+  "scope": "Source-first CP051/174/legacy room identity checklist; actual negative admission, bounded opt-in instance slot mapping, native Join/Ready/Start and one preReady110 delta control. No broad binary sweep or wireVN port; grouped six runs including three precondition/startup partials and visual failure.",
+  "artifacts": [
+    {
+      "name": "OriginalKR00967unchanged",
+      "sha256": "a52545c14b1fea423de655c3163d6360b628d61c1cd472b46fdbc8a9ffe15f4e"
+    },
+    {
+      "name": "CurrentWinecopyunchanged",
+      "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+    },
+    {
+      "name": "NativeIDAfullcopycf72privateanalysis",
+      "sha256": "cf72da112308d9f1ca256df8089594c5f787875310933073bf6bd5ba6f70e63b"
+    },
+    {
+      "name": "modOmodelreference",
+      "sha256": "a08950c833d3acab8281049def7b3dc96b221f107eeda01da3a548e34b91dce5"
+    }
+  ],
+  "locators": [
+    "Baseline CP174 PR246 head a441215093911ee73e01badbb5e3a27a0962ca30/merge281ca375218f26e3240f1172630db265b4000b27.",
+    "Control R2 6c8adff39c6a0982d628e721742a0fe9a0f3d501cf509ec2d8104fb900f2c153; Positive R2 974fa4133611c48dd3ee2fa4bfc8c5a03cedbc74c9d32742022a335f5a908c3b; focused prestart 7717bb65d998b44bcd1b1552336baa25b08fae71d977ea9119601a25e8d1b1bf.",
+    "KR87 slot@1/selector@5;106 slot@0/profile opaque tail;110 slot+state;121/153 known native consumers. Native 13B09E0 auth setter/123FF10 ownslot/DC5925 ownmatch/52A350 secure getter.",
+    "run-local PID/startticks/prefix/image mapping/netns/10.77.0.3→production service; ordinal9negative vs12acceptedpositive. Cauthsetter slot0 is not roomslot1.",
+    "AUD051 through CP172; next CP176. No original binary/DB changes."
+  ],
+  "findings": [
+    {
+      "summary": "ControlR1 partial before fault/C;20 Up pulses x80/y399. R2 adds column120 before vertical route, keeps original bounds; actual plainWineC owner/image/ns/source10.77.0.3 produces ordinal9 replacement_not_ready.1488 checks/1459raw; twoABnormal/thirdEOF separately verified.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#a-survivor-admission",
+      "evidence": [
+        "RUN-00016",
+        "RUN-00788",
+        "RUN-00809"
+      ],
+      "limits": "Modified KR00967 Wine copies/private virtual namespaces/local fixture identities; default unchanged; original client/DB/assets untouched. Fresh C ID3 is not B account resume. Two normal AB cycles, third BEOF forfeit, fourth AC Start/clock are separate. R2 preReady color failure and R3startup partial retained; focusedprestart110control has changedentry/profile, notglobalone-delta runtime. No AC bomb/outcome/reset, fullmatch/K5/K6a/Windows/LAN/Internet/8clients/gate. Native initialCslot1capacity2 differs from Start-only profile1; maximum policy not inferred as native. Endpoint hash/cleanup checks not continuous filesystem monitoring; unused preparation script recovery incident disclosed with exact bytes/report."
+    },
+    {
+      "summary": "Opt-in vacant_AB_slot validates8KRbodypins, bindsCslot per service with ID3 and stable survivor connection;87/106slot only/opaque tail retained, known110team state/guestA106/currentselector/currentseq. Default/oldB-C0 and membership/cleanup/Ready/host/capacity guards retained.279servertests incl9new. Firstpositiveprelisten rejected battle_exit, then narrowed exclusion to needle/rescue; ABexitguard unchanged.",
+      "source": "design",
+      "status": "design",
+      "method": "design",
+      "canonical": "docs/PROTOCOL.md#a-survivor-admission",
+      "evidence": [
+        "RUN-06618",
+        "RUN-06619",
+        "RUN-02523",
+        "RUN-02406"
+      ],
+      "limits": "Modified KR00967 Wine copies/private virtual namespaces/local fixture identities; default unchanged; original client/DB/assets untouched. Fresh C ID3 is not B account resume. Two normal AB cycles, third BEOF forfeit, fourth AC Start/clock are separate. R2 preReady color failure and R3startup partial retained; focusedprestart110control has changedentry/profile, notglobalone-delta runtime. No AC bomb/outcome/reset, fullmatch/K5/K6a/Windows/LAN/Internet/8clients/gate. Native initialCslot1capacity2 differs from Start-only profile1; maximum policy not inferred as native. Endpoint hash/cleanup checks not continuous filesystem monitoring; unused preparation script recovery incident disclosed with exact bytes/report."
+    },
+    {
+      "summary": "PositiveR2 actualC ID3/ownslot1/ownmatch/Join87full7/errors0/Ready95/A104; generation4/key12348/currentACroster/actual99/native121full129/clock/153 endpoints. Native43checks+2003firsttwo/249packet912fields/670peer. BeforeReady A seesCred but Cseesyellow; afterReadybothyellow, visual consistency not backfilled.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#a-survivor-admission",
+      "evidence": [
+        "RUN-02479",
+        "RUN-02534",
+        "RUN-02484",
+        "RUN-02490"
+      ],
+      "limits": "Modified KR00967 Wine copies/private virtual namespaces/local fixture identities; default unchanged; original client/DB/assets untouched. Fresh C ID3 is not B account resume. Two normal AB cycles, third BEOF forfeit, fourth AC Start/clock are separate. R2 preReady color failure and R3startup partial retained; focusedprestart110control has changedentry/profile, notglobalone-delta runtime. No AC bomb/outcome/reset, fullmatch/K5/K6a/Windows/LAN/Internet/8clients/gate. Native initialCslot1capacity2 differs from Start-only profile1; maximum policy not inferred as native. Endpoint hash/cleanup checks not continuous filesystem monitoring; unused preparation script recovery incident disclosed with exact bytes/report."
+    },
+    {
+      "summary": "Code adds sameCslot1/state32/unready110toA/currentseq at Csetup. R3sealedpartial before Cauth/Join, no fixproof. FocusedprestartCP052054reuse: actualA110beforeC95/nativeAfull110/manualApreReadyredA-yellowC/CReady/AStart1/clock; CpreReadyblack/renderunknown, bothACmaprendered. Changedentryrecipe/Ccapacity vsR2, no globallycontrolledsingle-delta claim; originalR2visualfailure unchanged.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#a-survivor-admission",
+      "evidence": [
+        "RUN-05990",
+        "RUN-06008",
+        "RUN-06016"
+      ],
+      "limits": "Modified KR00967 Wine copies/private virtual namespaces/local fixture identities; default unchanged; original client/DB/assets untouched. Fresh C ID3 is not B account resume. Two normal AB cycles, third BEOF forfeit, fourth AC Start/clock are separate. R2 preReady color failure and R3startup partial retained; focusedprestart110control has changedentry/profile, notglobalone-delta runtime. No AC bomb/outcome/reset, fullmatch/K5/K6a/Windows/LAN/Internet/8clients/gate. Native initialCslot1capacity2 differs from Start-only profile1; maximum policy not inferred as native. Endpoint hash/cleanup checks not continuous filesystem monitoring; unused preparation script recovery incident disclosed with exact bytes/report."
+    },
+    {
+      "summary": "NativeCslot1 R2 getters show initial2/1/4 vsStart-onlyCpolicy1/10. Focusedprestart profile explicitlyC2/7 andnativeinitial2 checked; max7stillchosenpolicy/reference. ActualC118/reservation/release/peer/result/reset next, reuseprestartentrywithoutABgame replay.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#a-survivor-admission",
+      "evidence": [
+        "RUN-02477",
+        "RUN-05989"
+      ],
+      "limits": "Modified KR00967 Wine copies/private virtual namespaces/local fixture identities; default unchanged; original client/DB/assets untouched. Fresh C ID3 is not B account resume. Two normal AB cycles, third BEOF forfeit, fourth AC Start/clock are separate. R2 preReady color failure and R3startup partial retained; focusedprestart110control has changedentry/profile, notglobalone-delta runtime. No AC bomb/outcome/reset, fullmatch/K5/K6a/Windows/LAN/Internet/8clients/gate. Native initialCslot1capacity2 differs from Start-only profile1; maximum policy not inferred as native. Endpoint hash/cleanup checks not continuous filesystem monitoring; unused preparation script recovery incident disclosed with exact bytes/report."
+    },
+    {
+      "summary": "CP174 PR246 merged; complete records/raw/seals unchanged. OriginalfailedpositiveR1sourcebytes recovered exactly against preflight after mutablehelperreuse; transient unusedprep-script recovery/restore disclosed, runtimeharness/service/profile/config unaffected. R3uniquehelpers preserve locator. Endpointchecks notcontinuous sourcewatch.",
+      "source": "design",
+      "status": "design",
+      "method": "design",
+      "canonical": "docs/PROTOCOL.md#a-survivor-admission",
+      "evidence": [
+        "RUN-06693",
+        "RUN-02410",
+        "RUN-06010"
+      ],
+      "limits": "Modified KR00967 Wine copies/private virtual namespaces/local fixture identities; default unchanged; original client/DB/assets untouched. Fresh C ID3 is not B account resume. Two normal AB cycles, third BEOF forfeit, fourth AC Start/clock are separate. R2 preReady color failure and R3startup partial retained; focusedprestart110control has changedentry/profile, notglobalone-delta runtime. No AC bomb/outcome/reset, fullmatch/K5/K6a/Windows/LAN/Internet/8clients/gate. Native initialCslot1capacity2 differs from Start-only profile1; maximum policy not inferred as native. Endpoint hash/cleanup checks not continuous filesystem monitoring; unused preparation script recovery incident disclosed with exact bytes/report."
+    }
+  ],
+  "verification": [
+    {
+      "check": "ControlactualCnegative/PIDflow/oldABnativebaseline",
+      "result": "pass",
+      "evidence": [
+        "RUN-00788"
+      ],
+      "limits": "Modified KR00967 Wine copies/private virtual namespaces/local fixture identities; default unchanged; original client/DB/assets untouched. Fresh C ID3 is not B account resume. Two normal AB cycles, third BEOF forfeit, fourth AC Start/clock are separate. R2 preReady color failure and R3startup partial retained; focusedprestart110control has changedentry/profile, notglobalone-delta runtime. No AC bomb/outcome/reset, fullmatch/K5/K6a/Windows/LAN/Internet/8clients/gate. Native initialCslot1capacity2 differs from Start-only profile1; maximum policy not inferred as native. Endpoint hash/cleanup checks not continuous filesystem monitoring; unused preparation script recovery incident disclosed with exact bytes/report."
+    },
+    {
+      "check": "R2nativeCJoinReadyStart/clock",
+      "result": "pass",
+      "evidence": [
+        "RUN-02479"
+      ],
+      "limits": "Modified KR00967 Wine copies/private virtual namespaces/local fixture identities; default unchanged; original client/DB/assets untouched. Fresh C ID3 is not B account resume. Two normal AB cycles, third BEOF forfeit, fourth AC Start/clock are separate. R2 preReady color failure and R3startup partial retained; focusedprestart110control has changedentry/profile, notglobalone-delta runtime. No AC bomb/outcome/reset, fullmatch/K5/K6a/Windows/LAN/Internet/8clients/gate. Native initialCslot1capacity2 differs from Start-only profile1; maximum policy not inferred as native. Endpoint hash/cleanup checks not continuous filesystem monitoring; unused preparation script recovery incident disclosed with exact bytes/report."
+    },
+    {
+      "check": "R2preReadyteamdisplayconsistency",
+      "result": "fail",
+      "evidence": [
+        "RUN-02534"
+      ],
+      "limits": "Original failure retained; R3 is separate fix/control."
+    },
+    {
+      "check": "Focusedprestartsame110/ApreReadycorrect_Crenderunknown/nativeACStart1/initial2",
+      "result": "pass",
+      "evidence": [
+        "RUN-06008",
+        "RUN-06016",
+        "RUN-05990"
+      ],
+      "limits": "Modified KR00967 Wine copies/private virtual namespaces/local fixture identities; default unchanged; original client/DB/assets untouched. Fresh C ID3 is not B account resume. Two normal AB cycles, third BEOF forfeit, fourth AC Start/clock are separate. R2 preReady color failure and R3startup partial retained; focusedprestart110control has changedentry/profile, notglobalone-delta runtime. No AC bomb/outcome/reset, fullmatch/K5/K6a/Windows/LAN/Internet/8clients/gate. Native initialCslot1capacity2 differs from Start-only profile1; maximum policy not inferred as native. Endpoint hash/cleanup checks not continuous filesystem monitoring; unused preparation script recovery incident disclosed with exact bytes/report."
+    },
+    {
+      "check": "279server/34checkpoint/catalog/issues/docs/artifact/diff/historylocal",
+      "result": "pass",
+      "evidence": [
+        "RUN-02523",
+        "RUN-06694",
+        "RUN-06697",
+        "RUN-06698"
+      ],
+      "limits": "Fullhistory/local checked after append before commit; consistency checks never certify semantics/gates."
+    },
+    {
+      "check": "ACactualbomb/outcome/reset/peer consistency",
+      "result": "pending",
+      "evidence": [
+        "RUN-02477"
+      ],
+      "limits": "Modified KR00967 Wine copies/private virtual namespaces/local fixture identities; default unchanged; original client/DB/assets untouched. Fresh C ID3 is not B account resume. Two normal AB cycles, third BEOF forfeit, fourth AC Start/clock are separate. R2 preReady color failure and R3startup partial retained; focusedprestart110control has changedentry/profile, notglobalone-delta runtime. No AC bomb/outcome/reset, fullmatch/K5/K6a/Windows/LAN/Internet/8clients/gate. Native initialCslot1capacity2 differs from Start-only profile1; maximum policy not inferred as native. Endpoint hash/cleanup checks not continuous filesystem monitoring; unused preparation script recovery incident disclosed with exact bytes/report."
+    }
+  ],
+  "evidence": [],
+  "evidence_manifests": [
+    {
+      "path": "docs/evidence/checkpoints/evidence/CP175-A-survivor-admission.json",
+      "bytes": 1692768,
+      "sha256": "ab93a0d4f4d47d73576c7ad89bcde5f76aff42bf14efc5a9120d01a89cf0ce40",
+      "count": 6702
+    }
+  ],
+  "delta": {
+    "added": [
+      "Actual negativeC admission then optin Cslot1/ID3/nativeJoinReadyAStart4/clock.",
+      "Setup110echo/native+visual preReady consistency control viafocusedbeforefirstentry and9policyregressions; R3startup partial retained.",
+      "Specific Cslot1capacity policy gap from native getters, next gameplay/reset."
+    ],
+    "corrected": [
+      "README/PLAN/issue14 CP174pendingPR is stale; PR246 merged.",
+      "R2nativeStartdoesnotprovepreReadyteamconsistency; Focusedprestartseparate. C1policy not nativecapacity proof; C2initialnowaligned."
+    ],
+    "superseded": [
+      "NEXT-A-SURVIVOR-ADMISSION closed narrowly; NEXT-A-C-ROUND-RESET active."
+    ]
+  },
+  "blockers": [
+    "AC gameplay/peer/bomb/result/reset not yet measured; nativeinitial2/profile2aligned but C118/reservations/max7policy untested.",
+    "Fullauth/distance/142freshness/general membership/reset/formaldependencies/gates/LANInternet8clients open."
+  ],
+  "next_steps": [
+    {
+      "id": "NEXT-A-SURVIVOR-ADMISSION",
+      "task": "KRE-005b",
+      "state": "closed",
+      "action": "Actual control+optin ID3slot1/nativeJoinReadyAStart4 and focusedprestartApreReadycorrect/CpreReadyunknown; bounded membership only.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-A-C-ROUND-RESET",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "PLAN reuseprestartEOF/currentknownslot1; explicitC2/7policy thenactualC118/bomb/peer/result/reset/Ready next round. No unnecessaryrepeatABbaseline/accountresume/gate.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    }
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-11-06T17:26:52.872630+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "Codexsolo/selfcheck; exactheadPRrequired; noindependentapproval.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Owner explicitly requested solo, no workers/review."
+    }
+  },
+  "docs_sync": [
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "CP175actualnegative/optinnative/visualdelta/capacitygap/CP174merge and nextACgameplay synchronized before complete."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "CP175actualnegative/optinnative/visualdelta/capacitygap/CP174merge and nextACgameplay synchronized before complete."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "updated",
+      "reason": "CP175actualnegative/optinnative/visualdelta/capacitygap/CP174merge and nextACgameplay synchronized before complete."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "updated",
+      "reason": "CP175actualnegative/optinnative/visualdelta/capacitygap/CP174merge and nextACgameplay synchronized before complete."
+    },
+    {
+      "path": "docs/features.json",
+      "state": "updated",
+      "reason": "CP175actualnegative/optinnative/visualdelta/capacitygap/CP174merge and nextACgameplay synchronized before complete."
+    },
+    {
+      "path": "docs/COVERAGE.md",
+      "state": "updated",
+      "reason": "CP175actualnegative/optinnative/visualdelta/capacitygap/CP174merge and nextACgameplay synchronized before complete."
+    },
+    {
+      "path": "docs/evidence/peer-endpoints/README.md",
+      "state": "updated",
+      "reason": "CP175actualnegative/optinnative/visualdelta/capacitygap/CP174merge and nextACgameplay synchronized before complete."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/review.json",
+      "state": "updated",
+      "reason": "CP175actualnegative/optinnative/visualdelta/capacitygap/CP174merge and nextACgameplay synchronized before complete."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
+      "state": "updated",
+      "reason": "CP175actualnegative/optinnative/visualdelta/capacitygap/CP174merge and nextACgameplay synchronized before complete."
+    },
+    {
+      "path": "server/README.md",
+      "state": "updated",
+      "reason": "CP175actualnegative/optinnative/visualdelta/capacitygap/CP174merge and nextACgameplay synchronized before complete."
+    },
+    {
+      "path": "docs/evidence/checkpoints/README.md",
+      "state": "unchanged",
+      "reason": "Workflow unchanged; counter/audit preserved."
+    }
+  ]
+}

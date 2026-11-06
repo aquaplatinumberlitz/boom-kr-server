@@ -348,3 +348,12 @@ roundkey142/fullauth/distance/freshness; identical old142 sau legitimatecurrentc
 CP173 [basic Bowner/A↔B/native2cycles/Start3](../docs/PROTOCOL.md#basic-bidirectional) đã kiểm, không code/profile delta sauPR244; hai partial giữ riêng. Currentbasic BhostEOF là bước tiếp trongPLAN.
 
 CP174 [basicBhostEOF/pendingbomb/Acleanup](../docs/PROTOCOL.md#basic-host-b-eof) đã kiểm, source/profile giữ nguyên. Admission hiện chỉ oldAdeparted/Bsurvivor/Cslot0; currentA-survivor/Bdeparted chưa hỗ trợ. Host-model không thay actualnewguest proof; theoPLAN.
+
+
+CP175: [A-survivor/Cslot1 opt-in](../docs/PROTOCOL.md#a-survivor-admission),
+[raw/hash](../docs/evidence/peer-endpoints/README.md#cp175). Default preset giữ nguyên. Profile thử
+thêm `replacement_slot: {"mode":"vacant_AB_slot"}` và capacity C rõ ràng; service kiểm tám body pin
+trước listen. R2 đã đo Join/Ready/AStart4/clock; focused prestart đã đo Asetup110 trước CReady/AStart1,
+CpreReady image đen/unknown, sau Start cả hai render. Native Cslot1 initial capacity2; profile focused
+đã chọn C2/7 và khớp initial2, còn118/gameplay/max7 chưa kiểm.
+Không bật chuyên biệt needle/rescue cùng flag hoặc coi C là account B resume. Thứ tự chỉ ở PLAN.
