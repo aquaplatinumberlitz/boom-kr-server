@@ -838,3 +838,41 @@ AUD048manualcore→authority/currentcontracts→RESEARCH→evidence→raw/report
 sửaauthorityCP156/hold2s/UIpending, currentPR230/presetproof/nexttitlegap, khôngsửahistorycomplete.
 Counterqua160/kế164. K5/K6aassessmentgiữmeasuredprofile/source/environment/controls riêng vàknown
 peereditablecounterlimit/naturalCP157unknown; khôngđónggatebằngscript/positivecount/merge.
+
+
+<a id="cp161"></a>
+## CP161 — current room title và production hai vòng
+
+Baseline CP160 [PR231](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/231),
+head `a70351439adda5bd97b4d66c2c3a27cbd6f04e17`, merge `a588e9530f712ebb2d53a1eef93e3b079c3f50c0`.
+[Contract/giới hạn](../../PROTOCOL.md#current-room-title), [PLAN](../../PLAN.md#current-order).
+
+| Run dưới `local/research/codex/` | Giây/exit/raw/frozen inputs | SHA256 run.json |
+|---|---|---|
+| room-title-echo-r1 | 99.580380489/0/367/100 | `c9d797df4c5afb8e7a7ee3c95fb999bead7fa892d27802a503b8228316408686` |
+| room-title-integrated-r2 | 368.298314404/0/1192/102 | `507e2cfc0fb20fef758e6e64490b0eca48685d0b4a37fd628fff9fa0e2255300` |
+
+Recipe: `prepare_room_title.py`/`wine_probe_room_title.py` và
+`prepare_room_title_integrated.py`/`wine_probe_room_title_integrated.py`; copied exe/hash/build tại
+`runtime-preflight.json`, frozen profile/production source/isolated two-host topology, owned cleanup
+và namespace extinct tại `raw-seal.json`. Không sửa source/config giữa run hoặc source binary/DB/pack.
+Phân tích `verify_room_title_runtime.py`, `run_title_native_actual.py`, `analyze_title_integration.py`.
+Reuse CP016/028/076 actual81/two strings/row91/session/87/context, không new body RE.
+
+Mỗi run24 title checks,3 actual81 native valid/CRC/partial,6 actual91 native initial/dynamic cases;
+actual title13 inline15 và16 heap31. R1 proof UI ở `before-guest-back.png` hai view; final B đã Back,
+không gọi final đen là parser lỗi. R2 guest Back/rejoin và hai normal outcomes/reset/Ready:75 pickup,
+45 cycle,461 peer/4 windows,10 claim joins,16 loading gate,26 world reset,23 strict life;2256 actor,
+300 peer getter,2364 flag+2340 array,16 life và303 native packet model cases tách nguồn/model/runtime.
+4 ảnh pin tại `visual-review.json`, tên trùng A/B; no Start3 hoặc third match ở r2.
+
+Giữ các lỗi phân tích ban đầu: blob decoder đã bỏ compression byte, verifier pickup cũ hardcode winner A
+trong khi actual r2 winner B, discovery command `-t .` không phù hợp namespace package. Corrected parser/
+actual winner assertions và247 server+4 export tests đạt; không đổi raw/service/guard để pass. R1 shell
+đã launch sau postassert sai, được ghi minh bạch trong `analysis-corrections.json`; native framer/blob/
+CRCpartial đã đạt, không có packet fix. `frozen-preset-runtime.json` và `preset-provenance-update.json`
+giữ exact preset trước/sau provenance-only update; operational profile không đổi, raw seal không sửa.
+
+CP161 tự kiểm/review waived/chờ PR, AUD048 qua160/kế164. Known A/B/empty-password/single row và32 byte
+là policy; general room/full auth/original authority/Windows/LAN/Internet/8 client/K6a chưa nâng.
+Phần next chỉ ở PLAN: input Manner/Free; lịch sử CP160 pending title là trạng thái tại run cũ.

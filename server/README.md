@@ -269,3 +269,13 @@ Các layout/policy flags khác không kết hợp preset. Profile này là known
 không fullauth/servergốc; [runtime/giới hạn](../docs/PROTOCOL.md#production-baseline).
 Hai vòngCP159 dùng productionservice không hold165/replay; CP160 đã chạy trực tiếp fileexport qua2normalcycles/Ready vàactualStart3/clocks/render;
 [proof/giới hạn](../docs/PROTOCOL.md#exported-preset-runtime). LAN/Internet/8clients/gates chưa nghiệmthu.
+
+
+### Tên phòng từ actual create81 — CP161
+
+Preset `two-client-battle` bật `room_title: {"mode":"create81_to_row91","max_bytes":32}`:
+known A/B, CP949 1–32 byte/password rỗng, preflight row91, chỉ commit sau ACK thành công.
+Mode không khai báo giữ hành vi cũ. Dynamic guest Back/return91/rejoin và tên cả hai view sau hai vòng
+production đã đo; [contract/giới hạn](../docs/PROTOCOL.md#current-room-title),
+[raw/recipe](../docs/evidence/peer-endpoints/README.md#cp161). Không hỗ trợ tổng quát password,
+compressed/multi-row/C/recreate/promotion;32 byte là design policy.

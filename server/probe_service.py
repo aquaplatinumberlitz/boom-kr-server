@@ -20,6 +20,7 @@ import time
 
 from server import probe_codec as codec
 from server.item_claims import ItemSpec
+from server.room_title import create_title, replace_listing_title
 from server.chain_capacity import ClearCellChains
 from server.terrain_model import Bomb
 from server.terrain_profile import load_terrain
@@ -177,6 +178,14 @@ class ProbeService:
         if missing:
             raise ValueError('profile missing lifecycle fixtures: ' + ', '.join(sorted(missing)))
         self.profile, self.out, self.proxy_ports = profile, out, proxy_ports
+        self.room_title_mode = False
+        self.room_title_bytes = None
+        if 'room_title' in profile.data:
+            if profile.data['room_title'] != {'mode': 'create81_to_row91', 'max_bytes': 32}:
+                raise ValueError('unsupported room_title policy')
+            for alias in ('roomlist_A', 'roomlist_B'):
+                replace_listing_title(profile.body(alias), b'KRRoom')
+            self.room_title_mode = True
         self.loading_timeout_ns = None
         if 'loading_timeout' in profile.data:
             policy = profile.data['loading_timeout']
@@ -288,7 +297,7 @@ class ProbeService:
         self.state['policy_sources'] = []
         for filename in ['probe_service.py', 'probe_codec.py', 'probe_room.py', 'round_fence.py',
                          'item_claims.py', 'udp_round_keys.py', 'chain_capacity.py',
-                         'terrain_model.py', 'terrain_profile.py']:
+                         'terrain_model.py', 'terrain_profile.py', 'room_title.py']:
             path = Path(__file__).with_name(filename)
             self.state['policy_sources'].append({'path': str(path.resolve()),
                                                  'sha256': hashlib.sha256(path.read_bytes()).hexdigest()})
@@ -306,6 +315,9 @@ class ProbeService:
         template = self.profile.raw(name)
         if body is None:
             body = self.profile.body(name)
+            if (getattr(self, 'room_title_mode', False) and name == 'roomlist_B'
+                    and self.room_title_bytes is not None):
+                body = replace_listing_title(body, self.room_title_bytes)
         if opcode is None:
             opcode = struct.unpack_from('<I', template, 5)[0]
         sequence = event.get('s2c_next_seq', 73)
@@ -516,9 +528,23 @@ class ProbeService:
             self.send_raw(event, self.profile.raw('channel'))
             event['channel_response_sent'] = {'monotonic_ns': time.monotonic_ns()}
         elif opcode == 67 and not event.get('ready_response_sent'):
-            self.send_raw(event, self.profile.raw('ready') + self.profile.raw(f'roomlist_{role}')
+            listing = self.profile.raw(f'roomlist_{role}')
+            if (getattr(self, 'room_title_mode', False) and role == 'B'
+                    and self.room_title_bytes is not None):
+                sequence91 = self.profile.data['fixtures']['roomlist_B']['sequence']
+                listing = codec.encode(listing[:37], 91, replace_listing_title(
+                    self.profile.body('roomlist_B'), self.room_title_bytes), sequence91)
+            self.send_raw(event, self.profile.raw('ready') + listing
                           + self.profile.raw('channel_list'))
             event['ready_response_sent'] = {'monotonic_ns': time.monotonic_ns()}
+            if getattr(self, 'room_title_mode', False) and role == 'B':
+                path = f"B-title-initial91-{event['global_ordinal']}.bin"
+                (self.out / path).write_bytes(listing)
+                event['initial_roomlist_title'] = {
+                    'fixture': path, 'sha256': hashlib.sha256(listing).hexdigest(),
+                    'monotonic_ns': time.monotonic_ns(),
+                    'title_sha256': hashlib.sha256(self.room_title_bytes).hexdigest()
+                    if self.room_title_bytes is not None else None}
         elif opcode in (81, 82) and not event.get('create_response_sent'):
             previous = event.get('last_room_leave')
             promoted = (self.host_back_rejoin and role == 'A' and previous
@@ -552,7 +578,25 @@ class ProbeService:
                         'frame_sha256': hashlib.sha256(frame).hexdigest()})
                     return
             alias = 'join_A' if promoted else {'A': 'create', 'B': 'join', 'C': 'join_C'}[role]
+            pending_title = None
+            if getattr(self, 'room_title_mode', False) and role == 'A' and opcode == 81:
+                try:
+                    pending_title = create_title(body)
+                except ValueError as error:
+                    self.state.setdefault('room_title_rejections', []).append({
+                        'role': role, 'seq': sequence, 'reason': str(error),
+                        'frame_sha256': hashlib.sha256(frame).hexdigest()})
+                    return
             sent = self.send_setup(event, [alias], 'reentry-create')
+            if pending_title is not None:
+                self.room_title_bytes = pending_title
+                self.state.setdefault('room_title_updates', []).append({
+                    'role': role, 'seq': sequence, 'source': 'emu_choice',
+                    'frame_sha256': hashlib.sha256(frame).hexdigest(),
+                    'title_cp949': pending_title.decode('cp949'),
+                    'title_sha256': hashlib.sha256(pending_title).hexdigest(),
+                    'monotonic_ns': time.monotonic_ns(),
+                    'limits': 'Known A/B title display only; opaque fields/password/full room authority unsupported.'})
             if promoted:
                 event['promoted_rejoin'] = True
             event['create_response_sent'] = {'monotonic_ns': time.monotonic_ns(),
