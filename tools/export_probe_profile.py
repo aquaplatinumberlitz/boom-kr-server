@@ -10,6 +10,10 @@ import copy
 import re
 
 PRESET = Path(__file__).resolve().parents[1] / 'server/profiles/two-client-battle.json'
+PRESETS = {
+    'two-client-battle': PRESET,
+    'two-client-basic': PRESET.with_name('two-client-basic.json'),
+}
 
 
 def load_preset(root, preset=PRESET):
@@ -81,8 +85,8 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--source-root', type=Path, required=True)
     parser.add_argument('--out', type=Path, required=True)
-    parser.add_argument('--preset', choices=['two-client-battle'],
-                        help='pinned CP159 production baseline; requires exact local fixtures')
+    parser.add_argument('--preset', choices=PRESETS,
+                        help='pinned diagnostic profile; requires exact local fixtures')
     parser.add_argument('--spawn-layout', choices=['distinct', 'overlap'], default='distinct',
                         help='known map spawn0/1, or intentional overlap for contact/race RE')
     parser.add_argument('--item-layout', choices=['floor', 'hidden', 'battle'], default='floor',
@@ -103,7 +107,7 @@ def main():
         if (args.spawn_layout != 'distinct' or args.item_layout != 'floor'
                 or args.all_dead_rank or args.host_back_rejoin or args.host_battle_exit):
             parser.error('--preset cannot be combined with layout or optional policy flags')
-        result = load_preset(root)
+        result = load_preset(root, PRESETS[args.preset])
         out.parent.mkdir(parents=True, exist_ok=True)
         with out.open('x') as stream:
             json.dump(result, stream, indent=2)

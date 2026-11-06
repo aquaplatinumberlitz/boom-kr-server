@@ -321,3 +321,18 @@ trêncurrentmode/Bhost, production/presetkhôngđổi. Chỉepoch1; defaultprese
 
 CP170 [currentbasiccopyprofile2cycles/reset/Ready](../docs/PROTOCOL.md#current-basic-cycles) đãđo,
 không production/defaultpresetchange. Optionalpreset/export/BStart3qualification là việc kế trongPLAN.
+
+
+### Preset basic tùy chọn: Roller và hai item trong hộp
+
+```bash
+python3 tools/export_probe_profile.py --source-root local/research/codex --out local/two-client-basic.json --preset two-client-basic
+```
+
+[Preset basic](profiles/two-client-basic.json) pin đúng 47 fixture và cấu hình của
+[run CP170](../docs/PROTOCOL.md#current-basic-cycles): Roller17 trên sàn, Bomb27 và Fire28 trong
+hai FixedBox đã biết. Export giữ size/hash/sequence và policy, chỉ đổi đường dẫn theo source-root.
+Preset `two-client-battle` và lệnh export không có `--preset` giữ hành vi cũ.
+Đây là lựa chọn emulator trên bản copy Wine, chưa phải luật server gốc. Hai vòng CP170 dùng profile
+local; runtime bằng chính file export của preset mới và Start3 còn chờ phép kiểm trong
+[PLAN](../docs/PLAN.md#current-order). Export/test/preflight không tự chứng nhận runtime hoặc gate.
