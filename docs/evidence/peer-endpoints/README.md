@@ -738,3 +738,43 @@ là bước kế, không suy resurrect/oldround/gamebug hoặc nâng gate từ n
 
 CP156/227 đã merge; CP157 self-check/reviewwaived/chờPR. Audit AUD047 qua156/kế160. History/evidence
 complete giữ nguyên; không Start4/rejoin/3normalmatches/fullmatch/K6a/LAN/Internet/8clients claim.
+
+
+<a id="cp158"></a>
+## CP158 — grouped trap/counter windows và exact current-frame controls
+
+Baseline CP157/[PR228](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/228) head e3032f1/
+mergef44fd66; [contract/causal limits](../../PROTOCOL.md#current-trap-udp-counter),
+[PLAN](../../PLAN.md#current-order), [natural question](../../RESEARCH.md#gap-contact-state).
+Source-first reuse CP104/105/145/canonical counter1935–1939/cacheE66680-prefix/B4E6F0: không newbodyRE.
+Raw/copiedbinary/producer ở `local/research/codex/` theo tênrun; sourcebinary/DB/pack giữ.
+
+| Run | Giây/exit/raw | run.json SHA256 |
+|---|---:|---|
+| trap-udp-window-r1 | 437.564/0/1492 | `e1ae9010b735f72b1da5b8f0f6b03008da3b7e1d27e6ac28681cf3bf6bec484b` |
+| trap-udp-preroll-r2 | 437.381/0/1492 | `63c5d5624d4020e912e924d3fee4790c9ac46c3991cc881c08af5b1266685bd1` |
+| trap-udp-current-replay-r3 | 432.647/0/1496 | `dcbb49ce4981ef8bf584715316483860b8c4ab334860acd119cc7c1c614beae5` |
+| trap-udp-counter-r4 | 222.477/0/861 | `17ba0cd9d8c398b1d15eba4cea6e2e6a794699ac4a203a4bece0909904b2700f` |
+| trap-udp-counter-gap-r5 | 229.872/0/852 | `acc8f3825d64c76da5fdfc02cc90d6a3b53a3cda3a27a3d1518a88d037d67253` |
+
+6193raw/5×97frozeninputs/cleanup namespace extinct/profilebytes same CP157. R1–3 có2normalcycles+
+thirdUIforfeit riêng mỗi run; R4/R5 stop sau firstnormalreturn, không ghép kết quả thành cùng một game.
+`trap-window-verification`: first56 71checks/27ingress16apply/14APIjoin2missing; preroll159 166checks/
+54ingress40apply/39join1missing/18neutralbeforetrap22trapafter. Rawstate0CP157 không bị backfill.
+
+R3 exactcurrentneutral đếnBAPI sau trap/noapply, không gán dropbranch chỉ từ absence. R4
+`counter-control-verification`:24checks actualkey56pass/incoming152stored156→E66884/drop/noapply.
+R5:27checks key56pass/incoming140stored157/gap17→actual13apply/protected56→0; zero stack đi known
+B4EAA6/E668B2, fresh56apply khôi phục, actualdeath1. Đoạn061,280385ms; 24nativegettermodelchecks riêng,
+hai view native175entry loser1/other0. `verify_trap_counter_controls.py` dùng actualframe/hash/IPUDPchecksum/
+actual99ports/BAPIwireSHA/key/counter/stack, không encoder tự sinh oracle. Source/status phân biệt trongcontract.
+
+PCAPkv-a chỉ originalEthernet; replaykv-b có exactsenderbufferhash+nativeBAPIwire/source. Initialchecker
+đòi hai fullEthernetcapture đã FAIL và được giữ source, sửa claim/recipe scope minh bạch, không sửaraw.
+R1 firstchecker đòi mọiAPIjoin cũng FAIL: ghi14/2 thay vì che missing; preroll39/1 vẫn tách giới hạn.
+R5 `counter-getter-verification` dùng copiednative52A350/modelcounterreset, không Winegamecall/write.
+
+Controlledlargegap chứng minh capability của byte heuristic đã phục hồi, không nguyên nhân naturalCP157,
+không resurrection/gamefix/auth/fullmatch/K6a/LAN/8clients. Tài liệu/currentnext đã chuyển productionservice
+baseline, không delay165/replay chủ động; naturalcause giữ open theo trigger. AUD047qua156/kế160,
+Codexselfcheck/reviewwaived/CP158chờPR; lịch sử complete và artifacthash trước giữ nguyên.

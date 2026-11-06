@@ -1,6 +1,6 @@
 # KR 00967 — contract tương thích client gốc
 
-Revision kr-legacy-contract-r1; cập nhật06/11/2026 JST (CP157; AUD047 quaCP156, kếCP160).
+Revision kr-legacy-contract-r1; cập nhật06/11/2026 JST (CP158; AUD047 quaCP156, kếCP160).
 **Contract có bằng chứng từng phần; chưa nghiệm thu full codec K2**.
 Lộ trình và thứ tự task chỉ giữ ở [REWRITE_PLAN — KRE](PLAN.md).
 Đây là contract của repo server KR. ADR0009 của bản viết lại là nguồn lịch sử để so sánh;
@@ -2006,7 +2006,7 @@ locator/trace và trạng thái từng ô; những vai trò không nêu dưới 
 | Explode/chain | CP033 một owner; CP064 [power1/cách hai ô](#mixed-owner-chain), CP071 [power2 ngoài tầm/feedback chưa118](#mixed-owner-power) giữ partial lịch sử; CP081 [power2/distance2 mixed-owner](#mixed-input), CP084 [ba bom fork hai vòng](#three-bomb-chain); CP094 [optional pinned terrain](#terrain-policy), CP095 [actualbox/laterfreshpair](#opposite-box-control) có native callback/195flag proof | [CP096adjacent1cell](#adjacent-owner-control) và [CP122 chain sâu](#recursive-chain) đã đo trong ca hẹp; [CP133 shared cellstate/query](#shared-cell-state) và [CP134 hai shared cycles](#shared-cascade-cycles) đã giải ca cố định; FIFO/firstbombstop/immutable tổng quát/race và authority server gốc chưa đủ |
 | Block destroy/item reveal | CP032 nativecontract; CP068 [currentservice/list2/reportgate/effect/reset](#current-hidden-items), CP092 [195flags/seedreset](#map-flags-snapshot), CP094/095 [pinnedpolicy/nativeboxclear](#terrain-policy) cảhai view | Drop algorithm gốc/fullvalidator, genericclass/map và transport khác còn thiếu; không dùng report142 làm worldoracle |
 | Item placement/pickup | [CP155/156](#direct-host-eof-acceptance) hai actualcontenders/onewinner/native165/statreset qua2key; [item families](#item-families), [old165](#item-generation) giữscope riêng | Chưa full124distance/auth/generation/inventory/max/speedTTL/activevariants; 2s165hold vàfirstarrival làmeasurement/policy |
-| Trap/death | [CP156](#direct-host-eof-acceptance) hai viewloser56→1/beforerankother0 trong2epoch; [CP029](#peer-events), [kim/rescue](#needle-selfescape) là nguồn riêng | Viewsnapshot khôngglobalsametick; structural/currenttrap/selectedduplicateguard khácworldvalidator/firstseenforgedforward/fullvariants |
+| Trap/death | [CP156](#direct-host-eof-acceptance) hai viewloser56→1/beforerankother0 trong2epoch; [CP029](#peer-events), [kim/rescue](#needle-selfescape) là nguồn riêng | [CP158 countercontrol](#current-trap-udp-counter) giữ giới hạn transient/peer-editable state; snapshot không globalsametick; không full worldvalidator/firstseenforgedforward/fullvariants |
 | Result/reset | [CP156](#direct-host-eof-acceptance) 2normaloutcomes/Ready/195seed/key/stat/currentIDreset/oldUDPnegative-currentpositive rồiAEOF3/Bforfeit riêng; [CP104/105](#ending34-state-boundary) giữending/UDPvariants | Toànentity/timer/seq/peer/pool/resetvariants/arbitrationgốc chưa đủ; không gọi thirdforfeit lànormalmatch hoặc lấy mọiunknown làm blanketblocker profilepolicy |
 | Room lifecycle | [CP155 guestEOF](#direct-oldudp-contest-eof), [CP156 hostEOF/Bpromotion](#direct-host-eof-acceptance) currentdirect; [CP129 hostBack](#host-battle-exit)/[CP107 idleBack](#host-normal-back) là scope khác | Currentmeasuredprofile chưa bật normalhostUI20286; exporter mới có option nhưng runtimeintegration cònpending. Accountresume/halfclose/loss/generalreplace/Start4 chưađo |
 | Peer lifecycle | [CP156](#direct-host-eof-acceptance):actual99/153/currentdirectIPports, exactold59/current56→queue/keydrop/noapply vàfreshpositive; [CP130](#udp-membership-lifetime) là queue qua membership riêng | Keybyte khôngauth; low8wrap/rosterreplacement/fullUDP/reliability/relay/NAT/physicalLAN/Internet/generalqueueflush cònunknown |
@@ -5545,3 +5545,47 @@ R2 440,692s/exit0/1489raw/97frozen inputs;54UIchecks,84contest,44cycle,594peer/4
 CP157 giải current normal host UI integration của CP156; bằng chứng strict life CP155/156 vẫn nguyên
 scope cũ, không bị backfill. Audit AUD047 qua156/kế160, reviewwaived/Codex self-check. K6a/fullmatch/
 originalauthority/Windows/LAN/Internet/8client/generalreset/sharedgeometry/CP137complexUI giữ mở.
+
+
+<a id="current-trap-udp-counter"></a>
+### Counter UDP cùng vòng và protected trap — CP158
+
+**`kr_runtime/confirmed` cho các control; traffic phát lại là `design`.**
+[Run/recipe/hash](evidence/peer-endpoints/README.md#cp158). Source-first: CP157 natural transient,
+[CP104/105](#ending-udp-state-apply), [counter đã phục hồi](#udp-generation) và cached E66680-prefix/
+B4E6F0. Tái dùng native6observer/AF_PACKET/capture/offload; chỉ thêm hai read-only BP tại E66868/E66884,
+không đọc thân hàm mới, không chuyển opcode/layout VN. Counter không phải timestamp hoặc identity auth.
+
+Hai quan sát không can thiệp traffic trước trap: first56 window B/R1 có27ingress/16apply,
+14uniqueAPIjoins/2thiếuAPI trước arm; preroll159 có54ingress/40apply,39joins/1thiếuAPI. Cap96API/64entry
+chưa hết. Preroll thấy18apply0 **trước** trap và22apply56 sau trap; cảhai lượt B đi56→1, không tái hiện
+CP157. Kết quả âm tính không bác raw56→0→56→1 của CP157 hoặc chứng minh observer đã sửa lỗi.
+
+Control replay nguyên frame neutral A→B trong cùng key12345/byte56/slot0, source IP/port từ actual99,
+MAC/IP/UDP/payload/CRC giữ nguyên. R3 thấy exact native ingress sau trap, không thấy apply; chưa đủ
+định nhánh. R4 thêm hai BP xác nhận **incoming152/stored156**, key56=expected56, đi **E66884** bỏ và
+không apply. R5 chọn frame cũ khác từ capture dựa trên receiver counter quan sát (không sửa counter):
+**incoming140/stored157**, lùi17, không đi nhánh bỏ; actual13byte/fullcursor/keypass tới B4E6F0,
+protected+28 **56→0**. Stack0: B33286←B51CF4←F73882←B4EAA6←E668B2←125DF33.
+Packet56 mới kế tiếp thực sự apply0→56, sau đó actualdeath19 đưa1; chuỗi B56→0→56→1, đoạn0
+**61,280385ms**. Native175 entry hai view vẫn loser1/other0. 24 native getter-model kiểm snapshot
+trước/sau replay và fresh56; model không gọi hàm game trong Wine.
+
+Điều này corroborate đúng luật byte tại stage+63EC+slot đã có: incoming>stored hoặc stored−incoming≥10
+được store/apply; lùi0..9 bị bỏ. Không gọi đó là universal freshness/antireplay. Keyguard qua vòng
+CP145/155 vẫn nguồn riêng: oldkey59≠current56 khác với frame hiện tại key56 nhưng counter cũ.
+Không tự vá client hoặc thêm validator server từ control này; native peer state vẫn có thể bị input
+cùng key chỉnh trong scope đã đo, không phải bằng chứng authority server gốc.
+
+**Giới hạn causal:** chỉ control R5 chứng minh frame lựa chọn gây ghi0 trong run đó. Chưa nối được
+exact packet/stack cho lần0 tự nhiên CP157, nên nguyên nhân CP157 vẫn `candidate/unknown`; không suy
+resurrection, natural packet reorder, queue-crossing-trap hoặc bug đã được sửa. PCAP bindkv-a chỉ bắt
+original Ethernet A→B; replay qua kv-b được nối bằng senderbufferSHA và exact BAPI wire/sourceport,
+**không** có independent second Ethernet PCAP. Initial verifier assumption hai PCAP copies bị sửa
+rõ, không đổi raw cho check pass. R4/R5 mỗi lượt một normalcycle; R1–3 mỗi lượt2normalcycles+thirdUIforfeit,
+không ghép thành một trận. Profile/production/nativebinary/30s/2s165/loadinggate giữ nguyên/97inputs mỗi run.
+
+CP158 gom5lượt cùng câu hỏi, không checkpoint/PR cho từng thử. CP157/PR228 mergef44fd66; reviewwaived,
+AUD047 qua156/kế160; không nâng K6a/fullmatch/LAN/Internet/8clients. Nhánh này đã có giới hạn đo được;
+[PLAN](PLAN.md#current-order) ưu tiên baseline bằng service production, không delay165/replay chủ động.
+Natural transient giữ trong [RESEARCH](RESEARCH.md#gap-contact-state), chỉ mở lại khi trigger/acceptance cần.
