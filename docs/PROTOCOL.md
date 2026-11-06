@@ -2021,14 +2021,14 @@ locator/trace và trạng thái từng ô; những vai trò không nêu dưới 
 
 | Hành vi | Bằng chứng theo scope đang dùng | Giới hạn/kiểm còn thiếu theo scope sử dụng |
 |---|---|---|
-| Movement | [CP159/160 production](#exported-preset-runtime):4nativepeerwindows/actualapply/target/currentprogress, nohold165/activeUDPprobe; [CP070](#current-udp-causality) giữcontrol riêng | Fullschema/auth/reliability/NAT unknown; currentprofile hai chiều có nguồn, không fullgrammar trước mọi demo hẹp |
-| Bomb place/ID | [CP160](#exported-preset-runtime) actual118/nativeID1/A/power2,ID2/B/power1/full159158/195flagreset; [CP156](#direct-host-eof-acceptance) pendinghostEOF/fence scope riêng | Boundedrole/key/serial/quota/geometry làpolicy; actorlocation/fullauth/allpool/races unknown |
+| Movement | [CP176 A↔C hai key](#a-c-basic-cycles); [CP159/160 production](#exported-preset-runtime):4nativepeerwindows/actualapply/target/currentprogress, nohold165/activeUDPprobe; [CP070](#current-udp-causality) giữcontrol riêng | Fullschema/auth/reliability/NAT unknown; currentprofile hai chiều có nguồn, không fullgrammar trước mọi demo hẹp |
+| Bomb place/ID | [CP176 C/A owners](#a-c-basic-cycles); [CP160](#exported-preset-runtime) actual118/nativeID1/A/power2,ID2/B/power1/full159158/195flagreset; [CP156](#direct-host-eof-acceptance) pendinghostEOF/fence scope riêng | Boundedrole/key/serial/quota/geometry làpolicy; actorlocation/fullauth/allpool/races unknown |
 | Explode/chain | CP033 một owner; CP064 [power1/cách hai ô](#mixed-owner-chain), CP071 [power2 ngoài tầm/feedback chưa118](#mixed-owner-power) giữ partial lịch sử; CP081 [power2/distance2 mixed-owner](#mixed-input), CP084 [ba bom fork hai vòng](#three-bomb-chain); CP094 [optional pinned terrain](#terrain-policy), CP095 [actualbox/laterfreshpair](#opposite-box-control) có native callback/195flag proof | [CP096adjacent1cell](#adjacent-owner-control) và [CP122 chain sâu](#recursive-chain) đã đo trong ca hẹp; [CP133 shared cellstate/query](#shared-cell-state) và [CP134 hai shared cycles](#shared-cascade-cycles) đã giải ca cố định; FIFO/firstbombstop/immutable tổng quát/race và authority server gốc chưa đủ |
-| Block destroy/item reveal | [CP172](#hidden-cell-admission-current) optional basic export/terrain-cell142 guard; hai native cycles/reveal27/28/3effects/reset/Start3 | Chỉ bounded terrain policy; không recovered142key/auth/distance/originaldrop/generalmap. Không terrain giữ weak anycurrent158 scope cũ |
+| Block destroy/item reveal | [CP176 A/C reveal/reset](#a-c-basic-cycles); [CP172](#hidden-cell-admission-current) optional basic export/terrain-cell142 guard; hai native cycles/reveal27/28/3effects/reset/Start3 | Chỉ bounded terrain policy; không recovered142key/auth/distance/originaldrop/generalmap. Không terrain giữ weak anycurrent158 scope cũ |
 | Item placement/pickup | [CP159/160](#production-baseline) productionimmediate165/1or2actualclaims/oneeffect/nativewinnerpower/reset; [CP155](#direct-oldudp-contest-eof) hold2sactualcontenders là control riêng | Full124distance/auth/generation/inventory/max/speedTTL/activevariants chưa đủ; delay2s không còn trongproductionbaseline |
-| Trap/death | [CP159/160](#exported-preset-runtime) strict56→1/other0beforerank2views/2epochs; [CP157natural](#current-host-ui-exit)/[CP158controlledoverwrite](#current-trap-udp-counter) giữ causal limits | Snapshot khôngglobalsametick; samekeycounterheuristic cho controlledremoteoverwrite; naturalCP157cause unknown, nofullvalidator |
-| Result/reset | [CP171](#basic-preset-start3) optional basic export hai outcomes/reset/Ready rồi normal BStart3/native12199/clock/render; CP168 floor riêng | Không trận ba outcome; allinventory/timer/seq/peer/resetvariants/originalarbitration và gate còn mở |
-| Room lifecycle | [CP161 title](#current-room-title), [CP162 mode/return](#current-team-mode) có2normalcycles/Ready; [CP165 currentpreset](#input-batch-gating) guestBack/rejoin/2outcomes/Ready/Start3 đã đo; CP164partial giữ lịch sử. CP155–157 EOF/UI controls giữ profile riêng | [CP168](#current-mode-promoted-start3) currentmodeBhost2cycles/Ready/BStart3 đãđo; R1/R2partial vàoldwhiteframe giữriêng. Accountresume/halfclose/loss/generalreplace chưa đủ; không lấy oldprofileexit làm currentmode proof |
+| Trap/death | [CP176 A/C56→1/other0](#a-c-basic-cycles); [CP159/160](#exported-preset-runtime) strict56→1/other0beforerank2views/2epochs; [CP157natural](#current-host-ui-exit)/[CP158controlledoverwrite](#current-trap-udp-counter) giữ causal limits | Snapshot khôngglobalsametick; samekeycounterheuristic cho controlledremoteoverwrite; naturalCP157cause unknown, nofullvalidator |
+| Result/reset | [CP176 A/C2normal/Ready2](#a-c-basic-cycles); [CP171](#basic-preset-start3) optional basic export hai outcomes/reset/Ready rồi normal BStart3/native12199/clock/render; CP168 floor riêng | Không trận ba outcome; allinventory/timer/seq/peer/resetvariants/originalarbitration và gate còn mở |
+| Room lifecycle | [CP175 Cslot1](#a-survivor-admission)/[CP176 ACreset](#a-c-basic-cycles); [CP161 title](#current-room-title), [CP162 mode/return](#current-team-mode) có2normalcycles/Ready; [CP165 currentpreset](#input-batch-gating) guestBack/rejoin/2outcomes/Ready/Start3 đã đo; CP164partial giữ lịch sử. CP155–157 EOF/UI controls giữ profile riêng | [CP168](#current-mode-promoted-start3) currentmodeBhost2cycles/Ready/BStart3 đãđo; R1/R2partial vàoldwhiteframe giữriêng. Accountresume/halfclose/loss/generalreplace chưa đủ; không lấy oldprofileexit làm currentmode proof |
 | Peer lifecycle | [CP159/160](#exported-preset-runtime)actual99/153/currentdirectIPs/ports; [CP155oldUDP](#direct-oldudp-contest-eof)/[CP158samekeycounter](#current-trap-udp-counter) controls riêng | Key/counterbytekhôngauth/universalfreshness; low8wrap/reliability/fullgrammar/relay/NAT/LAN/Internet unknown |
 
 Trong **optional profile hiện hành**, bảng dưới ghi vai trò emulator, không gán cho server gốc.
@@ -6247,3 +6247,68 @@ release/gameplay chưa đo; maximum7 vẫn là lựa chọn profile/reference t�
 mỗi identity thành một cơ chế mới. [Phép kiểm tiếp](RESEARCH.md#gap-disconnect-replacement),
 [thứ tự](PLAN.md#current-order). Windows nguyên bản, fullauth, general membership/authority/reset,
 K0–K7/K5/K6a, LAN/Internet/tám client và gate giữ mở.
+
+
+<a id="a-c-first-bomb"></a>
+### Cslot1 thực phát118 và A/C nhận cùng bom/nổ — CP176 (run đơn)
+
+Run đơn C bom đầu dưới đây được gom với hai vòng A/C vào CP176; phạm vi từng run giữ riêng.
+[Recipe/raw/hash](evidence/peer-endpoints/README.md#cp176-in-progress). Tái dùng đúng entry prestart,
+C ID3/slot1/native initial2/profile2/7 và toàn bộ codec/159/158 đã có; không mở hàm native mới.
+VN item families/actor-slot checklist và KR legacy đã đối chiếu, không chuyển opcode/layout/ID.
+
+`kr_runtime/confirmed` hẹp: normal CSpace0.4/Right0.8 sau8s clock, PID/startticks/namespace/mapped
+image được kiểm lại trước input. C phát118 slot1/fullkey12345/serial1, service nhận một bom
+ID1/owner1/row9-col3/power1;159 và158 chỉ tới A/C. C2S sequence/CRC/typed fields qua native oracle,
+hai client tạo entity và xử lý cùng ID1 đúng một lần;23 relationship checks/33native packet cases.
+Khóa118 là field đầu, không nhầm với serial/tail. Fuse6s là policy giữ nguyên, quan sát tới due+4s.
+Run197.706s/626raw đã cleanup và seal; không C17/19 trong scope quan sát nhưng chưa dùng điều đó
+làm bằng chứng độc lập rằng C sống/di chuyển đúng. Generic parser cũ đòi dynamic_s2c của B đã rời
+và verifier ban đầu đọc nhầm locator key; đã sửa analyzer theo actual A/C và contract118 đã biết,
+giữ log lỗi cũ, không sửa raw hoặc chạy lại client để làm report pass.
+
+Đây là C bom đầu, không kiểm maximum7/hai reservation/giải phóng capacity, hai chiều peer,
+A+C result/reset/vòng hai hoặc gate. Bước kế ở [PLAN](PLAN.md#current-order): tái dùng entry nhanh,
+known A hidden-route/bom/effects/life và current Cslot1, gom hai vòng normal/Ready/reset hoặc blocker
+thực tế rồi hoàn tất CP176 và audit định kỳ. CpreReady render vẫn unknown từ CP175.
+
+
+<a id="a-c-basic-cycles"></a>
+### Ahost/Cguest: hai normal basic cycles, peer hai chiều và reset — CP176
+
+[Recipe/raw/hash](evidence/peer-endpoints/README.md#cp176). `kr_runtime/confirmed` hẹp trên copy Wine,
+private virtual hosts: source-first CP175 prestart BguestEOF/Ahost→C3/slot1, C bom đầu và CP173/174
+A hidden-route/peer/bombs/effects/reset. Chỉ chuyển vai đo Bslot1 sang Cslot1, Ready guest A sang C,
+Start host B sang A; không new opcode/body, không phân tích lại native consumer hoặc import wire VN.
+Code/profile default không đổi; production source đúng CP175, C2/7 declared, native initial2 khớp.
+
+Run `A-C-cycles-r1`466.655250s/1079raw/163frozen/exit0/cleanup0PID. Prestart B đã rời, không ABgame
+hoặc forfeit. A/C roster ID1-slot0/ID3-slot1, hai keys12345/12346. Mỗi key actual C118 rồi hai A118,
+owner1/0/0, IDs1–3 rồi4–6, power1/1/2; native159/158/entity/195 flags/currentID và reset cùng hai view.
+Actual142 từ A/C tới hai ô hidden27/28, ba actual A124 (17/27/28), native165/full reader/effects chỉ
+ở A; native Cslot1 stats2/1/4 giữ, A baseline và hidden eligibility dựng lại qua Start2.
+
+Bốn cửa sổ current ARight/CRight qua hai key: actual ingress/key/target/arguments/current-coordinate
+progress trên recipient. Không dựa encoder tự sinh hoặc input return0. Native A local trap56→dead1,
+C nhận170 và report21; cả hai protected actor snapshots trước175 có A1/C0. Hai normal175/180/native
+full readers/errors0, room refresh, CReady95/AStart2 và CReady95 sau return2/native110 cả hai.
+312 quan hệ basic không tính raw hash giữ như verifier cũ; tổng1391=1079raw+312. 228packet native
+model cases/810 secure fields, peer708 checks/456 getters, life23/16. Models là loại kiểm riêng,
+không gọi Unicorn getter là gamecall runtime hoặc original server authority.
+
+Raw ảnh return2-native-gate đen cả A/C; sau normalfocus/actualReady, final ảnh cả hai vẽ phòng,
+redA/yellowC. AStart control trắng dưới hover chưa phải proof hỏng hoặc thành công Start3; không
+input Start3. CpreReady black ở CP175 và startup partial R3 không được giải thích ngược từ run này.
+Hai kết quả/reset và peer có native proof; hiện tượng render trước focus vẫn là giới hạn quan sát.
+
+Analyzer được chọn lại A/C thay AB (B đã rời/chưa có gameplay), giữ log StopIteration/missing
+chronology-B ban đầu; không sửa raw hay nới core criteria. Guest/host control/prefix/namespace/PID
+và current C owner trước input đã phân biệt; C giữ hostảo B nhưng không identity B/account resume.
+Cstartup120s chỉ đến firstclock; observation hai vòng có total600s, loading30/fuse6/20pulse/.045/
+tolerance12/neutral3/restore3 giữ nguyên, không kéo deadline gameplay để làm pass.
+
+**Giới hạn:** cùng một physical host/private namespaces, modified client/local identities; fuse,
+drop/claim/result vẫn policy. Không contest/oldUDP injection/disconnect trong hai ACepochs, không
+capacitymaximum/hai reservation/generalreset/thirdStart, không originalWindows/fullauth/physicalLAN/
+Internet/8clients/fullmatch hoặc tự đóng K0–K7/K5/K6a. [Authority](#authority) và [acceptance](PLAN.md#basic-acceptance-review)
+giữ dependency/control còn thiếu; [PLAN](PLAN.md#current-order) chọn profile/capacity theo vacancy tiếp.

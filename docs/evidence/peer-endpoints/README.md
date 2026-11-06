@@ -1372,3 +1372,50 @@ Không dùng tên file để nâng epoch. `C-before-ready-contact.png` giữ sá
 Profile C2/7 ở focused run khớp initial capacity2 native getter; maximum7/reservation/C118 còn chưa kiểm.
 Hai view map active sau Start không thay AC outcome/reset/peer movement. CpreReady render unknown.
 CP175 hoàn tất ghi chép không đồng nghĩa merge, gate hoặc fullmatch; PR/Git giữ trạng thái tích hợp.
+
+
+<a id="cp176-in-progress"></a>
+## CP176 — run đơn C bom đầu (giữ anchor cũ)
+
+`local/research/codex/A-C-bomb-r1/`: entry prestart CP175 giữ nguyên, thêm normal CSpace0.4/Right0.8
+sau8s clock. `cycles-recipe.json`/`runtime-preflight.json`163pins, total300s/Cstartup120s/loading30s/
+fuse6s cũ; source binary/DB/pack nguyên vẹn. `raw-seal.json`:197.705936s/626raw/exit0/cleanup0PID,
+runSHA `b630ca5ff1e3890ecdf1f59e0fe5453f92cb6070bdcf6c07a2f4c161269854cf`.
+`C-bomb-verification.json`:23 checks; `native-actual.json`:33 actual/CRCbad/partial native cases;
+`chain-summary.json`: A/C cùng ID1/entity159/blast158 một lần. `native-analysis.log` và `-r2.log`
+giữ lỗi analyzer cũ, `native-analysis-r3.log` pass; không sửa raw/counter/checkpoint CP175.
+`actor-fields.json`/`C-initial-capacity-verification.json` giữ getter theo context gốc, không tự gọi
+context MAP_CLOCK_STARTED là snapshot sau blast. Native/codec models là loại kiểm riêng với Wine.
+
+[Contract/giới hạn](../../PROTOCOL.md#a-c-first-bomb), [thứ tự tiếp](../../PLAN.md#current-order).
+Run đơn không AC outcome/reset/peer; hai vòng được đo riêng bên dưới, không ghép phạm vi.
+Capacitymaximum/fullmatch/gates vẫn mở; CP176 gom cả hai run và AUD052, audit kế CP180.
+
+
+<a id="cp176"></a>
+## CP176 — hai A/C normal basic cycles và periodic audit AUD052
+
+Baseline [CP175/PR247](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/247), head
+`1b640d68fa64e84aaef645cc75c26fc6ca09ca8a`, merge `957b37ac0451ac9cf32d65fe6348e063b10add5e`.
+[Contract/limits duy nhất](../../PROTOCOL.md#a-c-basic-cycles); [thứ tự tiếp](../../PLAN.md#current-order).
+`local/research/codex/A-C-cycles-r1/`:466.655250245s/1079raw/163frozen/exit0/cleanup0PID,
+runSHA `ad0f81c3c4ba816f524e08b4315ba9787e8eb8bbf3eec618ddf8a3e035dda407`.
+Recipe `prepare_A_C_cycles_r1.py`/`wine_probe_A_C_cycles_r1.py`/`run_A_C_cycles_r1.py` dùng prestart
+entry CP175, đúng fixed-profile/C2/7/binary e9bb…; source production không đổi, không ABgame/forfeit.
+Ahost/Cguest role mapping/control/log/ACK C rõ, topology host B khác identity C; pointer/PID ownership
+C được kiểm trước input. Max600s cho observation2cycles, Cstartup120s trước clock đầu; không đổi
+loading30/fuse6/input20/.045/tolerance12/neutral3/restore3 hoặc ép actor/gamecall/wire.
+
+`basic-cycle-verification.json`:1391checks (1079raw+312core),228 native packet cases/810fields;
+`endpoint-peer-verification.json`:708checks/4phases; `peer-getter-verification.json`:456 nativegetters;
+life agreement23/getters16. `oracle-reuse-comparison.json` so cùng312nonrawcriteria với oldAB2003−1691;
+đổi current A/C/host/epoch/cleanup boundary tường minh, không giảm chỉ tiêu physics/effects.
+`native-analysis.log`/`-r2.log` giữ lỗi AB-only analyzer; `-r3.log` pass. `visual-review.json` giữ cả ảnh
+return2 đen lẫn finalReady hiện phòng A/C; StartA trắng dưới hover không tự là fail/pass Start3.
+`audit-before-index.json`/`audit-before/` giữ docs đã đọc trước sync; audit đọc README→PLAN→PROTOCOL
+(authority/newcontracts)→RESEARCH→evidence/raw/report/code/images, không chỉ chạy checker.
+
+Cùng hai keys12345/12346: C/A/A IDs1–3,4–6, power1/1/2; actual142 hai view/3A124/native165,
+A56→1/C0 trước cả175/180,195/stat/key/eligibility reset và CReady95/110/AStart2/Ready2. Không AC
+contest/oldUDP injection/disconnect/thirdStart, maximum/genericreset/fullauth/Windows/LANInternet/8client.
+Complete record/audit không tự chứng nhận gate; [AUD052](../checkpoints/audits/AUD052.json), kếCP180.

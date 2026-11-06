@@ -41,17 +41,18 @@ Hai copy KR Wine đã chạy login/sảnh/phòng/Battle và các chu kỳ kết 
 [kim/reset](docs/PROTOCOL.md#needle-round-reset), [cứu hai chiều và hai kết quả](docs/PROTOCOL.md#rescue-two-results),
 [deep chain/reset](docs/PROTOCOL.md#recursive-chain-cycles) giữ phạm vi và giới hạn tại nguồn chuẩn.
 
-**Mốc mới CP175:** C identity mới đã vào slot B bỏ trống khi A ở lại, Join/Ready và cùng A
-vào trận/clock. Đã sửa thiếu gói slot/unready gửi sang A: ảnh A trước Ready hiển thị đội đúng;
-ảnh C trước Ready còn đen nên phần render đó giữ unknown. Hai view đã render cùng map sau Start.
-[Contract/giới hạn](docs/PROTOCOL.md#a-survivor-admission),
-[run và hash](docs/evidence/peer-endpoints/README.md#cp175). Baseline CP174 đã merge
-[PR246](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/246) tại `281ca37`.
+**Mốc mới CP176:** sau B rời trước trận đầu, A chủ phòng và C identity3/slot1 đã chạy **hai vòng
+basic bình thường liên tiếp**: cả hai đặt bom, movement hai chiều, ba hiệu ứng của A, A trapped/dead,
+cả hai nhận kết quả/về phòng và C Ready lại. Native trace, world/stat/key reset và ảnh cuối hai phòng
+đã kiểm. [Contract/giới hạn](docs/PROTOCOL.md#a-c-basic-cycles),
+[run/hash](docs/evidence/peer-endpoints/README.md#cp176). CP175 đã merge
+[PR247](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/247) tại `957b37a`.
 
-Native initial capacity của Cslot1 là2; profile đối chứng ngắn đã khớp2, còn C118/bom/kết quả/reset
-chưa đo. [PLAN](docs/PLAN.md#current-order) tiếp gameplay A+C, không lặp hai vòng A/B đã biết.
-**K5/K6a/fullmatch/LAN/Internet/tám client vẫn chưa nghiệm thu**; default preset giữ nguyên.
-AUD051 qua CP172; audit kế **CP176**. [Review waived](docs/evidence/checkpoints/review-waiver.json).
+Đây là **copy KR chạy Wine/mạng thử riêng**, chưa nghiệm thu gate K5/K6a/fullmatch, Windows nguyên bản,
+LAN/Internet hoặc tám client. CpreReady và ảnh ngay sau return còn đen; sau focus/Ready cả hai đã render.
+Không Start3 hoặc kết quả thứ ba. [PLAN](docs/PLAN.md#current-order) tiếp đóng gói profile đo được và
+kiểm capacity theo vacant slot; không lặp gameplay/consumer đã biết.
+AUD052 qua CP176; audit kế **CP180**. [Review waived](docs/evidence/checkpoints/review-waiver.json).
 
 Đích đầu: hai client thật chơi hai trận liên tiếp; mở bốn client và hardening sau đó.
 

@@ -1,0 +1,118 @@
+{
+  "id": "AUD052",
+  "trigger": "periodic",
+  "completed_through": "CP176",
+  "recorded_utc": "2026-11-06T18:25:43.549703+00:00",
+  "auditor": "Codex manual self-audit; independent review waived",
+  "read_files": [
+    "README.md",
+    "docs/PLAN.md",
+    "docs/PROTOCOL.md",
+    "docs/RESEARCH.md",
+    "docs/evidence/peer-endpoints/README.md",
+    "docs/features.json",
+    "docs/COVERAGE.md",
+    "server/README.md",
+    "server/probe_service.py",
+    "server/replacement_slots.py",
+    "server/test_replacement_slots.py",
+    "docs/evidence/checkpoints/audits/AUD051.json",
+    "local/research/codex/cp175-pr-merged.json",
+    "local/research/codex/A-C-bomb-r1/cycles/run.json",
+    "local/research/codex/A-C-bomb-r1/cycles/service-state.json",
+    "local/research/codex/A-C-bomb-r1/raw-seal.json",
+    "local/research/codex/A-C-bomb-r1/C-bomb-verification.json",
+    "local/research/codex/A-C-cycles-r1/cycles/run.json",
+    "local/research/codex/A-C-cycles-r1/cycles/service-state.json",
+    "local/research/codex/A-C-cycles-r1/cycles/client.log",
+    "local/research/codex/A-C-cycles-r1/cycles/client-C.log",
+    "local/research/codex/A-C-cycles-r1/basic-cycle-verification.json",
+    "local/research/codex/A-C-cycles-r1/endpoint-peer-verification.json",
+    "local/research/codex/A-C-cycles-r1/life-agreement-verification.json",
+    "local/research/codex/A-C-cycles-r1/life-getter-verification.json",
+    "local/research/codex/A-C-cycles-r1/visual-review.json",
+    "local/research/codex/A-C-cycles-r1/oracle-reuse-comparison.json",
+    "local/research/codex/A-C-cycles-r1/audit-before-index.json",
+    "local/research/codex/A-C-cycles-r1/profile.json",
+    "local/research/codex/A-C-cycles-r1/runtime-preflight.json",
+    "local/research/codex/A-C-cycles-r1/raw-seal.json"
+  ],
+  "method": "Manual scoped current-state/delta audit README→PLAN(current-order/acceptance/gates)→PROTOCOL(authority/CP175/C118/newACcontract)→RESEARCH(current gap rows)→evidence/report/native logs/code/profile/visuals. audit-before-index pins pre-sync document versions; new paragraphs reread on sync. Not rereading/recertifying every historical protocol paragraph; mechanical checks do not infer semantics or close gates.",
+  "findings": [
+    {
+      "id": "F1",
+      "stale": "Current docs still said C118/result/reset/peer missing after new AC reports. CP175 merge status needed latest pointer.",
+      "correction": "README/PLAN/RESEARCH/COVERAGE now cite CP176twoACnormalcycles/Ready2 and CP175PR247merged. Complete CP175/oldfailedrecords remain unchanged; GitHub source integration status.",
+      "fixed_in": [
+        "README.md",
+        "docs/PLAN.md",
+        "docs/RESEARCH.md",
+        "docs/COVERAGE.md"
+      ]
+    },
+    {
+      "id": "F2",
+      "stale": "Authority navigation was largely CP159160/171 and could hide current Cslot1 actor/peer coverage.",
+      "correction": "Add CP175/176 links to current matrix rows without importing oldprofilecontrols into newrun. Native creator/simulator vs chosen fuse/drop/result/weakvalidator unchanged; formaldeps/contest/current142freshness/auth remain open.",
+      "fixed_in": [
+        "docs/PROTOCOL.md",
+        "docs/PLAN.md"
+      ]
+    },
+    {
+      "id": "F3",
+      "stale": "Raw beforefocus room images black could be discarded or reported as proof of render failure/cause; final Start hoverwhite can be overread.",
+      "correction": "Manually inspect beforefocus/finalReady A/C panels: initialblack retained, finalbothroom/redA-yellowC rendered. ActualC95/native110 separate. No Start3 or causalclaim about oldCpreReady/R3authfail/CP167whiteframe.",
+      "fixed_in": [
+        "docs/PROTOCOL.md",
+        "docs/evidence/peer-endpoints/README.md",
+        "README.md"
+      ]
+    },
+    {
+      "id": "F4",
+      "stale": "Old verifier AB loops assume departed B has gameplay/dynamic_s2c/chronology; incorrectC118keylocator and lower rawcounts could falsely indicate changed acceptance.",
+      "correction": "Retain initialanalysiserrors, select currentA/C. KnownKR118key field0 restored, notnewwire. Compare312nonraw basic criteria old2003-1691=new1391-1079; typed native228/fields810, peer708/getters456, life23/16. Raw/client/guard/timebounds never changed to pass.",
+      "fixed_in": [
+        "docs/PROTOCOL.md",
+        "docs/evidence/peer-endpoints/README.md"
+      ]
+    },
+    {
+      "id": "F5",
+      "stale": "C2/7 came from local manualprofile; Start-only C1/10 was never capacity proof. Could imply genericCslot0/symmetricreplacementprofile works.",
+      "correction": "Record nativeinitialCslot1=2, exactC2profile and C118/2cycles; max7/reservation2 stillchosen/untested. PLANnext reusablepreset/vacancycapacity with sourcefirstoldCslot0 and minimaldualpathcontrols; preservedefault/oldflag. No newproductionchangeCP176.",
+      "fixed_in": [
+        "docs/PLAN.md",
+        "docs/RESEARCH.md",
+        "server/README.md",
+        "docs/PROTOCOL.md"
+      ]
+    },
+    {
+      "id": "F6",
+      "stale": "Two native normal cycles can be conflated with fullmatch/gate or with thirdEOFforfeit/oldUDP/contest controls from separate profiles.",
+      "correction": "CurrentACrun has exactly2normalepochs/noABgame/forfeit/activefault/oldUDP injection/contest. NativeA/Cstate56→1/other0 perview notglobaltick; identitieslocal. Ràbasicacceptance maps currentproof/formaldeps separately; no gateclosed.",
+      "fixed_in": [
+        "docs/PLAN.md",
+        "docs/PROTOCOL.md",
+        "README.md"
+      ]
+    },
+    {
+      "id": "F7",
+      "stale": "Audit counter could be reset by session/migration or blanketreview claim.",
+      "correction": "Append AUD052periodic through176; next180, last172retainedhistory. Codexselfaudit/independentreviewownerwaived. Endpointfilehash checks notcontinuousfilesystemwatch; priorunusedpreparation-script recovery report CP175 remains original.",
+      "fixed_in": [
+        "docs/evidence/checkpoints/audits/AUD052.json",
+        "docs/evidence/checkpoints/manifest.json"
+      ]
+    }
+  ],
+  "remaining": [
+    "Formal K0K1 originalWindows/control/K2fullcodec-live-reset/K3identity/cache dependencies, K4/K5/K6a/fullmatch/LANInternet8actualclients stillopen. Currentlocaltwo-cyclefunctionalproof is real but notautomaticgate.",
+    "CpreReady/returnbeforefocusblack/rootcause and lateStart3 remain unmeasured; finalReadyroomrendersbutnotretroactivefix.",
+    "Preset defaultA/B unchanged; C2/7manualprofile matches slot1 initial2 only. Need explicitvacancycapacity/reusableprofile and minimumoldB/C0 versusA/C1 controls ifgeneralized. Maximum/nativeallpool/reservations2/fullinventory/modes/arbitration/auth/142freshness/generalreset remain bounded unknowns.",
+    "No newcompoundplan/tracker orworker. Counter176/audit180 only afterappend; oldcompleteCP001–175 andallraw/seals immutable."
+  ]
+}

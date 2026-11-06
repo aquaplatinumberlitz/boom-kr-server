@@ -135,11 +135,11 @@
         "KR-F001",
         "KR-F015"
       ],
-      "known": "CP174 PR246 merged. CP175 actualCnegative/optinID3slot1/JoinReadyAStart4; focusedprestart actualAsetup110beforeC95/Acolorcorrect/AStart1/bothmapclock.279tests; R2preReadyfailure/R3beforeauthpartial kept.",
-      "remaining": "AC118/bomb/entity/peer/result/reset untested; nativeCinitial2/profile2matched, max7chosenpolicy. CpreReady renderunknown. Fullauth/formaldependencies/gates/LANInternet8client open.",
-      "next_test": "PLANfocusedprestartentry/C2/7→actualC118/peer/bomb/result/reset, no knownABgame replay oraccountresume.",
+      "known": "CP175PR247merged; CP176twoACnormalbasiccycles/Ready2/4peerwindows/6C-A-A bombs/3effects/195statkeyreset/nativeA56→1/C0/results verified. Cfirstbomb23checks33native;1391basic/228packet810fields/708peer456getters/life23+16. ExactsourceCP175279tests reused.",
+      "remaining": "Reusable replacement preset/vacant-slotCcapacity notexported; C2/7manualslot1nativeinitial2 matched, max7stillpolicy. CpreReady/returnbeforefocusblack/thirdStart/generalreset/auth/formaldeps/gates/LANInternet8client remainopen.",
+      "next_test": "PLANsourcefirstCP051C0/currentC1/121slotstats; explicitvacancycapacity/preset/negativeguards +minimumC0/C1nativegetter/C118delta; no AC2cycles replay.",
       "acceptance": "Epic checklist: linkedscopedtask/evidence+authoritymatrix vàacceptancegate ởPLAN; từngtaskđóng khôngđóngepic/K5/K6a.",
-      "reason": "Actual Cnative admission/Start milestone, Asetup110 fixed/verified in focusedbeforefirstentry; not globalone-delta runtime orACgameplaygate. AuditCP176unchanged.",
+      "reason": "CurrentlocalACnormalpathcompletewithinmeasuredbounds; fullmatch/gates distinct. AUD052periodicthrough176/next180, raw/failure/history unchanged.",
       "sources": [
         "docs/PROTOCOL.md#authority",
         "docs/RESEARCH.md#feature-gaps",
@@ -188,7 +188,9 @@
         "docs/PROTOCOL.md#mode-preset-input-blocker",
         "docs/PROTOCOL.md#input-batch-gating",
         "docs/PROTOCOL.md#a-survivor-admission",
-        "docs/evidence/peer-endpoints/README.md#cp175"
+        "docs/evidence/peer-endpoints/README.md#cp175",
+        "docs/PROTOCOL.md#a-c-basic-cycles",
+        "docs/evidence/peer-endpoints/README.md#cp176"
       ],
       "evidence": [
         "docs/evidence/current-movement-cycles/README.md",
@@ -637,6 +639,6 @@
       "successors": []
     }
   ],
-  "as_of_utc": "2026-11-06T17:24:55.492803+00:00",
+  "as_of_utc": "2026-11-06T18:30:01.790349+00:00",
   "limits": "Dated manual dispositions through CP146; snapshotcaptureUTC only/no semantic or gate certification; immutable completehistory."
 }
