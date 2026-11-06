@@ -1,7 +1,7 @@
 # Kế hoạch server giả lập KR 00967
 
 Nguồn chuẩn của project `boom-kr-server`; bản nhập từ plan đã được dsh1/dsh2 review tại `1eee46d`.
-CP175: actual C rejection control, opt-in Cslot1/ID3/Join/Ready/AStart4 và beforefirst AStart1 đã có nguồn; A nhận setup110 trước CReady, CpreReady render unknown. CP174 PR246 merged281ca37. Tiếp ACgameplay/reset; AUD051qua172/kế176; không đóng gate.
+CP176: Ahost/Cguest slot1 cùng2normalbasiccycles/4peerwindows/6bombs/3effects/reset/Ready2 đã kiểm; CP175 PR247 merged957b37a. Tiếp export profile/slot-capacity theo vacancy, không lặp known gameplay. AUD052qua176/kế180; gates không tự đóng.
 
 
 ### Mục tiêu, baseline và phạm vi
@@ -37,13 +37,13 @@ với client Rust không chứng minh có thể điều khiển client KR bằng
 
 ### Tiến độ hiện hành theo bằng chứng
 
-| Task/mốc | Trạng thái tại CP175 | Nguồn chuẩn |
+| Task/mốc | Trạng thái tại CP176 | Nguồn chuẩn |
 |---|---|---|
 | KRE-004/issue6 | Đã review/merge PR7 và đóng issue:recipe r1 đến local accept;không phải full K1 | [Wine r1](evidence/wine/README.md) |
 | Bootstrap reply | PR8 đã merge;debugger ProcessPatchreturn1,không ép success | [bootstrap evidence](evidence/bootstrap-wire/README.md) |
 | KRE-005a/issue9,R2 | PR10 đã merge:3 cold start cửa sổ/second accept;issue9 còn mở | [R2 evidence](evidence/wine-r2/README.md) |
 | WCP hai-reply | Run CP001 là lịch sử chưa C→S; CP006 đã đo request đầu trên copy tham số hóa | [PROTOCOL](PROTOCOL.md#wcp),[WCP evidence](evidence/wcp/README.md) |
-| KRE-005b/issue14 | CP006–174 và preset PR242 đã merge; CP175 C admission/Join/Ready/Start có nguồn hẹp, Asetup110 đã kiểm; CpreReady render unknown; task hiện hành ở current-order; fullauth/authority/fullmatch/gates và gaps giữ mở | [Q-023](RESEARCH.md#q-023), [service](evidence/probe-service/README.md) |
+| KRE-005b/issue14 | CP006–175 và preset PR242 đã merge; CP176 A/C2normalcycles/peer/bombs/effects/reset/Ready2 có nguồn; task hiện hành ở current-order; fullauth/authority/fullmatch/gates và gaps giữ mở | [Q-023](RESEARCH.md#q-023), [service](evidence/probe-service/README.md) |
 | K0/K1 | Chưa nghiệm thu toàn gate;Windows vanilla/control ownership và các điều kiện còn thiếu giữ mở | Gate dưới,[Q-022](RESEARCH.md) |
 | K2a/K2 | Primitive/WCP, CP057stream native/model và CP058–060authcallback137/135/errors0 đã có; fullcodec/authauthority/reconnect và gate chưa pass | [PROTOCOL](PROTOCOL.md#login-auth),[Q-023](RESEARCH.md#q-023) |
 | K3 | Copy đã vẽUI/đóngnotice, A/B/Cprofile đọc sạch và mộtnamedcachewarm được nhận; identityauthority/toàncache/codec/K3 chưa nghiệm thu | [Contract sảnh](PROTOCOL.md#channel-lobby) |
@@ -66,21 +66,24 @@ selectiveCLI/historicalmigration xong, không còn taskactive tổ chức. CP119
 Yêu cầu kiểm8 người có kết quả hẹp [CP147/163](PROTOCOL.md#battle-eight-roster), không thay gate:
 Free0/Manner1 input/ACK/reset đã nối CP162; selector1 actual4–4/1–7 đã đo. Không lặp roster/dump/guard. Service8 peer
 và trận8 client thật là phần mở rộng sau hai/bốn client ổn ở bước5, chưa được đánh dấu hoàn thành.
-1. **KR-X003/F004 — A+C: actual C118, gameplay và reset:**
-   [CP175](PROTOCOL.md#a-survivor-admission) khép riêng native admission/Join/Ready/Start:
-   actual negative ordinal9, opt-in ID3/slot1/AStart4 sau pendingBhostEOF và control trước trận đầu
-   AStart1. A đã nhận samebody slot110/unready trước CReady và ảnh A hiển thị C đúng đội;
-   CpreReady image đen vẫn unknown, sau Start cả hai render. R3 thiếu Cauth/Join không backfill.
-   `NEXT-A-C-ROUND-RESET`: tái dùng focused prestart BguestEOF/Ahost→C, profile C2/7 đã khớp
-   native initial capacity2; max7 vẫn policy/reference. Không cần lặp AB2cycles, dump roster hoặc
-   đo lại stat/getter/Join87/106/110/121/153. Đo C actual118/owner1/currentkey/entity/peer nhận,
-   reservation/release đúng phần cần; dùng actual OS input/movement/corridor đã biết.
-   Tiếp A+C result/return/Ready/reset và vòng sau; không suy từ ABoutcome hoặc active clock.
-   Giữ CpreReady render trong giới hạn/UI trigger, không quy nguyên nhân nếu chưa có control.
-   Source binary/DB/pack nguyên vẹn, default preset và old B/Cslot0 path giữ; C không B account resume.
-   Sau integration rà contest/authority/remaining acceptance theo trigger, không loop mọi variant.
+1. **KR-X003/S001 — đưa đường thay người đã đo vào profile dùng lại được:**
+   [CP176](PROTOCOL.md#a-c-basic-cycles) khép `NEXT-A-C-ROUND-RESET`: focused prestart BguestEOF,
+   Ahost/C3-slot1, hai normal outcomes/Ready2, C/A/A bombs mỗi key, A↔C current peer, ba effects/
+   195/stat/key reset và life56→1/other0. Không ABgame replay, forfeit hoặc Start3 trong run này.
+   [CP175](PROTOCOL.md#a-survivor-admission) code đã merge PR247; `two-client-basic` exported
+   hiện vẫn default A/B, profile A+C được thêm flag/Ccapacity thủ công dưới local.
+   `NEXT-REPLACEMENT-PROFILE`: tái dùng CP051/Cslot0, CP175/176/Cslot1 và known121 slot stats;
+   chọn policy profile rõ ràng cho Ccapacity theo vacancy (hoặc giới hạn preset đúng path đã đo),
+   tránh lấy C2/7 của slot1 áp bừa slot0. Initial2 của Cslot1 đã runtime, maximum vẫn chosenpolicy.
+   Source-first exact current code/fixture/old Cslot0 reports trước chỉnh. Giữ default/old flag và
+   B-survivor/Cslot0 path; regression validation/missing-declaration/slot/conflict/Ready/host/round
+   guards rồi probe tối thiểu Cslot1 và Cslot0 nếu mở cả hai. Không redo hai normal ACcycles hoặc
+   quét codec/items trước; chỉ native getter/C118/confirm cần để chứng minh delta.
+   Sau delivery, rà acceptance K0→K6a/authority theo nguồn cũ và chọn đúng thiếu sót đang chặn
+   deployment/LAN. Functional local path đã có, dependency/control/auth còn mở; không đóng gate
+   chỉ vì hai vòng native hoặc sửa tiêu chí để tăng tiến độ. Không test mọi lifecycle variant.
    [#14](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/14) vẫn mở.
-   <!-- active-issue: 14 --> AUD051 qua172; audit định kỳ kế **CP176**, không reset.
+   <!-- active-issue: 14 --> AUD052 qua176; audit định kỳ kế **CP180**, không reset.
 2. **KR-B003/KR-F006 — nợ có giới hạn:** [CP057](PROTOCOL.md#codec-stream-boundaries) đã đo stream/
    seq/bounds trong model, không mở lại76split hoặc cấp buffer lớn chỉ để vượt allocationguardFFFFFFFF.
    Full modes/prefix guard/live reset, distance/auth/transport/kim-cứu của reportguard giữ trong RESEARCH;
@@ -109,7 +112,7 @@ Bảng này chỉ phân công/thứtự; acceptance/PR/bằngchứng ởissue. [
 
 | Thứ tự/scope | Issue | Trạng thái/phần còn thiếu |
 |---|---|---|
-| Hiện hành RE | [#14/KRE-005b](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/14) | CP174/PR246 merged; CP175 C admission/Join/Ready/Start và Asetup110 đã kiểm hẹp; CpreReady render unknown; AC gameplay/reset là bước kế; gaps giữ; fullauth/authority/fullmatch/gates mở. |
+| Hiện hành RE | [#14/KRE-005b](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/14) | CP175/PR247 merged; CP176 A/C2cycles/peer/reset/Ready2 đã kiểm; exported replacement profile/slot-capacity là bước kế; gaps giữ; fullauth/authority/fullmatch/gates mở. |
 | Control theo trigger/gate | [#1/KRE-001](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/1), [#2/KRE-002](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/2) | Windowsoriginal/ownership/K0K1/fullbootstrapconfig; reuseWine/import/replyđãđo. |
 | Codec/identity khi cần | [#3/KRE-003](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/3), [#9/KRE-005a](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/9) | Fullcodec/livebounds vàintermittentmainstartupcause cònthiếu; khônglặpprimitive/auxiliarylocale. |
 
@@ -137,14 +140,14 @@ Lịch sử từng checkpoint bất biến ở [manifest](evidence/checkpoints/m
   “không có dispatcher mạng” từ kết quả âm tính về VM. Message nội bộ 27 cũng không phải wire opcode.
 
 <a id="basic-acceptance-review"></a>
-### Rà K5/K6a tại CP172 — chưa đóng gate
+### Rà K5/K6a cập nhật audit CP176 — chưa đóng gate
 
 | Acceptance đang dùng | Nguồn/đã biết | Khoảng trống còn lại |
 |---|---|---|
-| Clock/bom/phá hộp/item/trap/result/reset | [CP171](PROTOCOL.md#basic-preset-start3), [CP172](PROTOCOL.md#hidden-cell-admission-current): cùng basic export2cycles/3effects/195/stat/key reset, third active | Không third outcome/toàn inventory/timer/entity variants; chỉ map/profile được đo |
+| Clock/bom/phá hộp/item/trap/result/reset | [CP176](PROTOCOL.md#a-c-basic-cycles): current A/C2normalcycles/3effects/195/stat/key reset/Ready2; CP171/172 giữ old scope | Không third outcome/toàn inventory/timer/entity variants; chỉ map/profile được đo |
 | Authority của hành vi thực dùng | [Matrix](PROTOCOL.md#authority): creator/simulator/validator/broadcaster/peer-editable tách native khỏi policy; guard142 thêm đúng ô | Fullauth/distance/142freshness/original drop/result arbitration unknown; design có kiểm không tự đổi thành luật gốc |
-| Đồng bộ A↔B và hai owner bom trong basic run | [CP173](PROTOCOL.md#basic-bidirectional) basic cùng2keys/4nativepeerwindows/B118+Abombs/native195/effects/reset | Chỉ simplecorridor/profile; không fullUDP/auth/movinggeneric/races |
-| Contest/disconnect/freshness | CP155/156/158/168 có các control đã biết theo profile/run | [CP174](PROTOCOL.md#basic-host-b-eof) currentbasicBhostEOF/pendingfence/Acleanup đã đo; admission người thay B còn bị guard cứng, contest/freshness scope cũ giữ riêng |
+| Đồng bộ A↔B và hai owner bom trong basic run | [CP176](PROTOCOL.md#a-c-basic-cycles) A/C cùng2keys/4nativepeerwindows/C118+Abombs/native195/effects/reset | Chỉ simplecorridor/profile; không fullUDP/auth/movinggeneric/races |
+| Contest/disconnect/freshness | CP155/156/158/168 có các control đã biết theo profile/run | [CP174](PROTOCOL.md#basic-host-b-eof) currentbasicBhostEOF/pendingfence/Acleanup đã đo; [CP175](PROTOCOL.md#a-survivor-admission) Cslot1 admission đã mở bằng opt-in/guards; CP176 ACnormalreset đã kiểm. Contest/freshness control cũ giữ riêng, không gọi cùng-run với AC |
 | Dependency/đích nhiều máy | K0/K1 Windows/control, K2 livecodec/reset, K3 cache/identity và dependency K4 vẫn mở | K5/K6a/fullmatch chưa chứng nhận; LAN/Internet/4–8client chưa nghiệm thu. Không thêm gate con hoặc phần trăm |
 
 <a id="gates"></a>

@@ -357,3 +357,10 @@ trước listen. R2 đã đo Join/Ready/AStart4/clock; focused prestart đã đo
 CpreReady image đen/unknown, sau Start cả hai render. Native Cslot1 initial capacity2; profile focused
 đã chọn C2/7 và khớp initial2, còn118/gameplay/max7 chưa kiểm.
 Không bật chuyên biệt needle/rescue cùng flag hoặc coi C là account B resume. Thứ tự chỉ ở PLAN.
+
+
+CP176: [Ahost/Cguest hai normal basic cycles](../docs/PROTOCOL.md#a-c-basic-cycles), bốn peer windows,
+C/A bombs/effects/life/result/reset/Ready2 đã native-check; source đúng CP175/279tests, không codechange.
+Profile đo dưới local thêm C2/7 và flag; exported default giữ nguyên. PLAN tiếp đưa replacement profile/
+capacity theo vacancy thành cấu hình dùng lại được, không áp Cslot1 values sang slot0 khi chưa đối chiếu.
+CpreReady/beforefocus render vẫn có ảnh đen; finalroom đã vẽ, không Start3/gates/LAN/Internet claim.

@@ -1,0 +1,275 @@
+{
+  "id": "CP176",
+  "previous": "CP175",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-06T18:33:42.428490+00:00",
+  "context_commit": "957b37ac0451ac9cf32d65fe6348e063b10add5e",
+  "owner": "Codex",
+  "reviewer": "Codex",
+  "question": "C identity3/slot1 có actual118/entity/blast và cùng Ahost chạy2normalbasicepochs/peer/effects/life/result/reset/Ready2 không?",
+  "scope": "Source-first CP175Centry/nativeinitial2/knownKR118159158 andCP173174ABbasic controls; oneCfirstbomb plus focusedAC2cycle run. Reuseallknownconsumers; no newnativefunctionscan, VNwireport, sourcebinary/DB/pack/servicechange. Explicit Ahost/Cguest control/analyzerrole mapping; retain raw andallanalysiserrors; manualperiodicAUD052through176.",
+  "artifacts": [
+    {
+      "name": "OriginalKR00967unchanged",
+      "sha256": "a52545c14b1fea423de655c3163d6360b628d61c1cd472b46fdbc8a9ffe15f4e"
+    },
+    {
+      "name": "CurrentWinecopyunchanged",
+      "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+    },
+    {
+      "name": "NativeIDAfullcopycf72privateanalysis",
+      "sha256": "cf72da112308d9f1ca256df8089594c5f787875310933073bf6bd5ba6f70e63b"
+    },
+    {
+      "name": "modOmodelreference",
+      "sha256": "a08950c833d3acab8281049def7b3dc96b221f107eeda01da3a548e34b91dce5"
+    }
+  ],
+  "locators": [
+    "CP175PR247head1b640d68fa64e84aaef645cc75c26fc6ca09ca8a/merge957b37ac0451ac9cf32d65fe6348e063b10add5e.",
+    "Cfirstbomb b630ca5ff1e3890ecdf1f59e0fe5453f92cb6070bdcf6c07a2f4c161269854cf/197.705935669s/626raw/163frozen; ACcycles ad0f81c3c4ba816f524e08b4315ba9787e8eb8bbf3eec618ddf8a3e035dda407/466.655250245s/1079raw/163frozen.",
+    "Knownnative118/159158/121/153/165/175180/52A350/13DE7AA/E66680/E667BE/E668AD/E668B2/B4EA14; no newVA/consumerdiscovery. Csource10.77.0.3/vacatedBhost differsfromCidentity3/roomslot1.",
+    "Roomkeys12345/12346; bombIDs1..6/C,A,A eachkey, power1,1,2; actualReadyguestC/StarhostA; native175snapshotsA56→1,C0 perview.",
+    "AUD052periodicthrough176; nextCP180. Noindependentapproval; ownerwaiver/selfcheck only."
+  ],
+  "findings": [
+    {
+      "summary": "Cfirstbomb run: actualownedC normalSpace.4/Right.8 afterknownclock; C118slot1/keyfield0=12345/serial1→ID1owner1/9,3/power1. Actual159158 onlyA/C, bothnativecreate/currentID1processonce.23checks/33nativeframecases; noC17/19observedbutabsencealone notsurvivalproof. Rawseal/cleanup preserved.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#a-c-basic-cycles",
+      "evidence": [
+        "RUN-00002",
+        "RUN-00036"
+      ],
+      "limits": "Modified KR00967 Wine copies/private samephysicalhost virtual namespaces; localfixture IDs. CP175production/profile/binary unchanged; C2/7declared/nativeinitial2, max7/reservations2 untested. Two normalACepochs/noABgame/forfeit; no thirdStart/outcome, noACcontest/oldUDP/disconnectinthisrun. Nativeperviewlife notglobalsametick; primitive/getterUnicornmodels separatefromWine. Chosenfuse/drop/claims/rank notoriginalserverauthority. CpreReady/returnbeforefocusblack retained; finalReadybothroomrendernotrootcause orStart3proof. Fullauth/Windows/LANInternet8clients/K0–K7/K5K6a/fullmatch remainopen."
+    },
+    {
+      "summary": "FocusedprestartBguestEOF/Ahost→freshC3slot1; exactly2ACnormalepochs/keys12345,12346. C/A/Aactual118 perkey/IDs1..6/power1,1,2, native159158/currentIDs/entity/195 sequentialflags andreset. ThreeA12417/27/28/native165effects onlyA; both142/hiddeneligibility/statbaseline/keyrebuilt onStart2.1391checks incl1079raw +same312core aspreviousAB.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#a-c-basic-cycles",
+      "evidence": [
+        "RUN-00735",
+        "RUN-00766",
+        "RUN-00775"
+      ],
+      "limits": "Modified KR00967 Wine copies/private samephysicalhost virtual namespaces; localfixture IDs. CP175production/profile/binary unchanged; C2/7declared/nativeinitial2, max7/reservations2 untested. Two normalACepochs/noABgame/forfeit; no thirdStart/outcome, noACcontest/oldUDP/disconnectinthisrun. Nativeperviewlife notglobalsametick; primitive/getterUnicornmodels separatefromWine. Chosenfuse/drop/claims/rank notoriginalserverauthority. CpreReady/returnbeforefocusblack retained; finalReadybothroomrendernotrootcause orStart3proof. Fullauth/Windows/LANInternet8clients/K0–K7/K5K6a/fullmatch remainopen."
+    },
+    {
+      "summary": "FouractualcurrentA↔C Rightwindows across2keys: ingress/arguments/key/targetchange/currentcoordinateprogress,708checks. ActualA17→19/C21; perviewAprotectedstate56→1/C0beforeeach175, full175180/roomrefresh/CReady95/AStart2 and CReady2/native110both. No thirdStart or globaltickconsensus.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#a-c-basic-cycles",
+      "evidence": [
+        "RUN-00743",
+        "RUN-00757",
+        "RUN-00735"
+      ],
+      "limits": "Modified KR00967 Wine copies/private samephysicalhost virtual namespaces; localfixture IDs. CP175production/profile/binary unchanged; C2/7declared/nativeinitial2, max7/reservations2 untested. Two normalACepochs/noABgame/forfeit; no thirdStart/outcome, noACcontest/oldUDP/disconnectinthisrun. Nativeperviewlife notglobalsametick; primitive/getterUnicornmodels separatefromWine. Chosenfuse/drop/claims/rank notoriginalserverauthority. CpreReady/returnbeforefocusblack retained; finalReadybothroomrendernotrootcause orStart3proof. Fullauth/Windows/LANInternet8clients/K0–K7/K5K6a/fullmatch remainopen."
+    },
+    {
+      "summary": "Copiednativeframer/typed/blob securegetteroracles reused withoutnewfunctions: 228actual/CRCbad/partial framecases,810fieldcases;456peergetter/16lifegetterchecks matchruntimewrapperdata. Synthetic allocator/modelcounterreset boundaries remain; not Winegamecalls/fullcodec ororiginalauth.",
+      "source": "kr_static",
+      "status": "confirmed",
+      "method": "emulation",
+      "canonical": "docs/PROTOCOL.md#a-c-basic-cycles",
+      "evidence": [
+        "RUN-00760",
+        "RUN-00728",
+        "RUN-00773",
+        "RUN-00758"
+      ],
+      "limits": "Modified KR00967 Wine copies/private samephysicalhost virtual namespaces; localfixture IDs. CP175production/profile/binary unchanged; C2/7declared/nativeinitial2, max7/reservations2 untested. Two normalACepochs/noABgame/forfeit; no thirdStart/outcome, noACcontest/oldUDP/disconnectinthisrun. Nativeperviewlife notglobalsametick; primitive/getterUnicornmodels separatefromWine. Chosenfuse/drop/claims/rank notoriginalserverauthority. CpreReady/returnbeforefocusblack retained; finalReadybothroomrendernotrootcause orStart3proof. Fullauth/Windows/LANInternet8clients/K0–K7/K5K6a/fullmatch remainopen."
+    },
+    {
+      "summary": "Manualimages: return2-native-gate black bothviews retained; afternormalfocus/actualReady finalA/Croom/redA-yellowC render. AStart hoverwhite and CReadycontrol notthirdStartproof. PriorCpreReadyblack/R3startupcause uncorrected. Fullnative result/reset proof isseparatefromimageappearance.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#a-c-basic-cycles",
+      "evidence": [
+        "RUN-00791"
+      ],
+      "limits": "Modified KR00967 Wine copies/private samephysicalhost virtual namespaces; localfixture IDs. CP175production/profile/binary unchanged; C2/7declared/nativeinitial2, max7/reservations2 untested. Two normalACepochs/noABgame/forfeit; no thirdStart/outcome, noACcontest/oldUDP/disconnectinthisrun. Nativeperviewlife notglobalsametick; primitive/getterUnicornmodels separatefromWine. Chosenfuse/drop/claims/rank notoriginalserverauthority. CpreReady/returnbeforefocusblack retained; finalReadybothroomrendernotrootcause orStart3proof. Fullauth/Windows/LANInternet8clients/K0–K7/K5K6a/fullmatch remainopen."
+    },
+    {
+      "summary": "Current-roleanalyzers corrected AB-only loops that assumed departedBgameplay/dynamicS2C/chronology, preserving initialerrorlogs. FirstCverifierwrongtail-key locator corrected toknown118field0; no wire/client/sourcebehaviorchange. Exact312nonrawcriteria retained; currentproduction/testhashes matchCP175279tests, so reused. AUD052manualsource/raw/docsdeltareconciliation; noautogate.",
+      "source": "design",
+      "status": "design",
+      "method": "design",
+      "canonical": "docs/PROTOCOL.md#a-c-basic-cycles",
+      "evidence": [
+        "RUN-00766",
+        "RUN-00778",
+        "RUN-00734",
+        "RUN-00807"
+      ],
+      "limits": "Modified KR00967 Wine copies/private samephysicalhost virtual namespaces; localfixture IDs. CP175production/profile/binary unchanged; C2/7declared/nativeinitial2, max7/reservations2 untested. Two normalACepochs/noABgame/forfeit; no thirdStart/outcome, noACcontest/oldUDP/disconnectinthisrun. Nativeperviewlife notglobalsametick; primitive/getterUnicornmodels separatefromWine. Chosenfuse/drop/claims/rank notoriginalserverauthority. CpreReady/returnbeforefocusblack retained; finalReadybothroomrendernotrootcause orStart3proof. Fullauth/Windows/LANInternet8clients/K0–K7/K5K6a/fullmatch remainopen."
+    }
+  ],
+  "verification": [
+    {
+      "check": "Cfirstactual118/native159158/ownedinput/rawseal",
+      "result": "pass",
+      "evidence": [
+        "RUN-00002",
+        "RUN-00036"
+      ],
+      "limits": "Modified KR00967 Wine copies/private samephysicalhost virtual namespaces; localfixture IDs. CP175production/profile/binary unchanged; C2/7declared/nativeinitial2, max7/reservations2 untested. Two normalACepochs/noABgame/forfeit; no thirdStart/outcome, noACcontest/oldUDP/disconnectinthisrun. Nativeperviewlife notglobalsametick; primitive/getterUnicornmodels separatefromWine. Chosenfuse/drop/claims/rank notoriginalserverauthority. CpreReady/returnbeforefocusblack retained; finalReadybothroomrendernotrootcause orStart3proof. Fullauth/Windows/LANInternet8clients/K0–K7/K5K6a/fullmatch remainopen."
+    },
+    {
+      "check": "AC2normalepochs/effects195statkeyreset/actualReady/peer/life/nativeoracles/visual",
+      "result": "pass",
+      "evidence": [
+        "RUN-00735",
+        "RUN-00743",
+        "RUN-00757",
+        "RUN-00791"
+      ],
+      "limits": "Modified KR00967 Wine copies/private samephysicalhost virtual namespaces; localfixture IDs. CP175production/profile/binary unchanged; C2/7declared/nativeinitial2, max7/reservations2 untested. Two normalACepochs/noABgame/forfeit; no thirdStart/outcome, noACcontest/oldUDP/disconnectinthisrun. Nativeperviewlife notglobalsametick; primitive/getterUnicornmodels separatefromWine. Chosenfuse/drop/claims/rank notoriginalserverauthority. CpreReady/returnbeforefocusblack retained; finalReadybothroomrendernotrootcause orStart3proof. Fullauth/Windows/LANInternet8clients/K0–K7/K5K6a/fullmatch remainopen."
+    },
+    {
+      "check": "ExactCP175source/testreuse279 +docs/catalog/issues/artifact/diff/historylocal/manualAUD052",
+      "result": "pass",
+      "evidence": [
+        "RUN-00778",
+        "RUN-00742",
+        "RUN-00754",
+        "RUN-00733",
+        "RUN-00741"
+      ],
+      "limits": "No newsource; scriptchecks notsemantic/gateapproval. Fullhistory/local afterappendbeforecommit."
+    },
+    {
+      "check": "OriginalWindows/fullcodec/auth/physicalLANInternet8clients/gates",
+      "result": "pending",
+      "evidence": [
+        "RUN-00802"
+      ],
+      "limits": "Modified KR00967 Wine copies/private samephysicalhost virtual namespaces; localfixture IDs. CP175production/profile/binary unchanged; C2/7declared/nativeinitial2, max7/reservations2 untested. Two normalACepochs/noABgame/forfeit; no thirdStart/outcome, noACcontest/oldUDP/disconnectinthisrun. Nativeperviewlife notglobalsametick; primitive/getterUnicornmodels separatefromWine. Chosenfuse/drop/claims/rank notoriginalserverauthority. CpreReady/returnbeforefocusblack retained; finalReadybothroomrendernotrootcause orStart3proof. Fullauth/Windows/LANInternet8clients/K0–K7/K5K6a/fullmatch remainopen."
+    }
+  ],
+  "evidence": [],
+  "evidence_manifests": [
+    {
+      "path": "docs/evidence/checkpoints/evidence/CP176-AC-basic-cycles.json",
+      "bytes": 485305,
+      "sha256": "4bd73e5b3e07f203acd1eb2b3e91528b5372fcd0372ebc1eee84024846a77fc0",
+      "count": 1993
+    }
+  ],
+  "delta": {
+    "added": [
+      "ActualCslot1bomb/nativeA/Centity-blast then2ACnormalbasiccycles/4peerwindows/6bombs/3effects/life/results/reset/Ready2.",
+      "A/Ccurrentrole oracle/admission/Ready/host mapping andmanualperiodicAUD052, alloldraw preserved."
+    ],
+    "corrected": [
+      "CP175PR247merged; current AC118/result/reset/peer no longerunknown.",
+      "Reported1391vs2003 reflectsrawcounts;312nonrawcriteria preserved. GenericABparserloops notCbehaviorfailure.",
+      "BlackpreReady/beforefocus andwhitehover notcause/failure/Start3proof. Max7 remainspolicy."
+    ],
+    "superseded": [
+      "NEXT-A-C-ROUND-RESET closednarrowly; NEXT-REPLACEMENT-PROFILE active."
+    ]
+  },
+  "blockers": [
+    "MeasuredC2/7 replacementprofile manuallyassembledlocal; exporteddefaultA/Bunchanged. Needexplicitvacant-slotcapacity/reusablepreset withcurrent/oldpathguards andminimumnativecontrols ifgeneralized.",
+    "FormalWindows/bootstrapcontrol/fullcodec/auth/cachedeps,generalreset/142freshness/distance/modes/physicalLANInternet8client/gates remainopen."
+  ],
+  "next_steps": [
+    {
+      "id": "NEXT-A-C-ROUND-RESET",
+      "task": "KRE-005b",
+      "state": "closed",
+      "action": "CP176 actualC118/2ACnormaloutcomes/peer/effects195statkeyreset/Ready2; no thirdStart/gate.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-REPLACEMENT-PROFILE",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "PLAN source-first CP051C0/currentC1/profile121slotstats; reusableoptionalpreset/vacancycapacity, preservedefaults/oldflag; negativepolicytests +minimumC0/C1nativeinitial/C118delta withoutAC2game replay. Thenremainingacceptance/deploymentcontrols.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    }
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-11-06T18:33:42.428490+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "Codexsolo RE/runtime/selfchecks/manualAUD052; ownerreviewwaived, exactheadPRbeforemerge, nogateapproval.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Owner explicitly requested solo, no workers/review."
+    }
+  },
+  "docs_sync": [
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "CP176ACnative2cycles/peer/life/reset/limits/nextprofile/CP175merge/AUD052 syncedbeforecomplete."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "CP176ACnative2cycles/peer/life/reset/limits/nextprofile/CP175merge/AUD052 syncedbeforecomplete."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "updated",
+      "reason": "CP176ACnative2cycles/peer/life/reset/limits/nextprofile/CP175merge/AUD052 syncedbeforecomplete."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "updated",
+      "reason": "CP176ACnative2cycles/peer/life/reset/limits/nextprofile/CP175merge/AUD052 syncedbeforecomplete."
+    },
+    {
+      "path": "docs/features.json",
+      "state": "updated",
+      "reason": "CP176ACnative2cycles/peer/life/reset/limits/nextprofile/CP175merge/AUD052 syncedbeforecomplete."
+    },
+    {
+      "path": "docs/COVERAGE.md",
+      "state": "updated",
+      "reason": "CP176ACnative2cycles/peer/life/reset/limits/nextprofile/CP175merge/AUD052 syncedbeforecomplete."
+    },
+    {
+      "path": "docs/evidence/peer-endpoints/README.md",
+      "state": "updated",
+      "reason": "CP176ACnative2cycles/peer/life/reset/limits/nextprofile/CP175merge/AUD052 syncedbeforecomplete."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/review.json",
+      "state": "updated",
+      "reason": "CP176ACnative2cycles/peer/life/reset/limits/nextprofile/CP175merge/AUD052 syncedbeforecomplete."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
+      "state": "updated",
+      "reason": "CP176ACnative2cycles/peer/life/reset/limits/nextprofile/CP175merge/AUD052 syncedbeforecomplete."
+    },
+    {
+      "path": "server/README.md",
+      "state": "updated",
+      "reason": "CP176ACnative2cycles/peer/life/reset/limits/nextprofile/CP175merge/AUD052 syncedbeforecomplete."
+    },
+    {
+      "path": "docs/evidence/checkpoints/README.md",
+      "state": "unchanged",
+      "reason": "Workflow/cadence unchanged."
+    },
+    {
+      "path": "docs/evidence/checkpoints/audits/AUD052.json",
+      "state": "updated",
+      "reason": "CP176ACnative2cycles/peer/life/reset/limits/nextprofile/CP175merge/AUD052 syncedbeforecomplete."
+    }
+  ]
+}
