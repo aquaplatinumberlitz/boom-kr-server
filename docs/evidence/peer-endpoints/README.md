@@ -950,3 +950,47 @@ AUD049 periodic đọc core→authority→research→evidence/rawCP161–164, s�
 navigation; K4currentmodepromotion aliasjoin_A chưa hỗ trợ/đo, K6a/fullmatch/Windows/LAN/8actualclients
 chưa đóng. Record/audit/evidence cũ giữ nguyên. CP164 checkpoint blocker+audit/tựkiểm/reviewwaived/chờPR,
 không plannedsmoke đạt. Auditqua164/kế168; source tiếp việc duy nhất ởPLAN.
+
+
+<a id="cp165"></a>
+## CP165 — native15step batch, observer control và committedpreset Start3
+
+Baseline CP164 [PR235](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/235),
+head `bb5457908c66f7795a1f914af5d5f210acbea7ff`, merge `38284668d7e60c10b30b58bc8c36f2aa50b458d8`.
+[Contract/giới hạn](../../PROTOCOL.md#input-batch-gating), [PLAN](../../PLAN.md#current-order).
+
+| Run dưới `local/research/codex/` | Giây/exit/raw/frozen | SHA256 run.json |
+|---|---|---|
+|input-step-probe-r1|168.428151904/0/680/107|`ea0ddd81dc3afa10b921fef4342ebb9c7cbb5ff42f446f7cb665daff723b9972`|
+|input-lite-probe-r2|166.695487614/0/686/106|`e8032722fb621183e6ed8be005e95cf8e2e6037f9388e0f5f52ec1bd6605696d`|
+|mode-preset-smoke-r3|397.659234656/0/1366/107|`6083d6a5a090bd3d4cfafaf2df8fde93157756f5a8ccf272fb1f824f54d4d32f`|
+
+Sourcefirst raw/hash/build tại `input-pacing-r1/reuse-question.json`, `body-match.json`4targetedbodies
+vàIDAroute/tick/move-loop JSON; sourceDB copy mới/read-onlysource/hash, MCPmissingida_nexus record riêng,
+existinglocalIDAbatch fallback không chỉnhconfig. VN gdb dispatch/gates chỉ cáchđo, không portoffset.
+Prep/controller `prepare_input_step_probe.py`/`wine_probe_input_step.py`,
+`prepare_input_lite_probe.py`/`wine_probe_input_lite.py`,
+`prepare_mode_preset_light.py`/`wine_probe_mode_preset_light.py`. Recipe/preflight/source/profile/copy
+frozen trước run, namespace private2hosts/no route/NSSfiles-only, actualmoduleargv vàcleanup extinct/rawseal.
+Không sourcebinary/pack/DB gốc hoặc code/config giữa run bị đổi; measurementBPenabledstates thay đổi
+trongwindows đã khai, không gamefunction/data/count/timingwrite.
+
+R1 `batch-verification.json`35relations/4524gettermodels: actualA batch15steps5px=75 từ159→234,
+WndProckeyup trướcbatch, state23→15 xảy rasau loop nhưng trướcvirtualE2D130. Bposition234 khôngexactUDPapplyproof.
+R2 `lite-verification.json`17relations/24getters: same45ms/nativecountsmostly1/position159→174,
+112BPstates/viewrestoređúng; explicitobservereffectcontrol không nguyênnhânmọiinput/naturalCP157/vanilla law.
+`timing-comparison.json` giữ19pairs/20actions R1CP164 (1missing),6/6R2; initialcompletepairassumption sửa
+khôngbịa coverage. Heavytracecũngperturbtiming, không gọi 15làmọitick/clientcap.
+
+R3 actualexportedcommitted47pinprofile/directproduction/nohold/noUDPintervention,2normaloutcomes/Ready→
+actualnormalStart3/12199/clocks/render8s/nobomb/no3rdoutcome.162gatingchecks/12windows/2viewready+restore/
+sametolerance20attempt/3freshneutral; all4native165/view vàpeer/Bomb/life/reset checks giữ.26preset/42mode/
+24title/3native81/6native91/21modeframer/75pickup/46cycle/651peer4windows/14claim/24loading/26entity/
+23strictlife;648actor/420peer/2758flag+2730array/16life/330packetmodels riêng. `visual-review.json`4frames,
+Start3+8bothviews timer1:50/map/2actor/items; title16heap31. Someeventsduringalignmentgated/unobserved,
+khôngwholeinstructiontrace; sourceproduction/preset unchanged/reuse257server4export exacthash.
+
+`analysis-corrections.json` giữproviderfailure/19pairs/virtualcausalityscope/initialgatingverifierwrongkey
+schema (round/created_ns correctedfromraw, initialsourcegiữ). Không đổi raw/guard/acceptancecho pass.
+CP165 tựkiểm/reviewwaived/chờPR, AUD049qua164/kế168; currentmodejoin_Apromotionpath còn gap/K4open;
+K6a/fullmatch/Windows/LAN/Internet/8actualclients/originalauthority/naturalCP157 giữmở. Next chỉPLAN.

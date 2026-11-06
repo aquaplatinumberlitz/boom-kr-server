@@ -1,0 +1,295 @@
+{
+  "id": "CP165",
+  "previous": "CP164",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-06T11:06:13.785866+00:00",
+  "context_commit": "38284668d7e60c10b30b58bc8c36f2aa50b458d8",
+  "owner": "Codex",
+  "reviewer": "Codex",
+  "question": "Whynativeinputstagingcoarseunderdebugging,andcanmeasuredobservergatingrestoreoriginalalignmentcriteriaenoughtorunactualcommittedMannerpreset2normalcycles/Ready/Start3?",
+  "scope": "Sourcefirsttargeted4nativebodies/cache/runtimebytecomparison,2finiteinputcontrols and1actualpresetintegration grouped. MeasurementonlyBPgating/lowcostnativefeedback; production/preset unchanged. Sameplannedtargets/tolerance/timeouts/20attempt/nativechecks. No gateclosure.",
+  "artifacts": [
+    {
+      "name": "OriginalKR00967unchanged",
+      "sha256": "a52545c14b1fea423de655c3163d6360b628d61c1cd472b46fdbc8a9ffe15f4e"
+    },
+    {
+      "name": "CurrentWinecopyunchanged",
+      "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+    },
+    {
+      "name": "NativeIDAfullcopycf72privateanalysis",
+      "sha256": "cf72da112308d9f1ca256df8089594c5f787875310933073bf6bd5ba6f70e63b"
+    },
+    {
+      "name": "modOmodelreference",
+      "sha256": "a08950c833d3acab8281049def7b3dc96b221f107eeda01da3a548e34b91dce5"
+    }
+  ],
+  "locators": [
+    "BaselineCP164PR235headbb5457908c66f7795a1f914af5d5f210acbea7ff/merge38284668d7e60c10b30b58bc8c36f2aa50b458d8.",
+    "input-step-probe-r1/runea0ddd81dc3afa10b921fef4342ebb9c7cbb5ff42f446f7cb665daff723b9972/168.428151904s/exit0/680raw/107frozeninputs",
+    "input-lite-probe-r2/rune8032722fb621183e6ed8be005e95cf8e2e6037f9388e0f5f52ec1bd6605696d/166.695487614s/exit0/686raw/106frozeninputs",
+    "mode-preset-smoke-r3/run6083d6a5a090bd3d4cfafaf2df8fde93157756f5a8ccf272fb1f824f54d4d32f/397.659234656s/exit0/1366raw/107frozeninputs",
+    "VA/RVAbase400000. FourtargetedIDAfunctionbodiesE7C400/E7CE60/E7D350/E7C750 matchDBfullcf72/static660447/runtimee9bb/modOa089. ExistingE7D2B0/E2D130 andB51CF4 statewriter reused. No successfulIDAMCPanalysis:pluginmissingida_nexus/localIDA9.4batchprivatecopyfallback.",
+    "R1actualWndProckeyup1921727434080043 precedesA movingbatch1921727545782414;15actualiterations5px each159→234;state23untilafterloopthen15BEFOREvirtualE2D130, notcausalitytothatvirtual. R2same45ms/controlmostly1batch/159→174bothviews/112BPstatesrestore.",
+    "AUD049through164/nextperiodCP168 unchanged."
+  ],
+  "findings": [
+    {
+      "summary": "Targetednative4bodies showargstepsloopE7C488/worldvirtual1C beforelaterinput/controlphase. Bodiesexacthashsame4artifacts. PrivateDBsourcepreserved; MCPmissingplugin explicitfailure/localIDA9.4batchfallback succeedswithoutconfigchanges/newscan.",
+      "source": "kr_static",
+      "status": "confirmed",
+      "method": "static",
+      "canonical": "docs/PROTOCOL.md#input-batch-gating",
+      "evidence": [
+        "RUN-00015",
+        "RUN-00007",
+        "RUN-00001",
+        "RUN-00018",
+        "RUN-00019"
+      ],
+      "limits": "ActualmodifiedWine/privatehosts/currentknownsyntheticpolicy. Finiteheavytrace15x5px=75/controlgatingmostly1/end15pxsameOS45ms supportsinstrumentationcontrolintheserecipes, notvanillatiming/wholeinputlaw/naturalCP157cause. Currentcommittedpreset47pins/directproduction2normaloutcomes/reset/Ready→actualStart3/native12199/clocks/render8s;thirdactive/nobomb/notthirdnormalmatch. MeasurementBPenabledstatesonlygatedduringalignment/lowcostreadonlyfeedback; exactrestorebeforecontest/Bombs/all4native165/view retained. Somealignmentchronologyeventsunobserved. Sourcegame/service/profile/preset/criteria unchanged/no actor/count/timewrites/gamecalls/activeUDPprobe. K4currentmodepromotedjoin_Aunsupported/unmeasured;K6a/fullmatch/Windows/LAN/Internet/8clients/fullauth/originalauthority/generalreset/naturalCP157open."
+    },
+    {
+      "summary": "FiniteactualDown45ms:WndProckeyupbeforeA movingbatch,15steps5px=75;state23→15afterloopbutBEFOREvirtualE2D130. Bviewposition234notexactUDPapplyproof.4524copiednativegettermodels separate. Notnaturaluniversalinputlaw.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#input-batch-gating",
+      "evidence": [
+        "RUN-00025",
+        "RUN-00023",
+        "RUN-00720"
+      ],
+      "limits": "ActualmodifiedWine/privatehosts/currentknownsyntheticpolicy. Finiteheavytrace15x5px=75/controlgatingmostly1/end15pxsameOS45ms supportsinstrumentationcontrolintheserecipes, notvanillatiming/wholeinputlaw/naturalCP157cause. Currentcommittedpreset47pins/directproduction2normaloutcomes/reset/Ready→actualStart3/native12199/clocks/render8s;thirdactive/nobomb/notthirdnormalmatch. MeasurementBPenabledstatesonlygatedduringalignment/lowcostreadonlyfeedback; exactrestorebeforecontest/Bombs/all4native165/view retained. Somealignmentchronologyeventsunobserved. Sourcegame/service/profile/preset/criteria unchanged/no actor/count/timewrites/gamecalls/activeUDPprobe. K4currentmodepromotedjoin_Aunsupported/unmeasured;K6a/fullmatch/Windows/LAN/Internet/8clients/fullauth/originalauthority/generalreset/naturalCP157open."
+    },
+    {
+      "summary": "SameOS45ms/profile/nativecopy lowobservercontrol:countsmostly1afterthree<=3boundedready,159→174bothviews,112enabledBPstatesexactrestore.17relations/24getters. Supportsmeasuredinstrumentationcontrol, notoriginalclientbugfix/CP157cause.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#input-batch-gating",
+      "evidence": [
+        "RUN-01473",
+        "RUN-01471",
+        "RUN-01475"
+      ],
+      "limits": "ActualmodifiedWine/privatehosts/currentknownsyntheticpolicy. Finiteheavytrace15x5px=75/controlgatingmostly1/end15pxsameOS45ms supportsinstrumentationcontrolintheserecipes, notvanillatiming/wholeinputlaw/naturalCP157cause. Currentcommittedpreset47pins/directproduction2normaloutcomes/reset/Ready→actualStart3/native12199/clocks/render8s;thirdactive/nobomb/notthirdnormalmatch. MeasurementBPenabledstatesonlygatedduringalignment/lowcostreadonlyfeedback; exactrestorebeforecontest/Bombs/all4native165/view retained. Somealignmentchronologyeventsunobserved. Sourcegame/service/profile/preset/criteria unchanged/no actor/count/timewrites/gamecalls/activeUDPprobe. K4currentmodepromotedjoin_Aunsupported/unmeasured;K6a/fullmatch/Windows/LAN/Internet/8clients/fullauth/originalauthority/generalreset/naturalCP157open."
+    },
+    {
+      "summary": "Currentcommitted47pinpresetactualexportedfile/directmodule runs2normaloutcomes/reset/Ready thennormalA104/third12199/nativeclocks/render8sbothviews;mode1through86/87/rejoin/180/Start3/titleactual16heap31. Thirdactive/noBomb/no3rdoutcome. CP164partialsunchangednotbackfill.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#input-batch-gating",
+      "evidence": [
+        "RUN-02922",
+        "RUN-03050",
+        "RUN-03051",
+        "RUN-01551",
+        "RUN-02956",
+        "RUN-03074"
+      ],
+      "limits": "ActualmodifiedWine/privatehosts/currentknownsyntheticpolicy. Finiteheavytrace15x5px=75/controlgatingmostly1/end15pxsameOS45ms supportsinstrumentationcontrolintheserecipes, notvanillatiming/wholeinputlaw/naturalCP157cause. Currentcommittedpreset47pins/directproduction2normaloutcomes/reset/Ready→actualStart3/native12199/clocks/render8s;thirdactive/nobomb/notthirdnormalmatch. MeasurementBPenabledstatesonlygatedduringalignment/lowcostreadonlyfeedback; exactrestorebeforecontest/Bombs/all4native165/view retained. Somealignmentchronologyeventsunobserved. Sourcegame/service/profile/preset/criteria unchanged/no actor/count/timewrites/gamecalls/activeUDPprobe. K4currentmodepromotedjoin_Aunsupported/unmeasured;K6a/fullmatch/Windows/LAN/Internet/8clients/fullauth/originalauthority/generalreset/naturalCP157open."
+    },
+    {
+      "summary": "Twelvealignmentwindows gateonlymeasurementBPs/duplicatecollisionprintf, keepreadonlynativefeedback andsame20attempt/tolerance30approach12return/neutral3s6sknownreturn/45ms/actualclaims. Exact2viewrestorebeforecontests/Bombs/all4native165/view;162gatingchecks. Sometracedalignmentstateeventsintentionallyunobserved, notwholetrace.",
+      "source": "design",
+      "status": "design",
+      "method": "design",
+      "canonical": "docs/PROTOCOL.md#input-batch-gating",
+      "evidence": [
+        "RUN-01531",
+        "RUN-02924",
+        "RUN-03003",
+        "RUN-03049"
+      ],
+      "limits": "ActualmodifiedWine/privatehosts/currentknownsyntheticpolicy. Finiteheavytrace15x5px=75/controlgatingmostly1/end15pxsameOS45ms supportsinstrumentationcontrolintheserecipes, notvanillatiming/wholeinputlaw/naturalCP157cause. Currentcommittedpreset47pins/directproduction2normaloutcomes/reset/Ready→actualStart3/native12199/clocks/render8s;thirdactive/nobomb/notthirdnormalmatch. MeasurementBPenabledstatesonlygatedduringalignment/lowcostreadonlyfeedback; exactrestorebeforecontest/Bombs/all4native165/view retained. Somealignmentchronologyeventsunobserved. Sourcegame/service/profile/preset/criteria unchanged/no actor/count/timewrites/gamecalls/activeUDPprobe. K4currentmodepromotedjoin_Aunsupported/unmeasured;K6a/fullmatch/Windows/LAN/Internet/8clients/fullauth/originalauthority/generalreset/naturalCP157open."
+    },
+    {
+      "summary": "Initialpairanalysisassumed20completekeypairsbutr1has19/1missing; initialgatingverifierwrongbombkeys correctedround/created_ns withsourcepreserved. No production/raw/criterionchange. Currentmodepromotedjoin_Astillrejects; nextmembershipgapnotcoveredbyoldCP157/129.",
+      "source": "design",
+      "status": "design",
+      "method": "documentation",
+      "canonical": "docs/PROTOCOL.md#input-batch-gating",
+      "evidence": [
+        "RUN-01532",
+        "RUN-00021",
+        "RUN-03053",
+        "RUN-01543"
+      ],
+      "limits": "ActualmodifiedWine/privatehosts/currentknownsyntheticpolicy. Finiteheavytrace15x5px=75/controlgatingmostly1/end15pxsameOS45ms supportsinstrumentationcontrolintheserecipes, notvanillatiming/wholeinputlaw/naturalCP157cause. Currentcommittedpreset47pins/directproduction2normaloutcomes/reset/Ready→actualStart3/native12199/clocks/render8s;thirdactive/nobomb/notthirdnormalmatch. MeasurementBPenabledstatesonlygatedduringalignment/lowcostreadonlyfeedback; exactrestorebeforecontest/Bombs/all4native165/view retained. Somealignmentchronologyeventsunobserved. Sourcegame/service/profile/preset/criteria unchanged/no actor/count/timewrites/gamecalls/activeUDPprobe. K4currentmodepromotedjoin_Aunsupported/unmeasured;K6a/fullmatch/Windows/LAN/Internet/8clients/fullauth/originalauthority/generalreset/naturalCP157open."
+    }
+  ],
+  "verification": [
+    {
+      "check": "4nativebodyexacthashes/35batchrelations4524nativegettermodels/17litecontrolrelations24getters",
+      "result": "pass",
+      "evidence": [
+        "RUN-00001",
+        "RUN-00025",
+        "RUN-00023",
+        "RUN-01473",
+        "RUN-01471"
+      ],
+      "limits": "Read-onlycontrolledmeasurement/observerperturbation; no nativeoriginaltiming/allinputlaw."
+    },
+    {
+      "check": "162alignmentrestore/originalcriteria;26preset/42mode/21modeframer/24title/3actual81/6actual91;75pickup/46cycle/651peer4windows/14claims/24loading/26entity/23strictlife/4frames",
+      "result": "pass",
+      "evidence": [
+        "RUN-01531",
+        "RUN-02922",
+        "RUN-03050",
+        "RUN-02942",
+        "RUN-03051",
+        "RUN-01529",
+        "RUN-01530",
+        "RUN-02956",
+        "RUN-01551",
+        "RUN-02921",
+        "RUN-01538",
+        "RUN-02933",
+        "RUN-03075",
+        "RUN-02939",
+        "RUN-03074"
+      ],
+      "limits": "ActualmodifiedWine/privatehosts/currentknownsyntheticpolicy. Finiteheavytrace15x5px=75/controlgatingmostly1/end15pxsameOS45ms supportsinstrumentationcontrolintheserecipes, notvanillatiming/wholeinputlaw/naturalCP157cause. Currentcommittedpreset47pins/directproduction2normaloutcomes/reset/Ready→actualStart3/native12199/clocks/render8s;thirdactive/nobomb/notthirdnormalmatch. MeasurementBPenabledstatesonlygatedduringalignment/lowcostreadonlyfeedback; exactrestorebeforecontest/Bombs/all4native165/view retained. Somealignmentchronologyeventsunobserved. Sourcegame/service/profile/preset/criteria unchanged/no actor/count/timewrites/gamecalls/activeUDPprobe. K4currentmodepromotedjoin_Aunsupported/unmeasured;K6a/fullmatch/Windows/LAN/Internet/8clients/fullauth/originalauthority/generalreset/naturalCP157open."
+    },
+    {
+      "check": "648actor/420peer/2758flag2730array/16life/330packetmodels;2732raw/320inputs/cleanup;sourcepresetreuse257server4export/docs/catalog/issues/artifacts/diff/fullhistorylocalbeforecommit",
+      "result": "pass",
+      "evidence": [
+        "RUN-01527",
+        "RUN-02955",
+        "RUN-02923",
+        "RUN-02940",
+        "RUN-02943",
+        "RUN-02958",
+        "RUN-03003",
+        "RUN-03049",
+        "RUN-02920",
+        "RUN-02936",
+        "RUN-01537"
+      ],
+      "limits": "Nativecopiedmodels separatefromWineexecution/worldoracle; unchangedcode testsreusednotrerun. Mechanicalchecksnotsemantics/gateclosure."
+    }
+  ],
+  "evidence": [],
+  "evidence_manifests": [
+    {
+      "path": "docs/evidence/checkpoints/evidence/CP165-input-batch-preset.json",
+      "sha256": "96e1c3cb3f4bb3cd8bf4412d2a2cec976601558fe962a2afd08dabbc6035616a",
+      "bytes": 773425,
+      "count": 3097
+    }
+  ],
+  "delta": {
+    "added": [
+      "Measurednative15x5pxbatch75 andlowobservercontrolmostly1/end15same45ms;targetedbodyhashandprovenance.",
+      "Newactualcommittedmodepreset2normaloutcomes/reset/Ready→Start3/clocks/render8;samecriteria/productionprofile."
+    ],
+    "corrected": [
+      "CP164inputruntimeblocker solvedscopeinnewcontrol/integration, oldpartialsremainFAIL. No blindpulse/tolerance/timeouttuning.",
+      "State23to15beforevirtualE2D130notcausalassignmenttoalreadyreleasedvirtual;19/20nativepairsr1explicitmissing.",
+      "CP164PR235merged/currentnavigation;currentmodepromotedjoin_Agapstillopen."
+    ],
+    "superseded": [
+      "NEXT-MODE-PRESET-INPUT-PACING andNEXT-MODE-PRESET-START3 closedboundedproof; NEXT-MODE-HOST-PROMOTION active."
+    ]
+  },
+  "blockers": [
+    "Currentmodepolicyrejectspromotedaliasjoin_A;K4hostBack/promotion/rejoinnotmeasuredwithnewmode/titleprofile.",
+    "K4acceptance/dependencies/K6a/fullmatch/fullauth/originalauthority/Windows/LAN/Internet/8actualclients/generalreset/naturalCP157open."
+  ],
+  "next_steps": [
+    {
+      "id": "NEXT-MODE-PRESET-INPUT-PACING",
+      "task": "KRE-005b",
+      "state": "closed",
+      "action": "CP165nativebatch/control and12alignmentmeasurementgates preserveoriginalcriteria;actualpreset2cycles/Start3 achieved. ScopeWine/debugger, notoriginalinputlaw.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-MODE-PRESET-START3",
+      "task": "KRE-005b",
+      "state": "closed",
+      "action": "CP165actualcommitted47pinpreset2normaloutcomes/reset/Ready→normalStart3/12199/clocks/render8/Manner1/nobomb/no3rdoutcome. CP164partialsnotrewritten.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-MODE-HOST-PROMOTION",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "PLAN reuseCP107/129/157hostBack/107110/87/session plusCP161title/CP162modeoffset5; preflightpermitjoin_Aonlyunderexistingpromotedmembershipguards, testnegative/default/seq/sendfailure. FreshcurrentMannercopyidleAhostBack→Bchief/Alobbytitle→Aactual82/87/ReadyA/BStart/12199clockrender. No newbodyRE/redundant2cycle orautogate.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    }
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-11-06T11:06:13.785866+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "Codex solo RE/runtime/self-check; independentreviewwaived; noautogate.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Owner explicitly requested solo without workers/review."
+    }
+  },
+  "docs_sync": [
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "CP165nativebatch/control/currentpreset2cyclesStart3/criteria-restorescope/PR235merge/nextcurrentmodehostpromotion syncedbeforecomplete."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "CP165nativebatch/control/currentpreset2cyclesStart3/criteria-restorescope/PR235merge/nextcurrentmodehostpromotion syncedbeforecomplete."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "updated",
+      "reason": "CP165nativebatch/control/currentpreset2cyclesStart3/criteria-restorescope/PR235merge/nextcurrentmodehostpromotion syncedbeforecomplete."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "updated",
+      "reason": "CP165nativebatch/control/currentpreset2cyclesStart3/criteria-restorescope/PR235merge/nextcurrentmodehostpromotion syncedbeforecomplete."
+    },
+    {
+      "path": "docs/features.json",
+      "state": "updated",
+      "reason": "CP165nativebatch/control/currentpreset2cyclesStart3/criteria-restorescope/PR235merge/nextcurrentmodehostpromotion syncedbeforecomplete."
+    },
+    {
+      "path": "docs/COVERAGE.md",
+      "state": "updated",
+      "reason": "CP165nativebatch/control/currentpreset2cyclesStart3/criteria-restorescope/PR235merge/nextcurrentmodehostpromotion syncedbeforecomplete."
+    },
+    {
+      "path": "docs/evidence/peer-endpoints/README.md",
+      "state": "updated",
+      "reason": "CP165nativebatch/control/currentpreset2cyclesStart3/criteria-restorescope/PR235merge/nextcurrentmodehostpromotion syncedbeforecomplete."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/review.json",
+      "state": "updated",
+      "reason": "CP165nativebatch/control/currentpreset2cyclesStart3/criteria-restorescope/PR235merge/nextcurrentmodehostpromotion syncedbeforecomplete."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
+      "state": "updated",
+      "reason": "CP165nativebatch/control/currentpreset2cyclesStart3/criteria-restorescope/PR235merge/nextcurrentmodehostpromotion syncedbeforecomplete."
+    },
+    {
+      "path": "server/README.md",
+      "state": "updated",
+      "reason": "CP165nativebatch/control/currentpreset2cyclesStart3/criteria-restorescope/PR235merge/nextcurrentmodehostpromotion syncedbeforecomplete."
+    }
+  ]
+}

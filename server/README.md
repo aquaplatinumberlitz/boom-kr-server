@@ -296,3 +296,10 @@ CP164 đã chạy actual exported committed preset tới firstclock/guest Back/r
 controller alignment dừng hai run trước Fire/bom/outcome, **chưa preset2cycles/Start3**.
 [Blocker/audit/giới hạn](../docs/PROTOCOL.md#mode-preset-input-blocker). CP162r4 hai vòng là nguồn riêng;
 không suy mode-aware promoted aliasjoin_A đã hỗ trợ từ host_back_rejoin flag: policy hiện từchối alias này.
+
+
+CP165 đã native-smoke **chính committedmodepreset/exportedfile** qua2normaloutcomes/reset/Ready rồi
+actualStart3/nativeclocks/render8s. Harness dùng boundedmeasurementBPgating khi alignment và exactrestore,
+không đổi game/service/profile/47pins/targets. [Proof/giới hạn](../docs/PROTOCOL.md#input-batch-gating).
+CP164partial giữ lịch sử; currentmode promotedjoin_A vẫn từchối/chưa runtime, không gọi host_back_rejoin
+flag đủ hỗtrợ đường đó hoặc tự đóng gate.
