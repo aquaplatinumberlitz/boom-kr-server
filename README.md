@@ -41,18 +41,16 @@ Hai copy KR Wine đã chạy login/sảnh/phòng/Battle và các chu kỳ kết 
 [kim/reset](docs/PROTOCOL.md#needle-round-reset), [cứu hai chiều và hai kết quả](docs/PROTOCOL.md#rescue-two-results),
 [deep chain/reset](docs/PROTOCOL.md#recursive-chain-cycles) giữ phạm vi và giới hạn tại nguồn chuẩn.
 
-**Mốc mới CP165:** preset Manner đã commit chạy hai vòng kết quả/reset/Ready, rồi **Start3 thật,
-native clock và render cả hai view**. [Contract/giới hạn](docs/PROTOCOL.md#input-batch-gating),
-[run/hash](docs/evidence/peer-endpoints/README.md#cp165). Vòng3 chỉ active, không trận thứ ba hoàn chỉnh.
+**Mốc mới CP166:** đã tái hiện và sửa mode policy từ chối chủ cũ vào lại. Cùng run copy Wine:
+**A Back → B lên chủ → A vào lại làm khách → Ready A → Start B → native clock/render cả hai sau8s**,
+giữ Manner1 và title. [Contract/giới hạn](docs/PROTOCOL.md#current-mode-host-rejoin),
+[control/fix/hash](docs/evidence/peer-endpoints/README.md#cp166). Chưa đo hai trận sau chuyển chủ
+trên mode/preset mới; kết quả cũ giữ riêng.
 
-Đã đo blocker CP164: một lô15 bước×5px tạo bước nhảy75px; đối chứng giảm tải observer cho lô chủ yếu1
-và cùng pulse45ms chỉ15px. Căn vị trí được sửa ở harness bằng tạm tắt/khôi phục breakpoint đo,
-giữ source game/service/preset/tolerance và tiêu chí gốc. Hai partial CP164 vẫn là lịch sử thất bại.
-
-CP164 đã merge [PR235](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/235) tại `3828466`;
-CP165 tự kiểm/chờ PR. AUD049 qua164, kếCP168. [PLAN](docs/PLAN.md#current-order) tiếp currentmode
-chuyển chủ/vào lại (`join_A` hiện bị policy từchối), rồi rà acceptance K4. K4/K6a/fullmatch/LAN/Internet/
-8client thật còn mở; [review waived](docs/evidence/checkpoints/review-waiver.json).
+CP165 đã merge [PR236](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/236) tại `060ff22`;
+CP166 tự kiểm/chờ PR. AUD049 qua164, kếCP168. [PLAN](docs/PLAN.md#current-order) giữ bước tiếp
+và rà acceptance K4. Gate K0–K7/K6a/fullmatch/LAN/Internet/8client thật còn mở;
+[review waived](docs/evidence/checkpoints/review-waiver.json).
 
 Đích đầu: hai client thật chơi hai trận liên tiếp; mở bốn client và hardening sau đó.
 

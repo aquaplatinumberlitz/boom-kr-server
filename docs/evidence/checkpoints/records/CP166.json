@@ -1,0 +1,246 @@
+{
+  "id": "CP166",
+  "previous": "CP165",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-06T11:28:03.680915+00:00",
+  "context_commit": "060ff22971640493532d14722c261295146c04af",
+  "owner": "Codex",
+  "reviewer": "Codex",
+  "question": "Can current Manner/title preset preserve guarded idle host promotion and same-channel A rejoin through ReadyA/StartB/nativeclock/render8?",
+  "scope": "Source-first CP107/129/157 membership + CP161title/CP162mode/CP165preset reused; one unchanged native control and one bounded service fix integration, no new native bodies. K4 acceptance/dependency evidence mapping, not gate closure.",
+  "artifacts": [
+    {
+      "name": "OriginalKR00967unchanged",
+      "sha256": "a52545c14b1fea423de655c3163d6360b628d61c1cd472b46fdbc8a9ffe15f4e"
+    },
+    {
+      "name": "CurrentWinecopyunchanged",
+      "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+    },
+    {
+      "name": "NativeIDAfullcopycf72privateanalysis",
+      "sha256": "cf72da112308d9f1ca256df8089594c5f787875310933073bf6bd5ba6f70e63b"
+    },
+    {
+      "name": "modOmodelreference",
+      "sha256": "a08950c833d3acab8281049def7b3dc96b221f107eeda01da3a548e34b91dce5"
+    }
+  ],
+  "locators": [
+    "BaselineCP165PR236head0d1081aa21b79365b1c8a75ec417c8a30163e737/merge060ff22971640493532d14722c261295146c04af. Controlpreparedathead0d1081a/fixedatmerge060ff22+uncommitted7linepolicychange/sourceSHAfrozen.",
+    "Controlrunfaca380b05cc4d3cf65b0109cefa5f024a68ee8c2a3546e4c7186c2ee9f324cf/116.869338442s/exit0/418raw/106inputs.",
+    "Fixedrun1be58003c95ccac4302b93741dfb2af4a1b9550f16dc97ef7658f428d26d8a44/164.328823171s/exit0/668raw/108inputs.",
+    "Knownjoin_A87SHA79b35b72494211e3b4b7af04904a75cd8b67d99c1cb39f33d93b3cf056816586/body7/slot0/session1/selectoroffset5. Base400000/RVA=VA-base; existingnative107/110/87/121/99/selector123FA10/+9C reused, no newbody.",
+    "AUD049through164/periodCP168unchanged; K4evidencereviewPLANanchoronly, notnewgate ornewplan."
+  ],
+  "findings": [
+    {
+      "summary": "UnmodifiedcurrentmodecontrolactualA86 accepted/Bnative107ID1→0/chief1/Alobby91titlefull60;actualA82seq169rejectedonlybyroom_team_modealiasrestriction. NoAACK87/nativeclockbeforecompletion. Emulatorpolicydefectreproduced, notnativefailure.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#current-mode-host-rejoin",
+      "evidence": [
+        "RUN-00436",
+        "RUN-00439",
+        "RUN-00440"
+      ],
+      "limits": "ModifiedWine/privatevirtualhosts/current47pinpreset/syntheticidentity/emulatorpolicy. IdleAhostBack/Bpromotion/Arejoin/ReadyA/StartB/clockrender8only; noBattleeffects/results/reset afterpromotion/currentmode. Nativecopiedframer/getters areemulationseparatefromWineconsumers. No sourcebinary/DB/pack/actor/timewrites/gamecall/activeUDPprobe orsourceconfigchangeinrun. K4dependencies/K6a/fullmatch/fullauth/originalauthority/Windows/LAN/Internet/8clients/generalreset/naturalCP157open."
+    },
+    {
+      "summary": "Boundedfixpreflightpromoted87success/full7andpermitjoin_Aonlyafterexistingrefresh/sameBconnection/live/map/opcode82guards;echoonlyselectoroffset5/currentseq, slot0/session1/opaquebytesintact. Wronghost/stalesurvivor/no-selector/sendfailure/preflight/defaulttestscovered.",
+      "source": "design",
+      "status": "design",
+      "method": "design",
+      "canonical": "docs/PROTOCOL.md#current-mode-host-rejoin",
+      "evidence": [
+        "RUN-01263",
+        "RUN-01264",
+        "RUN-01245",
+        "RUN-01181"
+      ],
+      "limits": "ModifiedWine/privatevirtualhosts/current47pinpreset/syntheticidentity/emulatorpolicy. IdleAhostBack/Bpromotion/Arejoin/ReadyA/StartB/clockrender8only; noBattleeffects/results/reset afterpromotion/currentmode. Nativecopiedframer/getters areemulationseparatefromWineconsumers. No sourcebinary/DB/pack/actor/timewrites/gamecall/activeUDPprobe orsourceconfigchangeinrun. K4dependencies/K6a/fullmatch/fullauth/originalauthority/Windows/LAN/Internet/8clients/generalreset/naturalCP157open."
+    },
+    {
+      "summary": "FreshcurrentManner/titleactual81→idleA86/Bpromotion/Alobby91full56→actualA82/87full7/ownmatch1/chief0/117→ReadyA95/StartB104/121full129/actual99/153/oneclockboth/render8. Observedgetter1throughcompletion; startupreports39retained; nobomb/pickup/trap/death/result.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#current-mode-host-rejoin",
+      "evidence": [
+        "RUN-01193",
+        "RUN-01196",
+        "RUN-01248"
+      ],
+      "limits": "ModifiedWine/privatevirtualhosts/current47pinpreset/syntheticidentity/emulatorpolicy. IdleAhostBack/Bpromotion/Arejoin/ReadyA/StartB/clockrender8only; noBattleeffects/results/reset afterpromotion/currentmode. Nativecopiedframer/getters areemulationseparatefromWineconsumers. No sourcebinary/DB/pack/actor/timewrites/gamecall/activeUDPprobe orsourceconfigchangeinrun. K4dependencies/K6a/fullmatch/fullauth/originalauthority/Windows/LAN/Internet/8clients/generalreset/naturalCP157open."
+    },
+    {
+      "summary": "ExistingKRnativeframer/typedreader/CRCpartial9control+21fixedcasespassonactualframes; no newbodyorVNoffsetport. VNlobby/oc_a-roomgivemembershipworkflowonly; build-specific87proofreusedCP107/035.",
+      "source": "kr_static",
+      "status": "confirmed",
+      "method": "emulation",
+      "canonical": "docs/PROTOCOL.md#current-mode-host-rejoin",
+      "evidence": [
+        "RUN-00437",
+        "RUN-01194",
+        "RUN-01197"
+      ],
+      "limits": "ModifiedWine/privatevirtualhosts/current47pinpreset/syntheticidentity/emulatorpolicy. IdleAhostBack/Bpromotion/Arejoin/ReadyA/StartB/clockrender8only; noBattleeffects/results/reset afterpromotion/currentmode. Nativecopiedframer/getters areemulationseparatefromWineconsumers. No sourcebinary/DB/pack/actor/timewrites/gamecall/activeUDPprobe orsourceconfigchangeinrun. K4dependencies/K6a/fullmatch/fullauth/originalauthority/Windows/LAN/Internet/8clients/generalreset/naturalCP157open."
+    },
+    {
+      "summary": "K4acceptanceevidencemappedtoroom/title/mode/currentpromotion/CP065spawn/CP135136loading/CP153observer/authority. DependenciesK0K1K2K3stillopen; currentmodepromotedtwoNormalcyclesmissing. CP109oldprofile+CP165Ahostcannotbackfill; nextboundedcombinationinPLAN.",
+      "source": "design",
+      "status": "design",
+      "method": "documentation",
+      "canonical": "docs/PROTOCOL.md#current-mode-host-rejoin",
+      "evidence": [
+        "RUN-00502",
+        "RUN-00497"
+      ],
+      "limits": "ModifiedWine/privatevirtualhosts/current47pinpreset/syntheticidentity/emulatorpolicy. IdleAhostBack/Bpromotion/Arejoin/ReadyA/StartB/clockrender8only; noBattleeffects/results/reset afterpromotion/currentmode. Nativecopiedframer/getters areemulationseparatefromWineconsumers. No sourcebinary/DB/pack/actor/timewrites/gamecall/activeUDPprobe orsourceconfigchangeinrun. K4dependencies/K6a/fullmatch/fullauth/originalauthority/Windows/LAN/Internet/8clients/generalreset/naturalCP157open."
+    }
+  ],
+  "verification": [
+    {
+      "check": "Unchangedcurrentmodecontrol514relations/rawhash/actual86→B107110/A91→A82mode_reject/noACKclock",
+      "result": "pass",
+      "evidence": [
+        "RUN-00436",
+        "RUN-00439"
+      ],
+      "limits": "ModifiedWine/privatevirtualhosts/current47pinpreset/syntheticidentity/emulatorpolicy. IdleAhostBack/Bpromotion/Arejoin/ReadyA/StartB/clockrender8only; noBattleeffects/results/reset afterpromotion/currentmode. Nativecopiedframer/getters areemulationseparatefromWineconsumers. No sourcebinary/DB/pack/actor/timewrites/gamecall/activeUDPprobe orsourceconfigchangeinrun. K4dependencies/K6a/fullmatch/fullauth/originalauthority/Windows/LAN/Internet/8clients/generalreset/naturalCP157open."
+    },
+    {
+      "check": "Fixed815relations/guardedpromotion/title/mode/currentseq/ReadyAStartB/12199/clockrender8;21native+9controlmodels;2manualfinalframes",
+      "result": "pass",
+      "evidence": [
+        "RUN-01193",
+        "RUN-01194",
+        "RUN-00437",
+        "RUN-01248"
+      ],
+      "limits": "ModifiedWine/privatevirtualhosts/current47pinpreset/syntheticidentity/emulatorpolicy. IdleAhostBack/Bpromotion/Arejoin/ReadyA/StartB/clockrender8only; noBattleeffects/results/reset afterpromotion/currentmode. Nativecopiedframer/getters areemulationseparatefromWineconsumers. No sourcebinary/DB/pack/actor/timewrites/gamecall/activeUDPprobe orsourceconfigchangeinrun. K4dependencies/K6a/fullmatch/fullauth/originalauthority/Windows/LAN/Internet/8clients/generalreset/naturalCP157open."
+    },
+    {
+      "check": "265server/4exporttests/docs/catalog/issues/artifacts/diff;1086rawfrozencleanup/sourcebeforeafter; historylocalrequiredbyAGENTSbeforecommit",
+      "result": "pass",
+      "evidence": [
+        "RUN-01245",
+        "RUN-01181",
+        "RUN-01180",
+        "RUN-01189",
+        "RUN-00498",
+        "RUN-00441",
+        "RUN-01198"
+      ],
+      "limits": "Mechanicalchecksnotsemanticacceptance/gates; completehistorycheckrunafterappendbeforecommit. Independentreviewwaived."
+    }
+  ],
+  "evidence": [],
+  "evidence_manifests": [
+    {
+      "path": "docs/evidence/checkpoints/evidence/CP166-mode-host-rejoin.json",
+      "sha256": "00a5de1a02296ea5544e6addf0ed1ef24ab02211a15a391b7ab702c56e0ed7a5",
+      "bytes": 323280,
+      "count": 1264
+    }
+  ],
+  "delta": {
+    "added": [
+      "CurrentmodehostBack/promotion/rejoincontrolandfixednativeclockrender8proof.",
+      "K4boundedacceptance/dependencymappingwithcanonicallinks."
+    ],
+    "corrected": [
+      "Currentmodejoin_Arejectreproducedandfixedonlyinboundedpolicy; CP164/165historicalrecordsremainunchanged.",
+      "Initialverifierwrongabsenceofalleventreports correctedwithactualstartup39; raw/sourceunchanged. Initialinheritedtestfixtureexpecteddifferentpreflightorder; testcompositioncorrectedwhilealllegacytestsremain."
+    ],
+    "superseded": [
+      "NEXT-MODE-HOST-PROMOTION closedscope; NEXT-MODE-PROMOTED-CYCLES active."
+    ]
+  },
+  "blockers": [
+    "CurrentmodeafterpromotiontwoNormaloutcomes/reset/Readyunmeasured; olderprofileandAhostrunsnotcomposable.",
+    "K4dependencies/K6a/fullmatch/generalreset/auth/originalauthority/Windows/LAN/Internet/8realclients/naturalCP157remainopen."
+  ],
+  "next_steps": [
+    {
+      "id": "NEXT-MODE-HOST-PROMOTION",
+      "task": "KRE-005b",
+      "state": "closed",
+      "action": "CP166actualcontrolandguardedfixthroughidlepromotion/rejoin/ReadyAStartB/nativeclocks/render8; notBattleeffects/reset/gate.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-MODE-PROMOTED-CYCLES",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "PLANreuseCP109110111BhostAguest2cycles/UI/movement + CP165observer/currentpreset + CP166mode/membership; measurecurrentMannerpromotion2normaloutcomes/reset/ReadywithReadyAStartB/selector1through180,onlymissingintegration,nooverrides/toleranceorbodyRE.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    }
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-11-06T11:28:03.680915+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "CodexsoloRE/runtime/code/self-check; independentreviewwaived; noautogate.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Owner explicitly requested solo without workers/review."
+    }
+  },
+  "docs_sync": [
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "CP166control/fix/currentmodepromotion/rejoinclock8/CP165PR236merge/K4acceptancemapping/newcyclequestion syncedbeforecomplete."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "CP166control/fix/currentmodepromotion/rejoinclock8/CP165PR236merge/K4acceptancemapping/newcyclequestion syncedbeforecomplete."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "updated",
+      "reason": "CP166control/fix/currentmodepromotion/rejoinclock8/CP165PR236merge/K4acceptancemapping/newcyclequestion syncedbeforecomplete."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "updated",
+      "reason": "CP166control/fix/currentmodepromotion/rejoinclock8/CP165PR236merge/K4acceptancemapping/newcyclequestion syncedbeforecomplete."
+    },
+    {
+      "path": "docs/features.json",
+      "state": "updated",
+      "reason": "CP166control/fix/currentmodepromotion/rejoinclock8/CP165PR236merge/K4acceptancemapping/newcyclequestion syncedbeforecomplete."
+    },
+    {
+      "path": "docs/COVERAGE.md",
+      "state": "updated",
+      "reason": "CP166control/fix/currentmodepromotion/rejoinclock8/CP165PR236merge/K4acceptancemapping/newcyclequestion syncedbeforecomplete."
+    },
+    {
+      "path": "docs/evidence/peer-endpoints/README.md",
+      "state": "updated",
+      "reason": "CP166control/fix/currentmodepromotion/rejoinclock8/CP165PR236merge/K4acceptancemapping/newcyclequestion syncedbeforecomplete."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/review.json",
+      "state": "updated",
+      "reason": "CP166control/fix/currentmodepromotion/rejoinclock8/CP165PR236merge/K4acceptancemapping/newcyclequestion syncedbeforecomplete."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
+      "state": "updated",
+      "reason": "CP166control/fix/currentmodepromotion/rejoinclock8/CP165PR236merge/K4acceptancemapping/newcyclequestion syncedbeforecomplete."
+    },
+    {
+      "path": "server/README.md",
+      "state": "updated",
+      "reason": "CP166control/fix/currentmodepromotion/rejoinclock8/CP165PR236merge/K4acceptancemapping/newcyclequestion syncedbeforecomplete."
+    }
+  ]
+}

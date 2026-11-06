@@ -135,9 +135,9 @@
         "KR-F001",
         "KR-F015"
       ],
-      "known": "CP164/PR235merged3828466. CP165finite15nativeSteps5px=75 pluslowobservercontrolmostly1/15pxsame45ms;currentcommitted47pinpreset2normaloutcomes/reset/Ready→actualStart3/12199/clocks/render8s/Manner1.12alignmentwindows exactBPrestore/originalcriteria;productionunchanged/reuse257server4export.",
-      "remaining": "Currentmodehostpromotion/rejoin join_A stillpolicyrejected; K4acceptance/dependenciespending. K6a/fullmatch/fullauth/originalauthority/Windows/LAN/Internet/8actualclients/naturalCP157 open. Inputcontrolnotvanillalaw/wholeexecutiontrace.",
-      "next_test": "PLAN reuseCP107/129/157knownhostBack/107clear/110chief1/87/session, CP161title/CP162modeoffset5: preflightandpermitjoin_Aonlyunderexistingpromotedmembershipguards; negative/default/seq/sendfailure thenfreshnativecurrentManneridlehostBack→Bchief/Alobbytitle→A82/87/ReadyA/BStart/nativeclockrender. No redundant2cycleRE.",
+      "known": "CP165 merged PR236/060ff22. CP166 currentmode control/fix idleA86→Bpromotion→A82/87/ReadyA/StartB/nativeclock/render8;265server4exporttests/rawseal; narrow acceptance only.",
+      "remaining": "Currentmode Bhost two normalcycles/reset/Ready unmeasured; K4dependencies/K6a/fullmatch/auth/originalauthority/Windows/LAN/8clients remain open.",
+      "next_test": "PLAN sourcefirst CP109/110/111 promotedcycles/UI/movement + CP165 currentpreset/observercontrol; measure only currentmodeBhost2cycles/reset/Ready after knownCP166 idlepromotion.",
       "acceptance": "Epic checklist: linkedscopedtask/evidence+authoritymatrix vàacceptancegate ởPLAN; từngtaskđóng khôngđóngepic/K5/K6a.",
       "reason": "CP164runtimeinputblocker solvedinnewrecipeswithoutprofile/game/guard/tolerancechange; currentpresetStart3objective closedscope. Continueconcretecurrentmodehostpromotiongap; noautogate.",
       "sources": [
@@ -230,7 +230,8 @@
         "docs/evidence/peer-endpoints/README.md#cp162",
         "docs/evidence/eight-player/README.md#cp163",
         "docs/evidence/peer-endpoints/README.md#cp164",
-        "docs/evidence/peer-endpoints/README.md#cp165"
+        "docs/evidence/peer-endpoints/README.md#cp165",
+        "docs/evidence/peer-endpoints/README.md#cp166"
       ],
       "prs": [
         173,
@@ -289,7 +290,8 @@
         232,
         233,
         234,
-        235
+        235,
+        236
       ],
       "successors": []
     },
@@ -616,6 +618,6 @@
       "successors": []
     }
   ],
-  "as_of_utc": "2026-11-05T23:55:09.973844+00:00",
+  "as_of_utc": "2026-11-06T11:26:22.067949+00:00",
   "limits": "Dated manual dispositions through CP146; snapshotcaptureUTC only/no semantic or gate certification; immutable completehistory."
 }

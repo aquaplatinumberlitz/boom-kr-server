@@ -249,6 +249,11 @@ class ProbeService:
             # Dynamic sequences and captured bodies must be available before any membership mutation.
             for alias in HOST_BACK_ALIASES + ('ready', 'roomlist_A', 'table', 'map'):
                 profile.body(alias)
+            if self.room_team_mode:
+                raw = profile.raw('join_A')
+                if struct.unpack_from('<I', raw, 5)[0] != 87:
+                    raise ValueError('unsupported promoted room team fixture opcode')
+                replace_reply_selector(profile.body('join_A'), 87, 0)
             self.host_back_rejoin = True
         if self.battle_exit_mode == 'host_A_202_86' and not self.host_back_rejoin:
             raise ValueError('host Battle exit requires host_back_rejoin fixtures/policy')
@@ -624,12 +629,12 @@ class ProbeService:
             reply_bodies = {}
             if getattr(self, 'room_team_mode', False):
                 try:
-                    if alias not in ('create', 'join'):
+                    if alias not in ('create', 'join') and not (promoted and alias == 'join_A'):
                         raise ValueError('room team mode supports current A/B membership only')
                     if alias == 'create' and opcode == 81:
                         pending_selector = create_selector(body)
                         selector = pending_selector
-                    elif alias == 'join' and self.room_team_selector is not None:
+                    elif alias in ('join', 'join_A') and self.room_team_selector is not None:
                         selector = self.room_team_selector
                     else:
                         raise ValueError('room team mode requires current create81')

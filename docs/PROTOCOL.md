@@ -1,6 +1,6 @@
 # KR 00967 — contract tương thích client gốc
 
-Revision kr-legacy-contract-r1; cập nhật06/11/2026 JST (CP165; AUD049 quaCP164, kếCP168).
+Revision kr-legacy-contract-r1; cập nhật06/11/2026 JST (CP166; AUD049 quaCP164, kếCP168).
 **Contract có bằng chứng từng phần; chưa nghiệm thu full codec K2**.
 Lộ trình và thứ tự task chỉ giữ ở [REWRITE_PLAN — KRE](PLAN.md).
 Đây là contract của repo server KR. ADR0009 của bản viết lại là nguồn lịch sử để so sánh;
@@ -2021,7 +2021,7 @@ locator/trace và trạng thái từng ô; những vai trò không nêu dưới 
 | Item placement/pickup | [CP159/160](#production-baseline) productionimmediate165/1or2actualclaims/oneeffect/nativewinnerpower/reset; [CP155](#direct-oldudp-contest-eof) hold2sactualcontenders là control riêng | Full124distance/auth/generation/inventory/max/speedTTL/activevariants chưa đủ; delay2s không còn trongproductionbaseline |
 | Trap/death | [CP159/160](#exported-preset-runtime) strict56→1/other0beforerank2views/2epochs; [CP157natural](#current-host-ui-exit)/[CP158controlledoverwrite](#current-trap-udp-counter) giữ causal limits | Snapshot khôngglobalsametick; samekeycounterheuristic cho controlledremoteoverwrite; naturalCP157cause unknown, nofullvalidator |
 | Result/reset | [CP165](#input-batch-gating) currentcommittedMannerpreset2normaloutcomes/reset/Ready rồiactualStart3/12199/clocks/render8s; [CP164](#mode-preset-input-blocker) two partials giữlịchsử | Thirdactive khôngthirdcompletedmatch; allinventory/timer/seq/peer/resetvariants/originalarbitration vẫn thiếu, không cộngrun thànhfullmatch |
-| Room lifecycle | [CP161 title](#current-room-title), [CP162 mode/return](#current-team-mode) có2normalcycles/Ready; [CP165 currentpreset](#input-batch-gating) guestBack/rejoin/2outcomes/Ready/Start3 đã đo; CP164partial giữ lịch sử. CP155–157 EOF/UI controls giữ profile riêng | Currentmode hostpromotion/rejoin chưa đo, opt-in policy hiện từ chối join_A. Accountresume/halfclose/loss/generalreplace chưa đủ; không lấy oldprofileexit làm currentmode proof |
+| Room lifecycle | [CP161 title](#current-room-title), [CP162 mode/return](#current-team-mode) có2normalcycles/Ready; [CP165 currentpreset](#input-batch-gating) guestBack/rejoin/2outcomes/Ready/Start3 đã đo; CP164partial giữ lịch sử. CP155–157 EOF/UI controls giữ profile riêng | [CP166](#current-mode-host-rejoin) currentmodeidle promotion/rejoin tới clock/render8s đã đo; hai cycle sau promotion trên mode mới còn thiếu. Accountresume/halfclose/loss/generalreplace chưa đủ; không lấy oldprofileexit làm currentmode proof |
 | Peer lifecycle | [CP159/160](#exported-preset-runtime)actual99/153/currentdirectIPs/ports; [CP155oldUDP](#direct-oldudp-contest-eof)/[CP158samekeycounter](#current-trap-udp-counter) controls riêng | Key/counterbytekhôngauth/universalfreshness; low8wrap/reliability/fullgrammar/relay/NAT/LAN/Internet unknown |
 
 Trong **optional profile hiện hành**, bảng dưới ghi vai trò emulator, không gán cho server gốc.
@@ -5817,6 +5817,41 @@ Mode1 qua86/87/rejoin/2×180 vàStart3; title16byte heap31/native81/91/87 vàả
 648actor/420peer/2758flag+2730array/16life/330nativepacketmodels táchruntime/model. Raw/cleanupseal
 đạt; reuse257server/4exporttests bằng exactsourcehash vì productionkhôngđổi. CP164partials không backfill.
 
-GateK4currentmodehostpromotion/rejoin còn thiếu: join_A87 hiện bị policy từchối; CP107/129/157 oldprofile
-vẫn là nguồn riêng, không currentproof. K6a/fullmatch/Windows/LAN/Internet/8actualclients/generalreset/
+TạiCP165 currentmodehostpromotion/rejoin còn thiếu và join_A87 bịpolicy từchối; [CP166](#current-mode-host-rejoin) giải idlepath sauđó. CP107/129/157oldprofile vẫn giữscope riêng. K6a/fullmatch/Windows/LAN/Internet/8actualclients/generalreset/
 fullauth/originalauthority/naturalCP157 mở. AUD049qua164/kế168; bước tiếp duy nhất PLAN.
+
+
+<a id="current-mode-host-rejoin"></a>
+### Current Manner/title: host Back, chuyển chủ và vào lại — CP166
+
+**`kr_runtime/confirmed` hẹp trên hai copy Wine/private virtual hosts; service policy `design`.**
+[Control/fix/raw/hash](evidence/peer-endpoints/README.md#cp166), [câu hỏi](RESEARCH.md#gap-room-membership).
+Reuse CP107 idleA86/107clear/chief1/A82/87slot0session1/ReadyA/StartB, CP129/157 lifecycle, CP161 title,
+CP162 selector86/87/180 và CP165 currentpreset. VN lobby/oc_a-room chỉ workflow/host-vs-slot;
+KRlegacy không thêm contract mode. Không nativebody/offset/codec RE mới hoặc port opcode VN.
+
+Control currentpreset: actualAhostBack86empty được chấp nhận, Bnative107ID1→0/chief1, Ađọc lobby91
+đủ60byte/title; actualA82/seq169 bị `room_team_mode` từchối vì aliasjoin_A ngoài create/join.
+KhôngACK87 choA/khôngclock trướccompletion. Đây là lỗi policy emulator đã tái hiện, không lỗi native.
+
+Fix giữ existing promotedmembership/sameBconnection/live/map/refresh/opcode82 guards; chỉ cho join_A
+echo currentselector giống join87. Combinedhost+mode profile preflight opcode87/success/full7byte trước
+owner mutation. Bodyjoin_A nativefixture SHA79b35b72…/slot0/session1: chỉ offset5 đổi selector0→1;
+identity/opaque bytes/sequence không đổi. C/generalrecreate/password/Random vẫn ngoài scope; không
+lấy row91 title làm proof mode metadata. Không sửa gamebinary/pack/DB/actor/time hoặc gọi gamefunction.
+
+Fixedrun164.328823171s/exit0: actualManner81→A86/B87 selector1; actualA86→B107/110chief1→A91title
+đủ56byte→actualA82/currentseq87/full7/error0→585/ownmatch1/chief0→117→A95/B104→121full129/
+actual99/153/clock1mỗi view vàrender+8s. Hai title tựsinh khácđộdài giữa run không so byte ngangrun;
+trong từngrun refresh91 echo đúng actualcreate81 và giữ opaque rowtail. Nativeobserved modegetter1
+cảhai tới completion; không suy mọi field hoặc wholeexecution. Nocurrentbomb/pickup/trap/death/result;
+hai actualstartup subtype39 vẫn giữ, không xóa report để gọi noevent. ACK/body/getter emulation riêng.
+
+514control/815fixed quan hệ gồm rawhash,9/21 copiednativeframer/reader valid/CRC/partial cases;
+265server/4exporttests gồm negatives wronghost/staleconnection/refresh/create/no-selector/sendfailure/
+preflightshape/error/opcode/continuingseq/opaque preservation. 418+668rawsealed/cleanupnamespaceextinct;
+initialverifier giả định eventreportsrỗng bịsửa côngkhai, không sửa raw/productioncho pass.
+
+CP166 không đo hai trận/reset sau promotion trên currentmode; CP109oldprofile/CP165Ahost không ghép
+thành proof. [K4 acceptance/dependencies](PLAN.md#k4-evidence-review), K6a/fullmatch/Windows/LAN/
+Internet/8client/fullauth/originalauthority/generalreset vẫn mở. Bước tiếp chỉ ở PLAN.
