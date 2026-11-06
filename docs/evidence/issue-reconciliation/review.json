@@ -135,11 +135,11 @@
         "KR-F001",
         "KR-F015"
       ],
-      "known": "CP173 PR245 merged; CP174 currentbasic2normalcycles/B-A bombs/4peerwindows/reset/Start3→actualBpendingID7/ownedBEOF/A107slotBclear/110chief1/room/originaldue_roundclosed_no158 verified. R1observerpartialkept; fixedread3controls/R2exactrestoreACK.",
-      "remaining": "CurrentA-survivor/Bdeparted cannotadmitnewclient underhardcodedreplacement_allowed; existingC0wouldconflictA0ifonlyguardopened. Host-modelnotactualCconnect. Fullauth/142freshness/generalreset/formaldependencies/K5K6a/fullmatch/Windows/LANInternet/8clients open.",
-      "next_test": "PLANsource-firstknownC/membership/slotlayouts; aftercurrentBEOF freshcopiedCactualconnectcontrol admissionrejection linkedPID/flow, thenboundedvacantslot1/CID3path ifknowncontract/pinsenough, preservingoldB/Cslot0. No accountresume/guardbypass/wireVNport.",
+      "known": "CP174 PR246 merged. CP175 actualCnegative/optinID3slot1/JoinReadyAStart4; focusedprestart actualAsetup110beforeC95/Acolorcorrect/AStart1/bothmapclock.279tests; R2preReadyfailure/R3beforeauthpartial kept.",
+      "remaining": "AC118/bomb/entity/peer/result/reset untested; nativeCinitial2/profile2matched, max7chosenpolicy. CpreReady renderunknown. Fullauth/formaldependencies/gates/LANInternet8client open.",
+      "next_test": "PLANfocusedprestartentry/C2/7→actualC118/peer/bomb/result/reset, no knownABgame replay oraccountresume.",
       "acceptance": "Epic checklist: linkedscopedtask/evidence+authoritymatrix vàacceptancegate ởPLAN; từngtaskđóng khôngđóngepic/K5/K6a.",
-      "reason": "CurrentbasicBhostEOF/pendingfence/Anativecleanup resolvedonlyR2; R1failedobserverbeforefaultnotbackfill. Realnextserviceadmissiongap identifiedbyread-onlymethodcontrol, notnativeCclaim. AUD051through172/next176.",
+      "reason": "Actual Cnative admission/Start milestone, Asetup110 fixed/verified in focusedbeforefirstentry; not globalone-delta runtime orACgameplaygate. AuditCP176unchanged.",
       "sources": [
         "docs/PROTOCOL.md#authority",
         "docs/RESEARCH.md#feature-gaps",
@@ -186,7 +186,9 @@
         "docs/PROTOCOL.md#current-room-title",
         "docs/PROTOCOL.md#current-team-mode",
         "docs/PROTOCOL.md#mode-preset-input-blocker",
-        "docs/PROTOCOL.md#input-batch-gating"
+        "docs/PROTOCOL.md#input-batch-gating",
+        "docs/PROTOCOL.md#a-survivor-admission",
+        "docs/evidence/peer-endpoints/README.md#cp175"
       ],
       "evidence": [
         "docs/evidence/current-movement-cycles/README.md",
@@ -635,6 +637,6 @@
       "successors": []
     }
   ],
-  "as_of_utc": "2026-11-06T16:07:15.589551+00:00",
+  "as_of_utc": "2026-11-06T17:24:55.492803+00:00",
   "limits": "Dated manual dispositions through CP146; snapshotcaptureUTC only/no semantic or gate certification; immutable completehistory."
 }
