@@ -66,3 +66,31 @@ source hashes,docs/diff check và reviewer khác tác giả đúng commit. CI ch
 Metadata connections giữ ordinal,listen_port,peer và timestamp; final-cold-2 có hai connection
 trên cùng listener3908, không phải hai port khác nhau. Report R2 dùng schema kre-wine-copy-r2,
 R1 vẫn schema cũ và output SHA cũ.
+
+<a id="cp179"></a>
+## CP179 — đối chiếu lại cold3 bằng API/PID, không chạy lại
+
+Baseline CP178/PR250 merge`2f2b87f`; Codex solo/tự kiểm, independent review waived.
+Snapshot27/10 bên trên giữ lịch sử; [nghiệm thu hiện hành](../../PLAN.md#k1-acceptance) và
+[contract/giới hạn](../../PROTOCOL.md#bootstrap-recipe-scope) là nguồn chuẩn, không sửa raw/record cũ.
+Raw mới `local/research/codex/k1-cold-recipe-r1/`: `source-first-reuse.json`, `verify_reuse.py`,
+`reuse-verification.json` (68 quan hệ), `bootstrap-region-control-comparison.json` (44 control pins),
+`manual-k1-acceptance.json`. Hash đầy đủ ở [record CP179](../checkpoints/records/CP179.json) qua
+[manifest evidence](../checkpoints/evidence/CP179-k1-reuse.json); checker không tự quyết định gate.
+
+| Run lịch sử | WinePID từ init_peb và connect | Endpoint hai lần / giới hạn |
+|---|---|---|
+| defproc-1 | 01a0 | 3888→3898; quan sát15s, về sauWCPtimeout |
+| final-cold-2 | 01ac | 3908→3908; quan sát10s, hai connection cùngport |
+| final-cold-3 | 0174 | 3898→3878; quan sát10s |
+
+Ba commandline khớp sau bỏ riêng copy/outputpaths và observationduration; milestone có trong10s
+đầu cảba. Nativeconnect không chỉ được suy từ TCPaccept; nonblockingreturn không bị gọi success.
+LauncherPID và actualCA PID khác nhau; không dùng launcher để quy socket. Reply socket1 trước
+attempt socket2 theo listener clock/order; không đồng nhất hai nguồn timestamp. Cleanup theo
+harnessfinally/prefix/children và endmetadata, không kiểm lại bằng killWine toànhost.
+
+Read-only PE range/hash đối chiếu R1/R2/e9 và patchreports; không chạy tooldecompile/scans mới,
+không dựng lại toàn bộ chuỗi import hoặc lặp3coldstarts/gameplay. Giữ e9 extra patches/state và
+R1 native return/control riêng, không nâng thành vanilla/bootstrap/fullK2/auth/LAN/8client.
+CP179 gom reuse+manualacceptance+currentdocs/#1closed delivery; periodic audit vẫn kếCP180.

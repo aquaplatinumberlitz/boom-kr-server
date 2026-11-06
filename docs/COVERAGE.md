@@ -20,7 +20,7 @@ Review độc lập: [waived theo chủ dự án](evidence/checkpoints/review-wa
 
 | ID / chức năng | Presence | VN ref | KR static | Emulation | Wine copy | Windows gốc | LAN | Internet | Implementation / delivery | Integration | Gate |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| [KR-B001 · ProcessPatch và copy offline](#kr-b001) | present | both | partial | checked | observed | observed | unknown | unknown | partial / via_pr | partial | K1: open |
+| [KR-B001 · ProcessPatch và copy offline](#kr-b001) | present | both | partial | checked | observed | observed | unknown | unknown | partial / via_pr | partial | K1: passed |
 | [KR-B002 · WCP và dữ liệu khởi tạo](#kr-b002) | present | both | partial | checked | observed | unknown | unknown | unknown | partial / via_pr | partial | K2: open |
 | [KR-B003 · Codec theo socket và chiều](#kr-b003) | present | both | partial | checked | observed | unknown | unknown | unknown | partial / via_pr | partial | K2: open |
 | [KR-L001 · Auth và identity cục bộ](#kr-l001) | present | both | partial | checked | observed | unknown | unknown | unknown | partial / via_pr | partial | K3: open |
@@ -58,7 +58,7 @@ Số lượng theo trạng thái khai báo (không phải tỷ lệ hoàn thành
 - emulation: checked=22, unknown=8.
 - implementation: partial=23, unknown=7.
 - integration: partial=22, unknown=8.
-- gate: open=30.
+- gate: open=29, passed=1.
 
 ## Cây cơ chế
 
@@ -222,13 +222,13 @@ Dependency: —.
 
 [Contract và giới hạn](PROTOCOL.md#wcp) · [Câu hỏi gốc](RESEARCH.md#gap-process-patch) · [Thứ tự ở PLAN](PLAN.md#current-order).
 
-Khoảng trống (trích bảng RESEARCH): [CP178](PROTOCOL.md#original-windows-control) originalWindows identity/ownership/isolation đã kiểm, K0 đạt; CA cómarkerProcessPatch/modal, exactPC/return chưa đo. K1 chưa có acceptance ba coldstart đúng recipe được chọn.
+Khoảng trống (trích bảng RESEARCH): [CP179](PROTOCOL.md#bootstrap-recipe-scope): K1 đạt riêng offlineR2 từ3coldstart/API đúngPID/contract-controls; K0CP178 giữ. Không originalWindowsbootstrap hoặc3e9coldstart.
 
-Phép kiểm tối thiểu (trích cùng nguồn): Source-first oldWineR2/coldruns/CP004–006/currente9copy trước đo; tái dùng +E78/WCP/patchprovenance, chỉ khép recipe/PID/localattempt còn thiếu theo PLAN. Không giải lại genericmodal/title hoặc lặp gameplay.
+Phép kiểm tối thiểu (trích cùng nguồn): Cold3R2 đã giải, không đo lại. WiderWCP/launcher/config còn ở #2; currente9input/state bridge và livecodec theo PLAN/#3, chỉ mở bootstrapcause nếu có trigger mới.
 
 Issue/phạm vi công việc: [#14](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/14), [#1](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/1), [#2](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/2), [#9](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/9).
 
-Bằng chứng/build/hash/recipe: [bootstrap-wire](evidence/bootstrap-wire/README.md), [probe-service](evidence/probe-service/README.md), [preclock-eof](evidence/preclock-eof/README.md), [nmco-locale-stability](evidence/nmco-locale-stability/README.md), [docs](PROTOCOL.md#original-windows-control), [peer-endpoints](evidence/peer-endpoints/README.md#cp178), [docs](PLAN.md#k0-k2a-acceptance).
+Bằng chứng/build/hash/recipe: [bootstrap-wire](evidence/bootstrap-wire/README.md), [probe-service](evidence/probe-service/README.md), [preclock-eof](evidence/preclock-eof/README.md), [nmco-locale-stability](evidence/nmco-locale-stability/README.md), [docs](PROTOCOL.md#original-windows-control), [peer-endpoints](evidence/peer-endpoints/README.md#cp178), [docs](PLAN.md#k0-k2a-acceptance), [wine-r2](evidence/wine-r2/README.md#cp179).
 
 | Chiều chứng minh | Khai báo | Nguồn/phạm vi áp dụng |
 |---|---|---|
@@ -236,13 +236,13 @@ Bằng chứng/build/hash/recipe: [bootstrap-wire](evidence/bootstrap-wire/READM
 | vn_reference | both | [nguồn1](REFERENCES.md) |
 | kr_static | partial | [nguồn1](PROTOCOL.md#wcp) |
 | emulation | checked | [nguồn1](evidence/bootstrap-wire/README.md) |
-| wine_diagnostic_copy | observed | [nguồn1](evidence/bootstrap-wire/README.md), [nguồn2](evidence/preclock-eof/README.md), [nguồn3](evidence/nmco-locale-stability/README.md) |
+| wine_diagnostic_copy | observed | [nguồn1](evidence/bootstrap-wire/README.md), [nguồn2](evidence/preclock-eof/README.md), [nguồn3](evidence/nmco-locale-stability/README.md), [nguồn4](evidence/wine-r2/README.md#cp179) |
 | windows_original | observed | [nguồn1](PROTOCOL.md#original-windows-control), [nguồn2](evidence/peer-endpoints/README.md#cp178) |
 | lan | unknown | Chưa có bằng chứng trong phạm vi rà |
 | internet | unknown | Chưa có bằng chứng trong phạm vi rà |
 | implementation | partial / via_pr | [nguồn1](../server/probe_service.py), [nguồn2](PROTOCOL.md#probe-service), [nguồn3](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/57) |
 | integration | partial | [nguồn1](evidence/probe-service/README.md), [nguồn2](evidence/preclock-eof/README.md), [nguồn3](evidence/nmco-locale-stability/README.md) |
-| gate | K1: open | [nguồn1](PLAN.md#gates) |
+| gate | K1: passed | [nguồn1](PLAN.md#k1-acceptance) |
 
 <a id="kr-b002"></a>
 ### KR-B002 · WCP và dữ liệu khởi tạo
@@ -280,13 +280,13 @@ Dependency: [KR-B002](#kr-b002).
 
 [Contract và giới hạn](PROTOCOL.md#wcp) · [Câu hỏi gốc](RESEARCH.md#gap-socket-codec) · [Thứ tự ở PLAN](PLAN.md#current-order).
 
-Khoảng trống (trích bảng RESEARCH): K2a staticprobe đã nghiệm thu CP178 qua KRoracle/CP057/058 và K0; full/liveK2 còn prefixguardoff/modelcap/FFFFFFFFblocked/fullmodes/stringblob/reconnect.
+Khoảng trống (trích bảng RESEARCH): K2a đạt CP178, K1R2 đạt CP179; [CP057](PROTOCOL.md#codec-stream-boundaries) là native/modelstream, chưa actualsocket fragmentation/coalescing/reconnect proof. Fullmodes/prefixguard/cap/FFFFFFFF giữ giới hạn.
 
-Phép kiểm tối thiểu (trích cùng nguồn): Reuse [scope/model](PROTOCOL.md#codec-stream-boundaries); không chạy lại76split hoặc tăng allocator để làm pass. Khi consumer auth/cache gây trigger mới, đo đúng field/mode/prefix/lifecycle trên actual connection; fresh synthetic socket không là reconnect thật.
+Phép kiểm tối thiểu (trích cùng nguồn): Source-first actualTCP/capture/CP006/014/057/058/currente9; chia frame và ghép hai frame đã biết trên actual connection, đo native receive/dispatch/cursor/seq; tiếp actual reset path nếu chưa đủ nguồn. Không lặp76split/model hoặc nới allocator; PLAN giữ thứ tự.
 
 Issue/phạm vi công việc: [#14](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/14), [#3](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/3).
 
-Bằng chứng/build/hash/recipe: [primitives](evidence/primitives/README.md), [probe-service](evidence/probe-service/README.md), [codec-boundaries](evidence/codec-boundaries/README.md), [current-tcp-replay](evidence/current-tcp-replay/README.md), [docs](PLAN.md#k0-k2a-acceptance), [peer-endpoints](evidence/peer-endpoints/README.md#cp178).
+Bằng chứng/build/hash/recipe: [primitives](evidence/primitives/README.md), [probe-service](evidence/probe-service/README.md), [codec-boundaries](evidence/codec-boundaries/README.md), [current-tcp-replay](evidence/current-tcp-replay/README.md), [docs](PLAN.md#k0-k2a-acceptance), [peer-endpoints](evidence/peer-endpoints/README.md#cp178), [docs](PROTOCOL.md#bootstrap-recipe-scope).
 
 | Chiều chứng minh | Khai báo | Nguồn/phạm vi áp dụng |
 |---|---|---|

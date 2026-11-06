@@ -1,0 +1,254 @@
+{
+  "id": "CP179",
+  "previous": "CP178",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-06T21:28:50.736248+00:00",
+  "context_commit": "2f2b87f129cbc135db5970bbf658a205fb98111e",
+  "owner": "Codex",
+  "reviewer": "Codex",
+  "question": "Do retained three same-recipe R2 coldstarts meet unchanged K1 using recovered actual API/PID attribution, and what remains for currente9/liveK2?",
+  "scope": "Source-first retained WineR2/bootstrapnative/CP004–006/014/015/020/currentcopy; read-only raw pins/PEbyte ranges and manualcriterion mapping, no newruntime/game replay/REAscan/sourceDBwrite. CP178delivery/#1closure synced; nextactualsocketK2 selected.",
+  "artifacts": [
+    {
+      "name": "OriginalKR00967unchanged",
+      "sha256": "a52545c14b1fea423de655c3163d6360b628d61c1cd472b46fdbc8a9ffe15f4e"
+    },
+    {
+      "name": "CurrentWinecopyunchanged",
+      "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+    },
+    {
+      "name": "NativeIDAfullcopycf72privateanalysis",
+      "sha256": "cf72da112308d9f1ca256df8089594c5f787875310933073bf6bd5ba6f70e63b"
+    },
+    {
+      "name": "modOmodelreference",
+      "sha256": "a08950c833d3acab8281049def7b3dc96b221f107eeda01da3a548e34b91dce5"
+    },
+    {
+      "name": "OriginalKR00967NewPatcher",
+      "sha256": "b59e4dce9ad23c439a7632ce04ecb2eed3481585bd2454100b05c9d7527f5c02"
+    },
+    {
+      "name": "VN116original_reference_only",
+      "sha256": "bce8644d4e783d1354ab4fc880e1ab9a4ab3325327028f37d99e5439e25f4bbd"
+    },
+    {
+      "name": "VN116patched_runtime_reference_only",
+      "sha256": "bc875ba5765cc112e924f46e75d0ace112904c7801126e46bc0abb1c9cb576b1"
+    },
+    {
+      "name": "PassingK1offlineR2recipe",
+      "sha256": "7b3b435b5d8e110185359107376b736615ceabe9452cea8154d02c8628f44c29"
+    },
+    {
+      "name": "NativeProcessPatchR1control",
+      "sha256": "a0c3b9867dae5fe2ff7c315cfe851117661c2cafead45196ce999329f67432f5"
+    }
+  ],
+  "locators": [
+    "defproc-1/final-cold-2/final-cold-3; WinePID01a0/01ac/0174; init_peb line3, connect line422/531; ports3888→3898/3908→3908/3898→3878.",
+    "OriginalnativeR1 returnPC1234875/EAX1; ProcessPatch1236810; equalversion1236A62; downstreamNGinitomission12358E7. VA/RVA base400000.",
+    "R2/e9 bytes equal VA1234000..1239000 and14ED000..14F0000; R1/R2 firstregiondiff only5bytes12358E7..EC, framerregionidentical; selectedprefix6regions additionallyhashed.",
+    "CP178 PR250 merge2f2b87f129cbc135db5970bbf658a205fb98111e/#1CLOSED; AUD053adhoc176periodic/kế180; CP179snapshotbeforePRdelivery."
+  ],
+  "findings": [
+    {
+      "summary": "Three sequential R2 process/game/prefix copies share binary/harness/Wine/reply/hostmap/listeners; observednativeconnect tied toactualWinePIDfrominit_peb. Firstreply precedessecondlocalattempt, all within commonfirst10seconds; observation15/10/10retained. No synchronoussuccess/login inferredfromnonblockingstatus/accept/window.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#bootstrap-recipe-scope",
+      "evidence": [
+        "K1-00004",
+        "K1-00001"
+      ],
+      "limits": "Only selected offlineR2 recipe; no3currente9coldstarts/pristineWindowsbootstrap/fullK2/K3–K7/K6a/fullmatch/LAN/Internet8clients. OldnativeR1controls stay separate. Equalbytes are not whole-program equivalence; raw/complete records unchanged; manualgate decision under ownerreviewwaiver."
+    },
+    {
+      "summary": "Retained nativeR1ProcessPatchreturn1/silent/badguardcontrols verified44rawpins; R2/e9 bootstrapcallercontract20KiB/framer12KiBregions identical. R1/R2 only NGinit5byteomission in formerregion; no forcedProcessPatchreturn. Additional e9state/import/identity/heap/NMCOchanges mean no3e9coldstarts/wholeprogramequivalence.",
+      "source": "kr_static",
+      "status": "confirmed",
+      "method": "static",
+      "canonical": "docs/PROTOCOL.md#bootstrap-recipe-scope",
+      "evidence": [
+        "K1-00005",
+        "K1-00004"
+      ],
+      "limits": "Only selected offlineR2 recipe; no3currente9coldstarts/pristineWindowsbootstrap/fullK2/K3–K7/K6a/fullmatch/LAN/Internet8clients. OldnativeR1controls stay separate. Equalbytes are not whole-program equivalence; raw/complete records unchanged; manualgate decision under ownerreviewwaiver."
+    },
+    {
+      "summary": "Codex manual unchangedcriterion/evidence review acceptsK1 for selectedpost-bootstrap-r2offline recipe afterK0CP178. Gate table nine rows unchanged; scriptchecks68relationships cannotdecide acceptance. Full/liveK2/dependencies/fullmatch unchangedopen.",
+      "source": "design",
+      "status": "confirmed",
+      "method": "design",
+      "canonical": "docs/PROTOCOL.md#bootstrap-recipe-scope",
+      "evidence": [
+        "K1-00007",
+        "K1-00008"
+      ],
+      "limits": "Only selected offlineR2 recipe; no3currente9coldstarts/pristineWindowsbootstrap/fullK2/K3–K7/K6a/fullmatch/LAN/Internet8clients. OldnativeR1controls stay separate. Equalbytes are not whole-program equivalence; raw/complete records unchanged; manualgate decision under ownerreviewwaiver."
+    },
+    {
+      "summary": "CP178/PR250merged andissue1closed synced; #2retainswiderWCP/configbacklog, #3livecodecactive, #14umbrellaopen. NextK1coldrecipeclosed; NEXT-K2-LIVE-STREAM sourcefirst actualTCPsplit/coalesced/reset selected. Periodicaudit remainsCP180.",
+      "source": "design",
+      "status": "confirmed",
+      "method": "design",
+      "canonical": "docs/PROTOCOL.md#bootstrap-recipe-scope",
+      "evidence": [
+        "K1-00010",
+        "K1-00012",
+        "K1-00014",
+        "K1-00034"
+      ],
+      "limits": "Only selected offlineR2 recipe; no3currente9coldstarts/pristineWindowsbootstrap/fullK2/K3–K7/K6a/fullmatch/LAN/Internet8clients. OldnativeR1controls stay separate. Equalbytes are not whole-program equivalence; raw/complete records unchanged; manualgate decision under ownerreviewwaiver."
+    }
+  ],
+  "verification": [
+    {
+      "check": "RetainedR2rawpins/PID/API/recipe/sequence/isolation/binaryregion relationships",
+      "result": "pass",
+      "evidence": [
+        "K1-00004"
+      ],
+      "limits": "68mechanicalrelations; nosemanticacceptanceornewruntime."
+    },
+    {
+      "check": "R1nativecontrol44rawpins and broadR1R2e9bytecomparison",
+      "result": "pass",
+      "evidence": [
+        "K1-00005"
+      ],
+      "limits": "Only selected offlineR2 recipe; no3currente9coldstarts/pristineWindowsbootstrap/fullK2/K3–K7/K6a/fullmatch/LAN/Internet8clients. OldnativeR1controls stay separate. Equalbytes are not whole-program equivalence; raw/complete records unchanged; manualgate decision under ownerreviewwaiver."
+    },
+    {
+      "check": "ManualK1acceptance/unchangedgatecriteria",
+      "result": "pass",
+      "evidence": [
+        "K1-00007",
+        "K1-00008"
+      ],
+      "limits": "Ownerwaiver/Codexselfcheck, not independentreview."
+    },
+    {
+      "check": "Full/liveK2/currente9cold3/downstreamK6afullmatch",
+      "result": "pending",
+      "evidence": [
+        "K1-00007"
+      ],
+      "limits": "Only selected offlineR2 recipe; no3currente9coldstarts/pristineWindowsbootstrap/fullK2/K3–K7/K6a/fullmatch/LAN/Internet8clients. OldnativeR1controls stay separate. Equalbytes are not whole-program equivalence; raw/complete records unchanged; manualgate decision under ownerreviewwaiver."
+    }
+  ],
+  "evidence": [],
+  "evidence_manifests": [
+    {
+      "path": "docs/evidence/checkpoints/evidence/CP179-k1-reuse.json",
+      "bytes": 28921,
+      "sha256": "bba658dd6498f972e12390e174689dae85d6728019f3663df095ad6829fc1547",
+      "count": 120
+    }
+  ],
+  "delta": {
+    "added": [
+      "Manual scoped K1acceptance usingretainedthreeR2coldstarts/nativeAPI/PID; broadbootstrap/framerbyteidentity withcurrente9; no newclientexecution."
+    ],
+    "corrected": [
+      "CP178lackofacceptancemapping no longer means absent R2APIevidence; connect traces use connect socket format, not connect(. Oldsnapshots/raw notrewritten.",
+      "CP178 PR250 ismerged/#1closed; K1acceptance doesnot implye9cold3/originalWindows/fullK2."
+    ],
+    "superseded": [
+      "NEXT-K1-COLD-RECIPE closed; do not rerun same cold3 or known gamecycles. NEXT-K2-LIVE-STREAM active."
+    ]
+  },
+  "blockers": [
+    "Full/liveK2 actualsocketfragment/coalesced/reset/reconnect/prefix/modes/caps remainopen; CP057isnative/modelnotlive.",
+    "Currente9addsinput/state/patchchanges beyondR2; equalregions not fullrecipebridge. WiderWCP/launcherconfig/nativeWindowsmodalcause unknown outside measuredpath.",
+    "K3auth/cache/downstreamdependency/K6afullmatch/LAN/Internet8clientnotaccepted."
+  ],
+  "next_steps": [
+    {
+      "id": "NEXT-K1-COLD-RECIPE",
+      "task": "KRE-002",
+      "state": "closed",
+      "action": "ManualK1acceptance forscopedofflineR2recipe; widerWCP/configscopeofissue2remainsbacklog, no repeatoldcold3.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-K2-LIVE-STREAM",
+      "task": "KRE-003",
+      "state": "active",
+      "action": "PLAN sourcefirstCP006/014/057/058/actualTCP/currente9inputs; minimal actualconnection split/coalescedknownframes withnativeconsumer/cursor/seq, thenmissingactualreset; no model76splitrepeat.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    }
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-11-06T21:28:50.736248+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "Codexsolo sourcefirstretainedraw/bytechecks/manualK1acceptance; independentreviewwaived, no approval forged; commit/exactheadPRbeforemerge.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Owner explicitly requested solo, no workers/review."
+    }
+  },
+  "docs_sync": [
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "CP179scopedR2K1acceptance/currentknownlimits/nextK2/#1delivery/issue3activesyncedbeforecomplete; criteria/history unchanged."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "CP179scopedR2K1acceptance/currentknownlimits/nextK2/#1delivery/issue3activesyncedbeforecomplete; criteria/history unchanged."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "updated",
+      "reason": "CP179scopedR2K1acceptance/currentknownlimits/nextK2/#1delivery/issue3activesyncedbeforecomplete; criteria/history unchanged."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "updated",
+      "reason": "CP179scopedR2K1acceptance/currentknownlimits/nextK2/#1delivery/issue3activesyncedbeforecomplete; criteria/history unchanged."
+    },
+    {
+      "path": "docs/features.json",
+      "state": "updated",
+      "reason": "CP179scopedR2K1acceptance/currentknownlimits/nextK2/#1delivery/issue3activesyncedbeforecomplete; criteria/history unchanged."
+    },
+    {
+      "path": "docs/COVERAGE.md",
+      "state": "updated",
+      "reason": "CP179scopedR2K1acceptance/currentknownlimits/nextK2/#1delivery/issue3activesyncedbeforecomplete; criteria/history unchanged."
+    },
+    {
+      "path": "docs/evidence/wine-r2/README.md",
+      "state": "updated",
+      "reason": "CP179scopedR2K1acceptance/currentknownlimits/nextK2/#1delivery/issue3activesyncedbeforecomplete; criteria/history unchanged."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/review.json",
+      "state": "updated",
+      "reason": "CP179scopedR2K1acceptance/currentknownlimits/nextK2/#1delivery/issue3activesyncedbeforecomplete; criteria/history unchanged."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
+      "state": "updated",
+      "reason": "CP179scopedR2K1acceptance/currentknownlimits/nextK2/#1delivery/issue3activesyncedbeforecomplete; criteria/history unchanged."
+    },
+    {
+      "path": "server/README.md",
+      "state": "unchanged",
+      "reason": "No runtime/productioncode/profile/storeworkflowchange; periodic audit notdueuntilCP180."
+    },
+    {
+      "path": "docs/evidence/checkpoints/README.md",
+      "state": "unchanged",
+      "reason": "No runtime/productioncode/profile/storeworkflowchange; periodic audit notdueuntilCP180."
+    }
+  ]
+}
