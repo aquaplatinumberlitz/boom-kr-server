@@ -1,0 +1,30 @@
+{
+  "schema": "kre-validation-supplement-v1",
+  "checkpoint": "CP166",
+  "recorded_utc": "2026-11-06T11:30:52.001229+00:00",
+  "correction": "CP166 record remains immutable. Its docs-check.txt reference is an early failure (#14 missing PR236 in stale snapshot) before captured GitHub snapshot was installed. docs-check-final.txt succeeds after snapshot synchronization; issue checker also succeeds. Current check output is supplemental evidence, not a rewrite of prior failure. No runtime/source/config was changed for this documentation check.",
+  "evidence": [
+    {
+      "path": "local/research/codex/mode-host-rejoin-fixed-r2/docs-check.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "local/research/codex/mode-host-rejoin-fixed-r2/docs-check-final.txt",
+      "bytes": 175,
+      "sha256": "37abc21774d7fc61bc6116851023b16e5ee2049e3c46cbecb08d6f654b4d1f13"
+    },
+    {
+      "path": "local/research/codex/mode-host-rejoin-fixed-r2/issues-check.txt",
+      "bytes": 130,
+      "sha256": "1195c210223bc41ba400b98c9fa471623998d6c074150927c64e639b7e60aafa"
+    },
+    {
+      "path": "local/research/codex/mode-host-rejoin-fixed-r2/serialization-correction.json",
+      "bytes": 545,
+      "sha256": "5885c1dfef2cf4771d6f36260c0f0fe7bf65a317848cef52ce4d75141ec7ef58"
+    }
+  ],
+  "limits": "Read-only mechanical check; no semantic/gate certification.",
+  "serialization_correction": "First CP166 generation was invalid before commit (2 kind/path mismatches and unsupported method enum). Initial candidate record/evidence/index retained local; corrected only new schema declarations; CP001–165 and all runtime findings/raw preserved. Final history validation required."
+}

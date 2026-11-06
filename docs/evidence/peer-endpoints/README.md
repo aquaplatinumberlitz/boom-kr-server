@@ -994,3 +994,42 @@ khôngwholeinstructiontrace; sourceproduction/preset unchanged/reuse257server4ex
 schema (round/created_ns correctedfromraw, initialsourcegiữ). Không đổi raw/guard/acceptancecho pass.
 CP165 tựkiểm/reviewwaived/chờPR, AUD049qua164/kế168; currentmodejoin_Apromotionpath còn gap/K4open;
 K6a/fullmatch/Windows/LAN/Internet/8actualclients/originalauthority/naturalCP157 giữmở. Next chỉPLAN.
+
+
+<a id="cp166"></a>
+## CP166 — currentmode idlehostBack/promotion/rejoin control và fix
+
+Baseline CP165 [PR236](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/236),
+head `0d1081aa21b79365b1c8a75ec417c8a30163e737`, merge `060ff22971640493532d14722c261295146c04af`.
+[Contract/giới hạn](../../PROTOCOL.md#current-mode-host-rejoin), [K4 rà acceptance](../../PLAN.md#k4-evidence-review).
+
+| Run dưới local/research/codex | Giây/exit/raw/frozen | SHA256 run.json |
+|---|---|---|
+|mode-host-rejoin-control-r1|116.869338442/0/418/106|`faca380b05cc4d3cf65b0109cefa5f024a68ee8c2a3546e4c7186c2ee9f324cf`|
+|mode-host-rejoin-fixed-r2|164.328823171/0/668/108|`1be58003c95ccac4302b93741dfb2af4a1b9550f16dc97ef7658f428d26d8a44`|
+
+Mỗi run giữ reuse-question/build/source locator, cycles-recipe, runtime-preflight/server snapshots,
+launch-exit, raw-seal và membership-verification. `prepare_mode_host_rejoin.py` tạo thư mục/copy mới,
+`wine_probe_mode_host_rejoin_{control_r1,fixed_r2}.py` làcontrollerfile riêng/frozen; chỉ idlepath,
+không lặp2cycles. User/net/mount/PID namespaces, veth/private2hosts/NSSfiles-only/no default route;
+ownedclient/wineserver/service cleanup vànamespaceextinct. Source/config không đổi trong mỗi run.
+Copy e9bb4766…/static660447…/modOa08950…/base400000 giữbuildCP165, khôngsourcebinary/pack/DBchange.
+
+514control/815fixedchecks gồm toànrawhash và actualC2S86/82/hash/admission, native107clear/110chief,
+91variabletitle/fullcursor, continuousS2Cseq/ACK87full7/modegetter1/ReadyA/StartB/12199/clock/render8.
+`native_mode_host_rejoin.py` dùngretainedKRframer/getters/CRCpartial:9control/21fixedmodels riêngruntime.
+`visual-review.json` pin2finalframes đãđọc: map/timer1:50/hai actor tại ôkhácnhau/cảhai view; không là
+gameplay/wholeworldoracle. `analysis-corrections.json` và `verify-initial.py` giữ fail của giảđịnh eventreports
+rỗng: fixed có2startupsubtype39, không17/18/19/21/bom/pickup/result; raw/production không đổi.
+
+`mode-host-rejoin-tests.txt`265server và `mode-host-rejoin-export-tests.txt`4export pass. Lệnh discovery
+đầu dùng -t . bịimporterror (server namespacepackage), exporterimport saiđườngdẫn; sửa invocation sang
+README discover -s server / discover -s tools -p test_export*.py, không sửasource đểnétest.
+Control/fixedseparate không fullmatch; chưahai cycle saupromotion trên currentmode. CP166tựkiểm/
+reviewwaived/chờPR; AUD049qua164/kế168, khôngđónggate. Bước tiếp duy nhấtPLAN.
+
+[CP166 validation bổ sung](cp166-validation.json): docs-check banđầu gặp snapshot cũ thiếu PR236;
+snapshotGitHubđãđồngbộ và docs-check-final/issuecheck pass. Filefail và recordcomplete giữnguyên;
+không coi outputfail cũ là pass hoặc đổi raw đểlàmcheckqua.
+Bản CP166 sinh lầnđầu chưa hợp lệschema trướccommit (2kind/path và1methodenum); bảncandidate lỗi giữlocal,
+chỉ sửa khai báo bảnmới. Báocáo bổsung trên trỏ correction/hash; CP001–165/raw/findingkhôngđổi.

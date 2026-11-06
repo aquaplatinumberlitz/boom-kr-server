@@ -301,5 +301,10 @@ không suy mode-aware promoted aliasjoin_A đã hỗ trợ từ host_back_rejoin
 CP165 đã native-smoke **chính committedmodepreset/exportedfile** qua2normaloutcomes/reset/Ready rồi
 actualStart3/nativeclocks/render8s. Harness dùng boundedmeasurementBPgating khi alignment và exactrestore,
 không đổi game/service/profile/47pins/targets. [Proof/giới hạn](../docs/PROTOCOL.md#input-batch-gating).
-CP164partial giữ lịch sử; currentmode promotedjoin_A vẫn từchối/chưa runtime, không gọi host_back_rejoin
-flag đủ hỗtrợ đường đó hoặc tự đóng gate.
+CP164partial giữ lịch sử. CP166 bên dưới giải boundedcurrentmode promotedjoin_A; không tự đónggate.
+
+
+CP166: combined `host_back_rejoin` + `room_team_mode` preflight success87/full7byte và echo currentselector
+cho `join_A` sau existingmembershipguards. [Control/fix/runtime/giới hạn](../docs/PROTOCOL.md#current-mode-host-rejoin).
+265server/4exporttests pass; currentcopyidlehostBack/promotion/rejoin/ReadyA/StartB/clock/render8s có nguồn.
+Hai Battlecycles/reset saupromotion trên mode mới chưa đo; default/generalC/password/Random không mở rộng.

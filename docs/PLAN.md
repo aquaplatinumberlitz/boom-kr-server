@@ -1,7 +1,7 @@
 # Kế hoạch server giả lập KR 00967
 
 Nguồn chuẩn của project `boom-kr-server`; bản nhập từ plan đã được dsh1/dsh2 review tại `1eee46d`.
-Cập nhật06/11 JST (CP165): [native batch/observer control và committedpresetStart3](PROTOCOL.md#input-batch-gating) đã đo; CP164 PR235 merged3828466. CP165 tự kiểm/chờPR. Tiếp currentmode hostBack/promotion/rejoin; AUD049 qua164/kế168, chưađónggate.
+Cập nhật06/11 JST (CP166): currentmode hostBack/promotion/rejoin đã đo control/fix tới nativeclock/render8s; CP165 PR236 merged060ff22. CP166 tự kiểm/chờPR. AUD049 qua164/kế168, gate giữ mở.
 
 
 ### Mục tiêu, baseline và phạm vi
@@ -37,13 +37,13 @@ với client Rust không chứng minh có thể điều khiển client KR bằng
 
 ### Tiến độ hiện hành theo bằng chứng
 
-| Task/mốc | Trạng thái tại CP165 | Nguồn chuẩn |
+| Task/mốc | Trạng thái tại CP166 | Nguồn chuẩn |
 |---|---|---|
 | KRE-004/issue6 | Đã review/merge PR7 và đóng issue:recipe r1 đến local accept;không phải full K1 | [Wine r1](evidence/wine/README.md) |
 | Bootstrap reply | PR8 đã merge;debugger ProcessPatchreturn1,không ép success | [bootstrap evidence](evidence/bootstrap-wire/README.md) |
 | KRE-005a/issue9,R2 | PR10 đã merge:3 cold start cửa sổ/second accept;issue9 còn mở | [R2 evidence](evidence/wine-r2/README.md) |
 | WCP hai-reply | Run CP001 là lịch sử chưa C→S; CP006 đã đo request đầu trên copy tham số hóa | [PROTOCOL](PROTOCOL.md#wcp),[WCP evidence](evidence/wcp/README.md) |
-| KRE-005b/issue14 | CP006–164 đã merge; CP165 inputbatch control/actualpreset2cycles/Start3 có nguồn; task hiện hành ở current-order; fullauth/authority/fullmatch/gates và gaps giữ mở | [Q-023](RESEARCH.md#q-023), [service](evidence/probe-service/README.md) |
+| KRE-005b/issue14 | CP006–165 đã merge; CP166 currentmodehostpromotion/rejoin tới clock/render có nguồn; task hiện hành ở current-order; fullauth/authority/fullmatch/gates và gaps giữ mở | [Q-023](RESEARCH.md#q-023), [service](evidence/probe-service/README.md) |
 | K0/K1 | Chưa nghiệm thu toàn gate;Windows vanilla/control ownership và các điều kiện còn thiếu giữ mở | Gate dưới,[Q-022](RESEARCH.md) |
 | K2a/K2 | Primitive/WCP, CP057stream native/model và CP058–060authcallback137/135/errors0 đã có; fullcodec/authauthority/reconnect và gate chưa pass | [PROTOCOL](PROTOCOL.md#login-auth),[Q-023](RESEARCH.md#q-023) |
 | K3 | Copy đã vẽUI/đóngnotice, A/B/Cprofile đọc sạch và mộtnamedcachewarm được nhận; identityauthority/toàncache/codec/K3 chưa nghiệm thu | [Contract sảnh](PROTOCOL.md#channel-lobby) |
@@ -66,22 +66,19 @@ selectiveCLI/historicalmigration xong, không còn taskactive tổ chức. CP119
 Yêu cầu kiểm8 người có kết quả hẹp [CP147/163](PROTOCOL.md#battle-eight-roster), không thay gate:
 Free0/Manner1 input/ACK/reset đã nối CP162; selector1 actual4–4/1–7 đã đo. Không lặp roster/dump/guard. Service8 peer
 và trận8 client thật là phần mở rộng sau hai/bốn client ổn ở bước5, chưa được đánh dấu hoàn thành.
-1. **KR-R004/S001 — currentmode hostBack/promotion/Aguest rejoin:**
-   [CP165](PROTOCOL.md#input-batch-gating) đóng `NEXT-MODE-PRESET-INPUT-PACING` và
-   `NEXT-MODE-PRESET-START3` trong scope đãđo: lô15×5px vs gatedmostly1/15pxcontrol, same45ms/tolerance;
-   exportedcommittedpreset2outcomes/reset/Ready→actualStart3/12199/clocks/render8s/Manner1/nobomb3.
-   Không lặp codec/inputbody/roster8/2cycle-smoke; hai CP164partials giữnguyên, khôngsuy naturalCP157fixed.
-   Gap cụthể K4: modepolicy chỉ create/join, promoted aliasjoin_A bịtừchối dù preset host_back_rejoin bật.
-   SourcefirstCP107/129/157 knownidle/normalhostBack/107clear/110chief1/87/session, CP161 title vàCP162
-   mode86/87/180: preflight knownjoin_A87/7bytes/selectoroffset5, chỉ mở dưới existingpromotedmembership
-   guards; giữ C/generalrecreate/password/Random unknown, không gán row91opaquemode từ title.
-   Unitnegative/wronghost/staleconnection/sendfailure/default/sequence/opaque-tail; không bypass membership.
-   Runtimefreshcopy/exportedprofile/isolatedhosts: currentactualMannercreate/AhostBack→Bpromotion/Alobby91
-   cùngtitle→Aactual82/join_A87/117→ReadyA/StartB/native12199/clock/render8s. Chọn idleBack tốithiểu
-   trước Battleleavevariants nếu đủtái hiện defect; không lặp2cycles chỉ vì biết recipe. No gamewrite/call.
-   Sau kiểm pathcurrent, rà checklistK4/dependencies/authority/gate bằng nguồn thật; không tự đóngK4
-   chỉ vì PR/clock hoặc lấy CP157 oldprofile thay currentmode. K6a/fullmatch/LAN/8actualclients còn mở.
-   [#14](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/14) giữ mở.
+1. **KR-R004/X001/S001 — hai cycle trên currentmode sau chuyển chủ:**
+   [CP166](PROTOCOL.md#current-mode-host-rejoin) giải `NEXT-MODE-HOST-PROMOTION` trong scope
+   idleA86/B107clear/chief1/Alobby91title/A82/join_A87Manner1/117/ReadyA95/StartB104/12199/clock/render8s.
+   Control từchối đúngmodepolicy được giữ; fix chỉ mở join_A dưới guard sameBconnection và preflight87.
+   [Rà K4](#k4-evidence-review) đã ánh xạ acceptance/dependency; chưa đónggate, không coi clock là trận đủ.
+   Sourcefirst CP109/110/111 Bhost/Aguest hai nativeoutcomes/reset/UI/movement, CP165 inputobservergating/
+   currentcommittedpreset2cycles và CP166mode/title/membership. Chỉ ghép phần còn thiếu: cùng run preset
+   hiện tại actualMannercreate→idleAhostBack/Bpromotion/Arejoin→ReadyA/StartB→hai normaloutcomes/reset/
+   Ready. Tái dùng route/probes/geometry, kiểm roleReadyA/hostB và selector1 qua180 ởcảhai view;
+   không lặp codec/roster/inputbody hoặc nâng tolerance/timeouts; source/config frozen/rawseal/cleanup.
+   Không ghép CP109oldprofile và CP165Ahost thành proof Bhostcurrentmode. Trước mở nativebody mới,
+   đối chiếu known handlers/report/authority, chỉ đo variant thực gây blocker. Fullreset/accountresume/
+   Windows/fullauth/LAN/8client giữmở. [#14](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/14).
    <!-- active-issue: 14 --> AUD049 qua164, audit định kỳ kế **CP168**.
 2. **KR-B003/KR-F006 — nợ có giới hạn:** [CP057](PROTOCOL.md#codec-stream-boundaries) đã đo stream/
    seq/bounds trong model, không mở lại76split hoặc cấp buffer lớn chỉ để vượt allocationguardFFFFFFFF.
@@ -111,7 +108,7 @@ Bảng này chỉ phân công/thứtự; acceptance/PR/bằngchứng ởissue. [
 
 | Thứ tự/scope | Issue | Trạng thái/phần còn thiếu |
 |---|---|---|
-| Hiện hành RE | [#14/KRE-005b](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/14) | CP006–164 merged; CP165 inputcontrol/preset2cycles/Start3 có nguồn/tự kiểm; currentmodehostpromotion/rejoin là bước1; gaps giữ; fullauth/authority/fullmatch/gates mở. |
+| Hiện hành RE | [#14/KRE-005b](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/14) | CP006–165 merged; CP166 currentmodehostpromotion/rejoin đã kiểm/tới clock; hai cycle sau promotion trên mode mới là bước1; gaps giữ; fullauth/authority/fullmatch/gates mở. |
 | Control theo trigger/gate | [#1/KRE-001](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/1), [#2/KRE-002](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/2) | Windowsoriginal/ownership/K0K1/fullbootstrapconfig; reuseWine/import/replyđãđo. |
 | Codec/identity khi cần | [#3/KRE-003](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/3), [#9/KRE-005a](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/9) | Fullcodec/livebounds vàintermittentmainstartupcause cònthiếu; khônglặpprimitive/auxiliarylocale. |
 
@@ -165,6 +162,20 @@ flowchart LR
 | **K5: trận một client** | Chạy clock thật; di chuyển, đặt/nổ bom, phá block, hiện/nhặt item cơ bản, trapped/dead, kết quả và về phòng. Hoàn thiện authority matrix theo contract §5; fuse/drop/timeout không khôi phục được là `design`, có profile riêng. | Chu kỳ trận hoàn chỉnh bằng client KR; cùng bom có ID ổn định, không xác nhận pickup lặp, không kẹt GO/loading. **Reviewer duyệt authority matrix** cho từng hành vi đang dùng: creator/simulator/validator/broadcast/peer-editable state; unknown lịch sử được ghi giới hạn và policy design tương thích có kiểm, không mặc định server-authoritative. Trace client và capture cùng run. |
 | **K6: hai client** | RE peer-discovery, session key/slot, UDP packet/reliability/relay nếu có; chọn P2P local hoặc relay theo consumer thật. Đồng bộ hai chiều, bom/item/trap/result rồi reset round. | A di chuyển B thấy và ngược lại; A đặt bom B thấy; tranh item chỉ một kết quả; hai máy đồng thuận trapped/death/result. Hai trận liên tiếp không rò entity/timer/seq/peer. Disconnect/host rời không treo peer còn lại. Reviewer cập nhật authority matrix bằng ca peer thực; unknown làm thiếu consistency của demo thì chưa qua gate. |
 | **K7: hardening/demo** | Mở bốn client, bounded parser, backpressure, rate limit, persistence identity tối thiểu, log/health, loss/jitter và server restart. Đóng gói server Linux cùng config/harness hướng dẫn. | Fresh launch theo README; hai và bốn client tái lập; malformed/duplicate/stale input không nhân kết quả hoặc làm crash server; log xác định được build/run/session/room/round. Báo giới hạn authority và sửa client cần thiết. |
+
+<a id="k4-evidence-review"></a>
+**Rà acceptance K4 tại CP166 — ánh xạ bằng chứng, chưa đóng gate:**
+
+| Điều kiện | Nguồn hiện có / giới hạn còn lại |
+|---|---|
+| Hai client cùng phòng/slot/host; create/join | [CP161 title](PROTOCOL.md#current-room-title), [CP162 mode](PROTOCOL.md#current-team-mode), [CP166 promotion](PROTOCOL.md#current-mode-host-rejoin); synthetic identity/known single room, không general room/password/account authority. |
+| Map/roster/spawn hợp lệ | [CP065](evidence/distinct-spawn/README.md) native121/innerledger, point0/1 riêng; current CP165/166 giữ preset/map/probes. Chỉ map/roster đã đo; không suy mọi map/8client. |
+| Chờ người chưa load | [CP135/136](evidence/loading-timeout/README.md) connected B99hold/control/deadline và positive, [CP153](PROTOCOL.md#loading-hot-gate-contest) current observer control. Timeout/forfeit là design; chưa currentmodeBhost deadline variant. |
+| Host rời, join/leave, Start lặp | CP166 currentmodeidle hostBack/rejoin/StartB; CP165 Ahost2outcomes/Start3; [CP109/110](PROTOCOL.md#promoted-outcome) Bhostoldprofile2outcomes/UI. Chưa cùng currentmodeBhost2cycles/reset; không gộp run. |
+| Provenance/authority và dependency | [Authority](PROTOCOL.md#authority) tách native consumer khỏi emulator policy; Codex tự kiểm theo waiver. K0/K1 originalWindows/control, K2 fullcodec/reconnect và K3 cache/identity acceptance vẫn mở; chưa chứng nhận dependency K4. |
+
+Rà này không tạo gate con hay scope mới, không buộc RE mọi variant trước demo. Phần đang đo và thứ tự
+chỉ ở [current-order](#current-order); contract/unknown tiếp ở PROTOCOL/RESEARCH.
 
 **Các bước nghiệm thu K6, đều chưa đạt:**
 
