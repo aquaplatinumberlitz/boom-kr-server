@@ -6150,3 +6150,48 @@ Khoảng trốngBowner/bidirectional basic đã giải trong R3, không backfill
 K5/K6a/fullmatch/Windows/LAN/Internet/8clients/auth/generalreset vẫn mở. Tiếp[PLAN](PLAN.md#current-order)
 currentbasic BhostEOF với pendingBbomb/cleanupA/promotion/fence; CP155156controls là nguồnreuse,
 không lấy intentional endcleanup của R3 làm proof.142sameoldbytesafterlegitclear/fairness giữ giới hạn.
+
+
+<a id="basic-host-b-eof"></a>
+### Basic: pending B-host EOF, A cleanup/promotion và round fence — CP174
+
+**`kr_runtime/confirmed` hẹp; chosen forfeit/fuse và observer là `design`.**
+[Recipe/raw/hash](evidence/peer-endpoints/README.md#cp174). Source-first CP155/156 ownedprocess EOF/
+pendingjob/native107110/fence và CP173 exact basicB/A/peer/effects/reset/Start3; chỉ đổi fault role
+thành currentBhost/A-survivor. Không newopcode/body/ItemAttr RE hoặc service/profile/sourcebinary/
+DB/pack change. Owned PID, startticks, namespace, prefix, comm, hostexe, command và mappedcopied
+PE path/SHA được khớp lại trước SIGKILL; chỉ process copy B trong topology run bị dừng.
+
+R1 dừng trước fault ở R2-A-returnsetup: A đạt target/restore, Bsync ghi FileNotFoundError và tự
+tắt sync breakpoint, không ACK trong3s. Gate reader `exists()`→`read_text()` có race với unlink của
+controller. Controlledhosttest trên chính helper cũ tái hiện lỗi/noACK; directread/catch riêng
+FileNotFound như gateoff khôi phục đúng savedstates. JSONhỏng vẫn lỗi, không nuốt mọi exception.
+Filename của exception cũ không được ghi nên đây là hazard/cause candidate có đối chứng, không
+chứng minh mọi syncFileNotFound từ cùng operation. R2 thêm filename cho errorlog; client/input/
+production/targets/20pulse/.045s/tolerance12/3srestoreACK/30sload/fuse6s không đổi.
+
+R2 fresh exactbasicexport/privatevirtualhosts/directservice, source/config frozen đến cleanup/seal:
+hai normalcycles/keys12345→12346,6bom ownersB,A,A mỗi vòng/IDs1..6/powers1,1,2, native15939/15813/
+samepointer/currentID và195before/after tuần tự/seedreset. Threepickups17/27/28/effects onlyA/stat/
+hiddeneligibility/currentcell142 reset, A17→19/B21/native56→1/other0before175 ở cảhai view. Bốn
+peerwindows A Right/BRight actualingress/key/slot/apply/targetchange/freshcurrentprogress giữ.
+
+Sau Ready2 normalBStart3/actual104/key12347/native12199/clock, normalBSpace tạo **ID7/owner1/
+row9col3/power1**, actual159 hai view. Dừng B còn5,117498130s trước original6sfuse; actualservice
+TCP EOF đến trước fuse, roomgeneration3 abortroleB. Chỉ A nhận chosenforfeit175/return180, rồi actual
+107slot1/id2/flag0: nativebase6/rewind0/end1, slotID2→0,110full6/errors0 và LOCAL_CHIEF_GETTER1.
+A transport mở qua observation, ảnh A room chỉ còn KRLocal/chủ phòng/Startcolored đã xem. Không
+click Start4, không gọi EOF là normalUIBack/accountresume/fullreconnect.
+
+ID7 cójobdeadlinegeneration3 bị `round_closed`, không158; quan sát qua originaldue+4s. Native159
+có7entries cảhai view,158 chỉ6; hai normal175180 trướcthirdStart của cảhai view, thêm thirdforfeit
+chỉA. Mốc thời gian/first-two logprefix kiểm riêng, không đếm3forfeit thành3normal hoặc dùng
+cleanupEOF cuối run thay fault. Nativepeer/nativegetter/models tách khỏi Pythonservice/log/render.
+
+Khoảng trống kế: source `replacement_allowed` chỉ nhận Aclosed/Balive/hostB, `accept` chặnordinal>8
+nếu không đúngpath. Read-onlyhost-model với capturedAalive/Bclosed/chiefA trảFalse, oldcaseAclosed/
+Bhost trảTrue; **không phải actualCconnect**. ExistingROLE_SLOTS C0 trùngA0 nếu chỉ mởguard. Cần
+actualadmissioncontrol rồi path hẹp vacant-slot1/CID3 nếu contract đủ; giữ oldB/Cslot0 tương thích.
+Không dùng code source này làm KRnativebehavior. [PLAN](PLAN.md#current-order) giữ thứ tự; newC
+không là resumeaccountB. Fullauth/142freshness/generalreset/dependencies/K5K6a/fullmatch/LAN/Internet/
+8actualclients/Windows vẫn mở. AUD051qua172/kế176, reviewownerwaived.

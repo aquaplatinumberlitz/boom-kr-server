@@ -135,11 +135,11 @@
         "KR-F001",
         "KR-F015"
       ],
-      "known": "CP172 PR244 merged; CP173R3 exactbasic same-runB/A bombs/4nativeA↔Bwindows/3effects/2outcomes/reset/Ready/BStart3 clocksrender verified. R1Down partial andR2Up blockedtarget keptseparate, productionunchanged.",
-      "remaining": "Currentbasic BhostEOF withpendingBbomb/Acleanup/promote/fence missing; auth/142freshness/generalreset andformalK0–K7/K5K6a/fullmatch/Windows/LANInternet/8clients open.",
-      "next_test": "PLANsource-firstCP155156ownedPID/pendingEOF/fence+CP173exactpositive: after2basiccycles/Start3 normalBbomb159pending→revalidateownBprocessidentity→EOFbefore158; nativeA107/110/host/roomcleanup andround_closed/no158throughoriginaldue. No fakepacket/statewrite/fusechange; oldcontrolscope separate.",
+      "known": "CP173 PR245 merged; CP174 currentbasic2normalcycles/B-A bombs/4peerwindows/reset/Start3→actualBpendingID7/ownedBEOF/A107slotBclear/110chief1/room/originaldue_roundclosed_no158 verified. R1observerpartialkept; fixedread3controls/R2exactrestoreACK.",
+      "remaining": "CurrentA-survivor/Bdeparted cannotadmitnewclient underhardcodedreplacement_allowed; existingC0wouldconflictA0ifonlyguardopened. Host-modelnotactualCconnect. Fullauth/142freshness/generalreset/formaldependencies/K5K6a/fullmatch/Windows/LANInternet/8clients open.",
+      "next_test": "PLANsource-firstknownC/membership/slotlayouts; aftercurrentBEOF freshcopiedCactualconnectcontrol admissionrejection linkedPID/flow, thenboundedvacantslot1/CID3path ifknowncontract/pinsenough, preservingoldB/Cslot0. No accountresume/guardbypass/wireVNport.",
       "acceptance": "Epic checklist: linkedscopedtask/evidence+authoritymatrix vàacceptancegate ởPLAN; từngtaskđóng khôngđóngepic/K5/K6a.",
-      "reason": "BasicBowner/bidirectional composedinR3notR1R2; scope closed withoutgate. NextBhostEOFcurrentprofilepositivebaseline; auditAUD051through172/next176 unchanged.",
+      "reason": "CurrentbasicBhostEOF/pendingfence/Anativecleanup resolvedonlyR2; R1failedobserverbeforefaultnotbackfill. Realnextserviceadmissiongap identifiedbyread-onlymethodcontrol, notnativeCclaim. AUD051through172/next176.",
       "sources": [
         "docs/PROTOCOL.md#authority",
         "docs/RESEARCH.md#feature-gaps",
@@ -238,7 +238,8 @@
         "docs/evidence/peer-endpoints/README.md#cp170",
         "docs/evidence/peer-endpoints/README.md#cp171",
         "docs/evidence/peer-endpoints/README.md#cp172",
-        "docs/evidence/peer-endpoints/README.md#cp173"
+        "docs/evidence/peer-endpoints/README.md#cp173",
+        "docs/evidence/peer-endpoints/README.md#cp174"
       ],
       "prs": [
         173,
@@ -306,7 +307,8 @@
         241,
         242,
         243,
-        244
+        244,
+        245
       ],
       "successors": []
     },
@@ -633,6 +635,6 @@
       "successors": []
     }
   ],
-  "as_of_utc": "2026-11-06T15:32:17.772316+00:00",
+  "as_of_utc": "2026-11-06T16:07:15.589551+00:00",
   "limits": "Dated manual dispositions through CP146; snapshotcaptureUTC only/no semantic or gate certification; immutable completehistory."
 }

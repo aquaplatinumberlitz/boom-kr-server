@@ -346,3 +346,5 @@ cũ.270server tests và fresh basic runtime2cycles/reset/Ready/Start3 đạt tro
 roundkey142/fullauth/distance/freshness; identical old142 sau legitimatecurrentclear vẫn indistinguishable.
 
 CP173 [basic Bowner/A↔B/native2cycles/Start3](../docs/PROTOCOL.md#basic-bidirectional) đã kiểm, không code/profile delta sauPR244; hai partial giữ riêng. Currentbasic BhostEOF là bước tiếp trongPLAN.
+
+CP174 [basicBhostEOF/pendingbomb/Acleanup](../docs/PROTOCOL.md#basic-host-b-eof) đã kiểm, source/profile giữ nguyên. Admission hiện chỉ oldAdeparted/Bsurvivor/Cslot0; currentA-survivor/Bdeparted chưa hỗ trợ. Host-model không thay actualnewguest proof; theoPLAN.

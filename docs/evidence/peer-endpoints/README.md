@@ -1285,3 +1285,38 @@ threeeffects hai view. Hai final Battle images đã xem; profile default giữ, 
 thirdoutcome. Server270tests reuseexacthashCP172, không rerununchangedsource; copiednative models
 táchruntime/Pythonpolicy. CP173 tự kiểm/chờ PR; reviewwaived/AUD051qua172/kế176. Khônggate/fullmatch/
 Windows/LANInternet/8client. Nextcurrentbasic BhostEOF/ownedpendingBbomb/Acleanup/promote/fence chỉPLAN.
+
+
+<a id="cp174"></a>
+## CP174 — current basic pending BhostEOF/Acleanup: observer partial và positive
+
+Baseline [CP173 PR245](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/245), head
+`3c4fd1375101b345d118886f8e2a91264a76afa7`, merge`0d4da2ede263e67eb11dafb25502fcbce373cea8`.
+[Contract/giới hạn](../../PROTOCOL.md#basic-host-b-eof), [PLAN](../../PLAN.md#current-order).
+
+| Run local/research/codex | Giây/exit/raw/frozen | SHA256 run.json |
+|---|---|---|
+|basic-host-b-eof-r1|323.310706336/1/1089/157|`345d8774468e0839cd90464793554210ca9ce2d73a1dd0d143883a2a46462760`|
+|basic-host-b-eof-r2|503.191808517/0/1466/159|`4b7b0c63341eca88877f35b0cf5e89367063c92a9005182690bdfa7da88830bb`|
+
+prepare/wine_probe/run/analyze_basic_host_b_eof*.py, roots giữ exactprofile47pins/sourcefirst/recipe/
+preflight/runtime-source/launch-exit/raw-seal/namespaceextinct. Profile nhưCP173; source/client/DB/
+pack/production/guard/inputbound/fuse khôngđổi. R1partial-observation ghiBsyncFileNotFound/noACK/
+R2-Areturnsetup, chỉ1normaloutcome và3peerwindows, không tớiBfault. check_align_gate_race.py/R2
+gate-read-control3cases: oldexists→missingread lỗi/noACK, fixed directread/catchFileNotFound restore,
+malformedJSON vẫn lỗi. Oldexceptionfilenamekhôngcó: causalhazardcandidate, khônguniversalrootcause.
+R2observer-verification exactsavedBPstates/4rare165lookup enabled,34viewphaseACK/17groups/noerror.
+
+R2 1778firsttwo/55EOF/632peer/408nativepeergetters; 243packet/882fieldmodels; life23/16.
+host-eof-verification55checks nốiownedPID/startticks/prefix/netns/comm/exe/command/mappedimageSHA,
+actualB118/ID7/159both→signal→actualTCP EOFbeforefuse→A-onlyforfeit/native107slot1id2clear/110chief1/
+openAtransport/room→originaljobdeadline round_closed/no158. Remaining5,117498130s; 2normalresults
+prefixbeforethirdStart vàthirdforfeit tách. verify_first_two_basic/peer/life analyses reuseCP173,
+chỉđổiboundary đểthirdoverride khôngđược tínhnormal; khônghạeffect/nativecriteria hoặcbỏraw.
+visual-review đãxemAroom/host/slotBempty/coloredStart; khôngStart4click, deadBkhôngnhậnforfeit.
+
+admission-scope-gap.json giữ source/method/hostmodel: currentAalive/Bclosed/hostA replacement_allowed
+False, oldAclosed/BhostTrue; ROLE_SLOTS C0trùngA0. Đây là emulatordesign/source gap, chưaactualC
+connection/identity/slot1contract. NextactualCcontrol/boundedvacant-slotpath chỉPLAN. Server270tests
+reuseexactunchangedhashCP172; no newnativebody/opcode/legacywireport. CP174selfcheck/chờPR,
+reviewwaived/AUD051qua172/kế176; nogates/fullmatch/Windows/LANInternet/8client/accountresume.
