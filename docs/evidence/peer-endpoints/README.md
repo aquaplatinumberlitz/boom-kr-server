@@ -809,3 +809,32 @@ Server41sourcefiles vẫn giữ,237tests reuseCP148; newexportchanges tested, kh
 CP159reviewwaived/selfcheck/chờPR; periodicAUD048CP160 bắtbuộc với smoke exportedpreset/actualStart3.
 K6a/fullmatch/auth/originalauthority/Windows/LAN/Internet/8client/generalreset/sharedgeometry/CP137UI giữmở;
 không đónggate từ assertioncount/cửa sổ/encoder haygộprun.
+
+
+<a id="cp160"></a>
+## CP160 — committed preset native, Start3 và AUD048
+
+Baseline CP159/[PR230](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/230) headb084233/
+merge2a7332c; [contract/authority](../../PROTOCOL.md#exported-preset-runtime), [PLAN](../../PLAN.md#current-order).
+Run `local/research/codex/exported-preset-smoke-r1/`:394,801002246s/exit0/1313raw/98frozeninputs,
+SHA `e14fb36edb70bdee013b7b506c5f45090b6f2a82cff4bd12925cd22f64565c21`. SourcefirstCP159profile/native/
+export47pins, CP110/156knownStartinput vàclock; khôngnewbodyRE/production/nativebinary/DB/packchange.
+
+Actualargv dùngexportedfile/presetexactobject/productionmodule, nohold165/activereplay.26smokechecks:
+2normaloutcomes/reset/Ready→oneactualA104/third12199/barrier30s/clocksboth/render+8, noBomb/noaccepted17,19.
+Thirdactivekhôngthirdnormalmatch; cleanupEOF/abort3saucompletion358,7ms giữ, khôngforbidmọiabortloghay
+coicleanup làtesthostfault. Initialchecker forbadeanyabort FAIL giữscript; correctedtimeboundary explicit.
+75pickup/10actualclaimsjoins/44cycle/689peer4windows/24loading/26entity195reset/23strictlife;
+2184actor/444peer/2758flag+2730array/16life/321nativepacketmodels táchsource/runtime/model.
+ActualFireAonlycả2key/oneeffect/view/onlyApower/reset; inheritedcount1then2checker FAIL, source/loggiữ,
+useplanned1or2criterion/immediatedelivery observational, khôngthaysource/guard cho pass.
+
+4fixedframes pinvisual-review; Start3+8cả2view map/actors/items/timer1:50 đãxem. AStart3thật giải usability
+run này, không claimwholeUI/resetall/CP137fixed. `room-title-observation` reassembledactual81titleKorean
+khácguest91KRRoom; CP016/028/076nativeknownstring/blob/session reused,3native81framer/str/CRCpartial
+cases full67. Khônggánmọifield/create81semantics từ số; dynamic91titleecho/runtimefix là nexttask.
+
+AUD048manualcore→authority/currentcontracts→RESEARCH→evidence→raw/reports/profile/producer/PR đãđọc;
+sửaauthorityCP156/hold2s/UIpending, currentPR230/presetproof/nexttitlegap, khôngsửahistorycomplete.
+Counterqua160/kế164. K5/K6aassessmentgiữmeasuredprofile/source/environment/controls riêng vàknown
+peereditablecounterlimit/naturalCP157unknown; khôngđónggatebằngscript/positivecount/merge.

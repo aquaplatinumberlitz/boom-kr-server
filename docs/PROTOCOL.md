@@ -1,6 +1,6 @@
 # KR 00967 — contract tương thích client gốc
 
-Revision kr-legacy-contract-r1; cập nhật06/11/2026 JST (CP159; AUD047 quaCP156, kếCP160).
+Revision kr-legacy-contract-r1; cập nhật06/11/2026 JST (CP160; AUD048 quaCP160, kếCP164).
 **Contract có bằng chứng từng phần; chưa nghiệm thu full codec K2**.
 Lộ trình và thứ tự task chỉ giữ ở [REWRITE_PLAN — KRE](PLAN.md).
 Đây là contract của repo server KR. ADR0009 của bản viết lại là nguồn lịch sử để so sánh;
@@ -2001,15 +2001,15 @@ locator/trace và trạng thái từng ô; những vai trò không nêu dưới 
 
 | Hành vi | Bằng chứng theo scope đang dùng | Giới hạn/kiểm còn thiếu theo scope sử dụng |
 |---|---|---|
-| Movement | [CP156 currentdirect](#direct-host-eof-acceptance):4peerwindows/actualnativeapply/target/currentprogress; [CP070](#current-udp-causality) là control causality riêng,183 vẫn ghost | Input/update/correction/fullschema/auth/reliability chưa đủ; currentprofile đã đo hai chiều, không đòi fullgrammar trước mọi demo hẹp |
-| Bomb place/ID | [CP156](#direct-host-eof-acceptance) actualA118/B118→ID1/2/native159158 vàID3hostpendingEOF/fence; [CP067](#c2s118-admission) và [CP075](#current-tcp-replay) giữ guard riêng | Boundedrole/key/serial/quota/geometry làpolicy; actorlocation/fullauth/rollover/allpool/race cònunknown, không gán authoritativeworld |
+| Movement | [CP159/160 production](#exported-preset-runtime):4nativepeerwindows/actualapply/target/currentprogress, nohold165/activeUDPprobe; [CP070](#current-udp-causality) giữcontrol riêng | Fullschema/auth/reliability/NAT unknown; currentprofile hai chiều có nguồn, không fullgrammar trước mọi demo hẹp |
+| Bomb place/ID | [CP160](#exported-preset-runtime) actual118/nativeID1/A/power2,ID2/B/power1/full159158/195flagreset; [CP156](#direct-host-eof-acceptance) pendinghostEOF/fence scope riêng | Boundedrole/key/serial/quota/geometry làpolicy; actorlocation/fullauth/allpool/races unknown |
 | Explode/chain | CP033 một owner; CP064 [power1/cách hai ô](#mixed-owner-chain), CP071 [power2 ngoài tầm/feedback chưa118](#mixed-owner-power) giữ partial lịch sử; CP081 [power2/distance2 mixed-owner](#mixed-input), CP084 [ba bom fork hai vòng](#three-bomb-chain); CP094 [optional pinned terrain](#terrain-policy), CP095 [actualbox/laterfreshpair](#opposite-box-control) có native callback/195flag proof | [CP096adjacent1cell](#adjacent-owner-control) và [CP122 chain sâu](#recursive-chain) đã đo trong ca hẹp; [CP133 shared cellstate/query](#shared-cell-state) và [CP134 hai shared cycles](#shared-cascade-cycles) đã giải ca cố định; FIFO/firstbombstop/immutable tổng quát/race và authority server gốc chưa đủ |
 | Block destroy/item reveal | CP032 nativecontract; CP068 [currentservice/list2/reportgate/effect/reset](#current-hidden-items), CP092 [195flags/seedreset](#map-flags-snapshot), CP094/095 [pinnedpolicy/nativeboxclear](#terrain-policy) cảhai view | Drop algorithm gốc/fullvalidator, genericclass/map và transport khác còn thiếu; không dùng report142 làm worldoracle |
-| Item placement/pickup | [CP155/156](#direct-host-eof-acceptance) hai actualcontenders/onewinner/native165/statreset qua2key; [item families](#item-families), [old165](#item-generation) giữscope riêng | Chưa full124distance/auth/generation/inventory/max/speedTTL/activevariants; 2s165hold vàfirstarrival làmeasurement/policy |
-| Trap/death | [CP156](#direct-host-eof-acceptance) hai viewloser56→1/beforerankother0 trong2epoch; [CP029](#peer-events), [kim/rescue](#needle-selfescape) là nguồn riêng | [CP158 countercontrol](#current-trap-udp-counter) giữ giới hạn transient/peer-editable state; snapshot không globalsametick; không full worldvalidator/firstseenforgedforward/fullvariants |
-| Result/reset | [CP156](#direct-host-eof-acceptance) 2normaloutcomes/Ready/195seed/key/stat/currentIDreset/oldUDPnegative-currentpositive rồiAEOF3/Bforfeit riêng; [CP104/105](#ending34-state-boundary) giữending/UDPvariants | Toànentity/timer/seq/peer/pool/resetvariants/arbitrationgốc chưa đủ; không gọi thirdforfeit lànormalmatch hoặc lấy mọiunknown làm blanketblocker profilepolicy |
-| Room lifecycle | [CP155 guestEOF](#direct-oldudp-contest-eof), [CP156 hostEOF/Bpromotion](#direct-host-eof-acceptance) currentdirect; [CP129 hostBack](#host-battle-exit)/[CP107 idleBack](#host-normal-back) là scope khác | Currentmeasuredprofile chưa bật normalhostUI20286; exporter mới có option nhưng runtimeintegration cònpending. Accountresume/halfclose/loss/generalreplace/Start4 chưađo |
-| Peer lifecycle | [CP156](#direct-host-eof-acceptance):actual99/153/currentdirectIPports, exactold59/current56→queue/keydrop/noapply vàfreshpositive; [CP130](#udp-membership-lifetime) là queue qua membership riêng | Keybyte khôngauth; low8wrap/rosterreplacement/fullUDP/reliability/relay/NAT/physicalLAN/Internet/generalqueueflush cònunknown |
+| Item placement/pickup | [CP159/160](#production-baseline) productionimmediate165/1or2actualclaims/oneeffect/nativewinnerpower/reset; [CP155](#direct-oldudp-contest-eof) hold2sactualcontenders là control riêng | Full124distance/auth/generation/inventory/max/speedTTL/activevariants chưa đủ; delay2s không còn trongproductionbaseline |
+| Trap/death | [CP159/160](#exported-preset-runtime) strict56→1/other0beforerank2views/2epochs; [CP157natural](#current-host-ui-exit)/[CP158controlledoverwrite](#current-trap-udp-counter) giữ causal limits | Snapshot khôngglobalsametick; samekeycounterheuristic cho controlledremoteoverwrite; naturalCP157cause unknown, nofullvalidator |
+| Result/reset | [CP160](#exported-preset-runtime)2normaloutcomes/Ready rồiactualStart3/12199clocks/render8s từpinnedpreset; nativeID/stat/195seedreset | Thirdactive khôngthirdnormalmatch; toànentity/timer/seq/peer/pool/resetvariants/originalarbitration chưa đủ |
+| Room lifecycle | [CP155guestEOF](#direct-oldudp-contest-eof)/[CP156hostEOF](#direct-host-eof-acceptance)/[CP157UIexit](#current-host-ui-exit) táchscope; [CP160](#exported-preset-runtime)actualStart3 trênproductionpreset | Currentroomtitlehostrequest khác fixedguest91, đã xác nhận/nativeparse; dynamicroomname pending. Accountresume/halfclose/loss/generalreplace chưa đủ |
+| Peer lifecycle | [CP159/160](#exported-preset-runtime)actual99/153/currentdirectIPs/ports; [CP155oldUDP](#direct-oldudp-contest-eof)/[CP158samekeycounter](#current-trap-udp-counter) controls riêng | Key/counterbytekhôngauth/universalfreshness; low8wrap/reliability/fullgrammar/relay/NAT/LAN/Internet unknown |
 
 Trong **optional profile hiện hành**, bảng dưới ghi vai trò emulator, không gán cho server gốc.
 Giới hạn và phép đo nằm ở link contract; không dùng mỗi vai trò này làm gate acceptance.
@@ -5627,3 +5627,45 @@ CP158/PR229 đã merge259282b; CP159 self-check/reviewwaived/chờPR. GateK6a/fu
 Internet/8client/sharedgeometry/generalreset/originalauthority không nâng. Audit AUD047qua156/kếCP160.
 [PLAN](PLAN.md#current-order) smoke exportedpreset/normalStart3 + periodicmanualaudit; tránh mở lại
 itemconsumer/counterRE. Acceptance theo đúng environment/behaviors measured, không tổngsốchecks.
+
+
+<a id="exported-preset-runtime"></a>
+### Pinned preset đã chạy, Start3 thật và AUD048 — CP160
+
+**`kr_runtime/confirmed` scope copyWine/productionpolicy**;
+[run/recipe/hash](evidence/peer-endpoints/README.md#cp160). Runtime service argv chỉ đúng fileprofile xuất
+bằng `--preset two-client-battle`; object/47fixturepins đúng preset đã commit ởPR230/merge2a7332c.
+Productionmodule trực tiếp, khônghold165/activeUDPprobe,98inputs frozen, no source/configchange.
+Tái dùng CP159native/encoder/getter/cycle và CP110/156normalStartbutton, khôngbodyRE mới.
+
+Cùngrun 394,801002246s/exit0/1313raw: hai normalcycles/actualReady2 rồi normalAStart3/actual104,
+key12347/native121129/full99/barrier trước30s/nativeclock cảhai, khôngbomb/accepted17,19 ởvòng3;
+render+8s cảhai view cómap/2actor/flooritems/timer1:50. Hai normal175302/1803, **khôngthirdoutcome**.
+EOF/abortgeneration3 xuất hiện trongownedcleanup **saucompletion** khoảng358,7ms; khônghostfault/UIexit
+proof hoặc thirdforfeit. NativeStart3 chứng minh nút hoạt động trongrun này, khôngwholeUI/nointermittentbug.
+
+75pickupchecks: actualFireAonly mỗi2key/currentone165/view/onlywinnerpower/reset; khôngrequire2reports
+khi khônghold. InheritedCP159checker ban đầu cốđịnh counts1rồi2 FAIL vìrawlà1rồi1; giữinheritedsource/log,
+checktheo plannedcriterion1or2/oneeffect/currentkey, không sửa serviceguard/runtime để pass. Latencyservice
+observed0,239821–0,41538ms khôngSLA. 44cycles/689peer4windows/24loadinggate/26entity195flags/23strictlife;
+2184actor/444peer/2758flag+2730array/16life/321nativepacketmodels tách source/runtime/emulation.
+Native195seeds ởStart3 khớp roundseed, currentstrict56→1 hai view/hai vòng không bác naturalCP157.
+
+**Gap UI/service mới được xác nhận, chưafix:** actualC2S81title làcp949 “매너겜 필수” trongrun,
+khác row91guest fixture “KRRoom”. Host giữ tên từdialog/context, guest nhận fixedrow, hai view ảnhphòng
+khác tên. Native14EF300/14EB9E0/12u32/4u8 đọcfull67byte, CRC/partial controls đạt; không suy hai phòng
+hoặcroomID khác nhau. Reuse [CP016request81](#room-create), [CP028row91/87](#duo-room-round),
+[CP076inline/heap](#back86-membership); VN chỉpattern/encodingreference, không port opcode/layout.
+Phần cần làm là titleecho trongknownrow/session/currentmembership vớibounds/hash/log, không RE lại
+handler hoặc khai thácunknownfield. Giới hạn implementation/negativecase/runtime ở RESEARCH/PLAN.
+
+**AUD048 manual:** đọc README→PLAN→authority/PROTOCOL→RESEARCH→evidence/raw CP157–160. Sửa authority
+currentrows cònCP156/hold2s/UIpending, cập nhật PR230merge/presetnativeproof/nextactualroomtitlegap,
+giữ lịch sửCP157failure/CP158controlledcausality/CP159immediaterenderframe. Counterqua160/kế164.
+
+Đối chiếu K5/K6a: localtwoactualclients/identityslot/2waymovement/2ownerbomb/pickup/result/reset/Start3
+có evidence đúngprofile; nativeflags195 choactualboxclear vàseedreset trongruncurrent, không mặcđịnh
+fullgeometry/hiddenitem/drop. Hostleave controls CP155–157 là cácscope riêng, khônggộpthànhmộttrận.
+Roomtitleconsistency cònfixpending; naturalCP157cause/wholequeue-seq/fullauth/originalauthority/Windows/
+LAN/Internet/8clients/generalreset/sharedgeometry/CP137complexUI giữunknown. **Khôngđóng K6a/fullmatch**
+từpreset/positivecontrols/đếmassertion; cũng không đòi fullservergốc before mọi localpolicy demo.

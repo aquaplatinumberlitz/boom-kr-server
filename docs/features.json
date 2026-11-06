@@ -1,7 +1,7 @@
 {
   "schema": "kre-feature-index-v1",
   "build": "KR00967",
-  "as_of": "2026-11-06 CP159",
+  "as_of": "2026-11-06 CP160",
   "sources": {
     "plan": "docs/PLAN.md",
     "contract": "docs/PROTOCOL.md",
@@ -680,7 +680,8 @@
           "docs/evidence/duo-room-round/README.md",
           "docs/evidence/probe-service/README.md",
           "docs/evidence/host-normal-back/README.md",
-          "docs/evidence/eight-player/README.md"
+          "docs/evidence/eight-player/README.md",
+          "docs/evidence/peer-endpoints/README.md#cp160"
         ]
       },
       "coverage": {
@@ -715,7 +716,8 @@
             "refs": [
               "docs/evidence/duo-room-round/README.md",
               "docs/evidence/host-normal-back/README.md",
-              "docs/evidence/eight-player/README.md"
+              "docs/evidence/eight-player/README.md",
+              "docs/evidence/peer-endpoints/README.md#cp160"
             ]
           },
           "windows_original": {
@@ -3035,7 +3037,8 @@
           "docs/evidence/peer-endpoints/README.md#cp153",
           "docs/evidence/peer-endpoints/README.md#cp154",
           "docs/evidence/peer-endpoints/README.md#cp155",
-          "docs/evidence/peer-endpoints/README.md#cp159"
+          "docs/evidence/peer-endpoints/README.md#cp159",
+          "docs/evidence/peer-endpoints/README.md#cp160"
         ]
       },
       "coverage": {
@@ -3101,7 +3104,8 @@
               "docs/evidence/peer-endpoints/README.md#cp153",
               "docs/evidence/peer-endpoints/README.md#cp154",
               "docs/evidence/peer-endpoints/README.md#cp155",
-              "docs/evidence/peer-endpoints/README.md#cp159"
+              "docs/evidence/peer-endpoints/README.md#cp159",
+              "docs/evidence/peer-endpoints/README.md#cp160"
             ]
           },
           "windows_original": {
@@ -3242,7 +3246,8 @@
           "docs/evidence/peer-endpoints/README.md#cp149",
           "docs/evidence/peer-endpoints/README.md#cp150",
           "docs/evidence/peer-endpoints/README.md#cp153",
-          "docs/evidence/peer-endpoints/README.md#cp159"
+          "docs/evidence/peer-endpoints/README.md#cp159",
+          "docs/evidence/peer-endpoints/README.md#cp160"
         ]
       },
       "coverage": {
@@ -3327,7 +3332,8 @@
               "docs/evidence/peer-endpoints/README.md#cp149",
               "docs/evidence/peer-endpoints/README.md#cp150",
               "docs/evidence/peer-endpoints/README.md#cp153",
-              "docs/evidence/peer-endpoints/README.md#cp159"
+              "docs/evidence/peer-endpoints/README.md#cp159",
+              "docs/evidence/peer-endpoints/README.md#cp160"
             ]
           },
           "windows_original": {
@@ -3725,7 +3731,8 @@
           "docs/evidence/peer-endpoints/README.md#cp156",
           "docs/evidence/peer-endpoints/README.md#cp157",
           "docs/evidence/peer-endpoints/README.md#cp158",
-          "docs/evidence/peer-endpoints/README.md#cp159"
+          "docs/evidence/peer-endpoints/README.md#cp159",
+          "docs/evidence/peer-endpoints/README.md#cp160"
         ]
       },
       "coverage": {
@@ -3859,7 +3866,8 @@
               "docs/evidence/peer-endpoints/README.md#cp156",
               "docs/evidence/peer-endpoints/README.md#cp157",
               "docs/evidence/peer-endpoints/README.md#cp158",
-              "docs/evidence/peer-endpoints/README.md#cp159"
+              "docs/evidence/peer-endpoints/README.md#cp159",
+              "docs/evidence/peer-endpoints/README.md#cp160"
             ]
           },
           "windows_original": {
