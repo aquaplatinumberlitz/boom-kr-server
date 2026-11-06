@@ -135,11 +135,11 @@
         "KR-F001",
         "KR-F015"
       ],
-      "known": "CP158/PR229merged259282b; CP1592normalcycles productionmodule/nohold165/noactiveUDP replay/nativepickup1or2claims/oneeffect/statreset/strictlife2view/2outcomes/Ready. New47fixturepinnedpreset exportobjectequalsmeasuredprofile andpreflight.",
-      "remaining": "Nativeexportedfilepath smoke notyetmeasured; CP159oneimmediateAwhiteStartframe notpersistentUIproof orStart3proof. NaturalCP157causeunknown; fullauth/originalauthority/Windows/LAN/Internet/8clients/K6a/generalreset/sharedgeometry/CP137UI remain.",
-      "next_test": "PLAN freshprofilevia--preset two-client-battle/directproduction/nohold/replay; 2normalcycles/Ready thenactualStart3/noBomb/native12199clockboth/render4to8s. MandatoryperiodicAUD048CP160/manualcore/raw/acceptance; nextCP164. No reRE callback/counter/body oroptionalUIexit.",
+      "known": "CP159/PR230merged2a7332c; CP160exportedcommitted47fixturepreset actualproduction2normaloutcomes/reset/Ready thenactualA104/12199clock3/render8s/noBomb. AUD048through160/next164. Nohold/replay, strictlife2views/2epochs.",
+      "remaining": "RoomtitleactualAcreate81 Korean differsfixedB91KRRoom/native81parsefull67confirmed; dynamic91echo fixpending. NaturalCP157causeunknown/fullauth/originalauthority/Windows/LAN/Internet/8clients/K6a/generalreset/sharedgeometry/CP137UI remain.",
+      "next_test": "PLAN reuseCP016/028/076strwriter/91row/session/87titlecontext; implementboundedoptinknowntitleecho withpreflight/negativeparse/hash/opaque-tailpreserved, thennewcopyproductionactualAcreate/B91list/join/native87/roomtitleA=B. No repeatedBattlecyclesunless needed. AUD048through160/next164.",
       "acceptance": "Epic checklist: linkedscopedtask/evidence+authoritymatrix vàacceptancegate ởPLAN; từngtaskđóng khôngđóngepic/K5/K6a.",
-      "reason": "Currentproductionbaseline gapclosed inboundedmeasuredscope; reproduciblepresetneedsactualsmoke, objectequalitynotnewnativeproof. Keepenvironment/policy/gate limits andnaturalincidentunknown.",
+      "reason": "Committedpreset/actualStart3gapclosed; auditmanualauthoritystale fixes andrawtitlemismatch identifyactualnextintegrationtask. Noautogate/fullmatchclaim orretrospectiveCP157cause.",
       "sources": [
         "docs/PROTOCOL.md#authority",
         "docs/RESEARCH.md#feature-gaps",
@@ -181,7 +181,8 @@
         "docs/PROTOCOL.md#local-demo-acceptance",
         "docs/PROTOCOL.md#current-host-ui-exit",
         "docs/PROTOCOL.md#current-trap-udp-counter",
-        "docs/PROTOCOL.md#production-baseline"
+        "docs/PROTOCOL.md#production-baseline",
+        "docs/PROTOCOL.md#exported-preset-runtime"
       ],
       "evidence": [
         "docs/evidence/current-movement-cycles/README.md",
@@ -219,7 +220,8 @@
         "docs/evidence/peer-endpoints/README.md#cp156",
         "docs/evidence/peer-endpoints/README.md#cp157",
         "docs/evidence/peer-endpoints/README.md#cp158",
-        "docs/evidence/peer-endpoints/README.md#cp159"
+        "docs/evidence/peer-endpoints/README.md#cp159",
+        "docs/evidence/peer-endpoints/README.md#cp160"
       ],
       "prs": [
         173,
@@ -272,7 +274,8 @@
         226,
         227,
         228,
-        229
+        229,
+        230
       ],
       "successors": []
     },

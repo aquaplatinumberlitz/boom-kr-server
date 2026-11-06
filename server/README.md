@@ -267,5 +267,5 @@ isolation. Preset [metadata/pins](profiles/two-client-battle.json) đòi đúng4
 không cấp binary/asset hoặc fetch mạng. Tool kiểmsize/hash/path, chỉ đổi rootpath, không ghiđè output.
 Các layout/policy flags khác không kết hợp preset. Profile này là known syntheticidentity/roster/map/rank,
 không fullauth/servergốc; [runtime/giới hạn](../docs/PROTOCOL.md#production-baseline).
-Hai vòngCP159 dùng productionservice không hold165/replay; exportexactprofile/preflight đạt, runtime
-trực tiếp từfileexport đang là bước tiếp theo trong PLAN. LAN/Internet/8clients/gates chưa nghiệmthu.
+Hai vòngCP159 dùng productionservice không hold165/replay; CP160 đã chạy trực tiếp fileexport qua2normalcycles/Ready vàactualStart3/clocks/render;
+[proof/giới hạn](../docs/PROTOCOL.md#exported-preset-runtime). LAN/Internet/8clients/gates chưa nghiệmthu.

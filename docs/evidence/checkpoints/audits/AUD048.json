@@ -1,0 +1,105 @@
+{
+  "id": "AUD048",
+  "trigger": "periodic",
+  "completed_through": "CP160",
+  "recorded_utc": "2026-11-06T06:40:26.707441+00:00",
+  "auditor": "Codex manual self-audit; independent review waived",
+  "read_files": [
+    "README.md",
+    "docs/PLAN.md",
+    "docs/PROTOCOL.md",
+    "docs/RESEARCH.md",
+    "docs/evidence/peer-endpoints/README.md",
+    "docs/features.json",
+    "docs/evidence/checkpoints/audits/AUD047.json",
+    "server/README.md",
+    "server/profiles/two-client-battle.json",
+    "tools/export_probe_profile.py",
+    "tools/test_export_preset.py",
+    "local/research/codex/production-baseline-r1/pr-merged.json",
+    "local/research/codex/production-baseline-r1/export-validation.json",
+    "local/research/codex/direct-contest-host-ui-r2/life-boundary-observation.json",
+    "local/research/codex/trap-udp-counter-gap-r5/counter-control-verification.json",
+    "local/research/codex/production-baseline-r1/production-pickup-verification.json",
+    "local/research/codex/exported-preset-smoke-r1/cycles/run.json",
+    "local/research/codex/exported-preset-smoke-r1/cycles/service-state.json",
+    "local/research/codex/exported-preset-smoke-r1/cycles/client.log",
+    "local/research/codex/exported-preset-smoke-r1/cycles/client-B.log",
+    "local/research/codex/exported-preset-smoke-r1/profile.json",
+    "local/research/codex/exported-preset-smoke-r1/raw-seal.json",
+    "local/research/codex/exported-preset-smoke-r1/runtime-preflight.json",
+    "local/research/codex/exported-preset-smoke-r1/exported-runtime-verification.json",
+    "local/research/codex/exported-preset-smoke-r1/cycle-boundary-verification.json",
+    "local/research/codex/exported-preset-smoke-r1/production-pickup-verification.json",
+    "local/research/codex/exported-preset-smoke-r1/endpoint-peer-verification.json",
+    "local/research/codex/exported-preset-smoke-r1/world-reset-verification.json",
+    "local/research/codex/exported-preset-smoke-r1/life-agreement-verification.json",
+    "local/research/codex/exported-preset-smoke-r1/visual-review.json",
+    "local/research/codex/exported-preset-smoke-r1/analysis-corrections.json",
+    "local/research/codex/exported-preset-smoke-r1/room-title-observation.json",
+    "local/research/codex/exported-preset-smoke-r1/room-title-native-verification.json",
+    "local/research/codex/room-input-r1/create81-native-fields.json",
+    "local/research/codex/back86-membership-r1/native_packets.py",
+    "local/research/codex/duo-round-r1/native_fields.py"
+  ],
+  "method": "Đọc currentREADME→PLAN(gates/currentorder)→PROTOCOL(authority/knownrow81/91 và CP156–160 currentcontracts)→RESEARCH→peer evidence; so rawactual8TCP/native12199/175180/Ready/Start3/cleanup-time-boundary, frozenpreset/source, primitivegetter/model reports và4fixedframes. Đối chiếuCP157failedlife/CP158controlledvsnatural/CP159noholdpreset và PR230. Không audit toàn bộ thân PROTOCOL hay dùng script để tựđónggate.",
+  "findings": [
+    {
+      "id": "F1",
+      "stale": "Authority currenttable còn CP156/2shold làscopehiện hành và normalhostUI20286 pending dùCP157 đã đo/merge.",
+      "correction": "Cập nhật currentauthoritylinks CP159/160 production, táchmeasurementcontrols, normalUICP157done; giữunknownfullauth/world/genericauthority.",
+      "fixed_in": [
+        "docs/PROTOCOL.md"
+      ]
+    },
+    {
+      "id": "F2",
+      "stale": "Preset chỉexport/preflight và onefinalwhiteAStartframe chưaactualruntime/Start3 usability.",
+      "correction": "CP160actualexportedpath/native2outcomesReady→A104/12199clock3/render8s; cócleanupEOF358msaftercompletion, khôngthirdmatch/wholeUIclaim.",
+      "fixed_in": [
+        "README.md",
+        "docs/PLAN.md",
+        "docs/PROTOCOL.md",
+        "docs/RESEARCH.md",
+        "server/README.md",
+        "docs/evidence/peer-endpoints/README.md"
+      ]
+    },
+    {
+      "id": "F3",
+      "stale": "Inheritedexactpreviousclaimcount1then2 vàforbidanythirdabort cóthểbáofailurekhôngđúngcâu hỏi hiện hành.",
+      "correction": "Giữ failedsource/log; observedclaim1then1 đúngplanned1or2/oneeffect. CleanupEOFaftercompletiontáchbefore/after, no rank/return3. Khôngsửa raw/productioncho pass.",
+      "fixed_in": [
+        "docs/PROTOCOL.md",
+        "docs/evidence/peer-endpoints/README.md"
+      ]
+    },
+    {
+      "id": "F4",
+      "stale": "B roomname fixed KRRoom chưa liên kết với actualAcreate title/nativeknownschema; currentnextsmokeđãxong.",
+      "correction": "Rawactual81+native3cases/full67 vàB91fixture/4framejoinxácnhận currenttitleskhác; PLANdynamicboundedtitleecho lànext, khôngRElạicallback hoặc claimroomIDmismatch.",
+      "fixed_in": [
+        "docs/PLAN.md",
+        "docs/PROTOCOL.md",
+        "docs/RESEARCH.md",
+        "docs/features.json",
+        "docs/COVERAGE.md"
+      ]
+    },
+    {
+      "id": "F5",
+      "stale": "Nguy cơ ghép5counterruns/EOFcontrols/presetmatches thànhgate hoặc bópcauseCP157 thànhfixed.",
+      "correction": "Giữ từngscope/run/environment, naturalCP157unknown vàcontrolledR5causalityriêng. GateK6a/fullmatch/Windows/LAN/Internet/8clients/generalreset/sharedgeometry khôngđóng bằngaudit/checker/PR.",
+      "fixed_in": [
+        "README.md",
+        "docs/PROTOCOL.md",
+        "docs/evidence/peer-endpoints/README.md"
+      ]
+    }
+  ],
+  "remaining": [
+    "CP160 commit/push/PR/exacthead/merge còn phải làm; periodiccounter kếCP164, khôngreset.",
+    "Roomtitle currentAcreate81→B91/87context consistency fixpending; knownschema/strings/rowtail reused. Opt-inboundedprofile/negativepreflight/nativeparse/newruntime beforepresetupgrade.",
+    "Fullauth/originalauthority/Windows/LAN/Internet/8clients/K6a/fullmatch/generalreset/sharedgeometry/CP137complexUI vànaturalCP157attribution giữmở; notabsencefromcatalog."
+  ]
+}

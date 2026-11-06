@@ -1,0 +1,259 @@
+{
+  "id": "CP160",
+  "previous": "CP159",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-06T06:41:50.821109+00:00",
+  "context_commit": "2a7332ccca7a727a1b066f04c48a6a3b1aeac666",
+  "owner": "Codex",
+  "reviewer": "Codex",
+  "question": "Does committedpinnedpreset workinactualproductionruntime through2normalcycles/Ready andnormalStart3/render, andwhichactualacceptancegap remains afterperiodicmanualAUD048?",
+  "scope": "Onefrozenexportedpreset/currentproductionrun, reusednative2cycles/knownStart3/noBomb. ManualAUD048/authority/currentdocs assessment; rawtitlemismatch/native81framerstringscontrolsusingCP016/028/076cache, no newnativebody orproductionchanges.",
+  "artifacts": [
+    {
+      "name": "KRoriginalCA/read-only",
+      "sha256": "a52545c14b1fea423de655c3163d6360b628d61c1cd472b46fdbc8a9ffe15f4e"
+    },
+    {
+      "name": "Winecopyunchanged",
+      "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+    },
+    {
+      "name": "staticcopy",
+      "sha256": "660447c293ce92270cb9b5815331bca976e8f156366e1fe50b217b6c12e60ce3"
+    }
+  ],
+  "locators": [
+    "BaselineCP159PR230headb0842336c930b856cb2b1f2598f0943e42ab146b/merge2a7332ccca7a727a1b066f04c48a6a3b1aeac666.",
+    "Rune14fb36edb70bdee013b7b506c5f45090b6f2a82cff4bd12925cd22f64565c21/394.801002246s/exit0/1313raw/98frozeninputs. Actualargvexportedprofile/47pins/productionmodule/nohold165/noactivereplay.",
+    "Actual2normaloutcomes/Ready2→normalAbutton104/thirdkey12347/native121129/99barrier/clock3both/render+8s/noBomb/noaccepted17,19. CleanupAEOFabort3ns1906744896638577 aftercompletion1906744537934772/no rankreturn3.",
+    "Base400000/RVA=VA−400000; knownCP110/156button/clock consumers reused; currentnativegetter/flags/life/packetmodels independently checked.",
+    "ActualC2S81full67bytes/titlecp949매너겜필수 vsfixedguest91KRRoom. Reuse14EF300/14EB9E0/12u32+4u8 stringconsumer CP016/076 androw91D9D720/session87 CP028;3nativevalid/CRC/partialcases. No roomIDmismatch/fullschema claim.",
+    "AUD048 periodicthrough160/core→authority/currentcontract→research/evidence/raw manuallyread; nextCP164, historyCP157failedstrict/CP158causallimits kept."
+  ],
+  "findings": [
+    {
+      "summary": "Committedpreset actualruntimepasses directproductionmodule/47pins/exactprofile/noholdreplay;2nativeoutcomes/reset/Ready thenactualA104/12199clock3/render8s/nobomb. CleanupEOFaftercompletion notthirdforfeit orhostUItest.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#exported-preset-runtime",
+      "evidence": [
+        "RUN-01342",
+        "RUN-00024",
+        "RUN-01481",
+        "RUN-01371"
+      ],
+      "limits": "2actualmodifiedWine/privatevirtualhosts/samephysicalhost/syntheticidentity/roster/map/rank/productionpolicy. Committedpinnedpreset47fixtures actualservicepath/nohold165/noactiveUDPreplay. 2normalcycles/outcomes/Ready thenthirdactive12199clock/render8s/noBomb, notthirdnormalmatch. CleanupEOF/abort3aftercompletion retained/notUIhostfaulttest. Currentstrictlife56to1 notrefutingCP157naturalunknown/CP158controlledcounteroverwrite. ActualroomtitleAcreate81Korean vsBfixed91KRRoom mismatchconfirmed/nativeknownschema, fixpending; notroomIDmismatch. No sourcebinary/DB/pack/gamewrite/newbodyRE. Fullauth/originalauthority/Windows/LAN/Internet/8clients/generalreset/sharedgeometry/CP137UI/K6a/fullmatchgate open."
+    },
+    {
+      "summary": "ProductionFireactual1then1/one165perview/onlyApower/reset;4movementwindows/actualnativeapply/stat/entity195reset/strict56to1before175bothviews2epochs retaincurrentprofile. Gettermodels separatefromWineproof.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#exported-preset-runtime",
+      "evidence": [
+        "RUN-01369",
+        "RUN-01341",
+        "RUN-01482",
+        "RUN-01358"
+      ],
+      "limits": "2actualmodifiedWine/privatevirtualhosts/samephysicalhost/syntheticidentity/roster/map/rank/productionpolicy. Committedpinnedpreset47fixtures actualservicepath/nohold165/noactiveUDPreplay. 2normalcycles/outcomes/Ready thenthirdactive12199clock/render8s/noBomb, notthirdnormalmatch. CleanupEOF/abort3aftercompletion retained/notUIhostfaulttest. Currentstrictlife56to1 notrefutingCP157naturalunknown/CP158controlledcounteroverwrite. ActualroomtitleAcreate81Korean vsBfixed91KRRoom mismatchconfirmed/nativeknownschema, fixpending; notroomIDmismatch. No sourcebinary/DB/pack/gamewrite/newbodyRE. Fullauth/originalauthority/Windows/LAN/Internet/8clients/generalreset/sharedgeometry/CP137UI/K6a/fullmatchgate open."
+    },
+    {
+      "summary": "ActualAcreate81titleKorean differsfixedguest91KRRoom, roomUIA/B mismatchconfirmed. Native81full67/framer/getters/CRCpartial matchactualcapture. Knownrow91/schema/context reuse suffices fornextboundedserviceecho, notanotherwholehandlerRE.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#exported-preset-runtime",
+      "evidence": [
+        "RUN-01414",
+        "RUN-01413",
+        "RUN-01481",
+        "RUN-01494"
+      ],
+      "limits": "2actualmodifiedWine/privatevirtualhosts/samephysicalhost/syntheticidentity/roster/map/rank/productionpolicy. Committedpinnedpreset47fixtures actualservicepath/nohold165/noactiveUDPreplay. 2normalcycles/outcomes/Ready thenthirdactive12199clock/render8s/noBomb, notthirdnormalmatch. CleanupEOF/abort3aftercompletion retained/notUIhostfaulttest. Currentstrictlife56to1 notrefutingCP157naturalunknown/CP158controlledcounteroverwrite. ActualroomtitleAcreate81Korean vsBfixed91KRRoom mismatchconfirmed/nativeknownschema, fixpending; notroomIDmismatch. No sourcebinary/DB/pack/gamewrite/newbodyRE. Fullauth/originalauthority/Windows/LAN/Internet/8clients/generalreset/sharedgeometry/CP137UI/K6a/fullmatchgate open."
+    },
+    {
+      "summary": "AUD048manualauditcorrects currentauthoritylagCP156/2shold/UIpending, PR230merge/exportedpresetnativeproof andnexttitlegap; keepsoriginalunknowns/CP157failedstrict/CP158controlledvsnatural distinction anddoesnotclosegate.",
+      "source": "design",
+      "status": "design",
+      "method": "documentation",
+      "canonical": "docs/PROTOCOL.md#exported-preset-runtime",
+      "evidence": [
+        "RUN-00018",
+        "RUN-00016",
+        "RUN-00015"
+      ],
+      "limits": "2actualmodifiedWine/privatevirtualhosts/samephysicalhost/syntheticidentity/roster/map/rank/productionpolicy. Committedpinnedpreset47fixtures actualservicepath/nohold165/noactiveUDPreplay. 2normalcycles/outcomes/Ready thenthirdactive12199clock/render8s/noBomb, notthirdnormalmatch. CleanupEOF/abort3aftercompletion retained/notUIhostfaulttest. Currentstrictlife56to1 notrefutingCP157naturalunknown/CP158controlledcounteroverwrite. ActualroomtitleAcreate81Korean vsBfixed91KRRoom mismatchconfirmed/nativeknownschema, fixpending; notroomIDmismatch. No sourcebinary/DB/pack/gamewrite/newbodyRE. Fullauth/originalauthority/Windows/LAN/Internet/8clients/generalreset/sharedgeometry/CP137UI/K6a/fullmatchgate open."
+    },
+    {
+      "summary": "InheritedCP159checkerexactpreviouscounts1then2 failedagainstactual1then1; planned1or2/oneeffect criterion checkedinstead. Initialforbidanythirdabort correctedtoaftercompletioncleanupboundary; originalsource/log/rawretained, noproductguardrelaxation.",
+      "source": "design",
+      "status": "design",
+      "method": "documentation",
+      "canonical": "docs/PROTOCOL.md#exported-preset-runtime",
+      "evidence": [
+        "RUN-00003",
+        "RUN-01475",
+        "RUN-01477",
+        "RUN-01463"
+      ],
+      "limits": "2actualmodifiedWine/privatevirtualhosts/samephysicalhost/syntheticidentity/roster/map/rank/productionpolicy. Committedpinnedpreset47fixtures actualservicepath/nohold165/noactiveUDPreplay. 2normalcycles/outcomes/Ready thenthirdactive12199clock/render8s/noBomb, notthirdnormalmatch. CleanupEOF/abort3aftercompletion retained/notUIhostfaulttest. Currentstrictlife56to1 notrefutingCP157naturalunknown/CP158controlledcounteroverwrite. ActualroomtitleAcreate81Korean vsBfixed91KRRoom mismatchconfirmed/nativeknownschema, fixpending; notroomIDmismatch. No sourcebinary/DB/pack/gamewrite/newbodyRE. Fullauth/originalauthority/Windows/LAN/Internet/8clients/generalreset/sharedgeometry/CP137UI/K6a/fullmatchgate open."
+    }
+  ],
+  "verification": [
+    {
+      "check": "26exportedruntime/75pickup/10C2Sjoins/44cycle/689peer4windows/24loading/26entity195reset/23strictlife/4manualframes",
+      "result": "pass",
+      "evidence": [
+        "RUN-01342",
+        "RUN-01369",
+        "RUN-00009",
+        "RUN-00024",
+        "RUN-01341",
+        "RUN-01352",
+        "RUN-01482",
+        "RUN-01358",
+        "RUN-01481"
+      ],
+      "limits": "2actualmodifiedWine/privatevirtualhosts/samephysicalhost/syntheticidentity/roster/map/rank/productionpolicy. Committedpinnedpreset47fixtures actualservicepath/nohold165/noactiveUDPreplay. 2normalcycles/outcomes/Ready thenthirdactive12199clock/render8s/noBomb, notthirdnormalmatch. CleanupEOF/abort3aftercompletion retained/notUIhostfaulttest. Currentstrictlife56to1 notrefutingCP157naturalunknown/CP158controlledcounteroverwrite. ActualroomtitleAcreate81Korean vsBfixed91KRRoom mismatchconfirmed/nativeknownschema, fixpending; notroomIDmismatch. No sourcebinary/DB/pack/gamewrite/newbodyRE. Fullauth/originalauthority/Windows/LAN/Internet/8clients/generalreset/sharedgeometry/CP137UI/K6a/fullmatchgate open."
+    },
+    {
+      "check": "2184actor/444peer/2758flag+2730array/16life/321nativepacketmodelcases;3native81titleframer/CRCpartialcontrols",
+      "result": "pass",
+      "evidence": [
+        "RUN-00001",
+        "RUN-01368",
+        "RUN-01343",
+        "RUN-01359",
+        "RUN-01361",
+        "RUN-01413"
+      ],
+      "limits": "Copiednativeemulation notWinefunctioncall/sourceoriginalauthority/gate."
+    },
+    {
+      "check": "AUD048manualcore/authority/raw/evidence;1313raw98inputs/sourcehashreuse/docs/catalog/liveissues/artifacts/diff",
+      "result": "pass",
+      "evidence": [
+        "RUN-00018",
+        "RUN-01371",
+        "RUN-01415",
+        "RUN-01457",
+        "RUN-01340",
+        "RUN-01355",
+        "RUN-00008"
+      ],
+      "limits": "Mechanical checker notsemanticgate; fullcheckpointlocal/history beforecommit. OldCP157failure preserved."
+    }
+  ],
+  "evidence": [],
+  "evidence_manifests": [
+    {
+      "path": "docs/evidence/checkpoints/evidence/CP160-exported-preset-audit.json",
+      "bytes": 381299,
+      "sha256": "3b22733d15c88c5490bc73b91d5b5f3ff3e4d64ba4c385a213af2a847a64b02a",
+      "count": 1498
+    }
+  ],
+  "delta": {
+    "added": [
+      "Actualcommittedpreset/profilepath nativeproduction2normaloutcomes/Ready→Start3/clocks/render8s.",
+      "Currentactualroomtitlemismatch andnative81knownschema proof identifiesnextboundedservicetask.",
+      "AUD048periodicthrough160/nextCP164 manualcore/raw/authorityaudit."
+    ],
+    "corrected": [
+      "Currentauthoritylinks no longerCP156hold2s/UIpending; retainedoldcontracts/history.",
+      "Inheritedexactpreviousclaimcount1then2 notnewruncriterion; nativeactual1then1planned1or2/oneeffectpass, logsretained.",
+      "CleanupthirdEOFaftercompletionnotthirdmatchfailure/hosttest; initialcheckerassumption correctedexplicitly.",
+      "CP159PR230merged/currentnavigation; no retroactiveCP157cause orCP158naturalfixclaim."
+    ],
+    "superseded": [
+      "NEXT-EXPORTED-PRESET-SMOKE-AUDIT closedboundednativeproof/periodicAUD048; NEXT-CURRENT-ROOM-TITLE active."
+    ]
+  },
+  "blockers": [
+    "Actualhosttitlefromcreate81 notreflectedinfixedguest91; dynamicboundedtitleecho/nativecontext/runtimefixpending.",
+    "Fullauth/originalauthority/Windows/LAN/Internet/8clients/generalreset/sharedgeometry/CP137UI/K6a/fullmatch andnaturalCP157cause remainopen."
+  ],
+  "next_steps": [
+    {
+      "id": "NEXT-EXPORTED-PRESET-SMOKE-AUDIT",
+      "task": "KRE-005b",
+      "state": "closed",
+      "action": "CP160actualexportedpreset/runtime2normaloutcomes/Ready/normalStart3+nativeclock/render8s; periodicAUD048through160complete/nextCP164. No3rdnormalmatch/gate.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-CURRENT-ROOM-TITLE",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "PLAN reuseCP016/028/076knownstring81/row91/session87/context; boundedoptinechotitle/preflight/hash/shape/negativechecks/opaque-tail-preservation thennewcopyproductionactualAcreate/B91card/join87/UItitleA=B. Keepdefault/history, no nativebodyRE/fullschema/authclaim/wholeBattle rerunsunless needed.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    }
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-11-06T06:41:50.821109+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "Codex solo RE/runtime/manualAUD048/self-check; independent review waived, no gateclosure.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Owner explicitly requested solo without workers/review."
+    }
+  },
+  "docs_sync": [
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "CP160presetactualStart3/AUD048/authoritycurrentlinks/PR230merge/titlemismatchnext/cleanupandclaimcountanalysislimits syncedbeforecomplete."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "CP160presetactualStart3/AUD048/authoritycurrentlinks/PR230merge/titlemismatchnext/cleanupandclaimcountanalysislimits syncedbeforecomplete."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "updated",
+      "reason": "CP160presetactualStart3/AUD048/authoritycurrentlinks/PR230merge/titlemismatchnext/cleanupandclaimcountanalysislimits syncedbeforecomplete."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "updated",
+      "reason": "CP160presetactualStart3/AUD048/authoritycurrentlinks/PR230merge/titlemismatchnext/cleanupandclaimcountanalysislimits syncedbeforecomplete."
+    },
+    {
+      "path": "docs/features.json",
+      "state": "updated",
+      "reason": "CP160presetactualStart3/AUD048/authoritycurrentlinks/PR230merge/titlemismatchnext/cleanupandclaimcountanalysislimits syncedbeforecomplete."
+    },
+    {
+      "path": "docs/COVERAGE.md",
+      "state": "updated",
+      "reason": "CP160presetactualStart3/AUD048/authoritycurrentlinks/PR230merge/titlemismatchnext/cleanupandclaimcountanalysislimits syncedbeforecomplete."
+    },
+    {
+      "path": "docs/evidence/peer-endpoints/README.md",
+      "state": "updated",
+      "reason": "CP160presetactualStart3/AUD048/authoritycurrentlinks/PR230merge/titlemismatchnext/cleanupandclaimcountanalysislimits syncedbeforecomplete."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/review.json",
+      "state": "updated",
+      "reason": "CP160presetactualStart3/AUD048/authoritycurrentlinks/PR230merge/titlemismatchnext/cleanupandclaimcountanalysislimits syncedbeforecomplete."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
+      "state": "updated",
+      "reason": "CP160presetactualStart3/AUD048/authoritycurrentlinks/PR230merge/titlemismatchnext/cleanupandclaimcountanalysislimits syncedbeforecomplete."
+    },
+    {
+      "path": "server/README.md",
+      "state": "updated",
+      "reason": "CP160presetactualStart3/AUD048/authoritycurrentlinks/PR230merge/titlemismatchnext/cleanupandclaimcountanalysislimits syncedbeforecomplete."
+    }
+  ]
+}
