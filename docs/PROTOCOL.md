@@ -1,6 +1,6 @@
 # KR 00967 — contract tương thích client gốc
 
-Revision kr-legacy-contract-r1; cập nhật06/11/2026 JST (CP153; AUD046 quaCP152, kếCP156).
+Revision kr-legacy-contract-r1; cập nhật06/11/2026 JST (CP154; AUD046 quaCP152, kếCP156).
 **Contract có bằng chứng từng phần; chưa nghiệm thu full codec K2**.
 Lộ trình và thứ tự task chỉ giữ ở [REWRITE_PLAN — KRE](PLAN.md).
 Đây là contract của repo server KR. ADR0009 của bản viết lại là nguồn lịch sử để so sánh;
@@ -5358,3 +5358,50 @@ Fullworld/physics/identity/malformed/stale/generalreset/CP137complexUI/K6a/fullm
 8 client thật vẫn mở. Hai epoch contest và recipe loading blocker đã giải trong scope này; parent issue14
 và gate giữ mở. [PLAN](PLAN.md#current-order) tiếp acceptance còn thiếu, đặc biệt actualpendingguestEOF
 trên channel allTCPdirect thay route proxy CP144; [câu hỏi](RESEARCH.md#gap-disconnect-replacement).
+
+
+<a id="direct-contest-pending-eof"></a>
+### EOF thực của guest còn bom pending trên allTCPdirect — CP154
+
+**`kr_runtime/confirmed` trong owned fault; forfeit/fence là `design/emu_choice`.**
+[Recipe/raw/hash](evidence/peer-endpoints/README.md#cp154). Reuse CP144 actualownedEOF/107/slotclear/
+chief/110 và CP050/074/135 đã được dẫn ở nguồn đó; CP153 currentprofile/directroute/contest/loadinggate.
+Không RE body native mới hoặc đổi production. Khác biệt đang kiểm là **bỏ proxy khỏi đường TCP**;
+không áp benchmark pair-close hoặc latency proxy CP144 cho run này.
+
+Cùng run có hai contestedcycles/Ready trước fault: hai actualFire124/currentkey mỗi vòng, A thắng
+cả hai/B consumedreject, mộtFire165/view/onlyApower1→2/resetR2baseline. CP153 B thắng cả hai là run
+riêng, không cố định winner/slot trong controller. Bốn pha peer input có nativeapply/currentprogress;
+R1 bomA/ID1/power2 và R2 bomB/ID2/power1, currenttrapSHA→19/opposite21/native175180110/ranks2,1→1,2.
+Hai frame Ready2 đã xem; không dùng forfeit để bù một normal ending còn thiếu.
+
+Sau actualReady95/native110, normalAStart3 và actualA/B99/clock3/key12347. NormalBSpace tạo
+actual118→bomID3/owner1/cell9,3/power1,159 cho cảhai; chỉ sau đó revalidate CA-B PID/prefix/netns/comm
+rồi SIGKILL đúng copy B. Native/entity/EOF/timer được nối từ raw, không fake118/death hoặc gọi gamefunction.
+
+| Phép đo | Kết quả cùng run |
+|---|---|
+| PID CA-B trong namespace/controller | 512 (đối chiếu ownership, không hardcode) |
+| Fuse còn tại kill | 4.948958128s |
+| ServiceEOF từ mốc sau signal | 41.417847ms |
+| Barrier R1/R2/R3 | 4.993086s / 5.190699s / 4.960797s (<30s) |
+
+Service nhận EOF trực tiếp của B.3→listener3858, `peer_eof=true/reason=eof`; khôngTCPproxy/childforward/
+UDPproxy. Khoảng41ms là quan sát từ mốc record signal, không chứng minh trực tiếp nhanh hơn proxy
+hoặc chính xác thời điểm kernel đóng socket. Generation3 abort; deadlinejob3 trả `round_closed`,
+không158 bom3 và không B17/19 vòng3, kể cả khi chờ quá fuse+4s. Forfeit175/180 chỉ gửi A;
+B đã bị dừng nên không có bằng chứng B nhận chúng.
+
+A đọc175302/1803/errors0 lần3, rồi107 base6→rewind0→final1; slot1 expectedID2/actual2→0,
+110full6/errors0 và nativechiefgetter1. Typed107 `[1,2,0]`;110 lấy đúng fixture slot_A `[0,2,0]`,
+không suy layout từ chief1. Ảnh cuối đã xem: chỉ KRLocal, slotB trống/nútStart/chat guestleft.
+**Hai normal endings + một forfeit, không phải ba trận hoàn chỉnh.** Không Start4/accountresume/
+normalUIleave/halfclose/networkloss hoặc mọi EOF variant.
+
+Run422,640s/exit0/1283raw/96frozeninputs; 50directEOFchecks/43first2cycle/84contest/24loadinggate/
+14actualC2Sclaim/746peerassertions4windows,2664securefields+480peergetters native-model riêng.
+1316loading assertions gồm rawhash/actual99; không suy model thành originalauthority. Production/
+profile/deadline30s/2s165measurement/gateB32390onlyloading giữ; sourceCA/pack/DB không đổi.
+[PLAN](PLAN.md#current-order) tiếp tích hợp freshness còn thiếu trong cùng recipe, reuse CP145
+exactoldUDP/currentkeydrop thay vì RE lại consumer; standalone CP145 không bị coi unknown.
+Fullmatch/K6a/LAN/Internet/8client/Windows/fullauth/authority/generalreset/CP137UI vẫn mở.

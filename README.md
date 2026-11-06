@@ -41,16 +41,16 @@ Hai copy KR Wine đã chạy login/sảnh/phòng/Battle và các chu kỳ kết 
 [kim/reset](docs/PROTOCOL.md#needle-round-reset), [cứu hai chiều và hai kết quả](docs/PROTOCOL.md#rescue-two-results),
 [deep chain/reset](docs/PROTOCOL.md#recursive-chain-cycles) giữ phạm vi và giới hạn tại nguồn chuẩn.
 
-**Mốc mới CP153:** cùng một run, hai copy đã tranh Fire17 qua hai key; mỗi vòng có hai request thật,
-một winner/một hiệu ứng, rồi hai kết quả/reset và Ready cuối. Gate riêng observer thừa lúc load đưa
-hai barrier xuống5,94s/4,60s, giữ deadline30s. [Contract/giới hạn](docs/PROTOCOL.md#loading-hot-gate-contest),
-[raw/hash](docs/evidence/peer-endpoints/README.md#cp153). Chưa nghiệm thu fullmatch/K6a/LAN/Internet/8 client thật.
+**Mốc mới CP154:** cùng run có hai vòng tranh Fire/kết quả/reset/Ready, rồi ngắt copy B khi bom còn
+pending trên TCP trực tiếp. Service nhận EOF, job bom bị fence/không phát158 muộn; A về phòng và xóa slotB.
+[Contract/giới hạn](docs/PROTOCOL.md#direct-contest-pending-eof), [raw/hash](docs/evidence/peer-endpoints/README.md#cp154).
+Hai trận đã chơi và forfeit lượt3 được phân biệt; chưa nghiệm thu fullmatch/K6a/LAN/Internet/8 client thật.
 
-CP152 đã merge [PR223](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/223) tại`a92fdc2`;
-CP153 tự kiểm/chờ PR, [review waived](docs/evidence/checkpoints/review-waiver.json).
-Audit gần nhất **AUD046 qua152**, kỳ tiếp **CP156**. Theo [PLAN](docs/PLAN.md#current-order), tiếp kiểm
-acceptance còn thiếu trên route hiện tại; actualpendingguestEOF trước đây còn qua proxy. Fullauthority/
-Windows control/CP137complexUI/sharedgeometry/fullinventory và các gate còn mở.
+CP153 đã merge [PR224](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/224) tại`3468200`;
+CP154 tự kiểm/chờ PR, [review waived](docs/evidence/checkpoints/review-waiver.json).
+Audit **AUD046 qua152**, kỳ tiếp **CP156**. [PLAN](docs/PLAN.md#current-order) tiếp freshness trong recipe
+hiện tại; reuse CP145 oldUDP/keydrop đã biết, không RE lại consumer. Fullauth/Windows/authority/
+CP137complexUI/sharedgeometry/fullinventory/generalreset và gate giữ mở.
 
 Đích đầu: hai client thật chơi hai trận liên tiếp; mở bốn client và hardening sau đó.
 

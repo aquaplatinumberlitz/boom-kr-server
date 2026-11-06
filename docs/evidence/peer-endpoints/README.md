@@ -584,3 +584,36 @@ fullworld/originalauthority/Windows/generalreset/K6a/fullmatch/LAN/Internet/8rea
 CP153 tự kiểm/reviewwaived/chờPR; AUD046qua152/kế156. Đóng hai next-step hẹp loadrecipe/contested2epoch,
 không đóng issue14/gate. Tiếp PLAN currentallTCPdirectpendingguestEOF/nativeAcleanup thay proxyCP144,
 reuse raw/handler/recipe, không RE lại đã biết hoặc ghép các run cũ thành gate.
+
+
+<a id="cp154"></a>
+## CP154 — actualpendingBEOF trên allTCPdirect sau2contestedcycles
+
+Baseline CP153/[PR224](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/224) head`68c8003`/
+merge`3468200`; [contract](../../PROTOCOL.md#direct-contest-pending-eof),
+[câu hỏi](../../RESEARCH.md#gap-disconnect-replacement), [PLAN](../../PLAN.md#current-order).
+Reuse-question pin CP144/050/074/135 knownownedkill/native107-slotclear-chief/110 và currentCP153
+profile/directroute/contest/loadinggate. Controller copy nguyên block Start3/actualB118/ownership/
+kill/timeout/cleanup; GDB chỉ thêm knownnative107/slotclear/chief sites. Không scan body native mới,
+không port VN layout, không thay production/profile/30s/2s165/gateB32390onlyloading.
+
+Run`local/research/codex/direct-contest-pending-eof-r1/cycles` **422.640s/exit0/1283raw**,
+runSHA`1a7ae6edf73df8066fbe8a231a7878745741049059b628abf0ef49b59f9c1cdc`. `early_completion=two_normal_cycles_then_pending_guest_eof_return`;
+autoseal sau run/cleanup,96inputs hash giữ, namespace không PID/capture/service/Wine cleanup xong.
+NativeCAPID512/prefix/netns/comm revalidated trướckill, không dùng PID543 cũ củaCP144.
+
+50EOFchecks nối normalReady2→Start3/actual99/clock→B118pending→ownedkill→directserviceEOF;
+remainingfuse4.948958128s, EOFsau mốc after-signal41.417847ms
+(khoảng record-signal có giới hạn; không so tốc độ với proxyCP144). Job3round_closed/no158/noB17,19;
+chờ quá fuse+4s; forfeit chỉA. NativeA175180 lần3/107ID2→0/110chief1 và ảnh roomBempty/Start
+đã xem. Typed107[1,2,0]/110fixture[0,2,0] táchnativechief1; noStart4/Breceipt/3normalmatchesclaim.
+
+First2cycle43checks, contest84checks/Awinner cảhai key (BwinnerCP153 giữ riêng), captureclaim14checks/
+6actual124;746peerassertions/4windows,2664securefields+480peergetters native52A350model riêng;
+loading1316assertions gồmrawhash/actual99,24gatechecks/3clocks/view/restoreB32390. Không chạy lại
+codecbodyRE/model để đóng kiến thức đã biết.237serverchecks CP148 reuse sau so41sourcefiles unchanged,
+không nhận là vừa rerun.3originalPNGđãxem/hash ởvisual-review; 8ôUI không8realclients.
+
+Docs/issue14 cập nhật gapdirectEOFđãgiải và freshnessintegration kế, CP153PR224merge; snapshot CP153
+pendingPR giữlịch sử. CP154 tựkiểm/reviewwaived/chờPR, AUD046qua152/kế156. NoK6a/fullmatch/LAN/
+Internet/8players/authority/Windows/accountresume/generalreset; không rewrite raw/completehistory.
