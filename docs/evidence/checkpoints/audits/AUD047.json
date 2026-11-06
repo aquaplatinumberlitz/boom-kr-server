@@ -1,0 +1,91 @@
+{
+  "id": "AUD047",
+  "trigger": "periodic",
+  "completed_through": "CP156",
+  "recorded_utc": "2026-11-06T04:01:49.535273+00:00",
+  "auditor": "Codex manual self-audit; independent review waived",
+  "read_files": [
+    "README.md",
+    "docs/PLAN.md",
+    "docs/PROTOCOL.md",
+    "docs/RESEARCH.md",
+    "docs/evidence/peer-endpoints/README.md",
+    "docs/features.json",
+    "server/README.md",
+    "tools/export_probe_profile.py",
+    "tools/test_export_host_back.py",
+    "local/research/codex/k6a-acceptance-audit-r1/manual-criteria-read.json",
+    "local/research/codex/k6a-acceptance-audit-r1/normal-host-exit-gap.json",
+    "local/research/codex/direct-contest-host-eof-r1/partial-observation.json",
+    "local/research/codex/direct-contest-host-eof-r1/raw-seal.json",
+    "local/research/codex/direct-contest-host-eof-r2/cycles/run.json",
+    "local/research/codex/direct-contest-host-eof-r2/cycles/service-state.json",
+    "local/research/codex/direct-contest-host-eof-r2/cycles/client-B.log",
+    "local/research/codex/direct-contest-host-eof-r2/profile.json",
+    "local/research/codex/direct-contest-host-eof-r2/raw-seal.json",
+    "local/research/codex/direct-contest-host-eof-r2/runtime-preflight.json",
+    "local/research/codex/direct-contest-host-eof-r2/verify_host_eof.py",
+    "local/research/codex/direct-contest-host-eof-r2/direct-eof-verification.json",
+    "local/research/codex/direct-contest-host-eof-r2/contest-verification.json",
+    "local/research/codex/direct-contest-host-eof-r2/cycle-boundary-verification.json",
+    "local/research/codex/direct-contest-host-eof-r2/endpoint-peer-verification.json",
+    "local/research/codex/direct-contest-host-eof-r2/exact-old-verification.json",
+    "local/research/codex/direct-contest-host-eof-r2/life-agreement-verification.json",
+    "local/research/codex/direct-contest-host-eof-r2/world-reset-verification.json",
+    "local/research/codex/direct-contest-host-eof-r2/visual-review.json",
+    "local/research/codex/direct-contest-host-eof-r2/export-validation.json",
+    "local/research/codex/direct-contest-host-eof-r2/server-source-reuse.json",
+    "local/research/codex/direct-contest-host-eof-r2/export-tests.txt",
+    "local/research/codex/direct-contest-host-eof-r2/host-policy-tests.txt"
+  ],
+  "method": "Đọc README→PLAN→PROTOCOL (authority/current scope, K6a criteria và CP107/129/155/156)→RESEARCH→peer evidence; đối chiếu raw/service stream/timer/native107/chief110, partial staging, profile không có mode, source/test/export. Kiểm raw seal 1295 entries và hai bộ 97 frozen inputs. Không phải audit toàn bộ thân PROTOCOL hay semantic proof bằng checker.",
+  "findings": [
+    {
+      "id": "F1",
+      "stale": "Điều hướng authority cũ và nhãn full schema trước mọi demo làm lẫn unknown gốc với policy đã đo.",
+      "correction": "Liên kết proof CP156 hiện hành; giữ fullschema/auth/originalauthority unknown, phân biệt scope dùng policy. Không sửa gate acceptance.",
+      "fixed_in": [
+        "docs/PROTOCOL.md"
+      ]
+    },
+    {
+      "id": "F2",
+      "stale": "Guest EOF dễ bị coi thay host EOF hoặc normal UI Back; current profile chưa có hai mode exit/rejoin.",
+      "correction": "Ghi host EOF actual/pending/fence/B promotion và giới hạn; normal UI20286 là bước kế, reuse CP129. Export/test sau cleanup chỉ là implementation.",
+      "fixed_in": [
+        "README.md",
+        "docs/PLAN.md",
+        "docs/PROTOCOL.md",
+        "docs/RESEARCH.md",
+        "server/README.md"
+      ]
+    },
+    {
+      "id": "F3",
+      "stale": "CP155/PR226 và các next-step acceptance/audit cũ chưa phản ánh kết quả mới.",
+      "correction": "Ghi PR226 merged; cập nhật current next-step và catalog, issue14 vẫn mở. Không sửa record complete CP155.",
+      "fixed_in": [
+        "README.md",
+        "docs/PLAN.md",
+        "docs/RESEARCH.md",
+        "docs/features.json",
+        "docs/COVERAGE.md",
+        "docs/evidence/issue-reconciliation/review.json"
+      ]
+    },
+    {
+      "id": "F4",
+      "stale": "R1 staging failure hoặc đổi tolerance có thể bị đọc thành native cleanup failure/fix.",
+      "correction": "Giữ r1 partial/no hostfault, r2 20→30 chỉ controller staging; raw/config/source seal và source reuse rõ ràng. Không suy causal native input fix.",
+      "fixed_in": [
+        "docs/PROTOCOL.md",
+        "docs/evidence/peer-endpoints/README.md"
+      ]
+    }
+  ],
+  "remaining": [
+    "CP156 cần commit/push/PR/exact-head/merge; next periodic CP160, counter không reset.",
+    "Current normal host UI Back integration bằng known CP129 mode trên copy mới; noBomb/noaccepted17,19. EOF không chứng minh UI exit/rejoin/Start4.",
+    "K6a/fullmatch/Windows/fullauth/originalauthority/LAN/Internet/8 real clients/generalreset/sharedgeometry/CP137 complexUI giữ mở."
+  ]
+}

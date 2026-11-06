@@ -41,16 +41,16 @@ Hai copy KR Wine đã chạy login/sảnh/phòng/Battle và các chu kỳ kết 
 [kim/reset](docs/PROTOCOL.md#needle-round-reset), [cứu hai chiều và hai kết quả](docs/PROTOCOL.md#rescue-two-results),
 [deep chain/reset](docs/PROTOCOL.md#recursive-chain-cycles) giữ phạm vi và giới hạn tại nguồn chuẩn.
 
-**Mốc mới CP155:** cùng một run đã có oldUDP→nativekeydrop/currentpositive, hai vòng tranhFire/
-movement/trapped-dead/kết quả/reset/Ready, rồi pendingBEOF/directservice/fence/nativeAcleanup.
-[Contract/giới hạn](docs/PROTOCOL.md#direct-oldudp-contest-eof), [raw và run partial](docs/evidence/peer-endpoints/README.md#cp155).
-Trạng thái native hai view đã đối chiếu trước rank; chưa nghiệm thu K6a/LAN/Internet/8 client thật.
+**Mốc mới CP156:** sau2normalcontests/oldUDP/keyreset/Ready, ownedhostAEOF khi bompending không làm B
+kẹt: servicefence/no158, B xóa slotA và lênchủphòng/Start. [Contract/giới hạn](docs/PROTOCOL.md#direct-host-eof-acceptance),
+[raw/partial](docs/evidence/peer-endpoints/README.md#cp156), [đối chiếuK6a](docs/PROTOCOL.md#local-demo-acceptance).
+HostEOF khác bấmthoát trận; currentnormalhostUIBack là bước kế, không tự nghiệmthu K6a/LAN/Internet/8client.
 
-CP154 đã merge [PR225](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/225) tại`b766222`;
-CP155 tự kiểm/chờ PR, [review waived](docs/evidence/checkpoints/review-waiver.json).
-Audit **AUD046 qua152**, kỳ bắt buộc kế **CP156**. [PLAN](docs/PLAN.md#current-order) tiếp đối chiếu từng
-acceptance K6a/authority với bằng chứng cùng-run, chọn đúng khoảng trống còn thiếu. Fullauth/Windows/
-CP137complexUI/sharedgeometry/fullinventory/generalreset và các gate giữ mở.
+CP155 đã merge [PR226](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/226) tại`2b9249e`;
+CP156 tự kiểm/chờPR; [review waived](docs/evidence/checkpoints/review-waiver.json).
+Audit **AUD047 qua156**, kỳ tiếp **CP160**. Đã thêm option export knownhostBack policy saucleanup;
+runtimeUI20286 cònpending theo [PLAN](docs/PLAN.md#current-order). Fullauth/Windows/originalauthority/
+CP137complexUI/sharedgeometry/generalreset và cácgate giữmở.
 
 Đích đầu: hai client thật chơi hai trận liên tiếp; mở bốn client và hardening sau đó.
 

@@ -243,3 +243,13 @@ cấu hình sai/variant khác bị chặn trước listen. Profile legacy `seque
 được nhận khi bytes khớp native seq52; không đổi metadata/profile để chạy.
 [Contract/giới hạn/native proof](../docs/PROTOCOL.md#service-channel-endpoint).
 Operator phải cô lập mạng theo AGENTS; endpoint này không là tự chọn kênh/account authority/NAT.
+
+
+### Export normalhost Battle exit đã phục hồi — CP156
+
+`python3 tools/export_probe_profile.py --source-root local/research/codex --out local/host-exit-profile.json --host-battle-exit`
+xuất opt-in `host_A_202_86` và tự kèm idlehostBack/rejoin cùng5fixture dependencies đã đo. Default và
+`--host-back-rejoin` cũ giữ nguyên. Đây là knownpolicy noBomb/noaccepted17,19, không fullleavehandler.
+[Contract/acceptance](../docs/PROTOCOL.md#direct-host-eof-acceptance) tách currenthostEOF/Bpromotion
+đã đo khỏi normalUI20286 currentprofile cònpending; export/preflight/tests không là nativeUI proof.
+Không ghi đè profile frozen hoặc rawfixture: export file mới, kiểmhash và chạy theo recipe cô lập.

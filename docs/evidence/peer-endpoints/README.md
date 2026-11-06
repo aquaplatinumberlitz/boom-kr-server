@@ -660,3 +660,45 @@ hash ởvisual-review; no8realclients/Start4/CP137UIcauseclaim.
 CP155 tự kiểm/reviewwaived/chờPR; CP154mergePR225 cập nhậtcurrentdocs/issue14, lịch sử immutable giữ.
 AUD046qua152; **CP156 audit bắt buộc**. Tiếp đối chiếu acceptanceK6a/authority và gapthực tế theoPLAN,
 không tự nâng gate hoặc randomrerun. Fullmatch/LAN/Internet/8realclients/Windows/fullauth/generalreset mở.
+
+
+<a id="cp156"></a>
+## CP156 — host EOF/Bpromotion, manualacceptance và AUD047
+
+Baseline CP155/[PR226](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/226) head`52a16da`/
+merge`2b9249e`; [contract](../../PROTOCOL.md#direct-host-eof-acceptance),
+[acceptance table](../../PROTOCOL.md#local-demo-acceptance), [PLAN](../../PLAN.md#current-order).
+Sourcefirst CP155currentcombinedrecipe, CP050/053serviceclose/promotion, CP107/129known107/slotclear/
+chief/110 vàhostUI20286 provenance. No newnativebody/codec/consumerRE. Đối chiếuK6hostdeparture chỉra
+rằng guestEOFkhôngthayhostEOF, và cảhaiEOFkhôngthaynormalUIBack. TCPnegativeCP148source vẫnđúng,
+không tựbiếnthànhđiềukiệnmớiK6a đểlặp run. Artifact/sourcebinary/DB/pack vàfrozenproducer giữ.
+
+| Run local/research/codex/ | Giây/exit/raw | run.json SHA256 |
+|---|---:|---|
+| direct-contest-host-eof-r1/cycles | 305.992s / 1 / 991 | `eb5cf6cf219737c5afc3bf2abdc11cc00ead574f336d0da92028f95292112090` |
+| direct-contest-host-eof-r2/cycles | 417.374s / 0 / 1295 | `77e511b38eb2804373f554ae8d0cbda28ae0b229680eb6cbb775a701b69b4685` |
+
+r1partial: R1normalending, R2clocks/oldUDP nhưngA199±20 chỉ159↔224/229/20pulse, chưaFire124R2/hostfault.
+`partial-observation` giữcoordinates/time/error/nofault. r2copy chỉtwoapproach tolerance20→30; assertion
+Fireunclaimed/actualrace/twoactual124/onewinner/nativeeffects giữ, không force actor hoặcclaim/winner.
+Không suy vìr2pass mà oldUDP/inputtiming causalfixed.97inputs verify từngrun/cleanup/seal đầyđủ.
+
+r2full:50hostEOFchecks sau2normalcycles/Ready/currentoldUDP. ActualA118ID3owner0/row3col3/power1,
+ownedPID163/prefix/netns/comm revalidated; killcòn5,113133827s, directserviceEOF42,465609ms sauafter-signal.
+Job3round_closed/no158/noA17,19; B nhậnthirdforfeit175180/native107slot0ID1→0/110promote_B/chief1;
+3PNGReadyA/B/Broom chỉKRGuest/chieflabel/Start đãxem/hash ởvisual-review. NoStart4/killedAreceipt/
+UI20286/fullleave/3normalmatchesclaim.26nativeentity195flagchecks/575peerassertions4windows/
+84contestBwinnerr1/Awinnerr2/43first2cycles/14captureclaims/19exactoldUDPchecks+12currentapply/
+24loadinggate/23lifeagreement;2460actor/372peer/132UDP/16life/2758flag+2730array native-model riêng.
+1328loadingassertions gồmrawhash/actual99, không cộng modelcounts thànhgate hoặcworldauthority.
+
+Saucleanup mới sửa tools/export_probe_profile.py:--host-battle-exit kèmknownmode+dependency5aliases.
+2exporttests/24hostpolicytests pass,46realfixturehash/servicepreflightpass, snapshotfinal-tool-source pinSHA;
+đây làdesign/toolimplementation, chưa currentnativeUI20286. Server41sourcefiles vẫngiốngCP155/148;
+237fullserverchecks reuse,24relatedtests vừa rerun đểkiểm knownmodeprereq. No runtimeproducer/configchange.
+
+AUD047 đọc core docs→authority/currentcontracts→evidence vớiraw/report/config/source/tests; localmanual
+criteria/draft ởk6a-acceptance-audit-r1 pin nguồn, canonicaltable ởPROTOCOL (khôngtracker/planmới).
+Sửa authoritynavigation quá cũ và nhãnfullschema-before-anydemo, giữunknownscope; updatePR226merge/
+EOF-vs-normalBack/gapactive, khôngđónggatebằngscript. Counterqua156/kế160, recordcompletehistory/raw giữ.
+CP156Codexselfcheck/waivedreview/chờPR; tiếp knownnormalhostUIBack integration, khôngRE lại107/110.

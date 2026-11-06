@@ -65,6 +65,8 @@ def main():
                         help='optional measured KR175 rank2/2 fixture under source-root (base seq91)')
     parser.add_argument('--host-back-rejoin', action='store_true',
                         help='opt-in measured idle A Back/B promotion/A rejoin fixture policy (CP035)')
+    parser.add_argument('--host-battle-exit', action='store_true',
+                        help='opt-in measured unbombed host A Battle exit (CP129); includes host Back/rejoin fixtures')
     args = parser.parse_args()
     local = Path(__file__).resolve().parents[1] / 'local'
     root = args.source_root.resolve(strict=True)
@@ -77,7 +79,7 @@ def main():
               'initial_key': 12345, 'spawn_layout': args.spawn_layout,
               'item_layout': args.item_layout, 'fixtures': {}}
     fixtures = dict(FIXTURES)
-    if args.host_back_rejoin:
+    if args.host_back_rejoin or args.host_battle_exit:
         result['host_back_rejoin'] = {'mode': 'idle_A_to_B'}
         fixtures.update({
             'join_A': ('rejoin-r1/reply87-A-session1.bin', 55),
@@ -86,6 +88,8 @@ def main():
             'guest_B_chief': ('rejoin-r1/B106-chief.bin', 58),
             'ready_A': ('rejoin-r1/A110-ready.bin', 100),
         })
+    if args.host_battle_exit:
+        result['battle_exit'] = {'mode': 'host_A_202_86'}
     if args.spawn_layout == 'overlap':
         fixtures['start'] = ('collision-r1/overlap121.bin', 73)
     if args.item_layout in ('hidden', 'battle'):
