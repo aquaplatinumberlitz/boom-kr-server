@@ -1,0 +1,1944 @@
+{
+  "schema": "kre-evidence-manifest-v1",
+  "evidence": [
+    {
+      "id": "LIVE-00001",
+      "kind": "local",
+      "path": "local/research/codex/k2-live-stream-r1/source-first-reuse.json",
+      "bytes": 4819,
+      "sha256": "ad9bd6ab9b9355e5066474d6a58337cb55507209e4eb48435d64e566c4a0331b"
+    },
+    {
+      "id": "LIVE-00002",
+      "kind": "local",
+      "path": "local/research/codex/k2-live-stream-r1/transport_service.py",
+      "bytes": 1500,
+      "sha256": "c389ae41df8ec8f584e6512f3d6d44d95ccd35191c0d47c4c71d82e818ea361a"
+    },
+    {
+      "id": "LIVE-00003",
+      "kind": "local",
+      "path": "local/research/codex/k2-live-stream-r1/native_probe.py",
+      "bytes": 2427,
+      "sha256": "5f9266d6a3949732673d1151cf50cd126bdbe16e80e1d92b570841414285dcad"
+    },
+    {
+      "id": "LIVE-00004",
+      "kind": "local",
+      "path": "local/research/codex/k2-live-stream-r1/stream.gdb",
+      "bytes": 416,
+      "sha256": "1a5bfdc288a3bb9fbda12479907ceca48b86d1ea6ed40ca059dafd12ff368f45"
+    },
+    {
+      "id": "LIVE-00005",
+      "kind": "local",
+      "path": "local/research/codex/k2-live-stream-r1/prepare.py",
+      "bytes": 3650,
+      "sha256": "bd2c616da90d7562bae36cfa7d32698cd3fe0dea54c398e6477f5022929f0569"
+    },
+    {
+      "id": "LIVE-00006",
+      "kind": "local",
+      "path": "local/research/codex/k2-live-stream-r1/profile.json",
+      "bytes": 15535,
+      "sha256": "69ad6ba7eb0ab89f8cc49f23cd3ca3ad3003666c5379f55c5d28eee5dcc6822b"
+    },
+    {
+      "id": "LIVE-00007",
+      "kind": "local",
+      "path": "local/research/codex/k2-live-stream-r1/preparation.json",
+      "bytes": 9937,
+      "sha256": "b582fd8117dbe0a5fe88ae7dafb9ee2d97eb9728025f4930e42a3ec3ee2c084d"
+    },
+    {
+      "id": "LIVE-00008",
+      "kind": "local",
+      "path": "local/research/codex/k2-live-stream-r1/stream-r1-recipe.json",
+      "bytes": 999,
+      "sha256": "0a870e1c466438fac1496ba433d08271cecc8959890cd9a7e00edbf681f7587a"
+    },
+    {
+      "id": "LIVE-00009",
+      "kind": "local",
+      "path": "local/research/codex/k2-live-stream-r1/stream-r1-launcher.log",
+      "bytes": 10686,
+      "sha256": "cd469c57a8e9a4852a9acde700c9cc2addaec0c2a6257ec51c12c5fa21c9fcde"
+    },
+    {
+      "id": "LIVE-00010",
+      "kind": "local",
+      "path": "local/research/codex/k2-live-stream-r1/crc_negative_service.py",
+      "bytes": 1291,
+      "sha256": "f3fbd4344397a65273db96d93c31be15ba82cdbacc4b7697aaee7fd0c14e6d4e"
+    },
+    {
+      "id": "LIVE-00011",
+      "kind": "local",
+      "path": "local/research/codex/k2-live-stream-r1/crc-negative-r1-recipe.json",
+      "bytes": 1006,
+      "sha256": "c69bb15013d90b8b0616b531e2090145d769926accec54eb9dddd5cc5d99709e"
+    },
+    {
+      "id": "LIVE-00012",
+      "kind": "local",
+      "path": "local/research/codex/k2-live-stream-r1/crc-negative-preparation.json",
+      "bytes": 9335,
+      "sha256": "a57a127eefd024e82115f1ceae09a609fabee9435350850417968442946bc9cc"
+    },
+    {
+      "id": "LIVE-00013",
+      "kind": "local",
+      "path": "local/research/codex/k2-live-stream-r1/crc-negative-r1-launcher.log",
+      "bytes": 6010,
+      "sha256": "7157e4b818b7ec583a419422930ee1b10da458cc39e4185b93095fcd4f21c649"
+    },
+    {
+      "id": "LIVE-00014",
+      "kind": "local",
+      "path": "local/research/codex/k2-live-stream-r1/verify_results.py",
+      "bytes": 6875,
+      "sha256": "1b33fd14da9646432b4f40ef6f790ea306030f6f07e68bd5f0fd4d84c9ef392b"
+    },
+    {
+      "id": "LIVE-00015",
+      "kind": "local",
+      "path": "local/research/codex/k2-live-stream-r1/verification.json",
+      "bytes": 42628,
+      "sha256": "3f7a18d43fcdcab9572c415f0c6ad9282deb2a4b57b6c30c209f8fc2a89f5a7e"
+    },
+    {
+      "id": "LIVE-00016",
+      "kind": "local",
+      "path": "local/research/codex/k2-live-stream-r1/sync_cp180.py",
+      "bytes": 18183,
+      "sha256": "49a000ad6edc1d2e5f0b14bb196bda21485fc23239f715d8b50dcb77207755b7"
+    },
+    {
+      "id": "LIVE-00017",
+      "kind": "local",
+      "path": "local/research/codex/k2-live-stream-r1/gate-criteria-equality.json",
+      "bytes": 102,
+      "sha256": "4cf9c1f7890074177a8cb8cedeaa1536351d06e38cbd942bda360947678ef56e"
+    },
+    {
+      "id": "LIVE-00018",
+      "kind": "local",
+      "path": "local/research/codex/k2-live-stream-r1/issue3-before.json",
+      "bytes": 3093,
+      "sha256": "f8a589ff85f92bf040d9712daebe188c9ffa2c0fb4e60bf52c17df0d1171f347"
+    },
+    {
+      "id": "LIVE-00019",
+      "kind": "local",
+      "path": "local/research/codex/k2-live-stream-r1/issue3-body.md",
+      "bytes": 3587,
+      "sha256": "722c007daff438760620d57b23e0b29df3bdd3a586bff851bbcecbea1d21e8a4"
+    },
+    {
+      "id": "LIVE-00020",
+      "kind": "local",
+      "path": "local/research/codex/k2-live-stream-r1/issue14-before.json",
+      "bytes": 3280,
+      "sha256": "0bda83d6d593cd29dbfc0f5c54ed18d3709abd6e3236143dc656d00e5b4c75eb"
+    },
+    {
+      "id": "LIVE-00021",
+      "kind": "local",
+      "path": "local/research/codex/k2-live-stream-r1/issue14-body.md",
+      "bytes": 3466,
+      "sha256": "c5354ea09fc5a50f5800490d8bca477b850bfe30bb21e515db272b1e0d3db38f"
+    },
+    {
+      "id": "LIVE-00022",
+      "kind": "local",
+      "path": "local/research/codex/k2-live-stream-r1/issue-release-capture.txt",
+      "bytes": 65,
+      "sha256": "67d03652346f3687abacbdfbcb4e49a63186a3cc8e100c75a3b3299969922bee"
+    },
+    {
+      "id": "LIVE-00023",
+      "kind": "local",
+      "path": "local/research/codex/k2-live-stream-r1/github-release-snapshot.json",
+      "bytes": 207889,
+      "sha256": "4d12bb597780960fd99538e89d9512b6259f5b512d8fa498feeefeeb0deb1bfd"
+    },
+    {
+      "id": "LIVE-00024",
+      "kind": "local",
+      "path": "local/research/codex/k2-live-stream-r1/artifacts-final-check.txt",
+      "bytes": 253,
+      "sha256": "649c6624aa6d317dfc1db5e16fea683cfbc9d9cf4dd3df11c0d70e57409054a0"
+    },
+    {
+      "id": "LIVE-00025",
+      "kind": "local",
+      "path": "local/research/codex/k2-live-stream-r1/append_cp180.py",
+      "bytes": 10540,
+      "sha256": "68e5f9a1c8423a1dd00f1b7e22869f5dcdf809a14f92163a072f33370daea152"
+    },
+    {
+      "id": "LIVE-00026",
+      "kind": "local",
+      "path": "local/research/codex/k2-live-stream-r1/stream-r1/nsswitch.conf",
+      "bytes": 307,
+      "sha256": "c18e474cd61df8648ee02ac7a9c76b8d6c7782d8b212f925e6980f20af5cc838"
+    },
+    {
+      "id": "LIVE-00027",
+      "kind": "local",
+      "path": "local/research/codex/k2-live-stream-r1/stream-r1/hosts",
+      "bytes": 121,
+      "sha256": "32a007c62d2887ae9f8d3c30d1ff7cb3902e6e1e0c75c5a978ee556cc8ea71f8"
+    },
+    {
+      "id": "LIVE-00028",
+      "kind": "local",
+      "path": "local/research/codex/k2-live-stream-r1/stream-r1/service.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "LIVE-00029",
+      "kind": "local",
+      "path": "local/research/codex/k2-live-stream-r1/stream-r1/CALog-before.txt",
+      "bytes": 1839,
+      "sha256": "961379bebe9614ccc0bc902748faec2bd42ff9186f6b076020c2d1483a012964"
+    },
+    {
+      "id": "LIVE-00030",
+      "kind": "local",
+      "path": "local/research/codex/k2-live-stream-r1/stream-r1/xvfb.log",
+      "bytes": 2808,
+      "sha256": "46b8747df8a2fc8b6a469b2374ea3d0c6c786dc3dcf2a9be13d94ce76ed3a1a7"
+    },
+    {
+      "id": "LIVE-00031",
+      "kind": "local",
+      "path": "local/research/codex/k2-live-stream-r1/stream-r1/wineboot.log",
+      "bytes": 64844,
+      "sha256": "dbc658ebb6db47e371ed7ffd5f2fec939ca73adbbb5cc71a31e991b3211b317b"
+    },
+    {
+      "id": "LIVE-00032",
+      "kind": "local",
+      "path": "local/research/codex/k2-live-stream-r1/stream-r1/debug-commands.txt",
+      "bytes": 416,
+      "sha256": "1a5bfdc288a3bb9fbda12479907ceca48b86d1ea6ed40ca059dafd12ff368f45"
+    },
+    {
+      "id": "LIVE-00033",
+      "kind": "local",
+      "path": "local/research/codex/k2-live-stream-r1/stream-r1/client.log",
+      "bytes": 150213,
+      "sha256": "7de2b8d467614ba7ac2745ce18869ff9758d2afb4df36540bef2984fe80b6e07"
+    },
+    {
+      "id": "LIVE-00034",
+      "kind": "local",
+      "path": "local/research/codex/k2-live-stream-r1/stream-r1/windows-00.txt",
+      "bytes": 166,
+      "sha256": "28ae29836d791dcd3302b447a52a8f0fa3f9a192abbc33a27751e23d7ebe0d43"
+    },
+    {
+      "id": "LIVE-00035",
+      "kind": "local",
+      "path": "local/research/codex/k2-live-stream-r1/stream-r1/processes-00.txt",
+      "bytes": 3593,
+      "sha256": "86e21ca0cd9595870bbe092be84bd1ad6cec0345cd7447e3acdbb19d270bcddc"
+    },
+    {
+      "id": "LIVE-00036",
+      "kind": "local",
+      "path": "local/research/codex/k2-live-stream-r1/stream-r1/screen-00.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "LIVE-00037",
+      "kind": "local",
+      "path": "local/research/codex/k2-live-stream-r1/stream-r1/windows-01.txt",
+      "bytes": 872,
+      "sha256": "c8c8cfe9c5b9bb2ccde16b4b959b165ed33d50824f3fbd29834c16b6f0e63586"
+    },
+    {
+      "id": "LIVE-00038",
+      "kind": "local",
+      "path": "local/research/codex/k2-live-stream-r1/stream-r1/processes-01.txt",
+      "bytes": 4351,
+      "sha256": "cf78a5bbbc04375b9d3ab887cb16d27ec38479e742791654ca618ac56dc1dd24"
+    },
+    {
+      "id": "LIVE-00039",
+      "kind": "local",
+      "path": "local/research/codex/k2-live-stream-r1/stream-r1/screen-01.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "LIVE-00040",
+      "kind": "local",
+      "path": "local/research/codex/k2-live-stream-r1/stream-r1/windows-02.txt",
+      "bytes": 872,
+      "sha256": "c8c8cfe9c5b9bb2ccde16b4b959b165ed33d50824f3fbd29834c16b6f0e63586"
+    },
+    {
+      "id": "LIVE-00041",
+      "kind": "local",
+      "path": "local/research/codex/k2-live-stream-r1/stream-r1/processes-02.txt",
+      "bytes": 4351,
+      "sha256": "bc0760bd8686937a3facbee14051406ce85aa047b132b900e9cb8d9488f8abaa"
+    },
+    {
+      "id": "LIVE-00042",
+      "kind": "local",
+      "path": "local/research/codex/k2-live-stream-r1/stream-r1/screen-02.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "LIVE-00043",
+      "kind": "local",
+      "path": "local/research/codex/k2-live-stream-r1/stream-r1/transport-writes.jsonl",
+      "bytes": 4666,
+      "sha256": "9b6542201704b86805aa9e18ea5409828e8b3b2a7660ca85a2f4760683a706e1"
+    },
+    {
+      "id": "LIVE-00044",
+      "kind": "local",
+      "path": "local/research/codex/k2-live-stream-r1/stream-r1/windows-03.txt",
+      "bytes": 1311,
+      "sha256": "79f14ed4dc9ec340cb32d82ec0c77a2262196d736b814194ac0ee379704f762b"
+    },
+    {
+      "id": "LIVE-00045",
+      "kind": "local",
+      "path": "local/research/codex/k2-live-stream-r1/stream-r1/processes-03.txt",
+      "bytes": 4351,
+      "sha256": "24c003cdb7c01e484808952c9d446f2d6ca44a7ac33217faad8f041e126253e8"
+    },
+    {
+      "id": "LIVE-00046",
+      "kind": "local",
+      "path": "local/research/codex/k2-live-stream-r1/stream-r1/screen-03.png",
+      "bytes": 19847,
+      "sha256": "2178ceb11e92e5f95694ca8a855de0750fb1a93dfe6e02a13c1856b080d16654"
+    },
+    {
+      "id": "LIVE-00047",
+      "kind": "local",
+      "path": "local/research/codex/k2-live-stream-r1/stream-r1/windows-04.txt",
+      "bytes": 1311,
+      "sha256": "79f14ed4dc9ec340cb32d82ec0c77a2262196d736b814194ac0ee379704f762b"
+    },
+    {
+      "id": "LIVE-00048",
+      "kind": "local",
+      "path": "local/research/codex/k2-live-stream-r1/stream-r1/processes-04.txt",
+      "bytes": 4351,
+      "sha256": "fd035099d5e20d32ea310f144cef228ffac5b3eb656881531b7e8743aab6de4d"
+    },
+    {
+      "id": "LIVE-00049",
+      "kind": "local",
+      "path": "local/research/codex/k2-live-stream-r1/stream-r1/screen-04.png",
+      "bytes": 13437,
+      "sha256": "e47c2919c72588bea5f3e5b8ebda4d9823a66e8864f6b86ed6f85d9e19598218"
+    },
+    {
+      "id": "LIVE-00050",
+      "kind": "local",
+      "path": "local/research/codex/k2-live-stream-r1/stream-r1/windows-05.txt",
+      "bytes": 1311,
+      "sha256": "79f14ed4dc9ec340cb32d82ec0c77a2262196d736b814194ac0ee379704f762b"
+    },
+    {
+      "id": "LIVE-00051",
+      "kind": "local",
+      "path": "local/research/codex/k2-live-stream-r1/stream-r1/processes-05.txt",
+      "bytes": 4351,
+      "sha256": "0d2e54bc5ff23cf03341722f273bd9ee692eafc284feae03a36d41d5108c2029"
+    },
+    {
+      "id": "LIVE-00052",
+      "kind": "local",
+      "path": "local/research/codex/k2-live-stream-r1/stream-r1/screen-05.png",
+      "bytes": 191427,
+      "sha256": "637aedb21cd25df5263d99401e7a838add696298b7e5033e1e973fae6c801e8b"
+    },
+    {
+      "id": "LIVE-00053",
+      "kind": "local",
+      "path": "local/research/codex/k2-live-stream-r1/stream-r1/windows-06.txt",
+      "bytes": 1311,
+      "sha256": "79f14ed4dc9ec340cb32d82ec0c77a2262196d736b814194ac0ee379704f762b"
+    },
+    {
+      "id": "LIVE-00054",
+      "kind": "local",
+      "path": "local/research/codex/k2-live-stream-r1/stream-r1/processes-06.txt",
+      "bytes": 4351,
+      "sha256": "363a749fd1924b2173ebac890bc73df5c325592dcf5f3f8f1b6c421902250d99"
+    },
+    {
+      "id": "LIVE-00055",
+      "kind": "local",
+      "path": "local/research/codex/k2-live-stream-r1/stream-r1/screen-06.png",
+      "bytes": 197155,
+      "sha256": "95ee6fb63898e745d1f1e14f512e5c84106bf5a34b14581dc3d96d2029be88db"
+    },
+    {
+      "id": "LIVE-00056",
+      "kind": "local",
+      "path": "local/research/codex/k2-live-stream-r1/stream-r1/windows-07.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "LIVE-00057",
+      "kind": "local",
+      "path": "local/research/codex/k2-live-stream-r1/stream-r1/processes-07.txt",
+      "bytes": 4351,
+      "sha256": "5ab3b18c6fc5aeee6cdabff5736796b4e2a6f9c490aca5485ed102cde9921ed4"
+    },
+    {
+      "id": "LIVE-00058",
+      "kind": "local",
+      "path": "local/research/codex/k2-live-stream-r1/stream-r1/screen-07.png",
+      "bytes": 148129,
+      "sha256": "0ac208d8a40f9b8fd3446cf9ac543c7c5d06f73cfc6e8a61d7f0b85b076af903"
+    },
+    {
+      "id": "LIVE-00059",
+      "kind": "local",
+      "path": "local/research/codex/k2-live-stream-r1/stream-r1/windows-08.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "LIVE-00060",
+      "kind": "local",
+      "path": "local/research/codex/k2-live-stream-r1/stream-r1/processes-08.txt",
+      "bytes": 4351,
+      "sha256": "f22e96221ef57e0301c11c2a8c75394993faacffb6f6087fcca88bd665b1d459"
+    },
+    {
+      "id": "LIVE-00061",
+      "kind": "local",
+      "path": "local/research/codex/k2-live-stream-r1/stream-r1/screen-08.png",
+      "bytes": 149199,
+      "sha256": "b352a990ca8a4e16d7ed7d724ff5f83de83c0c8b12621421073174bf54455f8d"
+    },
+    {
+      "id": "LIVE-00062",
+      "kind": "local",
+      "path": "local/research/codex/k2-live-stream-r1/stream-r1/windows-09.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "LIVE-00063",
+      "kind": "local",
+      "path": "local/research/codex/k2-live-stream-r1/stream-r1/processes-09.txt",
+      "bytes": 4351,
+      "sha256": "90a07cf693f5f91d5dda92a23fe72e03440fd7f2f9294069b3b6dad8d8c19ac6"
+    },
+    {
+      "id": "LIVE-00064",
+      "kind": "local",
+      "path": "local/research/codex/k2-live-stream-r1/stream-r1/screen-09.png",
+      "bytes": 144062,
+      "sha256": "9f136bc7f0e7a9c78419e863b05f110a4599e112ebe94cbcdb0a0e7a0317a6fa"
+    },
+    {
+      "id": "LIVE-00065",
+      "kind": "local",
+      "path": "local/research/codex/k2-live-stream-r1/stream-r1/windows-10.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "LIVE-00066",
+      "kind": "local",
+      "path": "local/research/codex/k2-live-stream-r1/stream-r1/processes-10.txt",
+      "bytes": 4351,
+      "sha256": "322cd752fc6dd7af8892feea54e3ca3fd6ef4040b20f8be0ff86a2fd85df217b"
+    },
+    {
+      "id": "LIVE-00067",
+      "kind": "local",
+      "path": "local/research/codex/k2-live-stream-r1/stream-r1/screen-10.png",
+      "bytes": 144186,
+      "sha256": "23d091695e69a3a075076def670064c75393b5a85610d1fbdb7881018f5a48ec"
+    },
+    {
+      "id": "LIVE-00068",
+      "kind": "local",
+      "path": "local/research/codex/k2-live-stream-r1/stream-r1/windows-11.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "LIVE-00069",
+      "kind": "local",
+      "path": "local/research/codex/k2-live-stream-r1/stream-r1/processes-11.txt",
+      "bytes": 4351,
+      "sha256": "3b15b20d1d2979084ab83d132eae38e987af594f1ca8fa2545fb95d41a62aa38"
+    },
+    {
+      "id": "LIVE-00070",
+      "kind": "local",
+      "path": "local/research/codex/k2-live-stream-r1/stream-r1/screen-11.png",
+      "bytes": 143484,
+      "sha256": "9f8a64989ef7ea75fe013022ad47d545a4f3bcb43cc13c279a5cf02563a23263"
+    },
+    {
+      "id": "LIVE-00071",
+      "kind": "local",
+      "path": "local/research/codex/k2-live-stream-r1/stream-r1/windows-12.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "LIVE-00072",
+      "kind": "local",
+      "path": "local/research/codex/k2-live-stream-r1/stream-r1/processes-12.txt",
+      "bytes": 4351,
+      "sha256": "41909d5d82cb4433709d3d04336cef4fb001b777bafb8be8a2b413156ae535e8"
+    },
+    {
+      "id": "LIVE-00073",
+      "kind": "local",
+      "path": "local/research/codex/k2-live-stream-r1/stream-r1/screen-12.png",
+      "bytes": 142788,
+      "sha256": "643bfc02957859460cc3e269522b63b1c6797b8fa6da90de8636458ec27880ec"
+    },
+    {
+      "id": "LIVE-00074",
+      "kind": "local",
+      "path": "local/research/codex/k2-live-stream-r1/stream-r1/windows-13.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "LIVE-00075",
+      "kind": "local",
+      "path": "local/research/codex/k2-live-stream-r1/stream-r1/processes-13.txt",
+      "bytes": 4351,
+      "sha256": "e9c8318f07e673f6c84a6f394fbc7337cfa8ac1198550bb1cd77581511481103"
+    },
+    {
+      "id": "LIVE-00076",
+      "kind": "local",
+      "path": "local/research/codex/k2-live-stream-r1/stream-r1/screen-13.png",
+      "bytes": 141891,
+      "sha256": "fbe69d375a7ca57daf68968987d539bbd013e232c94b231ea6f46a235f7858dc"
+    },
+    {
+      "id": "LIVE-00077",
+      "kind": "local",
+      "path": "local/research/codex/k2-live-stream-r1/stream-r1/windows-14.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "LIVE-00078",
+      "kind": "local",
+      "path": "local/research/codex/k2-live-stream-r1/stream-r1/processes-14.txt",
+      "bytes": 4351,
+      "sha256": "4f7cc08566b5e99943163c2a80261ea52b62730bef111d70fb2240ec718ddb62"
+    },
+    {
+      "id": "LIVE-00079",
+      "kind": "local",
+      "path": "local/research/codex/k2-live-stream-r1/stream-r1/screen-14.png",
+      "bytes": 141868,
+      "sha256": "3cba03166a6b9f04a74a30be0ef846bf4006b5a184f52307aef44206e758431e"
+    },
+    {
+      "id": "LIVE-00080",
+      "kind": "local",
+      "path": "local/research/codex/k2-live-stream-r1/stream-r1/windows-15.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "LIVE-00081",
+      "kind": "local",
+      "path": "local/research/codex/k2-live-stream-r1/stream-r1/processes-15.txt",
+      "bytes": 4351,
+      "sha256": "48dc6aba8320d76bca446ad58f489bf4fb7e2af19fbb83be1365f0dd50b88a5b"
+    },
+    {
+      "id": "LIVE-00082",
+      "kind": "local",
+      "path": "local/research/codex/k2-live-stream-r1/stream-r1/screen-15.png",
+      "bytes": 142260,
+      "sha256": "922a464a389db3d790f05922f596c013585a852ddf744d98b12260081fd6ff75"
+    },
+    {
+      "id": "LIVE-00083",
+      "kind": "local",
+      "path": "local/research/codex/k2-live-stream-r1/stream-r1/windows-16.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "LIVE-00084",
+      "kind": "local",
+      "path": "local/research/codex/k2-live-stream-r1/stream-r1/processes-16.txt",
+      "bytes": 4351,
+      "sha256": "d75b3eb47ab375a0adebdd229b803f76b0cc956ce49f09e578017e89abfda2cd"
+    },
+    {
+      "id": "LIVE-00085",
+      "kind": "local",
+      "path": "local/research/codex/k2-live-stream-r1/stream-r1/screen-16.png",
+      "bytes": 143276,
+      "sha256": "4067cde1218cbcd3c32227605fb5acb9f2456866b5b153067dcac7a7a9bcaf26"
+    },
+    {
+      "id": "LIVE-00086",
+      "kind": "local",
+      "path": "local/research/codex/k2-live-stream-r1/stream-r1/windows-17.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "LIVE-00087",
+      "kind": "local",
+      "path": "local/research/codex/k2-live-stream-r1/stream-r1/processes-17.txt",
+      "bytes": 4351,
+      "sha256": "d72235ec8d0892114b2fe2736ed90deff9a159c723c6f07bc2dcfbdbf8f316bd"
+    },
+    {
+      "id": "LIVE-00088",
+      "kind": "local",
+      "path": "local/research/codex/k2-live-stream-r1/stream-r1/screen-17.png",
+      "bytes": 144324,
+      "sha256": "3b9ad92535a6a6f83c63efb591ace54464a1fd53c2d1bf9afb0fb6e4f01b0eb4"
+    },
+    {
+      "id": "LIVE-00089",
+      "kind": "local",
+      "path": "local/research/codex/k2-live-stream-r1/stream-r1/windows-18.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "LIVE-00090",
+      "kind": "local",
+      "path": "local/research/codex/k2-live-stream-r1/stream-r1/processes-18.txt",
+      "bytes": 4351,
+      "sha256": "3c918a06e33697fc6865d13c7ca2b28be8f32aedb33ca67e4e20d7af3a2cc57e"
+    },
+    {
+      "id": "LIVE-00091",
+      "kind": "local",
+      "path": "local/research/codex/k2-live-stream-r1/stream-r1/screen-18.png",
+      "bytes": 145015,
+      "sha256": "5d7032be3954da32056e91c48d2a182044babd36c4fc56958e7e7c1a367e090c"
+    },
+    {
+      "id": "LIVE-00092",
+      "kind": "local",
+      "path": "local/research/codex/k2-live-stream-r1/stream-r1/windows-19.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "LIVE-00093",
+      "kind": "local",
+      "path": "local/research/codex/k2-live-stream-r1/stream-r1/processes-19.txt",
+      "bytes": 4351,
+      "sha256": "24273df862fbb12260ed35824356a9e226fbcf636b4df8b270984292c4e57bd4"
+    },
+    {
+      "id": "LIVE-00094",
+      "kind": "local",
+      "path": "local/research/codex/k2-live-stream-r1/stream-r1/screen-19.png",
+      "bytes": 144695,
+      "sha256": "bc26325e36d4c28beed0d2609c0080e7a18fdf9dff127d1a44324a2632810b3c"
+    },
+    {
+      "id": "LIVE-00095",
+      "kind": "local",
+      "path": "local/research/codex/k2-live-stream-r1/stream-r1/windows-20.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "LIVE-00096",
+      "kind": "local",
+      "path": "local/research/codex/k2-live-stream-r1/stream-r1/processes-20.txt",
+      "bytes": 4351,
+      "sha256": "8fbc5358d756491a16463de60426ce00bf9c31211300a47200b1373db19e5f4a"
+    },
+    {
+      "id": "LIVE-00097",
+      "kind": "local",
+      "path": "local/research/codex/k2-live-stream-r1/stream-r1/screen-20.png",
+      "bytes": 144472,
+      "sha256": "f270cb4131641442115349535e8690e472f5729e390249ae3cfe625483ce829d"
+    },
+    {
+      "id": "LIVE-00098",
+      "kind": "local",
+      "path": "local/research/codex/k2-live-stream-r1/stream-r1/CALog-run.txt",
+      "bytes": 1573,
+      "sha256": "a390a8da05ec18d57f248e7aec02102ea3f45a552538654c5f63fbbdaf29833f"
+    },
+    {
+      "id": "LIVE-00099",
+      "kind": "local",
+      "path": "local/research/codex/k2-live-stream-r1/stream-r1/service-state.json",
+      "bytes": 28617,
+      "sha256": "fa817b5faee9f735a2306e8ad5871c8ed27bc0ec688b62c441e2698d00e1468a"
+    },
+    {
+      "id": "LIVE-00100",
+      "kind": "local",
+      "path": "local/research/codex/k2-live-stream-r1/stream-r1/run.json",
+      "bytes": 13244,
+      "sha256": "7fa6215573dc7df87fe88feca270d308404682057de3072ffcf1235ecf7ec182"
+    },
+    {
+      "id": "LIVE-00101",
+      "kind": "local",
+      "path": "local/research/codex/k2-live-stream-r1/stream-r1/raw-seal.json",
+      "bytes": 24386,
+      "sha256": "2130a0f4b1f223a9ff426ff954f2b8671a15e51e50c8b59480cdad364dbdfd8f"
+    },
+    {
+      "id": "LIVE-00102",
+      "kind": "local",
+      "path": "local/research/codex/k2-live-stream-r1/crc-negative-r1/nsswitch.conf",
+      "bytes": 307,
+      "sha256": "c18e474cd61df8648ee02ac7a9c76b8d6c7782d8b212f925e6980f20af5cc838"
+    },
+    {
+      "id": "LIVE-00103",
+      "kind": "local",
+      "path": "local/research/codex/k2-live-stream-r1/crc-negative-r1/hosts",
+      "bytes": 121,
+      "sha256": "32a007c62d2887ae9f8d3c30d1ff7cb3902e6e1e0c75c5a978ee556cc8ea71f8"
+    },
+    {
+      "id": "LIVE-00104",
+      "kind": "local",
+      "path": "local/research/codex/k2-live-stream-r1/crc-negative-r1/service.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "LIVE-00105",
+      "kind": "local",
+      "path": "local/research/codex/k2-live-stream-r1/crc-negative-r1/CALog-before.txt",
+      "bytes": 1573,
+      "sha256": "a390a8da05ec18d57f248e7aec02102ea3f45a552538654c5f63fbbdaf29833f"
+    },
+    {
+      "id": "LIVE-00106",
+      "kind": "local",
+      "path": "local/research/codex/k2-live-stream-r1/crc-negative-r1/xvfb.log",
+      "bytes": 2808,
+      "sha256": "46b8747df8a2fc8b6a469b2374ea3d0c6c786dc3dcf2a9be13d94ce76ed3a1a7"
+    },
+    {
+      "id": "LIVE-00107",
+      "kind": "local",
+      "path": "local/research/codex/k2-live-stream-r1/crc-negative-r1/wineboot.log",
+      "bytes": 64844,
+      "sha256": "6bbd56484527909cc818407f0376c5c900d3954eef1e982db5b23280c59cecf1"
+    },
+    {
+      "id": "LIVE-00108",
+      "kind": "local",
+      "path": "local/research/codex/k2-live-stream-r1/crc-negative-r1/debug-commands.txt",
+      "bytes": 416,
+      "sha256": "1a5bfdc288a3bb9fbda12479907ceca48b86d1ea6ed40ca059dafd12ff368f45"
+    },
+    {
+      "id": "LIVE-00109",
+      "kind": "local",
+      "path": "local/research/codex/k2-live-stream-r1/crc-negative-r1/client.log",
+      "bytes": 113567,
+      "sha256": "5dbc961255f1036f0acbb3930d52062f214c3135909965d397153f561cb90c21"
+    },
+    {
+      "id": "LIVE-00110",
+      "kind": "local",
+      "path": "local/research/codex/k2-live-stream-r1/crc-negative-r1/windows-00.txt",
+      "bytes": 166,
+      "sha256": "28ae29836d791dcd3302b447a52a8f0fa3f9a192abbc33a27751e23d7ebe0d43"
+    },
+    {
+      "id": "LIVE-00111",
+      "kind": "local",
+      "path": "local/research/codex/k2-live-stream-r1/crc-negative-r1/processes-00.txt",
+      "bytes": 3646,
+      "sha256": "13d15e2cae325f7c42cbb4f0731361ddb4d9fb26e8412d604d794a16a9b2c3e7"
+    },
+    {
+      "id": "LIVE-00112",
+      "kind": "local",
+      "path": "local/research/codex/k2-live-stream-r1/crc-negative-r1/screen-00.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "LIVE-00113",
+      "kind": "local",
+      "path": "local/research/codex/k2-live-stream-r1/crc-negative-r1/windows-01.txt",
+      "bytes": 872,
+      "sha256": "c8c8cfe9c5b9bb2ccde16b4b959b165ed33d50824f3fbd29834c16b6f0e63586"
+    },
+    {
+      "id": "LIVE-00114",
+      "kind": "local",
+      "path": "local/research/codex/k2-live-stream-r1/crc-negative-r1/processes-01.txt",
+      "bytes": 4367,
+      "sha256": "3ace1a1ea45ce6584fdb5738fcb0e9f50e0f125122e3d4f833ac25833cec393e"
+    },
+    {
+      "id": "LIVE-00115",
+      "kind": "local",
+      "path": "local/research/codex/k2-live-stream-r1/crc-negative-r1/screen-01.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "LIVE-00116",
+      "kind": "local",
+      "path": "local/research/codex/k2-live-stream-r1/crc-negative-r1/windows-02.txt",
+      "bytes": 872,
+      "sha256": "c8c8cfe9c5b9bb2ccde16b4b959b165ed33d50824f3fbd29834c16b6f0e63586"
+    },
+    {
+      "id": "LIVE-00117",
+      "kind": "local",
+      "path": "local/research/codex/k2-live-stream-r1/crc-negative-r1/processes-02.txt",
+      "bytes": 4367,
+      "sha256": "58d1b75a014b0bf1680f9cbbdcca20c699c9ecad4ce111db01d6ed9aa4cce427"
+    },
+    {
+      "id": "LIVE-00118",
+      "kind": "local",
+      "path": "local/research/codex/k2-live-stream-r1/crc-negative-r1/screen-02.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "LIVE-00119",
+      "kind": "local",
+      "path": "local/research/codex/k2-live-stream-r1/crc-negative-r1/transport-writes.jsonl",
+      "bytes": 2557,
+      "sha256": "473bbb10482fabe8ad9823b3a933574c3a2a4ec3b42319e01b137a6bd25db6c8"
+    },
+    {
+      "id": "LIVE-00120",
+      "kind": "local",
+      "path": "local/research/codex/k2-live-stream-r1/crc-negative-r1/windows-03.txt",
+      "bytes": 1311,
+      "sha256": "79f14ed4dc9ec340cb32d82ec0c77a2262196d736b814194ac0ee379704f762b"
+    },
+    {
+      "id": "LIVE-00121",
+      "kind": "local",
+      "path": "local/research/codex/k2-live-stream-r1/crc-negative-r1/processes-03.txt",
+      "bytes": 4367,
+      "sha256": "f44251bfc29799e78dabb01c4ee96083e68eb273e83fe7323ae50c35b7e94f86"
+    },
+    {
+      "id": "LIVE-00122",
+      "kind": "local",
+      "path": "local/research/codex/k2-live-stream-r1/crc-negative-r1/screen-03.png",
+      "bytes": 19389,
+      "sha256": "aa1ee2266578690942fb3e19343592c55140ea39794cae7b2de7192580afc538"
+    },
+    {
+      "id": "LIVE-00123",
+      "kind": "local",
+      "path": "local/research/codex/k2-live-stream-r1/crc-negative-r1/windows-04.txt",
+      "bytes": 1311,
+      "sha256": "79f14ed4dc9ec340cb32d82ec0c77a2262196d736b814194ac0ee379704f762b"
+    },
+    {
+      "id": "LIVE-00124",
+      "kind": "local",
+      "path": "local/research/codex/k2-live-stream-r1/crc-negative-r1/processes-04.txt",
+      "bytes": 4367,
+      "sha256": "055bf592e8fcc380685e11fc61d2b96d59f25c47505063b46b309c53178e839e"
+    },
+    {
+      "id": "LIVE-00125",
+      "kind": "local",
+      "path": "local/research/codex/k2-live-stream-r1/crc-negative-r1/screen-04.png",
+      "bytes": 13437,
+      "sha256": "e47c2919c72588bea5f3e5b8ebda4d9823a66e8864f6b86ed6f85d9e19598218"
+    },
+    {
+      "id": "LIVE-00126",
+      "kind": "local",
+      "path": "local/research/codex/k2-live-stream-r1/crc-negative-r1/windows-05.txt",
+      "bytes": 1311,
+      "sha256": "79f14ed4dc9ec340cb32d82ec0c77a2262196d736b814194ac0ee379704f762b"
+    },
+    {
+      "id": "LIVE-00127",
+      "kind": "local",
+      "path": "local/research/codex/k2-live-stream-r1/crc-negative-r1/processes-05.txt",
+      "bytes": 4367,
+      "sha256": "132df6326cb5a32d6bf058019b42f848e39a2870100e4be1ca4091412657beeb"
+    },
+    {
+      "id": "LIVE-00128",
+      "kind": "local",
+      "path": "local/research/codex/k2-live-stream-r1/crc-negative-r1/screen-05.png",
+      "bytes": 191431,
+      "sha256": "35903a0d052b21d3a24bf93dc8a8f6b306cabbb746f12f3287dd1e5c2419a39a"
+    },
+    {
+      "id": "LIVE-00129",
+      "kind": "local",
+      "path": "local/research/codex/k2-live-stream-r1/crc-negative-r1/windows-06.txt",
+      "bytes": 1311,
+      "sha256": "79f14ed4dc9ec340cb32d82ec0c77a2262196d736b814194ac0ee379704f762b"
+    },
+    {
+      "id": "LIVE-00130",
+      "kind": "local",
+      "path": "local/research/codex/k2-live-stream-r1/crc-negative-r1/processes-06.txt",
+      "bytes": 4367,
+      "sha256": "c2305a4e51f4f77429fd69aafc7e9a6af2f16edb572e9009062539ce7307f10d"
+    },
+    {
+      "id": "LIVE-00131",
+      "kind": "local",
+      "path": "local/research/codex/k2-live-stream-r1/crc-negative-r1/screen-06.png",
+      "bytes": 194277,
+      "sha256": "eb04d50aa432204c8df8bb45346024b10fc0a1172c0ea711ff569b6e45a4dd7b"
+    },
+    {
+      "id": "LIVE-00132",
+      "kind": "local",
+      "path": "local/research/codex/k2-live-stream-r1/crc-negative-r1/windows-07.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "LIVE-00133",
+      "kind": "local",
+      "path": "local/research/codex/k2-live-stream-r1/crc-negative-r1/processes-07.txt",
+      "bytes": 4367,
+      "sha256": "44d7555234b7b917cb24d4f6de6f16aeea1e048f6ca8d3d421e1f53d833680cf"
+    },
+    {
+      "id": "LIVE-00134",
+      "kind": "local",
+      "path": "local/research/codex/k2-live-stream-r1/crc-negative-r1/screen-07.png",
+      "bytes": 404297,
+      "sha256": "ff944261593daeffe1271b4fe0b1016f990057bd126bc1a4e5cfeca073e73fe9"
+    },
+    {
+      "id": "LIVE-00135",
+      "kind": "local",
+      "path": "local/research/codex/k2-live-stream-r1/crc-negative-r1/windows-08.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "LIVE-00136",
+      "kind": "local",
+      "path": "local/research/codex/k2-live-stream-r1/crc-negative-r1/processes-08.txt",
+      "bytes": 4367,
+      "sha256": "021b6be730e576be31458c455b114a48b5a819f73a6abc52d98d91c1014cf57e"
+    },
+    {
+      "id": "LIVE-00137",
+      "kind": "local",
+      "path": "local/research/codex/k2-live-stream-r1/crc-negative-r1/screen-08.png",
+      "bytes": 404268,
+      "sha256": "49506add41605cd01b3e01724c30b921a8bc155c376eb7d557fec7523eb02374"
+    },
+    {
+      "id": "LIVE-00138",
+      "kind": "local",
+      "path": "local/research/codex/k2-live-stream-r1/crc-negative-r1/windows-09.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "LIVE-00139",
+      "kind": "local",
+      "path": "local/research/codex/k2-live-stream-r1/crc-negative-r1/processes-09.txt",
+      "bytes": 4367,
+      "sha256": "849b686ccae36b2334fb02a42c380d67ef8675c7b7ca888d278b51ac13ee7817"
+    },
+    {
+      "id": "LIVE-00140",
+      "kind": "local",
+      "path": "local/research/codex/k2-live-stream-r1/crc-negative-r1/screen-09.png",
+      "bytes": 404268,
+      "sha256": "49506add41605cd01b3e01724c30b921a8bc155c376eb7d557fec7523eb02374"
+    },
+    {
+      "id": "LIVE-00141",
+      "kind": "local",
+      "path": "local/research/codex/k2-live-stream-r1/crc-negative-r1/windows-10.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "LIVE-00142",
+      "kind": "local",
+      "path": "local/research/codex/k2-live-stream-r1/crc-negative-r1/processes-10.txt",
+      "bytes": 4367,
+      "sha256": "b7be71d76f4773ba2f2efe54f92ece59cc43cfe4291d5b454c0f957d75d077f4"
+    },
+    {
+      "id": "LIVE-00143",
+      "kind": "local",
+      "path": "local/research/codex/k2-live-stream-r1/crc-negative-r1/screen-10.png",
+      "bytes": 404267,
+      "sha256": "e58fbe0a490ec42db1fa454a6856b7ed2ccc023398df5f67197413a0fe3f8ff0"
+    },
+    {
+      "id": "LIVE-00144",
+      "kind": "local",
+      "path": "local/research/codex/k2-live-stream-r1/crc-negative-r1/windows-11.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "LIVE-00145",
+      "kind": "local",
+      "path": "local/research/codex/k2-live-stream-r1/crc-negative-r1/processes-11.txt",
+      "bytes": 4367,
+      "sha256": "db598f86bc3ce954069dac4c5e0f507ae40bb45b52b23e3cca578f5bda6bc2d6"
+    },
+    {
+      "id": "LIVE-00146",
+      "kind": "local",
+      "path": "local/research/codex/k2-live-stream-r1/crc-negative-r1/screen-11.png",
+      "bytes": 404290,
+      "sha256": "defc58f433b3880945e8c7c5ee06096ffe1bffb943efb5d95c210bf5250c7174"
+    },
+    {
+      "id": "LIVE-00147",
+      "kind": "local",
+      "path": "local/research/codex/k2-live-stream-r1/crc-negative-r1/windows-12.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "LIVE-00148",
+      "kind": "local",
+      "path": "local/research/codex/k2-live-stream-r1/crc-negative-r1/processes-12.txt",
+      "bytes": 4367,
+      "sha256": "ed95e1f6c57c6b7a2309969dacccd2e3f94380178661e340c0706633ea084178"
+    },
+    {
+      "id": "LIVE-00149",
+      "kind": "local",
+      "path": "local/research/codex/k2-live-stream-r1/crc-negative-r1/screen-12.png",
+      "bytes": 404297,
+      "sha256": "ff944261593daeffe1271b4fe0b1016f990057bd126bc1a4e5cfeca073e73fe9"
+    },
+    {
+      "id": "LIVE-00150",
+      "kind": "local",
+      "path": "local/research/codex/k2-live-stream-r1/crc-negative-r1/windows-13.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "LIVE-00151",
+      "kind": "local",
+      "path": "local/research/codex/k2-live-stream-r1/crc-negative-r1/processes-13.txt",
+      "bytes": 4367,
+      "sha256": "a777b2d1c49f75484bb7e51a0f7aa85341b84f61ebd94793015acdef368ae118"
+    },
+    {
+      "id": "LIVE-00152",
+      "kind": "local",
+      "path": "local/research/codex/k2-live-stream-r1/crc-negative-r1/screen-13.png",
+      "bytes": 404297,
+      "sha256": "ff944261593daeffe1271b4fe0b1016f990057bd126bc1a4e5cfeca073e73fe9"
+    },
+    {
+      "id": "LIVE-00153",
+      "kind": "local",
+      "path": "local/research/codex/k2-live-stream-r1/crc-negative-r1/windows-14.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "LIVE-00154",
+      "kind": "local",
+      "path": "local/research/codex/k2-live-stream-r1/crc-negative-r1/processes-14.txt",
+      "bytes": 4367,
+      "sha256": "c2c00da16e56f46bf9e46a17a05902087811149c876c296a201b99d9e71f9237"
+    },
+    {
+      "id": "LIVE-00155",
+      "kind": "local",
+      "path": "local/research/codex/k2-live-stream-r1/crc-negative-r1/screen-14.png",
+      "bytes": 404290,
+      "sha256": "defc58f433b3880945e8c7c5ee06096ffe1bffb943efb5d95c210bf5250c7174"
+    },
+    {
+      "id": "LIVE-00156",
+      "kind": "local",
+      "path": "local/research/codex/k2-live-stream-r1/crc-negative-r1/CALog-run.txt",
+      "bytes": 749,
+      "sha256": "6c324cb3408288868132e6ddc92d45ab6d9e9379b0c7704959f88a468d5128e6"
+    },
+    {
+      "id": "LIVE-00157",
+      "kind": "local",
+      "path": "local/research/codex/k2-live-stream-r1/crc-negative-r1/service-state.json",
+      "bytes": 23208,
+      "sha256": "49c70479aab1d3fccc3fe45817c00964d91e692784e6c4059627c8233630ae1e"
+    },
+    {
+      "id": "LIVE-00158",
+      "kind": "local",
+      "path": "local/research/codex/k2-live-stream-r1/crc-negative-r1/run.json",
+      "bytes": 7402,
+      "sha256": "df5c7b7fca41a06f1b0df6e8813800ad5ac4d9cd1483af27e825397ecc74885f"
+    },
+    {
+      "id": "LIVE-00159",
+      "kind": "local",
+      "path": "local/research/codex/k2-live-stream-r1/crc-negative-r1/raw-seal.json",
+      "bytes": 21051,
+      "sha256": "b4700894f1a38de093a7f8c72ba01314f6087a813718e8f3f3704d156de90bda"
+    },
+    {
+      "id": "LIVE-00160",
+      "kind": "local",
+      "path": "local/research/codex/k2-live-stream-r1/audit-before/README.md",
+      "bytes": 5892,
+      "sha256": "b88d43982ef958bdeb01a3e118dddfde1e48cf4e7714c5579fb347eba6227da2"
+    },
+    {
+      "id": "LIVE-00161",
+      "kind": "local",
+      "path": "local/research/codex/k2-live-stream-r1/cp180-snapshot/README.md",
+      "bytes": 5267,
+      "sha256": "06f679a8e4a69af4723d8660bca92ba5781138ca8d18220d42430c203b3967c8"
+    },
+    {
+      "id": "LIVE-00162",
+      "kind": "local",
+      "path": "local/research/codex/k2-live-stream-r1/cp180-snapshot/docs/PLAN.md",
+      "bytes": 42086,
+      "sha256": "cbaa8b9e6fba2c8ffbbace7b3173a45187adfb6d76fa2a666bf3ca8f8e60706a"
+    },
+    {
+      "id": "LIVE-00163",
+      "kind": "local",
+      "path": "local/research/codex/k2-live-stream-r1/cp180-snapshot/docs/PROTOCOL.md",
+      "bytes": 547374,
+      "sha256": "c7e452612ac7c0ca426eca4b95ba08e9266fc45953bccda7d0aecf73e2631f28"
+    },
+    {
+      "id": "LIVE-00164",
+      "kind": "local",
+      "path": "local/research/codex/k2-live-stream-r1/cp180-snapshot/docs/RESEARCH.md",
+      "bytes": 31306,
+      "sha256": "f75b48ebd54c9dc9b22c390b82541027d6f9533b532a603e7d31ffee1fe411d0"
+    },
+    {
+      "id": "LIVE-00165",
+      "kind": "local",
+      "path": "local/research/codex/k2-live-stream-r1/cp180-snapshot/docs/features.json",
+      "bytes": 169054,
+      "sha256": "b29a58faf565e31a9a4efa235797d53c15c30df961ff5f8997e56f8db13c3e72"
+    },
+    {
+      "id": "LIVE-00166",
+      "kind": "local",
+      "path": "local/research/codex/k2-live-stream-r1/cp180-snapshot/docs/COVERAGE.md",
+      "bytes": 161259,
+      "sha256": "9163f74764267b38991891b9482f49c6270463801c4974f45e2ef4e6be896ce2"
+    },
+    {
+      "id": "LIVE-00167",
+      "kind": "local",
+      "path": "local/research/codex/k2-live-stream-r1/cp180-snapshot/docs/evidence/live-codec-stream/README.md",
+      "bytes": 3481,
+      "sha256": "106f0cf3c66e9d885d0e48fd2eed6d6c9195344378aa8e83207d09ece8ce7e22"
+    },
+    {
+      "id": "LIVE-00168",
+      "kind": "local",
+      "path": "local/research/codex/k2-live-stream-r1/cp180-snapshot/docs/evidence/issue-reconciliation/review.json",
+      "bytes": 27450,
+      "sha256": "52686161f79e008f318feecf34ad67aa063334271a4d3e97831f1de76f72d309"
+    },
+    {
+      "id": "LIVE-00169",
+      "kind": "local",
+      "path": "local/research/codex/k2-live-stream-r1/cp180-snapshot/docs/evidence/issue-reconciliation/github-snapshot.json",
+      "bytes": 207889,
+      "sha256": "4d12bb597780960fd99538e89d9512b6259f5b512d8fa498feeefeeb0deb1bfd"
+    },
+    {
+      "id": "LIVE-00170",
+      "kind": "local",
+      "path": "local/research/codex/k2-live-stream-r1/cp180-snapshot/docs/evidence/checkpoints/audits/AUD054.json",
+      "bytes": 4762,
+      "sha256": "898e26d4e2097160c530f54d33c521384fb3117fb33eaadcce4e6fe4ec44821b"
+    },
+    {
+      "id": "LIVE-00171",
+      "kind": "local",
+      "path": "local/research/codex/k2-live-stream-r1/audit-before/docs/PLAN.md",
+      "bytes": 41848,
+      "sha256": "0bdfb99b201c06d27ee3d687d83736c2525b34e024c22ca547cf18f2dc8365c5"
+    },
+    {
+      "id": "LIVE-00172",
+      "kind": "local",
+      "path": "local/research/codex/k2-live-stream-r1/audit-before/docs/PROTOCOL.md",
+      "bytes": 544105,
+      "sha256": "979a98d1a64523330b173b5daac0567d52cf15b4742c29a72c47560cf2e818e4"
+    },
+    {
+      "id": "LIVE-00173",
+      "kind": "local",
+      "path": "local/research/codex/k2-live-stream-r1/audit-before/docs/RESEARCH.md",
+      "bytes": 31237,
+      "sha256": "ca5b312589725484b5cc5740851573db2234d84d82703c3775355ea999b4314e"
+    },
+    {
+      "id": "LIVE-00174",
+      "kind": "local",
+      "path": "local/research/codex/k2-live-stream-r1/audit-before/docs/features.json",
+      "bytes": 168717,
+      "sha256": "58299fd522b49d54266b3a7a9b42cd153e9d9416a04a4eb1b7fc8d28e7831727"
+    },
+    {
+      "id": "LIVE-00175",
+      "kind": "local",
+      "path": "local/research/codex/k2-live-stream-r1/audit-before/docs/COVERAGE.md",
+      "bytes": 160863,
+      "sha256": "642652a787fd1c9a4645e1e5b20a1e39aa6749fd0c8092da6b6e79fcc3899976"
+    },
+    {
+      "id": "LIVE-00176",
+      "kind": "local",
+      "path": "local/research/codex/k2-live-stream-r1/audit-before/docs/evidence/wine-r2/README.md",
+      "bytes": 8184,
+      "sha256": "d21173147d4c773051a2103352e2de7bffe69665eb1e05e4f0dd1d12dc8a9473"
+    },
+    {
+      "id": "LIVE-00177",
+      "kind": "local",
+      "path": "local/research/codex/k2-live-stream-r1/audit-before/docs/evidence/codec-boundaries/README.md",
+      "bytes": 4130,
+      "sha256": "4b292eceddadb66da82dbb3fa90998b48e744e5785beaeddf7456618a8eaf112"
+    },
+    {
+      "id": "LIVE-00178",
+      "kind": "local",
+      "path": "local/research/codex/k2-live-stream-r1/audit-before/docs/evidence/auth-profile/README.md",
+      "bytes": 6370,
+      "sha256": "6517d300c1ce4977b8156a045a4ac9dd17b570896ad3ff117ca24e603a5a689d"
+    },
+    {
+      "id": "LIVE-00179",
+      "kind": "local",
+      "path": "local/research/codex/k2-live-stream-r1/audit-before/docs/evidence/issue-reconciliation/review.json",
+      "bytes": 27060,
+      "sha256": "8fc2e26f606a5e159821729dd03dc6fef72ebd1370c37cbf3a812255182ca312"
+    },
+    {
+      "id": "LIVE-00180",
+      "kind": "local",
+      "path": "local/research/codex/wine_probe_k2_live_stream_r1.py",
+      "bytes": 18998,
+      "sha256": "9ee07a793eccc65c9561158042c432a443c3672a6d1e3d0dd11d94285b8a9e04"
+    },
+    {
+      "id": "LIVE-00181",
+      "kind": "local",
+      "path": "local/research/codex/wine_probe_k2_crc_negative_r1.py",
+      "bytes": 19001,
+      "sha256": "2406e759e7922e11297925a822e8296a0294c161766eb0e531a9dd0e29a22501"
+    },
+    {
+      "id": "LIVE-00182",
+      "kind": "local",
+      "path": "local/research/codex/cp179-history-check.txt",
+      "bytes": 35266,
+      "sha256": "bb51eff3bbb4995511531f72a86f931f5c8cd1b2af34fa699e58b8035ce91d52"
+    },
+    {
+      "id": "LIVE-00183",
+      "kind": "local",
+      "path": "local/research/codex/cp179-pr-exact-head.json",
+      "bytes": 441,
+      "sha256": "12816aa0ea3790084a27d47e83f4393668ed99ef1eaa25151551711781060c48"
+    },
+    {
+      "id": "LIVE-00184",
+      "kind": "local",
+      "path": "local/research/codex/cp179-pr-merged.json",
+      "bytes": 292,
+      "sha256": "d015a0806348b931f7b581cc70ca404a18e3ba5a124d3706f4d9876d202c8778"
+    },
+    {
+      "id": "LIVE-00185",
+      "kind": "local",
+      "path": "local/research/codex/k2-live-stream-r1/game-A/CA-r2-stage-social.exe",
+      "bytes": 31874560,
+      "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+    },
+    {
+      "id": "LIVE-00186",
+      "kind": "repository",
+      "path": "server/item_claims.py",
+      "bytes": 3340,
+      "sha256": "7990ae9195e9f8bba56b04101f352506194dbd0252793183993ce101a8674a2e"
+    },
+    {
+      "id": "LIVE-00187",
+      "kind": "repository",
+      "path": "server/probe_codec.py",
+      "bytes": 3227,
+      "sha256": "23ba54e6940953a52ff737e7e06b2761a8eb22eab444310b49b1d96efa12411d"
+    },
+    {
+      "id": "LIVE-00188",
+      "kind": "repository",
+      "path": "server/probe_room.py",
+      "bytes": 1468,
+      "sha256": "91292494d492c7851bd5432649adf528e1b07290316dc56ba1478f8a209a08bc"
+    },
+    {
+      "id": "LIVE-00189",
+      "kind": "repository",
+      "path": "server/round_fence.py",
+      "bytes": 2339,
+      "sha256": "aabcc7f1d623573fc217de8df05403f83d82425bbe5d6e78872b3096a2d46708"
+    },
+    {
+      "id": "LIVE-00190",
+      "kind": "repository",
+      "path": "server/test_item_claims.py",
+      "bytes": 2832,
+      "sha256": "63d68da46f91bcc9d4d3517bfd4ebc0d8f0a08c283a83715ac5b14a6efb71eea"
+    },
+    {
+      "id": "LIVE-00191",
+      "kind": "repository",
+      "path": "server/test_probe_codec.py",
+      "bytes": 1366,
+      "sha256": "ddb2cd6303aaf99af43d7add3735fec1b7c41461deb38f482d4a1b113a21367c"
+    },
+    {
+      "id": "LIVE-00192",
+      "kind": "repository",
+      "path": "server/test_probe_room.py",
+      "bytes": 1605,
+      "sha256": "4ace7f5828661d891fa2006731f0aceed081a527c09be335bbee47e9a721e783"
+    },
+    {
+      "id": "LIVE-00193",
+      "kind": "repository",
+      "path": "server/test_round_fence.py",
+      "bytes": 2455,
+      "sha256": "6923d90f30636dfe05b09d45f5bbaceaf3ef32223d48eba0213a6c3cc40b037a"
+    },
+    {
+      "id": "LIVE-00194",
+      "kind": "repository",
+      "path": "server/test_udp_round_keys.py",
+      "bytes": 1224,
+      "sha256": "cfb36ee95d48c79b1800081a73b54498242f366eb08a2e3be850ff4a3503ce96"
+    },
+    {
+      "id": "LIVE-00195",
+      "kind": "repository",
+      "path": "server/udp_round_keys.py",
+      "bytes": 1187,
+      "sha256": "db58ae1f25bcbeb52c2d25c7db6afbf1021ddd3af29702e756f5f41886530a0d"
+    },
+    {
+      "id": "LIVE-00196",
+      "kind": "repository",
+      "path": "server/test_probe_eof.py",
+      "bytes": 9629,
+      "sha256": "6456b237ce138fc179f9acf23436af18eefae96c2babb0d677682df66102a018"
+    },
+    {
+      "id": "LIVE-00197",
+      "kind": "repository",
+      "path": "server/test_bomb_admission.py",
+      "bytes": 5720,
+      "sha256": "7e00660a7a4800de4ec1c8b27fd6b162692a4f3c8177ebbd9d19769a245befee"
+    },
+    {
+      "id": "LIVE-00198",
+      "kind": "repository",
+      "path": "server/test_capacity_reservations.py",
+      "bytes": 6771,
+      "sha256": "2a94f711b693dd0a5cf39d292af2f5c0b18f190325305f78c411b19d6f11da24"
+    },
+    {
+      "id": "LIVE-00199",
+      "kind": "repository",
+      "path": "server/test_guest_rejoin.py",
+      "bytes": 5981,
+      "sha256": "58a7ead0829a69896a88409ca7f6cd7410cb60cabb054d28e8adbfefef87f873"
+    },
+    {
+      "id": "LIVE-00200",
+      "kind": "repository",
+      "path": "server/test_hidden_items.py",
+      "bytes": 6368,
+      "sha256": "962f389dd22fd6cfa90b032b8c66f189bee30555e444fa29ef35cca9c2c68986"
+    },
+    {
+      "id": "LIVE-00201",
+      "kind": "repository",
+      "path": "server/test_room_reentry.py",
+      "bytes": 8691,
+      "sha256": "e254dfb07e2522f408dbbe6b53df6d8962c90130893cee4d7e2d3550132df433"
+    },
+    {
+      "id": "LIVE-00202",
+      "kind": "repository",
+      "path": "server/chain_capacity.py",
+      "bytes": 2990,
+      "sha256": "7c84dfaf1800ee3d7a150c76ad81b439fbe0f5daa6a91da9755b818a14460fae"
+    },
+    {
+      "id": "LIVE-00203",
+      "kind": "repository",
+      "path": "server/test_chain_capacity.py",
+      "bytes": 6576,
+      "sha256": "583e2942d9732dd2680d8240a25fdcb5fc41f142b87d7ec70beff72bc96d075b"
+    },
+    {
+      "id": "LIVE-00204",
+      "kind": "repository",
+      "path": "server/terrain_model.py",
+      "bytes": 4232,
+      "sha256": "2de9d0048dbe03ca134e9d49d32596f49b7415538227a8966577c21f45f88e05"
+    },
+    {
+      "id": "LIVE-00205",
+      "kind": "repository",
+      "path": "server/terrain_profile.py",
+      "bytes": 1866,
+      "sha256": "1f0dbe2191b9fc4f1b6cc0e8d34f7965f37a2abb19801b41537e14f60150d390"
+    },
+    {
+      "id": "LIVE-00206",
+      "kind": "repository",
+      "path": "server/test_terrain_policy.py",
+      "bytes": 8653,
+      "sha256": "7661f22c06f76e8dbb8859665fa06ef5febe0d824a0a430b6948db6afa52d34d"
+    },
+    {
+      "id": "LIVE-00207",
+      "kind": "repository",
+      "path": "server/probe_service.py",
+      "bytes": 106121,
+      "sha256": "96c1a56837b28ea25daeade2d048f96016805188d2c8d1e90ffa2afdc01a4690"
+    },
+    {
+      "id": "LIVE-00208",
+      "kind": "repository",
+      "path": "server/room_title.py",
+      "bytes": 3353,
+      "sha256": "0295a9c0cf25294c09bebb4133a84c4b3e151fc91b485d95048bdacc74ad487a"
+    },
+    {
+      "id": "LIVE-00209",
+      "kind": "repository",
+      "path": "server/test_all_dead_result.py",
+      "bytes": 6245,
+      "sha256": "bd4380acb2dd5e12a4f7b89310b554c79fb486f1a782ab47c1ad1808ef9cac10"
+    },
+    {
+      "id": "LIVE-00210",
+      "kind": "repository",
+      "path": "server/test_battle_exit.py",
+      "bytes": 7390,
+      "sha256": "5ce10120e0881caaaf87303d71a8474e678db9133ac992f87accb3327c1dfbe3"
+    },
+    {
+      "id": "LIVE-00211",
+      "kind": "repository",
+      "path": "server/test_battle_exit_pending.py",
+      "bytes": 4096,
+      "sha256": "713c561dc4a00e706f0a51c1dd7b90bf2c8bc5a737bc9d85704a26112b8adc8f"
+    },
+    {
+      "id": "LIVE-00212",
+      "kind": "repository",
+      "path": "server/test_channel_endpoint.py",
+      "bytes": 7936,
+      "sha256": "f8c7f54bed12c49bf75c2119b17923a67dd8f4f09c093929c81998207ab03600"
+    },
+    {
+      "id": "LIVE-00213",
+      "kind": "repository",
+      "path": "server/test_death_envelope.py",
+      "bytes": 4695,
+      "sha256": "c7762c9faeb220dc81d49976a763f23aa57fa82ac4c9d90109f926b02506f8a6"
+    },
+    {
+      "id": "LIVE-00214",
+      "kind": "repository",
+      "path": "server/test_death_lifecycle.py",
+      "bytes": 6815,
+      "sha256": "6fc82097a1b50ad54cbd64feaf567153c8555eb4abbc6506811e09d045c76ac4"
+    },
+    {
+      "id": "LIVE-00215",
+      "kind": "repository",
+      "path": "server/test_departure_send_failure.py",
+      "bytes": 8675,
+      "sha256": "16670b0a677895ce7d09ae3bfd555e474acc83dc623f4f96123ffac772f5da7d"
+    },
+    {
+      "id": "LIVE-00216",
+      "kind": "repository",
+      "path": "server/test_host_back_rejoin.py",
+      "bytes": 7956,
+      "sha256": "9f16c503d4065c70f0064d76fafcab6ed9ac0e548d94211e261f7785f8fc4e4f"
+    },
+    {
+      "id": "LIVE-00217",
+      "kind": "repository",
+      "path": "server/test_host_battle_exit.py",
+      "bytes": 5912,
+      "sha256": "6ae9acbdbf5cd7af9bffabb914d4ec4dc529f34859f0730e1872f65e4d888bfe"
+    },
+    {
+      "id": "LIVE-00218",
+      "kind": "repository",
+      "path": "server/test_loading_timeout.py",
+      "bytes": 5446,
+      "sha256": "f097692abec1b682d0bee59d1b207f20a46cc94e508c65a1b6e743e3d540c5de"
+    },
+    {
+      "id": "LIVE-00219",
+      "kind": "repository",
+      "path": "server/test_needle_escape.py",
+      "bytes": 12165,
+      "sha256": "2ce054abdaae7f6c8eb11d5eddec0bc42b0390d9b761a037c253709341b29c38"
+    },
+    {
+      "id": "LIVE-00220",
+      "kind": "repository",
+      "path": "server/test_network_config.py",
+      "bytes": 5843,
+      "sha256": "538bf81adc50c4bcfda25fb75ed3a82ec2cdc57cdb93faa7ea4e4751d6dec900"
+    },
+    {
+      "id": "LIVE-00221",
+      "kind": "repository",
+      "path": "server/test_pickup_state.py",
+      "bytes": 4222,
+      "sha256": "8dc4ef39983417d0cbf961b5419bd2e4b7e91f4a8f4da8d3d5577ec5634ed8f9"
+    },
+    {
+      "id": "LIVE-00222",
+      "kind": "repository",
+      "path": "server/test_probe_replacement.py",
+      "bytes": 7893,
+      "sha256": "25e30eaac70b8e2a1715c259aeb2511d2fbb52df49a323f58e33217eba3f36b7"
+    },
+    {
+      "id": "LIVE-00223",
+      "kind": "repository",
+      "path": "server/test_probe_service.py",
+      "bytes": 4835,
+      "sha256": "055eeb3ed6431e0503468ee392c8f29a6c661db8cdc4bd1e402a9f748a434a6e"
+    },
+    {
+      "id": "LIVE-00224",
+      "kind": "repository",
+      "path": "server/test_report127_freshness.py",
+      "bytes": 6855,
+      "sha256": "bc884f7ca75935462eb4aabbd09fd915c905d39c762bef2e3fcfadf0a79d6bc7"
+    },
+    {
+      "id": "LIVE-00225",
+      "kind": "repository",
+      "path": "server/test_rescue_contact.py",
+      "bytes": 10792,
+      "sha256": "a5bdd661fe5b945efdb08c7f387ac6dda482c95e2cf88b68da3401235fd40afb"
+    },
+    {
+      "id": "LIVE-00226",
+      "kind": "repository",
+      "path": "server/test_result21_peer.py",
+      "bytes": 5268,
+      "sha256": "364364d96ea1671a60e33149f3fa2bd54ceb6862e749729f228decb0323925ef"
+    },
+    {
+      "id": "LIVE-00227",
+      "kind": "repository",
+      "path": "server/test_result_freshness.py",
+      "bytes": 16181,
+      "sha256": "96c84c6f586adaf88f72339fd76270ef3d8316762465d658aebaea94a4585137"
+    },
+    {
+      "id": "LIVE-00228",
+      "kind": "repository",
+      "path": "server/test_room_title.py",
+      "bytes": 7332,
+      "sha256": "00812f31a7a834dbb8969aa0b599f82a71ff7292187b577ba52150100beb3826"
+    },
+    {
+      "id": "LIVE-00229",
+      "kind": "repository",
+      "path": "server/room_team_mode.py",
+      "bytes": 1489,
+      "sha256": "fb69ea8d4b93c1d602aefb538970efbb7496a7bb178cca2f301f520b72ae16ec"
+    },
+    {
+      "id": "LIVE-00230",
+      "kind": "repository",
+      "path": "server/test_room_team_mode.py",
+      "bytes": 6025,
+      "sha256": "111c6fcbac9ee2708dd68017de7cda12942b7ad075a5d4d9950d259644d0f503"
+    },
+    {
+      "id": "LIVE-00231",
+      "kind": "repository",
+      "path": "server/test_mode_host_rejoin.py",
+      "bytes": 6296,
+      "sha256": "3eec3af510794461354caee609c625adc95abca97595a5a482d1383dd742d892"
+    },
+    {
+      "id": "LIVE-00232",
+      "kind": "repository",
+      "path": "server/test_hidden_terrain_admission.py",
+      "bytes": 5549,
+      "sha256": "594ad8ea105bf35d10b9481cd944e6ecd7acf5d8549eb0778b8ce0989f24040d"
+    },
+    {
+      "id": "LIVE-00233",
+      "kind": "repository",
+      "path": "server/replacement_slots.py",
+      "bytes": 2664,
+      "sha256": "17b42200f6d79b2858d83c515b172a2785fb5d5ac78240dd497d9ddbfc3d583d"
+    },
+    {
+      "id": "LIVE-00234",
+      "kind": "repository",
+      "path": "server/test_replacement_slots.py",
+      "bytes": 14542,
+      "sha256": "6921dcdf792253140b5c92478df99931a1e3e8dbc7f0872156a84f9c313bf262"
+    },
+    {
+      "id": "LIVE-00235",
+      "kind": "local",
+      "path": "local/research/codex/bootstrap-reply-r1.bin",
+      "bytes": 15,
+      "sha256": "75be47b3067e2b1e9d2cf99b5a7eb7f949a074482409fb3eafc1a553cec53cd1"
+    },
+    {
+      "id": "LIVE-00236",
+      "kind": "local",
+      "path": "local/research/codex/wcp-fields-r1/eight-v2-responses.bin",
+      "bytes": 317,
+      "sha256": "5930ad297fc2c1540d8cbd894e88d3c1d2831bd4565dfb8ad96644568b87ad38"
+    },
+    {
+      "id": "LIVE-00237",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/auth-A-final.bin",
+      "bytes": 175,
+      "sha256": "fe0f99796dbaff2ca37ed90552139d125a5a8bff5ac7feba516d3f235fa5e3e7"
+    },
+    {
+      "id": "LIVE-00238",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/auth-B-final.bin",
+      "bytes": 175,
+      "sha256": "8ae2e5f61c9bb29508e819e1f83a68fddead3906c4e212ef6ed162bc7a621774"
+    },
+    {
+      "id": "LIVE-00239",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/auth-C-final.bin",
+      "bytes": 173,
+      "sha256": "24f4146726929e8655a1246d28b79cf1785532c715841da874ed723f8ba1322a"
+    },
+    {
+      "id": "LIVE-00240",
+      "kind": "local",
+      "path": "local/research/codex/duo-round-r1/room91-session1.bin",
+      "bytes": 88,
+      "sha256": "71815044dd7d0f70de6969d640c6bf5b47d1e9cfb16c7d23a2a420d6f93bd0ed"
+    },
+    {
+      "id": "LIVE-00241",
+      "kind": "local",
+      "path": "local/research/codex/rejoin-r1/reply87-A-session1.bin",
+      "bytes": 45,
+      "sha256": "79b35b72494211e3b4b7af04904a75cd8b67d99c1cb39f33d93b3cf056816586"
+    },
+    {
+      "id": "LIVE-00242",
+      "kind": "local",
+      "path": "local/research/codex/abort-rejoin-r1/C106-slot0-id3.bin",
+      "bytes": 242,
+      "sha256": "5232f9b513e18fa78c6bd15a1c093f2997382e695d8f98398f33f95bede3470f"
+    },
+    {
+      "id": "LIVE-00243",
+      "kind": "local",
+      "path": "local/research/codex/rejoin-r1/A110-unready.bin",
+      "bytes": 44,
+      "sha256": "979cfad03305717aaaa203643e875d48aa1430a7d8b34ba534c7fb26668c55db"
+    },
+    {
+      "id": "LIVE-00244",
+      "kind": "local",
+      "path": "local/research/codex/abort-rejoin-r1/C-guestB106-chief64.bin",
+      "bytes": 242,
+      "sha256": "baba396be0cc267d0bc54828a1ecc4fff464c51035722ba92650a071bcfb99a4"
+    },
+    {
+      "id": "LIVE-00245",
+      "kind": "local",
+      "path": "local/research/codex/rejoin-r1/A110-ready.bin",
+      "bytes": 44,
+      "sha256": "2b8c7ae9412c1bee0340587269b1e32af2e3c2117081bc28a331202f8f82d422"
+    },
+    {
+      "id": "LIVE-00246",
+      "kind": "local",
+      "path": "local/research/codex/login-runtime-r1/login-netinfo-candidate.bin",
+      "bytes": 69,
+      "sha256": "b40615efdf3d4b8a6d530a43c3a1e425cb88eeb76304d88601a70b48ca72abe6"
+    },
+    {
+      "id": "LIVE-00247",
+      "kind": "local",
+      "path": "local/research/codex/postwait-r1/flags62-status2.bin",
+      "bytes": 41,
+      "sha256": "f0199e6a5f835884fec25568a342f42d247c2bfa720f677866957c2299437ab9"
+    },
+    {
+      "id": "LIVE-00248",
+      "kind": "local",
+      "path": "local/research/codex/postwait-r1/redirect7-loopback.bin",
+      "bytes": 52,
+      "sha256": "b514742b5e0feb58f64f6f8b1427ca1c34c7494202607b7fb8ee78e02d0caa15"
+    },
+    {
+      "id": "LIVE-00249",
+      "kind": "local",
+      "path": "local/research/codex/postwait-r1/channel17-zero-arrays.bin",
+      "bytes": 75,
+      "sha256": "5bb5a42cb1ea4fe8967d50ed39649cc886a493c0a13a25ceb2df589a2b9bcd37"
+    },
+    {
+      "id": "LIVE-00250",
+      "kind": "local",
+      "path": "local/research/codex/cache-boundary-r1/compressed241.bin",
+      "bytes": 69,
+      "sha256": "5e72176a25896892c49f5ee971bac080b21adbd039a259d7844d095bfe32de28"
+    },
+    {
+      "id": "LIVE-00251",
+      "kind": "local",
+      "path": "local/research/codex/room-input-r1/room-list91-empty.bin",
+      "bytes": 40,
+      "sha256": "66192f9ab8be8c609a0989a16e5403968aa8c6087caa43775920efd3ea78ec2e"
+    },
+    {
+      "id": "LIVE-00252",
+      "kind": "local",
+      "path": "local/research/codex/leave-r1/channel14-kind1.bin",
+      "bytes": 82,
+      "sha256": "0ed72929c552e5bc5a8e492d2d3ca877e2bbc1ec8d5343c81f4b7844d54fe88b"
+    },
+    {
+      "id": "LIVE-00253",
+      "kind": "local",
+      "path": "local/research/codex/room-reply-r1/reply86.bin",
+      "bytes": 49,
+      "sha256": "f7d21cf19f44a9d4c2a17d55c1090af1e2145689fc17e39c2e0e299574c2a4e2"
+    },
+    {
+      "id": "LIVE-00254",
+      "kind": "local",
+      "path": "local/research/codex/duo-round-r1/reply87-slot1-session1.bin",
+      "bytes": 45,
+      "sha256": "67905f20ea19c1102b923ce7e77bbce637820f1673cbe33313ec4f3ce381904f"
+    },
+    {
+      "id": "LIVE-00255",
+      "kind": "local",
+      "path": "local/research/codex/start-reply-r1/player106-id1-team0.bin",
+      "bytes": 242,
+      "sha256": "f2c9caf15bf008d8df6dcf33ce10da603dc7c8f7335cf413f0454692ce7f9934"
+    },
+    {
+      "id": "LIVE-00256",
+      "kind": "local",
+      "path": "local/research/codex/duo-round-r1/B106-unready.bin",
+      "bytes": 242,
+      "sha256": "aa4195a574665e458749443e495d9a50635802db288749bc3e77ae4d72584c08"
+    },
+    {
+      "id": "LIVE-00257",
+      "kind": "local",
+      "path": "local/research/codex/room-player-r1/slot110-team0.bin",
+      "bytes": 44,
+      "sha256": "d571c6b47965e1d5ed04df838818ce9e5f7de1fcac720a71d5a811137405f9d9"
+    },
+    {
+      "id": "LIVE-00258",
+      "kind": "local",
+      "path": "local/research/codex/duo-round-r1/B110-unready.bin",
+      "bytes": 44,
+      "sha256": "eed1d08df651766528969f1c20f0ddfdd944a47368ce9ca66635852e96d5bb27"
+    },
+    {
+      "id": "LIVE-00259",
+      "kind": "local",
+      "path": "local/research/codex/duo-round-r1/A-guest106-unready.bin",
+      "bytes": 242,
+      "sha256": "16408678ed4d2ddd219483f9bb6fae35795c8c5ee1a43f4d1b0d5873b3c0a290"
+    },
+    {
+      "id": "LIVE-00260",
+      "kind": "local",
+      "path": "local/research/codex/peer-duo-r1/B-guest106.bin",
+      "bytes": 242,
+      "sha256": "0bee9221a7efc770b9f5b57bbc504e023163e6f78552ca460edc9636dd76a252"
+    },
+    {
+      "id": "LIVE-00261",
+      "kind": "local",
+      "path": "local/research/codex/cache-boundary-r1/compressed238.bin",
+      "bytes": 110,
+      "sha256": "57411adce8a650524b558e25b904bb916f01ba2d9e1fb2e7c8206e6e1a5b2727"
+    },
+    {
+      "id": "LIVE-00262",
+      "kind": "local",
+      "path": "local/research/codex/bomb-position-r1/exvillage117.bin",
+      "bytes": 46,
+      "sha256": "7fd36d5d2b8ff284fe763e138280ff7ce1b50db83dca2355f33fced8283bc0bc"
+    },
+    {
+      "id": "LIVE-00263",
+      "kind": "local",
+      "path": "local/research/codex/basic-battle-r1/basic582.bin",
+      "bytes": 84,
+      "sha256": "d943860a44868af75ee63d10e206e67aa016a284dffdaf9f1827221fad28fb63"
+    },
+    {
+      "id": "LIVE-00264",
+      "kind": "local",
+      "path": "local/research/codex/bomb-position-r1/exvillage121.bin",
+      "bytes": 167,
+      "sha256": "2e6319e9e5eb55a9ad6594710ec4aeaa749b6f8eee72a1e0016beb44885a90c0"
+    },
+    {
+      "id": "LIVE-00265",
+      "kind": "local",
+      "path": "local/research/codex/round-go-r1/go197-time30.bin",
+      "bytes": 52,
+      "sha256": "1e3437fc0f52910e218c69570a4e7e6c83f73a66ba11f5313ac6ad0d50b34881"
+    },
+    {
+      "id": "LIVE-00266",
+      "kind": "local",
+      "path": "local/research/codex/bomb-position-r1/exvillage196.bin",
+      "bytes": 45,
+      "sha256": "387d6f2b6c3e0eeda401498af890635110016b3756d181d89930c2a4a7a2dcde"
+    },
+    {
+      "id": "LIVE-00267",
+      "kind": "local",
+      "path": "local/research/codex/peer-duo-r1/peer153-replace.bin",
+      "bytes": 135,
+      "sha256": "e6eb2fe741c021ab2c1ac82c84a42a5e4d936e0a2e8a80cb0c4cfaac326589fa"
+    },
+    {
+      "id": "LIVE-00268",
+      "kind": "local",
+      "path": "local/research/codex/round-repeat-r1/ready110-guest.bin",
+      "bytes": 44,
+      "sha256": "ad74bf8e95420203ee6b8f397b43df72fee8a977c9921ccebfa50d794b22861b"
+    },
+    {
+      "id": "LIVE-00269",
+      "kind": "local",
+      "path": "local/research/codex/round-go-r1/reply159.bin",
+      "bytes": 77,
+      "sha256": "aafc349b2b6f518fffbac1a02df7e7c7c94a2c328fdb35d68c8fd67bb1ebef01"
+    },
+    {
+      "id": "LIVE-00270",
+      "kind": "local",
+      "path": "local/research/codex/bomb-calc-r1/kind0.bin",
+      "bytes": 51,
+      "sha256": "5095a65ab689b03ac91e11a9d306341cf9995b5bf8dc8ac146706908c60496b7"
+    },
+    {
+      "id": "LIVE-00271",
+      "kind": "local",
+      "path": "local/research/codex/round-repeat-r1/rank175-v2.bin",
+      "bytes": 340,
+      "sha256": "facec5f1b3dc5decafce8369562c77466cea676299b07748240f44ae090892cd"
+    },
+    {
+      "id": "LIVE-00272",
+      "kind": "local",
+      "path": "local/research/codex/peer-events-r1/rank175-Awin-Blose.bin",
+      "bytes": 340,
+      "sha256": "2252ad693d8a7fd8280f223189849edd5c131b6a6c2809b783dd253d4c0e4dce"
+    },
+    {
+      "id": "LIVE-00273",
+      "kind": "local",
+      "path": "local/research/codex/leave-r1/promote110-B.bin",
+      "bytes": 44,
+      "sha256": "858c5eb8c855a0ccf978574cd9c67eca7dede7e72d2d33c012b5ecb8928ca796"
+    },
+    {
+      "id": "LIVE-00274",
+      "kind": "local",
+      "path": "local/research/codex/bomb-calc-r1/result180-full.bin",
+      "bytes": 41,
+      "sha256": "b2e1c6e22b2210d0ac198fea278d2b7d70d982935e88acb641b36cb45afaa8b0"
+    },
+    {
+      "id": "LIVE-00275",
+      "kind": "local",
+      "path": "local/research/codex/bothdead-result-r1/rank175-all-dead.bin",
+      "bytes": 340,
+      "sha256": "434d70c09ed609d55ca2e59401c78eb32cbd27a303de2986985f3c527d6d7510"
+    },
+    {
+      "id": "LIVE-00276",
+      "kind": "local",
+      "path": "local/research/codex/rejoin-r1/A106-unready.bin",
+      "bytes": 242,
+      "sha256": "2dbc2c247eb94c40af6338e733c98eb18dfa833a2d48662209ce952ca9d9fec7"
+    },
+    {
+      "id": "LIVE-00277",
+      "kind": "local",
+      "path": "local/research/codex/rejoin-r1/B106-chief.bin",
+      "bytes": 242,
+      "sha256": "8dee2a2f58af50ebcf7487d66040c97c374683ed8726ccfe9dd13e064ebf9d86"
+    }
+  ]
+}

@@ -1,6 +1,6 @@
 # KR 00967 — contract tương thích client gốc
 
-Revision kr-legacy-contract-r1; cập nhật07/11/2026 JST (CP179; AUD053 ad-hoc qua178; periodic176/kế180).
+Revision kr-legacy-contract-r1; cập nhật07/11/2026 JST (CP180; AUD054 periodic qua180; audit kế184).
 **Contract có bằng chứng từng phần; chưa nghiệm thu full codec K2**.
 Lộ trình và thứ tự task chỉ giữ ở [REWRITE_PLAN — KRE](PLAN.md).
 Đây là contract của repo server KR. ADR0009 của bản viết lại là nguồn lịch sử để so sánh;
@@ -2379,6 +2379,35 @@ Service pop tách frame rồi frame_body kiểmCRC; native lỗiCRC giữ buffer
 connection lỗi đó (connection khác giữ riêng), không là native resync/recovery. Không đổi code codec/service
 ở CP057. Prefix guard socket+AC vẫn tắt trong model như oracle trước; mode khác, nguyên bảnWindows,
 full reset/reconnect/header-auth và string/blob boundary theo consumer còn mở, **K2 chưa nghiệm thu**.
+
+<a id="live-codec-stream"></a>
+### Codec trên socket Wine thật: split, coalesced và CRC — CP180
+
+**`kr_runtime/confirmed` trên copy e9bb476…**, một client, Wine10.0, namespace chỉlo/noIPv4routes/
+NSSfiles-only, game/prefix/cache kế thừa; không Windowsvanilla hoặc coldallcache. Tái dùng CP057
+nativeframer/methodology VN, CP058auth137 và current47fixture serviceprofile; chỉ đổi write scheduling
+trong subclass đo. Production server/codec không đổi. [Recipe/raw/hash/audit](evidence/live-codec-stream/README.md).
+
+| Phép kiểm | Native observation / giới hạn |
+|---|---|
+| Auth175byte gửi13 rồi162 sau0,6s | `14EF300`: thực nhận13, ret2, available13/seq43 giữ; nhận đủ175 ret0/available0/seq46/op4/payload137; callback`10FD540..10FED80` cursor137/137/error54=0/error58=0. Có50pollpartial, không50case độc lập. |
+| Netinfo+flags ghép110byte | Native15 tiêu thụ69, còn41, seq46→49; native62 tiêu thụ41, còn0, seq49→52. Đây là buffer thật/callback, không suy từ số write. |
+| Ready+roomlist+channellist ghép191byte | Native241→91→14, available191→122→82→0, seq46→49→52→55. Kết quả ở copy/fixtures đã đo; không toàn opcodegrammar. |
+| Control authCRC chỉ lật1bit cuối | Native ret7/packet+58=10, available175 và seq43 không đổi; không thấy authcallback hoặc TCP thứ4 trong run42s. CALog có `GetPacket Err=7`, CrcGen234/CrcPosted235 và C2S59; ý nghĩa59 ngoài path này chưa khôi phục. Không suy native tựresync hoặc cơ chế disconnect từ riêng ret7. |
+| Redirect sang channel socket | Actualordinal3/4 có hai hello0/0: seq40→43 rồi mode2/selector3; channel17 bắt đầuseq43. Objectaddress có thể tái dùng, không là cùng TCPconnection. Chứng minh reset trên redirectpath, không retry sau lỗi/accountresume hoặc freshprocessreconnect. |
+| Cấu hình socket thật | Các socket đo có prefixguard`+AC=0`, maxsize`+6C=1048576`. Đây là giá trị quan sát, không proof enforcement cap/overflow/FFFFFFFF hoặc prefixguard bật. Header37 gồm prefix1; CALog HeaderSize36 là phần còn lại. |
+
+Locator base400000: framerVA14EF300/RVA10EF300; authbegin10FD540/end10FED80. Native GDB probes
+đọc entry/return; giữ diagnosticglobalreset1A966FC=0 từ recipe cũ. Không épreturn/callinferiorfunction/
+dispatch hoặc thêm binarypatch. Logger ghi fixed packetoffset cả mode0: các **packetfield ở mode0
+không có nghĩa** do layoutkhác; chỉ dùng socketmode/seq/buffer/ret tại đó. Raw không sửa để xóa dữ liệu này.
+Mode2typed packet/cursor đủ trong phạm vi trên; UI sảnh được nhìn nhưng chưa proof displayidentity/K3.
+Các run67,719462273s/48,911328033s gồm setup/cleanup; observationnominal60s/42s. Hai run không overlap,
+service stopped/errors0/probeerrors0/sourcepins unchanged và prefix-ownedcleanup có hash.
+
+`design` cho fixtureidentity/token/emptylists và scheduling; không authauthority servergốc.
+FullK2 vẫn mở về retry/reconnect sau lỗi, prefix/mode/bounds chưa đo; [RESEARCH](RESEARCH.md#gap-socket-codec)
+giữ phép kiểm, [PLAN](PLAN.md#current-order) giữ duy nhất thứ tự. Không lặp76modelsplit hoặc ACgames.
 
 <a id="auth-profile"></a>
 ### Success/profile count1 đã đọc sạch trên copy — CP058

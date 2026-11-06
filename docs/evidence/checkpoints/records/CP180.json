@@ -1,0 +1,285 @@
+{
+  "id": "CP180",
+  "previous": "CP179",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-06T21:43:36.650828+00:00",
+  "context_commit": "2e6dae49870683d3d103030e0f7e5abfec3ea195",
+  "owner": "Codex",
+  "reviewer": "Codex",
+  "question": "Does copied e9client on actualTCP retain split auth/consume coalesced frames with correct seq/cursor, reject CRCbad, and reset socket state on measured redirect path?",
+  "scope": "SourcefirstCP006/014/057/058/CP179/currentprofile/nativeoracles plus new singleclientisolatedWine positive andCRCnegative. Existingservice/47fixtures unchanged, localsubclasses alterwrite scheduling or1CRCbit only. Readactualnativeframerentry/return/authcursor, rawhashcleanup before changes; AUD054periodic andnextretryreset, no broadscan/modelreplay/gameplay.",
+  "artifacts": [
+    {
+      "name": "OriginalKR00967unchanged",
+      "sha256": "a52545c14b1fea423de655c3163d6360b628d61c1cd472b46fdbc8a9ffe15f4e"
+    },
+    {
+      "name": "CurrentWinecopyunchanged",
+      "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+    },
+    {
+      "name": "NativeIDAfullcopycf72privateanalysis",
+      "sha256": "cf72da112308d9f1ca256df8089594c5f787875310933073bf6bd5ba6f70e63b"
+    },
+    {
+      "name": "modOmodelreference",
+      "sha256": "a08950c833d3acab8281049def7b3dc96b221f107eeda01da3a548e34b91dce5"
+    },
+    {
+      "name": "OriginalKR00967NewPatcher",
+      "sha256": "b59e4dce9ad23c439a7632ce04ecb2eed3481585bd2454100b05c9d7527f5c02"
+    },
+    {
+      "name": "VN116original_reference_only",
+      "sha256": "bce8644d4e783d1354ab4fc880e1ab9a4ab3325327028f37d99e5439e25f4bbd"
+    },
+    {
+      "name": "VN116patched_runtime_reference_only",
+      "sha256": "bc875ba5765cc112e924f46e75d0ace112904c7801126e46bc0abb1c9cb576b1"
+    },
+    {
+      "name": "PassingK1offlineR2recipe",
+      "sha256": "7b3b435b5d8e110185359107376b736615ceabe9452cea8154d02c8628f44c29"
+    },
+    {
+      "name": "NativeProcessPatchR1control",
+      "sha256": "a0c3b9867dae5fe2ff7c315cfe851117661c2cafead45196ce999329f67432f5"
+    }
+  ],
+  "locators": [
+    "Runtimecopye9bb476…; nativeframerVA14EF300/RVA10EF300/base400000; authbegin10FD540/end10FED80. Inheriteddiagglobal1A966FCreset, no newbinarypatch.",
+    "stream-r1 runSHA7fa6215573dc7df87fe88feca270d308404682057de3072ffcf1235ecf7ec182; actual67.719462273s/nominal60; crc-negative-r1 runSHAdf5c7b7fca41a06f1b0df6e8813800ad5ac4d9cd1483af27e825397ecc74885f; actual48.911328033s/nominal42.",
+    "Positive actualauth13→175bytes/ret2→0/seq43→46/payload137/cursor137/errors0; coalesced15+62 available110→41→0 and241+91+14 191→122→82→0.",
+    "CRCnegative onebit finalbyte/CrcGen234Posted235/ret7/error58=10/175bytes+seq43 unchanged/noauthcallback/C2S59/3connections; meanings/reset aftererror unmeasured.",
+    "Actuallogin/channelhellos0/0seq40→43 twice; newchannelmode2selector3starts43; socketaddr reuse notTCPidentity. Prefixguard0/maxsize1048576 observed. AUD054periodicthrough180/kế184; CP179PR251merged2e6dae4."
+  ],
+  "findings": [
+    {
+      "summary": "Reused CP057native/modelstream+VNmethodology, CP058auth137, oldsingleclientnamespace/GDBharness andcurrent47fixtureprofile/e9copy; avoided76modelsplit/newfunctionscan/VNlayouttransfer/2clientgameplay. Localtransport subclass independentofproductionchanges, source/config/frozeninputpins preserved.",
+      "source": "design",
+      "status": "confirmed",
+      "method": "design",
+      "canonical": "docs/PROTOCOL.md#live-codec-stream",
+      "evidence": [
+        "LIVE-00001",
+        "LIVE-00007"
+      ],
+      "limits": "Modifiede9Wine/singleclient/knownfixtures/inheritedcache+prefix+diagnosticglobalreset, not originalWindows/coldallcache/K3identity/gate/fullmatch/LANInternet8clients. Actualredirectsocketreset notsameprocessretryafterCRC/accountresume. Prefixguard0/cap1MiB observed, no fullprefix/modes/bounds enforcement. Mode0rawpacketfixedoffsets ignored aswronglayout; socketstate onlyinterpreted. No productioncode/sourcebinary/DB edits or forcedfunction/return."
+    },
+    {
+      "summary": "Actualmode2selector3socket receives13authbytes;50pollpartialreturns2 keep13bytes/seq43. Remaining162 yields175total/ret0/left0/seq46/op4/payload137; callback consumes137/137/errors54=0/58=0. Singlepartialcase, not50independentexperiments. Knownvalidfixturee9nativeconsumer isoracle.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#live-codec-stream",
+      "evidence": [
+        "LIVE-00015",
+        "LIVE-00033",
+        "LIVE-00043"
+      ],
+      "limits": "Modifiede9Wine/singleclient/knownfixtures/inheritedcache+prefix+diagnosticglobalreset, not originalWindows/coldallcache/K3identity/gate/fullmatch/LANInternet8clients. Actualredirectsocketreset notsameprocessretryafterCRC/accountresume. Prefixguard0/cap1MiB observed, no fullprefix/modes/bounds enforcement. Mode0rawpacketfixedoffsets ignored aswronglayout; socketstate onlyinterpreted. No productioncode/sourcebinary/DB edits or forcedfunction/return."
+    },
+    {
+      "summary": "Actualcoalesced15+62and241+91+14 consumedsuccessively withnativeleftbuffer andseq+3, fullbufferempty; login→channel actualnewTCP resets0/0hello40→43 then2/3seq43. Prefixguard0/cap1MiB areactualvalues, notallmode/enforcementproof. Positive screenshotmanualviewisUIlobbyonly/noidentitygate.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#live-codec-stream",
+      "evidence": [
+        "LIVE-00015",
+        "LIVE-00033",
+        "LIVE-00100",
+        "LIVE-00097"
+      ],
+      "limits": "Modifiede9Wine/singleclient/knownfixtures/inheritedcache+prefix+diagnosticglobalreset, not originalWindows/coldallcache/K3identity/gate/fullmatch/LANInternet8clients. Actualredirectsocketreset notsameprocessretryafterCRC/accountresume. Prefixguard0/cap1MiB observed, no fullprefix/modes/bounds enforcement. Mode0rawpacketfixedoffsets ignored aswronglayout; socketstate onlyinterpreted. No productioncode/sourcebinary/DB edits or forcedfunction/return."
+    },
+    {
+      "summary": "SeparaterunonlyfinalauthCRCbitflipped: native7/error58=10, available175/seq43retained; noauthcallback/fourthTCP withinobservation. CALogGetPacket7/CrcGen234Posted235/C2S59 recorded. No inferenceCRCresync/disconnect/retry/accountresume; exactbadbytesdiff verified.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#live-codec-stream",
+      "evidence": [
+        "LIVE-00015",
+        "LIVE-00109",
+        "LIVE-00156",
+        "LIVE-00119"
+      ],
+      "limits": "Modifiede9Wine/singleclient/knownfixtures/inheritedcache+prefix+diagnosticglobalreset, not originalWindows/coldallcache/K3identity/gate/fullmatch/LANInternet8clients. Actualredirectsocketreset notsameprocessretryafterCRC/accountresume. Prefixguard0/cap1MiB observed, no fullprefix/modes/bounds enforcement. Mode0rawpacketfixedoffsets ignored aswronglayout; socketstate onlyinterpreted. No productioncode/sourcebinary/DB edits or forcedfunction/return."
+    },
+    {
+      "summary": "Bothrunsnonoverlap/serviceStopped/errors0/probeerrors0/privateprefixnamespacecleanup/inputhashesunchanged. Rawmode0packetfieldloggerlayoutinvalid explicitlyexcluded frominterpretation, rawunchanged. AUD054manualcurrentstateauditfixesstaleCP178K1wording/membershipcapacitynextstep/PR251delivery, no gatecriteriachange.",
+      "source": "design",
+      "status": "confirmed",
+      "method": "design",
+      "canonical": "docs/PROTOCOL.md#live-codec-stream",
+      "evidence": [
+        "LIVE-00015",
+        "LIVE-00101",
+        "LIVE-00159",
+        "LIVE-00017"
+      ],
+      "limits": "Modifiede9Wine/singleclient/knownfixtures/inheritedcache+prefix+diagnosticglobalreset, not originalWindows/coldallcache/K3identity/gate/fullmatch/LANInternet8clients. Actualredirectsocketreset notsameprocessretryafterCRC/accountresume. Prefixguard0/cap1MiB observed, no fullprefix/modes/bounds enforcement. Mode0rawpacketfixedoffsets ignored aswronglayout; socketstate onlyinterpreted. No productioncode/sourcebinary/DB edits or forcedfunction/return."
+    }
+  ],
+  "verification": [
+    {
+      "check": "ActualWinepositive+CRCnegative/nativeconsumer/transport/rawpins/isolation/cleanup",
+      "result": "pass",
+      "evidence": [
+        "LIVE-00015"
+      ],
+      "limits": "321measurablerelationships, not featurecoverage or gateauthority."
+    },
+    {
+      "check": "Original5artifactidentity/sourceprotection",
+      "result": "pass",
+      "evidence": [
+        "LIVE-00024"
+      ],
+      "limits": "Sourcebinary/DBidentityonly; no sourcewrites."
+    },
+    {
+      "check": "Productionservice/profile/codec unchanged versusmeasuredinputpins",
+      "result": "pass",
+      "evidence": [
+        "LIVE-00007",
+        "LIVE-00012"
+      ],
+      "limits": "No newproductionbehavior, localmeasurementharness testedbyactualpositive/negative runs; no newunittests/CIclaim."
+    },
+    {
+      "check": "ManualperiodicauditAUD054 and unchangedninegatecriteria",
+      "result": "pass",
+      "evidence": [
+        "LIVE-00017"
+      ],
+      "limits": "Manualauditreadlist/findings inAUD054; periodicnext184. FullK2 notclosed."
+    },
+    {
+      "check": "FullK2retry/reconnect/prefix/bounds/downstreamfullmatch",
+      "result": "pending",
+      "evidence": [
+        "LIVE-00015"
+      ],
+      "limits": "Modifiede9Wine/singleclient/knownfixtures/inheritedcache+prefix+diagnosticglobalreset, not originalWindows/coldallcache/K3identity/gate/fullmatch/LANInternet8clients. Actualredirectsocketreset notsameprocessretryafterCRC/accountresume. Prefixguard0/cap1MiB observed, no fullprefix/modes/bounds enforcement. Mode0rawpacketfixedoffsets ignored aswronglayout; socketstate onlyinterpreted. No productioncode/sourcebinary/DB edits or forcedfunction/return."
+    }
+  ],
+  "evidence": [],
+  "evidence_manifests": [
+    {
+      "path": "docs/evidence/checkpoints/evidence/CP180-live-codec-stream.json",
+      "bytes": 67036,
+      "sha256": "c8336b28a2ac75731a6dcc01b8933855e3422eb4b381db2e18965bfc306b362f",
+      "count": 277
+    }
+  ],
+  "delta": {
+    "added": [
+      "Actualsocketpositive split/coalesced/nativeauthcursor; exactonebitCRCnegative; actualredirectsocketreset; prefixguard/cap runtimevalues."
+    ],
+    "corrected": [
+      "CP057modelgap now hasliveproof onlyforspecifiedcases; do notrecastretainedmodelasruntime. Mode0packetloggerfields ignoredduetodifferentlayout, rawpreserved.",
+      "CP178K1openwording markedhistorical afterCP179; membershipcapacityinitial/profile alreadydeliveredCP177, maxima/exhaustionstillunknown; PR251merged."
+    ],
+    "superseded": [
+      "NEXT-K2-LIVE-STREAM closed measuredsplit/coalesced/redirectreset scope; fullK2remainsopen; NEXT-K2-RETRY-RESET active."
+    ]
+  },
+  "blockers": [
+    "Sameprocessretry/reconnectafterCRC/error andaccountresume notmeasured; currentnativeerrorpath/C2S59 andUIinput/caller mustguide nexttest.",
+    "Prefixguardfullvariants/boundaryenforcement/wrongseq/fullmodes remainopenperacceptance; no allocationguardexpansion.",
+    "K3identity/cache anddownstreamK4–K7/K6afullmatch/LAN/Internet8clients notaccepted; localfixture/patchpolicy not originalserverauthority."
+  ],
+  "next_steps": [
+    {
+      "id": "NEXT-K2-LIVE-STREAM",
+      "task": "KRE-003",
+      "state": "closed",
+      "action": "CP180actualsingleclient split/coalesced/CRCnegative/redirectsocketreset measured; fullK2 notclosed.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-K2-RETRY-RESET",
+      "task": "KRE-003",
+      "state": "active",
+      "action": "PLAN sourcefirstoldCP014retry/UI andCP180nativeGetPacket7/C2S59/errorcaller/socketclose; trace actualretryinput andbuffer/seq onnewconnection. No repeatcold3/modelsplit/gameplay.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    }
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-11-06T21:43:36.650828+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "CodexsoloRE/runtime/selfchecks/manualperiodicauditAUD054; ownerwaiver, no independentapproval; exactheadPRbeforemerge.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Owner explicitly requested solo, no workers/review."
+    }
+  },
+  "docs_sync": [
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "CP180nativeactualstream/CRCnegative/limits/nextretryreset/AUD054periodic/currentdelivery/issuebacklinks syncedbeforecomplete."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "CP180nativeactualstream/CRCnegative/limits/nextretryreset/AUD054periodic/currentdelivery/issuebacklinks syncedbeforecomplete."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "updated",
+      "reason": "CP180nativeactualstream/CRCnegative/limits/nextretryreset/AUD054periodic/currentdelivery/issuebacklinks syncedbeforecomplete."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "updated",
+      "reason": "CP180nativeactualstream/CRCnegative/limits/nextretryreset/AUD054periodic/currentdelivery/issuebacklinks syncedbeforecomplete."
+    },
+    {
+      "path": "docs/features.json",
+      "state": "updated",
+      "reason": "CP180nativeactualstream/CRCnegative/limits/nextretryreset/AUD054periodic/currentdelivery/issuebacklinks syncedbeforecomplete."
+    },
+    {
+      "path": "docs/COVERAGE.md",
+      "state": "updated",
+      "reason": "CP180nativeactualstream/CRCnegative/limits/nextretryreset/AUD054periodic/currentdelivery/issuebacklinks syncedbeforecomplete."
+    },
+    {
+      "path": "docs/evidence/live-codec-stream/README.md",
+      "state": "updated",
+      "reason": "CP180nativeactualstream/CRCnegative/limits/nextretryreset/AUD054periodic/currentdelivery/issuebacklinks syncedbeforecomplete."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/review.json",
+      "state": "updated",
+      "reason": "CP180nativeactualstream/CRCnegative/limits/nextretryreset/AUD054periodic/currentdelivery/issuebacklinks syncedbeforecomplete."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
+      "state": "updated",
+      "reason": "CP180nativeactualstream/CRCnegative/limits/nextretryreset/AUD054periodic/currentdelivery/issuebacklinks syncedbeforecomplete."
+    },
+    {
+      "path": "docs/evidence/checkpoints/audits/AUD054.json",
+      "state": "updated",
+      "reason": "CP180nativeactualstream/CRCnegative/limits/nextretryreset/AUD054periodic/currentdelivery/issuebacklinks syncedbeforecomplete."
+    },
+    {
+      "path": "server/README.md",
+      "state": "unchanged",
+      "reason": "No productioncode/profile/storeworkflow/oldcompleteevidence change; runtimeharness stayslocaldiagnostic."
+    },
+    {
+      "path": "docs/evidence/checkpoints/README.md",
+      "state": "unchanged",
+      "reason": "No productioncode/profile/storeworkflow/oldcompleteevidence change; runtimeharness stayslocaldiagnostic."
+    }
+  ]
+}
