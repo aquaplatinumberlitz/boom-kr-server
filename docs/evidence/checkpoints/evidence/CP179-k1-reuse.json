@@ -1,0 +1,845 @@
+{
+  "schema": "kre-evidence-manifest-v1",
+  "evidence": [
+    {
+      "id": "K1-00001",
+      "kind": "local",
+      "path": "local/research/codex/k1-cold-recipe-r1/source-first-reuse.json",
+      "bytes": 10856,
+      "sha256": "a3e358c67f11efee7b7ec56e7130ff847c1c6fd21a084e845ee0821d8b22cce8"
+    },
+    {
+      "id": "K1-00002",
+      "kind": "local",
+      "path": "local/research/codex/k1-cold-recipe-r1/patch-report-paths.txt",
+      "bytes": 5577,
+      "sha256": "8b867c448717d1ccbe35be910ece676a269f6c3ef10274f1a7fb06119e3e1867"
+    },
+    {
+      "id": "K1-00003",
+      "kind": "local",
+      "path": "local/research/codex/k1-cold-recipe-r1/verify_reuse.py",
+      "bytes": 7481,
+      "sha256": "0eb9bd9959d626a7c342d148ac7af871c78b6ec2ca0be537a951dc2f11d4b5c1"
+    },
+    {
+      "id": "K1-00004",
+      "kind": "local",
+      "path": "local/research/codex/k1-cold-recipe-r1/reuse-verification.json",
+      "bytes": 23616,
+      "sha256": "fe1cebee7c8021067213bbcda78d98ef978ae56ef8d50e7b55f3a38816820da2"
+    },
+    {
+      "id": "K1-00005",
+      "kind": "local",
+      "path": "local/research/codex/k1-cold-recipe-r1/bootstrap-region-control-comparison.json",
+      "bytes": 10878,
+      "sha256": "34e3c271536eefb00184af9ce2b346557a3576735097ffbfc8e025dd84995cd7"
+    },
+    {
+      "id": "K1-00006",
+      "kind": "local",
+      "path": "local/research/codex/k1-cold-recipe-r1/sync_cp179.py",
+      "bytes": 16245,
+      "sha256": "ce59661df73b410e9512f9a7939a47236bdd6deb7f865d2a35c221779fdc0d05"
+    },
+    {
+      "id": "K1-00007",
+      "kind": "local",
+      "path": "local/research/codex/k1-cold-recipe-r1/manual-k1-acceptance.json",
+      "bytes": 2577,
+      "sha256": "62cb421b3cd6a99ab3006aa5d9a748b73e585f7a3204f36d63cf211c99cc1ad7"
+    },
+    {
+      "id": "K1-00008",
+      "kind": "local",
+      "path": "local/research/codex/k1-cold-recipe-r1/gate-criteria-equality.json",
+      "bytes": 306,
+      "sha256": "2cadcf81d0194a29af16aee335d97331767a7ed600e3956940f5f70ca2e6eed7"
+    },
+    {
+      "id": "K1-00009",
+      "kind": "local",
+      "path": "local/research/codex/k1-cold-recipe-r1/issue2-before.json",
+      "bytes": 2630,
+      "sha256": "45bb5708bb3f90284bb10a00de5faabe0eed64698131dc1526f9e28ab3fd5004"
+    },
+    {
+      "id": "K1-00010",
+      "kind": "local",
+      "path": "local/research/codex/k1-cold-recipe-r1/issue2-body.md",
+      "bytes": 2838,
+      "sha256": "a0c363dbb27007d2efb59dcc25c4f0d01d1a29ef44d3ddca9a947febdb98414d"
+    },
+    {
+      "id": "K1-00011",
+      "kind": "local",
+      "path": "local/research/codex/k1-cold-recipe-r1/issue3-before.json",
+      "bytes": 2324,
+      "sha256": "1a476129ba1a49704efb96fac6322fd79c4c1e816e27455b1e6b137971aa6937"
+    },
+    {
+      "id": "K1-00012",
+      "kind": "local",
+      "path": "local/research/codex/k1-cold-recipe-r1/issue3-body.md",
+      "bytes": 2867,
+      "sha256": "3dc75c19d171bb2d9cfd98146f60c561afbc417fd99fa5a16056810fc503d39b"
+    },
+    {
+      "id": "K1-00013",
+      "kind": "local",
+      "path": "local/research/codex/k1-cold-recipe-r1/issue14-before.json",
+      "bytes": 2787,
+      "sha256": "3920d69d939503ab73e884255c363898ce0c1166cea11a0a81467b480fec44d7"
+    },
+    {
+      "id": "K1-00014",
+      "kind": "local",
+      "path": "local/research/codex/k1-cold-recipe-r1/issue14-body.md",
+      "bytes": 3040,
+      "sha256": "bc11f2923a9c6e1a991d28d47cd421ba2a26e4ce05f19db128613f6d5145a3b5"
+    },
+    {
+      "id": "K1-00015",
+      "kind": "local",
+      "path": "local/research/codex/k1-cold-recipe-r1/issue-release-check.txt",
+      "bytes": 65,
+      "sha256": "4f7599ec4113674b423ab807182ffb1d2e27b3bd6b9a2c58ba0ce3d25da1ede8"
+    },
+    {
+      "id": "K1-00016",
+      "kind": "local",
+      "path": "local/research/codex/k1-cold-recipe-r1/github-release-snapshot.json",
+      "bytes": 206320,
+      "sha256": "af90b86ca890ce3f2202366517d9632d3a58d21c4a3c587e1cd1182063b89183"
+    },
+    {
+      "id": "K1-00017",
+      "kind": "local",
+      "path": "local/research/codex/k1-cold-recipe-r1/append_cp179.py",
+      "bytes": 9275,
+      "sha256": "b143bc8b42da76c37e8284799740bc161fd2359a7b3e7f35f54867df139e18ce"
+    },
+    {
+      "id": "K1-00018",
+      "kind": "local",
+      "path": "local/research/codex/k1-cold-recipe-r1/before/README.md",
+      "bytes": 5441,
+      "sha256": "d23349cb50096f7ce5deebda406065079e36176c9f4a981e9545f842f499e8d7"
+    },
+    {
+      "id": "K1-00019",
+      "kind": "local",
+      "path": "local/research/codex/k1-cold-recipe-r1/cp179-snapshot/README.md",
+      "bytes": 5893,
+      "sha256": "c78e504374095fc84d27b3acfddf44f8dd6f4636ff1b82a1f4121fb3e4816a08"
+    },
+    {
+      "id": "K1-00020",
+      "kind": "local",
+      "path": "local/research/codex/k1-cold-recipe-r1/cp179-snapshot/docs/PLAN.md",
+      "bytes": 41848,
+      "sha256": "0bdfb99b201c06d27ee3d687d83736c2525b34e024c22ca547cf18f2dc8365c5"
+    },
+    {
+      "id": "K1-00021",
+      "kind": "local",
+      "path": "local/research/codex/k1-cold-recipe-r1/cp179-snapshot/docs/PROTOCOL.md",
+      "bytes": 544105,
+      "sha256": "979a98d1a64523330b173b5daac0567d52cf15b4742c29a72c47560cf2e818e4"
+    },
+    {
+      "id": "K1-00022",
+      "kind": "local",
+      "path": "local/research/codex/k1-cold-recipe-r1/cp179-snapshot/docs/RESEARCH.md",
+      "bytes": 31237,
+      "sha256": "ca5b312589725484b5cc5740851573db2234d84d82703c3775355ea999b4314e"
+    },
+    {
+      "id": "K1-00023",
+      "kind": "local",
+      "path": "local/research/codex/k1-cold-recipe-r1/cp179-snapshot/docs/features.json",
+      "bytes": 168717,
+      "sha256": "58299fd522b49d54266b3a7a9b42cd153e9d9416a04a4eb1b7fc8d28e7831727"
+    },
+    {
+      "id": "K1-00024",
+      "kind": "local",
+      "path": "local/research/codex/k1-cold-recipe-r1/cp179-snapshot/docs/COVERAGE.md",
+      "bytes": 160863,
+      "sha256": "642652a787fd1c9a4645e1e5b20a1e39aa6749fd0c8092da6b6e79fcc3899976"
+    },
+    {
+      "id": "K1-00025",
+      "kind": "local",
+      "path": "local/research/codex/k1-cold-recipe-r1/cp179-snapshot/docs/evidence/wine-r2/README.md",
+      "bytes": 8184,
+      "sha256": "d21173147d4c773051a2103352e2de7bffe69665eb1e05e4f0dd1d12dc8a9473"
+    },
+    {
+      "id": "K1-00026",
+      "kind": "local",
+      "path": "local/research/codex/k1-cold-recipe-r1/cp179-snapshot/docs/evidence/issue-reconciliation/review.json",
+      "bytes": 27060,
+      "sha256": "8fc2e26f606a5e159821729dd03dc6fef72ebd1370c37cbf3a812255182ca312"
+    },
+    {
+      "id": "K1-00027",
+      "kind": "local",
+      "path": "local/research/codex/k1-cold-recipe-r1/cp179-snapshot/docs/evidence/issue-reconciliation/github-snapshot.json",
+      "bytes": 206320,
+      "sha256": "af90b86ca890ce3f2202366517d9632d3a58d21c4a3c587e1cd1182063b89183"
+    },
+    {
+      "id": "K1-00028",
+      "kind": "local",
+      "path": "local/research/codex/k1-cold-recipe-r1/before/docs/PLAN.md",
+      "bytes": 40107,
+      "sha256": "12537c1a83b674a076ed6d4c216265a7538c545a9e1136a21571f48896a06192"
+    },
+    {
+      "id": "K1-00029",
+      "kind": "local",
+      "path": "local/research/codex/k1-cold-recipe-r1/before/docs/PROTOCOL.md",
+      "bytes": 542122,
+      "sha256": "b3dab2696dfa726916c4ba218f44950996aef8f68f7451d9857be4895dbb6eba"
+    },
+    {
+      "id": "K1-00030",
+      "kind": "local",
+      "path": "local/research/codex/k1-cold-recipe-r1/before/docs/RESEARCH.md",
+      "bytes": 31268,
+      "sha256": "06d76c44f42d44bd964f400617d16e117d02ead3cef747af3208f112c1fd050a"
+    },
+    {
+      "id": "K1-00031",
+      "kind": "local",
+      "path": "local/research/codex/k1-cold-recipe-r1/before/docs/features.json",
+      "bytes": 168489,
+      "sha256": "daf5cb43cd76e776ce8a780960131f1836b63c48e06e19861e92e8ea30517e53"
+    },
+    {
+      "id": "K1-00032",
+      "kind": "local",
+      "path": "local/research/codex/k1-cold-recipe-r1/before/docs/evidence/wine-r2/README.md",
+      "bytes": 6123,
+      "sha256": "8f3e92eedc2ce87a4cf05c2c160a1b2d42e35a54578f796bc049b569f94941b2"
+    },
+    {
+      "id": "K1-00033",
+      "kind": "local",
+      "path": "local/research/codex/cp178-pr-exact-head.json",
+      "bytes": 245,
+      "sha256": "7d8142300b97e74885ccc2d6b0ab29b89c3142c8cb534b343cc6641eedc507f0"
+    },
+    {
+      "id": "K1-00034",
+      "kind": "local",
+      "path": "local/research/codex/cp178-pr-merged.json",
+      "bytes": 275,
+      "sha256": "806bef15e82ee9376110fc853a5efb3d862e659f914b71c681e1af619d506146"
+    },
+    {
+      "id": "K1-00035",
+      "kind": "local",
+      "path": "local/research/codex/cp178-issue1-closed.json",
+      "bytes": 135,
+      "sha256": "9d70cdd3143f469d30bd8545f47c001b2b1bd6e2c76bec17517a3b8abc5028ce"
+    },
+    {
+      "id": "K1-00036",
+      "kind": "local",
+      "path": "local/research/codex/cp178-history-check.txt",
+      "bytes": 35083,
+      "sha256": "d22695eee6ffefb304a83fe801af84f650b5c6cf8dacf8033d85cb81a3da24a5"
+    },
+    {
+      "id": "K1-00037",
+      "kind": "local",
+      "path": "local/research/codex/cp179-issue1-closed-body.md",
+      "bytes": 2517,
+      "sha256": "0f4666f8a3a84e2f5434fc9978e92484c1fda415ad99e823db226a1384d476cf"
+    },
+    {
+      "id": "K1-00038",
+      "kind": "local",
+      "path": "local/research/codex/cp179-issue-initial-live-check.txt",
+      "bytes": 130,
+      "sha256": "24eb32e9e7de636face3782918e9cfca9cf892d2c26d9d738e11d49f70daaa35"
+    },
+    {
+      "id": "K1-00039",
+      "kind": "repository",
+      "path": "docs/evidence/wine-r2/verification.json",
+      "bytes": 14107,
+      "sha256": "da6fdc6406aa77437f3a9385333fb759b5c41826456118475059a8de064f698f"
+    },
+    {
+      "id": "K1-00040",
+      "kind": "repository",
+      "path": "tools/build_wine_copy.py",
+      "bytes": 10700,
+      "sha256": "bd8b35b2922905660b16fb6dadd93d4b26a419c79de0080965956c677c743cc6"
+    },
+    {
+      "id": "K1-00041",
+      "kind": "repository",
+      "path": "tools/wine_probe.py",
+      "bytes": 16512,
+      "sha256": "a1e7abeaaf4a4def11fe56845dc5d5d7c05d86813786f4024188d7902032e0fb"
+    },
+    {
+      "id": "K1-00042",
+      "kind": "local",
+      "path": "local/research/codex/rebuild-r2-reviewed.json",
+      "bytes": 92365,
+      "sha256": "109272b47f2baf349ae6ad4967cebf7d5fd61b3bcf6d3ca497f5650f0244e3e8"
+    },
+    {
+      "id": "K1-00043",
+      "kind": "local",
+      "path": "local/research/codex/rebuild-r1-final-regression.json",
+      "bytes": 91634,
+      "sha256": "e69c9213a896139ad075f79a8b5ef0a716626f72607b8a3e3169dbe4df788909"
+    },
+    {
+      "id": "K1-00044",
+      "kind": "local",
+      "path": "local/research/wine-r2/defproc-1/run/run.json",
+      "bytes": 2625,
+      "sha256": "0983e08ecb9159cbe7ad9a36b0eb93104de647c301fce20a15df70007b399811"
+    },
+    {
+      "id": "K1-00045",
+      "kind": "local",
+      "path": "local/research/wine-r2/defproc-1/run/client.log",
+      "bytes": 247645,
+      "sha256": "ca29c44dd77d618d03e56089b2dc85688048e0b16c31925b06546be4ebc2e977"
+    },
+    {
+      "id": "K1-00046",
+      "kind": "local",
+      "path": "local/research/wine-r2/defproc-1/run/CALog-run.txt",
+      "bytes": 76,
+      "sha256": "54d152938ec039bc68e9644c110402e345b4ac5756e963298e67d74107bb0aaf"
+    },
+    {
+      "id": "K1-00047",
+      "kind": "local",
+      "path": "local/research/wine-r2/defproc-1/run/windows-05.txt",
+      "bytes": 1273,
+      "sha256": "25cae5f1b6c2f7b4164462d34557fa6b38ec5927c02877cf4268fe4f10763b52"
+    },
+    {
+      "id": "K1-00048",
+      "kind": "local",
+      "path": "local/research/wine-r2/defproc-1/run/screen-05.png",
+      "bytes": 2019,
+      "sha256": "751ee6f6dfc45d76f8ebce4ee21cf9ad5ac24716fc010ad76395cce3b9a6ec8e"
+    },
+    {
+      "id": "K1-00049",
+      "kind": "local",
+      "path": "local/research/wine-r2/defproc-1/run/processes-05.txt",
+      "bytes": 2819,
+      "sha256": "e11a49e7b92458f05087925093467dee8d9e51e54528b02a0f97db2be8c71b72"
+    },
+    {
+      "id": "K1-00050",
+      "kind": "local",
+      "path": "local/research/wine-r2/defproc-1/game/CA-r2.exe",
+      "bytes": 31873536,
+      "sha256": "7b3b435b5d8e110185359107376b736615ceabe9452cea8154d02c8628f44c29"
+    },
+    {
+      "id": "K1-00051",
+      "kind": "local",
+      "path": "local/research/wine-r2/defproc-1/run/processes-00.txt",
+      "bytes": 2538,
+      "sha256": "4afd567fb266e16de614da7d37a3fbf92c2bd524ab8bf5ba6412777b76a38584"
+    },
+    {
+      "id": "K1-00052",
+      "kind": "local",
+      "path": "local/research/wine-r2/final-cold-2/run/run.json",
+      "bytes": 2528,
+      "sha256": "7585209c94831e3d696abcb6103caf79ad581f89d778802b840be88445567b25"
+    },
+    {
+      "id": "K1-00053",
+      "kind": "local",
+      "path": "local/research/wine-r2/final-cold-2/run/client.log",
+      "bytes": 86585,
+      "sha256": "e5c0924f2a0c4424c058d3224df620809ea8fdfe2681023607765d2d882e1ca9"
+    },
+    {
+      "id": "K1-00054",
+      "kind": "local",
+      "path": "local/research/wine-r2/final-cold-2/run/CALog-run.txt",
+      "bytes": 46,
+      "sha256": "1dd23e4b03452ed015c1477017fbed7718c0836710f693e445ebf2eb18015a12"
+    },
+    {
+      "id": "K1-00055",
+      "kind": "local",
+      "path": "local/research/wine-r2/final-cold-2/run/windows-04.txt",
+      "bytes": 1033,
+      "sha256": "4343fd5cb25ce077174cbab390df10224a6e40d5f26abf877abe337adb032abf"
+    },
+    {
+      "id": "K1-00056",
+      "kind": "local",
+      "path": "local/research/wine-r2/final-cold-2/run/screen-04.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "K1-00057",
+      "kind": "local",
+      "path": "local/research/wine-r2/final-cold-2/run/processes-04.txt",
+      "bytes": 2831,
+      "sha256": "517986a89bbdd8e96333a792e5f6647afaa0cc6b709e8166e14de31164e9cb34"
+    },
+    {
+      "id": "K1-00058",
+      "kind": "local",
+      "path": "local/research/wine-r2/final-cold-2/game/CA-r2.exe",
+      "bytes": 31873536,
+      "sha256": "7b3b435b5d8e110185359107376b736615ceabe9452cea8154d02c8628f44c29"
+    },
+    {
+      "id": "K1-00059",
+      "kind": "local",
+      "path": "local/research/wine-r2/final-cold-2/run/processes-00.txt",
+      "bytes": 2547,
+      "sha256": "d8c748aef4f5051869033bc1aeb70084ce2920e0c948b7ab355a88431d47b0af"
+    },
+    {
+      "id": "K1-00060",
+      "kind": "local",
+      "path": "local/research/wine-r2/final-cold-3/run/run.json",
+      "bytes": 2527,
+      "sha256": "25ffadd6e686d58d06f66ac7edc3505704768035b081971a0ba0b42b0faa6115"
+    },
+    {
+      "id": "K1-00061",
+      "kind": "local",
+      "path": "local/research/wine-r2/final-cold-3/run/client.log",
+      "bytes": 87195,
+      "sha256": "ec0c760f9b85391c9240912fa02a0734eba6d9f42c1f1215b62e27f247f7f8f8"
+    },
+    {
+      "id": "K1-00062",
+      "kind": "local",
+      "path": "local/research/wine-r2/final-cold-3/run/CALog-run.txt",
+      "bytes": 46,
+      "sha256": "1dd23e4b03452ed015c1477017fbed7718c0836710f693e445ebf2eb18015a12"
+    },
+    {
+      "id": "K1-00063",
+      "kind": "local",
+      "path": "local/research/wine-r2/final-cold-3/run/windows-04.txt",
+      "bytes": 1033,
+      "sha256": "2f0fd4405d7f5a5f3d19dd96f6afd3dd45dae0ee3d8cb8bd049b6a368554f7f6"
+    },
+    {
+      "id": "K1-00064",
+      "kind": "local",
+      "path": "local/research/wine-r2/final-cold-3/run/screen-04.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "K1-00065",
+      "kind": "local",
+      "path": "local/research/wine-r2/final-cold-3/run/processes-04.txt",
+      "bytes": 2638,
+      "sha256": "ef1ae74ab008ed2b83d8b0dbd44e8704ee5bab75509af961e5f027ed6243f855"
+    },
+    {
+      "id": "K1-00066",
+      "kind": "local",
+      "path": "local/research/wine-r2/final-cold-3/game/CA-r2.exe",
+      "bytes": 31873536,
+      "sha256": "7b3b435b5d8e110185359107376b736615ceabe9452cea8154d02c8628f44c29"
+    },
+    {
+      "id": "K1-00067",
+      "kind": "local",
+      "path": "local/research/wine-r2/final-cold-3/run/processes-00.txt",
+      "bytes": 2458,
+      "sha256": "0f28dd81871a446d8d0be767994acc8e39e2a75e3ae5c3257d4fa2e5fc6d79f5"
+    },
+    {
+      "id": "K1-00068",
+      "kind": "local",
+      "path": "local/research/codex/wcp-guard-r1/game/CA-r2-stage-social.exe",
+      "bytes": 31874560,
+      "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+    },
+    {
+      "id": "K1-00069",
+      "kind": "local",
+      "path": "local/research/codex/wcp-guard-r1/patch-experiment.json",
+      "bytes": 669,
+      "sha256": "a7ed2c7d8542a954f0035b030267adafd01b13468ce32824eb70b0f8b792ed8b"
+    },
+    {
+      "id": "K1-00070",
+      "kind": "local",
+      "path": "local/research/codex/wcp-fields-r1/nmco-patch.json",
+      "bytes": 723,
+      "sha256": "e4d250885ca4c8e464911116c57b1553a37fb865f30d2c8c1ec788399ba9ec94"
+    },
+    {
+      "id": "K1-00071",
+      "kind": "local",
+      "path": "local/research/codex/room-player-r1/pointer-check-patch.json",
+      "bytes": 1757,
+      "sha256": "f3b4a31cde2f736173b83b17fbc0a68396e0fce8c2adb862d238c144b66b77c5"
+    },
+    {
+      "id": "K1-00072",
+      "kind": "local",
+      "path": "local/research/codex/room-player-r1/key-state-patch.json",
+      "bytes": 1765,
+      "sha256": "2e8dc83a3c5e9368ed016b933276cfaf45839476a042c4156ff381c0535f2e23"
+    },
+    {
+      "id": "K1-00073",
+      "kind": "local",
+      "path": "local/research/codex/start-reply-r1/menu-patch.json",
+      "bytes": 1748,
+      "sha256": "c7b7ec357b8b6741c3e4d41035e1f4e9a17689077c3ef88b39faf2e739b0816e"
+    },
+    {
+      "id": "K1-00074",
+      "kind": "local",
+      "path": "local/research/codex/start-reply-r1/social-patch.json",
+      "bytes": 1695,
+      "sha256": "45af618f79aab6180060f7faebfd757b23a3b8987ea0d68149b21edc9d4cb241"
+    },
+    {
+      "id": "K1-00075",
+      "kind": "local",
+      "path": "local/research/bootstrap-runtime/silent/run/run.json",
+      "bytes": 2081,
+      "sha256": "0185a2304c4cb4db47e218185861a0d15589e925cdcd88b29ee198d4907f4ccb"
+    },
+    {
+      "id": "K1-00076",
+      "kind": "local",
+      "path": "local/research/bootstrap-runtime/silent/run/client.log",
+      "bytes": 238940,
+      "sha256": "9dd8b4d274ec3959724034ff1c7e60436bd755138ec1e75e3a6be05b6c617045"
+    },
+    {
+      "id": "K1-00077",
+      "kind": "local",
+      "path": "local/research/bootstrap-runtime/silent/run/CALog-run.txt",
+      "bytes": 90,
+      "sha256": "d5f37c547f073de65289be1c96a9f5f8cf3ace14a813b7fa7ff69eec18b27e23"
+    },
+    {
+      "id": "K1-00078",
+      "kind": "local",
+      "path": "local/research/bootstrap-runtime/silent/run/processes-00.txt",
+      "bytes": 2443,
+      "sha256": "771275e3a7e132ecb7274dd29958519f1618bf5a84854a78e8bf98ea3bf70005"
+    },
+    {
+      "id": "K1-00079",
+      "kind": "local",
+      "path": "local/research/bootstrap-runtime/silent/run/windows-00.txt",
+      "bytes": 166,
+      "sha256": "28ae29836d791dcd3302b447a52a8f0fa3f9a192abbc33a27751e23d7ebe0d43"
+    },
+    {
+      "id": "K1-00080",
+      "kind": "local",
+      "path": "local/research/bootstrap-runtime/silent/run/processes-05.txt",
+      "bytes": 2733,
+      "sha256": "3f3a90955683a23c9148eaf23a2e5189bd802cfa9bef3111c0b205ec43fa20d2"
+    },
+    {
+      "id": "K1-00081",
+      "kind": "local",
+      "path": "local/research/bootstrap-runtime/silent/run/windows-05.txt",
+      "bytes": 1189,
+      "sha256": "4e81b2806a4ee2384d34f026151da17a9023312fc2066e6701fa56f91a6bc694"
+    },
+    {
+      "id": "K1-00082",
+      "kind": "local",
+      "path": "local/research/bootstrap-runtime/reply/run/run.json",
+      "bytes": 2449,
+      "sha256": "1eaf21958d43c71aa3ec8e6af22f33bb53ec251baee7ad59243a88772a5da045"
+    },
+    {
+      "id": "K1-00083",
+      "kind": "local",
+      "path": "local/research/bootstrap-runtime/reply/run/client.log",
+      "bytes": 52566,
+      "sha256": "62267503c873ffb1027d1668c9536f92e05c55e335c5fcfded6fcebf7e4a9a8d"
+    },
+    {
+      "id": "K1-00084",
+      "kind": "local",
+      "path": "local/research/bootstrap-runtime/reply/run/CALog-run.txt",
+      "bytes": 46,
+      "sha256": "1dd23e4b03452ed015c1477017fbed7718c0836710f693e445ebf2eb18015a12"
+    },
+    {
+      "id": "K1-00085",
+      "kind": "local",
+      "path": "local/research/bootstrap-runtime/reply/run/processes-00.txt",
+      "bytes": 2558,
+      "sha256": "343a6839a50130406d504d614d992331bdd12ff19675029a7cee23252cb6fb97"
+    },
+    {
+      "id": "K1-00086",
+      "kind": "local",
+      "path": "local/research/bootstrap-runtime/reply/run/windows-00.txt",
+      "bytes": 166,
+      "sha256": "28ae29836d791dcd3302b447a52a8f0fa3f9a192abbc33a27751e23d7ebe0d43"
+    },
+    {
+      "id": "K1-00087",
+      "kind": "local",
+      "path": "local/research/bootstrap-runtime/reply/run/processes-05.txt",
+      "bytes": 3160,
+      "sha256": "80c05a4bfb21c78db552a98e25624f195303fa2eff2bfa912e2cc3153200ad1e"
+    },
+    {
+      "id": "K1-00088",
+      "kind": "local",
+      "path": "local/research/bootstrap-runtime/reply/run/windows-05.txt",
+      "bytes": 1863,
+      "sha256": "0a1a5d870aae60bc1e292de0b7f3d6b85051322ca38400fc1f652c4756fb01c3"
+    },
+    {
+      "id": "K1-00089",
+      "kind": "local",
+      "path": "local/research/bootstrap-runtime/reply/debug-success/run.json",
+      "bytes": 2150,
+      "sha256": "59a7a054f1947e414b8e4bbe8ad2859991e181413a28687910c1a962ac3752bf"
+    },
+    {
+      "id": "K1-00090",
+      "kind": "local",
+      "path": "local/research/bootstrap-runtime/reply/debug-success/client.log",
+      "bytes": 38532,
+      "sha256": "5f0842f6d27e76a9637da230f54d1ab0f05dca9a27bdc55e06a6778337c58f0f"
+    },
+    {
+      "id": "K1-00091",
+      "kind": "local",
+      "path": "local/research/bootstrap-runtime/reply/debug-success/CALog-run.txt",
+      "bytes": 46,
+      "sha256": "1dd23e4b03452ed015c1477017fbed7718c0836710f693e445ebf2eb18015a12"
+    },
+    {
+      "id": "K1-00092",
+      "kind": "local",
+      "path": "local/research/bootstrap-runtime/reply/debug-success/processes-00.txt",
+      "bytes": 2682,
+      "sha256": "dc92aabc3ab29a6145bf436a5be7fc93f07281aab10347ab8a389581ce58cd71"
+    },
+    {
+      "id": "K1-00093",
+      "kind": "local",
+      "path": "local/research/bootstrap-runtime/reply/debug-success/windows-00.txt",
+      "bytes": 166,
+      "sha256": "28ae29836d791dcd3302b447a52a8f0fa3f9a192abbc33a27751e23d7ebe0d43"
+    },
+    {
+      "id": "K1-00094",
+      "kind": "local",
+      "path": "local/research/bootstrap-runtime/reply/debug-success/processes-01.txt",
+      "bytes": 3282,
+      "sha256": "4503cfc59574e530c98c6133813630209083ee96bbc83bebe5029e44be85fe43"
+    },
+    {
+      "id": "K1-00095",
+      "kind": "local",
+      "path": "local/research/bootstrap-runtime/reply/debug-success/windows-01.txt",
+      "bytes": 1863,
+      "sha256": "0a1a5d870aae60bc1e292de0b7f3d6b85051322ca38400fc1f652c4756fb01c3"
+    },
+    {
+      "id": "K1-00096",
+      "kind": "local",
+      "path": "local/research/bootstrap-runtime/reply/debug-success/debug-commands.txt",
+      "bytes": 82,
+      "sha256": "6397414cbac0c920c3e852751d9ea4d3aaf65daa06553fdef1803d30202bcfa3"
+    },
+    {
+      "id": "K1-00097",
+      "kind": "local",
+      "path": "local/research/bootstrap-runtime/reply/debug-return/run.json",
+      "bytes": 2149,
+      "sha256": "a7d1244e3779dde3978c6d23b8efc2201a867c1f7e672544915973f9624e7fe5"
+    },
+    {
+      "id": "K1-00098",
+      "kind": "local",
+      "path": "local/research/bootstrap-runtime/reply/debug-return/client.log",
+      "bytes": 37992,
+      "sha256": "dbe0ce8b7af9e521b48b8b3588ae0e4e0429ba98644c8908c6bf1a0270386d10"
+    },
+    {
+      "id": "K1-00099",
+      "kind": "local",
+      "path": "local/research/bootstrap-runtime/reply/debug-return/CALog-run.txt",
+      "bytes": 46,
+      "sha256": "1dd23e4b03452ed015c1477017fbed7718c0836710f693e445ebf2eb18015a12"
+    },
+    {
+      "id": "K1-00100",
+      "kind": "local",
+      "path": "local/research/bootstrap-runtime/reply/debug-return/processes-00.txt",
+      "bytes": 2680,
+      "sha256": "24ac930eabc7405477aeb2357dc99f82f338840fd61d5b9c00adb8285e964187"
+    },
+    {
+      "id": "K1-00101",
+      "kind": "local",
+      "path": "local/research/bootstrap-runtime/reply/debug-return/windows-00.txt",
+      "bytes": 166,
+      "sha256": "28ae29836d791dcd3302b447a52a8f0fa3f9a192abbc33a27751e23d7ebe0d43"
+    },
+    {
+      "id": "K1-00102",
+      "kind": "local",
+      "path": "local/research/bootstrap-runtime/reply/debug-return/processes-01.txt",
+      "bytes": 3280,
+      "sha256": "57bde9d0a8bad4a98f35aa51d18819bff9cedfa565ce2c5544d25289f84bf123"
+    },
+    {
+      "id": "K1-00103",
+      "kind": "local",
+      "path": "local/research/bootstrap-runtime/reply/debug-return/windows-01.txt",
+      "bytes": 1863,
+      "sha256": "0a1a5d870aae60bc1e292de0b7f3d6b85051322ca38400fc1f652c4756fb01c3"
+    },
+    {
+      "id": "K1-00104",
+      "kind": "local",
+      "path": "local/research/bootstrap-runtime/reply/debug-return/debug-commands.txt",
+      "bytes": 70,
+      "sha256": "7cffa55ed24884c8d244be98c595371eddde7c24f5d3e1abb6d8933edd187122"
+    },
+    {
+      "id": "K1-00105",
+      "kind": "local",
+      "path": "local/research/bootstrap-runtime/badguard/run/run.json",
+      "bytes": 2381,
+      "sha256": "4fb396798685f236974c2ba2c033e15e3d4d52888bbcb5b89b9f1edf101853aa"
+    },
+    {
+      "id": "K1-00106",
+      "kind": "local",
+      "path": "local/research/bootstrap-runtime/badguard/run/client.log",
+      "bytes": 209639,
+      "sha256": "c7647186d58f13a1fb74cddb87785eeb1167974d4e3d99711448354cea5882aa"
+    },
+    {
+      "id": "K1-00107",
+      "kind": "local",
+      "path": "local/research/bootstrap-runtime/badguard/run/CALog-run.txt",
+      "bytes": 46,
+      "sha256": "1dd23e4b03452ed015c1477017fbed7718c0836710f693e445ebf2eb18015a12"
+    },
+    {
+      "id": "K1-00108",
+      "kind": "local",
+      "path": "local/research/bootstrap-runtime/badguard/run/processes-00.txt",
+      "bytes": 2573,
+      "sha256": "e6dd12753be98aab52feed1ef8d59d135aa82615207731cf6b81374956be417b"
+    },
+    {
+      "id": "K1-00109",
+      "kind": "local",
+      "path": "local/research/bootstrap-runtime/badguard/run/windows-00.txt",
+      "bytes": 166,
+      "sha256": "28ae29836d791dcd3302b447a52a8f0fa3f9a192abbc33a27751e23d7ebe0d43"
+    },
+    {
+      "id": "K1-00110",
+      "kind": "local",
+      "path": "local/research/bootstrap-runtime/badguard/run/processes-04.txt",
+      "bytes": 2865,
+      "sha256": "8b9173d3c1c5b790e5c702817e0e44540136b3df8afefe864284b230787d21ce"
+    },
+    {
+      "id": "K1-00111",
+      "kind": "local",
+      "path": "local/research/bootstrap-runtime/badguard/run/windows-04.txt",
+      "bytes": 1189,
+      "sha256": "4e81b2806a4ee2384d34f026151da17a9023312fc2066e6701fa56f91a6bc694"
+    },
+    {
+      "id": "K1-00112",
+      "kind": "local",
+      "path": "local/research/bootstrap-runtime/reply-final/run/run.json",
+      "bytes": 2381,
+      "sha256": "eed83abcea73e57f28df68dfccf44dca23cc7ee2ee0d4b06c553eefcf0a13cb1"
+    },
+    {
+      "id": "K1-00113",
+      "kind": "local",
+      "path": "local/research/bootstrap-runtime/reply-final/run/client.log",
+      "bytes": 52875,
+      "sha256": "1af8d54821f7cdaa7636101a1a23d4219fffa291e257370a9b8fa57f6dfee4ad"
+    },
+    {
+      "id": "K1-00114",
+      "kind": "local",
+      "path": "local/research/bootstrap-runtime/reply-final/run/CALog-run.txt",
+      "bytes": 46,
+      "sha256": "1dd23e4b03452ed015c1477017fbed7718c0836710f693e445ebf2eb18015a12"
+    },
+    {
+      "id": "K1-00115",
+      "kind": "local",
+      "path": "local/research/bootstrap-runtime/reply-final/run/processes-00.txt",
+      "bytes": 2576,
+      "sha256": "36a652150002f3f7129a676a0abd638a7f4e0bd526923e7ae3e9033318e4a9a6"
+    },
+    {
+      "id": "K1-00116",
+      "kind": "local",
+      "path": "local/research/bootstrap-runtime/reply-final/run/windows-00.txt",
+      "bytes": 166,
+      "sha256": "28ae29836d791dcd3302b447a52a8f0fa3f9a192abbc33a27751e23d7ebe0d43"
+    },
+    {
+      "id": "K1-00117",
+      "kind": "local",
+      "path": "local/research/bootstrap-runtime/reply-final/run/processes-04.txt",
+      "bytes": 3184,
+      "sha256": "cb96d8e22e6cc30e829e9907a0f8f60d11db7ad2e9ab2a6e13479f2feb603ecd"
+    },
+    {
+      "id": "K1-00118",
+      "kind": "local",
+      "path": "local/research/bootstrap-runtime/reply-final/run/windows-04.txt",
+      "bytes": 1863,
+      "sha256": "0a1a5d870aae60bc1e292de0b7f3d6b85051322ca38400fc1f652c4756fb01c3"
+    },
+    {
+      "id": "K1-00119",
+      "kind": "local",
+      "path": "local/research/bootstrap-runtime/reply/game/CA-wine.exe",
+      "bytes": 31873536,
+      "sha256": "a0c3b9867dae5fe2ff7c315cfe851117661c2cafead45196ce999329f67432f5"
+    },
+    {
+      "id": "K1-00120",
+      "kind": "repository",
+      "path": "docs/evidence/bootstrap-wire/verification.json",
+      "bytes": 17575,
+      "sha256": "36fbac96f675cc26b0978d41968cd8330f378a76370d9a891d626104b64c5e66"
+    }
+  ]
+}

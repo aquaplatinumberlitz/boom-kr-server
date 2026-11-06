@@ -1,7 +1,7 @@
 {
   "schema": "kre-feature-index-v1",
   "build": "KR00967",
-  "as_of": "CP178",
+  "as_of": "2026-11-07",
   "sources": {
     "plan": "docs/PLAN.md",
     "contract": "docs/PROTOCOL.md",
@@ -92,7 +92,8 @@
           "docs/evidence/nmco-locale-stability/README.md",
           "docs/PROTOCOL.md#original-windows-control",
           "docs/evidence/peer-endpoints/README.md#cp178",
-          "docs/PLAN.md#k0-k2a-acceptance"
+          "docs/PLAN.md#k0-k2a-acceptance",
+          "docs/evidence/wine-r2/README.md#cp179"
         ]
       },
       "coverage": {
@@ -126,7 +127,8 @@
             "refs": [
               "docs/evidence/bootstrap-wire/README.md",
               "docs/evidence/preclock-eof/README.md",
-              "docs/evidence/nmco-locale-stability/README.md"
+              "docs/evidence/nmco-locale-stability/README.md",
+              "docs/evidence/wine-r2/README.md#cp179"
             ]
           },
           "windows_original": {
@@ -164,10 +166,11 @@
         },
         "gate": {
           "id": "K1",
-          "state": "open",
+          "state": "passed",
           "refs": [
-            "docs/PLAN.md#gates"
-          ]
+            "docs/PLAN.md#k1-acceptance"
+          ],
+          "acceptance": "docs/PLAN.md#k1-acceptance"
         }
       },
       "issues": [
@@ -289,7 +292,8 @@
           "docs/evidence/codec-boundaries/README.md",
           "docs/evidence/current-tcp-replay/README.md",
           "docs/PLAN.md#k0-k2a-acceptance",
-          "docs/evidence/peer-endpoints/README.md#cp178"
+          "docs/evidence/peer-endpoints/README.md#cp178",
+          "docs/PROTOCOL.md#bootstrap-recipe-scope"
         ]
       },
       "coverage": {

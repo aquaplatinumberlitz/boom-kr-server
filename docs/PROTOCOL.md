@@ -1,6 +1,6 @@
 # KR 00967 — contract tương thích client gốc
 
-Revision kr-legacy-contract-r1; cập nhật07/11/2026 JST (CP178; AUD053 ad-hoc qua178; periodic176/kế180).
+Revision kr-legacy-contract-r1; cập nhật07/11/2026 JST (CP179; AUD053 ad-hoc qua178; periodic176/kế180).
 **Contract có bằng chứng từng phần; chưa nghiệm thu full codec K2**.
 Lộ trình và thứ tự task chỉ giữ ở [REWRITE_PLAN — KRE](PLAN.md).
 Đây là contract của repo server KR. ADR0009 của bản viết lại là nguồn lịch sử để so sánh;
@@ -95,6 +95,29 @@ và capturednativeframes phía sau có mức chứng minh riêng. Không hiểu 
 framinghiệnnay; fullmodes/prefix/live reconnect/bounds và gateK2 vẫn chưa nghiệm thu.
 Review receiver ownership cũng sửa được cách gọi send guard: `13ADD10` dùng receiver từ `545E30`,
 packet nằm trên stack, nên không truy nhầm setter `packet+3C` để tìm socket/framer.
+
+<a id="bootstrap-recipe-scope"></a>
+### Phạm vi recipe bootstrap đã đối chiếu — CP179
+
+`kr_runtime/confirmed` trong **recipe offline R2**: ba run lịch sử cùng exe7b3b435…/harnessa1e7abe…/
+Wine10.0/reply75be47…/hostmap/listeners, mỗi process/game/prefix riêng, `init_peb` PID01a0/01ac/0174
+gắn hai nativeconnect loopback cùng thứ tự endpoint với listener. Reply15byte chỉ trên socket1;
+socket2 có attempt sau reply trong10s đầu từngrun, zeroC2S. Native nonblocking status `c00000a3`
+không là connect đồng bộ thành công; Wine timestamp và Python monotonic không tự đồng nhất clock.
+Observation15/10/10s giữ nguyên; từ templateprefix đã init, không ba Wineinstall hoặc coldallcache.
+
+`kr_static/confirmed` về bytes: R2 và e9 hiện dùng khớp vùng VA1234000..1239000 và14ED000..14F0000
+(end exclusive, base400000/RVA=VA−base). R1→R2 vùng đầu chỉ khác5byte NGinit omission12358E7;
+framer/fields vùng sau không đổi. R1 nativeProcessPatchreturn1 và silent/badguard vẫn là control
+riêng; không gán chúng thành3coldstarts. E9 dài thêm1024byte, khác644byte/85range trong phần chung,
+có thêm patch import/state/NMCO/heap/overlay/identity; equal-region không chứng minh whole-program
+tương đương, quan hệ nhân quả từngpatch hoặc cold3e9. Candidate import names giữ candidate.
+
+Nguồn reuse: [Wine R2 và CP179](evidence/wine-r2/README.md#cp179), [bootstrap controls](evidence/bootstrap-wire/README.md),
+[e9/CP020](evidence/start-reply/README.md), [CP014](evidence/login-runtime/README.md), [CP015](evidence/postwait/README.md).
+Không cần RE lại primitive/opcode/VNlayout hoặc chạy lại cold3R2/gameplay. `design/confirmed` về
+quyết định nghiệm thu dự án chỉ ở [PLAN](PLAN.md#k1-acceptance); full K2/live/reset/auth/cache vẫn mở.
+Windows nguyên bản CP178 có ownership/control; không có bootstrap pass hoặc exactPCcause mới.
 
 <a id="wcp"></a>
 ### WCP trên kết nối sau ProcessPatch
