@@ -1,7 +1,7 @@
 # Kế hoạch server giả lập KR 00967
 
 Nguồn chuẩn của project `boom-kr-server`; bản nhập từ plan đã được dsh1/dsh2 review tại `1eee46d`.
-Cập nhật06/11 JST (CP170): currentbasic copyprofile/Bhost đã2nativeoutcomes/reset/Ready, mỗi epoch3effects/hidden27/28; CP169PR240merged387f936. CP170tựkiểm/chờPR. Tiếppinoptionalpreset/export/nativeBStart3, chưadefaultmigration/gate. AUD050qua168/kế172.
+Cập nhật06/11 JST (CP170): currentbasic copyprofile/Bhost đã2nativeoutcomes/reset/Ready, mỗi epoch3effects/hidden27/28; CP170 PR241 đã merge cbcd15d. Tiếppinoptionalpreset/export/nativeBStart3, chưadefaultmigration/gate. AUD050qua168/kế172.
 
 
 ### Mục tiêu, baseline và phạm vi
@@ -43,7 +43,7 @@ với client Rust không chứng minh có thể điều khiển client KR bằng
 | Bootstrap reply | PR8 đã merge;debugger ProcessPatchreturn1,không ép success | [bootstrap evidence](evidence/bootstrap-wire/README.md) |
 | KRE-005a/issue9,R2 | PR10 đã merge:3 cold start cửa sổ/second accept;issue9 còn mở | [R2 evidence](evidence/wine-r2/README.md) |
 | WCP hai-reply | Run CP001 là lịch sử chưa C→S; CP006 đã đo request đầu trên copy tham số hóa | [PROTOCOL](PROTOCOL.md#wcp),[WCP evidence](evidence/wcp/README.md) |
-| KRE-005b/issue14 | CP006–169 đã merge; CP170 currentbasicprofile2nativecycles/3effects/reset/Ready có nguồn; task hiện hành ở current-order; fullauth/authority/fullmatch/gates và gaps giữ mở | [Q-023](RESEARCH.md#q-023), [service](evidence/probe-service/README.md) |
+| KRE-005b/issue14 | CP006–170 đã merge; CP170 currentbasicprofile2nativecycles/3effects/reset/Ready có nguồn; task hiện hành ở current-order; fullauth/authority/fullmatch/gates và gaps giữ mở | [Q-023](RESEARCH.md#q-023), [service](evidence/probe-service/README.md) |
 | K0/K1 | Chưa nghiệm thu toàn gate;Windows vanilla/control ownership và các điều kiện còn thiếu giữ mở | Gate dưới,[Q-022](RESEARCH.md) |
 | K2a/K2 | Primitive/WCP, CP057stream native/model và CP058–060authcallback137/135/errors0 đã có; fullcodec/authauthority/reconnect và gate chưa pass | [PROTOCOL](PROTOCOL.md#login-auth),[Q-023](RESEARCH.md#q-023) |
 | K3 | Copy đã vẽUI/đóngnotice, A/B/Cprofile đọc sạch và mộtnamedcachewarm được nhận; identityauthority/toàncache/codec/K3 chưa nghiệm thu | [Contract sảnh](PROTOCOL.md#channel-lobby) |
@@ -75,6 +75,7 @@ và trận8 client thật là phần mở rộng sau hai/bốn client ổn ở b
    knowntransientwhitebutton CP167/170: pinexactCP170profile thành preset tùy chọn `two-client-basic`
    với relativepaths/size/SHA/sequence/provenance. Giữ existingtwo-client-battle/defaultfloor unchanged;
    exporterselect/preflight rejectdrift/escape/overwrite, testselection/relocation/failure vàexact47pins.
+   Preset tùy chọn và CLI chọn tên đã triển khai, đang tự kiểm/chờ PR; chưa có runtime trên file export mới.
    Saucommit/PRpin, freshcopy/isolatedhosts dùngactualexportedfile/directproductionmodule; known2basic
    cycles/ReadyA rồi normalBStart3→actual104/12199/barrier/clock/render8s/mode1/noBomb3. No fake104/
    statewrite/guardbypass/tolerance-timeoutrelaxation; source/config frozen/cleanup/seal; khôngRElạiconsumer.
@@ -112,7 +113,7 @@ Bảng này chỉ phân công/thứtự; acceptance/PR/bằngchứng ởissue. [
 
 | Thứ tự/scope | Issue | Trạng thái/phần còn thiếu |
 |---|---|---|
-| Hiện hành RE | [#14/KRE-005b](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/14) | CP006–169 merged; CP170basicprofile2cycles/reset/Ready đãkiểm; optionalpreset/export/BStart3 là bước1; gaps giữ; fullauth/authority/fullmatch/gates mở. |
+| Hiện hành RE | [#14/KRE-005b](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/14) | CP006–170 merged; CP170basicprofile2cycles/reset/Ready đãkiểm; optionalpreset/export/BStart3 là bước1; gaps giữ; fullauth/authority/fullmatch/gates mở. |
 | Control theo trigger/gate | [#1/KRE-001](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/1), [#2/KRE-002](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/2) | Windowsoriginal/ownership/K0K1/fullbootstrapconfig; reuseWine/import/replyđãđo. |
 | Codec/identity khi cần | [#3/KRE-003](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/3), [#9/KRE-005a](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/9) | Fullcodec/livebounds vàintermittentmainstartupcause cònthiếu; khônglặpprimitive/auxiliarylocale. |
 

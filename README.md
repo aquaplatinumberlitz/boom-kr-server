@@ -46,8 +46,7 @@ native kết quả → về phòng → Ready**, mỗi vòng có reveal27/28, nh�
 cảhai view. Native stat, hidden eligibility, seed map và khóa vòng có kiểm reset.
 [Contract/giới hạn](docs/PROTOCOL.md#current-basic-cycles), [run/raw/hash](docs/evidence/peer-endpoints/README.md#cp170).
 
-CP169 đã merge [PR240](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/240) tại `387f936`;
-CP170 tự kiểm/chờ PR. [PLAN](docs/PLAN.md#current-order) tiếp preset tùy chọn và actual Start3 trên file
+CP170 đã merge [PR241](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/241) tại `cbcd15d`. [PLAN](docs/PLAN.md#current-order) tiếp preset tùy chọn và actual Start3 trên file
 export đó; preset mặcđịnh chưa đổi. K5/K6a/fullmatch/LAN/Internet/8client và dependency gate vẫn mở.
 AUD050 qua168; audit định kỳ kế **CP172**. [Review waived](docs/evidence/checkpoints/review-waiver.json).
 
