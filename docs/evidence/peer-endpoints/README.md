@@ -1461,3 +1461,54 @@ test dùng fixture tổng hợp là policy regression; actual exported47pin đư
 Maximum10/7 vẫn operatorpolicy; không exhaustion/reservationcount/survival/peer/result/reset mới.
 CP176 AC2cycles giữ riêng, không gộp hai probes thành K6a. Gate/dependencies/Windows/LAN/Internet/
 8client/fullauth/general membership còn mở; AUD052 qua176, audit kếCP180.
+
+
+<a id="cp178"></a>
+## CP178 — original Windows control và nghiệm thu identity/static prerequisite
+
+Baseline CP177/[PR249](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/249), merge
+`b7972a87eda9abd8d76b7bd6cd39f39385a9e3cf`. [Contract/giới hạn](../../PROTOCOL.md#original-windows-control),
+[acceptance do Codex đối chiếu](../../PLAN.md#k0-k2a-acceptance), [next](../../PLAN.md#current-order),
+[gap](../../RESEARCH.md#gap-process-patch). Review độc lập waived, không independentapproval;
+CP178 pending PR lúc ghi. Gate decision thủ công ở PLAN, không do verifier/sốCP hoặc processalive.
+
+Raw/harness tại `local/research/codex/local-acceptance-r1/`. `reuse-question.json` pin nguồn cũ,
+`source-tree.json`187originalfile/1861590835bytes; `guest-copy-verification.json` hai187file fullcopy
+fixedCNTFS/DriveType3/khôngmismatch. `guest-control-preflight.json` nativeRT_MANIFEST1 CA524bytes/
+SHA`e3880876e4c5bc886a88cb396037a7672139fe35575cff147466e129205e4089` requireAdministrator;
+originalsourceCA`a52545c14b1fea423de655c3163d6360b628d61c1cd472b46fdbc8a9ffe15f4e`, NewPatcher
+`b59e4dce9ad23c439a7632ce04ecb2eed3481585bd2454100b05c9d7527f5c02`. Source/dump/DB current5verify; VN original116/bce và VNpatchedruntime/bc875 đối chiếu riêng theo REFERENCES, không VNruntime mới.
+
+| Run | Actual roots / selectedETW | control.json SHA256 |
+|---|---|---|
+| ca-control-r1 | CA1328;349/15447ETWevents;3374checks | `1a2ce14a4b58cf5a8de87a297cde67d950cfd747315dbde314fd501abeb5de79` |
+| newpatcher-control-r2 | NewPatcher9656;288/12903;4919checks | `b6916b13be3672f65a326dcce85c0cfa1ea39cd15ef3e2fff6bb1ce86733fbb2` |
+| both-control-r2 | NP11136/CA7876;575/16602;4013checks | `2e95bbb120e67c0b7000c6921ffefa9703ac2f0a6fa04dc786090246d39f8fbe` |
+
+`original-controls-verification.json`12314checks chủ yếu file/frameintegrity; actualUTC trongcontrol,
+10×2s là nominalsleep có preparation/observeroverhead, không báo thời lượng thật20s. NativePEB32cwd/
+token, modulebase/size và kernelEvent1PID/parent/startticks/high12288/elevated1 khớp. NewCALog CA46byte
+và modal theo đúngPID, Both tách CA??? với PatcherNexon/embeddedIE. No bootstrap/login/gameplayclaim.
+
+Mỗi run có `process.etl`, decoded selected-PID`*-etw.json`, bridge/eth0PCAP+SHA và local sentinelnegative
+actualSYN2/khôngeth0/khôngaccept. `isolation-and-cleanup.json` giữ commands/IPv4/6rules/guard/restore;
+`raw-seal.json` pin raw saucleanup, 0owned/externalchild/newdriver, sourcefrozen. Full187source không
+sửa; `source-tree` chứng minh đúng dữ liệu được copy, checker dùng external source-evidence manifest.
+Capture có Windowsbackground/QMP/SMB, không gán mọi traffic choCA hoặc suy absentTCPsample là noAPI.
+
+Helpers mới tên riêng, nguồn v1/v2/v3 giữ nguyên. `newpatcher-control-r1` preparation-only robocopy
+returncode≥8, chưa game launch; fullraw/source giữ, sourcev3 quote logoption đúng/normalize separator.
+v2 beforeRestoreDifference có falsepositive nested paths, không native mutation. Analyzer r1/r2 giả
+extra blankline CALog, r3 khớp hai dòng thực; không sửa raw hay nội dung marker. REA fullPEtreeblocked
+range khôngfile-backed; targetedWindowsresourceAPI đọc được manifest, không sửa/execute entrypoint.
+
+[Windows control tool](../../../tools/windows_control.ps1) và [console helper](../../../tools/windows_console.py)
+giữ nguyên bytes source đã chạy; `tool-source-promotion.json` đối chiếu SHA. Source/capture/lease
+riêng môi trường vẫn raw local có pin, không gộp thành framework mới.
+
+`manual-acceptance-review.json` có từng criterion K0/K2a/nguồn/giới hạn, [AUD053](../checkpoints/audits/AUD053.json)
+đọc source/docs/raw theo scope. K2a reuse nativewriter131340calls, WCPconsumer, CP006/014capture,
+CP05776stream/14boundary/5reset/697relations và CP058cursor137/137/135/errors0; không RE lại codec.
+Modelprefix/cap/FFFFFFFF/fullmodes/live reconnect vẫn K2 debt. K0 identity/harness và K2a staticprobe
+được nghiệm thu; K1/fullK2/K3–K7 chưa đạt. Ba recipes một control không là ba coldstart recipeK1pass.
+Tiếp K1source/coldrecipe theo PLAN; source/privateDB/defaultserver không đổi, audit periodic kếCP180.

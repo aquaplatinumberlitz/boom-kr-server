@@ -1,0 +1,125 @@
+{
+  "id": "AUD053",
+  "trigger": "ad_hoc",
+  "completed_through": "CP178",
+  "recorded_utc": "2026-11-06T20:28:22.361730+00:00",
+  "auditor": "Codex manual self-audit; independent review waived",
+  "read_files": [
+    "README.md",
+    "docs/PLAN.md",
+    "docs/PROTOCOL.md",
+    "docs/RESEARCH.md",
+    "docs/evidence/peer-endpoints/README.md",
+    "docs/evidence/primitives/README.md",
+    "docs/evidence/primitives/verification.json",
+    "docs/evidence/wcp/README.md",
+    "docs/evidence/codec-boundaries/README.md",
+    "docs/REFERENCES.md",
+    "docs/features.json",
+    "docs/COVERAGE.md",
+    "docs/evidence/checkpoints/audits/AUD052.json",
+    "local/research/codex/local-acceptance-r1/audit-before-index.json",
+    "local/research/codex/local-acceptance-r1/reuse-question.json",
+    "local/research/codex/local-acceptance-r1/manual-acceptance-review.json",
+    "local/research/codex/local-acceptance-r1/original-controls-verification.json",
+    "local/research/codex/local-acceptance-r1/guest-control-preflight.json",
+    "local/research/codex/local-acceptance-r1/guest-copy-verification.json",
+    "local/research/codex/local-acceptance-r1/source-tree.json",
+    "local/research/codex/local-acceptance-r1/source-final-verification.json",
+    "local/research/codex/local-acceptance-r1/vn-identity-verification.json",
+    "local/research/codex/local-acceptance-r1/production-test-reuse.json",
+    "local/research/codex/local-acceptance-r1/current-artifacts-check.txt",
+    "local/research/codex/local-acceptance-r1/ca-control-r1/raw-seal.json",
+    "local/research/codex/local-acceptance-r1/ca-control-r1/control.json",
+    "local/research/codex/local-acceptance-r1/ca-control-r1-etw.json",
+    "local/research/codex/local-acceptance-r1/newpatcher-control-r1/control.json",
+    "local/research/codex/local-acceptance-r1/newpatcher-control-r1/raw-seal.json",
+    "local/research/codex/local-acceptance-r1/newpatcher-control-r2/control.json",
+    "local/research/codex/local-acceptance-r1/newpatcher-control-r2/raw-seal.json",
+    "local/research/codex/local-acceptance-r1/newpatcher-control-r2-etw.json",
+    "local/research/codex/local-acceptance-r1/both-control-r2/control.json",
+    "local/research/codex/local-acceptance-r1/both-control-r2/raw-seal.json",
+    "local/research/codex/local-acceptance-r1/both-control-r2-etw.json",
+    "local/research/codex/local-acceptance-r1/control.ps1",
+    "local/research/codex/local-acceptance-r1/control-v2.ps1",
+    "local/research/codex/local-acceptance-r1/control-v3.ps1",
+    "tools/windows_control.ps1",
+    "tools/windows_console.py",
+    "local/research/codex/local-acceptance-r1/tool-source-promotion.json"
+  ],
+  "method": "Manual scoped README→PLAN(current-order/unchangedK0K2aK1criteria/dependency)→PROTOCOL(identity/helper/WCP/currentauthority/newWindowscontract)→RESEARCH→evidence/raw/kernelETW/nativeCwdTokenModule/windows/PCAP/sourcecopy/oldnativeoracles. Before snapshots/index preserve versions. New current paragraphs reread after sync; full history semantics not recertified. Gate decisions made by Codex, not checker. No periodic counter reset.",
+  "findings": [
+    {
+      "id": "F1",
+      "stale": "Current originalWindows ownership gap stale after sealed actualcontrols",
+      "correction": "README/PLAN/RESEARCH/catalog now point originalWindowsPID/token/cwd/ETW/sourcecopy/isolation; originalgameplay/bootstrap stillunknown.",
+      "fixed_in": [
+        "README.md",
+        "docs/PLAN.md",
+        "docs/RESEARCH.md",
+        "docs/features.json",
+        "docs/COVERAGE.md"
+      ]
+    },
+    {
+      "id": "F2",
+      "stale": "K0 and K2a had no explicit current acceptance decision despite independent oldoracle data/newcontrols",
+      "correction": "Read unchanged criteria and native reports; manually accept identity/harness K0 plus bounded static K2a afterK0. FullK2/K1 and downstream remainopen; script not authority.",
+      "fixed_in": [
+        "docs/PLAN.md",
+        "docs/PROTOCOL.md"
+      ]
+    },
+    {
+      "id": "F3",
+      "stale": "PROTOCOL top header still CP170/AUD050/next172",
+      "correction": "Update current header toCP178/AUD053adhoc/periodic176/next180, preserve historical CP scopes/complete records.",
+      "fixed_in": [
+        "docs/PROTOCOL.md"
+      ]
+    },
+    {
+      "id": "F4",
+      "stale": "Nexon and ??? modal could be conflated with cause/success",
+      "correction": "Three owned originalrecipes correlate native+kernelPID,parent,start,token,module/cwd; Both separates windows. Literalquestionmark/embeddedIE/rootcause unknown, no bootstrap/gameplaypass. ProcessPatch remains CALog marker; exactPC/return not sampled, no claim native execution stopped inside that function.",
+      "fixed_in": [
+        "docs/PROTOCOL.md",
+        "docs/evidence/peer-endpoints/README.md"
+      ]
+    },
+    {
+      "id": "F5",
+      "stale": "Preparation/log-parser errors and extra archive labels could be misread as client failure or mutation",
+      "correction": "Preserve NewPatcher-r1 no-launch robocopyfailure/v2falsepositive nestedpath archive; sourcev3fix before newrun. Preserve analysisr1/r2extra-finalblank assumption, r3 reads exact two native lines. Raw/source never rewritten to pass.",
+      "fixed_in": [
+        "docs/PROTOCOL.md",
+        "docs/evidence/peer-endpoints/README.md"
+      ]
+    },
+    {
+      "id": "F6",
+      "stale": "VN original and patched reference identities must remain distinct; legacyV1 must not set KRE gates",
+      "correction": "Readonly recheck bce/bc875 against REFERENCES after reading router/mainrules and mandatoryplanningexcerpts; no runtime/offset/opcode transfer or legacy edits.",
+      "fixed_in": [
+        "docs/PLAN.md"
+      ]
+    },
+    {
+      "id": "F7",
+      "stale": "CP177 delivery status and practical next work stale",
+      "correction": "PR249mergedb7972a8 recorded; NEXT-LOCAL-ACCEPTANCE closes narrowly, K1 old/currentrecipe source-first is next. No AC2cycle replay or every lifecycle variant.",
+      "fixed_in": [
+        "README.md",
+        "docs/PLAN.md"
+      ]
+    }
+  ],
+  "remaining": [
+    "K1三coldstart同recipe/localattempt beyond known blocker; original controls not K1pass. Source-first oldR2/currentWine inputs, do not redo known gameplay.",
+    "Full/liveK2/prefix/cap/FFFFFFFF/fullmodes/realreconnect, K3auth/cache, K4–K7/K6a/LANInternet8clients stillopen. K2a static only.",
+    "Windows modal??? childtext/ACP/provider/launcherIPC and Wine startupSIGSEGV cause unknown; VM+observers not bareWindows equivalence.",
+    "KRE-001 acceptance ready pending PR auto-close after merge; historical checkpoint/GitHub snapshots remain as-of records, current-state sync next task.",
+    "Periodic audit remainsCP180 after last176; this is ad-hoc scope acceptance/current-state review, not recertification of every historical paragraph.",
+    "Measured control PS/console exactbytes promoted to tools; environment-specific capture/lease/sourcecopy raw recipes remain local/pinned. No production server/codec or legacy Rust source changed."
+  ]
+}

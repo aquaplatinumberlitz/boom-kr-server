@@ -1,0 +1,1328 @@
+{
+  "schema": "kre-evidence-manifest-v1",
+  "evidence": [
+    {
+      "id": "SRC-00001",
+      "kind": "artifact",
+      "path": "/home/admin/boom/clients/kr-00967/BlackCipher/BlackCall.aes",
+      "bytes": 23649480,
+      "sha256": "bdc0e41521dbf91be4c365366dabe0c06c3894e544a3b26e0c7051bdb0ded445"
+    },
+    {
+      "id": "SRC-00002",
+      "kind": "artifact",
+      "path": "/home/admin/boom/clients/kr-00967/BlackCipher/BlackCall.log",
+      "bytes": 3101,
+      "sha256": "c739308cce0cc0cffbc9f1a737d047590501fc91ad0f4efcca90acd11fe2e581"
+    },
+    {
+      "id": "SRC-00003",
+      "kind": "artifact",
+      "path": "/home/admin/boom/clients/kr-00967/BlackCipher/BlackCipher.aes",
+      "bytes": 41968216,
+      "sha256": "0d756d83393b678aac5ab229a6c551a0a8c561aa964640aaf744f9f69d31a5e0"
+    },
+    {
+      "id": "SRC-00004",
+      "kind": "artifact",
+      "path": "/home/admin/boom/clients/kr-00967/BlackCipher/BlackCipher.log",
+      "bytes": 9540,
+      "sha256": "1d95f2261118ed404296e40aee01a67ccae10b157bbce9a3592ce7e891e3df1a"
+    },
+    {
+      "id": "SRC-00005",
+      "kind": "artifact",
+      "path": "/home/admin/boom/clients/kr-00967/BlackCipher/BlackMon.aes",
+      "bytes": 24755760,
+      "sha256": "51fa6c41549c0a7c3674ed80e903b1b782ebc9ecc0bd11949dfa3152240e2c30"
+    },
+    {
+      "id": "SRC-00006",
+      "kind": "artifact",
+      "path": "/home/admin/boom/clients/kr-00967/BlackCipher/BlackMon.log",
+      "bytes": 71120,
+      "sha256": "525e33f4e4b4a93cb44390d12e1337408dbfcc910774fcfc227773083a09e798"
+    },
+    {
+      "id": "SRC-00007",
+      "kind": "artifact",
+      "path": "/home/admin/boom/clients/kr-00967/BlackCipher/BlackXchg.aes",
+      "bytes": 9055336,
+      "sha256": "fbbd1b913dcbb876de13311da1cc09d335ec6aff0902451987ee7d195eea40bf"
+    },
+    {
+      "id": "SRC-00008",
+      "kind": "artifact",
+      "path": "/home/admin/boom/clients/kr-00967/BlackCipher/BlackXchg.log",
+      "bytes": 10049,
+      "sha256": "81605c4f08aca9cdee7823464b0f0816a59ef108b9a866d95b9636ef2be499d0"
+    },
+    {
+      "id": "SRC-00009",
+      "kind": "artifact",
+      "path": "/home/admin/boom/clients/kr-00967/BlackCipher/NGClient.log",
+      "bytes": 1433,
+      "sha256": "8b3387cf273030128866e3dc58f4c425838029c52b770333e8321ce96d86aeee"
+    },
+    {
+      "id": "SRC-00010",
+      "kind": "artifact",
+      "path": "/home/admin/boom/clients/kr-00967/BlackCipher/config.bc",
+      "bytes": 17450,
+      "sha256": "226e4b083ce0b727dce45b72a57c983da602c039514f0546e609b29391a9c8e3"
+    },
+    {
+      "id": "SRC-00011",
+      "kind": "artifact",
+      "path": "/home/admin/boom/clients/kr-00967/BlackCipher/eTracer.aes",
+      "bytes": 771928,
+      "sha256": "84bd5141fa362309bb82a3a4682accc61bb38913036a381ea8c9cba00128cae5"
+    },
+    {
+      "id": "SRC-00012",
+      "kind": "artifact",
+      "path": "/home/admin/boom/clients/kr-00967/CA.exe",
+      "bytes": 10141152,
+      "sha256": "a52545c14b1fea423de655c3163d6360b628d61c1cd472b46fdbc8a9ffe15f4e"
+    },
+    {
+      "id": "SRC-00013",
+      "kind": "artifact",
+      "path": "/home/admin/boom/clients/kr-00967/CA.exe.i64",
+      "bytes": 40766108,
+      "sha256": "c160bad226855d46af899b864ea0b205498f4491c624141dd641c4f661a7dd6a"
+    },
+    {
+      "id": "SRC-00014",
+      "kind": "artifact",
+      "path": "/home/admin/boom/clients/kr-00967/CAKR.ini",
+      "bytes": 334,
+      "sha256": "36510bf80ce35bde14da2dcf0faa10b5cdad54c5dd7cb1ac7e357c62ea24d629"
+    },
+    {
+      "id": "SRC-00015",
+      "kind": "artifact",
+      "path": "/home/admin/boom/clients/kr-00967/CALauncher.exe",
+      "bytes": 3532800,
+      "sha256": "8cc2668bec7a4a0281f1acab26ab3487c4b4e5047d7ce75ab32b299ef16f527d"
+    },
+    {
+      "id": "SRC-00016",
+      "kind": "artifact",
+      "path": "/home/admin/boom/clients/kr-00967/CALog.log",
+      "bytes": 1237,
+      "sha256": "cefed9635f2b9c4de729b5d2ed61784f3698e2b3bb8f34bcd48bae3af0125f83"
+    },
+    {
+      "id": "SRC-00017",
+      "kind": "artifact",
+      "path": "/home/admin/boom/clients/kr-00967/CAWH.sys",
+      "bytes": 53248,
+      "sha256": "bcffd4f9e5f1618d4378b7ff47e6614109bfbefa2ebb9438302c060b34252f0b"
+    },
+    {
+      "id": "SRC-00018",
+      "kind": "artifact",
+      "path": "/home/admin/boom/clients/kr-00967/CharTE.idd",
+      "bytes": 368661975,
+      "sha256": "045cef30a9f0a6fd5d161875e05d93917403a687991752f68f7ab87e9f5fd8fc"
+    },
+    {
+      "id": "SRC-00019",
+      "kind": "artifact",
+      "path": "/home/admin/boom/clients/kr-00967/CharTE.idx",
+      "bytes": 1039950,
+      "sha256": "9095e77f111420b6ca7a65ba93326c1e9e2a20cb52ba051b7a6a0f753beea13e"
+    },
+    {
+      "id": "SRC-00020",
+      "kind": "artifact",
+      "path": "/home/admin/boom/clients/kr-00967/CrashReporter.dll",
+      "bytes": 771344,
+      "sha256": "a833ecc78c69fd8f1288c1038b724e02b562005f84afcc7d84d8a3450c2e45bb"
+    },
+    {
+      "id": "SRC-00021",
+      "kind": "artifact",
+      "path": "/home/admin/boom/clients/kr-00967/CxDefault.fft",
+      "bytes": 278144,
+      "sha256": "8e957031e2e7827de0bf071ca9ffe0550105bb3f75011160d23afe6f43cd81b0"
+    },
+    {
+      "id": "SRC-00022",
+      "kind": "artifact",
+      "path": "/home/admin/boom/clients/kr-00967/CxUni.fft",
+      "bytes": 2949107,
+      "sha256": "d2d79cacb15f00b2f544daebff740caf3248c2c393994ace0c310b69f3a01f7a"
+    },
+    {
+      "id": "SRC-00023",
+      "kind": "artifact",
+      "path": "/home/admin/boom/clients/kr-00967/CxUniBold.fft",
+      "bytes": 2949107,
+      "sha256": "b38134be8d255277284b67da0e126d1e97c557cf693fa36be616efe9bb045330"
+    },
+    {
+      "id": "SRC-00024",
+      "kind": "artifact",
+      "path": "/home/admin/boom/clients/kr-00967/CxUniGulim.fft",
+      "bytes": 2949107,
+      "sha256": "edfa0a71efa24b36d237c1692c1fcc966c7a2f167c3fbf29de433d270422eda5"
+    },
+    {
+      "id": "SRC-00025",
+      "kind": "artifact",
+      "path": "/home/admin/boom/clients/kr-00967/CxUniGulimBold.fft",
+      "bytes": 2949107,
+      "sha256": "caffe62b9fff39ef4acaedd4ef2821f1a9ced3d4406c7a9a696e28f438ddf6d6"
+    },
+    {
+      "id": "SRC-00026",
+      "kind": "artifact",
+      "path": "/home/admin/boom/clients/kr-00967/D3DX9_43.dll",
+      "bytes": 1998168,
+      "sha256": "0b28546be22c71834501f7d7185ede5d79742457331c7ee09efc14490dd64f5f"
+    },
+    {
+      "id": "SRC-00027",
+      "kind": "artifact",
+      "path": "/home/admin/boom/clients/kr-00967/DTM.dll",
+      "bytes": 155648,
+      "sha256": "e74d5b5d141b2f615f527a368da0f9d669e495a37797eaab8738fb68de6cb756"
+    },
+    {
+      "id": "SRC-00028",
+      "kind": "artifact",
+      "path": "/home/admin/boom/clients/kr-00967/DWK.dll",
+      "bytes": 49152,
+      "sha256": "9a0ca695977270208ec37ef67db248341a85a6c1d2801d37e20025a4131d60c0"
+    },
+    {
+      "id": "SRC-00029",
+      "kind": "artifact",
+      "path": "/home/admin/boom/clients/kr-00967/Dwarf/CrashReporter.dll",
+      "bytes": 1068080,
+      "sha256": "e662bd145bf51929ec86013ef112e0cebcc6ed17353267e9461dbde3d9caefb3"
+    },
+    {
+      "id": "SRC-00030",
+      "kind": "artifact",
+      "path": "/home/admin/boom/clients/kr-00967/Dwarf/DwarfAxe.exe",
+      "bytes": 940624,
+      "sha256": "81d547b1f796e4f9f9fdd0c2dbe40a33f2b08b572a0dd483979158e30c9bd068"
+    },
+    {
+      "id": "SRC-00031",
+      "kind": "artifact",
+      "path": "/home/admin/boom/clients/kr-00967/Dwarf/cef.pak",
+      "bytes": 3659767,
+      "sha256": "f8a79e0f94e8a6ef849aed1910040c7d8a4c8a61487eb67163509008c9cdb33b"
+    },
+    {
+      "id": "SRC-00032",
+      "kind": "artifact",
+      "path": "/home/admin/boom/clients/kr-00967/Dwarf/cef_100_percent.pak",
+      "bytes": 737157,
+      "sha256": "6107c1bfdbf2cf351d5281073422b836d7a547e81345bff502fd31335d7fcbb3"
+    },
+    {
+      "id": "SRC-00033",
+      "kind": "artifact",
+      "path": "/home/admin/boom/clients/kr-00967/Dwarf/cef_200_percent.pak",
+      "bytes": 864626,
+      "sha256": "ef2c632ca52b27d464d6d3d8cd1b5b31b62b1102845682c680cd2bb102c5fca0"
+    },
+    {
+      "id": "SRC-00034",
+      "kind": "artifact",
+      "path": "/home/admin/boom/clients/kr-00967/Dwarf/cef_extensions.pak",
+      "bytes": 1801266,
+      "sha256": "8aabc7b9d7f696612ec3df0ee34a9814d0ee8bed2a5cb1fa0dfa2236033b50d7"
+    },
+    {
+      "id": "SRC-00035",
+      "kind": "artifact",
+      "path": "/home/admin/boom/clients/kr-00967/Dwarf/cef_sandbox.lib",
+      "bytes": 78900432,
+      "sha256": "857f97fb70af418d3ace371a9765d67447494a58d81313e9c7f7f8cc9e5e01cf"
+    },
+    {
+      "id": "SRC-00036",
+      "kind": "artifact",
+      "path": "/home/admin/boom/clients/kr-00967/Dwarf/chrome_100_percent.pak",
+      "bytes": 786453,
+      "sha256": "aaaff8d6c9f0307c4eb3dda812f566300073414de002bcefb273a7be57f9e69e"
+    },
+    {
+      "id": "SRC-00037",
+      "kind": "artifact",
+      "path": "/home/admin/boom/clients/kr-00967/Dwarf/chrome_200_percent.pak",
+      "bytes": 1358050,
+      "sha256": "3e116ffe2f55faa2c2b96aee4da637e6424cb48bab27d9f94a958530f840c673"
+    },
+    {
+      "id": "SRC-00038",
+      "kind": "artifact",
+      "path": "/home/admin/boom/clients/kr-00967/Dwarf/chrome_elf.dll",
+      "bytes": 952320,
+      "sha256": "0244a9746b244db0949c29ba0a6a1ef91f97996cd24368aed62347e0a573859b"
+    },
+    {
+      "id": "SRC-00039",
+      "kind": "artifact",
+      "path": "/home/admin/boom/clients/kr-00967/Dwarf/d3dcompiler_43.dll",
+      "bytes": 2106216,
+      "sha256": "2f23182ec6f4889397ac4bf03d62536136c5bdba825c7d2c4ef08c827f3a8a1c"
+    },
+    {
+      "id": "SRC-00040",
+      "kind": "artifact",
+      "path": "/home/admin/boom/clients/kr-00967/Dwarf/d3dcompiler_47.dll",
+      "bytes": 3657992,
+      "sha256": "8bf0eeb5081d8397e2f84f69449c8a80d9c0cdcf82bcef7a484309046adcb081"
+    },
+    {
+      "id": "SRC-00041",
+      "kind": "artifact",
+      "path": "/home/admin/boom/clients/kr-00967/Dwarf/devtools_resources.pak",
+      "bytes": 5970617,
+      "sha256": "4de33786c2955e4897049ded56323b4470befd9fbcbf56c259614dbb77aa8672"
+    },
+    {
+      "id": "SRC-00042",
+      "kind": "artifact",
+      "path": "/home/admin/boom/clients/kr-00967/Dwarf/icudtl.dat",
+      "bytes": 10413488,
+      "sha256": "6e0b6b0d9e14c905f2278dbf25b7bb58cc0622b7680e3b6ff617a1d42348736b"
+    },
+    {
+      "id": "SRC-00043",
+      "kind": "artifact",
+      "path": "/home/admin/boom/clients/kr-00967/Dwarf/libEGL.dll",
+      "bytes": 332288,
+      "sha256": "4cebfd7128029b6d928ab283c167a1df69ff2fdf3c904bd50bf12b2e4b8b79ac"
+    },
+    {
+      "id": "SRC-00044",
+      "kind": "artifact",
+      "path": "/home/admin/boom/clients/kr-00967/Dwarf/libGLESv2.dll",
+      "bytes": 5855232,
+      "sha256": "f17be77742768915e8c8e9c8af6d221d79cb487f21daa1e636038585b1aa2369"
+    },
+    {
+      "id": "SRC-00045",
+      "kind": "artifact",
+      "path": "/home/admin/boom/clients/kr-00967/Dwarf/libcef.dll",
+      "bytes": 131125248,
+      "sha256": "e8ebf5d7c1cdc6da2d2af3de120f0f1823951b053f1e60b0f38ee2848dada4bc"
+    },
+    {
+      "id": "SRC-00046",
+      "kind": "artifact",
+      "path": "/home/admin/boom/clients/kr-00967/Dwarf/libcef.lib",
+      "bytes": 38070,
+      "sha256": "0c09a7521eaababfda53903c6e8f6bf0d4d6ac9d6e147358ac5b091c6cc843fa"
+    },
+    {
+      "id": "SRC-00047",
+      "kind": "artifact",
+      "path": "/home/admin/boom/clients/kr-00967/Dwarf/locales/am.pak",
+      "bytes": 464155,
+      "sha256": "4dbde72ecf65ac84b6c01251d37c425c4cedc00e3cd9cd40c0bd5a6081359b64"
+    },
+    {
+      "id": "SRC-00048",
+      "kind": "artifact",
+      "path": "/home/admin/boom/clients/kr-00967/Dwarf/locales/ar.pak",
+      "bytes": 491301,
+      "sha256": "36f41a346ed07708ce12d54e5a4c4612f49a375155d1655a23c52256838617cf"
+    },
+    {
+      "id": "SRC-00049",
+      "kind": "artifact",
+      "path": "/home/admin/boom/clients/kr-00967/Dwarf/locales/bg.pak",
+      "bytes": 530918,
+      "sha256": "ea323024091753a5576a343e46d19bfbf9939122bdde53d91d7dfdbbea5a9c68"
+    },
+    {
+      "id": "SRC-00050",
+      "kind": "artifact",
+      "path": "/home/admin/boom/clients/kr-00967/Dwarf/locales/bn.pak",
+      "bytes": 688116,
+      "sha256": "522e7a2e1f7d8e49b5632759cb5dae269578edc522689bdbcb23b74750f53e77"
+    },
+    {
+      "id": "SRC-00051",
+      "kind": "artifact",
+      "path": "/home/admin/boom/clients/kr-00967/Dwarf/locales/ca.pak",
+      "bytes": 326875,
+      "sha256": "c79b92ba066cf5414fc37795e6a76e966c23143bd3c48c0cf5f61aedd5cdafef"
+    },
+    {
+      "id": "SRC-00052",
+      "kind": "artifact",
+      "path": "/home/admin/boom/clients/kr-00967/Dwarf/locales/cs.pak",
+      "bytes": 333598,
+      "sha256": "3f2e5a65ebf8938ff4e9676b12573b23c72501761f1bff4d5ae466b68c85130c"
+    },
+    {
+      "id": "SRC-00053",
+      "kind": "artifact",
+      "path": "/home/admin/boom/clients/kr-00967/Dwarf/locales/da.pak",
+      "bytes": 301139,
+      "sha256": "cefdaea7b486364291fad01ff402ab8098e2e13bc73b2bbeac25c8a9daba8df8"
+    },
+    {
+      "id": "SRC-00054",
+      "kind": "artifact",
+      "path": "/home/admin/boom/clients/kr-00967/Dwarf/locales/de.pak",
+      "bytes": 325102,
+      "sha256": "88581d49e6c83ef74fe4aeed438c0380f321d9eaf3b8ef210d39f8378836a1c1"
+    },
+    {
+      "id": "SRC-00055",
+      "kind": "artifact",
+      "path": "/home/admin/boom/clients/kr-00967/Dwarf/locales/el.pak",
+      "bytes": 579750,
+      "sha256": "efe6a9d8dcf76f5286bec0496209f59da3de6ab6e355a183b69a7e4bd5d36cc2"
+    },
+    {
+      "id": "SRC-00056",
+      "kind": "artifact",
+      "path": "/home/admin/boom/clients/kr-00967/Dwarf/locales/en-GB.pak",
+      "bytes": 267081,
+      "sha256": "411a729d9288a62780c32d6bf5f4cf0fd8d221ff341ce79c2eca25dfa03c9821"
+    },
+    {
+      "id": "SRC-00057",
+      "kind": "artifact",
+      "path": "/home/admin/boom/clients/kr-00967/Dwarf/locales/en-US.pak",
+      "bytes": 270354,
+      "sha256": "21fa942a5f4f26996396f0d84807b6f8c01afd5809e2da33487bbecd0a6d13ef"
+    },
+    {
+      "id": "SRC-00058",
+      "kind": "artifact",
+      "path": "/home/admin/boom/clients/kr-00967/Dwarf/locales/es-419.pak",
+      "bytes": 320359,
+      "sha256": "ef0a523bcfa4d3a1b7472947a1f2a0a68e24c628386f7f0056ca4404d82481f1"
+    },
+    {
+      "id": "SRC-00059",
+      "kind": "artifact",
+      "path": "/home/admin/boom/clients/kr-00967/Dwarf/locales/es.pak",
+      "bytes": 323061,
+      "sha256": "85862323a3128490a2c1be66a36480f7eb73a2294d62ef4ff38ae868c034db4f"
+    },
+    {
+      "id": "SRC-00060",
+      "kind": "artifact",
+      "path": "/home/admin/boom/clients/kr-00967/Dwarf/locales/et.pak",
+      "bytes": 289677,
+      "sha256": "241f3e5286b25864081f50edb93c4693bf001f04d7c7b98f5c4921f768cd7e94"
+    },
+    {
+      "id": "SRC-00061",
+      "kind": "artifact",
+      "path": "/home/admin/boom/clients/kr-00967/Dwarf/locales/fa.pak",
+      "bytes": 468288,
+      "sha256": "05a98b8dc3b6d5e3a224e17c144d873c3b84c6e704fd2b8dd659e2099789f9a3"
+    },
+    {
+      "id": "SRC-00062",
+      "kind": "artifact",
+      "path": "/home/admin/boom/clients/kr-00967/Dwarf/locales/fi.pak",
+      "bytes": 298130,
+      "sha256": "fa171dcc44baf46cd4331d0a833172185ff6a166a31ab4f9890eb0832e15cbf2"
+    },
+    {
+      "id": "SRC-00063",
+      "kind": "artifact",
+      "path": "/home/admin/boom/clients/kr-00967/Dwarf/locales/fil.pak",
+      "bytes": 333460,
+      "sha256": "fab8b112187fcf9ba5102ff0aac2f5eec63a646c8bf808fc5a2e4e08b9c62a83"
+    },
+    {
+      "id": "SRC-00064",
+      "kind": "artifact",
+      "path": "/home/admin/boom/clients/kr-00967/Dwarf/locales/fr.pak",
+      "bytes": 351123,
+      "sha256": "1ffb04ba6986f4a25f5191da50939cfe48d1581388148b7f64d3c10a124439d8"
+    },
+    {
+      "id": "SRC-00065",
+      "kind": "artifact",
+      "path": "/home/admin/boom/clients/kr-00967/Dwarf/locales/gu.pak",
+      "bytes": 660273,
+      "sha256": "79fa0f068f09ed239a8e0c3f1da0b35fa1f86622f9fa47721e13656696184e88"
+    },
+    {
+      "id": "SRC-00066",
+      "kind": "artifact",
+      "path": "/home/admin/boom/clients/kr-00967/Dwarf/locales/he.pak",
+      "bytes": 406759,
+      "sha256": "7652d063f1630e33228809834f71e6e2ffec75c472ec66b6ed767bd98886f928"
+    },
+    {
+      "id": "SRC-00067",
+      "kind": "artifact",
+      "path": "/home/admin/boom/clients/kr-00967/Dwarf/locales/hi.pak",
+      "bytes": 684588,
+      "sha256": "2418a772d39e45fbea52182965a901364ddcd5459a920c8dcb56c2844954e536"
+    },
+    {
+      "id": "SRC-00068",
+      "kind": "artifact",
+      "path": "/home/admin/boom/clients/kr-00967/Dwarf/locales/hr.pak",
+      "bytes": 320821,
+      "sha256": "b967887c6313fca79a82168645c1febe43c949f01e0eff3bb8413a04b590e16e"
+    },
+    {
+      "id": "SRC-00069",
+      "kind": "artifact",
+      "path": "/home/admin/boom/clients/kr-00967/Dwarf/locales/hu.pak",
+      "bytes": 344321,
+      "sha256": "12949111bf85a2236f071a294a508d99c90587a97b9ba7f61dc8d70e36f5761b"
+    },
+    {
+      "id": "SRC-00070",
+      "kind": "artifact",
+      "path": "/home/admin/boom/clients/kr-00967/Dwarf/locales/id.pak",
+      "bytes": 286613,
+      "sha256": "60e0f7533dd163da804ac5445f2a80fbda26bc58ce26d8d2de7e2bfd4e5d039c"
+    },
+    {
+      "id": "SRC-00071",
+      "kind": "artifact",
+      "path": "/home/admin/boom/clients/kr-00967/Dwarf/locales/it.pak",
+      "bytes": 316116,
+      "sha256": "5fef05d02e5c971e8d3f6b5584720ebeed7c7e6e5214320f09ca6f7d84ffa993"
+    },
+    {
+      "id": "SRC-00072",
+      "kind": "artifact",
+      "path": "/home/admin/boom/clients/kr-00967/Dwarf/locales/ja.pak",
+      "bytes": 389447,
+      "sha256": "8b8407ca872711857c1efe032f0c71df17fbe8d82107a09953e812a20497e582"
+    },
+    {
+      "id": "SRC-00073",
+      "kind": "artifact",
+      "path": "/home/admin/boom/clients/kr-00967/Dwarf/locales/kn.pak",
+      "bytes": 766454,
+      "sha256": "5eaca86a3792d40db18e7d1ce39683471bed1e8b169d716101808930728e1ea0"
+    },
+    {
+      "id": "SRC-00074",
+      "kind": "artifact",
+      "path": "/home/admin/boom/clients/kr-00967/Dwarf/locales/ko.pak",
+      "bytes": 327055,
+      "sha256": "549b190c3722d4774cc7a8a2730f858dba66f063840469799adb449184056f9b"
+    },
+    {
+      "id": "SRC-00075",
+      "kind": "artifact",
+      "path": "/home/admin/boom/clients/kr-00967/Dwarf/locales/lt.pak",
+      "bytes": 344788,
+      "sha256": "336b6bfe35680a19b02d583f332df5d0f5dc6fa5729c2910fb1aa6659e6aaab6"
+    },
+    {
+      "id": "SRC-00076",
+      "kind": "artifact",
+      "path": "/home/admin/boom/clients/kr-00967/Dwarf/locales/lv.pak",
+      "bytes": 343222,
+      "sha256": "a9cff7d778289b25bca696ff4873e45f098be21f8f4fa3105ae7e2b9b1ef95da"
+    },
+    {
+      "id": "SRC-00077",
+      "kind": "artifact",
+      "path": "/home/admin/boom/clients/kr-00967/Dwarf/locales/ml.pak",
+      "bytes": 803351,
+      "sha256": "990b6559fb32e86df8045cdf8687fe7176fb810c18b2032fbb1a093d9b2c901a"
+    },
+    {
+      "id": "SRC-00078",
+      "kind": "artifact",
+      "path": "/home/admin/boom/clients/kr-00967/Dwarf/locales/mr.pak",
+      "bytes": 646502,
+      "sha256": "27baebb27c345e367f27b2ea8eb5895c2dadadea282a0fa94a1b2057859736a5"
+    },
+    {
+      "id": "SRC-00079",
+      "kind": "artifact",
+      "path": "/home/admin/boom/clients/kr-00967/Dwarf/locales/ms.pak",
+      "bytes": 299590,
+      "sha256": "26457724f3431e3383ac833cbd990834dda8e5e76b961ff931d171aca4221626"
+    },
+    {
+      "id": "SRC-00080",
+      "kind": "artifact",
+      "path": "/home/admin/boom/clients/kr-00967/Dwarf/locales/nb.pak",
+      "bytes": 295358,
+      "sha256": "8ef002c7ef1d7207b5b41038f16fef198d2343c0539f14090960d6f1295d8c7a"
+    },
+    {
+      "id": "SRC-00081",
+      "kind": "artifact",
+      "path": "/home/admin/boom/clients/kr-00967/Dwarf/locales/nl.pak",
+      "bytes": 303424,
+      "sha256": "ad97f1708909ba1c2d6119de7536448805f00275273a8b33e743dbf2e7ab2456"
+    },
+    {
+      "id": "SRC-00082",
+      "kind": "artifact",
+      "path": "/home/admin/boom/clients/kr-00967/Dwarf/locales/pl.pak",
+      "bytes": 333313,
+      "sha256": "a5fdcd13f711d4665d1960f512f1bd229dbbacb24c86bbb3773a905e2dd24b33"
+    },
+    {
+      "id": "SRC-00083",
+      "kind": "artifact",
+      "path": "/home/admin/boom/clients/kr-00967/Dwarf/locales/pt-BR.pak",
+      "bytes": 316456,
+      "sha256": "3051442a3e905dfdfb8f17f49d12a3722c511faf9aba0fc86d577dac90e3b654"
+    },
+    {
+      "id": "SRC-00084",
+      "kind": "artifact",
+      "path": "/home/admin/boom/clients/kr-00967/Dwarf/locales/pt-PT.pak",
+      "bytes": 320833,
+      "sha256": "3cda10980a23de97163a2c06b31829cca1ec3da63b0bb0a246126f402c19b16a"
+    },
+    {
+      "id": "SRC-00085",
+      "kind": "artifact",
+      "path": "/home/admin/boom/clients/kr-00967/Dwarf/locales/ro.pak",
+      "bytes": 328146,
+      "sha256": "5fe258168978f52d2b3c6f063c7a7c381a70ac06e128ababe6656375025fc088"
+    },
+    {
+      "id": "SRC-00086",
+      "kind": "artifact",
+      "path": "/home/admin/boom/clients/kr-00967/Dwarf/locales/ru.pak",
+      "bytes": 525443,
+      "sha256": "fb9da2895730be8d82924d01d5e0dc28c454d8b91a1aab556d255462c374bf16"
+    },
+    {
+      "id": "SRC-00087",
+      "kind": "artifact",
+      "path": "/home/admin/boom/clients/kr-00967/Dwarf/locales/sk.pak",
+      "bytes": 338931,
+      "sha256": "ae4a8e4e3706626f7ba53cb395e2472389bdc1319fbbaaca608ee1ae3c918e0a"
+    },
+    {
+      "id": "SRC-00088",
+      "kind": "artifact",
+      "path": "/home/admin/boom/clients/kr-00967/Dwarf/locales/sl.pak",
+      "bytes": 323227,
+      "sha256": "80ab358cfdafe9533005571d832377a08e5df4801a6f61be7aeb2afe626691b9"
+    },
+    {
+      "id": "SRC-00089",
+      "kind": "artifact",
+      "path": "/home/admin/boom/clients/kr-00967/Dwarf/locales/sr.pak",
+      "bytes": 499720,
+      "sha256": "6615bd59f0759e6af09309b8344c0e7f0c2dc2bec55beaa0afd1bbe09af7596d"
+    },
+    {
+      "id": "SRC-00090",
+      "kind": "artifact",
+      "path": "/home/admin/boom/clients/kr-00967/Dwarf/locales/sv.pak",
+      "bytes": 295442,
+      "sha256": "eca3cbaceb77840c7d861b559ee3ceadafa9f7777856112c9bd30b5a8d517b9b"
+    },
+    {
+      "id": "SRC-00091",
+      "kind": "artifact",
+      "path": "/home/admin/boom/clients/kr-00967/Dwarf/locales/sw.pak",
+      "bytes": 303522,
+      "sha256": "178590c5a7fcf0d41d93724de8aa04f4bad7b9cec119a54a4115f96f9219ef3c"
+    },
+    {
+      "id": "SRC-00092",
+      "kind": "artifact",
+      "path": "/home/admin/boom/clients/kr-00967/Dwarf/locales/ta.pak",
+      "bytes": 779608,
+      "sha256": "7f047181c386fceb204184cf02d1ad1859e5293db04122c5c6585ce7bda8da0f"
+    },
+    {
+      "id": "SRC-00093",
+      "kind": "artifact",
+      "path": "/home/admin/boom/clients/kr-00967/Dwarf/locales/te.pak",
+      "bytes": 727540,
+      "sha256": "3e19980886a66ca92ea762b86ab44fac8e71fb16fbf4dd13864840923c9bfd19"
+    },
+    {
+      "id": "SRC-00094",
+      "kind": "artifact",
+      "path": "/home/admin/boom/clients/kr-00967/Dwarf/locales/th.pak",
+      "bytes": 613559,
+      "sha256": "a06797086a3ae1bd42bd93fdfb239a787d521cbabdda56a0c15aa255def81e5c"
+    },
+    {
+      "id": "SRC-00095",
+      "kind": "artifact",
+      "path": "/home/admin/boom/clients/kr-00967/Dwarf/locales/tr.pak",
+      "bytes": 314100,
+      "sha256": "f25ff7a18aebd6ecaf56c2b125aaa22a1699fe2ee9cc6f190f6525d824992f11"
+    },
+    {
+      "id": "SRC-00096",
+      "kind": "artifact",
+      "path": "/home/admin/boom/clients/kr-00967/Dwarf/locales/uk.pak",
+      "bytes": 524184,
+      "sha256": "23752a372251b782f35f6fca4a17dc260159eca4620ddb610f5ff7720d496a18"
+    },
+    {
+      "id": "SRC-00097",
+      "kind": "artifact",
+      "path": "/home/admin/boom/clients/kr-00967/Dwarf/locales/vi.pak",
+      "bytes": 369663,
+      "sha256": "66468ec740624dc5ca9988e2aea145bbe915333db3327653f130ec4a426baf17"
+    },
+    {
+      "id": "SRC-00098",
+      "kind": "artifact",
+      "path": "/home/admin/boom/clients/kr-00967/Dwarf/locales/zh-CN.pak",
+      "bytes": 272248,
+      "sha256": "70070d44c9e5ec62c57b574837423f849ed363c0167e8019afd49a93c74c7e3a"
+    },
+    {
+      "id": "SRC-00099",
+      "kind": "artifact",
+      "path": "/home/admin/boom/clients/kr-00967/Dwarf/locales/zh-TW.pak",
+      "bytes": 270323,
+      "sha256": "70ea00381aa8ae93ce9f64ae29ad3de0263ee5991861120c8df7603bac540b84"
+    },
+    {
+      "id": "SRC-00100",
+      "kind": "artifact",
+      "path": "/home/admin/boom/clients/kr-00967/Dwarf/natives_blob.bin",
+      "bytes": 83328,
+      "sha256": "1cae202ada016cf455abf69d583524a1d37a1371ad4efdfac4baed07c6402bdd"
+    },
+    {
+      "id": "SRC-00101",
+      "kind": "artifact",
+      "path": "/home/admin/boom/clients/kr-00967/Dwarf/resources.pak",
+      "bytes": 6976613,
+      "sha256": "0ca449edbb1a6da722f55a84b79480f6cec9720e9343c7a1c79ff9ba5237d41b"
+    },
+    {
+      "id": "SRC-00102",
+      "kind": "artifact",
+      "path": "/home/admin/boom/clients/kr-00967/Dwarf/snapshot_blob.bin",
+      "bytes": 48495,
+      "sha256": "ace5be19020e9a456a9f7b986c75d90a124fd2466e0ae06e0857a45874d1dcab"
+    },
+    {
+      "id": "SRC-00103",
+      "kind": "artifact",
+      "path": "/home/admin/boom/clients/kr-00967/Dwarf/swiftshader/libEGL.dll",
+      "bytes": 349184,
+      "sha256": "b44d71a5d41ab68c2bd0eb5675c50d06db0df5004ad199a0880a00508d414659"
+    },
+    {
+      "id": "SRC-00104",
+      "kind": "artifact",
+      "path": "/home/admin/boom/clients/kr-00967/Dwarf/swiftshader/libGLESv2.dll",
+      "bytes": 2434048,
+      "sha256": "f526149086725bccb6b4ac8e8df349ffc5f66c8edfc81e6686e9bfd1fc858bde"
+    },
+    {
+      "id": "SRC-00105",
+      "kind": "artifact",
+      "path": "/home/admin/boom/clients/kr-00967/Dwarf/v8_context_snapshot.bin",
+      "bytes": 165673,
+      "sha256": "2a0e3257fea9ac2a1ad21da31d910998f1fcfba6e94289b45c04c255419921ac"
+    },
+    {
+      "id": "SRC-00106",
+      "kind": "artifact",
+      "path": "/home/admin/boom/clients/kr-00967/EmoTE.idd",
+      "bytes": 275290407,
+      "sha256": "256cb9277b22431c69f84eeb085eb91d706503bb888fadbce1b2efb5366e89cc"
+    },
+    {
+      "id": "SRC-00107",
+      "kind": "artifact",
+      "path": "/home/admin/boom/clients/kr-00967/EmoTE.idx",
+      "bytes": 421281,
+      "sha256": "ae2702ae84fc9733013bdc1b7cb883cc6f4194e80684fb6593771f8c7153aa4c"
+    },
+    {
+      "id": "SRC-00108",
+      "kind": "artifact",
+      "path": "/home/admin/boom/clients/kr-00967/FxAsset.idd",
+      "bytes": 155592,
+      "sha256": "5f528247fecdb996215a1a1bf652409d99608980b7c39a4dd30e2c5d7590c28a"
+    },
+    {
+      "id": "SRC-00109",
+      "kind": "artifact",
+      "path": "/home/admin/boom/clients/kr-00967/FxAsset.idx",
+      "bytes": 612,
+      "sha256": "44a55df7ccae641afe3cd7211fb37905c285af47adc1d27af892db34551fbd22"
+    },
+    {
+      "id": "SRC-00110",
+      "kind": "artifact",
+      "path": "/home/admin/boom/clients/kr-00967/FxCharacter.idd",
+      "bytes": 40454613,
+      "sha256": "cebfa9ddd7fe33847e451c538bba634a6af92c98137bc8cc6c0eda324f92e9fe"
+    },
+    {
+      "id": "SRC-00111",
+      "kind": "artifact",
+      "path": "/home/admin/boom/clients/kr-00967/FxCharacter.idx",
+      "bytes": 191918,
+      "sha256": "39dca93599a06129c60e4ceb1f2dfb9e79dd7b6910c53dffe44193b19119b3c1"
+    },
+    {
+      "id": "SRC-00112",
+      "kind": "artifact",
+      "path": "/home/admin/boom/clients/kr-00967/FxContents.idd",
+      "bytes": 59759874,
+      "sha256": "1ea0b3eb8b96381cda23f41e9714f5b1ec32bbc3a36b6c5ca138a2075ce661dd"
+    },
+    {
+      "id": "SRC-00113",
+      "kind": "artifact",
+      "path": "/home/admin/boom/clients/kr-00967/FxContents.idx",
+      "bytes": 41129,
+      "sha256": "56ded9cd49079a528abed3b9d9fa7182a1ddb2b63648a835c22134850af52886"
+    },
+    {
+      "id": "SRC-00114",
+      "kind": "artifact",
+      "path": "/home/admin/boom/clients/kr-00967/FxDesktop.idd",
+      "bytes": 54003285,
+      "sha256": "fcc57c2cacc9f037ad6dda913d9ae7a2934f7a039d797bee5058c262b3334ccb"
+    },
+    {
+      "id": "SRC-00115",
+      "kind": "artifact",
+      "path": "/home/admin/boom/clients/kr-00967/FxDesktop.idx",
+      "bytes": 96874,
+      "sha256": "92b7f8b91aa926c29bef0b3af0dff7cdf79c38df96bc5ae87f5c6c44c474ee0c"
+    },
+    {
+      "id": "SRC-00116",
+      "kind": "artifact",
+      "path": "/home/admin/boom/clients/kr-00967/FxHiddenCatch.idd",
+      "bytes": 40554490,
+      "sha256": "63e6593bcb0b13625aa4bd8710cfd6529c4a0738943fc9c34ac80ef76d6c65ef"
+    },
+    {
+      "id": "SRC-00117",
+      "kind": "artifact",
+      "path": "/home/admin/boom/clients/kr-00967/FxHiddenCatch.idx",
+      "bytes": 15040,
+      "sha256": "3d6dccf3abe4dac92dce528d259666198d34d7b660e5a5c3ab9cc5b595ef6bfe"
+    },
+    {
+      "id": "SRC-00118",
+      "kind": "artifact",
+      "path": "/home/admin/boom/clients/kr-00967/FxMap.idd",
+      "bytes": 55897232,
+      "sha256": "9ce6da28ec24901ee489bdffd024eaf93314e1194fe735bb97e1d2bdd2dd7222"
+    },
+    {
+      "id": "SRC-00119",
+      "kind": "artifact",
+      "path": "/home/admin/boom/clients/kr-00967/FxMap.idx",
+      "bytes": 124628,
+      "sha256": "30fd16b63d13a4a474daeeae611cbd2329077fdc6d3c5846cd8d2ed02d490b9b"
+    },
+    {
+      "id": "SRC-00120",
+      "kind": "artifact",
+      "path": "/home/admin/boom/clients/kr-00967/FxMonster.idd",
+      "bytes": 79552572,
+      "sha256": "6e15a7da569cf58c902d6dc033fee20dd2cd326bd90a049d99ef0e70289bdae9"
+    },
+    {
+      "id": "SRC-00121",
+      "kind": "artifact",
+      "path": "/home/admin/boom/clients/kr-00967/FxMonster.idx",
+      "bytes": 63362,
+      "sha256": "9522083b51eac71fe7edd6ac61bbf882118fcb8f0643f44c63999c8c814f7dba"
+    },
+    {
+      "id": "SRC-00122",
+      "kind": "artifact",
+      "path": "/home/admin/boom/clients/kr-00967/FxSound.idd",
+      "bytes": 155724894,
+      "sha256": "be7336fda6bb2546c71b7624b57bb264fb32eb14a86ded535969e46bc6d3946b"
+    },
+    {
+      "id": "SRC-00123",
+      "kind": "artifact",
+      "path": "/home/admin/boom/clients/kr-00967/FxSound.idx",
+      "bytes": 32496,
+      "sha256": "ad7172b1feab63ec9338bc5edf28b57ec011cc57a491bce5eecb3b660e512d77"
+    },
+    {
+      "id": "SRC-00124",
+      "kind": "artifact",
+      "path": "/home/admin/boom/clients/kr-00967/FxStage.idd",
+      "bytes": 64117525,
+      "sha256": "4fb735df89e344a48f2253784d7c89190ec6fe12a12112ce1291d5f88d62f4c0"
+    },
+    {
+      "id": "SRC-00125",
+      "kind": "artifact",
+      "path": "/home/admin/boom/clients/kr-00967/FxStage.idx",
+      "bytes": 51768,
+      "sha256": "4544d8d29a6b344cdd5a85773f20fed7a9aac4a1307d523749ff5b6af48bda46"
+    },
+    {
+      "id": "SRC-00126",
+      "kind": "artifact",
+      "path": "/home/admin/boom/clients/kr-00967/FxTile.idd",
+      "bytes": 84986763,
+      "sha256": "dea930cab28aea52c950b65c985e0fe7c379a3778d846095c14f861ffc171232"
+    },
+    {
+      "id": "SRC-00127",
+      "kind": "artifact",
+      "path": "/home/admin/boom/clients/kr-00967/FxTile.idx",
+      "bytes": 116936,
+      "sha256": "14f62d1bd283829cad5ee00d3c35f92696e949f2b283daecc8f8853c3050d361"
+    },
+    {
+      "id": "SRC-00128",
+      "kind": "artifact",
+      "path": "/home/admin/boom/clients/kr-00967/GameGuard.des",
+      "bytes": 159007,
+      "sha256": "44ad56b07eccab0a27ccc05769c3e847cba26ab3cf9c96af34a9d31d1a8be630"
+    },
+    {
+      "id": "SRC-00129",
+      "kind": "artifact",
+      "path": "/home/admin/boom/clients/kr-00967/GameSummary.exe",
+      "bytes": 279880,
+      "sha256": "46c1ee3fb6a46cfa680ba2e7634a74afe527a923308af3824b70a6cdff5ed322"
+    },
+    {
+      "id": "SRC-00130",
+      "kind": "artifact",
+      "path": "/home/admin/boom/clients/kr-00967/Mss32.dll",
+      "bytes": 381952,
+      "sha256": "5cafd1f6910e6eddaacf6b33cc42ea93e2835e61dc9cb91c6f8aca79f6a02e9b"
+    },
+    {
+      "id": "SRC-00131",
+      "kind": "artifact",
+      "path": "/home/admin/boom/clients/kr-00967/NDA.dll",
+      "bytes": 102400,
+      "sha256": "c88ace56c1c8ae81c8f5f84cba01209dec8f3b19dbaa343657a8cbdadf6881e4"
+    },
+    {
+      "id": "SRC-00132",
+      "kind": "artifact",
+      "path": "/home/admin/boom/clients/kr-00967/NGClient.aes",
+      "bytes": 4466608,
+      "sha256": "faf5e425b1188d72aa7d4b8245899ecf1c46060b9049cf214fe82ce6dc3e6422"
+    },
+    {
+      "id": "SRC-00133",
+      "kind": "artifact",
+      "path": "/home/admin/boom/clients/kr-00967/NGM.exe",
+      "bytes": 261168,
+      "sha256": "24c61b7dc8d6d39915fdd2f6e3492d3c24b4729f6c99f198a57971cac3d6d990"
+    },
+    {
+      "id": "SRC-00134",
+      "kind": "artifact",
+      "path": "/home/admin/boom/clients/kr-00967/NGMDll.dll",
+      "bytes": 1417264,
+      "sha256": "c90c92c6f2ce3521f3371b3b25152d79bb0bc6a14204e007d4106de39129c3ef"
+    },
+    {
+      "id": "SRC-00135",
+      "kind": "artifact",
+      "path": "/home/admin/boom/clients/kr-00967/NGMResource.dll",
+      "bytes": 621616,
+      "sha256": "9b414bb2e180d43fce9d5e2d0b8e0e58021ab3020f0db7ac028335438b8ba326"
+    },
+    {
+      "id": "SRC-00136",
+      "kind": "artifact",
+      "path": "/home/admin/boom/clients/kr-00967/NMCOSrv.exe",
+      "bytes": 784200,
+      "sha256": "75ea74439946f66bd4dee191a7ffee776d7b52039efe8a1bfd62e49332378ebd"
+    },
+    {
+      "id": "SRC-00137",
+      "kind": "artifact",
+      "path": "/home/admin/boom/clients/kr-00967/NPA.dll",
+      "bytes": 286720,
+      "sha256": "dfe0cf5f7eedc9a76deb1456ab8a3bdea1331ede86053895043f5531237598d7"
+    },
+    {
+      "id": "SRC-00138",
+      "kind": "artifact",
+      "path": "/home/admin/boom/clients/kr-00967/NewPatcher.exe",
+      "bytes": 730952,
+      "sha256": "b59e4dce9ad23c439a7632ce04ecb2eed3481585bd2454100b05c9d7527f5c02"
+    },
+    {
+      "id": "SRC-00139",
+      "kind": "artifact",
+      "path": "/home/admin/boom/clients/kr-00967/NexonAnalytics32.dll",
+      "bytes": 6456304,
+      "sha256": "215d0703fffc437ad5899483bb6684f1846b5c22b0dc06268bf2c4daa0f7dce7"
+    },
+    {
+      "id": "SRC-00140",
+      "kind": "artifact",
+      "path": "/home/admin/boom/clients/kr-00967/NexonAnalytics64.dll",
+      "bytes": 6375928,
+      "sha256": "4c8b80e7dc8c0293158d2390fab279afd40c3d05bd7514fc7d621033779ae4cd"
+    },
+    {
+      "id": "SRC-00141",
+      "kind": "artifact",
+      "path": "/home/admin/boom/clients/kr-00967/NxOverlay.dll",
+      "bytes": 845392,
+      "sha256": "56dddcb01002bd8dd5dc769431cad96a65010a1c13613261f699c524365015ec"
+    },
+    {
+      "id": "SRC-00142",
+      "kind": "artifact",
+      "path": "/home/admin/boom/clients/kr-00967/Patcher.log",
+      "bytes": 19,
+      "sha256": "f82b909d1b8adceae06b61ec2f1184d4a8b4b8ce9f1abab08ba8f004fd1be4ce"
+    },
+    {
+      "id": "SRC-00143",
+      "kind": "artifact",
+      "path": "/home/admin/boom/clients/kr-00967/ProcObsrv.sys",
+      "bytes": 6757,
+      "sha256": "1c0f826885c42bdcf1302153f7e281b25846f594bb26ce0390a1409cc98fa980"
+    },
+    {
+      "id": "SRC-00144",
+      "kind": "artifact",
+      "path": "/home/admin/boom/clients/kr-00967/WFC.exe",
+      "bytes": 225280,
+      "sha256": "f6c695636ac68ce48ce7436e741c68c6eecf24f0d574a2b610e4426bea38adac"
+    },
+    {
+      "id": "SRC-00145",
+      "kind": "artifact",
+      "path": "/home/admin/boom/clients/kr-00967/binkw32.dll",
+      "bytes": 358963,
+      "sha256": "892a51c4056efcb22297a3b44a3491e3f5888f28b08ed1b17030f24acffedb44"
+    },
+    {
+      "id": "SRC-00146",
+      "kind": "artifact",
+      "path": "/home/admin/boom/clients/kr-00967/channel2_001.ssd",
+      "bytes": 323,
+      "sha256": "4e193db600bbc2f6b2a8f00d7c51590ef79dec274356c470a297272f10552df2"
+    },
+    {
+      "id": "SRC-00147",
+      "kind": "artifact",
+      "path": "/home/admin/boom/clients/kr-00967/csysfxmg.ssd",
+      "bytes": 1409,
+      "sha256": "1b27999175c0c53b80163c67ba0401239493204589d762161619d0f3da7e72ee"
+    },
+    {
+      "id": "SRC-00148",
+      "kind": "artifact",
+      "path": "/home/admin/boom/clients/kr-00967/csysqstr.ssd",
+      "bytes": 150059,
+      "sha256": "a6269c916a1299f7e340945f8f9def08d0377d88a80a5b4e7dd9f37c97299816"
+    },
+    {
+      "id": "SRC-00149",
+      "kind": "artifact",
+      "path": "/home/admin/boom/clients/kr-00967/csysstr.ssd",
+      "bytes": 157776,
+      "sha256": "c8c4d2fb6d1da93e9324597a885f05b1d8d5897fc0e32d1b7f5a27951892fa72"
+    },
+    {
+      "id": "SRC-00150",
+      "kind": "artifact",
+      "path": "/home/admin/boom/clients/kr-00967/d3dx9_30.dll",
+      "bytes": 2388176,
+      "sha256": "5edeed79f2359527a55b8189cfa8b9b121cd608d44eead905a0f3436938ad532"
+    },
+    {
+      "id": "SRC-00151",
+      "kind": "artifact",
+      "path": "/home/admin/boom/clients/kr-00967/dbghelp.dll",
+      "bytes": 640000,
+      "sha256": "44693d051f40e8c5cb0311d7c6b81447a51f3aa3f9daa31fbcee87ef6ee0eafd"
+    },
+    {
+      "id": "SRC-00152",
+      "kind": "artifact",
+      "path": "/home/admin/boom/clients/kr-00967/files.nfo2",
+      "bytes": 16781,
+      "sha256": "720e413c6d7b71f0e906d3355c96969af8cd37a0b8c35def301a7b5f3b06051f"
+    },
+    {
+      "id": "SRC-00153",
+      "kind": "artifact",
+      "path": "/home/admin/boom/clients/kr-00967/files.txt",
+      "bytes": 15324,
+      "sha256": "42333926f9e399433838416a39a1854aa0f79341debcaca32ca38b5fedd86bae"
+    },
+    {
+      "id": "SRC-00154",
+      "kind": "artifact",
+      "path": "/home/admin/boom/clients/kr-00967/filterstr.ssd",
+      "bytes": 11924,
+      "sha256": "c54ec3191a33fcf321dccd8672772dbeafb078647653a73b00f39220a22df172"
+    },
+    {
+      "id": "SRC-00155",
+      "kind": "artifact",
+      "path": "/home/admin/boom/clients/kr-00967/fx.idd",
+      "bytes": 87822170,
+      "sha256": "4465e5250bb72c0b4bdebb5e65b769c9ec44153676b76cc91415561eddc02767"
+    },
+    {
+      "id": "SRC-00156",
+      "kind": "artifact",
+      "path": "/home/admin/boom/clients/kr-00967/fx.idx",
+      "bytes": 176447,
+      "sha256": "bcf921cc1be51f1cbda081fa0077ea02cdb94a591c714253a3230b4447dc1ae5"
+    },
+    {
+      "id": "SRC-00157",
+      "kind": "artifact",
+      "path": "/home/admin/boom/clients/kr-00967/fxdynimginfo.ssd",
+      "bytes": 105,
+      "sha256": "49594ffd72d495a8a4420e2a0aa7e4f8fe8be318967469dee0517df765516a6b"
+    },
+    {
+      "id": "SRC-00158",
+      "kind": "artifact",
+      "path": "/home/admin/boom/clients/kr-00967/fxdynmapinfo.ssd",
+      "bytes": 14167,
+      "sha256": "ee8096aa8a3703aa2ddd18c2131e8beedd7ab8bc18e1de72850c49318c732c72"
+    },
+    {
+      "id": "SRC-00159",
+      "kind": "artifact",
+      "path": "/home/admin/boom/clients/kr-00967/fxstagemap.ssd",
+      "bytes": 2741,
+      "sha256": "3b6591da2fa8e2035021267b4c232395968d53c6643d8c5e358bb1b5b7ca2d4d"
+    },
+    {
+      "id": "SRC-00160",
+      "kind": "artifact",
+      "path": "/home/admin/boom/clients/kr-00967/fxstock0.ini",
+      "bytes": 48844,
+      "sha256": "b037d12339e21b0688867a22ac3baf6255110917bfb06257cb4304ab5bdf8756"
+    },
+    {
+      "id": "SRC-00161",
+      "kind": "artifact",
+      "path": "/home/admin/boom/clients/kr-00967/fxstock1.ini",
+      "bytes": 55608,
+      "sha256": "7d918d23d203022d1007e3dded5e65d211e8684460e7374aad7d95cbee4ac702"
+    },
+    {
+      "id": "SRC-00162",
+      "kind": "artifact",
+      "path": "/home/admin/boom/clients/kr-00967/fxstock2.ini",
+      "bytes": 50998,
+      "sha256": "3766979ae99ed4d1f96f1fbd36cbe7c44d5452f62618a4fafe58aaa4ddc9e06b"
+    },
+    {
+      "id": "SRC-00163",
+      "kind": "artifact",
+      "path": "/home/admin/boom/clients/kr-00967/fxstock3.ini",
+      "bytes": 12065,
+      "sha256": "38fc79e6a3c8db6115ceb115c39548c5d24d9b021fc85bf4d7d4d60312d03bd0"
+    },
+    {
+      "id": "SRC-00164",
+      "kind": "artifact",
+      "path": "/home/admin/boom/clients/kr-00967/fxstovi.ini",
+      "bytes": 140,
+      "sha256": "0595bb882b330d737d3939fb820d43a7a6645e00272d655807efd617778d2678"
+    },
+    {
+      "id": "SRC-00165",
+      "kind": "artifact",
+      "path": "/home/admin/boom/clients/kr-00967/fxstovs.ini",
+      "bytes": 59,
+      "sha256": "339953d21673df86df3c4d70d6d0ee56ec29d5a5528d01ff51b26867de691c7a"
+    },
+    {
+      "id": "SRC-00166",
+      "kind": "artifact",
+      "path": "/home/admin/boom/clients/kr-00967/gdiplus.dll",
+      "bytes": 1645320,
+      "sha256": "f1da32183b3da19f75fa4ef0974a64895266b16d119bbb1da9fe63867dba0645"
+    },
+    {
+      "id": "SRC-00167",
+      "kind": "artifact",
+      "path": "/home/admin/boom/clients/kr-00967/hook2.log",
+      "bytes": 1556591,
+      "sha256": "c827373d526cff913bf1720b4caf0599966b3fda6ca61750b4af1ff65e36b618"
+    },
+    {
+      "id": "SRC-00168",
+      "kind": "artifact",
+      "path": "/home/admin/boom/clients/kr-00967/hook_local.log",
+      "bytes": 1556591,
+      "sha256": "3c1ba32df68163dc318f36265194264cab1726b19e8f1af1691c723db5bbb628"
+    },
+    {
+      "id": "SRC-00169",
+      "kind": "artifact",
+      "path": "/home/admin/boom/clients/kr-00967/ijl15.dll",
+      "bytes": 352256,
+      "sha256": "41d37bfb0a39017497e0aa373dc01f71ac9c5046c75f7cd269bee52112a5f3a1"
+    },
+    {
+      "id": "SRC-00170",
+      "kind": "artifact",
+      "path": "/home/admin/boom/clients/kr-00967/jypc.dll",
+      "bytes": 819272,
+      "sha256": "487275c95ddc5592f8e660dac0ddae0f7a06d483a0430cc03d8514acf7aab3de"
+    },
+    {
+      "id": "SRC-00171",
+      "kind": "artifact",
+      "path": "/home/admin/boom/clients/kr-00967/krdump32.exe",
+      "bytes": 142437,
+      "sha256": "935bc75e63db7b7cd3e39f7535d99936fa188ba57a33a15d061e46fb54f61ea0"
+    },
+    {
+      "id": "SRC-00172",
+      "kind": "artifact",
+      "path": "/home/admin/boom/clients/kr-00967/krhook.dll",
+      "bytes": 108770,
+      "sha256": "3b761f5c3e7adc72f19b80bf06dfdf9aba13dd62e6722697e15be44ccb64b9ed"
+    },
+    {
+      "id": "SRC-00173",
+      "kind": "artifact",
+      "path": "/home/admin/boom/clients/kr-00967/krhook.log",
+      "bytes": 1902359,
+      "sha256": "2869348084295f2b0a5a5f0de90b9ac2ad1bc8e52193b95aa1e9d041a4a0b387"
+    },
+    {
+      "id": "SRC-00174",
+      "kind": "artifact",
+      "path": "/home/admin/boom/clients/kr-00967/krhookmem.exe",
+      "bytes": 147400,
+      "sha256": "7a6dce80531cfde89f70d024c51662412a3768c0c4b4e4b95a5f74240f3cb034"
+    },
+    {
+      "id": "SRC-00175",
+      "kind": "artifact",
+      "path": "/home/admin/boom/clients/kr-00967/krhookpro.exe",
+      "bytes": 141501,
+      "sha256": "f1bcf337d902363fe6ffba948e17ab34eb899df10d284a7f770c16984ca01b5e"
+    },
+    {
+      "id": "SRC-00176",
+      "kind": "artifact",
+      "path": "/home/admin/boom/clients/kr-00967/krlaunch.exe",
+      "bytes": 137111,
+      "sha256": "2cd34866549560ff45a8573dfa89a139114fe798424153b9788fb0684db269db"
+    },
+    {
+      "id": "SRC-00177",
+      "kind": "artifact",
+      "path": "/home/admin/boom/clients/kr-00967/mssogg.asi",
+      "bytes": 99840,
+      "sha256": "6e9189f85f7049e4b5475d597a89039d516c2682bf7dc04b6003c5cebbae10f4"
+    },
+    {
+      "id": "SRC-00178",
+      "kind": "artifact",
+      "path": "/home/admin/boom/clients/kr-00967/multisvr.ssd",
+      "bytes": 372,
+      "sha256": "effc1139f198117a7a112fc95befe44da0d0b0a787e8004f6c48243f8afbd086"
+    },
+    {
+      "id": "SRC-00179",
+      "kind": "artifact",
+      "path": "/home/admin/boom/clients/kr-00967/ndadata/WDA report.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "SRC-00180",
+      "kind": "artifact",
+      "path": "/home/admin/boom/clients/kr-00967/nm.bik",
+      "bytes": 2285588,
+      "sha256": "f09de31a9b2e41e782bb606884ad4f2f6e5fa70e4665f3367f1f98b51ca18ba3"
+    },
+    {
+      "id": "SRC-00181",
+      "kind": "artifact",
+      "path": "/home/admin/boom/clients/kr-00967/nmco3.dll",
+      "bytes": 323584,
+      "sha256": "7e038696ec69db579f71e029da66f5b5500c56375ff77b24d93529ba7faf9493"
+    },
+    {
+      "id": "SRC-00182",
+      "kind": "artifact",
+      "path": "/home/admin/boom/clients/kr-00967/nmcogame.dll",
+      "bytes": 415304,
+      "sha256": "25746a9a0e29deb7abb70ed1889c01072eb7343d1cafb4a9ffc76b69fac3ae9d"
+    },
+    {
+      "id": "SRC-00183",
+      "kind": "artifact",
+      "path": "/home/admin/boom/clients/kr-00967/nps32.dll",
+      "bytes": 279744,
+      "sha256": "d38431a732a5015d15c3939ecc59e09779a85e96f671b7026f86dc4ef4431929"
+    },
+    {
+      "id": "SRC-00184",
+      "kind": "artifact",
+      "path": "/home/admin/boom/clients/kr-00967/nxgsm.dll",
+      "bytes": 548936,
+      "sha256": "0963621a2b5319f733c63bbff17be236fe964b72a10b45fc4e1a2f4970d9e4c5"
+    },
+    {
+      "id": "SRC-00185",
+      "kind": "artifact",
+      "path": "/home/admin/boom/clients/kr-00967/packagemap.ini",
+      "bytes": 6864,
+      "sha256": "7e261e1504fab036932200c80697f43c6afb34b46c2cbc7142703bbf4ea92c13"
+    },
+    {
+      "id": "SRC-00186",
+      "kind": "artifact",
+      "path": "/home/admin/boom/clients/kr-00967/release_date.txt",
+      "bytes": 27,
+      "sha256": "b5f6bf917bc6315d42624d453c8f13ad80d4df6f988d6e62bb15ec155b6d9bd8"
+    },
+    {
+      "id": "SRC-00187",
+      "kind": "artifact",
+      "path": "/home/admin/boom/clients/kr-00967/spcc.ssd",
+      "bytes": 356,
+      "sha256": "ba76b76c878c7fe970a6d342e9baa7b52909fb3a178693ef36bf32c010cde3b8"
+    },
+    {
+      "id": "VN-00001",
+      "kind": "artifact",
+      "path": "/home/admin/boom/clients/vn-116/ca.exe",
+      "bytes": 7079696,
+      "sha256": "bce8644d4e783d1354ab4fc880e1ab9a4ab3325327028f37d99e5439e25f4bbd"
+    },
+    {
+      "id": "VN-00002",
+      "kind": "artifact",
+      "path": "/home/admin/boom/repos/boom-re/wine/Boom/ca_fixed_patched.exe",
+      "bytes": 18904064,
+      "sha256": "bc875ba5765cc112e924f46e75d0ace112904c7801126e46bc0abb1c9cb576b1"
+    }
+  ]
+}

@@ -41,19 +41,18 @@ Hai copy KR Wine đã chạy login/sảnh/phòng/Battle và các chu kỳ kết 
 [kim/reset](docs/PROTOCOL.md#needle-round-reset), [cứu hai chiều và hai kết quả](docs/PROTOCOL.md#rescue-two-results),
 [deep chain/reset](docs/PROTOCOL.md#recursive-chain-cycles) giữ phạm vi và giới hạn tại nguồn chuẩn.
 
-**Mốc mới CP177:** preset tùy chọn `two-client-basic-replacement` đã kiểm trên cả hai slot trống:
-C identity3 lấy capacity từ vai đã rời; slot0 initial1/max10, slot1 initial2/max7. Hai run riêng có
-Join/Ready/host Start, native initial stats, actual C118 và cùng159/158 trên hai client hiện hành.
-Maximum là policy; không suy đã kiểm capacity exhaustion. [Contract/giới hạn](docs/PROTOCOL.md#replacement-profile),
-[run/hash và ca startup lỗi giữ nguyên](docs/evidence/peer-endpoints/README.md#cp177).
-CP176 hai vòng A/C bình thường vẫn có [nguồn riêng](docs/PROTOCOL.md#a-c-basic-cycles), đã merge
-[PR248](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/248) tại `bd34ed4`.
+**Mốc mới CP178: nghiệm thu K0 và bước RE tĩnh K2a**, sau đối chiếu acceptance giữ nguyên và
+tự kiểm theo waiver. Ba control Windows VM dùng client gốc/fullcopy trên ổ C: đã đo SHA, PID/parent/
+start-time, token, cwd native, module, window ownership, ETW, capture và cleanup. CA riêng/Both có CALog chỉ đến
+marker `ProcessPatch` và modal; exact PC/return chưa đo. NewPatcher có modal riêng. [Acceptance/phạm vi](docs/PLAN.md#k0-k2a-acceptance),
+[contract/giới hạn](docs/PROTOCOL.md#original-windows-control), [run/hash](docs/evidence/peer-endpoints/README.md#cp178).
 
-Đây là copy KR Wine/cùng physical host/mạng thử riêng; Windows nguyên bản, LAN/Internet/tám client
-và K0–K7/K5/K6a/fullmatch chưa nghiệm thu. [PLAN](docs/PLAN.md#current-order) tiếp đối chiếu acceptance
-bằng bằng chứng cũ và chỉ đo phần chặn thực tế; không lặp hai trận hoặc mọi biến thể thay người.
-CP177 complete/PR pending trước tích hợp; trạng thái merge tại PR/Git. AUD052 qua CP176, audit kế
-**CP180**. [Review waived](docs/evidence/checkpoints/review-waiver.json).
+**K1–K7, full K2 và K6a/trận đầy đủ/LAN/Internet vẫn mở.** K2a là phần oracle tĩnh cần cho probe;
+control Windows chưa có login/gameplay. Hai vòng A/C trên copy Wine giữ [nguồn riêng CP176](docs/PROTOCOL.md#a-c-basic-cycles).
+CP177 profile thay người/capacity đã merge [PR249](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/249)
+tại `b7972a8`; không lặp gameplay đó. [PLAN](docs/PLAN.md#current-order) tiếp nguồn recipe/coldstart K1,
+chỉ đo phần còn thiếu. CP178 complete/PR pending trước tích hợp, Git/PR giữ merge status.
+AUD053 ad-hoc qua CP178; periodic vẫn CP176, audit kế **CP180**. [Review waived](docs/evidence/checkpoints/review-waiver.json).
 
 Đích đầu: hai client thật chơi hai trận liên tiếp; mở bốn client và hardening sau đó.
 
