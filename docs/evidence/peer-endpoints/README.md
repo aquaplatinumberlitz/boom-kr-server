@@ -992,7 +992,7 @@ khôngwholeinstructiontrace; sourceproduction/preset unchanged/reuse257server4ex
 
 `analysis-corrections.json` giữproviderfailure/19pairs/virtualcausalityscope/initialgatingverifierwrongkey
 schema (round/created_ns correctedfromraw, initialsourcegiữ). Không đổi raw/guard/acceptancecho pass.
-CP165 tựkiểm/reviewwaived/chờPR, AUD049qua164/kế168; currentmodejoin_Apromotionpath còn gap/K4open;
+SnapshotCP165 tựkiểm/reviewwaived/chờPR; đãmergePR236/060ff22. Gapjoin_AđượcCP166giải; K4vẫnmở, auditcountercurrentxemmanifest;
 K6a/fullmatch/Windows/LAN/Internet/8actualclients/originalauthority/naturalCP157 giữmở. Next chỉPLAN.
 
 
@@ -1025,8 +1025,8 @@ rỗng: fixed có2startupsubtype39, không17/18/19/21/bom/pickup/result; raw/pro
 `mode-host-rejoin-tests.txt`265server và `mode-host-rejoin-export-tests.txt`4export pass. Lệnh discovery
 đầu dùng -t . bịimporterror (server namespacepackage), exporterimport saiđườngdẫn; sửa invocation sang
 README discover -s server / discover -s tools -p test_export*.py, không sửasource đểnétest.
-Control/fixedseparate không fullmatch; chưahai cycle saupromotion trên currentmode. CP166tựkiểm/
-reviewwaived/chờPR; AUD049qua164/kế168, khôngđónggate. Bước tiếp duy nhấtPLAN.
+RunCP166control/fixedseparate khôngfullmatch/chỉclock; CP167sauđócóhai currentmodecycles. SnapshotCP166
+tựkiểm/reviewwaived/chờPR; đãmergePR237/7598cc9. Khôngđónggate; auditcountercurrentxemmanifest. Bước tiếp duy nhấtPLAN.
 
 [CP166 validation bổ sung](cp166-validation.json): docs-check banđầu gặp snapshot cũ thiếu PR236;
 snapshotGitHubđãđồngbộ và docs-check-final/issuecheck pass. Filefail và recordcomplete giữnguyên;
@@ -1063,8 +1063,47 @@ R1309/R2312; `promoted-mode-verification.json`205/210 +24modeframer/gettercases/
 
 `visual-review.json` mỗi run pin2finalframes đãđọc; R2Bbuttonwhite1frame giữunknownfunctionalStart3,
 R1coloredkhôngbackfill. Initialanalysisdriver subprocess thiếuPYTHONPATH, script/logfail giữlocal rồi
-chỉnh invocation; missingRollercheckkhôngđượcnới đểpass. R2read-onlyprobe whitelist giải measurement
+chỉnh invocation; missingBomb16checkkhôngđượcnới đểpass. R2read-onlyprobe whitelist giải measurement
 coverage trong recipe, không retrospectiveproof cho missingcallbackR1/vanillatiming.
 
-CP167tựkiểm/reviewwaived/chờPR. AUD049qua164/nextperiodicCP168; bước tiếp actualBStart3/nativeclock/
-render8 vàmanualaudit, chỉPLAN. Không fullmatch/K6a/LAN/8client hoặc sourcebinary/DB/packchange.
+SnapshotCP167tựkiểm/reviewwaived/chờPR; đãmergePR238/e48e10b. CP168đoBStart3/audit sauđó;
+raw/whiteframe/controls giữscope riêng, currentnext chỉPLAN. Không fullmatch/K6a/LAN/8client hoặc sourcebinary/DB/packchange.
+
+
+<a id="cp168"></a>
+## CP168 — boundedinput controls, actual BStart3 và AUD050
+
+Baseline CP167 [PR238](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/238), head
+`5ad76eb288bf1e1f2603bbbeedec6c5b9a71accf`, merge `e48e10baf3abc8a82cc576c7550f68462088b5aa`.
+Runs chuẩn bị trên5ad76eb/sourcebyteskhôngđổi qua merge; khôngsource/configchange giữa run.
+[Contract/giới hạn](../../PROTOCOL.md#current-mode-promoted-start3), [PLAN](../../PLAN.md#current-order).
+
+| Run local/research/codex | Giây/exit/raw/frozen | SHA256 run.json |
+|---|---|---|
+|mode-promoted-start3-r1|166.910034079/1/645/109|`cd933049bd38c3d534a65c73a7bcd1daa82c49ab28dd7be66b7c4b5f480d6a45`|
+|mode-promoted-start3-r2|166.746944231/1/658/109|`348fe1aaf2ab333380469b552601f72283f0d864342061ae82afbb86a9e8c13f`|
+|mode-promoted-start3-r3|405.945854372/0/1374/109|`9264d3e31cc74de60f115deaa7fd1730f9d0a435da1e08a802b6f87ce7b2e45d`|
+
+Mỗi root giữ reuse-question/build/sourcepin, preflight109/runtime-source, cycles-recipe/controller riêng,
+launch-exit/raw-seal/ownedcleanup/namespaceextinct. R1/R2partial-observation giữ noFire124/noBomb/noresult/
+noStart3. R2contest-input-snapshots/contest-getter-verification:16samples/view/192copiedgetters,
+khôngglobaltick/pxs; R3reuseCP150 stop-on-actualpickup principle/newcontrollerdesign đượcghirõ trước run.
+Source/game/profile/target/tolerance/deadline giữ, fixed0,30s khôngđượcreclassifypass; observednormalkeyhold
+0,617006739s/0,595376959s/1claimmỗivòng, no2nativecontendersproof. VN/reference chỉmethod đãpin,
+không nativebody mới hoặcportopcode/offset. Binary/pack/DBnguồn giữ nguyên.
+
+R3feedback-input-verification58checks/2newcontestwindows+exactrestore; 28armskeep3rare165/14groups,
+12alignment/162originalcriteriarestorechecks; all4native165/view/75pickupchecks. SourceactualB104/
+121129/993rdbarrier/render8:exported-runtime-verification26, promoted-mode213/24nativecases;
+cycle46/life23/16getters/map195/world26/4peerwindows/nativepacket321 vàcaptureclaims riêng.
+visual-review3frames đãxem: BcoloredStartbeforeclick vàthirdmap/timer1:50/2actor cảhai+8s.
+Chỉthirdactive/noBomb/noaccepted17,19, khôngthirdnormalmatch hoặc retroR2whiteframecause.
+
+gate-scope-review xácnhậncurrentpresetnohidden_items/revealed_hidden={}3epochs; CP068069knowncombined
+profile là nguồn táidùng chonextintegration, không backfillcurrentrun/dropalgorithm/K5. AUD050manual
+core→evidence/raw fixescurrentnavigation/knownpromotion/reset/pendingPR vàscopefloor-vs-hidden;
+[auditrecord](../checkpoints/audits/AUD050.json). Auditqua168/next172; recordcomplete/oldfail giữbấtbiến.
+CP168tựkiểm/reviewwaived/chờPR, khôngđónggate. Currentnext chỉPLAN, không tạo plan theo phiên.
+
+AUD050 đínhchính nhãnCP167: missingindex16 là **Bomb/kind0/capacity**, khôngRoller/kind2.
+Raw/typedfields/hash/count/fail giữ; recordCP167bấtbiến có nhãnsai, contractCP167đãghierratum.

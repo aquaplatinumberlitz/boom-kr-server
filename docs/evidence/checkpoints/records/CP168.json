@@ -1,0 +1,263 @@
+{
+  "id": "CP168",
+  "previous": "CP167",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-06T12:49:30.679061+00:00",
+  "context_commit": "e48e10baf3abc8a82cc576c7550f68462088b5aa",
+  "owner": "Codex",
+  "reviewer": "Codex",
+  "question": "Is current promotedBhost lateStart3 functional after2nativecycles/Ready, and what still blocks basicBattle/gates under periodicmanualaudit?",
+  "scope": "SourcefirstCP150nativefeedbackprinciple/CP165Start3/CP166membership/CP167currentcycles;2fixedpulsefailedcontrols plusnewboundedfeedbackinputsameproduction/preset; AUD050manualcore/raw/acceptancereviewthrough168. No newnativebodies/productionchange/automaticgate.",
+  "artifacts": [
+    {
+      "name": "OriginalKR00967unchanged",
+      "sha256": "a52545c14b1fea423de655c3163d6360b628d61c1cd472b46fdbc8a9ffe15f4e"
+    },
+    {
+      "name": "CurrentWinecopyunchanged",
+      "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+    },
+    {
+      "name": "NativeIDAfullcopycf72privateanalysis",
+      "sha256": "cf72da112308d9f1ca256df8089594c5f787875310933073bf6bd5ba6f70e63b"
+    },
+    {
+      "name": "modOmodelreference",
+      "sha256": "a08950c833d3acab8281049def7b3dc96b221f107eeda01da3a548e34b91dce5"
+    }
+  ],
+  "locators": [
+    "BaselineCP167PR238head5ad76eb288bf1e1f2603bbbeedec6c5b9a71accf/mergee48e10baf3abc8a82cc576c7550f68462088b5aa; runsprep5ad76ebsamecodehashthroughmerge.",
+    "R1runcd933049bd38c3d534a65c73a7bcd1daa82c49ab28dd7be66b7c4b5f480d6a45/166.910034079s/exit1/645raw/109inputs.",
+    "R2run348fe1aaf2ab333380469b552601f72283f0d864342061ae82afbb86a9e8c13f/166.746944231s/exit1/658raw/109inputs.",
+    "R3run9264d3e31cc74de60f115deaa7fd1730f9d0a435da1e08a802b6f87ce7b2e45d/405.945854372s/exit0/1374raw/109inputs.",
+    "Base400000/RVA=VA-base; known165E63260/E63309/E63E1A/selector123FA10/+9C/12199/14EF300framer/52A350getter reused, no newbody. R2perviewactualfeedback16samples/192copiedgetters.",
+    "AUD050periodicmanualthrough168/next172; CP167labelerratumindex16kind0BombcapacityNOTRoller/kind2, oldcompleteobjectkeptunchanged."
+  ],
+  "findings": [
+    {
+      "summary": "R1R2samefixed0.30OSkeys failedFire124R1 beforeBomb/outcomes/Ready2/Start3; R2lowerobserverwindowready/restoredstillfails. Timestamped16feedbacksamples/view showownA179→239/ownB387→343,192nativegettermodels verifywrappervalues; no universalpxs/globalendtiming/rootcauseclaim.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#current-mode-promoted-start3",
+      "evidence": [
+        "RUN-00660",
+        "RUN-00662",
+        "RUN-01388",
+        "RUN-01390",
+        "RUN-00716",
+        "RUN-00715"
+      ],
+      "limits": "ModifiedWine/privatevirtualhosts/current47pinpreset/syntheticidentity/emulatorpolicy. R1R2fixed0.30sFAIL beforeFire124/bomb/outcomes/Start3;R3newnormalOSkeyholdstopsactualFire124within5s/0.617and0.595s/oneclaimperround. Notretroactivepulsepass/nativecausality/fairness/twoactualcontenders. Extra2measurementwindowsdisablewriterchronologyexcept3rare165/readonlystats;exactrestorebeforepeer/Bombs. Two normaloutcomes/reset/Ready thenactualBStart3/12199/clocks/render8;thirdactive/noBomb/notthirdnormalmatch. Currentpresetfloor-only/nohidden_items/revealed_hiddenempty. K4dependencies/K5K6a/fullmatch/generalreset/auth/originalauthority/Windows/LAN/Internet/8clients/naturalCP157open."
+    },
+    {
+      "summary": "R3controllerdesign reusesCP150stop-on-actualpickupprinciple butnewcontinuousnormalOSkeyholduntilactualFire124orbound5s/thenkeyup; observed0.617006739/0.595376959s,oneactualclaimperround. Originaltargets/tolerance20attempt/neutral/loadbound/claimnativecriteriaunchanged; notfixedpulsepass. Extra2contestmeasurementwindowskeeprare165,restorebefore4peerwindows/Bombs.",
+      "source": "design",
+      "status": "design",
+      "method": "design",
+      "canonical": "docs/PROTOCOL.md#current-mode-promoted-start3",
+      "evidence": [
+        "RUN-02920",
+        "RUN-02847",
+        "RUN-02921"
+      ],
+      "limits": "ModifiedWine/privatevirtualhosts/current47pinpreset/syntheticidentity/emulatorpolicy. R1R2fixed0.30sFAIL beforeFire124/bomb/outcomes/Start3;R3newnormalOSkeyholdstopsactualFire124within5s/0.617and0.595s/oneclaimperround. Notretroactivepulsepass/nativecausality/fairness/twoactualcontenders. Extra2measurementwindowsdisablewriterchronologyexcept3rare165/readonlystats;exactrestorebeforepeer/Bombs. Two normaloutcomes/reset/Ready thenactualBStart3/12199/clocks/render8;thirdactive/noBomb/notthirdnormalmatch. Currentpresetfloor-only/nohidden_items/revealed_hiddenempty. K4dependencies/K5K6a/fullmatch/generalreset/auth/originalauthority/Windows/LAN/Internet/8clients/naturalCP157open."
+    },
+    {
+      "summary": "SameR3currentManner/titleidlepromotion/Arejoin/ReadyAStartB two native175302/1803/reset/Ready thenactualB104/third121full129/actual99/153/clocks3/render8bothviews/mode1/noBomb3. All4native165/view/powerdeltareset/peer4windows/life/entity195 checkedseparately;oneclaimperroundnot2nativecontenders. NewrunlateStart3functionalnotretroR2whiteframecause.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#current-mode-promoted-start3",
+      "evidence": [
+        "RUN-02845",
+        "RUN-01465",
+        "RUN-02878",
+        "RUN-02876",
+        "RUN-02847",
+        "RUN-02990"
+      ],
+      "limits": "ModifiedWine/privatevirtualhosts/current47pinpreset/syntheticidentity/emulatorpolicy. R1R2fixed0.30sFAIL beforeFire124/bomb/outcomes/Start3;R3newnormalOSkeyholdstopsactualFire124within5s/0.617and0.595s/oneclaimperround. Notretroactivepulsepass/nativecausality/fairness/twoactualcontenders. Extra2measurementwindowsdisablewriterchronologyexcept3rare165/readonlystats;exactrestorebeforepeer/Bombs. Two normaloutcomes/reset/Ready thenactualBStart3/12199/clocks/render8;thirdactive/noBomb/notthirdnormalmatch. Currentpresetfloor-only/nohidden_items/revealed_hiddenempty. K4dependencies/K5K6a/fullmatch/generalreset/auth/originalauthority/Windows/LAN/Internet/8clients/naturalCP157open."
+    },
+    {
+      "summary": "Currentpresetnohidden_items/revealed_hiddenemptyall3epochs; cannotclaimhiddenBox/reveal142/hiddenpickupcurrentintegrationfromCP068069otherprofile. Nativecontract/knowncells alreadyavailable, nextcomposeknownbasicBattle582/catalog/currentterrain/profile withnativepreflight, notallitemconsumerRE.",
+      "source": "design",
+      "status": "design",
+      "method": "documentation",
+      "canonical": "docs/PROTOCOL.md#current-mode-promoted-start3",
+      "evidence": [
+        "RUN-02849",
+        "RUN-02877",
+        "RUN-01457"
+      ],
+      "limits": "ModifiedWine/privatevirtualhosts/current47pinpreset/syntheticidentity/emulatorpolicy. R1R2fixed0.30sFAIL beforeFire124/bomb/outcomes/Start3;R3newnormalOSkeyholdstopsactualFire124within5s/0.617and0.595s/oneclaimperround. Notretroactivepulsepass/nativecausality/fairness/twoactualcontenders. Extra2measurementwindowsdisablewriterchronologyexcept3rare165/readonlystats;exactrestorebeforepeer/Bombs. Two normaloutcomes/reset/Ready thenactualBStart3/12199/clocks/render8;thirdactive/noBomb/notthirdnormalmatch. Currentpresetfloor-only/nohidden_items/revealed_hiddenempty. K4dependencies/K5K6a/fullmatch/generalreset/auth/originalauthority/Windows/LAN/Internet/8clients/naturalCP157open."
+    },
+    {
+      "summary": "AUD050manualcore→evidence/rawCP165168 fixesstalePLAN106111rows/authorityfloor-vs-hidden/RESEARCHpromotion-mode-resetunknown/pendingPRsnapshots/K2ahelperhistorynavigation. CP167prosewrongRollernamecorrectedtoBomb16/kind0/capacity; rawtypedkind/counts/fail andoldcompleteobjectunchanged. Gate/dependencies/criteriareviewedwithoutclosure; nextperiod172.",
+      "source": "design",
+      "status": "design",
+      "method": "documentation",
+      "canonical": "docs/PROTOCOL.md#current-mode-promoted-start3",
+      "evidence": [
+        "RUN-03012",
+        "RUN-01458",
+        "RUN-01459"
+      ],
+      "limits": "ModifiedWine/privatevirtualhosts/current47pinpreset/syntheticidentity/emulatorpolicy. R1R2fixed0.30sFAIL beforeFire124/bomb/outcomes/Start3;R3newnormalOSkeyholdstopsactualFire124within5s/0.617and0.595s/oneclaimperround. Notretroactivepulsepass/nativecausality/fairness/twoactualcontenders. Extra2measurementwindowsdisablewriterchronologyexcept3rare165/readonlystats;exactrestorebeforepeer/Bombs. Two normaloutcomes/reset/Ready thenactualBStart3/12199/clocks/render8;thirdactive/noBomb/notthirdnormalmatch. Currentpresetfloor-only/nohidden_items/revealed_hiddenempty. K4dependencies/K5K6a/fullmatch/generalreset/auth/originalauthority/Windows/LAN/Internet/8clients/naturalCP157open."
+    }
+  ],
+  "verification": [
+    {
+      "check": "R1/R2fixed0.30inputplanned2cycles/BStart3",
+      "result": "fail",
+      "evidence": [
+        "RUN-00660",
+        "RUN-01388"
+      ],
+      "limits": "Both exit1/noFire124R1/noBomb/nooutcomes/noStart3; unchangedraw preserved, R3newcontroller notbackfill."
+    },
+    {
+      "check": "R3actualBStart3export26/mode213+24native/2cycle46/pickup75/gating162+feedback58/life23/peer/world/native321/getters/3manualframes",
+      "result": "pass",
+      "evidence": [
+        "RUN-02845",
+        "RUN-02878",
+        "RUN-02867",
+        "RUN-01465",
+        "RUN-02876",
+        "RUN-01445",
+        "RUN-02847",
+        "RUN-02863",
+        "RUN-02843",
+        "RUN-02991",
+        "RUN-02868",
+        "RUN-02990"
+      ],
+      "limits": "ModifiedWine/privatevirtualhosts/current47pinpreset/syntheticidentity/emulatorpolicy. R1R2fixed0.30sFAIL beforeFire124/bomb/outcomes/Start3;R3newnormalOSkeyholdstopsactualFire124within5s/0.617and0.595s/oneclaimperround. Notretroactivepulsepass/nativecausality/fairness/twoactualcontenders. Extra2measurementwindowsdisablewriterchronologyexcept3rare165/readonlystats;exactrestorebeforepeer/Bombs. Two normaloutcomes/reset/Ready thenactualBStart3/12199/clocks/render8;thirdactive/noBomb/notthirdnormalmatch. Currentpresetfloor-only/nohidden_items/revealed_hiddenempty. K4dependencies/K5K6a/fullmatch/generalreset/auth/originalauthority/Windows/LAN/Internet/8clients/naturalCP157open."
+    },
+    {
+      "check": "AUD050periodicmanualthrough168/next172;2677raw/327frozen/cleanup/source;265server4exportexacthashreuse/docs/catalog/issues/artifacts/diff/fullhistorylocalbeforecommit",
+      "result": "pass",
+      "evidence": [
+        "RUN-03012",
+        "RUN-00662",
+        "RUN-01390",
+        "RUN-02879",
+        "RUN-02968",
+        "RUN-02842",
+        "RUN-02859",
+        "RUN-01451"
+      ],
+      "limits": "Sourceunchangedtestsreusednotrerun; historyafterappendbeforecommit. Checkerdoesnotcertifysemantics/gate; Codexmanualaudit/selfcheckreviewwaived."
+    }
+  ],
+  "evidence": [],
+  "evidence_manifests": [
+    {
+      "path": "docs/evidence/checkpoints/evidence/CP168-promoted-start3-audit.json",
+      "bytes": 762863,
+      "sha256": "7c983c5b7cb41c57e9d98658decb4545ed2b803f0f34703631b74f8700a394e6",
+      "count": 3012
+    }
+  ],
+  "delta": {
+    "added": [
+      "ActualpromotedBStart3after2currentmodecycles/Ready/nativeclockrender8;twofailedpulsecontrolsplusnewexplicitboundedfeedbackmethod.",
+      "AUD050periodicthrough168/next172; boundedgate-scopehiddenintegrationgap."
+    ],
+    "corrected": [
+      "CP167currentBStart3unknownresolvedinnewrunonly; whiteframecauseunknown.",
+      "CP167labelindex16Rollerincorrect; actualkind0Bomb/capacityunchanged; appenderratumratherthanrewritecomplete.",
+      "K2ahelperhistoricalscope/authoritycurrentresults/knownmodepromotion/reset andPRstates sync."
+    ],
+    "superseded": [
+      "NEXT-MODE-PROMOTED-START3-AUDIT closedboundedruntime+audit; NEXT-CURRENT-BASIC-HIDDEN active."
+    ]
+  },
+  "blockers": [
+    "Current47pinfloorpreset hasnohiddenreveal; CP068069knownnativebranchneedscurrentprofileintegration, notnewitemRE.",
+    "K4dependencies/K5K6a/fullmatch/generalreset/Windows/coldcache/fullcodec/auth/originalauthority/LAN/Internet/8clients/naturalCP157open;R3noactiveoldUDP/EOF/twoactualcontenders."
+  ],
+  "next_steps": [
+    {
+      "id": "NEXT-MODE-PROMOTED-START3-AUDIT",
+      "task": "KRE-005b",
+      "state": "closed",
+      "action": "CP168R3actualBStart3/native12199/clockrender8/mode1after2normalcyclesReady andAUD050manualperiodicthrough168; no thirdnormalmatch/gate, fixedcontrolsFAILkept.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-CURRENT-BASIC-HIDDEN",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "PLAN sourcefirstCP032068069list2/FixedBox/reveal142/124165 andCP095actualbox/currentterrain; composeknownfloorRoller+hidden27/28 oncurrentmode47pinprofile, nativeframer/11ED590preflight thenboundednativebox/reveal/effects/reset. No iteminventory/consumer/opcodeRE/newboxcreation/originaldropalgorithmclaim.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    }
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-11-06T12:49:30.679061+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "CodexsoloRE/runtime/self-check/manualaudit; independentreviewwaived; noautogate.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Owner explicitly requested solo without workers/review."
+    }
+  },
+  "docs_sync": [
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "CP168controls/newfeedbackmethod/BStart3/hiddenintegrationgap/AUD050currentknowledgeandPRstates syncedbeforecomplete."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "CP168controls/newfeedbackmethod/BStart3/hiddenintegrationgap/AUD050currentknowledgeandPRstates syncedbeforecomplete."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "updated",
+      "reason": "CP168controls/newfeedbackmethod/BStart3/hiddenintegrationgap/AUD050currentknowledgeandPRstates syncedbeforecomplete."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "updated",
+      "reason": "CP168controls/newfeedbackmethod/BStart3/hiddenintegrationgap/AUD050currentknowledgeandPRstates syncedbeforecomplete."
+    },
+    {
+      "path": "docs/features.json",
+      "state": "updated",
+      "reason": "CP168controls/newfeedbackmethod/BStart3/hiddenintegrationgap/AUD050currentknowledgeandPRstates syncedbeforecomplete."
+    },
+    {
+      "path": "docs/COVERAGE.md",
+      "state": "updated",
+      "reason": "CP168controls/newfeedbackmethod/BStart3/hiddenintegrationgap/AUD050currentknowledgeandPRstates syncedbeforecomplete."
+    },
+    {
+      "path": "docs/evidence/peer-endpoints/README.md",
+      "state": "updated",
+      "reason": "CP168controls/newfeedbackmethod/BStart3/hiddenintegrationgap/AUD050currentknowledgeandPRstates syncedbeforecomplete."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/review.json",
+      "state": "updated",
+      "reason": "CP168controls/newfeedbackmethod/BStart3/hiddenintegrationgap/AUD050currentknowledgeandPRstates syncedbeforecomplete."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
+      "state": "updated",
+      "reason": "CP168controls/newfeedbackmethod/BStart3/hiddenintegrationgap/AUD050currentknowledgeandPRstates syncedbeforecomplete."
+    },
+    {
+      "path": "server/README.md",
+      "state": "updated",
+      "reason": "CP168controls/newfeedbackmethod/BStart3/hiddenintegrationgap/AUD050currentknowledgeandPRstates syncedbeforecomplete."
+    }
+  ]
+}

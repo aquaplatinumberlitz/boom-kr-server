@@ -1,6 +1,6 @@
 # KR 00967 — contract tương thích client gốc
 
-Revision kr-legacy-contract-r1; cập nhật06/11/2026 JST (CP167; AUD049 quaCP164, kếCP168).
+Revision kr-legacy-contract-r1; cập nhật06/11/2026 JST (CP168; AUD050 quaCP168, kếCP172).
 **Contract có bằng chứng từng phần; chưa nghiệm thu full codec K2**.
 Lộ trình và thứ tự task chỉ giữ ở [REWRITE_PLAN — KRE](PLAN.md).
 Đây là contract của repo server KR. ADR0009 của bản viết lại là nguồn lịch sử để so sánh;
@@ -85,11 +85,14 @@ Golden codec cần oracle hàm KR thật hoặc capture, bao phủ size qua ranh
 theo consumer, blob raw/nén, checksum sai, seq rollover/reconnect, partial/coalesced frame. Parser server
 phải từ chối length/count vượt giới hạn trước allocation. Không fuzz client gốc bằng packet chưa có bounds.
 
-### Phần K2a đã kiểm
+### Helper K2a biệt lập (lịch sử); oracle/stream phục hồi sau đó
 
 [Emulation writer helpers](evidence/primitives/README.md) đã xác nhận plainBE16 `14A5B90`,
 XORBE16 `14A5C90` (`0xA569`) và byteXOR `14A5C80` (`0x5A`) trong image unpack có hash đã khóa.
-Các helper đạt hết miền input nhỏ và kiểm byte guard/return; **full framing/seq/checksum chưa nghiệm thu**; profile WCP hẹp xem [bên dưới](#wcp).
+Các helper đạt hết miền input nhỏ và kiểm byte guard/return. Đây là snapshot helper banđầu;
+[WCP/profile0/0→2/3](#wcp), [actualframe/stream/CRC/seq/resetmodel CP057](#codec-stream-boundaries)
+và capturednativeframes phía sau có mức chứng minh riêng. Không hiểu giới hạn helper là thiếu toànbộ
+framinghiệnnay; fullmodes/prefix/live reconnect/bounds và gateK2 vẫn chưa nghiệm thu.
 Review receiver ownership cũng sửa được cách gọi send guard: `13ADD10` dùng receiver từ `545E30`,
 packet nằm trên stack, nên không truy nhầm setter `packet+3C` để tìm socket/framer.
 
@@ -1358,6 +1361,10 @@ collision/rescue/generation/toàn reset/full auth/cache/codec/LAN/Internet vẫn
 [Bước tiếp duy nhất](RESEARCH.md#q-023).
 
 <a id="room-rejoin"></a>
+
+CurrentManner/title idlepromotion/rejoin vàlateStart3: [currentmodecontract](#current-mode-host-rejoin),
+[two-cycle/Start3scope](#current-mode-promoted-start3). Các run cũ dưới đây giữ build/recipe/lịch sử riêng.
+
 ### Rejoin và Start sau chuyển chủ — CP035
 
 **kr_runtime/confirmed trong phạm vi copy/profile**, [hai run và hash](evidence/room-rejoin/README.md).
@@ -2017,11 +2024,11 @@ locator/trace và trạng thái từng ô; những vai trò không nêu dưới 
 | Movement | [CP159/160 production](#exported-preset-runtime):4nativepeerwindows/actualapply/target/currentprogress, nohold165/activeUDPprobe; [CP070](#current-udp-causality) giữcontrol riêng | Fullschema/auth/reliability/NAT unknown; currentprofile hai chiều có nguồn, không fullgrammar trước mọi demo hẹp |
 | Bomb place/ID | [CP160](#exported-preset-runtime) actual118/nativeID1/A/power2,ID2/B/power1/full159158/195flagreset; [CP156](#direct-host-eof-acceptance) pendinghostEOF/fence scope riêng | Boundedrole/key/serial/quota/geometry làpolicy; actorlocation/fullauth/allpool/races unknown |
 | Explode/chain | CP033 một owner; CP064 [power1/cách hai ô](#mixed-owner-chain), CP071 [power2 ngoài tầm/feedback chưa118](#mixed-owner-power) giữ partial lịch sử; CP081 [power2/distance2 mixed-owner](#mixed-input), CP084 [ba bom fork hai vòng](#three-bomb-chain); CP094 [optional pinned terrain](#terrain-policy), CP095 [actualbox/laterfreshpair](#opposite-box-control) có native callback/195flag proof | [CP096adjacent1cell](#adjacent-owner-control) và [CP122 chain sâu](#recursive-chain) đã đo trong ca hẹp; [CP133 shared cellstate/query](#shared-cell-state) và [CP134 hai shared cycles](#shared-cascade-cycles) đã giải ca cố định; FIFO/firstbombstop/immutable tổng quát/race và authority server gốc chưa đủ |
-| Block destroy/item reveal | CP032 nativecontract; CP068 [currentservice/list2/reportgate/effect/reset](#current-hidden-items), CP092 [195flags/seedreset](#map-flags-snapshot), CP094/095 [pinnedpolicy/nativeboxclear](#terrain-policy) cảhai view | Drop algorithm gốc/fullvalidator, genericclass/map và transport khác còn thiếu; không dùng report142 làm worldoracle |
+| Block destroy/item reveal | CP032nativecontract; [CP068/069 optionalhidden/basicprofile](#current-hidden-items), CP092195flags/CP095actualbox/CP133geometry có nguồn riêng | [CP168currentpreset](#current-mode-promoted-start3) chỉflooritems/nohidden/revealed_hidden={}; không lấy optionalprofileproof làm currentrunreveal. Dropalgorithm/fullvalidator/generalclass/map còn thiếu; report142 khôngworldoracle |
 | Item placement/pickup | [CP159/160](#production-baseline) productionimmediate165/1or2actualclaims/oneeffect/nativewinnerpower/reset; [CP155](#direct-oldudp-contest-eof) hold2sactualcontenders là control riêng | Full124distance/auth/generation/inventory/max/speedTTL/activevariants chưa đủ; delay2s không còn trongproductionbaseline |
 | Trap/death | [CP159/160](#exported-preset-runtime) strict56→1/other0beforerank2views/2epochs; [CP157natural](#current-host-ui-exit)/[CP158controlledoverwrite](#current-trap-udp-counter) giữ causal limits | Snapshot khôngglobalsametick; samekeycounterheuristic cho controlledremoteoverwrite; naturalCP157cause unknown, nofullvalidator |
-| Result/reset | [CP165](#input-batch-gating) currentcommittedMannerpreset2normaloutcomes/reset/Ready rồiactualStart3/12199/clocks/render8s; [CP164](#mode-preset-input-blocker) two partials giữlịchsử | Thirdactive khôngthirdcompletedmatch; allinventory/timer/seq/peer/resetvariants/originalarbitration vẫn thiếu, không cộngrun thànhfullmatch |
-| Room lifecycle | [CP161 title](#current-room-title), [CP162 mode/return](#current-team-mode) có2normalcycles/Ready; [CP165 currentpreset](#input-batch-gating) guestBack/rejoin/2outcomes/Ready/Start3 đã đo; CP164partial giữ lịch sử. CP155–157 EOF/UI controls giữ profile riêng | [CP167](#current-mode-promoted-cycles) currentmodeBhost2cycles/reset/Ready đãđo; lateBStart3 chưađo. Accountresume/halfclose/loss/generalreplace chưa đủ; không lấy oldprofileexit làm currentmode proof |
+| Result/reset | [CP168](#current-mode-promoted-start3) currentMannerBhost2normaloutcomes/reset/Ready rồi actualBStart3/12199/clocks/render8s; CP165Ahost vàCP164partials giữscope riêng | Thirdactive khôngthirdcompletedmatch; fullinventory/timer/seq/peer/resetvariants/originalarbitration còn thiếu; currentpresetfloor-only khônghiddenreveal |
+| Room lifecycle | [CP161 title](#current-room-title), [CP162 mode/return](#current-team-mode) có2normalcycles/Ready; [CP165 currentpreset](#input-batch-gating) guestBack/rejoin/2outcomes/Ready/Start3 đã đo; CP164partial giữ lịch sử. CP155–157 EOF/UI controls giữ profile riêng | [CP168](#current-mode-promoted-start3) currentmodeBhost2cycles/Ready/BStart3 đãđo; R1/R2partial vàoldwhiteframe giữriêng. Accountresume/halfclose/loss/generalreplace chưa đủ; không lấy oldprofileexit làm currentmode proof |
 | Peer lifecycle | [CP159/160](#exported-preset-runtime)actual99/153/currentdirectIPs/ports; [CP155oldUDP](#direct-oldudp-contest-eof)/[CP158samekeycounter](#current-trap-udp-counter) controls riêng | Key/counterbytekhôngauth/universalfreshness; low8wrap/reliability/fullgrammar/relay/NAT/LAN/Internet unknown |
 
 Trong **optional profile hiện hành**, bảng dưới ghi vai trò emulator, không gán cho server gốc.
@@ -5859,6 +5866,10 @@ Internet/8client/fullauth/originalauthority/generalreset vẫn mở. Bước ti�
 <a id="current-mode-promoted-cycles"></a>
 ### Hai normal cycles/reset/Ready sau promotion trên currentmode — CP167
 
+**Đính chính AUD050/CP168:** recordCP167 dùng nhầm tên Roller cho missingindex16. Actual124/165
+là kind0/Bomb/capacityeffect đãphục hồi ởCP031; khôngkind2/Roller. Chỉ nhãnprose sai, raw/kind/hash/
+missingcallback và cácverification khôngđổi. RecordCP167 bấtbiến giữlỗi đểtruynguồn.
+
 **`kr_runtime/confirmed` hẹp, modifiedWine/privatevirtualhosts; policy vẫn `design`.**
 [Raw/control/hash](evidence/peer-endpoints/README.md#cp167), [gap](RESEARCH.md#gap-room-membership).
 Sourcefirst CP109/110 Bhost/Aguestcycles/UI vàCP111receiverprepost, CP165currentpreset/observergating,
@@ -5869,7 +5880,7 @@ inputtargets/tolerance/timeout/nativecriteria giữ CP165. R1/R2 là run riêng,
 
 R1 378.305974972s/exit0 có hai native175302/1803/errors0/reset/actualReadyA/native110 cảhai, Bhost/
 sameTCP/key12345→12346, mode1 quaACK/2×180/StartB; movement/life/entity195 có nguồn. Tuy nhiên
-full4native165/view check **FAIL**: chỉ3callback/view; Roller16/R1serviceconfirm broadcast trongfirstalignment
+full4native165/view check **FAIL**: chỉ3callback/view; Bomb16/kind0/R1serviceconfirm broadcast trongfirstalignment
 window ởcảhai khi observer bịtắt. Không dùng servicebroadcast chứngminh client đãchạymissingcallback;
 Fire165cảhaivòng và snapshotstat có nguồn riêng. R1giữ nguyên raw/fail/partialcoverage, không backfill.
 
@@ -5890,3 +5901,40 @@ Không suy persistenthang, không lấy R1 backfill R2 hoặc gọi BStart sauRe
 Start3 tronghai run. [PLAN](PLAN.md#current-order) kiểm actualBStart3/nativeclock/render+8 vàauditCP168.
 Hai cycles/Ready nativeproof vẫn giữ đúngscope, không tự nâng K4/K5/K6a/fullmatch hoặc LAN/Internet/
 8client/Windows/generalreset/fullauth/originalauthority. AUD049qua164, periodicnext168 không reset.
+
+
+<a id="current-mode-promoted-start3"></a>
+### Currentmode BStart3 sau hai normalcycles và audit — CP168
+
+**`kr_runtime/confirmed` hẹp; controller input/placement/servicepolicy `design`.**
+[Control/raw/hash](evidence/peer-endpoints/README.md#cp168). Reuse CP150 stop-on-actualpickup principle,
+CP165 Start3/observercontrol, CP166membership vàCP167currentmodeBhost2cycles/rare165. Không nativebody/
+codec/item RE mới, không portopcode/ID/layoutVN hoặc đổi sourcebinary/pack/DB/service/preset.
+
+Hai run controlR1/R2 fixed0,30s keys FAIL `ProductionPickup17notobservedR1`: firstnativeclock/mode1/
+promotion đãtới, khôngFire124/bom/outcome/Ready2/Start3. R2thêmmeasurementwindow giảmhotBPs/keep3rare165,
+nativefeedback16samples/view tronginput: ownA179→239, ownB387→343 (timestamp khácnhau); 192copied
+nativegettercases xácnhận capturedwrappers. Không gọi làglobalendpositions/pxs hoặc nguyênnhânmọifailure.
+Firecenter279 theo knownrow6; control chỉ cho thấy actualmovement vàmissingclaim, khôngservicebug.
+
+R3thay fixedpulse bằngnormalOSkeyhold dừng theoactualFire124 hoặc5s cap, giữtarget/tolerance/20attempt/
+3freshneutral/30sloading/claimuniqueness/native165/peerlifecycles. Đây là controllerdesign mới theofeedback,
+**không** giữphím0,30s rồi gọioldcontrolpass hoặc nới oracle. Actualholdduration0,617006739s/0,595376959s;
+mỗivòng1actualFireclaim/winnerA, native4callbacks165/view/full12/errors0/currentpower/reset cónguồn.
+Không chứng minh2simultaneousnativecontenders/fairness từ1claim. Haiadditionalcontestmeasurementwindows
+giữrare165/stat probes, disable writer/chronology khác rồiexactrestore trước4peerwindows vàbombs;
+28actualarms/14groups, 12alignmentgroups/162checks và2contestgroups/58checks táchscope đầyđủ.
+
+Run405.945854372s/exit0/currentexport47pins/directmodule/private2hosts: hai normal175302/1803/reset/
+actualReadyA rồi normalB104/third121full129/actual99/153/barrier/nativeclock3 mỗi view vàrender8s;
+Manner1 qua87/2×180/StartB. Thirdactive/key12347/noBomb/noaccepted17,19, khôngthirdnormaloutcome.
+Ảnh BStartcolored trướcclick vàmap/timer1:50/twoactors+8s ởhai view đãxem. Newrun lateUIfunctional
+cóproof; không retrospectiveR2whiteframecause hoặc proof mọi UI/timing/Windows/LAN/Internet.
+
+AUD050 đốichiếu core→evidence→raw CP165–168, sửa navigation/pendingPR/knownpromotion/reset cũ,
+giữ recordcomplete vàcontrols bấtbiến; auditnextCP172. Rà gate phát hiện **currentpresetfloor-only**:
+khônghidden_items, revealed_hidden={} cả3generation. NativeBox/reveal142/hiddenpickup đãRE/đo tại
+[CP068/069](#basic-battle) ởprofilekhác, chưacurrentintegration; không coi thiếu là phảiRElạitoànitem.
+Đây lànextgap cụthể phục vụK5; [PLAN](PLAN.md#current-order) composeknown582/catalog/route/nativepreflight.
+K4dependencies/K5/K6a/fullmatch/8client/generalreset/Windows/coldcache/codec-reset/originalauthority
+giữmở. R3khôngactiveoldUDP/EOFfault, controlsCP155/167 khôngbackfillsame-runqualification.

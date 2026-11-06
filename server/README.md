@@ -310,4 +310,8 @@ cho `join_A` sau existingmembershipguards. [Control/fix/runtime/giới hạn](..
 CP167 đo hai Battlecycles/reset/Ready saupromotion trên mode mới; default/generalC/password/Random không mở rộng.
 
 CP167 không đổi server/preset; [hai currentmodeBhostcycles và observerlimits](../docs/PROTOCOL.md#current-mode-promoted-cycles).
-265server/4exporttests tái dùng bằng exactsourcehash CP166. BStart3 sauReady2 chưakiểm, khônggate.
+265server/4exporttests tái dùng bằng exactsourcehash CP166. [CP168](../docs/PROTOCOL.md#current-mode-promoted-start3) đãkiểm BStart3 sauReady2 trongrunmới; khônggate.
+
+CP168 giữserver/presetbytes: boundednativefeedbackOScontroller vàmeasurementwindows ởlocal;
+[scope/gapbasicBattlehidden](../docs/PROTOCOL.md#current-mode-promoted-start3). Preset hiện tại floor-only,
+khôngđượcdùng hidden-items featurepresence hoặc profileCP069 khác làm proofcurrentrun.
