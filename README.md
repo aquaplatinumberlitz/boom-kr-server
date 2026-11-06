@@ -41,16 +41,16 @@ Hai copy KR Wine đã chạy login/sảnh/phòng/Battle và các chu kỳ kết 
 [kim/reset](docs/PROTOCOL.md#needle-round-reset), [cứu hai chiều và hai kết quả](docs/PROTOCOL.md#rescue-two-results),
 [deep chain/reset](docs/PROTOCOL.md#recursive-chain-cycles) giữ phạm vi và giới hạn tại nguồn chuẩn.
 
-**Mốc mới CP152:** đã tách được đường load chậm trước writer99 khỏi guard/send, và đo đối chứng
-observer A/B; [kết quả và giới hạn](docs/PROTOCOL.md#loading-observer-timing),
-[raw/hash](docs/evidence/peer-endpoints/README.md#cp152). Chưa hoàn tất contest hai vòng/Ready2;
-CP151 R1 và CP150 hai chu kỳ vẫn là các run riêng. Không tăng deadline30s hoặc ép99/clock.
+**Mốc mới CP153:** cùng một run, hai copy đã tranh Fire17 qua hai key; mỗi vòng có hai request thật,
+một winner/một hiệu ứng, rồi hai kết quả/reset và Ready cuối. Gate riêng observer thừa lúc load đưa
+hai barrier xuống5,94s/4,60s, giữ deadline30s. [Contract/giới hạn](docs/PROTOCOL.md#loading-hot-gate-contest),
+[raw/hash](docs/evidence/peer-endpoints/README.md#cp153). Chưa nghiệm thu fullmatch/K6a/LAN/Internet/8 client thật.
 
-CP151 đã merge [PR222](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/222) tại`79a51e6`;
-CP152 tự kiểm/chờ PR, [review waived](docs/evidence/checkpoints/review-waiver.json).
-Audit **AUD046 qua152**, kỳ tiếp **CP156**. Theo [PLAN](docs/PLAN.md#current-order), kiểm observer
-lúc load rồi tiếp contested pickup/keyreset và native kết quả/Ready. Fullmatch/K6a/LAN/Internet,
-8 client thật, CP137 UI/shared geometry/fullinventory và các gate vẫn mở.
+CP152 đã merge [PR223](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/223) tại`a92fdc2`;
+CP153 tự kiểm/chờ PR, [review waived](docs/evidence/checkpoints/review-waiver.json).
+Audit gần nhất **AUD046 qua152**, kỳ tiếp **CP156**. Theo [PLAN](docs/PLAN.md#current-order), tiếp kiểm
+acceptance còn thiếu trên route hiện tại; actualpendingguestEOF trước đây còn qua proxy. Fullauthority/
+Windows control/CP137complexUI/sharedgeometry/fullinventory và các gate còn mở.
 
 Đích đầu: hai client thật chơi hai trận liên tiếp; mở bốn client và hardening sau đó.
 
