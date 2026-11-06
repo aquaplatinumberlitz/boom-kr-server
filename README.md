@@ -41,14 +41,15 @@ Hai copy KR Wine đã chạy login/sảnh/phòng/Battle và các chu kỳ kết 
 [kim/reset](docs/PROTOCOL.md#needle-round-reset), [cứu hai chiều và hai kết quả](docs/PROTOCOL.md#rescue-two-results),
 [deep chain/reset](docs/PROTOCOL.md#recursive-chain-cycles) giữ phạm vi và giới hạn tại nguồn chuẩn.
 
-**Mốc mới CP160:** preset đã commit chạy trực tiếp service production: hai vòng normal/kết quả/reset/
-Ready, rồi **Start vòng3 thật/nativeclock/render cảhai view**. [Contract/giới hạn](docs/PROTOCOL.md#exported-preset-runtime),
-[run/hash](docs/evidence/peer-endpoints/README.md#cp160). Vòng3 chỉ active, không ba trận hoàn chỉnh.
+**Mốc mới CP161:** tên phòng từ request tạo phòng của host đã được phản ánh vào danh sách và
+phòng guest. Hai copy Wine hiển thị cùng tên, guest Back/vào lại và hai vòng kết quả/reset/Ready
+đã kiểm trên service production. [Contract/giới hạn](docs/PROTOCOL.md#current-room-title),
+[run/hash](docs/evidence/peer-endpoints/README.md#cp161). Preset giữ47 fixture pin và bật chính sách tên mới.
 
-CP159 đã merge [PR230](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/230) tại `2a7332c`;
-CP160 tự kiểm/chờPR. AUD048 qua160, kỳtiếpCP164. Gap kế: tênphòng host lấy từrequest81 nhưng guest
-vẫn “KRRoom” từfixed91; nativeparser xác nhận, chưafix. [PLAN](docs/PLAN.md#current-order) giữthứtự.
-K6a/fullmatch/LAN/Internet/8client thật còn mở, naturaltransientCP157 chưađượcquynguyênnhân;
+CP160 đã merge [PR231](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/231) tại `a588e95`;
+CP161 tự kiểm/chờ PR. AUD048 qua160, kỳ tiếp CP164. Bước tiếp theo trong [PLAN](docs/PLAN.md#current-order)
+là đo input Manner/Free và selector chia đội từ UI thật; không lặp kiểm roster tổng hợp CP147.
+K6a/fullmatch/LAN/Internet/8 client thật và nguyên nhân natural transient CP157 vẫn mở;
 [review waived](docs/evidence/checkpoints/review-waiver.json).
 
 Đích đầu: hai client thật chơi hai trận liên tiếp; mở bốn client và hardening sau đó.

@@ -1,7 +1,7 @@
 {
   "schema": "kre-feature-index-v1",
   "build": "KR00967",
-  "as_of": "2026-11-06 CP160",
+  "as_of": "2026-11-06 CP161",
   "sources": {
     "plan": "docs/PLAN.md",
     "contract": "docs/PROTOCOL.md",
@@ -681,7 +681,8 @@
           "docs/evidence/probe-service/README.md",
           "docs/evidence/host-normal-back/README.md",
           "docs/evidence/eight-player/README.md",
-          "docs/evidence/peer-endpoints/README.md#cp160"
+          "docs/evidence/peer-endpoints/README.md#cp160",
+          "docs/evidence/peer-endpoints/README.md#cp161"
         ]
       },
       "coverage": {
@@ -717,7 +718,8 @@
               "docs/evidence/duo-room-round/README.md",
               "docs/evidence/host-normal-back/README.md",
               "docs/evidence/eight-player/README.md",
-              "docs/evidence/peer-endpoints/README.md#cp160"
+              "docs/evidence/peer-endpoints/README.md#cp160",
+              "docs/evidence/peer-endpoints/README.md#cp161"
             ]
           },
           "windows_original": {
@@ -740,7 +742,10 @@
             "docs/PROTOCOL.md#probe-service",
             "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/57",
             "server/test_host_back_rejoin.py",
-            "docs/PROTOCOL.md#host-normal-back"
+            "docs/PROTOCOL.md#host-normal-back",
+            "docs/PROTOCOL.md#current-room-title",
+            "server/room_title.py",
+            "server/test_room_title.py"
           ],
           "delivery": "via_pr"
         },
@@ -748,7 +753,8 @@
           "state": "partial",
           "refs": [
             "docs/evidence/probe-service/README.md",
-            "docs/evidence/host-normal-back/README.md"
+            "docs/evidence/host-normal-back/README.md",
+            "docs/evidence/peer-endpoints/README.md#cp161"
           ]
         },
         "gate": {
@@ -3732,7 +3738,8 @@
           "docs/evidence/peer-endpoints/README.md#cp157",
           "docs/evidence/peer-endpoints/README.md#cp158",
           "docs/evidence/peer-endpoints/README.md#cp159",
-          "docs/evidence/peer-endpoints/README.md#cp160"
+          "docs/evidence/peer-endpoints/README.md#cp160",
+          "docs/evidence/peer-endpoints/README.md#cp161"
         ]
       },
       "coverage": {
@@ -3867,7 +3874,8 @@
               "docs/evidence/peer-endpoints/README.md#cp157",
               "docs/evidence/peer-endpoints/README.md#cp158",
               "docs/evidence/peer-endpoints/README.md#cp159",
-              "docs/evidence/peer-endpoints/README.md#cp160"
+              "docs/evidence/peer-endpoints/README.md#cp160",
+              "docs/evidence/peer-endpoints/README.md#cp161"
             ]
           },
           "windows_original": {
@@ -3957,7 +3965,10 @@
             "docs/PROTOCOL.md#loading-timeout",
             "docs/PROTOCOL.md#loading-timeout-positive",
             "docs/PROTOCOL.md#service-address-config",
-            "docs/PROTOCOL.md#service-channel-endpoint"
+            "docs/PROTOCOL.md#service-channel-endpoint",
+            "docs/PROTOCOL.md#current-room-title",
+            "server/room_title.py",
+            "server/test_room_title.py"
           ]
         },
         "integration": {
@@ -4039,7 +4050,8 @@
             "docs/PROTOCOL.md#peer-endpoint-ip",
             "docs/PROTOCOL.md#virtual-peer",
             "docs/PROTOCOL.md#virtual-basic-cycles",
-            "docs/PROTOCOL.md#service-channel-endpoint"
+            "docs/PROTOCOL.md#service-channel-endpoint",
+            "docs/evidence/peer-endpoints/README.md#cp161"
           ]
         },
         "gate": {

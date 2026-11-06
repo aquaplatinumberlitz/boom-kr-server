@@ -135,11 +135,11 @@
         "KR-F001",
         "KR-F015"
       ],
-      "known": "CP159/PR230merged2a7332c; CP160exportedcommitted47fixturepreset actualproduction2normaloutcomes/reset/Ready thenactualA104/12199clock3/render8s/noBomb. AUD048through160/next164. Nohold/replay, strictlife2views/2epochs.",
-      "remaining": "RoomtitleactualAcreate81 Korean differsfixedB91KRRoom/native81parsefull67confirmed; dynamic91echo fixpending. NaturalCP157causeunknown/fullauth/originalauthority/Windows/LAN/Internet/8clients/K6a/generalreset/sharedgeometry/CP137UI remain.",
-      "next_test": "PLAN reuseCP016/028/076strwriter/91row/session/87titlecontext; implementboundedoptinknowntitleecho withpreflight/negativeparse/hash/opaque-tailpreserved, thennewcopyproductionactualAcreate/B91list/join/native87/roomtitleA=B. No repeatedBattlecyclesunless needed. AUD048through160/next164.",
+      "known": "CP160/PR231 merged a588e95. CP161 current A81→B91 title echo/actual native81/91/UI A=B; B Back/rejoin and2productionnormalcycles/reset/Ready. 247server/4export tests;47fixturepins. AUD048through160/next164.",
+      "remaining": "Known A/B single uncompressed row/empty-password/max32policy only; C/recreate/promotion/password/generalrooms/fullauth/originalauthority/Windows/LAN/Internet/8clients/K6a andnaturalCP157cause remain.",
+      "next_test": "PLAN reuseCP147 capacity8/selector+9C/nativebalancedchecks, actual CP161 dialog Manner/Free/Random. Freshfrozen copy/profile actualUI click→captured81/+9C/roomInfo; targetonlydifferentsetter/consumer. No repeatedrosterdump/titleRE/wholeBattle.",
       "acceptance": "Epic checklist: linkedscopedtask/evidence+authoritymatrix vàacceptancegate ởPLAN; từngtaskđóng khôngđóngepic/K5/K6a.",
-      "reason": "Committedpreset/actualStart3gapclosed; auditmanualauthoritystale fixes andrawtitlemismatch identifyactualnextintegrationtask. Noautogate/fullmatchclaim orretrospectiveCP157cause.",
+      "reason": "Actual title gap resolved in measured knownvariant, no gateclosure. Next actual unknown is mapping mode UI/wire to native team selector.",
       "sources": [
         "docs/PROTOCOL.md#authority",
         "docs/RESEARCH.md#feature-gaps",
@@ -182,7 +182,8 @@
         "docs/PROTOCOL.md#current-host-ui-exit",
         "docs/PROTOCOL.md#current-trap-udp-counter",
         "docs/PROTOCOL.md#production-baseline",
-        "docs/PROTOCOL.md#exported-preset-runtime"
+        "docs/PROTOCOL.md#exported-preset-runtime",
+        "docs/PROTOCOL.md#current-room-title"
       ],
       "evidence": [
         "docs/evidence/current-movement-cycles/README.md",
@@ -221,7 +222,8 @@
         "docs/evidence/peer-endpoints/README.md#cp157",
         "docs/evidence/peer-endpoints/README.md#cp158",
         "docs/evidence/peer-endpoints/README.md#cp159",
-        "docs/evidence/peer-endpoints/README.md#cp160"
+        "docs/evidence/peer-endpoints/README.md#cp160",
+        "docs/evidence/peer-endpoints/README.md#cp161"
       ],
       "prs": [
         173,
@@ -275,7 +277,8 @@
         227,
         228,
         229,
-        230
+        230,
+        231
       ],
       "successors": []
     },

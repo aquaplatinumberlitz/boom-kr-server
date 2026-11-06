@@ -1,6 +1,6 @@
 # KR 00967 — contract tương thích client gốc
 
-Revision kr-legacy-contract-r1; cập nhật06/11/2026 JST (CP160; AUD048 quaCP160, kếCP164).
+Revision kr-legacy-contract-r1; cập nhật06/11/2026 JST (CP161; AUD048 quaCP160, kếCP164).
 **Contract có bằng chứng từng phần; chưa nghiệm thu full codec K2**.
 Lộ trình và thứ tự task chỉ giữ ở [REWRITE_PLAN — KRE](PLAN.md).
 Đây là contract của repo server KR. ADR0009 của bản viết lại là nguồn lịch sử để so sánh;
@@ -2008,7 +2008,7 @@ locator/trace và trạng thái từng ô; những vai trò không nêu dưới 
 | Item placement/pickup | [CP159/160](#production-baseline) productionimmediate165/1or2actualclaims/oneeffect/nativewinnerpower/reset; [CP155](#direct-oldudp-contest-eof) hold2sactualcontenders là control riêng | Full124distance/auth/generation/inventory/max/speedTTL/activevariants chưa đủ; delay2s không còn trongproductionbaseline |
 | Trap/death | [CP159/160](#exported-preset-runtime) strict56→1/other0beforerank2views/2epochs; [CP157natural](#current-host-ui-exit)/[CP158controlledoverwrite](#current-trap-udp-counter) giữ causal limits | Snapshot khôngglobalsametick; samekeycounterheuristic cho controlledremoteoverwrite; naturalCP157cause unknown, nofullvalidator |
 | Result/reset | [CP160](#exported-preset-runtime)2normaloutcomes/Ready rồiactualStart3/12199clocks/render8s từpinnedpreset; nativeID/stat/195seedreset | Thirdactive khôngthirdnormalmatch; toànentity/timer/seq/peer/pool/resetvariants/originalarbitration chưa đủ |
-| Room lifecycle | [CP155guestEOF](#direct-oldudp-contest-eof)/[CP156hostEOF](#direct-host-eof-acceptance)/[CP157UIexit](#current-host-ui-exit) táchscope; [CP160](#exported-preset-runtime)actualStart3 trênproductionpreset | Currentroomtitlehostrequest khác fixedguest91, đã xác nhận/nativeparse; dynamicroomname pending. Accountresume/halfclose/loss/generalreplace chưa đủ |
+| Room lifecycle | [CP155guestEOF](#direct-oldudp-contest-eof)/[CP156hostEOF](#direct-host-eof-acceptance)/[CP157UIexit](#current-host-ui-exit) táchscope; [CP160](#exported-preset-runtime)actualStart3 trênproductionpreset | [CP161](#current-room-title) current A81→guest91/titleUI/Back/rejoin/hai vòng đã đo; full room variants chưa đủ. Accountresume/halfclose/loss/generalreplace chưa đủ |
 | Peer lifecycle | [CP159/160](#exported-preset-runtime)actual99/153/currentdirectIPs/ports; [CP155oldUDP](#direct-oldudp-contest-eof)/[CP158samekeycounter](#current-trap-udp-counter) controls riêng | Key/counterbytekhôngauth/universalfreshness; low8wrap/reliability/fullgrammar/relay/NAT/LAN/Internet unknown |
 
 Trong **optional profile hiện hành**, bảng dưới ghi vai trò emulator, không gán cho server gốc.
@@ -5651,7 +5651,7 @@ observed0,239821–0,41538ms khôngSLA. 44cycles/689peer4windows/24loadinggate/2
 2184actor/444peer/2758flag+2730array/16life/321nativepacketmodels tách source/runtime/emulation.
 Native195seeds ởStart3 khớp roundseed, currentstrict56→1 hai view/hai vòng không bác naturalCP157.
 
-**Gap UI/service mới được xác nhận, chưafix:** actualC2S81title làcp949 “매너겜 필수” trongrun,
+**Lịch sử CP160: gap UI/service khi đo, đã sửa phạm vi hẹp tại [CP161](#current-room-title):** actualC2S81title làcp949 “매너겜 필수” trongrun,
 khác row91guest fixture “KRRoom”. Host giữ tên từdialog/context, guest nhận fixedrow, hai view ảnhphòng
 khác tên. Native14EF300/14EB9E0/12u32/4u8 đọcfull67byte, CRC/partial controls đạt; không suy hai phòng
 hoặcroomID khác nhau. Reuse [CP016request81](#room-create), [CP028row91/87](#duo-room-round),
@@ -5666,6 +5666,38 @@ giữ lịch sửCP157failure/CP158controlledcausality/CP159immediaterenderframe
 Đối chiếu K5/K6a: localtwoactualclients/identityslot/2waymovement/2ownerbomb/pickup/result/reset/Start3
 có evidence đúngprofile; nativeflags195 choactualboxclear vàseedreset trongruncurrent, không mặcđịnh
 fullgeometry/hiddenitem/drop. Hostleave controls CP155–157 là cácscope riêng, khônggộpthànhmộttrận.
-Roomtitleconsistency cònfixpending; naturalCP157cause/wholequeue-seq/fullauth/originalauthority/Windows/
+Roomtitleconsistency cònfixpending tại CP160 (CP161 giải known variant); naturalCP157cause/wholequeue-seq/fullauth/originalauthority/Windows/
 LAN/Internet/8clients/generalreset/sharedgeometry/CP137complexUI giữunknown. **Khôngđóng K6a/fullmatch**
 từpreset/positivecontrols/đếmassertion; cũng không đòi fullservergốc before mọi localpolicy demo.
+
+
+<a id="current-room-title"></a>
+### Tên phòng current81 → guest91 — CP161
+
+**`kr_runtime/confirmed` trong hai copy Wine/private stub, `emu_choice/design` cho chính sách service.**
+[Recipe/raw/hash](evidence/peer-endpoints/README.md#cp161). Tái dùng CP016 request81/string,
+CP028 row91/session/87 title context và CP076 inline15/heap16; không RE lại handler hoặc chuyển opcode,
+ID/layout VN. Native `14EF300`/`14EB9E0` kiểm actual81, row91 `D9D720`/blob consumer kiểm actual91;
+base400000, RVA=VA−base. Copy Wine SHA `e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef`.
+
+Opt-in `room_title: {"mode":"create81_to_row91","max_bytes":32}` parse đúng hai typed string,
+12u32+4u8 opaque. Chỉ nhận title CP949 hợp lệ, không control, 1–32 byte và password rỗng; **giới hạn32
+và từ chối password là policy, không giới hạn UI/auth gốc đã phục hồi**. Preflight known empty row A và
+single uncompressed row B trước listening. Request lỗi không ACK/không đổi membership; title commit
+sau create ACK gửi thành công. Chỉ thay title/length trong row91; session, roomID,22 byte tail, sequence
+và CRC của đường gửi được giữ/tính theo codec KR. Initial B91 dùng base49, dynamic Back/return-list dùng
+sequence hiện hành. Mode tắt giữ đường cũ; không diễn giải52 byte opaque hoặc lấy title làm identity.
+
+Run r1 title13 byte `아무나 오세요`, r2 title16 byte `저랑 게임하실분~`: actual81/native framer/string/CRC/
+partial controls, initial và return91/native row đều đạt. R1 ảnh hai view **trước guest Back** tên trùng;
+final B đen sau Back không phải proof còn ở phòng. R2 exported preset47 pins chạy module production,
+không hold165/active replay, guest Back→91→rejoin87→Ready/Start, hai normal outcomes/reset/Ready;
+ảnh cuối A/B tên trùng. Hai epoch Fire winner lần lượt A/B, mỗi epoch một actual claim và một effect/view;
+strict56→1/other0 trước175 cả hai view. Getter emulation/model tách runtime, không oracle cả world.
+
+247 server tests (10 title regression),4 export tests đạt; negative/truncation/password/control,
+ACK failure không commit, exact row identity/tail, default và sequencing đều có kiểm. Preset bật policy
+sau UI positive r1, r2 đo cùng operational profile; provenance-only update sau cleanup giữ nguyên
+`profile` và exact frozen preset trong evidence. R2 không Start3/third match; C/recreate/promotion/title
+variants/password/compressed/multi-row/full auth/authority/Windows/LAN/Internet/8 client/K6a chưa kiểm.
+Natural transient CP157 vẫn unknown; không ghép run riêng thành gate/fullmatch.

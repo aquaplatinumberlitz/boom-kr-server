@@ -1,0 +1,263 @@
+{
+  "id": "CP161",
+  "previous": "CP160",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-06T08:46:23.077892+00:00",
+  "context_commit": "a588e9530f712ebb2d53a1eef93e3b079c3f50c0",
+  "owner": "Codex",
+  "reviewer": "Codex",
+  "question": "Can actual A create81 title be reflected in B initial/dynamic91 and native room UI without changing known identity/tail/default semantics, and does title-enabled production preset retain2normalcycles/reset/Ready?",
+  "scope": "Reuse CP016/028/076 knownKRnative strings/row91/session/87context; boundedtitlepolicy,10newregressiontests,2 frozen Wine runs. No nativebodyreanalysis. Grouped native/emulation/runtime/visual/source/evidence documentation.",
+  "artifacts": [
+    {
+      "name": "KRoriginalCA/read-only",
+      "sha256": "a52545c14b1fea423de655c3163d6360b628d61c1cd472b46fdbc8a9ffe15f4e"
+    },
+    {
+      "name": "Winecopyunchanged",
+      "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+    },
+    {
+      "name": "staticcopy",
+      "sha256": "660447c293ce92270cb9b5815331bca976e8f156366e1fe50b217b6c12e60ce3"
+    }
+  ],
+  "locators": [
+    "BaselineCP160PR231heada70351439adda5bd97b4d66c2c3a27cbd6f04e17/mergea588e9530f712ebb2d53a1eef93e3b079c3f50c0.",
+    "R1runc9d797df4c5afb8e7a7ee3c95fb999bead7fa892d27802a503b8228316408686/99.580380489s/exit0/367raw/100frozeninputs/title13inline15.",
+    "R2run507e2cfc0fb20fef758e6e64490b0eca48685d0b4a37fd628fff9fa0e2255300/368.298314404s/exit0/1192raw/102inputs/title16heap31.",
+    "KR00967 sourcea52545c14b1fea423de655c3163d6360b628d61c1cd472b46fdbc8a9ffe15f4e/copiede9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef/modelmodOa08950c833d3acab8281049def7b3dc96b221f107eeda01da3a548e34b91dce5/base400000/RVA=VA−base. Native14EF300/14EB9E0/91rowD9D720 andCP02887context reused.",
+    "R1guestBack6sbefore8scompletion; beforeBackframes are UIproof. R2actualFireAwinnerR1/BwinnerR2/oneclaimoneeffect/view; no165hold/activeUDP replay/Start3.",
+    "AUD048through160/nextCP164 unchanged."
+  ],
+  "findings": [
+    {
+      "summary": "Opt-in create81_to_row91 servicepolicy validatesexact2typedstrings/52opaque bytes/titleCP9491..32/empty-password; preflight knownrows, badrequest noACK/no membership, titlecommit onlyaftersuccessfulACK. InitialBseq49/dynamiccurrentseq titlelengthrewrite preservesidentity/session/tail/default.",
+      "source": "design",
+      "status": "design",
+      "method": "design",
+      "canonical": "docs/PROTOCOL.md#current-room-title",
+      "evidence": [
+        "RUN-01671",
+        "RUN-01669",
+        "RUN-01672",
+        "RUN-01668"
+      ],
+      "limits": "Two modified Wine copies/private virtual hosts/same physicalhost/production policy/syntheticidentity. Known A/B empty-password/single uncompressed row only; max32 isdesign not recovereduniversalUIlimit. R1 UIproof beforeguestBack notfinalblackB; r2 two normaloutcomes/reset/Ready noStart3. Models separatefromruntime, no originalbinary/DB/packchange/newbodyRE. No C/generalrecreate/promotion/password/allroomlistvariants/fullauth/originalauthority/Windows/LAN/Internet/8clients/K6a/fullmatch; naturalCP157causeunknown."
+    },
+    {
+      "summary": "ActualA81 title13then16 bytes appearsinactualBinitialandreturn91/nativefullcursor/CRCpartial; native87/map andtwoUIviews match actual title. R1 beforeBackscope only; r2 title retainedthroughguestBack/rejoinandtwooutcomes/reset/Ready.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#current-room-title",
+      "evidence": [
+        "RUN-00441",
+        "RUN-01795",
+        "RUN-01816",
+        "RUN-00002",
+        "RUN-00447",
+        "RUN-00448"
+      ],
+      "limits": "Two modified Wine copies/private virtual hosts/same physicalhost/production policy/syntheticidentity. Known A/B empty-password/single uncompressed row only; max32 isdesign not recovereduniversalUIlimit. R1 UIproof beforeguestBack notfinalblackB; r2 two normaloutcomes/reset/Ready noStart3. Models separatefromruntime, no originalbinary/DB/packchange/newbodyRE. No C/generalrecreate/promotion/password/allroomlistvariants/fullauth/originalauthority/Windows/LAN/Internet/8clients/K6a/fullmatch; naturalCP157causeunknown."
+    },
+    {
+      "summary": "R2titleenabledexportedpreset47pins/directproduction/nohold165/noactiveUDPreplay preserves2normalcycles/reset/Ready, Fire actualwinnerAthenB/oneeffecteachview/strict56to1before175bothviews2epochs. Gettermodelsindependentlychecksnapshots not Winegamecalls.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#current-room-title",
+      "evidence": [
+        "RUN-01706",
+        "RUN-00469",
+        "RUN-01665",
+        "RUN-01817",
+        "RUN-01690"
+      ],
+      "limits": "Two modified Wine copies/private virtual hosts/same physicalhost/production policy/syntheticidentity. Known A/B empty-password/single uncompressed row only; max32 isdesign not recovereduniversalUIlimit. R1 UIproof beforeguestBack notfinalblackB; r2 two normaloutcomes/reset/Ready noStart3. Models separatefromruntime, no originalbinary/DB/packchange/newbodyRE. No C/generalrecreate/promotion/password/allroomlistvariants/fullauth/originalauthority/Windows/LAN/Internet/8clients/K6a/fullmatch; naturalCP157causeunknown."
+    },
+    {
+      "summary": "Finalpresetprovenanceupdatedaftercleanup toactualr2run/sourceprofile; operationalprofileunchanged. Exactfrozenpresetretrieved/hashverifiedandretained, no rawsealrewrite. No claim exactmetadataupdatedbyteswereexecuted.",
+      "source": "design",
+      "status": "design",
+      "method": "documentation",
+      "canonical": "docs/PROTOCOL.md#current-room-title",
+      "evidence": [
+        "RUN-01705",
+        "RUN-01674",
+        "RUN-01670"
+      ],
+      "limits": "Two modified Wine copies/private virtual hosts/same physicalhost/production policy/syntheticidentity. Known A/B empty-password/single uncompressed row only; max32 isdesign not recovereduniversalUIlimit. R1 UIproof beforeguestBack notfinalblackB; r2 two normaloutcomes/reset/Ready noStart3. Models separatefromruntime, no originalbinary/DB/packchange/newbodyRE. No C/generalrecreate/promotion/password/allroomlistvariants/fullauth/originalauthority/Windows/LAN/Internet/8clients/K6a/fullmatch; naturalCP157causeunknown."
+    },
+    {
+      "summary": "Initialnativeblobpostassertexpectedalreadyconsumedcompressionflag; inheritedpickupcheckerhardcodedAwinnerbothrounds; discovery-t. failednamespacepackage. Originalsources/logs retained, correctedactualrow/winnerscopeand247server/4export pass withoutserviceguard/rawchanges. R1shellcontinuedlaunchafterbadpostassertdisclosed.",
+      "source": "design",
+      "status": "design",
+      "method": "documentation",
+      "canonical": "docs/PROTOCOL.md#current-room-title",
+      "evidence": [
+        "RUN-00449",
+        "RUN-00004",
+        "RUN-01811",
+        "RUN-01668",
+        "RUN-01667"
+      ],
+      "limits": "Two modified Wine copies/private virtual hosts/same physicalhost/production policy/syntheticidentity. Known A/B empty-password/single uncompressed row only; max32 isdesign not recovereduniversalUIlimit. R1 UIproof beforeguestBack notfinalblackB; r2 two normaloutcomes/reset/Ready noStart3. Models separatefromruntime, no originalbinary/DB/packchange/newbodyRE. No C/generalrecreate/promotion/password/allroomlistvariants/fullauth/originalauthority/Windows/LAN/Internet/8clients/K6a/fullmatch; naturalCP157causeunknown."
+    }
+  ],
+  "verification": [
+    {
+      "check": "247server/4exporttests including10title regressionchecks",
+      "result": "pass",
+      "evidence": [
+        "RUN-01668",
+        "RUN-01667",
+        "RUN-01672"
+      ],
+      "limits": "Policy regression not independentnativeoracle."
+    },
+    {
+      "check": "Eachrun24title/3actual81native/6actual91native;4manualUIframes. R2 75pickup/45cycle/461peer4windows/10claimjoins/16loading/26entityreset/23strictlife",
+      "result": "pass",
+      "evidence": [
+        "RUN-01795",
+        "RUN-00447",
+        "RUN-00448",
+        "RUN-01816",
+        "RUN-01706",
+        "RUN-00469",
+        "RUN-01665",
+        "RUN-00455",
+        "RUN-01684",
+        "RUN-01817",
+        "RUN-01690"
+      ],
+      "limits": "Two modified Wine copies/private virtual hosts/same physicalhost/production policy/syntheticidentity. Known A/B empty-password/single uncompressed row only; max32 isdesign not recovereduniversalUIlimit. R1 UIproof beforeguestBack notfinalblackB; r2 two normaloutcomes/reset/Ready noStart3. Models separatefromruntime, no originalbinary/DB/packchange/newbodyRE. No C/generalrecreate/promotion/password/allroomlistvariants/fullauth/originalauthority/Windows/LAN/Internet/8clients/K6a/fullmatch; naturalCP157causeunknown."
+    },
+    {
+      "check": "2256actor/300peer/2364flag+2340array/16life/303nativepacketmodels;rawseal1559total/202frozeninputs/cleanup;docs/catalog/issues/artifacts/diff",
+      "result": "pass",
+      "evidence": [
+        "RUN-00445",
+        "RUN-01704",
+        "RUN-01673",
+        "RUN-01691",
+        "RUN-01693",
+        "RUN-01708",
+        "RUN-01751",
+        "RUN-01664",
+        "RUN-01687",
+        "RUN-00454"
+      ],
+      "limits": "Models not runtimeworldoracle/gate; fullcheckpointrequire-local/history beforecommit."
+    }
+  ],
+  "evidence": [],
+  "evidence_manifests": [
+    {
+      "path": "docs/evidence/checkpoints/evidence/CP161-room-title.json",
+      "bytes": 464058,
+      "sha256": "8eaef8daf4b607ee6453c6f8a42a9271d283de3ce6475f6e62bd5d1c40376ab1",
+      "count": 1834
+    }
+  ],
+  "delta": {
+    "added": [
+      "CurrentactualA81→Binitial/dynamic91/nativeUI titleconsistency andguestBack/rejoin/twoproductioncycles measured.",
+      "Boundedoptinroomtitlepolicy/preset47pins/10newtests,247server/4export pass."
+    ],
+    "corrected": [
+      "CP160PR231merged/currenttitlependingnavigation superseded byboundedCP161 proof.",
+      "R1UIproofbeforeBack; decodedblobcomparison/inheritedAwinnerassertion correctionsdisclosed andoriginalsretained.",
+      "Finalpresetprovenanceonlyupdate notprofile/runtimechange."
+    ],
+    "superseded": [
+      "NEXT-CURRENT-ROOM-TITLE closedknownA/Bvariant; NEXT-TEAM-MODE-INPUT active."
+    ]
+  },
+  "blockers": [
+    "Manner/Free/RandomUIlabels notyetmappedtoactual81/roomInfoselector+9C; CP147 nativebalancedselector1 notUI/wireproof.",
+    "Generalrooms/fullauth/originalauthority/Windows/LAN/Internet/8clients/generalreset/sharedgeometry/CP137UI/K6a/fullmatch andnaturalCP157cause remainopen."
+  ],
+  "next_steps": [
+    {
+      "id": "NEXT-CURRENT-ROOM-TITLE",
+      "task": "KRE-005b",
+      "state": "closed",
+      "action": "CP161knownA/Btitlepolicyactualnative81/91/UIA=B/guestBackrejoin/twoproductioncyclesReady measured. No C/recreate/promotion/generalroomclaim.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-TEAM-MODE-INPUT",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "PLAN sourcefirstCP147nativecapacity8/getter123FA10/+9C/balancedchecksandCP161dialogUI. Freshfrozencopy/profile actualManner/Freeclick→captured81/+9C/roomInfoconsumer; onlytargetmissingsetter/wirefields, thenbalanced4to4/negative1to7 ifedgeproven. Noinventedcapacitydropdown/field5semantics/VNenumport/rosterdumprepeat.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    }
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-11-06T08:46:23.077892+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "Codex solo RE/runtime/code/self-check; independent review waived; no gateclosure.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Owner explicitly requested solo without workers/review."
+    }
+  },
+  "docs_sync": [
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "CP161titlepolicy/nativeUI/twoproductioncycles/analysislimits/presetprovenance/PR231merge/nextMannerFreeinput syncedbeforecomplete."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "CP161titlepolicy/nativeUI/twoproductioncycles/analysislimits/presetprovenance/PR231merge/nextMannerFreeinput syncedbeforecomplete."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "updated",
+      "reason": "CP161titlepolicy/nativeUI/twoproductioncycles/analysislimits/presetprovenance/PR231merge/nextMannerFreeinput syncedbeforecomplete."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "updated",
+      "reason": "CP161titlepolicy/nativeUI/twoproductioncycles/analysislimits/presetprovenance/PR231merge/nextMannerFreeinput syncedbeforecomplete."
+    },
+    {
+      "path": "docs/features.json",
+      "state": "updated",
+      "reason": "CP161titlepolicy/nativeUI/twoproductioncycles/analysislimits/presetprovenance/PR231merge/nextMannerFreeinput syncedbeforecomplete."
+    },
+    {
+      "path": "docs/COVERAGE.md",
+      "state": "updated",
+      "reason": "CP161titlepolicy/nativeUI/twoproductioncycles/analysislimits/presetprovenance/PR231merge/nextMannerFreeinput syncedbeforecomplete."
+    },
+    {
+      "path": "docs/evidence/peer-endpoints/README.md",
+      "state": "updated",
+      "reason": "CP161titlepolicy/nativeUI/twoproductioncycles/analysislimits/presetprovenance/PR231merge/nextMannerFreeinput syncedbeforecomplete."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/review.json",
+      "state": "updated",
+      "reason": "CP161titlepolicy/nativeUI/twoproductioncycles/analysislimits/presetprovenance/PR231merge/nextMannerFreeinput syncedbeforecomplete."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
+      "state": "updated",
+      "reason": "CP161titlepolicy/nativeUI/twoproductioncycles/analysislimits/presetprovenance/PR231merge/nextMannerFreeinput syncedbeforecomplete."
+    },
+    {
+      "path": "server/README.md",
+      "state": "updated",
+      "reason": "CP161titlepolicy/nativeUI/twoproductioncycles/analysislimits/presetprovenance/PR231merge/nextMannerFreeinput syncedbeforecomplete."
+    }
+  ]
+}

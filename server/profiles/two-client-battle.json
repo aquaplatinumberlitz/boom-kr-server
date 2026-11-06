@@ -1,12 +1,12 @@
 {
   "schema": "kre-probe-preset-v1",
   "provenance": {
-    "source_profile_sha256": "158b1ce7915853acb6c864abc8e9d634bfd2ec55bb8ae76c31e82223853ce11a",
-    "run_sha256": "01deaf0aecf06434c2df7b5e26b6230035ecf0d3efa3f04cbd5f8dd461764dd8",
-    "contract": "docs/PROTOCOL.md#production-baseline",
+    "source_profile_sha256": "34f00932fd133fc893a7e010561abda851028fb6dbfd180d18d783ef46241b2e",
+    "run_sha256": "507e2cfc0fb20fef758e6e64490b0eca48685d0b4a37fd628fff9fa0e2255300",
+    "contract": "docs/PROTOCOL.md#current-room-title",
     "build": "KR00967",
     "source": "emu_choice",
-    "limits": "Pinned diagnostic two-client profile, no binary assets; no full auth/original authority/Windows/LAN/Internet/8client/gate. Export/preflight do not certify another runtime."
+    "limits": "Pinned diagnostic two-client profile; title mode known A/B create81→row91, empty-password/max32 policy. Native room-title setup, B Back/rejoin and two normal production cycles/reset/Ready measured in CP161; not full auth/original authority/Windows/LAN/Internet/8client/gate. No binary assets."
   },
   "profile": {
     "schema": "kr-probe-profile-v1",
@@ -545,6 +545,10 @@
     },
     "host_back_rejoin": {
       "mode": "idle_A_to_B"
+    },
+    "room_title": {
+      "mode": "create81_to_row91",
+      "max_bytes": 32
     }
   }
 }
