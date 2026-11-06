@@ -1,7 +1,7 @@
 {
   "schema": "kre-feature-index-v1",
   "build": "KR00967",
-  "as_of": "2026-11-06 CP161",
+  "as_of": "2026-11-06 CP162",
   "sources": {
     "plan": "docs/PLAN.md",
     "contract": "docs/PROTOCOL.md",
@@ -682,7 +682,8 @@
           "docs/evidence/host-normal-back/README.md",
           "docs/evidence/eight-player/README.md",
           "docs/evidence/peer-endpoints/README.md#cp160",
-          "docs/evidence/peer-endpoints/README.md#cp161"
+          "docs/evidence/peer-endpoints/README.md#cp161",
+          "docs/evidence/peer-endpoints/README.md#cp162"
         ]
       },
       "coverage": {
@@ -719,7 +720,8 @@
               "docs/evidence/host-normal-back/README.md",
               "docs/evidence/eight-player/README.md",
               "docs/evidence/peer-endpoints/README.md#cp160",
-              "docs/evidence/peer-endpoints/README.md#cp161"
+              "docs/evidence/peer-endpoints/README.md#cp161",
+              "docs/evidence/peer-endpoints/README.md#cp162"
             ]
           },
           "windows_original": {
@@ -745,7 +747,10 @@
             "docs/PROTOCOL.md#host-normal-back",
             "docs/PROTOCOL.md#current-room-title",
             "server/room_title.py",
-            "server/test_room_title.py"
+            "server/test_room_title.py",
+            "docs/PROTOCOL.md#current-team-mode",
+            "server/room_team_mode.py",
+            "server/test_room_team_mode.py"
           ],
           "delivery": "via_pr"
         },
@@ -787,7 +792,8 @@
           "docs/evidence/room-player/README.md",
           "docs/evidence/probe-service/README.md",
           "docs/evidence/host-normal-back/README.md",
-          "docs/evidence/eight-player/README.md"
+          "docs/evidence/eight-player/README.md",
+          "docs/evidence/peer-endpoints/README.md#cp162"
         ]
       },
       "coverage": {
@@ -823,7 +829,8 @@
             "refs": [
               "docs/evidence/room-player/README.md",
               "docs/evidence/host-normal-back/README.md",
-              "docs/evidence/eight-player/README.md"
+              "docs/evidence/eight-player/README.md",
+              "docs/evidence/peer-endpoints/README.md#cp162"
             ]
           },
           "windows_original": {
@@ -846,7 +853,10 @@
             "docs/PROTOCOL.md#probe-service",
             "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/57",
             "server/test_host_back_rejoin.py",
-            "docs/PROTOCOL.md#host-normal-back"
+            "docs/PROTOCOL.md#host-normal-back",
+            "docs/PROTOCOL.md#current-team-mode",
+            "server/room_team_mode.py",
+            "server/test_room_team_mode.py"
           ],
           "delivery": "via_pr"
         },
@@ -3253,7 +3263,8 @@
           "docs/evidence/peer-endpoints/README.md#cp150",
           "docs/evidence/peer-endpoints/README.md#cp153",
           "docs/evidence/peer-endpoints/README.md#cp159",
-          "docs/evidence/peer-endpoints/README.md#cp160"
+          "docs/evidence/peer-endpoints/README.md#cp160",
+          "docs/evidence/peer-endpoints/README.md#cp162"
         ]
       },
       "coverage": {
@@ -3339,7 +3350,8 @@
               "docs/evidence/peer-endpoints/README.md#cp150",
               "docs/evidence/peer-endpoints/README.md#cp153",
               "docs/evidence/peer-endpoints/README.md#cp159",
-              "docs/evidence/peer-endpoints/README.md#cp160"
+              "docs/evidence/peer-endpoints/README.md#cp160",
+              "docs/evidence/peer-endpoints/README.md#cp162"
             ]
           },
           "windows_original": {
@@ -3371,7 +3383,10 @@
             "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/97",
             "docs/PROTOCOL.md#basic-battle",
             "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/99",
-            "docs/PROTOCOL.md#loading-timeout-positive"
+            "docs/PROTOCOL.md#loading-timeout-positive",
+            "docs/PROTOCOL.md#current-team-mode",
+            "server/room_team_mode.py",
+            "server/test_room_team_mode.py"
           ],
           "delivery": "via_pr"
         },
@@ -3739,7 +3754,8 @@
           "docs/evidence/peer-endpoints/README.md#cp158",
           "docs/evidence/peer-endpoints/README.md#cp159",
           "docs/evidence/peer-endpoints/README.md#cp160",
-          "docs/evidence/peer-endpoints/README.md#cp161"
+          "docs/evidence/peer-endpoints/README.md#cp161",
+          "docs/evidence/peer-endpoints/README.md#cp162"
         ]
       },
       "coverage": {
@@ -3875,7 +3891,8 @@
               "docs/evidence/peer-endpoints/README.md#cp158",
               "docs/evidence/peer-endpoints/README.md#cp159",
               "docs/evidence/peer-endpoints/README.md#cp160",
-              "docs/evidence/peer-endpoints/README.md#cp161"
+              "docs/evidence/peer-endpoints/README.md#cp161",
+              "docs/evidence/peer-endpoints/README.md#cp162"
             ]
           },
           "windows_original": {
@@ -3968,7 +3985,10 @@
             "docs/PROTOCOL.md#service-channel-endpoint",
             "docs/PROTOCOL.md#current-room-title",
             "server/room_title.py",
-            "server/test_room_title.py"
+            "server/test_room_title.py",
+            "docs/PROTOCOL.md#current-team-mode",
+            "server/room_team_mode.py",
+            "server/test_room_team_mode.py"
           ]
         },
         "integration": {

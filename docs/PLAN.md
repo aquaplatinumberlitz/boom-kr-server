@@ -1,7 +1,7 @@
 # Kế hoạch server giả lập KR 00967
 
 Nguồn chuẩn của project `boom-kr-server`; bản nhập từ plan đã được dsh1/dsh2 review tại `1eee46d`.
-Cập nhật06/11 JST (CP161): [tên phòng current](PROTOCOL.md#current-room-title) đã đo hai copy/guest Back/rejoin/hai vòng production/Ready; CP160 PR231 merged a588e95. CP161 tự kiểm/chờ PR. Tiếp input Manner/Free→selector đội; AUD048 qua160/kếCP164.
+Cập nhật06/11 JST (CP162): [Free/Manner và reset selector](PROTOCOL.md#current-team-mode) đã đo; CP161 PR232 merged593bdc0. CP162 tự kiểm/chờ PR. Tiếp balanced8 Start4–4/negative1–7 bằng input đã nối; AUD048 qua160/kếCP164.
 
 
 ### Mục tiêu, baseline và phạm vi
@@ -37,13 +37,13 @@ với client Rust không chứng minh có thể điều khiển client KR bằng
 
 ### Tiến độ hiện hành theo bằng chứng
 
-| Task/mốc | Trạng thái tại CP161 | Nguồn chuẩn |
+| Task/mốc | Trạng thái tại CP162 | Nguồn chuẩn |
 |---|---|---|
 | KRE-004/issue6 | Đã review/merge PR7 và đóng issue:recipe r1 đến local accept;không phải full K1 | [Wine r1](evidence/wine/README.md) |
 | Bootstrap reply | PR8 đã merge;debugger ProcessPatchreturn1,không ép success | [bootstrap evidence](evidence/bootstrap-wire/README.md) |
 | KRE-005a/issue9,R2 | PR10 đã merge:3 cold start cửa sổ/second accept;issue9 còn mở | [R2 evidence](evidence/wine-r2/README.md) |
 | WCP hai-reply | Run CP001 là lịch sử chưa C→S; CP006 đã đo request đầu trên copy tham số hóa | [PROTOCOL](PROTOCOL.md#wcp),[WCP evidence](evidence/wcp/README.md) |
-| KRE-005b/issue14 | CP006–160 đã merge; CP161 tên phòng current/production hai vòng có nguồn; task hiện hành ở current-order; fullauth/authority/fullmatch/gates và gaps giữ mở | [Q-023](RESEARCH.md#q-023), [service](evidence/probe-service/README.md) |
+| KRE-005b/issue14 | CP006–161 đã merge; CP162 input kiểu đội/ACK/reset/hai vòng có nguồn; task hiện hành ở current-order; fullauth/authority/fullmatch/gates và gaps giữ mở | [Q-023](RESEARCH.md#q-023), [service](evidence/probe-service/README.md) |
 | K0/K1 | Chưa nghiệm thu toàn gate;Windows vanilla/control ownership và các điều kiện còn thiếu giữ mở | Gate dưới,[Q-022](RESEARCH.md) |
 | K2a/K2 | Primitive/WCP, CP057stream native/model và CP058–060authcallback137/135/errors0 đã có; fullcodec/authauthority/reconnect và gate chưa pass | [PROTOCOL](PROTOCOL.md#login-auth),[Q-023](RESEARCH.md#q-023) |
 | K3 | Copy đã vẽUI/đóngnotice, A/B/Cprofile đọc sạch và mộtnamedcachewarm được nhận; identityauthority/toàncache/codec/K3 chưa nghiệm thu | [Contract sảnh](PROTOCOL.md#channel-lobby) |
@@ -66,17 +66,19 @@ selectiveCLI/historicalmigration xong, không còn taskactive tổ chức. CP119
 Yêu cầu kiểm8 người đã có kết quả hẹp [CP147](PROTOCOL.md#battle-eight-roster), không thay gate:
 không lặp roster tổng hợp/dump capacity; selector1 wire/UI mở khi cần chọn kiểu đội. Service8 peer
 và trận8 client thật là phần mở rộng sau hai/bốn client ổn ở bước5, chưa được đánh dấu hoàn thành.
-1. **KR-R002 — input Manner/Free và selector chia đội:**
-   [CP161](PROTOCOL.md#current-room-title) đóng `NEXT-CURRENT-ROOM-TITLE` trong known A/B empty-password,
-   title≤32 byte policy: native81/91, UI tên trùng, guest Back/rejoin và hai vòng production/Ready.
-   Không mở lại handler title hoặc đo lại Battle chỉ để ghi docs. CP160 [PR231](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/231) merged.
-   Tái dùng [CP147](PROTOCOL.md#battle-eight-roster): capacity8/map278, selector manager+9C, native
-   Start-check cân bằng selector1 và runtime selector0 đã có; không lặp roster/dump. Đối chiếu nguồn
-   cũ theo câu hỏi input trước phép đo. Ảnh dialog CP161 có Manner/Free/Random, không có bằng chứng
-   dropdown capacity. Trên copy/profile mới, đóng băng trước run: click Manner/Free thật, thu actual81,
-   selector+9C và roomInfo/consumer tương ứng; so sánh field thay đổi, giữ unknown phần chưa nối.
-   Nếu có cạnh cụ thể mới đọc setter KR có mục tiêu, rồi kiểm balanced4–4/negative1–7 khi đường UI/wire
-   đã nối; không gán enum theo nhãn, field5 hoặc bố trí VN. Không suy runtime8 slot thành8 client thật.
+1. **KR-R002 — kiểm Start cân bằng8 slot bằng selector1 đã nối:**
+   [CP162](PROTOCOL.md#current-team-mode) đóng `NEXT-TEAM-MODE-INPUT`: UI Free0/Manner1→actual81,
+   native+9C/ACK86/87/return180, hai vòng production giữ1. R3 là control reset lỗi, không sửa raw;
+   CP161 [PR232](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/232) merged. Preset mới có
+   cùng operational profile r4, file đã cập nhật cần native smoke/Start3 khi qua kiểm dưới, không tự coi đã chạy.
+   Tái dùng CP147 capacity8/map278,106 Ready flags4, roster4–4/1–7, actual Start-check và14 native
+   balance-model cases; không dump map/RE guard/kiểm8 free0 lại. Freshcopy/profile/harness cố định
+   trước run: known reply86 echo selector1 từ current81 trên nhánh thường, giữ field khác; actual getter
+   ởDCB138 phải1. Ca4–4 đòi click thật→check0/104; ca1–7 đòi check7/không104. Capture/nativeCRCpartial,
+   roster/count/capacity/parser/ảnh và cleanup có hash. Không ép manager/return qua debugger, không đổi
+   fixture giữa run. Nếu khác expectation, truy đúng nhánh khác; không đổi acceptance cho pass.
+   Đây là **một client/roster tổng hợp**, không8 peer/Battle/service8/room-full admission.
+   Sau mốc này, kiểm native committed mode-preset/Start3 và audit CP164 theo counter; không quét Random/mode phụ.
    [#14](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/14) giữ mở.
    <!-- active-issue: 14 --> AUD048 qua160, audit định kỳ kế **CP164**.
 2. **KR-B003/KR-F006 — nợ có giới hạn:** [CP057](PROTOCOL.md#codec-stream-boundaries) đã đo stream/
@@ -107,7 +109,7 @@ Bảng này chỉ phân công/thứtự; acceptance/PR/bằngchứng ởissue. [
 
 | Thứ tự/scope | Issue | Trạng thái/phần còn thiếu |
 |---|---|---|
-| Hiện hành RE | [#14/KRE-005b](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/14) | CP006–160 merged; CP161 title echo/guest rejoin/production hai vòng có nguồn/tự kiểm; input kiểu đội là bước1; gaps giữ; fullauth/authority/fullmatch/gates mở. |
+| Hiện hành RE | [#14/KRE-005b](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/14) | CP006–161 merged; CP162 mode input/ACK/reset/two cycles có nguồn/tự kiểm; balanced8 Start là bước1; gaps giữ; fullauth/authority/fullmatch/gates mở. |
 | Control theo trigger/gate | [#1/KRE-001](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/1), [#2/KRE-002](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/2) | Windowsoriginal/ownership/K0K1/fullbootstrapconfig; reuseWine/import/replyđãđo. |
 | Codec/identity khi cần | [#3/KRE-003](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/3), [#9/KRE-005a](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/9) | Fullcodec/livebounds vàintermittentmainstartupcause cònthiếu; khônglặpprimitive/auxiliarylocale. |
 

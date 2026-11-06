@@ -1,12 +1,12 @@
 {
   "schema": "kre-probe-preset-v1",
   "provenance": {
-    "source_profile_sha256": "34f00932fd133fc893a7e010561abda851028fb6dbfd180d18d783ef46241b2e",
-    "run_sha256": "507e2cfc0fb20fef758e6e64490b0eca48685d0b4a37fd628fff9fa0e2255300",
-    "contract": "docs/PROTOCOL.md#current-room-title",
+    "source_profile_sha256": "93cdd1a9287d8770309540c68173979808ed3236672ae12813479a440720d26a",
+    "run_sha256": "3fd7959d786b4062fe8aefb532ac003ed8d5c4d40cbda98bf0e8c73bedf4a814",
+    "contract": "docs/PROTOCOL.md#current-team-mode",
     "build": "KR00967",
     "source": "emu_choice",
-    "limits": "Pinned diagnostic two-client profile; title mode known A/B create81→row91, empty-password/max32 policy. Native room-title setup, B Back/rejoin and two normal production cycles/reset/Ready measured in CP161; not full auth/original authority/Windows/LAN/Internet/8client/gate. No binary assets."
+    "limits": "Pinned diagnostic A/B profile, max32/empty-password/title plus create81 selector0/1 echo in86/87/known180 bool0/list0 branch. CP162 measured Manner1 across guest Back/rejoin and2normaloutcomes/reset/Ready. Not all row91 mode metadata/C/promotion/recreate/Random/fullauth/originalauthority/Windows/LAN/Internet/8clients/K6a; no binary assets."
   },
   "profile": {
     "schema": "kr-probe-profile-v1",
@@ -549,6 +549,9 @@
     "room_title": {
       "mode": "create81_to_row91",
       "max_bytes": 32
+    },
+    "room_team_mode": {
+      "mode": "create81_to_86_87"
     }
   }
 }
