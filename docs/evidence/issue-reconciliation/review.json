@@ -135,11 +135,11 @@
         "KR-F001",
         "KR-F015"
       ],
-      "known": "CP152/PR223 merged a92fdc2. CP153 loadingonlyB32390gate/restoreclock and2epochactualcontest/Bsinglewinner/nativeeffects/statreset/4peerwindows/2nativeoutcomes/reset/finalReady; links canonical.",
-      "remaining": "CurrentallTCPdirect pendingguestEOF/nativeAcleanup notsameasCP144proxyroute; fullauth/authority/Windows/K6a/LAN/Internet/8realclients/CP137UI/generalreset remain. HistoricalCP151R2cause notrewritten.",
-      "next_test": "PLAN reuseCP144/050/074/135; newcopy onlymeasurementcontroller aftertwocontestedcycles/Ready→normalStart3/pendingBbomb/ownedEOF; serviceEOFdirect/fence/no158late/nativeA175180107110/slotclear/roomusable. Keep30s/profile/2s165/gateB32390preclock. AUD046through152/next156.",
+      "known": "CP153/PR224 merged3468200; CP154 currentallTCPdirect2contests/Ready→normalStart3/actualB118pending/ownedCA-Bkill/directserviceEOF/fence/no158/nativeA175180107110/slotclear/render.",
+      "remaining": "Same-run exactoldUDP/currentpositive notincurrentcontested/EOFrecipe; CP145 source/keydrop isknownseparately. LAN/Internet/8realclients/fullauth/authority/Windows/K6a/CP137UI/generalreset remain.",
+      "next_test": "PLAN reuseCP14512probe/armedack/sourceSHA/AF_PACKET/offloadcontrols; integrateexactR1B→Aframe replayafterR2153/clock withnativekeydrop/noapply/currentpositive thennormal2contests/Ready/EOF3. No newconsumerRE/headerCRC/keyrewrite; sourcefreeze/cleanup/30s/2s165/loadinggate unchanged.",
       "acceptance": "Epic checklist: linkedscopedtask/evidence+authoritymatrix vàacceptancegate ởPLAN; từngtaskđóng khôngđóngepic/K5/K6a.",
-      "reason": "CP153 closes selected2epochcontest/loadingrecipe gap, notepic/gate; nextactualintegrationedge isdirectEOF vspriorproxymeasurement.",
+      "reason": "NarrowcurrentdirectpendingEOF taskdone, notepic/gate. Same-runcurrentprofilefreshnessnext; historicalCP144proxy/CP145standalone keptseparate.",
       "sources": [
         "docs/PROTOCOL.md#authority",
         "docs/RESEARCH.md#feature-gaps",
@@ -174,7 +174,8 @@
         "docs/PROTOCOL.md#direct-item-feedback",
         "docs/PROTOCOL.md#direct-contested-pickup",
         "docs/PROTOCOL.md#loading-observer-timing",
-        "docs/PROTOCOL.md#loading-hot-gate-contest"
+        "docs/PROTOCOL.md#loading-hot-gate-contest",
+        "docs/PROTOCOL.md#direct-contest-pending-eof"
       ],
       "evidence": [
         "docs/evidence/current-movement-cycles/README.md",
@@ -206,7 +207,8 @@
         "docs/evidence/peer-endpoints/README.md#cp150",
         "docs/evidence/peer-endpoints/README.md#cp151",
         "docs/evidence/peer-endpoints/README.md#cp152",
-        "docs/evidence/peer-endpoints/README.md#cp153"
+        "docs/evidence/peer-endpoints/README.md#cp153",
+        "docs/evidence/peer-endpoints/README.md#cp154"
       ],
       "prs": [
         173,
@@ -253,7 +255,8 @@
         220,
         221,
         222,
-        223
+        223,
+        224
       ],
       "successors": []
     },

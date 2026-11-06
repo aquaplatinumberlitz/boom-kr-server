@@ -1,0 +1,227 @@
+{
+  "id": "CP154",
+  "previous": "CP153",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-06T02:55:31.179822+00:00",
+  "context_commit": "34682009e425942aa9cc0f23d5ca9b394060d3ab",
+  "owner": "Codex",
+  "reviewer": "Codex",
+  "question": "DoesactualpendingguestEOF after2contestedcycles reachservice andcleanupsurvivornative state oncurrentallTCPdirect route, withoutproxy/latebomb158?",
+  "scope": "ReuseCP144ownedkill/Start3/native107slotclear-chief110 andCP050074135sources; currentCP153directprofile/2contests/observergate unchanged. Onlymeasurementcontroller extension/knownreadonlyprobes; no newnativebody/EOFhandlerRE orservercode.",
+  "artifacts": [
+    {
+      "name": "KRoriginalCA/read-only",
+      "sha256": "a52545c14b1fea423de655c3163d6360b628d61c1cd472b46fdbc8a9ffe15f4e"
+    },
+    {
+      "name": "Winecopyunchanged",
+      "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+    },
+    {
+      "name": "staticcopy",
+      "sha256": "660447c293ce92270cb9b5815331bca976e8f156366e1fe50b217b6c12e60ce3"
+    }
+  ],
+  "locators": [
+    "CP153head68c80039e607afba453a30eb87e2dbc3f66e2561/PR224merge34682009e425942aa9cc0f23d5ca9b394060d3ab; archivedexacthead/merge.",
+    "Run1a7ae6edf73df8066fbe8a231a7878745741049059b628abf0ef49b59f9c1cdc/422.640337048s/exit0two_normal_cycles_then_pending_guest_eof_return/1283raw/96frozeninputs.",
+    "Base400000/RVA=VA−400000; known107DC62D0/D603F5/D60617/DC6637/D6062C/DC6329; slotclear12400D0/12401A9/chief1240D5E; B32390gate6clocks/currentkeys12345,12346,12347.",
+    "ActualownedCA-BPID512/prefix/netns/commrevalidated; ID3owner1/cell9,3/power1/pending6s; killremaining4.948958128s; directserviceEOF aftersignal-record41.417847..46.284671ms; jobround_closed/no158/nativeAcleanup only.",
+    "AUD046through152/next156 unchanged; no gate/issue14closure."
+  ],
+  "findings": [
+    {
+      "summary": "Samecurrentrun2Firecontests/currentkeys/onewinnerA/one165perview/onlyApowerdelta/reset,4peerwindows/2nativeoutcomes/Ready; CP153Bwinner preservedseparate, controllerdoesnotforcewinner.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#direct-contest-pending-eof",
+      "evidence": [
+        "RUN-00007",
+        "RUN-00005",
+        "RUN-00017",
+        "RUN-01305"
+      ],
+      "limits": "TwoactualmodifiedWine/privatevirtualhosts/samephysicalhost/allTCPdirect/service3858/sourceA.2B.3/noTCPUDPproxy. CurrentCP153profile/production/30s/2s165/B32390loading-onlygate unchanged. 2normalcontestedcycles/Ready thennormalStart3/actualB118pending/ownedCA-BSIGKILL/directserviceEOF/fence/no158/nativeAforfeit107110/ID2to0/render. 2normalendings+thirdforfeit distinct; killedBcannotreceiveforfeit/noStart4. NotnormalUIleave/halfclose/networkloss/accountresume/originalforfeitlaw/fullworld/fullauth/authority/Windows/generalreset/CP137UI/fullmatch/K6a/LAN/Internet/8clients. CP145standaloneoldUDPknown/notmeasuredinsamerunyet."
+    },
+    {
+      "summary": "AfterReady2/normalStart3/bothactual99clock3, actualB118ID3pending159both→ownedBkillPID512/4.948958128sbeforefuse; actualserviceEOFdirect/reason=eof/peer_eoftrue. NoTCPproxy; observed41.4msnotproxyperformancecomparison.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#direct-contest-pending-eof",
+      "evidence": [
+        "RUN-01303",
+        "RUN-01290",
+        "RUN-01291",
+        "RUN-01324"
+      ],
+      "limits": "TwoactualmodifiedWine/privatevirtualhosts/samephysicalhost/allTCPdirect/service3858/sourceA.2B.3/noTCPUDPproxy. CurrentCP153profile/production/30s/2s165/B32390loading-onlygate unchanged. 2normalcontestedcycles/Ready thennormalStart3/actualB118pending/ownedCA-BSIGKILL/directserviceEOF/fence/no158/nativeAforfeit107110/ID2to0/render. 2normalendings+thirdforfeit distinct; killedBcannotreceiveforfeit/noStart4. NotnormalUIleave/halfclose/networkloss/accountresume/originalforfeitlaw/fullworld/fullauth/authority/Windows/generalreset/CP137UI/fullmatch/K6a/LAN/Internet/8clients. CP145standaloneoldUDPknown/notmeasuredinsamerunyet."
+    },
+    {
+      "summary": "Generation3EOFabort/fence round_closed/no158/noB17,19 evenafterfuse+4s; onlyAreceivesforfeit175180/native107slotID2to0/110chief1/roomrenderBempty/Start. KilledBnotrecipient/thirdforfeitnotnormalmatch/noStart4.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#direct-contest-pending-eof",
+      "evidence": [
+        "RUN-01303",
+        "RUN-01378"
+      ],
+      "limits": "TwoactualmodifiedWine/privatevirtualhosts/samephysicalhost/allTCPdirect/service3858/sourceA.2B.3/noTCPUDPproxy. CurrentCP153profile/production/30s/2s165/B32390loading-onlygate unchanged. 2normalcontestedcycles/Ready thennormalStart3/actualB118pending/ownedCA-BSIGKILL/directserviceEOF/fence/no158/nativeAforfeit107110/ID2to0/render. 2normalendings+thirdforfeit distinct; killedBcannotreceiveforfeit/noStart4. NotnormalUIleave/halfclose/networkloss/accountresume/originalforfeitlaw/fullworld/fullauth/authority/Windows/generalreset/CP137UI/fullmatch/K6a/LAN/Internet/8clients. CP145standaloneoldUDPknown/notmeasuredinsamerunyet."
+    },
+    {
+      "summary": "CP144kill/knowncleanupblock/probes reusedwithoutnewnativebody/productionchange; CP148237serverchecks reusedafter41sourcehashcomparison. Sameprofile/loadinggate/30s/2s165measurement; EOFforfeit/timerfence remainemulatorpolicy.",
+      "source": "design",
+      "status": "design",
+      "method": "design",
+      "canonical": "docs/PROTOCOL.md#direct-contest-pending-eof",
+      "evidence": [
+        "RUN-01325",
+        "RUN-01326",
+        "RUN-01370",
+        "RUN-01387"
+      ],
+      "limits": "TwoactualmodifiedWine/privatevirtualhosts/samephysicalhost/allTCPdirect/service3858/sourceA.2B.3/noTCPUDPproxy. CurrentCP153profile/production/30s/2s165/B32390loading-onlygate unchanged. 2normalcontestedcycles/Ready thennormalStart3/actualB118pending/ownedCA-BSIGKILL/directserviceEOF/fence/no158/nativeAforfeit107110/ID2to0/render. 2normalendings+thirdforfeit distinct; killedBcannotreceiveforfeit/noStart4. NotnormalUIleave/halfclose/networkloss/accountresume/originalforfeitlaw/fullworld/fullauth/authority/Windows/generalreset/CP137UI/fullmatch/K6a/LAN/Internet/8clients. CP145standaloneoldUDPknown/notmeasuredinsamerunyet."
+    }
+  ],
+  "verification": [
+    {
+      "check": "50directEOF/43first2normalcycle/84contest/14actualclaimcapture/24loadinggate/746peerassertions4windows/3manualframes",
+      "result": "pass",
+      "evidence": [
+        "RUN-01303",
+        "RUN-00017",
+        "RUN-00007",
+        "RUN-00005",
+        "RUN-01313",
+        "RUN-01305",
+        "RUN-01378"
+      ],
+      "limits": "TwoactualmodifiedWine/privatevirtualhosts/samephysicalhost/allTCPdirect/service3858/sourceA.2B.3/noTCPUDPproxy. CurrentCP153profile/production/30s/2s165/B32390loading-onlygate unchanged. 2normalcontestedcycles/Ready thennormalStart3/actualB118pending/ownedCA-BSIGKILL/directserviceEOF/fence/no158/nativeAforfeit107110/ID2to0/render. 2normalendings+thirdforfeit distinct; killedBcannotreceiveforfeit/noStart4. NotnormalUIleave/halfclose/networkloss/accountresume/originalforfeitlaw/fullworld/fullauth/authority/Windows/generalreset/CP137UI/fullmatch/K6a/LAN/Internet/8clients. CP145standaloneoldUDPknown/notmeasuredinsamerunyet."
+    },
+    {
+      "check": "1316loading assertions includingrawhash/actual99;2664securefields+480peergetters native52A350model",
+      "result": "pass",
+      "evidence": [
+        "RUN-01319",
+        "RUN-00001",
+        "RUN-01322"
+      ],
+      "limits": "Rawobservations/capturedmemory andnativegettermodelseparate; allocators/rekeycountersyntheticmodel notruntimegamewrites/originalauthority."
+    },
+    {
+      "check": "237CP148serverchecksreuse/41sourcehashes/docs/catalog/liveissues/artifacts/diff",
+      "result": "pass",
+      "evidence": [
+        "RUN-01370",
+        "RUN-01304",
+        "RUN-01316",
+        "RUN-00004"
+      ],
+      "limits": "Testsreusednotrerun; fullcheckpointlocal/historybeforecommit. No semantic/gate certification."
+    }
+  ],
+  "evidence": [],
+  "evidence_manifests": [
+    {
+      "path": "docs/evidence/checkpoints/evidence/CP154-direct-pending-EOF.json",
+      "bytes": 361167,
+      "sha256": "34e00d74fc641e2b296db817643f6b33e4305c3877649ad551e3415e9e72a8be",
+      "count": 1393
+    }
+  ],
+  "delta": {
+    "added": [
+      "CurrentallTCPdirect actualpendingBEOF after2contestedcycles/Ready, fence/no158/nativeA107IDclear110/visualroom."
+    ],
+    "corrected": [
+      "CP144proxyEOFbench/latency/pinnedPID notcurrentdirectevidence; actualownershipPID512anddirectservicereceiptjoined.",
+      "ThirdA175180forfeit separatedfromfirst2normalresults/Bcannotreceivecleanup; no3normalmatchesclaim.",
+      "CP153PR224merge/currentdocs/gaps/issue14; staleF005loadingnextnavcorrected, auditnext156 unchanged."
+    ],
+    "superseded": [
+      "NEXT-DIRECT-CONTEST-GUEST-EOF closedinscopedCP154; parent14/gatesopen. Nextcurrentrecipefreshnessintegration reusesCP145knownoldUDP/currentpositive; notREconsumeragain."
+    ]
+  },
+  "blockers": [
+    "ExactoldUDP/currentpositive proofnotyetinthiscurrentdirectcontested/EOFsame-runrecipe; CP145knownconsumer/source/keydropscope staysconfirmedseparately.",
+    "Fullauth/worldauthority/Windows/generalreset/CP137UI/fullinventory/accountresume/normalleave/halfclose/loss/Start4/fullmatch/K6a/LAN/Internet/8realclients remain."
+  ],
+  "next_steps": [
+    {
+      "id": "NEXT-DIRECT-CONTEST-GUEST-EOF",
+      "task": "KRE-005b",
+      "state": "closed",
+      "action": "CP154 actualownedpendingBkill/directserviceEOF/fence/no158/nativeA175180107110/IDclear/render after2contestedcycles/Ready; nohalfclose/UIleave/generaldisconnect/gateclosure.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-DIRECT-CONTEST-OLDUDP",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "PLAN reuseCP14512knownprobes/armedack/sourceSHA/AF_PACKET/vethoffload; integrateexactactualR1B→Abytes replayafterR2153clock→queue/keydrop/noapply/currentpositive intoCP1542contests/Ready/EOF3recipe. No headerCRCkeyrewrite/newnativebody/unknownfromsilence; keep30s/profile/2s165/loadinggate/freeze/cleanup.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    }
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-11-06T02:55:31.179822+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "CodexsoloRE/runtime/selfcheck/manual3frameinspection; independentreviewwaived.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Owner explicitly requested solo without workers/review."
+    }
+  },
+  "docs_sync": [
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "CP154directEOF/2normal+thirdforfeit/nativeAcleanup/limits/PR224merge/currentrecipefreshnessnext syncedbeforecomplete."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "CP154directEOF/2normal+thirdforfeit/nativeAcleanup/limits/PR224merge/currentrecipefreshnessnext syncedbeforecomplete."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "updated",
+      "reason": "CP154directEOF/2normal+thirdforfeit/nativeAcleanup/limits/PR224merge/currentrecipefreshnessnext syncedbeforecomplete."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "updated",
+      "reason": "CP154directEOF/2normal+thirdforfeit/nativeAcleanup/limits/PR224merge/currentrecipefreshnessnext syncedbeforecomplete."
+    },
+    {
+      "path": "docs/features.json",
+      "state": "updated",
+      "reason": "CP154directEOF/2normal+thirdforfeit/nativeAcleanup/limits/PR224merge/currentrecipefreshnessnext syncedbeforecomplete."
+    },
+    {
+      "path": "docs/COVERAGE.md",
+      "state": "updated",
+      "reason": "CP154directEOF/2normal+thirdforfeit/nativeAcleanup/limits/PR224merge/currentrecipefreshnessnext syncedbeforecomplete."
+    },
+    {
+      "path": "docs/evidence/peer-endpoints/README.md",
+      "state": "updated",
+      "reason": "CP154directEOF/2normal+thirdforfeit/nativeAcleanup/limits/PR224merge/currentrecipefreshnessnext syncedbeforecomplete."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/review.json",
+      "state": "updated",
+      "reason": "CP154directEOF/2normal+thirdforfeit/nativeAcleanup/limits/PR224merge/currentrecipefreshnessnext syncedbeforecomplete."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
+      "state": "updated",
+      "reason": "CP154directEOF/2normal+thirdforfeit/nativeAcleanup/limits/PR224merge/currentrecipefreshnessnext syncedbeforecomplete."
+    }
+  ]
+}
