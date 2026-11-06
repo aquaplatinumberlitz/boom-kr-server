@@ -1,0 +1,241 @@
+{
+  "id": "CP158",
+  "previous": "CP157",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-06T05:29:34.552495+00:00",
+  "context_commit": "f44fd66bbd05d385a833665921ff68d13a93a6d2",
+  "owner": "Codex",
+  "reviewer": "Codex",
+  "question": "Can boundednativewindows or exactsameepochneutralUDPcontrols explain/measure CP157remote56→0→56, and what currentcounter/key/apply limits are actually established?",
+  "scope": "First56/preroll159twoobservationalnonreproductions; exactcurrentlatestneutralreplay seeningress/noapply; tworead-onlycachedcounterBP establishsmallgapdrop, then actualoldneutralframewithlargergap establishes56to0/freshrestoration. Fivegroupedruns/no individualCP/PR. No newnativebody/productionchange; naturalincidentcause remainsopen.",
+  "artifacts": [
+    {
+      "name": "KRoriginalCA/read-only",
+      "sha256": "a52545c14b1fea423de655c3163d6360b628d61c1cd472b46fdbc8a9ffe15f4e"
+    },
+    {
+      "name": "Winecopyunchanged",
+      "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+    },
+    {
+      "name": "staticcopy",
+      "sha256": "660447c293ce92270cb9b5815331bca976e8f156366e1fe50b217b6c12e60ce3"
+    }
+  ],
+  "locators": [
+    "BaselineCP157PR228heade3032f1b9f33201633c1a221be49694600682c74/mergef44fd66bbd05d385a833665921ff68d13a93a6d2.",
+    "trap-udp-window-r1 rune1ae9010b735f72b1da5b8f0f6b03008da3b7e1d27e6ac28681cf3bf6bec484b/437.563814219s/exit0/1492raw/97inputs",
+    "trap-udp-preroll-r2 run63c5d5624d4020e912e924d3fee4790c9ac46c3991cc881c08af5b1266685bd1/437.381120503s/exit0/1492raw/97inputs",
+    "trap-udp-current-replay-r3 rundcbb49ce4981ef8bf584715316483860b8c4ab334860acd119cc7c1c614beae5/432.646906194s/exit0/1496raw/97inputs",
+    "trap-udp-counter-r4 run17ba0cd9d8c398b1d15eba4cea6e2e6a794699ac4a203a4bece0909904b2700f/222.476738292s/exit0/861raw/97inputs",
+    "trap-udp-counter-gap-r5 runacc8f3825d64c76da5fdfc02cc90d6a3b53a3cda3a27a3d1518a88d037d67253/229.871878422s/exit0/852raw/97inputs",
+    "Base400000/RVA=VA−400000. ExistingCP104/105/currentpeer B4E6F0/E668B2 andcanonical stage63EC+slot counter guardE66868..E66892; no newnativefunctionbodyRE.",
+    "R4actualwirekey56/expected56 slot0, incoming152/stored156/diff4→E66884 drop. R5incoming140/stored157/diff17→E668AD/B4E6F0 andprotected56→0; stackB33286/B51CF4/F73882/B4EAA6/E668B2/125DF33.",
+    "R5state0 ns1902551139395066→fresh56ns1902551200675451/61.280385ms; native175entrybothviewsA1/B0. 24copiednative52A350snapshotchecks separate. AUD047through156/nextCP160unchanged."
+  ],
+  "findings": [
+    {
+      "summary": "First56window27ingress16apply/14APIjoin2unmatched andpreroll15954ingress40apply/39join1unmatched;18neutral0beforetrap22trap56after. Below96API64entrycaps, no natural0aftertrap reproduced; doesnotrefuteCP157.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#current-trap-udp-counter",
+      "evidence": [
+        "RUN-01552",
+        "RUN-03108",
+        "RUN-06544"
+      ],
+      "limits": "5 separatefrozenmodifiedWine/privatevirtualhost runs: first3two-normal-cycles+thirdUIforfeit, last2one-normal-cycleonly. SingleexactactualsameepochAneutralframe replay is designintervention, bytes/MAC/IP/port/CRC/key/counter unchanged, notnativeAnewemission. PCAPkv-a originalEthernetonly; kv-breplay exactsenderhash plus nativeBAPIwire/sourceport, notindependentsecondEthernetPCAP. NaturalCP15756→0→56→1 cause stillcandidate/unknown, controlledR5 is causalcapabilityonly. Counterbyteheuristic nottimestamp/auth/universalantireplay. Modelgetters notWinegamecalls; no sourcebinary/DB/pack/gamewrite/guardchange. Fullauth/originalauthority/Windows/LAN/Internet/8clients/generalreset/sharedgeometry/CP137UI/K6a/fullmatch/gates remain open."
+    },
+    {
+      "summary": "R3exactcurrentneutralwire arrivesBAPI aftertrap/no0apply; R4samecontrolnew2BP confirmsactualkey56pass/incoming152stored156→E66884drop/noapply. Nativecounterrulealreadycanonical reusedratherthanreREbody.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#current-trap-udp-counter",
+      "evidence": [
+        "RUN-04594",
+        "RUN-04592",
+        "RUN-04670",
+        "RUN-06540"
+      ],
+      "limits": "5 separatefrozenmodifiedWine/privatevirtualhost runs: first3two-normal-cycles+thirdUIforfeit, last2one-normal-cycleonly. SingleexactactualsameepochAneutralframe replay is designintervention, bytes/MAC/IP/port/CRC/key/counter unchanged, notnativeAnewemission. PCAPkv-a originalEthernetonly; kv-breplay exactsenderhash plus nativeBAPIwire/sourceport, notindependentsecondEthernetPCAP. NaturalCP15756→0→56→1 cause stillcandidate/unknown, controlledR5 is causalcapabilityonly. Counterbyteheuristic nottimestamp/auth/universalantireplay. Modelgetters notWinegamecalls; no sourcebinary/DB/pack/gamewrite/guardchange. Fullauth/originalauthority/Windows/LAN/Internet/8clients/generalreset/sharedgeometry/CP137UI/K6a/fullmatch/gates remain open."
+    },
+    {
+      "summary": "R5exactactualneutralframe gap17 incoming140stored157 passesknowncounterbranch/currentkey; full13apply/capturedprotected56to0/zero stack throughB4EAA6/E668B2; fresh56actualapplyrestores0to56 thenactualdeath1. Zero61.280385ms, nativepre175bothviewsA1/B0. Controlledcapability, notnaturalCP157cause.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#current-trap-udp-counter",
+      "evidence": [
+        "RUN-05594",
+        "RUN-05595",
+        "RUN-06424"
+      ],
+      "limits": "5 separatefrozenmodifiedWine/privatevirtualhost runs: first3two-normal-cycles+thirdUIforfeit, last2one-normal-cycleonly. SingleexactactualsameepochAneutralframe replay is designintervention, bytes/MAC/IP/port/CRC/key/counter unchanged, notnativeAnewemission. PCAPkv-a originalEthernetonly; kv-breplay exactsenderhash plus nativeBAPIwire/sourceport, notindependentsecondEthernetPCAP. NaturalCP15756→0→56→1 cause stillcandidate/unknown, controlledR5 is causalcapabilityonly. Counterbyteheuristic nottimestamp/auth/universalantireplay. Modelgetters notWinegamecalls; no sourcebinary/DB/pack/gamewrite/guardchange. Fullauth/originalauthority/Windows/LAN/Internet/8clients/generalreset/sharedgeometry/CP137UI/K6a/fullmatch/gates remain open."
+    },
+    {
+      "summary": "Groupedproducer/profile/cleanup/nativecounts verified:6193raw/5x97frozen. First3full2normal+UIforfeitdistinct fromlast2onecyclecontrols. PCAPkv-aonlyoriginalEthernet; strictinitialtwo-PCAP-copyassumption correctedtosenderSHA+nativeBAPIchainwithlimit, notrawrewrite.",
+      "source": "design",
+      "status": "design",
+      "method": "documentation",
+      "canonical": "docs/PROTOCOL.md#current-trap-udp-counter",
+      "evidence": [
+        "RUN-06468",
+        "RUN-06535",
+        "RUN-05594"
+      ],
+      "limits": "5 separatefrozenmodifiedWine/privatevirtualhost runs: first3two-normal-cycles+thirdUIforfeit, last2one-normal-cycleonly. SingleexactactualsameepochAneutralframe replay is designintervention, bytes/MAC/IP/port/CRC/key/counter unchanged, notnativeAnewemission. PCAPkv-a originalEthernetonly; kv-breplay exactsenderhash plus nativeBAPIwire/sourceport, notindependentsecondEthernetPCAP. NaturalCP15756→0→56→1 cause stillcandidate/unknown, controlledR5 is causalcapabilityonly. Counterbyteheuristic nottimestamp/auth/universalantireplay. Modelgetters notWinegamecalls; no sourcebinary/DB/pack/gamewrite/guardchange. Fullauth/originalauthority/Windows/LAN/Internet/8clients/generalreset/sharedgeometry/CP137UI/K6a/fullmatch/gates remain open."
+    },
+    {
+      "summary": "NaturalCP1570writer exactpacket unknown; originalstrictfailedproof remains. KnownUDPcounterpath iscapableofcontrolledoverwrite; onlyreopenoriginalcausewithspecifictrigger. PrioritizeproductionProbeServicewithoutmeasurementhold165/activereplays perPLAN ratherthanunboundedallraces.",
+      "source": "design",
+      "status": "design",
+      "method": "documentation",
+      "canonical": "docs/PROTOCOL.md#current-trap-udp-counter",
+      "evidence": [
+        "RUN-05598",
+        "RUN-05600",
+        "RUN-06545"
+      ],
+      "limits": "5 separatefrozenmodifiedWine/privatevirtualhost runs: first3two-normal-cycles+thirdUIforfeit, last2one-normal-cycleonly. SingleexactactualsameepochAneutralframe replay is designintervention, bytes/MAC/IP/port/CRC/key/counter unchanged, notnativeAnewemission. PCAPkv-a originalEthernetonly; kv-breplay exactsenderhash plus nativeBAPIwire/sourceport, notindependentsecondEthernetPCAP. NaturalCP15756→0→56→1 cause stillcandidate/unknown, controlledR5 is causalcapabilityonly. Counterbyteheuristic nottimestamp/auth/universalantireplay. Modelgetters notWinegamecalls; no sourcebinary/DB/pack/gamewrite/guardchange. Fullauth/originalauthority/Windows/LAN/Internet/8clients/generalreset/sharedgeometry/CP137UI/K6a/fullmatch/gates remain open."
+    }
+  ],
+  "verification": [
+    {
+      "check": "R1first56bounded71checks/14joins2missing; R2preroll166checks/39joins1missing; natural0 not reproduced",
+      "result": "observed",
+      "evidence": [
+        "RUN-01552",
+        "RUN-03108"
+      ],
+      "limits": "Boundednonreproduction/knownblindspots; notnaturalincidentresolved/no universalabsence."
+    },
+    {
+      "check": "R4smallcountergap24checks/E66884drop; R5largegap27checks/56to0fresh56restore/61.280385ms/finalrankagreement;24nativegetters",
+      "result": "pass",
+      "evidence": [
+        "RUN-04670",
+        "RUN-05594",
+        "RUN-05595"
+      ],
+      "limits": "5 separatefrozenmodifiedWine/privatevirtualhost runs: first3two-normal-cycles+thirdUIforfeit, last2one-normal-cycleonly. SingleexactactualsameepochAneutralframe replay is designintervention, bytes/MAC/IP/port/CRC/key/counter unchanged, notnativeAnewemission. PCAPkv-a originalEthernetonly; kv-breplay exactsenderhash plus nativeBAPIwire/sourceport, notindependentsecondEthernetPCAP. NaturalCP15756→0→56→1 cause stillcandidate/unknown, controlledR5 is causalcapabilityonly. Counterbyteheuristic nottimestamp/auth/universalantireplay. Modelgetters notWinegamecalls; no sourcebinary/DB/pack/gamewrite/guardchange. Fullauth/originalauthority/Windows/LAN/Internet/8clients/generalreset/sharedgeometry/CP137UI/K6a/fullmatch/gates remain open."
+    },
+    {
+      "check": "Five sealedruns6193raw/5x97inputs/profileunchanged/nativehealth/counters; docs/catalog/liveissues/artifacts/diff",
+      "result": "pass",
+      "evidence": [
+        "RUN-06468",
+        "RUN-06459",
+        "RUN-06471",
+        "RUN-05592"
+      ],
+      "limits": "Mechanical counters notrerunallCP157fullbaselinegetters; fullcheckpointlocal/historybeforecommit. No gate/authoritysemanticcertification."
+    }
+  ],
+  "evidence": [],
+  "evidence_manifests": [
+    {
+      "path": "docs/evidence/checkpoints/evidence/CP158-trap-counter-controls.json",
+      "bytes": 1644541,
+      "sha256": "c5c296f2341b0e5c618d9c661b4443791cae1fbe4b0065fc1eb0e4d395ceca8f",
+      "count": 6545
+    }
+  ],
+  "delta": {
+    "added": [
+      "Runtimecorroboration ofknownsameepochcounterheuristic: smallgap4drop/largegap17admit/protected56to0/fresh56restore withactualframe/source/key/stack.",
+      "Twoobservationalnonreproductions retainedwithAPIblindspots; fivegroupedrawsealedruns."
+    ],
+    "corrected": [
+      "R3ingress/noapply notbyitselfcounterbranchproof; R4directbranchconfirmsowncontrolonly.",
+      "PCAPkv-aonlyoriginal vsreplaykv-b; no falseindependentsecondEthernetcaptureclaim.",
+      "FirstwindowallAPIjoinassumption fails2prearm, prerollstill1; disclosednotnormalizedaway.",
+      "CP157PR228merged/currentnavigation; originalstrictlifeFAIL/naturalcauseunknown unchanged."
+    ],
+    "superseded": [
+      "Firsttrap/preroll/exactcontrolmeasurementstrategy boundedcomplete, naturalquestionremainsRESEARCHunknown; productionbaseline nowPLANpriority."
+    ]
+  },
+  "blockers": [
+    "ExactnaturalCP157zero packet/stack remainsunknown; controlledcapability notretrospectiveproof orbugfix.",
+    "Currentcombinedbaselineused2s165measurementwrapper/activereplay; needproductionserviceunmodifiedpathwithoutthoseinterventions.",
+    "Fullauth/originalauthority/Windows/LAN/Internet/8clients/generalreset/sharedgeometry/CP137UI/K6a remain."
+  ],
+  "next_steps": [
+    {
+      "id": "NEXT-CURRENT-TRAP-UDP-ATTRIBUTION",
+      "task": "KRE-005b",
+      "state": "superseded",
+      "action": "Fiveboundedwindows/controls completewithinmeasuredscope. NaturalCP157exactattribution staysunknown inRESEARCH, conditionaltriggeronly; nosemanticquestionclosure. PLANproductionbaselinepriority replacesimmediateadditionaledgeexperiment.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-PRODUCTION-SERVICE-BASELINE",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "PLAN directproductionProbeService without2s165holdwrapper/activeUDP replay; freshsameprofile/copied2clients/30s/terrain/loadinggate. NormalUI1or2actualpickupclaims/oneeffect/native2normaloutcomes/reset/Ready; no claim/key/consume relaxation. Assessactualacceptanceafterrawseal, preserveunknownauthority/naturalcause/gates.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    }
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-11-06T05:29:34.552495+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "Codex solo RE/runtime/self-check; independent review waived; no gate/incident semanticclosure.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Owner explicitly requested solo without workers/review."
+    }
+  },
+  "docs_sync": [
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "CP158groupedcontrols/negativeblindspots/countercausallimits/naturalunknown/PR228merge/productionbaselinepriority syncedbeforecomplete."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "CP158groupedcontrols/negativeblindspots/countercausallimits/naturalunknown/PR228merge/productionbaselinepriority syncedbeforecomplete."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "updated",
+      "reason": "CP158groupedcontrols/negativeblindspots/countercausallimits/naturalunknown/PR228merge/productionbaselinepriority syncedbeforecomplete."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "updated",
+      "reason": "CP158groupedcontrols/negativeblindspots/countercausallimits/naturalunknown/PR228merge/productionbaselinepriority syncedbeforecomplete."
+    },
+    {
+      "path": "docs/features.json",
+      "state": "updated",
+      "reason": "CP158groupedcontrols/negativeblindspots/countercausallimits/naturalunknown/PR228merge/productionbaselinepriority syncedbeforecomplete."
+    },
+    {
+      "path": "docs/COVERAGE.md",
+      "state": "updated",
+      "reason": "CP158groupedcontrols/negativeblindspots/countercausallimits/naturalunknown/PR228merge/productionbaselinepriority syncedbeforecomplete."
+    },
+    {
+      "path": "docs/evidence/peer-endpoints/README.md",
+      "state": "updated",
+      "reason": "CP158groupedcontrols/negativeblindspots/countercausallimits/naturalunknown/PR228merge/productionbaselinepriority syncedbeforecomplete."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/review.json",
+      "state": "updated",
+      "reason": "CP158groupedcontrols/negativeblindspots/countercausallimits/naturalunknown/PR228merge/productionbaselinepriority syncedbeforecomplete."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
+      "state": "updated",
+      "reason": "CP158groupedcontrols/negativeblindspots/countercausallimits/naturalunknown/PR228merge/productionbaselinepriority syncedbeforecomplete."
+    }
+  ]
+}

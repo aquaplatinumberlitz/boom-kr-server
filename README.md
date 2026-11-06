@@ -41,16 +41,15 @@ Hai copy KR Wine đã chạy login/sảnh/phòng/Battle và các chu kỳ kết 
 [kim/reset](docs/PROTOCOL.md#needle-round-reset), [cứu hai chiều và hai kết quả](docs/PROTOCOL.md#rescue-two-results),
 [deep chain/reset](docs/PROTOCOL.md#recursive-chain-cycles) giữ phạm vi và giới hạn tại nguồn chuẩn.
 
-**Mốc mới CP157:** hai vòng tranh item/kết quả/reset/Ready rồi host A bấm thoát trận thật:
-actual202→86, A về sảnh, B xóa slot A và lên chủ phòng. [Contract/giới hạn](docs/PROTOCOL.md#current-host-ui-exit),
-[recipe/raw/partial](docs/evidence/peer-endpoints/README.md#cp157). CP156 đã merge
-[PR227](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/227) tại `fddf81f`; CP157 tự kiểm/chờ PR.
+**Mốc mới CP158:** đã nối runtime counter UDP cùng vòng với trap: frame lùi4 bị loại, frame nguyên
+byte lùi17 được apply và làm remote56→0→56→1 trong control. [Contract/giới hạn](docs/PROTOCOL.md#current-trap-udp-counter),
+[5run/raw/hash](docs/evidence/peer-endpoints/README.md#cp158). Đây không phải bản sửa client hoặc lời giải
+nguyên nhân transient tự nhiên CP157. Normal host UI exit/A lobby/B promotion đã có ở CP157.
 
-Phép kiểm life strict của run mới **thất bại** tại B vòng1: state56→0→56→1, đoạn0 khoảng41ms;
-state hai view vẫn khớp tại rank entry. Không gọi đây là trap đồng thuận liên tục hoặc tự nâng K6a.
-Tiếp nối packet/apply của cửa sổ này bằng observer CP105 đã có, theo [PLAN](docs/PLAN.md#current-order).
-Audit AUD047 qua156, kỳ tiếp CP160. Full auth/Windows/original authority/general reset/LAN/Internet/
-8 client thật và các gate giữ mở; [review waived](docs/evidence/checkpoints/review-waiver.json).
+CP157 đã merge [PR228](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/228) tại `f44fd66`;
+CP158 tự kiểm/chờ PR. Tiếp baseline bằng **service production**, bỏ delay165 và replay chủ động của
+measurement, theo [PLAN](docs/PLAN.md#current-order). K6a/fullmatch/LAN/Internet/8client thật giữ mở.
+Audit AUD047 qua156, kỳ tiếp CP160; [review waived](docs/evidence/checkpoints/review-waiver.json).
 
 Đích đầu: hai client thật chơi hai trận liên tiếp; mở bốn client và hardening sau đó.
 
