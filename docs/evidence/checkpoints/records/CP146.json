@@ -1,0 +1,235 @@
+{
+  "artifacts": [
+    {
+      "name": "CA-r2-login-logout.exe",
+      "sha256": "660447c293ce92270cb9b5815331bca976e8f156366e1fe50b217b6c12e60ce3"
+    },
+    {
+      "name": "CA-r2-stage-social.exe",
+      "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+    },
+    {
+      "name": "CA-r2-stage-social.exe Bcopy",
+      "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+    },
+    {
+      "name": "modO.bin",
+      "sha256": "a08950c833d3acab8281049def7b3dc96b221f107eeda01da3a548e34b91dce5"
+    }
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-11-05T23:56:50.302466+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "Codex solo RE/code/runtime/selfcheck, not independent approval.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Owner explicitly requested solo without Claude review."
+    }
+  },
+  "owner": "Codex",
+  "reviewer": "Codex",
+  "id": "CP146",
+  "previous": "CP145",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-05T23:56:50.302466+00:00",
+  "context_commit": "cca04272433e8786ab5f56eb03ab7ee3de619526",
+  "question": "Can copiedKRconnectbootstrap/WCP/auth/channel directlytoprivatestubwithoutchildTCPforward, usingknownhosts/redirectfieldsandbinaryunchanged?",
+  "scope": "ReuseCP006–008WCP/CP015S2C7typedcontract/currentprofile; newgamecopies/explicitprivatehostmap/redirecttypedIPonly andreadonly2connectcallsites/backtraces. No fullauth/codecRE ornewproductioncode. UDPcaptureomissiondeclaredscope.",
+  "locators": [
+    "BaselineCP145PR216head9556b171311cdb92671bd116e4ad10a4788dd5f0/mergecca0427/exactCLEANMERGEABLEchecks[]. Production231testsreused;AUD044through144/next148.",
+    "Run10b306429a95ea0cbedd5deae58806999c07681cf4133f1ca4a44a36552283de/344.644023314s/exit0/1888raw/0UDPPCAP/49directTCPjoins/2080lifecycle/575peer/70pickup/87guard/25Ready. ActualCA-A160/server48/B503/server391ownedNS. Aports3848/3848/3848/3858;B3838/3838/3848/3858/allnativeIP10.77.0.1. First3servicepeer.2/.3/channelproxy.1→23858.",
+    "Bootstrap14F4923←12368E2←1234875;WCP14F4894←13AEEE5←13AD6C5←1255C0B←1255A69←1234EAF;authsamewrapper←110488D;channel14F4894←13AEEE5←13ADA06←13AD97E←125540E←110182E. ConnectIAT16EA778; actualruntimecopybody2wrappersinspected. Allbase400000/RVA=VA−400000/static660447/runtimee9bb4766/modOa08950.",
+    "KnownS2C7seq52typed[1,10,0,0x7f000001,3858]→[1,10,0,0x0a4d0001,3858],onlyIPv4/headerseqtailpreserved. No cache/binarypatch;oldmultisvrSSIDecompressedoriginalIPsnotactiveendpointproof. SourcefirstCP015 andVNmultisvrreferenceconceptonly/nolayoutport."
+  ],
+  "findings": [
+    {
+      "summary": "Eightnativeconnectsockaddr/backtrace/servicepeer joins proveprivatebootstrap/WCP/auth/channelnochildforward. Newgamecopiesbinaryunchanged/files-onlyhostmap+knownS2C7IPv4only; rootguardproxyretainedexplicitly.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#direct-tcp-endpoints",
+      "limits": "ModifiedWine/twoactualCA+wineserverprivatevirtualnetns/samephysicalhost/productionIPv4/newgamecopies/runtimebinarye9bb4766unchanged. Files-onlyservicehostmap10.77.0.1/S2C7seq52typedIPv4only/nochildTCPforward; rootTCPguardproxy3858→23858retained. Actualnativeconnectargs/caller8frames/first3directservicepeersA.2/B.3/channelproxy.1 plus2nativecycles/item/4peerwindows/8same4oldguard/reset/Ready/noStart3. UDPcaptureinitomittedwithforwardblock: noPCAP/wirejoin inthisrun; nativepeerproofseparate. Notisolatedhostname/cachecause/fullauth/schema/fullcodec/physicalLAN/NAT/Internet/fullmatch/K6a/gates/CP137complexUI/sharedgeometry/fullinventory. SourcebinaryDBpackunchanged/frozenuntilcleanupseal.",
+      "evidence": [
+        "RUN-01916",
+        "RUN-01901",
+        "RUN-01921"
+      ]
+    },
+    {
+      "summary": "Same-run2nativeclocks/175180110/reset/Ready and4nativepeerwindows/keytargets/currentprogress/BombFire/12selectedTCPguards complete. NoUDPPCAPbecausecaptureinitremovedwithforwardspan; nooldrunwireaggregation.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#direct-tcp-endpoints",
+      "limits": "ModifiedWine/twoactualCA+wineserverprivatevirtualnetns/samephysicalhost/productionIPv4/newgamecopies/runtimebinarye9bb4766unchanged. Files-onlyservicehostmap10.77.0.1/S2C7seq52typedIPv4only/nochildTCPforward; rootTCPguardproxy3858→23858retained. Actualnativeconnectargs/caller8frames/first3directservicepeersA.2/B.3/channelproxy.1 plus2nativecycles/item/4peerwindows/8same4oldguard/reset/Ready/noStart3. UDPcaptureinitomittedwithforwardblock: noPCAP/wirejoin inthisrun; nativepeerproofseparate. Notisolatedhostname/cachecause/fullauth/schema/fullcodec/physicalLAN/NAT/Internet/fullmatch/K6a/gates/CP137complexUI/sharedgeometry/fullinventory. SourcebinaryDBpackunchanged/frozenuntilcleanupseal.",
+      "evidence": [
+        "RUN-00010",
+        "RUN-01919",
+        "RUN-01938",
+        "RUN-02074"
+      ]
+    },
+    {
+      "summary": "Newcustomredirectfixture/hostmapoperatorchoices notrecoveredfullendpoint/authselectionlaw. Hostmap+fixturecombinednotisolatedcachecausality. DirectTCProuteverifiedbutexplicitproductionchannelconfigstillnext; restorecapturebeforefollowup.",
+      "source": "design",
+      "status": "design",
+      "method": "design",
+      "canonical": "docs/PROTOCOL.md#direct-tcp-endpoints",
+      "limits": "ModifiedWine/twoactualCA+wineserverprivatevirtualnetns/samephysicalhost/productionIPv4/newgamecopies/runtimebinarye9bb4766unchanged. Files-onlyservicehostmap10.77.0.1/S2C7seq52typedIPv4only/nochildTCPforward; rootTCPguardproxy3858→23858retained. Actualnativeconnectargs/caller8frames/first3directservicepeersA.2/B.3/channelproxy.1 plus2nativecycles/item/4peerwindows/8same4oldguard/reset/Ready/noStart3. UDPcaptureinitomittedwithforwardblock: noPCAP/wirejoin inthisrun; nativepeerproofseparate. Notisolatedhostname/cachecause/fullauth/schema/fullcodec/physicalLAN/NAT/Internet/fullmatch/K6a/gates/CP137complexUI/sharedgeometry/fullinventory. SourcebinaryDBpackunchanged/frozenuntilcleanupseal.",
+      "evidence": [
+        "RUN-02012",
+        "RUN-01921",
+        "RUN-00005"
+      ]
+    }
+  ],
+  "verification": [
+    {
+      "check": "49directTCPnativeargs/callerframes/servicepeer/private7fields/binaryidentity/nochildforwardjoins",
+      "result": "pass",
+      "evidence": [
+        "RUN-01916",
+        "RUN-01915"
+      ],
+      "limits": "ModifiedWine/twoactualCA+wineserverprivatevirtualnetns/samephysicalhost/productionIPv4/newgamecopies/runtimebinarye9bb4766unchanged. Files-onlyservicehostmap10.77.0.1/S2C7seq52typedIPv4only/nochildTCPforward; rootTCPguardproxy3858→23858retained. Actualnativeconnectargs/caller8frames/first3directservicepeersA.2/B.3/channelproxy.1 plus2nativecycles/item/4peerwindows/8same4oldguard/reset/Ready/noStart3. UDPcaptureinitomittedwithforwardblock: noPCAP/wirejoin inthisrun; nativepeerproofseparate. Notisolatedhostname/cachecause/fullauth/schema/fullcodec/physicalLAN/NAT/Internet/fullmatch/K6a/gates/CP137complexUI/sharedgeometry/fullinventory. SourcebinaryDBpackunchanged/frozenuntilcleanupseal."
+    },
+    {
+      "check": "2080source/lifecycle/rawjoins/1888sealedraw/2nativeendingresetReady",
+      "result": "pass",
+      "evidence": [
+        "RUN-00010",
+        "RUN-01959"
+      ],
+      "limits": "NoUDPPCAP/wirejoin inthisrun; nativeeffects/sourcechecksseparated."
+    },
+    {
+      "check": "575nativepeer4windows/70pickup/87guard/25Ready;copiedmodels/manualrender",
+      "result": "pass",
+      "evidence": [
+        "RUN-01919",
+        "RUN-01957",
+        "RUN-01938",
+        "RUN-00004",
+        "RUN-01920",
+        "RUN-01954",
+        "RUN-01963",
+        "RUN-00001",
+        "RUN-00024",
+        "RUN-01923",
+        "RUN-02074"
+      ],
+      "limits": "ModifiedWine/twoactualCA+wineserverprivatevirtualnetns/samephysicalhost/productionIPv4/newgamecopies/runtimebinarye9bb4766unchanged. Files-onlyservicehostmap10.77.0.1/S2C7seq52typedIPv4only/nochildTCPforward; rootTCPguardproxy3858→23858retained. Actualnativeconnectargs/caller8frames/first3directservicepeersA.2/B.3/channelproxy.1 plus2nativecycles/item/4peerwindows/8same4oldguard/reset/Ready/noStart3. UDPcaptureinitomittedwithforwardblock: noPCAP/wirejoin inthisrun; nativepeerproofseparate. Notisolatedhostname/cachecause/fullauth/schema/fullcodec/physicalLAN/NAT/Internet/fullmatch/K6a/gates/CP137complexUI/sharedgeometry/fullinventory. SourcebinaryDBpackunchanged/frozenuntilcleanupseal."
+    },
+    {
+      "check": "CurrentrunUDPPCAP/sourcewireattribution",
+      "result": "not_run",
+      "evidence": [
+        "RUN-00005"
+      ],
+      "limits": "Compositionremovedcaptureinitializer; notrunnoPCAP, notclaimnetworkfailure. Frozenrunnotedited, restorebeforefollowup."
+    },
+    {
+      "check": "Docs/catalog/issues/artifacts;231unchangedproductiontestsreused",
+      "result": "pass",
+      "evidence": [
+        "RUN-01917",
+        "RUN-01940",
+        "RUN-00008",
+        "RUN-02079"
+      ],
+      "limits": "Mechanicalconsistencyonly; nosemanticgateclosure."
+    }
+  ],
+  "evidence": [],
+  "evidence_manifests": [
+    {
+      "path": "docs/evidence/checkpoints/evidence/CP146-direct-tcp-endpoints.json",
+      "bytes": 527723,
+      "sha256": "cabffbe12f2fe65f953b9ddb4d88b8a8c1d5e974be3feea670b791bf45e349f8",
+      "count": 2079
+    }
+  ],
+  "delta": {
+    "added": [
+      "DirectprivateTCPbootstrapWCPauthchannel/native2cyclesverifiedwithoutchildforward/newgamecopiesbinaryunchanged."
+    ],
+    "corrected": [
+      "ExplicitcaptureinitomissiondeclarednoPCAPscope; nofalsewireproof orcrossrunaggregation.",
+      "Multisvrcacheoriginaladdressesnotselectedendpointproof; combinedhostmap/typed7change notisolatedcause."
+    ],
+    "superseded": [
+      "NEXT-DIRECT-TCP-ENDPOINT-CHAIN closedscopednativeproof; NEXT-SERVICE-CHANNEL-ENDPOINT active."
+    ]
+  },
+  "blockers": [
+    "ExplicitproductionchannelendpointIPv4/portconfig/defaultfixturepreserve/nativebaseprofilefollowupwithrestoredcapture notimplemented.",
+    "GeneralEOF/accountresume/halfclose/fullinventory/authauthority/physicalLAN/NAT/Internet/K6a/gates/CP137complexUI/sharedgeometry remain; near30sbarriersnotstabilityguarantee."
+  ],
+  "next_steps": [
+    {
+      "id": "NEXT-DIRECT-TCP-ENDPOINT-CHAIN",
+      "task": "KRE-005b",
+      "state": "closed",
+      "action": "Mappedactualnativeconnectcallers/privateendpoints; nochildforward/native2cycles/Readyverified. NoUDPPCAPscopeexplicit.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-SERVICE-CHANNEL-ENDPOINT",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "PLAN API/CLIexplicitS2C7IPv4/port/defaultfixturebyteidentity/variantprelistenvalidation/regressions; baseprofile/directTCP/rootproxy/native2cycles/ReadywithrestoredUDPcapturebeforelaunch/noStart3.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    }
+  ],
+  "docs_sync": [
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "CP146directTCPnativechain/nochildforward/scope/captureomission/newserviceconfiggap/issue14 syncedbeforecomplete."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "CP146directTCPnativechain/nochildforward/scope/captureomission/newserviceconfiggap/issue14 syncedbeforecomplete."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "updated",
+      "reason": "CP146directTCPnativechain/nochildforward/scope/captureomission/newserviceconfiggap/issue14 syncedbeforecomplete."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "updated",
+      "reason": "CP146directTCPnativechain/nochildforward/scope/captureomission/newserviceconfiggap/issue14 syncedbeforecomplete."
+    },
+    {
+      "path": "docs/features.json",
+      "state": "updated",
+      "reason": "CP146directTCPnativechain/nochildforward/scope/captureomission/newserviceconfiggap/issue14 syncedbeforecomplete."
+    },
+    {
+      "path": "docs/COVERAGE.md",
+      "state": "updated",
+      "reason": "CP146directTCPnativechain/nochildforward/scope/captureomission/newserviceconfiggap/issue14 syncedbeforecomplete."
+    },
+    {
+      "path": "docs/evidence/peer-endpoints/README.md",
+      "state": "updated",
+      "reason": "CP146directTCPnativechain/nochildforward/scope/captureomission/newserviceconfiggap/issue14 syncedbeforecomplete."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/review.json",
+      "state": "updated",
+      "reason": "CP146directTCPnativechain/nochildforward/scope/captureomission/newserviceconfiggap/issue14 syncedbeforecomplete."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
+      "state": "updated",
+      "reason": "CP146directTCPnativechain/nochildforward/scope/captureomission/newserviceconfiggap/issue14 syncedbeforecomplete."
+    }
+  ]
+}

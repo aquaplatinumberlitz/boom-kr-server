@@ -1,0 +1,3148 @@
+{
+  "schema": "kre-evidence-manifest-v1",
+  "evidence": [
+    {
+      "id": "RE-0001",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/append_cp147.py",
+      "bytes": 9710,
+      "sha256": "71020d465ecff65537916ecbbc811da353ff9c61b5b682c604eae7143c0e1f3b"
+    },
+    {
+      "id": "RE-0002",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/balance-emulation.json",
+      "bytes": 4395,
+      "sha256": "f836f4b8229caaa4188944d0bd3133b1612261d6e5e494214701e1dfb63d9724"
+    },
+    {
+      "id": "RE-0003",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/checks/artifacts.txt",
+      "bytes": 253,
+      "sha256": "649c6624aa6d317dfc1db5e16fea683cfbc9d9cf4dd3df11c0d70e57409054a0"
+    },
+    {
+      "id": "RE-0004",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/checks/docs.txt",
+      "bytes": 175,
+      "sha256": "9051ea974e8bfaef32ade6a33135104518c3783419ae7b75cfa9a0df4835ef8b"
+    },
+    {
+      "id": "RE-0005",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/checks/issues.txt",
+      "bytes": 130,
+      "sha256": "2e4cc1ff55fc3cf218beb00e90a15f4adfbceb49a27616ed462443a3f777b5de"
+    },
+    {
+      "id": "RE-0006",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/config241.bin",
+      "bytes": 69,
+      "sha256": "f5f8daefcbe7071aef852946961dc60e4f2583828a6359064c7505afd8cc7d43"
+    },
+    {
+      "id": "RE-0007",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/cp147-snapshot/README.md",
+      "bytes": 5357,
+      "sha256": "e9a7e9d2b7eefc42153122f7226b80e32e736cbc59f5328c5257fbe4b0b2db5d"
+    },
+    {
+      "id": "RE-0008",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/cp147-snapshot/docs/COVERAGE.md",
+      "bytes": 135104,
+      "sha256": "7411d3335571c212f4e473e80dca0d86c0ea3ee7843f01dc4d38c479d2e32a77"
+    },
+    {
+      "id": "RE-0009",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/cp147-snapshot/docs/PLAN.md",
+      "bytes": 33869,
+      "sha256": "58aa0b40f410fce2acadbcfadfd9182d95e8e24049b7f19e04fa062a6767d107"
+    },
+    {
+      "id": "RE-0010",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/cp147-snapshot/docs/PROTOCOL.md",
+      "bytes": 436641,
+      "sha256": "dd4458e4997a312047a0df5468892621764e2121a788215ff4bf9729c3b1bd98"
+    },
+    {
+      "id": "RE-0011",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/cp147-snapshot/docs/RESEARCH.md",
+      "bytes": 30701,
+      "sha256": "dfedd88aae1c891ad508077d356ea3acb357f9e2f277cee3fd60def7d69fe7cd"
+    },
+    {
+      "id": "RE-0012",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/cp147-snapshot/docs/evidence/eight-player/README.md",
+      "bytes": 5367,
+      "sha256": "d982b66c2bc63f4eb0d6980e417401da1d2c0276d9ac4af96e82f396d2a8953f"
+    },
+    {
+      "id": "RE-0013",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/cp147-snapshot/docs/evidence/issue-reconciliation/github-snapshot.json",
+      "bytes": 194442,
+      "sha256": "b75d080a8faa100be74bd934db21848e52556b65f9f3fb6591d5dd250937c47a"
+    },
+    {
+      "id": "RE-0014",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/cp147-snapshot/docs/evidence/issue-reconciliation/review.json",
+      "bytes": 22906,
+      "sha256": "02cafda81750ba4bf5b3197042132bd7f67ceff01284c76ee47026dec8b19153"
+    },
+    {
+      "id": "RE-0015",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/cp147-snapshot/docs/features.json",
+      "bytes": 141423,
+      "sha256": "0537891bd9a59d23e6695bbf59afdb2d1f8d30c1e7163f705047b0ed7ceb2843"
+    },
+    {
+      "id": "RE-0016",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/four-four/CALog-before.txt",
+      "bytes": 4422,
+      "sha256": "89867f454a703bfc90f8e053812328d2396d12429a9b00283fe17233c38dfb08"
+    },
+    {
+      "id": "RE-0017",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/four-four/CALog-run.txt",
+      "bytes": 1755,
+      "sha256": "1d288cd70123692d027f9822e39f3dc60fb88a0979a03c25eed2b624261dbca9"
+    },
+    {
+      "id": "RE-0018",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/four-four/client.log",
+      "bytes": 69766,
+      "sha256": "9e208d9a1efe28911a792de894eb79abb75c7280630702a7dc3d6798537d5797"
+    },
+    {
+      "id": "RE-0019",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/four-four/debug-commands.txt",
+      "bytes": 10608,
+      "sha256": "5599173055dd061c9265a046b86c4d8c3bba78580cecc3d531f0e7fe2b1a539b"
+    },
+    {
+      "id": "RE-0020",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/four-four/hosts",
+      "bytes": 121,
+      "sha256": "32a007c62d2887ae9f8d3c30d1ff7cb3902e6e1e0c75c5a978ee556cc8ea71f8"
+    },
+    {
+      "id": "RE-0021",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/four-four/nsswitch.conf",
+      "bytes": 307,
+      "sha256": "c18e474cd61df8648ee02ac7a9c76b8d6c7782d8b212f925e6980f20af5cc838"
+    },
+    {
+      "id": "RE-0022",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/four-four/processes-00.txt",
+      "bytes": 3778,
+      "sha256": "eab39cb6c92a5b25fa15f6e8bc63aa3baa7235a9b20dc802897a4fbfa21bede2"
+    },
+    {
+      "id": "RE-0023",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/four-four/processes-01.txt",
+      "bytes": 4494,
+      "sha256": "158e4a739e456cc02e649bf810edf5d1e87d0d7a0b67c2ecc2223675b65f34ca"
+    },
+    {
+      "id": "RE-0024",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/four-four/processes-02.txt",
+      "bytes": 4494,
+      "sha256": "5cc4d5e0d519cd51cf68e41e9330c5136089ab05da91db940367454bcdc6766a"
+    },
+    {
+      "id": "RE-0025",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/four-four/processes-03.txt",
+      "bytes": 4494,
+      "sha256": "81e49fdae52a5df33d91708b67e1a6daaa8e6b65071c8a484b368f81ffcf2092"
+    },
+    {
+      "id": "RE-0026",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/four-four/processes-04.txt",
+      "bytes": 4494,
+      "sha256": "aaaed208d2ff872fc71b55979797c38623d5c487b05475f7523af3757c3abc71"
+    },
+    {
+      "id": "RE-0027",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/four-four/processes-05.txt",
+      "bytes": 4494,
+      "sha256": "66ac0e0a296832160ba44bee7a5284785a4ac18c51cb5a19e0ab3f52fc3f52fb"
+    },
+    {
+      "id": "RE-0028",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/four-four/processes-06.txt",
+      "bytes": 4494,
+      "sha256": "08ed64a0d8392a849f4c294cf7c99ecf5c1f53cb2e589a9a736fb45d7e16ba57"
+    },
+    {
+      "id": "RE-0029",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/four-four/processes-07.txt",
+      "bytes": 4494,
+      "sha256": "f77359b66167cee262edf3498ca9eea579bcdcbe88ca3ee1d72dccce6e14c14b"
+    },
+    {
+      "id": "RE-0030",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/four-four/processes-08.txt",
+      "bytes": 4494,
+      "sha256": "8b7efc778d5c9507598f2ce4f785062bb9422e9815faa9cf89213cd628f0802d"
+    },
+    {
+      "id": "RE-0031",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/four-four/processes-09.txt",
+      "bytes": 4494,
+      "sha256": "9135f4ab93a3e4d80736965171582affe05f21bec0031f1f67513648c2a25b08"
+    },
+    {
+      "id": "RE-0032",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/four-four/processes-10.txt",
+      "bytes": 4494,
+      "sha256": "a0a6389d639e0612349ac00f1fa89e8eafce5c04323ea29e56c1fed5474fb317"
+    },
+    {
+      "id": "RE-0033",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/four-four/processes-11.txt",
+      "bytes": 4494,
+      "sha256": "16bc30c6af368cf3c13bc85d7284a21b1296c8da26f2a0dae027b338699b61f8"
+    },
+    {
+      "id": "RE-0034",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/four-four/processes-12.txt",
+      "bytes": 4494,
+      "sha256": "3fe9bdea660fb2628b49542af7af68587953e48b4fd6e3bea513e14460868e30"
+    },
+    {
+      "id": "RE-0035",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/four-four/processes-13.txt",
+      "bytes": 4494,
+      "sha256": "129aac2a64f3e1024c015c8df1623e33f79d5a70245504b6d3f3d77a444d8864"
+    },
+    {
+      "id": "RE-0036",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/four-four/processes-14.txt",
+      "bytes": 4494,
+      "sha256": "387f91d1e1c57cbb5eada0733d0478b0503316edebb7662f2d3e6f3b1c5e5a80"
+    },
+    {
+      "id": "RE-0037",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/four-four/processes-15.txt",
+      "bytes": 4494,
+      "sha256": "be0d087b4a592a24abe10718bb732e4652425143eee9b756df9de6ab1db93e60"
+    },
+    {
+      "id": "RE-0038",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/four-four/processes-16.txt",
+      "bytes": 4494,
+      "sha256": "b63b5e65d0047296f7cb8f2bc7035222f2835fb2319394d8841dff6549480816"
+    },
+    {
+      "id": "RE-0039",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/four-four/processes-17.txt",
+      "bytes": 4494,
+      "sha256": "6eac2f0120d08e4545084fbc049c7d0ba69907ceece09de23a1894842fca6728"
+    },
+    {
+      "id": "RE-0040",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/four-four/processes-18.txt",
+      "bytes": 4494,
+      "sha256": "d86056b0506c1ec4624a8cc732e1a2377218d5caf4943162017ff8ec59dff870"
+    },
+    {
+      "id": "RE-0041",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/four-four/processes-19.txt",
+      "bytes": 4494,
+      "sha256": "47eecbbf7bf157c0572eca80bde60fced4261ffc7244e7062b483af2114da6f3"
+    },
+    {
+      "id": "RE-0042",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/four-four/processes-20.txt",
+      "bytes": 4494,
+      "sha256": "67be34324af812f47eadb7a3c0b482460598fdc7f23a45a3433c3aadc81a620d"
+    },
+    {
+      "id": "RE-0043",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/four-four/run.json",
+      "bytes": 20460,
+      "sha256": "47f60f0c5951c8f44126a73eeb5f09a74702e0e777f2ef9ea5cfb33ea39b53ed"
+    },
+    {
+      "id": "RE-0044",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/four-four/screen-00.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "RE-0045",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/four-four/screen-01.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "RE-0046",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/four-four/screen-02.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "RE-0047",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/four-four/screen-03.png",
+      "bytes": 19847,
+      "sha256": "2178ceb11e92e5f95694ca8a855de0750fb1a93dfe6e02a13c1856b080d16654"
+    },
+    {
+      "id": "RE-0048",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/four-four/screen-04.png",
+      "bytes": 13437,
+      "sha256": "e47c2919c72588bea5f3e5b8ebda4d9823a66e8864f6b86ed6f85d9e19598218"
+    },
+    {
+      "id": "RE-0049",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/four-four/screen-05.png",
+      "bytes": 191427,
+      "sha256": "637aedb21cd25df5263d99401e7a838add696298b7e5033e1e973fae6c801e8b"
+    },
+    {
+      "id": "RE-0050",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/four-four/screen-06.png",
+      "bytes": 197296,
+      "sha256": "84b3257525995102be49e120d9dfcc8c3045911c8072e2de23c6b8d7e3abf3d6"
+    },
+    {
+      "id": "RE-0051",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/four-four/screen-07.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "RE-0052",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/four-four/screen-08.png",
+      "bytes": 149017,
+      "sha256": "9696e8050efe046e28a0ee3979afcad753fd7bf23de8b4370c67c08041b4251b"
+    },
+    {
+      "id": "RE-0053",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/four-four/screen-09.png",
+      "bytes": 214051,
+      "sha256": "464de9f36f16bca9e51bb33b9cee4a3c1b47ba54ebb0487d7169eb965bb8fcc0"
+    },
+    {
+      "id": "RE-0054",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/four-four/screen-10.png",
+      "bytes": 175474,
+      "sha256": "9af2586f77c38c285d04acd8781818c91d56747528edb1b7be2dd7163e6da046"
+    },
+    {
+      "id": "RE-0055",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/four-four/screen-11.png",
+      "bytes": 175913,
+      "sha256": "eb1a47864d19cdc23bbcb21d2778de3f0e9e39e55fdbdfdd6aaa5275bdf5f524"
+    },
+    {
+      "id": "RE-0056",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/four-four/screen-12.png",
+      "bytes": 189822,
+      "sha256": "a951527b0f9125302a57973c65ca25b45f8f76a8571e157812f2f7b6d35014b5"
+    },
+    {
+      "id": "RE-0057",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/four-four/screen-13.png",
+      "bytes": 189543,
+      "sha256": "fa9e9898b698ace421453f8f8398463c7f8279dc9961fdce6466caf0d6a99b0d"
+    },
+    {
+      "id": "RE-0058",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/four-four/screen-14.png",
+      "bytes": 168068,
+      "sha256": "4ebf4cb4a042eee09b3d71c4ef62e52228807b275cbcc92f0aa1318f74abab73"
+    },
+    {
+      "id": "RE-0059",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/four-four/screen-15.png",
+      "bytes": 167583,
+      "sha256": "d8366a84ca1d2e7a2a1c662286971745c4ba852fe2da7ca1710321c532531b41"
+    },
+    {
+      "id": "RE-0060",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/four-four/screen-16.png",
+      "bytes": 168339,
+      "sha256": "c499ae55121d90e9c6a27683cdc51021743607bb855ed0bd0701dc7ed1d19f90"
+    },
+    {
+      "id": "RE-0061",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/four-four/screen-17.png",
+      "bytes": 168389,
+      "sha256": "0592d86437e663e6acc462703e89aee5df38cd12b927ab4f9a0cb04a23e71387"
+    },
+    {
+      "id": "RE-0062",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/four-four/screen-18.png",
+      "bytes": 166737,
+      "sha256": "4a77d3b31d98471ae7a673ca37bc2b0ea89d1c396376dac3d0a72be40a76b395"
+    },
+    {
+      "id": "RE-0063",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/four-four/screen-19.png",
+      "bytes": 167360,
+      "sha256": "0f8ffd6c5534c481e28a37f9ecabcb1291e9410b71c2080c32711c8cd1ec79f4"
+    },
+    {
+      "id": "RE-0064",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/four-four/screen-20.png",
+      "bytes": 167381,
+      "sha256": "3b0de4676afa813142569b485051ad8e311f5b24742c3ede99da2290eb7ed790"
+    },
+    {
+      "id": "RE-0065",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/four-four/ui-after-confirm-1.png",
+      "bytes": 148765,
+      "sha256": "63da6c0a0a04ff81c21b9d5a19e3e2f2f731a8024bb6a7c1a032a56efe35493c"
+    },
+    {
+      "id": "RE-0066",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/four-four/ui-before-confirm-1.png",
+      "bytes": 149125,
+      "sha256": "26a3c6e834bc5ef69ad082858a530144910ef2559edf6398265195b155af8119"
+    },
+    {
+      "id": "RE-0067",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/four-four/windows-00.txt",
+      "bytes": 166,
+      "sha256": "28ae29836d791dcd3302b447a52a8f0fa3f9a192abbc33a27751e23d7ebe0d43"
+    },
+    {
+      "id": "RE-0068",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/four-four/windows-01.txt",
+      "bytes": 872,
+      "sha256": "89b108c8ab5e0cd64339cc2b6fe0f0dffcc9e02084d7dc3435adcc9dc270c8ae"
+    },
+    {
+      "id": "RE-0069",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/four-four/windows-02.txt",
+      "bytes": 872,
+      "sha256": "89b108c8ab5e0cd64339cc2b6fe0f0dffcc9e02084d7dc3435adcc9dc270c8ae"
+    },
+    {
+      "id": "RE-0070",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/four-four/windows-03.txt",
+      "bytes": 1311,
+      "sha256": "272470e4eb4025dd22b8188441f5b2debfdfd7457dd2a31e5f55d6f0b7a4c05d"
+    },
+    {
+      "id": "RE-0071",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/four-four/windows-04.txt",
+      "bytes": 1311,
+      "sha256": "272470e4eb4025dd22b8188441f5b2debfdfd7457dd2a31e5f55d6f0b7a4c05d"
+    },
+    {
+      "id": "RE-0072",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/four-four/windows-05.txt",
+      "bytes": 1311,
+      "sha256": "272470e4eb4025dd22b8188441f5b2debfdfd7457dd2a31e5f55d6f0b7a4c05d"
+    },
+    {
+      "id": "RE-0073",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/four-four/windows-06.txt",
+      "bytes": 1311,
+      "sha256": "272470e4eb4025dd22b8188441f5b2debfdfd7457dd2a31e5f55d6f0b7a4c05d"
+    },
+    {
+      "id": "RE-0074",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/four-four/windows-07.txt",
+      "bytes": 1358,
+      "sha256": "248bddfaaab7ad0fd77b1f6a71f7f0d2554027c90c1db6f99935a4c23fe7f794"
+    },
+    {
+      "id": "RE-0075",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/four-four/windows-08.txt",
+      "bytes": 1358,
+      "sha256": "248bddfaaab7ad0fd77b1f6a71f7f0d2554027c90c1db6f99935a4c23fe7f794"
+    },
+    {
+      "id": "RE-0076",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/four-four/windows-09.txt",
+      "bytes": 1358,
+      "sha256": "248bddfaaab7ad0fd77b1f6a71f7f0d2554027c90c1db6f99935a4c23fe7f794"
+    },
+    {
+      "id": "RE-0077",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/four-four/windows-10.txt",
+      "bytes": 1358,
+      "sha256": "248bddfaaab7ad0fd77b1f6a71f7f0d2554027c90c1db6f99935a4c23fe7f794"
+    },
+    {
+      "id": "RE-0078",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/four-four/windows-11.txt",
+      "bytes": 1358,
+      "sha256": "248bddfaaab7ad0fd77b1f6a71f7f0d2554027c90c1db6f99935a4c23fe7f794"
+    },
+    {
+      "id": "RE-0079",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/four-four/windows-12.txt",
+      "bytes": 1358,
+      "sha256": "248bddfaaab7ad0fd77b1f6a71f7f0d2554027c90c1db6f99935a4c23fe7f794"
+    },
+    {
+      "id": "RE-0080",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/four-four/windows-13.txt",
+      "bytes": 1358,
+      "sha256": "248bddfaaab7ad0fd77b1f6a71f7f0d2554027c90c1db6f99935a4c23fe7f794"
+    },
+    {
+      "id": "RE-0081",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/four-four/windows-14.txt",
+      "bytes": 1358,
+      "sha256": "248bddfaaab7ad0fd77b1f6a71f7f0d2554027c90c1db6f99935a4c23fe7f794"
+    },
+    {
+      "id": "RE-0082",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/four-four/windows-15.txt",
+      "bytes": 1358,
+      "sha256": "248bddfaaab7ad0fd77b1f6a71f7f0d2554027c90c1db6f99935a4c23fe7f794"
+    },
+    {
+      "id": "RE-0083",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/four-four/windows-16.txt",
+      "bytes": 1358,
+      "sha256": "248bddfaaab7ad0fd77b1f6a71f7f0d2554027c90c1db6f99935a4c23fe7f794"
+    },
+    {
+      "id": "RE-0084",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/four-four/windows-17.txt",
+      "bytes": 1358,
+      "sha256": "248bddfaaab7ad0fd77b1f6a71f7f0d2554027c90c1db6f99935a4c23fe7f794"
+    },
+    {
+      "id": "RE-0085",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/four-four/windows-18.txt",
+      "bytes": 1358,
+      "sha256": "248bddfaaab7ad0fd77b1f6a71f7f0d2554027c90c1db6f99935a4c23fe7f794"
+    },
+    {
+      "id": "RE-0086",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/four-four/windows-19.txt",
+      "bytes": 1358,
+      "sha256": "248bddfaaab7ad0fd77b1f6a71f7f0d2554027c90c1db6f99935a4c23fe7f794"
+    },
+    {
+      "id": "RE-0087",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/four-four/windows-20.txt",
+      "bytes": 1358,
+      "sha256": "248bddfaaab7ad0fd77b1f6a71f7f0d2554027c90c1db6f99935a4c23fe7f794"
+    },
+    {
+      "id": "RE-0088",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/four-four/wineboot.log",
+      "bytes": 136,
+      "sha256": "4b543cac2c2937ccf9e38a008c52aa32b08b2aa7f519597d2143c9af35421402"
+    },
+    {
+      "id": "RE-0089",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/four-four/xvfb.log",
+      "bytes": 2808,
+      "sha256": "46b8747df8a2fc8b6a469b2374ea3d0c6c786dc3dcf2a9be13d94ce76ed3a1a7"
+    },
+    {
+      "id": "RE-0090",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/four-four-oracle.json",
+      "bytes": 50298,
+      "sha256": "aec2d7f4549a8eec51424cbed0ea5d73e2854ae5a1925c42f42defdae6b1b377"
+    },
+    {
+      "id": "RE-0091",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/four-four-replay.txt",
+      "bytes": 857,
+      "sha256": "269d753fa9be7b6d421d0ae0c0b731b149888128ee080c09fae3af5a35bf4968"
+    },
+    {
+      "id": "RE-0092",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/guest-batch.bin",
+      "bytes": 1638,
+      "sha256": "8de084b87197be003807d2131c03b682e52cf320da0908cafa0c80d59e83acde"
+    },
+    {
+      "id": "RE-0093",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/issue14-before.json",
+      "bytes": 4705,
+      "sha256": "bd699ef78405e8d2d5c73eccc2d99359e6bcff2ba6060329e38d6dca6509598c"
+    },
+    {
+      "id": "RE-0094",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/issue14-body.md",
+      "bytes": 5541,
+      "sha256": "7f6ec39858e670f44f69c0b5d653c0e2fa6d2c96b70b180e95ff2798e6a82cb6"
+    },
+    {
+      "id": "RE-0095",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/launcher-exit.json",
+      "bytes": 18,
+      "sha256": "df4d721d233a2334088d2d2e0110346ae9e509ff46bf0b379fbcfa85c715af4d"
+    },
+    {
+      "id": "RE-0096",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/launcher-pid.txt",
+      "bytes": 8,
+      "sha256": "a2add2f9d9a14e3cf03592e4f0f6af95d1588c56cdb153a025411726a44b2da2"
+    },
+    {
+      "id": "RE-0097",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/launcher.log",
+      "bytes": 16654,
+      "sha256": "eeff7d5be3251a8c26c602e03b1b07bb4f003c28ceb50e16a8464f4c2274789c"
+    },
+    {
+      "id": "RE-0098",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/map117.bin",
+      "bytes": 46,
+      "sha256": "9f333b0470bd5d4e525d3bde420c450a13bfce011ef4a070de55dea4a794a47a"
+    },
+    {
+      "id": "RE-0099",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/map238.bin",
+      "bytes": 117,
+      "sha256": "959aaae9ee8ac8131029d361d1b2305d6a07a418f882ee980da538b8663c183f"
+    },
+    {
+      "id": "RE-0100",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/player0-fixture.json",
+      "bytes": 6841,
+      "sha256": "dc9feba9c94f0326074d376d28858bd44263ebdd6a33faef3566e48a421afc1c"
+    },
+    {
+      "id": "RE-0101",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/player0.bin",
+      "bytes": 234,
+      "sha256": "bbccccfed44a14bbd87ee9c1e15a305ead50d79d83a351a3c6549deb92325935"
+    },
+    {
+      "id": "RE-0102",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/player1-fixture.json",
+      "bytes": 6841,
+      "sha256": "b6847f6eca2e9a873d4355d7c55ed12559b6d7cb2682db9c751b41e4f44dada4"
+    },
+    {
+      "id": "RE-0103",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/player1.bin",
+      "bytes": 234,
+      "sha256": "51301e78de619b19652805dbb7da15576d15eff3b6caedae9e534f504c00afb7"
+    },
+    {
+      "id": "RE-0104",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/player2-fixture.json",
+      "bytes": 6841,
+      "sha256": "026b7bad269fb1d7a3d9a39c2610ec10df749a781d7118631703df3f7ba57ee9"
+    },
+    {
+      "id": "RE-0105",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/player2.bin",
+      "bytes": 234,
+      "sha256": "8a8ebedf6d152ca2653f35f4798f693e3e99069c287a8261fb49bab0b3269301"
+    },
+    {
+      "id": "RE-0106",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/player3-fixture.json",
+      "bytes": 6841,
+      "sha256": "2af075a97e24b72419eabf2a1bff8e0cea6d23da355b8788a6e3effdf2e5c166"
+    },
+    {
+      "id": "RE-0107",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/player3.bin",
+      "bytes": 234,
+      "sha256": "478806cd16c686122425778ed133a1175b3b8badf8d7ad35d1c0123483b49ff4"
+    },
+    {
+      "id": "RE-0108",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/player4-fixture.json",
+      "bytes": 6841,
+      "sha256": "af7214660b489f4b175b07b239dfda67dad36c09fff2fb517541838533b54ead"
+    },
+    {
+      "id": "RE-0109",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/player4.bin",
+      "bytes": 234,
+      "sha256": "5bb000412a74b741b89e7611117dd5ba2a4997eae5f42fa8a2af9b1c3bfca57b"
+    },
+    {
+      "id": "RE-0110",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/player5-fixture.json",
+      "bytes": 6841,
+      "sha256": "dca94907dcc60d74874baca80214153877532140201feaf63c17328ab2490a2b"
+    },
+    {
+      "id": "RE-0111",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/player5.bin",
+      "bytes": 234,
+      "sha256": "6270c90bc01350b8c05ce8acaeb25b4c75c1a37137f2e81414354f4c3afba9b8"
+    },
+    {
+      "id": "RE-0112",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/player6-fixture.json",
+      "bytes": 6841,
+      "sha256": "588b191ce46d1fe87c8b938fe28a1617ed1bf416572dbd94a2b75516e801570f"
+    },
+    {
+      "id": "RE-0113",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/player6.bin",
+      "bytes": 234,
+      "sha256": "94e05d74d97701ba2d43e4f671db513e9b97d7e0a97a3038e8ee438f6f306c26"
+    },
+    {
+      "id": "RE-0114",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/player7-fixture.json",
+      "bytes": 6841,
+      "sha256": "63ac5c3d25f5dbccea39565ba263ae21b15436e156032de6a2bc18f008a7abac"
+    },
+    {
+      "id": "RE-0115",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/player7.bin",
+      "bytes": 234,
+      "sha256": "9ef6e86da858274957c9f4641939b61c39a7c7938bf749ff577ce88f40744659"
+    },
+    {
+      "id": "RE-0116",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/prepare-variants.log",
+      "bytes": 985,
+      "sha256": "90636b08ed1a672343a4cab87d07691482d8e37b048a24f64dbe8ecb4e38627f"
+    },
+    {
+      "id": "RE-0117",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/prepare.py",
+      "bytes": 5599,
+      "sha256": "854531ea67082df39b971efde66d12a7579e76ec4be450754afda85f3b807694"
+    },
+    {
+      "id": "RE-0118",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/prepare_variants.py",
+      "bytes": 2626,
+      "sha256": "ae0b626d1ec9e254c052775c5ce65701b0aaa9987f2fc3a313f2ba6bee6ad63f"
+    },
+    {
+      "id": "RE-0119",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/prepared.json",
+      "bytes": 2056,
+      "sha256": "8d576b4d102ba7aea006ab7ee2ee76c49faf795b2a759f2151750b105c484a25"
+    },
+    {
+      "id": "RE-0120",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/raw-seal.json",
+      "bytes": 60260,
+      "sha256": "478c342e6ba4a2d52bf947dcc73d9e376c723211a1d67961542145f7fd86d490"
+    },
+    {
+      "id": "RE-0121",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/rea-timeout.json",
+      "bytes": 280,
+      "sha256": "2be7b0d0363f8d1ab057e8f295d020c688927fe8aaee54c7575d1cc27312ea53"
+    },
+    {
+      "id": "RE-0122",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-four-four/guest-batch.bin",
+      "bytes": 1638,
+      "sha256": "6e802b442af5b6b9cf7babbcd011c8a8863ceacb569f40179cc56cfb388cadbb"
+    },
+    {
+      "id": "RE-0123",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-four-four/launcher-exit.json",
+      "bytes": 18,
+      "sha256": "df4d721d233a2334088d2d2e0110346ae9e509ff46bf0b379fbcfa85c715af4d"
+    },
+    {
+      "id": "RE-0124",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-four-four/launcher.log",
+      "bytes": 17126,
+      "sha256": "996e842dc608670afede8089a77d173bbbaca32d9ee8d3f34c5344a3192e82c3"
+    },
+    {
+      "id": "RE-0125",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-four-four/map117.bin",
+      "bytes": 46,
+      "sha256": "9f333b0470bd5d4e525d3bde420c450a13bfce011ef4a070de55dea4a794a47a"
+    },
+    {
+      "id": "RE-0126",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-four-four/map238.bin",
+      "bytes": 117,
+      "sha256": "959aaae9ee8ac8131029d361d1b2305d6a07a418f882ee980da538b8663c183f"
+    },
+    {
+      "id": "RE-0127",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-four-four/player0-fixture.json",
+      "bytes": 6841,
+      "sha256": "dc9feba9c94f0326074d376d28858bd44263ebdd6a33faef3566e48a421afc1c"
+    },
+    {
+      "id": "RE-0128",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-four-four/player0.bin",
+      "bytes": 234,
+      "sha256": "bbccccfed44a14bbd87ee9c1e15a305ead50d79d83a351a3c6549deb92325935"
+    },
+    {
+      "id": "RE-0129",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-four-four/player1-fixture.json",
+      "bytes": 6841,
+      "sha256": "2c8cfbc4859c49a2cfe0ad72e967f3d5dd4f730f28e4dfa0862d4a0d714703d2"
+    },
+    {
+      "id": "RE-0130",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-four-four/player1.bin",
+      "bytes": 234,
+      "sha256": "8307b85ad86726657ac6757ec9d65431a397dd5cd60a83847c5cd02a4e35f768"
+    },
+    {
+      "id": "RE-0131",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-four-four/player2-fixture.json",
+      "bytes": 6841,
+      "sha256": "7a99627ff84b0ee84403e40fd06805950a321a7e1819660e1149ece27ed0dcfa"
+    },
+    {
+      "id": "RE-0132",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-four-four/player2.bin",
+      "bytes": 234,
+      "sha256": "7be9582f405c9efa9c7772943a8cc00d37871ec450238975a4308c6ff52b861d"
+    },
+    {
+      "id": "RE-0133",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-four-four/player3-fixture.json",
+      "bytes": 6841,
+      "sha256": "8ebd193bbb1583b22a2a6b1ae7f1ba8e3c0de2802de9870d277c068e716d7f5a"
+    },
+    {
+      "id": "RE-0134",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-four-four/player3.bin",
+      "bytes": 234,
+      "sha256": "e115433e77c171269085a4218444204a19cc38df40c0cf1a6ff6b60db91ea3aa"
+    },
+    {
+      "id": "RE-0135",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-four-four/player4-fixture.json",
+      "bytes": 6841,
+      "sha256": "38512b9245684782290331f18faa9ef25c55ac803177af0a103958630f1f4e75"
+    },
+    {
+      "id": "RE-0136",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-four-four/player4.bin",
+      "bytes": 234,
+      "sha256": "00ddb2abdf1be1ce19319185b819c90e0c62b6880ada9f79a8260d2c6bab714c"
+    },
+    {
+      "id": "RE-0137",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-four-four/player5-fixture.json",
+      "bytes": 6841,
+      "sha256": "814e92f1188edb005fccfb1df8830ac5114b78a826338b9a8da81367b432ffc0"
+    },
+    {
+      "id": "RE-0138",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-four-four/player5.bin",
+      "bytes": 234,
+      "sha256": "338640c138f3f1b5fb4cf1214c04b0b83a0858e34d7d752866780d7957e5e9e5"
+    },
+    {
+      "id": "RE-0139",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-four-four/player6-fixture.json",
+      "bytes": 6841,
+      "sha256": "0874ef72a0cf15e3033b5211a84b4993338914f48a7324a479ef00dcc81ec911"
+    },
+    {
+      "id": "RE-0140",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-four-four/player6.bin",
+      "bytes": 234,
+      "sha256": "5454a124205912f12b66235dc60452161d0062b3f210f75217866cd6efd6c0c4"
+    },
+    {
+      "id": "RE-0141",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-four-four/player7-fixture.json",
+      "bytes": 6841,
+      "sha256": "92d80e06a4d4ec44a910476a6b4f55dc5b3d8e4f8f8c7315d914b326668f6917"
+    },
+    {
+      "id": "RE-0142",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-four-four/player7.bin",
+      "bytes": 234,
+      "sha256": "83f07c56af72cfb7ae53fdd5b273f22d64cc00d9f8cf7f8141f36c5ca0548ff4"
+    },
+    {
+      "id": "RE-0143",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-four-four/recipe.json",
+      "bytes": 1045,
+      "sha256": "2659b2d0ec02a42b640f1be561f578a95942e1c61ad78a3c1560e6e989ccaf50"
+    },
+    {
+      "id": "RE-0144",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-four-four/replay.txt",
+      "bytes": 898,
+      "sha256": "a191cba7328c0ac2c3a7488410933dd53ea95c6bdfb80a74b31a79fc4a70844d"
+    },
+    {
+      "id": "RE-0145",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-four-four/roster.gdb",
+      "bytes": 10985,
+      "sha256": "1695045b316abdccdfffe45945afc57794933a8b1ee48c8dce69f4bd3ab738f1"
+    },
+    {
+      "id": "RE-0146",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-four-four/run/CALog-before.txt",
+      "bytes": 4422,
+      "sha256": "89867f454a703bfc90f8e053812328d2396d12429a9b00283fe17233c38dfb08"
+    },
+    {
+      "id": "RE-0147",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-four-four/run/CALog-run.txt",
+      "bytes": 1833,
+      "sha256": "815a72e04939bf6f4d548c386d14e2b6cc219830c6199ec2d0ad77c02e9cb13b"
+    },
+    {
+      "id": "RE-0148",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-four-four/run/client.log",
+      "bytes": 66282,
+      "sha256": "bd6a4d49edff8ba6dcc58c98d6902e4cd42ec1434555d1f0d5e7afb1f6f0002e"
+    },
+    {
+      "id": "RE-0149",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-four-four/run/debug-commands.txt",
+      "bytes": 10985,
+      "sha256": "1695045b316abdccdfffe45945afc57794933a8b1ee48c8dce69f4bd3ab738f1"
+    },
+    {
+      "id": "RE-0150",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-four-four/run/hosts",
+      "bytes": 121,
+      "sha256": "32a007c62d2887ae9f8d3c30d1ff7cb3902e6e1e0c75c5a978ee556cc8ea71f8"
+    },
+    {
+      "id": "RE-0151",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-four-four/run/nsswitch.conf",
+      "bytes": 307,
+      "sha256": "c18e474cd61df8648ee02ac7a9c76b8d6c7782d8b212f925e6980f20af5cc838"
+    },
+    {
+      "id": "RE-0152",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-four-four/run/processes-00.txt",
+      "bytes": 3851,
+      "sha256": "caf37b7264814c36e31610491deb64ee4fe9d09f829f40b0b80f180e0a7c8e4a"
+    },
+    {
+      "id": "RE-0153",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-four-four/run/processes-01.txt",
+      "bytes": 4605,
+      "sha256": "3919eb959005823a2cef3a3e01614bbbf91f61f4b239e3c0cd5b86d10cd0cfa1"
+    },
+    {
+      "id": "RE-0154",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-four-four/run/processes-02.txt",
+      "bytes": 4605,
+      "sha256": "f2371d59f2c754dd3bee4335eeab6c1d64bbab3d953ee6414a5abf8855402a06"
+    },
+    {
+      "id": "RE-0155",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-four-four/run/processes-03.txt",
+      "bytes": 4605,
+      "sha256": "bfd4ad6e94862464c63708163e5b0217ec24e4a4c534c698fdd9243c3c898c9b"
+    },
+    {
+      "id": "RE-0156",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-four-four/run/processes-04.txt",
+      "bytes": 4605,
+      "sha256": "76e0d24633ffb7c330122d6b65afb7ae8ef72d53bfdfb78a503a7721e9888468"
+    },
+    {
+      "id": "RE-0157",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-four-four/run/processes-05.txt",
+      "bytes": 4605,
+      "sha256": "1116e635819a7d32100c38a2c12c94176ca48ea2cf443a89939553fdcaf57e69"
+    },
+    {
+      "id": "RE-0158",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-four-four/run/processes-06.txt",
+      "bytes": 4605,
+      "sha256": "57b5287e92022b4417e29a061ce3804f6d808a6c6f54ca1e1bafe7e6a8fc7e2b"
+    },
+    {
+      "id": "RE-0159",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-four-four/run/processes-07.txt",
+      "bytes": 4605,
+      "sha256": "cd3007d1ed3f7e03f24eae72798ec4ea732d45a5b84623c8efd749a96090bc6d"
+    },
+    {
+      "id": "RE-0160",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-four-four/run/processes-08.txt",
+      "bytes": 4605,
+      "sha256": "6b801f570db1afa3b14233a58a68ca20fe3af9dd5848cbc3c6318a0e2def466d"
+    },
+    {
+      "id": "RE-0161",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-four-four/run/processes-09.txt",
+      "bytes": 4605,
+      "sha256": "89847ddd1a252560a373a2553f3f9516698a57629183a7449aab2861bd77ec27"
+    },
+    {
+      "id": "RE-0162",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-four-four/run/processes-10.txt",
+      "bytes": 4605,
+      "sha256": "4018141adc21495bd08e8168483d0af165bf0685bb556d837fa9ed41cb3b231f"
+    },
+    {
+      "id": "RE-0163",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-four-four/run/processes-11.txt",
+      "bytes": 4605,
+      "sha256": "34f0d7f61d872084760a543ee613caf5c967194a1d1395d215c63aa374a4ee5b"
+    },
+    {
+      "id": "RE-0164",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-four-four/run/processes-12.txt",
+      "bytes": 4605,
+      "sha256": "df4f56c3c7554c8f3e7c1b63f97779c8afa69a0963593764270f282f0128a52e"
+    },
+    {
+      "id": "RE-0165",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-four-four/run/processes-13.txt",
+      "bytes": 4605,
+      "sha256": "9597db13c7ddf379622b4dd20bb43040816763cb8a284b1fab2749938617dede"
+    },
+    {
+      "id": "RE-0166",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-four-four/run/processes-14.txt",
+      "bytes": 4605,
+      "sha256": "47ade1749f3c06c3304844844d1ede1024f6876f8aafb0756e9435697073b60e"
+    },
+    {
+      "id": "RE-0167",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-four-four/run/processes-15.txt",
+      "bytes": 4605,
+      "sha256": "017a49ef1f8e0219b0d1c18a7dfc893980d7716eb4f7f0d09a0d7c90173c9761"
+    },
+    {
+      "id": "RE-0168",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-four-four/run/processes-16.txt",
+      "bytes": 4605,
+      "sha256": "a656640af5618bc0220eddad5fa00b593dab9d5f21d66a312dcabdf8ee62bf1c"
+    },
+    {
+      "id": "RE-0169",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-four-four/run/processes-17.txt",
+      "bytes": 4605,
+      "sha256": "57278c36157ab55bd20c60df3d527d39398c4e26d14c7a848d36e58569ec959c"
+    },
+    {
+      "id": "RE-0170",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-four-four/run/processes-18.txt",
+      "bytes": 4605,
+      "sha256": "a1c78207057d5a059cf183d32a5b68d5589b9e642284e13c3ed9603a13de4cc6"
+    },
+    {
+      "id": "RE-0171",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-four-four/run/processes-19.txt",
+      "bytes": 4605,
+      "sha256": "240f1f5cced36ab797a9387a71ec81382f591ab2e09e20e4dd078d83e20c2db5"
+    },
+    {
+      "id": "RE-0172",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-four-four/run/processes-20.txt",
+      "bytes": 4605,
+      "sha256": "88b8ee1a1aa59302893d5616a638583ec4a5ef7f10701ca8cb25066a2325af97"
+    },
+    {
+      "id": "RE-0173",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-four-four/run/run.json",
+      "bytes": 21008,
+      "sha256": "f4d5a5cf10d144e6d8fcc173491d4925d6c5936782d362bbdd18e1a51b299a1f"
+    },
+    {
+      "id": "RE-0174",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-four-four/run/screen-00.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "RE-0175",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-four-four/run/screen-01.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "RE-0176",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-four-four/run/screen-02.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "RE-0177",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-four-four/run/screen-03.png",
+      "bytes": 19847,
+      "sha256": "2178ceb11e92e5f95694ca8a855de0750fb1a93dfe6e02a13c1856b080d16654"
+    },
+    {
+      "id": "RE-0178",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-four-four/run/screen-04.png",
+      "bytes": 13437,
+      "sha256": "e47c2919c72588bea5f3e5b8ebda4d9823a66e8864f6b86ed6f85d9e19598218"
+    },
+    {
+      "id": "RE-0179",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-four-four/run/screen-05.png",
+      "bytes": 191431,
+      "sha256": "35903a0d052b21d3a24bf93dc8a8f6b306cabbb746f12f3287dd1e5c2419a39a"
+    },
+    {
+      "id": "RE-0180",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-four-four/run/screen-06.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "RE-0181",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-four-four/run/screen-07.png",
+      "bytes": 148352,
+      "sha256": "ab3a4dab5d455703f279145da86d9832cb5146edf447223333ceeffedd354223"
+    },
+    {
+      "id": "RE-0182",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-four-four/run/screen-08.png",
+      "bytes": 149297,
+      "sha256": "22236f0525a9a48d288cbe3f37136089a63c43f68a1ddf32f58b829a82a660d9"
+    },
+    {
+      "id": "RE-0183",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-four-four/run/screen-09.png",
+      "bytes": 212910,
+      "sha256": "c39c935cc989d7486c6104ac2de1d035f18bc5ea9df367d3f557bac4905ac03d"
+    },
+    {
+      "id": "RE-0184",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-four-four/run/screen-10.png",
+      "bytes": 175209,
+      "sha256": "9c3d287cd5fc44cc6e8a9f247e9c2b1f05b006ccdcae85e34e0135ad3a13e113"
+    },
+    {
+      "id": "RE-0185",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-four-four/run/screen-11.png",
+      "bytes": 175475,
+      "sha256": "2b758785f51d9dfd22457621211ad7995e6e05417633988e6047f60fa8021b57"
+    },
+    {
+      "id": "RE-0186",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-four-four/run/screen-12.png",
+      "bytes": 180903,
+      "sha256": "236ae528116189513d238508327ff4e98d2cf9020a2d8a35b30404e2d909dcbb"
+    },
+    {
+      "id": "RE-0187",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-four-four/run/screen-13.png",
+      "bytes": 176084,
+      "sha256": "087f8f94055b90db5f6985e02b9ffc1f5e0a2a37ddd7aadd56e1f7c05d135839"
+    },
+    {
+      "id": "RE-0188",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-four-four/run/screen-14.png",
+      "bytes": 180843,
+      "sha256": "cbc234756b9f1f7df44b24af8bdc7c0857a78baf49e3959c16dd396416b83662"
+    },
+    {
+      "id": "RE-0189",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-four-four/run/screen-15.png",
+      "bytes": 180601,
+      "sha256": "f2296bdac2f3ce8af848cc64aeef6be54c8161c083536834857be4eb4eedb908"
+    },
+    {
+      "id": "RE-0190",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-four-four/run/screen-16.png",
+      "bytes": 181616,
+      "sha256": "da65a4aa56e0af2770b2b04abf0fa0468e5f5b34ca6102e4717171619b0f1931"
+    },
+    {
+      "id": "RE-0191",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-four-four/run/screen-17.png",
+      "bytes": 181307,
+      "sha256": "b5ed42830cbe031e553511f22caba7feeb5fce7795fd9a7aa02fd423a3226e6d"
+    },
+    {
+      "id": "RE-0192",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-four-four/run/screen-18.png",
+      "bytes": 180122,
+      "sha256": "d302a26a821c9db1ea2f01b71cb50246a8b67583a80d38b35403d312aed9d9ff"
+    },
+    {
+      "id": "RE-0193",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-four-four/run/screen-19.png",
+      "bytes": 180663,
+      "sha256": "7e4db3c44a708bdf5d1321aed79dd763e7ded843d7d1dc80e4610040b88f9e15"
+    },
+    {
+      "id": "RE-0194",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-four-four/run/screen-20.png",
+      "bytes": 180663,
+      "sha256": "7e4db3c44a708bdf5d1321aed79dd763e7ded843d7d1dc80e4610040b88f9e15"
+    },
+    {
+      "id": "RE-0195",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-four-four/run/ui-after-confirm-1.png",
+      "bytes": 148444,
+      "sha256": "d394a6164113587405261a2d148c317f1784c12b634930aa6c87fb3d0b9490d3"
+    },
+    {
+      "id": "RE-0196",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-four-four/run/ui-before-confirm-1.png",
+      "bytes": 149334,
+      "sha256": "66edca5829de7edbbd20b101f6121f7779e6c16b370d4ab9ae8209e7d00c6264"
+    },
+    {
+      "id": "RE-0197",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-four-four/run/windows-00.txt",
+      "bytes": 166,
+      "sha256": "28ae29836d791dcd3302b447a52a8f0fa3f9a192abbc33a27751e23d7ebe0d43"
+    },
+    {
+      "id": "RE-0198",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-four-four/run/windows-01.txt",
+      "bytes": 872,
+      "sha256": "c8c8cfe9c5b9bb2ccde16b4b959b165ed33d50824f3fbd29834c16b6f0e63586"
+    },
+    {
+      "id": "RE-0199",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-four-four/run/windows-02.txt",
+      "bytes": 872,
+      "sha256": "c8c8cfe9c5b9bb2ccde16b4b959b165ed33d50824f3fbd29834c16b6f0e63586"
+    },
+    {
+      "id": "RE-0200",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-four-four/run/windows-03.txt",
+      "bytes": 1311,
+      "sha256": "79f14ed4dc9ec340cb32d82ec0c77a2262196d736b814194ac0ee379704f762b"
+    },
+    {
+      "id": "RE-0201",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-four-four/run/windows-04.txt",
+      "bytes": 1311,
+      "sha256": "79f14ed4dc9ec340cb32d82ec0c77a2262196d736b814194ac0ee379704f762b"
+    },
+    {
+      "id": "RE-0202",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-four-four/run/windows-05.txt",
+      "bytes": 1311,
+      "sha256": "79f14ed4dc9ec340cb32d82ec0c77a2262196d736b814194ac0ee379704f762b"
+    },
+    {
+      "id": "RE-0203",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-four-four/run/windows-06.txt",
+      "bytes": 1311,
+      "sha256": "79f14ed4dc9ec340cb32d82ec0c77a2262196d736b814194ac0ee379704f762b"
+    },
+    {
+      "id": "RE-0204",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-four-four/run/windows-07.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "RE-0205",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-four-four/run/windows-08.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "RE-0206",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-four-four/run/windows-09.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "RE-0207",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-four-four/run/windows-10.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "RE-0208",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-four-four/run/windows-11.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "RE-0209",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-four-four/run/windows-12.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "RE-0210",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-four-four/run/windows-13.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "RE-0211",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-four-four/run/windows-14.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "RE-0212",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-four-four/run/windows-15.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "RE-0213",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-four-four/run/windows-16.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "RE-0214",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-four-four/run/windows-17.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "RE-0215",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-four-four/run/windows-18.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "RE-0216",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-four-four/run/windows-19.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "RE-0217",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-four-four/run/windows-20.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "RE-0218",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-four-four/run/wineboot.log",
+      "bytes": 142,
+      "sha256": "6a682017bfc0a3cd8de68adb1f53e744d5850905294931c0242b464cadd2708f"
+    },
+    {
+      "id": "RE-0219",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-four-four/run/xvfb.log",
+      "bytes": 2808,
+      "sha256": "46b8747df8a2fc8b6a469b2374ea3d0c6c786dc3dcf2a9be13d94ce76ed3a1a7"
+    },
+    {
+      "id": "RE-0220",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-four-four/run-oracle.json",
+      "bytes": 53118,
+      "sha256": "6f2f0f4799634137ff7f1185ed7cb810b8f0e7822b5203fc40eac95b0db2334d"
+    },
+    {
+      "id": "RE-0221",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-nine/guest-batch.bin",
+      "bytes": 1872,
+      "sha256": "04806de48a4fdc62db8a72909eac60f7ff96aa2cb2f7f6c0d4a9bf804a09e2c3"
+    },
+    {
+      "id": "RE-0222",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-nine/launcher-exit.json",
+      "bytes": 18,
+      "sha256": "df4d721d233a2334088d2d2e0110346ae9e509ff46bf0b379fbcfa85c715af4d"
+    },
+    {
+      "id": "RE-0223",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-nine/launcher.log",
+      "bytes": 16716,
+      "sha256": "ec3e5121e43925eceeb84111adb031ae71b3a06307903d18bbf6910bca3467a4"
+    },
+    {
+      "id": "RE-0224",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-nine/map117.bin",
+      "bytes": 46,
+      "sha256": "2e8e927e09576c5c31a7d07ca472a7e64e03da4fed88175152729c5fb1d1a63a"
+    },
+    {
+      "id": "RE-0225",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-nine/map238.bin",
+      "bytes": 117,
+      "sha256": "51c0cc30cfa02b1a2d9068267533a2b58415956daaa7ec10b40ca0e5a8057a7b"
+    },
+    {
+      "id": "RE-0226",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-nine/player0-fixture.json",
+      "bytes": 6841,
+      "sha256": "dc9feba9c94f0326074d376d28858bd44263ebdd6a33faef3566e48a421afc1c"
+    },
+    {
+      "id": "RE-0227",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-nine/player0.bin",
+      "bytes": 234,
+      "sha256": "bbccccfed44a14bbd87ee9c1e15a305ead50d79d83a351a3c6549deb92325935"
+    },
+    {
+      "id": "RE-0228",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-nine/player1-fixture.json",
+      "bytes": 6841,
+      "sha256": "2c8cfbc4859c49a2cfe0ad72e967f3d5dd4f730f28e4dfa0862d4a0d714703d2"
+    },
+    {
+      "id": "RE-0229",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-nine/player1.bin",
+      "bytes": 234,
+      "sha256": "8307b85ad86726657ac6757ec9d65431a397dd5cd60a83847c5cd02a4e35f768"
+    },
+    {
+      "id": "RE-0230",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-nine/player2-fixture.json",
+      "bytes": 6841,
+      "sha256": "7a99627ff84b0ee84403e40fd06805950a321a7e1819660e1149ece27ed0dcfa"
+    },
+    {
+      "id": "RE-0231",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-nine/player2.bin",
+      "bytes": 234,
+      "sha256": "7be9582f405c9efa9c7772943a8cc00d37871ec450238975a4308c6ff52b861d"
+    },
+    {
+      "id": "RE-0232",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-nine/player3-fixture.json",
+      "bytes": 6841,
+      "sha256": "8ebd193bbb1583b22a2a6b1ae7f1ba8e3c0de2802de9870d277c068e716d7f5a"
+    },
+    {
+      "id": "RE-0233",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-nine/player3.bin",
+      "bytes": 234,
+      "sha256": "e115433e77c171269085a4218444204a19cc38df40c0cf1a6ff6b60db91ea3aa"
+    },
+    {
+      "id": "RE-0234",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-nine/player4-fixture.json",
+      "bytes": 6841,
+      "sha256": "38512b9245684782290331f18faa9ef25c55ac803177af0a103958630f1f4e75"
+    },
+    {
+      "id": "RE-0235",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-nine/player4.bin",
+      "bytes": 234,
+      "sha256": "00ddb2abdf1be1ce19319185b819c90e0c62b6880ada9f79a8260d2c6bab714c"
+    },
+    {
+      "id": "RE-0236",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-nine/player5-fixture.json",
+      "bytes": 6841,
+      "sha256": "814e92f1188edb005fccfb1df8830ac5114b78a826338b9a8da81367b432ffc0"
+    },
+    {
+      "id": "RE-0237",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-nine/player5.bin",
+      "bytes": 234,
+      "sha256": "338640c138f3f1b5fb4cf1214c04b0b83a0858e34d7d752866780d7957e5e9e5"
+    },
+    {
+      "id": "RE-0238",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-nine/player6-fixture.json",
+      "bytes": 6841,
+      "sha256": "0874ef72a0cf15e3033b5211a84b4993338914f48a7324a479ef00dcc81ec911"
+    },
+    {
+      "id": "RE-0239",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-nine/player6.bin",
+      "bytes": 234,
+      "sha256": "5454a124205912f12b66235dc60452161d0062b3f210f75217866cd6efd6c0c4"
+    },
+    {
+      "id": "RE-0240",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-nine/player7-fixture.json",
+      "bytes": 6841,
+      "sha256": "92d80e06a4d4ec44a910476a6b4f55dc5b3d8e4f8f8c7315d914b326668f6917"
+    },
+    {
+      "id": "RE-0241",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-nine/player7.bin",
+      "bytes": 234,
+      "sha256": "83f07c56af72cfb7ae53fdd5b273f22d64cc00d9f8cf7f8141f36c5ca0548ff4"
+    },
+    {
+      "id": "RE-0242",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-nine/player8-fixture.json",
+      "bytes": 6841,
+      "sha256": "a85f127569191b4f3085f77e96d930c3a7647a6ce344bc323c37aa4c3c826a0a"
+    },
+    {
+      "id": "RE-0243",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-nine/player8.bin",
+      "bytes": 234,
+      "sha256": "a9ff804c6496f28be5f2fad469f6f3607256b57b341b5e6e98d8e2438d3f53ba"
+    },
+    {
+      "id": "RE-0244",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-nine/recipe.json",
+      "bytes": 1020,
+      "sha256": "15ef07039d42837409d36f7822715977c84de51477b631a69e9d2093d22b18a1"
+    },
+    {
+      "id": "RE-0245",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-nine/replay.txt",
+      "bytes": 851,
+      "sha256": "3038919e7c972a3186eaeb3716c317fb9ce8e924c0bebb8aba426fffbaf86794"
+    },
+    {
+      "id": "RE-0246",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-nine/roster.gdb",
+      "bytes": 10985,
+      "sha256": "1695045b316abdccdfffe45945afc57794933a8b1ee48c8dce69f4bd3ab738f1"
+    },
+    {
+      "id": "RE-0247",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-nine/run/CALog-before.txt",
+      "bytes": 4422,
+      "sha256": "89867f454a703bfc90f8e053812328d2396d12429a9b00283fe17233c38dfb08"
+    },
+    {
+      "id": "RE-0248",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-nine/run/CALog-run.txt",
+      "bytes": 1755,
+      "sha256": "1d288cd70123692d027f9822e39f3dc60fb88a0979a03c25eed2b624261dbca9"
+    },
+    {
+      "id": "RE-0249",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-nine/run/client.log",
+      "bytes": 62305,
+      "sha256": "36a97224d41f950926ec5ff84cd42c908708f722c51b3cebd58ed7b5464983ba"
+    },
+    {
+      "id": "RE-0250",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-nine/run/debug-commands.txt",
+      "bytes": 10985,
+      "sha256": "1695045b316abdccdfffe45945afc57794933a8b1ee48c8dce69f4bd3ab738f1"
+    },
+    {
+      "id": "RE-0251",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-nine/run/hosts",
+      "bytes": 121,
+      "sha256": "32a007c62d2887ae9f8d3c30d1ff7cb3902e6e1e0c75c5a978ee556cc8ea71f8"
+    },
+    {
+      "id": "RE-0252",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-nine/run/nsswitch.conf",
+      "bytes": 307,
+      "sha256": "c18e474cd61df8648ee02ac7a9c76b8d6c7782d8b212f925e6980f20af5cc838"
+    },
+    {
+      "id": "RE-0253",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-nine/run/processes-00.txt",
+      "bytes": 3821,
+      "sha256": "034ae3b914b408b6e26cffd36dfcd73f7c66dc50f1d9c5d7ea8f6533cd61e1d0"
+    },
+    {
+      "id": "RE-0254",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-nine/run/processes-01.txt",
+      "bytes": 4560,
+      "sha256": "57e7b5265ff8fa3404e0e21c583f45c3d1d76d66ab01b89967834736adf0f53c"
+    },
+    {
+      "id": "RE-0255",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-nine/run/processes-02.txt",
+      "bytes": 4560,
+      "sha256": "cceca7bba7b2e64e0f6803d5ae1dedc0dfaa3bb0c5ea5e0f33d65be2eb50f8bd"
+    },
+    {
+      "id": "RE-0256",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-nine/run/processes-03.txt",
+      "bytes": 4560,
+      "sha256": "34e878a929b9a24b20f04c7c010830e0e67a7037cdff704825cf369982698151"
+    },
+    {
+      "id": "RE-0257",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-nine/run/processes-04.txt",
+      "bytes": 4560,
+      "sha256": "4d449f782b09024335df0f1ab28bfe8336c00a489b20730cd3fba790252b3f00"
+    },
+    {
+      "id": "RE-0258",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-nine/run/processes-05.txt",
+      "bytes": 4560,
+      "sha256": "3f4cdfdb8a28683385557a0dd04e674ae3059707bbb64a54f1c9dc05b319d635"
+    },
+    {
+      "id": "RE-0259",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-nine/run/processes-06.txt",
+      "bytes": 4560,
+      "sha256": "a53e13da9b2bd97951264923fc4f35430bc2baced2320d4002c31a8e037bc42c"
+    },
+    {
+      "id": "RE-0260",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-nine/run/processes-07.txt",
+      "bytes": 4560,
+      "sha256": "5d5558b489dfb01659a88ab4a4b1008cdbc293d2de2ea1d6986b256633680f50"
+    },
+    {
+      "id": "RE-0261",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-nine/run/processes-08.txt",
+      "bytes": 4560,
+      "sha256": "031253960533118572c6322bb33fabafb599d19ba6b5c1c95ed9931e6e3e32a7"
+    },
+    {
+      "id": "RE-0262",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-nine/run/processes-09.txt",
+      "bytes": 4560,
+      "sha256": "7aef310ff22a48eaf5c8025a8dddd866874b66c5261c2bf0547e9dd904ac0e0e"
+    },
+    {
+      "id": "RE-0263",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-nine/run/processes-10.txt",
+      "bytes": 4560,
+      "sha256": "db825d0cf791191bdc4eee4cd3443c184cb439fd49bbb56adee52248de308bfa"
+    },
+    {
+      "id": "RE-0264",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-nine/run/processes-11.txt",
+      "bytes": 4560,
+      "sha256": "5efb441dc14c4fb1ca584cfc5ba5979480012fbbb5ad4ee48c716e82d1969827"
+    },
+    {
+      "id": "RE-0265",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-nine/run/processes-12.txt",
+      "bytes": 4560,
+      "sha256": "7da57bf8fb6b78e0eab60c0933f65d4cce482a9f0a26987d46e695821204a257"
+    },
+    {
+      "id": "RE-0266",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-nine/run/processes-13.txt",
+      "bytes": 4560,
+      "sha256": "203d16f5ed488578e1baffecc41f212b20eb365357f58cb81e9b4eec7118db1e"
+    },
+    {
+      "id": "RE-0267",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-nine/run/processes-14.txt",
+      "bytes": 4560,
+      "sha256": "ac94e1de741c6af50b7d35ccc65418a5f2182f18d08fbb67657aac9c877b58e1"
+    },
+    {
+      "id": "RE-0268",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-nine/run/processes-15.txt",
+      "bytes": 4560,
+      "sha256": "8d528b3a813a4f4d5b1636e23da38ba40bdd61d3e97cc1a9e40061c27cc5b6d5"
+    },
+    {
+      "id": "RE-0269",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-nine/run/processes-16.txt",
+      "bytes": 4560,
+      "sha256": "f9598c041fc7eea6593e5d6b09786152005416cc4ecb797dba218233090fff33"
+    },
+    {
+      "id": "RE-0270",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-nine/run/processes-17.txt",
+      "bytes": 4560,
+      "sha256": "f10a0573a4e323bc13c835f4c55456aeaf458d8d40ccc90dd5f22af16615f8cf"
+    },
+    {
+      "id": "RE-0271",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-nine/run/processes-18.txt",
+      "bytes": 4560,
+      "sha256": "620bb1e5668613bce217f5c695f5818abfb2740335b1d71ce05fedb6aac14f6b"
+    },
+    {
+      "id": "RE-0272",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-nine/run/processes-19.txt",
+      "bytes": 4560,
+      "sha256": "ec3f731a3cd4d5955bf5b0d77a1b40516a0983d5334b953d12e8dd4978d92928"
+    },
+    {
+      "id": "RE-0273",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-nine/run/processes-20.txt",
+      "bytes": 4560,
+      "sha256": "11969baae7340cabd2784184620a21d75bf73648c56fc07f140327c6f74fce7c"
+    },
+    {
+      "id": "RE-0274",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-nine/run/run.json",
+      "bytes": 20522,
+      "sha256": "35296b220acb3f9f4a2161e36369f219c6616aaa2037ff51da25bfacd5a32d97"
+    },
+    {
+      "id": "RE-0275",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-nine/run/screen-00.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "RE-0276",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-nine/run/screen-01.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "RE-0277",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-nine/run/screen-02.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "RE-0278",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-nine/run/screen-03.png",
+      "bytes": 19389,
+      "sha256": "aa1ee2266578690942fb3e19343592c55140ea39794cae7b2de7192580afc538"
+    },
+    {
+      "id": "RE-0279",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-nine/run/screen-04.png",
+      "bytes": 13437,
+      "sha256": "e47c2919c72588bea5f3e5b8ebda4d9823a66e8864f6b86ed6f85d9e19598218"
+    },
+    {
+      "id": "RE-0280",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-nine/run/screen-05.png",
+      "bytes": 191431,
+      "sha256": "35903a0d052b21d3a24bf93dc8a8f6b306cabbb746f12f3287dd1e5c2419a39a"
+    },
+    {
+      "id": "RE-0281",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-nine/run/screen-06.png",
+      "bytes": 194277,
+      "sha256": "eb04d50aa432204c8df8bb45346024b10fc0a1172c0ea711ff569b6e45a4dd7b"
+    },
+    {
+      "id": "RE-0282",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-nine/run/screen-07.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "RE-0283",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-nine/run/screen-08.png",
+      "bytes": 148947,
+      "sha256": "44e8e72714fc8391b25b3d740b557f986050b766a91020ee705dba7cbd8b04b8"
+    },
+    {
+      "id": "RE-0284",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-nine/run/screen-09.png",
+      "bytes": 213302,
+      "sha256": "d91d0c21ae2acb9bbb9844ad211582990cbc9bbe571457654cbb687b865ea353"
+    },
+    {
+      "id": "RE-0285",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-nine/run/screen-10.png",
+      "bytes": 175177,
+      "sha256": "f7c0e67a688815fd852f2813bb5947b36cf6e0880c3bafecb06933e2199ec91a"
+    },
+    {
+      "id": "RE-0286",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-nine/run/screen-11.png",
+      "bytes": 175539,
+      "sha256": "fb5c02186a4240fd2765ab171c173c64194827089eb4249b1ef571b3e155b9c8"
+    },
+    {
+      "id": "RE-0287",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-nine/run/screen-12.png",
+      "bytes": 181115,
+      "sha256": "683f6a65ac7e976a70b9d0948e42962a420af3d44b25fe3cd7602912b9c9dc06"
+    },
+    {
+      "id": "RE-0288",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-nine/run/screen-13.png",
+      "bytes": 181094,
+      "sha256": "7d14708e5f5b2eac4801f572ba0a76cce5f109c76c6e856374c2832fe9b8e4e8"
+    },
+    {
+      "id": "RE-0289",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-nine/run/screen-14.png",
+      "bytes": 164732,
+      "sha256": "3c7a431f263e3baa45154c9f47dcfc1a78a8723aef07526ff98470d3e92af53e"
+    },
+    {
+      "id": "RE-0290",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-nine/run/screen-15.png",
+      "bytes": 164118,
+      "sha256": "728d1ebdd29a07b6e5917f091369ffee4d2e58304f62f87b75ae596d8fee8597"
+    },
+    {
+      "id": "RE-0291",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-nine/run/screen-16.png",
+      "bytes": 165562,
+      "sha256": "201a9c8ceb600634d25229dd4b4bd6af8953361d23fba9cfd578aebe50c8a44a"
+    },
+    {
+      "id": "RE-0292",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-nine/run/screen-17.png",
+      "bytes": 165566,
+      "sha256": "e14189988233ae3676672480047534d30104c145680383109fb0b208c1e711e9"
+    },
+    {
+      "id": "RE-0293",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-nine/run/screen-18.png",
+      "bytes": 163558,
+      "sha256": "2f85b0e6164eb09d727542e5b7274c9061d3d80569bdb7578ea34bd32c716700"
+    },
+    {
+      "id": "RE-0294",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-nine/run/screen-19.png",
+      "bytes": 163402,
+      "sha256": "58844d6620f5511fc6d7a6cd1ade90f1534e6944610c6c3f49d30693bb2a831f"
+    },
+    {
+      "id": "RE-0295",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-nine/run/screen-20.png",
+      "bytes": 164208,
+      "sha256": "3cb69389915edbef12670315096b744e382a8eb3e86b1af1de0d9df78e393385"
+    },
+    {
+      "id": "RE-0296",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-nine/run/ui-after-confirm-1.png",
+      "bytes": 148717,
+      "sha256": "764be41dbec3b2ac6882ebd55494e7c0b2e771b12dcb62f3964b3abf64294a37"
+    },
+    {
+      "id": "RE-0297",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-nine/run/ui-before-confirm-1.png",
+      "bytes": 148944,
+      "sha256": "732b7f6760c2d0219d4d616613a307d5f711024c472fccd5661f8f204854ef91"
+    },
+    {
+      "id": "RE-0298",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-nine/run/windows-00.txt",
+      "bytes": 166,
+      "sha256": "28ae29836d791dcd3302b447a52a8f0fa3f9a192abbc33a27751e23d7ebe0d43"
+    },
+    {
+      "id": "RE-0299",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-nine/run/windows-01.txt",
+      "bytes": 872,
+      "sha256": "c8c8cfe9c5b9bb2ccde16b4b959b165ed33d50824f3fbd29834c16b6f0e63586"
+    },
+    {
+      "id": "RE-0300",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-nine/run/windows-02.txt",
+      "bytes": 872,
+      "sha256": "c8c8cfe9c5b9bb2ccde16b4b959b165ed33d50824f3fbd29834c16b6f0e63586"
+    },
+    {
+      "id": "RE-0301",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-nine/run/windows-03.txt",
+      "bytes": 1311,
+      "sha256": "79f14ed4dc9ec340cb32d82ec0c77a2262196d736b814194ac0ee379704f762b"
+    },
+    {
+      "id": "RE-0302",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-nine/run/windows-04.txt",
+      "bytes": 1311,
+      "sha256": "79f14ed4dc9ec340cb32d82ec0c77a2262196d736b814194ac0ee379704f762b"
+    },
+    {
+      "id": "RE-0303",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-nine/run/windows-05.txt",
+      "bytes": 1311,
+      "sha256": "79f14ed4dc9ec340cb32d82ec0c77a2262196d736b814194ac0ee379704f762b"
+    },
+    {
+      "id": "RE-0304",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-nine/run/windows-06.txt",
+      "bytes": 1311,
+      "sha256": "79f14ed4dc9ec340cb32d82ec0c77a2262196d736b814194ac0ee379704f762b"
+    },
+    {
+      "id": "RE-0305",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-nine/run/windows-07.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "RE-0306",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-nine/run/windows-08.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "RE-0307",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-nine/run/windows-09.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "RE-0308",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-nine/run/windows-10.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "RE-0309",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-nine/run/windows-11.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "RE-0310",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-nine/run/windows-12.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "RE-0311",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-nine/run/windows-13.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "RE-0312",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-nine/run/windows-14.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "RE-0313",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-nine/run/windows-15.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "RE-0314",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-nine/run/windows-16.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "RE-0315",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-nine/run/windows-17.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "RE-0316",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-nine/run/windows-18.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "RE-0317",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-nine/run/windows-19.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "RE-0318",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-nine/run/windows-20.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "RE-0319",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-nine/run/wineboot.log",
+      "bytes": 1140,
+      "sha256": "7c8156cfdbd01816f5e4c45f871f86e35c9fa8d96f2de6987eb90590795eb261"
+    },
+    {
+      "id": "RE-0320",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-nine/run/xvfb.log",
+      "bytes": 2808,
+      "sha256": "46b8747df8a2fc8b6a469b2374ea3d0c6c786dc3dcf2a9be13d94ce76ed3a1a7"
+    },
+    {
+      "id": "RE-0321",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-nine/run-oracle.json",
+      "bytes": 50290,
+      "sha256": "074784ba58d657cac7af12384a873c3ff5c758ee4e80788ec1ee5ddc3d452029"
+    },
+    {
+      "id": "RE-0322",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-one-seven/guest-batch.bin",
+      "bytes": 1638,
+      "sha256": "8515be7ee1620844d3a03717629217ac05ce5e568e7cd5da91e7a1b47612d6a6"
+    },
+    {
+      "id": "RE-0323",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-one-seven/launcher-exit.json",
+      "bytes": 18,
+      "sha256": "df4d721d233a2334088d2d2e0110346ae9e509ff46bf0b379fbcfa85c715af4d"
+    },
+    {
+      "id": "RE-0324",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-one-seven/launcher.log",
+      "bytes": 17006,
+      "sha256": "96829313748affb66ccd0be7640e60bae53d645d8f86f1ee7bd34d96b9472d8c"
+    },
+    {
+      "id": "RE-0325",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-one-seven/map117.bin",
+      "bytes": 46,
+      "sha256": "9f333b0470bd5d4e525d3bde420c450a13bfce011ef4a070de55dea4a794a47a"
+    },
+    {
+      "id": "RE-0326",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-one-seven/map238.bin",
+      "bytes": 117,
+      "sha256": "959aaae9ee8ac8131029d361d1b2305d6a07a418f882ee980da538b8663c183f"
+    },
+    {
+      "id": "RE-0327",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-one-seven/player0-fixture.json",
+      "bytes": 6841,
+      "sha256": "dc9feba9c94f0326074d376d28858bd44263ebdd6a33faef3566e48a421afc1c"
+    },
+    {
+      "id": "RE-0328",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-one-seven/player0.bin",
+      "bytes": 234,
+      "sha256": "bbccccfed44a14bbd87ee9c1e15a305ead50d79d83a351a3c6549deb92325935"
+    },
+    {
+      "id": "RE-0329",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-one-seven/player1-fixture.json",
+      "bytes": 6841,
+      "sha256": "1cea3806d3f43c7931e0ac423a066affed220e9a4aad018841e4aea0d159ddb3"
+    },
+    {
+      "id": "RE-0330",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-one-seven/player1.bin",
+      "bytes": 234,
+      "sha256": "06c105c22790b45e9927698b76bb6053b8fe7ce1eaee9563e226a642e2683022"
+    },
+    {
+      "id": "RE-0331",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-one-seven/player2-fixture.json",
+      "bytes": 6841,
+      "sha256": "d23dfa479d2172b6aef93a59d4928dad0f7a7b5311170d8358a2cd62fcb47fcd"
+    },
+    {
+      "id": "RE-0332",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-one-seven/player2.bin",
+      "bytes": 234,
+      "sha256": "09e82825c5756763beeb77a678658bb75003713992105818ee891d523a6403c3"
+    },
+    {
+      "id": "RE-0333",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-one-seven/player3-fixture.json",
+      "bytes": 6841,
+      "sha256": "c4c3ff6c1b423f55cf06ebc9bcefa6c77a2028c318ca7c50e07a3b6c1f90c762"
+    },
+    {
+      "id": "RE-0334",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-one-seven/player3.bin",
+      "bytes": 234,
+      "sha256": "3e9bfe14b0c8bccb798fdc5558f3c7b1b8970779829b3e3497076832229f230b"
+    },
+    {
+      "id": "RE-0335",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-one-seven/player4-fixture.json",
+      "bytes": 6841,
+      "sha256": "38512b9245684782290331f18faa9ef25c55ac803177af0a103958630f1f4e75"
+    },
+    {
+      "id": "RE-0336",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-one-seven/player4.bin",
+      "bytes": 234,
+      "sha256": "00ddb2abdf1be1ce19319185b819c90e0c62b6880ada9f79a8260d2c6bab714c"
+    },
+    {
+      "id": "RE-0337",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-one-seven/player5-fixture.json",
+      "bytes": 6841,
+      "sha256": "814e92f1188edb005fccfb1df8830ac5114b78a826338b9a8da81367b432ffc0"
+    },
+    {
+      "id": "RE-0338",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-one-seven/player5.bin",
+      "bytes": 234,
+      "sha256": "338640c138f3f1b5fb4cf1214c04b0b83a0858e34d7d752866780d7957e5e9e5"
+    },
+    {
+      "id": "RE-0339",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-one-seven/player6-fixture.json",
+      "bytes": 6841,
+      "sha256": "0874ef72a0cf15e3033b5211a84b4993338914f48a7324a479ef00dcc81ec911"
+    },
+    {
+      "id": "RE-0340",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-one-seven/player6.bin",
+      "bytes": 234,
+      "sha256": "5454a124205912f12b66235dc60452161d0062b3f210f75217866cd6efd6c0c4"
+    },
+    {
+      "id": "RE-0341",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-one-seven/player7-fixture.json",
+      "bytes": 6841,
+      "sha256": "92d80e06a4d4ec44a910476a6b4f55dc5b3d8e4f8f8c7315d914b326668f6917"
+    },
+    {
+      "id": "RE-0342",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-one-seven/player7.bin",
+      "bytes": 234,
+      "sha256": "83f07c56af72cfb7ae53fdd5b273f22d64cc00d9f8cf7f8141f36c5ca0548ff4"
+    },
+    {
+      "id": "RE-0343",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-one-seven/recipe.json",
+      "bytes": 1045,
+      "sha256": "27f7d0efefab15e9f17ebf2947f2c5b25b954a9046a6bd3e72b2091f373c0f99"
+    },
+    {
+      "id": "RE-0344",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-one-seven/replay.txt",
+      "bytes": 875,
+      "sha256": "968c07fdcf0f7d0987e24fa6f574fb12f2cde28aad3fae82c6ad9987bb056bab"
+    },
+    {
+      "id": "RE-0345",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-one-seven/roster.gdb",
+      "bytes": 10985,
+      "sha256": "1695045b316abdccdfffe45945afc57794933a8b1ee48c8dce69f4bd3ab738f1"
+    },
+    {
+      "id": "RE-0346",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-one-seven/run/CALog-before.txt",
+      "bytes": 4422,
+      "sha256": "89867f454a703bfc90f8e053812328d2396d12429a9b00283fe17233c38dfb08"
+    },
+    {
+      "id": "RE-0347",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-one-seven/run/CALog-run.txt",
+      "bytes": 1794,
+      "sha256": "e001d77932308bfeff1f3f25f66f17f2c03d0bc9ed883d3d1523887a1d9a2f73"
+    },
+    {
+      "id": "RE-0348",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-one-seven/run/client.log",
+      "bytes": 65339,
+      "sha256": "0c783a7736977f0799a987bd87cf066711d88087b23ce351fbd5b8ae57a3cffc"
+    },
+    {
+      "id": "RE-0349",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-one-seven/run/debug-commands.txt",
+      "bytes": 10985,
+      "sha256": "1695045b316abdccdfffe45945afc57794933a8b1ee48c8dce69f4bd3ab738f1"
+    },
+    {
+      "id": "RE-0350",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-one-seven/run/hosts",
+      "bytes": 121,
+      "sha256": "32a007c62d2887ae9f8d3c30d1ff7cb3902e6e1e0c75c5a978ee556cc8ea71f8"
+    },
+    {
+      "id": "RE-0351",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-one-seven/run/nsswitch.conf",
+      "bytes": 307,
+      "sha256": "c18e474cd61df8648ee02ac7a9c76b8d6c7782d8b212f925e6980f20af5cc838"
+    },
+    {
+      "id": "RE-0352",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-one-seven/run/processes-00.txt",
+      "bytes": 3851,
+      "sha256": "9757b45e43ee76191176d5c85081896233f86955f508e021e686c019b29a2277"
+    },
+    {
+      "id": "RE-0353",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-one-seven/run/processes-01.txt",
+      "bytes": 4605,
+      "sha256": "2bf5a2d9bd8f0127a34ebaf2eb265939bb66e6ce081bb5d821dfba8cce237a90"
+    },
+    {
+      "id": "RE-0354",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-one-seven/run/processes-02.txt",
+      "bytes": 4605,
+      "sha256": "f85554022ac8bd02a43528c991050dd85a62eca0564c823eaba76089aeb2cc90"
+    },
+    {
+      "id": "RE-0355",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-one-seven/run/processes-03.txt",
+      "bytes": 4605,
+      "sha256": "9c277c76d3e5f32db8e88456c4b50ddb1bb674b155095c2907c90d182a0b44c3"
+    },
+    {
+      "id": "RE-0356",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-one-seven/run/processes-04.txt",
+      "bytes": 4605,
+      "sha256": "fca80771903051aeb847b19de58c36dacec60d15d76a19fe12ae9beea421c4ed"
+    },
+    {
+      "id": "RE-0357",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-one-seven/run/processes-05.txt",
+      "bytes": 4605,
+      "sha256": "c9d9df35b582949e931af3ffe1065ecc7c1f4274358870f43c7ffaafd8d1945f"
+    },
+    {
+      "id": "RE-0358",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-one-seven/run/processes-06.txt",
+      "bytes": 4605,
+      "sha256": "7869623cdc316534be7f4bc83a53748b9029c93236015e19d1425a1152936381"
+    },
+    {
+      "id": "RE-0359",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-one-seven/run/processes-07.txt",
+      "bytes": 4605,
+      "sha256": "698356739df3e6db152b63d97cab6d4b1a5de706a8e82513064589cdb60b487d"
+    },
+    {
+      "id": "RE-0360",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-one-seven/run/processes-08.txt",
+      "bytes": 4605,
+      "sha256": "bea168df30bb68897e5bb6dfdb7bae217abbcd13f2aa1a263f71833b38fa5f4b"
+    },
+    {
+      "id": "RE-0361",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-one-seven/run/processes-09.txt",
+      "bytes": 4605,
+      "sha256": "f0576e6193cbcd111ca7197a4286fdfc9c3115720b5c04d5ed9229bf2a504f6f"
+    },
+    {
+      "id": "RE-0362",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-one-seven/run/processes-10.txt",
+      "bytes": 4605,
+      "sha256": "f02dd35722954e98f6f406c8dd9ede62ed3c409d531bcf438e58c4b3847d1c19"
+    },
+    {
+      "id": "RE-0363",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-one-seven/run/processes-11.txt",
+      "bytes": 4605,
+      "sha256": "9ffdb301242134f8dc9ac00f5b18160372dbefaba5489bc6e5148e7a6ec41146"
+    },
+    {
+      "id": "RE-0364",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-one-seven/run/processes-12.txt",
+      "bytes": 4605,
+      "sha256": "94be14b3fccf1d7625cbe968ffafd6c4e64ec8b65ca8764356d34f6e3fdff090"
+    },
+    {
+      "id": "RE-0365",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-one-seven/run/processes-13.txt",
+      "bytes": 4605,
+      "sha256": "2b7d58a21160c39050a75a5304e23002586bfb67a12275b5882e443506915f08"
+    },
+    {
+      "id": "RE-0366",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-one-seven/run/processes-14.txt",
+      "bytes": 4605,
+      "sha256": "a5976e1cf70b458bba2f9320900453ad03f6ac23455e195f6b4ac38655b37934"
+    },
+    {
+      "id": "RE-0367",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-one-seven/run/processes-15.txt",
+      "bytes": 4605,
+      "sha256": "c6fae6f1fab5f4d08e067716bd74e664675477db8f040d66cc9bce6f66746c48"
+    },
+    {
+      "id": "RE-0368",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-one-seven/run/processes-16.txt",
+      "bytes": 4605,
+      "sha256": "56e2fd6ff1863f3aa273dd8eeb01c2e58e59f784355daad086a03b36a01bbbca"
+    },
+    {
+      "id": "RE-0369",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-one-seven/run/processes-17.txt",
+      "bytes": 4605,
+      "sha256": "5beff415a74504f0bd123d6f70337674118a322b887e69533b034c5a1e349d7e"
+    },
+    {
+      "id": "RE-0370",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-one-seven/run/processes-18.txt",
+      "bytes": 4605,
+      "sha256": "a27c1adca1300ab44fac1db0e854501d41449ae1326215679dc11cbd8cf21d9b"
+    },
+    {
+      "id": "RE-0371",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-one-seven/run/processes-19.txt",
+      "bytes": 4605,
+      "sha256": "7e44c41cd727283e0fbd817b69576d32c8d4f0ba99bd339e2be8f172d1df00b3"
+    },
+    {
+      "id": "RE-0372",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-one-seven/run/processes-20.txt",
+      "bytes": 4605,
+      "sha256": "9082dcef12e17f317723648b13c1bf3821ad8a1541c9696c9ba67dfb43af571b"
+    },
+    {
+      "id": "RE-0373",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-one-seven/run/run.json",
+      "bytes": 20850,
+      "sha256": "a0ec0dbebd71beef3d9f3fde9a31adfe156f6833717d45eeb93e2b674943dbe1"
+    },
+    {
+      "id": "RE-0374",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-one-seven/run/screen-00.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "RE-0375",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-one-seven/run/screen-01.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "RE-0376",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-one-seven/run/screen-02.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "RE-0377",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-one-seven/run/screen-03.png",
+      "bytes": 16134,
+      "sha256": "19817a610068b6aad75a10bf5b05b6a962bde3cbb153b0dfcd5723f5c393c380"
+    },
+    {
+      "id": "RE-0378",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-one-seven/run/screen-04.png",
+      "bytes": 13437,
+      "sha256": "e47c2919c72588bea5f3e5b8ebda4d9823a66e8864f6b86ed6f85d9e19598218"
+    },
+    {
+      "id": "RE-0379",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-one-seven/run/screen-05.png",
+      "bytes": 188305,
+      "sha256": "a99acec64b33b5e9867be8584c06ccc1de2b213098e083e2347ee246730b709c"
+    },
+    {
+      "id": "RE-0380",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-one-seven/run/screen-06.png",
+      "bytes": 192711,
+      "sha256": "5c5c23014d57460a377147ce38096ac0eef7eede14b53232dd7f9195e2bfbcb7"
+    },
+    {
+      "id": "RE-0381",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-one-seven/run/screen-07.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "RE-0382",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-one-seven/run/screen-08.png",
+      "bytes": 148714,
+      "sha256": "8fd499a4a7cb4750996b8c6ee11029d5d16d893812af00245cf077e0b5223055"
+    },
+    {
+      "id": "RE-0383",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-one-seven/run/screen-09.png",
+      "bytes": 213603,
+      "sha256": "c0f9f368c085745e1f536fd8b1dd7f9d1c9ea5639ae008caf59d896bd8dd1ae9"
+    },
+    {
+      "id": "RE-0384",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-one-seven/run/screen-10.png",
+      "bytes": 175309,
+      "sha256": "264394518dabab4010ef009534cf11337a1aa9f194140600265d7f11d03a0896"
+    },
+    {
+      "id": "RE-0385",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-one-seven/run/screen-11.png",
+      "bytes": 175608,
+      "sha256": "cd570fa8a20f268f34168c9a477a17de1be3dde914e8c96f5bdd074fe89276bd"
+    },
+    {
+      "id": "RE-0386",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-one-seven/run/screen-12.png",
+      "bytes": 181115,
+      "sha256": "7d6366dafaa1507caec1380b7ba1026f5662771b9df6474489249b09113fb1d4"
+    },
+    {
+      "id": "RE-0387",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-one-seven/run/screen-13.png",
+      "bytes": 182250,
+      "sha256": "18b68a4e0dc88216fe8d07883ed8a62ce23b237ad20ff9813abbd198a3a474b4"
+    },
+    {
+      "id": "RE-0388",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-one-seven/run/screen-14.png",
+      "bytes": 181811,
+      "sha256": "a8880298f34f1727f479f40c8c1dcba1372580bec2741c813cd0147f82e3aa73"
+    },
+    {
+      "id": "RE-0389",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-one-seven/run/screen-15.png",
+      "bytes": 182472,
+      "sha256": "be9406bf095bc88cdd9fe394e1061432926001ae23c857c852898264aba22597"
+    },
+    {
+      "id": "RE-0390",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-one-seven/run/screen-16.png",
+      "bytes": 182348,
+      "sha256": "55e916ae506cde12eb495f4fe50f0821ae95a95bf4f72f1a8e76d7dee4bfc60a"
+    },
+    {
+      "id": "RE-0391",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-one-seven/run/screen-17.png",
+      "bytes": 181882,
+      "sha256": "8dc22a1fa83ab9c09efa1565605c4535dd507280e1bc389e46bb0e6d2d93407f"
+    },
+    {
+      "id": "RE-0392",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-one-seven/run/screen-18.png",
+      "bytes": 181873,
+      "sha256": "d549f0f95834e02bc2867d1e597e9029a18d5bb878f2af79c5c30662a00aa97a"
+    },
+    {
+      "id": "RE-0393",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-one-seven/run/screen-19.png",
+      "bytes": 181443,
+      "sha256": "52f46b8490568fbb7abd115d9a2cd2ee9f82c6aa3a0c7b6dec9d2eaa19e7f282"
+    },
+    {
+      "id": "RE-0394",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-one-seven/run/screen-20.png",
+      "bytes": 181588,
+      "sha256": "e1763c5728318918cca3e8bf13712d65f68b01fd69c7d23971de4ce826f72c94"
+    },
+    {
+      "id": "RE-0395",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-one-seven/run/ui-after-confirm-1.png",
+      "bytes": 148463,
+      "sha256": "f20a8288ef34e8a527b8fb25a165c4e8ad18617e682bac85777720d6b889bdc7"
+    },
+    {
+      "id": "RE-0396",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-one-seven/run/ui-before-confirm-1.png",
+      "bytes": 148776,
+      "sha256": "5611f7a720b6ac23f0ca5530ebf5289f608239d40bd256dc3c71dd0a29d6205a"
+    },
+    {
+      "id": "RE-0397",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-one-seven/run/windows-00.txt",
+      "bytes": 166,
+      "sha256": "28ae29836d791dcd3302b447a52a8f0fa3f9a192abbc33a27751e23d7ebe0d43"
+    },
+    {
+      "id": "RE-0398",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-one-seven/run/windows-01.txt",
+      "bytes": 872,
+      "sha256": "c8c8cfe9c5b9bb2ccde16b4b959b165ed33d50824f3fbd29834c16b6f0e63586"
+    },
+    {
+      "id": "RE-0399",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-one-seven/run/windows-02.txt",
+      "bytes": 872,
+      "sha256": "c8c8cfe9c5b9bb2ccde16b4b959b165ed33d50824f3fbd29834c16b6f0e63586"
+    },
+    {
+      "id": "RE-0400",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-one-seven/run/windows-03.txt",
+      "bytes": 1311,
+      "sha256": "79f14ed4dc9ec340cb32d82ec0c77a2262196d736b814194ac0ee379704f762b"
+    },
+    {
+      "id": "RE-0401",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-one-seven/run/windows-04.txt",
+      "bytes": 1311,
+      "sha256": "79f14ed4dc9ec340cb32d82ec0c77a2262196d736b814194ac0ee379704f762b"
+    },
+    {
+      "id": "RE-0402",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-one-seven/run/windows-05.txt",
+      "bytes": 1311,
+      "sha256": "79f14ed4dc9ec340cb32d82ec0c77a2262196d736b814194ac0ee379704f762b"
+    },
+    {
+      "id": "RE-0403",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-one-seven/run/windows-06.txt",
+      "bytes": 1311,
+      "sha256": "79f14ed4dc9ec340cb32d82ec0c77a2262196d736b814194ac0ee379704f762b"
+    },
+    {
+      "id": "RE-0404",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-one-seven/run/windows-07.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "RE-0405",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-one-seven/run/windows-08.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "RE-0406",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-one-seven/run/windows-09.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "RE-0407",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-one-seven/run/windows-10.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "RE-0408",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-one-seven/run/windows-11.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "RE-0409",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-one-seven/run/windows-12.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "RE-0410",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-one-seven/run/windows-13.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "RE-0411",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-one-seven/run/windows-14.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "RE-0412",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-one-seven/run/windows-15.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "RE-0413",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-one-seven/run/windows-16.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "RE-0414",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-one-seven/run/windows-17.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "RE-0415",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-one-seven/run/windows-18.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "RE-0416",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-one-seven/run/windows-19.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "RE-0417",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-one-seven/run/windows-20.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "RE-0418",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-one-seven/run/wineboot.log",
+      "bytes": 142,
+      "sha256": "b9b03175b514c3f3ce5a272add5e7fdcd4dbe62519f4ff195eba06a6b7bf52d7"
+    },
+    {
+      "id": "RE-0419",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-one-seven/run/xvfb.log",
+      "bytes": 2808,
+      "sha256": "46b8747df8a2fc8b6a469b2374ea3d0c6c786dc3dcf2a9be13d94ce76ed3a1a7"
+    },
+    {
+      "id": "RE-0420",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-one-seven/run-oracle.json",
+      "bytes": 51785,
+      "sha256": "b7de6f0db4b71d8bb1ae3c7e1dd27c226da63673fc1380adae37e0bc55a2faa3"
+    },
+    {
+      "id": "RE-0421",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/recipe.json",
+      "bytes": 988,
+      "sha256": "4207eb215b9bc25706d132cfaf9e051e63b1b8e0208d2fcd55db568de14f56be"
+    },
+    {
+      "id": "RE-0422",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/replay_capture.py",
+      "bytes": 2988,
+      "sha256": "feac9a5b7a096ac53ed61fcb81d97794bcc7772e022b47d5200b17df44cbc08b"
+    },
+    {
+      "id": "RE-0423",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/reuse-question.json",
+      "bytes": 2446,
+      "sha256": "a669652faf48cfffcd310bc12d44b2a66e4c340e1083e21fbe24a533a93aea60"
+    },
+    {
+      "id": "RE-0424",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/room-getters.json",
+      "bytes": 1994,
+      "sha256": "20a32b81724b81b9e5bcdf08d8680915c32107675f99988592d456a5b9fb64da"
+    },
+    {
+      "id": "RE-0425",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/roster.gdb",
+      "bytes": 10608,
+      "sha256": "5599173055dd061c9265a046b86c4d8c3bba78580cecc3d531f0e7fe2b1a539b"
+    },
+    {
+      "id": "RE-0426",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/start-guard-instructions.json",
+      "bytes": 91872,
+      "sha256": "a11bb06acfad08f044cdcefe79f6aecd3cd23fee19a2fe93599d9396db464fd0"
+    },
+    {
+      "id": "RE-0427",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/sync_docs.py",
+      "bytes": 5969,
+      "sha256": "9d7e07ee37fdc36d44330b7a1ad9b81fbf917d8502f83f897bc5ca35aa23584c"
+    },
+    {
+      "id": "RE-0428",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/verification.json",
+      "bytes": 25352,
+      "sha256": "1603b50a33133a0aa0a7e5cc8ff1bfdd69a9224f5a129cc7480ab4ece069071d"
+    },
+    {
+      "id": "RE-0429",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/verify_balance.py",
+      "bytes": 2819,
+      "sha256": "32c15af2905386586c2b8eb483ab1e14fd78e684a0418c2ad17b99c380581d80"
+    },
+    {
+      "id": "RE-0430",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/verify_runs.py",
+      "bytes": 5236,
+      "sha256": "83745132305e3ff70eb0d81b16af887f917cd446f8fbef97c0f6656a6c4d022f"
+    },
+    {
+      "id": "RE-0431",
+      "kind": "local",
+      "path": "local/research/codex/wine_probe_eight_roster.py",
+      "bytes": 32928,
+      "sha256": "b74cf685eb865ce6d60a0d8362e46cdb21e6f9518ff0cc36c841ef9976159e4c"
+    },
+    {
+      "id": "RE-0432",
+      "kind": "local",
+      "path": "local/research/codex/wine_probe_eight_ready_four_four.py",
+      "bytes": 32992,
+      "sha256": "7d1acd80efec4f164fc37e9b6cbce13809e8df66b40952da82d547c54628e063"
+    },
+    {
+      "id": "RE-0433",
+      "kind": "local",
+      "path": "local/research/codex/wine_probe_eight_ready_one_seven.py",
+      "bytes": 32992,
+      "sha256": "e997cb1257d3ba2c3e97bad4636ecca3055423b8c0410f3e9ea22a4e6aaae547"
+    },
+    {
+      "id": "RE-0434",
+      "kind": "local",
+      "path": "local/research/codex/wine_probe_eight_ready_nine.py",
+      "bytes": 32972,
+      "sha256": "5e459899851ec2400ccd3d327e4e9fc2835eeb89ab6c1ed29e96f5e0cafdc86a"
+    },
+    {
+      "id": "RE-0435",
+      "kind": "local",
+      "path": "local/research/codex/room-map-r1/playmap-list.bin",
+      "bytes": 59852,
+      "sha256": "49727b4d68bca96e7a71ea842c9fe03fe4fd92f032e8510bbcade62b2b796714"
+    },
+    {
+      "id": "RE-0436",
+      "kind": "local",
+      "path": "local/research/codex/room-map-r1/playmap-list-summary.json",
+      "bytes": 1644,
+      "sha256": "aa134e49aa3c4321a29bc641a2169e726cd68c168c63d6b3ee00214928155311"
+    },
+    {
+      "id": "RE-0437",
+      "kind": "local",
+      "path": "local/research/codex/room-map-r1/DCAD80.asm",
+      "bytes": 12022,
+      "sha256": "68ba28bbaf570c27ca624e416454a07a6b483c82061d2627dfc79018a1f33dde"
+    },
+    {
+      "id": "RE-0438",
+      "kind": "local",
+      "path": "local/research/codex/room-player-r1/build_player.py",
+      "bytes": 3046,
+      "sha256": "e820e8379c44387e6963a52c5c1edab1695c6040d76445a2d3126f4ec8d3033f"
+    },
+    {
+      "id": "RE-0439",
+      "kind": "local",
+      "path": "local/research/codex/room-map-r1/map-enabled.gdb",
+      "bytes": 10479,
+      "sha256": "763d918f109153f63bf5ee68b06cd627c4dd2f5d9402a09715c1fc45aa65ffac"
+    },
+    {
+      "id": "RE-0440",
+      "kind": "local",
+      "path": "local/research/codex/bootstrap-copy-oracle.py",
+      "bytes": 2377,
+      "sha256": "8127e0f2fbc385360e878bb68ae3a6680eabbf7456335f0f3db75c7c3b73a8c0"
+    },
+    {
+      "id": "RE-0441",
+      "kind": "local",
+      "path": "local/research/codex/bootstrap-recv-oracle.py",
+      "bytes": 2104,
+      "sha256": "1e86c06540e8fe654564c5bd403f859070f77c9af0d5d11c70c9351198e00ae2"
+    },
+    {
+      "id": "RE-0442",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/game/CA-r2-room-keystate.exe",
+      "bytes": 31874560,
+      "sha256": "94ee93dc7978a1ab22f25ec877e29ddcab254ca761f2eac22534421e2dd628e8"
+    },
+    {
+      "id": "RE-0443",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-four-four/game/CA-r2-room-keystate.exe",
+      "bytes": 31874560,
+      "sha256": "94ee93dc7978a1ab22f25ec877e29ddcab254ca761f2eac22534421e2dd628e8"
+    },
+    {
+      "id": "RE-0444",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-one-seven/game/CA-r2-room-keystate.exe",
+      "bytes": 31874560,
+      "sha256": "94ee93dc7978a1ab22f25ec877e29ddcab254ca761f2eac22534421e2dd628e8"
+    },
+    {
+      "id": "RE-0445",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-nine/game/CA-r2-room-keystate.exe",
+      "bytes": 31874560,
+      "sha256": "94ee93dc7978a1ab22f25ec877e29ddcab254ca761f2eac22534421e2dd628e8"
+    },
+    {
+      "id": "RE-0446",
+      "kind": "artifact",
+      "path": "/home/admin/boom/repos/boomkr-re/out/modO.bin",
+      "bytes": 31858688,
+      "sha256": "a08950c833d3acab8281049def7b3dc96b221f107eeda01da3a548e34b91dce5"
+    },
+    {
+      "id": "RE-0447",
+      "kind": "artifact",
+      "path": "/home/admin/boom/clients/kr-00967/CA.exe",
+      "bytes": 10141152,
+      "sha256": "a52545c14b1fea423de655c3163d6360b628d61c1cd472b46fdbc8a9ffe15f4e"
+    },
+    {
+      "id": "RE-0448",
+      "kind": "artifact",
+      "path": "/home/admin/boom/repos/boomkr-re/docs/game-spec-web.md",
+      "bytes": 18383,
+      "sha256": "32d64c68fc18db889f4f0dae2a169100081ccaadc0e5caa5c9a900d5e9340cad"
+    },
+    {
+      "id": "RE-0449",
+      "kind": "artifact",
+      "path": "/home/admin/boom/repos/boom-re/docs/oc_a-room.md",
+      "bytes": 23378,
+      "sha256": "5fbc0db42e99c6f34a09a60468783ac70e98984735d1ff49d9ebc14ee4aaf6f4"
+    }
+  ]
+}

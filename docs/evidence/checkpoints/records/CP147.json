@@ -1,0 +1,236 @@
+{
+  "id": "CP147",
+  "previous": "CP146",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-06T00:26:41.251206+00:00",
+  "context_commit": "c671301e2c635dca01149c84ac8696320abd652e",
+  "owner": "Codex",
+  "reviewer": "Codex",
+  "question": "Does KR00967 accept eight Battle roster slots and enforce map capacity at actual Start, and what evidence distinguishes free/unbalanced and equal team rules?",
+  "scope": "Owner-directed bounded capacity/team check: reuse CP018106110/CP019mapdumpgetters and legacyKRweb/VNroom source, four isolated singleCA runs including retained unready control, nativecaptureCRC negatives, targeted Startguard/getter and14case nativeblockemulation. Not eight-real-client integration.",
+  "artifacts": [
+    {
+      "name": "KR00967 original CA.exe unchanged",
+      "sha256": "a52545c14b1fea423de655c3163d6360b628d61c1cd472b46fdbc8a9ffe15f4e"
+    },
+    {
+      "name": "CP018 diagnostic Wine copy unchanged",
+      "sha256": "94ee93dc7978a1ab22f25ec877e29ddcab254ca761f2eac22534421e2dd628e8"
+    },
+    {
+      "name": "modO native model base400000",
+      "sha256": "a08950c833d3acab8281049def7b3dc96b221f107eeda01da3a548e34b91dce5"
+    }
+  ],
+  "locators": [
+    "VA base400000/RVA=VA-400000;106 AE4000/AE3360/AE3950→123FF70;110 DC6AC0; CP019dump1151x52/EDC890+24hex/code278capacity8.",
+    "StartDCAD80 count16slots; DCB02E8/9players2teams; DCB0DDcapacitycompare/DCB0F2return5;123FA10 readsmanager+9C;DCB12C–DCB191selector1equalcounts/division/reject7;DE03F3check0/3/5;DE0574send1/DE059Cpending3; actual104/native14EF300CRC.",
+    "four-four runSHA47f60f0c5951c8f44126a73eeb5f09a74702e0e777f2ef9ea5cfb33ea39b53ed; ready-four-four f4d5a5cf10d144e6d8fcc173491d4925d6c5936782d362bbdd18e1a51b299a1f; ready-one-seven a0ec0dbebd71beef3d9f3fde9a31adfe156f6833717d45eeb93e2b674943dbe1; ready-nine35296b220acb3f9f4a2161e36369f219c6616aaa2037ff51da25bfacd5a32d97"
+  ],
+  "findings": [
+    {
+      "summary": "Reuse CP019 actual mapdump/getter: code278ExVillage01 capacity8; capacities12/24 in same1151-row dump prevent universal8max inference. No new whole-map scan/loader RE required.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "documentation",
+      "canonical": "docs/PROTOCOL.md#battle-eight-roster",
+      "evidence": [
+        "RE-0423",
+        "RE-0436",
+        "RE-0428"
+      ],
+      "limits": "One actual modified Wine CA per run; remaining player rows synthetic; runtime94ee93 CP018/019 differs from CP146 e9bb4766. Stub inputs/IDs/Ready/timing design; inherited init suppression1A966FC=0 declared. No121/startreply/loading/Battle8/eight actual peers/UDPmesh/room-full service/fullauth/Windowsoriginal/LAN/Internet/gate. Native selector1 equality block emulated with modeled singleton/count indexing, no selector1 wire/UI-name proof. Capacity map2788 not universalclientmax; dump includes12/24. Raw/source/binary/DB/history preserved. "
+    },
+    {
+      "summary": "Actual KR oneCA accepts slots0–7/callbacks/196byte106/errors0; 4v4 and1v7 Readyguestflags4 each native8players2teamscapacity8→check0→actual104/send1/pending3.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#battle-eight-roster",
+      "evidence": [
+        "RE-0173",
+        "RE-0148",
+        "RE-0220",
+        "RE-0373",
+        "RE-0348",
+        "RE-0420"
+      ],
+      "limits": "One actual modified Wine CA per run; remaining player rows synthetic; runtime94ee93 CP018/019 differs from CP146 e9bb4766. Stub inputs/IDs/Ready/timing design; inherited init suppression1A966FC=0 declared. No121/startreply/loading/Battle8/eight actual peers/UDPmesh/room-full service/fullauth/Windowsoriginal/LAN/Internet/gate. Native selector1 equality block emulated with modeled singleton/count indexing, no selector1 wire/UI-name proof. Capacity map2788 not universalclientmax; dump includes12/24. Raw/source/binary/DB/history preserved. "
+    },
+    {
+      "summary": "Ninth synthetic participant is parsed but actual Start on mapcapacity8 returns5/no104. Initial8slot control guestflags2 returns3/unready/no104; separate correctedinput runs preserve failures.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#battle-eight-roster",
+      "evidence": [
+        "RE-0043",
+        "RE-0018",
+        "RE-0274",
+        "RE-0249",
+        "RE-0428"
+      ],
+      "limits": "One actual modified Wine CA per run; remaining player rows synthetic; runtime94ee93 CP018/019 differs from CP146 e9bb4766. Stub inputs/IDs/Ready/timing design; inherited init suppression1A966FC=0 declared. No121/startreply/loading/Battle8/eight actual peers/UDPmesh/room-full service/fullauth/Windowsoriginal/LAN/Internet/gate. Native selector1 equality block emulated with modeled singleton/count indexing, no selector1 wire/UI-name proof. Capacity map2788 not universalclientmax; dump includes12/24. Raw/source/binary/DB/history preserved. "
+    },
+    {
+      "summary": "Native selector123FA10/+9C=1 invokes equal nonempty group count check/DCB185return7; selector0 skips.14native-block emulation cases; runtime two positive8slot runs observe selector0. UI labels and selector1 input remain candidate/unknown.",
+      "source": "kr_static",
+      "status": "confirmed",
+      "method": "emulation",
+      "canonical": "docs/PROTOCOL.md#battle-eight-roster",
+      "evidence": [
+        "RE-0002",
+        "RE-0426",
+        "RE-0424",
+        "RE-0428"
+      ],
+      "limits": "One actual modified Wine CA per run; remaining player rows synthetic; runtime94ee93 CP018/019 differs from CP146 e9bb4766. Stub inputs/IDs/Ready/timing design; inherited init suppression1A966FC=0 declared. No121/startreply/loading/Battle8/eight actual peers/UDPmesh/room-full service/fullauth/Windowsoriginal/LAN/Internet/gate. Native selector1 equality block emulated with modeled singleton/count indexing, no selector1 wire/UI-name proof. Capacity map2788 not universalclientmax; dump includes12/24. Raw/source/binary/DB/history preserved. "
+    },
+    {
+      "summary": "VNroom knowledge and oldKRweb/user descriptions delimit question, not KR wire or Mission/Respawn rules. No8peer service implemented; eight real peers remain explicit gap.",
+      "source": "design",
+      "status": "candidate",
+      "method": "documentation",
+      "canonical": "docs/PROTOCOL.md#battle-eight-roster",
+      "evidence": [
+        "RE-0423",
+        "RE-0010"
+      ],
+      "limits": "One actual modified Wine CA per run; remaining player rows synthetic; runtime94ee93 CP018/019 differs from CP146 e9bb4766. Stub inputs/IDs/Ready/timing design; inherited init suppression1A966FC=0 declared. No121/startreply/loading/Battle8/eight actual peers/UDPmesh/room-full service/fullauth/Windowsoriginal/LAN/Internet/gate. Native selector1 equality block emulated with modeled singleton/count indexing, no selector1 wire/UI-name proof. Capacity map2788 not universalclientmax; dump includes12/24. Raw/source/binary/DB/history preserved. Mission4/boss/respawn/random/score remain references only in this scope."
+    }
+  ],
+  "verification": [
+    {
+      "check": "527 raw/native/isolation/frozeninputs/slot/count/capacity/click/capturedframeCRC joins plus retained negatives",
+      "result": "pass",
+      "evidence": [
+        "RE-0428",
+        "RE-0120"
+      ],
+      "limits": "One actual modified Wine CA per run; remaining player rows synthetic; runtime94ee93 CP018/019 differs from CP146 e9bb4766. Stub inputs/IDs/Ready/timing design; inherited init suppression1A966FC=0 declared. No121/startreply/loading/Battle8/eight actual peers/UDPmesh/room-full service/fullauth/Windowsoriginal/LAN/Internet/gate. Native selector1 equality block emulated with modeled singleton/count indexing, no selector1 wire/UI-name proof. Capacity map2788 not universalclientmax; dump includes12/24. Raw/source/binary/DB/history preserved."
+    },
+    {
+      "check": "14 native equality-block cases; compared guard/getter bytes runtime copy versus modO",
+      "result": "pass",
+      "evidence": [
+        "RE-0002",
+        "RE-0429",
+        "RE-0428"
+      ],
+      "limits": "One actual modified Wine CA per run; remaining player rows synthetic; runtime94ee93 CP018/019 differs from CP146 e9bb4766. Stub inputs/IDs/Ready/timing design; inherited init suppression1A966FC=0 declared. No121/startreply/loading/Battle8/eight actual peers/UDPmesh/room-full service/fullauth/Windowsoriginal/LAN/Internet/gate. Native selector1 equality block emulated with modeled singleton/count indexing, no selector1 wire/UI-name proof. Capacity map2788 not universalclientmax; dump includes12/24. Raw/source/binary/DB/history preserved."
+    },
+    {
+      "check": "REAanalyze_functionDCAD80 timeout450s; no successful dossier claimed; cached and targeted native fallback retained",
+      "result": "fail",
+      "evidence": [
+        "RE-0121"
+      ],
+      "limits": "Tool timeout; does not negate separate retained runtime/static/emulation evidence."
+    },
+    {
+      "check": "Docs/catalog/GitHub links/artifact identity",
+      "result": "pass",
+      "evidence": [
+        "RE-0004",
+        "RE-0005",
+        "RE-0003"
+      ],
+      "limits": "Mechanical consistency only; required local/history checker runs again before commit/merge; independent review waived."
+    }
+  ],
+  "evidence": [],
+  "evidence_manifests": [
+    {
+      "path": "docs/evidence/checkpoints/evidence/CP147-eight-player.json",
+      "bytes": 110739,
+      "sha256": "77199f9f6ead185de65e8c2b4f35eff568709fb3e2d3b0d016a26156c4a72047",
+      "count": 449
+    }
+  ],
+  "delta": {
+    "added": [
+      "New bounded8slot/4v4/1v7/ninthcapacity runtime and nativebalanceblock; canonical sources/catalog/issue14 linked."
+    ],
+    "corrected": [
+      "Initial guestflag2 choice not Ready; negative preserved, changedinput in newruns.",
+      "Early warmup/tickcapacity errors distinct from actualclick after117; no blanket no-reject assertion.",
+      "8max historicalweb reference narrowed to map-specificnativeproof, not wholeclientcap or8realclients."
+    ],
+    "superseded": [
+      "No previous complete checkpoint/next-step rewritten. Owner8playerquestion has scoped answer; current explicitendpointintegration order retained."
+    ]
+  },
+  "blockers": [
+    "No8actualclient/8peer service/121load/Battle8 or originalroomfull admission.",
+    "Selector1 wire/UI source and mapping localized Manner/Free not yet measured; Mission/Respawn out of bounded Battle branch.",
+    "CurrentPLAN explicitservicechannelendpoint/restoredUDPcapture still next; fullmatch/K6a/LAN/Internet/gates remain open."
+  ],
+  "next_steps": [
+    {
+      "id": "NEXT-SERVICE-CHANNEL-ENDPOINT",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "Continue existing PLAN endpoint API/CLI/defaultfixture tests then frozen directnativecopy run with restoredUDPcapture; CP148 periodic audit due. Eightpeer integration follows two/fourclient baseline per PLAN; reuse CP147 instead of repeatingmap/roster.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    }
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-11-06T00:26:41.251206+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "Codex solo RE/runtime/self-check; no independent approval.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Owner instructed solo without workers/review."
+    }
+  },
+  "docs_sync": [
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "CP147 scoped8roster/capacity/team findings, unknowns and navigation synchronized; PLAN remains sole work order; gates unchanged."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "CP147 scoped8roster/capacity/team findings, unknowns and navigation synchronized; PLAN remains sole work order; gates unchanged."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "updated",
+      "reason": "CP147 scoped8roster/capacity/team findings, unknowns and navigation synchronized; PLAN remains sole work order; gates unchanged."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "updated",
+      "reason": "CP147 scoped8roster/capacity/team findings, unknowns and navigation synchronized; PLAN remains sole work order; gates unchanged."
+    },
+    {
+      "path": "docs/features.json",
+      "state": "updated",
+      "reason": "CP147 scoped8roster/capacity/team findings, unknowns and navigation synchronized; PLAN remains sole work order; gates unchanged."
+    },
+    {
+      "path": "docs/COVERAGE.md",
+      "state": "updated",
+      "reason": "CP147 scoped8roster/capacity/team findings, unknowns and navigation synchronized; PLAN remains sole work order; gates unchanged."
+    },
+    {
+      "path": "docs/evidence/eight-player/README.md",
+      "state": "updated",
+      "reason": "CP147 scoped8roster/capacity/team findings, unknowns and navigation synchronized; PLAN remains sole work order; gates unchanged."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/review.json",
+      "state": "updated",
+      "reason": "CP147 scoped8roster/capacity/team findings, unknowns and navigation synchronized; PLAN remains sole work order; gates unchanged."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
+      "state": "updated",
+      "reason": "CP147 scoped8roster/capacity/team findings, unknowns and navigation synchronized; PLAN remains sole work order; gates unchanged."
+    }
+  ]
+}

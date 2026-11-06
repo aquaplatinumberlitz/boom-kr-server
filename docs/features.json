@@ -1,7 +1,7 @@
 {
   "schema": "kre-feature-index-v1",
   "build": "KR00967",
-  "as_of": "2026-11-06 CP145",
+  "as_of": "2026-11-06 CP147",
   "sources": {
     "plan": "docs/PLAN.md",
     "contract": "docs/PROTOCOL.md",
@@ -380,7 +380,8 @@
           "docs/evidence/auth-profile/README.md",
           "docs/evidence/current-profile-c/README.md",
           "docs/evidence/preclock-eof/README.md",
-          "docs/evidence/nmco-locale-stability/README.md"
+          "docs/evidence/nmco-locale-stability/README.md",
+          "docs/evidence/peer-endpoints/README.md#cp146"
         ]
       },
       "coverage": {
@@ -418,7 +419,8 @@
               "docs/evidence/auth-profile/README.md",
               "docs/evidence/current-profile-c/README.md",
               "docs/evidence/preclock-eof/README.md",
-              "docs/evidence/nmco-locale-stability/README.md"
+              "docs/evidence/nmco-locale-stability/README.md",
+              "docs/evidence/peer-endpoints/README.md#cp146"
             ]
           },
           "windows_original": {
@@ -671,7 +673,8 @@
         "evidence": [
           "docs/evidence/duo-room-round/README.md",
           "docs/evidence/probe-service/README.md",
-          "docs/evidence/host-normal-back/README.md"
+          "docs/evidence/host-normal-back/README.md",
+          "docs/evidence/eight-player/README.md"
         ]
       },
       "coverage": {
@@ -690,7 +693,8 @@
         "kr_static": {
           "state": "partial",
           "refs": [
-            "docs/PROTOCOL.md#duo-room-round"
+            "docs/PROTOCOL.md#duo-room-round",
+            "docs/PROTOCOL.md#battle-eight-roster"
           ]
         },
         "emulation": {
@@ -704,7 +708,8 @@
             "state": "observed",
             "refs": [
               "docs/evidence/duo-room-round/README.md",
-              "docs/evidence/host-normal-back/README.md"
+              "docs/evidence/host-normal-back/README.md",
+              "docs/evidence/eight-player/README.md"
             ]
           },
           "windows_original": {
@@ -767,7 +772,8 @@
         "evidence": [
           "docs/evidence/room-player/README.md",
           "docs/evidence/probe-service/README.md",
-          "docs/evidence/host-normal-back/README.md"
+          "docs/evidence/host-normal-back/README.md",
+          "docs/evidence/eight-player/README.md"
         ]
       },
       "coverage": {
@@ -786,13 +792,15 @@
         "kr_static": {
           "state": "partial",
           "refs": [
-            "docs/PROTOCOL.md#room-player"
+            "docs/PROTOCOL.md#room-player",
+            "docs/PROTOCOL.md#battle-eight-roster"
           ]
         },
         "emulation": {
           "state": "checked",
           "refs": [
-            "docs/evidence/room-player/README.md"
+            "docs/evidence/room-player/README.md",
+            "docs/evidence/eight-player/README.md"
           ]
         },
         "runtime": {
@@ -800,7 +808,8 @@
             "state": "observed",
             "refs": [
               "docs/evidence/room-player/README.md",
-              "docs/evidence/host-normal-back/README.md"
+              "docs/evidence/host-normal-back/README.md",
+              "docs/evidence/eight-player/README.md"
             ]
           },
           "windows_original": {
@@ -2833,7 +2842,8 @@
           "docs/evidence/peer-endpoints/README.md#cp140",
           "docs/evidence/peer-endpoints/README.md#cp141",
           "docs/evidence/peer-endpoints/README.md#cp142",
-          "docs/evidence/peer-endpoints/README.md#cp145"
+          "docs/evidence/peer-endpoints/README.md#cp145",
+          "docs/evidence/peer-endpoints/README.md#cp146"
         ]
       },
       "coverage": {
@@ -2868,7 +2878,8 @@
               "docs/evidence/peer-endpoints/README.md#cp140",
               "docs/evidence/peer-endpoints/README.md#cp141",
               "docs/evidence/peer-endpoints/README.md#cp142",
-              "docs/evidence/peer-endpoints/README.md#cp145"
+              "docs/evidence/peer-endpoints/README.md#cp145",
+              "docs/evidence/peer-endpoints/README.md#cp146"
             ]
           },
           "windows_original": {
@@ -3598,7 +3609,8 @@
           "docs/evidence/peer-endpoints/README.md#cp142",
           "docs/evidence/peer-endpoints/README.md#cp143",
           "docs/evidence/peer-endpoints/README.md#cp144",
-          "docs/evidence/peer-endpoints/README.md#cp145"
+          "docs/evidence/peer-endpoints/README.md#cp145",
+          "docs/evidence/peer-endpoints/README.md#cp146"
         ]
       },
       "coverage": {
@@ -3719,7 +3731,8 @@
               "docs/evidence/peer-endpoints/README.md#cp142",
               "docs/evidence/peer-endpoints/README.md#cp143",
               "docs/evidence/peer-endpoints/README.md#cp144",
-              "docs/evidence/peer-endpoints/README.md#cp145"
+              "docs/evidence/peer-endpoints/README.md#cp145",
+              "docs/evidence/peer-endpoints/README.md#cp146"
             ]
           },
           "windows_original": {

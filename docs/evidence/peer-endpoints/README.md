@@ -283,3 +283,30 @@ Khôngnânggate hoặcgộpCP144EOFvàoR2này. Low8wrap/currentforgery/wholeUDP/
 fullinventory/CP137complexUI/sharedgeometry mở. CP145selfcheck/pendingPR/reviewwaived; AUD044qua144/
 kế148. TiếpPLAN endpointTCPchain/directbootstrap-login đểbỏchildloopbackforward, reuseCP008/015;
 không tuyênbố IPpeerconfig là hoànthiện TCPLANflow.
+
+
+<a id="cp146"></a>
+## CP146 — Bỏ childTCPforward, directprivatebootstrap/WCP/auth/channel và2cycles
+
+Baseline CP145/PR216 merge`cca0427`, productionkhôngđổi/reuse231tests. [Contract](../../PROTOCOL.md#direct-tcp-endpoints),
+[câu hỏi](../../RESEARCH.md#gap-diagnostic-service), [thứ tự](../../PLAN.md#current-order).
+`direct-tcp-endpoints-r1/reuse-question.json` pinCP006–008/CP015fields/currentprofiles/locators;
+newgamecopies/binarye9bb4766 giữ nguyên; chỉ privatehostmap+typedredirect7IP, khôngpatchsourcebinary/
+packDB/cache nguồn. SSI multisvrcachevẫnoriginalIPkhôngchứngminhactiveendpoints; runtimecallerscónguồn.
+
+Run344,644s/exit0/**1888raw**, run.json SHA256
+`10b306429a95ea0cbedd5deae58806999c07681cf4133f1ca4a44a36552283de`.
+`direct-verification.json`49checks/eightnativeconnects/sockaddr/callerframes/servicepeers:
+A3848/3848/3848/3858, B3838/3838/3848/3858, tấtcả đích10.77.0.1; first3actualpeerA.2/B.3,
+channelrootproxy.1→service23858. Nochildforward/helperlogs; actualCA+wineserverNSđúng.
+`fixture-change.json` pinbefore/afterS2C7typedIPonly/seq52/header/tail/3858; native2clock/result/
+return/110/reset/finalReady đủ.2080basic/575peer/70pickup/87TCPguard/25Readychecks cùngrun;
+models/nativegetters vàmanualrender ởreport/hash riêng. `visual-review.json` pin4originalsđãxem/phòng/
+Readybadge. Frozeninputs/cleanup/rawseal đầyđủ, khôngsame-runLAN/gateclaim.
+
+**analysis-limits.json:** compositionremovedUDPcaptureinitializer cùngforwardblock, nênPCAPcount0,
+khôngwirejoins. Giữsourcefrozentrongrun, khôngbùbằngcapturecũ; nativepeerreportsvalidscope riêng.
+Initialstackregexonly#0 sửaparserđọcthêmfromlines/8frames, khôngrawrewrite. Hostmap+redirectđổi
+cùnglúc, khôngcausalcachefieldclaim; hollowWCPkhôngfullschema. CP146selfcheck/pendingPR/reviewwaived;
+AUD044through144/next148. TiếpPLAN explicitservicechannelendpoint/defaultfixtureunchanged +native
+followuprestoredcapture; fullauth/LAN/NAT/Internet/gates/CP137UI/sharedgeometry/fullinventory mở.

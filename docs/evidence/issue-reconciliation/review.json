@@ -135,11 +135,11 @@
         "KR-F001",
         "KR-F015"
       ],
-      "known": "CP144/AUD044PR215merged13b9f3a; CP145directvirtualexactR1BtoAframe/sametuple/validchecksum→nativeingress/endpoint/queue+19drain−19/key59expected56/E667C2drop/noapply;13currentpositive/freshR2progress/2normalguardcycles/Ready. R1transportchecksum-miss/control andR2offloadsoffscope retained.",
-      "remaining": "ChildTCPforward/bootstrapWCPauthredirectchannelloopbackfixturedependency; directTCPendpointflow/nativestages needverify. Low8wrap/currentforgery/fullUDP/authauthority/inventory/physicalLAN/NAT/gates/CP137UI/sharedgeometry remain.",
-      "next_test": "PLAN reuseCP006–008WCPfields/CP014015redirectconsumer/currentprofiles andnativeconnectionrecords; mapcaller/endpoint/fixturetypedfield/seq/IPendianness thennewprofile/copy/harnessdirectchildTCPtorootprivatestubwithoutchildforward. No sourcefixture/binarymutation oraccept-as-loginclaim.",
+      "known": "CP145/PR216mergedcca0427; CP146eightnativeTCPconnectsockaddr/caller/directprivatefirst3peersA.2/B.3/channelrootproxy/private7IP/nochildforward/binaryunchanged/native2cycles/Ready. UDPPCAPinitomitted/compositionlimitpreserved. CP147: native roster8/Start4–4 và1–7/capacity8 so9; chưa8 client thật.",
+      "remaining": "ExplicitproductionchannelIPv4/portconfig/defaultfixturebyteidentity+restoredUDPcapturefollowup missing. Fullauth/schema/cachefieldcause/physicalLAN/NAT/gates/CP137UI/sharedgeometry/fullinventory remain. Selector1 wire/UI và service8 peer/Battle8 chưa kiểm.",
+      "next_test": "PLAN reuseCP015/146redirect7typedcontract; serviceAPI/CLIexplicitendpoint/defaultfixtureunchanged/IPv4portpairvariantprelistenregression, thennativebaseprofile/nochildforward/privatehostmap/rootproxy/restoredcapture/2cycles/Ready.",
       "acceptance": "Epic checklist: linkedscopedtask/evidence+authoritymatrix vàacceptancegate ởPLAN; từngtaskđóng khôngđóngepic/K5/K6a.",
-      "reason": "ExactolddirectUDP/currentkeybranch scopedgapclosed; TCPendpointchain nowpracticalnextdependency, noLAN/gateclosure.",
+      "reason": "DirectTCProute gapclosedscopednativeproof; nofalseUDPPCAPclaimorfullauth/LANgate. Operatorhostmap+fixturechange notisolatedcachecausality.",
       "sources": [
         "docs/PROTOCOL.md#authority",
         "docs/RESEARCH.md#feature-gaps",
@@ -166,7 +166,9 @@
         "docs/PROTOCOL.md#virtual-movement-cycles",
         "docs/PROTOCOL.md#virtual-tcp-guard-cycles",
         "docs/PROTOCOL.md#virtual-pending-guest-eof",
-        "docs/PROTOCOL.md#virtual-exact-old-udp"
+        "docs/PROTOCOL.md#virtual-exact-old-udp",
+        "docs/PROTOCOL.md#direct-tcp-endpoints",
+        "docs/PROTOCOL.md#battle-eight-roster"
       ],
       "evidence": [
         "docs/evidence/current-movement-cycles/README.md",
@@ -190,7 +192,9 @@
         "docs/evidence/peer-endpoints/README.md#cp142",
         "docs/evidence/peer-endpoints/README.md#cp143",
         "docs/evidence/peer-endpoints/README.md#cp144",
-        "docs/evidence/peer-endpoints/README.md#cp145"
+        "docs/evidence/peer-endpoints/README.md#cp145",
+        "docs/evidence/peer-endpoints/README.md#cp146",
+        "docs/evidence/eight-player/README.md"
       ],
       "prs": [
         173,
@@ -230,7 +234,8 @@
         212,
         213,
         214,
-        215
+        215,
+        216
       ],
       "successors": []
     },
@@ -557,6 +562,6 @@
       "successors": []
     }
   ],
-  "as_of_utc": "2026-11-05T23:35:08.942469+00:00",
-  "limits": "Dated manual dispositions through CP145; snapshotcapture UTC only/no semantic or gate certification; immutable completehistory."
+  "as_of_utc": "2026-11-05T23:55:09.973844+00:00",
+  "limits": "Dated manual dispositions through CP146; snapshotcaptureUTC only/no semantic or gate certification; immutable completehistory."
 }

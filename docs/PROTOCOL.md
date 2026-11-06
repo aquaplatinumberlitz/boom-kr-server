@@ -1,6 +1,6 @@
 # KR 00967 — contract tương thích client gốc
 
-Revision kr-legacy-contract-r1; cập nhật06/11/2026 JST (CP145; AUD044 quaCP144, kếCP148).
+Revision kr-legacy-contract-r1; cập nhật06/11/2026 JST (CP146; AUD044 quaCP144, kếCP148).
 **Contract có bằng chứng từng phần; chưa nghiệm thu full codec K2**.
 Lộ trình và thứ tự task chỉ giữ ở [REWRITE_PLAN — KRE](PLAN.md).
 Đây là contract của repo server KR. ADR0009 của bản viết lại là nguồn lịch sử để so sánh;
@@ -427,6 +427,43 @@ không gán inner context thành roster/spawn/seed đủ contract. Width/cursor 
 Trạng thái tại CP019 dừng sau104. Receiver/scene đã được bổ sung ở [CP020](#start-reply);
 bước tiếp hiện hành chỉ giữ ở [RESEARCH](RESEARCH.md#q-023). Không copy start501 của VN.
 K2/K3/K4 và full identity/auth/user/cache/vanilla/multiplayer vẫn mở.
+
+<a id="battle-eight-roster"></a>
+### Capacity Battle, 8 slot và điều kiện chia đội — CP147
+
+**`kr_runtime/confirmed`, phạm vi một copy Wine chẩn đoán với roster tổng hợp**:
+`ExVillage01`/code278 nhận đủ slot0–7; Start đếm8 người/2 đội/capacity8. Hai ca
+4–4 và1–7 với guest Ready đều trả Start-check0 và phát **C→S104 thực tế**. Ca9 người
+trên cùng map đếm9/capacity8, trả5, không phát104. Đây là kiểm roster/Start phía client,
+**chưa có8 client thật, start reply/loading/Battle8 người hoặc admission room-full của server**.
+[Recipe, control thất bại, raw/hash và giới hạn](evidence/eight-player/README.md).
+
+Tái dùng CP019: dump runtime `CPlayMapInfoList`1151×52, SHA`49727b4d…`, getter`EDC890`
+đọc record+24hex; code278 capacity8. Dump cũng có record capacity12/24: không biến giới hạn
+của map đang kiểm thành giới hạn mọi mode/toàn client. VN `oc_a-room.md`/`lobby.md` chỉ
+dẫn cách xét roster/Ready; field ledger106/110 và opcode104 của phép thử đều lấy từ KR.
+
+**`kr_static/confirmed` + emulation có mô hình**, không phải runtime của Tiêu chuẩn:
+`DCAD80` duyệt16 slot ở nhánh này, đếm người và số nhóm khác rỗng; `DCB0DD` so số người
+với capacity. Đường capacity thông thường tới`DCB0F2` trả5 khi vượt; các nhánh ngoại lệ
+mode ở sau vẫn giữ giới hạn chưa kiểm. `123FA10` đọc manager+9C; nếu giá trị bằng1,
+`DCB12C–DCB191` đòi mỗi nhóm có số người bằng thương nguyên players/teams, sai trả7.
+14 ca emulation giữ native getter/phép chia/so sánh, mô hình singleton và truy cập bảng đếm:
+4–4 và2–2–2–2 qua;1–7,3–5,3–4 bị chặn khi selector1. Selector0 bỏ kiểm cân bằng này;
+hai ca runtime4–4/1–7 đều quan sát selector0 tại caller`DCB138`.
+
+| Mô tả đối chiếu | Mức chứng minh và phần chưa có |
+|---|---|
+| Tự do cho đội lệch1–7; Tiêu chuẩn/Manner đòi các đội bằng nhau | Web KR cũ và mô tả chủ dự án là tham khảo. Hành vi selector0/1 ở trên có nguồn KR; **tên UI và đường wire khởi tạo/chọn selector1 chưa xác nhận**, chưa gọi hai nhãn này là enum KR đã phục hồi. |
+| Battle: nhốt, đồng đội cứu, địch diệt; kim tự thoát | Dùng lại [contact/cứu](#collision-rescue), [kim](#needle-selfescape), [hai kết quả/reset](#rescue-two-results); không đo lại và không suy luật thắng tổng quát từ policy stub. |
+| Nhiệm vụ4 người, quái/boss; Hồi sinh tái xuất hiện ngẫu nhiên và đối thủ được điểm | Tham khảo lịch sử/chủ dự án; **hành vi KR00967 chưa kiểm trong nhánh này**, không nhập luật respawn/score vào Battle thường hoặc mở quét mode trước mục tiêu chơi. |
+
+Control đầu đặt guest flags2 thay vì flags4 đã thấy native check3/notice chưa Ready;
+giữ nguyên raw. Ba run sửa input là run riêng, không ép return/count/đội từ debugger.
+Các cảnh báo capacity lúc table/117 chưa tới được giữ riêng với kết quả click sau init.
+Copy `94ee93dc…` dùng lại CP018/019, **khác copy `e9bb4766…` của CP146**; không cộng các run
+thành integration/gate. Service hiện chỉ có role A/B/C và slot cố định; chưa triển khai8 peer.
+Nguồn câu hỏi và phép đo tiếp ở [RESEARCH](RESEARCH.md#gap-roster-ready-host), thứ tự ở [PLAN](PLAN.md#current-order).
 
 <a id="start-reply"></a>
 ### Phản hồi start và init CGameStage — CP020
@@ -5061,3 +5098,35 @@ Low8wrap256, forgedcurrentkey/auth, UDPtypemode/reliability/fullgrammar/NAT/real
 K6a/gates/CP137complexUI/sharedgeometry/fullinventory vẫn mở. TCP vẫn dùng childloopbackforward và
 fixturelocalredirect; native sourceIP crossvirtual proof không đồng nghĩa bootstrap/login trực tiếp
 trên LAN. Bước tiếp duy nhất PLAN là gỡ dependency TCPforward bằng đối chiếu endpoint chain.
+
+
+<a id="direct-tcp-endpoints"></a>
+### Direct private TCP endpoint chain trên copy — CP146
+
+**kr_runtime/confirmed hẹp; hosts/fixtureaddress là design.** [Recipe/raw/hash](evidence/peer-endpoints/README.md#cp146).
+Reuse CP006–008 WCP và CP015 typedredirect7 consumer. NewgameA/Bcopies có binary cùng SHAe9bb4766;
+files-only hostmap cácservicehost→10.77.0.1, S→C7seq52 chỉ typedIPv4 `0x7f000001→0x0a4d0001`,
+port3858/kind10/index0/header/tail giữ. Bỏ childTCPforward; rootmeasurementTCPproxy3858→23858 còn
+để selectedsame/oldTCPguard, UDP khôngproxy. Profile riêng này chưa là configredirect production.
+
+Read-only nativeconnect trước IAT16EA778 ở14F4923/14F4894 và backtrace8frames ghép actualaccept:
+
+| Connection | Nativecallsite/caller | A endpoint | B endpoint | Nguồn/giới hạn |
+|---|---|---|---|---|
+| Bootstrap |14F4923←12368E2←1234875|10.77.0.1:3848|10.77.0.1:3838|Actualsockaddr/servicepeerA.2/B.3; portvariation observed, không fullselectionlaw|
+| WCP |14F4894←13AEEE5←13AD6C5←1255C0B←1255A69←1234EAF|10.77.0.1:3848|10.77.0.1:3838|Actualsocket2; knownhello/eight hollowresponses, không dựngendpointlayouttừVN|
+| Auth |14F4894←13AEEE5←13AD6C5←1255C0B←1255A69←110488D|10.77.0.1:3848|10.77.0.1:3848|Actualsocket3/op1/9/5/replies4/15/62/7; hostname/cachefieldcausechưaisolate|
+| Channel |14F4894←13AEEE5←13ADA06←13AD97E←125540E←110182E|10.77.0.1:3858|10.77.0.1:3858|S2C7typedprivateIP→rootproxy→service23858; servicepeer.1 là proxy, khôngdirectclientpeer|
+
+Không có child127forwardprocess, cả actualCA+wineserverNS kiểmđúng; không loginNexonthật.
+Cùngrun2nativeclocks/175302/1803/110/reset/Ready và4peerwindows/nativekey/target/currentprogress,
+BombFireeffects/8same4oldTCPguard; binary unchanged. C2S99IP0 vẫn actualNIC.2/.3 trongcađo,
+không suy99field1publicIP/auth. Đây là modifiedWine/nativehollowauthfixture, khôngfullauth/K3gate.
+
+Giới hạn đo: khi bỏforwardblock, harness bỏ nhầm khởi tạo UDPcapture; **khôngUDPPCAP trongrun này**.
+Không gọi nativepeerreport là exactvethwirejoin, không ghép CP145PCAP vào run hiện tại. Frozenharness
+không sửa giữarun; sẽkhôiphục capturetrướcphéptiếp. Trace TCP49joins, native2cycles/2080sourcejoins,
+575peerjoins/70pickup/87guard/25Ready vàcopiedmodels táchscope. NoStart3/EOFfault/oldUDP trongrun.
+Scope TCPbootstrap/WCP/auth/channelprivate route verified; originalIPcachecause/semantics/schema/
+fullcodec/auth/realLAN/NAT/Internet/fullmatch/K6a/gates/CP137UI/sharedgeometry/fullinventory mở.
+TiếpPLAN đưa endpoint7 thành explicitserviceconfig/defaultfixturepreserved rồiverifycaptuređầyđủ.
