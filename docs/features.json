@@ -1,7 +1,7 @@
 {
   "schema": "kre-feature-index-v1",
   "build": "KR00967",
-  "as_of": "CP176",
+  "as_of": "CP177",
   "sources": {
     "plan": "docs/PLAN.md",
     "contract": "docs/PROTOCOL.md",
@@ -3671,7 +3671,7 @@
       ],
       "lifecycle": "active",
       "refs": {
-        "contract": "docs/PROTOCOL.md#a-survivor-admission",
+        "contract": "docs/PROTOCOL.md#replacement-profile",
         "question": "docs/RESEARCH.md#gap-disconnect-replacement",
         "plan": "docs/PLAN.md#current-order",
         "evidence": [
@@ -3707,7 +3707,9 @@
           "docs/PROTOCOL.md#a-c-first-bomb",
           "docs/evidence/peer-endpoints/README.md#cp176-in-progress",
           "docs/PROTOCOL.md#a-c-basic-cycles",
-          "docs/evidence/peer-endpoints/README.md#cp176"
+          "docs/evidence/peer-endpoints/README.md#cp176",
+          "docs/PROTOCOL.md#replacement-profile",
+          "docs/evidence/peer-endpoints/README.md#cp177"
         ]
       },
       "coverage": {
@@ -3771,7 +3773,9 @@
               "docs/PROTOCOL.md#a-c-first-bomb",
               "docs/evidence/peer-endpoints/README.md#cp176-in-progress",
               "docs/PROTOCOL.md#a-c-basic-cycles",
-              "docs/evidence/peer-endpoints/README.md#cp176"
+              "docs/evidence/peer-endpoints/README.md#cp176",
+              "docs/PROTOCOL.md#replacement-profile",
+              "docs/evidence/peer-endpoints/README.md#cp177"
             ]
           },
           "windows_original": {
@@ -3816,7 +3820,9 @@
             "docs/PROTOCOL.md#loading-timeout",
             "docs/PROTOCOL.md#loading-timeout-positive",
             "docs/PROTOCOL.md#a-survivor-admission",
-            "docs/evidence/peer-endpoints/README.md#cp175"
+            "docs/evidence/peer-endpoints/README.md#cp175",
+            "docs/PROTOCOL.md#replacement-profile",
+            "docs/evidence/peer-endpoints/README.md#cp177"
           ]
         },
         "integration": {
@@ -3845,7 +3851,9 @@
             "docs/PROTOCOL.md#a-survivor-admission",
             "docs/evidence/peer-endpoints/README.md#cp175",
             "docs/PROTOCOL.md#a-c-basic-cycles",
-            "docs/evidence/peer-endpoints/README.md#cp176"
+            "docs/evidence/peer-endpoints/README.md#cp176",
+            "docs/PROTOCOL.md#replacement-profile",
+            "docs/evidence/peer-endpoints/README.md#cp177"
           ]
         },
         "gate": {
@@ -3876,7 +3884,7 @@
       ],
       "lifecycle": "active",
       "refs": {
-        "contract": "docs/PROTOCOL.md#probe-service",
+        "contract": "docs/PROTOCOL.md#replacement-profile",
         "question": "docs/RESEARCH.md#gap-diagnostic-service",
         "plan": "docs/PLAN.md#current-order",
         "evidence": [
@@ -4003,7 +4011,9 @@
           "docs/PROTOCOL.md#a-c-first-bomb",
           "docs/evidence/peer-endpoints/README.md#cp176-in-progress",
           "docs/PROTOCOL.md#a-c-basic-cycles",
-          "docs/evidence/peer-endpoints/README.md#cp176"
+          "docs/evidence/peer-endpoints/README.md#cp176",
+          "docs/PROTOCOL.md#replacement-profile",
+          "docs/evidence/peer-endpoints/README.md#cp177"
         ]
       },
       "coverage": {
@@ -4158,7 +4168,9 @@
               "docs/PROTOCOL.md#a-c-first-bomb",
               "docs/evidence/peer-endpoints/README.md#cp176-in-progress",
               "docs/PROTOCOL.md#a-c-basic-cycles",
-              "docs/evidence/peer-endpoints/README.md#cp176"
+              "docs/evidence/peer-endpoints/README.md#cp176",
+              "docs/PROTOCOL.md#replacement-profile",
+              "docs/evidence/peer-endpoints/README.md#cp177"
             ]
           },
           "windows_original": {
@@ -4257,7 +4269,9 @@
             "server/test_room_team_mode.py",
             "docs/PROTOCOL.md#current-mode-host-rejoin",
             "docs/PROTOCOL.md#a-survivor-admission",
-            "docs/evidence/peer-endpoints/README.md#cp175"
+            "docs/evidence/peer-endpoints/README.md#cp175",
+            "docs/PROTOCOL.md#replacement-profile",
+            "docs/evidence/peer-endpoints/README.md#cp177"
           ]
         },
         "integration": {
@@ -4345,7 +4359,9 @@
             "docs/PROTOCOL.md#a-survivor-admission",
             "docs/evidence/peer-endpoints/README.md#cp175",
             "docs/PROTOCOL.md#a-c-basic-cycles",
-            "docs/evidence/peer-endpoints/README.md#cp176"
+            "docs/evidence/peer-endpoints/README.md#cp176",
+            "docs/PROTOCOL.md#replacement-profile",
+            "docs/evidence/peer-endpoints/README.md#cp177"
           ]
         },
         "gate": {

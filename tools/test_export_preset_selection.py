@@ -13,6 +13,14 @@ import export_probe_profile as exporter
 
 
 class PresetSelectionTests(unittest.TestCase):
+    def test_replacement_preset_only_adds_explicit_vacancy_policy(self):
+        basic = json.loads(exporter.PRESETS['two-client-basic'].read_text())['profile']
+        replacement = json.loads(exporter.PRESETS['two-client-basic-replacement'].read_text())['profile']
+        self.assertEqual(replacement.pop('replacement_slot'),
+                         {'mode': 'vacant_AB_slot', 'capacity': 'vacated_slot'})
+        self.assertEqual(replacement, basic)
+        self.assertEqual(set(replacement['bomb_capacity']), {'A', 'B'})
+
     def test_cli_selects_exact_profile_and_rejects_drift_overwrite_and_flags(self):
         repo = Path(__file__).resolve().parents[1]
         with tempfile.TemporaryDirectory(prefix='test-presets-', dir=repo / 'local') as tmp:

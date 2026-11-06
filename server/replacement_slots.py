@@ -22,7 +22,9 @@ PINS = {
 
 
 def validate(profile):
-    if profile.data['replacement_slot'] != {'mode': 'vacant_AB_slot'}:
+    policy = profile.data['replacement_slot']
+    if policy not in ({'mode': 'vacant_AB_slot'},
+                      {'mode': 'vacant_AB_slot', 'capacity': 'vacated_slot'}):
         raise ValueError('unsupported replacement_slot policy')
     if any(key in profile.data for key in ('rescue_contact', 'needle_escape')):
         raise ValueError('replacement_slot excludes specialized A/B lifecycle policies')
@@ -32,7 +34,10 @@ def validate(profile):
                 or hashlib.sha256(profile.body(alias)).hexdigest() != digest):
             raise ValueError('unsupported replacement_slot fixture: ' + alias)
     capacity = profile.data.get('bomb_capacity')
-    if capacity and 'C' not in capacity:
+    if policy.get('capacity') == 'vacated_slot':
+        if not isinstance(capacity, dict) or set(capacity) != {'A', 'B'}:
+            raise ValueError('vacated_slot capacity requires exactly A/B bomb_capacity')
+    elif capacity and 'C' not in capacity:
         raise ValueError('replacement_slot requires explicit C bomb_capacity')
 
 

@@ -135,11 +135,11 @@
         "KR-F001",
         "KR-F015"
       ],
-      "known": "CP175PR247merged; CP176twoACnormalbasiccycles/Ready2/4peerwindows/6C-A-A bombs/3effects/195statkeyreset/nativeA56→1/C0/results verified. Cfirstbomb23checks33native;1391basic/228packet810fields/708peer456getters/life23+16. ExactsourceCP175279tests reused.",
-      "remaining": "Reusable replacement preset/vacant-slotCcapacity notexported; C2/7manualslot1nativeinitial2 matched, max7stillpolicy. CpreReady/returnbeforefocusblack/thirdStart/generalreset/auth/formaldeps/gates/LANInternet8client remainopen.",
-      "next_test": "PLANsourcefirstCP051C0/currentC1/121slotstats; explicitvacancycapacity/preset/negativeguards +minimumC0/C1nativegetter/C118delta; no AC2cycles replay.",
+      "known": "CP176/PR248 merged; CP177 optional replacement preset/47pins/vacancy capacity, actual C0/C1 initial/118/159158 both current views,48relations each/33and42nativecases;284server7export tests. CP176 AC2normalcycles remain separate.",
+      "remaining": "Maxima/exhaustion/general membership/account resume/fullauth/cache/codec/control/dependency/gates/LANInternet8clients open; C0r2 startupSIGSEGV/jypc rootcause not fixed by passing independent control.",
+      "next_test": "PLAN source-first K0→K6a/authority acceptance mapping; K2a static criterion first, then one concrete missing deployment/runtime control; no known C0C1/AC2cycle replay.",
       "acceptance": "Epic checklist: linkedscopedtask/evidence+authoritymatrix vàacceptancegate ởPLAN; từngtaskđóng khôngđóngepic/K5/K6a.",
-      "reason": "CurrentlocalACnormalpathcompletewithinmeasuredbounds; fullmatch/gates distinct. AUD052periodicthrough176/next180, raw/failure/history unchanged.",
+      "reason": "Narrow exported-profile integration complete by explicit native delta; no automatic gate closure. AUD052through176/next180; all failure/raw history retained.",
       "sources": [
         "docs/PROTOCOL.md#authority",
         "docs/RESEARCH.md#feature-gaps",
@@ -190,7 +190,8 @@
         "docs/PROTOCOL.md#a-survivor-admission",
         "docs/evidence/peer-endpoints/README.md#cp175",
         "docs/PROTOCOL.md#a-c-basic-cycles",
-        "docs/evidence/peer-endpoints/README.md#cp176"
+        "docs/evidence/peer-endpoints/README.md#cp176",
+        "docs/PROTOCOL.md#replacement-profile"
       ],
       "evidence": [
         "docs/evidence/current-movement-cycles/README.md",
@@ -243,7 +244,8 @@
         "docs/evidence/peer-endpoints/README.md#cp171",
         "docs/evidence/peer-endpoints/README.md#cp172",
         "docs/evidence/peer-endpoints/README.md#cp173",
-        "docs/evidence/peer-endpoints/README.md#cp174"
+        "docs/evidence/peer-endpoints/README.md#cp174",
+        "docs/evidence/peer-endpoints/README.md#cp177"
       ],
       "prs": [
         173,
@@ -312,7 +314,8 @@
         242,
         243,
         244,
-        245
+        245,
+        248
       ],
       "successors": []
     },
@@ -639,6 +642,6 @@
       "successors": []
     }
   ],
-  "as_of_utc": "2026-11-06T18:30:01.790349+00:00",
+  "as_of_utc": "2026-11-06T19:12:57.908834+00:00",
   "limits": "Dated manual dispositions through CP146; snapshotcaptureUTC only/no semantic or gate certification; immutable completehistory."
 }

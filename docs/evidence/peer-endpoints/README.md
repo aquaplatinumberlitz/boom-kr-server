@@ -1419,3 +1419,45 @@ Cùng hai keys12345/12346: C/A/A IDs1–3,4–6, power1/1/2; actual142 hai view/
 A56→1/C0 trước cả175/180,195/stat/key/eligibility reset và CReady95/110/AStart2/Ready2. Không AC
 contest/oldUDP injection/disconnect/thirdStart, maximum/genericreset/fullauth/Windows/LANInternet/8client.
 Complete record/audit không tự chứng nhận gate; [AUD052](../checkpoints/audits/AUD052.json), kếCP180.
+
+
+<a id="cp177"></a>
+## CP177 — exported replacement preset, vacancy capacity và C0/C1 native delta
+
+Baseline CP176/[PR248](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/248) merged
+`bd34ed426ef0d5f863c2f47a97d98e95c7ea6602`; Codex solo/review waived, CP177 PR pending trước
+tích hợp. [Contract/giới hạn](../../PROTOCOL.md#replacement-profile), [gap](../../RESEARCH.md#gap-disconnect-replacement),
+[thứ tự duy nhất](../../PLAN.md#current-order). Không đổi source/config trong run; cleanup/seal
+hoàn tất trước đổi việc. Source binary/DB/assets giữ nguyên; default/old flag giữ behavior.
+
+Reuse CP051 C0 native stats1/1/5 và identity3, CP175 C1 binding/initial2/slot110, CP176 actualC118/
+159158 và hai normal ACcycles. Chỉ đo policy delta/export/currentbasicC0 còn thiếu; tránh chạy lại
+hai trận hoặc tìm lại codec/consumer. Known121/118/159/158/getter/frame oracles tái dùng, không VNwire.
+`reuse-question.json` từng run pin nguồn/known/mức chứng minh/gap/minimum; `profile.json` được export
+từ preset47pin, chỉ A/B capacity và derived-policy declaration.
+
+| Run local/research/codex/ | Kết quả | run.json SHA256 / thời lượng |
+|---|---|---|
+| replacement-profile-C1-r1 | Ahost/BguestEOF→Cslot1; native2/1/4, actualC118/ID1/owner1/159158both;843checks=632raw+163preflight+48relations;33nativepacket cases | `6068047d24bf8c5caf532db6069f401360424647714fab84fa7e5149d59c8f50` /207.311767302s |
+| replacement-profile-C0-r2 | Bstartup SIGSEGV/jypc.dll tạiVA79b5fa99;6transports/noC/no binding, không pass;215raw/clean | `5037639584dd5512e8ed0f3f716e82cdce86324086ddd51a5717cdacb34d00aa` /69.389981917s |
+| replacement-profile-C0-r3 | AhostEOF/Bpromotion→Cslot0; native1/1/5, actualC118/ID1/owner0/159158both;831checks=620raw+163preflight+48relations;42nativepacket cases | `e8fc40174f881e075850395815877ebb0a719a6fac66e9d5938ce7f50086d6f7` /205.812514754s |
+
+Hai positives có48quan hệ ngoài raw/preflight, cả hai actual C95/host104/121/99/barrier/clock và
+C native authID3/ownslot/currentkey. `profile-delta-verification.json`, `actor-fields.json`,
+`native-actual.json`, `chain-summary.json`, transformed oracle source+hash giữ rõ model/runtime.
+`raw-seal.json` verify163frozenfile mỗi run, original6sfuse/loading30s/total300s, exit0/0remainingPID.
+Model/getter oracle không là actual gamecall; inputreturn0 không làm proof cho118/entity.
+
+`replacement-profile-C0-r1` preparation-only assertion do overlapping text transform; chưa runtime,
+giữ profile/preparation report. R2 sửa cách chọn source span/role; R3 fresh sameconfig đối chứng
+startup, không code/binary patch hoặc nới deadline. `startup-failure-verification.json` giữ module/
+logSHA; đối chứng pass không xác định nguyên nhân SIGSEGV. Một số nhãn harness C0 còn wording cũ;
+verifier dùng actual slot/host/namespace/field, không nhãn. Scripts chuẩn bị/controller/wrapper/analyzer
+tên riêng; old complete artifacts giữ nguyên.
+
+284server/7export tests; strict missing/ambiguous/unknown/invalid-declaration, capacity-copy isolation,
+oldexplicit/default/admission/Ready/host/round guards và preset equality/relocation/hash drift. Các
+test dùng fixture tổng hợp là policy regression; actual exported47pin được runtimepreflight riêng.
+Maximum10/7 vẫn operatorpolicy; không exhaustion/reservationcount/survival/peer/result/reset mới.
+CP176 AC2cycles giữ riêng, không gộp hai probes thành K6a. Gate/dependencies/Windows/LAN/Internet/
+8client/fullauth/general membership còn mở; AUD052 qua176, audit kếCP180.

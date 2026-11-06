@@ -185,6 +185,8 @@ class ProbeService:
         self.replacement_binding = None
         if self.replacement_slot:
             replacement_slots.validate(profile)
+        self.replacement_capacity = (profile.data['replacement_slot'].get('capacity')
+                                     if self.replacement_slot else None)
         self.room_title_mode = False
         self.room_title_bytes = None
         if 'room_title' in profile.data:
@@ -292,7 +294,9 @@ class ProbeService:
             self.capacity_chains = ClearCellChains(profile.data['capacity_chain'], profile.frames)
         self.terrain = None
         if 'bomb_terrain' in profile.data:
-            if (set(self.capacity_profile) != ({'A', 'B', 'C'} if self.replacement_slot else {'A', 'B'})
+            terrain_roles = ({'A', 'B', 'C'} if self.replacement_slot
+                             and self.replacement_capacity != 'vacated_slot' else {'A', 'B'})
+            if (set(self.capacity_profile) != terrain_roles
                     or self.capacity_chains):
                 raise ValueError('bomb_terrain requires capacity and excludes capacity_chain')
             self.terrain = load_terrain(profile.data['bomb_terrain'], profile.frames)
@@ -319,7 +323,7 @@ class ProbeService:
                                   'source': 'design', 'policy': 'explicit_operator_ipv4'},
                       'limits': 'Fixture auth/roster/rank, explicit addresses default loopback, two live members/A-B then B-C by accept order; no fullmatch gate.'}
         if self.replacement_slot:
-            self.state['replacement_slot_policy'] = {'mode': 'vacant_AB_slot', 'source': 'design',
+            self.state['replacement_slot_policy'] = {**profile.data['replacement_slot'], 'source': 'design',
                                                        'limits': 'Fresh C identity, not account resume; one replacement.'}
         self.state['policy_sources'] = []
         for filename in ['probe_service.py', 'probe_codec.py', 'probe_room.py', 'round_fence.py',
@@ -1649,6 +1653,13 @@ class ProbeService:
             self.replacement_binding = {'departed': departed, 'survivor': survivor_role,
                                         'connection': survivor['global_ordinal'], 'slot': slot,
                                         'identity': ROLE_IDS['C'], 'monotonic_ns': time.monotonic_ns()}
+            if self.replacement_capacity == 'vacated_slot':
+                # Per-instance copy: never mutate the exported profile or A/B limits.
+                # Limits are operator policy, not maxima inferred from native stats.
+                self.capacity_profile['C'] = dict(self.capacity_profile[departed])
+                self.replacement_binding['capacity'] = {
+                    'source_role': departed, 'source': 'design',
+                    **self.capacity_profile['C']}
             self.state['replacement_binding'] = dict(self.replacement_binding)
         connection.settimeout(2)
         event = {'global_ordinal': ordinal, 'role': 'ABC'[(ordinal - 1) // 4],
