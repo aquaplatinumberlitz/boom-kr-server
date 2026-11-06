@@ -135,11 +135,11 @@
         "KR-F001",
         "KR-F015"
       ],
-      "known": "CP153/PR224 merged3468200; CP154 currentallTCPdirect2contests/Ready→normalStart3/actualB118pending/ownedCA-Bkill/directserviceEOF/fence/no158/nativeA175180107110/slotclear/render.",
-      "remaining": "Same-run exactoldUDP/currentpositive notincurrentcontested/EOFrecipe; CP145 source/keydrop isknownseparately. LAN/Internet/8realclients/fullauth/authority/Windows/K6a/CP137UI/generalreset remain.",
-      "next_test": "PLAN reuseCP14512probe/armedack/sourceSHA/AF_PACKET/offloadcontrols; integrateexactR1B→Aframe replayafterR2153/clock withnativekeydrop/noapply/currentpositive thennormal2contests/Ready/EOF3. No newconsumerRE/headerCRC/keyrewrite; sourcefreeze/cleanup/30s/2s165/loadinggate unchanged.",
+      "known": "CP154/PR225 mergedb766222; CP155 fullr2same-run exactoldUDP/currentpositive/2contests/4peerwindows/life56→1bothviews/195flagsreset/2nativeoutcomes/Ready/directEOF3, r1partial kept.",
+      "remaining": "AcceptanceK6a/authority manuallyunassessedafterintegration; currentdirectsame-oldTCPnegative notinCP155/CP148knownproxynegative separate. Windows/fullauth/globalworld/LAN/Internet/8realclients/CP137UI/generalreset remain.",
+      "next_test": "PLAN readK5/K6/K6a/authoritycriterion→exactrun/environment/evidencelimits, determineactualgapbeforeanynewRE; AUD047manualperiodicCP156 due. ReuseCP148TCPguardknowledge ifcriterionrequirescurrentdirectnegative; do notreopenoldUDP/contest/EOF orauto-closegate.",
       "acceptance": "Epic checklist: linkedscopedtask/evidence+authoritymatrix vàacceptancegate ởPLAN; từngtaskđóng khôngđóngepic/K5/K6a.",
-      "reason": "NarrowcurrentdirectpendingEOF taskdone, notepic/gate. Same-runcurrentprofilefreshnessnext; historicalCP144proxy/CP145standalone keptseparate.",
+      "reason": "Currentintegrationgapcompleteinr2withfullproof; partialr1notbackfilled. Movefromnarrowcheckrepetitiontoexplicitacceptance/auditscope; issue14/gates remainopen.",
       "sources": [
         "docs/PROTOCOL.md#authority",
         "docs/RESEARCH.md#feature-gaps",
@@ -175,7 +175,8 @@
         "docs/PROTOCOL.md#direct-contested-pickup",
         "docs/PROTOCOL.md#loading-observer-timing",
         "docs/PROTOCOL.md#loading-hot-gate-contest",
-        "docs/PROTOCOL.md#direct-contest-pending-eof"
+        "docs/PROTOCOL.md#direct-contest-pending-eof",
+        "docs/PROTOCOL.md#direct-oldudp-contest-eof"
       ],
       "evidence": [
         "docs/evidence/current-movement-cycles/README.md",
@@ -208,7 +209,8 @@
         "docs/evidence/peer-endpoints/README.md#cp151",
         "docs/evidence/peer-endpoints/README.md#cp152",
         "docs/evidence/peer-endpoints/README.md#cp153",
-        "docs/evidence/peer-endpoints/README.md#cp154"
+        "docs/evidence/peer-endpoints/README.md#cp154",
+        "docs/evidence/peer-endpoints/README.md#cp155"
       ],
       "prs": [
         173,
@@ -256,7 +258,8 @@
         221,
         222,
         223,
-        224
+        224,
+        225
       ],
       "successors": []
     },
