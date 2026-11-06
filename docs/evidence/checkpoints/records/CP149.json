@@ -1,0 +1,233 @@
+{
+  "id": "CP149",
+  "previous": "CP148",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-06T01:04:11.454375+00:00",
+  "context_commit": "f27c667c5f8f69510e2c4a30901d9c575eb5f2eb",
+  "owner": "Codex",
+  "reviewer": "Codex",
+  "question": "Can current native2cyclepositivepath run with allTCP includingchannel directly toproductionservice/no rootguardproxy, and what itemeffects are actually observed?",
+  "scope": "CP148source/profile unchanged; newcopies/frozencontroller removesrootproxy andlistens3858direct. Native8connect/source+veth/peer/lifecycle/modeljoins; preserveR1Firemissing andfailedinheritedpowerassumption. No newnativebodyRE/codec/schema/negativeproxyinjections.",
+  "artifacts": [
+    {
+      "name": "WineAunchanged",
+      "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+    },
+    {
+      "name": "WineBunchanged",
+      "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+    },
+    {
+      "name": "KRoriginalsource",
+      "sha256": "a52545c14b1fea423de655c3163d6360b628d61c1cd472b46fdbc8a9ffe15f4e"
+    },
+    {
+      "name": "modOnativeoracle",
+      "sha256": "a08950c833d3acab8281049def7b3dc96b221f107eeda01da3a548e34b91dce5"
+    }
+  ],
+  "locators": [
+    "CP148head d197c1483d415fc99ce012bb40d87b078b115f87 / PR219mergef27c667c5f8f69510e2c4a30901d9c575eb5f2eb; preparedonhead/runtimebytesunchanged; analysisrecordcontextmerge. AUD045through148/next152.",
+    "Runbb78dc2f3cb2c5093ddea7e04ad142627fab09e9af6c38977de263dfc0042429/352.599135831s/exit0/1334raw/586vethrecords. SameAPI/CLI10.77.0.1:3858/baseprofile, actualchannelA.2/B.3; no23858listener/proxyfiles/processes.",
+    "Native14F4923/14F4894actualsockaddr/callers and7receiver1101EA0/110182E chain reused;99/153/frame14EF300/UDPCRC14A5860/getter52A350/ED1350 models separate. Base400000/RVA=VA−400000.",
+    "R1actual124index16kind0only→two165/capacity2power1→actual118/159power1; R2actual16+17kind1→power2→118/159power2; two175302/1803/room110/current17SHA19/survivor21/reset/Ready."
+  ],
+  "findings": [
+    {
+      "summary": "All8actualnativeTCPconnects directly matchserviceport/peerA.2/B.3, includingchannel3858; frozencontroller hasno rootproxy/childforward/negativeTCP injection.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#direct-channel-positive",
+      "evidence": [
+        "RUN-01358",
+        "RUN-01344",
+        "RUN-01345",
+        "RUN-01320",
+        "RUN-01319"
+      ],
+      "limits": "TwoactualmodifiedWineCA/wineserver/privatevirtualhosts/samephysicalhost/e9bb4766/binaryunchanged. All4TCPperrole directservice/sourceA.2/B.3/channel3858/noTCPproxy/nochildforward; directUDP586vethrecords/4nativepeerwindows/2basiccycles/results/reset/Ready95/110/noStart3. Positiveinputonly/noCP148negativeTCPsame-runclaim. R1Bombonlypower1/R2BombFirepower2, intendedR1Firepartial/causeunknown, noactual12417R1. No physicalLAN/NAT/Internet/fullauth/Windowsoriginal/fullmatch/K6a/gates/CP137complexUI/sharedgeometry/fullinventory/8actualclients."
+    },
+    {
+      "summary": "Same-run2nativebasiccycles/4peerwindows/586vethrecords exactpayload→ingress/currentapply/target/progress/native175180110/reset/final95Ready/noStart3 verified.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#direct-channel-positive",
+      "evidence": [
+        "RUN-00009",
+        "RUN-01373",
+        "RUN-01360",
+        "RUN-00002",
+        "RUN-01498"
+      ],
+      "limits": "TwoactualmodifiedWineCA/wineserver/privatevirtualhosts/samephysicalhost/e9bb4766/binaryunchanged. All4TCPperrole directservice/sourceA.2/B.3/channel3858/noTCPproxy/nochildforward; directUDP586vethrecords/4nativepeerwindows/2basiccycles/results/reset/Ready95/110/noStart3. Positiveinputonly/noCP148negativeTCPsame-runclaim. R1Bombonlypower1/R2BombFirepower2, intendedR1Firepartial/causeunknown, noactual12417R1. No physicalLAN/NAT/Internet/fullauth/Windowsoriginal/fullmatch/K6a/gates/CP137complexUI/sharedgeometry/fullinventory/8actualclients."
+    },
+    {
+      "summary": "R1onlyBomb16actual124/noFire17→native165capacity1to2/power1; R2BombFire→power2. InitialCP148bothpower2assumptionfails; narroweractualinput joinsverified, intendedbothFirecoverage missing/causeunknown. No proxyremovalcausalclaim.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#direct-channel-positive",
+      "evidence": [
+        "RUN-00003",
+        "RUN-00008",
+        "RUN-01390",
+        "RUN-00001"
+      ],
+      "limits": "TwoactualmodifiedWineCA/wineserver/privatevirtualhosts/samephysicalhost/e9bb4766/binaryunchanged. All4TCPperrole directservice/sourceA.2/B.3/channel3858/noTCPproxy/nochildforward; directUDP586vethrecords/4nativepeerwindows/2basiccycles/results/reset/Ready95/110/noStart3. Positiveinputonly/noCP148negativeTCPsame-runclaim. R1Bombonlypower1/R2BombFirepower2, intendedR1Firepartial/causeunknown, noactual12417R1. No physicalLAN/NAT/Internet/fullauth/Windowsoriginal/fullmatch/K6a/gates/CP137complexUI/sharedgeometry/fullinventory/8actualclients."
+    },
+    {
+      "summary": "Productioncode/profile/timeout/sourcebinary unchanged; privatecopiedcontroller removesonlyrootmeasurementproxy. PriorCP148negativeguardproof stayshistorical, not same-run positiveevidence.",
+      "source": "design",
+      "status": "design",
+      "method": "design",
+      "canonical": "docs/PROTOCOL.md#direct-channel-positive",
+      "evidence": [
+        "RUN-01431",
+        "RUN-01433",
+        "RUN-01392"
+      ],
+      "limits": "TwoactualmodifiedWineCA/wineserver/privatevirtualhosts/samephysicalhost/e9bb4766/binaryunchanged. All4TCPperrole directservice/sourceA.2/B.3/channel3858/noTCPproxy/nochildforward; directUDP586vethrecords/4nativepeerwindows/2basiccycles/results/reset/Ready95/110/noStart3. Positiveinputonly/noCP148negativeTCPsame-runclaim. R1Bombonlypower1/R2BombFirepower2, intendedR1Firepartial/causeunknown, noactual12417R1. No physicalLAN/NAT/Internet/fullauth/Windowsoriginal/fullmatch/K6a/gates/CP137complexUI/sharedgeometry/fullinventory/8actualclients."
+    }
+  ],
+  "verification": [
+    {
+      "check": "3289lifecycle/1334wire/499peer/56observedpickup/25Ready/55allTCPdirect joins; copiednativegetter/framer/flags models separately",
+      "result": "pass",
+      "evidence": [
+        "RUN-00009",
+        "RUN-01373",
+        "RUN-01360",
+        "RUN-01390",
+        "RUN-00002",
+        "RUN-01358",
+        "RUN-01392"
+      ],
+      "limits": "TwoactualmodifiedWineCA/wineserver/privatevirtualhosts/samephysicalhost/e9bb4766/binaryunchanged. All4TCPperrole directservice/sourceA.2/B.3/channel3858/noTCPproxy/nochildforward; directUDP586vethrecords/4nativepeerwindows/2basiccycles/results/reset/Ready95/110/noStart3. Positiveinputonly/noCP148negativeTCPsame-runclaim. R1Bombonlypower1/R2BombFirepower2, intendedR1Firepartial/causeunknown, noactual12417R1. No physicalLAN/NAT/Internet/fullauth/Windowsoriginal/fullmatch/K6a/gates/CP137complexUI/sharedgeometry/fullinventory/8actualclients."
+    },
+    {
+      "check": "IntendedFire17inbothrounds; R1onlyBomb and inheritedbothpower2checker fails",
+      "result": "observed",
+      "evidence": [
+        "RUN-00003",
+        "RUN-00008"
+      ],
+      "limits": "Partialitemgoal; noactual12417R1. KeepnextmeasurementboundedOSfreshfeedback; nocheckerpassclaimforbothFire."
+    },
+    {
+      "check": "237CP148server tests reused because source/config unchanged; currentdocs/catalog/liveissues/artifacthash/diff",
+      "result": "pass",
+      "evidence": [
+        "RUN-01503",
+        "RUN-01433",
+        "RUN-01359",
+        "RUN-01369",
+        "RUN-00007"
+      ],
+      "limits": "Mechanicalconsistency/regression only; requirelocal/history beforecommit. Noindependentreview/gateclosure."
+    }
+  ],
+  "evidence": [],
+  "evidence_manifests": [
+    {
+      "path": "docs/evidence/checkpoints/evidence/CP149-direct-channel-positive.json",
+      "bytes": 385751,
+      "sha256": "1b6446c6189129c0736825b5c7b5f6c6036127d614798c6734eae0dd7fc89884",
+      "count": 1505
+    }
+  ],
+  "delta": {
+    "added": [
+      "AllTCPdirect/no rootproxy/nativepositive2cycles/capture/Ready."
+    ],
+    "corrected": [
+      "Inheritedbothpower2assumptionrejectedbyactualR1power1/no124Fire17; preservefailure andscopeitemto3actualpickup/6viewevents, causeunknown.",
+      "CP148PR219merge/runtimeheadcontextcurrentdocslinked; auditcadence148→152unchanged."
+    ],
+    "superseded": [
+      "NEXT-DIRECT-CHANNEL-NO-PROXY scopedrouteclosed; NEXT-DIRECT-ITEM-FEEDBACK-TWO-OWNER active. No gate/issueclosure."
+    ]
+  },
+  "blockers": [
+    "R1Fire17input/requestmissing/currentcauseunknown; bothFiregoalpartial.",
+    "Bownerpositive notyet incurrentallTCPdirectsame-run2cycleprofile; needsboundedinputmeasurementafteritemledger.",
+    "Originalauth/Windows/LAN/NAT/Internet/fullmatch/K6a/CP137UI/sharedgeometry/fullinventory/8actualclients remain."
+  ],
+  "next_steps": [
+    {
+      "id": "NEXT-DIRECT-CHANNEL-NO-PROXY",
+      "task": "KRE-005b",
+      "state": "closed",
+      "action": "AllTCPactualsource/port/no rootproxy with2nativecycles/Ready/directUDP scopedproof.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-DIRECT-ITEM-FEEDBACK-TWO-OWNER",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "PLAN sourcefirstreuseCP082feedback/CP106165; newnormalOSfreshfeedback toFirecell andactual12417/165 before returnsetup/fixedbounds/noforce; thenSpaceBround2/nativeowner118159158/current17SHA19/resultreset/Ready on directservice route.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    }
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-11-06T01:04:11.454375+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "Codex solo RE/runtime/selfcheck; no independent approval.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Owner explicitly requested solo without workers/review."
+    }
+  },
+  "docs_sync": [
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "CP149routeproof/itempartial/correction/missingFirefeedbacknext/PR219merged/audit152 synchronized."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "CP149routeproof/itempartial/correction/missingFirefeedbacknext/PR219merged/audit152 synchronized."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "updated",
+      "reason": "CP149routeproof/itempartial/correction/missingFirefeedbacknext/PR219merged/audit152 synchronized."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "updated",
+      "reason": "CP149routeproof/itempartial/correction/missingFirefeedbacknext/PR219merged/audit152 synchronized."
+    },
+    {
+      "path": "docs/features.json",
+      "state": "updated",
+      "reason": "CP149routeproof/itempartial/correction/missingFirefeedbacknext/PR219merged/audit152 synchronized."
+    },
+    {
+      "path": "docs/COVERAGE.md",
+      "state": "updated",
+      "reason": "CP149routeproof/itempartial/correction/missingFirefeedbacknext/PR219merged/audit152 synchronized."
+    },
+    {
+      "path": "docs/evidence/peer-endpoints/README.md",
+      "state": "updated",
+      "reason": "CP149routeproof/itempartial/correction/missingFirefeedbacknext/PR219merged/audit152 synchronized."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/review.json",
+      "state": "updated",
+      "reason": "CP149routeproof/itempartial/correction/missingFirefeedbacknext/PR219merged/audit152 synchronized."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
+      "state": "updated",
+      "reason": "CP149routeproof/itempartial/correction/missingFirefeedbacknext/PR219merged/audit152 synchronized."
+    }
+  ]
+}

@@ -41,19 +41,19 @@ Hai copy KR Wine đã chạy login/sảnh/phòng/Battle và các chu kỳ kết 
 [kim/reset](docs/PROTOCOL.md#needle-round-reset), [cứu hai chiều và hai kết quả](docs/PROTOCOL.md#rescue-two-results),
 [deep chain/reset](docs/PROTOCOL.md#recursive-chain-cycles) giữ phạm vi và giới hạn tại nguồn chuẩn.
 
-**Mốc mới CP148:** production service đã nhận cấu hình endpoint kênh; hai copy Wine dùng baseprofile
-chạy hai chu kỳ kết quả/reset/Ready và bốn cửa sổ movement. UDP capture đã khôi phục,604 vethrecords
-nối với ingress native; [contract/giới hạn](docs/PROTOCOL.md#service-channel-endpoint),
-[evidence](docs/evidence/peer-endpoints/README.md#cp148). RootTCPproxy vẫn giữ cho selectedguardtest.
+**Mốc mới CP149:** cả bootstrap/WCP/auth/channel của hai copy đã kết nối trực tiếp service,
+không TCPforward/proxy. Cùng run có hai chu kỳ kết quả/reset/Ready và bốn cửa sổ movement,
+586vethrecords→nativeingress; [contract/giới hạn](docs/PROTOCOL.md#direct-channel-positive),
+[evidence](docs/evidence/peer-endpoints/README.md#cp149). ItemR1chỉBomb/power1, R2BombFire/power2;
+chưa đủ mục tiêu Firecảhai vòng và chưa fullmatch/K6a/LAN/Internet.
 
-[CP147 roster8/Start](docs/PROTOCOL.md#battle-eight-roster) chưa là8 client thật. CP146 thiếuUDPPCAP
-vẫn là lịch sử riêng, không được bù bằng captureCP148. CP146–147 đã merge
-[PR218](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/218) tại`a3d1d94`.
-CP148 tự kiểm/chờ PR; [review độc lập waived](docs/evidence/checkpoints/review-waiver.json).
-Audit **AUD045 qua148**, kế **CP152**; các gate và CP137UI/sharedgeometry/fullinventory vẫn mở.
+[CP147 roster8](docs/PROTOCOL.md#battle-eight-roster) vẫn chưa8 client thật. CP148code/capture/AUD045
+đã merge [PR219](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/219) tại`f27c667`;
+CP149selfcheck/chờPR, [reviewwaived](docs/evidence/checkpoints/review-waiver.json).
+Audit qua148/kế **CP152**; CP137UI/sharedgeometry/fullinventory và các gate vẫn mở.
 
-Theo [PLAN](docs/PLAN.md#current-order), tiếp luồng channel trực tiếp service trên positive recipe,
-bỏ rootTCPguardproxy; không cần làm lại cấu hình endpoint, codec hoặc exactoldUDP đã đo.
+Theo [PLAN](docs/PLAN.md#current-order), tiếp normalinput cófreshfeedback/actual124165 để kiểm Fire
+đang thiếu, rồi đổi bom vòng2 sangB trên route trực tiếp. Không lặp codec/endpoint đã giải.
 
 Đích đầu: hai client thật chơi hai trận liên tiếp; mở bốn client và hardening sau đó.
 
