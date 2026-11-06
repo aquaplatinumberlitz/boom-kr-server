@@ -2495,6 +2495,59 @@ fixture mới. Không tự migrate profile JSON đã export; chúng giữ hash/p
 Service/codec không đổi. Fullmeaning/profilevalues/cache/cold-warm/missing/reconnect/token_2/allregions/
 Windowsvanilla/authauthority/K2/K3/K5/K6a/LAN/Internet còn mở. AUD018 audit ngay lỗi string, cadence kếCP060.
 
+<a id="local-name-model"></a>
+### Local ID/name và guard panel sảnh — CP182
+
+`kr_static/confirmed` cho tám body đã so byte với e9, `kr_runtime/confirmed` cho hai copy Wine:
+setter`13B09E0` ghi ID theo slot tại manager+140h+4×index; `13B0A60` nhận tên, slotwrapper16byte
+ở manager+18h+10h×index. Getter`13B0A00` chọn index0/1, gọi`1293080`: helper giải từng ký tự,
+free/reallocate plaintextcache khi đọc, trảcharpointer; ngoài0/1 dùng fallback. Đây là scope code,
+không accountauthority hoặc mọi encoding. VA/RVA theo base400000; metadata hash ở
+[evidence đợt đang đo](evidence/lobby-identity/in-progress.json).
+
+Runtime sau auth: slot0 ID1, setter nhận7byteASCII`KRLocal`. Tại returnPC **13B0A4D** trước epilogue,
+bảy observation thuộc sáu caller đều trả đúngbytesKRLocal, IDslot0=1/slot1=0. Actualrequest6 của cảhai
+run byte-identical81byte/SHA`2cfebd3ad9a4935bb144090c4244c67ec9200ca54d4a9da71ecef00004a8bdf4`;
+reuse nativeKRframer/stringreader tại offset2 đọcKRLocal/errors0. Không giả tên bị mất trong auth.
+`identity-r1` dùng GDBFinishBreakpoint cólowEAX/stackdata nên giữcandidate/excluded khỏi kết luận
+getternames; `identity-r2` dùng exactreturnPC và helperbody để loại nhiễu phép đo, không sửa raw.
+
+Consumer đã đối chiếu: `1229DA0` dùng tên làm keyDenyWhisper; `13D41E0` tạo request544 chứa tên;
+`13AE740` dùng tên/ID trong connectionrecord. Chúng không chứng minh own-panel sảnh đã render; consumer panel được nối ở đoạn CP182 bên dưới.
+Candidategetterxref`DA8A70` có nhánh Tournament và không được quan sát trong run; không suy UIđích
+chỉ từ vùngaddress. Hai lượt đầu/8body chưa xác định consumer own-panel; nhánh UI runtime tiếp dưới đây, không mở mọi186xref.
+VN loginreference xác nhận phương phápprimaryname→op6/settings/whisper; str2shop/str3unknown
+không được chuyển thành nickname KR. Không đổi field/packet tùy đoán. UIidentity/cachematrix/K3
+vẫn mở; [câu hỏi tiếp](RESEARCH.md#gap-lobby-identity-followup), PLAN giữ thứ tự duy nhất.
+
+**Consumer panel đã nối bằng runtime CP182.** VN `lobby.md` (mục danh sách người chơi trái)
+phân biệt store danh sách với auth manager, nhưng hai ô cấp/kinh nghiệm bản thân vẫn chưa kiểm ở VN.
+Dùng lại cách phân biệt data-source, không chuyển opcode/ID/layout. KR RTTI/static xác định
+`CLobbySquareLeftSideUI`; run `panel-r1` chỉ thấy `CLobbyRoomUIWnd` constructor, không thấy các
+callback Square đã chọn trong60s. Quan sát âm có giới hạn, không chứng minh class vắng mặt.
+`panel-r2` tại ready`DA5F90` xác nhận widget **`CLobbyStage+5E5D8 = CUserListUIWnd`**, vtable172B748.
+
+Static byte-equal với copye9: virtual`901390` gọi **`9022D0`** để vẽ record bản thân; lookup
+`7FA5D0→global19DB454`, `D2FE90(store,index)=store+6404h+220h×index` (544byte/record).
+Tại`902312` có record thì đọc getter529C60 trên **record+1FCh**; tại`902329`, giá trị0 đi nhánh
+`90232D→902A32`, bỏ phần vẽ tên/cấp/exp. Nhánh khác đọc std::string ở record+4 để vẽ tên,
+không gọi auth getter13B0A00. Ý nghĩa tổng quát của field+1FC chưa đặt tên hoặc xem là accountID.
+
+`panel-r4`, sau ready: hai hit từcaller9013BE tại902329 có đúng widget stage+5E5D8,
+selected0, recordkhác0, **decodedguard=0**. Hai dump544byte có std::string record+4
+size0/cap15. Đường auth/getter đúngKRLocal và recordpanel rỗng là hai nguồn dữ liệu riêng;
+chưa chứng minh packet/cache nào phải điền record hoặc guard0 do thiếu message nào.
+Probe string gặp lỗi đọc0byte trong GDB; raw SSO size/cap xác nhận rỗng, không coi là clienterror.
+`D7A260` tĩnh là consumer đổi level có so tên auth rồi truy record này; chưa xác định producer
+profile tổng quát hoặc opcode/contract để gửi bổ sung.
+
+Controls giữ nguyên: `panel-r3` đặt probe trướcready dừng C++exception/SIGABRT trướcDA5F90,
+channel chỉ gửi6; harness exit0 chỉ là cleanup. `panel-r4` hoãn probe tớiready có observation trên;
+không suy installationtiming là nguyên nhân/fix. PrivateDB load inputhashNone có log riêng;
+freshcopy analysis được dùng, không sửa DB/binary nguồn. Decompiler badSP/None chỉ là gợi ý,
+assembly và16body-bytecomparison giữ phạm vi. [Recipe/run/hash](evidence/lobby-identity/README.md).
+K3/cold-missing-warm/wrongstage/version/identity và gate giữ mở; bước tiếp duy nhất ở PLAN.
+
 <a id="dynamic-cache-representation"></a>
 ### Cache dynamic-map và checksum representation — CP059
 

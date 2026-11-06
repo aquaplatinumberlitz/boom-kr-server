@@ -56,7 +56,9 @@ auth137/137/errors0 → channel socket mới; hello/mode/seq reset được đo 
 **K3–K7, K6a/trận đầy đủ/LAN/Internet vẫn mở.** Fullgrammar/unknownheader/prefix/mode và
 accountauthority chưa được khôi phục đầy đủ; K2 không nghiệm thu các phần đó. Thứ tự tiếp ở
 [PLAN](docs/PLAN.md#current-order): identity/cache/UI sảnh theo evidence cũ, không lặp knowncodec/gameplay.
-CP181 pending PR delivery; AUD054 periodic qua180, audit kế **CP184**. [Review waived](docs/evidence/checkpoints/review-waiver.json).
+CP181 đã merge [PR253](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/253) tại `5a154e5`.
+**CP182 đã nối consumer panel sảnh**: authID/name đúng, nhưng record riêng của panel có guard0/tênrỗng sauready. [Contract/giới hạn](docs/PROTOCOL.md#local-name-model), [producer/phép thử tiếp](docs/RESEARCH.md#gap-lobby-identity-followup). CP182 chờ PR; K3 chưa đạt.
+AUD054 periodic qua180, audit kế **CP184**. [Review waived](docs/evidence/checkpoints/review-waiver.json).
 
 Đích đầu: hai client thật chơi hai trận liên tiếp; mở bốn client và hardening sau đó.
 
