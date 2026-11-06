@@ -1,0 +1,249 @@
+{
+  "id": "CP150",
+  "previous": "CP149",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-06T01:27:31.658309+00:00",
+  "context_commit": "262a72f5160a8f3e066d688ca50bdca4248a85e0",
+  "owner": "Codex",
+  "reviewer": "Codex",
+  "question": "Can nativeFireproofstopboundedOSalignment, confirmBombFirebothrounds and alternateA/Bbombownerwithtwoactualoutcomes/reset onallTCPdirectcurrentprofile?",
+  "scope": "ReuseCP082feedback/CP106165/currentstat/CP149directprofile; retainedfirstpartialcentermiss andnewfrozenactualpickupstoppredicate, 2actualcycles/AthenBowner/models/wire/visualjoins. No productioncode/profilechange/newnativebody/codecRE oractorwrites.",
+  "artifacts": [
+    {
+      "name": "KRoriginalCAunchanged",
+      "sha256": "a52545c14b1fea423de655c3163d6360b628d61c1cd472b46fdbc8a9ffe15f4e"
+    },
+    {
+      "name": "WinecopyA",
+      "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+    },
+    {
+      "name": "WinecopyB",
+      "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+    },
+    {
+      "name": "modOnativeoraclebase400000",
+      "sha256": "a08950c833d3acab8281049def7b3dc96b221f107eeda01da3a548e34b91dce5"
+    }
+  ],
+  "locators": [
+    "CP149head50c28ce2edfa042432b32f3c624a1afdffd3dc08 / PR220merge262a72f5160a8f3e066d688ca50bdca4248a85e0; R2preparedbeforemerge/sourcehashunchanged; AUD045through148/next152.",
+    "R1runb86300e276444288a484fa8f8b3e39c1dd7248228ce793c211a054718ad269da/199.741150374s/exit1/720raw; actual12417/native165beforeextraalignment159209259319…/20pulsefail. NoSpace/tworesults.",
+    "R2rune741fddb8cd0e5ba7378a4bbd27e81d5c98ebe9def98c4fe070a60193c136a82/364.478985974s/exit0/1348raw/664vethrecords/4peerwindows. 2barriers27.376245583/27.83752575s<30s.",
+    "Native124/165index16kind0@4,3/index17kind1@6,3/current12345→12346; actorstats4A4/4BC:1,1→2,1→2,2bothviews, clockbaseline. Getter52A350/ED1350/frame14EF300/UDPCRC14A5860; base400000/RVA=VA−400000.",
+    "R1A118/159owner0ID1cell3,3power2→A17SHA19/B21/rank2,1; R2B118/159owner1ID2cell9,3power1→B17SHA19/A21/rank1,2; native121129/15939/15813/175302/1803/room110/finalReady95/noStart3."
+  ],
+  "findings": [
+    {
+      "summary": "R1actualFire124/native165/getters alreadyvalidbeforeextraY279centerloop; bounded20pulsesmiss ismeasurementstopconditionfailure, notpickupfailure. Raw/controlcleanup kept.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#direct-item-feedback",
+      "evidence": [
+        "RUN-00747",
+        "RUN-00714",
+        "RUN-00750",
+        "RUN-00001"
+      ],
+      "limits": "TwoactualmodifiedWineCA/wineserver/privatevirtualhosts/samephysicalhost/e9bb4766unchanged/allTCPdirectservicepeerA.2/B.3/noTCPproxy/UDPproxy/fixed30sdeadline. CP150R1partialFirealreadyobservedbutextraalignment20pulsesmissY279/tolerance4; keptnotpickupfailure. R2stoponactual12417/native165bothviews/fixedbounds, fouractualA124BombFire/2epochs, R1Aownerpower2/R2Bownerpower1/current17SHA19/oppositesurvivor21/175rank2,1then1,2/180110/reset/95Ready/noStart3/664vethrecords/4peerwindows. No CP149missingFirecause/proxy/tick/lossinference; renderedmodels notauthority; nofullmatch/K6a/Windowsoriginal/fullauth/LAN/NAT/Internet/8realclients/CP137UI/sharedgeometry/fullinventory."
+    },
+    {
+      "summary": "R2nativeproofgatebeforeSpace usesactual12417+native165bothviews; R1noextraalignment,R2stoppedonpickup. FouractualBombFire124/8view165/full12/errors0/securestats1,1→2,1→2,2/resetclock verified.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#direct-item-feedback",
+      "evidence": [
+        "RUN-02185",
+        "RUN-02213",
+        "RUN-02168",
+        "RUN-00813"
+      ],
+      "limits": "TwoactualmodifiedWineCA/wineserver/privatevirtualhosts/samephysicalhost/e9bb4766unchanged/allTCPdirectservicepeerA.2/B.3/noTCPproxy/UDPproxy/fixed30sdeadline. CP150R1partialFirealreadyobservedbutextraalignment20pulsesmissY279/tolerance4; keptnotpickupfailure. R2stoponactual12417/native165bothviews/fixedbounds, fouractualA124BombFire/2epochs, R1Aownerpower2/R2Bownerpower1/current17SHA19/oppositesurvivor21/175rank2,1then1,2/180110/reset/95Ready/noStart3/664vethrecords/4peerwindows. No CP149missingFirecause/proxy/tick/lossinference; renderedmodels notauthority; nofullmatch/K6a/Windowsoriginal/fullauth/LAN/NAT/Internet/8realclients/CP137UI/sharedgeometry/fullinventory."
+    },
+    {
+      "summary": "ActualAownerR1power2/BownerR2power1/ID1,2/158/195/current17SHA→19/oppositesurvivor21/native2rankoutcomes/reset/final95Ready110 togetheronallTCPdirect/no proxies;664vethwire/directnative4windows same-run proof.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#direct-item-feedback",
+      "evidence": [
+        "RUN-00819",
+        "RUN-02182",
+        "RUN-02197",
+        "RUN-00814",
+        "RUN-02318"
+      ],
+      "limits": "TwoactualmodifiedWineCA/wineserver/privatevirtualhosts/samephysicalhost/e9bb4766unchanged/allTCPdirectservicepeerA.2/B.3/noTCPproxy/UDPproxy/fixed30sdeadline. CP150R1partialFirealreadyobservedbutextraalignment20pulsesmissY279/tolerance4; keptnotpickupfailure. R2stoponactual12417/native165bothviews/fixedbounds, fouractualA124BombFire/2epochs, R1Aownerpower2/R2Bownerpower1/current17SHA19/oppositesurvivor21/175rank2,1then1,2/180110/reset/95Ready/noStart3/664vethrecords/4peerwindows. No CP149missingFirecause/proxy/tick/lossinference; renderedmodels notauthority; nofullmatch/K6a/Windowsoriginal/fullauth/LAN/NAT/Internet/8realclients/CP137UI/sharedgeometry/fullinventory."
+    },
+    {
+      "summary": "Productioncode/profile/30sdeadline andoldpulse/waitbounds preserved; onlynewcopiedcontrollerstopsalignmentuponactualnativepickup. CP149missingR1Firecause remainsunknown, nobackfill/causalfixclaim.",
+      "source": "design",
+      "status": "design",
+      "method": "design",
+      "canonical": "docs/PROTOCOL.md#direct-item-feedback",
+      "evidence": [
+        "RUN-02256",
+        "RUN-00762",
+        "RUN-02215",
+        "RUN-00825"
+      ],
+      "limits": "TwoactualmodifiedWineCA/wineserver/privatevirtualhosts/samephysicalhost/e9bb4766unchanged/allTCPdirectservicepeerA.2/B.3/noTCPproxy/UDPproxy/fixed30sdeadline. CP150R1partialFirealreadyobservedbutextraalignment20pulsesmissY279/tolerance4; keptnotpickupfailure. R2stoponactual12417/native165bothviews/fixedbounds, fouractualA124BombFire/2epochs, R1Aownerpower2/R2Bownerpower1/current17SHA19/oppositesurvivor21/175rank2,1then1,2/180110/reset/95Ready/noStart3/664vethrecords/4peerwindows. No CP149missingFirecause/proxy/tick/lossinference; renderedmodels notauthority; nofullmatch/K6a/Windowsoriginal/fullauth/LAN/NAT/Internet/8realclients/CP137UI/sharedgeometry/fullinventory."
+    }
+  ],
+  "verification": [
+    {
+      "check": "3537lifecycle/1490wire/499peer/70pickup/16Firegate/25Ready/55TCPdirect joins",
+      "result": "pass",
+      "evidence": [
+        "RUN-00819",
+        "RUN-02197",
+        "RUN-02184",
+        "RUN-02213",
+        "RUN-02185",
+        "RUN-00814",
+        "RUN-02182",
+        "RUN-02215"
+      ],
+      "limits": "TwoactualmodifiedWineCA/wineserver/privatevirtualhosts/samephysicalhost/e9bb4766unchanged/allTCPdirectservicepeerA.2/B.3/noTCPproxy/UDPproxy/fixed30sdeadline. CP150R1partialFirealreadyobservedbutextraalignment20pulsesmissY279/tolerance4; keptnotpickupfailure. R2stoponactual12417/native165bothviews/fixedbounds, fouractualA124BombFire/2epochs, R1Aownerpower2/R2Bownerpower1/current17SHA19/oppositesurvivor21/175rank2,1then1,2/180110/reset/95Ready/noStart3/664vethrecords/4peerwindows. No CP149missingFirecause/proxy/tick/lossinference; renderedmodels notauthority; nofullmatch/K6a/Windowsoriginal/fullauth/LAN/NAT/Internet/8realclients/CP137UI/sharedgeometry/fullinventory."
+    },
+    {
+      "check": "RetainedR1partialnativepickup/centermisscontrol andtwo-viewstats; notfullfourwindows/twocycles",
+      "result": "observed",
+      "evidence": [
+        "RUN-00747",
+        "RUN-00002"
+      ],
+      "limits": "R2phases absent atplannedpartialtermination; inheritedfourphaseparserStopIteration retained notfalsepass. NoR1Space/Bowner/resultclaim."
+    },
+    {
+      "check": "1668actor/324peergetter/2364flaggetter+2340array/294typedpacket/297report/12native153/42UDPCRC nativecopiedmodels",
+      "result": "pass",
+      "evidence": [
+        "RUN-00813",
+        "RUN-02212",
+        "RUN-02186",
+        "RUN-02199",
+        "RUN-02200",
+        "RUN-02198",
+        "RUN-02211"
+      ],
+      "limits": "Syntheticreceiver/allocator/counterreset separatedfromruntime/nativegamefunctioncalls; noclientactorwrites."
+    },
+    {
+      "check": "237CP148tests reusedsourceunchanged;docs/catalog/liveissues/sourceartifacts/diff beforehandoff",
+      "result": "pass",
+      "evidence": [
+        "RUN-02324",
+        "RUN-02256",
+        "RUN-02183",
+        "RUN-02194",
+        "RUN-00818"
+      ],
+      "limits": "Mechanicalchecks only,requiredlocal/historybeforecommit; independentreviewwaived andnogateclosure."
+    }
+  ],
+  "evidence": [],
+  "evidence_manifests": [
+    {
+      "path": "docs/evidence/checkpoints/evidence/CP150-direct-item-feedback.json",
+      "bytes": 589260,
+      "sha256": "5055180b93b4ca4425e96335de4391cfea47948067665559fc733321fd94783a",
+      "count": 2328
+    }
+  ],
+  "delta": {
+    "added": [
+      "NativeFiregate/BombFirebothrounds andactualAthenBowner/nativeopposite2results/resetReady onsameallTCPdirectrun."
+    ],
+    "corrected": [
+      "R1pixelcentermiss isnotFirefailure: actual12417/165/getters precedehelper; samebounds/newrunstoponproof notrelaxeddeadlines.",
+      "CP149missingFireoriginalcauseunknown despitecurrentpositive, nocausalinput/proxy/tick/lossclaim.",
+      "CP149PR220merged and PLANmovesactualcontestedpickup/currentdirectacceptance; auditcadenceunchanged."
+    ],
+    "superseded": [
+      "NEXT-DIRECT-ITEM-FEEDBACK-TWO-OWNER closedscopedproof; NEXT-DIRECT-CONTESTED-PICKUP active. Noissue/gateclosure."
+    ]
+  },
+  "blockers": [
+    "Currentdirectrouteactualtwoclientcontestedindex/onewinner/reset notyetintegrated; CP030/062existingclaimproof reusednext.",
+    "Originalauth/Windows/fullmatch/K6a/LAN/NAT/Internet/8actualclients/CP137complexUI/sharedgeometry/fullinventory remain."
+  ],
+  "next_steps": [
+    {
+      "id": "NEXT-DIRECT-ITEM-FEEDBACK-TWO-OWNER",
+      "task": "KRE-005b",
+      "state": "closed",
+      "action": "CurrentnativeFiregate/bothBombFire/AthenBowner/2oppositeresults/reset/Ready verifiedwithinCP150scope.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-DIRECT-CONTESTED-PICKUP",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "PLAN sourcefirstCP030/062actualtwo124/delayed165/onewinner/productionclaims/currentdistinctspawn; normalOSfeedbackapproachsameindex/currentdirectroute, measurementdelaydeclaredifneeded/notfairnessoracle, keyreset/nativeonestatdelta; nofake124/forcewinner/newnativebody.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    }
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-11-06T01:27:31.658309+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "Codex solo RE/runtime/selfcheck; noindependentapproval.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Owner explicitly requested solo without workers/review."
+    }
+  },
+  "docs_sync": [
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "CP150Fireproof/twoowner/correction/limits/currentcontestnext/PR220merge synchronizedbeforecomplete."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "CP150Fireproof/twoowner/correction/limits/currentcontestnext/PR220merge synchronizedbeforecomplete."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "updated",
+      "reason": "CP150Fireproof/twoowner/correction/limits/currentcontestnext/PR220merge synchronizedbeforecomplete."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "updated",
+      "reason": "CP150Fireproof/twoowner/correction/limits/currentcontestnext/PR220merge synchronizedbeforecomplete."
+    },
+    {
+      "path": "docs/features.json",
+      "state": "updated",
+      "reason": "CP150Fireproof/twoowner/correction/limits/currentcontestnext/PR220merge synchronizedbeforecomplete."
+    },
+    {
+      "path": "docs/COVERAGE.md",
+      "state": "updated",
+      "reason": "CP150Fireproof/twoowner/correction/limits/currentcontestnext/PR220merge synchronizedbeforecomplete."
+    },
+    {
+      "path": "docs/evidence/peer-endpoints/README.md",
+      "state": "updated",
+      "reason": "CP150Fireproof/twoowner/correction/limits/currentcontestnext/PR220merge synchronizedbeforecomplete."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/review.json",
+      "state": "updated",
+      "reason": "CP150Fireproof/twoowner/correction/limits/currentcontestnext/PR220merge synchronizedbeforecomplete."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
+      "state": "updated",
+      "reason": "CP150Fireproof/twoowner/correction/limits/currentcontestnext/PR220merge synchronizedbeforecomplete."
+    }
+  ]
+}

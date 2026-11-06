@@ -135,11 +135,11 @@
         "KR-F001",
         "KR-F015"
       ],
-      "known": "CP148/PR219mergedf27c667; CP149allTCPdirect/8nativeconnects/servicepeerA.2/B.3/channel3858/noTCPproxy/native2cycles/4windows/586vethrecords/Ready cósource. R1Bombpower1/R2BombFirepower2; R1no124Fire/partialitem.",
-      "remaining": "R1Fireinput/causeunknown; boundednormalfeedback/actual124165 và Bownerpositive next. Fullauth/Windowscontrol/realLAN/NAT/Internet/gates/CP137UI/sharedgeometry/fullinventory/8actualpeers remain.",
-      "next_test": "PLAN reuseCP082feedback/CP106165/CP148API/CP149directroute; newfrozenboundedOSinput→actual12417/165currentpower before returnsetup, then BSpaceR2/nativeownerID/bothviewresults/reset/Ready; no actorwrites/fake124.",
+      "known": "CP149/PR220merged262a72f; CP150directFiregate/BombFirehai vòng/nativeAownerR1BownerR2/2oppositeresults/reset/Ready/664vethrecords cónguồn. R1pixelalignmentpartialkept/R2nativepredicatefixedbounds; CP149misscauseunknown.",
+      "remaining": "Actualcontestedpickup/currentdirectroute vàacceptanceK6acònthiếu; fullauth/Windows/realLAN/NAT/Internet/gates/CP137UI/sharedgeometry/fullinventory/8actualpeers remain.",
+      "next_test": "PLANreuseCP030/062twoactual124/delayedpositive165/onewinner/currentclaimlogic; currentdistinctspawn normalOSfreshfeedback approachsameindex thenrace, nativeonewinner/statdelta/keyreset. Measurementcopydelaydesignnotoriginalfairness; nofake124/forcewinner/newcodecRE.",
       "acceptance": "Epic checklist: linkedscopedtask/evidence+authoritymatrix vàacceptancegate ởPLAN; từngtaskđóng khôngđóngepic/K5/K6a.",
-      "reason": "Directchannelroute scoped gapresolved; narrow itemcoverage toobservedR1Bomb/R2BombFire with retainedoldpower2checkerfail, no causalproxy/lossclaim or gateclosure.",
+      "reason": "ScopedcurrentFiregate/Bownerpositivegapresolved; originalCP149missunknown, R1extraalignmentfailurekept. Noindependentgateclosure.",
       "sources": [
         "docs/PROTOCOL.md#authority",
         "docs/RESEARCH.md#feature-gaps",
@@ -170,7 +170,8 @@
         "docs/PROTOCOL.md#direct-tcp-endpoints",
         "docs/PROTOCOL.md#battle-eight-roster",
         "docs/PROTOCOL.md#service-channel-endpoint",
-        "docs/PROTOCOL.md#direct-channel-positive"
+        "docs/PROTOCOL.md#direct-channel-positive",
+        "docs/PROTOCOL.md#direct-item-feedback"
       ],
       "evidence": [
         "docs/evidence/current-movement-cycles/README.md",
@@ -198,7 +199,8 @@
         "docs/evidence/peer-endpoints/README.md#cp146",
         "docs/evidence/eight-player/README.md",
         "docs/evidence/peer-endpoints/README.md#cp148",
-        "docs/evidence/peer-endpoints/README.md#cp149"
+        "docs/evidence/peer-endpoints/README.md#cp149",
+        "docs/evidence/peer-endpoints/README.md#cp150"
       ],
       "prs": [
         173,
@@ -241,7 +243,8 @@
         215,
         216,
         218,
-        219
+        219,
+        220
       ],
       "successors": []
     },

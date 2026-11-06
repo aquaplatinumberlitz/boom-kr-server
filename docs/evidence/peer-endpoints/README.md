@@ -403,3 +403,46 @@ CP149pendingPR; gate/fullmatch/K6a/realLAN/NAT/Internet/Windowsoriginal/authauth
 CP137UI/sharedgeometry/fullinventory mở. TiếpPLAN sourcefirstreuseCP082feedback/CP106native165:
 newrunboundedOSfreshfeedback/current12417→165Fire trướcreturnsetup, rồi BSpacevòng2 đểkiểmowner
 hai chiều; không fakepacket/actorstate, giữmiss/blocker khi chưa đo đủ.
+
+
+<a id="cp150"></a>
+## CP150 — Native Firegate và A/Bowner qua hai kết quả/reset trên directroute
+
+Baseline CP149head`50c28ce`/PR220merge`262a72f`; [contract](../../PROTOCOL.md#direct-item-feedback),
+[câu hỏi](../../RESEARCH.md#gap-floor-pickup), [PLAN](../../PLAN.md#current-order). Productioncode/profile
+unchanged/reuse237tests; Codexselfcheck/reviewwaived. Sourcefirst `direct-item-feedback-r1/reuse-question.json`
+pinCP082freshfeedback/CP106165/CP149actualpartial/currentprofile/mapdata; nativefield/operator/window
+reusekhôngnewbodyRE/codec hoặccopyopcodeVN. R2chuẩnbị trênCP149head, sourcebytesunchanged qua merge.
+
+|Run local/research/codex/|Kết quả|run.json SHA256|
+|---|---|---|
+|direct-item-feedback-r1/cycles|199.741s/exit1/720raw: actualFire124/native165/stats đãcó trướcextraalignment nhưng20pulse/tolerance4tớiY279fail; noSpace/noresult.|`b86300e276444288a484fa8f8b3e39c1dd7248228ce793c211a054718ad269da`|
+|direct-item-feedback-r2/cycles|364.479s/exit0/1348raw: Firegate/nativeconfirmhai vòng; actualA118R1/B118R2,2nativeoppositeending/reset/finalReady;664vethrecords.|`e741fddb8cd0e5ba7378a4bbd27e81d5c98ebe9def98c4fe070a60193c136a82`|
+
+R1`partial-observation.json` pinactual12417SHA/timestamp<trystart, native165cursor12/errors0/
+copygetter ởA/Bcapacitypower1,1→2,1→2,2. Yneutral20samples159/209/259/319/269…/319 cho biết vìsao
+exactcenterconditionkhôngđạt trongbound; không gọi đây làFirefail hoặcluậttick/speed đãRE. Model
+fourphaseparser đòiR2nênStopIteration ởpartial giữlog, không đếm làfourwindowproof.
+R2không nới20pulse/.045s/3sneutral/5swait; chỉkiểmactual124index17/kind1+native165hai view trước
+phátthêmphím vàstop khi quan sát đủ. Vòng1khôngextraalignment; vòng2cóalignment dừng bởi nativepickup.
+`fire-feedback-verification.json`16joins pin124SHA/165/timegate<Space vàcorrectowner/power. Không
+fake124/165, gọi gamefunction/ghi actor hoặc đổi sourceconfig giữarun; failedR1/cleanup/freeze giữ nguyên.
+
+Actualfour124/Bomb16+Fire17 mỗi vòng cócurrentkey12345→12346;8native165events/70pickupjoins pin
+beforeaftercapacity/power trênhai view. Actual118/159Aowner0/ID1/cell3,3/power2 vàBowner1/ID2/cell9,3/
+power1; BkhôngnhặtFire. Native158/process/195beforeafter/seedreset khớppower thực vàmap/policypin.
+CurrentA17→19/B21 vòng1, B17→19/A21 vòng2; native175302/rankstorage2,1→1,2/1803/Prepare110/reset2/
+actualB95Ready/native110/noStart3. Không quy currentreport policy làworld/serverauthority gốc.
+
+3537lifecycle/1490wire/499peer/70pickup/16gate/25Ready/55allTCPdirectchecks;4peerwindows/664vethPCAP
+payload→nativeingress/currentkey/target/progress, native8TCPconnectactualservicepeerA.2/B.3/channel3858/
+noTCPproxy/childforward/UDPproxy. Models1668actor/324peergetter/2364flaggetter+2340array/294typedpacket/
+297report/12native153/42UDPCRC riêng. Hai barriers27.376/27.838s<30; không tănghạn/coldstartguarantee.
+4nativegatedreturn2frames đãxem/hostAStart/guestBReadybadge; CP137complexUIcause chưađược giải.
+
+SourceCAa52545…/Winee9bb4766…/modOa08950…/base400000/RVA=VA−400000 giữ; preflight+rawseal xác nhận
+source/configunchanged tới ownedcleanup/capturestop/end trướcchuyểnviệc. CP149noR1Fire vẫnunknowncause;
+CP150R2đủFirekhông backfill/chứngminhcausalproxy/input/loss. K6a/fullmatch/LAN/Internet/8realclients/
+originalauth/fullinventory giữmở. CP150khôngđếnaudit; AUD045qua148/kếCP152. CP149PR220 đãmerge,
+CP150selfcheck/pendingPR. NextPLAN reuseCP030/062actualcontest/delay165/onewinner vàcurrentdirectroute,
+chỉ đo integrationgap; khôngRElại schemaitem/owner hoặcđónggate dohai vòngbasic.

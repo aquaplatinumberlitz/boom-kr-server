@@ -1,7 +1,7 @@
 # Kế hoạch server giả lập KR 00967
 
 Nguồn chuẩn của project `boom-kr-server`; bản nhập từ plan đã được dsh1/dsh2 review tại `1eee46d`.
-Cập nhật06/11 JST (CP149): allTCPdirect/no rootguardproxy/native2cycles/Ready/capture đã đo; [contract](PROTOCOL.md#direct-channel-positive). R1Fire chưa có request, giữ partialitem; CP148/PR219 merged`f27c667`, CP149selfcheck/chờPR. AUD045through148/next152.
+Cập nhật06/11 JST (CP150): directroute/Firegate/BombFirehai vòng/A→Bowner/native2results/Ready đãđo; [contract](PROTOCOL.md#direct-item-feedback). CP149/PR220 merged`262a72f`; CP150selfcheck/chờPR. AUD045through148/next152.
 
 
 ### Mục tiêu, baseline và phạm vi
@@ -37,13 +37,13 @@ với client Rust không chứng minh có thể điều khiển client KR bằng
 
 ### Tiến độ hiện hành theo bằng chứng
 
-| Task/mốc | Trạng thái tại CP149 | Nguồn chuẩn |
+| Task/mốc | Trạng thái tại CP150 | Nguồn chuẩn |
 |---|---|---|
 | KRE-004/issue6 | Đã review/merge PR7 và đóng issue:recipe r1 đến local accept;không phải full K1 | [Wine r1](evidence/wine/README.md) |
 | Bootstrap reply | PR8 đã merge;debugger ProcessPatchreturn1,không ép success | [bootstrap evidence](evidence/bootstrap-wire/README.md) |
 | KRE-005a/issue9,R2 | PR10 đã merge:3 cold start cửa sổ/second accept;issue9 còn mở | [R2 evidence](evidence/wine-r2/README.md) |
 | WCP hai-reply | Run CP001 là lịch sử chưa C→S; CP006 đã đo request đầu trên copy tham số hóa | [PROTOCOL](PROTOCOL.md#wcp),[WCP evidence](evidence/wcp/README.md) |
-| KRE-005b/issue14 | CP006–148 đã merge; CP149 allTCPdirect/native2cycles/capture cónguồn, itemR1Firepartial; shared/complexUIgaps giữ; fullround/authority/full auth còn mở | [Q-023](RESEARCH.md#q-023), [service](evidence/probe-service/README.md) |
+| KRE-005b/issue14 | CP006–149 đã merge; CP150 directFiregate/BombFire2cycles/ABowner/results cónguồn; shared/complexUIgaps giữ; fullround/authority/full auth còn mở | [Q-023](RESEARCH.md#q-023), [service](evidence/probe-service/README.md) |
 | K0/K1 | Chưa nghiệm thu toàn gate;Windows vanilla/control ownership và các điều kiện còn thiếu giữ mở | Gate dưới,[Q-022](RESEARCH.md) |
 | K2a/K2 | Primitive/WCP, CP057stream native/model và CP058–060authcallback137/135/errors0 đã có; fullcodec/authauthority/reconnect và gate chưa pass | [PROTOCOL](PROTOCOL.md#login-auth),[Q-023](RESEARCH.md#q-023) |
 | K3 | Copy đã vẽUI/đóngnotice, A/B/Cprofile đọc sạch và mộtnamedcachewarm được nhận; identityauthority/toàncache/codec/K3 chưa nghiệm thu | [Contract sảnh](PROTOCOL.md#channel-lobby) |
@@ -66,21 +66,21 @@ selectiveCLI/historicalmigration xong, không còn taskactive tổ chức. CP119
 Yêu cầu kiểm8 người đã có kết quả hẹp [CP147](PROTOCOL.md#battle-eight-roster), không thay gate:
 không lặp roster tổng hợp/dump capacity; selector1 wire/UI mở khi cần chọn kiểu đội. Service8 peer
 và trận8 client thật là phần mở rộng sau hai/bốn client ổn ở bước5, chưa được đánh dấu hoàn thành.
-1. **KR-F006/F004/S001 — current input/pickup và bom hai chiều trên directroute:**
-   [CP149](PROTOCOL.md#direct-channel-positive) đã giải allTCPdirect/no rootguardproxy/actualservicepeer
-   A.2/B.3 và positive2cycles/4UDPwindows/Ready. Không chạy lại endpoint/codec/oldUDP.
-   Giữ R1Bombonly/power1/R2BombFirepower2 và failure checker cũ; chưa có causalproxy/input/lossclaim.
-   Sourcefirst reuse CP082feedback/CP106165/current14callbacks/CP148API/currentprofile; newcopy
-   chỉ thay controller normalOSinput: sau4peerwindows/returnsetup đi tới ô Fire đã biết bằng fresh
-   actorfeedback có checksum/read-only, đợi **actual124index17/kind1→165/currentpower** trước trở lại
-   setup. Giữ boundedtime/input/release/30sloading; không gọi gamefunction/writeactor/tạo124 giả.
-   Nếu không có124 dù đi đủ ô, giữraw/control rồi trace đúngpickupconsumer; không tăng thời gian
-   tùy ý. Không coi tọa độ/encoder/stublog đủ proof pickedup.
-   Khi itemledger đủ, một SpaceA/vòng1 và SpaceB/vòng2 ở spawn hợp lệ; ghépactual118/159owner/ID/
-   power/158/native195 vàcurrenttrap17→19/survivor21/result175180/reset/Ready95/110/noStart3.
-   Thử tối thiểu trên positive allTCPdirect/noUDPproxy khôngghépnegativeCP148.
-   Hai virtualnetns cùngphysicalhost chưarealLAN/fullauth/fullmatch/K6a/gate;8realclients/CP137UI/
-   sharedgeometry/fullinventory vẫn riêng. [#14](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/14).
+1. **KR-F006/S001 — acceptance tranh item trên directroute, dùng kiến thức cũ:**
+   [CP150](PROTOCOL.md#direct-item-feedback) đã giải scopedcurrentFiregate/BombFirehai vòng và
+   oneSpaceA/R1/B/R2/nativeoppositeoutcomes/reset/Ready. Không tìm lại endpoint/codec/124165/stat.
+   Sourcefirstđốichiếu CP030/062actualtwo124/delayedpositive165/onewinner vàcurrentCP150profile/
+   claimlogic. Chỉ đo phần thiếu trên allTCPdirect/currentguardprofile: hai nativeclient cùngclaim
+   mộtindex hiện hành, mộtconfirm165/receiver đúngwinner và mộtstatdelta, resetvòng2keymới.
+   Nếu cần giữpositive165 khoảng2s để cảhai client kịpreport, dùngmeasurementcopy/subclass có
+   provenance/rollback nhưCP062, giữproductionclaim/key/consume; khai rõdelaylàdesign, khôngoriginal
+   fairness/law. Không fake124/forcewinner hoặc đổi sourceconfiggiữarun. Profile/spawn/item khác
+   phảipin/giải thíchguard, không mặc định overlapCP062tươngđươngcurrentdistinctspawn.
+   Ưu tiên currentdistinctspawn: freshOSfeedback đưaB tớiapproachitem vàA/Bcùngtiếp cận; actual124
+   vàconsumer165 quyếtđịnhscope, không ý định click/tọa độ. Boundedpartial/phépđotiếp nếuchỉ1report.
+   Xongca tranh mới tổnghợp acceptance K6a còn thiếu từnguồnchuẩn, không tựnânggate hoặc mở8peer
+   service trướcbaseline2/4client. NoLAN/NAT/Internet/fullauth/fullmatchclaim.
+   [#14](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/14) epicgiữmở.
    <!-- active-issue: 14 --> AUD045through148; periodic audit kế **CP152**.
 2. **KR-B003/KR-F006 — nợ có giới hạn:** [CP057](PROTOCOL.md#codec-stream-boundaries) đã đo stream/
    seq/bounds trong model, không mở lại76split hoặc cấp buffer lớn chỉ để vượt allocationguardFFFFFFFF.
@@ -110,7 +110,7 @@ Bảng này chỉ phân công/thứtự; acceptance/PR/bằngchứng ởissue. [
 
 | Thứ tự/scope | Issue | Trạng thái/phần còn thiếu |
 |---|---|---|
-| Hiện hành RE | [#14/KRE-005b](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/14) | CP006–148 merged; CP149 allTCPdirect/no rootguardproxy/native2cycles/capture cónguồn/tựkiểm. R1Fireinput/Bownerpositive làbước1; gaps giữ; fullauth/authority/fullmatch/gates mở. |
+| Hiện hành RE | [#14/KRE-005b](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/14) | CP006–149 merged; CP150 directFiregate/twoowner2cycles/nativeReady cónguồn/tựkiểm. Actualcontestedpickup/directroute làbước1; gaps giữ; fullauth/authority/fullmatch/gates mở. |
 | Control theo trigger/gate | [#1/KRE-001](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/1), [#2/KRE-002](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/2) | Windowsoriginal/ownership/K0K1/fullbootstrapconfig; reuseWine/import/replyđãđo. |
 | Codec/identity khi cần | [#3/KRE-003](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/3), [#9/KRE-005a](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/9) | Fullcodec/livebounds vàintermittentmainstartupcause cònthiếu; khônglặpprimitive/auxiliarylocale. |
 
