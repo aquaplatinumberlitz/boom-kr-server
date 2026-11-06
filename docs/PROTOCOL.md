@@ -1,6 +1,6 @@
 # KR 00967 — contract tương thích client gốc
 
-Revision kr-legacy-contract-r1; cập nhật06/11/2026 JST (CP168; AUD050 quaCP168, kếCP172).
+Revision kr-legacy-contract-r1; cập nhật06/11/2026 JST (CP169; AUD050 quaCP168, kếCP172).
 **Contract có bằng chứng từng phần; chưa nghiệm thu full codec K2**.
 Lộ trình và thứ tự task chỉ giữ ở [REWRITE_PLAN — KRE](PLAN.md).
 Đây là contract của repo server KR. ADR0009 của bản viết lại là nguồn lịch sử để so sánh;
@@ -2024,7 +2024,7 @@ locator/trace và trạng thái từng ô; những vai trò không nêu dưới 
 | Movement | [CP159/160 production](#exported-preset-runtime):4nativepeerwindows/actualapply/target/currentprogress, nohold165/activeUDPprobe; [CP070](#current-udp-causality) giữcontrol riêng | Fullschema/auth/reliability/NAT unknown; currentprofile hai chiều có nguồn, không fullgrammar trước mọi demo hẹp |
 | Bomb place/ID | [CP160](#exported-preset-runtime) actual118/nativeID1/A/power2,ID2/B/power1/full159158/195flagreset; [CP156](#direct-host-eof-acceptance) pendinghostEOF/fence scope riêng | Boundedrole/key/serial/quota/geometry làpolicy; actorlocation/fullauth/allpool/races unknown |
 | Explode/chain | CP033 một owner; CP064 [power1/cách hai ô](#mixed-owner-chain), CP071 [power2 ngoài tầm/feedback chưa118](#mixed-owner-power) giữ partial lịch sử; CP081 [power2/distance2 mixed-owner](#mixed-input), CP084 [ba bom fork hai vòng](#three-bomb-chain); CP094 [optional pinned terrain](#terrain-policy), CP095 [actualbox/laterfreshpair](#opposite-box-control) có native callback/195flag proof | [CP096adjacent1cell](#adjacent-owner-control) và [CP122 chain sâu](#recursive-chain) đã đo trong ca hẹp; [CP133 shared cellstate/query](#shared-cell-state) và [CP134 hai shared cycles](#shared-cascade-cycles) đã giải ca cố định; FIFO/firstbombstop/immutable tổng quát/race và authority server gốc chưa đủ |
-| Block destroy/item reveal | CP032nativecontract; [CP068/069 optionalhidden/basicprofile](#current-hidden-items), CP092195flags/CP095actualbox/CP133geometry có nguồn riêng | [CP168currentpreset](#current-mode-promoted-start3) chỉflooritems/nohidden/revealed_hidden={}; không lấy optionalprofileproof làm currentrunreveal. Dropalgorithm/fullvalidator/generalclass/map còn thiếu; report142 khôngworldoracle |
+| Block destroy/item reveal | [CP169](#current-basic-hidden) copyprofile ghépknownCP069/currentmode/Bhost đãnative2FixedBox/reveal27/28/142/124165/3effects trongepoch1; CP032068069/CP095/133 giữnguồn | Preset mặcđịnh vẫnfloor-only; profileghépchưaresult/reset/epoch2. Originaldrop/fullvalidator/generalmap/class giữunknown; report142khôngworldoracle |
 | Item placement/pickup | [CP159/160](#production-baseline) productionimmediate165/1or2actualclaims/oneeffect/nativewinnerpower/reset; [CP155](#direct-oldudp-contest-eof) hold2sactualcontenders là control riêng | Full124distance/auth/generation/inventory/max/speedTTL/activevariants chưa đủ; delay2s không còn trongproductionbaseline |
 | Trap/death | [CP159/160](#exported-preset-runtime) strict56→1/other0beforerank2views/2epochs; [CP157natural](#current-host-ui-exit)/[CP158controlledoverwrite](#current-trap-udp-counter) giữ causal limits | Snapshot khôngglobalsametick; samekeycounterheuristic cho controlledremoteoverwrite; naturalCP157cause unknown, nofullvalidator |
 | Result/reset | [CP168](#current-mode-promoted-start3) currentMannerBhost2normaloutcomes/reset/Ready rồi actualBStart3/12199/clocks/render8s; CP165Ahost vàCP164partials giữscope riêng | Thirdactive khôngthirdcompletedmatch; fullinventory/timer/seq/peer/resetvariants/originalarbitration còn thiếu; currentpresetfloor-only khônghiddenreveal |
@@ -5938,3 +5938,43 @@ khônghidden_items, revealed_hidden={} cả3generation. NativeBox/reveal142/hidd
 Đây lànextgap cụthể phục vụK5; [PLAN](PLAN.md#current-order) composeknown582/catalog/route/nativepreflight.
 K4dependencies/K5/K6a/fullmatch/8client/generalreset/Windows/coldcache/codec-reset/originalauthority
 giữmở. R3khôngactiveoldUDP/EOFfault, controlsCP155/167 khôngbackfillsame-runqualification.
+
+
+<a id="current-basic-hidden"></a>
+### Basicprofile ghép trên currentmode/Bhost: native reveal và ba hiệu ứng — CP169
+
+**`kr_runtime/confirmed` hẹp cho copyprofile thử; placement/reportgate/controller là `design`.**
+[Raw/partials/hash](evidence/peer-endpoints/README.md#cp169), [gap](RESEARCH.md#gap-floor-pickup).
+Reuse CP032/068/069 exact582/list2/FixedBox/reveal142/124165/effectfamily, CP095actualbox/currentterrain,
+CP165boundednativefeedback vàCP166/168Manner/title/Bhost. VNitems/oc_e-game chỉworkflow/family đãpin;
+không portopcode/ID/offset/enum hoặc RE lạiconsumer/ItemAttr/thân hàm native. Sourcebuild e9bb4766…/
+static660447…/modOa08950…/base400000 giữ, khôngsourcebinary/pack/DBchange.
+
+Copyprofile ghép từCP168current47pin: **46alias giữexact**, chỉfloor582 thayexactCP069counts1/2/0/
+inner36; floorRollerindex17,row4col3,kind2; hiddenBomb27,row2col3,kind0/Fire28,row3col2,kind1.
+items/hidden_items/item_layoutcatalogtươngứng, mode/title/terrain/network/capacity/guards khôngđổi.
+Nativeframer/blob/11ED590 valid/CRC/partial3cases vàconstructorpass trướcWine; list2gắn vàoactualFixedBox,
+khôngtạo tường mới. Committedpreset/default vẫnfloor16/17; không gọi profilecopy làpresetđãmigrate.
+
+R1knownCP069OSroute chỉactual17+27; R2thêmfeedbackmissing28nhưngoldrouteđãnhặt28/bỏ27 nênchỉ17+28,
+khôngchạyfallback. Cảhai view của từngrun đãnativeinstallFixedBox(vt1747724)/reveal27+28→CGOItem
+(vt1746A4C), actual142bothroles; các effect cónguồnriêng, khônggộphai partial thành3effects.
+R3freshcopy7connections/Aroom/Blogin3-nochannel4 tới330sbound/nohiddenruntime; exit0/khôngerror
+khôngacceptance, không gánstartupfailurechohidden/membership hoặcbypassauth. R4freshprefixcùnglogic
+retry/R3nguồn giữ; nonewnativebody/handlerfix. R2generatorindentfallback sửa **trướclaunch**/refreeze,
+candidatecontrollercũgiữlocal, khôngsource/configchangegiữarun.
+
+CùngR4 192.983476401s/exit0: actualMannercreate/Bhostpromotion/Arejoin/ReadyAStartB/12199clock1;
+normalSpace/158 pháactual2Box→native27/28reveal/4actual142→actualA12417,27,28/currentkey12345→
+native165full12/errors0/3callbacks/view/lookup27,28 đúngpointerreveal. Nativegetterbothviews chỉA tăng
+Roller5→6/capacity1→2/Fire1→2, Bcapacity2/power1/Roller4 giữ; đây là familyeffect đãRE, khôngmớiluậtitem.
+Missing28 dùngpeer_alignread-onlyArowY159/X80,tolerance12/20attempt/3freshneutral/45ms, giữ3rare165+
+lookupE636D9/statprobes, exactrestore4viewphaseacks. Only2alignmentgroupshit; missing27fallbackkhônghit
+trongR4, không giảmọinhánhcontroller đãkiểm.
+
+176integrationjoins/122effectjoins/60capturednativeframer/gettermodels; pointer/cell/typedreportSHA và
+securegetters là bằngchứng, ảnhfinal2view chỉrender. 721raw/109frozen/namespacecleanupsealed.
+Chỉepoch1/oneblast/3effects, **chưa normaloutcome/reset/epoch2** trênprofileghép. Originalrandomdrop/
+distance/auth/hiddenreportfreshness/validator giữgiớihạnCP068; khônglấy142 làmworldoracle.
+Next[PLAN](PLAN.md#current-order)ghépknownfinalSpace/result/reset/twoepochs, khôngRElạinativeconsumer.
+K4dependencies/K5/K6a/fullmatch/Windows/LAN/Internet/8client giữmở; auditAUD050qua168/next172.

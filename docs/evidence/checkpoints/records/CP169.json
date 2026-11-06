@@ -1,0 +1,256 @@
+{
+  "id": "CP169",
+  "previous": "CP168",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-06T13:26:46.895000+00:00",
+  "context_commit": "2ee6556bc3d5a429124ec7691c77d68eb5c2ea71",
+  "owner": "Codex",
+  "reviewer": "Codex",
+  "question": "Can knownCP069hidden/basicitemcontract compose oncurrentManner/title/Bhost profile and produce nativeBoxreveal→actual142/124165→sameepochthreeeffects withoutnewconsumerRE?",
+  "scope": "SourcefirstCP032068069/CP095knownBox/map/CP165feedback/CP168currentmode reused. Exactprofilecomposition/preflight+2routepartials+1startupnonreach+freshretry3effectsinfirstepoch. Groupedruntime/nativeproof; no production/defaultpresetchange/newbodies/reset/gateclaim.",
+  "artifacts": [
+    {
+      "name": "OriginalKR00967unchanged",
+      "sha256": "a52545c14b1fea423de655c3163d6360b628d61c1cd472b46fdbc8a9ffe15f4e"
+    },
+    {
+      "name": "CurrentWinecopyunchanged",
+      "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+    },
+    {
+      "name": "NativeIDAfullcopycf72privateanalysis",
+      "sha256": "cf72da112308d9f1ca256df8089594c5f787875310933073bf6bd5ba6f70e63b"
+    },
+    {
+      "name": "modOmodelreference",
+      "sha256": "a08950c833d3acab8281049def7b3dc96b221f107eeda01da3a548e34b91dce5"
+    }
+  ],
+  "locators": [
+    "BaselineCP168PR239head902994eb90e3f6e00b3a131977183fb27d132b06/merge2ee6556bc3d5a429124ec7691c77d68eb5c2ea71; sourceunchangedthroughmerge.",
+    "R1runf260c8b82eae380ed07478dd52980c5daef6568a446e05157cd6b33cac01ba8f/194.314060126s/exit0/742raw/108inputs.",
+    "R2run472925b8c0b72f86fa69ee9a75a6253b098a4682a7f0582015ce6567e6ee14f4/191.128464361s/exit0/723raw/109inputs.",
+    "R3run309be133a7f12b22bfb95b5deb4b886af0931e9902907e28267c0e45f7fadcf0/339.989344987s/exit0/1253raw/109inputs; nopromoted/Bclock/nativehiddenruntime.",
+    "R4run6e8a5858eda20753c31433f65430d7ea762f5405a71fe0cf8b66086a5fb218a2/192.983476401s/exit0/721raw/109inputs.",
+    "Base400000/RVA=VA-base. Known582/11ED590; hiddeninstallEB579E/storeB9C939/revealB9D0B4/165lookupE636D9/165E63260E63309E63E1A/52A350getters reused; no newfunctionbody. vt1747724FixedBox→1746A4CItem.",
+    "AUD050through168/next172unchanged. Defaultpresetstillfloor-only; localcopyprofileexperimentalintegrationnotdefaultmigration."
+  ],
+  "findings": [
+    {
+      "summary": "ExactCP069582/counts1,2,0/inner36 andknowncatalogcomposedontoCP16847pinprofile;46aliasesunchanged/onlyfloor,items,hidden_items,item_layoutdelta; nativeframer/blob/11ED5903positiveCRCpartialandconstructorpassbeforelaunch. VNitems/game familyworkflowonly, KRlayout/IDsreusednotported.",
+      "source": "kr_static",
+      "status": "confirmed",
+      "method": "emulation",
+      "canonical": "docs/PROTOCOL.md#current-basic-hidden",
+      "evidence": [
+        "RUN-00004",
+        "RUN-00761",
+        "RUN-00770",
+        "RUN-03727"
+      ],
+      "limits": "ModifiedWine/privatevirtualhosts/currentManner/title/Bhost COPYbasicprofile,notcommitteddefaultpreset. KnownCP069582/catalogfloorRoller17kind2/hiddenBomb27kind0/Fire28kind1;46of47aliasesunchanged/currentterrain/guards/network/productionunchanged. R1accepted17+27/R2accepted17+28/R3startup7connections-noBchannel4 keptpartial/notcomposed. R4sameepoch3nativeeffects onlyA bothviews/2Boxreveal/actual142/124165/pointer/stat proof; onlyoneepoch/noresult/reset/epoch2. Knownread-onlynativefeedback20attempt/45ms/tolerance12/3freshneutral, rare165lookup retained/exactrestore; no actor/gamefunction/write/injection/sourcebinary/DB/packchange. Fullauth/originaldrop/validator/distance/142freshness/generalreset/K4dependencies/K5K6a/fullmatch/Windows/LANInternet/8clients remainopen."
+    },
+    {
+      "summary": "R1nativebothFixedBox→reveal27/28/142 thenactual17+27only;R2sameBox/reveal plus17+28only. R3Aroom/B3loginconnections/noBchannel4till330sbound; noitemexperiment/exit0notacceptance. Oldpartials/startupkeptnotcomposedas3effects/notrootcauseauthorhiddenfailure.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#current-basic-hidden",
+      "evidence": [
+        "RUN-00756",
+        "RUN-01559",
+        "RUN-02951",
+        "RUN-02902"
+      ],
+      "limits": "ModifiedWine/privatevirtualhosts/currentManner/title/Bhost COPYbasicprofile,notcommitteddefaultpreset. KnownCP069582/catalogfloorRoller17kind2/hiddenBomb27kind0/Fire28kind1;46of47aliasesunchanged/currentterrain/guards/network/productionunchanged. R1accepted17+27/R2accepted17+28/R3startup7connections-noBchannel4 keptpartial/notcomposed. R4sameepoch3nativeeffects onlyA bothviews/2Boxreveal/actual142/124165/pointer/stat proof; onlyoneepoch/noresult/reset/epoch2. Knownread-onlynativefeedback20attempt/45ms/tolerance12/3freshneutral, rare165lookup retained/exactrestore; no actor/gamefunction/write/injection/sourcebinary/DB/packchange. Fullauth/originaldrop/validator/distance/142freshness/generalreset/K4dependencies/K5K6a/fullmatch/Windows/LANInternet/8clients remainopen."
+    },
+    {
+      "summary": "R4freshcopy/exactsamelogic hascurrentManner/titleidleAhostBack/Bpromotion/Arejoin/ReadyAStartB/12199clock1; knownrouteplusboundedUpY159/LeftX80feedback producesactual12417/27/28/2Boxreveal/4actual142bothroles/native165full12errors0/3callbacksview. Hidden165lookupsexactrevealedCGOItempointers; no newboxcreation oriconinference.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#current-basic-hidden",
+      "evidence": [
+        "RUN-03704",
+        "RUN-03703",
+        "RUN-03718",
+        "RUN-03777"
+      ],
+      "limits": "ModifiedWine/privatevirtualhosts/currentManner/title/Bhost COPYbasicprofile,notcommitteddefaultpreset. KnownCP069582/catalogfloorRoller17kind2/hiddenBomb27kind0/Fire28kind1;46of47aliasesunchanged/currentterrain/guards/network/productionunchanged. R1accepted17+27/R2accepted17+28/R3startup7connections-noBchannel4 keptpartial/notcomposed. R4sameepoch3nativeeffects onlyA bothviews/2Boxreveal/actual142/124165/pointer/stat proof; onlyoneepoch/noresult/reset/epoch2. Knownread-onlynativefeedback20attempt/45ms/tolerance12/3freshneutral, rare165lookup retained/exactrestore; no actor/gamefunction/write/injection/sourcebinary/DB/packchange. Fullauth/originaldrop/validator/distance/142freshness/generalreset/K4dependencies/K5K6a/fullmatch/Windows/LANInternet/8clients remainopen."
+    },
+    {
+      "summary": "Sameepochnativegettersbothviews onlyA Roller5→6/capacity1→2/Fire1→2, B2/1/4unchanged;3knownfamilyeffects/124SHA142eligibilitybeforeclaim/pointerjoints122checks and60actualframer/gettercases. Only2alignmentgroupshit/4viewphaseacks/4rare165+lookup enabled/exactrestore; missing27fallbacknotexecutedinpositiveR4.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#current-basic-hidden",
+      "evidence": [
+        "RUN-03703",
+        "RUN-03710",
+        "RUN-02955",
+        "RUN-02956"
+      ],
+      "limits": "ModifiedWine/privatevirtualhosts/currentManner/title/Bhost COPYbasicprofile,notcommitteddefaultpreset. KnownCP069582/catalogfloorRoller17kind2/hiddenBomb27kind0/Fire28kind1;46of47aliasesunchanged/currentterrain/guards/network/productionunchanged. R1accepted17+27/R2accepted17+28/R3startup7connections-noBchannel4 keptpartial/notcomposed. R4sameepoch3nativeeffects onlyA bothviews/2Boxreveal/actual142/124165/pointer/stat proof; onlyoneepoch/noresult/reset/epoch2. Knownread-onlynativefeedback20attempt/45ms/tolerance12/3freshneutral, rare165lookup retained/exactrestore; no actor/gamefunction/write/injection/sourcebinary/DB/packchange. Fullauth/originaldrop/validator/distance/142freshness/generalreset/K4dependencies/K5K6a/fullmatch/Windows/LANInternet/8clients remainopen."
+    },
+    {
+      "summary": "Currentcopybasicprofile nowepoch1hiddenintegrationconfirmed butnormaloutcome/reset/epoch2unmeasured; defaultcommittedfloorpresetunchanged. NextreuseknownCP069finalnormalSpace+CP168BhostReadyStartcycles/CP169profile/route/probes, notItemAttr/consumer/newopcodeRE. R2prelaunchindentcorrectioncandidatepreserved, firstprematureR4launchmissingrecipebeforeanyclientspawnthenwaitedpreflightdone.",
+      "source": "design",
+      "status": "design",
+      "method": "documentation",
+      "canonical": "docs/PROTOCOL.md#current-basic-hidden",
+      "evidence": [
+        "RUN-02962",
+        "RUN-01583",
+        "RUN-03728",
+        "RUN-03775"
+      ],
+      "limits": "ModifiedWine/privatevirtualhosts/currentManner/title/Bhost COPYbasicprofile,notcommitteddefaultpreset. KnownCP069582/catalogfloorRoller17kind2/hiddenBomb27kind0/Fire28kind1;46of47aliasesunchanged/currentterrain/guards/network/productionunchanged. R1accepted17+27/R2accepted17+28/R3startup7connections-noBchannel4 keptpartial/notcomposed. R4sameepoch3nativeeffects onlyA bothviews/2Boxreveal/actual142/124165/pointer/stat proof; onlyoneepoch/noresult/reset/epoch2. Knownread-onlynativefeedback20attempt/45ms/tolerance12/3freshneutral, rare165lookup retained/exactrestore; no actor/gamefunction/write/injection/sourcebinary/DB/packchange. Fullauth/originaldrop/validator/distance/142freshness/generalreset/K4dependencies/K5K6a/fullmatch/Windows/LANInternet/8clients remainopen."
+    }
+  ],
+  "verification": [
+    {
+      "check": "R1R2plannedfirstepochall3effects;R3plannedhiddenruntime",
+      "result": "pending",
+      "evidence": [
+        "RUN-00767",
+        "RUN-01572",
+        "RUN-02951"
+      ],
+      "limits": "Eachpartial/nonreachkept; separateR4proofnotbackfill. R1only17+27/R2only17+28/R3neverBchannel4."
+    },
+    {
+      "check": "R4nativehiddeninstallation/reveal/report/pickup/pointer176/effects122/60nativeactualmodels/2manualframes/4alignmentviewphaseacks",
+      "result": "pass",
+      "evidence": [
+        "RUN-03704",
+        "RUN-03703",
+        "RUN-03710",
+        "RUN-03777",
+        "RUN-02956"
+      ],
+      "limits": "ModifiedWine/privatevirtualhosts/currentManner/title/Bhost COPYbasicprofile,notcommitteddefaultpreset. KnownCP069582/catalogfloorRoller17kind2/hiddenBomb27kind0/Fire28kind1;46of47aliasesunchanged/currentterrain/guards/network/productionunchanged. R1accepted17+27/R2accepted17+28/R3startup7connections-noBchannel4 keptpartial/notcomposed. R4sameepoch3nativeeffects onlyA bothviews/2Boxreveal/actual142/124165/pointer/stat proof; onlyoneepoch/noresult/reset/epoch2. Knownread-onlynativefeedback20attempt/45ms/tolerance12/3freshneutral, rare165lookup retained/exactrestore; no actor/gamefunction/write/injection/sourcebinary/DB/packchange. Fullauth/originaldrop/validator/distance/142freshness/generalreset/K4dependencies/K5K6a/fullmatch/Windows/LANInternet/8clients remainopen."
+    },
+    {
+      "check": "3439raw/435frozeninputs/sourceunchanged/ownedcleanup;265server4exportsourcehashreuse/docs/catalog/issues/artifacts/diff/fullhistorylocalbeforecommit",
+      "result": "pass",
+      "evidence": [
+        "RUN-00769",
+        "RUN-01574",
+        "RUN-02902",
+        "RUN-03718",
+        "RUN-03775",
+        "RUN-03693",
+        "RUN-03706",
+        "RUN-02958"
+      ],
+      "limits": "Unchangedserver testsreusedexacthash; historycheckafterappendbeforecommit; mechanicalchecker notsemanticgate. No source/configduringrunchanges."
+    }
+  ],
+  "evidence": [],
+  "evidence_manifests": [
+    {
+      "path": "docs/evidence/checkpoints/evidence/CP169-current-basic-hidden.json",
+      "bytes": 962504,
+      "sha256": "674df801e5513effe504f6674665bce85750255159a311ceb57c31097f278529",
+      "count": 3801
+    }
+  ],
+  "delta": {
+    "added": [
+      "Knownbasic582composition/nativepreflightcurrentmodecopyprofile;actualfirstepochnativeFixedBox→reveal27/28/124165/samepointer/3effects bothviews.",
+      "Twoexplicitroutepartials andoneBstartupnonreachretained beforefreshsame-logicretry."
+    ],
+    "corrected": [
+      "CP168currenthiddenintegrationgapresolvedepoch1onlyforcopyprofile;no defaultpresetmigration orreset/twoepochclaim.",
+      "CP168PR239merged;oldCP069proofusedtoavoidconsumerRE,notbackfillruntime."
+    ],
+    "superseded": [
+      "NEXT-CURRENT-BASIC-HIDDEN closedfirstepochboundedproof; NEXT-CURRENT-BASIC-CYCLES active."
+    ]
+  },
+  "blockers": [
+    "Currentcopybasicprofile normaloutcome/reset/epoch2 unmeasured; olderCP069/defaultfloorCP168cannotbackfill.",
+    "General142freshness/validator/auth/drop/Windows/LANInternet/8client/K4dependencies/K5K6a/fullmatch/generalreset remainopen; R3startupcauseunknownnotreopenedwithouttrigger."
+  ],
+  "next_steps": [
+    {
+      "id": "NEXT-CURRENT-BASIC-HIDDEN",
+      "task": "KRE-005b",
+      "state": "closed",
+      "action": "CP169R4sameepochcurrentmodeBhost copybasicprofile/2Boxreveal/3actualpickups/native165pointer/3familyeffects bothviews;defaultpresetunchanged/notreset/twocycles.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-CURRENT-BASIC-CYCLES",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "PLANreuseCP069finalnormalSpace/CP168BhostReadyAStartB/CP169exactprofile+route+4rare165lookup; observe17→19/survivor21/175180/refresh thenepoch2hidden27/28/threeeffects/stat/195/eligibilityreset. No fakepackets/gamecall/actorwrite/criteriarelaxation/newconsumerRE.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    }
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-11-06T13:26:46.895000+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "CodexsoloRE/runtime/self-check; independentreviewwaived; noautogate.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Owner explicitly requested solo without workers/review."
+    }
+  },
+  "docs_sync": [
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "CP169copybasicfirstepoch/partials/startupnonreach/native3effects/CP168PR239merge/nextsameprofile2cycles syncedbeforecomplete."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "CP169copybasicfirstepoch/partials/startupnonreach/native3effects/CP168PR239merge/nextsameprofile2cycles syncedbeforecomplete."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "updated",
+      "reason": "CP169copybasicfirstepoch/partials/startupnonreach/native3effects/CP168PR239merge/nextsameprofile2cycles syncedbeforecomplete."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "updated",
+      "reason": "CP169copybasicfirstepoch/partials/startupnonreach/native3effects/CP168PR239merge/nextsameprofile2cycles syncedbeforecomplete."
+    },
+    {
+      "path": "docs/features.json",
+      "state": "updated",
+      "reason": "CP169copybasicfirstepoch/partials/startupnonreach/native3effects/CP168PR239merge/nextsameprofile2cycles syncedbeforecomplete."
+    },
+    {
+      "path": "docs/COVERAGE.md",
+      "state": "updated",
+      "reason": "CP169copybasicfirstepoch/partials/startupnonreach/native3effects/CP168PR239merge/nextsameprofile2cycles syncedbeforecomplete."
+    },
+    {
+      "path": "docs/evidence/peer-endpoints/README.md",
+      "state": "updated",
+      "reason": "CP169copybasicfirstepoch/partials/startupnonreach/native3effects/CP168PR239merge/nextsameprofile2cycles syncedbeforecomplete."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/review.json",
+      "state": "updated",
+      "reason": "CP169copybasicfirstepoch/partials/startupnonreach/native3effects/CP168PR239merge/nextsameprofile2cycles syncedbeforecomplete."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
+      "state": "updated",
+      "reason": "CP169copybasicfirstepoch/partials/startupnonreach/native3effects/CP168PR239merge/nextsameprofile2cycles syncedbeforecomplete."
+    },
+    {
+      "path": "server/README.md",
+      "state": "updated",
+      "reason": "CP169copybasicfirstepoch/partials/startupnonreach/native3effects/CP168PR239merge/nextsameprofile2cycles syncedbeforecomplete."
+    }
+  ]
+}

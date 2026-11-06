@@ -41,15 +41,14 @@ Hai copy KR Wine đã chạy login/sảnh/phòng/Battle và các chu kỳ kết 
 [kim/reset](docs/PROTOCOL.md#needle-round-reset), [cứu hai chiều và hai kết quả](docs/PROTOCOL.md#rescue-two-results),
 [deep chain/reset](docs/PROTOCOL.md#recursive-chain-cycles) giữ phạm vi và giới hạn tại nguồn chuẩn.
 
-**Mốc mới CP168:** current Manner/title sau chuyển chủ đã chạy **hai kết quả/reset/Ready rồi
-BStart3 thật → native clock/render cả hai sau8s**. [Contract/giới hạn](docs/PROTOCOL.md#current-mode-promoted-start3),
-[control/raw/hash](docs/evidence/peer-endpoints/README.md#cp168). Vòng3 chỉ active. Hai control pulse0,30s
-không có Fire124 giữ FAIL; controller mới dùng normalOSkeys dừng theo actualpickup, không sửa game/service.
+**Mốc mới CP169:** profile thử ghép basicBattle trên current Manner/title/Bhost đã có **native
+FixedBox → reveal27/28 → nhặt Roller17/Bomb27/Fire28 và ba hiệu ứng trong cùng một epoch**, cảhai view.
+[Contract/giới hạn](docs/PROTOCOL.md#current-basic-hidden), [raw/partials/hash](docs/evidence/peer-endpoints/README.md#cp169).
+Chưa đo kết quả/reset/trận kế trên profile ghép; preset mặc định vẫn floor-only.
 
-CP167 đã merge [PR238](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/238) tại `e48e10b`;
-CP168 tự kiểm/chờ PR. **AUD050 qua168, audit định kỳ kế CP172**. [PLAN](docs/PLAN.md#current-order)
-tiếp integration basicBattle/itemẩn từ contract đã có: preset hiện tại chỉ flooritems, chưa có reveal/drop
-trong run này. K4/K5/K6a/fullmatch/LAN/Internet/8client thật và dependency gate vẫn mở;
+CP168 đã merge [PR239](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/239) tại `2ee6556`;
+CP169 tự kiểm/chờ PR. AUD050 qua168, audit định kỳ kế **CP172**. [PLAN](docs/PLAN.md#current-order)
+tiếp hai chu kỳ/reset của profile ghép. K4/K5/K6a/fullmatch/LAN/Internet/8client và dependency gate vẫn mở;
 [review waived](docs/evidence/checkpoints/review-waiver.json).
 
 Đích đầu: hai client thật chơi hai trận liên tiếp; mở bốn client và hardening sau đó.
