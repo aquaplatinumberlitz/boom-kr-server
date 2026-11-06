@@ -41,15 +41,15 @@ Hai copy KR Wine đã chạy login/sảnh/phòng/Battle và các chu kỳ kết 
 [kim/reset](docs/PROTOCOL.md#needle-round-reset), [cứu hai chiều và hai kết quả](docs/PROTOCOL.md#rescue-two-results),
 [deep chain/reset](docs/PROTOCOL.md#recursive-chain-cycles) giữ phạm vi và giới hạn tại nguồn chuẩn.
 
-**Mốc mới CP167:** current preset Manner/title đã chạy **hai kết quả/reset/Ready sau chuyển chủ
-từ A sang B**. [Contract/giới hạn](docs/PROTOCOL.md#current-mode-promoted-cycles),
-[hai run/raw/hash](docs/evidence/peer-endpoints/README.md#cp167). R2 giữ ba probe165 trong alignment,
-đủ bốn callback/view; R1 thiếu trace Roller giữ riêng. Ảnh cuối R2 nút Start của B trắng ở một frame;
-chưa kiểm actualStart3 sau hai cycle Bhost, không suy là treo hay đã responsive.
+**Mốc mới CP168:** current Manner/title sau chuyển chủ đã chạy **hai kết quả/reset/Ready rồi
+BStart3 thật → native clock/render cả hai sau8s**. [Contract/giới hạn](docs/PROTOCOL.md#current-mode-promoted-start3),
+[control/raw/hash](docs/evidence/peer-endpoints/README.md#cp168). Vòng3 chỉ active. Hai control pulse0,30s
+không có Fire124 giữ FAIL; controller mới dùng normalOSkeys dừng theo actualpickup, không sửa game/service.
 
-CP166 đã merge [PR237](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/237) tại `7598cc9`;
-CP167 tự kiểm/chờ PR. AUD049 qua164; **audit định kỳ kế CP168**, cùng phép kiểm BStart3 tại
-[PLAN](docs/PLAN.md#current-order). K0–K7/K6a/fullmatch/LAN/Internet/8client thật vẫn mở;
+CP167 đã merge [PR238](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/238) tại `e48e10b`;
+CP168 tự kiểm/chờ PR. **AUD050 qua168, audit định kỳ kế CP172**. [PLAN](docs/PLAN.md#current-order)
+tiếp integration basicBattle/itemẩn từ contract đã có: preset hiện tại chỉ flooritems, chưa có reveal/drop
+trong run này. K4/K5/K6a/fullmatch/LAN/Internet/8client thật và dependency gate vẫn mở;
 [review waived](docs/evidence/checkpoints/review-waiver.json).
 
 Đích đầu: hai client thật chơi hai trận liên tiếp; mở bốn client và hardening sau đó.

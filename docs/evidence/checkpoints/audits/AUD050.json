@@ -1,0 +1,167 @@
+{
+  "id": "AUD050",
+  "trigger": "periodic",
+  "completed_through": "CP168",
+  "recorded_utc": "2026-11-06T12:42:56.926227+00:00",
+  "auditor": "Codex manual self-audit; independent review waived",
+  "read_files": [
+    "README.md",
+    "docs/PLAN.md",
+    "docs/PROTOCOL.md",
+    "docs/RESEARCH.md",
+    "docs/evidence/peer-endpoints/README.md",
+    "docs/evidence/current-hidden-items/README.md",
+    "docs/evidence/basic-battle/README.md",
+    "docs/evidence/primitives/README.md",
+    "docs/evidence/codec-boundaries/README.md",
+    "docs/features.json",
+    "docs/COVERAGE.md",
+    "server/README.md",
+    "server/probe_service.py",
+    "server/profiles/two-client-battle.json",
+    "local/research/codex/mode-preset-smoke-r3/cycles/run.json",
+    "local/research/codex/mode-preset-smoke-r3/cycles/service-state.json",
+    "local/research/codex/mode-preset-smoke-r3/cycles/client.log",
+    "local/research/codex/mode-preset-smoke-r3/cycles/client-B.log",
+    "local/research/codex/mode-preset-smoke-r3/raw-seal.json",
+    "local/research/codex/mode-preset-smoke-r3/runtime-preflight.json",
+    "local/research/codex/mode-preset-smoke-r3/profile.json",
+    "local/research/codex/mode-preset-smoke-r3/visual-review.json",
+    "local/research/codex/mode-host-rejoin-control-r1/cycles/run.json",
+    "local/research/codex/mode-host-rejoin-control-r1/cycles/service-state.json",
+    "local/research/codex/mode-host-rejoin-control-r1/cycles/client.log",
+    "local/research/codex/mode-host-rejoin-control-r1/cycles/client-B.log",
+    "local/research/codex/mode-host-rejoin-control-r1/raw-seal.json",
+    "local/research/codex/mode-host-rejoin-control-r1/runtime-preflight.json",
+    "local/research/codex/mode-host-rejoin-control-r1/profile.json",
+    "local/research/codex/mode-host-rejoin-fixed-r2/cycles/run.json",
+    "local/research/codex/mode-host-rejoin-fixed-r2/cycles/service-state.json",
+    "local/research/codex/mode-host-rejoin-fixed-r2/cycles/client.log",
+    "local/research/codex/mode-host-rejoin-fixed-r2/cycles/client-B.log",
+    "local/research/codex/mode-host-rejoin-fixed-r2/raw-seal.json",
+    "local/research/codex/mode-host-rejoin-fixed-r2/runtime-preflight.json",
+    "local/research/codex/mode-host-rejoin-fixed-r2/profile.json",
+    "local/research/codex/mode-host-rejoin-fixed-r2/visual-review.json",
+    "local/research/codex/mode-promoted-cycles-r1/cycles/run.json",
+    "local/research/codex/mode-promoted-cycles-r1/cycles/service-state.json",
+    "local/research/codex/mode-promoted-cycles-r1/cycles/client.log",
+    "local/research/codex/mode-promoted-cycles-r1/cycles/client-B.log",
+    "local/research/codex/mode-promoted-cycles-r1/raw-seal.json",
+    "local/research/codex/mode-promoted-cycles-r1/runtime-preflight.json",
+    "local/research/codex/mode-promoted-cycles-r1/profile.json",
+    "local/research/codex/mode-promoted-cycles-r1/visual-review.json",
+    "local/research/codex/mode-promoted-cycles-r2/cycles/run.json",
+    "local/research/codex/mode-promoted-cycles-r2/cycles/service-state.json",
+    "local/research/codex/mode-promoted-cycles-r2/cycles/client.log",
+    "local/research/codex/mode-promoted-cycles-r2/cycles/client-B.log",
+    "local/research/codex/mode-promoted-cycles-r2/raw-seal.json",
+    "local/research/codex/mode-promoted-cycles-r2/runtime-preflight.json",
+    "local/research/codex/mode-promoted-cycles-r2/profile.json",
+    "local/research/codex/mode-promoted-cycles-r2/visual-review.json",
+    "local/research/codex/mode-promoted-start3-r1/cycles/run.json",
+    "local/research/codex/mode-promoted-start3-r1/cycles/service-state.json",
+    "local/research/codex/mode-promoted-start3-r1/cycles/client.log",
+    "local/research/codex/mode-promoted-start3-r1/cycles/client-B.log",
+    "local/research/codex/mode-promoted-start3-r1/raw-seal.json",
+    "local/research/codex/mode-promoted-start3-r1/runtime-preflight.json",
+    "local/research/codex/mode-promoted-start3-r1/profile.json",
+    "local/research/codex/mode-promoted-start3-r1/partial-observation.json",
+    "local/research/codex/mode-promoted-start3-r2/cycles/run.json",
+    "local/research/codex/mode-promoted-start3-r2/cycles/service-state.json",
+    "local/research/codex/mode-promoted-start3-r2/cycles/client.log",
+    "local/research/codex/mode-promoted-start3-r2/cycles/client-B.log",
+    "local/research/codex/mode-promoted-start3-r2/raw-seal.json",
+    "local/research/codex/mode-promoted-start3-r2/runtime-preflight.json",
+    "local/research/codex/mode-promoted-start3-r2/profile.json",
+    "local/research/codex/mode-promoted-start3-r2/partial-observation.json",
+    "local/research/codex/mode-promoted-start3-r3/cycles/run.json",
+    "local/research/codex/mode-promoted-start3-r3/cycles/service-state.json",
+    "local/research/codex/mode-promoted-start3-r3/cycles/client.log",
+    "local/research/codex/mode-promoted-start3-r3/cycles/client-B.log",
+    "local/research/codex/mode-promoted-start3-r3/raw-seal.json",
+    "local/research/codex/mode-promoted-start3-r3/runtime-preflight.json",
+    "local/research/codex/mode-promoted-start3-r3/profile.json",
+    "local/research/codex/mode-promoted-start3-r3/visual-review.json",
+    "local/research/codex/mode-promoted-start3-r3/feedback-input-verification.json",
+    "local/research/codex/mode-promoted-start3-r3/cycle-boundary-verification.json",
+    "local/research/codex/mode-promoted-start3-r3/promoted-mode-verification.json",
+    "local/research/codex/mode-promoted-start3-r3/exported-runtime-verification.json",
+    "local/research/codex/mode-promoted-start3-r3/gate-scope-review.json",
+    "docs/evidence/item-effects/README.md"
+  ],
+  "method": "ManualREADME→PLANcriteria/currentorder→PROTOCOLauthority/currentcontracts→RESEARCHgaps→evidence→raw/reportcomparisonCP165–168. Readselectedrawsegments/typedqueries/nativegettermodels/images, notallrawbytesorentire500KBPROTOCOL. ComparedactualC2S/rawSHA/165counts/currentkeys/175180/actualB10412199/nativeclock andperviewinputfeedback; inspectedcurrentprofilehiddenabsence/sourceconsumer/knownCP068069proof. Scriptscheckmechanicalhash/historyonly; auditdecisionsmanual.",
+  "findings": [
+    {
+      "id": "F1",
+      "stale": "PLAN K4–K7 currentrow stayed atCP106–111 while currentmodeCP166167/168 measured.",
+      "correction": "Replacehistoricalcurrentrowwithcanonicalcurrentroom/promotion/cycles/Start3 links; preserveoldrecords/contracthistory.",
+      "fixed_in": [
+        "docs/PLAN.md"
+      ]
+    },
+    {
+      "id": "F2",
+      "stale": "PROTOCOL result/reset/authority aggregatedoptionalhiddenprofile withcurrentfloorpreset; helperK2aentry couldbe readasno laterframingknowledge.",
+      "correction": "Currentresult/roomrowslinkCP168; explicitlynohidden_items/revealed_hidden currentpreset vsCP068069 optionalproof. Helpersection historicalplusWCP/CP057oraclelinks, notautomaticK2/K2aclosure.",
+      "fixed_in": [
+        "docs/PROTOCOL.md"
+      ]
+    },
+    {
+      "id": "F3",
+      "stale": "RESEARCH unqualifiedpromotion/modeunknown andoldCP155onlyreset/embeddedAUD049counter driftedfrommeasuredcurrentMannerBhost.",
+      "correction": "Boundgeneralvariantsoutsidecurrentprovenpromotion; linkcurrentknown2cycles/BStart3 andhiddenintegrationgap; auditcounteronlymanifest.",
+      "fixed_in": [
+        "docs/RESEARCH.md",
+        "docs/features.json",
+        "docs/COVERAGE.md"
+      ]
+    },
+    {
+      "id": "F4",
+      "stale": "EvidenceCP165/166/167 pendingPR andopenjoin_A/twocycles phrasing lookedcurrent despitePR236237238merged andnewruns.",
+      "correction": "Markoldparagraphs snapshotatCP/date/PRmergeandlinklaterproof; retainhistoricalFAIL/partial/raw/completeobjects.",
+      "fixed_in": [
+        "docs/evidence/peer-endpoints/README.md",
+        "README.md",
+        "server/README.md"
+      ]
+    },
+    {
+      "id": "F5",
+      "stale": "Couldmisreadnewfeedbackinputasfixed0.30controlpass/thirdactiveasthirdnormalmatch orinfer2contendersfrom1claim.",
+      "correction": "R1R2fixedpulseFAILretained, R3explicitcontrollerdesign/newdurations/bound5s/1actualclaimperround; thirdactive/noBomb/nothirdoutcome, nofairness/retrocausality/gateclaim.",
+      "fixed_in": [
+        "README.md",
+        "docs/PLAN.md",
+        "docs/PROTOCOL.md",
+        "docs/evidence/peer-endpoints/README.md"
+      ]
+    },
+    {
+      "id": "F6",
+      "stale": "CyclecountmightbeusedtocloseK5/K6awithoutactualmechanisms/acceptance/dependencies.",
+      "correction": "Currentpresetfloor-only lacksreveal/hiddenbranch; reusealreadyRECP068069/CP095insteadnewiteminventory. Same-runoldUDP/disconnect/two-native-contendercontrolnotinR3; formaldependenciesandlimitsremainopen.",
+      "fixed_in": [
+        "docs/PLAN.md",
+        "docs/PROTOCOL.md",
+        "docs/RESEARCH.md"
+      ]
+    },
+    {
+      "id": "F7",
+      "stale": "CP167 prose/checkpoint called missingindex16 Roller, contradicting actualkind0 andCP031nativeeffect1/capacity. CP167recordimmutable retains that nomenclature error.",
+      "correction": "Canonicalcurrentcontract/evidence corrected toBomb16/kind0; addexplicitCP168erratum. Actualpacketbytes/kind/index/missingcallback/counts/statusunchanged; no rewritingoldcompleteCP167. BasicBattlefloorRollerindex17/kind2 isdifferentprofile.",
+      "fixed_in": [
+        "docs/PROTOCOL.md",
+        "docs/evidence/peer-endpoints/README.md"
+      ]
+    }
+  ],
+  "remaining": [
+    "CP168commit/push/PR/exacthead/mergepending; notreviewapprovalornewgate.",
+    "CurrentbasicBattlehiddenbranchmissingdespiteoldCP068069confirmed; nextboundedprofile/nativepreflightandruntimeinPLAN.",
+    "K0K1Windows/control/K2livebounds/reset/K3cacheidentitygaps andK4dependencies/K5K6a/fullmatch/LANInternet/8clients/generalreset/auth/originalauthority/naturalCP157open; noallclientRErequirementinferred.",
+    "CP168R1R2fixedpulsefail/R3oneclaim/noactiveoldUDP/EOFfault/thirdactive scope kept; no universalnative timing/causality claim."
+  ]
+}

@@ -135,9 +135,9 @@
         "KR-F001",
         "KR-F015"
       ],
-      "known": "CP166 PR237 merged7598cc9. CP167 currentmodeBhost2normalcycles/reset/Ready; R1missingRollerobserverfail/R2keep3rare1654callbacksview/peer/life/entity/mode proof. No productionchanges.",
-      "remaining": "CurrentBStart3 afterReady2 unmeasured; finalR2Bbuttonwhite1frame notpersistenthangproof. K4dependencies/K5K6a/fullmatch/auth/originalauthority/Windows/LAN/Internet/8clients/generalreset open.",
-      "next_test": "PLAN actualBStart3/native12199/barrier/clocks/render8/mode1/noBomb3 on exactR2two-cycle recipe; CP168periodicmanualaudit/acceptance/dependencies. Keep4nativecallbacks/criteria, no newbodyRE.",
+      "known": "CP167PR238mergede48e10b;CP168currentmodeBhost2normalcycles/Ready→actualBStart3/nativeclockrender8/mode1;twofixedpulseFAILcontrols/R3boundedfeedbackmethodexplicit;AUD050through168/next172.",
+      "remaining": "Currentfloorpreset lacks hidden_items/revealed_hidden; CP068069otherprofile cannotbackfillK5currentintegration. K4dependencies/K5K6a/fullmatch/auth/Windows/LAN/8clients/generalreset open.",
+      "next_test": "PLANcomposeknownCP032068069582/catalog/actualFixedBoxcells oncurrentManner/title/terrain/profile; nativepreflight thenreveal142/hidden124165/effect/reset, no consumer/opcode/allitemRE.",
       "acceptance": "Epic checklist: linkedscopedtask/evidence+authoritymatrix vàacceptancegate ởPLAN; từngtaskđóng khôngđóngepic/K5/K6a.",
       "reason": "CP164runtimeinputblocker solvedinnewrecipeswithoutprofile/game/guard/tolerancechange; currentpresetStart3objective closedscope. Continueconcretecurrentmodehostpromotiongap; noautogate.",
       "sources": [
@@ -232,7 +232,8 @@
         "docs/evidence/peer-endpoints/README.md#cp164",
         "docs/evidence/peer-endpoints/README.md#cp165",
         "docs/evidence/peer-endpoints/README.md#cp166",
-        "docs/evidence/peer-endpoints/README.md#cp167"
+        "docs/evidence/peer-endpoints/README.md#cp167",
+        "docs/evidence/peer-endpoints/README.md#cp168"
       ],
       "prs": [
         173,
@@ -293,7 +294,8 @@
         234,
         235,
         236,
-        237
+        237,
+        238
       ],
       "successors": []
     },
@@ -620,6 +622,6 @@
       "successors": []
     }
   ],
-  "as_of_utc": "2026-11-06T11:54:29.075603+00:00",
+  "as_of_utc": "2026-11-06T12:47:45.455027+00:00",
   "limits": "Dated manual dispositions through CP146; snapshotcaptureUTC only/no semantic or gate certification; immutable completehistory."
 }
