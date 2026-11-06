@@ -41,16 +41,16 @@ Hai copy KR Wine đã chạy login/sảnh/phòng/Battle và các chu kỳ kết 
 [kim/reset](docs/PROTOCOL.md#needle-round-reset), [cứu hai chiều và hai kết quả](docs/PROTOCOL.md#rescue-two-results),
 [deep chain/reset](docs/PROTOCOL.md#recursive-chain-cycles) giữ phạm vi và giới hạn tại nguồn chuẩn.
 
-**Mốc mới CP156:** sau2normalcontests/oldUDP/keyreset/Ready, ownedhostAEOF khi bompending không làm B
-kẹt: servicefence/no158, B xóa slotA và lênchủphòng/Start. [Contract/giới hạn](docs/PROTOCOL.md#direct-host-eof-acceptance),
-[raw/partial](docs/evidence/peer-endpoints/README.md#cp156), [đối chiếuK6a](docs/PROTOCOL.md#local-demo-acceptance).
-HostEOF khác bấmthoát trận; currentnormalhostUIBack là bước kế, không tự nghiệmthu K6a/LAN/Internet/8client.
+**Mốc mới CP157:** hai vòng tranh item/kết quả/reset/Ready rồi host A bấm thoát trận thật:
+actual202→86, A về sảnh, B xóa slot A và lên chủ phòng. [Contract/giới hạn](docs/PROTOCOL.md#current-host-ui-exit),
+[recipe/raw/partial](docs/evidence/peer-endpoints/README.md#cp157). CP156 đã merge
+[PR227](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/227) tại `fddf81f`; CP157 tự kiểm/chờ PR.
 
-CP155 đã merge [PR226](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/226) tại`2b9249e`;
-CP156 tự kiểm/chờPR; [review waived](docs/evidence/checkpoints/review-waiver.json).
-Audit **AUD047 qua156**, kỳ tiếp **CP160**. Đã thêm option export knownhostBack policy saucleanup;
-runtimeUI20286 cònpending theo [PLAN](docs/PLAN.md#current-order). Fullauth/Windows/originalauthority/
-CP137complexUI/sharedgeometry/generalreset và cácgate giữmở.
+Phép kiểm life strict của run mới **thất bại** tại B vòng1: state56→0→56→1, đoạn0 khoảng41ms;
+state hai view vẫn khớp tại rank entry. Không gọi đây là trap đồng thuận liên tục hoặc tự nâng K6a.
+Tiếp nối packet/apply của cửa sổ này bằng observer CP105 đã có, theo [PLAN](docs/PLAN.md#current-order).
+Audit AUD047 qua156, kỳ tiếp CP160. Full auth/Windows/original authority/general reset/LAN/Internet/
+8 client thật và các gate giữ mở; [review waived](docs/evidence/checkpoints/review-waiver.json).
 
 Đích đầu: hai client thật chơi hai trận liên tiếp; mở bốn client và hardening sau đó.
 

@@ -1,7 +1,7 @@
 # Kế hoạch server giả lập KR 00967
 
 Nguồn chuẩn của project `boom-kr-server`; bản nhập từ plan đã được dsh1/dsh2 review tại `1eee46d`.
-Cập nhật06/11 JST (CP156): [currenthostEOF/Bpromotion vàmanualacceptance](PROTOCOL.md#direct-host-eof-acceptance) đãđo/AUD047qua156; r1stagingpartial giữriêng. CP155/PR226merge`2b9249e`; CP156 tựkiểm/chờPR; auditkếCP160. Tiếp knownnormalhostUIBack integration.
+Cập nhật06/11 JST (CP157): [normal host UI exit trên current direct profile](PROTOCOL.md#current-host-ui-exit) đã đo; r1 capture-timeout giữ partial. CP156/PR227 merged `fddf81f`; CP157 tự kiểm/chờ PR. Tiếp nối packet/apply cho transient life56→0→56→1 ở B vòng1; audit định kỳ kế CP160.
 
 
 ### Mục tiêu, baseline và phạm vi
@@ -37,7 +37,7 @@ với client Rust không chứng minh có thể điều khiển client KR bằng
 
 ### Tiến độ hiện hành theo bằng chứng
 
-| Task/mốc | Trạng thái tại CP156 | Nguồn chuẩn |
+| Task/mốc | Trạng thái tại CP157 | Nguồn chuẩn |
 |---|---|---|
 | KRE-004/issue6 | Đã review/merge PR7 và đóng issue:recipe r1 đến local accept;không phải full K1 | [Wine r1](evidence/wine/README.md) |
 | Bootstrap reply | PR8 đã merge;debugger ProcessPatchreturn1,không ép success | [bootstrap evidence](evidence/bootstrap-wire/README.md) |
@@ -66,22 +66,21 @@ selectiveCLI/historicalmigration xong, không còn taskactive tổ chức. CP119
 Yêu cầu kiểm8 người đã có kết quả hẹp [CP147](PROTOCOL.md#battle-eight-roster), không thay gate:
 không lặp roster tổng hợp/dump capacity; selector1 wire/UI mở khi cần chọn kiểu đội. Service8 peer
 và trận8 client thật là phần mở rộng sau hai/bốn client ổn ở bước5, chưa được đánh dấu hoàn thành.
-1. **KR-R004/X003/S001 — normalhostUIBack trên currentdirect profile:**
-   [CP156manualacceptance](PROTOCOL.md#local-demo-acceptance) đãnối currenthostEOF/Bpromotion với2normal
-   cycles/oldUDP/Ready; không RE lại107/110/99/124165 hoặc coi đó lànormalhostUIexit. Profile đo chưa có
-   battle_exit/host_back_rejoin; [CP129](PROTOCOL.md#host-battle-exit) known20286/5guestAfixtures/guard
-   noBomb/no17,19 là nguồn dùng trực tiếp, chỉthiếu tíchhợp currentrecipe. `--host-battle-exit` mới đã
-   export/preflight/test, tựkèmdependency; nativeUIcurrentpath vẫnpending.
-   Copyprofile mới giữ currentnetwork/terrain/30s/2s165/loadinggate và thêm đúngknownhostmode+5aliases
-   từexport mới; không đổi rawfixtures/copybinary. Reuse CP129normalEsc/confirm→A20286, kiểm source/schema/
-   currentmembership/admit/A trởsảnh/B175180/107clearA/110chief1/roompromoted; chỉnoBomb/noaccepted17,19
-   trongvòng đangthoát. Đây là trigger cụ thể của khả năng dùngdemo, không mởmọileavevariant.
-   Nếu cácbaseline2contests được giữ, normalStart3 **không đặt bom** trướcUIexit. Không suy pending/dead/
-   multiuser/EOF/normalBack làcùngmode; không gọi hàmgame/force20286 hoặcnới timeoutcho pass.
-   Saucleanup/rawseal, đánhgiá còn cầnARejoin/BStart theoCP129/107cùngTCP haykhông; không lặp source
-   callback/schemađãbiết. Gatevẫn theoacceptance; fullWindows/LAN/Internet/8clients chưađược bù.
-   [#14](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/14) giữmở.
-   <!-- active-issue: 14 --> AUD047qua156; auditđịnhkỳ kế **CP160**.
+1. **KR-F009/F015/X001 — nối transient life với packet/apply hiện tại:**
+   [CP157](PROTOCOL.md#current-host-ui-exit) đã giải normal host UI202→86/A lobby/B promotion trên current
+   direct profile sau hai vòng nền; không lặp host EOF/UI callback. Không cần thêm rejoin/Start4 chỉ để
+   lặp CP129 nếu chưa có trigger. Phép kiểm strict life của CP157 giữ FAILED: B/R1/slot0 có56→0→56→1,
+   đoạn0 41,121868ms; rank entry ở hai view vẫn loser1/other0. Không tự biến snapshot cuối thành
+   uninterrupted agreement, không suy resurrection/old-generation/native bug từ riêng số0.
+   Reuse [CP104/105](PROTOCOL.md#ending-udp-state-apply), cached B4E6F0/B4EAA6/E668B2 và sáu observer
+   ingress/key/apply đã có. Chỉ thiếu exact state0 caller/packet/key/time của cửa sổ mới **trước175**.
+   Trên copy/namespace mới, tự arm observer read-only ở first state56 B/R1, giữ cap64entry/96API,
+   chụp stack cho lần ghi0 sau trap và nối actual ingress→13byte→key/actor/args→before/after. Dừng
+   cửa sổ trước/sau175 có metadata, không sửa game state/guard/UDP hoặc gọi hàm game. Nếu không tái hiện,
+   ghi negative/giới hạn rồi chọn phép đo kế từ raw, không gọi known UDP path là exact attribution.
+   Giữ profile/2s165/30s/loading gate và producer frozen; cleanup/raw seal trước đổi code/config.
+   [#14](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/14) giữ mở.
+   <!-- active-issue: 14 --> AUD047 qua156; audit định kỳ kế **CP160**.
 2. **KR-B003/KR-F006 — nợ có giới hạn:** [CP057](PROTOCOL.md#codec-stream-boundaries) đã đo stream/
    seq/bounds trong model, không mở lại76split hoặc cấp buffer lớn chỉ để vượt allocationguardFFFFFFFF.
    Full modes/prefix guard/live reset, distance/auth/transport/kim-cứu của reportguard giữ trong RESEARCH;
@@ -110,7 +109,7 @@ Bảng này chỉ phân công/thứtự; acceptance/PR/bằngchứng ởissue. [
 
 | Thứ tự/scope | Issue | Trạng thái/phần còn thiếu |
 |---|---|---|
-| Hiện hành RE | [#14/KRE-005b](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/14) | CP006–155 merged; CP156 hostEOF/Bpromotion/manualacceptance/AUD047 cónguồn/tựkiểm; currentnormalhostUIBack làbước1; gaps giữ; fullauth/authority/fullmatch/gates mở. |
+| Hiện hành RE | [#14/KRE-005b](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/14) | CP006–156 merged; CP157 current normal host UI exit/B promotion có nguồn/tự kiểm; nối transient life/packet là bước1; gaps giữ; fullauth/authority/fullmatch/gates mở. |
 | Control theo trigger/gate | [#1/KRE-001](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/1), [#2/KRE-002](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/2) | Windowsoriginal/ownership/K0K1/fullbootstrapconfig; reuseWine/import/replyđãđo. |
 | Codec/identity khi cần | [#3/KRE-003](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/3), [#9/KRE-005a](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/9) | Fullcodec/livebounds vàintermittentmainstartupcause cònthiếu; khônglặpprimitive/auxiliarylocale. |
 

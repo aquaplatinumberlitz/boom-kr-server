@@ -1,6 +1,6 @@
 # KR 00967 — contract tương thích client gốc
 
-Revision kr-legacy-contract-r1; cập nhật06/11/2026 JST (CP156; AUD047 quaCP156, kếCP160).
+Revision kr-legacy-contract-r1; cập nhật06/11/2026 JST (CP157; AUD047 quaCP156, kếCP160).
 **Contract có bằng chứng từng phần; chưa nghiệm thu full codec K2**.
 Lộ trình và thứ tự task chỉ giữ ở [REWRITE_PLAN — KRE](PLAN.md).
 Đây là contract của repo server KR. ADR0009 của bản viết lại là nguồn lịch sử để so sánh;
@@ -5504,3 +5504,44 @@ bậtoptionnày và không thay source/config giữa run. Không đổi sender/r
 AUD047 đọc core docs→authority/currentcontracts→evidence vàraw/report/copyproducer/config/tests;
 sửa authoritynavigation cũ/điềukiện demo quá rộng/PR226merge/hostEOF-vs-Back và nextstep. Counterqua156,
 kỳtiếp160. Reviewđộc lậpwaived/Codexselfcheck; checker không tựchứngminh ngữnghĩa/đónggate.
+
+
+<a id="current-host-ui-exit"></a>
+### Thoát host bằng UI trên cấu hình direct hiện tại — CP157
+
+**`kr_runtime/confirmed` trong copy Wine; policy forfeit/promotion là `emu_choice/design`.**
+[Recipe/hash/partial](evidence/peer-endpoints/README.md#cp157). Tái dùng CP129 host_A_202_86 và5 alias
+qua exporter CP156; profile mới chỉ thêm hai mode exit/rejoin cùng5alias, giữ network/terrain/30s/
+2s165/loading gate. Không có thân hàm RE mới, không đổi source/config trong run.
+
+Run r2: hai actual contenders ở mỗi key12345/12346, winner B rồi A, mỗi view một165/item, chỉ winner
+đổi power; hai bomnormal ID1/A/power1 vàID2/B/power1, 195flag/reset, hai native outcome/Ready. Có4
+movement windows, old UDP key59/current56 drop/noapply cùng10 current applies. Start3/key12347
+bằng nút thật, **không bom/không accepted17,19**; bấm nút thoát `(715,578)` theo CP129 tạo cặp actual
+A202/22byte→86/empty, sequence liền nhau. Service match exact captured SHA/current membership,
+variant active_host_A; native A stage11/lobby91 đọc50/50/errors0. Cảhai TCP channel còn mở tới mốc
+hoàn tất, không EOF/SIGKILL/fakepacket/gamecall. B nhận chosen forfeit175/180 rồi107(slot0,ID1,0),
+clearID1→0/basecursor6/rewind0/final1,110 full6/chief1. Ảnh A là sảnh với một room WAITING/1user,
+B chỉ KRGuest slot1/nhãn chủ phòng/nútStart, slot0 trống. Không Start4/rejoin/account resume hoặc
+ba trận normal. Năm packet202 khác ở các ending bị từ chối membership; không đồng nhất mọi202 với
+cặp leave hợp lệ và không suy nghĩa năm opaqueu32 của202.
+
+**Khác biệt life phải giữ:** phép kiểm strict thừa kế CP156 yêu cầu chỉ56→1 trước175 **FAILED** ở
+B/R1/slot0. Raw protected+28 thực là56→0→56→1; 0 kéo dài41,121868ms, xuất hiện266,754171ms saufirst56.
+A/R1 và cảhai viewR2 giữ56→1. Tại native175 entry cảhai view/hai vòng vẫn loser1/other0; 18 native
+getter-model xác minh wrapper riêng, không chứng minh agreement liên tục. Giữ script/log strict lỗi;
+`life-boundary-observation` ghi đúng chuỗi và final snapshot, không đổi thành strict pass.
+Second56 có stack B51CF4/F73882/B4EAA6/E668B2/125DF33; state0 hiện chỉ biết shared caller B51CF4,
+chưa có exactpacket/apply/stack cho nó. [CP104/105](#ending-udp-state-apply) đã đo UDP ghi lại state
+trong scope khác; dùng làm mỏ neo, **candidate** cho attribution cửa sổ mới, không tự gọi stale/oldround/
+resurrection. Phép đo tối thiểu ở [RESEARCH](RESEARCH.md#gap-contact-state), thứ tự duy nhất ở PLAN.
+
+R1 partial76,699s/exit1: first B screen01 ImageMagick root capture timeout5s trướcRound1; controller
+finally cleanup, A debugger disconnect ở cleanup không chứng minh native fault. R2 freshcopy/namespace
+chỉ relocation path, giữ timeout5s/game30s/source/profile; không gọi rerun đạt là causal fix/stability proof.
+R2 440,692s/exit0/1489raw/97frozen inputs;54UIchecks,84contest,44cycle,594peer/4windows,19oldUDP,
+24loadinggate,26entity195flags,354native packet cases. Các model/assertion count không tự đóng gate.
+
+CP157 giải current normal host UI integration của CP156; bằng chứng strict life CP155/156 vẫn nguyên
+scope cũ, không bị backfill. Audit AUD047 qua156/kế160, reviewwaived/Codex self-check. K6a/fullmatch/
+originalauthority/Windows/LAN/Internet/8client/generalreset/sharedgeometry/CP137complexUI giữ mở.
