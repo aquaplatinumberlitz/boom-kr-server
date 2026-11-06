@@ -396,21 +396,21 @@ Dependency: [KR-L002](#kr-l002).
 
 [Contract và giới hạn](PROTOCOL.md#duo-room-round) · [Câu hỏi gốc](RESEARCH.md#gap-create-join) · [Thứ tự ở PLAN](PLAN.md#current-order).
 
-Khoảng trống (trích bảng RESEARCH): Password/full/error/capacity và auth roster tổng quát chưa kiểm.
+Khoảng trống (trích bảng RESEARCH): Password/full/error và auth roster tổng quát chưa kiểm; CP147 có capacity8/9 ở Start phía client, chưa là admission room-full.
 
-Phép kiểm tối thiểu (trích cùng nguồn): So actual81/82 với consumer86/87 và slot hai phía; bổ sung lỗi/room-full từng ca khi service cần, không copy opcode VN.
+Phép kiểm tối thiểu (trích cùng nguồn): So actual81/82 với consumer86/87 và slot hai phía; bổ sung lỗi/room-full khi service cần; reuse [capacity hẹp](PROTOCOL.md#battle-eight-roster), không copy opcode VN.
 
 Issue/phạm vi công việc: [#14](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/14).
 
-Bằng chứng/build/hash/recipe: [duo-room-round](evidence/duo-room-round/README.md), [probe-service](evidence/probe-service/README.md), [host-normal-back](evidence/host-normal-back/README.md).
+Bằng chứng/build/hash/recipe: [duo-room-round](evidence/duo-room-round/README.md), [probe-service](evidence/probe-service/README.md), [host-normal-back](evidence/host-normal-back/README.md), [eight-player](evidence/eight-player/README.md).
 
 | Chiều chứng minh | Khai báo | Nguồn/phạm vi áp dụng |
 |---|---|---|
 | presence | present | [nguồn1](PROTOCOL.md#duo-room-round) |
 | vn_reference | both | [nguồn1](REFERENCES.md) |
-| kr_static | partial | [nguồn1](PROTOCOL.md#duo-room-round) |
+| kr_static | partial | [nguồn1](PROTOCOL.md#duo-room-round), [nguồn2](PROTOCOL.md#battle-eight-roster) |
 | emulation | checked | [nguồn1](evidence/duo-room-round/README.md) |
-| wine_diagnostic_copy | observed | [nguồn1](evidence/duo-room-round/README.md), [nguồn2](evidence/host-normal-back/README.md) |
+| wine_diagnostic_copy | observed | [nguồn1](evidence/duo-room-round/README.md), [nguồn2](evidence/host-normal-back/README.md), [nguồn3](evidence/eight-player/README.md) |
 | windows_original | unknown | Chưa có bằng chứng trong phạm vi rà |
 | lan | unknown | Chưa có bằng chứng trong phạm vi rà |
 | internet | unknown | Chưa có bằng chứng trong phạm vi rà |
@@ -425,21 +425,21 @@ Dependency: [KR-R001](#kr-r001).
 
 [Contract và giới hạn](PROTOCOL.md#room-player) · [Câu hỏi gốc](RESEARCH.md#gap-roster-ready-host) · [Thứ tự ở PLAN](PLAN.md#current-order).
 
-Khoảng trống (trích bảng RESEARCH): Full roster/ID thay đổi và unready/load race chưa nghiệm thu.
+Khoảng trống (trích bảng RESEARCH): [CP147](PROTOCOL.md#battle-eight-roster): một copy Wine nhận8 slot, Start4–4/1–7 gửi104,9 người bị chặn5; selector1 cân bằng đã kiểm tĩnh/emulation. Tên Manner/Free và input selector1,8 client thật, ID thay đổi/unready/load race chưa đủ.
 
-Phép kiểm tối thiểu (trích cùng nguồn): Kiểm socket→ID→slot hiện hành và Ready/host controls; dùng ca promotion đã đo làm reference cho service.
+Phép kiểm tối thiểu (trích cùng nguồn): Tái dùng106/110/104/capacity278 và getter123FA10/+9C; truy setter/input selector1, kiểm KR balanced4–4/negative1–7 qua wire/UI. Sau K6/K7 theo PLAN mới mở roster service tổng quát và8 peer thật; không lặp dump map hoặc gọi roster tổng hợp là multiplayer.
 
 Issue/phạm vi công việc: [#14](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/14).
 
-Bằng chứng/build/hash/recipe: [room-player](evidence/room-player/README.md), [probe-service](evidence/probe-service/README.md), [host-normal-back](evidence/host-normal-back/README.md).
+Bằng chứng/build/hash/recipe: [room-player](evidence/room-player/README.md), [probe-service](evidence/probe-service/README.md), [host-normal-back](evidence/host-normal-back/README.md), [eight-player](evidence/eight-player/README.md).
 
 | Chiều chứng minh | Khai báo | Nguồn/phạm vi áp dụng |
 |---|---|---|
 | presence | present | [nguồn1](PROTOCOL.md#room-player) |
 | vn_reference | both | [nguồn1](REFERENCES.md) |
-| kr_static | partial | [nguồn1](PROTOCOL.md#room-player) |
-| emulation | checked | [nguồn1](evidence/room-player/README.md) |
-| wine_diagnostic_copy | observed | [nguồn1](evidence/room-player/README.md), [nguồn2](evidence/host-normal-back/README.md) |
+| kr_static | partial | [nguồn1](PROTOCOL.md#room-player), [nguồn2](PROTOCOL.md#battle-eight-roster) |
+| emulation | checked | [nguồn1](evidence/room-player/README.md), [nguồn2](evidence/eight-player/README.md) |
+| wine_diagnostic_copy | observed | [nguồn1](evidence/room-player/README.md), [nguồn2](evidence/host-normal-back/README.md), [nguồn3](evidence/eight-player/README.md) |
 | windows_original | unknown | Chưa có bằng chứng trong phạm vi rà |
 | lan | unknown | Chưa có bằng chứng trong phạm vi rà |
 | internet | unknown | Chưa có bằng chứng trong phạm vi rà |

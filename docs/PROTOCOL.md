@@ -428,6 +428,43 @@ Trạng thái tại CP019 dừng sau104. Receiver/scene đã được bổ sung 
 bước tiếp hiện hành chỉ giữ ở [RESEARCH](RESEARCH.md#q-023). Không copy start501 của VN.
 K2/K3/K4 và full identity/auth/user/cache/vanilla/multiplayer vẫn mở.
 
+<a id="battle-eight-roster"></a>
+### Capacity Battle, 8 slot và điều kiện chia đội — CP147
+
+**`kr_runtime/confirmed`, phạm vi một copy Wine chẩn đoán với roster tổng hợp**:
+`ExVillage01`/code278 nhận đủ slot0–7; Start đếm8 người/2 đội/capacity8. Hai ca
+4–4 và1–7 với guest Ready đều trả Start-check0 và phát **C→S104 thực tế**. Ca9 người
+trên cùng map đếm9/capacity8, trả5, không phát104. Đây là kiểm roster/Start phía client,
+**chưa có8 client thật, start reply/loading/Battle8 người hoặc admission room-full của server**.
+[Recipe, control thất bại, raw/hash và giới hạn](evidence/eight-player/README.md).
+
+Tái dùng CP019: dump runtime `CPlayMapInfoList`1151×52, SHA`49727b4d…`, getter`EDC890`
+đọc record+24hex; code278 capacity8. Dump cũng có record capacity12/24: không biến giới hạn
+của map đang kiểm thành giới hạn mọi mode/toàn client. VN `oc_a-room.md`/`lobby.md` chỉ
+dẫn cách xét roster/Ready; field ledger106/110 và opcode104 của phép thử đều lấy từ KR.
+
+**`kr_static/confirmed` + emulation có mô hình**, không phải runtime của Tiêu chuẩn:
+`DCAD80` duyệt16 slot ở nhánh này, đếm người và số nhóm khác rỗng; `DCB0DD` so số người
+với capacity. Đường capacity thông thường tới`DCB0F2` trả5 khi vượt; các nhánh ngoại lệ
+mode ở sau vẫn giữ giới hạn chưa kiểm. `123FA10` đọc manager+9C; nếu giá trị bằng1,
+`DCB12C–DCB191` đòi mỗi nhóm có số người bằng thương nguyên players/teams, sai trả7.
+14 ca emulation giữ native getter/phép chia/so sánh, mô hình singleton và truy cập bảng đếm:
+4–4 và2–2–2–2 qua;1–7,3–5,3–4 bị chặn khi selector1. Selector0 bỏ kiểm cân bằng này;
+hai ca runtime4–4/1–7 đều quan sát selector0 tại caller`DCB138`.
+
+| Mô tả đối chiếu | Mức chứng minh và phần chưa có |
+|---|---|
+| Tự do cho đội lệch1–7; Tiêu chuẩn/Manner đòi các đội bằng nhau | Web KR cũ và mô tả chủ dự án là tham khảo. Hành vi selector0/1 ở trên có nguồn KR; **tên UI và đường wire khởi tạo/chọn selector1 chưa xác nhận**, chưa gọi hai nhãn này là enum KR đã phục hồi. |
+| Battle: nhốt, đồng đội cứu, địch diệt; kim tự thoát | Dùng lại [contact/cứu](#collision-rescue), [kim](#needle-selfescape), [hai kết quả/reset](#rescue-two-results); không đo lại và không suy luật thắng tổng quát từ policy stub. |
+| Nhiệm vụ4 người, quái/boss; Hồi sinh tái xuất hiện ngẫu nhiên và đối thủ được điểm | Tham khảo lịch sử/chủ dự án; **hành vi KR00967 chưa kiểm trong nhánh này**, không nhập luật respawn/score vào Battle thường hoặc mở quét mode trước mục tiêu chơi. |
+
+Control đầu đặt guest flags2 thay vì flags4 đã thấy native check3/notice chưa Ready;
+giữ nguyên raw. Ba run sửa input là run riêng, không ép return/count/đội từ debugger.
+Các cảnh báo capacity lúc table/117 chưa tới được giữ riêng với kết quả click sau init.
+Copy `94ee93dc…` dùng lại CP018/019, **khác copy `e9bb4766…` của CP146**; không cộng các run
+thành integration/gate. Service hiện chỉ có role A/B/C và slot cố định; chưa triển khai8 peer.
+Nguồn câu hỏi và phép đo tiếp ở [RESEARCH](RESEARCH.md#gap-roster-ready-host), thứ tự ở [PLAN](PLAN.md#current-order).
+
 <a id="start-reply"></a>
 ### Phản hồi start và init CGameStage — CP020
 

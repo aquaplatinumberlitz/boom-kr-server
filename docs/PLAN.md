@@ -1,7 +1,7 @@
 # Kế hoạch server giả lập KR 00967
 
 Nguồn chuẩn của project `boom-kr-server`; bản nhập từ plan đã được dsh1/dsh2 review tại `1eee46d`.
-Cập nhật06/11 JST (CP146):directprivateTCPendpointchain/nochildforward/native2cycles đãđo, thiếuUDPcapturegiữscope; CP145/PR216mergedcca0427. CP146tựkiểm; AUD044through144/next148.
+Cập nhật06/11 JST (CP147): theo yêu cầu chủ dự án, đã kiểm roster8/Start4–4 và1–7/capacity8 so9 trên một copy Wine; chưa8 client thật. [Contract/giới hạn](PROTOCOL.md#battle-eight-roster). CP146 directTCP giữ nguyên bằng chứng/giới hạn; CP146–147 tự kiểm, chờ PR. AUD044through144/next148.
 
 
 ### Mục tiêu, baseline và phạm vi
@@ -37,13 +37,13 @@ với client Rust không chứng minh có thể điều khiển client KR bằng
 
 ### Tiến độ hiện hành theo bằng chứng
 
-| Task/mốc | Trạng thái tại CP146 | Nguồn chuẩn |
+| Task/mốc | Trạng thái tại CP147 | Nguồn chuẩn |
 |---|---|---|
 | KRE-004/issue6 | Đã review/merge PR7 và đóng issue:recipe r1 đến local accept;không phải full K1 | [Wine r1](evidence/wine/README.md) |
 | Bootstrap reply | PR8 đã merge;debugger ProcessPatchreturn1,không ép success | [bootstrap evidence](evidence/bootstrap-wire/README.md) |
 | KRE-005a/issue9,R2 | PR10 đã merge:3 cold start cửa sổ/second accept;issue9 còn mở | [R2 evidence](evidence/wine-r2/README.md) |
 | WCP hai-reply | Run CP001 là lịch sử chưa C→S; CP006 đã đo request đầu trên copy tham số hóa | [PROTOCOL](PROTOCOL.md#wcp),[WCP evidence](evidence/wcp/README.md) |
-| KRE-005b/issue14 | CP006–145 đã merge; CP146 directprivateTCP/nochildforward/native2cycles cónguồn; shared/complexUIgaps giữ; fullround/authority/full auth còn mở | [Q-023](RESEARCH.md#q-023), [service](evidence/probe-service/README.md) |
+| KRE-005b/issue14 | CP006–145 đã merge; CP146 directprivateTCP/nochildforward/native2cycles và CP147 roster8/Start cónguồn; shared/complexUIgaps giữ; fullround/authority/full auth còn mở | [Q-023](RESEARCH.md#q-023), [service](evidence/probe-service/README.md) |
 | K0/K1 | Chưa nghiệm thu toàn gate;Windows vanilla/control ownership và các điều kiện còn thiếu giữ mở | Gate dưới,[Q-022](RESEARCH.md) |
 | K2a/K2 | Primitive/WCP, CP057stream native/model và CP058–060authcallback137/135/errors0 đã có; fullcodec/authauthority/reconnect và gate chưa pass | [PROTOCOL](PROTOCOL.md#login-auth),[Q-023](RESEARCH.md#q-023) |
 | K3 | Copy đã vẽUI/đóngnotice, A/B/Cprofile đọc sạch và mộtnamedcachewarm được nhận; identityauthority/toàncache/codec/K3 chưa nghiệm thu | [Contract sảnh](PROTOCOL.md#channel-lobby) |
@@ -63,6 +63,9 @@ Một blocker chỉ kết thúc nhánh đo tương ứng; ghi rõ rồi tiếp v
 KRE-073/[#188](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/188) đã giao
 [PR189](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/189)/merge`dae23b7`, CP118 vàđóng;
 selectiveCLI/historicalmigration xong, không còn taskactive tổ chức. CP119 đãtiếpactualRE sau merge.
+Yêu cầu kiểm8 người đã có kết quả hẹp [CP147](PROTOCOL.md#battle-eight-roster), không thay gate:
+không lặp roster tổng hợp/dump capacity; selector1 wire/UI mở khi cần chọn kiểu đội. Service8 peer
+và trận8 client thật là phần mở rộng sau hai/bốn client ổn ở bước5, chưa được đánh dấu hoàn thành.
 1. **KR-L001/S001 — explicit channel endpoint trong service, native directTCP +capture:**
    [CP146](PROTOCOL.md#direct-tcp-endpoints) đã bỏchildforward/nativebootstrapWCPauthchannel2cycles,
    bằngcustomS2C7typedprivateIP vàfiles-onlyhostmap; binarykhôngđổi. Reuse CP015/1467typedcontract,
@@ -90,6 +93,9 @@ selectiveCLI/historicalmigration xong, không còn taskactive tổ chức. CP119
    kê hết mọi race trước validator/auth. C mới không là account resume; một vòng B/C không K6a.
 5. **Nghiệm thu local rồi nhiều máy:** gom cùng-run consistency/malformed/stale/reset/disconnect theo
    K5/K6a và [authority](PROTOCOL.md#authority); sau đó K6b LAN, K6c Internet rồi K7 bốn client/hardening.
+   Sau baseline hai/bốn client, mở rộng service roster/slot/session/Ready/barrier/peer tới8;
+   kiểm8 client thật, reject người thứ9 theo map,4–4/1–7 và kiểu cân bằng sau khi input KR đã phục hồi,
+   kết quả/reset hai vòng. Không coi CP147 đã nghiệm thu phần mở rộng này.
    Không ghép các run riêng thành một trận đã nghiệm thu. LAN/Internet/relay hiện unknown.
 
 [Bằng chứng service](evidence/probe-service/README.md) phân biệt run đủ hai chu kỳ với run partial.
