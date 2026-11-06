@@ -135,11 +135,11 @@
         "KR-F001",
         "KR-F015"
       ],
-      "known": "CP157/PR228mergedf44fd66; CP158 five grouped windows/controls: nativekey56pass smallcountergap4dropE66884 vs actualgap17allowed/protected56to0/fresh56restore/death1, actualstack/24getterchecks. NaturalCP157cause not established.",
-      "remaining": "Naturalstate0exactattribution candidate/unknown; two observational runs nonreproduction notfix. Measurementprofile 2s165hold/activeoldUDPreplay still distinct from productionbaseline. Fullauth/authority/Windows/LAN/Internet/8realclients/K6a/generalreset/CP137UI remain.",
-      "next_test": "PLAN productionProbeService directly withoutdelay165wrapper oractive replay; freshcopied2clients/currentprofile/directnetwork/terrain/30s/loadinggate. Actual1or2pickupclaims/oneeffect/native2normaloutcomes/reset/Ready; no claimguardrelaxation. AuditnextCP160.",
+      "known": "CP158/PR229merged259282b; CP1592normalcycles productionmodule/nohold165/noactiveUDP replay/nativepickup1or2claims/oneeffect/statreset/strictlife2view/2outcomes/Ready. New47fixturepinnedpreset exportobjectequalsmeasuredprofile andpreflight.",
+      "remaining": "Nativeexportedfilepath smoke notyetmeasured; CP159oneimmediateAwhiteStartframe notpersistentUIproof orStart3proof. NaturalCP157causeunknown; fullauth/originalauthority/Windows/LAN/Internet/8clients/K6a/generalreset/sharedgeometry/CP137UI remain.",
+      "next_test": "PLAN freshprofilevia--preset two-client-battle/directproduction/nohold/replay; 2normalcycles/Ready thenactualStart3/noBomb/native12199clockboth/render4to8s. MandatoryperiodicAUD048CP160/manualcore/raw/acceptance; nextCP164. No reRE callback/counter/body oroptionalUIexit.",
       "acceptance": "Epic checklist: linkedscopedtask/evidence+authoritymatrix vàacceptancegate ởPLAN; từngtaskđóng khôngđóngepic/K5/K6a.",
-      "reason": "Knowncounterheuristic runtimecorroborated withcontrolledexactactualframes; boundedcausality notnaturalincidentretrospectiveproof. Stopunboundededgebranch; prioritizeusableproductionbaseline.",
+      "reason": "Currentproductionbaseline gapclosed inboundedmeasuredscope; reproduciblepresetneedsactualsmoke, objectequalitynotnewnativeproof. Keepenvironment/policy/gate limits andnaturalincidentunknown.",
       "sources": [
         "docs/PROTOCOL.md#authority",
         "docs/RESEARCH.md#feature-gaps",
@@ -180,7 +180,8 @@
         "docs/PROTOCOL.md#direct-host-eof-acceptance",
         "docs/PROTOCOL.md#local-demo-acceptance",
         "docs/PROTOCOL.md#current-host-ui-exit",
-        "docs/PROTOCOL.md#current-trap-udp-counter"
+        "docs/PROTOCOL.md#current-trap-udp-counter",
+        "docs/PROTOCOL.md#production-baseline"
       ],
       "evidence": [
         "docs/evidence/current-movement-cycles/README.md",
@@ -217,7 +218,8 @@
         "docs/evidence/peer-endpoints/README.md#cp155",
         "docs/evidence/peer-endpoints/README.md#cp156",
         "docs/evidence/peer-endpoints/README.md#cp157",
-        "docs/evidence/peer-endpoints/README.md#cp158"
+        "docs/evidence/peer-endpoints/README.md#cp158",
+        "docs/evidence/peer-endpoints/README.md#cp159"
       ],
       "prs": [
         173,
@@ -269,7 +271,8 @@
         225,
         226,
         227,
-        228
+        228,
+        229
       ],
       "successors": []
     },

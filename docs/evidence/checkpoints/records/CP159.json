@@ -1,0 +1,241 @@
+{
+  "id": "CP159",
+  "previous": "CP158",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-06T06:20:37.184219+00:00",
+  "context_commit": "259282b05aaa2d04f174e66a35409b7095765229",
+  "owner": "Codex",
+  "reviewer": "Codex",
+  "question": "Can currenttwo-clientprofile complete2normalcycles/reset/Ready withdirectproductionProbeService, without165holdwrapper/activeUDPmeasurement, andcanitbereproducedfrompinnedrepo preset?",
+  "scope": "Onefrozenruntime/currentprofile exact/no newnativebodyRE. Removeholdwrapper/activeoldUDPmeasurement, normalactual1or2pickupclaims/oneeffect,2cycles/Ready. Aftercleanup addpinned47fixturepreset/exportCLI/tests/exactprofilepreflight; no productionbehaviorchange.",
+  "artifacts": [
+    {
+      "name": "KRoriginalCA/read-only",
+      "sha256": "a52545c14b1fea423de655c3163d6360b628d61c1cd472b46fdbc8a9ffe15f4e"
+    },
+    {
+      "name": "Winecopyunchanged",
+      "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+    },
+    {
+      "name": "staticcopy",
+      "sha256": "660447c293ce92270cb9b5815331bca976e8f156366e1fe50b217b6c12e60ce3"
+    }
+  ],
+  "locators": [
+    "BaselineCP158PR229head8e3eca195adf3d93d2ff88602f76315bf561b62a/merge259282b05aaa2d04f174e66a35409b7095765229.",
+    "Run01deaf0aecf06434c2df7b5e26b6230035ecf0d3efa3f04cbd5f8dd461764dd8/364.493952518s/exit0/1197raw/96frozeninputs, directpythonmodule server.probe_service/no measurementstate/no activeUDP replay.",
+    "Actual8TCP/2CA+wineserver/privateIP10.77.0.2/3→service10.77.0.1:3858; two key12345→12346/native12199/clock;4nativepeerwindows.",
+    "R1actualFireAonly/R2AthenBconsumedreject/one165/view/onlyApower/reset; ID1A/power2 thenID2B/power1; 2normalrank2,1→1,2/native175302/1803/1106/Bactual95Ready.",
+    "Base400000/RVA=VA−400000; knownCP157codec/peer/stat/entity195/life175 consumers reused, no newbody. Strict23lifeactual56→1/other0before175bothviews/2epochs;16nativegettermodels.",
+    "Newpresetserver/profiles/two-client-battle.json; sourceprofileSHA158b1ce7915853acb6c864abc8e9d634bfd2ec55bb8ae76c31e82223853ce11a;47pins/exactobject/preflight aftercleanup; nativeexportedfile pending.",
+    "AUD047through156/mandatoryAUD048CP160next; no gateclosure."
+  ],
+  "findings": [
+    {
+      "summary": "Directproductionservice/currentprofile/nohold165/noactivereplay completes2normaloutcomes/reset/actualReady95/native110 aftersecondreturn. Native8TCP/directIPs/12199clock/4movementwindows/entity195flags verified fromactualraw.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#production-baseline",
+      "evidence": [
+        "RUN-00020",
+        "RUN-01221",
+        "RUN-01358",
+        "RUN-01256"
+      ],
+      "limits": "2actualmodifiedWine/privatevirtualhosts/samephysicalhost/currentprofile/syntheticauth/roster/map/rank/emulatorpolicy. Directproductionmodule/unchangedservice no165hold/noactiveUDPreplay; nativeobservers/copypatches/loadinggate remain, notvanillaWindows. Two normalcycles/outcomes/reset/Ready only; no Start3/UIexit/thirdforfeit/physicalLAN/Internet/8clients/fullmatch/K6a/gate. Currentstrict56to1 proofnotrefutingCP157naturaltransient/CP158controlledcounterlimits. OneimmediatefinalAwhiteStartframe vspriorfocused/native110Startclear notpersistentrenderfailureorStart3success. Presetexport/objectequality/preflight isimplementation, notnativeexportedfileproofyet. No sourcebinary/DB/pack mutation/nativegamecall/stateforce. Fullauth/originalauthority/allterrain/generalreset/sharedgeometry/CP137UI remainopen."
+    },
+    {
+      "summary": "Productionimmediate165: Fireclaimcounts1then2/Awinnerboth/secondconsumedreject/noextraeffect; nativeone165perview/currentkey/onlyApower1to2/reset bothkeys. Observedservicebroadcast0.2508to0.42968ms notSLA/fairness; no two-actualreportrequirement with immediateconfirm.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#production-baseline",
+      "evidence": [
+        "RUN-01254",
+        "RUN-00007",
+        "RUN-00001"
+      ],
+      "limits": "2actualmodifiedWine/privatevirtualhosts/samephysicalhost/currentprofile/syntheticauth/roster/map/rank/emulatorpolicy. Directproductionmodule/unchangedservice no165hold/noactiveUDPreplay; nativeobservers/copypatches/loadinggate remain, notvanillaWindows. Two normalcycles/outcomes/reset/Ready only; no Start3/UIexit/thirdforfeit/physicalLAN/Internet/8clients/fullmatch/K6a/gate. Currentstrict56to1 proofnotrefutingCP157naturaltransient/CP158controlledcounterlimits. OneimmediatefinalAwhiteStartframe vspriorfocused/native110Startclear notpersistentrenderfailureorStart3success. Presetexport/objectequality/preflight isimplementation, notnativeexportedfileproofyet. No sourcebinary/DB/pack mutation/nativegamecall/stateforce. Fullauth/originalauthority/allterrain/generalreset/sharedgeometry/CP137UI remainopen."
+    },
+    {
+      "summary": "Strictnative56→1/other0beforerankbothview/2epoch passes inthisrun;CP157failedproof remainsseparateraw. AStartclearfocused4/native110 butoneimmediatefinalwhiteframe; nativeReadyproven, notactualStart3/UIstabilityclaim.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#production-baseline",
+      "evidence": [
+        "RUN-01243",
+        "RUN-01244",
+        "RUN-01357"
+      ],
+      "limits": "2actualmodifiedWine/privatevirtualhosts/samephysicalhost/currentprofile/syntheticauth/roster/map/rank/emulatorpolicy. Directproductionmodule/unchangedservice no165hold/noactiveUDPreplay; nativeobservers/copypatches/loadinggate remain, notvanillaWindows. Two normalcycles/outcomes/reset/Ready only; no Start3/UIexit/thirdforfeit/physicalLAN/Internet/8clients/fullmatch/K6a/gate. Currentstrict56to1 proofnotrefutingCP157naturaltransient/CP158controlledcounterlimits. OneimmediatefinalAwhiteStartframe vspriorfocused/native110Startclear notpersistentrenderfailureorStart3success. Presetexport/objectequality/preflight isimplementation, notnativeexportedfileproofyet. No sourcebinary/DB/pack mutation/nativegamecall/stateforce. Fullauth/originalauthority/allterrain/generalreset/sharedgeometry/CP137UI remainopen."
+    },
+    {
+      "summary": "Afterruntimecleanup addpinned47fixturepreset/relativepaths/sha/size/seq/policies andCLI--preset; exactobjectequalsruntimeprofile/productionpreflight pass. Changedfixturehash/size/pathescape rejected ratherthanrehashtrusted;4exporttests includelegacycases. Nativeexportedfilepath stillunmeasured.",
+      "source": "design",
+      "status": "design",
+      "method": "design",
+      "canonical": "docs/PROTOCOL.md#production-baseline",
+      "evidence": [
+        "RUN-01223",
+        "RUN-01222",
+        "RUN-01226",
+        "RUN-01227",
+        "RUN-01225"
+      ],
+      "limits": "2actualmodifiedWine/privatevirtualhosts/samephysicalhost/currentprofile/syntheticauth/roster/map/rank/emulatorpolicy. Directproductionmodule/unchangedservice no165hold/noactiveUDPreplay; nativeobservers/copypatches/loadinggate remain, notvanillaWindows. Two normalcycles/outcomes/reset/Ready only; no Start3/UIexit/thirdforfeit/physicalLAN/Internet/8clients/fullmatch/K6a/gate. Currentstrict56to1 proofnotrefutingCP157naturaltransient/CP158controlledcounterlimits. OneimmediatefinalAwhiteStartframe vspriorfocused/native110Startclear notpersistentrenderfailureorStart3success. Presetexport/objectequality/preflight isimplementation, notnativeexportedfileproofyet. No sourcebinary/DB/pack mutation/nativegamecall/stateforce. Fullauth/originalauthority/allterrain/generalreset/sharedgeometry/CP137UI remainopen."
+    }
+  ],
+  "verification": [
+    {
+      "check": "75immediatepickup/12actualC2Sjoins/44cycles/594peer4windows/16loading/26entity195reset/23strictlife/4manualframes",
+      "result": "pass",
+      "evidence": [
+        "RUN-01254",
+        "RUN-00007",
+        "RUN-00020",
+        "RUN-01221",
+        "RUN-01237",
+        "RUN-01358",
+        "RUN-01243",
+        "RUN-01357"
+      ],
+      "limits": "2actualmodifiedWine/privatevirtualhosts/samephysicalhost/currentprofile/syntheticauth/roster/map/rank/emulatorpolicy. Directproductionmodule/unchangedservice no165hold/noactiveUDPreplay; nativeobservers/copypatches/loadinggate remain, notvanillaWindows. Two normalcycles/outcomes/reset/Ready only; no Start3/UIexit/thirdforfeit/physicalLAN/Internet/8clients/fullmatch/K6a/gate. Currentstrict56to1 proofnotrefutingCP157naturaltransient/CP158controlledcounterlimits. OneimmediatefinalAwhiteStartframe vspriorfocused/native110Startclear notpersistentrenderfailureorStart3success. Presetexport/objectequality/preflight isimplementation, notnativeexportedfileproofyet. No sourcebinary/DB/pack mutation/nativegamecall/stateforce. Fullauth/originalauthority/allterrain/generalreset/sharedgeometry/CP137UI remainopen."
+    },
+    {
+      "check": "2214actor/384peer/2364flag+2340array/16life/306nativepacketmodelcases separatefromactualruntime",
+      "result": "pass",
+      "evidence": [
+        "RUN-00001",
+        "RUN-01253",
+        "RUN-01228",
+        "RUN-01244",
+        "RUN-01246"
+      ],
+      "limits": "Copiednativegetters/frameremulation only; modelperiodiccounterresetnotgamewrite/allworldproof."
+    },
+    {
+      "check": "4exporttests/47realpins/exactprofileobject/preflight;41serverfiles unchanged237tests reused/docs/catalog/liveissues/artifacts/diff",
+      "result": "pass",
+      "evidence": [
+        "RUN-01222",
+        "RUN-01223",
+        "RUN-01339",
+        "RUN-01220",
+        "RUN-01240",
+        "RUN-00006"
+      ],
+      "limits": "Newpreset/export addedaftersealedruntime. Fullcheckpointlocal/historybeforecommit, no gate/semanticcertification."
+    }
+  ],
+  "evidence": [],
+  "evidence_manifests": [
+    {
+      "path": "docs/evidence/checkpoints/evidence/CP159-production-baseline.json",
+      "bytes": 345822,
+      "sha256": "c8b1b098eff261f71c60f1b6395a69076d0c644327cb8a5ded06a45db38d7b49",
+      "count": 1369
+    }
+  ],
+  "delta": {
+    "added": [
+      "Currentproductionmodule/no165measurementhold/noactiveUDP replay two normalcycles/nativeeffects/reset/Ready.",
+      "Pinnedexportpreset exactprofile/47fixtures/negativepin-pathchecks aftercleanup."
+    ],
+    "corrected": [
+      "Withimmediate165, twoOSkeys canyield1or2actual124; requireoneeffect/currentkey/stat, notforce2reportsorholdproduction.",
+      "OneimmediatefinalAwhiteStartframe vsclearpriorframes notpersistentUIbug/Start3proof.",
+      "CP158PR229merged/currentnavigation; CP157naturalcauseunknown unchanged."
+    ],
+    "superseded": [
+      "NEXT-PRODUCTION-SERVICE-BASELINE closedboundedrun; NEXT-EXPORTED-PRESET-SMOKE-AUDIT active."
+    ]
+  },
+  "blockers": [
+    "Nativeexportedpresetfilepath/actualnormalStart3/renderusability aftersecondreturn notyetmeasured; mandatoryperiodicmanualauditCP160due next.",
+    "Fullauth/originalauthority/Windows/LAN/Internet/8clients/allterrain/generalreset/sharedgeometry/CP137UI/K6a unchanged; CP157naturalincidentunknown."
+  ],
+  "next_steps": [
+    {
+      "id": "NEXT-PRODUCTION-SERVICE-BASELINE",
+      "task": "KRE-005b",
+      "state": "closed",
+      "action": "CP159actualproductionmodule nohold165/noactivereplay/currentprofile2normaloutcomes/reset/Ready measured, notfullmatch/gate.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-EXPORTED-PRESET-SMOKE-AUDIT",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "PLAN exportpresetfreshfile/freshcopy/directproduction/nohold/replay/2cycles/Ready thennormalStart3/noBomb/actual12199clockboth/render4to8s. Reuseknownbutton/clock noREbody. Aftercleanup/seal mandatoryAUD048periodicCP160manualREADMEPLANauthorityPROTOCOLRESEARCHevidence/raw/acceptance; nextCP164, noautogateclosure.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    }
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-11-06T06:20:37.184219+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "Codex solo RE/runtime/self-check/export tool tests; independent review waived.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Owner explicitly requested solo without workers/review."
+    }
+  },
+  "docs_sync": [
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "CP159production2cycles/pickup1or2/nativeproof/renderlimit/47fixturepresetimplementation/PR229merge/exportsmoke/AUD160next syncedbeforecomplete."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "CP159production2cycles/pickup1or2/nativeproof/renderlimit/47fixturepresetimplementation/PR229merge/exportsmoke/AUD160next syncedbeforecomplete."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "updated",
+      "reason": "CP159production2cycles/pickup1or2/nativeproof/renderlimit/47fixturepresetimplementation/PR229merge/exportsmoke/AUD160next syncedbeforecomplete."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "updated",
+      "reason": "CP159production2cycles/pickup1or2/nativeproof/renderlimit/47fixturepresetimplementation/PR229merge/exportsmoke/AUD160next syncedbeforecomplete."
+    },
+    {
+      "path": "docs/features.json",
+      "state": "updated",
+      "reason": "CP159production2cycles/pickup1or2/nativeproof/renderlimit/47fixturepresetimplementation/PR229merge/exportsmoke/AUD160next syncedbeforecomplete."
+    },
+    {
+      "path": "docs/COVERAGE.md",
+      "state": "updated",
+      "reason": "CP159production2cycles/pickup1or2/nativeproof/renderlimit/47fixturepresetimplementation/PR229merge/exportsmoke/AUD160next syncedbeforecomplete."
+    },
+    {
+      "path": "docs/evidence/peer-endpoints/README.md",
+      "state": "updated",
+      "reason": "CP159production2cycles/pickup1or2/nativeproof/renderlimit/47fixturepresetimplementation/PR229merge/exportsmoke/AUD160next syncedbeforecomplete."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/review.json",
+      "state": "updated",
+      "reason": "CP159production2cycles/pickup1or2/nativeproof/renderlimit/47fixturepresetimplementation/PR229merge/exportsmoke/AUD160next syncedbeforecomplete."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
+      "state": "updated",
+      "reason": "CP159production2cycles/pickup1or2/nativeproof/renderlimit/47fixturepresetimplementation/PR229merge/exportsmoke/AUD160next syncedbeforecomplete."
+    },
+    {
+      "path": "server/README.md",
+      "state": "updated",
+      "reason": "CP159production2cycles/pickup1or2/nativeproof/renderlimit/47fixturepresetimplementation/PR229merge/exportsmoke/AUD160next syncedbeforecomplete."
+    }
+  ]
+}

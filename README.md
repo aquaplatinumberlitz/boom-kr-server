@@ -41,15 +41,16 @@ Hai copy KR Wine đã chạy login/sảnh/phòng/Battle và các chu kỳ kết 
 [kim/reset](docs/PROTOCOL.md#needle-round-reset), [cứu hai chiều và hai kết quả](docs/PROTOCOL.md#rescue-two-results),
 [deep chain/reset](docs/PROTOCOL.md#recursive-chain-cycles) giữ phạm vi và giới hạn tại nguồn chuẩn.
 
-**Mốc mới CP158:** đã nối runtime counter UDP cùng vòng với trap: frame lùi4 bị loại, frame nguyên
-byte lùi17 được apply và làm remote56→0→56→1 trong control. [Contract/giới hạn](docs/PROTOCOL.md#current-trap-udp-counter),
-[5run/raw/hash](docs/evidence/peer-endpoints/README.md#cp158). Đây không phải bản sửa client hoặc lời giải
-nguyên nhân transient tự nhiên CP157. Normal host UI exit/A lobby/B promotion đã có ở CP157.
+**Mốc mới CP159:** hai client copy đã chạy **hai vòng normal trên service production trực tiếp**,
+không hold165/replay chủ động, có native pickup/effect, hai kết quả/reset và Ready sau vòng2.
+[Contract/giới hạn](docs/PROTOCOL.md#production-baseline), [run/hash](docs/evidence/peer-endpoints/README.md#cp159).
+Preset [two-client-battle](server/profiles/two-client-battle.json) tái tạo exactprofile bằng47fixture được pin;
+export/preflight đã kiểm, runtime dùng file export là bước kế cùng audit CP160.
 
-CP157 đã merge [PR228](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/228) tại `f44fd66`;
-CP158 tự kiểm/chờ PR. Tiếp baseline bằng **service production**, bỏ delay165 và replay chủ động của
-measurement, theo [PLAN](docs/PLAN.md#current-order). K6a/fullmatch/LAN/Internet/8client thật giữ mở.
-Audit AUD047 qua156, kỳ tiếp CP160; [review waived](docs/evidence/checkpoints/review-waiver.json).
+CP158 đã merge [PR229](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/229) tại `259282b`;
+CP159 tự kiểm/chờ PR. K6a/fullmatch/LAN/Internet/8client thật chưa nghiệm thu; natural transient CP157
+vẫn unknown dù runCP159 strictlife đạt. Audit AUD047 qua156, kỳ tiếp CP160;
+[review waived](docs/evidence/checkpoints/review-waiver.json).
 
 Đích đầu: hai client thật chơi hai trận liên tiếp; mở bốn client và hardening sau đó.
 

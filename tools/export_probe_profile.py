@@ -6,6 +6,30 @@ import hashlib
 import json
 from pathlib import Path
 import struct
+import copy
+import re
+
+PRESET = Path(__file__).resolve().parents[1] / 'server/profiles/two-client-battle.json'
+
+
+def load_preset(root, preset=PRESET):
+    """Rebase pinned fixture paths; never rehash changed input into trusted metadata."""
+    spec = json.loads(preset.read_text())
+    if spec.get('schema') != 'kre-probe-preset-v1':
+        raise ValueError('unsupported preset schema')
+    result = copy.deepcopy(spec['profile'])
+    for alias, entry in result['fixtures'].items():
+        relative = Path(entry['path'])
+        path = (root / relative).resolve(strict=True)
+        if relative.is_absolute() or not path.is_relative_to(root):
+            raise ValueError('preset fixture escapes source root: ' + alias)
+        if (type(entry['bytes']) is not int or not 1 <= entry['bytes'] <= 65536
+                or not re.fullmatch('[0-9a-f]{64}', str(entry['sha256']))
+                or path.stat().st_size != entry['bytes']
+                or hashlib.sha256(path.read_bytes()).hexdigest() != entry['sha256']):
+            raise ValueError('preset fixture size/hash mismatch: ' + alias)
+        entry['path'] = str(path)
+    return result
 
 # Paths are in this repo's ignored codex research tree, not the VN server tree.
 FIXTURES = {
@@ -57,6 +81,8 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--source-root', type=Path, required=True)
     parser.add_argument('--out', type=Path, required=True)
+    parser.add_argument('--preset', choices=['two-client-battle'],
+                        help='pinned CP159 production baseline; requires exact local fixtures')
     parser.add_argument('--spawn-layout', choices=['distinct', 'overlap'], default='distinct',
                         help='known map spawn0/1, or intentional overlap for contact/race RE')
     parser.add_argument('--item-layout', choices=['floor', 'hidden', 'battle'], default='floor',
@@ -73,6 +99,17 @@ def main():
     out = args.out.resolve()
     if not root.is_relative_to(local) or not out.is_relative_to(local):
         parser.error('profile and fixtures must be under this repo local/')
+    if args.preset:
+        if (args.spawn_layout != 'distinct' or args.item_layout != 'floor'
+                or args.all_dead_rank or args.host_back_rejoin or args.host_battle_exit):
+            parser.error('--preset cannot be combined with layout or optional policy flags')
+        result = load_preset(root)
+        out.parent.mkdir(parents=True, exist_ok=True)
+        with out.open('x') as stream:
+            json.dump(result, stream, indent=2)
+            stream.write('\n')
+        print(f'Exported pinned {args.preset}: {len(result["fixtures"])} fixtures; runtime gates not certified')
+        return
     result = {'schema': 'kr-probe-profile-v1', 'source': 'emu_choice',
               'limits': 'Synthetic local diagnostic fixtures, not recovered full auth or original server.',
               'items': [{'index': 17, 'row': 4, 'column': 3, 'kind': 2}],
