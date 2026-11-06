@@ -1,7 +1,7 @@
 # Kế hoạch server giả lập KR 00967
 
 Nguồn chuẩn của project `boom-kr-server`; bản nhập từ plan đã được dsh1/dsh2 review tại `1eee46d`.
-Cập nhật06/11 JST (CP152): [trace load/observer](PROTOCOL.md#loading-observer-timing) đã có dữ liệu từng run; R2 contested/nativeReady2 còn thiếu. CP151/PR222 merge`79a51e6`; CP152 tự kiểm/chờ PR; AUD046 qua152, kếCP156.
+Cập nhật06/11 JST (CP153): [hai epoch contest/clock/kết quả/Ready](PROTOCOL.md#loading-hot-gate-contest) cùng run đã có nguồn; deadline30s giữ, gate observer lúc load có hiệu quả đo. CP152/PR223 merge`a92fdc2`; CP153 tự kiểm/chờ PR. AUD046 qua152/kế156.
 
 
 ### Mục tiêu, baseline và phạm vi
@@ -37,13 +37,13 @@ với client Rust không chứng minh có thể điều khiển client KR bằng
 
 ### Tiến độ hiện hành theo bằng chứng
 
-| Task/mốc | Trạng thái tại CP152 | Nguồn chuẩn |
+| Task/mốc | Trạng thái tại CP153 | Nguồn chuẩn |
 |---|---|---|
 | KRE-004/issue6 | Đã review/merge PR7 và đóng issue:recipe r1 đến local accept;không phải full K1 | [Wine r1](evidence/wine/README.md) |
 | Bootstrap reply | PR8 đã merge;debugger ProcessPatchreturn1,không ép success | [bootstrap evidence](evidence/bootstrap-wire/README.md) |
 | KRE-005a/issue9,R2 | PR10 đã merge:3 cold start cửa sổ/second accept;issue9 còn mở | [R2 evidence](evidence/wine-r2/README.md) |
 | WCP hai-reply | Run CP001 là lịch sử chưa C→S; CP006 đã đo request đầu trên copy tham số hóa | [PROTOCOL](PROTOCOL.md#wcp),[WCP evidence](evidence/wcp/README.md) |
-| KRE-005b/issue14 | CP006–151 đã merge; CP152 trace load/observer có nguồn, contest hai vòng chưa đủ; shared/complexUIgaps giữ; fullround/authority/full auth còn mở | [Q-023](RESEARCH.md#q-023), [service](evidence/probe-service/README.md) |
+| KRE-005b/issue14 | CP006–152 đã merge; CP153 hai epoch contest/nativeoutcomes/Ready có nguồn; shared/complexUIgaps giữ; fullround/authority/full auth còn mở | [Q-023](RESEARCH.md#q-023), [service](evidence/probe-service/README.md) |
 | K0/K1 | Chưa nghiệm thu toàn gate;Windows vanilla/control ownership và các điều kiện còn thiếu giữ mở | Gate dưới,[Q-022](RESEARCH.md) |
 | K2a/K2 | Primitive/WCP, CP057stream native/model và CP058–060authcallback137/135/errors0 đã có; fullcodec/authauthority/reconnect và gate chưa pass | [PROTOCOL](PROTOCOL.md#login-auth),[Q-023](RESEARCH.md#q-023) |
 | K3 | Copy đã vẽUI/đóngnotice, A/B/Cprofile đọc sạch và mộtnamedcachewarm được nhận; identityauthority/toàncache/codec/K3 chưa nghiệm thu | [Contract sảnh](PROTOCOL.md#channel-lobby) |
@@ -66,20 +66,18 @@ selectiveCLI/historicalmigration xong, không còn taskactive tổ chức. CP119
 Yêu cầu kiểm8 người đã có kết quả hẹp [CP147](PROTOCOL.md#battle-eight-roster), không thay gate:
 không lặp roster tổng hợp/dump capacity; selector1 wire/UI mở khi cần chọn kiểu đội. Service8 peer
 và trận8 client thật là phần mở rộng sau hai/bốn client ổn ở bước5, chưa được đánh dấu hoàn thành.
-1. **KR-R003/F006/S001 — observer lúc load → contested pickup qua hai vòng:**
-   [CP152](PROTOCOL.md#loading-observer-timing) đo writer guard0/send sau deadline ở các run R1;
-   một run khác nhận99 trước30s rồi dừng ở OS staging. Không suy đây là nguyên nhân R2 CP151.
-   Cache CP024 loader/spawn và CP021 writer đã đủ; không RE lại 124/165, endpoint hoặc toàn client.
-   Theo counter mới: **B32390 có929 stop/view lúc load**, lúc đó ba bomb pointer còn0 nên log bị bỏ.
-   Ưu tiên gate riêng breakpoint này trong **copy recipe mới** lúc load và khôi phục tại clock; giữ
-   các observer khác như control. Bốn state hook có đối chứng A/B nhưng counter internal chưa có;
-   không tiếp tục quy toàn bộ độ chậm cho chúng. Đảo đối chứng khi cần phân biệt role;
-   giữ production/profile/claims/deadline30s/delay1652s. Khôi phục hook tại clock, không mất quan sát
-   gameplay đã có. Không tăng timeout, mint99, writeguard/actor hoặc forceclock để làm pass.
-   Sau barrier tiếp OS staging199/359±20 (candidate, chưa tới nhánh ở run r3), assert Fire chưa được
-   claim rồi actualDownA/UpB0.30s. Cần hai124/cùngindex/currentkey trước165, một winner/statdelta
-   mỗi vòng, reset key/stats, hai native175/180/110 và finalReady95 trong **cùng run**.
-   Giữ partial/failure/raw/freeze/cleanup và originalfairness/authority unknown; không gộp CP150/151.
+1. **KR-X003/F006/S001 — acceptance trên route hiện tại, pendingguestEOF:**
+   [CP153](PROTOCOL.md#loading-hot-gate-contest) đã giải loadobserver và contestedFire2key/onewinner/
+   nativeeffect/statreset/2outcomes/Ready cùng run. Không RE lại99/124/165 hoặc dựng lại source schema.
+   Đối chiếu acceptanceK6a với dữ liệu cùng run và nguồn cũ; scope hẹp không tự đóng gate.
+   Trigger kế: [CP144](PROTOCOL.md#virtual-pending-guest-eof) kiểm actualpendingBEOF qua proxy có
+   EOFpropagation; CP149–153 dùng **allTCPdirect**, chưa có actualpendingEOF/nativepeer cleanup trên
+   route này. Reuse CP144/050/074/135 và cache/raw; chỉ thay measurementcontroller cần thiết trên
+   copy mới, giữ production/profile/deadline30s/gateB32390onlyloading/delay1652s.
+   Sau baseline hai contestedcycles/Ready, dùng normalStart3/pendingBbomb rồi ownedBEOF theo recipe
+   đã có; kiểm service nhậnEOF trực tiếp/fence/no158late, nativeA175/180/107/110/slotclear/roomusable.
+   Không gọi nativegamefunction, ép state, nới timeout hoặc coi forfeit là trận đã chơi.
+   Giữ sourcefreeze/raw/hash/cleanup; ca Windows/LAN/Internet/8clients/fullauthority chưa được bù.
    [#14](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/14) giữ mở.
    <!-- active-issue: 14 --> AUD046 qua152; audit định kỳ kế **CP156**.
 2. **KR-B003/KR-F006 — nợ có giới hạn:** [CP057](PROTOCOL.md#codec-stream-boundaries) đã đo stream/
@@ -110,7 +108,7 @@ Bảng này chỉ phân công/thứtự; acceptance/PR/bằngchứng ởissue. [
 
 | Thứ tự/scope | Issue | Trạng thái/phần còn thiếu |
 |---|---|---|
-| Hiện hành RE | [#14/KRE-005b](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/14) | CP006–151 merged; CP152 trace load/observer có nguồn/tự kiểm; contested hai vòng/nativeReady2 là bước1; gaps giữ; fullauth/authority/fullmatch/gates mở. |
+| Hiện hành RE | [#14/KRE-005b](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/14) | CP006–152 merged; CP153 hai epoch contest/2outcomes/Ready có nguồn/tự kiểm; pendingguestEOF trên directroute là bước1; gaps giữ; fullauth/authority/fullmatch/gates mở. |
 | Control theo trigger/gate | [#1/KRE-001](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/1), [#2/KRE-002](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/2) | Windowsoriginal/ownership/K0K1/fullbootstrapconfig; reuseWine/import/replyđãđo. |
 | Codec/identity khi cần | [#3/KRE-003](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/3), [#9/KRE-005a](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/9) | Fullcodec/livebounds vàintermittentmainstartupcause cònthiếu; khônglặpprimitive/auxiliarylocale. |
 

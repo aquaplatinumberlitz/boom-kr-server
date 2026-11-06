@@ -1,6 +1,6 @@
 # KR 00967 — contract tương thích client gốc
 
-Revision kr-legacy-contract-r1; cập nhật06/11/2026 JST (CP152; AUD046 quaCP152, kếCP156).
+Revision kr-legacy-contract-r1; cập nhật06/11/2026 JST (CP153; AUD046 quaCP152, kếCP156).
 **Contract có bằng chứng từng phần; chưa nghiệm thu full codec K2**.
 Lộ trình và thứ tự task chỉ giữ ở [REWRITE_PLAN — KRE](PLAN.md).
 Đây là contract của repo server KR. ADR0009 của bản viết lại là nguồn lịch sử để so sánh;
@@ -5308,3 +5308,53 @@ Không force99/clock/guard, không gọi native function để vượt load. Cá
 ghép thành hai vòng hoàn tất. Tranh item vòng2/nativeReady2 vẫn cần đúng cùng-run proof; K6a/fullmatch,
 LAN/Internet/8 client thật và authority gốc còn mở. [Phép thử tiếp](RESEARCH.md#gap-map-spawn-loading),
 [thứ tự duy nhất](PLAN.md#current-order).
+
+
+<a id="loading-hot-gate-contest"></a>
+### Bỏ stop observer thừa khi load, tranh Fire qua hai key và hai kết quả — CP153
+
+**`kr_runtime/confirmed` trong cùng run copy Wine**, [raw/recipe/hash](evidence/peer-endpoints/README.md#cp153).
+Tái dùng CP152 public hit counter929/view, CP021 writer/guard, CP024 loader, CP030/062/151 pickup
+và CP150 profile/claims/directroute. Không thêm thân hàm native hoặc thay source binary/pack/DB.
+
+Recipe mới chỉ gate breakpoint `B32390` từ Start121 tới nativeclock, cả hai view; ba pointer bom
+được assert bằng0 trước gate. Trong `+2D0`, hit delta của breakpoint này bằng0; tại clock khôi phục
+trạng thái enabled trước đó, rồi giữ quan sát gameplay. Bốn internalChronology state hook vẫn bật
+như control r3 của CP152. Không gọi hàm game, ép99/clock, ghi guard/actor hoặc tăng deadline30s.
+Production/profile/claim/consume/key giữ nguyên; delaypositive1652s vẫn là **design measurement**.
+
+| View/vòng | +2D0 (s) | Actual99 trước hạn | Clock/restoreB32390 |
+|---|---:|---|---|
+| A/1 | 4.172151 | có | có |
+| A/2 | 3.775976 | có | có |
+| B/1 | 4.210599 | có | có |
+| B/2 | 3.718414 | có | có |
+
+Hai barrier lần lượt5,944500s và4,598209s; không deadline close/abort. Đây là thời gian của copy
+có debugger/recipe này, không phải thời gian chuẩn client nguyên bản hoặc chứng minh toàn bộ nguyên
+nhân CP151R2. CP152 giữ nguyên các run late99/alignmiss/control; không backfill bằng run mới.
+
+NormalOS staging199/359±20 và DownA/UpB0.30s đã đi qua hai vòng; mỗi vòng cả A/B thực sự gửi124
+cho Fire17/kind1/cell6,3/currentkey trước delivery165. B đến trước cả hai lần; A bị reject consumed.
+Mỗi receiver chỉ một Fire165/full12/errors0/slot1; securegetter xác nhận **chỉ B power1→2**, A giữ1,
+capacityA/B2 giữ. R2 trước pickup mới có baseline1, không mang power2 của R1 sang. Đây là policy
+first-arrival của emulator và thí nghiệm hold165; chưa phục hồi luật fairness/auth/validator vị trí gốc.
+
+| Vòng/key | Winner | Hold165 (s) | Loser tới trước delivery (s) | Bom native/current | Rank native A/B |
+|---|---|---:|---:|---|---|
+| 1/12345 | B | 2.012065 | 1.893150 | owner0/ID1/power1 | 2/1 |
+| 2/12346 | B | 2.024936 | 1.882167 | owner1/ID2/power2 | 1/2 |
+
+Cùng run:6 actualitemclaims được nối SHA/seq/body từ TCP capture (Bomb16A + haiFireclaim mỗi vòng),
+4 pha peer input có actualnativeapply/target/currentcoordinateprogress; hai currenttrapSHA→19 và
+opposite survivor21 trước chosenrank. Cả hai đọc đủ175302/1803/errors0 hai lần,110 sau return2 và
+actualReady95/native110 cuối. Hai ảnh Ready đã xem: hai user KRLocal/KRGuest, AStart/BReady và guest
+Ready badge. Lưới8 slot **không** là8 client thật. Không Start3/disconnect hoặc ca stale trong run này.
+
+16 gate checks/84 contest checks/43 lifecycle checks/14 captureclaim checks;1155 loading assertions gồm
+raw hashes;2484 captured secure fields và324 peer getters bằng native52A350 model;499 peer assertions/
+4 windows. Model allocator/rekey-counter riêng như nguồn cũ, không phải native runtime authority.
+Fullworld/physics/identity/malformed/stale/generalreset/CP137complexUI/K6a/fullmatch/LAN/Internet/
+8 client thật vẫn mở. Hai epoch contest và recipe loading blocker đã giải trong scope này; parent issue14
+và gate giữ mở. [PLAN](PLAN.md#current-order) tiếp acceptance còn thiếu, đặc biệt actualpendingguestEOF
+trên channel allTCPdirect thay route proxy CP144; [câu hỏi](RESEARCH.md#gap-disconnect-replacement).

@@ -1,0 +1,233 @@
+{
+  "id": "CP153",
+  "previous": "CP152",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-06T02:36:38.875293+00:00",
+  "context_commit": "a92fdc2218c08701d5c5e6efcaf48cf915bf62f4",
+  "owner": "Codex",
+  "reviewer": "Codex",
+  "question": "Canloading-onlyB32390gate remove929discardedobserverstops, restoregameplayobservation andcomplete2nativecontests/effects/reset/outcomes/Ready inonecurrentdirectrun?",
+  "scope": "ReusesCP152counter/CP021024loader/writer/CP030062151claims/CP150profile; singleobservergatevsCP152R3 onbothcopies, staging20/coldmilestones/currentproductionunchanged. No newnativebody orserverfeature. Same-run2epochcontest/lifecycle/fourpeerphases captured.",
+  "artifacts": [
+    {
+      "name": "KRoriginalCA/read-only",
+      "sha256": "a52545c14b1fea423de655c3163d6360b628d61c1cd472b46fdbc8a9ffe15f4e"
+    },
+    {
+      "name": "Winecopyunchanged",
+      "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+    },
+    {
+      "name": "staticcopy",
+      "sha256": "660447c293ce92270cb9b5815331bca976e8f156366e1fe50b217b6c12e60ce3"
+    }
+  ],
+  "locators": [
+    "BaselineCP152head8d11943ac9bcc652444aaea8f03e2f93a719f0b4/PR223mergea92fdc2218c08701d5c5e6efcaf48cf915bf62f4; exacthead/merge archived.",
+    "Runf18905f82b62002ecef3ce5ef1e7177ac5e52a0d10365d902a1e66dc6e76c10c/372.48764454s/exit0rejoin_two_rounds_refreshed_ready95/1132raw/96frozeninputs.",
+    "Base400000/RVA=VA−400000. B32390BPloadingoff/0hitdelta4times/restore4nativeclocks; E57DC1/DC4v2D0 A4.172151/3.775976s B4.210599/3.718414s. Actual99barriers5.944500476/4.598209096s<30.",
+    "2keys12345/12346/BwinnerFire17kind1cell6,3/Aloserconsumed/onlyBpower1to2/reset; actual118Aowner0ID1power1 thenBowner1ID2power2. Native175rank2,1→1,2/180/110/Ready95.",
+    "AUD046through152/next156 unchanged; no gate/issue14closure."
+  ],
+  "findings": [
+    {
+      "summary": "B32390loading-onlyphysicalgate with3bombptr0 andzero loadinghitdelta/restoredat4nativeclocks, sameprofile/code/30s; 4actual99/two barrier5.9445/4.5982s and2clock/view. Measuredobserverrecipe succeeds, notoriginaltiming/CP151R2causalproof.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#loading-hot-gate-contest",
+      "evidence": [
+        "RUN-01163",
+        "RUN-01169",
+        "RUN-01178",
+        "RUN-01176"
+      ],
+      "limits": "TwoactualmodifiedWine/privatevirtualhosts/samephysicalhost/e9bb47/directTCPandUDP. OnlyB32390observerofffrom121with3trackedbombpointers0/restoredatclock; other4Chronologystatehooksenabled. Sameproduction/profile/deadline30s/2s165measurement asCP152R3/staging20. Native52A350modelseparatefromruntime, allocators/rekeycountermodeldeclared. 2freshkeycontests/Bwinsboth/oneFire165perview/onlyBpowerdelta/reset; 2nativeoutcomes/Ready/fourpeerwindows. NoCP151R2rootcause/originalclienttiming/originalfairness/auth/positionvalidator/globalworld/generalreset/CP137UI/fullmatch/K6a/LAN/Internet/8realclients/Start3/disconnect/stalecases inthisrun."
+    },
+    {
+      "summary": "Bothfreshkeys each2actual124Fire17/cell6,3/onewinnerB/Aloserconsumed before165delivery; oneFire165/view/full12/errors0/slot1 andonlyBpower1to2 withR2baseline1. CP0622sdeliverymeasurement andproductionclaimsunchanged.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#loading-hot-gate-contest",
+      "evidence": [
+        "RUN-00007",
+        "RUN-00005",
+        "RUN-00001"
+      ],
+      "limits": "TwoactualmodifiedWine/privatevirtualhosts/samephysicalhost/e9bb47/directTCPandUDP. OnlyB32390observerofffrom121with3trackedbombpointers0/restoredatclock; other4Chronologystatehooksenabled. Sameproduction/profile/deadline30s/2s165measurement asCP152R3/staging20. Native52A350modelseparatefromruntime, allocators/rekeycountermodeldeclared. 2freshkeycontests/Bwinsboth/oneFire165perview/onlyBpowerdelta/reset; 2nativeoutcomes/Ready/fourpeerwindows. NoCP151R2rootcause/originalclienttiming/originalfairness/auth/positionvalidator/globalworld/generalreset/CP137UI/fullmatch/K6a/LAN/Internet/8realclients/Start3/disconnect/stalecases inthisrun."
+    },
+    {
+      "summary": "Same-run4peerphases/nativeapply/currentcoordinateprogress/2nativeoutcomes/reset/actualReady95; actualA118R1owner0ID1power1/B118R2owner1ID2power2/currenttrapSHA→19/oppositesurvivor21/native175ranks2,1→1,2/180110. Twoframes roomrendered/Readybadge inspected, not8actualplayers.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#loading-hot-gate-contest",
+      "evidence": [
+        "RUN-00017",
+        "RUN-01154",
+        "RUN-01228"
+      ],
+      "limits": "TwoactualmodifiedWine/privatevirtualhosts/samephysicalhost/e9bb47/directTCPandUDP. OnlyB32390observerofffrom121with3trackedbombpointers0/restoredatclock; other4Chronologystatehooksenabled. Sameproduction/profile/deadline30s/2s165measurement asCP152R3/staging20. Native52A350modelseparatefromruntime, allocators/rekeycountermodeldeclared. 2freshkeycontests/Bwinsboth/oneFire165perview/onlyBpowerdelta/reset; 2nativeoutcomes/Ready/fourpeerwindows. NoCP151R2rootcause/originalclienttiming/originalfairness/auth/positionvalidator/globalworld/generalreset/CP137UI/fullmatch/K6a/LAN/Internet/8realclients/Start3/disconnect/stalecases inthisrun."
+    },
+    {
+      "summary": "Before/afterobserver timing guidesrecipe, 237CP148serverchecks reused with41identicalsourcefiles; native52A350models preservecodebutreset syntheticrekeycounters/allocators. No originalauthority or newnativebodyRE claim.",
+      "source": "design",
+      "status": "design",
+      "method": "design",
+      "canonical": "docs/PROTOCOL.md#loading-hot-gate-contest",
+      "evidence": [
+        "RUN-01221",
+        "RUN-01173",
+        "RUN-00001"
+      ],
+      "limits": "TwoactualmodifiedWine/privatevirtualhosts/samephysicalhost/e9bb47/directTCPandUDP. OnlyB32390observerofffrom121with3trackedbombpointers0/restoredatclock; other4Chronologystatehooksenabled. Sameproduction/profile/deadline30s/2s165measurement asCP152R3/staging20. Native52A350modelseparatefromruntime, allocators/rekeycountermodeldeclared. 2freshkeycontests/Bwinsboth/oneFire165perview/onlyBpowerdelta/reset; 2nativeoutcomes/Ready/fourpeerwindows. NoCP151R2rootcause/originalclienttiming/originalfairness/auth/positionvalidator/globalworld/generalreset/CP137UI/fullmatch/K6a/LAN/Internet/8realclients/Start3/disconnect/stalecases inthisrun."
+    }
+  ],
+  "verification": [
+    {
+      "check": "1155loading assertions includingrawhash/actualC2S;16gate+84contest+14actualclaimcapture+43lifecycle;499peerassertions/4windows;2manualReadyframes",
+      "result": "pass",
+      "evidence": [
+        "RUN-01169",
+        "RUN-01163",
+        "RUN-00007",
+        "RUN-00005",
+        "RUN-00017",
+        "RUN-01154",
+        "RUN-01228"
+      ],
+      "limits": "TwoactualmodifiedWine/privatevirtualhosts/samephysicalhost/e9bb47/directTCPandUDP. OnlyB32390observerofffrom121with3trackedbombpointers0/restoredatclock; other4Chronologystatehooksenabled. Sameproduction/profile/deadline30s/2s165measurement asCP152R3/staging20. Native52A350modelseparatefromruntime, allocators/rekeycountermodeldeclared. 2freshkeycontests/Bwinsboth/oneFire165perview/onlyBpowerdelta/reset; 2nativeoutcomes/Ready/fourpeerwindows. NoCP151R2rootcause/originalclienttiming/originalfairness/auth/positionvalidator/globalworld/generalreset/CP137UI/fullmatch/K6a/LAN/Internet/8realclients/Start3/disconnect/stalecases inthisrun."
+    },
+    {
+      "check": "2484capturedsecurefields/324peergetters native52A350model",
+      "result": "pass",
+      "evidence": [
+        "RUN-00001",
+        "RUN-01173"
+      ],
+      "limits": "Independentnativegettermodel/manualchecksum vsactualcapturedmemory; copiedcode/notruntimefunctioncalls, modelallocator/rekeycounters distinct."
+    },
+    {
+      "check": "237serverchecksreuse/exact41sourcehash/docs/catalog/liveissues/artifacts/diff",
+      "result": "pass",
+      "evidence": [
+        "RUN-01221",
+        "RUN-01152",
+        "RUN-01166",
+        "RUN-00004"
+      ],
+      "limits": "Productionunchanged/testlogreuse notrerun; fullrequiredlocal/history beforecommit; nosemanticgatecertification."
+    }
+  ],
+  "evidence": [],
+  "evidence_manifests": [
+    {
+      "path": "docs/evidence/checkpoints/evidence/CP153-hot-loading-contest.json",
+      "bytes": 308991,
+      "sha256": "2cc8743cdeefd5c6881970820d0845f95493d9c7705361fb9e7302f1bbc3725e",
+      "count": 1239
+    }
+  ],
+  "delta": {
+    "added": [
+      "Same-runcurrent2keycontestedFire/singlewinner/nativeeffect/reset/2outcomes/Ready/fourpeerwindows withloading-onlyobservergate."
+    ],
+    "corrected": [
+      "CP152R3staging20previouslyunreached nowexercisedintwoepochs; no causalOSspeedlawclaim.",
+      "CurrentrecipeR2loadingbarrier nowpositive withoutdeadlineincrease/forced99; CP151historicalcauseunknownandraw kept.",
+      "CP152PR223merged/currentdocsandissue14updated; auditnext156 unchanged."
+    ],
+    "superseded": [
+      "NEXT-DIRECT-CONTESTED-PICKUP andNEXT-CONTEST-ROUND2-LOAD99 closedinscopedCP153, notparent/gates. PLANnextactualdirectpendingguestEOF/nativeAcleanup vsCP144proxyroute."
+    ]
+  },
+  "blockers": [
+    "CurrentdirectpendingguestEOF/nativeAcleanup notmeasured inthisrun; CP144proxyEOF source mustbereused/compared.",
+    "Fullauth/worldauthority/Windowscontrol/generalreset/CP137complexUI/sharedgeometry/fullinventory/fullmatch/K6a/LAN/Internet/8realclients remain."
+  ],
+  "next_steps": [
+    {
+      "id": "NEXT-DIRECT-CONTESTED-PICKUP",
+      "task": "KRE-005b",
+      "state": "closed",
+      "action": "CP153onecurrentrun2freshkeys/twoactual124/singlewinner/nativeeffects/statreset/2nativeoutcomes/finalReady measured. Nooriginalfairness/fullauth/gateclosure.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-CONTEST-ROUND2-LOAD99",
+      "task": "KRE-005b",
+      "state": "closed",
+      "action": "CP153loadingrecipe B32390preclockgate/restore/0loadinghitdelta andbothactual99/barrier/nativeclock in2epochs; nohistoricalCP151R2rootcauseclaim.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-DIRECT-CONTEST-GUEST-EOF",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "PLAN compareCP144/050/074/135sources/raw thencurrentallTCPdirectprofile2contestedcycles/Ready→normalStart3/pendingBbomb/ownedEOF. VerifydirectserviceEOF/fence/no158late/nativeA175180107110/slotclear/roomusable; keep30s/production/profile/2s165/loadinggate. NohandlerRErepeat/forfeit-as-match/gate.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    }
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-11-06T02:36:38.875293+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "CodexsoloRE/runtime/selfcheck/manual2frameinspection; independentreviewwaived.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Owner explicitly requested solo without workers/review."
+    }
+  },
+  "docs_sync": [
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "CP1532keycontest/loadinggate/nativeeffect/outcome/reset/Ready/scope/PR223merge/closednarrowsteps/currentdirectEOFnext synchronizedbeforecomplete."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "CP1532keycontest/loadinggate/nativeeffect/outcome/reset/Ready/scope/PR223merge/closednarrowsteps/currentdirectEOFnext synchronizedbeforecomplete."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "updated",
+      "reason": "CP1532keycontest/loadinggate/nativeeffect/outcome/reset/Ready/scope/PR223merge/closednarrowsteps/currentdirectEOFnext synchronizedbeforecomplete."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "updated",
+      "reason": "CP1532keycontest/loadinggate/nativeeffect/outcome/reset/Ready/scope/PR223merge/closednarrowsteps/currentdirectEOFnext synchronizedbeforecomplete."
+    },
+    {
+      "path": "docs/features.json",
+      "state": "updated",
+      "reason": "CP1532keycontest/loadinggate/nativeeffect/outcome/reset/Ready/scope/PR223merge/closednarrowsteps/currentdirectEOFnext synchronizedbeforecomplete."
+    },
+    {
+      "path": "docs/COVERAGE.md",
+      "state": "updated",
+      "reason": "CP1532keycontest/loadinggate/nativeeffect/outcome/reset/Ready/scope/PR223merge/closednarrowsteps/currentdirectEOFnext synchronizedbeforecomplete."
+    },
+    {
+      "path": "docs/evidence/peer-endpoints/README.md",
+      "state": "updated",
+      "reason": "CP1532keycontest/loadinggate/nativeeffect/outcome/reset/Ready/scope/PR223merge/closednarrowsteps/currentdirectEOFnext synchronizedbeforecomplete."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/review.json",
+      "state": "updated",
+      "reason": "CP1532keycontest/loadinggate/nativeeffect/outcome/reset/Ready/scope/PR223merge/closednarrowsteps/currentdirectEOFnext synchronizedbeforecomplete."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
+      "state": "updated",
+      "reason": "CP1532keycontest/loadinggate/nativeeffect/outcome/reset/Ready/scope/PR223merge/closednarrowsteps/currentdirectEOFnext synchronizedbeforecomplete."
+    }
+  ]
+}

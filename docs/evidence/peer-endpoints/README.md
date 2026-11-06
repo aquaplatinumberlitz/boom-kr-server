@@ -542,3 +542,45 @@ AUD046 đọc docs nguồn theo thứ tự và đối chiếu raw/report/cacheda
 pendingPR và next-step endpoint/feedback cũ. Counter qua152, kỳ tiếp156. CP152 tự kiểm/reviewwaived,
 chờ commit/PR. Tiếp PLAN gate riêng B32390 trong recipe copy lúc load rồi bật lại tại clock; không
 nới timeout hoặc lặp RE124/165. Hồ sơ immutable tại records/CP152 sau khi docs đã sync.
+
+
+<a id="cp153"></a>
+## CP153 — loading observer gate, hai contest và hai nativeoutcome/Ready
+
+Baseline CP152/[PR223](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/223), head`8d11943`/
+merge`a92fdc2`. [Contract](../../PROTOCOL.md#loading-hot-gate-contest), [gaps](../../RESEARCH.md#gap-floor-pickup),
+[PLAN](../../PLAN.md#current-order). CP152 pendingPR là snapshot lịch sử, không còn hiện trạng.
+
+Sourcefirst `loading-hot-gate-r5/reuse-question.json` pin CP152counter/observer/statehooks/control,
+CP021/024native locators, CP030/062/151claims và CP150profile. Không đọc body native mới. Copy giữ
+SHAe9bb4766…; sourceCAa52545…/pack/DB bất biến. Chỉ observerB32390 disable khi Start121 với3tracked
+bombpointer0, assert loadinghitdelta0 rồi restore tại nativeclock; cả4Chronology statehooks vẫn bật.
+Cold milestones/OSstaging20/2s165measurement/productionclaims/profile/deadline30s giữ như r3CP152.
+Đợt restart daemon chỉ mất handle tool; process vẫn chạy và được theo dõi tiếp, không launch trùng.
+
+Run `local/research/codex/loading-hot-gate-r5/cycles`: **372.488s/exit0/1132raw**;
+SHA`f18905f82b62002ecef3ce5ef1e7177ac5e52a0d10365d902a1e66dc6e76c10c`. `early_completion=rejoin_two_rounds_refreshed_ready95`, không error;
+96 frozeninputs verify sau end/cleanup, namespace không PID/capture/service/Wine owned cleanup xong.
+`raw-seal.json` pin raw trước analysis; không đổi source/config giữa run, không ép99/clock/actor/guard.
+
+`loading-milestones.json`1155 assertions gồm rawhash/actualTCP99/seq/CRC/timestamps; gate16checks pin
+4start/v2D0/clockrestore sequences/loadinghit0. Times/+2D0/actual99/barriers và giới hạn tại contract,
+không quy timing nguyên bản hoặc nguyên nhân chính xác CP151R2. B32390 vẫn quan sát gameplay sau clock.
+
+`contest-verification.json`84checks/2keys/Bwinner cảhai vòng; `capture-claim-verification.json`14checks
+nối6actual124 SHA/seq/typedbody từ actualC2S, không dùng encoder tự sinh. Mỗi view chỉ4successful165
+(Bomb+Fire mỗi vòng), onlyBpower1→2/resetR2baseline;2484captured securefields gọi native52A350 model.
+`cycle-boundary-verification.json`43checks pin AownerR1/ID1/power1 và BownerR2/ID2/power2,
+currenttrapSHA→19/oppositesurvivor21/chosenranks2,1→1,2/native175180110/fullread/errors0/actualReady95.
+`endpoint-peer-verification.json`499assertions/4phases,324nativepeergettermodel; bản R1-only đầu giữ
+`endpoint-r1-only.json`, sau mở đúng vòng2 trước khi nhận là4window. Không tạo lại nativeframer model
+để chứng minh contract đã biết. CP148237servertests reuse sourceunchanged, không nhận là vừa chạy lại.
+
+Hai frame `A/B/return2-ready-native110.png` đã xem, SHA ở `visual-review.json`: phòng có2user,
+AStart/BReady/guestReadybadge. Không dùng8 ôUI làm bằng chứng8 người chơi, không giải CP137complexUI.
+Delay1652s/first-arrival/fuse/rank/currentreportguard vẫn là measurement/policy emulator; fullauth/position/
+fullworld/originalauthority/Windows/generalreset/K6a/fullmatch/LAN/Internet/8realclients còn mở.
+
+CP153 tự kiểm/reviewwaived/chờPR; AUD046qua152/kế156. Đóng hai next-step hẹp loadrecipe/contested2epoch,
+không đóng issue14/gate. Tiếp PLAN currentallTCPdirectpendingguestEOF/nativeAcleanup thay proxyCP144,
+reuse raw/handler/recipe, không RE lại đã biết hoặc ghép các run cũ thành gate.
