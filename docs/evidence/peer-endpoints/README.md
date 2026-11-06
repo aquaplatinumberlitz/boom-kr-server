@@ -489,3 +489,56 @@ không sửa raw/record cũ. Allrawseal1204outputs/sourcefrozen/cleanupcapture/s
 Codexselfcheck/waivedreview; CP151pendingPR, auditđịnhkỳ kế **CP152**. TiếpPLAN loading99writer/send
 trace cónewobservable, khôngrandomrerun/increase30s. Fullmatch/K6a/LAN/Internet/8realclients/fullauth/
 CP137complexUI/sharedgeometry/fullinventory cònmở; R1contest khôngđónggatehaytaskhai vòng.
+
+
+<a id="cp152"></a>
+## CP152 — load trước99, cold milestones và đối chứng observer
+
+Baseline CP151 đã merge [PR222](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/222)
+head`1a0a494`/merge`79a51e6`. [Contract/kết quả](../../PROTOCOL.md#loading-observer-timing),
+[câu hỏi](../../RESEARCH.md#gap-map-spawn-loading), [thứ tự](../../PLAN.md#current-order).
+Các dòng pendingPR trong CP148–151 là snapshot lịch sử tại CP đó; không là trạng thái tích hợp hiện tại.
+
+Source-first: CP021 writer/guard/send, CP024 cached `E59F30/E5A290/E0F6C0`, CP030/062 tranh item,
+CP150/151 profile/directroute/claims. Hai cửa sổ mới `E59550` và `E57C20` có static SHA660447…;
+`native-preimage-comparison.json` so3 vùng với hai copy Wine e9bb4766… nguyên bytes. Không chạm
+sourceCA a52545…/pack/DB. REA IDA đang gắn copy đúng hash nhưng request containing-function lỗi
+producer data; đã close session và dùng helper pefile/capstone có sẵn, không sửa cấu hình/DB.
+Static cửa sổ tuyến tính, không nhận là CFG đầy đủ. Raw/report sau đo giữ local, không commit binary.
+
+| Run local/research/codex/ | Giây / exit / raw | run.json SHA256 |
+|---|---:|---|
+| contest-loading-trace-r1/cycles | 211.529s / 130 / 899 | `38dc6f7ff9c172d287d69b03aba92faca4a18ede6b43fb86fef10fab58657c38` |
+| contest-loading-milestones-r2/cycles | 191.986s / 1 / 726 | `b9632da226b697ac9425aef95590911fcb43f1a93b69e588a022ed2568d297ff` |
+| contest-loading-staging-r3/cycles | 204.841s / 0 / 684 | `454d3de1c3e2835e0a5d7c654d9d2827e1fd1b4f1069323eb5c42b4640d301f5` |
+| loading-observer-control-r4/cycles | 174.444s / 0 / 726 | `9609d49c0d4a8b29c254d09391d1ea627abec166696eea3bd5fcc83a6fc96dac` |
+
+- Trace r1: guard0/writer→send xảy ra sau close; actualTCP99 không có. Operator SIGINT sau khi đủ
+  dữ liệu, `finally` cleanup/exit130; repeated guard1/bt đã giữ. Không gán nguyên nhân R2 CP151.
+- Milestones r2: R1 barrier trước30s, `+2D0`≈28,39s; sau đó dừng20-pulse OS alignment199±12.
+  Native neutral159↔214/234, chỉ Bomb16 claim, chưa Fire17; không gán item/codec fail.
+- Staging r3: đổi riêng hai approach tolerance12→20, thêm4 cold timestamp từ cache CP024;
+  R1 vẫn deadline, nên **chưa kiểm được tolerance mới**. Các segment/timestamp tại contract.
+- Observer r4: A giữ4 internal state hook, B tắt lúc load; cả hai public `B32390` còn929 hit.
+  B actual99 trước hạn, A muộn; chưa clock cả hai, không contest/Ready2. Forfeit cleanup không
+  là trận được chơi. `gdb.breakpoints()` ở đây không trả internalPython bp, không báo counter của
+  chúng bằng0. Chưa kiểm branch khôi phục tại clock vì run không có clock.
+
+`loading-trace-verification.json`915 assertions; `loading-milestones.json` các run r2/r3/r4 lần lượt
+739/695/738 assertions, **bao gồm kiểm hash raw**; observer4 checks/policy/hit-delta. Đầu r4 analyzer
+chưa nối marker qua dòng `OBSERVER_HITS`, giữ `loading-milestones-initial-join.json`; sửa regex cho
+đúng sequence rồi đối chiếu timestamp native, không sửa log. Internal hit counter không có thì khai
+scope public, không tự biến absence thành0. Không chạy lại framer/getter models đã đủ nguồn để chứng
+minh contract cũ; CP152 là load observation. 237 server checks CP148 được reuse sau so41 source file
+SHA giống hệt, không nhận là vừa chạy lại test.
+
+Bốn run đều verify95 input sau cleanup; raw seals giữ end-run/captureclose/ownedprocess/namespace
+không còn PID. Exit0/1/130 không là acceptance. Production/profile/deadline30s/delay1652s giữ trong
+mỗi run. No fake99/clock/guard/actor write/nativefunctioncall; runtime vẫn modifiedWine/privatevirtualhost
+cùng host vật lý. Hai epoch contest, nguyên nhân CP151R2, originalauthority/fullmatch/K6a/LAN/Internet/
+8 client thật/CP137UI/sharedgeometry/generalreset còn mở. Không gộp bốn run thành trận hoàn tất.
+
+AUD046 đọc docs nguồn theo thứ tự và đối chiếu raw/report/cachedasm/currentissue; sửa navigation
+pendingPR và next-step endpoint/feedback cũ. Counter qua152, kỳ tiếp156. CP152 tự kiểm/reviewwaived,
+chờ commit/PR. Tiếp PLAN gate riêng B32390 trong recipe copy lúc load rồi bật lại tại clock; không
+nới timeout hoặc lặp RE124/165. Hồ sơ immutable tại records/CP152 sau khi docs đã sync.

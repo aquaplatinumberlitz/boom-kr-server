@@ -1,6 +1,6 @@
 # KR 00967 — contract tương thích client gốc
 
-Revision kr-legacy-contract-r1; cập nhật06/11/2026 JST (CP151; AUD045 quaCP148, kếCP152).
+Revision kr-legacy-contract-r1; cập nhật06/11/2026 JST (CP152; AUD046 quaCP152, kếCP156).
 **Contract có bằng chứng từng phần; chưa nghiệm thu full codec K2**.
 Lộ trình và thứ tự task chỉ giữ ở [REWRITE_PLAN — KRE](PLAN.md).
 Đây là contract của repo server KR. ADR0009 của bản viết lại là nguồn lịch sử để so sánh;
@@ -5260,3 +5260,51 @@ Source/config/binary khôngđổi giữarun;30sdeadlinegiữ, capture/process/na
 [PLAN](PLAN.md#current-order) tiếp trace nativewriter99 đãbiết`E7F2A0`/guardstage+6410 và
 actualsend`13ADD10` với monotonic timestamp từ121 tới deadline, khôngraise timeout/force99/clock.
 CP150hai cycles/BombFire/ABowner vẫnnguồnriêng; CP151R1khôngbackfillR2/gate/fullmatch/LAN/8clients.
+
+
+<a id="loading-observer-timing"></a>
+### Đường load trước writer 99 và ảnh hưởng observer — CP152
+
+**`kr_runtime/confirmed` cho các mốc đo trên copy Wine; `kr_static/confirmed` cho instruction đã đọc.**
+[Recipe, từng run, hash và giới hạn](evidence/peer-endpoints/README.md#cp152).
+Tái dùng CP021 writer/once-guard, CP024 loader/spawn và CP030/062/150/151 claims/profile;
+không RE lại codec, 124/165 hoặc thuật toán nhặt item. Production source/profile/deadline **30s**,
+copy SHA `e9bb4766…` và measurement delay165 **2s** giữ nguyên trong từng run.
+
+Trace đầu đo được writer `E7F2A0` vào với guard `+6410=0`, caller `E59587`, sau native121
+**33,713s/33,835s** (A/B); send entry99 theo sau khoảng36ms. Cả hai channel đã đóng trước đó;
+không có actualTCP99 sau121. Guard1 xuất hiện ở các tick sau, không phải guard chặn lần gửi đầu.
+Đây là **R1 của run mới**, không xác định nguyên nhân R2 CP151. Dừng SIGINT có `finally` cleanup,
+exit130; không ghi là runtime pass. Trace entry lặp195 lần/view được thay bằng cạnh build chỉ đi khi guard0.
+
+Đọc có mục tiêu `E59550..E59597`: `E5955A` reset guard0, memset `+6414/0x68`, rồi gọi vtable`+308`
+đưa tới writer đã biết. `E57C20` gọi `+2D0` trước reset/writer. Các vùng byte đã so khớp giữa
+static SHA `660447…` và hai copy runtime; cửa sổ tuyến tính không phải toàn CFG/decompilation.
+Dùng lại cache CP024 `E59F30/E5A290/E0F6C0` để đặt mốc trả về, tránh đọc lại các thân hàm này.
+
+Run milestones kế có actual99/barrier R1 ở29,276s; riêng `+2D0` mất28,391/28,375s. Run dừng
+`alignmiss:R1-A-contest-approach`:20 mẫu neutral dao động Y159↔214/234 so với199±12, chưa Fireclaim.
+Run sau vẫn timeout ở R1: đoạn tới `E5A01A` khoảng18,286/18,215s, tới `E5A094` thêm11,139/11,301s,
+khởi tạo actor tới `E5A0DE` thêm1,780/1,795s; sau đó reset/build/send. Thay tolerance staging12→20
+**chưa được kiểm** trong run đó vì không tới clock; không báo là đã sửa input hoặc hoàn tất contest.
+
+**Observer control:** `Chronology.stop()` trước clock vẫn bị gọi ở bốn state hook dù nó bỏ mọi
+observation do `_chrono_ready!=round`. Đợt đối chứng giữ A nguyên, B chỉ tắt bốn breakpoint này
+khi load và khôi phục tại nativeclock; ghi hit counter ở hai cạnh `+2D0`. Kết quả theo từng role:
+
+| Role/vòng | State hook lúc load | Thời gian +2D0 | ActualTCP99 | Nativeclock |
+|---|---|---:|---:|---|
+| A/1 | bật, control | 32.291877s | 0 | không |
+| B/1 | tắt 4, treatment | 27.302141s | 1 | không |
+
+Cả A/B còn **929 hit tại breakpoint `B32390`** trong đoạn `+2D0`; script chỉ log khi actor thuộc
+ba bomb pointer đang theo dõi, nhưng lúc load cả ba pointer bằng0. Đây là observer đã có từ trước;
+không cần các stop đó cho gameplay vì chưa có bom. `gdb.breakpoints()` chỉ trả public sites trong
+ca này, không trả hit counter của bốn Python internal hook; không suy counter internal bằng0.
+B có actual99 trước hạn, A gửi muộn; cả hai chưa clock. Chưa kiểm đường khôi phục hook tại clock.
+Hit counter là số stop debugger, không phải số lần game đổi state. A/B khác role và chỉ một ca đối
+chứng; tương quan thời gian chưa là chứng minh toàn bộ nguyên nhân CP151 hoặc thời gian client nguyên bản.
+Không force99/clock/guard, không gọi native function để vượt load. Các run trước giữ nguyên và không
+ghép thành hai vòng hoàn tất. Tranh item vòng2/nativeReady2 vẫn cần đúng cùng-run proof; K6a/fullmatch,
+LAN/Internet/8 client thật và authority gốc còn mở. [Phép thử tiếp](RESEARCH.md#gap-map-spawn-loading),
+[thứ tự duy nhất](PLAN.md#current-order).
