@@ -1,7 +1,7 @@
 {
   "schema": "kre-feature-index-v1",
   "build": "KR00967",
-  "as_of": "2026-11-06 CP154",
+  "as_of": "2026-11-06 CP155",
   "sources": {
     "plan": "docs/PLAN.md",
     "contract": "docs/PROTOCOL.md",
@@ -1424,7 +1424,8 @@
           "docs/evidence/udp-freshness/README.md",
           "docs/evidence/probe-service/README.md",
           "docs/evidence/current-udp-causality/README.md",
-          "docs/evidence/udp-generation/README.md#cp130"
+          "docs/evidence/udp-generation/README.md#cp130",
+          "docs/evidence/peer-endpoints/README.md#cp155"
         ]
       },
       "coverage": {
@@ -1458,7 +1459,8 @@
             "refs": [
               "docs/evidence/udp-freshness/README.md",
               "docs/evidence/current-udp-causality/README.md",
-              "docs/PROTOCOL.md#udp-membership-lifetime"
+              "docs/PROTOCOL.md#udp-membership-lifetime",
+              "docs/evidence/peer-endpoints/README.md#cp155"
             ]
           },
           "windows_original": {
@@ -1921,7 +1923,8 @@
           "docs/evidence/peer-endpoints/README.md#cp151",
           "docs/evidence/peer-endpoints/README.md#cp152",
           "docs/evidence/peer-endpoints/README.md#cp153",
-          "docs/evidence/peer-endpoints/README.md#cp154"
+          "docs/evidence/peer-endpoints/README.md#cp154",
+          "docs/evidence/peer-endpoints/README.md#cp155"
         ]
       },
       "coverage": {
@@ -1984,7 +1987,8 @@
               "docs/evidence/peer-endpoints/README.md#cp151",
               "docs/evidence/peer-endpoints/README.md#cp152",
               "docs/evidence/peer-endpoints/README.md#cp153",
-              "docs/evidence/peer-endpoints/README.md#cp154"
+              "docs/evidence/peer-endpoints/README.md#cp154",
+              "docs/evidence/peer-endpoints/README.md#cp155"
             ]
           },
           "windows_original": {
@@ -2319,7 +2323,8 @@
           "docs/evidence/peer-endpoints/README.md#cp140",
           "docs/evidence/peer-endpoints/README.md#cp142",
           "docs/evidence/peer-endpoints/README.md#cp143",
-          "docs/evidence/peer-endpoints/README.md#cp144"
+          "docs/evidence/peer-endpoints/README.md#cp144",
+          "docs/evidence/peer-endpoints/README.md#cp155"
         ]
       },
       "coverage": {
@@ -2382,7 +2387,8 @@
               "docs/evidence/peer-endpoints/README.md#cp140",
               "docs/evidence/peer-endpoints/README.md#cp142",
               "docs/evidence/peer-endpoints/README.md#cp143",
-              "docs/evidence/peer-endpoints/README.md#cp144"
+              "docs/evidence/peer-endpoints/README.md#cp144",
+              "docs/evidence/peer-endpoints/README.md#cp155"
             ]
           },
           "windows_original": {
@@ -3013,7 +3019,8 @@
           "docs/evidence/peer-endpoints/README.md#cp150",
           "docs/evidence/peer-endpoints/README.md#cp151",
           "docs/evidence/peer-endpoints/README.md#cp153",
-          "docs/evidence/peer-endpoints/README.md#cp154"
+          "docs/evidence/peer-endpoints/README.md#cp154",
+          "docs/evidence/peer-endpoints/README.md#cp155"
         ]
       },
       "coverage": {
@@ -3077,7 +3084,8 @@
               "docs/evidence/peer-endpoints/README.md#cp150",
               "docs/evidence/peer-endpoints/README.md#cp151",
               "docs/evidence/peer-endpoints/README.md#cp153",
-              "docs/evidence/peer-endpoints/README.md#cp154"
+              "docs/evidence/peer-endpoints/README.md#cp154",
+              "docs/evidence/peer-endpoints/README.md#cp155"
             ]
           },
           "windows_original": {
@@ -3434,7 +3442,8 @@
           "docs/evidence/loading-timeout/README.md",
           "docs/evidence/loading-timeout/README.md#cp136",
           "docs/evidence/peer-endpoints/README.md#cp144",
-          "docs/evidence/peer-endpoints/README.md#cp154"
+          "docs/evidence/peer-endpoints/README.md#cp154",
+          "docs/evidence/peer-endpoints/README.md#cp155"
         ]
       },
       "coverage": {
@@ -3488,7 +3497,8 @@
               "docs/evidence/loading-timeout/README.md",
               "docs/evidence/loading-timeout/README.md#cp136",
               "docs/evidence/peer-endpoints/README.md#cp144",
-              "docs/evidence/peer-endpoints/README.md#cp154"
+              "docs/evidence/peer-endpoints/README.md#cp154",
+              "docs/evidence/peer-endpoints/README.md#cp155"
             ]
           },
           "windows_original": {
@@ -3688,7 +3698,8 @@
           "docs/evidence/peer-endpoints/README.md#cp151",
           "docs/evidence/peer-endpoints/README.md#cp152",
           "docs/evidence/peer-endpoints/README.md#cp153",
-          "docs/evidence/peer-endpoints/README.md#cp154"
+          "docs/evidence/peer-endpoints/README.md#cp154",
+          "docs/evidence/peer-endpoints/README.md#cp155"
         ]
       },
       "coverage": {
@@ -3817,7 +3828,8 @@
               "docs/evidence/peer-endpoints/README.md#cp151",
               "docs/evidence/peer-endpoints/README.md#cp152",
               "docs/evidence/peer-endpoints/README.md#cp153",
-              "docs/evidence/peer-endpoints/README.md#cp154"
+              "docs/evidence/peer-endpoints/README.md#cp154",
+              "docs/evidence/peer-endpoints/README.md#cp155"
             ]
           },
           "windows_original": {

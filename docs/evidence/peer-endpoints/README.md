@@ -617,3 +617,46 @@ không nhận là vừa rerun.3originalPNGđãxem/hash ởvisual-review; 8ôUI k
 Docs/issue14 cập nhật gapdirectEOFđãgiải và freshnessintegration kế, CP153PR224merge; snapshot CP153
 pendingPR giữlịch sử. CP154 tựkiểm/reviewwaived/chờPR, AUD046qua152/kế156. NoK6a/fullmatch/LAN/
 Internet/8players/authority/Windows/accountresume/generalreset; không rewrite raw/completehistory.
+
+
+<a id="cp155"></a>
+## CP155 — same-run oldUDP/currentpositive, contest/lifeagreement và directEOF
+
+Baseline CP154/[PR225](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/225) head`a15862e`/
+merge`b766222`. [Contract/limits](../../PROTOCOL.md#direct-oldudp-contest-eof),
+[gaps](../../RESEARCH.md#gap-udp-freshness), [PLAN](../../PLAN.md#current-order).
+Reuse-question cảhai run pin CP145offloadcontrol/capture/12nativeprobes/armedack/knownconsumer và
+CP154currentdirectcontest/EOF. Ba helper nguyênbytesCP145R2, production/profile/30s/2s165/B32390gate giữ.
+SourceCAa52545…/Winee9bb4766…/modOa08950…/base400000 bất biến; không nativebody RE mới/VNlayoutport.
+
+| Run local/research/codex/ | Giây/exit/raw | run.json SHA256 |
+|---|---:|---|
+| direct-contest-oldudp-eof-r1/cycles | 350.859s / 1 / 987 | `478c1c91c828116789db9ea9f73a17869a083d477d75affb510dc5c6e2ae9ec5` |
+| direct-contest-oldudp-eof-r2/cycles | 436.491s / 0 / 1274 | `c56d80bcb893002c81182c173acefde4024ec5d3c1766f26c2c7b4c4e123650b` |
+
+r1partial:17exactoldUDP/keydropassertions/17samephasecurrentapply,2contests/BwinnerR1/AwinnerR2;
+R2returnsetupneutralfeedback không đủ3mẫugiống nhau trước3s. Lastkeyup có3samples289,214,214;
+`partial-observation.json` giữ mẫu/time/error, không kết luận oldUDP tác động localA hoặc speedlaw.
+Không ending2/Ready/EOF3 trong r1. r2 chỉ hostbudget3→6s cho `contest-returnsetup`, còn3freshsame/20pulse/
+.045s/tolerance/keyrelease/deadlinegame30s giữ; không coi đây là causalclientfix hay rewrite r1.
+
+r2full:19exactoldUDPchecks/11samephasecurrentfull13apply + freshR2BRight; rawEthernet59/UDP17checksum0/
+exactsource/SHA/actual99ports→ingress/registeredpeer/queue+19/drain−19→wire59expected56slot1/keydrop/
+noexactapply. Replayharnesskhác nativeBsecondemission; payload/headerCRCkey không rewrite.
+24loadgate/84contest/14actualcaptureclaim/43first2cycle/50directEOF checks;575peerassertions/4windows,
+3018securefields/372peergetters/150UDPwrappers/16lifewrappers native52A350model riêng.
+23lifechecks pin cảhai viewloser56→1/beforerankother0;26entity/195flagsresetchecks nối actualID1/2/
+native15939/15813/full/errors0/process và seedreset;2758flaggetter+2730nativearrayaddr trên14snapshots.
+1307loadingassertions gồmrawhash/actual99. Source/policy/model/runtime được phân biệt ở contract.
+
+Bdebuggercuối log cómemory/KR_STOP sauentity3/ownedfault; whole-loghealth draft fail, sửa phạm vi
+entity/flagcheck tới native159end3, giữpost_entity_probe_messages và analysis-corrections; không gọi
+wholeloghealthy hoặc sửa raw. Importsdraftterrain_shadow/probe_terrain fail được sửa theo module
+sẵn có terrain_model; không có kết luận runtime từ importfail.
+97inputs verify sau cleanup mỗi run; rawseal/end/namespacekhôngPID/capture/service/Wine cleanupxong.
+237CP148tests reuse sau41sourceSHAunchanged, không rerunclaim.3PNGReadyA/B/roomAguestempty đã xem,
+hash ởvisual-review; no8realclients/Start4/CP137UIcauseclaim.
+
+CP155 tự kiểm/reviewwaived/chờPR; CP154mergePR225 cập nhậtcurrentdocs/issue14, lịch sử immutable giữ.
+AUD046qua152; **CP156 audit bắt buộc**. Tiếp đối chiếu acceptanceK6a/authority và gapthực tế theoPLAN,
+không tự nâng gate hoặc randomrerun. Fullmatch/LAN/Internet/8realclients/Windows/fullauth/generalreset mở.

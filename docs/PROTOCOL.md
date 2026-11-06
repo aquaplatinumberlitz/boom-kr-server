@@ -1,6 +1,6 @@
 # KR 00967 — contract tương thích client gốc
 
-Revision kr-legacy-contract-r1; cập nhật06/11/2026 JST (CP154; AUD046 quaCP152, kếCP156).
+Revision kr-legacy-contract-r1; cập nhật06/11/2026 JST (CP155; AUD046 quaCP152, kếCP156).
 **Contract có bằng chứng từng phần; chưa nghiệm thu full codec K2**.
 Lộ trình và thứ tự task chỉ giữ ở [REWRITE_PLAN — KRE](PLAN.md).
 Đây là contract của repo server KR. ADR0009 của bản viết lại là nguồn lịch sử để so sánh;
@@ -5405,3 +5405,46 @@ profile/deadline30s/2s165measurement/gateB32390onlyloading giữ; sourceCA/pack/
 [PLAN](PLAN.md#current-order) tiếp tích hợp freshness còn thiếu trong cùng recipe, reuse CP145
 exactoldUDP/currentkeydrop thay vì RE lại consumer; standalone CP145 không bị coi unknown.
 Fullmatch/K6a/LAN/Internet/8client/Windows/fullauth/authority/generalreset/CP137UI vẫn mở.
+
+
+<a id="direct-oldudp-contest-eof"></a>
+### ExactoldUDP/currentpositive cùng hai contest và directEOF — CP155
+
+**`kr_runtime/confirmed` trong copy Wine/virtualhosts, measurement replay là `design`.**
+[Recipe/raw/hash/case partial](evidence/peer-endpoints/README.md#cp155). Reuse CP145 R2 nguyên bytes
+`topology.py/capture_udp.py/gdb_udp_membership.py`:4ownedveth tx/rx off trước launch, raw send socket
+riêng,12 knownprobes/armedack/source tuple. Không mang TCPproxy của CP145 vào currentallTCPdirect.
+CP1542contests/Ready/EOF3, production/profile/30s/2s165/B32390loadinggate giữ; không RE thêm body.
+
+ActualR1B→A Ethernet59/UDP17 được chụp rồi replay AF_PACKET đúng bytes sau actualR2153/clock.
+IPv4/UDP checksum residue0, KRpayload/CRC/MAC/IP/port/SHA không sửa; PCAP có cả original/replay,
+A12probe armed trước send. Native ingress actualB.3/actual99port→registeredpeer≠0→inner15queue+19/
+drain−19→selector0consumer13, wirekey59/current56/slot1→**E667C2keydrop, không exactapply**.
+Payload SHA`ac7fa3b4df9d46b9a9262d19602cee20b688a66fce6f097ec5b30d07a870d80a`; EthernetSHA`32be49532b18bcbccbbb79d58b184655f6f0768df9fcf3498a7045c5176056d3`.
+Cùng cửa sổ có **11 currentnormal full13 apply**; sau đó R2BRight có native target/currentprogress.
+
+Đây là replay từ harness, không phải B tự phát frame cũ lần2; keybyte không là auth/toàn chốngreplay.
+Standalone CP145 đã biết keydrop vẫn giữ phạm vi riêng; CP155 thêm **cùng-run integration** với
+currentdirect/contested/effects/reset/outcomes/EOF, không trình bày consumer này như phát hiện mới.
+
+Hai currentkeys12345/12346 có6actual124 (BombA+haiFireclaim/vòng); Awinner cảhai/Bconsumedreject,
+oneFire165/view/onlyApower1→2 và R2baseline1. Cùng run4peerwindows, ID1/A/power2 rồi ID2/B/power1,
+195nativeflags trước/sau158/reset seed, hai currenttrapSHA→19/opposite21/ranks2,1→1,2/175180110/Ready.
+Statewriter và native175 snapshots ở **cảhai view**: loser56→1 trước rank, actor còn lại0 tại rankentry;
+16 securestatewrappers được modelnative52A350 kiểm riêng. Đây không phải hai snapshot cùng tick hoặc
+bằng chứng đồng thuận toànworld; state56/1 chỉ theo class/profile đã phục hồi ởCP029.
+
+Sau hai normalendings/Ready, Start3/key12347/actualB118ID3pending; ownedBkill/directserviceEOF/fence
+round_closed/no158/noB17,19, nativeAthirdforfeit175180107ID2→0/110chief1/roomBempty. NoStart4,
+B đã dừng không nhận forfeit. Hai trận đã chơi và forfeit lượt3 phân biệt rõ.
+
+**Partial trước đó giữ nguyên:** r1 đã có exactkeydrop/17currentapply và hai contest (B rồiA thắng),
+nhưng dừng `alignnotstable:R2-A-contest-returnsetup`, không ending2/Ready/EOF3. Saukeyup cuối có
+ba mẫuY289,214,214; chưa đủ3mẫu giống nhau trước hostbudget3s. Copyr2 chỉ tăng hostbudget lên6s
+cho nhãn `contest-returnsetup`, vẫn3freshsamesamples/20pulse/.045s/tolerance cũ, không tăng loading30s.
+Runr2 đi tiếp được không chứng minh nguyên nhân thiếu feedback/scheduling hoặc oldUDP gây inputstall.
+
+Same-run scope còn thiếu TCP malformed/same-oldselected guards trong đường direct này; CP148
+qua rootproxy đã đo riêng, fullauth/wholecodec/globalworld/generalreset/CP137UI/Windows/LAN/Internet/
+8realclients vẫn mở. [PLAN](PLAN.md#current-order) tiếp **đối chiếu acceptance K6a và audit CP156**
+trước khi chọn đúng phép đo còn thiếu, không lặp oldUDP/contest/EOF hoặc tự nâng gate từ sốcheck.

@@ -1,0 +1,240 @@
+{
+  "id": "CP155",
+  "previous": "CP154",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-06T03:29:40.263087+00:00",
+  "context_commit": "b7662228c07695becf5540259c41bbd89cb788c5",
+  "owner": "Codex",
+  "reviewer": "Codex",
+  "question": "CanCP145knownexactoldUDP/keydrop/currentpositive beintegratedwithcurrentallTCPdirect2nativecontests/lifeagreement/normaloutcomes/Ready/EOF3 inonerun, andwhatr1hostfeedbackgap blockscompletion?",
+  "scope": "2frozenruns grouped/reuseCP145known12probes/offload/capturehelpersexactbytes/CP154directcontestEOF; r1partialkeydrop+2contests, r2hostneutralbudgetonlydelta/fullintegration. Postrunrawlife/entity/195flagjoins withcachedgettermodels, nonewnativebody/productionchanges.",
+  "artifacts": [
+    {
+      "name": "KRoriginalCA/read-only",
+      "sha256": "a52545c14b1fea423de655c3163d6360b628d61c1cd472b46fdbc8a9ffe15f4e"
+    },
+    {
+      "name": "Winecopyunchanged",
+      "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+    },
+    {
+      "name": "staticcopy",
+      "sha256": "660447c293ce92270cb9b5815331bca976e8f156366e1fe50b217b6c12e60ce3"
+    }
+  ],
+  "locators": [
+    "BaselineCP154heada15862eab192080fd4145eefd8ea193413c52099/PR225mergeb7662228c07695becf5540259c41bbd89cb788c5; exactheadmergearchived.",
+    "r1run478c1c91c828116789db9ea9f73a17869a083d477d75affb510dc5c6e2ae9ec5/350.858730905s/exit1/987raw: alignnotstableR2-A-contest-returnsetup; lastkeyup0.246sY289,0.631/0.929sY214,nothirdstable.",
+    "r2runc56d80bcb893002c81182c173acefde4024ec5d3c1766f26c2c7b4c4e123650b/436.491231886s/exit0/1274raw/97frozeninputs; actualR1BexactEthernet59/UDP17→R2replay/queue19drain/key59expected56slot1drop11samephasecurrentapply/freshBRight.",
+    "Base400000/RVA=VA−400000; CP145known13DE7AA/13DE949/14E8280/8378/8480/8577/85B7/E66680/E667BE/E667C2/E668AD/B2. CP029stateB33270/afterprotected+28/56→1beforenative175; no newbodyRE.",
+    "AUD046through152/nextCP156 mandatory; no gate/issue14closure."
+  ],
+  "findings": [
+    {
+      "summary": "CP145knownexactoldUDP/source/queue/keydrop path reproducedinsamecurrentrecipe: rawchecksum0/MACIPportCRCpayloadSHAexact, armed12beforeAF_PACKET, registeredpeer/queue19/drain/13consumerold59current56/drop/noexactapply,11currentfull13/freshBRight.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#direct-oldudp-contest-eof",
+      "evidence": [
+        "RUN-02361",
+        "RUN-02388",
+        "RUN-02344"
+      ],
+      "limits": "TwoactualmodifiedWine/e9bb47/privatevirtualhosts/samephysicalhost/allTCPdirect/noTCPUDPproxy. ExactoldframeAF_PACKETreplay design/notnativeBsecondemission; checksum/tuple/MAC/IP/CRC/payloadunchanged. ScopeIDs1,2/key12345→12346/old59current56 only, notlow8wrap/auth/fullUDPgrammar/globalworld. R1partial2contests/oldnegative/currentpositivebutR2alignmentfail/noending2/Ready/EOF3. R2onlyhostfeedbackbudget3to6scontest-returnsetup, game30s/profile/production/2s165/B32390gate unchanged; nocausalinput/scheduling/clientfixclaim. R2full2contests/4peerwindows/native56→1beforerankbothviews/195flags/entityreset/2normaloutcomes/Ready/thirdownedEOFforfeit. Modelgetters/allocators/rekeycounter notruntimewrites; viewsnotglobalsametick. Bpostthirdentitymemory/KR_STOPafterownedfaultkept/notwholeloghealthy. NoStart4/Windows/fullauth/originalauthority/generalreset/K6a/fullmatch/LAN/Internet/8realclients/gate."
+    },
+    {
+      "summary": "r1alreadyknownkeydrop/17samephasecurrentapply and2contests BthenAwinner; R2returnsetup3samplehostobservationfails withY289,214,214/noending2ReadyEOF3. r2onlyreturnsetupfeedback3→6s still3freshsame/20pulse/.045s/tolerance; nooriginalinputlaw/oldUDPcausality claim.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#direct-oldudp-contest-eof",
+      "evidence": [
+        "RUN-01009",
+        "RUN-00996",
+        "RUN-00006",
+        "RUN-02389"
+      ],
+      "limits": "TwoactualmodifiedWine/e9bb47/privatevirtualhosts/samephysicalhost/allTCPdirect/noTCPUDPproxy. ExactoldframeAF_PACKETreplay design/notnativeBsecondemission; checksum/tuple/MAC/IP/CRC/payloadunchanged. ScopeIDs1,2/key12345→12346/old59current56 only, notlow8wrap/auth/fullUDPgrammar/globalworld. R1partial2contests/oldnegative/currentpositivebutR2alignmentfail/noending2/Ready/EOF3. R2onlyhostfeedbackbudget3to6scontest-returnsetup, game30s/profile/production/2s165/B32390gate unchanged; nocausalinput/scheduling/clientfixclaim. R2full2contests/4peerwindows/native56→1beforerankbothviews/195flags/entityreset/2normaloutcomes/Ready/thirdownedEOFforfeit. Modelgetters/allocators/rekeycounter notruntimewrites; viewsnotglobalsametick. Bpostthirdentitymemory/KR_STOPafterownedfaultkept/notwholeloghealthy. NoStart4/Windows/fullauth/originalauthority/generalreset/K6a/fullmatch/LAN/Internet/8realclients/gate."
+    },
+    {
+      "summary": "r2fullsame-run2contests/Awinnerboth/onlyApowerdelta/reset,4peerphases/native56→1bothviewsbeforerank/other0,actualIDs1/2/195flagseedreset/2nativeoutcomesReady andthirdownedpendingBEOF/fence/no158/nativeAcleanup/render. No3normalmatches/killedBreceiptclaim.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#direct-oldudp-contest-eof",
+      "evidence": [
+        "RUN-01071",
+        "RUN-01081",
+        "RUN-02360",
+        "RUN-02378",
+        "RUN-02449",
+        "RUN-02358",
+        "RUN-02448"
+      ],
+      "limits": "TwoactualmodifiedWine/e9bb47/privatevirtualhosts/samephysicalhost/allTCPdirect/noTCPUDPproxy. ExactoldframeAF_PACKETreplay design/notnativeBsecondemission; checksum/tuple/MAC/IP/CRC/payloadunchanged. ScopeIDs1,2/key12345→12346/old59current56 only, notlow8wrap/auth/fullUDPgrammar/globalworld. R1partial2contests/oldnegative/currentpositivebutR2alignmentfail/noending2/Ready/EOF3. R2onlyhostfeedbackbudget3to6scontest-returnsetup, game30s/profile/production/2s165/B32390gate unchanged; nocausalinput/scheduling/clientfixclaim. R2full2contests/4peerwindows/native56→1beforerankbothviews/195flags/entityreset/2normaloutcomes/Ready/thirdownedEOFforfeit. Modelgetters/allocators/rekeycounter notruntimewrites; viewsnotglobalsametick. Bpostthirdentitymemory/KR_STOPafterownedfaultkept/notwholeloghealthy. NoStart4/Windows/fullauth/originalauthority/generalreset/K6a/fullmatch/LAN/Internet/8realclients/gate."
+    },
+    {
+      "summary": "ExactCP145helperbyte-reuse/currentserverprofilecodeunchanged; nativegetter/arraymodels independentfromruntime. Newanalysishealthassertion scopedthroughthird159beforeownedBfault, postfaultmessageskept. 237CP148tests reused/exact41sourcehashes, notreexecuted.",
+      "source": "design",
+      "status": "design",
+      "method": "design",
+      "canonical": "docs/PROTOCOL.md#direct-oldudp-contest-eof",
+      "evidence": [
+        "RUN-02434",
+        "RUN-01064",
+        "RUN-02390",
+        "RUN-02380"
+      ],
+      "limits": "TwoactualmodifiedWine/e9bb47/privatevirtualhosts/samephysicalhost/allTCPdirect/noTCPUDPproxy. ExactoldframeAF_PACKETreplay design/notnativeBsecondemission; checksum/tuple/MAC/IP/CRC/payloadunchanged. ScopeIDs1,2/key12345→12346/old59current56 only, notlow8wrap/auth/fullUDPgrammar/globalworld. R1partial2contests/oldnegative/currentpositivebutR2alignmentfail/noending2/Ready/EOF3. R2onlyhostfeedbackbudget3to6scontest-returnsetup, game30s/profile/production/2s165/B32390gate unchanged; nocausalinput/scheduling/clientfixclaim. R2full2contests/4peerwindows/native56→1beforerankbothviews/195flags/entityreset/2normaloutcomes/Ready/thirdownedEOFforfeit. Modelgetters/allocators/rekeycounter notruntimewrites; viewsnotglobalsametick. Bpostthirdentitymemory/KR_STOPafterownedfaultkept/notwholeloghealthy. NoStart4/Windows/fullauth/originalauthority/generalreset/K6a/fullmatch/LAN/Internet/8realclients/gate."
+    }
+  ],
+  "verification": [
+    {
+      "check": "r2 19oldUDP/11samephaseapply/freshBRight;84contest/14actualclaims/43first2cycle/50EOF/575peer4windows/24loadinggate/23lifeagreement/26entity195flags/3manualframes",
+      "result": "pass",
+      "evidence": [
+        "RUN-02361",
+        "RUN-01071",
+        "RUN-01068",
+        "RUN-01081",
+        "RUN-02358",
+        "RUN-02360",
+        "RUN-02372",
+        "RUN-02378",
+        "RUN-02449",
+        "RUN-02448"
+      ],
+      "limits": "TwoactualmodifiedWine/e9bb47/privatevirtualhosts/samephysicalhost/allTCPdirect/noTCPUDPproxy. ExactoldframeAF_PACKETreplay design/notnativeBsecondemission; checksum/tuple/MAC/IP/CRC/payloadunchanged. ScopeIDs1,2/key12345→12346/old59current56 only, notlow8wrap/auth/fullUDPgrammar/globalworld. R1partial2contests/oldnegative/currentpositivebutR2alignmentfail/noending2/Ready/EOF3. R2onlyhostfeedbackbudget3to6scontest-returnsetup, game30s/profile/production/2s165/B32390gate unchanged; nocausalinput/scheduling/clientfixclaim. R2full2contests/4peerwindows/native56→1beforerankbothviews/195flags/entityreset/2normaloutcomes/Ready/thirdownedEOFforfeit. Modelgetters/allocators/rekeycounter notruntimewrites; viewsnotglobalsametick. Bpostthirdentitymemory/KR_STOPafterownedfaultkept/notwholeloghealthy. NoStart4/Windows/fullauth/originalauthority/generalreset/K6a/fullmatch/LAN/Internet/8realclients/gate."
+    },
+    {
+      "check": "R1partial17oldkeychecks/17currentapply/84two-contests; r2rawsealloading1307; native-model3018actor/372peer/150UDP/16life/2758flag/2730array",
+      "result": "pass",
+      "evidence": [
+        "RUN-00996",
+        "RUN-01009",
+        "RUN-01011",
+        "RUN-02381",
+        "RUN-01063",
+        "RUN-02386",
+        "RUN-02382",
+        "RUN-02379",
+        "RUN-02362"
+      ],
+      "limits": "Partialr1not2outcomes/Ready/EOF; modelsnotworldoracle/nativefunctioncall. Bpostfaultdebuggertail scopeexplicit."
+    },
+    {
+      "check": "237CP148testsreuse/source41hashes/docs/catalog/liveissues/artifacts/diff",
+      "result": "pass",
+      "evidence": [
+        "RUN-02434",
+        "RUN-02359",
+        "RUN-02375",
+        "RUN-01067"
+      ],
+      "limits": "Mechanicalchecks/sourcehashreuse notsemantic/gatecertification; fullcheckpointlocal/historycheckedbeforecommit."
+    }
+  ],
+  "evidence": [],
+  "evidence_manifests": [
+    {
+      "path": "docs/evidence/checkpoints/evidence/CP155-direct-oldUDP-contest-EOF.json",
+      "bytes": 637239,
+      "sha256": "5b75ce6f7ffa9784a62fd0f88fe78da276904a16e45e3e242a49c9cfc8626cf6",
+      "count": 2468
+    }
+  ],
+  "delta": {
+    "added": [
+      "Fullsame-runcurrentrecipeoldUDPnegative/currentpositive/2contests/native2viewlife/195flagreset/2normaloutcomes/Ready/EOF3; no repeatedconsumerRE."
+    ],
+    "corrected": [
+      "Retainr1alignmentpartial/2equalnot3stable; hostobservationbudget change notgame30s/causaloldUDPfix.",
+      "Entityhealthchecklimitedthroughthird159; Bpostfaultmemory/KR_STOPkept, no wholeloghealthyclaim.",
+      "CP154PR225merge/currentnavigationclosingfreshnessintegration; mandatoryauditnextCP156 unchanged."
+    ],
+    "superseded": [
+      "NEXT-DIRECT-CONTEST-OLDUDP closed narrowintegration; nextmanualacceptanceK6a/authoritycriterionassessment/AUD047 beforechoosinganynewruntime."
+    ]
+  },
+  "blockers": [
+    "K6a/authorityacceptance notyetmanuallyassessedcriteriabycriterionaftercombinedrun; selectedTCPsame-oldnegativeCP148proxy-only source separatefromcurrentdirect.",
+    "Fullauth/globalworldauthority/Windows/CP137UI/generalreset/fullinventory/LAN/Internet/8realclients unchanged; no gatecertainty fromassertioncount."
+  ],
+  "next_steps": [
+    {
+      "id": "NEXT-DIRECT-CONTEST-OLDUDP",
+      "task": "KRE-005b",
+      "state": "closed",
+      "action": "CP155r2same-runexactoldUDP/keydrop/currentpositive+2contests/native2viewlife/outcomes/reset/Ready/directEOF3 measured; historicalr1partialkept. No fullgrammar/auth/gate.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-K6A-ACCEPTANCE-AUDIT",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "PLAN nextreadK5/K6/K6a/authoritycriteria/exactrun/environment/evidence/limits; identifyactualremaininggapbeforeRE. AssessneedselectedTCPnegativecurrentdirectusingCP148reference. MandatoryAUD047periodicCP156 manualdocs/rawaudit/counter; noauto-semanticclosure/rerunknowncases.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    }
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-11-06T03:29:40.263087+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "CodexsoloRE/runtime/selfcheck/manual3frameinspection; independentreviewwaived.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Owner explicitly requested solo without workers/review."
+    }
+  },
+  "docs_sync": [
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "CP155combinedr2proof/r1partial/analysislimits/PR225merge/closedoldUDPstep/manualK6aacceptance/AUD156next synchronizedbeforecomplete."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "CP155combinedr2proof/r1partial/analysislimits/PR225merge/closedoldUDPstep/manualK6aacceptance/AUD156next synchronizedbeforecomplete."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "updated",
+      "reason": "CP155combinedr2proof/r1partial/analysislimits/PR225merge/closedoldUDPstep/manualK6aacceptance/AUD156next synchronizedbeforecomplete."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "updated",
+      "reason": "CP155combinedr2proof/r1partial/analysislimits/PR225merge/closedoldUDPstep/manualK6aacceptance/AUD156next synchronizedbeforecomplete."
+    },
+    {
+      "path": "docs/features.json",
+      "state": "updated",
+      "reason": "CP155combinedr2proof/r1partial/analysislimits/PR225merge/closedoldUDPstep/manualK6aacceptance/AUD156next synchronizedbeforecomplete."
+    },
+    {
+      "path": "docs/COVERAGE.md",
+      "state": "updated",
+      "reason": "CP155combinedr2proof/r1partial/analysislimits/PR225merge/closedoldUDPstep/manualK6aacceptance/AUD156next synchronizedbeforecomplete."
+    },
+    {
+      "path": "docs/evidence/peer-endpoints/README.md",
+      "state": "updated",
+      "reason": "CP155combinedr2proof/r1partial/analysislimits/PR225merge/closedoldUDPstep/manualK6aacceptance/AUD156next synchronizedbeforecomplete."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/review.json",
+      "state": "updated",
+      "reason": "CP155combinedr2proof/r1partial/analysislimits/PR225merge/closedoldUDPstep/manualK6aacceptance/AUD156next synchronizedbeforecomplete."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
+      "state": "updated",
+      "reason": "CP155combinedr2proof/r1partial/analysislimits/PR225merge/closedoldUDPstep/manualK6aacceptance/AUD156next synchronizedbeforecomplete."
+    }
+  ]
+}
