@@ -1,0 +1,303 @@
+{
+  "id": "CP172",
+  "previous": "CP171",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-06T14:41:07.369346+00:00",
+  "context_commit": "89f228b2af177e9008ea99df35e6caf28737f577",
+  "owner": "Codex",
+  "reviewer": "Codex",
+  "question": "Có thể ràng buộc hidden142 với đúng current committed terrain-cleared-cell/fullroster và giữ native basic2cycles/reset/Ready/Start3 không?",
+  "scope": "Source-first CP068/069/170/171/native195/currentterraincommit; guard policy5newtests/270suite, fresh exact CP171 exported-profile/controller/helpers modulo paths. Native runtime compatibility, current acceptance review và periodic AUD051; không RE lại nativebody/opcode/ItemAttr/oldUDP.",
+  "artifacts": [
+    {
+      "name": "OriginalKR00967unchanged",
+      "sha256": "a52545c14b1fea423de655c3163d6360b628d61c1cd472b46fdbc8a9ffe15f4e"
+    },
+    {
+      "name": "CurrentWinecopyunchanged",
+      "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+    },
+    {
+      "name": "NativeIDAfullcopycf72privateanalysis",
+      "sha256": "cf72da112308d9f1ca256df8089594c5f787875310933073bf6bd5ba6f70e63b"
+    },
+    {
+      "name": "modOmodelreference",
+      "sha256": "a08950c833d3acab8281049def7b3dc96b221f107eeda01da3a548e34b91dce5"
+    }
+  ],
+  "locators": [
+    "Baseline CP171 PR243 headdefd8a1a123db0e9db091272e7c7af3d18f4fcbe/merge89f228b2af177e9008ea99df35e6caf28737f577; guard/test working-tree delta frozen and snapshotted.",
+    "Run hidden-cell-native-r1 SHA419b67bf0a643fbaf7ffa33a320ed53b2217d4168f8268441f41c417667302cb/406.400966485s/exit0/1438raw/158frozen; profile SHA bf1f99989e45a4b5e47e831165ad1f43f296418253388d8ba8338532d665afee unchanged CP171.",
+    "Known base400000/hiddenEB579E,B9C939,B9D0B4/165E63260,E63309,E63E1A/lookupE636D9/getter52A350; no new native function bodies.",
+    "Keys12345/12346/12347; barriers6.459173952/6.455755669/6.374629005s; thirdclock extra9.229294342s. AUD051through172/next176."
+  ],
+  "findings": [
+    {
+      "summary": "Với terrain, known142 cần currentbomb/currentterrain generation, exactclearedcell, commit>0before report và158receipts đúng fullroster. Pending/oldgen/unrelatedcell/partialbroadcast khôngmởeligibility; acceptedreport ghi terrain_clearance. Duplicate setdefault/124165 giữ; no-terrain giữ anycurrent158 scopecũ. Đây làdesign policy, không native/servergốc law.",
+      "source": "design",
+      "status": "design",
+      "method": "design",
+      "canonical": "docs/PROTOCOL.md#hidden-cell-admission-current",
+      "evidence": [
+        "RUN-01518",
+        "RUN-01517",
+        "RUN-01523",
+        "RUN-01541",
+        "RUN-01566",
+        "RUN-01567"
+      ],
+      "limits": "Exact optional basic export/modifiedWine/privatevirtualhosts/direct production; only bounded terrain142 policy delta. Two outcomes/reset/Ready and thirdactive/noBomb, not third outcome. No nativebinary/DB/pack/gamecall/actorwrite/forged142104/guardbypass/boundschange; source/config frozen then cleanup/seal. Design validator not originalauthority; no-terrain retains oldweakpolicy. Sameold142afterlegitcurrentclear/fullauth/distance/freshness/generalreset/Windows/LANInternet/8clients/K0–K7/K5K6a/fullmatch remainopen. CleanupEOF not intentionalfaultcontrol."
+    },
+    {
+      "summary": "5newtests/270server suite kiểm unrelated+pending→positive, oppositepeer duplicate/twoitems/oneeffect, reset/oldgen, partialbroadcast, roster/commit order. Cùngold142saulegitcurrentclear vẫnadmissible vì142chưarecoveredroundkey; fullauth/distance/freshness giữunknown. Initial unittest discovery/imported-class noise retained, not28newtests.",
+      "source": "design",
+      "status": "design",
+      "method": "design",
+      "canonical": "docs/PROTOCOL.md#hidden-cell-admission-current",
+      "evidence": [
+        "RUN-01566",
+        "RUN-01567",
+        "RUN-01541"
+      ],
+      "limits": "Exact optional basic export/modifiedWine/privatevirtualhosts/direct production; only bounded terrain142 policy delta. Two outcomes/reset/Ready and thirdactive/noBomb, not third outcome. No nativebinary/DB/pack/gamecall/actorwrite/forged142104/guardbypass/boundschange; source/config frozen then cleanup/seal. Design validator not originalauthority; no-terrain retains oldweakpolicy. Sameold142afterlegitcurrentclear/fullauth/distance/freshness/generalreset/Windows/LANInternet/8clients/K0–K7/K5K6a/fullmatch remainopen. CleanupEOF not intentionalfaultcontrol."
+    },
+    {
+      "summary": "Fresh exact basic export/directmodule/same8transports/currentManner/title/Bhost hai native cycles, mỗi epoch3actualpickups/FixedBox→reveal27/28/lookupCGOItem/165full12/errors0/effects onlyA. Baseline/stat/hiddeneligibility/key/195reset;4actualAbombs IDs1..4/power1,2,1,2/full15939/15813/samepointer/native195. Actual A17→19/B21 và native56→1/other0before175 hai view;2normal175180/room/ReadyA.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#hidden-cell-admission-current",
+      "evidence": [
+        "RUN-00007",
+        "RUN-01480",
+        "RUN-00001",
+        "RUN-00011",
+        "RUN-01477",
+        "RUN-01478",
+        "RUN-01490"
+      ],
+      "limits": "Exact optional basic export/modifiedWine/privatevirtualhosts/direct production; only bounded terrain142 policy delta. Two outcomes/reset/Ready and thirdactive/noBomb, not third outcome. No nativebinary/DB/pack/gamecall/actorwrite/forged142104/guardbypass/boundschange; source/config frozen then cleanup/seal. Design validator not originalauthority; no-terrain retains oldweakpolicy. Sameold142afterlegitcurrentclear/fullauth/distance/freshness/generalreset/Windows/LANInternet/8clients/K0–K7/K5K6a/fullmatch remainopen. CleanupEOF not intentionalfaultcontrol."
+    },
+    {
+      "summary": "16actual142 gồm8acceptedhidden-cell/4alreadyrevealedother-viewduplicates và8unknown_hidden_cell outsidecatalog. Cả8accepted córoot1/3/currentgen/exactclearedcell/commitbefore142/fullroster; eligibility mỗi epoch đúng27/28 vàkhôngextra165effect.52joins. Initialall16acceptedassumption bịbác bỏ; raw/guard/expectedcriteria giữnguyên. Nativeoutsidecatalog rejects lànaturalreports, không injectednegativecontrols.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#hidden-cell-admission-current",
+      "evidence": [
+        "RUN-01568",
+        "RUN-01570",
+        "RUN-00002"
+      ],
+      "limits": "Exact optional basic export/modifiedWine/privatevirtualhosts/direct production; only bounded terrain142 policy delta. Two outcomes/reset/Ready and thirdactive/noBomb, not third outcome. No nativebinary/DB/pack/gamecall/actorwrite/forged142104/guardbypass/boundschange; source/config frozen then cleanup/seal. Design validator not originalauthority; no-terrain retains oldweakpolicy. Sameold142afterlegitcurrentclear/fullauth/distance/freshness/generalreset/Windows/LANInternet/8clients/K0–K7/K5K6a/fullmatch remainopen. CleanupEOF not intentionalfaultcontrol."
+    },
+    {
+      "summary": "NormalBStart3 actual104/key12347/native12199/barrier6.374629005s trước30s; hai clocks thêm9.229294342s/2manualBattleimages.1736firsttwo/419Start3checks/180packet552fieldmodels/life23+16;4adaptivealignmentgroups/8viewACK/4rare165lookupenabled/exactrestore. Nothirdbomb/outcome; cleanupEOFaftercompletion0.409834981s không faultcontrol.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#hidden-cell-admission-current",
+      "evidence": [
+        "RUN-01464",
+        "RUN-00007",
+        "RUN-01577",
+        "RUN-01490"
+      ],
+      "limits": "Exact optional basic export/modifiedWine/privatevirtualhosts/direct production; only bounded terrain142 policy delta. Two outcomes/reset/Ready and thirdactive/noBomb, not third outcome. No nativebinary/DB/pack/gamecall/actorwrite/forged142104/guardbypass/boundschange; source/config frozen then cleanup/seal. Design validator not originalauthority; no-terrain retains oldweakpolicy. Sameold142afterlegitcurrentclear/fullauth/distance/freshness/generalreset/Windows/LANInternet/8clients/K0–K7/K5K6a/fullmatch remainopen. CleanupEOF not intentionalfaultcontrol."
+    },
+    {
+      "summary": "AUD051 manually audits currentdocs/deltaCP169172/raw/code/tests: sửa stalepending/nextsteps, phân biệt snapshotCP/merge/native/emulation/policy/waiver, cập nhật authority vàbasicacceptance. Bowner118/escape+explicitA↔Bwindows thiếu trênexactbasic recipe; oldfloorCP155160168 lànguồnreuse, không same-runbackfill. Next chỉđo delta này, khôngrepeatoldUDP/consumer/quétmọivariant hoặcđónggate.",
+      "source": "design",
+      "status": "design",
+      "method": "documentation",
+      "canonical": "docs/PROTOCOL.md#hidden-cell-admission-current",
+      "evidence": [
+        "RUN-00014",
+        "RUN-00015",
+        "RUN-00016"
+      ],
+      "limits": "Exact optional basic export/modifiedWine/privatevirtualhosts/direct production; only bounded terrain142 policy delta. Two outcomes/reset/Ready and thirdactive/noBomb, not third outcome. No nativebinary/DB/pack/gamecall/actorwrite/forged142104/guardbypass/boundschange; source/config frozen then cleanup/seal. Design validator not originalauthority; no-terrain retains oldweakpolicy. Sameold142afterlegitcurrentclear/fullauth/distance/freshness/generalreset/Windows/LANInternet/8clients/K0–K7/K5K6a/fullmatch remainopen. CleanupEOF not intentionalfaultcontrol."
+    },
+    {
+      "summary": "CP166 repository source pin remains unchanged;99707bytes/SHA81b0c8d3… matches record-publication commit09759d0. Checker accepts exact source only with originalcompletev2record/declaration/blob/externalmanifest at samebirthcommit, warns historicalsource. Later-onlyblob, missing/unpublished/v1-only source, raw/binary/local staystrict.34checkpointtests including6newcases pass; provenance/versioncheck only, not semantics/gate.",
+      "source": "design",
+      "status": "design",
+      "method": "design",
+      "canonical": "docs/evidence/checkpoints/README.md",
+      "evidence": [
+        "RUN-01606",
+        "RUN-01602",
+        "RUN-01607",
+        "RUN-01604"
+      ],
+      "limits": "OnlyprojectPythonserver/tools/repository evidence with originalpublication proof. Existingcomplete records/hash/history unchanged. Initialfailedcheck/unpublisheddraft retained; code versions not interchangeable runtimeoracles."
+    }
+  ],
+  "verification": [
+    {
+      "check": "5newboundedpolicytests/270server suite",
+      "result": "pass",
+      "evidence": [
+        "RUN-01566",
+        "RUN-01567",
+        "RUN-01541"
+      ],
+      "limits": "Pythonpolicy controls, not native compatibility or runtime forged attack evidence."
+    },
+    {
+      "check": "Freshnativebasic2cycles/reset/Ready/BStart3/52admissionjoins/1736firsttwo/419Start3/180packet552field/life23+16/2manualviews/observerrestore/frozen158/1438raw/cleanup",
+      "result": "pass",
+      "evidence": [
+        "RUN-01490",
+        "RUN-01568",
+        "RUN-00007",
+        "RUN-01464",
+        "RUN-01480",
+        "RUN-00001",
+        "RUN-01577"
+      ],
+      "limits": "Exact optional basic export/modifiedWine/privatevirtualhosts/direct production; only bounded terrain142 policy delta. Two outcomes/reset/Ready and thirdactive/noBomb, not third outcome. No nativebinary/DB/pack/gamecall/actorwrite/forged142104/guardbypass/boundschange; source/config frozen then cleanup/seal. Design validator not originalauthority; no-terrain retains oldweakpolicy. Sameold142afterlegitcurrentclear/fullauth/distance/freshness/generalreset/Windows/LANInternet/8clients/K0–K7/K5K6a/fullmatch remainopen. CleanupEOF not intentionalfaultcontrol."
+    },
+    {
+      "check": "ManualAUD051/currentdocs/catalog/issues/artifacts/diff/fullhistorylocal",
+      "result": "pass",
+      "evidence": [
+        "RUN-01463",
+        "RUN-00009",
+        "RUN-01474",
+        "RUN-00006",
+        "RUN-01462"
+      ],
+      "limits": "Auditmetadata manifest with172; fullhistory/local afterappend beforecommit. Mechanicalchecks do not infer semantics/acceptance/gates."
+    },
+    {
+      "check": "BasicBowner118/escape andexplicitbidirectionalpeerwindows",
+      "result": "pending",
+      "evidence": [
+        "RUN-00014"
+      ],
+      "limits": "Current4bombs allA; oldfloorwindows/Bbomb proof notsame-runbasic. Nextsource-firstreuse onlymissingdelta."
+    },
+    {
+      "check": "34checkpoint schema/history tests including6publication-boundsource negative/positive cases",
+      "result": "pass",
+      "evidence": [
+        "RUN-01604"
+      ],
+      "limits": "Synthetic consistency tests, not RE/native/gate acceptance; fullhistory rerun after unpublisheddraft update."
+    }
+  ],
+  "evidence": [],
+  "evidence_manifests": [
+    {
+      "path": "docs/evidence/checkpoints/evidence/CP172-hidden-cell-admission.json",
+      "bytes": 405046,
+      "sha256": "beec9e3b2506fc2a2ad691571d18c79e306e08b2555d2ccf1f40710158122635",
+      "count": 1608
+    }
+  ],
+  "delta": {
+    "added": [
+      "Bounded terrain-specific142cell/generation/commit/fullroster policy with5newnegative/positive tests and native basic2cycle/Start3 compatibility.",
+      "PeriodicAUD051/currentbasicacceptancemapping; explicit8accepted+8outsidecatalog/4duplicates actual142."
+    ],
+    "corrected": [
+      "CP171PR243merged; oldbasicintegration/export/Start3 nextstep stale entries synced.",
+      "Initial16accepted assumption corrected to8+8; raw/native/guard unchanged. Historicalcomplete records unchanged."
+    ],
+    "superseded": [
+      "NEXT-HIDDEN-CELL-ADMISSION closed scopedpolicy/nativepositive; NEXT-BASIC-BIDIRECTIONAL active."
+    ]
+  },
+  "blockers": [
+    "Exactbasicprofile stilllacks B118/escape andnativepeerwindows bothdirections in same2cycles; oldfloorproof separate.",
+    "Sameold142afterlegitclear/no-terrainweakpolicy/fullauth/distance/freshness/generalreset anddependencies/K5K6a/fullmatch/Windows/LANInternet/8client remainopen."
+  ],
+  "next_steps": [
+    {
+      "id": "NEXT-HIDDEN-CELL-ADMISSION",
+      "task": "KRE-005b",
+      "state": "closed",
+      "action": "CP172 currentterrain-cleared-cell/generation/commit/fullroster guard/5newtests/270suite/8nativeaccepted/2basiccycles/reset/Start3; no-terrain/fullfreshness limits explicit.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-BASIC-BIDIRECTIONAL",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "PLANreuseCP155160168B118/peerwindows andCP170172exactbasic route/probes/3effects/normaloutcomes: addnormalB118/escape andA↔Bnativewindows outsideobserverdisable into2basiccycles/reset/Ready/BStart3; keepcurrentbounds/terrain/guard; preservepartialandtraceactualblocker, nofake/statewrite.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    }
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-11-06T14:41:07.369346+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "Codex solo code/RE/runtime/self-check; independent review owner-waived. No approval/gate inferred; exacthead checks beforemerge.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Owner explicitly requested solo without workers/review."
+    }
+  },
+  "docs_sync": [
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "CP172 bounded142policy/nativepositive,8accepted+8outsidecatalog,CP171merge,AUD051/next176 and nextbasicbidirectional gap synced beforecomplete."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "CP172 bounded142policy/nativepositive,8accepted+8outsidecatalog,CP171merge,AUD051/next176 and nextbasicbidirectional gap synced beforecomplete."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "updated",
+      "reason": "CP172 bounded142policy/nativepositive,8accepted+8outsidecatalog,CP171merge,AUD051/next176 and nextbasicbidirectional gap synced beforecomplete."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "updated",
+      "reason": "CP172 bounded142policy/nativepositive,8accepted+8outsidecatalog,CP171merge,AUD051/next176 and nextbasicbidirectional gap synced beforecomplete."
+    },
+    {
+      "path": "docs/features.json",
+      "state": "updated",
+      "reason": "CP172 bounded142policy/nativepositive,8accepted+8outsidecatalog,CP171merge,AUD051/next176 and nextbasicbidirectional gap synced beforecomplete."
+    },
+    {
+      "path": "docs/COVERAGE.md",
+      "state": "updated",
+      "reason": "CP172 bounded142policy/nativepositive,8accepted+8outsidecatalog,CP171merge,AUD051/next176 and nextbasicbidirectional gap synced beforecomplete."
+    },
+    {
+      "path": "docs/evidence/peer-endpoints/README.md",
+      "state": "updated",
+      "reason": "CP172 bounded142policy/nativepositive,8accepted+8outsidecatalog,CP171merge,AUD051/next176 and nextbasicbidirectional gap synced beforecomplete."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/review.json",
+      "state": "updated",
+      "reason": "CP172 bounded142policy/nativepositive,8accepted+8outsidecatalog,CP171merge,AUD051/next176 and nextbasicbidirectional gap synced beforecomplete."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
+      "state": "updated",
+      "reason": "CP172 bounded142policy/nativepositive,8accepted+8outsidecatalog,CP171merge,AUD051/next176 and nextbasicbidirectional gap synced beforecomplete."
+    },
+    {
+      "path": "server/README.md",
+      "state": "updated",
+      "reason": "CP172 bounded142policy/nativepositive,8accepted+8outsidecatalog,CP171merge,AUD051/next176 and nextbasicbidirectional gap synced beforecomplete."
+    },
+    {
+      "path": "docs/evidence/checkpoints/README.md",
+      "state": "updated",
+      "reason": "Publication-bound exact historical project source pin verification;raw/binary/local/v1-only strict."
+    }
+  ]
+}

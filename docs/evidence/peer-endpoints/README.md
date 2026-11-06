@@ -1,3 +1,7 @@
+Các mục CP dưới đây là snapshot theo run/checkpoint lúc ghi, gồm trạng thái PR/review và bước tiếp
+lịch sử. Trạng thái hiện tại đọc ở [README](../../../README.md), thứ tự ở [PLAN](../../PLAN.md#current-order);
+PR là nguồn trạng thái merge. Không dùng một dòng “chờ PR” hoặc next-step cũ làm trạng thái hiện hành.
+
 # CP138 — IP quảng bá153, UDPsource và peer lookup trên loopbackalias
 
 [Contract/giới hạn](../../PROTOCOL.md#peer-endpoint-ip), [câu hỏi](../../RESEARCH.md#gap-peer-relay),
@@ -1211,3 +1215,42 @@ driver errors trong phân tích, không lỗi native runtime; final reports là 
 cũ làm validation cho exporter mới. `hidden-cell-admission-reuse.json` đối chiếu8actual142 với current
 clearedcell/commit, nguồn CP068 policy/test/terrain; guard chưa triển khai, không originalauthority.
 CP171 tự kiểm/chờ PR, review waived. AUD050 qua168, audit kếCP172; gate/fullmatch/LAN/Internet/8clients mở.
+
+
+<a id="cp172"></a>
+## CP172 — current terrain-cell142 guard và native basic positive
+
+Baseline [CP171 PR243](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/243), head
+`defd8a1a123db0e9db091272e7c7af3d18f4fcbe`, merge `89f228b2af177e9008ea99df35e6caf28737f577`.
+Service guard/test là working-tree delta được snapshot/pin trước run; source/config giữ nguyên đến seal.
+[Contract/giới hạn](../../PROTOCOL.md#hidden-cell-admission-current), [PLAN](../../PLAN.md#current-order).
+
+| Run local/research/codex | Giây/exit/raw/frozen | SHA256 run.json |
+|---|---|---|
+|hidden-cell-native-r1|406,400966485/0/1438/158|`419b67bf0a643fbaf7ffa33a320ed53b2217d4168f8268441f41c417667302cb`|
+
+`prepare_hidden_cell_native.py`, `wine_probe_hidden_cell_native.py`, `run_hidden_cell_native.py`, root
+profile/reuse-question/recipe/preflight/runtime-source/launch-exit/raw-seal giữ delta và cleanup.
+Profile SHA `bf1f99989e45a4b5e47e831165ad1f43f296418253388d8ba8338532d665afee` như CP171, helpers/
+controller chỉ rebase outputpaths; không sourcebinary/DB/pack/gamecall/actorwrite/fake142/104/boundschange.
+
+`basic-cycle-verification.json`1736checks/180nativepacket/552fieldcases, life23/16 riêng;
+`exported-start3-verification.json`419checks/barrier3/clock9,229s/4alignmentgroups/8viewACK/rare165+lookup
+enabled/exactrestore; hai final Battle images đã xem trong visual-review. CleanupEOF sau completion,
+không intentionaldisconnect. `terrain-admission-verification.json`/`verify_admission.py`:52joins,
+8accepted/8outsidecatalog/4duplicate actual142; knowncells root1/3/currentclearedcell/commit/fullroster.
+`admission-analysis-correction.json` giữ initial all16accepted assumption bị bác bỏ; guard/raw không đổi.
+
+`hidden-cell-admission/server-tests.txt`270suite và targeted-tests-final5tests; discovery-error và initial
+test helper-import duplicate count giữ lịch sử, không gọi28importedtests là5newtests. Native run không
+inject negative reports/oldUDP; unit policy controls tách khỏi native compatibility. Fullfreshness/auth/
+distance/old142saulegitclear/no-terrain weakscope được giữ rõ. CP172 tự kiểm/chờ PR; review waived.
+Audit AUD051 qua172, kế176; K5/K6a/fullmatch/dependencies/LAN/Internet/8clients không đóng.
+
+
+CP172 checker gặp pin repository source CP166 khác working source sau guard mới. Metadata/report
+`local/research/codex/source-pin-publication/` chứng minh CP166 record bất biến và99.707bytes/SHA
+`81b0c8d38cfd79cdcce163adf91c764f1343827b54c7b9b16b318bca5d8149a6` khớp original publication
+`09759d0bed6545de322c3f3d1f545b52a729aa2c`. Checker source fallback hẹp đòi đúng declaration/blob lúc
+công bố record v2;34schema/history tests (gồm6newcases) đạt. Không sửa record complete/raw/hash/gate;
+v1-only hoặc blob chỉ xuất hiện về sau không được dùng để pass. Quy tắc ở [checkpoint docs](../checkpoints/README.md).

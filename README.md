@@ -41,18 +41,19 @@ Hai copy KR Wine đã chạy login/sảnh/phòng/Battle và các chu kỳ kết 
 [kim/reset](docs/PROTOCOL.md#needle-round-reset), [cứu hai chiều và hai kết quả](docs/PROTOCOL.md#rescue-two-results),
 [deep chain/reset](docs/PROTOCOL.md#recursive-chain-cycles) giữ phạm vi và giới hạn tại nguồn chuẩn.
 
-**Mốc mới CP171:** chính file export của preset tùy chọn `two-client-basic` đã chạy hai vòng
-kết quả → về phòng → Ready, rồi B bấm Start vào trận thứ ba. Mỗi vòng đầu có phá hộp, nhặt
-Roller/Bomb/Fire và kiểm hiệu ứng/reset ở hai view; trận ba qua barrier và hai native clock được
-quan sát thêm 9,15 giây, có ảnh Battle hai phía.
-[Contract/giới hạn](docs/PROTOCOL.md#basic-preset-start3), [raw/hash](docs/evidence/peer-endpoints/README.md#cp171).
+**Mốc mới CP172:** service có terrain chỉ mở item ẩn khi report142 khớp ô đã bị phá bởi
+blast đã commit, gửi đủ roster và thuộc vòng hiện tại. Năm test mới/toàn bộ270 test server đạt;
+run native mới giữ hai vòng basic/reset/Ready rồi BStart3, hai clock chạy thêm9,23 giây.
+Trong16report142:8ô item ẩn được nhận (4report lặp),8ô ngoài catalog bị bỏ qua; mỗi vòng vẫn đúng
+ba pickup/effect trên mỗi view. [Contract/giới hạn](docs/PROTOCOL.md#hidden-cell-admission-current),
+[raw/hash](docs/evidence/peer-endpoints/README.md#cp172).
 
-CP170 đã merge [PR241](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/241); preset tùy chọn
-đã merge [PR242](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/242) tại `87e7175`.
-CP171 đã tự kiểm, đang chờ PR. Preset mặc định giữ nguyên; chưa nghiệm thu K5/K6a/fullmatch,
-LAN/Internet/tám client hoặc các dependency gate. [PLAN](docs/PLAN.md#current-order) tiếp kiểm policy
-142 theo đúng ô đã bị phá trong vòng hiện tại; full auth/distance/freshness vẫn là khoảng trống riêng.
-AUD050 qua CP168; audit kế **CP172**. [Review waived](docs/evidence/checkpoints/review-waiver.json).
+CP171 đã merge [PR243](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/243) tại `89f228b`;
+CP172 đã tự kiểm, đang chờ PR. Hai native cycles và Start3 đã có, **K5/K6a/fullmatch vẫn chưa nghiệm thu**;
+full auth/142freshness và các dependency gate còn thiếu. LAN/Internet/tám client chưa kiểm thực tế.
+[PLAN](docs/PLAN.md#current-order) tiếp ghép B đặt bom và movement hai chiều vào đúng basic profile;
+không mở lại consumer hoặc lặp toàn bộ UDP cũ. Default preset giữ nguyên.
+Audit **AUD051 qua CP172**; audit định kỳ kế **CP176**. [Review waived](docs/evidence/checkpoints/review-waiver.json).
 
 Đích đầu: hai client thật chơi hai trận liên tiếp; mở bốn client và hardening sau đó.
 

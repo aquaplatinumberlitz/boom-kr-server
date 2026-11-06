@@ -2024,7 +2024,7 @@ locator/trace và trạng thái từng ô; những vai trò không nêu dưới 
 | Movement | [CP159/160 production](#exported-preset-runtime):4nativepeerwindows/actualapply/target/currentprogress, nohold165/activeUDPprobe; [CP070](#current-udp-causality) giữcontrol riêng | Fullschema/auth/reliability/NAT unknown; currentprofile hai chiều có nguồn, không fullgrammar trước mọi demo hẹp |
 | Bomb place/ID | [CP160](#exported-preset-runtime) actual118/nativeID1/A/power2,ID2/B/power1/full159158/195flagreset; [CP156](#direct-host-eof-acceptance) pendinghostEOF/fence scope riêng | Boundedrole/key/serial/quota/geometry làpolicy; actorlocation/fullauth/allpool/races unknown |
 | Explode/chain | CP033 một owner; CP064 [power1/cách hai ô](#mixed-owner-chain), CP071 [power2 ngoài tầm/feedback chưa118](#mixed-owner-power) giữ partial lịch sử; CP081 [power2/distance2 mixed-owner](#mixed-input), CP084 [ba bom fork hai vòng](#three-bomb-chain); CP094 [optional pinned terrain](#terrain-policy), CP095 [actualbox/laterfreshpair](#opposite-box-control) có native callback/195flag proof | [CP096adjacent1cell](#adjacent-owner-control) và [CP122 chain sâu](#recursive-chain) đã đo trong ca hẹp; [CP133 shared cellstate/query](#shared-cell-state) và [CP134 hai shared cycles](#shared-cascade-cycles) đã giải ca cố định; FIFO/firstbombstop/immutable tổng quát/race và authority server gốc chưa đủ |
-| Block destroy/item reveal | [CP171](#basic-preset-start3) actual optional basic export: hai native cycles/FixedBox→reveal27/28/142/124165/3effects/reset; CP170 local profile là nguồn trước | Default floor preset giữ nguyên. Hidden142 chỉ kiểm anycurrent158, chưa đúng clearedcell; fullvalidator/drop/auth/freshness/generalmap unknown |
+| Block destroy/item reveal | [CP172](#hidden-cell-admission-current) optional basic export/terrain-cell142 guard; hai native cycles/reveal27/28/3effects/reset/Start3 | Chỉ bounded terrain policy; không recovered142key/auth/distance/originaldrop/generalmap. Không terrain giữ weak anycurrent158 scope cũ |
 | Item placement/pickup | [CP159/160](#production-baseline) productionimmediate165/1or2actualclaims/oneeffect/nativewinnerpower/reset; [CP155](#direct-oldudp-contest-eof) hold2sactualcontenders là control riêng | Full124distance/auth/generation/inventory/max/speedTTL/activevariants chưa đủ; delay2s không còn trongproductionbaseline |
 | Trap/death | [CP159/160](#exported-preset-runtime) strict56→1/other0beforerank2views/2epochs; [CP157natural](#current-host-ui-exit)/[CP158controlledoverwrite](#current-trap-udp-counter) giữ causal limits | Snapshot khôngglobalsametick; samekeycounterheuristic cho controlledremoteoverwrite; naturalCP157cause unknown, nofullvalidator |
 | Result/reset | [CP171](#basic-preset-start3) optional basic export hai outcomes/reset/Ready rồi normal BStart3/native12199/clock/render; CP168 floor riêng | Không trận ba outcome; allinventory/timer/seq/peer/resetvariants/originalarbitration và gate còn mở |
@@ -2036,7 +2036,7 @@ Giới hạn và phép đo nằm ở link contract; không dùng mỗi vai trò 
 
 | Cơ chế/profile | Creator | Simulator | Validator của service | Broadcaster | Peer-editable state / giới hạn |
 |---|---|---|---|---|---|
-| [Hidden basic582/142/124165](#current-basic-cycles) | Fixturecatalog/list2 do emulator chọn, gắnexistingFixedBox; native158 pháBox/revealCGOItem rồi actual142/124 | NativeBox/item165/effect/stat bênhai view; serviceboundedterrain/claimcatalog/reportgate | Current124key/serial/consumed và142selectedslot/knowncell/auxFFFFFFFF/afteranycurrent158; không chứng minh authenticcell phá/distance/auth/full142freshness | Service165 tới2channel theoactualreport/policy | Clientreports có thể giả/old142 saucurrentblast tronggiớihạnCP068; reset hiddeneligibility/item/stat/195 cónguồn2epochsCP170, khôngservergốcauthority |
+| [Hidden basic582/142/124165](#hidden-cell-admission-current) | Emulator catalog/list2 gắn existingFixedBox; native158/reveal rồi142/124 | NativeBox/item165/effect và bounded terrain model | 124key/serial/consumed;142slot/cell/aux và với terrain: currentgeneration/clearedcell/committedblast/fullroster before report; no-terrain giữ anycurrent158 | Service165 tới channel của roster theo claim | Identical old142 sau legitimate currentclear vẫn có thể nhận; fullauth/distance/freshness/originalserverauthority unknown. Reset và duplicate idempotence có scope CP172 |
 | [Place159](#terrain-policy) | Native Space tạo118 | Native159 tạo/bind entity ở cả view | Role/key/serial/quota + knownvariant/power/floor/nonoverlap theo profile | Service cấp ID/phát159 | Client gửi cell/power; chưa xác thực actorlocation/distance/fullauth, không tự coi field là tin cậy |
 | [Explode158/terrain](#terrain-policy) | Timer6s của profile là emu_choice | Native158/process/chain/mapflags; service dùng bounded terrain model | Model/profile pin/kinds/power≤2/currentgeneration; semantic modelchoices có giới hạn | Service phát158 rồi commit world/release | Peer movement có thể ảnh hưởng contact/report; report142 không làm worldoracle. Original server validator/order vẫnunknown |
 | [Trap/death/result](#result-freshness-guard) | Native local simulation tạo127/subtype | Native170/175/180 nhận effect/UI | Guard key/slot/reportstate/selectedsame-oldbody; optional result freshness/drain/21 sau17 và opposite-peer170 theo [CP102](#drained-result-local-clear)/[CP103](#peer21-ending-order); firstseen/forgedforward/location vẫn thiếu | Service170/result/return theo policy | Report/body do client gửi; acceptedreport không là authoritative world proof. [Limits](#tcp-guard-cycles) và RESEARCH giữ mở |
@@ -6060,3 +6060,52 @@ dependencies vẫn mở. Tiếp [PLAN](PLAN.md#current-order): guard142 đúng c
 candidate có thể tận dụng terrain model/native195 đã kiểm;8actual142 đều có currentcellclear trước nó.
 142 không có recovered roundkey; cùng oldbyte sau đúng currentclear vẫn indistinguishable, không
 tự tuyên bố fullfreshness/auth. Gate không tự đóng, audit kế CP172.
+
+
+<a id="hidden-cell-admission-current"></a>
+### Hidden142: ràng buộc ô đã phá trong bounded terrain — CP172
+
+**Guard là `emu_choice/design`, native compatibility là `kr_runtime/confirmed` hẹp.**
+[Recipe/raw/hash](evidence/peer-endpoints/README.md#cp172). Source-first CP068 weak report policy,
+CP069/170/171 basic/native195 và `terrain_blast.cleared`/commit có sẵn; không mới native body/opcode,
+không suy hành vi từ asset/VNlayout. Trước CP172, known142 chỉ cần có anycurrent158, kể cả blast
+không phá ô được báo; test cũ giữ giới hạn này cho profile không có terrain.
+
+Khi profile có pinned terrain, sau slot/aux/knowncell/anycurrentblast guard, service đòi một bomb
+đúng generation có `terrain_blast.generation` hiện tại, `cleared` chứa đúng ô, commit>0 trước report,
+và receipt158 đúng toàn bộ roster. Metadata terrain chỉ được commit sau broadcast thành công;
+pending/partial/oldgeneration/unrelated cell không mở eligibility. Report hợp lệ lưu `terrain_clearance`
+source design/generation/bombid/commit; duplicate vẫn setdefault/idempotent,124/165 không đổi.
+Không terrain giữ lower bound lịch sử, không nâng mọi profile thành validated world.
+
+Năm test mới kiểm unrelated/pending→positive, two-peer duplicate/two cells/onepickup, reset/old
+generation, partialbroadcast và roster/commit order;270server tests đạt. Đây là policy tests, không
+native oracle hoặc runtime negative attack controls. 142 vẫn không có recovered roundkey:
+**cùng old bytes sau legitimate currentcellclear không phân biệt được**; auth/distance/fullfreshness mở.
+
+Fresh modifiedWine/privatehosts/directproduction cùng exact basic export CP171/47pins, chỉ delta
+service guard; source/config frozen→cleanup/seal. Run406,400966485s/exit0/1438raw/158frozen. Hai
+native cycles/keys12345→12346, bốn A bombs IDs1..4/power1,2,1,2, ba pickup/effect mỗi epoch trênhai
+view, native stat/hiddeneligibility/195 reset và56→1/other0 before175 giữ. Ba barriers
+6,459173952/6,455755669/6,374629005s trước30s; normalBStart3/key12347/native12199/hai clocks thêm
+9,229294342s/render hai view. Không thirdbomb/outcome; cleanupEOF sau completion0,409834981s.
+
+16actual142 gồm **8accepted hidden-cell reports** (4already-revealed other-view duplicates),
+8outsidecatalog reports bị `unknown_hidden_cell`, không phải 16accepted hoặc injected negatives.
+Accepted đều gắn rootbomb1/3 đã clear ô trong currentepoch/fullroster/commitbeforereport; không mở
+eligibility phụ/không thêm165effect.52admissionjoins,1736first-two và419Start3/stream/observerchecks;
+180capturednative packet/552securefields,life23/16getters;4adaptivealignmentgroups/8viewphaseACK/
+rare165lookup enabled/exactrestore. Initial counting assumption16accepted được giữ và sửa về8+8;
+raw/runtime/guard/expectedvalues không đổi để pass. Không causalclaim về số report/input timing.
+
+AUD051 qua172 đối chiếu sources/raw và sửa stale current status/next-step; next auditCP176.
+Không K5/K6a/fullmatch/dependency/Windows/LAN/Internet/8client. [PLAN](PLAN.md#current-order) tiếp
+B118 và peer windows hai chiều trên đúng basic run; oldfloor proof giữ riêng. Generalphysics/drop/
+mode/inventory/auth và old142saulegitclear không được giải bởi guard này.
+
+
+CP172 cũng giữ được pin source lịch sử CP166 khi service thay đổi: checker xác minh đúng source
+Python tại commit lần đầu công bố record v2, gồm exact declaration/path/size/SHA và externalmanifest
+nếu có. CP166/source `81b0c8d3…` khớp commit `09759d0`; không sửa complete record/evidence. Raw/
+binary/local không dùng fallback; source chỉ có v1 hoặc không khớp khi công bố v2 vẫn lỗi.34checker
+schema/history tests đạt; đây là versioned provenance, không native semantics/gate. [Quy tắc](evidence/checkpoints/README.md).

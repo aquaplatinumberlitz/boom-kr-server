@@ -338,3 +338,9 @@ Preset `two-client-battle` và lệnh export không có `--preset` giữ hành v
 normal BStart3, native clock và render thêm hơn8s. Hai vòng CP170 trước đó dùng profile local.
 Default preset không đổi; fullmatch/gate và full142validator vẫn mở. Bước tiếp ở
 [PLAN](../docs/PLAN.md#current-order); export/test/preflight riêng không tự chứng nhận runtime.
+
+
+CP172 thêm [terrain-cleared-cell142 admission](../docs/PROTOCOL.md#hidden-cell-admission-current):
+profile có terrain đòi đúng ô/generation/commit/receipt roster; profile không terrain giữ policy report
+cũ.270server tests và fresh basic runtime2cycles/reset/Ready/Start3 đạt trong scope Wine. Không recovered
+roundkey142/fullauth/distance/freshness; identical old142 sau legitimatecurrentclear vẫn indistinguishable.
