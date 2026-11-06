@@ -1,6 +1,6 @@
 # KR 00967 — contract tương thích client gốc
 
-Revision kr-legacy-contract-r1; cập nhật06/11/2026 JST (CP163; AUD048 quaCP160, kếCP164).
+Revision kr-legacy-contract-r1; cập nhật06/11/2026 JST (CP164; AUD049 quaCP164, kếCP168).
 **Contract có bằng chứng từng phần; chưa nghiệm thu full codec K2**.
 Lộ trình và thứ tự task chỉ giữ ở [REWRITE_PLAN — KRE](PLAN.md).
 Đây là contract của repo server KR. ADR0009 của bản viết lại là nguồn lịch sử để so sánh;
@@ -2020,8 +2020,8 @@ locator/trace và trạng thái từng ô; những vai trò không nêu dưới 
 | Block destroy/item reveal | CP032 nativecontract; CP068 [currentservice/list2/reportgate/effect/reset](#current-hidden-items), CP092 [195flags/seedreset](#map-flags-snapshot), CP094/095 [pinnedpolicy/nativeboxclear](#terrain-policy) cảhai view | Drop algorithm gốc/fullvalidator, genericclass/map và transport khác còn thiếu; không dùng report142 làm worldoracle |
 | Item placement/pickup | [CP159/160](#production-baseline) productionimmediate165/1or2actualclaims/oneeffect/nativewinnerpower/reset; [CP155](#direct-oldudp-contest-eof) hold2sactualcontenders là control riêng | Full124distance/auth/generation/inventory/max/speedTTL/activevariants chưa đủ; delay2s không còn trongproductionbaseline |
 | Trap/death | [CP159/160](#exported-preset-runtime) strict56→1/other0beforerank2views/2epochs; [CP157natural](#current-host-ui-exit)/[CP158controlledoverwrite](#current-trap-udp-counter) giữ causal limits | Snapshot khôngglobalsametick; samekeycounterheuristic cho controlledremoteoverwrite; naturalCP157cause unknown, nofullvalidator |
-| Result/reset | [CP160](#exported-preset-runtime)2normaloutcomes/Ready rồiactualStart3/12199clocks/render8s từpinnedpreset; nativeID/stat/195seedreset | Thirdactive khôngthirdnormalmatch; toànentity/timer/seq/peer/pool/resetvariants/originalarbitration chưa đủ |
-| Room lifecycle | [CP155guestEOF](#direct-oldudp-contest-eof)/[CP156hostEOF](#direct-host-eof-acceptance)/[CP157UIexit](#current-host-ui-exit) táchscope; [CP160](#exported-preset-runtime)actualStart3 trênproductionpreset | [CP161](#current-room-title) current A81→guest91/titleUI/Back/rejoin/hai vòng đã đo; full room variants chưa đủ. Accountresume/halfclose/loss/generalreplace chưa đủ |
+| Result/reset | [CP162](#current-team-mode) Manner1 giữ qua2normaloutcomes/reset/Ready; [CP160](#exported-preset-runtime) olderpreset actualStart3; [CP164](#mode-preset-input-blocker) currentpreset chưa kết quả/Start3 | Native/entity/stat/195flags có scope được đo; allinventory/timer/seq/peer/resetvariants/originalarbitration vẫn thiếu, không cộngrun thànhfullmatch |
+| Room lifecycle | [CP161 title](#current-room-title), [CP162 mode/return](#current-team-mode) có2normalcycles/Ready; [CP164 actualpreset](#mode-preset-input-blocker) chỉ firstclock/guestrejoin partial. CP155–157 EOF/UI controls giữ profile riêng | Currentmode hostpromotion/rejoin chưa đo, opt-in policy hiện từ chối join_A. Accountresume/halfclose/loss/generalreplace chưa đủ; không lấy oldprofileexit làm currentmode proof |
 | Peer lifecycle | [CP159/160](#exported-preset-runtime)actual99/153/currentdirectIPs/ports; [CP155oldUDP](#direct-oldudp-contest-eof)/[CP158samekeycounter](#current-trap-udp-counter) controls riêng | Key/counterbytekhôngauth/universalfreshness; low8wrap/reliability/fullgrammar/relay/NAT/LAN/Internet unknown |
 
 Trong **optional profile hiện hành**, bảng dưới ghi vai trò emulator, không gán cho server gốc.
@@ -5752,3 +5752,32 @@ CRCpartial kiểm21 cases và giữ mọi byte khác ngoài selector. 40 mode jo
 chưa runtime chính file preset mới. R4 A Start area trắng một ảnh cuối, B Ready và tên hai view đúng;
 không suy persistent UI lỗi hoặc Start3 thành công. Không third match/8 client/fullmatch/K6a/LAN/Internet/
 Windows/auth/original authority; natural CP157 vẫn unknown. Runtime8 slot selector1 đã được bổ sung ở [CP163](#battle-eight-roster); không lặp capacity8 hoặc gọi hai client1–1 là chứng minh mọi đội cân bằng.
+
+
+<a id="mode-preset-input-blocker"></a>
+### Committed mode-preset: first clock và input blocker — CP164
+
+**`kr_runtime/confirmed` cho phần đã quan sát; planned2cycles/Start3 còn `unknown`/chưa đạt.**
+[Run/hash/audit](evidence/peer-endpoints/README.md#cp164). Tái dùng CP160 normalStart3/export/native,
+CP162 Manner81/86/87/180 và CP163 balanced8; không body RE/productioncode/preset/47pins change.
+Hai freshcopy/privatehosts runs thật dùng exported file đúng committedpreset/exactCP162r4profile,
+module `server.probe_service`, không hold165/activeUDPprobe. Actual Manner81→A86/B87/B Back/rejoin87,
+selector1 và firstnative121129/clocks cảhai đã quan sát; đây là native runtime từ presetfile, **chỉ partial**.
+
+R1 `alignmiss:R1-A-contest-approach`: targetY199±30,20freshneutral samples luân phiên159/234 sau
+OS45ms pulses, không tới Fire. R2 chỉ đổi pulse15ms, cùng tolerance/20attempt/3freshsame/neutral3s:
+6stable samples159/234 rồi `alignnotstable`, không hai normalcycles/Ready2/Start3. Actual input pacing
+không đủ từ thời lượng xdotool; chưa chứng minh nguyên nhân native timing/queue/keyrelease/transport.
+Không gọi service lỗi, không nới vùng đích/thời hạn hoặc phát report/command giả để đạt kế hoạch.
+R1/r2 source frozen/cleanup extinct/rawseal, service errors0; đo lại wrapper getter120/36cases là model
+riêng, không gamefunction call. Actual81/86/87 mỗi run12nativeframer/string/getter/CRCpartial controls;
+18partial joins/run, không ghi completedsmoke hoặc gate từ những kiểm này. Giữ CP162 r4 thành công
+hai vòng là scope riêng, không dùng nó backfill hai partial.
+
+**Audit AUD049:** README→PLAN→PROTOCOL/authority→RESEARCH→evidence và raw CP161–164 đã đối chiếu.
+Sửa stale next-title trong RESEARCH, unknown selector1 input trong PLAN, currentauthority đang gộp
+oldpresetStart3 với mode mới; PR232/233/234 đã merge, CP164 pendingPR. Giữ complete records/runhash và
+failedR3/CP157, auditthrough164/next168; không tự nghiệm thu gate. K4 currentmode chuyển chủ/vào lại
+còn chưa đo: codeoptin chỉ create/join và từ chối promoted aliasjoin_A; prior CP157/129profile không
+chứng minh currentmode. Fullauth/authority/K6a/fullmatch/Windows/LAN/Internet/8realclients còn mở.
+Phép đo tiếp chỉ ở PLAN/RESEARCH: nativeinput/keyup/actorstep trace tối thiểu rồi thử lại khi có giả thuyết.

@@ -916,3 +916,37 @@ r4 CP161export+policy với chính file preset mới; không đổi47fixturepins
 
 CP162 Codex self-check/review waived/chờ PR; AUD048 qua160/kế164. No8actualclients/fullmatch/K6a/
 Windows/LAN/Internet/originalauthority. Next balanced8 Start theo PLAN, không mở lại mapdump/guardRE.
+
+
+<a id="cp164"></a>
+## CP164 — committed mode-preset partial/input blocker và AUD049
+
+Baseline CP163 [PR234](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/234),
+head `260a652b41124f0a1f3b14ef9f613334a9aff9ac`, merge `c5c1bba76965042a1cba4b3f2dc88107045c3742`.
+[Contract/giới hạn](../../PROTOCOL.md#mode-preset-input-blocker), [PLAN](../../PLAN.md#current-order).
+
+| Run dưới `local/research/codex/` | Giây/exit/raw/frozen | SHA256 run.json |
+|---|---|---|
+|mode-preset-smoke-r1|194.085240319/1/674/106|`7d57ad3a48bc882be97054045e7e9e00f9aaddcd4d487ba5bd33647ed1628732`|
+|mode-preset-smoke-r2|183.089188757/1/692/106|`dce2994e5551805f9b62bc6d7f4b71dcafeb7f03e93e4f1b8ebbdeb766a1f1fb`|
+
+Prep/controller `prepare_mode_preset_smoke.py`/`wine_probe_mode_preset_smoke.py` và
+`prepare_mode_preset_smoke_retry.py`/`wine_probe_mode_preset_smoke_retry.py`. Recipe/preflight pin
+source/copiedexe/profile47fixtures/controller; source/config không đổi giữa run. Private namespace,
+actual serviceargv/exportedfile, copy/prefix/display/host riêng, no Nexon/default route, owned cleanup
+và namespace extinct tại raw-seal. Sourcebinary/DB/pack bất biến.
+
+R1 alignmiss20freshneutral samples159↔234 quanh199±30/pulse45ms. R2 chỉ pulse15ms vẫn159↔234
+6samples rồineutral3s deadline; không tăng tolerance/timeout, không phát fakeinput/report/nativegamewrite.
+Hai run actualManner81/86/B87/Back/rejoin/firstnative121129/clocks/selector1, **chưaFire/bom/outcome/
+Ready2/Start3**. `partial-observation.json`, `partial-verification.json`18joins/run và12native81/86/87cases/run
+chỉ xác nhận phần này; getter-model120/36cases từ snapshotread-only riêng. Verifier full-room setup cũ
+đúng là failed predicate noerror0 của partial; không nới hoặc gọi fullpass, partialverifier riêng khai scope.
+`analysis-corrections.json` giữ giới hạn/control. `server-source-reuse.json` xác nhận production/preset
+không đổi từCP162/257server/4exporttests, không rerun vôcớ. R1unused analysisproducer giữ như recipe,
+không báo có báo cáo smoke đầy đủ. Source-first CP082/094/123/150/156 cho phép đo input tiếp, không codecscan.
+
+AUD049 periodic đọc core→authority→research→evidence/rawCP161–164, sửa stale title/input/PR/currentgate
+navigation; K4currentmodepromotion aliasjoin_A chưa hỗ trợ/đo, K6a/fullmatch/Windows/LAN/8actualclients
+chưa đóng. Record/audit/evidence cũ giữ nguyên. CP164 checkpoint blocker+audit/tựkiểm/reviewwaived/chờPR,
+không plannedsmoke đạt. Auditqua164/kế168; source tiếp việc duy nhất ởPLAN.

@@ -290,3 +290,9 @@ alias ngoài current create/join bị từ chối, không tự suy Random/C/prom
 [Contract/giới hạn và đối chứng reset lỗi](../docs/PROTOCOL.md#current-team-mode),
 [recipe/hash](../docs/evidence/peer-endpoints/README.md#cp162). Operational profile đã đo hai vòng/Ready;
 chính file preset cập nhật còn chờ native smoke, không đồng nhất export/unit tests với runtime.
+
+
+CP164 đã chạy actual exported committed preset tới firstclock/guest Back/rejoin/Manner1;
+controller alignment dừng hai run trước Fire/bom/outcome, **chưa preset2cycles/Start3**.
+[Blocker/audit/giới hạn](../docs/PROTOCOL.md#mode-preset-input-blocker). CP162r4 hai vòng là nguồn riêng;
+không suy mode-aware promoted aliasjoin_A đã hỗ trợ từ host_back_rejoin flag: policy hiện từchối alias này.

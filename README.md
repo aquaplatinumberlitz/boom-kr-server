@@ -41,16 +41,17 @@ Hai copy KR Wine đã chạy login/sảnh/phòng/Battle và các chu kỳ kết 
 [kim/reset](docs/PROTOCOL.md#needle-round-reset), [cứu hai chiều và hai kết quả](docs/PROTOCOL.md#rescue-two-results),
 [deep chain/reset](docs/PROTOCOL.md#recursive-chain-cycles) giữ phạm vi và giới hạn tại nguồn chuẩn.
 
-**Mốc mới CP163:** trên roster8 slot, Manner cho Start4–4 (check0/request104 thật), chặn1–7
-(check7/không104 và notice yêu cầu số người các đội bằng nhau).
-[Contract/giới hạn](docs/PROTOCOL.md#battle-eight-roster), [run/hash](docs/evidence/eight-player/README.md#cp163).
-Mỗi run vẫn chỉ **một client thật, bảy profile tổng hợp**; chưa8 client/Battle8/service admission.
+**CP164 là checkpoint blocker và audit, chưa phải preset smoke thành công.** Hai run thực sự dùng
+preset Manner đã commit, qua guest Back/vào lại và native clock vòng1, nhưng dừng ở controller căn vị trí
+trước Fire/bom/kết quả/Start3. [Contract/giới hạn](docs/PROTOCOL.md#mode-preset-input-blocker),
+[raw/hash](docs/evidence/peer-endpoints/README.md#cp164). Source/config giữ nguyên khi chạy; raw/cleanup đã seal.
 
-[CP162](docs/PROTOCOL.md#current-team-mode) đã sửa giữ Free/Manner qua create/join/return và hai vòng;
-đã merge [PR233](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/233) tại `a92178f`.
-CP163 tự kiểm/chờ PR. [PLAN](docs/PLAN.md#current-order) tiếp native smoke chính preset Manner đã commit,
-Start3 và audit CP164. K6a/fullmatch/LAN/Internet/8 client thật/naturalCP157 vẫn mở;
-[review waived](docs/evidence/checkpoints/review-waiver.json).
+[CP163](docs/PROTOCOL.md#battle-eight-roster) đã kiểm Manner8 slot tổng hợp:4–4 Start0/104,
+1–7 Start7/no104; đã merge [PR234](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/234) tại `c5c1bba`.
+CP164 tự kiểm/chờ PR. AUD049 qua164, kỳ tiếp CP168. [PLAN](docs/PLAN.md#current-order) tiếp đo native
+input/nhả phím có mục tiêu, giữ tiêu chí preset2cycles/Start3 mở. K4 currentmode chuyển chủ/vào lại,
+K6a/fullmatch/LAN/Internet/8 client thật chưa nghiệm thu; không đóng gate theo số checkpoint.
+[Review waived](docs/evidence/checkpoints/review-waiver.json).
 
 Đích đầu: hai client thật chơi hai trận liên tiếp; mở bốn client và hardening sau đó.
 

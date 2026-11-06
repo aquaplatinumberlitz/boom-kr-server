@@ -135,11 +135,11 @@
         "KR-F001",
         "KR-F015"
       ],
-      "known": "CP162/PR233mergeda92178f. CP163actualMannerselector1/8syntheticroster4to4Start0/104 vs1to7Start7/no104; actual81→86/nativegetter/capacity8/44joins/12nativecases. Code/preset unchanged/reuse257server+4export byexacthash.",
-      "remaining": "OneCAplus7syntheticprofiles not8clients/121load/Battle8/serviceadmission. Committedmodepresetnativefile/Start3pending; broaderauth/authority/Windows/LAN/Internet/Random/C/promotion/recreate/K6a/naturalCP157open.",
-      "next_test": "PLAN reuseCP160committedpreset/nativeStart3 andCP162 modeUI/86/87/180; newfrozenexport/copies/privatehosts,2normaloutcomes/reset/Ready→actualStart3/12199/clocks/render8s/mode1. PeriodicmanualAUD049atCP164; no bomb/thirdoutcome/gateclaim.",
+      "known": "CP163/PR234mergedc5c1bba. CP164actualcommittedmodepreset/Manner1/81→ACK/BBackrejoin/firstnativeclock observed in2partialruns;noFire/bomb/outcome/Start3. Source/preset unchanged/reuse257server4export byhash;AUD049through164/next168.",
+      "remaining": "R145mspulse20stable159↔234alignmiss199±30;R215ms6stablesamepositionsalignnotstable3s. Nativekeydwell/queue/stepcauseunknown. Plannedpreset2cycles/Start3notmet. Currentmodepromotion/rejoin aliasjoin_A rejected; broaderK4/K6a/auth/authority/Windows/LAN/Internet/8realclients open.",
+      "next_test": "PLAN sourcefirstCP082/094/123/150/156/capturedpartials; boundedactualkeydown/up→nativekeypoll/direction/actorstep/peerapply usingknownhooks/cache. No tolerance/timeoutrelaxation/gamefunction/actorwrite/fake124104; retryplannedpreset2cycles/Start3whenconcretepacinghypothesis. Afterthiscurrentmodehostpromotiongap.",
       "acceptance": "Epic checklist: linkedscopedtask/evidence+authoritymatrix vàacceptancegate ởPLAN; từngtaskđóng khôngđóngepic/K5/K6a.",
-      "reason": "Missingbalanced8actualStart proofresolvedwithpositiveandnegative; no8peer integrationclaim. Continuecommittedmodepreset/Start3/audit.",
+      "reason": "CP164isgroupedblocker+periodicaudit, notcompletedpreset2cycles/Start3/gate. Preservefailedruns/completehistory;targetactualinputblocker.",
       "sources": [
         "docs/PROTOCOL.md#authority",
         "docs/RESEARCH.md#feature-gaps",
@@ -184,7 +184,8 @@
         "docs/PROTOCOL.md#production-baseline",
         "docs/PROTOCOL.md#exported-preset-runtime",
         "docs/PROTOCOL.md#current-room-title",
-        "docs/PROTOCOL.md#current-team-mode"
+        "docs/PROTOCOL.md#current-team-mode",
+        "docs/PROTOCOL.md#mode-preset-input-blocker"
       ],
       "evidence": [
         "docs/evidence/current-movement-cycles/README.md",
@@ -226,7 +227,8 @@
         "docs/evidence/peer-endpoints/README.md#cp160",
         "docs/evidence/peer-endpoints/README.md#cp161",
         "docs/evidence/peer-endpoints/README.md#cp162",
-        "docs/evidence/eight-player/README.md#cp163"
+        "docs/evidence/eight-player/README.md#cp163",
+        "docs/evidence/peer-endpoints/README.md#cp164"
       ],
       "prs": [
         173,
@@ -283,7 +285,8 @@
         230,
         231,
         232,
-        233
+        233,
+        234
       ],
       "successors": []
     },

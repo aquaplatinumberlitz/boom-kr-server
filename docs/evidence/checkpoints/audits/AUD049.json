@@ -1,0 +1,113 @@
+{
+  "id": "AUD049",
+  "trigger": "periodic",
+  "completed_through": "CP164",
+  "recorded_utc": "2026-11-06T10:22:24.353766+00:00",
+  "auditor": "Codex manual self-audit; independent review waived",
+  "read_files": [
+    "README.md",
+    "docs/PLAN.md",
+    "docs/PROTOCOL.md",
+    "docs/RESEARCH.md",
+    "docs/evidence/peer-endpoints/README.md",
+    "docs/evidence/eight-player/README.md",
+    "docs/features.json",
+    "docs/COVERAGE.md",
+    "server/README.md",
+    "server/probe_service.py",
+    "server/room_team_mode.py",
+    "server/profiles/two-client-battle.json",
+    "docs/evidence/checkpoints/audits/AUD048.json",
+    "local/research/codex/room-title-integrated-r2/title-runtime-verification.json",
+    "local/research/codex/team-mode-integrated-r3/team-mode-verification.json",
+    "local/research/codex/team-mode-reset-r4/team-mode-verification.json",
+    "local/research/codex/team-mode-reset-r4/production-pickup-verification.json",
+    "local/research/codex/team-mode-reset-r4/visual-review.json",
+    "local/research/codex/balanced-eight-r1/verification.json",
+    "local/research/codex/balanced-eight-r1/visual-review.json",
+    "local/research/codex/balanced-eight-r1/pr-exact-head.json",
+    "local/research/codex/balanced-eight-r1/pr-merged.json",
+    "local/research/codex/mode-preset-smoke-r1/cycles/run.json",
+    "local/research/codex/mode-preset-smoke-r1/cycles/service-state.json",
+    "local/research/codex/mode-preset-smoke-r1/cycles/client.log",
+    "local/research/codex/mode-preset-smoke-r1/cycles/client-B.log",
+    "local/research/codex/mode-preset-smoke-r1/raw-seal.json",
+    "local/research/codex/mode-preset-smoke-r1/runtime-preflight.json",
+    "local/research/codex/mode-preset-smoke-r1/profile.json",
+    "local/research/codex/mode-preset-smoke-r1/partial-observation.json",
+    "local/research/codex/mode-preset-smoke-r1/partial-verification.json",
+    "local/research/codex/mode-preset-smoke-r1/partial-native-verification.json",
+    "local/research/codex/mode-preset-smoke-r1/alignment-snapshots.json",
+    "local/research/codex/mode-preset-smoke-r1/alignment-getter-verification.json",
+    "local/research/codex/mode-preset-smoke-r2/cycles/run.json",
+    "local/research/codex/mode-preset-smoke-r2/cycles/service-state.json",
+    "local/research/codex/mode-preset-smoke-r2/cycles/client.log",
+    "local/research/codex/mode-preset-smoke-r2/cycles/client-B.log",
+    "local/research/codex/mode-preset-smoke-r2/raw-seal.json",
+    "local/research/codex/mode-preset-smoke-r2/runtime-preflight.json",
+    "local/research/codex/mode-preset-smoke-r2/profile.json",
+    "local/research/codex/mode-preset-smoke-r2/partial-observation.json",
+    "local/research/codex/mode-preset-smoke-r2/partial-verification.json",
+    "local/research/codex/mode-preset-smoke-r2/partial-native-verification.json",
+    "local/research/codex/mode-preset-smoke-r2/alignment-snapshots.json",
+    "local/research/codex/mode-preset-smoke-r2/alignment-getter-verification.json",
+    "local/research/codex/mode-preset-smoke-r2/analysis-corrections.json",
+    "local/research/codex/mode-preset-smoke-r2/server-source-reuse.json",
+    "local/research/codex/wine_probe_mode_preset_smoke.py",
+    "local/research/codex/wine_probe_mode_preset_smoke_retry.py",
+    "local/research/codex/wine_probe_team_mode_reset.py"
+  ],
+  "method": "Đọc currentREADME→PLAN/currentorder/gateacceptance→PROTOCOL/authority/CP161–164/team8/reset/inputcases→RESEARCH→evidence/raw/reports. So actualC2S81/86/87/currentpresetargv/profile/nativeclock/selector watch và alignment20+6freshsamples/OSpulse; raw/log đọc đúng segment, không tuyên bố đọc mọi byte hay toàn PROTOCOL. Đối chiếu failedR3mode180 và CP1642partial với CP162r4positive, PR232/233/234exactheads/merge. Checker chỉ cơ học; audit/acceptance do Codex đối chiếu thủ công.",
+  "findings": [
+    {
+      "id": "F1",
+      "stale": "RESEARCH KR-F002/F015 next vẫn roomtitleconsistency dùCP161đãgiải; PLAN intro8players vẫnselector1wire/UIunknown dùCP162/163đãnối.",
+      "correction": "Chuyển currentnext vềPLAN/inputblocker; intro và catalog dẫn actualFree/Manner/8slotcontrols, giữscopekhông8actualpeers.",
+      "fixed_in": [
+        "docs/RESEARCH.md",
+        "docs/PLAN.md",
+        "docs/features.json",
+        "docs/COVERAGE.md"
+      ]
+    },
+    {
+      "id": "F2",
+      "stale": "Nguy cơ gọi CP164 là completedpreset smoke/Start3 từcounter hoặc gộp CP162r4positive vào2newpartial.",
+      "correction": "Ghi exact2partial/input159↔234/firstclockonly/exit1/noFirebomboutcomeStart3; tasksmoke runtime giữmở, auditcompleted riêng. Giữ raw/control/error, tolerance30/neutral3s unchanged.",
+      "fixed_in": [
+        "README.md",
+        "docs/PLAN.md",
+        "docs/PROTOCOL.md",
+        "docs/RESEARCH.md",
+        "docs/evidence/peer-endpoints/README.md"
+      ]
+    },
+    {
+      "id": "F3",
+      "stale": "Authority currentroom/resultrows vẫn olderpresetStart3/normalhostexit; thêmmodepolicy giới hạncreate/join làm promotedjoin_A bịtừchối.",
+      "correction": "Tách currentmode2cyclesCP162 vàactualpresetfirstclockCP164 khỏiolderCP160Start3/CP157exit; không lấy oldprofile đóngK4currentmode. Ghi promotedaliasunsupported/blocker thực tế đểxửlýsauinput.",
+      "fixed_in": [
+        "docs/PROTOCOL.md",
+        "docs/PLAN.md",
+        "docs/RESEARCH.md",
+        "server/README.md"
+      ]
+    },
+    {
+      "id": "F4",
+      "stale": "PRstatecurrent vàauditcounter cần phản ánhCP161/162/163đãmerge, CP164pending; oldcomplete recordspendingkhôngphảistatecurrent.",
+      "correction": "Navigation ghireviewwaived/selfcheck/PR234mergedc5c1bba/CP164pendingPR. OldrecordsAUD048/CP161–163 giữbấtbiến, auditthrough164/next168.",
+      "fixed_in": [
+        "README.md",
+        "docs/PLAN.md",
+        "docs/PROTOCOL.md",
+        "docs/evidence/issue-reconciliation/review.json"
+      ]
+    }
+  ],
+  "remaining": [
+    "CP164commit/push/PR/exacthead/mergechưalàm; source/auditrecord khônglàmerge/gate.",
+    "Actualcommittedmodepreset2normaloutcomes/reset/Ready/Start3chưađạt; đo nativekeypoll/direction/step/keyup liênhệ OSinput trước retry, khôngnớicriterion.",
+    "Currentmodehostpromotion/rejoin/aliasjoin_A chưa hỗtrợ/đo;K4chưachốt, K6a/fullmatch/8realclients/Windows/LAN/Internet/generalreset/fullauth/originalauthority/naturalCP157 vẫn mở."
+  ]
+}

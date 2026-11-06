@@ -1,0 +1,247 @@
+{
+  "id": "CP164",
+  "previous": "CP163",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-06T10:23:47.925134+00:00",
+  "context_commit": "c5c1bba76965042a1cba4b3f2dc88107045c3742",
+  "owner": "Codex",
+  "reviewer": "Codex",
+  "question": "DoesactualcommittedMannerpresetcomplete2normalcycles/Ready→normalStart3,orwhichrealruntimeblockerpreventsit? PeriodicAUD049mustdistinguishblocker/auditfromruntime/gatecompletion.",
+  "scope": "Twofrozenfreshcopypreset-nativeattemptswithgroupedinputstagingblocker; boundedpartialnative/captureproof andperiodicmanualcore/authority/rawaudit. Productioncode/preset unchanged, no newnativebodyRE. Runtimeobjective remainsopen.",
+  "artifacts": [
+    {
+      "name": "OriginalKR00967unchanged",
+      "sha256": "a52545c14b1fea423de655c3163d6360b628d61c1cd472b46fdbc8a9ffe15f4e"
+    },
+    {
+      "name": "ProductionWinecopyunchanged",
+      "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+    },
+    {
+      "name": "modOmodelreference",
+      "sha256": "a08950c833d3acab8281049def7b3dc96b221f107eeda01da3a548e34b91dce5"
+    }
+  ],
+  "locators": [
+    "BaselineCP163PR234head260a652b41124f0a1f3b14ef9f613334a9aff9ac/mergec5c1bba76965042a1cba4b3f2dc88107045c3742.",
+    "r1run7d57ad3a48bc882be97054045e7e9e00f9aaddcd4d487ba5bd33647ed1628732/194.085240319s/exit1/674raw/106inputs;alignmissR1Aapproach/20freshneutral159↔234/199±30/OS45ms.",
+    "r2rundce2994e5551805f9b62bc6d7f4b71dcafeb7f03e93e4f1b8ebbdeb766a1f1fb/183.089188757s/exit1/692raw/106inputs;alignnotstableR1Aapproach/6stable159↔234/OS15ms/samebounds.",
+    "Base400000/RVA=VA−base. Known123FA10/+9C/123F9C0/DB2A50/8179BA modeproof andactual81/86/87/121129/clocks reused; no newfunctionbody. Snapshot52A350models120/36 separate.",
+    "AUD049manualperiodicthrough164/nextCP168. CP164complete meansrecord/blocker/audit/docscomplete, notplannedruntimeorK4/K6acomplete."
+  ],
+  "findings": [
+    {
+      "summary": "Actualcommittedpresetexport47pins/exactr4profile/directproductionargv/nativeManner81→86/B87/Backrejoin87/selector1/first121129clockboth confirmed aspartial. NoFire/noBomb/nooutcomes/Ready2/Start3; actualprofilepathnativeproofnotcompletepresetcycleproof.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#mode-preset-input-blocker",
+      "evidence": [
+        "RUN-00692",
+        "RUN-01475",
+        "RUN-00690",
+        "RUN-01473"
+      ],
+      "limits": "TwoactualmodifiedWine/privatehosts/samephysicalhost/production/syntheticidentity. Actualcommitted47pinmodepreset/exportedpathfirstnativeclock/Manner1/guestBackrejoin only; bothruns planned2normalcycles/Ready/Start3FAILEDbeforeFire/bomb/outcome. Groupedblocker+periodicmanualaudit checkpoint notsmoke/gatecompletion. No tolerance/timeoutrelaxation/nativegamefunction/actorwrite/fake124104/sourcebinary/DB/packchange. CP162r4positive2cycles separate/notbackfill. K4currentmodepromotionjoin_Aunsupported/unmeasured;K6a/fullmatch/Windows/LAN/Internet/8clients/fullauth/originalauthority/naturalCP157remainopen."
+    },
+    {
+      "summary": "R1OS45msalignment20freshneutralreadsshow159↔234outsidetarget199±30; R2only15mspulsefailsagain6stablesamplesthenalignnotstable3s. Bothrawseals/cleanup/sourcefrozen/error1retained; serviceerrors0. Nativeinputdwell/keyrelease/stepcauseunknown, no attributiontogame/servicebug or pulsefix.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#mode-preset-input-blocker",
+      "evidence": [
+        "RUN-00691",
+        "RUN-01474",
+        "RUN-00003",
+        "RUN-00750",
+        "RUN-00751"
+      ],
+      "limits": "TwoactualmodifiedWine/privatehosts/samephysicalhost/production/syntheticidentity. Actualcommitted47pinmodepreset/exportedpathfirstnativeclock/Manner1/guestBackrejoin only; bothruns planned2normalcycles/Ready/Start3FAILEDbeforeFire/bomb/outcome. Groupedblocker+periodicmanualaudit checkpoint notsmoke/gatecompletion. No tolerance/timeoutrelaxation/nativegamefunction/actorwrite/fake124104/sourcebinary/DB/packchange. CP162r4positive2cycles separate/notbackfill. K4currentmodepromotionjoin_Aunsupported/unmeasured;K6a/fullmatch/Windows/LAN/Internet/8clients/fullauth/originalauthority/naturalCP157remainopen."
+    },
+    {
+      "summary": "AuditAUD049corrects staleRESEARCHnexttitle/PLANselectorunknown/currentauthorityoldpresetStart3vsnewmode; distinguishesCP164blockerfromcounter/gateandCP162positivefromnewpartials. Codeexplicitlyrejectspromotedjoin_Aundernewmode, sounmeasuredcurrentmodepromotion/rejoingapkeptK4open.",
+      "source": "design",
+      "status": "design",
+      "method": "documentation",
+      "canonical": "docs/PROTOCOL.md#mode-preset-input-blocker",
+      "evidence": [
+        "RUN-00759",
+        "RUN-00757",
+        "RUN-00756",
+        "RUN-01484"
+      ],
+      "limits": "TwoactualmodifiedWine/privatehosts/samephysicalhost/production/syntheticidentity. Actualcommitted47pinmodepreset/exportedpathfirstnativeclock/Manner1/guestBackrejoin only; bothruns planned2normalcycles/Ready/Start3FAILEDbeforeFire/bomb/outcome. Groupedblocker+periodicmanualaudit checkpoint notsmoke/gatecompletion. No tolerance/timeoutrelaxation/nativegamefunction/actorwrite/fake124104/sourcebinary/DB/packchange. CP162r4positive2cycles separate/notbackfill. K4currentmodepromotionjoin_Aunsupported/unmeasured;K6a/fullmatch/Windows/LAN/Internet/8clients/fullauth/originalauthority/naturalCP157remainopen."
+    },
+    {
+      "summary": "Productioncode/presetexacthashunchanged/reuse257server4exportchecks; no gameforcing/criterionrelaxation. PlannedruntimeStepnotclosed: auditportioncomplete/runtimeportionstillopen, nexttargetactualinput→nativekeypoll/actorstepbasedonoldCP082/094/123/150/156evidence.",
+      "source": "design",
+      "status": "design",
+      "method": "documentation",
+      "canonical": "docs/PROTOCOL.md#mode-preset-input-blocker",
+      "evidence": [
+        "RUN-01525",
+        "RUN-00758",
+        "RUN-00751"
+      ],
+      "limits": "TwoactualmodifiedWine/privatehosts/samephysicalhost/production/syntheticidentity. Actualcommitted47pinmodepreset/exportedpathfirstnativeclock/Manner1/guestBackrejoin only; bothruns planned2normalcycles/Ready/Start3FAILEDbeforeFire/bomb/outcome. Groupedblocker+periodicmanualaudit checkpoint notsmoke/gatecompletion. No tolerance/timeoutrelaxation/nativegamefunction/actorwrite/fake124104/sourcebinary/DB/packchange. CP162r4positive2cycles separate/notbackfill. K4currentmodepromotionjoin_Aunsupported/unmeasured;K6a/fullmatch/Windows/LAN/Internet/8clients/fullauth/originalauthority/naturalCP157remainopen."
+    }
+  ],
+  "verification": [
+    {
+      "check": "Plannedcommittedmodepreset2normaloutcomes/reset/Ready→normalStart3/clocks/render8s",
+      "result": "fail",
+      "evidence": [
+        "RUN-00691",
+        "RUN-01474",
+        "RUN-00695",
+        "RUN-01477"
+      ],
+      "limits": "BothattemptsduringfirstepochinputstagingbeforeFire/bomb/outcomes; no loweringorretroactivepass. CP162r4positive remainsseparate."
+    },
+    {
+      "check": "18partialjoins/run/12nativeactual81-86-87fullcursorCRCpartialcases/run;120/36snapshotnativegettermodelcases",
+      "result": "pass",
+      "evidence": [
+        "RUN-00692",
+        "RUN-01475",
+        "RUN-00690",
+        "RUN-01473",
+        "RUN-00002",
+        "RUN-00749"
+      ],
+      "limits": "Partialnativeproof/modelcases notplannedruntimecompletionorwholeworld/gate."
+    },
+    {
+      "check": "ManualAUD049core/authority/evidence/raw;1366raw/212frozen/cleanup;source/presetreuse/docs/catalog/issues/artifacts/diff/fullhistorylocalbeforecommit",
+      "result": "pass",
+      "evidence": [
+        "RUN-00759",
+        "RUN-01525",
+        "RUN-00695",
+        "RUN-01477",
+        "RUN-01459",
+        "RUN-01470",
+        "RUN-00752"
+      ],
+      "limits": "Auditnotgate; historymechanicalchecker notsemanticacceptance."
+    }
+  ],
+  "evidence": [],
+  "evidence_manifests": [
+    {
+      "path": "docs/evidence/checkpoints/evidence/CP164-mode-preset-blocker.json",
+      "bytes": 386501,
+      "sha256": "3b3756571bd409246993b7a27b33462c1d96004ad00fa780e8e1565721938636",
+      "count": 1546
+    }
+  ],
+  "delta": {
+    "added": [
+      "Actualcommittedmodepresetfirstclock/guestBackrejoinnativeproof plus2explicitpartialinputblockers.",
+      "AUD049periodicmanualcore/authority/rawauditthrough164/next168."
+    ],
+    "corrected": [
+      "R1/R2inputpulsechangefailed; no nativecausality/finerstep/gamefixclaim.",
+      "Currentmodehostpromotionjoin_Aunsupported/unmeasured notcoveredbyoldCP157/129profile.",
+      "Stalenexttitle/selectorunknown/PR234pendingnavigation correctedwhileoldrecordsretained.",
+      "CP164record/auditcompletionseparatefromplannedpreset2cycles/Start3notmet."
+    ],
+    "superseded": [
+      "NEXT-MODE-PRESET-START3-AUDIT superseded: auditportiondone; runtimecontinuesNEXT-MODE-PRESET-START3 afterNEXT-MODE-PRESET-INPUT-PACING."
+    ]
+  },
+  "blockers": [
+    "InputstagingR1target199±30neutral159↔234 atOS45and15ms; nativekeydwell/keyrelease/step/queuecauseunknown. NoFire/bomb/outcome/Ready2/Start3innewpresetattempts.",
+    "Currentmodepromotion/rejoinjoin_Aexplicitlyrejected; K4acceptancepending. K6a/fullmatch/generalreset/fullauth/originalauthority/Windows/LAN/Internet/8realclients/naturalCP157open."
+  ],
+  "next_steps": [
+    {
+      "id": "NEXT-MODE-PRESET-START3-AUDIT",
+      "task": "KRE-005b",
+      "state": "superseded",
+      "action": "AUD049manualauditcomplete through164/next168; runtimeobjective2cycles/Start3FAILEDandretainedasNEXT-MODE-PRESET-START3. Supersedednotcompletedruntime.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-MODE-PRESET-INPUT-PACING",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "PLAN sourcefirstCP082/094/123/150/156/raw2partials; boundedactualkeydown/up→nativekeypoll/direction/actorstep/peerapply usingknownhooks/cache. No tolerance30/neutral3s/loading30srelaxation/manageroractorwrite/fake124104. Chooseretryonlyfromconcreteinputhypothesis.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-MODE-PRESET-START3",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "Afterinputblocker perPLAN actualcommittedpreset2normaloutcomes/reset/Ready→normalStart3/12199/clocks/render8s/mode1/noBomb. Stillnotmet; noCP162positivebackfill/merge-countergateclaim.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    }
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-11-06T10:23:47.925134+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "Codex solo runtime/self-check/manualAUD049; independentreviewwaived; plannedruntimeFAILdisclosed/noautogate.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Owner explicitly requested solo without workers/review."
+    }
+  },
+  "docs_sync": [
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "CP164twofailedpartialinputruns/nativeboundedproof/AUD049/PR234merge/currentmodepromotiongap/nextinputtrace syncedbeforecomplete."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "CP164twofailedpartialinputruns/nativeboundedproof/AUD049/PR234merge/currentmodepromotiongap/nextinputtrace syncedbeforecomplete."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "updated",
+      "reason": "CP164twofailedpartialinputruns/nativeboundedproof/AUD049/PR234merge/currentmodepromotiongap/nextinputtrace syncedbeforecomplete."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "updated",
+      "reason": "CP164twofailedpartialinputruns/nativeboundedproof/AUD049/PR234merge/currentmodepromotiongap/nextinputtrace syncedbeforecomplete."
+    },
+    {
+      "path": "docs/features.json",
+      "state": "updated",
+      "reason": "CP164twofailedpartialinputruns/nativeboundedproof/AUD049/PR234merge/currentmodepromotiongap/nextinputtrace syncedbeforecomplete."
+    },
+    {
+      "path": "docs/COVERAGE.md",
+      "state": "updated",
+      "reason": "CP164twofailedpartialinputruns/nativeboundedproof/AUD049/PR234merge/currentmodepromotiongap/nextinputtrace syncedbeforecomplete."
+    },
+    {
+      "path": "docs/evidence/peer-endpoints/README.md",
+      "state": "updated",
+      "reason": "CP164twofailedpartialinputruns/nativeboundedproof/AUD049/PR234merge/currentmodepromotiongap/nextinputtrace syncedbeforecomplete."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/review.json",
+      "state": "updated",
+      "reason": "CP164twofailedpartialinputruns/nativeboundedproof/AUD049/PR234merge/currentmodepromotiongap/nextinputtrace syncedbeforecomplete."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
+      "state": "updated",
+      "reason": "CP164twofailedpartialinputruns/nativeboundedproof/AUD049/PR234merge/currentmodepromotiongap/nextinputtrace syncedbeforecomplete."
+    },
+    {
+      "path": "server/README.md",
+      "state": "updated",
+      "reason": "CP164twofailedpartialinputruns/nativeboundedproof/AUD049/PR234merge/currentmodepromotiongap/nextinputtrace syncedbeforecomplete."
+    }
+  ]
+}
