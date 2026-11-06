@@ -333,6 +333,8 @@ python3 tools/export_probe_profile.py --source-root local/research/codex --out l
 [run CP170](../docs/PROTOCOL.md#current-basic-cycles): Roller17 trên sàn, Bomb27 và Fire28 trong
 hai FixedBox đã biết. Export giữ size/hash/sequence và policy, chỉ đổi đường dẫn theo source-root.
 Preset `two-client-battle` và lệnh export không có `--preset` giữ hành vi cũ.
-Đây là lựa chọn emulator trên bản copy Wine, chưa phải luật server gốc. Hai vòng CP170 dùng profile
-local; runtime bằng chính file export của preset mới và Start3 còn chờ phép kiểm trong
-[PLAN](../docs/PLAN.md#current-order). Export/test/preflight không tự chứng nhận runtime hoặc gate.
+Đây là lựa chọn emulator trên bản copy Wine, chưa phải luật server gốc.
+[CP171](../docs/PROTOCOL.md#basic-preset-start3) đã kiểm chính file export qua hai vòng/reset/Ready rồi
+normal BStart3, native clock và render thêm hơn8s. Hai vòng CP170 trước đó dùng profile local.
+Default preset không đổi; fullmatch/gate và full142validator vẫn mở. Bước tiếp ở
+[PLAN](../docs/PLAN.md#current-order); export/test/preflight riêng không tự chứng nhận runtime.

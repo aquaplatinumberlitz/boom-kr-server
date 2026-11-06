@@ -135,11 +135,11 @@
         "KR-F001",
         "KR-F015"
       ],
-      "known": "CP169PR240merged387f936;CP170exactcopybasicprofile/currentMannerBhost2nativeoutcomes/reset/Ready with3effects/Box/142/pointer/statbaseline/195/currentkeys;life56→1bothviews;productiondefaultunchanged.",
-      "remaining": "Optionalpinnedbasicpreset/exportedruntime/BStart3afterReady2unmeasured;Bwhiteframe nothangproof. K4dependencies/K5K6a/fullmatch/auth/Windows/LANInternet/8clients/generalreset/originalauthority open.",
-      "next_test": "PLANpinexactCP170optional two-client-basic/profileprovenance andCLIselection/preflightfailures; freshactualexportedfile/directmodule2cycles/ReadyA/BStart3/native12199/clockrender8/mode1/noBomb3. No duplicateconsumer/opcodeRE/defaultmigration.",
+      "known": "CP170 PR241 và optional basic preset PR242 merged; CP171 actual export/directmodule2cycles/3itemeffects/reset/Ready/normalBStart3/native clocks/render đã kiểm; default floor preset giữ.",
+      "remaining": "Hidden142 gate vẫn anycurrent158 thay vì đúng currentclearedcell. Full142auth/distance/freshness/generalreset, currentbasic intentional disconnect/twonativecontenders, K0–K7/fullmatch/Windows/LAN/Internet/8clients mở.",
+      "next_test": "PLAN tái dùng CP068/069/170/171/native195/terrain_blast.cleared: kiểm policy142 đúng currentgeneration/committed clearedcell/broadcast với negatives và freshnativebasic positive2cycles/Start3. Không RE lại consumers/CP155oldUDP.",
       "acceptance": "Epic checklist: linkedscopedtask/evidence+authoritymatrix vàacceptancegate ởPLAN; từngtaskđóng khôngđóngepic/K5/K6a.",
-      "reason": "CP164runtimeinputblocker solvedinnewrecipeswithoutprofile/game/guard/tolerancechange; currentpresetStart3objective closedscope. Continueconcretecurrentmodehostpromotiongap; noautogate.",
+      "reason": "Optional preset/exported-runtime/Start3 đã giải trong scope CP171; giữ epic mở vì acceptance/gate còn thiếu. Next gap là policy142 có bằng chứng code/test cho knowncell sau unrelatedblast.",
       "sources": [
         "docs/PROTOCOL.md#authority",
         "docs/RESEARCH.md#feature-gaps",
@@ -235,7 +235,8 @@
         "docs/evidence/peer-endpoints/README.md#cp167",
         "docs/evidence/peer-endpoints/README.md#cp168",
         "docs/evidence/peer-endpoints/README.md#cp169",
-        "docs/evidence/peer-endpoints/README.md#cp170"
+        "docs/evidence/peer-endpoints/README.md#cp170",
+        "docs/evidence/peer-endpoints/README.md#cp171"
       ],
       "prs": [
         173,
@@ -299,7 +300,9 @@
         237,
         238,
         239,
-        240
+        240,
+        241,
+        242
       ],
       "successors": []
     },
@@ -626,6 +629,6 @@
       "successors": []
     }
   ],
-  "as_of_utc": "2026-11-06T13:46:20.150466+00:00",
+  "as_of_utc": "2026-11-06T14:15:58.397942+00:00",
   "limits": "Dated manual dispositions through CP146; snapshotcaptureUTC only/no semantic or gate certification; immutable completehistory."
 }
