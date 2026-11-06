@@ -135,11 +135,11 @@
         "KR-F001",
         "KR-F015"
       ],
-      "known": "CP171 PR243 merged; CP172 current terrain-cell142/generation/commit/roster guard/270server tests/fresh basic2cycles/3effects/reset/Ready/BStart3/native clocks/render đạt.8accepted+8outsidecatalog/4duplicate142 có nguồn.",
-      "remaining": "Basic current run còn thiếu B118/escape và native peer windows hai chiều; trước đó floor profile có nguồn riêng. Full142key/auth/distance/freshness/old142afterlegitclear/generalreset, K0–K7/fullmatch/Windows/LANInternet/8clients mở.",
-      "next_test": "PLAN source-first CP155160168 bidirectional/B118 plusCP170172 exactbasicroute: ghép nativeB118/escape và A↔B windows ngoài observerdisable vào cùng2basiccycles/reset/Ready/Start3; giữ3effects/A17→19/B21/bounds, không fakeinputs hoặc repeatalloldUDP.",
+      "known": "CP172 PR244 merged; CP173R3 exactbasic same-runB/A bombs/4nativeA↔Bwindows/3effects/2outcomes/reset/Ready/BStart3 clocksrender verified. R1Down partial andR2Up blockedtarget keptseparate, productionunchanged.",
+      "remaining": "Currentbasic BhostEOF withpendingBbomb/Acleanup/promote/fence missing; auth/142freshness/generalreset andformalK0–K7/K5K6a/fullmatch/Windows/LANInternet/8clients open.",
+      "next_test": "PLANsource-firstCP155156ownedPID/pendingEOF/fence+CP173exactpositive: after2basiccycles/Start3 normalBbomb159pending→revalidateownBprocessidentity→EOFbefore158; nativeA107/110/host/roomcleanup andround_closed/no158throughoriginaldue. No fakepacket/statewrite/fusechange; oldcontrolscope separate.",
       "acceptance": "Epic checklist: linkedscopedtask/evidence+authoritymatrix vàacceptancegate ởPLAN; từngtaskđóng khôngđóngepic/K5/K6a.",
-      "reason": "Đóng scope terrain-cell admission sau policy negatives và native positive, không đóng epic/gate. AuditAUD051through172/next176 rà lại actualbasic acceptance và chọn delta Bowner/bidirectional còn thiếu.",
+      "reason": "BasicBowner/bidirectional composedinR3notR1R2; scope closed withoutgate. NextBhostEOFcurrentprofilepositivebaseline; auditAUD051through172/next176 unchanged.",
       "sources": [
         "docs/PROTOCOL.md#authority",
         "docs/RESEARCH.md#feature-gaps",
@@ -237,7 +237,8 @@
         "docs/evidence/peer-endpoints/README.md#cp169",
         "docs/evidence/peer-endpoints/README.md#cp170",
         "docs/evidence/peer-endpoints/README.md#cp171",
-        "docs/evidence/peer-endpoints/README.md#cp172"
+        "docs/evidence/peer-endpoints/README.md#cp172",
+        "docs/evidence/peer-endpoints/README.md#cp173"
       ],
       "prs": [
         173,
@@ -304,7 +305,8 @@
         240,
         241,
         242,
-        243
+        243,
+        244
       ],
       "successors": []
     },
@@ -631,6 +633,6 @@
       "successors": []
     }
   ],
-  "as_of_utc": "2026-11-06T14:38:15.324240+00:00",
+  "as_of_utc": "2026-11-06T15:32:17.772316+00:00",
   "limits": "Dated manual dispositions through CP146; snapshotcaptureUTC only/no semantic or gate certification; immutable completehistory."
 }

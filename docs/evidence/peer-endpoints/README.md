@@ -1254,3 +1254,34 @@ CP172 checker gặp pin repository source CP166 khác working source sau guard m
 `09759d0bed6545de322c3f3d1f545b52a729aa2c`. Checker source fallback hẹp đòi đúng declaration/blob lúc
 công bố record v2;34schema/history tests (gồm6newcases) đạt. Không sửa record complete/raw/hash/gate;
 v1-only hoặc blob chỉ xuất hiện về sau không được dùng để pass. Quy tắc ở [checkpoint docs](../checkpoints/README.md).
+
+
+<a id="cp173"></a>
+## CP173 — basicBowner/peer hai chiều: hai partial và same-run positive
+
+Baseline [CP172 PR244](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/244), head
+`9c922fee956a68f00c74235d3b7fd8b4ec36f19d`, merge`3706a6ec288a93588b5e4f8fc8ea2da6d4602561`.
+[Contract/giới hạn](../../PROTOCOL.md#basic-bidirectional), [PLAN](../../PLAN.md#current-order).
+
+| Run local/research/codex | Giây/exit/raw/frozen | SHA256 run.json |
+|---|---|---|
+|basic-bidirectional-r1|380,083940772/1/1127/156|`8e053ca029ccab806be97aa86a162a3bc572e4393c64ef10b2c2fc259bb25a65`|
+|basic-bidirectional-r2|502,907843300/0/1418/157|`0df8b5e74b12c2bd73c3d8c2248b0e55b9c4e173d6ac2f5765dcca9ac308371d`|
+|basic-bidirectional-r3|462.819517789/0/1470/157|`01a9d53da8c83b345d1e2823099bc102dab9b8663e73926f223def0000268109`|
+
+prepare/wine_probe/run_basic_bidirectional*.py và roots giữ sourcefirst/recipe/exactprofile47pins,
+preflight/runtime-source/launch-exit/raw-seal/namespaceextinct. Production/profile cùngCP172, no binary/
+DB/pack/statewrite/gamecall/forgedrequest/nativebodychange; freeze đếncleanup. Inputwindowdesign
+R1ADown→R2AUp→R3ARight; all20pulse/.045s/tolerance12/30sloading/OS.25/window3s giữ.
+
+R1partial-verification:4nativepeerphases651checks/420getters/Bownerbothkeys/native159158samepointer;
+chỉ1outcome/reset, R2A80,399/alignmiss/beforeFire. R2basic1728/Start3560passed, nhưng AUp window
+không changedtarget trên nativeendpoint nênkhôngbidirectionalpass; initialassert/log giữ. Khônggộprun.
+R3 chỉ chuyển hướng/axis A sang hànhlangfloor, negativepositivecontrolsLeftRight, khônghạcriterion.
+
+R3 1780firsttwo/548Start3/575peer/372getters; 234nativepacket/834securefieldmodels, life23/16; 14alignmentgroups/rare165lookup/exactrestore; barrier3 6.385199635s, clock thêm9.189975736s.
+Native all195 kiểm sequential3bomb/epoch/IDs1..6/ownersB,A,A; hidden/stat/eligibility/key reset và
+threeeffects hai view. Hai final Battle images đã xem; profile default giữ, noactiveoldUDP/EOFfault/
+thirdoutcome. Server270tests reuseexacthashCP172, không rerununchangedsource; copiednative models
+táchruntime/Pythonpolicy. CP173 tự kiểm/chờ PR; reviewwaived/AUD051qua172/kế176. Khônggate/fullmatch/
+Windows/LANInternet/8client. Nextcurrentbasic BhostEOF/ownedpendingBbomb/Acleanup/promote/fence chỉPLAN.

@@ -1,0 +1,283 @@
+{
+  "id": "CP173",
+  "previous": "CP172",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-06T15:34:03.228422+00:00",
+  "context_commit": "3706a6ec288a93588b5e4f8fc8ea2da6d4602561",
+  "owner": "Codex",
+  "reviewer": "Codex",
+  "question": "Exactbasicprofile có ghép Bowner118/escape và A↔Bnativepeerwindows trong cùng hai3effect/outcome/reset/Readycycles rồinormalBStart3không?",
+  "scope": "Source-firstCP155160168peer/B118+CP170172basicroute/probes/195/guards/reset/Start3. Three grouped runtimevariants; R1routepartial/R2blockedmovement giữ; R3onlymissingdelta nativepositive. No productionchange/newconsumerRE.",
+  "artifacts": [
+    {
+      "name": "OriginalKR00967unchanged",
+      "sha256": "a52545c14b1fea423de655c3163d6360b628d61c1cd472b46fdbc8a9ffe15f4e"
+    },
+    {
+      "name": "CurrentWinecopyunchanged",
+      "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+    },
+    {
+      "name": "NativeIDAfullcopycf72privateanalysis",
+      "sha256": "cf72da112308d9f1ca256df8089594c5f787875310933073bf6bd5ba6f70e63b"
+    },
+    {
+      "name": "modOmodelreference",
+      "sha256": "a08950c833d3acab8281049def7b3dc96b221f107eeda01da3a548e34b91dce5"
+    }
+  ],
+  "locators": [
+    "CP172PR244head9c922fee956a68f00c74235d3b7fd8b4ec36f19d/merge3706a6ec288a93588b5e4f8fc8ea2da6d4602561; production/profile unchanged.",
+    "R1SHA8e053ca029ccab806be97aa86a162a3bc572e4393c64ef10b2c2fc259bb25a65/380.083940772s/exit1/1127raw/156frozen.",
+    "R2SHA0df8b5e74b12c2bd73c3d8c2248b0e55b9c4e173d6ac2f5765dcca9ac308371d/502.9078433s/exit0/1418raw/157frozen.",
+    "R3SHA01a9d53da8c83b345d1e2823099bc102dab9b8663e73926f223def0000268109/462.819517789s/exit0/1470raw/157frozen; profileSHA bf1f99989e45a4b5e47e831165ad1f43f296418253388d8ba8338532d665afee.",
+    "Knownbase400000/nativepeer13DE7AA,E66680,E667BE,E668AD,E668B2,B4EA14/getter52A350/165rareE63260E63309E63E1A/lookupE636D9/hiddenB9D0B4. No new nativebodies. AUD051through172/next176."
+  ],
+  "findings": [
+    {
+      "summary": "R1newADown/BRightwindows+normalBbomb/Rightescape havefouractualnativepeerphases651checks/420getters, Bbombbothkeys/native15939/15813/samepointer. Onlyonecompletedoutcome; R2Aat80,399/alignmissUpbeforeFire after20pulses. ActualRoller precedesfirstAbomb26.60/26.87s; earlyspeed→coarseroute candidate, notcausalproof/generalinputlaw.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#basic-bidirectional",
+      "evidence": [
+        "RUN-01147",
+        "RUN-01134",
+        "RUN-01148",
+        "RUN-00004",
+        "RUN-01150"
+      ],
+      "limits": "Exactoptionalbasicexport/modifiedWine/privatevirtualhosts/directproduction/currentManner/title/promotedBhost; no server/profiledelta afterCP172. Two nativeoutcomes/reset/Ready andthirdactive/noBomb, notthirdoutcome/EOFfault. No sourcebinary/DB/pack/nativebody/opcode/gamecall/actorwrite/fakepacket/boundsrelaxation;frozen/cleanup/seal. Policyterrain/claims/fuse/ranknotoriginalauthority; nofullauth/generalreset/Windows/LANInternet/8clients/K0–K7/K5K6a/fullmatch. R1peer+R2cyclesnotbackfillR3; adaptiveinputcontroller notmotionlaw."
+    },
+    {
+      "summary": "R2singleAUpinsteadDown yields2basiccycles/3effects/reset/Ready/BStart3(1728+560checks), butAUpnorthboxhasnochangetargetafterOSinput/uniqueAPI; endpointassertfailsR1-A-Up. Preserveinitialdriver/log/partial, no movementpassfromalive/input/exit0 andnoR1R2composition. R3singleAaxis/keyRight/X120/LeftRightreturn usesknownrow3col3..5floor/noearlyRoller, unchangedBroute/guard/bounds.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#basic-bidirectional",
+      "evidence": [
+        "RUN-02660",
+        "RUN-01213",
+        "RUN-02636",
+        "RUN-01209",
+        "RUN-02662"
+      ],
+      "limits": "Exactoptionalbasicexport/modifiedWine/privatevirtualhosts/directproduction/currentManner/title/promotedBhost; no server/profiledelta afterCP172. Two nativeoutcomes/reset/Ready andthirdactive/noBomb, notthirdoutcome/EOFfault. No sourcebinary/DB/pack/nativebody/opcode/gamecall/actorwrite/fakepacket/boundsrelaxation;frozen/cleanup/seal. Policyterrain/claims/fuse/ranknotoriginalauthority; nofullauth/generalreset/Windows/LANInternet/8clients/K0–K7/K5K6a/fullmatch. R1peer+R2cyclesnotbackfillR3; adaptiveinputcontroller notmotionlaw."
+    },
+    {
+      "summary": "R3samebasicprofile/same8TCP/currentManner/title/Bhosttwoepochs each3bombsownersB,A,A/IDs1..6/power1,1,2; native15939/15813/sameentitypointer/currentID andall195before/afterfollowsequentialBclearthenA,A; seedresetnotvirginA-onlyassumption. Threeactual124/165full12/effects onlyA, statbaseline/hiddeneligibility/currentcell142/keyreset. A17→19/B21/twonative175180/room/Ready, bothviews56→1/other0before175.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#basic-bidirectional",
+      "evidence": [
+        "RUN-02766",
+        "RUN-04273",
+        "RUN-02757",
+        "RUN-02769",
+        "RUN-02770",
+        "RUN-04270",
+        "RUN-04271"
+      ],
+      "limits": "Exactoptionalbasicexport/modifiedWine/privatevirtualhosts/directproduction/currentManner/title/promotedBhost; no server/profiledelta afterCP172. Two nativeoutcomes/reset/Ready andthirdactive/noBomb, notthirdoutcome/EOFfault. No sourcebinary/DB/pack/nativebody/opcode/gamecall/actorwrite/fakepacket/boundsrelaxation;frozen/cleanup/seal. Policyterrain/claims/fuse/ranknotoriginalauthority; nofullauth/generalreset/Windows/LANInternet/8clients/K0–K7/K5K6a/fullmatch. R1peer+R2cyclesnotbackfillR3; adaptiveinputcontroller notmotionlaw."
+    },
+    {
+      "summary": "R3fourARight/BRightnativepeerwindowsbothkeys: explicit6probeACK/freshbaselinebeforeOSinput, actual17byteAPI→selector0/full13/keyslot/nativeapply/7BC7C8targetchange/fresh4C58progress;575checks/372nativegettermodels. Distancebranchesobservedboundednotimmediatesnapassumption; windowsoutsideobserverlight. BactualSpace9,3/power1/Rightescape/bothviewsentity, noacceptedB17/19 andB0atrank; absenceofreportsnotglobalall-tickproof.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#basic-bidirectional",
+      "evidence": [
+        "RUN-04256",
+        "RUN-04282",
+        "RUN-02770",
+        "RUN-04284"
+      ],
+      "limits": "Exactoptionalbasicexport/modifiedWine/privatevirtualhosts/directproduction/currentManner/title/promotedBhost; no server/profiledelta afterCP172. Two nativeoutcomes/reset/Ready andthirdactive/noBomb, notthirdoutcome/EOFfault. No sourcebinary/DB/pack/nativebody/opcode/gamecall/actorwrite/fakepacket/boundsrelaxation;frozen/cleanup/seal. Policyterrain/claims/fuse/ranknotoriginalauthority; nofullauth/generalreset/Windows/LANInternet/8clients/K0–K7/K5K6a/fullmatch. R1peer+R2cyclesnotbackfillR3; adaptiveinputcontroller notmotionlaw."
+    },
+    {
+      "summary": "R3normalBStart3actual104/key12347/native12199/barrier6.385199635sbefore30s/twoclocksextra9.189975736s/twomanualBattleimages;1780firsttwo/548Start3/234nativepacket/834securefieldmodels/life23+16;14adaptivealignmentgroups/28viewACK/fourrare165lookupenabled/exactrestore. No thirdbomb/outcome/EOFfault/fullmatch/gate. CP172270server tests reusedexactunchangedhash.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#basic-bidirectional",
+      "evidence": [
+        "RUN-04257",
+        "RUN-02766",
+        "RUN-04380",
+        "RUN-04370"
+      ],
+      "limits": "Exactoptionalbasicexport/modifiedWine/privatevirtualhosts/directproduction/currentManner/title/promotedBhost; no server/profiledelta afterCP172. Two nativeoutcomes/reset/Ready andthirdactive/noBomb, notthirdoutcome/EOFfault. No sourcebinary/DB/pack/nativebody/opcode/gamecall/actorwrite/fakepacket/boundsrelaxation;frozen/cleanup/seal. Policyterrain/claims/fuse/ranknotoriginalauthority; nofullauth/generalreset/Windows/LANInternet/8clients/K0–K7/K5K6a/fullmatch. R1peer+R2cyclesnotbackfillR3; adaptiveinputcontroller notmotionlaw."
+    },
+    {
+      "summary": "MissingBowner/bidirectionalcurrentbasicdelta resolvedonlyR3. Next PLANsource-firstCP155156ownedPID/pendingEOF/fence pluscurrentBhostpositive: normalBpendingbomb afterStart3→verifiedownedBEOF→Anative107110/promotion/roomcleanup/oldjobround_closed/no158throughoriginaldue. CurrentBhost/Aguestaliasmode notruntimeproven; nofakepacket/fusechange. Formaldependencies/gates/fullauth/142freshness/generalreset remainopen.",
+      "source": "design",
+      "status": "design",
+      "method": "documentation",
+      "canonical": "docs/PROTOCOL.md#basic-bidirectional",
+      "evidence": [
+        "RUN-02773"
+      ],
+      "limits": "Exactoptionalbasicexport/modifiedWine/privatevirtualhosts/directproduction/currentManner/title/promotedBhost; no server/profiledelta afterCP172. Two nativeoutcomes/reset/Ready andthirdactive/noBomb, notthirdoutcome/EOFfault. No sourcebinary/DB/pack/nativebody/opcode/gamecall/actorwrite/fakepacket/boundsrelaxation;frozen/cleanup/seal. Policyterrain/claims/fuse/ranknotoriginalauthority; nofullauth/generalreset/Windows/LANInternet/8clients/K0–K7/K5K6a/fullmatch. R1peer+R2cyclesnotbackfillR3; adaptiveinputcontroller notmotionlaw."
+    }
+  ],
+  "verification": [
+    {
+      "check": "R1ADownplanned2cycles/Start3 andR2AUpplannednativeprogress",
+      "result": "fail",
+      "evidence": [
+        "RUN-01147",
+        "RUN-02660"
+      ],
+      "limits": "R1actualADownpeerpassbutroutefail; R2actualAUpblockedtarget despitecyclespass; no retroactivepassorcrossruncomposition."
+    },
+    {
+      "check": "R3same-runbasicB/Aentities+all195/3effects/reset/2outcomes/Ready/Start3/nativeA↔Bwindows/getters/2manualviews",
+      "result": "pass",
+      "evidence": [
+        "RUN-02766",
+        "RUN-04257",
+        "RUN-04256",
+        "RUN-04282",
+        "RUN-02770",
+        "RUN-04380"
+      ],
+      "limits": "Exactoptionalbasicexport/modifiedWine/privatevirtualhosts/directproduction/currentManner/title/promotedBhost; no server/profiledelta afterCP172. Two nativeoutcomes/reset/Ready andthirdactive/noBomb, notthirdoutcome/EOFfault. No sourcebinary/DB/pack/nativebody/opcode/gamecall/actorwrite/fakepacket/boundsrelaxation;frozen/cleanup/seal. Policyterrain/claims/fuse/ranknotoriginalauthority; nofullauth/generalreset/Windows/LANInternet/8clients/K0–K7/K5K6a/fullmatch. R1peer+R2cyclesnotbackfillR3; adaptiveinputcontroller notmotionlaw."
+    },
+    {
+      "check": "All3frozeninputs/cleanup/rawhash/docs/catalog/issues/artifacts/diff/fullhistorylocal",
+      "result": "pass",
+      "evidence": [
+        "RUN-01150",
+        "RUN-02662",
+        "RUN-04284",
+        "RUN-04370",
+        "RUN-04255",
+        "RUN-02768",
+        "RUN-04267",
+        "RUN-02765",
+        "RUN-04254"
+      ],
+      "limits": "Fullhistorylocal afterappendbeforecommit; reused270server suite exacthash, no newproductioncode. No semantics/acceptance/gateinferred."
+    },
+    {
+      "check": "Currentbasic BhostEOF/pendingBbomb/Anativecleanup/promotion/roundfence",
+      "result": "pending",
+      "evidence": [
+        "RUN-02773"
+      ],
+      "limits": "CP155156oldprofilecontrolsnotbackfillcurrentbasicBhost; endcleanupnotfaulttest."
+    }
+  ],
+  "evidence": [],
+  "evidence_manifests": [
+    {
+      "path": "docs/evidence/checkpoints/evidence/CP173-basic-bidirectional.json",
+      "bytes": 1113875,
+      "sha256": "92f3e5d37073191f34e8626bb7fcbeafb07d302e0ee85af62aa8545edcf68cf7",
+      "count": 4401
+    }
+  ],
+  "delta": {
+    "added": [
+      "Same-runbasicnativeB/Aownerbombs/195/4bidirectionalpeerwindows/3effects/reset/2outcomes/Ready/Start3.",
+      "Twoexplicitpartials/ADownroutefail/AUpblockedtarget retained; minimalARightcorridorretryprovedsame-runcomposition."
+    ],
+    "corrected": [
+      "CP172PR244merged; currentbasicBowner/bidirectionalgapclosedonlyR3, notoldfloorbackfill."
+    ],
+    "superseded": [
+      "NEXT-BASIC-BIDIRECTIONAL closed; NEXT-BASIC-HOST-B-EOF active."
+    ]
+  },
+  "blockers": [
+    "CurrentbasicBhostEOF/pendingBbomb/Aguestpromotion/cleanup/fence notobserved.",
+    "Fullauth/142freshness/distance/generalreset/formaldependencies/K5K6a/fullmatch/Windows/LANInternet/8clients remainopen."
+  ],
+  "next_steps": [
+    {
+      "id": "NEXT-BASIC-BIDIRECTIONAL",
+      "task": "KRE-005b",
+      "state": "closed",
+      "action": "CP173R3samebasicprofile/Bowner+Abombs/4nativeA↔Bwindows/3effects/2normaloutcomes/reset/Ready/BStart3;R1R2partialsnotbackfill.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-BASIC-HOST-B-EOF",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "PLANreuseCP155156ownedPID/pendingEOF/fence+CP173positivebaseline; after2basiccycles/Start3actualB118pending/159both thenverifiedownBEOFbefore158; observeAnative107110/chief/roomcleanup/servicehost/membership/round_closed/no158throughoriginaldue. No fakepackets/fusechange/statewrite/accountresume/UIBackclaim.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    }
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-11-06T15:34:03.228422+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "Codex solo RE/runtime/self-check; independentreviewownerwaived; exacthead/PRbeforemerge, no autogate.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Owner explicitly requested solo without workers/review."
+    }
+  },
+  "docs_sync": [
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "CP173basicBowner/bidirectionalgroupedpartials/positive/native195/limits/CP172merge/nextBhostEOF synced; checkpointworkflow doc unchanged and verified."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "CP173basicBowner/bidirectionalgroupedpartials/positive/native195/limits/CP172merge/nextBhostEOF synced; checkpointworkflow doc unchanged and verified."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "updated",
+      "reason": "CP173basicBowner/bidirectionalgroupedpartials/positive/native195/limits/CP172merge/nextBhostEOF synced; checkpointworkflow doc unchanged and verified."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "updated",
+      "reason": "CP173basicBowner/bidirectionalgroupedpartials/positive/native195/limits/CP172merge/nextBhostEOF synced; checkpointworkflow doc unchanged and verified."
+    },
+    {
+      "path": "docs/features.json",
+      "state": "updated",
+      "reason": "CP173basicBowner/bidirectionalgroupedpartials/positive/native195/limits/CP172merge/nextBhostEOF synced; checkpointworkflow doc unchanged and verified."
+    },
+    {
+      "path": "docs/COVERAGE.md",
+      "state": "updated",
+      "reason": "CP173basicBowner/bidirectionalgroupedpartials/positive/native195/limits/CP172merge/nextBhostEOF synced; checkpointworkflow doc unchanged and verified."
+    },
+    {
+      "path": "docs/evidence/peer-endpoints/README.md",
+      "state": "updated",
+      "reason": "CP173basicBowner/bidirectionalgroupedpartials/positive/native195/limits/CP172merge/nextBhostEOF synced; checkpointworkflow doc unchanged and verified."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/review.json",
+      "state": "updated",
+      "reason": "CP173basicBowner/bidirectionalgroupedpartials/positive/native195/limits/CP172merge/nextBhostEOF synced; checkpointworkflow doc unchanged and verified."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
+      "state": "updated",
+      "reason": "CP173basicBowner/bidirectionalgroupedpartials/positive/native195/limits/CP172merge/nextBhostEOF synced; checkpointworkflow doc unchanged and verified."
+    },
+    {
+      "path": "server/README.md",
+      "state": "updated",
+      "reason": "CP173basicBowner/bidirectionalgroupedpartials/positive/native195/limits/CP172merge/nextBhostEOF synced; checkpointworkflow doc unchanged and verified."
+    },
+    {
+      "path": "docs/evidence/checkpoints/README.md",
+      "state": "updated",
+      "reason": "CP173basicBowner/bidirectionalgroupedpartials/positive/native195/limits/CP172merge/nextBhostEOF synced; checkpointworkflow doc unchanged and verified."
+    }
+  ]
+}
