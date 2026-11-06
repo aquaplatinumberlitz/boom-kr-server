@@ -344,3 +344,5 @@ CP172 thêm [terrain-cleared-cell142 admission](../docs/PROTOCOL.md#hidden-cell-
 profile có terrain đòi đúng ô/generation/commit/receipt roster; profile không terrain giữ policy report
 cũ.270server tests và fresh basic runtime2cycles/reset/Ready/Start3 đạt trong scope Wine. Không recovered
 roundkey142/fullauth/distance/freshness; identical old142 sau legitimatecurrentclear vẫn indistinguishable.
+
+CP173 [basic Bowner/A↔B/native2cycles/Start3](../docs/PROTOCOL.md#basic-bidirectional) đã kiểm, không code/profile delta sauPR244; hai partial giữ riêng. Currentbasic BhostEOF là bước tiếp trongPLAN.

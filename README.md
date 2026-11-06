@@ -41,19 +41,17 @@ Hai copy KR Wine đã chạy login/sảnh/phòng/Battle và các chu kỳ kết 
 [kim/reset](docs/PROTOCOL.md#needle-round-reset), [cứu hai chiều và hai kết quả](docs/PROTOCOL.md#rescue-two-results),
 [deep chain/reset](docs/PROTOCOL.md#recursive-chain-cycles) giữ phạm vi và giới hạn tại nguồn chuẩn.
 
-**Mốc mới CP172:** service có terrain chỉ mở item ẩn khi report142 khớp ô đã bị phá bởi
-blast đã commit, gửi đủ roster và thuộc vòng hiện tại. Năm test mới/toàn bộ270 test server đạt;
-run native mới giữ hai vòng basic/reset/Ready rồi BStart3, hai clock chạy thêm9,23 giây.
-Trong16report142:8ô item ẩn được nhận (4report lặp),8ô ngoài catalog bị bỏ qua; mỗi vòng vẫn đúng
-ba pickup/effect trên mỗi view. [Contract/giới hạn](docs/PROTOCOL.md#hidden-cell-admission-current),
-[raw/hash](docs/evidence/peer-endpoints/README.md#cp172).
+**Mốc mới CP173:** cùng một run basic đã có movement hai chiều, bom B và A trong cả hai
+vòng, ba item/effect, kết quả/reset/Ready, rồi normal BStart3 với hai clock/render thêm hơn8giây.
+[Contract/giới hạn](docs/PROTOCOL.md#basic-bidirectional), [raw/hash và hai ca partial](docs/evidence/peer-endpoints/README.md#cp173).
+Đây là bằng chứng trên hai copy Wine trong private virtual hosts, **chưa nghiệm thu K5/K6a/fullmatch**.
 
-CP171 đã merge [PR243](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/243) tại `89f228b`;
-CP172 đã tự kiểm, đang chờ PR. Hai native cycles và Start3 đã có, **K5/K6a/fullmatch vẫn chưa nghiệm thu**;
-full auth/142freshness và các dependency gate còn thiếu. LAN/Internet/tám client chưa kiểm thực tế.
-[PLAN](docs/PLAN.md#current-order) tiếp ghép B đặt bom và movement hai chiều vào đúng basic profile;
-không mở lại consumer hoặc lặp toàn bộ UDP cũ. Default preset giữ nguyên.
-Audit **AUD051 qua CP172**; audit định kỳ kế **CP176**. [Review waived](docs/evidence/checkpoints/review-waiver.json).
+CP172 đã merge [PR244](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/244) tại `3706a6e`;
+CP173 tự kiểm/chờ PR. [PLAN](docs/PLAN.md#current-order) tiếp kiểm B chủ phòng mất kết nối khi bom
+còn chờ ở trận ba, xác định A được cleanup/promote và job cũ không nổ. Control EOF cũ giữ nguồn
+riêng; không gọi cleanup cuối run là phép thử disconnect. Auth/142freshness/dependency gate và
+LAN/Internet/tám client còn mở. Default preset giữ nguyên.
+AUD051 qua CP172; audit kế **CP176**. [Review waived](docs/evidence/checkpoints/review-waiver.json).
 
 Đích đầu: hai client thật chơi hai trận liên tiếp; mở bốn client và hardening sau đó.
 

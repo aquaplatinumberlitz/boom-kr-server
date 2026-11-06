@@ -6109,3 +6109,44 @@ Python tại commit lần đầu công bố record v2, gồm exact declaration/p
 nếu có. CP166/source `81b0c8d3…` khớp commit `09759d0`; không sửa complete record/evidence. Raw/
 binary/local không dùng fallback; source chỉ có v1 hoặc không khớp khi công bố v2 vẫn lỗi.34checker
 schema/history tests đạt; đây là versioned provenance, không native semantics/gate. [Quy tắc](evidence/checkpoints/README.md).
+
+
+<a id="basic-bidirectional"></a>
+### Basic: hai owner bom, movement hai chiều và hai vòng — CP173
+
+**`kr_runtime/confirmed` hẹp, controller/terrain/claims/fuse/rank là `design`.**
+[Recipe/raw/hash và partial](evidence/peer-endpoints/README.md#cp173). Source-first CP155/160/168
+native peer windows/B118, CP170–172 exactbasicroute/probes/195/reset/normalBStart3; không nativebody/
+opcode/ItemAttr/VNlayout RE mới, production/profile/guard giữ nguyên sau PR244.
+
+R1 thêm ADown/BRight finitewindows rồi BSpace/Rightescape/return trước routeA:4nativepeerwindows
+đạt651checks/420gettermodels vàBbomb hai epoch/native15939/15813/samepointer. Nhưng Roller được
+nhặt26,60/26,87s trước firstAbomb, vòng2 A ở80,399/Up bị chặn và20pulse không tới159; chỉ1outcome,
+thiếuFire/outcome2/Start3. Earlyspeed là giả thuyết gây lệch coarse route, không universal causal proof.
+R2 chỉ đổi AUp: hai cycles/basic/reset/Start3 đạt1728firsttwo/560Start3checks, nhưng nativeAUp không
+changedtarget trước hộp trên spawn nên endpoint progress assertion FAIL. Không coi blocked input
+là movement pass hoặc ghép R1peer/R2cycles thành acceptance. Raw/failures giữ nguyên.
+
+R3 đổi riêng Awindow sang Right/X120/LeftRight return trên row3col3..5floor, BRight row9 giữ;
+noearlyRoller/noactorwrite/noGamecall/nofakepacket/noboundsrelaxation. Mỗi key bốn bước:
+hai native windows A→B/B→A ngoài observerdisable → B118 tại9,3/power1/Rightescape8s/return120,399
+→ knownAroute/3pickups/2Abombs/normaloutcome. Bpower1 không tới ô5 trong hành lang floor3..5.
+Các tọa độ là lựa chọn controller trên map đã pin, không motionlaw gốc.
+
+Final same8TCP/currentManner/title/promotedBhost, ba keys12345/12346/12347. Hai epoch mỗi epoch
+3bom: B rồi A,A, IDs1..6/powers[1,1,2] mỗi vòng. Native159/158/currentID/samepointer/full39/full13,
+195before/after tính tuần tự Bclear rồi hai A blasts và seedreset; không lấy virginworld của runA-only.
+Ba pickups17/27/28 và native165/effects chỉA, baseline/stat/hiddeneligibility/currentcell142 reset,
+A17→19/B21 và hai view56→1/other0 trước175,2normal175180/room/Ready. NormalBStart3 actual104/
+12199/barrier trước30s/hai clocks thêm8s+/hai final Battle images. Không thirdbomb/outcome/EOFfault.
+
+Fourfinitepeerwindows có explicit6probeACK mỗi view/freshbaseline trướcOSinput; actualingress17→
+selector0/full13/key/slot→nativeapply/target7BC7C8change và freshcurrent4C58progress. Native distance
+branches/getters độc lập; không buộc immediate snap khi consumer nội suy. Window direction/axis
+theo actualRight của A/B, không đổi criterion cho blocked Up. Observerlight chỉ căn vị trí, restore
+trước windows/bom; rare165+lookup giữ. Kết quả/count/hash chi tiết ở evidence, không native timinglaw.
+
+Khoảng trốngBowner/bidirectional basic đã giải trong R3, không backfill hai partial. Gate/dependencies/
+K5/K6a/fullmatch/Windows/LAN/Internet/8clients/auth/generalreset vẫn mở. Tiếp[PLAN](PLAN.md#current-order)
+currentbasic BhostEOF với pendingBbomb/cleanupA/promotion/fence; CP155156controls là nguồnreuse,
+không lấy intentional endcleanup của R3 làm proof.142sameoldbytesafterlegitclear/fairness giữ giới hạn.
