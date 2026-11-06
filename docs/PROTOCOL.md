@@ -1,6 +1,6 @@
 # KR 00967 — contract tương thích client gốc
 
-Revision kr-legacy-contract-r1; cập nhật06/11/2026 JST (CP145; AUD044 quaCP144, kếCP148).
+Revision kr-legacy-contract-r1; cập nhật06/11/2026 JST (CP146; AUD044 quaCP144, kếCP148).
 **Contract có bằng chứng từng phần; chưa nghiệm thu full codec K2**.
 Lộ trình và thứ tự task chỉ giữ ở [REWRITE_PLAN — KRE](PLAN.md).
 Đây là contract của repo server KR. ADR0009 của bản viết lại là nguồn lịch sử để so sánh;
@@ -5061,3 +5061,35 @@ Low8wrap256, forgedcurrentkey/auth, UDPtypemode/reliability/fullgrammar/NAT/real
 K6a/gates/CP137complexUI/sharedgeometry/fullinventory vẫn mở. TCP vẫn dùng childloopbackforward và
 fixturelocalredirect; native sourceIP crossvirtual proof không đồng nghĩa bootstrap/login trực tiếp
 trên LAN. Bước tiếp duy nhất PLAN là gỡ dependency TCPforward bằng đối chiếu endpoint chain.
+
+
+<a id="direct-tcp-endpoints"></a>
+### Direct private TCP endpoint chain trên copy — CP146
+
+**kr_runtime/confirmed hẹp; hosts/fixtureaddress là design.** [Recipe/raw/hash](evidence/peer-endpoints/README.md#cp146).
+Reuse CP006–008 WCP và CP015 typedredirect7 consumer. NewgameA/Bcopies có binary cùng SHAe9bb4766;
+files-only hostmap cácservicehost→10.77.0.1, S→C7seq52 chỉ typedIPv4 `0x7f000001→0x0a4d0001`,
+port3858/kind10/index0/header/tail giữ. Bỏ childTCPforward; rootmeasurementTCPproxy3858→23858 còn
+để selectedsame/oldTCPguard, UDP khôngproxy. Profile riêng này chưa là configredirect production.
+
+Read-only nativeconnect trước IAT16EA778 ở14F4923/14F4894 và backtrace8frames ghép actualaccept:
+
+| Connection | Nativecallsite/caller | A endpoint | B endpoint | Nguồn/giới hạn |
+|---|---|---|---|---|
+| Bootstrap |14F4923←12368E2←1234875|10.77.0.1:3848|10.77.0.1:3838|Actualsockaddr/servicepeerA.2/B.3; portvariation observed, không fullselectionlaw|
+| WCP |14F4894←13AEEE5←13AD6C5←1255C0B←1255A69←1234EAF|10.77.0.1:3848|10.77.0.1:3838|Actualsocket2; knownhello/eight hollowresponses, không dựngendpointlayouttừVN|
+| Auth |14F4894←13AEEE5←13AD6C5←1255C0B←1255A69←110488D|10.77.0.1:3848|10.77.0.1:3848|Actualsocket3/op1/9/5/replies4/15/62/7; hostname/cachefieldcausechưaisolate|
+| Channel |14F4894←13AEEE5←13ADA06←13AD97E←125540E←110182E|10.77.0.1:3858|10.77.0.1:3858|S2C7typedprivateIP→rootproxy→service23858; servicepeer.1 là proxy, khôngdirectclientpeer|
+
+Không có child127forwardprocess, cả actualCA+wineserverNS kiểmđúng; không loginNexonthật.
+Cùngrun2nativeclocks/175302/1803/110/reset/Ready và4peerwindows/nativekey/target/currentprogress,
+BombFireeffects/8same4oldTCPguard; binary unchanged. C2S99IP0 vẫn actualNIC.2/.3 trongcađo,
+không suy99field1publicIP/auth. Đây là modifiedWine/nativehollowauthfixture, khôngfullauth/K3gate.
+
+Giới hạn đo: khi bỏforwardblock, harness bỏ nhầm khởi tạo UDPcapture; **khôngUDPPCAP trongrun này**.
+Không gọi nativepeerreport là exactvethwirejoin, không ghép CP145PCAP vào run hiện tại. Frozenharness
+không sửa giữarun; sẽkhôiphục capturetrướcphéptiếp. Trace TCP49joins, native2cycles/2080sourcejoins,
+575peerjoins/70pickup/87guard/25Ready vàcopiedmodels táchscope. NoStart3/EOFfault/oldUDP trongrun.
+Scope TCPbootstrap/WCP/auth/channelprivate route verified; originalIPcachecause/semantics/schema/
+fullcodec/auth/realLAN/NAT/Internet/fullmatch/K6a/gates/CP137UI/sharedgeometry/fullinventory mở.
+TiếpPLAN đưa endpoint7 thành explicitserviceconfig/defaultfixturepreserved rồiverifycaptuređầyđủ.
