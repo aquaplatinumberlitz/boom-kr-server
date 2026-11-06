@@ -1,7 +1,7 @@
 # Kế hoạch server giả lập KR 00967
 
 Nguồn chuẩn của project `boom-kr-server`; bản nhập từ plan đã được dsh1/dsh2 review tại `1eee46d`.
-Cập nhật06/11 JST (CP164): [preset input blocker](PROTOCOL.md#mode-preset-input-blocker) hai partial/firstclock, không2cycles/Start3. CP163 PR234 merged c5c1bba. AUD049 qua164/kế168; CP164 tự kiểm/chờ PR. Tiếp targetednative inputpacing, không tăngtolerance/timeout hay đónggate từcounter.
+Cập nhật06/11 JST (CP165): [native batch/observer control và committedpresetStart3](PROTOCOL.md#input-batch-gating) đã đo; CP164 PR235 merged3828466. CP165 tự kiểm/chờPR. Tiếp currentmode hostBack/promotion/rejoin; AUD049 qua164/kế168, chưađónggate.
 
 
 ### Mục tiêu, baseline và phạm vi
@@ -37,13 +37,13 @@ với client Rust không chứng minh có thể điều khiển client KR bằng
 
 ### Tiến độ hiện hành theo bằng chứng
 
-| Task/mốc | Trạng thái tại CP164 | Nguồn chuẩn |
+| Task/mốc | Trạng thái tại CP165 | Nguồn chuẩn |
 |---|---|---|
 | KRE-004/issue6 | Đã review/merge PR7 và đóng issue:recipe r1 đến local accept;không phải full K1 | [Wine r1](evidence/wine/README.md) |
 | Bootstrap reply | PR8 đã merge;debugger ProcessPatchreturn1,không ép success | [bootstrap evidence](evidence/bootstrap-wire/README.md) |
 | KRE-005a/issue9,R2 | PR10 đã merge:3 cold start cửa sổ/second accept;issue9 còn mở | [R2 evidence](evidence/wine-r2/README.md) |
 | WCP hai-reply | Run CP001 là lịch sử chưa C→S; CP006 đã đo request đầu trên copy tham số hóa | [PROTOCOL](PROTOCOL.md#wcp),[WCP evidence](evidence/wcp/README.md) |
-| KRE-005b/issue14 | CP006–163 đã merge; CP164 actual preset partial/input blocker/AUD049 có nguồn; task hiện hành ở current-order; fullauth/authority/fullmatch/gates và gaps giữ mở | [Q-023](RESEARCH.md#q-023), [service](evidence/probe-service/README.md) |
+| KRE-005b/issue14 | CP006–164 đã merge; CP165 inputbatch control/actualpreset2cycles/Start3 có nguồn; task hiện hành ở current-order; fullauth/authority/fullmatch/gates và gaps giữ mở | [Q-023](RESEARCH.md#q-023), [service](evidence/probe-service/README.md) |
 | K0/K1 | Chưa nghiệm thu toàn gate;Windows vanilla/control ownership và các điều kiện còn thiếu giữ mở | Gate dưới,[Q-022](RESEARCH.md) |
 | K2a/K2 | Primitive/WCP, CP057stream native/model và CP058–060authcallback137/135/errors0 đã có; fullcodec/authauthority/reconnect và gate chưa pass | [PROTOCOL](PROTOCOL.md#login-auth),[Q-023](RESEARCH.md#q-023) |
 | K3 | Copy đã vẽUI/đóngnotice, A/B/Cprofile đọc sạch và mộtnamedcachewarm được nhận; identityauthority/toàncache/codec/K3 chưa nghiệm thu | [Contract sảnh](PROTOCOL.md#channel-lobby) |
@@ -66,21 +66,21 @@ selectiveCLI/historicalmigration xong, không còn taskactive tổ chức. CP119
 Yêu cầu kiểm8 người có kết quả hẹp [CP147/163](PROTOCOL.md#battle-eight-roster), không thay gate:
 Free0/Manner1 input/ACK/reset đã nối CP162; selector1 actual4–4/1–7 đã đo. Không lặp roster/dump/guard. Service8 peer
 và trận8 client thật là phần mở rộng sau hai/bốn client ổn ở bước5, chưa được đánh dấu hoàn thành.
-1. **KR-S001/F002 — xử lý input pacing chặn current preset/Start3:**
-   [CP164](PROTOCOL.md#mode-preset-input-blocker) hoàn tất audit AUD049/blocker có nguồn, **không** hoàn tất
-   `NEXT-MODE-PRESET-START3-AUDIT` về runtime: tách task đó thành `NEXT-MODE-PRESET-START3` còn mở,
-   `NEXT-MODE-PRESET-INPUT-PACING` là bước đang làm. R1 20 stable samples159↔234 với45ms, R2 6samples
-   cùnghai giátrị với15ms rồi neutral3s timeout; chưaFire/bom/outcome/Start3. Không tăng tolerance30,
-   loading30s hoặc thời hạn chỉ đểpass; không suy OS pulse duration là native keydwell/tick.
-   Sourcefirst CP082/094 neutral/CP123 keyrelease drift/CP150 stop-on-nativepickup/CP156 tolerancecontrol
-   và raw2partials; reuse current codec/map/known UI path, không đoán opcode. Chỉ quan sát đường input đang chạy:
-   actualkeyDown/up timestamps→nativekeypoll/direction→actorposition/peerapply và thời điểm dừng.
-   Tái dùng known hooks/cache trước RE thân mới; cửa sổ hữu hạn/quyền namespace/gamecopy như recipe,
-   không gọi gamefunction/viết actor hoặc phát fake124/104. Chọn OS input pacing dựa trace trước retry;
-   chỉ chạy tiếp preset2normaloutcomes/Ready→normalStart3/12199/clocks/render8s khi có giả thuyết cụ thể.
-   Source/preset/47pins và acceptance2cycles/Start3 giữ; partialr1/r2 không backfill thành pass.
-   Sau khi giải input, cập nhật cùng-run acceptance/authority và chọn bước K4 currentmode hostBack/
-   promotion/rejoin (aliasjoin_A hiện bị opt-inmode từchối) theo trigger; không port điều kiện từ profile cũ.
+1. **KR-R004/S001 — currentmode hostBack/promotion/Aguest rejoin:**
+   [CP165](PROTOCOL.md#input-batch-gating) đóng `NEXT-MODE-PRESET-INPUT-PACING` và
+   `NEXT-MODE-PRESET-START3` trong scope đãđo: lô15×5px vs gatedmostly1/15pxcontrol, same45ms/tolerance;
+   exportedcommittedpreset2outcomes/reset/Ready→actualStart3/12199/clocks/render8s/Manner1/nobomb3.
+   Không lặp codec/inputbody/roster8/2cycle-smoke; hai CP164partials giữnguyên, khôngsuy naturalCP157fixed.
+   Gap cụthể K4: modepolicy chỉ create/join, promoted aliasjoin_A bịtừchối dù preset host_back_rejoin bật.
+   SourcefirstCP107/129/157 knownidle/normalhostBack/107clear/110chief1/87/session, CP161 title vàCP162
+   mode86/87/180: preflight knownjoin_A87/7bytes/selectoroffset5, chỉ mở dưới existingpromotedmembership
+   guards; giữ C/generalrecreate/password/Random unknown, không gán row91opaquemode từ title.
+   Unitnegative/wronghost/staleconnection/sendfailure/default/sequence/opaque-tail; không bypass membership.
+   Runtimefreshcopy/exportedprofile/isolatedhosts: currentactualMannercreate/AhostBack→Bpromotion/Alobby91
+   cùngtitle→Aactual82/join_A87/117→ReadyA/StartB/native12199/clock/render8s. Chọn idleBack tốithiểu
+   trước Battleleavevariants nếu đủtái hiện defect; không lặp2cycles chỉ vì biết recipe. No gamewrite/call.
+   Sau kiểm pathcurrent, rà checklistK4/dependencies/authority/gate bằng nguồn thật; không tự đóngK4
+   chỉ vì PR/clock hoặc lấy CP157 oldprofile thay currentmode. K6a/fullmatch/LAN/8actualclients còn mở.
    [#14](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/14) giữ mở.
    <!-- active-issue: 14 --> AUD049 qua164, audit định kỳ kế **CP168**.
 2. **KR-B003/KR-F006 — nợ có giới hạn:** [CP057](PROTOCOL.md#codec-stream-boundaries) đã đo stream/
@@ -111,7 +111,7 @@ Bảng này chỉ phân công/thứtự; acceptance/PR/bằngchứng ởissue. [
 
 | Thứ tự/scope | Issue | Trạng thái/phần còn thiếu |
 |---|---|---|
-| Hiện hành RE | [#14/KRE-005b](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/14) | CP006–163 merged; CP164 preset partial/inputblocker/AUD049 có nguồn/tự kiểm; targeted inputpacing là bước1; gaps giữ; fullauth/authority/fullmatch/gates mở. |
+| Hiện hành RE | [#14/KRE-005b](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/14) | CP006–164 merged; CP165 inputcontrol/preset2cycles/Start3 có nguồn/tự kiểm; currentmodehostpromotion/rejoin là bước1; gaps giữ; fullauth/authority/fullmatch/gates mở. |
 | Control theo trigger/gate | [#1/KRE-001](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/1), [#2/KRE-002](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/2) | Windowsoriginal/ownership/K0K1/fullbootstrapconfig; reuseWine/import/replyđãđo. |
 | Codec/identity khi cần | [#3/KRE-003](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/3), [#9/KRE-005a](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/9) | Fullcodec/livebounds vàintermittentmainstartupcause cònthiếu; khônglặpprimitive/auxiliarylocale. |
 

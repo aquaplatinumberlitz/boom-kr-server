@@ -135,11 +135,11 @@
         "KR-F001",
         "KR-F015"
       ],
-      "known": "CP163/PR234mergedc5c1bba. CP164actualcommittedmodepreset/Manner1/81→ACK/BBackrejoin/firstnativeclock observed in2partialruns;noFire/bomb/outcome/Start3. Source/preset unchanged/reuse257server4export byhash;AUD049through164/next168.",
-      "remaining": "R145mspulse20stable159↔234alignmiss199±30;R215ms6stablesamepositionsalignnotstable3s. Nativekeydwell/queue/stepcauseunknown. Plannedpreset2cycles/Start3notmet. Currentmodepromotion/rejoin aliasjoin_A rejected; broaderK4/K6a/auth/authority/Windows/LAN/Internet/8realclients open.",
-      "next_test": "PLAN sourcefirstCP082/094/123/150/156/capturedpartials; boundedactualkeydown/up→nativekeypoll/direction/actorstep/peerapply usingknownhooks/cache. No tolerance/timeoutrelaxation/gamefunction/actorwrite/fake124104; retryplannedpreset2cycles/Start3whenconcretepacinghypothesis. Afterthiscurrentmodehostpromotiongap.",
+      "known": "CP164/PR235merged3828466. CP165finite15nativeSteps5px=75 pluslowobservercontrolmostly1/15pxsame45ms;currentcommitted47pinpreset2normaloutcomes/reset/Ready→actualStart3/12199/clocks/render8s/Manner1.12alignmentwindows exactBPrestore/originalcriteria;productionunchanged/reuse257server4export.",
+      "remaining": "Currentmodehostpromotion/rejoin join_A stillpolicyrejected; K4acceptance/dependenciespending. K6a/fullmatch/fullauth/originalauthority/Windows/LAN/Internet/8actualclients/naturalCP157 open. Inputcontrolnotvanillalaw/wholeexecutiontrace.",
+      "next_test": "PLAN reuseCP107/129/157knownhostBack/107clear/110chief1/87/session, CP161title/CP162modeoffset5: preflightandpermitjoin_Aonlyunderexistingpromotedmembershipguards; negative/default/seq/sendfailure thenfreshnativecurrentManneridlehostBack→Bchief/Alobbytitle→A82/87/ReadyA/BStart/nativeclockrender. No redundant2cycleRE.",
       "acceptance": "Epic checklist: linkedscopedtask/evidence+authoritymatrix vàacceptancegate ởPLAN; từngtaskđóng khôngđóngepic/K5/K6a.",
-      "reason": "CP164isgroupedblocker+periodicaudit, notcompletedpreset2cycles/Start3/gate. Preservefailedruns/completehistory;targetactualinputblocker.",
+      "reason": "CP164runtimeinputblocker solvedinnewrecipeswithoutprofile/game/guard/tolerancechange; currentpresetStart3objective closedscope. Continueconcretecurrentmodehostpromotiongap; noautogate.",
       "sources": [
         "docs/PROTOCOL.md#authority",
         "docs/RESEARCH.md#feature-gaps",
@@ -185,7 +185,8 @@
         "docs/PROTOCOL.md#exported-preset-runtime",
         "docs/PROTOCOL.md#current-room-title",
         "docs/PROTOCOL.md#current-team-mode",
-        "docs/PROTOCOL.md#mode-preset-input-blocker"
+        "docs/PROTOCOL.md#mode-preset-input-blocker",
+        "docs/PROTOCOL.md#input-batch-gating"
       ],
       "evidence": [
         "docs/evidence/current-movement-cycles/README.md",
@@ -228,7 +229,8 @@
         "docs/evidence/peer-endpoints/README.md#cp161",
         "docs/evidence/peer-endpoints/README.md#cp162",
         "docs/evidence/eight-player/README.md#cp163",
-        "docs/evidence/peer-endpoints/README.md#cp164"
+        "docs/evidence/peer-endpoints/README.md#cp164",
+        "docs/evidence/peer-endpoints/README.md#cp165"
       ],
       "prs": [
         173,
@@ -286,7 +288,8 @@
         231,
         232,
         233,
-        234
+        234,
+        235
       ],
       "successors": []
     },

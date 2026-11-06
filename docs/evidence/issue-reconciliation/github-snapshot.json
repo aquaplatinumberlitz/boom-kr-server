@@ -1,7 +1,7 @@
 {
   "schema": "kre-github-snapshot-v1",
   "repo": "aquaplatinumberlitz/boom-kr-server",
-  "captured_utc": "2026-11-06T10:22:30.711865+00:00",
+  "captured_utc": "2026-11-06T11:04:46.558164+00:00",
   "limits": "State as of capture only; body/declarations are not semantic acceptance; no GitHub mutation.",
   "issues": [
     {
@@ -572,12 +572,12 @@
       "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/56"
     },
     {
-      "body": "KRE-005b / Codex owner; independent review waived by owner, Codex self-check. Baseline CP163/PR234 merge `c5c1bba76965042a1cba4b3f2dc88107045c3742`.\n\nNguồn chuẩn: [PLAN/order](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/PLAN.md#current-order), [PROTOCOL](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/PROTOCOL.md), [RESEARCH](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/RESEARCH.md#gap-diagnostic-service), [catalog](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/COVERAGE.md).\n\n## CP164 pending PR — checkpoint blocker/audit, không smoke thành công\n\nCP163/PR234mergedc5c1bba. CP164actualcommittedmodepreset/Manner1/81→ACK/BBackrejoin/firstnativeclock observed in2partialruns;noFire/bomb/outcome/Start3. Source/preset unchanged/reuse257server4export byhash;AUD049through164/next168.\n\n[Contract/blocker](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/kre/mode-preset-audit/docs/PROTOCOL.md#mode-preset-input-blocker); [raw/hash/AUD049](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/kre/mode-preset-audit/docs/evidence/peer-endpoints/README.md#cp164).\n\n## Blocker/phần còn thiếu\n\nR145mspulse20stable159↔234alignmiss199±30;R215ms6stablesamepositionsalignnotstable3s. Nativekeydwell/queue/stepcauseunknown. Plannedpreset2cycles/Start3notmet. Currentmodepromotion/rejoin aliasjoin_A rejected; broaderK4/K6a/auth/authority/Windows/LAN/Internet/8realclients open.\n\n## Phép thử tiếp\n\nPLAN sourcefirstCP082/094/123/150/156/capturedpartials; boundedactualkeydown/up→nativekeypoll/direction/actorstep/peerapply usingknownhooks/cache. No tolerance/timeoutrelaxation/gamefunction/actorwrite/fake124104; retryplannedpreset2cycles/Start3whenconcretepacinghypothesis. Afterthiscurrentmodehostpromotiongap.\n\n## Acceptance / phạm vi issue tổng hợp\n\n- [x] Bootstrap/WCP local, identity chẩn đoán, sảnh/phòng/load bằng copy KR có evidence theo môi trường.\n- [x] Hai actual copy Wine có movement/bomb/pickup/trap/result/reset/Ready trong bounded policy; CP160 Start3 chỉ active. CP161 title echo đã merge.\n- [x] Input Free/Manner và giữ selector qua create/join/reset: CP162 merged PR233; không thay8-client acceptance.\n- [ ] Khép các khoảng trống thực tế theo PLAN/RESEARCH; đối chiếu K5/K6a bằng cùng-run evidence và authority/limits.\n- [ ] Gate/fullmatch/auth/original authority không tự đóng từ task hẹp; Windows control, LAN/Internet và8 client thật chưa nghiệm thu.\n\nKhông dùng số checkpoint/process alive/encoder tự sinh/PR merged để tự nâng gate. Issue giữ mở; manifest complete bất biến, acceptance/bằng chứng cụ thể dẫn từ catalog.\n\nFeature backlinks (navigation only): KR-B001, KR-B002, KR-B003, KR-L001, KR-L002, KR-L003, KR-R001, KR-R002, KR-R003, KR-R004, KR-F001, KR-F002, KR-F003, KR-F004, KR-F005, KR-F006, KR-F007, KR-F008, KR-F009, KR-F010, KR-F011, KR-F012, KR-F013, KR-F014, KR-F015, KR-X001, KR-X002, KR-X003, KR-S001, KR-S002.\n",
+      "body": "KRE-005b / Codex owner; independent review waived by owner, Codex self-check. Baseline CP164/PR235 merge `38284668d7e60c10b30b58bc8c36f2aa50b458d8`.\n\nNguồn chuẩn: [PLAN/order](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/PLAN.md#current-order), [PROTOCOL](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/PROTOCOL.md), [RESEARCH](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/RESEARCH.md#gap-diagnostic-service), [catalog](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/COVERAGE.md).\n\n## CP165 pending PR — currentpreset2cycles/Ready/actualStart3\n\nCP164/PR235merged3828466. CP165finite15nativeSteps5px=75 pluslowobservercontrolmostly1/15pxsame45ms;currentcommitted47pinpreset2normaloutcomes/reset/Ready→actualStart3/12199/clocks/render8s/Manner1.12alignmentwindows exactBPrestore/originalcriteria;productionunchanged/reuse257server4export.\n\n[Contract](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/kre/input-pacing/docs/PROTOCOL.md#input-batch-gating); [raw/control/hash](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/kre/input-pacing/docs/evidence/peer-endpoints/README.md#cp165).\n\n## Phần còn thiếu\n\nCurrentmodehostpromotion/rejoin join_A stillpolicyrejected; K4acceptance/dependenciespending. K6a/fullmatch/fullauth/originalauthority/Windows/LAN/Internet/8actualclients/naturalCP157 open. Inputcontrolnotvanillalaw/wholeexecutiontrace.\n\n## Phép thử tiếp\n\nPLAN reuseCP107/129/157knownhostBack/107clear/110chief1/87/session, CP161title/CP162modeoffset5: preflightandpermitjoin_Aonlyunderexistingpromotedmembershipguards; negative/default/seq/sendfailure thenfreshnativecurrentManneridlehostBack→Bchief/Alobbytitle→A82/87/ReadyA/BStart/nativeclockrender. No redundant2cycleRE.\n\n## Acceptance / phạm vi issue tổng hợp\n\n- [x] Bootstrap/WCP local, identity chẩn đoán, sảnh/phòng/load bằng copy KR có evidence theo môi trường.\n- [x] Hai actual copy Wine có movement/bomb/pickup/trap/result/reset/Ready trong bounded policy; CP160 Start3 chỉ active. CP161 title echo đã merge.\n- [x] Input Free/Manner và giữ selector qua create/join/reset: CP162 merged PR233; không thay8-client acceptance.\n- [ ] Khép các khoảng trống thực tế theo PLAN/RESEARCH; đối chiếu K5/K6a bằng cùng-run evidence và authority/limits.\n- [ ] Gate/fullmatch/auth/original authority không tự đóng từ task hẹp; Windows control, LAN/Internet và8 client thật chưa nghiệm thu.\n\nKhông dùng số checkpoint/process alive/encoder tự sinh/PR merged để tự nâng gate. Issue giữ mở; manifest complete bất biến, acceptance/bằng chứng cụ thể dẫn từ catalog.\n\nFeature backlinks (navigation only): KR-B001, KR-B002, KR-B003, KR-L001, KR-L002, KR-L003, KR-R001, KR-R002, KR-R003, KR-R004, KR-F001, KR-F002, KR-F003, KR-F004, KR-F005, KR-F006, KR-F007, KR-F008, KR-F009, KR-F010, KR-F011, KR-F012, KR-F013, KR-F014, KR-F015, KR-X001, KR-X002, KR-X003, KR-S001, KR-S002.\n",
       "closedAt": null,
       "number": 14,
       "state": "OPEN",
       "title": "[KRE-005b] Tích hợp KR00967 local: Battle, lifecycle và nghiệm thu",
-      "updatedAt": "2026-11-06T10:24:01Z",
+      "updatedAt": "2026-11-06T11:06:18Z",
       "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/14"
     },
     {
@@ -636,6 +636,17 @@
     }
   ],
   "pull_requests": [
+    {
+      "headRefOid": "bb5457908c66f7795a1f914af5d5f210acbea7ff",
+      "mergeCommit": {
+        "oid": "38284668d7e60c10b30b58bc8c36f2aa50b458d8"
+      },
+      "mergedAt": "2026-11-06T10:29:51Z",
+      "number": 235,
+      "state": "MERGED",
+      "title": "Preserve preset smoke failures, input blocker and AUD049 (CP164)",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/235"
+    },
     {
       "headRefOid": "260a652b41124f0a1f3b14ef9f613334a9aff9ac",
       "mergeCommit": {

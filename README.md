@@ -41,17 +41,18 @@ Hai copy KR Wine đã chạy login/sảnh/phòng/Battle và các chu kỳ kết 
 [kim/reset](docs/PROTOCOL.md#needle-round-reset), [cứu hai chiều và hai kết quả](docs/PROTOCOL.md#rescue-two-results),
 [deep chain/reset](docs/PROTOCOL.md#recursive-chain-cycles) giữ phạm vi và giới hạn tại nguồn chuẩn.
 
-**CP164 là checkpoint blocker và audit, chưa phải preset smoke thành công.** Hai run thực sự dùng
-preset Manner đã commit, qua guest Back/vào lại và native clock vòng1, nhưng dừng ở controller căn vị trí
-trước Fire/bom/kết quả/Start3. [Contract/giới hạn](docs/PROTOCOL.md#mode-preset-input-blocker),
-[raw/hash](docs/evidence/peer-endpoints/README.md#cp164). Source/config giữ nguyên khi chạy; raw/cleanup đã seal.
+**Mốc mới CP165:** preset Manner đã commit chạy hai vòng kết quả/reset/Ready, rồi **Start3 thật,
+native clock và render cả hai view**. [Contract/giới hạn](docs/PROTOCOL.md#input-batch-gating),
+[run/hash](docs/evidence/peer-endpoints/README.md#cp165). Vòng3 chỉ active, không trận thứ ba hoàn chỉnh.
 
-[CP163](docs/PROTOCOL.md#battle-eight-roster) đã kiểm Manner8 slot tổng hợp:4–4 Start0/104,
-1–7 Start7/no104; đã merge [PR234](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/234) tại `c5c1bba`.
-CP164 tự kiểm/chờ PR. AUD049 qua164, kỳ tiếp CP168. [PLAN](docs/PLAN.md#current-order) tiếp đo native
-input/nhả phím có mục tiêu, giữ tiêu chí preset2cycles/Start3 mở. K4 currentmode chuyển chủ/vào lại,
-K6a/fullmatch/LAN/Internet/8 client thật chưa nghiệm thu; không đóng gate theo số checkpoint.
-[Review waived](docs/evidence/checkpoints/review-waiver.json).
+Đã đo blocker CP164: một lô15 bước×5px tạo bước nhảy75px; đối chứng giảm tải observer cho lô chủ yếu1
+và cùng pulse45ms chỉ15px. Căn vị trí được sửa ở harness bằng tạm tắt/khôi phục breakpoint đo,
+giữ source game/service/preset/tolerance và tiêu chí gốc. Hai partial CP164 vẫn là lịch sử thất bại.
+
+CP164 đã merge [PR235](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/235) tại `3828466`;
+CP165 tự kiểm/chờ PR. AUD049 qua164, kếCP168. [PLAN](docs/PLAN.md#current-order) tiếp currentmode
+chuyển chủ/vào lại (`join_A` hiện bị policy từchối), rồi rà acceptance K4. K4/K6a/fullmatch/LAN/Internet/
+8client thật còn mở; [review waived](docs/evidence/checkpoints/review-waiver.json).
 
 Đích đầu: hai client thật chơi hai trận liên tiếp; mở bốn client và hardening sau đó.
 

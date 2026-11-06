@@ -1,6 +1,6 @@
 # KR 00967 — contract tương thích client gốc
 
-Revision kr-legacy-contract-r1; cập nhật06/11/2026 JST (CP164; AUD049 quaCP164, kếCP168).
+Revision kr-legacy-contract-r1; cập nhật06/11/2026 JST (CP165; AUD049 quaCP164, kếCP168).
 **Contract có bằng chứng từng phần; chưa nghiệm thu full codec K2**.
 Lộ trình và thứ tự task chỉ giữ ở [REWRITE_PLAN — KRE](PLAN.md).
 Đây là contract của repo server KR. ADR0009 của bản viết lại là nguồn lịch sử để so sánh;
@@ -2020,8 +2020,8 @@ locator/trace và trạng thái từng ô; những vai trò không nêu dưới 
 | Block destroy/item reveal | CP032 nativecontract; CP068 [currentservice/list2/reportgate/effect/reset](#current-hidden-items), CP092 [195flags/seedreset](#map-flags-snapshot), CP094/095 [pinnedpolicy/nativeboxclear](#terrain-policy) cảhai view | Drop algorithm gốc/fullvalidator, genericclass/map và transport khác còn thiếu; không dùng report142 làm worldoracle |
 | Item placement/pickup | [CP159/160](#production-baseline) productionimmediate165/1or2actualclaims/oneeffect/nativewinnerpower/reset; [CP155](#direct-oldudp-contest-eof) hold2sactualcontenders là control riêng | Full124distance/auth/generation/inventory/max/speedTTL/activevariants chưa đủ; delay2s không còn trongproductionbaseline |
 | Trap/death | [CP159/160](#exported-preset-runtime) strict56→1/other0beforerank2views/2epochs; [CP157natural](#current-host-ui-exit)/[CP158controlledoverwrite](#current-trap-udp-counter) giữ causal limits | Snapshot khôngglobalsametick; samekeycounterheuristic cho controlledremoteoverwrite; naturalCP157cause unknown, nofullvalidator |
-| Result/reset | [CP162](#current-team-mode) Manner1 giữ qua2normaloutcomes/reset/Ready; [CP160](#exported-preset-runtime) olderpreset actualStart3; [CP164](#mode-preset-input-blocker) currentpreset chưa kết quả/Start3 | Native/entity/stat/195flags có scope được đo; allinventory/timer/seq/peer/resetvariants/originalarbitration vẫn thiếu, không cộngrun thànhfullmatch |
-| Room lifecycle | [CP161 title](#current-room-title), [CP162 mode/return](#current-team-mode) có2normalcycles/Ready; [CP164 actualpreset](#mode-preset-input-blocker) chỉ firstclock/guestrejoin partial. CP155–157 EOF/UI controls giữ profile riêng | Currentmode hostpromotion/rejoin chưa đo, opt-in policy hiện từ chối join_A. Accountresume/halfclose/loss/generalreplace chưa đủ; không lấy oldprofileexit làm currentmode proof |
+| Result/reset | [CP165](#input-batch-gating) currentcommittedMannerpreset2normaloutcomes/reset/Ready rồiactualStart3/12199/clocks/render8s; [CP164](#mode-preset-input-blocker) two partials giữlịchsử | Thirdactive khôngthirdcompletedmatch; allinventory/timer/seq/peer/resetvariants/originalarbitration vẫn thiếu, không cộngrun thànhfullmatch |
+| Room lifecycle | [CP161 title](#current-room-title), [CP162 mode/return](#current-team-mode) có2normalcycles/Ready; [CP165 currentpreset](#input-batch-gating) guestBack/rejoin/2outcomes/Ready/Start3 đã đo; CP164partial giữ lịch sử. CP155–157 EOF/UI controls giữ profile riêng | Currentmode hostpromotion/rejoin chưa đo, opt-in policy hiện từ chối join_A. Accountresume/halfclose/loss/generalreplace chưa đủ; không lấy oldprofileexit làm currentmode proof |
 | Peer lifecycle | [CP159/160](#exported-preset-runtime)actual99/153/currentdirectIPs/ports; [CP155oldUDP](#direct-oldudp-contest-eof)/[CP158samekeycounter](#current-trap-udp-counter) controls riêng | Key/counterbytekhôngauth/universalfreshness; low8wrap/reliability/fullgrammar/relay/NAT/LAN/Internet unknown |
 
 Trong **optional profile hiện hành**, bảng dưới ghi vai trò emulator, không gán cho server gốc.
@@ -5755,7 +5755,7 @@ Windows/auth/original authority; natural CP157 vẫn unknown. Runtime8 slot sele
 
 
 <a id="mode-preset-input-blocker"></a>
-### Committed mode-preset: first clock và input blocker — CP164
+### Committed mode-preset: first clock và input blocker — CP164 (lịch sử, CP165 giải scope mới)
 
 **`kr_runtime/confirmed` cho phần đã quan sát; planned2cycles/Start3 còn `unknown`/chưa đạt.**
 [Run/hash/audit](evidence/peer-endpoints/README.md#cp164). Tái dùng CP160 normalStart3/export/native,
@@ -5781,3 +5781,42 @@ failedR3/CP157, auditthrough164/next168; không tự nghiệm thu gate. K4 curre
 còn chưa đo: codeoptin chỉ create/join và từ chối promoted aliasjoin_A; prior CP157/129profile không
 chứng minh currentmode. Fullauth/authority/K6a/fullmatch/Windows/LAN/Internet/8realclients còn mở.
 Phép đo tiếp chỉ ở PLAN/RESEARCH: nativeinput/keyup/actorstep trace tối thiểu rồi thử lại khi có giả thuyết.
+
+
+<a id="input-batch-gating"></a>
+### Native batch, observer control và committed mode-preset Start3 — CP165
+
+**`kr_static/kr_runtime/confirmed` trong scope copy Wine/debugger/recipe; không vanilla timing.**
+[Raw/control/hash](evidence/peer-endpoints/README.md#cp165). Sourcefirst CP082/094 neutral, CP123
+keyup drift, CP150 stop-on-nativepickup, CP156 tolerancecontrol, CP164raw2partials; VNinput dispatch/gate
+chỉ cách đo, không port offset/IAT/opcode. NativeIDA4body `E7C400/E7CE60/E7D350/E7C750` và cached
+`E7D2B0/E2D130` dùng privateDBcopy; bodyhash khớp fullcopycf72/static660447/runtimee9bb/modOa089,
+base400000/RVA=VA−base. MCP thiếu plugin, existinglocalIDA batch fallback riêng; không config/sourceDBchange.
+
+Runtime finiteDown45ms: actualWndProc keyup xảy ra **trước** movingbatch A, nhưng batch đó có15 lần
+native loopE7C48B→E7C750/worldvirtual1C; actorY159→164→…→234,5px/bước. State23 giữ qua loop,
+sang15 sau loop trước virtualE2D130; không gán causality cho virtual khi state đã đổi trướcentry.
+Getter4524models từ rawwrapper là emulation riêng. B thấy234 không thay proof exactUDPapply của CP145/155.
+Đối chứng chỉ measurementBPgating, samepulse45ms/profile/copy: chờ3consecutive batches≤3 bounded5s,
+nativecounts chủyếu1 và actor159→174 ởhai view;112BPenabledstates đượcrestoređúng. Native24gettermodels
+và17relations riêng. Heavytrace có thể tạo thêm timingperturbation: đo/control này không retrospective
+chứng minh mọi CP164input hoặc bug nativegốc; đủ giảthuyết cho harnessintegration mới.
+
+Runpreset r3 dùng **actualcommitted47pinexport/exactCP162r4profile/directmodule**, không service/game/preset
+change, nohold165/activeUDPprobe. Chỉ trong12alignmentwindows, đóng measurementbreakpoints khôngcần
+và bỏ duplicatedcollisionprintf, giữ readonlynativefeedback; restoreexactenabledstates cảhai view trước
+contest/Bomb. Giữ45ms/20attempt/3freshneutral/tolerance30approach,12return và neutral3s/known6sreturn;
+không đổi target/actual124/native165 hoặc gọi gamefunction/viếtactor/count/tick.162gatingchecks/capturedacks
+vàall4native165callbacks/view khôi phục proof pickup. Event chronology tronggatedwindows không đầy đủ;
+không gọi đó là wholeinstructiontrace hoặc mất event nghĩa là không thực thi.
+
+Cùngrun397.659234656s/exit0/1366raw/107frozen:2normaloutcomes/reset/Ready rồi normalA104/third121129/
+99barrier/nativeclocks/render+8bothviews; thirdactive/nobomb/noaccepted17,19, no thirdoutcome.
+Mode1 qua86/87/rejoin/2×180 vàStart3; title16byte heap31/native81/91/87 vàảnhcảhai giữ.75pickup/46cycle/
+651peer4windows/14claims/24loading/26entityreset/23strictlife/26preset/42mode/21modeframercases;
+648actor/420peer/2758flag+2730array/16life/330nativepacketmodels táchruntime/model. Raw/cleanupseal
+đạt; reuse257server/4exporttests bằng exactsourcehash vì productionkhôngđổi. CP164partials không backfill.
+
+GateK4currentmodehostpromotion/rejoin còn thiếu: join_A87 hiện bị policy từchối; CP107/129/157 oldprofile
+vẫn là nguồn riêng, không currentproof. K6a/fullmatch/Windows/LAN/Internet/8actualclients/generalreset/
+fullauth/originalauthority/naturalCP157 mở. AUD049qua164/kế168; bước tiếp duy nhất PLAN.
