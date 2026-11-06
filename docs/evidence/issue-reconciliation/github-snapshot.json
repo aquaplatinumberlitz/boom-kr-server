@@ -1,7 +1,7 @@
 {
   "schema": "kre-github-snapshot-v1",
   "repo": "aquaplatinumberlitz/boom-kr-server",
-  "captured_utc": "2026-11-06T14:16:02.889883+00:00",
+  "captured_utc": "2026-11-06T14:38:19.506181+00:00",
   "limits": "State as of capture only; body/declarations are not semantic acceptance; no GitHub mutation.",
   "issues": [
     {
@@ -572,12 +572,12 @@
       "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/56"
     },
     {
-      "body": "KRE-005b / Codex owner; independent review waived by owner, Codex self-check. Baseline optional preset PR242 merge `87e7175f163c0ceaf39a03bc8a6fac535781f8b9`; CP170 merged PR241.\n\nNguồn chuẩn: [PLAN/order](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/kre/basic-preset-start3/docs/PLAN.md#current-order), [contract/limits CP171](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/kre/basic-preset-start3/docs/PROTOCOL.md#basic-preset-start3), [RESEARCH gap](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/kre/basic-preset-start3/docs/RESEARCH.md#gap-floor-pickup), [catalog](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/kre/basic-preset-start3/docs/COVERAGE.md).\n\nCP171 tự kiểm/chờ PR: actual optional basic export/direct production service đã hai native basic outcomes/reset/Ready rồi normal BStart3. Raw/hash/corrections tại [evidence CP171](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/kre/basic-preset-start3/docs/evidence/peer-endpoints/README.md#cp171). 1741 first-two checks,417 exported-file/Start3 checks; 180 native packet/552 field cases, life23/16. Source/config frozen/cleanup sealed. No fullmatch/gate/Windows/LAN/Internet/8-client claim. AUD050 through168/next172.\n\nPhần thiếu và phép thử tiếp theo PLAN: hidden142 hiện anycurrent158 có thể nhận known-cell khác. Tái dùng current terrain/native195/cell clear và142consumer đã biết; kiểm policy currentgeneration/committedclearedcell với unrelated/oldgeneration/pending/partialbroadcast/duplicate/positive, rồi fresh native basic2cycles/Start3. Đây là design validator; 142không recovered roundkey, oldbyte sau legitimatecurrentclear vẫn chưa phân biệt được. Fullauth/distance/freshness/generalreset và các gate vẫn mở. Không lặp entireconsumer/CP155oldUDP khi chưa có delta liên quan.\n\n## Acceptance / phạm vi issue tổng hợp\n\n- [x] Bootstrap/WCP local, identity chẩn đoán, sảnh/phòng/load bằng copy KR có evidence theo môi trường.\n- [x] Hai actual copy Wine có movement/bomb/pickup/trap/result/reset/Ready trong bounded policy; CP160 Start3 chỉ active. CP161 title echo đã merge.\n- [x] Input Free/Manner và giữ selector qua create/join/reset: CP162 merged PR233; không thay8-client acceptance.\n- [ ] Khép các khoảng trống thực tế theo PLAN/RESEARCH; đối chiếu K5/K6a bằng cùng-run evidence và authority/limits.\n- [ ] Gate/fullmatch/auth/original authority không tự đóng từ task hẹp; Windows control, LAN/Internet và8 client thật chưa nghiệm thu.\n\nKhông dùng số checkpoint/process alive/encoder tự sinh/PR merged để tự nâng gate. Issue giữ mở; manifest complete bất biến, acceptance/bằng chứng cụ thể dẫn từ catalog.\n\nFeature backlinks (navigation only): KR-B001, KR-B002, KR-B003, KR-L001, KR-L002, KR-L003, KR-R001, KR-R002, KR-R003, KR-R004, KR-F001, KR-F002, KR-F003, KR-F004, KR-F005, KR-F006, KR-F007, KR-F008, KR-F009, KR-F010, KR-F011, KR-F012, KR-F013, KR-F014, KR-F015, KR-X001, KR-X002, KR-X003, KR-S001, KR-S002.\n",
+      "body": "KRE-005b / Codex owner, self-check; independent review waived by project owner. Baseline CP171 PR243 merge `89f228b2af177e9008ea99df35e6caf28737f577`.\n\nNguồn chuẩn: [PLAN/order + acceptance](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/kre/hidden-cell-admission/docs/PLAN.md#current-order), [contract/limits](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/kre/hidden-cell-admission/docs/PROTOCOL.md#hidden-cell-admission-current), [RESEARCH](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/kre/hidden-cell-admission/docs/RESEARCH.md#gap-floor-pickup), [catalog](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/kre/hidden-cell-admission/docs/COVERAGE.md), [raw/hash](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/kre/hidden-cell-admission/docs/evidence/peer-endpoints/README.md#cp172).\n\nCP172 self-check/pending PR: bounded terrain-cell142 guard/generation/commit/roster,5newtests/270server suite và fresh actual-exported basic runtime2cycles/3effects/reset/Ready/BStart3 đã kiểm.52admissionjoins:8accepted/8outsidecatalog/4duplicate actual142;1736firsttwo/419Start3checks/180packet/552fieldmodels/life23/16. Code/profile frozen through cleanup/seal. Guard is design; identical old142 after legitimatecurrentclear/full142auth/distance/freshness unresolved. No gate/fullmatch/Windows/LAN/Internet/8client claim.\n\nPhép thử tiếp duy nhất theo PLAN: tái dùng CP155/160/168 B118/peer windows và CP170172 exactbasic route/probes/normaloutcomes. Ghép B native Space/118/159158/escape và movement A↔B vào cùng hai basiccycles; giữ3effects/reset/Ready/normalBStart3, no bounds relaxation/fakepacket/actorwrite. Oldfloor proof không backfill basic; không lặp entireconsumer/oldUDP khi chưa có delta. AUD051 through172/next176.\n\n## Acceptance / phạm vi issue tổng hợp\n\n- [x] Bootstrap/WCP local, identity chẩn đoán, sảnh/phòng/load bằng copy KR có evidence theo môi trường.\n- [x] Hai actual copy Wine có movement/bomb/pickup/trap/result/reset/Ready trong bounded policy; CP160 Start3 chỉ active. CP161 title echo đã merge.\n- [x] Input Free/Manner và giữ selector qua create/join/reset: CP162 merged PR233; không thay8-client acceptance.\n- [ ] Khép các khoảng trống thực tế theo PLAN/RESEARCH; đối chiếu K5/K6a bằng cùng-run evidence và authority/limits.\n- [ ] Gate/fullmatch/auth/original authority không tự đóng từ task hẹp; Windows control, LAN/Internet và8 client thật chưa nghiệm thu.\n\nKhông dùng số checkpoint/process alive/encoder tự sinh/PR merged để tự nâng gate. Issue giữ mở; manifest complete bất biến, acceptance/bằng chứng cụ thể dẫn từ catalog.\n\nFeature backlinks (navigation only): KR-B001, KR-B002, KR-B003, KR-L001, KR-L002, KR-L003, KR-R001, KR-R002, KR-R003, KR-R004, KR-F001, KR-F002, KR-F003, KR-F004, KR-F005, KR-F006, KR-F007, KR-F008, KR-F009, KR-F010, KR-F011, KR-F012, KR-F013, KR-F014, KR-F015, KR-X001, KR-X002, KR-X003, KR-S001, KR-S002.\n",
       "closedAt": null,
       "number": 14,
       "state": "OPEN",
       "title": "[KRE-005b] Tích hợp KR00967 local: Battle, lifecycle và nghiệm thu",
-      "updatedAt": "2026-11-06T14:17:35Z",
+      "updatedAt": "2026-11-06T14:39:52Z",
       "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/14"
     },
     {
@@ -636,6 +636,17 @@
     }
   ],
   "pull_requests": [
+    {
+      "headRefOid": "defd8a1a123db0e9db091272e7c7af3d18f4fcbe",
+      "mergeCommit": {
+        "oid": "89f228b2af177e9008ea99df35e6caf28737f577"
+      },
+      "mergedAt": "2026-11-06T14:25:00Z",
+      "number": 243,
+      "state": "MERGED",
+      "title": "Verify actual basic preset export, two cycles and B Start3 (CP171)",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/243"
+    },
     {
       "headRefOid": "b805ed5c2e6f63718c5bde785a23957c0814ab1d",
       "mergeCommit": {

@@ -135,11 +135,11 @@
         "KR-F001",
         "KR-F015"
       ],
-      "known": "CP170 PR241 và optional basic preset PR242 merged; CP171 actual export/directmodule2cycles/3itemeffects/reset/Ready/normalBStart3/native clocks/render đã kiểm; default floor preset giữ.",
-      "remaining": "Hidden142 gate vẫn anycurrent158 thay vì đúng currentclearedcell. Full142auth/distance/freshness/generalreset, currentbasic intentional disconnect/twonativecontenders, K0–K7/fullmatch/Windows/LAN/Internet/8clients mở.",
-      "next_test": "PLAN tái dùng CP068/069/170/171/native195/terrain_blast.cleared: kiểm policy142 đúng currentgeneration/committed clearedcell/broadcast với negatives và freshnativebasic positive2cycles/Start3. Không RE lại consumers/CP155oldUDP.",
+      "known": "CP171 PR243 merged; CP172 current terrain-cell142/generation/commit/roster guard/270server tests/fresh basic2cycles/3effects/reset/Ready/BStart3/native clocks/render đạt.8accepted+8outsidecatalog/4duplicate142 có nguồn.",
+      "remaining": "Basic current run còn thiếu B118/escape và native peer windows hai chiều; trước đó floor profile có nguồn riêng. Full142key/auth/distance/freshness/old142afterlegitclear/generalreset, K0–K7/fullmatch/Windows/LANInternet/8clients mở.",
+      "next_test": "PLAN source-first CP155160168 bidirectional/B118 plusCP170172 exactbasicroute: ghép nativeB118/escape và A↔B windows ngoài observerdisable vào cùng2basiccycles/reset/Ready/Start3; giữ3effects/A17→19/B21/bounds, không fakeinputs hoặc repeatalloldUDP.",
       "acceptance": "Epic checklist: linkedscopedtask/evidence+authoritymatrix vàacceptancegate ởPLAN; từngtaskđóng khôngđóngepic/K5/K6a.",
-      "reason": "Optional preset/exported-runtime/Start3 đã giải trong scope CP171; giữ epic mở vì acceptance/gate còn thiếu. Next gap là policy142 có bằng chứng code/test cho knowncell sau unrelatedblast.",
+      "reason": "Đóng scope terrain-cell admission sau policy negatives và native positive, không đóng epic/gate. AuditAUD051through172/next176 rà lại actualbasic acceptance và chọn delta Bowner/bidirectional còn thiếu.",
       "sources": [
         "docs/PROTOCOL.md#authority",
         "docs/RESEARCH.md#feature-gaps",
@@ -236,7 +236,8 @@
         "docs/evidence/peer-endpoints/README.md#cp168",
         "docs/evidence/peer-endpoints/README.md#cp169",
         "docs/evidence/peer-endpoints/README.md#cp170",
-        "docs/evidence/peer-endpoints/README.md#cp171"
+        "docs/evidence/peer-endpoints/README.md#cp171",
+        "docs/evidence/peer-endpoints/README.md#cp172"
       ],
       "prs": [
         173,
@@ -302,7 +303,8 @@
         239,
         240,
         241,
-        242
+        242,
+        243
       ],
       "successors": []
     },
@@ -629,6 +631,6 @@
       "successors": []
     }
   ],
-  "as_of_utc": "2026-11-06T14:15:58.397942+00:00",
+  "as_of_utc": "2026-11-06T14:38:15.324240+00:00",
   "limits": "Dated manual dispositions through CP146; snapshotcaptureUTC only/no semantic or gate certification; immutable completehistory."
 }

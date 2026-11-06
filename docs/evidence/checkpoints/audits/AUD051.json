@@ -1,0 +1,152 @@
+{
+  "id": "AUD051",
+  "trigger": "periodic",
+  "completed_through": "CP172",
+  "recorded_utc": "2026-11-06T14:39:19.506208+00:00",
+  "auditor": "Codex manual self-audit; independent review waived",
+  "read_files": [
+    "README.md",
+    "docs/PLAN.md",
+    "docs/PROTOCOL.md",
+    "docs/RESEARCH.md",
+    "docs/evidence/peer-endpoints/README.md",
+    "docs/evidence/basic-battle/README.md",
+    "docs/evidence/checkpoints/audits/AUD050.json",
+    "docs/features.json",
+    "docs/COVERAGE.md",
+    "server/README.md",
+    "server/probe_service.py",
+    "server/test_hidden_items.py",
+    "server/test_hidden_terrain_admission.py",
+    "server/test_terrain_policy.py",
+    "server/profiles/two-client-battle.json",
+    "server/profiles/two-client-basic.json",
+    "local/research/codex/current-basic-hidden-r4/hidden-effects-verification.json",
+    "local/research/codex/current-basic-hidden-r4/hidden-integration-verification.json",
+    "local/research/codex/current-basic-hidden-r4/raw-seal.json",
+    "local/research/codex/current-basic-cycles-r1/basic-cycle-verification.json",
+    "local/research/codex/current-basic-cycles-r1/actor-fields.json",
+    "local/research/codex/current-basic-cycles-r1/analysis-corrections.json",
+    "local/research/codex/current-basic-cycles-r1/raw-seal.json",
+    "local/research/codex/basic-preset-start3-r1/basic-cycle-verification.json",
+    "local/research/codex/basic-preset-start3-r1/exported-start3-verification.json",
+    "local/research/codex/basic-preset-start3-r1/hidden-cell-admission-reuse.json",
+    "local/research/codex/basic-preset-start3-r1/analysis-corrections.json",
+    "local/research/codex/basic-preset-start3-r1/draft-schema-correction.json",
+    "local/research/codex/basic-preset-start3-r1/raw-seal.json",
+    "local/research/codex/hidden-cell-native-r1/cycles/run.json",
+    "local/research/codex/hidden-cell-native-r1/cycles/service-state.json",
+    "local/research/codex/hidden-cell-native-r1/cycles/client.log",
+    "local/research/codex/hidden-cell-native-r1/cycles/client-B.log",
+    "local/research/codex/hidden-cell-native-r1/raw-seal.json",
+    "local/research/codex/hidden-cell-native-r1/runtime-preflight.json",
+    "local/research/codex/hidden-cell-native-r1/profile.json",
+    "local/research/codex/hidden-cell-native-r1/basic-cycle-verification.json",
+    "local/research/codex/hidden-cell-native-r1/exported-start3-verification.json",
+    "local/research/codex/hidden-cell-native-r1/terrain-admission-verification.json",
+    "local/research/codex/hidden-cell-native-r1/admission-analysis-correction.json",
+    "local/research/codex/hidden-cell-native-r1/native-actual.json",
+    "local/research/codex/hidden-cell-native-r1/actor-fields.json",
+    "local/research/codex/hidden-cell-native-r1/life-agreement-verification.json",
+    "local/research/codex/hidden-cell-native-r1/life-getter-verification.json",
+    "local/research/codex/hidden-cell-native-r1/visual-review.json",
+    "local/research/codex/hidden-cell-native-r1/server-tests.txt",
+    "local/research/codex/hidden-cell-native-r1/targeted-tests-final.txt",
+    "docs/evidence/checkpoints/README.md",
+    "tools/check_checkpoints.py",
+    "tools/test_checkpoint_source_history.py",
+    "local/research/codex/source-pin-publication/publication-proof.json",
+    "local/research/codex/source-pin-publication/CP166-published-service.py"
+  ],
+  "method": "Manual README→PLAN(current order/gates/acceptance)→PROTOCOL(authority/current CP169–172 contracts and delta since AUD050)→RESEARCH(current gap rows)→evidence/raw/report/code/tests. This is a scoped current-state/delta audit, not recertification of every historical protocol paragraph. Actual native logs, exact profile/pin/source/hash boundaries and two final images inspected; mechanical scripts do not infer semantics or close gates.",
+  "findings": [
+    {
+      "id": "F1",
+      "stale": "Core CP171 status remained pending PR while PR243 had merged; older evidence CP entries still contain their original pending/next-step text.",
+      "correction": "README/PLAN/current issue record CP171 PR243 merged; add explicit historical-snapshot guidance to peer-endpoints evidence. Immutable complete checkpoint records stay unchanged; GitHub remains merge-status source.",
+      "fixed_in": [
+        "README.md",
+        "docs/PLAN.md",
+        "docs/evidence/peer-endpoints/README.md",
+        "docs/evidence/issue-reconciliation/review.json"
+      ]
+    },
+    {
+      "id": "F2",
+      "stale": "basic hidden integration/export/Start3 next steps remained in some roster/membership/peer/reset research rows after CP171.",
+      "correction": "Update affected RESEARCH rows and generated coverage to current specific gap; PLAN alone orders B118/bidirectional delta. Original source contracts remain historical with their CP/run scope.",
+      "fixed_in": [
+        "docs/RESEARCH.md",
+        "docs/COVERAGE.md",
+        "docs/PLAN.md"
+      ]
+    },
+    {
+      "id": "F3",
+      "stale": "Hidden142 authority matrix described anycurrent158 even though the new terrain-specific code can enforce a committed matching cell.",
+      "correction": "Trace exact code and5newnegative/positive tests,270suite, current8accepted142/native195/2cycles/Start3. Update creator/simulator/validator/broadcaster/peer-editable row; explicitly preserve no-terrain weak scope and same-old142afterlegitclear/fullauth/distance limits.",
+      "fixed_in": [
+        "docs/PROTOCOL.md",
+        "docs/RESEARCH.md",
+        "server/README.md"
+      ]
+    },
+    {
+      "id": "F4",
+      "stale": "Native positive report count was initially described as16accepted; service-state contains8accepted known hidden cells and8outsidecatalog ignores.",
+      "correction": "Manual raw/report comparison and verify_admission.py distinguish groups. Four accepted duplicates are other-view reports and produce no extra eligibility/effects;52joins and all primitive/native checks kept. Retain admission-analysis-correction and correct commentary/canonical evidence; no raw/guard changes.",
+      "fixed_in": [
+        "docs/PROTOCOL.md",
+        "docs/evidence/peer-endpoints/README.md",
+        "README.md"
+      ]
+    },
+    {
+      "id": "F5",
+      "stale": "CP170 event/phase attribution alone is insufficient for CP171 Space snapshots that reuse last pickup counters; postcompletion EOF can be mistaken for active-run abort.",
+      "correction": "Review original initial/final fields/log markers and CP171 correction: add CAP_SPACE context, retain every native getter/checksum and unique actual GEN165 joins. Verify cleanup boundary after completion, not intentional disconnect. CP172 reuses corrected parser and passes unchanged first-two/Start3 criteria; no retroactive causal claim.",
+      "fixed_in": [
+        "docs/PROTOCOL.md",
+        "docs/evidence/peer-endpoints/README.md"
+      ]
+    },
+    {
+      "id": "F6",
+      "stale": "Many cycles can obscure which K5/K6a condition is still missing on the actual basic profile.",
+      "correction": "Add basic acceptance mapping to PLAN. Both native views/effects/life/reset and A-owner bombs confirmed; B118 and explicit A↔B peer windows on this basic recipe remain missing. Floor profile CP155/160/168 proof remains usable source, not same-run acceptance. Formal dependencies and all gates remain open; no percentage or extra gate.",
+      "fixed_in": [
+        "docs/PLAN.md",
+        "docs/RESEARCH.md",
+        "docs/PROTOCOL.md"
+      ]
+    },
+    {
+      "id": "F7",
+      "stale": "Tool/unit checks could be mislabeled as native runtime or independent review; unpublished checkpoint draft used unsupported method=test before validation.",
+      "correction": "270Python server tests/5new cases are policy checks;180frame/552field models are copied-native emulation; Wine trace and manual images separate. Review remains owner-waived. CP171 draft schema corrected before commit, initial draft retained local; committed complete records/counters unchanged.",
+      "fixed_in": [
+        "docs/PROTOCOL.md",
+        "docs/evidence/peer-endpoints/README.md"
+      ]
+    },
+    {
+      "id": "F8",
+      "stale": "CP166 complete record pins mutable repository service source directly; a legitimate CP172 source change made mechanical current-file check fail despite exact published source in Git.",
+      "correction": "Verify record unchanged and original99707bytes/SHA at record birth09759d0. Add source-only publication-bound recovery requiring matching complete record/declaration/externalmanifest and exact source at same commit; reject later-only blobs/missingfiles/raw/binary/local and v1-only mismatch. Sixnewtests/34checkpoint tests; schema/history/append-only unchanged. Initialfailedchecker retained; unpublished CP172 draft refreshed without touching historical complete records.",
+      "fixed_in": [
+        "tools/check_checkpoints.py",
+        "tools/test_checkpoint_source_history.py",
+        "docs/evidence/checkpoints/README.md",
+        "docs/PROTOCOL.md",
+        "docs/evidence/peer-endpoints/README.md"
+      ]
+    }
+  ],
+  "remaining": [
+    "Same current basic run still lacks B-owner118/escape and explicit two-direction peer windows; PLAN chooses only that delta next, reusing existing sources.",
+    "142has no recovered roundkey; oldidentical142afterlegitclear/auth/distance/fullfreshness and no-terrain weak policy remain bounded limits. Native negative injection not performed.",
+    "K0K1 originalWindows/control, K2livecodec/reset, K3cache/identity and dependentK4/K5/K6a/fullmatch/LANInternet/8client/generalreset/originalauthority remain open; no automatic gate.",
+    "CP167 index16 nomenclature erratum from AUD050/CP168 retained; complete records and old failed/partial runs unchanged. Next periodic CP176.",
+    "Source publication fallback only Python under server/tools with matching v2 birth; inline-only v1/nonmatchingmigration/unavailable files still strict. Does not infer runtime/semantics/gates."
+  ]
+}

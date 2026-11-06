@@ -880,12 +880,29 @@ class ProbeService:
             if not matches:
                 report['rejected'] = 'unknown_hidden_cell'
                 return
-            # Report-derived fixture policy only. Sending any current158 is a
-            # lower bound, not proof that this particular cell was destroyed.
+            # Legacy profiles without terrain retain the report-derived lower
+            # bound. A pinned terrain profile can additionally require the cell
+            # to have been cleared by a committed blast in this generation.
             if not any(bomb['round'] == self.room.generation and bomb.get('broadcast158')
                        for bomb in self.state['round_bombs']):
                 report['rejected'] = 'no_current_blast_sent'
                 return
+            if self.terrain:
+                recipients = {peer['role'] for peer in self.round['roster']}
+                clearing = next((bomb for bomb in self.state['round_bombs']
+                                 if bomb['round'] == self.room.generation
+                                 and bomb.get('terrain_blast', {}).get('generation') == self.room.generation
+                                 and [row, column] in bomb['terrain_blast']['cleared']
+                                 and 0 < bomb['terrain_blast']['committed_ns'] <= report['monotonic_ns']
+                                 and recipients
+                                 and {sent['role'] for sent in bomb.get('broadcast158', [])} == recipients), None)
+                if clearing is None:
+                    report['rejected'] = 'hidden_cell_not_cleared_current_round'
+                    return
+                report['terrain_clearance'] = {
+                    'source': 'design', 'generation': self.room.generation,
+                    'bomb_id': clearing['id'],
+                    'committed_ns': clearing['terrain_blast']['committed_ns']}
             for item in matches:
                 prior = self.round['revealed_hidden'].setdefault(str(item.index), report)
                 report.setdefault('revealed_indices' if prior is report else 'already_revealed', []).append(item.index)

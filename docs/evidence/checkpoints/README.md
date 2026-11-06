@@ -82,9 +82,20 @@ Bàn giao ghi ID/counter,audit kế,pending,kết quả kiểm,commit/PR,blocker
 Từ CP048, tài liệu repository `.md` đã được pin ở checkpoint cũ có thể tiếp tục chỉnh hiện trạng.
 Nếu bytes hiện tại khác, checker phải tìm **đúng size/SHA lịch sử trong Git** rồi báo rõ
 `HISTORICAL DOC VERIFIED` kèm revision; không dùng file hiện tại thay bằng chứng cũ. Không tìm
-được bytes cũ vẫn lỗi. Quy tắc này chỉ cho documentation repository, không cho code/raw/binary/
-local evidence; record cũ không sửa, không nới hash hoặc tự suy ngữ nghĩa đồng bộ. Clone thiếu
-Git blob cần khôi phục lịch sử để kiểm, không tạo bytes thay thế từ docs mới.
+được bytes cũ vẫn lỗi. Clone thiếu Git blob phải khôi phục lịch sử, không tạo bytes thay thế.
+
+Từ CP172, source Python của chính project ở `server/` hoặc `tools/`, `kind=repository`, còn tồn tại
+trong working tree có thêm kiểm phiên bản hẹp: tìm commit trên lịch sử HEAD lần đầu thêm record v2
+`records/CPxxx.json`; commit đó phải có record complete khai báo **đúng path/size/SHA** và source blob
+cùng size/SHA. External evidence manifest tại commit ấy phải khớp pin/hash/count. Checker báo
+`HISTORICAL SOURCE VERIFIED` với revision; không dùng source hiện tại thay source checkpoint và
+không lấy blob/khai báo thêm ở commit về sau để cứu một pin thiếu lúc công bố. CP166 là ca đầu:
+pin `server/probe_service.py` khớp nguyên bytes commit `09759d0`, record/evidence cũ không sửa.
+
+Đây là kiểm nguồn theo version, không chứng nhận runtime, semantics hoặc gate. Bằng chứng raw/local/
+artifact/binary và repository file khác vẫn cần bytes hiện tại khớp pin; mất file vẫn lỗi/unavailable.
+Source chỉ có ở schema v1 hoặc không khớp lúc thêm record v2 **chưa** được fallback tự động; giữ lỗi
+và cần locator/migration minh bạch nếu gặp. Append-only records/history qua schema v1/v2 giữ nguyên.
 
 ## Kho checkpoint v2 và cách đọc chọn lọc
 

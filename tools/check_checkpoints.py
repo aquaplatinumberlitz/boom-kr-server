@@ -77,6 +77,44 @@ def historical_repository_blob(root, relative, expected_sha, expected_bytes):
     return None
 
 
+def historical_checkpoint_source(root, relative, expected_sha, expected_bytes, checkpoint):
+    """Resolve a source pin at its v2 record's publication, not an arbitrary revision.
+
+    Local/raw/artifact files and non-source repository files never take this path.
+    A source blob committed later cannot repair a missing publication-time pin.
+    Older inline-only records without a matching v2 publication stay strict.
+    """
+    if (not re.fullmatch(r'CP[0-9]{3,}', checkpoint)
+            or Path(relative).parts[0] not in {'server', 'tools'}
+            or Path(relative).suffix != '.py'):
+        return None
+    record_path = f'docs/evidence/checkpoints/records/{checkpoint}.json'
+    try:
+        births = subprocess.run(
+            ['git', 'log', '--reverse', '--diff-filter=A', '--format=%H', 'HEAD', '--', record_path],
+            cwd=root, capture_output=True, text=True, check=True).stdout.splitlines()
+        if not births:
+            return None
+        revision = births[0]
+        def read(path):
+            store.target(root, path)
+            return subprocess.run(['git', 'show', f'{revision}:{path}'], cwd=root,
+                                  capture_output=True, check=True).stdout
+        record = json.loads(read(record_path))
+        if record.get('id') != checkpoint or record.get('lifecycle') != 'complete':
+            return None
+        declared = any(row.get('kind') == 'repository' and row.get('path') == relative
+                       and row.get('sha256') == expected_sha and row.get('bytes') == expected_bytes
+                       for row in store.evidence(record, root=root, read=read))
+        if declared:
+            raw = read(relative)
+            if len(raw) == expected_bytes and hashlib.sha256(raw).hexdigest() == expected_sha:
+                return revision
+    except (OSError, ValueError, TypeError, subprocess.CalledProcessError):
+        pass
+    return None
+
+
 def verify_evidence_item(item, root=ROOT, require_local=False, where="evidence"):
     errors, warnings, checked, unavailable = [], [], 0, 0
     root = Path(root).resolve()
@@ -112,13 +150,18 @@ def verify_evidence_item(item, root=ROOT, require_local=False, where="evidence")
     checked += 1
     if path.stat().st_size != item.get("bytes") or digest(path) != item.get("sha256"):
         # Canonical docs can evolve while old checkpoint bytes remain immutable.
-        # Recover the old exact content only for repository documentation. Code,
-        # binaries, raw captures and local evidence still require the pinned bytes.
+        # Docs can use exact history; project Python source additionally needs
+        # the same declaration and exact blob at the checkpoint's publication.
+        # Binaries, raw captures and local evidence still require current pins.
         revision = None
+        historical_kind = 'DOC'
         if kind == "repository" and path.suffix == ".md":
             revision = historical_repository_blob(root, value, item.get("sha256"), item.get("bytes"))
+        elif kind == 'repository':
+            revision = historical_checkpoint_source(root, value, item.get('sha256'), item.get('bytes'), where)
+            historical_kind = 'SOURCE'
         if revision:
-            warnings.append(f"{where}: HISTORICAL DOC VERIFIED {value} at {revision}; current file differs; checkpoint bytes unchanged")
+            warnings.append(f"{where}: HISTORICAL {historical_kind} VERIFIED {value} at {revision}; current file differs; checkpoint bytes unchanged")
         else:
             errors.append(f"{where}: evidence size/hash mismatch {value}")
     return errors, warnings, checked, unavailable
