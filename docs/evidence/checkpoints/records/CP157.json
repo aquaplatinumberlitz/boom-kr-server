@@ -1,0 +1,262 @@
+{
+  "id": "CP157",
+  "previous": "CP156",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-06T04:26:38.618879+00:00",
+  "context_commit": "fddf81fa4a29f29e03e0834db6277fa6c549ca74",
+  "owner": "Codex",
+  "reviewer": "Codex",
+  "question": "Does known CP129 host UI20286/5fixturepolicy integrate with current direct/two-contest/oldUDP/twooutcome/Ready baseline, and does inherited strictlife proof remain true?",
+  "scope": "Two frozen currentUIruns grouped: first B screenshot timeout partial, freshcopy retry fullhostUIexit. Reuse CP129/156 knownmode/export and currentnative107110; no newnativebody orproductionchange. Record actualstrictlife failure rather than hiding it.",
+  "artifacts": [
+    {
+      "name": "KRoriginalCA/read-only",
+      "sha256": "a52545c14b1fea423de655c3163d6360b628d61c1cd472b46fdbc8a9ffe15f4e"
+    },
+    {
+      "name": "Winecopyunchanged",
+      "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+    },
+    {
+      "name": "staticcopy",
+      "sha256": "660447c293ce92270cb9b5815331bca976e8f156366e1fe50b217b6c12e60ce3"
+    }
+  ],
+  "locators": [
+    "CP156 PR227 headb0daf57fc8e697299ee870b97e8c77cfdab0f994 / mergefddf81fa4a29f29e03e0834db6277fa6c549ca74.",
+    "r1run c203b966691ef711fcbf8d8ecdb63583f2d6b89c05f412da99a7b77316713d69 /76.699075429s/exit1/115raw: ImageMagickBscreen01timeout5s beforeRound1; cleanup/GDBdisconnect notnativefaultproof.",
+    "r2run0bea8370b7d5245c698d26e94e74891f1cbacedbe5125739f02716feec8004b8 /440.692071312s/exit0/1489raw/97frozeninputs; two contests BthenA, 2normalresults/Ready, thirdStart/key12347/nobomb/noaccepted17,19/actualA20286/Bpromotion.",
+    "Base400000/RVA=VA−400000. CP129 knownUIbutton715,578/E72490/E84FF0/13ADD10/107110; no newnativebody. NativeAstage11/full50lobby andB107slot0ID1to0/110chief1.",
+    "B/R1slot0state56@1898530924079352→0@1898531190833523→56@1898531231955391→1@1898537027299091; zero41.121868ms, traptozero266.754171ms. Second56stackB51CF4/F73882/B4EAA6/E668B2/125DF33; state0callerB51CF4only.",
+    "CP104/105 endingUDP overwrite path andcacheB4E6F0 reused; currentstate0 exactpacket/apply unknown. AUD047through156/nextCP160 unchanged."
+  ],
+  "findings": [
+    {
+      "summary": "Current direct normalhostUIexit integrated: actualcapturedA202/22 then86empty/currentmembershipSHA/admit; A native11/lobby91full50, B onlyforfeit175180/postreturn107slot0ID1to0/110chief1/render. Same8TCP/channelsliveuntilcompletion, noEOF/kill.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#current-host-ui-exit",
+      "evidence": [
+        "RUN-01700",
+        "RUN-01710",
+        "RUN-01835",
+        "RUN-01720"
+      ],
+      "limits": "2 actual modifiedWine copiedCA/directTCP/privatevirtualhosts/samephysicalhost. KnownCP129 mode noBomb/noaccepted17,19 only; 2normalcycles/Ready then thirdUIexitforfeit B only. No thirdnormalmatch/EOF/kill/fakepacket/gamecall/gamewrite/rejoin/Start4/accountresume. R1capturetimeoutpartial beforeRound1; r2onlyfreshcopy/namespace/paths, notcausalfix/stabilityproof. Strictlife verifierFAILED B/R1/56→0→56→1/41.121868ms0; rankentrytwo-viewagreement is different boundedobservation, notstrictpass. Second56UDPstacknotexactstate0attribution; noresurrection/oldround/nativebugclaim. Fullauth/originalauthority/Windows/LAN/Internet/8realclients/K6a/fullmatch/generalreset/sharedgeometry/CP137UI/gates open."
+    },
+    {
+      "summary": "2currentcontests BwinnerthenA/one165/view/onlywinnerpower/reset,4peerwindows/currentmovement,exactoldkey59current56/drop/noapply+10currentapply,2normaloutcomes/Ready retained withmode+5aliasonlyprofiledelta. R1partial beforeRound1capturetimeout/freshretry notcausalfix.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#current-host-ui-exit",
+      "evidence": [
+        "RUN-00186",
+        "RUN-00196",
+        "RUN-01689",
+        "RUN-01690",
+        "RUN-00128",
+        "RUN-01768"
+      ],
+      "limits": "2 actual modifiedWine copiedCA/directTCP/privatevirtualhosts/samephysicalhost. KnownCP129 mode noBomb/noaccepted17,19 only; 2normalcycles/Ready then thirdUIexitforfeit B only. No thirdnormalmatch/EOF/kill/fakepacket/gamecall/gamewrite/rejoin/Start4/accountresume. R1capturetimeoutpartial beforeRound1; r2onlyfreshcopy/namespace/paths, notcausalfix/stabilityproof. Strictlife verifierFAILED B/R1/56→0→56→1/41.121868ms0; rankentrytwo-viewagreement is different boundedobservation, notstrictpass. Second56UDPstacknotexactstate0attribution; noresurrection/oldround/nativebugclaim. Fullauth/originalauthority/Windows/LAN/Internet/8realclients/K6a/fullmatch/generalreset/sharedgeometry/CP137UI/gates open."
+    },
+    {
+      "summary": "Inherited strict life verifier FAILED B/R1, actualprotectedstate56→0→56→1; zero41.121868ms. Other3view/epochsequences56→1, bothviews/2epochs rankentryloser1/other0. Separate observation/model checks donotreplace strictfailure.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#current-host-ui-exit",
+      "evidence": [
+        "RUN-01829",
+        "RUN-01830",
+        "RUN-01707",
+        "RUN-01708"
+      ],
+      "limits": "2 actual modifiedWine copiedCA/directTCP/privatevirtualhosts/samephysicalhost. KnownCP129 mode noBomb/noaccepted17,19 only; 2normalcycles/Ready then thirdUIexitforfeit B only. No thirdnormalmatch/EOF/kill/fakepacket/gamecall/gamewrite/rejoin/Start4/accountresume. R1capturetimeoutpartial beforeRound1; r2onlyfreshcopy/namespace/paths, notcausalfix/stabilityproof. Strictlife verifierFAILED B/R1/56→0→56→1/41.121868ms0; rankentrytwo-viewagreement is different boundedobservation, notstrictpass. Second56UDPstacknotexactstate0attribution; noresurrection/oldround/nativebugclaim. Fullauth/originalauthority/Windows/LAN/Internet/8realclients/K6a/fullmatch/generalreset/sharedgeometry/CP137UI/gates open."
+    },
+    {
+      "summary": "Second56stackcrossesknownUDP B4EAA6/E668B2; CP104/105 similaroverwritepath establishedolder scope, butexactstate0packet/key/apply/callerstack notcapturedhere. CandidateUDPexplanation only; nextboundedfirsttrapwindow withknown6observers, no bodyRE.",
+      "source": "kr_runtime",
+      "status": "candidate",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#current-host-ui-exit",
+      "evidence": [
+        "RUN-01707",
+        "RUN-01643"
+      ],
+      "limits": "2 actual modifiedWine copiedCA/directTCP/privatevirtualhosts/samephysicalhost. KnownCP129 mode noBomb/noaccepted17,19 only; 2normalcycles/Ready then thirdUIexitforfeit B only. No thirdnormalmatch/EOF/kill/fakepacket/gamecall/gamewrite/rejoin/Start4/accountresume. R1capturetimeoutpartial beforeRound1; r2onlyfreshcopy/namespace/paths, notcausalfix/stabilityproof. Strictlife verifierFAILED B/R1/56→0→56→1/41.121868ms0; rankentrytwo-viewagreement is different boundedobservation, notstrictpass. Second56UDPstacknotexactstate0attribution; noresurrection/oldround/nativebugclaim. Fullauth/originalauthority/Windows/LAN/Internet/8realclients/K6a/fullmatch/generalreset/sharedgeometry/CP137UI/gates open."
+    },
+    {
+      "summary": "Analysis distinguish strictfailedpredicate from separatefinalsnapshotobservation; UIverifier initial4unrelated202 assumption corrected fromrawtoexact5includingBthirdending, allrejectedmembership; solesuccessAUIpairunchanged. Production41files unchanged/237tests reused.",
+      "source": "design",
+      "status": "design",
+      "method": "documentation",
+      "canonical": "docs/PROTOCOL.md#current-host-ui-exit",
+      "evidence": [
+        "RUN-00177",
+        "RUN-01825",
+        "RUN-01700",
+        "RUN-01812"
+      ],
+      "limits": "2 actual modifiedWine copiedCA/directTCP/privatevirtualhosts/samephysicalhost. KnownCP129 mode noBomb/noaccepted17,19 only; 2normalcycles/Ready then thirdUIexitforfeit B only. No thirdnormalmatch/EOF/kill/fakepacket/gamecall/gamewrite/rejoin/Start4/accountresume. R1capturetimeoutpartial beforeRound1; r2onlyfreshcopy/namespace/paths, notcausalfix/stabilityproof. Strictlife verifierFAILED B/R1/56→0→56→1/41.121868ms0; rankentrytwo-viewagreement is different boundedobservation, notstrictpass. Second56UDPstacknotexactstate0attribution; noresurrection/oldround/nativebugclaim. Fullauth/originalauthority/Windows/LAN/Internet/8realclients/K6a/fullmatch/generalreset/sharedgeometry/CP137UI/gates open."
+    }
+  ],
+  "verification": [
+    {
+      "check": "54currenthostUIchecks/354nativepacketmodelcases/2manualPNG;84contest/44first2cycle/594peer4windows/19oldUDP10currentapply/24loading/26entity195flags",
+      "result": "pass",
+      "evidence": [
+        "RUN-01700",
+        "RUN-01710",
+        "RUN-01835",
+        "RUN-00186",
+        "RUN-00196",
+        "RUN-01689",
+        "RUN-01690",
+        "RUN-01701",
+        "RUN-01836"
+      ],
+      "limits": "2 actual modifiedWine copiedCA/directTCP/privatevirtualhosts/samephysicalhost. KnownCP129 mode noBomb/noaccepted17,19 only; 2normalcycles/Ready then thirdUIexitforfeit B only. No thirdnormalmatch/EOF/kill/fakepacket/gamecall/gamewrite/rejoin/Start4/accountresume. R1capturetimeoutpartial beforeRound1; r2onlyfreshcopy/namespace/paths, notcausalfix/stabilityproof. Strictlife verifierFAILED B/R1/56→0→56→1/41.121868ms0; rankentrytwo-viewagreement is different boundedobservation, notstrictpass. Second56UDPstacknotexactstate0attribution; noresurrection/oldround/nativebugclaim. Fullauth/originalauthority/Windows/LAN/Internet/8realclients/K6a/fullmatch/generalreset/sharedgeometry/CP137UI/gates open."
+    },
+    {
+      "check": "Strict inherited uninterrupted56→1 proof B/R1",
+      "result": "fail",
+      "evidence": [
+        "RUN-01829",
+        "RUN-01830",
+        "RUN-01707"
+      ],
+      "limits": "Actual56→0→56→1; no relabelingpass. UIexit successdistinct fromfailedlifeproof; nextexactattributionmeasurement active."
+    },
+    {
+      "check": "20boundedlifeobservations/finalrankentryagreement;18nativeprotectedlifegetter/2652actor/384peer/132UDP/2758flag/2730array models separate",
+      "result": "pass",
+      "evidence": [
+        "RUN-01707",
+        "RUN-01708",
+        "RUN-00176",
+        "RUN-01718",
+        "RUN-01711",
+        "RUN-01691"
+      ],
+      "limits": "Finalsnapshotdoesnotprovestrictcontinuousagreement/modelnotruntimeworldoracle."
+    },
+    {
+      "check": "Rawseal/97frozeninputs;237fullserver tests reused41sourcehashes/docs/catalog/liveissues/artifacts/diff",
+      "result": "pass",
+      "evidence": [
+        "RUN-01720",
+        "RUN-01769",
+        "RUN-01812",
+        "RUN-01688",
+        "RUN-01704",
+        "RUN-00182"
+      ],
+      "limits": "Fullcheckpoints --require-local --require-history beforecommit; mechanicalchecks notsemantic/gateclosure."
+    }
+  ],
+  "evidence": [],
+  "evidence_manifests": [
+    {
+      "path": "docs/evidence/checkpoints/evidence/CP157-current-host-UI-life.json",
+      "bytes": 473393,
+      "sha256": "1b45519f8d89a95a22c121e2d28e767c3639b83c2b98c1c0248b03529bc6e780",
+      "count": 1852
+    }
+  ],
+  "delta": {
+    "added": [
+      "CurrentnormalhostUIexit nativeA lobby/Bpromotion after2normalcontests/Ready.",
+      "B/R1actual56→0→56→1 transient/finalrankagreement withfailedstrictproof retained."
+    ],
+    "corrected": [
+      "CP156PR227merged/currentnavigation. CurrentnormalUIgapclosed only measuredknownmode; noEOF/UIequivalence.",
+      "Firstpartialcapturetimeout/cleanupnotnativefault; sameconfigretry notcausalfix.",
+      "Fourunrelated202assumption correctedtofivefromraw, nohostUIadmissionrelaxation."
+    ],
+    "superseded": [
+      "NEXT-CURRENT-HOST-UI-BACK closed currentintegration; NEXT-CURRENT-TRAP-UDP-ATTRIBUTION active."
+    ]
+  },
+  "blockers": [
+    "Exactstate0packet/apply/key/callerstack forB/R1transient missing; knownUDPpath onlycandidate, rankentryequalitydoesnotfillgap.",
+    "Fullauth/originalauthority/Windows/LAN/Internet/8realclients/K6a/generalreset/sharedgeometry/CP137UI remain."
+  ],
+  "next_steps": [
+    {
+      "id": "NEXT-CURRENT-HOST-UI-BACK",
+      "task": "KRE-005b",
+      "state": "closed",
+      "action": "CP157r2actualnormalAUI20286/A lobby/Bnativecleanupchief1 measured after2normalcycles/Ready; no rejoin/Start4/fullleaveclaim.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-CURRENT-TRAP-UDP-ATTRIBUTION",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "PLAN reuseCP104/105/current6observer/cacheB4E6F0; first56B/R1armbounded96API64entry, capturestate0callerstack plus actualingress→13byte/key/slot/args→beforeafter. Freeze newcopy/source/profile/30s/2s165/loadinggate; no nativegamewrite/UDPpatch/bodyRE. Ifnotreproducedrecordboundednegative, no guessedattribution.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    }
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-11-06T04:26:38.618879+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "Codex solo RE/runtime/self-check; strict life failure disclosed; independent review waived.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Owner explicitly requested solo without workers/review."
+    }
+  },
+  "docs_sync": [
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "CP157 normalUIintegration/partial/strictlifeFAIL/finalrankboundedobservation/PR227merge/nextexacttransientattribution synced beforecomplete."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "CP157 normalUIintegration/partial/strictlifeFAIL/finalrankboundedobservation/PR227merge/nextexacttransientattribution synced beforecomplete."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "updated",
+      "reason": "CP157 normalUIintegration/partial/strictlifeFAIL/finalrankboundedobservation/PR227merge/nextexacttransientattribution synced beforecomplete."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "updated",
+      "reason": "CP157 normalUIintegration/partial/strictlifeFAIL/finalrankboundedobservation/PR227merge/nextexacttransientattribution synced beforecomplete."
+    },
+    {
+      "path": "docs/features.json",
+      "state": "updated",
+      "reason": "CP157 normalUIintegration/partial/strictlifeFAIL/finalrankboundedobservation/PR227merge/nextexacttransientattribution synced beforecomplete."
+    },
+    {
+      "path": "docs/COVERAGE.md",
+      "state": "updated",
+      "reason": "CP157 normalUIintegration/partial/strictlifeFAIL/finalrankboundedobservation/PR227merge/nextexacttransientattribution synced beforecomplete."
+    },
+    {
+      "path": "docs/evidence/peer-endpoints/README.md",
+      "state": "updated",
+      "reason": "CP157 normalUIintegration/partial/strictlifeFAIL/finalrankboundedobservation/PR227merge/nextexacttransientattribution synced beforecomplete."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/review.json",
+      "state": "updated",
+      "reason": "CP157 normalUIintegration/partial/strictlifeFAIL/finalrankboundedobservation/PR227merge/nextexacttransientattribution synced beforecomplete."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
+      "state": "updated",
+      "reason": "CP157 normalUIintegration/partial/strictlifeFAIL/finalrankboundedobservation/PR227merge/nextexacttransientattribution synced beforecomplete."
+    }
+  ]
+}

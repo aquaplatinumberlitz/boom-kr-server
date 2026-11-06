@@ -702,3 +702,39 @@ criteria/draft ởk6a-acceptance-audit-r1 pin nguồn, canonicaltable ởPROTOCO
 Sửa authoritynavigation quá cũ và nhãnfullschema-before-anydemo, giữunknownscope; updatePR226merge/
 EOF-vs-normalBack/gapactive, khôngđónggatebằngscript. Counterqua156/kế160, recordcompletehistory/raw giữ.
 CP156Codexselfcheck/waivedreview/chờPR; tiếp knownnormalhostUIBack integration, khôngRE lại107/110.
+
+
+<a id="cp157"></a>
+## CP157 — current host UI exit và transient life trước rank
+
+Baseline CP156/[PR227](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/227) head`b0daf57`/
+merge`fddf81f`; [contract/giới hạn](../../PROTOCOL.md#current-host-ui-exit),
+[phép đo tiếp](../../RESEARCH.md#gap-contact-state), [PLAN](../../PLAN.md#current-order).
+Raw/copy/producer ở `local/research/codex/direct-contest-host-ui-r1/` và `-r2/`; không source binary/DB/pack change.
+Tái dùng CP129 fixture/consumer/UI button, CP156 exporter và currentdirect recipe; không newnativebody RE.
+
+| Run | Giây/exit/raw | run.json SHA256 |
+|---|---:|---|
+| direct-contest-host-ui-r1 | 76,699 /1/115 | `c203b966691ef711fcbf8d8ecdb63583f2d6b89c05f412da99a7b77316713d69` |
+| direct-contest-host-ui-r2 | 440,692 /0/1489 | `0bea8370b7d5245c698d26e94e74891f1cbacedbe5125739f02716feec8004b8` |
+
+R1 giữ partial: firstB root screenshot timeout5s trướcRound1; cleanup/disconnect không là nativefailure.
+R2 chỉ freshcopy/namespace/relocation; cùngprofile/97frozeninputs/timeout5s, không causalfixclaim.
+Profile so CP156 chỉ thêm host_A_202_86/idle_A_to_B +5knownaliases; không đổi fixture cũ/terrain/network/
+30s/2s165/loadinggate. Runtime cleanup/netnamespace extinct/raw seal verified trước analysis.
+
+`host-ui-verification.json`:54checks nối actual A20222/86empty/SHA/currentadmission tới nativeAstage11/
+lobby91full50/B175180107slot0ID1→0/110chief1. Hai channel sống tới completion, không kill/EOF/fakepacket.
+Năm ending202 khác reject membership; verifier đầu chỉ dự kiến4, giữ sourceđầu và analysis-corrections,
+assert exact set5 sau raw inspection. Hai PNG manualreview/hash A lobbyWAITING1/BchiefStart cóởvisual-review.
+84contestBwinnerr1/Awinnerr2/44cycle/594peer4windows/19exactold10currentapply/24loading/26entity195reset;
+2652actor/384peer/132UDP/18life/2758flag+2730array modelchecks và354nativepacketmodelcases tách runtime.
+
+**Không che failed proof:** inherited `verify_life_agreement.py`/`.log` giữ FAIL B/R1, protected56→0→56→1.
+`observe_life_boundary.py`/`life-boundary-observation.json` ghi đúng20checks/finalrankagreement, không
+đổi strictchecker cho pass. Zero41,121868ms/firsttrap→zero266,754171ms; second56 stackquaB4EAA6/E668B2,
+state0 sharedcallerB51CF4 chưa exactapply. Reuse CP104/105 knownUDPoverwrite; đo đúng currentwindow
+là bước kế, không suy resurrect/oldround/gamebug hoặc nâng gate từ nativeending/UI success.
+
+CP156/227 đã merge; CP157 self-check/reviewwaived/chờPR. Audit AUD047 qua156/kế160. History/evidence
+complete giữ nguyên; không Start4/rejoin/3normalmatches/fullmatch/K6a/LAN/Internet/8clients claim.

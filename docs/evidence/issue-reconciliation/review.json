@@ -135,11 +135,11 @@
         "KR-F001",
         "KR-F015"
       ],
-      "known": "CP155/PR226merged2b9249e; CP156currenthostApendingEOF/directservice/fence/no158/Bnative107slot0ID1to0/110chief1/render after2normalcontests/oldUDP/Ready. AUD047/manualacceptance; new--host-battle-exit exporter/preflight/tested only.",
-      "remaining": "CurrentnormalhostUI20286integration stillpending/profilemeasuredmodesoff; CP129knownoptincontract. EOFnotUIBack. Fullauth/originalauthority/Windows/LAN/Internet/8realclients/K6a/generalreset/CP137UI remain.",
-      "next_test": "PLAN newcopyprofile retainscurrentnetwork/terrain/30s/2s165/gate andadds5knownaliases+host_A_202_86viaexport. ReuseCP129normalEsc/confirm→actual20286/nobomb-no17,19→A lobby/Bnativepromotion/room, nofakegamecalls; no newhandlerRE. AUD047through156/next160.",
+      "known": "CP156/PR227mergedfddf81f; CP157currentnormalhostUI20286/A lobby/Bnative107clearA110chief1 after2normalcontestedcycles/Ready; mode and5fixturedependency only. R1capturetimeoutpartial retained.",
+      "remaining": "Strictlife verifierFAILED B/R1 protected56→0→56→1/zero41ms, finalrankentryagreement confirmed separately. Exactstate0packet/apply/stack unknown, CP105UDPpath candidate. Fullauth/authority/Windows/LAN/Internet/8realclients/K6a/generalreset/CP137UI remain.",
+      "next_test": "PLAN reuseCP104/105 sixnativeobservers/cacheB4E6F0; arm atfirst56B/R1 andstackstate0, exactingress/13byte/key/actor/args/beforeafter, bounded64entry96API. No nativegamewrite/UDPpatch. No reRE knownhostUI orStart4 withouttrigger.",
       "acceptance": "Epic checklist: linkedscopedtask/evidence+authoritymatrix vàacceptancegate ởPLAN; từngtaskđóng khôngđóngepic/K5/K6a.",
-      "reason": "CurrenthostEOFacceptanceedgeconfirmed; manuallydistinguishedprofiledesign/oldcontrols/normalhostUIgap. CLIimplementationnotnativeUIproof/automaticgateclosure.",
+      "reason": "CurrentnormalhostUIgap solved within measuredprofile; newraw strictlife exception disclosed, no gateclosure or replacing strictfailure with finalsnapshot.",
       "sources": [
         "docs/PROTOCOL.md#authority",
         "docs/RESEARCH.md#feature-gaps",
@@ -178,7 +178,8 @@
         "docs/PROTOCOL.md#direct-contest-pending-eof",
         "docs/PROTOCOL.md#direct-oldudp-contest-eof",
         "docs/PROTOCOL.md#direct-host-eof-acceptance",
-        "docs/PROTOCOL.md#local-demo-acceptance"
+        "docs/PROTOCOL.md#local-demo-acceptance",
+        "docs/PROTOCOL.md#current-host-ui-exit"
       ],
       "evidence": [
         "docs/evidence/current-movement-cycles/README.md",
@@ -213,7 +214,8 @@
         "docs/evidence/peer-endpoints/README.md#cp153",
         "docs/evidence/peer-endpoints/README.md#cp154",
         "docs/evidence/peer-endpoints/README.md#cp155",
-        "docs/evidence/peer-endpoints/README.md#cp156"
+        "docs/evidence/peer-endpoints/README.md#cp156",
+        "docs/evidence/peer-endpoints/README.md#cp157"
       ],
       "prs": [
         173,
@@ -263,7 +265,8 @@
         223,
         224,
         225,
-        226
+        226,
+        227
       ],
       "successors": []
     },
