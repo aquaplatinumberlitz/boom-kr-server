@@ -1,0 +1,107 @@
+{
+  "id": "AUD045",
+  "trigger": "periodic",
+  "completed_through": "CP148",
+  "recorded_utc": "2026-11-06T00:48:11.567913+00:00",
+  "auditor": "Codex manual self-audit; independent review waived",
+  "read_files": [
+    "README.md",
+    "docs/PLAN.md",
+    "docs/PROTOCOL.md",
+    "docs/RESEARCH.md",
+    "docs/evidence/peer-endpoints/README.md",
+    "docs/evidence/eight-player/README.md",
+    "docs/evidence/checkpoints/README.md",
+    "docs/features.json",
+    "docs/COVERAGE.md",
+    "server/README.md",
+    "server/probe_service.py",
+    "server/test_channel_endpoint.py",
+    "local/research/codex/service-channel-endpoint-r1/reuse-question.json",
+    "local/research/codex/service-channel-endpoint-r1/cycles/service.log",
+    "local/research/codex/service-channel-endpoint-r1/cycles/run.json",
+    "local/research/codex/service-channel-endpoint-r1/raw-seal.json",
+    "local/research/codex/service-channel-endpoint-r1/channel-tests-initial.txt",
+    "local/research/codex/service-channel-endpoint-r1/server-tests-legacy-fixed.txt",
+    "local/research/codex/service-channel-endpoint-r2/runtime-preflight.json",
+    "local/research/codex/service-channel-endpoint-r2/raw-seal.json",
+    "local/research/codex/service-channel-endpoint-r2/cycles/run.json",
+    "local/research/codex/service-channel-endpoint-r2/cycles/service-state.json",
+    "local/research/codex/service-channel-endpoint-r2/cycles/virtual-network.json",
+    "local/research/codex/service-channel-endpoint-r2/cycles/udp-capture-index.json",
+    "local/research/codex/service-channel-endpoint-r2/cycles/client.log",
+    "local/research/codex/service-channel-endpoint-r2/cycles/client-B.log",
+    "local/research/codex/service-channel-endpoint-r2/basic-verification.json",
+    "local/research/codex/service-channel-endpoint-r2/direct-verification.json",
+    "local/research/codex/service-channel-endpoint-r2/movement-wire-verification.json",
+    "local/research/codex/service-channel-endpoint-r2/endpoint-peer-verification.json",
+    "local/research/codex/service-channel-endpoint-r2/guard-integration-verification.json",
+    "local/research/codex/service-channel-endpoint-r2/address-ready-verification.json",
+    "local/research/codex/service-channel-endpoint-r2/pickup-verification.json",
+    "local/research/codex/service-channel-endpoint-r2/visual-review.json",
+    "local/research/codex/service-channel-endpoint-r2/redirect-native-model.json",
+    "local/research/codex/service-channel-endpoint-r2/parse_tcp-initial.txt",
+    "local/research/codex/service-channel-endpoint-r2/guard-check-initial.txt"
+  ],
+  "method": "Read README→PLAN→PROTOCOL→RESEARCH→evidence then actual raw/source/CLI/nativeconnect/99/153/vethPCAP-derivedexactjoins/peer4windows/native175180110/Ready/twoepochs/4renderframes and retainedfailures. Compared CP145oldUDP/CP146missingcapture/CP147singleCA8roster/mergePR218. Not merely scriptpass; no completehistory rewrite/gateclosure.",
+  "findings": [
+    {
+      "id": "F1",
+      "stale": "README/PLAN/currentcontract header still CP146/147 pendingPR although PR218 merged.",
+      "correction": "Currentnavigation states CP146–147 mergea3d1d94 and CP148selfcheck, header/audit148→152; completehistory unchanged.",
+      "fixed_in": [
+        "README.md",
+        "docs/PLAN.md",
+        "docs/PROTOCOL.md"
+      ]
+    },
+    {
+      "id": "F2",
+      "stale": "RESEARCH result/reset/disconnect/peer next exactoldUDP or TCPendpointchain already answered at CP145/146.",
+      "correction": "Remove stale active instructions, keep general gaps; PLAN selects directchannel/no rootguardproxy positive recipe after CP148productionconfig/capture.",
+      "fixed_in": [
+        "docs/RESEARCH.md",
+        "docs/PLAN.md",
+        "docs/COVERAGE.md"
+      ]
+    },
+    {
+      "id": "F3",
+      "stale": "Rawprofile metadata sequenceNone could be read as unsupported or unknown seq; first implementation wrongly required explicit52 and stopped beforeCA.",
+      "correction": "Keep initialruntime/control; support legacy null rawfixture with fixed52verifiedCRC, scope knownvariant only; renderedfixturemodel not wire7capture. Source froze within eachrun; testfix/runseparate.",
+      "fixed_in": [
+        "server/probe_service.py",
+        "server/test_channel_endpoint.py",
+        "docs/PROTOCOL.md",
+        "docs/evidence/peer-endpoints/README.md"
+      ]
+    },
+    {
+      "id": "F4",
+      "stale": "Could infer newcapture fills missingCP146wire or eight-slotproof establishes8actualplayers/Mannerselector.",
+      "correction": "CP146noPCAP,CP147synthetic8roster,CP148604same-runwirejoins remain separate; physicalLAN/NAT/Internet/fullauth/gates andselector1input unknown.",
+      "fixed_in": [
+        "README.md",
+        "docs/PROTOCOL.md",
+        "docs/RESEARCH.md",
+        "docs/evidence/peer-endpoints/README.md"
+      ]
+    },
+    {
+      "id": "F5",
+      "stale": "Authority matrix did not describe new operatorchannel choice/validation/simulatorboundary.",
+      "correction": "Add bounded endpoint row and references, preserve client99/peereditable/authunknown; rootproxy not directchannelpeer.",
+      "fixed_in": [
+        "docs/PROTOCOL.md",
+        "docs/features.json",
+        "docs/evidence/issue-reconciliation/review.json",
+        "docs/evidence/issue-reconciliation/github-snapshot.json"
+      ]
+    }
+  ],
+  "remaining": [
+    "CP148selfcheck pendingcommit/push/PR/exacthead/merge; nextperiodicCP152.",
+    "RootchannelTCPguardproxy still between nativeCAandservice; positive directchannelroute nextPLAN.",
+    "Windowsoriginal/authauthority/realLAN/NAT/Internet/fullmatch/K6a/8actualclients/selector1wire/CP137UI/sharedgeometry/fullinventory unchanged."
+  ]
+}

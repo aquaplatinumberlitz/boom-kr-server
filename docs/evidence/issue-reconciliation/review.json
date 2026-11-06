@@ -1,6 +1,6 @@
 {
   "schema": "kre-issue-review-v1",
-  "as_of": "2026-11-05",
+  "as_of": "2026-11-06",
   "baseline": "408c535bb7028b626c5ac7bde583e979f7e3a658",
   "method": "Codex manual acceptance review; native/static/model/design/merge/gate distinct; originalissuebodies archivedlocalbeforeedit, no completecheckpoint rewrite",
   "issues": [
@@ -135,11 +135,11 @@
         "KR-F001",
         "KR-F015"
       ],
-      "known": "CP145/PR216mergedcca0427; CP146eightnativeTCPconnectsockaddr/caller/directprivatefirst3peersA.2/B.3/channelrootproxy/private7IP/nochildforward/binaryunchanged/native2cycles/Ready. UDPPCAPinitomitted/compositionlimitpreserved. CP147: native roster8/Start4–4 và1–7/capacity8 so9; chưa8 client thật.",
-      "remaining": "ExplicitproductionchannelIPv4/portconfig/defaultfixturebyteidentity+restoredUDPcapturefollowup missing. Fullauth/schema/cachefieldcause/physicalLAN/NAT/gates/CP137UI/sharedgeometry/fullinventory remain. Selector1 wire/UI và service8 peer/Battle8 chưa kiểm.",
-      "next_test": "PLAN reuseCP015/146redirect7typedcontract; serviceAPI/CLIexplicitendpoint/defaultfixtureunchanged/IPv4portpairvariantprelistenregression, thennativebaseprofile/nochildforward/privatehostmap/rootproxy/restoredcapture/2cycles/Ready.",
+      "known": "CP146–147/PR218mergeda3d1d94; CP148 productionchannelendpoint/baseprofile/native2cycles/restored604vethwire/native4windows/Ready/237tests cónguồn, selfcheckpendingPR. CP147roster8không8realclients.",
+      "remaining": "Positivechanneldirectservice/no rootTCPguardproxy; fullauth/Windowscontrol/physicalLAN/NAT/Internet/gates/CP137UI/sharedgeometry/fullinventory và8realpeers remain.",
+      "next_test": "PLAN reuseCP148API/CLI/baseprofile/capture/nativeconnect/99/153/4peerwindows/2cycles/Ready; newfrozenpositivecopy directchanneltoactualservicelistener/no rootguardproxy, actualpeerA.2/B.3; no repeatoldUDP/codec.",
       "acceptance": "Epic checklist: linkedscopedtask/evidence+authoritymatrix vàacceptancegate ởPLAN; từngtaskđóng khôngđóngepic/K5/K6a.",
-      "reason": "DirectTCProute gapclosedscopednativeproof; nofalseUDPPCAPclaimorfullauth/LANgate. Operatorhostmap+fixturechange notisolatedcachecausality.",
+      "reason": "Scopedproductionendpoint/capture gap resolved byruntime/source/tests; rootguardproxyroute remains isolatednextintegrationedge; no gateclosure.",
       "sources": [
         "docs/PROTOCOL.md#authority",
         "docs/RESEARCH.md#feature-gaps",
@@ -168,7 +168,8 @@
         "docs/PROTOCOL.md#virtual-pending-guest-eof",
         "docs/PROTOCOL.md#virtual-exact-old-udp",
         "docs/PROTOCOL.md#direct-tcp-endpoints",
-        "docs/PROTOCOL.md#battle-eight-roster"
+        "docs/PROTOCOL.md#battle-eight-roster",
+        "docs/PROTOCOL.md#service-channel-endpoint"
       ],
       "evidence": [
         "docs/evidence/current-movement-cycles/README.md",
@@ -194,7 +195,8 @@
         "docs/evidence/peer-endpoints/README.md#cp144",
         "docs/evidence/peer-endpoints/README.md#cp145",
         "docs/evidence/peer-endpoints/README.md#cp146",
-        "docs/evidence/eight-player/README.md"
+        "docs/evidence/eight-player/README.md",
+        "docs/evidence/peer-endpoints/README.md#cp148"
       ],
       "prs": [
         173,
@@ -235,7 +237,8 @@
         213,
         214,
         215,
-        216
+        216,
+        218
       ],
       "successors": []
     },

@@ -234,3 +234,12 @@ vô hiệu hóa fence và tái dùng close/forfeit/return/cleanup hiện hành. 
 `python3 -m unittest server.test_loading_timeout` kiểm local policy, không là original-server oracle.
 [CP136 positive normal/reset](../docs/PROTOCOL.md#loading-timeout-positive) đã qua trên same-profile all-dead;
 tổ hợp normal movement/survivor/current-trap/result-drain theo PLAN vẫn cần cùng-run proof.
+
+
+CP148: endpoint kênh có thể chọn bằng `--channel-ip 10.77.0.1 --channel-port 3858`
+(API `ProbeService(channel_ip=..., channel_port=...)`), độc lập `--bind-ip` và `--peer-ip`.
+Không truyền cặp này thì giữ nguyên bytes redirect fixture. Chỉ variant7 đã đo được hỗ trợ;
+cấu hình sai/variant khác bị chặn trước listen. Profile legacy `sequence:null` cho raw fixture vẫn
+được nhận khi bytes khớp native seq52; không đổi metadata/profile để chạy.
+[Contract/giới hạn/native proof](../docs/PROTOCOL.md#service-channel-endpoint).
+Operator phải cô lập mạng theo AGENTS; endpoint này không là tự chọn kênh/account authority/NAT.

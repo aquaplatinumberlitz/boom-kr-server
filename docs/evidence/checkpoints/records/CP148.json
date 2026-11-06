@@ -1,0 +1,271 @@
+{
+  "id": "CP148",
+  "previous": "CP147",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-06T00:49:25.600845+00:00",
+  "context_commit": "a3d1d949ec600b166a3002681dd35e2dab503a7d",
+  "owner": "Codex",
+  "reviewer": "Codex",
+  "question": "Can production service configure measured channel redirect endpoint without changing defaultfixture/baseprofile, restore UDPcapture and complete same-run native2cycles/4peerwindows/guards/reset/Ready?",
+  "scope": "Reuse CP015/141/146 contracts and nativecontrollers; explicitAPI/CLI/configvalidation/socketpairregressions, retainedstartupnegative followed frozennewrun/restoredcapture, nativegetter/framer/sourcewire joins, manualAUD045. No newfullnativebody/codec/authscan.",
+  "artifacts": [
+    {
+      "name": "KRoriginalCAunchanged",
+      "sha256": "a52545c14b1fea423de655c3163d6360b628d61c1cd472b46fdbc8a9ffe15f4e"
+    },
+    {
+      "name": "WinecopyA",
+      "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+    },
+    {
+      "name": "WinecopyB",
+      "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+    },
+    {
+      "name": "native modO base400000",
+      "sha256": "a08950c833d3acab8281049def7b3dc96b221f107eeda01da3a548e34b91dce5"
+    }
+  ],
+  "locators": [
+    "CP146–147/PR218head0887e522325791ef5f043b71e58a5e0c96afa7d1/mergea3d1d949ec600b166a3002681dd35e2dab503a7d; baseline andexacthead archived. AUD045through148/next152.",
+    "CP015 S2C7seq52/frame52/body14/prefix69/result1/kind10/index0/typedIPv4+port/body6..11/tailu16zero; runtime1101EA0→110182E/125540E→13AD97E/13ADA06→14F4894; bootstrap14F4923; base400000/RVA=VA−400000.",
+    "R2run0d883b150487a4a0ce4b8c8c5dfa254da9b493211853573b7db30337332c4986/345.337846482s/exit0/1894raw/604PCAP/4peerwindows; actualCA-A162/wineserver49/B486/server373/privatechildnetns; 2barriers26.229142753/26.356633709s<30s.",
+    "APIPreselectorchannel_endpoint_config/channel_redirect_frame; CLIchannel-ip/port; rawprofilemetadataNonefixed52CRCknownvariant. Default exactREDIRECTb514742b5e0feb58f64f6f8b1427ca1c34c7494202607b7fb8ee78e02d0caa15. Nativegetter52A350/ED1350; UDPCRC14A5860/frame14EF300 emulation separate."
+  ],
+  "findings": [
+    {
+      "summary": "Production API/CLI explicitchannelIPv4/port validates pair/known7variant before selector/listen/mutation; defaultframe/profile bytes unchanged, only6typedendpointbytes changed with seq52/header/tail preserved.",
+      "source": "design",
+      "status": "design",
+      "method": "design",
+      "canonical": "docs/PROTOCOL.md#service-channel-endpoint",
+      "evidence": [
+        "RUN-02127",
+        "RUN-02137",
+        "RUN-02165",
+        "RUN-02067"
+      ],
+      "limits": "TwoactualmodifiedWineCA/wineserver/privatevirtualhosts/samephysicalhost/newcopies/e9bb4766unchanged. ProductionAPI/CLIoperatorendpoint/baseprofileexact/rawsequenceNonefixed52verified; rootTCPguardproxy remains3858→23858/channelservicepeer.1, first3directA.2/B.3/nochildforward; UDPdirect/noUDPproxy. 2basiccycles/4peerwindows/items/TCPselected8same4old/reset/95Ready110/noStart3/604vethrecords. Notoriginalauth/channel-selectionlaw/fullcodec/physicalLAN/NAT/Internet/fullmatch/K6a/gates/CP137complexUI/sharedgeometry/fullinventory/8actualclients. Rendered7fixture native model isnotcapturedwire7; actualconnect/source/recipientprogress separate. "
+    },
+    {
+      "summary": "Initialrun failed beforeCA because legacyrawprofilesequenceNone wrongly rejected. Raw/freeze/cleanup retained; fix supportsnullraw route withfixed52CRC and knownvariant, separateR2newcopy/freeze.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#service-channel-endpoint",
+      "evidence": [
+        "RUN-00008",
+        "RUN-00009",
+        "RUN-00033",
+        "RUN-02122",
+        "RUN-02064"
+      ],
+      "limits": "TwoactualmodifiedWineCA/wineserver/privatevirtualhosts/samephysicalhost/newcopies/e9bb4766unchanged. ProductionAPI/CLIoperatorendpoint/baseprofileexact/rawsequenceNonefixed52verified; rootTCPguardproxy remains3858→23858/channelservicepeer.1, first3directA.2/B.3/nochildforward; UDPdirect/noUDPproxy. 2basiccycles/4peerwindows/items/TCPselected8same4old/reset/95Ready110/noStart3/604vethrecords. Notoriginalauth/channel-selectionlaw/fullcodec/physicalLAN/NAT/Internet/fullmatch/K6a/gates/CP137complexUI/sharedgeometry/fullinventory/8actualclients. Rendered7fixture native model isnotcapturedwire7; actualconnect/source/recipientprogress separate. "
+    },
+    {
+      "summary": "ActualtwoCAproductionCLI/baseprofile/directfirst3TCP/nochildforward/channelprivateendpoint via retainedrootguardproxy eachcomplete2nativeclock/175180/110/reset/final95Ready; 604vethwire joins andfourpeerwindows same run.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#service-channel-endpoint",
+      "evidence": [
+        "RUN-01997",
+        "RUN-01403",
+        "RUN-01402",
+        "RUN-02016",
+        "RUN-00104",
+        "RUN-02040",
+        "RUN-00099"
+      ],
+      "limits": "TwoactualmodifiedWineCA/wineserver/privatevirtualhosts/samephysicalhost/newcopies/e9bb4766unchanged. ProductionAPI/CLIoperatorendpoint/baseprofileexact/rawsequenceNonefixed52verified; rootTCPguardproxy remains3858→23858/channelservicepeer.1, first3directA.2/B.3/nochildforward; UDPdirect/noUDPproxy. 2basiccycles/4peerwindows/items/TCPselected8same4old/reset/95Ready110/noStart3/604vethrecords. Notoriginalauth/channel-selectionlaw/fullcodec/physicalLAN/NAT/Internet/fullmatch/K6a/gates/CP137complexUI/sharedgeometry/fullinventory/8actualclients. Rendered7fixture native model isnotcapturedwire7; actualconnect/source/recipientprogress separate. "
+    },
+    {
+      "summary": "TwoepochBombFireeffects/8same4oldTCPguard andcurrent17SHA→19/survivor21/rank2,1/resetseed scopedproof; modeledgetters/nativefixtures separated fromruntime.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#service-channel-endpoint",
+      "evidence": [
+        "RUN-02060",
+        "RUN-02033",
+        "RUN-02019",
+        "RUN-02192"
+      ],
+      "limits": "TwoactualmodifiedWineCA/wineserver/privatevirtualhosts/samephysicalhost/newcopies/e9bb4766unchanged. ProductionAPI/CLIoperatorendpoint/baseprofileexact/rawsequenceNonefixed52verified; rootTCPguardproxy remains3858→23858/channelservicepeer.1, first3directA.2/B.3/nochildforward; UDPdirect/noUDPproxy. 2basiccycles/4peerwindows/items/TCPselected8same4old/reset/95Ready110/noStart3/604vethrecords. Notoriginalauth/channel-selectionlaw/fullcodec/physicalLAN/NAT/Internet/fullmatch/K6a/gates/CP137complexUI/sharedgeometry/fullinventory/8actualclients. Rendered7fixture native model isnotcapturedwire7; actualconnect/source/recipientprogress separate. "
+    },
+    {
+      "summary": "AUD045 manualreadraw/source/render corrects stalependingPR218andactiveoldUDP/TCPchain tasks, preserves CP146noPCAP/CP147synthetic8scope; PLAN nextpositivechanneldirectlistener/no rootguardproxy.",
+      "source": "design",
+      "status": "design",
+      "method": "documentation",
+      "canonical": "docs/PROTOCOL.md#service-channel-endpoint",
+      "evidence": [
+        "RUN-02203",
+        "RUN-00109",
+        "RUN-00111"
+      ],
+      "limits": "TwoactualmodifiedWineCA/wineserver/privatevirtualhosts/samephysicalhost/newcopies/e9bb4766unchanged. ProductionAPI/CLIoperatorendpoint/baseprofileexact/rawsequenceNonefixed52verified; rootTCPguardproxy remains3858→23858/channelservicepeer.1, first3directA.2/B.3/nochildforward; UDPdirect/noUDPproxy. 2basiccycles/4peerwindows/items/TCPselected8same4old/reset/95Ready110/noStart3/604vethrecords. Notoriginalauth/channel-selectionlaw/fullcodec/physicalLAN/NAT/Internet/fullmatch/K6a/gates/CP137complexUI/sharedgeometry/fullinventory/8actualclients. Rendered7fixture native model isnotcapturedwire7; actualconnect/source/recipientprogress separate. "
+    }
+  ],
+  "verification": [
+    {
+      "check": "237server tests including6channelconfig/socketpair/beforeselector/nooutput/defaultbytes/invalidvariants and legacyrawnull regression",
+      "result": "pass",
+      "evidence": [
+        "RUN-02165",
+        "RUN-00004",
+        "RUN-00081"
+      ],
+      "limits": "Initialfixturetestmissingchunks failedlogs retained; testsregression notnativegameoracle."
+    },
+    {
+      "check": "3905lifecycle+53TCPconfig+1374vethwire+537peer+70pickup+87guard+25Ready same-run joins",
+      "result": "pass",
+      "evidence": [
+        "RUN-00104",
+        "RUN-02016",
+        "RUN-02040",
+        "RUN-02019",
+        "RUN-02060",
+        "RUN-02033",
+        "RUN-00099",
+        "RUN-02064"
+      ],
+      "limits": "TwoactualmodifiedWineCA/wineserver/privatevirtualhosts/samephysicalhost/newcopies/e9bb4766unchanged. ProductionAPI/CLIoperatorendpoint/baseprofileexact/rawsequenceNonefixed52verified; rootTCPguardproxy remains3858→23858/channelservicepeer.1, first3directA.2/B.3/nochildforward; UDPdirect/noUDPproxy. 2basiccycles/4peerwindows/items/TCPselected8same4old/reset/95Ready110/noStart3/604vethrecords. Notoriginalauth/channel-selectionlaw/fullcodec/physicalLAN/NAT/Internet/fullmatch/K6a/gates/CP137complexUI/sharedgeometry/fullinventory/8actualclients. Rendered7fixture native model isnotcapturedwire7; actualconnect/source/recipientprogress separate."
+    },
+    {
+      "check": "1338actor/348peergetter/2364flags+2340array/330typedpacket/333report/12native153/43UDPCRC/3redirectcases emulation",
+      "result": "pass",
+      "evidence": [
+        "RUN-00098",
+        "RUN-02059",
+        "RUN-02020",
+        "RUN-02042",
+        "RUN-02043",
+        "RUN-02041",
+        "RUN-02058",
+        "RUN-02067"
+      ],
+      "limits": "Copiedwrappers/readers/CRC and modeledallocator/receiver/counterreset; rendered7notwire7; noforcedWinegamefunction."
+    },
+    {
+      "check": "Docs/catalog/liveGitHublinks/sourceartifacthash/diff; manual audit148",
+      "result": "pass",
+      "evidence": [
+        "RUN-02018",
+        "RUN-02036",
+        "RUN-00103",
+        "RUN-02203"
+      ],
+      "limits": "Mechanicalconsistencyonly; fullrequiredlocal/history checkedbeforecommit. Reviewwaived, nosemanticgateclosure."
+    }
+  ],
+  "evidence": [],
+  "evidence_manifests": [
+    {
+      "path": "docs/evidence/checkpoints/evidence/CP148-service-channel-endpoint.json",
+      "bytes": 568311,
+      "sha256": "257c5394f2168bef24e5cb1a1f83a56f1c4ec5713e6386cfee1a9553e5c42b3e",
+      "count": 2203
+    }
+  ],
+  "delta": {
+    "added": [
+      "ProductionchannelendpointAPI/CLI/defaultfixturepreserve/preselectorvalidation andsame-run restoredUDPcapture/native2cycles/resetReady.",
+      "AUD045periodic148→152 and canonicalauthority/catalog/issue14navigation."
+    ],
+    "corrected": [
+      "LegacyrawprofileNone doesnotmeanseq0/unsupported; fixed52nativeCRCverified supportsoriginalbaseprofile; r1negative retained.",
+      "Initialtestmissingchunks/PYTHONPATH/parserbootstrapBselection/reportdependencyfailures kept; no raw/gameconclusions changedtopass.",
+      "CurrentREADME/PLAN/PROTOCOL/RESEARCH header/merge/oldUDP/TCPnext tasks synced; CP146missingcapture neverbackfilled."
+    ],
+    "superseded": [
+      "NEXT-SERVICE-CHANNEL-ENDPOINT scopedworkclosed; NEXT-DIRECT-CHANNEL-NO-PROXY active. No gate/issue14closure."
+    ]
+  },
+  "blockers": [
+    "RootTCPguardproxy retained onchannel; positiveproductiondirectchannelactualservicepeerA.2/B.3 notyetverified.",
+    "Originalauth/Windowscontrol/fullcodec/realLAN/NAT/Internet/fullmatch/K6a/gates/CP137complexUI/sharedgeometry/fullinventory/selector1wire/8actualclients remain."
+  ],
+  "next_steps": [
+    {
+      "id": "NEXT-SERVICE-CHANNEL-ENDPOINT",
+      "task": "KRE-005b",
+      "state": "closed",
+      "action": "Explicitserviceendpoint/baseprofile/defaultbytes/native2cycles/restoredcapture completedwithinCP148scope; rootguardproxy limit staysseparate.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-DIRECT-CHANNEL-NO-PROXY",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "PLAN newfrozenpositivecopy/channelportservicelistener/no rootTCPguardproxy/currentprofile/timeout/native99/153/directUDP4windows/items/twoendingreset95Ready/noStart3; verifyactualchannelservicepeersA.2/B.3, keepCP148negativeTCPscope separate.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    }
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-11-06T00:49:25.600845+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "Codex solo RE/code/runtime/selfcheck; noindependentapproval.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Owner explicitly requested solo without workers/review."
+    }
+  },
+  "docs_sync": [
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "CP148endpoint/capture scopedresults/limits/nextdirectchannel/audit148→152/PR218merge synchronizedbeforecomplete."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "CP148endpoint/capture scopedresults/limits/nextdirectchannel/audit148→152/PR218merge synchronizedbeforecomplete."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "updated",
+      "reason": "CP148endpoint/capture scopedresults/limits/nextdirectchannel/audit148→152/PR218merge synchronizedbeforecomplete."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "updated",
+      "reason": "CP148endpoint/capture scopedresults/limits/nextdirectchannel/audit148→152/PR218merge synchronizedbeforecomplete."
+    },
+    {
+      "path": "docs/features.json",
+      "state": "updated",
+      "reason": "CP148endpoint/capture scopedresults/limits/nextdirectchannel/audit148→152/PR218merge synchronizedbeforecomplete."
+    },
+    {
+      "path": "docs/COVERAGE.md",
+      "state": "updated",
+      "reason": "CP148endpoint/capture scopedresults/limits/nextdirectchannel/audit148→152/PR218merge synchronizedbeforecomplete."
+    },
+    {
+      "path": "docs/evidence/peer-endpoints/README.md",
+      "state": "updated",
+      "reason": "CP148endpoint/capture scopedresults/limits/nextdirectchannel/audit148→152/PR218merge synchronizedbeforecomplete."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/review.json",
+      "state": "updated",
+      "reason": "CP148endpoint/capture scopedresults/limits/nextdirectchannel/audit148→152/PR218merge synchronizedbeforecomplete."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
+      "state": "updated",
+      "reason": "CP148endpoint/capture scopedresults/limits/nextdirectchannel/audit148→152/PR218merge synchronizedbeforecomplete."
+    },
+    {
+      "path": "server/README.md",
+      "state": "updated",
+      "reason": "CP148endpoint/capture scopedresults/limits/nextdirectchannel/audit148→152/PR218merge synchronizedbeforecomplete."
+    }
+  ]
+}

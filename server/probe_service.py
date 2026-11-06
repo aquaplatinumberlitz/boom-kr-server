@@ -115,6 +115,44 @@ def peer_ip_options(options):
     return peers
 
 
+def channel_endpoint_config(ip, port):
+    """Explicit channel destination; the caller owns isolation and reachability."""
+    if ip is None and port is None:
+        return None
+    if ip is None or port is None:
+        raise ValueError('channel IP and port must be supplied together')
+    if type(port) is not int or not 1 <= port <= 65535:
+        raise ValueError('invalid channel port')
+    _, peers = network_config('127.0.0.1', {'A': ip})
+    return {'ip': peers['A'], 'port': port}
+
+
+def channel_redirect_frame(profile, endpoint):
+    """Only CP015/146's measured S2C7 variant, preserving header/sequence/tail.
+
+    None deliberately leaves the fixture path untouched, including legacy profiles.
+    This operator choice does not recover original channel selection policy.
+    """
+    if endpoint is None:
+        return None
+    meta = profile.data.get('fixtures', {}).get('redirect', {})
+    raw = profile.frames.get('redirect', b'')
+    # Legacy profiles mark this raw-only fixture sequence=None. Its actual fixed
+    # seq52 is established by CP015, and verified against the bytes below.
+    if ('sequence' not in meta or (meta['sequence'] is not None
+            and (type(meta['sequence']) is not int or meta['sequence'] != 52))
+            or len(raw) != 52 or raw[0] != 0x69
+            or struct.unpack_from('<I', raw, 5)[0] != 7):
+        raise ValueError('unsupported channel redirect fixture')
+    body = codec.frame_body(raw, 52)
+    if (len(body) != 14 or codec.read_fields(body[:6], [1, 1, 4]) != [1, 10, 0]
+            or body[12:] != codec.pack_fields([0], [2])):
+        raise ValueError('unsupported channel redirect variant')
+    replacement = codec.pack_fields([int(ipaddress.IPv4Address(endpoint['ip'])),
+                                     endpoint['port']], [4, 2])
+    return codec.encode(raw[:37], 7, body[:6] + replacement + body[12:], 52)
+
+
 HOST_BACK_ALIASES = ('join_A', 'player_A_guest', 'slot_A_guest', 'guest_B_chief', 'ready_A')
 # Bounded CP036 diagnostic roster: A/B team0, shared spawn0; synthetic
 # slot2/ID3/team1 has no socket. Hash bodies rather than transport sequences.
@@ -130,8 +168,10 @@ RESCUE_PROFILE_BODIES = {
 
 class ProbeService:
     def __init__(self, profile: FixtureProfile, out: Path, proxy_ports: dict, *,
-                 bind_ip='127.0.0.1', peer_ips=None):
+                 bind_ip='127.0.0.1', peer_ips=None, channel_ip=None, channel_port=None):
         self.bind_ip, self.peer_ips = network_config(bind_ip, peer_ips)
+        self.channel_endpoint = channel_endpoint_config(channel_ip, channel_port)
+        self.redirect_frame = channel_redirect_frame(profile, self.channel_endpoint)
         missing = {'rank_Awin', 'promote_B', 'auth_C', 'roomlist_C', 'join_C',
                    'player_C', 'slot_C', 'guest_C', 'ready_C'} - profile.frames.keys()
         if missing:
@@ -242,6 +282,7 @@ class ProbeService:
                       'item_requests': [], 'policy_events': [], 'errors': [],
                       'source': 'emu_choice', 'profile': profile.data,
                       'network': {'bind_ip': self.bind_ip, 'peer_ips': dict(self.peer_ips),
+                                  'channel_endpoint': self.channel_endpoint,
                                   'source': 'design', 'policy': 'explicit_operator_ipv4'},
                       'limits': 'Fixture auth/roster/rank, explicit addresses default loopback, two live members/A-B then B-C by accept order; no fullmatch gate.'}
         self.state['policy_sources'] = []
@@ -1451,7 +1492,9 @@ class ProbeService:
                                           (9, 'netinfo_response_sent', ['netinfo', 'flags']),
                                           (5, 'redirect_response_sent', ['redirect'])]:
                     if opcode == op and not event.get(marker):
-                        self.send_raw(event, b''.join(self.profile.raw(name) for name in names))
+                        self.send_raw(event, b''.join(
+                            self.redirect_frame if name == 'redirect' and self.redirect_frame is not None
+                            else self.profile.raw(name) for name in names))
                         event[marker] = {'monotonic_ns': time.monotonic_ns()}
             else:
                 self.receive_channel(event, frame, sequence, body)
@@ -1507,16 +1550,20 @@ def main():
     parser.add_argument('--proxy-b', type=int, default=0)
     parser.add_argument('--bind-ip', default='127.0.0.1')
     parser.add_argument('--peer-ip', action='append', default=[], metavar='ROLE=IPv4')
+    parser.add_argument('--channel-ip', help='Explicit IPv4 destination in measured S2C7 redirect')
+    parser.add_argument('--channel-port', type=int, help='Destination port; requires --channel-ip')
     args = parser.parse_args()
     if any(not 0 <= port <= 65535 for port in [*args.port, args.proxy_a, args.proxy_b]):
         parser.error('invalid port')
     try:
         bind_ip, peer_ips = network_config(args.bind_ip, peer_ip_options(args.peer_ip))
+        channel_endpoint_config(args.channel_ip, args.channel_port)
     except ValueError as error:
         parser.error(str(error))
-    args.out.mkdir(parents=True, exist_ok=True)
     service = ProbeService(FixtureProfile(args.profile), args.out, {'A': args.proxy_a, 'B': args.proxy_b},
-                           bind_ip=bind_ip, peer_ips=peer_ips)
+                           bind_ip=bind_ip, peer_ips=peer_ips,
+                           channel_ip=args.channel_ip, channel_port=args.channel_port)
+    args.out.mkdir(parents=True, exist_ok=True)
     def stop(_signal, _frame):
         service.closed = True
     signal.signal(signal.SIGTERM, stop)

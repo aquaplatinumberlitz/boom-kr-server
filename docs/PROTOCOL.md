@@ -1,6 +1,6 @@
 # KR 00967 — contract tương thích client gốc
 
-Revision kr-legacy-contract-r1; cập nhật06/11/2026 JST (CP146; AUD044 quaCP144, kếCP148).
+Revision kr-legacy-contract-r1; cập nhật06/11/2026 JST (CP148; AUD045 quaCP148, kếCP152).
 **Contract có bằng chứng từng phần; chưa nghiệm thu full codec K2**.
 Lộ trình và thứ tự task chỉ giữ ở [REWRITE_PLAN — KRE](PLAN.md).
 Đây là contract của repo server KR. ADR0009 của bản viết lại là nguồn lịch sử để so sánh;
@@ -2020,6 +2020,7 @@ Giới hạn và phép đo nằm ở link contract; không dùng mỗi vai trò 
 | [Explode158/terrain](#terrain-policy) | Timer6s của profile là emu_choice | Native158/process/chain/mapflags; service dùng bounded terrain model | Model/profile pin/kinds/power≤2/currentgeneration; semantic modelchoices có giới hạn | Service phát158 rồi commit world/release | Peer movement có thể ảnh hưởng contact/report; report142 không làm worldoracle. Original server validator/order vẫnunknown |
 | [Trap/death/result](#result-freshness-guard) | Native local simulation tạo127/subtype | Native170/175/180 nhận effect/UI | Guard key/slot/reportstate/selectedsame-oldbody; optional result freshness/drain/21 sau17 và opposite-peer170 theo [CP102](#drained-result-local-clear)/[CP103](#peer21-ending-order); firstseen/forgedforward/location vẫn thiếu | Service170/result/return theo policy | Report/body do client gửi; acceptedreport không là authoritative world proof. [Limits](#tcp-guard-cycles) và RESEARCH giữ mở |
 | [Peer endpoint/directUDP](#virtual-peer) | Native99 báoIP0/UDPport; configđo chọnIP153 | NativeWinsock/lookup/handler/actor; actualCA+wineserverNS kiểmđộc lập | Currenttuple/key/slot trongcađãđo; no fullIPauth/NAT law | Stub153traobảng; nativeUDPđi direct | IP0khớpNIC/source trongvirtualcase; IP1opaque; [CP141 cấu hình tường minh](#service-address-config) thay measurement shim; operator policy, không NAT/auth. Hai basic cycles không là movement gate |
+| [Channel endpoint](#service-channel-endpoint) | NativeC2S5 yêu cầu redirect | KR1101EA0 nhận7 rồi nativeconnect | Service kiểm operatorIPv4/port và variant7 hẹp; không quyết định account/channel authority gốc | Service giữ raw mặc định hoặc thay typedIP/port | IP/port do operator đặt; không tin init99/identity client; rootTCPguardproxy còn riêng trong CP148 |
 
 Gate K5/K6 cần kiểm matrix và đối chứng của hành vi thực sự dùng; từ28/10 Codex tự kiểm theo miễn review của chủ dự án. Có thể giữ unknown về
 server gốc thất lạc nếu policy emulator được chọn `design`, client chấp nhận và ca consistency đạt;
@@ -5130,3 +5131,37 @@ không sửa giữarun; sẽkhôiphục capturetrướcphéptiếp. Trace TCP49j
 Scope TCPbootstrap/WCP/auth/channelprivate route verified; originalIPcachecause/semantics/schema/
 fullcodec/auth/realLAN/NAT/Internet/fullmatch/K6a/gates/CP137UI/sharedgeometry/fullinventory mở.
 TiếpPLAN đưa endpoint7 thành explicitserviceconfig/defaultfixturepreserved rồiverifycaptuređầyđủ.
+
+
+<a id="service-channel-endpoint"></a>
+### Endpoint kênh cấu hình trong service và capture được khôi phục — CP148
+
+**Design/implementation:** API `ProbeService(channel_ip=..., channel_port=...)` và CLI
+`--channel-ip/--channel-port` chọn đích của variant7 đã đo ở CP015/146. Thiếu một nửa cặp,
+IPv4 không hỗ trợ/unspecified/multicast/broadcast hoặc port không phải int1..65535 bị chặn;
+variant khác prefix69/opcode7/result1/kind10/index0/body14/tailu16zero hoặc sequence khác52
+bị từ chối trước selector/listen/output mutation. Metadata legacy `sequence:null` là gửi raw,
+không phải seq0: fixed52 được kiểm bằng CRC của bytes fixture. Mặc định không sửa fixture;
+khi có cặp, chỉ thay typedIP/port ở body6..11, giữ header37/seq52/tail và counter đường gửi cũ.
+Đây là lựa chọn operator, không phải luật chọn channel/auth của server gốc.
+
+**`kr_runtime/confirmed` hẹp:** hai copy Wine e9bb4766…/private virtualhosts chạy production CLI
+với baseprofile nguyên bản (redirect fixture vẫn loopback/sequence:null), không customredirect7;
+actual nativeconnect chọn10.77.0.1:3858 từ cấu hình service. First3 TCP trực tiếp service từA.2/B.3;
+channel vẫn qua rootproxy phục vụ selectedTCPguard tới23858. Không childTCPforward/UDPproxy.
+Cùng run có hai clock/175/180/reset/Ready95 và native110 sau return2, bốn cửa sổ movement/nativeapply,
+Bomb/Fire effects,8same4oldTCPguard; **604 vethPCAP records** nối actual99/source/payload→nativeingress.
+Hai loadingbarrier26.229/26.357s<30s; không tăng timeout hoặc ép state để qua.
+
+[Recipe, failed startup, raw/hash, mô hình và audit](evidence/peer-endpoints/README.md#cp148).
+Run đầu dừng trước client vì kiểm mới đòi metadata52; baseprofile legacy khai null. Giữ raw/cleanup,
+sửa hỗ trợ đúng raw-profile và chạy thư mục/freeze mới. Không sửa source/config giữa hai run đang chạy.
+Run sau345.338s/exit0/1894raw;3905lifecycle/1374wire/537peer/70pickup/87guard/25Ready/53TCPconfig
+joins tách với model:1338actor,348peergetter,2364flaggetter+2340array,330typedpacket,12native153,
+43UDPCRC và3redirect-fixture cases. Fixture7 render từ service đưa vào native model **không** là
+wire capture7; actual TCPconnect/recipient progress và socketpair regression là bằng chứng riêng.
+
+Giữ CP146 thiếuPCAP như lịch sử; CP148 không thêm capture vào run cũ. CP1478slot vẫn một client
+với roster tổng hợp. Windowsoriginal/fullauth/realLAN/NAT/Internet/fullmatch/K6a/gates,
+CP137complexUI/sharedgeometry/fullinventory chưa giải. Sau cấu hình/capture, bước tiếp ở PLAN:
+luồng channel trực tiếp service, bỏ rootguardproxy trên positive recipe; không lặp codec/oldUDP.
