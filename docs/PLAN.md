@@ -1,7 +1,7 @@
 # Kế hoạch server giả lập KR 00967
 
 Nguồn chuẩn của project `boom-kr-server`; bản nhập từ plan đã được dsh1/dsh2 review tại `1eee46d`.
-Cập nhật06/11 JST (CP168): currentmodeBhost2normalcycles/Ready→actualBStart3/clockrender8s đãđo; 2pulsecontrolsFAILgiữ. CP167PR238mergede48e10b, CP168tựkiểm/chờPR. AUD050qua168/kếCP172; tiếpbasicBattlehiddenintegration.
+Cập nhật06/11 JST (CP169): currentmode/Bhost profileghépknownCP069basicBattle đãnativeFixedBox/reveal/3pickup/3effects cùngepoch; chưaresult/reset/trậnkế. CP168PR239merged2ee6556; CP169tựkiểm/chờPR. AUD050qua168/kế172.
 
 
 ### Mục tiêu, baseline và phạm vi
@@ -37,13 +37,13 @@ với client Rust không chứng minh có thể điều khiển client KR bằng
 
 ### Tiến độ hiện hành theo bằng chứng
 
-| Task/mốc | Trạng thái tại CP168 | Nguồn chuẩn |
+| Task/mốc | Trạng thái tại CP169 | Nguồn chuẩn |
 |---|---|---|
 | KRE-004/issue6 | Đã review/merge PR7 và đóng issue:recipe r1 đến local accept;không phải full K1 | [Wine r1](evidence/wine/README.md) |
 | Bootstrap reply | PR8 đã merge;debugger ProcessPatchreturn1,không ép success | [bootstrap evidence](evidence/bootstrap-wire/README.md) |
 | KRE-005a/issue9,R2 | PR10 đã merge:3 cold start cửa sổ/second accept;issue9 còn mở | [R2 evidence](evidence/wine-r2/README.md) |
 | WCP hai-reply | Run CP001 là lịch sử chưa C→S; CP006 đã đo request đầu trên copy tham số hóa | [PROTOCOL](PROTOCOL.md#wcp),[WCP evidence](evidence/wcp/README.md) |
-| KRE-005b/issue14 | CP006–167 đã merge; CP168 currentmodeBhost2normalcycles/Ready/BStart3 và AUD050 có nguồn; task hiện hành ở current-order; fullauth/authority/fullmatch/gates và gaps giữ mở | [Q-023](RESEARCH.md#q-023), [service](evidence/probe-service/README.md) |
+| KRE-005b/issue14 | CP006–168 đã merge; CP169 currentbasicprofileepoch1hiddenreveal/3effects có nguồn; task hiện hành ở current-order; fullauth/authority/fullmatch/gates và gaps giữ mở | [Q-023](RESEARCH.md#q-023), [service](evidence/probe-service/README.md) |
 | K0/K1 | Chưa nghiệm thu toàn gate;Windows vanilla/control ownership và các điều kiện còn thiếu giữ mở | Gate dưới,[Q-022](RESEARCH.md) |
 | K2a/K2 | Primitive/WCP, CP057stream native/model và CP058–060authcallback137/135/errors0 đã có; fullcodec/authauthority/reconnect và gate chưa pass | [PROTOCOL](PROTOCOL.md#login-auth),[Q-023](RESEARCH.md#q-023) |
 | K3 | Copy đã vẽUI/đóngnotice, A/B/Cprofile đọc sạch và mộtnamedcachewarm được nhận; identityauthority/toàncache/codec/K3 chưa nghiệm thu | [Contract sảnh](PROTOCOL.md#channel-lobby) |
@@ -66,23 +66,20 @@ selectiveCLI/historicalmigration xong, không còn taskactive tổ chức. CP119
 Yêu cầu kiểm8 người có kết quả hẹp [CP147/163](PROTOCOL.md#battle-eight-roster), không thay gate:
 Free0/Manner1 input/ACK/reset đã nối CP162; selector1 actual4–4/1–7 đã đo. Không lặp roster/dump/guard. Service8 peer
 và trận8 client thật là phần mở rộng sau hai/bốn client ổn ở bước5, chưa được đánh dấu hoàn thành.
-1. **KR-F005/F006/S001 — basicBattle itemẩn trên currentmode:**
-   [CP168](PROTOCOL.md#current-mode-promoted-start3) giải `NEXT-MODE-PROMOTED-START3-AUDIT` hẹp:
-   2normalcycles/Ready→actualB104/12199/barrier/clock/render8s/Manner1/noBomb3, AUD050qua168/kế172.
-   Pulse0,30scontrolsR1/R2FAILgiữ; R3normalOSkeys dừng theoactualFire124 trongbound5s là controllerdesign,
-   không giảfixedpulsepass hoặcvanillatiming. R3mỗi vòng1actualFireclaim, không2nativecontenders/EOFtest.
-   GateK5 đòiblock/reveal/itemeffect trongprofileđangdùng: current47pinpreset chỉfloor16/17, không
-   hidden_items vàrevealed_hidden={} cả3epoch; CP068/069oldcombinedprofile không tựbackfillcurrentrun.
-   Sourcefirst [CP068/069](PROTOCOL.md#basic-battle), CP032list2/FixedBox/142/124165 vàCP095actualbox/
-   CP133geometry, currentterrain/profile/Aguest-Bhost/observer/inputfeedback. Không RE lạiitemconsumer,
-   quétallItemAttr, portVNopcode hoặc đoán hiddenBox từasset/name.
-   Composecopyprofile: giữ currentmode/title/47alias/guard/network, thayknown582/catalog bằng floorRoller
-   +hiddenBomb27(row2col3)/Fire28(row3col2), pinraw/hash/count/11ED590/nativeframer trướclaunch. list2
-   chỉ gắnitem vàoactualFixedBox đãđo, không tạo tường/box mới. Tái dùngknownnormalUIroute/readonlyprobes;
-   kiểm actual158→nativeFixedBox/reveal142→124/165/samepointer/effect→reset/Ready trênhai view, rồi
-   ghép hai nativecycles theo gap thực. Hiddenreportgate làdesigncógiớihạn, không originaldropalgorithm.
-   [K4 evidence/dependencies](#k4-evidence-review) vàK5/K6aqualification giữmở; chưa fullauth/Windows/
-   coldcache/generalreset/LAN/8client. Không thêmvariantkhôngtrigger trướcbasicprofilecầnthiết.
+1. **KR-F005/F006/X002/S001 — hai cycle/reset trên basicprofile ghép:**
+   [CP169](PROTOCOL.md#current-basic-hidden) giải `NEXT-CURRENT-BASIC-HIDDEN` hẹp: currentmode/title/
+   Bhost +knownCP069582/catalog/47alias, nativeFixedBox/reveal27/28→actual142/124/165/samepointer/
+   Roller5→6/Bombcapacity1→2/Fire1→2 chỉA, cảhai view trongepoch1. Preset mặcđịnh không đổi/floor-only.
+   R1chỉ17+27,R2chỉ17+28, R3startup7connections/noBchannel4 giữpartial; khôngghép chúng thànhfull.
+   R4knownroute+boundednativefeedback lênhàng3/sangô2 chạmFire28; noopcode/consumer/nativebodyRE.
+   Sourcefirst CP069oldbasic2cycles, CP168currentBhost2cycles/reset/Ready/Start3 vàCP169exactprofile/
+   route/4rare165lookup probes: ghép knownfinalnormalSpace sau3actualpickups, quan sátnative17→19/
+   survivor21→175/180/refresh; rồi actualReadyA/StartB vàlặp3pickups/effects/reset trongepoch2.
+   Bổsungreport/nativeworld/195flags/statbaseline/hiddeneligibilityreset bằngraw/capturednativegetters,
+   không mặcđịnh nativeBox reveal là kếtquả/reset. Chỉmở branch guard/report/movement đangchặn thực.
+   No fake124142/17/19/gamecall/actorwrite/tolerance-timeoutrelaxation; partial/cleanup/seal trướcđổiinput.
+   KhôngRElạiItemAttr/mọiconsumer/VNopcode; khônglấyCP069oldprofile hoặcCP168floorcycles backfill.
+   Fullmatch/K5/K6a/dependencies/Windows/auth/LAN/8client vẫn mở; basicprofilechưađổi committedpreset.
    [#14](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/14) giữ mở.
    <!-- active-issue: 14 --> AUD050 qua168; audit định kỳ kế **CP172**, không reset.
 2. **KR-B003/KR-F006 — nợ có giới hạn:** [CP057](PROTOCOL.md#codec-stream-boundaries) đã đo stream/
@@ -113,7 +110,7 @@ Bảng này chỉ phân công/thứtự; acceptance/PR/bằngchứng ởissue. [
 
 | Thứ tự/scope | Issue | Trạng thái/phần còn thiếu |
 |---|---|---|
-| Hiện hành RE | [#14/KRE-005b](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/14) | CP006–167 merged; CP168 BStart3/clockrender8 vàAUD050đãkiểm; basicBattlehiddenintegration là bước1; gaps giữ; fullauth/authority/fullmatch/gates mở. |
+| Hiện hành RE | [#14/KRE-005b](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/14) | CP006–168 merged; CP169basicprofileepoch1reveal/3effects đãkiểm; basicprofile2cycles/reset là bước1; gaps giữ; fullauth/authority/fullmatch/gates mở. |
 | Control theo trigger/gate | [#1/KRE-001](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/1), [#2/KRE-002](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/2) | Windowsoriginal/ownership/K0K1/fullbootstrapconfig; reuseWine/import/replyđãđo. |
 | Codec/identity khi cần | [#3/KRE-003](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/3), [#9/KRE-005a](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/9) | Fullcodec/livebounds vàintermittentmainstartupcause cònthiếu; khônglặpprimitive/auxiliarylocale. |
 

@@ -1107,3 +1107,40 @@ CP168tựkiểm/reviewwaived/chờPR, khôngđónggate. Currentnext chỉPLAN, k
 
 AUD050 đínhchính nhãnCP167: missingindex16 là **Bomb/kind0/capacity**, khôngRoller/kind2.
 Raw/typedfields/hash/count/fail giữ; recordCP167bấtbiến có nhãnsai, contractCP167đãghierratum.
+
+
+<a id="cp169"></a>
+## CP169 — currentbasic copyprofile: hai reveal và ba nativeeffects trong một epoch
+
+Baseline CP168 [PR239](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/239), head
+`902994eb90e3f6e00b3a131977183fb27d132b06`, merge `2ee6556bc3d5a429124ec7691c77d68eb5c2ea71`.
+[Contract/limits](../../PROTOCOL.md#current-basic-hidden), [PLAN](../../PLAN.md#current-order).
+
+| Run local/research/codex | Giây/exit/raw/frozen | SHA256 run.json |
+|---|---|---|
+|current-basic-hidden-r1|194.314060126/0/742/108|`f260c8b82eae380ed07478dd52980c5daef6568a446e05157cd6b33cac01ba8f`|
+|current-basic-hidden-r2|191.128464361/0/723/109|`472925b8c0b72f86fa69ee9a75a6253b098a4682a7f0582015ce6567e6ee14f4`|
+|current-basic-hidden-r3|339.989344987/0/1253/109|`309be133a7f12b22bfb95b5deb4b886af0931e9902907e28267c0e45f7fadcf0`|
+|current-basic-hidden-r4|192.983476401/0/721/109|`6e8a5858eda20753c31433f65430d7ea762f5405a71fe0cf8b66086a5fb218a2`|
+
+prepare_current_basic_hidden.py composes exactknownCP069floor/catalog with46unchangedaliases/native5823/
+constructor beforelaunch. runtime/feedback/complete/retry preparers tạo thư mục/copyprefix mới; eachroot
+giữreuse-question/sourcepins/profile/recipe/controller/preflight/runtime-source/launch-exit/raw-seal.
+Private2hosts/nooutbound/ownercleanup/namespaceextinct, source/config frozen; sourcebinary/DB/pack giữ.
+
+R1accepted17/27 vàR2accepted17/28 làpartials; nativehidden27/28store/revealproof ởcảhai, khônggộp
+3effects. R3startup7connections/noBchannel4/noclock/tillbound, sourcefrozen/exit0/noerror khôngpass;
+startup-observationkhônggánrootcause. R4freshcopycùnglogic, missing28feedbackrow3/col2 hit; missing27
+fallbackkhônghit. R2controller-before-preflight-correction.py giữgeneratedindentcandidate, corrected
+trướclaunch/refreeze; lầnlaunchR4trướckhiprepdone thiếurecipekhôngspawnclient, đợiprepdone rồi chạy.
+
+hidden-integration-verification R1/2/4:167/170/176checks/nativeFixedBox→reveal/typed124142/hash;
+R4hidden-effects-verification122checks actual3callbacks/2view/full12/errors0/onlyAeffectdelta/lookup27/28
+samepointerreveal. native_actual60capturedframer/gettercases, native-fixture3cases vàconstructorpreflight
+riêng; actor-fieldssecurewrappergetters không runtimegamecall. alignment-verification4viewphaseacks/
+2groups giữ3rare165+lookup/exactrestore; disabledchronology excluded. visual-review2finalmapframes
+đãxem, khôngreset/originalauthorityoracle. 265server/4exporttests táidùngexactsourcehashCP166;
+production/committedpresetkhôngđổi, profileghépchỉởlocal/nativeproof metadata commit.
+
+CP169tựkiểm/reviewwaived/chờPR; AUD050qua168/next172. Nextresult/reset/twoepochs củaprofileghép
+chỉPLAN; khôngK5/K6a/fullmatch/LAN/Internet/8client hoặc randomdrop/fullvalidatorclaim.

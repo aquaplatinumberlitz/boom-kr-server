@@ -315,3 +315,6 @@ CP167 không đổi server/preset; [hai currentmodeBhostcycles và observerlimit
 CP168 giữserver/presetbytes: boundednativefeedbackOScontroller vàmeasurementwindows ởlocal;
 [scope/gapbasicBattlehidden](../docs/PROTOCOL.md#current-mode-promoted-start3). Preset hiện tại floor-only,
 khôngđượcdùng hidden-items featurepresence hoặc profileCP069 khác làm proofcurrentrun.
+
+CP169 [copybasicprofile/hiddenreveal/3effects](../docs/PROTOCOL.md#current-basic-hidden) dùngknownCP069582/catalog
+trêncurrentmode/Bhost, production/presetkhôngđổi. Chỉepoch1; defaultpresetfloor-only, chưareset/twoepochs/gate.
