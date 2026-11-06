@@ -1,0 +1,242 @@
+{
+  "id": "CP152",
+  "previous": "CP151",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-06T02:18:51.402664+00:00",
+  "context_commit": "79a51e6b0302b5c230ec4be23c9fc382be743291",
+  "owner": "Codex",
+  "reviewer": "Codex",
+  "question": "Where does native121→99 loading wait occur, can known guard suppress firstsend, and do globallyactivepreclock-discarded stateobservers affecttheloader?",
+  "scope": "Fourfrozenofflinecopydiagnostics grouped; reuseCP021writer/CP024loader-spawn/CP030062151claims/CP150profile. Bounded2newstaticwindows+bytecomparison, coldloadmilestones, retainedOSstagingfailure andpairedAcontrol/B4stateBPgate. No newproductionbehavior or gate.",
+  "artifacts": [
+    {
+      "name": "KRoriginalCA/read-only",
+      "sha256": "a52545c14b1fea423de655c3163d6360b628d61c1cd472b46fdbc8a9ffe15f4e"
+    },
+    {
+      "name": "Winecopyunchanged",
+      "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+    },
+    {
+      "name": "staticcopy",
+      "sha256": "660447c293ce92270cb9b5815331bca976e8f156366e1fe50b217b6c12e60ce3"
+    }
+  ],
+  "locators": [
+    "BaselineCP151head1a0a494305311473ac3aac21f6ed703d38248fec/PR222merge79a51e6b0302b5c230ec4be23c9fc382be743291; latestintegrationarchived.",
+    "Base400000/RVA=VA−400000; native121dc9363/E57C20init/E57DC1DC4v2D0/E5A01A/worldv10-return/E5A094/worldv14-return/E5A0DEactors/E59550reset/E5955Aguard0/v308/E7F2D4coldbuild/13ADD10send99.",
+    "SourcefirstCP021E7F2A0/cachedCP024E59F30/E5A290/E0F6C0; 2newbodywindows only. Static/runtime rangesbyteequal; partiallinearwindowsnotwholeCFG.",
+    "AUD046periodicthrough152/next156; noresetcounter/history."
+  ],
+  "findings": [
+    {
+      "summary": "InitialnewR1writerentersguard0 at33.713/33.835safter121 andsendentry~36mslater, bothafteractualchanneldeadlineclose; laterguard1tickcalls notsuppressinitial99. NoactualTCP99after121; notpacketloss/CP151R2cause.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#loading-observer-timing",
+      "evidence": [
+        "RUN-00918",
+        "RUN-00923",
+        "RUN-00920"
+      ],
+      "limits": "ModifiedWine/e9bb47/privatevirtualhosts/samephysicalhost/twoactualCA; production/profile/30sdeadline/2s165measurement unchanged ineachfrozenrun. Threefirst-runR1partialdiagnostics andpairedobservermeasurement, notCP151R2cause/no2epochcontestclosure. Nativewriter/sendentry distinctfromactualTCP99. Timingcontainsdebuggeroverhead; A/Bdifferentroles/onecontrol notfullrole-swapcausality. No force99/clock/actor/guardwrite/nativefunctioncall. No fullmatch/K6a/LAN/Internet/8realclients/originalauthority/Windows/control/generalreset."
+    },
+    {
+      "summary": "E59550resets+6410=0 atE5955A thenmemset+6414 andvf308→knownwriter; E57C20v2D0 before reset. CachedCP024loader/spawn reused; threeranges identicalstatic/WineA/B.",
+      "source": "kr_static",
+      "status": "confirmed",
+      "method": "static",
+      "canonical": "docs/PROTOCOL.md#loading-observer-timing",
+      "evidence": [
+        "RUN-00005",
+        "RUN-00002",
+        "RUN-00919",
+        "RUN-03318",
+        "RUN-00969"
+      ],
+      "limits": "ModifiedWine/e9bb47/privatevirtualhosts/samephysicalhost/twoactualCA; production/profile/30sdeadline/2s165measurement unchanged ineachfrozenrun. Threefirst-runR1partialdiagnostics andpairedobservermeasurement, notCP151R2cause/no2epochcontestclosure. Nativewriter/sendentry distinctfromactualTCP99. Timingcontainsdebuggeroverhead; A/Bdifferentroles/onecontrol notfullrole-swapcausality. No force99/clock/actor/guardwrite/nativefunctioncall. No fullmatch/K6a/LAN/Internet/8realclients/originalauthority/Windows/control/generalreset."
+    },
+    {
+      "summary": "ColdR2recipeR1actual99/barrier29.276s/v2D0~28.39s, then20pulseOSstagingalignmiss199±12/A159↔214/234/noFireclaim. NextR3deadlineR1worldsegments18.2s+11.2s+actors1.8s; stagingtolerance20notreached, nosuccessclaim.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#loading-observer-timing",
+      "evidence": [
+        "RUN-01710",
+        "RUN-01690",
+        "RUN-02453",
+        "RUN-02457"
+      ],
+      "limits": "ModifiedWine/e9bb47/privatevirtualhosts/samephysicalhost/twoactualCA; production/profile/30sdeadline/2s165measurement unchanged ineachfrozenrun. Threefirst-runR1partialdiagnostics andpairedobservermeasurement, notCP151R2cause/no2epochcontestclosure. Nativewriter/sendentry distinctfromactualTCP99. Timingcontainsdebuggeroverhead; A/Bdifferentroles/onecontrol notfullrole-swapcausality. No force99/clock/actor/guardwrite/nativefunctioncall. No fullmatch/K6a/LAN/Internet/8realclients/originalauthority/Windows/control/generalreset."
+    },
+    {
+      "summary": "PairedAexistingobserver/Bphysicalgate4Chronology statehooksduringload, coldper-sitehitcounters/durations/actual99 aremeasured; restoreatnativeclock only. Statisticaleffect/roleboundaries atcanonicaltable, notoriginalclienttiming/rootcauseproof.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#loading-observer-timing",
+      "evidence": [
+        "RUN-03260",
+        "RUN-03259",
+        "RUN-03253",
+        "RUN-03262"
+      ],
+      "limits": "ModifiedWine/e9bb47/privatevirtualhosts/samephysicalhost/twoactualCA; production/profile/30sdeadline/2s165measurement unchanged ineachfrozenrun. Threefirst-runR1partialdiagnostics andpairedobservermeasurement, notCP151R2cause/no2epochcontestclosure. Nativewriter/sendentry distinctfromactualTCP99. Timingcontainsdebuggeroverhead; A/Bdifferentroles/onecontrol notfullrole-swapcausality. No force99/clock/actor/guardwrite/nativefunctioncall. No fullmatch/K6a/LAN/Internet/8realclients/originalauthority/Windows/control/generalreset."
+    },
+    {
+      "summary": "Fourglobalstatehooks inChronology.stop readregistersbeforelogicalpreclockdiscard; publicB32390has929loadhits/viewwhile3bombpointers0; physicalgateonlypreclock next. InternalChronologyhitcountsnotreturned/publicscopeexplicit. No productiontimeoutchange or gameplayobservationremoval.",
+      "source": "design",
+      "status": "candidate",
+      "method": "design",
+      "canonical": "docs/PROTOCOL.md#loading-observer-timing",
+      "evidence": [
+        "RUN-03247",
+        "RUN-03245",
+        "RUN-03263"
+      ],
+      "limits": "ModifiedWine/e9bb47/privatevirtualhosts/samephysicalhost/twoactualCA; production/profile/30sdeadline/2s165measurement unchanged ineachfrozenrun. Threefirst-runR1partialdiagnostics andpairedobservermeasurement, notCP151R2cause/no2epochcontestclosure. Nativewriter/sendentry distinctfromactualTCP99. Timingcontainsdebuggeroverhead; A/Bdifferentroles/onecontrol notfullrole-swapcausality. No force99/clock/actor/guardwrite/nativefunctioncall. No fullmatch/K6a/LAN/Internet/8realclients/originalauthority/Windows/control/generalreset."
+    }
+  ],
+  "verification": [
+    {
+      "check": "Rawseals/sourcefreeze/ownedcleanup andnative121→load→guard/send/actualC2S joins across4scopedruns",
+      "result": "pass",
+      "evidence": [
+        "RUN-00918",
+        "RUN-01710",
+        "RUN-02453",
+        "RUN-03259",
+        "RUN-03260"
+      ],
+      "limits": "ModifiedWine/e9bb47/privatevirtualhosts/samephysicalhost/twoactualCA; production/profile/30sdeadline/2s165measurement unchanged ineachfrozenrun. Threefirst-runR1partialdiagnostics andpairedobservermeasurement, notCP151R2cause/no2epochcontestclosure. Nativewriter/sendentry distinctfromactualTCP99. Timingcontainsdebuggeroverhead; A/Bdifferentroles/onecontrol notfullrole-swapcausality. No force99/clock/actor/guardwrite/nativefunctioncall. No fullmatch/K6a/LAN/Internet/8realclients/originalauthority/Windows/control/generalreset."
+    },
+    {
+      "check": "Twoepochcontestedpickup/currentkey/nativeeffects/native2results/finalReady",
+      "result": "pending",
+      "evidence": [
+        "RUN-03233",
+        "RUN-03253"
+      ],
+      "limits": "CP152diagnostic scope doesnotcompleteCP151R2contest. ContinuePLAN observer/loading→2freshkeys; no gate closure."
+    },
+    {
+      "check": "237serverchecks reusedfromCP148/exact41sourcehashes; docs/catalog/liveissues/artifacts/diff/selfaudit",
+      "result": "pass",
+      "evidence": [
+        "RUN-00968",
+        "RUN-03322",
+        "RUN-03246",
+        "RUN-03255",
+        "RUN-02507",
+        "RUN-03331"
+      ],
+      "limits": "Productioncode/testfiles unchanged; do notclaim testsrerun. Fullcheckpointlocal/historycheckedbeforecommit, nosemanticacceptancecertification."
+    }
+  ],
+  "evidence": [],
+  "evidence_manifests": [
+    {
+      "path": "docs/evidence/checkpoints/evidence/CP152-loading-observer.json",
+      "bytes": 853018,
+      "sha256": "353ee97fa4c832bf7b0adf006c36a24dd433e6db55e5d4caf94d7a2001a16d9d",
+      "count": 3331
+    }
+  ],
+  "delta": {
+    "added": [
+      "Coldloadtiming/guardreset/nativefirstsendseparation; observedworldsegments andpairedpreclockobservercontrol.",
+      "AUD046through152/next156, CP151PR222merge/currentissue14sourcealignment."
+    ],
+    "corrected": [
+      "Writer/sendafterchannelclose notguard1suppression/networkloss; newR1diagnostics notCP151R2rootcause.",
+      "Exit130operatorstop/exit1alignmiss/exit0loadingdeadline remainpartial; stagingtolerance20hasnotbeenreachedinR3.",
+      "Currentdocs/issueopeningpreviousCP146pending/rootproxy/endpointnext stale vsCP149150151 merged; fixnavigation notcompletehistory."
+    ],
+    "superseded": [
+      "Unconditionalhotwriterentry/backtrace tracing replacedbycoldbuildedge/milestones; no repeated124165schema/codec RE."
+    ]
+  },
+  "blockers": [
+    "CP151R2missing99 causalpath stillnotdirectlyobserved; fresh2epochcontest/ending/Ready stillmissing inCP152 diagnostics.",
+    "Observer/controlboundaries/roleasymmetry needtargetedfollowup beforeclaimingoriginalperformance/cause.",
+    "Fullmatch/K6a/LAN/Internet/8actualclients/fullauth/authority/Windowsoriginal/CP137UI/sharedgeometry/generalreset remain."
+  ],
+  "next_steps": [
+    {
+      "id": "NEXT-DIRECT-CONTESTED-PICKUP",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "Afterloadingobserver edge, normalOSstaging199/359±20candidate/unclaimedFireassert; need2actual124/singlewinner/nativeeffect per2freshkeys,2nativeoutcomes/reset/finalReady inonerun. ReuseCP151R1/CP062, nofakeclaims.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-CONTEST-ROUND2-LOAD99",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "PLAN gateB32390onlyduringloadinginnewrecipe/929publichitsperview/3bombpointers0; keepotherobserverscontrol; role-swapifneeded; restoreatclock. Keep30s/production/profile/2s165; noforce99/clock, noCP151rootcauseclaim. AUD046done/next156.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    }
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-11-06T02:18:51.402664+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "CodexsoloRE/runtime/manualaudit/selfcheck; noindependentapproval.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Owner explicitly requested solo without workers/review."
+    }
+  },
+  "docs_sync": [
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "CP152scopedload/observer/timing/partiallimits/nextmeasure/PR222merge/AUD046through152 synchronizedbeforecomplete."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "CP152scopedload/observer/timing/partiallimits/nextmeasure/PR222merge/AUD046through152 synchronizedbeforecomplete."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "updated",
+      "reason": "CP152scopedload/observer/timing/partiallimits/nextmeasure/PR222merge/AUD046through152 synchronizedbeforecomplete."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "updated",
+      "reason": "CP152scopedload/observer/timing/partiallimits/nextmeasure/PR222merge/AUD046through152 synchronizedbeforecomplete."
+    },
+    {
+      "path": "docs/features.json",
+      "state": "updated",
+      "reason": "CP152scopedload/observer/timing/partiallimits/nextmeasure/PR222merge/AUD046through152 synchronizedbeforecomplete."
+    },
+    {
+      "path": "docs/COVERAGE.md",
+      "state": "updated",
+      "reason": "CP152scopedload/observer/timing/partiallimits/nextmeasure/PR222merge/AUD046through152 synchronizedbeforecomplete."
+    },
+    {
+      "path": "docs/evidence/peer-endpoints/README.md",
+      "state": "updated",
+      "reason": "CP152scopedload/observer/timing/partiallimits/nextmeasure/PR222merge/AUD046through152 synchronizedbeforecomplete."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/review.json",
+      "state": "updated",
+      "reason": "CP152scopedload/observer/timing/partiallimits/nextmeasure/PR222merge/AUD046through152 synchronizedbeforecomplete."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
+      "state": "updated",
+      "reason": "CP152scopedload/observer/timing/partiallimits/nextmeasure/PR222merge/AUD046through152 synchronizedbeforecomplete."
+    }
+  ]
+}

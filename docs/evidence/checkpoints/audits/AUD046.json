@@ -1,0 +1,108 @@
+{
+  "id": "AUD046",
+  "trigger": "periodic",
+  "completed_through": "CP152",
+  "recorded_utc": "2026-11-06T02:17:54.122728+00:00",
+  "auditor": "Codex manual self-audit; independent review waived",
+  "read_files": [
+    "README.md",
+    "docs/PLAN.md",
+    "docs/PROTOCOL.md",
+    "docs/RESEARCH.md",
+    "docs/evidence/peer-endpoints/README.md",
+    "docs/evidence/checkpoints/README.md",
+    "docs/features.json",
+    "docs/evidence/issue-reconciliation/review.json",
+    "local/research/codex/contest-loading-trace-r1/audit-read-scope.json",
+    "local/research/codex/contest-loading-trace-r1/existing-loading-comparison.json",
+    "local/research/codex/contest-loading-trace-r1/loading-trace-verification.json",
+    "local/research/codex/contest-loading-trace-r1/E59550.asm",
+    "local/research/codex/contest-loading-trace-r1/E57C20.asm",
+    "local/research/codex/contest-loading-trace-r1/native-preimage-comparison.json",
+    "local/research/codex/contest-loading-trace-r1/server-source-reuse.json",
+    "local/research/codex/contest-loading-trace-r1/issue14-before.json",
+    "local/research/codex/contest-loading-trace-r1/pr222-merged.json",
+    "local/research/codex/bomb-position-r1/E59F30.asm",
+    "local/research/codex/bomb-position-r1/E5A290.asm",
+    "local/research/codex/bomb-position-r1/E0F6C0.asm",
+    "local/research/codex/contest-loading-trace-r1/raw-seal.json",
+    "local/research/codex/contest-loading-trace-r1/runtime-preflight.json",
+    "local/research/codex/contest-loading-trace-r1/cycles/run.json",
+    "local/research/codex/contest-loading-trace-r1/cycles/service-state.json",
+    "local/research/codex/contest-loading-trace-r1/cycles/client.log",
+    "local/research/codex/contest-loading-trace-r1/cycles/client-B.log",
+    "local/research/codex/contest-loading-milestones-r2/raw-seal.json",
+    "local/research/codex/contest-loading-milestones-r2/runtime-preflight.json",
+    "local/research/codex/contest-loading-milestones-r2/cycles/run.json",
+    "local/research/codex/contest-loading-milestones-r2/cycles/service-state.json",
+    "local/research/codex/contest-loading-milestones-r2/cycles/client.log",
+    "local/research/codex/contest-loading-milestones-r2/cycles/client-B.log",
+    "local/research/codex/contest-loading-staging-r3/raw-seal.json",
+    "local/research/codex/contest-loading-staging-r3/runtime-preflight.json",
+    "local/research/codex/contest-loading-staging-r3/cycles/run.json",
+    "local/research/codex/contest-loading-staging-r3/cycles/service-state.json",
+    "local/research/codex/contest-loading-staging-r3/cycles/client.log",
+    "local/research/codex/contest-loading-staging-r3/cycles/client-B.log",
+    "local/research/codex/loading-observer-control-r4/raw-seal.json",
+    "local/research/codex/loading-observer-control-r4/runtime-preflight.json",
+    "local/research/codex/loading-observer-control-r4/cycles/run.json",
+    "local/research/codex/loading-observer-control-r4/cycles/service-state.json",
+    "local/research/codex/loading-observer-control-r4/cycles/client.log",
+    "local/research/codex/loading-observer-control-r4/cycles/client-B.log",
+    "local/research/codex/loading-observer-control-r4/gdb_chronology.py",
+    "local/research/codex/loading-observer-control-r4/cycles.gdb",
+    "local/research/codex/loading-observer-control-r4/loading-milestones.json",
+    "local/research/codex/loading-observer-control-r4/loading-milestones-initial-join.json",
+    "local/research/codex/loading-observer-control-r4/observer-verification.json",
+    "local/research/codex/loading-observer-control-r4/handoff-summary.json"
+  ],
+  "method": "README→PLAN→PROTOCOL→RESEARCH→evidence read at current scope; raw/currentC2S/full121/deadline/nativewriterguard/send/coldmilestones/publichitcounts/sourcebytecomparisons/cacheCP024 anddatedGitHub body compared. HistoryCP149/150/151 kept separate; not script-only audit/semanticoraclegates.",
+  "findings": [
+    {
+      "id": "F1",
+      "stale": "CP151 pendingPR incurrentREADME/PLAN despitePR222merged; issue14openingstillCP146/rootproxy/endpointtask.",
+      "correction": "Currentnavigation PR222merge79a51e6/currentCP152loadobserver/activeissue14; historicalcompleteCP151 unchanged.",
+      "fixed_in": [
+        "README.md",
+        "docs/PLAN.md",
+        "docs/evidence/issue-reconciliation/review.json",
+        "docs/evidence/peer-endpoints/README.md"
+      ]
+    },
+    {
+      "id": "F2",
+      "stale": "RESEARCH F001endpoint andF002feedback/twoowner instructions alreadyansweredCP149/150.",
+      "correction": "UsePLANloadobserver/contested2epochs; retainreliability/auth/genericgaps and separatehistoricalruns.",
+      "fixed_in": [
+        "docs/RESEARCH.md",
+        "docs/features.json",
+        "docs/COVERAGE.md"
+      ]
+    },
+    {
+      "id": "F3",
+      "stale": "Couldmisreadlate99asguard1suppression/loss orstaging20asalreadyfixed.",
+      "correction": "Guard0first/sendafterclose/newR1scope; r2alignmiss/r3noClock retainsstagingunknown. CP151R2rootcause remainsunknown.",
+      "fixed_in": [
+        "docs/PROTOCOL.md",
+        "docs/PLAN.md",
+        "docs/evidence/peer-endpoints/README.md"
+      ]
+    },
+    {
+      "id": "F4",
+      "stale": "R4 initialregexomitsmilestones acrossOBSERVER_HITS; publicGDBcounter excludesPythoninternalBP.",
+      "correction": "Keepinitialderivedreport, joinoptionalinterposedline, publicscopeexplicit; actualGDBpolicygate4distinctfromcounter. 929B32390stops/view leadsnextminimumtest, notcausalrootclaim.",
+      "fixed_in": [
+        "docs/PROTOCOL.md",
+        "docs/RESEARCH.md",
+        "docs/evidence/peer-endpoints/README.md"
+      ]
+    }
+  ],
+  "remaining": [
+    "CP152selfcheck→commit/push/PR/exacthead/merge required; nextperiodicCP156.",
+    "GateB32390loadingonly/newcopy/restoreclock, then2freshkeysactualcontest/nativeoutcomes/reset/Ready inonerun. Existing4stateobservertreatment notfullcauseproof; noCP151R2causalclaim.",
+    "Windowsoriginal/authauthority/fullmatch/K6a/LAN/Internet/8realclients/CP137UI/sharedgeometry/fullinventory/generalreset remain."
+  ]
+}
