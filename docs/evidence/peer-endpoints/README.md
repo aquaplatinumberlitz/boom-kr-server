@@ -778,3 +778,34 @@ Controlledlargegap chứng minh capability của byte heuristic đã phục hồ
 không resurrection/gamefix/auth/fullmatch/K6a/LAN/8clients. Tài liệu/currentnext đã chuyển productionservice
 baseline, không delay165/replay chủ động; naturalcause giữ open theo trigger. AUD047qua156/kế160,
 Codexselfcheck/reviewwaived/CP158chờPR; lịch sử complete và artifacthash trước giữ nguyên.
+
+
+<a id="cp159"></a>
+## CP159 — unwrapped production service, two outcomes và pinned preset
+
+Baseline CP158/[PR229](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/229) head8e3eca1/
+merge259282b; [contract](../../PROTOCOL.md#production-baseline), [PLAN](../../PLAN.md#current-order).
+Run `local/research/codex/production-baseline-r1/`:364,493952518s/exit0/1197raw/96frozeninputs,
+runSHA `01deaf0aecf06434c2df7b5e26b6230035ecf0d3efa3f04cbd5f8dd461764dd8`. Cleanup/netnamespaceextinct/rawseal
+đầyđủ; copiedclient/profile/terrain/30s/loadinggate giữ. Source-firstCP157profile/native2cycles vàCP158
+counterlimits, khôngbodyRE. Controller bỏ holdwrapper/activeoldUDPmeasurement, service argv đúng module
+`server.probe_service`; không measurementstate/holds/replays. Khôngđổi production/nativebinary/DB/pack.
+
+75productionpickupchecks: actualFireR1Aonly/R2A+B/Awinboth/secondconsumedreject; one165/item/view/
+full12/errors0/onlyApowerdelta/reset hai key. Broadcast delayobserved0,2508–0,42968ms không SLA.
+44cycle/594peer4windows/384copiedpeergetters/12actualC2Sclaimjoins/16loadinggate/26entity195reset;
+2214actor/2364flag+2340array/306nativepacketmodels/23strictlife+16lifegetters tách source/runtime/model.
+Native56→1 loser/other0 trước175 cả2view/2epoch ởrun này, không phủđịnhCP157failedproof/controlCP158.
+BomID1/A/power2 rồiID2/B/power1; hai native175302/1803/1106/currentkey/stat/195seedreset/actual95Ready.
+Không thirdforfeit/Start3/normalhostUIexit trongrun.4PNGmanualreview: AStart rõfocused4/native110,
+Awhiteoneimmediatefinalframe, BReady/guestReadybadge; không suy persistentUIbug hoặcStart3success.
+
+Saucleanup thêm `server/profiles/two-client-battle.json`: syntheticpolicy/47relativefixturepins, khôngbinary.
+Tool `--preset two-client-battle` chỉ rebasepath/verifyhash, rejectdrift vàsymlinkescape, khôngrehashinputđổi.
+4exporttests pass (2cũ+2pin/path), real47hashes/productionpreflight/exactobjectequality pass; source snapshots
+ởfinal-tool-source pinSHA. **Chưa** native run từ exportedfile CP159, không đổi claim/key/consume cho pass.
+Server41sourcefiles vẫn giữ,237tests reuseCP148; newexportchanges tested, không rerun toànserver vôcớ.
+
+CP159reviewwaived/selfcheck/chờPR; periodicAUD048CP160 bắtbuộc với smoke exportedpreset/actualStart3.
+K6a/fullmatch/auth/originalauthority/Windows/LAN/Internet/8client/generalreset/sharedgeometry/CP137UI giữmở;
+không đónggate từ assertioncount/cửa sổ/encoder haygộprun.

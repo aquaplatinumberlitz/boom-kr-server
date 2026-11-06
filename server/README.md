@@ -253,3 +253,19 @@ xuất opt-in `host_A_202_86` và tự kèm idlehostBack/rejoin cùng5fixture de
 [Contract/acceptance](../docs/PROTOCOL.md#direct-host-eof-acceptance) tách currenthostEOF/Bpromotion
 đã đo khỏi normalUI20286 currentprofile cònpending; export/preflight/tests không là nativeUI proof.
 Không ghi đè profile frozen hoặc rawfixture: export file mới, kiểmhash và chạy theo recipe cô lập.
+
+
+### Tái tạo profile production hai client — CP159
+
+```bash
+python3 tools/export_probe_profile.py --source-root local/research/codex --out local/two-client-battle.json --preset two-client-battle
+python3 -m server.probe_service --profile local/two-client-battle.json --out local/service-run
+```
+
+Chỉ khởi chạy trong network namespace/recipe cô lập outbound theo AGENTS; lệnh service không tự tạo
+isolation. Preset [metadata/pins](profiles/two-client-battle.json) đòi đúng47fixture local đã có hash,
+không cấp binary/asset hoặc fetch mạng. Tool kiểmsize/hash/path, chỉ đổi rootpath, không ghiđè output.
+Các layout/policy flags khác không kết hợp preset. Profile này là known syntheticidentity/roster/map/rank,
+không fullauth/servergốc; [runtime/giới hạn](../docs/PROTOCOL.md#production-baseline).
+Hai vòngCP159 dùng productionservice không hold165/replay; exportexactprofile/preflight đạt, runtime
+trực tiếp từfileexport đang là bước tiếp theo trong PLAN. LAN/Internet/8clients/gates chưa nghiệmthu.

@@ -1,7 +1,7 @@
 # Kế hoạch server giả lập KR 00967
 
 Nguồn chuẩn của project `boom-kr-server`; bản nhập từ plan đã được dsh1/dsh2 review tại `1eee46d`.
-Cập nhật06/11 JST (CP158): [counter UDP/trap controls](PROTOCOL.md#current-trap-udp-counter) đã nối native key/counter/branch/apply/state; natural CP157 cause vẫn unknown. CP157/PR228 merged f44fd66; CP158 tự kiểm/chờ PR. Tiếp baseline service production không delay165/replay chủ động; audit kế CP160.
+Cập nhật06/11 JST (CP159): [production2cycles](PROTOCOL.md#production-baseline) không hold165/replay đã đo; pinnedpreset export/preflight exactprofile. CP158/PR229merged259282b; CP159 tựkiểm/chờPR. Tiếp smoke exportedpreset/normalStart3 và periodicmanualAUD048 tạiCP160.
 
 
 ### Mục tiêu, baseline và phạm vi
@@ -37,13 +37,13 @@ với client Rust không chứng minh có thể điều khiển client KR bằng
 
 ### Tiến độ hiện hành theo bằng chứng
 
-| Task/mốc | Trạng thái tại CP158 | Nguồn chuẩn |
+| Task/mốc | Trạng thái tại CP159 | Nguồn chuẩn |
 |---|---|---|
 | KRE-004/issue6 | Đã review/merge PR7 và đóng issue:recipe r1 đến local accept;không phải full K1 | [Wine r1](evidence/wine/README.md) |
 | Bootstrap reply | PR8 đã merge;debugger ProcessPatchreturn1,không ép success | [bootstrap evidence](evidence/bootstrap-wire/README.md) |
 | KRE-005a/issue9,R2 | PR10 đã merge:3 cold start cửa sổ/second accept;issue9 còn mở | [R2 evidence](evidence/wine-r2/README.md) |
 | WCP hai-reply | Run CP001 là lịch sử chưa C→S; CP006 đã đo request đầu trên copy tham số hóa | [PROTOCOL](PROTOCOL.md#wcp),[WCP evidence](evidence/wcp/README.md) |
-| KRE-005b/issue14 | CP006–155 đã merge; CP156 hostEOF/Bpromotion/AUD047/manualacceptance có nguồn; shared/complexUIgaps giữ; fullround/authority/full auth còn mở | [Q-023](RESEARCH.md#q-023), [service](evidence/probe-service/README.md) |
+| KRE-005b/issue14 | CP006–158 đã merge; CP159 production hai normalcycles/Ready/pinnedexport có nguồn; task hiện hành ở current-order; fullauth/authority/fullmatch/gates và gaps giữ mở | [Q-023](RESEARCH.md#q-023), [service](evidence/probe-service/README.md) |
 | K0/K1 | Chưa nghiệm thu toàn gate;Windows vanilla/control ownership và các điều kiện còn thiếu giữ mở | Gate dưới,[Q-022](RESEARCH.md) |
 | K2a/K2 | Primitive/WCP, CP057stream native/model và CP058–060authcallback137/135/errors0 đã có; fullcodec/authauthority/reconnect và gate chưa pass | [PROTOCOL](PROTOCOL.md#login-auth),[Q-023](RESEARCH.md#q-023) |
 | K3 | Copy đã vẽUI/đóngnotice, A/B/Cprofile đọc sạch và mộtnamedcachewarm được nhận; identityauthority/toàncache/codec/K3 chưa nghiệm thu | [Contract sảnh](PROTOCOL.md#channel-lobby) |
@@ -66,20 +66,20 @@ selectiveCLI/historicalmigration xong, không còn taskactive tổ chức. CP119
 Yêu cầu kiểm8 người đã có kết quả hẹp [CP147](PROTOCOL.md#battle-eight-roster), không thay gate:
 không lặp roster tổng hợp/dump capacity; selector1 wire/UI mở khi cần chọn kiểu đội. Service8 peer
 và trận8 client thật là phần mở rộng sau hai/bốn client ổn ở bước5, chưa được đánh dấu hoàn thành.
-1. **KR-S001/F006/X001 — baseline chơi bằng service production:**
-   [CP157](PROTOCOL.md#current-host-ui-exit) current normalhostUI đã giải. [CP158](PROTOCOL.md#current-trap-udp-counter)
-   giữ natural transient unknown và control counter có giới hạn; không mở thêm mọi packet/race trước demo.
-   Tái dùng profile/directchannel/terrain/30s/loadinggate và knownnative121/99/153/159158/175180/110;
-   chỉ bỏ wrapper delay165 của phép đo và bỏ các replay chủ động. Chạy production ProbeService trực tiếp,
-   hai client thật trên copy/namespace mới, UI input thực, hai normaloutcomes/reset/Ready trong một run.
-   Tranh pickup không bắt buộc hai request trướcconfirm khi không còn hold2s: cho phép1hoặc2actual124,
-   vẫn cần một165/item/view/onlywinnerstat/không doubleclaim; không đổi luật claim/key/consume để pass.
-   Kiểm same-profile/frozenproducer/actualsource-IP và finalnative state/result, không dùng log service làm
-   worldoracle. Giữ scope điểm còn thiếu đầy đủ ở authority/RESEARCH; không tự nâng K6a từ positive controls.
-   Đối chiếu acceptance sau rawseal; normal UI exit đã có nên không cần lặp nếu không là blocker thực tế.
-   Không ép globalstate tức thời đồng nhất trên P2P, không dùng unknown servergốc để chặn mọi policy đã kiểm.
+1. **KR-S001/R004/X001 — smoke preset production và audit CP160:**
+   [CP159](PROTOCOL.md#production-baseline) đã giải directproduction/nohold165/noactivereplay/2normal
+   outcomes/reset/Ready. [Pinnedpreset](../server/profiles/two-client-battle.json) mới export47actualfixture
+   hashes/exactprofile/preflight, chưa runtime dùng file export. Dùng `--preset two-client-battle` ghi
+   profile mới cho copy/namespace mới; không trộn override hoặc sửa pin để pass. Giữ productionservice/
+   terrain/30s/loadinggate/nativeinput, hai vòng/Ready rồi **normalStart3/noBomb** tới actual121/99/clock
+   cảhai view và render ổn sau bounded4–8s. Tái dùng CP110/156/157 nútStart/clock, không RE callback lại.
+   Một finalframeAwhitenút ở CP159 chưa persistentfault; testactualStart3 cóích cho usability, không tự
+   sửa rendering/guard hoặc claim wholeUIhealthy. Không cần lặp hostUIexit/counter/replay control.
+   Saucleanup/seal bắt buộc periodic **AUD048 quaCP160**: README→PLAN→authority/PROTOCOL→RESEARCH→
+   evidence/raw, đối chiếu K5/K6a theo từng scope/environment; ghi điều đạt/thiếu/next thực tế, không
+   tự đóng gate hoặc đòi wholeoriginalservergrammar cho mọi baselinepolicy. CounterkếCP164, không reset.
    [#14](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/14) giữ mở.
-   <!-- active-issue: 14 --> AUD047 qua156, audit định kỳ kế **CP160**.
+   <!-- active-issue: 14 --> AUD047qua156, audit định kỳ kế **CP160**.
 2. **KR-B003/KR-F006 — nợ có giới hạn:** [CP057](PROTOCOL.md#codec-stream-boundaries) đã đo stream/
    seq/bounds trong model, không mở lại76split hoặc cấp buffer lớn chỉ để vượt allocationguardFFFFFFFF.
    Full modes/prefix guard/live reset, distance/auth/transport/kim-cứu của reportguard giữ trong RESEARCH;
@@ -108,7 +108,7 @@ Bảng này chỉ phân công/thứtự; acceptance/PR/bằngchứng ởissue. [
 
 | Thứ tự/scope | Issue | Trạng thái/phần còn thiếu |
 |---|---|---|
-| Hiện hành RE | [#14/KRE-005b](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/14) | CP006–157 merged; CP158 countercontrols có nguồn/tự kiểm; production-service baseline là bước1; gaps giữ; fullauth/authority/fullmatch/gates mở. |
+| Hiện hành RE | [#14/KRE-005b](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/14) | CP006–158 merged; CP159 production2cycles/pinnedexport có nguồn/tự kiểm; exportedpreset smoke/AUD048 là bước1; gaps giữ; fullauth/authority/fullmatch/gates mở. |
 | Control theo trigger/gate | [#1/KRE-001](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/1), [#2/KRE-002](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/2) | Windowsoriginal/ownership/K0K1/fullbootstrapconfig; reuseWine/import/replyđãđo. |
 | Codec/identity khi cần | [#3/KRE-003](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/3), [#9/KRE-005a](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/9) | Fullcodec/livebounds vàintermittentmainstartupcause cònthiếu; khônglặpprimitive/auxiliarylocale. |
 

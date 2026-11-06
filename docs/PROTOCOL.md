@@ -1,6 +1,6 @@
 # KR 00967 — contract tương thích client gốc
 
-Revision kr-legacy-contract-r1; cập nhật06/11/2026 JST (CP158; AUD047 quaCP156, kếCP160).
+Revision kr-legacy-contract-r1; cập nhật06/11/2026 JST (CP159; AUD047 quaCP156, kếCP160).
 **Contract có bằng chứng từng phần; chưa nghiệm thu full codec K2**.
 Lộ trình và thứ tự task chỉ giữ ở [REWRITE_PLAN — KRE](PLAN.md).
 Đây là contract của repo server KR. ADR0009 của bản viết lại là nguồn lịch sử để so sánh;
@@ -5589,3 +5589,41 @@ CP158 gom5lượt cùng câu hỏi, không checkpoint/PR cho từng thử. CP157
 AUD047 qua156/kế160; không nâng K6a/fullmatch/LAN/Internet/8clients. Nhánh này đã có giới hạn đo được;
 [PLAN](PLAN.md#current-order) ưu tiên baseline bằng service production, không delay165/replay chủ động.
 Natural transient giữ trong [RESEARCH](RESEARCH.md#gap-contact-state), chỉ mở lại khi trigger/acceptance cần.
+
+
+<a id="production-baseline"></a>
+### Hai vòng bằng service production, không hold165/replay — CP159
+
+**`kr_runtime/confirmed` hẹp; policy vẫn `emu_choice/design`.**
+[Recipe/hash/checks](evidence/peer-endpoints/README.md#cp159). Tái dùng CP157 currentdirect profile,
+knowncodec/consumer/actor/terrain/reset và CP158 counterlimits. Không thân hàm RE mới. Chỉ thay
+measurement wrapper bằng `python3 -m server.probe_service`, bỏ active oldUDP replay, dừng sau native
+return2/actualReady95/110. Profile/game/30s/loadinggate giữ nguyên, 96 frozeninputs; không source/config
+change giữa run. Không tắt native observer/copy patches rồi suy tương đương Windows nguyên bản.
+
+Cùng run:8actualTCP/2client/wineserver privatehosts/directchannel/UDP, key12345→12346/2native12199clocks,
+4movementwindows/nativeapply/currentprogress. **Không** trường measurement/hold165, không active replay.
+Fire item17: R1 chỉ actual A124; R2 actualA124 nhận/B124 muộn rejectconsumed. Mỗi item/view chỉ1native165,
+full12/errors0, chỉApower1→2, statbaseline reset hai vòng. Service broadcast delay đo0,2508–0,42968ms
+(đoạn code service, không latency mạng/SLA/originalfairness), khác 2shold của phép tranh chấp cũ.
+HaiOSkeys không bắt buộc phát2request khi một client đã thấyconfirm và itembiến mất; không nới luật
+claim/key/consume để đạt. 75pickupchecks/12actualC2Sjoins/2214nativeactorchecks tách theo source.
+
+BomactualID1/A/power2 vàID2/B/power1;158/159full/195flags/reset khớp scope26checks. Native12717→19/
+opposite21/chosenrank hai vòng; strict lifecycle checker23checks ở run này cóloser56→1/other0before175
+cảhai view/hai vòng,16copiedgettermodel riêng. Điều này không bác transientCP157 hoặc controlCP158.
+Hai native175full302/180full3/110full6/errors0, chosenrank2,1→1,2; BReady95 thật/native110 sau return2.
+Không EOF/thirdforfeit/Start3 trongrun. ẢnhAStart rõ tạifocused4/native110, mộtframe ngayđóngrun trắngnút;
+không suy persistentrenderfailure hayStart3thànhcông từ cácframe. CP110 knownvisualbehavior giữnguồnriêng.
+
+**Tái tạo saucleanup:** [preset metadata](../server/profiles/two-client-battle.json) gồm policy và47localfixture
+relativepaths/size/SHA/seq; không chứa binary/asset. `tools/export_probe_profile.py --preset two-client-battle`
+xác minh pin rồi chỉ rebasepath dưới source-root, từ chối input đổiSHA/size/symlinkthoátroot, không tự
+rehashđểtinfileđổi. Exportobject bằng exactprofile đãđo, productionservicepreflight47fixtures/4exporttests pass;
+**runtime dùng exportedfile chưa đo tại CP159**, đó là bước kế. Default/options cũ giữ hànhvi.
+Fixtureauth/room/map/rank vẫn synthetic/policy, template không phát client/DB/pack hoặc fullauth.
+
+CP158/PR229 đã merge259282b; CP159 self-check/reviewwaived/chờPR. GateK6a/fullmatch/Windows/LAN/
+Internet/8client/sharedgeometry/generalreset/originalauthority không nâng. Audit AUD047qua156/kếCP160.
+[PLAN](PLAN.md#current-order) smoke exportedpreset/normalStart3 + periodicmanualaudit; tránh mở lại
+itemconsumer/counterRE. Acceptance theo đúng environment/behaviors measured, không tổngsốchecks.
