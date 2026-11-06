@@ -41,18 +41,19 @@ Hai copy KR Wine đã chạy login/sảnh/phòng/Battle và các chu kỳ kết 
 [kim/reset](docs/PROTOCOL.md#needle-round-reset), [cứu hai chiều và hai kết quả](docs/PROTOCOL.md#rescue-two-results),
 [deep chain/reset](docs/PROTOCOL.md#recursive-chain-cycles) giữ phạm vi và giới hạn tại nguồn chuẩn.
 
-**Mốc mới CP176:** sau B rời trước trận đầu, A chủ phòng và C identity3/slot1 đã chạy **hai vòng
-basic bình thường liên tiếp**: cả hai đặt bom, movement hai chiều, ba hiệu ứng của A, A trapped/dead,
-cả hai nhận kết quả/về phòng và C Ready lại. Native trace, world/stat/key reset và ảnh cuối hai phòng
-đã kiểm. [Contract/giới hạn](docs/PROTOCOL.md#a-c-basic-cycles),
-[run/hash](docs/evidence/peer-endpoints/README.md#cp176). CP175 đã merge
-[PR247](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/247) tại `957b37a`.
+**Mốc mới CP177:** preset tùy chọn `two-client-basic-replacement` đã kiểm trên cả hai slot trống:
+C identity3 lấy capacity từ vai đã rời; slot0 initial1/max10, slot1 initial2/max7. Hai run riêng có
+Join/Ready/host Start, native initial stats, actual C118 và cùng159/158 trên hai client hiện hành.
+Maximum là policy; không suy đã kiểm capacity exhaustion. [Contract/giới hạn](docs/PROTOCOL.md#replacement-profile),
+[run/hash và ca startup lỗi giữ nguyên](docs/evidence/peer-endpoints/README.md#cp177).
+CP176 hai vòng A/C bình thường vẫn có [nguồn riêng](docs/PROTOCOL.md#a-c-basic-cycles), đã merge
+[PR248](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/248) tại `bd34ed4`.
 
-Đây là **copy KR chạy Wine/mạng thử riêng**, chưa nghiệm thu gate K5/K6a/fullmatch, Windows nguyên bản,
-LAN/Internet hoặc tám client. CpreReady và ảnh ngay sau return còn đen; sau focus/Ready cả hai đã render.
-Không Start3 hoặc kết quả thứ ba. [PLAN](docs/PLAN.md#current-order) tiếp đóng gói profile đo được và
-kiểm capacity theo vacant slot; không lặp gameplay/consumer đã biết.
-AUD052 qua CP176; audit kế **CP180**. [Review waived](docs/evidence/checkpoints/review-waiver.json).
+Đây là copy KR Wine/cùng physical host/mạng thử riêng; Windows nguyên bản, LAN/Internet/tám client
+và K0–K7/K5/K6a/fullmatch chưa nghiệm thu. [PLAN](docs/PLAN.md#current-order) tiếp đối chiếu acceptance
+bằng bằng chứng cũ và chỉ đo phần chặn thực tế; không lặp hai trận hoặc mọi biến thể thay người.
+CP177 complete/PR pending trước tích hợp; trạng thái merge tại PR/Git. AUD052 qua CP176, audit kế
+**CP180**. [Review waived](docs/evidence/checkpoints/review-waiver.json).
 
 Đích đầu: hai client thật chơi hai trận liên tiếp; mở bốn client và hardening sau đó.
 

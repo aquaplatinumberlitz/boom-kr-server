@@ -6312,3 +6312,40 @@ drop/claim/result vẫn policy. Không contest/oldUDP injection/disconnect trong
 capacitymaximum/hai reservation/generalreset/thirdStart, không originalWindows/fullauth/physicalLAN/
 Internet/8clients/fullmatch hoặc tự đóng K0–K7/K5/K6a. [Authority](#authority) và [acceptance](PLAN.md#basic-acceptance-review)
 giữ dependency/control còn thiếu; [PLAN](PLAN.md#current-order) chọn profile/capacity theo vacancy tiếp.
+
+
+<a id="replacement-profile"></a>
+### Preset thay người và capacity theo slot trống — CP177
+
+[Nguồn reuse, recipe/raw/hash/control](evidence/peer-endpoints/README.md#cp177). Tái dùng
+[CP051 Cslot0](#service-replacement), [CP175 binding/guard](#a-survivor-admission),
+[CP176 Cslot1 gameplay](#a-c-basic-cycles) và known121/118/159/158; không thêm wire/schema/ID VN
+hoặc tìm lại consumer. `two-client-basic-replacement` là preset **tùy chọn**, chỉ thêm
+`replacement_slot={mode:vacant_AB_slot,capacity:vacated_slot}` vào `two-client-basic`, giữ đúng47
+fixture pin và mọi policy khác. Default hai preset cũ và flag `mode` đơn giữ behavior cũ/explicit C.
+
+`design/confirmed` cho implementation: derived policy bắt buộc chỉ A/B `bomb_capacity`, từ chối C
+khai báo cùng lúc, thiếu role hoặc policy không hỗ trợ. Ordinal9 sau cleanup/membership/host/map/
+round fence hiện hành bind Cidentity3 vào slot của vai rời, sao **riêng** initial/maximum từ vai ấy
+vào service instance và log `replacement_binding.capacity.source_role/initial/maximum/source`.
+Không sửa profile input, A/B limits, global slot hoặc instance khác. Cslot0 lấy A1/10; Cslot1 lấy
+B2/7. Terrain preflight cho A/B trong derived mode; old explicit policy vẫn cần C khi có capacity.
+Maximum10/7 là lựa chọn operator; copy limits không tự chứng minh native maxima/exhaustion.
+
+`kr_runtime/confirmed` hẹp: hai run riêng dùng đúng exported preset, copied Wine/private virtual
+hosts/cùng physical host. C1: Bguest EOF trước trận đầu, Ahost/C3-slot1, nativeinitial2/power1/speed4;
+C0: Ahost EOF trước trận đầu, Bpromotion/C3-slot0, nativeinitial1/power1/speed5. C từng run có actual
+Join/Ready, currenthost Start1/full121/99/barrier/clock, C118 key12345/boundowner → ID1/power1,
+native159/entity và158 xử lý cùngID1 một lần trên cả survivor/C. Mỗi run có48 quan hệ kiểm ngoài
+raw/preflight; native model packet cases33/42 tách khỏi runtime. Không gộp thành hai vòng cùng run.
+
+C0r2 dừng ở Bstartup SIGSEGV trongjypc.dll,6transports/trước C; rawseal/cleanup sạch, không là probe
+thành công. C0r3 cùng cấu hình/fresh copies đi hết phép thử, **không** chứng minh đã sửa nguyên nhân
+startup hoặc bác bỏ ca lỗi. C0r1 chỉ preparation assertion, chưa launch. Một số nhãn mô tả/ảnh của
+harness C0 còn wording cũ Cslot1/A-survivor; code, ownership, namespace, host và verifier field/slot
+đã đối chiếu tường minh. Không dùng nhãn đó làm proof cho sai vai.
+
+284server tests/7exporter tests và actual pinned preflight kiểm policy; đó không là native evidence.
+Không Ccapacity exhaustion/hai reservation/survival/peer movement/result/reset mới; CP176 giữ hai
+AC normal cycles riêng. Không account resume/fullauth/general lifecycle/originalWindows/LAN/Internet/
+8client/fullmatch hoặc tự đóng gate. [PLAN](PLAN.md#current-order) tiếp acceptance/control thực tế.

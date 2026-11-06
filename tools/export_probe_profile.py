@@ -13,6 +13,7 @@ PRESET = Path(__file__).resolve().parents[1] / 'server/profiles/two-client-battl
 PRESETS = {
     'two-client-battle': PRESET,
     'two-client-basic': PRESET.with_name('two-client-basic.json'),
+    'two-client-basic-replacement': PRESET.with_name('two-client-basic-replacement.json'),
 }
 
 

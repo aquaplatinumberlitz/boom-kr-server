@@ -73,6 +73,16 @@ relay/NAT/backpressure hay gate K5/K6a. CP050 bổ sung [EOF recovery hẹp](../
 Runtime r2 có hai chu kỳ; r3 chỉ một result, không dùng để tuyên bố tính tái lập mọi input.
 
 
+Preset tùy chọn thay một người đã rời, cùng basic47pins:
+
+```bash
+python3 tools/export_probe_profile.py --source-root local/research/codex --out local/replacement-profile.json --preset two-client-basic-replacement
+```
+
+[Contract CP177](../docs/PROTOCOL.md#replacement-profile): C là identity mới; capacity sao từ vai
+rời lúc admission, không account resume. C0/C1 actual118/native159158 đã đo riêng trên copy Wine;
+maxima là policy. Default preset giữ nguyên; fullauth/LAN/Internet/gates chưa nghiệm thu.
+
 ## Các bổ sung theo checkpoint
 
 Các đoạn dưới ghi phạm vi tại checkpoint được nêu. “Tiếp” trong đoạn lịch sử không là việc đang

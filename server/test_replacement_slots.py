@@ -199,6 +199,84 @@ class ReplacementSlotTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, 'explicit C'):
             ProbeService(self.profile, self.out, {})
 
+    def derived_capacity_service(self):
+        self.data['replacement_slot']['capacity'] = 'vacated_slot'
+        self.data['bomb_capacity'] = {'A': {'initial': 1, 'maximum': 10},
+                                      'B': {'initial': 2, 'maximum': 7}}
+        self.s = ProbeService(self.profile, self.out, {})
+        self.addCleanup(self.s.selector.close)
+        self.s.events = [{}, {}, {}, self.a, {}, {}, {}, self.b]
+        self.s.channels = {'A': self.a, 'B': self.b}
+        self.s.round = {'index': 0}
+        self.s.send_raw = lambda event, raw: None
+
+    def test_derived_capacity_follows_vacancy_without_alias_or_profile_mutation(self):
+        self.derived_capacity_service()
+        before = copy.deepcopy(self.data)
+        self.assertNotIn('C', self.s.capacity_profile)
+        self.accept()
+        self.assertEqual(self.s.slot('C'), 1)
+        self.assertEqual(self.s.capacity_profile['C'], {'initial': 2, 'maximum': 7})
+        self.assertEqual(self.s.state['replacement_binding']['capacity'],
+                         {'source_role': 'B', 'source': 'design', 'initial': 2, 'maximum': 7})
+        self.s.capacity_profile['C']['maximum'] = 3
+        self.assertEqual(self.s.capacity_profile['B']['maximum'], 7)
+        self.assertEqual(self.data, before)
+        other = ProbeService(self.profile, self.out, {})
+        self.addCleanup(other.selector.close)
+        self.assertNotIn('C', other.capacity_profile)
+
+    def test_derived_capacity_for_vacant_a_is_not_slot1_limits(self):
+        self.derived_capacity_service()
+        self.a['closed'] = {'reason': 'eof'}
+        self.b.pop('closed')
+        self.b['departures_sent'] = ['A']
+        self.s.host_role = 'B'
+        self.accept()
+        self.assertEqual(self.s.slot('C'), 0)
+        self.assertEqual(self.s.capacity_profile['C'], {'initial': 1, 'maximum': 10})
+        self.assertEqual(self.s.replacement_binding['capacity']['source_role'], 'A')
+
+    def test_derived_capacity_rejected_admission_does_not_bind_or_derive(self):
+        self.derived_capacity_service()
+        self.a['pending_departures'] = ['B']
+        connection = self.accept()
+        self.assertEqual(connection.fileno(), -1)
+        self.assertIsNone(self.s.replacement_binding)
+        self.assertNotIn('C', self.s.capacity_profile)
+
+    def test_capacity_declaration_missing_ambiguous_or_unknown_rejected(self):
+        self.data['replacement_slot']['capacity'] = 'vacated_slot'
+        for limits in [None, {}, {'A': {'initial': 1, 'maximum': 10}},
+                       {'A': {}, 'B': {}, 'C': {}}]:
+            with self.subTest(limits=limits):
+                self.data['bomb_capacity'] = limits
+                with self.assertRaisesRegex(ValueError, 'exactly A/B'):
+                    ProbeService(self.profile, self.out, {})
+        self.data['bomb_capacity'] = {'A': {'initial': 1, 'maximum': 10},
+                                      'B': {'initial': True, 'maximum': 7}}
+        with self.assertRaisesRegex(ValueError, 'invalid bomb_capacity'):
+            ProbeService(self.profile, self.out, {})
+        for policy in [{'mode': 'vacant_AB_slot', 'capacity': 'guess'},
+                       {'mode': 'vacant_AB_slot', 'capacity': 'vacated_slot', 'C': 2}]:
+            self.data['replacement_slot'] = policy
+            with self.assertRaisesRegex(ValueError, 'unsupported replacement_slot'):
+                ProbeService(self.profile, self.out, {})
+
+    def test_old_explicit_capacity_is_not_replaced(self):
+        self.data['bomb_capacity'] = {role: {'initial': 1, 'maximum': 6} for role in 'ABC'}
+        service = ProbeService(self.profile, self.out, {})
+        self.addCleanup(service.selector.close)
+        service.events = self.s.events
+        service.channels = self.s.channels
+        service.round = self.s.round
+        service.send_raw = lambda event, raw: None
+        self.s = service
+        self.accept()
+        self.assertEqual(self.s.slot('C'), 1)
+        self.assertEqual(self.s.capacity_profile['C'], {'initial': 1, 'maximum': 6})
+        self.assertNotIn('capacity', self.s.replacement_binding)
+
 
 if __name__ == '__main__':
     unittest.main()

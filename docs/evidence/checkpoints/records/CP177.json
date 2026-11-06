@@ -1,0 +1,262 @@
+{
+  "id": "CP177",
+  "previous": "CP176",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-06T19:15:19.314168+00:00",
+  "context_commit": "bd34ed426ef0d5f863c2f47a97d98e95c7ea6602",
+  "owner": "Codex",
+  "reviewer": "Codex",
+  "question": "Can an optional reusable exported basic replacement preset derive Ccapacity by vacant A/Bslot and preserve both native C0/C1 firstbomb paths?",
+  "scope": "Source-first CP051C0stats, CP175C1binding, CP176actualC118/ACcycles, current121/118/159158oracles; optional profile/servicepolicy delta, strict declaration/regressions and minimum native positive C0/C1controls. Preserve all source binaries/assets/DB/oldcomplete inputs. No two-game replay, newstaticfunctions or VNwireport.",
+  "artifacts": [
+    {
+      "name": "OriginalKR00967unchanged",
+      "sha256": "a52545c14b1fea423de655c3163d6360b628d61c1cd472b46fdbc8a9ffe15f4e"
+    },
+    {
+      "name": "CurrentWinecopyunchanged",
+      "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+    },
+    {
+      "name": "NativeIDAfullcopycf72privateanalysis",
+      "sha256": "cf72da112308d9f1ca256df8089594c5f787875310933073bf6bd5ba6f70e63b"
+    },
+    {
+      "name": "modOmodelreference",
+      "sha256": "a08950c833d3acab8281049def7b3dc96b221f107eeda01da3a548e34b91dce5"
+    }
+  ],
+  "locators": [
+    "CP176 PR248 merged bd34ed426ef0d5f863c2f47a97d98e95c7ea6602.",
+    "Knownnative121/118/159/158/52A350 andC IDsetter13B09E0; no newnativefunction discovery.",
+    "C1run 6068047d24bf8c5caf532db6069f401360424647714fab84fa7e5149d59c8f50; C0positive e8fc40174f881e075850395815877ebb0a719a6fac66e9d5938ce7f50086d6f7; C0startupfailure 5037639584dd5512e8ed0f3f716e82cdce86324086ddd51a5717cdacb34d00aa.",
+    "C0r2 B SIGSEGV/jypcVA79b5fa99 before C; moduleSHA 487275c95ddc5592f8e660dac0ddae0f7a06d483a0430cc03d8514acf7aab3de.",
+    "AUD052through176/nextCP180; no counter reset/independentapproval/gateclosure."
+  ],
+  "findings": [
+    {
+      "summary": "Optional two-client-basic-replacement preserves47pins/allbasicpolicy; exact derived declaration requires A/B-only capacities. C gets copied departed-role limits atordinal9, logged provenance; no input/A-B/global/instance alias. Existing defaults/oldflag explicitC unchanged; terrainpreflight accepts A/B inderivedmode.",
+      "source": "design",
+      "status": "confirmed",
+      "method": "design",
+      "canonical": "docs/PROTOCOL.md#replacement-profile",
+      "evidence": [
+        "RUN-00027",
+        "RUN-00026",
+        "RUN-01050"
+      ],
+      "limits": "Modified KR00967 Wine copies/private virtual hosts/samephysicalhost only; one freshC first-round bomb per positive run, two different vacancies. No originalWindows/fullauth/general membership/account resume/LANInternet8clients/gates; no new survival/peer/result/reset/capacityexhaustion. Maxima1/10and2/7 remain operatorpolicy. CP176twoACnormalcycles separate. C0startupSIGSEGV and preparation failure retained; passing control does not fix/explain startup. Reviewwaived/selfcheck, no independentapproval."
+    },
+    {
+      "summary": "Actual exported Cslot1: owned prestartBguestEOF/Ahost→Cidentity3/slot1; capacity derivedB2/7/nativeinitial2,power1,speed4. ActualC95/A104/full121/99barrier/clock andC118 key12345owner1→ID1native159158both.843checks=632raw+163frozen+48relations;33nativepacket cases. Clean207.311767302s.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#replacement-profile",
+      "evidence": [
+        "RUN-00026",
+        "RUN-00028"
+      ],
+      "limits": "Modified KR00967 Wine copies/private virtual hosts/samephysicalhost only; one freshC first-round bomb per positive run, two different vacancies. No originalWindows/fullauth/general membership/account resume/LANInternet8clients/gates; no new survival/peer/result/reset/capacityexhaustion. Maxima1/10and2/7 remain operatorpolicy. CP176twoACnormalcycles separate. C0startupSIGSEGV and preparation failure retained; passing control does not fix/explain startup. Reviewwaived/selfcheck, no independentapproval."
+    },
+    {
+      "summary": "Actual exported Cslot0: owned prestartAhostEOF/Bpromoted→Cidentity3/slot0; capacity derivedA1/10/nativeinitial1,power1,speed5. ActualC95/B104/full121/99barrier/clock andC118 key12345owner0→ID1native159158both.831checks=620raw+163frozen+48relations;42nativepacket cases. Clean205.812514754s.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#replacement-profile",
+      "evidence": [
+        "RUN-01050",
+        "RUN-01052"
+      ],
+      "limits": "Modified KR00967 Wine copies/private virtual hosts/samephysicalhost only; one freshC first-round bomb per positive run, two different vacancies. No originalWindows/fullauth/general membership/account resume/LANInternet8clients/gates; no new survival/peer/result/reset/capacityexhaustion. Maxima1/10and2/7 remain operatorpolicy. CP176twoACnormalcycles separate. C0startupSIGSEGV and preparation failure retained; passing control does not fix/explain startup. Reviewwaived/selfcheck, no independentapproval."
+    },
+    {
+      "summary": "C0r2 startup B SIGSEGV in jypc.dll/6transports/noC/binding absent. Sealed69.389981917s/215raw/exit0/0PID is cleanup only. Freshsameconfig C0r3 completes; native crash observed, cause and relation to startup/ASLR/profile unknown. No patch/no extendeddeadline.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#replacement-profile",
+      "evidence": [
+        "RUN-00755",
+        "RUN-00752"
+      ],
+      "limits": "Modified KR00967 Wine copies/private virtual hosts/samephysicalhost only; one freshC first-round bomb per positive run, two different vacancies. No originalWindows/fullauth/general membership/account resume/LANInternet8clients/gates; no new survival/peer/result/reset/capacityexhaustion. Maxima1/10and2/7 remain operatorpolicy. CP176twoACnormalcycles separate. C0startupSIGSEGV and preparation failure retained; passing control does not fix/explain startup. Reviewwaived/selfcheck, no independentapproval."
+    },
+    {
+      "summary": "C0r1 preparation-only source-overlap assertion retained and explained by deterministic source inspection; originalstderr not separately retained. No recipe/run created, not a native result. R2 scoped transform fixes preparation only. Some C0 descriptive labels remain inherited; native verifier uses explicit actual role/slot fields.",
+      "source": "design",
+      "status": "confirmed",
+      "method": "design",
+      "canonical": "docs/PROTOCOL.md#replacement-profile",
+      "evidence": [
+        "RUN-00733"
+      ],
+      "limits": "Modified KR00967 Wine copies/private virtual hosts/samephysicalhost only; one freshC first-round bomb per positive run, two different vacancies. No originalWindows/fullauth/general membership/account resume/LANInternet8clients/gates; no new survival/peer/result/reset/capacityexhaustion. Maxima1/10and2/7 remain operatorpolicy. CP176twoACnormalcycles separate. C0startupSIGSEGV and preparation failure retained; passing control does not fix/explain startup. Reviewwaived/selfcheck, no independentapproval."
+    },
+    {
+      "summary": "Source-first reused nativeC0stats1/1/5 and C1stats2/1/4, measuredidentity/slot/consumer chains, current47pins/typed/getter/frame oracles. Avoided AC2cycle replay/newnative scans/VNlayoutport. C0 scoped host/victim/namespace/input mapping explicit; inherited textual labels qualified instead of used as proof.",
+      "source": "design",
+      "status": "confirmed",
+      "method": "design",
+      "canonical": "docs/PROTOCOL.md#replacement-profile",
+      "evidence": [
+        "RUN-00029",
+        "RUN-01053",
+        "RUN-01050"
+      ],
+      "limits": "Modified KR00967 Wine copies/private virtual hosts/samephysicalhost only; one freshC first-round bomb per positive run, two different vacancies. No originalWindows/fullauth/general membership/account resume/LANInternet8clients/gates; no new survival/peer/result/reset/capacityexhaustion. Maxima1/10and2/7 remain operatorpolicy. CP176twoACnormalcycles separate. C0startupSIGSEGV and preparation failure retained; passing control does not fix/explain startup. Reviewwaived/selfcheck, no independentapproval."
+    }
+  ],
+  "verification": [
+    {
+      "check": "Server284/exporter7regressions; exact47pinnedprofilepreflight/nativeC0C1delta",
+      "result": "pass",
+      "evidence": [
+        "RUN-01761",
+        "RUN-01762",
+        "RUN-00026",
+        "RUN-01050"
+      ],
+      "limits": "Policy tests synthetic; native/model/Wine evidence distinct. No gate semantics inferred."
+    },
+    {
+      "check": "Docs/catalog/GitHub links+live state",
+      "result": "pass",
+      "evidence": [
+        "RUN-01763",
+        "RUN-01764",
+        "RUN-01765"
+      ],
+      "limits": "Append fullhistory/local required before commit; scripts do not certify semantics/acceptance/gates."
+    },
+    {
+      "check": "Allrun cleanup/sourcefreeze/rawhash",
+      "result": "pass",
+      "evidence": [
+        "RUN-00028",
+        "RUN-00752",
+        "RUN-01052"
+      ],
+      "limits": "Source/code/config frozen during eachrun; stop/error separate fromexit0. Originalartifact hashes preserved."
+    },
+    {
+      "check": "K0–K7/fullauth/LANInternet8clients/generalreset",
+      "result": "pending",
+      "evidence": [
+        "RUN-00026"
+      ],
+      "limits": "Modified KR00967 Wine copies/private virtual hosts/samephysicalhost only; one freshC first-round bomb per positive run, two different vacancies. No originalWindows/fullauth/general membership/account resume/LANInternet8clients/gates; no new survival/peer/result/reset/capacityexhaustion. Maxima1/10and2/7 remain operatorpolicy. CP176twoACnormalcycles separate. C0startupSIGSEGV and preparation failure retained; passing control does not fix/explain startup. Reviewwaived/selfcheck, no independentapproval."
+    }
+  ],
+  "evidence_manifests": [
+    {
+      "path": "docs/evidence/checkpoints/evidence/CP177-replacement-profile.json",
+      "bytes": 452736,
+      "sha256": "d4a9778e5a17b6af4c928c5747021ae1d4088120422e256afb83d551aeb3edf3",
+      "count": 1775
+    }
+  ],
+  "delta": {
+    "added": [
+      "Reusableoptional47pinreplacementpreset, explicitvacancyCcapacity and minimum actual C0/C1native118159158 controls."
+    ],
+    "corrected": [
+      "CP176/PR248merged; manualC2/7 no longer only way to useC1profile; slot0 derivesA1/10. C0r2startupfailure is not successfulprobe orcapacitycausality; R3doesnotexplaincrash."
+    ],
+    "superseded": [
+      "NEXT-REPLACEMENT-PROFILE closed narrowly; NEXT-LOCAL-ACCEPTANCE active."
+    ]
+  },
+  "blockers": [
+    "FormalWindows/control/fullcodec/liveprefix/reset/auth/cache/dependency/authority gaps stillopen; review actual acceptance before next targeted runtime.",
+    "Intermittent startupSIGSEGV rootcause/general membership/accountresume/maxcapacityexhaustion unknown; do not testeveryvariant before localdeployment."
+  ],
+  "next_steps": [
+    {
+      "id": "NEXT-REPLACEMENT-PROFILE",
+      "task": "KRE-005b",
+      "state": "closed",
+      "action": "CP177 optionalpreset/vacancycapacity andnativeC0/C1firstbombdelta verified; no gameplay replay/gate.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-LOCAL-ACCEPTANCE",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "PLAN source-first K0→K6a/authority acceptance mapping; check K2a static scope first, then minimum actual missing deployment/control evidence. Preservecriteria; no allvariants or repeatedknowncycles.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    }
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-11-06T19:15:19.314168+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "Codexsolo code/RE/runtime/selfchecks; ownerwaiver, exactheadPRbeforemerge, nogateapproval.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Owner explicitly requested solo, no workers/review."
+    }
+  },
+  "docs_sync": [
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "CP177preset/vacancycapacity/C0C1native/failedstartup/limits/acceptance-next syncedbeforecomplete."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "CP177preset/vacancycapacity/C0C1native/failedstartup/limits/acceptance-next syncedbeforecomplete."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "updated",
+      "reason": "CP177preset/vacancycapacity/C0C1native/failedstartup/limits/acceptance-next syncedbeforecomplete."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "updated",
+      "reason": "CP177preset/vacancycapacity/C0C1native/failedstartup/limits/acceptance-next syncedbeforecomplete."
+    },
+    {
+      "path": "docs/features.json",
+      "state": "updated",
+      "reason": "CP177preset/vacancycapacity/C0C1native/failedstartup/limits/acceptance-next syncedbeforecomplete."
+    },
+    {
+      "path": "docs/COVERAGE.md",
+      "state": "updated",
+      "reason": "CP177preset/vacancycapacity/C0C1native/failedstartup/limits/acceptance-next syncedbeforecomplete."
+    },
+    {
+      "path": "server/README.md",
+      "state": "updated",
+      "reason": "CP177preset/vacancycapacity/C0C1native/failedstartup/limits/acceptance-next syncedbeforecomplete."
+    },
+    {
+      "path": "docs/evidence/peer-endpoints/README.md",
+      "state": "updated",
+      "reason": "CP177preset/vacancycapacity/C0C1native/failedstartup/limits/acceptance-next syncedbeforecomplete."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/review.json",
+      "state": "updated",
+      "reason": "CP177preset/vacancycapacity/C0C1native/failedstartup/limits/acceptance-next syncedbeforecomplete."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
+      "state": "updated",
+      "reason": "CP177preset/vacancycapacity/C0C1native/failedstartup/limits/acceptance-next syncedbeforecomplete."
+    },
+    {
+      "path": "docs/evidence/checkpoints/README.md",
+      "state": "unchanged",
+      "reason": "Workflow/store/cadence unchanged; audit notdue untilCP180."
+    }
+  ],
+  "evidence": []
+}
