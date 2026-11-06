@@ -135,11 +135,11 @@
         "KR-F001",
         "KR-F015"
       ],
-      "known": "CP149/PR220merged262a72f; CP150directFiregate/BombFirehai vòng/nativeAownerR1BownerR2/2oppositeresults/reset/Ready/664vethrecords cónguồn. R1pixelalignmentpartialkept/R2nativepredicatefixedbounds; CP149misscauseunknown.",
-      "remaining": "Actualcontestedpickup/currentdirectroute vàacceptanceK6acònthiếu; fullauth/Windows/realLAN/NAT/Internet/gates/CP137UI/sharedgeometry/fullinventory/8actualpeers remain.",
-      "next_test": "PLANreuseCP030/062twoactual124/delayedpositive165/onewinner/currentclaimlogic; currentdistinctspawn normalOSfreshfeedback approachsameindex thenrace, nativeonewinner/statdelta/keyreset. Measurementcopydelaydesignnotoriginalfairness; nofake124/forcewinner/newcodecRE.",
+      "known": "CP150/PR221merged1dbc369; CP151R1actualA/BFire17claims/Aonewinner/Breject/nativeone165/onlyApowerdelta/native175180110/reset. CP062measurementhold2s/currentclaimlogic unchanged.",
+      "remaining": "CP151R2both121/actorsinit/no99by30s/bothloading_timeout/noR2clock/contest/result/Ready2; emptyforfeitnotnativeending. Fullauth/Windows/LAN/Internet/gates/CP137UI/sharedgeometry/fullinventory/8actualpeers remain.",
+      "next_test": "PLANreuseCP02199writerE7F2A0/onceguardstage+6410/send13ADD10op99 timestamps from121, R1positivevsR2missing/newreadonlyobservable/frozen30sdeadline; nofake99/forceclock/increasebound/causal165delayclaim. ThenR2freshkeycontest/nativeoutcome/Ready; auditCP152.",
       "acceptance": "Epic checklist: linkedscopedtask/evidence+authoritymatrix vàacceptancegate ởPLAN; từngtaskđóng khôngđóngepic/K5/K6a.",
-      "reason": "ScopedcurrentFiregate/Bownerpositivegapresolved; originalCP149missunknown, R1extraalignmentfailurekept. Noindependentgateclosure.",
+      "reason": "R1contestproved butwhole2epochtargetpartial; runtimeexit0observer_timeout andemptyserviceforfeits donotproveR2nativeending/gate.",
       "sources": [
         "docs/PROTOCOL.md#authority",
         "docs/RESEARCH.md#feature-gaps",
@@ -171,7 +171,8 @@
         "docs/PROTOCOL.md#battle-eight-roster",
         "docs/PROTOCOL.md#service-channel-endpoint",
         "docs/PROTOCOL.md#direct-channel-positive",
-        "docs/PROTOCOL.md#direct-item-feedback"
+        "docs/PROTOCOL.md#direct-item-feedback",
+        "docs/PROTOCOL.md#direct-contested-pickup"
       ],
       "evidence": [
         "docs/evidence/current-movement-cycles/README.md",
@@ -200,7 +201,8 @@
         "docs/evidence/eight-player/README.md",
         "docs/evidence/peer-endpoints/README.md#cp148",
         "docs/evidence/peer-endpoints/README.md#cp149",
-        "docs/evidence/peer-endpoints/README.md#cp150"
+        "docs/evidence/peer-endpoints/README.md#cp150",
+        "docs/evidence/peer-endpoints/README.md#cp151"
       ],
       "prs": [
         173,
@@ -244,7 +246,8 @@
         216,
         218,
         219,
-        220
+        220,
+        221
       ],
       "successors": []
     },

@@ -41,16 +41,18 @@ Hai copy KR Wine đã chạy login/sảnh/phòng/Battle và các chu kỳ kết 
 [kim/reset](docs/PROTOCOL.md#needle-round-reset), [cứu hai chiều và hai kết quả](docs/PROTOCOL.md#rescue-two-results),
 [deep chain/reset](docs/PROTOCOL.md#recursive-chain-cycles) giữ phạm vi và giới hạn tại nguồn chuẩn.
 
-**Mốc mới CP150:** hai copy trên routeTCP/UDP trực tiếp đã nhặtBomb+Fire cảhai vòng,
-vòng1 A đặt bom/vòng2 B đặt bom; hai kết quả đảo chiều/reset/finalReady cónguồn.
-[Contract/giới hạn](docs/PROTOCOL.md#direct-item-feedback), [evidence](docs/evidence/peer-endpoints/README.md#cp150).
-664vethrecords/4movementwindows cùngrun; ca pixelalignmentfail giữriêng. Chưa fullmatch/K6a/LAN/Internet.
+**Mốc mới CP151, partial:** trên directroute/distinctspawn, hai client đãgửi actual124 tranhFire17;
+R1chỉmộtwinner/Fire165 vàmộtstatdelta, rồi nativekếtquả/reset/Start2.
+R2thiếu99đếndeadline30s nêncảhai channelđóng; **chưa contesthai vòng/Ready2**.
+[Contract/blocker](docs/PROTOCOL.md#direct-contested-pickup), [evidence](docs/evidence/peer-endpoints/README.md#cp151).
 
-CP149 đã merge [PR220](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/220) tại`262a72f`;
-CP150selfcheck/chờPR. [Reviewwaived](docs/evidence/checkpoints/review-waiver.json), auditqua148/kế **CP152**.
-[CP147roster8](docs/PROTOCOL.md#battle-eight-roster) vẫn chưa8 client thật; CP137UI/sharedgeometry/
-fullinventory vàcácgate vẫn mở. Theo [PLAN](docs/PLAN.md#current-order), tiếp ca tranh cùngitem
-trên directroute, reuseCP062actual124/delayed165; không tìm lại contract item hoặc endpoint.
+[CP150](docs/PROTOCOL.md#direct-item-feedback) BombFire/ABowner/hai nativeoutcomes/Ready trênproduction
+đã merge [PR221](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/221) tại`1dbc369`;
+CP151dùngdelay165measurement, khônggộpcác runthànhgate. CP151selfcheck/chờPR;
+[reviewwaived](docs/evidence/checkpoints/review-waiver.json), auditqua148/kế **CP152**.
+[CP1478slot](docs/PROTOCOL.md#battle-eight-roster) vẫn chưa8 client thật; fullmatch/K6a/LAN/Internet,
+CP137UI/sharedgeometry/fullinventory/cácgate cònmở. Theo [PLAN](docs/PLAN.md#current-order), tiếp
+trace99writer/send/guard trên copy mới, giữdeadline30s; không phát99giả hoặcforceclock.
 
 Đích đầu: hai client thật chơi hai trận liên tiếp; mở bốn client và hardening sau đó.
 

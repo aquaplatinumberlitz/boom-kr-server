@@ -1,0 +1,246 @@
+{
+  "id": "CP151",
+  "previous": "CP150",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-06T01:47:00.350220+00:00",
+  "context_commit": "1dbc369dca4cea4a0280e6b3b12e79febe96c75e",
+  "owner": "Codex",
+  "reviewer": "Codex",
+  "question": "Can currentdistinctspawn/directroute produce2native124sameFireindex/singlewinner/effect across2epochs usingCP062deliverymeasurement, and what blockssecondround?",
+  "scope": "ReuseCP030/062actualcontest/hold165/currentclaimlogic/CP150profile/directroute; normalOSapproaches andconcurrentDownUp0.30s. R1contest/nativeeffect/resultreset confirmed; R2loadingmissing99deadline isexplicitblocker; no newnativebody/codecRE/actorwrites/fakeclaims.",
+  "artifacts": [
+    {
+      "name": "WineAunchanged",
+      "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+    },
+    {
+      "name": "WineBunchanged",
+      "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+    },
+    {
+      "name": "KRoriginalCA",
+      "sha256": "a52545c14b1fea423de655c3163d6360b628d61c1cd472b46fdbc8a9ffe15f4e"
+    },
+    {
+      "name": "modOnativeoraclebase400000",
+      "sha256": "a08950c833d3acab8281049def7b3dc96b221f107eeda01da3a548e34b91dce5"
+    }
+  ],
+  "locators": [
+    "CP150headbcf543c8b3a5a97f5d78b93c167970c58fbefa28/PR221merge1dbc369dca4cea4a0280e6b3b12e79febe96c75e; exacthead/merge archived. AUD045through148/nextCP152.",
+    "Run93664ce4a666d33da181959956ea18ef54c36436ad6cefb0c13182b8d8f06479/353.594683103s/exit0observer_timeout/1204raw/407vethrecords/2R1peerwindows.",
+    "R1key12345/currentFire17kind1row6col3; A124SHA dbe9320ba568ef50ccb9844c43d9e1fc37b20f8badff908cb51640b7eb4a6ee1 / B124b450e9fd3e9987b349154c8ae36ec18763dcc4b0553d713d7a9ec41f8e3f848b. Hold2.032375181s/Brequestbefore1651.692042763s; native16512/errors0/slot0/onlyApower1to2.",
+    "R2bothnative121129/actors0,1init; Start2monotonic1889009922448381(A)/1889009922888672(B), deadline1889039922891592; resolved1889039935649283/bothclosedloading_timeout. No99actualC2Safter121. E7F2A0/guardstage6410/13ADD10op99 knownCP021; traceentry/guard/sendtimestamps next.",
+    "Nativeframe14EF300/UDPCRC14A5860/getter52A350/ED1350copiedmodels; base400000/RVA=VA−400000."
+  ],
+  "findings": [
+    {
+      "summary": "Currentdistinctspawn/directrouteR1actualA/B124sameFire17/currentkey, Afirstaccepted/Balreadyconsumedreject, nativeone165perview/errors0/onlyApower1to2 andbothcapacity2unchanged.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#direct-contested-pickup",
+      "evidence": [
+        "RUN-00009",
+        "RUN-01212",
+        "RUN-01194",
+        "RUN-01193",
+        "RUN-00001"
+      ],
+      "limits": "ModifiedWine/twoactualCA/wineserver/currentdistinctspawn/allTCPdirect/privatevirtualhosts/samephysicalhost/e9bb4766unchanged/productionclaimsunchanged. CP062measurementwrapper copiedbyteexact delayspositive1652s, notproductionlatency/originalfairness/auth. R1onlyactualA/B124Fire17/Awinner/Breject/single165perview/onlyApowerdelta/nativeR1result/reset/Start2. R2both121/2actorinit/noactual99by30s→bothloading_timeout/noclock/contest/result/Ready2. Emptyserviceforfeitrankreturnrefreshbroadcastsnotnativeending; exit0observer_timeout not2cyclespass. NoR2cause/165delaycausality/packetlossclaim. No fullmatch/K6a/LAN/Internet/8realclients/Windowsoriginal/fullauth/CP137UI/sharedgeometry/fullinventory."
+    },
+    {
+      "summary": "R1A118ID1power2/158/native175rank2,1/180110/reset/Start2, 2R1peerwindows/407vethsame-runpayloadjoins confirmed. NoR2movement/endingproof.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#direct-contested-pickup",
+      "evidence": [
+        "RUN-01254",
+        "RUN-01227",
+        "RUN-01215",
+        "RUN-01258"
+      ],
+      "limits": "ModifiedWine/twoactualCA/wineserver/currentdistinctspawn/allTCPdirect/privatevirtualhosts/samephysicalhost/e9bb4766unchanged/productionclaimsunchanged. CP062measurementwrapper copiedbyteexact delayspositive1652s, notproductionlatency/originalfairness/auth. R1onlyactualA/B124Fire17/Awinner/Breject/single165perview/onlyApowerdelta/nativeR1result/reset/Start2. R2both121/2actorinit/noactual99by30s→bothloading_timeout/noclock/contest/result/Ready2. Emptyserviceforfeitrankreturnrefreshbroadcastsnotnativeending; exit0observer_timeout not2cyclespass. NoR2cause/165delaycausality/packetlossclaim. No fullmatch/K6a/LAN/Internet/8realclients/Windowsoriginal/fullauth/CP137UI/sharedgeometry/fullinventory."
+    },
+    {
+      "summary": "R2bothnative121full129+actorinit butnoactual99by30s→bothchannelsclosedloading_timeout; emptyforfeitrankreturnrefreshcannotcountsecondnativeending. Runtimeexit0observer_timeout declaredpartial, causeunknown.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#direct-contested-pickup",
+      "evidence": [
+        "RUN-01254",
+        "RUN-01213",
+        "RUN-01212"
+      ],
+      "limits": "ModifiedWine/twoactualCA/wineserver/currentdistinctspawn/allTCPdirect/privatevirtualhosts/samephysicalhost/e9bb4766unchanged/productionclaimsunchanged. CP062measurementwrapper copiedbyteexact delayspositive1652s, notproductionlatency/originalfairness/auth. R1onlyactualA/B124Fire17/Awinner/Breject/single165perview/onlyApowerdelta/nativeR1result/reset/Start2. R2both121/2actorinit/noactual99by30s→bothloading_timeout/noclock/contest/result/Ready2. Emptyserviceforfeitrankreturnrefreshbroadcastsnotnativeending; exit0observer_timeout not2cyclespass. NoR2cause/165delaycausality/packetlossclaim. No fullmatch/K6a/LAN/Internet/8realclients/Windowsoriginal/fullauth/CP137UI/sharedgeometry/fullinventory."
+    },
+    {
+      "summary": "CP062deliverywrapper reusedbyteexact/defaultcurrentprofile/productionclaimskeyconsumeunchanged, 2sdelay measurementonly. Firstchecker missingGEN165context andemptyforfeitassumption failureskept/correctedbyraw-specificjoins, notrawrewrite/gateclosure.",
+      "source": "design",
+      "status": "design",
+      "method": "design",
+      "canonical": "docs/PROTOCOL.md#direct-contested-pickup",
+      "evidence": [
+        "RUN-01325",
+        "RUN-01347",
+        "RUN-01283",
+        "RUN-00008",
+        "RUN-01252"
+      ],
+      "limits": "ModifiedWine/twoactualCA/wineserver/currentdistinctspawn/allTCPdirect/privatevirtualhosts/samephysicalhost/e9bb4766unchanged/productionclaimsunchanged. CP062measurementwrapper copiedbyteexact delayspositive1652s, notproductionlatency/originalfairness/auth. R1onlyactualA/B124Fire17/Awinner/Breject/single165perview/onlyApowerdelta/nativeR1result/reset/Start2. R2both121/2actorinit/noactual99by30s→bothloading_timeout/noclock/contest/result/Ready2. Emptyserviceforfeitrankreturnrefreshbroadcastsnotnativeending; exit0observer_timeout not2cyclespass. NoR2cause/165delaycausality/packetlossclaim. No fullmatch/K6a/LAN/Internet/8realclients/Windowsoriginal/fullauth/CP137UI/sharedgeometry/fullinventory."
+    }
+  ],
+  "verification": [
+    {
+      "check": "45R1contestjoins/905scopedpartialnativeC2S/loading/wirejoins/298peerjoins",
+      "result": "pass",
+      "evidence": [
+        "RUN-00009",
+        "RUN-01254",
+        "RUN-01227",
+        "RUN-01258"
+      ],
+      "limits": "ModifiedWine/twoactualCA/wineserver/currentdistinctspawn/allTCPdirect/privatevirtualhosts/samephysicalhost/e9bb4766unchanged/productionclaimsunchanged. CP062measurementwrapper copiedbyteexact delayspositive1652s, notproductionlatency/originalfairness/auth. R1onlyactualA/B124Fire17/Awinner/Breject/single165perview/onlyApowerdelta/nativeR1result/reset/Start2. R2both121/2actorinit/noactual99by30s→bothloading_timeout/noclock/contest/result/Ready2. Emptyserviceforfeitrankreturnrefreshbroadcastsnotnativeending; exit0observer_timeout not2cyclespass. NoR2cause/165delaycausality/packetlossclaim. No fullmatch/K6a/LAN/Internet/8realclients/Windowsoriginal/fullauth/CP137UI/sharedgeometry/fullinventory."
+    },
+    {
+      "check": "Target2epochcontestedpickup/native2results/reset/finalReady",
+      "result": "pending",
+      "evidence": [
+        "RUN-01254",
+        "RUN-01212"
+      ],
+      "limits": "R2missing99/deadline/bothclosed; no R2clock/contest/result/Ready. Nextnewobservabletrace99beforeanyretry; no30sboundincrease."
+    },
+    {
+      "check": "1176actor/192peergetter/1182flaggetter1170array/171typedpacket174report6native153/22UDPCRC models",
+      "result": "pass",
+      "evidence": [
+        "RUN-00001",
+        "RUN-01256",
+        "RUN-01228",
+        "RUN-01240",
+        "RUN-01241",
+        "RUN-01239",
+        "RUN-01255"
+      ],
+      "limits": "Copiednativeframer/gettermodels/syntheticallocators/counterreset separatefromruntime/originalauthority."
+    },
+    {
+      "check": "237CP148testsreuseproductionunchanged/docs/catalog/liveissues/artifacts/diff beforehandoff",
+      "result": "pass",
+      "evidence": [
+        "RUN-01345",
+        "RUN-01283",
+        "RUN-01226",
+        "RUN-01236",
+        "RUN-00005"
+      ],
+      "limits": "Mechanicalconsistencyonly; fullrequiredlocal/historycheckedbeforecommit. Reviewwaived; nosemantic/gatecertification."
+    }
+  ],
+  "evidence": [],
+  "evidence_manifests": [
+    {
+      "path": "docs/evidence/checkpoints/evidence/CP151-direct-contested-pickup.json",
+      "bytes": 345591,
+      "sha256": "ef13b29c174b0452989be3a841d3102689c56a34c7f1ed20c6c9a6a881866f1a",
+      "count": 1350
+    }
+  ],
+  "delta": {
+    "added": [
+      "R1actualcontest/singlewinner/nativeonlywinnerstatdelta/currentdistinctspawn/directroute andR1normalnativeoutcome/reset; scopedloadingblockerR2."
+    ],
+    "corrected": [
+      "Runtimeexit0observer_timeout/emptyserviceR2forfeitnotnative2cyclespass; currentdocsstatepartialexplicit.",
+      "Native165snapshotjoinsneedexactcontext; R2emptyrankrequiresbroadcast/nativecounters separate. Initialfailedchecklogs retained; noclientraw/historyrewrite.",
+      "CP150PR221merged; CP152periodicauditdue unchanged."
+    ],
+    "superseded": [
+      "No full2epochcontest closure; NEXT-DIRECT-CONTESTED-PICKUP remainsactive scopedpartial, nowblockedonmissingR2native99."
+    ]
+  },
+  "blockers": [
+    "BothR2native121/actorsinit butno99by30s→bothloading_timeout; exactentry/guard/build/send/late99 edgeunknown.",
+    "Secondfreshkeycontest/nativeeffect/result/Ready notmeasured; priorCP150positive2cycles staysseparate.",
+    "Fullmatch/K6a/LAN/Internet/8actualclients/authauthority/Windowsoriginal/CP137UI/sharedgeometry/fullinventory remain."
+  ],
+  "next_steps": [
+    {
+      "id": "NEXT-DIRECT-CONTESTED-PICKUP",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "R1twoactual124/onewinner/nativeeffect/resultreset resolved; R2freshkeycontest/nativeending/Ready stillblocked. ReuseR1proof, do notredo124165RE.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-CONTEST-ROUND2-LOAD99",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "PLAN CP021knownE7F2A0entry/onceguardstage6410/send13ADD10op99/121timestamps readonlynewcopy; compareR1positive/R2missingbefore30sdeadline. No force99/clock orboundincrease; stopatdeadlinewithattribution. AuditCP152mandatory.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    }
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-11-06T01:47:00.350220+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "Codex solo RE/runtime/selfcheck; noindependentapproval.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Owner explicitly requested solo without workers/review."
+    }
+  },
+  "docs_sync": [
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "CP151R1contestconfirmed/R2loadingpartial/emptyforfeitlimits/native99next/PR221merge/audit152 synchronizedbeforecomplete."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "CP151R1contestconfirmed/R2loadingpartial/emptyforfeitlimits/native99next/PR221merge/audit152 synchronizedbeforecomplete."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "updated",
+      "reason": "CP151R1contestconfirmed/R2loadingpartial/emptyforfeitlimits/native99next/PR221merge/audit152 synchronizedbeforecomplete."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "updated",
+      "reason": "CP151R1contestconfirmed/R2loadingpartial/emptyforfeitlimits/native99next/PR221merge/audit152 synchronizedbeforecomplete."
+    },
+    {
+      "path": "docs/features.json",
+      "state": "updated",
+      "reason": "CP151R1contestconfirmed/R2loadingpartial/emptyforfeitlimits/native99next/PR221merge/audit152 synchronizedbeforecomplete."
+    },
+    {
+      "path": "docs/COVERAGE.md",
+      "state": "updated",
+      "reason": "CP151R1contestconfirmed/R2loadingpartial/emptyforfeitlimits/native99next/PR221merge/audit152 synchronizedbeforecomplete."
+    },
+    {
+      "path": "docs/evidence/peer-endpoints/README.md",
+      "state": "updated",
+      "reason": "CP151R1contestconfirmed/R2loadingpartial/emptyforfeitlimits/native99next/PR221merge/audit152 synchronizedbeforecomplete."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/review.json",
+      "state": "updated",
+      "reason": "CP151R1contestconfirmed/R2loadingpartial/emptyforfeitlimits/native99next/PR221merge/audit152 synchronizedbeforecomplete."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
+      "state": "updated",
+      "reason": "CP151R1contestconfirmed/R2loadingpartial/emptyforfeitlimits/native99next/PR221merge/audit152 synchronizedbeforecomplete."
+    }
+  ]
+}
