@@ -1,0 +1,264 @@
+{
+  "id": "CP167",
+  "previous": "CP166",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-06T11:56:53.630644+00:00",
+  "context_commit": "7598cc9ec1929f0c8ac59fb2127c5fbaf32ea5ce",
+  "owner": "Codex",
+  "reviewer": "Codex",
+  "question": "Can current Manner/title Bhost afteridlepromotion complete two nativecycles/reset/Ready while retaining all4pickup165callbacks/view under boundedmeasurementgating?",
+  "scope": "ReuseCP109110111promotedroute/outcomes/UI/peer andCP165currentpreset/observergating/CP166membership; two fresh sequential runs grouped. R1twooutcomespass/nativepickupcoverageFAIL; R2rareprobe-retention/fullscopedproof. No newnativebodies/productionchange/gateclosure.",
+  "artifacts": [
+    {
+      "name": "OriginalKR00967unchanged",
+      "sha256": "a52545c14b1fea423de655c3163d6360b628d61c1cd472b46fdbc8a9ffe15f4e"
+    },
+    {
+      "name": "CurrentWinecopyunchanged",
+      "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+    },
+    {
+      "name": "NativeIDAfullcopycf72privateanalysis",
+      "sha256": "cf72da112308d9f1ca256df8089594c5f787875310933073bf6bd5ba6f70e63b"
+    },
+    {
+      "name": "modOmodelreference",
+      "sha256": "a08950c833d3acab8281049def7b3dc96b221f107eeda01da3a548e34b91dce5"
+    }
+  ],
+  "locators": [
+    "BaselineCP166PR237head09759d0bed6545de322c3f3d1f545b52a729aa2c/merge7598cc9ec1929f0c8ac59fb2127c5fbaf32ea5ce; bothrunsbuilt09759d0sourcebytesunchangedthroughmerge.",
+    "R1run29f008dcc2c405ec49c3c700d3793bbdf297c270a1d59ce235d54e2a0870deac/378.305974972s/exit0/1216raw/109inputs.",
+    "R2run287230cdc8b478a66a49a517a21749e23c51e397ff7a0acc7616772c666c98ae/369.832789235s/exit0/1198raw/109inputs.",
+    "Base400000/RVA=VA-base. Existing165probesE63260/E63309/E63E1A andselector123FA10/+9C/readersetters/107110/87/12199 reused; no newbody. R2keepsoriginalenabledstateof3rare165probesduringalignment; allothersrestoreexact.",
+    "AUD049through164/periodicnextCP168unchanged; finalBStart3lateUIunknown retained ratherthanclosinggatefromtwocycles."
+  ],
+  "findings": [
+    {
+      "summary": "R1currentManner/title idlepromotion/Arejoin/ReadyAStartB two native175302/1803/reset/Ready confirmed; all4native165coverageFAILED atRollerR1bothviews. Broadcasttimestampsinsidefirstalignmentwindow, butserviceconfirmnotclientexecutionproof. Missingtracekeptunknown.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#current-mode-promoted-cycles",
+      "evidence": [
+        "RUN-00015",
+        "RUN-01265",
+        "RUN-01256",
+        "RUN-01371",
+        "RUN-01266"
+      ],
+      "limits": "ModifiedWine/privatevirtualhosts/current47pinpreset/syntheticidentity/emulatorpolicy. Two Bhost normaloutcomes/reset/Ready afteridlepromotion; no BStart3 test. R1full4native165/viewFAILED/missingRollertrace; R2passedwith3rare165probesretainedduringalignment. FinalR2BStartwhiteoneframe; no persistenthang/responsivenessclaim, noR1visualbackfill. NativecopiedmodelsseparatefromWineruntime; no game/service/preset/criteria/sourcebinary/DB/packchanges. K4dependencies/K5/K6a/fullmatch/Windows/LAN/Internet/8clients/fullauth/originalauthority/generalreset/naturalCP157open."
+    },
+    {
+      "summary": "R2onlymeasurementdelta keeps3rare165begin/fields/end+readonlystats whilealignment;24actualarmskeepenabled/12windows162restore+samecriteriachecks. Currentprofile/service/OSbounds/targets/tolerance/deadlinesunchanged; all4native165/full12/errors0/view now observed; no retrospectiveR1backfill.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#current-mode-promoted-cycles",
+      "evidence": [
+        "RUN-02614",
+        "RUN-01380",
+        "RUN-02631",
+        "RUN-02677"
+      ],
+      "limits": "ModifiedWine/privatevirtualhosts/current47pinpreset/syntheticidentity/emulatorpolicy. Two Bhost normaloutcomes/reset/Ready afteridlepromotion; no BStart3 test. R1full4native165/viewFAILED/missingRollertrace; R2passedwith3rare165probesretainedduringalignment. FinalR2BStartwhiteoneframe; no persistenthang/responsivenessclaim, noR1visualbackfill. NativecopiedmodelsseparatefromWineruntime; no game/service/preset/criteria/sourcebinary/DB/packchanges. K4dependencies/K5/K6a/fullmatch/Windows/LAN/Internet/8clients/fullauth/originalauthority/generalreset/naturalCP157open."
+    },
+    {
+      "summary": "R2same-run2Bhostnormaloutcomes/reset/actualReadyA/native110,keys12345→12346/native12199barriersbefore30s/ID1A-ID2B/native158/full13/195flagsseedreset/lifeagreement/current4peerwindows; mode1through87/2x180/ReadyAStartB. R1andR2notcombinedas4matches.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#current-mode-promoted-cycles",
+      "evidence": [
+        "RUN-01400",
+        "RUN-02602",
+        "RUN-02746",
+        "RUN-02618",
+        "RUN-02633",
+        "RUN-01387"
+      ],
+      "limits": "ModifiedWine/privatevirtualhosts/current47pinpreset/syntheticidentity/emulatorpolicy. Two Bhost normaloutcomes/reset/Ready afteridlepromotion; no BStart3 test. R1full4native165/viewFAILED/missingRollertrace; R2passedwith3rare165probesretainedduringalignment. FinalR2BStartwhiteoneframe; no persistenthang/responsivenessclaim, noR1visualbackfill. NativecopiedmodelsseparatefromWineruntime; no game/service/preset/criteria/sourcebinary/DB/packchanges. K4dependencies/K5/K6a/fullmatch/Windows/LAN/Internet/8clients/fullauth/originalauthority/generalreset/naturalCP157open."
+    },
+    {
+      "summary": "RetainedKRnativeframer/typedreader/model312packets+24modeframes/600capturedactorfields/16lifefieldgetters areemulation, separatefromWinecallbacks; sourcefirstreusesoldVNworkflowwithoutopcode/layouttransfer. FullserverhashesmatchCP166/265tests4export, no productioncodechange.",
+      "source": "kr_static",
+      "status": "confirmed",
+      "method": "emulation",
+      "canonical": "docs/PROTOCOL.md#current-mode-promoted-cycles",
+      "evidence": [
+        "RUN-02623",
+        "RUN-02622",
+        "RUN-01378",
+        "RUN-02619",
+        "RUN-02724",
+        "RUN-02676"
+      ],
+      "limits": "ModifiedWine/privatevirtualhosts/current47pinpreset/syntheticidentity/emulatorpolicy. Two Bhost normaloutcomes/reset/Ready afteridlepromotion; no BStart3 test. R1full4native165/viewFAILED/missingRollertrace; R2passedwith3rare165probesretainedduringalignment. FinalR2BStartwhiteoneframe; no persistenthang/responsivenessclaim, noR1visualbackfill. NativecopiedmodelsseparatefromWineruntime; no game/service/preset/criteria/sourcebinary/DB/packchanges. K4dependencies/K5/K6a/fullmatch/Windows/LAN/Internet/8clients/fullauth/originalauthority/generalreset/naturalCP157open."
+    },
+    {
+      "summary": "R1finalAReady/BStartcolored;R2finalrooms/AReady/BchiefbutBStartwhiteoneframe. ActualBStart3notclicked; cannotinferpersistenthangorresponsiveStartorbackfillR2fromR1. NextboundedactualBStart3andperiodicauditCP168inPLAN; gates/dependenciesremainopen.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#current-mode-promoted-cycles",
+      "evidence": [
+        "RUN-01374",
+        "RUN-02745",
+        "RUN-01400"
+      ],
+      "limits": "ModifiedWine/privatevirtualhosts/current47pinpreset/syntheticidentity/emulatorpolicy. Two Bhost normaloutcomes/reset/Ready afteridlepromotion; no BStart3 test. R1full4native165/viewFAILED/missingRollertrace; R2passedwith3rare165probesretainedduringalignment. FinalR2BStartwhiteoneframe; no persistenthang/responsivenessclaim, noR1visualbackfill. NativecopiedmodelsseparatefromWineruntime; no game/service/preset/criteria/sourcebinary/DB/packchanges. K4dependencies/K5/K6a/fullmatch/Windows/LAN/Internet/8clients/fullauth/originalauthority/generalreset/naturalCP157open."
+    }
+  ],
+  "verification": [
+    {
+      "check": "R1full4native165/view onunchangedCP165gating",
+      "result": "fail",
+      "evidence": [
+        "RUN-01371",
+        "RUN-01256"
+      ],
+      "limits": "Threecallbacks/view only; R1twooutcomes/nativeReady separatelypass. FailnotbackfilledbyR2."
+    },
+    {
+      "check": "R2twoNormalcycles46/peer670/claims14/loading16/world26/life23/pickup75/gating162/retainedprobes24/mode210/4manualframesacrossseparateruns",
+      "result": "pass",
+      "evidence": [
+        "RUN-01400",
+        "RUN-02602",
+        "RUN-01387",
+        "RUN-02612",
+        "RUN-02746",
+        "RUN-02618",
+        "RUN-02631",
+        "RUN-01380",
+        "RUN-02614",
+        "RUN-02633",
+        "RUN-02745",
+        "RUN-01374"
+      ],
+      "limits": "ModifiedWine/privatevirtualhosts/current47pinpreset/syntheticidentity/emulatorpolicy. Two Bhost normaloutcomes/reset/Ready afteridlepromotion; no BStart3 test. R1full4native165/viewFAILED/missingRollertrace; R2passedwith3rare165probesretainedduringalignment. FinalR2BStartwhiteoneframe; no persistenthang/responsivenessclaim, noR1visualbackfill. NativecopiedmodelsseparatefromWineruntime; no game/service/preset/criteria/sourcebinary/DB/packchanges. K4dependencies/K5/K6a/fullmatch/Windows/LAN/Internet/8clients/fullauth/originalauthority/generalreset/naturalCP157open."
+    },
+    {
+      "check": "2414raw/218frozeninputs/ownedcleanup/sourcehash;265server4exportreuse/docs/catalog/issues/artifacts/diff/fullhistorylocalbeforecommit",
+      "result": "pass",
+      "evidence": [
+        "RUN-01266",
+        "RUN-02634",
+        "RUN-02724",
+        "RUN-02601",
+        "RUN-02613",
+        "RUN-01386"
+      ],
+      "limits": "Unchangedserver testsreusedbyexacthash. Fullhistorymechanicalcheckafterappendbeforecommit; notsemanticacceptance/gate. AnalysisdriverinitialPYTHONPATHfailureandCP166serializationsupplementretained."
+    }
+  ],
+  "evidence": [],
+  "evidence_manifests": [
+    {
+      "path": "docs/evidence/checkpoints/evidence/CP167-mode-promoted-cycles.json",
+      "bytes": 701430,
+      "sha256": "41a616b64b14d84e00a55620d434243c75193f70c390209c68857f6c2df6c219",
+      "count": 2766
+    }
+  ],
+  "delta": {
+    "added": [
+      "CurrentmodeBhostafterpromotion2normaloutcomes/reset/Ready withsame-runpeer/life/entity/modeproof.",
+      "R1missingRollerobserverdiagnosis/R2three-rare-probe-retention24arms/all4callbacks/view."
+    ],
+    "corrected": [
+      "CP166currentmodepromotedcyclegapresolvedwithoutcopyingoldprofileoutcomes.",
+      "R1measurementcoverageFAILkept, R2scopeconfirmednotvanillatiming/wholeexecution.",
+      "FinalR2Bwhitebuttononeframe meansBStart3functionalunknown; noresponsiveorhangclaim.",
+      "CP166PR237merged; supplementmetadataandfailedgenerationspreserved."
+    ],
+    "superseded": [
+      "NEXT-MODE-PROMOTED-CYCLES closedboundedproof; NEXT-MODE-PROMOTED-START3-AUDIT active."
+    ]
+  },
+  "blockers": [
+    "FinalR2BStartwhiteoneframe/noactualBStart3afterReady2; R1coloredimagenotbackfill.",
+    "K4dependencies/K5K6a/fullmatch/generalreset/Windows/auth/originalauthority/LAN/Internet/8clients/naturalCP157open."
+  ],
+  "next_steps": [
+    {
+      "id": "NEXT-MODE-PROMOTED-CYCLES",
+      "task": "KRE-005b",
+      "state": "closed",
+      "action": "CP167R2samecurrentManner/titleBhosttwoNativecycles/reset/Ready/all4native165view; R1missingtracefailretained. NotStart3/gate.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-MODE-PROMOTED-START3-AUDIT",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "PLAN reuseCP160165Start3/CP166167ReadyAStartB/exactR2two-cyclecontroller; normalBStart3→actual104/native12199/barrier/clocks/render8s/mode1/noBomb3, preserve4pickupcallbacks/criteria; CP168manualperiodicauditcore/evidence/raw/currentacceptance/dependencies, noautogate.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    }
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-11-06T11:56:53.630644+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "CodexsoloRE/runtime/self-check; independentreviewwaived; noautogate.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Owner explicitly requested solo without workers/review."
+    }
+  },
+  "docs_sync": [
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "CP167twoR1R2currentmodeBhostcycles/observercoveragefailandfix/lateBStart3unknown/CP166PR237merge/nextCP168audit syncedbeforecomplete."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "CP167twoR1R2currentmodeBhostcycles/observercoveragefailandfix/lateBStart3unknown/CP166PR237merge/nextCP168audit syncedbeforecomplete."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "updated",
+      "reason": "CP167twoR1R2currentmodeBhostcycles/observercoveragefailandfix/lateBStart3unknown/CP166PR237merge/nextCP168audit syncedbeforecomplete."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "updated",
+      "reason": "CP167twoR1R2currentmodeBhostcycles/observercoveragefailandfix/lateBStart3unknown/CP166PR237merge/nextCP168audit syncedbeforecomplete."
+    },
+    {
+      "path": "docs/features.json",
+      "state": "updated",
+      "reason": "CP167twoR1R2currentmodeBhostcycles/observercoveragefailandfix/lateBStart3unknown/CP166PR237merge/nextCP168audit syncedbeforecomplete."
+    },
+    {
+      "path": "docs/COVERAGE.md",
+      "state": "updated",
+      "reason": "CP167twoR1R2currentmodeBhostcycles/observercoveragefailandfix/lateBStart3unknown/CP166PR237merge/nextCP168audit syncedbeforecomplete."
+    },
+    {
+      "path": "docs/evidence/peer-endpoints/README.md",
+      "state": "updated",
+      "reason": "CP167twoR1R2currentmodeBhostcycles/observercoveragefailandfix/lateBStart3unknown/CP166PR237merge/nextCP168audit syncedbeforecomplete."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/review.json",
+      "state": "updated",
+      "reason": "CP167twoR1R2currentmodeBhostcycles/observercoveragefailandfix/lateBStart3unknown/CP166PR237merge/nextCP168audit syncedbeforecomplete."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
+      "state": "updated",
+      "reason": "CP167twoR1R2currentmodeBhostcycles/observercoveragefailandfix/lateBStart3unknown/CP166PR237merge/nextCP168audit syncedbeforecomplete."
+    },
+    {
+      "path": "server/README.md",
+      "state": "updated",
+      "reason": "CP167twoR1R2currentmodeBhostcycles/observercoveragefailandfix/lateBStart3unknown/CP166PR237merge/nextCP168audit syncedbeforecomplete."
+    }
+  ]
+}

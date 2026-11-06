@@ -1,6 +1,6 @@
 # KR 00967 — contract tương thích client gốc
 
-Revision kr-legacy-contract-r1; cập nhật06/11/2026 JST (CP166; AUD049 quaCP164, kếCP168).
+Revision kr-legacy-contract-r1; cập nhật06/11/2026 JST (CP167; AUD049 quaCP164, kếCP168).
 **Contract có bằng chứng từng phần; chưa nghiệm thu full codec K2**.
 Lộ trình và thứ tự task chỉ giữ ở [REWRITE_PLAN — KRE](PLAN.md).
 Đây là contract của repo server KR. ADR0009 của bản viết lại là nguồn lịch sử để so sánh;
@@ -2021,7 +2021,7 @@ locator/trace và trạng thái từng ô; những vai trò không nêu dưới 
 | Item placement/pickup | [CP159/160](#production-baseline) productionimmediate165/1or2actualclaims/oneeffect/nativewinnerpower/reset; [CP155](#direct-oldudp-contest-eof) hold2sactualcontenders là control riêng | Full124distance/auth/generation/inventory/max/speedTTL/activevariants chưa đủ; delay2s không còn trongproductionbaseline |
 | Trap/death | [CP159/160](#exported-preset-runtime) strict56→1/other0beforerank2views/2epochs; [CP157natural](#current-host-ui-exit)/[CP158controlledoverwrite](#current-trap-udp-counter) giữ causal limits | Snapshot khôngglobalsametick; samekeycounterheuristic cho controlledremoteoverwrite; naturalCP157cause unknown, nofullvalidator |
 | Result/reset | [CP165](#input-batch-gating) currentcommittedMannerpreset2normaloutcomes/reset/Ready rồiactualStart3/12199/clocks/render8s; [CP164](#mode-preset-input-blocker) two partials giữlịchsử | Thirdactive khôngthirdcompletedmatch; allinventory/timer/seq/peer/resetvariants/originalarbitration vẫn thiếu, không cộngrun thànhfullmatch |
-| Room lifecycle | [CP161 title](#current-room-title), [CP162 mode/return](#current-team-mode) có2normalcycles/Ready; [CP165 currentpreset](#input-batch-gating) guestBack/rejoin/2outcomes/Ready/Start3 đã đo; CP164partial giữ lịch sử. CP155–157 EOF/UI controls giữ profile riêng | [CP166](#current-mode-host-rejoin) currentmodeidle promotion/rejoin tới clock/render8s đã đo; hai cycle sau promotion trên mode mới còn thiếu. Accountresume/halfclose/loss/generalreplace chưa đủ; không lấy oldprofileexit làm currentmode proof |
+| Room lifecycle | [CP161 title](#current-room-title), [CP162 mode/return](#current-team-mode) có2normalcycles/Ready; [CP165 currentpreset](#input-batch-gating) guestBack/rejoin/2outcomes/Ready/Start3 đã đo; CP164partial giữ lịch sử. CP155–157 EOF/UI controls giữ profile riêng | [CP167](#current-mode-promoted-cycles) currentmodeBhost2cycles/reset/Ready đãđo; lateBStart3 chưađo. Accountresume/halfclose/loss/generalreplace chưa đủ; không lấy oldprofileexit làm currentmode proof |
 | Peer lifecycle | [CP159/160](#exported-preset-runtime)actual99/153/currentdirectIPs/ports; [CP155oldUDP](#direct-oldudp-contest-eof)/[CP158samekeycounter](#current-trap-udp-counter) controls riêng | Key/counterbytekhôngauth/universalfreshness; low8wrap/reliability/fullgrammar/relay/NAT/LAN/Internet unknown |
 
 Trong **optional profile hiện hành**, bảng dưới ghi vai trò emulator, không gán cho server gốc.
@@ -5852,6 +5852,41 @@ hai actualstartup subtype39 vẫn giữ, không xóa report để gọi noevent.
 preflightshape/error/opcode/continuingseq/opaque preservation. 418+668rawsealed/cleanupnamespaceextinct;
 initialverifier giả định eventreportsrỗng bịsửa côngkhai, không sửa raw/productioncho pass.
 
-CP166 không đo hai trận/reset sau promotion trên currentmode; CP109oldprofile/CP165Ahost không ghép
-thành proof. [K4 acceptance/dependencies](PLAN.md#k4-evidence-review), K6a/fullmatch/Windows/LAN/
+TạiCP166 chưa đo hai trận/reset sau promotion trên currentmode; [CP167](#current-mode-promoted-cycles) đo sauđó. CP109oldprofile/CP165Ahost vẫn không ghép thành proof. [K4 acceptance/dependencies](PLAN.md#k4-evidence-review), K6a/fullmatch/Windows/LAN/
 Internet/8client/fullauth/originalauthority/generalreset vẫn mở. Bước tiếp chỉ ở PLAN.
+
+
+<a id="current-mode-promoted-cycles"></a>
+### Hai normal cycles/reset/Ready sau promotion trên currentmode — CP167
+
+**`kr_runtime/confirmed` hẹp, modifiedWine/privatevirtualhosts; policy vẫn `design`.**
+[Raw/control/hash](evidence/peer-endpoints/README.md#cp167), [gap](RESEARCH.md#gap-room-membership).
+Sourcefirst CP109/110 Bhost/Aguestcycles/UI vàCP111receiverprepost, CP165currentpreset/observergating,
+CP166mode/title/membership. VN/legacybuildreferences dẫn lại reuse-question đãpin; không portopcode/
+ID/offset hoặc đọc nativebody mới. Ghép đúng phần thiếu, giữ profileexport47pins/directproduction/
+2actualcopies/currentManner/title/nohold165/noreplay. Chỉ OSReadyA/StartB thay role; actor slot/geometry/
+inputtargets/tolerance/timeout/nativecriteria giữ CP165. R1/R2 là run riêng, không cộng thành4trận.
+
+R1 378.305974972s/exit0 có hai native175302/1803/errors0/reset/actualReadyA/native110 cảhai, Bhost/
+sameTCP/key12345→12346, mode1 quaACK/2×180/StartB; movement/life/entity195 có nguồn. Tuy nhiên
+full4native165/view check **FAIL**: chỉ3callback/view; Roller16/R1serviceconfirm broadcast trongfirstalignment
+window ởcảhai khi observer bịtắt. Không dùng servicebroadcast chứngminh client đãchạymissingcallback;
+Fire165cảhaivòng và snapshotstat có nguồn riêng. R1giữ nguyên raw/fail/partialcoverage, không backfill.
+
+R2 chỉ đổi measurementgating: giữ enabledstate vốn có của ba rareprobe165 `E63260/E63309/E63E1A`
+(begin/fields/end+readonlystats) trongalignment, còn lại vẫn giảm tải vàexactrestore. 24actualarms/2view
+đều xácnhận3probeenabled; 12alignmentwindows/162restore+samecriteriachecks pass. Không thêm
+nativefunction/data/timewrite, service/preset/sourcebinary/DB/packchange hoặc tăngtolerance/timeout.
+
+Cùng R2 369.832789235s/exit0: actualA86→B107clear/chief1→A82/87Manner1→ReadyA/StartB hai lần;
+hai barrier trước30s, key12345/12346; actualbomID1/A vàID2/B/158/full13 mỗi view, native175302/1803
+hai lần và actualReadyA/native110 sau return2. Cảhai view có đủ4native165/full12/errors0; chỉwinnerFire
+powerdelta/reset theo nativegetter, không doubleeffect; R1FirewinnerA rồiB, R2winnerB rồiB là observation,
+không luật ưu tiên. Native195seed/reset/2entities/lifeagreement trước chosenrank/4peerwindows được kiểm
+riêng; emulatorterrain/fuse/claims/report/rankguard không là originalworldauthority.
+
+FinalR1ảnh cảhai phòng/AReady/BStartcolored; FinalR2 phòng/AReady/Bchief cóảnh, **BStart trắng1frame**.
+Không suy persistenthang, không lấy R1 backfill R2 hoặc gọi BStart sauReady2 đã responsive; chưa click
+Start3 tronghai run. [PLAN](PLAN.md#current-order) kiểm actualBStart3/nativeclock/render+8 vàauditCP168.
+Hai cycles/Ready nativeproof vẫn giữ đúngscope, không tự nâng K4/K5/K6a/fullmatch hoặc LAN/Internet/
+8client/Windows/generalreset/fullauth/originalauthority. AUD049qua164, periodicnext168 không reset.
