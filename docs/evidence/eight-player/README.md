@@ -58,3 +58,35 @@ Manner1–7 negative runtime, hay Mission/Respawn. Service roleA/B/C và slot c�
 mở rộng; chưa port luật web hoặc nhận8 synthetic rows thành integration. Kiểm requiredlocal/history,
 docs/catalog/issues và diff ghi tại `checks/`; semantic/gate do người đối chiếu, script không tự nâng.
 AUD044 qua144, audit định kỳ kế **CP148**. Bước tiếp theo duy nhất ở PLAN; không mở plan theo phiên.
+
+
+<a id="cp163"></a>
+## CP163 — Manner1 actual8 slot/Start4–4/negative1–7
+
+Baseline CP162 [PR233](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/233),
+head `a00e2040c123971bd5ee03a142f909bc0409af93`, merge `a92178f4422bd183d24ab8f65555395ddbb7e146`.
+[Contract duy nhất/giới hạn](../../PROTOCOL.md#battle-eight-roster), [PLAN](../../PLAN.md#current-order).
+
+Raw `local/research/codex/balanced-eight-r1/`; prep `prepare_balanced_eight.py`, controllers
+`wine_probe_balanced_ready_four_four.py` và `wine_probe_balanced_ready_one_seven.py`. Reuse nguyên
+CP1478profile/Ready4/map/getter/Start recipe và CP162 actual81→86selector echo. Mỗi variant frozen
+harness/fixture/GDB/code trước run; prefix/game-copy riêng, user/net/mount/PID namespace chỉlo/no route,
+files-only DNS, private stub. No source/config used during run changes; owned cleanup và namespace extinct
+đã kiểm trong raw-seal/preflight; không native manager/count/return/team edits hoặc sourcebinary/DB/pack.
+
+| Variant | Giây/exit/raw | SHA256 run.json |
+|---|---|---|
+| ready-four-four |76.094563511/0/75|`79b523a14987bdfb11a0eec2405c16456bda300363d74318ad44402d7c07414d`|
+| ready-one-seven |75.695825599/0/75|`b321cdf7694a6da96466ddf8f7742bc4085bb2b26c2e5eb0a8ba3c8cb8bc06fe`|
+
+`verify.py`44 joins/nativecapacity/getter/click/request104/actual81→86SHA/only selectorbyte changed;
+`verify_native.py`12 actual81/86 nativeframer/string/primitive/CRCpartial cases. CP147 `replay_capture.py`
+reused cho toàn captured C2S/nativeCRC/partial, không encoder golden. `visual-review.json` pin hai frame20:
+8slot4đỏ4vàng/Startpending và1đỏ7vàng/notice yêu cầu số người các đội bằng nhau. Copy94ee93dc… bất biến,
+khác e9bb4766… production; inherited init suppression1A966FC=0 vẫn là modifiedWine. `reuse-question.json`
+pin source/hash/mức chứng minh/phần còn thiếu; không dump map/decompile guard/kiểm Free0 hoặc9 người lại.
+
+Chỉ native room Start validation, không121/loading/Battle8/service roster8/8actualpeers/fullmatch/K6a/
+Windows/LAN/Internet/originalauthority. `server-source-reuse.json` chứng minh code/preset không đổi,
+reuse257server/4export từCP162; docs/catalog/issues/artifact/history/diff kiểm lại trước commit.
+CP163 tự kiểm/review waived/chờPR, AUD048 qua160/kếCP164; next committed mode-preset/Start3/AUD049 ởPLAN.

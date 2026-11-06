@@ -135,11 +135,11 @@
         "KR-F001",
         "KR-F015"
       ],
-      "known": "CP161/PR232 merged593bdc0. CP162 Free0/Manner1→actual81/+9C andACK86/87/return180; r4maintains1throughBBack/rejoin/2normaloutcomes/reset/Ready. R3 failedmodepersistence retained. 257servertests/47pins;AUD048through160/next164.",
-      "remaining": "Balanced8 selector1 actualStart4to4/negative1to7 notyetmeasured; CP147hadfree0runtime/balanced1emulation. Newmodepresetactualfile/Start3pending. Row91modefields/Random/C/promotion/recreate/generalrooms/fullauth/Windows/LAN/Internet/8clients/K6a/originalauthority/naturalCP157open.",
-      "next_test": "PLAN reuseCP147roster/Ready4/map278capacity8/nativegetter; newfrozenreply86selector1 fromknown81, actualStart4to4check0/104 versus1to7check7/no104. Singleactualclient/syntheticothers, not8peerintegration. ThenmodepresetnativeStart3/CP164audit.",
+      "known": "CP162/PR233mergeda92178f. CP163actualMannerselector1/8syntheticroster4to4Start0/104 vs1to7Start7/no104; actual81→86/nativegetter/capacity8/44joins/12nativecases. Code/preset unchanged/reuse257server+4export byexacthash.",
+      "remaining": "OneCAplus7syntheticprofiles not8clients/121load/Battle8/serviceadmission. Committedmodepresetnativefile/Start3pending; broaderauth/authority/Windows/LAN/Internet/Random/C/promotion/recreate/K6a/naturalCP157open.",
+      "next_test": "PLAN reuseCP160committedpreset/nativeStart3 andCP162 modeUI/86/87/180; newfrozenexport/copies/privatehosts,2normaloutcomes/reset/Ready→actualStart3/12199/clocks/render8s/mode1. PeriodicmanualAUD049atCP164; no bomb/thirdoutcome/gateclaim.",
       "acceptance": "Epic checklist: linkedscopedtask/evidence+authoritymatrix vàacceptancegate ởPLAN; từngtaskđóng khôngđóngepic/K5/K6a.",
-      "reason": "Actualmodeinput/ACK/reset gap identifiedandfixed withpositiveandfailedcontrols; two Manner cycles narrowpolicyproof, no gateclosure.",
+      "reason": "Missingbalanced8actualStart proofresolvedwithpositiveandnegative; no8peer integrationclaim. Continuecommittedmodepreset/Start3/audit.",
       "sources": [
         "docs/PROTOCOL.md#authority",
         "docs/RESEARCH.md#feature-gaps",
@@ -225,7 +225,8 @@
         "docs/evidence/peer-endpoints/README.md#cp159",
         "docs/evidence/peer-endpoints/README.md#cp160",
         "docs/evidence/peer-endpoints/README.md#cp161",
-        "docs/evidence/peer-endpoints/README.md#cp162"
+        "docs/evidence/peer-endpoints/README.md#cp162",
+        "docs/evidence/eight-player/README.md#cp163"
       ],
       "prs": [
         173,
@@ -281,7 +282,8 @@
         229,
         230,
         231,
-        232
+        232,
+        233
       ],
       "successors": []
     },

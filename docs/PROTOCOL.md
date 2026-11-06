@@ -1,6 +1,6 @@
 # KR 00967 — contract tương thích client gốc
 
-Revision kr-legacy-contract-r1; cập nhật06/11/2026 JST (CP162; AUD048 quaCP160, kếCP164).
+Revision kr-legacy-contract-r1; cập nhật06/11/2026 JST (CP163; AUD048 quaCP160, kếCP164).
 **Contract có bằng chứng từng phần; chưa nghiệm thu full codec K2**.
 Lộ trình và thứ tự task chỉ giữ ở [REWRITE_PLAN — KRE](PLAN.md).
 Đây là contract của repo server KR. ADR0009 của bản viết lại là nguồn lịch sử để so sánh;
@@ -429,9 +429,9 @@ bước tiếp hiện hành chỉ giữ ở [RESEARCH](RESEARCH.md#q-023). Khôn
 K2/K3/K4 và full identity/auth/user/cache/vanilla/multiplayer vẫn mở.
 
 <a id="battle-eight-roster"></a>
-### Capacity Battle, 8 slot và điều kiện chia đội — CP147
+### Capacity Battle, 8 slot và điều kiện chia đội — CP147/163
 
-**`kr_runtime/confirmed`, phạm vi một copy Wine chẩn đoán với roster tổng hợp**:
+**CP147 lịch sử (`kr_runtime/confirmed`, một copy Wine với roster tổng hợp/selector0):**
 `ExVillage01`/code278 nhận đủ slot0–7; Start đếm8 người/2 đội/capacity8. Hai ca
 4–4 và1–7 với guest Ready đều trả Start-check0 và phát **C→S104 thực tế**. Ca9 người
 trên cùng map đếm9/capacity8, trả5, không phát104. Đây là kiểm roster/Start phía client,
@@ -443,7 +443,7 @@ Tái dùng CP019: dump runtime `CPlayMapInfoList`1151×52, SHA`49727b4d…`, get
 của map đang kiểm thành giới hạn mọi mode/toàn client. VN `oc_a-room.md`/`lobby.md` chỉ
 dẫn cách xét roster/Ready; field ledger106/110 và opcode104 của phép thử đều lấy từ KR.
 
-**`kr_static/confirmed` + emulation có mô hình**, không phải runtime của Tiêu chuẩn:
+**CP147: `kr_static/confirmed` + emulation có mô hình**, tại đó chưa có runtime của Tiêu chuẩn:
 `DCAD80` duyệt16 slot ở nhánh này, đếm người và số nhóm khác rỗng; `DCB0DD` so số người
 với capacity. Đường capacity thông thường tới`DCB0F2` trả5 khi vượt; các nhánh ngoại lệ
 mode ở sau vẫn giữ giới hạn chưa kiểm. `123FA10` đọc manager+9C; nếu giá trị bằng1,
@@ -454,7 +454,7 @@ hai ca runtime4–4/1–7 đều quan sát selector0 tại caller`DCB138`.
 
 | Mô tả đối chiếu | Mức chứng minh và phần chưa có |
 |---|---|
-| Tự do cho đội lệch1–7; Tiêu chuẩn/Manner đòi các đội bằng nhau | Web KR cũ và mô tả chủ dự án là tham khảo. Hành vi selector0/1 ở trên có nguồn KR; **tại CP147 tên UI và đường wire chưa xác nhận; [CP162](#current-team-mode) đã nối input/ACK/reset trong nhánh thường**, chưa gọi hai nhãn này là enum KR đã phục hồi. |
+| Tự do cho đội lệch1–7; Tiêu chuẩn/Manner đòi các đội bằng nhau | CP147 selector0 runtime4–4/1–7; [CP162](#current-team-mode) nối actual UI/81/ACK/reset0/1; CP163 dưới kiểm selector1 actual8 slot4–4/negative1–7. Phạm vi normalBattle/copy, không enum mọi mode/server8. |
 | Battle: nhốt, đồng đội cứu, địch diệt; kim tự thoát | Dùng lại [contact/cứu](#collision-rescue), [kim](#needle-selfescape), [hai kết quả/reset](#rescue-two-results); không đo lại và không suy luật thắng tổng quát từ policy stub. |
 | Nhiệm vụ4 người, quái/boss; Hồi sinh tái xuất hiện ngẫu nhiên và đối thủ được điểm | Tham khảo lịch sử/chủ dự án; **hành vi KR00967 chưa kiểm trong nhánh này**, không nhập luật respawn/score vào Battle thường hoặc mở quét mode trước mục tiêu chơi. |
 
@@ -464,6 +464,19 @@ Các cảnh báo capacity lúc table/117 chưa tới được giữ riêng với
 Copy `94ee93dc…` dùng lại CP018/019, **khác copy `e9bb4766…` của CP146**; không cộng các run
 thành integration/gate. Service hiện chỉ có role A/B/C và slot cố định; chưa triển khai8 peer.
 Nguồn câu hỏi và phép đo tiếp ở [RESEARCH](RESEARCH.md#gap-roster-ready-host), thứ tự ở [PLAN](PLAN.md#current-order).
+
+**Bổ sung CP163 — `kr_runtime/confirmed`, cùng giới hạn một client/roster tổng hợp:**
+[Recipe/raw/hash](evidence/eight-player/README.md#cp163). Reuse nguyên CP147 Ready flags4/106/profile,
+map278/capacity8/guard/getter/loopback recipe; chỉ echo selector1 từ **actual81** vào known86 offset7
+đã nối CP162. Hai copy/prefix/run riêng, không set manager/count/đội/guard return từ debugger.
+4–4: actual click→Start-check0/request104/send1/pending3. 1–7: actual click→7/không104;
+getter `123FA10` tại caller`DCB138` đều1, nhánh reject`DCB185` thấy8players/2teams; ảnh notice
+nêu số người các đội phải bằng nhau. Mỗi run đọc đủ8 callback196/196/errors0, map/count/capacity đúng.
+Actual81→sent86 hash nối/native12 framer/string/primitive/CRCpartial cases và44 raw/native joins;
+không dùng encoder tự sinh làm oracle. Copy94ee93dc khác productioncopye9bb4766, không ghép thành
+integration8 người. Không121/loading/Battle8/UDPmesh/8client thật/room-full service; CP147 ninth5 và
+selector0 controls giữ nguyên, không đo lại hoặc biến capacity8 của map thành giới hạn mọi mode.
+
 
 <a id="start-reply"></a>
 ### Phản hồi start và init CGameStage — CP020
@@ -5738,5 +5751,4 @@ CRCpartial kiểm21 cases và giữ mọi byte khác ngoài selector. 40 mode jo
 257 server tests (10 mode tests) đạt; preset chỉ bật sau r4 positive, final export exact operational profile;
 chưa runtime chính file preset mới. R4 A Start area trắng một ảnh cuối, B Ready và tên hai view đúng;
 không suy persistent UI lỗi hoặc Start3 thành công. Không third match/8 client/fullmatch/K6a/LAN/Internet/
-Windows/auth/original authority; natural CP157 vẫn unknown. Runtime8 slot selector1 balanced4–4/1–7 còn
-phép kiểm tiếp trong PLAN; không lặp capacity8 hoặc gọi hai client1–1 là chứng minh mọi đội cân bằng.
+Windows/auth/original authority; natural CP157 vẫn unknown. Runtime8 slot selector1 đã được bổ sung ở [CP163](#battle-eight-roster); không lặp capacity8 hoặc gọi hai client1–1 là chứng minh mọi đội cân bằng.
