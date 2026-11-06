@@ -1,0 +1,100 @@
+{
+  "id": "AUD054",
+  "trigger": "periodic",
+  "completed_through": "CP180",
+  "recorded_utc": "2026-11-06T21:41:34.956080+00:00",
+  "auditor": "Codex manual self-audit; independent review waived",
+  "read_files": [
+    "README.md",
+    "docs/PLAN.md",
+    "docs/PROTOCOL.md",
+    "docs/RESEARCH.md",
+    "docs/evidence/wine-r2/README.md",
+    "docs/evidence/codec-boundaries/README.md",
+    "docs/evidence/auth-profile/README.md",
+    "docs/evidence/live-codec-stream/README.md",
+    "docs/features.json",
+    "docs/COVERAGE.md",
+    "docs/evidence/checkpoints/audits/AUD053.json",
+    "docs/evidence/issue-reconciliation/review.json",
+    "local/research/codex/k2-live-stream-r1/source-first-reuse.json",
+    "local/research/codex/k2-live-stream-r1/preparation.json",
+    "local/research/codex/k2-live-stream-r1/crc-negative-preparation.json",
+    "local/research/codex/k2-live-stream-r1/verification.json",
+    "local/research/codex/k2-live-stream-r1/stream-r1/client.log",
+    "local/research/codex/k2-live-stream-r1/stream-r1/run.json",
+    "local/research/codex/k2-live-stream-r1/stream-r1/raw-seal.json",
+    "local/research/codex/k2-live-stream-r1/stream-r1/screen-20.png",
+    "local/research/codex/k2-live-stream-r1/crc-negative-r1/client.log",
+    "local/research/codex/k2-live-stream-r1/crc-negative-r1/CALog-run.txt",
+    "local/research/codex/k2-live-stream-r1/crc-negative-r1/run.json",
+    "local/research/codex/k2-live-stream-r1/crc-negative-r1/raw-seal.json"
+  ],
+  "method": "Manual README→PLAN currentorder/unchangedK0–K7criteria/dependencies→PROTOCOL bootstrap/codecCP057/authCP058/currentstream→RESEARCH→evidence/raw sourcepins/nativeentry-return/cursor/writes/CALog/screenshot. Compare existingreport/oldmodel with actualnative observations, not justchecker. Audit currentsections scoped to active work, not semanticrecertification ofallhistoricalprotocol paragraphs; beforeversions retained local. Reread finalcurrentsections aftersync; all gates unchanged except earlierCP179K1decision.",
+  "findings": [
+    {
+      "id": "F1",
+      "stale": "ActualTCPsplit/coalesced/CRC/reset previously absent despite models; now measuredlive",
+      "correction": "Canonical actualstreamcontract/source/limits added; fullK2 remainsopen, redirectreset distinguished from retry/accountresume.",
+      "fixed_in": [
+        "README.md",
+        "docs/PLAN.md",
+        "docs/PROTOCOL.md",
+        "docs/RESEARCH.md",
+        "docs/features.json",
+        "docs/COVERAGE.md"
+      ]
+    },
+    {
+      "id": "F2",
+      "stale": "K0/K2a CP178 subsection wording K1stillopen can appear current after CP179",
+      "correction": "Explicitly date CP178snapshot, link CP179current scopedacceptance; immutableCP178record unchanged.",
+      "fixed_in": [
+        "docs/PLAN.md"
+      ]
+    },
+    {
+      "id": "F3",
+      "stale": "Membership/peermovement nextstep still profilecapacitydelivery after CP177merged",
+      "correction": "Vacancyinitial/profile delivered, maxima/exhaustion unknown; current next work codec/reset per PLAN.",
+      "fixed_in": [
+        "docs/RESEARCH.md",
+        "docs/COVERAGE.md"
+      ]
+    },
+    {
+      "id": "F4",
+      "stale": "Rawlogger fixedmode2packet offsets also printedmode0 values; risk of falsefieldclaim",
+      "correction": "Ignoremode0packetfields asdifferentlayout; only actualsocketmode/seq/buffer/ret interpreted. Raw unchanged andlimit canonical.",
+      "fixed_in": [
+        "docs/PROTOCOL.md",
+        "docs/evidence/live-codec-stream/README.md"
+      ]
+    },
+    {
+      "id": "F5",
+      "stale": "Write segmentation/50polls/UIalive or sourcechecker counts could be mistaken for features/gates",
+      "correction": "Nativepartial/return/cursor are proof,50polls isonecase, UIonlyview noidentitygate; fullK2/K3–K7/K6afullmatch notclosed.",
+      "fixed_in": [
+        "docs/PROTOCOL.md",
+        "docs/evidence/live-codec-stream/README.md"
+      ]
+    },
+    {
+      "id": "F6",
+      "stale": "CP179 delivery/auditnext180 changed after integration/currentperiodic180",
+      "correction": "PR251merged2e6dae4 linked; AUD054periodic through180/next184; oldAUD053adhoc/records stayimmutable.",
+      "fixed_in": [
+        "README.md",
+        "docs/PLAN.md",
+        "docs/PROTOCOL.md"
+      ]
+    }
+  ],
+  "remaining": [
+    "K2sameprocessretry/reconnectafterCRC/wrongseq/prefixguard/fullbounds/accountresume notcertified; socket1MiB observednotcapboundaryproof.",
+    "K3cache/identity andK4–K7/K6afullmatch/LANInternet8clients unchangedopen; localWinecopy notvanilla.",
+    "Sourceclient/DB andpublishedraw remainunchanged; no worker/independentreview; waivernotapproval.",
+    "CP180pendingPRdelivery/currentissue snapshotdated; nextperiodicauditCP184, no counterreset."
+  ]
+}

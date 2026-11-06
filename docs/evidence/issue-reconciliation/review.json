@@ -13,7 +13,7 @@
       ],
       "known": "CP178/PR250 merged2f2b87f/K0K2a accepted; CP179 manual K1 acceptance for offline R2 recipe/cold3/nativeAPI PID/controls/provenance. Not3e9coldstarts or originalWindowsbootstrap.",
       "remaining": "KRE-001 identity/harness scope fulfilled and mergedPR250; bootstrap/fullcodec/login/gameplay acceptance belongs #2/#3/#14.",
-      "next_test": "No active KRE-001 work; NEXT-K2-LIVE-STREAM #3 per PLAN.",
+      "next_test": "No repeat scopedR2cold3/known gamecycles. NEXT-K2-RETRY-RESET/#3 afterCP180 actualstream/CRCnegative/redirectreset per PLAN; widerWCP#2 only trigger.",
       "acceptance": "K0 source/copy/dbidentity và control ownership/isolation/cleanup cósource; Windows/control chưa tự xácnhận từWine.",
       "reason": "Manual unchangedcriterion/evidence review, not checkpoint/script inference. AUD053adhocthrough178, periodic176/next180; nativecontrols and failedpreparation preserved.",
       "sources": [
@@ -45,7 +45,7 @@
       ],
       "known": "CP178/PR250 merged2f2b87f/K0K2a accepted; CP179 manual K1 acceptance for offline R2 recipe/cold3/nativeAPI PID/controls/provenance. Not3e9coldstarts or originalWindowsbootstrap.",
       "remaining": "Wider WCP/launcher config only when triggered; fullK2/auth/cache/downstream/physicalnetwork remain open.",
-      "next_test": "NEXT-K2-LIVE-STREAM/#3 actual-socket split/coalesced/reset evidence; do not repeat R2cold3 or CP05776modelcases.",
+      "next_test": "No repeat scopedR2cold3/known gamecycles. NEXT-K2-RETRY-RESET/#3 afterCP180 actualstream/CRCnegative/redirectreset per PLAN; widerWCP#2 only trigger.",
       "acceptance": "K1 chosen offline R2 accepted CP179, widerWCP/config needs own consumer/runtime evidence when triggered; not originalWindowsbootstrap/fullK2.",
       "reason": "Manual unchangedcriterion/evidence review, not checkpoint/script inference. AUD053adhocthrough178, periodic176/next180; nativecontrols and failedpreparation preserved.",
       "sources": [
@@ -76,9 +76,9 @@
       "features": [
         "KR-B003"
       ],
-      "known": "CP178/PR250 merged2f2b87f/K0K2a accepted; CP179 manual K1 acceptance for offline R2 recipe/cold3/nativeAPI PID/controls/provenance. Not3e9coldstarts or originalWindowsbootstrap.",
-      "remaining": "Wider WCP/launcher config only when triggered; fullK2/auth/cache/downstream/physicalnetwork remain open.",
-      "next_test": "NEXT-K2-LIVE-STREAM/#3 actual-socket split/coalesced/reset evidence; do not repeat R2cold3 or CP05776modelcases.",
+      "known": "CP179K1R2/PR251merged2e6dae4; CP180 actualWine e9split/coalesced/CRCnegative/redirectsocketreset measured; prefixguard0/cap1MiBobserved not fullbounds; fullK2/downstream open.",
+      "remaining": "Sameprocessretry/reconnectafterCRC/accountresume; wrongseq/prefix/fullmode/bounds per trigger; K3cacheidentity/downstream/fullmatch unchangedopen.",
+      "next_test": "No repeat scopedR2cold3/known gamecycles. NEXT-K2-RETRY-RESET/#3 afterCP180 actualstream/CRCnegative/redirectreset per PLAN; widerWCP#2 only trigger.",
       "acceptance": "Primitive→framebuilder KR cólocator/hash đãđạt; residualfullcodec/livebounds cónative/modelnegative control rồimớiđóngscope cònlại.",
       "reason": "Manual unchangedcriterion/evidence review, not checkpoint/script inference. AUD053adhocthrough178, periodic176/next180; nativecontrols and failedpreparation preserved.",
       "sources": [
@@ -93,7 +93,8 @@
         "docs/evidence/primitives/README.md",
         "docs/evidence/codec-boundaries/README.md",
         "docs/evidence/peer-endpoints/README.md#cp178",
-        "docs/evidence/wine-r2/README.md#cp179"
+        "docs/evidence/wine-r2/README.md#cp179",
+        "docs/evidence/live-codec-stream/README.md"
       ],
       "prs": [
         75,
@@ -152,9 +153,9 @@
         "KR-F001",
         "KR-F015"
       ],
-      "known": "CP178/PR250 merged2f2b87f/K0K2a accepted; CP179 manual K1 acceptance for offline R2 recipe/cold3/nativeAPI PID/controls/provenance. Not3e9coldstarts or originalWindowsbootstrap.",
-      "remaining": "Wider WCP/launcher config only when triggered; fullK2/auth/cache/downstream/physicalnetwork remain open.",
-      "next_test": "NEXT-K2-LIVE-STREAM/#3 actual-socket split/coalesced/reset evidence; do not repeat R2cold3 or CP05776modelcases.",
+      "known": "CP179K1R2/PR251merged2e6dae4; CP180 actualWine e9split/coalesced/CRCnegative/redirectsocketreset measured; prefixguard0/cap1MiBobserved not fullbounds; fullK2/downstream open.",
+      "remaining": "Sameprocessretry/reconnectafterCRC/accountresume; wrongseq/prefix/fullmode/bounds per trigger; K3cacheidentity/downstream/fullmatch unchangedopen.",
+      "next_test": "No repeat scopedR2cold3/known gamecycles. NEXT-K2-RETRY-RESET/#3 afterCP180 actualstream/CRCnegative/redirectreset per PLAN; widerWCP#2 only trigger.",
       "acceptance": "Epic checklist: linkedscopedtask/evidence+authoritymatrix vàacceptancegate ởPLAN; từngtaskđóng khôngđóngepic/K5/K6a.",
       "reason": "Manual unchangedcriterion/evidence review, not checkpoint/script inference. AUD053adhocthrough178, periodic176/next180; nativecontrols and failedpreparation preserved.",
       "sources": [
@@ -267,7 +268,8 @@
         "docs/evidence/peer-endpoints/README.md#cp174",
         "docs/evidence/peer-endpoints/README.md#cp177",
         "docs/evidence/peer-endpoints/README.md#cp178",
-        "docs/evidence/wine-r2/README.md#cp179"
+        "docs/evidence/wine-r2/README.md#cp179",
+        "docs/evidence/live-codec-stream/README.md"
       ],
       "prs": [
         173,
@@ -665,6 +667,6 @@
       "successors": []
     }
   ],
-  "as_of_utc": "2026-11-06T21:27:33.574999+00:00",
+  "as_of_utc": "2026-11-06T21:42:17.297728+00:00",
   "limits": "Dated manual dispositions through CP146; snapshotcaptureUTC only/no semantic or gate certification; immutable completehistory."
 }

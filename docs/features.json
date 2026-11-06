@@ -1,7 +1,7 @@
 {
   "schema": "kre-feature-index-v1",
   "build": "KR00967",
-  "as_of": "2026-11-07",
+  "as_of": "CP180",
   "sources": {
     "plan": "docs/PLAN.md",
     "contract": "docs/PROTOCOL.md",
@@ -196,7 +196,8 @@
         "plan": "docs/PLAN.md#current-order",
         "evidence": [
           "docs/evidence/wcp-sequence/README.md",
-          "docs/evidence/probe-service/README.md"
+          "docs/evidence/probe-service/README.md",
+          "docs/evidence/live-codec-stream/README.md"
         ]
       },
       "coverage": {
@@ -228,7 +229,8 @@
           "wine_diagnostic_copy": {
             "state": "observed",
             "refs": [
-              "docs/evidence/wcp-sequence/README.md"
+              "docs/evidence/wcp-sequence/README.md",
+              "docs/evidence/live-codec-stream/README.md"
             ]
           },
           "windows_original": {
@@ -293,7 +295,8 @@
           "docs/evidence/current-tcp-replay/README.md",
           "docs/PLAN.md#k0-k2a-acceptance",
           "docs/evidence/peer-endpoints/README.md#cp178",
-          "docs/PROTOCOL.md#bootstrap-recipe-scope"
+          "docs/PROTOCOL.md#bootstrap-recipe-scope",
+          "docs/evidence/live-codec-stream/README.md"
         ]
       },
       "coverage": {
@@ -327,7 +330,8 @@
           "wine_diagnostic_copy": {
             "state": "observed",
             "refs": [
-              "docs/evidence/probe-service/README.md"
+              "docs/evidence/probe-service/README.md",
+              "docs/evidence/live-codec-stream/README.md"
             ]
           },
           "windows_original": {
@@ -395,7 +399,8 @@
           "docs/evidence/nmco-locale-stability/README.md",
           "docs/evidence/peer-endpoints/README.md#cp146",
           "docs/evidence/peer-endpoints/README.md#cp148",
-          "docs/evidence/peer-endpoints/README.md#cp149"
+          "docs/evidence/peer-endpoints/README.md#cp149",
+          "docs/evidence/live-codec-stream/README.md"
         ]
       },
       "coverage": {
@@ -436,7 +441,8 @@
               "docs/evidence/nmco-locale-stability/README.md",
               "docs/evidence/peer-endpoints/README.md#cp146",
               "docs/evidence/peer-endpoints/README.md#cp148",
-              "docs/evidence/peer-endpoints/README.md#cp149"
+              "docs/evidence/peer-endpoints/README.md#cp149",
+              "docs/evidence/live-codec-stream/README.md"
             ]
           },
           "windows_original": {

@@ -257,7 +257,7 @@ Phép kiểm tối thiểu (trích cùng nguồn): Chỉ mở consumer/config đ
 
 Issue/phạm vi công việc: [#14](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/14), [#2](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/2).
 
-Bằng chứng/build/hash/recipe: [wcp-sequence](evidence/wcp-sequence/README.md), [probe-service](evidence/probe-service/README.md).
+Bằng chứng/build/hash/recipe: [wcp-sequence](evidence/wcp-sequence/README.md), [probe-service](evidence/probe-service/README.md), [live-codec-stream](evidence/live-codec-stream/README.md).
 
 | Chiều chứng minh | Khai báo | Nguồn/phạm vi áp dụng |
 |---|---|---|
@@ -265,7 +265,7 @@ Bằng chứng/build/hash/recipe: [wcp-sequence](evidence/wcp-sequence/README.md
 | vn_reference | both | [nguồn1](REFERENCES.md) |
 | kr_static | partial | [nguồn1](PROTOCOL.md#wcp) |
 | emulation | checked | [nguồn1](evidence/wcp-sequence/README.md) |
-| wine_diagnostic_copy | observed | [nguồn1](evidence/wcp-sequence/README.md) |
+| wine_diagnostic_copy | observed | [nguồn1](evidence/wcp-sequence/README.md), [nguồn2](evidence/live-codec-stream/README.md) |
 | windows_original | unknown | Chưa có bằng chứng trong phạm vi rà |
 | lan | unknown | Chưa có bằng chứng trong phạm vi rà |
 | internet | unknown | Chưa có bằng chứng trong phạm vi rà |
@@ -280,13 +280,13 @@ Dependency: [KR-B002](#kr-b002).
 
 [Contract và giới hạn](PROTOCOL.md#wcp) · [Câu hỏi gốc](RESEARCH.md#gap-socket-codec) · [Thứ tự ở PLAN](PLAN.md#current-order).
 
-Khoảng trống (trích bảng RESEARCH): K2a đạt CP178, K1R2 đạt CP179; [CP057](PROTOCOL.md#codec-stream-boundaries) là native/modelstream, chưa actualsocket fragmentation/coalescing/reconnect proof. Fullmodes/prefixguard/cap/FFFFFFFF giữ giới hạn.
+Khoảng trống (trích bảng RESEARCH): [CP180](PROTOCOL.md#live-codec-stream) actuale9 split/50partialpoll/auth137cursor/coalesced/CRCret7/redirectsocketreset có nguồn; prefixguard0/maxsize1MiB đã quan sát, enforcement/fullvariants chưa biết. K2a đạt/K1R2 đạt; fullK2 mở.
 
-Phép kiểm tối thiểu (trích cùng nguồn): Source-first actualTCP/capture/CP006/014/057/058/currente9; chia frame và ghép hai frame đã biết trên actual connection, đo native receive/dispatch/cursor/seq; tiếp actual reset path nếu chưa đủ nguồn. Không lặp76split/model hoặc nới allocator; PLAN giữ thứ tự.
+Phép kiểm tối thiểu (trích cùng nguồn): Source-first oldretry/UI/negativeCALogGetPacket7+C2S59/socketclose; trace actualerrorcaller→retryinput→newconnection buffer/seq. Redirect/freshprocess không là accountresume. Không lặp76modelsplit hoặc positivegameplay; PLAN giữ thứ tự.
 
 Issue/phạm vi công việc: [#14](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/14), [#3](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/3).
 
-Bằng chứng/build/hash/recipe: [primitives](evidence/primitives/README.md), [probe-service](evidence/probe-service/README.md), [codec-boundaries](evidence/codec-boundaries/README.md), [current-tcp-replay](evidence/current-tcp-replay/README.md), [docs](PLAN.md#k0-k2a-acceptance), [peer-endpoints](evidence/peer-endpoints/README.md#cp178), [docs](PROTOCOL.md#bootstrap-recipe-scope).
+Bằng chứng/build/hash/recipe: [primitives](evidence/primitives/README.md), [probe-service](evidence/probe-service/README.md), [codec-boundaries](evidence/codec-boundaries/README.md), [current-tcp-replay](evidence/current-tcp-replay/README.md), [docs](PLAN.md#k0-k2a-acceptance), [peer-endpoints](evidence/peer-endpoints/README.md#cp178), [docs](PROTOCOL.md#bootstrap-recipe-scope), [live-codec-stream](evidence/live-codec-stream/README.md).
 
 | Chiều chứng minh | Khai báo | Nguồn/phạm vi áp dụng |
 |---|---|---|
@@ -294,7 +294,7 @@ Bằng chứng/build/hash/recipe: [primitives](evidence/primitives/README.md), [
 | vn_reference | both | [nguồn1](REFERENCES.md) |
 | kr_static | partial | [nguồn1](PROTOCOL.md#wcp), [nguồn2](PROTOCOL.md#codec-stream-boundaries) |
 | emulation | checked | [nguồn1](evidence/primitives/README.md), [nguồn2](evidence/codec-boundaries/README.md) |
-| wine_diagnostic_copy | observed | [nguồn1](evidence/probe-service/README.md) |
+| wine_diagnostic_copy | observed | [nguồn1](evidence/probe-service/README.md), [nguồn2](evidence/live-codec-stream/README.md) |
 | windows_original | unknown | Chưa có bằng chứng trong phạm vi rà |
 | lan | unknown | Chưa có bằng chứng trong phạm vi rà |
 | internet | unknown | Chưa có bằng chứng trong phạm vi rà |
@@ -315,7 +315,7 @@ Phép kiểm tối thiểu (trích cùng nguồn): TheoPLAN trace actualerrorsta
 
 Issue/phạm vi công việc: [#14](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/14), [#9](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/9), [#106](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/106).
 
-Bằng chứng/build/hash/recipe: [login-runtime](evidence/login-runtime/README.md), [probe-service](evidence/probe-service/README.md), [auth-profile](evidence/auth-profile/README.md), [current-profile-c](evidence/current-profile-c/README.md), [preclock-eof](evidence/preclock-eof/README.md), [nmco-locale-stability](evidence/nmco-locale-stability/README.md), [peer-endpoints](evidence/peer-endpoints/README.md#cp146), [peer-endpoints](evidence/peer-endpoints/README.md#cp148), [peer-endpoints](evidence/peer-endpoints/README.md#cp149).
+Bằng chứng/build/hash/recipe: [login-runtime](evidence/login-runtime/README.md), [probe-service](evidence/probe-service/README.md), [auth-profile](evidence/auth-profile/README.md), [current-profile-c](evidence/current-profile-c/README.md), [preclock-eof](evidence/preclock-eof/README.md), [nmco-locale-stability](evidence/nmco-locale-stability/README.md), [peer-endpoints](evidence/peer-endpoints/README.md#cp146), [peer-endpoints](evidence/peer-endpoints/README.md#cp148), [peer-endpoints](evidence/peer-endpoints/README.md#cp149), [live-codec-stream](evidence/live-codec-stream/README.md).
 
 | Chiều chứng minh | Khai báo | Nguồn/phạm vi áp dụng |
 |---|---|---|
@@ -323,7 +323,7 @@ Bằng chứng/build/hash/recipe: [login-runtime](evidence/login-runtime/README.
 | vn_reference | both | [nguồn1](REFERENCES.md) |
 | kr_static | partial | [nguồn1](PROTOCOL.md#login-auth), [nguồn2](PROTOCOL.md#auth-profile) |
 | emulation | checked | [nguồn1](evidence/login-runtime/README.md), [nguồn2](evidence/auth-profile/README.md) |
-| wine_diagnostic_copy | observed | [nguồn1](evidence/login-runtime/README.md), [nguồn2](evidence/auth-profile/README.md), [nguồn3](evidence/current-profile-c/README.md), [nguồn4](evidence/preclock-eof/README.md), [nguồn5](evidence/nmco-locale-stability/README.md), [nguồn6](evidence/peer-endpoints/README.md#cp146), [nguồn7](evidence/peer-endpoints/README.md#cp148), [nguồn8](evidence/peer-endpoints/README.md#cp149) |
+| wine_diagnostic_copy | observed | [nguồn1](evidence/login-runtime/README.md), [nguồn2](evidence/auth-profile/README.md), [nguồn3](evidence/current-profile-c/README.md), [nguồn4](evidence/preclock-eof/README.md), [nguồn5](evidence/nmco-locale-stability/README.md), [nguồn6](evidence/peer-endpoints/README.md#cp146), [nguồn7](evidence/peer-endpoints/README.md#cp148), [nguồn8](evidence/peer-endpoints/README.md#cp149), [nguồn9](evidence/live-codec-stream/README.md) |
 | windows_original | unknown | Chưa có bằng chứng trong phạm vi rà |
 | lan | unknown | Chưa có bằng chứng trong phạm vi rà |
 | internet | unknown | Chưa có bằng chứng trong phạm vi rà |
@@ -485,7 +485,7 @@ Dependency: [KR-R002](#kr-r002).
 
 Khoảng trống (trích bảng RESEARCH): [CP175](PROTOCOL.md#a-survivor-admission) C3/slot1/Join/Ready/Start; [CP176](PROTOCOL.md#a-c-basic-cycles) A/C2normal/reset/Ready2.
 
-Phép kiểm tối thiểu (trích cùng nguồn): CinitialpreReadyblack/return2beforefocusblack giữ giới hạn; finalroom vẽ cả hai. Generalmembership/accountresume/laterStart3 và profilecapacity theo vacancy còn mở.
+Phép kiểm tối thiểu (trích cùng nguồn): CinitialpreReadyblack/return2beforefocusblack giữ giới hạn; finalroom vẽ cả hai. Generalmembership/accountresume/laterStart3 còn mở. CP177 profilecapacity theo vacancy/initial đã giao; maxima/exhaustion chưa đo.
 
 Issue/phạm vi công việc: [#14](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/14), [#60](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/60), [#176](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/176).
 
@@ -543,7 +543,7 @@ Dependency: [KR-F001](#kr-f001).
 
 Khoảng trống (trích bảng RESEARCH): [CP176](PROTOCOL.md#a-c-basic-cycles) current A/C4nativewindows/2keys/target/currentprogress cùng2normalcycles; CP173 giữ AB scope.
 
-Phép kiểm tối thiểu (trích cùng nguồn): FullUDP/auth/reliability/generalphysics/NAT unknown; không đo lại currentconsumer hoặc AC peer, theo PLAN profile/capacity delivery.
+Phép kiểm tối thiểu (trích cùng nguồn): FullUDP/auth/reliability/generalphysics/NAT unknown; không đo lại currentconsumer hoặc AC peer, theo PLAN actualcodec/retryreset; CP177 profilecapacity đã giao.
 
 Issue/phạm vi công việc: [#14](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/14), [#176](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/176).
 
