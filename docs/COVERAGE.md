@@ -21,8 +21,8 @@ Review độc lập: [waived theo chủ dự án](evidence/checkpoints/review-wa
 | ID / chức năng | Presence | VN ref | KR static | Emulation | Wine copy | Windows gốc | LAN | Internet | Implementation / delivery | Integration | Gate |
 |---|---|---|---|---|---|---|---|---|---|---|---|
 | [KR-B001 · ProcessPatch và copy offline](#kr-b001) | present | both | partial | checked | observed | observed | unknown | unknown | partial / via_pr | partial | K1: passed |
-| [KR-B002 · WCP và dữ liệu khởi tạo](#kr-b002) | present | both | partial | checked | observed | unknown | unknown | unknown | partial / via_pr | partial | K2: open |
-| [KR-B003 · Codec theo socket và chiều](#kr-b003) | present | both | partial | checked | observed | unknown | unknown | unknown | partial / via_pr | partial | K2: open |
+| [KR-B002 · WCP và dữ liệu khởi tạo](#kr-b002) | present | both | partial | checked | observed | unknown | unknown | unknown | partial / via_pr | partial | K2: passed |
+| [KR-B003 · Codec theo socket và chiều](#kr-b003) | present | both | partial | checked | observed | unknown | unknown | unknown | partial / via_pr | partial | K2: passed |
 | [KR-L001 · Auth và identity cục bộ](#kr-l001) | present | both | partial | checked | observed | unknown | unknown | unknown | partial / via_pr | partial | K3: open |
 | [KR-L002 · Redirect và UI sảnh](#kr-l002) | present | both | partial | checked | observed | unknown | unknown | unknown | partial / via_pr | partial | K3: open |
 | [KR-L003 · Profile và cache lifecycle](#kr-l003) | present | static | partial | checked | observed | unknown | unknown | unknown | partial / via_pr | partial | K3: open |
@@ -58,7 +58,7 @@ Số lượng theo trạng thái khai báo (không phải tỷ lệ hoàn thành
 - emulation: checked=22, unknown=8.
 - implementation: partial=23, unknown=7.
 - integration: partial=22, unknown=8.
-- gate: open=29, passed=1.
+- gate: open=27, passed=3.
 
 ## Cây cơ chế
 
@@ -257,7 +257,7 @@ Phép kiểm tối thiểu (trích cùng nguồn): Chỉ mở consumer/config đ
 
 Issue/phạm vi công việc: [#14](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/14), [#2](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/2).
 
-Bằng chứng/build/hash/recipe: [wcp-sequence](evidence/wcp-sequence/README.md), [probe-service](evidence/probe-service/README.md), [live-codec-stream](evidence/live-codec-stream/README.md).
+Bằng chứng/build/hash/recipe: [wcp-sequence](evidence/wcp-sequence/README.md), [probe-service](evidence/probe-service/README.md), [live-codec-stream](evidence/live-codec-stream/README.md), [live-codec-stream](evidence/live-codec-stream/README.md#cp181).
 
 | Chiều chứng minh | Khai báo | Nguồn/phạm vi áp dụng |
 |---|---|---|
@@ -265,13 +265,13 @@ Bằng chứng/build/hash/recipe: [wcp-sequence](evidence/wcp-sequence/README.md
 | vn_reference | both | [nguồn1](REFERENCES.md) |
 | kr_static | partial | [nguồn1](PROTOCOL.md#wcp) |
 | emulation | checked | [nguồn1](evidence/wcp-sequence/README.md) |
-| wine_diagnostic_copy | observed | [nguồn1](evidence/wcp-sequence/README.md), [nguồn2](evidence/live-codec-stream/README.md) |
+| wine_diagnostic_copy | observed | [nguồn1](evidence/wcp-sequence/README.md), [nguồn2](evidence/live-codec-stream/README.md), [nguồn3](evidence/live-codec-stream/README.md#cp181) |
 | windows_original | unknown | Chưa có bằng chứng trong phạm vi rà |
 | lan | unknown | Chưa có bằng chứng trong phạm vi rà |
 | internet | unknown | Chưa có bằng chứng trong phạm vi rà |
 | implementation | partial / via_pr | [nguồn1](../server/probe_service.py), [nguồn2](PROTOCOL.md#probe-service), [nguồn3](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/57) |
 | integration | partial | [nguồn1](evidence/probe-service/README.md) |
-| gate | K2: open | [nguồn1](PLAN.md#gates) |
+| gate | K2: passed | [nguồn1](PLAN.md#k2-acceptance) |
 
 <a id="kr-b003"></a>
 ### KR-B003 · Codec theo socket và chiều
@@ -280,13 +280,13 @@ Dependency: [KR-B002](#kr-b002).
 
 [Contract và giới hạn](PROTOCOL.md#wcp) · [Câu hỏi gốc](RESEARCH.md#gap-socket-codec) · [Thứ tự ở PLAN](PLAN.md#current-order).
 
-Khoảng trống (trích bảng RESEARCH): [CP180](PROTOCOL.md#live-codec-stream) actuale9 split/50partialpoll/auth137cursor/coalesced/CRCret7/redirectsocketreset có nguồn; prefixguard0/maxsize1MiB đã quan sát, enforcement/fullvariants chưa biết. K2a đạt/K1R2 đạt; fullK2 mở.
+Khoảng trống (trích bảng RESEARCH): [CP181](PROTOCOL.md#login-retry-codec) actualsameprocessretry/reset/authcursor + CP180stream/CRC + CP057boundednativeoracle đủ K2profile theo PLAN. Fullgrammar/prefixguardon/modes/headerauth/capenforcement/FFFFFFFF giữ unknown.
 
-Phép kiểm tối thiểu (trích cùng nguồn): Source-first oldretry/UI/negativeCALogGetPacket7+C2S59/socketclose; trace actualerrorcaller→retryinput→newconnection buffer/seq. Redirect/freshprocess không là accountresume. Không lặp76modelsplit hoặc positivegameplay; PLAN giữ thứ tự.
+Phép kiểm tối thiểu (trích cùng nguồn): Codec backlog theo trigger K3; không lặp solvedretry/closeonly/HWwatchpoint/76modelsplit. Accountresume thuộc identity/lifecycle, không tự thêm gate.
 
 Issue/phạm vi công việc: [#14](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/14), [#3](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/3).
 
-Bằng chứng/build/hash/recipe: [primitives](evidence/primitives/README.md), [probe-service](evidence/probe-service/README.md), [codec-boundaries](evidence/codec-boundaries/README.md), [current-tcp-replay](evidence/current-tcp-replay/README.md), [docs](PLAN.md#k0-k2a-acceptance), [peer-endpoints](evidence/peer-endpoints/README.md#cp178), [docs](PROTOCOL.md#bootstrap-recipe-scope), [live-codec-stream](evidence/live-codec-stream/README.md).
+Bằng chứng/build/hash/recipe: [primitives](evidence/primitives/README.md), [probe-service](evidence/probe-service/README.md), [codec-boundaries](evidence/codec-boundaries/README.md), [current-tcp-replay](evidence/current-tcp-replay/README.md), [docs](PLAN.md#k0-k2a-acceptance), [peer-endpoints](evidence/peer-endpoints/README.md#cp178), [docs](PROTOCOL.md#bootstrap-recipe-scope), [live-codec-stream](evidence/live-codec-stream/README.md), [live-codec-stream](evidence/live-codec-stream/README.md#cp181).
 
 | Chiều chứng minh | Khai báo | Nguồn/phạm vi áp dụng |
 |---|---|---|
@@ -294,13 +294,13 @@ Bằng chứng/build/hash/recipe: [primitives](evidence/primitives/README.md), [
 | vn_reference | both | [nguồn1](REFERENCES.md) |
 | kr_static | partial | [nguồn1](PROTOCOL.md#wcp), [nguồn2](PROTOCOL.md#codec-stream-boundaries) |
 | emulation | checked | [nguồn1](evidence/primitives/README.md), [nguồn2](evidence/codec-boundaries/README.md) |
-| wine_diagnostic_copy | observed | [nguồn1](evidence/probe-service/README.md), [nguồn2](evidence/live-codec-stream/README.md) |
+| wine_diagnostic_copy | observed | [nguồn1](evidence/probe-service/README.md), [nguồn2](evidence/live-codec-stream/README.md), [nguồn3](evidence/live-codec-stream/README.md#cp181) |
 | windows_original | unknown | Chưa có bằng chứng trong phạm vi rà |
 | lan | unknown | Chưa có bằng chứng trong phạm vi rà |
 | internet | unknown | Chưa có bằng chứng trong phạm vi rà |
 | implementation | partial / via_pr | [nguồn1](../server/probe_service.py), [nguồn2](PROTOCOL.md#probe-service), [nguồn3](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/57) |
 | integration | partial | [nguồn1](evidence/probe-service/README.md), [nguồn2](PROTOCOL.md#current-tcp-replay) |
-| gate | K2: open | [nguồn1](PLAN.md#gates) |
+| gate | K2: passed | [nguồn1](PLAN.md#k2-acceptance) |
 
 <a id="kr-l001"></a>
 ### KR-L001 · Auth và identity cục bộ

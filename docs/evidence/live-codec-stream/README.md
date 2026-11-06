@@ -38,3 +38,40 @@ chưađược xácnhận; không tựnângK3. Negative CALog CRC/59 không làpr
 AUD054 periodic quaCP180 đọc currentdocs→source/raw/runtime mới và evidencehẹp; lịch kếCP184.
 FullK2/auth/cache/downstream/fullmatch/LAN/Internet/8client giữ mở, xem nguồn chuẩn. Kiểm đầy đủ
 local/history/docs/catalog/issues/diff trước PR/exactheadmerge; noCIworkflows, không độc lậpapproval.
+
+<a id="cp181"></a>
+## CP181 — same-process login retry và nghiệm thu K2profile
+
+Baseline CP180/PR252 merge`fe242cc87a29463a7f70b8537a932f37effdb177`; Codex solo/tự kiểm,
+[review waived](../checkpoints/review-waiver.json). [Contract/giới hạn](../../PROTOCOL.md#login-retry-codec),
+[acceptance duy nhất](../../PLAN.md#k2-acceptance), [câu hỏi](../../RESEARCH.md#gap-socket-codec).
+Raw hai batch `local/research/codex/k2-retry-reset-r1/` và `k2-auth-retry-r1/`.
+
+| Run | Kết quả / phạm vi |
+|---|---|
+| retry-r1 | CRCnegative + UIactions; không1002/newTCP; SIGILL2260DF8/caller1259F11, chưa causalmodalcloseproof. |
+| close-route-r1 | HWwatchpoint làm WineDbg internalcrash14001D25A; failedinstrumentation, không clientrootcause. |
+| close-route-r2 | BỏHW, functionprobes: setter1503DFD/stackreturn1254CED→waitreturn1/global1→cleanup1259EC0→DWKcandidate trap. Không lặp/stubcleanup làmretryproof. |
+| auth-retry-r1 | Exact39byteKRresult1: nativeCRCvalid/result1/global0; actualUI1002/newTCP4/seqreset. Stubordinal4channel không đápauth; control giữ nguyên. |
+| auth-retry-r2 | Labadapter map4/5theoroute vừa đo; sameCApid/GDBinferior,3hello40→43/0-0→2-3, firstresult1 rồi137cursor/errors0/wait3, TCP5channel. run.jsonSHA`bfa8243780d73802a086bb6de867d4d2a91c384787c142784d86d35376a2ed5c`. |
+
+`source-first-reuse.json` từngbatch pin sources/build/locator/proof trước runtime; CP010/012/014 và
+VNerrorbranchmethodology dùng làm reference, không portVNcode/opcode/layout. Tránh newfunctionscan/
+76modelcases/fullgameplay. `verification.json`batchauth:655measurablerelationships/raw/inputpins/
+nonoverlap/PID/nativeframer/seq/cursor/writerframes; nămrun đều cleanup/seal trước đổi recipe.
+`raw-seal.json` từngrun phủ logs/ảnh/service/timeline; failure/control không ghi đè. SHA toànbatch và
+selectedoldoracles ở [CP181](../checkpoints/records/CP181.json)/[manifest](../checkpoints/evidence/CP181-codec-retry.json),
+CP180evidence manifest được reuse bằng reference nguyên hash, không copyrawindex lớn.
+
+Adapter/harness/GDB chỉ ở local, productionserver/codec và47fixtures không đổi. UIclick chỉ sau
+native decodedresult1/30s; chỉ close+confirmmộtlần. Script names/argv trong`*-recipe.json`, prep files
+giữ exactsourcehash; isolateduser/net/mount/PID onlylo/noIPv4route/NSSfiles-only. Cleanup prefix-owned
+wineserver/childgroups, không kill WineVN/VM. Không có runtimeactive sau seal, original5artifacts verify.
+
+Analyzer đầu đòiWinSocktrace trong harnesschỉbậtseh/timestamp/pid; đã đọcraw và sửa attributionthành
+oneCAinit/GDBinferior/actualLinuxPID/nativeframeorder, không bịaAPI hoặc đổiraw. Mode0packetfields
+không dùng do layout khác. Positive screenshot22 nhìn thấy sảnh, chưa xácnhận UIidentity/K3.
+
+`manual-k2-acceptance.json` là đốichiếu thủ công nguyên tiêu chí với CP178/179/180/181 và CP057native
+boundaryscope; script không tựđónggate. K2profile đạt, widercodec/K3–K7/fullmatch/LAN/Internet vẫnmở.
+CP181pendingPRdelivery; AUD054periodic180/auditkế184 giữ, không checkpoint riêng từngphépđo.

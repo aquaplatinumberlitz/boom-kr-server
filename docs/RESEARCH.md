@@ -31,6 +31,16 @@ một danh sách tiến độ theo CP khác tại đây; [README](../README.md) 
 | <a id="q-028"></a>Q-028 profile/core / Codex tự kiểm | open | [Authority matrix](PROTOCOL.md#authority): audit creator/simulator/validator/broadcast/peer-editable; lựa chọn lai/shadow core là design, chưa là contract client |
 | <a id="q-029"></a>Q-029 vận hành / Codex tự kiểm | open | [Hardening/demo nhiều máy](#gap-service-hardening); theo gate K7, không suy từ TCP accept |
 
+<a id="gap-codec-retry-followup"></a>
+### Codec retry đã đo CP181; giới hạn còn lại
+
+[Contract/sequence native](PROTOCOL.md#login-retry-codec) giữ nguồn chuẩn: validresult1→UI1002→
+sameprocessTCPloginretry→auth137cursor/errors0→channelreset. [Controls/hash](evidence/live-codec-stream/README.md#cp181)
+giữ fatalCRCcleanup/WineDbgHWwatchpointfailure/stubordinalcontrol. Không lặp fatalclose hoặc stubDWK.
+K2profile được nghiệm thu theo [PLAN](PLAN.md#k2-acceptance); không fullgrammar/allmodes/headerauthority/
+accountresume. Widercodec chỉ mở khi có trigger cụ thể từ K3; không quét mọi variant trước sảnh.
+Owner/tự kiểm Codex, review waived; periodic audit kếCP184.
+
 <a id="feature-gaps"></a>
 ## Khoảng trống theo cơ chế
 
@@ -42,7 +52,7 @@ Bảng được [coverage](COVERAGE.md) trích tự động để tra theo chứ
 |---|---|---|
 | <a id="gap-process-patch"></a>KR-B001 | [CP179](PROTOCOL.md#bootstrap-recipe-scope): K1 đạt riêng offlineR2 từ3coldstart/API đúngPID/contract-controls; K0CP178 giữ. Không originalWindowsbootstrap hoặc3e9coldstart. | Cold3R2 đã giải, không đo lại. WiderWCP/launcher/config còn ở #2; currente9input/state bridge và livecodec theo PLAN/#3, chỉ mở bootstrapcause nếu có trigger mới. |
 | <a id="gap-wcp-config"></a>KR-B002 | Fixture tổng hợp đã qua guard; oneclickuser/+E9C và dữ liệu/cache thật chưa đủ. | Chỉ mở consumer/config đang chặn runtime; so nhánh với và không tham số trên cùng copy, không đo lại +E78 đã giải. |
-| <a id="gap-socket-codec"></a>KR-B003 | [CP180](PROTOCOL.md#live-codec-stream) actuale9 split/50partialpoll/auth137cursor/coalesced/CRCret7/redirectsocketreset có nguồn; prefixguard0/maxsize1MiB đã quan sát, enforcement/fullvariants chưa biết. K2a đạt/K1R2 đạt; fullK2 mở. | Source-first oldretry/UI/negativeCALogGetPacket7+C2S59/socketclose; trace actualerrorcaller→retryinput→newconnection buffer/seq. Redirect/freshprocess không là accountresume. Không lặp76modelsplit hoặc positivegameplay; PLAN giữ thứ tự. |
+| <a id="gap-socket-codec"></a>KR-B003 | [CP181](PROTOCOL.md#login-retry-codec) actualsameprocessretry/reset/authcursor + CP180stream/CRC + CP057boundednativeoracle đủ K2profile theo PLAN. Fullgrammar/prefixguardon/modes/headerauth/capenforcement/FFFFFFFF giữ unknown. | Codec backlog theo trigger K3; không lặp solvedretry/closeonly/HWwatchpoint/76modelsplit. Accountresume thuộc identity/lifecycle, không tự thêm gate. |
 | <a id="gap-auth-identity"></a>KR-L001 | [CP073](PROTOCOL.md#launcher-error-attribution): auxiliarylocale1,0 valid/init0→2000:0/noTCP; main currentA/Bactual67 positive. HistoricalmainSIGABRT/HTTPstartupcause vẫn unknown, không gánpopup là root. Fullidentity/token/accountauthority còn mở. | TheoPLAN trace actualerrorstate/caller nếu mainfail; không bypasslocale hoặc tìm lại auth137/135/string/cache. Providerinit sâu chỉ mở khi thực sự chặn main, chưa phải trọng tâm chơi. |
 | <a id="gap-redirect-lobby"></a>KR-L002 | UI sảnh copy đã có; thông tin user/cache/version và variants chưa đủ K3. | Kiểm identity hiển thị cùng request6/17/241 trên cold/warm/missing cache, log stage/seq; không suy từ cửa sổ. |
 | <a id="gap-profile-cache"></a>KR-L003 | CP059 namedfxdynmapinfo missing→write→warm đã nhận; CRC selector+representation trướcinflate giải lệchraw/nén. Toàncache/profile/version/corrupt/reconnect vẫn mở. | Reuse [scope/CRC](PROTOCOL.md#dynamic-cache-representation); không lặp namedcache này. Chỉ mở cachefile/variant khác khi native consumer hoặc acceptance có trigger; freshprefix không là coldallcache. |

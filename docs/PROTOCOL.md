@@ -1,7 +1,7 @@
 # KR 00967 — contract tương thích client gốc
 
-Revision kr-legacy-contract-r1; cập nhật07/11/2026 JST (CP180; AUD054 periodic qua180; audit kế184).
-**Contract có bằng chứng từng phần; chưa nghiệm thu full codec K2**.
+Revision kr-legacy-contract-r1; cập nhật07/11/2026 JST (CP181; AUD054 periodic qua180; audit kế184).
+**Contract có bằng chứng từng phần; phạm vi nghiệm thu codec/hello ở [PLAN](PLAN.md#k2-acceptance)**.
 Lộ trình và thứ tự task chỉ giữ ở [REWRITE_PLAN — KRE](PLAN.md).
 Đây là contract của repo server KR. ADR0009 của bản viết lại là nguồn lịch sử để so sánh;
 vị trí tài liệu nguồn ghi trong [REFERENCES](REFERENCES.md), không phải giao thức dùng cho client KR gốc.
@@ -2408,6 +2408,51 @@ service stopped/errors0/probeerrors0/sourcepins unchanged và prefix-ownedcleanu
 `design` cho fixtureidentity/token/emptylists và scheduling; không authauthority servergốc.
 FullK2 vẫn mở về retry/reconnect sau lỗi, prefix/mode/bounds chưa đo; [RESEARCH](RESEARCH.md#gap-socket-codec)
 giữ phép kiểm, [PLAN](PLAN.md#current-order) giữ duy nhất thứ tự. Không lặp76modelsplit hoặc ACgames.
+
+<a id="codec-fatal-close-followup"></a>
+### Đường đóng thông báo lỗi codec — controls CP181
+
+`kr_runtime/confirmed` trong `k2-retry-reset-r1/close-route-r2`, copye9/Wine cùng CRCnegative:
+sau thao tác đóng notice đã đo entry`1503DFD` với stackreturn`1254CED`, rồi `11044A7` trảEAX1/
+global1A966FC=1; entrycleanup`1259EC0` cũng global1/caller125CA9F, sau đó SIGILL2260DF8 với
+return1259F11. Không thấy callbackcommand1002 hoặc TCP thứ4 trong run này. Tái dùng locator/modal
+CP012 và trapreport/cleanupCP010: slot16EA064 có tên **candidate** `dwk.dll!UninstallDWK`.
+Đây là sequence observed trên copy, không tênAPI original đã được resolve hoặc mọiCRC đều cùngroute.
+
+Thao tác đóng notice ở run này không chứng minh retry login; không sửa globalvề0/stubcleanup để
+tự gọi reconnectthànhcông. `retry-r1` có cleanuptrap nhưng ít probe hơn giữ riêng; `close-route-r1`
+hardwarewatchpoint làm WineDbg internalcrash14001D25A, không kết luận client từ ca đó. R2 bỏ HWwatchpoint
+và dùng functionbreakpoints; source/config freeze, không newbinarypatch/forcedfunctionreturn.
+Raw/hash/failedmeasurement ở [metadata đợt đang đo](evidence/live-codec-stream/retry-in-progress.json),
+[câu hỏi tiếp](RESEARCH.md#gap-codec-retry-followup), thứ tự duy nhất PLAN. Chưa K2retry/accountresume/gate.
+
+<a id="login-retry-codec"></a>
+### Login rejection hợp lệ và codec reset khi retry — CP181
+
+**`kr_runtime/confirmed` cho copye9/Wine, một client**. Tái dùng exact fixture CP014
+`login-error1-key43.bin`39byte/SHA9aeae7b7937ad0c54d968297c48fffb4d506087f7826b2e9fdde35d84ed3ac19,
+native result1 đã đo; không dựng lại layout/opcode từ VN. [Run/controls/hash](evidence/live-codec-stream/README.md#cp181).
+
+| Route/phép đo | Native observation / phạm vi |
+|---|---|
+| Firstlogin rejection | `14EF300` consume39/ret0, seq43→46/payload1; `10FEDF1` result1/global0; `11044A7` waitreturn1/global0. Khác fatalCRCcontrol đóngnotice/global1/cleanup, không suy mọi lỗilogin tương đương. |
+| Actual UIretry | Đóngnotice rồi confirm: `10FC540` command1002/caller1509531 → `1101E20` → `11049C0` caller1101D1A. Một actualCA LinuxPID và GDBinferior/WinePID01C4 xuyên suốt, không launchCA thứhai/callfunction épstate. |
+| Newlogin TCP4 | Nativehello0/0seq40→43, rồi mode2/selector3; nativewriter C2S1/60 resetseq40/43. Ở control r1 stub coi ordinal4làchannel nên không trảauth. Adapter r2 map4làloginA, giữ body175 từ profile: result0, nativeauth137/137/errors54=0/58=0, modalreturn3/global0. |
+| Redirect TCP5 | Nativehello0/0seq40→43 lầnthứ3 trongcùngprocess; channel17seq43→46 rồi241/91/14 tiếp46/49/52→55, bufferhết. Đây là codec/sessiontransport retry, không server xácthực cùngaccount hoặc persistenceidentity đã khôi phục. |
+
+Lab adapter retag4/5 là **`design`**, chỉ sau actualr1 chứng minh4 gửi1/60, dùng nguyên47fixtureprofile;
+không sửa productionservice/codec, không épreturn/global saufatal hoặc patchDWK. Prefix/cache kế thừa,
+bootstrapglobalreset1A966FC=0 giữ recipe cũ, không originalWindows/coldcacheall. Native0/0packetfieldlogger
+khác layout nên chỉ dùng socketstate/mode/seq/buffer; mode2nativepacket/cursor có scope trên.
+Harnessturnày WINEDEBUGkhôngbậtwinsock: không có per-connectAPIdump. Attribution dựa initCA/
+GDBinferior/actualLinuxPID duy nhất, exclusiveclientnamespace, nativeframeorder và servicebytes;
+analyzer đầu đòiAPItrace không có đã sửa phạmvi, không bịa API hoặc gọi đóclientfailure.
+
+CP010cleanup/CP012modal+UI/CP014result1, CP057modelboundary và CP180actualstream được tái dùng;
+không chạy lại76split/primitive/gameplay. Raw lỗiHWwatchpoint, control stubmisclassification và
+fatalsequence giữ riêng. Unknownfullgrammar/modes/prefix/headerauthority/FFFFFFFFallocation/
+cache/accountresume không tự thànhconfirmed; [nghiệm thu K2profile](PLAN.md#k2-acceptance) là quyếtđịnh
+thủ công riêng. K3UIidentity/cache/wrongstage/version còn ở RESEARCH, thứ tự duy nhất PLAN.
 
 <a id="auth-profile"></a>
 ### Success/profile count1 đã đọc sạch trên copy — CP058

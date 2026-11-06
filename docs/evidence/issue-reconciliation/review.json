@@ -11,9 +11,9 @@
       "features": [
         "KR-B001"
       ],
-      "known": "CP178/PR250 merged2f2b87f/K0K2a accepted; CP179 manual K1 acceptance for offline R2 recipe/cold3/nativeAPI PID/controls/provenance. Not3e9coldstarts or originalWindowsbootstrap.",
+      "known": "CP181 K2measuredofflineprofile accepted byCodex unchangedcriteria/nativeoracle+CP180stream+sameprocessretry/reset; K0/K2aCP178/K1R2CP179 retain scope.",
       "remaining": "KRE-001 identity/harness scope fulfilled and mergedPR250; bootstrap/fullcodec/login/gameplay acceptance belongs #2/#3/#14.",
-      "next_test": "No repeat scopedR2cold3/known gamecycles. NEXT-K2-RETRY-RESET/#3 afterCP180 actualstream/CRCnegative/redirectreset per PLAN; widerWCP#2 only trigger.",
+      "next_test": "NEXT-K3-IDENTITY-CACHE/#14 perPLAN, sourcefirst CP058/059/060/181; widercodec/WCP only concreteconsumer trigger; no repeatedretry/model/gameplay.",
       "acceptance": "K0 source/copy/dbidentity và control ownership/isolation/cleanup cósource; Windows/control chưa tự xácnhận từWine.",
       "reason": "Manual unchangedcriterion/evidence review, not checkpoint/script inference. AUD053adhocthrough178, periodic176/next180; nativecontrols and failedpreparation preserved.",
       "sources": [
@@ -43,9 +43,9 @@
         "KR-B001",
         "KR-B002"
       ],
-      "known": "CP178/PR250 merged2f2b87f/K0K2a accepted; CP179 manual K1 acceptance for offline R2 recipe/cold3/nativeAPI PID/controls/provenance. Not3e9coldstarts or originalWindowsbootstrap.",
+      "known": "CP181 K2measuredofflineprofile accepted byCodex unchangedcriteria/nativeoracle+CP180stream+sameprocessretry/reset; K0/K2aCP178/K1R2CP179 retain scope.",
       "remaining": "Wider WCP/launcher config only when triggered; fullK2/auth/cache/downstream/physicalnetwork remain open.",
-      "next_test": "No repeat scopedR2cold3/known gamecycles. NEXT-K2-RETRY-RESET/#3 afterCP180 actualstream/CRCnegative/redirectreset per PLAN; widerWCP#2 only trigger.",
+      "next_test": "NEXT-K3-IDENTITY-CACHE/#14 perPLAN, sourcefirst CP058/059/060/181; widercodec/WCP only concreteconsumer trigger; no repeatedretry/model/gameplay.",
       "acceptance": "K1 chosen offline R2 accepted CP179, widerWCP/config needs own consumer/runtime evidence when triggered; not originalWindowsbootstrap/fullK2.",
       "reason": "Manual unchangedcriterion/evidence review, not checkpoint/script inference. AUD053adhocthrough178, periodic176/next180; nativecontrols and failedpreparation preserved.",
       "sources": [
@@ -72,29 +72,31 @@
     {
       "number": 3,
       "kre": "KRE-003",
-      "classification": "in_progress",
+      "classification": "backlog",
       "features": [
         "KR-B003"
       ],
-      "known": "CP179K1R2/PR251merged2e6dae4; CP180 actualWine e9split/coalesced/CRCnegative/redirectsocketreset measured; prefixguard0/cap1MiBobserved not fullbounds; fullK2/downstream open.",
-      "remaining": "Sameprocessretry/reconnectafterCRC/accountresume; wrongseq/prefix/fullmode/bounds per trigger; K3cacheidentity/downstream/fullmatch unchangedopen.",
-      "next_test": "No repeat scopedR2cold3/known gamecycles. NEXT-K2-RETRY-RESET/#3 afterCP180 actualstream/CRCnegative/redirectreset per PLAN; widerWCP#2 only trigger.",
-      "acceptance": "Primitive→framebuilder KR cólocator/hash đãđạt; residualfullcodec/livebounds cónative/modelnegative control rồimớiđóngscope cònlại.",
-      "reason": "Manual unchangedcriterion/evidence review, not checkpoint/script inference. AUD053adhocthrough178, periodic176/next180; nativecontrols and failedpreparation preserved.",
+      "known": "CP181 K2measuredofflineprofile accepted byCodex unchangedcriteria/nativeoracle+CP180stream+sameprocessretry/reset; K0/K2aCP178/K1R2CP179 retain scope.",
+      "remaining": "Broadergrammar/headerauthority/prefixguardon/fullmodes/realcapenforcement/stringblobvariants/FFFFFFFFmodelblocked; K2measuredprofile accepted, notallcodec.",
+      "next_test": "NEXT-K3-IDENTITY-CACHE/#14 perPLAN, sourcefirst CP058/059/060/181; widercodec/WCP only concreteconsumer trigger; no repeatedretry/model/gameplay.",
+      "acceptance": "K2measuredprofile fulfilled CP181 unchangedPLANcriteria; residualvariants need scopednativeconsumer/measurements before wholeissueclosed.",
+      "reason": "Issue keeps wider residual codec scope; manual K2acceptance doesnotdeclare allvariants recovered orclose wholeissue.",
       "sources": [
         "docs/PROTOCOL.md#codec-stream-boundaries",
         "docs/RESEARCH.md#gap-socket-codec",
         "docs/PLAN.md#current-order",
         "docs/PLAN.md#k0-k2a-acceptance",
         "docs/PROTOCOL.md#original-windows-control",
-        "docs/PLAN.md#k1-acceptance"
+        "docs/PLAN.md#k1-acceptance",
+        "docs/PLAN.md#k2-acceptance"
       ],
       "evidence": [
         "docs/evidence/primitives/README.md",
         "docs/evidence/codec-boundaries/README.md",
         "docs/evidence/peer-endpoints/README.md#cp178",
         "docs/evidence/wine-r2/README.md#cp179",
-        "docs/evidence/live-codec-stream/README.md"
+        "docs/evidence/live-codec-stream/README.md",
+        "docs/evidence/live-codec-stream/README.md#cp181"
       ],
       "prs": [
         75,
@@ -153,9 +155,9 @@
         "KR-F001",
         "KR-F015"
       ],
-      "known": "CP179K1R2/PR251merged2e6dae4; CP180 actualWine e9split/coalesced/CRCnegative/redirectsocketreset measured; prefixguard0/cap1MiBobserved not fullbounds; fullK2/downstream open.",
-      "remaining": "Sameprocessretry/reconnectafterCRC/accountresume; wrongseq/prefix/fullmode/bounds per trigger; K3cacheidentity/downstream/fullmatch unchangedopen.",
-      "next_test": "No repeat scopedR2cold3/known gamecycles. NEXT-K2-RETRY-RESET/#3 afterCP180 actualstream/CRCnegative/redirectreset per PLAN; widerWCP#2 only trigger.",
+      "known": "CP181 K2measuredofflineprofile accepted byCodex unchangedcriteria/nativeoracle+CP180stream+sameprocessretry/reset; K0/K2aCP178/K1R2CP179 retain scope.",
+      "remaining": "K3identity/cache/UI/wrongstage/version anddownstreamK4–K7/K6afullmatch/LANInternet4–8clients remainopen; currentK2profileaccepted.",
+      "next_test": "NEXT-K3-IDENTITY-CACHE/#14 perPLAN, sourcefirst CP058/059/060/181; widercodec/WCP only concreteconsumer trigger; no repeatedretry/model/gameplay.",
       "acceptance": "Epic checklist: linkedscopedtask/evidence+authoritymatrix vàacceptancegate ởPLAN; từngtaskđóng khôngđóngepic/K5/K6a.",
       "reason": "Manual unchangedcriterion/evidence review, not checkpoint/script inference. AUD053adhocthrough178, periodic176/next180; nativecontrols and failedpreparation preserved.",
       "sources": [
@@ -212,7 +214,8 @@
         "docs/PROTOCOL.md#replacement-profile",
         "docs/PLAN.md#k0-k2a-acceptance",
         "docs/PROTOCOL.md#original-windows-control",
-        "docs/PLAN.md#k1-acceptance"
+        "docs/PLAN.md#k1-acceptance",
+        "docs/PLAN.md#k2-acceptance"
       ],
       "evidence": [
         "docs/evidence/current-movement-cycles/README.md",
@@ -269,7 +272,8 @@
         "docs/evidence/peer-endpoints/README.md#cp177",
         "docs/evidence/peer-endpoints/README.md#cp178",
         "docs/evidence/wine-r2/README.md#cp179",
-        "docs/evidence/live-codec-stream/README.md"
+        "docs/evidence/live-codec-stream/README.md",
+        "docs/evidence/live-codec-stream/README.md#cp181"
       ],
       "prs": [
         173,
@@ -667,6 +671,6 @@
       "successors": []
     }
   ],
-  "as_of_utc": "2026-11-06T21:42:17.297728+00:00",
+  "as_of_utc": "2026-11-06T22:16:23.761997+00:00",
   "limits": "Dated manual dispositions through CP146; snapshotcaptureUTC only/no semantic or gate certification; immutable completehistory."
 }
