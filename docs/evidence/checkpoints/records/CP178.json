@@ -1,0 +1,328 @@
+{
+  "id": "CP178",
+  "previous": "CP177",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-06T20:43:36.202886+00:00",
+  "context_commit": "b7972a87eda9abd8d76b7bd6cd39f39385a9e3cf",
+  "owner": "Codex",
+  "reviewer": "Codex",
+  "question": "Which unchanged K0→K6a acceptance can be met from existing native evidence plus minimum originalWindowscontrol, and what practical blocker comes next?",
+  "scope": "Source-first CP001/006/014/057/058 and currentK0K2acriteria/privateartifact/VNidentities, WinBoatoldprobe reused; freshoriginal Windowsfixed-fullcopy/resource/admin/PID/cwd/window/ETW/isolation/cleanup controls. Reuse native staticoracles without newcodec scans/re-emulation/game replay; manualacceptance and AUD053adhoc, periodicnotreset. Exact measured diagnostic PS/console bytes promoted to tools.",
+  "artifacts": [
+    {
+      "name": "OriginalKR00967unchanged",
+      "sha256": "a52545c14b1fea423de655c3163d6360b628d61c1cd472b46fdbc8a9ffe15f4e"
+    },
+    {
+      "name": "CurrentWinecopyunchanged",
+      "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+    },
+    {
+      "name": "NativeIDAfullcopycf72privateanalysis",
+      "sha256": "cf72da112308d9f1ca256df8089594c5f787875310933073bf6bd5ba6f70e63b"
+    },
+    {
+      "name": "modOmodelreference",
+      "sha256": "a08950c833d3acab8281049def7b3dc96b221f107eeda01da3a548e34b91dce5"
+    },
+    {
+      "name": "OriginalKR00967NewPatcher",
+      "sha256": "b59e4dce9ad23c439a7632ce04ecb2eed3481585bd2454100b05c9d7527f5c02"
+    },
+    {
+      "name": "VN116original_reference_only",
+      "sha256": "bce8644d4e783d1354ab4fc880e1ab9a4ab3325327028f37d99e5439e25f4bbd"
+    },
+    {
+      "name": "VN116patched_runtime_reference_only",
+      "sha256": "bc875ba5765cc112e924f46e75d0ace112904c7801126e46bc0abb1c9cb576b1"
+    }
+  ],
+  "locators": [
+    "CA originalSHAa525/NewPatcherb59/full187files1861590835bytes/CNTFSDriveType3; resourceRT_MANIFEST1/524bytes/e3880876e4c5bc886a88cb396037a7672139fe35575cff147466e129205e4089.",
+    "ca-control-r1 PID1328/parent9208/controlSHA1a2ce14a4b58cf5a8de87a297cde67d950cfd747315dbde314fd501abeb5de79; NP9656/controlSHAb6916b13be3672f65a326dcce85c0cfa1ea39cd15ef3e2fff6bb1ce86733fbb2; BothNP11136/CA7876/controlSHA2e95bbb120e67c0b7000c6921ffefa9703ac2f0a6fa04dc786090246d39f8fbe.",
+    "NativeOSPEB32cwd/token andkernelEvent1 parent/startticks/highS-1-16-12288/elevated1; moduleAPI/ETWImageLoad samebase/size, CA400000/31842304. No game threadPC sampled.",
+    "ExistingKRnativehelpers cf72:14A5B90/14A5C90/14A5C80; modOa089:14EF300(RVA10EF300)/13AEFE0/14EBA90. K2a staticprobe scope only, modelprefix/cap/FFFFFFFF/liveK2 limits unchanged.",
+    "CP177 PR249 mergedb7972a87eda9abd8d76b7bd6cd39f39385a9e3cf; AUD053adhoc through178, periodic176/next180. Independentreviewwaived, no approval forged."
+  ],
+  "findings": [
+    {
+      "summary": "Targeted Windows resource-only load reads original CA RT_MANIFEST1/524bytes/e388 andrequireAdministrator withoutentrypoint. PortableREAwholePEtreeblockedrange, no partialclaim/repeatedtool/targetmutation. NewPatcherIDs1–3nomatchnot allresourcesabsence.",
+      "source": "kr_static",
+      "status": "confirmed",
+      "method": "static",
+      "canonical": "docs/PROTOCOL.md#original-windows-control",
+      "evidence": [
+        "RUN-00026",
+        "RUN-00001",
+        "RUN-00045"
+      ],
+      "limits": "Original packed KR00967/control only in current Windows10x64VM with ETW/read-only OS metadata observation; exactPC/return/causalmodal/ACP/provider/launcherIPC notmeasured. Onecontrol each CA/NP/Both, not3coldstarts ofpassingK1recipe. No originalWindowslogin/gameplay/fullK2/auth/K3–K7/K6a/fullmatch/LANInternet8clients; no raw/sourcebinary/DB rewrites. ExistingWinegameplayCP176/replaceCP177 separate. GateK0/K2a decisions manual byCodex/waiver, not verifier or processalive."
+    },
+    {
+      "summary": "CurrentVMnoexistingCA/patcher; full187source copies fixedCNTFS/DriveType3/base+game hash match each1861590835bytes. Originalsource187tree unchanged after threecontrols; current5KRsource/dump/DB and VNoriginalbce/patchedreferencebc875 verified. No import oflegacyV1scope orVNopcode/layout.",
+      "source": "design",
+      "status": "confirmed",
+      "method": "design",
+      "canonical": "docs/PROTOCOL.md#original-windows-control",
+      "evidence": [
+        "RUN-00027",
+        "RUN-00052",
+        "RUN-00020",
+        "RUN-00063"
+      ],
+      "limits": "Original packed KR00967/control only in current Windows10x64VM with ETW/read-only OS metadata observation; exactPC/return/causalmodal/ACP/provider/launcherIPC notmeasured. Onecontrol each CA/NP/Both, not3coldstarts ofpassingK1recipe. No originalWindowslogin/gameplay/fullK2/auth/K3–K7/K6a/fullmatch/LANInternet8clients; no raw/sourcebinary/DB rewrites. ExistingWinegameplayCP176/replaceCP177 separate. GateK0/K2a decisions manual byCodex/waiver, not verifier or processalive."
+    },
+    {
+      "summary": "Three originalWindowsrecipes onceeach: CA1328, NP9656, BothNP11136/CA7876. Nativeactualcwd/token/module/window andindependentkernel exactparent/startticks/image/high/elevated match. Modal??? belongsCA; Nexon/embeddedIEbelongsPatcher. Fresh CA CALog46bytes/twolinesInitBeforePatch→ProcessPatchmarker; no exactPC/return/cause/bootstrap success inferred.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#original-windows-control",
+      "evidence": [
+        "RUN-00037",
+        "RUN-00004",
+        "RUN-00036",
+        "RUN-00003"
+      ],
+      "limits": "Original packed KR00967/control only in current Windows10x64VM with ETW/read-only OS metadata observation; exactPC/return/causalmodal/ACP/provider/launcherIPC notmeasured. Onecontrol each CA/NP/Both, not3coldstarts ofpassingK1recipe. No originalWindowslogin/gameplay/fullK2/auth/K3–K7/K6a/fullmatch/LANInternet8clients; no raw/sourcebinary/DB rewrites. ExistingWinegameplayCP176/replaceCP177 separate. GateK0/K2a decisions manual byCodex/waiver, not verifier or processalive."
+    },
+    {
+      "summary": "IPv4/6guestFORWARDDROP/DNSproxyguard held; owned172.18.0.1:39177 negativeTCPtimesout: guestbridgeSYN2each/noeth0sameflow/nohostaccept. StoponlyownedPID/start/path/hash; no remainingowned/externalchild/newdriver; ETWstop0/sourcefrozen/exactfirewallrestore. PCAPbackground/management andprocessonlyETW are qualified; no fullregistry/driver/networkAPI state certification.",
+      "source": "design",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#original-windows-control",
+      "evidence": [
+        "RUN-00037",
+        "RUN-00115",
+        "RUN-00164",
+        "RUN-00094"
+      ],
+      "limits": "Original packed KR00967/control only in current Windows10x64VM with ETW/read-only OS metadata observation; exactPC/return/causalmodal/ACP/provider/launcherIPC notmeasured. Onecontrol each CA/NP/Both, not3coldstarts ofpassingK1recipe. No originalWindowslogin/gameplay/fullK2/auth/K3–K7/K6a/fullmatch/LANInternet8clients; no raw/sourcebinary/DB rewrites. ExistingWinegameplayCP176/replaceCP177 separate. GateK0/K2a decisions manual byCodex/waiver, not verifier or processalive."
+    },
+    {
+      "summary": "Codex manually maps unchangedcriteria andaccepts K0identity/controlharness plus existing bounded staticK2a oracle afterK0. ExistingKRwriter131340calls, WCPcursor12/errors0/mode0-0→2-3, CP05776streams/14completedboundaries/5resetmodel/697relations andCP058fullcursors/errors0 reused; no re-emulation/newWindowscodec proof. Full/liveK2 andK1/downstream remainopen.",
+      "source": "design",
+      "status": "confirmed",
+      "method": "design",
+      "canonical": "docs/PROTOCOL.md#original-windows-control",
+      "evidence": [
+        "RUN-00035",
+        "RUN-00037",
+        "RUN-00200",
+        "RUN-00202",
+        "RUN-00206"
+      ],
+      "limits": "Original packed KR00967/control only in current Windows10x64VM with ETW/read-only OS metadata observation; exactPC/return/causalmodal/ACP/provider/launcherIPC notmeasured. Onecontrol each CA/NP/Both, not3coldstarts ofpassingK1recipe. No originalWindowslogin/gameplay/fullK2/auth/K3–K7/K6a/fullmatch/LANInternet8clients; no raw/sourcebinary/DB rewrites. ExistingWinegameplayCP176/replaceCP177 separate. GateK0/K2a decisions manual byCodex/waiver, not verifier or processalive."
+    },
+    {
+      "summary": "NewPatchercontrol-r1 was preparation-onlyrobocopyerror/no roots, preserved; v3quote logargument/normalize separator before newrun. v2nestedpatharchivefalsepositive notclientmutation; analyserextra-finalblankassumptions correctedtoexact two nativeCALoglines. Raw/binary/oldreports unchanged. PROTOCOLheaderCP170/AUD050next172 corrected; AUD053adhocdoesnotreset180cadence.",
+      "source": "design",
+      "status": "confirmed",
+      "method": "design",
+      "canonical": "docs/PROTOCOL.md#original-windows-control",
+      "evidence": [
+        "RUN-00144",
+        "RUN-00011",
+        "RUN-00012",
+        "RUN-00013",
+        "RUN-00035"
+      ],
+      "limits": "Original packed KR00967/control only in current Windows10x64VM with ETW/read-only OS metadata observation; exactPC/return/causalmodal/ACP/provider/launcherIPC notmeasured. Onecontrol each CA/NP/Both, not3coldstarts ofpassingK1recipe. No originalWindowslogin/gameplay/fullK2/auth/K3–K7/K6a/fullmatch/LANInternet8clients; no raw/sourcebinary/DB rewrites. ExistingWinegameplayCP176/replaceCP177 separate. GateK0/K2a decisions manual byCodex/waiver, not verifier or processalive."
+    },
+    {
+      "summary": "MeasuredPSv3 andconsole exactbytes delivered under tools withSHA equality; environment-specific capture/lease/sourcecopy recipes/raw retained local. Server/codec/exporter inputs unchanged fromCP177, reuse284+7tests bysourcehash. No gate inferredfromhelper tests or rawframecount.",
+      "source": "design",
+      "status": "confirmed",
+      "method": "design",
+      "canonical": "docs/PROTOCOL.md#original-windows-control",
+      "evidence": [
+        "RUN-00054",
+        "RUN-00043",
+        "RUN-00010"
+      ],
+      "limits": "Original packed KR00967/control only in current Windows10x64VM with ETW/read-only OS metadata observation; exactPC/return/causalmodal/ACP/provider/launcherIPC notmeasured. Onecontrol each CA/NP/Both, not3coldstarts ofpassingK1recipe. No originalWindowslogin/gameplay/fullK2/auth/K3–K7/K6a/fullmatch/LANInternet8clients; no raw/sourcebinary/DB rewrites. ExistingWinegameplayCP176/replaceCP177 separate. GateK0/K2a decisions manual byCodex/waiver, not verifier or processalive."
+    }
+  ],
+  "verification": [
+    {
+      "check": "OriginalWindowsnative+kernel/copy/PCAP/source/cleanuprelationships",
+      "result": "pass",
+      "evidence": [
+        "RUN-00037",
+        "RUN-00052"
+      ],
+      "limits": "12314checks largelyPCAPintegrity, not featurecoverage or gatepercentage. Three recipes once each, no login/gameplay/nativePC cause."
+    },
+    {
+      "check": "Current5KRand2VNidentity/sourceprotection",
+      "result": "pass",
+      "evidence": [
+        "RUN-00020",
+        "RUN-00063",
+        "RUN-00052"
+      ],
+      "limits": "Identityonly; VNoriginal andpatched different; no newVNruntime or sourceDBwrite."
+    },
+    {
+      "check": "Production284server/7exporttests reused; newdiagnostic exactmeasuredtool bytes/CLIhelp",
+      "result": "pass",
+      "evidence": [
+        "RUN-00043",
+        "RUN-00054",
+        "RUN-00010"
+      ],
+      "limits": "No server/codec/profilebehaviorchange; diagnostic actualnativecontrols supply meaningfulverification, not syntheticmirrortests."
+    },
+    {
+      "check": "Docs/catalog/issue links/live states",
+      "result": "pass",
+      "evidence": [
+        "RUN-00185",
+        "RUN-00186",
+        "RUN-00187"
+      ],
+      "limits": "Full local/history required afterappend beforecommit; snapshotsdated, issue1stillopenpendingdelivery, intendedauto-close onPRmerge."
+    },
+    {
+      "check": "ManualK0andstaticK2a acceptance/currentstateaudit",
+      "result": "pass",
+      "evidence": [
+        "RUN-00035",
+        "RUN-00002"
+      ],
+      "limits": "Codexselfreview/ownerwaiver; scripts do not infer semantics/acceptance. AUD053adhocthrough178; periodicnext180."
+    },
+    {
+      "check": "K1/fullK2/K3–K7/K6a/fullmatch/LANInternet8clients",
+      "result": "pending",
+      "evidence": [
+        "RUN-00035"
+      ],
+      "limits": "Original packed KR00967/control only in current Windows10x64VM with ETW/read-only OS metadata observation; exactPC/return/causalmodal/ACP/provider/launcherIPC notmeasured. Onecontrol each CA/NP/Both, not3coldstarts ofpassingK1recipe. No originalWindowslogin/gameplay/fullK2/auth/K3–K7/K6a/fullmatch/LANInternet8clients; no raw/sourcebinary/DB rewrites. ExistingWinegameplayCP176/replaceCP177 separate. GateK0/K2a decisions manual byCodex/waiver, not verifier or processalive."
+    }
+  ],
+  "evidence": [],
+  "evidence_manifests": [
+    {
+      "path": "docs/evidence/checkpoints/evidence/CP178-original-Windows-controls.json",
+      "bytes": 52406,
+      "sha256": "6b134360f57877454b040278715029f5ba5e3be2b5209dc597d656784e986c70",
+      "count": 209
+    },
+    {
+      "path": "docs/evidence/checkpoints/evidence/CP178-original-source-tree.json",
+      "bytes": 45085,
+      "sha256": "2473532ca5c06066317e4ae04d8f15a87e1f54677638d4e8aac93d8deef17ce8",
+      "count": 189
+    }
+  ],
+  "delta": {
+    "added": [
+      "OriginalWindowsfixedfullcopy/nativeadminmanifest/PID/token/cwd/modal/ETW/capture/isolation/cleanup controlsofCA/NP/Both; manualK0identity/harness andstaticK2a acceptance."
+    ],
+    "corrected": [
+      "OriginalWindowsownership no longerunknown; sourcefunctionPC/modalcause remainsunknown despiteCALogmarker. FullK2/notK1 mustremainopen.",
+      "CP177PR249merged; currentPROTOCOLheader/audit due staleCP170/172fixed; sourcefailedpreparation/parserlogs preserved, not nativeclient failures."
+    ],
+    "superseded": [
+      "NEXT-LOCAL-ACCEPTANCE closed as mapping/firstblockerselection; NEXT-K1-COLD-RECIPE active, not entirelocalplay/gatescomplete."
+    ]
+  },
+  "blockers": [
+    "K1 requires exactchosenrecipe/localnetworkattempt/API/PID+cold3/provenance; oldR2/currentWine source audit next before minimum newmeasurements.",
+    "Full/liveK2/headerprefix/realcap/FFFFFFFF/fullmodes/reconnect, K3auth/cache anddownstreamacceptance stillopen. WindowsmodalexactPC/return/cause unknown, no newfullgame/physicalnetworkclaim."
+  ],
+  "next_steps": [
+    {
+      "id": "NEXT-LOCAL-ACCEPTANCE",
+      "task": "KRE-005b",
+      "state": "closed",
+      "action": "CP178 unchangedacceptance mapped fromexistingdata+newcontrols; K0/K2aaccepted, earliestremainingK1chosenrecipe selected. NoK6a/fullmatchclosure.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-K1-COLD-RECIPE",
+      "task": "KRE-002",
+      "state": "active",
+      "action": "PLAN source-first WineR2oldcold3/CP004–006/currente9bootstrap recipe/PID/localattempt/caller/patch provenance; only minimal missingcold3control, no knownACgames/staticconsumerreplay.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    }
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-11-06T20:43:36.202886+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "Codexsolo nativeWindows/runtime/code/selfchecks/manualacceptance/AUD053; ownerwaiver, exactheadPRbeforemerge. K0/K2a manual projectacceptance, not independentapproval.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Owner explicitly requested solo, no workers/review."
+    }
+  },
+  "docs_sync": [
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "CP178nativecontrol/K0K2aacceptance/limits/headerstale/nextK1 andAUD053 syncedbeforecomplete; sourcecriteria unchanged."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "CP178nativecontrol/K0K2aacceptance/limits/headerstale/nextK1 andAUD053 syncedbeforecomplete; sourcecriteria unchanged."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "updated",
+      "reason": "CP178nativecontrol/K0K2aacceptance/limits/headerstale/nextK1 andAUD053 syncedbeforecomplete; sourcecriteria unchanged."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "updated",
+      "reason": "CP178nativecontrol/K0K2aacceptance/limits/headerstale/nextK1 andAUD053 syncedbeforecomplete; sourcecriteria unchanged."
+    },
+    {
+      "path": "docs/features.json",
+      "state": "updated",
+      "reason": "CP178nativecontrol/K0K2aacceptance/limits/headerstale/nextK1 andAUD053 syncedbeforecomplete; sourcecriteria unchanged."
+    },
+    {
+      "path": "docs/COVERAGE.md",
+      "state": "updated",
+      "reason": "CP178nativecontrol/K0K2aacceptance/limits/headerstale/nextK1 andAUD053 syncedbeforecomplete; sourcecriteria unchanged."
+    },
+    {
+      "path": "docs/evidence/peer-endpoints/README.md",
+      "state": "updated",
+      "reason": "CP178nativecontrol/K0K2aacceptance/limits/headerstale/nextK1 andAUD053 syncedbeforecomplete; sourcecriteria unchanged."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/review.json",
+      "state": "updated",
+      "reason": "CP178nativecontrol/K0K2aacceptance/limits/headerstale/nextK1 andAUD053 syncedbeforecomplete; sourcecriteria unchanged."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
+      "state": "updated",
+      "reason": "CP178nativecontrol/K0K2aacceptance/limits/headerstale/nextK1 andAUD053 syncedbeforecomplete; sourcecriteria unchanged."
+    },
+    {
+      "path": "docs/evidence/checkpoints/audits/AUD053.json",
+      "state": "updated",
+      "reason": "CP178nativecontrol/K0K2aacceptance/limits/headerstale/nextK1 andAUD053 syncedbeforecomplete; sourcecriteria unchanged."
+    },
+    {
+      "path": "server/README.md",
+      "state": "unchanged",
+      "reason": "Productionservice/profile/storeworkflow/cadence unchanged; measured diagnostic tools only."
+    },
+    {
+      "path": "docs/evidence/checkpoints/README.md",
+      "state": "unchanged",
+      "reason": "Productionservice/profile/storeworkflow/cadence unchanged; measured diagnostic tools only."
+    }
+  ]
+}

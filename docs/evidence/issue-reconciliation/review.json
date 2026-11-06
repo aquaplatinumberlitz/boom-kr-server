@@ -7,54 +7,62 @@
     {
       "number": 1,
       "kre": "KRE-001",
-      "classification": "backlog",
+      "classification": "in_progress",
       "features": [
         "KR-B001"
       ],
-      "known": "SHA/layout/source-copy-DB và namespace/lease/ownership recipe đã có; modifiedWine có nativeflows.",
-      "remaining": "Windows original/control PID/window/effective-token/ba coldstart đúngrecipe chưa đủ gate.",
-      "next_test": "TheoPLAN khi mở control: privateWindows/bảncopyfixedlocal/egressblocked, ownership+API/capture cùngrun.",
+      "known": "CP178 K0 originalWindows identity/harness and bounded K2a staticprobe accepted by Codexmanual/waiver; originalCA/NP/Both actualPID/token/cwd/module/ETW/isolation/cleanup/source187verified. CP177PR249mergedb7972a8; gameplayWineCP176 separate.",
+      "remaining": "PRdelivery/issue1autocloseaftermerge; outsideK0 K1chosenrecipe/fullK2/K3–K7/K6a/fullmatch/LANInternet8actualclients stayopen.",
+      "next_test": "ExactheadPRdelivery for acceptedscope; nextbootstrap #2/#14 perPLAN.",
       "acceptance": "K0 source/copy/dbidentity và control ownership/isolation/cleanup cósource; Windows/control chưa tự xácnhận từWine.",
-      "reason": "Giữ mở phần control còn thiếu; bỏ quy tắc worker/review cũ, backlogtheoPLAN.",
+      "reason": "Manual unchangedcriterion/evidence review, not checkpoint/script inference. AUD053adhocthrough178, periodic176/next180; nativecontrols and failedpreparation preserved.",
       "sources": [
         "docs/PROTOCOL.md#wcp",
         "docs/RESEARCH.md#gap-process-patch",
-        "docs/PLAN.md#current-order"
+        "docs/PLAN.md#current-order",
+        "docs/PLAN.md#k0-k2a-acceptance",
+        "docs/PROTOCOL.md#original-windows-control"
       ],
       "evidence": [
         "docs/evidence/artifacts.json",
-        "docs/evidence/wine/README.md"
+        "docs/evidence/wine/README.md",
+        "docs/evidence/peer-endpoints/README.md#cp178"
       ],
       "prs": [
-        7
+        7,
+        249
       ],
       "successors": []
     },
     {
       "number": 2,
       "kre": "KRE-002",
-      "classification": "backlog",
+      "classification": "in_progress",
       "features": [
         "KR-B001",
         "KR-B002"
       ],
-      "known": "ProcessPatch/bootstrap local response/consumer modes cósource; PR8/10 và CP004–007 mở WCP qua nhánhđãđo.",
-      "remaining": "Windows control/fullbootstrap IPC/oneclickuser/configtoànpath chưa đủ; khônggiữ nextstep ngclienttrap đãqua.",
-      "next_test": "Dùng lại bootstrap/WCPsource, chỉ trace consumer/config đangchặn control thực theoPLAN.",
+      "known": "CP178 K0 originalWindows identity/harness and bounded K2a staticprobe accepted by Codexmanual/waiver; originalCA/NP/Both actualPID/token/cwd/module/ETW/isolation/cleanup/source187verified. CP177PR249mergedb7972a8; gameplayWineCP176 separate.",
+      "remaining": "K1chosenrecipe/localattempt/cold3; full/liveK2prefixguard/caps/modes/reconnect and K3authcache/dependencies/gates open. No originalWindowsbootstrap/gameplay success.",
+      "next_test": "PLAN sourcefirst WineR2/CP004–006/currente9recipe/coldrun; only minimal missing control, no repeatedknown game/staticfunctions.",
       "acceptance": "Nativecaller/guard/replyconstraints cóSHA/VA và control recipe; phầnK1/vanilla/fullcontract giữmở ởparent, khônglặpboundedPR8.",
-      "reason": "Thu gọn thành bootstrap residual; code/replyboundedđãmerged khôngtựđóngK1.",
+      "reason": "Manual unchangedcriterion/evidence review, not checkpoint/script inference. AUD053adhocthrough178, periodic176/next180; nativecontrols and failedpreparation preserved.",
       "sources": [
         "docs/PROTOCOL.md#wcp",
         "docs/RESEARCH.md#gap-wcp-config",
-        "docs/PLAN.md#current-order"
+        "docs/PLAN.md#current-order",
+        "docs/PLAN.md#k0-k2a-acceptance",
+        "docs/PROTOCOL.md#original-windows-control"
       ],
       "evidence": [
         "docs/evidence/bootstrap-wire/README.md",
-        "docs/evidence/wcp-guard/README.md"
+        "docs/evidence/wcp-guard/README.md",
+        "docs/evidence/peer-endpoints/README.md#cp178"
       ],
       "prs": [
         8,
-        10
+        10,
+        249
       ],
       "successors": []
     },
@@ -65,22 +73,26 @@
       "features": [
         "KR-B003"
       ],
-      "known": "KRprimitive/framer/typedreader/capturedframes cóoracle, CP057stream/seq/caps model.",
-      "remaining": "Fullmodes/prefixguard/live reconnect/stringblob/reset chưanghiệmthu.",
-      "next_test": "Chỉconsumer socket/mode/bounds cótrigger; khônglặp76split hoặcnớiallocationFFFFFFFF.",
+      "known": "CP178 K0 originalWindows identity/harness and bounded K2a staticprobe accepted by Codexmanual/waiver; originalCA/NP/Both actualPID/token/cwd/module/ETW/isolation/cleanup/source187verified. CP177PR249mergedb7972a8; gameplayWineCP176 separate.",
+      "remaining": "K1chosenrecipe/localattempt/cold3; full/liveK2prefixguard/caps/modes/reconnect and K3authcache/dependencies/gates open. No originalWindowsbootstrap/gameplay success.",
+      "next_test": "PLAN sourcefirst WineR2/CP004–006/currente9recipe/coldrun; only minimal missing control, no repeatedknown game/staticfunctions.",
       "acceptance": "Primitive→framebuilder KR cólocator/hash đãđạt; residualfullcodec/livebounds cónative/modelnegative control rồimớiđóngscope cònlại.",
-      "reason": "Scopeworkerstaticr1 lịch sử; giữ issuecodec tổng hợp cóchecklist thiếu, khôngđổiunknownthànhdone.",
+      "reason": "Manual unchangedcriterion/evidence review, not checkpoint/script inference. AUD053adhocthrough178, periodic176/next180; nativecontrols and failedpreparation preserved.",
       "sources": [
         "docs/PROTOCOL.md#codec-stream-boundaries",
         "docs/RESEARCH.md#gap-socket-codec",
-        "docs/PLAN.md#current-order"
+        "docs/PLAN.md#current-order",
+        "docs/PLAN.md#k0-k2a-acceptance",
+        "docs/PROTOCOL.md#original-windows-control"
       ],
       "evidence": [
         "docs/evidence/primitives/README.md",
-        "docs/evidence/codec-boundaries/README.md"
+        "docs/evidence/codec-boundaries/README.md",
+        "docs/evidence/peer-endpoints/README.md#cp178"
       ],
       "prs": [
-        75
+        75,
+        249
       ],
       "successors": []
     },
@@ -135,11 +147,11 @@
         "KR-F001",
         "KR-F015"
       ],
-      "known": "CP176/PR248 merged; CP177 optional replacement preset/47pins/vacancy capacity, actual C0/C1 initial/118/159158 both current views,48relations each/33and42nativecases;284server7export tests. CP176 AC2normalcycles remain separate.",
-      "remaining": "Maxima/exhaustion/general membership/account resume/fullauth/cache/codec/control/dependency/gates/LANInternet8clients open; C0r2 startupSIGSEGV/jypc rootcause not fixed by passing independent control.",
-      "next_test": "PLAN source-first K0→K6a/authority acceptance mapping; K2a static criterion first, then one concrete missing deployment/runtime control; no known C0C1/AC2cycle replay.",
+      "known": "CP178 K0 originalWindows identity/harness and bounded K2a staticprobe accepted by Codexmanual/waiver; originalCA/NP/Both actualPID/token/cwd/module/ETW/isolation/cleanup/source187verified. CP177PR249mergedb7972a8; gameplayWineCP176 separate.",
+      "remaining": "K1chosenrecipe/localattempt/cold3; full/liveK2prefixguard/caps/modes/reconnect and K3authcache/dependencies/gates open. No originalWindowsbootstrap/gameplay success.",
+      "next_test": "PLAN sourcefirst WineR2/CP004–006/currente9recipe/coldrun; only minimal missing control, no repeatedknown game/staticfunctions.",
       "acceptance": "Epic checklist: linkedscopedtask/evidence+authoritymatrix vàacceptancegate ởPLAN; từngtaskđóng khôngđóngepic/K5/K6a.",
-      "reason": "Narrow exported-profile integration complete by explicit native delta; no automatic gate closure. AUD052through176/next180; all failure/raw history retained.",
+      "reason": "Manual unchangedcriterion/evidence review, not checkpoint/script inference. AUD053adhocthrough178, periodic176/next180; nativecontrols and failedpreparation preserved.",
       "sources": [
         "docs/PROTOCOL.md#authority",
         "docs/RESEARCH.md#feature-gaps",
@@ -191,7 +203,9 @@
         "docs/evidence/peer-endpoints/README.md#cp175",
         "docs/PROTOCOL.md#a-c-basic-cycles",
         "docs/evidence/peer-endpoints/README.md#cp176",
-        "docs/PROTOCOL.md#replacement-profile"
+        "docs/PROTOCOL.md#replacement-profile",
+        "docs/PLAN.md#k0-k2a-acceptance",
+        "docs/PROTOCOL.md#original-windows-control"
       ],
       "evidence": [
         "docs/evidence/current-movement-cycles/README.md",
@@ -245,7 +259,8 @@
         "docs/evidence/peer-endpoints/README.md#cp172",
         "docs/evidence/peer-endpoints/README.md#cp173",
         "docs/evidence/peer-endpoints/README.md#cp174",
-        "docs/evidence/peer-endpoints/README.md#cp177"
+        "docs/evidence/peer-endpoints/README.md#cp177",
+        "docs/evidence/peer-endpoints/README.md#cp178"
       ],
       "prs": [
         173,
@@ -315,7 +330,8 @@
         243,
         244,
         245,
-        248
+        248,
+        249
       ],
       "successors": []
     },
@@ -642,6 +658,6 @@
       "successors": []
     }
   ],
-  "as_of_utc": "2026-11-06T19:12:57.908834+00:00",
+  "as_of_utc": "2026-11-06T20:30:06.148694+00:00",
   "limits": "Dated manual dispositions through CP146; snapshotcaptureUTC only/no semantic or gate certification; immutable completehistory."
 }

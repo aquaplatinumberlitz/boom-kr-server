@@ -1,6 +1,6 @@
 # KR 00967 — contract tương thích client gốc
 
-Revision kr-legacy-contract-r1; cập nhật06/11/2026 JST (CP170; AUD050 quaCP168, kếCP172).
+Revision kr-legacy-contract-r1; cập nhật07/11/2026 JST (CP178; AUD053 ad-hoc qua178; periodic176/kế180).
 **Contract có bằng chứng từng phần; chưa nghiệm thu full codec K2**.
 Lộ trình và thứ tự task chỉ giữ ở [REWRITE_PLAN — KRE](PLAN.md).
 Đây là contract của repo server KR. ADR0009 của bản viết lại là nguồn lịch sử để so sánh;
@@ -6349,3 +6349,47 @@ harness C0 còn wording cũ Cslot1/A-survivor; code, ownership, namespace, host 
 Không Ccapacity exhaustion/hai reservation/survival/peer movement/result/reset mới; CP176 giữ hai
 AC normal cycles riêng. Không account resume/fullauth/general lifecycle/originalWindows/LAN/Internet/
 8client/fullmatch hoặc tự đóng gate. [PLAN](PLAN.md#current-order) tiếp acceptance/control thực tế.
+
+
+<a id="original-windows-control"></a>
+### Control original KR00967 trên Windows VM — CP178
+
+[Recipe/raw/hash và phép đo](evidence/peer-endpoints/README.md#cp178). `kr_static/confirmed`:
+CA sourceSHAa525… có RT_MANIFEST/ID1/524bytes/SHAe388… yêu cầu `requireAdministrator`, đọc bằng
+Windows LoadLibraryEx(DATAFILE|IMAGE_RESOURCE)/FindResource, không gọi entrypoint. REA fulltree trả
+range không file-backed, không có partialsuccess; targeted native resource read giải đúng câu hỏi.
+NewPatcher IDs1–3 không thấy manifest; không suy mọi resource/name/language đều vắng mặt.
+
+`kr_runtime/confirmed` trong Windows10 x64 VM hiện hành: sourceCAa52545…/NewPatcherb59e4d…,
+187file/1861590835bytes mỗi fullcopy, base/game trên CNTFS/DriveType3. Original source không sửa;
+current5source/dump/DBhash khớp, source187tree kiểm trước/sau. Native run từ fixedC, không UNC;
+share chỉ cấp script/evidence. CA-onlyPID1328, NewPatcher-only9656, BothNP11136/CA7876; ETWEvent1
+khớp PID/parent/creationticks/image với controller, tokenhighS-1-16-12288/elevated1. Read-only token/
+PEB32 query có cwd `C:\BoomKR-CP178\game\`, moduleAPI và kernelImageLoad khớp base/size theoPID;
+CA base400000/size31842304. Không port VA/offset VN hoặc đọc sourceDB bằng worker.
+
+CA có modal `??? ??` class#32770 và newCALog46bytes/InitBeforePatch→ProcessPatch; NewPatcher có
+modal `Nexon`/embeddedIE. Both quan sát đồng thời hai PID/modal riêng. Childtext CA vẫn questionmarks;
+ý nghĩa/rootcause/ACP/provider/launcherIPC và exactPC/return tại điểm chặn chưa đo. Không coi title, alive hoặc noTCPsample là
+bootstrap/login. Control quan sát mỗi recipe một lần, không ba coldstart cùng recipe đạt K1.
+
+`design/confirmed` cho isolation/harness: IPv4/6guestFORWARD DROP và DNSproxy guard giữ trong run;
+native PowerShell negativeconnect chỉ tới owned host sentinel172.18.0.1:39177 timeout, hai actualSYN
+mỗi bridgecapture, không sameflow trêneth0/không listeneraccept. PCAP có background/management,
+ETW chỉprocess/image/thread; không fullnetworkAPI/registry/fileauthority. Kill chỉ ownPID/start/path/
+hashguard; 0remainingowned/externalchild/newdriver, ETWstop0, sourcefrozen, exactfirewallrestore.
+Không chứng minh toàn registry/driver state hoặc unobserved bareWindows tương đương.
+
+NewPatcher-r1 preparation lỗi robocopylogoption, chưa launchclient; v3quote argument sửa lỗi và
+normalize separator, giữ failedsource/raw. Before-restorediff của v2 có falsepositive nested paths,
+không coi là nativeclientmutation. Analyzer ban đầu giả extra blankline CALog; raw đúng hai dòng
+CRLF, parser marker/cursor không bị đổi; giữ các log lỗi. Không sửa binary/raw để pass.
+
+Source diagnostic đã đo được giữ byte-identical ở [windows_control.ps1](../tools/windows_control.ps1)
+và [windows_console.py](../tools/windows_console.py). Lease/capture/fullcopy và thư mục output mới
+phải chuẩn bị theo recipe có hash trước khi gọi control; PS không tự cấu hình firewall.
+
+[PLAN](PLAN.md#k0-k2a-acceptance) giữ quyết định nghiệm thu K0/K2a do Codex đối chiếu thủ công/waiver;
+verifier12314checks phần lớn packetintegrity không tự đóng gate. K2a tái dùng oracleKR cũ, không
+runtimecodec mới ở Windows. K1/fullK2/K3–K7/fullmatch/LANInternet8clients tiếp mở; gameplayWineCP176
+và replacementCP177 giữ nguồn riêng. Sourcefact/limits ở đây, thứ tự chỉ ở PLAN.
