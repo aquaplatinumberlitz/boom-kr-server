@@ -1,0 +1,260 @@
+{
+  "id": "CP171",
+  "previous": "CP170",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-06T14:17:44.594667+00:00",
+  "context_commit": "87e7175f163c0ceaf39a03bc8a6fac535781f8b9",
+  "owner": "Codex",
+  "reviewer": "Codex",
+  "question": "Chính optional basic preset được export có giữ hai native basic cycles/reset/Ready và chấp nhận normal promoted B Start3 không?",
+  "scope": "Tái dùng CP170 exact profile/route/probes/two cycles và CP168 actual BStart3; delivery optional pinned preset PR242, fresh actual-exported-file runtime. Không RE lại native consumer/opcode/ItemAttr. Chọn gap policy142 đúng current clearedcell theo known code/test/native195.",
+  "artifacts": [
+    {
+      "name": "OriginalKR00967unchanged",
+      "sha256": "a52545c14b1fea423de655c3163d6360b628d61c1cd472b46fdbc8a9ffe15f4e"
+    },
+    {
+      "name": "CurrentWinecopyunchanged",
+      "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+    },
+    {
+      "name": "NativeIDAfullcopycf72privateanalysis",
+      "sha256": "cf72da112308d9f1ca256df8089594c5f787875310933073bf6bd5ba6f70e63b"
+    },
+    {
+      "name": "modOmodelreference",
+      "sha256": "a08950c833d3acab8281049def7b3dc96b221f107eeda01da3a548e34b91dce5"
+    }
+  ],
+  "locators": [
+    "CP170 PR241 head385c3ecb2faba8804c3e467c3a37b0e6ab0eb78f/mergecbcd15ddd912faf8f337376cf3468455fb53cc49.",
+    "Optional preset PR242 headb805ed5c2e6f63718c5bde785a23957c0814ab1d/merge87e7175f163c0ceaf39a03bc8a6fac535781f8b9; default preset SHA015c73c2868db300fbd427d822a1e9d173c5384ce7db45c7fdb93b4e2477d001 unchanged.",
+    "Run basic-preset-start3-r1 SHA7003baf1592d8dd9e273f527f02ead9d6a0064cef23141848a46046324eaf301/402.663072569s/exit0/1443raw/156frozen; profile SHA bf1f99989e45a4b5e47e831165ad1f43f296418253388d8ba8338532d665afee exact CP170.",
+    "Known base400000/hiddenEB579E/B9C939/B9D0B4/165E63260,E63309,E63E1A/lookupE636D9/52A350 getters; no new native function bodies. Keys12345/12346/12347.",
+    "AUD050 through168/next172 unchanged; native getter/frame models independent of Wine execution."
+  ],
+  "findings": [
+    {
+      "summary": "PR242 thêm optional two-client-basic với exact47 fixture pins/provenance và full operational profile CP170;46 aliases như existingpreset. CLI selection/rebase; default two-client-battle và legacy export không đổi. Six exporter tests và real FixtureProfile/ProbeService preflight đạt; byte-equivalent export không thay runtime acceptance.",
+      "source": "design",
+      "status": "design",
+      "method": "design",
+      "canonical": "docs/PROTOCOL.md#basic-preset-start3",
+      "evidence": [
+        "RUN-01545",
+        "RUN-01544",
+        "RUN-01516",
+        "RUN-01592"
+      ],
+      "limits": "Hai actual copy KR00967 modified Wine/private virtual hosts, exact optional basic export/direct production module. Hai normal outcomes/reset/Ready và third active/noBomb, không third outcome. Default floor preset và server source giữ nguyên. No sourcebinary/DB/pack/gamecall/actorwrite/fake104142124/guard bypass/bounds relaxation. Không fullauth/original authority/generalreset/Windows/LAN/Internet/8clients/K0–K7/K5K6a/fullmatch; cleanup EOF không intentional disconnect control."
+    },
+    {
+      "summary": "Actual exported file/direct module/same8TCP: current Manner/title/idleA Back→Bpromotion→Arejoin, hai basic cycles/3pickups per epoch/FixedBox→item pointer/reveal142before124/165full12/errors0. ChỉA Roller5→6/capacity1→2/Fire1→2; A1/1/5 B2/1/4/hiddeneligibility/key/195seed reset epoch2. Four A bombs IDs1..4/power1,2,1,2/native15939+15813 samepointer/currentID/all195 flags.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#basic-preset-start3",
+      "evidence": [
+        "RUN-00016",
+        "RUN-01497",
+        "RUN-00002",
+        "RUN-00019",
+        "RUN-01517"
+      ],
+      "limits": "Hai actual copy KR00967 modified Wine/private virtual hosts, exact optional basic export/direct production module. Hai normal outcomes/reset/Ready và third active/noBomb, không third outcome. Default floor preset và server source giữ nguyên. No sourcebinary/DB/pack/gamecall/actorwrite/fake104142124/guard bypass/bounds relaxation. Không fullauth/original authority/generalreset/Windows/LAN/Internet/8clients/K0–K7/K5K6a/fullmatch; cleanup EOF không intentional disconnect control."
+    },
+    {
+      "summary": "Hai full native175302/1803/room refresh/actualReadyA95/110both; strict56→1/other0 before175 ởhai view, khôngglobaltick. Sau Ready2 normalBStart3 tạo thirdactual104/key12347/native12199/barrier6.326163042s trước30s; two clocks observed9.146193006s thêm, no third bomb/outcome. Hai final Battle images/timer01:50 đã xem.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#basic-preset-start3",
+      "evidence": [
+        "RUN-01477",
+        "RUN-00016",
+        "RUN-01491",
+        "RUN-01492",
+        "RUN-01603",
+        "RUN-01493"
+      ],
+      "limits": "Hai actual copy KR00967 modified Wine/private virtual hosts, exact optional basic export/direct production module. Hai normal outcomes/reset/Ready và third active/noBomb, không third outcome. Default floor preset và server source giữ nguyên. No sourcebinary/DB/pack/gamecall/actorwrite/fake104142124/guard bypass/bounds relaxation. Không fullauth/original authority/generalreset/Windows/LAN/Internet/8clients/K0–K7/K5K6a/fullmatch; cleanup EOF không intentional disconnect control."
+    },
+    {
+      "summary": "1741 first-two checks/180 captured native packet models/552 securefield models;417 actual export/Start3/stream/observer checks. Five adaptivealignment groups/10viewphaseACK/fourrare165+lookup enabled/exactrestore. Four actual180[0,1,0]/12nativecases/boundedmodegetter1; no full setter trace. Initial parser misattributed CAP_SPACE snapshots with old event/phase; context marker added while allraw/getter/checksum/uniqueGEN165criterion retained. Independent abort check bounds postcompletioncleanup EOF0.401806744s; no active abort claim changed.",
+      "source": "design",
+      "status": "design",
+      "method": "documentation",
+      "canonical": "docs/PROTOCOL.md#basic-preset-start3",
+      "evidence": [
+        "RUN-00003",
+        "RUN-00001",
+        "RUN-01595",
+        "RUN-01594",
+        "RUN-00004",
+        "RUN-00008",
+        "RUN-01494",
+        "RUN-01496"
+      ],
+      "limits": "Hai actual copy KR00967 modified Wine/private virtual hosts, exact optional basic export/direct production module. Hai normal outcomes/reset/Ready và third active/noBomb, không third outcome. Default floor preset và server source giữ nguyên. No sourcebinary/DB/pack/gamecall/actorwrite/fake104142124/guard bypass/bounds relaxation. Không fullauth/original authority/generalreset/Windows/LAN/Internet/8clients/K0–K7/K5K6a/fullmatch; cleanup EOF không intentional disconnect control."
+    },
+    {
+      "summary": "Source-first next gap: service142knowncell afteranycurrent158 remains accepted by explicit existing unit test; current8native142 allfollowmatchingterrain_blast.cleared/currentgeneration/commit andnative195proof. Can test bounded terrain-cell policy using existing model/consumer, no repeat oldUDP/body RE. Guard unimplemented; identical old142 after legitimatecurrentcellclear/fullauth/distance/freshness remains unknown.",
+      "source": "design",
+      "status": "design",
+      "method": "documentation",
+      "canonical": "docs/PROTOCOL.md#basic-preset-start3",
+      "evidence": [
+        "RUN-01486",
+        "RUN-00022"
+      ],
+      "limits": "Hai actual copy KR00967 modified Wine/private virtual hosts, exact optional basic export/direct production module. Hai normal outcomes/reset/Ready và third active/noBomb, không third outcome. Default floor preset và server source giữ nguyên. No sourcebinary/DB/pack/gamecall/actorwrite/fake104142124/guard bypass/bounds relaxation. Không fullauth/original authority/generalreset/Windows/LAN/Internet/8clients/K0–K7/K5K6a/fullmatch; cleanup EOF không intentional disconnect control."
+    }
+  ],
+  "verification": [
+    {
+      "check": "Two actual basic cycles/reset/Ready plus normalBStart3/native12199/barrier/clock9.146s/two manually reviewed Battle images",
+      "result": "pass",
+      "evidence": [
+        "RUN-00016",
+        "RUN-01477",
+        "RUN-01603",
+        "RUN-01491",
+        "RUN-01492"
+      ],
+      "limits": "Hai actual copy KR00967 modified Wine/private virtual hosts, exact optional basic export/direct production module. Hai normal outcomes/reset/Ready và third active/noBomb, không third outcome. Default floor preset và server source giữ nguyên. No sourcebinary/DB/pack/gamecall/actorwrite/fake104142124/guard bypass/bounds relaxation. Không fullauth/original authority/generalreset/Windows/LAN/Internet/8clients/K0–K7/K5K6a/fullmatch; cleanup EOF không intentional disconnect control."
+    },
+    {
+      "check": "1443raw/156frozen/cleanup seal;180packet552field12modecases/observerrestore;6exporttests/47realpins/preflight;docs/catalog/issues/artifacts/diff",
+      "result": "pass",
+      "evidence": [
+        "RUN-01517",
+        "RUN-01545",
+        "RUN-01497",
+        "RUN-00002",
+        "RUN-01496",
+        "RUN-01592",
+        "RUN-01476",
+        "RUN-00018",
+        "RUN-01488",
+        "RUN-00015",
+        "RUN-01475"
+      ],
+      "limits": "CP166265server tests reused by exact unchanged hash; exporter6tests rerun in delivery evidence. Fullhistory/local checker afterappend beforecommit; no semantic/gate certification."
+    },
+    {
+      "check": "Terrain-cell142 validator and native positive integration",
+      "result": "pending",
+      "evidence": [
+        "RUN-01486"
+      ],
+      "limits": "8positive pairs prove current positive compatibility feasibility, not unimplemented guard/original authority/full142freshness."
+    }
+  ],
+  "evidence": [],
+  "evidence_manifests": [
+    {
+      "path": "docs/evidence/checkpoints/evidence/CP171-basic-preset-start3.json",
+      "bytes": 411583,
+      "sha256": "bd5a7119e9ab980a1522d6ae76975a935cb29e37a28784bc4a995ae6d5127b81",
+      "count": 1628
+    }
+  ],
+  "delta": {
+    "added": [
+      "Optional pinned basic preset PR242 and six exporter tests/real production preflight.",
+      "Actual exported-file same-run two basic cycles/reset/Ready and normal promoted BStart3/thirdactive native clocks/render."
+    ],
+    "corrected": [
+      "CP170 basicexport/Start3 gap resolved in fresh exact file run; Bwhite oldframe cause not retroactively inferred.",
+      "CAP_SPACE snapshot origin included in parser context; allraw/native checks retained. Postcompletion cleanup EOF not intentional fault control."
+    ],
+    "superseded": [
+      "NEXT-CURRENT-BASIC-PRESET closed scoped delivery/runtime; NEXT-HIDDEN-CELL-ADMISSION active."
+    ]
+  },
+  "blockers": [
+    "Hidden142 eligibility only requires any current158; correct-cell terrain-bound admission not implemented.",
+    "Fullauth/distance/142freshness/generalreset/currentbasic intentionaldisconnect and all gate/LAN/Internet/8client limits remain."
+  ],
+  "next_steps": [
+    {
+      "id": "NEXT-CURRENT-BASIC-PRESET",
+      "task": "KRE-005b",
+      "state": "closed",
+      "action": "PR242 exact pinned optional preset plus CP171 actual exported-file2cycles/reset/Ready/normalBStart3/clocks/render; default unchanged, no fullmatch/gate.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-HIDDEN-CELL-ADMISSION",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "PLAN source-first CP068/069/170/171/test_hidden_items/terraincommit/native195: test currentgeneration/committedclearedcell broadcast guard for142 with unrelated/oldgeneration/pending/partial/duplicate/freshpositive; retain no-terrain scope; fresh basic native2cycles/Start3 then periodic audit CP172. No originalserver/fullfreshness claim.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    }
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-11-06T14:17:44.594667+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "Codex solo RE/code/runtime/self-check; independent review waived by owner. Exact head verified before merge; no autogate.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Owner explicitly requested solo without workers/review."
+    }
+  },
+  "docs_sync": [
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "CP171 actual optional basic export two cycles/Start3/limits, merged241242 and next terrain-cell142 gap synced beforecomplete."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "CP171 actual optional basic export two cycles/Start3/limits, merged241242 and next terrain-cell142 gap synced beforecomplete."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "updated",
+      "reason": "CP171 actual optional basic export two cycles/Start3/limits, merged241242 and next terrain-cell142 gap synced beforecomplete."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "updated",
+      "reason": "CP171 actual optional basic export two cycles/Start3/limits, merged241242 and next terrain-cell142 gap synced beforecomplete."
+    },
+    {
+      "path": "docs/features.json",
+      "state": "updated",
+      "reason": "CP171 actual optional basic export two cycles/Start3/limits, merged241242 and next terrain-cell142 gap synced beforecomplete."
+    },
+    {
+      "path": "docs/COVERAGE.md",
+      "state": "updated",
+      "reason": "CP171 actual optional basic export two cycles/Start3/limits, merged241242 and next terrain-cell142 gap synced beforecomplete."
+    },
+    {
+      "path": "docs/evidence/peer-endpoints/README.md",
+      "state": "updated",
+      "reason": "CP171 actual optional basic export two cycles/Start3/limits, merged241242 and next terrain-cell142 gap synced beforecomplete."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/review.json",
+      "state": "updated",
+      "reason": "CP171 actual optional basic export two cycles/Start3/limits, merged241242 and next terrain-cell142 gap synced beforecomplete."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
+      "state": "updated",
+      "reason": "CP171 actual optional basic export two cycles/Start3/limits, merged241242 and next terrain-cell142 gap synced beforecomplete."
+    },
+    {
+      "path": "server/README.md",
+      "state": "updated",
+      "reason": "CP171 actual optional basic export two cycles/Start3/limits, merged241242 and next terrain-cell142 gap synced beforecomplete."
+    }
+  ]
+}

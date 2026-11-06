@@ -2024,10 +2024,10 @@ locator/trace và trạng thái từng ô; những vai trò không nêu dưới 
 | Movement | [CP159/160 production](#exported-preset-runtime):4nativepeerwindows/actualapply/target/currentprogress, nohold165/activeUDPprobe; [CP070](#current-udp-causality) giữcontrol riêng | Fullschema/auth/reliability/NAT unknown; currentprofile hai chiều có nguồn, không fullgrammar trước mọi demo hẹp |
 | Bomb place/ID | [CP160](#exported-preset-runtime) actual118/nativeID1/A/power2,ID2/B/power1/full159158/195flagreset; [CP156](#direct-host-eof-acceptance) pendinghostEOF/fence scope riêng | Boundedrole/key/serial/quota/geometry làpolicy; actorlocation/fullauth/allpool/races unknown |
 | Explode/chain | CP033 một owner; CP064 [power1/cách hai ô](#mixed-owner-chain), CP071 [power2 ngoài tầm/feedback chưa118](#mixed-owner-power) giữ partial lịch sử; CP081 [power2/distance2 mixed-owner](#mixed-input), CP084 [ba bom fork hai vòng](#three-bomb-chain); CP094 [optional pinned terrain](#terrain-policy), CP095 [actualbox/laterfreshpair](#opposite-box-control) có native callback/195flag proof | [CP096adjacent1cell](#adjacent-owner-control) và [CP122 chain sâu](#recursive-chain) đã đo trong ca hẹp; [CP133 shared cellstate/query](#shared-cell-state) và [CP134 hai shared cycles](#shared-cascade-cycles) đã giải ca cố định; FIFO/firstbombstop/immutable tổng quát/race và authority server gốc chưa đủ |
-| Block destroy/item reveal | [CP170](#current-basic-cycles) copybasicprofile/currentMannerBhost2epochs: native2FixedBox/reveal27/28/142/124165/3effects+reset; CP169firstepoch/CP068069 giữnguồn | Defaultpreset vẫnfloor-only, copybasicprofile chưapinnedexport/lateBStart3qualification. Originaldrop/fullvalidator/generalmap/class giữunknown; report142khôngworldoracle |
+| Block destroy/item reveal | [CP171](#basic-preset-start3) actual optional basic export: hai native cycles/FixedBox→reveal27/28/142/124165/3effects/reset; CP170 local profile là nguồn trước | Default floor preset giữ nguyên. Hidden142 chỉ kiểm anycurrent158, chưa đúng clearedcell; fullvalidator/drop/auth/freshness/generalmap unknown |
 | Item placement/pickup | [CP159/160](#production-baseline) productionimmediate165/1or2actualclaims/oneeffect/nativewinnerpower/reset; [CP155](#direct-oldudp-contest-eof) hold2sactualcontenders là control riêng | Full124distance/auth/generation/inventory/max/speedTTL/activevariants chưa đủ; delay2s không còn trongproductionbaseline |
 | Trap/death | [CP159/160](#exported-preset-runtime) strict56→1/other0beforerank2views/2epochs; [CP157natural](#current-host-ui-exit)/[CP158controlledoverwrite](#current-trap-udp-counter) giữ causal limits | Snapshot khôngglobalsametick; samekeycounterheuristic cho controlledremoteoverwrite; naturalCP157cause unknown, nofullvalidator |
-| Result/reset | [CP170](#current-basic-cycles) copybasicprofileBhost2normaloutcomes/ReadyA/hiddeneligibility/3itemstat/195/keyreset; [CP168](#current-mode-promoted-start3) defaultfloorBStart3 riêng | BasicprofileStart3 chưađo, Bbuttonwhite1finalframe khônghangproof; allinventory/timer/seq/peer/resetvariants/originalarbitration còn thiếu, không gộprun thànhfullmatch |
+| Result/reset | [CP171](#basic-preset-start3) optional basic export hai outcomes/reset/Ready rồi normal BStart3/native12199/clock/render; CP168 floor riêng | Không trận ba outcome; allinventory/timer/seq/peer/resetvariants/originalarbitration và gate còn mở |
 | Room lifecycle | [CP161 title](#current-room-title), [CP162 mode/return](#current-team-mode) có2normalcycles/Ready; [CP165 currentpreset](#input-batch-gating) guestBack/rejoin/2outcomes/Ready/Start3 đã đo; CP164partial giữ lịch sử. CP155–157 EOF/UI controls giữ profile riêng | [CP168](#current-mode-promoted-start3) currentmodeBhost2cycles/Ready/BStart3 đãđo; R1/R2partial vàoldwhiteframe giữriêng. Accountresume/halfclose/loss/generalreplace chưa đủ; không lấy oldprofileexit làm currentmode proof |
 | Peer lifecycle | [CP159/160](#exported-preset-runtime)actual99/153/currentdirectIPs/ports; [CP155oldUDP](#direct-oldudp-contest-eof)/[CP158samekeycounter](#current-trap-udp-counter) controls riêng | Key/counterbytekhôngauth/universalfreshness; low8wrap/reliability/fullgrammar/relay/NAT/LAN/Internet unknown |
 
@@ -6017,3 +6017,46 @@ DefaultfloorCP168Start3 khôngbackfillbasiccopyprofile.
 Internet/8client/Windows/fullauth/generalreset/originalauthority. Next[PLAN](PLAN.md#current-order)
 pinexactprofile thànhoptionalpreset/export rồinativeBStart3 trênactualexportedfile; giữdefaultunchanged.
 AuditAUD050qua168/nextCP172. Khônggộp CP069oldprofile hoặcCP168floor thành nghiệmthu mới.
+
+
+<a id="basic-preset-start3"></a>
+### Preset basic được export: hai vòng và normal BStart3 — CP171
+
+**`kr_runtime/confirmed` trong scope modified Wine/private virtual hosts; policy là `emu_choice/design`.**
+[Recipe/raw/hash](evidence/peer-endpoints/README.md#cp171). [PR242](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/242)
+thêm `two-client-basic`, pin exact profile CP170/47 fixture; 46 alias như default. CLI chọn preset,
+rebase path, giữ size/SHA/sequence/policy; default `two-client-battle` và legacy export không đổi.
+Sáu exporter tests và real fixture/production constructor preflight chỉ là kiểm implementation.
+
+Fresh run dùng **chính file export** qua `python -m server.probe_service`, hai CA/wineserver/private
+hosts, cùng8TCP; source/config giữ nguyên qua cleanup/seal. 402,663072569s/exit0/1443raw/156frozen.
+Hai vòng Bhost sau idle ABack/promotion/rejoin; actual121/99/barriers6,277452087s và6,237059530s
+trước30s; keys12345→12346, bốn A-owner bomb IDs1..4/power1,2,1,2. Mỗi vòng reveal27/28/actual142
+trước124/165full12/errors0/lookup đúng CGOItem; order[17,28,27] và[17,27,28]. ChỉA có Roller5→6,
+capacity1→2/Fire1→2; baseline A1/1/5 và B2/1/4 tái lập ở epoch2, cùng hiddeneligibility và195 seed.
+Native159/158 samepointer/currentID/full39/full13/all195 flags được đối chiếu như CP170.
+
+Hai native175/180/result/room/Ready; cảhai view native life56→1/other0 trước175, không global tick.
+Sau actualReadyA95/native110both, normal BStart tạo **actual104 thứ ba**, key12347/native121/99,
+barrier6,326163042s trước30s, cảhai native clock chạy thêm9,146193006s trước completion. Không bom
+hoặc outcome trận ba. Cleanup EOF/abort sau completion0,401806744s, không được coi disconnect control.
+Hai ảnh cuối đã xem có map/actor riêng/timer01:50; ảnh riêng không thay native execution/consensus.
+
+1741 first-two checks gồm rawhash/native joins,180 captured-native packet cases/552 securefield models;
+life23joins/16nativegetters;417 exported-file/Start3/stream/observer checks. Năm alignmentgroups/
+10view-phase ACK, bốn rare165+lookup probes giữ enabled và exact restoration; bounded modegetter
+observations1, không trace toàn setter/mode. Số group phụ thuộc đường OS input thực tế; không hạ
+bound/đổi target hoặc giả request để đạt. VN/KR reuse vẫn theo CP170, không mới opcode/body/layout.
+
+Phân tích ban đầu phát hiện parser gán `CAP_SPACE_SNAPSHOT` vào lastGEN165_END do event/phase vẫn
+giữ giá trị pickup cuối. Thêm marker ngữ cảnh Space để tách đúng nguồn; giữ **mọi** snapshot/native
+getter/checksum và criterion unique GEN165 effect. Initialscript/log/fields và correction giữ trong raw
+analysis; không sửa runtime/raw/expectedvalues để pass. Assertion độc lập Start3 cũng sửa boundary:
+chỉ cấm abort trước completion, không nhầm intentional cleanup EOF là active-run abort.
+
+Đã giải optional preset/export/nativeBStart3 trong scope này; không gộp profile cũ thành acceptance.
+Fullauth/drop/distance/142freshness/generalreset/Windows/LAN/Internet/8actualclients/K5/K6a/fullmatch/
+dependencies vẫn mở. Tiếp [PLAN](PLAN.md#current-order): guard142 đúng current clearedcell là policy
+candidate có thể tận dụng terrain model/native195 đã kiểm;8actual142 đều có currentcellclear trước nó.
+142 không có recovered roundkey; cùng oldbyte sau đúng currentclear vẫn indistinguishable, không
+tự tuyên bố fullfreshness/auth. Gate không tự đóng, audit kế CP172.

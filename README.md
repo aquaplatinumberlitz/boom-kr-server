@@ -41,14 +41,18 @@ Hai copy KR Wine đã chạy login/sảnh/phòng/Battle và các chu kỳ kết 
 [kim/reset](docs/PROTOCOL.md#needle-round-reset), [cứu hai chiều và hai kết quả](docs/PROTOCOL.md#rescue-two-results),
 [deep chain/reset](docs/PROTOCOL.md#recursive-chain-cycles) giữ phạm vi và giới hạn tại nguồn chuẩn.
 
-**Mốc mới CP170:** profile thử basicBattle trên current Manner/title/Bhost đã chạy **hai chu kỳ
-native kết quả → về phòng → Ready**, mỗi vòng có reveal27/28, nhặt đủ Roller/Bomb/Fire và đúng hiệu ứng
-cảhai view. Native stat, hidden eligibility, seed map và khóa vòng có kiểm reset.
-[Contract/giới hạn](docs/PROTOCOL.md#current-basic-cycles), [run/raw/hash](docs/evidence/peer-endpoints/README.md#cp170).
+**Mốc mới CP171:** chính file export của preset tùy chọn `two-client-basic` đã chạy hai vòng
+kết quả → về phòng → Ready, rồi B bấm Start vào trận thứ ba. Mỗi vòng đầu có phá hộp, nhặt
+Roller/Bomb/Fire và kiểm hiệu ứng/reset ở hai view; trận ba qua barrier và hai native clock được
+quan sát thêm 9,15 giây, có ảnh Battle hai phía.
+[Contract/giới hạn](docs/PROTOCOL.md#basic-preset-start3), [raw/hash](docs/evidence/peer-endpoints/README.md#cp171).
 
-CP170 đã merge [PR241](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/241) tại `cbcd15d`. [PLAN](docs/PLAN.md#current-order) tiếp preset tùy chọn và actual Start3 trên file
-export đó; preset mặcđịnh chưa đổi. K5/K6a/fullmatch/LAN/Internet/8client và dependency gate vẫn mở.
-AUD050 qua168; audit định kỳ kế **CP172**. [Review waived](docs/evidence/checkpoints/review-waiver.json).
+CP170 đã merge [PR241](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/241); preset tùy chọn
+đã merge [PR242](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/242) tại `87e7175`.
+CP171 đã tự kiểm, đang chờ PR. Preset mặc định giữ nguyên; chưa nghiệm thu K5/K6a/fullmatch,
+LAN/Internet/tám client hoặc các dependency gate. [PLAN](docs/PLAN.md#current-order) tiếp kiểm policy
+142 theo đúng ô đã bị phá trong vòng hiện tại; full auth/distance/freshness vẫn là khoảng trống riêng.
+AUD050 qua CP168; audit kế **CP172**. [Review waived](docs/evidence/checkpoints/review-waiver.json).
 
 Đích đầu: hai client thật chơi hai trận liên tiếp; mở bốn client và hardening sau đó.
 

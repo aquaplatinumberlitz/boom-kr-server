@@ -1177,3 +1177,37 @@ event/phase rồi lọc đúngSTATevent/phase, khôngbỏraw/getter/cursorcheck 
 `server-source-reuse.json` pinCP166265server/4exporttests exactsources, khôngrerunchangedtests.
 CP170tựkiểm/reviewwaived/chờPR; AUD050qua168/next172. Nextoptionalpreset/export/actualBStart3 chỉPLAN;
 khôngfullmatch/K5/K6a/LAN/Internet/8client/Windows/originalauthority/generalresetqualification.
+
+
+<a id="cp171"></a>
+## CP171 — actual optional basic export, hai vòng/reset và BStart3
+
+Baseline [preset PR242](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/242), head
+`b805ed5c2e6f63718c5bde785a23957c0814ab1d`, merge `87e7175f163c0ceaf39a03bc8a6fac535781f8b9`.
+[CP170 PR241](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/241) merge `cbcd15ddd912faf8f337376cf3468455fb53cc49`.
+[Contract/giới hạn](../../PROTOCOL.md#basic-preset-start3), [thứ tự tiếp](../../PLAN.md#current-order).
+
+| Run local/research/codex | Giây/exit/raw/frozen | SHA256 run.json |
+|---|---|---|
+|basic-preset-start3-r1|402,663072569/0/1443/156|`7003baf1592d8dd9e273f527f02ead9d6a0064cef23141848a46046324eaf301`|
+
+`prepare_basic_preset_start3.py`, `wine_probe_basic_preset_start3.py`, `run_basic_preset_start3.py` và
+root giữ actual exported profile/recipe/reuse-question/preflight/source copies/launch-exit/raw-seal.
+Profile SHA `bf1f99989e45a4b5e47e831165ad1f43f296418253388d8ba8338532d665afee` bằng exact CP170.
+Không service/nativebinary/DB/pack/configchange giữa run; no fake104/142/124 hoặc gamecall/statewrite.
+Lần gọi runner trước khi chuẩn bị xong thất bại vì thiếu preflight, trước mọi spawn; giữ prelaunch note.
+
+`basic-cycle-verification.json`:1741checks/2cycles/3effects/stat+195+eligibility/key reset;
+`exported-start3-verification.json`:417checks/3actualB104/barrier3/clock thêm9,146s/5alignmentgroups/
+10viewphaseACK/rare165lookup giữ/exactrestore;180 native packet/552 field cases và life23/16getters riêng.
+`visual-review.json`: đã xem hai ảnh cuối Battle, không thay native trace bằng ảnh.
+`analysis-corrections.json` và initialscript/log/fields giữ parser attribution lỗi khi Space snapshot dùng
+event/phase pickup cũ; thêm CAP_SPACE marker, không bỏ raw/native getter/uniqueness checks. Cleanup
+abort sau completion0,401806744s được phân biệt, không gọi fault control. Có retained quoting/log-schema
+driver errors trong phân tích, không lỗi native runtime; final reports là kết quả độc lập đã đối chiếu.
+
+`basic-preset-delivery/` giữ6exporttests/exact47pins/servicepreflight/checks/PR242 exacthead/merge;
+`server-source-reuse.json` chỉ tái dùng CP166265server tests theo unchanged hash, không lấy4exporttests
+cũ làm validation cho exporter mới. `hidden-cell-admission-reuse.json` đối chiếu8actual142 với current
+clearedcell/commit, nguồn CP068 policy/test/terrain; guard chưa triển khai, không originalauthority.
+CP171 tự kiểm/chờ PR, review waived. AUD050 qua168, audit kếCP172; gate/fullmatch/LAN/Internet/8clients mở.
