@@ -1,0 +1,2882 @@
+{
+  "schema": "kre-evidence-manifest-v1",
+  "evidence": [
+    {
+      "id": "RETRY-00001",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/adapter-preparation.json",
+      "bytes": 9831,
+      "sha256": "fa3dbc30fbd4ddb5588f30299ff457cbf67146bddcb759eca2137d4d8b128bcb"
+    },
+    {
+      "id": "RETRY-00002",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/append_cp181.py",
+      "bytes": 11785,
+      "sha256": "34f10f02ea4ac421217d2cb0c5b643180633938a1e69cc726b97cf352353af5f"
+    },
+    {
+      "id": "RETRY-00003",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/artifacts-final-check.txt",
+      "bytes": 253,
+      "sha256": "649c6624aa6d317dfc1db5e16fea683cfbc9d9cf4dd3df11c0d70e57409054a0"
+    },
+    {
+      "id": "RETRY-00004",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/auth-retry-r1-launcher.log",
+      "bytes": 8651,
+      "sha256": "03618095e5cdc882ee80d3e099be6e4227de81e13b8c8e350be4fe2c02e775ca"
+    },
+    {
+      "id": "RETRY-00005",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/auth-retry-r1-recipe.json",
+      "bytes": 1000,
+      "sha256": "5b871b21a717f430750c7c7cdac7ac4a858cce890da7bc8d14d045298bd25ff1"
+    },
+    {
+      "id": "RETRY-00006",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/auth-retry-r2-launcher.log",
+      "bytes": 12583,
+      "sha256": "bc008b52a5eb251ac81fa5c1a9e38c878373461c2741f66237aeff7ec213aa6e"
+    },
+    {
+      "id": "RETRY-00007",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/auth-retry-r2-recipe.json",
+      "bytes": 1000,
+      "sha256": "6cf2a32cabab18e40aa134ed066b8ac4a7d8253066f0fc5d7e678af38cb1c5ef"
+    },
+    {
+      "id": "RETRY-00008",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/auth-retry.gdb",
+      "bytes": 1545,
+      "sha256": "34e7ebeb91e0d6c5dc312a4271d04e2fa05e422a47a3c8df3f7435a830cfc5fa"
+    },
+    {
+      "id": "RETRY-00009",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/gate-criteria-equality.json",
+      "bytes": 182,
+      "sha256": "86ce17832597ac8d5a801183f581b1bca974fd41a671434d2e544cda61203338"
+    },
+    {
+      "id": "RETRY-00010",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/github-release-snapshot.json",
+      "bytes": 207585,
+      "sha256": "ecc796a4ad9d8c809293016fd43ad0cc0b2ae37ac9152660dfb65021c625d9a1"
+    },
+    {
+      "id": "RETRY-00011",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/issue-release-capture.txt",
+      "bytes": 65,
+      "sha256": "fdc9eece47055a15efa2d5a91b872dd892677ba0bbcc7adc00f97a6649fa6906"
+    },
+    {
+      "id": "RETRY-00012",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/issue14-before.json",
+      "bytes": 3708,
+      "sha256": "7942e2287369b50be7b4d970b1f6bdf77eea73cba8efc80f0ec4349b770b1961"
+    },
+    {
+      "id": "RETRY-00013",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/issue14-body.md",
+      "bytes": 3277,
+      "sha256": "ab32233047cae569ff35da7f15396728c826b4d59958278f2183060fe2206f18"
+    },
+    {
+      "id": "RETRY-00014",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/issue3-before.json",
+      "bytes": 4549,
+      "sha256": "03df49662ad62db6bae42ee071a72ce0408e794c65fe48ab084056fc1a691bff"
+    },
+    {
+      "id": "RETRY-00015",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/issue3-body.md",
+      "bytes": 3049,
+      "sha256": "78a026d0956aa113ed52e28e14323b567d88e7867deaac8e830ec68bc265bf9a"
+    },
+    {
+      "id": "RETRY-00016",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/login-error1-key43.bin",
+      "bytes": 39,
+      "sha256": "9aeae7b7937ad0c54d968297c48fffb4d506087f7826b2e9fdde35d84ed3ac19"
+    },
+    {
+      "id": "RETRY-00017",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/manual-k2-acceptance.json",
+      "bytes": 3455,
+      "sha256": "f832f1b6b43db449750c7818014bdaef014c247e3173a17d7207dc57fbd035f2"
+    },
+    {
+      "id": "RETRY-00018",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/preparation.json",
+      "bytes": 9572,
+      "sha256": "88f0d667a405ed431940bb4f92220aacaba7a6e7276aa6bf78d69bf6852280ef"
+    },
+    {
+      "id": "RETRY-00019",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/prepare.py",
+      "bytes": 2399,
+      "sha256": "981e6fa6e284b4a2539bcb38e6922418583ba842d0525c139407894804c6a0fe"
+    },
+    {
+      "id": "RETRY-00020",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/rejection_service.py",
+      "bytes": 1287,
+      "sha256": "8f808936889669179ffd0ab2e7bd916cf0fc59a2888c2bc9587b548bb9692c24"
+    },
+    {
+      "id": "RETRY-00021",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/retry_adapter_service.py",
+      "bytes": 2127,
+      "sha256": "195dddf9c19cf31b8276cbd60e20a0b6a24e0defac8f7ad289cf6c71df0ff15e"
+    },
+    {
+      "id": "RETRY-00022",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/source-first-reuse.json",
+      "bytes": 3455,
+      "sha256": "038fb2ee766c48eaf6e95f7ec09ffb488f8ad99c07fa7ca10e154d98a210e23a"
+    },
+    {
+      "id": "RETRY-00023",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/sync_cp181.py",
+      "bytes": 21092,
+      "sha256": "f2e515778ce4c5255f90612e5f39182ce815949d1db1676c7dbf26f5de64becd"
+    },
+    {
+      "id": "RETRY-00024",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/verification.json",
+      "bytes": 92133,
+      "sha256": "1d6e1ccaa4aa5f019186a750b1822c60e19bc744888d11a688111094db515f71"
+    },
+    {
+      "id": "RETRY-00025",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/verify.py",
+      "bytes": 8173,
+      "sha256": "7e6a836a513a466de4fc538feaef0d01b5965d299b02acfa37fe666503598120"
+    },
+    {
+      "id": "RETRY-00026",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/auth-retry-r1/CALog-before.txt",
+      "bytes": 667,
+      "sha256": "5c9dee2236e9183f4f198e1da1de24e329999d156d9546ee783383290bcc417e"
+    },
+    {
+      "id": "RETRY-00027",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/auth-retry-r1/CALog-run.txt",
+      "bytes": 753,
+      "sha256": "6dac427c4fcb6fc312d9fcfbf1c7c8896a4e34684760896762d64787afedbadc"
+    },
+    {
+      "id": "RETRY-00028",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/auth-retry-r1/client.log",
+      "bytes": 131358,
+      "sha256": "02fd1cba80e51233cc3c48077c8980577697e7165d2dd69a8ce152d86d7cf948"
+    },
+    {
+      "id": "RETRY-00029",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/auth-retry-r1/close-error-modal-after.png",
+      "bytes": 504942,
+      "sha256": "18d45f32468a5d7be3f54c08863ba8f5b20de589ad731b3c3cf39ea91d2049ae"
+    },
+    {
+      "id": "RETRY-00030",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/auth-retry-r1/close-error-modal-before.png",
+      "bytes": 404693,
+      "sha256": "fafcc7527924e7db84d28b018f6cd764815d703b2705cb2495716cc5db0b95c0"
+    },
+    {
+      "id": "RETRY-00031",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/auth-retry-r1/confirm-login-after.png",
+      "bytes": 442848,
+      "sha256": "32d1e43b6027ecf9e8208040f875254d89e98d59051454f7c1002cf6a9b30e7a"
+    },
+    {
+      "id": "RETRY-00032",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/auth-retry-r1/confirm-login-before.png",
+      "bytes": 504942,
+      "sha256": "18d45f32468a5d7be3f54c08863ba8f5b20de589ad731b3c3cf39ea91d2049ae"
+    },
+    {
+      "id": "RETRY-00033",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/auth-retry-r1/debug-commands.txt",
+      "bytes": 1545,
+      "sha256": "34e7ebeb91e0d6c5dc312a4271d04e2fa05e422a47a3c8df3f7435a830cfc5fa"
+    },
+    {
+      "id": "RETRY-00034",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/auth-retry-r1/hosts",
+      "bytes": 121,
+      "sha256": "32a007c62d2887ae9f8d3c30d1ff7cb3902e6e1e0c75c5a978ee556cc8ea71f8"
+    },
+    {
+      "id": "RETRY-00035",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/auth-retry-r1/nsswitch.conf",
+      "bytes": 307,
+      "sha256": "c18e474cd61df8648ee02ac7a9c76b8d6c7782d8b212f925e6980f20af5cc838"
+    },
+    {
+      "id": "RETRY-00036",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/auth-retry-r1/processes-00.txt",
+      "bytes": 3595,
+      "sha256": "0bbff9e214b1b5ddca011007c9f82120d73621ab71a7ea09c284ddbf4d07ad08"
+    },
+    {
+      "id": "RETRY-00037",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/auth-retry-r1/processes-01.txt",
+      "bytes": 4348,
+      "sha256": "783ea264d0e2327484cd7c35895de5e43f7533a67da53a5c97028554d758f878"
+    },
+    {
+      "id": "RETRY-00038",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/auth-retry-r1/processes-02.txt",
+      "bytes": 4348,
+      "sha256": "bf104505ffd100902532de89a5e3a012ebd4a644e40729f1fd1b86660f11dcb1"
+    },
+    {
+      "id": "RETRY-00039",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/auth-retry-r1/processes-03.txt",
+      "bytes": 4348,
+      "sha256": "7becc573446d8d75dd5595b6ac9c6364900c769179041188f21c1cbaca7a6994"
+    },
+    {
+      "id": "RETRY-00040",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/auth-retry-r1/processes-04.txt",
+      "bytes": 4348,
+      "sha256": "bd21ca62eda2de6b42d65835247b536f532ec59893a88999686180539117516a"
+    },
+    {
+      "id": "RETRY-00041",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/auth-retry-r1/processes-05.txt",
+      "bytes": 4348,
+      "sha256": "8416b327124fd0d07f7b41d8b0fbe1813823457b4666fcb889eb0228a377bf84"
+    },
+    {
+      "id": "RETRY-00042",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/auth-retry-r1/processes-06.txt",
+      "bytes": 4348,
+      "sha256": "becd8f197da5d64ed4be19b6584cb3597a3fae63265c2befbf9a94b5a6fb1e52"
+    },
+    {
+      "id": "RETRY-00043",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/auth-retry-r1/processes-07.txt",
+      "bytes": 4348,
+      "sha256": "f22bb5e658ada9f96ade9f2f4b7d1d68a628fb6508e7044885c8b1769372e0a6"
+    },
+    {
+      "id": "RETRY-00044",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/auth-retry-r1/processes-08.txt",
+      "bytes": 4348,
+      "sha256": "a15d7079aa78449ca1f9a5300930007d5afde331c970c3c487b3de2ae5576a7e"
+    },
+    {
+      "id": "RETRY-00045",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/auth-retry-r1/processes-09.txt",
+      "bytes": 4348,
+      "sha256": "42d262a9fdc932904ca33204cd987669265a2c1e6b6d1f1fd85028385bc43dc0"
+    },
+    {
+      "id": "RETRY-00046",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/auth-retry-r1/processes-10.txt",
+      "bytes": 4348,
+      "sha256": "fb05f96d1a93d6f9efef20d6e6b4b371ebbb8d77d9ce0b835146c541e3811cb1"
+    },
+    {
+      "id": "RETRY-00047",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/auth-retry-r1/processes-11.txt",
+      "bytes": 4348,
+      "sha256": "4a4fee29bffc24b3bd51bc225ecaa039c52086895846835d65b0e499b3a89d32"
+    },
+    {
+      "id": "RETRY-00048",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/auth-retry-r1/processes-12.txt",
+      "bytes": 4348,
+      "sha256": "27422ebe42d805c5933757e6aa45ba2cf19bee6319affa0dcfbfbe432fa97076"
+    },
+    {
+      "id": "RETRY-00049",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/auth-retry-r1/processes-13.txt",
+      "bytes": 4348,
+      "sha256": "d3e3ea7bbe13fbb2c0d011cea0c6d253735198a9bd168961867cb69abf82b16c"
+    },
+    {
+      "id": "RETRY-00050",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/auth-retry-r1/processes-14.txt",
+      "bytes": 4348,
+      "sha256": "f8839d5809d8c57ad11eb5720832fe173f4f7df99d9ef816c6a9a93565cee53a"
+    },
+    {
+      "id": "RETRY-00051",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/auth-retry-r1/processes-15.txt",
+      "bytes": 4348,
+      "sha256": "3759aa29c839bbe2212857b132dac2f3ef627bbad93dcafa5df96e5a9cac03ba"
+    },
+    {
+      "id": "RETRY-00052",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/auth-retry-r1/processes-16.txt",
+      "bytes": 4348,
+      "sha256": "b95cd8e750e5119dd180e223db54431971f719bf646c526cb056c06f2cac7405"
+    },
+    {
+      "id": "RETRY-00053",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/auth-retry-r1/processes-17.txt",
+      "bytes": 4348,
+      "sha256": "dd5bd616de027079ec939a0a779bd28b260e1fbd0e2e4088bc12fd7308d89d82"
+    },
+    {
+      "id": "RETRY-00054",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/auth-retry-r1/processes-18.txt",
+      "bytes": 4348,
+      "sha256": "e38ea3093878759f07ec1c68db08c49c01d9184c25002e4c093558ddde85e585"
+    },
+    {
+      "id": "RETRY-00055",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/auth-retry-r1/processes-19.txt",
+      "bytes": 4348,
+      "sha256": "fc9befed57fe436e35d141c4fecaa629890c1fea5c2fd41e53cb07bb91a24e08"
+    },
+    {
+      "id": "RETRY-00056",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/auth-retry-r1/processes-20.txt",
+      "bytes": 4348,
+      "sha256": "004a0e96606ab8123a179f89b3fac67ebaeec411ac9d2e8ec3e03d80a3b2ade8"
+    },
+    {
+      "id": "RETRY-00057",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/auth-retry-r1/processes-21.txt",
+      "bytes": 4348,
+      "sha256": "c1b39f9fcc062976f27fb9fe3d405c01275d31f2c4b4f12aac85aaf1481eaa55"
+    },
+    {
+      "id": "RETRY-00058",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/auth-retry-r1/processes-22.txt",
+      "bytes": 4348,
+      "sha256": "3ad2484d7235ea8747d69825ecd96cecbdce1ec80e34bc925b880aef0dd65ab1"
+    },
+    {
+      "id": "RETRY-00059",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/auth-retry-r1/raw-seal.json",
+      "bytes": 17449,
+      "sha256": "91830516bdfe29af7af7b4c42a28e1085b823199857abb4f5478b4deeb4a3a87"
+    },
+    {
+      "id": "RETRY-00060",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/auth-retry-r1/run.json",
+      "bytes": 10843,
+      "sha256": "8f293c3294e3d23d812ceaaf79692c69870d083e1ba80d98ae6f4a5936b15ffa"
+    },
+    {
+      "id": "RETRY-00061",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/auth-retry-r1/screen-00.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "RETRY-00062",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/auth-retry-r1/screen-01.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "RETRY-00063",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/auth-retry-r1/screen-02.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "RETRY-00064",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/auth-retry-r1/screen-03.png",
+      "bytes": 19847,
+      "sha256": "2178ceb11e92e5f95694ca8a855de0750fb1a93dfe6e02a13c1856b080d16654"
+    },
+    {
+      "id": "RETRY-00065",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/auth-retry-r1/screen-04.png",
+      "bytes": 13437,
+      "sha256": "e47c2919c72588bea5f3e5b8ebda4d9823a66e8864f6b86ed6f85d9e19598218"
+    },
+    {
+      "id": "RETRY-00066",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/auth-retry-r1/screen-05.png",
+      "bytes": 191431,
+      "sha256": "35903a0d052b21d3a24bf93dc8a8f6b306cabbb746f12f3287dd1e5c2419a39a"
+    },
+    {
+      "id": "RETRY-00067",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/auth-retry-r1/screen-06.png",
+      "bytes": 194277,
+      "sha256": "eb04d50aa432204c8df8bb45346024b10fc0a1172c0ea711ff569b6e45a4dd7b"
+    },
+    {
+      "id": "RETRY-00068",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/auth-retry-r1/screen-07.png",
+      "bytes": 404689,
+      "sha256": "c7e1feea793f508bd33e9d4b1dde5c4dc29a9d1b14af723217f7ac9b450e9888"
+    },
+    {
+      "id": "RETRY-00069",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/auth-retry-r1/screen-08.png",
+      "bytes": 404689,
+      "sha256": "c7e1feea793f508bd33e9d4b1dde5c4dc29a9d1b14af723217f7ac9b450e9888"
+    },
+    {
+      "id": "RETRY-00070",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/auth-retry-r1/screen-09.png",
+      "bytes": 404693,
+      "sha256": "fafcc7527924e7db84d28b018f6cd764815d703b2705cb2495716cc5db0b95c0"
+    },
+    {
+      "id": "RETRY-00071",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/auth-retry-r1/screen-10.png",
+      "bytes": 404711,
+      "sha256": "3544f0e2616a4c3d7d7964c8f43b6615581cf230d081b147522b85b632233e7f"
+    },
+    {
+      "id": "RETRY-00072",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/auth-retry-r1/screen-11.png",
+      "bytes": 442944,
+      "sha256": "84566184094d2bb11412e5c2c86ff0294fb5055146d6a0e6f60dd1eb64653cb2"
+    },
+    {
+      "id": "RETRY-00073",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/auth-retry-r1/screen-12.png",
+      "bytes": 442779,
+      "sha256": "2161fadc0ed5ea8a7b3ef2b3f6dbe76fd1d06ac28aeac91a081700b23b37ed72"
+    },
+    {
+      "id": "RETRY-00074",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/auth-retry-r1/screen-13.png",
+      "bytes": 442700,
+      "sha256": "ad7273ca0955931ee8112d6df6a84ef0b48b91faa2112ed329cdeae7eb8fb386"
+    },
+    {
+      "id": "RETRY-00075",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/auth-retry-r1/screen-14.png",
+      "bytes": 442310,
+      "sha256": "ee3c607a832b5d75c2bc1998b9bf61ea6d97a2283799a4a245d76de06440d1d8"
+    },
+    {
+      "id": "RETRY-00076",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/auth-retry-r1/screen-15.png",
+      "bytes": 442042,
+      "sha256": "4ee08427b27764c6e83060cb55b3d87754d889964b61a64f100e9984479079e2"
+    },
+    {
+      "id": "RETRY-00077",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/auth-retry-r1/screen-16.png",
+      "bytes": 442405,
+      "sha256": "836c2b1581ba8c8a6f46c9a5028e4d03dc5e08ca5614c96dd64fc79dfdffcba8"
+    },
+    {
+      "id": "RETRY-00078",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/auth-retry-r1/screen-17.png",
+      "bytes": 442518,
+      "sha256": "0613d2fb89886e76d4eca412786e8794890ebfcb66a8c2c57a7041ab1b570575"
+    },
+    {
+      "id": "RETRY-00079",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/auth-retry-r1/screen-18.png",
+      "bytes": 442013,
+      "sha256": "fbb6261738596501c41ee01c26523318a343d2a077cfb42d28ccec9f75187cf2"
+    },
+    {
+      "id": "RETRY-00080",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/auth-retry-r1/screen-19.png",
+      "bytes": 441113,
+      "sha256": "b2952725e6bb58be2085e94f25ddf4629b5fabafedb2a124b6d274393117715e"
+    },
+    {
+      "id": "RETRY-00081",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/auth-retry-r1/screen-20.png",
+      "bytes": 403393,
+      "sha256": "dba1e0b3ed510848deab9b79c62efcc3d6c1d9ab205c300674bc7d6ca459c4e6"
+    },
+    {
+      "id": "RETRY-00082",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/auth-retry-r1/screen-21.png",
+      "bytes": 403402,
+      "sha256": "8b216db570cdc167be4341d757d8d650e2fdee24aa441f018f6df6a50df6a4ba"
+    },
+    {
+      "id": "RETRY-00083",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/auth-retry-r1/screen-22.png",
+      "bytes": 403381,
+      "sha256": "5cc4d3ca8412f2eb028e3e06af07e6ebe61e7fdaac2e19dbe78ed634b53acb1f"
+    },
+    {
+      "id": "RETRY-00084",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/auth-retry-r1/service-state.json",
+      "bytes": 25625,
+      "sha256": "553886b00c4cc84860152a95c98bfe12168dbbe2d83a6d8534fe8cb620f23be9"
+    },
+    {
+      "id": "RETRY-00085",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/auth-retry-r1/service.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "RETRY-00086",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/auth-retry-r1/transport-writes.jsonl",
+      "bytes": 2052,
+      "sha256": "6bae9c403e8c83c81a92903536e33b9664944c343fd6834d15134aa3ee92f5dd"
+    },
+    {
+      "id": "RETRY-00087",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/auth-retry-r1/windows-00.txt",
+      "bytes": 166,
+      "sha256": "28ae29836d791dcd3302b447a52a8f0fa3f9a192abbc33a27751e23d7ebe0d43"
+    },
+    {
+      "id": "RETRY-00088",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/auth-retry-r1/windows-01.txt",
+      "bytes": 872,
+      "sha256": "89b108c8ab5e0cd64339cc2b6fe0f0dffcc9e02084d7dc3435adcc9dc270c8ae"
+    },
+    {
+      "id": "RETRY-00089",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/auth-retry-r1/windows-02.txt",
+      "bytes": 872,
+      "sha256": "89b108c8ab5e0cd64339cc2b6fe0f0dffcc9e02084d7dc3435adcc9dc270c8ae"
+    },
+    {
+      "id": "RETRY-00090",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/auth-retry-r1/windows-03.txt",
+      "bytes": 1311,
+      "sha256": "272470e4eb4025dd22b8188441f5b2debfdfd7457dd2a31e5f55d6f0b7a4c05d"
+    },
+    {
+      "id": "RETRY-00091",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/auth-retry-r1/windows-04.txt",
+      "bytes": 1311,
+      "sha256": "272470e4eb4025dd22b8188441f5b2debfdfd7457dd2a31e5f55d6f0b7a4c05d"
+    },
+    {
+      "id": "RETRY-00092",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/auth-retry-r1/windows-05.txt",
+      "bytes": 1311,
+      "sha256": "272470e4eb4025dd22b8188441f5b2debfdfd7457dd2a31e5f55d6f0b7a4c05d"
+    },
+    {
+      "id": "RETRY-00093",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/auth-retry-r1/windows-06.txt",
+      "bytes": 1311,
+      "sha256": "272470e4eb4025dd22b8188441f5b2debfdfd7457dd2a31e5f55d6f0b7a4c05d"
+    },
+    {
+      "id": "RETRY-00094",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/auth-retry-r1/windows-07.txt",
+      "bytes": 1358,
+      "sha256": "248bddfaaab7ad0fd77b1f6a71f7f0d2554027c90c1db6f99935a4c23fe7f794"
+    },
+    {
+      "id": "RETRY-00095",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/auth-retry-r1/windows-08.txt",
+      "bytes": 1358,
+      "sha256": "248bddfaaab7ad0fd77b1f6a71f7f0d2554027c90c1db6f99935a4c23fe7f794"
+    },
+    {
+      "id": "RETRY-00096",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/auth-retry-r1/windows-09.txt",
+      "bytes": 1358,
+      "sha256": "248bddfaaab7ad0fd77b1f6a71f7f0d2554027c90c1db6f99935a4c23fe7f794"
+    },
+    {
+      "id": "RETRY-00097",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/auth-retry-r1/windows-10.txt",
+      "bytes": 1358,
+      "sha256": "248bddfaaab7ad0fd77b1f6a71f7f0d2554027c90c1db6f99935a4c23fe7f794"
+    },
+    {
+      "id": "RETRY-00098",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/auth-retry-r1/windows-11.txt",
+      "bytes": 1358,
+      "sha256": "248bddfaaab7ad0fd77b1f6a71f7f0d2554027c90c1db6f99935a4c23fe7f794"
+    },
+    {
+      "id": "RETRY-00099",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/auth-retry-r1/windows-12.txt",
+      "bytes": 1358,
+      "sha256": "248bddfaaab7ad0fd77b1f6a71f7f0d2554027c90c1db6f99935a4c23fe7f794"
+    },
+    {
+      "id": "RETRY-00100",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/auth-retry-r1/windows-13.txt",
+      "bytes": 1358,
+      "sha256": "248bddfaaab7ad0fd77b1f6a71f7f0d2554027c90c1db6f99935a4c23fe7f794"
+    },
+    {
+      "id": "RETRY-00101",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/auth-retry-r1/windows-14.txt",
+      "bytes": 1358,
+      "sha256": "248bddfaaab7ad0fd77b1f6a71f7f0d2554027c90c1db6f99935a4c23fe7f794"
+    },
+    {
+      "id": "RETRY-00102",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/auth-retry-r1/windows-15.txt",
+      "bytes": 1358,
+      "sha256": "248bddfaaab7ad0fd77b1f6a71f7f0d2554027c90c1db6f99935a4c23fe7f794"
+    },
+    {
+      "id": "RETRY-00103",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/auth-retry-r1/windows-16.txt",
+      "bytes": 1358,
+      "sha256": "248bddfaaab7ad0fd77b1f6a71f7f0d2554027c90c1db6f99935a4c23fe7f794"
+    },
+    {
+      "id": "RETRY-00104",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/auth-retry-r1/windows-17.txt",
+      "bytes": 1358,
+      "sha256": "248bddfaaab7ad0fd77b1f6a71f7f0d2554027c90c1db6f99935a4c23fe7f794"
+    },
+    {
+      "id": "RETRY-00105",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/auth-retry-r1/windows-18.txt",
+      "bytes": 1358,
+      "sha256": "248bddfaaab7ad0fd77b1f6a71f7f0d2554027c90c1db6f99935a4c23fe7f794"
+    },
+    {
+      "id": "RETRY-00106",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/auth-retry-r1/windows-19.txt",
+      "bytes": 1358,
+      "sha256": "248bddfaaab7ad0fd77b1f6a71f7f0d2554027c90c1db6f99935a4c23fe7f794"
+    },
+    {
+      "id": "RETRY-00107",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/auth-retry-r1/windows-20.txt",
+      "bytes": 1358,
+      "sha256": "248bddfaaab7ad0fd77b1f6a71f7f0d2554027c90c1db6f99935a4c23fe7f794"
+    },
+    {
+      "id": "RETRY-00108",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/auth-retry-r1/windows-21.txt",
+      "bytes": 1358,
+      "sha256": "248bddfaaab7ad0fd77b1f6a71f7f0d2554027c90c1db6f99935a4c23fe7f794"
+    },
+    {
+      "id": "RETRY-00109",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/auth-retry-r1/windows-22.txt",
+      "bytes": 1358,
+      "sha256": "248bddfaaab7ad0fd77b1f6a71f7f0d2554027c90c1db6f99935a4c23fe7f794"
+    },
+    {
+      "id": "RETRY-00110",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/auth-retry-r1/wineboot.log",
+      "bytes": 64844,
+      "sha256": "8d69e97b2f5cc1c235772d3031d138b314a1b51a5a506c745b5d0166f5f59134"
+    },
+    {
+      "id": "RETRY-00111",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/auth-retry-r1/xvfb.log",
+      "bytes": 2808,
+      "sha256": "46b8747df8a2fc8b6a469b2374ea3d0c6c786dc3dcf2a9be13d94ce76ed3a1a7"
+    },
+    {
+      "id": "RETRY-00112",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/auth-retry-r2/CALog-before.txt",
+      "bytes": 753,
+      "sha256": "6dac427c4fcb6fc312d9fcfbf1c7c8896a4e34684760896762d64787afedbadc"
+    },
+    {
+      "id": "RETRY-00113",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/auth-retry-r2/CALog-run.txt",
+      "bytes": 1696,
+      "sha256": "becadd21eb4f072bed2155970a450292946a713674682b3f2ed0a9bdcaab28e6"
+    },
+    {
+      "id": "RETRY-00114",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/auth-retry-r2/client.log",
+      "bytes": 137751,
+      "sha256": "d4fd43395b307506bb3e23f0965a475e4b34c431aa3b3d07afb103f897e19889"
+    },
+    {
+      "id": "RETRY-00115",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/auth-retry-r2/close-error-modal-after.png",
+      "bytes": 504936,
+      "sha256": "30e06ec6a3f75c97edeb33714fcd14cbf9fbd5d4e0177a9d58ff8376b320d61c"
+    },
+    {
+      "id": "RETRY-00116",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/auth-retry-r2/close-error-modal-before.png",
+      "bytes": 404693,
+      "sha256": "fafcc7527924e7db84d28b018f6cd764815d703b2705cb2495716cc5db0b95c0"
+    },
+    {
+      "id": "RETRY-00117",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/auth-retry-r2/confirm-login-after.png",
+      "bytes": 124389,
+      "sha256": "fdb1cc0eeeb236dad469459d9f821496c659169db8ddf94cb0fd26c0344e23bb"
+    },
+    {
+      "id": "RETRY-00118",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/auth-retry-r2/confirm-login-before.png",
+      "bytes": 504942,
+      "sha256": "18d45f32468a5d7be3f54c08863ba8f5b20de589ad731b3c3cf39ea91d2049ae"
+    },
+    {
+      "id": "RETRY-00119",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/auth-retry-r2/debug-commands.txt",
+      "bytes": 1545,
+      "sha256": "34e7ebeb91e0d6c5dc312a4271d04e2fa05e422a47a3c8df3f7435a830cfc5fa"
+    },
+    {
+      "id": "RETRY-00120",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/auth-retry-r2/hosts",
+      "bytes": 121,
+      "sha256": "32a007c62d2887ae9f8d3c30d1ff7cb3902e6e1e0c75c5a978ee556cc8ea71f8"
+    },
+    {
+      "id": "RETRY-00121",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/auth-retry-r2/nsswitch.conf",
+      "bytes": 307,
+      "sha256": "c18e474cd61df8648ee02ac7a9c76b8d6c7782d8b212f925e6980f20af5cc838"
+    },
+    {
+      "id": "RETRY-00122",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/auth-retry-r2/processes-00.txt",
+      "bytes": 3636,
+      "sha256": "f9c17ba7a8a947687e189812a1401ec0bc027e4c1db1d1658f79c10866be4147"
+    },
+    {
+      "id": "RETRY-00123",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/auth-retry-r2/processes-01.txt",
+      "bytes": 4352,
+      "sha256": "32a18d1b02551eff03dc10df14355d5f8a7c2a9781914d8325d1452de862465c"
+    },
+    {
+      "id": "RETRY-00124",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/auth-retry-r2/processes-02.txt",
+      "bytes": 4352,
+      "sha256": "1f8c7241237522c0bd78fabe48581c8dd8615adc5d331ea45b7d07de139b6cc8"
+    },
+    {
+      "id": "RETRY-00125",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/auth-retry-r2/processes-03.txt",
+      "bytes": 4352,
+      "sha256": "7e3c27ec0e59f2b709b8b862e5981b3990483759d3bb641963821f6fc8eb3ba7"
+    },
+    {
+      "id": "RETRY-00126",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/auth-retry-r2/processes-04.txt",
+      "bytes": 4352,
+      "sha256": "743027b0bb3a785ce51040691e37703970c40dc4562c54f66963bf36295f1504"
+    },
+    {
+      "id": "RETRY-00127",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/auth-retry-r2/processes-05.txt",
+      "bytes": 4352,
+      "sha256": "3aeb4fda54df0fed8e962d19ec776ed9cf975582c8ad1dc0184fdc8f47ed3a33"
+    },
+    {
+      "id": "RETRY-00128",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/auth-retry-r2/processes-06.txt",
+      "bytes": 4352,
+      "sha256": "8a8fc16e8fbf5a0e3f84c61b87670d3a7e67fa8856b2ae1edb1d627e5a10e6f3"
+    },
+    {
+      "id": "RETRY-00129",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/auth-retry-r2/processes-07.txt",
+      "bytes": 4352,
+      "sha256": "d20f388bdaafb6c8eba077d85d60de7fc8fb415065558b411a99d1210887d15d"
+    },
+    {
+      "id": "RETRY-00130",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/auth-retry-r2/processes-08.txt",
+      "bytes": 4352,
+      "sha256": "b38d6c8f7896096e141ca3ef02dae139ab206cce67ab833ca2c9c5d180669761"
+    },
+    {
+      "id": "RETRY-00131",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/auth-retry-r2/processes-09.txt",
+      "bytes": 4352,
+      "sha256": "79746360888c7040376b189f02ee9c8f88f37fceac11e4ebe1cf4f5a8b15be82"
+    },
+    {
+      "id": "RETRY-00132",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/auth-retry-r2/processes-10.txt",
+      "bytes": 4352,
+      "sha256": "72f23b55f5d1f638443fb01cf96480712490f35a31bf6b60417132ec985a0ff6"
+    },
+    {
+      "id": "RETRY-00133",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/auth-retry-r2/processes-11.txt",
+      "bytes": 4352,
+      "sha256": "4ca74db506e3bbd82fe27af3ae23838aac9d57d0d958680bf81dca625df46a86"
+    },
+    {
+      "id": "RETRY-00134",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/auth-retry-r2/processes-12.txt",
+      "bytes": 4352,
+      "sha256": "b69c5fd2df109b763bb01de9682581457bcc72e306cf8d067a5c76278706f00e"
+    },
+    {
+      "id": "RETRY-00135",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/auth-retry-r2/processes-13.txt",
+      "bytes": 4352,
+      "sha256": "adf543098384edf5de86ec0a338df8c0166a3dce7874d0be6b42c7ad1017aa2c"
+    },
+    {
+      "id": "RETRY-00136",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/auth-retry-r2/processes-14.txt",
+      "bytes": 4352,
+      "sha256": "e7af910a8dfcff06a07dcb7c3b2a9622b2697dbf890f2090714d8daf6542420f"
+    },
+    {
+      "id": "RETRY-00137",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/auth-retry-r2/processes-15.txt",
+      "bytes": 4352,
+      "sha256": "b396bdf46fae5429b38d8061f3bda4886786401d1afdf466b35f6cda10617ee9"
+    },
+    {
+      "id": "RETRY-00138",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/auth-retry-r2/processes-16.txt",
+      "bytes": 4352,
+      "sha256": "a5f87548ff9921c8968a1bbf43cff3aeb236cefce26a812517988a93c52e3a43"
+    },
+    {
+      "id": "RETRY-00139",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/auth-retry-r2/processes-17.txt",
+      "bytes": 4352,
+      "sha256": "20289373796d38855fd1e2e97382620166191c714198e3f4e30cfc2cc3065a43"
+    },
+    {
+      "id": "RETRY-00140",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/auth-retry-r2/processes-18.txt",
+      "bytes": 4352,
+      "sha256": "6fcd53c58f29d123dd1bd1fb52c2825c7dd50ccf6a7b53f26371d57b2cd63947"
+    },
+    {
+      "id": "RETRY-00141",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/auth-retry-r2/processes-19.txt",
+      "bytes": 4352,
+      "sha256": "4bd6a703d39e13f47d3e427e872a8045ce86a35858fe0aacc7b300accfe20b12"
+    },
+    {
+      "id": "RETRY-00142",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/auth-retry-r2/processes-20.txt",
+      "bytes": 4352,
+      "sha256": "99129a402202730cfceae6cf586ad4a9cb1e68575de579fa1168a86e28ebcd17"
+    },
+    {
+      "id": "RETRY-00143",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/auth-retry-r2/processes-21.txt",
+      "bytes": 4352,
+      "sha256": "aa884622d8d90861347addbcfc4db6552750062996b6afdd94ef0a26e228d8af"
+    },
+    {
+      "id": "RETRY-00144",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/auth-retry-r2/processes-22.txt",
+      "bytes": 4352,
+      "sha256": "535a78c21f4f174f221bbef304e244c6deb0b186b3990fd63a11b65f41280e88"
+    },
+    {
+      "id": "RETRY-00145",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/auth-retry-r2/raw-seal.json",
+      "bytes": 17396,
+      "sha256": "1d810215aa30732359df175de3a9604c4758de3114f41b5d35c31eee6d1157e6"
+    },
+    {
+      "id": "RETRY-00146",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/auth-retry-r2/run.json",
+      "bytes": 15799,
+      "sha256": "bfa8243780d73802a086bb6de867d4d2a91c384787c142784d86d35376a2ed5c"
+    },
+    {
+      "id": "RETRY-00147",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/auth-retry-r2/screen-00.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "RETRY-00148",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/auth-retry-r2/screen-01.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "RETRY-00149",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/auth-retry-r2/screen-02.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "RETRY-00150",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/auth-retry-r2/screen-03.png",
+      "bytes": 19847,
+      "sha256": "2178ceb11e92e5f95694ca8a855de0750fb1a93dfe6e02a13c1856b080d16654"
+    },
+    {
+      "id": "RETRY-00151",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/auth-retry-r2/screen-04.png",
+      "bytes": 13437,
+      "sha256": "e47c2919c72588bea5f3e5b8ebda4d9823a66e8864f6b86ed6f85d9e19598218"
+    },
+    {
+      "id": "RETRY-00152",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/auth-retry-r2/screen-05.png",
+      "bytes": 191431,
+      "sha256": "35903a0d052b21d3a24bf93dc8a8f6b306cabbb746f12f3287dd1e5c2419a39a"
+    },
+    {
+      "id": "RETRY-00153",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/auth-retry-r2/screen-06.png",
+      "bytes": 198305,
+      "sha256": "9b10549412e06848d54d6cf6d91ca666ab12e4158385b5e17a2c8b10d6314b83"
+    },
+    {
+      "id": "RETRY-00154",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/auth-retry-r2/screen-07.png",
+      "bytes": 404719,
+      "sha256": "9761bca4741bb4338a2b1fe3062f436b20f4f1deb77d1dbdc74642a99c3ed659"
+    },
+    {
+      "id": "RETRY-00155",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/auth-retry-r2/screen-08.png",
+      "bytes": 404689,
+      "sha256": "c7e1feea793f508bd33e9d4b1dde5c4dc29a9d1b14af723217f7ac9b450e9888"
+    },
+    {
+      "id": "RETRY-00156",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/auth-retry-r2/screen-09.png",
+      "bytes": 404689,
+      "sha256": "c7e1feea793f508bd33e9d4b1dde5c4dc29a9d1b14af723217f7ac9b450e9888"
+    },
+    {
+      "id": "RETRY-00157",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/auth-retry-r2/screen-10.png",
+      "bytes": 404693,
+      "sha256": "fafcc7527924e7db84d28b018f6cd764815d703b2705cb2495716cc5db0b95c0"
+    },
+    {
+      "id": "RETRY-00158",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/auth-retry-r2/screen-11.png",
+      "bytes": 148741,
+      "sha256": "a533276e5a9094a6a898ccb3fd5d7e0e62f90f26ca514fe09d4f01de4e79eaf0"
+    },
+    {
+      "id": "RETRY-00159",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/auth-retry-r2/screen-12.png",
+      "bytes": 144040,
+      "sha256": "7cbb0d7221447adee9296d09bc3fe35b3e24328c151a84254afc8e0ccfea3751"
+    },
+    {
+      "id": "RETRY-00160",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/auth-retry-r2/screen-13.png",
+      "bytes": 144301,
+      "sha256": "066e20a1f07cb54d3db0b3fe6d70f2b399315c7e10fb1ebffa3bb304bc9fe875"
+    },
+    {
+      "id": "RETRY-00161",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/auth-retry-r2/screen-14.png",
+      "bytes": 143437,
+      "sha256": "5821b3878283e6100220092975b2bc1225f73553f5e5fd75702515636cb865ce"
+    },
+    {
+      "id": "RETRY-00162",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/auth-retry-r2/screen-15.png",
+      "bytes": 142471,
+      "sha256": "a87233d06cf0310464203abbfd128938adb7c157102c7fb5673dd6a80fd6b3d0"
+    },
+    {
+      "id": "RETRY-00163",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/auth-retry-r2/screen-16.png",
+      "bytes": 141479,
+      "sha256": "4c773ba0457b5086c6dd9970d3309e2b267167196466455cc4dc706a4a090ead"
+    },
+    {
+      "id": "RETRY-00164",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/auth-retry-r2/screen-17.png",
+      "bytes": 141475,
+      "sha256": "ef2d5499d4b341983873c10cfa99c9d138826889cf5f15056ff6c89fcc645aa1"
+    },
+    {
+      "id": "RETRY-00165",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/auth-retry-r2/screen-18.png",
+      "bytes": 141609,
+      "sha256": "0da95b622d64de714bcc7a7c273785cb436f4de6393bd81818eebc62d24991a1"
+    },
+    {
+      "id": "RETRY-00166",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/auth-retry-r2/screen-19.png",
+      "bytes": 142677,
+      "sha256": "edf5d48b560b3e68cb35d12c693caeb9a4bb39772e2775974007d69f14659fa1"
+    },
+    {
+      "id": "RETRY-00167",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/auth-retry-r2/screen-20.png",
+      "bytes": 143581,
+      "sha256": "afb7b3eed00d8ec9e6cbfe3c342a74c351059446090468d84c39e7dbb3b78113"
+    },
+    {
+      "id": "RETRY-00168",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/auth-retry-r2/screen-21.png",
+      "bytes": 143588,
+      "sha256": "2f7ec83692dc5df3568fe3e6a5d1403bc910b00f146de6c066e6569250a7c864"
+    },
+    {
+      "id": "RETRY-00169",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/auth-retry-r2/screen-22.png",
+      "bytes": 143507,
+      "sha256": "c0275a7fe199cebe608d495dd569335a4715084a5c562c86a19152c249ffae78"
+    },
+    {
+      "id": "RETRY-00170",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/auth-retry-r2/service-state.json",
+      "bytes": 31053,
+      "sha256": "c55086bd08e3a250a3a8a6b456627d2295d1ea9df2e48560c980129608f62eb9"
+    },
+    {
+      "id": "RETRY-00171",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/auth-retry-r2/service.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "RETRY-00172",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/auth-retry-r2/transport-writes.jsonl",
+      "bytes": 4503,
+      "sha256": "b90e16fd2f8605b5f5cf1a5e9313d131a6fdce67fc296e34dd7cf3beee933901"
+    },
+    {
+      "id": "RETRY-00173",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/auth-retry-r2/windows-00.txt",
+      "bytes": 166,
+      "sha256": "28ae29836d791dcd3302b447a52a8f0fa3f9a192abbc33a27751e23d7ebe0d43"
+    },
+    {
+      "id": "RETRY-00174",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/auth-retry-r2/windows-01.txt",
+      "bytes": 872,
+      "sha256": "89b108c8ab5e0cd64339cc2b6fe0f0dffcc9e02084d7dc3435adcc9dc270c8ae"
+    },
+    {
+      "id": "RETRY-00175",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/auth-retry-r2/windows-02.txt",
+      "bytes": 872,
+      "sha256": "89b108c8ab5e0cd64339cc2b6fe0f0dffcc9e02084d7dc3435adcc9dc270c8ae"
+    },
+    {
+      "id": "RETRY-00176",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/auth-retry-r2/windows-03.txt",
+      "bytes": 1311,
+      "sha256": "272470e4eb4025dd22b8188441f5b2debfdfd7457dd2a31e5f55d6f0b7a4c05d"
+    },
+    {
+      "id": "RETRY-00177",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/auth-retry-r2/windows-04.txt",
+      "bytes": 1311,
+      "sha256": "272470e4eb4025dd22b8188441f5b2debfdfd7457dd2a31e5f55d6f0b7a4c05d"
+    },
+    {
+      "id": "RETRY-00178",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/auth-retry-r2/windows-05.txt",
+      "bytes": 1311,
+      "sha256": "272470e4eb4025dd22b8188441f5b2debfdfd7457dd2a31e5f55d6f0b7a4c05d"
+    },
+    {
+      "id": "RETRY-00179",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/auth-retry-r2/windows-06.txt",
+      "bytes": 1311,
+      "sha256": "272470e4eb4025dd22b8188441f5b2debfdfd7457dd2a31e5f55d6f0b7a4c05d"
+    },
+    {
+      "id": "RETRY-00180",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/auth-retry-r2/windows-07.txt",
+      "bytes": 1358,
+      "sha256": "248bddfaaab7ad0fd77b1f6a71f7f0d2554027c90c1db6f99935a4c23fe7f794"
+    },
+    {
+      "id": "RETRY-00181",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/auth-retry-r2/windows-08.txt",
+      "bytes": 1358,
+      "sha256": "248bddfaaab7ad0fd77b1f6a71f7f0d2554027c90c1db6f99935a4c23fe7f794"
+    },
+    {
+      "id": "RETRY-00182",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/auth-retry-r2/windows-09.txt",
+      "bytes": 1358,
+      "sha256": "248bddfaaab7ad0fd77b1f6a71f7f0d2554027c90c1db6f99935a4c23fe7f794"
+    },
+    {
+      "id": "RETRY-00183",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/auth-retry-r2/windows-10.txt",
+      "bytes": 1358,
+      "sha256": "248bddfaaab7ad0fd77b1f6a71f7f0d2554027c90c1db6f99935a4c23fe7f794"
+    },
+    {
+      "id": "RETRY-00184",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/auth-retry-r2/windows-11.txt",
+      "bytes": 1358,
+      "sha256": "248bddfaaab7ad0fd77b1f6a71f7f0d2554027c90c1db6f99935a4c23fe7f794"
+    },
+    {
+      "id": "RETRY-00185",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/auth-retry-r2/windows-12.txt",
+      "bytes": 1358,
+      "sha256": "248bddfaaab7ad0fd77b1f6a71f7f0d2554027c90c1db6f99935a4c23fe7f794"
+    },
+    {
+      "id": "RETRY-00186",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/auth-retry-r2/windows-13.txt",
+      "bytes": 1358,
+      "sha256": "248bddfaaab7ad0fd77b1f6a71f7f0d2554027c90c1db6f99935a4c23fe7f794"
+    },
+    {
+      "id": "RETRY-00187",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/auth-retry-r2/windows-14.txt",
+      "bytes": 1358,
+      "sha256": "248bddfaaab7ad0fd77b1f6a71f7f0d2554027c90c1db6f99935a4c23fe7f794"
+    },
+    {
+      "id": "RETRY-00188",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/auth-retry-r2/windows-15.txt",
+      "bytes": 1358,
+      "sha256": "248bddfaaab7ad0fd77b1f6a71f7f0d2554027c90c1db6f99935a4c23fe7f794"
+    },
+    {
+      "id": "RETRY-00189",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/auth-retry-r2/windows-16.txt",
+      "bytes": 1358,
+      "sha256": "248bddfaaab7ad0fd77b1f6a71f7f0d2554027c90c1db6f99935a4c23fe7f794"
+    },
+    {
+      "id": "RETRY-00190",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/auth-retry-r2/windows-17.txt",
+      "bytes": 1358,
+      "sha256": "248bddfaaab7ad0fd77b1f6a71f7f0d2554027c90c1db6f99935a4c23fe7f794"
+    },
+    {
+      "id": "RETRY-00191",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/auth-retry-r2/windows-18.txt",
+      "bytes": 1358,
+      "sha256": "248bddfaaab7ad0fd77b1f6a71f7f0d2554027c90c1db6f99935a4c23fe7f794"
+    },
+    {
+      "id": "RETRY-00192",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/auth-retry-r2/windows-19.txt",
+      "bytes": 1358,
+      "sha256": "248bddfaaab7ad0fd77b1f6a71f7f0d2554027c90c1db6f99935a4c23fe7f794"
+    },
+    {
+      "id": "RETRY-00193",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/auth-retry-r2/windows-20.txt",
+      "bytes": 1358,
+      "sha256": "248bddfaaab7ad0fd77b1f6a71f7f0d2554027c90c1db6f99935a4c23fe7f794"
+    },
+    {
+      "id": "RETRY-00194",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/auth-retry-r2/windows-21.txt",
+      "bytes": 1358,
+      "sha256": "248bddfaaab7ad0fd77b1f6a71f7f0d2554027c90c1db6f99935a4c23fe7f794"
+    },
+    {
+      "id": "RETRY-00195",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/auth-retry-r2/windows-22.txt",
+      "bytes": 1358,
+      "sha256": "248bddfaaab7ad0fd77b1f6a71f7f0d2554027c90c1db6f99935a4c23fe7f794"
+    },
+    {
+      "id": "RETRY-00196",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/auth-retry-r2/wineboot.log",
+      "bytes": 64844,
+      "sha256": "8fac62fe03a60263d1b8fac872b566a70edef52d8d2e9508f9b1ac79c5e7f21a"
+    },
+    {
+      "id": "RETRY-00197",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/auth-retry-r2/xvfb.log",
+      "bytes": 2808,
+      "sha256": "46b8747df8a2fc8b6a469b2374ea3d0c6c786dc3dcf2a9be13d94ce76ed3a1a7"
+    },
+    {
+      "id": "RETRY-00198",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/before-sync/README.md",
+      "bytes": 5346,
+      "sha256": "f7c3f551dfb54765902720d7d31fad09213639bf2caa7dcb27e8149fcc3b3df0"
+    },
+    {
+      "id": "RETRY-00199",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/before-sync/docs/COVERAGE.md",
+      "bytes": 161313,
+      "sha256": "a25c1636815df1271109ea1b3f32a466cc88778d568a4340beb2f2b0aa9a5afd"
+    },
+    {
+      "id": "RETRY-00200",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/before-sync/docs/PLAN.md",
+      "bytes": 42407,
+      "sha256": "af4490409de2660e52676c6d06dbed88d9cc2c73783191c47a19e809a6b8d8e2"
+    },
+    {
+      "id": "RETRY-00201",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/before-sync/docs/PROTOCOL.md",
+      "bytes": 548804,
+      "sha256": "5c7ee8a52245a4278e1e36b10fcccc5638f9043219860582bd6282e72c2dbf27"
+    },
+    {
+      "id": "RETRY-00202",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/before-sync/docs/RESEARCH.md",
+      "bytes": 32868,
+      "sha256": "59f004881c5f1051ec495f0f6314775a01283dbc2ffcbdcf07bb20649eea8429"
+    },
+    {
+      "id": "RETRY-00203",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/before-sync/docs/features.json",
+      "bytes": 169054,
+      "sha256": "b29a58faf565e31a9a4efa235797d53c15c30df961ff5f8997e56f8db13c3e72"
+    },
+    {
+      "id": "RETRY-00204",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/before-sync/docs/evidence/live-codec-stream/retry-in-progress.json",
+      "bytes": 3311,
+      "sha256": "403e5dcc6e4e99b87aaf7ca05f46251988d85c0c287aee82166baed331344b24"
+    },
+    {
+      "id": "RETRY-00205",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/cp181-snapshot/README.md",
+      "bytes": 5520,
+      "sha256": "0b1b202fc3ee865373bdcf8f5a7f60acc07bd9282f5b1cf9ad39d152e8c0ab10"
+    },
+    {
+      "id": "RETRY-00206",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/cp181-snapshot/docs/COVERAGE.md",
+      "bytes": 161413,
+      "sha256": "37af53b8eef0c32cb5d269053962efcebc841999715791f919a90532b694655c"
+    },
+    {
+      "id": "RETRY-00207",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/cp181-snapshot/docs/PLAN.md",
+      "bytes": 44390,
+      "sha256": "323758dd7d2e06e63fe473aa72f413bb78924a3ab8b5696df5753113cf22bc3b"
+    },
+    {
+      "id": "RETRY-00208",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/cp181-snapshot/docs/PROTOCOL.md",
+      "bytes": 551611,
+      "sha256": "adc2dff35c75e10b217f888b99a39f79ffbf76c3df683bae49547a68a77d334b"
+    },
+    {
+      "id": "RETRY-00209",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/cp181-snapshot/docs/RESEARCH.md",
+      "bytes": 31926,
+      "sha256": "cc0cf359d1bb5fcf141a4f0d3ba0228d08f9567e7f404947404520f3395df90d"
+    },
+    {
+      "id": "RETRY-00210",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/cp181-snapshot/docs/features.json",
+      "bytes": 169434,
+      "sha256": "5b6548a7b19bc83d4f559a823b200a82c77b85b439a3c7f4e8bf42398e82bc00"
+    },
+    {
+      "id": "RETRY-00211",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/cp181-snapshot/docs/evidence/issue-reconciliation/github-snapshot.json",
+      "bytes": 207585,
+      "sha256": "ecc796a4ad9d8c809293016fd43ad0cc0b2ae37ac9152660dfb65021c625d9a1"
+    },
+    {
+      "id": "RETRY-00212",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/cp181-snapshot/docs/evidence/issue-reconciliation/review.json",
+      "bytes": 27454,
+      "sha256": "29f23d072c4132dd65b8b2e9d4ff1672f7b3e2bcb39fb223478bf08515c3c134"
+    },
+    {
+      "id": "RETRY-00213",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/cp181-snapshot/docs/evidence/live-codec-stream/README.md",
+      "bytes": 6674,
+      "sha256": "ec8432aa23188896255daafb26babcc79665727983a1bc7ca570fc6699c66e55"
+    },
+    {
+      "id": "RETRY-00214",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/cp181-snapshot/docs/evidence/live-codec-stream/retry-in-progress.json",
+      "bytes": 4262,
+      "sha256": "7e0fbef1321ccae085df9374ec8e2151f337b07fed074f2e30721ff462afc2de"
+    },
+    {
+      "id": "RETRY-00215",
+      "kind": "local",
+      "path": "local/research/codex/k2-retry-reset-r1/close-route-preparation.json",
+      "bytes": 9530,
+      "sha256": "75f7d794e2946eab4e45872b4549623302288bd3c11072e6c93a49be596b2b5b"
+    },
+    {
+      "id": "RETRY-00216",
+      "kind": "local",
+      "path": "local/research/codex/k2-retry-reset-r1/close-route-r1-launcher.log",
+      "bytes": 6000,
+      "sha256": "8e1c0ccb1515bafa099ff7ed4769476fe70bbd9464dae3c290117c08818272f2"
+    },
+    {
+      "id": "RETRY-00217",
+      "kind": "local",
+      "path": "local/research/codex/k2-retry-reset-r1/close-route-r1-recipe.json",
+      "bytes": 1008,
+      "sha256": "78d72e96e7c4c3ae9cb255bec82e7b4e54f169f4ad0e3c0b4165bf01e4b34f8a"
+    },
+    {
+      "id": "RETRY-00218",
+      "kind": "local",
+      "path": "local/research/codex/k2-retry-reset-r1/close-route-r2-findings.json",
+      "bytes": 1199,
+      "sha256": "6471cf711ade19f66005c479d0eb87861d131c197ac2cd513d5387b13c837546"
+    },
+    {
+      "id": "RETRY-00219",
+      "kind": "local",
+      "path": "local/research/codex/k2-retry-reset-r1/close-route-r2-launcher.log",
+      "bytes": 6051,
+      "sha256": "bee163cac45861496ef031a28f3fdc7e31a34db8b9070c0196062c60d74132c9"
+    },
+    {
+      "id": "RETRY-00220",
+      "kind": "local",
+      "path": "local/research/codex/k2-retry-reset-r1/close-route-r2-preparation.json",
+      "bytes": 9471,
+      "sha256": "3dfea6ac59bb6149463f80a10001f93d6eed95df1b3890ad73574b3e1ad9b036"
+    },
+    {
+      "id": "RETRY-00221",
+      "kind": "local",
+      "path": "local/research/codex/k2-retry-reset-r1/close-route-r2-recipe.json",
+      "bytes": 1011,
+      "sha256": "0217900ad72661deee7c6b47b2faf9179b19ace34162324ebaf3df2751271482"
+    },
+    {
+      "id": "RETRY-00222",
+      "kind": "local",
+      "path": "local/research/codex/k2-retry-reset-r1/close-route-r2.gdb",
+      "bytes": 1418,
+      "sha256": "9ed0935f0f0f55ae0cc182146b729f4d169798d8248bf544fd811384d8899c9d"
+    },
+    {
+      "id": "RETRY-00223",
+      "kind": "local",
+      "path": "local/research/codex/k2-retry-reset-r1/close-route.gdb",
+      "bytes": 1091,
+      "sha256": "79043a45cfee9027bc3213b87e02a0aa8840fe3f857a2766e562e65fb3b321d4"
+    },
+    {
+      "id": "RETRY-00224",
+      "kind": "local",
+      "path": "local/research/codex/k2-retry-reset-r1/docs-progress-check.txt",
+      "bytes": 175,
+      "sha256": "8f06053dba80a2ac53a5aa746461c25473b01c1a3395b5b0553248a982b34435"
+    },
+    {
+      "id": "RETRY-00225",
+      "kind": "local",
+      "path": "local/research/codex/k2-retry-reset-r1/docs-progress-final-check.txt",
+      "bytes": 175,
+      "sha256": "a33af6dea66b328a66e41de64f5e740636d1ebeaa9076c8551dab8ce48fd7a08"
+    },
+    {
+      "id": "RETRY-00226",
+      "kind": "local",
+      "path": "local/research/codex/k2-retry-reset-r1/docs-progress-handoff-check.txt",
+      "bytes": 175,
+      "sha256": "a33af6dea66b328a66e41de64f5e740636d1ebeaa9076c8551dab8ce48fd7a08"
+    },
+    {
+      "id": "RETRY-00227",
+      "kind": "local",
+      "path": "local/research/codex/k2-retry-reset-r1/followup-findings.json",
+      "bytes": 2020,
+      "sha256": "44febe656a2ae4754e8761dcd6af48dc32dc44b0a68ee8a81a254f9c21da45e9"
+    },
+    {
+      "id": "RETRY-00228",
+      "kind": "local",
+      "path": "local/research/codex/k2-retry-reset-r1/followup-watch-failure.json",
+      "bytes": 633,
+      "sha256": "cd623820ad5b5d4246de5654eb8a1d9b4e3d804413eb73a97548610b13268faa"
+    },
+    {
+      "id": "RETRY-00229",
+      "kind": "local",
+      "path": "local/research/codex/k2-retry-reset-r1/issue3-postCP180-before.json",
+      "bytes": 3817,
+      "sha256": "35fc5241ea6dbd4b0bd4e189a1c99105175e957d1f12acff68e5d68e32558e48"
+    },
+    {
+      "id": "RETRY-00230",
+      "kind": "local",
+      "path": "local/research/codex/k2-retry-reset-r1/issue3-postCP180-body.md",
+      "bytes": 4316,
+      "sha256": "0a86a80bfca5aa02c2248e45e558cfeff468f1c0dda9f13710265e8eefca0646"
+    },
+    {
+      "id": "RETRY-00231",
+      "kind": "local",
+      "path": "local/research/codex/k2-retry-reset-r1/preparation.json",
+      "bytes": 9453,
+      "sha256": "0874b89a727c5cc7654ae5efec5ab04335235cd4404dc94c5fa5aad2fcddd092"
+    },
+    {
+      "id": "RETRY-00232",
+      "kind": "local",
+      "path": "local/research/codex/k2-retry-reset-r1/prepare.py",
+      "bytes": 3833,
+      "sha256": "3a94d3ce9801e7e3afbf8c92c5d75a54a3bc5208359972cc032ced7319519e66"
+    },
+    {
+      "id": "RETRY-00233",
+      "kind": "local",
+      "path": "local/research/codex/k2-retry-reset-r1/retry-r1-launcher.log",
+      "bytes": 6149,
+      "sha256": "f462d780eb151e27146b7f13e92f90f07baaf3ad56d0a18a1601f41a2555f874"
+    },
+    {
+      "id": "RETRY-00234",
+      "kind": "local",
+      "path": "local/research/codex/k2-retry-reset-r1/retry-r1-recipe.json",
+      "bytes": 996,
+      "sha256": "7d5cfe3d25eca7203205d32edb58179be9f38b746078c8e483f26d7dc1682d02"
+    },
+    {
+      "id": "RETRY-00235",
+      "kind": "local",
+      "path": "local/research/codex/k2-retry-reset-r1/retry.gdb",
+      "bytes": 826,
+      "sha256": "f03e09150d69fce7d10d2965708917c947ddd4689914495620f41e6aece6248c"
+    },
+    {
+      "id": "RETRY-00236",
+      "kind": "local",
+      "path": "local/research/codex/k2-retry-reset-r1/source-first-reuse.json",
+      "bytes": 4668,
+      "sha256": "03f79b94be285bab9690db53fe5a2b0411dc05b0057a7aa7f7122df3821a08a5"
+    },
+    {
+      "id": "RETRY-00237",
+      "kind": "local",
+      "path": "local/research/codex/k2-retry-reset-r1/close-route-r1/CALog-before.txt",
+      "bytes": 667,
+      "sha256": "5c9dee2236e9183f4f198e1da1de24e329999d156d9546ee783383290bcc417e"
+    },
+    {
+      "id": "RETRY-00238",
+      "kind": "local",
+      "path": "local/research/codex/k2-retry-reset-r1/close-route-r1/CALog-run.txt",
+      "bytes": 667,
+      "sha256": "5c9dee2236e9183f4f198e1da1de24e329999d156d9546ee783383290bcc417e"
+    },
+    {
+      "id": "RETRY-00239",
+      "kind": "local",
+      "path": "local/research/codex/k2-retry-reset-r1/close-route-r1/client.log",
+      "bytes": 123539,
+      "sha256": "e06e50b446206cf3edc85dd7af9a8c4dd5991fa068db3e18d8005c8c53b33b27"
+    },
+    {
+      "id": "RETRY-00240",
+      "kind": "local",
+      "path": "local/research/codex/k2-retry-reset-r1/close-route-r1/close-error-modal-after.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "RETRY-00241",
+      "kind": "local",
+      "path": "local/research/codex/k2-retry-reset-r1/close-route-r1/close-error-modal-before.png",
+      "bytes": 404267,
+      "sha256": "e58fbe0a490ec42db1fa454a6856b7ed2ccc023398df5f67197413a0fe3f8ff0"
+    },
+    {
+      "id": "RETRY-00242",
+      "kind": "local",
+      "path": "local/research/codex/k2-retry-reset-r1/close-route-r1/debug-commands.txt",
+      "bytes": 1091,
+      "sha256": "79043a45cfee9027bc3213b87e02a0aa8840fe3f857a2766e562e65fb3b321d4"
+    },
+    {
+      "id": "RETRY-00243",
+      "kind": "local",
+      "path": "local/research/codex/k2-retry-reset-r1/close-route-r1/hosts",
+      "bytes": 121,
+      "sha256": "32a007c62d2887ae9f8d3c30d1ff7cb3902e6e1e0c75c5a978ee556cc8ea71f8"
+    },
+    {
+      "id": "RETRY-00244",
+      "kind": "local",
+      "path": "local/research/codex/k2-retry-reset-r1/close-route-r1/nsswitch.conf",
+      "bytes": 307,
+      "sha256": "c18e474cd61df8648ee02ac7a9c76b8d6c7782d8b212f925e6980f20af5cc838"
+    },
+    {
+      "id": "RETRY-00245",
+      "kind": "local",
+      "path": "local/research/codex/k2-retry-reset-r1/close-route-r1/processes-00.txt",
+      "bytes": 3647,
+      "sha256": "412dfc16587e9fccae2d2e23922d6eb6a1828811114e33ee5040646438927502"
+    },
+    {
+      "id": "RETRY-00246",
+      "kind": "local",
+      "path": "local/research/codex/k2-retry-reset-r1/close-route-r1/processes-01.txt",
+      "bytes": 4367,
+      "sha256": "739305b4c18abcd201417ccf1a5701f6c1c5bf1a5d9d992d07420cfa294e5ddf"
+    },
+    {
+      "id": "RETRY-00247",
+      "kind": "local",
+      "path": "local/research/codex/k2-retry-reset-r1/close-route-r1/processes-02.txt",
+      "bytes": 4367,
+      "sha256": "7d2e64d42efa7b0373f6508a402e62434d6484af38c740bedd9360a4c5d86722"
+    },
+    {
+      "id": "RETRY-00248",
+      "kind": "local",
+      "path": "local/research/codex/k2-retry-reset-r1/close-route-r1/processes-03.txt",
+      "bytes": 4367,
+      "sha256": "0ecfa56785361f5449dff213f7787d9712050b3181e41b30085be444932097eb"
+    },
+    {
+      "id": "RETRY-00249",
+      "kind": "local",
+      "path": "local/research/codex/k2-retry-reset-r1/close-route-r1/processes-04.txt",
+      "bytes": 4367,
+      "sha256": "ca8e5baba780d58486219ed7e73eeb2ac57f6246f10651940efd546faad7ab29"
+    },
+    {
+      "id": "RETRY-00250",
+      "kind": "local",
+      "path": "local/research/codex/k2-retry-reset-r1/close-route-r1/processes-05.txt",
+      "bytes": 4367,
+      "sha256": "1db1be09acb44c65bd03c414c82dd316fde425e2c2eddd5d47ec26c9a9ca1281"
+    },
+    {
+      "id": "RETRY-00251",
+      "kind": "local",
+      "path": "local/research/codex/k2-retry-reset-r1/close-route-r1/processes-06.txt",
+      "bytes": 4367,
+      "sha256": "624fc9b7aa5ffb6fedfb6af0d0f5e72b61ef68705e76c0187a5afe547f58cc80"
+    },
+    {
+      "id": "RETRY-00252",
+      "kind": "local",
+      "path": "local/research/codex/k2-retry-reset-r1/close-route-r1/processes-07.txt",
+      "bytes": 4367,
+      "sha256": "3aec2c7758b6bab7765e882b00d7fc6dab26b337b2171173929dec762609c766"
+    },
+    {
+      "id": "RETRY-00253",
+      "kind": "local",
+      "path": "local/research/codex/k2-retry-reset-r1/close-route-r1/processes-08.txt",
+      "bytes": 4367,
+      "sha256": "119e83b5f4ac7f2c692290d1a11fb9146a35b2fceaa094011cfd3565307edff8"
+    },
+    {
+      "id": "RETRY-00254",
+      "kind": "local",
+      "path": "local/research/codex/k2-retry-reset-r1/close-route-r1/processes-09.txt",
+      "bytes": 4367,
+      "sha256": "d135c6c2db771d8e414e87bba79b99e05277108463f2e3c118585ab7e2dde8db"
+    },
+    {
+      "id": "RETRY-00255",
+      "kind": "local",
+      "path": "local/research/codex/k2-retry-reset-r1/close-route-r1/processes-10.txt",
+      "bytes": 4367,
+      "sha256": "e36141130ecf55536a0b799325c6673da343bc4eb0e302dfb06bba57dc5b49e8"
+    },
+    {
+      "id": "RETRY-00256",
+      "kind": "local",
+      "path": "local/research/codex/k2-retry-reset-r1/close-route-r1/raw-seal.json",
+      "bytes": 9873,
+      "sha256": "1cdec9e2ae0e392073b2b559d2ae2f26edae30b6cf174f7dab86474fba88379a"
+    },
+    {
+      "id": "RETRY-00257",
+      "kind": "local",
+      "path": "local/research/codex/k2-retry-reset-r1/close-route-r1/run.json",
+      "bytes": 7380,
+      "sha256": "ec1ca1c93bdcd4153da3951f87143c001437a33985ea34d06e1e1a6fd745fcf9"
+    },
+    {
+      "id": "RETRY-00258",
+      "kind": "local",
+      "path": "local/research/codex/k2-retry-reset-r1/close-route-r1/screen-00.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "RETRY-00259",
+      "kind": "local",
+      "path": "local/research/codex/k2-retry-reset-r1/close-route-r1/screen-01.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "RETRY-00260",
+      "kind": "local",
+      "path": "local/research/codex/k2-retry-reset-r1/close-route-r1/screen-02.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "RETRY-00261",
+      "kind": "local",
+      "path": "local/research/codex/k2-retry-reset-r1/close-route-r1/screen-03.png",
+      "bytes": 19847,
+      "sha256": "2178ceb11e92e5f95694ca8a855de0750fb1a93dfe6e02a13c1856b080d16654"
+    },
+    {
+      "id": "RETRY-00262",
+      "kind": "local",
+      "path": "local/research/codex/k2-retry-reset-r1/close-route-r1/screen-04.png",
+      "bytes": 13437,
+      "sha256": "e47c2919c72588bea5f3e5b8ebda4d9823a66e8864f6b86ed6f85d9e19598218"
+    },
+    {
+      "id": "RETRY-00263",
+      "kind": "local",
+      "path": "local/research/codex/k2-retry-reset-r1/close-route-r1/screen-05.png",
+      "bytes": 191431,
+      "sha256": "35903a0d052b21d3a24bf93dc8a8f6b306cabbb746f12f3287dd1e5c2419a39a"
+    },
+    {
+      "id": "RETRY-00264",
+      "kind": "local",
+      "path": "local/research/codex/k2-retry-reset-r1/close-route-r1/screen-06.png",
+      "bytes": 194793,
+      "sha256": "6f7048d51adc78ef2b8bdfb14162846019ab7cfaa8bf16f6a88eb11cb3026e9d"
+    },
+    {
+      "id": "RETRY-00265",
+      "kind": "local",
+      "path": "local/research/codex/k2-retry-reset-r1/close-route-r1/screen-07.png",
+      "bytes": 404268,
+      "sha256": "49506add41605cd01b3e01724c30b921a8bc155c376eb7d557fec7523eb02374"
+    },
+    {
+      "id": "RETRY-00266",
+      "kind": "local",
+      "path": "local/research/codex/k2-retry-reset-r1/close-route-r1/screen-08.png",
+      "bytes": 404268,
+      "sha256": "49506add41605cd01b3e01724c30b921a8bc155c376eb7d557fec7523eb02374"
+    },
+    {
+      "id": "RETRY-00267",
+      "kind": "local",
+      "path": "local/research/codex/k2-retry-reset-r1/close-route-r1/screen-09.png",
+      "bytes": 404267,
+      "sha256": "e58fbe0a490ec42db1fa454a6856b7ed2ccc023398df5f67197413a0fe3f8ff0"
+    },
+    {
+      "id": "RETRY-00268",
+      "kind": "local",
+      "path": "local/research/codex/k2-retry-reset-r1/close-route-r1/screen-10.png",
+      "bytes": 404290,
+      "sha256": "defc58f433b3880945e8c7c5ee06096ffe1bffb943efb5d95c210bf5250c7174"
+    },
+    {
+      "id": "RETRY-00269",
+      "kind": "local",
+      "path": "local/research/codex/k2-retry-reset-r1/close-route-r1/service-state.json",
+      "bytes": 23208,
+      "sha256": "26ccc5a513f3d6d9f6c0aa643784f4d51e93a329b0034d93a975e3d774132aa6"
+    },
+    {
+      "id": "RETRY-00270",
+      "kind": "local",
+      "path": "local/research/codex/k2-retry-reset-r1/close-route-r1/service.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "RETRY-00271",
+      "kind": "local",
+      "path": "local/research/codex/k2-retry-reset-r1/close-route-r1/transport-writes.jsonl",
+      "bytes": 2557,
+      "sha256": "99f83eb40c648fcba95bbd0509456f9c86c10c843e123f66eec38552a97205c6"
+    },
+    {
+      "id": "RETRY-00272",
+      "kind": "local",
+      "path": "local/research/codex/k2-retry-reset-r1/close-route-r1/windows-00.txt",
+      "bytes": 166,
+      "sha256": "28ae29836d791dcd3302b447a52a8f0fa3f9a192abbc33a27751e23d7ebe0d43"
+    },
+    {
+      "id": "RETRY-00273",
+      "kind": "local",
+      "path": "local/research/codex/k2-retry-reset-r1/close-route-r1/windows-01.txt",
+      "bytes": 872,
+      "sha256": "c8c8cfe9c5b9bb2ccde16b4b959b165ed33d50824f3fbd29834c16b6f0e63586"
+    },
+    {
+      "id": "RETRY-00274",
+      "kind": "local",
+      "path": "local/research/codex/k2-retry-reset-r1/close-route-r1/windows-02.txt",
+      "bytes": 872,
+      "sha256": "c8c8cfe9c5b9bb2ccde16b4b959b165ed33d50824f3fbd29834c16b6f0e63586"
+    },
+    {
+      "id": "RETRY-00275",
+      "kind": "local",
+      "path": "local/research/codex/k2-retry-reset-r1/close-route-r1/windows-03.txt",
+      "bytes": 1311,
+      "sha256": "79f14ed4dc9ec340cb32d82ec0c77a2262196d736b814194ac0ee379704f762b"
+    },
+    {
+      "id": "RETRY-00276",
+      "kind": "local",
+      "path": "local/research/codex/k2-retry-reset-r1/close-route-r1/windows-04.txt",
+      "bytes": 1311,
+      "sha256": "79f14ed4dc9ec340cb32d82ec0c77a2262196d736b814194ac0ee379704f762b"
+    },
+    {
+      "id": "RETRY-00277",
+      "kind": "local",
+      "path": "local/research/codex/k2-retry-reset-r1/close-route-r1/windows-05.txt",
+      "bytes": 1311,
+      "sha256": "79f14ed4dc9ec340cb32d82ec0c77a2262196d736b814194ac0ee379704f762b"
+    },
+    {
+      "id": "RETRY-00278",
+      "kind": "local",
+      "path": "local/research/codex/k2-retry-reset-r1/close-route-r1/windows-06.txt",
+      "bytes": 1311,
+      "sha256": "79f14ed4dc9ec340cb32d82ec0c77a2262196d736b814194ac0ee379704f762b"
+    },
+    {
+      "id": "RETRY-00279",
+      "kind": "local",
+      "path": "local/research/codex/k2-retry-reset-r1/close-route-r1/windows-07.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "RETRY-00280",
+      "kind": "local",
+      "path": "local/research/codex/k2-retry-reset-r1/close-route-r1/windows-08.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "RETRY-00281",
+      "kind": "local",
+      "path": "local/research/codex/k2-retry-reset-r1/close-route-r1/windows-09.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "RETRY-00282",
+      "kind": "local",
+      "path": "local/research/codex/k2-retry-reset-r1/close-route-r1/windows-10.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "RETRY-00283",
+      "kind": "local",
+      "path": "local/research/codex/k2-retry-reset-r1/close-route-r1/wineboot.log",
+      "bytes": 64844,
+      "sha256": "6fa00d6a108e4502d45141b85f2874d895c780a0ef1bda661ee57d8c9251e3d8"
+    },
+    {
+      "id": "RETRY-00284",
+      "kind": "local",
+      "path": "local/research/codex/k2-retry-reset-r1/close-route-r1/xvfb.log",
+      "bytes": 3276,
+      "sha256": "aafa90ec00e56930b0f85e3d64327e80adc11facc4c969524afb6a5134280d72"
+    },
+    {
+      "id": "RETRY-00285",
+      "kind": "local",
+      "path": "local/research/codex/k2-retry-reset-r1/close-route-r2/CALog-before.txt",
+      "bytes": 667,
+      "sha256": "5c9dee2236e9183f4f198e1da1de24e329999d156d9546ee783383290bcc417e"
+    },
+    {
+      "id": "RETRY-00286",
+      "kind": "local",
+      "path": "local/research/codex/k2-retry-reset-r1/close-route-r2/CALog-run.txt",
+      "bytes": 667,
+      "sha256": "5c9dee2236e9183f4f198e1da1de24e329999d156d9546ee783383290bcc417e"
+    },
+    {
+      "id": "RETRY-00287",
+      "kind": "local",
+      "path": "local/research/codex/k2-retry-reset-r1/close-route-r2/client.log",
+      "bytes": 131277,
+      "sha256": "e7fdc6983dac8525650a23700f78855fc9f8fd478987d4dfaf284f72769b351d"
+    },
+    {
+      "id": "RETRY-00288",
+      "kind": "local",
+      "path": "local/research/codex/k2-retry-reset-r1/close-route-r2/close-error-modal-after.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "RETRY-00289",
+      "kind": "local",
+      "path": "local/research/codex/k2-retry-reset-r1/close-route-r2/close-error-modal-before.png",
+      "bytes": 404268,
+      "sha256": "49506add41605cd01b3e01724c30b921a8bc155c376eb7d557fec7523eb02374"
+    },
+    {
+      "id": "RETRY-00290",
+      "kind": "local",
+      "path": "local/research/codex/k2-retry-reset-r1/close-route-r2/debug-commands.txt",
+      "bytes": 1418,
+      "sha256": "9ed0935f0f0f55ae0cc182146b729f4d169798d8248bf544fd811384d8899c9d"
+    },
+    {
+      "id": "RETRY-00291",
+      "kind": "local",
+      "path": "local/research/codex/k2-retry-reset-r1/close-route-r2/hosts",
+      "bytes": 121,
+      "sha256": "32a007c62d2887ae9f8d3c30d1ff7cb3902e6e1e0c75c5a978ee556cc8ea71f8"
+    },
+    {
+      "id": "RETRY-00292",
+      "kind": "local",
+      "path": "local/research/codex/k2-retry-reset-r1/close-route-r2/nsswitch.conf",
+      "bytes": 307,
+      "sha256": "c18e474cd61df8648ee02ac7a9c76b8d6c7782d8b212f925e6980f20af5cc838"
+    },
+    {
+      "id": "RETRY-00293",
+      "kind": "local",
+      "path": "local/research/codex/k2-retry-reset-r1/close-route-r2/processes-00.txt",
+      "bytes": 3650,
+      "sha256": "eefbf3e8c3b8ab56f8247c8bb39f720ad15b7981e002e64023b6956d6307f78b"
+    },
+    {
+      "id": "RETRY-00294",
+      "kind": "local",
+      "path": "local/research/codex/k2-retry-reset-r1/close-route-r2/processes-01.txt",
+      "bytes": 4370,
+      "sha256": "2e98a3dce1224f6dd91be5148042fac1291953636bcb55d1d5a2a287384a9d97"
+    },
+    {
+      "id": "RETRY-00295",
+      "kind": "local",
+      "path": "local/research/codex/k2-retry-reset-r1/close-route-r2/processes-02.txt",
+      "bytes": 4370,
+      "sha256": "70242229854bf8a258d01cd2f076581dc13999fabe024b53f749d94c51b87f0b"
+    },
+    {
+      "id": "RETRY-00296",
+      "kind": "local",
+      "path": "local/research/codex/k2-retry-reset-r1/close-route-r2/processes-03.txt",
+      "bytes": 4370,
+      "sha256": "845b6fc5ccefea84f0cb05a2897b9b6915f5c59ec2b2e550ca8958e029ac6316"
+    },
+    {
+      "id": "RETRY-00297",
+      "kind": "local",
+      "path": "local/research/codex/k2-retry-reset-r1/close-route-r2/processes-04.txt",
+      "bytes": 4370,
+      "sha256": "f0799225c8f1b8918226b2463bc5ef6000d299245f177b7f0281962dc310d59a"
+    },
+    {
+      "id": "RETRY-00298",
+      "kind": "local",
+      "path": "local/research/codex/k2-retry-reset-r1/close-route-r2/processes-05.txt",
+      "bytes": 4370,
+      "sha256": "083c1329a359f413059de1846edac4fa0929698ef62b4a44ec300c3698334972"
+    },
+    {
+      "id": "RETRY-00299",
+      "kind": "local",
+      "path": "local/research/codex/k2-retry-reset-r1/close-route-r2/processes-06.txt",
+      "bytes": 4370,
+      "sha256": "4adb5abfe1d696c645dc30a397ed3b8ec3e80ff82eaaefc5dc275c59dac996a2"
+    },
+    {
+      "id": "RETRY-00300",
+      "kind": "local",
+      "path": "local/research/codex/k2-retry-reset-r1/close-route-r2/processes-07.txt",
+      "bytes": 4370,
+      "sha256": "3a057d9a408792b2301188dce8ec2825d889887371170b2ec82f4150b64c2500"
+    },
+    {
+      "id": "RETRY-00301",
+      "kind": "local",
+      "path": "local/research/codex/k2-retry-reset-r1/close-route-r2/processes-08.txt",
+      "bytes": 4370,
+      "sha256": "94c2ac5883259138354564f32df46c27fab1785a9c4ea9f22986d886a2f4bdad"
+    },
+    {
+      "id": "RETRY-00302",
+      "kind": "local",
+      "path": "local/research/codex/k2-retry-reset-r1/close-route-r2/processes-09.txt",
+      "bytes": 4370,
+      "sha256": "e0d401542cbcb36049dcee80a25b4400f4904037ba9a26ce05679174503602e5"
+    },
+    {
+      "id": "RETRY-00303",
+      "kind": "local",
+      "path": "local/research/codex/k2-retry-reset-r1/close-route-r2/processes-10.txt",
+      "bytes": 4370,
+      "sha256": "22f9916b61bd0d80d5af966b0d6c1d77ebc05136c69f9f0b69f40ae8eaba97a4"
+    },
+    {
+      "id": "RETRY-00304",
+      "kind": "local",
+      "path": "local/research/codex/k2-retry-reset-r1/close-route-r2/processes-11.txt",
+      "bytes": 4370,
+      "sha256": "8592e90bc53bd683d06488749ab83f67328befbaa118cc31b1345223ce75a27c"
+    },
+    {
+      "id": "RETRY-00305",
+      "kind": "local",
+      "path": "local/research/codex/k2-retry-reset-r1/close-route-r2/raw-seal.json",
+      "bytes": 10439,
+      "sha256": "322aa8551ac5bf494490871bcacd0e71be11353d2ea7b803e859278d8a19f9c9"
+    },
+    {
+      "id": "RETRY-00306",
+      "kind": "local",
+      "path": "local/research/codex/k2-retry-reset-r1/close-route-r2/run.json",
+      "bytes": 7453,
+      "sha256": "5456b7f3e0754105a3cf70d28956eaa62578f3c049816eb40885e56e9bf68392"
+    },
+    {
+      "id": "RETRY-00307",
+      "kind": "local",
+      "path": "local/research/codex/k2-retry-reset-r1/close-route-r2/screen-00.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "RETRY-00308",
+      "kind": "local",
+      "path": "local/research/codex/k2-retry-reset-r1/close-route-r2/screen-01.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "RETRY-00309",
+      "kind": "local",
+      "path": "local/research/codex/k2-retry-reset-r1/close-route-r2/screen-02.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "RETRY-00310",
+      "kind": "local",
+      "path": "local/research/codex/k2-retry-reset-r1/close-route-r2/screen-03.png",
+      "bytes": 19847,
+      "sha256": "2178ceb11e92e5f95694ca8a855de0750fb1a93dfe6e02a13c1856b080d16654"
+    },
+    {
+      "id": "RETRY-00311",
+      "kind": "local",
+      "path": "local/research/codex/k2-retry-reset-r1/close-route-r2/screen-04.png",
+      "bytes": 13437,
+      "sha256": "e47c2919c72588bea5f3e5b8ebda4d9823a66e8864f6b86ed6f85d9e19598218"
+    },
+    {
+      "id": "RETRY-00312",
+      "kind": "local",
+      "path": "local/research/codex/k2-retry-reset-r1/close-route-r2/screen-05.png",
+      "bytes": 191431,
+      "sha256": "35903a0d052b21d3a24bf93dc8a8f6b306cabbb746f12f3287dd1e5c2419a39a"
+    },
+    {
+      "id": "RETRY-00313",
+      "kind": "local",
+      "path": "local/research/codex/k2-retry-reset-r1/close-route-r2/screen-06.png",
+      "bytes": 194277,
+      "sha256": "eb04d50aa432204c8df8bb45346024b10fc0a1172c0ea711ff569b6e45a4dd7b"
+    },
+    {
+      "id": "RETRY-00314",
+      "kind": "local",
+      "path": "local/research/codex/k2-retry-reset-r1/close-route-r2/screen-07.png",
+      "bytes": 404297,
+      "sha256": "ff944261593daeffe1271b4fe0b1016f990057bd126bc1a4e5cfeca073e73fe9"
+    },
+    {
+      "id": "RETRY-00315",
+      "kind": "local",
+      "path": "local/research/codex/k2-retry-reset-r1/close-route-r2/screen-08.png",
+      "bytes": 404268,
+      "sha256": "49506add41605cd01b3e01724c30b921a8bc155c376eb7d557fec7523eb02374"
+    },
+    {
+      "id": "RETRY-00316",
+      "kind": "local",
+      "path": "local/research/codex/k2-retry-reset-r1/close-route-r2/screen-09.png",
+      "bytes": 404267,
+      "sha256": "e58fbe0a490ec42db1fa454a6856b7ed2ccc023398df5f67197413a0fe3f8ff0"
+    },
+    {
+      "id": "RETRY-00317",
+      "kind": "local",
+      "path": "local/research/codex/k2-retry-reset-r1/close-route-r2/screen-10.png",
+      "bytes": 404267,
+      "sha256": "e58fbe0a490ec42db1fa454a6856b7ed2ccc023398df5f67197413a0fe3f8ff0"
+    },
+    {
+      "id": "RETRY-00318",
+      "kind": "local",
+      "path": "local/research/codex/k2-retry-reset-r1/close-route-r2/screen-11.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "RETRY-00319",
+      "kind": "local",
+      "path": "local/research/codex/k2-retry-reset-r1/close-route-r2/service-state.json",
+      "bytes": 23208,
+      "sha256": "3129212ee4d314ad0913484e476fc18c72db9ed2e8a2093cd32d332e1da87579"
+    },
+    {
+      "id": "RETRY-00320",
+      "kind": "local",
+      "path": "local/research/codex/k2-retry-reset-r1/close-route-r2/service.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "RETRY-00321",
+      "kind": "local",
+      "path": "local/research/codex/k2-retry-reset-r1/close-route-r2/transport-writes.jsonl",
+      "bytes": 2557,
+      "sha256": "68f0da797bf36ba352edd1a37ca290c5edae329be713aea91501d01ff9fd13b7"
+    },
+    {
+      "id": "RETRY-00322",
+      "kind": "local",
+      "path": "local/research/codex/k2-retry-reset-r1/close-route-r2/windows-00.txt",
+      "bytes": 166,
+      "sha256": "28ae29836d791dcd3302b447a52a8f0fa3f9a192abbc33a27751e23d7ebe0d43"
+    },
+    {
+      "id": "RETRY-00323",
+      "kind": "local",
+      "path": "local/research/codex/k2-retry-reset-r1/close-route-r2/windows-01.txt",
+      "bytes": 872,
+      "sha256": "1096593c4e9a63ac4da8fff1a6642209e33de4dc70f021885f4baea5cce0dbc4"
+    },
+    {
+      "id": "RETRY-00324",
+      "kind": "local",
+      "path": "local/research/codex/k2-retry-reset-r1/close-route-r2/windows-02.txt",
+      "bytes": 872,
+      "sha256": "1096593c4e9a63ac4da8fff1a6642209e33de4dc70f021885f4baea5cce0dbc4"
+    },
+    {
+      "id": "RETRY-00325",
+      "kind": "local",
+      "path": "local/research/codex/k2-retry-reset-r1/close-route-r2/windows-03.txt",
+      "bytes": 1311,
+      "sha256": "ae1e42672317584498a7acb9315285f1ade61278c558f6e2b77371ef61cea181"
+    },
+    {
+      "id": "RETRY-00326",
+      "kind": "local",
+      "path": "local/research/codex/k2-retry-reset-r1/close-route-r2/windows-04.txt",
+      "bytes": 1311,
+      "sha256": "ae1e42672317584498a7acb9315285f1ade61278c558f6e2b77371ef61cea181"
+    },
+    {
+      "id": "RETRY-00327",
+      "kind": "local",
+      "path": "local/research/codex/k2-retry-reset-r1/close-route-r2/windows-05.txt",
+      "bytes": 1311,
+      "sha256": "ae1e42672317584498a7acb9315285f1ade61278c558f6e2b77371ef61cea181"
+    },
+    {
+      "id": "RETRY-00328",
+      "kind": "local",
+      "path": "local/research/codex/k2-retry-reset-r1/close-route-r2/windows-06.txt",
+      "bytes": 1311,
+      "sha256": "ae1e42672317584498a7acb9315285f1ade61278c558f6e2b77371ef61cea181"
+    },
+    {
+      "id": "RETRY-00329",
+      "kind": "local",
+      "path": "local/research/codex/k2-retry-reset-r1/close-route-r2/windows-07.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "RETRY-00330",
+      "kind": "local",
+      "path": "local/research/codex/k2-retry-reset-r1/close-route-r2/windows-08.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "RETRY-00331",
+      "kind": "local",
+      "path": "local/research/codex/k2-retry-reset-r1/close-route-r2/windows-09.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "RETRY-00332",
+      "kind": "local",
+      "path": "local/research/codex/k2-retry-reset-r1/close-route-r2/windows-10.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "RETRY-00333",
+      "kind": "local",
+      "path": "local/research/codex/k2-retry-reset-r1/close-route-r2/windows-11.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "RETRY-00334",
+      "kind": "local",
+      "path": "local/research/codex/k2-retry-reset-r1/close-route-r2/wineboot.log",
+      "bytes": 64844,
+      "sha256": "31aea4d46629907847a3751de656ab143944f62317928606d0f7592d16e96445"
+    },
+    {
+      "id": "RETRY-00335",
+      "kind": "local",
+      "path": "local/research/codex/k2-retry-reset-r1/close-route-r2/xvfb.log",
+      "bytes": 2808,
+      "sha256": "46b8747df8a2fc8b6a469b2374ea3d0c6c786dc3dcf2a9be13d94ce76ed3a1a7"
+    },
+    {
+      "id": "RETRY-00336",
+      "kind": "local",
+      "path": "local/research/codex/k2-retry-reset-r1/retry-r1/CALog-before.txt",
+      "bytes": 749,
+      "sha256": "6c324cb3408288868132e6ddc92d45ab6d9e9379b0c7704959f88a468d5128e6"
+    },
+    {
+      "id": "RETRY-00337",
+      "kind": "local",
+      "path": "local/research/codex/k2-retry-reset-r1/retry-r1/CALog-run.txt",
+      "bytes": 667,
+      "sha256": "5c9dee2236e9183f4f198e1da1de24e329999d156d9546ee783383290bcc417e"
+    },
+    {
+      "id": "RETRY-00338",
+      "kind": "local",
+      "path": "local/research/codex/k2-retry-reset-r1/retry-r1/client.log",
+      "bytes": 127844,
+      "sha256": "02cd7a6b60671f672611838ad1c4955399a177d4d33cabf24ec8910feaf3a884"
+    },
+    {
+      "id": "RETRY-00339",
+      "kind": "local",
+      "path": "local/research/codex/k2-retry-reset-r1/retry-r1/close-error-modal-after.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "RETRY-00340",
+      "kind": "local",
+      "path": "local/research/codex/k2-retry-reset-r1/retry-r1/close-error-modal-before.png",
+      "bytes": 404267,
+      "sha256": "e58fbe0a490ec42db1fa454a6856b7ed2ccc023398df5f67197413a0fe3f8ff0"
+    },
+    {
+      "id": "RETRY-00341",
+      "kind": "local",
+      "path": "local/research/codex/k2-retry-reset-r1/retry-r1/confirm-login-after.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "RETRY-00342",
+      "kind": "local",
+      "path": "local/research/codex/k2-retry-reset-r1/retry-r1/confirm-login-before.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "RETRY-00343",
+      "kind": "local",
+      "path": "local/research/codex/k2-retry-reset-r1/retry-r1/debug-commands.txt",
+      "bytes": 826,
+      "sha256": "f03e09150d69fce7d10d2965708917c947ddd4689914495620f41e6aece6248c"
+    },
+    {
+      "id": "RETRY-00344",
+      "kind": "local",
+      "path": "local/research/codex/k2-retry-reset-r1/retry-r1/hosts",
+      "bytes": 121,
+      "sha256": "32a007c62d2887ae9f8d3c30d1ff7cb3902e6e1e0c75c5a978ee556cc8ea71f8"
+    },
+    {
+      "id": "RETRY-00345",
+      "kind": "local",
+      "path": "local/research/codex/k2-retry-reset-r1/retry-r1/nsswitch.conf",
+      "bytes": 307,
+      "sha256": "c18e474cd61df8648ee02ac7a9c76b8d6c7782d8b212f925e6980f20af5cc838"
+    },
+    {
+      "id": "RETRY-00346",
+      "kind": "local",
+      "path": "local/research/codex/k2-retry-reset-r1/retry-r1/processes-00.txt",
+      "bytes": 3629,
+      "sha256": "2ae25105ef9c45648d3f15c98dcfbebc40fc75f2a00509324e2480435a092cec"
+    },
+    {
+      "id": "RETRY-00347",
+      "kind": "local",
+      "path": "local/research/codex/k2-retry-reset-r1/retry-r1/processes-01.txt",
+      "bytes": 4349,
+      "sha256": "dd7d64731c9470d86a372e5f856da766fb5d2808742ada87f1b8c50279257f26"
+    },
+    {
+      "id": "RETRY-00348",
+      "kind": "local",
+      "path": "local/research/codex/k2-retry-reset-r1/retry-r1/processes-02.txt",
+      "bytes": 4349,
+      "sha256": "d1d6db242b6a31031c0971d66e7c20fdadc471504a2d8f1d0d627278509c81ef"
+    },
+    {
+      "id": "RETRY-00349",
+      "kind": "local",
+      "path": "local/research/codex/k2-retry-reset-r1/retry-r1/processes-03.txt",
+      "bytes": 4349,
+      "sha256": "90ab0ff9f92eb779d2ab0c0505a8957cb16cf6f2e923d07df8229258d204c481"
+    },
+    {
+      "id": "RETRY-00350",
+      "kind": "local",
+      "path": "local/research/codex/k2-retry-reset-r1/retry-r1/processes-04.txt",
+      "bytes": 4349,
+      "sha256": "7e1d09c4b2838fbbab0a4a5bae2e9805d1a92030f1481a5fed1d52385e113e63"
+    },
+    {
+      "id": "RETRY-00351",
+      "kind": "local",
+      "path": "local/research/codex/k2-retry-reset-r1/retry-r1/processes-05.txt",
+      "bytes": 4349,
+      "sha256": "c7ba0ccd4bb86564eac07b34f2a7ae2409d9d09aaf2c4ca15c997b541c1717ab"
+    },
+    {
+      "id": "RETRY-00352",
+      "kind": "local",
+      "path": "local/research/codex/k2-retry-reset-r1/retry-r1/processes-06.txt",
+      "bytes": 4349,
+      "sha256": "8badfc5fc9a10907dce440c04f69a0d650a2c180916c7bcb70781421851f0364"
+    },
+    {
+      "id": "RETRY-00353",
+      "kind": "local",
+      "path": "local/research/codex/k2-retry-reset-r1/retry-r1/processes-07.txt",
+      "bytes": 4349,
+      "sha256": "087ba47d92b110ef01ac7232c05e79f5205eed1ea1d4926457fc556f63aeb174"
+    },
+    {
+      "id": "RETRY-00354",
+      "kind": "local",
+      "path": "local/research/codex/k2-retry-reset-r1/retry-r1/processes-08.txt",
+      "bytes": 4349,
+      "sha256": "1c28a8d72fe8a652efa92fc6d7e49f6b10b71f473752aa0f027d85b6e4b92ebe"
+    },
+    {
+      "id": "RETRY-00355",
+      "kind": "local",
+      "path": "local/research/codex/k2-retry-reset-r1/retry-r1/processes-09.txt",
+      "bytes": 4349,
+      "sha256": "27671988592b360ee38d7637c54809d7753590b253c25a3c5fe14c42587298ce"
+    },
+    {
+      "id": "RETRY-00356",
+      "kind": "local",
+      "path": "local/research/codex/k2-retry-reset-r1/retry-r1/processes-10.txt",
+      "bytes": 4349,
+      "sha256": "971c9d2136a98779fd50581c5817da3a63f64b894bf3eebd2f2d09fc5b4fc3dd"
+    },
+    {
+      "id": "RETRY-00357",
+      "kind": "local",
+      "path": "local/research/codex/k2-retry-reset-r1/retry-r1/processes-11.txt",
+      "bytes": 4114,
+      "sha256": "16db12dde6063600a27fd5feaf1bdef9f06882da9c9ae0b46986f2325202dc0a"
+    },
+    {
+      "id": "RETRY-00358",
+      "kind": "local",
+      "path": "local/research/codex/k2-retry-reset-r1/retry-r1/raw-seal.json",
+      "bytes": 10563,
+      "sha256": "b520a9f8eb37f03fb2e572abadd47cdc4b30125866894f4101c54b1fdc5f8526"
+    },
+    {
+      "id": "RETRY-00359",
+      "kind": "local",
+      "path": "local/research/codex/k2-retry-reset-r1/retry-r1/run.json",
+      "bytes": 7609,
+      "sha256": "b78db6ce63789ce56b90f8f1f8d17b3f0a6fe103931a97a61abff6377509d19e"
+    },
+    {
+      "id": "RETRY-00360",
+      "kind": "local",
+      "path": "local/research/codex/k2-retry-reset-r1/retry-r1/screen-00.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "RETRY-00361",
+      "kind": "local",
+      "path": "local/research/codex/k2-retry-reset-r1/retry-r1/screen-01.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "RETRY-00362",
+      "kind": "local",
+      "path": "local/research/codex/k2-retry-reset-r1/retry-r1/screen-02.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "RETRY-00363",
+      "kind": "local",
+      "path": "local/research/codex/k2-retry-reset-r1/retry-r1/screen-03.png",
+      "bytes": 19483,
+      "sha256": "773b7021f0e834f417428d0b3a13c023033c7cb301ba7394a570a2e125619157"
+    },
+    {
+      "id": "RETRY-00364",
+      "kind": "local",
+      "path": "local/research/codex/k2-retry-reset-r1/retry-r1/screen-04.png",
+      "bytes": 13437,
+      "sha256": "e47c2919c72588bea5f3e5b8ebda4d9823a66e8864f6b86ed6f85d9e19598218"
+    },
+    {
+      "id": "RETRY-00365",
+      "kind": "local",
+      "path": "local/research/codex/k2-retry-reset-r1/retry-r1/screen-05.png",
+      "bytes": 188486,
+      "sha256": "b7dc0455f9bd68913e45baa128fcc003f95b88d153d5e8e8c966bedcd9ce1216"
+    },
+    {
+      "id": "RETRY-00366",
+      "kind": "local",
+      "path": "local/research/codex/k2-retry-reset-r1/retry-r1/screen-06.png",
+      "bytes": 195787,
+      "sha256": "ba835b0aefaa309d9d7d8836bbbf5c7595f495ac27f41b1b28b8270fdd8409d9"
+    },
+    {
+      "id": "RETRY-00367",
+      "kind": "local",
+      "path": "local/research/codex/k2-retry-reset-r1/retry-r1/screen-07.png",
+      "bytes": 404268,
+      "sha256": "49506add41605cd01b3e01724c30b921a8bc155c376eb7d557fec7523eb02374"
+    },
+    {
+      "id": "RETRY-00368",
+      "kind": "local",
+      "path": "local/research/codex/k2-retry-reset-r1/retry-r1/screen-08.png",
+      "bytes": 404268,
+      "sha256": "49506add41605cd01b3e01724c30b921a8bc155c376eb7d557fec7523eb02374"
+    },
+    {
+      "id": "RETRY-00369",
+      "kind": "local",
+      "path": "local/research/codex/k2-retry-reset-r1/retry-r1/screen-09.png",
+      "bytes": 404267,
+      "sha256": "e58fbe0a490ec42db1fa454a6856b7ed2ccc023398df5f67197413a0fe3f8ff0"
+    },
+    {
+      "id": "RETRY-00370",
+      "kind": "local",
+      "path": "local/research/codex/k2-retry-reset-r1/retry-r1/screen-10.png",
+      "bytes": 404290,
+      "sha256": "defc58f433b3880945e8c7c5ee06096ffe1bffb943efb5d95c210bf5250c7174"
+    },
+    {
+      "id": "RETRY-00371",
+      "kind": "local",
+      "path": "local/research/codex/k2-retry-reset-r1/retry-r1/screen-11.png",
+      "bytes": 3828,
+      "sha256": "54053a701cc2e49d90f3ecd3823b107dae9eddb41fbae0c6fb32b5c032179eba"
+    },
+    {
+      "id": "RETRY-00372",
+      "kind": "local",
+      "path": "local/research/codex/k2-retry-reset-r1/retry-r1/service-state.json",
+      "bytes": 23208,
+      "sha256": "74a2b311b06c275ba6f11336102977177474c97bc28d7482782dcfea479925a2"
+    },
+    {
+      "id": "RETRY-00373",
+      "kind": "local",
+      "path": "local/research/codex/k2-retry-reset-r1/retry-r1/service.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "RETRY-00374",
+      "kind": "local",
+      "path": "local/research/codex/k2-retry-reset-r1/retry-r1/transport-writes.jsonl",
+      "bytes": 2557,
+      "sha256": "92165586386ecceb996b084c249f15f95a8f74ac238c92b9e35f47be06526bff"
+    },
+    {
+      "id": "RETRY-00375",
+      "kind": "local",
+      "path": "local/research/codex/k2-retry-reset-r1/retry-r1/windows-00.txt",
+      "bytes": 166,
+      "sha256": "28ae29836d791dcd3302b447a52a8f0fa3f9a192abbc33a27751e23d7ebe0d43"
+    },
+    {
+      "id": "RETRY-00376",
+      "kind": "local",
+      "path": "local/research/codex/k2-retry-reset-r1/retry-r1/windows-01.txt",
+      "bytes": 872,
+      "sha256": "c8c8cfe9c5b9bb2ccde16b4b959b165ed33d50824f3fbd29834c16b6f0e63586"
+    },
+    {
+      "id": "RETRY-00377",
+      "kind": "local",
+      "path": "local/research/codex/k2-retry-reset-r1/retry-r1/windows-02.txt",
+      "bytes": 872,
+      "sha256": "c8c8cfe9c5b9bb2ccde16b4b959b165ed33d50824f3fbd29834c16b6f0e63586"
+    },
+    {
+      "id": "RETRY-00378",
+      "kind": "local",
+      "path": "local/research/codex/k2-retry-reset-r1/retry-r1/windows-03.txt",
+      "bytes": 1311,
+      "sha256": "79f14ed4dc9ec340cb32d82ec0c77a2262196d736b814194ac0ee379704f762b"
+    },
+    {
+      "id": "RETRY-00379",
+      "kind": "local",
+      "path": "local/research/codex/k2-retry-reset-r1/retry-r1/windows-04.txt",
+      "bytes": 1311,
+      "sha256": "79f14ed4dc9ec340cb32d82ec0c77a2262196d736b814194ac0ee379704f762b"
+    },
+    {
+      "id": "RETRY-00380",
+      "kind": "local",
+      "path": "local/research/codex/k2-retry-reset-r1/retry-r1/windows-05.txt",
+      "bytes": 1311,
+      "sha256": "79f14ed4dc9ec340cb32d82ec0c77a2262196d736b814194ac0ee379704f762b"
+    },
+    {
+      "id": "RETRY-00381",
+      "kind": "local",
+      "path": "local/research/codex/k2-retry-reset-r1/retry-r1/windows-06.txt",
+      "bytes": 1311,
+      "sha256": "79f14ed4dc9ec340cb32d82ec0c77a2262196d736b814194ac0ee379704f762b"
+    },
+    {
+      "id": "RETRY-00382",
+      "kind": "local",
+      "path": "local/research/codex/k2-retry-reset-r1/retry-r1/windows-07.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "RETRY-00383",
+      "kind": "local",
+      "path": "local/research/codex/k2-retry-reset-r1/retry-r1/windows-08.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "RETRY-00384",
+      "kind": "local",
+      "path": "local/research/codex/k2-retry-reset-r1/retry-r1/windows-09.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "RETRY-00385",
+      "kind": "local",
+      "path": "local/research/codex/k2-retry-reset-r1/retry-r1/windows-10.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "RETRY-00386",
+      "kind": "local",
+      "path": "local/research/codex/k2-retry-reset-r1/retry-r1/windows-11.txt",
+      "bytes": 2347,
+      "sha256": "30b762d67f1ee5d6852f1442cc3cb245adb910b4d8af9eae7ef32dab80803667"
+    },
+    {
+      "id": "RETRY-00387",
+      "kind": "local",
+      "path": "local/research/codex/k2-retry-reset-r1/retry-r1/wineboot.log",
+      "bytes": 64844,
+      "sha256": "f79a41c0232e7ad4e6af72b5b0bb2efa4334e5fc0baf001a0438594fb25bc38e"
+    },
+    {
+      "id": "RETRY-00388",
+      "kind": "local",
+      "path": "local/research/codex/k2-retry-reset-r1/retry-r1/xvfb.log",
+      "bytes": 2808,
+      "sha256": "46b8747df8a2fc8b6a469b2374ea3d0c6c786dc3dcf2a9be13d94ce76ed3a1a7"
+    },
+    {
+      "id": "RETRY-00389",
+      "kind": "local",
+      "path": "local/research/codex/wine_probe_k2_auth_retry_r1.py",
+      "bytes": 20385,
+      "sha256": "e0b1baf7629bb52ba6e74cda4721e193017d46d7a0a6fb6c7fcebc83c5b68fb7"
+    },
+    {
+      "id": "RETRY-00390",
+      "kind": "local",
+      "path": "local/research/codex/wine_probe_k2_auth_retry_r2.py",
+      "bytes": 20389,
+      "sha256": "e68462bc7b759694db9996b59841edbd5b718d7ea91230b30328a61fec228eb1"
+    },
+    {
+      "id": "RETRY-00391",
+      "kind": "local",
+      "path": "local/research/codex/wine_probe_k2_retry_reset_r1.py",
+      "bytes": 20484,
+      "sha256": "53cf2f9f99dbbcb509d8d968430b1d21bc8626cccbc1ad2a16422b95b67cb1bb"
+    },
+    {
+      "id": "RETRY-00392",
+      "kind": "local",
+      "path": "local/research/codex/wine_probe_k2_close_route_r1.py",
+      "bytes": 20458,
+      "sha256": "56525d18c13d05098f79126b0746c310e8466c0a1274b241265605624f0ca78d"
+    },
+    {
+      "id": "RETRY-00393",
+      "kind": "local",
+      "path": "local/research/codex/cp180-history-check.txt",
+      "bytes": 35455,
+      "sha256": "5ad097237a05775454debbb9d524bd188c10bef889b30c3a840b4056d7172c22"
+    },
+    {
+      "id": "RETRY-00394",
+      "kind": "local",
+      "path": "local/research/codex/cp180-pr-exact-head.json",
+      "bytes": 443,
+      "sha256": "e87c8c73b2101b8a7e39424bf50d9f5c28c2e92fff8aa67d332f7b412cb5e8db"
+    },
+    {
+      "id": "RETRY-00395",
+      "kind": "local",
+      "path": "local/research/codex/cp180-pr-merged.json",
+      "bytes": 292,
+      "sha256": "30d3344438c9ffecbd990636523c0856d155ce6a3a27af025cccaef74b89ceb5"
+    },
+    {
+      "id": "RETRY-00396",
+      "kind": "local",
+      "path": "local/research/codex/codec-boundaries-r1/verification.json",
+      "bytes": 1271,
+      "sha256": "5558b0d522f9845966b4b5ef3f8d1f077e02c0b8c63c4a4013242a9be8dcf2c1"
+    },
+    {
+      "id": "RETRY-00397",
+      "kind": "local",
+      "path": "local/research/codex/codec-boundaries-r1/native-stream.json",
+      "bytes": 48530,
+      "sha256": "c3198f45e3242c50ecd7834a2227cb13ef2db28c6630e118cf4c6c5693f20e4c"
+    },
+    {
+      "id": "RETRY-00398",
+      "kind": "local",
+      "path": "local/research/codex/codec-boundaries-r1/native-boundaries.json",
+      "bytes": 11621,
+      "sha256": "a5b048dddbe23c2e49e338119d185d8abeb4b2a8d415f10d839be49dc52b6a99"
+    },
+    {
+      "id": "RETRY-00399",
+      "kind": "local",
+      "path": "local/research/codex/codec-boundaries-r1/native-reset.json",
+      "bytes": 3414,
+      "sha256": "5eef440a65f72465788fa8138b6a35af5404380314ee3f30685b7a52777caf87"
+    },
+    {
+      "id": "RETRY-00400",
+      "kind": "local",
+      "path": "local/research/codex/codec-boundaries-r1/service-stream.json",
+      "bytes": 83836,
+      "sha256": "2642103d2fb57022eacfe3f10d8a7391f31088dad73ea73cd5548a9716b6f670"
+    },
+    {
+      "id": "RETRY-00401",
+      "kind": "local",
+      "path": "local/research/codex/login-runtime-r1/login-error1-key43.bin",
+      "bytes": 39,
+      "sha256": "9aeae7b7937ad0c54d968297c48fffb4d506087f7826b2e9fdde35d84ed3ac19"
+    },
+    {
+      "id": "RETRY-00402",
+      "kind": "local",
+      "path": "local/research/codex/login-runtime-r1/auth-error43/client.log",
+      "bytes": 123583,
+      "sha256": "5e9a55c968366c499527ea319f52a3cd685bf1ffe07e4e8dde4ff6fabea8abe6"
+    },
+    {
+      "id": "RETRY-00403",
+      "kind": "local",
+      "path": "local/research/codex/login-runtime-r1/auth-error43/run.json",
+      "bytes": 8018,
+      "sha256": "f5ed933261f46bdd7c8fc3d20689ba37cf5b78da894f3d0bce37120a5448c0e8"
+    },
+    {
+      "id": "RETRY-00404",
+      "kind": "local",
+      "path": "local/research/codex/login-runtime-r1/auth-error43-oracle.json",
+      "bytes": 7021,
+      "sha256": "556b7dcb805d21832f1c46f22cb7906482ab869983a23e059e24ff809cda3b52"
+    },
+    {
+      "id": "RETRY-00405",
+      "kind": "local",
+      "path": "local/research/codex/object-state-r1/cleanup-route.asm",
+      "bytes": 5224,
+      "sha256": "4ba742dba054837c7d353bd9bdd3d8b2dd05d34e5a0e4ec35f47a58b0a847b99"
+    },
+    {
+      "id": "RETRY-00406",
+      "kind": "local",
+      "path": "local/research/codex/object-state-r1/stack-probe-dwk-patch.json",
+      "bytes": 772,
+      "sha256": "f64efb519771cae1440f5bb0fa7cd439334e2ffb17f2d983a1d82917b9fa659e"
+    },
+    {
+      "id": "RETRY-00407",
+      "kind": "local",
+      "path": "local/research/codex/overlay-next-r1/static-provenance.json",
+      "bytes": 1383,
+      "sha256": "1308956d852d342ae2bedc7fc802e0483f4e5f30a10da79842894bbc77c2042a"
+    },
+    {
+      "id": "RETRY-00408",
+      "kind": "local",
+      "path": "local/research/codex/rebuild-r2-reviewed.json",
+      "bytes": 92365,
+      "sha256": "109272b47f2baf349ae6ad4967cebf7d5fd61b3bcf6d3ca497f5650f0244e3e8"
+    },
+    {
+      "id": "RETRY-00409",
+      "kind": "repository",
+      "path": "docs/evidence/live-codec-stream/retry-in-progress.json",
+      "bytes": 4262,
+      "sha256": "7e0fbef1321ccae085df9374ec8e2151f337b07fed074f2e30721ff462afc2de"
+    },
+    {
+      "id": "RETRY-00410",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/game-A/CA-r2-stage-social.exe",
+      "bytes": 31874560,
+      "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+    },
+    {
+      "id": "RETRY-00411",
+      "kind": "local",
+      "path": "local/research/codex/k2-retry-reset-r1/game-A/CA-r2-stage-social.exe",
+      "bytes": 31874560,
+      "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+    }
+  ]
+}

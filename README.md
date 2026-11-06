@@ -46,13 +46,17 @@ Hai copy KR Wine đã chạy login/sảnh/phòng/Battle và các chu kỳ kết 
 [PR251](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/251)/`2e6dae4`.
 [Phạm vi nghiệm thu](docs/PLAN.md#k1-acceptance) không bao gồm bootstrap Windows nguyên bản hoặc ba coldstart e9.
 
-**CP180 đã đo codec trên socket thật của copy e9:** frame auth tách13/162byte giữ buffer/seq khi
-thiếu, rồi callback137/137/errors0; các frame ghép được tiêu thụ đúng phần dư/seq. Control chỉ lật
-một bitCRC bị native từ chối, không chạy authcallback. Redirect login→kênh có socket reset/hello
-riêng. [Contract/giới hạn](docs/PROTOCOL.md#live-codec-stream), [recipe/raw/hash](docs/evidence/live-codec-stream/README.md).
-Đây là một client trong mạng thử cô lập; **full K2, K3–K7, K6a/trận đầy đủ/LAN/Internet vẫn mở**.
-Tiếp retry/reset sau lỗi theo [PLAN](docs/PLAN.md#current-order), không lặp split/model/gameplay đã có.
-CP180 pending PR delivery; AUD054 định kỳ qua180, audit kế **CP184**. [Review waived](docs/evidence/checkpoints/review-waiver.json).
+**CP181: K2 đạt cho profile codec/hello offline đã đo**, sau đối chiếu thủ công từng tiêu chí
+giữ nguyên. Native retry trong cùng process: result1 hợp lệ → command1002 → login socket mới →
+auth137/137/errors0 → channel socket mới; hello/mode/seq reset được đo trên từng connection.
+[Nghiệm thu/giới hạn](docs/PLAN.md#k2-acceptance), [contract](docs/PROTOCOL.md#login-retry-codec),
+[run/hash](docs/evidence/live-codec-stream/README.md#cp181). CP180 split/coalesced/CRCcontrol đã merge
+[PR252](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/252) tại`fe242cc`.
+
+**K3–K7, K6a/trận đầy đủ/LAN/Internet vẫn mở.** Fullgrammar/unknownheader/prefix/mode và
+accountauthority chưa được khôi phục đầy đủ; K2 không nghiệm thu các phần đó. Thứ tự tiếp ở
+[PLAN](docs/PLAN.md#current-order): identity/cache/UI sảnh theo evidence cũ, không lặp knowncodec/gameplay.
+CP181 pending PR delivery; AUD054 periodic qua180, audit kế **CP184**. [Review waived](docs/evidence/checkpoints/review-waiver.json).
 
 Đích đầu: hai client thật chơi hai trận liên tiếp; mở bốn client và hardening sau đó.
 

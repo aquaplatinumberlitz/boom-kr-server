@@ -1,0 +1,100 @@
+{
+  "schema": "kre-run-metadata-v1",
+  "recorded_utc": "2026-11-06T22:14:54.940952+00:00",
+  "checkpoint": "CP181 batch snapshot; filename retained from in-progress metadata",
+  "owner": "Codex",
+  "review": "waived",
+  "canonical_question": "docs/RESEARCH.md#gap-codec-retry-followup",
+  "source": "kr_runtime",
+  "status": "confirmed",
+  "runs": [
+    {
+      "id": "k2-retry-reset-r1/retry-r1",
+      "result": "NativeCRC7 then actualUIactions; no command1002/newTCP observed; SIGILL2260DF8 withcaller1259F11. Existingreportnames16EA064 candidateUninstallDWK. Notcausalcleanuprootclaim."
+    },
+    {
+      "id": "k2-retry-reset-r1/close-route-r1",
+      "result": "CRC7 observed; hardwarewatchpoint variant endsWineDbginternalcrash14001D25A/remoteclosed. No globalwrite/exitdecision result; instrumentationfailed."
+    },
+    {
+      "id": "k2-retry-reset-r1/close-route-r2",
+      "result": "NoHWwatchpointvariant captures setter/return/cleanup thenretainedDWKtrap; noUI1002callback. Canonicalscope inPROTOCOL#codec-fatal-close-followup."
+    },
+    {
+      "id": "k2-auth-retry-r1/auth-retry-r1",
+      "result": "Validresult1 sameprocessUIretry; r1stubordinalcontrol, r2labadapter/nativefullauth/channelreset; canonicalPROTOCOL#login-retry-codec"
+    },
+    {
+      "id": "k2-auth-retry-r1/auth-retry-r2",
+      "result": "Validresult1 sameprocessUIretry; r1stubordinalcontrol, r2labadapter/nativefullauth/channelreset; canonicalPROTOCOL#login-retry-codec"
+    }
+  ],
+  "files": [
+    {
+      "path": "local/research/codex/k2-retry-reset-r1/source-first-reuse.json",
+      "bytes": 4668,
+      "sha256": "03f79b94be285bab9690db53fe5a2b0411dc05b0057a7aa7f7122df3821a08a5"
+    },
+    {
+      "path": "local/research/codex/k2-retry-reset-r1/followup-findings.json",
+      "bytes": 2020,
+      "sha256": "44febe656a2ae4754e8761dcd6af48dc32dc44b0a68ee8a81a254f9c21da45e9"
+    },
+    {
+      "path": "local/research/codex/k2-retry-reset-r1/followup-watch-failure.json",
+      "bytes": 633,
+      "sha256": "cd623820ad5b5d4246de5654eb8a1d9b4e3d804413eb73a97548610b13268faa"
+    },
+    {
+      "path": "local/research/codex/k2-retry-reset-r1/retry-r1-recipe.json",
+      "bytes": 996,
+      "sha256": "7d5cfe3d25eca7203205d32edb58179be9f38b746078c8e483f26d7dc1682d02"
+    },
+    {
+      "path": "local/research/codex/k2-retry-reset-r1/close-route-r1-recipe.json",
+      "bytes": 1008,
+      "sha256": "78d72e96e7c4c3ae9cb255bec82e7b4e54f169f4ad0e3c0b4165bf01e4b34f8a"
+    },
+    {
+      "path": "local/research/codex/k2-retry-reset-r1/retry-r1/raw-seal.json",
+      "bytes": 10563,
+      "sha256": "b520a9f8eb37f03fb2e572abadd47cdc4b30125866894f4101c54b1fdc5f8526"
+    },
+    {
+      "path": "local/research/codex/k2-retry-reset-r1/close-route-r1/raw-seal.json",
+      "bytes": 9873,
+      "sha256": "1cdec9e2ae0e392073b2b559d2ae2f26edae30b6cf174f7dab86474fba88379a"
+    },
+    {
+      "path": "local/research/codex/k2-retry-reset-r1/close-route-r2-findings.json",
+      "bytes": 1199,
+      "sha256": "6471cf711ade19f66005c479d0eb87861d131c197ac2cd513d5387b13c837546"
+    },
+    {
+      "path": "local/research/codex/k2-retry-reset-r1/close-route-r2-recipe.json",
+      "bytes": 1011,
+      "sha256": "0217900ad72661deee7c6b47b2faf9179b19ace34162324ebaf3df2751271482"
+    },
+    {
+      "path": "local/research/codex/k2-retry-reset-r1/close-route-r2/raw-seal.json",
+      "bytes": 10439,
+      "sha256": "322aa8551ac5bf494490871bcacd0e71be11353d2ea7b803e859278d8a19f9c9"
+    },
+    {
+      "path": "local/research/codex/k2-auth-retry-r1/source-first-reuse.json",
+      "bytes": 3455,
+      "sha256": "038fb2ee766c48eaf6e95f7ec09ffb488f8ad99c07fa7ca10e154d98a210e23a"
+    },
+    {
+      "path": "local/research/codex/k2-auth-retry-r1/verification.json",
+      "bytes": 92133,
+      "sha256": "1d6e1ccaa4aa5f019186a750b1822c60e19bc744888d11a688111094db515f71"
+    },
+    {
+      "path": "local/research/codex/k2-auth-retry-r1/manual-k2-acceptance.json",
+      "bytes": 3455,
+      "sha256": "f832f1b6b43db449750c7818014bdaef014c247e3173a17d7207dc57fbd035f2"
+    }
+  ],
+  "limits": "Five runs cleaned/sealed; failedinstrumentation/control preserved. K2scope decision onlyPLAN, no fullgrammar/K3identity/accountresume/LAN/fullmatch. Completehistory notrewritten."
+}

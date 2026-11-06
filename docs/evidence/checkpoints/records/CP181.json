@@ -1,0 +1,284 @@
+{
+  "id": "CP181",
+  "previous": "CP180",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-06T22:17:59.953118+00:00",
+  "context_commit": "fe242cc87a29463a7f70b8537a932f37effdb177",
+  "owner": "Codex",
+  "reviewer": "Codex",
+  "question": "Which nonfatal loginretry reconnects sameKRprocess and resets codecstate, and does this plus priornative/stream evidence meet unchangedK2profile acceptance?",
+  "scope": "Source-firstCP010/012/014/057/058/CP180; threefatalCRCcleanup/failedwatchcontrols then twovalidresult1retryruns. Nativefunctionbreakpoint/actualUI/socket/framechecks; labordinaladapteronlyafteractualr1observedretry. Reuseoldnativeoracles ratherthan76modelsplit/newbodydecompile/gameplay. ManualK2profileacceptance andnextK3; no auditreset/sourcebinaryDBwrites.",
+  "artifacts": [
+    {
+      "name": "OriginalKR00967unchanged",
+      "sha256": "a52545c14b1fea423de655c3163d6360b628d61c1cd472b46fdbc8a9ffe15f4e"
+    },
+    {
+      "name": "CurrentWinecopyunchanged",
+      "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+    },
+    {
+      "name": "NativeIDAfullcopycf72privateanalysis",
+      "sha256": "cf72da112308d9f1ca256df8089594c5f787875310933073bf6bd5ba6f70e63b"
+    },
+    {
+      "name": "modOmodelreference",
+      "sha256": "a08950c833d3acab8281049def7b3dc96b221f107eeda01da3a548e34b91dce5"
+    },
+    {
+      "name": "OriginalKR00967NewPatcher",
+      "sha256": "b59e4dce9ad23c439a7632ce04ecb2eed3481585bd2454100b05c9d7527f5c02"
+    },
+    {
+      "name": "VN116original_reference_only",
+      "sha256": "bce8644d4e783d1354ab4fc880e1ab9a4ab3325327028f37d99e5439e25f4bbd"
+    },
+    {
+      "name": "VN116patched_runtime_reference_only",
+      "sha256": "bc875ba5765cc112e924f46e75d0ace112904c7801126e46bc0abb1c9cb576b1"
+    },
+    {
+      "name": "PassingK1offlineR2recipe",
+      "sha256": "7b3b435b5d8e110185359107376b736615ceabe9452cea8154d02c8628f44c29"
+    },
+    {
+      "name": "NativeProcessPatchR1control",
+      "sha256": "a0c3b9867dae5fe2ff7c315cfe851117661c2cafead45196ce999329f67432f5"
+    }
+  ],
+  "locators": [
+    "Runtimecopye9bb476…/base400000. Nativeframer14EF300/RVA10EF300; result10FEDF1/auth10FD540..10FED80; UI10FC540 command1002→1101E20→11049C0 caller1101D1A.",
+    "Fatalcontrolsetter1503DFD/stackreturn1254CED→11044A7EAX1/global1→1259EC0→2260DF8/caller1259F11; oldR2report16EA064candidateDWKUninstall, notneworiginalAPIname.",
+    "ExactCP014result1fixture39bytes/9aeae7b7937ad0c54d968297c48fffb4d506087f7826b2e9fdde35d84ed3ac19. Newauth-retry-r2 runbfa8243780d73802a086bb6de867d4d2a91c384787c142784d86d35376a2ed5c; sameWineCA01C4/singleLinuxCApid, actualTCP3/4/5.",
+    "K0/K2aCP178/K1R2CP179; CP180/PR252mergedfe242cc87a29463a7f70b8537a932f37effdb177. CP05714nativeboundarycompleted/1blockedscope retained;9gatecriteria unchanged. AUD054periodic180/next184."
+  ],
+  "findings": [
+    {
+      "summary": "ValidCRCresult1 fromCP014 isrecoverableoncurrentcopy: nativeconsume39/result1/seq43→46/global0; waitreturn1/global0, actualUIcommand1002/confirm/attempt opensfourthTCP in sameCAprocess withC2S1/60freshseq40/43. No clientforcing/newpatch. Avoidedfatalclose asretrytest anddidnotreuseVNopcode/layout.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#login-retry-codec",
+      "evidence": [
+        "RETRY-00024",
+        "RETRY-00022",
+        "RETRY-00028",
+        "RETRY-00060"
+      ],
+      "limits": "Modifiede9Wine/singleclient/inheritedcache/prefix/diagnosticglobalreset; labadapterretags4/5byobservedroute, notproductionaccountauth/resume. K2acceptedonlymeasuredofflineprofile; notfullgrammar/headerauth/allmodes/prefixon/FFFFFFFF/capoverflow orK3–K7/fullmatch/LANInternet8clients. NativeGDB/oneactualCApid/frameattribution, noWinSockAPIconnecttraceinharness. Mode0packetfieldsignored. FailedHWwatchpoint/cleanuptrap/controlstublimit keptseparate."
+    },
+    {
+      "summary": "r1fourthconnection actualauth traffic exposes fixedacceptordinal labstubpolicy. r2adapteronlyremaps4asAlogin/5asAchannel, unchangedproduction47fixtures/service. Native3hellos0/0seq40→43, actualreauth137cursor/errors0/wait3/global0 thenchannel17+241+91+14/reset. Codecproof, notserveraccountauthority/resume orK3UIidentity.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#login-retry-codec",
+      "evidence": [
+        "RETRY-00024",
+        "RETRY-00001",
+        "RETRY-00114",
+        "RETRY-00146",
+        "RETRY-00170"
+      ],
+      "limits": "Modifiede9Wine/singleclient/inheritedcache/prefix/diagnosticglobalreset; labadapterretags4/5byobservedroute, notproductionaccountauth/resume. K2acceptedonlymeasuredofflineprofile; notfullgrammar/headerauth/allmodes/prefixon/FFFFFFFF/capoverflow orK3–K7/fullmatch/LANInternet8clients. NativeGDB/oneactualCApid/frameattribution, noWinSockAPIconnecttraceinharness. Mode0packetfieldsignored. FailedHWwatchpoint/cleanuptrap/controlstublimit keptseparate."
+    },
+    {
+      "summary": "FatalCRCnoticeclose path inoldbatchR2 setsquitglobal1 thenwait1/cleanupDWKcandidate trap. Initialretry-r1lowprobecontrol retained; HWwatchpoint variant WineDbginternalcrash isfailedmeasurement, notclientcause. Newfunctionprobe variant avoidsHWfailure andrecoversnativeexitsequence; do notpatchDWK tofake retry.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#login-retry-codec",
+      "evidence": [
+        "RETRY-00218",
+        "RETRY-00228",
+        "RETRY-00287"
+      ],
+      "limits": "Modifiede9Wine/singleclient/inheritedcache/prefix/diagnosticglobalreset; labadapterretags4/5byobservedroute, notproductionaccountauth/resume. K2acceptedonlymeasuredofflineprofile; notfullgrammar/headerauth/allmodes/prefixon/FFFFFFFF/capoverflow orK3–K7/fullmatch/LANInternet8clients. NativeGDB/oneactualCApid/frameattribution, noWinSockAPIconnecttraceinharness. Mode0packetfieldsignored. FailedHWwatchpoint/cleanuptrap/controlstublimit keptseparate."
+    },
+    {
+      "summary": "Codex manually acceptsK2measuredofflineprofile againstunchangedcriteria after actualsameprocessreconnect gapcloses; CP178/179dependency/nativeoracle, CP057boundedlength/modelcontrols andCP180realstream/CRC reused. Broadergrammar/modes/prefix/headerauthority/cap/FFFFFFFF unknownscope unchanged; notallcodec orK3–K7 acceptance.",
+      "source": "design",
+      "status": "confirmed",
+      "method": "design",
+      "canonical": "docs/PROTOCOL.md#login-retry-codec",
+      "evidence": [
+        "RETRY-00017",
+        "RETRY-00009",
+        "RETRY-00396"
+      ],
+      "limits": "Modifiede9Wine/singleclient/inheritedcache/prefix/diagnosticglobalreset; labadapterretags4/5byobservedroute, notproductionaccountauth/resume. K2acceptedonlymeasuredofflineprofile; notfullgrammar/headerauth/allmodes/prefixon/FFFFFFFF/capoverflow orK3–K7/fullmatch/LANInternet8clients. NativeGDB/oneactualCApid/frameattribution, noWinSockAPIconnecttraceinharness. Mode0packetfieldsignored. FailedHWwatchpoint/cleanuptrap/controlstublimit keptseparate."
+    },
+    {
+      "summary": "OneactualCA LinuxPID/GDBinferior andknownnativeframes attribute retry; WINEDEBUGseh/pid lacksWinSockconnectcalls. Initialanalyzer incorrectlyexpectedAPItrace, fixedtosupportedattribution afterreadingraw, neverfabricatedAPI/clientfailure. Fiveownedruns sealed/nonoverlap/inputhashesunchanged; nextK3identity/cache/UI afterCP181delivery.",
+      "source": "design",
+      "status": "confirmed",
+      "method": "design",
+      "canonical": "docs/PROTOCOL.md#login-retry-codec",
+      "evidence": [
+        "RETRY-00024",
+        "RETRY-00145",
+        "RETRY-00013"
+      ],
+      "limits": "Modifiede9Wine/singleclient/inheritedcache/prefix/diagnosticglobalreset; labadapterretags4/5byobservedroute, notproductionaccountauth/resume. K2acceptedonlymeasuredofflineprofile; notfullgrammar/headerauth/allmodes/prefixon/FFFFFFFF/capoverflow orK3–K7/fullmatch/LANInternet8clients. NativeGDB/oneactualCApid/frameattribution, noWinSockAPIconnecttraceinharness. Mode0packetfieldsignored. FailedHWwatchpoint/cleanuptrap/controlstublimit keptseparate."
+    }
+  ],
+  "verification": [
+    {
+      "check": "Fivecurrent/retainedruns sourcepins/raw/isolation/nonoverlap/ownedcleanup/nativeUI/reset/cursor/C2Swriterframes",
+      "result": "pass",
+      "evidence": [
+        "RETRY-00024"
+      ],
+      "limits": "655mechanicalrelationships; noautoacceptance or featurepercentage."
+    },
+    {
+      "check": "ManualunchangedK2acceptance/nativeboundedpriororacles",
+      "result": "pass",
+      "evidence": [
+        "RETRY-00017",
+        "RETRY-00009"
+      ],
+      "limits": "Manualdecisionofscopedofflinecodecprofile; modelFFFFFFFFblocked andfullvariants notcertified."
+    },
+    {
+      "check": "Original5artifactidentity",
+      "result": "pass",
+      "evidence": [
+        "RETRY-00003"
+      ],
+      "limits": "Sourceclient/DB unchanged; no originalruntime or newVNruntime."
+    },
+    {
+      "check": "Fullgrammar/K3identitycacheUI/K4–K7/fullmatch/LANInternet8client",
+      "result": "pending",
+      "evidence": [
+        "RETRY-00017"
+      ],
+      "limits": "Modifiede9Wine/singleclient/inheritedcache/prefix/diagnosticglobalreset; labadapterretags4/5byobservedroute, notproductionaccountauth/resume. K2acceptedonlymeasuredofflineprofile; notfullgrammar/headerauth/allmodes/prefixon/FFFFFFFF/capoverflow orK3–K7/fullmatch/LANInternet8clients. NativeGDB/oneactualCApid/frameattribution, noWinSockAPIconnecttraceinharness. Mode0packetfieldsignored. FailedHWwatchpoint/cleanuptrap/controlstublimit keptseparate."
+    }
+  ],
+  "evidence": [],
+  "evidence_manifests": [
+    {
+      "path": "docs/evidence/checkpoints/evidence/CP180-live-codec-stream.json",
+      "bytes": 67036,
+      "sha256": "c8336b28a2ac75731a6dcc01b8933855e3422eb4b381db2e18965bfc306b362f",
+      "count": 277
+    },
+    {
+      "path": "docs/evidence/checkpoints/evidence/CP181-codec-retry.json",
+      "bytes": 103205,
+      "sha256": "9a3fedd6ebeb6b4891b60bd55adebc57717039b50dbd0568649f4239a16132b1",
+      "count": 411
+    }
+  ],
+  "delta": {
+    "added": [
+      "Sameprocess nonfatalresult1 actualUIretry/newloginTCP/codecreset/fullauthcursor/channelreset; manualK2measuredprofileacceptance."
+    ],
+    "corrected": [
+      "FatalCRCnoticeclose isobservedquit/cleanup path ratherthanloginretry; nativecleanuptrap/sourcecandidate notCRCrootcause. HWwatchpointWineDbgcrash hasno clientexitcausalproof.",
+      "MissingWineAPItrace inmeasurementharness notabsentconnects; attributionlimitedtonativeinferior/actualCApid/frameorder, initialanalyzerassumptioncorrected.",
+      "CP180PR252merged andfirstnexttask nowK3identity/cache/UI; oldcompletecheckpoints/raw untouched."
+    ],
+    "superseded": [
+      "NEXT-K2-RETRY-RESET closed; no repeatedknownfatalclose/76modelsplit; NEXT-K3-IDENTITY-CACHE active. Oldretry-in-progressmetadatafilename retained asCP181snapshot."
+    ]
+  },
+  "blockers": [
+    "Broadercodecgrammar/stringblob/nonemptyvariants/headerauthority/prefixguardon/fullmodes/capoverflow/FFFFFFFFnativeallocation remainunknownbacklog, notacceptedbyprofilegate.",
+    "K3stableidentity/UI/cachecoldmissingwarm/wrongstage/version remainopen; labadapter notproductionaccountresume/generalidentityauthority.",
+    "K4–K7/K6afullmatch/LANInternet4–8realclients unchangedopen; screenshotlobbyvisibility notidentityacceptance."
+  ],
+  "next_steps": [
+    {
+      "id": "NEXT-K2-RETRY-RESET",
+      "task": "KRE-003",
+      "state": "closed",
+      "action": "Actualvalidresult1sameprocessretry/codecreset measured; K2profile manuallyaccepted. Broadercodecissue3backlog pertrigger, no accountresumeclaim.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-K3-IDENTITY-CACHE",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "PLAN sourcefirstCP058/059/060/181/currentfixtures: stableID/name auth→request6→lobbyUI andmissing/cold/warmcache gaps; onlymeasuremissingconsumer/guard/versionvariant; no repeatednamedcacheCRC/gameplay.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    }
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-11-06T22:17:59.953118+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "Codexsolo RE/nativeWine/runtime/selfchecks/manualK2profileacceptance; ownerwaiver, no independentapproval; exactheadPRbeforemerge.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Owner explicitly requested solo, no workers/review."
+    }
+  },
+  "docs_sync": [
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "CP181five-runbatch/nativevalidretry/failedcontrols/manualK2scope/nextK3/canonicalissuebacklinks syncedbeforecomplete; no immutablehistorychange."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "CP181five-runbatch/nativevalidretry/failedcontrols/manualK2scope/nextK3/canonicalissuebacklinks syncedbeforecomplete; no immutablehistorychange."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "updated",
+      "reason": "CP181five-runbatch/nativevalidretry/failedcontrols/manualK2scope/nextK3/canonicalissuebacklinks syncedbeforecomplete; no immutablehistorychange."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "updated",
+      "reason": "CP181five-runbatch/nativevalidretry/failedcontrols/manualK2scope/nextK3/canonicalissuebacklinks syncedbeforecomplete; no immutablehistorychange."
+    },
+    {
+      "path": "docs/features.json",
+      "state": "updated",
+      "reason": "CP181five-runbatch/nativevalidretry/failedcontrols/manualK2scope/nextK3/canonicalissuebacklinks syncedbeforecomplete; no immutablehistorychange."
+    },
+    {
+      "path": "docs/COVERAGE.md",
+      "state": "updated",
+      "reason": "CP181five-runbatch/nativevalidretry/failedcontrols/manualK2scope/nextK3/canonicalissuebacklinks syncedbeforecomplete; no immutablehistorychange."
+    },
+    {
+      "path": "docs/evidence/live-codec-stream/README.md",
+      "state": "updated",
+      "reason": "CP181five-runbatch/nativevalidretry/failedcontrols/manualK2scope/nextK3/canonicalissuebacklinks syncedbeforecomplete; no immutablehistorychange."
+    },
+    {
+      "path": "docs/evidence/live-codec-stream/retry-in-progress.json",
+      "state": "updated",
+      "reason": "CP181five-runbatch/nativevalidretry/failedcontrols/manualK2scope/nextK3/canonicalissuebacklinks syncedbeforecomplete; no immutablehistorychange."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/review.json",
+      "state": "updated",
+      "reason": "CP181five-runbatch/nativevalidretry/failedcontrols/manualK2scope/nextK3/canonicalissuebacklinks syncedbeforecomplete; no immutablehistorychange."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
+      "state": "updated",
+      "reason": "CP181five-runbatch/nativevalidretry/failedcontrols/manualK2scope/nextK3/canonicalissuebacklinks syncedbeforecomplete; no immutablehistorychange."
+    },
+    {
+      "path": "server/README.md",
+      "state": "unchanged",
+      "reason": "Productionserver/codec/47fixtureprofile/storeworkflow andAUD054periodiccadence unchanged; auditnextCP184."
+    },
+    {
+      "path": "docs/evidence/checkpoints/README.md",
+      "state": "unchanged",
+      "reason": "Productionserver/codec/47fixtureprofile/storeworkflow andAUD054periodiccadence unchanged; auditnextCP184."
+    }
+  ]
+}
