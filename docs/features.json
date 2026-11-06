@@ -1,7 +1,7 @@
 {
   "schema": "kre-feature-index-v1",
   "build": "KR00967",
-  "as_of": "CP181",
+  "as_of": "2026-11-07",
   "sources": {
     "plan": "docs/PLAN.md",
     "contract": "docs/PROTOCOL.md",
@@ -406,7 +406,9 @@
           "docs/evidence/peer-endpoints/README.md#cp146",
           "docs/evidence/peer-endpoints/README.md#cp148",
           "docs/evidence/peer-endpoints/README.md#cp149",
-          "docs/evidence/live-codec-stream/README.md"
+          "docs/evidence/live-codec-stream/README.md",
+          "docs/evidence/lobby-identity/in-progress.json",
+          "docs/evidence/lobby-identity/README.md"
         ]
       },
       "coverage": {
@@ -426,7 +428,8 @@
           "state": "partial",
           "refs": [
             "docs/PROTOCOL.md#login-auth",
-            "docs/PROTOCOL.md#auth-profile"
+            "docs/PROTOCOL.md#auth-profile",
+            "docs/PROTOCOL.md#local-name-model"
           ]
         },
         "emulation": {
@@ -448,7 +451,8 @@
               "docs/evidence/peer-endpoints/README.md#cp146",
               "docs/evidence/peer-endpoints/README.md#cp148",
               "docs/evidence/peer-endpoints/README.md#cp149",
-              "docs/evidence/live-codec-stream/README.md"
+              "docs/evidence/live-codec-stream/README.md",
+              "docs/PROTOCOL.md#local-name-model"
             ]
           },
           "windows_original": {
@@ -518,7 +522,9 @@
         "plan": "docs/PLAN.md#current-order",
         "evidence": [
           "docs/evidence/postwait/README.md",
-          "docs/evidence/probe-service/README.md"
+          "docs/evidence/probe-service/README.md",
+          "docs/evidence/lobby-identity/in-progress.json",
+          "docs/evidence/lobby-identity/README.md"
         ]
       },
       "coverage": {
@@ -537,7 +543,8 @@
         "kr_static": {
           "state": "partial",
           "refs": [
-            "docs/PROTOCOL.md#channel-lobby"
+            "docs/PROTOCOL.md#channel-lobby",
+            "docs/PROTOCOL.md#local-name-model"
           ]
         },
         "emulation": {
@@ -550,7 +557,8 @@
           "wine_diagnostic_copy": {
             "state": "observed",
             "refs": [
-              "docs/evidence/postwait/README.md"
+              "docs/evidence/postwait/README.md",
+              "docs/PROTOCOL.md#local-name-model"
             ]
           },
           "windows_original": {
@@ -609,7 +617,8 @@
         "plan": "docs/PLAN.md#current-order",
         "evidence": [
           "docs/evidence/start-reply/README.md",
-          "docs/evidence/cache-boundary/README.md"
+          "docs/evidence/cache-boundary/README.md",
+          "docs/evidence/lobby-identity/README.md"
         ]
       },
       "coverage": {
@@ -630,7 +639,8 @@
           "state": "partial",
           "refs": [
             "docs/PROTOCOL.md#channel-lobby",
-            "docs/PROTOCOL.md#dynamic-cache-representation"
+            "docs/PROTOCOL.md#dynamic-cache-representation",
+            "docs/PROTOCOL.md#local-name-model"
           ]
         },
         "emulation": {
@@ -643,7 +653,8 @@
           "wine_diagnostic_copy": {
             "state": "observed",
             "refs": [
-              "docs/evidence/cache-boundary/README.md"
+              "docs/evidence/cache-boundary/README.md",
+              "docs/PROTOCOL.md#local-name-model"
             ]
           },
           "windows_original": {

@@ -1,7 +1,7 @@
 # Kế hoạch server giả lập KR 00967
 
 Nguồn chuẩn của project `boom-kr-server`; bản nhập từ plan đã được dsh1/dsh2 review tại `1eee46d`.
-CP181: K2codec/hello profileoffline được Codex nghiệm thu từsameprocessretry/native reset + CP180stream/CP057bounds; K3–K7/fullmatch giữ mở. Tiếp identity/cache/UI sảnh; periodic180/kế184.
+CP181: K2codec/hello profileoffline được Codex nghiệm thu từsameprocessretry/native reset + CP180stream/CP057bounds; K3–K7/fullmatch giữ mở. CP182ownpanelguard0/emptyrecord đãđo, tiếpproducer→store→render; periodic180/kế184.
 
 
 ### Mục tiêu, baseline và phạm vi
@@ -76,7 +76,12 @@ và trận8 client thật là phần mở rộng sau hai/bốn client ổn ở b
    `NEXT-K3-IDENTITY-CACHE`: source-first CP058/059/060/CP181/current47fixtures và consumer/cache
    đã phục hồi. Đối chiếu stableID/name giữa auth→request6→lobbyview, cold/missing/warm cache có
    kết quả rõ; chỉ đo variant còn thiếu, không lặp namedfxdynmapinfo CRC/missing→warm. Nếu UI
-   identity chưa hiển thị, trace đúng getter/setter/render đang chạy thay vì thêm packet từ VN.
+   identity chưa hiển thị, trace đúng consumer/render đang chạy thay vì thêm packet từ VN.
+   [CP182 đã đo](PROTOCOL.md#local-name-model) authID/name đúng nhưng ownpanel
+   CUserListUIWnd+recordriêng guard0/nameempty sauready. Không lặp authgetterchain hoặc SquareLeft
+   callback khônghit; không đổi str2/str3 theo phỏng đoán. Tiếp source-first VNUserMap/profileconsumer
+   và KRlookup544byte→producer/dispatch→store→render, chỉ đo contract/field còn thiếu bằng positive/control.
+   D7A260levelchange là consumer tĩnh, chưa đủ xác định producer hoặc opcode bổ sung.
    Kiểm sai socket/stage, version/identity theo acceptance bằng các guard/log đã có trước khi mở
    negative mới; không quét toàncache hoặc mô phỏng realaccountauth/Nexon. Unknown giữ rõ scope.
    Trước runtime freeze source/config, copy/offline/isolation; cleanup/hash trước đổi phép đo.

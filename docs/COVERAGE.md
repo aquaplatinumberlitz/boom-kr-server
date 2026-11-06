@@ -315,15 +315,15 @@ Phép kiểm tối thiểu (trích cùng nguồn): TheoPLAN trace actualerrorsta
 
 Issue/phạm vi công việc: [#14](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/14), [#9](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/9), [#106](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/106).
 
-Bằng chứng/build/hash/recipe: [login-runtime](evidence/login-runtime/README.md), [probe-service](evidence/probe-service/README.md), [auth-profile](evidence/auth-profile/README.md), [current-profile-c](evidence/current-profile-c/README.md), [preclock-eof](evidence/preclock-eof/README.md), [nmco-locale-stability](evidence/nmco-locale-stability/README.md), [peer-endpoints](evidence/peer-endpoints/README.md#cp146), [peer-endpoints](evidence/peer-endpoints/README.md#cp148), [peer-endpoints](evidence/peer-endpoints/README.md#cp149), [live-codec-stream](evidence/live-codec-stream/README.md).
+Bằng chứng/build/hash/recipe: [login-runtime](evidence/login-runtime/README.md), [probe-service](evidence/probe-service/README.md), [auth-profile](evidence/auth-profile/README.md), [current-profile-c](evidence/current-profile-c/README.md), [preclock-eof](evidence/preclock-eof/README.md), [nmco-locale-stability](evidence/nmco-locale-stability/README.md), [peer-endpoints](evidence/peer-endpoints/README.md#cp146), [peer-endpoints](evidence/peer-endpoints/README.md#cp148), [peer-endpoints](evidence/peer-endpoints/README.md#cp149), [live-codec-stream](evidence/live-codec-stream/README.md), [lobby-identity](evidence/lobby-identity/in-progress.json), [lobby-identity](evidence/lobby-identity/README.md).
 
 | Chiều chứng minh | Khai báo | Nguồn/phạm vi áp dụng |
 |---|---|---|
 | presence | present | [nguồn1](PROTOCOL.md#login-auth) |
 | vn_reference | both | [nguồn1](REFERENCES.md) |
-| kr_static | partial | [nguồn1](PROTOCOL.md#login-auth), [nguồn2](PROTOCOL.md#auth-profile) |
+| kr_static | partial | [nguồn1](PROTOCOL.md#login-auth), [nguồn2](PROTOCOL.md#auth-profile), [nguồn3](PROTOCOL.md#local-name-model) |
 | emulation | checked | [nguồn1](evidence/login-runtime/README.md), [nguồn2](evidence/auth-profile/README.md) |
-| wine_diagnostic_copy | observed | [nguồn1](evidence/login-runtime/README.md), [nguồn2](evidence/auth-profile/README.md), [nguồn3](evidence/current-profile-c/README.md), [nguồn4](evidence/preclock-eof/README.md), [nguồn5](evidence/nmco-locale-stability/README.md), [nguồn6](evidence/peer-endpoints/README.md#cp146), [nguồn7](evidence/peer-endpoints/README.md#cp148), [nguồn8](evidence/peer-endpoints/README.md#cp149), [nguồn9](evidence/live-codec-stream/README.md) |
+| wine_diagnostic_copy | observed | [nguồn1](evidence/login-runtime/README.md), [nguồn2](evidence/auth-profile/README.md), [nguồn3](evidence/current-profile-c/README.md), [nguồn4](evidence/preclock-eof/README.md), [nguồn5](evidence/nmco-locale-stability/README.md), [nguồn6](evidence/peer-endpoints/README.md#cp146), [nguồn7](evidence/peer-endpoints/README.md#cp148), [nguồn8](evidence/peer-endpoints/README.md#cp149), [nguồn9](evidence/live-codec-stream/README.md), [nguồn10](PROTOCOL.md#local-name-model) |
 | windows_original | unknown | Chưa có bằng chứng trong phạm vi rà |
 | lan | unknown | Chưa có bằng chứng trong phạm vi rà |
 | internet | unknown | Chưa có bằng chứng trong phạm vi rà |
@@ -338,21 +338,21 @@ Dependency: [KR-L001](#kr-l001).
 
 [Contract và giới hạn](PROTOCOL.md#channel-lobby) · [Câu hỏi gốc](RESEARCH.md#gap-redirect-lobby) · [Thứ tự ở PLAN](PLAN.md#current-order).
 
-Khoảng trống (trích bảng RESEARCH): UI sảnh copy đã có; thông tin user/cache/version và variants chưa đủ K3.
+Khoảng trống (trích bảng RESEARCH): [CP182](PROTOCOL.md#local-name-model): authID/name/actual6 đúng; own-panel consumer đã nối, recordriêng guard0/nameempty; producer/identitydisplay và cache/version chưa đủ K3.
 
-Phép kiểm tối thiểu (trích cùng nguồn): Kiểm identity hiển thị cùng request6/17/241 trên cold/warm/missing cache, log stage/seq; không suy từ cửa sổ.
+Phép kiểm tối thiểu (trích cùng nguồn): [Follow-up](#gap-lobby-identity-followup): truy producer544record→dispatch→store→render bằng positive/control; không lặp auth/namegetter/SquareLeft hay quét186xref; giữ cold/missing/warm/wrongstage/version acceptance.
 
 Issue/phạm vi công việc: [#14](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/14).
 
-Bằng chứng/build/hash/recipe: [postwait](evidence/postwait/README.md), [probe-service](evidence/probe-service/README.md).
+Bằng chứng/build/hash/recipe: [postwait](evidence/postwait/README.md), [probe-service](evidence/probe-service/README.md), [lobby-identity](evidence/lobby-identity/in-progress.json), [lobby-identity](evidence/lobby-identity/README.md).
 
 | Chiều chứng minh | Khai báo | Nguồn/phạm vi áp dụng |
 |---|---|---|
 | presence | present | [nguồn1](PROTOCOL.md#channel-lobby) |
 | vn_reference | both | [nguồn1](REFERENCES.md) |
-| kr_static | partial | [nguồn1](PROTOCOL.md#channel-lobby) |
+| kr_static | partial | [nguồn1](PROTOCOL.md#channel-lobby), [nguồn2](PROTOCOL.md#local-name-model) |
 | emulation | checked | [nguồn1](evidence/postwait/README.md) |
-| wine_diagnostic_copy | observed | [nguồn1](evidence/postwait/README.md) |
+| wine_diagnostic_copy | observed | [nguồn1](evidence/postwait/README.md), [nguồn2](PROTOCOL.md#local-name-model) |
 | windows_original | unknown | Chưa có bằng chứng trong phạm vi rà |
 | lan | unknown | Chưa có bằng chứng trong phạm vi rà |
 | internet | unknown | Chưa có bằng chứng trong phạm vi rà |
@@ -373,15 +373,15 @@ Phép kiểm tối thiểu (trích cùng nguồn): Reuse [scope/CRC](PROTOCOL.md
 
 Issue/phạm vi công việc: [#14](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/14).
 
-Bằng chứng/build/hash/recipe: [start-reply](evidence/start-reply/README.md), [cache-boundary](evidence/cache-boundary/README.md).
+Bằng chứng/build/hash/recipe: [start-reply](evidence/start-reply/README.md), [cache-boundary](evidence/cache-boundary/README.md), [lobby-identity](evidence/lobby-identity/README.md).
 
 | Chiều chứng minh | Khai báo | Nguồn/phạm vi áp dụng |
 |---|---|---|
 | presence | present | [nguồn1](PROTOCOL.md#channel-lobby), [nguồn2](PROTOCOL.md#dynamic-cache-representation) |
 | vn_reference | static | [nguồn1](REFERENCES.md) |
-| kr_static | partial | [nguồn1](PROTOCOL.md#channel-lobby), [nguồn2](PROTOCOL.md#dynamic-cache-representation) |
+| kr_static | partial | [nguồn1](PROTOCOL.md#channel-lobby), [nguồn2](PROTOCOL.md#dynamic-cache-representation), [nguồn3](PROTOCOL.md#local-name-model) |
 | emulation | checked | [nguồn1](evidence/cache-boundary/README.md) |
-| wine_diagnostic_copy | observed | [nguồn1](evidence/cache-boundary/README.md) |
+| wine_diagnostic_copy | observed | [nguồn1](evidence/cache-boundary/README.md), [nguồn2](PROTOCOL.md#local-name-model) |
 | windows_original | unknown | Chưa có bằng chứng trong phạm vi rà |
 | lan | unknown | Chưa có bằng chứng trong phạm vi rà |
 | internet | unknown | Chưa có bằng chứng trong phạm vi rà |

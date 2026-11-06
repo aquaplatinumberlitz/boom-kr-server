@@ -1,0 +1,4254 @@
+{
+  "schema": "kre-evidence-manifest-v1",
+  "evidence": [
+    {
+      "id": "PANEL-00001",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/analysis-pass2.json",
+      "bytes": 703,
+      "sha256": "19425faa2926175a6b34233c41f6f5261c06f10162db0b31b9e550aaae343839"
+    },
+    {
+      "id": "PANEL-00002",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/append_cp182.py",
+      "bytes": 8897,
+      "sha256": "c57bed779c2d9a44d412abb719931b8204984e7740cd6180484f92e6b94e2e12"
+    },
+    {
+      "id": "PANEL-00003",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/artifacts-check.txt",
+      "bytes": 253,
+      "sha256": "649c6624aa6d317dfc1db5e16fea683cfbc9d9cf4dd3df11c0d70e57409054a0"
+    },
+    {
+      "id": "PANEL-00004",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/docs-progress-check.txt",
+      "bytes": 175,
+      "sha256": "500a4d5d093c5c757b5b38850b87a767bdf58d6c07d2ac4bbeaf27986ade3a2d"
+    },
+    {
+      "id": "PANEL-00005",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/github-snapshot-cp182-final.json",
+      "bytes": 207267,
+      "sha256": "a1975bf84b3bdc400be4ce40b8bf5ac224e56b371eb852dfe7e01c4fd691e146"
+    },
+    {
+      "id": "PANEL-00006",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/github-snapshot-cp182.json",
+      "bytes": 207267,
+      "sha256": "1e99a09f525690c3f64eafbfd083c204983ea28efcd1115ab2aad6d1c68da47a"
+    },
+    {
+      "id": "PANEL-00007",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/ida-mcp-error.json",
+      "bytes": 2667,
+      "sha256": "4d2d5892165dbc0b85d553fd4407adea3dc7b0ad5a03b3744b8f205898f28885"
+    },
+    {
+      "id": "PANEL-00008",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/identity-r1-launcher.log",
+      "bytes": 10865,
+      "sha256": "a7e5350cba4c53873e8612b8baa94ca8cdb13f6101ea30ba5340b3bbffdba7ea"
+    },
+    {
+      "id": "PANEL-00009",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/identity-r1-recipe.json",
+      "bytes": 1006,
+      "sha256": "c08e5272d0f758f425939dbe90b4ea6cbea77d2fff2545565c9e053cf2610a4c"
+    },
+    {
+      "id": "PANEL-00010",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/identity-r2-launcher.log",
+      "bytes": 10867,
+      "sha256": "7c583c9e48bd8910d0f16651627ba368d7637c389aa4296dfa4039c582465fd8"
+    },
+    {
+      "id": "PANEL-00011",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/identity-r2-recipe.json",
+      "bytes": 1009,
+      "sha256": "68b219d240b7ece9e80e7c1524f06eaa190b0e74f64e4bd090cfc43c362aa1d2"
+    },
+    {
+      "id": "PANEL-00012",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/identity-verification.json",
+      "bytes": 36387,
+      "sha256": "2912f2e921e338bed37e7d38ddc017161679c82382d08d1e9b5f7fe49c6e88a5"
+    },
+    {
+      "id": "PANEL-00013",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/issue14-before.json",
+      "bytes": 3487,
+      "sha256": "4aba3e1049de41219c84d87fd050e39f5793dca5d6a6be33868473bdcd541756"
+    },
+    {
+      "id": "PANEL-00014",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/issue14-body.md",
+      "bytes": 2680,
+      "sha256": "3c6fd57c4629b5f1e8277eedbc225c9fedb7b22e1ed861d6fa95f49792fd74d9"
+    },
+    {
+      "id": "PANEL-00015",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/name-r2.gdb",
+      "bytes": 339,
+      "sha256": "7790e9175f4762aba3568d60900300d3bd14d3269f7065abaa2e8c18505055b2"
+    },
+    {
+      "id": "PANEL-00016",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/name-runtime-preparation.json",
+      "bytes": 9189,
+      "sha256": "1b4e85046dc67bb996016e96a5e2f556e4eb641a74cd89ba5b4d3475d3f4ecbc"
+    },
+    {
+      "id": "PANEL-00017",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/name-runtime-r2-preparation.json",
+      "bytes": 9345,
+      "sha256": "d903323ef1d9e1e62b6e5d04d5c155cb62d8b9130df2fba9389008e027619bf5"
+    },
+    {
+      "id": "PANEL-00018",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/name.gdb",
+      "bytes": 336,
+      "sha256": "9c7d520434995df08328abb5a5de714d523f8c741ab1469750ed974320005650"
+    },
+    {
+      "id": "PANEL-00019",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/name_probe.py",
+      "bytes": 2593,
+      "sha256": "4baa49fe4a15105d4bfa817794fdc1416464ec4d86870dcbc8d00e0cb99c5dc4"
+    },
+    {
+      "id": "PANEL-00020",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/name_probe_r2.py",
+      "bytes": 2506,
+      "sha256": "1e6edb73d6f255b96de1cf181a49f24348fbb163145e31c89f314533defb485a"
+    },
+    {
+      "id": "PANEL-00021",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/own-render-r4.gdb",
+      "bytes": 345,
+      "sha256": "56d8762a2c2402c02dfa0dabaa7dbe6240e70283bbf55b27a69c7c6b71547dcb"
+    },
+    {
+      "id": "PANEL-00022",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/own-render.gdb",
+      "bytes": 342,
+      "sha256": "365ced3b38345379a401fc65f22ad174467393ff00b16ace0eac333ddafc4467"
+    },
+    {
+      "id": "PANEL-00023",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/own_render_probe.py",
+      "bytes": 2060,
+      "sha256": "497e9b33c005526c3a12c87da080f177d579c900c2e942f440d7ed002df24e32"
+    },
+    {
+      "id": "PANEL-00024",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/own_render_probe_r4.py",
+      "bytes": 2097,
+      "sha256": "70173dfce0244b4663f75c729ff3d70c8dc52b8a2c81e68deccbfb805d5d8080"
+    },
+    {
+      "id": "PANEL-00025",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-next-edge.json",
+      "bytes": 873,
+      "sha256": "a5b898b84f7f60accebce309ccc09d2a2b03bc4b1c253c9eec27396417e3276c"
+    },
+    {
+      "id": "PANEL-00026",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r1-preparation.json",
+      "bytes": 9213,
+      "sha256": "821417bc38eaea11dae1d7fb74bb6f3941e9c64a00ce33a587a3e189f91d5c16"
+    },
+    {
+      "id": "PANEL-00027",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r1-recipe.json",
+      "bytes": 1004,
+      "sha256": "982423f780d0e564e361ccc4ae4cdbeda743005261247b4b3e7e2c29cbc984b1"
+    },
+    {
+      "id": "PANEL-00028",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r1-runner.log",
+      "bytes": 10812,
+      "sha256": "04113a0d2b7ccb5532b7804f25d6e740d6cbddf02748c6a41dec5834152b07c5"
+    },
+    {
+      "id": "PANEL-00029",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r2-preparation.json",
+      "bytes": 9214,
+      "sha256": "359e3b2c6f50cbb87a9216de6f59dbe241e72fbd1cb42985c91ee047127a6c7f"
+    },
+    {
+      "id": "PANEL-00030",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r2-recipe.json",
+      "bytes": 1013,
+      "sha256": "38494e454f3a610ac09a00b4a2275245c04115b3bb0918a92b427e5c2dddaef6"
+    },
+    {
+      "id": "PANEL-00031",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r2-runner.log",
+      "bytes": 10865,
+      "sha256": "76914c9b4159232542b5d2d99a5ff167f11ec03c6b78305c93bffff562e59bb1"
+    },
+    {
+      "id": "PANEL-00032",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r3-preparation.json",
+      "bytes": 9294,
+      "sha256": "24e7e918261a08da317e7716d5e28f0f83451390da6f2c41931e7045ed67891e"
+    },
+    {
+      "id": "PANEL-00033",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r3-recipe.json",
+      "bytes": 1009,
+      "sha256": "45b59244a69b9ab6cba09bb58617c831f04868a0732c8ffc7a9a82944a8e3d35"
+    },
+    {
+      "id": "PANEL-00034",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r3-runner.log",
+      "bytes": 6947,
+      "sha256": "889c2adcfda8fd7bb20fb76b8b877abfa3cb1392cb9047362241fbef5870ec8c"
+    },
+    {
+      "id": "PANEL-00035",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r4-preparation.json",
+      "bytes": 9219,
+      "sha256": "8d7eeeb730cf245683c88df5d22aefc63e88e5724c9dccf590d047efe9a932f6"
+    },
+    {
+      "id": "PANEL-00036",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r4-recipe.json",
+      "bytes": 1012,
+      "sha256": "6096ba4990e9b023daa771ba5906a5fbb5745f9dfa10679750621aaec5df93fe"
+    },
+    {
+      "id": "PANEL-00037",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r4-runner.log",
+      "bytes": 10864,
+      "sha256": "d53e1bb2c5fd0f44efc135172ee21d21d8f08acc728adfd3f992789abb7c531c"
+    },
+    {
+      "id": "PANEL-00038",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-snapshot.gdb",
+      "bytes": 340,
+      "sha256": "7e1e4518a715939c4a768f1e410b27b12076f0ea492aa08f2893c54ac52f0dcd"
+    },
+    {
+      "id": "PANEL-00039",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-source-first.json",
+      "bytes": 2944,
+      "sha256": "1c84b38ca1b9f5df05d86770df323566a8abadba0bb04ac5c50f391631349f24"
+    },
+    {
+      "id": "PANEL-00040",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-verification.json",
+      "bytes": 89218,
+      "sha256": "d9811d053fb8dfae7c7a93f2d7b34f7c5be82d56250a07ff97e8b9e55595919e"
+    },
+    {
+      "id": "PANEL-00041",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel.gdb",
+      "bytes": 343,
+      "sha256": "df0e873e501535643d0584554a52e54acc546044f0426660ddd828d8e0229d64"
+    },
+    {
+      "id": "PANEL-00042",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel_probe.py",
+      "bytes": 1199,
+      "sha256": "f3595532828b3b46fa50c13ab15854f44d14c91b59ec91934afaec50872582dc"
+    },
+    {
+      "id": "PANEL-00043",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel_snapshot.py",
+      "bytes": 1730,
+      "sha256": "7f79201e5c88ac9e3b63c50e0ea8e368cdd5e5a618c914a733a0cfa3ad01e425"
+    },
+    {
+      "id": "PANEL-00044",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/prepare_name_runtime.py",
+      "bytes": 2210,
+      "sha256": "dcc825944d70e6a2296d15c2840cc07916bef42d69e4df5b5abcf209effebdb4"
+    },
+    {
+      "id": "PANEL-00045",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/rea-name-setter-error.json",
+      "bytes": 761,
+      "sha256": "c7c4da30ab4a00b8e9d45894c607c205411ea559e771365b393c0d62f86b20f2"
+    },
+    {
+      "id": "PANEL-00046",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/reuse-and-pass-limits.json",
+      "bytes": 2672,
+      "sha256": "9476873f8e8a034859c9067a3043826a261aea2d5c8616dea1f15c1b02937da7"
+    },
+    {
+      "id": "PANEL-00047",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/source-first-reuse.json",
+      "bytes": 3695,
+      "sha256": "2ef7ca16734d5c0bbb2a46b37f629e45723e526f81c96d9a3784ae6e94bccd7a"
+    },
+    {
+      "id": "PANEL-00048",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/sync_cp182.py",
+      "bytes": 11459,
+      "sha256": "0a59a25207df63002f4c38ecdd26543344fa693774cbe1f7ba8b48821448023f"
+    },
+    {
+      "id": "PANEL-00049",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/verify_identity.py",
+      "bytes": 5736,
+      "sha256": "0926e261ba2be234ca7c41c52323e45e189ecfde61e10b2d7742cbc19c7c113e"
+    },
+    {
+      "id": "PANEL-00050",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/verify_panels.py",
+      "bytes": 4023,
+      "sha256": "70bba7080dd84dc8fc2622b5638c3a307c342a05bd7b00816309fad488bfcba7"
+    },
+    {
+      "id": "PANEL-00051",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/cp182-snapshot/README.md",
+      "bytes": 5898,
+      "sha256": "3d53038dbffbaed9ae82f75caa7d1c6ac0e9e49ce08bf71cd41535a4103a0505"
+    },
+    {
+      "id": "PANEL-00052",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/cp182-snapshot/docs/COVERAGE.md",
+      "bytes": 162156,
+      "sha256": "1fbc650a6c4d30bae9b49c7744f950d3175a7081a0761af526659b6f44a5eb79"
+    },
+    {
+      "id": "PANEL-00053",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/cp182-snapshot/docs/PLAN.md",
+      "bytes": 44954,
+      "sha256": "5b613f044c570a5d6e460f5fd206fa989d4e23ccb291cbeb4b619aedba8bcd64"
+    },
+    {
+      "id": "PANEL-00054",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/cp182-snapshot/docs/PROTOCOL.md",
+      "bytes": 556304,
+      "sha256": "bdcd3c2e953a6606458ae70e9184ee41440e30fabdd168d66f9f23a5fae46c58"
+    },
+    {
+      "id": "PANEL-00055",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/cp182-snapshot/docs/RESEARCH.md",
+      "bytes": 33469,
+      "sha256": "312f7d9046fd6720359fb8131f04d88e7c47fd5216a6dd9b834429dc7a749032"
+    },
+    {
+      "id": "PANEL-00056",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/cp182-snapshot/docs/features.json",
+      "bytes": 170013,
+      "sha256": "106d2a819e0cc8a9a3220e6bd92c0fee01cadd1529fd4b815aa17482b3984e8a"
+    },
+    {
+      "id": "PANEL-00057",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/cp182-snapshot/docs/evidence/issue-reconciliation/github-snapshot.json",
+      "bytes": 207267,
+      "sha256": "a1975bf84b3bdc400be4ce40b8bf5ac224e56b371eb852dfe7e01c4fd691e146"
+    },
+    {
+      "id": "PANEL-00058",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/cp182-snapshot/docs/evidence/issue-reconciliation/review.json",
+      "bytes": 27684,
+      "sha256": "7dee8facb29a50d8ea8dfa41f26164b26e32c0e6554f738a1d0576b5b10e01c7"
+    },
+    {
+      "id": "PANEL-00059",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/cp182-snapshot/docs/evidence/lobby-identity/README.md",
+      "bytes": 3476,
+      "sha256": "b584ac71a5b18e90573ba834b06f917cfb4409a08f212c63324af177c52187d1"
+    },
+    {
+      "id": "PANEL-00060",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/cp182-snapshot/docs/evidence/lobby-identity/in-progress.json",
+      "bytes": 3465,
+      "sha256": "c6da150476ed8e827b9f27679976c268ffa68f371cb8a0065df774a4d1b89525"
+    },
+    {
+      "id": "PANEL-00061",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/ida/copy-provenance.json",
+      "bytes": 642,
+      "sha256": "6c58abb8dddc7d635e5d5174ad8d3ca79770364144e56afb5e31126ee36a1acf"
+    },
+    {
+      "id": "PANEL-00062",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/ida/lobby-name-candidate-comparison.json",
+      "bytes": 242,
+      "sha256": "2c84c81d50b7f6949b9e6a1f0c752f70f98ad39173b33572296f0f720ff99cc4"
+    },
+    {
+      "id": "PANEL-00063",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/ida/lobby-name-candidate-idat.log",
+      "bytes": 1458,
+      "sha256": "deee1659b0803364816df2f57cd615a0994b44c7c516c5d4583cb7a7e4e248aa"
+    },
+    {
+      "id": "PANEL-00064",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/ida/lobby-name-candidate-launcher.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "PANEL-00065",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/ida/lobby-name-candidate.json",
+      "bytes": 23730,
+      "sha256": "4e689feae333db12aa548dafc4a8683b1ed37a13edad762becfa261d86915249"
+    },
+    {
+      "id": "PANEL-00066",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/ida/lobby-name-candidate.py",
+      "bytes": 907,
+      "sha256": "0a6259a673f6471350dd969b7b6651fb839864d530d925a83362803840ea8760"
+    },
+    {
+      "id": "PANEL-00067",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/ida/name-caller-comparison.json",
+      "bytes": 149,
+      "sha256": "7b1358f238abdd3aa21ab8da15412855f971722b3fe4daf1bea35502a9b38caa"
+    },
+    {
+      "id": "PANEL-00068",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/ida/name-caller-idat.log",
+      "bytes": 1441,
+      "sha256": "90260821079a9082c1dd05c257b90acb4e65f27b297eef9fab70f86894abde33"
+    },
+    {
+      "id": "PANEL-00069",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/ida/name-caller-launcher.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "PANEL-00070",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/ida/name-caller.json",
+      "bytes": 4885,
+      "sha256": "85b492b7bdbf8051a9d8a72d3322e59fdcc94560b6b4f461dbe13b59e159c086"
+    },
+    {
+      "id": "PANEL-00071",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/ida/name-caller.py",
+      "bytes": 832,
+      "sha256": "f7ecfc1648c6b58118031e2300177bb3c1036a6a4073cbf4589cb1bbd33395ff"
+    },
+    {
+      "id": "PANEL-00072",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/ida/name-code-comparison.json",
+      "bytes": 900,
+      "sha256": "abb341fe0894243d7a80e225840c62298ef19f22e382891faca95ac04655cb19"
+    },
+    {
+      "id": "PANEL-00073",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/ida/name-consumers-idat.log",
+      "bytes": 1353,
+      "sha256": "6570f9790d898694d9b2383da60c008a86ea66d0a587b8540d53e7ad7ab87e35"
+    },
+    {
+      "id": "PANEL-00074",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/ida/name-consumers-launcher.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "PANEL-00075",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/ida/name-consumers.json",
+      "bytes": 22942,
+      "sha256": "0dba151068143de356721ca6759b1f62caa07b6104dfb5719387535ba4c379a6"
+    },
+    {
+      "id": "PANEL-00076",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/ida/name-consumers.py",
+      "bytes": 1277,
+      "sha256": "cc22aaff8454dfc1dcb473bea306095218576746af430100b629a5d863412bf7"
+    },
+    {
+      "id": "PANEL-00077",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/ida/name-helper-comparison.json",
+      "bytes": 254,
+      "sha256": "92776309faa3ae4fe5153650a83fa8a2a2d03ad4ffaf67e39375d147da764376"
+    },
+    {
+      "id": "PANEL-00078",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/ida/name-helper-idat.log",
+      "bytes": 1328,
+      "sha256": "7f3a2dc02cee6055f786639b0d470a4ee0e72d0e0bbb50f104af3d22e69ab3ee"
+    },
+    {
+      "id": "PANEL-00079",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/ida/name-helper-launcher.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "PANEL-00080",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/ida/name-helper.json",
+      "bytes": 3038,
+      "sha256": "ab690ae4d03ec3f0016b59dd52340bb444093fec44807e23d244518b15e4d9df"
+    },
+    {
+      "id": "PANEL-00081",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/ida/name-helper.py",
+      "bytes": 710,
+      "sha256": "beec112b76fd1a2894fa4b560ac0459a183e376e05c7f97d69cf2a086e6a77d9"
+    },
+    {
+      "id": "PANEL-00082",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/ida/name-other-callers-comparison.json",
+      "bytes": 327,
+      "sha256": "791b5ff820763ec234f30a9f3fb9e6525a4c7ed30b53c4433483a0477ff87608"
+    },
+    {
+      "id": "PANEL-00083",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/ida/name-other-callers-idat.log",
+      "bytes": 1328,
+      "sha256": "42b6d9680732cff01946fed6b78262676b71b326227241781b56321cf0fe2381"
+    },
+    {
+      "id": "PANEL-00084",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/ida/name-other-callers-launcher.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "PANEL-00085",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/ida/name-other-callers.json",
+      "bytes": 15707,
+      "sha256": "aedaff7702db879596eaea4663c07538aa1aed777e945622fa9d000ea1fc77ca"
+    },
+    {
+      "id": "PANEL-00086",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/ida/name-other-callers.py",
+      "bytes": 942,
+      "sha256": "35f383bced85a19d5d63e556eebbc4190c3488fdb671d2de037f58e6cce78a58"
+    },
+    {
+      "id": "PANEL-00087",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/ida/own-asset-routes.json",
+      "bytes": 6613,
+      "sha256": "a4383c3b5f24ac88f0975daba786e0a46f6a41ecb560fa649be96676f53e7dfc"
+    },
+    {
+      "id": "PANEL-00088",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/ida/own-asset-routes.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "PANEL-00089",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/ida/own-asset-routes.py",
+      "bytes": 1205,
+      "sha256": "bab949d9e1ede06f7aec4f0585162d1d09892a305b2b1e3dfff67b558172961d"
+    },
+    {
+      "id": "PANEL-00090",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/ida/own-panel-body-r2.json",
+      "bytes": 801060,
+      "sha256": "566f89344a0d34312c334648b0b597333d5e0f3ef005f94f15f59a50f2a0d655"
+    },
+    {
+      "id": "PANEL-00091",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/ida/own-panel-body-r2.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "PANEL-00092",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/ida/own-panel-body-r2.py",
+      "bytes": 970,
+      "sha256": "e2ff240b189b221b85c898a583c045ade492c44e39e5346664ff67fc34827cfd"
+    },
+    {
+      "id": "PANEL-00093",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/ida/own-panel-body.log",
+      "bytes": 893,
+      "sha256": "7bd22e9defa793fd3c1534d9da7c2c7892ccb67805e268b69665fd8836d37d32"
+    },
+    {
+      "id": "PANEL-00094",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/ida/own-panel-body.py",
+      "bytes": 967,
+      "sha256": "24c0297b44d9ddf315660ce813ac3a62074cf5a589acc02309b6ae1018ba48a8"
+    },
+    {
+      "id": "PANEL-00095",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/ida/own-panel-recovery.json",
+      "bytes": 497,
+      "sha256": "a0cbd86cc8a56c15038d5d92c9ee192d983d89f571bb1edd5ea3c5eaa9f92a18"
+    },
+    {
+      "id": "PANEL-00096",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/ida/own-store-writer.json",
+      "bytes": 12744,
+      "sha256": "23c3ec189072d90e7e87265a1f202961842cce9c64f300c2043474e8d39058df"
+    },
+    {
+      "id": "PANEL-00097",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/ida/own-store-writer.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "PANEL-00098",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/ida/own-store-writer.py",
+      "bytes": 969,
+      "sha256": "f6dfd7815b15e3c1ec7d680902632a9e0767d619c91082ee8fd1a70860d0bbd7"
+    },
+    {
+      "id": "PANEL-00099",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/ida/own-store.json",
+      "bytes": 14334,
+      "sha256": "2dbcc31d9fc9806e08e3ef2c4a923286a2babf88dd5edb23cc6242ad73498a6f"
+    },
+    {
+      "id": "PANEL-00100",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/ida/own-store.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "PANEL-00101",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/ida/own-store.py",
+      "bytes": 971,
+      "sha256": "653e2446d4bd489b5a5b019030a243fc976cf736b877fde117e916cacfb0aa75"
+    },
+    {
+      "id": "PANEL-00102",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/ida/panel-bodies.json",
+      "bytes": 9470,
+      "sha256": "0638d0c12fd2640d7b0e2412fd493321c2f0dd9a96f614925bc4f294d8a7b16f"
+    },
+    {
+      "id": "PANEL-00103",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/ida/panel-bodies.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "PANEL-00104",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/ida/panel-bodies.py",
+      "bytes": 974,
+      "sha256": "9dfc34fd485b56302ba3d829f41ab8958e193d922d06e9a1677e1c25c3e85233"
+    },
+    {
+      "id": "PANEL-00105",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/ida/panel-bodies2.json",
+      "bytes": 63038,
+      "sha256": "eb0edbe230f25755e9681070b51c13b231905babdb7675708432dfda5877a461"
+    },
+    {
+      "id": "PANEL-00106",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/ida/panel-bodies2.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "PANEL-00107",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/ida/panel-bodies2.py",
+      "bytes": 975,
+      "sha256": "2d830627c1707ebc4e46c5a7183650f1b50fb41763472c7411b7c1a08c8d730c"
+    },
+    {
+      "id": "PANEL-00108",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/ida/panel-byte-comparison.json",
+      "bytes": 800,
+      "sha256": "4d3d81b24ef0ee6a9c2fa2b0c1e7867dddf81400d54f2a279f7b0253167a077d"
+    },
+    {
+      "id": "PANEL-00109",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/ida/panel-byte-comparison2.json",
+      "bytes": 927,
+      "sha256": "ae828d716b164569d64f1d84d1fb50ef1e5e347729d3184a34039a03d712ae69"
+    },
+    {
+      "id": "PANEL-00110",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/ida/panel-map.json",
+      "bytes": 12778,
+      "sha256": "e9b71d40f15199061a1b486991dd1a21b2f083b4d370c6f88a54dc48231cc459"
+    },
+    {
+      "id": "PANEL-00111",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/ida/panel-map.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "PANEL-00112",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/ida/panel-map.py",
+      "bytes": 1362,
+      "sha256": "ab29d919cb156600241d45256ab9c2721ce14223545bf461fa0ea5418fa65994"
+    },
+    {
+      "id": "PANEL-00113",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/ida/panel-routes.json",
+      "bytes": 13352,
+      "sha256": "d676095e3ca7b76441bde1e1b797c638eb960dcbb4db3ba1756f7ddc9e92085c"
+    },
+    {
+      "id": "PANEL-00114",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/ida/panel-routes.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "PANEL-00115",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/ida/panel-routes.py",
+      "bytes": 769,
+      "sha256": "a9c9e3359a5149c876d227e872af1fde96b37bf02b9732aad315622381445d35"
+    },
+    {
+      "id": "PANEL-00116",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/ida/roomui-base.json",
+      "bytes": 3257,
+      "sha256": "3cbc90f964fa68cfa0074d0b339e9762e224b670e8defd80a323a6812cd076b3"
+    },
+    {
+      "id": "PANEL-00117",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/ida/roomui-base.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "PANEL-00118",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/ida/roomui-base.py",
+      "bytes": 964,
+      "sha256": "da9042f87f4b1a208bd2b7df41d08e797a7db9f9f4787b2dec7fc83d049e0c59"
+    },
+    {
+      "id": "PANEL-00119",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/ida/roomui-ctor.json",
+      "bytes": 31544,
+      "sha256": "d4eb69a68763e8a6ae648714b73243b5be1c662662781b3876dd1345f3622474"
+    },
+    {
+      "id": "PANEL-00120",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/ida/roomui-ctor.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "PANEL-00121",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/ida/roomui-ctor.py",
+      "bytes": 964,
+      "sha256": "ed01333ffe695cb9f2d6a96b14314b9358ebd1d25fa182edb1cba980ae1aea37"
+    },
+    {
+      "id": "PANEL-00122",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/ida/stage-ctor.json",
+      "bytes": 17473,
+      "sha256": "8af370feaa7f5f84c74ce4d41ab0e9e5c62f7f636682de6850f262c8e232a1f6"
+    },
+    {
+      "id": "PANEL-00123",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/ida/stage-ctor.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "PANEL-00124",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/ida/stage-ctor.py",
+      "bytes": 963,
+      "sha256": "8065f6db0b595462f5b62597590fedcab12a5bd458df0bb85377d2f4bd6f6d35"
+    },
+    {
+      "id": "PANEL-00125",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/ida/userlist-byte-comparison.json",
+      "bytes": 975,
+      "sha256": "69be1de1d3c400873b290d039d1a1ba0206942fab47bd1b0b42a4b97c061f243"
+    },
+    {
+      "id": "PANEL-00126",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/ida/userlist-init.json",
+      "bytes": 70648,
+      "sha256": "147e058c434ecbc6b9f09424a0f7a8f8349f312163a653504b64dc98101b1f2a"
+    },
+    {
+      "id": "PANEL-00127",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/ida/userlist-init.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "PANEL-00128",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/ida/userlist-init.py",
+      "bytes": 975,
+      "sha256": "1f6205f6b49c5c1d689d6b04549ef5f81ab21593a64e2b22b7e2cd8a314aab29"
+    },
+    {
+      "id": "PANEL-00129",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/ida/userlist-own-render.json",
+      "bytes": 27683,
+      "sha256": "4e1b182b4f27c53fd5d9cd445fdf816aed10dfb0d21f25226ceeeadf34eaff56"
+    },
+    {
+      "id": "PANEL-00130",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/ida/userlist-own-render.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "PANEL-00131",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/ida/userlist-own-render.py",
+      "bytes": 972,
+      "sha256": "20633bff281a773e74943e21eea20779dcb28233a736be76c9578ee6b2341200"
+    },
+    {
+      "id": "PANEL-00132",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/ida/userlist-virtuals.json",
+      "bytes": 57092,
+      "sha256": "453ac97590859cf9c26259e6d5a5c45144f2f4e1339dc694e8ea160d02242c06"
+    },
+    {
+      "id": "PANEL-00133",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/ida/userlist-virtuals.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "PANEL-00134",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/ida/userlist-virtuals.py",
+      "bytes": 979,
+      "sha256": "eb4f5c384271ad51e3c1c66eb7cfd2ad03eb7ba356c34864740326bdef868bcc"
+    },
+    {
+      "id": "PANEL-00135",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/identity-r1/CALog-before.txt",
+      "bytes": 1696,
+      "sha256": "becadd21eb4f072bed2155970a450292946a713674682b3f2ed0a9bdcaab28e6"
+    },
+    {
+      "id": "PANEL-00136",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/identity-r1/CALog-run.txt",
+      "bytes": 1573,
+      "sha256": "a390a8da05ec18d57f248e7aec02102ea3f45a552538654c5f63fbbdaf29833f"
+    },
+    {
+      "id": "PANEL-00137",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/identity-r1/client.log",
+      "bytes": 114034,
+      "sha256": "8b0500f0a241b578fbd142c80304eecc49868e220c6af91ca072b553ebdb3bb3"
+    },
+    {
+      "id": "PANEL-00138",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/identity-r1/debug-commands.txt",
+      "bytes": 336,
+      "sha256": "9c7d520434995df08328abb5a5de714d523f8c741ab1469750ed974320005650"
+    },
+    {
+      "id": "PANEL-00139",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/identity-r1/hosts",
+      "bytes": 121,
+      "sha256": "32a007c62d2887ae9f8d3c30d1ff7cb3902e6e1e0c75c5a978ee556cc8ea71f8"
+    },
+    {
+      "id": "PANEL-00140",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/identity-r1/nsswitch.conf",
+      "bytes": 307,
+      "sha256": "c18e474cd61df8648ee02ac7a9c76b8d6c7782d8b212f925e6980f20af5cc838"
+    },
+    {
+      "id": "PANEL-00141",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/identity-r1/processes-00.txt",
+      "bytes": 3727,
+      "sha256": "b938bd62449601508cfdef74341859ec38e79a30ca0771db152c7b649fd6ba4d"
+    },
+    {
+      "id": "PANEL-00142",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/identity-r1/processes-01.txt",
+      "bytes": 4455,
+      "sha256": "9cf26fcaa33c565c7090bcfaa9734adb306cbd3356547d9b98fed324ff2ac452"
+    },
+    {
+      "id": "PANEL-00143",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/identity-r1/processes-02.txt",
+      "bytes": 4455,
+      "sha256": "0c4232feced1f979d580f1f79180d9808106e5d66f3812040b041fac59efdb79"
+    },
+    {
+      "id": "PANEL-00144",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/identity-r1/processes-03.txt",
+      "bytes": 4455,
+      "sha256": "91bf9f60e25e304f22e1bc4405717b76f06dc22c5b36f1486ee4d2091ee3efcd"
+    },
+    {
+      "id": "PANEL-00145",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/identity-r1/processes-04.txt",
+      "bytes": 4455,
+      "sha256": "efc97f150587ee2236b15b82207393568b1a47d38e2570bf2ea471190eb24ab0"
+    },
+    {
+      "id": "PANEL-00146",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/identity-r1/processes-05.txt",
+      "bytes": 4455,
+      "sha256": "de884c6aaed10cf806a29607eefbbad4c091eeacec54ff1d611f4846790f0ed3"
+    },
+    {
+      "id": "PANEL-00147",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/identity-r1/processes-06.txt",
+      "bytes": 4455,
+      "sha256": "4bf9dc4cb1aff5683d6b5de9ad32f04fd12e356c17aefa7a3317d879dd71dc92"
+    },
+    {
+      "id": "PANEL-00148",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/identity-r1/processes-07.txt",
+      "bytes": 4455,
+      "sha256": "75c495063d812c3cd6a553c83603d25cf9e08c0140087e6f4cc9eb4bcff102c2"
+    },
+    {
+      "id": "PANEL-00149",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/identity-r1/processes-08.txt",
+      "bytes": 4455,
+      "sha256": "33135442a0a06680c3a057f9854b229129eeb978cc8fe126b0ed81941e015dd2"
+    },
+    {
+      "id": "PANEL-00150",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/identity-r1/processes-09.txt",
+      "bytes": 4455,
+      "sha256": "d29f54166fe05861e39d47ffded877dbb7bfe2bab8ca826747445deadd9ced68"
+    },
+    {
+      "id": "PANEL-00151",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/identity-r1/processes-10.txt",
+      "bytes": 4455,
+      "sha256": "b1badccac2ef31dfca39f251cecf4e9ca3dc2ec5bb8c894a2cbe83879cda457b"
+    },
+    {
+      "id": "PANEL-00152",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/identity-r1/processes-11.txt",
+      "bytes": 4455,
+      "sha256": "e20938e8d2ac1ee62e512b2a51026141a4e4de30a7254fcf072361ffbcd329cc"
+    },
+    {
+      "id": "PANEL-00153",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/identity-r1/processes-12.txt",
+      "bytes": 4455,
+      "sha256": "f76663f2f3aabac1ba5f02871c5c3fa7f60286734a193963f0900b7ce0d9bce6"
+    },
+    {
+      "id": "PANEL-00154",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/identity-r1/processes-13.txt",
+      "bytes": 4455,
+      "sha256": "1a567aca54ee389d92c25d852e12c9ff82f976ae9bf9bcc24c013da77ac4deda"
+    },
+    {
+      "id": "PANEL-00155",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/identity-r1/processes-14.txt",
+      "bytes": 4455,
+      "sha256": "2dcb333995731c193186699076fae729dc55f30b28572b2092e589110c30b056"
+    },
+    {
+      "id": "PANEL-00156",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/identity-r1/processes-15.txt",
+      "bytes": 4455,
+      "sha256": "164b755228aac4a90c49afebdc1c8b16c8725a677784e2b24ec795656bc34404"
+    },
+    {
+      "id": "PANEL-00157",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/identity-r1/processes-16.txt",
+      "bytes": 4455,
+      "sha256": "240b942ae4a0f25dda338e2ac5ffd54cd8b242dbbc0582e64c9b9359a8ca4721"
+    },
+    {
+      "id": "PANEL-00158",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/identity-r1/processes-17.txt",
+      "bytes": 4455,
+      "sha256": "8eff79637a715c545d728cef8511ecbf86d9c6ee57bec67c367e3f52da1a496b"
+    },
+    {
+      "id": "PANEL-00159",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/identity-r1/processes-18.txt",
+      "bytes": 4455,
+      "sha256": "565af4c1215e561e841e441390056a5cf7bc6016e52ca71c0aa836f8397883fb"
+    },
+    {
+      "id": "PANEL-00160",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/identity-r1/processes-19.txt",
+      "bytes": 4455,
+      "sha256": "4f1fd675c5d552177bafc11827cb62a2f7bd58ee509e5da1d0d1815ac3172279"
+    },
+    {
+      "id": "PANEL-00161",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/identity-r1/processes-20.txt",
+      "bytes": 4455,
+      "sha256": "458c4e566c29904c6e66d829d012acd8964384d54a443bc50fa6db1476c2cc78"
+    },
+    {
+      "id": "PANEL-00162",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/identity-r1/raw-seal.json",
+      "bytes": 15387,
+      "sha256": "a38410eeaafd263ea6d0a858becf934fa710e0c401b229e52623745467e58e48"
+    },
+    {
+      "id": "PANEL-00163",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/identity-r1/run.json",
+      "bytes": 13561,
+      "sha256": "d31cf7935327b17cc88391ff13cd78f8f9cf68c0f74c4b2717a08da6d1ad3e22"
+    },
+    {
+      "id": "PANEL-00164",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/identity-r1/screen-00.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "PANEL-00165",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/identity-r1/screen-01.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "PANEL-00166",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/identity-r1/screen-02.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "PANEL-00167",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/identity-r1/screen-03.png",
+      "bytes": 19847,
+      "sha256": "2178ceb11e92e5f95694ca8a855de0750fb1a93dfe6e02a13c1856b080d16654"
+    },
+    {
+      "id": "PANEL-00168",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/identity-r1/screen-04.png",
+      "bytes": 13437,
+      "sha256": "e47c2919c72588bea5f3e5b8ebda4d9823a66e8864f6b86ed6f85d9e19598218"
+    },
+    {
+      "id": "PANEL-00169",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/identity-r1/screen-05.png",
+      "bytes": 191427,
+      "sha256": "637aedb21cd25df5263d99401e7a838add696298b7e5033e1e973fae6c801e8b"
+    },
+    {
+      "id": "PANEL-00170",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/identity-r1/screen-06.png",
+      "bytes": 197155,
+      "sha256": "95ee6fb63898e745d1f1e14f512e5c84106bf5a34b14581dc3d96d2029be88db"
+    },
+    {
+      "id": "PANEL-00171",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/identity-r1/screen-07.png",
+      "bytes": 148343,
+      "sha256": "551724ad9f96a0d72c41f3fe041c3133486b87af69130eae8d5c00dfad1a4a8a"
+    },
+    {
+      "id": "PANEL-00172",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/identity-r1/screen-08.png",
+      "bytes": 149261,
+      "sha256": "6e9f5e11798d46dabf35504c82832312b97ccefd95d4b1cf6f0644dc1df5584d"
+    },
+    {
+      "id": "PANEL-00173",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/identity-r1/screen-09.png",
+      "bytes": 143957,
+      "sha256": "be19fa7bc470de9dfce154c7c303015d55b4f388126cf61e8e072f8e60a58292"
+    },
+    {
+      "id": "PANEL-00174",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/identity-r1/screen-10.png",
+      "bytes": 143968,
+      "sha256": "00fd0fbfbe296180ac55746d6dee5ef228dd5e3ddffab3dba9122cf5e920050b"
+    },
+    {
+      "id": "PANEL-00175",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/identity-r1/screen-11.png",
+      "bytes": 143257,
+      "sha256": "ce8f5619faac618e78bf4cf112c91d57a1ac06c1266edac93077c6185fe6de1c"
+    },
+    {
+      "id": "PANEL-00176",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/identity-r1/screen-12.png",
+      "bytes": 142100,
+      "sha256": "579a6a223f4ad59ce7e60f1cf1a74d866134a6ca5423e6367185a4e5ef176855"
+    },
+    {
+      "id": "PANEL-00177",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/identity-r1/screen-13.png",
+      "bytes": 141880,
+      "sha256": "46f6ea41b74e562ce796ac988e67434cbf946e287845f65d27568440d31aa41d"
+    },
+    {
+      "id": "PANEL-00178",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/identity-r1/screen-14.png",
+      "bytes": 141857,
+      "sha256": "53e5adacf176dde3d41117b9ca59182144f4096578c096d46a9682dc4951c918"
+    },
+    {
+      "id": "PANEL-00179",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/identity-r1/screen-15.png",
+      "bytes": 142452,
+      "sha256": "2513f54358170fecd81d19c34f35079da3894c0033d6cb460779be3e6ea63489"
+    },
+    {
+      "id": "PANEL-00180",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/identity-r1/screen-16.png",
+      "bytes": 143370,
+      "sha256": "631e69b0ba8c3058507bd350d186ca7e6b423e7d0be7899f955a2758c1ef6d2c"
+    },
+    {
+      "id": "PANEL-00181",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/identity-r1/screen-17.png",
+      "bytes": 144493,
+      "sha256": "af4032f2a6a213cde340f25067eebcd6cb6e59982a123aeb0705cb664e9dbeab"
+    },
+    {
+      "id": "PANEL-00182",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/identity-r1/screen-18.png",
+      "bytes": 145333,
+      "sha256": "7f7cd31333a27ac2aa40dadbf3527009360377f22af910cee89f1c536aabd53c"
+    },
+    {
+      "id": "PANEL-00183",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/identity-r1/screen-19.png",
+      "bytes": 145053,
+      "sha256": "3bda97400e3f00c2c7f1b5d133f44b97484c2ec6863ec5ad6e056ae0b23d6076"
+    },
+    {
+      "id": "PANEL-00184",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/identity-r1/screen-20.png",
+      "bytes": 144837,
+      "sha256": "27104f2c956f5b4dd192dc69074fa08c92fae36dadc1c7460b39cbde2a8920ab"
+    },
+    {
+      "id": "PANEL-00185",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/identity-r1/service-state.json",
+      "bytes": 28617,
+      "sha256": "358c325f3ced3f0795533290ea5de2cb8b2a7b55736070ce9c23bcd263a0d5bf"
+    },
+    {
+      "id": "PANEL-00186",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/identity-r1/service.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "PANEL-00187",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/identity-r1/windows-00.txt",
+      "bytes": 166,
+      "sha256": "28ae29836d791dcd3302b447a52a8f0fa3f9a192abbc33a27751e23d7ebe0d43"
+    },
+    {
+      "id": "PANEL-00188",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/identity-r1/windows-01.txt",
+      "bytes": 872,
+      "sha256": "c8c8cfe9c5b9bb2ccde16b4b959b165ed33d50824f3fbd29834c16b6f0e63586"
+    },
+    {
+      "id": "PANEL-00189",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/identity-r1/windows-02.txt",
+      "bytes": 872,
+      "sha256": "c8c8cfe9c5b9bb2ccde16b4b959b165ed33d50824f3fbd29834c16b6f0e63586"
+    },
+    {
+      "id": "PANEL-00190",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/identity-r1/windows-03.txt",
+      "bytes": 1311,
+      "sha256": "79f14ed4dc9ec340cb32d82ec0c77a2262196d736b814194ac0ee379704f762b"
+    },
+    {
+      "id": "PANEL-00191",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/identity-r1/windows-04.txt",
+      "bytes": 1311,
+      "sha256": "79f14ed4dc9ec340cb32d82ec0c77a2262196d736b814194ac0ee379704f762b"
+    },
+    {
+      "id": "PANEL-00192",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/identity-r1/windows-05.txt",
+      "bytes": 1311,
+      "sha256": "79f14ed4dc9ec340cb32d82ec0c77a2262196d736b814194ac0ee379704f762b"
+    },
+    {
+      "id": "PANEL-00193",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/identity-r1/windows-06.txt",
+      "bytes": 1311,
+      "sha256": "79f14ed4dc9ec340cb32d82ec0c77a2262196d736b814194ac0ee379704f762b"
+    },
+    {
+      "id": "PANEL-00194",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/identity-r1/windows-07.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "PANEL-00195",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/identity-r1/windows-08.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "PANEL-00196",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/identity-r1/windows-09.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "PANEL-00197",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/identity-r1/windows-10.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "PANEL-00198",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/identity-r1/windows-11.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "PANEL-00199",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/identity-r1/windows-12.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "PANEL-00200",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/identity-r1/windows-13.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "PANEL-00201",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/identity-r1/windows-14.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "PANEL-00202",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/identity-r1/windows-15.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "PANEL-00203",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/identity-r1/windows-16.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "PANEL-00204",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/identity-r1/windows-17.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "PANEL-00205",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/identity-r1/windows-18.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "PANEL-00206",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/identity-r1/windows-19.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "PANEL-00207",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/identity-r1/windows-20.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "PANEL-00208",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/identity-r1/wineboot.log",
+      "bytes": 64844,
+      "sha256": "35ee4ae44b354e51edb32784388b524126855b8691a11d8045ba908393161b63"
+    },
+    {
+      "id": "PANEL-00209",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/identity-r1/xvfb.log",
+      "bytes": 2808,
+      "sha256": "46b8747df8a2fc8b6a469b2374ea3d0c6c786dc3dcf2a9be13d94ce76ed3a1a7"
+    },
+    {
+      "id": "PANEL-00210",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/identity-r2/CALog-before.txt",
+      "bytes": 1573,
+      "sha256": "a390a8da05ec18d57f248e7aec02102ea3f45a552538654c5f63fbbdaf29833f"
+    },
+    {
+      "id": "PANEL-00211",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/identity-r2/CALog-run.txt",
+      "bytes": 1573,
+      "sha256": "a390a8da05ec18d57f248e7aec02102ea3f45a552538654c5f63fbbdaf29833f"
+    },
+    {
+      "id": "PANEL-00212",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/identity-r2/client.log",
+      "bytes": 114398,
+      "sha256": "dba2d6791a21c502af121d3684d9336e0f63630825fdddcd7e65cd565cd70015"
+    },
+    {
+      "id": "PANEL-00213",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/identity-r2/debug-commands.txt",
+      "bytes": 339,
+      "sha256": "7790e9175f4762aba3568d60900300d3bd14d3269f7065abaa2e8c18505055b2"
+    },
+    {
+      "id": "PANEL-00214",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/identity-r2/hosts",
+      "bytes": 121,
+      "sha256": "32a007c62d2887ae9f8d3c30d1ff7cb3902e6e1e0c75c5a978ee556cc8ea71f8"
+    },
+    {
+      "id": "PANEL-00215",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/identity-r2/nsswitch.conf",
+      "bytes": 307,
+      "sha256": "c18e474cd61df8648ee02ac7a9c76b8d6c7782d8b212f925e6980f20af5cc838"
+    },
+    {
+      "id": "PANEL-00216",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/identity-r2/processes-00.txt",
+      "bytes": 3730,
+      "sha256": "f5ad1d6a2a3c6e0b68c6c9799833227f8880137320dd8d61b2ff1029bfc804ea"
+    },
+    {
+      "id": "PANEL-00217",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/identity-r2/processes-01.txt",
+      "bytes": 4458,
+      "sha256": "a0cee83da50c014ee789e96b1712637349229277766548028e9e03fe05e34cd7"
+    },
+    {
+      "id": "PANEL-00218",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/identity-r2/processes-02.txt",
+      "bytes": 4458,
+      "sha256": "28bea78936d34e45385d63dfe790405e0cb4674a569040b771abb692939fdb18"
+    },
+    {
+      "id": "PANEL-00219",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/identity-r2/processes-03.txt",
+      "bytes": 4458,
+      "sha256": "e9027885d82e2d106ceefe168393b5d448f39acf2eafa546704c36c1ccb4a193"
+    },
+    {
+      "id": "PANEL-00220",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/identity-r2/processes-04.txt",
+      "bytes": 4458,
+      "sha256": "2c2edfc7586ac20daba4693450bd5c685327821acd86e9aac5e14012ca97a5cd"
+    },
+    {
+      "id": "PANEL-00221",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/identity-r2/processes-05.txt",
+      "bytes": 4458,
+      "sha256": "e50273ed049456535747f8b3853ce4bafc49152943bc34bad215b057ee640814"
+    },
+    {
+      "id": "PANEL-00222",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/identity-r2/processes-06.txt",
+      "bytes": 4458,
+      "sha256": "737adc0206020cb07c3578d74d48618c81b7caee0ff630f54201ad6845c2375a"
+    },
+    {
+      "id": "PANEL-00223",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/identity-r2/processes-07.txt",
+      "bytes": 4458,
+      "sha256": "93188ee2a7f398c8172b0fdce89e08784456bf8029915d186df067db6a7c85de"
+    },
+    {
+      "id": "PANEL-00224",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/identity-r2/processes-08.txt",
+      "bytes": 4458,
+      "sha256": "eb18a1bea73d4471fea85aa400a863b70f06a0d9d271e01fb6da9f5b401ba792"
+    },
+    {
+      "id": "PANEL-00225",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/identity-r2/processes-09.txt",
+      "bytes": 4458,
+      "sha256": "e432e20af3124c9f969e90d57a9fc70ab484fa694fad660b5f96f2d9f6562d08"
+    },
+    {
+      "id": "PANEL-00226",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/identity-r2/processes-10.txt",
+      "bytes": 4458,
+      "sha256": "cff4d4b260c0a5996fdec9e844e431f09b995ce5072372cfeea1f988d119d4e3"
+    },
+    {
+      "id": "PANEL-00227",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/identity-r2/processes-11.txt",
+      "bytes": 4458,
+      "sha256": "6c26d835f9b446587001622163dd4b31de7b0fefb319ab1d20f6f5b86798f30a"
+    },
+    {
+      "id": "PANEL-00228",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/identity-r2/processes-12.txt",
+      "bytes": 4458,
+      "sha256": "6811159d62788d5b0548dbeb8f0aea008c30ca9da7eec6c9e17e553e22c65e88"
+    },
+    {
+      "id": "PANEL-00229",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/identity-r2/processes-13.txt",
+      "bytes": 4458,
+      "sha256": "fd4b821b8655c3a392672ec490c4daa90e8965928cee6bd971240cc45c7425a3"
+    },
+    {
+      "id": "PANEL-00230",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/identity-r2/processes-14.txt",
+      "bytes": 4458,
+      "sha256": "8a2d9205d7bd7ad7855706e769c9f767c2d997a8ef7483ac0c6ad798ad252235"
+    },
+    {
+      "id": "PANEL-00231",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/identity-r2/processes-15.txt",
+      "bytes": 4458,
+      "sha256": "3a3145d13c8cc883af609e32dbf9563008daf8317949615ffbe6ca436eecc088"
+    },
+    {
+      "id": "PANEL-00232",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/identity-r2/processes-16.txt",
+      "bytes": 4458,
+      "sha256": "9d5965f43c5df05be814d1fd4521126bf429217f4395e683b565114bead59cf0"
+    },
+    {
+      "id": "PANEL-00233",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/identity-r2/processes-17.txt",
+      "bytes": 4458,
+      "sha256": "9dbb855d833a50e56b1db37f215a4404405d9a44134f49df802a069ea4609646"
+    },
+    {
+      "id": "PANEL-00234",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/identity-r2/processes-18.txt",
+      "bytes": 4458,
+      "sha256": "db94446ae35045e0bddec0e2843017340b62fc5f26499b2580c8f655378f7e0f"
+    },
+    {
+      "id": "PANEL-00235",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/identity-r2/processes-19.txt",
+      "bytes": 4458,
+      "sha256": "ef8558808d4c680ffa779e09f5fae806ba27c2127d6aa702285d39bb921940e3"
+    },
+    {
+      "id": "PANEL-00236",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/identity-r2/processes-20.txt",
+      "bytes": 4458,
+      "sha256": "84e7ab2c2dd7e1517667773c09266b2c46293c015b908a1edd818af32cfb94e0"
+    },
+    {
+      "id": "PANEL-00237",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/identity-r2/raw-seal.json",
+      "bytes": 15275,
+      "sha256": "fb82b7fd3c3fb6dfdd1e4af9ae574e31850701f92a568857157a293ea304ab26"
+    },
+    {
+      "id": "PANEL-00238",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/identity-r2/run.json",
+      "bytes": 13563,
+      "sha256": "9e6e562947736b4e3addff90b16ca347f792b846ef85919e2d31e68b9b02da24"
+    },
+    {
+      "id": "PANEL-00239",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/identity-r2/screen-00.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "PANEL-00240",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/identity-r2/screen-01.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "PANEL-00241",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/identity-r2/screen-02.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "PANEL-00242",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/identity-r2/screen-03.png",
+      "bytes": 19847,
+      "sha256": "2178ceb11e92e5f95694ca8a855de0750fb1a93dfe6e02a13c1856b080d16654"
+    },
+    {
+      "id": "PANEL-00243",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/identity-r2/screen-04.png",
+      "bytes": 13437,
+      "sha256": "e47c2919c72588bea5f3e5b8ebda4d9823a66e8864f6b86ed6f85d9e19598218"
+    },
+    {
+      "id": "PANEL-00244",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/identity-r2/screen-05.png",
+      "bytes": 191427,
+      "sha256": "637aedb21cd25df5263d99401e7a838add696298b7e5033e1e973fae6c801e8b"
+    },
+    {
+      "id": "PANEL-00245",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/identity-r2/screen-06.png",
+      "bytes": 197155,
+      "sha256": "95ee6fb63898e745d1f1e14f512e5c84106bf5a34b14581dc3d96d2029be88db"
+    },
+    {
+      "id": "PANEL-00246",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/identity-r2/screen-07.png",
+      "bytes": 148457,
+      "sha256": "9c5d549ddaec92c1f65473538aa8d8e24d39d25d2c648c2c878cf56a549c6095"
+    },
+    {
+      "id": "PANEL-00247",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/identity-r2/screen-08.png",
+      "bytes": 149372,
+      "sha256": "8ea2f4e7baa77fe5bb7471cf63d031974f4dfa86aecadced546873ba180ff117"
+    },
+    {
+      "id": "PANEL-00248",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/identity-r2/screen-09.png",
+      "bytes": 144211,
+      "sha256": "2db14dd974833f5cb0f097e21be9e87b759595fdabb56aa4d7d4e1555a1909c1"
+    },
+    {
+      "id": "PANEL-00249",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/identity-r2/screen-10.png",
+      "bytes": 144250,
+      "sha256": "c3fd33c0c7f5805d327c9e3bdbb7d80e033a64a00d070993c28e051cb7da50dc"
+    },
+    {
+      "id": "PANEL-00250",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/identity-r2/screen-11.png",
+      "bytes": 143413,
+      "sha256": "b403ec34e7060ca268d4900fb014b8d1d4d1c5033acf350b69e5bbba5261631e"
+    },
+    {
+      "id": "PANEL-00251",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/identity-r2/screen-12.png",
+      "bytes": 142557,
+      "sha256": "a2ce129b068487f5bee436c2b136d9a6b554f15cbf5861f6b134b24906982e5c"
+    },
+    {
+      "id": "PANEL-00252",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/identity-r2/screen-13.png",
+      "bytes": 141880,
+      "sha256": "46f6ea41b74e562ce796ac988e67434cbf946e287845f65d27568440d31aa41d"
+    },
+    {
+      "id": "PANEL-00253",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/identity-r2/screen-14.png",
+      "bytes": 141857,
+      "sha256": "53e5adacf176dde3d41117b9ca59182144f4096578c096d46a9682dc4951c918"
+    },
+    {
+      "id": "PANEL-00254",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/identity-r2/screen-15.png",
+      "bytes": 142508,
+      "sha256": "621a98692c93536d0732e8dcf98a07b253a2dc16142cca1dc5717eb99f61edad"
+    },
+    {
+      "id": "PANEL-00255",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/identity-r2/screen-16.png",
+      "bytes": 143434,
+      "sha256": "d74fd490e72c34eb1a5d0db9b13c3f64c17a420d75c434841b81037c6ad8a53f"
+    },
+    {
+      "id": "PANEL-00256",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/identity-r2/screen-17.png",
+      "bytes": 144381,
+      "sha256": "ca81a5effd790f51ae7d2825c40b8360ae43b7c1534e9103bc0064055a14c12f"
+    },
+    {
+      "id": "PANEL-00257",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/identity-r2/screen-18.png",
+      "bytes": 145163,
+      "sha256": "abd724f49df4aa7ee1a281d0c63217d7b0413d49eb915604102bf92f2a33cf6b"
+    },
+    {
+      "id": "PANEL-00258",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/identity-r2/screen-19.png",
+      "bytes": 144542,
+      "sha256": "8bc8d6b0021da36440ea5f7d0c78f45ccd870bb17bacab1019b6c618f60f38d4"
+    },
+    {
+      "id": "PANEL-00259",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/identity-r2/screen-20.png",
+      "bytes": 144328,
+      "sha256": "728385ed2f5d10869978f77e4b8d7f7b01dec3f7270479e5db0ad0f3f26d3488"
+    },
+    {
+      "id": "PANEL-00260",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/identity-r2/service-state.json",
+      "bytes": 28617,
+      "sha256": "b90f3fa9924a6aea8a1e2e2092ca032cf9dbe063b79b65018f06fd10fb40989d"
+    },
+    {
+      "id": "PANEL-00261",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/identity-r2/service.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "PANEL-00262",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/identity-r2/windows-00.txt",
+      "bytes": 166,
+      "sha256": "28ae29836d791dcd3302b447a52a8f0fa3f9a192abbc33a27751e23d7ebe0d43"
+    },
+    {
+      "id": "PANEL-00263",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/identity-r2/windows-01.txt",
+      "bytes": 872,
+      "sha256": "c8c8cfe9c5b9bb2ccde16b4b959b165ed33d50824f3fbd29834c16b6f0e63586"
+    },
+    {
+      "id": "PANEL-00264",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/identity-r2/windows-02.txt",
+      "bytes": 872,
+      "sha256": "c8c8cfe9c5b9bb2ccde16b4b959b165ed33d50824f3fbd29834c16b6f0e63586"
+    },
+    {
+      "id": "PANEL-00265",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/identity-r2/windows-03.txt",
+      "bytes": 1311,
+      "sha256": "79f14ed4dc9ec340cb32d82ec0c77a2262196d736b814194ac0ee379704f762b"
+    },
+    {
+      "id": "PANEL-00266",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/identity-r2/windows-04.txt",
+      "bytes": 1311,
+      "sha256": "79f14ed4dc9ec340cb32d82ec0c77a2262196d736b814194ac0ee379704f762b"
+    },
+    {
+      "id": "PANEL-00267",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/identity-r2/windows-05.txt",
+      "bytes": 1311,
+      "sha256": "79f14ed4dc9ec340cb32d82ec0c77a2262196d736b814194ac0ee379704f762b"
+    },
+    {
+      "id": "PANEL-00268",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/identity-r2/windows-06.txt",
+      "bytes": 1311,
+      "sha256": "79f14ed4dc9ec340cb32d82ec0c77a2262196d736b814194ac0ee379704f762b"
+    },
+    {
+      "id": "PANEL-00269",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/identity-r2/windows-07.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "PANEL-00270",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/identity-r2/windows-08.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "PANEL-00271",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/identity-r2/windows-09.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "PANEL-00272",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/identity-r2/windows-10.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "PANEL-00273",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/identity-r2/windows-11.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "PANEL-00274",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/identity-r2/windows-12.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "PANEL-00275",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/identity-r2/windows-13.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "PANEL-00276",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/identity-r2/windows-14.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "PANEL-00277",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/identity-r2/windows-15.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "PANEL-00278",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/identity-r2/windows-16.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "PANEL-00279",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/identity-r2/windows-17.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "PANEL-00280",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/identity-r2/windows-18.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "PANEL-00281",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/identity-r2/windows-19.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "PANEL-00282",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/identity-r2/windows-20.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "PANEL-00283",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/identity-r2/wineboot.log",
+      "bytes": 64844,
+      "sha256": "c9e24bd7c7f3f0f31aa38583df3060389e2d6c9677a797dba82a9fdeb229307c"
+    },
+    {
+      "id": "PANEL-00284",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/identity-r2/xvfb.log",
+      "bytes": 2808,
+      "sha256": "46b8747df8a2fc8b6a469b2374ea3d0c6c786dc3dcf2a9be13d94ce76ed3a1a7"
+    },
+    {
+      "id": "PANEL-00285",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r1/CALog-before.txt",
+      "bytes": 1573,
+      "sha256": "a390a8da05ec18d57f248e7aec02102ea3f45a552538654c5f63fbbdaf29833f"
+    },
+    {
+      "id": "PANEL-00286",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r1/CALog-run.txt",
+      "bytes": 1573,
+      "sha256": "a390a8da05ec18d57f248e7aec02102ea3f45a552538654c5f63fbbdaf29833f"
+    },
+    {
+      "id": "PANEL-00287",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r1/client.log",
+      "bytes": 112479,
+      "sha256": "ebf2342e609405b5ea0a3648e114c0c3c610158bcd1611c08b6950661c669080"
+    },
+    {
+      "id": "PANEL-00288",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r1/debug-commands.txt",
+      "bytes": 343,
+      "sha256": "df0e873e501535643d0584554a52e54acc546044f0426660ddd828d8e0229d64"
+    },
+    {
+      "id": "PANEL-00289",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r1/hosts",
+      "bytes": 121,
+      "sha256": "32a007c62d2887ae9f8d3c30d1ff7cb3902e6e1e0c75c5a978ee556cc8ea71f8"
+    },
+    {
+      "id": "PANEL-00290",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r1/nsswitch.conf",
+      "bytes": 307,
+      "sha256": "c18e474cd61df8648ee02ac7a9c76b8d6c7782d8b212f925e6980f20af5cc838"
+    },
+    {
+      "id": "PANEL-00291",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r1/processes-00.txt",
+      "bytes": 3943,
+      "sha256": "30a369c14e3aac04f117afd0207128b356f190419e8c245673a03d9053a32af1"
+    },
+    {
+      "id": "PANEL-00292",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r1/processes-01.txt",
+      "bytes": 4450,
+      "sha256": "a09e25ecd305e87ac6d39884420b74d5356e35e18c630b5f3b4f58d3971bf9c5"
+    },
+    {
+      "id": "PANEL-00293",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r1/processes-02.txt",
+      "bytes": 4450,
+      "sha256": "74e42adf011b6c7ff0da2d2b4c981ee9835115ab64e8637b0db8c03173376abe"
+    },
+    {
+      "id": "PANEL-00294",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r1/processes-03.txt",
+      "bytes": 4450,
+      "sha256": "4983fba8b812485f30d2696aceae689d011ca22e993e8686b7f280416e5b9f7a"
+    },
+    {
+      "id": "PANEL-00295",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r1/processes-04.txt",
+      "bytes": 4450,
+      "sha256": "9a868ec55a2d27cc87d0f6ad1237af3ddc8a55709abad11b3e9040c083838c11"
+    },
+    {
+      "id": "PANEL-00296",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r1/processes-05.txt",
+      "bytes": 4450,
+      "sha256": "680009c7ce9150cbcc7f22f2bec70ae92b0cb5492146107ed320f3bda6cc07e3"
+    },
+    {
+      "id": "PANEL-00297",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r1/processes-06.txt",
+      "bytes": 4450,
+      "sha256": "98044152b1c276ccb6592b9046ed693110f6c2019e2aa5b47bad5d4c3f0a8cc3"
+    },
+    {
+      "id": "PANEL-00298",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r1/processes-07.txt",
+      "bytes": 4450,
+      "sha256": "ee3bf629d0db0597a07e0fa3aa2fdd6f72a95dff53c0d440efd21a3d793f73f0"
+    },
+    {
+      "id": "PANEL-00299",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r1/processes-08.txt",
+      "bytes": 4450,
+      "sha256": "464449f71fb5d648b37c9eec67ba897742e0fcc1864b0e8dbf76aedce9bcc519"
+    },
+    {
+      "id": "PANEL-00300",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r1/processes-09.txt",
+      "bytes": 4450,
+      "sha256": "83259f135108a98c3a2ca1e4c61fc96fd498bd4cafc1cf6e290bbb4aaa87fd23"
+    },
+    {
+      "id": "PANEL-00301",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r1/processes-10.txt",
+      "bytes": 4450,
+      "sha256": "d7d86d7113381574bc7a2fb8c207380aaee28b31abb0b564be7537198a3515b0"
+    },
+    {
+      "id": "PANEL-00302",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r1/processes-11.txt",
+      "bytes": 4450,
+      "sha256": "822ba9d3f1de88b673edf74989f9d5fbfce787e47a40e55a1c785eb4cd46c08f"
+    },
+    {
+      "id": "PANEL-00303",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r1/processes-12.txt",
+      "bytes": 4450,
+      "sha256": "2757454b140a3ecd6ccab7408e7439a608757a8c8f65298dc60609e54cd0bdad"
+    },
+    {
+      "id": "PANEL-00304",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r1/processes-13.txt",
+      "bytes": 4450,
+      "sha256": "63581684e099066a3fd75f4c433a1dc6a3d1f3a6038116aa7bd04be002a474fa"
+    },
+    {
+      "id": "PANEL-00305",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r1/processes-14.txt",
+      "bytes": 4450,
+      "sha256": "b6f076b3a531f40718def91b5469676191a4309ab8d003aa7ed94d9c8e022d62"
+    },
+    {
+      "id": "PANEL-00306",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r1/processes-15.txt",
+      "bytes": 4450,
+      "sha256": "090bdc512b193ba6791ede0e70ec2d3bdb5cad02d8eea567ab57c68bfae4eac9"
+    },
+    {
+      "id": "PANEL-00307",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r1/processes-16.txt",
+      "bytes": 4450,
+      "sha256": "0deb8b59e6704e9fd7bb7188e11aa3451043e3a3b465306a5620196ff1fd635f"
+    },
+    {
+      "id": "PANEL-00308",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r1/processes-17.txt",
+      "bytes": 4450,
+      "sha256": "03a89fbfce24a12cfac12b0c2033787f087c00b6ce4fab68bff865fbfd66d145"
+    },
+    {
+      "id": "PANEL-00309",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r1/processes-18.txt",
+      "bytes": 4450,
+      "sha256": "1298015a967a1bdc5a5ab419f7595a955d62c891e33715f8ab3a0f9f42cb928a"
+    },
+    {
+      "id": "PANEL-00310",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r1/processes-19.txt",
+      "bytes": 4450,
+      "sha256": "c48a8ed1d30bd4e39ad29b21295ffd24df80b4dfe6fbd8400736325c2d8446de"
+    },
+    {
+      "id": "PANEL-00311",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r1/raw-seal.json",
+      "bytes": 14465,
+      "sha256": "464e89d0815c26a96ba7eb520f53fefce0374e383626e6d6d953204f9d7b58f3"
+    },
+    {
+      "id": "PANEL-00312",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r1/run.json",
+      "bytes": 13486,
+      "sha256": "964eb489880ee5630f49c0b5cd0adf6669810144951fa4f33dbcf6006fe197bf"
+    },
+    {
+      "id": "PANEL-00313",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r1/screen-00.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "PANEL-00314",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r1/screen-01.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "PANEL-00315",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r1/screen-02.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "PANEL-00316",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r1/screen-03.png",
+      "bytes": 19847,
+      "sha256": "2178ceb11e92e5f95694ca8a855de0750fb1a93dfe6e02a13c1856b080d16654"
+    },
+    {
+      "id": "PANEL-00317",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r1/screen-04.png",
+      "bytes": 13437,
+      "sha256": "e47c2919c72588bea5f3e5b8ebda4d9823a66e8864f6b86ed6f85d9e19598218"
+    },
+    {
+      "id": "PANEL-00318",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r1/screen-05.png",
+      "bytes": 191431,
+      "sha256": "35903a0d052b21d3a24bf93dc8a8f6b306cabbb746f12f3287dd1e5c2419a39a"
+    },
+    {
+      "id": "PANEL-00319",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r1/screen-06.png",
+      "bytes": 198305,
+      "sha256": "9b10549412e06848d54d6cf6d91ca666ab12e4158385b5e17a2c8b10d6314b83"
+    },
+    {
+      "id": "PANEL-00320",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r1/screen-07.png",
+      "bytes": 148346,
+      "sha256": "c2328895badd6b91cc6eb631317062162f82d25f36648427a2939306ac682b2e"
+    },
+    {
+      "id": "PANEL-00321",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r1/screen-08.png",
+      "bytes": 149335,
+      "sha256": "4721d767274e696e103fb5334476dc60cf313a3c85c813c735f7cef82b3fd3ec"
+    },
+    {
+      "id": "PANEL-00322",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r1/screen-09.png",
+      "bytes": 144535,
+      "sha256": "d68bd3c081128ad48fee8dd79ad0efe5b21608addc6eecbce9282175b1250b01"
+    },
+    {
+      "id": "PANEL-00323",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r1/screen-10.png",
+      "bytes": 144636,
+      "sha256": "29b9f62783150c3bf31c0e6d501f551328f012bca484780c477bce51b2dfe0a9"
+    },
+    {
+      "id": "PANEL-00324",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r1/screen-11.png",
+      "bytes": 143494,
+      "sha256": "fc52e75d42bf9e7f21dea6e9e1fc718a526437824b9e545ae4f0caac09dba61b"
+    },
+    {
+      "id": "PANEL-00325",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r1/screen-12.png",
+      "bytes": 142366,
+      "sha256": "eeec18dd4dfe9c28c49af6d8e8921a8e0c4d0d63981a7790efedee547b13af21"
+    },
+    {
+      "id": "PANEL-00326",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r1/screen-13.png",
+      "bytes": 141880,
+      "sha256": "46f6ea41b74e562ce796ac988e67434cbf946e287845f65d27568440d31aa41d"
+    },
+    {
+      "id": "PANEL-00327",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r1/screen-14.png",
+      "bytes": 141868,
+      "sha256": "3cba03166a6b9f04a74a30be0ef846bf4006b5a184f52307aef44206e758431e"
+    },
+    {
+      "id": "PANEL-00328",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r1/screen-15.png",
+      "bytes": 143012,
+      "sha256": "141cca730385668e084b4bde9abf7b9fd45de359cfe68157644a111934ab11e4"
+    },
+    {
+      "id": "PANEL-00329",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r1/screen-16.png",
+      "bytes": 143807,
+      "sha256": "6080a13b58dd4df676e7d3ee17039ff4c4c03801d32f7a16fdea499da9ed31c8"
+    },
+    {
+      "id": "PANEL-00330",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r1/screen-17.png",
+      "bytes": 144191,
+      "sha256": "04efd016318a5516a79874aaeab96ec7a6674b9b91a175310a35306c9b74e04c"
+    },
+    {
+      "id": "PANEL-00331",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r1/screen-18.png",
+      "bytes": 143699,
+      "sha256": "595ce09aba913220e323c24eef556d8f334d82dc5bffa19da959b5f964494857"
+    },
+    {
+      "id": "PANEL-00332",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r1/screen-19.png",
+      "bytes": 143238,
+      "sha256": "fbae28eabdcd4064e969c456a5f44ec73e912d1a76975fa2825897709a2d1ce2"
+    },
+    {
+      "id": "PANEL-00333",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r1/service-state.json",
+      "bytes": 28617,
+      "sha256": "0b2f3fda9625914a0037d2305d562288abb8709f60dcdd096af046c835772c4a"
+    },
+    {
+      "id": "PANEL-00334",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r1/service.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "PANEL-00335",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r1/windows-00.txt",
+      "bytes": 166,
+      "sha256": "28ae29836d791dcd3302b447a52a8f0fa3f9a192abbc33a27751e23d7ebe0d43"
+    },
+    {
+      "id": "PANEL-00336",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r1/windows-01.txt",
+      "bytes": 872,
+      "sha256": "c8c8cfe9c5b9bb2ccde16b4b959b165ed33d50824f3fbd29834c16b6f0e63586"
+    },
+    {
+      "id": "PANEL-00337",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r1/windows-02.txt",
+      "bytes": 872,
+      "sha256": "c8c8cfe9c5b9bb2ccde16b4b959b165ed33d50824f3fbd29834c16b6f0e63586"
+    },
+    {
+      "id": "PANEL-00338",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r1/windows-03.txt",
+      "bytes": 1311,
+      "sha256": "79f14ed4dc9ec340cb32d82ec0c77a2262196d736b814194ac0ee379704f762b"
+    },
+    {
+      "id": "PANEL-00339",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r1/windows-04.txt",
+      "bytes": 1311,
+      "sha256": "79f14ed4dc9ec340cb32d82ec0c77a2262196d736b814194ac0ee379704f762b"
+    },
+    {
+      "id": "PANEL-00340",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r1/windows-05.txt",
+      "bytes": 1311,
+      "sha256": "79f14ed4dc9ec340cb32d82ec0c77a2262196d736b814194ac0ee379704f762b"
+    },
+    {
+      "id": "PANEL-00341",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r1/windows-06.txt",
+      "bytes": 1311,
+      "sha256": "79f14ed4dc9ec340cb32d82ec0c77a2262196d736b814194ac0ee379704f762b"
+    },
+    {
+      "id": "PANEL-00342",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r1/windows-07.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "PANEL-00343",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r1/windows-08.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "PANEL-00344",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r1/windows-09.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "PANEL-00345",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r1/windows-10.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "PANEL-00346",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r1/windows-11.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "PANEL-00347",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r1/windows-12.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "PANEL-00348",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r1/windows-13.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "PANEL-00349",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r1/windows-14.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "PANEL-00350",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r1/windows-15.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "PANEL-00351",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r1/windows-16.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "PANEL-00352",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r1/windows-17.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "PANEL-00353",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r1/windows-18.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "PANEL-00354",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r1/windows-19.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "PANEL-00355",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r1/wineboot.log",
+      "bytes": 64844,
+      "sha256": "745cee3e5f2a096caf9f7a0a7c18c402e66e28086ec6705f09e470746cc942f6"
+    },
+    {
+      "id": "PANEL-00356",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r1/xvfb.log",
+      "bytes": 2808,
+      "sha256": "46b8747df8a2fc8b6a469b2374ea3d0c6c786dc3dcf2a9be13d94ce76ed3a1a7"
+    },
+    {
+      "id": "PANEL-00357",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r2/CALog-before.txt",
+      "bytes": 1573,
+      "sha256": "a390a8da05ec18d57f248e7aec02102ea3f45a552538654c5f63fbbdaf29833f"
+    },
+    {
+      "id": "PANEL-00358",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r2/CALog-run.txt",
+      "bytes": 1573,
+      "sha256": "a390a8da05ec18d57f248e7aec02102ea3f45a552538654c5f63fbbdaf29833f"
+    },
+    {
+      "id": "PANEL-00359",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r2/client.log",
+      "bytes": 112223,
+      "sha256": "f1c1a885304c6e772e721bec3c3f93f5acc573f7d51fa34a79212513c8c7876d"
+    },
+    {
+      "id": "PANEL-00360",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r2/debug-commands.txt",
+      "bytes": 340,
+      "sha256": "7e1e4518a715939c4a768f1e410b27b12076f0ea492aa08f2893c54ac52f0dcd"
+    },
+    {
+      "id": "PANEL-00361",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r2/hosts",
+      "bytes": 121,
+      "sha256": "32a007c62d2887ae9f8d3c30d1ff7cb3902e6e1e0c75c5a978ee556cc8ea71f8"
+    },
+    {
+      "id": "PANEL-00362",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r2/nsswitch.conf",
+      "bytes": 307,
+      "sha256": "c18e474cd61df8648ee02ac7a9c76b8d6c7782d8b212f925e6980f20af5cc838"
+    },
+    {
+      "id": "PANEL-00363",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r2/processes-00.txt",
+      "bytes": 3731,
+      "sha256": "857b01ee5177fa40f84f9856995d7a57bae5bf03f8f677968e926776b531f2c3"
+    },
+    {
+      "id": "PANEL-00364",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r2/processes-01.txt",
+      "bytes": 4458,
+      "sha256": "6b70eb7cf490d68d66fc5ce68b73d2157e1d3237348f46f70b9704dd28f4bd43"
+    },
+    {
+      "id": "PANEL-00365",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r2/processes-02.txt",
+      "bytes": 4458,
+      "sha256": "f8e659fb4299f8a7efd6ae8df2d9847e15784c3c25c7934fa493a59c8a39b9f7"
+    },
+    {
+      "id": "PANEL-00366",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r2/processes-03.txt",
+      "bytes": 4458,
+      "sha256": "714195e897cf2a029212ca760b9246d6a5c505bfd9887dfb12eec2dc6ef0c1d6"
+    },
+    {
+      "id": "PANEL-00367",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r2/processes-04.txt",
+      "bytes": 4458,
+      "sha256": "03063020f5c0359e97178bc04b11a8d2b42304ead690b6338dbd9d15270615b9"
+    },
+    {
+      "id": "PANEL-00368",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r2/processes-05.txt",
+      "bytes": 4458,
+      "sha256": "1a4c4539a355db4d0c7563e80f5925ead6b8df75426285f67aa7e28487f1a0a4"
+    },
+    {
+      "id": "PANEL-00369",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r2/processes-06.txt",
+      "bytes": 4458,
+      "sha256": "1e7ff89d0cc68bd1a43940970a005a46c01e68b89e293b9319b7691047d7ac8e"
+    },
+    {
+      "id": "PANEL-00370",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r2/processes-07.txt",
+      "bytes": 4458,
+      "sha256": "306ddc368b652c7e1299f6cbbb4e0aff5fc3f1dff5f110872da165f9542f91ab"
+    },
+    {
+      "id": "PANEL-00371",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r2/processes-08.txt",
+      "bytes": 4458,
+      "sha256": "f321db8c93d4e856db5e94dde85ca888130a04bbeedcba0749caa49e4cc16679"
+    },
+    {
+      "id": "PANEL-00372",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r2/processes-09.txt",
+      "bytes": 4458,
+      "sha256": "04b46b3cfca51aef0e89168f9e842a34792d6c73dcdd103e436b29e5ed46a831"
+    },
+    {
+      "id": "PANEL-00373",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r2/processes-10.txt",
+      "bytes": 4458,
+      "sha256": "12b32446a71d9618666c633877211c3e5c9fd79e2f9daf64c2d8bb34893ef696"
+    },
+    {
+      "id": "PANEL-00374",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r2/processes-11.txt",
+      "bytes": 4458,
+      "sha256": "5e2ced1f7c4dbb8dc9fcb3eeb648310273b27da350cb765bb799eb2d7eeb9881"
+    },
+    {
+      "id": "PANEL-00375",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r2/processes-12.txt",
+      "bytes": 4458,
+      "sha256": "e310f9378717c679c8384ef741d5eed5bd36bcf8eed1f10e27a58501c96a684a"
+    },
+    {
+      "id": "PANEL-00376",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r2/processes-13.txt",
+      "bytes": 4458,
+      "sha256": "ad98bf4a6a44bae7daf5c1547fe7fa0909be66e81ee388d2d97ac2b18c7e63d4"
+    },
+    {
+      "id": "PANEL-00377",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r2/processes-14.txt",
+      "bytes": 4458,
+      "sha256": "e4b23bb4f7ef9932e2cbd5c8cbf17a5707a654f3386b8a8a8c392db1032b9b8f"
+    },
+    {
+      "id": "PANEL-00378",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r2/processes-15.txt",
+      "bytes": 4458,
+      "sha256": "2596950e157f362f7236259c87efa98467c20f71df36e70d1b56ff07b9de2aee"
+    },
+    {
+      "id": "PANEL-00379",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r2/processes-16.txt",
+      "bytes": 4458,
+      "sha256": "ff1c5ca91ff312f41e2b52a2538db8f5ed13aacfcc0d25775eeb94ee6502c7a0"
+    },
+    {
+      "id": "PANEL-00380",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r2/processes-17.txt",
+      "bytes": 4458,
+      "sha256": "ae7d349a4edcdd14976bd412e0e95395942bb23bf9ff1744c55fb95dbfe9d632"
+    },
+    {
+      "id": "PANEL-00381",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r2/processes-18.txt",
+      "bytes": 4458,
+      "sha256": "12d8e8c1a9ce1fe82d97484f7afd483fb8231211638dd8a31c7e7f5a565fa335"
+    },
+    {
+      "id": "PANEL-00382",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r2/processes-19.txt",
+      "bytes": 4458,
+      "sha256": "90aba5de77b9998138550de16e4e5a3fa947499c590e9929ef3877ad29f0f025"
+    },
+    {
+      "id": "PANEL-00383",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r2/processes-20.txt",
+      "bytes": 4458,
+      "sha256": "f3c2cfcbc8db891c52b1d6f771d719a97ccbcd6fb7ec344545de3e2c4a648025"
+    },
+    {
+      "id": "PANEL-00384",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r2/raw-seal.json",
+      "bytes": 15462,
+      "sha256": "05850edb2547337d158100b5b0ad4ea0843b99c1109e7882d6c7118d9287fb7b"
+    },
+    {
+      "id": "PANEL-00385",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r2/run.json",
+      "bytes": 13561,
+      "sha256": "f128d07cdf4c1346c7d4fd91482cef09303bc81ffcdb0bd9aec7d8a3c0382f2a"
+    },
+    {
+      "id": "PANEL-00386",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r2/screen-00.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "PANEL-00387",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r2/screen-01.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "PANEL-00388",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r2/screen-02.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "PANEL-00389",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r2/screen-03.png",
+      "bytes": 19847,
+      "sha256": "2178ceb11e92e5f95694ca8a855de0750fb1a93dfe6e02a13c1856b080d16654"
+    },
+    {
+      "id": "PANEL-00390",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r2/screen-04.png",
+      "bytes": 13437,
+      "sha256": "e47c2919c72588bea5f3e5b8ebda4d9823a66e8864f6b86ed6f85d9e19598218"
+    },
+    {
+      "id": "PANEL-00391",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r2/screen-05.png",
+      "bytes": 193700,
+      "sha256": "cd0294a374a38dece2ac45c18d6b40744f7f18e92689339bd97427e8c254eb41"
+    },
+    {
+      "id": "PANEL-00392",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r2/screen-06.png",
+      "bytes": 192905,
+      "sha256": "39f4a5c4aa0859783e4be8545cce76c668978a92cf6b311ae125162e4aaf9e5b"
+    },
+    {
+      "id": "PANEL-00393",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r2/screen-07.png",
+      "bytes": 148347,
+      "sha256": "49a092bb4f042986723e5bcd509c7d8c7e611a44a2967a876bd553f9b95ea23d"
+    },
+    {
+      "id": "PANEL-00394",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r2/screen-08.png",
+      "bytes": 149319,
+      "sha256": "fd7834e1ee9620a7c0d25a8b326f67f84a3e6d9de23b1f039fe81bf8953a9f27"
+    },
+    {
+      "id": "PANEL-00395",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r2/screen-09.png",
+      "bytes": 144418,
+      "sha256": "7c776c06abe0f656c6eb6bf25174a89d893d6b17aba682879be9e8c1af4bd931"
+    },
+    {
+      "id": "PANEL-00396",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r2/screen-10.png",
+      "bytes": 145154,
+      "sha256": "32f20b73168550cfc7a740ab79120926b3f02cea222391f3e9547b15a265b271"
+    },
+    {
+      "id": "PANEL-00397",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r2/screen-11.png",
+      "bytes": 144549,
+      "sha256": "b85f5dc27af24dcf69d334216dd0c9605cdd7263402fa02eaa0567f85c0298d5"
+    },
+    {
+      "id": "PANEL-00398",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r2/screen-12.png",
+      "bytes": 143595,
+      "sha256": "42d131cc99263a35554eb0767efd42d9b77aabac83f9cd39de6c3575bb26b6c8"
+    },
+    {
+      "id": "PANEL-00399",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r2/screen-13.png",
+      "bytes": 142792,
+      "sha256": "629ea41e093efc19c3bab2ac3fa3f725038bffc7312c5cc8d8acf130a9338495"
+    },
+    {
+      "id": "PANEL-00400",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r2/screen-14.png",
+      "bytes": 141868,
+      "sha256": "3cba03166a6b9f04a74a30be0ef846bf4006b5a184f52307aef44206e758431e"
+    },
+    {
+      "id": "PANEL-00401",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r2/screen-15.png",
+      "bytes": 142471,
+      "sha256": "1bae40285adb2a27ffd4c276d9f3b865e1dad9d7b44cde01ff6d90de30f22e84"
+    },
+    {
+      "id": "PANEL-00402",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r2/screen-16.png",
+      "bytes": 143409,
+      "sha256": "46ffa5864c5e5b72abc097af1cdf82dfe7c6eea96e6e7f6073500f6e1ab76430"
+    },
+    {
+      "id": "PANEL-00403",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r2/screen-17.png",
+      "bytes": 144484,
+      "sha256": "75fc47c4699562f20554d446a6dc5c44ad2a38b3bc3f30d16f60a2de8aae53b1"
+    },
+    {
+      "id": "PANEL-00404",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r2/screen-18.png",
+      "bytes": 145054,
+      "sha256": "2985e418b3b606e8e929a227a00cab0b4f736d5b0829641034bf1c704d34d01a"
+    },
+    {
+      "id": "PANEL-00405",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r2/screen-19.png",
+      "bytes": 144208,
+      "sha256": "456fc6fe0b5716a36de27a6d38db9d3186e10c04c2a57ca490495d4e6113227c"
+    },
+    {
+      "id": "PANEL-00406",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r2/screen-20.png",
+      "bytes": 143979,
+      "sha256": "0ff140fe265e8b56e73afeb10af0ca6da06800929a69bca6bd2d3126f1d00b0e"
+    },
+    {
+      "id": "PANEL-00407",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r2/service-state.json",
+      "bytes": 28617,
+      "sha256": "54d1729b7b8451eccf4c5c4eba579130ef308f2e82e3293928f96de297b0674d"
+    },
+    {
+      "id": "PANEL-00408",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r2/service.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "PANEL-00409",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r2/stage-inherited.bin",
+      "bytes": 25064,
+      "sha256": "2cd703f7c3fc2b2f25de75e3b8d4e313bee3f83f2e5023d2e3a730b374c215a8"
+    },
+    {
+      "id": "PANEL-00410",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r2/ui-objects.json",
+      "bytes": 34264,
+      "sha256": "9ce5b99ca7d459dd601ad92fc068dd72cfea7bf2ac5b033252d7a40272abd57a"
+    },
+    {
+      "id": "PANEL-00411",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r2/windows-00.txt",
+      "bytes": 166,
+      "sha256": "28ae29836d791dcd3302b447a52a8f0fa3f9a192abbc33a27751e23d7ebe0d43"
+    },
+    {
+      "id": "PANEL-00412",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r2/windows-01.txt",
+      "bytes": 872,
+      "sha256": "1096593c4e9a63ac4da8fff1a6642209e33de4dc70f021885f4baea5cce0dbc4"
+    },
+    {
+      "id": "PANEL-00413",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r2/windows-02.txt",
+      "bytes": 872,
+      "sha256": "1096593c4e9a63ac4da8fff1a6642209e33de4dc70f021885f4baea5cce0dbc4"
+    },
+    {
+      "id": "PANEL-00414",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r2/windows-03.txt",
+      "bytes": 1311,
+      "sha256": "ae1e42672317584498a7acb9315285f1ade61278c558f6e2b77371ef61cea181"
+    },
+    {
+      "id": "PANEL-00415",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r2/windows-04.txt",
+      "bytes": 1311,
+      "sha256": "ae1e42672317584498a7acb9315285f1ade61278c558f6e2b77371ef61cea181"
+    },
+    {
+      "id": "PANEL-00416",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r2/windows-05.txt",
+      "bytes": 1311,
+      "sha256": "ae1e42672317584498a7acb9315285f1ade61278c558f6e2b77371ef61cea181"
+    },
+    {
+      "id": "PANEL-00417",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r2/windows-06.txt",
+      "bytes": 1311,
+      "sha256": "ae1e42672317584498a7acb9315285f1ade61278c558f6e2b77371ef61cea181"
+    },
+    {
+      "id": "PANEL-00418",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r2/windows-07.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "PANEL-00419",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r2/windows-08.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "PANEL-00420",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r2/windows-09.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "PANEL-00421",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r2/windows-10.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "PANEL-00422",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r2/windows-11.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "PANEL-00423",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r2/windows-12.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "PANEL-00424",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r2/windows-13.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "PANEL-00425",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r2/windows-14.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "PANEL-00426",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r2/windows-15.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "PANEL-00427",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r2/windows-16.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "PANEL-00428",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r2/windows-17.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "PANEL-00429",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r2/windows-18.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "PANEL-00430",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r2/windows-19.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "PANEL-00431",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r2/windows-20.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "PANEL-00432",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r2/wineboot.log",
+      "bytes": 64844,
+      "sha256": "1c2e9b88a1032c8d1d2b1ae659d1e30d33360d29bbf3c7563bdb4fcdfd786b42"
+    },
+    {
+      "id": "PANEL-00433",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r2/xvfb.log",
+      "bytes": 2808,
+      "sha256": "46b8747df8a2fc8b6a469b2374ea3d0c6c786dc3dcf2a9be13d94ce76ed3a1a7"
+    },
+    {
+      "id": "PANEL-00434",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r3/CALog-before.txt",
+      "bytes": 1573,
+      "sha256": "a390a8da05ec18d57f248e7aec02102ea3f45a552538654c5f63fbbdaf29833f"
+    },
+    {
+      "id": "PANEL-00435",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r3/CALog-run.txt",
+      "bytes": 688,
+      "sha256": "d8190b79ddfe74517ee50ef4fbbb6e191fc1ceac0fd1d49719d1ada8f3d861dd"
+    },
+    {
+      "id": "PANEL-00436",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r3/client.log",
+      "bytes": 304581,
+      "sha256": "d76a6ece1a9e21ac1d079464968a7a50be36dd993bbec4b864996dc3fda46531"
+    },
+    {
+      "id": "PANEL-00437",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r3/debug-commands.txt",
+      "bytes": 342,
+      "sha256": "365ced3b38345379a401fc65f22ad174467393ff00b16ace0eac333ddafc4467"
+    },
+    {
+      "id": "PANEL-00438",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r3/hosts",
+      "bytes": 121,
+      "sha256": "32a007c62d2887ae9f8d3c30d1ff7cb3902e6e1e0c75c5a978ee556cc8ea71f8"
+    },
+    {
+      "id": "PANEL-00439",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r3/nsswitch.conf",
+      "bytes": 307,
+      "sha256": "c18e474cd61df8648ee02ac7a9c76b8d6c7782d8b212f925e6980f20af5cc838"
+    },
+    {
+      "id": "PANEL-00440",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r3/processes-00.txt",
+      "bytes": 3690,
+      "sha256": "096dfcd8ad5e3e5bf972c2854e51fcb21d75fc3067c8ac972cb1e150a2fcd71c"
+    },
+    {
+      "id": "PANEL-00441",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r3/processes-01.txt",
+      "bytes": 4455,
+      "sha256": "9bfc2606f9a3b5982000065fd68c3b9a7b5255d8b58b19d6a65f690fdf6b535a"
+    },
+    {
+      "id": "PANEL-00442",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r3/processes-02.txt",
+      "bytes": 4455,
+      "sha256": "f8480250be7cd8ca250c500e58a3ef7db749fd3aeb2404d86314e2dc1f25f161"
+    },
+    {
+      "id": "PANEL-00443",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r3/processes-03.txt",
+      "bytes": 4455,
+      "sha256": "965c1ef1c8fbabbac2537900331354d7e583ead92ac2fdb15f49fcf9c2e61e2e"
+    },
+    {
+      "id": "PANEL-00444",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r3/processes-04.txt",
+      "bytes": 4455,
+      "sha256": "258e58ca6e99d33202515e58eacf0c580e1df1a47a7dd499b653d135ce4d414c"
+    },
+    {
+      "id": "PANEL-00445",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r3/processes-05.txt",
+      "bytes": 4455,
+      "sha256": "fbe98b2ba8d7a0fe17bcd7af1bb3c91e9cc05b99af9bacd4525082653dbbd353"
+    },
+    {
+      "id": "PANEL-00446",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r3/processes-06.txt",
+      "bytes": 4455,
+      "sha256": "7088f8ccd12637773b17f4ec6e627b343cf1ba0dda05bb630c5956967df0083f"
+    },
+    {
+      "id": "PANEL-00447",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r3/processes-07.txt",
+      "bytes": 4510,
+      "sha256": "78f6f9c65e3273d2ee5b8235daf3550084cf5c30687933051755cdf1c8e38593"
+    },
+    {
+      "id": "PANEL-00448",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r3/processes-08.txt",
+      "bytes": 4510,
+      "sha256": "e1a5942e8110b6414d6f17a170de4d967eea18f9a616bea0c2b73c0bb0917f1e"
+    },
+    {
+      "id": "PANEL-00449",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r3/processes-09.txt",
+      "bytes": 4267,
+      "sha256": "5d22660358f23a7f7d259fbb30f830876283601f5de83cc7a83094c2c2056417"
+    },
+    {
+      "id": "PANEL-00450",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r3/raw-seal.json",
+      "bytes": 8538,
+      "sha256": "b99fdcc86879514e76097cd9b98b4773a848cd6664ba31c3c9f9ea9838daf7e9"
+    },
+    {
+      "id": "PANEL-00451",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r3/run.json",
+      "bytes": 8695,
+      "sha256": "3677dd91c9a1d61b3d5c3b8c13ccb173d6ff5947d1dd354e9eb03d88e8a91a3d"
+    },
+    {
+      "id": "PANEL-00452",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r3/screen-00.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "PANEL-00453",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r3/screen-01.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "PANEL-00454",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r3/screen-02.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "PANEL-00455",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r3/screen-03.png",
+      "bytes": 19389,
+      "sha256": "aa1ee2266578690942fb3e19343592c55140ea39794cae7b2de7192580afc538"
+    },
+    {
+      "id": "PANEL-00456",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r3/screen-04.png",
+      "bytes": 13437,
+      "sha256": "e47c2919c72588bea5f3e5b8ebda4d9823a66e8864f6b86ed6f85d9e19598218"
+    },
+    {
+      "id": "PANEL-00457",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r3/screen-05.png",
+      "bytes": 191431,
+      "sha256": "35903a0d052b21d3a24bf93dc8a8f6b306cabbb746f12f3287dd1e5c2419a39a"
+    },
+    {
+      "id": "PANEL-00458",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r3/screen-06.png",
+      "bytes": 194277,
+      "sha256": "eb04d50aa432204c8df8bb45346024b10fc0a1172c0ea711ff569b6e45a4dd7b"
+    },
+    {
+      "id": "PANEL-00459",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r3/screen-07.png",
+      "bytes": 476577,
+      "sha256": "595f6ccc62a31e14f1787912834c529bb299c12eba27299a30a574e4bff10c63"
+    },
+    {
+      "id": "PANEL-00460",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r3/screen-08.png",
+      "bytes": 5671,
+      "sha256": "a02bb97a945223b187ce3c992a4f2634dbcc02783afd22726bfc9fcfc43ae835"
+    },
+    {
+      "id": "PANEL-00461",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r3/screen-09.png",
+      "bytes": 3968,
+      "sha256": "9650c1578e95beb082e494b362462fa110a9865d14a58c2f961579486c665760"
+    },
+    {
+      "id": "PANEL-00462",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r3/service-state.json",
+      "bytes": 24571,
+      "sha256": "e7a3f0e886ba7b590d18e0c5ddca9c42e39349fa3da7a2c1787cdfd96a85253e"
+    },
+    {
+      "id": "PANEL-00463",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r3/service.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "PANEL-00464",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r3/windows-00.txt",
+      "bytes": 166,
+      "sha256": "28ae29836d791dcd3302b447a52a8f0fa3f9a192abbc33a27751e23d7ebe0d43"
+    },
+    {
+      "id": "PANEL-00465",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r3/windows-01.txt",
+      "bytes": 872,
+      "sha256": "c8c8cfe9c5b9bb2ccde16b4b959b165ed33d50824f3fbd29834c16b6f0e63586"
+    },
+    {
+      "id": "PANEL-00466",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r3/windows-02.txt",
+      "bytes": 872,
+      "sha256": "c8c8cfe9c5b9bb2ccde16b4b959b165ed33d50824f3fbd29834c16b6f0e63586"
+    },
+    {
+      "id": "PANEL-00467",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r3/windows-03.txt",
+      "bytes": 1311,
+      "sha256": "79f14ed4dc9ec340cb32d82ec0c77a2262196d736b814194ac0ee379704f762b"
+    },
+    {
+      "id": "PANEL-00468",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r3/windows-04.txt",
+      "bytes": 1311,
+      "sha256": "79f14ed4dc9ec340cb32d82ec0c77a2262196d736b814194ac0ee379704f762b"
+    },
+    {
+      "id": "PANEL-00469",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r3/windows-05.txt",
+      "bytes": 1311,
+      "sha256": "79f14ed4dc9ec340cb32d82ec0c77a2262196d736b814194ac0ee379704f762b"
+    },
+    {
+      "id": "PANEL-00470",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r3/windows-06.txt",
+      "bytes": 1311,
+      "sha256": "79f14ed4dc9ec340cb32d82ec0c77a2262196d736b814194ac0ee379704f762b"
+    },
+    {
+      "id": "PANEL-00471",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r3/windows-07.txt",
+      "bytes": 1600,
+      "sha256": "84ddc05bf9e1beddac6fe64dfcd9c8279fffe3ba18a1d1ecacc1990ed8e65358"
+    },
+    {
+      "id": "PANEL-00472",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r3/windows-08.txt",
+      "bytes": 1600,
+      "sha256": "84ddc05bf9e1beddac6fe64dfcd9c8279fffe3ba18a1d1ecacc1990ed8e65358"
+    },
+    {
+      "id": "PANEL-00473",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r3/windows-09.txt",
+      "bytes": 2589,
+      "sha256": "77c28f62085ceed2c68bc08bd33cc8e1f2a308a7fd20290b171cef3e3f743610"
+    },
+    {
+      "id": "PANEL-00474",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r3/wineboot.log",
+      "bytes": 64844,
+      "sha256": "28355275e1fcd5acb9e170863a1405eaefb52bc97bc129b8c1c55af10c21f58a"
+    },
+    {
+      "id": "PANEL-00475",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r3/xvfb.log",
+      "bytes": 2808,
+      "sha256": "46b8747df8a2fc8b6a469b2374ea3d0c6c786dc3dcf2a9be13d94ce76ed3a1a7"
+    },
+    {
+      "id": "PANEL-00476",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r4/CALog-before.txt",
+      "bytes": 688,
+      "sha256": "d8190b79ddfe74517ee50ef4fbbb6e191fc1ceac0fd1d49719d1ada8f3d861dd"
+    },
+    {
+      "id": "PANEL-00477",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r4/CALog-run.txt",
+      "bytes": 1573,
+      "sha256": "a390a8da05ec18d57f248e7aec02102ea3f45a552538654c5f63fbbdaf29833f"
+    },
+    {
+      "id": "PANEL-00478",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r4/client.log",
+      "bytes": 112965,
+      "sha256": "b40a688e4e4bd3c175827c8e59f2e6f893ed8510252a71388f7b19b72c1b237d"
+    },
+    {
+      "id": "PANEL-00479",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r4/debug-commands.txt",
+      "bytes": 345,
+      "sha256": "56d8762a2c2402c02dfa0dabaa7dbe6240e70283bbf55b27a69c7c6b71547dcb"
+    },
+    {
+      "id": "PANEL-00480",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r4/hosts",
+      "bytes": 121,
+      "sha256": "32a007c62d2887ae9f8d3c30d1ff7cb3902e6e1e0c75c5a978ee556cc8ea71f8"
+    },
+    {
+      "id": "PANEL-00481",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r4/nsswitch.conf",
+      "bytes": 307,
+      "sha256": "c18e474cd61df8648ee02ac7a9c76b8d6c7782d8b212f925e6980f20af5cc838"
+    },
+    {
+      "id": "PANEL-00482",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r4/ownrecord-postready-1.bin",
+      "bytes": 544,
+      "sha256": "5a7c3e488f4e6b0c8ca08b1f57fffec895ef9dd658c246af282446a01a578c40"
+    },
+    {
+      "id": "PANEL-00483",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r4/ownrecord-postready-2.bin",
+      "bytes": 544,
+      "sha256": "5a7c3e488f4e6b0c8ca08b1f57fffec895ef9dd658c246af282446a01a578c40"
+    },
+    {
+      "id": "PANEL-00484",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r4/processes-00.txt",
+      "bytes": 3730,
+      "sha256": "1010797cb8f9bac3ab347fa6645698c5139e26d0fdebab4c53953d43b49be1f8"
+    },
+    {
+      "id": "PANEL-00485",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r4/processes-01.txt",
+      "bytes": 4458,
+      "sha256": "a4b14b3aba79259ec764707221b06b63b3fcf3a720e8f1796cf972d2fa2cbbe3"
+    },
+    {
+      "id": "PANEL-00486",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r4/processes-02.txt",
+      "bytes": 4458,
+      "sha256": "49ebb117306a686d22b3c1ff0b9440fa1f0317fdfc14c2d04c498887f2545ab0"
+    },
+    {
+      "id": "PANEL-00487",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r4/processes-03.txt",
+      "bytes": 4458,
+      "sha256": "3bbb4cff5d9e8e825a26c44e216391e5cf5dba280764d01c3ac3bb4958aaf0e8"
+    },
+    {
+      "id": "PANEL-00488",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r4/processes-04.txt",
+      "bytes": 4458,
+      "sha256": "4a7ce74cd2a810bea56e919bc8126a5553f49310529ba78fac589111a3dc8e9b"
+    },
+    {
+      "id": "PANEL-00489",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r4/processes-05.txt",
+      "bytes": 4458,
+      "sha256": "d7a60b38afb3ec3b2baacf6909c9b270e6a6ea00a19f44bb5881d97e3504b47d"
+    },
+    {
+      "id": "PANEL-00490",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r4/processes-06.txt",
+      "bytes": 4458,
+      "sha256": "32c152c32beebe5966ede05f1209d99a455525ef2d6d6f2e27567aaf392db0a3"
+    },
+    {
+      "id": "PANEL-00491",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r4/processes-07.txt",
+      "bytes": 4458,
+      "sha256": "371ca2b64ea6c186d316dbc2529104bdfdee74cc1af85b3a17f25f51ac4784e7"
+    },
+    {
+      "id": "PANEL-00492",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r4/processes-08.txt",
+      "bytes": 4458,
+      "sha256": "d3ed522e8fba5d50bee79e3c958b5bb43aa1e00986d2d0faf6586216df10fd1f"
+    },
+    {
+      "id": "PANEL-00493",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r4/processes-09.txt",
+      "bytes": 4458,
+      "sha256": "7ef29a15ae435fdfe89004b66edd2ab58adb84460e51f7ab8667409c6aeb23ea"
+    },
+    {
+      "id": "PANEL-00494",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r4/processes-10.txt",
+      "bytes": 4458,
+      "sha256": "d8f9aeef31837f885860b1a01e152c809f9d65f2669a54122d66cedbde0679ea"
+    },
+    {
+      "id": "PANEL-00495",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r4/processes-11.txt",
+      "bytes": 4458,
+      "sha256": "54e21a1e39d085311f5f8232ce960cd7fc68af6995784c5a29e659f1388ee303"
+    },
+    {
+      "id": "PANEL-00496",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r4/processes-12.txt",
+      "bytes": 4458,
+      "sha256": "12e9094e7703cba387fbf1581072383e8dafb453ce5df97800c8bec765a33575"
+    },
+    {
+      "id": "PANEL-00497",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r4/processes-13.txt",
+      "bytes": 4458,
+      "sha256": "6566216a6f66f5562a77de81ab6b190685322c8910a92cad10ec2d940d20abc1"
+    },
+    {
+      "id": "PANEL-00498",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r4/processes-14.txt",
+      "bytes": 4458,
+      "sha256": "080e811ba12ac267741fd5c5f8c41aa9ca1075fe04a27e6f5d48ed77f6894b90"
+    },
+    {
+      "id": "PANEL-00499",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r4/processes-15.txt",
+      "bytes": 4458,
+      "sha256": "2c74e54e8818ba53cd0add65f072eb41012fc640f115fbf18089fd9c19194f68"
+    },
+    {
+      "id": "PANEL-00500",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r4/processes-16.txt",
+      "bytes": 4458,
+      "sha256": "fb7fb8e72d7782e699fbf674d6b43ff5ede76c611a5467ac8b497251d09a4776"
+    },
+    {
+      "id": "PANEL-00501",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r4/processes-17.txt",
+      "bytes": 4458,
+      "sha256": "edfb656ccc6900894e4fdae526b35a83c8708f7b89058ad4e3753f1ff2c5d19c"
+    },
+    {
+      "id": "PANEL-00502",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r4/processes-18.txt",
+      "bytes": 4458,
+      "sha256": "0c364bea4fbd00d1f245f9a610d4527a86a20058f10b4070b17f23be23f6fd00"
+    },
+    {
+      "id": "PANEL-00503",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r4/processes-19.txt",
+      "bytes": 4458,
+      "sha256": "2b910eb2d16f7ba198c49a5386325cd175b771827a59b065a488bf3791b60923"
+    },
+    {
+      "id": "PANEL-00504",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r4/processes-20.txt",
+      "bytes": 4458,
+      "sha256": "4ddb60592cd87afc845edfe7b83c5cfd627f2f5ef04eeccd9cf1f9b265473573"
+    },
+    {
+      "id": "PANEL-00505",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r4/raw-seal.json",
+      "bytes": 15673,
+      "sha256": "a1d8415c60eedfcaecc669d3c1dcc9c5375a695fbaa92cd5f286c5b4b5da74fa"
+    },
+    {
+      "id": "PANEL-00506",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r4/run.json",
+      "bytes": 13560,
+      "sha256": "07eb3f8f933364f998b6eb864a309ea4e04433ea718851ffb6413c794c1c5b08"
+    },
+    {
+      "id": "PANEL-00507",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r4/screen-00.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "PANEL-00508",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r4/screen-01.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "PANEL-00509",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r4/screen-02.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "PANEL-00510",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r4/screen-03.png",
+      "bytes": 19847,
+      "sha256": "2178ceb11e92e5f95694ca8a855de0750fb1a93dfe6e02a13c1856b080d16654"
+    },
+    {
+      "id": "PANEL-00511",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r4/screen-04.png",
+      "bytes": 13437,
+      "sha256": "e47c2919c72588bea5f3e5b8ebda4d9823a66e8864f6b86ed6f85d9e19598218"
+    },
+    {
+      "id": "PANEL-00512",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r4/screen-05.png",
+      "bytes": 191431,
+      "sha256": "35903a0d052b21d3a24bf93dc8a8f6b306cabbb746f12f3287dd1e5c2419a39a"
+    },
+    {
+      "id": "PANEL-00513",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r4/screen-06.png",
+      "bytes": 198305,
+      "sha256": "9b10549412e06848d54d6cf6d91ca666ab12e4158385b5e17a2c8b10d6314b83"
+    },
+    {
+      "id": "PANEL-00514",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r4/screen-07.png",
+      "bytes": 148457,
+      "sha256": "03c0437782cf12610b2a81cf6c8afa12908253f9eb5d5163d7e6dcd00c1a1ed7"
+    },
+    {
+      "id": "PANEL-00515",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r4/screen-08.png",
+      "bytes": 149261,
+      "sha256": "3d8a5ce960275397ab4c962484b1f1d1900de09da43132b7b55efdf28ffd3323"
+    },
+    {
+      "id": "PANEL-00516",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r4/screen-09.png",
+      "bytes": 144561,
+      "sha256": "05b79d4915ef7431e8663c120d671283402b73f2634b486175a48d0983936e2b"
+    },
+    {
+      "id": "PANEL-00517",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r4/screen-10.png",
+      "bytes": 144700,
+      "sha256": "0784a9c400c08fa01ecb2138771258f7a5a44288e2a9da03dbba9bcbe28c3deb"
+    },
+    {
+      "id": "PANEL-00518",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r4/screen-11.png",
+      "bytes": 144027,
+      "sha256": "4b3ec323194d91fff54b9c5f1a6043600c8d4cb0d7b1c61690e481e3fdda76df"
+    },
+    {
+      "id": "PANEL-00519",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r4/screen-12.png",
+      "bytes": 142905,
+      "sha256": "089813b6ebc77c93992017964d65b2d5973264c1d881405982f5b85d79d2c51d"
+    },
+    {
+      "id": "PANEL-00520",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r4/screen-13.png",
+      "bytes": 141894,
+      "sha256": "1b7e22065774370ee96664b717ffa4f53eb1d22b281dc5bdf8b69b8d8b8fd22a"
+    },
+    {
+      "id": "PANEL-00521",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r4/screen-14.png",
+      "bytes": 141891,
+      "sha256": "fbe69d375a7ca57daf68968987d539bbd013e232c94b231ea6f46a235f7858dc"
+    },
+    {
+      "id": "PANEL-00522",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r4/screen-15.png",
+      "bytes": 142449,
+      "sha256": "806c2bb6014e746229d5541bfec6927d1c754d445c03793d941cb393c70b21d3"
+    },
+    {
+      "id": "PANEL-00523",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r4/screen-16.png",
+      "bytes": 143422,
+      "sha256": "80bd580250ebced50b45f9d4e8769f35b2a77b63e84c5d707d31146e20e9d788"
+    },
+    {
+      "id": "PANEL-00524",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r4/screen-17.png",
+      "bytes": 144470,
+      "sha256": "c9fef0c62f0e057305b3e879ca3f89e3861cbc3003ed175146d4f8d74f5c442a"
+    },
+    {
+      "id": "PANEL-00525",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r4/screen-18.png",
+      "bytes": 145110,
+      "sha256": "1bac64f8cd00fc7c118235af47ab72a3c5b1401983139f55e8fde7d119a029c5"
+    },
+    {
+      "id": "PANEL-00526",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r4/screen-19.png",
+      "bytes": 144239,
+      "sha256": "5388176bad28ec29e993ddd946557dbe827e042ba80cebfc7760c880fc788e48"
+    },
+    {
+      "id": "PANEL-00527",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r4/screen-20.png",
+      "bytes": 143986,
+      "sha256": "8287c99ba1e995aea74f3c3429ff4eb1637432b972d78d2346ee0c062e95a798"
+    },
+    {
+      "id": "PANEL-00528",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r4/service-state.json",
+      "bytes": 28617,
+      "sha256": "09178cf3f845badf4e7d66fccfba4d8b6e5712efa8b092a2b83332cf1cec7341"
+    },
+    {
+      "id": "PANEL-00529",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r4/service.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "PANEL-00530",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r4/windows-00.txt",
+      "bytes": 166,
+      "sha256": "28ae29836d791dcd3302b447a52a8f0fa3f9a192abbc33a27751e23d7ebe0d43"
+    },
+    {
+      "id": "PANEL-00531",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r4/windows-01.txt",
+      "bytes": 872,
+      "sha256": "1096593c4e9a63ac4da8fff1a6642209e33de4dc70f021885f4baea5cce0dbc4"
+    },
+    {
+      "id": "PANEL-00532",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r4/windows-02.txt",
+      "bytes": 872,
+      "sha256": "1096593c4e9a63ac4da8fff1a6642209e33de4dc70f021885f4baea5cce0dbc4"
+    },
+    {
+      "id": "PANEL-00533",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r4/windows-03.txt",
+      "bytes": 1311,
+      "sha256": "ae1e42672317584498a7acb9315285f1ade61278c558f6e2b77371ef61cea181"
+    },
+    {
+      "id": "PANEL-00534",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r4/windows-04.txt",
+      "bytes": 1311,
+      "sha256": "ae1e42672317584498a7acb9315285f1ade61278c558f6e2b77371ef61cea181"
+    },
+    {
+      "id": "PANEL-00535",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r4/windows-05.txt",
+      "bytes": 1311,
+      "sha256": "ae1e42672317584498a7acb9315285f1ade61278c558f6e2b77371ef61cea181"
+    },
+    {
+      "id": "PANEL-00536",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r4/windows-06.txt",
+      "bytes": 1311,
+      "sha256": "ae1e42672317584498a7acb9315285f1ade61278c558f6e2b77371ef61cea181"
+    },
+    {
+      "id": "PANEL-00537",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r4/windows-07.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "PANEL-00538",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r4/windows-08.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "PANEL-00539",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r4/windows-09.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "PANEL-00540",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r4/windows-10.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "PANEL-00541",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r4/windows-11.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "PANEL-00542",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r4/windows-12.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "PANEL-00543",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r4/windows-13.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "PANEL-00544",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r4/windows-14.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "PANEL-00545",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r4/windows-15.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "PANEL-00546",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r4/windows-16.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "PANEL-00547",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r4/windows-17.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "PANEL-00548",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r4/windows-18.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "PANEL-00549",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r4/windows-19.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "PANEL-00550",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r4/windows-20.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "PANEL-00551",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r4/wineboot.log",
+      "bytes": 64844,
+      "sha256": "03bf23591d1a12749fa430ca2ee1b339962d078b3bd0d190a33e9ebd7d924921"
+    },
+    {
+      "id": "PANEL-00552",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r4/xvfb.log",
+      "bytes": 2808,
+      "sha256": "46b8747df8a2fc8b6a469b2374ea3d0c6c786dc3dcf2a9be13d94ce76ed3a1a7"
+    },
+    {
+      "id": "PANEL-00553",
+      "kind": "local",
+      "path": "local/research/codex/wine_probe_k3_identity_r1.py",
+      "bytes": 19039,
+      "sha256": "c38659dc29d2b146fc8f2f0af9f5c11db0090c671d576a1820c524f6b44e6c96"
+    },
+    {
+      "id": "PANEL-00554",
+      "kind": "local",
+      "path": "local/research/codex/k2-live-stream-r1/profile.json",
+      "bytes": 15535,
+      "sha256": "69ad6ba7eb0ab89f8cc49f23cd3ca3ad3003666c5379f55c5d28eee5dcc6822b"
+    },
+    {
+      "id": "PANEL-00555",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/game-A/CA-r2-stage-social.exe",
+      "bytes": 31874560,
+      "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+    },
+    {
+      "id": "PANEL-00556",
+      "kind": "repository",
+      "path": "server/item_claims.py",
+      "bytes": 3340,
+      "sha256": "7990ae9195e9f8bba56b04101f352506194dbd0252793183993ce101a8674a2e"
+    },
+    {
+      "id": "PANEL-00557",
+      "kind": "repository",
+      "path": "server/probe_codec.py",
+      "bytes": 3227,
+      "sha256": "23ba54e6940953a52ff737e7e06b2761a8eb22eab444310b49b1d96efa12411d"
+    },
+    {
+      "id": "PANEL-00558",
+      "kind": "repository",
+      "path": "server/probe_room.py",
+      "bytes": 1468,
+      "sha256": "91292494d492c7851bd5432649adf528e1b07290316dc56ba1478f8a209a08bc"
+    },
+    {
+      "id": "PANEL-00559",
+      "kind": "repository",
+      "path": "server/round_fence.py",
+      "bytes": 2339,
+      "sha256": "aabcc7f1d623573fc217de8df05403f83d82425bbe5d6e78872b3096a2d46708"
+    },
+    {
+      "id": "PANEL-00560",
+      "kind": "repository",
+      "path": "server/test_item_claims.py",
+      "bytes": 2832,
+      "sha256": "63d68da46f91bcc9d4d3517bfd4ebc0d8f0a08c283a83715ac5b14a6efb71eea"
+    },
+    {
+      "id": "PANEL-00561",
+      "kind": "repository",
+      "path": "server/test_probe_codec.py",
+      "bytes": 1366,
+      "sha256": "ddb2cd6303aaf99af43d7add3735fec1b7c41461deb38f482d4a1b113a21367c"
+    },
+    {
+      "id": "PANEL-00562",
+      "kind": "repository",
+      "path": "server/test_probe_room.py",
+      "bytes": 1605,
+      "sha256": "4ace7f5828661d891fa2006731f0aceed081a527c09be335bbee47e9a721e783"
+    },
+    {
+      "id": "PANEL-00563",
+      "kind": "repository",
+      "path": "server/test_round_fence.py",
+      "bytes": 2455,
+      "sha256": "6923d90f30636dfe05b09d45f5bbaceaf3ef32223d48eba0213a6c3cc40b037a"
+    },
+    {
+      "id": "PANEL-00564",
+      "kind": "repository",
+      "path": "server/test_udp_round_keys.py",
+      "bytes": 1224,
+      "sha256": "cfb36ee95d48c79b1800081a73b54498242f366eb08a2e3be850ff4a3503ce96"
+    },
+    {
+      "id": "PANEL-00565",
+      "kind": "repository",
+      "path": "server/udp_round_keys.py",
+      "bytes": 1187,
+      "sha256": "db58ae1f25bcbeb52c2d25c7db6afbf1021ddd3af29702e756f5f41886530a0d"
+    },
+    {
+      "id": "PANEL-00566",
+      "kind": "repository",
+      "path": "server/test_probe_eof.py",
+      "bytes": 9629,
+      "sha256": "6456b237ce138fc179f9acf23436af18eefae96c2babb0d677682df66102a018"
+    },
+    {
+      "id": "PANEL-00567",
+      "kind": "repository",
+      "path": "server/test_bomb_admission.py",
+      "bytes": 5720,
+      "sha256": "7e00660a7a4800de4ec1c8b27fd6b162692a4f3c8177ebbd9d19769a245befee"
+    },
+    {
+      "id": "PANEL-00568",
+      "kind": "repository",
+      "path": "server/test_capacity_reservations.py",
+      "bytes": 6771,
+      "sha256": "2a94f711b693dd0a5cf39d292af2f5c0b18f190325305f78c411b19d6f11da24"
+    },
+    {
+      "id": "PANEL-00569",
+      "kind": "repository",
+      "path": "server/test_guest_rejoin.py",
+      "bytes": 5981,
+      "sha256": "58a7ead0829a69896a88409ca7f6cd7410cb60cabb054d28e8adbfefef87f873"
+    },
+    {
+      "id": "PANEL-00570",
+      "kind": "repository",
+      "path": "server/test_hidden_items.py",
+      "bytes": 6368,
+      "sha256": "962f389dd22fd6cfa90b032b8c66f189bee30555e444fa29ef35cca9c2c68986"
+    },
+    {
+      "id": "PANEL-00571",
+      "kind": "repository",
+      "path": "server/test_room_reentry.py",
+      "bytes": 8691,
+      "sha256": "e254dfb07e2522f408dbbe6b53df6d8962c90130893cee4d7e2d3550132df433"
+    },
+    {
+      "id": "PANEL-00572",
+      "kind": "repository",
+      "path": "server/chain_capacity.py",
+      "bytes": 2990,
+      "sha256": "7c84dfaf1800ee3d7a150c76ad81b439fbe0f5daa6a91da9755b818a14460fae"
+    },
+    {
+      "id": "PANEL-00573",
+      "kind": "repository",
+      "path": "server/test_chain_capacity.py",
+      "bytes": 6576,
+      "sha256": "583e2942d9732dd2680d8240a25fdcb5fc41f142b87d7ec70beff72bc96d075b"
+    },
+    {
+      "id": "PANEL-00574",
+      "kind": "repository",
+      "path": "server/terrain_model.py",
+      "bytes": 4232,
+      "sha256": "2de9d0048dbe03ca134e9d49d32596f49b7415538227a8966577c21f45f88e05"
+    },
+    {
+      "id": "PANEL-00575",
+      "kind": "repository",
+      "path": "server/terrain_profile.py",
+      "bytes": 1866,
+      "sha256": "1f0dbe2191b9fc4f1b6cc0e8d34f7965f37a2abb19801b41537e14f60150d390"
+    },
+    {
+      "id": "PANEL-00576",
+      "kind": "repository",
+      "path": "server/test_terrain_policy.py",
+      "bytes": 8653,
+      "sha256": "7661f22c06f76e8dbb8859665fa06ef5febe0d824a0a430b6948db6afa52d34d"
+    },
+    {
+      "id": "PANEL-00577",
+      "kind": "repository",
+      "path": "server/room_title.py",
+      "bytes": 3353,
+      "sha256": "0295a9c0cf25294c09bebb4133a84c4b3e151fc91b485d95048bdacc74ad487a"
+    },
+    {
+      "id": "PANEL-00578",
+      "kind": "repository",
+      "path": "server/test_all_dead_result.py",
+      "bytes": 6245,
+      "sha256": "bd4380acb2dd5e12a4f7b89310b554c79fb486f1a782ab47c1ad1808ef9cac10"
+    },
+    {
+      "id": "PANEL-00579",
+      "kind": "repository",
+      "path": "server/test_battle_exit.py",
+      "bytes": 7390,
+      "sha256": "5ce10120e0881caaaf87303d71a8474e678db9133ac992f87accb3327c1dfbe3"
+    },
+    {
+      "id": "PANEL-00580",
+      "kind": "repository",
+      "path": "server/test_battle_exit_pending.py",
+      "bytes": 4096,
+      "sha256": "713c561dc4a00e706f0a51c1dd7b90bf2c8bc5a737bc9d85704a26112b8adc8f"
+    },
+    {
+      "id": "PANEL-00581",
+      "kind": "repository",
+      "path": "server/test_channel_endpoint.py",
+      "bytes": 7936,
+      "sha256": "f8c7f54bed12c49bf75c2119b17923a67dd8f4f09c093929c81998207ab03600"
+    },
+    {
+      "id": "PANEL-00582",
+      "kind": "repository",
+      "path": "server/test_death_envelope.py",
+      "bytes": 4695,
+      "sha256": "c7762c9faeb220dc81d49976a763f23aa57fa82ac4c9d90109f926b02506f8a6"
+    },
+    {
+      "id": "PANEL-00583",
+      "kind": "repository",
+      "path": "server/test_death_lifecycle.py",
+      "bytes": 6815,
+      "sha256": "6fc82097a1b50ad54cbd64feaf567153c8555eb4abbc6506811e09d045c76ac4"
+    },
+    {
+      "id": "PANEL-00584",
+      "kind": "repository",
+      "path": "server/test_departure_send_failure.py",
+      "bytes": 8675,
+      "sha256": "16670b0a677895ce7d09ae3bfd555e474acc83dc623f4f96123ffac772f5da7d"
+    },
+    {
+      "id": "PANEL-00585",
+      "kind": "repository",
+      "path": "server/test_host_back_rejoin.py",
+      "bytes": 7956,
+      "sha256": "9f16c503d4065c70f0064d76fafcab6ed9ac0e548d94211e261f7785f8fc4e4f"
+    },
+    {
+      "id": "PANEL-00586",
+      "kind": "repository",
+      "path": "server/test_host_battle_exit.py",
+      "bytes": 5912,
+      "sha256": "6ae9acbdbf5cd7af9bffabb914d4ec4dc529f34859f0730e1872f65e4d888bfe"
+    },
+    {
+      "id": "PANEL-00587",
+      "kind": "repository",
+      "path": "server/test_loading_timeout.py",
+      "bytes": 5446,
+      "sha256": "f097692abec1b682d0bee59d1b207f20a46cc94e508c65a1b6e743e3d540c5de"
+    },
+    {
+      "id": "PANEL-00588",
+      "kind": "repository",
+      "path": "server/test_needle_escape.py",
+      "bytes": 12165,
+      "sha256": "2ce054abdaae7f6c8eb11d5eddec0bc42b0390d9b761a037c253709341b29c38"
+    },
+    {
+      "id": "PANEL-00589",
+      "kind": "repository",
+      "path": "server/test_network_config.py",
+      "bytes": 5843,
+      "sha256": "538bf81adc50c4bcfda25fb75ed3a82ec2cdc57cdb93faa7ea4e4751d6dec900"
+    },
+    {
+      "id": "PANEL-00590",
+      "kind": "repository",
+      "path": "server/test_pickup_state.py",
+      "bytes": 4222,
+      "sha256": "8dc4ef39983417d0cbf961b5419bd2e4b7e91f4a8f4da8d3d5577ec5634ed8f9"
+    },
+    {
+      "id": "PANEL-00591",
+      "kind": "repository",
+      "path": "server/test_probe_replacement.py",
+      "bytes": 7893,
+      "sha256": "25e30eaac70b8e2a1715c259aeb2511d2fbb52df49a323f58e33217eba3f36b7"
+    },
+    {
+      "id": "PANEL-00592",
+      "kind": "repository",
+      "path": "server/test_probe_service.py",
+      "bytes": 4835,
+      "sha256": "055eeb3ed6431e0503468ee392c8f29a6c661db8cdc4bd1e402a9f748a434a6e"
+    },
+    {
+      "id": "PANEL-00593",
+      "kind": "repository",
+      "path": "server/test_report127_freshness.py",
+      "bytes": 6855,
+      "sha256": "bc884f7ca75935462eb4aabbd09fd915c905d39c762bef2e3fcfadf0a79d6bc7"
+    },
+    {
+      "id": "PANEL-00594",
+      "kind": "repository",
+      "path": "server/test_rescue_contact.py",
+      "bytes": 10792,
+      "sha256": "a5bdd661fe5b945efdb08c7f387ac6dda482c95e2cf88b68da3401235fd40afb"
+    },
+    {
+      "id": "PANEL-00595",
+      "kind": "repository",
+      "path": "server/test_result21_peer.py",
+      "bytes": 5268,
+      "sha256": "364364d96ea1671a60e33149f3fa2bd54ceb6862e749729f228decb0323925ef"
+    },
+    {
+      "id": "PANEL-00596",
+      "kind": "repository",
+      "path": "server/test_result_freshness.py",
+      "bytes": 16181,
+      "sha256": "96c84c6f586adaf88f72339fd76270ef3d8316762465d658aebaea94a4585137"
+    },
+    {
+      "id": "PANEL-00597",
+      "kind": "repository",
+      "path": "server/test_room_title.py",
+      "bytes": 7332,
+      "sha256": "00812f31a7a834dbb8969aa0b599f82a71ff7292187b577ba52150100beb3826"
+    },
+    {
+      "id": "PANEL-00598",
+      "kind": "repository",
+      "path": "server/probe_service.py",
+      "bytes": 106121,
+      "sha256": "96c1a56837b28ea25daeade2d048f96016805188d2c8d1e90ffa2afdc01a4690"
+    },
+    {
+      "id": "PANEL-00599",
+      "kind": "repository",
+      "path": "server/replacement_slots.py",
+      "bytes": 2664,
+      "sha256": "17b42200f6d79b2858d83c515b172a2785fb5d5ac78240dd497d9ddbfc3d583d"
+    },
+    {
+      "id": "PANEL-00600",
+      "kind": "repository",
+      "path": "server/room_team_mode.py",
+      "bytes": 1489,
+      "sha256": "fb69ea8d4b93c1d602aefb538970efbb7496a7bb178cca2f301f520b72ae16ec"
+    },
+    {
+      "id": "PANEL-00601",
+      "kind": "repository",
+      "path": "server/test_hidden_terrain_admission.py",
+      "bytes": 5549,
+      "sha256": "594ad8ea105bf35d10b9481cd944e6ecd7acf5d8549eb0778b8ce0989f24040d"
+    },
+    {
+      "id": "PANEL-00602",
+      "kind": "repository",
+      "path": "server/test_mode_host_rejoin.py",
+      "bytes": 6296,
+      "sha256": "3eec3af510794461354caee609c625adc95abca97595a5a482d1383dd742d892"
+    },
+    {
+      "id": "PANEL-00603",
+      "kind": "repository",
+      "path": "server/test_replacement_slots.py",
+      "bytes": 14542,
+      "sha256": "6921dcdf792253140b5c92478df99931a1e3e8dbc7f0872156a84f9c313bf262"
+    },
+    {
+      "id": "PANEL-00604",
+      "kind": "repository",
+      "path": "server/test_room_team_mode.py",
+      "bytes": 6025,
+      "sha256": "111c6fcbac9ee2708dd68017de7cda12942b7ad075a5d4d9950d259644d0f503"
+    },
+    {
+      "id": "PANEL-00605",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/auth-retry-r2/screen-22.png",
+      "bytes": 143507,
+      "sha256": "c0275a7fe199cebe608d495dd569335a4715084a5c562c86a19152c249ffae78"
+    },
+    {
+      "id": "PANEL-00606",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/ida/success.json",
+      "bytes": 90377,
+      "sha256": "4e6bfe83705c9c1ed07e0210bb2df1f522e8f7ce4f71e3cc98947276e1f7ccf4"
+    },
+    {
+      "id": "PANEL-00607",
+      "kind": "local",
+      "path": "local/research/codex/postwait-r1/lobby-rtti.json",
+      "bytes": 126,
+      "sha256": "c483280453210ccc93fc88d9ef21d0f32c3595198c78d31cbe54020cd70ca445"
+    }
+  ]
+}

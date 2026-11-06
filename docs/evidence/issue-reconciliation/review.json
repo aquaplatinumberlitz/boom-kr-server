@@ -155,11 +155,11 @@
         "KR-F001",
         "KR-F015"
       ],
-      "known": "CP181 K2measuredofflineprofile accepted byCodex unchangedcriteria/nativeoracle+CP180stream+sameprocessretry/reset; K0/K2aCP178/K1R2CP179 retain scope.",
-      "remaining": "K3identity/cache/UI/wrongstage/version anddownstreamK4–K7/K6afullmatch/LANInternet4–8clients remainopen; currentK2profileaccepted.",
-      "next_test": "NEXT-K3-IDENTITY-CACHE/#14 perPLAN, sourcefirst CP058/059/060/181; widercodec/WCP only concreteconsumer trigger; no repeatedretry/model/gameplay.",
+      "known": "CP181/PR253 merged; CP182actualpanelrenderrecordguard0/nameempty vs confirmedauthID/name/actual6. Productionservice unchanged; K0/K1R2/K2profilescopes retained.",
+      "remaining": "K3ownpanelrecordproducer/dispatch/store/render positive, cachematrix/wrongstage/version acceptance; K4–K7/fullmatch/LANInternet/8realclients stillopen.",
+      "next_test": "NEXT-K3-IDENTITY-CACHE perPLAN: source-firstVNUserMap/KR544recordconsumer, measureminimumproducer→record→render; no repeatedauthnamegetter/cacheCRC/SquareLeftsweep.",
       "acceptance": "Epic checklist: linkedscopedtask/evidence+authoritymatrix vàacceptancegate ởPLAN; từngtaskđóng khôngđóngepic/K5/K6a.",
-      "reason": "Manual unchangedcriterion/evidence review, not checkpoint/script inference. AUD053adhocthrough178, periodic176/next180; nativecontrols and failedpreparation preserved.",
+      "reason": "CP182 manual narrow acceptance review: panelconsumer/guard observed, producer/identityrender remains open; no gateclosure, no independentreview. AUD054periodic180/next184 unchanged.",
       "sources": [
         "docs/PROTOCOL.md#authority",
         "docs/RESEARCH.md#feature-gaps",
@@ -215,7 +215,9 @@
         "docs/PLAN.md#k0-k2a-acceptance",
         "docs/PROTOCOL.md#original-windows-control",
         "docs/PLAN.md#k1-acceptance",
-        "docs/PLAN.md#k2-acceptance"
+        "docs/PLAN.md#k2-acceptance",
+        "docs/PROTOCOL.md#local-name-model",
+        "docs/RESEARCH.md#gap-lobby-identity-followup"
       ],
       "evidence": [
         "docs/evidence/current-movement-cycles/README.md",
@@ -273,7 +275,8 @@
         "docs/evidence/peer-endpoints/README.md#cp178",
         "docs/evidence/wine-r2/README.md#cp179",
         "docs/evidence/live-codec-stream/README.md",
-        "docs/evidence/live-codec-stream/README.md#cp181"
+        "docs/evidence/live-codec-stream/README.md#cp181",
+        "docs/evidence/lobby-identity/README.md"
       ],
       "prs": [
         173,
@@ -344,7 +347,8 @@
         244,
         245,
         248,
-        249
+        249,
+        253
       ],
       "successors": []
     },
@@ -671,6 +675,6 @@
       "successors": []
     }
   ],
-  "as_of_utc": "2026-11-06T22:16:23.761997+00:00",
+  "as_of_utc": "2026-11-06T23:06:22.976001+00:00",
   "limits": "Dated manual dispositions through CP146; snapshotcaptureUTC only/no semantic or gate certification; immutable completehistory."
 }

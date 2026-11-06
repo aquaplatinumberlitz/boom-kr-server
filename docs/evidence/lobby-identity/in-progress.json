@@ -1,0 +1,81 @@
+{
+  "schema": "kre-run-metadata-v1",
+  "recorded_utc": "2026-11-06T22:43:08.868439+00:00",
+  "checkpoint": "post-CP181 ongoingbatch; noCP182complete",
+  "owner": "Codex",
+  "review": "waived",
+  "source": "kr_runtime",
+  "status": "confirmed",
+  "canonical": "docs/PROTOCOL.md#local-name-model",
+  "question": "docs/RESEARCH.md#gap-lobby-identity-followup",
+  "runtime_copy_sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef",
+  "analysis_input_sha256": "cf72da112308d9f1ca256df8089594c5f787875310933073bf6bd5ba6f70e63b",
+  "methods": [
+    "8targetedKRstaticbodies/privateDBcopy/bytescompare",
+    "2isolatedWineactualIDname/getterruns",
+    "nativeactualrequest6framer/stringreplay"
+  ],
+  "files": [
+    {
+      "path": "local/research/codex/k3-identity-cache-r1/source-first-reuse.json",
+      "bytes": 3695,
+      "sha256": "2ef7ca16734d5c0bbb2a46b37f629e45723e526f81c96d9a3784ae6e94bccd7a"
+    },
+    {
+      "path": "local/research/codex/k3-identity-cache-r1/identity-verification.json",
+      "bytes": 36387,
+      "sha256": "2912f2e921e338bed37e7d38ddc017161679c82382d08d1e9b5f7fe49c6e88a5"
+    },
+    {
+      "path": "local/research/codex/k3-identity-cache-r1/reuse-and-pass-limits.json",
+      "bytes": 2672,
+      "sha256": "9476873f8e8a034859c9067a3043826a261aea2d5c8616dea1f15c1b02937da7"
+    },
+    {
+      "path": "local/research/codex/k3-identity-cache-r1/rea-name-setter-error.json",
+      "bytes": 761,
+      "sha256": "c7c4da30ab4a00b8e9d45894c607c205411ea559e771365b393c0d62f86b20f2"
+    },
+    {
+      "path": "local/research/codex/k3-identity-cache-r1/ida-mcp-error.json",
+      "bytes": 2667,
+      "sha256": "4d2d5892165dbc0b85d553fd4407adea3dc7b0ad5a03b3744b8f205898f28885"
+    },
+    {
+      "path": "local/research/codex/k3-identity-cache-r1/ida/name-code-comparison.json",
+      "bytes": 900,
+      "sha256": "abb341fe0894243d7a80e225840c62298ef19f22e382891faca95ac04655cb19"
+    },
+    {
+      "path": "local/research/codex/k3-identity-cache-r1/ida/name-helper-comparison.json",
+      "bytes": 254,
+      "sha256": "92776309faa3ae4fe5153650a83fa8a2a2d03ad4ffaf67e39375d147da764376"
+    },
+    {
+      "path": "local/research/codex/k3-identity-cache-r1/ida/name-caller-comparison.json",
+      "bytes": 149,
+      "sha256": "7b1358f238abdd3aa21ab8da15412855f971722b3fe4daf1bea35502a9b38caa"
+    },
+    {
+      "path": "local/research/codex/k3-identity-cache-r1/ida/name-other-callers-comparison.json",
+      "bytes": 327,
+      "sha256": "791b5ff820763ec234f30a9f3fb9e6525a4c7ed30b53c4433483a0477ff87608"
+    },
+    {
+      "path": "local/research/codex/k3-identity-cache-r1/ida/lobby-name-candidate-comparison.json",
+      "bytes": 242,
+      "sha256": "2c84c81d50b7f6949b9e6a1f0c752f70f98ad39173b33572296f0f720ff99cc4"
+    },
+    {
+      "path": "local/research/codex/k3-identity-cache-r1/identity-r1/raw-seal.json",
+      "bytes": 15387,
+      "sha256": "a38410eeaafd263ea6d0a858becf934fa710e0c401b229e52623745467e58e48"
+    },
+    {
+      "path": "local/research/codex/k3-identity-cache-r1/identity-r2/raw-seal.json",
+      "bytes": 15275,
+      "sha256": "fb82b7fd3c3fb6dfdd1e4af9ae574e31850701f92a568857157a293ea304ab26"
+    }
+  ],
+  "limits": "Controls/instrumentationfailures retainedlocal; r1ambiguousgetters excluded, r2concretePCconfirmsASCIIKRLocal. No UIrenderer/cacheallmatrix/K3gate. REA/IDAMCPmissingnexus/directbatchfallback, originalprivateDBhashunchanged; no configurationrepair or workers."
+}

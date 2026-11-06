@@ -1,0 +1,252 @@
+{
+  "id": "CP182",
+  "previous": "CP181",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-06T23:09:01.122779+00:00",
+  "context_commit": "5a154e51ce918d39e0383c12a26ff3a592dbfaeb",
+  "owner": "Codex",
+  "reviewer": "Codex",
+  "question": "Does authID/name reach actual lobby ownpanel, and which concreteconsumer/guard still blocks display?",
+  "scope": "Source-firstCP058/059/060/181/current47fixtures/CP016UI and VNlogin/lobby; twoidentityruns andfourpanelruns, 8auth/getterbodies+16targetedUI/storebodies with runtimeedges. Groupedmeaningfulguardblocker, nocheckpointperprobe. Source/config frozen perrun; preserveallfailedraw/completehistory; CP181mergedPR253.",
+  "artifacts": [
+    {
+      "name": "OriginalKR00967unchanged",
+      "sha256": "a52545c14b1fea423de655c3163d6360b628d61c1cd472b46fdbc8a9ffe15f4e"
+    },
+    {
+      "name": "CurrentWinecopyunchanged",
+      "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+    },
+    {
+      "name": "NativeIDAfullcopycf72privateanalysis",
+      "sha256": "cf72da112308d9f1ca256df8089594c5f787875310933073bf6bd5ba6f70e63b"
+    },
+    {
+      "name": "modOmodelreference",
+      "sha256": "a08950c833d3acab8281049def7b3dc96b221f107eeda01da3a548e34b91dce5"
+    },
+    {
+      "name": "OriginalKR00967NewPatcher",
+      "sha256": "b59e4dce9ad23c439a7632ce04ecb2eed3481585bd2454100b05c9d7527f5c02"
+    },
+    {
+      "name": "VN116original_reference_only",
+      "sha256": "bce8644d4e783d1354ab4fc880e1ab9a4ab3325327028f37d99e5439e25f4bbd"
+    },
+    {
+      "name": "VN116patched_runtime_reference_only",
+      "sha256": "bc875ba5765cc112e924f46e75d0ace112904c7801126e46bc0abb1c9cb576b1"
+    },
+    {
+      "name": "PassingK1offlineR2recipe",
+      "sha256": "7b3b435b5d8e110185359107376b736615ceabe9452cea8154d02c8628f44c29"
+    },
+    {
+      "name": "NativeProcessPatchR1control",
+      "sha256": "a0c3b9867dae5fe2ff7c315cfe851117661c2cafead45196ce999329f67432f5"
+    }
+  ],
+  "locators": [
+    "Runtimee9bb476.../analysiscf72da.../base400000/RVA=VA-400000. Auth13B09E0/13B0A60/getterreturn13B0A4D; actual6SHA2cfebd3ad9a4935bb144090c4244c67ec9200ca54d4a9da71ecef00004a8bdf4.",
+    "RTTIactualreadyDA5F90:CLobbyStage+5E5D8/CUserListUIWnd/vt172B748. Native901390→9022D0; exact902329decodedguard0→90232D→902A32; ownrecord+1FC/nameSSO+4.",
+    "7FA5D0→global19DB454;D2FE90=store+6404h+220h*index/544bytes. D7A260onlylevelchange/name-matchconsumer; noidentifiedgeneralproducer/message.",
+    "identity-r1/r2 pluspanel-r1/r2/r3/r4 nonoverlap/rawsealed; panel-r3C++exceptionSIGABRT beforeReady, r4positivepostReady. AUD054periodic180/nextCP184 unchanged."
+  ],
+  "findings": [
+    {
+      "summary": "AuthID1/nameKRLocal survive setter/getter/actualrequest6; exactreturnPC confirmssevenboundedobservations. FinishBreakpointR1lowvalues rejected; notauthnamecorruption orlicense to editstr2/str3. VNmethods reused, noopcode/layouttransfer.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#local-name-model",
+      "evidence": [
+        "PANEL-00012",
+        "PANEL-00047",
+        "PANEL-00046"
+      ],
+      "limits": "Modifiede9Wine/samephysicalhost/inheritedcache/privatecopies/production47fixtures; knownbootstrapglobalreset retained, no nativegamecalls/storeguardwrites. OriginalWindows/fullauth/cachematrix/wrongstage/version/K3–K7/K6a/fullmatch/LANInternet/8clients notaccepted. R3preReadyfailure andR1ambiguousgetter retained; no causalfixclaim."
+    },
+    {
+      "summary": "ActualRoomUIconstructor observed; selectedSquareLeftcallbacksunobservedin60s. NextreadyRTTIsnapshot62candidates identifiesactualCUserListUIWnd atstage+5E5D8. VNUserMap/listvsownpanelreuse avoids186getterxref sweep; VNownlevel/exp itselfunverified.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#local-name-model",
+      "evidence": [
+        "PANEL-00311",
+        "PANEL-00410",
+        "PANEL-00039"
+      ],
+      "limits": "Modifiede9Wine/samephysicalhost/inheritedcache/privatecopies/production47fixtures; knownbootstrapglobalreset retained, no nativegamecalls/storeguardwrites. OriginalWindows/fullauth/cachematrix/wrongstage/version/K3–K7/K6a/fullmatch/LANInternet/8clients notaccepted. R3preReadyfailure andR1ambiguousgetter retained; no causalfixclaim."
+    },
+    {
+      "summary": "Staticbyteequal901390→9022D0 drawsownrecord fromseparatestore; D2FE90lookup544bytes/store+6404h+220h*index. Nativeguard+1FC before namestring+4/level/expdraw. ExactruntimeR4postready twiceguard0/nameSSOsize0cap15; matchesactualstagewidget/caller9013BE. No proofwhichmessagepopulatesit, no semanticnameforguard.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#local-name-model",
+      "evidence": [
+        "PANEL-00040",
+        "PANEL-00505",
+        "PANEL-00129",
+        "PANEL-00099"
+      ],
+      "limits": "Modifiede9Wine/samephysicalhost/inheritedcache/privatecopies/production47fixtures; knownbootstrapglobalreset retained, no nativegamecalls/storeguardwrites. OriginalWindows/fullauth/cachematrix/wrongstage/version/K3–K7/K6a/fullmatch/LANInternet/8clients notaccepted. R3preReadyfailure andR1ambiguousgetter retained; no causalfixclaim."
+    },
+    {
+      "summary": "R3preReadyC++exception/SIGABRT hasonlyactual6 andnoguardobservations despiteharnessexit0. R4defersprobesuntilready; itspositiveguardobservationsdonotcausallyproveinstallationtimingfix. cppprobezero-countreaderror resolvedbyindependentrawSSOmetadata, notclienterror. PrivateDBinputhashNone/failedlogretained/freshcopyfallback, originalsourceDBunchanged.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#local-name-model",
+      "evidence": [
+        "PANEL-00450",
+        "PANEL-00505",
+        "PANEL-00095",
+        "PANEL-00040"
+      ],
+      "limits": "Modifiede9Wine/samephysicalhost/inheritedcache/privatecopies/production47fixtures; knownbootstrapglobalreset retained, no nativegamecalls/storeguardwrites. OriginalWindows/fullauth/cachematrix/wrongstage/version/K3–K7/K6a/fullmatch/LANInternet/8clients notaccepted. R3preReadyfailure andR1ambiguousgetter retained; no causalfixclaim."
+    },
+    {
+      "summary": "D7A260static name-match→levelchange recordconsumer givesadjacentedge, notgeneralprofilewriter or recoveredpacketcontract. Productionserver/profile unchanged; nextproducer→dispatch→store→render positive/control, no repeatedauthgetter/CRC/gameplay.",
+      "source": "kr_static",
+      "status": "confirmed",
+      "method": "static",
+      "canonical": "docs/PROTOCOL.md#local-name-model",
+      "evidence": [
+        "PANEL-00096",
+        "PANEL-00025"
+      ],
+      "limits": "Modifiede9Wine/samephysicalhost/inheritedcache/privatecopies/production47fixtures; knownbootstrapglobalreset retained, no nativegamecalls/storeguardwrites. OriginalWindows/fullauth/cachematrix/wrongstage/version/K3–K7/K6a/fullmatch/LANInternet/8clients notaccepted. R3preReadyfailure andR1ambiguousgetter retained; no causalfixclaim."
+    }
+  ],
+  "verification": [
+    {
+      "check": "Sixsealedruns/nonoverlap/frozeninputs/isolation/cleanup/16nativebodies/actualownrenderguard+rawSSO",
+      "result": "pass",
+      "evidence": [
+        "PANEL-00040"
+      ],
+      "limits": "777mechanicalchecks plusmanualassembly/timeline, notsemanticgatecertification."
+    },
+    {
+      "check": "Original5artifactidentity",
+      "result": "pass",
+      "evidence": [
+        "PANEL-00003"
+      ],
+      "limits": "Nooriginalruntime successclaim."
+    },
+    {
+      "check": "K3renderpositive/producer/cachematrix/wrongstage/version",
+      "result": "pending",
+      "evidence": [
+        "PANEL-00040"
+      ],
+      "limits": "Modifiede9Wine/samephysicalhost/inheritedcache/privatecopies/production47fixtures; knownbootstrapglobalreset retained, no nativegamecalls/storeguardwrites. OriginalWindows/fullauth/cachematrix/wrongstage/version/K3–K7/K6a/fullmatch/LANInternet/8clients notaccepted. R3preReadyfailure andR1ambiguousgetter retained; no causalfixclaim."
+    }
+  ],
+  "evidence": [],
+  "evidence_manifests": [
+    {
+      "path": "docs/evidence/checkpoints/evidence/CP182-lobby-panel.json",
+      "bytes": 150855,
+      "sha256": "7579c45eaed5eea9e260a8c11cad9fabdf7c01d7634aca1afec79b91bb8bdb1f",
+      "count": 607
+    }
+  ],
+  "delta": {
+    "added": [
+      "Actualownpanelconsumer/data-source/guard linked byruntime; emptyseparaterecordconstrainsnextRE. Source-firstVNdistinguisheslist/ownpanellimits."
+    ],
+    "corrected": [
+      "OngoingpostCP181unknownUIconsumer solvedto9022D0/recordguard, notyetproducerorpositiveUI. R1getterlowvalues/instrumentationandR3harnessexit0 arenotclientauth/renderproof.",
+      "CP181/PR253merged; no oldcompletecheckpointrewrite; currentissue14sourcesrefreshed, gatesunchanged."
+    ],
+    "superseded": [
+      "Authgetterchain/SquareLeftcallback sweep no longernextstep; producer544record→store→renderpositive perPLAN."
+    ]
+  },
+  "blockers": [
+    "Ownrecordproducer/wire/schema/stage/identitylink/guardsemantics unknown; nameempty/guard0correlation doesnotrecoverthecause.",
+    "Cold/missing/warmmatrix/wrongsocket/stage/version/fullidentityauthority andK3–K7/fullmatch/LANInternet/8realclients remainopen."
+  ],
+  "next_steps": [
+    {
+      "id": "NEXT-K3-IDENTITY-CACHE",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "PLAN sourcefirstVNUserMap/KRexistingcache/report; traceactual544recordproducer/dispatch→store→render withminimumpositive/control. Noauthgetterrepeat/str2str3guess/opcodeport; D7A260levelchangeonly.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    }
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-11-06T23:09:01.122779+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "Codexsolo RE/nativeWine/runtime/selfcheck; ownerreviewwaiver, exactheadPRbeforemerge; no independentapproval.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Owner explicitly requested solo, no workers/review."
+    }
+  },
+  "docs_sync": [
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "CP182groupedidentity/panelblocker/currentcontract/gap/evidence/catalog/issues syncedbeforecomplete, gateunchanged."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "CP182groupedidentity/panelblocker/currentcontract/gap/evidence/catalog/issues syncedbeforecomplete, gateunchanged."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "updated",
+      "reason": "CP182groupedidentity/panelblocker/currentcontract/gap/evidence/catalog/issues syncedbeforecomplete, gateunchanged."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "updated",
+      "reason": "CP182groupedidentity/panelblocker/currentcontract/gap/evidence/catalog/issues syncedbeforecomplete, gateunchanged."
+    },
+    {
+      "path": "docs/features.json",
+      "state": "updated",
+      "reason": "CP182groupedidentity/panelblocker/currentcontract/gap/evidence/catalog/issues syncedbeforecomplete, gateunchanged."
+    },
+    {
+      "path": "docs/COVERAGE.md",
+      "state": "updated",
+      "reason": "CP182groupedidentity/panelblocker/currentcontract/gap/evidence/catalog/issues syncedbeforecomplete, gateunchanged."
+    },
+    {
+      "path": "docs/evidence/lobby-identity/README.md",
+      "state": "updated",
+      "reason": "CP182groupedidentity/panelblocker/currentcontract/gap/evidence/catalog/issues syncedbeforecomplete, gateunchanged."
+    },
+    {
+      "path": "docs/evidence/lobby-identity/in-progress.json",
+      "state": "updated",
+      "reason": "CP182groupedidentity/panelblocker/currentcontract/gap/evidence/catalog/issues syncedbeforecomplete, gateunchanged."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/review.json",
+      "state": "updated",
+      "reason": "CP182groupedidentity/panelblocker/currentcontract/gap/evidence/catalog/issues syncedbeforecomplete, gateunchanged."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
+      "state": "updated",
+      "reason": "CP182groupedidentity/panelblocker/currentcontract/gap/evidence/catalog/issues syncedbeforecomplete, gateunchanged."
+    },
+    {
+      "path": "docs/evidence/checkpoints/README.md",
+      "state": "unchanged",
+      "reason": "Storageworkflow/auditcounterunchanged; nextperiodicCP184, noreset."
+    }
+  ]
+}

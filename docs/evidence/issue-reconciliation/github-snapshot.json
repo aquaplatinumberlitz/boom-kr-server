@@ -1,7 +1,7 @@
 {
   "schema": "kre-github-snapshot-v1",
   "repo": "aquaplatinumberlitz/boom-kr-server",
-  "captured_utc": "2026-11-06T22:16:28.716012+00:00",
+  "captured_utc": "2026-11-06T23:10:12.172932+00:00",
   "limits": "State as of capture only; body/declarations are not semantic acceptance; no GitHub mutation.",
   "issues": [
     {
@@ -572,12 +572,12 @@
       "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/56"
     },
     {
-      "body": "KRE-005b — in_progress umbrella; current order K3identity/cache/UI. Feature IDs: KR-B001; KR-B002; KR-B003; KR-F001; KR-F002; KR-F003; KR-F004; KR-F005; KR-F006; KR-F007; KR-F008; KR-F009; KR-F010; KR-F011; KR-F012; KR-F013; KR-F014; KR-F015; KR-L001; KR-L002; KR-L003; KR-R001; KR-R002; KR-R003; KR-R004; KR-S001; KR-S002; KR-X001; KR-X002; KR-X003. Codex solo/self-check; independent review waived by owner.\n\nBaseline CP180/[PR252](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/252) merged `fe242cc87a29463a7f70b8537a932f37effdb177`; CP181 pending PR delivery. No complete history/raw rewrites.\n\nNguồn chuẩn (CP181 additions pending delivery):\n- [PLAN/order](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/kre/codec-retry-reset/docs/PLAN.md#current-order)\n- [K2 acceptance](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/kre/codec-retry-reset/docs/PLAN.md#k2-acceptance)\n- [PROTOCOL/limits](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/kre/codec-retry-reset/docs/PROTOCOL.md#login-retry-codec)\n- [RESEARCH](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/kre/codec-retry-reset/docs/RESEARCH.md#gap-socket-codec)\n- [Catalog](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/kre/codec-retry-reset/docs/COVERAGE.md)\n- [Evidence/hash](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/kre/codec-retry-reset/docs/evidence/live-codec-stream/README.md#cp181)\n\nĐã biết: CP181 native sameprocess validresult1→UIcommand1002→freshloginTCP4→auth137/137/errors0→channelTCP5. Nativehello0/0seq40→43 và2/3seq43 reset theo connection; nativeC2S1/60 reset40/43. CP180 split/coalesced/CRCnegative + CP057bounded native length/control oracles reused; Codex manually accepts K2 measured offline profile against unchanged PLAN criteria, not script/CP count/UIalive. OriginalWindows/allgrammar/accountauthority not inferred.\n\nControls retained: fatalCRCnotice close goesglobal1/modal1/cleanupDWKcandidate trap; hardwarewatchpoint WineDbgcrash notclientcause; firstvalidrejectionretry run exposesfixedordinalstub; adapteronlylabmaps4/5, productionservice unchanged. No new clientpatch/forcedfunctioncalls/return/state aftererror.\n\nCòn thiếu: K3cache/identity/UI và wrongsocket/stage/version; K4–K7/K6a/fullmatch/LAN/Internet/4–8realclients chưa nghiệm thu. Existing CP176 A/Ctwo cycles/CP177 replacement profile giữ nguồn, không replay known gameplay. Policy emulation không đổi thành luật server gốc.\n\nPhép thử tiếp/owner: Codex NEXT-K3-IDENTITY-CACHE theo PLAN: source-first CP058/059/060/181/current47fixture/profile và cacheconsumer; trace name/ID auth→request6→lobbyUI, chỉ đo cache/coldmissingwarm còn thiếu, không quét toànclient/cache hoặc lặp namedcacheCRC. #2widerWCP và#3broadercodec backlog theo trigger.\n\nAcceptance: umbrella chỉ đóng khi từng gate/đầu ra PLAN đủ evidence và integration; K2 profile đạt không tự đóng K3–K7/fullmatch.\n\n- [x] K0/K2a CP178; K1offlineR2 CP179.\n- [x] K2measuredofflinecodec/hello CP181.\n- [ ] K3identity/cache/UI acceptance.\n- [ ] Localfullmatch/LAN/Internet/hardening per PLAN.\n\nCP181 pending delivery; AUD054 periodic180, next auditCP184. Review waived, no independent approval.\n",
+      "body": "KRE-005b — đang thực hiện, Codex solo/tự kiểm; review độc lập được chủ dự án miễn. Feature IDs: KR-B001, KR-B002, KR-B003, KR-L001, KR-L002, KR-L003, KR-R001, KR-R002, KR-R003, KR-R004, KR-F001, KR-F002, KR-F003, KR-F004, KR-F005, KR-F006, KR-F007, KR-F008, KR-F009, KR-F010, KR-F011, KR-F012, KR-F013, KR-F014, KR-F015, KR-X001, KR-X002, KR-X003, KR-S001, KR-S002.\n\nCP181 đã merge [PR253](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/253), `5a154e5`. CP182 là batch identity/panel đang bàn giao, chưa đóng K3.\n\nNguồn chuẩn:\n- [PLAN/thứ tự và acceptance](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/kre/lobby-identity-cache/docs/PLAN.md#current-order)\n- [PROTOCOL/contract và giới hạn](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/kre/lobby-identity-cache/docs/PROTOCOL.md#local-name-model)\n- [RESEARCH/câu hỏi và phép kiểm](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/kre/lobby-identity-cache/docs/RESEARCH.md#gap-lobby-identity-followup)\n- [Catalog](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/kre/lobby-identity-cache/docs/COVERAGE.md)\n- [Recipe/run/hash CP182](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/kre/lobby-identity-cache/docs/evidence/lobby-identity/README.md)\n\nĐã biết: auth ID1/KRLocal và actualrequest6 đúng; runtime tìm CUserListUIWnd thực trong sảnh. Consumer vẽ lấy record riêng, hai observation sau ready có guard0, raw name rỗng. Không suy authfield sai hoặc cần port packet VN. VN giúp phân biệt store list/ownpanel với auth; ownlevel/exp trên VN chưa kiểm. Productionservice/47fixtures không đổi.\n\nGiới hạn: modifiedWine/samephysicalhost/inheritedcache; một run probe dừng C++exception trước ready giữ raw, run sau không chứng minh causalfix. Không originalWindows/fullauth/LAN/Internet/8client/gate proof.\n\nCòn thiếu/phép thử tiếp: theo PLAN, source-first nguồn VNUserMap và KR544record; xác định đúng producer/dispatch→store→render rồi positive/control native. Cachecold/missing/warm, wrongsocket/stage/version/identity theo acceptance còn mở; không đo lại authgetter/cacheCRC hoặc quét186xref. D7A260 chỉ levelchange consumer tĩnh.\n\nAcceptance umbrella giữ nguyên: đóng khi các đầu ra/gate PLAN đủ evidence và integration, không từ checkpoint hoặc PR.\n\n- [x] K0/K2a CP178; K1offlineR2 CP179.\n- [x] K2 codec/hello profileoffline CP181.\n- [ ] K3 identity/cache/UI.\n- [ ] K4/K5/K6a localfullmatch; K6b LAN/K6c Internet/K7 hardening theo PLAN.\n\nCP182 chưa merge khi cập nhật; AUD054 qua180, audit kếCP184. Không đóng issue/gate từ tổ chức tài liệu.\n",
       "closedAt": null,
       "number": 14,
       "state": "OPEN",
       "title": "[KRE-005b] Tích hợp KR00967 local: Battle, lifecycle và nghiệm thu",
-      "updatedAt": "2026-11-06T22:17:59Z",
+      "updatedAt": "2026-11-06T23:11:29Z",
       "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/14"
     },
     {
@@ -636,6 +636,17 @@
     }
   ],
   "pull_requests": [
+    {
+      "headRefOid": "f7b3c2c022d45ea659b5f4378a3828429e13d630",
+      "mergeCommit": {
+        "oid": "5a154e51ce918d39e0383c12a26ff3a592dbfaeb"
+      },
+      "mergedAt": "2026-11-06T22:28:05Z",
+      "number": 253,
+      "state": "MERGED",
+      "title": "Verify KR login reconnect and accept measured codec profile (CP181)",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/253"
+    },
     {
       "headRefOid": "025b956cca1081cabdff3eccb96c06f016183b4e",
       "mergeCommit": {
