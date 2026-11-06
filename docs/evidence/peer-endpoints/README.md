@@ -876,3 +876,43 @@ giữ exact preset trước/sau provenance-only update; operational profile khô
 CP161 tự kiểm/review waived/chờ PR, AUD048 qua160/kế164. Known A/B/empty-password/single row và32 byte
 là policy; general room/full auth/original authority/Windows/LAN/Internet/8 client/K6a chưa nâng.
 Phần next chỉ ở PLAN: input Manner/Free; lịch sử CP160 pending title là trạng thái tại run cũ.
+
+
+<a id="cp162"></a>
+## CP162 — actual team input, ACK/return reset và mode1 hai vòng
+
+Baseline CP161 [PR232](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/232),
+head `7f2bf84cd7d1c7bb9dbc9e7e5184b42a8aeda63e`, merge `593bdc0e48ffb9c742d4a624357a6d8fc376bb6c`.
+[Contract duy nhất/giới hạn](../../PROTOCOL.md#current-team-mode), [PLAN](../../PLAN.md#current-order).
+
+| Run dưới `local/research/codex/` | Giây/exit/raw/frozen | SHA256 run.json |
+|---|---|---|
+| team-mode-free-r1 |109.603290609/0/353/102|`1ab82c7b82014a5ff29f135832b77fe15e0daf724769b79a27550d4eb5f6c047`|
+| team-mode-manner-r2 |110.005519714/0/344/102|`ed0bea080059db937bbc3d5a17c0defbb9ee67f363acf449660d33e3771a1e91`|
+| team-mode-integrated-r3 |444.902234357/0/1179/106|`2bb407bf3d29c2463be4c883d5bcfb20e850892698f10a42eef8ea37b62aee3b`|
+| team-mode-reset-r4 |388.062478881/0/1214/106|`3fd7959d786b4062fe8aefb532ac003ed8d5c4d40cbda98bf0e8c73bedf4a814`|
+
+Prep/controller pairs `prepare_team_mode_free.py`/`wine_probe_team_mode_free.py`,
+`prepare_team_mode_manner.py`/`wine_probe_team_mode_manner.py`,
+`prepare_team_mode_integrated.py`/`wine_probe_team_mode_integrated.py`,
+`prepare_team_mode_reset.py`/`wine_probe_team_mode_reset.py`. Mỗi recipe/preflight/raw-seal ghi command,
+source/copy/profile/fixture hash, owned cleanup/namespace extinct. Không source/config dùng trong run đổi
+khi đang chạy; source/DB/pack gốc bất biến. `reuse-question.json` pin nguồn cũ/câu hỏi/gap/measurement.
+
+Reuse CP147 native selector/balance, CP016/076 typed81, CP017DB29A0, CP028817820, CP022E64950;
+VN lobby/oc_a-room và legacyKR chỉ reference. `verify_team_mode.py`:7/10/33/40 joins theo run;
+r3 **failed mode persistence** ghi riêng với actual0/write/caller, không sửa raw để pass. R1/r2 chỉ setup
+và dừng trước guest Back; r3/r4 actual2 outcomes/Ready, nhưng chỉ r4 giữ Manner qua cả hai return.
+Actual81native3 cases/run và91native3/3/6/6; r3/r4 actual86/87/18021 native cases/run, source/runtime/model tách.
+R4 75pickup/46cycle/670peer4windows/14claimjoins/16loading/26entityreset/23strictlife;2598actor/432peer/
+2364flag+2340array/16life/309nativepacket models. Tên phòng retained/nativeUI proof cùng raw.
+
+`analyze_team_integrated.py` reuse verifiers đã sửa actual winner từ CP161, chỉ khai thêm allowed mode
+profile delta; không hardcode winner hoặc đổi tiêu chí gameplay. `analysis-corrections.json` giữ orchestration
+missingPYTHONPATH/prep-wait và r3 control; REA assembly DB2FE0 timeout450s được giữ, không dossier mới thành công,
+provider đã close. `visual-review.json` pin Free/Manner checkbox và finalr4 hai view; A whiteStart một ảnh
+không Start3/persistentbug proof. `frozen-preset-runtime.json`/`preset-update.json` giữ provenance và phân biệt
+r4 CP161export+policy với chính file preset mới; không đổi47fixturepins/rawseal. 257server/4export checks.
+
+CP162 Codex self-check/review waived/chờ PR; AUD048 qua160/kế164. No8actualclients/fullmatch/K6a/
+Windows/LAN/Internet/originalauthority. Next balanced8 Start theo PLAN, không mở lại mapdump/guardRE.

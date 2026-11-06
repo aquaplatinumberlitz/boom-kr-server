@@ -135,11 +135,11 @@
         "KR-F001",
         "KR-F015"
       ],
-      "known": "CP160/PR231 merged a588e95. CP161 current A81→B91 title echo/actual native81/91/UI A=B; B Back/rejoin and2productionnormalcycles/reset/Ready. 247server/4export tests;47fixturepins. AUD048through160/next164.",
-      "remaining": "Known A/B single uncompressed row/empty-password/max32policy only; C/recreate/promotion/password/generalrooms/fullauth/originalauthority/Windows/LAN/Internet/8clients/K6a andnaturalCP157cause remain.",
-      "next_test": "PLAN reuseCP147 capacity8/selector+9C/nativebalancedchecks, actual CP161 dialog Manner/Free/Random. Freshfrozen copy/profile actualUI click→captured81/+9C/roomInfo; targetonlydifferentsetter/consumer. No repeatedrosterdump/titleRE/wholeBattle.",
+      "known": "CP161/PR232 merged593bdc0. CP162 Free0/Manner1→actual81/+9C andACK86/87/return180; r4maintains1throughBBack/rejoin/2normaloutcomes/reset/Ready. R3 failedmodepersistence retained. 257servertests/47pins;AUD048through160/next164.",
+      "remaining": "Balanced8 selector1 actualStart4to4/negative1to7 notyetmeasured; CP147hadfree0runtime/balanced1emulation. Newmodepresetactualfile/Start3pending. Row91modefields/Random/C/promotion/recreate/generalrooms/fullauth/Windows/LAN/Internet/8clients/K6a/originalauthority/naturalCP157open.",
+      "next_test": "PLAN reuseCP147roster/Ready4/map278capacity8/nativegetter; newfrozenreply86selector1 fromknown81, actualStart4to4check0/104 versus1to7check7/no104. Singleactualclient/syntheticothers, not8peerintegration. ThenmodepresetnativeStart3/CP164audit.",
       "acceptance": "Epic checklist: linkedscopedtask/evidence+authoritymatrix vàacceptancegate ởPLAN; từngtaskđóng khôngđóngepic/K5/K6a.",
-      "reason": "Actual title gap resolved in measured knownvariant, no gateclosure. Next actual unknown is mapping mode UI/wire to native team selector.",
+      "reason": "Actualmodeinput/ACK/reset gap identifiedandfixed withpositiveandfailedcontrols; two Manner cycles narrowpolicyproof, no gateclosure.",
       "sources": [
         "docs/PROTOCOL.md#authority",
         "docs/RESEARCH.md#feature-gaps",
@@ -183,7 +183,8 @@
         "docs/PROTOCOL.md#current-trap-udp-counter",
         "docs/PROTOCOL.md#production-baseline",
         "docs/PROTOCOL.md#exported-preset-runtime",
-        "docs/PROTOCOL.md#current-room-title"
+        "docs/PROTOCOL.md#current-room-title",
+        "docs/PROTOCOL.md#current-team-mode"
       ],
       "evidence": [
         "docs/evidence/current-movement-cycles/README.md",
@@ -223,7 +224,8 @@
         "docs/evidence/peer-endpoints/README.md#cp158",
         "docs/evidence/peer-endpoints/README.md#cp159",
         "docs/evidence/peer-endpoints/README.md#cp160",
-        "docs/evidence/peer-endpoints/README.md#cp161"
+        "docs/evidence/peer-endpoints/README.md#cp161",
+        "docs/evidence/peer-endpoints/README.md#cp162"
       ],
       "prs": [
         173,
@@ -278,7 +280,8 @@
         228,
         229,
         230,
-        231
+        231,
+        232
       ],
       "successors": []
     },

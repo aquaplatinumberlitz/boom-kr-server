@@ -279,3 +279,14 @@ Mode không khai báo giữ hành vi cũ. Dynamic guest Back/return91/rejoin và
 production đã đo; [contract/giới hạn](../docs/PROTOCOL.md#current-room-title),
 [raw/recipe](../docs/evidence/peer-endpoints/README.md#cp161). Không hỗ trợ tổng quát password,
 compressed/multi-row/C/recreate/promotion;32 byte là design policy.
+
+
+### Free/Manner qua ACK và return — CP162
+
+Preset mới bật `room_team_mode: {"mode":"create81_to_86_87"}` sau runtime positive r4.
+Known A/B/selector0–1 và bounded81/title policy; echo vào86/87 và byte thứ hai return180 nhánh bool0/list0.
+Không khai báo giữ default. Template/hash/shape preflight, failed ACK không commit; unsupported selector/
+alias ngoài current create/join bị từ chối, không tự suy Random/C/promotion/generalroom support.
+[Contract/giới hạn và đối chứng reset lỗi](../docs/PROTOCOL.md#current-team-mode),
+[recipe/hash](../docs/evidence/peer-endpoints/README.md#cp162). Operational profile đã đo hai vòng/Ready;
+chính file preset cập nhật còn chờ native smoke, không đồng nhất export/unit tests với runtime.

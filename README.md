@@ -41,16 +41,17 @@ Hai copy KR Wine đã chạy login/sảnh/phòng/Battle và các chu kỳ kết 
 [kim/reset](docs/PROTOCOL.md#needle-round-reset), [cứu hai chiều và hai kết quả](docs/PROTOCOL.md#rescue-two-results),
 [deep chain/reset](docs/PROTOCOL.md#recursive-chain-cycles) giữ phạm vi và giới hạn tại nguồn chuẩn.
 
-**Mốc mới CP161:** tên phòng từ request tạo phòng của host đã được phản ánh vào danh sách và
-phòng guest. Hai copy Wine hiển thị cùng tên, guest Back/vào lại và hai vòng kết quả/reset/Ready
-đã kiểm trên service production. [Contract/giới hạn](docs/PROTOCOL.md#current-room-title),
-[run/hash](docs/evidence/peer-endpoints/README.md#cp161). Preset giữ47 fixture pin và bật chính sách tên mới.
+**Mốc mới CP162:** đã nối lựa chọn Free/Manner thật tới selector KR và sửa hai chỗ stub làm mất
+lựa chọn này: ACK tạo/vào phòng và return180. Hai copy Wine giữ Manner qua guest Back/vào lại,
+**hai vòng kết quả/reset/Ready**. [Contract/giới hạn](docs/PROTOCOL.md#current-team-mode),
+[run/hash/control](docs/evidence/peer-endpoints/README.md#cp162). Preset giữ47 fixture pin và bật policy mới
+sau runtime positive; chưa chạy chính file preset đã cập nhật trong một run mới.
 
-CP160 đã merge [PR231](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/231) tại `a588e95`;
-CP161 tự kiểm/chờ PR. AUD048 qua160, kỳ tiếp CP164. Bước tiếp theo trong [PLAN](docs/PLAN.md#current-order)
-là đo input Manner/Free và selector chia đội từ UI thật; không lặp kiểm roster tổng hợp CP147.
-K6a/fullmatch/LAN/Internet/8 client thật và nguyên nhân natural transient CP157 vẫn mở;
-[review waived](docs/evidence/checkpoints/review-waiver.json).
+CP161 đã merge [PR232](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/232) tại `593bdc0`;
+CP162 tự kiểm/chờ PR. AUD048 qua160, kế CP164. [PLAN](docs/PLAN.md#current-order) tiếp kiểm
+Start cân bằng4–4/negative1–7 bằng selector1 đã nối, tái dùng roster CP147. Đây vẫn là một client với
+roster tổng hợp; K6a/fullmatch/LAN/Internet/8 client thật và natural transient CP157 còn mở.
+[Review waived](docs/evidence/checkpoints/review-waiver.json).
 
 Đích đầu: hai client thật chơi hai trận liên tiếp; mở bốn client và hardening sau đó.
 

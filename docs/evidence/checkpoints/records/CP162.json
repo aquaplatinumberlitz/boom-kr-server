@@ -1,0 +1,277 @@
+{
+  "id": "CP162",
+  "previous": "CP161",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-06T09:34:46.515262+00:00",
+  "context_commit": "593bdc0e48ffb9c742d4a624357a6d8fc376bb6c",
+  "owner": "Codex",
+  "reviewer": "Codex",
+  "question": "WhatactualManner/Freeinput initializesKRteamselector,andwhichserviceACK/resetpathsdiscardit? Canbounded86/87/180echo preserveManner1throughBBack/rejoinand2normalproductioncycles?",
+  "scope": "Four frozen actualWine runs: FreeUI/Mannercontrol, initialACKfixwithfailed180persistencecontrol, corrected180two-cyclepositive. SourcefirstCP147/016/017/028/022 andVNworkflowreuse, no successfulnewbodyRE. Optinpolicy10newtests/257fullserver/47pinpreset afterpositive.",
+  "artifacts": [
+    {
+      "name": "KRoriginalCA/read-only",
+      "sha256": "a52545c14b1fea423de655c3163d6360b628d61c1cd472b46fdbc8a9ffe15f4e"
+    },
+    {
+      "name": "Winecopyunchanged",
+      "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+    },
+    {
+      "name": "staticcopy",
+      "sha256": "660447c293ce92270cb9b5815331bca976e8f156366e1fe50b217b6c12e60ce3"
+    }
+  ],
+  "locators": [
+    "BaselineCP161PR232head7f2bf84cd7d1c7bb9dbc9e7e5184b42a8aeda63e/merge593bdc0e48ffb9c742d4a624357a6d8fc376bb6c.",
+    "team-mode-free-r1/run1ab82c7b82014a5ff29f135832b77fe15e0daf724769b79a27550d4eb5f6c047/109.603290609s/exit0/353raw/102frozeninputs",
+    "team-mode-manner-r2/runed0bea080059db937bbc3d5a17c0defbb9ee67f363acf449660d33e3771a1e91/110.005519714s/exit0/344raw/102frozeninputs",
+    "team-mode-integrated-r3/run2bb407bf3d29c2463be4c883d5bcfb20e850892698f10a42eef8ea37b62aee3b/444.902234357s/exit0/1179raw/106frozeninputs",
+    "team-mode-reset-r4/run3fd7959d786b4062fe8aefb532ac003ed8d5c4d40cbda98bf0e8c73bedf4a814/388.062478881s/exit0/1214raw/106frozeninputs",
+    "Base400000/RVA=VA−base; actual81secondof12u32after2strings=Free0/Manner1;15othertailfieldsunchanged. Nativegetter123FA10/+9C reusedCP147. R2Manner1atDB3025/DB2A18→0 write123F9FE/callerDB2A50 fromACK86offset7.",
+    "CachedCP017DB29A0/CP028817820: guest87secondpostsessionu8 offset5→123F9C0/caller8179BA. R3 actualinitial1thenboth0atE64A7B from180secondbyte; cachedCP022E64950 branchbool0/listflag0. No VN enum/opcode/layoutport.",
+    "AUD048through160/nextCP164 unchanged; Codexselfcheck/reviewwaived."
+  ],
+  "findings": [
+    {
+      "summary": "ActualFreeUIvsMannerUI changes81second_u32after2strings0vs1onlywithin16tailfields. R2nativeManner+9C1beforecreateandACK thenfixed86changes0 at123F9FE/callerDB2A50; currentinputandactualblockingstuboverwrite linkedwithoutmanagerforcing.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#current-team-mode",
+      "evidence": [
+        "RUN-00420",
+        "RUN-00839",
+        "RUN-03579",
+        "RUN-00757"
+      ],
+      "limits": "ModifiedWinecopies/privatevirtualhosts/samephysicalhost/knownnormalBattle/syntheticidentity/productionpolicy. ActualFree0/Manner1 input/81field/selector nativeproof, optinmodeecho limitedA/B/0or1/boundedempty-passwordtitlepolicy/knownsuccessful86/87/180bool0list0. R3twooutcomesbutmode1resetto0 atreturn1explicitFAILEDpersistence; onlyr4 mode1through2normaloutcomes/Ready. No8realclients/generalrow91modefields/Random/C/promotion/recreate/generalrooms/originalauthority/fullauth/Windows/LAN/Internet/K6a/fullmatch. R4finalAwhiteStartsingleframe notpersistentbug orStart3proof. Presetupdatedafterr4/exactoperationalprofile notactualnewpresetfileexecution. No sourcebinary/DB/packchange/newsuccessfulbodyRE; naturalCP157unknown."
+    },
+    {
+      "summary": "ReusecachedKRconsumers86offset7/87offset5/180offset1 toimplementoptinboundedA/B0or1echo/preflight/ACKcommit/defaultpreservation. Rejectunsupportedselector/alias/malformedbodywithoutACK/partialtitlecommit. Sequenceandotherbodybytespreserved;10newtests257serverpass.",
+      "source": "design",
+      "status": "design",
+      "method": "design",
+      "canonical": "docs/PROTOCOL.md#current-team-mode",
+      "evidence": [
+        "RUN-03428",
+        "RUN-03430",
+        "RUN-03431",
+        "RUN-03557"
+      ],
+      "limits": "ModifiedWinecopies/privatevirtualhosts/samephysicalhost/knownnormalBattle/syntheticidentity/productionpolicy. ActualFree0/Manner1 input/81field/selector nativeproof, optinmodeecho limitedA/B/0or1/boundedempty-passwordtitlepolicy/knownsuccessful86/87/180bool0list0. R3twooutcomesbutmode1resetto0 atreturn1explicitFAILEDpersistence; onlyr4 mode1through2normaloutcomes/Ready. No8realclients/generalrow91modefields/Random/C/promotion/recreate/generalrooms/originalauthority/fullauth/Windows/LAN/Internet/K6a/fullmatch. R4finalAwhiteStartsingleframe notpersistentbug orStart3proof. Presetupdatedafterr4/exactoperationalprofile notactualnewpresetfileexecution. No sourcebinary/DB/packchange/newsuccessfulbodyRE; naturalCP157unknown."
+    },
+    {
+      "summary": "R3fix86/87initiallysets1bothviewsandBBack/rejoin,buttwooutcomesdoNOTcertifypersistence: actualreturn1writesboth+9C0 throughE64A7B. CachedCP022second180byteidentifiesmissingresetpath. RetainFAILEDcontrol/source/raw, fixonlyaftercleanup.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#current-team-mode",
+      "evidence": [
+        "RUN-02159",
+        "RUN-02001",
+        "RUN-02000",
+        "RUN-03602"
+      ],
+      "limits": "ModifiedWinecopies/privatevirtualhosts/samephysicalhost/knownnormalBattle/syntheticidentity/productionpolicy. ActualFree0/Manner1 input/81field/selector nativeproof, optinmodeecho limitedA/B/0or1/boundedempty-passwordtitlepolicy/knownsuccessful86/87/180bool0list0. R3twooutcomesbutmode1resetto0 atreturn1explicitFAILEDpersistence; onlyr4 mode1through2normaloutcomes/Ready. No8realclients/generalrow91modefields/Random/C/promotion/recreate/generalrooms/originalauthority/fullauth/Windows/LAN/Internet/K6a/fullmatch. R4finalAwhiteStartsingleframe notpersistentbug orStart3proof. Presetupdatedafterr4/exactoperationalprofile notactualnewpresetfileexecution. No sourcebinary/DB/packchange/newsuccessfulbodyRE; naturalCP157unknown."
+    },
+    {
+      "summary": "R4actualManner81→create86/Bjoin87/rejoin87/tworeturn180set1eachview, all7actualmodeframes native21cases, nochangedselector0beforeReady2; actualStartDCB138getter1inboth epochs. 2nativeoutcomes/reset/Ready/currenttitle retained withproduction/noholdreplay; notStart3/8clients/gate.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#current-team-mode",
+      "evidence": [
+        "RUN-03558",
+        "RUN-03451",
+        "RUN-02206",
+        "RUN-03466",
+        "RUN-03448",
+        "RUN-03579"
+      ],
+      "limits": "ModifiedWinecopies/privatevirtualhosts/samephysicalhost/knownnormalBattle/syntheticidentity/productionpolicy. ActualFree0/Manner1 input/81field/selector nativeproof, optinmodeecho limitedA/B/0or1/boundedempty-passwordtitlepolicy/knownsuccessful86/87/180bool0list0. R3twooutcomesbutmode1resetto0 atreturn1explicitFAILEDpersistence; onlyr4 mode1through2normaloutcomes/Ready. No8realclients/generalrow91modefields/Random/C/promotion/recreate/generalrooms/originalauthority/fullauth/Windows/LAN/Internet/K6a/fullmatch. R4finalAwhiteStartsingleframe notpersistentbug orStart3proof. Presetupdatedafterr4/exactoperationalprofile notactualnewpresetfileexecution. No sourcebinary/DB/packchange/newsuccessfulbodyRE; naturalCP157unknown."
+    },
+    {
+      "summary": "Presetaddsmeasuredmodepolicyafterpositive;47pinsunchanged, finalexportexactactualr4profile/preflight. ExactfrozenCP161presetretained/hashverified; newpresetfilebytesnotrunyet. REAassemblyDB2FE0timeout450s/no successdossier, cachednativeandwatchproofindependent; providerclosed.",
+      "source": "design",
+      "status": "design",
+      "method": "documentation",
+      "canonical": "docs/PROTOCOL.md#current-team-mode",
+      "evidence": [
+        "RUN-03465",
+        "RUN-03433",
+        "RUN-03426",
+        "RUN-00791",
+        "RUN-02187"
+      ],
+      "limits": "ModifiedWinecopies/privatevirtualhosts/samephysicalhost/knownnormalBattle/syntheticidentity/productionpolicy. ActualFree0/Manner1 input/81field/selector nativeproof, optinmodeecho limitedA/B/0or1/boundedempty-passwordtitlepolicy/knownsuccessful86/87/180bool0list0. R3twooutcomesbutmode1resetto0 atreturn1explicitFAILEDpersistence; onlyr4 mode1through2normaloutcomes/Ready. No8realclients/generalrow91modefields/Random/C/promotion/recreate/generalrooms/originalauthority/fullauth/Windows/LAN/Internet/K6a/fullmatch. R4finalAwhiteStartsingleframe notpersistentbug orStart3proof. Presetupdatedafterr4/exactoperationalprofile notactualnewpresetfileexecution. No sourcebinary/DB/packchange/newsuccessfulbodyRE; naturalCP157unknown."
+    }
+  ],
+  "verification": [
+    {
+      "check": "257server/10newmode tests;4exporttests/47realpins/exactoperationalr4profile/preflight",
+      "result": "pass",
+      "evidence": [
+        "RUN-03557",
+        "RUN-03425",
+        "RUN-03426"
+      ],
+      "limits": "Regression/exportequality notnewnativepresetfileororiginalauthority."
+    },
+    {
+      "check": "Actualinput/nativejoins7Free/10Mannercontrol;R3initial1thenreturn0persistence",
+      "result": "fail",
+      "evidence": [
+        "RUN-00420",
+        "RUN-00839",
+        "RUN-02159"
+      ],
+      "limits": "R1/R2inputchecks pass; R3 persistence FAILED bothviews despite2outcomes. R4separatepositive fixesactual180path, no retroactivepass."
+    },
+    {
+      "check": "R4 40mode/21actualmodeframerCRCpartial/24title/3actual81/6actual91/75pickup/46cycle/670peer4windows/14claims/16loading/26entityreset/23strictlife",
+      "result": "pass",
+      "evidence": [
+        "RUN-03558",
+        "RUN-03451",
+        "RUN-03559",
+        "RUN-02185",
+        "RUN-02186",
+        "RUN-03466",
+        "RUN-02206",
+        "RUN-03424",
+        "RUN-02193",
+        "RUN-03442",
+        "RUN-03580",
+        "RUN-03448"
+      ],
+      "limits": "ModifiedWinecopies/privatevirtualhosts/samephysicalhost/knownnormalBattle/syntheticidentity/productionpolicy. ActualFree0/Manner1 input/81field/selector nativeproof, optinmodeecho limitedA/B/0or1/boundedempty-passwordtitlepolicy/knownsuccessful86/87/180bool0list0. R3twooutcomesbutmode1resetto0 atreturn1explicitFAILEDpersistence; onlyr4 mode1through2normaloutcomes/Ready. No8realclients/generalrow91modefields/Random/C/promotion/recreate/generalrooms/originalauthority/fullauth/Windows/LAN/Internet/K6a/fullmatch. R4finalAwhiteStartsingleframe notpersistentbug orStart3proof. Presetupdatedafterr4/exactoperationalprofile notactualnewpresetfileexecution. No sourcebinary/DB/packchange/newsuccessfulbodyRE; naturalCP157unknown."
+    },
+    {
+      "check": "2598actor/432peer/2364flag+2340array/16life/309nativepacketmodels separate;3090raw/416inputs/cleanup/core/docs/catalog/issues/artifacts/diff",
+      "result": "pass",
+      "evidence": [
+        "RUN-02183",
+        "RUN-03464",
+        "RUN-03432",
+        "RUN-03449",
+        "RUN-03452",
+        "RUN-03469",
+        "RUN-03511",
+        "RUN-03423",
+        "RUN-03445",
+        "RUN-02192"
+      ],
+      "limits": "Mechanicalchecks notsemantics/gates; fullcheckpointsrequire-local/history beforecommit. REA450stimeoutdoesnotnegateindependentnativeproof."
+    }
+  ],
+  "evidence": [],
+  "evidence_manifests": [
+    {
+      "path": "docs/evidence/checkpoints/evidence/CP162-team-mode.json",
+      "bytes": 902594,
+      "sha256": "a935e6401539ea164c9a377c6609cda1f0170981ca7ba2847196601876d9d79d",
+      "count": 3605
+    }
+  ],
+  "delta": {
+    "added": [
+      "ActualFree0/Manner1→KR81/native+9C mapping andACK86/87/reset180 overwrite provenance.",
+      "Boundedoptinserviceecho/presetafterpositive,10newtests;Manner1twooutcomes/reset/Readyactualruntime."
+    ],
+    "corrected": [
+      "Previousopaque81field1nowlinkedonlyinnormalBattle; Random/otherfieldsnotinferred.",
+      "R3initialACKfixnotfullpersistence: native180writes0bothviews, retainedfailedcontrol; correctedonlynewr4.",
+      "CP161PR232merged/currentnavigation; newpresetoperationalprofileexactbutfileitselfnotyetnative-smoked.",
+      "AwhiteStartonefinalsnapshotnotpersistentUIbugorStart3success; REAtimeoutnotnewdossier."
+    ],
+    "superseded": [
+      "NEXT-TEAM-MODE-INPUT closedbounded0/1input/ACK/resetproof; NEXT-BALANCED-EIGHT-START active."
+    ]
+  },
+  "blockers": [
+    "CP147balanced1onlystatic/emulation; actual8roster4to4/negative1to7withnowknownwireselector1notyetmeasured.",
+    "Finalupdatedpresetnativefile/Start3pending; row91modefields/Random/C/promotion/recreate/generalroom/fullauth/originalauthority/Windows/LAN/Internet/8realclients/K6a/fullmatch/naturalCP157open."
+  ],
+  "next_steps": [
+    {
+      "id": "NEXT-TEAM-MODE-INPUT",
+      "task": "KRE-005b",
+      "state": "closed",
+      "action": "CP162actualFree0/Manner1/81/+9C/86/87/180echo; R4mode1bothviews2normalcycles/Ready, failedR3retained. No universalenum/8client/gateclaim.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-BALANCED-EIGHT-START",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "PLAN reuseCP147roster/Readyflags4/capacity8map278/guard/getter/model, newfrozencopy/harness success86selector1fromknown81withoutmanagerforcing. ActualStart4to4check0/104 vs1to7check7/no104/nativeCRCpartial/cleanup. Singleclient/syntheticothers not8peers/Battle8. ThenactualmodepresetStart3/AUD049atCP164 percounter.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    }
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-11-06T09:34:46.515262+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "Codex solo RE/runtime/code/self-check; independent review waived, failedcontrol disclosed, no gateclosure.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Owner explicitly requested solo without workers/review."
+    }
+  },
+  "docs_sync": [
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "CP162actualmodeinput/ACKreset/failedR3/positiveR4/presetlimits/PR232merge/nextbalanced8 syncedbeforecomplete."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "CP162actualmodeinput/ACKreset/failedR3/positiveR4/presetlimits/PR232merge/nextbalanced8 syncedbeforecomplete."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "updated",
+      "reason": "CP162actualmodeinput/ACKreset/failedR3/positiveR4/presetlimits/PR232merge/nextbalanced8 syncedbeforecomplete."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "updated",
+      "reason": "CP162actualmodeinput/ACKreset/failedR3/positiveR4/presetlimits/PR232merge/nextbalanced8 syncedbeforecomplete."
+    },
+    {
+      "path": "docs/features.json",
+      "state": "updated",
+      "reason": "CP162actualmodeinput/ACKreset/failedR3/positiveR4/presetlimits/PR232merge/nextbalanced8 syncedbeforecomplete."
+    },
+    {
+      "path": "docs/COVERAGE.md",
+      "state": "updated",
+      "reason": "CP162actualmodeinput/ACKreset/failedR3/positiveR4/presetlimits/PR232merge/nextbalanced8 syncedbeforecomplete."
+    },
+    {
+      "path": "docs/evidence/peer-endpoints/README.md",
+      "state": "updated",
+      "reason": "CP162actualmodeinput/ACKreset/failedR3/positiveR4/presetlimits/PR232merge/nextbalanced8 syncedbeforecomplete."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/review.json",
+      "state": "updated",
+      "reason": "CP162actualmodeinput/ACKreset/failedR3/positiveR4/presetlimits/PR232merge/nextbalanced8 syncedbeforecomplete."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
+      "state": "updated",
+      "reason": "CP162actualmodeinput/ACKreset/failedR3/positiveR4/presetlimits/PR232merge/nextbalanced8 syncedbeforecomplete."
+    },
+    {
+      "path": "server/README.md",
+      "state": "updated",
+      "reason": "CP162actualmodeinput/ACKreset/failedR3/positiveR4/presetlimits/PR232merge/nextbalanced8 syncedbeforecomplete."
+    }
+  ]
+}

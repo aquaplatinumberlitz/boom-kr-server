@@ -21,6 +21,7 @@ import time
 from server import probe_codec as codec
 from server.item_claims import ItemSpec
 from server.room_title import create_title, replace_listing_title
+from server.room_team_mode import create_selector, replace_reply_selector
 from server.chain_capacity import ClearCellChains
 from server.terrain_model import Bomb
 from server.terrain_profile import load_terrain
@@ -186,6 +187,17 @@ class ProbeService:
             for alias in ('roomlist_A', 'roomlist_B'):
                 replace_listing_title(profile.body(alias), b'KRRoom')
             self.room_title_mode = True
+        self.room_team_mode = False
+        self.room_team_selector = None
+        if 'room_team_mode' in profile.data:
+            if profile.data['room_team_mode'] != {'mode': 'create81_to_86_87'}:
+                raise ValueError('unsupported room_team_mode policy')
+            for alias, opcode in (('create', 86), ('join', 87), ('return', 180)):
+                raw = profile.raw(alias)
+                if struct.unpack_from('<I', raw, 5)[0] != opcode:
+                    raise ValueError('unsupported room team fixture opcode')
+                replace_reply_selector(profile.body(alias), opcode, 0)
+            self.room_team_mode = True
         self.loading_timeout_ns = None
         if 'loading_timeout' in profile.data:
             policy = profile.data['loading_timeout']
@@ -297,7 +309,7 @@ class ProbeService:
         self.state['policy_sources'] = []
         for filename in ['probe_service.py', 'probe_codec.py', 'probe_room.py', 'round_fence.py',
                          'item_claims.py', 'udp_round_keys.py', 'chain_capacity.py',
-                         'terrain_model.py', 'terrain_profile.py', 'room_title.py']:
+                         'terrain_model.py', 'terrain_profile.py', 'room_title.py', 'room_team_mode.py']:
             path = Path(__file__).with_name(filename)
             self.state['policy_sources'].append({'path': str(path.resolve()),
                                                  'sha256': hashlib.sha256(path.read_bytes()).hexdigest()})
@@ -318,6 +330,9 @@ class ProbeService:
             if (getattr(self, 'room_title_mode', False) and name == 'roomlist_B'
                     and self.room_title_bytes is not None):
                 body = replace_listing_title(body, self.room_title_bytes)
+            if (getattr(self, 'room_team_mode', False) and name == 'return'
+                    and self.room_team_selector is not None):
+                body = replace_reply_selector(body, 180, self.room_team_selector)
         if opcode is None:
             opcode = struct.unpack_from('<I', template, 5)[0]
         sequence = event.get('s2c_next_seq', 73)
@@ -509,10 +524,28 @@ class ProbeService:
                                                'visit': len(event['room_visits']),
                                                'monotonic_ns': now})
 
-    def send_setup(self, event, aliases, label):
+    def send_setup(self, event, aliases, label, body_overrides=None):
+        body_overrides = body_overrides or {}
         if event.get('room_reentry'):
-            return [self.send(event, alias, label + '-' + alias) for alias in aliases]
-        self.send_raw(event, b''.join(self.profile.raw(alias) for alias in aliases))
+            return [self.send(event, alias, label + '-' + alias, body=body_overrides.get(alias))
+                    for alias in aliases]
+        frames = []
+        for alias in aliases:
+            raw = self.profile.raw(alias)
+            if alias in body_overrides:
+                raw = codec.encode(raw[:37], struct.unpack_from('<I', raw, 5)[0],
+                                   body_overrides[alias], self.profile.data['fixtures'][alias]['sequence'])
+            frames.append(raw)
+        self.send_raw(event, b''.join(frames))
+        for alias, raw in zip(aliases, frames):
+            if alias in body_overrides:
+                name = f"{event['role']}-setup-{alias}-{event['global_ordinal']}.bin"
+                (self.out / name).write_bytes(raw)
+                event.setdefault('setup_body_overrides', []).append({
+                    'alias': alias, 'fixture': name,
+                    'sha256': hashlib.sha256(raw).hexdigest(),
+                    'sequence': self.profile.data['fixtures'][alias]['sequence'],
+                    'monotonic_ns': time.monotonic_ns()})
         return []
 
     def receive_channel(self, event, frame, sequence, body):
@@ -587,7 +620,39 @@ class ProbeService:
                         'role': role, 'seq': sequence, 'reason': str(error),
                         'frame_sha256': hashlib.sha256(frame).hexdigest()})
                     return
-            sent = self.send_setup(event, [alias], 'reentry-create')
+            pending_selector = None
+            reply_bodies = {}
+            if getattr(self, 'room_team_mode', False):
+                try:
+                    if alias not in ('create', 'join'):
+                        raise ValueError('room team mode supports current A/B membership only')
+                    if alias == 'create' and opcode == 81:
+                        pending_selector = create_selector(body)
+                        selector = pending_selector
+                    elif alias == 'join' and self.room_team_selector is not None:
+                        selector = self.room_team_selector
+                    else:
+                        raise ValueError('room team mode requires current create81')
+                    reply_bodies[alias] = replace_reply_selector(
+                        self.profile.body(alias), 86 if alias == 'create' else 87, selector)
+                except ValueError as error:
+                    self.state.setdefault('room_team_rejections', []).append({
+                        'role': role, 'seq': sequence, 'reason': str(error),
+                        'frame_sha256': hashlib.sha256(frame).hexdigest()})
+                    return
+            sent = self.send_setup(event, [alias], 'reentry-create', body_overrides=reply_bodies)
+            if pending_selector is not None:
+                self.room_team_selector = pending_selector
+                self.state.setdefault('room_team_updates', []).append({
+                    'role': role, 'seq': sequence, 'selector': pending_selector,
+                    'frame_sha256': hashlib.sha256(frame).hexdigest(),
+                    'monotonic_ns': time.monotonic_ns(), 'source': 'emu_choice',
+                    'limits': 'Known A/B create81 to success86/87; not original authority/general room variants.'})
+            if reply_bodies:
+                self.state.setdefault('room_team_replies', []).append({
+                    'role': role, 'alias': alias, 'selector': selector,
+                    'body_sha256': hashlib.sha256(reply_bodies[alias]).hexdigest(),
+                    'monotonic_ns': time.monotonic_ns()})
             if pending_title is not None:
                 self.room_title_bytes = pending_title
                 self.state.setdefault('room_title_updates', []).append({

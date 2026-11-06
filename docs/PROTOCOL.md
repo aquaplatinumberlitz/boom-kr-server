@@ -1,6 +1,6 @@
 # KR 00967 — contract tương thích client gốc
 
-Revision kr-legacy-contract-r1; cập nhật06/11/2026 JST (CP161; AUD048 quaCP160, kếCP164).
+Revision kr-legacy-contract-r1; cập nhật06/11/2026 JST (CP162; AUD048 quaCP160, kếCP164).
 **Contract có bằng chứng từng phần; chưa nghiệm thu full codec K2**.
 Lộ trình và thứ tự task chỉ giữ ở [REWRITE_PLAN — KRE](PLAN.md).
 Đây là contract của repo server KR. ADR0009 của bản viết lại là nguồn lịch sử để so sánh;
@@ -454,7 +454,7 @@ hai ca runtime4–4/1–7 đều quan sát selector0 tại caller`DCB138`.
 
 | Mô tả đối chiếu | Mức chứng minh và phần chưa có |
 |---|---|
-| Tự do cho đội lệch1–7; Tiêu chuẩn/Manner đòi các đội bằng nhau | Web KR cũ và mô tả chủ dự án là tham khảo. Hành vi selector0/1 ở trên có nguồn KR; **tên UI và đường wire khởi tạo/chọn selector1 chưa xác nhận**, chưa gọi hai nhãn này là enum KR đã phục hồi. |
+| Tự do cho đội lệch1–7; Tiêu chuẩn/Manner đòi các đội bằng nhau | Web KR cũ và mô tả chủ dự án là tham khảo. Hành vi selector0/1 ở trên có nguồn KR; **tại CP147 tên UI và đường wire chưa xác nhận; [CP162](#current-team-mode) đã nối input/ACK/reset trong nhánh thường**, chưa gọi hai nhãn này là enum KR đã phục hồi. |
 | Battle: nhốt, đồng đội cứu, địch diệt; kim tự thoát | Dùng lại [contact/cứu](#collision-rescue), [kim](#needle-selfescape), [hai kết quả/reset](#rescue-two-results); không đo lại và không suy luật thắng tổng quát từ policy stub. |
 | Nhiệm vụ4 người, quái/boss; Hồi sinh tái xuất hiện ngẫu nhiên và đối thủ được điểm | Tham khảo lịch sử/chủ dự án; **hành vi KR00967 chưa kiểm trong nhánh này**, không nhập luật respawn/score vào Battle thường hoặc mở quét mode trước mục tiêu chơi. |
 
@@ -633,7 +633,7 @@ Report142 được nối tiếp trong [CP032](#hidden-items), không dùng giớ
 
 **180/branch thường:** dispatcher`E5D62B`, CGameStagevt176A470+2D8→`E64950`.
 `1220550` còn có branch khác quaE72490, chưa kiểm. Mẫu branch thường đọc **bool (u8), u8, u8**:
-virtual38→`14EB1F0` thực gọi getter3C và tiêu thụ một byte; rồi status và listflag.
+virtual38→`14EB1F0` thực gọi getter3C và tiêu thụ một byte; rồi trường thứ hai (CP022 gọi status, [CP162](#current-team-mode) nối selector) và listflag.
 Chọn0/0/0, seq91/payload3: `result180-full` đọc3/3/error54=0/error58=0,
 `E652D8→12562F0(12)` và UI phòng có KRLocal/KRGuest/nút Bắt đầu vẽ lại.
 Listflag0 bỏ list variant; ở CP022, reset flags/position đi qua handler nhưng chưa kiểm start trận kế.
@@ -5701,3 +5701,42 @@ sau UI positive r1, r2 đo cùng operational profile; provenance-only update sau
 `profile` và exact frozen preset trong evidence. R2 không Start3/third match; C/recreate/promotion/title
 variants/password/compressed/multi-row/full auth/authority/Windows/LAN/Internet/8 client/K6a chưa kiểm.
 Natural transient CP157 vẫn unknown; không ghép run riêng thành gate/fullmatch.
+
+
+<a id="current-team-mode"></a>
+### Free/Manner, selector và giữ qua return180 — CP162
+
+**`kr_runtime/confirmed` trong copy Wine/nhánh Battle thường, policy echo là `emu_choice/design`.**
+[Run/recipe/control/hash](evidence/peer-endpoints/README.md#cp162). Reuse CP147 getter `123FA10`/manager+9C,
+Start balance và14 emulation cases, CP016/076 actual81 schema, CP017 ACK86 `DB29A0`, CP028 join87
+`817820` và CP022 return180 `E64950`. VN lobby/oc_a-room chỉ hướng dẫn workflow/ready/đội;
+không chuyển opcode/enum/offset/layout VN. Source CA SHA a52545c1…, Wine e9bb4766…,
+static660447c2…/modela08950c8…, base400000, RVA=VA−base; full hashes tại evidence.
+
+Click thật Free/Manner và ảnh checkbox/tooltip đối chứng: **u32 thứ hai sau hai string trong81 là0/1**;
+15 trường đuôi còn lại không đổi so với actual Manner baseline. Đây là một field đã nối trong phần
+trước kia để opaque; field5 không được suy thành capacity. Random/giá trị khác chưa đo. R2 Manner+9C=1
+trước create và tại entry ACK; fixed86 ghi0 qua setter `123F9C0`, actual write tại`123F9FE`, caller`DB2A50`.
+Consumer cached86 đọc selector ở payload offset7; guest87 đọc **offset5** qua`8179B5`/return`8179BA`
+(second u8 sau slot/session, không offset4). R3 sửa86/87 giữ1 lúc join nhưng **failed persistence**:
+return1 ghi cả hai+9C về0, stack`E64A7B`. Cache CP022 nối đó với byte thứ hai180 (offset1) sau bool0.
+Hai outcomes của r3 không được gọi hai vòng Manner.
+
+Opt-in `room_team_mode: {"mode":"create81_to_86_87"}` dùng bounded81/title≤32/CP949/empty-password
+policy như [title](#current-room-title); chỉ chấp nhận selector0/1. Preflight successful86/87 và1803byte
+bool0/listflag0 trước listening. Echo81 vào86/87, commit selector sau ACK thành công; malformed/unsupported
+request không ACK/không commit title hoặc membership. Return180 chỉ thay selector, giữ bool/listflag và
+sequence theo recipient. Default không khai báo giữ nguyên. C/promoted/recreate/general membership không
+được coi đã hỗ trợ; known A/B policy từ chối alias ngoài create/join. Row91 mode metadata khác title
+vẫn chưa phục hồi, không sửa opaque row hoặc khái quát nhánh compressed/list180.
+
+R4 production/direct module, không hold165/active UDP replay: actual Manner81→A86/B87/B Back/rejoin87,
+hai native outcomes/reset/Ready, cả hai setter tại return180 đều1, không write về0 trước Ready2;
+actual Start caller`DCB138` đọc1 ở hai epoch. 7 actual sent86/87/180 frames được native framer/getters/
+CRCpartial kiểm21 cases và giữ mọi byte khác ngoài selector. 40 mode joins; 75 pickup/46 cycle/670 peer
+4 windows/14 claims/16 loading/26 entity reset/23 strict life kiểm riêng. Getter-model không Winecall/worldoracle.
+257 server tests (10 mode tests) đạt; preset chỉ bật sau r4 positive, final export exact operational profile;
+chưa runtime chính file preset mới. R4 A Start area trắng một ảnh cuối, B Ready và tên hai view đúng;
+không suy persistent UI lỗi hoặc Start3 thành công. Không third match/8 client/fullmatch/K6a/LAN/Internet/
+Windows/auth/original authority; natural CP157 vẫn unknown. Runtime8 slot selector1 balanced4–4/1–7 còn
+phép kiểm tiếp trong PLAN; không lặp capacity8 hoặc gọi hai client1–1 là chứng minh mọi đội cân bằng.
