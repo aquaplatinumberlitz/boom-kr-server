@@ -310,3 +310,55 @@ Initialstackregexonly#0 sửaparserđọcthêmfromlines/8frames, khôngrawrewrit
 cùnglúc, khôngcausalcachefieldclaim; hollowWCPkhôngfullschema. CP146selfcheck/pendingPR/reviewwaived;
 AUD044through144/next148. TiếpPLAN explicitservicechannelendpoint/defaultfixtureunchanged +native
 followuprestoredcapture; fullauth/LAN/NAT/Internet/gates/CP137UI/sharedgeometry/fullinventory mở.
+
+
+<a id="cp148"></a>
+## CP148 — Production channel endpoint, baseprofile và UDPcapture; AUD045
+
+Baseline CP146–147/PR218 merge`a3d1d94`; [contract/giới hạn](../../PROTOCOL.md#service-channel-endpoint),
+[câu hỏi](../../RESEARCH.md#gap-diagnostic-service), [thứ tự duy nhất](../../PLAN.md#current-order).
+Codex solo/self-check; review waived, issue14/gates giữ mở. Reuse CP0157/seq52/header/tail,
+CP141explicitIPv4 config/tests, CP146actualconnect/topology/sourcefreeze và CP142–1454peerwindows/
+basic2cycles/pickup/selectedTCPguard. `service-channel-endpoint-r1/reuse-question.json` pinnguồn;
+oldKR/VNchỉđịnhhướngtừCP146, không thêmnativebody/quétcodec/cache hoặc portVNwire.
+
+Code `ProbeService` thêm API/CLI channelIP/port; default rawfixture nguyên byte. Testssocketpair
+xác minh emittedframe/header/seq/tail/only6endpointbytes và profile không mutation; invalidpair/variant
+fail trước selector/listen/output. 237server tests pass; native model3cases trên renderedfixture14byte
+vàCRC/partial negatives là model, **khôngwirecapture7**. Runtime nativeconnect là proof đích riêng.
+
+| Run local/research/codex/ | Kết quả | run.json SHA256 |
+|---|---|---|
+|service-channel-endpoint-r1/cycles|0.365s/exit1/10raw; service reject trước client vì yêu cầu metadata52, baseprofile rawsequence:null. Capture đã init/stop,0UDP; giữ failure/freeze/cleanup.|`c3f95e9d5555df1acb7b2aaea3267befb81c904cd544e090df48d330c2a902a0`|
+|service-channel-endpoint-r2/cycles|345.338s/exit0/1894raw; productionCLI explicit10.77.0.1:3858/baseprofile nguyên byte,2cycles/4peerwindows/Ready;604vethrecords.|`0d883b150487a4a0ce4b8c8c5dfa254da9b493211853573b7db30337332c4986`|
+
+Sửa r1 bằng hỗ trợ metadata null của đường raw, **vẫn verify fixed52CRC/knownvariant**; test regression
+thêm legacy:null và chạy thư mục/prefix/game/freeze mới. Không đổi source/config giữa run; r1bytes
+server/runtime-source riêng và rawseal giữ. Initialtestsocketpair thiếu `chunks` trong fixturetest,
+parser thiếu PYTHONPATH và gọi guardchecker trước reportReady có rawfailedlogs riêng; không sửa
+raw hoặc kết luận game để làm checkerpass. Nativeupstream replay sửa selection theo reply_ordinal
+để không coi bootstrapB là framedchannel; declaredpartial vẫn fail nếu thực sự thiếu byte.
+
+R2 `runtime-preflight.json` parse harness/assert đúng1Capture init sauTopology, stop trongcleanup;
+source/controller/profile/binary hash kiểm lại saucleanup trước chuyển việc. ActualCA+wineserverA/B
+trongchildnetns riêng/rootbridge/veth/files-onlyhostmap10.77.0.1/no default, nguyêncopye9bb4766…
+(base400000/RVA=VA−400000; native model modOa08950…; sourceCAa52545… bất biến).
+First3TCPservicepeerA.2/B.3; channelrootguardproxy.1:3858→service23858 còn lại; khôngchildforward/
+UDPproxy. Baselinefixture redirect52byte vẫnSHA`b514742b…`/metadata null, service CLI chọnIP/port.
+
+`direct-verification.json`53joins; `basic-verification.json`3905source/lifecycle/2epochs;
+`movement-wire-verification.json`1374joins/604actualvethrecords→nativeAPI exactpayload/actual99ports;
+`endpoint-peer-verification.json`537joins/4windows/currentkey/target/currentprogress;70pickup,
+87selectedTCPguard(8same4old)/25Ready. Native2clock/full129121/full39159/full13158/current17SHA→19/
+survivor21/rank2,1/175302/1803/110/reset2; barriers26.229/26.357s<30s. NativeRoomRender4ảnh đãxem,
+Readybadge sau95 ởcảhai view; noStart3. BằngchứngcurrentTCPguards/13movement không làfullvalidator.
+Models tách riêng:1338actor/348peergetter/2364flaggetter+2340array/330typedpacket/12native153/
+43UDPCRC/3redirectcases. `raw-seal.json` pin1894outputs; cleanup capture/service/proxy/Wine/namespace
+xong trước analysis/sourcechanges. Không ghép604PCAPvào CP146 vốn thiếu capture.
+
+**AUD045 quaCP148/kếCP152:** đọc coredocs/authority/capacity/endpoint +evidence/raw/report/source/
+4renderframes; sửa stale CP146–147pendingPR thành PR218merged, header contractCP146,
+RESEARCHresult/reset/disconnect/peer nextoldUDP/TCPchain đã giải. PLAN chuyển sangpositivechannel
+trực tiếp listener service/no rootguardproxy. Không sửa record complete/pinnedrun hoặc xóa failure;
+CP1478slot vẫn synthetic, CP137complexUI/sharedgeometry/fullinventory, fullauth/Windowscontrol/
+physicalLAN/NAT/Internet/fullmatch/K6a/gates còn mở. CP148 selfcheck/pendingcommit/PR/exacthead.

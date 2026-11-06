@@ -1,7 +1,7 @@
 {
   "schema": "kre-feature-index-v1",
   "build": "KR00967",
-  "as_of": "2026-11-06 CP147",
+  "as_of": "2026-11-06 CP148",
   "sources": {
     "plan": "docs/PLAN.md",
     "contract": "docs/PROTOCOL.md",
@@ -381,7 +381,8 @@
           "docs/evidence/current-profile-c/README.md",
           "docs/evidence/preclock-eof/README.md",
           "docs/evidence/nmco-locale-stability/README.md",
-          "docs/evidence/peer-endpoints/README.md#cp146"
+          "docs/evidence/peer-endpoints/README.md#cp146",
+          "docs/evidence/peer-endpoints/README.md#cp148"
         ]
       },
       "coverage": {
@@ -420,7 +421,8 @@
               "docs/evidence/current-profile-c/README.md",
               "docs/evidence/preclock-eof/README.md",
               "docs/evidence/nmco-locale-stability/README.md",
-              "docs/evidence/peer-endpoints/README.md#cp146"
+              "docs/evidence/peer-endpoints/README.md#cp146",
+              "docs/evidence/peer-endpoints/README.md#cp148"
             ]
           },
           "windows_original": {
@@ -444,7 +446,8 @@
             "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/57",
             "tools/export_probe_profile.py",
             "docs/PROTOCOL.md#auth-profile",
-            "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/77"
+            "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/77",
+            "docs/PROTOCOL.md#service-channel-endpoint"
           ],
           "delivery": "via_pr"
         },
@@ -455,7 +458,8 @@
             "docs/evidence/auth-profile/README.md",
             "docs/evidence/current-profile-c/README.md",
             "docs/evidence/preclock-eof/README.md",
-            "docs/evidence/nmco-locale-stability/README.md"
+            "docs/evidence/nmco-locale-stability/README.md",
+            "docs/PROTOCOL.md#service-channel-endpoint"
           ]
         },
         "gate": {
@@ -1282,7 +1286,8 @@
           "docs/evidence/peer-endpoints/README.md#cp142",
           "docs/evidence/peer-endpoints/README.md#cp143",
           "docs/evidence/peer-endpoints/README.md#cp144",
-          "docs/evidence/peer-endpoints/README.md#cp145"
+          "docs/evidence/peer-endpoints/README.md#cp145",
+          "docs/evidence/peer-endpoints/README.md#cp148"
         ]
       },
       "coverage": {
@@ -1330,7 +1335,8 @@
               "docs/evidence/peer-endpoints/README.md#cp142",
               "docs/evidence/peer-endpoints/README.md#cp143",
               "docs/evidence/peer-endpoints/README.md#cp144",
-              "docs/evidence/peer-endpoints/README.md#cp145"
+              "docs/evidence/peer-endpoints/README.md#cp145",
+              "docs/evidence/peer-endpoints/README.md#cp148"
             ]
           },
           "windows_original": {
@@ -2843,7 +2849,8 @@
           "docs/evidence/peer-endpoints/README.md#cp141",
           "docs/evidence/peer-endpoints/README.md#cp142",
           "docs/evidence/peer-endpoints/README.md#cp145",
-          "docs/evidence/peer-endpoints/README.md#cp146"
+          "docs/evidence/peer-endpoints/README.md#cp146",
+          "docs/evidence/peer-endpoints/README.md#cp148"
         ]
       },
       "coverage": {
@@ -2879,7 +2886,8 @@
               "docs/evidence/peer-endpoints/README.md#cp141",
               "docs/evidence/peer-endpoints/README.md#cp142",
               "docs/evidence/peer-endpoints/README.md#cp145",
-              "docs/evidence/peer-endpoints/README.md#cp146"
+              "docs/evidence/peer-endpoints/README.md#cp146",
+              "docs/evidence/peer-endpoints/README.md#cp148"
             ]
           },
           "windows_original": {
@@ -2958,7 +2966,8 @@
           "docs/evidence/peer-endpoints/README.md#cp141",
           "docs/evidence/peer-endpoints/README.md#cp142",
           "docs/evidence/peer-endpoints/README.md#cp143",
-          "docs/evidence/peer-endpoints/README.md#cp144"
+          "docs/evidence/peer-endpoints/README.md#cp144",
+          "docs/evidence/peer-endpoints/README.md#cp148"
         ]
       },
       "coverage": {
@@ -3016,7 +3025,8 @@
               "docs/evidence/peer-endpoints/README.md#cp141",
               "docs/evidence/peer-endpoints/README.md#cp142",
               "docs/evidence/peer-endpoints/README.md#cp143",
-              "docs/evidence/peer-endpoints/README.md#cp144"
+              "docs/evidence/peer-endpoints/README.md#cp144",
+              "docs/evidence/peer-endpoints/README.md#cp148"
             ]
           },
           "windows_original": {
@@ -3152,7 +3162,8 @@
           "docs/evidence/peer-endpoints/README.md#cp142",
           "docs/evidence/peer-endpoints/README.md#cp143",
           "docs/evidence/peer-endpoints/README.md#cp144",
-          "docs/evidence/peer-endpoints/README.md#cp145"
+          "docs/evidence/peer-endpoints/README.md#cp145",
+          "docs/evidence/peer-endpoints/README.md#cp148"
         ]
       },
       "coverage": {
@@ -3232,7 +3243,8 @@
               "docs/evidence/peer-endpoints/README.md#cp142",
               "docs/evidence/peer-endpoints/README.md#cp143",
               "docs/evidence/peer-endpoints/README.md#cp144",
-              "docs/evidence/peer-endpoints/README.md#cp145"
+              "docs/evidence/peer-endpoints/README.md#cp145",
+              "docs/evidence/peer-endpoints/README.md#cp148"
             ]
           },
           "windows_original": {
@@ -3610,7 +3622,8 @@
           "docs/evidence/peer-endpoints/README.md#cp143",
           "docs/evidence/peer-endpoints/README.md#cp144",
           "docs/evidence/peer-endpoints/README.md#cp145",
-          "docs/evidence/peer-endpoints/README.md#cp146"
+          "docs/evidence/peer-endpoints/README.md#cp146",
+          "docs/evidence/peer-endpoints/README.md#cp148"
         ]
       },
       "coverage": {
@@ -3732,7 +3745,8 @@
               "docs/evidence/peer-endpoints/README.md#cp143",
               "docs/evidence/peer-endpoints/README.md#cp144",
               "docs/evidence/peer-endpoints/README.md#cp145",
-              "docs/evidence/peer-endpoints/README.md#cp146"
+              "docs/evidence/peer-endpoints/README.md#cp146",
+              "docs/evidence/peer-endpoints/README.md#cp148"
             ]
           },
           "windows_original": {
@@ -3821,7 +3835,8 @@
             "server/test_host_battle_exit.py",
             "docs/PROTOCOL.md#loading-timeout",
             "docs/PROTOCOL.md#loading-timeout-positive",
-            "docs/PROTOCOL.md#service-address-config"
+            "docs/PROTOCOL.md#service-address-config",
+            "docs/PROTOCOL.md#service-channel-endpoint"
           ]
         },
         "integration": {
@@ -3902,7 +3917,8 @@
             "docs/PROTOCOL.md#integrated-survivor",
             "docs/PROTOCOL.md#peer-endpoint-ip",
             "docs/PROTOCOL.md#virtual-peer",
-            "docs/PROTOCOL.md#virtual-basic-cycles"
+            "docs/PROTOCOL.md#virtual-basic-cycles",
+            "docs/PROTOCOL.md#service-channel-endpoint"
           ]
         },
         "gate": {
