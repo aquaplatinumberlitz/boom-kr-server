@@ -135,11 +135,11 @@
         "KR-F001",
         "KR-F015"
       ],
-      "known": "CP146–147/PR218mergeda3d1d94; CP148 productionchannelendpoint/baseprofile/native2cycles/restored604vethwire/native4windows/Ready/237tests cónguồn, selfcheckpendingPR. CP147roster8không8realclients.",
-      "remaining": "Positivechanneldirectservice/no rootTCPguardproxy; fullauth/Windowscontrol/physicalLAN/NAT/Internet/gates/CP137UI/sharedgeometry/fullinventory và8realpeers remain.",
-      "next_test": "PLAN reuseCP148API/CLI/baseprofile/capture/nativeconnect/99/153/4peerwindows/2cycles/Ready; newfrozenpositivecopy directchanneltoactualservicelistener/no rootguardproxy, actualpeerA.2/B.3; no repeatoldUDP/codec.",
+      "known": "CP148/PR219mergedf27c667; CP149allTCPdirect/8nativeconnects/servicepeerA.2/B.3/channel3858/noTCPproxy/native2cycles/4windows/586vethrecords/Ready cósource. R1Bombpower1/R2BombFirepower2; R1no124Fire/partialitem.",
+      "remaining": "R1Fireinput/causeunknown; boundednormalfeedback/actual124165 và Bownerpositive next. Fullauth/Windowscontrol/realLAN/NAT/Internet/gates/CP137UI/sharedgeometry/fullinventory/8actualpeers remain.",
+      "next_test": "PLAN reuseCP082feedback/CP106165/CP148API/CP149directroute; newfrozenboundedOSinput→actual12417/165currentpower before returnsetup, then BSpaceR2/nativeownerID/bothviewresults/reset/Ready; no actorwrites/fake124.",
       "acceptance": "Epic checklist: linkedscopedtask/evidence+authoritymatrix vàacceptancegate ởPLAN; từngtaskđóng khôngđóngepic/K5/K6a.",
-      "reason": "Scopedproductionendpoint/capture gap resolved byruntime/source/tests; rootguardproxyroute remains isolatednextintegrationedge; no gateclosure.",
+      "reason": "Directchannelroute scoped gapresolved; narrow itemcoverage toobservedR1Bomb/R2BombFire with retainedoldpower2checkerfail, no causalproxy/lossclaim or gateclosure.",
       "sources": [
         "docs/PROTOCOL.md#authority",
         "docs/RESEARCH.md#feature-gaps",
@@ -169,7 +169,8 @@
         "docs/PROTOCOL.md#virtual-exact-old-udp",
         "docs/PROTOCOL.md#direct-tcp-endpoints",
         "docs/PROTOCOL.md#battle-eight-roster",
-        "docs/PROTOCOL.md#service-channel-endpoint"
+        "docs/PROTOCOL.md#service-channel-endpoint",
+        "docs/PROTOCOL.md#direct-channel-positive"
       ],
       "evidence": [
         "docs/evidence/current-movement-cycles/README.md",
@@ -196,7 +197,8 @@
         "docs/evidence/peer-endpoints/README.md#cp145",
         "docs/evidence/peer-endpoints/README.md#cp146",
         "docs/evidence/eight-player/README.md",
-        "docs/evidence/peer-endpoints/README.md#cp148"
+        "docs/evidence/peer-endpoints/README.md#cp148",
+        "docs/evidence/peer-endpoints/README.md#cp149"
       ],
       "prs": [
         173,
@@ -238,7 +240,8 @@
         214,
         215,
         216,
-        218
+        218,
+        219
       ],
       "successors": []
     },

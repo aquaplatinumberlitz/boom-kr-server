@@ -1,6 +1,6 @@
 # KR 00967 — contract tương thích client gốc
 
-Revision kr-legacy-contract-r1; cập nhật06/11/2026 JST (CP148; AUD045 quaCP148, kếCP152).
+Revision kr-legacy-contract-r1; cập nhật06/11/2026 JST (CP149; AUD045 quaCP148, kếCP152).
 **Contract có bằng chứng từng phần; chưa nghiệm thu full codec K2**.
 Lộ trình và thứ tự task chỉ giữ ở [REWRITE_PLAN — KRE](PLAN.md).
 Đây là contract của repo server KR. ADR0009 của bản viết lại là nguồn lịch sử để so sánh;
@@ -5165,3 +5165,33 @@ Giữ CP146 thiếuPCAP như lịch sử; CP148 không thêm capture vào run c�
 với roster tổng hợp. Windowsoriginal/fullauth/realLAN/NAT/Internet/fullmatch/K6a/gates,
 CP137complexUI/sharedgeometry/fullinventory chưa giải. Sau cấu hình/capture, bước tiếp ở PLAN:
 luồng channel trực tiếp service, bỏ rootguardproxy trên positive recipe; không lặp codec/oldUDP.
+
+
+<a id="direct-channel-positive"></a>
+### Positive native channel trực tiếp service, không TCPproxy — CP149
+
+**`kr_runtime/confirmed` hẹp**, [recipe/raw/hash/correction](evidence/peer-endpoints/README.md#cp149).
+Reuse CP148 productionendpointAPI/CLI/baseprofile/capture/currentcontroller; chỉ bỏ rootTCPguardproxy,
+service nghe thẳng3858 thay23858. Mọi8actualnativeconnect (bootstrap/WCP/auth/channel củaA/B)
+khớp serviceport; tất cảservicepeer làA`10.77.0.2` hoặcB`.3`, channel không còn nguồnproxy`.1`.
+Files-onlyservicehostmap10.77.0.1/actualCA+wineserverchildnetns/privateveth/no route giữ;
+khôngchildforward/TCPproxy/UDPproxy hoặc same-oldTCPinjection trong run này.
+
+Cùng run352.599s/exit0/1334raw: hai nativeclock/175302/1803/110/resultreset/finalReady95,
+bốn cửa sổ movement/source/key/handler/target/progress;586vethPCAPrecords nối actual99/source/
+payload→nativeingress. Guardnegative chỉ có ở CP148, không ghép thành cùng-run ở đây.
+Copye9bb4766…/base400000 giữ nguyên, service/profile nguyên CP148; khôngpatchbinary/DB/pack.
+
+**Item scope partial:** R1actual124 chỉBomb16/kind0, hai view165 tăngcapacity1→2, powergiữ1;
+actual118/159power1. R2Bomb16+Fire17/kind1 có hai view165/copygetterpower1→2,
+actual118/159power2. Cảhai native158/195flags/worldprediction theo power thực và seedreset
+được kiểm. Không có actual124Fire17/R1 trong stream và không165Fire ởhai view, chưa biết nguyênnhân.
+Giữ lỗi `basic-power-assumption-failed.txt` khi checker kế thừa power2 cảhai vòng; report mới kiểm
+các input đã quan sát và **không** ghi “đủ BombFirehai vòng”. Không sửa runtime/raw hoặc suy
+proxy removal gây itemmiss; source/authority/performance/loss chưa có control phân lập.
+
+3289lifecycle/1334wire/499peer/56observedpickup/25Ready/55directTCP joins tách với các model
+getter/framer/flags/CRC. Render4ảnh sau return2/Ready đã xem; không CP137complexUIcausalfix.
+Chưa fullmatch/K6a/Windowsoriginal/fullauth/LAN/NAT/Internet/8actualclients/fullinventory.
+[PLAN](PLAN.md#current-order) tiếp inputfeedback/pickup tối thiểu đang thiếu và đổi owner bom vòng2
+sangB sau khi ledger item đủ; không RE lại codec/endpoint hoặc gọi gate từ hai chu kỳ basic.

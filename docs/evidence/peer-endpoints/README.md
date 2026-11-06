@@ -362,3 +362,44 @@ RESEARCHresult/reset/disconnect/peer nextoldUDP/TCPchain đã giải. PLAN chuy�
 trực tiếp listener service/no rootguardproxy. Không sửa record complete/pinnedrun hoặc xóa failure;
 CP1478slot vẫn synthetic, CP137complexUI/sharedgeometry/fullinventory, fullauth/Windowscontrol/
 physicalLAN/NAT/Internet/fullmatch/K6a/gates còn mở. CP148 selfcheck/pendingcommit/PR/exacthead.
+
+
+<a id="cp149"></a>
+## CP149 — Positive allTCPdirect, không rootguardproxy; giữ R1Firepartial
+
+Baseline CP148head`d197c14`/PR219merge`f27c667`; runtime chuẩn bị trênheadd197c14 lúc PRđược merge,
+serverbytesgiữ nguyên/quakiểmpreflight, khôngsource/configđổigiữarun. [Contract](../../PROTOCOL.md#direct-channel-positive),
+[câu hỏi](../../RESEARCH.md#gap-floor-pickup), [thứ tự](../../PLAN.md#current-order).
+`direct-channel-positive-r1/reuse-question.json` pinCP148runtime/contracts/99/153/currentcontrollers;
+chỉ khoảng trống channelpeer.1 còn thiếu, khôngnativebody/codecRE hoặc chuyểnVNwire.
+
+Run `local/research/codex/direct-channel-positive-r1/cycles` **352.599s/exit0/1334raw**,
+run.json SHA256`bb78dc2f3cb2c5093ddea7e04ad142627fab09e9af6c38977de263dfc0042429`.
+Controllercopy chỉbỏspawnrootproxy vàserviceport23858rewrite, giữAPIchannelIP.1/port3858/baseprofile/
+timeout/privatehosts/observers. `runtime-preflight.json`/`raw-seal.json` pinbinarysource/profile/
+controller và cleanup, khôngprocess của run còn lại. SourceCA/modO/static/Wine e9bb4766… giữnhưCP148.
+Nativeconnect ở8callsite khớpactualserviceport, mọiTCPsourceA.2/B.3 gồmchannel3858; khôngTCPproxy/
+childforward/UDPproxy; positiveinputsonly, khôngsamed-oldTCPreplay. Không gộpCP148negativeproof.
+
+`direct-verification.json`55joins; `basic-verification.json`3289joins;586vethPCAPrecords/index,
+1334wire→nativejoins/499peerjoins/4windows/25Ready. Hai nativeclocks/full129121/39byte159/13byte158/
+195flags/power/current17SHA→19/survivor21/native175302/1803/110/reset/95Ready/noStart3 cónguồn.
+Models/syntheticreceiver/counterreset riêng:1248actor,324peergetter/2364flaggetter+
+2340array/12native153/42UDPCRC; không dùng model thay runtime hoặc tự đóng gate. Fouroriginals
+return2/finalReady đãxem qua `ready-contact.png`; cảhai room/hostStart/guestReadybadge, không chữa
+CP137complex-routeUIcause. Barrier vẫn<30s, không tăng hạn.
+
+**Item correction quan trọng:** R1chỉactual124Bomb16, native165tăngcapacity1→2/power1; actual118/159
+power1. R2actual124Bomb16vàFire17/native165/effect+power2, hai viewresetclock1,1. Tổng3pickup/6viewjoins,
+`pickup-verification.json`56checks chỉscope này. `basic-power-assumption-failed.txt` giữchecker kếthừa
+CP148power2cảhai vòng đãfail; raw actual118 vàabsence12417/R1 bácgiảđịnh, không sửa raw.
+`analysis-corrections.json` ghi nativecallbacks/hashes/currentinputs vàmissingR1Fireunknowncause;
+modelterrain nhậnactualpower1/2 đãcócontract, khôngđổi consumerhaykếtluậnđểlàmcheckpass.
+Không tuyênbố Fiređủcảhai vòng hoặc proxy removal gây miss/loss. CP148same-run2Fire giữlịch sửriêng.
+
+237servertests reuseCP148codeunchanged, docs/catalog/liveissues/sourceartifact/fullrawhistory/diff
+kiểm trước bàn giao; Codexselfcheck/waivedreview. CP149khôngauditđịnhkỳ, AUD045qua148/kế152.
+CP149pendingPR; gate/fullmatch/K6a/realLAN/NAT/Internet/Windowsoriginal/authauthority/8actualclients/
+CP137UI/sharedgeometry/fullinventory mở. TiếpPLAN sourcefirstreuseCP082feedback/CP106native165:
+newrunboundedOSfreshfeedback/current12417→165Fire trướcreturnsetup, rồi BSpacevòng2 đểkiểmowner
+hai chiều; không fakepacket/actorstate, giữmiss/blocker khi chưa đo đủ.
