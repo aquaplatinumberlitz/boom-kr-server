@@ -1144,3 +1144,36 @@ production/committedpresetkhôngđổi, profileghépchỉởlocal/nativeproof me
 
 CP169tựkiểm/reviewwaived/chờPR; AUD050qua168/next172. Nextresult/reset/twoepochs củaprofileghép
 chỉPLAN; khôngK5/K6a/fullmatch/LAN/Internet/8client hoặc randomdrop/fullvalidatorclaim.
+
+
+<a id="cp170"></a>
+## CP170 — currentbasic copyprofile hai nativecycles/reset/Ready
+
+Baseline CP169 [PR240](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/240), head
+`9266b7829468915de2c0609097bbe30b1c70c070`, merge `387f93600afb220b95b403abf82450a4432bee47`.
+Runđượcchuẩnbị/chạy trên9266b78; bytesruntimegiữquaPRmerge, khôngsource/configchangegiữarun.
+[Contract/limits](../../PROTOCOL.md#current-basic-cycles), [PLAN](../../PLAN.md#current-order).
+
+| Run local/research/codex | Giây/exit/raw/frozen | SHA256 run.json |
+|---|---|---|
+|current-basic-cycles-r1|388.409514005/0/1316/109|`e716d951e3644b5355b19aa28d5cb440d95bcc8c6af1e0e62223f3ee0eacd398`|
+
+Rootgiữreuse-question/CP069168169pins, exactprofile/recipe/controller/preflight109/runtime-source,
+launch-exit/raw-seal/namespaceextinct. User/net/mount/PID/private2hosts/nooutbound/directproduction,
+sameManner/title/Bhost/2realcopies; no sourcebinary/pack/DB/production/defaultpresetchange.
+`prepare_current_basic_cycles.py` chỉlặpknownCP169route trênround2 +CP069normalfinalSpace +CP168
+ReadyAStartB/return2Ready, khôngfake14212417/19/104 hoặcgamecall/actorwrite/tolerance-timeoutrelaxation.
+
+basic-cycle-verification1614relations incl1316rawhash/sourceclaims/2Box+2hiddeneffects/3statsbaseline/
+all195flags/native159pointer→158processedID/reset/normal175180/Ready. Nativeframer/typedreader174cases,
+securefields516models, life-agreement23/16getters riêng; mode-gating4actual180[0,1,0]/12nativecases và
+boundednativegetterreads1, khôngnewsettertrace. alignment7groups/14viewacks/exactrestore/rare165lookup;
+disabledchronologywindowsexcluded. visual-review2finalroomframes đãđọc: AReady/Bchief, BStartwhite1frame;
+chưaactualBStart3 vàkhôngpersistenthangclaim.
+
+analysis-driver-initial.py/analysis-driver.txt/actor-fields-initial.json vàanalysis-corrections.json giữ
+initialSTAT_SNAPSHOTjointrùngdoCP069parsergáncollisionvàlastGEN165context. FinalreuseCP168parsercó
+event/phase rồi lọc đúngSTATevent/phase, khôngbỏraw/getter/cursorcheck hoặcđổilệchstatthànhpass.
+`server-source-reuse.json` pinCP166265server/4exporttests exactsources, khôngrerunchangedtests.
+CP170tựkiểm/reviewwaived/chờPR; AUD050qua168/next172. Nextoptionalpreset/export/actualBStart3 chỉPLAN;
+khôngfullmatch/K5/K6a/LAN/Internet/8client/Windows/originalauthority/generalresetqualification.

@@ -1,0 +1,267 @@
+{
+  "id": "CP170",
+  "previous": "CP169",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-06T13:50:41.860297+00:00",
+  "context_commit": "387f93600afb220b95b403abf82450a4432bee47",
+  "owner": "Codex",
+  "reviewer": "Codex",
+  "question": "Exact basic profile trên current Manner/title/B-host có chạy hai native outcomes/reset/Ready và tái lập hidden items/stat/terrain theo epoch không?",
+  "scope": "Tái sử dụng CP069 basic cycles, CP168 ReadyA/StartB và CP169 profile/route/165 lookup; chỉ đo delta epoch2/reset. Không RE lại consumer hoặc đổi production/preset.",
+  "artifacts": [
+    {
+      "name": "OriginalKR00967unchanged",
+      "sha256": "a52545c14b1fea423de655c3163d6360b628d61c1cd472b46fdbc8a9ffe15f4e"
+    },
+    {
+      "name": "CurrentWinecopyunchanged",
+      "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+    },
+    {
+      "name": "NativeIDAfullcopycf72privateanalysis",
+      "sha256": "cf72da112308d9f1ca256df8089594c5f787875310933073bf6bd5ba6f70e63b"
+    },
+    {
+      "name": "modOmodelreference",
+      "sha256": "a08950c833d3acab8281049def7b3dc96b221f107eeda01da3a548e34b91dce5"
+    }
+  ],
+  "locators": [
+    "Baseline CP169 PR240 head9266b7829468915de2c0609097bbe30b1c70c070/merge387f93600afb220b95b403abf82450a4432bee47; runtime sources unchanged across merge.",
+    "Run current-basic-cycles-r1 SHA256 e716d951e3644b5355b19aa28d5cb440d95bcc8c6af1e0e62223f3ee0eacd398; 388.409514005s/exit0/1316 raw/109 frozen inputs.",
+    "Profile SHA256 bf1f99989e45a4b5e47e831165ad1f43f296418253388d8ba8338532d665afee; same8 TCP transports, keys12345→12346.",
+    "Known base400000; hidden install EB579E/storeB9C939/revealB9D0B4/165lookupE636D9/165E63260,E63309,E63E1A/52A350 getters; FixedBox vt1747724→CGOItem vt1746A4C. No new native function bodies.",
+    "AUD050 through168/next172 unchanged; complete records immutable."
+  ],
+  "findings": [
+    {
+      "summary": "Source-first reuse cho phép lặp exact CP169 basic route trên epoch2 với normal Space và CP168 ReadyA/StartB; 46/47 aliases giữ nguyên. Không port VN opcode/ID/layout hoặc phân tích lại ItemAttr.",
+      "source": "kr_static",
+      "status": "confirmed",
+      "method": "emulation",
+      "canonical": "docs/PROTOCOL.md#current-basic-cycles",
+      "evidence": [
+        "RUN-01406",
+        "RUN-01408",
+        "RUN-01342"
+      ],
+      "limits": "Hai copy KR00967 modified Wine, private virtual hosts, exact current Manner/title/B-host basic profile. Không đổi production/default floor preset; không source binary/DB/pack, gamecall, actor write, forged request hoặc nới bounds. Không chứng minh original auth/drop/validator, general reset, Windows vanilla, LAN/Internet/8 clients hoặc gate K5/K6a/fullmatch. CP168 floor Start3 không thay bằng chứng basic Start3; B Start trắng một frame không chứng minh hang."
+    },
+    {
+      "summary": "Cùng run hai native cycles: mỗi epoch hai FixedBox reveal27/28, actual142 trước hidden124, ba165 callbacks/view/full12 errors0 và exact revealed-pointer lookup. Order R1[17,28,27], R2[17,27,28]; chỉA Roller5→6/capacity1→2/Fire1→2; baseline A1/1/5 B2/1/4 tái lập trước pickups epoch2.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#current-basic-cycles",
+      "evidence": [
+        "RUN-00012",
+        "RUN-00002",
+        "RUN-01364"
+      ],
+      "limits": "Hai copy KR00967 modified Wine, private virtual hosts, exact current Manner/title/B-host basic profile. Không đổi production/default floor preset; không source binary/DB/pack, gamecall, actor write, forged request hoặc nới bounds. Không chứng minh original auth/drop/validator, general reset, Windows vanilla, LAN/Internet/8 clients hoặc gate K5/K6a/fullmatch. CP168 floor Start3 không thay bằng chứng basic Start3; B Start trắng một frame không chứng minh hang."
+    },
+    {
+      "summary": "Hai barriers6.234301688/6.362700964s trước30s; keys12345→12346, hidden eligibility rebuilt. Bốn A-owner bombs IDs1..4, power1,2,1,2; native159 ACK pointer bằng158 processed pointer, full39/full13 và195 seed/before/after flags khớp bounded terrain model. Model là emulator choice, không original-world oracle.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#current-basic-cycles",
+      "evidence": [
+        "RUN-00012",
+        "RUN-00015",
+        "RUN-01361"
+      ],
+      "limits": "Hai copy KR00967 modified Wine, private virtual hosts, exact current Manner/title/B-host basic profile. Không đổi production/default floor preset; không source binary/DB/pack, gamecall, actor write, forged request hoặc nới bounds. Không chứng minh original auth/drop/validator, general reset, Windows vanilla, LAN/Internet/8 clients hoặc gate K5/K6a/fullmatch. CP168 floor Start3 không thay bằng chứng basic Start3; B Start trắng một frame không chứng minh hang."
+    },
+    {
+      "summary": "Cả hai epochs actual A17→19/B21 trước rank; native life56→1/other0 trước175 trên cảhai view, không global tick. Hai normal175/180/room refresh, actual ReadyA/StartB giữa vòng và actual ReadyA110 hai view cuối; 4 actual180 [0,1,0], 12 native cases/mode getter1. Không Start3 trong run.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#current-basic-cycles",
+      "evidence": [
+        "RUN-00012",
+        "RUN-01359",
+        "RUN-01360",
+        "RUN-01362",
+        "RUN-01363",
+        "RUN-01461"
+      ],
+      "limits": "Hai copy KR00967 modified Wine, private virtual hosts, exact current Manner/title/B-host basic profile. Không đổi production/default floor preset; không source binary/DB/pack, gamecall, actor write, forged request hoặc nới bounds. Không chứng minh original auth/drop/validator, general reset, Windows vanilla, LAN/Internet/8 clients hoặc gate K5/K6a/fullmatch. CP168 floor Start3 không thay bằng chứng basic Start3; B Start trắng một frame không chứng minh hang."
+    },
+    {
+      "summary": "Initial CP069 parser gộp collision snapshots vào last GEN165_END gây duplicate stat join. Giữ initial script/log/report; final dùng CP168 parser event/phase và exact STAT_SNAPSHOT joins. Raw/runtime/getter/cursor/criteria không đổi. Final1614 checks,174 native packet cases,516 secure field models,7alignment groups/14view phaseACK và rare165 lookup retained/exact restore.",
+      "source": "design",
+      "status": "design",
+      "method": "documentation",
+      "canonical": "docs/PROTOCOL.md#current-basic-cycles",
+      "evidence": [
+        "RUN-00004",
+        "RUN-00006",
+        "RUN-00007",
+        "RUN-00001",
+        "RUN-00012",
+        "RUN-00003"
+      ],
+      "limits": "Hai copy KR00967 modified Wine, private virtual hosts, exact current Manner/title/B-host basic profile. Không đổi production/default floor preset; không source binary/DB/pack, gamecall, actor write, forged request hoặc nới bounds. Không chứng minh original auth/drop/validator, general reset, Windows vanilla, LAN/Internet/8 clients hoặc gate K5/K6a/fullmatch. CP168 floor Start3 không thay bằng chứng basic Start3; B Start trắng một frame không chứng minh hang."
+    },
+    {
+      "summary": "Hai final room images đã xem: AReady/Bchief, BStart trắng một frame. Basic two-cycle gap đã giải; optional pinned preset/actual exported-file BStart3 chưa đo. CP169 PR240 đã merge; CP166 265server/4export tests tái dùng theo exact unchanged source hashes.",
+      "source": "design",
+      "status": "design",
+      "method": "documentation",
+      "canonical": "docs/PROTOCOL.md#current-basic-cycles",
+      "evidence": [
+        "RUN-01461",
+        "RUN-01455",
+        "RUN-00018"
+      ],
+      "limits": "Hai copy KR00967 modified Wine, private virtual hosts, exact current Manner/title/B-host basic profile. Không đổi production/default floor preset; không source binary/DB/pack, gamecall, actor write, forged request hoặc nới bounds. Không chứng minh original auth/drop/validator, general reset, Windows vanilla, LAN/Internet/8 clients hoặc gate K5/K6a/fullmatch. CP168 floor Start3 không thay bằng chứng basic Start3; B Start trắng một frame không chứng minh hang."
+    }
+  ],
+  "verification": [
+    {
+      "check": "Hai native basic cycles/reset/Ready;1614 raw/native/stat/map/claim joins;174 native packet/516 field models/life23+16/mode12/alignment14 view-phase ACK",
+      "result": "pass",
+      "evidence": [
+        "RUN-00012",
+        "RUN-01364",
+        "RUN-00002",
+        "RUN-01359",
+        "RUN-01360",
+        "RUN-01363",
+        "RUN-00003"
+      ],
+      "limits": "Hai copy KR00967 modified Wine, private virtual hosts, exact current Manner/title/B-host basic profile. Không đổi production/default floor preset; không source binary/DB/pack, gamecall, actor write, forged request hoặc nới bounds. Không chứng minh original auth/drop/validator, general reset, Windows vanilla, LAN/Internet/8 clients hoặc gate K5/K6a/fullmatch. CP168 floor Start3 không thay bằng chứng basic Start3; B Start trắng một frame không chứng minh hang."
+    },
+    {
+      "check": "1316raw/109 frozen inputs/owned cleanup/namespace extinct; docs/catalog/issues/artifacts/diff checks",
+      "result": "pass",
+      "evidence": [
+        "RUN-01379",
+        "RUN-01408",
+        "RUN-01455",
+        "RUN-01345",
+        "RUN-00014",
+        "RUN-01355",
+        "RUN-00011",
+        "RUN-01344"
+      ],
+      "limits": "History/local checker chạy sau append trước commit; mechanical checks không xác nhận semantic/gate. Unchanged server tests reused by source hash."
+    },
+    {
+      "check": "Basic exported preset và actual BStart3",
+      "result": "pending",
+      "evidence": [
+        "RUN-01461"
+      ],
+      "limits": "Run không thử Start3; CP168 floor Start3 không backfill; Bwhite1frame không hang proof."
+    }
+  ],
+  "evidence": [],
+  "evidence_manifests": [
+    {
+      "path": "docs/evidence/checkpoints/evidence/CP170-current-basic-cycles.json",
+      "bytes": 373778,
+      "sha256": "ab2ab6f314915ef50f6fedc13bd0230e36bed41fc512e06255969cad441388ff",
+      "count": 1472
+    }
+  ],
+  "delta": {
+    "added": [
+      "Cùng current basic copy profile hai outcomes/reset/Ready, three native item effects và hidden/stat/195/key reset.",
+      "Initial parser failure và correction giữ provenance, không đổi runtime hoặc acceptance."
+    ],
+    "corrected": [
+      "CP169 epoch2/reset gap được giải trong exact copy profile; default floor preset chưa đổi."
+    ],
+    "superseded": [
+      "NEXT-CURRENT-BASIC-CYCLES đóng; NEXT-CURRENT-BASIC-PRESET active."
+    ]
+  },
+  "blockers": [
+    "Optional pinned basic preset/export và actual BStart3 chưa kiểm.",
+    "Fullauth/142freshness/distance/validator/consistency/disconnect/generalreset và dependency gates/K5/K6a/LAN/Internet/8client còn mở."
+  ],
+  "next_steps": [
+    {
+      "id": "NEXT-CURRENT-BASIC-CYCLES",
+      "task": "KRE-005b",
+      "state": "closed",
+      "action": "CP170 exact current basic copy profile đã hai native outcomes/reset/Ready, hidden27/28+three effects+stat/eligibility/195/key reset.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-CURRENT-BASIC-PRESET",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "Theo PLAN: pin exact optional two-client-basic preset, test exporter/preflight, giữ default; fresh isolated actual exported-file run hai cycles/ReadyA/normalBStart3→104/12199/barrier/clock/render8s/mode1/noBomb3. Không fake packet/statewrite/guard bypass hoặc nới bounds.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    }
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-11-06T13:50:41.860297+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "Codex solo RE/runtime/self-check; independent review waived by owner, no automatic gate closure.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Owner explicitly requested solo without workers/review."
+    }
+  },
+  "docs_sync": [
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "CP170 current basic two-cycle/reset milestone, CP169 merge, limits và optional preset/Start3 next step đã đồng bộ trước complete."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "CP170 current basic two-cycle/reset milestone, CP169 merge, limits và optional preset/Start3 next step đã đồng bộ trước complete."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "updated",
+      "reason": "CP170 current basic two-cycle/reset milestone, CP169 merge, limits và optional preset/Start3 next step đã đồng bộ trước complete."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "updated",
+      "reason": "CP170 current basic two-cycle/reset milestone, CP169 merge, limits và optional preset/Start3 next step đã đồng bộ trước complete."
+    },
+    {
+      "path": "docs/features.json",
+      "state": "updated",
+      "reason": "CP170 current basic two-cycle/reset milestone, CP169 merge, limits và optional preset/Start3 next step đã đồng bộ trước complete."
+    },
+    {
+      "path": "docs/COVERAGE.md",
+      "state": "updated",
+      "reason": "CP170 current basic two-cycle/reset milestone, CP169 merge, limits và optional preset/Start3 next step đã đồng bộ trước complete."
+    },
+    {
+      "path": "docs/evidence/peer-endpoints/README.md",
+      "state": "updated",
+      "reason": "CP170 current basic two-cycle/reset milestone, CP169 merge, limits và optional preset/Start3 next step đã đồng bộ trước complete."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/review.json",
+      "state": "updated",
+      "reason": "CP170 current basic two-cycle/reset milestone, CP169 merge, limits và optional preset/Start3 next step đã đồng bộ trước complete."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
+      "state": "updated",
+      "reason": "CP170 current basic two-cycle/reset milestone, CP169 merge, limits và optional preset/Start3 next step đã đồng bộ trước complete."
+    },
+    {
+      "path": "server/README.md",
+      "state": "updated",
+      "reason": "CP170 current basic two-cycle/reset milestone, CP169 merge, limits và optional preset/Start3 next step đã đồng bộ trước complete."
+    }
+  ]
+}

@@ -135,9 +135,9 @@
         "KR-F001",
         "KR-F015"
       ],
-      "known": "CP168PR239merged2ee6556;CP169copybasicprofile/currentmodeBhost firstepochnative2Box→reveal142/12417,27,28/165/3effects onlyA bothviews;46unchangedaliases/productiondefaultunchanged. Partials/startup retained.",
-      "remaining": "Normaloutcome/reset/epoch2 oncopybasicprofile unmeasured; oldCP069/defaultfloorCP168notbackfill. K4K5K6a/fullmatch/auth/Windows/LAN/8clients/generalreset/originalauthority open.",
-      "next_test": "PLANreuseCP069finalnormalSpace/CP168Bhostcycles/CP169exactprofile/route/probes; native17→19/21/175180/ReadyAStartB→3effects/Box/reporteligibility/stat/resetepoch2. No consumer/opcodeRE/defaultpresetmigrationyet.",
+      "known": "CP169PR240merged387f936;CP170exactcopybasicprofile/currentMannerBhost2nativeoutcomes/reset/Ready with3effects/Box/142/pointer/statbaseline/195/currentkeys;life56→1bothviews;productiondefaultunchanged.",
+      "remaining": "Optionalpinnedbasicpreset/exportedruntime/BStart3afterReady2unmeasured;Bwhiteframe nothangproof. K4dependencies/K5K6a/fullmatch/auth/Windows/LANInternet/8clients/generalreset/originalauthority open.",
+      "next_test": "PLANpinexactCP170optional two-client-basic/profileprovenance andCLIselection/preflightfailures; freshactualexportedfile/directmodule2cycles/ReadyA/BStart3/native12199/clockrender8/mode1/noBomb3. No duplicateconsumer/opcodeRE/defaultmigration.",
       "acceptance": "Epic checklist: linkedscopedtask/evidence+authoritymatrix vàacceptancegate ởPLAN; từngtaskđóng khôngđóngepic/K5/K6a.",
       "reason": "CP164runtimeinputblocker solvedinnewrecipeswithoutprofile/game/guard/tolerancechange; currentpresetStart3objective closedscope. Continueconcretecurrentmodehostpromotiongap; noautogate.",
       "sources": [
@@ -234,7 +234,8 @@
         "docs/evidence/peer-endpoints/README.md#cp166",
         "docs/evidence/peer-endpoints/README.md#cp167",
         "docs/evidence/peer-endpoints/README.md#cp168",
-        "docs/evidence/peer-endpoints/README.md#cp169"
+        "docs/evidence/peer-endpoints/README.md#cp169",
+        "docs/evidence/peer-endpoints/README.md#cp170"
       ],
       "prs": [
         173,
@@ -297,7 +298,8 @@
         236,
         237,
         238,
-        239
+        239,
+        240
       ],
       "successors": []
     },
@@ -624,6 +626,6 @@
       "successors": []
     }
   ],
-  "as_of_utc": "2026-11-06T13:25:01.768822+00:00",
+  "as_of_utc": "2026-11-06T13:46:20.150466+00:00",
   "limits": "Dated manual dispositions through CP146; snapshotcaptureUTC only/no semantic or gate certification; immutable completehistory."
 }

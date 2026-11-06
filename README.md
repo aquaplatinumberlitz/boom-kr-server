@@ -41,15 +41,15 @@ Hai copy KR Wine đã chạy login/sảnh/phòng/Battle và các chu kỳ kết 
 [kim/reset](docs/PROTOCOL.md#needle-round-reset), [cứu hai chiều và hai kết quả](docs/PROTOCOL.md#rescue-two-results),
 [deep chain/reset](docs/PROTOCOL.md#recursive-chain-cycles) giữ phạm vi và giới hạn tại nguồn chuẩn.
 
-**Mốc mới CP169:** profile thử ghép basicBattle trên current Manner/title/Bhost đã có **native
-FixedBox → reveal27/28 → nhặt Roller17/Bomb27/Fire28 và ba hiệu ứng trong cùng một epoch**, cảhai view.
-[Contract/giới hạn](docs/PROTOCOL.md#current-basic-hidden), [raw/partials/hash](docs/evidence/peer-endpoints/README.md#cp169).
-Chưa đo kết quả/reset/trận kế trên profile ghép; preset mặc định vẫn floor-only.
+**Mốc mới CP170:** profile thử basicBattle trên current Manner/title/Bhost đã chạy **hai chu kỳ
+native kết quả → về phòng → Ready**, mỗi vòng có reveal27/28, nhặt đủ Roller/Bomb/Fire và đúng hiệu ứng
+cảhai view. Native stat, hidden eligibility, seed map và khóa vòng có kiểm reset.
+[Contract/giới hạn](docs/PROTOCOL.md#current-basic-cycles), [run/raw/hash](docs/evidence/peer-endpoints/README.md#cp170).
 
-CP168 đã merge [PR239](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/239) tại `2ee6556`;
-CP169 tự kiểm/chờ PR. AUD050 qua168, audit định kỳ kế **CP172**. [PLAN](docs/PLAN.md#current-order)
-tiếp hai chu kỳ/reset của profile ghép. K4/K5/K6a/fullmatch/LAN/Internet/8client và dependency gate vẫn mở;
-[review waived](docs/evidence/checkpoints/review-waiver.json).
+CP169 đã merge [PR240](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/240) tại `387f936`;
+CP170 tự kiểm/chờ PR. [PLAN](docs/PLAN.md#current-order) tiếp preset tùy chọn và actual Start3 trên file
+export đó; preset mặcđịnh chưa đổi. K5/K6a/fullmatch/LAN/Internet/8client và dependency gate vẫn mở.
+AUD050 qua168; audit định kỳ kế **CP172**. [Review waived](docs/evidence/checkpoints/review-waiver.json).
 
 Đích đầu: hai client thật chơi hai trận liên tiếp; mở bốn client và hardening sau đó.
 
