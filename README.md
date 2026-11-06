@@ -41,19 +41,16 @@ Hai copy KR Wine đã chạy login/sảnh/phòng/Battle và các chu kỳ kết 
 [kim/reset](docs/PROTOCOL.md#needle-round-reset), [cứu hai chiều và hai kết quả](docs/PROTOCOL.md#rescue-two-results),
 [deep chain/reset](docs/PROTOCOL.md#recursive-chain-cycles) giữ phạm vi và giới hạn tại nguồn chuẩn.
 
-**Mốc mới CP149:** cả bootstrap/WCP/auth/channel của hai copy đã kết nối trực tiếp service,
-không TCPforward/proxy. Cùng run có hai chu kỳ kết quả/reset/Ready và bốn cửa sổ movement,
-586vethrecords→nativeingress; [contract/giới hạn](docs/PROTOCOL.md#direct-channel-positive),
-[evidence](docs/evidence/peer-endpoints/README.md#cp149). ItemR1chỉBomb/power1, R2BombFire/power2;
-chưa đủ mục tiêu Firecảhai vòng và chưa fullmatch/K6a/LAN/Internet.
+**Mốc mới CP150:** hai copy trên routeTCP/UDP trực tiếp đã nhặtBomb+Fire cảhai vòng,
+vòng1 A đặt bom/vòng2 B đặt bom; hai kết quả đảo chiều/reset/finalReady cónguồn.
+[Contract/giới hạn](docs/PROTOCOL.md#direct-item-feedback), [evidence](docs/evidence/peer-endpoints/README.md#cp150).
+664vethrecords/4movementwindows cùngrun; ca pixelalignmentfail giữriêng. Chưa fullmatch/K6a/LAN/Internet.
 
-[CP147 roster8](docs/PROTOCOL.md#battle-eight-roster) vẫn chưa8 client thật. CP148code/capture/AUD045
-đã merge [PR219](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/219) tại`f27c667`;
-CP149selfcheck/chờPR, [reviewwaived](docs/evidence/checkpoints/review-waiver.json).
-Audit qua148/kế **CP152**; CP137UI/sharedgeometry/fullinventory và các gate vẫn mở.
-
-Theo [PLAN](docs/PLAN.md#current-order), tiếp normalinput cófreshfeedback/actual124165 để kiểm Fire
-đang thiếu, rồi đổi bom vòng2 sangB trên route trực tiếp. Không lặp codec/endpoint đã giải.
+CP149 đã merge [PR220](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/220) tại`262a72f`;
+CP150selfcheck/chờPR. [Reviewwaived](docs/evidence/checkpoints/review-waiver.json), auditqua148/kế **CP152**.
+[CP147roster8](docs/PROTOCOL.md#battle-eight-roster) vẫn chưa8 client thật; CP137UI/sharedgeometry/
+fullinventory vàcácgate vẫn mở. Theo [PLAN](docs/PLAN.md#current-order), tiếp ca tranh cùngitem
+trên directroute, reuseCP062actual124/delayed165; không tìm lại contract item hoặc endpoint.
 
 Đích đầu: hai client thật chơi hai trận liên tiếp; mở bốn client và hardening sau đó.
 

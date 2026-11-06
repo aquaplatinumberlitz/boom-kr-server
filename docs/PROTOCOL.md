@@ -1,6 +1,6 @@
 # KR 00967 — contract tương thích client gốc
 
-Revision kr-legacy-contract-r1; cập nhật06/11/2026 JST (CP149; AUD045 quaCP148, kếCP152).
+Revision kr-legacy-contract-r1; cập nhật06/11/2026 JST (CP150; AUD045 quaCP148, kếCP152).
 **Contract có bằng chứng từng phần; chưa nghiệm thu full codec K2**.
 Lộ trình và thứ tự task chỉ giữ ở [REWRITE_PLAN — KRE](PLAN.md).
 Đây là contract của repo server KR. ADR0009 của bản viết lại là nguồn lịch sử để so sánh;
@@ -5195,3 +5195,36 @@ getter/framer/flags/CRC. Render4ảnh sau return2/Ready đã xem; không CP137co
 Chưa fullmatch/K6a/Windowsoriginal/fullauth/LAN/NAT/Internet/8actualclients/fullinventory.
 [PLAN](PLAN.md#current-order) tiếp inputfeedback/pickup tối thiểu đang thiếu và đổi owner bom vòng2
 sangB sau khi ledger item đủ; không RE lại codec/endpoint hoặc gọi gate từ hai chu kỳ basic.
+
+
+<a id="direct-item-feedback"></a>
+### Fire xác nhận trước input kế và bom hai owner trên directservice — CP150
+
+**`kr_runtime/confirmed` hẹp**, [recipe/control/raw/hash](evidence/peer-endpoints/README.md#cp150).
+Reuse CP082freshfeedback/CP106native165/currentstats/CP149allTCPdirect và map/item KR đã biết;
+không tìm lại nativebody/opcode/codec. Productioncode/profile/timeout30s/actorbinary giữ nguyên.
+Chỉ controllercopy kiểm currentactual124index17/kind1 +native165 ởcảhai view trước khi đặt bom;
+nếu chưa có, dùng boundednormalOSfeedback, không fake124/165/gamefunction/writeactor.
+Giữ20pulse/.045s/3sneutral và5sdeliverywait; stopkhi nativepickupđãcó, không tăng hạn đểpass.
+
+Hai run được giữ riêng. R1partial199.741s có actualFire124/165/effect trước extraalignment,
+nhưng đòi tọa độ tâmY279/tolerance4 rồi20pulse dao động259..319 gâyalignmiss; chưaSpace/kếtquả.
+Đây là thất bại điều kiện kết thúc phép đo, khônglàFirefail. R2newcopy/freeze364.479s/exit0/
+1348raw hoàn tất: cảhai vòng A nhặtBomb16+Fire17,165cursor12/errors0 ởhai view,
+copygettercapacity/power`1/1→2/1→2/2`; clockvòng2 vềbaseline. R1Fiređãcótrướchelper,
+R2alignment dừngtrên actual124+hai native165; không đòi đứng đúngpixel sau khi đãnhặt.
+Không suy đã giải nguyênnhân CP149R1miss hoặc hiệu ứng timing/proxy/packetloss.
+
+Vòng1nativeA118/159owner0/ID1/3,3/power2; vòng2nativeB118/159owner1/ID2/9,3/power1
+(BkhôngnhặtFire). Native158/process/195flags ởhai view khớp power/geometrythực; currentA17→19/
+B21 vòng1, B17→19/A21 vòng2. Native175/180 decodedrank2,1→1,2, resultreset hai lần,
+finalReady95/native110/noStart3. **664vethPCAPrecords**,4peerwindows/currentkey/target/currentprogress,
+tấtcả8TCPdirectservicepeerA.2/B.3/noTCPproxy/UDPproxy. Render4ảnh sau reset/Ready đãxem.
+
+3537lifecycle/1490wire/499peer/70pickup/16inputgate/25Ready/55directTCP joins;
+models1668actor/324peergetter/2364flaggetter+2340array/294typedpacket/297report/12native153/
+42UDPCRC táchruntime. Hai loadingbarrier27.376/27.838s<30; khôngcoldstartstabilityclaim.
+Currentcredit/claims/result vẫn emulatorpolicy/authoritylimits, không luật server gốc/toàninventory.
+CP150 khôngxóa CP149partial/CP150R1failure, chưafullmatch/K6a/realLAN/Internet/8clientsthật.
+[PLAN](PLAN.md#current-order) tiếp acceptance còn thiếu cho hai client trực tiếp, ưu tiên actualcontested
+pickup theoCP030/062 với claimlogicgiữ và boundedmeasurementdelivery, không RElại 124/165.
