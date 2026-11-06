@@ -446,3 +446,46 @@ CP150R2đủFirekhông backfill/chứngminhcausalproxy/input/loss. K6a/fullmatch
 originalauth/fullinventory giữmở. CP150khôngđếnaudit; AUD045qua148/kếCP152. CP149PR220 đãmerge,
 CP150selfcheck/pendingPR. NextPLAN reuseCP030/062actualcontest/delay165/onewinner vàcurrentdirectroute,
 chỉ đo integrationgap; khôngRElại schemaitem/owner hoặcđónggate dohai vòngbasic.
+
+
+<a id="cp151"></a>
+## CP151 — R1actualcontest/onewinner; R2loadingdeadline partial, không2cycles
+
+Baseline CP150head`bcf543c`/PR221merge`1dbc369`; [contract](../../PROTOCOL.md#direct-contested-pickup),
+[câu hỏi](../../RESEARCH.md#gap-map-spawn-loading), [PLAN](../../PLAN.md#current-order).
+Sourcefirst `direct-contested-pickup-r1/reuse-question.json` pinCP030/062/150/profile/claimlogic và
+khácbiệt overlapspawn/Roller cũ so distinctspawn/Fire hiện tại; không RE lại native124165/codec.
+`runtime_hold.py` **nguyên bytes CP062** delaypositive1652s, không sửaproductionclaims/consume/key;
+measurementdesign, khôngNAT/proxy/fairnesslaw. Controllercopy đưa A→Y199/B→Y359 bằngfreshfeedback,
+actualOSDownA/UpB0.30s/release, assert chưa cóFire17claim trước race; khôngfake124/forcewinner.
+
+Run`local/research/codex/direct-contested-pickup-r1/cycles` **353.595s/exit0/1204raw/407vethrecords**,
+run.json SHA`93664ce4a666d33da181959956ea18ef54c36436ad6cefb0c13182b8d8f06479`.
+Exit0là cleanup/report, `early_completion.reason=virtual_two_returns_native_observer_timeout`,
+**khônghai chu kỳpass**. Source/profile/client e9bb4766…/base400000/CP150API/noTCPproxy giữ,
+wrapper/input/copy thaycóhash/recipe/preflight/rollbackrõ. Không đổi source/configgiữarun.
+
+R1actualA124Fire17SHA`dbe9320b…`, B124SHA`b450e9fd…` cùngcell6,3/kind1/key12345. Aarrivesfirst,
+B`claim_not_current_or_already_consumed`; Brequest trước positive165delivery1.692042763s;
+Firehold2.032375181s. NativeoneFire165/receiver/cursor12/errors0/slot0, A4BCpower1→2 vàBpower1
+khôngđổi, capacitycảhai2giữ. `contest-verification.json`45joins; nativerequestsproducer/authauthority
+khôngsuytừstub. R1oneBombA118/ID1/power2/158/current17SHA→19/B21/native175180110/resultreset cónguồn.
+
+**R2blocker:** bothnative121full129 vàactor0/1init, actualTCPstreamkhông99trướchạn30s; loadingpolicy
+đóngcảhai channels vớiloading_timeout. R2khôngclock/contest/results/Ready2. Servicelog rank/return/
+refreshforfeit cóbroadcastrỗng, khôngnativereceipt; khônggộp CP150positive vào partialrun này.
+`partial-verification.json`905joins pinnative2start/1clock/1result/bothclose/deadline/actualC2Safter121;
+laststage13→startup1/connect chỉhệquảobserved sauclose, khôngclientrootcause. CP021writerE7F2A0 và
+onceguardstage+6410/callerE7F4DD/13ADD10op99 đãbiết, nextreadonlytimestamptrace đểphân biệtentry/
+guard/build/send/lateactual99; giữ30s/no99fake/forcedclock. Chưa causal165delay/packetloss.
+
+298peerjoins/2R1windows/192peergetters và407PCAP exactpayload→native22CRC mẫu đãkiểm; noR2window.
+Models1176actor/1182flaggetter+1170array/171typedpacket/174report/6native153 táchruntime. Initial
+contestchecker thiếuGEN165context nên trùngsnapshot, fixjoin đúngnativebefore/aftercallback giữlog;
+initialpartialchecker giảR2khôngrank, thaybằng phânbiệt emptyforfeit vsnative1result cóbằngchứng,
+không sửa raw/record cũ. Allrawseal1204outputs/sourcefrozen/cleanupcapture/service/Wine/namespace xong.
+
+237servertests CP148 reusecodeunchanged; docs/catalog/liveissues/artifacts/rawhistory/diff kiểmhandoff.
+Codexselfcheck/waivedreview; CP151pendingPR, auditđịnhkỳ kế **CP152**. TiếpPLAN loading99writer/send
+trace cónewobservable, khôngrandomrerun/increase30s. Fullmatch/K6a/LAN/Internet/8realclients/fullauth/
+CP137complexUI/sharedgeometry/fullinventory cònmở; R1contest khôngđónggatehaytaskhai vòng.

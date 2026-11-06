@@ -1,6 +1,6 @@
 # KR 00967 — contract tương thích client gốc
 
-Revision kr-legacy-contract-r1; cập nhật06/11/2026 JST (CP150; AUD045 quaCP148, kếCP152).
+Revision kr-legacy-contract-r1; cập nhật06/11/2026 JST (CP151; AUD045 quaCP148, kếCP152).
 **Contract có bằng chứng từng phần; chưa nghiệm thu full codec K2**.
 Lộ trình và thứ tự task chỉ giữ ở [REWRITE_PLAN — KRE](PLAN.md).
 Đây là contract của repo server KR. ADR0009 của bản viết lại là nguồn lịch sử để so sánh;
@@ -5228,3 +5228,35 @@ Currentcredit/claims/result vẫn emulatorpolicy/authoritylimits, không luật 
 CP150 khôngxóa CP149partial/CP150R1failure, chưafullmatch/K6a/realLAN/Internet/8clientsthật.
 [PLAN](PLAN.md#current-order) tiếp acceptance còn thiếu cho hai client trực tiếp, ưu tiên actualcontested
 pickup theoCP030/062 với claimlogicgiữ và boundedmeasurementdelivery, không RElại 124/165.
+
+
+<a id="direct-contested-pickup"></a>
+### Hai nativeclaim cùngFire17 trên distinctspawn/directroute — CP151 partial
+
+**`kr_runtime/confirmed` R1**, [recipe/raw/partial](evidence/peer-endpoints/README.md#cp151).
+Reuse CP030/062actualtwo124 vàpositive165delay2s, CP150currentdistinctspawn/profile/claims/directroute;
+không mang overlapspawn/Roller củaCP062 sangKRcurrentprofile. Wrapper`runtime_hold.py` sao nguyên
+CP062: chỉ delaypositive165, productionclaim/key/consume nguyên, provenance là **design measurement**.
+NormalOSfreshfeedback approachA199/B359 rồi DownA/UpB0.30s và release; khôngfake124/forcewinner.
+
+R1/key12345 cóhai actual124 cùngindex17/kind1/cell6,3: A tới trướcđượcnhận, B bị
+`claim_not_current_or_already_consumed`. Hold2.032375181s; Brequest tới trướcdelivery1.692042763s.
+Mỗi receiverchỉmộtFire165/full12/errors0/slot0, nativegetterA power1→2/Bpower1giữ,
+capacityA/B2giữ;45contestjoins. R1cóhai peerwindows/A118ID1power2/158/195/currentA17→19/B21/
+native175rank2,1/180/110reset và Start2. Đây **không** là luật fairness/arbitrationserver gốc.
+
+**Blocker:** R2cảhai nhận121full129 vàinit2actor, nhưngkhôngactual99 trênTCPchanneltrướchạn30s;
+serviceđóngcảhai vìloading_timeout. KhôngnativeclockR2/contestR2/endingR2/finalReady2.
+Serviceghi forfeit rank/return/refresh R2 với **broadcastrỗng**, khôngphải kếtquảnative lần2.
+Harness exit0/`virtual_two_returns_native_observer_timeout` chỉnói cleanupxong; không2cyclespass.
+Nguyênnhân thiếu99 chưa xácđịnh; khôngquy delay165/networkloss/clientdeadlock từcorrelation.
+
+Run353.595s/1204raw/407vethrecords;905partialjoins/298peerjoins/2R1windows;
+models1176actor/192peergetter/1182flaggetter+1170array/171typedpacket/174report/6native153/22UDPCRC
+riêng. Initialverifier thiếucontext165 nên trùng snapshot; sửajoinđúngcallback/context, raw giữ.
+Initialpartialchecker giảR2khôngrank bịbácbỏ bởi emptyforfeit; raw/model/policy/nativereceipt phânbiệt.
+Source/config/binary khôngđổi giữarun;30sdeadlinegiữ, capture/process/namespacecleanup/hashđầyđủ.
+
+[PLAN](PLAN.md#current-order) tiếp trace nativewriter99 đãbiết`E7F2A0`/guardstage+6410 và
+actualsend`13ADD10` với monotonic timestamp từ121 tới deadline, khôngraise timeout/force99/clock.
+CP150hai cycles/BombFire/ABowner vẫnnguồnriêng; CP151R1khôngbackfillR2/gate/fullmatch/LAN/8clients.
