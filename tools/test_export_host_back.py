@@ -29,9 +29,15 @@ class HostBackExportTests(unittest.TestCase):
             command = [sys.executable, str(root / 'tools/export_probe_profile.py'),
                        '--source-root', str(folder)]
             normal, optional = folder / 'normal.json', folder / 'optional.json'
+            battle = folder / 'battle.json'
             subprocess.run(command + ['--out', str(normal)], check=True, capture_output=True)
             subprocess.run(command + ['--out', str(optional), '--host-back-rejoin'],
                            check=True, capture_output=True)
+            subprocess.run(command + ['--out', str(battle), '--host-battle-exit'],
+                           check=True, capture_output=True)
+            battle_profile = json.loads(battle.read_text())
+            self.assertEqual(battle_profile.pop('battle_exit'), {'mode': 'host_A_202_86'})
+            self.assertEqual(battle_profile, json.loads(optional.read_text()))
             before, after = json.loads(normal.read_text()), json.loads(optional.read_text())
             self.assertNotIn('host_back_rejoin', before)
             self.assertEqual(after.pop('host_back_rejoin'), {'mode': 'idle_A_to_B'})

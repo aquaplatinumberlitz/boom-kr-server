@@ -1,0 +1,251 @@
+{
+  "id": "CP156",
+  "previous": "CP155",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-06T04:03:16.402215+00:00",
+  "context_commit": "2b9249e1a25b70bf4cc60f9a090c1bcab04d6459",
+  "owner": "Codex",
+  "reviewer": "Codex",
+  "question": "Which actual acceptance gap remains after CP155 combined direct baseline? Does host EOF with pending bomb fence timer and promote B, and is that distinct from current normal host UI Back?",
+  "scope": "Reuse CP155 current baseline, CP050/053 close/promotion, CP107/129 native107/chief110/UI20286. Two frozen host EOF runs, partial staging and successful current direct integration; manual K6a acceptance/AUD047; known host exit exporter dependency after cleanup. No new native body RE/production behavior.",
+  "artifacts": [
+    {
+      "name": "KRoriginalCA/read-only",
+      "sha256": "a52545c14b1fea423de655c3163d6360b628d61c1cd472b46fdbc8a9ffe15f4e"
+    },
+    {
+      "name": "Winecopyunchanged",
+      "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+    },
+    {
+      "name": "staticcopy",
+      "sha256": "660447c293ce92270cb9b5815331bca976e8f156366e1fe50b217b6c12e60ce3"
+    }
+  ],
+  "locators": [
+    "Baseline CP155 PR226 head52a16da8121acafab8d92e544f49a9791ed5606f / merge2b9249e1a25b70bf4cc60f9a090c1bcab04d6459.",
+    "r1run eb5cf6cf219737c5afc3bf2abdc11cc00ead574f336d0da92028f95292112090 /305.991515035s/exit1/991raw: R1normal, R2alignment199±20 fails159↔224229/noFire124/nohostfault.",
+    "r2run77e511b38eb2804373f554ae8d0cbda28ae0b229680eb6cbb775a701b69b4685 /417.374391657s/exit0/1295raw/97frozeninputs; Bwinner then Awinner; two normal outcomes/Ready; actual A118ID3/owner0/3,3/power1 before owned A PID163SIGKILL.",
+    "Fuse remaining5.113133827s; actual serviceEOF42.465609..47.308083ms relative after/before signal record; job3 round_closed/no158; B native107slot0ID1→0/base6/rewind0/final1 and110full6/chief1.",
+    "Base400000/RVA=VA−400000; native107/110/chief source CP107/129; CP145 knownUDP13DE7AA/13DE949/14E8280/E66680; no body reanalysis.",
+    "AUD047 periodic through156; nextCP160. New host-battle-exit exporter implements known policy dependency only, current nativeUI measurement pending."
+  ],
+  "findings": [
+    {
+      "summary": "Current direct host A EOF while ID3 pending fences round3/no158/no A17,19 and B returns/promotes via actual107slot0 IDclear/110chief1/render after two normal contested cycles/Ready. Killed A no third outcome; no Start4.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#direct-host-eof-acceptance",
+      "evidence": [
+        "RUN-02387",
+        "RUN-02484",
+        "RUN-02414",
+        "RUN-02483",
+        "RUN-02423"
+      ],
+      "limits": "Two modifiedWine copied clients/e9bb47/private virtual hosts/direct TCP/same physical host. Two normal contested cycles/outcomes/Ready then third forfeit only; host SIGKILL/EOF is not normal UI Back20286/halfclose/loss/accountresume/Start4. Current oldUDP key59/current56 scope not low8wrap/auth/fullgrammar. Getter/flag-array emulation separate from actual runtime values; view snapshots not global simultaneous state. R1 staging partial/nohostfault; r2 only approach tolerance20to30, no forced state/claim/winner or causal native input fix. Measured profile modes absent; new exporter added only after cleanup; 46fixture/preflight/tests not native current UI integration. Original source binary/DB/pack unchanged. Fullauth/originalauthority/Windows/sharedgeometry/CP137UI/generalreset/K6a/fullmatch/LAN/Internet/8realclients/gates remain open."
+    },
+    {
+      "summary": "R1 controller staging fails before R2claim/hostfault; preserve partial. R2 two approach tolerances20to30 only, Fire unclaimed assert/two actualcontenders/one165 unchanged. Baseline oldUDPnegative/12samephasecurrentapply,4peerwindows/twooutcomes/Ready retained.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#direct-host-eof-acceptance",
+      "evidence": [
+        "RUN-01010",
+        "RUN-01012",
+        "RUN-02424",
+        "RUN-01078",
+        "RUN-01089",
+        "RUN-02390",
+        "RUN-02389"
+      ],
+      "limits": "Two modifiedWine copied clients/e9bb47/private virtual hosts/direct TCP/same physical host. Two normal contested cycles/outcomes/Ready then third forfeit only; host SIGKILL/EOF is not normal UI Back20286/halfclose/loss/accountresume/Start4. Current oldUDP key59/current56 scope not low8wrap/auth/fullgrammar. Getter/flag-array emulation separate from actual runtime values; view snapshots not global simultaneous state. R1 staging partial/nohostfault; r2 only approach tolerance20to30, no forced state/claim/winner or causal native input fix. Measured profile modes absent; new exporter added only after cleanup; 46fixture/preflight/tests not native current UI integration. Original source binary/DB/pack unchanged. Fullauth/originalauthority/Windows/sharedgeometry/CP137UI/generalreset/K6a/fullmatch/LAN/Internet/8realclients/gates remain open."
+    },
+    {
+      "summary": "Manual acceptance/source comparison distinguishes guestEOF vs hostEOF vs normalUIBack, separates bounded emulator policy proof from unknown original authority. Current profile lacks battle_exit/host_back_rejoin; next minimal integration reuses CP129 rather than RE callbacks again.",
+      "source": "design",
+      "status": "design",
+      "method": "documentation",
+      "canonical": "docs/PROTOCOL.md#direct-host-eof-acceptance",
+      "evidence": [
+        "RUN-02486",
+        "RUN-02487",
+        "RUN-01082"
+      ],
+      "limits": "Two modifiedWine copied clients/e9bb47/private virtual hosts/direct TCP/same physical host. Two normal contested cycles/outcomes/Ready then third forfeit only; host SIGKILL/EOF is not normal UI Back20286/halfclose/loss/accountresume/Start4. Current oldUDP key59/current56 scope not low8wrap/auth/fullgrammar. Getter/flag-array emulation separate from actual runtime values; view snapshots not global simultaneous state. R1 staging partial/nohostfault; r2 only approach tolerance20to30, no forced state/claim/winner or causal native input fix. Measured profile modes absent; new exporter added only after cleanup; 46fixture/preflight/tests not native current UI integration. Original source binary/DB/pack unchanged. Fullauth/originalauthority/Windows/sharedgeometry/CP137UI/generalreset/K6a/fullmatch/LAN/Internet/8realclients/gates remain open."
+    },
+    {
+      "summary": "After cleanup --host-battle-exit exporter adds knownhost_A_202_86 plus idle_A_to_B/5fixtures; existing default/idle outputs retained. 2 export/24 hostpolicy tests and 46 realfixture hash/servicepreflight pass. No production native/service behavior change or native current UI proof.",
+      "source": "design",
+      "status": "design",
+      "method": "design",
+      "canonical": "docs/PROTOCOL.md#direct-host-eof-acceptance",
+      "evidence": [
+        "RUN-02393",
+        "RUN-02392",
+        "RUN-02407",
+        "RUN-02395",
+        "RUN-02396",
+        "RUN-02469"
+      ],
+      "limits": "Two modifiedWine copied clients/e9bb47/private virtual hosts/direct TCP/same physical host. Two normal contested cycles/outcomes/Ready then third forfeit only; host SIGKILL/EOF is not normal UI Back20286/halfclose/loss/accountresume/Start4. Current oldUDP key59/current56 scope not low8wrap/auth/fullgrammar. Getter/flag-array emulation separate from actual runtime values; view snapshots not global simultaneous state. R1 staging partial/nohostfault; r2 only approach tolerance20to30, no forced state/claim/winner or causal native input fix. Measured profile modes absent; new exporter added only after cleanup; 46fixture/preflight/tests not native current UI integration. Original source binary/DB/pack unchanged. Fullauth/originalauthority/Windows/sharedgeometry/CP137UI/generalreset/K6a/fullmatch/LAN/Internet/8realclients/gates remain open."
+    }
+  ],
+  "verification": [
+    {
+      "check": "50 direct hostEOF;84 contest;43 cycle;575 peer4windows;19 exactold/12currentapply;24loadinggate;23life;26entity195reset;3manualframes",
+      "result": "pass",
+      "evidence": [
+        "RUN-02387",
+        "RUN-01078",
+        "RUN-01089",
+        "RUN-02389",
+        "RUN-02390",
+        "RUN-02408",
+        "RUN-02414",
+        "RUN-02484",
+        "RUN-02483"
+      ],
+      "limits": "Two modifiedWine copied clients/e9bb47/private virtual hosts/direct TCP/same physical host. Two normal contested cycles/outcomes/Ready then third forfeit only; host SIGKILL/EOF is not normal UI Back20286/halfclose/loss/accountresume/Start4. Current oldUDP key59/current56 scope not low8wrap/auth/fullgrammar. Getter/flag-array emulation separate from actual runtime values; view snapshots not global simultaneous state. R1 staging partial/nohostfault; r2 only approach tolerance20to30, no forced state/claim/winner or causal native input fix. Measured profile modes absent; new exporter added only after cleanup; 46fixture/preflight/tests not native current UI integration. Original source binary/DB/pack unchanged. Fullauth/originalauthority/Windows/sharedgeometry/CP137UI/generalreset/K6a/fullmatch/LAN/Internet/8realclients/gates remain open."
+    },
+    {
+      "check": "1295raw/97frozen;1328loading;2460actor/372peer/132UDP/16life/2758flag/2730array nativegetter-model checks separate",
+      "result": "pass",
+      "evidence": [
+        "RUN-02423",
+        "RUN-02425",
+        "RUN-02416",
+        "RUN-01071",
+        "RUN-02421",
+        "RUN-02417",
+        "RUN-02415",
+        "RUN-02397"
+      ],
+      "limits": "Models not runtime function writes/world oracle; entity log-health scope through third159 before host fault, not all post-kill messages."
+    },
+    {
+      "check": "2export/24relatedhosttests/46realfixtures/preflight;237CP148tests reused/41sourcefiles unchanged; docs/catalog/liveissues/artifacts/diff",
+      "result": "pass",
+      "evidence": [
+        "RUN-02392",
+        "RUN-02407",
+        "RUN-02393",
+        "RUN-02469",
+        "RUN-02388",
+        "RUN-02411",
+        "RUN-01074"
+      ],
+      "limits": "Fullserver237 reused not rerun; semantic/manual audit separate, checkpoint fullhistory/local check beforecommit."
+    }
+  ],
+  "evidence": [],
+  "evidence_manifests": [
+    {
+      "path": "docs/evidence/checkpoints/evidence/CP156-host-EOF-acceptance.json",
+      "bytes": 640985,
+      "sha256": "b6aab737fd768d5f30d392dd3b5d92ba47b80531bf65881b3846dc1057ca3968",
+      "count": 2502
+    }
+  ],
+  "delta": {
+    "added": [
+      "Actual current direct pending host EOF/B native cleanup/promotion after two normal contested cycles.",
+      "Manual acceptance and AUD047 periodic through156; knownhostUI exporter option ready for next integration."
+    ],
+    "corrected": [
+      "PR226 merged/current navigation; authority outdated references and blanket demo wording qualified without closing gate.",
+      "R1 partial kept/nohostfault; tolerance change controller only; host EOF not normal UIBack.",
+      "Stale solved next-step rows now follow current host UI integration; CP155 record untouched."
+    ],
+    "superseded": [
+      "NEXT-K6A-ACCEPTANCE-AUDIT closed bounded manual comparison/hostEOF gap; NEXT-CURRENT-HOST-UI-BACK active."
+    ]
+  },
+  "blockers": [
+    "Current profile normal UI20286 mode not yet measured; exporter/preflight is only implementation, no nativeUI confirmation.",
+    "Fullauth/originalauthority/Windows/LAN/Internet/8realclients/generalreset/sharedgeometry/CP137UI/K6a not complete."
+  ],
+  "next_steps": [
+    {
+      "id": "NEXT-K6A-ACCEPTANCE-AUDIT",
+      "task": "KRE-005b",
+      "state": "closed",
+      "action": "Manual criteria assessment/AUD047 completed; actual missing current host EOF measured, normal UI gap explicit. No automatic gate closure.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-CURRENT-HOST-UI-BACK",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "PLAN reuse CP129 knownmode/5aliases via newexport into fresh currentdirect profile; retain terrain/network/30s/2s165/loadinggate. After two cycles/Ready normal Start3 noBomb/noaccepted17,19; actual Esc/confirm→20286/A lobby/B175180107clearA110chief1/promotedroom. No fake game calls/packets; assess rejoin/BStart only after actual gap.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    }
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-11-06T04:03:16.402215+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "Codex solo RE/runtime/manual acceptance/self-check; independent review waived.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Owner explicitly requested solo without workers/review."
+    }
+  },
+  "docs_sync": [
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "CP156 hostEOF/partial/acceptance/AUD047/PR226merge/export implementation/current UI integration next; synced before complete."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "CP156 hostEOF/partial/acceptance/AUD047/PR226merge/export implementation/current UI integration next; synced before complete."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "updated",
+      "reason": "CP156 hostEOF/partial/acceptance/AUD047/PR226merge/export implementation/current UI integration next; synced before complete."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "updated",
+      "reason": "CP156 hostEOF/partial/acceptance/AUD047/PR226merge/export implementation/current UI integration next; synced before complete."
+    },
+    {
+      "path": "docs/features.json",
+      "state": "updated",
+      "reason": "CP156 hostEOF/partial/acceptance/AUD047/PR226merge/export implementation/current UI integration next; synced before complete."
+    },
+    {
+      "path": "docs/COVERAGE.md",
+      "state": "updated",
+      "reason": "CP156 hostEOF/partial/acceptance/AUD047/PR226merge/export implementation/current UI integration next; synced before complete."
+    },
+    {
+      "path": "docs/evidence/peer-endpoints/README.md",
+      "state": "updated",
+      "reason": "CP156 hostEOF/partial/acceptance/AUD047/PR226merge/export implementation/current UI integration next; synced before complete."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/review.json",
+      "state": "updated",
+      "reason": "CP156 hostEOF/partial/acceptance/AUD047/PR226merge/export implementation/current UI integration next; synced before complete."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
+      "state": "updated",
+      "reason": "CP156 hostEOF/partial/acceptance/AUD047/PR226merge/export implementation/current UI integration next; synced before complete."
+    },
+    {
+      "path": "server/README.md",
+      "state": "updated",
+      "reason": "CP156 hostEOF/partial/acceptance/AUD047/PR226merge/export implementation/current UI integration next; synced before complete."
+    }
+  ]
+}

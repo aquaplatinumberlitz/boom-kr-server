@@ -1,6 +1,6 @@
 # KR 00967 — contract tương thích client gốc
 
-Revision kr-legacy-contract-r1; cập nhật06/11/2026 JST (CP155; AUD046 quaCP152, kếCP156).
+Revision kr-legacy-contract-r1; cập nhật06/11/2026 JST (CP156; AUD047 quaCP156, kếCP160).
 **Contract có bằng chứng từng phần; chưa nghiệm thu full codec K2**.
 Lộ trình và thứ tự task chỉ giữ ở [REWRITE_PLAN — KRE](PLAN.md).
 Đây là contract của repo server KR. ADR0009 của bản viết lại là nguồn lịch sử để so sánh;
@@ -1999,17 +1999,17 @@ Bảng này dẫn nguồn bằng chứng từng phần; chưa phải toàn contr
 triển khai phải bổ sung riêng **creator, simulator, validator, broadcaster, peer-editable state**, với
 locator/trace và trạng thái từng ô; những vai trò không nêu dưới đây hiện `unknown` cho KR.
 
-| Hành vi | Đã thấy trong KR | Phần cần đóng trước demo dùng hành vi đó |
+| Hành vi | Bằng chứng theo scope đang dùng | Giới hạn/kiểm còn thiếu theo scope sử dụng |
 |---|---|---|
-| Movement | CP027 hai chiều; CP070 [cut/counter/restore local vs remote](#current-udp-causality), CP098 [protected peer targets](#current-peer-targets), CP106 [four-phase/two-cycle integration](#current-movement-cycles) trong scope từng run;183 vẫn ghost | Full schema input/update/correction, validator và quyền sửa vị trí của peer |
-| Bomb place/ID | CP027 hai owner/ID chung1..4 tạo trên cả hai client; [phạm vi](#peer-duo); lặp/cũ CP025 | CP041 có [stale158/ID reuse và fence job local](#round-generation), CP043 có [old159/serial reuse](#late-bomb-confirm); CP067 [C2Skey/serialguard](#c2s118-admission) và CP075 [actualTCPselectedreplay](#current-tcp-replay) loại duplicate/oldbody hẹp; allocator/rollover/concurrent/race/toàn generation/authority còn mở |
+| Movement | [CP156 currentdirect](#direct-host-eof-acceptance):4peerwindows/actualnativeapply/target/currentprogress; [CP070](#current-udp-causality) là control causality riêng,183 vẫn ghost | Input/update/correction/fullschema/auth/reliability chưa đủ; currentprofile đã đo hai chiều, không đòi fullgrammar trước mọi demo hẹp |
+| Bomb place/ID | [CP156](#direct-host-eof-acceptance) actualA118/B118→ID1/2/native159158 vàID3hostpendingEOF/fence; [CP067](#c2s118-admission) và [CP075](#current-tcp-replay) giữ guard riêng | Boundedrole/key/serial/quota/geometry làpolicy; actorlocation/fullauth/rollover/allpool/race cònunknown, không gán authoritativeworld |
 | Explode/chain | CP033 một owner; CP064 [power1/cách hai ô](#mixed-owner-chain), CP071 [power2 ngoài tầm/feedback chưa118](#mixed-owner-power) giữ partial lịch sử; CP081 [power2/distance2 mixed-owner](#mixed-input), CP084 [ba bom fork hai vòng](#three-bomb-chain); CP094 [optional pinned terrain](#terrain-policy), CP095 [actualbox/laterfreshpair](#opposite-box-control) có native callback/195flag proof | [CP096adjacent1cell](#adjacent-owner-control) và [CP122 chain sâu](#recursive-chain) đã đo trong ca hẹp; [CP133 shared cellstate/query](#shared-cell-state) và [CP134 hai shared cycles](#shared-cascade-cycles) đã giải ca cố định; FIFO/firstbombstop/immutable tổng quát/race và authority server gốc chưa đủ |
 | Block destroy/item reveal | CP032 nativecontract; CP068 [currentservice/list2/reportgate/effect/reset](#current-hidden-items), CP092 [195flags/seedreset](#map-flags-snapshot), CP094/095 [pinnedpolicy/nativeboxclear](#terrain-policy) cảhai view | Drop algorithm gốc/fullvalidator, genericclass/map và transport khác còn thiếu; không dùng report142 làm worldoracle |
-| Item placement/pickup | CP030 nhặt/tranh index; CP031/032 stat/itemẩn; CP045 [bảng nhóm/Roller/MaxPower hai view/reset](#item-families) | CP042 có [old165/index reuse](#item-generation); runtime tại max, KRspeed→px/s/TTL/activevariants, drop/toàn124validator/generation/reset còn thiếu; CP062 [winner đảo trên actual tranh index](#current-pickup-race) đã có scope riêng |
-| Trap/death | CP029/036; CP037 kim và tranh chấp cứu/diệt; [kim](#needle-selfescape), [precedence](#contact-precedence) | CP063 [guard stale/duplicate](#report127-freshness) là policy hẹp; CP075 [TCPsame/old17,19](#current-tcp-replay) đã đo; [CP112](#death-envelope-admission) thêm structural17/19admission; semanticfirstseen/forgedforward/generation/variants/result21 vẫn thiếu |
-| Result/reset | CP039 hai vòng statepeer/result/21/return và reset field hẹp; CP044 [timer ở EOF và vòng B/C mới](#abort-timer); CP080 [hai chu kỳ sau rejoin](#ready-input), CP082 [mixed-owner survivor](#mixed-cycles), CP083 [all-dead rank2/2/storage/UI](#all-dead-result), mỗi run/scope riêng; CP100 [optional result freshness](#result-freshness-guard), CP102 [drain/local21clear/peerblocker](#drained-result-local-clear), CP104 [native175/34/state3](#ending34-state-boundary), CP105 [exactendingUDPqueue](#ending-udp-state-apply), CP106 [same-run selected180boundaries](#current-movement-cycles) | CP041 có [payload cũ khi ID reuse](#round-generation); arbitration/toàn generation/entity/timer/peer/seq không rò vẫn mở; phân biệt run chờ sai origin với ca hoàn tất |
-| Room lifecycle | CP034 leave/promotion/EOF/return; CP035 rejoin/Ready; CP040 chủ B/C Start; CP044 [B/C bom/death/result/return sau abort](#abort-timer) | Bầu chủ/giữ ID-slot/forfeit là policy stub; guest EOF trả A về phòng/xóa B đã đo riêng; CP050 có [service EOF/cleanup](#service-eof); CP051 có [C mới/Start B trong service](#service-replacement); CP052 [guest setup EOF](#setup-eof), CP053 [host với peer chưa map](#host-setup), CP054 [C trước vòng đầu](#prestart-replacement), CP072 [preclock forfeit/return](#preclock-eof), CP074 [native107/IDclear và UI](#preclock-cleanup), CP076 [Back86/emptyroomrecreate cùng channel](#back86-membership), CP107 [currentservicehostBack/promotedrejoin tới clock](#host-normal-back) đã đo; [CP135 deadline và native cleanup](#loading-timeout) đã đo ca B99 bị giữ; [CP144](#virtual-pending-guest-eof) có actualpendingguestEOF/nativeAcleanup sau2normalcycles trênproductionvirtualprofile; reconnect cùng account/disconnect variants/toàn reset còn mở |
-| Peer lifecycle | CP027 actual99→153; CP045–047 [oldUDP actor/keyguard/endpointcontrol](#udp-generation), CP070 [transport cut hai chiều](#current-udp-causality) | CP048 [service fixture](#probe-service) có key policy hẹp; [CP138](#peer-endpoint-ip) và [CP139](#virtual-peer) thêm IPtuple/actualvirtualowners/directUDP; low8reuse/roster/UDPtype khác/fullgrammar/reliability/relay/reset tổngquát còn mở. Không coi đổi cổng riêng lẻ là freshness guard hoặc keybyte là auth |
+| Item placement/pickup | [CP155/156](#direct-host-eof-acceptance) hai actualcontenders/onewinner/native165/statreset qua2key; [item families](#item-families), [old165](#item-generation) giữscope riêng | Chưa full124distance/auth/generation/inventory/max/speedTTL/activevariants; 2s165hold vàfirstarrival làmeasurement/policy |
+| Trap/death | [CP156](#direct-host-eof-acceptance) hai viewloser56→1/beforerankother0 trong2epoch; [CP029](#peer-events), [kim/rescue](#needle-selfescape) là nguồn riêng | Viewsnapshot khôngglobalsametick; structural/currenttrap/selectedduplicateguard khácworldvalidator/firstseenforgedforward/fullvariants |
+| Result/reset | [CP156](#direct-host-eof-acceptance) 2normaloutcomes/Ready/195seed/key/stat/currentIDreset/oldUDPnegative-currentpositive rồiAEOF3/Bforfeit riêng; [CP104/105](#ending34-state-boundary) giữending/UDPvariants | Toànentity/timer/seq/peer/pool/resetvariants/arbitrationgốc chưa đủ; không gọi thirdforfeit lànormalmatch hoặc lấy mọiunknown làm blanketblocker profilepolicy |
+| Room lifecycle | [CP155 guestEOF](#direct-oldudp-contest-eof), [CP156 hostEOF/Bpromotion](#direct-host-eof-acceptance) currentdirect; [CP129 hostBack](#host-battle-exit)/[CP107 idleBack](#host-normal-back) là scope khác | Currentmeasuredprofile chưa bật normalhostUI20286; exporter mới có option nhưng runtimeintegration cònpending. Accountresume/halfclose/loss/generalreplace/Start4 chưađo |
+| Peer lifecycle | [CP156](#direct-host-eof-acceptance):actual99/153/currentdirectIPports, exactold59/current56→queue/keydrop/noapply vàfreshpositive; [CP130](#udp-membership-lifetime) là queue qua membership riêng | Keybyte khôngauth; low8wrap/rosterreplacement/fullUDP/reliability/relay/NAT/physicalLAN/Internet/generalqueueflush cònunknown |
 
 Trong **optional profile hiện hành**, bảng dưới ghi vai trò emulator, không gán cho server gốc.
 Giới hạn và phép đo nằm ở link contract; không dùng mỗi vai trò này làm gate acceptance.
@@ -5448,3 +5448,59 @@ Same-run scope còn thiếu TCP malformed/same-oldselected guards trong đườn
 qua rootproxy đã đo riêng, fullauth/wholecodec/globalworld/generalreset/CP137UI/Windows/LAN/Internet/
 8realclients vẫn mở. [PLAN](PLAN.md#current-order) tiếp **đối chiếu acceptance K6a và audit CP156**
 trước khi chọn đúng phép đo còn thiếu, không lặp oldUDP/contest/EOF hoặc tự nâng gate từ sốcheck.
+
+
+<a id="direct-host-eof-acceptance"></a>
+### Host EOF hiện tại, đối chiếu acceptance và AUD047 — CP156
+
+**`kr_runtime/confirmed` cho ownedfault; forfeit/promotion là `emu_choice/design`.**
+[Recipe/run/hash/partial](evidence/peer-endpoints/README.md#cp156). Reuse CP155combinedbaseline và
+CP050/053knownclose/cleanup/promotion, CP107/129knownnative107/slotclear/chief/110; không RE body mới.
+K6 yêu cầu host rời không treo survivor; guestEOFCP155 không thay thế hostEOF. TCPnegative CP148
+qua proxy giữ boundedproof, không tự dựng thêm một yêu cầu K6a từ tiêu chí malformed của K7.
+
+R2 cùng run giữ2contests/oldUDPnegative+currentpositive/4movementwindows/life56→1bothviews/195flags/
+2nativeoutcomes/reset/Ready. WinnerB rồiA, bomnormalID1/A/power1 vàID2/B/power1; không forcewinner.
+NormalStart3/actualA118 tạoID3/owner0/cell3,3/power1/159both, rồi revalidatePID/prefix/netns/comm và
+SIGKILL đúng CA-A. Native/EOF/timer/promotion được nối từ raw; nofake118/99/death/clock/gamecall.
+HostPID163, fuse còn5.113133827s; actualserviceEOF sau mốc signal-return42.465609ms.
+
+Service trực tiếp đóngchannelA/reason=eof/finishgeneration3; deadlinejob3round_closed/no158/noA17,19.
+B nhận chosenforfeit175/180 lần3,107slot0/ID1→0/base6→rewind0→final1,110full6/errors0 vàchiefgetter1.
+Typed107 `[0,1,0]`;110 khớp known`promote_B`fixture, không suy layout từ chief1. ẢnhB chỉKRGuest ở
+slot1 có nhãn chủ phòng/nútStart, slot0 trống/chatKRLocalleft. KilledA không nhậnforfeit; noStart4.
+Hai normalendings vàthirdforfeit tách riêng; không ba trận hoàn chỉnh/UIBack/accountresume/halfclose/loss.
+
+**R1partial:** sauR1normaloutcome, R2actual99/clock nhưng20pulse cănA199±20 chỉ159↔224/229,
+FireR2chưa đượcclaim/hostfault chưa xảyra. R2copy chỉ đổi hai approach tolerance20→30, giữ assertion
+Firechưa đượcclaim/tranh0.30s/20pulse/.045s/3freshstablesamples/returnbudget6s; production/profile/
+30s/2s165/B32390loadinggate nguyên. Staging là lựa chọn controller, không RE luật motion hoặc causalfix.
+
+<a id="local-demo-acceptance"></a>
+**Đối chiếu thủ công K5/K6/K6a tại CP156** — dẫn về contract/raw, không thêm gate hoặc tracker:
+
+| Điều kiện | Bằng chứng/giới hạn hiện tại | Phần chưa được coi đạt |
+|---|---|---|
+| Hai client/identity-slot riêng | 2actualCA/wineserver/privatevirtualhosts/8actualTCP/currentroster trong runCP156 | ModifiedWine cùngphysicalhost; không Windowscontrol/LAN/Internet |
+| Movement hai chiều/bom hai phía | 4nativepeerwindows;2actual118/nativeID159158/195flags/reset | Không fullUDP/actorlocationauth/allmaps/chainvariant |
+| Tranh item một kết quả | Haiactual124 mỗi2key/one165/view/onlywinnerpower/reset; nativegetter model riêng | Delay2s/firstarrival policy, không originalfairness/toàninventory |
+| Hai phía trap/dead/result | Cảhaiview56→1 trước175/other0 tại rankentry,2chosenranks/results | Không snapshottoànworld cùngtick/originalserverauthority |
+| Hai trận liên tiếp/reset | Cùngrun2normaloutcomes/Ready/key12345→12346/ID1,2/seed/stat/oldUDPnegative+currentpositive | Không toànpool/seq/low8wrap/lifetime ởmọivariant |
+| Guest/host disconnect | CP155guestEOF làcontrol riêng; CP156hostEOF/Bpromotion cósame-runbaseline2normalcycles | Không đổi chúng thành normalUIBack/halfclose/loss/Start4/accountresume |
+| Usable host UI leave | CP129known20286 opt-in được phục hồi; profile đoCP156 vẫn chưa bật mode đó | CurrentnormalhostBack runtimeintegration cònpending; không gọi SIGKILL làbấmthoát |
+
+**Kết luận:** hành vi local trong selectedcopy/profile đã có bằng chứng mạnh; gateK0–K7/K6a không
+được nâng ở CP156. Giới hạn originalauthority không làm mất bằng chứng policydesign cókiểm; ngược
+lại không tự gán nó thành servergốc. NormalhostUIleave là công việc thực tế tiếp theo theo [PLAN](PLAN.md#current-order),
+không lặp entireconsumerRE hoặc quét fullclient trước. Blockdestroy/chain CP095/134 vẫn phạm vi riêng,
+không gọi mapflags current1bomb là fullsharedgeometry/allmaps proof.
+
+**Service/tool delta sau run cleanup:** `tools/export_probe_profile.py --host-battle-exit` xuất known
+`battle_exit.mode=host_A_202_86`, tự kèm `host_back_rejoin.idle_A_to_B` và5alias đã đo. Defaultexport
+và optionidle cũ giữbytes/declarations. 2exporttests/24hostpolicytests và46realfixturehash/servicepreflight
+đãqua; source/export là `design`, **chưa** là nativeUI20286 trêncurrentprofile. MeasuredhostEOF không
+bậtoptionnày và không thay source/config giữa run. Không đổi sender/receiver/nativebinary/pack/DB.
+
+AUD047 đọc core docs→authority/currentcontracts→evidence vàraw/report/copyproducer/config/tests;
+sửa authoritynavigation cũ/điềukiện demo quá rộng/PR226merge/hostEOF-vs-Back và nextstep. Counterqua156,
+kỳtiếp160. Reviewđộc lậpwaived/Codexselfcheck; checker không tựchứngminh ngữnghĩa/đónggate.
