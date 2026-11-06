@@ -1,0 +1,211 @@
+{
+  "id": "CP163",
+  "previous": "CP162",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-06T09:52:17.335010+00:00",
+  "context_commit": "a92178f4422bd183d24ab8f65555395ddbb7e146",
+  "owner": "Codex",
+  "reviewer": "Codex",
+  "question": "Does actual Manner selector1 with eight synthetic roster slots permit balanced4to4 and reject1to7 at actual native UI Start?",
+  "scope": "Two frozen isolated single-client runs reuse CP147 roster/Ready/map/getter/Start andCP162 actual81→86echo. Capturednativeframer/typed81/86/CRCpartial/manualUI. No production code/preset or newnativebody changes.",
+  "artifacts": [
+    {
+      "name": "Original KR00967 unchanged",
+      "sha256": "a52545c14b1fea423de655c3163d6360b628d61c1cd472b46fdbc8a9ffe15f4e"
+    },
+    {
+      "name": "CP147 diagnostic copy usedforbothnewruns",
+      "sha256": "94ee93dc7978a1ab22f25ec877e29ddcab254ca761f2eac22534421e2dd628e8"
+    },
+    {
+      "name": "modO model reference",
+      "sha256": "a08950c833d3acab8281049def7b3dc96b221f107eeda01da3a548e34b91dce5"
+    }
+  ],
+  "locators": [
+    "BaselineCP162PR233 head a00e2040c123971bd5ee03a142f909bc0409af93/mergea92178f4422bd183d24ab8f65555395ddbb7e146.",
+    "ready-four-four run79b523a14987bdfb11a0eec2405c16456bda300363d74318ad44402d7c07414d/76.094563511s/exit0/75raw.",
+    "ready-one-seven runb321cdf7694a6da96466ddf8f7742bc4085bb2b26c2e5eb0a8ba3c8cb8bc06fe/75.695825599s/exit0/75raw.",
+    "Base400000/RVA=VA-base;123FA10/+9C/callerDCB138;StartDCAD80/DE03F3return/DE0574send/DE059Cpending;DCB185balancedreject7. CP162 actual81 second_u32/86offset7 reused.",
+    "AUD048 through160/nextCP164; periodicAUD049 pending with committedmodepreset/Start3."
+  ],
+  "findings": [
+    {
+      "summary": "ActualManner1/8syntheticroster/map278capacity8:4to4click returns0/captured104/nativeframer/send1/pending3;1to7 returns7/no104/nativebalancedreject8players2teams. CallerDCB138 getter1/full8profiles196/errors0. No count/guardreturn forcing.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#battle-eight-roster",
+      "evidence": [
+        "RUN-00211",
+        "RUN-00021",
+        "RUN-00116",
+        "RUN-00214"
+      ],
+      "limits": "One actual modified Wine CA/run, sequential fresh copies/prefixes, offline lo only, seven synthetic profiles, normal Battle ExVillage01/code278/capacity8. Actual Manner81→86 selector1; no manager/count/guardresult forcing. CP147 copy94ee93dc differs productione9bb4766. Not8 realclients/admission/121load/Battle8/UDPmesh/fullmatch/K6a/Windows/LAN/Internet/originalauthority. Committedmodepreset nativefile/Start3 pending."
+    },
+    {
+      "summary": "Actual81 requestSHA/sequence→actualsent86SHA/onlyoffset7change→native+9Cgetter1;12actual81/86 nativeframer/string/primitive/CRCpartial and allcapturedC2S nativeCRC controls pass. Encoder notoracle.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#battle-eight-roster",
+      "evidence": [
+        "RUN-00017",
+        "RUN-00094",
+        "RUN-00189",
+        "RUN-00211"
+      ],
+      "limits": "One actual modified Wine CA/run, sequential fresh copies/prefixes, offline lo only, seven synthetic profiles, normal Battle ExVillage01/code278/capacity8. Actual Manner81→86 selector1; no manager/count/guardresult forcing. CP147 copy94ee93dc differs productione9bb4766. Not8 realclients/admission/121load/Battle8/UDPmesh/fullmatch/K6a/Windows/LAN/Internet/originalauthority. Committedmodepreset nativefile/Start3 pending."
+    },
+    {
+      "summary": "Reused CP147 Ready4/106/map/guard/copy/emulation andCP162 modeinput/ACK ratherthan rebuilding/dumping/decompiling. Productionserver/preset exacthash unchanged,257server/4export tests reused; eightrealpeers/admission/Battle8 separate.",
+      "source": "design",
+      "status": "design",
+      "method": "documentation",
+      "canonical": "docs/PROTOCOL.md#battle-eight-roster",
+      "evidence": [
+        "RUN-00208",
+        "RUN-00209",
+        "RUN-00221",
+        "RUN-00224"
+      ],
+      "limits": "One actual modified Wine CA/run, sequential fresh copies/prefixes, offline lo only, seven synthetic profiles, normal Battle ExVillage01/code278/capacity8. Actual Manner81→86 selector1; no manager/count/guardresult forcing. CP147 copy94ee93dc differs productione9bb4766. Not8 realclients/admission/121load/Battle8/UDPmesh/fullmatch/K6a/Windows/LAN/Internet/originalauthority. Committedmodepreset nativefile/Start3 pending."
+    }
+  ],
+  "verification": [
+    {
+      "check": "44 raw/native/frozen/isolated/count/capacity/getter/click/104 joins and2manualPNG",
+      "result": "pass",
+      "evidence": [
+        "RUN-00211",
+        "RUN-00214",
+        "RUN-00109",
+        "RUN-00204"
+      ],
+      "limits": "One actual modified Wine CA/run, sequential fresh copies/prefixes, offline lo only, seven synthetic profiles, normal Battle ExVillage01/code278/capacity8. Actual Manner81→86 selector1; no manager/count/guardresult forcing. CP147 copy94ee93dc differs productione9bb4766. Not8 realclients/admission/121load/Battle8/UDPmesh/fullmatch/K6a/Windows/LAN/Internet/originalauthority. Committedmodepreset nativefile/Start3 pending."
+    },
+    {
+      "check": "12actual81/86 nativefulltyped/string/framer/CRCpartial and allcapturedC2SnativeCRC",
+      "result": "pass",
+      "evidence": [
+        "RUN-00017",
+        "RUN-00094",
+        "RUN-00189"
+      ],
+      "limits": "Copiednativeemulation/syntheticreceiver not8realpeers/world/serverauthority."
+    },
+    {
+      "check": "Exactsource/preset reuse257server4export;docs/catalog/issues/artifacts/diff;fullcheckpointlocalhistory beforecommit",
+      "result": "pass",
+      "evidence": [
+        "RUN-00209",
+        "RUN-00012",
+        "RUN-00016",
+        "RUN-00002"
+      ],
+      "limits": "Mechanical consistency notsemantic/gate certification; unchanged-code tests reused notrerun."
+    }
+  ],
+  "evidence": [],
+  "evidence_manifests": [
+    {
+      "path": "docs/evidence/checkpoints/evidence/CP163-balanced-eight.json",
+      "sha256": "44c197b44f158c7609a341a7026b217445faccffbbb9c16ef87aa4578d9bacc9",
+      "bytes": 58369,
+      "count": 228
+    }
+  ],
+  "delta": {
+    "added": [
+      "ActualManner1/8syntheticslots4to4Start0/104 versus1to7Start7/no104/native/UI/wireproof."
+    ],
+    "corrected": [
+      "CP147 selector1runtime/inputunknown nowlinked CP162/163; historicalselector0/ninthcapacity controls unchanged.",
+      "CP162PR233merged/currentnavigation; newpresetnativefile/Start3stillpending."
+    ],
+    "superseded": [
+      "NEXT-BALANCED-EIGHT-START closed;NEXT-MODE-PRESET-START3-AUDIT active."
+    ]
+  },
+  "blockers": [
+    "No8actualclients/service8roster/admission/121load/Battle8/UDPmesh; oneCAplus7syntheticprofiles not8multiplayer.",
+    "Committedmodepreset nativefile/normalStart3 pending;AUD049CP164due. Fullauth/authority/generalrooms/Windows/LAN/Internet/K6a/naturalCP157 remainopen."
+  ],
+  "next_steps": [
+    {
+      "id": "NEXT-BALANCED-EIGHT-START",
+      "task": "KRE-005b",
+      "state": "closed",
+      "action": "CP163 actualManner1/8roster4to4check0/104 versus1to7check7/no104/nativegetter/count/capacity/fullprofiles; not8actualclients/Battle8.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-MODE-PRESET-START3-AUDIT",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "PLAN reuseCP160export/nativeStart3 andCP162modeUI/86/87/180/2normalcycles. Newfrozencommittedpreset export47pins/directproduction/twooutcomesresetReady→actualAStart3/12199/clocks/render8s/noBomb; preserveManner1. ManualAUD049core/authority/rawCP161–164atCP164,nextCP168afteraudit. Noautogate.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    }
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-11-06T09:52:17.335010+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "Codex solo RE/runtime/self-check; independentreview waived; no8peer/gateclosure.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Owner explicitly requested solo without workers/review."
+    }
+  },
+  "docs_sync": [
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "CP163balanced8actualStart/positive-negative/nativecopylimits/PR233merge/nextmodepresetStart3audit synchronized beforecomplete."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "CP163balanced8actualStart/positive-negative/nativecopylimits/PR233merge/nextmodepresetStart3audit synchronized beforecomplete."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "updated",
+      "reason": "CP163balanced8actualStart/positive-negative/nativecopylimits/PR233merge/nextmodepresetStart3audit synchronized beforecomplete."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "updated",
+      "reason": "CP163balanced8actualStart/positive-negative/nativecopylimits/PR233merge/nextmodepresetStart3audit synchronized beforecomplete."
+    },
+    {
+      "path": "docs/features.json",
+      "state": "updated",
+      "reason": "CP163balanced8actualStart/positive-negative/nativecopylimits/PR233merge/nextmodepresetStart3audit synchronized beforecomplete."
+    },
+    {
+      "path": "docs/COVERAGE.md",
+      "state": "updated",
+      "reason": "CP163balanced8actualStart/positive-negative/nativecopylimits/PR233merge/nextmodepresetStart3audit synchronized beforecomplete."
+    },
+    {
+      "path": "docs/evidence/eight-player/README.md",
+      "state": "updated",
+      "reason": "CP163balanced8actualStart/positive-negative/nativecopylimits/PR233merge/nextmodepresetStart3audit synchronized beforecomplete."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/review.json",
+      "state": "updated",
+      "reason": "CP163balanced8actualStart/positive-negative/nativecopylimits/PR233merge/nextmodepresetStart3audit synchronized beforecomplete."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
+      "state": "updated",
+      "reason": "CP163balanced8actualStart/positive-negative/nativecopylimits/PR233merge/nextmodepresetStart3audit synchronized beforecomplete."
+    }
+  ]
+}

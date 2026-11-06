@@ -41,17 +41,16 @@ Hai copy KR Wine đã chạy login/sảnh/phòng/Battle và các chu kỳ kết 
 [kim/reset](docs/PROTOCOL.md#needle-round-reset), [cứu hai chiều và hai kết quả](docs/PROTOCOL.md#rescue-two-results),
 [deep chain/reset](docs/PROTOCOL.md#recursive-chain-cycles) giữ phạm vi và giới hạn tại nguồn chuẩn.
 
-**Mốc mới CP162:** đã nối lựa chọn Free/Manner thật tới selector KR và sửa hai chỗ stub làm mất
-lựa chọn này: ACK tạo/vào phòng và return180. Hai copy Wine giữ Manner qua guest Back/vào lại,
-**hai vòng kết quả/reset/Ready**. [Contract/giới hạn](docs/PROTOCOL.md#current-team-mode),
-[run/hash/control](docs/evidence/peer-endpoints/README.md#cp162). Preset giữ47 fixture pin và bật policy mới
-sau runtime positive; chưa chạy chính file preset đã cập nhật trong một run mới.
+**Mốc mới CP163:** trên roster8 slot, Manner cho Start4–4 (check0/request104 thật), chặn1–7
+(check7/không104 và notice yêu cầu số người các đội bằng nhau).
+[Contract/giới hạn](docs/PROTOCOL.md#battle-eight-roster), [run/hash](docs/evidence/eight-player/README.md#cp163).
+Mỗi run vẫn chỉ **một client thật, bảy profile tổng hợp**; chưa8 client/Battle8/service admission.
 
-CP161 đã merge [PR232](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/232) tại `593bdc0`;
-CP162 tự kiểm/chờ PR. AUD048 qua160, kế CP164. [PLAN](docs/PLAN.md#current-order) tiếp kiểm
-Start cân bằng4–4/negative1–7 bằng selector1 đã nối, tái dùng roster CP147. Đây vẫn là một client với
-roster tổng hợp; K6a/fullmatch/LAN/Internet/8 client thật và natural transient CP157 còn mở.
-[Review waived](docs/evidence/checkpoints/review-waiver.json).
+[CP162](docs/PROTOCOL.md#current-team-mode) đã sửa giữ Free/Manner qua create/join/return và hai vòng;
+đã merge [PR233](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/233) tại `a92178f`.
+CP163 tự kiểm/chờ PR. [PLAN](docs/PLAN.md#current-order) tiếp native smoke chính preset Manner đã commit,
+Start3 và audit CP164. K6a/fullmatch/LAN/Internet/8 client thật/naturalCP157 vẫn mở;
+[review waived](docs/evidence/checkpoints/review-waiver.json).
 
 Đích đầu: hai client thật chơi hai trận liên tiếp; mở bốn client và hardening sau đó.
 

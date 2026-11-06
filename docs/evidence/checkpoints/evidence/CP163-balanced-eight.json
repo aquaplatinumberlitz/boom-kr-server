@@ -1,0 +1,1601 @@
+{
+  "schema": "kre-evidence-manifest-v1",
+  "evidence": [
+    {
+      "id": "RUN-00001",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/append_checkpoint.py",
+      "bytes": 8300,
+      "sha256": "21a0f500ffb0b5e77612a8885403f8611f32f7266519092ff632d0d79c08b52a"
+    },
+    {
+      "id": "RUN-00002",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/artifacts-check.txt",
+      "bytes": 253,
+      "sha256": "649c6624aa6d317dfc1db5e16fea683cfbc9d9cf4dd3df11c0d70e57409054a0"
+    },
+    {
+      "id": "RUN-00003",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/cp163-snapshot/README.md",
+      "bytes": 4918,
+      "sha256": "dea093d06692667df0487b420c081e7afc2e62ea85c5c600f15facee3e4fa45f"
+    },
+    {
+      "id": "RUN-00004",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/cp163-snapshot/docs/COVERAGE.md",
+      "bytes": 144536,
+      "sha256": "c6aab8e080aa62049354e045f81828c25980ecc49fcf0d254285347b4d551c8f"
+    },
+    {
+      "id": "RUN-00005",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/cp163-snapshot/docs/PLAN.md",
+      "bytes": 33839,
+      "sha256": "dd78487b08ac54be1fb2df42e8708231d9b43679d4bde71d2be06bbb5b58ec8b"
+    },
+    {
+      "id": "RUN-00006",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/cp163-snapshot/docs/PROTOCOL.md",
+      "bytes": 487419,
+      "sha256": "c43fbcdd649e8462b5f9ed87942b888749ad09e6b17d023dbac9d4f145f8e3c3"
+    },
+    {
+      "id": "RUN-00007",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/cp163-snapshot/docs/RESEARCH.md",
+      "bytes": 30653,
+      "sha256": "62011416510381465a17d67a6ce0a3753e2c45bfd52fb0109965ef3160d101d9"
+    },
+    {
+      "id": "RUN-00008",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/cp163-snapshot/docs/evidence/eight-player/README.md",
+      "bytes": 7778,
+      "sha256": "48a2097ef2be63bbfcd45d15ab268ac36c8a0d7b12707186ee9e68962735214c"
+    },
+    {
+      "id": "RUN-00009",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/cp163-snapshot/docs/evidence/issue-reconciliation/github-snapshot.json",
+      "bytes": 198442,
+      "sha256": "ca9ef24c72adde7b075383d81a07311deaea661bc96a51d14af302785ef310fa"
+    },
+    {
+      "id": "RUN-00010",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/cp163-snapshot/docs/evidence/issue-reconciliation/review.json",
+      "bytes": 24700,
+      "sha256": "ba6a6bc88413018b58f45e5b248e847f5f1d4614029b1babeed1bffbfcecb397"
+    },
+    {
+      "id": "RUN-00011",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/cp163-snapshot/docs/features.json",
+      "bytes": 151495,
+      "sha256": "1de3f592440ae055d96bc411ffd4b4823bd493ec508f370e0ff4aae01a0f1499"
+    },
+    {
+      "id": "RUN-00012",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/docs-check.txt",
+      "bytes": 175,
+      "sha256": "0e82c775a10be55c2cf11da3740aab6bdbedaed663b4f9c7f55c9075ff64ef19"
+    },
+    {
+      "id": "RUN-00013",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/github-snapshot.json",
+      "bytes": 198442,
+      "sha256": "ca9ef24c72adde7b075383d81a07311deaea661bc96a51d14af302785ef310fa"
+    },
+    {
+      "id": "RUN-00014",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/issue14-before.json",
+      "bytes": 3153,
+      "sha256": "ba783c4657fa6c336416ffa818f01b530fb465455da6d9cc3f2ea79dc43853e2"
+    },
+    {
+      "id": "RUN-00015",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/issue14-body.md",
+      "bytes": 2846,
+      "sha256": "fdda21fd20a4aabad02d88556512d455da4712a242d8a0e815229073155f0e28"
+    },
+    {
+      "id": "RUN-00016",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/issues-check.txt",
+      "bytes": 130,
+      "sha256": "2c14d1259f61a2a006ebc1ff477b284e59752da54abef98e71266577a1a89f8c"
+    },
+    {
+      "id": "RUN-00017",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/native-verification.json",
+      "bytes": 5738,
+      "sha256": "191f3e087e2f3f513c9b04647fa1ae13f67d00b2e5e2e218586184611f8d8933"
+    },
+    {
+      "id": "RUN-00018",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/ready-four-four/actual81.bin",
+      "bytes": 110,
+      "sha256": "ec34b77d73f2f0d2c86b3c43a79494d8b3415d226620284499eb4d5a9b7b8bc5"
+    },
+    {
+      "id": "RUN-00019",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/ready-four-four/cycles/CALog-before.txt",
+      "bytes": 1833,
+      "sha256": "815a72e04939bf6f4d548c386d14e2b6cc219830c6199ec2d0ad77c02e9cb13b"
+    },
+    {
+      "id": "RUN-00020",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/ready-four-four/cycles/CALog-run.txt",
+      "bytes": 1833,
+      "sha256": "f3e19fa7d979626e0c8cf3ed75849ed0b69d94085ba0cc84277e9e57960e2036"
+    },
+    {
+      "id": "RUN-00021",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/ready-four-four/cycles/client.log",
+      "bytes": 69876,
+      "sha256": "83b5b038e3dc0f6cba7de48044702cf82127acaf64bc3a127dddfb12e5592b3e"
+    },
+    {
+      "id": "RUN-00022",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/ready-four-four/cycles/debug-commands.txt",
+      "bytes": 10985,
+      "sha256": "1695045b316abdccdfffe45945afc57794933a8b1ee48c8dce69f4bd3ab738f1"
+    },
+    {
+      "id": "RUN-00023",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/ready-four-four/cycles/hosts",
+      "bytes": 121,
+      "sha256": "32a007c62d2887ae9f8d3c30d1ff7cb3902e6e1e0c75c5a978ee556cc8ea71f8"
+    },
+    {
+      "id": "RUN-00024",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/ready-four-four/cycles/mode86.bin",
+      "bytes": 49,
+      "sha256": "a6901b0d1930a7c910fbc525460200966ffc4541adcc50c9055d3e93832808f4"
+    },
+    {
+      "id": "RUN-00025",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/ready-four-four/cycles/nsswitch.conf",
+      "bytes": 307,
+      "sha256": "c18e474cd61df8648ee02ac7a9c76b8d6c7782d8b212f925e6980f20af5cc838"
+    },
+    {
+      "id": "RUN-00026",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/ready-four-four/cycles/processes-00.txt",
+      "bytes": 3830,
+      "sha256": "b3f658d392030c371e3fb81984084d8d6f99c4c59082b99be2457e8f91a122b5"
+    },
+    {
+      "id": "RUN-00027",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/ready-four-four/cycles/processes-01.txt",
+      "bytes": 4627,
+      "sha256": "4723e880945ce6a6c968b20aebc2410b8f4c073af3d2d27603baa12f4f65fda7"
+    },
+    {
+      "id": "RUN-00028",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/ready-four-four/cycles/processes-02.txt",
+      "bytes": 4627,
+      "sha256": "a345d48b1816dce6a78fe3840595c4fcd8a27652b3879079629bcb1722381dd8"
+    },
+    {
+      "id": "RUN-00029",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/ready-four-four/cycles/processes-03.txt",
+      "bytes": 4627,
+      "sha256": "849705c76c5ab0c805275b3253260008568df0de28e53bb1a3616d0bbb0a001c"
+    },
+    {
+      "id": "RUN-00030",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/ready-four-four/cycles/processes-04.txt",
+      "bytes": 4627,
+      "sha256": "32b526542602c01422b360de5dd759acfe8af7ac1fa68126fbf807be5a2992ea"
+    },
+    {
+      "id": "RUN-00031",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/ready-four-four/cycles/processes-05.txt",
+      "bytes": 4627,
+      "sha256": "cf9587799f14876de6153ebb94b9fe857a78739cfea085fafad1651c2fd47602"
+    },
+    {
+      "id": "RUN-00032",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/ready-four-four/cycles/processes-06.txt",
+      "bytes": 4627,
+      "sha256": "182249b160e1afb6ca82148bf43caddedf6a140044018aedc476ecedc862940e"
+    },
+    {
+      "id": "RUN-00033",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/ready-four-four/cycles/processes-07.txt",
+      "bytes": 4627,
+      "sha256": "04fd61a6f768bd587fbfb30d55d560e3ec5bfe168412968c9212c26c6a7c5e6b"
+    },
+    {
+      "id": "RUN-00034",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/ready-four-four/cycles/processes-08.txt",
+      "bytes": 4627,
+      "sha256": "b82af75691ac3a565165aeabd28ecd70020b1620160e69a0f66d50e497ac2384"
+    },
+    {
+      "id": "RUN-00035",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/ready-four-four/cycles/processes-09.txt",
+      "bytes": 4627,
+      "sha256": "0203139f048acd86a287cd545e1b690aa8105eeff9961ca121974ecf9ec3292c"
+    },
+    {
+      "id": "RUN-00036",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/ready-four-four/cycles/processes-10.txt",
+      "bytes": 4627,
+      "sha256": "e6d9dec449f6be1c0933d646c83fa1a455e0c01cd388966cfd9b248aa72a9f4f"
+    },
+    {
+      "id": "RUN-00037",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/ready-four-four/cycles/processes-11.txt",
+      "bytes": 4627,
+      "sha256": "4f6db1635fbd3c3593330a5ebb4c5afe189d087768401b33e790d7a800c02591"
+    },
+    {
+      "id": "RUN-00038",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/ready-four-four/cycles/processes-12.txt",
+      "bytes": 4627,
+      "sha256": "74b5ff701226b9a961a32b681bcf763f480136352c551f87e0622fdc6b41d89c"
+    },
+    {
+      "id": "RUN-00039",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/ready-four-four/cycles/processes-13.txt",
+      "bytes": 4627,
+      "sha256": "0144f1950cd4defe808b4c95b771619ebe2a610ed12cfb9d9ddd041417021ae7"
+    },
+    {
+      "id": "RUN-00040",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/ready-four-four/cycles/processes-14.txt",
+      "bytes": 4627,
+      "sha256": "9a2cf38bc460ce7288560dcaf3cadafe1e1bade89b6e445162fd3d0518a41b1b"
+    },
+    {
+      "id": "RUN-00041",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/ready-four-four/cycles/processes-15.txt",
+      "bytes": 4627,
+      "sha256": "d388439174f4a90f5b09ad4a47820e98b33bce5ae4c3a249604089f5af145582"
+    },
+    {
+      "id": "RUN-00042",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/ready-four-four/cycles/processes-16.txt",
+      "bytes": 4627,
+      "sha256": "35dc09ce5ecff8d663b15d21820072d9ac46c3e2ec88dcb3d4d786191cf02a80"
+    },
+    {
+      "id": "RUN-00043",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/ready-four-four/cycles/processes-17.txt",
+      "bytes": 4627,
+      "sha256": "9c956cf632395e2a0303603d46f1db4d197d99cde665d534d1016b45ed5127c6"
+    },
+    {
+      "id": "RUN-00044",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/ready-four-four/cycles/processes-18.txt",
+      "bytes": 4627,
+      "sha256": "bb50da94cacc87ec64cd8c45681b9178bf3d28daed8db24292de2be33c973307"
+    },
+    {
+      "id": "RUN-00045",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/ready-four-four/cycles/processes-19.txt",
+      "bytes": 4627,
+      "sha256": "326269acb62b5eb96b8107e9e949d637aa4aeba4420fdbd1c38327604f5ade49"
+    },
+    {
+      "id": "RUN-00046",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/ready-four-four/cycles/processes-20.txt",
+      "bytes": 4627,
+      "sha256": "f085a42a47ce3b220a673e73e8595dec6a862cd120e920d84d391bc31da36385"
+    },
+    {
+      "id": "RUN-00047",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/ready-four-four/cycles/run.json",
+      "bytes": 21452,
+      "sha256": "79b523a14987bdfb11a0eec2405c16456bda300363d74318ad44402d7c07414d"
+    },
+    {
+      "id": "RUN-00048",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/ready-four-four/cycles/screen-00.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "RUN-00049",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/ready-four-four/cycles/screen-01.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "RUN-00050",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/ready-four-four/cycles/screen-02.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "RUN-00051",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/ready-four-four/cycles/screen-03.png",
+      "bytes": 19847,
+      "sha256": "2178ceb11e92e5f95694ca8a855de0750fb1a93dfe6e02a13c1856b080d16654"
+    },
+    {
+      "id": "RUN-00052",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/ready-four-four/cycles/screen-04.png",
+      "bytes": 13437,
+      "sha256": "e47c2919c72588bea5f3e5b8ebda4d9823a66e8864f6b86ed6f85d9e19598218"
+    },
+    {
+      "id": "RUN-00053",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/ready-four-four/cycles/screen-05.png",
+      "bytes": 193700,
+      "sha256": "cd0294a374a38dece2ac45c18d6b40744f7f18e92689339bd97427e8c254eb41"
+    },
+    {
+      "id": "RUN-00054",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/ready-four-four/cycles/screen-06.png",
+      "bytes": 192905,
+      "sha256": "39f4a5c4aa0859783e4be8545cce76c668978a92cf6b311ae125162e4aaf9e5b"
+    },
+    {
+      "id": "RUN-00055",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/ready-four-four/cycles/screen-07.png",
+      "bytes": 129573,
+      "sha256": "006335f8262fc9378b934a18f5498aace103a59a7fe8ffa6905bc096f28f20b2"
+    },
+    {
+      "id": "RUN-00056",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/ready-four-four/cycles/screen-08.png",
+      "bytes": 148922,
+      "sha256": "1feb07cd6866249508a215e494ca31d6d3c1c473b6727ce331012a86e746572d"
+    },
+    {
+      "id": "RUN-00057",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/ready-four-four/cycles/screen-09.png",
+      "bytes": 213491,
+      "sha256": "dd9de170058d3a6cd919b2291a4dd8017a7d9e4a52ff77a5a964ddc09ccfa40c"
+    },
+    {
+      "id": "RUN-00058",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/ready-four-four/cycles/screen-10.png",
+      "bytes": 174080,
+      "sha256": "74f59db595c1b7dbe67e4d39aaf92d74f0c8f902ce5a89f3198c745ba259c495"
+    },
+    {
+      "id": "RUN-00059",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/ready-four-four/cycles/screen-11.png",
+      "bytes": 175628,
+      "sha256": "ef9048ef5436301bad46d5ec3b70dee895e20c2bb31f5c225269bc43244c2c88"
+    },
+    {
+      "id": "RUN-00060",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/ready-four-four/cycles/screen-12.png",
+      "bytes": 181608,
+      "sha256": "d94d010e7f1fd53c6d0b729be146e6510d45f18d25142c562dd47680d0524340"
+    },
+    {
+      "id": "RUN-00061",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/ready-four-four/cycles/screen-13.png",
+      "bytes": 181471,
+      "sha256": "449c093d2da25d73fcaccd98577d409e580881f1e8967d1971739956f197d0ba"
+    },
+    {
+      "id": "RUN-00062",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/ready-four-four/cycles/screen-14.png",
+      "bytes": 182070,
+      "sha256": "dfcb5c3878c6d13e5d6c641269b10c1ffc0e827f85ff583d4682d2b742def940"
+    },
+    {
+      "id": "RUN-00063",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/ready-four-four/cycles/screen-15.png",
+      "bytes": 181650,
+      "sha256": "bb4e7c08b9b354373bbff76b70b6e98dadd0000be3d802eac10f599795168e0a"
+    },
+    {
+      "id": "RUN-00064",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/ready-four-four/cycles/screen-16.png",
+      "bytes": 181158,
+      "sha256": "e42fdb76095655269ec00ce5539ffa1e528b4961a01ab00da542170d7b690faa"
+    },
+    {
+      "id": "RUN-00065",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/ready-four-four/cycles/screen-17.png",
+      "bytes": 181235,
+      "sha256": "3b8a39ff251a62759a69f444b1b2baa5a6b154c9ec6154f73d2b3bca36679f68"
+    },
+    {
+      "id": "RUN-00066",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/ready-four-four/cycles/screen-18.png",
+      "bytes": 181448,
+      "sha256": "d9f3467f189a3965f8bcf65d56d67557d5a50dbd432e4063163ead9ad1434b2f"
+    },
+    {
+      "id": "RUN-00067",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/ready-four-four/cycles/screen-19.png",
+      "bytes": 180675,
+      "sha256": "767aa9b5460d541b489ed58c3847126da780fd256ed0eb0cbd92eb807f83b6b6"
+    },
+    {
+      "id": "RUN-00068",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/ready-four-four/cycles/screen-20.png",
+      "bytes": 181182,
+      "sha256": "43df7af89ec606307ae550b3b1e6563e4dec2a2af2e2856e2bdf70f1bf312013"
+    },
+    {
+      "id": "RUN-00069",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/ready-four-four/cycles/ui-after-confirm-1.png",
+      "bytes": 148653,
+      "sha256": "a933ceedd9765ced6bc549e7a7cf74bc31af6137f76d966f5670d852bd88e2ce"
+    },
+    {
+      "id": "RUN-00070",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/ready-four-four/cycles/ui-before-confirm-1.png",
+      "bytes": 148952,
+      "sha256": "52ace4a10158efb1cbcfa1f2b132024728e4c56a9b07bbe0babf181488ed992a"
+    },
+    {
+      "id": "RUN-00071",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/ready-four-four/cycles/windows-00.txt",
+      "bytes": 166,
+      "sha256": "28ae29836d791dcd3302b447a52a8f0fa3f9a192abbc33a27751e23d7ebe0d43"
+    },
+    {
+      "id": "RUN-00072",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/ready-four-four/cycles/windows-01.txt",
+      "bytes": 872,
+      "sha256": "c8c8cfe9c5b9bb2ccde16b4b959b165ed33d50824f3fbd29834c16b6f0e63586"
+    },
+    {
+      "id": "RUN-00073",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/ready-four-four/cycles/windows-02.txt",
+      "bytes": 872,
+      "sha256": "c8c8cfe9c5b9bb2ccde16b4b959b165ed33d50824f3fbd29834c16b6f0e63586"
+    },
+    {
+      "id": "RUN-00074",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/ready-four-four/cycles/windows-03.txt",
+      "bytes": 1311,
+      "sha256": "79f14ed4dc9ec340cb32d82ec0c77a2262196d736b814194ac0ee379704f762b"
+    },
+    {
+      "id": "RUN-00075",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/ready-four-four/cycles/windows-04.txt",
+      "bytes": 1311,
+      "sha256": "79f14ed4dc9ec340cb32d82ec0c77a2262196d736b814194ac0ee379704f762b"
+    },
+    {
+      "id": "RUN-00076",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/ready-four-four/cycles/windows-05.txt",
+      "bytes": 1311,
+      "sha256": "79f14ed4dc9ec340cb32d82ec0c77a2262196d736b814194ac0ee379704f762b"
+    },
+    {
+      "id": "RUN-00077",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/ready-four-four/cycles/windows-06.txt",
+      "bytes": 1311,
+      "sha256": "79f14ed4dc9ec340cb32d82ec0c77a2262196d736b814194ac0ee379704f762b"
+    },
+    {
+      "id": "RUN-00078",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/ready-four-four/cycles/windows-07.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "RUN-00079",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/ready-four-four/cycles/windows-08.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "RUN-00080",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/ready-four-four/cycles/windows-09.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "RUN-00081",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/ready-four-four/cycles/windows-10.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "RUN-00082",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/ready-four-four/cycles/windows-11.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "RUN-00083",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/ready-four-four/cycles/windows-12.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "RUN-00084",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/ready-four-four/cycles/windows-13.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "RUN-00085",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/ready-four-four/cycles/windows-14.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "RUN-00086",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/ready-four-four/cycles/windows-15.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "RUN-00087",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/ready-four-four/cycles/windows-16.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "RUN-00088",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/ready-four-four/cycles/windows-17.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "RUN-00089",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/ready-four-four/cycles/windows-18.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "RUN-00090",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/ready-four-four/cycles/windows-19.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "RUN-00091",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/ready-four-four/cycles/windows-20.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "RUN-00092",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/ready-four-four/cycles/wineboot.log",
+      "bytes": 144,
+      "sha256": "7c60897c65ef29c01bf3eb5bca15ea9e441b420f4c954c1b921d27cc39ade817"
+    },
+    {
+      "id": "RUN-00093",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/ready-four-four/cycles/xvfb.log",
+      "bytes": 2808,
+      "sha256": "46b8747df8a2fc8b6a469b2374ea3d0c6c786dc3dcf2a9be13d94ce76ed3a1a7"
+    },
+    {
+      "id": "RUN-00094",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/ready-four-four/cycles-oracle.json",
+      "bytes": 53123,
+      "sha256": "756c61a4d0ce311592b794525f15af6aab9f3e78c91873163b8765068c5bd9d0"
+    },
+    {
+      "id": "RUN-00095",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/ready-four-four/cycles-recipe.json",
+      "bytes": 1059,
+      "sha256": "50893282e7bb255f211ba9761dbf0283b455c7231fe371e75fa23cf83fea2db6"
+    },
+    {
+      "id": "RUN-00096",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/ready-four-four/guest-batch.bin",
+      "bytes": 1638,
+      "sha256": "6e802b442af5b6b9cf7babbcd011c8a8863ceacb569f40179cc56cfb388cadbb"
+    },
+    {
+      "id": "RUN-00097",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/ready-four-four/launch-exit.json",
+      "bytes": 18,
+      "sha256": "df4d721d233a2334088d2d2e0110346ae9e509ff46bf0b379fbcfa85c715af4d"
+    },
+    {
+      "id": "RUN-00098",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/ready-four-four/launch.log",
+      "bytes": 17508,
+      "sha256": "beb7e959df0720a3b9d87f88a57b3ccee830081add489d89ed1517615537146c"
+    },
+    {
+      "id": "RUN-00099",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/ready-four-four/map117.bin",
+      "bytes": 46,
+      "sha256": "9f333b0470bd5d4e525d3bde420c450a13bfce011ef4a070de55dea4a794a47a"
+    },
+    {
+      "id": "RUN-00100",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/ready-four-four/map238.bin",
+      "bytes": 117,
+      "sha256": "959aaae9ee8ac8131029d361d1b2305d6a07a418f882ee980da538b8663c183f"
+    },
+    {
+      "id": "RUN-00101",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/ready-four-four/player0.bin",
+      "bytes": 234,
+      "sha256": "bbccccfed44a14bbd87ee9c1e15a305ead50d79d83a351a3c6549deb92325935"
+    },
+    {
+      "id": "RUN-00102",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/ready-four-four/player1.bin",
+      "bytes": 234,
+      "sha256": "8307b85ad86726657ac6757ec9d65431a397dd5cd60a83847c5cd02a4e35f768"
+    },
+    {
+      "id": "RUN-00103",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/ready-four-four/player2.bin",
+      "bytes": 234,
+      "sha256": "7be9582f405c9efa9c7772943a8cc00d37871ec450238975a4308c6ff52b861d"
+    },
+    {
+      "id": "RUN-00104",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/ready-four-four/player3.bin",
+      "bytes": 234,
+      "sha256": "e115433e77c171269085a4218444204a19cc38df40c0cf1a6ff6b60db91ea3aa"
+    },
+    {
+      "id": "RUN-00105",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/ready-four-four/player4.bin",
+      "bytes": 234,
+      "sha256": "00ddb2abdf1be1ce19319185b819c90e0c62b6880ada9f79a8260d2c6bab714c"
+    },
+    {
+      "id": "RUN-00106",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/ready-four-four/player5.bin",
+      "bytes": 234,
+      "sha256": "338640c138f3f1b5fb4cf1214c04b0b83a0858e34d7d752866780d7957e5e9e5"
+    },
+    {
+      "id": "RUN-00107",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/ready-four-four/player6.bin",
+      "bytes": 234,
+      "sha256": "5454a124205912f12b66235dc60452161d0062b3f210f75217866cd6efd6c0c4"
+    },
+    {
+      "id": "RUN-00108",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/ready-four-four/player7.bin",
+      "bytes": 234,
+      "sha256": "83f07c56af72cfb7ae53fdd5b273f22d64cc00d9f8cf7f8141f36c5ca0548ff4"
+    },
+    {
+      "id": "RUN-00109",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/ready-four-four/raw-seal.json",
+      "bytes": 16393,
+      "sha256": "a8dd7ac1a03440866eb48dac9a7f5a5149d21143e2616a0757e05a80c4b0af22"
+    },
+    {
+      "id": "RUN-00110",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/ready-four-four/replay.log",
+      "bytes": 901,
+      "sha256": "d4de643d1695569d4be74fba08812e8950417f665e65826c93e8f22b7a4c7d96"
+    },
+    {
+      "id": "RUN-00111",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/ready-four-four/roster.gdb",
+      "bytes": 10985,
+      "sha256": "1695045b316abdccdfffe45945afc57794933a8b1ee48c8dce69f4bd3ab738f1"
+    },
+    {
+      "id": "RUN-00112",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/ready-four-four/runtime-preflight.json",
+      "bytes": 5953,
+      "sha256": "43991f7e7601bc69e254b5d0bfcb96423ffd0d4cdc8feb432774778af3b98750"
+    },
+    {
+      "id": "RUN-00113",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/ready-one-seven/actual81.bin",
+      "bytes": 106,
+      "sha256": "3592fa64f7add9ca7aeb610ca25879b326170e19b996e2a67f3715ca10020cda"
+    },
+    {
+      "id": "RUN-00114",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/ready-one-seven/cycles/CALog-before.txt",
+      "bytes": 1794,
+      "sha256": "e001d77932308bfeff1f3f25f66f17f2c03d0bc9ed883d3d1523887a1d9a2f73"
+    },
+    {
+      "id": "RUN-00115",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/ready-one-seven/cycles/CALog-run.txt",
+      "bytes": 1794,
+      "sha256": "fe5d7469604d80b86c21aea1dc4916b3a35093bd78b1a315fe692bfc60367b21"
+    },
+    {
+      "id": "RUN-00116",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/ready-one-seven/cycles/client.log",
+      "bytes": 65760,
+      "sha256": "f4385b974293a4ec6bac8237c4b54848214c0ebf757b093bbe4c3a1935141f84"
+    },
+    {
+      "id": "RUN-00117",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/ready-one-seven/cycles/debug-commands.txt",
+      "bytes": 10985,
+      "sha256": "1695045b316abdccdfffe45945afc57794933a8b1ee48c8dce69f4bd3ab738f1"
+    },
+    {
+      "id": "RUN-00118",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/ready-one-seven/cycles/hosts",
+      "bytes": 121,
+      "sha256": "32a007c62d2887ae9f8d3c30d1ff7cb3902e6e1e0c75c5a978ee556cc8ea71f8"
+    },
+    {
+      "id": "RUN-00119",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/ready-one-seven/cycles/mode86.bin",
+      "bytes": 49,
+      "sha256": "a6901b0d1930a7c910fbc525460200966ffc4541adcc50c9055d3e93832808f4"
+    },
+    {
+      "id": "RUN-00120",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/ready-one-seven/cycles/nsswitch.conf",
+      "bytes": 307,
+      "sha256": "c18e474cd61df8648ee02ac7a9c76b8d6c7782d8b212f925e6980f20af5cc838"
+    },
+    {
+      "id": "RUN-00121",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/ready-one-seven/cycles/processes-00.txt",
+      "bytes": 3867,
+      "sha256": "7340b309f83ac67219f9fd2ee2750087763b77dd43488b559d1f577f712c5d21"
+    },
+    {
+      "id": "RUN-00122",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/ready-one-seven/cycles/processes-01.txt",
+      "bytes": 4627,
+      "sha256": "9e13291c76fdda6adccdf0f96ec0edebe5923356e87eb051dc55e305c97b0697"
+    },
+    {
+      "id": "RUN-00123",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/ready-one-seven/cycles/processes-02.txt",
+      "bytes": 4627,
+      "sha256": "660a03c3a16d9aa5a5ac1f5c89ae3d1507964be4eba53e4cb61ebc176f668900"
+    },
+    {
+      "id": "RUN-00124",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/ready-one-seven/cycles/processes-03.txt",
+      "bytes": 4627,
+      "sha256": "a68f00db71d80ffe649760e0da43e69b0ece16186f8d2b0418f6755105f36119"
+    },
+    {
+      "id": "RUN-00125",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/ready-one-seven/cycles/processes-04.txt",
+      "bytes": 4627,
+      "sha256": "0ebdb2d7a8de8df2eb3ed7414432024c49108091fc871d20df11f5bba89b67e7"
+    },
+    {
+      "id": "RUN-00126",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/ready-one-seven/cycles/processes-05.txt",
+      "bytes": 4627,
+      "sha256": "3df6890cfa30862a990c8b5c2d92082238e41b43b8ca1f6da3cf60d027a92134"
+    },
+    {
+      "id": "RUN-00127",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/ready-one-seven/cycles/processes-06.txt",
+      "bytes": 4627,
+      "sha256": "f2613081515ce81009dee4a08b2143ab65cc7d817666d0f87b9e71e1e246b9c8"
+    },
+    {
+      "id": "RUN-00128",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/ready-one-seven/cycles/processes-07.txt",
+      "bytes": 4627,
+      "sha256": "b52307656b3f1df0fce83c4b20e6a18ab6d7882eb8a217805681c37fbfd6aec8"
+    },
+    {
+      "id": "RUN-00129",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/ready-one-seven/cycles/processes-08.txt",
+      "bytes": 4627,
+      "sha256": "d1cb916f888ea86978428055c6bd9fdf446e52ec6d277c9ad94cd0d2eb277636"
+    },
+    {
+      "id": "RUN-00130",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/ready-one-seven/cycles/processes-09.txt",
+      "bytes": 4627,
+      "sha256": "43c4ae4aeec14ffb01aa7e6c45c80dd99bce03efb9ef9f1976d532ee5bf8967c"
+    },
+    {
+      "id": "RUN-00131",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/ready-one-seven/cycles/processes-10.txt",
+      "bytes": 4627,
+      "sha256": "edffb3b1056c97327ce7388064d7eca7b8db733ca31dea9c90e61d9a2c9f18e5"
+    },
+    {
+      "id": "RUN-00132",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/ready-one-seven/cycles/processes-11.txt",
+      "bytes": 4627,
+      "sha256": "ee38d7870c7cfff22c30753712e53b58e2df6fa247a933c594108554599eb92d"
+    },
+    {
+      "id": "RUN-00133",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/ready-one-seven/cycles/processes-12.txt",
+      "bytes": 4627,
+      "sha256": "08bd14b49b4f13c5073bcbe20addce12f8659aff2df82c1c88742bac9d85fcb9"
+    },
+    {
+      "id": "RUN-00134",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/ready-one-seven/cycles/processes-13.txt",
+      "bytes": 4627,
+      "sha256": "1cb409b9e3baa33ca354b17490b94049e575ed493a1a8df0b6cb357e26071f93"
+    },
+    {
+      "id": "RUN-00135",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/ready-one-seven/cycles/processes-14.txt",
+      "bytes": 4627,
+      "sha256": "7fbcc9490595eaefdbd3e69feb1aefd7b91179178258e0adf02191c3e10d504c"
+    },
+    {
+      "id": "RUN-00136",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/ready-one-seven/cycles/processes-15.txt",
+      "bytes": 4627,
+      "sha256": "dff3d7946c727d2e15aff91c7c122b22928cf0f5befdbbe6be53610c14d79043"
+    },
+    {
+      "id": "RUN-00137",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/ready-one-seven/cycles/processes-16.txt",
+      "bytes": 4627,
+      "sha256": "68aa3f1241876492e1c90cdf83eb39231a94e484b98e699a7987da4f2aabdca7"
+    },
+    {
+      "id": "RUN-00138",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/ready-one-seven/cycles/processes-17.txt",
+      "bytes": 4627,
+      "sha256": "758686e05b203c83b7d2c6550e3f1698b1ddede34558e0db366486dbfe45f04c"
+    },
+    {
+      "id": "RUN-00139",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/ready-one-seven/cycles/processes-18.txt",
+      "bytes": 4627,
+      "sha256": "836e1148a983cc77b5eccae786ef5a00064e94893687cbf6ca61b80e66a9ec61"
+    },
+    {
+      "id": "RUN-00140",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/ready-one-seven/cycles/processes-19.txt",
+      "bytes": 4627,
+      "sha256": "a823790132bbcc596876a78f16c193e2d0667151de010cf2a530b8cba085b396"
+    },
+    {
+      "id": "RUN-00141",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/ready-one-seven/cycles/processes-20.txt",
+      "bytes": 4627,
+      "sha256": "f8fbf34a56017f1d925fc4322deffd7cca20d5321be7ccc4f816fa5208aa83e6"
+    },
+    {
+      "id": "RUN-00142",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/ready-one-seven/cycles/run.json",
+      "bytes": 21138,
+      "sha256": "b321cdf7694a6da96466ddf8f7742bc4085bb2b26c2e5eb0a8ba3c8cb8bc06fe"
+    },
+    {
+      "id": "RUN-00143",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/ready-one-seven/cycles/screen-00.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "RUN-00144",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/ready-one-seven/cycles/screen-01.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "RUN-00145",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/ready-one-seven/cycles/screen-02.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "RUN-00146",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/ready-one-seven/cycles/screen-03.png",
+      "bytes": 19847,
+      "sha256": "2178ceb11e92e5f95694ca8a855de0750fb1a93dfe6e02a13c1856b080d16654"
+    },
+    {
+      "id": "RUN-00147",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/ready-one-seven/cycles/screen-04.png",
+      "bytes": 13437,
+      "sha256": "e47c2919c72588bea5f3e5b8ebda4d9823a66e8864f6b86ed6f85d9e19598218"
+    },
+    {
+      "id": "RUN-00148",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/ready-one-seven/cycles/screen-05.png",
+      "bytes": 191427,
+      "sha256": "637aedb21cd25df5263d99401e7a838add696298b7e5033e1e973fae6c801e8b"
+    },
+    {
+      "id": "RUN-00149",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/ready-one-seven/cycles/screen-06.png",
+      "bytes": 197155,
+      "sha256": "95ee6fb63898e745d1f1e14f512e5c84106bf5a34b14581dc3d96d2029be88db"
+    },
+    {
+      "id": "RUN-00150",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/ready-one-seven/cycles/screen-07.png",
+      "bytes": 118897,
+      "sha256": "24de910f4b5ac5af10699e447bd7ec6ac287b5fb29ac231485f009d03c36cdbe"
+    },
+    {
+      "id": "RUN-00151",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/ready-one-seven/cycles/screen-08.png",
+      "bytes": 149160,
+      "sha256": "1c42687575b91a9a294e74c6b72610851891fae63c40f11e33f12a5767df47b0"
+    },
+    {
+      "id": "RUN-00152",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/ready-one-seven/cycles/screen-09.png",
+      "bytes": 213237,
+      "sha256": "81f45aa3c1b9c398250ac962216f4b2b1c5ce196528c2457432c336a7f818ab8"
+    },
+    {
+      "id": "RUN-00153",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/ready-one-seven/cycles/screen-10.png",
+      "bytes": 175169,
+      "sha256": "305e756a63da6cb3b3b9e7ea75a4fc7cd128715ed5db9f0795372a416a3d2839"
+    },
+    {
+      "id": "RUN-00154",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/ready-one-seven/cycles/screen-11.png",
+      "bytes": 175474,
+      "sha256": "920260ba6b940286826d0bc1d902ae3740844f83e2e75866b0e24154b7df1727"
+    },
+    {
+      "id": "RUN-00155",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/ready-one-seven/cycles/screen-12.png",
+      "bytes": 182010,
+      "sha256": "9d20e84860a55d4b6e5a9e140c495854109d33744bf09902324ed09e5a307206"
+    },
+    {
+      "id": "RUN-00156",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/ready-one-seven/cycles/screen-13.png",
+      "bytes": 182199,
+      "sha256": "40600251dd5e8809ee8d73eac8edca96f552446f1cdd834ccf4c9b4632380957"
+    },
+    {
+      "id": "RUN-00157",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/ready-one-seven/cycles/screen-14.png",
+      "bytes": 183030,
+      "sha256": "65148ab9c6c37222b459a6a2b95c3fcd5c3062326d81478b807eb86eedfe2e25"
+    },
+    {
+      "id": "RUN-00158",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/ready-one-seven/cycles/screen-15.png",
+      "bytes": 165498,
+      "sha256": "1f0b277293bc707c1fb30bc4edd37cbcfeb104753fce761e05221ea2c1c72653"
+    },
+    {
+      "id": "RUN-00159",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/ready-one-seven/cycles/screen-16.png",
+      "bytes": 166443,
+      "sha256": "c2f3727b5f60c7b3097cb180c7bccc2ac711ff93455f590e5ae6fa2ea89ffbf7"
+    },
+    {
+      "id": "RUN-00160",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/ready-one-seven/cycles/screen-17.png",
+      "bytes": 165984,
+      "sha256": "7ef4953b0567ae306ddb9469aaabdfe6136a5fa2ad752c0fd82a4a0584334e91"
+    },
+    {
+      "id": "RUN-00161",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/ready-one-seven/cycles/screen-18.png",
+      "bytes": 165106,
+      "sha256": "87e115951240071dc685882410e54c6ee6f74e12b4ea24211b268e77aab9347a"
+    },
+    {
+      "id": "RUN-00162",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/ready-one-seven/cycles/screen-19.png",
+      "bytes": 165380,
+      "sha256": "3f9bb811f38ed1eb396f5da5518c5c0512f2684a612bd1f088c813c450ed9814"
+    },
+    {
+      "id": "RUN-00163",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/ready-one-seven/cycles/screen-20.png",
+      "bytes": 165241,
+      "sha256": "727e93574078e5072b5350fd5cef2d9481c9fbb94c578842ec7cb83eb6cdbc15"
+    },
+    {
+      "id": "RUN-00164",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/ready-one-seven/cycles/ui-after-confirm-1.png",
+      "bytes": 148851,
+      "sha256": "bd57c1925d0d49224e73d73ee04b574500045ffe81ee9cc2c9079ee64d11ecd4"
+    },
+    {
+      "id": "RUN-00165",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/ready-one-seven/cycles/ui-before-confirm-1.png",
+      "bytes": 149180,
+      "sha256": "9031f5a073a8aaa9a005d30f7a99aa38b4f466744e6165b3b153e06e0f05252d"
+    },
+    {
+      "id": "RUN-00166",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/ready-one-seven/cycles/windows-00.txt",
+      "bytes": 166,
+      "sha256": "28ae29836d791dcd3302b447a52a8f0fa3f9a192abbc33a27751e23d7ebe0d43"
+    },
+    {
+      "id": "RUN-00167",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/ready-one-seven/cycles/windows-01.txt",
+      "bytes": 872,
+      "sha256": "c8c8cfe9c5b9bb2ccde16b4b959b165ed33d50824f3fbd29834c16b6f0e63586"
+    },
+    {
+      "id": "RUN-00168",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/ready-one-seven/cycles/windows-02.txt",
+      "bytes": 872,
+      "sha256": "c8c8cfe9c5b9bb2ccde16b4b959b165ed33d50824f3fbd29834c16b6f0e63586"
+    },
+    {
+      "id": "RUN-00169",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/ready-one-seven/cycles/windows-03.txt",
+      "bytes": 1311,
+      "sha256": "b509224a58307da7fc5af8064533c1e32c20a1801b0a3114929af531335879ce"
+    },
+    {
+      "id": "RUN-00170",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/ready-one-seven/cycles/windows-04.txt",
+      "bytes": 1311,
+      "sha256": "b509224a58307da7fc5af8064533c1e32c20a1801b0a3114929af531335879ce"
+    },
+    {
+      "id": "RUN-00171",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/ready-one-seven/cycles/windows-05.txt",
+      "bytes": 1311,
+      "sha256": "b509224a58307da7fc5af8064533c1e32c20a1801b0a3114929af531335879ce"
+    },
+    {
+      "id": "RUN-00172",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/ready-one-seven/cycles/windows-06.txt",
+      "bytes": 1311,
+      "sha256": "b509224a58307da7fc5af8064533c1e32c20a1801b0a3114929af531335879ce"
+    },
+    {
+      "id": "RUN-00173",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/ready-one-seven/cycles/windows-07.txt",
+      "bytes": 1358,
+      "sha256": "0466789d92f3e3fbf6992975d29c09969a9a12e943060ce1ff9ebd2fc744d5bd"
+    },
+    {
+      "id": "RUN-00174",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/ready-one-seven/cycles/windows-08.txt",
+      "bytes": 1358,
+      "sha256": "0466789d92f3e3fbf6992975d29c09969a9a12e943060ce1ff9ebd2fc744d5bd"
+    },
+    {
+      "id": "RUN-00175",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/ready-one-seven/cycles/windows-09.txt",
+      "bytes": 1358,
+      "sha256": "0466789d92f3e3fbf6992975d29c09969a9a12e943060ce1ff9ebd2fc744d5bd"
+    },
+    {
+      "id": "RUN-00176",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/ready-one-seven/cycles/windows-10.txt",
+      "bytes": 1358,
+      "sha256": "0466789d92f3e3fbf6992975d29c09969a9a12e943060ce1ff9ebd2fc744d5bd"
+    },
+    {
+      "id": "RUN-00177",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/ready-one-seven/cycles/windows-11.txt",
+      "bytes": 1358,
+      "sha256": "0466789d92f3e3fbf6992975d29c09969a9a12e943060ce1ff9ebd2fc744d5bd"
+    },
+    {
+      "id": "RUN-00178",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/ready-one-seven/cycles/windows-12.txt",
+      "bytes": 1358,
+      "sha256": "0466789d92f3e3fbf6992975d29c09969a9a12e943060ce1ff9ebd2fc744d5bd"
+    },
+    {
+      "id": "RUN-00179",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/ready-one-seven/cycles/windows-13.txt",
+      "bytes": 1358,
+      "sha256": "0466789d92f3e3fbf6992975d29c09969a9a12e943060ce1ff9ebd2fc744d5bd"
+    },
+    {
+      "id": "RUN-00180",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/ready-one-seven/cycles/windows-14.txt",
+      "bytes": 1358,
+      "sha256": "0466789d92f3e3fbf6992975d29c09969a9a12e943060ce1ff9ebd2fc744d5bd"
+    },
+    {
+      "id": "RUN-00181",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/ready-one-seven/cycles/windows-15.txt",
+      "bytes": 1358,
+      "sha256": "0466789d92f3e3fbf6992975d29c09969a9a12e943060ce1ff9ebd2fc744d5bd"
+    },
+    {
+      "id": "RUN-00182",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/ready-one-seven/cycles/windows-16.txt",
+      "bytes": 1358,
+      "sha256": "0466789d92f3e3fbf6992975d29c09969a9a12e943060ce1ff9ebd2fc744d5bd"
+    },
+    {
+      "id": "RUN-00183",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/ready-one-seven/cycles/windows-17.txt",
+      "bytes": 1358,
+      "sha256": "0466789d92f3e3fbf6992975d29c09969a9a12e943060ce1ff9ebd2fc744d5bd"
+    },
+    {
+      "id": "RUN-00184",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/ready-one-seven/cycles/windows-18.txt",
+      "bytes": 1358,
+      "sha256": "0466789d92f3e3fbf6992975d29c09969a9a12e943060ce1ff9ebd2fc744d5bd"
+    },
+    {
+      "id": "RUN-00185",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/ready-one-seven/cycles/windows-19.txt",
+      "bytes": 1358,
+      "sha256": "0466789d92f3e3fbf6992975d29c09969a9a12e943060ce1ff9ebd2fc744d5bd"
+    },
+    {
+      "id": "RUN-00186",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/ready-one-seven/cycles/windows-20.txt",
+      "bytes": 1358,
+      "sha256": "0466789d92f3e3fbf6992975d29c09969a9a12e943060ce1ff9ebd2fc744d5bd"
+    },
+    {
+      "id": "RUN-00187",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/ready-one-seven/cycles/wineboot.log",
+      "bytes": 144,
+      "sha256": "5b9c7a5729ff1b962a2536e328a768a6f118c29f7542899fd65eddd1013ab120"
+    },
+    {
+      "id": "RUN-00188",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/ready-one-seven/cycles/xvfb.log",
+      "bytes": 2808,
+      "sha256": "46b8747df8a2fc8b6a469b2374ea3d0c6c786dc3dcf2a9be13d94ce76ed3a1a7"
+    },
+    {
+      "id": "RUN-00189",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/ready-one-seven/cycles-oracle.json",
+      "bytes": 51640,
+      "sha256": "9ad7f4b2fd8dbd3e8e4295c0caf1e576583f63283b4320283cf13d33e9759a74"
+    },
+    {
+      "id": "RUN-00190",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/ready-one-seven/cycles-recipe.json",
+      "bytes": 1059,
+      "sha256": "caefa69995b5647f2d267d9166ef6dc066992bf32975e7f3b2582fc7de6f3ff1"
+    },
+    {
+      "id": "RUN-00191",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/ready-one-seven/guest-batch.bin",
+      "bytes": 1638,
+      "sha256": "8515be7ee1620844d3a03717629217ac05ce5e568e7cd5da91e7a1b47612d6a6"
+    },
+    {
+      "id": "RUN-00192",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/ready-one-seven/launch-exit.json",
+      "bytes": 18,
+      "sha256": "df4d721d233a2334088d2d2e0110346ae9e509ff46bf0b379fbcfa85c715af4d"
+    },
+    {
+      "id": "RUN-00193",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/ready-one-seven/launch.log",
+      "bytes": 17232,
+      "sha256": "5b011f202499b317050ad92b3bd5bc898bcdf1f41a56e90332e1d15703a3dc95"
+    },
+    {
+      "id": "RUN-00194",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/ready-one-seven/map117.bin",
+      "bytes": 46,
+      "sha256": "9f333b0470bd5d4e525d3bde420c450a13bfce011ef4a070de55dea4a794a47a"
+    },
+    {
+      "id": "RUN-00195",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/ready-one-seven/map238.bin",
+      "bytes": 117,
+      "sha256": "959aaae9ee8ac8131029d361d1b2305d6a07a418f882ee980da538b8663c183f"
+    },
+    {
+      "id": "RUN-00196",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/ready-one-seven/player0.bin",
+      "bytes": 234,
+      "sha256": "bbccccfed44a14bbd87ee9c1e15a305ead50d79d83a351a3c6549deb92325935"
+    },
+    {
+      "id": "RUN-00197",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/ready-one-seven/player1.bin",
+      "bytes": 234,
+      "sha256": "06c105c22790b45e9927698b76bb6053b8fe7ce1eaee9563e226a642e2683022"
+    },
+    {
+      "id": "RUN-00198",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/ready-one-seven/player2.bin",
+      "bytes": 234,
+      "sha256": "09e82825c5756763beeb77a678658bb75003713992105818ee891d523a6403c3"
+    },
+    {
+      "id": "RUN-00199",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/ready-one-seven/player3.bin",
+      "bytes": 234,
+      "sha256": "3e9bfe14b0c8bccb798fdc5558f3c7b1b8970779829b3e3497076832229f230b"
+    },
+    {
+      "id": "RUN-00200",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/ready-one-seven/player4.bin",
+      "bytes": 234,
+      "sha256": "00ddb2abdf1be1ce19319185b819c90e0c62b6880ada9f79a8260d2c6bab714c"
+    },
+    {
+      "id": "RUN-00201",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/ready-one-seven/player5.bin",
+      "bytes": 234,
+      "sha256": "338640c138f3f1b5fb4cf1214c04b0b83a0858e34d7d752866780d7957e5e9e5"
+    },
+    {
+      "id": "RUN-00202",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/ready-one-seven/player6.bin",
+      "bytes": 234,
+      "sha256": "5454a124205912f12b66235dc60452161d0062b3f210f75217866cd6efd6c0c4"
+    },
+    {
+      "id": "RUN-00203",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/ready-one-seven/player7.bin",
+      "bytes": 234,
+      "sha256": "83f07c56af72cfb7ae53fdd5b273f22d64cc00d9f8cf7f8141f36c5ca0548ff4"
+    },
+    {
+      "id": "RUN-00204",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/ready-one-seven/raw-seal.json",
+      "bytes": 16393,
+      "sha256": "010cbc46845ae2c7c009bc2856af1ada65f39a5fd886a303b0604e4ee557db15"
+    },
+    {
+      "id": "RUN-00205",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/ready-one-seven/replay.log",
+      "bytes": 877,
+      "sha256": "5969b29fecb3d405cf374b6c5a0f13fcc2d252617438c4322ed24732a119a6ba"
+    },
+    {
+      "id": "RUN-00206",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/ready-one-seven/roster.gdb",
+      "bytes": 10985,
+      "sha256": "1695045b316abdccdfffe45945afc57794933a8b1ee48c8dce69f4bd3ab738f1"
+    },
+    {
+      "id": "RUN-00207",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/ready-one-seven/runtime-preflight.json",
+      "bytes": 5953,
+      "sha256": "62961349b8129a992b7c9d70c3dde1e7e6e149dd13d1f0e750d3a9508aa25c68"
+    },
+    {
+      "id": "RUN-00208",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/reuse-question.json",
+      "bytes": 3240,
+      "sha256": "d8951a1124c41e7be88eb3e7443446c5c5aa00dfd1b96aa97854755c1847c66b"
+    },
+    {
+      "id": "RUN-00209",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/server-source-reuse.json",
+      "bytes": 11240,
+      "sha256": "b2e50e90c9cbe6ab86d1d0d36ef0be004a07894497dcc578fdf4732ec2a40f19"
+    },
+    {
+      "id": "RUN-00210",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/sync_docs.py",
+      "bytes": 12882,
+      "sha256": "633677c412bf58c720a8858fc06da62edf78cfd79d8fb4b4b2746bdd6492af19"
+    },
+    {
+      "id": "RUN-00211",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/verification.json",
+      "bytes": 2066,
+      "sha256": "36e5cf895641308a142f53a515a502099d7f622bb29249f82a7765fdfa49857e"
+    },
+    {
+      "id": "RUN-00212",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/verify.py",
+      "bytes": 4622,
+      "sha256": "d46fbd1d0aba4cd244b0e7ddfae0d3d280550442815919274dbd9a8f85731adf"
+    },
+    {
+      "id": "RUN-00213",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/verify_native.py",
+      "bytes": 804,
+      "sha256": "7072b496cbf911cded310b606d530fe450e04b1d79adc99c8cb0ffb06888afdb"
+    },
+    {
+      "id": "RUN-00214",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/visual-review.json",
+      "bytes": 811,
+      "sha256": "091c72b47dca5dcee3630a8552a4d2672905f020c1fd3b16c91a735a4d6ad2f4"
+    },
+    {
+      "id": "RUN-00215",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/ready-four-four/game/CA-r2-room-keystate.exe",
+      "bytes": 31874560,
+      "sha256": "94ee93dc7978a1ab22f25ec877e29ddcab254ca761f2eac22534421e2dd628e8"
+    },
+    {
+      "id": "RUN-00216",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/ready-one-seven/game/CA-r2-room-keystate.exe",
+      "bytes": 31874560,
+      "sha256": "94ee93dc7978a1ab22f25ec877e29ddcab254ca761f2eac22534421e2dd628e8"
+    },
+    {
+      "id": "RUN-00217",
+      "kind": "local",
+      "path": "local/research/codex/prepare_balanced_eight.py",
+      "bytes": 5715,
+      "sha256": "73ac0b6c82526962952d28a762736e97c5552afd84d816d3068f8da5067e3216"
+    },
+    {
+      "id": "RUN-00218",
+      "kind": "local",
+      "path": "local/research/codex/wine_probe_balanced_ready_four_four.py",
+      "bytes": 34235,
+      "sha256": "1e56960fd9591ed272813312726c9545c414ac33494cb5b43a6894691186682e"
+    },
+    {
+      "id": "RUN-00219",
+      "kind": "local",
+      "path": "local/research/codex/wine_probe_balanced_ready_one_seven.py",
+      "bytes": 34235,
+      "sha256": "07cbb66b2d7a7168fda6d64b0993cb366478670980e45399586c46bf2a1f938a"
+    },
+    {
+      "id": "RUN-00220",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/replay_capture.py",
+      "bytes": 2988,
+      "sha256": "feac9a5b7a096ac53ed61fcb81d97794bcc7772e022b47d5200b17df44cbc08b"
+    },
+    {
+      "id": "RUN-00221",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/verification.json",
+      "bytes": 25352,
+      "sha256": "1603b50a33133a0aa0a7e5cc8ff1bfdd69a9224f5a129cc7480ab4ece069071d"
+    },
+    {
+      "id": "RUN-00222",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/balance-emulation.json",
+      "bytes": 4395,
+      "sha256": "f836f4b8229caaa4188944d0bd3133b1612261d6e5e494214701e1dfb63d9724"
+    },
+    {
+      "id": "RUN-00223",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/room-getters.json",
+      "bytes": 1994,
+      "sha256": "20a32b81724b81b9e5bcdf08d8680915c32107675f99988592d456a5b9fb64da"
+    },
+    {
+      "id": "RUN-00224",
+      "kind": "local",
+      "path": "local/research/codex/team-mode-reset-r4/team-mode-verification.json",
+      "bytes": 251796,
+      "sha256": "b621727e0e155de7b3634b2f912988dd6b76e87c2437b6714b0a4a3b2d570f35"
+    },
+    {
+      "id": "RUN-00225",
+      "kind": "local",
+      "path": "local/research/codex/team-mode-reset-r4/server-tests.txt",
+      "bytes": 357,
+      "sha256": "332eb726c19c274f465621360243ffb8dd4d526bf76e0ea66106bd8586d2660c"
+    },
+    {
+      "id": "RUN-00226",
+      "kind": "local",
+      "path": "local/research/codex/team-mode-reset-r4/export-tests.txt",
+      "bytes": 102,
+      "sha256": "4bce93569201e80a514db2ca2f7c64fdf697e60c081ee4fcbe124d5cf1915c3f"
+    },
+    {
+      "id": "RUN-00227",
+      "kind": "local",
+      "path": "local/research/codex/team-mode-reset-r4/pr-exact-head.json",
+      "bytes": 237,
+      "sha256": "c030416e763015fb4c0ab214106b5100891018372ae0fbe7181b5764cb7684c1"
+    },
+    {
+      "id": "RUN-00228",
+      "kind": "local",
+      "path": "local/research/codex/team-mode-reset-r4/pr-merged.json",
+      "bytes": 258,
+      "sha256": "b36e1a26ced1133e45f465ea9d5d19cbd9afdba2e82e6fd85b9e3b5083e2208b"
+    }
+  ]
+}

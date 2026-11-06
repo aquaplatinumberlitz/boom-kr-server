@@ -1,7 +1,7 @@
 {
   "schema": "kre-feature-index-v1",
   "build": "KR00967",
-  "as_of": "2026-11-06 CP162",
+  "as_of": "2026-11-06 CP163",
   "sources": {
     "plan": "docs/PLAN.md",
     "contract": "docs/PROTOCOL.md",
@@ -793,7 +793,8 @@
           "docs/evidence/probe-service/README.md",
           "docs/evidence/host-normal-back/README.md",
           "docs/evidence/eight-player/README.md",
-          "docs/evidence/peer-endpoints/README.md#cp162"
+          "docs/evidence/peer-endpoints/README.md#cp162",
+          "docs/evidence/eight-player/README.md#cp163"
         ]
       },
       "coverage": {
@@ -830,7 +831,8 @@
               "docs/evidence/room-player/README.md",
               "docs/evidence/host-normal-back/README.md",
               "docs/evidence/eight-player/README.md",
-              "docs/evidence/peer-endpoints/README.md#cp162"
+              "docs/evidence/peer-endpoints/README.md#cp162",
+              "docs/evidence/eight-player/README.md#cp163"
             ]
           },
           "windows_original": {
@@ -3755,7 +3757,8 @@
           "docs/evidence/peer-endpoints/README.md#cp159",
           "docs/evidence/peer-endpoints/README.md#cp160",
           "docs/evidence/peer-endpoints/README.md#cp161",
-          "docs/evidence/peer-endpoints/README.md#cp162"
+          "docs/evidence/peer-endpoints/README.md#cp162",
+          "docs/evidence/eight-player/README.md#cp163"
         ]
       },
       "coverage": {
@@ -3892,7 +3895,8 @@
               "docs/evidence/peer-endpoints/README.md#cp159",
               "docs/evidence/peer-endpoints/README.md#cp160",
               "docs/evidence/peer-endpoints/README.md#cp161",
-              "docs/evidence/peer-endpoints/README.md#cp162"
+              "docs/evidence/peer-endpoints/README.md#cp162",
+              "docs/evidence/eight-player/README.md#cp163"
             ]
           },
           "windows_original": {
