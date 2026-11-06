@@ -1,0 +1,287 @@
+{
+  "id": "CP174",
+  "previous": "CP173",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-06T16:08:53.941751+00:00",
+  "context_commit": "0d4da2ede263e67eb11dafb25502fcbce373cea8",
+  "owner": "Codex",
+  "reviewer": "Codex",
+  "question": "Currentbasic/promotedBhost actualEOF với Bbomb còn chờ sau2normalcycles/Start3 cócleanup/promoteA vàfencejobcũ/no158 qua due6s không?",
+  "scope": "Source-firstCP155156ownedEOF/pendingfence/107110 vàCP173exactbasic/B+A/peer/3effects/reset/Start3; two grouped runs/observerhostfix/controltests/nativepositive. No newnativebody/opcode/ItemAttr/legacywireport/servicechange. Identifyactualnextadmissionpolicygap withoutclaimingCnativeproof.",
+  "artifacts": [
+    {
+      "name": "OriginalKR00967unchanged",
+      "sha256": "a52545c14b1fea423de655c3163d6360b628d61c1cd472b46fdbc8a9ffe15f4e"
+    },
+    {
+      "name": "CurrentWinecopyunchanged",
+      "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+    },
+    {
+      "name": "NativeIDAfullcopycf72privateanalysis",
+      "sha256": "cf72da112308d9f1ca256df8089594c5f787875310933073bf6bd5ba6f70e63b"
+    },
+    {
+      "name": "modOmodelreference",
+      "sha256": "a08950c833d3acab8281049def7b3dc96b221f107eeda01da3a548e34b91dce5"
+    }
+  ],
+  "locators": [
+    "CP173PR245head3c4fd1375101b345d118886f8e2a91264a76afa7/merge0d4da2ede263e67eb11dafb25502fcbce373cea8; production/profileunchanged.",
+    "R1SHA345d8774468e0839cd90464793554210ca9ce2d73a1dd0d143883a2a46462760/323.310706336s/exit1/1089raw; stoppedbeforefault/observerBsyncFileNotFound.",
+    "R2SHA4b7b0c63341eca88877f35b0cf5e89367063c92a9005182690bdfa7da88830bb/503.191808517s/exit0/1466raw/159frozen; profileSHA bf1f99989e45a4b5e47e831165ad1f43f296418253388d8ba8338532d665afee.",
+    "OwnedBcopyimageSHAe9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef; originalsourcesunchanged. RuntimePID526 is run-local, neverhardcodeforlaterkill.",
+    "Knownnativebase400000/159158/107110/LOCAL_CHIEF_GETTER/52A350/peer13DE7AA,E66680,E667BE,E668AD,E668B2,B4EA14; nonewbody. Key12345/12346/12347, pendingID7. AUD051through172/next176."
+  ],
+  "findings": [
+    {
+      "summary": "R1AreturnsetupR2reachedtarget/Arestored, BsyncFileNotFoundError disablesobserver/noBrestoreACK inoriginal3s. Only1normaloutcome/3peerwindows, not2cycles orBEOF; nofaultsignal. Oldhelpergateexists→read mayraceunlink; exactthrowingfilenameabsentinoldlog sohazard/causecandidate, notfullretrospectivecausalproof.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#basic-host-b-eof",
+      "evidence": [
+        "RUN-01103",
+        "RUN-01105"
+      ],
+      "limits": "ModifiedKR00967Wine/privatevirtualhosts/exactoptionalbasicexport/directproduction. Two normalcycles separatedfromthirdBEOF/forfeitonlyA; noStart4/normalUIBack/accountresume/fullreconnect/gate. Production/profile/nativebinary/DB/pack unchanged; localobserverdirectgate-readfix only. Same20pulse/.045s/tolerance12/3srestoreACK/loading30s/fuse6s; frozen/cleanup/seal. Fullauth/142freshness/distance/generalreset/Windows/LANInternet/8clients/K0–K7/K5K6a/fullmatch remainopen. OldruntimeFileNotFoundfilenameabsent; controlledracefixnotuniversalcausality."
+    },
+    {
+      "summary": "ControlledhostGDBstub invokesactualold/fixedhelper: existsTrue→FileNotFound makesoldsyncdisabled/noACK; directread/catchonlyFileNotFound treatsabsentgate/exactrestores; malformedJSONstillerrors.3cases. R2localhelperaddsfilenameerrorlog; no game/service/input/timingboundchanges. R2all17alignmentgroups/34viewACK/noerrors/fourrare165lookupenabled/exactrestores.",
+      "source": "design",
+      "status": "design",
+      "method": "design",
+      "canonical": "docs/PROTOCOL.md#basic-host-b-eof",
+      "evidence": [
+        "RUN-02653",
+        "RUN-02673",
+        "RUN-02654"
+      ],
+      "limits": "ModifiedKR00967Wine/privatevirtualhosts/exactoptionalbasicexport/directproduction. Two normalcycles separatedfromthirdBEOF/forfeitonlyA; noStart4/normalUIBack/accountresume/fullreconnect/gate. Production/profile/nativebinary/DB/pack unchanged; localobserverdirectgate-readfix only. Same20pulse/.045s/tolerance12/3srestoreACK/loading30s/fuse6s; frozen/cleanup/seal. Fullauth/142freshness/distance/generalreset/Windows/LANInternet/8clients/K0–K7/K5K6a/fullmatch remainopen. OldruntimeFileNotFoundfilenameabsent; controlledracefixnotuniversalcausality."
+    },
+    {
+      "summary": "R2exactbasic/same8TCP/Manner/title/Bhost:2normalcycles beforethirdStart, ownersB,A,A/IDs1..6/power1,1,2perepoch/native15939/15813/currentID/samepointer/all195sequential/reset.3pickups17/27/28/native165effects onlyA/stat/hiddeneligibility/keyreset; A17→19/B21/twonative175180/room/Ready,56→1/other0before175bothviews.1778firsttwo/243packet882fieldmodels/life23+16. Fourcurrentpeerwindows632nativechecks/408getters, notencoderoracle.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#basic-host-b-eof",
+      "evidence": [
+        "RUN-01167",
+        "RUN-02670",
+        "RUN-01159",
+        "RUN-01170",
+        "RUN-02667",
+        "RUN-02668",
+        "RUN-02652",
+        "RUN-02680"
+      ],
+      "limits": "ModifiedKR00967Wine/privatevirtualhosts/exactoptionalbasicexport/directproduction. Two normalcycles separatedfromthirdBEOF/forfeitonlyA; noStart4/normalUIBack/accountresume/fullreconnect/gate. Production/profile/nativebinary/DB/pack unchanged; localobserverdirectgate-readfix only. Same20pulse/.045s/tolerance12/3srestoreACK/loading30s/fuse6s; frozen/cleanup/seal. Fullauth/142freshness/distance/generalreset/Windows/LANInternet/8clients/K0–K7/K5K6a/fullmatch remainopen. OldruntimeFileNotFoundfilenameabsent; controlledracefixnotuniversalcausality."
+    },
+    {
+      "summary": "NormalBStart3/native12199/key12347 thenactualB118/ID7/owner1/9,3/power1/159bothviews; initialownedPID/startticks/prefix/netns/comm/exe/command/copiedmappingSHA revalidatedbeforeSIGKILL. Bkillremaining5.11749813s original6sfuse; directserviceEOFbeforefuse/generation3abortB. Aonlychosenforfeit175180/actual107slot1id2clear/base6rewind0end1/110full6errors0/LOCAL_CHIEF_GETTER1/transportalive/roomhostimage. NoBforfeitreceipt, noStart4/normal3rdoutcome.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#basic-host-b-eof",
+      "evidence": [
+        "RUN-02663",
+        "RUN-02779",
+        "RUN-02682"
+      ],
+      "limits": "ModifiedKR00967Wine/privatevirtualhosts/exactoptionalbasicexport/directproduction. Two normalcycles separatedfromthirdBEOF/forfeitonlyA; noStart4/normalUIBack/accountresume/fullreconnect/gate. Production/profile/nativebinary/DB/pack unchanged; localobserverdirectgate-readfix only. Same20pulse/.045s/tolerance12/3srestoreACK/loading30s/fuse6s; frozen/cleanup/seal. Fullauth/142freshness/distance/generalreset/Windows/LANInternet/8clients/K0–K7/K5K6a/fullmatch remainopen. OldruntimeFileNotFoundfilenameabsent; controlledracefixnotuniversalcausality."
+    },
+    {
+      "summary": "OriginalID7deadline rejectedround_closed/no158 throughdue+4s; nativeACK159seven/158six bothviews. Firsttwologprefix/timestamps separate2normal fromthirdforfeit, no genericcleanupEOF substitution. OldCP156control notbackfillnewbasicBhost. Source tests270CP172 reusedexactunchangedhash; codec/native models/read-onlygetters separatefromWine/forfeitpolicy.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#basic-host-b-eof",
+      "evidence": [
+        "RUN-02663",
+        "RUN-01167",
+        "RUN-02769"
+      ],
+      "limits": "ModifiedKR00967Wine/privatevirtualhosts/exactoptionalbasicexport/directproduction. Two normalcycles separatedfromthirdBEOF/forfeitonlyA; noStart4/normalUIBack/accountresume/fullreconnect/gate. Production/profile/nativebinary/DB/pack unchanged; localobserverdirectgate-readfix only. Same20pulse/.045s/tolerance12/3srestoreACK/loading30s/fuse6s; frozen/cleanup/seal. Fullauth/142freshness/distance/generalreset/Windows/LANInternet/8clients/K0–K7/K5K6a/fullmatch remainopen. OldruntimeFileNotFoundfilenameabsent; controlledracefixnotuniversalcausality."
+    },
+    {
+      "summary": "Nextactualservicegap: replacement_allowed hardcodesAclosed/Balive/hostB, acceptguardsordinal>8. Read-onlymethod model withcapturedAalive/Bclosed/chiefA returnsFalse; legacyAclosed/BhostmodelTrue. ExistingCslot0 conflictsA0ifonlyguardopened. NoactualCconnect/admission/nativeCID3slot1proof yet; source-firstknownCcontracts/fixtures thenactualconnectcontrol/boundedvacant-slotpath, preservelegacyB/C0 andguards. NewCnotaccountresume.",
+      "source": "design",
+      "status": "design",
+      "method": "documentation",
+      "canonical": "docs/PROTOCOL.md#basic-host-b-eof",
+      "evidence": [
+        "RUN-01160",
+        "RUN-01173"
+      ],
+      "limits": "ModifiedKR00967Wine/privatevirtualhosts/exactoptionalbasicexport/directproduction. Two normalcycles separatedfromthirdBEOF/forfeitonlyA; noStart4/normalUIBack/accountresume/fullreconnect/gate. Production/profile/nativebinary/DB/pack unchanged; localobserverdirectgate-readfix only. Same20pulse/.045s/tolerance12/3srestoreACK/loading30s/fuse6s; frozen/cleanup/seal. Fullauth/142freshness/distance/generalreset/Windows/LANInternet/8clients/K0–K7/K5K6a/fullmatch remainopen. OldruntimeFileNotFoundfilenameabsent; controlledracefixnotuniversalcausality."
+    }
+  ],
+  "verification": [
+    {
+      "check": "R1planned2basiccycles/BhostEOF",
+      "result": "fail",
+      "evidence": [
+        "RUN-01103",
+        "RUN-01105"
+      ],
+      "limits": "Onecycle/3peerwindows/observerBsyncFileNotFound/noACK; noEOFfault, notretroactivepass."
+    },
+    {
+      "check": "Controlledobservergate-read3cases plusR2exactrestoreACK/rare165lookupretention",
+      "result": "pass",
+      "evidence": [
+        "RUN-02653",
+        "RUN-02673"
+      ],
+      "limits": "Hostobserverdesignproof; filenameabsentR1rootcausalitybounded, notnativeinputlaw."
+    },
+    {
+      "check": "R2normalbaseline2cycles/1778firsttwo/632peer408getters/ownedpendingBEOF55checks/A107110chiefroom/fence_no158/visual",
+      "result": "pass",
+      "evidence": [
+        "RUN-02663",
+        "RUN-01167",
+        "RUN-02652",
+        "RUN-02680",
+        "RUN-02779",
+        "RUN-02682"
+      ],
+      "limits": "ModifiedKR00967Wine/privatevirtualhosts/exactoptionalbasicexport/directproduction. Two normalcycles separatedfromthirdBEOF/forfeitonlyA; noStart4/normalUIBack/accountresume/fullreconnect/gate. Production/profile/nativebinary/DB/pack unchanged; localobserverdirectgate-readfix only. Same20pulse/.045s/tolerance12/3srestoreACK/loading30s/fuse6s; frozen/cleanup/seal. Fullauth/142freshness/distance/generalreset/Windows/LANInternet/8clients/K0–K7/K5K6a/fullmatch remainopen. OldruntimeFileNotFoundfilenameabsent; controlledracefixnotuniversalcausality."
+    },
+    {
+      "check": "Bothfrozen/cleanup/rawhash/sourcehashreuse/docs/catalog/issues/artifacts/diff/fullhistorylocal",
+      "result": "pass",
+      "evidence": [
+        "RUN-01105",
+        "RUN-02682",
+        "RUN-02769",
+        "RUN-02651",
+        "RUN-01169",
+        "RUN-02664",
+        "RUN-01166",
+        "RUN-02650"
+      ],
+      "limits": "270servertests reusedbyexactsourcehash; fullhistory/local checker afterappendbeforecommit; no semantics/gateinference."
+    },
+    {
+      "check": "FreshCactualconnect/currentA-survivoradmission/vacant-slot1nativejoin",
+      "result": "pending",
+      "evidence": [
+        "RUN-01160"
+      ],
+      "limits": "Onlyread-onlyproductionmethod model, notactualCconnect/identity/native107110/Startproof."
+    }
+  ],
+  "evidence": [],
+  "evidence_manifests": [
+    {
+      "path": "docs/evidence/checkpoints/evidence/CP174-basic-host-b-eof.json",
+      "bytes": 699003,
+      "sha256": "59286a78e7b4f08777eba7748d8fc50409f6586f6a7862debc432de1df6b0d20",
+      "count": 2797
+    }
+  ],
+  "delta": {
+    "added": [
+      "CurrentbasicBhostpendingEOF/Acleanup/chief1/room/ID7round_closed_no158 after2normalbaselinecycles.",
+      "Hostobservergate-readracecontrolledold/fixed/malformedJSON tests andnativeR2restoreACK; oldR1failure retained.",
+      "SpecificcurrentA-survivoradmissiongap recordedasproductiondesign/model, no nativeCclaim."
+    ],
+    "corrected": [
+      "CP173PR245merged; BhostEOFgapresolvedonlyR2; thirdforfeitnotnormal3rdgame orStart4."
+    ],
+    "superseded": [
+      "NEXT-BASIC-HOST-B-EOF closed; NEXT-A-SURVIVOR-ADMISSION active."
+    ]
+  },
+  "blockers": [
+    "CurrentA-survivor/Bdeparted replacement/admissionunsupported; C0wouldconflictA0ifonlyguardopened, noactualCcontrol/slot1nativeproof.",
+    "Fullauth/142freshness/distance/generalreset/formaldependencies/K5K6a/fullmatch/Windows/LANInternet/8clients remainopen."
+  ],
+  "next_steps": [
+    {
+      "id": "NEXT-BASIC-HOST-B-EOF",
+      "task": "KRE-005b",
+      "state": "closed",
+      "action": "CP174R2actualBpendingID7/ownedEOF/Anative107slot1id2clear/110chief1/room/originaldue_roundclosed_no158;2normalbaseline/thirdforfeit separate.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-A-SURVIVOR-ADMISSION",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "PLANsource-firstknownC/member/slot/identityfixtures/consumerbounds: actualfreshcopiedCconnectaftercurrentBEOFcontrol→admissionrejectionPID/flow, thenboundedvacantslot1/CID3pathifpins/layoutssufficient preservingoldB/Cslot0/currentmode/guards; nativejoin/Ready/Start, noaccountresume/wireVNport/guardbypass.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    }
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-11-06T16:08:53.941751+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "Codex solo RE/runtime/self-check; independentreviewownerwaived. Exacthead/PR checksbeforemerge; no gateapprovalinvented.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Owner explicitly requested solo without workers/review."
+    }
+  },
+  "docs_sync": [
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "CP174BhostEOFpositive/observerpartialfix/limits/CP173merge/nextA-survivoradmission syncedbeforecomplete; checkpointworkflow doc unchanged verified."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "CP174BhostEOFpositive/observerpartialfix/limits/CP173merge/nextA-survivoradmission syncedbeforecomplete; checkpointworkflow doc unchanged verified."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "updated",
+      "reason": "CP174BhostEOFpositive/observerpartialfix/limits/CP173merge/nextA-survivoradmission syncedbeforecomplete; checkpointworkflow doc unchanged verified."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "updated",
+      "reason": "CP174BhostEOFpositive/observerpartialfix/limits/CP173merge/nextA-survivoradmission syncedbeforecomplete; checkpointworkflow doc unchanged verified."
+    },
+    {
+      "path": "docs/features.json",
+      "state": "updated",
+      "reason": "CP174BhostEOFpositive/observerpartialfix/limits/CP173merge/nextA-survivoradmission syncedbeforecomplete; checkpointworkflow doc unchanged verified."
+    },
+    {
+      "path": "docs/COVERAGE.md",
+      "state": "updated",
+      "reason": "CP174BhostEOFpositive/observerpartialfix/limits/CP173merge/nextA-survivoradmission syncedbeforecomplete; checkpointworkflow doc unchanged verified."
+    },
+    {
+      "path": "docs/evidence/peer-endpoints/README.md",
+      "state": "updated",
+      "reason": "CP174BhostEOFpositive/observerpartialfix/limits/CP173merge/nextA-survivoradmission syncedbeforecomplete; checkpointworkflow doc unchanged verified."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/review.json",
+      "state": "updated",
+      "reason": "CP174BhostEOFpositive/observerpartialfix/limits/CP173merge/nextA-survivoradmission syncedbeforecomplete; checkpointworkflow doc unchanged verified."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
+      "state": "updated",
+      "reason": "CP174BhostEOFpositive/observerpartialfix/limits/CP173merge/nextA-survivoradmission syncedbeforecomplete; checkpointworkflow doc unchanged verified."
+    },
+    {
+      "path": "server/README.md",
+      "state": "updated",
+      "reason": "CP174BhostEOFpositive/observerpartialfix/limits/CP173merge/nextA-survivoradmission syncedbeforecomplete; checkpointworkflow doc unchanged verified."
+    },
+    {
+      "path": "docs/evidence/checkpoints/README.md",
+      "state": "updated",
+      "reason": "CP174BhostEOFpositive/observerpartialfix/limits/CP173merge/nextA-survivoradmission syncedbeforecomplete; checkpointworkflow doc unchanged verified."
+    }
+  ]
+}

@@ -1,7 +1,7 @@
 {
   "schema": "kre-github-snapshot-v1",
   "repo": "aquaplatinumberlitz/boom-kr-server",
-  "captured_utc": "2026-11-06T15:32:22.572880+00:00",
+  "captured_utc": "2026-11-06T16:07:20.514796+00:00",
   "limits": "State as of capture only; body/declarations are not semantic acceptance; no GitHub mutation.",
   "issues": [
     {
@@ -572,12 +572,12 @@
       "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/56"
     },
     {
-      "body": "KRE-005b / Codex owner/self-check; independent review waived by owner. Baseline CP172 PR244 merge `3706a6ec288a93588b5e4f8fc8ea2da6d4602561`.\n\nSources: [PLAN/order](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/kre/basic-bidirectional/docs/PLAN.md#current-order), [contract/limits](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/kre/basic-bidirectional/docs/PROTOCOL.md#basic-bidirectional), [RESEARCH](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/kre/basic-bidirectional/docs/RESEARCH.md#gap-disconnect-replacement), [catalog](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/kre/basic-bidirectional/docs/COVERAGE.md), [raw/hash/partials](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/kre/basic-bidirectional/docs/evidence/peer-endpoints/README.md#cp173).\n\nCP173 self-check/pending PR: R3 exactbasic same-run4A↔Bnativewindows/B+A bombs/3effects/2normaloutcomes/reset/Ready/normalBStart3.1780firsttwo/548Start3/575peerchecks/372nativepeergetters;234packet/834fieldcases;production/profile unchanged,270server tests reusedexacthash. R1ADown routepartial andR2AUp blockedtarget failedendpointcheck retained andnotcomposedaspass. Sourcefreeze/cleanup/seal. No gate/fullmatch/Windows/LAN/Internet/8client claim. AUD051through172/next176.\n\nNext concrete missing acceptance per PLAN: currentbasic BhostEOF whileBbombpending, Acleanup/promote/room native107110 andoldjobround_closed/no158throughoriginaldue. Reuse CP155156ownedPID/pendingEOF/fence plusCP173samepositivebaseline; nofake107110/clock/statewrites/fuseorboundchange. EOF isnotnormalUIBack/accountresume. Fullauth/142freshness/generalreset/formal dependencies andgates remainopen.\n\n## Acceptance / phạm vi issue tổng hợp\n\n- [x] Bootstrap/WCP local, identity chẩn đoán, sảnh/phòng/load bằng copy KR có evidence theo môi trường.\n- [x] Hai actual copy Wine có movement/bomb/pickup/trap/result/reset/Ready trong bounded policy; CP160 Start3 chỉ active. CP161 title echo đã merge.\n- [x] Input Free/Manner và giữ selector qua create/join/reset: CP162 merged PR233; không thay8-client acceptance.\n- [ ] Khép các khoảng trống thực tế theo PLAN/RESEARCH; đối chiếu K5/K6a bằng cùng-run evidence và authority/limits.\n- [ ] Gate/fullmatch/auth/original authority không tự đóng từ task hẹp; Windows control, LAN/Internet và8 client thật chưa nghiệm thu.\n\nKhông dùng số checkpoint/process alive/encoder tự sinh/PR merged để tự nâng gate. Issue giữ mở; manifest complete bất biến, acceptance/bằng chứng cụ thể dẫn từ catalog.\n\nFeature backlinks (navigation only): KR-B001, KR-B002, KR-B003, KR-L001, KR-L002, KR-L003, KR-R001, KR-R002, KR-R003, KR-R004, KR-F001, KR-F002, KR-F003, KR-F004, KR-F005, KR-F006, KR-F007, KR-F008, KR-F009, KR-F010, KR-F011, KR-F012, KR-F013, KR-F014, KR-F015, KR-X001, KR-X002, KR-X003, KR-S001, KR-S002.\n",
+      "body": "KRE-005b / Codex owner/self-check; independent review waived by project owner. Baseline CP173 PR245 merge `0d4da2ede263e67eb11dafb25502fcbce373cea8`.\n\nSources: [PLAN/order](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/kre/basic-host-b-eof/docs/PLAN.md#current-order), [contract/limits](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/kre/basic-host-b-eof/docs/PROTOCOL.md#basic-host-b-eof), [RESEARCH](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/kre/basic-host-b-eof/docs/RESEARCH.md#gap-disconnect-replacement), [catalog](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/kre/basic-host-b-eof/docs/COVERAGE.md), [raw/hash](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/kre/basic-host-b-eof/docs/evidence/peer-endpoints/README.md#cp174).\n\nCP174 self-check/pending PR: R2two basic normalcycles/B+Aowner/A↔B/3effects/reset/Start3→actualB118/ID7pending159both→ownedBhostEOF→A-onlyforfeit/native107slot1id2clear/110chief1/room/original6sdue_round_closed/no158.55EOF/1778firsttwo/632peerchecks/408peergetters/243packet882fieldcases/life23+16. R1observerFileNotFound/noRestoreACKbeforefault retained; controlledold/fixed/malformedJSON3cases andR2exactrestore34viewACK, no time-bound increase. Source/client/production/profile unchanged exceptlocalobserverread racefix. No normal3rdoutcome/Start4/accountresume/gate/fullmatch/LAN/Internet/8client claim;AUD051through172/next176.\n\nNext gap per PLAN: replacement_allowed supports only Aclosed/Bhostsurvivor; withBdeparted/Ahost read-onlyhostmodel returnsFalse, soacceptordinal>8 blocked. ExistingCslot0also conflictsA0ifonlyguardopened. Need freshcopiedCactualconnectcontrol linkedPID/flow, knownC/slot/identitycontracts source-first, thenboundedvacant-slot1/CID3implementation/nativejoin/Ready/Start ifpins/layouts sufficient. PreserveoldB/Cslot0path/currentmembership/seq/guards; newCnotaccountBresume. No raw/checkpoint rewrite orautomaticgateclosure.\n\n## Acceptance / phạm vi issue tổng hợp\n\n- [x] Bootstrap/WCP local, identity chẩn đoán, sảnh/phòng/load bằng copy KR có evidence theo môi trường.\n- [x] Hai actual copy Wine có movement/bomb/pickup/trap/result/reset/Ready trong bounded policy; CP160 Start3 chỉ active. CP161 title echo đã merge.\n- [x] Input Free/Manner và giữ selector qua create/join/reset: CP162 merged PR233; không thay8-client acceptance.\n- [ ] Khép các khoảng trống thực tế theo PLAN/RESEARCH; đối chiếu K5/K6a bằng cùng-run evidence và authority/limits.\n- [ ] Gate/fullmatch/auth/original authority không tự đóng từ task hẹp; Windows control, LAN/Internet và8 client thật chưa nghiệm thu.\n\nKhông dùng số checkpoint/process alive/encoder tự sinh/PR merged để tự nâng gate. Issue giữ mở; manifest complete bất biến, acceptance/bằng chứng cụ thể dẫn từ catalog.\n\nFeature backlinks (navigation only): KR-B001, KR-B002, KR-B003, KR-L001, KR-L002, KR-L003, KR-R001, KR-R002, KR-R003, KR-R004, KR-F001, KR-F002, KR-F003, KR-F004, KR-F005, KR-F006, KR-F007, KR-F008, KR-F009, KR-F010, KR-F011, KR-F012, KR-F013, KR-F014, KR-F015, KR-X001, KR-X002, KR-X003, KR-S001, KR-S002.\n",
       "closedAt": null,
       "number": 14,
       "state": "OPEN",
       "title": "[KRE-005b] Tích hợp KR00967 local: Battle, lifecycle và nghiệm thu",
-      "updatedAt": "2026-11-06T15:33:54Z",
+      "updatedAt": "2026-11-06T16:08:52Z",
       "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/14"
     },
     {
@@ -636,6 +636,17 @@
     }
   ],
   "pull_requests": [
+    {
+      "headRefOid": "3c4fd1375101b345d118886f8e2a91264a76afa7",
+      "mergeCommit": {
+        "oid": "0d4da2ede263e67eb11dafb25502fcbce373cea8"
+      },
+      "mergedAt": "2026-11-06T15:40:35Z",
+      "number": 245,
+      "state": "MERGED",
+      "title": "Verify basic B/A bombs and native bidirectional two-cycle runtime (CP173)",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/245"
+    },
     {
       "headRefOid": "9c922fee956a68f00c74235d3b7fd8b4ec36f19d",
       "mergeCommit": {

@@ -41,16 +41,16 @@ Hai copy KR Wine đã chạy login/sảnh/phòng/Battle và các chu kỳ kết 
 [kim/reset](docs/PROTOCOL.md#needle-round-reset), [cứu hai chiều và hai kết quả](docs/PROTOCOL.md#rescue-two-results),
 [deep chain/reset](docs/PROTOCOL.md#recursive-chain-cycles) giữ phạm vi và giới hạn tại nguồn chuẩn.
 
-**Mốc mới CP173:** cùng một run basic đã có movement hai chiều, bom B và A trong cả hai
-vòng, ba item/effect, kết quả/reset/Ready, rồi normal BStart3 với hai clock/render thêm hơn8giây.
-[Contract/giới hạn](docs/PROTOCOL.md#basic-bidirectional), [raw/hash và hai ca partial](docs/evidence/peer-endpoints/README.md#cp173).
-Đây là bằng chứng trên hai copy Wine trong private virtual hosts, **chưa nghiệm thu K5/K6a/fullmatch**.
+**Mốc mới CP174:** sau hai vòng basic/B-A bom/movement hai chiều/reset và Start3, B chủ
+phòng tạo bom rồi mất kết nối có kiểm soát. A nhận forfeit riêng, xóa slot B, lên chủ phòng và về
+phòng; job bom còn chờ bị `round_closed` chặn, không phát158. Native trace và ảnh A đã đối chiếu.
+[Contract/giới hạn](docs/PROTOCOL.md#basic-host-b-eof), [raw/hash](docs/evidence/peer-endpoints/README.md#cp174).
 
-CP172 đã merge [PR244](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/244) tại `3706a6e`;
-CP173 tự kiểm/chờ PR. [PLAN](docs/PLAN.md#current-order) tiếp kiểm B chủ phòng mất kết nối khi bom
-còn chờ ở trận ba, xác định A được cleanup/promote và job cũ không nổ. Control EOF cũ giữ nguồn
-riêng; không gọi cleanup cuối run là phép thử disconnect. Auth/142freshness/dependency gate và
-LAN/Internet/tám client còn mở. Default preset giữ nguyên.
+CP173 đã merge [PR245](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/245) tại `0d4da2e`;
+CP174 tự kiểm/chờ PR. **Chưa nghiệm thu K5/K6a/fullmatch/LAN/Internet/tám client**; third forfeit
+không tính thành trận bình thường thứ ba. [PLAN](docs/PLAN.md#current-order) tiếp admission sau B rời:
+code hiện chỉ hỗ trợ người thay A khi B ở lại, chưa hỗ trợ A ở lại nhận người thay B.
+Default preset giữ nguyên; full auth/142freshness/dependency gate còn mở.
 AUD051 qua CP172; audit kế **CP176**. [Review waived](docs/evidence/checkpoints/review-waiver.json).
 
 Đích đầu: hai client thật chơi hai trận liên tiếp; mở bốn client và hardening sau đó.
