@@ -1033,3 +1033,38 @@ snapshotGitHubđãđồngbộ và docs-check-final/issuecheck pass. Filefail và
 không coi outputfail cũ là pass hoặc đổi raw đểlàmcheckqua.
 Bản CP166 sinh lầnđầu chưa hợp lệschema trướccommit (2kind/path và1methodenum); bảncandidate lỗi giữlocal,
 chỉ sửa khai báo bảnmới. Báocáo bổsung trên trỏ correction/hash; CP001–165/raw/findingkhôngđổi.
+
+
+<a id="cp167"></a>
+## CP167 — currentmode Bhost two cycles và rare165 observer retention
+
+Baseline CP166 [PR237](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/237), head
+`09759d0bed6545de322c3f3d1f545b52a729aa2c`, merge `7598cc9ec1929f0c8ac59fb2127c5fbaf32ea5ce`.
+Runs đượcchuẩnbị trên09759d0; sourcebytes giữquaPRmerge, không đổi source/config giữa run.
+[Contract/giới hạn](../../PROTOCOL.md#current-mode-promoted-cycles), [PLAN](../../PLAN.md#current-order).
+
+| Run local/research/codex | Giây/exit/raw/frozen | SHA256 run.json |
+|---|---|---|
+|mode-promoted-cycles-r1|378.305974972/0/1216/109|`29f008dcc2c405ec49c3c700d3793bbdf297c270a1d59ce235d54e2a0870deac`|
+|mode-promoted-cycles-r2|369.832789235/0/1198/109|`287230cdc8b478a66a49a517a21749e23c51e397ff7a0acc7616772c666c98ae`|
+
+Mỗi run có reuse-question/sourcepins, cycles-recipe/controllerfile, runtime-preflight/server snapshots,
+launch-exit/raw-seal/namespaceextinct; bảncopy/prefixdisplay/privatehosts/no outbound giữ recipeCP166.
+`prepare_mode_promoted_cycles{,_r2}.py`, `wine_probe_mode_promoted_cycles{,_r2}.py` tạo file/copy mới,
+không override sealedinputs. R2chỉkeep3rare165BPs trongalignment; `kept-pickup-probes.json`24actualarms,
+`alignment-gating-verification.json`162relation+restore/samecriteria, `production-pickup-verification.json`
+75relation/all4callbackview/actualclaims/nativepower; R1failedfull4check và `observer-gap.json` giữnguyên.
+
+Retainedanalyses: actor-fields/nativegetters, cycle-boundary(46), endpoint/peer/prepost/CRC/current4windows,
+captureclaim/hotloading, world-reset(26)/195flags, lifeagreement(23)/16getters và nativepacketmodels
+R1309/R2312; `promoted-mode-verification.json`205/210 +24modeframer/gettercases/run trên actual81/86/
+87join_A/180. Model dùngcopiednativebytes/CRCpartial, không encoderoracle hoặc runtimegamecall.
+`server-source-reuse.json` khóa toànserver*.py vềCP166265tests/4exporttests; khôngreruntestsunchanged.
+
+`visual-review.json` mỗi run pin2finalframes đãđọc; R2Bbuttonwhite1frame giữunknownfunctionalStart3,
+R1coloredkhôngbackfill. Initialanalysisdriver subprocess thiếuPYTHONPATH, script/logfail giữlocal rồi
+chỉnh invocation; missingRollercheckkhôngđượcnới đểpass. R2read-onlyprobe whitelist giải measurement
+coverage trong recipe, không retrospectiveproof cho missingcallbackR1/vanillatiming.
+
+CP167tựkiểm/reviewwaived/chờPR. AUD049qua164/nextperiodicCP168; bước tiếp actualBStart3/nativeclock/
+render8 vàmanualaudit, chỉPLAN. Không fullmatch/K6a/LAN/8client hoặc sourcebinary/DB/packchange.

@@ -307,4 +307,7 @@ CP164partial giữ lịch sử. CP166 bên dưới giải boundedcurrentmode pro
 CP166: combined `host_back_rejoin` + `room_team_mode` preflight success87/full7byte và echo currentselector
 cho `join_A` sau existingmembershipguards. [Control/fix/runtime/giới hạn](../docs/PROTOCOL.md#current-mode-host-rejoin).
 265server/4exporttests pass; currentcopyidlehostBack/promotion/rejoin/ReadyA/StartB/clock/render8s có nguồn.
-Hai Battlecycles/reset saupromotion trên mode mới chưa đo; default/generalC/password/Random không mở rộng.
+CP167 đo hai Battlecycles/reset/Ready saupromotion trên mode mới; default/generalC/password/Random không mở rộng.
+
+CP167 không đổi server/preset; [hai currentmodeBhostcycles và observerlimits](../docs/PROTOCOL.md#current-mode-promoted-cycles).
+265server/4exporttests tái dùng bằng exactsourcehash CP166. BStart3 sauReady2 chưakiểm, khônggate.

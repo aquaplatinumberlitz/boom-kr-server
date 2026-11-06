@@ -41,15 +41,15 @@ Hai copy KR Wine đã chạy login/sảnh/phòng/Battle và các chu kỳ kết 
 [kim/reset](docs/PROTOCOL.md#needle-round-reset), [cứu hai chiều và hai kết quả](docs/PROTOCOL.md#rescue-two-results),
 [deep chain/reset](docs/PROTOCOL.md#recursive-chain-cycles) giữ phạm vi và giới hạn tại nguồn chuẩn.
 
-**Mốc mới CP166:** đã tái hiện và sửa mode policy từ chối chủ cũ vào lại. Cùng run copy Wine:
-**A Back → B lên chủ → A vào lại làm khách → Ready A → Start B → native clock/render cả hai sau8s**,
-giữ Manner1 và title. [Contract/giới hạn](docs/PROTOCOL.md#current-mode-host-rejoin),
-[control/fix/hash](docs/evidence/peer-endpoints/README.md#cp166). Chưa đo hai trận sau chuyển chủ
-trên mode/preset mới; kết quả cũ giữ riêng.
+**Mốc mới CP167:** current preset Manner/title đã chạy **hai kết quả/reset/Ready sau chuyển chủ
+từ A sang B**. [Contract/giới hạn](docs/PROTOCOL.md#current-mode-promoted-cycles),
+[hai run/raw/hash](docs/evidence/peer-endpoints/README.md#cp167). R2 giữ ba probe165 trong alignment,
+đủ bốn callback/view; R1 thiếu trace Roller giữ riêng. Ảnh cuối R2 nút Start của B trắng ở một frame;
+chưa kiểm actualStart3 sau hai cycle Bhost, không suy là treo hay đã responsive.
 
-CP165 đã merge [PR236](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/236) tại `060ff22`;
-CP166 tự kiểm/chờ PR. AUD049 qua164, kếCP168. [PLAN](docs/PLAN.md#current-order) giữ bước tiếp
-và rà acceptance K4. Gate K0–K7/K6a/fullmatch/LAN/Internet/8client thật còn mở;
+CP166 đã merge [PR237](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/237) tại `7598cc9`;
+CP167 tự kiểm/chờ PR. AUD049 qua164; **audit định kỳ kế CP168**, cùng phép kiểm BStart3 tại
+[PLAN](docs/PLAN.md#current-order). K0–K7/K6a/fullmatch/LAN/Internet/8client thật vẫn mở;
 [review waived](docs/evidence/checkpoints/review-waiver.json).
 
 Đích đầu: hai client thật chơi hai trận liên tiếp; mở bốn client và hardening sau đó.

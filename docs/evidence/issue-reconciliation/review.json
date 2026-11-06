@@ -135,9 +135,9 @@
         "KR-F001",
         "KR-F015"
       ],
-      "known": "CP165 merged PR236/060ff22. CP166 currentmode control/fix idleA86→Bpromotion→A82/87/ReadyA/StartB/nativeclock/render8;265server4exporttests/rawseal; narrow acceptance only.",
-      "remaining": "Currentmode Bhost two normalcycles/reset/Ready unmeasured; K4dependencies/K6a/fullmatch/auth/originalauthority/Windows/LAN/8clients remain open.",
-      "next_test": "PLAN sourcefirst CP109/110/111 promotedcycles/UI/movement + CP165 currentpreset/observercontrol; measure only currentmodeBhost2cycles/reset/Ready after knownCP166 idlepromotion.",
+      "known": "CP166 PR237 merged7598cc9. CP167 currentmodeBhost2normalcycles/reset/Ready; R1missingRollerobserverfail/R2keep3rare1654callbacksview/peer/life/entity/mode proof. No productionchanges.",
+      "remaining": "CurrentBStart3 afterReady2 unmeasured; finalR2Bbuttonwhite1frame notpersistenthangproof. K4dependencies/K5K6a/fullmatch/auth/originalauthority/Windows/LAN/Internet/8clients/generalreset open.",
+      "next_test": "PLAN actualBStart3/native12199/barrier/clocks/render8/mode1/noBomb3 on exactR2two-cycle recipe; CP168periodicmanualaudit/acceptance/dependencies. Keep4nativecallbacks/criteria, no newbodyRE.",
       "acceptance": "Epic checklist: linkedscopedtask/evidence+authoritymatrix vàacceptancegate ởPLAN; từngtaskđóng khôngđóngepic/K5/K6a.",
       "reason": "CP164runtimeinputblocker solvedinnewrecipeswithoutprofile/game/guard/tolerancechange; currentpresetStart3objective closedscope. Continueconcretecurrentmodehostpromotiongap; noautogate.",
       "sources": [
@@ -231,7 +231,8 @@
         "docs/evidence/eight-player/README.md#cp163",
         "docs/evidence/peer-endpoints/README.md#cp164",
         "docs/evidence/peer-endpoints/README.md#cp165",
-        "docs/evidence/peer-endpoints/README.md#cp166"
+        "docs/evidence/peer-endpoints/README.md#cp166",
+        "docs/evidence/peer-endpoints/README.md#cp167"
       ],
       "prs": [
         173,
@@ -291,7 +292,8 @@
         233,
         234,
         235,
-        236
+        236,
+        237
       ],
       "successors": []
     },
@@ -618,6 +620,6 @@
       "successors": []
     }
   ],
-  "as_of_utc": "2026-11-06T11:26:22.067949+00:00",
+  "as_of_utc": "2026-11-06T11:54:29.075603+00:00",
   "limits": "Dated manual dispositions through CP146; snapshotcaptureUTC only/no semantic or gate certification; immutable completehistory."
 }
