@@ -1,6 +1,6 @@
 # KR 00967 — contract tương thích client gốc
 
-Revision kr-legacy-contract-r1; cập nhật06/11/2026 JST (CP169; AUD050 quaCP168, kếCP172).
+Revision kr-legacy-contract-r1; cập nhật06/11/2026 JST (CP170; AUD050 quaCP168, kếCP172).
 **Contract có bằng chứng từng phần; chưa nghiệm thu full codec K2**.
 Lộ trình và thứ tự task chỉ giữ ở [REWRITE_PLAN — KRE](PLAN.md).
 Đây là contract của repo server KR. ADR0009 của bản viết lại là nguồn lịch sử để so sánh;
@@ -2024,10 +2024,10 @@ locator/trace và trạng thái từng ô; những vai trò không nêu dưới 
 | Movement | [CP159/160 production](#exported-preset-runtime):4nativepeerwindows/actualapply/target/currentprogress, nohold165/activeUDPprobe; [CP070](#current-udp-causality) giữcontrol riêng | Fullschema/auth/reliability/NAT unknown; currentprofile hai chiều có nguồn, không fullgrammar trước mọi demo hẹp |
 | Bomb place/ID | [CP160](#exported-preset-runtime) actual118/nativeID1/A/power2,ID2/B/power1/full159158/195flagreset; [CP156](#direct-host-eof-acceptance) pendinghostEOF/fence scope riêng | Boundedrole/key/serial/quota/geometry làpolicy; actorlocation/fullauth/allpool/races unknown |
 | Explode/chain | CP033 một owner; CP064 [power1/cách hai ô](#mixed-owner-chain), CP071 [power2 ngoài tầm/feedback chưa118](#mixed-owner-power) giữ partial lịch sử; CP081 [power2/distance2 mixed-owner](#mixed-input), CP084 [ba bom fork hai vòng](#three-bomb-chain); CP094 [optional pinned terrain](#terrain-policy), CP095 [actualbox/laterfreshpair](#opposite-box-control) có native callback/195flag proof | [CP096adjacent1cell](#adjacent-owner-control) và [CP122 chain sâu](#recursive-chain) đã đo trong ca hẹp; [CP133 shared cellstate/query](#shared-cell-state) và [CP134 hai shared cycles](#shared-cascade-cycles) đã giải ca cố định; FIFO/firstbombstop/immutable tổng quát/race và authority server gốc chưa đủ |
-| Block destroy/item reveal | [CP169](#current-basic-hidden) copyprofile ghépknownCP069/currentmode/Bhost đãnative2FixedBox/reveal27/28/142/124165/3effects trongepoch1; CP032068069/CP095/133 giữnguồn | Preset mặcđịnh vẫnfloor-only; profileghépchưaresult/reset/epoch2. Originaldrop/fullvalidator/generalmap/class giữunknown; report142khôngworldoracle |
+| Block destroy/item reveal | [CP170](#current-basic-cycles) copybasicprofile/currentMannerBhost2epochs: native2FixedBox/reveal27/28/142/124165/3effects+reset; CP169firstepoch/CP068069 giữnguồn | Defaultpreset vẫnfloor-only, copybasicprofile chưapinnedexport/lateBStart3qualification. Originaldrop/fullvalidator/generalmap/class giữunknown; report142khôngworldoracle |
 | Item placement/pickup | [CP159/160](#production-baseline) productionimmediate165/1or2actualclaims/oneeffect/nativewinnerpower/reset; [CP155](#direct-oldudp-contest-eof) hold2sactualcontenders là control riêng | Full124distance/auth/generation/inventory/max/speedTTL/activevariants chưa đủ; delay2s không còn trongproductionbaseline |
 | Trap/death | [CP159/160](#exported-preset-runtime) strict56→1/other0beforerank2views/2epochs; [CP157natural](#current-host-ui-exit)/[CP158controlledoverwrite](#current-trap-udp-counter) giữ causal limits | Snapshot khôngglobalsametick; samekeycounterheuristic cho controlledremoteoverwrite; naturalCP157cause unknown, nofullvalidator |
-| Result/reset | [CP168](#current-mode-promoted-start3) currentMannerBhost2normaloutcomes/reset/Ready rồi actualBStart3/12199/clocks/render8s; CP165Ahost vàCP164partials giữscope riêng | Thirdactive khôngthirdcompletedmatch; fullinventory/timer/seq/peer/resetvariants/originalarbitration còn thiếu; currentpresetfloor-only khônghiddenreveal |
+| Result/reset | [CP170](#current-basic-cycles) copybasicprofileBhost2normaloutcomes/ReadyA/hiddeneligibility/3itemstat/195/keyreset; [CP168](#current-mode-promoted-start3) defaultfloorBStart3 riêng | BasicprofileStart3 chưađo, Bbuttonwhite1finalframe khônghangproof; allinventory/timer/seq/peer/resetvariants/originalarbitration còn thiếu, không gộprun thànhfullmatch |
 | Room lifecycle | [CP161 title](#current-room-title), [CP162 mode/return](#current-team-mode) có2normalcycles/Ready; [CP165 currentpreset](#input-batch-gating) guestBack/rejoin/2outcomes/Ready/Start3 đã đo; CP164partial giữ lịch sử. CP155–157 EOF/UI controls giữ profile riêng | [CP168](#current-mode-promoted-start3) currentmodeBhost2cycles/Ready/BStart3 đãđo; R1/R2partial vàoldwhiteframe giữriêng. Accountresume/halfclose/loss/generalreplace chưa đủ; không lấy oldprofileexit làm currentmode proof |
 | Peer lifecycle | [CP159/160](#exported-preset-runtime)actual99/153/currentdirectIPs/ports; [CP155oldUDP](#direct-oldudp-contest-eof)/[CP158samekeycounter](#current-trap-udp-counter) controls riêng | Key/counterbytekhôngauth/universalfreshness; low8wrap/reliability/fullgrammar/relay/NAT/LAN/Internet unknown |
 
@@ -2036,6 +2036,7 @@ Giới hạn và phép đo nằm ở link contract; không dùng mỗi vai trò 
 
 | Cơ chế/profile | Creator | Simulator | Validator của service | Broadcaster | Peer-editable state / giới hạn |
 |---|---|---|---|---|---|
+| [Hidden basic582/142/124165](#current-basic-cycles) | Fixturecatalog/list2 do emulator chọn, gắnexistingFixedBox; native158 pháBox/revealCGOItem rồi actual142/124 | NativeBox/item165/effect/stat bênhai view; serviceboundedterrain/claimcatalog/reportgate | Current124key/serial/consumed và142selectedslot/knowncell/auxFFFFFFFF/afteranycurrent158; không chứng minh authenticcell phá/distance/auth/full142freshness | Service165 tới2channel theoactualreport/policy | Clientreports có thể giả/old142 saucurrentblast tronggiớihạnCP068; reset hiddeneligibility/item/stat/195 cónguồn2epochsCP170, khôngservergốcauthority |
 | [Place159](#terrain-policy) | Native Space tạo118 | Native159 tạo/bind entity ở cả view | Role/key/serial/quota + knownvariant/power/floor/nonoverlap theo profile | Service cấp ID/phát159 | Client gửi cell/power; chưa xác thực actorlocation/distance/fullauth, không tự coi field là tin cậy |
 | [Explode158/terrain](#terrain-policy) | Timer6s của profile là emu_choice | Native158/process/chain/mapflags; service dùng bounded terrain model | Model/profile pin/kinds/power≤2/currentgeneration; semantic modelchoices có giới hạn | Service phát158 rồi commit world/release | Peer movement có thể ảnh hưởng contact/report; report142 không làm worldoracle. Original server validator/order vẫnunknown |
 | [Trap/death/result](#result-freshness-guard) | Native local simulation tạo127/subtype | Native170/175/180 nhận effect/UI | Guard key/slot/reportstate/selectedsame-oldbody; optional result freshness/drain/21 sau17 và opposite-peer170 theo [CP102](#drained-result-local-clear)/[CP103](#peer21-ending-order); firstseen/forgedforward/location vẫn thiếu | Service170/result/return theo policy | Report/body do client gửi; acceptedreport không là authoritative world proof. [Limits](#tcp-guard-cycles) và RESEARCH giữ mở |
@@ -5978,3 +5979,41 @@ Chỉepoch1/oneblast/3effects, **chưa normaloutcome/reset/epoch2** trênprofile
 distance/auth/hiddenreportfreshness/validator giữgiớihạnCP068; khônglấy142 làmworldoracle.
 Next[PLAN](PLAN.md#current-order)ghépknownfinalSpace/result/reset/twoepochs, khôngRElạinativeconsumer.
 K4dependencies/K5/K6a/fullmatch/Windows/LAN/Internet/8client giữmở; auditAUD050qua168/next172.
+
+
+<a id="current-basic-cycles"></a>
+### Copybasicprofile currentmode/Bhost: hai nativecycles/reset/Ready — CP170
+
+**`kr_runtime/confirmed` hẹp cho exactcopyprofile; fuse/claims/142/rank vẫn `design`.**
+[Run/recipe/hash](evidence/peer-endpoints/README.md#cp170). Sourcefirst CP069oldbasic2cycles/CP168
+currentBhostReadyAStartB/CP169exact582/catalog/route/165lookup; chỉ ghép phần thiếu, không portVNopcode/
+layout hoặcRElạiItemAttr/consumer. CùngsourceWine e9bb4766…/static660447…/modOa08950…/base400000;
+no sourcebinary/pack/DBchange, no service/profile change, 46/47aliases nhưCP169, defaultpreset giữfloor.
+
+Một run388.409514005s/exit0/1316raw/109frozen/privatehosts/cleanupseal: actualMannercreate→idleAhostBack/
+Bpromotion/Arejoin/ReadyAStartB; hai actual121/99/barriers6,234301688s/6,362700964s trước30s.
+Epoch1actual12417→28→27, epoch217→27→28; mỗi epoch2FixedBox27/28(vt1747724)→nativeCGOItem
+(vt1746A4C)→actual142bothroles→hidden124/165full12/errors0/lookupđúngrevealedpointer. 3callback165/view/
+epoch, chỉA Roller5→6/capacity1→2/Fire1→2, B2/1/4 giữ; **baselineA1/1/5/B2/1/4 táilậpởepoch2**.
+Hiddeneligibility reportmap tạo mới mỗi key12345→12346, báo142currenttrướchiddenclaim; khôngsuy fresh/
+authentic toàn142 vìschema chưacókey. NormalASpace trước/sau3pickup tạo4actual118/IDs1..4/power1→2
+mỗi epoch, sameACK159pointer→processed158ID/full39/full13 vànative195before/after/seedreset khớp
+boundedterrainmodel. Geometry/effectrules của model giữ `emu_choice`, không originalworldoracle.
+
+Cảhai epoch Aactual17→19/B21→chosenrank; readonlynativewatch/capturedsecurefields chứngminh56→1
+vàother0 trướcnative175 ởcảhai view (khôngglobaltick). Hai native175302/1803/errors0/roomrefresh;
+actualReadyA/StartB giữaepoch vàactualReadyA/native110both saureturn2. Actual180body[0,1,0]4frames/
+12copiednativecases/boundedmodegetterreads1; khôngcósetter2trace mới hoặcclaimwholemodeexecution.
+Same8transports/noearlyEOF, chưaintentionaldisconnect/oldUDPprobe/two-nativecontenders/malformedtest.
+
+1614checks gồmrawhash/typedjoins/reset,174capturednativepacket/516securefieldmodels riêngruntime;
+life23joins/16nativegetters và7alignmentgroups/14viewphaseack/exactrestore/4rare165lookupretained.
+ParserCP069cũ gáncollision snapshot vào lastGEN165_END gâyjointrùng; initialscript/log/report giữ,
+finaldùngparserCP168đãcóevent/phase/strictSTAT_SNAPSHOT, không xóa raw hoặcđổicriterionchopass.
+Final2frame đãxem córoom/AReady/Bchief, **BStarttrắng1frame**; khôngpersistenthang hoặcStart3proof.
+DefaultfloorCP168Start3 khôngbackfillbasiccopyprofile.
+
+Đã giải currentcopybasicprofile2cycles/reset trongscope này, chưafullmatch/K5/K6a/dependencies/LAN/
+Internet/8client/Windows/fullauth/generalreset/originalauthority. Next[PLAN](PLAN.md#current-order)
+pinexactprofile thànhoptionalpreset/export rồinativeBStart3 trênactualexportedfile; giữdefaultunchanged.
+AuditAUD050qua168/nextCP172. Khônggộp CP069oldprofile hoặcCP168floor thành nghiệmthu mới.

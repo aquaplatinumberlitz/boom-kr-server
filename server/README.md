@@ -318,3 +318,6 @@ khôngđượcdùng hidden-items featurepresence hoặc profileCP069 khác làm 
 
 CP169 [copybasicprofile/hiddenreveal/3effects](../docs/PROTOCOL.md#current-basic-hidden) dùngknownCP069582/catalog
 trêncurrentmode/Bhost, production/presetkhôngđổi. Chỉepoch1; defaultpresetfloor-only, chưareset/twoepochs/gate.
+
+CP170 [currentbasiccopyprofile2cycles/reset/Ready](../docs/PROTOCOL.md#current-basic-cycles) đãđo,
+không production/defaultpresetchange. Optionalpreset/export/BStart3qualification là việc kế trongPLAN.
