@@ -1512,3 +1512,56 @@ CP05776stream/14boundary/5reset/697relations và CP058cursor137/137/135/errors0;
 Modelprefix/cap/FFFFFFFF/fullmodes/live reconnect vẫn K2 debt. K0 identity/harness và K2a staticprobe
 được nghiệm thu; K1/fullK2/K3–K7 chưa đạt. Ba recipes một control không là ba coldstart recipeK1pass.
 Tiếp K1source/coldrecipe theo PLAN; source/privateDB/defaultserver không đổi, audit periodic kếCP180.
+
+
+<a id="cp188"></a>
+## CP188 — current basic hai vòng, peer, partial controls, EOF và K5 hẹp
+
+Baseline CP187/a3d0ff1; [PR259](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/259) đã merge
+`e57e6283dbfeda3fc30943ece4f4e307404c6ccd`. KRE-005b/[#14](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/14),
+Codex solo/tự kiểm/[review waived](../checkpoints/review-waiver.json), không review độc lập.
+[Contract/giới hạn](../../PROTOCOL.md#current-basic-cycles-291), [nghiệm thu K5](../../PLAN.md#k5-acceptance),
+[decision theo tiêu chí](k5-acceptance.json), [câu hỏi tiếp](../../RESEARCH.md#gap-lobby-identity-followup).
+
+Copy Wine SHA4b781f… giữ đúng CP187; không sửa source binary/DB/pack hoặc game code giữa run.
+Hai private virtual hosts có actual A/B và direct production service; mạng không route ngoài,
+NSS/hosts riêng, source/config/47 fixture freeze đến cleanup/seal. Profile basic export thêm opt-in291/
+nameguard; physics/clock/pickup/report không bị ép bằng gamefunction hoặc memory write.
+Rollback dùng recipe cũ và giữ file nguồn/copye9. Mỗi root có recipe, preflight, logs/capture/raw-seal;
+SHA/size từng file nằm trong external evidence manifest CP188, không chép raw vào docs.
+
+| Root dưới `local/research/codex/` | Thời lượng / raw / frozen / exit | Kết quả và giới hạn |
+|---|---|---|
+| `k5-neutral-keyup-r1` | preclient recovery / 12 / 167 / interrupted | Preclient wineboot−15, zeroTCP; recovery12raw/frozen167 sau interruption, không gameplaynegative hoặc nguyên nhân reboot. |
+| `k5-neutral-keyup-r2` | 413.403716917s / 1450 / 167 / 0 | Hai normaloutcomes/reset/Ready2/Start3; chỉ A move/bom.16R1neutralwindows đủ3freshstable/OSkeyup0; exactfailedR2branch không chạy. |
+| `k6-current-peer-cycles-r1` | 453.875873934s / 1486 / 167 / 0 | Hai normaloutcomes/reset/Start3, bốn A↔B windows, B/A/A bombs mỗi vòng/IDs1..6, hidden27/28+floor17/baeffects,195/stat/key reset/life56→1/other0. Không contest/EOF trong run này. |
+| `k6-current-host-eof-r1` | 374.766890422s / 1158 / 167 / 1 | Một normaloutcome rồi alignmiss:R2-A-hidden-row;20stable x80/y399/OSkeyup0, chưa tới fault. |
+| `k6-current-host-eof-r2` | 465.448559303s / 1492 / 167 / 1 | CP175entrycolumn120 control qua hai normaloutcomes/reset/Start3 và pendingID7. FileNotFound ownershipimage cũ trước kill, exit1 giữ nguyên; firsttwo được kiểm riêng. |
+| `k6-current-host-eof-short-r1` | 160.110170286s / 688 / 167 / 1 | Focusedfirstload/pendingBID1/159both; KeyError game_dir ở controller trước fault, không EOFpass. |
+| `k6-current-host-eof-short-r2` | 194.716078338s / 714 / 166 / 0 | Focusedfirstepoch pendingBID1/ownedkill/directEOF/Aforfeit175180/107ID2clear/chief110/room và fence qua due+4s. Không normaloutcomes/Start2 trong run này. |
+
+Đối chiếu nguồn trước đo: CP171 cycle/oracle, CP173 nativepeer/Bowner, CP174 pendinghostEOF,
+CP175 entrycolumn và CP187 ABI/nameguard. Vì vậy **không mở hàm native mới**, không RE lại codec,
+ItemAttr, luật/stat/wiki hoặc chuyển opcode/offset VN. R1entry fallback thiếu bước đã biết được sửa
+bằng exactinput CP175; nó không chứng minh mọi physics/keyrelease cause. R2faultpath và short-r1statekey
+là lỗi controller, giữ raw/exit1 và sửa sau cleanup; short-r2 đánh giá path từ exactrecipe/hash trước launch,
+giữ toàn bộ PID/startticks/namespace/prefix/comm/command/mappedimage guards, không kill theo tên.
+
+Các script local `analyze_neutral_keyup_r2.py`, `analyze_current_peer_cycles.py`,
+`analyze_current_host_eof_r2.py`, `analyze_current_host_eof_short.py` dùng lại oracle KR đã có.
+Peer run:1796cycle assertions/234nativepacket cases/834securefields/670peer assertions/432getter models;
+life23 assertions/16nativegetter models và identity1829checks. Neutralrun1748cycle/403Start3/97neutral;
+đây là quan hệ kiểm đo được, không số tính tiến độ/gate. Firsttwo của EOF-r2 loại riêng epoch3/pathfailure,
+không thay error thành pass; focusedEOF verifier không chạy verifier đòi hai normalcycles.
+
+FocusedEOF run SHA`edb46b7d607ad617dacac7c7e231be3828f992ad6ed7b1b819525b75bf6e562d`, kill còn 5.283077328s trước fuse; 932 kiểm gồm raw/inputhash và native cleanup.
+
+Ảnh contact của neutral/peer và survivingA room đã được Codex xem; native trace/capture/getter là proof
+riêng. Hai normalending ở một run không bị ghép với EOF/oldUDP/contest ở run khác. Chọn fuse6s/drop/
+rank/forfeit/freshness/terrain guard vẫn design, không luật server Nexon đã phục hồi.
+
+[AUD056](../checkpoints/audits/AUD056.json) thủ công qua188 sửa nextK4/codec stale, audit184 stale,
+B291pending snapshot và deliveryPR259; audit kế **CP192**. K5 basic local nghiệm thu theo tiêu chí cũ/
+authority matrix; K6a **còn currentbasiccontest**, LAN/Internet/bốn–tám actualclient/fullauth/fullcodec/
+142freshness/distance/generalreset/allinventory vẫn mở. [PLAN](../../PLAN.md#current-order) là thứ tự duy nhất.
+CP188 complete ghi chép trước giaoPR; trạng thái merge nằm trong Git/PR, không sửa snapshot sau merge.

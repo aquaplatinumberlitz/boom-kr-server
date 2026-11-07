@@ -1,0 +1,142 @@
+{
+  "id": "AUD056",
+  "trigger": "periodic",
+  "completed_through": "CP188",
+  "recorded_utc": "2026-11-07T05:32:55.021432+00:00",
+  "auditor": "Codex manual self-audit; independent review waived",
+  "read_files": [
+    "README.md",
+    "docs/PLAN.md",
+    "docs/PROTOCOL.md",
+    "docs/RESEARCH.md",
+    "docs/REFERENCES.md",
+    "docs/features.json",
+    "docs/COVERAGE.md",
+    "docs/evidence/peer-endpoints/README.md",
+    "docs/evidence/peer-endpoints/k5-acceptance.json",
+    "docs/evidence/lobby-identity/README.md",
+    "docs/evidence/lobby-identity/k4-acceptance.json",
+    "docs/evidence/checkpoints/README.md",
+    "docs/evidence/checkpoints/records/CP187.json",
+    "docs/evidence/issue-reconciliation/review.json",
+    "server/terrain_model.py",
+    "server/probe_service.py",
+    "local/research/codex/wine_probe_A_survivor_prestart_r2.py",
+    "local/research/codex/k5-neutral-keyup-r1/source-first.json",
+    "local/research/codex/k5-neutral-keyup-r1/raw-seal.json",
+    "local/research/codex/k5-neutral-keyup-r1/runtime-preflight.json",
+    "local/research/codex/k5-neutral-keyup-r1/cycles/run.json",
+    "local/research/codex/k5-neutral-keyup-r1/cycles/service-state.json",
+    "local/research/codex/k5-neutral-keyup-r2/source-first.json",
+    "local/research/codex/k5-neutral-keyup-r2/raw-seal.json",
+    "local/research/codex/k5-neutral-keyup-r2/runtime-preflight.json",
+    "local/research/codex/k5-neutral-keyup-r2/cycles/run.json",
+    "local/research/codex/k5-neutral-keyup-r2/cycles/service-state.json",
+    "local/research/codex/k5-neutral-keyup-r2/basic-cycle-verification.json",
+    "local/research/codex/k5-neutral-keyup-r2/life-agreement-verification.json",
+    "local/research/codex/k6-current-peer-cycles-r1/source-first.json",
+    "local/research/codex/k6-current-peer-cycles-r1/raw-seal.json",
+    "local/research/codex/k6-current-peer-cycles-r1/runtime-preflight.json",
+    "local/research/codex/k6-current-peer-cycles-r1/cycles/run.json",
+    "local/research/codex/k6-current-peer-cycles-r1/cycles/service-state.json",
+    "local/research/codex/k6-current-peer-cycles-r1/basic-cycle-verification.json",
+    "local/research/codex/k6-current-peer-cycles-r1/endpoint-peer-verification.json",
+    "local/research/codex/k6-current-peer-cycles-r1/life-agreement-verification.json",
+    "local/research/codex/k6-current-host-eof-r1/source-first.json",
+    "local/research/codex/k6-current-host-eof-r1/raw-seal.json",
+    "local/research/codex/k6-current-host-eof-r1/runtime-preflight.json",
+    "local/research/codex/k6-current-host-eof-r1/cycles/run.json",
+    "local/research/codex/k6-current-host-eof-r1/cycles/service-state.json",
+    "local/research/codex/k6-current-host-eof-r1/partial-verification.json",
+    "local/research/codex/k6-current-host-eof-r2/source-first.json",
+    "local/research/codex/k6-current-host-eof-r2/raw-seal.json",
+    "local/research/codex/k6-current-host-eof-r2/runtime-preflight.json",
+    "local/research/codex/k6-current-host-eof-r2/cycles/run.json",
+    "local/research/codex/k6-current-host-eof-r2/cycles/service-state.json",
+    "local/research/codex/k6-current-host-eof-r2/basic-cycle-verification.json",
+    "local/research/codex/k6-current-host-eof-r2/partial-verification.json",
+    "local/research/codex/k6-current-host-eof-r2/endpoint-peer-verification.json",
+    "local/research/codex/k6-current-host-eof-r2/life-agreement-verification.json",
+    "local/research/codex/k6-current-host-eof-short-r2/source-first.json",
+    "local/research/codex/k6-current-host-eof-short-r2/raw-seal.json",
+    "local/research/codex/k6-current-host-eof-short-r2/runtime-preflight.json",
+    "local/research/codex/k6-current-host-eof-short-r2/cycles/run.json",
+    "local/research/codex/k6-current-host-eof-short-r2/cycles/service-state.json",
+    "local/research/codex/k6-current-host-eof-short-r2/host-eof-verification.json",
+    "local/research/codex/k5-neutral-keyup-r2/two-cycles-start3-contact.png",
+    "local/research/codex/k6-current-peer-cycles-r1/peer-cycles-start3-contact.png",
+    "local/research/codex/k6-current-host-eof-short-r2/EOF-A-room-contact.png",
+    "local/research/codex/pr259-merge-resolved.json"
+  ],
+  "method": "Manual README→PLANcurrentorder/unchangedK0–K7criteria/K5authority→PROTOCOLcontracts/reuse/sourceboundaries→RESEARCHactivegaps→evidence/raw/seals/profiles/nativecapturedfields/securegetters/chronology/OSledger/images. CompareCP171173174175 andCP155159160controls tocurrentdeltas, notjustchecker. Activecontractscope only, notallhistoricalparagraphs recertified. Source/configunchanged withineachrun; allraw/oldcompleteimmutable.",
+  "findings": [
+    {
+      "id": "F1",
+      "stale": "README nextK4integration afterK4 accepted; RESEARCH codecnext184 andpeeractualcodec/retry followup stale.",
+      "correction": "Currentsoleorder nowcurrentbasiccontest forK6a afterK5scopemanualacceptance; AUD056through188/next192. HistoricalCP/runstatus preserved.",
+      "fixed_in": [
+        "README.md",
+        "docs/PLAN.md",
+        "docs/RESEARCH.md",
+        "docs/features.json",
+        "docs/COVERAGE.md"
+      ]
+    },
+    {
+      "id": "F2",
+      "stale": "PROTOCOL CP186B291pending line canlookcurrent; CP187currenttwooutcomesunknown.",
+      "correction": "QualifyhistoricalCP186 andlinkCP187AB; CP188newtwo-cyclepositives/nativepeer owners/knowncopyABI, oldCP187partialunchanged. C291stillunknown.",
+      "fixed_in": [
+        "docs/PROTOCOL.md",
+        "docs/PLAN.md",
+        "README.md"
+      ]
+    },
+    {
+      "id": "F3",
+      "stale": "ExplicitOSkeyup couldbe mistakenforprovenoldstuckkeyfix; EOF-r1 inputfallback omitted already-measuredCP175entrycolumn.",
+      "correction": "FirstsuccessR2branchabsent causalboundexplicit. R1stablex80/y39920attempts differentfailure; reuseCP175column120 inr2, reachedtworesults/reset/Start3. No newbody/physicsRE.",
+      "fixed_in": [
+        "docs/PROTOCOL.md",
+        "docs/RESEARCH.md",
+        "docs/evidence/peer-endpoints/README.md"
+      ]
+    },
+    {
+      "id": "F4",
+      "stale": "CurrentEOF-r2measurementfault retainedhardcodedoldcopypath andfailedbeforekill aftertworesults.",
+      "correction": "Keep exit1/FileNotFound/nofault, verifyfirsttwo only. Shortfreshcontrol fixesdynamicB.game_dir/args.exe/preflightSHA, retainsfullownershipguards andfirstepochEOF/forfeit/fence. No repeated8mincycles/same-runclaim.",
+      "fixed_in": [
+        "docs/PROTOCOL.md",
+        "docs/evidence/peer-endpoints/README.md"
+      ]
+    },
+    {
+      "id": "F5",
+      "stale": "Authority/K5review stillcurrent2outcomesblocked; fullauth/genericvariants couldkeepallgates indefinitelyopen.",
+      "correction": "CodexmanualreviewofunchangedK5criteria/usedbehaviorauthority accepts basiclocalscope withpolicyunknowns explicit. K6a staysopen forcurrentbasiccontest; physicalLANInternet4–8clients remain separate.",
+      "fixed_in": [
+        "docs/PLAN.md",
+        "docs/PROTOCOL.md",
+        "docs/RESEARCH.md",
+        "docs/evidence/peer-endpoints/k5-acceptance.json",
+        "docs/features.json"
+      ]
+    },
+    {
+      "id": "F6",
+      "stale": "PR259deliverypending andlegacy44absoluteCP187evidencepins needaccurate provenance.",
+      "correction": "PR259 exactheadmerged e57e6283 withverifiedHTTPS/atomicSHA; completeCP187records/manifests unchanged, checkercompatibility strictlocal/noGitfallback warning retained. CP188appendnormalizesbeforekindassignment.",
+      "fixed_in": [
+        "README.md",
+        "docs/evidence/peer-endpoints/README.md",
+        "docs/evidence/checkpoints/manifest.json"
+      ]
+    }
+  ],
+  "remaining": [
+    "K6a currentbasiccontesteditemintegration stillmissing; oldCP155two-contenderdelay/oldUDP andCP159immediateproduction notsame-runwithnewbasic. Compareactualvalidator/profilebeforeminimalnativecontrol.",
+    "PhysicalLANInternet/four-eight actualclients/allmaps/inventory/resetvariants/fullauth/fullcodec/originalauthority remainopen/backlogbytrigger. K5scope isnotfullgamecertification.",
+    "CurrentCP188recordandAUD056completebeforePRdelivery; exactheadchecks/merge stillrequired. Reviewwaived, neverindependentapproved."
+  ]
+}
