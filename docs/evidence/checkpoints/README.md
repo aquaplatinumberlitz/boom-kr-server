@@ -166,3 +166,14 @@ cũng được kiểm: size/SHA ở revision đó, fingerprint nguyên object qu
 review approved/waived bất biến. Chỉ giữ fingerprint nhỏ giữa revision, không giữ toàn bộ records lịch sử
 trong bộ nhớ cùng lúc. Dữ liệu inline cũ vẫn lớn và lặp, cố ý giữ để bảo toàn object; tổng dữ liệu không
 được hứa giảm theo tỷ lệ của index. Clone thiếu Git/local vẫn báo UNVERIFIED/error theo cờ cũ.
+
+
+### Pin local tuyệt đối đã công bố ở CP187
+
+CP187 có44evidencepin ghi đường dẫn host tuyệt đối trong checkout/local và khai báo kindrepository.
+Đây là lỗi ghi metadata, được giữ nguyên trong record/evidence manifest complete. Checker đọc tương thích
+chỉ khi đường dẫn sau resolve nằm trong **local của checkout hiện tại**, báo `LEGACY ABSOLUTE LOCAL PIN`
+và kiểm size/SHA đúng như raw, không dùng Git fallback. Không chấp nhận absolute source/repository path,
+path ngoài local hoặc symlink thoát. Đường dẫn relative mới vẫn bắt buộc kindlocal đúng; checkpoint mới
+chuẩn hóa relative khi lập evidence list. Clone host khác thiếu đường dẫn này sẽ báo unverified/error
+với require-local, không tự tìm file hay đổi record. Tương thích path không xác nhận kết luận RE hoặc gate.

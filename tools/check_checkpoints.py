@@ -125,15 +125,28 @@ def verify_evidence_item(item, root=ROOT, require_local=False, where="evidence")
         errors.append(f"{where}: invalid evidence kind")
         return errors, warnings, checked, unavailable
     value = item.get("path")
+    absolute_local_pin = False
     try:
         if kind == "artifact":
             path = Path(value)
             if not path.is_absolute():
                 raise ValueError("artifact path must be an explicit absolute host path")
         else:
-            path = local_target(root, value)
+            # CP187 published some absolute host-local pins as "repository".
+            # Keep the complete record immutable: resolve only paths inside
+            # this checkout's local/ tree, report the metadata defect, and
+            # verify raw bytes strictly. Never use Git fallback for these pins.
+            declared = Path(value)
+            if declared.is_absolute() and declared.resolve().is_relative_to(root / 'local'):
+                path = declared.resolve()
+                absolute_local_pin = True
+                warnings.append(f"{where}: LEGACY ABSOLUTE LOCAL PIN {value}; "
+                                f"declared kind={kind}, verified as host-local raw; "
+                                "record unchanged, no Git fallback")
+            else:
+                path = local_target(root, value)
             is_local = path.is_relative_to(root / "local")
-            if is_local != (kind == "local"):
+            if not absolute_local_pin and is_local != (kind == "local"):
                 raise ValueError("kind/path mismatch")
     except (ValueError, TypeError) as error:
         errors.append(f"{where}: {error}")
@@ -155,9 +168,9 @@ def verify_evidence_item(item, root=ROOT, require_local=False, where="evidence")
         # Binaries, raw captures and local evidence still require current pins.
         revision = None
         historical_kind = 'DOC'
-        if kind == "repository" and path.suffix == ".md":
+        if not absolute_local_pin and kind == "repository" and path.suffix == ".md":
             revision = historical_repository_blob(root, value, item.get("sha256"), item.get("bytes"))
-        elif kind == 'repository':
+        elif not absolute_local_pin and kind == 'repository':
             revision = historical_checkpoint_source(root, value, item.get('sha256'), item.get('bytes'), where)
             historical_kind = 'SOURCE'
         if revision:
