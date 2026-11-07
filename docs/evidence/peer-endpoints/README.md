@@ -1788,3 +1788,34 @@ không commit binary/asset/decompile. Getter emulation tách runtime; protocol/p
 Host EOF/rejoin control cũ độc lập không đổi thành EOF qua NAT cùng run. Không originalNATdiscovery/
 relay/Internet/loss/generalreset/4–8clients hoặc gate mới. Bước tiếp transport delay/loss có đối chứng rồi
 native KR trên qdisc cấu hình cố định, theo PLAN. AUD057 qua192, audit periodic kế CP196.
+
+<a id="cp195"></a>
+## CP195 — hai chu kỳ qua NAT với UDP delay/jitter/loss
+
+Baseline CP194/[PR266](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/266), exacthead`760f9cdf078ef48f1e17ece29ff2611911b1ca58`,
+merge`9f4ebf53d29d22092b0971c7fb34e07dbcb2cce1`. KRE-005b/#14/Codex solo/review waived.
+[Contract/giới hạn](../../PROTOCOL.md#udp-netem-cycles), [câu hỏi kế](../../RESEARCH.md#gap-lobby-identity-followup),
+[PLAN](../../PLAN.md#current-order). Tái dùng CP194 native two-cycle recipe/typed153/NAT/getter/peer/PCAP;
+không native body hoặc codec/queue/item/mode RE mới. Delta chỉ hai qdisc UDP trước launch; TCP baseline.
+
+`netem-transport-r1` source-first → baseline64/64 → drop100%0/3 → delay40±5ms/loss5%seed194:
+58/64 echoes/Bnhận61, RTT trung vị80,544438ms so baseline0,035740ms.529checks/raw/hash/ownedcleanup.
+Counter kv-b6 sau ca delay/loss là tổng tích lũy gồm3negative và3newdrop; kv-a0→3. Không sửa raw,
+verifier tính delta theo hai snapshot; không lấy mỗi counter6 làm số drop mới của phase5%.
+
+`netem-KR-two-cycles-r1`: 403.626352514s / 1388 raw / 227 frozen / exit0 / cleanup0;
+SHA `a0fdf455b957870dfcba347789b7673efadce9b379ee2e98687ec5f21483bb43`. 3538 endpoint checks / 1159 PCAP records.
+Qdisc `kv-a`: counter ban đầu0; sau run 631 sent / 43 drops / 631 delayed.
+Qdisc `kv-b`: counter ban đầu0; sau run 493 sent / 37 drops / 493 delayed.
+
+Native same-run: twoBsoleRollerwins/4→5→4/A5, actualASpace/bomb IDs/native159158/trapdeath/B21/full175180/
+room hai lần, Ready2/normalBStart3/3clocks/keys/195seed reset. Fourpeerwindows/twokeys/currentkey/apply/
+target/current progress/PCAP exactSHA/mappedAPI/typed153epoch; getter emulation tách actualruntime.
+Freshqdisc0counter, fixedconfig trước firstnativeTCP; chỉ sáu add/qdiscfilter, không mutate giữa run.
+Counterdrops/delayed có tăng ở cả hai queue, không gán từng packet không thấy cho drop hoặc suy RTT
+transport riêng thành nativeping dưới GDB. PCAP kv-a theo pre/postNAT, không kv-b capture độc lập.
+
+Scripts/source-first/preflight/raw/capture/seals/ảnh/report/hash từngfile ở externalmanifest CP195. Không
+sourcebinary/DB/asset/history thay đổi. Không originalNATdiscovery/relay/Internet/fullUDP/alllossdistribution/
+EOFinthisrun hoặc gate mới. Tiếp pendingBhostEOF/remainingAcleanup/fence trên topology này theo PLAN;
+CP196 audit thủ công bắt buộc, AUD057 qua192/counter không reset.

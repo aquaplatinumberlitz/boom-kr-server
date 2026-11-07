@@ -111,7 +111,11 @@ CP193 đã merge [PR265](https://github.com/aquaplatinumberlitz/boom-kr-server/p
 
 **CP194: hai KR Wine đã hoàn thành hai vòng Battle bình thường/reset/Ready2/Start3 qua mapping NAT tĩnh.**
 [Phạm vi và giới hạn](docs/PROTOCOL.md#nat-two-cycles), [raw/hash](docs/evidence/peer-endpoints/README.md#cp194).
-Chưa nghiệm thu Internet/K6c; tiếp đối chứng latency/loss theo PLAN. Review waived, chờ PR/exact-head kiểm.
+CP194 đã merge [PR266](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/266) tại`9f4ebf53d29d22092b0971c7fb34e07dbcb2cce1`; chưa nghiệm thu Internet/K6c.
+
+**CP195: hai vòng KR qua NAT vẫn hoàn tất/reset/Start3 với UDP delay40±5ms/loss5% đã kiểm counter.**
+[Phạm vi và giới hạn](docs/PROTOCOL.md#udp-netem-cycles), [raw/hash](docs/evidence/peer-endpoints/README.md#cp195).
+TCP giữ baseline; chưa Internet gate. Tiếp disconnect trên topology này. Review waived; audit kế CP196.
 
 Đích đầu: hai client thật chơi hai trận liên tiếp; mở bốn client và hardening sau đó.
 

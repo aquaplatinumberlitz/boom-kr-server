@@ -5381,6 +5381,31 @@ Serviceproductionbind/153IPvẫnhard127; private-addressshims hiện làmeasurem
 Internet/K6c/NAT/relay/fullauth/authority/generalreset/gates mở; field99IP1/subtype39 vẫnunknown.
 
 
+<a id="udp-netem-cycles"></a>
+### Hai vòng qua NAT với UDP có delay/jitter/loss — CP195
+
+[Contract mapping và chu kỳ CP194](#nat-two-cycles), [recipe/hash](evidence/peer-endpoints/README.md#cp195),
+[phép thử kế](RESEARCH.md#gap-lobby-identity-followup). `kr_runtime`, confirmed trong profile basic hiện hành.
+Tái dùng toàn bộ recipe CP194 và native oracles; chỉ thêm qdisc trước khi launch client. Hai router egress
+kv-a/kv-b phân loại **chỉ UDP**: delay40±5ms, random loss5%, seed194. TCP giữ baseline; đây không phải
+mô hình toàn WAN hoặc phép đo Internet thật. Các tham số là `design`, hiệu ứng qdisc/native là quan sát.
+
+Transport control riêng: baseline64/64 echo/RTT trung vị0,036ms; drop100%0/3; delay/loss58/64/Bnhận61,
+RTT trung vị80,544ms. Counter phase sau dùng delta: mỗi queue thêm3drop; tổngkv-b6 gồm3drop của ca
+negative trước. Không lấy tổng counter tích lũy làm toàn drop của phase5%. Raw/script/report giữ nguyên.
+
+Actual KR cùng run: hai normal B wins/Roller4→5→4, Aselfbomb/trap/death/B21/175180/room, Ready2 và
+normal B Start3/ba clock/key/baseline A5/B4/195seed reset. Bốn peer windows qua hai key có mapped API,
+exact PCAP wire SHA, key/apply/target/current progress. Qdisc mới có counter0 trước client, sau run thật
+có delayed packets và drops ở cả hai queue; chỉ sáu lệnh add trước launch, không đổi qdisc trong run.
+Không gán từng packet không thấy cho loss, không gọi RTT của transport control là native ping dưới GDB.
+
+Bản copy Wine/client/profile/fixture/service và inputbounds không đổi, getter emulation tách runtime.
+PCAP ở kv-a, đối chiếu pre/postNAT theo CP194; không capture kv-b riêng. Chưa NAT discovery/relay gốc/
+Internet/general loss distributions hoặc disconnect qua NAT trong cùng run; EOF control cũ là độc lập.
+K6c/K7 vẫn mở. Tiếp một ca pending B-host EOF/remaining A cleanup/fence trên topology này, dùng recipe
+EOF đã có; chỉ đo cạnh khác biệt, không RE lại UDP grammar/reset đã giải.
+
 <a id="nat-two-cycles"></a>
 ### Hai vòng Battle bình thường/reset qua mapping NAT tĩnh — CP194
 
