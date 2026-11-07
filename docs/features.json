@@ -1,7 +1,7 @@
 {
   "schema": "kre-feature-index-v1",
   "build": "KR00967",
-  "as_of": "CP184",
+  "as_of": "CP185",
   "sources": {
     "plan": "docs/PLAN.md",
     "contract": "docs/PROTOCOL.md",
@@ -567,7 +567,8 @@
               "docs/evidence/postwait/README.md",
               "docs/PROTOCOL.md#local-name-model",
               "docs/PROTOCOL.md#own-profile-291",
-              "docs/PROTOCOL.md#own-profile-integration"
+              "docs/PROTOCOL.md#own-profile-integration",
+              "docs/PROTOCOL.md#lobby-cache-route"
             ]
           },
           "windows_original": {
@@ -589,14 +590,16 @@
             "server/probe_service.py",
             "docs/PROTOCOL.md#probe-service",
             "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/57",
-            "server/own_profile.py"
+            "server/own_profile.py",
+            "docs/PROTOCOL.md#lobby-cache-route"
           ],
           "delivery": "via_pr"
         },
         "integration": {
           "state": "partial",
           "refs": [
-            "docs/evidence/probe-service/README.md"
+            "docs/evidence/probe-service/README.md",
+            "docs/PROTOCOL.md#lobby-cache-route"
           ]
         },
         "gate": {
@@ -668,7 +671,8 @@
               "docs/evidence/cache-boundary/README.md",
               "docs/PROTOCOL.md#local-name-model",
               "docs/PROTOCOL.md#own-profile-291",
-              "docs/PROTOCOL.md#own-profile-integration"
+              "docs/PROTOCOL.md#own-profile-integration",
+              "docs/PROTOCOL.md#lobby-cache-route"
             ]
           },
           "windows_original": {
@@ -690,14 +694,16 @@
             "tools/export_probe_profile.py",
             "docs/PROTOCOL.md#dynamic-cache-representation",
             "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/79",
-            "server/own_profile.py"
+            "server/own_profile.py",
+            "docs/PROTOCOL.md#lobby-cache-route"
           ],
           "delivery": "via_pr"
         },
         "integration": {
           "state": "partial",
           "refs": [
-            "docs/evidence/cache-boundary/README.md"
+            "docs/evidence/cache-boundary/README.md",
+            "docs/PROTOCOL.md#lobby-cache-route"
           ]
         },
         "gate": {

@@ -592,7 +592,8 @@ class ProbeService:
         if event.get('closed'):
             return
         if getattr(self, 'own_profile_bodies', None):
-            prerequisite = {67: 'channel_response_sent', 81: 'ready_response_sent',
+            prerequisite = {67: 'channel_response_sent', 528: 'ready_response_sent',
+                            81: 'ready_response_sent',
                             82: 'ready_response_sent', 585: 'create_response_sent'}.get(opcode)
             if opcode in (1, 5, 9):
                 self.reject_stage(event, opcode, sequence, 'login_opcode_on_channel')
@@ -639,6 +640,15 @@ class ProbeService:
                     'monotonic_ns': time.monotonic_ns(),
                     'title_sha256': hashlib.sha256(self.room_title_bytes).hexdigest()
                     if self.room_title_bytes is not None else None}
+        elif opcode == 528 and getattr(self, 'own_profile_bodies', None):
+            # CP059/185: empty native request after a missing dynamic-map cache.
+            # Reuse the pinned 238 representation and connection's send counter.
+            if body:
+                self.reject_stage(event, opcode, sequence, 'unsupported_cache_request_body')
+                return
+            self.send(event, 'table', 'cache528-table238')
+            event.setdefault('cache_responses', []).append({
+                'request_seq': sequence, 'monotonic_ns': time.monotonic_ns()})
         elif opcode in (81, 82) and not event.get('create_response_sent'):
             if role == 'C' and self.replacement_binding and not self.replacement_allowed():
                 self.state.setdefault('room_reentry_rejections', []).append({
@@ -1735,7 +1745,7 @@ class ProbeService:
             if event['reply_ordinal'] == 3:
                 if getattr(self, 'own_profile_bodies', None):
                     prerequisite = {9: 'auth_response_sent', 5: 'netinfo_response_sent'}.get(opcode)
-                    if opcode in (6, 67, 81, 82, 585, 104, 118):
+                    if opcode in (6, 67, 81, 82, 528, 585, 104, 118):
                         self.reject_stage(event, opcode, sequence, 'channel_opcode_on_login')
                         continue
                     if prerequisite and not event.get(prerequisite):

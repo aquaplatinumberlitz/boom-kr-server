@@ -383,3 +383,8 @@ Policy chỉ hỗ trợ profile/identity đã đo; không thay auth account gố
 không dùng mù tên của player106 (C cũ khác auth). Default-off giữ bytes cũ; opt-in dùng sequence
 liên tục qua lobby/create/map và dynamic theo connection. [Contract/giới hạn](../docs/PROTOCOL.md#own-profile-integration),
 [checklist nghiệm thu](../docs/PLAN.md#k3-evidence-review); chưa tự đóng K3 hoặc nghiệm thu hai client.
+
+
+CP185: profile `own_profile.mode=native_291` trả pinned table238 khi native gửi request528rỗng
+sau ready, bằng counter `send` hiện có. Default-off giữ nguyên; unsupported body/wrong stage/socket
+được log/reject. [Native cold/warm, nguồn và giới hạn](../docs/PROTOCOL.md#lobby-cache-route).

@@ -60,3 +60,24 @@ cạnh runtime/static rõ, không tăng buffer hoặc bỏ unknown để pass.
 
 Tiếp runtimeCauth135/newprofile/currentB/Cround theoPLAN; không C auth proof ởCP059 hoặc toàncachefamily/
 version/corrupt/delete/reconnect/token_2/allvariants/vanilla/authauthority. AUD018/CP058 giữ, periodicdueCP060.
+
+
+<a id="cp185"></a>
+## CP185 — loader inventory hẹp và reply528 tích hợp service
+
+Baseline CP184/PR256 merge`1f8018abbb3e1d8e679812c7410c7ef8b9ee3f87`, task KRE-005b/[#14](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/14),
+owner/tự kiểm Codex, review waived. [Contract/giới hạn](../../PROTOCOL.md#lobby-cache-route),
+[phép thử tiếp](../../RESEARCH.md#gap-lobby-identity-followup), [thứ tự duy nhất](../../PLAN.md#current-order).
+
+Raw `local/research/codex/k3-gate-acceptance-r1/`: `source-first.json`, byte-reuse307 của loader CP059,
+`inventory-preparation.json`, `missing-preparation.json`, hai recovery-preparation, recipe/probe tương ứng.
+Bốn run65s: `cache-inventory-r1`, `cache-missing-pair-r1`, `cache-recovery-cold-r1`, `cache-recovery-warm-r1`.
+Mỗi run có raw-seal, verification input freeze/cleanup; batch `verification.json` đối chiếu raw/hash,
+native loader/write marker, request528/seq/body/CRC, S2C sequence và file được ghi. 292 servertests ở `server-tests.txt`.
+Ảnh cuối mỗi run được đọc thủ công, panelKRLocal; không suy đủ packetbody từ marker consumer.
+
+Tái dùng CP059 SSI/CRC/parser/compressed238, CP184 identity/counter, nguồn VN cache-method đã trỏ
+trong source-first. Không static body mới, không đổi source/config trong run. Source trước fix được seal
+trước thay đổi và giữ lại bản Git-identical tại `source-before/`; hai recovery đo code sau fix.
+`count` rawmanager+14 trong log không là rowcount. Metadata đầy đủ được pin bởi evidence manifest CP185;
+không sửa lịch sử CP059/184, không nâng gate. Audit periodic kếCP188, AUD055 qua184 giữ nguyên.

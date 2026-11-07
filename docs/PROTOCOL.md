@@ -63,7 +63,7 @@ rule có thể là `design/emu_choice` dựa trên nguồn này; claim `kr_stati
 
 | Nhóm | Kiến thức dùng lại | Phần KR00967 chỉ cần kiểm còn thiếu |
 |---|---|---|
-| Battle cơ bản | Bomb +1 count; Fluid +1 range; Roller +1 speed; Ultra tới max nhân vật | ItemAttr/consumer/ID, đơn vị và cap theo char đang dùng; không RE lại ý nghĩa item |
+| Battle cơ bản | Bomb +1 count; Fluid +1 range; Roller +1 speed; Ultra tới max range; Red Devil tới max speed **và đẩy bom** | ItemAttr/consumer/ID, đơn vị và cap theo char đang dùng; không RE lại ý nghĩa item |
 | Trapped/cứu/kim | Đồng đội cứu, địch diệt; Ctrl dùng kim khi trapped, oxy kéo dài thời gian | Reuse các probeKR đã có; chỉ kiểm variant/ordering/consume/peer còn chặn demo; wiki không giải simultaneoustick |
 | Đội/mode | Free cho lệch đội; Manner cân bằng mọi đội, ví dụ2–2/2–2–2/3–3/4–4 | ReuseCP162/163; selector/opcode/nativevalidation không copy từ tên hoặc wiki |
 | Stat nhân vật | Có basic/maximum; Bazzi tham chiếu count1→6/range1→7/speed5→9 | Ánh xạ BomberAttr/build/charID và đơn vị; khác currentpolicy phải ghi khác biệt, không áp số mù |
@@ -2635,6 +2635,31 @@ Guest trong ảnh là fixture tổng hợp, không client B thật. Hai run80s, 
 Các lỗi gọi test sai module/importpath được giữ, discovery đúng đã pass. Probe tái dùng đổi prefix
 producer sang K3_FRAMER do global note, kind vẫn phân biệt; raw không sửa. [Checklist K3](PLAN.md#k3-evidence-review)
 giữ phần thiếu cache/version/channel/negative, không mở lại item/mode/race ngoài gate.
+
+<a id="lobby-cache-route"></a>
+### Cache trước sảnh và service request528 — CP185
+
+**kr_runtime confirmed cho recipe A/offline/Wine copy e9**, [run/hash/recipe](evidence/cache-boundary/README.md#cp185).
+Tái sử dụng CP059 parser/representation/CRC/payload và CP184 own291/counter; không đọc thân hàm native mới.
+Loader`14EA7C0` từ debugger attach ghi15 cặp entry/return: chuỗi/static, channel2_000,
+dynamic-map và stage-map; đây không là inventory mọi Win32file/API/cachefamily.
+
+| Đối chứng | Quan sát native và giới hạn |
+|---|---|
+| Giữ cache | Dynamic-map và stage-map fileload1; auth→sảnh→own291, không528. |
+| Bỏ đúng hai file trên copy, service CP184 | Cả hai fileload0; actual528/seq67/body0/CRCđúng; panelKRLocal vẫn hiện. Không238 và không tái tạo file trong65s. Đây là thiếu sót service, không bằng chứng client cần cache để hiện sảnh. |
+| Cùng copy còn thiếu, service CP185 | Actual528→238/seq58 từ pinned compressed table; native handler`DFE9A0`→writer`DFEA58` trả1, tạo dynamiccache76byte SHA`6a4745c6010378a50ab4bf34827bbe122d7eb270c78051391cd21bd7378b1053`. |
+| Warm sau run ghi file | Native`DFE8D0→DFE98D` trả1; không528, không238 được service gửi, panelKRLocal hiện. Stage-map vẫn vắng; các cache channel/static giữ. |
+
+**emu_choice/design:** chỉ profile opt-in native291 bật đường528rỗng→table238 sau ready_response_sent.
+Payload reuse chính representation CP059, dùng `send`/`s2c_next_seq` hiện có: own291/55→cache238/58→next61.
+Warm giữ next58 vì không request. Sai login socket, trước ready hoặc body không hỗ trợ bị log/reject;
+profile default-off giữ hành vi cũ. Không thêm server law/account authority hoặc tự gán ý nghĩa request có body.
+292 model tests kiểm sequence sau replycache→create, rejection và default-off; native file/write/warm mới là oracle cache.
+
+`count` trong probe mới là raw manager+14, **không sốrow**, như lưu ý CP059. `fxstagemap.ssd` vắng ở đây
+chỉ dưới stageCRC0 của ready241; chưa chứng minh handler/request cho stageCRC khác0. Không toànclientcold,
+corruptcache, nativeB/C, phòng/Battle trong batch này, versionerror hoặc K3gate. Giữ [checklist](PLAN.md#k3-evidence-review).
 
 <a id="dynamic-cache-representation"></a>
 ### Cache dynamic-map và checksum representation — CP059
