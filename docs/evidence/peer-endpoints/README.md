@@ -1859,3 +1859,35 @@ vẫn giữ. Không recertify toàn lịch sử6500line hoặc thay record compl
 K6c Internet/K7 còn mở; tiếp incoming admission xen kẽ (CP1906/8wrong) độc lập trước bốn nativeclients,
 không tự nghiệm thu Internet bằng netem hoặc thêm networkvariant không có blocker. Raw/hash/scripts và
 ảnh audit ở local; metadata/externalmanifest CP196 ghi từng pin. PR/exacthead theo AGENTS.
+
+<a id="cp197"></a>
+## CP197 — incoming admission A/B riêng và native bundle compatibility
+
+Baseline CP196/[PR268](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/268), head`537d98a6832435fd59042f91cb725d281ec5949b`,
+merge`e842347b7cac073c6822b2251096747710abc170`. Codex solo/review waived/KRE-005b/#14.
+[Contract/giới hạn](../../PROTOCOL.md#operator-incoming-binding), [phép thử tiếp](../../RESEARCH.md#gap-lobby-identity-followup),
+[PLAN](../../PLAN.md#current-order). ReuseCP190actualTCP6/8wrong/sourceaccept/noincomingbinding và CP195
+NAT/qdisc native two-cycle recipe. Không nativebody/codec/wire RE hoặc sourceclient/DB/asset thay đổi.
+
+Implementation: opt-in --admission-ip A/BdistinctIP, per-rolefourtransport counters; defaultglobalordinal
+vàreplacement giữ nguyên. Unknownsource/exhaustion bị reject trước event/channel/counter; noresume/
+accountauth/C/D/replacement_slotcombination. Newbundle59filepins/exact47alias43fixture/rawprofile bytes,
+source service thay đổi explicitdesign; oldbundle immutable. Counter/hash/source first/currentservice proofs.
+
+RealTCP:defaultABABABAB6wrong/8; opt-inABABABAB/BBAAAABB0wrong/8, unknownIP/fifthtransportnegative.
+8newtests +302server suite;17bundle/export/admission tests và43checkpointtests pass. Lệnh tools tests đầu
+thiếu PYTHONPATHtools gây2importerrors; giữ log, rerun đúngđườngdẫn pass, không đổi test/code để né lỗi.
+
+Native `admission-KR-two-cycles-r1`:402.261681333s/1388raw/frozen293/exit0/cleanup0,
+SHA`feb963b3863fe89b8a4ef3006792a25b9d067d01f342a9d26a4034086539f24c`; 1754binding/nativechecks/3439endpointchecks/1126PCAPrecords.
+
+ActualTCPsourceA10.78.1.2/B10.78.2.3/count4/stages1..4, outgoingNAT153A10.78.2.1/B10.78.1.1 riêng.
+Cùngrun haiBsoleRoller4→5→4/normalwins/A5/Aselfbomb/trapdeath/B21/175180/room/Ready2/normalBStart3/
+3clocks/keys/195seed/fourpeerwindows/nativekey/apply/currentprogress, newmodule insideadmissionbundle.
+Native UI startup vẫn serialized, không claiminterleavednative; realTCP control là độc lập. Existing47fixture/
+profilebytes unchanged, getter emulation táchruntime, UDPqdisc40±5/loss5%/TCPbaseline/sharedkernel.
+
+Raw/hash/seals/source/preflight/bundlepins/verifier/nativecapture/sourcefirst ở externalmanifest CP197.
+Không originalauth/sameNATIPaccounts/resume/native4–8/Internet/K7gate. Bước tiếp earlyBnative startup
+vàUIJoingate actualAroom, đoactualacceptinterleaving trước mởthêmclient; khônglặpsame2cycles không biến.
+AUD058qua196/auditkếCP200; records/evidence complete cũ giữ nguyên, commitPRexacthead theoAGENTS.

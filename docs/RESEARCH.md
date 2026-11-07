@@ -42,20 +42,18 @@ accountresume. Widercodec chỉ mở khi có trigger cụ thể từ K3; không 
 Owner/tự kiểm Codex, review waived; AUD058 quaCP196, periodic audit kếCP200.
 
 <a id="gap-lobby-identity-followup"></a>
-### Nhánh mạng hẹp đã có proof; tiếp incoming admission trước bốn client
+### Incoming binding opt-in có controls; native startup xen kẽ còn thiếu
 
-[NAT/UDP impairment](PROTOCOL.md#udp-netem-cycles), [pending host EOF/fence CP196](PROTOCOL.md#nat-netem-host-eof),
-[recipe/hash](evidence/peer-endpoints/README.md#cp196), [PLAN](PLAN.md#current-order). Không lặp codec/queue/
-tuple/hai vòng/reset hoặc thêm biến thể mạng khi chưa có blocker. K6c Internet vẫn mở, cần endpoint thử
-Internet do dự án kiểm soát; không tự đổi acceptance sang netem. Wine/LAN giả lập được owner chấp nhận.
-Khoảng trống cụ thể để mở bốn client: [CP190](PROTOCOL.md#portable-probe-bundle) đã đo bằng realTCP
-AAAABBBB đúng8/8, ABABABAB sai6/8; `ProbeService.accept` nhóm globalordinal4, peer-ip không bind incoming.
-Phép kiểm tối thiểu: đọc source/control đã có rồi chọn binding opt-in design riêng, kiểm default regression,
-realTCP xen kẽ/unknown binding/exhaustion trước native startup có kiểm. Binding IP không là accountauth,
-đặc biệt không phân biệt các client dùng chung sourceIP/NAT. Không port wire/token/opcode VN vào KR.
-Owner Codex/review waived; K7 chưa đạt, bốn–tám nativeclient/generalaccount/fullcodec/authority vẫn mở.
-AUD058 manual qua196; audit kế CP200. R1 EOF probe assertion giữ partial, r2 bounded observer positive;
-PCAP trước kill/GDB sau kill không đồng nghĩa packet đến từ mạng sau kill.
+[Contract CP197](PROTOCOL.md#operator-incoming-binding), [recipe/hash](evidence/peer-endpoints/README.md#cp197),
+[PLAN](PLAN.md#current-order). RealTCP/current47fixture default6wrong/8, sourcebinding hai order0wrong/8,
+unknown/fifthroletransport không consume event/channel/counter. Native bundle mới có serial-start hai normal
+cycles/reset/Start3/peer qua NAT/qdisc; không ghép thành native interleavedstartup.
+Khoảng trống kế: launch B trước A xong bốn transports và quan sát order **thực sự xen kẽ**/native role/
+identity/stage, giữ UI JoinB chờ actualroomA. Phép đo tối thiểu theo PLAN chỉ đổi lịch launch/UIgate,
+không source/config giữa run/codec/body RE. Nếu actualaccept vẫn AAAABBBB thì giữ compatibilitycontrol,
+chưa đóng nhánh interleave; sourceIPbinding không phân biệt account chung sourceIP/NAT hoặc resume.
+Owner Codex/reviewwaived; K6c Internet/K7/bốn–támactualclient/originalauth/relay/fullUDP vẫn mở.
+AUD058qua196, audit kếCP200. Nguồn cũ/failed probes/capturechronology theo CP196 giữ nguyên.
 
 <a id="feature-gaps"></a>
 ## Khoảng trống theo cơ chế
@@ -95,7 +93,7 @@ Bảng được [coverage](COVERAGE.md) trích tự động để tra theo chứ
 | <a id="gap-round-reset"></a>KR-X002 | [CP176](PROTOCOL.md#a-c-basic-cycles) AC2keys/6entities/3Aeffects/195/stat/hiddeneligibility reset và Ready2 có nguồn. | Wholeinventory/modes/low8wrap/generalreset/thirdStart còn thiếu theo trigger, không lặp knownACcycles. |
 | <a id="gap-disconnect-replacement"></a>KR-X003 | [CP177](PROTOCOL.md#replacement-profile) optional exported preset/capacity theo vacancy và actual C0/C1 initial/118/159158 đã kiểm; CP176 giữ AC2normalcycles riêng. | Maximum/exhaustion/general membership/account resume chưa biết; C0 startup SIGSEGV giữ nguyên, đối chứng pass không là rootcause. Theo PLAN acceptance/control, không lặp known C0/C1 entry hoặc ACcycles. |
 | <a id="gap-diagnostic-service"></a>KR-S001 | [CP190](PROTOCOL.md#portable-probe-bundle) gói service/47fixture relocation đã actualKRWine/nativeidentity/room/load/EOFcontrol;  [CP177](PROTOCOL.md#replacement-profile) optional replacement preset/47pins/derived capacity/284server và7export tests; native C0/C1 actual118159158 đã đo. | Theo PLAN đối chiếu acceptance/dependency/control trước phép đo còn thiếu; nofullauth/physicalLANInternet8client/gate. Startup unknown không được suy thành capacity regression/fix. |
-| <a id="gap-service-hardening"></a>KR-S002 | LAN giả lập đạtCP191; [CP193–196](PROTOCOL.md#nat-netem-host-eof) có NAT tĩnh/UDP delay-loss/two cycles/EOF. Interleaved admission sai6/8 đã có CP190. | Tiếp NEXT-K7-ADMISSION-CONTROL trong PLAN; chưa bốn client/restart/backpressure/rate limit/persistence/K7 hoặc Internet. Binding incoming là design riêng, không auth gốc. |
+| <a id="gap-service-hardening"></a>KR-S002 | LAN giả lập đạtCP191; [CP193–196](PROTOCOL.md#nat-netem-host-eof) có NAT tĩnh/UDP delay-loss/two cycles/EOF. Interleaved admission sai6/8 đã có CP190. | CP197opt-inbinding/realTCPcontrols/native serial compatibility có nguồn; tiếp NEXT-K7-NATIVE-INTERLEAVE trong PLAN, chưa bốn client/restart/backpressure/rate limit/persistence/K7 hoặc Internet. Binding incoming là design riêng, không auth gốc. |
 
 
 ## Diễn biến lịch sử theo checkpoint

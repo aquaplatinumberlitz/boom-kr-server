@@ -1,7 +1,7 @@
 # Kế hoạch server giả lập KR 00967
 
 Nguồn chuẩn của project `boom-kr-server`; bản nhập từ plan đã được dsh1/dsh2 review tại `1eee46d`.
-CP196: pending B-host EOF trên NAT/UDP qdisc đã kiểm native A cleanup/fence; r1 probe partial/r2 bounded positive giữ riêng. AUD058 qua196/audit kế CP200. K6c Internet/K7 mở; tiếp incoming admission trước bốn client, không lặp biến thể mạng đã giải.
+CP197: incoming source-IP A/B opt-in/realTCPinterleaving controls và native serial-start two-cycles trên bundle mới đã kiểm. Native interleaved-startup chưa đo; tiếp đúng biến này trước bốn client. K6c Internet/K7 mở, AUD058qua196/auditCP200.
 
 
 ### Mục tiêu, baseline và phạm vi
@@ -91,11 +91,12 @@ không tạo nhánh kiểm kê wiki hoặc mở mode phụ trước K3/K4/K5/K6a
    có counter/capture/timing/key/state/result/reset, TCP baseline; không phải Internet gate.
    `NEXT-K6C-NAT-EOF` khép control hẹp CP196: [pending B EOF/A native cleanup/fence](PROTOCOL.md#nat-netem-host-eof),
    r1 probe partial và r2 positive giữ riêng; không account resume/general reconnect/Internet gate.
-   `NEXT-K7-ADMISSION-CONTROL`: trước bốn client, tái dùng [CP190 admission control](PROTOCOL.md#portable-probe-bundle)
-   và source `ProbeService.accept`: startup xen kẽ ABABABAB đang gán sai6/8 vì globalordinal nhóm4;
-   peer-ip chỉ quảng bá outgoing153. Chọn binding incoming opt-in có provenance design riêng, tách khỏi
-   auth/identity gốc; kiểm realTCP interleaving/rejection/default trước native controlled startup, không RE
-   lại codec/wire. Không dùng cùng sourceIP sau NAT làm bằng chứng generalaccountbinding.
+   `NEXT-K7-ADMISSION-CONTROL` khép scope CP197: [opt-in incoming IP](PROTOCOL.md#operator-incoming-binding),
+   realTCP interleaving/unknown/exhaustion/default controls và native serial-start two-cycles trên bundle mới.
+   `NEXT-K7-NATIVE-INTERLEAVE`: giữ cùng source/bundle/fixture/network, chỉ đổi lịch launch B trước A hoàn
+   tất bốn transports và chặn UI JoinB đến khi room A có actualconfirm. Đo order accept thực/correctrole/
+   stage1..4/count4/nativeidentity/room rồi normal start; nếu chưa có actualinterleaving không gọi pass.
+   Không gọi bindingIP là auth hoặc hỗ trợ client chung sourceIP/NAT, không RE codec/wire lại.
    Quyết định thứ tự: nhánh NAT/two-cycles/UDP impairment/EOF đã có proof; tiếp công việc admission K7
    độc lập để phục vụ bốn client. K6c vẫn cần endpoint Internet do project kiểm soát và acceptance giữ nguyên,
    không dùng mô phỏng để tự đóng gate hoặc thêm các biến thể NAT không có blocker.
@@ -132,7 +133,7 @@ Bảng này chỉ phân công/thứtự; acceptance/PR/bằngchứng ởissue. [
 
 | Thứ tự/scope | Issue | Trạng thái/phần còn thiếu |
 |---|---|---|
-| Hiện hành RE | [#14/KRE-005b](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/14) | K5 basic/K6a/K6b giả lập đã đạt trong scope. CP193–196 NAT/UDP delay-loss/EOF có nguồn; tiếp NEXT-K7-ADMISSION-CONTROL, audit kế CP200. K6c/K7/fullauth/authority/general variants giữ mở. |
+| Hiện hành RE | [#14/KRE-005b](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/14) | K5 basic/K6a/K6b giả lập đã đạt trong scope. CP193–196 NAT/UDP delay-loss/EOF có nguồn; CP197incoming opt-in có controls; tiếp NEXT-K7-NATIVE-INTERLEAVE, audit kếCP200. K6c/K7/fullauth/authority/general variants giữ mở. |
 | Control theo trigger/gate | [#1/KRE-001](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/1), [#2/KRE-002](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/2) | CP178 K0 originalWindowscontrol/ownership đã đủ, #1 đã đóng qua PR250; #2 giữ widerWCP/launcherconfig; K1 R2 đã đạt CP179, không lặp cold3. |
 | Codec backlog/identity hiện hành | [#3/KRE-003](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/3), [#9/KRE-005a](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/9) | Fullcodec/livebounds vàintermittentmainstartupcause cònthiếu; khônglặpprimitive/auxiliarylocale. |
 

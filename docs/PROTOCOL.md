@@ -5381,6 +5381,34 @@ Serviceproductionbind/153IPvẫnhard127; private-addressshims hiện làmeasurem
 Internet/K6c/NAT/relay/fullauth/authority/generalreset/gates mở; field99IP1/subtype39 vẫnunknown.
 
 
+<a id="operator-incoming-binding"></a>
+### Incoming A/B theo source IPv4 riêng, opt-in — CP197
+
+**`design`/implementation**, tách khỏi identity/accountauth KR gốc. [Recipe/hash](evidence/peer-endpoints/README.md#cp197),
+[câu hỏi kế](RESEARCH.md#gap-lobby-identity-followup), [cách chạy](../tools/README.md#incoming-admission).
+CP190 realTCP đã chứng minh globalordinal nhóm4 gán sai6/8 khi A/B xen kẽ. Không RE lại native wire:
+`ProbeService.accept` nay có keyword `admission_ips`/CLI repeat `--admission-ip ROLE=IPv4` opt-in,
+phải khai đúng A và B với hai IPv4 riêng. Đây là IP **nguồn TCP thực**, khác `--peer-ip` quảng bá153 sau NAT.
+Không khai thì policy cũ/serial admission và freshC replacement giữ nguyên.
+
+Khi bật, mỗi role có ordinal transport1..4 riêng trong lifetime process; globalordinal vẫn đếm accepted
+connections. Unknownsource/fifthtransport bị đóng trước tạo event/channel hoặc tăng counter role;
+rejection lưu reason design. Không đặt lại count khi EOF: không account resume/retry/generic reconnect.
+Từ chối kết hợp replacement_slot, C/D và cùng IP hai role, tránh suy IP có thể tách account chung NAT.
+Cấu hình lỗi bị chặn trước selector/listen/đọc fixture ở CLI; codec/fixture/ID/seq không đổi.
+
+RealTCP/current47fixture controls: default ABABABAB vẫn6wrong/8; opt-in ABABABAB và BBAAAABB đều
+0wrong/8. IP lạ và kết nối thứ5 bị reject, không ảnh hưởng role kia; tám unit regression kiểm real sockets/
+default/negative/config và302server tests pass. New bundle có59pins/47alias/43fixture giữ đúng byte profile,
+khác source service mới; launcher -I vẫn kiểm integrity. Manifest mới ghi defaultserial/opt-in scope.
+
+`kr_runtime` confirmed riêng: cùng recipe native **startup tuần tự** đã có hai normal B wins/reset/Ready2/
+normalBStart3/currentpeer/nativeflags/stat/key/life qua NAT/UDP qdisc trên bundle mới, đúng binding A/B
+privateTCPsource và stages1..4/count4. Đây là compatibility runtime, **không native interleavedstartup**;
+realTCP xen kẽ là control riêng. Không auth/token, nhiều client cùng sourceIP, C/D/bốn–tám actualclients,
+NAT discovery/relay gốc/Internet gate. K6c/K7 giữ mở; bước kế native startup xen kẽ có kiểm thứ tự accept,
+rồi mới mở admission/roster/peer nhiều client theo PLAN. Không lặp hai vòng trên sameconfig không có biến mới.
+
 <a id="nat-netem-host-eof"></a>
 ### Pending host EOF qua NAT/UDP qdisc; giới hạn timestamp và probe — CP196
 

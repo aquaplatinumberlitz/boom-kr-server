@@ -1,0 +1,269 @@
+{
+  "id": "CP197",
+  "previous": "CP196",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-07T08:55:09.964052+00:00",
+  "context_commit": "e842347b7cac073c6822b2251096747710abc170",
+  "owner": "Codex",
+  "reviewer": "Codex",
+  "question": "Canexplicitopt-inincomingA/BsourceIPbinding fixknowninterleavedTCProle/stagemisassignment withoutchangingdefault/nativewire, andcomposewithactualKR2cycles/newbundle?",
+  "scope": "SourcefirstCP190realTCP6of8negative/ProbeService.accept/outgoingpeer-ip distinction; implementexplicitdesignoptin/perroletransportstage/negativeconfig, realTCP/fullserver/exporttests thennativecompatibilitysameCP195recipe. No nativebody/codec/wire/ID/layoutVNattribution; serializednativeUIcontrolnotinterleavedclaim.",
+  "artifacts": [
+    {
+      "name": "OriginalKR00967unchanged",
+      "sha256": "a52545c14b1fea423de655c3163d6360b628d61c1cd472b46fdbc8a9ffe15f4e"
+    },
+    {
+      "name": "CurrentWinecopyunchanged",
+      "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+    },
+    {
+      "name": "NativeIDAfullcopycf72privateanalysis",
+      "sha256": "cf72da112308d9f1ca256df8089594c5f787875310933073bf6bd5ba6f70e63b"
+    },
+    {
+      "name": "modOmodelreference",
+      "sha256": "a08950c833d3acab8281049def7b3dc96b221f107eeda01da3a548e34b91dce5"
+    },
+    {
+      "name": "OriginalKR00967NewPatcher",
+      "sha256": "b59e4dce9ad23c439a7632ce04ecb2eed3481585bd2454100b05c9d7527f5c02"
+    },
+    {
+      "name": "VN116original_reference_only",
+      "sha256": "bce8644d4e783d1354ab4fc880e1ab9a4ab3325327028f37d99e5439e25f4bbd"
+    },
+    {
+      "name": "VN116patched_runtime_reference_only",
+      "sha256": "bc875ba5765cc112e924f46e75d0ace112904c7801126e46bc0abb1c9cb576b1"
+    },
+    {
+      "name": "PassingK1offlineR2recipe",
+      "sha256": "7b3b435b5d8e110185359107376b736615ceabe9452cea8154d02c8628f44c29"
+    },
+    {
+      "name": "NativeProcessPatchR1control",
+      "sha256": "a0c3b9867dae5fe2ff7c315cfe851117661c2cafead45196ce999329f67432f5"
+    },
+    {
+      "name": "OfflineWinecopy_import_compare_ABI_only",
+      "sha256": "4b781fbcea21e0f6294c729b63be86ab2953d60ad83b0d0c9219359f826107ed"
+    }
+  ],
+  "locators": [
+    "Sourcechanges server/probe_service.py:admission_ip_config/--admission-ip/ProbeService.accept/perrolecounter; tools/probe_bundle.pylimits andserver/test_admission_ip.py8realTCPtests. No newnativeVA; reusedcurrent99/153/121124165/175180/E66680/E667BE/E668AD/B2/52A350/ED1350/copy4b/base400000.",
+    "Native runfeb963b3863fe89b8a4ef3006792a25b9d067d01f342a9d26a4034086539f24c/402.261681333s/1388raw/293frozen/exit0/cleanup0; 1754bindingchecks/3439endpointchecks/1126PCAP.",
+    "IncomingTCPA10.78.1.2/B10.78.2.3 distinctfromoutgoingmapped153A10.78.2.1:30001/B10.78.1.1:30002. Opt-inA/B4transportslifetime; defaultglobalordinalunchanged, no replacement_slotcombination.",
+    "ActualTCPABABABABdefault6wrong/8→optin0wrong/8 andBBAAAABB0wrong/8; unknown/fifthnegative beforeevent/channel/counter.302servertests/17bundleexportadmission/43checkpointtests. InitialtooltestmissingPYTHONPATH2importerrorsretained, correctinvocationpasses.",
+    "CP196PR268exact537d98a6832435fd59042f91cb725d281ec5949b mergede842347b7cac073c6822b2251096747710abc170; full334831evidence/0missing0errors/historyverified. AUD058through196/next200 unchanged."
+  ],
+  "findings": [
+    {
+      "summary": "Implementeddesignopt-in--admission-ip/admission_ips requiringexactA/BuniquevalidatedIPv4; perrole1..4 acceptedtransports/lifetime. Unknownsource/fifthrejectbeforeevents/channels/rolecountermutation; no resetonEOF. Defaultglobalordinalpolicy/legacyreplacementunchanged; configrejectreplacement_slotandambiguousroles/IPs. Outgoingpeer-ipindependent/codecfixturesIDseq unchanged.",
+      "source": "design",
+      "status": "design",
+      "method": "design",
+      "canonical": "docs/PROTOCOL.md#operator-incoming-binding",
+      "evidence": [
+        "ADMIT197-01690",
+        "ADMIT197-01697"
+      ],
+      "limits": "Opt-inoperatorA/BdistinctsourceIPv4/fourtransportsperroleinprocesslifetime/designpolicy, notoriginalaccountauth/token/resume/sameNATsourceIPmultipleclients/C/D/replacement/four-eightclients/Internetgate. Defaultlegacygroup4/replacementunchanged. NativeUIstartupserialized; separateactualTCPinterleavingcontrolsnotnativeinterleavedlaunch. ActualKRWinecopy4b/basic291/47fixtures/newimmutablebundle/staticNAT/UDP40ms±5/loss5%seed194/TCPbaseline/sharedkernel/twoBnormalwins/reset/Start3/thirdactivenobomb. Originalsourcebinary/DB/assets/raw/completehistoryimmutable; getteremulationseparatefromactualruntime/reviewwaived."
+    },
+    {
+      "summary": "ActualTCP/current47fixturecontrolsdefaultABAB6wrong/8, opt-inABABandBBAAAABB0wrong/8; unknown/fifthrejected andotherroleunaffected.8newrealTCPtests/302server/17bundleexportadmission tests and43checkpointtests pass. FirsttooltestinvocationmissingPYTHONPATHtools2importerrorsretained; correctinvocationpasseswithoutcodeweakening.",
+      "source": "design",
+      "status": "design",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#operator-incoming-binding",
+      "evidence": [
+        "ADMIT197-01616",
+        "ADMIT197-01615",
+        "ADMIT197-01617",
+        "ADMIT197-01609",
+        "ADMIT197-01608",
+        "ADMIT197-01610"
+      ],
+      "limits": "Opt-inoperatorA/BdistinctsourceIPv4/fourtransportsperroleinprocesslifetime/designpolicy, notoriginalaccountauth/token/resume/sameNATsourceIPmultipleclients/C/D/replacement/four-eightclients/Internetgate. Defaultlegacygroup4/replacementunchanged. NativeUIstartupserialized; separateactualTCPinterleavingcontrolsnotnativeinterleavedlaunch. ActualKRWinecopy4b/basic291/47fixtures/newimmutablebundle/staticNAT/UDP40ms±5/loss5%seed194/TCPbaseline/sharedkernel/twoBnormalwins/reset/Start3/thirdactivenobomb. Originalsourcebinary/DB/assets/raw/completehistoryimmutable; getteremulationseparatefromactualruntime/reviewwaived."
+    },
+    {
+      "summary": "Newbundle59pins/47aliases/43fixtures exactsameprofilebytes asoldbundle; updatedservicemodule supportsincomingbinding. ActualKRserializednativeUI hasincomingprivateA/Bfourstages/count4 andoutgoingNAT153separate, twoBnormalwins/Roller4→5→4/normalAdeath/result/reset/Ready2/BStart3/threeclocks/keys/195seed/fourpeerwindows/PCAPnativeAPI/currentprogress. Newmoduleverifiedinsidebundle, sourcesfrozen/ownedcleanup0. Notnativeinterleavedstartup.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#operator-incoming-binding",
+      "evidence": [
+        "ADMIT197-00010",
+        "ADMIT197-00007",
+        "ADMIT197-00015",
+        "ADMIT197-00008",
+        "ADMIT197-01440",
+        "ADMIT197-01548"
+      ],
+      "limits": "Opt-inoperatorA/BdistinctsourceIPv4/fourtransportsperroleinprocesslifetime/designpolicy, notoriginalaccountauth/token/resume/sameNATsourceIPmultipleclients/C/D/replacement/four-eightclients/Internetgate. Defaultlegacygroup4/replacementunchanged. NativeUIstartupserialized; separateactualTCPinterleavingcontrolsnotnativeinterleavedlaunch. ActualKRWinecopy4b/basic291/47fixtures/newimmutablebundle/staticNAT/UDP40ms±5/loss5%seed194/TCPbaseline/sharedkernel/twoBnormalwins/reset/Start3/thirdactivenobomb. Originalsourcebinary/DB/assets/raw/completehistoryimmutable; getteremulationseparatefromactualruntime/reviewwaived."
+    },
+    {
+      "summary": "Defaultstartupserialrequirementnowqualifiedopt-in sourcebindingbutnooriginalauth/samesourceNATaccountsupport. CP196PR268merged/AUD058through196/next200; PLAN nextnativeearlyBinterleavedacceptorder withJoinBguardedactualAroom, notfourclientorInternetgate. Docs/catalog/issue linkedtosourcesbeforecomplete.",
+      "source": "design",
+      "status": "design",
+      "method": "design",
+      "canonical": "docs/PROTOCOL.md#operator-incoming-binding",
+      "evidence": [
+        "ADMIT197-01637",
+        "ADMIT197-01638",
+        "ADMIT197-01538",
+        "ADMIT197-00018",
+        "ADMIT197-01645"
+      ],
+      "limits": "Opt-inoperatorA/BdistinctsourceIPv4/fourtransportsperroleinprocesslifetime/designpolicy, notoriginalaccountauth/token/resume/sameNATsourceIPmultipleclients/C/D/replacement/four-eightclients/Internetgate. Defaultlegacygroup4/replacementunchanged. NativeUIstartupserialized; separateactualTCPinterleavingcontrolsnotnativeinterleavedlaunch. ActualKRWinecopy4b/basic291/47fixtures/newimmutablebundle/staticNAT/UDP40ms±5/loss5%seed194/TCPbaseline/sharedkernel/twoBnormalwins/reset/Start3/thirdactivenobomb. Originalsourcebinary/DB/assets/raw/completehistoryimmutable; getteremulationseparatefromactualruntime/reviewwaived."
+    }
+  ],
+  "verification": [
+    {
+      "check": "302server tests/17bundleexportadmission/43checkpointtests andactualTCPinterleaving/defaultnegative/unknown/exhaustion",
+      "result": "pass",
+      "evidence": [
+        "ADMIT197-01617",
+        "ADMIT197-01608",
+        "ADMIT197-01610",
+        "ADMIT197-01616"
+      ],
+      "limits": "RealTCPdesignpolicy/notnativeinterleavedproof."
+    },
+    {
+      "check": "ActualKRnewbundle/opt-inincomingbinding/native2normalcycles/reset/Ready2/Start3/NATqdiscpeer",
+      "result": "pass",
+      "evidence": [
+        "ADMIT197-00010",
+        "ADMIT197-00008",
+        "ADMIT197-00007"
+      ],
+      "limits": "Opt-inoperatorA/BdistinctsourceIPv4/fourtransportsperroleinprocesslifetime/designpolicy, notoriginalaccountauth/token/resume/sameNATsourceIPmultipleclients/C/D/replacement/four-eightclients/Internetgate. Defaultlegacygroup4/replacementunchanged. NativeUIstartupserialized; separateactualTCPinterleavingcontrolsnotnativeinterleavedlaunch. ActualKRWinecopy4b/basic291/47fixtures/newimmutablebundle/staticNAT/UDP40ms±5/loss5%seed194/TCPbaseline/sharedkernel/twoBnormalwins/reset/Start3/thirdactivenobomb. Originalsourcebinary/DB/assets/raw/completehistoryimmutable; getteremulationseparatefromactualruntime/reviewwaived."
+    },
+    {
+      "check": "Docs/catalog/diff",
+      "result": "pass",
+      "evidence": [
+        "ADMIT197-01645"
+      ],
+      "limits": "Fullhistory/local/exactheadbeforemerge; notsemanticgate."
+    },
+    {
+      "check": "Nativeinterleavedstartup/beforefourclients/accountauth/InternetK7",
+      "result": "pending",
+      "evidence": [
+        "ADMIT197-00018"
+      ],
+      "limits": "NEXT-K7-NATIVE-INTERLEAVE active; noK6c/K7closure."
+    }
+  ],
+  "evidence": [],
+  "evidence_manifests": [
+    {
+      "path": "docs/evidence/checkpoints/evidence/CP197-incoming-admission.json",
+      "bytes": 459550,
+      "sha256": "421ad31aa85682bf668a12acd577800849032dbcdad7b5869fb27ba763f694f0",
+      "count": 1768
+    }
+  ],
+  "delta": {
+    "added": [
+      "Opt-inincomingABsourceIPv4/perroletransportcounter/defaultlegacyretained/configandunknownexhaustionnegativecontrols.",
+      "NewrealTCP0wronginterleavingcontrols/302servertests/newbundleimmutability/actualKRserialcompatibility2cycles/reset/Start3.",
+      "Canonicalincomingbindingdesignlimits/nextnativeinterleavemeasurement andCP196PR268delivery linked."
+    ],
+    "corrected": [
+      "peer-ipoutgoingconfigdoesnotbindincoming; newadmission-ipopt-in isseparatepolicy, notnativeoriginalauth.",
+      "Bundlelimitstartupserializednowdefaultonly; opt-inuniqueIPsupportsrealTCPinterleaving butnativeinterleavedstartupstillunmeasured.",
+      "Tooltestmissingtoolsimportpathretainedfailed2imports; correctedPYTHONPATHinvocation17pass."
+    ],
+    "superseded": [
+      "NEXT-K7-ADMISSION-CONTROL closedboundedABpolicy/realTCP/nativecompatibility; NEXT-K7-NATIVE-INTERLEAVE active."
+    ]
+  },
+  "blockers": [
+    "Nativeclientinterleavedstartupnotmeasured; nextsamebundle/profile/networkearlyBlaunchbeforeAfourtransports/JoinBawaitactualAroom andrequireactualacceptinterleaving/correctnativeidentity/stages beforeclaim.",
+    "BindingABdistinctsourceIP/fourtransportslifetime notsameNATaccountauth/generalretry/C-D/four-eightclient/servicewideadmission; K6cInternet/K7/generalauth/relay/UDPunknownretainlimits."
+  ],
+  "next_steps": [
+    {
+      "id": "NEXT-K7-ADMISSION-CONTROL",
+      "task": "KRE-005b",
+      "state": "closed",
+      "action": "CP197optinABsourcebinding/actualTCPinterleavingdefaultnegative/configunknownexhaustion/newbundle/native serial2cyclescompatibilityverified; notnativeinterleaved/gate.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-K7-NATIVE-INTERLEAVE",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "PLANsamebundle/source/profile/network, earlyBbeforeAfourtransports; guardJoinBuntilactualAroom, measureactualinterleavedacceptorder/correctnativeidentity/stages/count4. IfstillAAAABBBBretaincontrolnotpass; no codecRE/authclaim. AUD058through196/next200.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    }
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-11-07T08:55:09.964052+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "Codexsolo/code/realTCP/nativebundlecompatibility/selfcheck; reviewwaived notapproved/exactheadPRrequired.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Owner explicitly requested solo, no workers/review."
+    }
+  },
+  "docs_sync": [
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "CP197optinoperatorbinding/controls/nativecompatibility/limits/nextactualinterleave synchronizedbeforecomplete, audit200unchanged."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "CP197optinoperatorbinding/controls/nativecompatibility/limits/nextactualinterleave synchronizedbeforecomplete, audit200unchanged."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "updated",
+      "reason": "CP197optinoperatorbinding/controls/nativecompatibility/limits/nextactualinterleave synchronizedbeforecomplete, audit200unchanged."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "updated",
+      "reason": "CP197optinoperatorbinding/controls/nativecompatibility/limits/nextactualinterleave synchronizedbeforecomplete, audit200unchanged."
+    },
+    {
+      "path": "docs/features.json",
+      "state": "updated",
+      "reason": "CP197optinoperatorbinding/controls/nativecompatibility/limits/nextactualinterleave synchronizedbeforecomplete, audit200unchanged."
+    },
+    {
+      "path": "docs/COVERAGE.md",
+      "state": "updated",
+      "reason": "CP197optinoperatorbinding/controls/nativecompatibility/limits/nextactualinterleave synchronizedbeforecomplete, audit200unchanged."
+    },
+    {
+      "path": "tools/README.md",
+      "state": "updated",
+      "reason": "CP197optinoperatorbinding/controls/nativecompatibility/limits/nextactualinterleave synchronizedbeforecomplete, audit200unchanged."
+    },
+    {
+      "path": "docs/evidence/peer-endpoints/README.md",
+      "state": "updated",
+      "reason": "CP197optinoperatorbinding/controls/nativecompatibility/limits/nextactualinterleave synchronizedbeforecomplete, audit200unchanged."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/review.json",
+      "state": "updated",
+      "reason": "CP197optinoperatorbinding/controls/nativecompatibility/limits/nextactualinterleave synchronizedbeforecomplete, audit200unchanged."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
+      "state": "updated",
+      "reason": "CP197optinoperatorbinding/controls/nativecompatibility/limits/nextactualinterleave synchronizedbeforecomplete, audit200unchanged."
+    }
+  ]
+}

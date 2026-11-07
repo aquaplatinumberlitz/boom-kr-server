@@ -1,7 +1,7 @@
 {
   "schema": "kre-feature-index-v1",
   "build": "KR00967",
-  "as_of": "CP196",
+  "as_of": "CP197",
   "sources": {
     "plan": "docs/PLAN.md",
     "contract": "docs/PROTOCOL.md",
@@ -409,7 +409,8 @@
           "docs/evidence/live-codec-stream/README.md",
           "docs/evidence/lobby-identity/in-progress.json",
           "docs/evidence/lobby-identity/README.md",
-          "docs/evidence/lobby-identity/k3-acceptance.json"
+          "docs/evidence/lobby-identity/k3-acceptance.json",
+          "docs/PROTOCOL.md#operator-incoming-binding"
         ]
       },
       "coverage": {
@@ -4206,7 +4207,8 @@
           "docs/PROTOCOL.md#portable-probe-bundle",
           "docs/PROTOCOL.md#emulated-lan-acceptance",
           "docs/PROTOCOL.md#routed-Wine-network",
-          "docs/PROTOCOL.md#nat-netem-host-eof"
+          "docs/PROTOCOL.md#nat-netem-host-eof",
+          "docs/PROTOCOL.md#operator-incoming-binding"
         ]
       },
       "coverage": {
@@ -4609,7 +4611,8 @@
           "docs/PROTOCOL.md#nat-endpoint-control",
           "docs/PROTOCOL.md#nat-two-cycles",
           "docs/PROTOCOL.md#udp-netem-cycles",
-          "docs/PROTOCOL.md#nat-netem-host-eof"
+          "docs/PROTOCOL.md#nat-netem-host-eof",
+          "docs/PROTOCOL.md#operator-incoming-binding"
         ]
       },
       "coverage": {

@@ -107,3 +107,19 @@ giữ nghiệm thu/recipe. Operator phải thiết lập mạng cô lập trư�
 hoặc liên hệ endpoint. Startup hiện tuần tự A tới channelready rồi mới B; hai namespace không hai máy LAN.
 Kiểm packaging: `python3 -m unittest discover -s tools -p 'test_probe_bundle.py'` (real TCP/relocation,
 source/destination drift, symlinkescape, overwrite và profileoverride controls).
+
+<a id="incoming-admission"></a>
+## Incoming admission A/B theo IP nguồn (opt-in)
+
+Dùng hai host thử có IP TCP nguồn riêng; quảng bá UDP qua NAT vẫn cấu hình độc lập bằng `--peer-ip` và
+`--proxy-a/--proxy-b` port đã phục hồi. [Contract/giới hạn](../docs/PROTOCOL.md#operator-incoming-binding),
+[phép thử tiếp](../docs/RESEARCH.md#gap-lobby-identity-followup).
+
+```bash
+python3 -I /path/to/new-bundle/run.py --out local/run --port 3858   --bind-ip 10.77.0.1 --admission-ip A=10.78.1.2 --admission-ip B=10.78.2.3
+```
+
+Thiếu tùy chọn giữ legacy serial/globalordinal. Nếu bật phải đúng A/B, distinctIPv4; unknownsource và
+kết nối thứ5 của role bị reject. Count không reset sau EOF, không kết hợp replacement_slot; không
+accountauth/resume/nhiều client chung sourceIP. Gói cũ immutable không có tùy chọn mới: export bundle
+mới từ source đã kiểm; không sửa file hoặc bundle.json đang chạy. Caller vẫn phải cô lập mạng theo recipe.
