@@ -607,9 +607,17 @@ class ProbeService:
             self.receive_battle_exit(event, frame, sequence, body)
         elif opcode == 6 and not event.get('channel_response_sent'):
             if getattr(self, 'own_profile_bodies', None):
+                try:
+                    channel_name = own_profile.channel_name(body, role)
+                except ValueError as error:
+                    self.reject_stage(event, opcode, sequence, str(error))
+                    return
                 event['s2c_next_seq'] = 43
                 self.send(event, 'channel', 'lobby17',
                           body=codec.frame_body(self.profile.raw('channel'), 43))
+                event['channel_identity'] = {
+                    'name': channel_name.decode('ascii'),
+                    'source': 'emu_choice', 'scope': 'pinned_request6_name_only'}
             else:
                 self.send_raw(event, self.profile.raw('channel'))
             event['channel_response_sent'] = {'monotonic_ns': time.monotonic_ns()}

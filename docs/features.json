@@ -1,7 +1,7 @@
 {
   "schema": "kre-feature-index-v1",
   "build": "KR00967",
-  "as_of": "CP185",
+  "as_of": "CP186",
   "sources": {
     "plan": "docs/PLAN.md",
     "contract": "docs/PROTOCOL.md",
@@ -408,7 +408,8 @@
           "docs/evidence/peer-endpoints/README.md#cp149",
           "docs/evidence/live-codec-stream/README.md",
           "docs/evidence/lobby-identity/in-progress.json",
-          "docs/evidence/lobby-identity/README.md"
+          "docs/evidence/lobby-identity/README.md",
+          "docs/evidence/lobby-identity/k3-acceptance.json"
         ]
       },
       "coverage": {
@@ -438,7 +439,8 @@
           "state": "checked",
           "refs": [
             "docs/evidence/login-runtime/README.md",
-            "docs/evidence/auth-profile/README.md"
+            "docs/evidence/auth-profile/README.md",
+            "docs/evidence/lobby-identity/k3-acceptance.json"
           ]
         },
         "runtime": {
@@ -456,7 +458,8 @@
               "docs/evidence/live-codec-stream/README.md",
               "docs/PROTOCOL.md#local-name-model",
               "docs/PROTOCOL.md#own-profile-291",
-              "docs/PROTOCOL.md#own-profile-integration"
+              "docs/PROTOCOL.md#own-profile-integration",
+              "docs/evidence/lobby-identity/k3-acceptance.json"
             ]
           },
           "windows_original": {
@@ -482,7 +485,8 @@
             "docs/PROTOCOL.md#auth-profile",
             "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/77",
             "docs/PROTOCOL.md#service-channel-endpoint",
-            "server/own_profile.py"
+            "server/own_profile.py",
+            "docs/PROTOCOL.md#k3-version-identity-controls"
           ],
           "delivery": "via_pr"
         },
@@ -499,10 +503,11 @@
         },
         "gate": {
           "id": "K3",
-          "state": "open",
+          "state": "passed",
           "refs": [
-            "docs/PLAN.md#gates"
-          ]
+            "docs/PLAN.md#k3-acceptance"
+          ],
+          "acceptance": "docs/PLAN.md#k3-acceptance"
         }
       },
       "issues": [
@@ -529,7 +534,8 @@
           "docs/evidence/postwait/README.md",
           "docs/evidence/probe-service/README.md",
           "docs/evidence/lobby-identity/in-progress.json",
-          "docs/evidence/lobby-identity/README.md"
+          "docs/evidence/lobby-identity/README.md",
+          "docs/evidence/lobby-identity/k3-acceptance.json"
         ]
       },
       "coverage": {
@@ -557,7 +563,8 @@
         "emulation": {
           "state": "checked",
           "refs": [
-            "docs/evidence/postwait/README.md"
+            "docs/evidence/postwait/README.md",
+            "docs/evidence/lobby-identity/k3-acceptance.json"
           ]
         },
         "runtime": {
@@ -568,7 +575,8 @@
               "docs/PROTOCOL.md#local-name-model",
               "docs/PROTOCOL.md#own-profile-291",
               "docs/PROTOCOL.md#own-profile-integration",
-              "docs/PROTOCOL.md#lobby-cache-route"
+              "docs/PROTOCOL.md#lobby-cache-route",
+              "docs/evidence/lobby-identity/k3-acceptance.json"
             ]
           },
           "windows_original": {
@@ -591,7 +599,8 @@
             "docs/PROTOCOL.md#probe-service",
             "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/57",
             "server/own_profile.py",
-            "docs/PROTOCOL.md#lobby-cache-route"
+            "docs/PROTOCOL.md#lobby-cache-route",
+            "docs/PROTOCOL.md#k3-version-identity-controls"
           ],
           "delivery": "via_pr"
         },
@@ -604,10 +613,11 @@
         },
         "gate": {
           "id": "K3",
-          "state": "open",
+          "state": "passed",
           "refs": [
-            "docs/PLAN.md#gates"
-          ]
+            "docs/PLAN.md#k3-acceptance"
+          ],
+          "acceptance": "docs/PLAN.md#k3-acceptance"
         }
       },
       "issues": [
@@ -631,7 +641,8 @@
         "evidence": [
           "docs/evidence/start-reply/README.md",
           "docs/evidence/cache-boundary/README.md",
-          "docs/evidence/lobby-identity/README.md"
+          "docs/evidence/lobby-identity/README.md",
+          "docs/evidence/lobby-identity/k3-acceptance.json"
         ]
       },
       "coverage": {
@@ -661,7 +672,8 @@
         "emulation": {
           "state": "checked",
           "refs": [
-            "docs/evidence/cache-boundary/README.md"
+            "docs/evidence/cache-boundary/README.md",
+            "docs/evidence/lobby-identity/k3-acceptance.json"
           ]
         },
         "runtime": {
@@ -672,7 +684,8 @@
               "docs/PROTOCOL.md#local-name-model",
               "docs/PROTOCOL.md#own-profile-291",
               "docs/PROTOCOL.md#own-profile-integration",
-              "docs/PROTOCOL.md#lobby-cache-route"
+              "docs/PROTOCOL.md#lobby-cache-route",
+              "docs/evidence/lobby-identity/k3-acceptance.json"
             ]
           },
           "windows_original": {
@@ -695,7 +708,8 @@
             "docs/PROTOCOL.md#dynamic-cache-representation",
             "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/79",
             "server/own_profile.py",
-            "docs/PROTOCOL.md#lobby-cache-route"
+            "docs/PROTOCOL.md#lobby-cache-route",
+            "docs/PROTOCOL.md#k3-version-identity-controls"
           ],
           "delivery": "via_pr"
         },
@@ -708,10 +722,11 @@
         },
         "gate": {
           "id": "K3",
-          "state": "open",
+          "state": "passed",
           "refs": [
-            "docs/PLAN.md#gates"
-          ]
+            "docs/PLAN.md#k3-acceptance"
+          ],
+          "acceptance": "docs/PLAN.md#k3-acceptance"
         }
       },
       "issues": [

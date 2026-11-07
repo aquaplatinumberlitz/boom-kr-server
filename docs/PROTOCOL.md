@@ -2471,7 +2471,7 @@ CP010cleanup/CP012modal+UI/CP014result1, CP057modelboundary và CP180actualstrea
 không chạy lại76split/primitive/gameplay. Raw lỗiHWwatchpoint, control stubmisclassification và
 fatalsequence giữ riêng. Unknownfullgrammar/modes/prefix/headerauthority/FFFFFFFFallocation/
 cache/accountresume không tự thànhconfirmed; [nghiệm thu K2profile](PLAN.md#k2-acceptance) là quyếtđịnh
-thủ công riêng. K3UIidentity/cache/wrongstage/version còn ở RESEARCH, thứ tự duy nhất PLAN.
+thủ công riêng. Tại CP181 K3 còn ở RESEARCH; CP186 đã nghiệm thu localprofile, thứ tự hiện hành ở PLAN.
 
 <a id="auth-profile"></a>
 ### Success/profile count1 đã đọc sạch trên copy — CP058
@@ -2565,7 +2565,7 @@ channel chỉ gửi6; harness exit0 chỉ là cleanup. `panel-r4` hoãn probe t�
 không suy installationtiming là nguyên nhân/fix. PrivateDB load inputhashNone có log riêng;
 freshcopy analysis được dùng, không sửa DB/binary nguồn. Decompiler badSP/None chỉ là gợi ý,
 assembly và16body-bytecomparison giữ phạm vi. [Recipe/run/hash](evidence/lobby-identity/README.md).
-K3/cold-missing-warm/wrongstage/version/identity và gate giữ mở; bước tiếp duy nhất ở PLAN.
+Tại CP182 K3 vẫn mở; CP186 nghiệm thu localprofile sau cold-route/version/identity controls, bước tiếp duy nhất ở PLAN.
 
 <a id="own-profile-291"></a>
 ### Profile bản thân ở sảnh: S→C291 → CUserMap → panel — CP183
@@ -2635,6 +2635,56 @@ Guest trong ảnh là fixture tổng hợp, không client B thật. Hai run80s, 
 Các lỗi gọi test sai module/importpath được giữ, discovery đúng đã pass. Probe tái dùng đổi prefix
 producer sang K3_FRAMER do global note, kind vẫn phân biệt; raw không sửa. [Checklist K3](PLAN.md#k3-evidence-review)
 giữ phần thiếu cache/version/channel/negative, không mở lại item/mode/race ngoài gate.
+
+<a id="channel-cold-route"></a>
+### Cold cache route kênh và tên hàng — CP186
+
+**kr_runtime confirmed** trên một A/Winecopy e9/offline; [recipe/hash](evidence/lobby-identity/README.md#cp186).
+Tái dùng CP016/034 channelblob/row/factory và CP059/185 SSI/CRC/528, không thân hàm native mới.
+Trước `channel-cold-r1`, cả `channel2_000.ssd`, `fxdynmapinfo.ssd`, `fxstagemap.ssd` vắng trên copy
+(stage-map đã vắng từ batch trước). Loader`14EA7C0` đọc channel0 hai lần, dynamic0 và stage0;
+actual6→17/241/91/14/291, panelKRLocal, actual528→238/58 và native ghi dynamic76byte SHA6a4745… .
+Native ghi channel54byte SHA`4c7204159c08ee70ffc18fed7f8ffc47099a5f8ab648b6fa05035a6f8939621a`.
+Warm cùng copy nhận channel1 hai lần/dynamic1, stage0, không528 và không238; finalnameguard nhận actual6.
+Năm SSI string/filter/fxmg/spcc giữ bytehash giống client nguồn; đây là cold **cache route**, không coldmọiasset/cache.
+Ready241 đọc đúng sau blob14byte: cacheCRCdynamic`804314B9`, stageCRC0, u8=0, u32=0; không lấy8byte cuối
+làm haiCRC vì lệch boundary. Stage-map không được khôi phục và chỉ có scope CRC0.
+
+**emu_choice:** candidate channel14 đổi duy nhất string rỗng thành ASCII`KRLocal-0`, giữ rowtail/kind/index.
+Cached body`13A20D0`/`13A1FB0` khớp từng byte trên e9. Native`13A21E7` trả1/name9byte đúng và
+`13A2099` trả rows1 trong warmrun, sau phase lobbyready/fresh14. Không lặp full-row oracle lỗi CP034;
+đây là object thật trong runtime. Không chứng minh tên caption đã vẽ hoặc warm cache đã phục hồi row
+trước14; UI header vẫn không được gán là channelname. Gate baseline một sảnh normal dùng chứng cứ
+selected0/level1 CP016 và kind1→normalfactory/UI CP034, không caption đa kênh.
+
+<a id="k3-version-identity-controls"></a>
+### Version lỗi và ràng buộc identity local — CP186
+
+[Nghiệm thu K3/scope](PLAN.md#k3-acceptance), [nguồn/raw/hash](evidence/lobby-identity/README.md#cp186).
+**kr_runtime confirmed cho bootstrap ProcessPatch**, không là versionfield auth hoặc u16 WCP:
+
+| Input/run | Quan sát và giới hạn |
+|---|---|
+| invalid-r1 | CLI chỉ file65535 nhưng actual serviceprofile vẫn fixture967; nativeguard1/equalbranch/return1. Control không tới client, không tính negative. |
+| invalid-r2 | Profile riêng thực sự pin65535: `1236A02` remote65535/guard0, caller`1234875` return0; UI ErrCannotLogin, chỉ bootstrapconnection. |
+| mismatch-r1 | Version966 qua guard1, `1236A5E` compare0, `1236AC8` PreparePatchreturn1. Hiện NGMPatch Process Error(967:1); chưa quan sát ProcessPatchreturn trước cleanup. Không suy crash hoặc login thành công. |
+| mismatch-r2/r3 | Một OSACK trên Error modal; r2 nativeReturn0 nhưng xdotoolrc1 được giữ là tool ambiguity. R3 focus/keydown/keyup đều0, native`1234875` return0 nằm giữa timestamps input; sau đó ErrCannotLogin(5:1754). WindowPID129 và process list cùng run. Không suy ý nghĩa error5/1754 hoặc updater thành công. |
+
+Chỉ thay BE16version reply+6; guard/opaque/emptystring/tail giữ. Cached ProcessPatch callsites tái dùng,
+không ép branch/return hay gọi gamefunction. GDB script inherited có thể in phase sau remoteclose;
+nhãn đó **không** là proof native bootstrapguard, chỉ dùng version-PC events thực sự đã hit.
+
+**emu_choice/design** cho profile `own_profile.mode=native_291`: CP058/060 actualrequest6 có u16string
+tại body+2, A/B43byte và C41byte. Guard chỉ kiểm boundedshape và tên tương ứng role đã pin, cùng
+binding auth ID/name fail-fast CP184. Hai byte đầu và tail32byte còn opaque; không gọi đây là
+account/token verification. Wrongname/shape logged/rejected trước17, không set identity/ready/seqmarker.
+Profile default-off giữ nguyên. 294 servertests và8case AF_UNIX vào public`receive` dùng frame nativeframer
+chấp nhận độc lập, wrongname string cũng được reader native đọc đúng; positivesA/B/C gửi17/43, next46.
+Các input sai được dựng từ capture, không phải nativeclient tự gửi wrongcredential. RuntimeA warm
+chứng minh guard cuối nhận actualKRLocal và vẫn tới sảnh/own291; nativeB/C291/currentroom còn ở K4.
+
+K3 nghiệm thu localprofile theo quyết định thủ công, **không** fullauth, mọiversion/updater,
+Windowsnguyênbản hoặc fullmatch. Widermapping/cache/caption giữ question theo trigger trong RESEARCH.
 
 <a id="lobby-cache-route"></a>
 ### Cache trước sảnh và service request528 — CP185

@@ -1,0 +1,70 @@
+{
+  "schema": "kre-gate-acceptance-evidence-v1",
+  "gate": "K3",
+  "checkpoint": "CP186",
+  "decision": "passed",
+  "decided_by": "Codex",
+  "review": "waived",
+  "review_reference": "docs/evidence/checkpoints/review-waiver.json",
+  "recorded_utc": "2026-11-07T03:37:07.547757+00:00",
+  "scope": "Single actual A, modified e9 Wine recipe, isolated offline local identity ID1/KRLocal, one normal channel index0, pinned47fixtures plus native291, request528 and request6-name guards. Gate criteria retained; no account-service/Windows/LAN/Internet claim.",
+  "criteria": [
+    {
+      "criterion": "Cold cache, missing cache and warm cache have clear outcomes",
+      "decision": "satisfied_in_scope",
+      "sources": [
+        "docs/PROTOCOL.md#channel-cold-route",
+        "docs/PROTOCOL.md#dynamic-cache-representation",
+        "docs/PROTOCOL.md#lobby-cache-route"
+      ],
+      "reason": "CP186 all3observed server-route cache files absent; native channel/dynamic rebuild, followed warm load. CP059/185 missing dynamic controls retained. Five retained SSI files are identical shipped resources, not erased program assets."
+    },
+    {
+      "criterion": "Stable local identity across login/channel and correct identity/channel UI",
+      "decision": "satisfied_in_scope",
+      "sources": [
+        "docs/PROTOCOL.md#local-name-model",
+        "docs/PROTOCOL.md#own-profile-integration",
+        "docs/PROTOCOL.md#room-create",
+        "docs/PROTOCOL.md#room-leave",
+        "docs/PROTOCOL.md#channel-cold-route"
+      ],
+      "reason": "CP058/182 auth ID1/native name getters/actual6; CP183/184 producer291 and visible KRLocal, roomID1; CP016 actualselected0/level1 and CP034 kind1→normal factory/UI reused. CP186 actual A still reaches normal lobby/name under new guard. Baseline permits empty channel-row caption; nonempty caption rendering unproved and not claimed."
+    },
+    {
+      "criterion": "Keepalive/lifecycle does not time out on the measured route",
+      "decision": "satisfied_in_scope",
+      "sources": [
+        "docs/PROTOCOL.md#login-retry-codec",
+        "docs/PROTOCOL.md#own-profile-integration",
+        "docs/PROTOCOL.md#channel-cold-route"
+      ],
+      "reason": "CP181 same-process retry/reset; CP184 two80s name→create/map routes and native C2S; CP185/18665s channel windows with client traffic and clean service. Bounded recipe duration, not SLA or full resume."
+    },
+    {
+      "criterion": "Correct bytes on wrong socket/stage rejected with a log; independent codec states",
+      "decision": "satisfied_in_scope",
+      "sources": [
+        "docs/PROTOCOL.md#k3-version-identity-controls",
+        "docs/PROTOCOL.md#login-retry-codec"
+      ],
+      "reason": "8 native-valid AF_UNIX public-receive cases cover wrong-name/shape/socket/stage and positivesABC, exact rejection reason/no reply/no advancement of application markers; per-socket decoder sequence validated. Wrong frames are constructed inputs, stage rejection is emulator policy."
+    },
+    {
+      "criterion": "Wrong version/local identity has a clear error",
+      "decision": "satisfied_in_scope",
+      "sources": [
+        "docs/PROTOCOL.md#k3-version-identity-controls",
+        "docs/PROTOCOL.md#own-profile-integration"
+      ],
+      "reason": "Native bootstrap65535 guard0/return0/ErrCannotLogin;966 compare0→NGMPatch Process Error and OSACK→native return0→ErrCannotLogin(5:1754). Local identity unsupportedprofile/ID/name fails before listening; wrong request6 name/shape is logged/refused by scoped emulator policy. Generic auth error/retry CP181 is separate; no original version/credential result-code mapping inferred."
+    }
+  ],
+  "limits": [
+    "Cold means the3observed network/cache files for this route, not deletion of shipped strings/assets or every possible cache. Stage-map absent only under advertised CRC0.",
+    "Native proof only A for current291/nameguard profile; B/C binding uses native old captures plus models, actual291 two-client integration belongs to K4.",
+    "Named row KRLocal-0 is parsed/persisted; no proof that caption renders or warm cache is deserialized before fresh14. UI gate scope is one known normal lobby, not a channel-selection/multi-row UI.",
+    "No full account/token verification, WCPu16 version meaning, updater success/arbitraryversions, general channel/cache grammar, Windows original, fullmatch or LAN/Internet."
+  ],
+  "next_source": "docs/PLAN.md#current-order"
+}

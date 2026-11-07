@@ -97,3 +97,30 @@ module/importpath giữ trong raw rồi chạy discovery đúng, không ghi chú
 Original5artifacts kiểm riêng. Các kiểm repo/exacthead và trạng thái merge ở bàn giao Git.
 [AUD055](../checkpoints/audits/AUD055.json) đọc core→evidence/raw, sửa stale source/status/thứ tự;
 audit kếCP188. Reviewwaived; CP184 chưa gate/fullmatch, chưa runtime B/C/start/rejoin sau291.
+
+
+<a id="cp186"></a>
+## CP186 — version controls, cold channel route, identity guard và nghiệm thu K3 local
+
+Baseline CP185/[PR257](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/257), merge`fd20146674c75e58b17da94fcc01e9d57b5c7aac`.
+Task KRE-005b/[#14](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/14), Codex solo/selfcheck,
+review waived. [Quyết định đối chiếu tiêu chí](k3-acceptance.json), [scope/PLAN](../../PLAN.md#k3-acceptance),
+[contract](../../PROTOCOL.md#k3-version-identity-controls), [câu hỏi tiếp](../../RESEARCH.md#gap-lobby-identity-followup).
+
+Raw `local/research/codex/k3-channel-version-r1/`: source-first pin KR/VN docs/CP016/034 và VNerrata;
+không port offset VN. Cached13A20D0/13A1FB0 so byte với e9, không thân hàm native mới.
+7 run: invalid-r1/r2, channel-cold/warm, mismatch-r1/r2/r3; mỗi run có recipe/preparation,
+version/cache events, verification và raw-seal. Tổng cùng wiretests514rawfiles đã đối chiếu trong
+`verification.json`/1086assertions. 294 servertests ở `server-tests.txt`.
+
+R1invalid không thực sự phục vụ input sai vì serviceprofile override CLI, được giữ như positive/control lỗi.
+Wire harnessr1 lỗi hashbytes-vs-path, r2 lỗi lookupsequence của rawfixture; r3mới là8casepass với nativeframer/string và AF_UNIX receive.
+Mismatchr2 UItoolrc1 không bị xóa; r3OSfocus+keydown+keyup đều0, native return0 nằm trong timestampinput.
+Negative GDBphase sau remoteclose không được tính là native guardhit. `count` dynamicmanager+14 là pointer;
+rowcount thật ở channelmanager+10. Namedrow nativeparse saufresh14 không là captionrender hoặc earlywarmdeserialize.
+
+Ảnh cold/warm finalpanelKRLocal; invalid-r2 ErrCannotLogin; mismatch-r1NGMPatchError và
+mismatch-r3 trướcACK/finalErrCannotLogin(5:1754) được đọc thủ công. Cùng raw/hash bảo toàn trước chỉnh source.
+Source-before giữ bytes trước nameguard; warm/mismatch/8wirecases đo finalcode. Năm SSIresource giống clientnguồn.
+K3 đạt **profile local** do Codex đối chiếu thủ công, không do checker; K4–K7/fullmatch/LAN/Internet còn mở.
+Next K4/currentpreset/twoactual291; audit periodic kếCP188, AUD055 qua184 giữ nguyên.

@@ -53,22 +53,26 @@ auth137/137/errors0 → channel socket mới; hello/mode/seq reset được đo 
 [run/hash](docs/evidence/live-codec-stream/README.md#cp181). CP180 split/coalesced/CRCcontrol đã merge
 [PR252](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/252) tại`fe242cc`.
 
-**K3–K7, K6a/trận đầy đủ/LAN/Internet vẫn mở.** Fullgrammar/unknownheader/prefix/mode và
+**K4–K7, K6a/trận đầy đủ/LAN/Internet vẫn mở. K3 đạt cho profile local A tại CP186**,
+[nghiệm thu/giới hạn](docs/PLAN.md#k3-acceptance). Fullgrammar/unknownheader/prefix/mode và
 accountauthority chưa được khôi phục đầy đủ; K2 không nghiệm thu các phần đó. Thứ tự tiếp ở
-[PLAN](docs/PLAN.md#current-order): identity/cache/UI sảnh theo evidence cũ, không lặp knowncodec/gameplay.
+[PLAN](docs/PLAN.md#current-order): integration hai client cho K4 sau291/nameguard, không lặp knowncodec/gameplay.
 CP181 đã merge [PR253](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/253) tại `5a154e5`.
 **CP184: identity291 đã tích hợp opt-in vào service.** Hai run A đã hiện tên ở sảnh rồi tạo phòng,
 nhận roster/map; native framer nhận sequence43…73 liên tục, next76. [Contract/giới hạn](docs/PROTOCOL.md#own-profile-integration),
 [run/hash](docs/evidence/lobby-identity/README.md#cp184). Đây là một client thật với guest tổng hợp,
 không thay bằng chứng hai client hoặc nghiệm thu trận. CP183 đã merge [PR255](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/255)
-tại`5c1f3fb`; CP184 đã merge [PR256](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/256) tại`1f8018a`. **K3 vẫn mở**, phần thiếu cụ thể ở [checklist nghiệm thu](docs/PLAN.md#k3-evidence-review).
+tại`5c1f3fb`; CP184 đã merge [PR256](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/256) tại`1f8018a`. Tại CP184 K3 còn mở; [CP186 đã đối chiếu nghiệm thu](docs/PLAN.md#k3-acceptance) cho profile hẹp.
 
 **CP185: cache dynamic-map đã có đường request528→reply238 trong service opt-in.**
 Đối chứng thiếu file, native ghi lại và warm không yêu cầu528 có [evidence/giới hạn](docs/PROTOCOL.md#lobby-cache-route).
-Chưa cold toàn client; K3 còn checklist channel/version/negative. [Wiki KR do chủ dự án tin cậy](docs/REFERENCES.md#owner-trusted-namu-wiki)
+Chưa cold toàn client; CP186 bổ sung cold route kênh và version/identity/negative cho nghiệm thu K3 hẹp. [Wiki KR do chủ dự án tin cậy](docs/REFERENCES.md#owner-trusted-namu-wiki)
 được dùng cho luật/stat/char/map/mode trước khi mở RE gameplay; [bảng dùng lại](docs/PROTOCOL.md#trusted-wiki-reuse) giữ phần phải đối chiếu00967.
 
-Ưu tiên khép K3 → rà K4 → K5/K6a; chỉ mở RE mới khi phục vụ tiêu chí chưa đạt của gate hiện hành.
+**CP186: K3 đạt trong scope một A/một kênh normal offline.** Bảy run và tám ca wire kiểm cache route,
+version lỗi, native identity và guard request6; [contract/giới hạn](docs/PROTOCOL.md#k3-version-identity-controls).
+Không fullaccountauth, không caption kênh có tên hoặc hai client291 đã nghiệm thu.
+Ưu tiên tiếp **K4 → K5/K6a**; rà bằng chứng phòng/load/host/start đã có và chỉ đo integration còn thiếu.
 AUD055 periodic qua184, audit kế **CP188**. [Review waived](docs/evidence/checkpoints/review-waiver.json).
 
 Đích đầu: hai client thật chơi hai trận liên tiếp; mở bốn client và hardening sau đó.

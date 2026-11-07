@@ -1,0 +1,4352 @@
+{
+  "schema": "kre-evidence-manifest-v1",
+  "evidence": [
+    {
+      "id": "K3SCOPE-00001",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/append_cp186.py",
+      "bytes": 10739,
+      "sha256": "b01eec01911312b7f29ff5fe63ea73cdcb8a98293e4d7c92457c9336af5751d9"
+    },
+    {
+      "id": "K3SCOPE-00002",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/artifacts-check.txt",
+      "bytes": 253,
+      "sha256": "649c6624aa6d317dfc1db5e16fea683cfbc9d9cf4dd3df11c0d70e57409054a0"
+    },
+    {
+      "id": "K3SCOPE-00003",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/bootstrap-version-966.bin",
+      "bytes": 15,
+      "sha256": "1c67c9d6f85a9bde4abed7ac55959c862793a9486a9375e803087e0ae90b246d"
+    },
+    {
+      "id": "K3SCOPE-00004",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/bootstrap-version-ffff.bin",
+      "bytes": 15,
+      "sha256": "56c053676e87249baa83e8c6178ac2ff6a74783b5b4293238199301cd9905b02"
+    },
+    {
+      "id": "K3SCOPE-00005",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/cache_probe.py",
+      "bytes": 2623,
+      "sha256": "b83d87dfdb93807a26da4aeb238fed37fac5750a2cf5dcdb9fe802a32bb920fa"
+    },
+    {
+      "id": "K3SCOPE-00006",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/cache_probe_r2.py",
+      "bytes": 2623,
+      "sha256": "9698e4a5cdd4b72c17964e637cf1fe694c30a81066360acaee78c5d9aad1ac69"
+    },
+    {
+      "id": "K3SCOPE-00007",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/channel-cold-inputs/channel2_000.ssd",
+      "bytes": 38,
+      "sha256": "522390e144106a04b6aca885f232e3ab43aad4555cf1385f04eacc7303124852"
+    },
+    {
+      "id": "K3SCOPE-00008",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/channel-cold-inputs/fxdynmapinfo.ssd",
+      "bytes": 76,
+      "sha256": "6a4745c6010378a50ab4bf34827bbe122d7eb270c78051391cd21bd7378b1053"
+    },
+    {
+      "id": "K3SCOPE-00009",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/channel-cold-preparation.json",
+      "bytes": 11331,
+      "sha256": "ce28135a65765b7222fef693a013c9bf021b99a1a3926a0a59e5178cba5b13db"
+    },
+    {
+      "id": "K3SCOPE-00010",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/channel-cold-r1/A-cache528-table238-58.bin",
+      "bytes": 110,
+      "sha256": "f213b8d5db114a43bbbf5731eee7945d0a6202d9975e6b8448a1f527838320a4"
+    },
+    {
+      "id": "K3SCOPE-00011",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/channel-cold-r1/A-lobby-ready-channel_list-52.bin",
+      "bytes": 91,
+      "sha256": "853b6df6bf66669ad0b5d1b6532a68aef4aba14d4b8f51af5f0925108b869e00"
+    },
+    {
+      "id": "K3SCOPE-00012",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/channel-cold-r1/A-lobby-ready-ready-46.bin",
+      "bytes": 69,
+      "sha256": "5e72176a25896892c49f5ee971bac080b21adbd039a259d7844d095bfe32de28"
+    },
+    {
+      "id": "K3SCOPE-00013",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/channel-cold-r1/A-lobby-ready-roomlist_A-49.bin",
+      "bytes": 40,
+      "sha256": "66192f9ab8be8c609a0989a16e5403968aa8c6087caa43775920efd3ea78ec2e"
+    },
+    {
+      "id": "K3SCOPE-00014",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/channel-cold-r1/A-lobby17-43.bin",
+      "bytes": 75,
+      "sha256": "5bb5a42cb1ea4fe8967d50ed39649cc886a493c0a13a25ceb2df589a2b9bcd37"
+    },
+    {
+      "id": "K3SCOPE-00015",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/channel-cold-r1/A-own-profile291-55.bin",
+      "bytes": 166,
+      "sha256": "7933d764cd0ba771c86c9f8c3b760f1a4d5cabd0765133d6b8078a52d97167f5"
+    },
+    {
+      "id": "K3SCOPE-00016",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/channel-cold-r1/CALog-before.txt",
+      "bytes": 46,
+      "sha256": "1dd23e4b03452ed015c1477017fbed7718c0836710f693e445ebf2eb18015a12"
+    },
+    {
+      "id": "K3SCOPE-00017",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/channel-cold-r1/CALog-run.txt",
+      "bytes": 1692,
+      "sha256": "ce3ee767ffe00f14064953ecfbf5223affecfea58a9fd11dd0a33ee1d0150131"
+    },
+    {
+      "id": "K3SCOPE-00018",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/channel-cold-r1/cache-after-channel2_000.ssd",
+      "bytes": 54,
+      "sha256": "4c7204159c08ee70ffc18fed7f8ffc47099a5f8ab648b6fa05035a6f8939621a"
+    },
+    {
+      "id": "K3SCOPE-00019",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/channel-cold-r1/cache-after-fxdynmapinfo.ssd",
+      "bytes": 76,
+      "sha256": "6a4745c6010378a50ab4bf34827bbe122d7eb270c78051391cd21bd7378b1053"
+    },
+    {
+      "id": "K3SCOPE-00020",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/channel-cold-r1/cache-events.jsonl",
+      "bytes": 11933,
+      "sha256": "1875b4825050b0aac92daf513a0e5090946025cd7761c875b1e8bf0202b3a557"
+    },
+    {
+      "id": "K3SCOPE-00021",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/channel-cold-r1/client.log",
+      "bytes": 124725,
+      "sha256": "9f89b8ce61b3fa3e35389e870a05798658e3713cb2dc5c7b94992a8d1ceb85a4"
+    },
+    {
+      "id": "K3SCOPE-00022",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/channel-cold-r1/debug-commands.txt",
+      "bytes": 391,
+      "sha256": "c151b8cf75c22f61aa9b98b828a3b64a55b76edc8b18913820e3b2279c906904"
+    },
+    {
+      "id": "K3SCOPE-00023",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/channel-cold-r1/hosts",
+      "bytes": 121,
+      "sha256": "32a007c62d2887ae9f8d3c30d1ff7cb3902e6e1e0c75c5a978ee556cc8ea71f8"
+    },
+    {
+      "id": "K3SCOPE-00024",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/channel-cold-r1/nsswitch.conf",
+      "bytes": 307,
+      "sha256": "c18e474cd61df8648ee02ac7a9c76b8d6c7782d8b212f925e6980f20af5cc838"
+    },
+    {
+      "id": "K3SCOPE-00025",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/channel-cold-r1/processes-00.txt",
+      "bytes": 3778,
+      "sha256": "a9515098d7514e5e84b8a0cfc9438545186f2f7df73048b00fd9610e0976d370"
+    },
+    {
+      "id": "K3SCOPE-00026",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/channel-cold-r1/processes-01.txt",
+      "bytes": 4524,
+      "sha256": "842f64ce5db4dbc4fa688441c41b215ebfa7e4fca5f54b98d64b3905e95af891"
+    },
+    {
+      "id": "K3SCOPE-00027",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/channel-cold-r1/processes-02.txt",
+      "bytes": 4524,
+      "sha256": "ad177dad0262eb1ed7c70d19e0bacdf5c2ed422530729eda8cca8cdf546e9613"
+    },
+    {
+      "id": "K3SCOPE-00028",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/channel-cold-r1/processes-03.txt",
+      "bytes": 4524,
+      "sha256": "a589337ff5aef525ce11f35cab439a11c6e5dba2a76405de52935410da313dec"
+    },
+    {
+      "id": "K3SCOPE-00029",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/channel-cold-r1/processes-04.txt",
+      "bytes": 4524,
+      "sha256": "e220d161f45b7c7114701b05b45ee671ad86c30466e8628e46ba9b6e13df7182"
+    },
+    {
+      "id": "K3SCOPE-00030",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/channel-cold-r1/processes-05.txt",
+      "bytes": 4524,
+      "sha256": "7db1953c2026be52cf8a11e1e6b1afdc12ff7b42b10b6888bd97ab91c924f9f8"
+    },
+    {
+      "id": "K3SCOPE-00031",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/channel-cold-r1/processes-06.txt",
+      "bytes": 4524,
+      "sha256": "3861a93245fa15cae9f140ee84429a00125b6125dd663e7adc7ba432613a2d3a"
+    },
+    {
+      "id": "K3SCOPE-00032",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/channel-cold-r1/processes-07.txt",
+      "bytes": 4524,
+      "sha256": "b476c6af158a30aaf31e427ec29328a8218c3c3bbc22da57bfbf416f448a74a9"
+    },
+    {
+      "id": "K3SCOPE-00033",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/channel-cold-r1/processes-08.txt",
+      "bytes": 4524,
+      "sha256": "db985038533a21a02cd3a29f3cc59ad040a2b89b76c9506633f9a123f7eb6b99"
+    },
+    {
+      "id": "K3SCOPE-00034",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/channel-cold-r1/processes-09.txt",
+      "bytes": 4524,
+      "sha256": "862b2277d8006811cf714e62064e259a62c68169a69be32b3e84f555d09d7d70"
+    },
+    {
+      "id": "K3SCOPE-00035",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/channel-cold-r1/processes-10.txt",
+      "bytes": 4524,
+      "sha256": "664ab194197bc2686b74f17d10044bcaa611fdf16d24122dfec779d6028a3907"
+    },
+    {
+      "id": "K3SCOPE-00036",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/channel-cold-r1/processes-11.txt",
+      "bytes": 4524,
+      "sha256": "2bef3dd07cacca3d1c493b88a19fec8c5c21db9e03c4cc438ae3c363ce99be8c"
+    },
+    {
+      "id": "K3SCOPE-00037",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/channel-cold-r1/processes-12.txt",
+      "bytes": 4524,
+      "sha256": "b85ad2e73c7c5b703be6b101c71d95c53f325e0653dc4e98a7e185c499c54673"
+    },
+    {
+      "id": "K3SCOPE-00038",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/channel-cold-r1/processes-13.txt",
+      "bytes": 4524,
+      "sha256": "6f6fe3b8743fb4c887d767949525b6a4eff6eacf82005d78846591add72f1542"
+    },
+    {
+      "id": "K3SCOPE-00039",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/channel-cold-r1/processes-14.txt",
+      "bytes": 4524,
+      "sha256": "6afd8cac1d31e668a4611d55f41095e02ac0f1e08d2f2891ca123cdfa1574829"
+    },
+    {
+      "id": "K3SCOPE-00040",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/channel-cold-r1/processes-15.txt",
+      "bytes": 4524,
+      "sha256": "c5f5163f65339d44279717ce3803a1b1a73d25c5719a1846a0d14317a7a97859"
+    },
+    {
+      "id": "K3SCOPE-00041",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/channel-cold-r1/processes-16.txt",
+      "bytes": 4524,
+      "sha256": "626604afe3f07817eb9cc0dc6eb5274062b970d7f0cf50a135c4f5827fc26366"
+    },
+    {
+      "id": "K3SCOPE-00042",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/channel-cold-r1/processes-17.txt",
+      "bytes": 4524,
+      "sha256": "c2539c70ec48a24114158dd0019092015c81214d4637a4d01c5dac4e2fbc2a3e"
+    },
+    {
+      "id": "K3SCOPE-00043",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/channel-cold-r1/processes-18.txt",
+      "bytes": 4524,
+      "sha256": "ec6dbab1415063dce296160ca1116f008778dd75ec117339d4adf658b17f8417"
+    },
+    {
+      "id": "K3SCOPE-00044",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/channel-cold-r1/processes-19.txt",
+      "bytes": 4524,
+      "sha256": "d6ebdf1c4b2756d7393f354af1c9c2605e6e456252d2c34b535ed4b02ec777c9"
+    },
+    {
+      "id": "K3SCOPE-00045",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/channel-cold-r1/processes-20.txt",
+      "bytes": 4524,
+      "sha256": "eee358c011938b9985cfabf3a628f0e07e2b03aab189ced789651fcefec1147d"
+    },
+    {
+      "id": "K3SCOPE-00046",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/channel-cold-r1/processes-21.txt",
+      "bytes": 4524,
+      "sha256": "da555c4b0001d473add9088f7ef28641601b1062e8958da05ca6bcc76902c17c"
+    },
+    {
+      "id": "K3SCOPE-00047",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/channel-cold-r1/raw-seal.json",
+      "bytes": 18290,
+      "sha256": "e97ad7f30d832394f2a41dcae55c4f887d11dc9bd596a9340e229fc24b1d684d"
+    },
+    {
+      "id": "K3SCOPE-00048",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/channel-cold-r1/run.json",
+      "bytes": 16020,
+      "sha256": "e69a500c7edd54457515bdbf9e4c4f300a7f7572960c5105d49dd2d0a2d93985"
+    },
+    {
+      "id": "K3SCOPE-00049",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/channel-cold-r1/screen-00.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "K3SCOPE-00050",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/channel-cold-r1/screen-01.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "K3SCOPE-00051",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/channel-cold-r1/screen-02.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "K3SCOPE-00052",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/channel-cold-r1/screen-03.png",
+      "bytes": 19847,
+      "sha256": "2178ceb11e92e5f95694ca8a855de0750fb1a93dfe6e02a13c1856b080d16654"
+    },
+    {
+      "id": "K3SCOPE-00053",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/channel-cold-r1/screen-04.png",
+      "bytes": 13437,
+      "sha256": "e47c2919c72588bea5f3e5b8ebda4d9823a66e8864f6b86ed6f85d9e19598218"
+    },
+    {
+      "id": "K3SCOPE-00054",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/channel-cold-r1/screen-05.png",
+      "bytes": 191431,
+      "sha256": "35903a0d052b21d3a24bf93dc8a8f6b306cabbb746f12f3287dd1e5c2419a39a"
+    },
+    {
+      "id": "K3SCOPE-00055",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/channel-cold-r1/screen-06.png",
+      "bytes": 198305,
+      "sha256": "9b10549412e06848d54d6cf6d91ca666ab12e4158385b5e17a2c8b10d6314b83"
+    },
+    {
+      "id": "K3SCOPE-00056",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/channel-cold-r1/screen-07.png",
+      "bytes": 149568,
+      "sha256": "fc53061f6516d44e24cc6230d3ffba9374df62a020a94cc995c50989527e69c1"
+    },
+    {
+      "id": "K3SCOPE-00057",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/channel-cold-r1/screen-08.png",
+      "bytes": 150567,
+      "sha256": "3c0704468c55a5b63335f58dccff9fc258ab6c33ff88905651a7aab0716a081e"
+    },
+    {
+      "id": "K3SCOPE-00058",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/channel-cold-r1/screen-09.png",
+      "bytes": 145337,
+      "sha256": "16ea369886bd7c566bdf98fe2dfba21b61eb710364208e69acb5b139308e1089"
+    },
+    {
+      "id": "K3SCOPE-00059",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/channel-cold-r1/screen-10.png",
+      "bytes": 144962,
+      "sha256": "a2f6c3718aec6e9b9499dcb1bf340aa90dd4bf785e29d5d8f1d8146a3c334d80"
+    },
+    {
+      "id": "K3SCOPE-00060",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/channel-cold-r1/screen-11.png",
+      "bytes": 144139,
+      "sha256": "2bbf904de0ba186b2abbfb38ff2268b9c536cd19b7ea17f71d9f08066c3316d3"
+    },
+    {
+      "id": "K3SCOPE-00061",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/channel-cold-r1/screen-12.png",
+      "bytes": 143009,
+      "sha256": "7402423cd8f752be783298b22d2fc56a118ed031b86820c0a61ec13f183d5ea6"
+    },
+    {
+      "id": "K3SCOPE-00062",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/channel-cold-r1/screen-13.png",
+      "bytes": 142985,
+      "sha256": "4e6e649e5bfc82ecc68b53b8db014ef4a6626faeb1b433f03628c42503f6b5d2"
+    },
+    {
+      "id": "K3SCOPE-00063",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/channel-cold-r1/screen-14.png",
+      "bytes": 142999,
+      "sha256": "e56ff16f414c9808721fc3cc136fa93ae88a6f41dc3c17b7ebbf3da4fce389c9"
+    },
+    {
+      "id": "K3SCOPE-00064",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/channel-cold-r1/screen-15.png",
+      "bytes": 143611,
+      "sha256": "6892490990b6ee6952dfd56739c38f936ce627a9fe3cd2742c72aed5e0485a44"
+    },
+    {
+      "id": "K3SCOPE-00065",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/channel-cold-r1/screen-16.png",
+      "bytes": 144699,
+      "sha256": "c793aef00b193ae0415ffafb50cd7df6ee3c5a4220c3fdb98efdc8c37c6a9194"
+    },
+    {
+      "id": "K3SCOPE-00066",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/channel-cold-r1/screen-17.png",
+      "bytes": 145706,
+      "sha256": "65ec911acc4e81d38b7ec5f203e95880e320a1095d8594442dfcc431544436a2"
+    },
+    {
+      "id": "K3SCOPE-00067",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/channel-cold-r1/screen-18.png",
+      "bytes": 146082,
+      "sha256": "a19797a7d93e79affbc0b3731550687cacc755be22a6746ed495fe3dfc3c3afd"
+    },
+    {
+      "id": "K3SCOPE-00068",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/channel-cold-r1/screen-19.png",
+      "bytes": 145432,
+      "sha256": "06130c4769ec97b9edfd0de48d279aeee64c25f33b26dc791483ffa9ead34a7e"
+    },
+    {
+      "id": "K3SCOPE-00069",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/channel-cold-r1/screen-20.png",
+      "bytes": 144232,
+      "sha256": "9f3043056e13cccf67e6a83cede1ef46153140126caf8a2c570bdf3c2f8df413"
+    },
+    {
+      "id": "K3SCOPE-00070",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/channel-cold-r1/screen-21.png",
+      "bytes": 143009,
+      "sha256": "7402423cd8f752be783298b22d2fc56a118ed031b86820c0a61ec13f183d5ea6"
+    },
+    {
+      "id": "K3SCOPE-00071",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/channel-cold-r1/service-state.json",
+      "bytes": 31039,
+      "sha256": "4fb0f95454901d3d39dded2cf0b241057ea8d47835178bd7e28a4ba9f3602285"
+    },
+    {
+      "id": "K3SCOPE-00072",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/channel-cold-r1/service.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "K3SCOPE-00073",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/channel-cold-r1/verification.json",
+      "bytes": 2074,
+      "sha256": "8bc0d4efa98a0ce854d0e47398bb0db8c2c61cb7efdcfed120543bb650a3705e"
+    },
+    {
+      "id": "K3SCOPE-00074",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/channel-cold-r1/windows-00.txt",
+      "bytes": 166,
+      "sha256": "28ae29836d791dcd3302b447a52a8f0fa3f9a192abbc33a27751e23d7ebe0d43"
+    },
+    {
+      "id": "K3SCOPE-00075",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/channel-cold-r1/windows-01.txt",
+      "bytes": 872,
+      "sha256": "1096593c4e9a63ac4da8fff1a6642209e33de4dc70f021885f4baea5cce0dbc4"
+    },
+    {
+      "id": "K3SCOPE-00076",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/channel-cold-r1/windows-02.txt",
+      "bytes": 872,
+      "sha256": "1096593c4e9a63ac4da8fff1a6642209e33de4dc70f021885f4baea5cce0dbc4"
+    },
+    {
+      "id": "K3SCOPE-00077",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/channel-cold-r1/windows-03.txt",
+      "bytes": 1311,
+      "sha256": "ae1e42672317584498a7acb9315285f1ade61278c558f6e2b77371ef61cea181"
+    },
+    {
+      "id": "K3SCOPE-00078",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/channel-cold-r1/windows-04.txt",
+      "bytes": 1311,
+      "sha256": "ae1e42672317584498a7acb9315285f1ade61278c558f6e2b77371ef61cea181"
+    },
+    {
+      "id": "K3SCOPE-00079",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/channel-cold-r1/windows-05.txt",
+      "bytes": 1311,
+      "sha256": "ae1e42672317584498a7acb9315285f1ade61278c558f6e2b77371ef61cea181"
+    },
+    {
+      "id": "K3SCOPE-00080",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/channel-cold-r1/windows-06.txt",
+      "bytes": 1311,
+      "sha256": "ae1e42672317584498a7acb9315285f1ade61278c558f6e2b77371ef61cea181"
+    },
+    {
+      "id": "K3SCOPE-00081",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/channel-cold-r1/windows-07.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "K3SCOPE-00082",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/channel-cold-r1/windows-08.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "K3SCOPE-00083",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/channel-cold-r1/windows-09.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "K3SCOPE-00084",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/channel-cold-r1/windows-10.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "K3SCOPE-00085",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/channel-cold-r1/windows-11.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "K3SCOPE-00086",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/channel-cold-r1/windows-12.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "K3SCOPE-00087",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/channel-cold-r1/windows-13.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "K3SCOPE-00088",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/channel-cold-r1/windows-14.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "K3SCOPE-00089",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/channel-cold-r1/windows-15.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "K3SCOPE-00090",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/channel-cold-r1/windows-16.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "K3SCOPE-00091",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/channel-cold-r1/windows-17.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "K3SCOPE-00092",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/channel-cold-r1/windows-18.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "K3SCOPE-00093",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/channel-cold-r1/windows-19.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "K3SCOPE-00094",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/channel-cold-r1/windows-20.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "K3SCOPE-00095",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/channel-cold-r1/windows-21.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "K3SCOPE-00096",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/channel-cold-r1/wineboot.log",
+      "bytes": 64844,
+      "sha256": "01ef2acd6f285f4aef4420caa179c2615f12cbd4080f7852bdd53b9d39ef48c8"
+    },
+    {
+      "id": "K3SCOPE-00097",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/channel-cold-r1/xvfb.log",
+      "bytes": 2808,
+      "sha256": "46b8747df8a2fc8b6a469b2374ea3d0c6c786dc3dcf2a9be13d94ce76ed3a1a7"
+    },
+    {
+      "id": "K3SCOPE-00098",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/channel-cold-r1-recipe.json",
+      "bytes": 1065,
+      "sha256": "121eb3ecf59fe9b5b8c7650b2c60e11b54a4ae67713b97a11693bc37f425d3a5"
+    },
+    {
+      "id": "K3SCOPE-00099",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/channel-cold-r1-runner.log",
+      "bytes": 12648,
+      "sha256": "198e38a7fc461d5124a3d807b2e1bf8aef3fcbb62d57058cdb39ed8c156f38a2"
+    },
+    {
+      "id": "K3SCOPE-00100",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/channel-cold.gdb",
+      "bytes": 391,
+      "sha256": "c151b8cf75c22f61aa9b98b828a3b64a55b76edc8b18913820e3b2279c906904"
+    },
+    {
+      "id": "K3SCOPE-00101",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/channel-row-byte-reuse.json",
+      "bytes": 687,
+      "sha256": "ba83bcd617434c276b2a2aa892f471584c0082551d2c6e0797960a52d5f57c5a"
+    },
+    {
+      "id": "K3SCOPE-00102",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/channel-warm-preparation.json",
+      "bytes": 10309,
+      "sha256": "67922e20e630765c07b24aeae2c79ced6945a85b1202fdbe6baafbb18adfe55f"
+    },
+    {
+      "id": "K3SCOPE-00103",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/channel-warm-r1/A-lobby-ready-channel_list-52.bin",
+      "bytes": 91,
+      "sha256": "853b6df6bf66669ad0b5d1b6532a68aef4aba14d4b8f51af5f0925108b869e00"
+    },
+    {
+      "id": "K3SCOPE-00104",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/channel-warm-r1/A-lobby-ready-ready-46.bin",
+      "bytes": 69,
+      "sha256": "5e72176a25896892c49f5ee971bac080b21adbd039a259d7844d095bfe32de28"
+    },
+    {
+      "id": "K3SCOPE-00105",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/channel-warm-r1/A-lobby-ready-roomlist_A-49.bin",
+      "bytes": 40,
+      "sha256": "66192f9ab8be8c609a0989a16e5403968aa8c6087caa43775920efd3ea78ec2e"
+    },
+    {
+      "id": "K3SCOPE-00106",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/channel-warm-r1/A-lobby17-43.bin",
+      "bytes": 75,
+      "sha256": "5bb5a42cb1ea4fe8967d50ed39649cc886a493c0a13a25ceb2df589a2b9bcd37"
+    },
+    {
+      "id": "K3SCOPE-00107",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/channel-warm-r1/A-own-profile291-55.bin",
+      "bytes": 166,
+      "sha256": "7933d764cd0ba771c86c9f8c3b760f1a4d5cabd0765133d6b8078a52d97167f5"
+    },
+    {
+      "id": "K3SCOPE-00108",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/channel-warm-r1/CALog-before.txt",
+      "bytes": 1692,
+      "sha256": "ce3ee767ffe00f14064953ecfbf5223affecfea58a9fd11dd0a33ee1d0150131"
+    },
+    {
+      "id": "K3SCOPE-00109",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/channel-warm-r1/CALog-run.txt",
+      "bytes": 1653,
+      "sha256": "59e1b1d6d30b65b3f26f6aeb403cdcea4b12af98d52cc032c76fc62b39d898d0"
+    },
+    {
+      "id": "K3SCOPE-00110",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/channel-warm-r1/cache-after-channel2_000.ssd",
+      "bytes": 54,
+      "sha256": "4c7204159c08ee70ffc18fed7f8ffc47099a5f8ab648b6fa05035a6f8939621a"
+    },
+    {
+      "id": "K3SCOPE-00111",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/channel-warm-r1/cache-after-fxdynmapinfo.ssd",
+      "bytes": 76,
+      "sha256": "6a4745c6010378a50ab4bf34827bbe122d7eb270c78051391cd21bd7378b1053"
+    },
+    {
+      "id": "K3SCOPE-00112",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/channel-warm-r1/cache-events.jsonl",
+      "bytes": 11842,
+      "sha256": "12ed6cf2a21dbe832c74571b0bc2ba54b4916f93ab922eaeb676aeaba2e2bb2a"
+    },
+    {
+      "id": "K3SCOPE-00113",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/channel-warm-r1/client.log",
+      "bytes": 124625,
+      "sha256": "5c22e1a56f47870dae6fb8f028cad31cca249dd5fecd58d8f306c12ef7fbda22"
+    },
+    {
+      "id": "K3SCOPE-00114",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/channel-warm-r1/debug-commands.txt",
+      "bytes": 391,
+      "sha256": "fe4924d202a1552a62ba28ff9014a59a10664e2dfd4efe4ca15a5b60c556ce43"
+    },
+    {
+      "id": "K3SCOPE-00115",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/channel-warm-r1/hosts",
+      "bytes": 121,
+      "sha256": "32a007c62d2887ae9f8d3c30d1ff7cb3902e6e1e0c75c5a978ee556cc8ea71f8"
+    },
+    {
+      "id": "K3SCOPE-00116",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/channel-warm-r1/nsswitch.conf",
+      "bytes": 307,
+      "sha256": "c18e474cd61df8648ee02ac7a9c76b8d6c7782d8b212f925e6980f20af5cc838"
+    },
+    {
+      "id": "K3SCOPE-00117",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/channel-warm-r1/processes-00.txt",
+      "bytes": 3741,
+      "sha256": "840ba842c860e90e4d1dd6406549545fea5105ec08f13237abd3692103285648"
+    },
+    {
+      "id": "K3SCOPE-00118",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/channel-warm-r1/processes-01.txt",
+      "bytes": 4524,
+      "sha256": "d9f89269aa2e2582ee00e341ea8e8c3818b2e3d985e5b26868e539739b23b072"
+    },
+    {
+      "id": "K3SCOPE-00119",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/channel-warm-r1/processes-02.txt",
+      "bytes": 4524,
+      "sha256": "95d4c14fadce2d990bbbd7b364246cb1fdc523c9a29deda8aec37a93c9843284"
+    },
+    {
+      "id": "K3SCOPE-00120",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/channel-warm-r1/processes-03.txt",
+      "bytes": 4524,
+      "sha256": "f63a1b12ce36fb3b6089df91ff98f5f6f87572e19f177796ff8494bd519ecf2f"
+    },
+    {
+      "id": "K3SCOPE-00121",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/channel-warm-r1/processes-04.txt",
+      "bytes": 4524,
+      "sha256": "4b01c7f8c224f272d37911760a3e6a825d2a8523319e8049642bc7531ea26052"
+    },
+    {
+      "id": "K3SCOPE-00122",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/channel-warm-r1/processes-05.txt",
+      "bytes": 4524,
+      "sha256": "e5f21cdd1f0ffd300db569a89fa1de60a66d9ea50cc2b579faf6ac6689a8477a"
+    },
+    {
+      "id": "K3SCOPE-00123",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/channel-warm-r1/processes-06.txt",
+      "bytes": 4524,
+      "sha256": "64ce9311b9a6662af0d5779628fe841109d6d828d6c0c06f755e8b8f6ebca2e3"
+    },
+    {
+      "id": "K3SCOPE-00124",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/channel-warm-r1/processes-07.txt",
+      "bytes": 4524,
+      "sha256": "55c49c7a6d30deb9eb2334144f9e2761360c6c3f305569179219ce966413f9d1"
+    },
+    {
+      "id": "K3SCOPE-00125",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/channel-warm-r1/processes-08.txt",
+      "bytes": 4524,
+      "sha256": "634b1c110d27bc3c22a4f0999f3857ffd6d818d91549eec91c42d964376b5193"
+    },
+    {
+      "id": "K3SCOPE-00126",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/channel-warm-r1/processes-09.txt",
+      "bytes": 4524,
+      "sha256": "7bba4241e7d3a51f110e80afcfa24d8dd51a34cc108243cc8d8c70d6b5262da5"
+    },
+    {
+      "id": "K3SCOPE-00127",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/channel-warm-r1/processes-10.txt",
+      "bytes": 4524,
+      "sha256": "86b9af959cf9cf4fb076cb387d7b71b4a428c80bc6c7a16c59556192ac7d11fe"
+    },
+    {
+      "id": "K3SCOPE-00128",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/channel-warm-r1/processes-11.txt",
+      "bytes": 4524,
+      "sha256": "acf2be05fe27a3628b15dbdb09069b013a31a36c9bd58ffe611ca63561e16a13"
+    },
+    {
+      "id": "K3SCOPE-00129",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/channel-warm-r1/processes-12.txt",
+      "bytes": 4524,
+      "sha256": "c12bd14c8c37e8f722fbe3b570e2a842d248242d4d9dd11820894799ad641bd9"
+    },
+    {
+      "id": "K3SCOPE-00130",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/channel-warm-r1/processes-13.txt",
+      "bytes": 4524,
+      "sha256": "8f9c4d9d1d76d3bbaaad595037acb50db7c0bf5d37d521e60c5e9d4f3a37c91b"
+    },
+    {
+      "id": "K3SCOPE-00131",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/channel-warm-r1/processes-14.txt",
+      "bytes": 4524,
+      "sha256": "0c1fa416cd3248c706825a57d341e1975b0cd550348d2a0c6efe9fe0f391f987"
+    },
+    {
+      "id": "K3SCOPE-00132",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/channel-warm-r1/processes-15.txt",
+      "bytes": 4524,
+      "sha256": "31a0d9ab0bccb3fa99f7e603c5587df703c4329733b7fa72941423cab69ba69a"
+    },
+    {
+      "id": "K3SCOPE-00133",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/channel-warm-r1/processes-16.txt",
+      "bytes": 4524,
+      "sha256": "efc00e83ada77101fb15b118c55370b2fc9833cc4c44ea8fe85c34084b1999d4"
+    },
+    {
+      "id": "K3SCOPE-00134",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/channel-warm-r1/processes-17.txt",
+      "bytes": 4524,
+      "sha256": "9e297d2e1a9b87945c2b05579fee00b8703c1343251c428dcf8e1b40b7320010"
+    },
+    {
+      "id": "K3SCOPE-00135",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/channel-warm-r1/processes-18.txt",
+      "bytes": 4524,
+      "sha256": "9f99b007217f30f6e579cefcdda6b24559a0cc957e99f8e0da4b5d620b9c4c72"
+    },
+    {
+      "id": "K3SCOPE-00136",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/channel-warm-r1/processes-19.txt",
+      "bytes": 4524,
+      "sha256": "5db1f0f2f1458baeea1d739dd3f36b09d68c156852ae539bb21c6d5cb28523d0"
+    },
+    {
+      "id": "K3SCOPE-00137",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/channel-warm-r1/processes-20.txt",
+      "bytes": 4524,
+      "sha256": "d264f9434ea0e539f74c12f36a50be7b1521955ee4c682ae17cc9e868e9ef811"
+    },
+    {
+      "id": "K3SCOPE-00138",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/channel-warm-r1/processes-21.txt",
+      "bytes": 4524,
+      "sha256": "40363b8a702430ba3597f5bbd1f8642abef04ee175bc50f3d631f534c1a66aea"
+    },
+    {
+      "id": "K3SCOPE-00139",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/channel-warm-r1/raw-seal.json",
+      "bytes": 18073,
+      "sha256": "28c4dcb7bc69dac98dc2547020927826d4b277954264ad8e7792517824958e24"
+    },
+    {
+      "id": "K3SCOPE-00140",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/channel-warm-r1/run.json",
+      "bytes": 15772,
+      "sha256": "616928cb78060d20cceb8224406656707aee0b3630b1f8e0e4ba7ea89a71f1d9"
+    },
+    {
+      "id": "K3SCOPE-00141",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/channel-warm-r1/screen-00.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "K3SCOPE-00142",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/channel-warm-r1/screen-01.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "K3SCOPE-00143",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/channel-warm-r1/screen-02.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "K3SCOPE-00144",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/channel-warm-r1/screen-03.png",
+      "bytes": 19389,
+      "sha256": "aa1ee2266578690942fb3e19343592c55140ea39794cae7b2de7192580afc538"
+    },
+    {
+      "id": "K3SCOPE-00145",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/channel-warm-r1/screen-04.png",
+      "bytes": 13437,
+      "sha256": "e47c2919c72588bea5f3e5b8ebda4d9823a66e8864f6b86ed6f85d9e19598218"
+    },
+    {
+      "id": "K3SCOPE-00146",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/channel-warm-r1/screen-05.png",
+      "bytes": 191431,
+      "sha256": "35903a0d052b21d3a24bf93dc8a8f6b306cabbb746f12f3287dd1e5c2419a39a"
+    },
+    {
+      "id": "K3SCOPE-00147",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/channel-warm-r1/screen-06.png",
+      "bytes": 194277,
+      "sha256": "eb04d50aa432204c8df8bb45346024b10fc0a1172c0ea711ff569b6e45a4dd7b"
+    },
+    {
+      "id": "K3SCOPE-00148",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/channel-warm-r1/screen-07.png",
+      "bytes": 149551,
+      "sha256": "fc13d88474cd1b8f0f019c679d9f6cc21b82a2ef384a4ea29e3c1a427e95e6d7"
+    },
+    {
+      "id": "K3SCOPE-00149",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/channel-warm-r1/screen-08.png",
+      "bytes": 150831,
+      "sha256": "28ad658ca4e355fd3177e038b3e024ff2ccff5aea07da7d39d9dc0a61156f998"
+    },
+    {
+      "id": "K3SCOPE-00150",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/channel-warm-r1/screen-09.png",
+      "bytes": 145719,
+      "sha256": "9bf08f4144ec5f749d32c84443b5e8bd22f203a02a40838cd75a2c03feda84fa"
+    },
+    {
+      "id": "K3SCOPE-00151",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/channel-warm-r1/screen-10.png",
+      "bytes": 145106,
+      "sha256": "7b9744f15332481f638bc84a2d3ccb170616aa03bfd42d1fc2139ecea72dad71"
+    },
+    {
+      "id": "K3SCOPE-00152",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/channel-warm-r1/screen-11.png",
+      "bytes": 144000,
+      "sha256": "35787e303d339822ecd146346d045ba30b0b355be25ec47b0cfe0e09c9f579ed"
+    },
+    {
+      "id": "K3SCOPE-00153",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/channel-warm-r1/screen-12.png",
+      "bytes": 143020,
+      "sha256": "1736e36a8a59f5b336253633c1c758e7bdfb9530a351d29b9d93b85c13c81b00"
+    },
+    {
+      "id": "K3SCOPE-00154",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/channel-warm-r1/screen-13.png",
+      "bytes": 142997,
+      "sha256": "ae3d3518b06648f8e73a1770b7b4f8b2de150658399972482170d2e65200aab6"
+    },
+    {
+      "id": "K3SCOPE-00155",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/channel-warm-r1/screen-14.png",
+      "bytes": 142988,
+      "sha256": "ac4d2fa366aa88f40627ca647167fec5f73975fdb3f7e5bf138c1c5a15a88f95"
+    },
+    {
+      "id": "K3SCOPE-00156",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/channel-warm-r1/screen-15.png",
+      "bytes": 143690,
+      "sha256": "082d9c3af6a3e4ff632609b4f009496487c749555fcfae3d1e56ce971725570e"
+    },
+    {
+      "id": "K3SCOPE-00157",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/channel-warm-r1/screen-16.png",
+      "bytes": 144678,
+      "sha256": "7d2887ec2b592635e89a8a4b7bd01549a544eec2a247fe6b098f3eecb857e7da"
+    },
+    {
+      "id": "K3SCOPE-00158",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/channel-warm-r1/screen-17.png",
+      "bytes": 145305,
+      "sha256": "79483fed7afcdaecd668b99daa4d6d11ba23137acc7c639dc13a2577062e8c06"
+    },
+    {
+      "id": "K3SCOPE-00159",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/channel-warm-r1/screen-18.png",
+      "bytes": 144975,
+      "sha256": "a1367533050aa6e32bca561815deb137248771b2adc86382087d4069ee8da502"
+    },
+    {
+      "id": "K3SCOPE-00160",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/channel-warm-r1/screen-19.png",
+      "bytes": 144047,
+      "sha256": "4c865161f77bdcc9058c77575e2ae7025f464b4b311eccca040fbcc9421150c4"
+    },
+    {
+      "id": "K3SCOPE-00161",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/channel-warm-r1/screen-20.png",
+      "bytes": 142997,
+      "sha256": "ae3d3518b06648f8e73a1770b7b4f8b2de150658399972482170d2e65200aab6"
+    },
+    {
+      "id": "K3SCOPE-00162",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/channel-warm-r1/screen-21.png",
+      "bytes": 143009,
+      "sha256": "7402423cd8f752be783298b22d2fc56a118ed031b86820c0a61ec13f183d5ea6"
+    },
+    {
+      "id": "K3SCOPE-00163",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/channel-warm-r1/service-state.json",
+      "bytes": 30789,
+      "sha256": "fb8d0e4bfff86d660cd765bbcd923e98b848ef8118ae3f408083b875bb79c250"
+    },
+    {
+      "id": "K3SCOPE-00164",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/channel-warm-r1/service.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "K3SCOPE-00165",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/channel-warm-r1/verification.json",
+      "bytes": 2074,
+      "sha256": "a493caa455b0f901dbd745358c96cf274dd541727c230a9bc9a05e20677e6f64"
+    },
+    {
+      "id": "K3SCOPE-00166",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/channel-warm-r1/windows-00.txt",
+      "bytes": 166,
+      "sha256": "28ae29836d791dcd3302b447a52a8f0fa3f9a192abbc33a27751e23d7ebe0d43"
+    },
+    {
+      "id": "K3SCOPE-00167",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/channel-warm-r1/windows-01.txt",
+      "bytes": 872,
+      "sha256": "c8c8cfe9c5b9bb2ccde16b4b959b165ed33d50824f3fbd29834c16b6f0e63586"
+    },
+    {
+      "id": "K3SCOPE-00168",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/channel-warm-r1/windows-02.txt",
+      "bytes": 872,
+      "sha256": "c8c8cfe9c5b9bb2ccde16b4b959b165ed33d50824f3fbd29834c16b6f0e63586"
+    },
+    {
+      "id": "K3SCOPE-00169",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/channel-warm-r1/windows-03.txt",
+      "bytes": 1311,
+      "sha256": "79f14ed4dc9ec340cb32d82ec0c77a2262196d736b814194ac0ee379704f762b"
+    },
+    {
+      "id": "K3SCOPE-00170",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/channel-warm-r1/windows-04.txt",
+      "bytes": 1311,
+      "sha256": "79f14ed4dc9ec340cb32d82ec0c77a2262196d736b814194ac0ee379704f762b"
+    },
+    {
+      "id": "K3SCOPE-00171",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/channel-warm-r1/windows-05.txt",
+      "bytes": 1311,
+      "sha256": "79f14ed4dc9ec340cb32d82ec0c77a2262196d736b814194ac0ee379704f762b"
+    },
+    {
+      "id": "K3SCOPE-00172",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/channel-warm-r1/windows-06.txt",
+      "bytes": 1311,
+      "sha256": "79f14ed4dc9ec340cb32d82ec0c77a2262196d736b814194ac0ee379704f762b"
+    },
+    {
+      "id": "K3SCOPE-00173",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/channel-warm-r1/windows-07.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "K3SCOPE-00174",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/channel-warm-r1/windows-08.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "K3SCOPE-00175",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/channel-warm-r1/windows-09.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "K3SCOPE-00176",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/channel-warm-r1/windows-10.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "K3SCOPE-00177",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/channel-warm-r1/windows-11.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "K3SCOPE-00178",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/channel-warm-r1/windows-12.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "K3SCOPE-00179",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/channel-warm-r1/windows-13.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "K3SCOPE-00180",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/channel-warm-r1/windows-14.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "K3SCOPE-00181",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/channel-warm-r1/windows-15.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "K3SCOPE-00182",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/channel-warm-r1/windows-16.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "K3SCOPE-00183",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/channel-warm-r1/windows-17.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "K3SCOPE-00184",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/channel-warm-r1/windows-18.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "K3SCOPE-00185",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/channel-warm-r1/windows-19.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "K3SCOPE-00186",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/channel-warm-r1/windows-20.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "K3SCOPE-00187",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/channel-warm-r1/windows-21.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "K3SCOPE-00188",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/channel-warm-r1/wineboot.log",
+      "bytes": 64844,
+      "sha256": "546260a3cf077ee227a2aea7f720b100ab87b7871104b967dc861e841b122df2"
+    },
+    {
+      "id": "K3SCOPE-00189",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/channel-warm-r1/xvfb.log",
+      "bytes": 2808,
+      "sha256": "46b8747df8a2fc8b6a469b2374ea3d0c6c786dc3dcf2a9be13d94ce76ed3a1a7"
+    },
+    {
+      "id": "K3SCOPE-00190",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/channel-warm-r1-recipe.json",
+      "bytes": 1065,
+      "sha256": "bf0bceb99b5142cf44271e0f04e6ddc71b8a9f62e55e2005f7bde13485d39b33"
+    },
+    {
+      "id": "K3SCOPE-00191",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/channel-warm-r1-runner.log",
+      "bytes": 12454,
+      "sha256": "0dfb48bb68689dae639f7dc9978e50c85be6294f392869f3a8afbb37edc67ba6"
+    },
+    {
+      "id": "K3SCOPE-00192",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/channel-warm.gdb",
+      "bytes": 391,
+      "sha256": "fe4924d202a1552a62ba28ff9014a59a10664e2dfd4efe4ca15a5b60c556ce43"
+    },
+    {
+      "id": "K3SCOPE-00193",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/channel14-named.bin",
+      "bytes": 91,
+      "sha256": "853b6df6bf66669ad0b5d1b6532a68aef4aba14d4b8f51af5f0925108b869e00"
+    },
+    {
+      "id": "K3SCOPE-00194",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/channel_cold_probe.py",
+      "bytes": 3252,
+      "sha256": "8e801cce235dd1032d4fd4030dbf11cb383cd098a633e1824351cdd4dcb19ee0"
+    },
+    {
+      "id": "K3SCOPE-00195",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/channel_warm_probe.py",
+      "bytes": 4065,
+      "sha256": "fedadd3fcf57d197688f0e73de7f6febb4dbba89c577bad825f290bc63811e21"
+    },
+    {
+      "id": "K3SCOPE-00196",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/cp186-snapshot/README.md",
+      "bytes": 7537,
+      "sha256": "7fc076ed9af680163b00feaa772aa609b84bc7212e8a524f4a665b4a7f7af61f"
+    },
+    {
+      "id": "K3SCOPE-00197",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/cp186-snapshot/docs/COVERAGE.md",
+      "bytes": 163769,
+      "sha256": "2107e8b21a4dc69f57e0543afce1835d01dd230ac5c3dd5bc476a35427d880eb"
+    },
+    {
+      "id": "K3SCOPE-00198",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/cp186-snapshot/docs/PLAN.md",
+      "bytes": 48121,
+      "sha256": "4ec765c260a0cd5cbad04dbbcab9504e0a279f2b486ff494f0f18ce56e9f9ba7"
+    },
+    {
+      "id": "K3SCOPE-00199",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/cp186-snapshot/docs/PROTOCOL.md",
+      "bytes": 570964,
+      "sha256": "ac57ef6563c5701cdaf44bc02bd48497f26e28c9ddc05692f4f5f855687d9423"
+    },
+    {
+      "id": "K3SCOPE-00200",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/cp186-snapshot/docs/RESEARCH.md",
+      "bytes": 33443,
+      "sha256": "47165f46d445ee362db6bbb6c24b5d2f6ab050c994a31d14f39e18be048e67bd"
+    },
+    {
+      "id": "K3SCOPE-00201",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/cp186-snapshot/docs/evidence/issue-reconciliation/review.json",
+      "bytes": 27820,
+      "sha256": "976f533b54497c109ab10d95a51ff37b850c5c9c5800be63255c57a1cc584ec0"
+    },
+    {
+      "id": "K3SCOPE-00202",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/cp186-snapshot/docs/evidence/lobby-identity/README.md",
+      "bytes": 10079,
+      "sha256": "ff0a1b86412812deb1d8e2ec5a98bab94518505b329980ec296b2c6535f183b5"
+    },
+    {
+      "id": "K3SCOPE-00203",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/cp186-snapshot/docs/evidence/lobby-identity/k3-acceptance.json",
+      "bytes": 4447,
+      "sha256": "3714dff9a404718ddf8afe54ea4c99ddd96ad5e719b2e040be28d563ce329db4"
+    },
+    {
+      "id": "K3SCOPE-00204",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/cp186-snapshot/docs/features.json",
+      "bytes": 172001,
+      "sha256": "d3d60bb23f02c4b84c4956df59005d3fc9acf5a38ee061a867d1a8635bd6347f"
+    },
+    {
+      "id": "K3SCOPE-00205",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/cp186-snapshot/server/README.md",
+      "bytes": 31478,
+      "sha256": "fad807de096f1a766aefe529cc7760f6100483f53bc47f85068c37abd552e8df"
+    },
+    {
+      "id": "K3SCOPE-00206",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/docs-check.txt",
+      "bytes": 175,
+      "sha256": "166d0d47992e3a969f0d4915f66d55e8f7c7aa9cff44f0085cda4e95b941c706"
+    },
+    {
+      "id": "K3SCOPE-00207",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/issue14-before.json",
+      "bytes": 2851,
+      "sha256": "40ee9e154b7f2c1a876c92f0d5f0190cfca5e4895ae28ccbf888f704160b6fa8"
+    },
+    {
+      "id": "K3SCOPE-00208",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/prepare_channel_cold.py",
+      "bytes": 3938,
+      "sha256": "a2f298aa89f353c142d0163b524af9461106c84c45e15ed04e67875652da1ff8"
+    },
+    {
+      "id": "K3SCOPE-00209",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/prepare_channel_warm.py",
+      "bytes": 3403,
+      "sha256": "487c883f40085eb038a88b87b32cceb4244aa1f13993163a620c5ab86e0d2295"
+    },
+    {
+      "id": "K3SCOPE-00210",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/prepare_version_control.py",
+      "bytes": 4163,
+      "sha256": "8a6fa8e01611eb7d8104fd2f3523091ad4dae74253fa4d623ab18d8c4d4522ee"
+    },
+    {
+      "id": "K3SCOPE-00211",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/probe_wire_guards.py",
+      "bytes": 6289,
+      "sha256": "fa4f74089bc1f9aa9c156659e0b7ca1d871ddc744325a1cd426ef8f628ed11ec"
+    },
+    {
+      "id": "K3SCOPE-00212",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/probe_wire_guards_r2.py",
+      "bytes": 6312,
+      "sha256": "1a42ab2b88c40d0386a80f62fe973b096b1fa55d41fd111c91ca4bf82018825d"
+    },
+    {
+      "id": "K3SCOPE-00213",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/probe_wire_guards_r3.py",
+      "bytes": 6328,
+      "sha256": "72f13f015188b852f3d2ed2548d72dbd16506391a323963ebaac30ffcc834248"
+    },
+    {
+      "id": "K3SCOPE-00214",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/profile-channel-named.json",
+      "bytes": 15597,
+      "sha256": "606ba454e65e6e63e79823799a882af95fbf7f288da6daadab46aac024144e5a"
+    },
+    {
+      "id": "K3SCOPE-00215",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/profile-version-966.json",
+      "bytes": 15609,
+      "sha256": "96501c8240814d1f90f7cc13a73215ea2f7e2e1ecd032ce38bfe4b1b5ef5a08a"
+    },
+    {
+      "id": "K3SCOPE-00216",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/profile-version-ffff.json",
+      "bytes": 15610,
+      "sha256": "446cfd916733d4fcd96dc46b543129b3496fcce9b5911b0f5b138b53c05b805c"
+    },
+    {
+      "id": "K3SCOPE-00217",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/seal_channel.py",
+      "bytes": 2411,
+      "sha256": "73e89b007a949e4b2e0e2f1bfe837d614f960d7660cdb1dc4dcb923409de7c92"
+    },
+    {
+      "id": "K3SCOPE-00218",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/seal_mismatch.py",
+      "bytes": 2691,
+      "sha256": "f74660ab27df9269c376025360048357fd61555ff1a4164e0a60e3ceb4f72266"
+    },
+    {
+      "id": "K3SCOPE-00219",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/seal_mismatch_r2.py",
+      "bytes": 2799,
+      "sha256": "949f25960116c9dba3f7fba48953bfbc517eacc186444a076ac572f2afcc2b9a"
+    },
+    {
+      "id": "K3SCOPE-00220",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/seal_mismatch_r3.py",
+      "bytes": 2894,
+      "sha256": "e4d7fbb7f067b58c03b93ce3aa256d51a22e1f7584fa0a7c80c0dff8fd812228"
+    },
+    {
+      "id": "K3SCOPE-00221",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/seal_version.py",
+      "bytes": 2898,
+      "sha256": "69e400eb9ce22463289c8a2b67ede9afe8eaa5e3e343d132ad3ad2795c2b6b25"
+    },
+    {
+      "id": "K3SCOPE-00222",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/server-tests.txt",
+      "bytes": 394,
+      "sha256": "81d544ba2b6277b6eb75a9ed4de496c709ee1a811c37777183b3b53825d92fc6"
+    },
+    {
+      "id": "K3SCOPE-00223",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/source-before/server/own_profile.py",
+      "bytes": 2817,
+      "sha256": "cb7847cf7830ac23a3ff9948cd4c072dc7e6b61d8037435a69585d2a985c1763"
+    },
+    {
+      "id": "K3SCOPE-00224",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/source-before/server/probe_service.py",
+      "bytes": 109319,
+      "sha256": "3b0ca60c72646af34ed02582f13b34e0253bb43d2704d04b2bae1de0373bbb79"
+    },
+    {
+      "id": "K3SCOPE-00225",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/source-before/server/test_own_profile.py",
+      "bytes": 10260,
+      "sha256": "3e247d504561a26caa3432c799470481c06ffbd2c750ee77b1a1397dcb3ebaa2"
+    },
+    {
+      "id": "K3SCOPE-00226",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/source-before.json",
+      "bytes": 805,
+      "sha256": "1eb0a17d5e3bee60913afc96e66a2a45430609ced86057d0b5ac670670d88945"
+    },
+    {
+      "id": "K3SCOPE-00227",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/source-first.json",
+      "bytes": 4338,
+      "sha256": "1532aff938f76d9a374e533c8d0d5e882af1b8536bb41c38a3c86e64d8061266"
+    },
+    {
+      "id": "K3SCOPE-00228",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/sync_docs.py",
+      "bytes": 26448,
+      "sha256": "07a628746eeac6f792a8a7c1c925b2ae18832929e247ca6cd5cb179e239abac3"
+    },
+    {
+      "id": "K3SCOPE-00229",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/verification.json",
+      "bytes": 151849,
+      "sha256": "37560569b86b99eb47d4af081b53abd0ea9b2e8515e113d666d1b7b768767d95"
+    },
+    {
+      "id": "K3SCOPE-00230",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/verify_batch.py",
+      "bytes": 9778,
+      "sha256": "5cf9ce97e7b98ab02f516465df387225825b2330bd5be1a452c9b824ab5f9a93"
+    },
+    {
+      "id": "K3SCOPE-00231",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-invalid-preparation.json",
+      "bytes": 11567,
+      "sha256": "d7b0d2fea0ee7889a9830942ea6ced226d363c73cb31293a789b53bd91bb0489"
+    },
+    {
+      "id": "K3SCOPE-00232",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-invalid-r1/A-lobby-ready-channel_list-52.bin",
+      "bytes": 82,
+      "sha256": "0ed72929c552e5bc5a8e492d2d3ca877e2bbc1ec8d5343c81f4b7844d54fe88b"
+    },
+    {
+      "id": "K3SCOPE-00233",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-invalid-r1/A-lobby-ready-ready-46.bin",
+      "bytes": 69,
+      "sha256": "5e72176a25896892c49f5ee971bac080b21adbd039a259d7844d095bfe32de28"
+    },
+    {
+      "id": "K3SCOPE-00234",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-invalid-r1/A-lobby-ready-roomlist_A-49.bin",
+      "bytes": 40,
+      "sha256": "66192f9ab8be8c609a0989a16e5403968aa8c6087caa43775920efd3ea78ec2e"
+    },
+    {
+      "id": "K3SCOPE-00235",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-invalid-r1/A-lobby17-43.bin",
+      "bytes": 75,
+      "sha256": "5bb5a42cb1ea4fe8967d50ed39649cc886a493c0a13a25ceb2df589a2b9bcd37"
+    },
+    {
+      "id": "K3SCOPE-00236",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-invalid-r1/A-own-profile291-55.bin",
+      "bytes": 166,
+      "sha256": "7933d764cd0ba771c86c9f8c3b760f1a4d5cabd0765133d6b8078a52d97167f5"
+    },
+    {
+      "id": "K3SCOPE-00237",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-invalid-r1/CALog-before.txt",
+      "bytes": 1653,
+      "sha256": "59e1b1d6d30b65b3f26f6aeb403cdcea4b12af98d52cc032c76fc62b39d898d0"
+    },
+    {
+      "id": "K3SCOPE-00238",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-invalid-r1/CALog-run.txt",
+      "bytes": 1292,
+      "sha256": "1e2059e557c1a3b71b87d5ffb30c5c779973862d00737a5c35afac41a3f4fbcb"
+    },
+    {
+      "id": "K3SCOPE-00239",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-invalid-r1/cache-events.jsonl",
+      "bytes": 11252,
+      "sha256": "a677919a57c76e9f89c72641871dcf5f826b95988116de3d28e2c2d3d8041a0e"
+    },
+    {
+      "id": "K3SCOPE-00240",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-invalid-r1/client.log",
+      "bytes": 124559,
+      "sha256": "5c7ea5b38298607e3f0eeca1ed6a116b75b2f442a24c41071adb538e794d0d3e"
+    },
+    {
+      "id": "K3SCOPE-00241",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-invalid-r1/debug-commands.txt",
+      "bytes": 559,
+      "sha256": "567a168c1abbffacbc16ddbe0cdfbf454bc0b36ce67ad761a0dc64dc646672b2"
+    },
+    {
+      "id": "K3SCOPE-00242",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-invalid-r1/hosts",
+      "bytes": 121,
+      "sha256": "32a007c62d2887ae9f8d3c30d1ff7cb3902e6e1e0c75c5a978ee556cc8ea71f8"
+    },
+    {
+      "id": "K3SCOPE-00243",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-invalid-r1/nsswitch.conf",
+      "bytes": 307,
+      "sha256": "c18e474cd61df8648ee02ac7a9c76b8d6c7782d8b212f925e6980f20af5cc838"
+    },
+    {
+      "id": "K3SCOPE-00244",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-invalid-r1/processes-00.txt",
+      "bytes": 3777,
+      "sha256": "e7a40671c17c231dc566619ad591268a673a9a80bd5be18f571061710a908286"
+    },
+    {
+      "id": "K3SCOPE-00245",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-invalid-r1/processes-01.txt",
+      "bytes": 4560,
+      "sha256": "d4c34960ac9046869f45113b26de1df7a19b86c8e7b63c6324ac5d4ce5ea9d25"
+    },
+    {
+      "id": "K3SCOPE-00246",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-invalid-r1/processes-02.txt",
+      "bytes": 4560,
+      "sha256": "59c721296a4053065dda3ed4ab8aeecc1e30cad969cb3edd89b3899b7f1fed2c"
+    },
+    {
+      "id": "K3SCOPE-00247",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-invalid-r1/processes-03.txt",
+      "bytes": 4560,
+      "sha256": "a72295313f1689440b131eb31ec1cb2de543ffae61073aa2453d54657addeed1"
+    },
+    {
+      "id": "K3SCOPE-00248",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-invalid-r1/processes-04.txt",
+      "bytes": 4560,
+      "sha256": "625622cf9b824494eb5ef890f6293962b27033228b4c516646b510f1f68ebdb1"
+    },
+    {
+      "id": "K3SCOPE-00249",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-invalid-r1/processes-05.txt",
+      "bytes": 4560,
+      "sha256": "13f4748e7fdf9f9a5130286c04a8841af41b0235ca7a21b8a27c8e9009ecaf16"
+    },
+    {
+      "id": "K3SCOPE-00250",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-invalid-r1/processes-06.txt",
+      "bytes": 4560,
+      "sha256": "2e95139c227c5d0572cca69ab8c41c26160611eb2f25950f550c671190672dc5"
+    },
+    {
+      "id": "K3SCOPE-00251",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-invalid-r1/processes-07.txt",
+      "bytes": 4560,
+      "sha256": "0f15d40682c36b343a17f582476a76c4a03b36f06196957b70bea1c7fa099b03"
+    },
+    {
+      "id": "K3SCOPE-00252",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-invalid-r1/processes-08.txt",
+      "bytes": 4560,
+      "sha256": "546ea0b95f1a4c2a3448eab88701c74c73e018634419c28fad3fe148630ae6bf"
+    },
+    {
+      "id": "K3SCOPE-00253",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-invalid-r1/processes-09.txt",
+      "bytes": 4560,
+      "sha256": "11156f9342120891cddf45d7a0e2ef23293ce9610a6255ae2624e365a277e403"
+    },
+    {
+      "id": "K3SCOPE-00254",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-invalid-r1/processes-10.txt",
+      "bytes": 4560,
+      "sha256": "2c2e97a8dc0d522b5a660741f635cf112de1bf3e65d6c81c81a11c813fc6b83a"
+    },
+    {
+      "id": "K3SCOPE-00255",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-invalid-r1/processes-11.txt",
+      "bytes": 4560,
+      "sha256": "7d0b512cf1f9cc85b2f9454c76196cb9311917965d942c1c109d226b779d3505"
+    },
+    {
+      "id": "K3SCOPE-00256",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-invalid-r1/processes-12.txt",
+      "bytes": 4560,
+      "sha256": "a77df57114d5a5386497386f746c376c1ba017cdaab05cb1697ecd92ab0d4e20"
+    },
+    {
+      "id": "K3SCOPE-00257",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-invalid-r1/processes-13.txt",
+      "bytes": 4560,
+      "sha256": "2a3d3120a80265106f536d7c9182f5c2617b6c936e3240b67f8c0811bd488a26"
+    },
+    {
+      "id": "K3SCOPE-00258",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-invalid-r1/processes-14.txt",
+      "bytes": 4560,
+      "sha256": "509fa3b9742fce0c08bd56ffd0a1a22c28539141555f87b512923fafff9ad320"
+    },
+    {
+      "id": "K3SCOPE-00259",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-invalid-r1/processes-15.txt",
+      "bytes": 4560,
+      "sha256": "7d743fa2a6d3a06bb371c9c0f6f78c3ba0ecfa9255e9236f0d8722646ffcd062"
+    },
+    {
+      "id": "K3SCOPE-00260",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-invalid-r1/raw-seal.json",
+      "bytes": 14327,
+      "sha256": "6d73d1391edd47b2db161ba4a37a4aefd4810e4a88cef1f87cbcfe10be8560f3"
+    },
+    {
+      "id": "K3SCOPE-00261",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-invalid-r1/run.json",
+      "bytes": 13698,
+      "sha256": "a107e771c84a661989049ff883fb9f7f15c7112c6e44a755aaff1c1e3e334b11"
+    },
+    {
+      "id": "K3SCOPE-00262",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-invalid-r1/screen-00.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "K3SCOPE-00263",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-invalid-r1/screen-01.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "K3SCOPE-00264",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-invalid-r1/screen-02.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "K3SCOPE-00265",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-invalid-r1/screen-03.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "K3SCOPE-00266",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-invalid-r1/screen-04.png",
+      "bytes": 13437,
+      "sha256": "e47c2919c72588bea5f3e5b8ebda4d9823a66e8864f6b86ed6f85d9e19598218"
+    },
+    {
+      "id": "K3SCOPE-00267",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-invalid-r1/screen-05.png",
+      "bytes": 189257,
+      "sha256": "1fd910904b0b8d8e04aeccfcd6eeedfa3badeee0ee0921534f628aa3fe70d8b9"
+    },
+    {
+      "id": "K3SCOPE-00268",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-invalid-r1/screen-06.png",
+      "bytes": 193523,
+      "sha256": "4994c6ecc02b4fc22a65013c16c0653c228219fc5b45ffb533712d8b07acfb32"
+    },
+    {
+      "id": "K3SCOPE-00269",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-invalid-r1/screen-07.png",
+      "bytes": 147943,
+      "sha256": "1ca04b47acdb6087a11f4095d5b8dbc6e054b9ce371824bd5950509c7c88fb98"
+    },
+    {
+      "id": "K3SCOPE-00270",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-invalid-r1/screen-08.png",
+      "bytes": 150567,
+      "sha256": "8c638a5d841abe35d01c1879496d41ba7a78af5817f8127f3da1ad8f67c431b6"
+    },
+    {
+      "id": "K3SCOPE-00271",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-invalid-r1/screen-09.png",
+      "bytes": 145752,
+      "sha256": "e53a477a69bfcc6d2f0f2e5677cee637e81e93eb14640db1543e1bef704cdbd1"
+    },
+    {
+      "id": "K3SCOPE-00272",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-invalid-r1/screen-10.png",
+      "bytes": 145174,
+      "sha256": "19f64652939641ef3b20e0581608633619b8ddf1eb65c8d9a6b4606f097c44bc"
+    },
+    {
+      "id": "K3SCOPE-00273",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-invalid-r1/screen-11.png",
+      "bytes": 143905,
+      "sha256": "de1acc021885061692149b3c3f5300b41e28750ec04533c151ba4d2b5a84b618"
+    },
+    {
+      "id": "K3SCOPE-00274",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-invalid-r1/screen-12.png",
+      "bytes": 142988,
+      "sha256": "ac4d2fa366aa88f40627ca647167fec5f73975fdb3f7e5bf138c1c5a15a88f95"
+    },
+    {
+      "id": "K3SCOPE-00275",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-invalid-r1/screen-13.png",
+      "bytes": 143009,
+      "sha256": "7402423cd8f752be783298b22d2fc56a118ed031b86820c0a61ec13f183d5ea6"
+    },
+    {
+      "id": "K3SCOPE-00276",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-invalid-r1/screen-14.png",
+      "bytes": 142985,
+      "sha256": "4e6e649e5bfc82ecc68b53b8db014ef4a6626faeb1b433f03628c42503f6b5d2"
+    },
+    {
+      "id": "K3SCOPE-00277",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-invalid-r1/screen-15.png",
+      "bytes": 142999,
+      "sha256": "e56ff16f414c9808721fc3cc136fa93ae88a6f41dc3c17b7ebbf3da4fce389c9"
+    },
+    {
+      "id": "K3SCOPE-00278",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-invalid-r1/service-state.json",
+      "bytes": 29131,
+      "sha256": "cc2dac99c12621d1c55a20aa7db4bb465a304c700bdb98639b460056463194d0"
+    },
+    {
+      "id": "K3SCOPE-00279",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-invalid-r1/service.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "K3SCOPE-00280",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-invalid-r1/verification.json",
+      "bytes": 1058,
+      "sha256": "d3c6daa0615c7b0ab1e3c0b670dcb843ce0cd06c5a56f68cf92620945567ab1c"
+    },
+    {
+      "id": "K3SCOPE-00281",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-invalid-r1/version-events.jsonl",
+      "bytes": 515,
+      "sha256": "8ac3d2476a4a5de2abc3759188bdbf45e0c2ba756c5153ea96b03bc42a4f03a1"
+    },
+    {
+      "id": "K3SCOPE-00282",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-invalid-r1/windows-00.txt",
+      "bytes": 166,
+      "sha256": "28ae29836d791dcd3302b447a52a8f0fa3f9a192abbc33a27751e23d7ebe0d43"
+    },
+    {
+      "id": "K3SCOPE-00283",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-invalid-r1/windows-01.txt",
+      "bytes": 872,
+      "sha256": "1096593c4e9a63ac4da8fff1a6642209e33de4dc70f021885f4baea5cce0dbc4"
+    },
+    {
+      "id": "K3SCOPE-00284",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-invalid-r1/windows-02.txt",
+      "bytes": 872,
+      "sha256": "1096593c4e9a63ac4da8fff1a6642209e33de4dc70f021885f4baea5cce0dbc4"
+    },
+    {
+      "id": "K3SCOPE-00285",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-invalid-r1/windows-03.txt",
+      "bytes": 1305,
+      "sha256": "3a9abbddf140befc14f7fbfb5a6c5151e9983094e5c5b128ba90a5acd7adc7b7"
+    },
+    {
+      "id": "K3SCOPE-00286",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-invalid-r1/windows-04.txt",
+      "bytes": 1311,
+      "sha256": "ae1e42672317584498a7acb9315285f1ade61278c558f6e2b77371ef61cea181"
+    },
+    {
+      "id": "K3SCOPE-00287",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-invalid-r1/windows-05.txt",
+      "bytes": 1311,
+      "sha256": "ae1e42672317584498a7acb9315285f1ade61278c558f6e2b77371ef61cea181"
+    },
+    {
+      "id": "K3SCOPE-00288",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-invalid-r1/windows-06.txt",
+      "bytes": 1311,
+      "sha256": "ae1e42672317584498a7acb9315285f1ade61278c558f6e2b77371ef61cea181"
+    },
+    {
+      "id": "K3SCOPE-00289",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-invalid-r1/windows-07.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "K3SCOPE-00290",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-invalid-r1/windows-08.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "K3SCOPE-00291",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-invalid-r1/windows-09.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "K3SCOPE-00292",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-invalid-r1/windows-10.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "K3SCOPE-00293",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-invalid-r1/windows-11.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "K3SCOPE-00294",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-invalid-r1/windows-12.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "K3SCOPE-00295",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-invalid-r1/windows-13.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "K3SCOPE-00296",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-invalid-r1/windows-14.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "K3SCOPE-00297",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-invalid-r1/windows-15.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "K3SCOPE-00298",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-invalid-r1/wineboot.log",
+      "bytes": 64844,
+      "sha256": "b235eca95b0e5d6f44773ccb9bcf7500c305e5dc2487338275e7416a761515cd"
+    },
+    {
+      "id": "K3SCOPE-00299",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-invalid-r1/xvfb.log",
+      "bytes": 2808,
+      "sha256": "46b8747df8a2fc8b6a469b2374ea3d0c6c786dc3dcf2a9be13d94ce76ed3a1a7"
+    },
+    {
+      "id": "K3SCOPE-00300",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-invalid-r1-recipe.json",
+      "bytes": 1067,
+      "sha256": "d5f3a620bf04819aab460c3c1283a68ae38df51329845b5527faf4708294de65"
+    },
+    {
+      "id": "K3SCOPE-00301",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-invalid-r1-runner.log",
+      "bytes": 10778,
+      "sha256": "64f3e4811c03dd7e42f1a5696a9a176a62bcea32c83aee2bf08ed2f281f2d9b0"
+    },
+    {
+      "id": "K3SCOPE-00302",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-invalid-r2/CALog-before.txt",
+      "bytes": 1292,
+      "sha256": "1e2059e557c1a3b71b87d5ffb30c5c779973862d00737a5c35afac41a3f4fbcb"
+    },
+    {
+      "id": "K3SCOPE-00303",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-invalid-r2/CALog-run.txt",
+      "bytes": 46,
+      "sha256": "1dd23e4b03452ed015c1477017fbed7718c0836710f693e445ebf2eb18015a12"
+    },
+    {
+      "id": "K3SCOPE-00304",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-invalid-r2/cache-events.jsonl",
+      "bytes": 377,
+      "sha256": "d00e9ce6321ea787f3143bbd28f6f9073ef52b55ab6b4d23dfa2226df44f75e7"
+    },
+    {
+      "id": "K3SCOPE-00305",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-invalid-r2/client.log",
+      "bytes": 193547,
+      "sha256": "296e0d88f6664136e5f1b5f23cc8dbed42c0bb578131d55df9ca7d4235eb9300"
+    },
+    {
+      "id": "K3SCOPE-00306",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-invalid-r2/debug-commands.txt",
+      "bytes": 565,
+      "sha256": "d5d2d6bfde647a3ef59da7a6cfe26013d3f7e816dab5f07bbe8a5320e849ebbc"
+    },
+    {
+      "id": "K3SCOPE-00307",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-invalid-r2/hosts",
+      "bytes": 121,
+      "sha256": "32a007c62d2887ae9f8d3c30d1ff7cb3902e6e1e0c75c5a978ee556cc8ea71f8"
+    },
+    {
+      "id": "K3SCOPE-00308",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-invalid-r2/nsswitch.conf",
+      "bytes": 307,
+      "sha256": "c18e474cd61df8648ee02ac7a9c76b8d6c7782d8b212f925e6980f20af5cc838"
+    },
+    {
+      "id": "K3SCOPE-00309",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-invalid-r2/processes-00.txt",
+      "bytes": 3778,
+      "sha256": "911c7e74dd37a3c1b88dd4c02f28408547cf8a12130aa819a7abdb4657f566fd"
+    },
+    {
+      "id": "K3SCOPE-00310",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-invalid-r2/processes-01.txt",
+      "bytes": 4561,
+      "sha256": "61ca2f8fbb662fcd05f1565422fa60f31f0cdeb2d15ca3a76e4d762f3d6366bf"
+    },
+    {
+      "id": "K3SCOPE-00311",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-invalid-r2/processes-02.txt",
+      "bytes": 4561,
+      "sha256": "3cfdd55979e1c8cc9a2a04ccf1533154290daf2a2cced19fb4e33802afeae683"
+    },
+    {
+      "id": "K3SCOPE-00312",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-invalid-r2/processes-03.txt",
+      "bytes": 4561,
+      "sha256": "e1da2f44f74f505c6860d17c4d0d049e1d56e61fcf88606f5e69cffb2c8495a1"
+    },
+    {
+      "id": "K3SCOPE-00313",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-invalid-r2/processes-04.txt",
+      "bytes": 4561,
+      "sha256": "605b8e54f6984c82c9b522d8f07755ac0fd22c2e98ffc95356940fb6b8109e60"
+    },
+    {
+      "id": "K3SCOPE-00314",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-invalid-r2/processes-05.txt",
+      "bytes": 4561,
+      "sha256": "3ffdc49caad5336352bd6111d02ec3492d9103cd2813859923c4b8c0b94adbd8"
+    },
+    {
+      "id": "K3SCOPE-00315",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-invalid-r2/processes-06.txt",
+      "bytes": 4561,
+      "sha256": "a45fd7884f33e168619a75fa9045fdc936d2fcbaa1adcc5481174375c5e713d9"
+    },
+    {
+      "id": "K3SCOPE-00316",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-invalid-r2/processes-07.txt",
+      "bytes": 4561,
+      "sha256": "f53c3f8592685ad0bdee859cb360f1901de109efe08cfa74cfb940e2f1d390ba"
+    },
+    {
+      "id": "K3SCOPE-00317",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-invalid-r2/processes-08.txt",
+      "bytes": 4561,
+      "sha256": "7e577ddde5c2cd2c63957b3c32df411026451971a9fd57d5c841a44b450bcafb"
+    },
+    {
+      "id": "K3SCOPE-00318",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-invalid-r2/processes-09.txt",
+      "bytes": 4561,
+      "sha256": "95f4189be3285e3785be245064ff715f23cf77979a86623d47f49407d3bb6be5"
+    },
+    {
+      "id": "K3SCOPE-00319",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-invalid-r2/processes-10.txt",
+      "bytes": 4561,
+      "sha256": "7d23cdc7ad695c6d746e2e17ef8619832c2810eed1cf71369bf6fa35d7956b6a"
+    },
+    {
+      "id": "K3SCOPE-00320",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-invalid-r2/processes-11.txt",
+      "bytes": 4561,
+      "sha256": "a35c9d4626bf47512fb1aab7e9fffa42d322c1e2efbd3bb952184eef37cbd9ae"
+    },
+    {
+      "id": "K3SCOPE-00321",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-invalid-r2/processes-12.txt",
+      "bytes": 4561,
+      "sha256": "91f5d240b4fa7dfa5f68b1dd305497e8fcf36464a009d2db76d3cd44800074c9"
+    },
+    {
+      "id": "K3SCOPE-00322",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-invalid-r2/processes-13.txt",
+      "bytes": 4561,
+      "sha256": "d9dfbdc917b27bcf45ae1d70fa29571a5b95e5b1548fe60340fa4ab9b5bd14c6"
+    },
+    {
+      "id": "K3SCOPE-00323",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-invalid-r2/processes-14.txt",
+      "bytes": 4561,
+      "sha256": "274e4ec9bb8ba16402e85815df70643591b8fbd82e0a5f24d358727251aa5947"
+    },
+    {
+      "id": "K3SCOPE-00324",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-invalid-r2/processes-15.txt",
+      "bytes": 4561,
+      "sha256": "1547c8723c46d307920e1f7ef489cbea6aae48c1e1d5482ff1019f3dbb30e638"
+    },
+    {
+      "id": "K3SCOPE-00325",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-invalid-r2/raw-seal.json",
+      "bytes": 13198,
+      "sha256": "f0024743b847218e9206fce43d6a5c1ba7e0039ee32a4146c61f903f3cfb8c63"
+    },
+    {
+      "id": "K3SCOPE-00326",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-invalid-r2/run.json",
+      "bytes": 5871,
+      "sha256": "a165ce4fcc2b2486f8910739dce0ee72f046338b1c479b640803cc69cdc6b060"
+    },
+    {
+      "id": "K3SCOPE-00327",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-invalid-r2/screen-00.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "K3SCOPE-00328",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-invalid-r2/screen-01.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "K3SCOPE-00329",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-invalid-r2/screen-02.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "K3SCOPE-00330",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-invalid-r2/screen-03.png",
+      "bytes": 1359,
+      "sha256": "d57282915d7ebd1608afd6174ea3edc1cfe3337a46de1aea6021ea68155bfa88"
+    },
+    {
+      "id": "K3SCOPE-00331",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-invalid-r2/screen-04.png",
+      "bytes": 1359,
+      "sha256": "d57282915d7ebd1608afd6174ea3edc1cfe3337a46de1aea6021ea68155bfa88"
+    },
+    {
+      "id": "K3SCOPE-00332",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-invalid-r2/screen-05.png",
+      "bytes": 1359,
+      "sha256": "d57282915d7ebd1608afd6174ea3edc1cfe3337a46de1aea6021ea68155bfa88"
+    },
+    {
+      "id": "K3SCOPE-00333",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-invalid-r2/screen-06.png",
+      "bytes": 1359,
+      "sha256": "d57282915d7ebd1608afd6174ea3edc1cfe3337a46de1aea6021ea68155bfa88"
+    },
+    {
+      "id": "K3SCOPE-00334",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-invalid-r2/screen-07.png",
+      "bytes": 1359,
+      "sha256": "d57282915d7ebd1608afd6174ea3edc1cfe3337a46de1aea6021ea68155bfa88"
+    },
+    {
+      "id": "K3SCOPE-00335",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-invalid-r2/screen-08.png",
+      "bytes": 1359,
+      "sha256": "d57282915d7ebd1608afd6174ea3edc1cfe3337a46de1aea6021ea68155bfa88"
+    },
+    {
+      "id": "K3SCOPE-00336",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-invalid-r2/screen-09.png",
+      "bytes": 1359,
+      "sha256": "d57282915d7ebd1608afd6174ea3edc1cfe3337a46de1aea6021ea68155bfa88"
+    },
+    {
+      "id": "K3SCOPE-00337",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-invalid-r2/screen-10.png",
+      "bytes": 1359,
+      "sha256": "d57282915d7ebd1608afd6174ea3edc1cfe3337a46de1aea6021ea68155bfa88"
+    },
+    {
+      "id": "K3SCOPE-00338",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-invalid-r2/screen-11.png",
+      "bytes": 1359,
+      "sha256": "d57282915d7ebd1608afd6174ea3edc1cfe3337a46de1aea6021ea68155bfa88"
+    },
+    {
+      "id": "K3SCOPE-00339",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-invalid-r2/screen-12.png",
+      "bytes": 1359,
+      "sha256": "d57282915d7ebd1608afd6174ea3edc1cfe3337a46de1aea6021ea68155bfa88"
+    },
+    {
+      "id": "K3SCOPE-00340",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-invalid-r2/screen-13.png",
+      "bytes": 1359,
+      "sha256": "d57282915d7ebd1608afd6174ea3edc1cfe3337a46de1aea6021ea68155bfa88"
+    },
+    {
+      "id": "K3SCOPE-00341",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-invalid-r2/screen-14.png",
+      "bytes": 1359,
+      "sha256": "d57282915d7ebd1608afd6174ea3edc1cfe3337a46de1aea6021ea68155bfa88"
+    },
+    {
+      "id": "K3SCOPE-00342",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-invalid-r2/screen-15.png",
+      "bytes": 1359,
+      "sha256": "d57282915d7ebd1608afd6174ea3edc1cfe3337a46de1aea6021ea68155bfa88"
+    },
+    {
+      "id": "K3SCOPE-00343",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-invalid-r2/service-state.json",
+      "bytes": 21317,
+      "sha256": "630baea462f2394cd6f2209c86cac4b84f057abbe37fbfd749d8f660324ff753"
+    },
+    {
+      "id": "K3SCOPE-00344",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-invalid-r2/service.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "K3SCOPE-00345",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-invalid-r2/verification.json",
+      "bytes": 891,
+      "sha256": "df44ec9072fc75c0bc34ce3b89431ccce337e0ece772770da8acc67a93620e18"
+    },
+    {
+      "id": "K3SCOPE-00346",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-invalid-r2/version-events.jsonl",
+      "bytes": 417,
+      "sha256": "1ecac66040e0733d513803ae55741ce4f0dab85976fb486247f964d5b7e83c3d"
+    },
+    {
+      "id": "K3SCOPE-00347",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-invalid-r2/windows-00.txt",
+      "bytes": 166,
+      "sha256": "28ae29836d791dcd3302b447a52a8f0fa3f9a192abbc33a27751e23d7ebe0d43"
+    },
+    {
+      "id": "K3SCOPE-00348",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-invalid-r2/windows-01.txt",
+      "bytes": 872,
+      "sha256": "c8c8cfe9c5b9bb2ccde16b4b959b165ed33d50824f3fbd29834c16b6f0e63586"
+    },
+    {
+      "id": "K3SCOPE-00349",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-invalid-r2/windows-02.txt",
+      "bytes": 872,
+      "sha256": "c8c8cfe9c5b9bb2ccde16b4b959b165ed33d50824f3fbd29834c16b6f0e63586"
+    },
+    {
+      "id": "K3SCOPE-00350",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-invalid-r2/windows-03.txt",
+      "bytes": 1190,
+      "sha256": "6ee2f43a6c7709329b13c57e981f876788c5c273062153211d653f18151bc97f"
+    },
+    {
+      "id": "K3SCOPE-00351",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-invalid-r2/windows-04.txt",
+      "bytes": 1190,
+      "sha256": "6ee2f43a6c7709329b13c57e981f876788c5c273062153211d653f18151bc97f"
+    },
+    {
+      "id": "K3SCOPE-00352",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-invalid-r2/windows-05.txt",
+      "bytes": 1190,
+      "sha256": "6ee2f43a6c7709329b13c57e981f876788c5c273062153211d653f18151bc97f"
+    },
+    {
+      "id": "K3SCOPE-00353",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-invalid-r2/windows-06.txt",
+      "bytes": 1190,
+      "sha256": "6ee2f43a6c7709329b13c57e981f876788c5c273062153211d653f18151bc97f"
+    },
+    {
+      "id": "K3SCOPE-00354",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-invalid-r2/windows-07.txt",
+      "bytes": 1190,
+      "sha256": "6ee2f43a6c7709329b13c57e981f876788c5c273062153211d653f18151bc97f"
+    },
+    {
+      "id": "K3SCOPE-00355",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-invalid-r2/windows-08.txt",
+      "bytes": 1190,
+      "sha256": "6ee2f43a6c7709329b13c57e981f876788c5c273062153211d653f18151bc97f"
+    },
+    {
+      "id": "K3SCOPE-00356",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-invalid-r2/windows-09.txt",
+      "bytes": 1190,
+      "sha256": "6ee2f43a6c7709329b13c57e981f876788c5c273062153211d653f18151bc97f"
+    },
+    {
+      "id": "K3SCOPE-00357",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-invalid-r2/windows-10.txt",
+      "bytes": 1190,
+      "sha256": "6ee2f43a6c7709329b13c57e981f876788c5c273062153211d653f18151bc97f"
+    },
+    {
+      "id": "K3SCOPE-00358",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-invalid-r2/windows-11.txt",
+      "bytes": 1190,
+      "sha256": "6ee2f43a6c7709329b13c57e981f876788c5c273062153211d653f18151bc97f"
+    },
+    {
+      "id": "K3SCOPE-00359",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-invalid-r2/windows-12.txt",
+      "bytes": 1190,
+      "sha256": "6ee2f43a6c7709329b13c57e981f876788c5c273062153211d653f18151bc97f"
+    },
+    {
+      "id": "K3SCOPE-00360",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-invalid-r2/windows-13.txt",
+      "bytes": 1190,
+      "sha256": "6ee2f43a6c7709329b13c57e981f876788c5c273062153211d653f18151bc97f"
+    },
+    {
+      "id": "K3SCOPE-00361",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-invalid-r2/windows-14.txt",
+      "bytes": 1190,
+      "sha256": "6ee2f43a6c7709329b13c57e981f876788c5c273062153211d653f18151bc97f"
+    },
+    {
+      "id": "K3SCOPE-00362",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-invalid-r2/windows-15.txt",
+      "bytes": 1190,
+      "sha256": "6ee2f43a6c7709329b13c57e981f876788c5c273062153211d653f18151bc97f"
+    },
+    {
+      "id": "K3SCOPE-00363",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-invalid-r2/wineboot.log",
+      "bytes": 64844,
+      "sha256": "efd616f2fc468875ecff47168822f22f461d050d09f4927dd0ecc509a946a195"
+    },
+    {
+      "id": "K3SCOPE-00364",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-invalid-r2/xvfb.log",
+      "bytes": 2808,
+      "sha256": "46b8747df8a2fc8b6a469b2374ea3d0c6c786dc3dcf2a9be13d94ce76ed3a1a7"
+    },
+    {
+      "id": "K3SCOPE-00365",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-invalid-r2-preparation.json",
+      "bytes": 10465,
+      "sha256": "abfd8918740be93e8accedfc6a26e6ec48d7bebd13dc34eea526973a17da0f68"
+    },
+    {
+      "id": "K3SCOPE-00366",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-invalid-r2-recipe.json",
+      "bytes": 1100,
+      "sha256": "37e1826bfa591f3101fc182a9cc0a85c9073b475ea51ea5884c07d87ecdcfc7e"
+    },
+    {
+      "id": "K3SCOPE-00367",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-invalid-r2-runner.log",
+      "bytes": 4805,
+      "sha256": "7c8e155742ad641fc66b9aab642e1af7802ae28ee7ecda0a8b65adbffc789288"
+    },
+    {
+      "id": "K3SCOPE-00368",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-invalid-r2.gdb",
+      "bytes": 565,
+      "sha256": "d5d2d6bfde647a3ef59da7a6cfe26013d3f7e816dab5f07bbe8a5320e849ebbc"
+    },
+    {
+      "id": "K3SCOPE-00369",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-invalid.gdb",
+      "bytes": 559,
+      "sha256": "567a168c1abbffacbc16ddbe0cdfbf454bc0b36ce67ad761a0dc64dc646672b2"
+    },
+    {
+      "id": "K3SCOPE-00370",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-mismatch-preparation.json",
+      "bytes": 10706,
+      "sha256": "36adebc3eeaafec95e33ce9120b26ceeaa0a9ff0bafe716c10eb164f03cbfc47"
+    },
+    {
+      "id": "K3SCOPE-00371",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-mismatch-r1/CALog-before.txt",
+      "bytes": 1653,
+      "sha256": "59e1b1d6d30b65b3f26f6aeb403cdcea4b12af98d52cc032c76fc62b39d898d0"
+    },
+    {
+      "id": "K3SCOPE-00372",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-mismatch-r1/CALog-run.txt",
+      "bytes": 165,
+      "sha256": "89fc29a10a87ae7204e6ef761856f68cf89f00efc3639ee301c08c8485d3bc01"
+    },
+    {
+      "id": "K3SCOPE-00373",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-mismatch-r1/cache-events.jsonl",
+      "bytes": 377,
+      "sha256": "ffbc11eb70a1344f6716fad881d68260bfde5f9ff9345f380601b42cb866a351"
+    },
+    {
+      "id": "K3SCOPE-00374",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-mismatch-r1/client.log",
+      "bytes": 193894,
+      "sha256": "f8c1f525c40b6e3034002a2d8bc9bb5ee8c5e67f7e8c40f20476d127cebe0bf2"
+    },
+    {
+      "id": "K3SCOPE-00375",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-mismatch-r1/debug-commands.txt",
+      "bytes": 577,
+      "sha256": "6c821a101390007a7856c286d683e27ed7e88aa232352b811ef0d6cf36ca4f16"
+    },
+    {
+      "id": "K3SCOPE-00376",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-mismatch-r1/hosts",
+      "bytes": 121,
+      "sha256": "32a007c62d2887ae9f8d3c30d1ff7cb3902e6e1e0c75c5a978ee556cc8ea71f8"
+    },
+    {
+      "id": "K3SCOPE-00377",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-mismatch-r1/nsswitch.conf",
+      "bytes": 307,
+      "sha256": "c18e474cd61df8648ee02ac7a9c76b8d6c7782d8b212f925e6980f20af5cc838"
+    },
+    {
+      "id": "K3SCOPE-00378",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-mismatch-r1/processes-00.txt",
+      "bytes": 3816,
+      "sha256": "660ba7398aae3fee075a88ccb0aee5f1dd27b38030cd30f145cdc5ff81db7a8e"
+    },
+    {
+      "id": "K3SCOPE-00379",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-mismatch-r1/processes-01.txt",
+      "bytes": 4562,
+      "sha256": "9e0da7d5219ffcc4c17cbe292adc4b69f34f1e98403e10f44dbc5b293669fab0"
+    },
+    {
+      "id": "K3SCOPE-00380",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-mismatch-r1/processes-02.txt",
+      "bytes": 4562,
+      "sha256": "b2f13bb2b3641f8ad661d3993bfbd9fb38c5aa0186cba96218e5166eb2eb683a"
+    },
+    {
+      "id": "K3SCOPE-00381",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-mismatch-r1/processes-03.txt",
+      "bytes": 4562,
+      "sha256": "4ea490fe5fdce33db9b1081a0aaab059a9a208eef4a013e38dea095e3942fe09"
+    },
+    {
+      "id": "K3SCOPE-00382",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-mismatch-r1/processes-04.txt",
+      "bytes": 4562,
+      "sha256": "dd6c33f3b234bcc616cda4af4305a6b6abd9b9b2e60ca374a0119b7d56dab99f"
+    },
+    {
+      "id": "K3SCOPE-00383",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-mismatch-r1/processes-05.txt",
+      "bytes": 4562,
+      "sha256": "3e1309f6611ef74ef6c6403397f86c52f31cf3451a57a4b8cd6b52c3681f087f"
+    },
+    {
+      "id": "K3SCOPE-00384",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-mismatch-r1/processes-06.txt",
+      "bytes": 4562,
+      "sha256": "b239b3603ddae1c8c67bf236fbe1264cc44f88d7ad53832cfb9ffd8af57bbdbd"
+    },
+    {
+      "id": "K3SCOPE-00385",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-mismatch-r1/processes-07.txt",
+      "bytes": 4562,
+      "sha256": "53ae9d0720c8e7ef3470ad9b09dd48cdf83d45d47f77bbda06b7c0691b3c9b1e"
+    },
+    {
+      "id": "K3SCOPE-00386",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-mismatch-r1/processes-08.txt",
+      "bytes": 4562,
+      "sha256": "004cbac0bd0880b1ea0ca72f63fc3d208017a7fc9d2b26a30707462757ced628"
+    },
+    {
+      "id": "K3SCOPE-00387",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-mismatch-r1/processes-09.txt",
+      "bytes": 4562,
+      "sha256": "6e7b07c71ec0180a46f9a3c327f70595e743a0bf19c2df46ee50199237ecd364"
+    },
+    {
+      "id": "K3SCOPE-00388",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-mismatch-r1/processes-10.txt",
+      "bytes": 4562,
+      "sha256": "e058aea0510c6b27dc4251c1bae3ded4001d4f4a68dd534db548cb2ec7f588ae"
+    },
+    {
+      "id": "K3SCOPE-00389",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-mismatch-r1/processes-11.txt",
+      "bytes": 4562,
+      "sha256": "82d60bed125bdfed47027e9f3ac8ec48edfe1bf655d0635aa82d4452d3390bb0"
+    },
+    {
+      "id": "K3SCOPE-00390",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-mismatch-r1/processes-12.txt",
+      "bytes": 4562,
+      "sha256": "ca12379e12a528f1108f7b1b25241190d59d53fbe3c290fec06f50e688da5e16"
+    },
+    {
+      "id": "K3SCOPE-00391",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-mismatch-r1/processes-13.txt",
+      "bytes": 4562,
+      "sha256": "e43c5d978f35b1d0617e8c0d31f345b360705986ae9dbc98fcdb5d44634e495a"
+    },
+    {
+      "id": "K3SCOPE-00392",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-mismatch-r1/processes-14.txt",
+      "bytes": 4562,
+      "sha256": "636d99cf6af35d6145aec97c84611c694f47108eef71e6c8a9ecb10e5bd579d8"
+    },
+    {
+      "id": "K3SCOPE-00393",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-mismatch-r1/processes-15.txt",
+      "bytes": 4562,
+      "sha256": "51c5ee9d6dbbd2a1950d58c183fae3eb8c78221be134f29987136e4375ae7ded"
+    },
+    {
+      "id": "K3SCOPE-00394",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-mismatch-r1/raw-seal.json",
+      "bytes": 13214,
+      "sha256": "623c3271278e1c9cf62546c9f68d7326eb62df547036507c756be200494d7619"
+    },
+    {
+      "id": "K3SCOPE-00395",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-mismatch-r1/run.json",
+      "bytes": 5869,
+      "sha256": "e448d1f117551bd76ad8186308aa65199f5697dbfd98f93f5700f05442057284"
+    },
+    {
+      "id": "K3SCOPE-00396",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-mismatch-r1/screen-00.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "K3SCOPE-00397",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-mismatch-r1/screen-01.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "K3SCOPE-00398",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-mismatch-r1/screen-02.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "K3SCOPE-00399",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-mismatch-r1/screen-03.png",
+      "bytes": 1545,
+      "sha256": "ee8552f9bee96e516a26a4513d829bd018fb8035984ac799c3741cc133fe6ed5"
+    },
+    {
+      "id": "K3SCOPE-00400",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-mismatch-r1/screen-04.png",
+      "bytes": 1545,
+      "sha256": "ee8552f9bee96e516a26a4513d829bd018fb8035984ac799c3741cc133fe6ed5"
+    },
+    {
+      "id": "K3SCOPE-00401",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-mismatch-r1/screen-05.png",
+      "bytes": 1545,
+      "sha256": "ee8552f9bee96e516a26a4513d829bd018fb8035984ac799c3741cc133fe6ed5"
+    },
+    {
+      "id": "K3SCOPE-00402",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-mismatch-r1/screen-06.png",
+      "bytes": 1545,
+      "sha256": "ee8552f9bee96e516a26a4513d829bd018fb8035984ac799c3741cc133fe6ed5"
+    },
+    {
+      "id": "K3SCOPE-00403",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-mismatch-r1/screen-07.png",
+      "bytes": 1545,
+      "sha256": "ee8552f9bee96e516a26a4513d829bd018fb8035984ac799c3741cc133fe6ed5"
+    },
+    {
+      "id": "K3SCOPE-00404",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-mismatch-r1/screen-08.png",
+      "bytes": 1545,
+      "sha256": "ee8552f9bee96e516a26a4513d829bd018fb8035984ac799c3741cc133fe6ed5"
+    },
+    {
+      "id": "K3SCOPE-00405",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-mismatch-r1/screen-09.png",
+      "bytes": 1545,
+      "sha256": "ee8552f9bee96e516a26a4513d829bd018fb8035984ac799c3741cc133fe6ed5"
+    },
+    {
+      "id": "K3SCOPE-00406",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-mismatch-r1/screen-10.png",
+      "bytes": 1545,
+      "sha256": "ee8552f9bee96e516a26a4513d829bd018fb8035984ac799c3741cc133fe6ed5"
+    },
+    {
+      "id": "K3SCOPE-00407",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-mismatch-r1/screen-11.png",
+      "bytes": 1545,
+      "sha256": "ee8552f9bee96e516a26a4513d829bd018fb8035984ac799c3741cc133fe6ed5"
+    },
+    {
+      "id": "K3SCOPE-00408",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-mismatch-r1/screen-12.png",
+      "bytes": 1545,
+      "sha256": "ee8552f9bee96e516a26a4513d829bd018fb8035984ac799c3741cc133fe6ed5"
+    },
+    {
+      "id": "K3SCOPE-00409",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-mismatch-r1/screen-13.png",
+      "bytes": 1545,
+      "sha256": "ee8552f9bee96e516a26a4513d829bd018fb8035984ac799c3741cc133fe6ed5"
+    },
+    {
+      "id": "K3SCOPE-00410",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-mismatch-r1/screen-14.png",
+      "bytes": 1545,
+      "sha256": "ee8552f9bee96e516a26a4513d829bd018fb8035984ac799c3741cc133fe6ed5"
+    },
+    {
+      "id": "K3SCOPE-00411",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-mismatch-r1/screen-15.png",
+      "bytes": 1545,
+      "sha256": "ee8552f9bee96e516a26a4513d829bd018fb8035984ac799c3741cc133fe6ed5"
+    },
+    {
+      "id": "K3SCOPE-00412",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-mismatch-r1/service-state.json",
+      "bytes": 21316,
+      "sha256": "aaa68a1ef35f86eeb8e6ed512ec86445fe079a64a02555aaf0a335ac4416d6ff"
+    },
+    {
+      "id": "K3SCOPE-00413",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-mismatch-r1/service.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "K3SCOPE-00414",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-mismatch-r1/verification.json",
+      "bytes": 1275,
+      "sha256": "dceb1e3a55e04a6960c21c3b7206cc1baee6d5aee752681cdf5136f2bc95b9c0"
+    },
+    {
+      "id": "K3SCOPE-00415",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-mismatch-r1/version-events.jsonl",
+      "bytes": 517,
+      "sha256": "94d7cea6cc63d71ed57ae32d405bb5e5210b5324f188a19d77f34b9c75ae677b"
+    },
+    {
+      "id": "K3SCOPE-00416",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-mismatch-r1/windows-00.txt",
+      "bytes": 166,
+      "sha256": "28ae29836d791dcd3302b447a52a8f0fa3f9a192abbc33a27751e23d7ebe0d43"
+    },
+    {
+      "id": "K3SCOPE-00417",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-mismatch-r1/windows-01.txt",
+      "bytes": 872,
+      "sha256": "c8c8cfe9c5b9bb2ccde16b4b959b165ed33d50824f3fbd29834c16b6f0e63586"
+    },
+    {
+      "id": "K3SCOPE-00418",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-mismatch-r1/windows-02.txt",
+      "bytes": 872,
+      "sha256": "c8c8cfe9c5b9bb2ccde16b4b959b165ed33d50824f3fbd29834c16b6f0e63586"
+    },
+    {
+      "id": "K3SCOPE-00419",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-mismatch-r1/windows-03.txt",
+      "bytes": 1184,
+      "sha256": "beedf944b694509305cde08cf92b10690b3d93bfc146e1fa05f4d08c7011aed9"
+    },
+    {
+      "id": "K3SCOPE-00420",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-mismatch-r1/windows-04.txt",
+      "bytes": 1184,
+      "sha256": "beedf944b694509305cde08cf92b10690b3d93bfc146e1fa05f4d08c7011aed9"
+    },
+    {
+      "id": "K3SCOPE-00421",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-mismatch-r1/windows-05.txt",
+      "bytes": 1184,
+      "sha256": "beedf944b694509305cde08cf92b10690b3d93bfc146e1fa05f4d08c7011aed9"
+    },
+    {
+      "id": "K3SCOPE-00422",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-mismatch-r1/windows-06.txt",
+      "bytes": 1184,
+      "sha256": "beedf944b694509305cde08cf92b10690b3d93bfc146e1fa05f4d08c7011aed9"
+    },
+    {
+      "id": "K3SCOPE-00423",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-mismatch-r1/windows-07.txt",
+      "bytes": 1184,
+      "sha256": "beedf944b694509305cde08cf92b10690b3d93bfc146e1fa05f4d08c7011aed9"
+    },
+    {
+      "id": "K3SCOPE-00424",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-mismatch-r1/windows-08.txt",
+      "bytes": 1184,
+      "sha256": "beedf944b694509305cde08cf92b10690b3d93bfc146e1fa05f4d08c7011aed9"
+    },
+    {
+      "id": "K3SCOPE-00425",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-mismatch-r1/windows-09.txt",
+      "bytes": 1184,
+      "sha256": "beedf944b694509305cde08cf92b10690b3d93bfc146e1fa05f4d08c7011aed9"
+    },
+    {
+      "id": "K3SCOPE-00426",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-mismatch-r1/windows-10.txt",
+      "bytes": 1184,
+      "sha256": "beedf944b694509305cde08cf92b10690b3d93bfc146e1fa05f4d08c7011aed9"
+    },
+    {
+      "id": "K3SCOPE-00427",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-mismatch-r1/windows-11.txt",
+      "bytes": 1184,
+      "sha256": "beedf944b694509305cde08cf92b10690b3d93bfc146e1fa05f4d08c7011aed9"
+    },
+    {
+      "id": "K3SCOPE-00428",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-mismatch-r1/windows-12.txt",
+      "bytes": 1184,
+      "sha256": "beedf944b694509305cde08cf92b10690b3d93bfc146e1fa05f4d08c7011aed9"
+    },
+    {
+      "id": "K3SCOPE-00429",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-mismatch-r1/windows-13.txt",
+      "bytes": 1184,
+      "sha256": "beedf944b694509305cde08cf92b10690b3d93bfc146e1fa05f4d08c7011aed9"
+    },
+    {
+      "id": "K3SCOPE-00430",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-mismatch-r1/windows-14.txt",
+      "bytes": 1184,
+      "sha256": "beedf944b694509305cde08cf92b10690b3d93bfc146e1fa05f4d08c7011aed9"
+    },
+    {
+      "id": "K3SCOPE-00431",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-mismatch-r1/windows-15.txt",
+      "bytes": 1184,
+      "sha256": "beedf944b694509305cde08cf92b10690b3d93bfc146e1fa05f4d08c7011aed9"
+    },
+    {
+      "id": "K3SCOPE-00432",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-mismatch-r1/wineboot.log",
+      "bytes": 64844,
+      "sha256": "84a00ef5724a9965642d7f474313ac4c34607b75dcb76951baa973bf8edf7514"
+    },
+    {
+      "id": "K3SCOPE-00433",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-mismatch-r1/xvfb.log",
+      "bytes": 2808,
+      "sha256": "46b8747df8a2fc8b6a469b2374ea3d0c6c786dc3dcf2a9be13d94ce76ed3a1a7"
+    },
+    {
+      "id": "K3SCOPE-00434",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-mismatch-r1-recipe.json",
+      "bytes": 1101,
+      "sha256": "83e5730630324274e3f3c4398dc5256091c265f901af212beaf1d06ff89432f7"
+    },
+    {
+      "id": "K3SCOPE-00435",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-mismatch-r1-runner.log",
+      "bytes": 4803,
+      "sha256": "c97e9cec08eb99517f3c597ad8f2a05c8c4b5ee11ee7b58567140457884431d0"
+    },
+    {
+      "id": "K3SCOPE-00436",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-mismatch-r2/CALog-before.txt",
+      "bytes": 165,
+      "sha256": "89fc29a10a87ae7204e6ef761856f68cf89f00efc3639ee301c08c8485d3bc01"
+    },
+    {
+      "id": "K3SCOPE-00437",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-mismatch-r2/CALog-run.txt",
+      "bytes": 263,
+      "sha256": "f7378414d55b31ee5c808bd3e8b198a40397531b6f6785e123f9f7e6aa8549ba"
+    },
+    {
+      "id": "K3SCOPE-00438",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-mismatch-r2/cache-events.jsonl",
+      "bytes": 377,
+      "sha256": "37ae9dbc827c752c63907f96a872eaffe3269e0c93e389f89c63d01f47e22c82"
+    },
+    {
+      "id": "K3SCOPE-00439",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-mismatch-r2/client.log",
+      "bytes": 419402,
+      "sha256": "a3a10ad401902729d33585c3c3e04db46427d1507e49a184217a0b9653c97a6f"
+    },
+    {
+      "id": "K3SCOPE-00440",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-mismatch-r2/debug-commands.txt",
+      "bytes": 583,
+      "sha256": "d2cc7533bc1913c0ec214f729a81a6db1dbdec04e8bcc725a6d944f1fd824a6e"
+    },
+    {
+      "id": "K3SCOPE-00441",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-mismatch-r2/hosts",
+      "bytes": 121,
+      "sha256": "32a007c62d2887ae9f8d3c30d1ff7cb3902e6e1e0c75c5a978ee556cc8ea71f8"
+    },
+    {
+      "id": "K3SCOPE-00442",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-mismatch-r2/nsswitch.conf",
+      "bytes": 307,
+      "sha256": "c18e474cd61df8648ee02ac7a9c76b8d6c7782d8b212f925e6980f20af5cc838"
+    },
+    {
+      "id": "K3SCOPE-00443",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-mismatch-r2/processes-00.txt",
+      "bytes": 3786,
+      "sha256": "37a109e24d050fd65c6e6e507f907e37121f899d249a4777950d5028d9a0dad9"
+    },
+    {
+      "id": "K3SCOPE-00444",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-mismatch-r2/processes-01.txt",
+      "bytes": 4569,
+      "sha256": "81880a6cb72f95d65ee8c19c7ad09767d763173a76a5270db27bbda459e0c93e"
+    },
+    {
+      "id": "K3SCOPE-00445",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-mismatch-r2/processes-02.txt",
+      "bytes": 4569,
+      "sha256": "e4fe93cc4176ea73d93ca27d37ce5ad5cb1c0485719de8db15594d0ce74641d8"
+    },
+    {
+      "id": "K3SCOPE-00446",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-mismatch-r2/processes-03.txt",
+      "bytes": 4569,
+      "sha256": "7127bdda8af18d2a467ef7ff28a6ed678745fa7bc27abdb4eb81d741314480bf"
+    },
+    {
+      "id": "K3SCOPE-00447",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-mismatch-r2/processes-04.txt",
+      "bytes": 4569,
+      "sha256": "5d6b8fcc16c80fccb7f480bc9304f9e99fc9789c4a7112dbcc162cfe1b3d6c25"
+    },
+    {
+      "id": "K3SCOPE-00448",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-mismatch-r2/processes-05.txt",
+      "bytes": 4569,
+      "sha256": "5f834d320ad710f0bb454645a2f45edac6b243474ccfa245f956443342861f41"
+    },
+    {
+      "id": "K3SCOPE-00449",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-mismatch-r2/processes-06.txt",
+      "bytes": 4569,
+      "sha256": "701d8eb237b9379e7c5acf2a32dd252368308390dde9ad8a891b27498d40baac"
+    },
+    {
+      "id": "K3SCOPE-00450",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-mismatch-r2/processes-07.txt",
+      "bytes": 4569,
+      "sha256": "1f8f933c1106b8cda7ca989ce48a8c97e4524cbc8ae1b425be3cf16615c04bfa"
+    },
+    {
+      "id": "K3SCOPE-00451",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-mismatch-r2/processes-08.txt",
+      "bytes": 4001,
+      "sha256": "98c1688740f439676008b7df1bf3100361ca011dcfd191ce4e5dd5fdfcea87b4"
+    },
+    {
+      "id": "K3SCOPE-00452",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-mismatch-r2/raw-seal.json",
+      "bytes": 8752,
+      "sha256": "cd57104af7c69799bf7f2c7f84e4a18c3dede65867ffb6ead85dafd9a93e7caa"
+    },
+    {
+      "id": "K3SCOPE-00453",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-mismatch-r2/run.json",
+      "bytes": 5805,
+      "sha256": "07019a15cdb628562cf0082f83ae262c2cad0696095f1fb0542932262865d6a9"
+    },
+    {
+      "id": "K3SCOPE-00454",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-mismatch-r2/screen-00.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "K3SCOPE-00455",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-mismatch-r2/screen-01.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "K3SCOPE-00456",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-mismatch-r2/screen-02.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "K3SCOPE-00457",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-mismatch-r2/screen-03.png",
+      "bytes": 1545,
+      "sha256": "ee8552f9bee96e516a26a4513d829bd018fb8035984ac799c3741cc133fe6ed5"
+    },
+    {
+      "id": "K3SCOPE-00458",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-mismatch-r2/screen-04.png",
+      "bytes": 1545,
+      "sha256": "ee8552f9bee96e516a26a4513d829bd018fb8035984ac799c3741cc133fe6ed5"
+    },
+    {
+      "id": "K3SCOPE-00459",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-mismatch-r2/screen-05.png",
+      "bytes": 1545,
+      "sha256": "ee8552f9bee96e516a26a4513d829bd018fb8035984ac799c3741cc133fe6ed5"
+    },
+    {
+      "id": "K3SCOPE-00460",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-mismatch-r2/screen-06.png",
+      "bytes": 1545,
+      "sha256": "ee8552f9bee96e516a26a4513d829bd018fb8035984ac799c3741cc133fe6ed5"
+    },
+    {
+      "id": "K3SCOPE-00461",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-mismatch-r2/screen-07.png",
+      "bytes": 1545,
+      "sha256": "ee8552f9bee96e516a26a4513d829bd018fb8035984ac799c3741cc133fe6ed5"
+    },
+    {
+      "id": "K3SCOPE-00462",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-mismatch-r2/screen-08.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "K3SCOPE-00463",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-mismatch-r2/service-state.json",
+      "bytes": 21316,
+      "sha256": "3df24c96b78293142c9d4fef832351dbd6247dbc1a7c57f1564a0b76ed4109fc"
+    },
+    {
+      "id": "K3SCOPE-00464",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-mismatch-r2/service.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "K3SCOPE-00465",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-mismatch-r2/verification.json",
+      "bytes": 1940,
+      "sha256": "39efc58b03fc794d265ad9b2803d2a02860e1abd7d3647e402b13a2306da299e"
+    },
+    {
+      "id": "K3SCOPE-00466",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-mismatch-r2/version-events.jsonl",
+      "bytes": 615,
+      "sha256": "6071a315b0addc748d32daec01e17fbe4c469f2cf2317bdc977cd98b219316c1"
+    },
+    {
+      "id": "K3SCOPE-00467",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-mismatch-r2/windows-00.txt",
+      "bytes": 166,
+      "sha256": "28ae29836d791dcd3302b447a52a8f0fa3f9a192abbc33a27751e23d7ebe0d43"
+    },
+    {
+      "id": "K3SCOPE-00468",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-mismatch-r2/windows-01.txt",
+      "bytes": 872,
+      "sha256": "c8c8cfe9c5b9bb2ccde16b4b959b165ed33d50824f3fbd29834c16b6f0e63586"
+    },
+    {
+      "id": "K3SCOPE-00469",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-mismatch-r2/windows-02.txt",
+      "bytes": 872,
+      "sha256": "c8c8cfe9c5b9bb2ccde16b4b959b165ed33d50824f3fbd29834c16b6f0e63586"
+    },
+    {
+      "id": "K3SCOPE-00470",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-mismatch-r2/windows-03.txt",
+      "bytes": 1184,
+      "sha256": "beedf944b694509305cde08cf92b10690b3d93bfc146e1fa05f4d08c7011aed9"
+    },
+    {
+      "id": "K3SCOPE-00471",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-mismatch-r2/windows-04.txt",
+      "bytes": 1184,
+      "sha256": "beedf944b694509305cde08cf92b10690b3d93bfc146e1fa05f4d08c7011aed9"
+    },
+    {
+      "id": "K3SCOPE-00472",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-mismatch-r2/windows-05.txt",
+      "bytes": 1184,
+      "sha256": "beedf944b694509305cde08cf92b10690b3d93bfc146e1fa05f4d08c7011aed9"
+    },
+    {
+      "id": "K3SCOPE-00473",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-mismatch-r2/windows-06.txt",
+      "bytes": 1184,
+      "sha256": "beedf944b694509305cde08cf92b10690b3d93bfc146e1fa05f4d08c7011aed9"
+    },
+    {
+      "id": "K3SCOPE-00474",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-mismatch-r2/windows-07.txt",
+      "bytes": 1184,
+      "sha256": "beedf944b694509305cde08cf92b10690b3d93bfc146e1fa05f4d08c7011aed9"
+    },
+    {
+      "id": "K3SCOPE-00475",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-mismatch-r2/windows-08.txt",
+      "bytes": 166,
+      "sha256": "28ae29836d791dcd3302b447a52a8f0fa3f9a192abbc33a27751e23d7ebe0d43"
+    },
+    {
+      "id": "K3SCOPE-00476",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-mismatch-r2/wineboot.log",
+      "bytes": 64844,
+      "sha256": "6ea74032ac71361adee6d4be71b9c0834e4f384f810c203a290e7a545fb52ce7"
+    },
+    {
+      "id": "K3SCOPE-00477",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-mismatch-r2/xvfb.log",
+      "bytes": 3744,
+      "sha256": "a79d59bf08e04d66e25b5cd9c9400fb4cc540bd1d3472f7333be0ecc97ae5c80"
+    },
+    {
+      "id": "K3SCOPE-00478",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-mismatch-r2-preparation.json",
+      "bytes": 10503,
+      "sha256": "9a91e64c4e9f07a2e597c693b2fc8e3108c3f36a395c71ae9e38b7e92fb38922"
+    },
+    {
+      "id": "K3SCOPE-00479",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-mismatch-r2-recipe.json",
+      "bytes": 1108,
+      "sha256": "64763fd779eef09fd622349fa9f74e014419fe3beb9166ed339f44f354e7ec1a"
+    },
+    {
+      "id": "K3SCOPE-00480",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-mismatch-r2-runner.log",
+      "bytes": 4835,
+      "sha256": "40c46249a3041bb15a829013475f94952aa1036cad5312cc9a73353506da86a2"
+    },
+    {
+      "id": "K3SCOPE-00481",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-mismatch-r2.gdb",
+      "bytes": 583,
+      "sha256": "d2cc7533bc1913c0ec214f729a81a6db1dbdec04e8bcc725a6d944f1fd824a6e"
+    },
+    {
+      "id": "K3SCOPE-00482",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-mismatch-r3/CALog-before.txt",
+      "bytes": 263,
+      "sha256": "f7378414d55b31ee5c808bd3e8b198a40397531b6f6785e123f9f7e6aa8549ba"
+    },
+    {
+      "id": "K3SCOPE-00483",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-mismatch-r3/CALog-run.txt",
+      "bytes": 189,
+      "sha256": "1e43383243e4b008f32c39babb48edd3037a3fe1c5287968867ae60c8db93998"
+    },
+    {
+      "id": "K3SCOPE-00484",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-mismatch-r3/cache-events.jsonl",
+      "bytes": 377,
+      "sha256": "9c0ec85fe4266d7aee90270271c512e0021da13f6cc29e267b8d205b5e39c1f2"
+    },
+    {
+      "id": "K3SCOPE-00485",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-mismatch-r3/client.log",
+      "bytes": 373700,
+      "sha256": "9262521481a49d0efbe6e816a26ad75577e303bb0374418951888954f8e03acb"
+    },
+    {
+      "id": "K3SCOPE-00486",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-mismatch-r3/debug-commands.txt",
+      "bytes": 583,
+      "sha256": "27bcce80d45e8df545d7983769d86ac1684981c71ae28dc7f5b382aab4fa9021"
+    },
+    {
+      "id": "K3SCOPE-00487",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-mismatch-r3/hosts",
+      "bytes": 121,
+      "sha256": "32a007c62d2887ae9f8d3c30d1ff7cb3902e6e1e0c75c5a978ee556cc8ea71f8"
+    },
+    {
+      "id": "K3SCOPE-00488",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-mismatch-r3/nsswitch.conf",
+      "bytes": 307,
+      "sha256": "c18e474cd61df8648ee02ac7a9c76b8d6c7782d8b212f925e6980f20af5cc838"
+    },
+    {
+      "id": "K3SCOPE-00489",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-mismatch-r3/processes-00.txt",
+      "bytes": 3824,
+      "sha256": "080e0ccebe3955b9972a0e975adb18e7c9c9e65d493acbaf69a27cda8c4dd835"
+    },
+    {
+      "id": "K3SCOPE-00490",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-mismatch-r3/processes-01.txt",
+      "bytes": 4570,
+      "sha256": "8b73fd29a83b740665eac4cac864332a6cf0865de221c7ff41ca16d6d8d34ded"
+    },
+    {
+      "id": "K3SCOPE-00491",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-mismatch-r3/processes-02.txt",
+      "bytes": 4570,
+      "sha256": "58aec64af33a78518a7d189d6b7a9e3b7d1c7e5b745340cab2d940621e6565a8"
+    },
+    {
+      "id": "K3SCOPE-00492",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-mismatch-r3/processes-03.txt",
+      "bytes": 4570,
+      "sha256": "ed35d9779055462c750d7550aba8dca3f3fdad53fe70240e22e78d02f598bb5f"
+    },
+    {
+      "id": "K3SCOPE-00493",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-mismatch-r3/processes-04.txt",
+      "bytes": 4570,
+      "sha256": "60fd9252ad316ea7e3cb0ed67ea29e40cf869244b6fae6d24479da18e3945c84"
+    },
+    {
+      "id": "K3SCOPE-00494",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-mismatch-r3/processes-05.txt",
+      "bytes": 4570,
+      "sha256": "7fe16c3f49c9afdc73d43dd744bddf47e524954ae229f0ac53034d72f5d32d7b"
+    },
+    {
+      "id": "K3SCOPE-00495",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-mismatch-r3/processes-06.txt",
+      "bytes": 4570,
+      "sha256": "525a7af3f3a7f8b7588f78621424dc4fe3623f605ca574c0724d3d6bd2aff9c6"
+    },
+    {
+      "id": "K3SCOPE-00496",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-mismatch-r3/processes-07.txt",
+      "bytes": 4570,
+      "sha256": "474996bb99f332b5d5aef9b57801629f457e6219cf66542657a33e549a5db4e0"
+    },
+    {
+      "id": "K3SCOPE-00497",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-mismatch-r3/processes-08.txt",
+      "bytes": 4570,
+      "sha256": "ad023d482f878059628f54749fb8638ffe321ef7c5c3a3684a5a4b09bf459180"
+    },
+    {
+      "id": "K3SCOPE-00498",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-mismatch-r3/processes-09.txt",
+      "bytes": 4570,
+      "sha256": "a8ff7ab490169cf20dc3cc4923acd1d2a01347510787682bf8fdfbd6fb85a908"
+    },
+    {
+      "id": "K3SCOPE-00499",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-mismatch-r3/processes-10.txt",
+      "bytes": 4570,
+      "sha256": "8649b5ec3fdfb7db37e217335ecc7505bd06a62a49052313498f6c75dee280ab"
+    },
+    {
+      "id": "K3SCOPE-00500",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-mismatch-r3/processes-11.txt",
+      "bytes": 4570,
+      "sha256": "7e6d6d645034c582ec0e047118f9eaf608c7cf0eb0b3ea152fd1931a745c812e"
+    },
+    {
+      "id": "K3SCOPE-00501",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-mismatch-r3/processes-12.txt",
+      "bytes": 4570,
+      "sha256": "e130d4c130047a7859fc703aae5b1987351195a41e577dc92b9491a25118def0"
+    },
+    {
+      "id": "K3SCOPE-00502",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-mismatch-r3/processes-13.txt",
+      "bytes": 4570,
+      "sha256": "c02e553fa686e454ba29ad4a3941a1ab0fa30533cb25b7021f6a2a004782258e"
+    },
+    {
+      "id": "K3SCOPE-00503",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-mismatch-r3/processes-14.txt",
+      "bytes": 4570,
+      "sha256": "3491a5a028bf2daad38f89ecc236f0372e6e644c68eab146f9c1ce33d612d7aa"
+    },
+    {
+      "id": "K3SCOPE-00504",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-mismatch-r3/processes-15.txt",
+      "bytes": 4570,
+      "sha256": "bba4c1836ad5a8e97ff8085f1eb654522d8b059452afc7e1e87d3f053cd48bb6"
+    },
+    {
+      "id": "K3SCOPE-00505",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-mismatch-r3/raw-seal.json",
+      "bytes": 13213,
+      "sha256": "37ce72ab74fc97d5fc7484d5b77aecd072b5d63ea5f0bf0c4031ce3b4e12a8c1"
+    },
+    {
+      "id": "K3SCOPE-00506",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-mismatch-r3/run.json",
+      "bytes": 6512,
+      "sha256": "c95304a8a56d37498b38de0134f15609cdfcdc5935a8cbbf4a309e2aa6cee8b4"
+    },
+    {
+      "id": "K3SCOPE-00507",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-mismatch-r3/screen-00.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "K3SCOPE-00508",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-mismatch-r3/screen-01.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "K3SCOPE-00509",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-mismatch-r3/screen-02.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "K3SCOPE-00510",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-mismatch-r3/screen-03.png",
+      "bytes": 1545,
+      "sha256": "ee8552f9bee96e516a26a4513d829bd018fb8035984ac799c3741cc133fe6ed5"
+    },
+    {
+      "id": "K3SCOPE-00511",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-mismatch-r3/screen-04.png",
+      "bytes": 1545,
+      "sha256": "ee8552f9bee96e516a26a4513d829bd018fb8035984ac799c3741cc133fe6ed5"
+    },
+    {
+      "id": "K3SCOPE-00512",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-mismatch-r3/screen-05.png",
+      "bytes": 1545,
+      "sha256": "ee8552f9bee96e516a26a4513d829bd018fb8035984ac799c3741cc133fe6ed5"
+    },
+    {
+      "id": "K3SCOPE-00513",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-mismatch-r3/screen-06.png",
+      "bytes": 1545,
+      "sha256": "ee8552f9bee96e516a26a4513d829bd018fb8035984ac799c3741cc133fe6ed5"
+    },
+    {
+      "id": "K3SCOPE-00514",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-mismatch-r3/screen-07.png",
+      "bytes": 1545,
+      "sha256": "ee8552f9bee96e516a26a4513d829bd018fb8035984ac799c3741cc133fe6ed5"
+    },
+    {
+      "id": "K3SCOPE-00515",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-mismatch-r3/screen-08.png",
+      "bytes": 1456,
+      "sha256": "5ebc5cbf6ec7f266b528a099be90749d06eb72809fb0cf2995acdfdc594f94c4"
+    },
+    {
+      "id": "K3SCOPE-00516",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-mismatch-r3/screen-09.png",
+      "bytes": 1456,
+      "sha256": "5ebc5cbf6ec7f266b528a099be90749d06eb72809fb0cf2995acdfdc594f94c4"
+    },
+    {
+      "id": "K3SCOPE-00517",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-mismatch-r3/screen-10.png",
+      "bytes": 1456,
+      "sha256": "5ebc5cbf6ec7f266b528a099be90749d06eb72809fb0cf2995acdfdc594f94c4"
+    },
+    {
+      "id": "K3SCOPE-00518",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-mismatch-r3/screen-11.png",
+      "bytes": 1456,
+      "sha256": "5ebc5cbf6ec7f266b528a099be90749d06eb72809fb0cf2995acdfdc594f94c4"
+    },
+    {
+      "id": "K3SCOPE-00519",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-mismatch-r3/screen-12.png",
+      "bytes": 1456,
+      "sha256": "5ebc5cbf6ec7f266b528a099be90749d06eb72809fb0cf2995acdfdc594f94c4"
+    },
+    {
+      "id": "K3SCOPE-00520",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-mismatch-r3/screen-13.png",
+      "bytes": 1456,
+      "sha256": "5ebc5cbf6ec7f266b528a099be90749d06eb72809fb0cf2995acdfdc594f94c4"
+    },
+    {
+      "id": "K3SCOPE-00521",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-mismatch-r3/screen-14.png",
+      "bytes": 1456,
+      "sha256": "5ebc5cbf6ec7f266b528a099be90749d06eb72809fb0cf2995acdfdc594f94c4"
+    },
+    {
+      "id": "K3SCOPE-00522",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-mismatch-r3/screen-15.png",
+      "bytes": 1456,
+      "sha256": "5ebc5cbf6ec7f266b528a099be90749d06eb72809fb0cf2995acdfdc594f94c4"
+    },
+    {
+      "id": "K3SCOPE-00523",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-mismatch-r3/service-state.json",
+      "bytes": 21316,
+      "sha256": "c17a0c04d389854393cd4865c056583bd285d6018866b8f392652343fe6cbd82"
+    },
+    {
+      "id": "K3SCOPE-00524",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-mismatch-r3/service.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "K3SCOPE-00525",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-mismatch-r3/verification.json",
+      "bytes": 2022,
+      "sha256": "98a2530686f597a2614e3bcc90ae6525c2c0c0589d31d28c7822b15996227fe8"
+    },
+    {
+      "id": "K3SCOPE-00526",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-mismatch-r3/version-events.jsonl",
+      "bytes": 615,
+      "sha256": "f3b9eaead214953714506573703d7daebc94e8f7a47860d764aeb387ef3b89f6"
+    },
+    {
+      "id": "K3SCOPE-00527",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-mismatch-r3/windows-00.txt",
+      "bytes": 166,
+      "sha256": "28ae29836d791dcd3302b447a52a8f0fa3f9a192abbc33a27751e23d7ebe0d43"
+    },
+    {
+      "id": "K3SCOPE-00528",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-mismatch-r3/windows-01.txt",
+      "bytes": 872,
+      "sha256": "1096593c4e9a63ac4da8fff1a6642209e33de4dc70f021885f4baea5cce0dbc4"
+    },
+    {
+      "id": "K3SCOPE-00529",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-mismatch-r3/windows-02.txt",
+      "bytes": 872,
+      "sha256": "1096593c4e9a63ac4da8fff1a6642209e33de4dc70f021885f4baea5cce0dbc4"
+    },
+    {
+      "id": "K3SCOPE-00530",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-mismatch-r3/windows-03.txt",
+      "bytes": 1184,
+      "sha256": "be94749423d03b5eb6de4fbeaa9b930c55010754a1a46414672a9a5ab86f31a0"
+    },
+    {
+      "id": "K3SCOPE-00531",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-mismatch-r3/windows-04.txt",
+      "bytes": 1184,
+      "sha256": "be94749423d03b5eb6de4fbeaa9b930c55010754a1a46414672a9a5ab86f31a0"
+    },
+    {
+      "id": "K3SCOPE-00532",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-mismatch-r3/windows-05.txt",
+      "bytes": 1184,
+      "sha256": "be94749423d03b5eb6de4fbeaa9b930c55010754a1a46414672a9a5ab86f31a0"
+    },
+    {
+      "id": "K3SCOPE-00533",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-mismatch-r3/windows-06.txt",
+      "bytes": 1184,
+      "sha256": "be94749423d03b5eb6de4fbeaa9b930c55010754a1a46414672a9a5ab86f31a0"
+    },
+    {
+      "id": "K3SCOPE-00534",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-mismatch-r3/windows-07.txt",
+      "bytes": 1184,
+      "sha256": "be94749423d03b5eb6de4fbeaa9b930c55010754a1a46414672a9a5ab86f31a0"
+    },
+    {
+      "id": "K3SCOPE-00535",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-mismatch-r3/windows-08.txt",
+      "bytes": 1114,
+      "sha256": "b35065c9317ce69c17f933dceeab499123f6c74a660314aec2bd6eaac9d3ce14"
+    },
+    {
+      "id": "K3SCOPE-00536",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-mismatch-r3/windows-09.txt",
+      "bytes": 1114,
+      "sha256": "b35065c9317ce69c17f933dceeab499123f6c74a660314aec2bd6eaac9d3ce14"
+    },
+    {
+      "id": "K3SCOPE-00537",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-mismatch-r3/windows-10.txt",
+      "bytes": 1114,
+      "sha256": "b35065c9317ce69c17f933dceeab499123f6c74a660314aec2bd6eaac9d3ce14"
+    },
+    {
+      "id": "K3SCOPE-00538",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-mismatch-r3/windows-11.txt",
+      "bytes": 1114,
+      "sha256": "b35065c9317ce69c17f933dceeab499123f6c74a660314aec2bd6eaac9d3ce14"
+    },
+    {
+      "id": "K3SCOPE-00539",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-mismatch-r3/windows-12.txt",
+      "bytes": 1114,
+      "sha256": "b35065c9317ce69c17f933dceeab499123f6c74a660314aec2bd6eaac9d3ce14"
+    },
+    {
+      "id": "K3SCOPE-00540",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-mismatch-r3/windows-13.txt",
+      "bytes": 1114,
+      "sha256": "b35065c9317ce69c17f933dceeab499123f6c74a660314aec2bd6eaac9d3ce14"
+    },
+    {
+      "id": "K3SCOPE-00541",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-mismatch-r3/windows-14.txt",
+      "bytes": 1114,
+      "sha256": "b35065c9317ce69c17f933dceeab499123f6c74a660314aec2bd6eaac9d3ce14"
+    },
+    {
+      "id": "K3SCOPE-00542",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-mismatch-r3/windows-15.txt",
+      "bytes": 1114,
+      "sha256": "b35065c9317ce69c17f933dceeab499123f6c74a660314aec2bd6eaac9d3ce14"
+    },
+    {
+      "id": "K3SCOPE-00543",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-mismatch-r3/wineboot.log",
+      "bytes": 64844,
+      "sha256": "c74fadf6ba318df24ff3ce674f52a1f1cb19ca7cb2797ccb3a47a42ed4977559"
+    },
+    {
+      "id": "K3SCOPE-00544",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-mismatch-r3/xvfb.log",
+      "bytes": 2808,
+      "sha256": "46b8747df8a2fc8b6a469b2374ea3d0c6c786dc3dcf2a9be13d94ce76ed3a1a7"
+    },
+    {
+      "id": "K3SCOPE-00545",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-mismatch-r3-preparation.json",
+      "bytes": 10557,
+      "sha256": "95e9d08e522f4995eeb10dcce5e6fec879d98602a13bd8a422ed5b2f2e164e1d"
+    },
+    {
+      "id": "K3SCOPE-00546",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-mismatch-r3-recipe.json",
+      "bytes": 1109,
+      "sha256": "09eb7c864a3379315d1581d595b787e1e251739d9c63886372481c1bea786bbd"
+    },
+    {
+      "id": "K3SCOPE-00547",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-mismatch-r3-runner.log",
+      "bytes": 5358,
+      "sha256": "a9dfe13aa53f5804279fbfbe1df16ac73c5aa2652ed41cdee8dcee532c1a59ae"
+    },
+    {
+      "id": "K3SCOPE-00548",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-mismatch-r3.gdb",
+      "bytes": 583,
+      "sha256": "27bcce80d45e8df545d7983769d86ac1684981c71ae28dc7f5b382aab4fa9021"
+    },
+    {
+      "id": "K3SCOPE-00549",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-mismatch.gdb",
+      "bytes": 577,
+      "sha256": "6c821a101390007a7856c286d683e27ed7e88aa232352b811ef0d6cf36ca4f16"
+    },
+    {
+      "id": "K3SCOPE-00550",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version_control_probe.py",
+      "bytes": 1137,
+      "sha256": "f690b15095002b786616837fa197b11bfab69ef684cfe9a3a2c70e4eb19fbb22"
+    },
+    {
+      "id": "K3SCOPE-00551",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version_control_probe_r2.py",
+      "bytes": 1137,
+      "sha256": "b427c33a0ac84788924c0eebd6b266a6c03b4a4f816ec676bb6b4a496999b700"
+    },
+    {
+      "id": "K3SCOPE-00552",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version_mismatch_cache_probe.py",
+      "bytes": 2624,
+      "sha256": "6da78f449b7ca5adfd7cf7c02490e6866acd349400d75196304e25c0a77ee9a7"
+    },
+    {
+      "id": "K3SCOPE-00553",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version_mismatch_cache_probe_r2.py",
+      "bytes": 2624,
+      "sha256": "7e78fb220f540c3dea2b630a9ca720395d23bc5f4a78f78997c0129c46e7459a"
+    },
+    {
+      "id": "K3SCOPE-00554",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version_mismatch_cache_probe_r3.py",
+      "bytes": 2624,
+      "sha256": "19b75fba97817814af9f682b13609c15f9f2ee9b5cfc74d5b20bab03719ce981"
+    },
+    {
+      "id": "K3SCOPE-00555",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version_mismatch_probe.py",
+      "bytes": 1210,
+      "sha256": "ec9d375ab82356e415394acd4fe30acf0fdcfa9c49efb636022d2b6928be05c0"
+    },
+    {
+      "id": "K3SCOPE-00556",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version_mismatch_probe_r2.py",
+      "bytes": 1210,
+      "sha256": "f45547979d5cc2f78f4db979f437d0b81be572d35214669e846613ba0fe1e4e4"
+    },
+    {
+      "id": "K3SCOPE-00557",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version_mismatch_probe_r3.py",
+      "bytes": 1210,
+      "sha256": "b9c8f3aa7446613ac3c6e89bbcdbd35ab988d3ada875618bb426b9ce2d11a15b"
+    },
+    {
+      "id": "K3SCOPE-00558",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/wire-guards-r1/failure.json",
+      "bytes": 548,
+      "sha256": "406da9f94f7625a134b630d98a4b2eb61f4aecd7f0ce4cc4e8fd7060051234a1"
+    },
+    {
+      "id": "K3SCOPE-00559",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/wire-guards-r1/raw-seal.json",
+      "bytes": 321,
+      "sha256": "c596a9a258fde1479e9f562a1b859383fe220c0fa08341c74407be6fabd97fdd"
+    },
+    {
+      "id": "K3SCOPE-00560",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/wire-guards-r2/auth-on-channel/input.bin",
+      "bytes": 80,
+      "sha256": "05b358f4b0f4abcc727048773a69ecb994aacb2abc92a9113cd12fbf6ea69a1d"
+    },
+    {
+      "id": "K3SCOPE-00561",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/wire-guards-r2/auth-on-channel/output.bin",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "K3SCOPE-00562",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/wire-guards-r2/auth-on-channel/service-state.json",
+      "bytes": 20351,
+      "sha256": "a91ed050b18b30cadde207990348e8625f5cc741194ff625d27691af0a9c7cc5"
+    },
+    {
+      "id": "K3SCOPE-00563",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/wire-guards-r2/channel-on-login/input.bin",
+      "bytes": 81,
+      "sha256": "2cfebd3ad9a4935bb144090c4244c67ec9200ca54d4a9da71ecef00004a8bdf4"
+    },
+    {
+      "id": "K3SCOPE-00564",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/wire-guards-r2/channel-on-login/output.bin",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "K3SCOPE-00565",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/wire-guards-r2/channel-on-login/service-state.json",
+      "bytes": 20353,
+      "sha256": "53b909980477769f36b620957f69200ed66ddf6a7286e72ef49db284f3896f89"
+    },
+    {
+      "id": "K3SCOPE-00566",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/wire-guards-r2/failure.json",
+      "bytes": 365,
+      "sha256": "ffe3d1f38e8de50228b23368cf0cd4079ae562c3723f84ec8d3027ba264c0c52"
+    },
+    {
+      "id": "K3SCOPE-00567",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/wire-guards-r2/raw-seal.json",
+      "bytes": 4035,
+      "sha256": "11d056c209af522243a6aaa70dec6dedf95b53b402302ab9a31f80e8349b7b6f"
+    },
+    {
+      "id": "K3SCOPE-00568",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/wire-guards-r2/ready-before-channel/input.bin",
+      "bytes": 40,
+      "sha256": "560cfd82d064b8c68920920b37cc42d450ad5cc23e780b6d6e367501a91a3be0"
+    },
+    {
+      "id": "K3SCOPE-00569",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/wire-guards-r2/ready-before-channel/output.bin",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "K3SCOPE-00570",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/wire-guards-r2/ready-before-channel/service-state.json",
+      "bytes": 20278,
+      "sha256": "058065879f5336b461959dfb7f16100d59ac3cd42f8969f864d451ac1cf95fd7"
+    },
+    {
+      "id": "K3SCOPE-00571",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/wire-guards-r2/short-shape/input.bin",
+      "bytes": 80,
+      "sha256": "08d7a5f767a3c0b309c2b938df1f5e82197b31663048a7c8ed90de048ef61aef"
+    },
+    {
+      "id": "K3SCOPE-00572",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/wire-guards-r2/short-shape/output.bin",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "K3SCOPE-00573",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/wire-guards-r2/short-shape/service-state.json",
+      "bytes": 20363,
+      "sha256": "19716131bb3847e20ebc13af7c728bae99d3ff4025e02de2b3f89c26ff21b814"
+    },
+    {
+      "id": "K3SCOPE-00574",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/wire-guards-r2/valid-A/A-lobby17-43.bin",
+      "bytes": 75,
+      "sha256": "5bb5a42cb1ea4fe8967d50ed39649cc886a493c0a13a25ceb2df589a2b9bcd37"
+    },
+    {
+      "id": "K3SCOPE-00575",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/wire-guards-r2/valid-A/input.bin",
+      "bytes": 81,
+      "sha256": "2cfebd3ad9a4935bb144090c4244c67ec9200ca54d4a9da71ecef00004a8bdf4"
+    },
+    {
+      "id": "K3SCOPE-00576",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/wire-guards-r2/wrong-name/input.bin",
+      "bytes": 81,
+      "sha256": "087f063a2565d21c8d82acd61e62b7f470694f5fd6d476fc87cf5056f91f4889"
+    },
+    {
+      "id": "K3SCOPE-00577",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/wire-guards-r2/wrong-name/output.bin",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "K3SCOPE-00578",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/wire-guards-r2/wrong-name/service-state.json",
+      "bytes": 20355,
+      "sha256": "f7dd0333e71b0c0643371e9a68a63a8fd4fc7ff654b225b305f2061bb53d1749"
+    },
+    {
+      "id": "K3SCOPE-00579",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/wire-guards-r2-runner.log",
+      "bytes": 751,
+      "sha256": "1511c72692c0d6893bcdbde1044580390e4a61136e5bb54c6d28ca64234d9044"
+    },
+    {
+      "id": "K3SCOPE-00580",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/wire-guards-r3/auth-on-channel/input.bin",
+      "bytes": 80,
+      "sha256": "05b358f4b0f4abcc727048773a69ecb994aacb2abc92a9113cd12fbf6ea69a1d"
+    },
+    {
+      "id": "K3SCOPE-00581",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/wire-guards-r3/auth-on-channel/output.bin",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "K3SCOPE-00582",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/wire-guards-r3/auth-on-channel/service-state.json",
+      "bytes": 20351,
+      "sha256": "4cd17266f3f5976c67697ff623bf2bb8d632535ad67a8663e454e39c5b25ebb0"
+    },
+    {
+      "id": "K3SCOPE-00583",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/wire-guards-r3/channel-on-login/input.bin",
+      "bytes": 81,
+      "sha256": "2cfebd3ad9a4935bb144090c4244c67ec9200ca54d4a9da71ecef00004a8bdf4"
+    },
+    {
+      "id": "K3SCOPE-00584",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/wire-guards-r3/channel-on-login/output.bin",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "K3SCOPE-00585",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/wire-guards-r3/channel-on-login/service-state.json",
+      "bytes": 20353,
+      "sha256": "b544e79f70def047425d56afdc880ad08a79a20be46b6bc644bf00b3103de0cd"
+    },
+    {
+      "id": "K3SCOPE-00586",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/wire-guards-r3/raw-seal.json",
+      "bytes": 6132,
+      "sha256": "f2e6c239a1aa8742160e10e4eae657b24f4620e6d56068b7853b7b0c4e14a66b"
+    },
+    {
+      "id": "K3SCOPE-00587",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/wire-guards-r3/ready-before-channel/input.bin",
+      "bytes": 40,
+      "sha256": "560cfd82d064b8c68920920b37cc42d450ad5cc23e780b6d6e367501a91a3be0"
+    },
+    {
+      "id": "K3SCOPE-00588",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/wire-guards-r3/ready-before-channel/output.bin",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "K3SCOPE-00589",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/wire-guards-r3/ready-before-channel/service-state.json",
+      "bytes": 20278,
+      "sha256": "b5550623c5ca100351bb265505242855ee0d08dadc4c62ee6f780225b6883ba2"
+    },
+    {
+      "id": "K3SCOPE-00590",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/wire-guards-r3/short-shape/input.bin",
+      "bytes": 80,
+      "sha256": "08d7a5f767a3c0b309c2b938df1f5e82197b31663048a7c8ed90de048ef61aef"
+    },
+    {
+      "id": "K3SCOPE-00591",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/wire-guards-r3/short-shape/output.bin",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "K3SCOPE-00592",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/wire-guards-r3/short-shape/service-state.json",
+      "bytes": 20363,
+      "sha256": "afd4c5babfc2bc31b5721daed545878598809fabcdeab719d72a2bbb8e24d489"
+    },
+    {
+      "id": "K3SCOPE-00593",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/wire-guards-r3/valid-A/A-lobby17-43.bin",
+      "bytes": 75,
+      "sha256": "5bb5a42cb1ea4fe8967d50ed39649cc886a493c0a13a25ceb2df589a2b9bcd37"
+    },
+    {
+      "id": "K3SCOPE-00594",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/wire-guards-r3/valid-A/input.bin",
+      "bytes": 81,
+      "sha256": "2cfebd3ad9a4935bb144090c4244c67ec9200ca54d4a9da71ecef00004a8bdf4"
+    },
+    {
+      "id": "K3SCOPE-00595",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/wire-guards-r3/valid-A/output.bin",
+      "bytes": 75,
+      "sha256": "5bb5a42cb1ea4fe8967d50ed39649cc886a493c0a13a25ceb2df589a2b9bcd37"
+    },
+    {
+      "id": "K3SCOPE-00596",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/wire-guards-r3/valid-A/service-state.json",
+      "bytes": 20662,
+      "sha256": "5482cb91aae4b8b306d6b36887f9bb656299620b9b76e07bab2270a4323f711e"
+    },
+    {
+      "id": "K3SCOPE-00597",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/wire-guards-r3/valid-B/B-lobby17-43.bin",
+      "bytes": 75,
+      "sha256": "5bb5a42cb1ea4fe8967d50ed39649cc886a493c0a13a25ceb2df589a2b9bcd37"
+    },
+    {
+      "id": "K3SCOPE-00598",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/wire-guards-r3/valid-B/input.bin",
+      "bytes": 81,
+      "sha256": "3faabdad6509fc688d8614823af347cc2cfa875256cdf9d02e0ff8ccaea3ea6e"
+    },
+    {
+      "id": "K3SCOPE-00599",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/wire-guards-r3/valid-B/output.bin",
+      "bytes": 75,
+      "sha256": "5bb5a42cb1ea4fe8967d50ed39649cc886a493c0a13a25ceb2df589a2b9bcd37"
+    },
+    {
+      "id": "K3SCOPE-00600",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/wire-guards-r3/valid-B/service-state.json",
+      "bytes": 20662,
+      "sha256": "a8833e9d8c5d1271857d5d24a020b1a63f816b08c36273d6384bb22878164d40"
+    },
+    {
+      "id": "K3SCOPE-00601",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/wire-guards-r3/valid-C/C-lobby17-43.bin",
+      "bytes": 75,
+      "sha256": "5bb5a42cb1ea4fe8967d50ed39649cc886a493c0a13a25ceb2df589a2b9bcd37"
+    },
+    {
+      "id": "K3SCOPE-00602",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/wire-guards-r3/valid-C/input.bin",
+      "bytes": 79,
+      "sha256": "d4bc579d44b866c5cad199a2345e07752745076a223621bc610e659438d2f477"
+    },
+    {
+      "id": "K3SCOPE-00603",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/wire-guards-r3/valid-C/output.bin",
+      "bytes": 75,
+      "sha256": "5bb5a42cb1ea4fe8967d50ed39649cc886a493c0a13a25ceb2df589a2b9bcd37"
+    },
+    {
+      "id": "K3SCOPE-00604",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/wire-guards-r3/valid-C/service-state.json",
+      "bytes": 20656,
+      "sha256": "c6a00486f8233712d864dc3b685eeaabb2b7d32ec33ce7d31fda8a22ca5c2c27"
+    },
+    {
+      "id": "K3SCOPE-00605",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/wire-guards-r3/verification.json",
+      "bytes": 15501,
+      "sha256": "c910f982ceea2b48b2da3eedd37e313c94649669b0ca8f0690ce166adb2a5935"
+    },
+    {
+      "id": "K3SCOPE-00606",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/wire-guards-r3/wrong-name/input.bin",
+      "bytes": 81,
+      "sha256": "087f063a2565d21c8d82acd61e62b7f470694f5fd6d476fc87cf5056f91f4889"
+    },
+    {
+      "id": "K3SCOPE-00607",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/wire-guards-r3/wrong-name/output.bin",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "K3SCOPE-00608",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/wire-guards-r3/wrong-name/service-state.json",
+      "bytes": 20355,
+      "sha256": "e483ac53c1c9a696be543a243e1361c80e1d7ec79c08c1ff7c827e5569dc8bd5"
+    },
+    {
+      "id": "K3SCOPE-00609",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/wire-guards-r3-runner.log",
+      "bytes": 77,
+      "sha256": "99dca15bb2ff3bf1e58734c26a8c1f1c39d8fe748f2deac913bf90bd7380988f"
+    },
+    {
+      "id": "K3SCOPE-00610",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/wire-guards-runner.log",
+      "bytes": 685,
+      "sha256": "2d112841af62f50075bae286b46182100ec1d20c981fc0d955ef84373fb28197"
+    },
+    {
+      "id": "K3SCOPE-00611",
+      "kind": "local",
+      "path": "local/research/codex/room-input-r1/13A1FB0.asm",
+      "bytes": 5447,
+      "sha256": "e5d6e1e31b515b1ce02e6dfe7a16e461c97eba12c42778bd3a445885a8572bba"
+    },
+    {
+      "id": "K3SCOPE-00612",
+      "kind": "local",
+      "path": "local/research/codex/room-input-r1/13A20D0.asm",
+      "bytes": 7962,
+      "sha256": "6d197acda550614ebb42b40b757a4066ac475659a28ef5df3f0abf864b65616b"
+    },
+    {
+      "id": "K3SCOPE-00613",
+      "kind": "local",
+      "path": "local/research/codex/wine-processpatch-next.asm",
+      "bytes": 9035,
+      "sha256": "bb94f4dac1c2380e165512842e75e4648fcf314c84d1342ce1fa19af90698fd6"
+    },
+    {
+      "id": "K3SCOPE-00614",
+      "kind": "local",
+      "path": "local/research/codex/wine_probe_k3_channel.py",
+      "bytes": 19057,
+      "sha256": "045333a570cdb878a836744bd6090700dad8108fee4a37d594993c8fe7a60a3b"
+    },
+    {
+      "id": "K3SCOPE-00615",
+      "kind": "local",
+      "path": "local/research/codex/wine_probe_k3_version.py",
+      "bytes": 19056,
+      "sha256": "76fd099f1a02315095bcaa4df165c9e1f79c7b837aef102ae756eef290cf158b"
+    },
+    {
+      "id": "K3SCOPE-00616",
+      "kind": "local",
+      "path": "local/research/codex/wine_probe_k3_version966.py",
+      "bytes": 19055,
+      "sha256": "c3ef0cbfd4120bd0a0a1a606d6c9dab4f3d7c9b8ac70bad89e8c6965d568f2ac"
+    },
+    {
+      "id": "K3SCOPE-00617",
+      "kind": "local",
+      "path": "local/research/codex/wine_probe_k3_version966_ack.py",
+      "bytes": 20065,
+      "sha256": "953c31d97579a217e4da7eadd624ab5e901382c88fff903072d2def581ed07f4"
+    },
+    {
+      "id": "K3SCOPE-00618",
+      "kind": "local",
+      "path": "local/research/codex/wine_probe_k3_version966_ack2.py",
+      "bytes": 20464,
+      "sha256": "7907cc911f520db29c98b4c9c7611d9b9f0290e8e43934428f97961838d4e160"
+    },
+    {
+      "id": "K3SCOPE-00619",
+      "kind": "repository",
+      "path": "server/own_profile.py",
+      "bytes": 3503,
+      "sha256": "eb790c85b60d04734a1b31a68c205f9f27815eb0b31b8c902acaf8339ed4c59b"
+    },
+    {
+      "id": "K3SCOPE-00620",
+      "kind": "repository",
+      "path": "server/probe_service.py",
+      "bytes": 109744,
+      "sha256": "12362a460ade30fbd48f14dd8bada6a3126e330c8058b71dc7bee5d63e2d9584"
+    },
+    {
+      "id": "K3SCOPE-00621",
+      "kind": "repository",
+      "path": "server/test_own_profile.py",
+      "bytes": 11986,
+      "sha256": "a7370f1a1ec59dade6d0baf644ab45252da8daa2817701f65089eabd3aff42d9"
+    }
+  ]
+}
