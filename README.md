@@ -37,7 +37,7 @@ Tra checkpoint: `python3 tools/checkpoints.py latest`, `show CPxxx`, `evidence C
 giữ record cũ nguyên object. Không cần đọc manifest lớn.
 
 Hai copy KR Wine đã chạy login/sảnh/phòng/Battle và các chu kỳ kết quả/reset có bằng chứng;
-**K5 basic local đạt CP188; K6a local đạt CP189. LAN/Internet còn mở**. [Movement/terrain hai vòng](docs/PROTOCOL.md#current-movement-cycles),
+**K5 basic local đạt CP188; K6a local đạt CP189. K6b LANgiảlập đạt CP191; Internet còn mở**. [Movement/terrain hai vòng](docs/PROTOCOL.md#current-movement-cycles),
 [kim/reset](docs/PROTOCOL.md#needle-round-reset), [cứu hai chiều và hai kết quả](docs/PROTOCOL.md#rescue-two-results),
 [deep chain/reset](docs/PROTOCOL.md#recursive-chain-cycles) giữ phạm vi và giới hạn tại nguồn chuẩn.
 
@@ -53,10 +53,10 @@ auth137/137/errors0 → channel socket mới; hello/mode/seq reset được đo 
 [run/hash](docs/evidence/live-codec-stream/README.md#cp181). CP180 split/coalesced/CRCcontrol đã merge
 [PR252](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/252) tại`fe242cc`.
 
-**K6b LAN/K6c Internet/K7 vẫn mở. K3 local CP186, K4 local CP187, K5 basic CP188 và K6a local CP189 đã đạt riêng scope**,
+**K6c Internet/K7 vẫn mở; K6b LANgiảlập đạtCP191 theoowner. K3 local CP186, K4 local CP187, K5 basic CP188 và K6a local CP189 đã đạt riêng scope**,
 [nghiệm thu/giới hạn](docs/PLAN.md#k3-acceptance). Fullgrammar/unknownheader/prefix/mode và
 accountauthority chưa được khôi phục đầy đủ; K2 không nghiệm thu các phần đó. Thứ tự tiếp ở
-[PLAN](docs/PLAN.md#current-order): chuẩn bị recipe K6b trên hai máy do dự án kiểm soát; giữ scope mạng cô lập.
+[PLAN](docs/PLAN.md#current-order): tiếp routed/NAT preflight trong mạng cô lập, không liveInternet/Nexon.
 CP181 đã merge [PR253](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/253) tại `5a154e5`.
 **CP184: identity291 đã tích hợp opt-in vào service.** Hai run A đã hiện tên ở sảnh rồi tạo phòng,
 nhận roster/map; native framer nhận sequence43…73 liên tục, next76. [Contract/giới hạn](docs/PROTOCOL.md#own-profile-integration),
@@ -89,8 +89,14 @@ mộtwinner/effect/view; baseline stat riêng A5/B4. Không physicalLAN/Internet
 CP188 đã merge [PR260](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/260) tại`2ea548bb`.
 **CP190: service/47fixture đã đóng thành gói chuyển thư mục**, kiểm bằng Python-I/realTCP và hai KR
 Wine copy trên service đã relocation. [Cách dùng](tools/README.md#portable-bundle),
-[nguồn/giới hạn](docs/PROTOCOL.md#portable-probe-bundle). K6b vẫn cần hai máy vật lý; startup hiện tuần tự.
+[nguồn/giới hạn](docs/PROTOCOL.md#portable-probe-bundle). Tại CP190 còn yêu cầu2máyvậtlý;
+CP191owner thay bằng LANgiảlập, startup vẫn tuần tự.
 CP189 đã merge [PR261](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/261) tại`1559ad57`.
+**CP191: K6b LANgiảlập đạt theo chỉ đạo chủ dự án**, dùng hai actualKR trong netns/IP/NIC riêng;
+[decision/giới hạn](docs/PLAN.md#k6b-acceptance). Không còn blocker phải có hai máy vật lý.
+BpostwinRollerreset4→5→4 đã xác nhận qua hai normaloutcomes/Start2/3 trênportablebundle;
+[nguồn](docs/PROTOCOL.md#emulated-lan-acceptance). K6cInternet/K7 vẫn mở.
+CP190 đã merge [PR262](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/262) tại`b7e83f46`.
 AUD056 periodic qua188, audit kế **CP192**. [Review waived](docs/evidence/checkpoints/review-waiver.json).
 
 Đích đầu: hai client thật chơi hai trận liên tiếp; mở bốn client và hardening sau đó.

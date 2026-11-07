@@ -1,7 +1,7 @@
 {
   "schema": "kre-feature-index-v1",
   "build": "KR00967",
-  "as_of": "CP190",
+  "as_of": "CP191",
   "sources": {
     "plan": "docs/PLAN.md",
     "contract": "docs/PROTOCOL.md",
@@ -1481,7 +1481,8 @@
           "docs/PROTOCOL.md#a-c-basic-cycles",
           "docs/evidence/peer-endpoints/README.md#cp176",
           "docs/PROTOCOL.md#current-basic-cycles-291",
-          "docs/PROTOCOL.md#current-basic-contest-reset"
+          "docs/PROTOCOL.md#current-basic-contest-reset",
+          "docs/PROTOCOL.md#emulated-lan-acceptance"
         ]
       },
       "coverage": {
@@ -1541,7 +1542,8 @@
               "docs/PROTOCOL.md#a-c-basic-cycles",
               "docs/evidence/peer-endpoints/README.md#cp176",
               "docs/PROTOCOL.md#current-basic-cycles-291",
-              "docs/PROTOCOL.md#current-basic-contest-reset"
+              "docs/PROTOCOL.md#current-basic-contest-reset",
+              "docs/PROTOCOL.md#emulated-lan-acceptance"
             ]
           },
           "windows_original": {
@@ -1584,7 +1586,8 @@
             "docs/PROTOCOL.md#a-c-basic-cycles",
             "docs/evidence/peer-endpoints/README.md#cp176",
             "docs/PROTOCOL.md#current-basic-cycles-291",
-            "docs/PROTOCOL.md#current-basic-contest-reset"
+            "docs/PROTOCOL.md#current-basic-contest-reset",
+            "docs/PROTOCOL.md#emulated-lan-acceptance"
           ]
         },
         "gate": {
@@ -1592,7 +1595,8 @@
           "state": "open",
           "refs": [
             "docs/PLAN.md#gates",
-            "docs/PLAN.md#k6a-acceptance"
+            "docs/PLAN.md#k6a-acceptance",
+            "docs/PLAN.md#k6b-acceptance"
           ]
         }
       },
@@ -1621,7 +1625,8 @@
           "docs/evidence/current-udp-causality/README.md",
           "docs/evidence/udp-generation/README.md#cp130",
           "docs/evidence/peer-endpoints/README.md#cp155",
-          "docs/PROTOCOL.md#current-basic-contest-reset"
+          "docs/PROTOCOL.md#current-basic-contest-reset",
+          "docs/PROTOCOL.md#emulated-lan-acceptance"
         ]
       },
       "coverage": {
@@ -1657,7 +1662,8 @@
               "docs/evidence/current-udp-causality/README.md",
               "docs/PROTOCOL.md#udp-membership-lifetime",
               "docs/evidence/peer-endpoints/README.md#cp155",
-              "docs/PROTOCOL.md#current-basic-contest-reset"
+              "docs/PROTOCOL.md#current-basic-contest-reset",
+              "docs/PROTOCOL.md#emulated-lan-acceptance"
             ]
           },
           "windows_original": {
@@ -1688,7 +1694,8 @@
             "docs/evidence/probe-service/README.md",
             "docs/evidence/current-udp-causality/README.md",
             "docs/PROTOCOL.md#udp-membership-lifetime",
-            "docs/PROTOCOL.md#current-basic-contest-reset"
+            "docs/PROTOCOL.md#current-basic-contest-reset",
+            "docs/PROTOCOL.md#emulated-lan-acceptance"
           ]
         },
         "gate": {
@@ -1696,7 +1703,8 @@
           "state": "open",
           "refs": [
             "docs/PLAN.md#gates",
-            "docs/PLAN.md#k6a-acceptance"
+            "docs/PLAN.md#k6a-acceptance",
+            "docs/PLAN.md#k6b-acceptance"
           ]
         }
       },
@@ -2365,7 +2373,8 @@
           "docs/PROTOCOL.md#a-c-basic-cycles",
           "docs/evidence/peer-endpoints/README.md#cp176",
           "docs/PROTOCOL.md#current-basic-cycles-291",
-          "docs/PROTOCOL.md#current-basic-contest-reset"
+          "docs/PROTOCOL.md#current-basic-contest-reset",
+          "docs/PROTOCOL.md#emulated-lan-acceptance"
         ]
       },
       "coverage": {
@@ -2417,7 +2426,8 @@
               "docs/PROTOCOL.md#a-c-basic-cycles",
               "docs/evidence/peer-endpoints/README.md#cp176",
               "docs/PROTOCOL.md#current-basic-cycles-291",
-              "docs/PROTOCOL.md#current-basic-contest-reset"
+              "docs/PROTOCOL.md#current-basic-contest-reset",
+              "docs/PROTOCOL.md#emulated-lan-acceptance"
             ]
           },
           "windows_original": {
@@ -2463,7 +2473,8 @@
             "docs/PROTOCOL.md#a-c-basic-cycles",
             "docs/evidence/peer-endpoints/README.md#cp176",
             "docs/PROTOCOL.md#current-basic-cycles-291",
-            "docs/PROTOCOL.md#current-basic-contest-reset"
+            "docs/PROTOCOL.md#current-basic-contest-reset",
+            "docs/PROTOCOL.md#emulated-lan-acceptance"
           ]
         },
         "gate": {
@@ -3294,7 +3305,8 @@
           "state": "open",
           "refs": [
             "docs/PLAN.md#gates",
-            "docs/PLAN.md#k6a-acceptance"
+            "docs/PLAN.md#k6a-acceptance",
+            "docs/PLAN.md#k6b-acceptance"
           ]
         }
       },
@@ -3365,7 +3377,8 @@
           "docs/PROTOCOL.md#a-c-basic-cycles",
           "docs/evidence/peer-endpoints/README.md#cp176",
           "docs/PROTOCOL.md#current-basic-cycles-291",
-          "docs/PROTOCOL.md#current-basic-contest-reset"
+          "docs/PROTOCOL.md#current-basic-contest-reset",
+          "docs/PROTOCOL.md#emulated-lan-acceptance"
         ]
       },
       "coverage": {
@@ -3444,7 +3457,8 @@
               "docs/PROTOCOL.md#a-c-basic-cycles",
               "docs/evidence/peer-endpoints/README.md#cp176",
               "docs/PROTOCOL.md#current-basic-cycles-291",
-              "docs/PROTOCOL.md#current-basic-contest-reset"
+              "docs/PROTOCOL.md#current-basic-contest-reset",
+              "docs/PROTOCOL.md#emulated-lan-acceptance"
             ]
           },
           "windows_original": {
@@ -3503,7 +3517,8 @@
             "docs/PROTOCOL.md#a-c-basic-cycles",
             "docs/evidence/peer-endpoints/README.md#cp176",
             "docs/PROTOCOL.md#current-basic-cycles-291",
-            "docs/PROTOCOL.md#current-basic-contest-reset"
+            "docs/PROTOCOL.md#current-basic-contest-reset",
+            "docs/PROTOCOL.md#emulated-lan-acceptance"
           ]
         },
         "gate": {
@@ -3606,7 +3621,8 @@
           "docs/PROTOCOL.md#a-c-basic-cycles",
           "docs/evidence/peer-endpoints/README.md#cp176",
           "docs/PROTOCOL.md#current-basic-cycles-291",
-          "docs/PROTOCOL.md#current-basic-contest-reset"
+          "docs/PROTOCOL.md#current-basic-contest-reset",
+          "docs/PROTOCOL.md#emulated-lan-acceptance"
         ]
       },
       "coverage": {
@@ -3707,7 +3723,8 @@
               "docs/PROTOCOL.md#a-c-basic-cycles",
               "docs/evidence/peer-endpoints/README.md#cp176",
               "docs/PROTOCOL.md#current-basic-cycles-291",
-              "docs/PROTOCOL.md#current-basic-contest-reset"
+              "docs/PROTOCOL.md#current-basic-contest-reset",
+              "docs/PROTOCOL.md#emulated-lan-acceptance"
             ]
           },
           "windows_original": {
@@ -3791,7 +3808,8 @@
             "docs/PROTOCOL.md#a-c-basic-cycles",
             "docs/evidence/peer-endpoints/README.md#cp176",
             "docs/PROTOCOL.md#current-basic-cycles-291",
-            "docs/PROTOCOL.md#current-basic-contest-reset"
+            "docs/PROTOCOL.md#current-basic-contest-reset",
+            "docs/PROTOCOL.md#emulated-lan-acceptance"
           ]
         },
         "gate": {
@@ -3799,7 +3817,8 @@
           "state": "open",
           "refs": [
             "docs/PLAN.md#gates",
-            "docs/PLAN.md#k6a-acceptance"
+            "docs/PLAN.md#k6a-acceptance",
+            "docs/PLAN.md#k6b-acceptance"
           ]
         }
       },
@@ -3862,7 +3881,8 @@
           "docs/PROTOCOL.md#replacement-profile",
           "docs/evidence/peer-endpoints/README.md#cp177",
           "docs/PROTOCOL.md#current-basic-cycles-291",
-          "docs/PROTOCOL.md#current-basic-contest-reset"
+          "docs/PROTOCOL.md#current-basic-contest-reset",
+          "docs/PROTOCOL.md#emulated-lan-acceptance"
         ]
       },
       "coverage": {
@@ -3930,7 +3950,8 @@
               "docs/PROTOCOL.md#replacement-profile",
               "docs/evidence/peer-endpoints/README.md#cp177",
               "docs/PROTOCOL.md#current-basic-cycles-291",
-              "docs/PROTOCOL.md#current-basic-contest-reset"
+              "docs/PROTOCOL.md#current-basic-contest-reset",
+              "docs/PROTOCOL.md#emulated-lan-acceptance"
             ]
           },
           "windows_original": {
@@ -4010,7 +4031,8 @@
             "docs/PROTOCOL.md#replacement-profile",
             "docs/evidence/peer-endpoints/README.md#cp177",
             "docs/PROTOCOL.md#current-basic-cycles-291",
-            "docs/PROTOCOL.md#current-basic-contest-reset"
+            "docs/PROTOCOL.md#current-basic-contest-reset",
+            "docs/PROTOCOL.md#emulated-lan-acceptance"
           ]
         },
         "gate": {
@@ -4018,7 +4040,8 @@
           "state": "open",
           "refs": [
             "docs/PLAN.md#gates",
-            "docs/PLAN.md#k6a-acceptance"
+            "docs/PLAN.md#k6a-acceptance",
+            "docs/PLAN.md#k6b-acceptance"
           ]
         }
       },
@@ -4172,7 +4195,8 @@
           "docs/evidence/peer-endpoints/README.md#cp176",
           "docs/PROTOCOL.md#replacement-profile",
           "docs/evidence/peer-endpoints/README.md#cp177",
-          "docs/PROTOCOL.md#portable-probe-bundle"
+          "docs/PROTOCOL.md#portable-probe-bundle",
+          "docs/PROTOCOL.md#emulated-lan-acceptance"
         ]
       },
       "coverage": {
@@ -4330,7 +4354,8 @@
               "docs/evidence/peer-endpoints/README.md#cp176",
               "docs/PROTOCOL.md#replacement-profile",
               "docs/evidence/peer-endpoints/README.md#cp177",
-              "docs/PROTOCOL.md#portable-probe-bundle"
+              "docs/PROTOCOL.md#portable-probe-bundle",
+              "docs/PROTOCOL.md#emulated-lan-acceptance"
             ]
           },
           "windows_original": {
@@ -4524,7 +4549,8 @@
             "docs/evidence/peer-endpoints/README.md#cp176",
             "docs/PROTOCOL.md#replacement-profile",
             "docs/evidence/peer-endpoints/README.md#cp177",
-            "docs/PROTOCOL.md#portable-probe-bundle"
+            "docs/PROTOCOL.md#portable-probe-bundle",
+            "docs/PROTOCOL.md#emulated-lan-acceptance"
           ]
         },
         "gate": {
@@ -4532,7 +4558,8 @@
           "state": "open",
           "refs": [
             "docs/PLAN.md#gates",
-            "docs/PLAN.md#k6a-acceptance"
+            "docs/PLAN.md#k6a-acceptance",
+            "docs/PLAN.md#k6b-acceptance"
           ]
         }
       },
@@ -4564,7 +4591,8 @@
         "evidence": [
           "docs/evidence/udp-freshness/README.md",
           "docs/evidence/firstseen-admission/README.md",
-          "docs/PROTOCOL.md#portable-probe-bundle"
+          "docs/PROTOCOL.md#portable-probe-bundle",
+          "docs/PROTOCOL.md#emulated-lan-acceptance"
         ]
       },
       "coverage": {
@@ -4591,7 +4619,8 @@
             "state": "unknown",
             "refs": [
               "docs/evidence/firstseen-admission/README.md",
-              "docs/PROTOCOL.md#portable-probe-bundle"
+              "docs/PROTOCOL.md#portable-probe-bundle",
+              "docs/PROTOCOL.md#emulated-lan-acceptance"
             ]
           },
           "windows_original": {
@@ -4620,7 +4649,8 @@
           "state": "unknown",
           "refs": [
             "docs/evidence/firstseen-admission/README.md",
-            "docs/PROTOCOL.md#portable-probe-bundle"
+            "docs/PROTOCOL.md#portable-probe-bundle",
+            "docs/PROTOCOL.md#emulated-lan-acceptance"
           ]
         },
         "gate": {

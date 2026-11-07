@@ -42,29 +42,22 @@ accountresume. Widercodec chỉ mở khi có trigger cụ thể từ K3; không 
 Owner/tự kiểm Codex, review waived; AUD056 quaCP188, periodic audit kếCP192.
 
 <a id="gap-lobby-identity-followup"></a>
-### K6a basic local đã đạt; phần thiếu tiếp thuộc hai máy LAN
+### K6b LANgiảlập đã đạt; phần thiếu là nhánh routed/NAT/Internet
 
-[Scope K5](PLAN.md#k5-acceptance), [K6a](PLAN.md#k6a-acceptance),
-[currentcontest/reset](PROTOCOL.md#current-basic-contest-reset) và CP188positive/partials giữ nguồn chuẩn.
-Hai productionclaim/oneRollereffect và hai currentcontestedcycles/reset/peer/life đã có nguồn; baseline
-A5/B4 khác nhau là fixture runtime, không sửa về cùng5 hoặc lấy Wiki/VN làm nativebuild proof.
-Không còn active tìm lại ItemAttr/opcode/consumer/keyrelease hoặc integration contest đã đo.
+[Scope K6a](PLAN.md#k6a-acceptance), [K6bgiảlập](PLAN.md#k6b-acceptance),
+[contract/giới hạn](PROTOCOL.md#emulated-lan-acceptance). Chủ dự án không có2máy và cho giảlập;
+[directive](evidence/owner-directives/emulated-lan.json) bỏ yêu cầu physicaltwohosts cho K6b.
+Current2netns/actualKR/PCAP/nativeendpoint/2cycles/rejoin/EOFcontrol đã đối chiếu; không yêu cầu lại
+endpointmáy vật lý hoặc chạy lại knownlocal/virtualLAN. CP191 BpostwinRollerreset quaStart2/3 đã có
+nativebaseline4 ở2view/3clock; không còn variant này unknown. Fullinventory/reset khác giữscope riêng.
 
-Khoảng trống theo [PLAN](PLAN.md#current-order) là recipe hai máy LAN/endpoint/isolation/port/ownedcleanup
-và actualtwo-host consistency/disconnect/rejoin. CP141146bind/peerIP/redirect và virtualhost hiện tại là
-nguồn tái dùng; hai namespace/VM cùnghost không chứng minh physicalLAN. Chưa biết máy/endpoint dự án
-thứhai thì giữunknown/blocker, tiếp chuẩn bị deployment độc lập, không quét mạng ngoài/liveNexon.
-
-Tiền kiểm service sauCP189 ([metadata ban đầu](evidence/peer-endpoints/lan-preflight-candidate.json),
-[đã gom CP190](PROTOCOL.md#portable-probe-bundle)):
-`accept` gán role/stage theo globalordinal/4, `peer-ip` chỉ đặt endpoint UDP153. TCP loopback thực
-AAAA BBBB đúng8/8; ABABABAB sai6/8 role/stage. Không nativeclient/LAN proof. Recipe LAN đầu phải
-giữ startup tuần tự A tới channelready rồi B như run K6a; incoming identity/stage binding cho startup
-xen kẽ còn backlog. CP190 đã gom bằng chứng và bổ sung portablebundle/nativecontrol; không sửa
-record CP189 hoặc nghiệm thu physicalLAN. Máy/endpoint vật lý thứhai vẫn unknown.
-
-Fullauth/142freshness/distance/resetvariants/fullcodec/relayNAT/Internet/4–8actualclient vẫn theo trigger.
-Codex solo/tự kiểm/reviewwaived; AUD056qua188/kếCP192.
+Theo [PLAN](PLAN.md#current-order), phần thiếu cụ thể là transport qua hai subnet/router/routing/NAT,
+endpoint được quảng bá qua153 so với tuple actual99/API/PCAP, và trường hợp cần direct/relay. Bắt đầu
+preflight cô lập cócapture/cleanup, tận dụng CP141148/currentLANhelpers, chỉ đo delta. Emulatedrouted
+hoặc NATcontrol không mặcđịnh là Internet thật/latency/loss/gateK6c. Startup vẫn tuần tự vì admission
+role/stage theo globalordinal; incominggeneralaccountbinding còn backlog. Không externalNexon/liveauth.
+Fullauth/142freshness/distance/resetvariants/fullcodec/four-eightactualclient theo trigger.
+Codexsolo/tự kiểm/reviewwaived; AUD056qua188, periodicmanualaudit **CP192** kế tiếp bắt buộc.
 
 <a id="feature-gaps"></a>
 ## Khoảng trống theo cơ chế
