@@ -155,11 +155,11 @@
         "KR-F001",
         "KR-F015"
       ],
-      "known": "CP191 K6b acceptedemulatedLANscope perexplicitowner:2nativeKR netns/NIC/IP/PCAP/current2cycles/rejoin/EOFcontrols; BpostwinRollerreset4→5→4 measuredonportablebundle. K6a/K5scope retained.",
-      "remaining": "K6c routed/NAT/Internet/directrelay question; K7four-eightactualclients/fullauth/fullcodec/generalvariants bytrigger. Physicalsecondhost no longerrequiredforK6b.",
-      "next_test": "PLAN NEXT-K6C-ROUTED-PREFLIGHT: reusevirtualLAN/IP153/native99andtopology, initialisolatedtwo-subnet/router/NAT transport preflight beforetargetednativecontrol; emulatedrouted notInternetclaim.",
+      "known": "CP192 actualKRWine2routedsubnets/nativeendpointPCAP/two normalcycles/reset/Start3, nonNAT; ownerWineaccepted andemulatedLANK6b retained.",
+      "remaining": "NATsourceIP/portmapping/private99vs153/nativeIPregistration/directorrelay relation; K6cInternet/K7/four-eightactualclients/generalvariants open.",
+      "next_test": "PLAN NEXT-K6C-NAT-TUPLE: isolatedSNATDNAT transportcontrols/capturethenminimalnativeedge, noexternalNexon; do notrequirephysicalWindows/twohosts.",
       "acceptance": "Epic checklist: linkedscopedtask/evidence+authoritymatrix vàacceptancegate ởPLAN; từngtaskđóng khôngđóngepic/K5/K6a.",
-      "reason": "OwnerexplicitlyacceptsemulatedLAN; historicalrecords unchanged. CP191newdecision/manualmapping/nativeBreset; periodicmanualAUDdueCP192.",
+      "reason": "CP192periodicAUD057through192/next196; ownerWineacceptancesynced, noInternetgatefromroutedcontrol. CP191PR263merged.",
       "sources": [
         "docs/PROTOCOL.md#authority",
         "docs/RESEARCH.md#feature-gaps",

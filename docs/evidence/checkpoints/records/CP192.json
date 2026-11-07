@@ -1,0 +1,296 @@
+{
+  "id": "CP192",
+  "previous": "CP191",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-07T07:16:27.355756+00:00",
+  "context_commit": "a62af1e00f1ee90f03dccdc0065059e83c48e61c",
+  "owner": "Codex",
+  "reviewer": "Codex",
+  "question": "Does unchangedKRWine/portablebasic nativeUDP andtwo-roundreset compose across2routedsubnets, andhowdoesownerWineacceptance affectcurrentgateenvironment withoutrewritinghistory?",
+  "scope": "SourcefirstCP141148/CP191flatvirtualLAN/CP190bundle/currentBreset; privateTCPUDPforwardoff/oncontrol thenactualKR2cycles/Start3 withonlytopology/peerIP/captureallowlistdelta. ReadonlyPCAP/nativeendpointjoins, retained2keyanalyzerfailure fixedbyepochmatching, ownerWineexplicitdirective/AGENTSscope andmandatoryperiodicAUD057. No newnativebody/wire/policy/code/lawscan.",
+  "artifacts": [
+    {
+      "name": "OriginalKR00967unchanged",
+      "sha256": "a52545c14b1fea423de655c3163d6360b628d61c1cd472b46fdbc8a9ffe15f4e"
+    },
+    {
+      "name": "CurrentWinecopyunchanged",
+      "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+    },
+    {
+      "name": "NativeIDAfullcopycf72privateanalysis",
+      "sha256": "cf72da112308d9f1ca256df8089594c5f787875310933073bf6bd5ba6f70e63b"
+    },
+    {
+      "name": "modOmodelreference",
+      "sha256": "a08950c833d3acab8281049def7b3dc96b221f107eeda01da3a548e34b91dce5"
+    },
+    {
+      "name": "OriginalKR00967NewPatcher",
+      "sha256": "b59e4dce9ad23c439a7632ce04ecb2eed3481585bd2454100b05c9d7527f5c02"
+    },
+    {
+      "name": "VN116original_reference_only",
+      "sha256": "bce8644d4e783d1354ab4fc880e1ab9a4ab3325327028f37d99e5439e25f4bbd"
+    },
+    {
+      "name": "VN116patched_runtime_reference_only",
+      "sha256": "bc875ba5765cc112e924f46e75d0ace112904c7801126e46bc0abb1c9cb576b1"
+    },
+    {
+      "name": "PassingK1offlineR2recipe",
+      "sha256": "7b3b435b5d8e110185359107376b736615ceabe9452cea8154d02c8628f44c29"
+    },
+    {
+      "name": "NativeProcessPatchR1control",
+      "sha256": "a0c3b9867dae5fe2ff7c315cfe851117661c2cafead45196ce999329f67432f5"
+    },
+    {
+      "name": "OfflineWinecopy_import_compare_ABI_only",
+      "sha256": "4b781fbcea21e0f6294c729b63be86ab2953d60ad83b0d0c9219359f826107ed"
+    }
+  ],
+  "locators": [
+    "Currentcopy4b781fbcea21e0f6294c729b63be86ab2953d60ad83b0d0c9219359f826107ed, knownbase400000/RVA=VA-base/native99153/121/124165/175180/E66680/E667BE/E668AD/E668B2/B4EA14/52A350 reused. No newnativebody.",
+    "A10.78.1.2/24 via10.78.1.1, B10.78.2.3/24 via10.78.2.1, isolatedrootrouter/service10.77.0.1/32; staticcrosssubnet+serviceroutes/no externaldefault. SeparateownedCA/wineservers/netns/PIDs/startticks.",
+    "Nativeactualrun 9443c28d9479fdfd2d4f02e013efae09b98c6886cb69625a3edf1db054978f3f/404.113676936s/1394raw/frozen227/exit0/ownedcleanup0; keys12345/12346/12347/2Bnormalwins/Start3.",
+    "1155PCAPrecords/4683endpointjoins; firstverifieronly2keysfailedStart3key12347, retainedsource/log. Finaltyped153keymatchesactualepochloadingtimestampbounds/currentkey, rawunchanged.",
+    "OwnerWineacceptance exactquote in docs/evidence/owner-directives/wine-accepted.json; removefutureWindows-onlygateblockers, keepoldobservations/patch/environmentlabels. LANvirtualacceptance CP191unchanged.",
+    "CP191PR263exacta62af1e00f1ee90f03dccdc0065059e83c48e61c merged56a08dd67a5dce858611e3b80e5f588be8fa7477; AUD057periodicthrough192/next196."
+  ],
+  "findings": [
+    {
+      "summary": "Private2subnettransport actualsockets control: forwarding0 UDPtimeout/Bnotreceived, forwarding1 actualUDPecho source/desttuple preserved; TCPoriginbothsubnets reachesrouterservice. 27IPv4PCAPrecords/ownedcleanup/hostnamespaceunchanged, noexternaldefault. Infrastructureonly, notnative/Internet/NATproof.",
+      "source": "design",
+      "status": "design",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#routed-Wine-network",
+      "evidence": [
+        "ROUTED192-01648",
+        "ROUTED192-01647",
+        "ROUTED192-01646"
+      ],
+      "limits": "OwneracceptsWineinlieuofWindowsandemulatedLAN2hosts; actualenvironmentrecordedexactly/currentWinecopy4b/basic291/portableproduction/private2L2subnets/veth/rootrouter/sharedkernel/host. No externaldefault/Internet/NAT/relay/hardwarediversity orK6cgatefromrouting. New2Bnormalwins/reset/Ready2/Start3/4peerwindows; thirdactivenobomb/nooutcome, noEOF/oldUDP/contendersnewrun. Nativecopiedgetteremulation separatefromactualruntime/perviewnotglobalsametick; chosenfuse/drop/rank/guardsdesign. Originalbinary/DB/assets/oldcomplete/evidence immutable, reviewwaived."
+    },
+    {
+      "summary": "ActualKRWineABcurrentcopy/bundle/profile unchangedexceptnetwork: routedIP153/current99ports/native4A↔Bwindows/2keys/target/currentprogress; 2BsoleRollerclaims/one165/view/B4→5/A5unchanged, AactualSpaceIDs1,2/trapdeath/B21/twofull175180/Ready2/normalBStart3; nativebaseline4at3clocks/195seed/keyreset. No3rdoutcome/EOF/racesclaim.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#routed-Wine-network",
+      "evidence": [
+        "ROUTED192-00113",
+        "ROUTED192-00120",
+        "ROUTED192-01529",
+        "ROUTED192-01542",
+        "ROUTED192-01553",
+        "ROUTED192-01630"
+      ],
+      "limits": "OwneracceptsWineinlieuofWindowsandemulatedLAN2hosts; actualenvironmentrecordedexactly/currentWinecopy4b/basic291/portableproduction/private2L2subnets/veth/rootrouter/sharedkernel/host. No externaldefault/Internet/NAT/relay/hardwarediversity orK6cgatefromrouting. New2Bnormalwins/reset/Ready2/Start3/4peerwindows; thirdactivenobomb/nooutcome, noEOF/oldUDP/contendersnewrun. Nativecopiedgetteremulation separatefromactualruntime/perviewnotglobalsametick; chosenfuse/drop/rank/guardsdesign. Originalbinary/DB/assets/oldcomplete/evidence immutable, reviewwaived."
+    },
+    {
+      "summary": "RetainedroutedEthernetPCAP/IPv4UDPchecksums/source-destinationtuple/wireSHA joinnativeAPIactualIPport/typed153IPport/key/currenttargetprogress. Initialtwo-keyverifier failsactualStart3key12347; finalcheckerbinds153toactualepoch bytimestamp/loadingbounds, no addmagicconstant/rawfix/clientchange.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#routed-Wine-network",
+      "evidence": [
+        "ROUTED192-01634",
+        "ROUTED192-01636",
+        "ROUTED192-01635",
+        "ROUTED192-01632"
+      ],
+      "limits": "OwneracceptsWineinlieuofWindowsandemulatedLAN2hosts; actualenvironmentrecordedexactly/currentWinecopy4b/basic291/portableproduction/private2L2subnets/veth/rootrouter/sharedkernel/host. No externaldefault/Internet/NAT/relay/hardwarediversity orK6cgatefromrouting. New2Bnormalwins/reset/Ready2/Start3/4peerwindows; thirdactivenobomb/nooutcome, noEOF/oldUDP/contendersnewrun. Nativecopiedgetteremulation separatefromactualruntime/perviewnotglobalsametick; chosenfuse/drop/rank/guardsdesign. Originalbinary/DB/assets/oldcomplete/evidence immutable, reviewwaived."
+    },
+    {
+      "summary": "OwnerexplicitlyacceptsWineasprojectacceptanceenvironmentinplaceofphysicalWindows; canonicalAGENTS/PLAN/readme/research/protocol updated, no Windows-onlyretestblocker. KeeptrueWineversion/copiedSHA/patch/provenance andunknownunobservedWindowsAPIsashistory; no blankettechnicalequivalence orInternetgateinference.",
+      "source": "design",
+      "status": "design",
+      "method": "design",
+      "canonical": "docs/PROTOCOL.md#routed-Wine-network",
+      "evidence": [
+        "ROUTED192-00129",
+        "ROUTED192-00121",
+        "ROUTED192-00124"
+      ],
+      "limits": "OwneracceptsWineinlieuofWindowsandemulatedLAN2hosts; actualenvironmentrecordedexactly/currentWinecopy4b/basic291/portableproduction/private2L2subnets/veth/rootrouter/sharedkernel/host. No externaldefault/Internet/NAT/relay/hardwarediversity orK6cgatefromrouting. New2Bnormalwins/reset/Ready2/Start3/4peerwindows; thirdactivenobomb/nooutcome, noEOF/oldUDP/contendersnewrun. Nativecopiedgetteremulation separatefromactualruntime/perviewnotglobalsametick; chosenfuse/drop/rank/guardsdesign. Originalbinary/DB/assets/oldcomplete/evidence immutable, reviewwaived."
+    },
+    {
+      "summary": "PeriodicmanualAUD057 core→evidence/raw/capture/nativeowners/oldlimits/ownerdecisions fixesstaleK6bphysical/Windowsrequirements,nextK6btables/CP191delivery/two-keyanalyzercontext; recordcounter192/next196, K6cInternet/K7remainopen. AllPythonserver/toolsourceidenticaltoCP191exacthead,294+39tests reusedwithhashproof; docscatalog/history/diff rerun.",
+      "source": "design",
+      "status": "design",
+      "method": "design",
+      "canonical": "docs/PROTOCOL.md#routed-Wine-network",
+      "evidence": [
+        "ROUTED192-01620",
+        "ROUTED192-01528",
+        "ROUTED192-00127"
+      ],
+      "limits": "OwneracceptsWineinlieuofWindowsandemulatedLAN2hosts; actualenvironmentrecordedexactly/currentWinecopy4b/basic291/portableproduction/private2L2subnets/veth/rootrouter/sharedkernel/host. No externaldefault/Internet/NAT/relay/hardwarediversity orK6cgatefromrouting. New2Bnormalwins/reset/Ready2/Start3/4peerwindows; thirdactivenobomb/nooutcome, noEOF/oldUDP/contendersnewrun. Nativecopiedgetteremulation separatefromactualruntime/perviewnotglobalsametick; chosenfuse/drop/rank/guardsdesign. Originalbinary/DB/assets/oldcomplete/evidence immutable, reviewwaived."
+    }
+  ],
+  "verification": [
+    {
+      "check": "PrivateTCPUDPforwardoff/on/routedtuple andownedcleanup",
+      "result": "pass",
+      "evidence": [
+        "ROUTED192-01648",
+        "ROUTED192-01647"
+      ],
+      "limits": "Transportdesignnotnative/Internetgate."
+    },
+    {
+      "check": "ActualKR2routedsubnets/2Bnormalcycles/reset/Start3/peer/life/PCAPnativeendpoint",
+      "result": "pass",
+      "evidence": [
+        "ROUTED192-00113",
+        "ROUTED192-00120",
+        "ROUTED192-01529",
+        "ROUTED192-01542",
+        "ROUTED192-01634"
+      ],
+      "limits": "OwneracceptsWineinlieuofWindowsandemulatedLAN2hosts; actualenvironmentrecordedexactly/currentWinecopy4b/basic291/portableproduction/private2L2subnets/veth/rootrouter/sharedkernel/host. No externaldefault/Internet/NAT/relay/hardwarediversity orK6cgatefromrouting. New2Bnormalwins/reset/Ready2/Start3/4peerwindows; thirdactivenobomb/nooutcome, noEOF/oldUDP/contendersnewrun. Nativecopiedgetteremulation separatefromactualruntime/perviewnotglobalsametick; chosenfuse/drop/rank/guardsdesign. Originalbinary/DB/assets/oldcomplete/evidence immutable, reviewwaived."
+    },
+    {
+      "check": "OwnerWineenvironmentdirective/canonicalsync/periodicmanualAUD057",
+      "result": "pass",
+      "evidence": [
+        "ROUTED192-00129",
+        "ROUTED192-00127"
+      ],
+      "limits": "Ownerdecidesenvironment; notunmeasuredWindowsAPIproof orautogate."
+    },
+    {
+      "check": "294server/39checkpointtestsreusedwithsamePython-sourcehashes",
+      "result": "pass",
+      "evidence": [
+        "ROUTED192-01620",
+        "ROUTED192-00020",
+        "ROUTED192-00018"
+      ],
+      "limits": "No production/toolchanges; fullcurrentdocs/history/diff rerun afterappend/exacthead."
+    },
+    {
+      "check": "NATsourceIP/portmapping/relay/Internet/fullauth/generalvariants/4–8clients",
+      "result": "pending",
+      "evidence": [
+        "ROUTED192-00124"
+      ],
+      "limits": "NewroutedKRproofnotNATorInternet; nextisolatedtuplecontrols."
+    }
+  ],
+  "evidence": [],
+  "evidence_manifests": [
+    {
+      "path": "docs/evidence/checkpoints/evidence/CP192-routed-Wine.json",
+      "bytes": 442822,
+      "sha256": "4c455f5294852e5928c4f07aa42079394e8d2abe999bfea764fc41e30dd51f22",
+      "count": 1708
+    }
+  ],
+  "delta": {
+    "added": [
+      "ActualKRrouted2subnet/2Bnormalwins/nativepeer/reset/Start3/PCAPendpointproof onunchangedportablebundle.",
+      "Forwardoffnegative/onpositiveactualTCPUDP andownerWineaccepted directive/AGENTSscope.",
+      "AUD057periodicthrough192/next196, explicitnextNATtuple."
+    ],
+    "corrected": [
+      "FutureWindows/twophysicalhosts requirements superseded byowner, noautoproofWindowsAPI/newInternetgate.",
+      "Initial2keyanalyzerassumptiondoesnotcoverStart3; finalepochboundcomparison, rawfailurepreserved.",
+      "RESEARCHcurrentnextK6b/twomachines andPLANK6crowLANunknown stale afterCP191, currentnextNATtuple; CP191PR263merged."
+    ],
+    "superseded": [
+      "NEXT-K6C-ROUTED-PREFLIGHT closedrouted/noNATdelta; NEXT-K6C-NAT-TUPLE active."
+    ]
+  },
+  "blockers": [
+    "NATsourceIP/portmappingprivate99vsadvertised153/nativeIPregistration/directvsrelay unmeasured, needisolatedtransportSNATDNATcontrols thenminimumactualnativeedge.",
+    "Internet/fullauth/codec/generalaccount/resetvariants/mapsitems/four-eightclients/K7 remainoutsideproof; no physicalWindows ortwohardwarehostdependencyrequiredbyowner."
+  ],
+  "next_steps": [
+    {
+      "id": "NEXT-K6C-ROUTED-PREFLIGHT",
+      "task": "KRE-005b",
+      "state": "closed",
+      "action": "CP192forwardcontrol+actualKR2subnets/current2cycles/Start3/nativePCAPendpoint verified; noNAT/Internetclaim.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-K6C-NAT-TUPLE",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "PLANsourcefirst99/153/nativeIPregistration/routedhelpers; privateSNATDNATsourceIP/porttuplecontrols/capturecleanup thenminimalnativeedge/directorrelay. No externalNexon/Internetgatefromsimulation. AUD057through192/next196.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    }
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-11-07T07:16:27.355756+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "Codexsolo/runtime/readonlynative/capture/manualAUD057/ownerWineenvironment; reviewwaived notindependentapproved, exactheadPRchecks beforemerge; noInternetgate.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Owner explicitly requested solo, no workers/review."
+    }
+  },
+  "docs_sync": [
+    {
+      "path": "AGENTS.md",
+      "state": "updated",
+      "reason": "CP192routedproof/ownerWineenvironment/currentgaps/delivery/AUD057 synchronizedbeforecomplete; PLANsoleorder/oldrecordsimmutable/nextaudit196."
+    },
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "CP192routedproof/ownerWineenvironment/currentgaps/delivery/AUD057 synchronizedbeforecomplete; PLANsoleorder/oldrecordsimmutable/nextaudit196."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "CP192routedproof/ownerWineenvironment/currentgaps/delivery/AUD057 synchronizedbeforecomplete; PLANsoleorder/oldrecordsimmutable/nextaudit196."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "updated",
+      "reason": "CP192routedproof/ownerWineenvironment/currentgaps/delivery/AUD057 synchronizedbeforecomplete; PLANsoleorder/oldrecordsimmutable/nextaudit196."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "updated",
+      "reason": "CP192routedproof/ownerWineenvironment/currentgaps/delivery/AUD057 synchronizedbeforecomplete; PLANsoleorder/oldrecordsimmutable/nextaudit196."
+    },
+    {
+      "path": "docs/features.json",
+      "state": "updated",
+      "reason": "CP192routedproof/ownerWineenvironment/currentgaps/delivery/AUD057 synchronizedbeforecomplete; PLANsoleorder/oldrecordsimmutable/nextaudit196."
+    },
+    {
+      "path": "docs/COVERAGE.md",
+      "state": "updated",
+      "reason": "CP192routedproof/ownerWineenvironment/currentgaps/delivery/AUD057 synchronizedbeforecomplete; PLANsoleorder/oldrecordsimmutable/nextaudit196."
+    },
+    {
+      "path": "docs/evidence/peer-endpoints/README.md",
+      "state": "updated",
+      "reason": "CP192routedproof/ownerWineenvironment/currentgaps/delivery/AUD057 synchronizedbeforecomplete; PLANsoleorder/oldrecordsimmutable/nextaudit196."
+    },
+    {
+      "path": "docs/evidence/owner-directives/wine-accepted.json",
+      "state": "updated",
+      "reason": "CP192routedproof/ownerWineenvironment/currentgaps/delivery/AUD057 synchronizedbeforecomplete; PLANsoleorder/oldrecordsimmutable/nextaudit196."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/review.json",
+      "state": "updated",
+      "reason": "CP192routedproof/ownerWineenvironment/currentgaps/delivery/AUD057 synchronizedbeforecomplete; PLANsoleorder/oldrecordsimmutable/nextaudit196."
+    },
+    {
+      "path": "docs/evidence/checkpoints/audits/AUD057.json",
+      "state": "updated",
+      "reason": "CP192routedproof/ownerWineenvironment/currentgaps/delivery/AUD057 synchronizedbeforecomplete; PLANsoleorder/oldrecordsimmutable/nextaudit196."
+    }
+  ]
+}

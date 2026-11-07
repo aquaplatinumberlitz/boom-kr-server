@@ -1,0 +1,142 @@
+{
+  "id": "AUD057",
+  "trigger": "periodic",
+  "completed_through": "CP192",
+  "recorded_utc": "2026-11-07T07:12:39.154943+00:00",
+  "auditor": "Codex manual self-audit; independent review waived",
+  "read_files": [
+    "AGENTS.md",
+    "README.md",
+    "docs/PLAN.md",
+    "docs/PROTOCOL.md",
+    "docs/RESEARCH.md",
+    "docs/REFERENCES.md",
+    "docs/features.json",
+    "docs/COVERAGE.md",
+    "docs/evidence/peer-endpoints/README.md",
+    "docs/evidence/peer-endpoints/k6b-acceptance.json",
+    "docs/evidence/owner-directives/emulated-lan.json",
+    "docs/evidence/owner-directives/wine-accepted.json",
+    "docs/evidence/checkpoints/README.md",
+    "docs/evidence/checkpoints/records/CP188.json",
+    "docs/evidence/checkpoints/records/CP189.json",
+    "docs/evidence/checkpoints/records/CP190.json",
+    "docs/evidence/checkpoints/records/CP191.json",
+    "docs/evidence/issue-reconciliation/review.json",
+    "local/research/codex/portable-B-winner-reset-r1/source-first.json",
+    "local/research/codex/portable-B-winner-reset-r1/raw-seal.json",
+    "local/research/codex/portable-B-winner-reset-r1/B-winner-reset-verification.json",
+    "local/research/codex/portable-B-winner-reset-r1/contest-reset-verification.json",
+    "local/research/codex/portable-B-winner-reset-r1/visual-review.json",
+    "local/research/codex/virtual-LAN-review-r1/source-first.json",
+    "local/research/codex/virtual-LAN-review-r1/verification.json",
+    "local/research/codex/virtual-LAN-review-r1/raw-seal.json",
+    "local/research/codex/routed-transport-r1/report.json",
+    "local/research/codex/routed-transport-r1/raw-seal.json",
+    "local/research/codex/routed-transport-r1/outer.json",
+    "local/research/codex/routed-KR-two-cycles-r1/source-first.json",
+    "local/research/codex/routed-KR-two-cycles-r1/runtime-preflight.json",
+    "local/research/codex/routed-KR-two-cycles-r1/raw-seal.json",
+    "local/research/codex/routed-KR-two-cycles-r1/cycles/run.json",
+    "local/research/codex/routed-KR-two-cycles-r1/cycles/service-state.json",
+    "local/research/codex/routed-KR-two-cycles-r1/cycles/virtual-network.json",
+    "local/research/codex/routed-KR-two-cycles-r1/cycles/udp-virtual.pcap",
+    "local/research/codex/routed-KR-two-cycles-r1/cycles/client.log",
+    "local/research/codex/routed-KR-two-cycles-r1/cycles/client-B.log",
+    "local/research/codex/routed-KR-two-cycles-r1/contest-reset-verification.json",
+    "local/research/codex/routed-KR-two-cycles-r1/B-winner-reset-verification.json",
+    "local/research/codex/routed-KR-two-cycles-r1/endpoint-peer-verification.json",
+    "local/research/codex/routed-KR-two-cycles-r1/life-agreement-verification.json",
+    "local/research/codex/routed-KR-two-cycles-r1/peer-getter-verification.json",
+    "local/research/codex/routed-KR-two-cycles-r1/visual-review.json",
+    "local/research/codex/routed-KR-two-cycles-r1/routed-results-start3-contact.png",
+    "local/research/codex/routed-endpoint-review-r1/source-first.json",
+    "local/research/codex/routed-endpoint-review-r1/source-first-r2.json",
+    "local/research/codex/routed-endpoint-review-r1/verifier-two-key-assumption.py",
+    "local/research/codex/routed-endpoint-review-r1/verifier-two-key-assumption.log",
+    "local/research/codex/routed-endpoint-review-r1/verification.json",
+    "local/research/codex/routed-endpoint-review-r1/raw-seal.json",
+    "local/research/codex/cp191-pr-merged.json",
+    "local/research/codex/owner-wine-acceptance.json",
+    "local/research/codex/routed_transport_smoke.py",
+    "local/research/codex/prepare_routed_KR.py",
+    "local/research/codex/verify_routed_endpoint_r2.py",
+    "local/research/codex/analyze_routed_KR.py"
+  ],
+  "method": "Manual README→PLANgate/currentorder→PROTOCOLauthority/endpoint/currentLANbundle/routed contracts→RESEARCHgaps→evidence/raw/PCAP/nativeAPIowners/currenttyped99/153/nativefield/getter/life/control/errorlogs/images/ownerdecisions. Scopecurrentcontracts andCP189192deltas; no recertificationallhistoricalparagraphs, notjustchecker. Historicalfullrecords readselectivefields only, notgiantindex. Runtimeconfigs frozen tocleanup; oldcomplete/evidence/rawunchanged.",
+  "findings": [
+    {
+      "id": "F1",
+      "stale": "AGENTS retainedWindowsVMoriginalcontrol requirement contrarynewexplicitownerWineacceptance; futurephysicalWindows/twohostblockers stale.",
+      "correction": "PersistownerdirectiveWineaccepted forprojectgates andupdateAGENTS/PLANgatepreamble; keepWineversion/copySHA/patch/limits andhistoricalobservations, no unmeasuredWindowsAPIclaim. EmulatedLANacceptedCP191 retained.",
+      "fixed_in": [
+        "AGENTS.md",
+        "README.md",
+        "docs/PLAN.md",
+        "docs/PROTOCOL.md",
+        "docs/RESEARCH.md",
+        "docs/evidence/owner-directives/wine-accepted.json"
+      ]
+    },
+    {
+      "id": "F2",
+      "stale": "CurrentRESEARCHredirectlobby nextK6b andhardeningtrytwomachines remainedactive afterCP191virtualLANaccepted.",
+      "correction": "PointtocurrentNATtuple afterCP192routednativeproof; no requestsforphysicalmachines/Windows orrepeatknownLAN/codec/ItemAttr.",
+      "fixed_in": [
+        "docs/RESEARCH.md",
+        "docs/COVERAGE.md",
+        "docs/PLAN.md"
+      ]
+    },
+    {
+      "id": "F3",
+      "stale": "Bpostwinnerreset wasunknown inCP189/oldcurrentheaders, CP191deliverypending.",
+      "correction": "KeepCP189unknownashistorical; newCP191native4→5→4twice/Start3 scopeandPR263mergeexplicit, currentroutedrunindependentconfirmation. No universalallstats/resetclaim.",
+      "fixed_in": [
+        "README.md",
+        "docs/PLAN.md",
+        "docs/PROTOCOL.md",
+        "docs/RESEARCH.md",
+        "docs/evidence/peer-endpoints/README.md"
+      ]
+    },
+    {
+      "id": "F4",
+      "stale": "Newroutedendpointverifier inheritedonly2key acceptance fromold2epochPC189 whilecurrentrunhasStart3; initialassertfailedA153key12347.",
+      "correction": "Keepoldverifier/errorlog, finalchecker associates153withactualepochbyloadingtimestampbound/key. No raw/service/clientchange or auto-gate; full3key/nativeclockproofindependent.",
+      "fixed_in": [
+        "docs/evidence/peer-endpoints/README.md",
+        "docs/PROTOCOL.md"
+      ]
+    },
+    {
+      "id": "F5",
+      "stale": "Routedtransportecho couldbe readasnative/Internet/NATproof; rawtopologylabelsnotLANcouldlookincompatiblewithownernewcriteria.",
+      "correction": "Separateforwardoff/ontransportcontrol fromactualWine2cycles/nativePCAPtupleproof. Ownerchoosesenvironment, doesnotrewriteraworproveNAT/relay/Internet; no K6cgateclosed.",
+      "fixed_in": [
+        "docs/PROTOCOL.md",
+        "docs/RESEARCH.md",
+        "docs/PLAN.md",
+        "docs/evidence/peer-endpoints/README.md"
+      ]
+    },
+    {
+      "id": "F6",
+      "stale": "Currentauditcounter192due andnexttaskROUTED-PREFLIGHT wouldbeoutdatedaftermeaningfulroutedbatch.",
+      "correction": "AppendCP192/AUD057, nextperiodicCP196, closeonlyroutedtaskdelta andopenNAT-TUPLE; preservecounter/history/lists andreviewwaiver. CatalogK6overallstillopen.",
+      "fixed_in": [
+        "docs/evidence/checkpoints/manifest.json",
+        "README.md",
+        "docs/PLAN.md",
+        "docs/RESEARCH.md",
+        "docs/features.json",
+        "docs/COVERAGE.md"
+      ]
+    }
+  ],
+  "remaining": [
+    "K6cNATsourceIP/portmapping vsprivate99/153/nativeIPregistration/directvsrelay unknown; nextisolatedSNATDNATtransportcontrols thennativeedge. No Internet/realNAT/hardwarelatency/lossclaim.",
+    "Generalaccountbinding/interleavedstartup/auth/fullcodec/142freshness/distance/allmapsitems/resetvariants/four-eightactualclients/K7 remainbytrigger; notallbeforeeachdemo.",
+    "CP192code/docsdeliverypendingcommitPR/exacthead; reviewwaived/notindependentapproved. MandatoryperiodiccadencecontinuesatCP196."
+  ]
+}

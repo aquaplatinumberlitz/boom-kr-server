@@ -1,7 +1,7 @@
 # Kế hoạch server giả lập KR 00967
 
 Nguồn chuẩn của project `boom-kr-server`; bản nhập từ plan đã được dsh1/dsh2 review tại `1eee46d`.
-CP191: K6b đạt scope LANgiảlập theo quyết định mới của chủ dự án; hai máy vật lý không còn blocker. NativeBpostwinRollerreset đã đo quaStart2/3 trênportablebundle. K6c/K7 mở; AUD056qua188/kếCP192.
+CP192: actualKR Wine hai subnet/router/directTCPUDP/two normalcycles/reset/Start3 đã đo, không NAT/Internetpass. OwnerWineaccepted thayWindows vàLANgiảlập giữápdụng. AUD057qua192, kếCP196; tiếpNATtuple/control.
 
 
 ### Mục tiêu, baseline và phạm vi
@@ -37,7 +37,7 @@ với client Rust không chứng minh có thể điều khiển client KR bằng
 
 ### Tiến độ hiện hành theo bằng chứng
 
-| Task/mốc | Trạng thái tại CP191 | Nguồn chuẩn |
+| Task/mốc | Trạng thái tại CP192 | Nguồn chuẩn |
 |---|---|---|
 | KRE-004/issue6 | Đã review/merge PR7 và đóng issue:recipe r1 đến local accept;không phải full K1 | [Wine r1](evidence/wine/README.md) |
 | Bootstrap reply | PR8 đã merge;debugger ProcessPatchreturn1,không ép success | [bootstrap evidence](evidence/bootstrap-wire/README.md) |
@@ -52,7 +52,7 @@ với client Rust không chứng minh có thể điều khiển client KR bằng
 | K5 | Basic local đạt CP188; current2cycles/peer/Bowner/EOFcontrol riêng, designauthority được rà. Không fullinventory/mode/map | [Nghiệm thu](#k5-acceptance) |
 | K6a | Local hai actualAB/basic/cùnghost đạt CP189; nativecontestedindex/reset/life và CP188peer/Bowner/EOF cóscope riêng. Không physicalLAN/Internet | [Nghiệm thu](#k6a-acceptance) |
 | K6b | Đạt CP191 cho LANgiảlập hai netns/IP/NIC/actualKR theo owner; physicaltwohosts không required | [Nghiệm thu](#k6b-acceptance) |
-| K6c/K7 | [CP166](PROTOCOL.md#current-mode-host-rejoin) currentmodehostBack/rejoin, [CP168](PROTOCOL.md#current-mode-promoted-start3) Bhost2normalcycles/Ready/Start3 có nguồn. [Rà K4](#k4-evidence-review), [authority](PROTOCOL.md#authority) và [rà basic K5/K6a](#basic-acceptance-review) giữ scope; chưa gate/fullmatch/LAN/Internet/8client. | [Coverage/gap](COVERAGE.md), [membership](RESEARCH.md#gap-room-membership) |
+| K6c/K7 | CP192 actualKR routedhai-subnet đãđo, chưa NAT/relay/Internetgate; K7 bốn actualclient/hardening cònmở. K6a vàK6bgiảlập giữscopeđạt theoowner | [Current-order](#current-order), [authority](PROTOCOL.md#authority), [gap](RESEARCH.md#gap-lobby-identity-followup) |
 
 <a id="current-order"></a>
 ### Thứ tự công việc hiện hành
@@ -81,13 +81,15 @@ không tạo nhánh kiểm kê wiki hoặc mở mode phụ trước K3/K4/K5/K6a
    distinctNIC-IP-netns/directTCPUDP/nativePCAP/2normalcycles/rejoin/EOFcontrol có nguồn; không yêu cầu
    cung cấp physicalendpoint mới. [Portablebundle](PROTOCOL.md#portable-probe-bundle) và [reset B](PROTOCOL.md#emulated-lan-acceptance)
    đã córuntimecontrol, không làm lại các ca đó.
-   `NEXT-K6C-ROUTED-PREFLIGHT`: dùng nguồn CP141148/153/virtualLAN và fixturekey/endpoint/actual99
-   trước khi đo phần khácbiệt: hai subnet/router/routing/NAT trong netns cô lập. Bắt đầu transport/service
-   preflight có capture/cleanup, rồi actualnative theo cạnh thiếu; giữ startup tuần tự Achannelready→B
-   vì admission vẫn globalordinal. Không liveNexon/Internet egress; emulatedrouted/NAT control chưa tự
-   là K6cInternetpass hoặc relay/fullUDPgrammar. ScopeK6c giữ cần kiểm/đối chiếu riêng, K7bốn client sau đó.
+   `NEXT-K6C-ROUTED-PREFLIGHT` khép phần2subnet/router CP192: transportforward0negative→1positive và
+   actualKR2cycles/reset/Start3/PCAPnativeendpoint đã cónguồn. Khônglặp routing/hàngđợi/codec đãgiải.
+   `NEXT-K6C-NAT-TUPLE`: tái dùng99/153/nativeIPregistration vàroutedtopology trước khi đoNATsourceIP/
+   portmapping. Bắt đầutransport preflight SNAT/DNAT/tuplecontrol trongnetns, sauđó targetactualKR theo
+   cạnhkhácbiệt, không bịa relayopcode/serverauthority. Giữstartup tuần tự; không externalNexon/Internet
+   egress. EmulatedNAT không mặcđịnh Internet/K6cpass; K7bốn client theo dependency bước5. Wineđượcowner
+   chấp nhận thayWindows thật, không yêucầuWindowsVM/máyvậtlý ([directive](evidence/owner-directives/wine-accepted.json)).
    [#14](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/14) tiếp tục mở.
-   <!-- active-issue: 14 --> AUD056qua188, audit kế **CP192**.
+   <!-- active-issue: 14 --> AUD057qua192, audit kế **CP196**.
 
 2. **KR-B003/KR-F006 — nợ có giới hạn:** [CP057](PROTOCOL.md#codec-stream-boundaries) đã đo stream/
    seq/bounds trong model, không mở lại76split hoặc cấp buffer lớn chỉ để vượt allocationguardFFFFFFFF.
@@ -168,6 +170,12 @@ không chứng minh nguyên nhân oldnotstable; entrycolumn reuseCP175 có contr
 
 <a id="gates"></a>
 ### Dependency và gate
+
+Từ CP192, [ownerWineacceptance](evidence/owner-directives/wine-accepted.json) cho dùngWine thayWindows
+thật ởmọi nghiệmthu project; [LANgiảlập](evidence/owner-directives/emulated-lan.json) thayphysicaltwohosts
+choK6b. Các yêu cầu WindowsVM/ETW/fixedNTFS trongđịnhnghĩa hoặc bảngđốichiếu cũ bên dưới giữprovenance
+của controlđãđo, không là blocker đòi chạyWindowsmới. Mỗi run mới vẫn pinmôi trường/copy/patch/isolation/
+ownedPID/capture/nativebehavior; không suy đổimôi trườngnghiệmthu thành proof vềAPI chưađo.
 
 ```mermaid
 flowchart LR

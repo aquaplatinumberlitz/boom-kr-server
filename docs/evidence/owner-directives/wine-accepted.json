@@ -1,0 +1,10 @@
+{
+  "recorded_utc": "2026-11-07T06:53:38.736563+00:00",
+  "source": "owner_explicit_user_message",
+  "quote": "chủ dự án  hiện cũng ko có windows thật, cứ test trên wine là được, chấp nhận như win thật",
+  "decision": "Wine được chủ dự án chấp nhận làm môi trường nghiệm thu thay Windows thật; không yêu cầu WindowsVM/physicalWindows để đóng gate trong phạm vi project.",
+  "limits": "Ghi đúng Wineversion/copiedbinarySHA/patch/provenance để tái lập; không tự tuyên bố đã quan sát API/runtimeWindows chưa chạy. Originalsourcebinary/DB/assets immutable. Supersedes futureWindows-only blockers, nothistoricalraw/recordobservations.",
+  "documentation": "CP192/AUD057 đồng bộ nguồn chuẩn; lịch sử record/raw Windows và Wine giữnguyên.",
+  "schema": "kre-owner-directive-v1",
+  "status": "design"
+}

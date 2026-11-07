@@ -91,5 +91,9 @@ Docs/checkpoint: chạy python3 tools/check_docs.py,python3 tools/check_checkpoi
 ngữ nghĩa hoặc đóng gate.
 Tool/codec/server: chạy kiểm phù hợp hành vi thay đổi; không mặc định phải build client Rust cũ.
 CI/build server hiện chỉ Linux. Theo yêu cầu26/10, ưu tiên Wine cho bản copy unpack/patch đã đo;
-Windows VM giữ vai trò đối chứng KR nguyên bản. Không suy modified Wine tương đương vanilla Windows.
+Theo [chỉ đạo chủ dự án](docs/evidence/owner-directives/wine-accepted.json), Wine được chấp nhận làm môi trường
+nghiệm thu thay Windows thật cho project; không yêu cầu WindowsVM/máyWindows hoặc chạy lại các gate
+chỉ để có môi trường đó. Ghi đúng Wineversion/hash/copy/patch và nativeevidence để tái lập; không sửa
+lịch sử hoặc mô tả sai môi trường run chưa chạy. [LAN giả lập](docs/evidence/owner-directives/emulated-lan.json)
+cũng được chủ dự án chấp nhận thay hai máy vật lý; giữ rõ topology/interface/IP/capture/giới hạn.
 Bàn giao nêu commit/file, nguồn đã đọc, lệnh kiểm+kết quả, evidence và blocker/bước tiếp.
