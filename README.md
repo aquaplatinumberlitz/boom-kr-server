@@ -103,6 +103,12 @@ có capture; [contract/giới hạn](docs/PROTOCOL.md#routed-Wine-network). Chư
 CP191 đã merge [PR263](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/263) tại`56a08dd6`.
 AUD057 periodic qua192, audit kế **CP196**. [Review waived](docs/evidence/checkpoints/review-waiver.json).
 
+**CP193: đã đo đối chứng NAT trên hai KR Wine thật.** Endpoint riêng làm consumer trả0; khai báo tuple
+đã ánh xạ + DNAT khôi phục handler, key và movement hai chiều. [Contract/giới hạn](docs/PROTOCOL.md#nat-endpoint-control),
+[run/hash](docs/evidence/peer-endpoints/README.md#cp193). Chưa hai chu kỳ trên NAT hoặc K6c Internet.
+CP192 đã merge [PR264](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/264) tại`1a6daad0c17d718bc86574162bf2946bca1ed800`.
+Audit kế CP196; CP193 review waived, chờ PR/exact-head checks.
+
 Đích đầu: hai client thật chơi hai trận liên tiếp; mở bốn client và hardening sau đó.
 
 ## Bắt đầu

@@ -1,7 +1,7 @@
 {
   "schema": "kre-feature-index-v1",
   "build": "KR00967",
-  "as_of": "CP192",
+  "as_of": "CP193",
   "sources": {
     "plan": "docs/PLAN.md",
     "contract": "docs/PROTOCOL.md",
@@ -1483,7 +1483,8 @@
           "docs/PROTOCOL.md#current-basic-cycles-291",
           "docs/PROTOCOL.md#current-basic-contest-reset",
           "docs/PROTOCOL.md#emulated-lan-acceptance",
-          "docs/PROTOCOL.md#routed-Wine-network"
+          "docs/PROTOCOL.md#routed-Wine-network",
+          "docs/PROTOCOL.md#nat-endpoint-control"
         ]
       },
       "coverage": {
@@ -3224,7 +3225,7 @@
       ],
       "lifecycle": "active",
       "refs": {
-        "contract": "docs/PROTOCOL.md#udp-generation",
+        "contract": "docs/PROTOCOL.md#nat-endpoint-control",
         "question": "docs/RESEARCH.md#gap-peer-relay",
         "plan": "docs/PLAN.md#current-order",
         "evidence": [
@@ -3240,7 +3241,8 @@
           "docs/evidence/peer-endpoints/README.md#cp149",
           "docs/evidence/peer-endpoints/README.md#cp150",
           "docs/evidence/peer-endpoints/README.md#cp151",
-          "docs/evidence/peer-endpoints/README.md#cp158"
+          "docs/evidence/peer-endpoints/README.md#cp158",
+          "docs/evidence/peer-endpoints/README.md#cp193"
         ]
       },
       "coverage": {
@@ -3268,20 +3270,10 @@
         },
         "runtime": {
           "wine_diagnostic_copy": {
-            "state": "unknown",
+            "state": "observed",
             "refs": [
-              "docs/evidence/peer-endpoints/README.md",
-              "docs/evidence/peer-endpoints/README.md#cp139",
-              "docs/evidence/peer-endpoints/README.md#cp140",
-              "docs/evidence/peer-endpoints/README.md#cp141",
-              "docs/evidence/peer-endpoints/README.md#cp142",
-              "docs/evidence/peer-endpoints/README.md#cp145",
-              "docs/evidence/peer-endpoints/README.md#cp146",
-              "docs/evidence/peer-endpoints/README.md#cp148",
-              "docs/evidence/peer-endpoints/README.md#cp149",
-              "docs/evidence/peer-endpoints/README.md#cp150",
-              "docs/evidence/peer-endpoints/README.md#cp151",
-              "docs/evidence/peer-endpoints/README.md#cp158"
+              "docs/PROTOCOL.md#nat-endpoint-control",
+              "docs/evidence/peer-endpoints/README.md#cp193"
             ]
           },
           "windows_original": {
@@ -4605,7 +4597,8 @@
           "docs/evidence/firstseen-admission/README.md",
           "docs/PROTOCOL.md#portable-probe-bundle",
           "docs/PROTOCOL.md#emulated-lan-acceptance",
-          "docs/PROTOCOL.md#routed-Wine-network"
+          "docs/PROTOCOL.md#routed-Wine-network",
+          "docs/PROTOCOL.md#nat-endpoint-control"
         ]
       },
       "coverage": {

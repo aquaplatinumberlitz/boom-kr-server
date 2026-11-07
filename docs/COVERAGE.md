@@ -44,7 +44,7 @@ Review độc lập: [waived theo chủ dự án](evidence/checkpoints/review-wa
 | [KR-F012 · Nhóm chủ động ngoài kim](#kr-f012) | candidate | static | partial | unknown | unknown | unknown | unknown | unknown | unknown / unknown | unknown | K5: passed |
 | [KR-F013 · Thời hạn và variant item](#kr-f013) | candidate | static | partial | unknown | unknown | unknown | unknown | unknown | unknown / unknown | unknown | K5: passed |
 | [KR-F014 · Item riêng mode/event](#kr-f014) | candidate | static | partial | unknown | unknown | unknown | unknown | unknown | unknown / unknown | unknown | K5: passed |
-| [KR-F015 · Relay, NAT và type UDP khác](#kr-f015) | candidate | both | partial | unknown | unknown | unknown | unknown | unknown | unknown / unknown | unknown | K6: open |
+| [KR-F015 · Relay, NAT và type UDP khác](#kr-f015) | candidate | both | partial | unknown | observed | unknown | unknown | unknown | unknown / unknown | unknown | K6: open |
 | [KR-X001 · Kết quả và trở về phòng](#kr-x001) | present | both | partial | checked | observed | unknown | unknown | unknown | partial / via_pr | partial | K5: passed |
 | [KR-X002 · Reset vòng và stale fences](#kr-x002) | present | both | partial | checked | observed | unknown | unknown | unknown | partial / via_pr | partial | K6: open |
 | [KR-X003 · EOF, forfeit và peer thay thế](#kr-x003) | present | both | partial | checked | observed | unknown | unknown | unknown | partial / via_pr | partial | K6: open |
@@ -547,7 +547,7 @@ Phép kiểm tối thiểu (trích cùng nguồn): FullUDP/auth/reliability/gene
 
 Issue/phạm vi công việc: [#14](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/14), [#176](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/176).
 
-Bằng chứng/build/hash/recipe: [peer-duo](evidence/peer-duo/README.md), [probe-service](evidence/probe-service/README.md), [current-pair-round](evidence/current-pair-round/README.md), [current-udp-causality](evidence/current-udp-causality/README.md), [current-peer-targets](evidence/current-peer-targets/README.md), [ending34-state-boundary](evidence/ending34-state-boundary/README.md), [ending-udp-state-apply](evidence/ending-udp-state-apply/README.md), [current-movement-cycles](evidence/current-movement-cycles/README.md), [promoted-battle-cycles](evidence/promoted-battle-cycles/README.md), [promoted-outcome](evidence/promoted-outcome/README.md), [integrated-survivor](evidence/integrated-survivor/README.md), [peer-endpoints](evidence/peer-endpoints/README.md), [peer-endpoints](evidence/peer-endpoints/README.md#cp139), [peer-endpoints](evidence/peer-endpoints/README.md#cp142), [peer-endpoints](evidence/peer-endpoints/README.md#cp143), [peer-endpoints](evidence/peer-endpoints/README.md#cp144), [peer-endpoints](evidence/peer-endpoints/README.md#cp145), [peer-endpoints](evidence/peer-endpoints/README.md#cp148), [peer-endpoints](evidence/peer-endpoints/README.md#cp149), [peer-endpoints](evidence/peer-endpoints/README.md#cp153), [peer-endpoints](evidence/peer-endpoints/README.md#cp164), [peer-endpoints](evidence/peer-endpoints/README.md#cp165), [peer-endpoints](evidence/peer-endpoints/README.md#cp167), [peer-endpoints](evidence/peer-endpoints/README.md#cp168), [peer-endpoints](evidence/peer-endpoints/README.md#cp173), [docs](PROTOCOL.md#a-c-basic-cycles), [peer-endpoints](evidence/peer-endpoints/README.md#cp176), [docs](PROTOCOL.md#current-basic-cycles-291), [docs](PROTOCOL.md#current-basic-contest-reset), [docs](PROTOCOL.md#emulated-lan-acceptance), [docs](PROTOCOL.md#routed-Wine-network).
+Bằng chứng/build/hash/recipe: [peer-duo](evidence/peer-duo/README.md), [probe-service](evidence/probe-service/README.md), [current-pair-round](evidence/current-pair-round/README.md), [current-udp-causality](evidence/current-udp-causality/README.md), [current-peer-targets](evidence/current-peer-targets/README.md), [ending34-state-boundary](evidence/ending34-state-boundary/README.md), [ending-udp-state-apply](evidence/ending-udp-state-apply/README.md), [current-movement-cycles](evidence/current-movement-cycles/README.md), [promoted-battle-cycles](evidence/promoted-battle-cycles/README.md), [promoted-outcome](evidence/promoted-outcome/README.md), [integrated-survivor](evidence/integrated-survivor/README.md), [peer-endpoints](evidence/peer-endpoints/README.md), [peer-endpoints](evidence/peer-endpoints/README.md#cp139), [peer-endpoints](evidence/peer-endpoints/README.md#cp142), [peer-endpoints](evidence/peer-endpoints/README.md#cp143), [peer-endpoints](evidence/peer-endpoints/README.md#cp144), [peer-endpoints](evidence/peer-endpoints/README.md#cp145), [peer-endpoints](evidence/peer-endpoints/README.md#cp148), [peer-endpoints](evidence/peer-endpoints/README.md#cp149), [peer-endpoints](evidence/peer-endpoints/README.md#cp153), [peer-endpoints](evidence/peer-endpoints/README.md#cp164), [peer-endpoints](evidence/peer-endpoints/README.md#cp165), [peer-endpoints](evidence/peer-endpoints/README.md#cp167), [peer-endpoints](evidence/peer-endpoints/README.md#cp168), [peer-endpoints](evidence/peer-endpoints/README.md#cp173), [docs](PROTOCOL.md#a-c-basic-cycles), [peer-endpoints](evidence/peer-endpoints/README.md#cp176), [docs](PROTOCOL.md#current-basic-cycles-291), [docs](PROTOCOL.md#current-basic-contest-reset), [docs](PROTOCOL.md#emulated-lan-acceptance), [docs](PROTOCOL.md#routed-Wine-network), [docs](PROTOCOL.md#nat-endpoint-control).
 
 | Chiều chứng minh | Khai báo | Nguồn/phạm vi áp dụng |
 |---|---|---|
@@ -916,15 +916,15 @@ Bằng chứng/build/hash/recipe: [item-families](evidence/item-families/README.
 
 Dependency: [KR-F002](#kr-f002).
 
-[Contract và giới hạn](PROTOCOL.md#udp-generation) · [Câu hỏi gốc](RESEARCH.md#gap-peer-relay) · [Thứ tự ở PLAN](PLAN.md#current-order).
+[Contract và giới hạn](PROTOCOL.md#nat-endpoint-control) · [Câu hỏi gốc](RESEARCH.md#gap-peer-relay) · [Thứ tự ở PLAN](PLAN.md#current-order).
 
-Khoảng trống (trích bảng RESEARCH): CP155 currentallTCPdirect/oldUDPnegative+currentpositive/2contests/4peerwindows/EOF3 cùngrun.
+Khoảng trống (trích bảng RESEARCH): [CP193](PROTOCOL.md#nat-endpoint-control) đã kiểm SNAT nhận thực tế/queue/drain và đối chứng153 riêng với mapped+DNAT/native helper/output/handler/current movement.
 
-Phép kiểm tối thiểu (trích cùng nguồn): RealLAN/NAT/Internet/relay/fullUDP chưa đo; theo thứ tự hiện hành trong PLAN, không gọi virtualhosts là physicalLAN.
+Phép kiểm tối thiểu (trích cùng nguồn): Tiếp NEXT-K6C-MAPPED-CYCLES trong PLAN; chưa hai vòng NAT, NAT discovery/relay gốc/fullUDP/Internet. K6b LAN giả lập đã đạt theo owner.
 
 Issue/phạm vi công việc: [#14](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/14).
 
-Bằng chứng/build/hash/recipe: [peer153](evidence/peer153/README.md), [peer-endpoints](evidence/peer-endpoints/README.md), [peer-endpoints](evidence/peer-endpoints/README.md#cp139), [peer-endpoints](evidence/peer-endpoints/README.md#cp140), [peer-endpoints](evidence/peer-endpoints/README.md#cp141), [peer-endpoints](evidence/peer-endpoints/README.md#cp142), [peer-endpoints](evidence/peer-endpoints/README.md#cp145), [peer-endpoints](evidence/peer-endpoints/README.md#cp146), [peer-endpoints](evidence/peer-endpoints/README.md#cp148), [peer-endpoints](evidence/peer-endpoints/README.md#cp149), [peer-endpoints](evidence/peer-endpoints/README.md#cp150), [peer-endpoints](evidence/peer-endpoints/README.md#cp151), [peer-endpoints](evidence/peer-endpoints/README.md#cp158).
+Bằng chứng/build/hash/recipe: [peer153](evidence/peer153/README.md), [peer-endpoints](evidence/peer-endpoints/README.md), [peer-endpoints](evidence/peer-endpoints/README.md#cp139), [peer-endpoints](evidence/peer-endpoints/README.md#cp140), [peer-endpoints](evidence/peer-endpoints/README.md#cp141), [peer-endpoints](evidence/peer-endpoints/README.md#cp142), [peer-endpoints](evidence/peer-endpoints/README.md#cp145), [peer-endpoints](evidence/peer-endpoints/README.md#cp146), [peer-endpoints](evidence/peer-endpoints/README.md#cp148), [peer-endpoints](evidence/peer-endpoints/README.md#cp149), [peer-endpoints](evidence/peer-endpoints/README.md#cp150), [peer-endpoints](evidence/peer-endpoints/README.md#cp151), [peer-endpoints](evidence/peer-endpoints/README.md#cp158), [peer-endpoints](evidence/peer-endpoints/README.md#cp193).
 
 | Chiều chứng minh | Khai báo | Nguồn/phạm vi áp dụng |
 |---|---|---|
@@ -932,7 +932,7 @@ Bằng chứng/build/hash/recipe: [peer153](evidence/peer153/README.md), [peer-e
 | vn_reference | both | [nguồn1](PROTOCOL.md#item-families) |
 | kr_static | partial | [nguồn1](PROTOCOL.md#udp-generation) |
 | emulation | unknown | Chưa có bằng chứng trong phạm vi rà |
-| wine_diagnostic_copy | unknown | [nguồn1](evidence/peer-endpoints/README.md), [nguồn2](evidence/peer-endpoints/README.md#cp139), [nguồn3](evidence/peer-endpoints/README.md#cp140), [nguồn4](evidence/peer-endpoints/README.md#cp141), [nguồn5](evidence/peer-endpoints/README.md#cp142), [nguồn6](evidence/peer-endpoints/README.md#cp145), [nguồn7](evidence/peer-endpoints/README.md#cp146), [nguồn8](evidence/peer-endpoints/README.md#cp148), [nguồn9](evidence/peer-endpoints/README.md#cp149), [nguồn10](evidence/peer-endpoints/README.md#cp150), [nguồn11](evidence/peer-endpoints/README.md#cp151), [nguồn12](evidence/peer-endpoints/README.md#cp158) |
+| wine_diagnostic_copy | observed | [nguồn1](PROTOCOL.md#nat-endpoint-control), [nguồn2](evidence/peer-endpoints/README.md#cp193) |
 | windows_original | unknown | Chưa có bằng chứng trong phạm vi rà |
 | lan | unknown | Chưa có bằng chứng trong phạm vi rà |
 | internet | unknown | Chưa có bằng chứng trong phạm vi rà |
@@ -1069,7 +1069,7 @@ Phép kiểm tối thiểu (trích cùng nguồn): LANgiảlập đã đạtCP19
 
 Issue/phạm vi công việc: [#14](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/14).
 
-Bằng chứng/build/hash/recipe: [udp-freshness](evidence/udp-freshness/README.md), [firstseen-admission](evidence/firstseen-admission/README.md), [docs](PROTOCOL.md#portable-probe-bundle), [docs](PROTOCOL.md#emulated-lan-acceptance), [docs](PROTOCOL.md#routed-Wine-network).
+Bằng chứng/build/hash/recipe: [udp-freshness](evidence/udp-freshness/README.md), [firstseen-admission](evidence/firstseen-admission/README.md), [docs](PROTOCOL.md#portable-probe-bundle), [docs](PROTOCOL.md#emulated-lan-acceptance), [docs](PROTOCOL.md#routed-Wine-network), [docs](PROTOCOL.md#nat-endpoint-control).
 
 | Chiều chứng minh | Khai báo | Nguồn/phạm vi áp dụng |
 |---|---|---|

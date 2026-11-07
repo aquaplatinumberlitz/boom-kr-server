@@ -42,17 +42,17 @@ accountresume. Widercodec chỉ mở khi có trigger cụ thể từ K3; không 
 Owner/tự kiểm Codex, review waived; AUD056 quaCP188, periodic audit kếCP192.
 
 <a id="gap-lobby-identity-followup"></a>
-### RoutedKR đã đo; phần thiếu là NATtuple và nhánh relay/Internet
+### NAT endpoint control đã có; tiếp hai vòng bình thường và reset
 
-[K6bLANgiảlập](PLAN.md#k6b-acceptance), [routedWineproof](PROTOCOL.md#routed-Wine-network),
-[ownerWineacceptance](evidence/owner-directives/wine-accepted.json) giữscope. Không cần2máyvậtlý/
-WindowsVM; không lặpK6a/flatLAN/Bwinnerreset/portablebundle hoặc native2subnetroute đã cóproofCP192.
-Tái dùng protocol99/153/nativeIPregistration/actualUDPport vàroutedPCAP; phầnkhácbiệt là sourceIP/port
-sauNAT so với advertisedendpoint/private99, directmapping hoặc cầnrelay. Phép kiểm tốithiểu theoPLAN:
-transportSNAT/DNAT/returntuple controls trongnetns côlập cócapture/cleanup, rồi đọc/đo đúngnativeedge
-thiếu; không scanInternet/liveNexon hoặc phátminh relaypacket. Currentadmission vẫn tuần tự theoordinal,
-không generalaccountbinding. Chưa NAT/Internet/fullcodec/auth/142freshness/generalreset/4–8actualclient.
-[AUD057](evidence/checkpoints/audits/AUD057.json) qua192, audit kếCP196; Codexsolo/reviewwaived.
+[Contract/giới hạn CP193](PROTOCOL.md#nat-endpoint-control), [recipe/hash](evidence/peer-endpoints/README.md#cp193),
+[thứ tự duy nhất ở PLAN](PLAN.md#current-order). Tái dùng CP192 routed và cache CP045–047; không lặp static
+queue/codec hoặc đòi máy Windows/hai máy vật lý. Native peer khác0 chưa đủ: ca153 riêng trả0 tại helper/
+consumer; ca mapped+DNAT đã có handler/key/apply và current progress cả hai chiều.
+Khoảng trống: hai normal outcomes/reset/Ready2/Start3 chưa kiểm trên mapping NAT tĩnh, không phải thiếu
+thêm một dump endpoint. Phép kiểm tối thiểu là replay recipe hai vòng B-winner CP192 với topology/153
+mapped đã kiểm, giữ raw/hash/frozen input và đối chiếu native flags/stat/key/peer từng epoch. Owner Codex,
+review waived. Không suy thành NAT discovery, original relay hoặc nghiệm thu Internet. Sau baseline này
+mới chọn ca loss/jitter/reconnect theo blocker thực. AUD057 qua192, periodic kế CP196.
 
 <a id="feature-gaps"></a>
 ## Khoảng trống theo cơ chế
@@ -87,7 +87,7 @@ Bảng được [coverage](COVERAGE.md) trích tự động để tra theo chứ
 | <a id="gap-active-other"></a>KR-F012 | Dart/Oxygen/Potion/Spring/Drill/RemoteBomb mới là phân loại, chưa chứng minh cùng đường kim. | Chọn một group đang cần, tìm consumer Ctrl/report/confirm; đo điều kiện, tiêu hao, hiệu ứng và peer, không quét từng row. |
 | <a id="gap-timed-variants"></a>KR-F013 | Shield/Sensor/SJNeedle raw tail chưa chứng minh đơn vị/thời hạn/hành vi KR. | Trace consumer timer/group cần dùng, đo start/expiry/cancel/reset và peer với control; không suy ms từ tên hoặc raw số. |
 | <a id="gap-mode-items"></a>KR-F014 | ItemAttr cho thấy row/group; presence cơ chế/mode guard/reward runtime vẫn candidate, ngoài Battle tối thiểu. | Chỉ mở group mode khi PLAN mở mode đó; bắt guard/consumer trước thử runtime, HPNeedle17 không là Needle145. |
-| <a id="gap-peer-relay"></a>KR-F015 | CP155 currentallTCPdirect/oldUDPnegative+currentpositive/2contests/4peerwindows/EOF3 cùngrun. | RealLAN/NAT/Internet/relay/fullUDP chưa đo; theo thứ tự hiện hành trong PLAN, không gọi virtualhosts là physicalLAN. |
+| <a id="gap-peer-relay"></a>KR-F015 | [CP193](PROTOCOL.md#nat-endpoint-control) đã kiểm SNAT nhận thực tế/queue/drain và đối chứng153 riêng với mapped+DNAT/native helper/output/handler/current movement. | Tiếp NEXT-K6C-MAPPED-CYCLES trong PLAN; chưa hai vòng NAT, NAT discovery/relay gốc/fullUDP/Internet. K6b LAN giả lập đã đạt theo owner. |
 | <a id="gap-result-return"></a>KR-X001 | [CP176](PROTOCOL.md#a-c-basic-cycles) Ahost/Cguest2normalresults/180/room/actualCReady2/native110; CP174thirdforfeit giữ riêng. | Originalarbitration/UI/generalreset chưa đủ; noStart3/thirdoutcome. Không coi ảnh đen trước focus là rootcause; finalroom đã render. |
 | <a id="gap-round-reset"></a>KR-X002 | [CP176](PROTOCOL.md#a-c-basic-cycles) AC2keys/6entities/3Aeffects/195/stat/hiddeneligibility reset và Ready2 có nguồn. | Wholeinventory/modes/low8wrap/generalreset/thirdStart còn thiếu theo trigger, không lặp knownACcycles. |
 | <a id="gap-disconnect-replacement"></a>KR-X003 | [CP177](PROTOCOL.md#replacement-profile) optional exported preset/capacity theo vacancy và actual C0/C1 initial/118/159158 đã kiểm; CP176 giữ AC2normalcycles riêng. | Maximum/exhaustion/general membership/account resume chưa biết; C0 startup SIGSEGV giữ nguyên, đối chứng pass không là rootcause. Theo PLAN acceptance/control, không lặp known C0/C1 entry hoặc ACcycles. |

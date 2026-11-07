@@ -1718,3 +1718,47 @@ evidence/raw/report/owners/PCAP/chosenpolicy/ownerinstructions, không chỉchec
 environment theoWineacceptance, giữoldcomplete/raw/evidence bấtbiến; audit kếCP196.
 K6a/K6bgiảlập giữscopeđãđạt; không K6cInternet/NAT/relay/fullauth/allreset/allmaps/4–8actualclients.
 Bước tiếpNATsourceIP/portmapping so với99/153/nativeIPregistration trongtopologycôlập, khôngliveNexon.
+
+<a id="cp193"></a>
+## CP193 — đối chứng endpoint dưới NAT, không phải Internet gate
+
+KRE-005b/#14, baseline CP192/[PR264](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/264)
+merge`1a6daad0c17d718bc86574162bf2946bca1ed800`. Codex solo, review waived;
+[contract duy nhất](../../PROTOCOL.md#nat-endpoint-control), [khoảng trống](../../RESEARCH.md#gap-lobby-identity-followup),
+[thứ tự/issue](../../PLAN.md#current-order). Hai KR00967 copy Wine4b, portable CP190 giữ byte/profile/fixture;
+không thay source binary/DB/assets hoặc cấu hình trong run. Router/user/net/mount/PID namespace cô lập,
+không external default route/Nexon, cleanup rồi seal trước đổi recipe.
+
+Nguồn tái dùng: CP045–047 cache13DE880/14E5710/13E0E00/consumer-tail/callsite13E100A, CP145 membership
+helper và source-first refs VN/boomkr-re, CP192 routed native99/153/profile/current Wine. Đã tránh RE lại
+codec/CRC, queue/drain, key/getter, endpoint schema và không cần body mới. Khoảng trống chỉ là tuple
+sau NAT và đường consumer/dispatch chưa được đối chiếu trên tuple đó; source-first từngrun pin locator/hash.
+
+Transport `NAT-transport-r1`: forwarding0 negative, forwarding1/private positive rồi SNAT
+A10.78.1.2:19022→10.78.2.1:29022 tại B, reverse echo qua conntrack;29 IPv4 frames.
+Native `NAT-KR-peer-r1` chỉ cấu hình SNAT một chiều nhưng mapping chưa quan sát; giữ
+mapping-not-observed.json và analyzer assertion/log, không gán NAT pass/fail. R2 SNAT hai chiều có
+counter1/rule và native API mapped ở cả A/B; peer khác0/queue/drain nhưng chưa handler. Probe tiếp
+`NAT-KR-downstream-r1` nối exact payload tới consumer trả0, dùng cache để đặt phép đo tối thiểu kế.
+
+| Run (local/research/codex/) | Thời gian / raw / frozen | SHA run.json |
+| `NAT-KR-peer-r1` | 166.549730307s / 695 / 227 | `2e764155d8559961a6b4a5443159402fd89e0a6c24117266f01d04640f6f41ba` |
+| `NAT-KR-peer-r2` | 168.621473145s / 680 / 226 | `7760f30b535f4898ba5011435f8a76816f4c3bc380adc25d1bd16152c59a4245` |
+| `NAT-KR-downstream-r1` | 163.941602773s / 692 / 227 | `fb9292f60911a4d6426dbbff27652c67013e83e8144d2c9a6471cf1ff375ff59` |
+| `NAT-KR-endpoint-private-r1` | 163.348797091s / 692 / 227 | `d23e25a5a8f2014b6dc108b32cb7aaa6e6b14058dee7507b62bf96e7aa8ea245` |
+| `NAT-KR-endpoint-mapped-r1` | 164.133693145s / 656 / 227 | `4dccf87678399999870ec8fd98ba561d6326c253e163046d3767d2881ae2a33b` |
+
+Mỗi run exit0/source frozen/owned cleanup0; exit0 không thay semantic acceptance. Hai endpoint controls
+cùng probe/normal OS Right: private helper0/consumer0/no handler; mapped helper khác0/output13/exactSHA
+→ E66680/key/apply/target/current progress hai chiều. DNAT điền port99 thực theo recipe trước153; service
+chỉ dùng peer-ip/proxyport options có sẵn. Verifier trace và comparison source/log/raw/hash trong external
+manifest CP193; không có file capture mới được tự tạo bằng encoder làm oracle.
+Comparison r1 FAIL vì đòi mọi output13, trong khi có control3byte/selector0 và empty polls trả0.
+R2 ghép input/output theo thread/thứ tự, kiểm riêng movement15→13/SHA/native handler/apply;29checks pass.
+Giữ cả script/log thất bại và bản sửa, không sửa packet/raw.
+
+Không toàn thân helper13DF710 mới, không tách IP-only/port-only, không NAT discovery/relay gốc; PCAP
+chỉ kv-a. Metadata legacy noNAT/udp_proxy trong run cũ giữ nguyên và giải thích ở PROTOCOL, không sửa raw
+cho phù hợp kết luận. Không bomb/outcome/reset trong hai controls; EOF cuối là cleanup. Bước kế hai
+normal cycles/reset trên mapped topology. CP193 complete chỉ tài liệu/evidence đã đồng bộ, review waived,
+merge theo PR; K6c/K7 mở. AUD057 qua192, audit periodic kế CP196.

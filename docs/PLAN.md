@@ -1,7 +1,7 @@
 # Kế hoạch server giả lập KR 00967
 
 Nguồn chuẩn của project `boom-kr-server`; bản nhập từ plan đã được dsh1/dsh2 review tại `1eee46d`.
-CP192: actualKR Wine hai subnet/router/directTCPUDP/two normalcycles/reset/Start3 đã đo, không NAT/Internetpass. OwnerWineaccepted thayWindows vàLANgiảlập giữápdụng. AUD057qua192, kếCP196; tiếpNATtuple/control.
+CP193: đối chứng endpoint NAT đã nối native consumer/handler/movement hai chiều; chưa hai vòng NAT hoặc Internet gate. Tiếp hai vòng bình thường/reset trên mapping tĩnh đã kiểm. AUD057 qua192, audit kế CP196; Wine/LAN giả lập được owner chấp nhận.
 
 
 ### Mục tiêu, baseline và phạm vi
@@ -10,7 +10,7 @@ Yêu cầu chủ dự án 26/10/2026: dùng kiến thức RE VN `VBNB_116` để
 **chính `CA.exe` KR `00967`**. Đây là project độc lập `boom-kr-server`; không dùng scope, gate,
 registry hoặc tỷ lệ tiến độ V1 của bản viết lại `boom-rs` làm điều kiện của repo này.
 
-Revision kế hoạch **`KR-00967-EMU-1`**, trạng thái **hai client thật đã chạy hai chu kỳ thử trên copy Wine; chưa nghiệm thu trận đầy đủ/K6a**.
+Revision kế hoạch **`KR-00967-EMU-1`**, trạng thái **K5 basic/K6a local và K6b LAN giả lập đã đạt trong scope; K6c Internet/K7 còn mở**.
 Các mốc nguồn được phân biệt rõ:
 
 - **Tài liệu tham chiếu lịch sử:** `boom-rs@dae5e1c717ad31b9e8d32a9b20a76d65942807eb`.
@@ -83,11 +83,12 @@ không tạo nhánh kiểm kê wiki hoặc mở mode phụ trước K3/K4/K5/K6a
    đã córuntimecontrol, không làm lại các ca đó.
    `NEXT-K6C-ROUTED-PREFLIGHT` khép phần2subnet/router CP192: transportforward0negative→1positive và
    actualKR2cycles/reset/Start3/PCAPnativeendpoint đã cónguồn. Khônglặp routing/hàngđợi/codec đãgiải.
-   `NEXT-K6C-NAT-TUPLE`: tái dùng99/153/nativeIPregistration vàroutedtopology trước khi đoNATsourceIP/
-   portmapping. Bắt đầutransport preflight SNAT/DNAT/tuplecontrol trongnetns, sauđó targetactualKR theo
-   cạnhkhácbiệt, không bịa relayopcode/serverauthority. Giữstartup tuần tự; không externalNexon/Internet
-   egress. EmulatedNAT không mặcđịnh Internet/K6cpass; K7bốn client theo dependency bước5. Wineđượcowner
-   chấp nhận thayWindows thật, không yêucầuWindowsVM/máyvậtlý ([directive](evidence/owner-directives/wine-accepted.json)).
+   `NEXT-K6C-NAT-TUPLE` khép phần tuple/control ở CP193: [đối chứng native](PROTOCOL.md#nat-endpoint-control)
+   đã đo nguồn sau SNAT, helper trả0 với153 riêng và khác0/output13/apply/current progress với153 mapped+DNAT.
+   Không còn cần tìm lại queue/codec hoặc giả định peer0. `NEXT-K6C-MAPPED-CYCLES`: tái dùng topology/
+   fixture/bundle/helper, đo hai normal outcomes/reset/Ready2/Start3 trên mapping tĩnh này; chỉ mở nhánh
+   còn thiếu nếu có lỗi thực. Sau đó mới loss/jitter/reconnect/Internet theo scope, không tự đóng K6c.
+   Wine thay Windows và LAN giả lập theo [directive](evidence/owner-directives/wine-accepted.json);
    [#14](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/14) tiếp tục mở.
    <!-- active-issue: 14 --> AUD057qua192, audit kế **CP196**.
 
@@ -119,7 +120,7 @@ Bảng này chỉ phân công/thứtự; acceptance/PR/bằngchứng ởissue. [
 
 | Thứ tự/scope | Issue | Trạng thái/phần còn thiếu |
 |---|---|---|
-| Hiện hành RE | [#14/KRE-005b](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/14) | CP177/PR249 merged; CP178 K0/K2a accepted theo nguồn; K1 R2 accepted/PR251merged; CP181K2profile accepted/sameprocessretry; CP186K3local/CP187K4/CP188K5basic đạt; tiếpK6a currentbasiccontest. K6a/fullmatch không tự đóng; gaps giữ; fullauth/authority/fullmatch/gates mở. |
+| Hiện hành RE | [#14/KRE-005b](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/14) | K5 basic/K6a/K6b giả lập đã đạt trong scope. CP192 routed/CP193 NAT endpoint control có nguồn; tiếp NEXT-K6C-MAPPED-CYCLES. K6c/K7/fullauth/authority/general variants giữ mở. |
 | Control theo trigger/gate | [#1/KRE-001](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/1), [#2/KRE-002](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/2) | CP178 K0 originalWindowscontrol/ownership đã đủ, #1 đã đóng qua PR250; #2 giữ widerWCP/launcherconfig; K1 R2 đã đạt CP179, không lặp cold3. |
 | Codec backlog/identity hiện hành | [#3/KRE-003](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/3), [#9/KRE-005a](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/9) | Fullcodec/livebounds vàintermittentmainstartupcause cònthiếu; khônglặpprimitive/auxiliarylocale. |
 

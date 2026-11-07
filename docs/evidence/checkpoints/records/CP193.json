@@ -1,0 +1,290 @@
+{
+  "id": "CP193",
+  "previous": "CP192",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-07T07:51:46.461879+00:00",
+  "context_commit": "1a6daad0c17d718bc86574162bf2946bca1ed800",
+  "owner": "Codex",
+  "reviewer": "Codex",
+  "question": "Does actualKR mappedUDP fail beforemovement withprivate153, anddoesdeclaredmapped153+DNATrestorehandler/currentprogress withoutnewcodec/clientpatch?",
+  "scope": "Source-firstreuseCP045047queue/consumer/callsite/CP145membership/VNKRrefs/CP192routed; transportcontrols, invalidonewaymapping retained, symmetricSNATnativequeue anddownstreamprobes, privatevsmappedendpointcontrols. Groupmeasurements atmeaningfulnativeblocker/positivecountercontrol; notcheckpointperbreakpoint, no newnativebodies.",
+  "artifacts": [
+    {
+      "name": "OriginalKR00967unchanged",
+      "sha256": "a52545c14b1fea423de655c3163d6360b628d61c1cd472b46fdbc8a9ffe15f4e"
+    },
+    {
+      "name": "CurrentWinecopyunchanged",
+      "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+    },
+    {
+      "name": "NativeIDAfullcopycf72privateanalysis",
+      "sha256": "cf72da112308d9f1ca256df8089594c5f787875310933073bf6bd5ba6f70e63b"
+    },
+    {
+      "name": "modOmodelreference",
+      "sha256": "a08950c833d3acab8281049def7b3dc96b221f107eeda01da3a548e34b91dce5"
+    },
+    {
+      "name": "OriginalKR00967NewPatcher",
+      "sha256": "b59e4dce9ad23c439a7632ce04ecb2eed3481585bd2454100b05c9d7527f5c02"
+    },
+    {
+      "name": "VN116original_reference_only",
+      "sha256": "bce8644d4e783d1354ab4fc880e1ab9a4ab3325327028f37d99e5439e25f4bbd"
+    },
+    {
+      "name": "VN116patched_runtime_reference_only",
+      "sha256": "bc875ba5765cc112e924f46e75d0ace112904c7801126e46bc0abb1c9cb576b1"
+    },
+    {
+      "name": "PassingK1offlineR2recipe",
+      "sha256": "7b3b435b5d8e110185359107376b736615ceabe9452cea8154d02c8628f44c29"
+    },
+    {
+      "name": "NativeProcessPatchR1control",
+      "sha256": "a0c3b9867dae5fe2ff7c315cfe851117661c2cafead45196ce999329f67432f5"
+    },
+    {
+      "name": "OfflineWinecopy_import_compare_ABI_only",
+      "sha256": "4b781fbcea21e0f6294c729b63be86ab2953d60ad83b0d0c9219359f826107ed"
+    }
+  ],
+  "locators": [
+    "CurrentcopySHA4b781fbcea21e0f6294c729b63be86ab2953d60ad83b0d0c9219359f826107ed/sourcea52545c14b1fea423de655c3163d6360b628d61c1cd472b46fdbc8a9ffe15f4e; importedABIcorrectiononly/.imageunchanged fromCP187. Nativebase400000/RVA=VA-base.",
+    "ReusedVA13DE7AA/13DE949/14E8280/14E8480/14E85B7/13E0E75/13E100A/13E100F/13E110A/125937E/1257B61/E66680/E667BE/E668AD/B2/B4EA14. No newfunctionbody; cached13DF710callresultonly.",
+    "NativepostSNATA→B10.78.2.1:30001, B→A10.78.1.1:30002. Private153actual99portcontrol vs mapped153/IPport+pre153DNATtoactual99ports.",
+    "PrivatecontrolrunSHAd23e25a5a8f2014b6dc108b32cb7aaa6e6b14058dee7507b62bf96e7aa8ea245; mappedcontrolrunSHA4dccf87678399999870ec8fd98ba561d6326c253e163046d3767d2881ae2a33b. Bothfirstepoch/normalRight2windows; cleanupEOFnotnormaloutcome.",
+    "CP192PR264exactbaa2f77de1f4f948bca317db06229dac203e7e33 merged1a6daad0c17d718bc86574162bf2946bca1ed800. AUD057through192/next196; noauditreset."
+  ],
+  "findings": [
+    {
+      "summary": "Privatekernelsocketcontrol forwarding0negative→1privatepositive→SNATactualBsourcechangedA19022→router29022/returnconntrackecho.29IPv4frames/hostnetnsunchanged; transportnotnative.",
+      "source": "design",
+      "status": "design",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#nat-endpoint-control",
+      "evidence": [
+        "NAT193-03802",
+        "NAT193-03801"
+      ],
+      "limits": "ActualKR00967modifiedofflineWinecopy4b/currentbasic291/portablebundle47fixture, sharedkernelprivateSNATDNATtwoL2subnets/noexternaldefaultroute. Twoindependentfirstepochcontrols/twoOSRightwindows; noNAT2normaloutcomes/reset/Start3/Internetgate/NATdiscovery/originalrelay/fullUDP. IPportchangedtogether+DNATreachability, notIP-onlyvsport-onlyproof. PCAPonlykv-a; payloadSHAjoinnativeBpostNAT. Helper13DF710fullbodynotnewlyREd. Raworiginals/DB/assets/completehistoryimmutable; reviewwaived."
+    },
+    {
+      "summary": "NativeonewayNATr1didnotobserveconfiguredmapping; actualBprivateA/actual99port/nonzeropeer/apply. RetainfailedexpectedpostNATassert/log; reverseconntrackcandidateunproven. R2symmetricSNATactualpostsourceIPportbothviews verified, notruleexistencealone.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#nat-endpoint-control",
+      "evidence": [
+        "NAT193-02968",
+        "NAT193-02257",
+        "NAT193-03777"
+      ],
+      "limits": "ActualKR00967modifiedofflineWinecopy4b/currentbasic291/portablebundle47fixture, sharedkernelprivateSNATDNATtwoL2subnets/noexternaldefaultroute. Twoindependentfirstepochcontrols/twoOSRightwindows; noNAT2normaloutcomes/reset/Start3/Internetgate/NATdiscovery/originalrelay/fullUDP. IPportchangedtogether+DNATreachability, notIP-onlyvsport-onlyproof. PCAPonlykv-a; payloadSHAjoinnativeBpostNAT. Helper13DF710fullbodynotnewlyREd. Raworiginals/DB/assets/completehistoryimmutable; reviewwaived."
+    },
+    {
+      "summary": "R2mappedsource stillnonnullpeer/queue/drain, rejectingpriorpeer0hypothesis. Targeteddownstreamprobe exactinnerSHA reachesgameconsumer butreturns0/nopacketinit/movementapply; no admission/dequeue→gameplaysuccessinference.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#nat-endpoint-control",
+      "evidence": [
+        "NAT193-03777",
+        "NAT193-00764"
+      ],
+      "limits": "ActualKR00967modifiedofflineWinecopy4b/currentbasic291/portablebundle47fixture, sharedkernelprivateSNATDNATtwoL2subnets/noexternaldefaultroute. Twoindependentfirstepochcontrols/twoOSRightwindows; noNAT2normaloutcomes/reset/Start3/Internetgate/NATdiscovery/originalrelay/fullUDP. IPportchangedtogether+DNATreachability, notIP-onlyvsport-onlyproof. PCAPonlykv-a; payloadSHAjoinnativeBpostNAT. Helper13DF710fullbodynotnewlyREd. Raworiginals/DB/assets/completehistoryimmutable; reviewwaived."
+    },
+    {
+      "summary": "Private153negative actual13E100Ahelperresultat13E100F=0→consumer0/nohandler. Explicitmapped153+pre153DNATpositive helper1→movement15to13/exactSHAtoE66680/currentkey/nativeapply/targetdelta/currentXprogress bothdirections. Sameclient/service/profile/input/probes; noforgedpacket/stateforce/newopcode. Boundedexplicitmappingpositive, notoriginalNATdiscovery/Internetgate.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#nat-endpoint-control",
+      "evidence": [
+        "NAT193-03790",
+        "NAT193-02256",
+        "NAT193-01492",
+        "NAT193-01419"
+      ],
+      "limits": "ActualKR00967modifiedofflineWinecopy4b/currentbasic291/portablebundle47fixture, sharedkernelprivateSNATDNATtwoL2subnets/noexternaldefaultroute. Twoindependentfirstepochcontrols/twoOSRightwindows; noNAT2normaloutcomes/reset/Start3/Internetgate/NATdiscovery/originalrelay/fullUDP. IPportchangedtogether+DNATreachability, notIP-onlyvsport-onlyproof. PCAPonlykv-a; payloadSHAjoinnativeBpostNAT. Helper13DF710fullbodynotnewlyREd. Raworiginals/DB/assets/completehistoryimmutable; reviewwaived."
+    },
+    {
+      "summary": "Initialcomparisonallconsumeroutputs13assertionfailsbecausecontrol3byteselector0/emptypollsreturn0. Finalverifierpairspositiveinputs/outputbythreadandorder andrequiresmovement15byteselector1strip13SHA→handler/apply/currentprogress;29comparisonchecks. Retainwrongsource/log/unchangedraw, noimplementation-mirroringencoderoracle.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#nat-endpoint-control",
+      "evidence": [
+        "NAT193-03826",
+        "NAT193-03788",
+        "NAT193-03827",
+        "NAT193-03790"
+      ],
+      "limits": "ActualKR00967modifiedofflineWinecopy4b/currentbasic291/portablebundle47fixture, sharedkernelprivateSNATDNATtwoL2subnets/noexternaldefaultroute. Twoindependentfirstepochcontrols/twoOSRightwindows; noNAT2normaloutcomes/reset/Start3/Internetgate/NATdiscovery/originalrelay/fullUDP. IPportchangedtogether+DNATreachability, notIP-onlyvsport-onlyproof. PCAPonlykv-a; payloadSHAjoinnativeBpostNAT. Helper13DF710fullbodynotnewlyREd. Raworiginals/DB/assets/completehistoryimmutable; reviewwaived."
+    },
+    {
+      "summary": "CP192checkerAGENTS-firstauditcompatibilityfix passed43checkpointtests/fullhistory325679evidence0missing0errors beforeexactheadPR264merge. ImmutableCP192/AUD057/evidence unchanged; initialfailedhistorylog retained. CP193337server+checkpointtests rerun; docs/catalog synchronized, nextNAT2normalcycles underPLAN only.",
+      "source": "design",
+      "status": "design",
+      "method": "design",
+      "canonical": "docs/PROTOCOL.md#nat-endpoint-control",
+      "evidence": [
+        "NAT193-03830",
+        "NAT193-03828",
+        "NAT193-03829",
+        "NAT193-03832",
+        "NAT193-03835",
+        "NAT193-03833",
+        "NAT193-03834"
+      ],
+      "limits": "ActualKR00967modifiedofflineWinecopy4b/currentbasic291/portablebundle47fixture, sharedkernelprivateSNATDNATtwoL2subnets/noexternaldefaultroute. Twoindependentfirstepochcontrols/twoOSRightwindows; noNAT2normaloutcomes/reset/Start3/Internetgate/NATdiscovery/originalrelay/fullUDP. IPportchangedtogether+DNATreachability, notIP-onlyvsport-onlyproof. PCAPonlykv-a; payloadSHAjoinnativeBpostNAT. Helper13DF710fullbodynotnewlyREd. Raworiginals/DB/assets/completehistoryimmutable; reviewwaived."
+    }
+  ],
+  "verification": [
+    {
+      "check": "Transportforward/private/SNAT/returnecho andcleanup",
+      "result": "pass",
+      "evidence": [
+        "NAT193-03802",
+        "NAT193-03801"
+      ],
+      "limits": "Infrastructureonly."
+    },
+    {
+      "check": "NativeSNATtuple/queue/drain/prefix controls andexactpayload/currentnativeapplyprogress",
+      "result": "pass",
+      "evidence": [
+        "NAT193-03777",
+        "NAT193-00764",
+        "NAT193-02256",
+        "NAT193-01492",
+        "NAT193-03790"
+      ],
+      "limits": "ActualKR00967modifiedofflineWinecopy4b/currentbasic291/portablebundle47fixture, sharedkernelprivateSNATDNATtwoL2subnets/noexternaldefaultroute. Twoindependentfirstepochcontrols/twoOSRightwindows; noNAT2normaloutcomes/reset/Start3/Internetgate/NATdiscovery/originalrelay/fullUDP. IPportchangedtogether+DNATreachability, notIP-onlyvsport-onlyproof. PCAPonlykv-a; payloadSHAjoinnativeBpostNAT. Helper13DF710fullbodynotnewlyREd. Raworiginals/DB/assets/completehistoryimmutable; reviewwaived."
+    },
+    {
+      "check": "294server/43checkpoint tests/docs/catalog/diff",
+      "result": "pass",
+      "evidence": [
+        "NAT193-03835",
+        "NAT193-03833",
+        "NAT193-03834"
+      ],
+      "limits": "Localchecksnotsemanticgate; fullhistory/exactheadrecheckbeforemerge."
+    },
+    {
+      "check": "Two normalcycles/reset/Start3 underexplicitNATmapping; Internet/K7/generalvariants",
+      "result": "pending",
+      "evidence": [
+        "NAT193-03780"
+      ],
+      "limits": "NEXT-K6C-MAPPED-CYCLES active, noInternetgateclosure."
+    }
+  ],
+  "evidence": [],
+  "evidence_manifests": [
+    {
+      "path": "docs/evidence/checkpoints/evidence/CP193-NAT-endpoints.json",
+      "bytes": 1011593,
+      "sha256": "5588a099b0ffdf70d09fc8383dd6f2434f719325815b9b3d5faa31f486b25e9b",
+      "count": 3999
+    }
+  ],
+  "delta": {
+    "added": [
+      "ControlledsymmetricSNATactualnativeAPIandexplicitmapped153/DNATnativepositivevsprivate153negative, boundedmovementbothdirections.",
+      "Sourcefirstreusecacheavoidscodec/queue/schema/bodyRE; rawseals/privateports/NATcounters/tupleSHA/handler/currentprogress linked.",
+      "CP192PR264merged/exacthead0errors;337testsCP193/synchronizedcatalog/nextmappedcycles."
+    ],
+    "corrected": [
+      "Mappedsource→peer0predictionrefuted; peer!=0/queue/drain butnativegameendpointcheck canreturn0.",
+      "One-waySNATruleexistingdoesnotproveactualmapping; r1mappingnotobserved retained.",
+      "Allconsumeroutputs13expectationwrongwithcontrol3byte/emptypolls; finalpairsmovement15→13 andretainsall0returns.",
+      "PLANoldrevisionK6a-notaccepted/activeissuefollowK6acontest stale; current scopedK6a/K6b accepted, K6cNATcyclesnext."
+    ],
+    "superseded": [
+      "NEXT-K6C-NAT-TUPLE closedboundedtuple/control; NEXT-K6C-MAPPED-CYCLES active."
+    ]
+  },
+  "blockers": [
+    "No two normalcycles/reset/Start3 yet underexplicitNATmapping; nextreuseCP192Bwinnerrecipe withonlymappedtopology/153delta.",
+    "NATdiscovery/originalrelay/Internet/fullUDP/auth/generalreset/four-eightclients/K7remainunknown/outsideproof; no physicalWindows/twohardwarehost blocker."
+  ],
+  "next_steps": [
+    {
+      "id": "NEXT-K6C-NAT-TUPLE",
+      "task": "KRE-005b",
+      "state": "closed",
+      "action": "ActualSNATnativeposttuple/queue/consumer0private153 vs mapped153DNAT/nativekey/apply/currentprogresspositive verified. BoundedcontrolnotInternetgate.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-K6C-MAPPED-CYCLES",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "ReuseCP192twoBnormalcycles/reset/Ready2/Start3/currentflags/stat/key/peerchecks withCP193mappedtopology; no codecrescan. PLANsoleorder, auditnext196.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    }
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-11-07T07:51:46.461879+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "Codexsolo/passiveactualnative/PCAP/endpointcontrols/codecreuse; reviewwaived. No independentapproved orInternetgate.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Owner explicitly requested solo, no workers/review."
+    }
+  },
+  "docs_sync": [
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "CP193NATendpointcontrol/limits/sourcefirst/nextNATcycles/delivery synchronizedbeforecomplete; no newgate/auditreset."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "CP193NATendpointcontrol/limits/sourcefirst/nextNATcycles/delivery synchronizedbeforecomplete; no newgate/auditreset."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "updated",
+      "reason": "CP193NATendpointcontrol/limits/sourcefirst/nextNATcycles/delivery synchronizedbeforecomplete; no newgate/auditreset."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "updated",
+      "reason": "CP193NATendpointcontrol/limits/sourcefirst/nextNATcycles/delivery synchronizedbeforecomplete; no newgate/auditreset."
+    },
+    {
+      "path": "docs/features.json",
+      "state": "updated",
+      "reason": "CP193NATendpointcontrol/limits/sourcefirst/nextNATcycles/delivery synchronizedbeforecomplete; no newgate/auditreset."
+    },
+    {
+      "path": "docs/COVERAGE.md",
+      "state": "updated",
+      "reason": "CP193NATendpointcontrol/limits/sourcefirst/nextNATcycles/delivery synchronizedbeforecomplete; no newgate/auditreset."
+    },
+    {
+      "path": "docs/evidence/peer-endpoints/README.md",
+      "state": "updated",
+      "reason": "CP193NATendpointcontrol/limits/sourcefirst/nextNATcycles/delivery synchronizedbeforecomplete; no newgate/auditreset."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/review.json",
+      "state": "updated",
+      "reason": "CP193NATendpointcontrol/limits/sourcefirst/nextNATcycles/delivery synchronizedbeforecomplete; no newgate/auditreset."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
+      "state": "updated",
+      "reason": "CP193NATendpointcontrol/limits/sourcefirst/nextNATcycles/delivery synchronizedbeforecomplete; no newgate/auditreset."
+    }
+  ]
+}
