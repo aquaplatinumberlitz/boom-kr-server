@@ -14,6 +14,23 @@ POLICY = {'mode': 'native_291'}
 IDENTITIES = {'A': (1, b'KRLocal'), 'B': (2, b'KRGuest'), 'C': (3, b'KRNew')}
 
 
+def channel_name(data, role):
+    """Bind only the CP058/060 measured request6 name, not opaque fields/auth.
+
+    Native captures have a u16 string at body+2 and a 32-byte opaque tail.
+    These checks are local emulator policy for the three pinned identities.
+    """
+    expected = IDENTITIES[role][1]
+    if len(data) < 4:
+        raise ValueError('unsupported_channel_identity_layout')
+    size = codec.read_fields(data[2:4], [2])[0]
+    if size != len(expected) or len(data) != 36 + size:
+        raise ValueError('unsupported_channel_identity_layout')
+    if _decode_bytes(data[4:4 + size]) != expected:
+        raise ValueError('channel_identity_mismatch')
+    return expected
+
+
 def body(profile, role):
     auth = profile.body('auth_' + role)
     if len(auth) < 31 or codec.read_fields(auth[4:5], [1]) != [1]:

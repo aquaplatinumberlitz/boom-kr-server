@@ -59,7 +59,37 @@ class OwnProfileTests(unittest.TestCase):
         return service, event, sent
 
     def dispatch(self, service, event, opcode):
-        service.receive_channel(event, codec.encode(bytes(37), opcode, b'', 40), 40, b'')
+        body = b''
+        if opcode == 6 and service.own_profile_bodies:
+            name = own_profile.IDENTITIES[event['role']][1]
+            body = (bytes(2) + codec.pack_fields([len(name)], [2])
+                    + _encode_bytes(name) + bytes(32))
+        service.receive_channel(event, codec.encode(bytes(37), opcode, body, 40), 40, body)
+
+    def test_channel_identity_rejects_valid_wrong_name_before_lobby_reply(self):
+        service, event, sent = self.service()
+        name = b'KRGuest'
+        body = bytes(2) + codec.pack_fields([len(name)], [2]) + _encode_bytes(name) + bytes(32)
+        frame = codec.encode(bytes(37), 6, body, 40)
+        self.assertEqual(codec.frame_body(frame, 40), body)
+        service.receive_channel(event, frame, 40, body)
+        self.assertEqual(sent, [])
+        self.assertNotIn('channel_identity', event)
+        self.assertNotIn('channel_response_sent', event)
+        self.assertNotIn('s2c_next_seq', event)
+        self.assertEqual(service.state['stage_rejections'][-1]['reason'],
+                         'channel_identity_mismatch')
+        self.dispatch(service, event, 6)
+        self.assertEqual(event['channel_identity']['name'], 'KRLocal')
+        self.assertEqual(event['s2c_next_seq'], 46)
+
+    def test_channel_identity_bounds_and_three_pinned_roles(self):
+        for role, (_, name) in own_profile.IDENTITIES.items():
+            body = bytes(2) + codec.pack_fields([len(name)], [2]) + _encode_bytes(name) + bytes(32)
+            self.assertEqual(own_profile.channel_name(body, role), name)
+            for bad in [b'', body[:-1], body + b'x', body[:2] + codec.pack_fields([65535], [2]) + body[4:]]:
+                with self.assertRaisesRegex(ValueError, 'unsupported_channel_identity_layout'):
+                    own_profile.channel_name(bad, role)
 
     def test_c_own_name_binds_to_auth_instead_of_old_room_fixture(self):
         profile = fixtures()

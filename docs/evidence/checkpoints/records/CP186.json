@@ -1,0 +1,277 @@
+{
+  "id": "CP186",
+  "previous": "CP185",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-07T03:41:05.598790+00:00",
+  "context_commit": "fd20146674c75e58b17da94fcc01e9d57b5c7aac",
+  "owner": "Codex",
+  "reviewer": "Codex",
+  "question": "Can the unchanged K3 criteria be accepted for the pinned local A/single-channel profile after resolving cold channel cache and version/identity negatives, rather than repeating already solved gameplay or full-account backlog?",
+  "scope": "Source-first CP015/016/034/058/060/181–185 and VN offset errata; seven frozen/sealed Wine runs, three wire-harness attempts/final8native-valid AF_UNIX cases, request6 name policy and manual unchanged-criterion K3 profile decision. No new native bodies. K4/currenttwoactual291 remains next.",
+  "artifacts": [
+    {
+      "name": "OriginalKR00967unchanged",
+      "sha256": "a52545c14b1fea423de655c3163d6360b628d61c1cd472b46fdbc8a9ffe15f4e"
+    },
+    {
+      "name": "CurrentWinecopyunchanged",
+      "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+    },
+    {
+      "name": "NativeIDAfullcopycf72privateanalysis",
+      "sha256": "cf72da112308d9f1ca256df8089594c5f787875310933073bf6bd5ba6f70e63b"
+    },
+    {
+      "name": "modOmodelreference",
+      "sha256": "a08950c833d3acab8281049def7b3dc96b221f107eeda01da3a548e34b91dce5"
+    },
+    {
+      "name": "OriginalKR00967NewPatcher",
+      "sha256": "b59e4dce9ad23c439a7632ce04ecb2eed3481585bd2454100b05c9d7527f5c02"
+    },
+    {
+      "name": "VN116original_reference_only",
+      "sha256": "bce8644d4e783d1354ab4fc880e1ab9a4ab3325327028f37d99e5439e25f4bbd"
+    },
+    {
+      "name": "VN116patched_runtime_reference_only",
+      "sha256": "bc875ba5765cc112e924f46e75d0ace112904c7801126e46bc0abb1c9cb576b1"
+    },
+    {
+      "name": "PassingK1offlineR2recipe",
+      "sha256": "7b3b435b5d8e110185359107376b736615ceabe9452cea8154d02c8628f44c29"
+    },
+    {
+      "name": "NativeProcessPatchR1control",
+      "sha256": "a0c3b9867dae5fe2ff7c315cfe851117661c2cafead45196ce999329f67432f5"
+    }
+  ],
+  "locators": [
+    "Runtimee9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef/base400000. CachedCP01613A20D0/13A1FB0 fullbody byteequal; native13A21E7 string row/13A2099 manager+10 rowcount. Dynamicmanager+14 remains pointer.",
+    "ProcessPatch cached1236810:1236A02 invalidguard/remoteBE16;1236A5E equalcompare;1236AC8 PreparePatch;1234875 originalcallerreturn. 65535→guard0/return0/ErrCannotLogin;966→guard1/compare0/PreparePatch1→NGMPatchError→OSACK→native0/ErrCannotLogin(5:1754).",
+    "cold3namedcache absent(channel2_000/dynamic/stage), nativechannel54SHA4c7204159c08ee70ffc18fed7f8ffc47099a5f8ab648b6fa05035a6f8939621a anddynamic76SHA6a4745c6010378a50ab4bf34827bbe122d7eb270c78051391cd21bd7378b1053; warm loads1/1/no528. Retained5SSI matchsource hashes.",
+    "CP058/060 C2S6 actualu16string atbody+2, A/B43/C41; first2byte/tail32opaque. Finalnameguard observednativeA; constructedwrongname/stage plusABC positive8AF_UNIX/publicreceive/nativeframer cases."
+  ],
+  "findings": [
+    {
+      "summary": "Cold observedservercache3file route reaches normal lobby/own291 and panelKRLocal; native channel/dynamic files rebuilt then warmfileload1/no528. StaticSSI filesmatchoriginalbytes; stagecache remainsabsent atreadyCRC0. Namedrow parses9byteKRLocal-0/rows1 only afterfresh14; captionrender/earlywarmdeserialize not proven.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#channel-cold-route",
+      "evidence": [
+        "K3SCOPE-00229",
+        "K3SCOPE-00047",
+        "K3SCOPE-00139",
+        "K3SCOPE-00101"
+      ],
+      "limits": "Evidence supports manual K3 profile review, not automatic gate closure. Single A modified e9 Wine/offline/synthetic local identity/one channel. Selected3server-cache cold route and dynamic missing/warm controls, not all assets/caches. Identity guard covers native name/shape only; first2bytes and32byte tail opaque. Negative wire inputs constructed, AF_UNIX service state allocated; not actually bad client credentials or original auth law. Version controls concern ProcessPatch, not WCPu16/auth-version mapping. No new B/C/native291 room/Battle/LAN/Internet evidence."
+    },
+    {
+      "summary": "Actualbootstrap65535 remote value rejectedwithguard0/nativeProcessPatchreturn0/ErrCannotLogin. Nonreserved966 passesguard butcompare0→PreparePatch1/NGMPatchError; r3OSfocus+keydown+keyupall0,nativeProcessPatchreturn0withininputtimestamps,finalErrCannotLogin(5:1754). Notauth/WCPu16versionmapping/updatersuccess.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#k3-version-identity-controls",
+      "evidence": [
+        "K3SCOPE-00229",
+        "K3SCOPE-00325",
+        "K3SCOPE-00394",
+        "K3SCOPE-00505"
+      ],
+      "limits": "Evidence supports manual K3 profile review, not automatic gate closure. Single A modified e9 Wine/offline/synthetic local identity/one channel. Selected3server-cache cold route and dynamic missing/warm controls, not all assets/caches. Identity guard covers native name/shape only; first2bytes and32byte tail opaque. Negative wire inputs constructed, AF_UNIX service state allocated; not actually bad client credentials or original auth law. Version controls concern ProcessPatch, not WCPu16/auth-version mapping. No new B/C/native291 room/Battle/LAN/Internet evidence."
+    },
+    {
+      "summary": "Opt-in request6 guard binds only measured name/shape to pinned localrolebefore17. Unsupportedshape/name logged/rejectedwithoutapplicationmarkers;294tests+final8nativevalidwirecases through AF_UNIX/publicreceivepass, positivesABC17/43next46. NativeAafterguardstillownsKRLocalandlobby291. Serverchoice notoriginalaccountlaw.",
+      "source": "emu_choice",
+      "status": "design",
+      "method": "emulation",
+      "canonical": "docs/PROTOCOL.md#k3-version-identity-controls",
+      "evidence": [
+        "K3SCOPE-00222",
+        "K3SCOPE-00605",
+        "K3SCOPE-00586",
+        "K3SCOPE-00165"
+      ],
+      "limits": "Evidence supports manual K3 profile review, not automatic gate closure. Single A modified e9 Wine/offline/synthetic local identity/one channel. Selected3server-cache cold route and dynamic missing/warm controls, not all assets/caches. Identity guard covers native name/shape only; first2bytes and32byte tail opaque. Negative wire inputs constructed, AF_UNIX service state allocated; not actually bad client credentials or original auth law. Version controls concern ProcessPatch, not WCPu16/auth-version mapping. No new B/C/native291 room/Battle/LAN/Internet evidence."
+    },
+    {
+      "summary": "Instrument limitations retained: invalidr1 CLIonlynegativewasnotserved(native967), wireharnessr1byte/patherrorandr2raw-sequenceerror notproductfailures, mismatcher2OSrc1nottoolpass. r3retainscleanOSresult/timing. NegativeinheritedGDBphasepostremoteclose notnativeguardproof; no retrospectiveUIrootcause.",
+      "source": "design",
+      "status": "design",
+      "method": "design",
+      "canonical": "docs/PROTOCOL.md#k3-version-identity-controls",
+      "evidence": [
+        "K3SCOPE-00229",
+        "K3SCOPE-00280",
+        "K3SCOPE-00558",
+        "K3SCOPE-00566",
+        "K3SCOPE-00465"
+      ],
+      "limits": "Evidence supports manual K3 profile review, not automatic gate closure. Single A modified e9 Wine/offline/synthetic local identity/one channel. Selected3server-cache cold route and dynamic missing/warm controls, not all assets/caches. Identity guard covers native name/shape only; first2bytes and32byte tail opaque. Negative wire inputs constructed, AF_UNIX service state allocated; not actually bad client credentials or original auth law. Version controls concern ProcessPatch, not WCPu16/auth-version mapping. No new B/C/native291 room/Battle/LAN/Internet evidence."
+    },
+    {
+      "summary": "Codex manualcriterion review acceptsK3 onlylocalmodifiedWine/A-ID1KRLocal/singlenormallobby/pinnedprofile; existingCP016034selectedindex/factory/UI andCP058182184identity/keepalive/roomproof reused. Broadaccountauth/WCP/multichannel/updater/fullmatchnotaccepted. Gate acceptanceisexplicitmanualdecision,notchecker/count/windowalone. NextK4actualABafter291/nameguard.",
+      "source": "design",
+      "status": "design",
+      "method": "design",
+      "canonical": "docs/PLAN.md#k3-acceptance",
+      "evidence": [
+        "K3SCOPE-00203",
+        "K3SCOPE-00198"
+      ],
+      "limits": "Evidence supports manual K3 profile review, not automatic gate closure. Single A modified e9 Wine/offline/synthetic local identity/one channel. Selected3server-cache cold route and dynamic missing/warm controls, not all assets/caches. Identity guard covers native name/shape only; first2bytes and32byte tail opaque. Negative wire inputs constructed, AF_UNIX service state allocated; not actually bad client credentials or original auth law. Version controls concern ProcessPatch, not WCPu16/auth-version mapping. No new B/C/native291 room/Battle/LAN/Internet evidence."
+    }
+  ],
+  "verification": [
+    {
+      "check": "Seven measured runs/source snapshots/freeze/cleanup/nativeversionPCs/OSinputtiming/cold-warm file outputs/native row; final8AF_UNIX native-valid guard cases and retained failed harness attempts",
+      "result": "pass",
+      "evidence": [
+        "K3SCOPE-00229"
+      ],
+      "limits": "1086mechanicalassertions/514sealedrawfiles plusmanualscreen/sourcecriterionreview; no automatic semantic/gate proof."
+    },
+    {
+      "check": "Service regressions",
+      "result": "pass",
+      "evidence": [
+        "K3SCOPE-00222"
+      ],
+      "limits": "294modeltests; name/shape only, not fullauth."
+    },
+    {
+      "check": "Source artifact immutability",
+      "result": "pass",
+      "evidence": [
+        "K3SCOPE-00002"
+      ],
+      "limits": "5originalsource identities unchanged; fiveotherSSI hashes also compared in batch."
+    },
+    {
+      "check": "Manual K3 unchanged-criterion scoped acceptance",
+      "result": "pass",
+      "evidence": [
+        "K3SCOPE-00203",
+        "K3SCOPE-00198"
+      ],
+      "limits": "Codexselfcheck/reviewwaived. LocalA/singlechannel only; noK4/fullmatch."
+    },
+    {
+      "check": "K4 current two-actual-client native291/nameguard preset integration",
+      "result": "pending",
+      "evidence": [
+        "K3SCOPE-00198"
+      ],
+      "limits": "NextactivePLANtask; oldroom/load/startproof reused but not silently upgraded to final291integration."
+    }
+  ],
+  "evidence": [],
+  "evidence_manifests": [
+    {
+      "path": "docs/evidence/checkpoints/evidence/CP186-k3-scoped-acceptance.json",
+      "bytes": 162631,
+      "sha256": "8d3e9de843a4fc34f66b38578b31078eaf8d52ec6f7b5216e4171e29ea57b55c",
+      "count": 621
+    }
+  ],
+  "delta": {
+    "added": [
+      "Namedchannelcache coldroute/warm/native row/name policy, actualbootstrapinvalid+ordinarymismatch errorpropagation, 8native-valid AF_UNIX negative/positive cases.",
+      "Explicit manualK3localacceptance mapping unchangedcriteria/limits; PLAN moves to K4 integration, catalog gatepassed independent of broaderfeature completeness."
+    ],
+    "corrected": [
+      "New channel name was parsed afterfresh14, not proven captionrender or earlycacheload; falsewholecache/labelclaims avoided.",
+      "UndeliveredCLInegative andinstrumentationerrors/OSrc1 retained andsuperseded by actualprofileinput/finalwire/OScontrols.",
+      "CP185/PR257 delivery nowmergedfd2014; historicalCPopen snapshots retained with currentCP186acceptance linked."
+    ],
+    "superseded": [
+      "NEXT-K3-IDENTITY-CACHE closedwithinexplicitprofile scope; no moreCRC/parser/selectedkind/knownversion replay withoutnewedge."
+    ]
+  },
+  "blockers": [
+    "K4 actualtwo-clientcurrentpreset/own291/nameguard integration notyetobserved; code acceptsB/Cnames inmodels usingoldactualcaptures, notnativeB/C291proof.",
+    "Wideridentity/account/version/WCPu16/updater/nonzero-stageCRC/caption/multichannel remainunknown bytrigger; nofullmatch/LAN/Internet/8nativeclientsaccepted."
+  ],
+  "next_steps": [
+    {
+      "id": "NEXT-K3-IDENTITY-CACHE",
+      "task": "KRE-005b",
+      "state": "closed",
+      "action": "CP186 manualunchanged-criterion K3localaccepted, PLAN#k3-acceptance. Wideraccount/caption/updater variants backlog bytrigger; do notrepeat solved scopes.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-K4-INTEGRATION",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "PLAN current-order: sourcefirstCP161162165–177/preset+optin291; run twoactualABwithnameguard to verifynameID/createjoin/rosterhost/map/Ready/loadbarrier/Start, reuseexistinginput/probes. CloseK4onlyafterunchangedcriteriareview, thenK5/K6a.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    }
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-11-07T03:41:05.598790+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "Ownerwaiver/Codexsolo RE/code/runtime andmanualgatecriterionreview+selfcheck; no independent review or approval fabricated. Exact-head checks before PR merge.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Owner explicitly requested solo, no workers/review."
+    }
+  },
+  "docs_sync": [
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "CP186 nativecontrols/coldroute/nameguard/limits/manualK3scope andnextK4 syncedbeforecomplete; AUD055/nextCP188 unchanged."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "CP186 nativecontrols/coldroute/nameguard/limits/manualK3scope andnextK4 syncedbeforecomplete; AUD055/nextCP188 unchanged."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "updated",
+      "reason": "CP186 nativecontrols/coldroute/nameguard/limits/manualK3scope andnextK4 syncedbeforecomplete; AUD055/nextCP188 unchanged."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "updated",
+      "reason": "CP186 nativecontrols/coldroute/nameguard/limits/manualK3scope andnextK4 syncedbeforecomplete; AUD055/nextCP188 unchanged."
+    },
+    {
+      "path": "docs/features.json",
+      "state": "updated",
+      "reason": "CP186 nativecontrols/coldroute/nameguard/limits/manualK3scope andnextK4 syncedbeforecomplete; AUD055/nextCP188 unchanged."
+    },
+    {
+      "path": "docs/COVERAGE.md",
+      "state": "updated",
+      "reason": "CP186 nativecontrols/coldroute/nameguard/limits/manualK3scope andnextK4 syncedbeforecomplete; AUD055/nextCP188 unchanged."
+    },
+    {
+      "path": "docs/evidence/lobby-identity/README.md",
+      "state": "updated",
+      "reason": "CP186 nativecontrols/coldroute/nameguard/limits/manualK3scope andnextK4 syncedbeforecomplete; AUD055/nextCP188 unchanged."
+    },
+    {
+      "path": "docs/evidence/lobby-identity/k3-acceptance.json",
+      "state": "updated",
+      "reason": "CP186 nativecontrols/coldroute/nameguard/limits/manualK3scope andnextK4 syncedbeforecomplete; AUD055/nextCP188 unchanged."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/review.json",
+      "state": "updated",
+      "reason": "CP186 nativecontrols/coldroute/nameguard/limits/manualK3scope andnextK4 syncedbeforecomplete; AUD055/nextCP188 unchanged."
+    },
+    {
+      "path": "server/README.md",
+      "state": "updated",
+      "reason": "CP186 nativecontrols/coldroute/nameguard/limits/manualK3scope andnextK4 syncedbeforecomplete; AUD055/nextCP188 unchanged."
+    }
+  ]
+}

@@ -23,9 +23,9 @@ Review độc lập: [waived theo chủ dự án](evidence/checkpoints/review-wa
 | [KR-B001 · ProcessPatch và copy offline](#kr-b001) | present | both | partial | checked | observed | observed | unknown | unknown | partial / via_pr | partial | K1: passed |
 | [KR-B002 · WCP và dữ liệu khởi tạo](#kr-b002) | present | both | partial | checked | observed | unknown | unknown | unknown | partial / via_pr | partial | K2: passed |
 | [KR-B003 · Codec theo socket và chiều](#kr-b003) | present | both | partial | checked | observed | unknown | unknown | unknown | partial / via_pr | partial | K2: passed |
-| [KR-L001 · Auth và identity cục bộ](#kr-l001) | present | both | partial | checked | observed | unknown | unknown | unknown | partial / via_pr | partial | K3: open |
-| [KR-L002 · Redirect và UI sảnh](#kr-l002) | present | both | partial | checked | observed | unknown | unknown | unknown | partial / via_pr | partial | K3: open |
-| [KR-L003 · Profile và cache lifecycle](#kr-l003) | present | static | partial | checked | observed | unknown | unknown | unknown | partial / via_pr | partial | K3: open |
+| [KR-L001 · Auth và identity cục bộ](#kr-l001) | present | both | partial | checked | observed | unknown | unknown | unknown | partial / via_pr | partial | K3: passed |
+| [KR-L002 · Redirect và UI sảnh](#kr-l002) | present | both | partial | checked | observed | unknown | unknown | unknown | partial / via_pr | partial | K3: passed |
+| [KR-L003 · Profile và cache lifecycle](#kr-l003) | present | static | partial | checked | observed | unknown | unknown | unknown | partial / via_pr | partial | K3: passed |
 | [KR-R001 · Tạo và vào phòng](#kr-r001) | present | both | partial | checked | observed | unknown | unknown | unknown | partial / via_pr | partial | K4: open |
 | [KR-R002 · Roster, own-slot, Ready và chủ phòng](#kr-r002) | present | both | partial | checked | observed | unknown | unknown | unknown | partial / via_pr | partial | K4: open |
 | [KR-R003 · Map, spawn và loading barrier](#kr-r003) | present | both | partial | checked | observed | unknown | unknown | unknown | partial / via_pr | partial | K4: open |
@@ -58,7 +58,7 @@ Số lượng theo trạng thái khai báo (không phải tỷ lệ hoàn thành
 - emulation: checked=22, unknown=8.
 - implementation: partial=23, unknown=7.
 - integration: partial=22, unknown=8.
-- gate: open=27, passed=3.
+- gate: open=24, passed=6.
 
 ## Cây cơ chế
 
@@ -315,21 +315,21 @@ Phép kiểm tối thiểu (trích cùng nguồn): TheoPLAN trace actualerrorsta
 
 Issue/phạm vi công việc: [#14](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/14), [#9](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/9), [#106](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/106).
 
-Bằng chứng/build/hash/recipe: [login-runtime](evidence/login-runtime/README.md), [probe-service](evidence/probe-service/README.md), [auth-profile](evidence/auth-profile/README.md), [current-profile-c](evidence/current-profile-c/README.md), [preclock-eof](evidence/preclock-eof/README.md), [nmco-locale-stability](evidence/nmco-locale-stability/README.md), [peer-endpoints](evidence/peer-endpoints/README.md#cp146), [peer-endpoints](evidence/peer-endpoints/README.md#cp148), [peer-endpoints](evidence/peer-endpoints/README.md#cp149), [live-codec-stream](evidence/live-codec-stream/README.md), [lobby-identity](evidence/lobby-identity/in-progress.json), [lobby-identity](evidence/lobby-identity/README.md).
+Bằng chứng/build/hash/recipe: [login-runtime](evidence/login-runtime/README.md), [probe-service](evidence/probe-service/README.md), [auth-profile](evidence/auth-profile/README.md), [current-profile-c](evidence/current-profile-c/README.md), [preclock-eof](evidence/preclock-eof/README.md), [nmco-locale-stability](evidence/nmco-locale-stability/README.md), [peer-endpoints](evidence/peer-endpoints/README.md#cp146), [peer-endpoints](evidence/peer-endpoints/README.md#cp148), [peer-endpoints](evidence/peer-endpoints/README.md#cp149), [live-codec-stream](evidence/live-codec-stream/README.md), [lobby-identity](evidence/lobby-identity/in-progress.json), [lobby-identity](evidence/lobby-identity/README.md), [lobby-identity](evidence/lobby-identity/k3-acceptance.json).
 
 | Chiều chứng minh | Khai báo | Nguồn/phạm vi áp dụng |
 |---|---|---|
 | presence | present | [nguồn1](PROTOCOL.md#login-auth) |
 | vn_reference | both | [nguồn1](REFERENCES.md) |
 | kr_static | partial | [nguồn1](PROTOCOL.md#login-auth), [nguồn2](PROTOCOL.md#auth-profile), [nguồn3](PROTOCOL.md#local-name-model), [nguồn4](PROTOCOL.md#own-profile-291), [nguồn5](PROTOCOL.md#own-profile-integration) |
-| emulation | checked | [nguồn1](evidence/login-runtime/README.md), [nguồn2](evidence/auth-profile/README.md) |
-| wine_diagnostic_copy | observed | [nguồn1](evidence/login-runtime/README.md), [nguồn2](evidence/auth-profile/README.md), [nguồn3](evidence/current-profile-c/README.md), [nguồn4](evidence/preclock-eof/README.md), [nguồn5](evidence/nmco-locale-stability/README.md), [nguồn6](evidence/peer-endpoints/README.md#cp146), [nguồn7](evidence/peer-endpoints/README.md#cp148), [nguồn8](evidence/peer-endpoints/README.md#cp149), [nguồn9](evidence/live-codec-stream/README.md), [nguồn10](PROTOCOL.md#local-name-model), [nguồn11](PROTOCOL.md#own-profile-291), [nguồn12](PROTOCOL.md#own-profile-integration) |
+| emulation | checked | [nguồn1](evidence/login-runtime/README.md), [nguồn2](evidence/auth-profile/README.md), [nguồn3](evidence/lobby-identity/k3-acceptance.json) |
+| wine_diagnostic_copy | observed | [nguồn1](evidence/login-runtime/README.md), [nguồn2](evidence/auth-profile/README.md), [nguồn3](evidence/current-profile-c/README.md), [nguồn4](evidence/preclock-eof/README.md), [nguồn5](evidence/nmco-locale-stability/README.md), [nguồn6](evidence/peer-endpoints/README.md#cp146), [nguồn7](evidence/peer-endpoints/README.md#cp148), [nguồn8](evidence/peer-endpoints/README.md#cp149), [nguồn9](evidence/live-codec-stream/README.md), [nguồn10](PROTOCOL.md#local-name-model), [nguồn11](PROTOCOL.md#own-profile-291), [nguồn12](PROTOCOL.md#own-profile-integration), [nguồn13](evidence/lobby-identity/k3-acceptance.json) |
 | windows_original | unknown | Chưa có bằng chứng trong phạm vi rà |
 | lan | unknown | Chưa có bằng chứng trong phạm vi rà |
 | internet | unknown | Chưa có bằng chứng trong phạm vi rà |
-| implementation | partial / via_pr | [nguồn1](../server/probe_service.py), [nguồn2](PROTOCOL.md#probe-service), [nguồn3](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/57), [nguồn4](../tools/export_probe_profile.py), [nguồn5](PROTOCOL.md#auth-profile), [nguồn6](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/77), [nguồn7](PROTOCOL.md#service-channel-endpoint), [nguồn8](../server/own_profile.py) |
+| implementation | partial / via_pr | [nguồn1](../server/probe_service.py), [nguồn2](PROTOCOL.md#probe-service), [nguồn3](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/57), [nguồn4](../tools/export_probe_profile.py), [nguồn5](PROTOCOL.md#auth-profile), [nguồn6](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/77), [nguồn7](PROTOCOL.md#service-channel-endpoint), [nguồn8](../server/own_profile.py), [nguồn9](PROTOCOL.md#k3-version-identity-controls) |
 | integration | partial | [nguồn1](evidence/probe-service/README.md), [nguồn2](evidence/auth-profile/README.md), [nguồn3](evidence/current-profile-c/README.md), [nguồn4](evidence/preclock-eof/README.md), [nguồn5](evidence/nmco-locale-stability/README.md), [nguồn6](PROTOCOL.md#service-channel-endpoint) |
-| gate | K3: open | [nguồn1](PLAN.md#gates) |
+| gate | K3: passed | [nguồn1](PLAN.md#k3-acceptance) |
 
 <a id="kr-l002"></a>
 ### KR-L002 · Redirect và UI sảnh
@@ -338,27 +338,27 @@ Dependency: [KR-L001](#kr-l001).
 
 [Contract và giới hạn](PROTOCOL.md#channel-lobby) · [Câu hỏi gốc](RESEARCH.md#gap-redirect-lobby) · [Thứ tự ở PLAN](PLAN.md#current-order).
 
-Khoảng trống (trích bảng RESEARCH): [CP184](PROTOCOL.md#own-profile-integration) A name→create/map; [CP185](PROTOCOL.md#lobby-cache-route) cache528→238/nativewrite/warm đã kiểm. K3 còn channel/version/negative và giới hạncache.
+Khoảng trống (trích bảng RESEARCH): [CP186 K3local](PLAN.md#k3-acceptance) đạt; A291/nameguard/coldroute/versionnegative có nguồn. ActualB/C291/currentintegration vẫn thiếu theo K4, caption/multichannel giữunknown.
 
-Phép kiểm tối thiểu (trích cùng nguồn): [Checklist K3](PLAN.md#k3-evidence-review): đối chiếu nguồn và đo ô chưa đủ; không lặp producer/integration A/authgetter hoặc mở nhánh gameplay phụ.
+Phép kiểm tối thiểu (trích cùng nguồn): [Rà K4](PLAN.md#k4-evidence-review): dùng preset hiện hành +optin291/nameguard và hai actualclient; không lặp producer/authgetter/selectedkind hoặc mở gameplay phụ.
 
 Issue/phạm vi công việc: [#14](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/14).
 
-Bằng chứng/build/hash/recipe: [postwait](evidence/postwait/README.md), [probe-service](evidence/probe-service/README.md), [lobby-identity](evidence/lobby-identity/in-progress.json), [lobby-identity](evidence/lobby-identity/README.md).
+Bằng chứng/build/hash/recipe: [postwait](evidence/postwait/README.md), [probe-service](evidence/probe-service/README.md), [lobby-identity](evidence/lobby-identity/in-progress.json), [lobby-identity](evidence/lobby-identity/README.md), [lobby-identity](evidence/lobby-identity/k3-acceptance.json).
 
 | Chiều chứng minh | Khai báo | Nguồn/phạm vi áp dụng |
 |---|---|---|
 | presence | present | [nguồn1](PROTOCOL.md#channel-lobby) |
 | vn_reference | both | [nguồn1](REFERENCES.md) |
 | kr_static | partial | [nguồn1](PROTOCOL.md#channel-lobby), [nguồn2](PROTOCOL.md#local-name-model), [nguồn3](PROTOCOL.md#own-profile-291), [nguồn4](PROTOCOL.md#own-profile-integration) |
-| emulation | checked | [nguồn1](evidence/postwait/README.md) |
-| wine_diagnostic_copy | observed | [nguồn1](evidence/postwait/README.md), [nguồn2](PROTOCOL.md#local-name-model), [nguồn3](PROTOCOL.md#own-profile-291), [nguồn4](PROTOCOL.md#own-profile-integration), [nguồn5](PROTOCOL.md#lobby-cache-route) |
+| emulation | checked | [nguồn1](evidence/postwait/README.md), [nguồn2](evidence/lobby-identity/k3-acceptance.json) |
+| wine_diagnostic_copy | observed | [nguồn1](evidence/postwait/README.md), [nguồn2](PROTOCOL.md#local-name-model), [nguồn3](PROTOCOL.md#own-profile-291), [nguồn4](PROTOCOL.md#own-profile-integration), [nguồn5](PROTOCOL.md#lobby-cache-route), [nguồn6](evidence/lobby-identity/k3-acceptance.json) |
 | windows_original | unknown | Chưa có bằng chứng trong phạm vi rà |
 | lan | unknown | Chưa có bằng chứng trong phạm vi rà |
 | internet | unknown | Chưa có bằng chứng trong phạm vi rà |
-| implementation | partial / via_pr | [nguồn1](../server/probe_service.py), [nguồn2](PROTOCOL.md#probe-service), [nguồn3](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/57), [nguồn4](../server/own_profile.py), [nguồn5](PROTOCOL.md#lobby-cache-route) |
+| implementation | partial / via_pr | [nguồn1](../server/probe_service.py), [nguồn2](PROTOCOL.md#probe-service), [nguồn3](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/57), [nguồn4](../server/own_profile.py), [nguồn5](PROTOCOL.md#lobby-cache-route), [nguồn6](PROTOCOL.md#k3-version-identity-controls) |
 | integration | partial | [nguồn1](evidence/probe-service/README.md), [nguồn2](PROTOCOL.md#lobby-cache-route) |
-| gate | K3: open | [nguồn1](PLAN.md#gates) |
+| gate | K3: passed | [nguồn1](PLAN.md#k3-acceptance) |
 
 <a id="kr-l003"></a>
 ### KR-L003 · Profile và cache lifecycle
@@ -367,27 +367,27 @@ Dependency: [KR-L001](#kr-l001).
 
 [Contract và giới hạn](PROTOCOL.md#channel-lobby) · [Câu hỏi gốc](RESEARCH.md#gap-profile-cache) · [Thứ tự ở PLAN](PLAN.md#current-order).
 
-Khoảng trống (trích bảng RESEARCH): [CP185](PROTOCOL.md#lobby-cache-route) đã nối service528→238/nativewrite/warm từ CP059, matched dynamic/stage-map missing vẫn A panel; stage-mapCRC0/channelstatic giữ. Wholecold/version/corrupt/reconnect vẫn mở.
+Khoảng trống (trích bảng RESEARCH): [CP186](PROTOCOL.md#channel-cold-route) cold3cache/warm có nguồn, K3local đạt. Năm retainedSSI giống clientnguồn; stageCRC0, mọicache/corrupt/reconnect/profile rộng cònunknown.
 
-Phép kiểm tối thiểu (trích cùng nguồn): Reuse [scope/CRC](PROTOCOL.md#dynamic-cache-representation); không lặp namedcache này. Chỉ mở cachefile/variant khác khi native consumer hoặc acceptance có trigger; freshprefix không là coldallcache.
+Phép kiểm tối thiểu (trích cùng nguồn): Reuse [scope/CRC](PROTOCOL.md#dynamic-cache-representation) và [coldroute](PROTOCOL.md#channel-cold-route); chỉ mở cachevariant khác khi K4/integration có trigger. Không lặp3file/CRC hoặc gọi coldroute là toànasset.
 
 Issue/phạm vi công việc: [#14](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/14).
 
-Bằng chứng/build/hash/recipe: [start-reply](evidence/start-reply/README.md), [cache-boundary](evidence/cache-boundary/README.md), [lobby-identity](evidence/lobby-identity/README.md).
+Bằng chứng/build/hash/recipe: [start-reply](evidence/start-reply/README.md), [cache-boundary](evidence/cache-boundary/README.md), [lobby-identity](evidence/lobby-identity/README.md), [lobby-identity](evidence/lobby-identity/k3-acceptance.json).
 
 | Chiều chứng minh | Khai báo | Nguồn/phạm vi áp dụng |
 |---|---|---|
 | presence | present | [nguồn1](PROTOCOL.md#channel-lobby), [nguồn2](PROTOCOL.md#dynamic-cache-representation) |
 | vn_reference | static | [nguồn1](REFERENCES.md) |
 | kr_static | partial | [nguồn1](PROTOCOL.md#channel-lobby), [nguồn2](PROTOCOL.md#dynamic-cache-representation), [nguồn3](PROTOCOL.md#local-name-model), [nguồn4](PROTOCOL.md#own-profile-291), [nguồn5](PROTOCOL.md#own-profile-integration) |
-| emulation | checked | [nguồn1](evidence/cache-boundary/README.md) |
-| wine_diagnostic_copy | observed | [nguồn1](evidence/cache-boundary/README.md), [nguồn2](PROTOCOL.md#local-name-model), [nguồn3](PROTOCOL.md#own-profile-291), [nguồn4](PROTOCOL.md#own-profile-integration), [nguồn5](PROTOCOL.md#lobby-cache-route) |
+| emulation | checked | [nguồn1](evidence/cache-boundary/README.md), [nguồn2](evidence/lobby-identity/k3-acceptance.json) |
+| wine_diagnostic_copy | observed | [nguồn1](evidence/cache-boundary/README.md), [nguồn2](PROTOCOL.md#local-name-model), [nguồn3](PROTOCOL.md#own-profile-291), [nguồn4](PROTOCOL.md#own-profile-integration), [nguồn5](PROTOCOL.md#lobby-cache-route), [nguồn6](evidence/lobby-identity/k3-acceptance.json) |
 | windows_original | unknown | Chưa có bằng chứng trong phạm vi rà |
 | lan | unknown | Chưa có bằng chứng trong phạm vi rà |
 | internet | unknown | Chưa có bằng chứng trong phạm vi rà |
-| implementation | partial / via_pr | [nguồn1](../tools/export_probe_profile.py), [nguồn2](PROTOCOL.md#dynamic-cache-representation), [nguồn3](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/79), [nguồn4](../server/own_profile.py), [nguồn5](PROTOCOL.md#lobby-cache-route) |
+| implementation | partial / via_pr | [nguồn1](../tools/export_probe_profile.py), [nguồn2](PROTOCOL.md#dynamic-cache-representation), [nguồn3](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/79), [nguồn4](../server/own_profile.py), [nguồn5](PROTOCOL.md#lobby-cache-route), [nguồn6](PROTOCOL.md#k3-version-identity-controls) |
 | integration | partial | [nguồn1](evidence/cache-boundary/README.md), [nguồn2](PROTOCOL.md#lobby-cache-route) |
-| gate | K3: open | [nguồn1](PLAN.md#gates) |
+| gate | K3: passed | [nguồn1](PLAN.md#k3-acceptance) |
 
 <a id="kr-r001"></a>
 ### KR-R001 · Tạo và vào phòng

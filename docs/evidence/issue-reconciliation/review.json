@@ -155,11 +155,11 @@
         "KR-F001",
         "KR-F015"
       ],
-      "known": "CP183/PR255merged5c1f3fb; CP184optinserviceAown291/128cursor/name/UI→OScreate/roster/map/native43..73; sourcefrozenr1/r2. 290server/7exportmodels. NoK3gate.",
-      "remaining": "K3checklistcoldcachebaseline/channelUI-kinds/version-identityerror andnegativewire scopes; latergates/fullmatch/LANInternet8realclients open.",
-      "next_test": "PLANk3-evidence-review/sourcefirst existingCP015016058059181; verifyonlymissingcache/version/channel/negativecriteria, thenreviewK4. No moreproducer/integrationAreplay oritemmodebranchwithoutgateblocker.",
+      "known": "CP186 K3 local accepted after manual unchanged-criterion review; broader account/authority/fullmatch not accepted. Canonical scope linked, no copied contract.",
+      "remaining": "K4 current two-actual-client opt-in291/nameguard integration, then K5/K6a and later LAN/Internet/8native clients per PLAN.",
+      "next_test": "PLAN#current-order NEXT-K4-INTEGRATION; reuse existing room/load/start evidence and only measure actual gaps.",
       "acceptance": "Epic checklist: linkedscopedtask/evidence+authoritymatrix vàacceptancegate ởPLAN; từngtaskđóng khôngđóngepic/K5/K6a.",
-      "reason": "CP184manualsource/native/UI/audit review distinguishesmodelguards/nativeA/copycache andpreservesoldhistory; AUD055periodic184/next188.",
+      "reason": "CP186 manual unchanged-criterion scoped K3 review and final-source native A/wire evidence. Gate does not close umbrella; audit nextCP188 unchanged.",
       "sources": [
         "docs/PROTOCOL.md#authority",
         "docs/RESEARCH.md#feature-gaps",
@@ -220,7 +220,8 @@
         "docs/RESEARCH.md#gap-lobby-identity-followup",
         "docs/PROTOCOL.md#own-profile-291",
         "docs/PLAN.md#k3-evidence-review",
-        "docs/PROTOCOL.md#own-profile-integration"
+        "docs/PROTOCOL.md#own-profile-integration",
+        "docs/PLAN.md#k3-acceptance"
       ],
       "evidence": [
         "docs/evidence/current-movement-cycles/README.md",
@@ -279,7 +280,8 @@
         "docs/evidence/wine-r2/README.md#cp179",
         "docs/evidence/live-codec-stream/README.md",
         "docs/evidence/live-codec-stream/README.md#cp181",
-        "docs/evidence/lobby-identity/README.md"
+        "docs/evidence/lobby-identity/README.md",
+        "docs/evidence/lobby-identity/k3-acceptance.json"
       ],
       "prs": [
         173,

@@ -42,24 +42,21 @@ accountresume. Widercodec chỉ mở khi có trigger cụ thể từ K3; không 
 Owner/tự kiểm Codex, review waived; periodic audit kếCP184.
 
 <a id="gap-lobby-identity-followup"></a>
-### K3 — CP185 named-cache đã nối; tiếp channel/version/negative
+### K3 local đã đạt CP186 — còn integration hai client thuộc K4
 
-[Contract](PROTOCOL.md#own-profile-integration), [checklist K3](PLAN.md#k3-evidence-review),
-[evidence](evidence/lobby-identity/README.md#cp184) là nguồn chuẩn. Producer291 và integration A
-qua room/map/sequence đã giải; không lặp authgetter, producer, profile109 hoặc CRC cache cũ.
+[Nghiệm thu/scope](PLAN.md#k3-acceptance), [version/identity](PROTOCOL.md#k3-version-identity-controls),
+[cold route](PROTOCOL.md#channel-cold-route) giữ kết luận. Producer291/panelA, named dynamiccache,
+selected0/kind1/normalfactory và scopedversion/identitynegative đã đủ đối chiếu; không lặp các phép đo đó.
 
-[CP185 cache route](PROTOCOL.md#lobby-cache-route) đã giải thiếu sót service nhận528 nhưng chưa trả238:
-matched missing-pair→nativewrite→warm có bằng chứng. Không lặp15loadercalls, CRC/parser hoặc đo lại
-named dynamic-map; stage-map vắng chỉ với ready241 CRC0, channel/static vẫn giữ. Wholeclientcold còn
-giới hạn, chỉ mở thêm cache nếu có consumer/acceptance cụ thể. WikiPC trusted giúp luật gameplay,
-không trả lời version/cache; chưa mở item/mode mới.
+Phần cần kiểm theo [PLAN](PLAN.md#current-order) là **hai actualclients với opt-in291/nameguard trong
+preset hiện hành**: A/B name/ID, create/join/slot/host/map/Ready/loadbarrier/Start. Dùng lại CP161/162/
+165–177 và recipe input/probe; chỉ trace branch thực sự lỗi. C chỉ theo trigger replacement/K6.
 
-Câu hỏi kế là phần nào của acceptance version/identity/channel còn thiếu trong recipe K3:
-đọc CP015/016/058/059/181 và các consumer/capture đã có, chốt phạm vi cache server-cấp cần thiết,
-version/error mapping và negative đúng socket/stage. Chỉ đo ô chưa đủ ở checklist, không rà toàn
-pack/cachefamily/fullaccountauth để khép demo. B/C helper đã kiểm binding model; native B/C và
-start/rejoin sau291 chưa đo, mở khi dependency K4/K6 hoặc replacement cần. C không tự chặn K3 A.
-Owner/tự kiểm Codex, review waived; K3 vẫn mở. AUD055 qua184, audit kế188.
+Backlog giữ rõ: account/token/auth-version mapping, WCPu16 meanings, updater/arbitraryversions,
+nonzero stageCRC/mọicache, nonempty channelcaption/multirow. NamedrowKRLocal-0 đã nativeparse/persist,
+**chưa** chứng minh captionrender/warmdeserializetrước14; không biến candidate đó thành điều kiện mới
+để mở lại K3 baseline một sảnh. Wrongstage/nameguard là policy emulator, không luật server gốc.
+Owner/tự kiểm Codex, review waived; K4–K7/K6a/LAN/Internet mở. AUD055 qua184, audit kế188.
 
 <a id="feature-gaps"></a>
 ## Khoảng trống theo cơ chế
@@ -74,8 +71,8 @@ Bảng được [coverage](COVERAGE.md) trích tự động để tra theo chứ
 | <a id="gap-wcp-config"></a>KR-B002 | Fixture tổng hợp đã qua guard; oneclickuser/+E9C và dữ liệu/cache thật chưa đủ. | Chỉ mở consumer/config đang chặn runtime; so nhánh với và không tham số trên cùng copy, không đo lại +E78 đã giải. |
 | <a id="gap-socket-codec"></a>KR-B003 | [CP181](PROTOCOL.md#login-retry-codec) actualsameprocessretry/reset/authcursor + CP180stream/CRC + CP057boundednativeoracle đủ K2profile theo PLAN. Fullgrammar/prefixguardon/modes/headerauth/capenforcement/FFFFFFFF giữ unknown. | Codec backlog theo trigger K3; không lặp solvedretry/closeonly/HWwatchpoint/76modelsplit. Accountresume thuộc identity/lifecycle, không tự thêm gate. |
 | <a id="gap-auth-identity"></a>KR-L001 | [CP073](PROTOCOL.md#launcher-error-attribution): auxiliarylocale1,0 valid/init0→2000:0/noTCP; main currentA/Bactual67 positive. HistoricalmainSIGABRT/HTTPstartupcause vẫn unknown, không gánpopup là root. Fullidentity/token/accountauthority còn mở. | TheoPLAN trace actualerrorstate/caller nếu mainfail; không bypasslocale hoặc tìm lại auth137/135/string/cache. Providerinit sâu chỉ mở khi thực sự chặn main, chưa phải trọng tâm chơi. |
-| <a id="gap-redirect-lobby"></a>KR-L002 | [CP184](PROTOCOL.md#own-profile-integration) A name→create/map; [CP185](PROTOCOL.md#lobby-cache-route) cache528→238/nativewrite/warm đã kiểm. K3 còn channel/version/negative và giới hạncache. | [Checklist K3](PLAN.md#k3-evidence-review): đối chiếu nguồn và đo ô chưa đủ; không lặp producer/integration A/authgetter hoặc mở nhánh gameplay phụ. |
-| <a id="gap-profile-cache"></a>KR-L003 | [CP185](PROTOCOL.md#lobby-cache-route) đã nối service528→238/nativewrite/warm từ CP059, matched dynamic/stage-map missing vẫn A panel; stage-mapCRC0/channelstatic giữ. Wholecold/version/corrupt/reconnect vẫn mở. | Reuse [scope/CRC](PROTOCOL.md#dynamic-cache-representation); không lặp namedcache này. Chỉ mở cachefile/variant khác khi native consumer hoặc acceptance có trigger; freshprefix không là coldallcache. |
+| <a id="gap-redirect-lobby"></a>KR-L002 | [CP186 K3local](PLAN.md#k3-acceptance) đạt; A291/nameguard/coldroute/versionnegative có nguồn. ActualB/C291/currentintegration vẫn thiếu theo K4, caption/multichannel giữunknown. | [Rà K4](PLAN.md#k4-evidence-review): dùng preset hiện hành +optin291/nameguard và hai actualclient; không lặp producer/authgetter/selectedkind hoặc mở gameplay phụ. |
+| <a id="gap-profile-cache"></a>KR-L003 | [CP186](PROTOCOL.md#channel-cold-route) cold3cache/warm có nguồn, K3local đạt. Năm retainedSSI giống clientnguồn; stageCRC0, mọicache/corrupt/reconnect/profile rộng cònunknown. | Reuse [scope/CRC](PROTOCOL.md#dynamic-cache-representation) và [coldroute](PROTOCOL.md#channel-cold-route); chỉ mở cachevariant khác khi K4/integration có trigger. Không lặp3file/CRC hoặc gọi coldroute là toànasset. |
 | <a id="gap-create-join"></a>KR-R001 | [CP161](PROTOCOL.md#current-room-title) current A81→B91 title/Back/rejoin/UI hai view và hai vòng production/Ready đã đo;32 byte/empty-password/known single row là policy. | Password/full/error/general room authority, C/recreate/generalpromotion ngoài [CP166/168](PROTOCOL.md#current-mode-promoted-start3)/multi-row còn mở theo trigger. Không RE lại known81/91 hoặc lấy title làm identity. |
 | <a id="gap-roster-ready-host"></a>KR-R002 | [CP163](PROTOCOL.md#battle-eight-roster) actual selector1/8synthetic slots:4–4 check0/104,1–7 check7/no104, Ready/parser/map/capacity/getter có nguồn. CP162 actual Free/Manner/ACK/reset đã nối. | Không lặp guard/roster/map/input RE. CP165 actualpreset2cycles/Start3 đãđo; CP166 currentmodepromotion/rejoin đãtới clock; CP167đãhai cycleBhost; CP168BStart3/AUD050đãđo; CP171/172basiccycles/Start3 đã đo; tiếp PLAN theo gap thật; general roster8/service admission/8peer/Battle8/Random/C/generalpromotion/row91 metadata còn thiếu sau local baseline. |
 | <a id="gap-map-spawn-loading"></a>KR-R003 | [CP153](PROTOCOL.md#loading-hot-gate-contest): B32390 gate riêng khi load/restoreclock/0loadinghits; hai actual99/barrier5,94s/4,60s. CP151R2 historicalcause không bị tự sửa. | Scope loading recipe đã giải; không lặp writer/loader RE hoặc tăng30s. Generalcoldload/membership/timeout variants chỉ mở theo trigger; theo thứ tự hiện hành trong PLAN. |

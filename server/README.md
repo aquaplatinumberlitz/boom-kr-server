@@ -388,3 +388,8 @@ liên tục qua lobby/create/map và dynamic theo connection. [Contract/giới h
 CP185: profile `own_profile.mode=native_291` trả pinned table238 khi native gửi request528rỗng
 sau ready, bằng counter `send` hiện có. Default-off giữ nguyên; unsupported body/wrong stage/socket
 được log/reject. [Native cold/warm, nguồn và giới hạn](../docs/PROTOCOL.md#lobby-cache-route).
+
+
+CP186: opt-in native291 kiểm request6 đúng tên role đã pin trước trả17. Chỉ name/shape CP058/060;
+2byte đầu/tail32byte còn opaque, không credential auth. Wrongname/shape logged/rejected, default-off
+giữ nguyên. [Native positive A, wire controls và giới hạn](../docs/PROTOCOL.md#k3-version-identity-controls).
