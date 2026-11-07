@@ -1,0 +1,284 @@
+{
+  "id": "CP187",
+  "previous": "CP186",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-07T04:18:03.411542+00:00",
+  "context_commit": "f47b95db44e0929df040594f87aaade1cd05f03e",
+  "owner": "Codex",
+  "reviewer": "Codex",
+  "question": "Does currentAB291/nameguard integrate through K4 room/loading/hostrejoin/repeatedstarts, and what actually blocks the current first-result/reset path?",
+  "scope": "SourcefirstCP161162165–177/CP171exact47preset/CP184186own291/nameguard, twofrozen/sealedABruns, targetedoriginalIATthunk/nativeexport/sourcebytecomparison and import-name-only offlinecopy control. K4manualunchangedcriteriareview; secondgameplayalignment failure retained fornextK5K6a. No fullnativeclient scan.",
+  "artifacts": [
+    {
+      "name": "OriginalKR00967unchanged",
+      "sha256": "a52545c14b1fea423de655c3163d6360b628d61c1cd472b46fdbc8a9ffe15f4e"
+    },
+    {
+      "name": "CurrentWinecopyunchanged",
+      "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+    },
+    {
+      "name": "NativeIDAfullcopycf72privateanalysis",
+      "sha256": "cf72da112308d9f1ca256df8089594c5f787875310933073bf6bd5ba6f70e63b"
+    },
+    {
+      "name": "modOmodelreference",
+      "sha256": "a08950c833d3acab8281049def7b3dc96b221f107eeda01da3a548e34b91dce5"
+    },
+    {
+      "name": "OriginalKR00967NewPatcher",
+      "sha256": "b59e4dce9ad23c439a7632ce04ecb2eed3481585bd2454100b05c9d7527f5c02"
+    },
+    {
+      "name": "VN116original_reference_only",
+      "sha256": "bce8644d4e783d1354ab4fc880e1ab9a4ab3325327028f37d99e5439e25f4bbd"
+    },
+    {
+      "name": "VN116patched_runtime_reference_only",
+      "sha256": "bc875ba5765cc112e924f46e75d0ace112904c7801126e46bc0abb1c9cb576b1"
+    },
+    {
+      "name": "PassingK1offlineR2recipe",
+      "sha256": "7b3b435b5d8e110185359107376b736615ceabe9452cea8154d02c8628f44c29"
+    },
+    {
+      "name": "NativeProcessPatchR1control",
+      "sha256": "a0c3b9867dae5fe2ff7c315cfe851117661c2cafead45196ce999329f67432f5"
+    },
+    {
+      "name": "OfflineWinecopy_import_compare_ABI_only",
+      "sha256": "4b781fbcea21e0f6294c729b63be86ab2953d60ad83b0d0c9219359f826107ed"
+    }
+  ],
+  "locators": [
+    "R1nativee9bb...: own291128cursor/guard1/ABnames, first175302cursor then SIGSEGVkernelbase,D2F64A→E5FC07. Duration210.898/854raw/frozen168/cleanup0/exit0partial, no180.",
+    "CachedCP183D2F440 push2 atD2F644; fullresultcallerE5F610+smallD2D6B0/450370 read withtargetedIDA/privateDBcf72, all5new+cachedbodiesmatchruntimebytes. No originalDB/sourcewrite.",
+    "IAT16EA1CC rebuiltCompareStringA6args vs originalthunk67B00AD createsLCID400/flags40000001/len-1 andAPI1,2,3→-1,0,1/ret8. Originalexportkernel32lstrcmpiA7774EAA0same relation; syntheticAPI0 reachesunmodeledSEHhelper onboth.",
+    "Separatecopy4b781fbcea21e0f6294c729b63be86ab2953d60ad83b0d0c9219359f826107ed; onlyimportname atfile31857478/14changedbytes in.repair, .image31838208bytesidentical. R2actualD2F644strings/nativeD2F64Areturns0±1/SP+8 then native175180/reset/Start2both.",
+    "R2duration308.016/1120raw/frozen166/cleanup0/exit1 alignnotstable:R2-A-hidden-row. Actual99bothbefore2original30sbarriers6.079/6.790s; keys12345/12346/hostB, oneoutcome only."
+  ],
+  "findings": [
+    {
+      "summary": "ActualABnative291128/128/errors0/panelrenderguard1/namesKRLocalKRGuest andrequest6guard preserved through currentcreate/join/normalManner/hostA86/Bchief/Arejoin/Ready/load/start. S2Csequences43+3n continuousboth. R1thenstopsatfirst175importcompare, no180; exit0notpass.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#current-291-room-integration",
+      "evidence": [
+        "ROOM187-00046",
+        "ROOM187-00923",
+        "ROOM187-00986"
+      ],
+      "limits": "TwoactualABmodifiedWine/privatevirtualhosts/offline/currentbasicpreset+native291/nameguard. r1oldcopye9firstresultfault retained; r2copy4bimportABIonly passesfirst175180/reset/Start2 thencontrolleralignnotstableR2/exit1/cleanupabort, notsecondoutcome/currentStart3/K5K6a/fullmatch/LAN/Internet. K4manualscope only; originalbinary/DB/packs/oldrecipes immutable. APIerror0/OSfullcollation/authority unknown."
+    },
+    {
+      "summary": "OldreconstructedIAT16EA1CC boundnestedCompareStringAendpoint6args, originalcallsitepush2. NativeoriginalthunkandexportlstrcmpiA agree onobserved6args/calleradaptation/ret8 forAPI1,2,3; API0SEHnotcovered. Originalresolverstackdelta−40 wascandidate, notdirectABIproof.",
+      "source": "kr_static",
+      "status": "confirmed",
+      "method": "emulation",
+      "canonical": "docs/PROTOCOL.md#own-profile-result-compare",
+      "evidence": [
+        "ROOM187-00913",
+        "ROOM187-00915",
+        "ROOM187-00921"
+      ],
+      "limits": "TwoactualABmodifiedWine/privatevirtualhosts/offline/currentbasicpreset+native291/nameguard. r1oldcopye9firstresultfault retained; r2copy4bimportABIonly passesfirst175180/reset/Start2 thencontrolleralignnotstableR2/exit1/cleanupabort, notsecondoutcome/currentStart3/K5K6a/fullmatch/LAN/Internet. K4manualscope only; originalbinary/DB/packs/oldrecipes immutable. APIerror0/OSfullcollation/authority unknown."
+    },
+    {
+      "summary": "Separateofflinecopy onlyPEimportname correctedtolstrcmpiA; no nativecode/guard/rank/profile/serverchange. r2actualstringsvalid/nativecompare0±1/sp+8 passboth; first175180/reset thenStart2 clearsoldcrashscope. Pinnedtoolreproducesexact4bSHA/rejectswronginputs/outside/existingoutput, sourcee9preserved.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#own-profile-result-compare",
+      "evidence": [
+        "ROOM187-02135",
+        "ROOM187-00991",
+        "ROOM187-02195",
+        "ROOM187-02199"
+      ],
+      "limits": "TwoactualABmodifiedWine/privatevirtualhosts/offline/currentbasicpreset+native291/nameguard. r1oldcopye9firstresultfault retained; r2copy4bimportABIonly passesfirst175180/reset/Start2 thencontrolleralignnotstableR2/exit1/cleanupabort, notsecondoutcome/currentStart3/K5K6a/fullmatch/LAN/Internet. K4manualscope only; originalbinary/DB/packs/oldrecipes immutable. APIerror0/OSfullcollation/authority unknown."
+    },
+    {
+      "summary": "R2remainscontrollerpartial atalignnotstableR2hiddenrowafterfirstnormaloutcome/reset/clock2; stablefeedback299→281 theninsufficientneutralreads under3s, no nativeorservicefailure. No2outcomes/Start3 claim. Retainexit1/cleanupEOFabort. RootcauseOSrelease/physics/probeunknown, nextminimalfeedbackinputtest.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#current-291-room-integration",
+      "evidence": [
+        "ROOM187-02195",
+        "ROOM187-02141",
+        "ROOM187-02111"
+      ],
+      "limits": "TwoactualABmodifiedWine/privatevirtualhosts/offline/currentbasicpreset+native291/nameguard. r1oldcopye9firstresultfault retained; r2copy4bimportABIonly passesfirst175180/reset/Start2 thencontrolleralignnotstableR2/exit1/cleanupabort, notsecondoutcome/currentStart3/K5K6a/fullmatch/LAN/Internet. K4manualscope only; originalbinary/DB/packs/oldrecipes immutable. APIerror0/OSfullcollation/authority unknown."
+    },
+    {
+      "summary": "CodexmanualunchangedK4criteriareview accepts localcurrenttwo-clientroom/map/loading/hostBack/rejoin/Ready/repeatedStartscope. Currenttwo121129/129+clockboth/actual99barriers6.0796.790s andone175180/reset/Start2; reuseCP065map/spawn,CP135136153hold/deadline,CP171room/nativeinputs, no fullmatch/gameplayaccepted.",
+      "source": "design",
+      "status": "design",
+      "method": "design",
+      "canonical": "docs/PLAN.md#k4-acceptance",
+      "evidence": [
+        "ROOM187-00999",
+        "ROOM187-02142",
+        "ROOM187-02136"
+      ],
+      "limits": "TwoactualABmodifiedWine/privatevirtualhosts/offline/currentbasicpreset+native291/nameguard. r1oldcopye9firstresultfault retained; r2copy4bimportABIonly passesfirst175180/reset/Start2 thencontrolleralignnotstableR2/exit1/cleanupabort, notsecondoutcome/currentStart3/K5K6a/fullmatch/LAN/Internet. K4manualscope only; originalbinary/DB/packs/oldrecipes immutable. APIerror0/OSfullcollation/authority unknown."
+    }
+  ],
+  "verification": [
+    {
+      "check": "R1partial/frozen168/854raw/nativeown291+rankstop andR2frozen166/1120raw/nameguard/compare/firstresult/reset/start2",
+      "result": "pass",
+      "evidence": [
+        "ROOM187-00046",
+        "ROOM187-02195",
+        "ROOM187-02142"
+      ],
+      "limits": "1102+1414+31mechanicalchecks plusmanualroomimages/sourcecriteria; controllerpartial retained, noautomaticgate."
+    },
+    {
+      "check": "Nativeoriginalthunk/export observedrelation and copy-onlytoolrebuild/negatives",
+      "result": "pass",
+      "evidence": [
+        "ROOM187-00913",
+        "ROOM187-00915",
+        "ROOM187-00991",
+        "ROOM187-02199"
+      ],
+      "limits": "CompareStringAreturns synthetic toinspectadaptation; originalAPIerror0SEHnotcovered. R2nativecontrol separate."
+    },
+    {
+      "check": "Server294regressions/original5artifacts",
+      "result": "pass",
+      "evidence": [
+        "ROOM187-02196",
+        "ROOM187-00989"
+      ],
+      "limits": "No originalWindows runtime/fullauthclaim."
+    },
+    {
+      "check": "K4 manual unchangedcriterion scopedacceptance",
+      "result": "pass",
+      "evidence": [
+        "ROOM187-00999"
+      ],
+      "limits": "Two starts/oneoutcome enoughroomloadrepeat scope; notcurrentStart3orK5K6a. Reviewwaived."
+    },
+    {
+      "check": "Currenttwo-complete-outcome gameplaycycle/K5K6a",
+      "result": "pending",
+      "evidence": [
+        "ROOM187-02111",
+        "ROOM187-00994"
+      ],
+      "limits": "alignnotstable:R2-A-hidden-row. Unused2cycle/Start3verifierspreparednotexecuted/countedaspass. OldCP171proofnotsubstituted."
+    }
+  ],
+  "evidence": [],
+  "evidence_manifests": [
+    {
+      "path": "docs/evidence/checkpoints/evidence/CP187-current-291-room.json",
+      "bytes": 569657,
+      "sha256": "a43d06f1c8c488d832001c8e5bd5cd87703dbd51a244dc1329039de777330a62",
+      "count": 2263
+    }
+  ],
+  "delta": {
+    "added": [
+      "CurrentnativeB291/nameguard/two-clientroom/load/hostrejoin/firstresult/reset/Start2 integration andmanualK4scope.",
+      "TargetedreconstructedIATABIroot/control, originalthunk/exportrelation/copynamepatch/pinnedrebuildtool, originalcodeimmutable."
+    ],
+    "corrected": [
+      "Firstresultnativefaultnotrankbodyparsefailure ormissingnames: originalfixtureunchangedandABI-onlycopycontrolpassescompare/180.",
+      "Controllerexit0r1notpass; r2exit1alignmentpartialnot2cyclepass. OldStart3proofstayshistorical. Frozenr2actualcount166, notinitialestimate169."
+    ],
+    "superseded": [
+      "NEXT-K4-INTEGRATION fulfilledwithscope; nextcurrentgameplayneutralfeedbackgap, notmorelobby/room/codec/wholeIATRE."
+    ]
+  },
+  "blockers": [
+    "Currentcopy/gameplaysecondroundalignmentneutral3reads fails, exactsource/feedbackneededbeforefurtherinputchange. No currenttwooutcomes/Start3 orK5K6a/fullmatch.",
+    "APIerror0/nativecollation/othercandidateimports notfullyproved, onlyreopenonrealnewedge. Generalaccount/room/maps/8client/LAN/Internetremain."
+  ],
+  "next_steps": [
+    {
+      "id": "NEXT-K4-INTEGRATION",
+      "task": "KRE-005b",
+      "state": "closed",
+      "action": "CP187manualK4roomloadstartlocalaccepted; currentnativeAB291/hostBack/rejoin/firstresult/reset/Start2. Fullgameplaynotaccepted.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-K5-K6A-CURRENT",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "PLANcurrentorder:sourcefirstCP150165171+R2feedback/OSkeyup; measure failedneutralreads andOSkeyrelease, boundedinputcontroller test only. Keep20attempt/45ms/tolerance12/neutral3s, no forcedstate/function/clock. ThenmanualK5K6areview; periodicmanualAUDatCP188required.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    }
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-11-07T04:18:03.411542+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "Ownerwaiver/Codexsolo RE/runtime/code/manualcriterionreview/selfcheck; notindependentapproved. Exactheadchecks beforePRmerge.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Owner explicitly requested solo, no workers/review."
+    }
+  },
+  "docs_sync": [
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "CP187nativeABIcontrol/currentK4scope/partialgameplay/nextgap synchronizedbeforecomplete, periodicCP188 unchanged."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "CP187nativeABIcontrol/currentK4scope/partialgameplay/nextgap synchronizedbeforecomplete, periodicCP188 unchanged."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "updated",
+      "reason": "CP187nativeABIcontrol/currentK4scope/partialgameplay/nextgap synchronizedbeforecomplete, periodicCP188 unchanged."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "updated",
+      "reason": "CP187nativeABIcontrol/currentK4scope/partialgameplay/nextgap synchronizedbeforecomplete, periodicCP188 unchanged."
+    },
+    {
+      "path": "docs/features.json",
+      "state": "updated",
+      "reason": "CP187nativeABIcontrol/currentK4scope/partialgameplay/nextgap synchronizedbeforecomplete, periodicCP188 unchanged."
+    },
+    {
+      "path": "docs/COVERAGE.md",
+      "state": "updated",
+      "reason": "CP187nativeABIcontrol/currentK4scope/partialgameplay/nextgap synchronizedbeforecomplete, periodicCP188 unchanged."
+    },
+    {
+      "path": "docs/evidence/lobby-identity/README.md",
+      "state": "updated",
+      "reason": "CP187nativeABIcontrol/currentK4scope/partialgameplay/nextgap synchronizedbeforecomplete, periodicCP188 unchanged."
+    },
+    {
+      "path": "docs/evidence/lobby-identity/k4-acceptance.json",
+      "state": "updated",
+      "reason": "CP187nativeABIcontrol/currentK4scope/partialgameplay/nextgap synchronizedbeforecomplete, periodicCP188 unchanged."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/review.json",
+      "state": "updated",
+      "reason": "CP187nativeABIcontrol/currentK4scope/partialgameplay/nextgap synchronizedbeforecomplete, periodicCP188 unchanged."
+    },
+    {
+      "path": "tools/README.md",
+      "state": "updated",
+      "reason": "CP187nativeABIcontrol/currentK4scope/partialgameplay/nextgap synchronizedbeforecomplete, periodicCP188 unchanged."
+    }
+  ]
+}

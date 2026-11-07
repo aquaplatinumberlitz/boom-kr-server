@@ -26,10 +26,10 @@ Review độc lập: [waived theo chủ dự án](evidence/checkpoints/review-wa
 | [KR-L001 · Auth và identity cục bộ](#kr-l001) | present | both | partial | checked | observed | unknown | unknown | unknown | partial / via_pr | partial | K3: passed |
 | [KR-L002 · Redirect và UI sảnh](#kr-l002) | present | both | partial | checked | observed | unknown | unknown | unknown | partial / via_pr | partial | K3: passed |
 | [KR-L003 · Profile và cache lifecycle](#kr-l003) | present | static | partial | checked | observed | unknown | unknown | unknown | partial / via_pr | partial | K3: passed |
-| [KR-R001 · Tạo và vào phòng](#kr-r001) | present | both | partial | checked | observed | unknown | unknown | unknown | partial / via_pr | partial | K4: open |
-| [KR-R002 · Roster, own-slot, Ready và chủ phòng](#kr-r002) | present | both | partial | checked | observed | unknown | unknown | unknown | partial / via_pr | partial | K4: open |
-| [KR-R003 · Map, spawn và loading barrier](#kr-r003) | present | both | partial | checked | observed | unknown | unknown | unknown | partial / via_pr | partial | K4: open |
-| [KR-R004 · Leave, promotion và rejoin](#kr-r004) | present | both | partial | checked | observed | unknown | unknown | unknown | partial / via_pr | partial | K4: open |
+| [KR-R001 · Tạo và vào phòng](#kr-r001) | present | both | partial | checked | observed | unknown | unknown | unknown | partial / via_pr | partial | K4: passed |
+| [KR-R002 · Roster, own-slot, Ready và chủ phòng](#kr-r002) | present | both | partial | checked | observed | unknown | unknown | unknown | partial / via_pr | partial | K4: passed |
+| [KR-R003 · Map, spawn và loading barrier](#kr-r003) | present | both | partial | checked | observed | unknown | unknown | unknown | partial / via_pr | partial | K4: passed |
+| [KR-R004 · Leave, promotion và rejoin](#kr-r004) | present | both | partial | checked | observed | unknown | unknown | unknown | partial / via_pr | partial | K4: passed |
 | [KR-F001 · Phase, clock và input](#kr-f001) | present | both | partial | checked | observed | unknown | unknown | unknown | partial / via_pr | partial | K5: open |
 | [KR-F002 · Peer discovery và movement](#kr-f002) | present | both | partial | checked | observed | unknown | unknown | unknown | partial / via_pr | partial | K6: open |
 | [KR-F003 · UDP cũ và khóa vòng](#kr-f003) | present | both | partial | checked | observed | unknown | unknown | unknown | partial / via_pr | partial | K6: open |
@@ -58,7 +58,7 @@ Số lượng theo trạng thái khai báo (không phải tỷ lệ hoàn thành
 - emulation: checked=22, unknown=8.
 - implementation: partial=23, unknown=7.
 - integration: partial=22, unknown=8.
-- gate: open=24, passed=6.
+- gate: open=20, passed=10.
 
 ## Cây cơ chế
 
@@ -338,9 +338,9 @@ Dependency: [KR-L001](#kr-l001).
 
 [Contract và giới hạn](PROTOCOL.md#channel-lobby) · [Câu hỏi gốc](RESEARCH.md#gap-redirect-lobby) · [Thứ tự ở PLAN](PLAN.md#current-order).
 
-Khoảng trống (trích bảng RESEARCH): [CP186 K3local](PLAN.md#k3-acceptance) đạt; A291/nameguard/coldroute/versionnegative có nguồn. ActualB/C291/currentintegration vẫn thiếu theo K4, caption/multichannel giữunknown.
+Khoảng trống (trích bảng RESEARCH): [CP186 K3local](PLAN.md#k3-acceptance) đạt; A291/nameguard/coldroute/versionnegative có nguồn. CP187actualAB291/currentroomintegration đã đủ K4scope; C291/caption/multichannel giữunknown.
 
-Phép kiểm tối thiểu (trích cùng nguồn): [Rà K4](PLAN.md#k4-evidence-review): dùng preset hiện hành +optin291/nameguard và hai actualclient; không lặp producer/authgetter/selectedkind hoặc mở gameplay phụ.
+Phép kiểm tối thiểu (trích cùng nguồn): [PLAN](PLAN.md#current-order): tiếpK5/K6aalignment vòng2, không lặpAB291/room/start. C/multichannel chỉ theo trigger.
 
 Issue/phạm vi công việc: [#14](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/14).
 
@@ -410,13 +410,13 @@ Bằng chứng/build/hash/recipe: [duo-room-round](evidence/duo-room-round/READM
 | vn_reference | both | [nguồn1](REFERENCES.md) |
 | kr_static | partial | [nguồn1](PROTOCOL.md#duo-room-round), [nguồn2](PROTOCOL.md#battle-eight-roster) |
 | emulation | checked | [nguồn1](evidence/duo-room-round/README.md) |
-| wine_diagnostic_copy | observed | [nguồn1](evidence/duo-room-round/README.md), [nguồn2](evidence/host-normal-back/README.md), [nguồn3](evidence/eight-player/README.md), [nguồn4](evidence/peer-endpoints/README.md#cp160), [nguồn5](evidence/peer-endpoints/README.md#cp161), [nguồn6](evidence/peer-endpoints/README.md#cp162), [nguồn7](evidence/peer-endpoints/README.md#cp166), [nguồn8](evidence/peer-endpoints/README.md#cp167), [nguồn9](evidence/peer-endpoints/README.md#cp168) |
+| wine_diagnostic_copy | observed | [nguồn1](evidence/duo-room-round/README.md), [nguồn2](evidence/host-normal-back/README.md), [nguồn3](evidence/eight-player/README.md), [nguồn4](evidence/peer-endpoints/README.md#cp160), [nguồn5](evidence/peer-endpoints/README.md#cp161), [nguồn6](evidence/peer-endpoints/README.md#cp162), [nguồn7](evidence/peer-endpoints/README.md#cp166), [nguồn8](evidence/peer-endpoints/README.md#cp167), [nguồn9](evidence/peer-endpoints/README.md#cp168), [nguồn10](PROTOCOL.md#current-291-room-integration) |
 | windows_original | unknown | Chưa có bằng chứng trong phạm vi rà |
 | lan | unknown | Chưa có bằng chứng trong phạm vi rà |
 | internet | unknown | Chưa có bằng chứng trong phạm vi rà |
 | implementation | partial / via_pr | [nguồn1](../server/probe_service.py), [nguồn2](PROTOCOL.md#probe-service), [nguồn3](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/57), [nguồn4](../server/test_host_back_rejoin.py), [nguồn5](PROTOCOL.md#host-normal-back), [nguồn6](PROTOCOL.md#current-room-title), [nguồn7](../server/room_title.py), [nguồn8](../server/test_room_title.py), [nguồn9](PROTOCOL.md#current-team-mode), [nguồn10](../server/room_team_mode.py), [nguồn11](../server/test_room_team_mode.py) |
-| integration | partial | [nguồn1](evidence/probe-service/README.md), [nguồn2](evidence/host-normal-back/README.md), [nguồn3](evidence/peer-endpoints/README.md#cp161) |
-| gate | K4: open | [nguồn1](PLAN.md#gates) |
+| integration | partial | [nguồn1](evidence/probe-service/README.md), [nguồn2](evidence/host-normal-back/README.md), [nguồn3](evidence/peer-endpoints/README.md#cp161), [nguồn4](PROTOCOL.md#current-291-room-integration) |
+| gate | K4: passed | [nguồn1](PLAN.md#k4-acceptance) |
 
 <a id="kr-r002"></a>
 ### KR-R002 · Roster, own-slot, Ready và chủ phòng
@@ -439,13 +439,13 @@ Bằng chứng/build/hash/recipe: [room-player](evidence/room-player/README.md),
 | vn_reference | both | [nguồn1](REFERENCES.md) |
 | kr_static | partial | [nguồn1](PROTOCOL.md#room-player), [nguồn2](PROTOCOL.md#battle-eight-roster) |
 | emulation | checked | [nguồn1](evidence/room-player/README.md), [nguồn2](evidence/eight-player/README.md) |
-| wine_diagnostic_copy | observed | [nguồn1](evidence/room-player/README.md), [nguồn2](evidence/host-normal-back/README.md), [nguồn3](evidence/eight-player/README.md), [nguồn4](evidence/peer-endpoints/README.md#cp162), [nguồn5](evidence/eight-player/README.md#cp163), [nguồn6](evidence/peer-endpoints/README.md#cp164), [nguồn7](evidence/peer-endpoints/README.md#cp165), [nguồn8](evidence/peer-endpoints/README.md#cp166), [nguồn9](evidence/peer-endpoints/README.md#cp167), [nguồn10](evidence/peer-endpoints/README.md#cp168) |
+| wine_diagnostic_copy | observed | [nguồn1](evidence/room-player/README.md), [nguồn2](evidence/host-normal-back/README.md), [nguồn3](evidence/eight-player/README.md), [nguồn4](evidence/peer-endpoints/README.md#cp162), [nguồn5](evidence/eight-player/README.md#cp163), [nguồn6](evidence/peer-endpoints/README.md#cp164), [nguồn7](evidence/peer-endpoints/README.md#cp165), [nguồn8](evidence/peer-endpoints/README.md#cp166), [nguồn9](evidence/peer-endpoints/README.md#cp167), [nguồn10](evidence/peer-endpoints/README.md#cp168), [nguồn11](PROTOCOL.md#current-291-room-integration) |
 | windows_original | unknown | Chưa có bằng chứng trong phạm vi rà |
 | lan | unknown | Chưa có bằng chứng trong phạm vi rà |
 | internet | unknown | Chưa có bằng chứng trong phạm vi rà |
 | implementation | partial / via_pr | [nguồn1](../server/probe_service.py), [nguồn2](PROTOCOL.md#probe-service), [nguồn3](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/57), [nguồn4](../server/test_host_back_rejoin.py), [nguồn5](PROTOCOL.md#host-normal-back), [nguồn6](PROTOCOL.md#current-team-mode), [nguồn7](../server/room_team_mode.py), [nguồn8](../server/test_room_team_mode.py) |
-| integration | partial | [nguồn1](evidence/probe-service/README.md), [nguồn2](evidence/host-normal-back/README.md) |
-| gate | K4: open | [nguồn1](PLAN.md#gates) |
+| integration | partial | [nguồn1](evidence/probe-service/README.md), [nguồn2](evidence/host-normal-back/README.md), [nguồn3](PROTOCOL.md#current-291-room-integration) |
+| gate | K4: passed | [nguồn1](PLAN.md#k4-acceptance) |
 
 <a id="kr-r003"></a>
 ### KR-R003 · Map, spawn và loading barrier
@@ -468,13 +468,13 @@ Bằng chứng/build/hash/recipe: [start-reply](evidence/start-reply/README.md),
 | vn_reference | both | [nguồn1](REFERENCES.md) |
 | kr_static | partial | [nguồn1](PROTOCOL.md#start-reply), [nguồn2](PROTOCOL.md#current-map-chain-state), [nguồn3](PROTOCOL.md#map-flags-snapshot), [nguồn4](PROTOCOL.md#loading-observer-timing) |
 | emulation | checked | [nguồn1](evidence/start-reply/README.md), [nguồn2](evidence/opposite-box-control/README.md) |
-| wine_diagnostic_copy | observed | [nguồn1](evidence/start-reply/README.md), [nguồn2](evidence/service-eof/README.md), [nguồn3](evidence/distinct-spawn/README.md), [nguồn4](evidence/preclock-eof/README.md), [nguồn5](evidence/preclock-cleanup/README.md), [nguồn6](evidence/current-map-chain/README.md), [nguồn7](evidence/house-after-box/README.md), [nguồn8](evidence/map-flags/README.md), [nguồn9](evidence/opposite-box-control/README.md), [nguồn10](evidence/loading-timeout/README.md), [nguồn11](evidence/loading-timeout/README.md#cp136), [nguồn12](evidence/peer-endpoints/README.md#cp151), [nguồn13](evidence/peer-endpoints/README.md#cp152), [nguồn14](evidence/peer-endpoints/README.md#cp153), [nguồn15](evidence/peer-endpoints/README.md#cp166), [nguồn16](evidence/peer-endpoints/README.md#cp167), [nguồn17](evidence/peer-endpoints/README.md#cp168) |
+| wine_diagnostic_copy | observed | [nguồn1](evidence/start-reply/README.md), [nguồn2](evidence/service-eof/README.md), [nguồn3](evidence/distinct-spawn/README.md), [nguồn4](evidence/preclock-eof/README.md), [nguồn5](evidence/preclock-cleanup/README.md), [nguồn6](evidence/current-map-chain/README.md), [nguồn7](evidence/house-after-box/README.md), [nguồn8](evidence/map-flags/README.md), [nguồn9](evidence/opposite-box-control/README.md), [nguồn10](evidence/loading-timeout/README.md), [nguồn11](evidence/loading-timeout/README.md#cp136), [nguồn12](evidence/peer-endpoints/README.md#cp151), [nguồn13](evidence/peer-endpoints/README.md#cp152), [nguồn14](evidence/peer-endpoints/README.md#cp153), [nguồn15](evidence/peer-endpoints/README.md#cp166), [nguồn16](evidence/peer-endpoints/README.md#cp167), [nguồn17](evidence/peer-endpoints/README.md#cp168), [nguồn18](PROTOCOL.md#current-291-room-integration) |
 | windows_original | unknown | Chưa có bằng chứng trong phạm vi rà |
 | lan | unknown | Chưa có bằng chứng trong phạm vi rà |
 | internet | unknown | Chưa có bằng chứng trong phạm vi rà |
 | implementation | partial / via_pr | [nguồn1](../server/probe_service.py), [nguồn2](PROTOCOL.md#service-eof), [nguồn3](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/61), [nguồn4](PROTOCOL.md#distinct-spawn), [nguồn5](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/91), [nguồn6](PROTOCOL.md#loading-timeout), [nguồn7](PROTOCOL.md#loading-timeout-positive) |
-| integration | partial | [nguồn1](evidence/service-eof/README.md), [nguồn2](evidence/distinct-spawn/README.md), [nguồn3](evidence/preclock-eof/README.md), [nguồn4](evidence/preclock-cleanup/README.md), [nguồn5](evidence/opposite-box-control/README.md), [nguồn6](PROTOCOL.md#loading-timeout), [nguồn7](PROTOCOL.md#loading-timeout-positive) |
-| gate | K4: open | [nguồn1](PLAN.md#gates) |
+| integration | partial | [nguồn1](evidence/service-eof/README.md), [nguồn2](evidence/distinct-spawn/README.md), [nguồn3](evidence/preclock-eof/README.md), [nguồn4](evidence/preclock-cleanup/README.md), [nguồn5](evidence/opposite-box-control/README.md), [nguồn6](PROTOCOL.md#loading-timeout), [nguồn7](PROTOCOL.md#loading-timeout-positive), [nguồn8](PROTOCOL.md#current-291-room-integration) |
+| gate | K4: passed | [nguồn1](PLAN.md#k4-acceptance) |
 
 <a id="kr-r004"></a>
 ### KR-R004 · Leave, promotion và rejoin
@@ -497,13 +497,13 @@ Bằng chứng/build/hash/recipe: [room-rejoin](evidence/room-rejoin/README.md),
 | vn_reference | both | [nguồn1](REFERENCES.md) |
 | kr_static | partial | [nguồn1](PROTOCOL.md#room-rejoin) |
 | emulation | checked | [nguồn1](evidence/room-rejoin/README.md) |
-| wine_diagnostic_copy | observed | [nguồn1](evidence/room-rejoin/README.md), [nguồn2](evidence/service-eof/README.md), [nguồn3](evidence/service-replacement/README.md), [nguồn4](evidence/setup-eof/README.md), [nguồn5](evidence/host-setup/README.md), [nguồn6](evidence/prestart-replacement/README.md), [nguồn7](evidence/back86-membership/README.md), [nguồn8](evidence/guest-back-rejoin/README.md), [nguồn9](evidence/rejoin-battle-cycles/README.md), [nguồn10](evidence/return585-ready/README.md), [nguồn11](evidence/ready-input/README.md), [nguồn12](evidence/host-normal-back/README.md), [nguồn13](evidence/promoted-battle-cycles/README.md), [nguồn14](evidence/promoted-outcome/README.md), [nguồn15](PROTOCOL.md#rescue-return-start-guard), [nguồn16](PROTOCOL.md#rescue-slot-refresh), [nguồn17](PROTOCOL.md#normal-battle-exit), [nguồn18](PROTOCOL.md#battle-exit-rejoin), [nguồn19](PROTOCOL.md#postbomb-exit-rejoin), [nguồn20](PROTOCOL.md#host-battle-exit), [nguồn21](PROTOCOL.md#udp-membership-lifetime), [nguồn22](evidence/peer-endpoints/README.md#cp156), [nguồn23](evidence/peer-endpoints/README.md#cp157), [nguồn24](evidence/peer-endpoints/README.md#cp164), [nguồn25](evidence/peer-endpoints/README.md#cp165), [nguồn26](evidence/peer-endpoints/README.md#cp166), [nguồn27](evidence/peer-endpoints/README.md#cp167), [nguồn28](evidence/peer-endpoints/README.md#cp168), [nguồn29](PROTOCOL.md#a-survivor-admission), [nguồn30](evidence/peer-endpoints/README.md#cp175), [nguồn31](PROTOCOL.md#a-c-basic-cycles), [nguồn32](evidence/peer-endpoints/README.md#cp176) |
+| wine_diagnostic_copy | observed | [nguồn1](evidence/room-rejoin/README.md), [nguồn2](evidence/service-eof/README.md), [nguồn3](evidence/service-replacement/README.md), [nguồn4](evidence/setup-eof/README.md), [nguồn5](evidence/host-setup/README.md), [nguồn6](evidence/prestart-replacement/README.md), [nguồn7](evidence/back86-membership/README.md), [nguồn8](evidence/guest-back-rejoin/README.md), [nguồn9](evidence/rejoin-battle-cycles/README.md), [nguồn10](evidence/return585-ready/README.md), [nguồn11](evidence/ready-input/README.md), [nguồn12](evidence/host-normal-back/README.md), [nguồn13](evidence/promoted-battle-cycles/README.md), [nguồn14](evidence/promoted-outcome/README.md), [nguồn15](PROTOCOL.md#rescue-return-start-guard), [nguồn16](PROTOCOL.md#rescue-slot-refresh), [nguồn17](PROTOCOL.md#normal-battle-exit), [nguồn18](PROTOCOL.md#battle-exit-rejoin), [nguồn19](PROTOCOL.md#postbomb-exit-rejoin), [nguồn20](PROTOCOL.md#host-battle-exit), [nguồn21](PROTOCOL.md#udp-membership-lifetime), [nguồn22](evidence/peer-endpoints/README.md#cp156), [nguồn23](evidence/peer-endpoints/README.md#cp157), [nguồn24](evidence/peer-endpoints/README.md#cp164), [nguồn25](evidence/peer-endpoints/README.md#cp165), [nguồn26](evidence/peer-endpoints/README.md#cp166), [nguồn27](evidence/peer-endpoints/README.md#cp167), [nguồn28](evidence/peer-endpoints/README.md#cp168), [nguồn29](PROTOCOL.md#a-survivor-admission), [nguồn30](evidence/peer-endpoints/README.md#cp175), [nguồn31](PROTOCOL.md#a-c-basic-cycles), [nguồn32](evidence/peer-endpoints/README.md#cp176), [nguồn33](PROTOCOL.md#current-291-room-integration) |
 | windows_original | unknown | Chưa có bằng chứng trong phạm vi rà |
 | lan | unknown | Chưa có bằng chứng trong phạm vi rà |
 | internet | unknown | Chưa có bằng chứng trong phạm vi rà |
 | implementation | partial / via_pr | [nguồn1](../server/probe_service.py), [nguồn2](PROTOCOL.md#service-eof), [nguồn3](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/61), [nguồn4](PROTOCOL.md#service-replacement), [nguồn5](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/63), [nguồn6](PROTOCOL.md#setup-eof), [nguồn7](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/65), [nguồn8](PROTOCOL.md#host-setup), [nguồn9](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/67), [nguồn10](PROTOCOL.md#prestart-replacement), [nguồn11](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/69), [nguồn12](PROTOCOL.md#back86-membership), [nguồn13](../server/test_room_reentry.py), [nguồn14](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/113), [nguồn15](PROTOCOL.md#guest-back-rejoin), [nguồn16](../server/test_guest_rejoin.py), [nguồn17](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/115), [nguồn18](../server/test_host_back_rejoin.py), [nguồn19](PROTOCOL.md#host-normal-back), [nguồn20](../server/test_host_battle_exit.py), [nguồn21](PROTOCOL.md#current-mode-host-rejoin), [nguồn22](PROTOCOL.md#a-survivor-admission), [nguồn23](evidence/peer-endpoints/README.md#cp175) |
-| integration | partial | [nguồn1](evidence/service-eof/README.md), [nguồn2](evidence/service-replacement/README.md), [nguồn3](evidence/setup-eof/README.md), [nguồn4](evidence/host-setup/README.md), [nguồn5](evidence/prestart-replacement/README.md), [nguồn6](evidence/back86-membership/README.md), [nguồn7](evidence/guest-back-rejoin/README.md), [nguồn8](evidence/rejoin-battle-cycles/README.md), [nguồn9](evidence/return585-ready/README.md), [nguồn10](evidence/ready-input/README.md), [nguồn11](evidence/host-normal-back/README.md), [nguồn12](evidence/promoted-battle-cycles/README.md), [nguồn13](evidence/promoted-outcome/README.md), [nguồn14](PROTOCOL.md#normal-battle-exit), [nguồn15](PROTOCOL.md#battle-exit-rejoin), [nguồn16](PROTOCOL.md#postbomb-exit-rejoin), [nguồn17](PROTOCOL.md#host-battle-exit), [nguồn18](PROTOCOL.md#udp-membership-lifetime), [nguồn19](PROTOCOL.md#current-mode-host-rejoin), [nguồn20](PROTOCOL.md#a-survivor-admission), [nguồn21](evidence/peer-endpoints/README.md#cp175), [nguồn22](PROTOCOL.md#a-c-basic-cycles), [nguồn23](evidence/peer-endpoints/README.md#cp176) |
-| gate | K4: open | [nguồn1](PLAN.md#gates) |
+| integration | partial | [nguồn1](evidence/service-eof/README.md), [nguồn2](evidence/service-replacement/README.md), [nguồn3](evidence/setup-eof/README.md), [nguồn4](evidence/host-setup/README.md), [nguồn5](evidence/prestart-replacement/README.md), [nguồn6](evidence/back86-membership/README.md), [nguồn7](evidence/guest-back-rejoin/README.md), [nguồn8](evidence/rejoin-battle-cycles/README.md), [nguồn9](evidence/return585-ready/README.md), [nguồn10](evidence/ready-input/README.md), [nguồn11](evidence/host-normal-back/README.md), [nguồn12](evidence/promoted-battle-cycles/README.md), [nguồn13](evidence/promoted-outcome/README.md), [nguồn14](PROTOCOL.md#normal-battle-exit), [nguồn15](PROTOCOL.md#battle-exit-rejoin), [nguồn16](PROTOCOL.md#postbomb-exit-rejoin), [nguồn17](PROTOCOL.md#host-battle-exit), [nguồn18](PROTOCOL.md#udp-membership-lifetime), [nguồn19](PROTOCOL.md#current-mode-host-rejoin), [nguồn20](PROTOCOL.md#a-survivor-admission), [nguồn21](evidence/peer-endpoints/README.md#cp175), [nguồn22](PROTOCOL.md#a-c-basic-cycles), [nguồn23](evidence/peer-endpoints/README.md#cp176), [nguồn24](PROTOCOL.md#current-291-room-integration) |
+| gate | K4: passed | [nguồn1](PLAN.md#k4-acceptance) |
 
 <a id="kr-f001"></a>
 ### KR-F001 · Phase, clock và input
