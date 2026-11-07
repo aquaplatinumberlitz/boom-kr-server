@@ -1,7 +1,7 @@
 {
   "schema": "kre-feature-index-v1",
   "build": "KR00967",
-  "as_of": "CP186",
+  "as_of": "CP187",
   "sources": {
     "plan": "docs/PLAN.md",
     "contract": "docs/PROTOCOL.md",
@@ -798,7 +798,8 @@
               "docs/evidence/peer-endpoints/README.md#cp162",
               "docs/evidence/peer-endpoints/README.md#cp166",
               "docs/evidence/peer-endpoints/README.md#cp167",
-              "docs/evidence/peer-endpoints/README.md#cp168"
+              "docs/evidence/peer-endpoints/README.md#cp168",
+              "docs/PROTOCOL.md#current-291-room-integration"
             ]
           },
           "windows_original": {
@@ -836,15 +837,17 @@
           "refs": [
             "docs/evidence/probe-service/README.md",
             "docs/evidence/host-normal-back/README.md",
-            "docs/evidence/peer-endpoints/README.md#cp161"
+            "docs/evidence/peer-endpoints/README.md#cp161",
+            "docs/PROTOCOL.md#current-291-room-integration"
           ]
         },
         "gate": {
           "id": "K4",
-          "state": "open",
+          "state": "passed",
           "refs": [
-            "docs/PLAN.md#gates"
-          ]
+            "docs/PLAN.md#k4-acceptance"
+          ],
+          "acceptance": "docs/PLAN.md#k4-acceptance"
         }
       },
       "issues": [
@@ -919,7 +922,8 @@
               "docs/evidence/peer-endpoints/README.md#cp165",
               "docs/evidence/peer-endpoints/README.md#cp166",
               "docs/evidence/peer-endpoints/README.md#cp167",
-              "docs/evidence/peer-endpoints/README.md#cp168"
+              "docs/evidence/peer-endpoints/README.md#cp168",
+              "docs/PROTOCOL.md#current-291-room-integration"
             ]
           },
           "windows_original": {
@@ -953,15 +957,17 @@
           "state": "partial",
           "refs": [
             "docs/evidence/probe-service/README.md",
-            "docs/evidence/host-normal-back/README.md"
+            "docs/evidence/host-normal-back/README.md",
+            "docs/PROTOCOL.md#current-291-room-integration"
           ]
         },
         "gate": {
           "id": "K4",
-          "state": "open",
+          "state": "passed",
           "refs": [
-            "docs/PLAN.md#gates"
-          ]
+            "docs/PLAN.md#k4-acceptance"
+          ],
+          "acceptance": "docs/PLAN.md#k4-acceptance"
         }
       },
       "issues": [
@@ -1052,7 +1058,8 @@
               "docs/evidence/peer-endpoints/README.md#cp153",
               "docs/evidence/peer-endpoints/README.md#cp166",
               "docs/evidence/peer-endpoints/README.md#cp167",
-              "docs/evidence/peer-endpoints/README.md#cp168"
+              "docs/evidence/peer-endpoints/README.md#cp168",
+              "docs/PROTOCOL.md#current-291-room-integration"
             ]
           },
           "windows_original": {
@@ -1090,15 +1097,17 @@
             "docs/evidence/preclock-cleanup/README.md",
             "docs/evidence/opposite-box-control/README.md",
             "docs/PROTOCOL.md#loading-timeout",
-            "docs/PROTOCOL.md#loading-timeout-positive"
+            "docs/PROTOCOL.md#loading-timeout-positive",
+            "docs/PROTOCOL.md#current-291-room-integration"
           ]
         },
         "gate": {
           "id": "K4",
-          "state": "open",
+          "state": "passed",
           "refs": [
-            "docs/PLAN.md#gates"
-          ]
+            "docs/PLAN.md#k4-acceptance"
+          ],
+          "acceptance": "docs/PLAN.md#k4-acceptance"
         }
       },
       "issues": [
@@ -1215,7 +1224,8 @@
               "docs/PROTOCOL.md#a-survivor-admission",
               "docs/evidence/peer-endpoints/README.md#cp175",
               "docs/PROTOCOL.md#a-c-basic-cycles",
-              "docs/evidence/peer-endpoints/README.md#cp176"
+              "docs/evidence/peer-endpoints/README.md#cp176",
+              "docs/PROTOCOL.md#current-291-room-integration"
             ]
           },
           "windows_original": {
@@ -1285,15 +1295,17 @@
             "docs/PROTOCOL.md#a-survivor-admission",
             "docs/evidence/peer-endpoints/README.md#cp175",
             "docs/PROTOCOL.md#a-c-basic-cycles",
-            "docs/evidence/peer-endpoints/README.md#cp176"
+            "docs/evidence/peer-endpoints/README.md#cp176",
+            "docs/PROTOCOL.md#current-291-room-integration"
           ]
         },
         "gate": {
           "id": "K4",
-          "state": "open",
+          "state": "passed",
           "refs": [
-            "docs/PLAN.md#gates"
-          ]
+            "docs/PLAN.md#k4-acceptance"
+          ],
+          "acceptance": "docs/PLAN.md#k4-acceptance"
         }
       },
       "issues": [

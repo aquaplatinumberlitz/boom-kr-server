@@ -155,11 +155,11 @@
         "KR-F001",
         "KR-F015"
       ],
-      "known": "CP186 K3 local accepted after manual unchanged-criterion review; broader account/authority/fullmatch not accepted. Canonical scope linked, no copied contract.",
-      "remaining": "K4 current two-actual-client opt-in291/nameguard integration, then K5/K6a and later LAN/Internet/8native clients per PLAN.",
-      "next_test": "PLAN#current-order NEXT-K4-INTEGRATION; reuse existing room/load/start evidence and only measure actual gaps.",
+      "known": "CP186 K3local andCP187 K4room/load/start localaccepted bymanual unchanged-criterion scope review; currentABnative291 andcopyABI correction haveevidence.",
+      "remaining": "Currentcopy4b profile requires two complete basic outcomes/reset; CP187 alignmentinput fails inround2 afterfirstresult/Start2. K5/K6a thenLAN/Internet/8native remain.",
+      "next_test": "PLAN#current-order NEXT-K5-K6A-CURRENT: readfeedback/keyrelease andminimuminputcontroller test; no new room/import/codec scan.",
       "acceptance": "Epic checklist: linkedscopedtask/evidence+authoritymatrix vàacceptancegate ởPLAN; từngtaskđóng khôngđóngepic/K5/K6a.",
-      "reason": "CP186 manual unchanged-criterion scoped K3 review and final-source native A/wire evidence. Gate does not close umbrella; audit nextCP188 unchanged.",
+      "reason": "CP187 preservesr1fault/r2partial, originalthunk/export/nativecontrol andscope. Gates do notcloseumbrella; auditCP188next.",
       "sources": [
         "docs/PROTOCOL.md#authority",
         "docs/RESEARCH.md#feature-gaps",
@@ -221,7 +221,9 @@
         "docs/PROTOCOL.md#own-profile-291",
         "docs/PLAN.md#k3-evidence-review",
         "docs/PROTOCOL.md#own-profile-integration",
-        "docs/PLAN.md#k3-acceptance"
+        "docs/PLAN.md#k3-acceptance",
+        "docs/PLAN.md#k4-acceptance",
+        "docs/PROTOCOL.md#own-profile-result-compare"
       ],
       "evidence": [
         "docs/evidence/current-movement-cycles/README.md",
@@ -281,7 +283,8 @@
         "docs/evidence/live-codec-stream/README.md",
         "docs/evidence/live-codec-stream/README.md#cp181",
         "docs/evidence/lobby-identity/README.md",
-        "docs/evidence/lobby-identity/k3-acceptance.json"
+        "docs/evidence/lobby-identity/k3-acceptance.json",
+        "docs/evidence/lobby-identity/k4-acceptance.json"
       ],
       "prs": [
         173,

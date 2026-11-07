@@ -73,3 +73,9 @@ hành vi. [Contract/currentlimits](../docs/PROTOCOL.md#host-normal-back). Kiểm
 markers vàclosedtask-active-step; không tự đọc hiểu acceptance, đóngtask/gate hoặc sửacompletedhistory.
 `check_docs.py` gọi offlinecheck; snapshotcũwarning>24h, output luôn nêuas-of. Kiểmnegative:
 `python3 tools/test_issue_links.py`. Thứ tự công việc vẫn chỉ ởPLAN, issue là nguồn workstatus.
+
+
+`patch_wine_compare.py --input local/.../CA-r2-stage-social.exe --out local/.../CA-compare.exe --report local/.../compare.json`:
+tạo copy riêng từ đúngSHAe9, sửa duy nhất reconstructedimport16EA1CC sanglstrcmpiA, outputSHA4b781f…;
+chỉ paths dưới local,khôngoverwrite. [Native/control/giới hạn](../docs/PROTOCOL.md#own-profile-result-compare).
+Không đổi recipes R1/R2 hoặc binary nguồn; không là general IAT repair.

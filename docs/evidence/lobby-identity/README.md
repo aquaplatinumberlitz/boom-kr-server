@@ -124,3 +124,27 @@ mismatch-r3 trướcACK/finalErrCannotLogin(5:1754) được đọc thủ công.
 Source-before giữ bytes trước nameguard; warm/mismatch/8wirecases đo finalcode. Năm SSIresource giống clientnguồn.
 K3 đạt **profile local** do Codex đối chiếu thủ công, không do checker; K4–K7/fullmatch/LAN/Internet còn mở.
 Next K4/currentpreset/twoactual291; audit periodic kếCP188, AUD055 qua184 giữ nguyên.
+
+
+<a id="cp187"></a>
+## CP187 — currentAB291 result importABI control và K4 local
+
+Baseline CP186/[PR258](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/258), merge`f47b95db44e0929df040594f87aaade1cd05f03e`.
+Codexsolo/selfcheck/reviewwaived; KRE-005b/#14 vẫn mở. [K4criteriondecision](k4-acceptance.json),
+[contract](../../PROTOCOL.md#current-291-room-integration), [next](../../RESEARCH.md#gap-lobby-identity-followup).
+R1`local/research/codex/k4-current-291-r1/`:sourcefirst/CP171reused47profile+291, preflight168,
+210.898s/854raw/exit0/namespace0, nativefirst175faults/partial; `blocker-verification.json`1102checks.
+R2`local/research/codex/k4-current-291-r2/`:copyimportpatch/.imagebyteequal/profileunchanged,
+308.016s/1120raw/preflight166/exit1/namespace0, comparepass/first175180/ReadyStart2 thenalignmenterror.
+`scoped-k4-verification.json`1414checks, `room-acceptance-verification.json`31criteriafacts,
+`k4-room-reentry-start2-contact.png` manuallyread bothroles/3roomphases. Không2outcomes/Start3pass.
+
+Targetedstatic3newbodies E5F610/D2D6B0/450370 và cachedCP183D2F440/D2FEB0 so bytee9;
+originalthunk/export lstrcmpiA relation dùngdumpmodulepages, CompareStringAAPIreturn synthetic để kiểm adapter.
+NativeAPIerror0SEH chưacovered. IDAoutputpathinitial sai bị assert ngăn overwrite, filecũ giữ; correctedoutput
+riêng. No newbody toànclient, không đổisource/configgiữarun; binary nguồn/DB/pack giữ hash.
+Rebuildtool`tools/patch_wine_compare.py` tái tạoSHA4b781f… và negative3case;294servertests giữpass.
+Unusedfull2cycle/Start3verifier không được chạy/count. Initialscopedverifier đọc fieldreturncodekhôngcó
+ở oldharness marker được sửa dùngactual104 độc lập, không tự thêm result vào raw.
+K4localroom/load/start đạt bằng manualreview/oldCP065135136153171 reuse và currentnative,
+K5/K6a/fullmatch/LANInternet vẫn mở. Auditperiodic kếCP188, AUD055 qua184khôngreset.

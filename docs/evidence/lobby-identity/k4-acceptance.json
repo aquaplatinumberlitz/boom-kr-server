@@ -1,0 +1,65 @@
+{
+  "schema": "kre-gate-acceptance-evidence-v1",
+  "gate": "K4",
+  "checkpoint": "CP187",
+  "decision": "passed",
+  "decided_by": "Codex",
+  "review": "waived",
+  "review_reference": "docs/evidence/checkpoints/review-waiver.json",
+  "recorded_utc": "2026-11-07T04:16:03.159332+00:00",
+  "scope": "Two actual A/B, offline modified Wine compare-corrected copy4b781f..., exact optional CP171 basic preset +own291/nameguard, normal Manner/one map. K4 room/map/load/hostBack/rejoin/Ready/repeatedStart only. One normal result/reset, second active epoch; alignment harness fails at second gameplay. No K5/K6a/fullmatch/LAN/Internet/8nativeclients.",
+  "criteria": [
+    {
+      "criterion": "Two clients share room/slot/host",
+      "sources": [
+        "docs/PROTOCOL.md#current-room-title",
+        "docs/PROTOCOL.md#current-team-mode",
+        "docs/PROTOCOL.md#current-291-room-integration"
+      ],
+      "reason": "Current realAB clean291 names128cursor/panel/renderguard, actual6 names, create/join/roster/map and same Manner selector1. Native slotclear ID1 and Bchief1, A returns asguest; screenshots and exact C2S/counters corroborate."
+    },
+    {
+      "criterion": "Correct map payload and distinct valid spawns",
+      "sources": [
+        "docs/evidence/distinct-spawn/README.md",
+        "docs/PROTOCOL.md#basic-preset-start3",
+        "docs/PROTOCOL.md#current-291-room-integration"
+      ],
+      "reason": "CP065 native121/spawn0/1 and CP171 map195/geometry proof reused; current all47fixtures/policies exactly same exceptown_profile, native121129/129 and map/clock forboth twice. No allmaps/spawnlaw claim."
+    },
+    {
+      "criterion": "Wait for not-yet-loaded member",
+      "sources": [
+        "docs/evidence/loading-timeout/README.md",
+        "docs/PROTOCOL.md#loading-hot-gate-contest",
+        "docs/PROTOCOL.md#current-291-room-integration"
+      ],
+      "reason": "CP135136 connectedhold/deadline negatives retained and CP153 observers; unchanged service loadgate/profile. Currenttwo30sbarriers releaseonlyafteractual99fromboth;6.079/6.790s. No new generalcoldload/currentBhostdeadline variant inferred."
+    },
+    {
+      "criterion": "Host leaves, join/leave and repeated starts",
+      "sources": [
+        "docs/PROTOCOL.md#current-mode-promoted-start3",
+        "docs/PROTOCOL.md#basic-preset-start3",
+        "docs/PROTOCOL.md#current-291-room-integration"
+      ],
+      "reason": "Current actualA86→Bchief→A82/rejoin→A95/B104 then firstnormal175180/reset/Ready95/B104/nativeclock2. Two starts meet repeated-start criterion; no claim currentStart3/secondoutcome. Previous CP168171Start3 remains historical independent proof."
+    },
+    {
+      "criterion": "Reviewed field provenance/authority and dependencies",
+      "sources": [
+        "docs/PLAN.md#k3-acceptance",
+        "docs/PROTOCOL.md#authority",
+        "docs/PROTOCOL.md#own-profile-result-compare"
+      ],
+      "reason": "Codex manual review under explicitwaiver; localK3dependency retained with native .image byteidentity/import-onlycompare correction and actualABown291. Fields/timeout/promotion/fuse/rank stilldesign, not recovered serverauthority. Nativeimportcorrection verified by originalthunk/export relation plus r1fault/r2compare-success."
+    }
+  ],
+  "limits": [
+    "Two actual A/B, offline modified Wine compare-corrected copy4b781f..., exact optional CP171 basic preset +own291/nameguard, normal Manner/one map. K4 room/map/load/hostBack/rejoin/Ready/repeatedStart only. One normal result/reset, second active epoch; alignment harness fails at second gameplay. No K5/K6a/fullmatch/LAN/Internet/8nativeclients.",
+    "Original KRsource/binary/DB/assets unchanged. Copy ABI patch is one import-name change; error0/native locale-wide collation not covered.",
+    "Current controller error alignnotstable:R2-A-hidden-row and exit1/cleanupabort retained. It does not invalidate observed room/firstresult/start2, but blocks two-full-cycle/gameplay acceptance.",
+    "No generalpassword/multiroom/accountresume/8peer authority, physicalLAN or Internet. Gate feature coverage remains partial; no semantics inferred by checkers."
+  ],
+  "next_source": "docs/PLAN.md#current-order"
+}

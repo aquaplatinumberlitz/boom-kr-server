@@ -2636,6 +2636,49 @@ Các lỗi gọi test sai module/importpath được giữ, discovery đúng đ�
 producer sang K3_FRAMER do global note, kind vẫn phân biệt; raw không sửa. [Checklist K3](PLAN.md#k3-evidence-review)
 giữ phần thiếu cache/version/channel/negative, không mở lại item/mode/race ngoài gate.
 
+<a id="own-profile-result-compare"></a>
+### Own291 mở đường result-name compare và sửa import trên copy — CP187
+
+**kr_static/kr_runtime confirmed trong scope copy**, [recipe/control/hash](evidence/lobby-identity/README.md#cp187).
+R1 currentAB/e9 đi sạch291/panel/hostBack/rejoin/load/first175302/302 rồi cảhai SIGSEGV/kernelbase,
+stack`D2F64A→E5FC07`. Đây là partialrun210.898s/exit0/854raw/frozen168/cleanup0; exit0 không resultpass.
+Tái dùng CP183`D2F440`: ownrecord+1FC loadedguard1 mới cho phép compare tại`D2F644`(hai pointer strings).
+Fullcaller`E5F610` đọc thêm có mục tiêu; rankfixture không được sửa. Oldguard0 từng bỏ qua nhánh này.
+
+RebuiltIAT`16EA1CC` bị bind trực tiếp **CompareStringA(6args)**, trong khi originaldumpedthunk
+`67B00AD` dựnglocale400/flags40000001/len-1 trước gọiCompareStringA, rồi chuyểnreturn1/2/3→-1/0/1,
+callee-cleans8. Export gốc `kernel32!lstrcmpiA/7774EAA0` có cùng argument/returnrelation trong oracle;
+APIreturn0 đều dừng tại SEHhelper chưa bao phủ. Resolver cũ `wine-imports-r4.json` ghi stackdelta−40 và
+candidate endpoint, **không proof directABI**. Lỗi kiểu này tương tự bài học lstrcpyA16EA160, không quét toàn IAT.
+
+**emu_choice:** `tools/patch_wine_compare.py` chỉ nhận privatecopySHAe9bb… và tạo file mới
+SHA`4b781fbcea21e0f6294c729b63be86ab2953d60ad83b0d0c9219359f826107ed`, đổi hint/name tại
+fileoffset31857478 từCompareStringA sanglstrcmpiA; `.image`31838208byte giữ nguyên,14byte khác ở `.repair`.
+Không sửa guard/result/name/gamelogic, không overwritecopye9/source. Tool tái tạo đúngSHA và từchối
+input khác/alreadycorrected/outputngoàilocal/outputđãcó; rollback dùng lại filee9. Không sửa recipeR1/R2 lịch sử.
+
+R2 cùng profile/server/inputrecipe, thêm passivecompareprobes: actualstringsKRLocal/KRGuest hợp lệ,
+nativecomparisonreturn0/±1 đúngsign và sp+8. Qua175/180 một lần trên cảhai rồi Start2; không lặp SIGSEGV.
+Đây là control runtime cho ABIcorrection, không chứng minhmọiAPIfailure/locale hoặc originalWindows.
+
+<a id="current-291-room-integration"></a>
+### Current hai client291/nameguard: phòng/load/start và giới hạn — CP187
+
+[Nghiệm thu K4](PLAN.md#k4-acceptance), [nguồn/hash](evidence/lobby-identity/README.md#cp187).
+R2 Winecopy4b781f… trên privatevirtualhosts có actualAB/8sockets, nativeproducer291 mỗirole128/128/errors0
+và renderguard1/tênKRLocal/KRGuest. Request6 guard cuối nhận đúngname; mọi S2Crecipient seq43+3n liên tục.
+Profile47fixture và policies đúngCP171 ngoại trừ optinown_profile; replay/hash/consumer cũ dùng lại.
+Actualcreate81/Ajoin82B/hostA86→nativeB107ID1clear/chief1→A82rejoin/A95/B104; roster/map/phòngboth
+khớp ảnh. Hai lần native121129/129 và clockboth, key12345/12346, loadingbarrier30scomplete6.079/6.790s
+sau actual99both. First175302/302→nativecompare→1803/3→roomrefresh/Ready95→Start104/clock2.
+
+**R2 vẫn partial:**308.016s/exit1/1120raw/frozen166/cleanup0; controller `alignnotstable:R2-A-hidden-row`,
+targety159 nhưng retained stable samples299→281, rồi thiếu3neutralreads trongdeadline3s. Không nativecrash/
+serviceerror hoặc frame175180failure; round2abortEOF khi cleanup giữ log. Chưa quy rootcause input/key/
+physics/probe, chưa secondoutcome hoặc currentStart3. Không dùng verifier2cycles/Start3 cũ để ép pass:
+chỉ verifierK4scopedroom/compare và sourcecriteria; fullcycle verifier được chuẩn bị nhưng không chạy/count.
+OldCP1712outcomes/Start3 giữ là historicalproof, không backfillrun này. K5/K6a/fullmatch/LAN/Internet mở.
+
 <a id="channel-cold-route"></a>
 ### Cold cache route kênh và tên hàng — CP186
 

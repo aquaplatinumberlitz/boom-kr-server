@@ -53,7 +53,7 @@ auth137/137/errors0 → channel socket mới; hello/mode/seq reset được đo 
 [run/hash](docs/evidence/live-codec-stream/README.md#cp181). CP180 split/coalesced/CRCcontrol đã merge
 [PR252](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/252) tại`fe242cc`.
 
-**K4–K7, K6a/trận đầy đủ/LAN/Internet vẫn mở. K3 đạt cho profile local A tại CP186**,
+**K5–K7, K6a/trận đầy đủ/LAN/Internet vẫn mở. K3 local đạt CP186; K4 phòng/load/start local đạt CP187**,
 [nghiệm thu/giới hạn](docs/PLAN.md#k3-acceptance). Fullgrammar/unknownheader/prefix/mode và
 accountauthority chưa được khôi phục đầy đủ; K2 không nghiệm thu các phần đó. Thứ tự tiếp ở
 [PLAN](docs/PLAN.md#current-order): integration hai client cho K4 sau291/nameguard, không lặp knowncodec/gameplay.
@@ -72,7 +72,10 @@ Chưa cold toàn client; CP186 bổ sung cold route kênh và version/identity/n
 **CP186: K3 đạt trong scope một A/một kênh normal offline.** Bảy run và tám ca wire kiểm cache route,
 version lỗi, native identity và guard request6; [contract/giới hạn](docs/PROTOCOL.md#k3-version-identity-controls).
 Không fullaccountauth, không caption kênh có tên hoặc hai client291 đã nghiệm thu.
-Ưu tiên tiếp **K4 → K5/K6a**; rà bằng chứng phòng/load/host/start đã có và chỉ đo integration còn thiếu.
+**CP187: K4 đạt trong scope phòng/load/start hai actualAB.** Đã đo identity291 cả hai, hostBack/
+rejoin, một kết quả/reset và Start2; [nghiệm thu/giới hạn](docs/PLAN.md#k4-acceptance).
+Copy riêng sửa importABI đã qua lỗi kết quả; [control/recipe](docs/PROTOCOL.md#own-profile-result-compare).
+Run vẫn partial ở input căn vị trí vòng2; chưa hai outcome hoặc K6a. Tiếp **K5/K6a**, xử lý đúng blocker này.
 AUD055 periodic qua184, audit kế **CP188**. [Review waived](docs/evidence/checkpoints/review-waiver.json).
 
 Đích đầu: hai client thật chơi hai trận liên tiếp; mở bốn client và hardening sau đó.
