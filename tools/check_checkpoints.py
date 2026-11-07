@@ -23,6 +23,18 @@ SHA = re.compile(r"[0-9a-f]{64}")
 COMMIT = re.compile(r"[0-9a-f]{40}")
 
 
+def audit_core_read_order(read_files):
+    """Rules may be read first; core audit docs must still be contiguous/in order.
+
+    Immutable AUD057 explicitly records AGENTS before the required core pass.
+    Do not reorder the retained audit merely to satisfy the checker.
+    """
+    if not isinstance(read_files, list):
+        return False
+    offset = 1 if read_files[:1] == ['AGENTS.md'] else 0
+    return read_files[offset:offset + 4] == list(CORE_DOCS)
+
+
 def digest(path):
     result = hashlib.sha256()
     with path.open("rb") as stream:
@@ -360,7 +372,7 @@ def validate(manifest, root=ROOT, require_local=False):
         if audit.get("id") != where or audit.get("completed_through") not in ids[:completed]:
             errors.append(f"{where}: audit must cover an existing complete checkpoint")
         read_files = audit.get("read_files", [])
-        if read_files[:4] != list(CORE_DOCS) or not any(str(x).startswith("docs/evidence/") for x in read_files):
+        if not audit_core_read_order(read_files) or not any(str(x).startswith("docs/evidence/") for x in read_files):
             errors.append(f"{where}: record manual reading in core-doc order plus evidence")
         for name in read_files:
             file_link(name, where)
