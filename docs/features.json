@@ -1,7 +1,7 @@
 {
   "schema": "kre-feature-index-v1",
   "build": "KR00967",
-  "as_of": "CP183",
+  "as_of": "CP184",
   "sources": {
     "plan": "docs/PLAN.md",
     "contract": "docs/PROTOCOL.md",
@@ -430,7 +430,8 @@
             "docs/PROTOCOL.md#login-auth",
             "docs/PROTOCOL.md#auth-profile",
             "docs/PROTOCOL.md#local-name-model",
-            "docs/PROTOCOL.md#own-profile-291"
+            "docs/PROTOCOL.md#own-profile-291",
+            "docs/PROTOCOL.md#own-profile-integration"
           ]
         },
         "emulation": {
@@ -454,7 +455,8 @@
               "docs/evidence/peer-endpoints/README.md#cp149",
               "docs/evidence/live-codec-stream/README.md",
               "docs/PROTOCOL.md#local-name-model",
-              "docs/PROTOCOL.md#own-profile-291"
+              "docs/PROTOCOL.md#own-profile-291",
+              "docs/PROTOCOL.md#own-profile-integration"
             ]
           },
           "windows_original": {
@@ -479,7 +481,8 @@
             "tools/export_probe_profile.py",
             "docs/PROTOCOL.md#auth-profile",
             "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/77",
-            "docs/PROTOCOL.md#service-channel-endpoint"
+            "docs/PROTOCOL.md#service-channel-endpoint",
+            "server/own_profile.py"
           ],
           "delivery": "via_pr"
         },
@@ -547,7 +550,8 @@
           "refs": [
             "docs/PROTOCOL.md#channel-lobby",
             "docs/PROTOCOL.md#local-name-model",
-            "docs/PROTOCOL.md#own-profile-291"
+            "docs/PROTOCOL.md#own-profile-291",
+            "docs/PROTOCOL.md#own-profile-integration"
           ]
         },
         "emulation": {
@@ -562,7 +566,8 @@
             "refs": [
               "docs/evidence/postwait/README.md",
               "docs/PROTOCOL.md#local-name-model",
-              "docs/PROTOCOL.md#own-profile-291"
+              "docs/PROTOCOL.md#own-profile-291",
+              "docs/PROTOCOL.md#own-profile-integration"
             ]
           },
           "windows_original": {
@@ -583,7 +588,8 @@
           "refs": [
             "server/probe_service.py",
             "docs/PROTOCOL.md#probe-service",
-            "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/57"
+            "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/57",
+            "server/own_profile.py"
           ],
           "delivery": "via_pr"
         },
@@ -645,7 +651,8 @@
             "docs/PROTOCOL.md#channel-lobby",
             "docs/PROTOCOL.md#dynamic-cache-representation",
             "docs/PROTOCOL.md#local-name-model",
-            "docs/PROTOCOL.md#own-profile-291"
+            "docs/PROTOCOL.md#own-profile-291",
+            "docs/PROTOCOL.md#own-profile-integration"
           ]
         },
         "emulation": {
@@ -660,7 +667,8 @@
             "refs": [
               "docs/evidence/cache-boundary/README.md",
               "docs/PROTOCOL.md#local-name-model",
-              "docs/PROTOCOL.md#own-profile-291"
+              "docs/PROTOCOL.md#own-profile-291",
+              "docs/PROTOCOL.md#own-profile-integration"
             ]
           },
           "windows_original": {
@@ -681,7 +689,8 @@
           "refs": [
             "tools/export_probe_profile.py",
             "docs/PROTOCOL.md#dynamic-cache-representation",
-            "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/79"
+            "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/79",
+            "server/own_profile.py"
           ],
           "delivery": "via_pr"
         },

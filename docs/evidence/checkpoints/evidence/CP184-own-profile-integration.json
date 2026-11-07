@@ -1,0 +1,2623 @@
+{
+  "schema": "kre-evidence-manifest-v1",
+  "evidence": [
+    {
+      "id": "INTEGRATION-00001",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/append_cp184.py",
+      "bytes": 9469,
+      "sha256": "2598458d764f2dc5efcfae9b69957014c08c2ad09ba6d1ae56b84bff6e0955cc"
+    },
+    {
+      "id": "INTEGRATION-00002",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/artifacts-check.txt",
+      "bytes": 253,
+      "sha256": "649c6624aa6d317dfc1db5e16fea683cfbc9d9cf4dd3df11c0d70e57409054a0"
+    },
+    {
+      "id": "INTEGRATION-00003",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/authname-reuse.json",
+      "bytes": 1770,
+      "sha256": "e379a03a43f49474d526839153fe5c7c150f9106f7c7a474aceb5dbff6131c2c"
+    },
+    {
+      "id": "INTEGRATION-00004",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/derived-fixtures.json",
+      "bytes": 1959,
+      "sha256": "47f8058ccb69902d2295e51b8eb96acd60c8d883aa654d0ac67b5f9c82a22d72"
+    },
+    {
+      "id": "INTEGRATION-00005",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/export-tests-corrected.txt",
+      "bytes": 2721,
+      "sha256": "b6861b87eb0f512f16ff94a5d9833f4ff3e19c4d772b1fa0672c4a43a55e05e2"
+    },
+    {
+      "id": "INTEGRATION-00006",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/export-tests-final.txt",
+      "bytes": 9340,
+      "sha256": "60022c148b0f85dbf6047e1527a7062fa756125e0c244f52373ae3e7acc2e6da"
+    },
+    {
+      "id": "INTEGRATION-00007",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/export-tests.txt",
+      "bytes": 638,
+      "sha256": "2aadf8518233cabfbca83e2c588880093fe9bcced5e6852cb7ee191ca0abf578"
+    },
+    {
+      "id": "INTEGRATION-00008",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/github-snapshot.json",
+      "bytes": 208224,
+      "sha256": "d6a5f8bd73c2cf31fd8d6c336a2ce6693a54b5270bda0ffb8d0d96335c73ce3d"
+    },
+    {
+      "id": "INTEGRATION-00009",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r1-recipe.json",
+      "bytes": 1049,
+      "sha256": "febed3bf000d86d7099e60eb94133564590ac44e7de30563a47cb70a3f450a33"
+    },
+    {
+      "id": "INTEGRATION-00010",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r1-runner.log",
+      "bytes": 15119,
+      "sha256": "a5b47c404117c1e6ee7dd8a93a5bc127315827222aaed0ac14e71cb85bef52ce"
+    },
+    {
+      "id": "INTEGRATION-00011",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r2-recipe.json",
+      "bytes": 1052,
+      "sha256": "ecdefcce06c4af6df78ccd59f710df20980f06dfd3f100cf6be6e8afdb0e12de"
+    },
+    {
+      "id": "INTEGRATION-00012",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r2-runner.log",
+      "bytes": 15120,
+      "sha256": "65bc049fc64535ce1f835a341b1d6cf047c96e473fef6c54f4f8149db8c2fa2b"
+    },
+    {
+      "id": "INTEGRATION-00013",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-r2.gdb",
+      "bytes": 353,
+      "sha256": "5f28c99f29caddee5b85aecff37f384d0dd93f853a4566591012885e1619d901"
+    },
+    {
+      "id": "INTEGRATION-00014",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated.gdb",
+      "bytes": 350,
+      "sha256": "57252d2becbce0c2984109fed7fb0bf0b4879001885b748f7e1060795bd439d5"
+    },
+    {
+      "id": "INTEGRATION-00015",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated_probe.py",
+      "bytes": 3969,
+      "sha256": "dc2e93fd60de7b9596392400a5fc4b4c2db8525ff5863c3ad698f3ca3dba4a49"
+    },
+    {
+      "id": "INTEGRATION-00016",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated_probe_r2.py",
+      "bytes": 3969,
+      "sha256": "c4e5913870bd04cb1b4c38afb531da1b69185d34f3472df2aa25ba3027fd2150"
+    },
+    {
+      "id": "INTEGRATION-00017",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/issue14-before.json",
+      "bytes": 2928,
+      "sha256": "02c784dd11418b917175419ee13472614d3df685dcd998514e11259df66e7942"
+    },
+    {
+      "id": "INTEGRATION-00018",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/issue14-body.md",
+      "bytes": 2704,
+      "sha256": "e3b683af9f5b7be35bea26ef3193b2c640df68d3f4a3a04e14244d0c94fa9947"
+    },
+    {
+      "id": "INTEGRATION-00019",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/own291-A-authname-candidate.bin",
+      "bytes": 166,
+      "sha256": "7933d764cd0ba771c86c9f8c3b760f1a4d5cabd0765133d6b8078a52d97167f5"
+    },
+    {
+      "id": "INTEGRATION-00020",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/own291-A-candidate.bin",
+      "bytes": 166,
+      "sha256": "7933d764cd0ba771c86c9f8c3b760f1a4d5cabd0765133d6b8078a52d97167f5"
+    },
+    {
+      "id": "INTEGRATION-00021",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/own291-B-authname-candidate.bin",
+      "bytes": 166,
+      "sha256": "e2218bb336962607955a664876d91ceab0d2a8d279af1878787bf555b1c21071"
+    },
+    {
+      "id": "INTEGRATION-00022",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/own291-B-candidate.bin",
+      "bytes": 166,
+      "sha256": "e2218bb336962607955a664876d91ceab0d2a8d279af1878787bf555b1c21071"
+    },
+    {
+      "id": "INTEGRATION-00023",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/own291-C-authname-candidate.bin",
+      "bytes": 164,
+      "sha256": "8f6fc5c77346a8d98f6c5677c5a0e73ff55564fe96d565dbc926ad5b264d5425"
+    },
+    {
+      "id": "INTEGRATION-00024",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/own291-C-candidate.bin",
+      "bytes": 166,
+      "sha256": "7933d764cd0ba771c86c9f8c3b760f1a4d5cabd0765133d6b8078a52d97167f5"
+    },
+    {
+      "id": "INTEGRATION-00025",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/prepare_runtime.py",
+      "bytes": 4783,
+      "sha256": "894a45f4ab63c406f487958f058992f91aa6777f5e3903a583087d2eb4d963d6"
+    },
+    {
+      "id": "INTEGRATION-00026",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/profile.json",
+      "bytes": 15584,
+      "sha256": "8213a85a4b62ba26a26746819787f97181b01be70f5bd8890a0fe65ea7b04dee"
+    },
+    {
+      "id": "INTEGRATION-00027",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/runtime-preparation-r2.json",
+      "bytes": 9940,
+      "sha256": "17989534e4b3f334bc9afd917ffe0f32a3066f320eb6ffff21ebac755d99fcae"
+    },
+    {
+      "id": "INTEGRATION-00028",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/runtime-preparation.json",
+      "bytes": 9840,
+      "sha256": "99f1552e489d6b0adecc86d6207b138a8bd2b4834d8b324ed915f9530012eb43"
+    },
+    {
+      "id": "INTEGRATION-00029",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/server-tests-with-guards.txt",
+      "bytes": 390,
+      "sha256": "cf2f67737a0f2476ce876d40e9f03eaf70db393248a18f4e7fb50588a5deb0af"
+    },
+    {
+      "id": "INTEGRATION-00030",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/server-tests.txt",
+      "bytes": 389,
+      "sha256": "8ddb2fb5957874cac3e60ed7f67c843cf53c7f922b53577f5aaf5d1aa122519d"
+    },
+    {
+      "id": "INTEGRATION-00031",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/source-A-r1.json",
+      "bytes": 14656,
+      "sha256": "f2bd7686323f622bb3788533d9d62570eebdf7dc3213ad099fe2dc4c4bd3e46f"
+    },
+    {
+      "id": "INTEGRATION-00032",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/source-first.json",
+      "bytes": 4001,
+      "sha256": "45a3cd6425c30f743dbddd33928b261fb0c3c9bba2768f74e32f27d59a02fead"
+    },
+    {
+      "id": "INTEGRATION-00033",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/sync_docs.py",
+      "bytes": 15282,
+      "sha256": "19ed9028d6f6118d34b7966d858ab451658b2c35e61657b479768ed8f49039ec"
+    },
+    {
+      "id": "INTEGRATION-00034",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/verification.json",
+      "bytes": 48899,
+      "sha256": "1c802e26b8c905cf5b0fece9568663ddb376cd0bc49d6267b2f8aa289838fbe8"
+    },
+    {
+      "id": "INTEGRATION-00035",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/verify.py",
+      "bytes": 4986,
+      "sha256": "0fcde24a15494a125630306c291ed17465e686f8f0d871bd6dcf2adbefe41df3"
+    },
+    {
+      "id": "INTEGRATION-00036",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/cp184-snapshot/README.md",
+      "bytes": 6399,
+      "sha256": "e6ca033a00506db33126cd0ae7d76a1d06bb5d41ba0aa2feeee7d9b8d97ade6c"
+    },
+    {
+      "id": "INTEGRATION-00037",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/cp184-snapshot/docs/COVERAGE.md",
+      "bytes": 162718,
+      "sha256": "322e838b6d4d2535d6c1b9bf098d775bad8636358e69d428646d6400b2c7d8df"
+    },
+    {
+      "id": "INTEGRATION-00038",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/cp184-snapshot/docs/PLAN.md",
+      "bytes": 47811,
+      "sha256": "c07a91469cd7c71b47658bcde9155740244dcf2ad83d754bc9f6f59ec6fe4128"
+    },
+    {
+      "id": "INTEGRATION-00039",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/cp184-snapshot/docs/PROTOCOL.md",
+      "bytes": 563974,
+      "sha256": "9d2ad4bb9c07a80c329738986e6ebca5879f2be100b7cce0002cac0c444916a2"
+    },
+    {
+      "id": "INTEGRATION-00040",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/cp184-snapshot/docs/REFERENCES.md",
+      "bytes": 5971,
+      "sha256": "012a97c6eb50ca819557165783f300e21ea7d918a4d35017383056f1232772d5"
+    },
+    {
+      "id": "INTEGRATION-00041",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/cp184-snapshot/docs/RESEARCH.md",
+      "bytes": 33104,
+      "sha256": "088707cdd7b7b076e4c9bc5ebc545ee5608ba5ab3ce9d3c7b281d79c552ebc6d"
+    },
+    {
+      "id": "INTEGRATION-00042",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/cp184-snapshot/docs/features.json",
+      "bytes": 170755,
+      "sha256": "73d7538819cfa1af3366a021f1b617327fcde4a6d0d4c4b790f833f57752fb10"
+    },
+    {
+      "id": "INTEGRATION-00043",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/cp184-snapshot/docs/evidence/checkpoints/audits/AUD055.json",
+      "bytes": 6112,
+      "sha256": "ffc0af5cef3f4a34d3c4f87dbc8fb6b00ec41e11ea07d3beac024f0cafd6a144"
+    },
+    {
+      "id": "INTEGRATION-00044",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/cp184-snapshot/docs/evidence/issue-reconciliation/github-snapshot.json",
+      "bytes": 208224,
+      "sha256": "d6a5f8bd73c2cf31fd8d6c336a2ce6693a54b5270bda0ffb8d0d96335c73ce3d"
+    },
+    {
+      "id": "INTEGRATION-00045",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/cp184-snapshot/docs/evidence/issue-reconciliation/review.json",
+      "bytes": 27823,
+      "sha256": "eb52ea67a25448317c556b5bb3f4ad9b499efcf7cc1b4da79526c72fdd81493d"
+    },
+    {
+      "id": "INTEGRATION-00046",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/cp184-snapshot/docs/evidence/lobby-identity/README.md",
+      "bytes": 7788,
+      "sha256": "31c59db54a2723d69f19be170b5fc427e9f9ba4728ba3b02b9285f80df87abde"
+    },
+    {
+      "id": "INTEGRATION-00047",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/cp184-snapshot/docs/evidence/namu-wiki/metadata.json",
+      "bytes": 4908,
+      "sha256": "4efbef982c995232f803f120c6af3adf9adb1ed0cb8fd80025f0ee3ce3b2107c"
+    },
+    {
+      "id": "INTEGRATION-00048",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/cp184-snapshot/server/README.md",
+      "bytes": 30823,
+      "sha256": "5db6a7d64eded55c2b6eb6256be3c43b8ca3a42986d52a05a52bacdb769475ca"
+    },
+    {
+      "id": "INTEGRATION-00049",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r1/A-lobby-ready-channel_list-52.bin",
+      "bytes": 82,
+      "sha256": "0ed72929c552e5bc5a8e492d2d3ca877e2bbc1ec8d5343c81f4b7844d54fe88b"
+    },
+    {
+      "id": "INTEGRATION-00050",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r1/A-lobby-ready-ready-46.bin",
+      "bytes": 69,
+      "sha256": "5e72176a25896892c49f5ee971bac080b21adbd039a259d7844d095bfe32de28"
+    },
+    {
+      "id": "INTEGRATION-00051",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r1/A-lobby-ready-roomlist_A-49.bin",
+      "bytes": 40,
+      "sha256": "66192f9ab8be8c609a0989a16e5403968aa8c6087caa43775920efd3ea78ec2e"
+    },
+    {
+      "id": "INTEGRATION-00052",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r1/A-lobby17-43.bin",
+      "bytes": 75,
+      "sha256": "5bb5a42cb1ea4fe8967d50ed39649cc886a493c0a13a25ceb2df589a2b9bcd37"
+    },
+    {
+      "id": "INTEGRATION-00053",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r1/A-own-profile291-55.bin",
+      "bytes": 166,
+      "sha256": "7933d764cd0ba771c86c9f8c3b760f1a4d5cabd0765133d6b8078a52d97167f5"
+    },
+    {
+      "id": "INTEGRATION-00054",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r1/A-reentry-create-create-58.bin",
+      "bytes": 49,
+      "sha256": "a8038e65568189e773460ebc6a50a63b8cccfa2abd57e432a7e097d575aa3a47"
+    },
+    {
+      "id": "INTEGRATION-00055",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r1/A-reentry-profile-player_A-61.bin",
+      "bytes": 242,
+      "sha256": "6e93d9fb056e4ee86334dc1702b10e0e98f94fc1f274c9434fa55594e4d25c1a"
+    },
+    {
+      "id": "INTEGRATION-00056",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r1/A-reentry-setup-guest_A-67.bin",
+      "bytes": 242,
+      "sha256": "b59d2a2016e6c7c2b48c5bb4ba843f1d33f20855cb7e755a12ba0729eadb3f17"
+    },
+    {
+      "id": "INTEGRATION-00057",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r1/A-reentry-setup-map-73.bin",
+      "bytes": 46,
+      "sha256": "07350f1a75fbad85714b3302696f58aeb787ed9a730d07d9c8838ebecefa95e3"
+    },
+    {
+      "id": "INTEGRATION-00058",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r1/A-reentry-setup-slot_A-64.bin",
+      "bytes": 44,
+      "sha256": "54b0f34c71ea544b98124c1ded831b8eaeac2795b1b17ea1ab1e9544ef906a51"
+    },
+    {
+      "id": "INTEGRATION-00059",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r1/A-reentry-setup-table-70.bin",
+      "bytes": 110,
+      "sha256": "92dfa9111acb3730041a6921f4be2a1330b543db037430b2f596161b4634fd7a"
+    },
+    {
+      "id": "INTEGRATION-00060",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r1/CALog-before.txt",
+      "bytes": 1573,
+      "sha256": "a390a8da05ec18d57f248e7aec02102ea3f45a552538654c5f63fbbdaf29833f"
+    },
+    {
+      "id": "INTEGRATION-00061",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r1/CALog-run.txt",
+      "bytes": 1880,
+      "sha256": "08c2c22e36035e615833cf678d89f33dbcd99f326d6778d1f48d6e09563ce8dc"
+    },
+    {
+      "id": "INTEGRATION-00062",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r1/client.log",
+      "bytes": 137093,
+      "sha256": "da63feebfb2e97be9788ab5569ce1adfde1773fe38048201111734465d376f5e"
+    },
+    {
+      "id": "INTEGRATION-00063",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r1/debug-commands.txt",
+      "bytes": 350,
+      "sha256": "57252d2becbce0c2984109fed7fb0bf0b4879001885b748f7e1060795bd439d5"
+    },
+    {
+      "id": "INTEGRATION-00064",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r1/hosts",
+      "bytes": 121,
+      "sha256": "32a007c62d2887ae9f8d3c30d1ff7cb3902e6e1e0c75c5a978ee556cc8ea71f8"
+    },
+    {
+      "id": "INTEGRATION-00065",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r1/nsswitch.conf",
+      "bytes": 307,
+      "sha256": "c18e474cd61df8648ee02ac7a9c76b8d6c7782d8b212f925e6980f20af5cc838"
+    },
+    {
+      "id": "INTEGRATION-00066",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r1/panel-before-create.png",
+      "bytes": 149330,
+      "sha256": "1e65b23db80bd81c5832a9bcd935d751009e95c34499231d2f6965716b3cce22"
+    },
+    {
+      "id": "INTEGRATION-00067",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r1/panel-ready.json",
+      "bytes": 106,
+      "sha256": "1ba5ff2ebee17e6b90fe7226af43a4ae517842900164ed55404e1b5f153680ba"
+    },
+    {
+      "id": "INTEGRATION-00068",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r1/processes-00.txt",
+      "bytes": 3608,
+      "sha256": "172ec0279ef37967a9b1c9055ef1ce803abde676ef92ed379d8feef4ef6d2e7e"
+    },
+    {
+      "id": "INTEGRATION-00069",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r1/processes-01.txt",
+      "bytes": 4359,
+      "sha256": "89bcb2fd456110523f202d9ef32fe5076ba5332a6849018c678851d5721cff24"
+    },
+    {
+      "id": "INTEGRATION-00070",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r1/processes-02.txt",
+      "bytes": 4359,
+      "sha256": "e543401031a60aad917efc86eaab9441dd924322328c4be3daf1028849f80541"
+    },
+    {
+      "id": "INTEGRATION-00071",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r1/processes-03.txt",
+      "bytes": 4359,
+      "sha256": "62cbbaddd81374a8104f8af586a9bde50f4b5a05d5fa9dff6a13fefa30f14210"
+    },
+    {
+      "id": "INTEGRATION-00072",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r1/processes-04.txt",
+      "bytes": 4359,
+      "sha256": "dc2c8400f9780c5a91b1a8a3dbb17cef34934a1c33627528ef4a410772b5dc37"
+    },
+    {
+      "id": "INTEGRATION-00073",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r1/processes-05.txt",
+      "bytes": 4359,
+      "sha256": "66be0b5a8e3e7caf6064366f0781c9a9f8f0083900df9b96b38b7f1481424336"
+    },
+    {
+      "id": "INTEGRATION-00074",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r1/processes-06.txt",
+      "bytes": 4359,
+      "sha256": "90fbbeb326eabd48ab62d16e4cf970cfa702567ea6f3edd73bcbef06ece2235c"
+    },
+    {
+      "id": "INTEGRATION-00075",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r1/processes-07.txt",
+      "bytes": 4359,
+      "sha256": "fdaeef7d977b3bfc9cd505af7660e394fe92d63cd91cb7db661fc12a61448403"
+    },
+    {
+      "id": "INTEGRATION-00076",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r1/processes-08.txt",
+      "bytes": 4359,
+      "sha256": "97f09e114b120e76b105a473ef9aa274cec22bfef55e82ed58680a77a48e57c2"
+    },
+    {
+      "id": "INTEGRATION-00077",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r1/processes-09.txt",
+      "bytes": 4359,
+      "sha256": "7f9c1b3a846974e79e0a1322053f0f2e8dcf734d59600fc88a515e4eab35b01a"
+    },
+    {
+      "id": "INTEGRATION-00078",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r1/processes-10.txt",
+      "bytes": 4359,
+      "sha256": "c2416208d634f03c9344f41899018d08119f4871b5274ee103d8ebc117f7000d"
+    },
+    {
+      "id": "INTEGRATION-00079",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r1/processes-11.txt",
+      "bytes": 4359,
+      "sha256": "743ad902d797773345934cf83a50f553d7e6d9d6f8c3b59e3ca50bc51f95510f"
+    },
+    {
+      "id": "INTEGRATION-00080",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r1/processes-12.txt",
+      "bytes": 4359,
+      "sha256": "661eeef403e9790b9104595d59837fab96f3216601700f16c929b855f574ead6"
+    },
+    {
+      "id": "INTEGRATION-00081",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r1/processes-13.txt",
+      "bytes": 4359,
+      "sha256": "1492faa93516d71334ad90dc1be9b221632be845d64fb5677b47e1144385e806"
+    },
+    {
+      "id": "INTEGRATION-00082",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r1/processes-14.txt",
+      "bytes": 4359,
+      "sha256": "809efbc4a6ba6f48804d6279e5a472815dc61cfaa79c6c212769ae9b7f9b806a"
+    },
+    {
+      "id": "INTEGRATION-00083",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r1/processes-15.txt",
+      "bytes": 4359,
+      "sha256": "af14e2c2f6175886a2ff9768e863dd5f0759911a8c4a5fe09d0cc99c080a374a"
+    },
+    {
+      "id": "INTEGRATION-00084",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r1/processes-16.txt",
+      "bytes": 4359,
+      "sha256": "f8adb72f7ac739a0a0b51a25ef39b7aa4ba9a340325b9fc6ebda56ff7d442bf2"
+    },
+    {
+      "id": "INTEGRATION-00085",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r1/processes-17.txt",
+      "bytes": 4359,
+      "sha256": "be3335cff419c99131511bd8e182ea498650709ce9653ac6e25d8f81ac53ed81"
+    },
+    {
+      "id": "INTEGRATION-00086",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r1/processes-18.txt",
+      "bytes": 4359,
+      "sha256": "3f35b04ec8c838354fc58b9bce73d87bf42347ea9a6c5418e67e24d421fdd8b5"
+    },
+    {
+      "id": "INTEGRATION-00087",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r1/processes-19.txt",
+      "bytes": 4359,
+      "sha256": "91e12e7c73fc94d4d52b4c6fbd230e90f8186be068a001ca0f6db6827137bab1"
+    },
+    {
+      "id": "INTEGRATION-00088",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r1/processes-20.txt",
+      "bytes": 4359,
+      "sha256": "c9298aca2881d250320459c343a376e282968d9386a3062b42da6e6fdf18d22e"
+    },
+    {
+      "id": "INTEGRATION-00089",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r1/processes-21.txt",
+      "bytes": 4359,
+      "sha256": "cbad7dc4c14660544b5ddf03c809cdc83e42325d588ba1f869eadb7833ef6b84"
+    },
+    {
+      "id": "INTEGRATION-00090",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r1/processes-22.txt",
+      "bytes": 4359,
+      "sha256": "ce4061a4b79e3182306fb5af89b6b25665dab5b4854f01aaa3cca0da7657fc12"
+    },
+    {
+      "id": "INTEGRATION-00091",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r1/processes-23.txt",
+      "bytes": 4359,
+      "sha256": "e121961bbfccf86e15f0f766c348893c87bf2f91e4ea476dac405874fe8fe3f3"
+    },
+    {
+      "id": "INTEGRATION-00092",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r1/processes-24.txt",
+      "bytes": 4359,
+      "sha256": "5fca3e3f541f5d501b529b8796b0fdc263113c6af308208e675793cb4fdb82fd"
+    },
+    {
+      "id": "INTEGRATION-00093",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r1/processes-25.txt",
+      "bytes": 4359,
+      "sha256": "d968c1089b2f73efb17f29bfa072437e5b3936f6e6f5fc75f51e701cd61e3562"
+    },
+    {
+      "id": "INTEGRATION-00094",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r1/raw-seal.json",
+      "bytes": 22809,
+      "sha256": "1e85d0ba9048d4be54c4fef0ae3bd08934328f663fd492943d7d73c40a291e54"
+    },
+    {
+      "id": "INTEGRATION-00095",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r1/record-after291-1.bin",
+      "bytes": 544,
+      "sha256": "4f528102c6d8c0fc121d6b5ad0087965a2d02a3cf3c751035f2ef60d2ecec1d3"
+    },
+    {
+      "id": "INTEGRATION-00096",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r1/run.json",
+      "bytes": 19173,
+      "sha256": "68979881b129c7f2b3a6bf48ba35b7083c7a4487317084927f59293a087574bc"
+    },
+    {
+      "id": "INTEGRATION-00097",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r1/screen-00.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "INTEGRATION-00098",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r1/screen-01.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "INTEGRATION-00099",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r1/screen-02.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "INTEGRATION-00100",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r1/screen-03.png",
+      "bytes": 19389,
+      "sha256": "aa1ee2266578690942fb3e19343592c55140ea39794cae7b2de7192580afc538"
+    },
+    {
+      "id": "INTEGRATION-00101",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r1/screen-04.png",
+      "bytes": 13437,
+      "sha256": "e47c2919c72588bea5f3e5b8ebda4d9823a66e8864f6b86ed6f85d9e19598218"
+    },
+    {
+      "id": "INTEGRATION-00102",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r1/screen-05.png",
+      "bytes": 188486,
+      "sha256": "b7dc0455f9bd68913e45baa128fcc003f95b88d153d5e8e8c966bedcd9ce1216"
+    },
+    {
+      "id": "INTEGRATION-00103",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r1/screen-06.png",
+      "bytes": 195787,
+      "sha256": "ba835b0aefaa309d9d7d8836bbbf5c7595f495ac27f41b1b28b8270fdd8409d9"
+    },
+    {
+      "id": "INTEGRATION-00104",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r1/screen-07.png",
+      "bytes": 149248,
+      "sha256": "02248326a8bbc9792cb4c17c40c92627d04ecebddc96287b37dd7a7ce2361774"
+    },
+    {
+      "id": "INTEGRATION-00105",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r1/screen-08.png",
+      "bytes": 213743,
+      "sha256": "5875bb608ef4782aae120480aeafdc8235f3b0b58c42e2c67b8bf9b837ce1e16"
+    },
+    {
+      "id": "INTEGRATION-00106",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r1/screen-09.png",
+      "bytes": 176709,
+      "sha256": "5a6b5908bd4dd3bbfd461783fcc922ea2d4fec028e6f1860d48c16ced79876a9"
+    },
+    {
+      "id": "INTEGRATION-00107",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r1/screen-10.png",
+      "bytes": 179745,
+      "sha256": "e14dadebc79a9958ea81cb6c2af59988215c697b4076cd212edcdcc868d200fa"
+    },
+    {
+      "id": "INTEGRATION-00108",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r1/screen-11.png",
+      "bytes": 180689,
+      "sha256": "f01933a7d92f625b189b93b6e1cdb48570de82bffeb80799e70a39317309a27f"
+    },
+    {
+      "id": "INTEGRATION-00109",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r1/screen-12.png",
+      "bytes": 180794,
+      "sha256": "13a306d3922f3b989838844285083dd618ad8dd4f202d3f31de1355b1c212ac1"
+    },
+    {
+      "id": "INTEGRATION-00110",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r1/screen-13.png",
+      "bytes": 179677,
+      "sha256": "9895f842cd51a5d17508e6774638452c09d27583aab6051507852a4bab2b97ca"
+    },
+    {
+      "id": "INTEGRATION-00111",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r1/screen-14.png",
+      "bytes": 178598,
+      "sha256": "72e3d76a726de94b99bc5c4bfcf0d9386355dd269832872f23f9cc637eede792"
+    },
+    {
+      "id": "INTEGRATION-00112",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r1/screen-15.png",
+      "bytes": 177756,
+      "sha256": "c486d8522abe89d1397ab3742a4388116fad0351a0fce63b5b2530aa53754a38"
+    },
+    {
+      "id": "INTEGRATION-00113",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r1/screen-16.png",
+      "bytes": 177791,
+      "sha256": "573ddad7a520b256788194bcca61184adc84f2daf40117db7de8cc85bde85fdc"
+    },
+    {
+      "id": "INTEGRATION-00114",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r1/screen-17.png",
+      "bytes": 178911,
+      "sha256": "dc1df738f76a52eef9277d8db35d73fc2c133f2238cb67a577567dde2f76d51d"
+    },
+    {
+      "id": "INTEGRATION-00115",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r1/screen-18.png",
+      "bytes": 180051,
+      "sha256": "69418677db9b0ad76ac2acd3c6be6482abeddcfe263d4d09bf0d0af07e5069f0"
+    },
+    {
+      "id": "INTEGRATION-00116",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r1/screen-19.png",
+      "bytes": 180674,
+      "sha256": "b5fb86fda42ff0aade01f0faa6c1cb6259c464141d4cc7e88a2c42b13a1f89b3"
+    },
+    {
+      "id": "INTEGRATION-00117",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r1/screen-20.png",
+      "bytes": 180722,
+      "sha256": "f4ac42e625d06fae19f845b630defdaf7f4bc023736ac1242b738d955a1aea62"
+    },
+    {
+      "id": "INTEGRATION-00118",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r1/screen-21.png",
+      "bytes": 179856,
+      "sha256": "8bfe26fd6d3c5471f2237f8c1884e19aaa04a9bb4b8d081cc73398503d3cb9e1"
+    },
+    {
+      "id": "INTEGRATION-00119",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r1/screen-22.png",
+      "bytes": 178702,
+      "sha256": "d839d719fc9b387ae2865fd4b61aa4d2e0b211682ae5d29fef7c6edb082c8a40"
+    },
+    {
+      "id": "INTEGRATION-00120",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r1/screen-23.png",
+      "bytes": 177778,
+      "sha256": "2e6f812d278160f6c7ec5c16e23c3f5cc038536677a45a940386cc3980e91658"
+    },
+    {
+      "id": "INTEGRATION-00121",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r1/screen-24.png",
+      "bytes": 177853,
+      "sha256": "d230087b8a1c45482d10cfccf74a225e343abd01d06141155eed481b7a562848"
+    },
+    {
+      "id": "INTEGRATION-00122",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r1/screen-25.png",
+      "bytes": 178725,
+      "sha256": "1905b110b3ab986a8a89d88d4e421a03b301a06780ffd6fdb7d8d9950b59b2ca"
+    },
+    {
+      "id": "INTEGRATION-00123",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r1/service-state.json",
+      "bytes": 34631,
+      "sha256": "a0eb1a92739a2ac0e357096d1b7e35358361f5fd0357cc9a906dc80ab59a55c8"
+    },
+    {
+      "id": "INTEGRATION-00124",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r1/service.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "INTEGRATION-00125",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r1/windows-00.txt",
+      "bytes": 166,
+      "sha256": "28ae29836d791dcd3302b447a52a8f0fa3f9a192abbc33a27751e23d7ebe0d43"
+    },
+    {
+      "id": "INTEGRATION-00126",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r1/windows-01.txt",
+      "bytes": 872,
+      "sha256": "c8c8cfe9c5b9bb2ccde16b4b959b165ed33d50824f3fbd29834c16b6f0e63586"
+    },
+    {
+      "id": "INTEGRATION-00127",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r1/windows-02.txt",
+      "bytes": 872,
+      "sha256": "c8c8cfe9c5b9bb2ccde16b4b959b165ed33d50824f3fbd29834c16b6f0e63586"
+    },
+    {
+      "id": "INTEGRATION-00128",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r1/windows-03.txt",
+      "bytes": 1311,
+      "sha256": "79f14ed4dc9ec340cb32d82ec0c77a2262196d736b814194ac0ee379704f762b"
+    },
+    {
+      "id": "INTEGRATION-00129",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r1/windows-04.txt",
+      "bytes": 1311,
+      "sha256": "79f14ed4dc9ec340cb32d82ec0c77a2262196d736b814194ac0ee379704f762b"
+    },
+    {
+      "id": "INTEGRATION-00130",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r1/windows-05.txt",
+      "bytes": 1311,
+      "sha256": "79f14ed4dc9ec340cb32d82ec0c77a2262196d736b814194ac0ee379704f762b"
+    },
+    {
+      "id": "INTEGRATION-00131",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r1/windows-06.txt",
+      "bytes": 1311,
+      "sha256": "79f14ed4dc9ec340cb32d82ec0c77a2262196d736b814194ac0ee379704f762b"
+    },
+    {
+      "id": "INTEGRATION-00132",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r1/windows-07.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "INTEGRATION-00133",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r1/windows-08.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "INTEGRATION-00134",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r1/windows-09.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "INTEGRATION-00135",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r1/windows-10.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "INTEGRATION-00136",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r1/windows-11.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "INTEGRATION-00137",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r1/windows-12.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "INTEGRATION-00138",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r1/windows-13.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "INTEGRATION-00139",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r1/windows-14.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "INTEGRATION-00140",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r1/windows-15.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "INTEGRATION-00141",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r1/windows-16.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "INTEGRATION-00142",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r1/windows-17.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "INTEGRATION-00143",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r1/windows-18.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "INTEGRATION-00144",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r1/windows-19.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "INTEGRATION-00145",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r1/windows-20.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "INTEGRATION-00146",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r1/windows-21.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "INTEGRATION-00147",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r1/windows-22.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "INTEGRATION-00148",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r1/windows-23.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "INTEGRATION-00149",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r1/windows-24.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "INTEGRATION-00150",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r1/windows-25.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "INTEGRATION-00151",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r1/wineboot.log",
+      "bytes": 64431,
+      "sha256": "00a96369dc8149eb7dc9924884e871875b7901699eca5e9826890019e1767dc3"
+    },
+    {
+      "id": "INTEGRATION-00152",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r1/xvfb.log",
+      "bytes": 2340,
+      "sha256": "ec4b7c90b13b3abb21877599fe9cbec75c5db1971bb50cdb18042cf7133f1a8e"
+    },
+    {
+      "id": "INTEGRATION-00153",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r2/A-lobby-ready-channel_list-52.bin",
+      "bytes": 82,
+      "sha256": "0ed72929c552e5bc5a8e492d2d3ca877e2bbc1ec8d5343c81f4b7844d54fe88b"
+    },
+    {
+      "id": "INTEGRATION-00154",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r2/A-lobby-ready-ready-46.bin",
+      "bytes": 69,
+      "sha256": "5e72176a25896892c49f5ee971bac080b21adbd039a259d7844d095bfe32de28"
+    },
+    {
+      "id": "INTEGRATION-00155",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r2/A-lobby-ready-roomlist_A-49.bin",
+      "bytes": 40,
+      "sha256": "66192f9ab8be8c609a0989a16e5403968aa8c6087caa43775920efd3ea78ec2e"
+    },
+    {
+      "id": "INTEGRATION-00156",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r2/A-lobby17-43.bin",
+      "bytes": 75,
+      "sha256": "5bb5a42cb1ea4fe8967d50ed39649cc886a493c0a13a25ceb2df589a2b9bcd37"
+    },
+    {
+      "id": "INTEGRATION-00157",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r2/A-own-profile291-55.bin",
+      "bytes": 166,
+      "sha256": "7933d764cd0ba771c86c9f8c3b760f1a4d5cabd0765133d6b8078a52d97167f5"
+    },
+    {
+      "id": "INTEGRATION-00158",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r2/A-reentry-create-create-58.bin",
+      "bytes": 49,
+      "sha256": "a8038e65568189e773460ebc6a50a63b8cccfa2abd57e432a7e097d575aa3a47"
+    },
+    {
+      "id": "INTEGRATION-00159",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r2/A-reentry-profile-player_A-61.bin",
+      "bytes": 242,
+      "sha256": "6e93d9fb056e4ee86334dc1702b10e0e98f94fc1f274c9434fa55594e4d25c1a"
+    },
+    {
+      "id": "INTEGRATION-00160",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r2/A-reentry-setup-guest_A-67.bin",
+      "bytes": 242,
+      "sha256": "b59d2a2016e6c7c2b48c5bb4ba843f1d33f20855cb7e755a12ba0729eadb3f17"
+    },
+    {
+      "id": "INTEGRATION-00161",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r2/A-reentry-setup-map-73.bin",
+      "bytes": 46,
+      "sha256": "07350f1a75fbad85714b3302696f58aeb787ed9a730d07d9c8838ebecefa95e3"
+    },
+    {
+      "id": "INTEGRATION-00162",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r2/A-reentry-setup-slot_A-64.bin",
+      "bytes": 44,
+      "sha256": "54b0f34c71ea544b98124c1ded831b8eaeac2795b1b17ea1ab1e9544ef906a51"
+    },
+    {
+      "id": "INTEGRATION-00163",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r2/A-reentry-setup-table-70.bin",
+      "bytes": 110,
+      "sha256": "92dfa9111acb3730041a6921f4be2a1330b543db037430b2f596161b4634fd7a"
+    },
+    {
+      "id": "INTEGRATION-00164",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r2/CALog-before.txt",
+      "bytes": 1880,
+      "sha256": "08c2c22e36035e615833cf678d89f33dbcd99f326d6778d1f48d6e09563ce8dc"
+    },
+    {
+      "id": "INTEGRATION-00165",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r2/CALog-run.txt",
+      "bytes": 1880,
+      "sha256": "08c2c22e36035e615833cf678d89f33dbcd99f326d6778d1f48d6e09563ce8dc"
+    },
+    {
+      "id": "INTEGRATION-00166",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r2/client.log",
+      "bytes": 137093,
+      "sha256": "56d10f0d2e4bd85ac3c91f448abf4207feaa60d6a99704fc489fdf0eac8cb62a"
+    },
+    {
+      "id": "INTEGRATION-00167",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r2/debug-commands.txt",
+      "bytes": 353,
+      "sha256": "5f28c99f29caddee5b85aecff37f384d0dd93f853a4566591012885e1619d901"
+    },
+    {
+      "id": "INTEGRATION-00168",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r2/hosts",
+      "bytes": 121,
+      "sha256": "32a007c62d2887ae9f8d3c30d1ff7cb3902e6e1e0c75c5a978ee556cc8ea71f8"
+    },
+    {
+      "id": "INTEGRATION-00169",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r2/nsswitch.conf",
+      "bytes": 307,
+      "sha256": "c18e474cd61df8648ee02ac7a9c76b8d6c7782d8b212f925e6980f20af5cc838"
+    },
+    {
+      "id": "INTEGRATION-00170",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r2/panel-before-create.png",
+      "bytes": 149338,
+      "sha256": "c888da70d38cdb1fbd7bf0046007d5fb04458f5642767cfc7f6416825668d9d2"
+    },
+    {
+      "id": "INTEGRATION-00171",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r2/panel-ready.json",
+      "bytes": 106,
+      "sha256": "1ba5ff2ebee17e6b90fe7226af43a4ae517842900164ed55404e1b5f153680ba"
+    },
+    {
+      "id": "INTEGRATION-00172",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r2/processes-00.txt",
+      "bytes": 3767,
+      "sha256": "d81852243dcbe69cfd36a0772184f94fbe78c010dc11d039e459334e5c4c7735"
+    },
+    {
+      "id": "INTEGRATION-00173",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r2/processes-01.txt",
+      "bytes": 4555,
+      "sha256": "8607d1bbdfea06bcbb5304751eaffa5310aa408646cef05abb0541c964faf512"
+    },
+    {
+      "id": "INTEGRATION-00174",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r2/processes-02.txt",
+      "bytes": 4555,
+      "sha256": "124ba0bdb3feac259105a28f8a39c55ddb9f6713bd652ace24e2d94ca84b2c16"
+    },
+    {
+      "id": "INTEGRATION-00175",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r2/processes-03.txt",
+      "bytes": 4555,
+      "sha256": "9945b6b30fde4303f406af1474c13b6e332645f641af012bfeca64b29028d640"
+    },
+    {
+      "id": "INTEGRATION-00176",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r2/processes-04.txt",
+      "bytes": 4555,
+      "sha256": "12644c58c2022591b9318b63666edc101a1decf2874e12a0d94e57f7891e7dd5"
+    },
+    {
+      "id": "INTEGRATION-00177",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r2/processes-05.txt",
+      "bytes": 4555,
+      "sha256": "483a6c72dbb68b0d83298f0e28150a700b9947d1b1ecdd2ea90051880608c1ae"
+    },
+    {
+      "id": "INTEGRATION-00178",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r2/processes-06.txt",
+      "bytes": 4555,
+      "sha256": "b02ad3ae541a3281b3b8ec1f6810a4a6a325781873bfc480ef8258073327c6e4"
+    },
+    {
+      "id": "INTEGRATION-00179",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r2/processes-07.txt",
+      "bytes": 4555,
+      "sha256": "b3e2c8421768ace0e66744bf1822de484b6a04ddb890acd70ebadc60a25f28c7"
+    },
+    {
+      "id": "INTEGRATION-00180",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r2/processes-08.txt",
+      "bytes": 4555,
+      "sha256": "4d6adb346551f980df9ae7141fd9e7befa6d1e235e088502845fcb08449b82e1"
+    },
+    {
+      "id": "INTEGRATION-00181",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r2/processes-09.txt",
+      "bytes": 4555,
+      "sha256": "c265bedcd2760cd307aa4a56617694974de8eaa5fbfe33e8a6e756e446d5472d"
+    },
+    {
+      "id": "INTEGRATION-00182",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r2/processes-10.txt",
+      "bytes": 4555,
+      "sha256": "dddf95e594bde7349a36f74ac61e6d883e61046b3e6c15de7bd2830dc40c046c"
+    },
+    {
+      "id": "INTEGRATION-00183",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r2/processes-11.txt",
+      "bytes": 4555,
+      "sha256": "6b00c5f31a4decd28f82151e164ad912f631faf6e968b06820828a44a0188055"
+    },
+    {
+      "id": "INTEGRATION-00184",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r2/processes-12.txt",
+      "bytes": 4555,
+      "sha256": "554f0cbdd1f0b54db08701042cf5bb541ff26268e56579c823fc16278d222b93"
+    },
+    {
+      "id": "INTEGRATION-00185",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r2/processes-13.txt",
+      "bytes": 4555,
+      "sha256": "8c6aa4b2199785a1bad23865470ed6e4dfb07f3f224e2e3e7cb0d22a445aa988"
+    },
+    {
+      "id": "INTEGRATION-00186",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r2/processes-14.txt",
+      "bytes": 4555,
+      "sha256": "d583112d3123a0e58c6305e12ca0fb17fa1073dc5c136c8b24e0b56410650974"
+    },
+    {
+      "id": "INTEGRATION-00187",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r2/processes-15.txt",
+      "bytes": 4555,
+      "sha256": "af887257b53a3aed8bda27536d592d2a4d8f9345db47d26964a7d10e2b0a48b1"
+    },
+    {
+      "id": "INTEGRATION-00188",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r2/processes-16.txt",
+      "bytes": 4555,
+      "sha256": "cc7c01d7b49e57abd3778ebd9afeb3a49dbd6dd3e142425088a89e1c11a65a36"
+    },
+    {
+      "id": "INTEGRATION-00189",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r2/processes-17.txt",
+      "bytes": 4555,
+      "sha256": "4424b394d5859bb30779c6b95ea331c6748fef03c9b31538cea0a08bcb9944ad"
+    },
+    {
+      "id": "INTEGRATION-00190",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r2/processes-18.txt",
+      "bytes": 4555,
+      "sha256": "0001592fcb848d6bb841138f421d2a8a2635cf1f1f3b9ab95ab7af6ae3a2c8fb"
+    },
+    {
+      "id": "INTEGRATION-00191",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r2/processes-19.txt",
+      "bytes": 4555,
+      "sha256": "ed69b49513e8b6efe3f10c4e98f74a19e3c5c2dcbba13429a722a4b6000d7aa7"
+    },
+    {
+      "id": "INTEGRATION-00192",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r2/processes-20.txt",
+      "bytes": 4555,
+      "sha256": "02e1aaa7aaad3c1334c8227a4b1ee86344c43dedb89ff406093adb5dc2d53408"
+    },
+    {
+      "id": "INTEGRATION-00193",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r2/processes-21.txt",
+      "bytes": 4555,
+      "sha256": "804501f60b23784b721840326fd40f54448e2af76d888c9567868e91a1ee9e8a"
+    },
+    {
+      "id": "INTEGRATION-00194",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r2/processes-22.txt",
+      "bytes": 4555,
+      "sha256": "17ba27702197a400b872e72aa7ce8dfe5c5f370e69b6799fccbf20edea25b0ab"
+    },
+    {
+      "id": "INTEGRATION-00195",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r2/processes-23.txt",
+      "bytes": 4555,
+      "sha256": "f1b2148de9902bb2da94c019092b010133489652d8a9a7767651aa6bb8d4dd8c"
+    },
+    {
+      "id": "INTEGRATION-00196",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r2/processes-24.txt",
+      "bytes": 4555,
+      "sha256": "0d802461614f2793458e66f97b72100e36de0788222f85dad3dbff75bf93b8dc"
+    },
+    {
+      "id": "INTEGRATION-00197",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r2/processes-25.txt",
+      "bytes": 4555,
+      "sha256": "adbea27fb3935ca13430b4347e8079057d52a3594231d834db1bb4347a1ece4b"
+    },
+    {
+      "id": "INTEGRATION-00198",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r2/raw-seal.json",
+      "bytes": 22738,
+      "sha256": "732df2a6acab059641769db648e017b62be46644dba11fe8d95eec9e026b0f29"
+    },
+    {
+      "id": "INTEGRATION-00199",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r2/record-after291-1.bin",
+      "bytes": 544,
+      "sha256": "110014468314ddbd433ca44f81ab2571e460fb9f4446744bb0fb50e1d32e2216"
+    },
+    {
+      "id": "INTEGRATION-00200",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r2/run.json",
+      "bytes": 19174,
+      "sha256": "ab9fae145d648c6e4cfe9b4aa55ee06c4b0753b389afb5d8492ba091c78ca69d"
+    },
+    {
+      "id": "INTEGRATION-00201",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r2/screen-00.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "INTEGRATION-00202",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r2/screen-01.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "INTEGRATION-00203",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r2/screen-02.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "INTEGRATION-00204",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r2/screen-03.png",
+      "bytes": 18137,
+      "sha256": "ae8484d912394a78f913fef34607994aa663edd6df29383cb05deed3184c8ce1"
+    },
+    {
+      "id": "INTEGRATION-00205",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r2/screen-04.png",
+      "bytes": 13437,
+      "sha256": "e47c2919c72588bea5f3e5b8ebda4d9823a66e8864f6b86ed6f85d9e19598218"
+    },
+    {
+      "id": "INTEGRATION-00206",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r2/screen-05.png",
+      "bytes": 188486,
+      "sha256": "b7dc0455f9bd68913e45baa128fcc003f95b88d153d5e8e8c966bedcd9ce1216"
+    },
+    {
+      "id": "INTEGRATION-00207",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r2/screen-06.png",
+      "bytes": 192711,
+      "sha256": "5c5c23014d57460a377147ce38096ac0eef7eede14b53232dd7f9195e2bfbcb7"
+    },
+    {
+      "id": "INTEGRATION-00208",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r2/screen-07.png",
+      "bytes": 149333,
+      "sha256": "94717f482d5a71347eabbebcc0ef4da52d7cbfb0d5dafe533f450a2bec281669"
+    },
+    {
+      "id": "INTEGRATION-00209",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r2/screen-08.png",
+      "bytes": 214027,
+      "sha256": "cace6f9124561bd69157ccf65c86cb345de017130e1c281c37223fff9b7b2845"
+    },
+    {
+      "id": "INTEGRATION-00210",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r2/screen-09.png",
+      "bytes": 176837,
+      "sha256": "960c4b8091744c3322cf17587d92af22cc02a6b54a820c4160262f1dd735366e"
+    },
+    {
+      "id": "INTEGRATION-00211",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r2/screen-10.png",
+      "bytes": 179824,
+      "sha256": "8042ce586b00f5d8b5c1d082addf473971be5e0fbcaeaed0a0f90e9eee2cea5f"
+    },
+    {
+      "id": "INTEGRATION-00212",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r2/screen-11.png",
+      "bytes": 180202,
+      "sha256": "34793e4c8a985577a588deb8238200526ec101d1978ed2c438333821063b30e1"
+    },
+    {
+      "id": "INTEGRATION-00213",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r2/screen-12.png",
+      "bytes": 179154,
+      "sha256": "38746e999a8a8357a943769e8dae9bafe584b3e2e7125db1d0e573208d6746f0"
+    },
+    {
+      "id": "INTEGRATION-00214",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r2/screen-13.png",
+      "bytes": 177997,
+      "sha256": "261093e5c97e689951b6946dc9fcfd02f90d1df321dea548ad618700ff57a9ed"
+    },
+    {
+      "id": "INTEGRATION-00215",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r2/screen-14.png",
+      "bytes": 177677,
+      "sha256": "d1462c4c34af4394f32f1997c2b73b32da24fef3915d33d145878001ada23d1a"
+    },
+    {
+      "id": "INTEGRATION-00216",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r2/screen-15.png",
+      "bytes": 177718,
+      "sha256": "3ecbe4efd0cd838050ac74ecd22a247feeb589a84eb6edb26d05a4e47d7af7e5"
+    },
+    {
+      "id": "INTEGRATION-00217",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r2/screen-16.png",
+      "bytes": 177743,
+      "sha256": "319c6b4713320cf0e5a67411ad27bcfb129720224c588ec7fed93dbb84418c4e"
+    },
+    {
+      "id": "INTEGRATION-00218",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r2/screen-17.png",
+      "bytes": 178858,
+      "sha256": "bcdd1788c8601bdcd995f4c761bae9fb80a64cd3fce02e2f5f1f2f31a2e77a3e"
+    },
+    {
+      "id": "INTEGRATION-00219",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r2/screen-18.png",
+      "bytes": 179843,
+      "sha256": "4b62a0e3b42b7fb61a6a3b95d5521e59b062147f5f4730b0086aa83cd082bd40"
+    },
+    {
+      "id": "INTEGRATION-00220",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r2/screen-19.png",
+      "bytes": 180668,
+      "sha256": "09160a7076c64f5491c244207881ece99e427220279148d4a00e1d7577bbd88f"
+    },
+    {
+      "id": "INTEGRATION-00221",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r2/screen-20.png",
+      "bytes": 180665,
+      "sha256": "4396e1f4809562ade63c802008e81327168f7bb1274e00b817744201726c77ae"
+    },
+    {
+      "id": "INTEGRATION-00222",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r2/screen-21.png",
+      "bytes": 180589,
+      "sha256": "1bdacc5d274596859028c2a77c82bb8c0b736088c81aaedff152aeb276b8514c"
+    },
+    {
+      "id": "INTEGRATION-00223",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r2/screen-22.png",
+      "bytes": 179393,
+      "sha256": "d6a66c09f86f8aa82861aed235a1ecd031d4ebd042bf17166851e9f108382aad"
+    },
+    {
+      "id": "INTEGRATION-00224",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r2/screen-23.png",
+      "bytes": 178358,
+      "sha256": "42e0df7f69d9727eb614a1d93258524063620539f7e7cb0dc5c5ce0076f96373"
+    },
+    {
+      "id": "INTEGRATION-00225",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r2/screen-24.png",
+      "bytes": 177669,
+      "sha256": "fddb94bdadbcdd719bde790996c9c93b67e21b8b42590a28055d0b6d2d74db4b"
+    },
+    {
+      "id": "INTEGRATION-00226",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r2/screen-25.png",
+      "bytes": 178515,
+      "sha256": "99d2cba9ca8e011e1b1ed1fd8171622724d184dfccce2cc801673da73201a630"
+    },
+    {
+      "id": "INTEGRATION-00227",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r2/service-state.json",
+      "bytes": 34638,
+      "sha256": "9a23b843e92154b5f5abbbf88d648b9a17173c6f313a282a051e120d682a1492"
+    },
+    {
+      "id": "INTEGRATION-00228",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r2/service.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "INTEGRATION-00229",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r2/windows-00.txt",
+      "bytes": 166,
+      "sha256": "28ae29836d791dcd3302b447a52a8f0fa3f9a192abbc33a27751e23d7ebe0d43"
+    },
+    {
+      "id": "INTEGRATION-00230",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r2/windows-01.txt",
+      "bytes": 872,
+      "sha256": "1096593c4e9a63ac4da8fff1a6642209e33de4dc70f021885f4baea5cce0dbc4"
+    },
+    {
+      "id": "INTEGRATION-00231",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r2/windows-02.txt",
+      "bytes": 872,
+      "sha256": "1096593c4e9a63ac4da8fff1a6642209e33de4dc70f021885f4baea5cce0dbc4"
+    },
+    {
+      "id": "INTEGRATION-00232",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r2/windows-03.txt",
+      "bytes": 1311,
+      "sha256": "ae1e42672317584498a7acb9315285f1ade61278c558f6e2b77371ef61cea181"
+    },
+    {
+      "id": "INTEGRATION-00233",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r2/windows-04.txt",
+      "bytes": 1311,
+      "sha256": "ae1e42672317584498a7acb9315285f1ade61278c558f6e2b77371ef61cea181"
+    },
+    {
+      "id": "INTEGRATION-00234",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r2/windows-05.txt",
+      "bytes": 1311,
+      "sha256": "ae1e42672317584498a7acb9315285f1ade61278c558f6e2b77371ef61cea181"
+    },
+    {
+      "id": "INTEGRATION-00235",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r2/windows-06.txt",
+      "bytes": 1311,
+      "sha256": "ae1e42672317584498a7acb9315285f1ade61278c558f6e2b77371ef61cea181"
+    },
+    {
+      "id": "INTEGRATION-00236",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r2/windows-07.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "INTEGRATION-00237",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r2/windows-08.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "INTEGRATION-00238",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r2/windows-09.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "INTEGRATION-00239",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r2/windows-10.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "INTEGRATION-00240",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r2/windows-11.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "INTEGRATION-00241",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r2/windows-12.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "INTEGRATION-00242",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r2/windows-13.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "INTEGRATION-00243",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r2/windows-14.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "INTEGRATION-00244",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r2/windows-15.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "INTEGRATION-00245",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r2/windows-16.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "INTEGRATION-00246",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r2/windows-17.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "INTEGRATION-00247",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r2/windows-18.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "INTEGRATION-00248",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r2/windows-19.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "INTEGRATION-00249",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r2/windows-20.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "INTEGRATION-00250",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r2/windows-21.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "INTEGRATION-00251",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r2/windows-22.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "INTEGRATION-00252",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r2/windows-23.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "INTEGRATION-00253",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r2/windows-24.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "INTEGRATION-00254",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r2/windows-25.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "INTEGRATION-00255",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r2/wineboot.log",
+      "bytes": 64844,
+      "sha256": "0c41cfe466006c21714c4f60666a91be03164b1389431075425d6be8063bfe6b"
+    },
+    {
+      "id": "INTEGRATION-00256",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r2/xvfb.log",
+      "bytes": 2808,
+      "sha256": "46b8747df8a2fc8b6a469b2374ea3d0c6c786dc3dcf2a9be13d94ce76ed3a1a7"
+    },
+    {
+      "id": "INTEGRATION-00257",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/source-A-r1/server/chain_capacity.py",
+      "bytes": 2990,
+      "sha256": "7c84dfaf1800ee3d7a150c76ad81b439fbe0f5daa6a91da9755b818a14460fae"
+    },
+    {
+      "id": "INTEGRATION-00258",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/source-A-r1/server/item_claims.py",
+      "bytes": 3340,
+      "sha256": "7990ae9195e9f8bba56b04101f352506194dbd0252793183993ce101a8674a2e"
+    },
+    {
+      "id": "INTEGRATION-00259",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/source-A-r1/server/own_profile.py",
+      "bytes": 2817,
+      "sha256": "cb7847cf7830ac23a3ff9948cd4c072dc7e6b61d8037435a69585d2a985c1763"
+    },
+    {
+      "id": "INTEGRATION-00260",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/source-A-r1/server/probe_codec.py",
+      "bytes": 3227,
+      "sha256": "23ba54e6940953a52ff737e7e06b2761a8eb22eab444310b49b1d96efa12411d"
+    },
+    {
+      "id": "INTEGRATION-00261",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/source-A-r1/server/probe_room.py",
+      "bytes": 1468,
+      "sha256": "91292494d492c7851bd5432649adf528e1b07290316dc56ba1478f8a209a08bc"
+    },
+    {
+      "id": "INTEGRATION-00262",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/source-A-r1/server/probe_service.py",
+      "bytes": 107319,
+      "sha256": "16203972add51684675a3ce41e699b258743fcbaf7b939e79c1176c6c3aa6fbc"
+    },
+    {
+      "id": "INTEGRATION-00263",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/source-A-r1/server/replacement_slots.py",
+      "bytes": 2664,
+      "sha256": "17b42200f6d79b2858d83c515b172a2785fb5d5ac78240dd497d9ddbfc3d583d"
+    },
+    {
+      "id": "INTEGRATION-00264",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/source-A-r1/server/room_team_mode.py",
+      "bytes": 1489,
+      "sha256": "fb69ea8d4b93c1d602aefb538970efbb7496a7bb178cca2f301f520b72ae16ec"
+    },
+    {
+      "id": "INTEGRATION-00265",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/source-A-r1/server/room_title.py",
+      "bytes": 3353,
+      "sha256": "0295a9c0cf25294c09bebb4133a84c4b3e151fc91b485d95048bdacc74ad487a"
+    },
+    {
+      "id": "INTEGRATION-00266",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/source-A-r1/server/round_fence.py",
+      "bytes": 2339,
+      "sha256": "aabcc7f1d623573fc217de8df05403f83d82425bbe5d6e78872b3096a2d46708"
+    },
+    {
+      "id": "INTEGRATION-00267",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/source-A-r1/server/terrain_model.py",
+      "bytes": 4232,
+      "sha256": "2de9d0048dbe03ca134e9d49d32596f49b7415538227a8966577c21f45f88e05"
+    },
+    {
+      "id": "INTEGRATION-00268",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/source-A-r1/server/terrain_profile.py",
+      "bytes": 1866,
+      "sha256": "1f0dbe2191b9fc4f1b6cc0e8d34f7965f37a2abb19801b41537e14f60150d390"
+    },
+    {
+      "id": "INTEGRATION-00269",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/source-A-r1/server/test_all_dead_result.py",
+      "bytes": 6245,
+      "sha256": "bd4380acb2dd5e12a4f7b89310b554c79fb486f1a782ab47c1ad1808ef9cac10"
+    },
+    {
+      "id": "INTEGRATION-00270",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/source-A-r1/server/test_battle_exit.py",
+      "bytes": 7390,
+      "sha256": "5ce10120e0881caaaf87303d71a8474e678db9133ac992f87accb3327c1dfbe3"
+    },
+    {
+      "id": "INTEGRATION-00271",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/source-A-r1/server/test_battle_exit_pending.py",
+      "bytes": 4096,
+      "sha256": "713c561dc4a00e706f0a51c1dd7b90bf2c8bc5a737bc9d85704a26112b8adc8f"
+    },
+    {
+      "id": "INTEGRATION-00272",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/source-A-r1/server/test_bomb_admission.py",
+      "bytes": 5720,
+      "sha256": "7e00660a7a4800de4ec1c8b27fd6b162692a4f3c8177ebbd9d19769a245befee"
+    },
+    {
+      "id": "INTEGRATION-00273",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/source-A-r1/server/test_capacity_reservations.py",
+      "bytes": 6771,
+      "sha256": "2a94f711b693dd0a5cf39d292af2f5c0b18f190325305f78c411b19d6f11da24"
+    },
+    {
+      "id": "INTEGRATION-00274",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/source-A-r1/server/test_chain_capacity.py",
+      "bytes": 6576,
+      "sha256": "583e2942d9732dd2680d8240a25fdcb5fc41f142b87d7ec70beff72bc96d075b"
+    },
+    {
+      "id": "INTEGRATION-00275",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/source-A-r1/server/test_channel_endpoint.py",
+      "bytes": 7936,
+      "sha256": "f8c7f54bed12c49bf75c2119b17923a67dd8f4f09c093929c81998207ab03600"
+    },
+    {
+      "id": "INTEGRATION-00276",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/source-A-r1/server/test_death_envelope.py",
+      "bytes": 4695,
+      "sha256": "c7762c9faeb220dc81d49976a763f23aa57fa82ac4c9d90109f926b02506f8a6"
+    },
+    {
+      "id": "INTEGRATION-00277",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/source-A-r1/server/test_death_lifecycle.py",
+      "bytes": 6815,
+      "sha256": "6fc82097a1b50ad54cbd64feaf567153c8555eb4abbc6506811e09d045c76ac4"
+    },
+    {
+      "id": "INTEGRATION-00278",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/source-A-r1/server/test_departure_send_failure.py",
+      "bytes": 8675,
+      "sha256": "16670b0a677895ce7d09ae3bfd555e474acc83dc623f4f96123ffac772f5da7d"
+    },
+    {
+      "id": "INTEGRATION-00279",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/source-A-r1/server/test_guest_rejoin.py",
+      "bytes": 5981,
+      "sha256": "58a7ead0829a69896a88409ca7f6cd7410cb60cabb054d28e8adbfefef87f873"
+    },
+    {
+      "id": "INTEGRATION-00280",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/source-A-r1/server/test_hidden_items.py",
+      "bytes": 6368,
+      "sha256": "962f389dd22fd6cfa90b032b8c66f189bee30555e444fa29ef35cca9c2c68986"
+    },
+    {
+      "id": "INTEGRATION-00281",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/source-A-r1/server/test_hidden_terrain_admission.py",
+      "bytes": 5549,
+      "sha256": "594ad8ea105bf35d10b9481cd944e6ecd7acf5d8549eb0778b8ce0989f24040d"
+    },
+    {
+      "id": "INTEGRATION-00282",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/source-A-r1/server/test_host_back_rejoin.py",
+      "bytes": 7956,
+      "sha256": "9f16c503d4065c70f0064d76fafcab6ed9ac0e548d94211e261f7785f8fc4e4f"
+    },
+    {
+      "id": "INTEGRATION-00283",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/source-A-r1/server/test_host_battle_exit.py",
+      "bytes": 5912,
+      "sha256": "6ae9acbdbf5cd7af9bffabb914d4ec4dc529f34859f0730e1872f65e4d888bfe"
+    },
+    {
+      "id": "INTEGRATION-00284",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/source-A-r1/server/test_item_claims.py",
+      "bytes": 2832,
+      "sha256": "63d68da46f91bcc9d4d3517bfd4ebc0d8f0a08c283a83715ac5b14a6efb71eea"
+    },
+    {
+      "id": "INTEGRATION-00285",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/source-A-r1/server/test_loading_timeout.py",
+      "bytes": 5446,
+      "sha256": "f097692abec1b682d0bee59d1b207f20a46cc94e508c65a1b6e743e3d540c5de"
+    },
+    {
+      "id": "INTEGRATION-00286",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/source-A-r1/server/test_mode_host_rejoin.py",
+      "bytes": 6296,
+      "sha256": "3eec3af510794461354caee609c625adc95abca97595a5a482d1383dd742d892"
+    },
+    {
+      "id": "INTEGRATION-00287",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/source-A-r1/server/test_needle_escape.py",
+      "bytes": 12165,
+      "sha256": "2ce054abdaae7f6c8eb11d5eddec0bc42b0390d9b761a037c253709341b29c38"
+    },
+    {
+      "id": "INTEGRATION-00288",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/source-A-r1/server/test_network_config.py",
+      "bytes": 5843,
+      "sha256": "538bf81adc50c4bcfda25fb75ed3a82ec2cdc57cdb93faa7ea4e4751d6dec900"
+    },
+    {
+      "id": "INTEGRATION-00289",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/source-A-r1/server/test_own_profile.py",
+      "bytes": 7319,
+      "sha256": "2ca8c3f9892c02767294150183d441088ee42e9a80af502b7fb1b9226a0055c4"
+    },
+    {
+      "id": "INTEGRATION-00290",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/source-A-r1/server/test_pickup_state.py",
+      "bytes": 4222,
+      "sha256": "8dc4ef39983417d0cbf961b5419bd2e4b7e91f4a8f4da8d3d5577ec5634ed8f9"
+    },
+    {
+      "id": "INTEGRATION-00291",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/source-A-r1/server/test_probe_codec.py",
+      "bytes": 1366,
+      "sha256": "ddb2cd6303aaf99af43d7add3735fec1b7c41461deb38f482d4a1b113a21367c"
+    },
+    {
+      "id": "INTEGRATION-00292",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/source-A-r1/server/test_probe_eof.py",
+      "bytes": 9629,
+      "sha256": "6456b237ce138fc179f9acf23436af18eefae96c2babb0d677682df66102a018"
+    },
+    {
+      "id": "INTEGRATION-00293",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/source-A-r1/server/test_probe_replacement.py",
+      "bytes": 7893,
+      "sha256": "25e30eaac70b8e2a1715c259aeb2511d2fbb52df49a323f58e33217eba3f36b7"
+    },
+    {
+      "id": "INTEGRATION-00294",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/source-A-r1/server/test_probe_room.py",
+      "bytes": 1605,
+      "sha256": "4ace7f5828661d891fa2006731f0aceed081a527c09be335bbee47e9a721e783"
+    },
+    {
+      "id": "INTEGRATION-00295",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/source-A-r1/server/test_probe_service.py",
+      "bytes": 4835,
+      "sha256": "055eeb3ed6431e0503468ee392c8f29a6c661db8cdc4bd1e402a9f748a434a6e"
+    },
+    {
+      "id": "INTEGRATION-00296",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/source-A-r1/server/test_replacement_slots.py",
+      "bytes": 14542,
+      "sha256": "6921dcdf792253140b5c92478df99931a1e3e8dbc7f0872156a84f9c313bf262"
+    },
+    {
+      "id": "INTEGRATION-00297",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/source-A-r1/server/test_report127_freshness.py",
+      "bytes": 6855,
+      "sha256": "bc884f7ca75935462eb4aabbd09fd915c905d39c762bef2e3fcfadf0a79d6bc7"
+    },
+    {
+      "id": "INTEGRATION-00298",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/source-A-r1/server/test_rescue_contact.py",
+      "bytes": 10792,
+      "sha256": "a5bdd661fe5b945efdb08c7f387ac6dda482c95e2cf88b68da3401235fd40afb"
+    },
+    {
+      "id": "INTEGRATION-00299",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/source-A-r1/server/test_result21_peer.py",
+      "bytes": 5268,
+      "sha256": "364364d96ea1671a60e33149f3fa2bd54ceb6862e749729f228decb0323925ef"
+    },
+    {
+      "id": "INTEGRATION-00300",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/source-A-r1/server/test_result_freshness.py",
+      "bytes": 16181,
+      "sha256": "96c84c6f586adaf88f72339fd76270ef3d8316762465d658aebaea94a4585137"
+    },
+    {
+      "id": "INTEGRATION-00301",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/source-A-r1/server/test_room_reentry.py",
+      "bytes": 8691,
+      "sha256": "e254dfb07e2522f408dbbe6b53df6d8962c90130893cee4d7e2d3550132df433"
+    },
+    {
+      "id": "INTEGRATION-00302",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/source-A-r1/server/test_room_team_mode.py",
+      "bytes": 6025,
+      "sha256": "111c6fcbac9ee2708dd68017de7cda12942b7ad075a5d4d9950d259644d0f503"
+    },
+    {
+      "id": "INTEGRATION-00303",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/source-A-r1/server/test_room_title.py",
+      "bytes": 7332,
+      "sha256": "00812f31a7a834dbb8969aa0b599f82a71ff7292187b577ba52150100beb3826"
+    },
+    {
+      "id": "INTEGRATION-00304",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/source-A-r1/server/test_round_fence.py",
+      "bytes": 2455,
+      "sha256": "6923d90f30636dfe05b09d45f5bbaceaf3ef32223d48eba0213a6c3cc40b037a"
+    },
+    {
+      "id": "INTEGRATION-00305",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/source-A-r1/server/test_terrain_policy.py",
+      "bytes": 8653,
+      "sha256": "7661f22c06f76e8dbb8859665fa06ef5febe0d824a0a430b6948db6afa52d34d"
+    },
+    {
+      "id": "INTEGRATION-00306",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/source-A-r1/server/test_udp_round_keys.py",
+      "bytes": 1224,
+      "sha256": "cfb36ee95d48c79b1800081a73b54498242f366eb08a2e3be850ff4a3503ce96"
+    },
+    {
+      "id": "INTEGRATION-00307",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/source-A-r1/server/udp_round_keys.py",
+      "bytes": 1187,
+      "sha256": "db58ae1f25bcbeb52c2d25c7db6afbf1021ddd3af29702e756f5f41886530a0d"
+    },
+    {
+      "id": "INTEGRATION-00308",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/source-A-r1/tools/export_probe_profile.py",
+      "bytes": 9299,
+      "sha256": "8d98c48ccf021e93c7bc366272f3346e26340df14c0c2e115c175f3c9d7d922e"
+    },
+    {
+      "id": "INTEGRATION-00309",
+      "kind": "local",
+      "path": "local/research/codex/wiki-reference-r1/sources/README.md",
+      "bytes": 6027,
+      "sha256": "57ac7c3a1027f8e34a55ddb85084f79bb0ae4a85b55037eed349bd6b758f2447"
+    },
+    {
+      "id": "INTEGRATION-00310",
+      "kind": "local",
+      "path": "local/research/codex/wiki-reference-r1/sources/manifest-all.json",
+      "bytes": 17323,
+      "sha256": "1baf9f307108a0959c3728b1b7454cab4df9078e286bec7f8d10f962b40521c9"
+    },
+    {
+      "id": "INTEGRATION-00311",
+      "kind": "local",
+      "path": "local/research/codex/wiki-reference-r1/sources/text/배찌(크레이지_아케이드).txt",
+      "bytes": 4950,
+      "sha256": "80daa464fd053da5004d87419c10967560dc858358344a51ba4afcdbd17d7efc"
+    },
+    {
+      "id": "INTEGRATION-00312",
+      "kind": "local",
+      "path": "local/research/codex/wiki-reference-r1/sources/text/크레이지_아케이드게임_모드.txt",
+      "bytes": 46085,
+      "sha256": "ef892dc8ed2418cdc6083c609b63bf8d1e5418198d1fc8dd5de9f3d2cbc15481"
+    },
+    {
+      "id": "INTEGRATION-00313",
+      "kind": "local",
+      "path": "local/research/codex/wiki-reference-r1/sources/text/크레이지_아케이드맵.txt",
+      "bytes": 65592,
+      "sha256": "a17ad271ec9f26b71e0702603bd1b76d34eba407d0e618881a4e7e16ae8b16f0"
+    },
+    {
+      "id": "INTEGRATION-00314",
+      "kind": "local",
+      "path": "local/research/codex/wiki-reference-r1/sources/text/크레이지_아케이드아이템.txt",
+      "bytes": 82383,
+      "sha256": "eb84d2197c43ed7fcaf9c23f8c4c1beef681190f98d210669ae47d496bbebd80"
+    },
+    {
+      "id": "INTEGRATION-00315",
+      "kind": "local",
+      "path": "local/research/codex/wiki-reference-r1/sources/vi/README.md",
+      "bytes": 1515,
+      "sha256": "efbe93973d4a0edac60517cb06e8159b215b313b2535a61f1c9c09fded4fae3b"
+    },
+    {
+      "id": "INTEGRATION-00316",
+      "kind": "local",
+      "path": "local/research/codex/wiki-reference-r1/sources/vi/배찌(크레이지_아케이드) (Bazzi (Crazy Arcade)).md",
+      "bytes": 4291,
+      "sha256": "90900831238709bae8279fbb163f9aafe2c437f73516961355aee87a627608ba"
+    },
+    {
+      "id": "INTEGRATION-00317",
+      "kind": "local",
+      "path": "local/research/codex/wine_probe_k3_integrated_r1.py",
+      "bytes": 20809,
+      "sha256": "454efe1f71daa5d34274dfecb7c68ecfaa938add51ca7df1ab1be6dd19fe5028"
+    },
+    {
+      "id": "INTEGRATION-00318",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/game-A/CA-r2-stage-social.exe",
+      "bytes": 31874560,
+      "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+    },
+    {
+      "id": "INTEGRATION-00319",
+      "kind": "repository",
+      "path": "tools/export_probe_profile.py",
+      "bytes": 9299,
+      "sha256": "8d98c48ccf021e93c7bc366272f3346e26340df14c0c2e115c175f3c9d7d922e"
+    },
+    {
+      "id": "INTEGRATION-00320",
+      "kind": "repository",
+      "path": "server/item_claims.py",
+      "bytes": 3340,
+      "sha256": "7990ae9195e9f8bba56b04101f352506194dbd0252793183993ce101a8674a2e"
+    },
+    {
+      "id": "INTEGRATION-00321",
+      "kind": "repository",
+      "path": "server/probe_codec.py",
+      "bytes": 3227,
+      "sha256": "23ba54e6940953a52ff737e7e06b2761a8eb22eab444310b49b1d96efa12411d"
+    },
+    {
+      "id": "INTEGRATION-00322",
+      "kind": "repository",
+      "path": "server/probe_room.py",
+      "bytes": 1468,
+      "sha256": "91292494d492c7851bd5432649adf528e1b07290316dc56ba1478f8a209a08bc"
+    },
+    {
+      "id": "INTEGRATION-00323",
+      "kind": "repository",
+      "path": "server/round_fence.py",
+      "bytes": 2339,
+      "sha256": "aabcc7f1d623573fc217de8df05403f83d82425bbe5d6e78872b3096a2d46708"
+    },
+    {
+      "id": "INTEGRATION-00324",
+      "kind": "repository",
+      "path": "server/test_item_claims.py",
+      "bytes": 2832,
+      "sha256": "63d68da46f91bcc9d4d3517bfd4ebc0d8f0a08c283a83715ac5b14a6efb71eea"
+    },
+    {
+      "id": "INTEGRATION-00325",
+      "kind": "repository",
+      "path": "server/test_probe_codec.py",
+      "bytes": 1366,
+      "sha256": "ddb2cd6303aaf99af43d7add3735fec1b7c41461deb38f482d4a1b113a21367c"
+    },
+    {
+      "id": "INTEGRATION-00326",
+      "kind": "repository",
+      "path": "server/test_probe_room.py",
+      "bytes": 1605,
+      "sha256": "4ace7f5828661d891fa2006731f0aceed081a527c09be335bbee47e9a721e783"
+    },
+    {
+      "id": "INTEGRATION-00327",
+      "kind": "repository",
+      "path": "server/test_round_fence.py",
+      "bytes": 2455,
+      "sha256": "6923d90f30636dfe05b09d45f5bbaceaf3ef32223d48eba0213a6c3cc40b037a"
+    },
+    {
+      "id": "INTEGRATION-00328",
+      "kind": "repository",
+      "path": "server/test_udp_round_keys.py",
+      "bytes": 1224,
+      "sha256": "cfb36ee95d48c79b1800081a73b54498242f366eb08a2e3be850ff4a3503ce96"
+    },
+    {
+      "id": "INTEGRATION-00329",
+      "kind": "repository",
+      "path": "server/udp_round_keys.py",
+      "bytes": 1187,
+      "sha256": "db58ae1f25bcbeb52c2d25c7db6afbf1021ddd3af29702e756f5f41886530a0d"
+    },
+    {
+      "id": "INTEGRATION-00330",
+      "kind": "repository",
+      "path": "server/test_probe_eof.py",
+      "bytes": 9629,
+      "sha256": "6456b237ce138fc179f9acf23436af18eefae96c2babb0d677682df66102a018"
+    },
+    {
+      "id": "INTEGRATION-00331",
+      "kind": "repository",
+      "path": "server/test_bomb_admission.py",
+      "bytes": 5720,
+      "sha256": "7e00660a7a4800de4ec1c8b27fd6b162692a4f3c8177ebbd9d19769a245befee"
+    },
+    {
+      "id": "INTEGRATION-00332",
+      "kind": "repository",
+      "path": "server/test_capacity_reservations.py",
+      "bytes": 6771,
+      "sha256": "2a94f711b693dd0a5cf39d292af2f5c0b18f190325305f78c411b19d6f11da24"
+    },
+    {
+      "id": "INTEGRATION-00333",
+      "kind": "repository",
+      "path": "server/test_guest_rejoin.py",
+      "bytes": 5981,
+      "sha256": "58a7ead0829a69896a88409ca7f6cd7410cb60cabb054d28e8adbfefef87f873"
+    },
+    {
+      "id": "INTEGRATION-00334",
+      "kind": "repository",
+      "path": "server/test_hidden_items.py",
+      "bytes": 6368,
+      "sha256": "962f389dd22fd6cfa90b032b8c66f189bee30555e444fa29ef35cca9c2c68986"
+    },
+    {
+      "id": "INTEGRATION-00335",
+      "kind": "repository",
+      "path": "server/test_room_reentry.py",
+      "bytes": 8691,
+      "sha256": "e254dfb07e2522f408dbbe6b53df6d8962c90130893cee4d7e2d3550132df433"
+    },
+    {
+      "id": "INTEGRATION-00336",
+      "kind": "repository",
+      "path": "server/chain_capacity.py",
+      "bytes": 2990,
+      "sha256": "7c84dfaf1800ee3d7a150c76ad81b439fbe0f5daa6a91da9755b818a14460fae"
+    },
+    {
+      "id": "INTEGRATION-00337",
+      "kind": "repository",
+      "path": "server/test_chain_capacity.py",
+      "bytes": 6576,
+      "sha256": "583e2942d9732dd2680d8240a25fdcb5fc41f142b87d7ec70beff72bc96d075b"
+    },
+    {
+      "id": "INTEGRATION-00338",
+      "kind": "repository",
+      "path": "server/terrain_model.py",
+      "bytes": 4232,
+      "sha256": "2de9d0048dbe03ca134e9d49d32596f49b7415538227a8966577c21f45f88e05"
+    },
+    {
+      "id": "INTEGRATION-00339",
+      "kind": "repository",
+      "path": "server/terrain_profile.py",
+      "bytes": 1866,
+      "sha256": "1f0dbe2191b9fc4f1b6cc0e8d34f7965f37a2abb19801b41537e14f60150d390"
+    },
+    {
+      "id": "INTEGRATION-00340",
+      "kind": "repository",
+      "path": "server/test_terrain_policy.py",
+      "bytes": 8653,
+      "sha256": "7661f22c06f76e8dbb8859665fa06ef5febe0d824a0a430b6948db6afa52d34d"
+    },
+    {
+      "id": "INTEGRATION-00341",
+      "kind": "repository",
+      "path": "server/room_title.py",
+      "bytes": 3353,
+      "sha256": "0295a9c0cf25294c09bebb4133a84c4b3e151fc91b485d95048bdacc74ad487a"
+    },
+    {
+      "id": "INTEGRATION-00342",
+      "kind": "repository",
+      "path": "server/test_all_dead_result.py",
+      "bytes": 6245,
+      "sha256": "bd4380acb2dd5e12a4f7b89310b554c79fb486f1a782ab47c1ad1808ef9cac10"
+    },
+    {
+      "id": "INTEGRATION-00343",
+      "kind": "repository",
+      "path": "server/test_battle_exit.py",
+      "bytes": 7390,
+      "sha256": "5ce10120e0881caaaf87303d71a8474e678db9133ac992f87accb3327c1dfbe3"
+    },
+    {
+      "id": "INTEGRATION-00344",
+      "kind": "repository",
+      "path": "server/test_battle_exit_pending.py",
+      "bytes": 4096,
+      "sha256": "713c561dc4a00e706f0a51c1dd7b90bf2c8bc5a737bc9d85704a26112b8adc8f"
+    },
+    {
+      "id": "INTEGRATION-00345",
+      "kind": "repository",
+      "path": "server/test_channel_endpoint.py",
+      "bytes": 7936,
+      "sha256": "f8c7f54bed12c49bf75c2119b17923a67dd8f4f09c093929c81998207ab03600"
+    },
+    {
+      "id": "INTEGRATION-00346",
+      "kind": "repository",
+      "path": "server/test_death_envelope.py",
+      "bytes": 4695,
+      "sha256": "c7762c9faeb220dc81d49976a763f23aa57fa82ac4c9d90109f926b02506f8a6"
+    },
+    {
+      "id": "INTEGRATION-00347",
+      "kind": "repository",
+      "path": "server/test_death_lifecycle.py",
+      "bytes": 6815,
+      "sha256": "6fc82097a1b50ad54cbd64feaf567153c8555eb4abbc6506811e09d045c76ac4"
+    },
+    {
+      "id": "INTEGRATION-00348",
+      "kind": "repository",
+      "path": "server/test_departure_send_failure.py",
+      "bytes": 8675,
+      "sha256": "16670b0a677895ce7d09ae3bfd555e474acc83dc623f4f96123ffac772f5da7d"
+    },
+    {
+      "id": "INTEGRATION-00349",
+      "kind": "repository",
+      "path": "server/test_host_back_rejoin.py",
+      "bytes": 7956,
+      "sha256": "9f16c503d4065c70f0064d76fafcab6ed9ac0e548d94211e261f7785f8fc4e4f"
+    },
+    {
+      "id": "INTEGRATION-00350",
+      "kind": "repository",
+      "path": "server/test_host_battle_exit.py",
+      "bytes": 5912,
+      "sha256": "6ae9acbdbf5cd7af9bffabb914d4ec4dc529f34859f0730e1872f65e4d888bfe"
+    },
+    {
+      "id": "INTEGRATION-00351",
+      "kind": "repository",
+      "path": "server/test_loading_timeout.py",
+      "bytes": 5446,
+      "sha256": "f097692abec1b682d0bee59d1b207f20a46cc94e508c65a1b6e743e3d540c5de"
+    },
+    {
+      "id": "INTEGRATION-00352",
+      "kind": "repository",
+      "path": "server/test_needle_escape.py",
+      "bytes": 12165,
+      "sha256": "2ce054abdaae7f6c8eb11d5eddec0bc42b0390d9b761a037c253709341b29c38"
+    },
+    {
+      "id": "INTEGRATION-00353",
+      "kind": "repository",
+      "path": "server/test_network_config.py",
+      "bytes": 5843,
+      "sha256": "538bf81adc50c4bcfda25fb75ed3a82ec2cdc57cdb93faa7ea4e4751d6dec900"
+    },
+    {
+      "id": "INTEGRATION-00354",
+      "kind": "repository",
+      "path": "server/test_pickup_state.py",
+      "bytes": 4222,
+      "sha256": "8dc4ef39983417d0cbf961b5419bd2e4b7e91f4a8f4da8d3d5577ec5634ed8f9"
+    },
+    {
+      "id": "INTEGRATION-00355",
+      "kind": "repository",
+      "path": "server/test_probe_replacement.py",
+      "bytes": 7893,
+      "sha256": "25e30eaac70b8e2a1715c259aeb2511d2fbb52df49a323f58e33217eba3f36b7"
+    },
+    {
+      "id": "INTEGRATION-00356",
+      "kind": "repository",
+      "path": "server/test_probe_service.py",
+      "bytes": 4835,
+      "sha256": "055eeb3ed6431e0503468ee392c8f29a6c661db8cdc4bd1e402a9f748a434a6e"
+    },
+    {
+      "id": "INTEGRATION-00357",
+      "kind": "repository",
+      "path": "server/test_report127_freshness.py",
+      "bytes": 6855,
+      "sha256": "bc884f7ca75935462eb4aabbd09fd915c905d39c762bef2e3fcfadf0a79d6bc7"
+    },
+    {
+      "id": "INTEGRATION-00358",
+      "kind": "repository",
+      "path": "server/test_rescue_contact.py",
+      "bytes": 10792,
+      "sha256": "a5bdd661fe5b945efdb08c7f387ac6dda482c95e2cf88b68da3401235fd40afb"
+    },
+    {
+      "id": "INTEGRATION-00359",
+      "kind": "repository",
+      "path": "server/test_result21_peer.py",
+      "bytes": 5268,
+      "sha256": "364364d96ea1671a60e33149f3fa2bd54ceb6862e749729f228decb0323925ef"
+    },
+    {
+      "id": "INTEGRATION-00360",
+      "kind": "repository",
+      "path": "server/test_result_freshness.py",
+      "bytes": 16181,
+      "sha256": "96c84c6f586adaf88f72339fd76270ef3d8316762465d658aebaea94a4585137"
+    },
+    {
+      "id": "INTEGRATION-00361",
+      "kind": "repository",
+      "path": "server/test_room_title.py",
+      "bytes": 7332,
+      "sha256": "00812f31a7a834dbb8969aa0b599f82a71ff7292187b577ba52150100beb3826"
+    },
+    {
+      "id": "INTEGRATION-00362",
+      "kind": "repository",
+      "path": "server/probe_service.py",
+      "bytes": 108686,
+      "sha256": "4b8c088c1faf659da8366e8d7e740394fe0d6c29f34c73f2d6973a86bb63e4b6"
+    },
+    {
+      "id": "INTEGRATION-00363",
+      "kind": "repository",
+      "path": "server/replacement_slots.py",
+      "bytes": 2664,
+      "sha256": "17b42200f6d79b2858d83c515b172a2785fb5d5ac78240dd497d9ddbfc3d583d"
+    },
+    {
+      "id": "INTEGRATION-00364",
+      "kind": "repository",
+      "path": "server/room_team_mode.py",
+      "bytes": 1489,
+      "sha256": "fb69ea8d4b93c1d602aefb538970efbb7496a7bb178cca2f301f520b72ae16ec"
+    },
+    {
+      "id": "INTEGRATION-00365",
+      "kind": "repository",
+      "path": "server/test_hidden_terrain_admission.py",
+      "bytes": 5549,
+      "sha256": "594ad8ea105bf35d10b9481cd944e6ecd7acf5d8549eb0778b8ce0989f24040d"
+    },
+    {
+      "id": "INTEGRATION-00366",
+      "kind": "repository",
+      "path": "server/test_mode_host_rejoin.py",
+      "bytes": 6296,
+      "sha256": "3eec3af510794461354caee609c625adc95abca97595a5a482d1383dd742d892"
+    },
+    {
+      "id": "INTEGRATION-00367",
+      "kind": "repository",
+      "path": "server/test_replacement_slots.py",
+      "bytes": 14542,
+      "sha256": "6921dcdf792253140b5c92478df99931a1e3e8dbc7f0872156a84f9c313bf262"
+    },
+    {
+      "id": "INTEGRATION-00368",
+      "kind": "repository",
+      "path": "server/test_room_team_mode.py",
+      "bytes": 6025,
+      "sha256": "111c6fcbac9ee2708dd68017de7cda12942b7ad075a5d4d9950d259644d0f503"
+    },
+    {
+      "id": "INTEGRATION-00369",
+      "kind": "repository",
+      "path": "server/own_profile.py",
+      "bytes": 2817,
+      "sha256": "cb7847cf7830ac23a3ff9948cd4c072dc7e6b61d8037435a69585d2a985c1763"
+    },
+    {
+      "id": "INTEGRATION-00370",
+      "kind": "repository",
+      "path": "server/test_own_profile.py",
+      "bytes": 8539,
+      "sha256": "7da3fbb566ece693a21203962822f5e218f65a75fe5d66ac8b7a5f7699f5db38"
+    },
+    {
+      "id": "INTEGRATION-00371",
+      "kind": "local",
+      "path": "local/research/codex/cp183-pr-merged.json",
+      "bytes": 245,
+      "sha256": "96175e63faa26d23e6fe5e26531907aab2c1fd7986d46c236a2bcfd617de893d"
+    },
+    {
+      "id": "INTEGRATION-00372",
+      "kind": "local",
+      "path": "local/research/codex/cp183-exact-head-history-check.txt",
+      "bytes": 36043,
+      "sha256": "217d755ec9e6a23eb1eb6358121427682bfbe7b6891cc75c79a90775d600a35d"
+    },
+    {
+      "id": "INTEGRATION-00373",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownrecord-producer-r1/positive291.bin",
+      "bytes": 166,
+      "sha256": "3f72f432a8c528d9cf34acb0e47d91c01a1a0c84e25776f879381627a6e83cb7"
+    },
+    {
+      "id": "INTEGRATION-00374",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/native-final.json",
+      "bytes": 23974,
+      "sha256": "caa96f260857a73c3d588bea0dbd61a4be39065300f520392d4b80912678bf37"
+    }
+  ]
+}

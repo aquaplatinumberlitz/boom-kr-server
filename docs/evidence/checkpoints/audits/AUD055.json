@@ -1,0 +1,122 @@
+{
+  "id": "AUD055",
+  "trigger": "periodic",
+  "completed_through": "CP184",
+  "recorded_utc": "2026-11-07T02:28:41.269120+00:00",
+  "auditor": "Codex manual self-audit; independent review waived",
+  "read_files": [
+    "README.md",
+    "docs/PLAN.md",
+    "docs/PROTOCOL.md",
+    "docs/RESEARCH.md",
+    "docs/evidence/lobby-identity/README.md",
+    "docs/evidence/cache-boundary/README.md",
+    "docs/evidence/live-codec-stream/README.md",
+    "docs/features.json",
+    "docs/COVERAGE.md",
+    "server/probe_service.py",
+    "server/own_profile.py",
+    "server/test_own_profile.py",
+    "local/research/codex/k3-identity-cache-r1/panel-verification.json",
+    "local/research/codex/k3-ownrecord-producer-r1/verification.json",
+    "local/research/codex/k3-ownprofile-integration-r1/verification.json",
+    "local/research/codex/k3-ownprofile-integration-r1/authname-reuse.json",
+    "local/research/codex/k3-ownprofile-integration-r1/runtime-preparation.json",
+    "local/research/codex/k3-ownprofile-integration-r1/source-A-r1.json",
+    "local/research/codex/k3-ownprofile-integration-r1/runtime-preparation-r2.json",
+    "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r1/client.log",
+    "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r1/run.json",
+    "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r1/raw-seal.json",
+    "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r1/panel-before-create.png",
+    "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r1/screen-25.png",
+    "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r2/client.log",
+    "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r2/run.json",
+    "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r2/raw-seal.json",
+    "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r2/panel-before-create.png",
+    "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r2/screen-25.png",
+    "docs/REFERENCES.md",
+    "docs/evidence/namu-wiki/metadata.json"
+  ],
+  "method": "Manual README→PLAN progress/currentorder/unchangedK0–K7criteria→PROTOCOL currentidentity/codec/reusematrix→RESEARCH activegaps→evidence/raw/probes/models/sourceversions/images. Scopeactivecontracts, notrecertificationofallhistoricalparagraphs. Nativeframerpre-dispatch vsfull291consumer distinguished; controlpositiveCP183/oldnamedcacheCP059 compared, notjustchecker. Readscopes andfindingskept, completeoldrecords/rawunchanged.",
+  "findings": [
+    {
+      "id": "F1",
+      "stale": "README/PLAN/RESEARCH stillnative291onlylab/nointegration, CP183deliverypending",
+      "correction": "UpdatecurrentoptinAname→room/map/native43..73 andPR255merged; keepCP183snapshotlimits. NoBactualclientfromsyntheticguestimage.",
+      "fixed_in": [
+        "README.md",
+        "docs/PLAN.md",
+        "docs/PROTOCOL.md",
+        "docs/RESEARCH.md",
+        "docs/evidence/lobby-identity/README.md"
+      ]
+    },
+    {
+      "id": "F2",
+      "stale": "Reusematrix describedcrypto constantsasVNonly andlogin/worldrolesunknown afterKRnativecodec/identitywork",
+      "correction": "PointmeasuredKRmode2/selector3/resettoCP181 andidentity291; widercodec/accountauthority remainexplicitlimits.",
+      "fixed_in": [
+        "docs/PROTOCOL.md"
+      ]
+    },
+    {
+      "id": "F3",
+      "stale": "CurrentprogressK3referencedwholecodec/cache/authority asundifferentiatedblocker; historicalK1acceptance fullK2opencouldappearcurrent",
+      "correction": "UnchangedK3criteria nowhaveevidencematrix/specificgaps; historicalsnapshotdated/linksCP181profile. FocusgateK3→K4→K5K6a, variantsbacklogunlessblocking.",
+      "fixed_in": [
+        "docs/PLAN.md",
+        "README.md",
+        "docs/RESEARCH.md",
+        "docs/COVERAGE.md"
+      ]
+    },
+    {
+      "id": "F4",
+      "stale": "BlindreuseCplayerblobwoulddisplayKRLocal despiteauthC/KRNew",
+      "correction": "KnownCP058authlocatorsbindname/IDperrole, preserveprofiletail. C126bytesmodelonly; notruntimeB/C acceptance.",
+      "fixed_in": [
+        "server/own_profile.py",
+        "server/test_own_profile.py",
+        "docs/PROTOCOL.md",
+        "docs/evidence/lobby-identity/README.md"
+      ]
+    },
+    {
+      "id": "F5",
+      "stale": "Nativeframerret0/cursor0couldbeusedasfullbodyproof, r1rawsourcepinswouldmismatchpostguardcode",
+      "correction": "Only291consumer128cursor suppliesbodyproof; otherpacketsframing/progress/UIlimits. SourceA-r1snapshotsbeforeguards, r2currentcode measuredaftercleanup; no retroactiveclaim.",
+      "fixed_in": [
+        "docs/PROTOCOL.md",
+        "docs/evidence/lobby-identity/README.md"
+      ]
+    },
+    {
+      "id": "F6",
+      "stale": "Counter/auditnext184 andnextproducer/integration stepswouldbeoutdatedafterbatch",
+      "correction": "AppendCP184/AUD055; nextCP188. Planchecklistcache/version/channel/negative first; noreset/noCPpertest/no gateclosure.",
+      "fixed_in": [
+        "README.md",
+        "docs/PLAN.md",
+        "docs/RESEARCH.md",
+        "docs/features.json",
+        "docs/evidence/checkpoints/manifest.json"
+      ]
+    },
+    {
+      "id": "F7",
+      "stale": "NewownertrustedKRwiki notregisteredamongreuse sources; ordinaryrulesriskbeingREedagain.",
+      "correction": "Recordownertrust/source93pages/PCvsBnBM/selectedrawhashes andcompactreuse table. Referenceisnotnative00967proof; keepgatefocus, no newmodeinventory.",
+      "fixed_in": [
+        "docs/REFERENCES.md",
+        "docs/PROTOCOL.md",
+        "docs/PLAN.md",
+        "docs/evidence/namu-wiki/metadata.json"
+      ]
+    }
+  ],
+  "remaining": [
+    "K3notaccepted: define/verifyrequiredcoldcachebaseline, channelUI/kind/index, wrongversion/identityerror/nativeversusmodelnegative scopes. Noexpandedallclientinventory requirement.",
+    "NativecurrentintegrationAonly; B/C/start/rejoinafter291 pendingwhenK4/K6/replacementneeds. Twoindependent80sruns nottwoclientgame.",
+    "Reviewwaived/Codexselfcheck; code/docsdeliverypendingPR/exacthead. Widegrammar/accountauthority/Windows/LANInternet8client/fullmatch unchanged."
+  ]
+}

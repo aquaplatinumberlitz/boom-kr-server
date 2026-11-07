@@ -1,0 +1,107 @@
+{
+  "schema": "kre-reference-evidence-v1",
+  "recorded_utc": "2026-11-07T02:32:37.532228+00:00",
+  "source_root": "/home/admin/boom/kr-namu-wiki",
+  "owner_authorization": {
+    "by": "project_owner",
+    "trust": "trusted_gameplay_reference",
+    "instruction": "nguồn ở đây có thể xem là nguồn tin cậy theo ý kiến chủ dự án",
+    "scope": "Game rules/stat/characters/maps/modes asreference; no inventednativeKRruntime/packet/ID/layout proof"
+  },
+  "origin": "namu.moe mirror of namu.wiki; localcrawl2026-11-06 perREADME",
+  "inventory": {
+    "pages": 93,
+    "text_html_pairs": true,
+    "pc_and_BnB_M_separate": true
+  },
+  "files": [
+    {
+      "origin": "/home/admin/boom/kr-namu-wiki/README.md",
+      "snapshot": "local/research/codex/wiki-reference-r1/sources/README.md",
+      "bytes": 6027,
+      "sha256": "57ac7c3a1027f8e34a55ddb85084f79bb0ae4a85b55037eed349bd6b758f2447",
+      "page_modified": null,
+      "scope": "pc_reference"
+    },
+    {
+      "origin": "/home/admin/boom/kr-namu-wiki/vi/README.md",
+      "snapshot": "local/research/codex/wiki-reference-r1/sources/vi/README.md",
+      "bytes": 1515,
+      "sha256": "efbe93973d4a0edac60517cb06e8159b215b313b2535a61f1c9c09fded4fae3b",
+      "page_modified": null,
+      "scope": "pc_reference"
+    },
+    {
+      "origin": "/home/admin/boom/kr-namu-wiki/manifest-all.json",
+      "snapshot": "local/research/codex/wiki-reference-r1/sources/manifest-all.json",
+      "bytes": 17323,
+      "sha256": "1baf9f307108a0959c3728b1b7454cab4df9078e286bec7f8d10f962b40521c9",
+      "page_modified": null,
+      "scope": "pc_reference"
+    },
+    {
+      "origin": "/home/admin/boom/kr-namu-wiki/text/크레이지_아케이드게임_모드.txt",
+      "snapshot": "local/research/codex/wiki-reference-r1/sources/text/크레이지_아케이드게임_모드.txt",
+      "bytes": 46085,
+      "sha256": "ef892dc8ed2418cdc6083c609b63bf8d1e5418198d1fc8dd5de9f3d2cbc15481",
+      "page_modified": "2026-08-19 03:45:53",
+      "scope": "pc_reference"
+    },
+    {
+      "origin": "/home/admin/boom/kr-namu-wiki/text/크레이지_아케이드아이템.txt",
+      "snapshot": "local/research/codex/wiki-reference-r1/sources/text/크레이지_아케이드아이템.txt",
+      "bytes": 82383,
+      "sha256": "eb84d2197c43ed7fcaf9c23f8c4c1beef681190f98d210669ae47d496bbebd80",
+      "page_modified": "2026-10-15 00:03:19",
+      "scope": "pc_reference"
+    },
+    {
+      "origin": "/home/admin/boom/kr-namu-wiki/text/크레이지_아케이드맵.txt",
+      "snapshot": "local/research/codex/wiki-reference-r1/sources/text/크레이지_아케이드맵.txt",
+      "bytes": 65592,
+      "sha256": "a17ad271ec9f26b71e0702603bd1b76d34eba407d0e618881a4e7e16ae8b16f0",
+      "page_modified": "2026-10-21 19:14:24",
+      "scope": "pc_reference"
+    },
+    {
+      "origin": "/home/admin/boom/kr-namu-wiki/text/배찌(크레이지_아케이드).txt",
+      "snapshot": "local/research/codex/wiki-reference-r1/sources/text/배찌(크레이지_아케이드).txt",
+      "bytes": 4950,
+      "sha256": "80daa464fd053da5004d87419c10967560dc858358344a51ba4afcdbd17d7efc",
+      "page_modified": "2026-06-20 10:49:55",
+      "scope": "pc_reference"
+    },
+    {
+      "origin": "/home/admin/boom/kr-namu-wiki/vi/배찌(크레이지_아케이드) (Bazzi (Crazy Arcade)).md",
+      "snapshot": "local/research/codex/wiki-reference-r1/sources/vi/배찌(크레이지_아케이드) (Bazzi (Crazy Arcade)).md",
+      "bytes": 4291,
+      "sha256": "90900831238709bae8279fbb163f9aafe2c437f73516961355aee87a627608ba",
+      "page_modified": null,
+      "scope": "pc_reference"
+    }
+  ],
+  "locators": [
+    {
+      "file": "text/크레이지_아케이드게임_모드.txt",
+      "lines": "134–150",
+      "topic": "normalbomb/chain/trap/rescue/kill/needle/oxygen/Free-Manner equalteams incl2:2:2"
+    },
+    {
+      "file": "text/크레이지_아케이드아이템.txt",
+      "lines": "146–160;266–270",
+      "topic": "Bomb/Fluid/Roller+1, Ultra/RedDevil max, needleCtrl/map-localvariant"
+    },
+    {
+      "file": "vi/배찌(크레이지_아케이드) (Bazzi (Crazy Arcade)).md",
+      "lines": "21–26",
+      "topic": "Bazzi basic/maximum count1/6,power1/7,speed5/9; verify originalKRtext"
+    },
+    {
+      "file": "text/크레이지_아케이드맵.txt",
+      "lines": "theme/mission catalog",
+      "topic": "Mapfamily/reference only, not nativegeometry/fileID"
+    }
+  ],
+  "reuse": "Skiprecoveringhumanmeaning/ordinaryrulefromscratch; reference→KRAttr/consumer→onlyminimumdelta/runtime. Prioritizecurrentgate/basicBattle, notwholewikiinventory/newmodes.",
+  "limits": "Wiki/game-revision may differ from00967; Vietnamesechar/lore pages partial, originalKorean retained. Doesnot resolve engineordering/simultaneoustouch arbitration/packetgrammar/cache/version. No automaticpresence/statIDorunitconversion/nativegateclosure."
+}

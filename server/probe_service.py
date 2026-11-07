@@ -19,6 +19,7 @@ import struct
 import time
 
 from server import probe_codec as codec
+from server import own_profile
 from server.item_claims import ItemSpec
 from server.room_title import create_title, replace_listing_title
 from server.room_team_mode import create_selector, replace_reply_selector
@@ -180,6 +181,8 @@ class ProbeService:
         if missing:
             raise ValueError('profile missing lifecycle fixtures: ' + ', '.join(sorted(missing)))
         self.profile, self.out, self.proxy_ports = profile, out, proxy_ports
+        self.own_profile_bodies = (own_profile.prepare(profile)
+                                   if 'own_profile' in profile.data else None)
         self.role_slots = dict(ROLE_SLOTS)
         self.replacement_slot = 'replacement_slot' in profile.data
         self.replacement_binding = None
@@ -561,7 +564,7 @@ class ProbeService:
             for alias in aliases:
                 if alias in replacement_slots.PINS and alias.endswith('_C'):
                     body_overrides.setdefault(alias, self.fixture_body(alias))
-        if event.get('room_reentry'):
+        if event.get('room_reentry') or getattr(self, 'own_profile_bodies', None):
             return [self.send(event, alias, label + '-' + alias, body=body_overrides.get(alias))
                     for alias in aliases]
         frames = []
@@ -588,12 +591,26 @@ class ProbeService:
         role = event['role']
         if event.get('closed'):
             return
+        if getattr(self, 'own_profile_bodies', None):
+            prerequisite = {67: 'channel_response_sent', 81: 'ready_response_sent',
+                            82: 'ready_response_sent', 585: 'create_response_sent'}.get(opcode)
+            if opcode in (1, 5, 9):
+                self.reject_stage(event, opcode, sequence, 'login_opcode_on_channel')
+                return
+            if prerequisite and not event.get(prerequisite):
+                self.reject_stage(event, opcode, sequence, 'missing_' + prerequisite)
+                return
         if opcode == 86:
             self.leave_room(event, frame, sequence, body)
         elif opcode == 202 and self.battle_exit:
             self.receive_battle_exit(event, frame, sequence, body)
         elif opcode == 6 and not event.get('channel_response_sent'):
-            self.send_raw(event, self.profile.raw('channel'))
+            if getattr(self, 'own_profile_bodies', None):
+                event['s2c_next_seq'] = 43
+                self.send(event, 'channel', 'lobby17',
+                          body=codec.frame_body(self.profile.raw('channel'), 43))
+            else:
+                self.send_raw(event, self.profile.raw('channel'))
             event['channel_response_sent'] = {'monotonic_ns': time.monotonic_ns()}
         elif opcode == 67 and not event.get('ready_response_sent'):
             listing_alias = 'roomlist_B' if role == 'C' and self.c_replaces_b() else f'roomlist_{role}'
@@ -603,8 +620,16 @@ class ProbeService:
                 sequence91 = self.profile.data['fixtures']['roomlist_B']['sequence']
                 listing = codec.encode(listing[:37], 91, replace_listing_title(
                     self.profile.body('roomlist_B'), self.room_title_bytes), sequence91)
-            self.send_raw(event, self.profile.raw('ready') + listing
-                          + self.profile.raw('channel_list'))
+            if getattr(self, 'own_profile_bodies', None):
+                self.send_setup(event, ['ready', listing_alias, 'channel_list'], 'lobby-ready',
+                                body_overrides={
+                                    listing_alias: codec.frame_body(listing, 49),
+                                    'channel_list': codec.frame_body(self.profile.raw('channel_list'), 52)})
+                self.send(event, 'player_' + role, 'own-profile291', opcode=291,
+                          body=self.own_profile_bodies[role])
+            else:
+                self.send_raw(event, self.profile.raw('ready') + listing
+                              + self.profile.raw('channel_list'))
             event['ready_response_sent'] = {'monotonic_ns': time.monotonic_ns()}
             if getattr(self, 'room_title_mode', False) and (role == 'B' or (role == 'C' and self.c_replaces_b())):
                 path = f"{role}-title-initial91-{event['global_ordinal']}.bin"
@@ -959,6 +984,13 @@ class ProbeService:
                     'prefix': (codec.read_fields(body[:14], [1, 1, 2, 2, 4, 4])
                                if len(body) >= 14 else None),
                     'limits': 'Unadmitted transport envelope; no semantic validation.'})
+
+    def reject_stage(self, event, opcode, sequence, reason):
+        """Bounded fixture-route admission, not recovered account authority."""
+        self.state.setdefault('stage_rejections', []).append({
+            'role': event['role'], 'connection': event.get('global_ordinal'),
+            'opcode': opcode, 'sequence': sequence, 'reason': reason,
+            'monotonic_ns': time.monotonic_ns(), 'source': 'design'})
 
     def receive_event(self, event, frame, sequence, body):
         if len(body) < 14:
@@ -1701,6 +1733,14 @@ class ProbeService:
             opcode = struct.unpack_from('<I', frame, 5)[0]
             event['c2s_frame_count'] = event.get('c2s_frame_count', 0) + 1
             if event['reply_ordinal'] == 3:
+                if getattr(self, 'own_profile_bodies', None):
+                    prerequisite = {9: 'auth_response_sent', 5: 'netinfo_response_sent'}.get(opcode)
+                    if opcode in (6, 67, 81, 82, 585, 104, 118):
+                        self.reject_stage(event, opcode, sequence, 'channel_opcode_on_login')
+                        continue
+                    if prerequisite and not event.get(prerequisite):
+                        self.reject_stage(event, opcode, sequence, 'missing_' + prerequisite)
+                        continue
                 for op, marker, names in [(1, 'auth_response_sent', [f"auth_{event['role']}"]),
                                           (9, 'netinfo_response_sent', ['netinfo', 'flags']),
                                           (5, 'redirect_response_sent', ['redirect'])]:

@@ -1,0 +1,277 @@
+{
+  "id": "CP184",
+  "previous": "CP183",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-07T02:34:07.390089+00:00",
+  "context_commit": "5c1f3fbb216588360fd1bf1ff0be80a5d65c8624",
+  "owner": "Codex",
+  "reviewer": "Codex",
+  "question": "Can measured291beintegratedwithoutbreakinginitialS2C/create/map,andwhichunchangedK3criteriaremainbeforegateclosure?",
+  "scope": "Gatefocusedoptinproductionfeature/reuseexistingcounter/send_setup/CP183profile; twosealedArunsbefore/afterloggedguards, defaultoff/negative/namebindingregressions. ManualperiodicAUD055core→evidence/raw andownertrustedwiki source reuse registration; notnewgameplay/modeinventory.",
+  "artifacts": [
+    {
+      "name": "OriginalKR00967unchanged",
+      "sha256": "a52545c14b1fea423de655c3163d6360b628d61c1cd472b46fdbc8a9ffe15f4e"
+    },
+    {
+      "name": "CurrentWinecopyunchanged",
+      "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+    },
+    {
+      "name": "NativeIDAfullcopycf72privateanalysis",
+      "sha256": "cf72da112308d9f1ca256df8089594c5f787875310933073bf6bd5ba6f70e63b"
+    },
+    {
+      "name": "modOmodelreference",
+      "sha256": "a08950c833d3acab8281049def7b3dc96b221f107eeda01da3a548e34b91dce5"
+    },
+    {
+      "name": "OriginalKR00967NewPatcher",
+      "sha256": "b59e4dce9ad23c439a7632ce04ecb2eed3481585bd2454100b05c9d7527f5c02"
+    },
+    {
+      "name": "VN116original_reference_only",
+      "sha256": "bce8644d4e783d1354ab4fc880e1ab9a4ab3325327028f37d99e5439e25f4bbd"
+    },
+    {
+      "name": "VN116patched_runtime_reference_only",
+      "sha256": "bc875ba5765cc112e924f46e75d0ace112904c7801126e46bc0abb1c9cb576b1"
+    },
+    {
+      "name": "PassingK1offlineR2recipe",
+      "sha256": "7b3b435b5d8e110185359107376b736615ceabe9452cea8154d02c8628f44c29"
+    },
+    {
+      "name": "NativeProcessPatchR1control",
+      "sha256": "a0c3b9867dae5fe2ff7c315cfe851117661c2cafead45196ce999329f67432f5"
+    }
+  ],
+  "locators": [
+    "Runtimee9bb476.../base400000; native14EF300framer per-connectionmode2/selector3/seq; DA5F90/902329/D2FEB0→D30122 own291128cursor. No newnativebodyRE.",
+    "integrated-A-r1/103raw/beforeloggedguards source-A-r1snapshots; integrated-A-r2/103raw/currentguardcode. InitialS2C43,46,49,52,55own291,58create86,61player106,64slot110,67guest106,70table238,73map117,next76.",
+    "AuthCP058nativefield9/10/body25ID29string; CauthKRNew vsoldroomKRLocal identified. BodyA/B128/C126 model; onlyA native.",
+    "CP183PR255merge5c1f3fbb216588360fd1bf1ff0be80a5d65c8624. AUD055periodic184/next188. Wiki93page2026-11-06mirror ownertrustedPCreference, notKRnativeproof."
+  ],
+  "findings": [
+    {
+      "summary": "Opt-inown_profile native_291/exporterflag usesexisting47pins andper-events2c_next_seq/send_setupfromchannel43; no parallelcounter. Defaultoffexactrawunchanged. NativebothArunsacceptseq43..73throughownpanel→OScreate→roster/map,next76, no serviceerrors.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#own-profile-integration",
+      "evidence": [
+        "INTEGRATION-00034",
+        "INTEGRATION-00094",
+        "INTEGRATION-00198"
+      ],
+      "limits": "TwoindependentA80smodifiede9Wine/offline/loopback/inheritedcache/production47fixtures+optin291. Syntheticroomguest notactualB. Fullbodyproof291only;framerret0/cursor0beforeotherbodydispatch. Modelsforwrongstage/socket/ABCnames separatefromnativeA. NoK3gate/coldallcache/versionerror/fullaccountauth/Windows/B-Cactual/start/rejoin/Battlefullmatch/LANInternet8client."
+    },
+    {
+      "summary": "Helperbindsname/IDtoknownauthrole/shape andkeepszero-profiletail; discoveredCroomKRLocaldiffersauthKRNew, correctednamebindingbydesign. ModelA/B128/C126, nativeA128cursor/errors0/actualguard1/UIKRLocal; syntheticguest notactualB.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#own-profile-integration",
+      "evidence": [
+        "INTEGRATION-00003",
+        "INTEGRATION-00034",
+        "INTEGRATION-00170",
+        "INTEGRATION-00226"
+      ],
+      "limits": "TwoindependentA80smodifiede9Wine/offline/loopback/inheritedcache/production47fixtures+optin291. Syntheticroomguest notactualB. Fullbodyproof291only;framerret0/cursor0beforeotherbodydispatch. Modelsforwrongstage/socket/ABCnames separatefromnativeA. NoK3gate/coldallcache/versionerror/fullaccountauth/Windows/B-Cactual/start/rejoin/Battlefullmatch/LANInternet8client."
+    },
+    {
+      "summary": "Opt-inexplicitwronglogin/channelstage/socketguardsreject/logreasonwithoutreply/readymarker; wrongprofile/identity failsbeforelisten. Modelsreceivevalidframes/testfailurehandling/reentrycounter, 290server+7exportpass; notnativeoriginalauthauthority/errorversionproof.",
+      "source": "design",
+      "status": "confirmed",
+      "method": "design",
+      "canonical": "docs/PROTOCOL.md#own-profile-integration",
+      "evidence": [
+        "INTEGRATION-00029",
+        "INTEGRATION-00006",
+        "INTEGRATION-00034"
+      ],
+      "limits": "TwoindependentA80smodifiede9Wine/offline/loopback/inheritedcache/production47fixtures+optin291. Syntheticroomguest notactualB. Fullbodyproof291only;framerret0/cursor0beforeotherbodydispatch. Modelsforwrongstage/socket/ABCnames separatefromnativeA. NoK3gate/coldallcache/versionerror/fullaccountauth/Windows/B-Cactual/start/rejoin/Battlefullmatch/LANInternet8client."
+    },
+    {
+      "summary": "R1sourcefrozenandsealedbeforeguardchanges; snapshotsretainexactoldbytes, R2measuresfinalcode. Initialtestinvocationmodule/patherrorsretainedthenproperdiscoverypasses. Reusednativeprobenote prefixchangedbutkindspartitionactualframer/producer;framerprebodycursor0notwholepacketbodyproof.",
+      "source": "design",
+      "status": "confirmed",
+      "method": "design",
+      "canonical": "docs/PROTOCOL.md#own-profile-integration",
+      "evidence": [
+        "INTEGRATION-00031",
+        "INTEGRATION-00027",
+        "INTEGRATION-00034"
+      ],
+      "limits": "TwoindependentA80smodifiede9Wine/offline/loopback/inheritedcache/production47fixtures+optin291. Syntheticroomguest notactualB. Fullbodyproof291only;framerret0/cursor0beforeotherbodydispatch. Modelsforwrongstage/socket/ABCnames separatefromnativeA. NoK3gate/coldallcache/versionerror/fullaccountauth/Windows/B-Cactual/start/rejoin/Battlefullmatch/LANInternet8client."
+    },
+    {
+      "summary": "ManualAUD055fixesstalereusecrypto/loginmatrix/CP183delivery/currentK3broaderblockers; PLANunchangedcriteria nowmappedtospecificgapsandgateclosurepriority. Wikiownertrust/reference/hash/PCvsBnBMrecorded; ordinaryrulemeaningcanbereusedwithoutnewRE, wire/build/runtimeclaimsnotinferred.",
+      "source": "design",
+      "status": "confirmed",
+      "method": "design",
+      "canonical": "docs/PROTOCOL.md#own-profile-integration",
+      "evidence": [
+        "INTEGRATION-00043",
+        "INTEGRATION-00047"
+      ],
+      "limits": "TwoindependentA80smodifiede9Wine/offline/loopback/inheritedcache/production47fixtures+optin291. Syntheticroomguest notactualB. Fullbodyproof291only;framerret0/cursor0beforeotherbodydispatch. Modelsforwrongstage/socket/ABCnames separatefromnativeA. NoK3gate/coldallcache/versionerror/fullaccountauth/Windows/B-Cactual/start/rejoin/Battlefullmatch/LANInternet8client."
+    }
+  ],
+  "verification": [
+    {
+      "check": "Twoownedruns/inputversionpins/206rawfiles/nativeframe-seq/291consumer/actualUI/OScreate-map",
+      "result": "pass",
+      "evidence": [
+        "INTEGRATION-00034"
+      ],
+      "limits": "392mechanicalchecks plusmanualimages/audit, notautogateacceptance."
+    },
+    {
+      "check": "Serverandexportregressions",
+      "result": "pass",
+      "evidence": [
+        "INTEGRATION-00029",
+        "INTEGRATION-00006"
+      ],
+      "limits": "290server/7exportmodeltests; notnativeoraclesforuntestedB/C/rejoin/start."
+    },
+    {
+      "check": "Original5artifacts",
+      "result": "pass",
+      "evidence": [
+        "INTEGRATION-00002"
+      ],
+      "limits": "No originalruntimeclaim."
+    },
+    {
+      "check": "K3cachecoldbaseline/channel/version/identitynegativeacceptance",
+      "result": "pending",
+      "evidence": [
+        "INTEGRATION-00038"
+      ],
+      "limits": "Specificremainingcriteria only; wideraccount/modes/items notautomaticallygateblockers."
+    }
+  ],
+  "evidence": [],
+  "evidence_manifests": [
+    {
+      "path": "docs/evidence/checkpoints/evidence/CP184-own-profile-integration.json",
+      "bytes": 99561,
+      "sha256": "57edc2b2b02d55d239ba678e1e682a982a3411211aa5866e58cde1b63bccb187",
+      "count": 374
+    }
+  ],
+  "delta": {
+    "added": [
+      "Productionoptin291/namebinding/continuousinitialsequence/nativeAcreate-map/loggedstageguards/regressions.",
+      "K3criterion-evidencechecklist/gatefocus/manualperiodicAUD055; ownertrustedKRwikisource/reusematrix/provenance."
+    ],
+    "corrected": [
+      "No moreproducer/integrationAunknown; defaultofflegacybytes andnewcounterintegration scopedcorrectly. Croomnamecannotblindlyseedownprofile.",
+      "CP183/PR255merged; sourceA-r1pre-guard/r2postguard notretroactivelyconflated; testinvocationerrors notcodefailure; framerbodycursor0 ispredispatch.",
+      "TopreusematrixVN-onlyconstants/loginunknown staleafterKRnativework; historicalK1/fullK2opendatedandlinkedCP181profile."
+    ],
+    "superseded": [
+      "InitialintegrationA/sequence/create-map solved; nextonlymissingK3cache/version/channel/negativecriteria thenK4review. No newitem/mode/race branchwithoutgateblocker."
+    ]
+  },
+  "blockers": [
+    "K3requiredcachecoldbaseline/channelUI-kind-index/version-identityerror andselectedwire-negative scopesnotallaccepted; Cknownnamebinding ismodelonly.",
+    "NoactualB/C/start/rejoin/Battleafter291 measured; openbyK4K6/replacementtrigger, notallnewprerequisitesforK3A. Latergates/fullmatch/LANInternet8client unchanged."
+  ],
+  "next_steps": [
+    {
+      "id": "NEXT-K3-IDENTITY-CACHE",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "PLANk3-evidence-review: sourcefirstCP015016058059181, resolveonlymissingcoldcachebaseline/channelUI/version-identityerror/negativecriteria. Reuseown291/integrationA; thenreviewK4existingproofbeforeREnewvariants. WikiPCtrustedrulesusedwherequestionsaboutgameplaymeaningarise.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    }
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-11-07T02:34:07.390089+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "Ownerwaiver/Codexsolo RE/code/runtime/manualaudit+selfcheck; exactheadPRbeforemerge, noindependentreview.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Owner explicitly requested solo, no workers/review."
+    }
+  },
+  "docs_sync": [
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "CP184integration/limits/versions/checklist/gatepriority/wikiownerreference/AUD055syncedbeforecomplete, no gateclosed."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "CP184integration/limits/versions/checklist/gatepriority/wikiownerreference/AUD055syncedbeforecomplete, no gateclosed."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "updated",
+      "reason": "CP184integration/limits/versions/checklist/gatepriority/wikiownerreference/AUD055syncedbeforecomplete, no gateclosed."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "updated",
+      "reason": "CP184integration/limits/versions/checklist/gatepriority/wikiownerreference/AUD055syncedbeforecomplete, no gateclosed."
+    },
+    {
+      "path": "docs/features.json",
+      "state": "updated",
+      "reason": "CP184integration/limits/versions/checklist/gatepriority/wikiownerreference/AUD055syncedbeforecomplete, no gateclosed."
+    },
+    {
+      "path": "docs/COVERAGE.md",
+      "state": "updated",
+      "reason": "CP184integration/limits/versions/checklist/gatepriority/wikiownerreference/AUD055syncedbeforecomplete, no gateclosed."
+    },
+    {
+      "path": "docs/REFERENCES.md",
+      "state": "updated",
+      "reason": "CP184integration/limits/versions/checklist/gatepriority/wikiownerreference/AUD055syncedbeforecomplete, no gateclosed."
+    },
+    {
+      "path": "docs/evidence/lobby-identity/README.md",
+      "state": "updated",
+      "reason": "CP184integration/limits/versions/checklist/gatepriority/wikiownerreference/AUD055syncedbeforecomplete, no gateclosed."
+    },
+    {
+      "path": "docs/evidence/namu-wiki/metadata.json",
+      "state": "updated",
+      "reason": "CP184integration/limits/versions/checklist/gatepriority/wikiownerreference/AUD055syncedbeforecomplete, no gateclosed."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/review.json",
+      "state": "updated",
+      "reason": "CP184integration/limits/versions/checklist/gatepriority/wikiownerreference/AUD055syncedbeforecomplete, no gateclosed."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
+      "state": "updated",
+      "reason": "CP184integration/limits/versions/checklist/gatepriority/wikiownerreference/AUD055syncedbeforecomplete, no gateclosed."
+    },
+    {
+      "path": "docs/evidence/checkpoints/audits/AUD055.json",
+      "state": "updated",
+      "reason": "CP184integration/limits/versions/checklist/gatepriority/wikiownerreference/AUD055syncedbeforecomplete, no gateclosed."
+    },
+    {
+      "path": "server/README.md",
+      "state": "updated",
+      "reason": "CP184integration/limits/versions/checklist/gatepriority/wikiownerreference/AUD055syncedbeforecomplete, no gateclosed."
+    },
+    {
+      "path": "docs/evidence/checkpoints/README.md",
+      "state": "unchanged",
+      "reason": "Store/immutablehistory/workflowunchanged; periodic184performed,next188."
+    }
+  ]
+}
