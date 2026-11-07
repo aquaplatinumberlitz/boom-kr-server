@@ -1,7 +1,7 @@
 {
   "schema": "kre-feature-index-v1",
   "build": "KR00967",
-  "as_of": "CP195",
+  "as_of": "CP196",
   "sources": {
     "plan": "docs/PLAN.md",
     "contract": "docs/PROTOCOL.md",
@@ -3246,7 +3246,8 @@
           "docs/evidence/peer-endpoints/README.md#cp158",
           "docs/evidence/peer-endpoints/README.md#cp193",
           "docs/PROTOCOL.md#nat-two-cycles",
-          "docs/PROTOCOL.md#udp-netem-cycles"
+          "docs/PROTOCOL.md#udp-netem-cycles",
+          "docs/PROTOCOL.md#nat-netem-host-eof"
         ]
       },
       "coverage": {
@@ -3888,7 +3889,8 @@
           "docs/evidence/peer-endpoints/README.md#cp177",
           "docs/PROTOCOL.md#current-basic-cycles-291",
           "docs/PROTOCOL.md#current-basic-contest-reset",
-          "docs/PROTOCOL.md#emulated-lan-acceptance"
+          "docs/PROTOCOL.md#emulated-lan-acceptance",
+          "docs/PROTOCOL.md#nat-netem-host-eof"
         ]
       },
       "coverage": {
@@ -4203,7 +4205,8 @@
           "docs/evidence/peer-endpoints/README.md#cp177",
           "docs/PROTOCOL.md#portable-probe-bundle",
           "docs/PROTOCOL.md#emulated-lan-acceptance",
-          "docs/PROTOCOL.md#routed-Wine-network"
+          "docs/PROTOCOL.md#routed-Wine-network",
+          "docs/PROTOCOL.md#nat-netem-host-eof"
         ]
       },
       "coverage": {
@@ -4605,7 +4608,8 @@
           "docs/PROTOCOL.md#routed-Wine-network",
           "docs/PROTOCOL.md#nat-endpoint-control",
           "docs/PROTOCOL.md#nat-two-cycles",
-          "docs/PROTOCOL.md#udp-netem-cycles"
+          "docs/PROTOCOL.md#udp-netem-cycles",
+          "docs/PROTOCOL.md#nat-netem-host-eof"
         ]
       },
       "coverage": {

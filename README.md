@@ -41,6 +41,8 @@ Hai copy KR Wine đã chạy login/sảnh/phòng/Battle và các chu kỳ kết 
 [kim/reset](docs/PROTOCOL.md#needle-round-reset), [cứu hai chiều và hai kết quả](docs/PROTOCOL.md#rescue-two-results),
 [deep chain/reset](docs/PROTOCOL.md#recursive-chain-cycles) giữ phạm vi và giới hạn tại nguồn chuẩn.
 
+Các mốc dưới ghi trạng thái **tại checkpoint nêu tên**; next-step hiện hành chỉ ở PLAN.
+
 **K0 và bước tĩnh K2a đạt CP178; K1 đạt riêng recipe Wine R2 offline tại CP179**, đã merge
 [PR250](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/250)/`2f2b87f` và
 [PR251](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/251)/`2e6dae4`.
@@ -56,7 +58,7 @@ auth137/137/errors0 → channel socket mới; hello/mode/seq reset được đo 
 **K6c Internet/K7 vẫn mở; K6b LANgiảlập đạtCP191 theoowner. K3 local CP186, K4 local CP187, K5 basic CP188 và K6a local CP189 đã đạt riêng scope**,
 [nghiệm thu/giới hạn](docs/PLAN.md#k3-acceptance). Fullgrammar/unknownheader/prefix/mode và
 accountauthority chưa được khôi phục đầy đủ; K2 không nghiệm thu các phần đó. Thứ tự tiếp ở
-[PLAN](docs/PLAN.md#current-order): tiếp routed/NAT preflight trong mạng cô lập, không liveInternet/Nexon.
+[PLAN](docs/PLAN.md#current-order): nhánh routed/NAT/UDP impairment đã có CP192–196; tiếp incoming admission trước bốn client, giữ Internet gate mở.
 CP181 đã merge [PR253](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/253) tại `5a154e5`.
 **CP184: identity291 đã tích hợp opt-in vào service.** Hai run A đã hiện tên ở sảnh rồi tạo phòng,
 nhận roster/map; native framer nhận sequence43…73 liên tục, next76. [Contract/giới hạn](docs/PROTOCOL.md#own-profile-integration),
@@ -101,11 +103,11 @@ CP190 đã merge [PR262](https://github.com/aquaplatinumberlitz/boom-kr-server/p
 có capture; [contract/giới hạn](docs/PROTOCOL.md#routed-Wine-network). Chưa NAT/relay/Internetgate.
 [Owner chấp nhận Wine thay Windows](docs/evidence/owner-directives/wine-accepted.json), không cần máy Windows.
 CP191 đã merge [PR263](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/263) tại`56a08dd6`.
-AUD057 periodic qua192, audit kế **CP196**. [Review waived](docs/evidence/checkpoints/review-waiver.json).
+AUD057 periodic qua192 là lịch sử; AUD058 qua196, audit kế **CP200**. [Review waived](docs/evidence/checkpoints/review-waiver.json).
 
 **CP193: đã đo đối chứng NAT trên hai KR Wine thật.** Endpoint riêng làm consumer trả0; khai báo tuple
 đã ánh xạ + DNAT khôi phục handler, key và movement hai chiều. [Contract/giới hạn](docs/PROTOCOL.md#nat-endpoint-control),
-[run/hash](docs/evidence/peer-endpoints/README.md#cp193). Chưa hai chu kỳ trên NAT hoặc K6c Internet.
+[run/hash](docs/evidence/peer-endpoints/README.md#cp193). Tại CP193 chưa hai chu kỳ NAT; [CP194](docs/PROTOCOL.md#nat-two-cycles) bổ sung, K6c Internet vẫn mở.
 CP192 đã merge [PR264](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/264) tại`1a6daad0c17d718bc86574162bf2946bca1ed800`.
 CP193 đã merge [PR265](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/265) tại`8acf57c81a727892c04e735c28a20a5319d70fd9`; review waived, audit kế CP196.
 
@@ -115,7 +117,12 @@ CP194 đã merge [PR266](https://github.com/aquaplatinumberlitz/boom-kr-server/p
 
 **CP195: hai vòng KR qua NAT vẫn hoàn tất/reset/Start3 với UDP delay40±5ms/loss5% đã kiểm counter.**
 [Phạm vi và giới hạn](docs/PROTOCOL.md#udp-netem-cycles), [raw/hash](docs/evidence/peer-endpoints/README.md#cp195).
-TCP giữ baseline; chưa Internet gate. Tiếp disconnect trên topology này. Review waived; audit kế CP196.
+CP195 đã merge [PR267](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/267) tại`fe329b0b4da66aa4138c0e1a242da6ab3033d4a2`; TCP baseline, chưa Internet gate.
+
+**CP196: pending B-host EOF qua NAT/UDP impairment đã kiểm A về phòng/ID clear/chief và fence bom chờ.**
+[Contract/giới hạn](docs/PROTOCOL.md#nat-netem-host-eof), [run/hash](docs/evidence/peer-endpoints/README.md#cp196).
+Run r1 partial do Python probe assertion giữ nguyên; r2 bounded probe pass. AUD058 qua196; audit kế **CP200**.
+Tiếp incoming admission đã biết lệch khi startup xen kẽ, trước bốn client; K6c Internet/K7 còn mở.
 
 Đích đầu: hai client thật chơi hai trận liên tiếp; mở bốn client và hardening sau đó.
 
