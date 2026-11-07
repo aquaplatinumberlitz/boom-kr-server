@@ -1,0 +1,272 @@
+{
+  "id": "CP191",
+  "previous": "CP190",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-07T06:50:39.660448+00:00",
+  "context_commit": "3748df885102ef97dca65ec4903f56b74d92982a",
+  "owner": "Codex",
+  "reviewer": "Codex",
+  "question": "Does BpostwinnerRollerstatreset hold onportablecurrentclient cycles, anddoesexplicitowneracceptanceofemulatedLAN replacephysicalhostblocker withmeasuredK6bcriteria?",
+  "scope": "SourcefirstCP189documentedBpostwinresetgap/CP188Start3/CP190bundle; onefocusedBsolepickup2wins+Start3 run. Ownernewcriterion allowsLANemulatedhosts; read-onlydistinctnetns/99/153/PCAP/native4windows/twocycles/rejoin andindependenthostEOF acceptance mapping, notnewphysicalLANmeasurement. No newnativebody/wirepolicy/toolcode orwholeclientRE; K6c/K7keepopen.",
+  "artifacts": [
+    {
+      "name": "OriginalKR00967unchanged",
+      "sha256": "a52545c14b1fea423de655c3163d6360b628d61c1cd472b46fdbc8a9ffe15f4e"
+    },
+    {
+      "name": "CurrentWinecopyunchanged",
+      "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+    },
+    {
+      "name": "NativeIDAfullcopycf72privateanalysis",
+      "sha256": "cf72da112308d9f1ca256df8089594c5f787875310933073bf6bd5ba6f70e63b"
+    },
+    {
+      "name": "modOmodelreference",
+      "sha256": "a08950c833d3acab8281049def7b3dc96b221f107eeda01da3a548e34b91dce5"
+    },
+    {
+      "name": "OriginalKR00967NewPatcher",
+      "sha256": "b59e4dce9ad23c439a7632ce04ecb2eed3481585bd2454100b05c9d7527f5c02"
+    },
+    {
+      "name": "VN116original_reference_only",
+      "sha256": "bce8644d4e783d1354ab4fc880e1ab9a4ab3325327028f37d99e5439e25f4bbd"
+    },
+    {
+      "name": "VN116patched_runtime_reference_only",
+      "sha256": "bc875ba5765cc112e924f46e75d0ace112904c7801126e46bc0abb1c9cb576b1"
+    },
+    {
+      "name": "PassingK1offlineR2recipe",
+      "sha256": "7b3b435b5d8e110185359107376b736615ceabe9452cea8154d02c8628f44c29"
+    },
+    {
+      "name": "NativeProcessPatchR1control",
+      "sha256": "a0c3b9867dae5fe2ff7c315cfe851117661c2cafead45196ce999329f67432f5"
+    },
+    {
+      "name": "OfflineWinecopy_import_compare_ABI_only",
+      "sha256": "4b781fbcea21e0f6294c729b63be86ab2953d60ad83b0d0c9219359f826107ed"
+    }
+  ],
+  "locators": [
+    "Currentcopy4b781fbcea21e0f6294c729b63be86ab2953d60ad83b0d0c9219359f826107ed/base400000/RVA=VA-base. Known12199/124165/175180/E66680/E667BE/E668AD/E668B2/B4EA14/52A350 reused, no newVA/body.",
+    "Newrun ea3d82878c7d5ce3aed5ff35cc8139f21f4c6b9297d0236aaa956302c0c6336a/407.828178758s/1376raw/frozen227/exit0/ownedcleanup0; Bsole17kind2claims/2Bwin/normalStart3/3keys. 1714cycles/90nativepackets/528securefields/632peerchecks/69thirdclockbundlechecks.",
+    "ReadonlyreviewCP189 e06000161fa3f5ac1c1bb82ac88273bbc7542ed01009e1036c58995effc7a9fd, PCAP1282records/5183joins; root/A/Bdistinctnetns/actualCA+wineserverownership, true99ports/153IP/currentkey/nativeAPIapply/targetprogress4windows/2keys.",
+    "Ownermessageexplicit: LANmayuseemulation, physicaltwohostsnolongerrequired; docs/evidence/owner-directives/emulated-lan.json. PriorCP189190physicalhostblockers arehistoricalsnapshots, rawlabelsretained.",
+    "CP190PR262exact3748df885102ef97dca65ec4903f56b74d92982a mergedb7e83f46d4ab834209ef4c293dcbd93a77d72583; AUD056through188/nextCP192unchanged, mandatorymanualauditnextcheckpoint."
+  ],
+  "findings": [
+    {
+      "summary": "Newportablecurrentrun BsoleUp actuallyclaimsRoller17/kind2 bothkeys, one165/view/nativeBspeed4→5/A5unchanged; normalAselfSpace/IDs1,2/realtrapdeath/B21→twoBnormalwin175180/room/Ready. ActualBnormalStart3 andnativeclock3, B4/A5protectedbaseline bothviews atall3epochs confirmsB5→4postwinresettwice. No forcedstate/claimpacket/gamecall/thirdoutcome.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#emulated-lan-acceptance",
+      "evidence": [
+        "VLAN191-00051",
+        "VLAN191-00058",
+        "VLAN191-01472",
+        "VLAN191-01547"
+      ],
+      "limits": "K6b accepted emulatedLAN perexplicitowner, notphysicalLAN: actualKR/Winecopy4b/currentbasic291/private2netns/NIC/IP/directTCPUDP/sharedkernel/host. ReadonlymappingCP189PCAP2normalcycles/rejoin andCP190bundledpendinghostEOF remainindependentunchangedruns. NewBsoleRoller2normalwins/Start3/nativebaseline4→5→4twice, no thirdoutcome/contenders/EOFnewrun. Nativeemulation/getter separatefromactualruntimeperviewnotglobalsametick. NoInternet/NATrelay/fullauth/accountresume/generalreset/fullcodec/mapsitems/4–8clients/newK6cK7gate. Sourcebinary/DB/assets/oldcomplete/evidence unchanged, reviewwaived."
+    },
+    {
+      "summary": "Samecurrentbundledservice/module/profile47pins/13sourcebytes, fouractualA↔Bpeerwindows/twokeys/target/currentprogress andstrict56→1/other0before175 innewtwo-normalcyclerun. Native52A350/capturedfield/getteroracles reused; no newnativebody/statlaw/ItemAttr RE.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#emulated-lan-acceptance",
+      "evidence": [
+        "VLAN191-01448",
+        "VLAN191-01461",
+        "VLAN191-01470",
+        "VLAN191-00052"
+      ],
+      "limits": "K6b accepted emulatedLAN perexplicitowner, notphysicalLAN: actualKR/Winecopy4b/currentbasic291/private2netns/NIC/IP/directTCPUDP/sharedkernel/host. ReadonlymappingCP189PCAP2normalcycles/rejoin andCP190bundledpendinghostEOF remainindependentunchangedruns. NewBsoleRoller2normalwins/Start3/nativebaseline4→5→4twice, no thirdoutcome/contenders/EOFnewrun. Nativeemulation/getter separatefromactualruntimeperviewnotglobalsametick. NoInternet/NATrelay/fullauth/accountresume/generalreset/fullcodec/mapsitems/4–8clients/newK6cK7gate. Sourcebinary/DB/assets/oldcomplete/evidence unchanged, reviewwaived."
+    },
+    {
+      "summary": "ReadonlyretainedCP1891282EthernetPCAPrecords/checksums/tuple/wireSHA joinactual99/typed153/currentkey/nativeAPIIPport andchangedtargetprogress4windows, threedistinctnetns/rootA-B/2actualCA+2wineservers. Same2normalcycles/nativeBack/slotclear/chief/rejoin log; independentCP190pendinghostEOF/Acleanup/fence confirmed. Notnewrun/physicalhost/Internet/sameaccountresume.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#emulated-lan-acceptance",
+      "evidence": [
+        "VLAN191-01641",
+        "VLAN191-01640",
+        "VLAN191-01639",
+        "VLAN191-00029",
+        "VLAN191-01615"
+      ],
+      "limits": "K6b accepted emulatedLAN perexplicitowner, notphysicalLAN: actualKR/Winecopy4b/currentbasic291/private2netns/NIC/IP/directTCPUDP/sharedkernel/host. ReadonlymappingCP189PCAP2normalcycles/rejoin andCP190bundledpendinghostEOF remainindependentunchangedruns. NewBsoleRoller2normalwins/Start3/nativebaseline4→5→4twice, no thirdoutcome/contenders/EOFnewrun. Nativeemulation/getter separatefromactualruntimeperviewnotglobalsametick. NoInternet/NATrelay/fullauth/accountresume/generalreset/fullcodec/mapsitems/4–8clients/newK6cK7gate. Sourcebinary/DB/assets/oldcomplete/evidence unchanged, reviewwaived."
+    },
+    {
+      "summary": "OwnerexplicitlyacceptsLANemulatedtwohosts insteadofphysicalmachines. Codexmanualunchangednon-environmentK6bcriteria/authority review acceptsK6b scopevirtualLAN/sharedkernel; originalphysicalLANclaimnotmade, recordCP189190/raw/evidence unaffected. K6cInternet andK7remainopen; nextisolatedrouted/NATpreflight, periodicmanualauditCP192mandatory.",
+      "source": "design",
+      "status": "design",
+      "method": "design",
+      "canonical": "docs/PLAN.md#k6b-acceptance",
+      "evidence": [
+        "VLAN191-00065",
+        "VLAN191-00067"
+      ],
+      "limits": "K6b accepted emulatedLAN perexplicitowner, notphysicalLAN: actualKR/Winecopy4b/currentbasic291/private2netns/NIC/IP/directTCPUDP/sharedkernel/host. ReadonlymappingCP189PCAP2normalcycles/rejoin andCP190bundledpendinghostEOF remainindependentunchangedruns. NewBsoleRoller2normalwins/Start3/nativebaseline4→5→4twice, no thirdoutcome/contenders/EOFnewrun. Nativeemulation/getter separatefromactualruntimeperviewnotglobalsametick. NoInternet/NATrelay/fullauth/accountresume/generalreset/fullcodec/mapsitems/4–8clients/newK6cK7gate. Sourcebinary/DB/assets/oldcomplete/evidence unchanged, reviewwaived."
+    }
+  ],
+  "verification": [
+    {
+      "check": "BsoleRoller2wins/postwinresetStart2and3/nativefieldgetter/currentbundle",
+      "result": "pass",
+      "evidence": [
+        "VLAN191-00051",
+        "VLAN191-00058",
+        "VLAN191-01472"
+      ],
+      "limits": "K6b accepted emulatedLAN perexplicitowner, notphysicalLAN: actualKR/Winecopy4b/currentbasic291/private2netns/NIC/IP/directTCPUDP/sharedkernel/host. ReadonlymappingCP189PCAP2normalcycles/rejoin andCP190bundledpendinghostEOF remainindependentunchangedruns. NewBsoleRoller2normalwins/Start3/nativebaseline4→5→4twice, no thirdoutcome/contenders/EOFnewrun. Nativeemulation/getter separatefromactualruntimeperviewnotglobalsametick. NoInternet/NATrelay/fullauth/accountresume/generalreset/fullcodec/mapsitems/4–8clients/newK6cK7gate. Sourcebinary/DB/assets/oldcomplete/evidence unchanged, reviewwaived."
+    },
+    {
+      "check": "Currentpeer/life/native2outcomes/reset/Start3",
+      "result": "pass",
+      "evidence": [
+        "VLAN191-01448",
+        "VLAN191-01461"
+      ],
+      "limits": "K6b accepted emulatedLAN perexplicitowner, notphysicalLAN: actualKR/Winecopy4b/currentbasic291/private2netns/NIC/IP/directTCPUDP/sharedkernel/host. ReadonlymappingCP189PCAP2normalcycles/rejoin andCP190bundledpendinghostEOF remainindependentunchangedruns. NewBsoleRoller2normalwins/Start3/nativebaseline4→5→4twice, no thirdoutcome/contenders/EOFnewrun. Nativeemulation/getter separatefromactualruntimeperviewnotglobalsametick. NoInternet/NATrelay/fullauth/accountresume/generalreset/fullcodec/mapsitems/4–8clients/newK6cK7gate. Sourcebinary/DB/assets/oldcomplete/evidence unchanged, reviewwaived."
+    },
+    {
+      "check": "RetainedvirtualLANtopology/actualendpointPCAP/nativeconsistency/rejoin/independentEOF",
+      "result": "pass",
+      "evidence": [
+        "VLAN191-01641",
+        "VLAN191-01615"
+      ],
+      "limits": "Oldsealedrawmappedreadonly, notnewphysicalmeasurement; no sameaccountBresumeafterkill."
+    },
+    {
+      "check": "Ownerenvironmentchange/manualK6b scopedacceptance",
+      "result": "pass",
+      "evidence": [
+        "VLAN191-00065",
+        "VLAN191-00067"
+      ],
+      "limits": "Reviewwaived/Codexmanual, scriptsnotsemanticgateacceptance."
+    },
+    {
+      "check": "K6cInternet/NATrelay/4–8actualclients/generalvariants",
+      "result": "pending",
+      "evidence": [
+        "VLAN191-00061"
+      ],
+      "limits": "VirtualLANacceptance doesnotcloseInternet/hardwarediversity/relay/fullauth."
+    }
+  ],
+  "evidence": [],
+  "evidence_manifests": [
+    {
+      "path": "docs/evidence/checkpoints/evidence/CP191-emulated-LAN-B-reset.json",
+      "bytes": 440942,
+      "sha256": "9bfbe8b38f3b8f3d5de5538ea8ca6e57ea9f8938fd6ebc539010b941bd450667",
+      "count": 1695
+    }
+  ],
+  "delta": {
+    "added": [
+      "CurrentBpostwinnerRoller4→5→4twice onportableproduction/native2outcomes/Start3; exactCP189unknownvariantresolved.",
+      "OwnerexplicitvirtualLANenvironmentacceptance andmanualK6bmatrix, independentPCAP/nativeendpointmapping ofexistingsealedraw."
+    ],
+    "corrected": [
+      "Two physicalmachines nolongerrequired forK6b perowner; priorblocker preservedashistory, noinfinitephysicalendpointrequest.",
+      "CP189Bpostwinresetunknownnownewnativeproof; oldrun didnotStart3 stilltrue. CP190bundledEOFonlyrun notrewrittenas2outcomes.",
+      "Read-onlyPCAPjoins notnative-logicdiscovery/newLANrun, noimplicitInternetapproval."
+    ],
+    "superseded": [
+      "NEXT-K6B-LAN-PREFLIGHT closedforowneracceptedemulatedscope; NEXT-K6C-ROUTED-PREFLIGHT active."
+    ]
+  },
+  "blockers": [
+    "K6c transportthroughseparatesubnet/router/NAT andendpointadvertisement/nativeingress relation unmeasured; beginisolatedsourcefirsttransportpreflight, no Internetegress.",
+    "Fullauth/fullcodec/generalaccountresume/distance/142freshness/resetvariants/allmapsitems/4–8clients remainunknown/backlog; no newgateotherthanexplicitvirtualK6b."
+  ],
+  "next_steps": [
+    {
+      "id": "NEXT-K6B-LAN-PREFLIGHT",
+      "task": "KRE-005b",
+      "state": "closed",
+      "action": "CP191 owneracceptsemulatedLAN, scopedmanualK6bacceptance actual2netns/nativeendpoint/capture/2cycles/rejoin/independentEOF satisfied. NophysicalLANclaim.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-K6C-ROUTED-PREFLIGHT",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "PLANsourcefirstCP141148/153/currentLANhelpers; isolatedtwo-subnet/router/NATtransport andendpointtuple/capturecleanup preflight thenminimalnativeedge. VirtualroutednotInternetgateautomatically; periodicmanualAUDatCP192mustreadcore→raw.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    }
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-11-07T06:50:39.660448+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "Codexsolo/runtime/readonlyreview/manualK6bcriterionmapping perownernewenvironment; reviewwaived notindependentapproved, exactheadPRchecks beforemerge.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Owner explicitly requested solo, no workers/review."
+    }
+  },
+  "docs_sync": [
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "CP191newownerLANscope/K6bmanualdecision/Bpostwinreset/limits/nextroutedgap synchronizedbeforecomplete; AUD056next192unchanged."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "CP191newownerLANscope/K6bmanualdecision/Bpostwinreset/limits/nextroutedgap synchronizedbeforecomplete; AUD056next192unchanged."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "updated",
+      "reason": "CP191newownerLANscope/K6bmanualdecision/Bpostwinreset/limits/nextroutedgap synchronizedbeforecomplete; AUD056next192unchanged."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "updated",
+      "reason": "CP191newownerLANscope/K6bmanualdecision/Bpostwinreset/limits/nextroutedgap synchronizedbeforecomplete; AUD056next192unchanged."
+    },
+    {
+      "path": "docs/features.json",
+      "state": "updated",
+      "reason": "CP191newownerLANscope/K6bmanualdecision/Bpostwinreset/limits/nextroutedgap synchronizedbeforecomplete; AUD056next192unchanged."
+    },
+    {
+      "path": "docs/COVERAGE.md",
+      "state": "updated",
+      "reason": "CP191newownerLANscope/K6bmanualdecision/Bpostwinreset/limits/nextroutedgap synchronizedbeforecomplete; AUD056next192unchanged."
+    },
+    {
+      "path": "docs/evidence/peer-endpoints/README.md",
+      "state": "updated",
+      "reason": "CP191newownerLANscope/K6bmanualdecision/Bpostwinreset/limits/nextroutedgap synchronizedbeforecomplete; AUD056next192unchanged."
+    },
+    {
+      "path": "docs/evidence/peer-endpoints/k6b-acceptance.json",
+      "state": "updated",
+      "reason": "CP191newownerLANscope/K6bmanualdecision/Bpostwinreset/limits/nextroutedgap synchronizedbeforecomplete; AUD056next192unchanged."
+    },
+    {
+      "path": "docs/evidence/owner-directives/emulated-lan.json",
+      "state": "updated",
+      "reason": "CP191newownerLANscope/K6bmanualdecision/Bpostwinreset/limits/nextroutedgap synchronizedbeforecomplete; AUD056next192unchanged."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/review.json",
+      "state": "updated",
+      "reason": "CP191newownerLANscope/K6bmanualdecision/Bpostwinreset/limits/nextroutedgap synchronizedbeforecomplete; AUD056next192unchanged."
+    }
+  ]
+}

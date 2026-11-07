@@ -5381,6 +5381,35 @@ Serviceproductionbind/153IPvẫnhard127; private-addressshims hiện làmeasurem
 Internet/K6c/NAT/relay/fullauth/authority/generalreset/gates mở; field99IP1/subtype39 vẫnunknown.
 
 
+<a id="emulated-lan-acceptance"></a>
+### LAN giả lập được chủ dự án chấp nhận; reset B sau thắng — CP191
+
+[Quyết định môi trường](evidence/owner-directives/emulated-lan.json), [K6b decision](evidence/peer-endpoints/k6b-acceptance.json),
+[recipe/hash](evidence/peer-endpoints/README.md#cp191), [acceptance/next](PLAN.md#k6b-acceptance).
+Chủ dự án không có hai máy và cho dùng giả lập; vì vậy **hai máy vật lý không còn là điều kiện K6b**.
+Codex đối chiếu tiêu chí còn lại trên bằng chứng nguyên trạng; không suy namespace thành physicalhost,
+không sửa recordCP189190 hoặc nhãn lịch sử notphysicalLAN, không dùng script tự đónggate.
+
+Hai actualCA + hai wineserver trong childnetns khác nhau, mỗi host có NIC/veth/IP riêng .2/.3 vàroot
+servicebridge .1, không defaultroute; actualTCPsource/99localIP/dynamicUDPports khớp. CP189typed153
+remoteIP/port/key,1282PCAPrecords/EthernetIPUDPchecksum được nối wireSHA/source/desttuple→nativeAPI/
+key/slot→target/currentprogress ở4A↔Bwindows/2keys. Cùngrun có2normalcontestedcycles/175180/Ready2/life;
+normalAhostBack/nativeBslotclear/chief/Ajoin_Arejoin cólog trước trận. CP190bundledpendingBEOF/Acleanup/
+fence là control riêng; không phải resumeaccountB saukill. **K6b đạt scope LANgiảlập này**, không Internet.
+
+Phần còn thiếu cụ thể CP189 là statB sau thắng: `portable-B-winner-reset-r1` dùng nguyên bundleCP190,
+47fixture/13sourcebytes/current291/copy4b. Chỉ normalBUp nhặt Roller17 ở hai vòng, A idle; hai nativeB124/
+one165/view mỗi epoch, Bspeed4→5/A5unchanged. NormalASpace/realtrap17→death19/B21/175180/Bwin,
+Ready/normalBStart2 rồiStart3; nativeclock snapshot cảhai view **B4/A5** ởcả3epoch. Đây là2 lần B5→4
+postwinreset trongca đã đo; không universalitem/resetlaw hoặc forcedactor/gamecall. A4peerwindows/life/
+keys12345/12346/12347/195seed vàsame2outcomes được kiểm; vòng3active≥8s khôngbom/kết quảthứ3.
+Source/cache/nativegetters dùng lại, không thêm thân hàm RE mới. Raw/capture/pins/ownedcleanup giữ nguồn.
+
+Authority vẫn nativeinput/client simulation/peerwrites + boundedservicepolicy fuse/drop/catalog/rank/
+guards. EmulatedLAN shareskernel/host, chưa hardware/OSdiversity/realnetworklatency/loss/NAT/relay/
+Internet/generalaccountresume/fullcodec/auth/142freshness/allmaps/inventory/4–8actualclient. K6c vàK7
+vẫn mở; bước tiếp chuẩn bị topology routed/NAT cô lập cho phần khácbiệt, không gọi nó Internet đã nghiệmthu.
+
 <a id="portable-probe-bundle"></a>
 ### Service và fixture có thể chuyển thư mục — CP190
 
@@ -5407,7 +5436,8 @@ Không two-normalcycles/Start2/Bnhậnforfeit hoặc physicalLANproof; K6a đã 
 
 Tiền kiểm `accept` TCP sauCP189 được gom CP190: AAAABBBB đúng8/8, ABABABAB sai6/8 role/stage.
 `--peer-ip` là outgoing153config; admission vẫn globalordinal/4, không incomingidentitybinding. Recipe LAN
-đầu cần startup tuần tự như K6a. Máy/endpoint vật lý thứhai chưa xác định; bundle không thiết lập isolation,
+đầu cần startup tuần tự như K6a. Tại CP190 chưa có máy vật lý thứhai; CP191 chủ dự án chấp nhận [LANgiảlập](#emulated-lan-acceptance).
+Bundle không thiết lập isolation,
 routing/NSS/firewall hoặc triển khai tự động, fullauth/NAT/relay và resetvariants vẫn theo RESEARCH.
 
 <a id="service-address-config"></a>

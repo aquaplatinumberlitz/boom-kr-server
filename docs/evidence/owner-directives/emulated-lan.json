@@ -1,0 +1,11 @@
+{
+  "schema": "kre-owner-directive-v1",
+  "recorded_utc": "2026-11-07T06:48:02.373026+00:00",
+  "source": "owner_explicit_user_message",
+  "status": "design",
+  "quote": "LAN chưa nghiệm thu, còn thiếu máy/endpoint vật lý thứ hai, chủ dự án ko có 2 máy, có thể giả lập là được, ko cần thiết phải dùng 2 máy vật lý,",
+  "decision": "Chủ dự án chấp nhận hai host giả lập để nghiệm thu LAN; không yêu cầu hai máy vật lý.",
+  "applies_to": "K6b LAN host environment requirement",
+  "supersedes": "Yêu cầu physicalsecondhost như blocker K6b ở CP189/190; lịch sử record/raw giữ nguyên.",
+  "limits": "Không biến raw cũ thành phép đo mới, không tự nghiệm thu gate; Codex vẫn đối chiếu endpoint/nativeconsistency/two-round/disconnect/rejoin. LANgiảlập chia sẻ kernel/physicalhost; không claim LANvậtlý hoặc Internet/NAT/hardwarediversity đã đo."
+}

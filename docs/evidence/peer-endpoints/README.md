@@ -1645,3 +1645,39 @@ source/destination drift/missing/symlinkescape/overwrite/profileoverride đều 
 294server và39checkpoint tests. Không thay service/nativewire, vì vậy test không nghiệmthu LANgate.
 Raw/hash từngfile ở externalmanifestCP190; immutableCP188189 không sửa. AUD056qua188/kếCP192.
 K6b/K6c/K7 vàgeneralaccount/142freshness/distance/codec/modes/bốn–tám actualclient vẫn mở theoPLAN.
+
+
+<a id="cp191"></a>
+## CP191 — nghiệm thu LANgiảlập theoowner và BpostwinRollerreset
+
+Baseline CP190/[PR262](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/262), head3748df88/
+merge`b7e83f46d4ab834209ef4c293dcbd93a77d72583`. Codex solo/tự kiểm/reviewwaived, KRE-005b/#14.
+[Owner directive](../owner-directives/emulated-lan.json), [K6b decision](k6b-acceptance.json),
+[acceptance](../../PLAN.md#k6b-acceptance), [contract](../../PROTOCOL.md#emulated-lan-acceptance),
+[câu hỏi kế](../../RESEARCH.md#gap-lobby-identity-followup). Chỉ đạo mới chấp nhận hai host giảlập thay
+hai máy vật lý; acceptance môi trường đổi rõ ràng, không viết lại complete/rawCP189190.
+
+Reviewread-only `local/research/codex/virtual-LAN-review-r1/` tái dùng nguyênCP189run:
+2CA+2wineserver/netns/NIC/IPriêng .2/.3, privatebridge .1, khôngdefault-route/proxy. Typednative99localIP/
+dynamicUDPports và153remoteendpoint/key nối1282EthernetPCAPrecords/checksum/tuple/wireSHA→nativeAPI/
+keyslot/target/currentprogress4windows/2keys.5183mechanicaljoins; manualgatecriteriareview riêng.
+CùngCP189two normalcontestedcycles/life/full175180/Ready2 vànormalAhostBack/nativeBclear/chief/Arejoin
+cólog. CP190bundledBhostEOF/Acleanup/fence control riêng, không resumeaccountB hoặc cùngrunvới2ending.
+**K6b đạt LANgiảlập/sharedkernel/host theoowner**, không suy physicalLAN/Internet/NAT/relay đã đo.
+
+Phép đo mới `portable-B-winner-reset-r1/`: nguyênportablebundle/47fixture/current291/copy4b/Wine,
+chỉBnormalUp nhặt Roller17 ởhai vòng, Aidle. Không fake124/forcewinnerstate/actorwrite/gamecall;
+production165immediate, nativeB124/key12345/12346→một165/view/epoch/B4→5/A5unchanged. ActualASpace/
+ID1,2/power1/159158→real17/19/B21→native175302/1803/errors0/twoBnormalwin/room/Ready2/normalBStart3.
+Nativeprotectedclockstats cảhai view đềuB4/A5 ở3epoch; B5→4 sau thắng được kiểm2lần (Start2 vàStart3),
+khép đúng limitCP189, không universalreset/itemlaw. Vòng3active≥8s/noBomb/noThirdoutcome.
+
+Run407.828178758s/1376raw/frozen227/exit0/cleanup0; runSHA`ea3d82878c7d5ce3aed5ff35cc8139f21f4c6b9297d0236aaa956302c0c6336a`.
+1714cyclechecks/90nativepacket cases/528securefieldcases;632peerchecks/4windows,69Start3/bundlechecks.
+Nativegettermodel/capturedmemory/clock/seq/wire separatefromPythonpolicy/render; images đã xem,
+không Start4/thirdresult/contenders/EOF trongrun mới. Không thêmnativebody/codec/ItemAttrRE, source
+client/DB/assets/oldrecord/cache giữ nguyên; freezeđếncleanup/seal. Hash từngfile ởexternalmanifestCP191.
+CP189/190gate/raw scope lịch sử giữ, quyết địnhK6b mới phát sinh sauowner; script không tựnghiệmthu.
+PeriodicAUD056qua188, audit **CP192** kế tiếp; K6cInternet/K7/four-eightactualclient/generalaccount/
+fullcodec/auth/142freshness/maps/items/resetvariants cònmở. Bước tiếprouted/NATpreflight theoPLAN,
+không bắtchủdựcấp2physicalmachines hoặc gọi môphỏng là Internetthật.

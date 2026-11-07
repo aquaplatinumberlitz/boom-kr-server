@@ -1,0 +1,56 @@
+{
+  "schema": "kre-gate-acceptance-evidence-v1",
+  "gate": "K6b",
+  "checkpoint": "CP191",
+  "decision": "passed",
+  "decided_by": "Codex",
+  "review": "waived",
+  "review_reference": "docs/evidence/checkpoints/review-waiver.json",
+  "recorded_utc": "2026-11-07T06:48:02.373026+00:00",
+  "scope": "LAN giả lập theo quyết định chủ dự án: hai actualKRWine00967copy4b/currentbasic+291/nameguard, distinctprivateNETNS/veth/IP, directTCPUDP/bridge, cùngphysicalhost/kernel. ScopednormalManner/ExVillage01/two normalepochs/nativeconsistency/roomBack-rejoin/currenthostEOFcontrol. Không physicalLAN/Internet/NATrelay/4–8clients/generalaccountresume.",
+  "criteria": [
+    {
+      "criterion": "Hai host LAN; chủ dự án chấp nhận mô phỏng thay hai máy vật lý",
+      "sources": [
+        "docs/evidence/owner-directives/emulated-lan.json",
+        "docs/PROTOCOL.md#emulated-lan-acceptance"
+      ],
+      "reason": "Distinctroot/A/Bnetns, veth/NIC/IP10.77.0.1/.2/.3; actualCA vàwineserver gắn đúngchildnetns theoownedPID/startticks/prefix. Sharedkernel/hostexplicit, notphysicalhostclaim."
+    },
+    {
+      "criterion": "Hai vòng actualclient, endpoint/port đúng",
+      "sources": [
+        "docs/PROTOCOL.md#current-basic-contest-reset",
+        "docs/PROTOCOL.md#emulated-lan-acceptance"
+      ],
+      "reason": "CP189 same-run2normalcontestedepochs/Ready2/life/result and4nativeA↔Bwindows. Native99localIP/dynamicports/typed153remoteIPport/currentkeys linked to1282EthernetPCAPrecords/checksums/rawSHA→exactnativeAPI→target/currentprogress. NoTCP/UDPproxy."
+    },
+    {
+      "criterion": "Disconnect/host cleanup và rejoin có log",
+      "sources": [
+        "docs/PROTOCOL.md#current-291-room-integration",
+        "docs/PROTOCOL.md#portable-probe-bundle",
+        "docs/PROTOCOL.md#emulated-lan-acceptance"
+      ],
+      "reason": "NormalAhostBack→nativeB107slotAclear/chief→Ajoin_Arejoin on sameactualprocess beforecurrenttwo normalcycles, rawlogs/controllerC2S/room/modeACK retained. IndependentcurrentCP190pendingBEOF/A107ID2clear/chief/room/fencepastdue+4s; notsameaccountresume ofkilledB orallEOFvariants."
+    },
+    {
+      "criterion": "Authority/dependencies/limits manually checked",
+      "sources": [
+        "docs/PLAN.md#k6a-acceptance",
+        "docs/PROTOCOL.md#authority",
+        "docs/PROTOCOL.md#emulated-lan-acceptance"
+      ],
+      "reason": "K0–K6a scopeddependencies retained, Codexmanualownerwaiver review. Emulated6sfuse/drop/rank/validator unchangeddesign; per-view life notglobaltickconsensus/fullauth/worldauthority. Ownerenvironmentacceptance separatefrommechanicalPCAPchecks."
+    }
+  ],
+  "owner_environment_directive": "docs/evidence/owner-directives/emulated-lan.json",
+  "evidence_method": "ManualmappingofunalteredsealedCP189two-cycle/peer/PCAPandCP190bundledEOF plusCP191newBwinnerreset. NonewphysicalLANrun inferred; retainoldlimits/records.",
+  "limits": [
+    "Chỉ thay điều kiện môi trường physicaltwohosts thành emulatedtwohosts theo owner. Endpoint/byte/native/state/cleanup vẫn phải kiểm.",
+    "Historicalrunmetadata nói notphysicalLAN/gate giữnguyên; gate decision phát sinh CP191 theo acceptance mới, không sửa scope/raw cũ.",
+    "NormalBack/rejoin và controlledBEOF là phase/run riêng. No sameaccountresume afterkill orallnetworkloss/timeout/generalrejoin claim.",
+    "K6c Internet/realNAT/relay/hardwareOSdiversity/four-eightactualclients/fullauth/fullcodec/resetvariants vẫn ngoài scope. CatalogK6 tổng còn open cho phần ngoài K6b giảlập."
+  ],
+  "next_source": "docs/PLAN.md#current-order"
+}
