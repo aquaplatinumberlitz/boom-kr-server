@@ -1,7 +1,7 @@
 {
   "schema": "kre-github-snapshot-v1",
   "repo": "aquaplatinumberlitz/boom-kr-server",
-  "captured_utc": "2026-11-07T02:04:56.295533+00:00",
+  "captured_utc": "2026-11-07T02:29:18.112193+00:00",
   "limits": "State as of capture only; body/declarations are not semantic acceptance; no GitHub mutation.",
   "issues": [
     {
@@ -572,12 +572,12 @@
       "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/56"
     },
     {
-      "body": "KRE-005b — đang thực hiện, Codex solo/tự kiểm; review độc lập được chủ dự án miễn. Feature IDs: KR-B001, KR-B002, KR-B003, KR-L001, KR-L002, KR-L003, KR-R001, KR-R002, KR-R003, KR-R004, KR-F001, KR-F002, KR-F003, KR-F004, KR-F005, KR-F006, KR-F007, KR-F008, KR-F009, KR-F010, KR-F011, KR-F012, KR-F013, KR-F014, KR-F015, KR-X001, KR-X002, KR-X003, KR-S001, KR-S002.\n\nCP182 đã merge [PR254](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/254), `59196f8`. CP183 là batch producer291/control/positive đang bàn giao; chưa đóng K3.\n\nNguồn chuẩn:\n- [PLAN/thứ tự và acceptance](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/kre/lobby-ownrecord-producer/docs/PLAN.md#current-order)\n- [PROTOCOL/contract và giới hạn](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/kre/lobby-ownrecord-producer/docs/PROTOCOL.md#own-profile-291)\n- [RESEARCH/câu hỏi và phép kiểm](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/kre/lobby-ownrecord-producer/docs/RESEARCH.md#gap-lobby-identity-followup)\n- [Catalog](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/kre/lobby-ownrecord-producer/docs/COVERAGE.md)\n- [Recipe/run/hash CP182](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/kre/lobby-ownrecord-producer/docs/evidence/lobby-identity/README.md)\n\nĐã biết CP183: S→C291 native điền record bản thân. Controlactive0 đọc1/1/error0/tênrỗng; positiveactive1 với KRprofile109 đã phục hồi đọc128/128/error0/KRLocal, guard0→1 và ảnh panel hiển thịKRLocal/Lv0/exp0. Source/hash/runtime/evidence ở nguồn chuẩn, không port VNopcode/layout.\n\nGiới hạn: singlemodifiedWine/offline/inheritedcache/labsubclass; scalar/profile0 là lựa chọnemulator. Productionservice/47fixtures không đổi; chưa create/map sau291, không fullauth/K3gate/Windows/LAN/Internet/8client.\n\nCòn thiếu/phép thử tiếp: theo PLAN, opt-in integration291/profile theo từngA/B/C, initialS2C sequence liên tục qua create/map/dynamic/rejoin; không chènraw rồi tái dùng55. ReuseKR109profile, không đo lại authgetter/producer291/cacheCRC. Cachecold/missing/warm, wrongsocket/stage/version/identity acceptance còn mở.\n\nAcceptance umbrella giữ nguyên: đóng khi các đầu ra/gate PLAN đủ evidence và integration, không từ checkpoint hoặc PR.\n\n- [x] K0/K2a CP178; K1offlineR2 CP179.\n- [x] K2 codec/hello profileoffline CP181.\n- [ ] K3 identity/cache/UI.\n- [ ] K4/K5/K6a localfullmatch; K6b LAN/K6c Internet/K7 hardening theo PLAN.\n\nCP183 chưa merge khi cập nhật; AUD054 qua180, audit kếCP184. Không đóng issue/gate từ tổ chức tài liệu.\n",
+      "body": "KRE-005b — đang thực hiện, Codex solo/tự kiểm; review độc lập được chủ dự án miễn. Feature IDs: KR-B001, KR-B002, KR-B003, KR-L001, KR-L002, KR-L003, KR-R001, KR-R002, KR-R003, KR-R004, KR-F001, KR-F002, KR-F003, KR-F004, KR-F005, KR-F006, KR-F007, KR-F008, KR-F009, KR-F010, KR-F011, KR-F012, KR-F013, KR-F014, KR-F015, KR-X001, KR-X002, KR-X003, KR-S001, KR-S002.\n\nCP183 đã merge [PR255](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/255), `5c1f3fb`. CP184 opt-in service đang bàn giao; K3 vẫn mở.\n\nNguồn chuẩn:\n- [PLAN/thứ tự và acceptance](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/kre/own-profile-integration/docs/PLAN.md#current-order)\n- [PROTOCOL/contract và giới hạn](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/kre/own-profile-integration/docs/PROTOCOL.md#own-profile-integration)\n- [RESEARCH/câu hỏi và phép kiểm](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/kre/own-profile-integration/docs/RESEARCH.md#gap-lobby-identity-followup)\n- [Catalog](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/kre/own-profile-integration/docs/COVERAGE.md)\n- [Recipe/run/hash CP182](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/kre/own-profile-integration/docs/evidence/lobby-identity/README.md)\n\nĐã biết CP184: opt-in productionservice/A own291 đọc128/128/error0, panelKRLocal, OSclickcreate/confirm, nativeframe43…73 liên tục tới room/map. Hai run80s, r1 trướcguard/r2 codeguard, raw/sourceversion/hash/cleanup đủ. 290server/7export tests; guest trong ảnh là synthetic, không B thật.\n\nGiới hạn: modifiedWine/offline/inheritedcache; chưa K3gate hoặc nativeB/C/start/rejoin sau291. Croomfixture cũ KRLocal khác authKRNew, helper đã bindauthname trongmodel, không tự suy C runtime. Fullaccountauth/Windows/LAN/Internet/8client/fullmatch mở.\n\nPhép thử tiếp: theo checklist K3 trong PLAN, đối chiếu nguồn CP015/016/058/059/181 cho coldcachebaseline/channelUI/version-identityerror/negativewire. Chỉ đo tiêu chí chưa đủ. XongK3 rà ngayK4 bằng evidencecũ rồiK5/K6a. Không mởitem/mode/race trừkhi chặnacceptance; không lấy sốCP làm tiến độ.\n\nAcceptance umbrella giữ nguyên: đóng khi các đầu ra/gate PLAN đủ evidence và integration, không từ checkpoint hoặc PR.\n\n- [x] K0/K2a CP178; K1offlineR2 CP179.\n- [x] K2 codec/hello profileoffline CP181.\n- [ ] K3 identity/cache/UI.\n- [ ] K4/K5/K6a localfullmatch; K6b LAN/K6c Internet/K7 hardening theo PLAN.\n\nCP184 chưa merge khi cập nhật; AUD055 qua184, audit kếCP188. Không đóng issue/gate từ tổ chức tài liệu.\n",
       "closedAt": null,
       "number": 14,
       "state": "OPEN",
       "title": "[KRE-005b] Tích hợp KR00967 local: Battle, lifecycle và nghiệm thu",
-      "updatedAt": "2026-11-07T02:06:19Z",
+      "updatedAt": "2026-11-07T02:30:24Z",
       "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/14"
     },
     {
@@ -636,6 +636,17 @@
     }
   ],
   "pull_requests": [
+    {
+      "headRefOid": "8f71c594fce736fdba57ce4a41fd1899a8e31d92",
+      "mergeCommit": {
+        "oid": "5c1f3fbb216588360fd1bf1ff0be80a5d65c8624"
+      },
+      "mergedAt": "2026-11-07T02:12:19Z",
+      "number": 255,
+      "state": "MERGED",
+      "title": "CP183: recover KR291 and display own lobby identity",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/255"
+    },
     {
       "headRefOid": "091ad58d443a91693c66a5374cc91511f1578da7",
       "mergeCommit": {

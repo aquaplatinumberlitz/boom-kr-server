@@ -374,3 +374,12 @@ C/A bombs/effects/life/result/reset/Ready2 đã native-check; source đúng CP17
 Profile đo dưới local thêm C2/7 và flag; exported default giữ nguyên. PLAN tiếp đưa replacement profile/
 capacity theo vacancy thành cấu hình dùng lại được, không áp Cslot1 values sang slot0 khi chưa đối chiếu.
 CpreReady/beforefocus render vẫn có ảnh đen; finalroom đã vẽ, không Start3/gates/LAN/Internet claim.
+
+
+### Identity panel opt-in (CP184)
+
+Thêm `--own-profile-291` khi chạy exporter, kể cả cùng `--preset two-client-basic-replacement`.
+Policy chỉ hỗ trợ profile/identity đã đo; không thay auth account gốc. Tên lấy từ auth fixture,
+không dùng mù tên của player106 (C cũ khác auth). Default-off giữ bytes cũ; opt-in dùng sequence
+liên tục qua lobby/create/map và dynamic theo connection. [Contract/giới hạn](../docs/PROTOCOL.md#own-profile-integration),
+[checklist nghiệm thu](../docs/PLAN.md#k3-evidence-review); chưa tự đóng K3 hoặc nghiệm thu hai client.

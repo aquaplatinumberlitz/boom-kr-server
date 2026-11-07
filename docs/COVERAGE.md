@@ -321,13 +321,13 @@ Bằng chứng/build/hash/recipe: [login-runtime](evidence/login-runtime/README.
 |---|---|---|
 | presence | present | [nguồn1](PROTOCOL.md#login-auth) |
 | vn_reference | both | [nguồn1](REFERENCES.md) |
-| kr_static | partial | [nguồn1](PROTOCOL.md#login-auth), [nguồn2](PROTOCOL.md#auth-profile), [nguồn3](PROTOCOL.md#local-name-model), [nguồn4](PROTOCOL.md#own-profile-291) |
+| kr_static | partial | [nguồn1](PROTOCOL.md#login-auth), [nguồn2](PROTOCOL.md#auth-profile), [nguồn3](PROTOCOL.md#local-name-model), [nguồn4](PROTOCOL.md#own-profile-291), [nguồn5](PROTOCOL.md#own-profile-integration) |
 | emulation | checked | [nguồn1](evidence/login-runtime/README.md), [nguồn2](evidence/auth-profile/README.md) |
-| wine_diagnostic_copy | observed | [nguồn1](evidence/login-runtime/README.md), [nguồn2](evidence/auth-profile/README.md), [nguồn3](evidence/current-profile-c/README.md), [nguồn4](evidence/preclock-eof/README.md), [nguồn5](evidence/nmco-locale-stability/README.md), [nguồn6](evidence/peer-endpoints/README.md#cp146), [nguồn7](evidence/peer-endpoints/README.md#cp148), [nguồn8](evidence/peer-endpoints/README.md#cp149), [nguồn9](evidence/live-codec-stream/README.md), [nguồn10](PROTOCOL.md#local-name-model), [nguồn11](PROTOCOL.md#own-profile-291) |
+| wine_diagnostic_copy | observed | [nguồn1](evidence/login-runtime/README.md), [nguồn2](evidence/auth-profile/README.md), [nguồn3](evidence/current-profile-c/README.md), [nguồn4](evidence/preclock-eof/README.md), [nguồn5](evidence/nmco-locale-stability/README.md), [nguồn6](evidence/peer-endpoints/README.md#cp146), [nguồn7](evidence/peer-endpoints/README.md#cp148), [nguồn8](evidence/peer-endpoints/README.md#cp149), [nguồn9](evidence/live-codec-stream/README.md), [nguồn10](PROTOCOL.md#local-name-model), [nguồn11](PROTOCOL.md#own-profile-291), [nguồn12](PROTOCOL.md#own-profile-integration) |
 | windows_original | unknown | Chưa có bằng chứng trong phạm vi rà |
 | lan | unknown | Chưa có bằng chứng trong phạm vi rà |
 | internet | unknown | Chưa có bằng chứng trong phạm vi rà |
-| implementation | partial / via_pr | [nguồn1](../server/probe_service.py), [nguồn2](PROTOCOL.md#probe-service), [nguồn3](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/57), [nguồn4](../tools/export_probe_profile.py), [nguồn5](PROTOCOL.md#auth-profile), [nguồn6](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/77), [nguồn7](PROTOCOL.md#service-channel-endpoint) |
+| implementation | partial / via_pr | [nguồn1](../server/probe_service.py), [nguồn2](PROTOCOL.md#probe-service), [nguồn3](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/57), [nguồn4](../tools/export_probe_profile.py), [nguồn5](PROTOCOL.md#auth-profile), [nguồn6](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/77), [nguồn7](PROTOCOL.md#service-channel-endpoint), [nguồn8](../server/own_profile.py) |
 | integration | partial | [nguồn1](evidence/probe-service/README.md), [nguồn2](evidence/auth-profile/README.md), [nguồn3](evidence/current-profile-c/README.md), [nguồn4](evidence/preclock-eof/README.md), [nguồn5](evidence/nmco-locale-stability/README.md), [nguồn6](PROTOCOL.md#service-channel-endpoint) |
 | gate | K3: open | [nguồn1](PLAN.md#gates) |
 
@@ -338,9 +338,9 @@ Dependency: [KR-L001](#kr-l001).
 
 [Contract và giới hạn](PROTOCOL.md#channel-lobby) · [Câu hỏi gốc](RESEARCH.md#gap-redirect-lobby) · [Thứ tự ở PLAN](PLAN.md#current-order).
 
-Khoảng trống (trích bảng RESEARCH): [CP183](PROTOCOL.md#own-profile-291): native291đãđiềnownrecord/vẽKRLocal; productionintegration/sequence và cache/version chưa đủ K3.
+Khoảng trống (trích bảng RESEARCH): [CP184](PROTOCOL.md#own-profile-integration): service opt-in/A name→create/map/sequence đã kiểm; K3 còn checklist cache/version/channel/negative.
 
-Phép kiểm tối thiểu (trích cùng nguồn): [Follow-up](#gap-lobby-identity-followup): opt-in291/initialS2Cseq qua create/map/rejoin, nativecontrol; không lặp producer/auth/namegetter/SquareLeft; giữ cold/missing/warm/wrongstage/version acceptance.
+Phép kiểm tối thiểu (trích cùng nguồn): [Checklist K3](PLAN.md#k3-evidence-review): đối chiếu nguồn và đo ô chưa đủ; không lặp producer/integration A/authgetter hoặc mở nhánh gameplay phụ.
 
 Issue/phạm vi công việc: [#14](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/14).
 
@@ -350,13 +350,13 @@ Bằng chứng/build/hash/recipe: [postwait](evidence/postwait/README.md), [prob
 |---|---|---|
 | presence | present | [nguồn1](PROTOCOL.md#channel-lobby) |
 | vn_reference | both | [nguồn1](REFERENCES.md) |
-| kr_static | partial | [nguồn1](PROTOCOL.md#channel-lobby), [nguồn2](PROTOCOL.md#local-name-model), [nguồn3](PROTOCOL.md#own-profile-291) |
+| kr_static | partial | [nguồn1](PROTOCOL.md#channel-lobby), [nguồn2](PROTOCOL.md#local-name-model), [nguồn3](PROTOCOL.md#own-profile-291), [nguồn4](PROTOCOL.md#own-profile-integration) |
 | emulation | checked | [nguồn1](evidence/postwait/README.md) |
-| wine_diagnostic_copy | observed | [nguồn1](evidence/postwait/README.md), [nguồn2](PROTOCOL.md#local-name-model), [nguồn3](PROTOCOL.md#own-profile-291) |
+| wine_diagnostic_copy | observed | [nguồn1](evidence/postwait/README.md), [nguồn2](PROTOCOL.md#local-name-model), [nguồn3](PROTOCOL.md#own-profile-291), [nguồn4](PROTOCOL.md#own-profile-integration) |
 | windows_original | unknown | Chưa có bằng chứng trong phạm vi rà |
 | lan | unknown | Chưa có bằng chứng trong phạm vi rà |
 | internet | unknown | Chưa có bằng chứng trong phạm vi rà |
-| implementation | partial / via_pr | [nguồn1](../server/probe_service.py), [nguồn2](PROTOCOL.md#probe-service), [nguồn3](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/57) |
+| implementation | partial / via_pr | [nguồn1](../server/probe_service.py), [nguồn2](PROTOCOL.md#probe-service), [nguồn3](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/57), [nguồn4](../server/own_profile.py) |
 | integration | partial | [nguồn1](evidence/probe-service/README.md) |
 | gate | K3: open | [nguồn1](PLAN.md#gates) |
 
@@ -379,13 +379,13 @@ Bằng chứng/build/hash/recipe: [start-reply](evidence/start-reply/README.md),
 |---|---|---|
 | presence | present | [nguồn1](PROTOCOL.md#channel-lobby), [nguồn2](PROTOCOL.md#dynamic-cache-representation) |
 | vn_reference | static | [nguồn1](REFERENCES.md) |
-| kr_static | partial | [nguồn1](PROTOCOL.md#channel-lobby), [nguồn2](PROTOCOL.md#dynamic-cache-representation), [nguồn3](PROTOCOL.md#local-name-model), [nguồn4](PROTOCOL.md#own-profile-291) |
+| kr_static | partial | [nguồn1](PROTOCOL.md#channel-lobby), [nguồn2](PROTOCOL.md#dynamic-cache-representation), [nguồn3](PROTOCOL.md#local-name-model), [nguồn4](PROTOCOL.md#own-profile-291), [nguồn5](PROTOCOL.md#own-profile-integration) |
 | emulation | checked | [nguồn1](evidence/cache-boundary/README.md) |
-| wine_diagnostic_copy | observed | [nguồn1](evidence/cache-boundary/README.md), [nguồn2](PROTOCOL.md#local-name-model), [nguồn3](PROTOCOL.md#own-profile-291) |
+| wine_diagnostic_copy | observed | [nguồn1](evidence/cache-boundary/README.md), [nguồn2](PROTOCOL.md#local-name-model), [nguồn3](PROTOCOL.md#own-profile-291), [nguồn4](PROTOCOL.md#own-profile-integration) |
 | windows_original | unknown | Chưa có bằng chứng trong phạm vi rà |
 | lan | unknown | Chưa có bằng chứng trong phạm vi rà |
 | internet | unknown | Chưa có bằng chứng trong phạm vi rà |
-| implementation | partial / via_pr | [nguồn1](../tools/export_probe_profile.py), [nguồn2](PROTOCOL.md#dynamic-cache-representation), [nguồn3](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/79) |
+| implementation | partial / via_pr | [nguồn1](../tools/export_probe_profile.py), [nguồn2](PROTOCOL.md#dynamic-cache-representation), [nguồn3](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/79), [nguồn4](../server/own_profile.py) |
 | integration | partial | [nguồn1](evidence/cache-boundary/README.md) |
 | gate | K3: open | [nguồn1](PLAN.md#gates) |
 

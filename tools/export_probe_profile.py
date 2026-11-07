@@ -98,6 +98,8 @@ def main():
                         help='opt-in measured idle A Back/B promotion/A rejoin fixture policy (CP035)')
     parser.add_argument('--host-battle-exit', action='store_true',
                         help='opt-in measured unbombed host A Battle exit (CP129); includes host Back/rejoin fixtures')
+    parser.add_argument('--own-profile-291', action='store_true',
+                        help='opt-in CP183 local identity panel; integration runtime must be checked separately')
     args = parser.parse_args()
     local = Path(__file__).resolve().parents[1] / 'local'
     root = args.source_root.resolve(strict=True)
@@ -109,6 +111,8 @@ def main():
                 or args.all_dead_rank or args.host_back_rejoin or args.host_battle_exit):
             parser.error('--preset cannot be combined with layout or optional policy flags')
         result = load_preset(root, PRESETS[args.preset])
+        if args.own_profile_291:
+            result['own_profile'] = {'mode': 'native_291'}
         out.parent.mkdir(parents=True, exist_ok=True)
         with out.open('x') as stream:
             json.dump(result, stream, indent=2)
@@ -121,6 +125,8 @@ def main():
               'initial_key': 12345, 'spawn_layout': args.spawn_layout,
               'item_layout': args.item_layout, 'fixtures': {}}
     fixtures = dict(FIXTURES)
+    if args.own_profile_291:
+        result['own_profile'] = {'mode': 'native_291'}
     if args.host_back_rejoin or args.host_battle_exit:
         result['host_back_rejoin'] = {'mode': 'idle_A_to_B'}
         fixtures.update({

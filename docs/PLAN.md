@@ -1,7 +1,7 @@
 # Kế hoạch server giả lập KR 00967
 
 Nguồn chuẩn của project `boom-kr-server`; bản nhập từ plan đã được dsh1/dsh2 review tại `1eee46d`.
-CP181: K2codec/hello profileoffline được Codex nghiệm thu từsameprocessretry/native reset + CP180stream/CP057bounds; K3–K7/fullmatch giữ mở. CP183native291 đãđiềnrecord/vẽKRLocal; tiếpintegration/sequence/cacheacceptance; periodic180/kế184.
+CP184: service opt-in identity291/native A tới phòng/map đã kiểm, K3 còn checklist cache/version/identity. K0/K1/K2 profile giữ đạt; K3–K7 mở. AUD055 qua184, kế188.
 
 
 ### Mục tiêu, baseline và phạm vi
@@ -37,7 +37,7 @@ với client Rust không chứng minh có thể điều khiển client KR bằng
 
 ### Tiến độ hiện hành theo bằng chứng
 
-| Task/mốc | Trạng thái tại CP181 | Nguồn chuẩn |
+| Task/mốc | Trạng thái tại CP184 | Nguồn chuẩn |
 |---|---|---|
 | KRE-004/issue6 | Đã review/merge PR7 và đóng issue:recipe r1 đến local accept;không phải full K1 | [Wine r1](evidence/wine/README.md) |
 | Bootstrap reply | PR8 đã merge;debugger ProcessPatchreturn1,không ép success | [bootstrap evidence](evidence/bootstrap-wire/README.md) |
@@ -47,7 +47,7 @@ với client Rust không chứng minh có thể điều khiển client KR bằng
 | K0 | Đã nghiệm thu identity/harness tại CP178: originalWindowsVM fullfixedcopy/PID/token/cwd/window/ETW/isolation/cleanup; không bootstrap/gameplay success | [Acceptance](#k0-k2a-acceptance) |
 | K1 | Đạt CP179 cho recipe offline R2: 3 coldstart/API đúng PID/contract/patch controls; không e9cold3 hoặc originalWindows bootstrap | [Acceptance](#k1-acceptance) |
 | K2a/K2 | K2a đạt CP178; K2 đạt profileoffline CP181 với native sameprocessretry/reset/cursor/stream và boundednativeoracles. Không toàncodec/accountauthority | [Acceptance](#k2-acceptance),[contract](PROTOCOL.md#login-retry-codec) |
-| K3 | Copy đã vẽUI/đóngnotice, A/B/Cprofile đọc sạch và mộtnamedcachewarm được nhận; identityauthority/toàncache/codec/K3 chưa nghiệm thu | [Contract sảnh](PROTOCOL.md#channel-lobby) |
+| K3 | CP184 service opt-in291: A hiện tên rồi tạo phòng/map, sequence liên tục. Cache/negative/version còn thiếu theo checklist; không giữ toàncodec/fullaccountauth làm yêu cầu vô hạn | [Checklist](#k3-evidence-review), [contract](PROTOCOL.md#own-profile-integration) |
 | K4–K7 | [CP166](PROTOCOL.md#current-mode-host-rejoin) currentmodehostBack/rejoin, [CP168](PROTOCOL.md#current-mode-promoted-start3) Bhost2normalcycles/Ready/Start3 có nguồn. [Rà K4](#k4-evidence-review), [authority](PROTOCOL.md#authority) và [rà basic K5/K6a](#basic-acceptance-review) giữ scope; chưa gate/fullmatch/LAN/Internet/8client. | [Coverage/gap](COVERAGE.md), [membership](RESEARCH.md#gap-room-membership) |
 
 <a id="current-order"></a>
@@ -67,6 +67,10 @@ selectiveCLI/historicalmigration xong, không còn taskactive tổ chức. CP119
 Yêu cầu kiểm8 người có kết quả hẹp [CP147/163](PROTOCOL.md#battle-eight-roster), không thay gate:
 Free0/Manner1 input/ACK/reset đã nối CP162; selector1 actual4–4/1–7 đã đo. Không lặp roster/dump/guard. Service8 peer
 và trận8 client thật là phần mở rộng sau hai/bốn client ổn ở bước5, chưa được đánh dấu hoàn thành.
+Nguồn luật mới [wiki KR được chủ dự án tin cậy](REFERENCES.md#owner-trusted-namu-wiki) dùng trước
+khi hỏi lại ý nghĩa stat/item/mode; chỉ đo phần khác biệt KR00967. Nguồn này phục vụ gate đang mở,
+không tạo nhánh kiểm kê wiki hoặc mở mode phụ trước K3/K4/K5/K6a.
+
 1. **KRE-005b/KR-L001–L003 — nghiệm thu identity/cache/UI sảnh K3:**
    `NEXT-K2-RETRY-RESET` đã khép tại [CP181](#k2-acceptance): K2 profileoffline được đối chiếu
    native sameprocessretry/0-0→2-3/seqreset/137cursor, CP180stream và CP057boundaryscope giữ nguyên.
@@ -77,18 +81,17 @@ và trận8 client thật là phần mở rộng sau hai/bốn client ổn ở b
    đã phục hồi. Đối chiếu stableID/name giữa auth→request6→lobbyview, cold/missing/warm cache có
    kết quả rõ; chỉ đo variant còn thiếu, không lặp namedfxdynmapinfo CRC/missing→warm. Nếu UI
    identity chưa hiển thị, trace đúng consumer/render đang chạy thay vì thêm packet từ VN.
-   [CP183](PROTOCOL.md#own-profile-291) đã giải producer→store→render: S→C291/native128cursor,
-   record/name/guard và ảnhpanelKRLocal. Không lặp authgetter, emptyrecord/SquareLeft, hoặc dòproducer291.
-   Tiếp tích hợp opt-in identity291 vào service/profile cho A/B/C theo stableID/name và socketstage.
-   InitialS2C hiện có fixtureseq cố định43..70, dynamic bắtđầu73: thêm291 phải giữ seq liên tục qua
-   create/map/dynamic/rejoin, không chỉ chènraw rồi dùng lại55. Dùng nativecontrol để kiểm integration.
-   Tái dùng profileKR109/CP058/059; không RE lại schema/cacheCRC hoặc portVNopcode/layout.
-   Kiểm sai socket/stage, version/identity theo acceptance bằng các guard/log đã có trước khi mở
-   negative mới; không quét toàncache hoặc mô phỏng realaccountauth/Nexon. Unknown giữ rõ scope.
+   [CP184](PROTOCOL.md#own-profile-integration) đã tích hợp opt-in291 vào service, A hiện tên rồi
+   tạo phòng/map với initial→dynamic sequence liên tục. Không lặp producer291/authgetter hoặc
+   kiểm kê thêm item/mode/race. **Khép K3 theo [checklist](#k3-evidence-review)**: đối chiếu nguồn cũ
+   cho cache/identity/channel/keepalive/negative/version; chỉ đo ô chưa đủ. Không coi freshprefix là
+   cold cache, cũng không tự thêm fullaccountauth/toàncodec/toàncachefamily thành tiêu chí mới.
+   A là baseline nghiệm thu K3 offline; B phục vụ K4 hai client, C chỉ theo trigger replacement.
+   Sau khi K3 đủ, rà ngay acceptance K4 bằng bằng chứng phòng/load/host/start đã có; thiếu đâu đo đó.
    Trước runtime freeze source/config, copy/offline/isolation; cleanup/hash trước đổi phép đo.
    [#14](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/14) active umbrella;
    [#2](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/2) widerWCP/config backlog.
-   <!-- active-issue: 14 --> AUD054 periodic180; audit kế **CP184**.
+   <!-- active-issue: 14 --> AUD055 periodic184; audit kế **CP188**.
 
 2. **KR-B003/KR-F006 — nợ có giới hạn:** [CP057](PROTOCOL.md#codec-stream-boundaries) đã đo stream/
    seq/bounds trong model, không mở lại76split hoặc cấp buffer lớn chỉ để vượt allocationguardFFFFFFFF.
@@ -190,7 +193,7 @@ flowchart LR
 Codex đối chiếu thủ công từng acceptance ở bảng trên, [review waived](evidence/checkpoints/review-waiver.json);
 decision/nguồn/giới hạn tại [evidence CP178](evidence/peer-endpoints/README.md#cp178). Không đổi tiêu chí,
 không dùng checker hoặc số checkpoint để đóng gate. **K0 đạt về identity/harness; K2a đạt phần tĩnh
-cần cho probe K2. Tại CP178 K1/fullK2 và K3–K7 còn mở.** K1 có nghiệm thu hẹp mới ở CP179 bên dưới; fullK2 còn mở. PR/Git giữ delivery status; PR250 đã merge tại `2f2b87f`.
+cần cho probe K2. Tại CP178 K1/fullK2 và K3–K7 còn mở.** K1 có nghiệm thu hẹp ở CP179; K2 profile đã đạt CP181 bên dưới, widercodec vẫn backlog. PR/Git giữ delivery status; PR250 đã merge tại `2f2b87f`.
 
 | Acceptance giữ nguyên | Đối chiếu bằng chứng | Quyết định / giới hạn |
 |---|---|---|
@@ -219,7 +222,7 @@ Codex tự đối chiếu **tiêu chí K1 giữ nguyên** ở bảng gate; [revi
 | Recipe/stub/patch/rollback | Game/prefix copy riêng từ template đã init; không ba Wine install mới. Builder/NGinit omission/imports/negativecontrols có nguồn; không ép ProcessPatchreturn. Harness cleanup riêng prefix/children, run end và isolation có raw. |
 | Giới hạn nghiệm thu | Chỉ offline R2; không originalWindowsbootstrap, không3e9coldstarts hoặc coldallcache. R2/e9 khớp vùng bootstrap/framer, nhưng e9 thêm patch/state nên không suy whole-program tương đương. Socket2silent/zeroC2S/timeout không là login hoặc K2. |
 
-KRE-002/#2 giữ mở cho WCP/launcher configuration ngoài recipe này; full K2/#3 và K3–K7 giữ mở.
+Tại CP179 K2 còn mở; CP181 đã nghiệm thu profile K2. KRE-002/#2 widerWCP/config và #3 widercodec giữ backlog; K3–K7 mở.
 Thứ tự công việc duy nhất ở current-order, không thay record complete hoặc tiêu chí để đóng gate.
 Periodic audit kế CP180, AUD053 ad-hoc không reset lịch.
 
@@ -243,6 +246,23 @@ accountresume hoặc K3identity/cache/UI**. Labadapter chỉ map ordinal4/5 theo
 recoveredaccountpolicy hoặc productiongeneralreconnect. Native boundarycaps/modelguard và WinSockAPI
 trace thiếu trongharness giữ rõ giới hạn. KRE-003/#3 còn backlog broadercodec; K3–K7/fullmatch/LAN/
 Internet chưa nghiệm thu. CP181 snapshot trước PRdelivery, periodic audit vẫn kếCP184.
+
+<a id="k3-evidence-review"></a>
+### Đối chiếu nghiệm thu K3 tại CP184 — chưa đóng gate
+
+Đây là ánh xạ vào tiêu chí K3 giữ nguyên, không tạo gate con hoặc plan khác. Ưu tiên theo thứ tự
+các ô thiếu dưới đây; unknown rộng ngoài demo giữ backlog theo trigger.
+
+| Tiêu chí | Bằng chứng / giới hạn hiện tại | Phần kiểm tiếp |
+|---|---|---|
+| Cold / thiếu / warm cache có kết quả rõ | CP059 kiểm missing→nativewrite→warm cho fxdynmapinfo; các cache khác giữ, chưa cold toàn client. CP184 kế thừa cache | Xác định tập cache server-cấp thực sự cần cho route K3 từ consumer đã có; đối chiếu cold baseline/phép thử còn thiếu. Không xóa asset/pack hoặc RE lại CRC đã giải |
+| Identity/kênh trên UI và ID giữa socket | CP058/181 auth/request6; CP183/184 A panel KRLocal và room ID1. C fixture room cũ mang KRLocal được helper ràng buộc lại với auth KRNew, mới kiểm model | Rà UI/kind/index kênh theo CP015/016 và contract hiện tại; chỉ đo consumer thiếu. B hai client sau baseline K3, C không tự thêm dependency |
+| Keepalive / lifecycle codec | CP181 sameprocessretry/reset; CP184 hai run80s có actual C2S, chuyển sảnh→phòng/map và không timeout quan sát | Bằng chứng có giới hạn duration/profile, không SLA hoặc fullaccountresume; dùng lại, không chạy vô hạn |
+| Đúng bytes nhưng sai socket/stage bị từ chối có log | Opt-in guard service + regression dùng frame hợp lệ qua receive/dispatch; không reply/ready marker khi sai stage, log reason. Đây là design/model, không luật server gốc | Đối chiếu đủ các ca cần cho route K3 và evidence wire; chỉ mở negative còn thiếu, không quét grammar |
+| Sai version/identity có lỗi rõ | Helper từ chối profile/ID/name không đúng role; CP181 native result1/retry đã đo nhưng không gán riêng ý nghĩa version | Xác định consumer/version field và error mapping KR bằng nguồn cũ/phép đo tối thiểu. Không coi mọi result1 là versionerror, không tự gán u16 WCP là version |
+
+K0/K1/K2 profile dependency đã đạt. K3 còn mở vì các ô trên chưa đủ, **không** vì mọi tính năng,
+mode, accountauthority hoặc mọi variant cache/gameplay của client đều phải được phục hồi.
 
 <a id="k4-evidence-review"></a>
 **Rà acceptance K4 tại CP166, cập nhật audit CP168 — ánh xạ bằng chứng, chưa đóng gate:**

@@ -69,3 +69,31 @@ assembly bổ sung, không scriptsuyngữnghĩa. Bằng chứng/hash từngfile 
 Chưa productionintegration/create/map sau291; initialfixtureseq55..70/dynamic73 phải xử lý khi tíchhợp.
 Cold/missing/warm toànmatrix, wrongstage/version/identity và K3–K7/LAN/Internet/8client còn mở.
 CP183 chờPR khi viết; reviewwaived/Codexselfcheck. AuditAUD054qua180/kếCP184, khôngreset.
+
+<a id="cp184"></a>
+## CP184 — opt-in service, initial sequence và periodic audit
+
+Baseline CP183/PR255 merge`5c1f3fbb216588360fd1bf1ff0be80a5d65c8624`.
+[Contract](../../PROTOCOL.md#own-profile-integration), [checklist K3](../../PLAN.md#k3-evidence-review).
+Raw `local/research/codex/k3-ownprofile-integration-r1/`: source-first, derived/authname fixtures,
+2recipes/preparations, r1 source snapshots, 2run103files/seals, verification. Không RE nativebody mới.
+C roomprofile KRLocal/auth KRNew được phát hiện nhờ đối chiếu CP058/native-final, đã sửa binding
+ở helper; C126body chỉ model/candidate, không runtime C. Tránh copy blob mù hoặc RE lại codec/profile.
+
+Exporter `--preset two-client-basic-replacement --own-profile-291` giữ47pin; source/config frozen
+trong từng run. Dùng copye9/game/prefix mới, inheritedcache, namespace loopback-only/NSSfiles-only.
+OSclickcreate286,81/confirm343,479 kế thừa CP016, chỉ chạy khi probe ownpanel đọc guard1.
+Không gamefunctioncall/storewrite. Rollback bỏ flag/own_profile policy, giữ recipe cũ/default-off.
+
+r1 đo integration trước guard mới, cleanup/hash rồi snapshot source; r2 đo lại code có guard.
+Cả hai A80s/103rawfiles, native291128cursor/errors0, ownname/render và framer43…73→next76 tới map;
+ảnh panel-before-create và screen25 đã được Codex xem. Guest KRGuest là synthetic, không B thật.
+Framer cursor0 trước dispatch không bodyproof; producer291 là probe khác. Globalnote khiến producer
+cùng prefixK3_FRAMER, phân biệt bằng kind. Không sửa raw để chuẩn hóa label.
+
+`verification.json`:392quan hệ, explicit r1 version snapshots, allraw/inputpins/isolation/cleanup,
+nativeframe/producer/sequence/OSactions. 290server tests và7exporter tests pass; hai lệnh test sai
+module/importpath giữ trong raw rồi chạy discovery đúng, không ghi chúng là codefailure.
+Original5artifacts kiểm riêng. Các kiểm repo/exacthead và trạng thái merge ở bàn giao Git.
+[AUD055](../checkpoints/audits/AUD055.json) đọc core→evidence/raw, sửa stale source/status/thứ tự;
+audit kếCP188. Reviewwaived; CP184 chưa gate/fullmatch, chưa runtime B/C/start/rejoin sau291.

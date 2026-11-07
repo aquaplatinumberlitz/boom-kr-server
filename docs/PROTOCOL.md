@@ -1,6 +1,6 @@
 # KR 00967 — contract tương thích client gốc
 
-Revision kr-legacy-contract-r1; cập nhật07/11/2026 JST (CP181; AUD054 periodic qua180; audit kế184).
+Revision kr-legacy-contract-r1; cập nhật07/11/2026 JST (CP184; AUD055 periodic qua184; audit kế188).
 **Contract có bằng chứng từng phần; phạm vi nghiệm thu codec/hello ở [PLAN](PLAN.md#k2-acceptance)**.
 Lộ trình và thứ tự task chỉ giữ ở [REWRITE_PLAN — KRE](PLAN.md).
 Đây là contract của repo server KR. ADR0009 của bản viết lại là nguồn lịch sử để so sánh;
@@ -44,15 +44,34 @@ Mức `confirmed` dưới đây chỉ áp dụng nguồn/build/phạm vi ghi tro
 | Debug/input/IAT | VN có recipe GDB proxy, input dispatch/gate trace và đối chiếu IAT theo ABI | CP012 có command login; CP016 có callback/dialog/request Tạo phòng theo [contract](#room-create). Recipe, provenance và giới hạn tại [evidence reuse](evidence/vn-reuse/README.md). Không copy địa chỉ hoặc tự đổi GetAsyncKeyState. |
 | Pack/map/sprite/ODT | Reader dùng được cho pack KR; inventory 13 pack/51.467 entry; có khác biệt header map và numeric ID | Dùng lại tool và dữ liệu KR. Điều này không xác nhận version, frame hoặc opcode mạng. |
 | Framing/primitive | VN `CClientSocket` `A68850`, recv/process `A662E0`, send `A663E0`; encode/decode/CRC đã có kiểm binary | Dùng làm mẫu tìm class/call graph và mẫu fixture. Patch bootstrap có profile riêng [đã kiểm](evidence/bootstrap-wire/README.md); KR có [profile WCP hẹp](#wcp) và native capture/field checks tới104/121 theo [contract start](#start-reply); full codec/reset/bounds còn mở. |
-| Crypto/seq | VN XOR `0x53351D9C`/step `0x63CAACE3`, CRC8/32, base/seq/delta, opcode substitution | Constants chỉ là VN confirmed. Không gán cho KR khi chưa đọc consumer/đo. Kiểm seq tăng trước/sau crypto và reset riêng từng socket/chiều. |
-| Hello/version | VN server-first hello, rồi đổi mode; version 116 và packet bootstrap có thứ tự | Patch socket KR: mode0/selector0, BE16 version967, response local được chấp nhận theo [evidence](evidence/bootstrap-wire/README.md). Consumer WCP, initial0/0 và transition2/3 có bằng chứng theo [contract WCP](#wcp); full codec/seq và login/world role chưa xác nhận; không gộp socket. |
-| Login/identity | VN có pipeline login-result/network-info và variant China khác layout | CP013–014 có dispatcher/auth; CP015 đi qua redirect/request6 và UI sảnh hết notice trên copy. [Contract sảnh](#channel-lobby); full auth/profile/cache và vanilla vẫn thiếu. |
+| Crypto/seq | VN XOR `0x53351D9C`/step `0x63CAACE3`, CRC8/32, base/seq/delta, opcode substitution | KR profile mode2/selector3 đã có oracle native và reset tại CP006/057/181; xem [codec](#login-retry-codec). VN chỉ là mỏ neo, không chứng nhận mode/header khác. |
+| Hello/version | VN server-first hello, rồi đổi mode; version 116 và packet bootstrap có thứ tự | Patch socket KR: mode0/selector0, BE16 version967, response local được chấp nhận theo [evidence](evidence/bootstrap-wire/README.md). Consumer WCP, initial0/0 và transition2/3 có bằng chứng theo [contract WCP](#wcp); profile codec/hello/reset được nghiệm thu CP181; widercodec vẫn giới hạn, không gộp socket. |
+| Login/identity | VN có pipeline login-result/network-info và variant China khác layout | CP058 có shape auth; CP183/184 đã nối identity291 tới panel và integration A. [Contract](#own-profile-integration); fullaccountauthority/cachematrix/vanilla vẫn giới hạn. |
 | Cache/redirect/channel | VN cần tag blob; dữ liệu inner LE khác outer wire, cache path khởi tạo theo stage | Kiểm contract KR từ reader/consumer. Giữ test cold/warm cache; không copy blob VN hay replay flag “dùng cache” khi file không tồn tại. |
 | Lobby/room/start | VN có request/reply, slot flags, map tự gửi lúc vào phòng, loading/clock nhiều pha | Dùng để xây checklist ca biên. KR có stage11 và17/241 theo [contract sảnh](#channel-lobby); [request81/response86](#room-create) đã đưa copy tới CPrepareStage và UI phòng chờ; [player/ownslot/controls](#room-player) đã đo trên copy, [map metadata/start104](#room-map) và [start121/scene nhân vật](#start-reply), [clock/input](#round-go), [nổ/HELP/về phòng](#bomb-cycle) đã đo; bảng kết quả chọn đã có [CP023](#round-result), hai client movement/bom đã đo ở [CP027](#peer-duo), join/Ready và chu kỳ pair ở [CP028](#duo-room-round); authority/reset đầy đủ còn thiếu. |
 | Bomb/item/trap/result | VN `111→152→151`; `553`, pickup `117→158`; `120` subtype; kết quả `168→173` có runtime nguồn cũ | Chỉ mỏ neo VN. KR phải nối send/receive tới object/state tương ứng trước khi implement. Fuse/drop/cap policy emulator không phải luật server gốc. |
 | Peer/movement | VN C→S92 trao IP/UDP port; S→C146 có peer table; runtime hai máy di chuyển đồng bộ qua UDP | Không giả định KR dùng cùng packet/MTUDP version hoặc không đổi peer contract. TCP-only demo không hoàn tất multiplayer khi peer chưa đồng bộ. |
 | Kiến trúc/harness | VN có hub/session/round generation, golden Python↔Rust, control 1–2 client | Dùng pattern và bài học, không coi golden hai implementation cùng logic là oracle KR; không copy legacy server vào crates của rewrite. |
 | Luật trận chung | Nhiều claim VN confirmed dùng được theo ADR 0002/0013 | Dùng để thiết kế/kiểm hành vi. Luật tương đương không chứng minh binary layout, field widths và wire numbering tương đương. |
+
+<a id="trusted-wiki-reuse"></a>
+### Wiki KR được chủ dự án tin cậy: áp dụng cho luật, đối chiếu theo build
+
+Nguồn [REFERENCES](REFERENCES.md#owner-trusted-namu-wiki), [hash/locator](evidence/namu-wiki/metadata.json).
+Đây là **reference do chủ dự án chấp nhận**, không gán thành `kr_runtime`. Khi dùng trong emulator,
+rule có thể là `design/emu_choice` dựa trên nguồn này; claim `kr_static/kr_runtime` vẫn cần nguồn build.
+
+| Nhóm | Kiến thức dùng lại | Phần KR00967 chỉ cần kiểm còn thiếu |
+|---|---|---|
+| Battle cơ bản | Bomb +1 count; Fluid +1 range; Roller +1 speed; Ultra tới max nhân vật | ItemAttr/consumer/ID, đơn vị và cap theo char đang dùng; không RE lại ý nghĩa item |
+| Trapped/cứu/kim | Đồng đội cứu, địch diệt; Ctrl dùng kim khi trapped, oxy kéo dài thời gian | Reuse các probeKR đã có; chỉ kiểm variant/ordering/consume/peer còn chặn demo; wiki không giải simultaneoustick |
+| Đội/mode | Free cho lệch đội; Manner cân bằng mọi đội, ví dụ2–2/2–2–2/3–3/4–4 | ReuseCP162/163; selector/opcode/nativevalidation không copy từ tên hoặc wiki |
+| Stat nhân vật | Có basic/maximum; Bazzi tham chiếu count1→6/range1→7/speed5→9 | Ánh xạ BomberAttr/build/charID và đơn vị; khác currentpolicy phải ghi khác biệt, không áp số mù |
+| Map/mode phụ | Danh mục theme/mission/Revival và luật thắng/thua được mô tả | Chỉ chọn scope khi PLAN mở; geometry/spawn/assets/nativepresence/ID vẫn đối chiếuKR |
+
+Nguồn PC đang dùng; BnB M/mobile để riêng. Trang sửa2026 có thể khác00967, bản dịch lore/char chỉ
+một phần; giữ Hàn gốc và ngày sửa để xử lý mâu thuẫn. Giá trị luật tham chiếu giúp bỏ RE ngữ nghĩa
+lặp lại, không tự đóng gate hoặc giải blocker K3 cache/version. Thứ tự tiếp duy nhất ở PLAN.
 
 ## 3. Mỏ neo KR có sẵn và giới hạn
 
@@ -2584,6 +2603,38 @@ Labservice chỉ gửi thêm hai frame sau bộready241/room91/channel14, produc
 không đổi. **Chưa nối create/map sau khi thêm291**: các fixtureinitseq55..70 và dynamic73 phải được
 đối chiếu lại khi integration, không chènraw rồi tái dùng sequence. K3/cachematrix/wrongstage/version/
 identityauthority/Windows/LAN/Internet/K6a vẫn mở. Bước tiếp duy nhất [PLAN](PLAN.md#current-order).
+
+<a id="own-profile-integration"></a>
+### Opt-in identity291 và sequence sảnh → phòng/map — CP184
+
+`design/emu_choice` cho policy service, `kr_runtime/confirmed` cho hai run A được ghi rõ trong
+[evidence](evidence/lobby-identity/README.md#cp184). `--own-profile-291` của exporter thêm
+`own_profile={mode:native_291}`; không đổi pin47 fixture hoặc mặc định của preset cũ.
+`server/own_profile.py` chỉ hỗ trợ auth một local player, ID/name role A1/KRLocal, B2/KRGuest,
+C3/KRNew và inner profile zero-valued đã đo. Unsupported identity/shape/profile bị từ chối trước listen.
+
+Helper lấy blob từ player106 đã pin, giữ98byte tail profile đã đo, thay riêng stringLE tên bằng
+field name auth đã kiểm CP058 (ID ở body25, u16 string ở29). C room fixture cũ là KRLocal dù authC
+là KRNew; sao chép mù blob sẽ sai tên. Model xác nhận A/B payload128 và C126; **runtime mới A**.
+Đây là binding identity cục bộ theo fixture, không auth server Nexon hay xác thực account gốc.
+
+Opt-in dùng bộ đếm `s2c_next_seq`/send/send_setup đã có từ channel17seq43, ready46/list49/channel14seq52,
+own291seq55, create86seq58/player106seq61/slot110seq64/guest106seq67/table238seq70/map117seq73,
+next76 cho dynamic. Không thêm tracker sequence song song; reentry dùng tiếp counter hiện tại.
+Default-off giữ nguyên bytes/schedule cũ, có regression. Parser guard/log sai stage/socket là design;
+model kiểm receive/dispatch với bytes hợp lệ, không suy law hoặc runtime negative KR.
+
+`integrated-A-r1` đã native name/ownrender rồi OS click-create/confirm tới room/map.
+Sau cleanup/hash mới thêm guard/log, giữ source phiên bản r1 trong local; `integrated-A-r2`
+đo lại đúng code có guard, cùng route/native framer ret0/sequence43…73 và producer291128/128/error0.
+Framer exit cursor0 là **trước dispatch body**, không chứng nhận fullbody của mọi packet;
+291 có probe consumer riêng. Ảnh trước create hiện KRLocal; ảnh cuối room hiện ID/name/map.
+Guest trong ảnh là fixture tổng hợp, không client B thật. Hai run80s, inheritedcache, không game/start/rejoin.
+
+290 server tests/7 exporter tests và392 quan hệ raw/source/native kiểm scope này; không đóng gate.
+Các lỗi gọi test sai module/importpath được giữ, discovery đúng đã pass. Probe tái dùng đổi prefix
+producer sang K3_FRAMER do global note, kind vẫn phân biệt; raw không sửa. [Checklist K3](PLAN.md#k3-evidence-review)
+giữ phần thiếu cache/version/channel/negative, không mở lại item/mode/race ngoài gate.
 
 <a id="dynamic-cache-representation"></a>
 ### Cache dynamic-map và checksum representation — CP059

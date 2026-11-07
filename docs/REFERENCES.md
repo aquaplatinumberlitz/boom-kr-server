@@ -50,3 +50,18 @@ kiến thức đã đối chiếu chỉ giữ trong [bảng nhóm item](PROTOCOL
 
 Patch series gốc và review report được giữ local để truy vết, không còn worktree docs cũ là nơi làm
 việc. Client/asset gốc tiếp tục ở `boom/clients/`; repo mới không copy chúng vào Git.
+
+
+<a id="owner-trusted-namu-wiki"></a>
+## Wiki KR do chủ dự án cung cấp — nguồn luật được tin cậy
+
+`/home/admin/boom/kr-namu-wiki/`, crawl06/11/2026 từ `https://namu.moe/w/`, inventory93 trang
+với raw-html/text và bản Việt. Chủ dự án xác nhận dùng làm nguồn tin cậy cho luật/stat/char/map/mode;
+[metadata, ngày sửa trang, hash và locator](evidence/namu-wiki/metadata.json) giữ provenance.
+Bản Hàn là nguồn nội dung, bản Việt hỗ trợ tra cứu; PC và BnB M/mobile là nhánh riêng.
+
+Dùng nguồn này trước khi mở câu hỏi về ý nghĩa luật: Bomb/Fluid/Roller +1, Ultra/cap, trapped/cứu/
+diệt/kim/oxy, Free/Manner và bảng basic/maximum nhân vật. Chỉ RE Attr/consumer/đơn vị/ID/transport
+hoặc phần khác biệt còn thiếu của KR00967; không lặp suy ý nghĩa từ đầu, không mở toàn mode/item
+ngoài gate hiện hành. Wiki không là trace native và không quyết định thứ tự va chạm cùng tick.
+Bảng đối chiếu áp dụng/giới hạn giữ ở [PROTOCOL](PROTOCOL.md#trusted-wiki-reuse); PLAN vẫn giữ thứ tự.
