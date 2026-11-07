@@ -79,3 +79,28 @@ markers vàclosedtask-active-step; không tự đọc hiểu acceptance, đóngt
 tạo copy riêng từ đúngSHAe9, sửa duy nhất reconstructedimport16EA1CC sanglstrcmpiA, outputSHA4b781f…;
 chỉ paths dưới local,khôngoverwrite. [Native/control/giới hạn](../docs/PROTOCOL.md#own-profile-result-compare).
 Không đổi recipes R1/R2 hoặc binary nguồn; không là general IAT repair.
+
+
+<a id="portable-bundle"></a>
+## Gói service/fixture để chuyển thư mục
+
+Dùng exporter/preset hiện có; output và fixture nguồn phải ở `local/` của checkout khi tạo gói:
+
+```bash
+python3 tools/export_probe_profile.py --source-root local/research/codex \
+  --preset two-client-basic --own-profile-291 --bundle --out local/lan-bundle
+python3 -I local/lan-bundle/run.py --verify-only
+```
+
+Sau khi chuyển **nguyên thư mục** sang host/thư mục dự án khác, chạy `python3 -I /path/to/bundle/run.py`
+với các option service hiện có: `--out /fresh/run`, `--port ...`, `--bind-ip`, `--channel-ip/--channel-port`,
+`--peer-ip A=... --peer-ip B=...`. Không truyền `--profile`; profile đã cố định trong gói. `--out` runtime
+nên là absolutepath vì launcher đặt cwd về rootgói. Không ghi đè thư mục export; tạo gói mới khi đổi profile.
+Chỉ Python stdlib, không cần PYTHONPATH hay RE dependencies để chạy service. Gói local chứa wirefixtures
+đã pin, **không commit gói/fixture binary**. Manifest kiểm drift/size/SHA, không chữ ký hoặc ngữ nghĩa.
+
+[Contract/giới hạn runtime](../docs/PROTOCOL.md#portable-probe-bundle) và [PLAN](../docs/PLAN.md#current-order)
+giữ nghiệm thu/recipe. Operator phải thiết lập mạng cô lập trước runtime; bundle không tự đổi mạng/hosts
+hoặc liên hệ endpoint. Startup hiện tuần tự A tới channelready rồi mới B; hai namespace không hai máy LAN.
+Kiểm packaging: `python3 -m unittest discover -s tools -p 'test_probe_bundle.py'` (real TCP/relocation,
+source/destination drift, symlinkescape, overwrite và profileoverride controls).

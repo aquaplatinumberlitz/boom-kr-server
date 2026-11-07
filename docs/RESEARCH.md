@@ -55,11 +55,13 @@ và actualtwo-host consistency/disconnect/rejoin. CP141146bind/peerIP/redirect v
 nguồn tái dùng; hai namespace/VM cùnghost không chứng minh physicalLAN. Chưa biết máy/endpoint dự án
 thứhai thì giữunknown/blocker, tiếp chuẩn bị deployment độc lập, không quét mạng ngoài/liveNexon.
 
-Tiền kiểm service sauCP189 ([metadata candidate](evidence/peer-endpoints/lan-preflight-candidate.json)):
+Tiền kiểm service sauCP189 ([metadata ban đầu](evidence/peer-endpoints/lan-preflight-candidate.json),
+[đã gom CP190](PROTOCOL.md#portable-probe-bundle)):
 `accept` gán role/stage theo globalordinal/4, `peer-ip` chỉ đặt endpoint UDP153. TCP loopback thực
 AAAA BBBB đúng8/8; ABABABAB sai6/8 role/stage. Không nativeclient/LAN proof. Recipe LAN đầu phải
 giữ startup tuần tự A tới channelready rồi B như run K6a; incoming identity/stage binding cho startup
-xen kẽ còn backlog. Đây là kết quả sau recordCP189, chưa checkpoint kế; raw/hash/cleanup đã lưu.
+xen kẽ còn backlog. CP190 đã gom bằng chứng và bổ sung portablebundle/nativecontrol; không sửa
+record CP189 hoặc nghiệm thu physicalLAN. Máy/endpoint vật lý thứhai vẫn unknown.
 
 Fullauth/142freshness/distance/resetvariants/fullcodec/relayNAT/Internet/4–8actualclient vẫn theo trigger.
 Codex solo/tự kiểm/reviewwaived; AUD056qua188/kếCP192.
@@ -101,7 +103,7 @@ Bảng được [coverage](COVERAGE.md) trích tự động để tra theo chứ
 | <a id="gap-result-return"></a>KR-X001 | [CP176](PROTOCOL.md#a-c-basic-cycles) Ahost/Cguest2normalresults/180/room/actualCReady2/native110; CP174thirdforfeit giữ riêng. | Originalarbitration/UI/generalreset chưa đủ; noStart3/thirdoutcome. Không coi ảnh đen trước focus là rootcause; finalroom đã render. |
 | <a id="gap-round-reset"></a>KR-X002 | [CP176](PROTOCOL.md#a-c-basic-cycles) AC2keys/6entities/3Aeffects/195/stat/hiddeneligibility reset và Ready2 có nguồn. | Wholeinventory/modes/low8wrap/generalreset/thirdStart còn thiếu theo trigger, không lặp knownACcycles. |
 | <a id="gap-disconnect-replacement"></a>KR-X003 | [CP177](PROTOCOL.md#replacement-profile) optional exported preset/capacity theo vacancy và actual C0/C1 initial/118/159158 đã kiểm; CP176 giữ AC2normalcycles riêng. | Maximum/exhaustion/general membership/account resume chưa biết; C0 startup SIGSEGV giữ nguyên, đối chứng pass không là rootcause. Theo PLAN acceptance/control, không lặp known C0/C1 entry hoặc ACcycles. |
-| <a id="gap-diagnostic-service"></a>KR-S001 | [CP177](PROTOCOL.md#replacement-profile) optional replacement preset/47pins/derived capacity/284server và7export tests; native C0/C1 actual118159158 đã đo. | Theo PLAN đối chiếu acceptance/dependency/control trước phép đo còn thiếu; nofullauth/physicalLANInternet8client/gate. Startup unknown không được suy thành capacity regression/fix. |
+| <a id="gap-diagnostic-service"></a>KR-S001 | [CP190](PROTOCOL.md#portable-probe-bundle) gói service/47fixture relocation đã actualKRWine/nativeidentity/room/load/EOFcontrol;  [CP177](PROTOCOL.md#replacement-profile) optional replacement preset/47pins/derived capacity/284server và7export tests; native C0/C1 actual118159158 đã đo. | Theo PLAN đối chiếu acceptance/dependency/control trước phép đo còn thiếu; nofullauth/physicalLANInternet8client/gate. Startup unknown không được suy thành capacity regression/fix. |
 | <a id="gap-service-hardening"></a>KR-S002 | Chưa LAN/Internet/bốn client/restart/backpressure/rate limit/persistence đủ K7. | Sau local gate có evidence, thử hai máy theo K6b rồi loss/disconnect/restart; không lấy loopback accept làm multiplayer. |
 
 

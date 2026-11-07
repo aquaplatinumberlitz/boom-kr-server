@@ -1,7 +1,7 @@
 {
   "schema": "kre-feature-index-v1",
   "build": "KR00967",
-  "as_of": "CP189",
+  "as_of": "CP190",
   "sources": {
     "plan": "docs/PLAN.md",
     "contract": "docs/PROTOCOL.md",
@@ -4171,7 +4171,8 @@
           "docs/PROTOCOL.md#a-c-basic-cycles",
           "docs/evidence/peer-endpoints/README.md#cp176",
           "docs/PROTOCOL.md#replacement-profile",
-          "docs/evidence/peer-endpoints/README.md#cp177"
+          "docs/evidence/peer-endpoints/README.md#cp177",
+          "docs/PROTOCOL.md#portable-probe-bundle"
         ]
       },
       "coverage": {
@@ -4328,7 +4329,8 @@
               "docs/PROTOCOL.md#a-c-basic-cycles",
               "docs/evidence/peer-endpoints/README.md#cp176",
               "docs/PROTOCOL.md#replacement-profile",
-              "docs/evidence/peer-endpoints/README.md#cp177"
+              "docs/evidence/peer-endpoints/README.md#cp177",
+              "docs/PROTOCOL.md#portable-probe-bundle"
             ]
           },
           "windows_original": {
@@ -4429,7 +4431,9 @@
             "docs/PROTOCOL.md#a-survivor-admission",
             "docs/evidence/peer-endpoints/README.md#cp175",
             "docs/PROTOCOL.md#replacement-profile",
-            "docs/evidence/peer-endpoints/README.md#cp177"
+            "docs/evidence/peer-endpoints/README.md#cp177",
+            "tools/probe_bundle.py",
+            "tools/test_probe_bundle.py"
           ]
         },
         "integration": {
@@ -4519,7 +4523,8 @@
             "docs/PROTOCOL.md#a-c-basic-cycles",
             "docs/evidence/peer-endpoints/README.md#cp176",
             "docs/PROTOCOL.md#replacement-profile",
-            "docs/evidence/peer-endpoints/README.md#cp177"
+            "docs/evidence/peer-endpoints/README.md#cp177",
+            "docs/PROTOCOL.md#portable-probe-bundle"
           ]
         },
         "gate": {
@@ -4558,7 +4563,8 @@
         "plan": "docs/PLAN.md#current-order",
         "evidence": [
           "docs/evidence/udp-freshness/README.md",
-          "docs/evidence/firstseen-admission/README.md"
+          "docs/evidence/firstseen-admission/README.md",
+          "docs/PROTOCOL.md#portable-probe-bundle"
         ]
       },
       "coverage": {
@@ -4584,7 +4590,8 @@
           "wine_diagnostic_copy": {
             "state": "unknown",
             "refs": [
-              "docs/evidence/firstseen-admission/README.md"
+              "docs/evidence/firstseen-admission/README.md",
+              "docs/PROTOCOL.md#portable-probe-bundle"
             ]
           },
           "windows_original": {
@@ -4602,13 +4609,18 @@
         },
         "implementation": {
           "state": "unknown",
-          "refs": [],
+          "refs": [
+            "tools/export_probe_profile.py",
+            "tools/probe_bundle.py",
+            "tools/test_probe_bundle.py"
+          ],
           "delivery": "unknown"
         },
         "integration": {
           "state": "unknown",
           "refs": [
-            "docs/evidence/firstseen-admission/README.md"
+            "docs/evidence/firstseen-admission/README.md",
+            "docs/PROTOCOL.md#portable-probe-bundle"
           ]
         },
         "gate": {

@@ -1,7 +1,7 @@
 # Kế hoạch server giả lập KR 00967
 
 Nguồn chuẩn của project `boom-kr-server`; bản nhập từ plan đã được dsh1/dsh2 review tại `1eee46d`.
-CP189: K6a hai actualclient cùnghost/offline/basic đạt theo tiêu chí giữ nguyên và authority; K6bLAN/K6cInternet/K7 vẫn mở. K5 scopeCP188 giữ đạt; AUD056qua188, kếCP192.
+CP190: bundle service/47fixture relocation đã kiểm trên actualKRWine route; không physicalLAN. K6aCP189 giữđạt; K6b cần máy/endpoint thứhai và startup tuần tự. AUD056qua188/kếCP192.
 
 
 ### Mục tiêu, baseline và phạm vi
@@ -37,7 +37,7 @@ với client Rust không chứng minh có thể điều khiển client KR bằng
 
 ### Tiến độ hiện hành theo bằng chứng
 
-| Task/mốc | Trạng thái tại CP189 | Nguồn chuẩn |
+| Task/mốc | Trạng thái tại CP190 | Nguồn chuẩn |
 |---|---|---|
 | KRE-004/issue6 | Đã review/merge PR7 và đóng issue:recipe r1 đến local accept;không phải full K1 | [Wine r1](evidence/wine/README.md) |
 | Bootstrap reply | PR8 đã merge;debugger ProcessPatchreturn1,không ép success | [bootstrap evidence](evidence/bootstrap-wire/README.md) |
@@ -79,7 +79,8 @@ không tạo nhánh kiểm kê wiki hoặc mở mode phụ trước K3/K4/K5/K6a
    oneeffect, hai normalcontestedcycles/reset/Ready2 và nguồn CP188peer/Bowner/EOF đã đối chiếu.
    `NEXT-K6B-LAN-PREFLIGHT`: đọc CP141146 endpoint/bind/peerIP, presetexport/privatecopy và isolation
    trước khi viết/thử phần thiếu. [Tiền kiểm TCP sauCP189](RESEARCH.md#gap-lobby-identity-followup)
-   cho thấy recipe đầu cần A tới channelready rồi mới B; không đổi thành generalaccountbinding.
+   được gomCP190: recipe đầu cần A tới channelready rồi mới B; không đổi thành generalaccountbinding.
+   [Bundle](PROTOCOL.md#portable-probe-bundle) đã relocation/runtimecontrol, không đóngLANgate.
    Xác định recipe tái lập trên hai máy do dự án kiểm soát, port/allowlist/
    rollback/ownedcleanup; không dùng hai namespace/VM cùnghost để tự nghiệm thu hai máy LAN.
    Chưa có máy/endpoint thứhai thì ghi blocker cụ thể, tiếp phần chuẩn bị deployment/service độc lập

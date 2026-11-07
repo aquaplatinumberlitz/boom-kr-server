@@ -1610,3 +1610,38 @@ Codex đối chiếu thủ công tiêu chí K6 cho K6a và authority matrix; **K
 K6bLAN/K6cInternet/K7/bốn–tám actualclient/fullauth/fullcodec/generalreset/allitems/maps/originalauthority
 vẫn mở. CatalogK6 tổng vẫn open ngoài scopeK6a. AUD056through188, audit kếCP192, không tạo audit/CP
 cho từng microtest. CP189 complete trước commit/PR, không giả đã merge; Git/PR giữ delivery.
+
+
+<a id="cp190"></a>
+## CP190 — portable service/fixture và native relocation control
+
+Baseline CP189/[PR261](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/261), headfbf2f688/
+merge`1559ad57253369e92a4141d102312ee6904b9cc0`. Codex solo/tự kiểm, reviewwaived, KRE-005b/#14.
+[Contract duy nhất](../../PROTOCOL.md#portable-probe-bundle), [CLI](../../../tools/README.md#portable-bundle),
+[phần thiếu](../../RESEARCH.md#gap-lobby-identity-followup), [thứ tự](../../PLAN.md#current-order).
+
+Raw `local/research/codex/portable-bundle-r1/`: source-first, exporter/test outputs, hai export riêng,
+gói final chuyển thành `relocated bundle/`, verify từ cwd/tmp/Python-I.47alias/43fixturefiles/13module/
+59pinnedfiles, toàn fixture/policy/sourcebytes bằng currentbasic đo CP188189 (chỉ path rebased).
+`bundle.json` chứa contextcommit trước thay đổi tool; đây là provenance, không giảsource đãmerge.
+Gói chỉ local/gitignored; không client/DB/asset hoặc binary được phát lênGit.
+
+`portable-bundle-runtime-r1`: recipe/preflight229pins/690raw/seal/187.247701577s/exit0/namespacecleanup0.
+Serviceprocess Python-I/launcher tại relocatedbundle, actualservice_module tronggói và profileSHAstartup
+khớp. Hai own291 native128cursor/errors0/name/renderguard1 vàrequest6nameguard; S2C43+3n, realroom/
+hostBack/rejoin/Ready/first12199clock. BSpaceID1/power1 rồiownedBkill còn5.197152337s trướcfuse;
+actualdirectEOF/Aforfeit175180/native107ID2clear/chief110/room vàjobround_closed/no158pastdue+4s.
+1046checks nativeEOF/ownership/frozen/relocation và66identity/sequence/framechecks; nativegetter/
+source/runtimepolicy vẫn tách nguồn. Ảnh contact đã Codex xem, tutorialoverlay ởfirstclock không
+bằng inputblocked hoặc fullmatch; B đãdừng không được claim nhậnforfeit. Không2normalcycles/Start2/LAN.
+
+Tiền kiểm TCP `k6b-admission-preflight-r1` đã tạo sauCP189 nay gomCP190: actualunchangedserviceaccept
+serializedAAAA BBBB đúng8/8, xenABABABAB sai6/8 role/stage. Cảhai ca loopbackrealTCP/ownedsocketsclosed;
+đây là policy emulator, không nativeaccount/physicalLAN. Initialmetadata candidate giữ nguyên lịch sử;
+source/rawseal/derivedLANargvtemplate/hash nay được pin trong evidenceCP190.
+
+Six meaningfulbundle tests: relocation + deleted syntheticfixture source + actualTCP + SIGTERMcleanup,
+source/destination drift/missing/symlinkescape/overwrite/profileoverride đều kiểm;7exportregressions,
+294server và39checkpoint tests. Không thay service/nativewire, vì vậy test không nghiệmthu LANgate.
+Raw/hash từngfile ở externalmanifestCP190; immutableCP188189 không sửa. AUD056qua188/kếCP192.
+K6b/K6c/K7 vàgeneralaccount/142freshness/distance/codec/modes/bốn–tám actualclient vẫn mở theoPLAN.

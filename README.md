@@ -87,6 +87,10 @@ và đối chiếu CP188Bowner/EOF riêng; [scope/giới hạn](docs/PLAN.md#k6a
 [recipe/raw/hash](docs/evidence/peer-endpoints/README.md#cp189). Hai claim thật trên production,
 mộtwinner/effect/view; baseline stat riêng A5/B4. Không physicalLAN/Internet/bốn–tám actualclient.
 CP188 đã merge [PR260](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/260) tại`2ea548bb`.
+**CP190: service/47fixture đã đóng thành gói chuyển thư mục**, kiểm bằng Python-I/realTCP và hai KR
+Wine copy trên service đã relocation. [Cách dùng](tools/README.md#portable-bundle),
+[nguồn/giới hạn](docs/PROTOCOL.md#portable-probe-bundle). K6b vẫn cần hai máy vật lý; startup hiện tuần tự.
+CP189 đã merge [PR261](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/261) tại`1559ad57`.
 AUD056 periodic qua188, audit kế **CP192**. [Review waived](docs/evidence/checkpoints/review-waiver.json).
 
 Đích đầu: hai client thật chơi hai trận liên tiếp; mở bốn client và hardening sau đó.

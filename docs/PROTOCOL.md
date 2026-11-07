@@ -5381,6 +5381,35 @@ Serviceproductionbind/153IPvẫnhard127; private-addressshims hiện làmeasurem
 Internet/K6c/NAT/relay/fullauth/authority/generalreset/gates mở; field99IP1/subtype39 vẫnunknown.
 
 
+<a id="portable-probe-bundle"></a>
+### Service và fixture có thể chuyển thư mục — CP190
+
+**design/implementation; kr_runtime confirmed chỉ trên copy Wine/privatevirtualhosts trong recipe đã pin.**
+[Recipe/hash/giới hạn](evidence/peer-endpoints/README.md#cp190), [cách dùng](../tools/README.md#portable-bundle).
+Tái dùng exporter/preset47fixture CP159/171 và profile/currentnative đường CP188; không RE thân hàm native
+mới, không sửa wire/client/assets/sourceDB. `export_probe_profile.py --preset ... --bundle` thêm nhánh
+opt-in, `--out` trở thành thư mục mới trong `local/`; thiếu preset, output có sẵn hoặc source pin sai bị từ chối.
+
+Gói chứa profile với path tương đối,43 fixture files cho47alias (dedup theoSHA),13 module runtime Python
+nguyênbytes, initializer và launcher. Không client/asset/DB/test/cache. Manifest ghi size/SHA của59file,
+contextcommit là baseline khi export, không tự hàm ý source đã merge. Đây là kiểm drift, không chữ ký tin cậy.
+Launcher kiểm manifest/path/hash/profile trước listen, cố định profile đã gói, tự cwd/sys.path vào rootgói;
+chạy được bằng Python `-I` từ cwdkhác/đường dẫn cóspace. Profile override và drift bị từ chối. Partialexport
+không có finalmanifest nên launcher fail, không xóa dấu vết hoặc overwrite output.
+
+Unitcontrol chuyển gói, xóa fixture nguồn tổng hợp rồi actualTCPbootstrap/SIGTERM/cleanup; nativecontrol
+riêng dùng đúng47fixture/policy/13sourcebytes sau relocation, Python-I tải module **trong gói** (startupJSON).
+Hai actualKR copies nhận291128/128/errors0/names/renderguard1 và request6guard, S2Csequence43+3n;
+room/hostBack/rejoin/Ready/firstnative12199clock. BSpaceID1→ownedBEOF còn5.197152337s trước6sfuse;
+A đọc175302/1803/107ID2clear/chief110/room, pendingjobround_closed/no158pastdue+4s.
+Run187.247701577s/690raw/frozen229/exit0/cleanup0;1046EOF/relocationchecks+66identity/seqchecks.
+Không two-normalcycles/Start2/Bnhậnforfeit hoặc physicalLANproof; K6a đã có ở CP189, không nâng K6b/K7.
+
+Tiền kiểm `accept` TCP sauCP189 được gom CP190: AAAABBBB đúng8/8, ABABABAB sai6/8 role/stage.
+`--peer-ip` là outgoing153config; admission vẫn globalordinal/4, không incomingidentitybinding. Recipe LAN
+đầu cần startup tuần tự như K6a. Máy/endpoint vật lý thứhai chưa xác định; bundle không thiết lập isolation,
+routing/NSS/firewall hoặc triển khai tự động, fullauth/NAT/relay và resetvariants vẫn theo RESEARCH.
+
 <a id="service-address-config"></a>
 ### Cấu hình IPv4 service và Ready sau return2 — CP141
 
