@@ -1,0 +1,264 @@
+{
+  "id": "CP190",
+  "previous": "CP189",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-07T06:25:27.184865+00:00",
+  "context_commit": "fbf2f68827c5b6bb10ac8531da52baae5e612288",
+  "owner": "Codex",
+  "reviewer": "Codex",
+  "question": "Can exactmeasuredservice47fixtureprofile relocate withoutREhostpaths andretainnativeKRcurrentroute, andwhatremains forphysicalLAN?",
+  "scope": "SourcefirstCP159export/CP141148network/CP188189nativebasic andpostCP189actualTCPacceptcontrol. Extendexistingexporter opt-inbundle, relocation/realTCP/driftnegativecontrols, oneactualABWinefocusedEOF withrelocatedPython-Iservice. No newnativebody/wire/accountprotocol orwholeclientscan, noLANgateclosure.",
+  "artifacts": [
+    {
+      "name": "OriginalKR00967unchanged",
+      "sha256": "a52545c14b1fea423de655c3163d6360b628d61c1cd472b46fdbc8a9ffe15f4e"
+    },
+    {
+      "name": "CurrentWinecopyunchanged",
+      "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+    },
+    {
+      "name": "NativeIDAfullcopycf72privateanalysis",
+      "sha256": "cf72da112308d9f1ca256df8089594c5f787875310933073bf6bd5ba6f70e63b"
+    },
+    {
+      "name": "modOmodelreference",
+      "sha256": "a08950c833d3acab8281049def7b3dc96b221f107eeda01da3a548e34b91dce5"
+    },
+    {
+      "name": "OriginalKR00967NewPatcher",
+      "sha256": "b59e4dce9ad23c439a7632ce04ecb2eed3481585bd2454100b05c9d7527f5c02"
+    },
+    {
+      "name": "VN116original_reference_only",
+      "sha256": "bce8644d4e783d1354ab4fc880e1ab9a4ab3325327028f37d99e5439e25f4bbd"
+    },
+    {
+      "name": "VN116patched_runtime_reference_only",
+      "sha256": "bc875ba5765cc112e924f46e75d0ace112904c7801126e46bc0abb1c9cb576b1"
+    },
+    {
+      "name": "PassingK1offlineR2recipe",
+      "sha256": "7b3b435b5d8e110185359107376b736615ceabe9452cea8154d02c8628f44c29"
+    },
+    {
+      "name": "NativeProcessPatchR1control",
+      "sha256": "a0c3b9867dae5fe2ff7c315cfe851117661c2cafead45196ce999329f67432f5"
+    },
+    {
+      "name": "OfflineWinecopy_import_compare_ABI_only",
+      "sha256": "4b781fbcea21e0f6294c729b63be86ab2953d60ad83b0d0c9219359f826107ed"
+    }
+  ],
+  "locators": [
+    "CurrentKRcopy4b781fbcea21e0f6294c729b63be86ab2953d60ad83b0d0c9219359f826107ed; originalsource/DBunchanged. Known12199/own291/175180/107110/118159158/nativecompareD2F644; no newVA/body.",
+    "Relocatedbundle47aliases/43uniqueSHAfixtures/13unchangedruntimePymodules/59pinnedfiles, profileonlypathrewrite; contextcommitfbf2f68baseline notnewcodeapproval. Nativeactualmoduleloadedinsidebundle startupJSON.",
+    "Nativecontrolrun f207b653c21b5c8ae335c8568437da315101a22c4a63c74624882e05e828d330/187.247701577s/690raw/frozen229/exit0/ownedcleanup0; BpendingID1kill5.197152337s beforefuse, Aforfeitnativecleanup/fencepastdue+4s.",
+    "PostCP189TCPacceptcontrol serializedAAAA BBBB8/8/interleavedABABABAB6mismatch, loopback-only/designnotKRnative/LAN; derivedtemplate actualTCPports3808..3998 anddynamicUDP examplesnotfixed.",
+    "CP189PR261exactfbf2f68827c5b6bb10ac8531da52baae5e612288 merged1559ad57253369e92a4141d102312ee6904b9cc0. AUD056through188/next192unchanged."
+  ],
+  "findings": [
+    {
+      "summary": "ExistingexportCLI adds --bundle onlywithpinnedpreset/newlocaloutput; preserves47fixturemetadata/policies, relativehashpaths/dedup43files/exact13runtimePymodules+initializer/launcher. Validates sourcepin/symlink andneveroverwrites, finalmanifestwrittenlast; no client/asset/DB/testbinarydistribution.",
+      "source": "design",
+      "status": "design",
+      "method": "design",
+      "canonical": "docs/PROTOCOL.md#portable-probe-bundle",
+      "evidence": [
+        "PORTABLE190-01020",
+        "PORTABLE190-01021",
+        "PORTABLE190-00107"
+      ],
+      "limits": "Portablepinnedfixture+exactPythonservicebundle only; nativecontrolsamephysicalhost/privatevirtualhosts/modifiedWinecopy4b/currentbasic291. No originalclient/DB/assets orwire/sourcepolicychanges. Onefirstepochforfeit/zero normaloutcomes/Start2, notfullcycle/LAN/Internet/newgate. Own291/nativebody/seq/capture separatefrombundlehash/sourcepolicy. Fullauth/generalincomingbinding/interleaving/NAT/relay/physicalsecondhost unknown. Oldcomplete/evidence/binary immutable; reviewwaived."
+    },
+    {
+      "summary": "Relocation+Python-I/noPYTHONPATH/othercwd/spacepath tests passes afterdeletedsyntheticfixture source; actualloopbackTCP bootstrap/ownedSIGTERMcleanup. Drift/missing/sourceescape/destinationchange/profileoverride/existingout rejected. Hashmanifestdetectsdrift notsignature orsemantic/nativeoracle.",
+      "source": "design",
+      "status": "design",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#portable-probe-bundle",
+      "evidence": [
+        "PORTABLE190-00042",
+        "PORTABLE190-00167",
+        "PORTABLE190-01022"
+      ],
+      "limits": "Portablepinnedfixture+exactPythonservicebundle only; nativecontrolsamephysicalhost/privatevirtualhosts/modifiedWinecopy4b/currentbasic291. No originalclient/DB/assets orwire/sourcepolicychanges. Onefirstepochforfeit/zero normaloutcomes/Start2, notfullcycle/LAN/Internet/newgate. Own291/nativebody/seq/capture separatefrombundlehash/sourcepolicy. Fullauth/generalincomingbinding/interleaving/NAT/relay/physicalsecondhost unknown. Oldcomplete/evidence/binary immutable; reviewwaived."
+    },
+    {
+      "summary": "ActualcurrentKRAB onrelocatedpackagedservice: startupmodule/profileSHAinsidebundle, exact47pins/policy/source13modules; bothnative291128/128/errors0/name/render1/request6guard/continuousS2C43+3n. HostBack/rejoin/Ready/native12199clockboth thenBactualSpaceID1/ownedBEOF, A-onlyforfeit175180/107ID2clear/chief110/room, pendingjobround_closed/no158pastdue+4s.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#portable-probe-bundle",
+      "evidence": [
+        "PORTABLE190-00882",
+        "PORTABLE190-00883",
+        "PORTABLE190-00888",
+        "PORTABLE190-00944"
+      ],
+      "limits": "Portablepinnedfixture+exactPythonservicebundle only; nativecontrolsamephysicalhost/privatevirtualhosts/modifiedWinecopy4b/currentbasic291. No originalclient/DB/assets orwire/sourcepolicychanges. Onefirstepochforfeit/zero normaloutcomes/Start2, notfullcycle/LAN/Internet/newgate. Own291/nativebody/seq/capture separatefrombundlehash/sourcepolicy. Fullauth/generalincomingbinding/interleaving/NAT/relay/physicalsecondhost unknown. Oldcomplete/evidence/binary immutable; reviewwaived."
+    },
+    {
+      "summary": "PostCP189serviceacceptpolicyactualTCPcontrol nowbatched: serializedstartup0mismatch, interleaved6of8role/stagemismatch becauseglobalordinalfourgroups; explicitpeerIPisoutbound153 only. ControlledsourceIP isnotidentity/accountauth. PhysicalLANrecipe initiallyserialized; secondcontrolledphysicalhost/endpoint absent, keepblocker.",
+      "source": "design",
+      "status": "design",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#portable-probe-bundle",
+      "evidence": [
+        "PORTABLE190-00033",
+        "PORTABLE190-00030",
+        "PORTABLE190-00028"
+      ],
+      "limits": "Portablepinnedfixture+exactPythonservicebundle only; nativecontrolsamephysicalhost/privatevirtualhosts/modifiedWinecopy4b/currentbasic291. No originalclient/DB/assets orwire/sourcepolicychanges. Onefirstepochforfeit/zero normaloutcomes/Start2, notfullcycle/LAN/Internet/newgate. Own291/nativebody/seq/capture separatefrombundlehash/sourcepolicy. Fullauth/generalincomingbinding/interleaving/NAT/relay/physicalsecondhost unknown. Oldcomplete/evidence/binary immutable; reviewwaived."
+    },
+    {
+      "summary": "294server/39checkpoint/7exportregressions/6meaningfulbundle tests anddocs/artifact/diff checks; no service/nativepolicychange. Canonicaldocs/featureIDs/issue14references synced, K6a remains scopedpassed/noothergatechange; AUD056next192 cadenceunchanged.",
+      "source": "design",
+      "status": "design",
+      "method": "design",
+      "canonical": "docs/PROTOCOL.md#portable-probe-bundle",
+      "evidence": [
+        "PORTABLE190-00168",
+        "PORTABLE190-00044",
+        "PORTABLE190-00046",
+        "PORTABLE190-00042",
+        "PORTABLE190-00045"
+      ],
+      "limits": "Portablepinnedfixture+exactPythonservicebundle only; nativecontrolsamephysicalhost/privatevirtualhosts/modifiedWinecopy4b/currentbasic291. No originalclient/DB/assets orwire/sourcepolicychanges. Onefirstepochforfeit/zero normaloutcomes/Start2, notfullcycle/LAN/Internet/newgate. Own291/nativebody/seq/capture separatefrombundlehash/sourcepolicy. Fullauth/generalincomingbinding/interleaving/NAT/relay/physicalsecondhost unknown. Oldcomplete/evidence/binary immutable; reviewwaived."
+    }
+  ],
+  "verification": [
+    {
+      "check": "Portablebundle relocation/realTCP/drift/missing/escape/override/overwrite controls",
+      "result": "pass",
+      "evidence": [
+        "PORTABLE190-00042",
+        "PORTABLE190-00167"
+      ],
+      "limits": "Sixautomatedtests+separate47actualfixtureverify, notnative/LANgate."
+    },
+    {
+      "check": "ActualKRWineABidentity/room/load/pendingBEOF/Aresultcleanup/fence onrelocatedservice",
+      "result": "pass",
+      "evidence": [
+        "PORTABLE190-00882",
+        "PORTABLE190-00883",
+        "PORTABLE190-00888"
+      ],
+      "limits": "Portablepinnedfixture+exactPythonservicebundle only; nativecontrolsamephysicalhost/privatevirtualhosts/modifiedWinecopy4b/currentbasic291. No originalclient/DB/assets orwire/sourcepolicychanges. Onefirstepochforfeit/zero normaloutcomes/Start2, notfullcycle/LAN/Internet/newgate. Own291/nativebody/seq/capture separatefrombundlehash/sourcepolicy. Fullauth/generalincomingbinding/interleaving/NAT/relay/physicalsecondhost unknown. Oldcomplete/evidence/binary immutable; reviewwaived."
+    },
+    {
+      "check": "Currentserialized/interleavedacceptorder sourcepolicy andderivedLANtemplate",
+      "result": "pass",
+      "evidence": [
+        "PORTABLE190-00033",
+        "PORTABLE190-00028"
+      ],
+      "limits": "ActualTCPloopback/designonly, notKRnativeidentity/LANreachability."
+    },
+    {
+      "check": "Actualtwo-controlled-hostLAN/Internet/fullauth/generalincomingbinding",
+      "result": "pending",
+      "evidence": [
+        "PORTABLE190-00173"
+      ],
+      "limits": "No secondphysicalhost/endpoint established, bundlecanpreparebutcannotcertifyK6b."
+    }
+  ],
+  "evidence": [],
+  "evidence_manifests": [
+    {
+      "path": "docs/evidence/checkpoints/evidence/CP190-portable-bundle.json",
+      "bytes": 271484,
+      "sha256": "1130087bc3cc2ac94f3139e3a21cb20d23ce26a2af904daa163ff7da482eb8a8",
+      "count": 1022
+    }
+  ],
+  "delta": {
+    "added": [
+      "Opt-inportablebundle fromexistingpinnedexport; exactfixture/source/relativepaths/verificationlauncher, no newtracker/protocol.",
+      "Actualrelocatedservice→KRWineABnativeidentity/room/load/EOFcontrol; noREhostabsolutefixturepaths needed.",
+      "ConsolidatedpostCP189TCPaccept/derivedLANrecipe/hash metadata intoCP190."
+    ],
+    "corrected": [
+      "Portablefileverify/loopbackservice isnotphysicalLAN/nativeproof; actualWinecontrol nowseparatelylinked.",
+      "Contextcommitinbundlerbaseline notnewtoolcommit, fileSHAs pinactualuncommitted-at-exportsource accurately.",
+      "CP189PR261merged recordedoutsideimmutableCP189record, oldcandidatepinmetadataunchanged."
+    ],
+    "superseded": [
+      "NEXT-K6B-LAN-PREFLIGHT portabledeployment delta fulfilled, actualcontrolledsecondhost/isolation/serializedstartup remainsactive."
+    ]
+  },
+  "blockers": [
+    "K6bactualphysicalhostpair/addresses/ownedclientisolation/capture notestablished. InitialLANrecipe mustserializeAchannelreadybeforeB dueacceptorder; interleavedaccount/stagebinding unsupported.",
+    "NAT/relay/Internet/four-eightactualclients/fullauth/fullcodec/distance/142freshness/generalreset/allmapsitems remainunknown/backlog."
+  ],
+  "next_steps": [
+    {
+      "id": "NEXT-K6B-LAN-PREFLIGHT",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "PLAN:useportablebundle/template+pinnedclientcopy/networkisolationandserializedstartup; actualcontrolledsecondphysicalhost/endpoints required. Ifunavailablecontinueindependentdeploymentpreflight, nogateorLANclaimfromvirtualhosts.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    }
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-11-07T06:25:27.184865+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "Codexsolo/sourcepackaging/runtime/selfcheck; ownerwaiver notindependentapproved, exactheadPRchecks beforemerge; no gateincrease.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Owner explicitly requested solo, no workers/review."
+    }
+  },
+  "docs_sync": [
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "CP190portablebundle/nativecontrol/sourcepolicy/limits/nextLANblocker synchronizedbeforecomplete; PLANsoleorder, AUD056next192unchanged."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "CP190portablebundle/nativecontrol/sourcepolicy/limits/nextLANblocker synchronizedbeforecomplete; PLANsoleorder, AUD056next192unchanged."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "updated",
+      "reason": "CP190portablebundle/nativecontrol/sourcepolicy/limits/nextLANblocker synchronizedbeforecomplete; PLANsoleorder, AUD056next192unchanged."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "updated",
+      "reason": "CP190portablebundle/nativecontrol/sourcepolicy/limits/nextLANblocker synchronizedbeforecomplete; PLANsoleorder, AUD056next192unchanged."
+    },
+    {
+      "path": "docs/features.json",
+      "state": "updated",
+      "reason": "CP190portablebundle/nativecontrol/sourcepolicy/limits/nextLANblocker synchronizedbeforecomplete; PLANsoleorder, AUD056next192unchanged."
+    },
+    {
+      "path": "docs/COVERAGE.md",
+      "state": "updated",
+      "reason": "CP190portablebundle/nativecontrol/sourcepolicy/limits/nextLANblocker synchronizedbeforecomplete; PLANsoleorder, AUD056next192unchanged."
+    },
+    {
+      "path": "tools/README.md",
+      "state": "updated",
+      "reason": "CP190portablebundle/nativecontrol/sourcepolicy/limits/nextLANblocker synchronizedbeforecomplete; PLANsoleorder, AUD056next192unchanged."
+    },
+    {
+      "path": "docs/evidence/peer-endpoints/README.md",
+      "state": "updated",
+      "reason": "CP190portablebundle/nativecontrol/sourcepolicy/limits/nextLANblocker synchronizedbeforecomplete; PLANsoleorder, AUD056next192unchanged."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/review.json",
+      "state": "updated",
+      "reason": "CP190portablebundle/nativecontrol/sourcepolicy/limits/nextLANblocker synchronizedbeforecomplete; PLANsoleorder, AUD056next192unchanged."
+    }
+  ]
+}

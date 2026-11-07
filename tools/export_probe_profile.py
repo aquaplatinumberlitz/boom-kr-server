@@ -88,6 +88,8 @@ def main():
     parser.add_argument('--out', type=Path, required=True)
     parser.add_argument('--preset', choices=PRESETS,
                         help='pinned diagnostic profile; requires exact local fixtures')
+    parser.add_argument('--bundle', action='store_true',
+                        help='with --preset, --out is a new portable service/fixture directory')
     parser.add_argument('--spawn-layout', choices=['distinct', 'overlap'], default='distinct',
                         help='known map spawn0/1, or intentional overlap for contact/race RE')
     parser.add_argument('--item-layout', choices=['floor', 'hidden', 'battle'], default='floor',
@@ -106,6 +108,8 @@ def main():
     out = args.out.resolve()
     if not root.is_relative_to(local) or not out.is_relative_to(local):
         parser.error('profile and fixtures must be under this repo local/')
+    if args.bundle and not args.preset:
+        parser.error('--bundle requires a pinned --preset')
     if args.preset:
         if (args.spawn_layout != 'distinct' or args.item_layout != 'floor'
                 or args.all_dead_rank or args.host_back_rejoin or args.host_battle_exit):
@@ -113,6 +117,12 @@ def main():
         result = load_preset(root, PRESETS[args.preset])
         if args.own_profile_291:
             result['own_profile'] = {'mode': 'native_291'}
+        if args.bundle:
+            from probe_bundle import export_bundle
+            manifest = export_bundle(result, root, out)
+            print(f'Exported portable {args.preset}: {manifest["fixture_aliases"]} aliases; '
+                  'file pins only, not native/LAN certification')
+            return
         out.parent.mkdir(parents=True, exist_ok=True)
         with out.open('x') as stream:
             json.dump(result, stream, indent=2)
