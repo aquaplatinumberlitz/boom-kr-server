@@ -1913,3 +1913,27 @@ Scope chỉ lịchABnày/uniqueincomingIP/fourtransportslifetime, khônggenerala
 4–8actualclients/mọiinterleavings/Internetgate/K7. Raw/sourcefirst/preflight/seals/scripts/PCAP/hash ở
 externalmanifestCP198. Tiếp source-first hardcode/service roster/session/153 tối thiểu4người theoPLAN,
 không RE lại known8slot/Free-Manner/codec/ABadmission. AUD058qua196/auditkếCP200.
+
+<a id="cp199"></a>
+## CP199 — bốn native slot/actor, hai actual client + hai synthetic
+
+KRE-005b/#14/Codexsolo/reviewwaived; baseline CP198/PR270 merge`f6914d17`.
+[Contract/reuse/giới hạn](../../PROTOCOL.md#four-slot-native-consumers),
+[câu hỏi kế](../../RESEARCH.md#gap-lobby-identity-followup), [PLAN](../../PLAN.md#current-order).
+
+`four-slot-r1`: 141.524046084s/562raw/242frozen/exit0/cleanup0;
+runSHA`2930d6b5169ad551faf62fa9d7e2dc9f96e1a026aee02fcde88d350aa630cc7b`. 883mechanicalchecks + 203reusednativepeerchecks.
+
+Recipe: `python3 local/research/codex/prepare_four_slot.py`, task-local adapter/probe rồi preflight,
+`python3 local/research/codex/run_four_slot.py`; profile và input frozen trước launch. Chuẩn bị/adapter/control/
+controller/GDB/sourcefirst/preflight/rawseal/verifier được pin trong external evidence CP199; không cần cat rawindex.
+Run chỉlo/privateuser-net-mount-PID namespaces/tworoutedhosts/staticNAT/UDP40±5ms/loss5%seed194/TCPbaseline,
+không default/externalroute. Giữ copy4b/sourcea525/DB/assets/bundle/service code; subclass chỉ106/121/153.
+Tái dùng row26/slotCount/Ready/team/peer26 và consumer addresses; không quét/nativebody RE mới.
+
+Cả hai client native đọc121181/181/inner152/152/153133/133/errors0, IDs1–4/position0–3/bốnspawnobject,
+clock tọa độ riêng và ảnh bốn nhân vật; hai A/B nativepeer windows ingress/key/apply/target/currentprogress.
+Peerregister chỉ3remote/view (localself bỏ), verifier đầu đòi4calls bị bác bỏ/failure giữ nguyên; không sửa run.
+Hai synthetic giữ KRGuest/profilezero/Ready4/slot2–3/ID3–4/team0–1/endpoint0: không cóC/Dsession/auth/291/
+client hoặc syntheticUDPdelivery. Không outcome/reset2v2/bốnactualclient/gate. Scope bốn session đã chọn,
+service/realTCP trước actual4Wine ở PLAN; AUD058qua196/auditkếCP200.

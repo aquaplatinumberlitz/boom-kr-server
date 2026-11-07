@@ -132,6 +132,11 @@ startup tuần tự vẫn qua hai trận/reset/Start3 trên bundle mới. [Contr
 hai normal cycles/reset/Start3 trên gói admission hiện hành. [Scope/giới hạn](docs/PROTOCOL.md#native-interleaved-startup),
 [raw/hash](docs/evidence/peer-endpoints/README.md#cp198). K6c Internet/K7/bốn client vẫn mở; audit kế CP200.
 
+**CP199: copy KR hiện hành đã đọc Start121/peer153 bốn slot và khởi tạo bốn actor** ở cả hai view.
+[Phạm vi](docs/PROTOCOL.md#four-slot-native-consumers), [raw/hash](docs/evidence/peer-endpoints/README.md#cp199):
+hai actual client + hai actor tổng hợp, A/B peer còn hoạt động. Chưa bốn actual client, kết quả/reset2v2 hoặc K7.
+Blocker chuyển sang service bốn session/identity/roster/Ready/barrier/mesh; thứ tự chỉ giữ ở PLAN.
+
 Đích đầu: hai client thật chơi hai trận liên tiếp; mở bốn client và hardening sau đó.
 
 ## Bắt đầu

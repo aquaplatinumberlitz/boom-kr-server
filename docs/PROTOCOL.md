@@ -5381,6 +5381,36 @@ Serviceproductionbind/153IPvẫnhard127; private-addressshims hiện làmeasurem
 Internet/K6c/NAT/relay/fullauth/authority/generalreset/gates mở; field99IP1/subtype39 vẫnunknown.
 
 
+<a id="four-slot-native-consumers"></a>
+### Bốn slot Start121/peer153 trên copy hiện hành — CP199
+
+`kr_runtime/confirmed` trong **hai actual KR Wine4b + hai actor tổng hợp**, không phải bốn client.
+[Recipe/raw/hash](evidence/peer-endpoints/README.md#cp199), [câu hỏi còn thiếu](RESEARCH.md#gap-lobby-identity-followup),
+[thứ tự](PLAN.md#current-order). Source-first tái dùng:
+
+| Nguồn đã có | Dùng trực tiếp | Phần CP199 đo thêm |
+|---|---|---|
+| [CP020 Start121](#start-reply), CP036 `collision-r1/prepare_friendly3.py` | Prefix48/slotCount+43/row26; slot/u8spawn/u16position/team; đúng blob KR | Four rows trên copy4b: inner152/152, outer181/181/errors0 ở cả hai client |
+| [CP147/163 roster8/đội](#battle-eight-roster) | 106 ID/slot/state, Ready4/team bits; map278/capacity8 và guard đã đo | ID1–4, slot0–3, position0–3 qua native validation; không lặp capacity/teamguard |
+| [CP026 peer153](#kr-peer-entry), [CP198 A/B](#native-interleaved-startup) | Prefix35/key/26flags/3endpointtriples, actual A/B tuples/copy/input probes | Active0–3:133/133/errors0; mỗi view đăng ký **ba remote** đúng local/remoteID, bỏ localself |
+| VN room/game reference qua các nguồn trên | Định hướng roster/Ready/P2P; không nhập opcode/ID/layout VN | Không codec/body RE mới; không nâng reference thành runtimeKR |
+
+Hai hàng0/1 giữ nguyên; hàng2/3 chọn spawn/position2/3, team0/1. Actor tổng hợp ID3/4 có Ready4,
+giữ tên/profile KRGuest của template; không có auth/291/session/socket C/D. Native ở mỗi view khởi tạo
+bốn object riêng, clock snapshot có tọa độ0:(120,159),1:(120,399),2:(120,279),3:(200,279); checksum
+wrapper được kiểm đọc thụ động, không gọi getter trong process hoặc ghi actor. Ảnh hiện bốn nhân vật.
+153 giữ actual A/B mappedtuple; self và hai synthetic có ba endpoint(0,0). Native đăng ký ba remote
+slots/IDs ở mỗi view; điều này không chứng minh delivery tới synthetic. Hai cửa sổ normalRight A/B có
+actual ingress→key→apply→targetchange/currentprogress; chỉ A/B peer có runtime transport.
+
+Task-local subclass chỉ thêm106/121/153; production service/bundle/copy/assets giữ nguyên. Verifier đầu
+đòi cả localself vào peerregister đã bị bác bỏ: raw cho A remote1/2/3, B remote0/2/3; sửa expectation
+cho đúng consumer đã biết, giữ nguyên failure/script/runtime. Không suy bốn session/mesh, luật thắng2v2,
+result/reset4người hoặc K7 từ phép thử này. **Scope tiếp chọn bốn session A/B/C/D đồng thời, slots0–3,
+IDs1–4, team0/1 xen kẽ, một room/ExVillage01/normalBattle**; đây là design tối thiểu, chưa implementation.
+K6c Internet/K7 còn mở; điểm chặn là generalize role/identity/roster/Ready/99barrier/153 và kiểm realTCP
+trước actual4runtime. Không làm lại schema/guard/codec đã giải.
+
 <a id="native-interleaved-startup"></a>
 ### Native startup xen kẽ A/B với binding opt-in — CP198
 
