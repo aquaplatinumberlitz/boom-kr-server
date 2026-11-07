@@ -1,7 +1,7 @@
 {
   "schema": "kre-feature-index-v1",
   "build": "KR00967",
-  "as_of": "CP198",
+  "as_of": "CP199",
   "sources": {
     "plan": "docs/PLAN.md",
     "contract": "docs/PROTOCOL.md",
@@ -882,7 +882,8 @@
           "docs/evidence/peer-endpoints/README.md#cp166",
           "docs/evidence/peer-endpoints/README.md#cp167",
           "docs/evidence/peer-endpoints/README.md#cp168",
-          "docs/PROTOCOL.md#native-interleaved-startup"
+          "docs/PROTOCOL.md#native-interleaved-startup",
+          "docs/PROTOCOL.md#four-slot-native-consumers"
         ]
       },
       "coverage": {
@@ -926,7 +927,8 @@
               "docs/evidence/peer-endpoints/README.md#cp166",
               "docs/evidence/peer-endpoints/README.md#cp167",
               "docs/evidence/peer-endpoints/README.md#cp168",
-              "docs/PROTOCOL.md#current-291-room-integration"
+              "docs/PROTOCOL.md#current-291-room-integration",
+              "docs/PROTOCOL.md#four-slot-native-consumers"
             ]
           },
           "windows_original": {
@@ -1009,7 +1011,8 @@
           "docs/evidence/peer-endpoints/README.md#cp153",
           "docs/evidence/peer-endpoints/README.md#cp166",
           "docs/evidence/peer-endpoints/README.md#cp167",
-          "docs/evidence/peer-endpoints/README.md#cp168"
+          "docs/evidence/peer-endpoints/README.md#cp168",
+          "docs/PROTOCOL.md#four-slot-native-consumers"
         ]
       },
       "coverage": {
@@ -1062,7 +1065,8 @@
               "docs/evidence/peer-endpoints/README.md#cp166",
               "docs/evidence/peer-endpoints/README.md#cp167",
               "docs/evidence/peer-endpoints/README.md#cp168",
-              "docs/PROTOCOL.md#current-291-room-integration"
+              "docs/PROTOCOL.md#current-291-room-integration",
+              "docs/PROTOCOL.md#four-slot-native-consumers"
             ]
           },
           "windows_original": {
@@ -1344,7 +1348,8 @@
           "docs/PROTOCOL.md#a-c-basic-cycles",
           "docs/evidence/peer-endpoints/README.md#cp176",
           "docs/PROTOCOL.md#current-basic-cycles-291",
-          "docs/PROTOCOL.md#current-basic-contest-reset"
+          "docs/PROTOCOL.md#current-basic-contest-reset",
+          "docs/PROTOCOL.md#four-slot-native-consumers"
         ]
       },
       "coverage": {
@@ -1387,7 +1392,8 @@
               "docs/PROTOCOL.md#a-c-basic-cycles",
               "docs/evidence/peer-endpoints/README.md#cp176",
               "docs/PROTOCOL.md#current-basic-cycles-291",
-              "docs/PROTOCOL.md#current-basic-contest-reset"
+              "docs/PROTOCOL.md#current-basic-contest-reset",
+              "docs/PROTOCOL.md#four-slot-native-consumers"
             ]
           },
           "windows_original": {
@@ -1489,7 +1495,8 @@
           "docs/PROTOCOL.md#routed-Wine-network",
           "docs/PROTOCOL.md#nat-endpoint-control",
           "docs/PROTOCOL.md#nat-two-cycles",
-          "docs/PROTOCOL.md#udp-netem-cycles"
+          "docs/PROTOCOL.md#udp-netem-cycles",
+          "docs/PROTOCOL.md#four-slot-native-consumers"
         ]
       },
       "coverage": {
@@ -1551,7 +1558,8 @@
               "docs/PROTOCOL.md#current-basic-cycles-291",
               "docs/PROTOCOL.md#current-basic-contest-reset",
               "docs/PROTOCOL.md#emulated-lan-acceptance",
-              "docs/PROTOCOL.md#routed-Wine-network"
+              "docs/PROTOCOL.md#routed-Wine-network",
+              "docs/PROTOCOL.md#four-slot-native-consumers"
             ]
           },
           "windows_original": {
@@ -4616,7 +4624,8 @@
           "docs/PROTOCOL.md#udp-netem-cycles",
           "docs/PROTOCOL.md#nat-netem-host-eof",
           "docs/PROTOCOL.md#operator-incoming-binding",
-          "docs/PROTOCOL.md#native-interleaved-startup"
+          "docs/PROTOCOL.md#native-interleaved-startup",
+          "docs/PROTOCOL.md#four-slot-native-consumers"
         ]
       },
       "coverage": {
@@ -4642,7 +4651,8 @@
           "wine_diagnostic_copy": {
             "state": "observed",
             "refs": [
-              "docs/PROTOCOL.md#udp-netem-cycles"
+              "docs/PROTOCOL.md#udp-netem-cycles",
+              "docs/PROTOCOL.md#four-slot-native-consumers"
             ]
           },
           "windows_original": {
