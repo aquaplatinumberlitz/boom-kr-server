@@ -1,0 +1,239 @@
+{
+  "id": "CP183",
+  "previous": "CP182",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-07T02:05:54.783521+00:00",
+  "context_commit": "59196f83d5a93a2594295e6c2a583d7e56b607b0",
+  "owner": "Codex",
+  "reviewer": "Codex",
+  "question": "Which KRpacket populatesown544record, and can nativecontrol/positive recoveractualpanelnamewithoutauthfieldguess?",
+  "scope": "Source-firstCP182andVNUserMap/CP018KRprofile109; 8targetedbodies/bytecompare andoneindependentWinecopyrun withinactivecontrolthenactivepositive291. Nativecursor/store/render/raw/image confirmed. Meaningfulproducer→panelmilestone, notK3gate. Allraw/inputpins/cleanupsealed beforedocs; CP182PR254merged.",
+  "artifacts": [
+    {
+      "name": "OriginalKR00967unchanged",
+      "sha256": "a52545c14b1fea423de655c3163d6360b628d61c1cd472b46fdbc8a9ffe15f4e"
+    },
+    {
+      "name": "CurrentWinecopyunchanged",
+      "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+    },
+    {
+      "name": "NativeIDAfullcopycf72privateanalysis",
+      "sha256": "cf72da112308d9f1ca256df8089594c5f787875310933073bf6bd5ba6f70e63b"
+    },
+    {
+      "name": "modOmodelreference",
+      "sha256": "a08950c833d3acab8281049def7b3dc96b221f107eeda01da3a548e34b91dce5"
+    },
+    {
+      "name": "OriginalKR00967NewPatcher",
+      "sha256": "b59e4dce9ad23c439a7632ce04ecb2eed3481585bd2454100b05c9d7527f5c02"
+    },
+    {
+      "name": "VN116original_reference_only",
+      "sha256": "bce8644d4e783d1354ab4fc880e1ab9a4ab3325327028f37d99e5439e25f4bbd"
+    },
+    {
+      "name": "VN116patched_runtime_reference_only",
+      "sha256": "bc875ba5765cc112e924f46e75d0ace112904c7801126e46bc0abb1c9cb576b1"
+    },
+    {
+      "name": "PassingK1offlineR2recipe",
+      "sha256": "7b3b435b5d8e110185359107376b736615ceabe9452cea8154d02c8628f44c29"
+    },
+    {
+      "name": "NativeProcessPatchR1control",
+      "sha256": "a0c3b9867dae5fe2ff7c315cfe851117661c2cafead45196ce999329f67432f5"
+    }
+  ],
+  "locators": [
+    "Runtimee9bb476.../analysiscf72da.../base400000/RVA=VA−400000; D68C90case291/D68ED8→D73BB0→D2FEB0.",
+    "CUserMap19DB454/ownrecord+6404h+220h×localindex; vtable175E3A4/D309F0UserSimpleInfo→D30BF0→AE6330. Nativeguard+1FC/nameSSO+4; ownrender901390→9022D0/902329.",
+    "producer-r1control39byteSHA1d85c01bfcae363df3ac8f272c04901d1ef737c3180222b8d75b28036739f7e8 seq55; positive166byteSHA3f72f432a8c528d9cf34acb0e47d91c01a1a0c84e25776f879381627a6e83cb7 seq58.",
+    "KR109innerSHAa208ec5e86cf01ca513c1330708ebc5ac16f8966a2cf6e6ee11f95b6a90ed065 reusedfromCP018. AUD054periodic180/nextCP184 unchanged."
+  ],
+  "findings": [
+    {
+      "summary": "KRstaticdispatchcase291→D73BB0→D2FEB0loopsactual localcount, readsactive/blob/reset/deserializes544record. D30BF0AE6330setsloadedguard1; field+1FCnotaccountID. Subsequentu32/u8/feature106threeU8 boundtoactualbranch; feature48 addsstateupdatesnotwirebyteshere.",
+      "source": "kr_static",
+      "status": "confirmed",
+      "method": "static",
+      "canonical": "docs/PROTOCOL.md#own-profile-291",
+      "evidence": [
+        "OWN291-00022",
+        "OWN291-00025",
+        "OWN291-00005",
+        "OWN291-00016",
+        "OWN291-00013",
+        "OWN291-00028"
+      ],
+      "limits": "Oneactualmodifiede9Wineclient/offline/loopback/inheritedcache/syntheticlocalidentity/labonlytwoframeinjection; productionservice/47fixturesunchanged. Scalar/profilezeroemu_choice; noWindows/fullauth/K3gate/cachematrix/wrongstage/version/productionintegration/create-mapafter291/fullmatch/LANInternet/8clients. No nativefunctioncall/storeguardwrite/sourcebinaryDBmutation."
+    },
+    {
+      "summary": "ReusedCP018KR109innerexactbytesafterAE6330/D2D310readerordercompare; VNUserMaplistvsownpanelarchitectureguidedstoresearchonly. Avoidedauthschema/namegetter/cacheCRC/profileRE; noVNopcode/layouttransfer. Eightnewbodybytes equal runtimee9.",
+      "source": "kr_static",
+      "status": "confirmed",
+      "method": "static",
+      "canonical": "docs/PROTOCOL.md#own-profile-291",
+      "evidence": [
+        "OWN291-00035",
+        "OWN291-00003",
+        "OWN291-00008"
+      ],
+      "limits": "Oneactualmodifiede9Wineclient/offline/loopback/inheritedcache/syntheticlocalidentity/labonlytwoframeinjection; productionservice/47fixturesunchanged. Scalar/profilezeroemu_choice; noWindows/fullauth/K3gate/cachematrix/wrongstage/version/productionintegration/create-mapafter291/fullmatch/LANInternet/8clients. No nativefunctioncall/storeguardwrite/sourcebinaryDBmutation."
+    },
+    {
+      "summary": "Actualchannel291inactive0seq55 consumes1/1/errors0 andownnameremainsblank; active1seq58 consumes128/128/errors0 andsame544recordcontainsKRLocal. Exactownrender902329 twice changesguard0→1withcorrectstage+5E5D8widget/caller9013BE; screen19manuallyshowsKRLocal/Lv0/00.0%. No nativefunctioncalls/storeforcing.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#own-profile-291",
+      "evidence": [
+        "OWN291-00043",
+        "OWN291-00082",
+        "OWN291-00056",
+        "OWN291-00105",
+        "OWN291-00083",
+        "OWN291-00084"
+      ],
+      "limits": "Oneactualmodifiede9Wineclient/offline/loopback/inheritedcache/syntheticlocalidentity/labonlytwoframeinjection; productionservice/47fixturesunchanged. Scalar/profilezeroemu_choice; noWindows/fullauth/K3gate/cachematrix/wrongstage/version/productionintegration/create-mapafter291/fullmatch/LANInternet/8clients. No nativefunctioncall/storeguardwrite/sourcebinaryDBmutation."
+    },
+    {
+      "summary": "Labsubclassonlyinjects291afterreadyfixtureswith2sdelays; schedule/scalars areemu_choice, nothistoricalserverpolicy. Productionunchanged, initialfixtures55..70/dynamic73notyetadjustedforinsertedpacket; nextopt-inintegrationandnativecreate-map/identitycontrol, notK3closure.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#own-profile-291",
+      "evidence": [
+        "OWN291-00012",
+        "OWN291-00020",
+        "OWN291-00043"
+      ],
+      "limits": "Oneactualmodifiede9Wineclient/offline/loopback/inheritedcache/syntheticlocalidentity/labonlytwoframeinjection; productionservice/47fixturesunchanged. Scalar/profilezeroemu_choice; noWindows/fullauth/K3gate/cachematrix/wrongstage/version/productionintegration/create-mapafter291/fullmatch/LANInternet/8clients. No nativefunctioncall/storeguardwrite/sourcebinaryDBmutation."
+    }
+  ],
+  "verification": [
+    {
+      "check": "Frozeninputs/77rawfiles/loopbackisolation/ownedcleanup/8nativebodybytes/actual291cursor/recordSSO/renderguard/imagehash",
+      "result": "pass",
+      "evidence": [
+        "OWN291-00043"
+      ],
+      "limits": "158mechanicalchecks plusmanualimage/assembly; notautosemantics/gate."
+    },
+    {
+      "check": "Original5artifacts",
+      "result": "pass",
+      "evidence": [
+        "OWN291-00002"
+      ],
+      "limits": "Nooriginalruntimeclaim."
+    },
+    {
+      "check": "Productionintegration/K3cachematrix/socketstage/version/identity",
+      "result": "pending",
+      "evidence": [
+        "OWN291-00043"
+      ],
+      "limits": "Oneactualmodifiede9Wineclient/offline/loopback/inheritedcache/syntheticlocalidentity/labonlytwoframeinjection; productionservice/47fixturesunchanged. Scalar/profilezeroemu_choice; noWindows/fullauth/K3gate/cachematrix/wrongstage/version/productionintegration/create-mapafter291/fullmatch/LANInternet/8clients. No nativefunctioncall/storeguardwrite/sourcebinaryDBmutation."
+    }
+  ],
+  "evidence": [],
+  "evidence_manifests": [
+    {
+      "path": "docs/evidence/checkpoints/evidence/CP183-own-profile-291.json",
+      "bytes": 46364,
+      "sha256": "1a7b63833a29caa02078108e0d46acc2a8c2567808c4b8b438b70a3c62bc7a34",
+      "count": 188
+    }
+  ],
+  "delta": {
+    "added": [
+      "RecoveredKR291producer/nativeprofile/actualpanelname withsame-runinactivecontrol+positive andnoauthfieldrewrite."
+    ],
+    "corrected": [
+      "CP182producerunknown resolvednarrowly byKR291; guard+1FC isloadedflaginthisconsumer, notaccountID. OldcompleteCP182/raw unchanged.",
+      "CurrentCP182delivery stale corrected: PR254merged59196f8; CP183pendingdelivery; K3remainsopen."
+    ],
+    "superseded": [
+      "Producer→store→rendersearch completeinthisscope; nextintegration/initialsequencecontinuity/cacheacceptance, no repeat291search orauthgetter."
+    ]
+  },
+  "blockers": [
+    "Initialfixedfixtureseq55..70/dynamic73 mustremaincontinuouswhenproductionadds291, includingcreate/map/rejoin/A-B-C; labpositive doesnotverifyintegration.",
+    "K3cachecold/missing/warm/fullidentityauthority/wrongsocket-stage/version remainopen; all latergates/fullmatch/LANInternet8client unchanged."
+  ],
+  "next_steps": [
+    {
+      "id": "NEXT-K3-IDENTITY-CACHE",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "PLAN opt-in291fixtures/serviceA-B-Cnameidentity, initialS2Cseqcontinuitythroughcreate-map/dynamic/rejoin, nativecursors/control; thenreusecachematrix/guardproof andmeasureonlymissingacceptance.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    }
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-11-07T02:05:54.783521+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "Codexsolo RE/nativeWine/runtime/selfcheck; explicitownerreviewwaiver; exactheadPRbeforemerge, no independentapproval.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Owner explicitly requested solo, no workers/review."
+    }
+  },
+  "docs_sync": [
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "CP183producer/nativecontrolpositive/panelmilestone/limits/currentgap/catalog/issues syncedbeforecomplete; no gatesclosed."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "CP183producer/nativecontrolpositive/panelmilestone/limits/currentgap/catalog/issues syncedbeforecomplete; no gatesclosed."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "updated",
+      "reason": "CP183producer/nativecontrolpositive/panelmilestone/limits/currentgap/catalog/issues syncedbeforecomplete; no gatesclosed."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "updated",
+      "reason": "CP183producer/nativecontrolpositive/panelmilestone/limits/currentgap/catalog/issues syncedbeforecomplete; no gatesclosed."
+    },
+    {
+      "path": "docs/features.json",
+      "state": "updated",
+      "reason": "CP183producer/nativecontrolpositive/panelmilestone/limits/currentgap/catalog/issues syncedbeforecomplete; no gatesclosed."
+    },
+    {
+      "path": "docs/COVERAGE.md",
+      "state": "updated",
+      "reason": "CP183producer/nativecontrolpositive/panelmilestone/limits/currentgap/catalog/issues syncedbeforecomplete; no gatesclosed."
+    },
+    {
+      "path": "docs/evidence/lobby-identity/README.md",
+      "state": "updated",
+      "reason": "CP183producer/nativecontrolpositive/panelmilestone/limits/currentgap/catalog/issues syncedbeforecomplete; no gatesclosed."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/review.json",
+      "state": "updated",
+      "reason": "CP183producer/nativecontrolpositive/panelmilestone/limits/currentgap/catalog/issues syncedbeforecomplete; no gatesclosed."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
+      "state": "updated",
+      "reason": "CP183producer/nativecontrolpositive/panelmilestone/limits/currentgap/catalog/issues syncedbeforecomplete; no gatesclosed."
+    },
+    {
+      "path": "docs/evidence/checkpoints/README.md",
+      "state": "unchanged",
+      "reason": "Storage/immutablehistory/auditcadence unchanged; nextperiodicCP184."
+    }
+  ]
+}

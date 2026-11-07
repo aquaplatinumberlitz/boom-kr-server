@@ -41,5 +41,31 @@ inputpins/isolation/ownedcleanup/nonoverlap,16nativebodies và guard/SSOraw. Scr
 không chạy lại để ghi đè report. Checker chứng minh hash/khai báo, không ngữ nghĩa/gate.
 Các kiểm repo bắt buộc và exactheadPR bổ sung trong bàn giaoGit. Audit AUD054 qua180, kếCP184.
 
-Bước tiếp: producerrecord→dispatch→store→render theo PLAN; fullcache/identityauthority/Windows/LAN/
+Tại CP182 bước tiếp là producerrecord→dispatch→store→render; CP183 bên dưới đã giải scope đó; fullcache/identityauthority/Windows/LAN/
 Internet/8client/fullmatch không được khôi phục bởi checkpoint này.
+
+<a id="cp183"></a>
+## CP183 — packet291, control và positive trên panel bản thân
+
+Baseline CP182/PR254 merge`59196f83d5a93a2594295e6c2a583d7e56b607b0`;
+[contract291](../../PROTOCOL.md#own-profile-291), [gap](../../RESEARCH.md#gap-lobby-identity-followup).
+Raw `local/research/codex/k3-ownrecord-producer-r1/`: source-first,8targetedbody+bytecomparison,
+fixture291metadata/2binarycandidate, recipe/preparation, run77files/raw-seal và verification.
+Source-first đọc nguồncurrent→boomkr-re→VNlogin/lobby; VNUserMap giúp địnhhướng, KRprofile109
+CP018/nativeD2D310 được dùng lại sau khi so readerorderAE6330. Tránh RE lại profile/auth/name/cacheCRC.
+
+Cùng sourcehash/runtimecopye9 như CP182, game/prefixcopy mới kế thừa cache. Namespace loopback-only,
+NSSfiles-only, nooutbound; freezeproductionservice/47fixtures. Labsubclass gửi inactive291seq55 sau2s,
+positive291seq58 sau2s nữa sau bộreadyfixtures. Đây là schedulethínghiệm, không recoveredpolicy.
+Framecontrol39byte/SHA1d85c01bfcae363df3ac8f272c04901d1ef737c3180222b8d75b28036739f7e8;
+positive166byte/SHA3f72f432a8c528d9cf34acb0e47d91c01a1a0c84e25776f879381627a6e83cb7.
+Rollback về recipeCP182 khônglabinjection; không sửa sourcebinary/DB hoặc ép guard/store/callgame.
+
+Nativecontrol1/1 vàpositive128/128/error0; store/name vàrenderguard0→1 có trace; screen19 đã được
+Codex xem, hiệnKRLocal/Lv.0/00.0%. Scalar/level/exp0 làemu_choice, không luật servergốc.
+Run60s hoàn tất/cleanup/inputpins/rawhash đúng; `verification.json` **158kiểm/8bodybytes**, manualảnh/
+assembly bổ sung, không scriptsuyngữnghĩa. Bằng chứng/hash từngfile ở manifestCP183.
+
+Chưa productionintegration/create/map sau291; initialfixtureseq55..70/dynamic73 phải xử lý khi tíchhợp.
+Cold/missing/warm toànmatrix, wrongstage/version/identity và K3–K7/LAN/Internet/8client còn mở.
+CP183 chờPR khi viết; reviewwaived/Codexselfcheck. AuditAUD054qua180/kếCP184, khôngreset.
