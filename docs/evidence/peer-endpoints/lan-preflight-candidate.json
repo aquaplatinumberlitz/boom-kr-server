@@ -1,0 +1,35 @@
+{
+  "schema": "kre-post-checkpoint-preflight-v1",
+  "recorded_utc": "2026-11-07T06:02:43.610356+00:00",
+  "after_checkpoint": "CP189",
+  "next_task": "NEXT-K6B-LAN-PREFLIGHT",
+  "source": "design",
+  "status": "candidate",
+  "method": "actual current ProbeService.accept with real loopback TCP sockets; no native KR/LAN runtime",
+  "question": "Whether explicitly configured peer IPs also bind incoming connection role/stage during interleaved startup.",
+  "verification": "Measured serialized AAAABBBB has0mismatches; interleaved ABABABAB has6/8 mismatches. Source accept groupsbyglobalordinal, peerIPsconfigureoutgoingUDP153 only.",
+  "canonical": "docs/RESEARCH.md#gap-lobby-identity-followup",
+  "evidence": [
+    {
+      "path": "local/research/codex/k6b-admission-preflight-r1/source-first.json",
+      "bytes": 2071,
+      "sha256": "f67b032aba1f21220707b322bcb62d350c9bf2959289e20d9bc5efe61f864896"
+    },
+    {
+      "path": "local/research/codex/k6b-admission-preflight-r1/verification.json",
+      "bytes": 4877,
+      "sha256": "06bb2df70b992e7d681871a5126d03683bbc3829f4a0f6c2c53edcfb892a59ad"
+    },
+    {
+      "path": "local/research/codex/k6b-admission-preflight-r1/raw-seal.json",
+      "bytes": 1922,
+      "sha256": "fcff1be20eeac44af9a4f570a62a696e4153f3cd498dabaa205dce96352b0037"
+    },
+    {
+      "path": "local/research/codex/probe_lan_accept_order.py",
+      "bytes": 4219,
+      "sha256": "eafb17ab3b5bcb4261ea2c5a9239b416f17bd1ebd3cd44a79ff2a178f62ab4e8"
+    }
+  ],
+  "scope": "Post-CP189 preflight experiment, not part of immutable CP189 record or any gate acceptance. Saved before proceeding; consolidate in next meaningful checkpoint. Physicalsecondhost/endpoint unknown; useknownserializedstartup forinitialLANrecipe, generalinterleavedaccountbinding backlog. Allowned sockets closed, no external traffic or source/configchange."
+}

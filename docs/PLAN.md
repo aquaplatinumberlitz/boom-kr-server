@@ -1,7 +1,7 @@
 # Kế hoạch server giả lập KR 00967
 
 Nguồn chuẩn của project `boom-kr-server`; bản nhập từ plan đã được dsh1/dsh2 review tại `1eee46d`.
-CP188: K5 basic local đạt sau đối chiếu tiêu chí/authority; currentAB291 có hai normalcycles/reset/Start3/bidirectional/Bowner và control pendingBhostEOF riêng. K6a còn currentbasiccontest; K6b/c/K7 mở. AUD056 qua188, kếCP192.
+CP189: K6a hai actualclient cùnghost/offline/basic đạt theo tiêu chí giữ nguyên và authority; K6bLAN/K6cInternet/K7 vẫn mở. K5 scopeCP188 giữ đạt; AUD056qua188, kếCP192.
 
 
 ### Mục tiêu, baseline và phạm vi
@@ -37,7 +37,7 @@ với client Rust không chứng minh có thể điều khiển client KR bằng
 
 ### Tiến độ hiện hành theo bằng chứng
 
-| Task/mốc | Trạng thái tại CP188 | Nguồn chuẩn |
+| Task/mốc | Trạng thái tại CP189 | Nguồn chuẩn |
 |---|---|---|
 | KRE-004/issue6 | Đã review/merge PR7 và đóng issue:recipe r1 đến local accept;không phải full K1 | [Wine r1](evidence/wine/README.md) |
 | Bootstrap reply | PR8 đã merge;debugger ProcessPatchreturn1,không ép success | [bootstrap evidence](evidence/bootstrap-wire/README.md) |
@@ -50,7 +50,8 @@ với client Rust không chứng minh có thể điều khiển client KR bằng
 | K3 | Đạt CP186 trong scope A/local/Wine/một kênh normal; cold3cache/version/identity/stage và nguồn CP015/016/034/058/181–185 đã đối chiếu. Không fullauth/Windows/multichannel-caption hoặc hai-client291 | [Nghiệm thu](#k3-acceptance), [contract](PROTOCOL.md#k3-version-identity-controls) |
 | K4 | CP187 đạt riêng phòng/load/start local currentAB291/copyABIcorrected; oneoutcome/reset/Start2, không gameplay2outcomes | [Nghiệm thu](#k4-acceptance) |
 | K5 | Basic local đạt CP188; current2cycles/peer/Bowner/EOFcontrol riêng, designauthority được rà. Không fullinventory/mode/map | [Nghiệm thu](#k5-acceptance) |
-| K6/K7 | [CP166](PROTOCOL.md#current-mode-host-rejoin) currentmodehostBack/rejoin, [CP168](PROTOCOL.md#current-mode-promoted-start3) Bhost2normalcycles/Ready/Start3 có nguồn. [Rà K4](#k4-evidence-review), [authority](PROTOCOL.md#authority) và [rà basic K5/K6a](#basic-acceptance-review) giữ scope; chưa gate/fullmatch/LAN/Internet/8client. | [Coverage/gap](COVERAGE.md), [membership](RESEARCH.md#gap-room-membership) |
+| K6a | Local hai actualAB/basic/cùnghost đạt CP189; nativecontestedindex/reset/life và CP188peer/Bowner/EOF cóscope riêng. Không physicalLAN/Internet | [Nghiệm thu](#k6a-acceptance) |
+| K6b/c/K7 | [CP166](PROTOCOL.md#current-mode-host-rejoin) currentmodehostBack/rejoin, [CP168](PROTOCOL.md#current-mode-promoted-start3) Bhost2normalcycles/Ready/Start3 có nguồn. [Rà K4](#k4-evidence-review), [authority](PROTOCOL.md#authority) và [rà basic K5/K6a](#basic-acceptance-review) giữ scope; chưa gate/fullmatch/LAN/Internet/8client. | [Coverage/gap](COVERAGE.md), [membership](RESEARCH.md#gap-room-membership) |
 
 <a id="current-order"></a>
 ### Thứ tự công việc hiện hành
@@ -73,21 +74,19 @@ Nguồn luật mới [wiki KR được chủ dự án tin cậy](REFERENCES.md#o
 khi hỏi lại ý nghĩa stat/item/mode; chỉ đo phần khác biệt KR00967. Nguồn này phục vụ gate đang mở,
 không tạo nhánh kiểm kê wiki hoặc mở mode phụ trước K3/K4/K5/K6a.
 
-1. **KRE-005b — khép K6a sau K5 basic local:**
-   `NEXT-K5-K6A-CURRENT` khép phần current basic cycles tại CP188: hai normaloutcomes/reset/Ready2/
-   Start3, A↔B và B/A/Aowners có native/capture; [K5 nghiệm thu](#k5-acceptance).
-   CurrentEOF r1 partial alignmiss20reads x80/y399 được giữ; r2 thêm đúng entrycolumn120 đã đo CP175,
-   không tăng20attempt/45ms/tolerance12/3s/30sload hoặc sửa physics. R2 qua2cycles nhưng patherror trước kill; focusedfirstepoch B-host EOF/forfeit/fence
-   có control riêng; không ghép thành cùng-run với run positive hoặc ca tranh item cũ.
-   `NEXT-K6A-CURRENT-CONTEST`: đối chiếu CP155 controlled2contenders/oldUDP và CP159/160 production
-   immediate165 với currentbasic/291/copy4b. Phần thiếu là currentbasic tranh một index: hai input
-   native có thể chỉ sinh1hoặc2claim khi confirm lập tức, nhưng chỉ một165/view/effect/winner và reset.
-   Chỉ thêm measurementhold nếu thật cần hai actualcontenders, ghi rõ khác production; reuseknown
-   route/consumer/oracle/CP175corridor, không RE lại ItemAttr/law/wiki/opcode. Kiểm exactcurrentcode/
-   profile/claimvalidator continuity trước khi dùng control cũ cho acceptance. Sau đó đối chiếu K6a
-   giữ nguyên; không tự đóng K6bLAN/K6cInternet/K7 hoặc đòi fullservergốc trước demo hẹp.
-   [#14](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/14) active umbrella;
-   <!-- active-issue: 14 --> AUD056 periodic188; audit kế **CP192**.
+1. **KRE-005b — chuẩn bị phép kiểm K6b LAN sau K6a local:**
+   `NEXT-K6A-CURRENT-CONTEST` khép CP189 theo [acceptance](#k6a-acceptance): currentnative2claims/
+   oneeffect, hai normalcontestedcycles/reset/Ready2 và nguồn CP188peer/Bowner/EOF đã đối chiếu.
+   `NEXT-K6B-LAN-PREFLIGHT`: đọc CP141146 endpoint/bind/peerIP, presetexport/privatecopy và isolation
+   trước khi viết/thử phần thiếu. [Tiền kiểm TCP sauCP189](RESEARCH.md#gap-lobby-identity-followup)
+   cho thấy recipe đầu cần A tới channelready rồi mới B; không đổi thành generalaccountbinding.
+   Xác định recipe tái lập trên hai máy do dự án kiểm soát, port/allowlist/
+   rollback/ownedcleanup; không dùng hai namespace/VM cùnghost để tự nghiệm thu hai máy LAN.
+   Chưa có máy/endpoint thứhai thì ghi blocker cụ thể, tiếp phần chuẩn bị deployment/service độc lập
+   trong scope bước5; không scan mạng ngoài hoặc tự nới egress đến Nexon. Không mở mode/shop hoặc
+   lại RE luật/ItemAttr/codec đã giải. K6cInternet/NAT/relay sau K6b; bốn/támactualclient/hardening theo
+   dependency bước5. [#14](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/14) vẫn mở.
+   <!-- active-issue: 14 --> AUD056periodic188, audit kế **CP192**.
 
 2. **KR-B003/KR-F006 — nợ có giới hạn:** [CP057](PROTOCOL.md#codec-stream-boundaries) đã đo stream/
    seq/bounds trong model, không mở lại76split hoặc cấp buffer lớn chỉ để vượt allocationguardFFFFFFFF.
@@ -161,7 +160,7 @@ optionalbasic+291/nameguard.** Không toàn inventory/mode/map/auth hoặc nguy�
 | Trace/capture cùng run và dependencies | RunSHA/seals/inputfreeze/ownedcleanup/nativepayload/getter/capture liên kết từngrun; K0–K4 scoped giữ đạt. Import-onlycopy/.imageidentical đã control CP187 |
 | K6a A↔B/hai owner/hai outcomes/reset | Currentpeer run có4nativewindows/2keys/currentprogress/B,A,A và2results/Start3; không physicalLAN hoặc fulltransportgrammar |
 | K6a disconnect/host cleanup | CurrentEOF focusedfirstepoch riêng có pendingB/ownedkill/A107ID2clear/chief110/room và round_closed pastdue+4s. Forfeit của control không thay một normalending |
-| K6a tranh item/freshness | CP155 controlledcontest+exactoldUDP và CP159160 immediateproduction giữ source riêng. **Currentbasic291 contest chưa đo**, là phép thử kế trong current-order; không ghép thành cùng-run. K6a/K6b/K6c/K7 vẫn mở |
+| K6a tranh item/freshness | CP155 controlledcontest+exactoldUDP và CP159160 immediateproduction giữ source riêng. **Tại CP188 currentbasic291 contest chưa đo**; [CP189 đã bổ sung](#k6a-acceptance), không ghép thành cùng-run. Tại CP188 K6a còn mở; CP189 nghiệm thu K6a hẹp, K6b/c/K7 vẫn mở |
 
 CP187 R2partial và currentEOF r1partial không bị sửa thành pass. Neutralkeyrelease có positive nhưng
 không chứng minh nguyên nhân oldnotstable; entrycolumn reuseCP175 có control riêng. Không đổi gatecriteria.
@@ -297,10 +296,24 @@ sau đó inputcontroller alignmentfail vòng2; giữ exit1/cleanupabort, không 
 Giới hạn inputalignment vòng2 thuộc bước K5/K6a; không đổi tiêu chí hoặc gọi bộ2outcomes đã thành công.
 Phạm vi feature ngoài profile vẫn partial/unknown; `gate=passed` không là `presence/allimplementation=complete`.
 
-**Các bước nghiệm thu K6, đều chưa đạt; K5 basic đã đạt CP188 theo scope ở trên:**
+<a id="k6a-acceptance"></a>
+### K6a hai client cùng host — đạt scope basic local tại CP189
 
-- **K6a — hai client cùng host:** identity/slot riêng trong mạng thử cô lập; hai chiều movement/bom,
-  cùng trap/death/result và hai trận liên tiếp, không dùng guest tổng hợp thay client B.
+Tiêu chí K6a giữ nguyên: identity/slot riêng trong mạng thử cô lập; hai chiều movement/bom,
+cùng trap/death/result và hai trận liên tiếp, không dùng guest tổng hợp thay client B.
+
+Codex tự đối chiếu **tiêu chí K6 giữ nguyên cho bước K6a**, reviewwaived;
+[decision theo từng tiêu chí](evidence/peer-endpoints/k6a-acceptance.json),
+[contract/limits](PROTOCOL.md#current-basic-contest-reset), [recipe/hash](evidence/peer-endpoints/README.md#cp189).
+K0–K5 scoped giữ đạt. CurrentCP189 có hai contestedcycles/normalending/Ready2, per-role statreset,
+strict life và4peerwindows; CP188 currentBowner/hiddenbasic2cycles/Start3 và pendinghostEOF là control
+riêng, oldCP155exactoldUDP cũng giữ riêng. Đã đối chiếu source/profile/copyconsumer continuity;
+không gọi chúng cùng một run, không suy fulloriginalauthority.
+
+**K6a đạt cho hai actualAB trên cùnghost/privatevirtualhosts/Winecopy4b/basic+291/nameguard/Manner/ExVillage01.**
+Không fullinventory/maps/resetvariants hoặc originalWindows. CatalogK6 vẫn open ngoài scopeK6a.
+Các bước còn mở:
+
 - **K6b — hai máy LAN:** lặp cùng ca giữa hai máy, endpoint/port đúng và disconnect/rejoin có log.
 - **K6c — hai mạng Internet:** kiểm endpoint/NAT và P2P hoặc relay được chọn; hai bên cùng state/result,
   hai trận liên tiếp, latency/loss/disconnect được ghi. Chỉ endpoint thử do dự án kiểm soát trong allowlist;

@@ -155,11 +155,11 @@
         "KR-F001",
         "KR-F015"
       ],
-      "known": "CP188 K5basic localaccepted; currentAB291 two normalcycles/reset/Start3/peer/Bowner andindependentEOFcontrol. K3CP186/K4CP187 scoped retained.",
-      "remaining": "K6a currentbasiccontesteditem integration; physicalLAN/Internet/four-eight actualclients remain. Generalaccount/authority/fullcodec backlog bytrigger.",
-      "next_test": "PLAN#current-order NEXT-K6A-CURRENT-CONTEST: reuseCP155159160 claim/consumer/route, verifycurrentprofile/code delta andoneeffect/reset withoutforcingtwoimmediateclaims.",
+      "known": "CP189 K6a samehost basic scopedmanualaccepted aftercurrentcontest/reset/nativepeer/life plusindependentCP188Bowner/EOF; K0–K5profile retained.",
+      "remaining": "K6bLAN actualtwohost/endpointrecipe, K6cInternet/NATrelay/K7/four-eightactualclients, fullauth/fullcodec/generalvariants bytrigger.",
+      "next_test": "PLAN#current-order NEXT-K6B-LAN-PREFLIGHT: reuseCP141146/currentexport/isolation; operatorcontrolledsecondhostunknown, no localNSasphysicalLANclaim.",
       "acceptance": "Epic checklist: linkedscopedtask/evidence+authoritymatrix vàacceptancegate ởPLAN; từngtaskđóng khôngđóngepic/K5/K6a.",
-      "reason": "CP188 keepspreclientinterruption/EOF-r1partial andCodexmanualK5authorityreview; K6a/epicremainopen. AUD056through188/next192.",
+      "reason": "K6a scopeacceptance doesnotcloseumbrella/fullK6all-environments; originalauthorityunknowns explicit. CP188PR260merged, CP189pendingPR, nextauditCP192.",
       "sources": [
         "docs/PROTOCOL.md#authority",
         "docs/RESEARCH.md#feature-gaps",

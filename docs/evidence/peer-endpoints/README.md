@@ -1565,3 +1565,48 @@ B291pending snapshot và deliveryPR259; audit kế **CP192**. K5 basic local ngh
 authority matrix; K6a **còn currentbasiccontest**, LAN/Internet/bốn–tám actualclient/fullauth/fullcodec/
 142freshness/distance/generalreset/allinventory vẫn mở. [PLAN](../../PLAN.md#current-order) là thứ tự duy nhất.
 CP188 complete ghi chép trước giaoPR; trạng thái merge nằm trong Git/PR, không sửa snapshot sau merge.
+
+
+<a id="cp189"></a>
+## CP189 — current Roller contest, hai normalcycles/reset và K6a local
+
+Baseline CP188/[PR260](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/260), exacthead
+`009505cd788d4181dbd6ca448f97d81d1c011c79`, merge`2ea548bb1c8d0929ed87ae464aeb9511cbaf48f2`.
+Codex solo/tự kiểm/reviewwaived, KRE-005b/#14. [Contract/giới hạn](../../PROTOCOL.md#current-basic-contest-reset),
+[K6a decision](k6a-acceptance.json), [acceptance](../../PLAN.md#k6a-acceptance), [nextgap](../../RESEARCH.md#gap-lobby-identity-followup).
+
+Tái dùng CP155/159160 oneclaim/oneeffect/productionimmediate165, CP188 basic47pins/nativepeer/life/
+reset và CP175navigation; không thân hàm native mới hoặc opcode/layout VN. Source/profile/copy4b/SHA
+bất biến giữa run; privatevirtualhosts/directproduction/nohold165/noactiveUDP, freeze→ownedcleanup→seal.
+Raw/hash/recipe/inputpreflight/analysis/probes/images ở root local dưới đây; external evidence manifest
+CP189 pin từngfile, không chép raw/binary/asset vào Git. Client gốc/DB/oldcomplete/evidence không sửa.
+
+| Root `local/research/codex/` | Giây / raw / frozen / exit | Phạm vi |
+|---|---|---|
+| `k6-current-basic-contest-r1` | 185.548594027 / 707 / 167 / 0 | Haiactual124/Bwinner/Aconsumed, một165/view/nativeB4→5/A5unchanged; không kết quả/reset. |
+| `k6-current-contest-reset-r1` | 197.177912461 / 711 / 167 / 1 | Partial: A thắng/Bconsumed nhưng20nhịpBreturn mới375/đích399; chưa bom/kết quả. Giữ exit1. |
+| `k6-current-contest-reset-r2` | 391.085047274 / 1272 / 167 / 0 | Hai normalcontestedcycles/kết quả/room/Ready2; R1hai claims/Awins, R2mộtclaim/Bwins. Cùng4peerwindows/two keys/life; không EOF/oldUDP/Start3. |
+
+Focusedrun dùng lại native124/165/52A350/securechecksum. Giả định analyzer cảhai baseline5 FAIL ởB;
+source/log được giữ, đối chiếu CP188 xác nhận A5/B4 rồi sửa đúngper-rolebaseline; chỉ B4→5, A giữ5,
+capacity/fire không đổi. Không sửa client/raw/profile để pass. Đây là statfixture, không mọi char/wiki.
+Partialr1 controllerreturn vẫn dịch chuyển nhưng thiếuquãngđi trong20nhịp; r2 thêm normalDown.5 trước
+finefeedback20pulse/.045/tol12, không nới bounds. Existing6sneutralvariant cho contest-returnsetup có
+nguồn CP155r2/CP159, global3s giữ; source-first r1 chỉ ghi3s được qualify, không viết lại record/raw.
+
+R2 actualAselfSpace/IDs1,2/power1/native159158 cùngpeer, A17→19/B21/native56→1/other0before175,
+full175302/1803/errors0 và actualReady95/BStart2/nativeclock/reset rồi Ready2. MộtRollerconfirm/view/
+epoch; statbaselineA5/B4 trướcR2, A6→5 reset sauR1. B thắngR2 nên **không quan sát B5→4 sau thắng**
+vì khôngStart3 trongrun, giữ giới hạn resetvariant. CP188 đã có basichidden3effects/Bowner/Start3;
+EOFcurrent control và exactoldUDP CP155 là run riêng, không nối thành cùng-run.
+
+`contest-reset-verification.json`:1553 assertions; `endpoint-peer-verification.json`:632 assertions/4windows,
+408nativepeergetters; life23 assertions/16nativegetterchecks. Focusedcontest932checks/2actualclaims.
+Hashes/typedfield/nativecallback/protectedgetter models và service logs tách source; không tự tínhgate.
+Ảnh contact/finalReady cảhai view đã xem, không suy Start3 hoặc allworld/same-tick từ hình.
+`continuity-review.json` đối chiếu nguyên source server/currentprofile/copy-image và phạm vi reusecontrol.
+
+Codex đối chiếu thủ công tiêu chí K6 cho K6a và authority matrix; **K6a đạt riêng samehost/basic**,
+K6bLAN/K6cInternet/K7/bốn–tám actualclient/fullauth/fullcodec/generalreset/allitems/maps/originalauthority
+vẫn mở. CatalogK6 tổng vẫn open ngoài scopeK6a. AUD056through188, audit kếCP192, không tạo audit/CP
+cho từng microtest. CP189 complete trước commit/PR, không giả đã merge; Git/PR giữ delivery.

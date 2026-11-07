@@ -1,0 +1,64 @@
+{
+  "schema": "kre-gate-acceptance-evidence-v1",
+  "gate": "K6a",
+  "checkpoint": "CP189",
+  "decision": "passed",
+  "decided_by": "Codex",
+  "review": "waived",
+  "review_reference": "docs/evidence/checkpoints/review-waiver.json",
+  "recorded_utc": "2026-11-07T05:56:42.400111+00:00",
+  "scope": "K6a samephysicalhost/privatevirtualhosts/twoactualAB/modifiedWinecopy4b781f/normalManner/ExVillage01/currentbasic47fixtures+291/nameguard. Two native directions, both bomb owners, contested basic Roller17/oneeffect, trapdeath/results/reset/two normal outcomes and independent pending-hostEOF/fence. Not physicalLAN/Internet/four-eightclients/fullauth/fullcodec/allitems/maps/generalreset or originalserverauthority.",
+  "criteria": [
+    {
+      "criterion": "Both native movement directions and A/B bomb visibility",
+      "sources": [
+        "docs/PROTOCOL.md#current-basic-cycles-291",
+        "docs/PROTOCOL.md#current-basic-contest-reset"
+      ],
+      "reason": "CP188 currentpeer2keys/fournativeRightwindows/currentprogress/B,A,Abombs and same currentprofile/code/image. Currentcontestedcycles independently repeatfourwindows/twokeys/AselfbombIDs1,2. Bothnative159158/capturedfields/protectedgetters separate fromservice logs."
+    },
+    {
+      "criterion": "Contested index has one result",
+      "sources": [
+        "docs/PROTOCOL.md#current-basic-contest-reset",
+        "docs/PROTOCOL.md#production-baseline"
+      ],
+      "reason": "Currentfocusedproduction: two actual124/current17kind2/key12345, Bwins/Aconsumed, one165/view/nativeBspeed4→5/A5unchanged. Currenttwo-contest run accepts1or2actualreports with immediate165, oneeffect/winner per epoch. No hold/forgedrequests/fixedwinner/fairness inference; olderFire/hold controls remainseparate."
+    },
+    {
+      "criterion": "Trap/death/result agree; two complete normal rounds/reset",
+      "sources": [
+        "docs/PROTOCOL.md#current-basic-contest-reset",
+        "docs/PROTOCOL.md#current-basic-cycles-291"
+      ],
+      "reason": "Currenttwo-contest run: normalAselfSpace→real17→19/B21 beforechosenrank; both native56→1/other0before175, full175180, room/Ready95/BStart2 andstatbaselineA5/B4 onsecondpickup, secondnormalresult/Ready2. CP188 same-run two normalbasiccycles/Start3 additionally cover hiddenitem195/stat/key/effects andbothowners. Not concatenate separate runs intoonegame."
+    },
+    {
+      "criterion": "Disconnect/host leaves without hanging survivor; stale jobs/peer policy scoped",
+      "sources": [
+        "docs/PROTOCOL.md#current-basic-cycles-291",
+        "docs/PROTOCOL.md#direct-oldudp-contest-eof",
+        "docs/PROTOCOL.md#authority"
+      ],
+      "reason": "CP188 focusedcurrentBhostpendingEOF: ownedkill5.283s beforefuse, actualdirectTCP EOF→Aforfeit/107ID2clear/chief110/room, jobround_closed/no158pastdue+4s. OldCP155 exactoldUDPdrop scope retained separately; copied.image/inputkey/slot/consumercontinuity andcurrent2key positivechecked. No oldUDP injection newlyclaimed here, no fullgrammar/auth/low8wrap/NAT law."
+    },
+    {
+      "criterion": "Manual authority/dependencies review",
+      "sources": [
+        "docs/PLAN.md#k5-acceptance",
+        "docs/PROTOCOL.md#authority",
+        "docs/PROTOCOL.md#current-basic-contest-reset"
+      ],
+      "reason": "K0–K5 scopeddependencies accepted. Codex manual currentprofile/sourcehash/native/capture review underwaiver. Nativeinput/simulator/peerwrites splitfromserviceIDs/fuse/catalog/rank/validationdesign; originalauth/distance/freshness/fairness limits kept. Checker doesnotcertifyacceptance."
+    }
+  ],
+  "limits": [
+    "K6a samephysicalhost/privatevirtualhosts/twoactualAB/modifiedWinecopy4b781f/normalManner/ExVillage01/currentbasic47fixtures+291/nameguard. Two native directions, both bomb owners, contested basic Roller17/oneeffect, trapdeath/results/reset/two normal outcomes and independent pending-hostEOF/fence. Not physicalLAN/Internet/four-eightclients/fullauth/fullcodec/allitems/maps/generalreset or originalserverauthority.",
+    "Primitive/getteremulation isnotruntimeclientexecution; perviewlife snapshots notglobal-sametick.",
+    "CP189focused first productionrun andlonger two-roundrun are independent, CP188EOF/oldCP155stalecontrols also independent. No singleallcontrols-inone-run claim.",
+    "Failed analyzer assumedcommon speed5: currentbaselineA5/B4 alreadyCP188; nativeB4→5 isvalid+1. Preservefailedsource/log. Returnr1partial20pulses y375 vs399 retained; coarseDown.5 beforeexistingfinefeedback r2, no nativefunction/memorywrites. Existingcontest-returnsetup uses6sneutralvariant fromCP159; global3s unchanged.",
+    "R1 winner A thenresetA6→5; R2winner B4→5. NoStart3 aftersecondBwinner, B5→4 postwinnerreset notruntimeobserved; generalresetvariants remainbacklog, notclaimedwhole-game.",
+    "K6bLAN/K6cInternet/K7 and fullK6all-environments remainopen; no percentage orwholegame completeness."
+  ],
+  "next_source": "docs/PLAN.md#current-order"
+}

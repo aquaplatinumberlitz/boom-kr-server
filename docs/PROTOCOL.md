@@ -2661,6 +2661,42 @@ R2 cùng profile/server/inputrecipe, thêm passivecompareprobes: actualstringsKR
 nativecomparisonreturn0/±1 đúngsign và sp+8. Qua175/180 một lần trên cảhai rồi Start2; không lặp SIGSEGV.
 Đây là control runtime cho ABIcorrection, không chứng minhmọiAPIfailure/locale hoặc originalWindows.
 
+<a id="current-basic-contest-reset"></a>
+### Basic hiện hành: tranh Roller, baseline từng vai và hai kết quả/reset — CP189
+
+**kr_runtime/confirmed trên copy Wine4b781f…/privatevirtualhosts; authority policy vẫn design.**
+[Recipe/hash/partials](evidence/peer-endpoints/README.md#cp189), [K6a acceptance](PLAN.md#k6a-acceptance).
+Tái dùng CP155/159160 nativeclaim/oneeffect/immediate165, CP188 basic/profile/peer/life/reset và CP175
+navigation; không thân hàm native mới, không port VN opcode/layout hoặc RE lại ItemAttr/wiki.
+
+Focused `k6-current-basic-contest-r1` là production service, không hold165/replay. Hai OSkeys tiến vào
+Roller17/kind2/row4col3; actual124 từ cả B và A/cùng key12345, B thắng, A bị consumedreject; một165
+full12/errors0 mỗi view. Native secure getter xác nhận **B speed4→5, A giữ5**, capacity/fire không đổi.
+Analyzer ban đầu giả cảhai baseline5 đã FAIL; source/log giữ nguyên, đối chiếu snapshot CP188 cũng
+có A5/B4 rồi sửa đúng baseline từng vai, không sửa raw/game/profile để pass. Đây là stat của fixture
+hiện hành, không suy speed gốc mọi char hoặc law/wiki khác. Focusedrun không kết quả/reset/EOF.
+
+`k6-current-contest-reset-r1` giữ partial: hai claim/Awins/Bconsumed nhưng20 nhịp Breturn chỉ đạt
+375 khi đích399/tolerance12, chưa bom/kết quả. Nativefeedback vẫn dịch chuyển, không suy stall/keybug.
+R2 thêm normalBDown.5 trên hành lang đã biết trước finefeedback20pulse/.045/tol12; không tăng bounds
+hoặc gọi gamefunction/writeactor. Helper giữ variant neutral6s cho labelcontest-returnsetup đã có CP159,
+global3s không đổi; phân biệt với mô tả sơ bộ3s trong source-first củar1.
+
+R2 cùng source/profile/copy47pins/291/nameguard/immediate165, hai epoch/keys12345→12346. Mỗi vòng
+hai OSkeys có1hoặc2actual124 và mộtwinner/confirm/view, native +1speed đúng vai, nativebaseline A5/B4
+trước pickup vòng2; không fixedwinner hoặc fairnessclaim. Sau B về y399/A159, normalASpace/power1
+cho actual159/158/IDs1,2 rồi A17→19/B21, hai view loser56→1/other0 trước175; đủ175302/1803/errors0,
+roomrefresh/Ready95/BStart2 và Ready2. Bốn peerwindows/two keys và nativegetters cùng-run có report riêng.
+R1 A thắng (hai claim), R2 B thắng (một claim): chứng minh reset A6→5 trước vòng2; không Start3
+sau B thắng nên B5→4 sau thắng còn chưa đo runtime, giữ giới hạn variant.
+Không hidden27/28pickup/fullthreeeffects hoặc Bbomb/EOF/oldUDPinjection trongrun này; những proof đó
+ở [CP188](#current-basic-cycles-291)/CP155, không ghép thành cùng một run.
+
+Codex đối chiếu tiêu chí/authority: **K6a đạt scope hai actualclient cùnghost/offline/basic đã pin**,
+[quyết định/giới hạn](evidence/peer-endpoints/k6a-acceptance.json). K6bLAN/K6cInternet/K7, bốn/tám actualclient,
+fullauth/fullcodec/allmaps/items/generalreset/142freshness/distance/originalauthority còn mở. GateK6
+trong catalog vẫn open cho các môi trường ngoài K6a; script không tự xác nhận semantics hoặc acceptance.
+
 <a id="current-basic-cycles-291"></a>
 ### Basic hiện hành sau291/importABI: hai outcomes/reset, peer và EOF — CP188
 
@@ -2702,7 +2738,8 @@ Run này **không có normaloutcome/two-reset/Start2**; hai normalcycles đến 
 trước patherror, không ghép chúng thành một run.
 Không Start4/UIBack/accountresume/generalEOF; forfeit của control không phải trận bình thường.
 
-Codex rà [authority](#authority) từng usedbehavior và nghiệm thu K5basic hẹp; **K6a còn currentbasiccontest**.
+Tại CP188 Codex rà [authority](#authority) và nghiệm thu K5basic; currentbasiccontest khi đó còn thiếu.
+[CP189](#current-basic-contest-reset) bổ sung ca mới và K6a scope, không sửa kết quả run CP188.
 OldCP155 exactoldUDP/controlledcontest và CP159production immediate165 giữ scope/codeprofile riêng,
 không giả là newlymeasured hoặc same-run với currentbasic. Fullauth/distance/142freshness/originaldrop/
 resetvariants/allmaps/fullcodec/vanillaWindows/physicalLAN/Internet/4–8actualclient vẫn unknown/backlog.
