@@ -2063,13 +2063,13 @@ locator/trace và trạng thái từng ô; những vai trò không nêu dưới 
 
 | Hành vi | Bằng chứng theo scope đang dùng | Giới hạn/kiểm còn thiếu theo scope sử dụng |
 |---|---|---|
-| Movement | [CP176 A↔C hai key](#a-c-basic-cycles); [CP159/160 production](#exported-preset-runtime):4nativepeerwindows/actualapply/target/currentprogress, nohold165/activeUDPprobe; [CP070](#current-udp-causality) giữcontrol riêng | Fullschema/auth/reliability/NAT unknown; currentprofile hai chiều có nguồn, không fullgrammar trước mọi demo hẹp |
-| Bomb place/ID | [CP176 C/A owners](#a-c-basic-cycles); [CP160](#exported-preset-runtime) actual118/nativeID1/A/power2,ID2/B/power1/full159158/195flagreset; [CP156](#direct-host-eof-acceptance) pendinghostEOF/fence scope riêng | Boundedrole/key/serial/quota/geometry làpolicy; actorlocation/fullauth/allpool/races unknown |
+| Movement | [CP188 currentAB291](#current-basic-cycles-291); [CP176 A↔C hai key](#a-c-basic-cycles); [CP159/160 production](#exported-preset-runtime):4nativepeerwindows/actualapply/target/currentprogress, nohold165/activeUDPprobe; [CP070](#current-udp-causality) giữcontrol riêng | Fullschema/auth/reliability/NAT unknown; currentprofile hai chiều có nguồn, không fullgrammar trước mọi demo hẹp |
+| Bomb place/ID | [CP188 currentB/A/A](#current-basic-cycles-291); [CP176 C/A owners](#a-c-basic-cycles); [CP160](#exported-preset-runtime) actual118/nativeID1/A/power2,ID2/B/power1/full159158/195flagreset; [CP156](#direct-host-eof-acceptance) pendinghostEOF/fence scope riêng | Boundedrole/key/serial/quota/geometry làpolicy; actorlocation/fullauth/allpool/races unknown |
 | Explode/chain | CP033 một owner; CP064 [power1/cách hai ô](#mixed-owner-chain), CP071 [power2 ngoài tầm/feedback chưa118](#mixed-owner-power) giữ partial lịch sử; CP081 [power2/distance2 mixed-owner](#mixed-input), CP084 [ba bom fork hai vòng](#three-bomb-chain); CP094 [optional pinned terrain](#terrain-policy), CP095 [actualbox/laterfreshpair](#opposite-box-control) có native callback/195flag proof | [CP096adjacent1cell](#adjacent-owner-control) và [CP122 chain sâu](#recursive-chain) đã đo trong ca hẹp; [CP133 shared cellstate/query](#shared-cell-state) và [CP134 hai shared cycles](#shared-cascade-cycles) đã giải ca cố định; FIFO/firstbombstop/immutable tổng quát/race và authority server gốc chưa đủ |
 | Block destroy/item reveal | [CP176 A/C reveal/reset](#a-c-basic-cycles); [CP172](#hidden-cell-admission-current) optional basic export/terrain-cell142 guard; hai native cycles/reveal27/28/3effects/reset/Start3 | Chỉ bounded terrain policy; không recovered142key/auth/distance/originaldrop/generalmap. Không terrain giữ weak anycurrent158 scope cũ |
 | Item placement/pickup | [CP159/160](#production-baseline) productionimmediate165/1or2actualclaims/oneeffect/nativewinnerpower/reset; [CP155](#direct-oldudp-contest-eof) hold2sactualcontenders là control riêng | Full124distance/auth/generation/inventory/max/speedTTL/activevariants chưa đủ; delay2s không còn trongproductionbaseline |
-| Trap/death | [CP176 A/C56→1/other0](#a-c-basic-cycles); [CP159/160](#exported-preset-runtime) strict56→1/other0beforerank2views/2epochs; [CP157natural](#current-host-ui-exit)/[CP158controlledoverwrite](#current-trap-udp-counter) giữ causal limits | Snapshot khôngglobalsametick; samekeycounterheuristic cho controlledremoteoverwrite; naturalCP157cause unknown, nofullvalidator |
-| Result/reset | [CP176 A/C2normal/Ready2](#a-c-basic-cycles); [CP171](#basic-preset-start3) optional basic export hai outcomes/reset/Ready rồi normal BStart3/native12199/clock/render; CP168 floor riêng | Không trận ba outcome; allinventory/timer/seq/peer/resetvariants/originalarbitration và gate còn mở |
+| Trap/death | [CP188 currentAB](#current-basic-cycles-291); [CP176 A/C56→1/other0](#a-c-basic-cycles); [CP159/160](#exported-preset-runtime) strict56→1/other0beforerank2views/2epochs; [CP157natural](#current-host-ui-exit)/[CP158controlledoverwrite](#current-trap-udp-counter) giữ causal limits | Snapshot khôngglobalsametick; samekeycounterheuristic cho controlledremoteoverwrite; naturalCP157cause unknown, nofullvalidator |
+| Result/reset | [CP188 current2outcomes/Start3](#current-basic-cycles-291); [CP176 A/C2normal/Ready2](#a-c-basic-cycles); [CP171](#basic-preset-start3) optional basic export hai outcomes/reset/Ready rồi normal BStart3/native12199/clock/render; CP168 floor riêng | Không trận ba outcome; allinventory/timer/seq/peer/resetvariants/originalarbitration và gate còn mở |
 | Room lifecycle | [CP175 Cslot1](#a-survivor-admission)/[CP176 ACreset](#a-c-basic-cycles); [CP161 title](#current-room-title), [CP162 mode/return](#current-team-mode) có2normalcycles/Ready; [CP165 currentpreset](#input-batch-gating) guestBack/rejoin/2outcomes/Ready/Start3 đã đo; CP164partial giữ lịch sử. CP155–157 EOF/UI controls giữ profile riêng | [CP168](#current-mode-promoted-start3) currentmodeBhost2cycles/Ready/BStart3 đãđo; R1/R2partial vàoldwhiteframe giữriêng. Accountresume/halfclose/loss/generalreplace chưa đủ; không lấy oldprofileexit làm currentmode proof |
 | Peer lifecycle | [CP159/160](#exported-preset-runtime)actual99/153/currentdirectIPs/ports; [CP155oldUDP](#direct-oldudp-contest-eof)/[CP158samekeycounter](#current-trap-udp-counter) controls riêng | Key/counterbytekhôngauth/universalfreshness; low8wrap/reliability/fullgrammar/relay/NAT/LAN/Internet unknown |
 
@@ -2661,6 +2661,52 @@ R2 cùng profile/server/inputrecipe, thêm passivecompareprobes: actualstringsKR
 nativecomparisonreturn0/±1 đúngsign và sp+8. Qua175/180 một lần trên cảhai rồi Start2; không lặp SIGSEGV.
 Đây là control runtime cho ABIcorrection, không chứng minhmọiAPIfailure/locale hoặc originalWindows.
 
+<a id="current-basic-cycles-291"></a>
+### Basic hiện hành sau291/importABI: hai outcomes/reset, peer và EOF — CP188
+
+**kr_runtime/confirmed trong copyWine4b781f…/privatevirtualhosts; inputcontroller/fuse/drop/forfeit là design.**
+[Recipe/run/hash/partials](evidence/peer-endpoints/README.md#cp188), [K5 scope](PLAN.md#k5-acceptance).
+Tái dùng CP1712cycles, CP1734peerwindows/Bowner, CP174EOF, CP175entrycolumn, CP187own291/copyABI;
+không thân hàm native mới, không chuyển opcode/layout VN/wiki. Profile47fixture/policy đúng basicexport
+đã đo, chỉ optinown291/nameguard; client.image nguyên byte, importcorrection giữ nguyên.
+
+`k5-neutral-keyup-r2`:413.403716917s/1450raw/frozen167/exit0; hai normaloutcomes/reset/Ready2 rồi normal
+BStart3, native121/99/clock cảhai, quan sát clock3≥9.1409s, không thirdbomb/outcome. A nhặt17/27/28,
+nativebaeffects/195seed/stat/key reset; một165/view/index/epoch.16neutralwindows R1 đủ3freshstable và
+OSkeyup0; **R2coarse route đã nhặt item nên không chạy exact R2-hidden-row cũ**. Không suy oldstuckkey
+rootcause/fix. R1 trước đó bị gián đoạn ở wineboot−15/preclient/zeroTCP, recovery12raw/frozen167/cleanup;
+không coi preclient interruption là gameplay negative hoặc quy nguyên nhân reboot/SIGTERM.
+
+`k6-current-peer-cycles-r1`:453.875873934s/1486raw/frozen167/exit0; currentABnative291/names128/128/errors0/
+renderguard1, hai full175302/1803/errors0 mỗi client, Ready2 rồi Start3. Bốn finiteRight windows A→B/B→A
+qua2keys có actualUDP/uniqueingress/nativeapply/targetchange/currentprogress và getter model432checks.
+Mỗi vòng B,A,A Space thật tạo3bom/IDs1..6/powers1,1,2, matchednative15939/15813/sameentity/195flags;
+hidden27/28 từ actualblock/reports142 và floor17 có ba nativeeffect/statbaseline reset. Hai view loser56→1/
+other0 trước175 trong cả2epoch; snapshots không global-sametick. Nativecapturedfield/getteremulation và
+servicepolicy tách nguồn. Không intentionalEOF/oldUDP/contenders trong positive run này.
+
+`k6-current-host-eof-r1`:374.766890422s/1158raw/frozen167/exit1, một normalending rồi
+**alignmiss:R2-A-hidden-row**.20neutralattempts đều OSkeyup0/3freshstable, A vẫn x80/y399 khi targety159;
+chưa tới intentionalfault. CP175 đã có entrycolumn120 trước upwardfallback, nhưng recipeCP174 bị dùng
+lại thiếu bước đó. Đây là inputroute gap có nguồn, không chứng minh lỗi physics/transport/keyrelease.
+R2 chỉ thêm đúng boundedentrycolumn CP175 trước hidden-row, giữ20attempt/.045/tol12/3s/30sload và
+source/config/copy/fixtures;465.448559303s/1492raw/frozen167/exit1. Entrycolumn120→upwardfallback đã
+qua, hai normaloutcomes/reset/Ready2/Start3 và pendingID7 được đo; **ownershipimagepath cũ bị FileNotFound
+trước kill**, nên không intentionalEOF. First-two verifier kiểm riêng phần đã quan sát, giữ error/exit1.
+
+`k6-current-host-eof-short-r2` rút gọn chỉ phép EOF: initialroom/hostBack/rejoin/firstload/clock→BSpace→
+ownedBkill trước6sfuse; survivingAforfeit175180 rồi107slot1/id2clear/110chief1/room. Pendingjob bị
+round_closed, không158 qua due+4s; B đã dừng không chứng minh nhậnforfeit. Short-r1 trước đó KeyError game_dir trước fault được giữ riêng. Short-r2 lấy ownership image từ
+exactargs.game_dir siblingB/args.exe, đối chiếu SHA/mapping và giữ mọi PID/ns/prefix/startticks/cmd guard.
+Run này **không có normaloutcome/two-reset/Start2**; hai normalcycles đến từ positive run riêng và R2
+trước patherror, không ghép chúng thành một run.
+Không Start4/UIBack/accountresume/generalEOF; forfeit của control không phải trận bình thường.
+
+Codex rà [authority](#authority) từng usedbehavior và nghiệm thu K5basic hẹp; **K6a còn currentbasiccontest**.
+OldCP155 exactoldUDP/controlledcontest và CP159production immediate165 giữ scope/codeprofile riêng,
+không giả là newlymeasured hoặc same-run với currentbasic. Fullauth/distance/142freshness/originaldrop/
+resetvariants/allmaps/fullcodec/vanillaWindows/physicalLAN/Internet/4–8actualclient vẫn unknown/backlog.
+
 <a id="current-291-room-integration"></a>
 ### Current hai client291/nameguard: phòng/load/start và giới hạn — CP187
 
@@ -2677,7 +2723,7 @@ targety159 nhưng retained stable samples299→281, rồi thiếu3neutralreads t
 serviceerror hoặc frame175180failure; round2abortEOF khi cleanup giữ log. Chưa quy rootcause input/key/
 physics/probe, chưa secondoutcome hoặc currentStart3. Không dùng verifier2cycles/Start3 cũ để ép pass:
 chỉ verifierK4scopedroom/compare và sourcecriteria; fullcycle verifier được chuẩn bị nhưng không chạy/count.
-OldCP1712outcomes/Start3 giữ là historicalproof, không backfillrun này. K5/K6a/fullmatch/LAN/Internet mở.
+OldCP1712outcomes/Start3 giữ là historicalproof, không backfillrun này. Tại CP187 K5/K6a mở; [CP188](#current-basic-cycles-291) có current2outcomes mới và nghiệm thu K5scope, K6a vẫn mở.
 
 <a id="channel-cold-route"></a>
 ### Cold cache route kênh và tên hàng — CP186
@@ -2724,7 +2770,7 @@ account/token verification. Wrongname/shape logged/rejected trước17, không s
 Profile default-off giữ nguyên. 294 servertests và8case AF_UNIX vào public`receive` dùng frame nativeframer
 chấp nhận độc lập, wrongname string cũng được reader native đọc đúng; positivesA/B/C gửi17/43, next46.
 Các input sai được dựng từ capture, không phải nativeclient tự gửi wrongcredential. RuntimeA warm
-chứng minh guard cuối nhận actualKRLocal và vẫn tới sảnh/own291; nativeB/C291/currentroom còn ở K4.
+chứng minh guard cuối nhận actualKRLocal và vẫn tới sảnh/own291. Đây là snapshot CP186; actualAB291 đã đo [CP187](#current-291-room-integration), C291 còn unknown.
 
 K3 nghiệm thu localprofile theo quyết định thủ công, **không** fullauth, mọiversion/updater,
 Windowsnguyênbản hoặc fullmatch. Widermapping/cache/caption giữ question theo trigger trong RESEARCH.

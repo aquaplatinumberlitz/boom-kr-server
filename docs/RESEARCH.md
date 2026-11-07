@@ -18,7 +18,7 @@ Nguồn cũ và run/checkpoint giữ trong phần lịch sử bên dưới và m
 được đọc thành trạng thái hiện tại. Tra mức RE/implementation/runtime/gate theo từng chức năng ở
 [coverage](COVERAGE.md), contract/giới hạn tại link của từng cơ chế trong bảng gap. Không duy trì
 một danh sách tiến độ theo CP khác tại đây; [README](../README.md) giữ mốc hiện tại,
-[PLAN](PLAN.md#current-order) giữ thứ tự. Fullauthentication/cache/K5/K6a vẫn chưa nghiệm thu.
+[PLAN](PLAN.md#current-order) giữ thứ tự. Fullauthentication và K6a vẫn chưa nghiệm thu; K3/K4/K5basic đạt riêng scope ở PLAN.
 
 | Câu hỏi / owner | Trạng thái | Khoảng trống và phép đo hiện hành |
 |---|---|---|
@@ -39,23 +39,25 @@ sameprocessTCPloginretry→auth137cursor/errors0→channelreset. [Controls/hash]
 giữ fatalCRCcleanup/WineDbgHWwatchpointfailure/stubordinalcontrol. Không lặp fatalclose hoặc stubDWK.
 K2profile được nghiệm thu theo [PLAN](PLAN.md#k2-acceptance); không fullgrammar/allmodes/headerauthority/
 accountresume. Widercodec chỉ mở khi có trigger cụ thể từ K3; không quét mọi variant trước sảnh.
-Owner/tự kiểm Codex, review waived; periodic audit kếCP184.
+Owner/tự kiểm Codex, review waived; AUD056 quaCP188, periodic audit kếCP192.
 
 <a id="gap-lobby-identity-followup"></a>
-### K3/K4 local đã đạt; blocker hiện hành là inputalignment vòng2
+### K3/K4/K5basic local đạt; gap hiện hành là currentbasiccontest cho K6a
 
-[K3scope](PLAN.md#k3-acceptance), [K4scope](PLAN.md#k4-acceptance),
-[currentAB291](PROTOCOL.md#current-291-room-integration), [importcontrol](PROTOCOL.md#own-profile-result-compare).
-NativeB291/nameguard/hostrejoin/load/Ready/startlặp đã đo CP187; không còn taskactive replay lobby/room.
-Fullauth/WCP/caption/updater/multichannel/nonzero-stageCRC vẫn backlog theo trigger, không điều kiện mới.
+[K3](PLAN.md#k3-acceptance), [K4](PLAN.md#k4-acceptance), [K5scope](PLAN.md#k5-acceptance),
+[currentcycles/peer/EOF và partial](PROTOCOL.md#current-basic-cycles-291) giữ nguồn chuẩn.
+CP188 đã có currentAB291/copy4b hai normalcycles/reset/Ready2/Start3, cảhai peer directions và Bowner;
+controlEOF riêng. Không còn active retry room/codec/import hoặc đòi chứng minh lại wiki/ItemAttr.
 
-Khoảng trống cần giải theo PLAN là `alignnotstable:R2-A-hidden-row` trong currentinputcontroller:
-R2 vừa firstnormalresult/reset/Start2, sau mấy keypulse target159 mới có stable299/281 rồi không đủ
-3neutralreads trong3s; chưa biết keyrelease/physics/sampling/rootcause. Đọc retained feedback/OSinput/
-CP150165171 trước, log cả fresh/stable failedreads và xác minh keyup trước pulse tiếp; giữ bounds20attempt/
-45ms/tolerance12/deadline3s. Chỉ inputcontroller đổi theo hypothesis/control, không coordinate/gamecall/
-clock forcing hay mởREphysics/toànIAT. Sau đủ twooutcomes/reset đối chiếuK5/K6a, không tự đóng từK4.
-Owner/tự kiểm Codex/reviewwaived; AUD055 qua184, **manualperiodicaudit CP188** phải đọc core→raw mới.
+`alignnotstable` CP187 không được quy rootcause từ positiveAonly; runEOF r1 sau đó có20freshstable
+x80/y399/OSkeyup0 nhưng alignmiss, chưafault. CP175đãgiải entrycolumn120; r2 tái dùng exactinputroute,
+không tăng bounds/épstate/function/clock. R1preclient interruption giữ riêng, không gameplaynegative.
+
+Phần thiếu K6a là currentbasic tranh một index; đọc CP155 exactoldUDP/2actualcontenders và CP159160
+immediateproduction trước, đối chiếu source/profile/currentclaimvalidator. Phép đo tối thiểu: hai native
+OSinput có1hoặc2actualclaim khi165immediate, mộteffect/winner/view rồi reset; nếu cần hold chỉ cho
+measurement, ghi scope riêng. Chưa fullauth/distance/142freshness/fairness/generalreset; không đòi chúng
+đều xong trước mọi demo hẹp. Owner/tự kiểm Codex/reviewwaived; AUD056qua188, kếCP192.
 
 <a id="feature-gaps"></a>
 ## Khoảng trống theo cơ chế
@@ -70,14 +72,14 @@ Bảng được [coverage](COVERAGE.md) trích tự động để tra theo chứ
 | <a id="gap-wcp-config"></a>KR-B002 | Fixture tổng hợp đã qua guard; oneclickuser/+E9C và dữ liệu/cache thật chưa đủ. | Chỉ mở consumer/config đang chặn runtime; so nhánh với và không tham số trên cùng copy, không đo lại +E78 đã giải. |
 | <a id="gap-socket-codec"></a>KR-B003 | [CP181](PROTOCOL.md#login-retry-codec) actualsameprocessretry/reset/authcursor + CP180stream/CRC + CP057boundednativeoracle đủ K2profile theo PLAN. Fullgrammar/prefixguardon/modes/headerauth/capenforcement/FFFFFFFF giữ unknown. | Codec backlog theo trigger K3; không lặp solvedretry/closeonly/HWwatchpoint/76modelsplit. Accountresume thuộc identity/lifecycle, không tự thêm gate. |
 | <a id="gap-auth-identity"></a>KR-L001 | [CP073](PROTOCOL.md#launcher-error-attribution): auxiliarylocale1,0 valid/init0→2000:0/noTCP; main currentA/Bactual67 positive. HistoricalmainSIGABRT/HTTPstartupcause vẫn unknown, không gánpopup là root. Fullidentity/token/accountauthority còn mở. | TheoPLAN trace actualerrorstate/caller nếu mainfail; không bypasslocale hoặc tìm lại auth137/135/string/cache. Providerinit sâu chỉ mở khi thực sự chặn main, chưa phải trọng tâm chơi. |
-| <a id="gap-redirect-lobby"></a>KR-L002 | [CP186 K3local](PLAN.md#k3-acceptance) đạt; A291/nameguard/coldroute/versionnegative có nguồn. CP187actualAB291/currentroomintegration đã đủ K4scope; C291/caption/multichannel giữunknown. | [PLAN](PLAN.md#current-order): tiếpK5/K6aalignment vòng2, không lặpAB291/room/start. C/multichannel chỉ theo trigger. |
+| <a id="gap-redirect-lobby"></a>KR-L002 | [CP186 K3local](PLAN.md#k3-acceptance) đạt; A291/nameguard/coldroute/versionnegative có nguồn. CP187actualAB291/currentroomintegration đã đủ K4scope; C291/caption/multichannel giữunknown. | [PLAN](PLAN.md#current-order): tiếpK6a currentbasiccontest, không lặpAB291/room/start. C/multichannel chỉ theo trigger. |
 | <a id="gap-profile-cache"></a>KR-L003 | [CP186](PROTOCOL.md#channel-cold-route) cold3cache/warm có nguồn, K3local đạt. Năm retainedSSI giống clientnguồn; stageCRC0, mọicache/corrupt/reconnect/profile rộng cònunknown. | Reuse [scope/CRC](PROTOCOL.md#dynamic-cache-representation) và [coldroute](PROTOCOL.md#channel-cold-route); chỉ mở cachevariant khác khi K4/integration có trigger. Không lặp3file/CRC hoặc gọi coldroute là toànasset. |
 | <a id="gap-create-join"></a>KR-R001 | [CP161](PROTOCOL.md#current-room-title) current A81→B91 title/Back/rejoin/UI hai view và hai vòng production/Ready đã đo;32 byte/empty-password/known single row là policy. | Password/full/error/general room authority, C/recreate/generalpromotion ngoài [CP166/168](PROTOCOL.md#current-mode-promoted-start3)/multi-row còn mở theo trigger. Không RE lại known81/91 hoặc lấy title làm identity. |
 | <a id="gap-roster-ready-host"></a>KR-R002 | [CP163](PROTOCOL.md#battle-eight-roster) actual selector1/8synthetic slots:4–4 check0/104,1–7 check7/no104, Ready/parser/map/capacity/getter có nguồn. CP162 actual Free/Manner/ACK/reset đã nối. | Không lặp guard/roster/map/input RE. CP165 actualpreset2cycles/Start3 đãđo; CP166 currentmodepromotion/rejoin đãtới clock; CP167đãhai cycleBhost; CP168BStart3/AUD050đãđo; CP171/172basiccycles/Start3 đã đo; tiếp PLAN theo gap thật; general roster8/service admission/8peer/Battle8/Random/C/generalpromotion/row91 metadata còn thiếu sau local baseline. |
 | <a id="gap-map-spawn-loading"></a>KR-R003 | [CP153](PROTOCOL.md#loading-hot-gate-contest): B32390 gate riêng khi load/restoreclock/0loadinghits; hai actual99/barrier5,94s/4,60s. CP151R2 historicalcause không bị tự sửa. | Scope loading recipe đã giải; không lặp writer/loader RE hoặc tăng30s. Generalcoldload/membership/timeout variants chỉ mở theo trigger; theo thứ tự hiện hành trong PLAN. |
 | <a id="gap-room-membership"></a>KR-R004 | [CP175](PROTOCOL.md#a-survivor-admission) C3/slot1/Join/Ready/Start; [CP176](PROTOCOL.md#a-c-basic-cycles) A/C2normal/reset/Ready2. | CinitialpreReadyblack/return2beforefocusblack giữ giới hạn; finalroom vẽ cả hai. Generalmembership/accountresume/laterStart3 còn mở. CP177 profilecapacity theo vacancy/initial đã giao; maxima/exhaustion chưa đo. |
 | <a id="gap-round-clock"></a>KR-F001 | CP155 baepoch actual99/nativeclock/barrier trước30s, B32390restore mỗi clock; same-run freshness/contest/EOF cónguồn. | Không RE lại99/load/clock; tiếp thứ tự hiện hành trong PLAN. Originalclock/timeoutauthority ngoài profile giữunknown. |
-| <a id="gap-peer-movement"></a>KR-F002 | [CP176](PROTOCOL.md#a-c-basic-cycles) current A/C4nativewindows/2keys/target/currentprogress cùng2normalcycles; CP173 giữ AB scope. | FullUDP/auth/reliability/generalphysics/NAT unknown; không đo lại currentconsumer hoặc AC peer, theo PLAN actualcodec/retryreset; CP177 profilecapacity đã giao. |
+| <a id="gap-peer-movement"></a>KR-F002 | [CP176](PROTOCOL.md#a-c-basic-cycles) current A/C4nativewindows/2keys/target/currentprogress cùng2normalcycles; CP173 giữ AB scope. | FullUDP/auth/reliability/generalphysics/NAT unknown; không đo lại currentconsumer hoặc AC peer, currentAB291 có4windows/2keys CP188; theo PLAN currentbasiccontest cho K6a, không lặp solvedcodec. CP177profilecapacity đã giao. |
 | <a id="gap-udp-freshness"></a>KR-F003 | [CP155](PROTOCOL.md#direct-oldudp-contest-eof) exactR1Bframe→R2actualendpoint/queue/key59≠56/drop/noapply+11currentpositive vàfreshBRight trong cùng2contest/Ready/EOFrecipe. | Scope1key/currentIDs đã giải, không RE lại CP145consumer. low8wrap/forgedcurrentkey/fullgrammar/auth cònunknown theo trigger; tiếp thứ tự hiện hành trong PLAN. |
 | <a id="gap-bomb-lifetime"></a>KR-F004 | [CP174](PROTOCOL.md#basic-host-b-eof) basicB/A/A IDs1..6/native195/reset rồithirdBID7pending/ownedBEOF/round_closed/no158; CP155scope cũ giữ. | Genericpool/auth/multiple/races/low8wrap khác unknown; khôngRElạicurrentpendingfence. Admission theoPLAN. |
 | <a id="gap-blast-block-chain"></a>KR-F005 | [CP172](PROTOCOL.md#hidden-cell-admission-current) basic Box/reveal27/28/142guard/3effects/reset/Start3 đã kiểm. | Generalmoving/order/allmaps/fullworldauthority unknown; không RE lại consumer. CP173 Bowner/native195 đã ghép; CP174BhostEOF đã kiểm; admission theoPLAN. |

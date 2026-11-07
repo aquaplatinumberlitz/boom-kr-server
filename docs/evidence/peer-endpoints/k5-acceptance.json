@@ -1,0 +1,54 @@
+{
+  "schema": "kre-gate-acceptance-evidence-v1",
+  "gate": "K5",
+  "checkpoint": "CP188",
+  "decision": "passed",
+  "decided_by": "Codex",
+  "review": "waived",
+  "review_reference": "docs/evidence/checkpoints/review-waiver.json",
+  "recorded_utc": "2026-11-07T05:32:27.330983+00:00",
+  "scope": "K5 basic A route within two actual AB, modified Wine copy4b781f/private virtualhosts, normal Manner/ExVillage01/optional two-client-basic +own291/nameguard. Clock/input/IDs/blast/actualblock/Fire/Bomb/Roller/trap/death/result/reset only. Design fuse/drop/rank/guards. Not full inventory/maps/vanilla Windows/accountauth/K6a/LAN/Internet/8players.",
+  "criteria": [
+    {
+      "criterion": "Complete KR client cycle with real clock/movement/bomb/block/basic pickup/trap/death/result/return",
+      "sources": [
+        "docs/PROTOCOL.md#current-basic-cycles-291",
+        "docs/evidence/peer-endpoints/README.md#cp188"
+      ],
+      "reason": "Current neutral r2: two normal results/reset/Ready and Start3. Current peer r1 independently composes both movement directions, B/A/A bombs IDs1..6, actual195flags, hidden27/28 and floor17, three native effects per epoch, strict life56→1/other0 before175, full175180/room/Ready2/Start3. No synthetic guest or encoder oracle."
+    },
+    {
+      "criterion": "Stable bomb ID; pickup not confirmed twice; no stuck loading/GO in measured cycles",
+      "sources": [
+        "docs/PROTOCOL.md#current-basic-cycles-291",
+        "docs/PROTOCOL.md#hidden-cell-admission-current"
+      ],
+      "reason": "Same native159entity pointer/ID matched158 for each actual bomb; captured/native124/142/165 field checks, exactly one confirm per item per view per epoch and fresh key/stat/195seed/hidden registry reset. Three measured30s barriers release after both99, no forcedclock. Duplicate/malformed negatives in retained tests/CP172 have separate source, not newly injected here."
+    },
+    {
+      "criterion": "Authority matrix manually reviewed for each used behavior",
+      "sources": [
+        "docs/PROTOCOL.md#authority",
+        "docs/PROTOCOL.md#terrain-policy",
+        "docs/PROTOCOL.md#result-freshness-guard"
+      ],
+      "reason": "Codex reviewed creator/simulator/validator/broadcaster/peer-editable cells: native input118/124/127/142 and client simulation/effects/peer writes; service ID/6s fuse/catalog/terrain/freshness/chosenresult are design. Unknown original validator/auth/distance/drop/fairness remain explicit; no server-authoritative assumption."
+    },
+    {
+      "criterion": "Client trace and capture share run identity; dependencies hold",
+      "sources": [
+        "docs/PLAN.md#k4-acceptance",
+        "docs/PROTOCOL.md#own-profile-result-compare",
+        "docs/PROTOCOL.md#current-basic-cycles-291"
+      ],
+      "reason": "RunSHA/rawseal/ownednetns/actualTCPUDP/nativeparsedpayload/protectedgetters link per run; current .image unchanged and importedABI correction already controlled CP187. K0–K4 scoped dependencies retained. Review waived by owner; manual self-check, not independent approval."
+    }
+  ],
+  "limits": [
+    "K5 basic A route within two actual AB, modified Wine copy4b781f/private virtualhosts, normal Manner/ExVillage01/optional two-client-basic +own291/nameguard. Clock/input/IDs/blast/actualblock/Fire/Bomb/Roller/trap/death/result/reset only. Design fuse/drop/rank/guards. Not full inventory/maps/vanilla Windows/accountauth/K6a/LAN/Internet/8players.",
+    "Neutral keyup success does not establish old key-stuck rootcause: exact R2 branch absent from first success. Later EOF r1 re-exercises fallback, stable x80/y399/20attempts fails; r2 reuses CP175 corridor-entry input correction. Keep both failures as history.",
+    "K6a is still open: current basic contested-item integration remains to be measured. Old CP155 controlled contest/freshness and CP159 immediate165 controls are independent, not same-run with current basic.",
+    "Two normal outcomes plus active Start3 are independent positives; focused EOF first-epoch forfeit is not a normal match. All map/reset/transport/auth variants and physical LAN/Internet/four/eight actual clients remain open."
+  ],
+  "next_source": "docs/PLAN.md#current-order"
+}

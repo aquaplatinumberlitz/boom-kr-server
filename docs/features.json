@@ -1,7 +1,7 @@
 {
   "schema": "kre-feature-index-v1",
   "build": "KR00967",
-  "as_of": "CP187",
+  "as_of": "CP188",
   "sources": {
     "plan": "docs/PLAN.md",
     "contract": "docs/PROTOCOL.md",
@@ -1339,7 +1339,8 @@
           "docs/evidence/peer-endpoints/README.md#cp167",
           "docs/evidence/peer-endpoints/README.md#cp168",
           "docs/PROTOCOL.md#a-c-basic-cycles",
-          "docs/evidence/peer-endpoints/README.md#cp176"
+          "docs/evidence/peer-endpoints/README.md#cp176",
+          "docs/PROTOCOL.md#current-basic-cycles-291"
         ]
       },
       "coverage": {
@@ -1380,7 +1381,8 @@
               "docs/evidence/peer-endpoints/README.md#cp167",
               "docs/evidence/peer-endpoints/README.md#cp168",
               "docs/PROTOCOL.md#a-c-basic-cycles",
-              "docs/evidence/peer-endpoints/README.md#cp176"
+              "docs/evidence/peer-endpoints/README.md#cp176",
+              "docs/PROTOCOL.md#current-basic-cycles-291"
             ]
           },
           "windows_original": {
@@ -1416,15 +1418,17 @@
             "docs/PROTOCOL.md#integrated-survivor",
             "docs/PROTOCOL.md#virtual-basic-cycles",
             "docs/PROTOCOL.md#a-c-basic-cycles",
-            "docs/evidence/peer-endpoints/README.md#cp176"
+            "docs/evidence/peer-endpoints/README.md#cp176",
+            "docs/PROTOCOL.md#current-basic-cycles-291"
           ]
         },
         "gate": {
           "id": "K5",
-          "state": "open",
+          "state": "passed",
           "refs": [
-            "docs/PLAN.md#gates"
-          ]
+            "docs/PLAN.md#k5-acceptance"
+          ],
+          "acceptance": "docs/PLAN.md#k5-acceptance"
         }
       },
       "issues": [
@@ -1472,7 +1476,8 @@
           "docs/evidence/peer-endpoints/README.md#cp168",
           "docs/evidence/peer-endpoints/README.md#cp173",
           "docs/PROTOCOL.md#a-c-basic-cycles",
-          "docs/evidence/peer-endpoints/README.md#cp176"
+          "docs/evidence/peer-endpoints/README.md#cp176",
+          "docs/PROTOCOL.md#current-basic-cycles-291"
         ]
       },
       "coverage": {
@@ -1530,7 +1535,8 @@
               "docs/evidence/peer-endpoints/README.md#cp168",
               "docs/evidence/peer-endpoints/README.md#cp173",
               "docs/PROTOCOL.md#a-c-basic-cycles",
-              "docs/evidence/peer-endpoints/README.md#cp176"
+              "docs/evidence/peer-endpoints/README.md#cp176",
+              "docs/PROTOCOL.md#current-basic-cycles-291"
             ]
           },
           "windows_original": {
@@ -1571,7 +1577,8 @@
             "docs/PROTOCOL.md#peer-endpoint-ip",
             "docs/PROTOCOL.md#virtual-peer",
             "docs/PROTOCOL.md#a-c-basic-cycles",
-            "docs/evidence/peer-endpoints/README.md#cp176"
+            "docs/evidence/peer-endpoints/README.md#cp176",
+            "docs/PROTOCOL.md#current-basic-cycles-291"
           ]
         },
         "gate": {
@@ -1742,7 +1749,8 @@
           "docs/PROTOCOL.md#a-c-first-bomb",
           "docs/evidence/peer-endpoints/README.md#cp176-in-progress",
           "docs/PROTOCOL.md#a-c-basic-cycles",
-          "docs/evidence/peer-endpoints/README.md#cp176"
+          "docs/evidence/peer-endpoints/README.md#cp176",
+          "docs/PROTOCOL.md#current-basic-cycles-291"
         ]
       },
       "coverage": {
@@ -1814,7 +1822,8 @@
               "docs/PROTOCOL.md#a-c-first-bomb",
               "docs/evidence/peer-endpoints/README.md#cp176-in-progress",
               "docs/PROTOCOL.md#a-c-basic-cycles",
-              "docs/evidence/peer-endpoints/README.md#cp176"
+              "docs/evidence/peer-endpoints/README.md#cp176",
+              "docs/PROTOCOL.md#current-basic-cycles-291"
             ]
           },
           "windows_original": {
@@ -1877,15 +1886,17 @@
             "docs/PROTOCOL.md#shared-cell-state",
             "docs/PROTOCOL.md#virtual-basic-cycles",
             "docs/PROTOCOL.md#a-c-basic-cycles",
-            "docs/evidence/peer-endpoints/README.md#cp176"
+            "docs/evidence/peer-endpoints/README.md#cp176",
+            "docs/PROTOCOL.md#current-basic-cycles-291"
           ]
         },
         "gate": {
           "id": "K5",
-          "state": "open",
+          "state": "passed",
           "refs": [
-            "docs/PLAN.md#gates"
-          ]
+            "docs/PLAN.md#k5-acceptance"
+          ],
+          "acceptance": "docs/PLAN.md#k5-acceptance"
         }
       },
       "issues": [
@@ -1946,7 +1957,8 @@
           "docs/evidence/peer-endpoints/README.md#cp172",
           "docs/evidence/peer-endpoints/README.md#cp173",
           "docs/PROTOCOL.md#a-c-basic-cycles",
-          "docs/evidence/peer-endpoints/README.md#cp176"
+          "docs/evidence/peer-endpoints/README.md#cp176",
+          "docs/PROTOCOL.md#current-basic-cycles-291"
         ]
       },
       "coverage": {
@@ -2017,7 +2029,8 @@
               "docs/evidence/peer-endpoints/README.md#cp172",
               "docs/evidence/peer-endpoints/README.md#cp173",
               "docs/PROTOCOL.md#a-c-basic-cycles",
-              "docs/evidence/peer-endpoints/README.md#cp176"
+              "docs/evidence/peer-endpoints/README.md#cp176",
+              "docs/PROTOCOL.md#current-basic-cycles-291"
             ]
           },
           "windows_original": {
@@ -2078,15 +2091,17 @@
             "docs/PROTOCOL.md#shared-cascade-cycles",
             "docs/PROTOCOL.md#integrated-survivor",
             "docs/PROTOCOL.md#a-c-basic-cycles",
-            "docs/evidence/peer-endpoints/README.md#cp176"
+            "docs/evidence/peer-endpoints/README.md#cp176",
+            "docs/PROTOCOL.md#current-basic-cycles-291"
           ]
         },
         "gate": {
           "id": "K5",
-          "state": "open",
+          "state": "passed",
           "refs": [
-            "docs/PLAN.md#gates"
-          ]
+            "docs/PLAN.md#k5-acceptance"
+          ],
+          "acceptance": "docs/PLAN.md#k5-acceptance"
         }
       },
       "issues": [
@@ -2151,7 +2166,8 @@
           "docs/evidence/peer-endpoints/README.md#cp172",
           "docs/evidence/peer-endpoints/README.md#cp173",
           "docs/PROTOCOL.md#a-c-basic-cycles",
-          "docs/evidence/peer-endpoints/README.md#cp176"
+          "docs/evidence/peer-endpoints/README.md#cp176",
+          "docs/PROTOCOL.md#current-basic-cycles-291"
         ]
       },
       "coverage": {
@@ -2225,7 +2241,8 @@
               "docs/evidence/peer-endpoints/README.md#cp172",
               "docs/evidence/peer-endpoints/README.md#cp173",
               "docs/PROTOCOL.md#a-c-basic-cycles",
-              "docs/evidence/peer-endpoints/README.md#cp176"
+              "docs/evidence/peer-endpoints/README.md#cp176",
+              "docs/PROTOCOL.md#current-basic-cycles-291"
             ]
           },
           "windows_original": {
@@ -2278,15 +2295,17 @@
             "docs/PROTOCOL.md#needle-round-reset",
             "docs/PROTOCOL.md#integrated-survivor",
             "docs/PROTOCOL.md#a-c-basic-cycles",
-            "docs/evidence/peer-endpoints/README.md#cp176"
+            "docs/evidence/peer-endpoints/README.md#cp176",
+            "docs/PROTOCOL.md#current-basic-cycles-291"
           ]
         },
         "gate": {
           "id": "K5",
-          "state": "open",
+          "state": "passed",
           "refs": [
-            "docs/PLAN.md#gates"
-          ]
+            "docs/PLAN.md#k5-acceptance"
+          ],
+          "acceptance": "docs/PLAN.md#k5-acceptance"
         }
       },
       "issues": [
@@ -2330,7 +2349,8 @@
           "docs/evidence/peer-endpoints/README.md#cp171",
           "docs/evidence/peer-endpoints/README.md#cp172",
           "docs/PROTOCOL.md#a-c-basic-cycles",
-          "docs/evidence/peer-endpoints/README.md#cp176"
+          "docs/evidence/peer-endpoints/README.md#cp176",
+          "docs/PROTOCOL.md#current-basic-cycles-291"
         ]
       },
       "coverage": {
@@ -2380,7 +2400,8 @@
               "docs/evidence/peer-endpoints/README.md#cp171",
               "docs/evidence/peer-endpoints/README.md#cp172",
               "docs/PROTOCOL.md#a-c-basic-cycles",
-              "docs/evidence/peer-endpoints/README.md#cp176"
+              "docs/evidence/peer-endpoints/README.md#cp176",
+              "docs/PROTOCOL.md#current-basic-cycles-291"
             ]
           },
           "windows_original": {
@@ -2424,15 +2445,17 @@
             "docs/evidence/capacity-reservations/README.md",
             "docs/PROTOCOL.md#recursive-chain",
             "docs/PROTOCOL.md#a-c-basic-cycles",
-            "docs/evidence/peer-endpoints/README.md#cp176"
+            "docs/evidence/peer-endpoints/README.md#cp176",
+            "docs/PROTOCOL.md#current-basic-cycles-291"
           ]
         },
         "gate": {
           "id": "K5",
-          "state": "open",
+          "state": "passed",
           "refs": [
-            "docs/PLAN.md#gates"
-          ]
+            "docs/PLAN.md#k5-acceptance"
+          ],
+          "acceptance": "docs/PLAN.md#k5-acceptance"
         }
       },
       "issues": [
@@ -2532,10 +2555,11 @@
         },
         "gate": {
           "id": "K5",
-          "state": "open",
+          "state": "passed",
           "refs": [
-            "docs/PLAN.md#gates"
-          ]
+            "docs/PLAN.md#k5-acceptance"
+          ],
+          "acceptance": "docs/PLAN.md#k5-acceptance"
         }
       },
       "issues": [
@@ -2593,7 +2617,8 @@
           "docs/evidence/peer-endpoints/README.md#cp159",
           "docs/evidence/peer-endpoints/README.md#cp170",
           "docs/evidence/peer-endpoints/README.md#cp171",
-          "docs/evidence/peer-endpoints/README.md#cp172"
+          "docs/evidence/peer-endpoints/README.md#cp172",
+          "docs/PROTOCOL.md#current-basic-cycles-291"
         ]
       },
       "coverage": {
@@ -2663,7 +2688,8 @@
               "docs/evidence/peer-endpoints/README.md#cp159",
               "docs/evidence/peer-endpoints/README.md#cp170",
               "docs/evidence/peer-endpoints/README.md#cp171",
-              "docs/evidence/peer-endpoints/README.md#cp172"
+              "docs/evidence/peer-endpoints/README.md#cp172",
+              "docs/PROTOCOL.md#current-basic-cycles-291"
             ]
           },
           "windows_original": {
@@ -2729,15 +2755,17 @@
             "docs/PROTOCOL.md#rescue-two-results",
             "docs/PROTOCOL.md#death-lifecycle-policy",
             "docs/PROTOCOL.md#integrated-survivor",
-            "docs/PROTOCOL.md#virtual-basic-cycles"
+            "docs/PROTOCOL.md#virtual-basic-cycles",
+            "docs/PROTOCOL.md#current-basic-cycles-291"
           ]
         },
         "gate": {
           "id": "K5",
-          "state": "open",
+          "state": "passed",
           "refs": [
-            "docs/PLAN.md#gates"
-          ]
+            "docs/PLAN.md#k5-acceptance"
+          ],
+          "acceptance": "docs/PLAN.md#k5-acceptance"
         }
       },
       "issues": [
@@ -2815,10 +2843,11 @@
         },
         "gate": {
           "id": "K5",
-          "state": "open",
+          "state": "passed",
           "refs": [
-            "docs/PLAN.md#gates"
-          ]
+            "docs/PLAN.md#k5-acceptance"
+          ],
+          "acceptance": "docs/PLAN.md#k5-acceptance"
         }
       },
       "issues": [
@@ -2895,10 +2924,11 @@
         },
         "gate": {
           "id": "K5",
-          "state": "open",
+          "state": "passed",
           "refs": [
-            "docs/PLAN.md#gates"
-          ]
+            "docs/PLAN.md#k5-acceptance"
+          ],
+          "acceptance": "docs/PLAN.md#k5-acceptance"
         }
       },
       "issues": [
@@ -2975,10 +3005,11 @@
         },
         "gate": {
           "id": "K5",
-          "state": "open",
+          "state": "passed",
           "refs": [
-            "docs/PLAN.md#gates"
-          ]
+            "docs/PLAN.md#k5-acceptance"
+          ],
+          "acceptance": "docs/PLAN.md#k5-acceptance"
         }
       },
       "issues": [
@@ -3055,10 +3086,11 @@
         },
         "gate": {
           "id": "K5",
-          "state": "open",
+          "state": "passed",
           "refs": [
-            "docs/PLAN.md#gates"
-          ]
+            "docs/PLAN.md#k5-acceptance"
+          ],
+          "acceptance": "docs/PLAN.md#k5-acceptance"
         }
       },
       "issues": [
@@ -3133,10 +3165,11 @@
         },
         "gate": {
           "id": "K5",
-          "state": "open",
+          "state": "passed",
           "refs": [
-            "docs/PLAN.md#gates"
-          ]
+            "docs/PLAN.md#k5-acceptance"
+          ],
+          "acceptance": "docs/PLAN.md#k5-acceptance"
         }
       },
       "issues": [
@@ -3309,7 +3342,8 @@
           "docs/evidence/peer-endpoints/README.md#cp173",
           "docs/evidence/peer-endpoints/README.md#cp174",
           "docs/PROTOCOL.md#a-c-basic-cycles",
-          "docs/evidence/peer-endpoints/README.md#cp176"
+          "docs/evidence/peer-endpoints/README.md#cp176",
+          "docs/PROTOCOL.md#current-basic-cycles-291"
         ]
       },
       "coverage": {
@@ -3386,7 +3420,8 @@
               "docs/evidence/peer-endpoints/README.md#cp173",
               "docs/evidence/peer-endpoints/README.md#cp174",
               "docs/PROTOCOL.md#a-c-basic-cycles",
-              "docs/evidence/peer-endpoints/README.md#cp176"
+              "docs/evidence/peer-endpoints/README.md#cp176",
+              "docs/PROTOCOL.md#current-basic-cycles-291"
             ]
           },
           "windows_original": {
@@ -3443,15 +3478,17 @@
             "docs/PROTOCOL.md#integrated-survivor",
             "docs/PROTOCOL.md#virtual-basic-cycles",
             "docs/PROTOCOL.md#a-c-basic-cycles",
-            "docs/evidence/peer-endpoints/README.md#cp176"
+            "docs/evidence/peer-endpoints/README.md#cp176",
+            "docs/PROTOCOL.md#current-basic-cycles-291"
           ]
         },
         "gate": {
           "id": "K5",
-          "state": "open",
+          "state": "passed",
           "refs": [
-            "docs/PLAN.md#gates"
-          ]
+            "docs/PLAN.md#k5-acceptance"
+          ],
+          "acceptance": "docs/PLAN.md#k5-acceptance"
         }
       },
       "issues": [
@@ -3543,7 +3580,8 @@
           "docs/evidence/peer-endpoints/README.md#cp173",
           "docs/evidence/peer-endpoints/README.md#cp174",
           "docs/PROTOCOL.md#a-c-basic-cycles",
-          "docs/evidence/peer-endpoints/README.md#cp176"
+          "docs/evidence/peer-endpoints/README.md#cp176",
+          "docs/PROTOCOL.md#current-basic-cycles-291"
         ]
       },
       "coverage": {
@@ -3642,7 +3680,8 @@
               "docs/evidence/peer-endpoints/README.md#cp173",
               "docs/evidence/peer-endpoints/README.md#cp174",
               "docs/PROTOCOL.md#a-c-basic-cycles",
-              "docs/evidence/peer-endpoints/README.md#cp176"
+              "docs/evidence/peer-endpoints/README.md#cp176",
+              "docs/PROTOCOL.md#current-basic-cycles-291"
             ]
           },
           "windows_original": {
@@ -3724,7 +3763,8 @@
             "docs/PROTOCOL.md#integrated-survivor",
             "docs/PROTOCOL.md#virtual-basic-cycles",
             "docs/PROTOCOL.md#a-c-basic-cycles",
-            "docs/evidence/peer-endpoints/README.md#cp176"
+            "docs/evidence/peer-endpoints/README.md#cp176",
+            "docs/PROTOCOL.md#current-basic-cycles-291"
           ]
         },
         "gate": {
@@ -3792,7 +3832,8 @@
           "docs/PROTOCOL.md#a-c-basic-cycles",
           "docs/evidence/peer-endpoints/README.md#cp176",
           "docs/PROTOCOL.md#replacement-profile",
-          "docs/evidence/peer-endpoints/README.md#cp177"
+          "docs/evidence/peer-endpoints/README.md#cp177",
+          "docs/PROTOCOL.md#current-basic-cycles-291"
         ]
       },
       "coverage": {
@@ -3858,7 +3899,8 @@
               "docs/PROTOCOL.md#a-c-basic-cycles",
               "docs/evidence/peer-endpoints/README.md#cp176",
               "docs/PROTOCOL.md#replacement-profile",
-              "docs/evidence/peer-endpoints/README.md#cp177"
+              "docs/evidence/peer-endpoints/README.md#cp177",
+              "docs/PROTOCOL.md#current-basic-cycles-291"
             ]
           },
           "windows_original": {
@@ -3936,7 +3978,8 @@
             "docs/PROTOCOL.md#a-c-basic-cycles",
             "docs/evidence/peer-endpoints/README.md#cp176",
             "docs/PROTOCOL.md#replacement-profile",
-            "docs/evidence/peer-endpoints/README.md#cp177"
+            "docs/evidence/peer-endpoints/README.md#cp177",
+            "docs/PROTOCOL.md#current-basic-cycles-291"
           ]
         },
         "gate": {

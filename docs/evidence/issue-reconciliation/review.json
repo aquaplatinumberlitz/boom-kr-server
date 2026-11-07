@@ -155,11 +155,11 @@
         "KR-F001",
         "KR-F015"
       ],
-      "known": "CP186 K3local andCP187 K4room/load/start localaccepted bymanual unchanged-criterion scope review; currentABnative291 andcopyABI correction haveevidence.",
-      "remaining": "Currentcopy4b profile requires two complete basic outcomes/reset; CP187 alignmentinput fails inround2 afterfirstresult/Start2. K5/K6a thenLAN/Internet/8native remain.",
-      "next_test": "PLAN#current-order NEXT-K5-K6A-CURRENT: readfeedback/keyrelease andminimuminputcontroller test; no new room/import/codec scan.",
+      "known": "CP188 K5basic localaccepted; currentAB291 two normalcycles/reset/Start3/peer/Bowner andindependentEOFcontrol. K3CP186/K4CP187 scoped retained.",
+      "remaining": "K6a currentbasiccontesteditem integration; physicalLAN/Internet/four-eight actualclients remain. Generalaccount/authority/fullcodec backlog bytrigger.",
+      "next_test": "PLAN#current-order NEXT-K6A-CURRENT-CONTEST: reuseCP155159160 claim/consumer/route, verifycurrentprofile/code delta andoneeffect/reset withoutforcingtwoimmediateclaims.",
       "acceptance": "Epic checklist: linkedscopedtask/evidence+authoritymatrix vàacceptancegate ởPLAN; từngtaskđóng khôngđóngepic/K5/K6a.",
-      "reason": "CP187 preservesr1fault/r2partial, originalthunk/export/nativecontrol andscope. Gates do notcloseumbrella; auditCP188next.",
+      "reason": "CP188 keepspreclientinterruption/EOF-r1partial andCodexmanualK5authorityreview; K6a/epicremainopen. AUD056through188/next192.",
       "sources": [
         "docs/PROTOCOL.md#authority",
         "docs/RESEARCH.md#feature-gaps",

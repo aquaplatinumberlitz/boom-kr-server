@@ -1,0 +1,302 @@
+{
+  "id": "CP188",
+  "previous": "CP187",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-07T05:32:56.379713+00:00",
+  "context_commit": "a3d0ff1f9996cac7600b606305e823cf3e0672f0",
+  "owner": "Codex",
+  "reviewer": "Codex",
+  "question": "Do current291/copyABI positive basiccycles compose with bidirectional peers/Bowner and knownpendinghostEOF, what inputdelta is really needed, and can unchangedK5criteria be accepted?",
+  "scope": "ReuseCP171173174175/CP187 consumers/oracles/oldwikiVNreference; onepreclientinterruption, neutral2cycles, peer2cycles, EOF-r1partial andCP175entrycolumn retry. No newstaticbody orwholeclient scan. ManualK5authorityreview andperiodicAUD056; K6a currentbasiccontest remains explicit nextdelta.",
+  "artifacts": [
+    {
+      "name": "OriginalKR00967unchanged",
+      "sha256": "a52545c14b1fea423de655c3163d6360b628d61c1cd472b46fdbc8a9ffe15f4e"
+    },
+    {
+      "name": "CurrentWinecopyunchanged",
+      "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+    },
+    {
+      "name": "NativeIDAfullcopycf72privateanalysis",
+      "sha256": "cf72da112308d9f1ca256df8089594c5f787875310933073bf6bd5ba6f70e63b"
+    },
+    {
+      "name": "modOmodelreference",
+      "sha256": "a08950c833d3acab8281049def7b3dc96b221f107eeda01da3a548e34b91dce5"
+    },
+    {
+      "name": "OriginalKR00967NewPatcher",
+      "sha256": "b59e4dce9ad23c439a7632ce04ecb2eed3481585bd2454100b05c9d7527f5c02"
+    },
+    {
+      "name": "VN116original_reference_only",
+      "sha256": "bce8644d4e783d1354ab4fc880e1ab9a4ab3325327028f37d99e5439e25f4bbd"
+    },
+    {
+      "name": "VN116patched_runtime_reference_only",
+      "sha256": "bc875ba5765cc112e924f46e75d0ace112904c7801126e46bc0abb1c9cb576b1"
+    },
+    {
+      "name": "PassingK1offlineR2recipe",
+      "sha256": "7b3b435b5d8e110185359107376b736615ceabe9452cea8154d02c8628f44c29"
+    },
+    {
+      "name": "NativeProcessPatchR1control",
+      "sha256": "a0c3b9867dae5fe2ff7c315cfe851117661c2cafead45196ce999329f67432f5"
+    },
+    {
+      "name": "OfflineWinecopy_import_compare_ABI_only",
+      "sha256": "4b781fbcea21e0f6294c729b63be86ab2953d60ad83b0d0c9219359f826107ed"
+    }
+  ],
+  "locators": [
+    "PEcopy4b781fbcea21e0f6294c729b63be86ab2953d60ad83b0d0c9219359f826107ed; originalsourcea52545c14b1fea423de655c3163d6360b628d61c1cd472b46fdbc8a9ffe15f4e; base400000/RVA=VA-base. Known121/99/118159158/124142165/175180/107110/E66680/E667BE/E668AD/E668B2/B4EA14/52A350; no nativebodynew.",
+    "Neutralrun 9e22627c74392fb296d22164121fdb42181fa2344dee92859add3d8c31f2dc84; peer e0d443ddfba8fd5261dd5110e1d76554c025769915862e9f1baa3b5558694243; EOFpartial b7bd32a0a98a21536b0293a7bd7ddaf42aa8647fe016dca0bbb0e621f2ab35f9; EOFretry edb46b7d607ad617dacac7c7e231be3828f992ad6ed7b1b819525b75bf6e562d. All sealed frozen withownedcleanup.",
+    "Preclientwineboot−15/zeroTCP/recovery12raw distinct fromgameplay; neutral16R1windows3fresh/OSkeyup0 noR2failedbranch; laterEOFpartialR2x80y39920stable/OSkeyup0. CP175exactentrycolumn120 reusedbeforehiddenrow.",
+    "Peer2keys12345/12346/4nativeRightwindows/6actualB,A,Abombs/power1,1,2/195flags/3effects/reset/life56→1/other0before175; normalBStart3/key12347. IndependentfirstepochEOF/owner1/pending6s/ownedBkill/AclearID2/chief/fencepastdue+4s; no normalcyclesintheshortcontrol.",
+    "CP187PR259mergede57e6283dbfeda3fc30943ece4f4e307404c6ccd; currentCP188deliverypendingcommitPR/exacthead. AUD056periodic188/next192; reviewwaived notindependentapproved."
+  ],
+  "findings": [
+    {
+      "summary": "Neutral input policy adds explicitOSkeyup/freshfailedreadledger withinoldbounds. r2currentAB two normalbasicoutcomes/reset/Ready2/Start3 complete;16R1neutralwindows3freshstable. R2coarse route alreadyhasitem, exactfailedbranchnotexercised; do notclaimstuckkeycause/fix. Preclientinterruption separate.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#current-basic-cycles-291",
+      "evidence": [
+        "BASIC188-01599",
+        "BASIC188-01590",
+        "BASIC188-01607",
+        "BASIC188-00061"
+      ],
+      "limits": "Modified KR00967 Wine copy4b781f/privatevirtualhosts/offline/currentbasic+291/nameguard. Two normal outcomes/reset/Start3 per positive run; independent pendingBhostEOF control, old contest/oldUDP retained separate. K5basic scoped manual acceptance only; K6a currentbasiccontest andphysicalLAN/Internet/4–8client stillopen. Nativeperviewstate notglobalsametick; nativecopiedemulation separatefromWine. Fuse/drop/rank/guards design, fullauth/distance/142freshness/originalauthority unknown. Originalclient/DB/assets/oldcomplete/evidence unchanged."
+    },
+    {
+      "summary": "Currentpeer run composesfourfiniteA↔Bnativeapply/target/currentprogress windows over2keys, B/A/Abombs/IDs1..6/power1,1,2,195nativeflags/hiddenreveal/3effect/statkeyreset, strictlife56→1/other0before175bothview/twoepochs, twofullresults/Ready2/normalBStart3. No contest/EOF/oldUDPinthisrun.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#current-basic-cycles-291",
+      "evidence": [
+        "BASIC188-06126",
+        "BASIC188-07617",
+        "BASIC188-07634",
+        "BASIC188-07618",
+        "BASIC188-07631"
+      ],
+      "limits": "Modified KR00967 Wine copy4b781f/privatevirtualhosts/offline/currentbasic+291/nameguard. Two normal outcomes/reset/Start3 per positive run; independent pendingBhostEOF control, old contest/oldUDP retained separate. K5basic scoped manual acceptance only; K6a currentbasiccontest andphysicalLAN/Internet/4–8client stillopen. Nativeperviewstate notglobalsametick; nativecopiedemulation separatefromWine. Fuse/drop/rank/guards design, fullauth/distance/142freshness/originalauthority unknown. Originalclient/DB/assets/oldcomplete/evidence unchanged."
+    },
+    {
+      "summary": "Copiednativeframe/field/getteroracles reused, notnewstaticRE: peer234nativepacketcases/834securefields/432peergetters/16lifegetters. Runtimewrappers/capturelinkedseparately fromallocator/modelcounter syntheticcontext. No originalserverauthority claim.",
+      "source": "kr_static",
+      "status": "confirmed",
+      "method": "emulation",
+      "canonical": "docs/PROTOCOL.md#current-basic-cycles-291",
+      "evidence": [
+        "BASIC188-07637",
+        "BASIC188-06121",
+        "BASIC188-07647",
+        "BASIC188-07635"
+      ],
+      "limits": "Modified KR00967 Wine copy4b781f/privatevirtualhosts/offline/currentbasic+291/nameguard. Two normal outcomes/reset/Start3 per positive run; independent pendingBhostEOF control, old contest/oldUDP retained separate. K5basic scoped manual acceptance only; K6a currentbasiccontest andphysicalLAN/Internet/4–8client stillopen. Nativeperviewstate notglobalsametick; nativecopiedemulation separatefromWine. Fuse/drop/rank/guards design, fullauth/distance/142freshness/originalauthority unknown. Originalclient/DB/assets/oldcomplete/evidence unchanged."
+    },
+    {
+      "summary": "EOFr1 one normaloutcome thenalignmiss:R2hiddenrow, all20samplesstablex80/y399/OSkeyup0/3freshreads; nointentionalhostfault. ExactCP175alreadymeasuredentrycolumn120 wasomitted byCP174recipe reuse. Retry addsknowninputrouteonly, notphysics/keyrootcausality.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#current-basic-cycles-291",
+      "evidence": [
+        "BASIC188-02873",
+        "BASIC188-02875",
+        "BASIC188-06119"
+      ],
+      "limits": "Modified KR00967 Wine copy4b781f/privatevirtualhosts/offline/currentbasic+291/nameguard. Two normal outcomes/reset/Start3 per positive run; independent pendingBhostEOF control, old contest/oldUDP retained separate. K5basic scoped manual acceptance only; K6a currentbasiccontest andphysicalLAN/Internet/4–8client stillopen. Nativeperviewstate notglobalsametick; nativecopiedemulation separatefromWine. Fuse/drop/rank/guards design, fullauth/distance/142freshness/originalauthority unknown. Originalclient/DB/assets/oldcomplete/evidence unchanged."
+    },
+    {
+      "summary": "CurrentEOFr2entrycolumncontrol passes two normalbasiccycles/peer/reset/Start3 thenownershipimagepatherror beforekill; exit1retained. IndependentfirstepochEOFshortcontrolcorrectsdynamicimagepath/preguards, actualpendingB/ownedkill/A-onlyforfeit/native107ID2clear/110chief/room andround_closed/no158pastdue+4s. Nofullcyclesintheshortcontrol/accountresume/UIBack/Start4.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#current-basic-cycles-291",
+      "evidence": [
+        "BASIC188-06061",
+        "BASIC188-02935",
+        "BASIC188-04432",
+        "BASIC188-04459",
+        "BASIC188-06066"
+      ],
+      "limits": "Modified KR00967 Wine copy4b781f/privatevirtualhosts/offline/currentbasic+291/nameguard. Two normal outcomes/reset/Start3 per positive run; independent pendingBhostEOF control, old contest/oldUDP retained separate. K5basic scoped manual acceptance only; K6a currentbasiccontest andphysicalLAN/Internet/4–8client stillopen. Nativeperviewstate notglobalsametick; nativecopiedemulation separatefromWine. Fuse/drop/rank/guards design, fullauth/distance/142freshness/originalauthority unknown. Originalclient/DB/assets/oldcomplete/evidence unchanged."
+    },
+    {
+      "summary": "CodexmanualunchangedK5criteria/authoritymatrixreview accepts basiclocalcurrentcopy scope. Originalauthorityunknowns remain designlimits; K6a currentbasiccontesteditemintegration remainsnext. AUD056manualcore→raw/oldcontrols/images correctedstalenextsteps/delivery/cadence, noautogate.",
+      "source": "design",
+      "status": "design",
+      "method": "design",
+      "canonical": "docs/PLAN.md#k5-acceptance",
+      "evidence": [
+        "BASIC188-05332",
+        "BASIC188-05329"
+      ],
+      "limits": "Modified KR00967 Wine copy4b781f/privatevirtualhosts/offline/currentbasic+291/nameguard. Two normal outcomes/reset/Start3 per positive run; independent pendingBhostEOF control, old contest/oldUDP retained separate. K5basic scoped manual acceptance only; K6a currentbasiccontest andphysicalLAN/Internet/4–8client stillopen. Nativeperviewstate notglobalsametick; nativecopiedemulation separatefromWine. Fuse/drop/rank/guards design, fullauth/distance/142freshness/originalauthority unknown. Originalclient/DB/assets/oldcomplete/evidence unchanged."
+    }
+  ],
+  "verification": [
+    {
+      "check": "Currentneutralandpeerbasic2normalcycles/reset/Start3/nativeidentity/fields/getters",
+      "result": "pass",
+      "evidence": [
+        "BASIC188-01599",
+        "BASIC188-06126",
+        "BASIC188-07617",
+        "BASIC188-07631"
+      ],
+      "limits": "Modified KR00967 Wine copy4b781f/privatevirtualhosts/offline/currentbasic+291/nameguard. Two normal outcomes/reset/Start3 per positive run; independent pendingBhostEOF control, old contest/oldUDP retained separate. K5basic scoped manual acceptance only; K6a currentbasiccontest andphysicalLAN/Internet/4–8client stillopen. Nativeperviewstate notglobalsametick; nativecopiedemulation separatefromWine. Fuse/drop/rank/guards design, fullauth/distance/142freshness/originalauthority unknown. Originalclient/DB/assets/oldcomplete/evidence unchanged."
+    },
+    {
+      "check": "CurrentownedpendingBhostEOF/Acleanup/fence inindependentfirstepoch; two normalcyclesverifiedinotherfrozenruns",
+      "result": "pass",
+      "evidence": [
+        "BASIC188-06061",
+        "BASIC188-06066"
+      ],
+      "limits": "Modified KR00967 Wine copy4b781f/privatevirtualhosts/offline/currentbasic+291/nameguard. Two normal outcomes/reset/Start3 per positive run; independent pendingBhostEOF control, old contest/oldUDP retained separate. K5basic scoped manual acceptance only; K6a currentbasiccontest andphysicalLAN/Internet/4–8client stillopen. Nativeperviewstate notglobalsametick; nativecopiedemulation separatefromWine. Fuse/drop/rank/guards design, fullauth/distance/142freshness/originalauthority unknown. Originalclient/DB/assets/oldcomplete/evidence unchanged."
+    },
+    {
+      "check": "Partialcontrolretention andexactCP175inputreuse",
+      "result": "pass",
+      "evidence": [
+        "BASIC188-02873",
+        "BASIC188-06119"
+      ],
+      "limits": "Controlispartialandexit1, notEOFpass; noOSkeyrootcauseinference."
+    },
+    {
+      "check": "K5manualunchangedcriteriascope andperiodicAUD056",
+      "result": "pass",
+      "evidence": [
+        "BASIC188-05332",
+        "BASIC188-05329"
+      ],
+      "limits": "Reviewwaived/Codexselfcheck; checkersnotsemanticgateapproval."
+    },
+    {
+      "check": "Currentbasiccontesteditem/K6a, physicalLANInternet48client/fullauth",
+      "result": "pending",
+      "evidence": [
+        "BASIC188-05326"
+      ],
+      "limits": "ReuseoldCP155/159160controlswithoutfalsecurrent/same-runclaim; nextminimalintegration."
+    }
+  ],
+  "evidence": [],
+  "evidence_manifests": [
+    {
+      "path": "docs/evidence/checkpoints/evidence/CP188-current-basic-cycles.json",
+      "bytes": 2031209,
+      "sha256": "41932d2cac3df9f2982d2a73b14d443662e8fde78709f088f01c1c926efe5928",
+      "count": 7848
+    }
+  ],
+  "delta": {
+    "added": [
+      "Current291/copy4b two normalbasiccycles/reset/Start3; bothdirections/Bowner/currentEOFcontrol andscopedK5manualacceptance.",
+      "ExactCP175corridorentry reused afternewneutralledger distinguishesstableblockedroute fromoldnotstable; source/rawpartialskept.",
+      "AUD056through188/next192; evidencepathnormalization fixesnewappendpolicy withouteditingCP187absolutelegacyrecords."
+    ],
+    "corrected": [
+      "CP187currenttwooutcomesunknown nowhasnewpositives, oldpartialstayspartial.",
+      "Explicitkeyup doesnotproveoldstuckkeycause; EOF-r1reproducesdifferentstablealignmiss. KnownCP175fixavoidsnewphysics/nativeRE.",
+      "READMEcurrentnextK4integration/RESEARCHaudit184/peeractualcodecnext/PROTOCOLB291pending nowqualified/synced. PR259merged, CP188pendingdelivery."
+    ],
+    "superseded": [
+      "NEXT-K5-K6A-CURRENT basicpositive/EOFdelta closed; NEXT-K6A-CURRENT-CONTEST active. No K6agatesautoclosed."
+    ]
+  },
+  "blockers": [
+    "K6a currentbasiccontest notyetintegrated; oldCP155controlledcontest/oldUDP andCP159immediateproduction scopesmustbecomparedtoreusedcurrentclaimvalidator/profile.",
+    "PhysicalLAN/Internet/four-eightactualclients/fullauth/fullcodec/distance/142freshness/generalreset/originalauthority remainunknown/backlog bytrigger; K5scope doesnotclaimthose."
+  ],
+  "next_steps": [
+    {
+      "id": "NEXT-K5-K6A-CURRENT",
+      "task": "KRE-005b",
+      "state": "closed",
+      "action": "CP188currenttwooutcomes/peer/Bowner/currentEOFcontrol verified; K5basic scopedmanualaccepted. Oldpartialsimmutable.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-K6A-CURRENT-CONTEST",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "PLANcurrentorder: compareCP155159160/currentprofilecode; minimalcurrentbasiccontestedindex/one165winner/effect/reset andscopeoldUDPcontrols. No newnativebody/ItemAttr scan orphysicalnetworkclaim; thenmanualK6areview.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    }
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-11-07T05:32:56.379713+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "Codexsolo/runtime/code/selfcheck/manualK5authority andAUD056; ownerwaiver, notindependentapproved. Exactheadchecks beforePRmerge.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Owner explicitly requested solo, no workers/review."
+    }
+  },
+  "docs_sync": [
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "CP188meaningfulbatch/currentpositivepartial/authorityK5scope/K6agap/AUD056 synchronizedbeforecomplete; no contractduplicatetracker."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "CP188meaningfulbatch/currentpositivepartial/authorityK5scope/K6agap/AUD056 synchronizedbeforecomplete; no contractduplicatetracker."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "updated",
+      "reason": "CP188meaningfulbatch/currentpositivepartial/authorityK5scope/K6agap/AUD056 synchronizedbeforecomplete; no contractduplicatetracker."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "updated",
+      "reason": "CP188meaningfulbatch/currentpositivepartial/authorityK5scope/K6agap/AUD056 synchronizedbeforecomplete; no contractduplicatetracker."
+    },
+    {
+      "path": "docs/features.json",
+      "state": "updated",
+      "reason": "CP188meaningfulbatch/currentpositivepartial/authorityK5scope/K6agap/AUD056 synchronizedbeforecomplete; no contractduplicatetracker."
+    },
+    {
+      "path": "docs/COVERAGE.md",
+      "state": "updated",
+      "reason": "CP188meaningfulbatch/currentpositivepartial/authorityK5scope/K6agap/AUD056 synchronizedbeforecomplete; no contractduplicatetracker."
+    },
+    {
+      "path": "docs/evidence/peer-endpoints/README.md",
+      "state": "updated",
+      "reason": "CP188meaningfulbatch/currentpositivepartial/authorityK5scope/K6agap/AUD056 synchronizedbeforecomplete; no contractduplicatetracker."
+    },
+    {
+      "path": "docs/evidence/peer-endpoints/k5-acceptance.json",
+      "state": "updated",
+      "reason": "CP188meaningfulbatch/currentpositivepartial/authorityK5scope/K6agap/AUD056 synchronizedbeforecomplete; no contractduplicatetracker."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/review.json",
+      "state": "updated",
+      "reason": "CP188meaningfulbatch/currentpositivepartial/authorityK5scope/K6agap/AUD056 synchronizedbeforecomplete; no contractduplicatetracker."
+    },
+    {
+      "path": "docs/evidence/checkpoints/audits/AUD056.json",
+      "state": "updated",
+      "reason": "CP188meaningfulbatch/currentpositivepartial/authorityK5scope/K6agap/AUD056 synchronizedbeforecomplete; no contractduplicatetracker."
+    }
+  ]
+}

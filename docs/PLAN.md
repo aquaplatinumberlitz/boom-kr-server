@@ -1,7 +1,7 @@
 # Kế hoạch server giả lập KR 00967
 
 Nguồn chuẩn của project `boom-kr-server`; bản nhập từ plan đã được dsh1/dsh2 review tại `1eee46d`.
-CP187: K4 phòng/map/load/host-rejoin/Ready/Startlặp local đạt sau currentAB291/nameguard +copyimportABI correction. Một outcome/reset và Start2; inputalignment vòng2 còn blocker K5/K6a, chưa fullmatch. K5–K7 mở; AUD055 qua184, audit kếCP188.
+CP188: K5 basic local đạt sau đối chiếu tiêu chí/authority; currentAB291 có hai normalcycles/reset/Start3/bidirectional/Bowner và control pendingBhostEOF riêng. K6a còn currentbasiccontest; K6b/c/K7 mở. AUD056 qua188, kếCP192.
 
 
 ### Mục tiêu, baseline và phạm vi
@@ -37,7 +37,7 @@ với client Rust không chứng minh có thể điều khiển client KR bằng
 
 ### Tiến độ hiện hành theo bằng chứng
 
-| Task/mốc | Trạng thái tại CP187 | Nguồn chuẩn |
+| Task/mốc | Trạng thái tại CP188 | Nguồn chuẩn |
 |---|---|---|
 | KRE-004/issue6 | Đã review/merge PR7 và đóng issue:recipe r1 đến local accept;không phải full K1 | [Wine r1](evidence/wine/README.md) |
 | Bootstrap reply | PR8 đã merge;debugger ProcessPatchreturn1,không ép success | [bootstrap evidence](evidence/bootstrap-wire/README.md) |
@@ -49,7 +49,8 @@ với client Rust không chứng minh có thể điều khiển client KR bằng
 | K2a/K2 | K2a đạt CP178; K2 đạt profileoffline CP181 với native sameprocessretry/reset/cursor/stream và boundednativeoracles. Không toàncodec/accountauthority | [Acceptance](#k2-acceptance),[contract](PROTOCOL.md#login-retry-codec) |
 | K3 | Đạt CP186 trong scope A/local/Wine/một kênh normal; cold3cache/version/identity/stage và nguồn CP015/016/034/058/181–185 đã đối chiếu. Không fullauth/Windows/multichannel-caption hoặc hai-client291 | [Nghiệm thu](#k3-acceptance), [contract](PROTOCOL.md#k3-version-identity-controls) |
 | K4 | CP187 đạt riêng phòng/load/start local currentAB291/copyABIcorrected; oneoutcome/reset/Start2, không gameplay2outcomes | [Nghiệm thu](#k4-acceptance) |
-| K5–K7 | [CP166](PROTOCOL.md#current-mode-host-rejoin) currentmodehostBack/rejoin, [CP168](PROTOCOL.md#current-mode-promoted-start3) Bhost2normalcycles/Ready/Start3 có nguồn. [Rà K4](#k4-evidence-review), [authority](PROTOCOL.md#authority) và [rà basic K5/K6a](#basic-acceptance-review) giữ scope; chưa gate/fullmatch/LAN/Internet/8client. | [Coverage/gap](COVERAGE.md), [membership](RESEARCH.md#gap-room-membership) |
+| K5 | Basic local đạt CP188; current2cycles/peer/Bowner/EOFcontrol riêng, designauthority được rà. Không fullinventory/mode/map | [Nghiệm thu](#k5-acceptance) |
+| K6/K7 | [CP166](PROTOCOL.md#current-mode-host-rejoin) currentmodehostBack/rejoin, [CP168](PROTOCOL.md#current-mode-promoted-start3) Bhost2normalcycles/Ready/Start3 có nguồn. [Rà K4](#k4-evidence-review), [authority](PROTOCOL.md#authority) và [rà basic K5/K6a](#basic-acceptance-review) giữ scope; chưa gate/fullmatch/LAN/Internet/8client. | [Coverage/gap](COVERAGE.md), [membership](RESEARCH.md#gap-room-membership) |
 
 <a id="current-order"></a>
 ### Thứ tự công việc hiện hành
@@ -72,21 +73,21 @@ Nguồn luật mới [wiki KR được chủ dự án tin cậy](REFERENCES.md#o
 khi hỏi lại ý nghĩa stat/item/mode; chỉ đo phần khác biệt KR00967. Nguồn này phục vụ gate đang mở,
 không tạo nhánh kiểm kê wiki hoặc mở mode phụ trước K3/K4/K5/K6a.
 
-1. **KRE-005b — K5/K6a sau K3/K4 local đã đạt:**
-   `NEXT-K4-INTEGRATION` khép CP187 theo [tiêu chí giữ nguyên](#k4-acceptance); currenttwoactualAB
-   đã native291names/roster/hostBack/rejoin/Ready/start1/load/firstresult/reset/Start2. Copye9cũ lộ
-   wrongABIimport ở D2F644; [sửa copy riêng](PROTOCOL.md#own-profile-result-compare) tạo SHA4b781f…,
-   `.image` byteidentical, giữ nguyên source e9 và mọi47fixture/serverpolicy. Không RE lại phòng/codec/CRC.
-   `NEXT-K5-K6A-CURRENT`: blocker thực tế là **alignnotstable:R2-A-hidden-row** trong input harness,
-   sau firstnormaloutcome/reset và clock2; runpartial/exit1 không là fullmatch. Đọc currentfeedback/
-   OSkeytiming/CP150165171 trước; ghi fresh/stable samples và keyup OS, chỉ đổi inputcontroller khi có
-   giả thuyết/control cụ thể. Không tăng bounds/neutraldeadline hoặc ép coordinate/clock/gamefunction.
-   Giữ currentprofile/copyABIcorrected, thử đủ hai outcome/reset/Startlặp rồi đối chiếu [K5/K6a](#basic-acceptance-review)
-   bằng evidence cũ và phần thiếu. Không chạy lại originalwrongimport hoặc tìm lại cơ chế item/law/wiki.
-   Gộp audit định kỳ **CP188** với mốc meaningful kế; đọc core→raw không chỉ chạy checker.
-   [#14](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/14) active umbrella; widerWCP/#2,
-   codec/#3/accountauth/caption/modes chỉ backlog theo trigger, không tự thêm gate dependency.
-   <!-- active-issue: 14 --> AUD055 periodic184; audit kế **CP188**.
+1. **KRE-005b — khép K6a sau K5 basic local:**
+   `NEXT-K5-K6A-CURRENT` khép phần current basic cycles tại CP188: hai normaloutcomes/reset/Ready2/
+   Start3, A↔B và B/A/Aowners có native/capture; [K5 nghiệm thu](#k5-acceptance).
+   CurrentEOF r1 partial alignmiss20reads x80/y399 được giữ; r2 thêm đúng entrycolumn120 đã đo CP175,
+   không tăng20attempt/45ms/tolerance12/3s/30sload hoặc sửa physics. R2 qua2cycles nhưng patherror trước kill; focusedfirstepoch B-host EOF/forfeit/fence
+   có control riêng; không ghép thành cùng-run với run positive hoặc ca tranh item cũ.
+   `NEXT-K6A-CURRENT-CONTEST`: đối chiếu CP155 controlled2contenders/oldUDP và CP159/160 production
+   immediate165 với currentbasic/291/copy4b. Phần thiếu là currentbasic tranh một index: hai input
+   native có thể chỉ sinh1hoặc2claim khi confirm lập tức, nhưng chỉ một165/view/effect/winner và reset.
+   Chỉ thêm measurementhold nếu thật cần hai actualcontenders, ghi rõ khác production; reuseknown
+   route/consumer/oracle/CP175corridor, không RE lại ItemAttr/law/wiki/opcode. Kiểm exactcurrentcode/
+   profile/claimvalidator continuity trước khi dùng control cũ cho acceptance. Sau đó đối chiếu K6a
+   giữ nguyên; không tự đóng K6bLAN/K6cInternet/K7 hoặc đòi fullservergốc trước demo hẹp.
+   [#14](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/14) active umbrella;
+   <!-- active-issue: 14 --> AUD056 periodic188; audit kế **CP192**.
 
 2. **KR-B003/KR-F006 — nợ có giới hạn:** [CP057](PROTOCOL.md#codec-stream-boundaries) đã đo stream/
    seq/bounds trong model, không mở lại76split hoặc cấp buffer lớn chỉ để vượt allocationguardFFFFFFFF.
@@ -105,7 +106,7 @@ không tạo nhánh kiểm kê wiki hoặc mở mode phụ trước K3/K4/K5/K6a
    Không ghép các run riêng thành một trận đã nghiệm thu. LAN/Internet/relay hiện unknown.
 
 [Bằng chứng service](evidence/probe-service/README.md) phân biệt run đủ hai chu kỳ với run partial.
-Policy fuse/drop/rank/forfeit vẫn là emulator choice. K0 đã nghiệm thu theo đối chiếu thủ công CP178; K2a tĩnh đã đạt. K1 đạt recipe R2 tại CP179; K2 đạt profileoffline CP181; K3 local đạt CP186; K4 local phòng/load/start đạt CP187; K5/K6/K7 vẫn mở; checker không tự đóng gate.
+Policy fuse/drop/rank/forfeit vẫn là emulator choice. K0 đã nghiệm thu theo đối chiếu thủ công CP178; K2a tĩnh đã đạt. K1 đạt recipe R2 tại CP179; K2 đạt profileoffline CP181; K3 local đạt CP186; K4 local đạt CP187; K5 basic local đạt CP188; K6/K7 vẫn mở; checker không tự đóng gate.
 Chu kỳ audit/counter tại [manifest](evidence/checkpoints/manifest.json), không tạo plan theo phiên.
 
 <a id="issue-order"></a>
@@ -116,7 +117,7 @@ Bảng này chỉ phân công/thứtự; acceptance/PR/bằngchứng ởissue. [
 
 | Thứ tự/scope | Issue | Trạng thái/phần còn thiếu |
 |---|---|---|
-| Hiện hành RE | [#14/KRE-005b](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/14) | CP177/PR249 merged; CP178 K0/K2a accepted theo nguồn; K1 R2 accepted/PR251merged; CP181K2profile accepted/sameprocessretry; CP186K3local/CP187K4roomloadstart đạt; tiếpK5/K6aalignmentpartial. K6a/fullmatch không tự đóng; gaps giữ; fullauth/authority/fullmatch/gates mở. |
+| Hiện hành RE | [#14/KRE-005b](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/14) | CP177/PR249 merged; CP178 K0/K2a accepted theo nguồn; K1 R2 accepted/PR251merged; CP181K2profile accepted/sameprocessretry; CP186K3local/CP187K4/CP188K5basic đạt; tiếpK6a currentbasiccontest. K6a/fullmatch không tự đóng; gaps giữ; fullauth/authority/fullmatch/gates mở. |
 | Control theo trigger/gate | [#1/KRE-001](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/1), [#2/KRE-002](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/2) | CP178 K0 originalWindowscontrol/ownership đã đủ, #1 đã đóng qua PR250; #2 giữ widerWCP/launcherconfig; K1 R2 đã đạt CP179, không lặp cold3. |
 | Codec backlog/identity hiện hành | [#3/KRE-003](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/3), [#9/KRE-005a](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/9) | Fullcodec/livebounds vàintermittentmainstartupcause cònthiếu; khônglặpprimitive/auxiliarylocale. |
 
@@ -144,15 +145,26 @@ Lịch sử từng checkpoint bất biến ở [manifest](evidence/checkpoints/m
   “không có dispatcher mạng” từ kết quả âm tính về VM. Message nội bộ 27 cũng không phải wire opcode.
 
 <a id="basic-acceptance-review"></a>
-### Rà K5/K6a: CP176 historical, CP187 currentpartial — chưa đóng gate
+<a id="k5-acceptance"></a>
+### Nghiệm thu K5 basic local và phần thiếu K6a — CP188
 
-| Acceptance đang dùng | Nguồn/đã biết | Khoảng trống còn lại |
-|---|---|---|
-| Clock/bom/phá hộp/item/trap/result/reset | [CP176](PROTOCOL.md#a-c-basic-cycles): current A/C2normalcycles/3effects/195/stat/key reset/Ready2; CP171/172 giữ old scope | CP187copyABI/current291 chỉ firstoutcome/reset/Start2, alignment vòng2 chưa qua; không ghép oldAC/AB thành current2outcomes. Không third outcome/toàninventory variants |
-| Authority của hành vi thực dùng | [Matrix](PROTOCOL.md#authority): creator/simulator/validator/broadcaster/peer-editable tách native khỏi policy; guard142 thêm đúng ô | Fullauth/distance/142freshness/original drop/result arbitration unknown; design có kiểm không tự đổi thành luật gốc |
-| Đồng bộ A↔B và hai owner bom trong basic run | [CP176](PROTOCOL.md#a-c-basic-cycles) A/C cùng2keys/4nativepeerwindows/C118+Abombs/native195/effects/reset | Chỉ simplecorridor/profile; không fullUDP/auth/movinggeneric/races |
-| Contest/disconnect/freshness | CP155/156/158/168 có các control đã biết theo profile/run | [CP174](PROTOCOL.md#basic-host-b-eof) currentbasicBhostEOF/pendingfence/Acleanup đã đo; [CP175](PROTOCOL.md#a-survivor-admission) Cslot1 admission đã mở bằng opt-in/guards; CP176 ACnormalreset đã kiểm. Contest/freshness control cũ giữ riêng, không gọi cùng-run với AC |
-| Dependency/đích nhiều máy | K0/K2a đạt CP178, K1 R2 đạt CP179; K2profile đạt CP181; K3 local đạt CP186; K4 local đạt CP187 | K5/K6a/fullmatch chưa chứng nhận; LAN/Internet/4–8client chưa nghiệm thu. Không thêm gate con hoặc phần trăm |
+Codex đối chiếu thủ công **tiêu chí K5 giữ nguyên**, [review waived](evidence/checkpoints/review-waiver.json);
+[decision/nguồn/giới hạn](evidence/peer-endpoints/k5-acceptance.json), [contract](PROTOCOL.md#current-basic-cycles-291).
+**K5 đạt trong scope basic A trên hai actualAB/copyWine4b781f…/privatevirtualhosts/Manner/ExVillage01,
+optionalbasic+291/nameguard.** Không toàn inventory/mode/map/auth hoặc nguyên bảnWindows.
+
+| Acceptance giữ nguyên / phần liên quan K6 | Đối chiếu bằng chứng và giới hạn |
+|---|---|
+| Clock thật, move, bom, phá block, item cơ bản, trap/dead, result/room | Hai currentrun độc lập đều hai normalcycles/reset/Ready2/Start3. Nativeactual118/159158/currentIDs/195flags/hidden142/124/165/baeffects mỗi key; strict56→1/other0 trước175 ở hai view. Không encoder tự sinh hoặc syntheticguest |
+| ID bom ổn định, không doubleconfirm, không kẹt GO/load | Peer run IDs1..6/B,A,A; samepointer/matched159158/fullcursor, one165/view/index/epoch; three30sbarriers sau99both; native121/clock3. No allpools/timers/resetvariants claim |
+| Authority từng hành vi thực dùng | [Matrix](PROTOCOL.md#authority) đã Codex rà creator/simulator/validator/broadcaster/peer-editable; native input/simulation/peer state tách service policy6sfuse/drop/rank/terrain/guards. Originalauth/distance/142freshness/arbitration unknown; design không đổi thành luật gốc |
+| Trace/capture cùng run và dependencies | RunSHA/seals/inputfreeze/ownedcleanup/nativepayload/getter/capture liên kết từngrun; K0–K4 scoped giữ đạt. Import-onlycopy/.imageidentical đã control CP187 |
+| K6a A↔B/hai owner/hai outcomes/reset | Currentpeer run có4nativewindows/2keys/currentprogress/B,A,A và2results/Start3; không physicalLAN hoặc fulltransportgrammar |
+| K6a disconnect/host cleanup | CurrentEOF focusedfirstepoch riêng có pendingB/ownedkill/A107ID2clear/chief110/room và round_closed pastdue+4s. Forfeit của control không thay một normalending |
+| K6a tranh item/freshness | CP155 controlledcontest+exactoldUDP và CP159160 immediateproduction giữ source riêng. **Currentbasic291 contest chưa đo**, là phép thử kế trong current-order; không ghép thành cùng-run. K6a/K6b/K6c/K7 vẫn mở |
+
+CP187 R2partial và currentEOF r1partial không bị sửa thành pass. Neutralkeyrelease có positive nhưng
+không chứng minh nguyên nhân oldnotstable; entrycolumn reuseCP175 có control riêng. Không đổi gatecriteria.
 
 <a id="gates"></a>
 ### Dependency và gate
@@ -285,7 +297,7 @@ sau đó inputcontroller alignmentfail vòng2; giữ exit1/cleanupabort, không 
 Giới hạn inputalignment vòng2 thuộc bước K5/K6a; không đổi tiêu chí hoặc gọi bộ2outcomes đã thành công.
 Phạm vi feature ngoài profile vẫn partial/unknown; `gate=passed` không là `presence/allimplementation=complete`.
 
-**Các bước nghiệm thu K6, đều chưa đạt:**
+**Các bước nghiệm thu K6, đều chưa đạt; K5 basic đã đạt CP188 theo scope ở trên:**
 
 - **K6a — hai client cùng host:** identity/slot riêng trong mạng thử cô lập; hai chiều movement/bom,
   cùng trap/death/result và hai trận liên tiếp, không dùng guest tổng hợp thay client B.
