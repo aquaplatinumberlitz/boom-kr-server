@@ -1,7 +1,7 @@
 # Kế hoạch server giả lập KR 00967
 
 Nguồn chuẩn của project `boom-kr-server`; bản nhập từ plan đã được dsh1/dsh2 review tại `1eee46d`.
-CP181: K2codec/hello profileoffline được Codex nghiệm thu từsameprocessretry/native reset + CP180stream/CP057bounds; K3–K7/fullmatch giữ mở. CP182ownpanelguard0/emptyrecord đãđo, tiếpproducer→store→render; periodic180/kế184.
+CP181: K2codec/hello profileoffline được Codex nghiệm thu từsameprocessretry/native reset + CP180stream/CP057bounds; K3–K7/fullmatch giữ mở. CP183native291 đãđiềnrecord/vẽKRLocal; tiếpintegration/sequence/cacheacceptance; periodic180/kế184.
 
 
 ### Mục tiêu, baseline và phạm vi
@@ -77,11 +77,12 @@ và trận8 client thật là phần mở rộng sau hai/bốn client ổn ở b
    đã phục hồi. Đối chiếu stableID/name giữa auth→request6→lobbyview, cold/missing/warm cache có
    kết quả rõ; chỉ đo variant còn thiếu, không lặp namedfxdynmapinfo CRC/missing→warm. Nếu UI
    identity chưa hiển thị, trace đúng consumer/render đang chạy thay vì thêm packet từ VN.
-   [CP182 đã đo](PROTOCOL.md#local-name-model) authID/name đúng nhưng ownpanel
-   CUserListUIWnd+recordriêng guard0/nameempty sauready. Không lặp authgetterchain hoặc SquareLeft
-   callback khônghit; không đổi str2/str3 theo phỏng đoán. Tiếp source-first VNUserMap/profileconsumer
-   và KRlookup544byte→producer/dispatch→store→render, chỉ đo contract/field còn thiếu bằng positive/control.
-   D7A260levelchange là consumer tĩnh, chưa đủ xác định producer hoặc opcode bổ sung.
+   [CP183](PROTOCOL.md#own-profile-291) đã giải producer→store→render: S→C291/native128cursor,
+   record/name/guard và ảnhpanelKRLocal. Không lặp authgetter, emptyrecord/SquareLeft, hoặc dòproducer291.
+   Tiếp tích hợp opt-in identity291 vào service/profile cho A/B/C theo stableID/name và socketstage.
+   InitialS2C hiện có fixtureseq cố định43..70, dynamic bắtđầu73: thêm291 phải giữ seq liên tục qua
+   create/map/dynamic/rejoin, không chỉ chènraw rồi dùng lại55. Dùng nativecontrol để kiểm integration.
+   Tái dùng profileKR109/CP058/059; không RE lại schema/cacheCRC hoặc portVNopcode/layout.
    Kiểm sai socket/stage, version/identity theo acceptance bằng các guard/log đã có trước khi mở
    negative mới; không quét toàncache hoặc mô phỏng realaccountauth/Nexon. Unknown giữ rõ scope.
    Trước runtime freeze source/config, copy/offline/isolation; cleanup/hash trước đổi phép đo.

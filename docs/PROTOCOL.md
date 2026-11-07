@@ -2536,7 +2536,7 @@ không gọi auth getter13B0A00. Ý nghĩa tổng quát của field+1FC chưa đ
 `panel-r4`, sau ready: hai hit từcaller9013BE tại902329 có đúng widget stage+5E5D8,
 selected0, recordkhác0, **decodedguard=0**. Hai dump544byte có std::string record+4
 size0/cap15. Đường auth/getter đúngKRLocal và recordpanel rỗng là hai nguồn dữ liệu riêng;
-chưa chứng minh packet/cache nào phải điền record hoặc guard0 do thiếu message nào.
+tại CP182 chưa biết producer; [CP183](#own-profile-291) bên dưới đã nối S→C291, không sửa record/raw cũ.
 Probe string gặp lỗi đọc0byte trong GDB; raw SSO size/cap xác nhận rỗng, không coi là clienterror.
 `D7A260` tĩnh là consumer đổi level có so tên auth rồi truy record này; chưa xác định producer
 profile tổng quát hoặc opcode/contract để gửi bổ sung.
@@ -2547,6 +2547,43 @@ không suy installationtiming là nguyên nhân/fix. PrivateDB load inputhashNon
 freshcopy analysis được dùng, không sửa DB/binary nguồn. Decompiler badSP/None chỉ là gợi ý,
 assembly và16body-bytecomparison giữ phạm vi. [Recipe/run/hash](evidence/lobby-identity/README.md).
 K3/cold-missing-warm/wrongstage/version/identity và gate giữ mở; bước tiếp duy nhất ở PLAN.
+
+<a id="own-profile-291"></a>
+### Profile bản thân ở sảnh: S→C291 → CUserMap → panel — CP183
+
+**`kr_static/confirmed` và `kr_runtime/confirmed` trong copye9/Wine/offline**;
+[recipe/run/hash](evidence/lobby-identity/README.md#cp183). Tái dùng VNUserMap/list-vs-ownpanel để
+chọn vùngstore; opcode291/record544/layout/consumer dưới đây đọc từ **KR**, không chuyển từ VN.
+
+Dispatcher`D68C90` case291/callsiteD68ED8→`D73BB0`→`D2FEB0` cập nhật store global19DB454.
+D2FEB0 duyệt sốslotlocal từ13B07C0; với từngslot đọc u8active. active0 bỏ phần còn lại của slot;
+active!=0 đọc blob, reset record tạistore+6404h+220h×slot rồi virtual+8 deserialize qua`D30BF0→AE6330`.
+AE6330 có cùng thứ tựfieldreader với profile109KR đã đo CP018/D2D310; reuse **inner109 nguyên bytes**,
+SHA`a208ec5e86cf01ca513c1330708ebc5ac16f8966a2cf6e6ee11f95b6a90ed065`, không copylayoutmemory.
+D30BF0 sau đọc profile đi qua renderhelper và ghi1 vào boxguardrecord+1FC; đây là **cờ đã nạp
+trong consumer này**, không accountID. Recordtên std::string+4.
+
+Với active slot, sau blob còn u32→record+208box (consumerexp), u8→record+214box;
+feature106 (`6CF9C0`) thêm3u8→13E4C40/70/A0. Feature48 (`7A0180`) chỉ cập nhật state từ record,
+không thêm bytewire ở consumer này. Những numericsemantic ngoài consumer giữ unknown;
+profile/scalars0 là lựa chọnemulator. Các nhánhfeature khác/multilocal/count2/encodingnonASCII chưa đo.
+
+| Phép thử trong cùng run `producer-r1` | Native/store/UI |
+|---|---|
+| Trướcinject | actualownwidget stage+5E5D8, renderguard0 vàtênrỗng |
+| Control291seq55/u8active0 | payload1/cursor1/error54=error58=0; recordname vẫnrỗng |
+| Positive291seq58/u8active1/blob109/u32/u8/3u8 | payload128/cursor128/error54=error58=0; record544byte cóKRLocal |
+| Render saubpositive | Haihit902329/caller9013BE guard1, đúngwidget/nameKRLocal; ảnhscreen19 hiệnKRLocal/Lv.0/00.0% |
+
+Actualinput qua socketchannel, không gọi gamefunction hoặc viết record/guard bằng debugger. Native
+consumer/cursor/rawrecord/ảnh là bằng chứng độc lập, không lấy codecroundtrip làmoracle. Control→positive
+chứng minh route input này đủ điền record/vẽ tên trên profile được đo; không chứng minh servergốc
+phải dùng schedule2giây, producerkhác vắngmặt hoặc mọi field là0. Run60s, cleanup/hash/inputfreezeđủ.
+
+Labservice chỉ gửi thêm hai frame sau bộready241/room91/channel14, productionservice/47fixtures
+không đổi. **Chưa nối create/map sau khi thêm291**: các fixtureinitseq55..70 và dynamic73 phải được
+đối chiếu lại khi integration, không chènraw rồi tái dùng sequence. K3/cachematrix/wrongstage/version/
+identityauthority/Windows/LAN/Internet/K6a vẫn mở. Bước tiếp duy nhất [PLAN](PLAN.md#current-order).
 
 <a id="dynamic-cache-representation"></a>
 ### Cache dynamic-map và checksum representation — CP059

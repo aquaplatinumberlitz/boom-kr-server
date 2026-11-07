@@ -57,7 +57,12 @@ auth137/137/errors0 → channel socket mới; hello/mode/seq reset được đo 
 accountauthority chưa được khôi phục đầy đủ; K2 không nghiệm thu các phần đó. Thứ tự tiếp ở
 [PLAN](docs/PLAN.md#current-order): identity/cache/UI sảnh theo evidence cũ, không lặp knowncodec/gameplay.
 CP181 đã merge [PR253](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/253) tại `5a154e5`.
-**CP182 đã nối consumer panel sảnh**: authID/name đúng, nhưng record riêng của panel có guard0/tênrỗng sauready. [Contract/giới hạn](docs/PROTOCOL.md#local-name-model), [producer/phép thử tiếp](docs/RESEARCH.md#gap-lobby-identity-followup). CP182 chờ PR; K3 chưa đạt.
+**CP183: tên `KRLocal` đã hiện trên panel sảnh**, sau S→C291 được consumer KR đọc đủ128/128byte,
+không lỗi; control inactive giữ tênrỗng, positive điền record và guard0→1. [Contract/giới hạn](docs/PROTOCOL.md#own-profile-291),
+[run/hash](docs/evidence/lobby-identity/README.md#cp183). Đây là copy Wine offline/labadapter,
+**chưa integration production hoặc đóng K3**. CP182 đã merge [PR254](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/254)
+tại`59196f8`; CP183 chờ PR. Tiếp [PLAN](docs/PLAN.md#current-order).
+
 AUD054 periodic qua180, audit kế **CP184**. [Review waived](docs/evidence/checkpoints/review-waiver.json).
 
 Đích đầu: hai client thật chơi hai trận liên tiếp; mở bốn client và hardening sau đó.

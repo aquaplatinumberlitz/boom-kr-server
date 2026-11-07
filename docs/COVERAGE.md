@@ -321,9 +321,9 @@ Bằng chứng/build/hash/recipe: [login-runtime](evidence/login-runtime/README.
 |---|---|---|
 | presence | present | [nguồn1](PROTOCOL.md#login-auth) |
 | vn_reference | both | [nguồn1](REFERENCES.md) |
-| kr_static | partial | [nguồn1](PROTOCOL.md#login-auth), [nguồn2](PROTOCOL.md#auth-profile), [nguồn3](PROTOCOL.md#local-name-model) |
+| kr_static | partial | [nguồn1](PROTOCOL.md#login-auth), [nguồn2](PROTOCOL.md#auth-profile), [nguồn3](PROTOCOL.md#local-name-model), [nguồn4](PROTOCOL.md#own-profile-291) |
 | emulation | checked | [nguồn1](evidence/login-runtime/README.md), [nguồn2](evidence/auth-profile/README.md) |
-| wine_diagnostic_copy | observed | [nguồn1](evidence/login-runtime/README.md), [nguồn2](evidence/auth-profile/README.md), [nguồn3](evidence/current-profile-c/README.md), [nguồn4](evidence/preclock-eof/README.md), [nguồn5](evidence/nmco-locale-stability/README.md), [nguồn6](evidence/peer-endpoints/README.md#cp146), [nguồn7](evidence/peer-endpoints/README.md#cp148), [nguồn8](evidence/peer-endpoints/README.md#cp149), [nguồn9](evidence/live-codec-stream/README.md), [nguồn10](PROTOCOL.md#local-name-model) |
+| wine_diagnostic_copy | observed | [nguồn1](evidence/login-runtime/README.md), [nguồn2](evidence/auth-profile/README.md), [nguồn3](evidence/current-profile-c/README.md), [nguồn4](evidence/preclock-eof/README.md), [nguồn5](evidence/nmco-locale-stability/README.md), [nguồn6](evidence/peer-endpoints/README.md#cp146), [nguồn7](evidence/peer-endpoints/README.md#cp148), [nguồn8](evidence/peer-endpoints/README.md#cp149), [nguồn9](evidence/live-codec-stream/README.md), [nguồn10](PROTOCOL.md#local-name-model), [nguồn11](PROTOCOL.md#own-profile-291) |
 | windows_original | unknown | Chưa có bằng chứng trong phạm vi rà |
 | lan | unknown | Chưa có bằng chứng trong phạm vi rà |
 | internet | unknown | Chưa có bằng chứng trong phạm vi rà |
@@ -338,9 +338,9 @@ Dependency: [KR-L001](#kr-l001).
 
 [Contract và giới hạn](PROTOCOL.md#channel-lobby) · [Câu hỏi gốc](RESEARCH.md#gap-redirect-lobby) · [Thứ tự ở PLAN](PLAN.md#current-order).
 
-Khoảng trống (trích bảng RESEARCH): [CP182](PROTOCOL.md#local-name-model): authID/name/actual6 đúng; own-panel consumer đã nối, recordriêng guard0/nameempty; producer/identitydisplay và cache/version chưa đủ K3.
+Khoảng trống (trích bảng RESEARCH): [CP183](PROTOCOL.md#own-profile-291): native291đãđiềnownrecord/vẽKRLocal; productionintegration/sequence và cache/version chưa đủ K3.
 
-Phép kiểm tối thiểu (trích cùng nguồn): [Follow-up](#gap-lobby-identity-followup): truy producer544record→dispatch→store→render bằng positive/control; không lặp auth/namegetter/SquareLeft hay quét186xref; giữ cold/missing/warm/wrongstage/version acceptance.
+Phép kiểm tối thiểu (trích cùng nguồn): [Follow-up](#gap-lobby-identity-followup): opt-in291/initialS2Cseq qua create/map/rejoin, nativecontrol; không lặp producer/auth/namegetter/SquareLeft; giữ cold/missing/warm/wrongstage/version acceptance.
 
 Issue/phạm vi công việc: [#14](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/14).
 
@@ -350,9 +350,9 @@ Bằng chứng/build/hash/recipe: [postwait](evidence/postwait/README.md), [prob
 |---|---|---|
 | presence | present | [nguồn1](PROTOCOL.md#channel-lobby) |
 | vn_reference | both | [nguồn1](REFERENCES.md) |
-| kr_static | partial | [nguồn1](PROTOCOL.md#channel-lobby), [nguồn2](PROTOCOL.md#local-name-model) |
+| kr_static | partial | [nguồn1](PROTOCOL.md#channel-lobby), [nguồn2](PROTOCOL.md#local-name-model), [nguồn3](PROTOCOL.md#own-profile-291) |
 | emulation | checked | [nguồn1](evidence/postwait/README.md) |
-| wine_diagnostic_copy | observed | [nguồn1](evidence/postwait/README.md), [nguồn2](PROTOCOL.md#local-name-model) |
+| wine_diagnostic_copy | observed | [nguồn1](evidence/postwait/README.md), [nguồn2](PROTOCOL.md#local-name-model), [nguồn3](PROTOCOL.md#own-profile-291) |
 | windows_original | unknown | Chưa có bằng chứng trong phạm vi rà |
 | lan | unknown | Chưa có bằng chứng trong phạm vi rà |
 | internet | unknown | Chưa có bằng chứng trong phạm vi rà |
@@ -379,9 +379,9 @@ Bằng chứng/build/hash/recipe: [start-reply](evidence/start-reply/README.md),
 |---|---|---|
 | presence | present | [nguồn1](PROTOCOL.md#channel-lobby), [nguồn2](PROTOCOL.md#dynamic-cache-representation) |
 | vn_reference | static | [nguồn1](REFERENCES.md) |
-| kr_static | partial | [nguồn1](PROTOCOL.md#channel-lobby), [nguồn2](PROTOCOL.md#dynamic-cache-representation), [nguồn3](PROTOCOL.md#local-name-model) |
+| kr_static | partial | [nguồn1](PROTOCOL.md#channel-lobby), [nguồn2](PROTOCOL.md#dynamic-cache-representation), [nguồn3](PROTOCOL.md#local-name-model), [nguồn4](PROTOCOL.md#own-profile-291) |
 | emulation | checked | [nguồn1](evidence/cache-boundary/README.md) |
-| wine_diagnostic_copy | observed | [nguồn1](evidence/cache-boundary/README.md), [nguồn2](PROTOCOL.md#local-name-model) |
+| wine_diagnostic_copy | observed | [nguồn1](evidence/cache-boundary/README.md), [nguồn2](PROTOCOL.md#local-name-model), [nguồn3](PROTOCOL.md#own-profile-291) |
 | windows_original | unknown | Chưa có bằng chứng trong phạm vi rà |
 | lan | unknown | Chưa có bằng chứng trong phạm vi rà |
 | internet | unknown | Chưa có bằng chứng trong phạm vi rà |

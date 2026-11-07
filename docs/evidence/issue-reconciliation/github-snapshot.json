@@ -1,7 +1,7 @@
 {
   "schema": "kre-github-snapshot-v1",
   "repo": "aquaplatinumberlitz/boom-kr-server",
-  "captured_utc": "2026-11-06T23:10:12.172932+00:00",
+  "captured_utc": "2026-11-07T02:04:56.295533+00:00",
   "limits": "State as of capture only; body/declarations are not semantic acceptance; no GitHub mutation.",
   "issues": [
     {
@@ -572,12 +572,12 @@
       "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/56"
     },
     {
-      "body": "KRE-005b — đang thực hiện, Codex solo/tự kiểm; review độc lập được chủ dự án miễn. Feature IDs: KR-B001, KR-B002, KR-B003, KR-L001, KR-L002, KR-L003, KR-R001, KR-R002, KR-R003, KR-R004, KR-F001, KR-F002, KR-F003, KR-F004, KR-F005, KR-F006, KR-F007, KR-F008, KR-F009, KR-F010, KR-F011, KR-F012, KR-F013, KR-F014, KR-F015, KR-X001, KR-X002, KR-X003, KR-S001, KR-S002.\n\nCP181 đã merge [PR253](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/253), `5a154e5`. CP182 là batch identity/panel đang bàn giao, chưa đóng K3.\n\nNguồn chuẩn:\n- [PLAN/thứ tự và acceptance](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/kre/lobby-identity-cache/docs/PLAN.md#current-order)\n- [PROTOCOL/contract và giới hạn](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/kre/lobby-identity-cache/docs/PROTOCOL.md#local-name-model)\n- [RESEARCH/câu hỏi và phép kiểm](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/kre/lobby-identity-cache/docs/RESEARCH.md#gap-lobby-identity-followup)\n- [Catalog](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/kre/lobby-identity-cache/docs/COVERAGE.md)\n- [Recipe/run/hash CP182](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/kre/lobby-identity-cache/docs/evidence/lobby-identity/README.md)\n\nĐã biết: auth ID1/KRLocal và actualrequest6 đúng; runtime tìm CUserListUIWnd thực trong sảnh. Consumer vẽ lấy record riêng, hai observation sau ready có guard0, raw name rỗng. Không suy authfield sai hoặc cần port packet VN. VN giúp phân biệt store list/ownpanel với auth; ownlevel/exp trên VN chưa kiểm. Productionservice/47fixtures không đổi.\n\nGiới hạn: modifiedWine/samephysicalhost/inheritedcache; một run probe dừng C++exception trước ready giữ raw, run sau không chứng minh causalfix. Không originalWindows/fullauth/LAN/Internet/8client/gate proof.\n\nCòn thiếu/phép thử tiếp: theo PLAN, source-first nguồn VNUserMap và KR544record; xác định đúng producer/dispatch→store→render rồi positive/control native. Cachecold/missing/warm, wrongsocket/stage/version/identity theo acceptance còn mở; không đo lại authgetter/cacheCRC hoặc quét186xref. D7A260 chỉ levelchange consumer tĩnh.\n\nAcceptance umbrella giữ nguyên: đóng khi các đầu ra/gate PLAN đủ evidence và integration, không từ checkpoint hoặc PR.\n\n- [x] K0/K2a CP178; K1offlineR2 CP179.\n- [x] K2 codec/hello profileoffline CP181.\n- [ ] K3 identity/cache/UI.\n- [ ] K4/K5/K6a localfullmatch; K6b LAN/K6c Internet/K7 hardening theo PLAN.\n\nCP182 chưa merge khi cập nhật; AUD054 qua180, audit kếCP184. Không đóng issue/gate từ tổ chức tài liệu.\n",
+      "body": "KRE-005b — đang thực hiện, Codex solo/tự kiểm; review độc lập được chủ dự án miễn. Feature IDs: KR-B001, KR-B002, KR-B003, KR-L001, KR-L002, KR-L003, KR-R001, KR-R002, KR-R003, KR-R004, KR-F001, KR-F002, KR-F003, KR-F004, KR-F005, KR-F006, KR-F007, KR-F008, KR-F009, KR-F010, KR-F011, KR-F012, KR-F013, KR-F014, KR-F015, KR-X001, KR-X002, KR-X003, KR-S001, KR-S002.\n\nCP182 đã merge [PR254](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/254), `59196f8`. CP183 là batch producer291/control/positive đang bàn giao; chưa đóng K3.\n\nNguồn chuẩn:\n- [PLAN/thứ tự và acceptance](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/kre/lobby-ownrecord-producer/docs/PLAN.md#current-order)\n- [PROTOCOL/contract và giới hạn](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/kre/lobby-ownrecord-producer/docs/PROTOCOL.md#own-profile-291)\n- [RESEARCH/câu hỏi và phép kiểm](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/kre/lobby-ownrecord-producer/docs/RESEARCH.md#gap-lobby-identity-followup)\n- [Catalog](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/kre/lobby-ownrecord-producer/docs/COVERAGE.md)\n- [Recipe/run/hash CP182](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/kre/lobby-ownrecord-producer/docs/evidence/lobby-identity/README.md)\n\nĐã biết CP183: S→C291 native điền record bản thân. Controlactive0 đọc1/1/error0/tênrỗng; positiveactive1 với KRprofile109 đã phục hồi đọc128/128/error0/KRLocal, guard0→1 và ảnh panel hiển thịKRLocal/Lv0/exp0. Source/hash/runtime/evidence ở nguồn chuẩn, không port VNopcode/layout.\n\nGiới hạn: singlemodifiedWine/offline/inheritedcache/labsubclass; scalar/profile0 là lựa chọnemulator. Productionservice/47fixtures không đổi; chưa create/map sau291, không fullauth/K3gate/Windows/LAN/Internet/8client.\n\nCòn thiếu/phép thử tiếp: theo PLAN, opt-in integration291/profile theo từngA/B/C, initialS2C sequence liên tục qua create/map/dynamic/rejoin; không chènraw rồi tái dùng55. ReuseKR109profile, không đo lại authgetter/producer291/cacheCRC. Cachecold/missing/warm, wrongsocket/stage/version/identity acceptance còn mở.\n\nAcceptance umbrella giữ nguyên: đóng khi các đầu ra/gate PLAN đủ evidence và integration, không từ checkpoint hoặc PR.\n\n- [x] K0/K2a CP178; K1offlineR2 CP179.\n- [x] K2 codec/hello profileoffline CP181.\n- [ ] K3 identity/cache/UI.\n- [ ] K4/K5/K6a localfullmatch; K6b LAN/K6c Internet/K7 hardening theo PLAN.\n\nCP183 chưa merge khi cập nhật; AUD054 qua180, audit kếCP184. Không đóng issue/gate từ tổ chức tài liệu.\n",
       "closedAt": null,
       "number": 14,
       "state": "OPEN",
       "title": "[KRE-005b] Tích hợp KR00967 local: Battle, lifecycle và nghiệm thu",
-      "updatedAt": "2026-11-06T23:11:29Z",
+      "updatedAt": "2026-11-07T02:06:19Z",
       "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/14"
     },
     {
@@ -636,6 +636,17 @@
     }
   ],
   "pull_requests": [
+    {
+      "headRefOid": "091ad58d443a91693c66a5374cc91511f1578da7",
+      "mergeCommit": {
+        "oid": "59196f83d5a93a2594295e6c2a583d7e56b607b0"
+      },
+      "mergedAt": "2026-11-06T23:21:10Z",
+      "number": 254,
+      "state": "MERGED",
+      "title": "CP182: trace lobby own-panel record guard",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/254"
+    },
     {
       "headRefOid": "f7b3c2c022d45ea659b5f4378a3828429e13d630",
       "mergeCommit": {

@@ -155,11 +155,11 @@
         "KR-F001",
         "KR-F015"
       ],
-      "known": "CP181/PR253 merged; CP182actualpanelrenderrecordguard0/nameempty vs confirmedauthID/name/actual6. Productionservice unchanged; K0/K1R2/K2profilescopes retained.",
-      "remaining": "K3ownpanelrecordproducer/dispatch/store/render positive, cachematrix/wrongstage/version acceptance; K4–K7/fullmatch/LANInternet/8realclients stillopen.",
-      "next_test": "NEXT-K3-IDENTITY-CACHE perPLAN: source-firstVNUserMap/KR544recordconsumer, measureminimumproducer→record→render; no repeatedauthnamegetter/cacheCRC/SquareLeftsweep.",
+      "known": "CP182/PR254merged59196f8; CP183native291control1/1/positive128/128/errors0 populatesownrecordKRLocal/guard1 andvisiblepanel. Productionunchanged; noK3gate.",
+      "remaining": "Opt-in291productionintegration/initialS2Cseqcontinuity/A-B-C/create/map/rejoin andK3cachematrix/wrongstage/version; latergates/fullmatch/LANInternet/8realclients open.",
+      "next_test": "NEXT-K3-IDENTITY-CACHE perPLAN: opt-in291fixture/service withnativecursor/sequence/create-mapcontrol; no producer/auth/getterrepetition.",
       "acceptance": "Epic checklist: linkedscopedtask/evidence+authoritymatrix vàacceptancegate ởPLAN; từngtaskđóng khôngđóngepic/K5/K6a.",
-      "reason": "CP182 manual narrow acceptance review: panelconsumer/guard observed, producer/identityrender remains open; no gateclosure, no independentreview. AUD054periodic180/next184 unchanged.",
+      "reason": "CP183manualnativesideeffects/image/control reviewedbyCodexselfcheck; ownerwaiver; periodic184nextunchanged.",
       "sources": [
         "docs/PROTOCOL.md#authority",
         "docs/RESEARCH.md#feature-gaps",
@@ -217,7 +217,8 @@
         "docs/PLAN.md#k1-acceptance",
         "docs/PLAN.md#k2-acceptance",
         "docs/PROTOCOL.md#local-name-model",
-        "docs/RESEARCH.md#gap-lobby-identity-followup"
+        "docs/RESEARCH.md#gap-lobby-identity-followup",
+        "docs/PROTOCOL.md#own-profile-291"
       ],
       "evidence": [
         "docs/evidence/current-movement-cycles/README.md",
@@ -348,7 +349,8 @@
         245,
         248,
         249,
-        253
+        253,
+        254
       ],
       "successors": []
     },
@@ -675,6 +677,6 @@
       "successors": []
     }
   ],
-  "as_of_utc": "2026-11-06T23:06:22.976001+00:00",
+  "as_of_utc": "2026-11-07T02:04:41.051879+00:00",
   "limits": "Dated manual dispositions through CP146; snapshotcaptureUTC only/no semantic or gate certification; immutable completehistory."
 }
