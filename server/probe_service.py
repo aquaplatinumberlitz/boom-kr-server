@@ -109,14 +109,35 @@ def network_config(bind_ip, peer_ips=None):
     return bind_ip, peers
 
 
-def peer_ip_options(options):
+def _role_ip_options(options, flag):
     peers = {}
     for option in options:
         role, separator, address = option.partition('=')
         if not separator or role in peers:
-            raise ValueError('expected unique --peer-ip ROLE=IPv4: ' + option)
+            raise ValueError('expected unique ' + flag + ' ROLE=IPv4: ' + option)
         peers[role] = address
     return peers
+
+
+def peer_ip_options(options):
+    return _role_ip_options(options, '--peer-ip')
+
+
+def admission_ip_options(options):
+    return _role_ip_options(options, '--admission-ip')
+
+
+def admission_ip_config(addresses):
+    """Operator A/B source binding, separate from advertised peers and auth."""
+    if addresses is None:
+        return None
+    if not isinstance(addresses, dict) or set(addresses) != {'A', 'B'}:
+        raise ValueError('admission IP binding requires exactly A and B')
+    _, validated = network_config('127.0.0.1', addresses)
+    result = {role: validated[role] for role in 'AB'}
+    if result['A'] == result['B']:
+        raise ValueError('admission A/B require distinct source IPv4 addresses')
+    return result
 
 
 def channel_endpoint_config(ip, port):
@@ -172,8 +193,13 @@ RESCUE_PROFILE_BODIES = {
 
 class ProbeService:
     def __init__(self, profile: FixtureProfile, out: Path, proxy_ports: dict, *,
-                 bind_ip='127.0.0.1', peer_ips=None, channel_ip=None, channel_port=None):
+                 bind_ip='127.0.0.1', peer_ips=None, channel_ip=None, channel_port=None,
+                 admission_ips=None):
         self.bind_ip, self.peer_ips = network_config(bind_ip, peer_ips)
+        self.admission_ips = admission_ip_config(admission_ips)
+        if self.admission_ips is not None and 'replacement_slot' in profile.data:
+            raise ValueError('admission IP binding supports A/B without replacement_slot')
+        self.admission_counts = dict.fromkeys('AB', 0)
         self.channel_endpoint = channel_endpoint_config(channel_ip, channel_port)
         self.redirect_frame = channel_redirect_frame(profile, self.channel_endpoint)
         missing = {'rank_Awin', 'promote_B', 'auth_C', 'roomlist_C', 'join_C',
@@ -325,6 +351,15 @@ class ProbeService:
                                   'channel_endpoint': self.channel_endpoint,
                                   'source': 'design', 'policy': 'explicit_operator_ipv4'},
                       'limits': 'Fixture auth/roster/rank, explicit addresses default loopback, two live members/A-B then B-C by accept order; no fullmatch gate.'}
+        if self.admission_ips is not None:
+            self.state['admission_binding'] = {
+                'source': 'design', 'mode': 'operator_source_ipv4',
+                'role_ips': dict(self.admission_ips), 'counts': self.admission_counts,
+                'limits': 'One A/B pair, four transports per role in process lifetime; '
+                          'distinct source IPs required, not account authentication or resume.'}
+            self.state['limits'] = ('Fixture auth/roster/rank; two live A/B members by explicit '
+                                    'operator source IPv4 and per-role transport order. '
+                                    'No replacement, account auth/resume or fullmatch gate.')
         if self.replacement_slot:
             self.state['replacement_slot_policy'] = {**profile.data['replacement_slot'], 'source': 'design',
                                                        'limits': 'Fresh C identity, not account resume; one replacement.'}
@@ -1687,6 +1722,17 @@ class ProbeService:
     def accept(self, listener):
         connection, peer = listener.accept()
         ordinal = len(self.events) + 1
+        role, stage = None, None
+        if self.admission_ips is not None:
+            role = next((name for name, ip in self.admission_ips.items() if ip == peer[0]), None)
+            if role is None or self.admission_counts[role] >= 4:
+                self.state.setdefault('admission_rejections', []).append({
+                    'ordinal': ordinal, 'peer': list(peer), 'role': role,
+                    'monotonic_ns': time.monotonic_ns(), 'source': 'design',
+                    'reason': 'unmapped_source' if role is None else 'role_transports_exhausted'})
+                connection.close()
+                return
+            stage = self.admission_counts[role] + 1
         if ordinal > 12 or (ordinal > 8 and not self.replacement_allowed()):
             self.state.setdefault('admission_rejections', []).append({
                 'ordinal': ordinal, 'peer': list(peer), 'monotonic_ns': time.monotonic_ns(),
@@ -1712,10 +1758,12 @@ class ProbeService:
                     **self.capacity_profile['C']}
             self.state['replacement_binding'] = dict(self.replacement_binding)
         connection.settimeout(2)
-        event = {'global_ordinal': ordinal, 'role': 'ABC'[(ordinal - 1) // 4],
-                 'reply_ordinal': (ordinal - 1) % 4 + 1, 'peer': list(peer),
+        event = {'global_ordinal': ordinal, 'role': role if role is not None else 'ABC'[(ordinal - 1) // 4],
+                 'reply_ordinal': stage if stage is not None else (ordinal - 1) % 4 + 1, 'peer': list(peer),
                  'port': listener.getsockname()[1], 'accept_monotonic_ns': time.monotonic_ns(), 'chunks': []}
         self.events.append(event)
+        if self.admission_ips is not None:
+            self.admission_counts[role] = stage
         self.connections[ordinal] = {'socket': connection, 'event': event, 'buffer': bytearray(), 'sequence': 40}
         if event['reply_ordinal'] == 4:
             self.channels[event['role']] = event
@@ -1821,6 +1869,8 @@ def main():
     parser.add_argument('--proxy-b', type=int, default=0)
     parser.add_argument('--bind-ip', default='127.0.0.1')
     parser.add_argument('--peer-ip', action='append', default=[], metavar='ROLE=IPv4')
+    parser.add_argument('--admission-ip', action='append', default=[], metavar='ROLE=IPv4',
+                        help='Opt-in A/B incoming source IPv4 binding; distinct IPs, four transports each')
     parser.add_argument('--channel-ip', help='Explicit IPv4 destination in measured S2C7 redirect')
     parser.add_argument('--channel-port', type=int, help='Destination port; requires --channel-ip')
     args = parser.parse_args()
@@ -1828,12 +1878,15 @@ def main():
         parser.error('invalid port')
     try:
         bind_ip, peer_ips = network_config(args.bind_ip, peer_ip_options(args.peer_ip))
+        admission_ips = admission_ip_config(admission_ip_options(args.admission_ip)
+                                            if args.admission_ip else None)
         channel_endpoint_config(args.channel_ip, args.channel_port)
     except ValueError as error:
         parser.error(str(error))
     service = ProbeService(FixtureProfile(args.profile), args.out, {'A': args.proxy_a, 'B': args.proxy_b},
                            bind_ip=bind_ip, peer_ips=peer_ips,
-                           channel_ip=args.channel_ip, channel_port=args.channel_port)
+                           channel_ip=args.channel_ip, channel_port=args.channel_port,
+                           admission_ips=admission_ips)
     args.out.mkdir(parents=True, exist_ok=True)
     def stop(_signal, _frame):
         service.closed = True

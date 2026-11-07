@@ -122,7 +122,11 @@ CP195 đã merge [PR267](https://github.com/aquaplatinumberlitz/boom-kr-server/p
 **CP196: pending B-host EOF qua NAT/UDP impairment đã kiểm A về phòng/ID clear/chief và fence bom chờ.**
 [Contract/giới hạn](docs/PROTOCOL.md#nat-netem-host-eof), [run/hash](docs/evidence/peer-endpoints/README.md#cp196).
 Run r1 partial do Python probe assertion giữ nguyên; r2 bounded probe pass. AUD058 qua196; audit kế **CP200**.
-Tiếp incoming admission đã biết lệch khi startup xen kẽ, trước bốn client; K6c Internet/K7 còn mở.
+CP196 đã merge [PR268](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/268) tại`e842347b7cac073c6822b2251096747710abc170`; K6c Internet/K7 còn mở.
+
+**CP197: incoming admission A/B theo IP nguồn riêng đã có opt-in**, realTCP xen kẽ0wrong/8 và native
+startup tuần tự vẫn qua hai trận/reset/Start3 trên bundle mới. [Contract/giới hạn](docs/PROTOCOL.md#operator-incoming-binding),
+[recipe/hash](docs/evidence/peer-endpoints/README.md#cp197). Native startup xen kẽ còn cần đo; chưa bốn client/K7.
 
 Đích đầu: hai client thật chơi hai trận liên tiếp; mở bốn client và hardening sau đó.
 

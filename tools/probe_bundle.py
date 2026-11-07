@@ -99,7 +99,8 @@ def export_bundle(profile, source_root, out):
         schema='kre-probe-bundle-v1', context_commit=context,
         source='design', status='design',
         limits='Pinned synthetic wire fixtures/exact Python sources only. Not client/assets/auth, '
-               'a signed release, runtime/LAN proof or network isolation. Startup remains serialized.',
+               'a signed release, runtime/LAN proof or network isolation. Default startup remains '
+               'serialized; explicit source-IP admission is opt-in, not account authentication.',
         fixture_aliases=len(result['fixtures']),
         fixture_files=len({q['path'] for q in result['fixtures'].values()}),
         files=[dict(path=path, bytes=len(raw), sha256=hashlib.sha256(raw).hexdigest())
