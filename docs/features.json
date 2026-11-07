@@ -1,7 +1,7 @@
 {
   "schema": "kre-feature-index-v1",
   "build": "KR00967",
-  "as_of": "CP193",
+  "as_of": "CP194",
   "sources": {
     "plan": "docs/PLAN.md",
     "contract": "docs/PROTOCOL.md",
@@ -1484,7 +1484,8 @@
           "docs/PROTOCOL.md#current-basic-contest-reset",
           "docs/PROTOCOL.md#emulated-lan-acceptance",
           "docs/PROTOCOL.md#routed-Wine-network",
-          "docs/PROTOCOL.md#nat-endpoint-control"
+          "docs/PROTOCOL.md#nat-endpoint-control",
+          "docs/PROTOCOL.md#nat-two-cycles"
         ]
       },
       "coverage": {
@@ -3242,7 +3243,8 @@
           "docs/evidence/peer-endpoints/README.md#cp150",
           "docs/evidence/peer-endpoints/README.md#cp151",
           "docs/evidence/peer-endpoints/README.md#cp158",
-          "docs/evidence/peer-endpoints/README.md#cp193"
+          "docs/evidence/peer-endpoints/README.md#cp193",
+          "docs/PROTOCOL.md#nat-two-cycles"
         ]
       },
       "coverage": {
@@ -3273,7 +3275,8 @@
             "state": "observed",
             "refs": [
               "docs/PROTOCOL.md#nat-endpoint-control",
-              "docs/evidence/peer-endpoints/README.md#cp193"
+              "docs/evidence/peer-endpoints/README.md#cp193",
+              "docs/PROTOCOL.md#nat-two-cycles"
             ]
           },
           "windows_original": {
@@ -4598,7 +4601,8 @@
           "docs/PROTOCOL.md#portable-probe-bundle",
           "docs/PROTOCOL.md#emulated-lan-acceptance",
           "docs/PROTOCOL.md#routed-Wine-network",
-          "docs/PROTOCOL.md#nat-endpoint-control"
+          "docs/PROTOCOL.md#nat-endpoint-control",
+          "docs/PROTOCOL.md#nat-two-cycles"
         ]
       },
       "coverage": {

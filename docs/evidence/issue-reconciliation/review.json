@@ -155,11 +155,11 @@
         "KR-F001",
         "KR-F015"
       ],
-      "known": "CP193 controlled SNAT native receipt/queue/drain/slot helper0 withprivate153; mapped153+DNAT helperpositive/output13/currentkey/nativeapply/currentmovement bothdirections. CP192PR264merged; K5/K6a/K6bemulated scopes remainaccepted.",
-      "remaining": "Two normalcycles/reset/Start3 onexplicitNATmapping; NATdiscovery/originalrelay/Internet/K7/generalvariants remainopen.",
-      "next_test": "PLAN NEXT-K6C-MAPPED-CYCLES: reuseCP192twoBwins/currentbundle/nativechecks withCP193mappedtopology; nophysicalWindows/twohardwarehostrequirement.",
+      "known": "CP194actualKR2normalcycles/Bwinnerreset/Ready2/Start3/fourpeerwindows/twokeys/staticSNATDNATmapped153 nativePCAPconsistent; CP193PR265merged. K5/K6a/K6bemulated scopedacceptances retained.",
+      "remaining": "Latency/loss/controlandNATlifecycle variant; originalNATdiscovery/relay/Internet/K7/four-eightclients/generalvariants open.",
+      "next_test": "PLAN NEXT-K6C-NETEM-CONTROL: isolatedtransportbaseline/negative/delaylosscountercapturetiming thenunchangedKR2cycles withfrozenqdiscconfig.",
       "acceptance": "Epic checklist: linkedscopedtask/evidence+authoritymatrix vàacceptancegate ởPLAN; từngtaskđóng khôngđóngepic/K5/K6a.",
-      "reason": "GroupedtargetedNATcontrols, raw/seals/failures retained; noInternetgate fromsingleepoch; AUD057through192/next196.",
+      "reason": "ReuseCP192recipe/CP193mappedendpointcontrol; newintegrationproofnotInternetgate. AUD057through192/next196, reviewwaived.",
       "sources": [
         "docs/PROTOCOL.md#authority",
         "docs/RESEARCH.md#feature-gaps",
@@ -224,7 +224,8 @@
         "docs/PLAN.md#k3-acceptance",
         "docs/PLAN.md#k4-acceptance",
         "docs/PROTOCOL.md#own-profile-result-compare",
-        "docs/PROTOCOL.md#nat-endpoint-control"
+        "docs/PROTOCOL.md#nat-endpoint-control",
+        "docs/PROTOCOL.md#nat-two-cycles"
       ],
       "evidence": [
         "docs/evidence/current-movement-cycles/README.md",
@@ -286,7 +287,8 @@
         "docs/evidence/lobby-identity/README.md",
         "docs/evidence/lobby-identity/k3-acceptance.json",
         "docs/evidence/lobby-identity/k4-acceptance.json",
-        "docs/evidence/peer-endpoints/README.md#cp193"
+        "docs/evidence/peer-endpoints/README.md#cp193",
+        "docs/evidence/peer-endpoints/README.md#cp194"
       ],
       "prs": [
         173,
@@ -361,7 +363,8 @@
         253,
         254,
         255,
-        264
+        264,
+        265
       ],
       "successors": []
     },

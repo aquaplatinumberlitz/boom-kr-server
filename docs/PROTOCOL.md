@@ -5381,6 +5381,27 @@ Serviceproductionbind/153IPvẫnhard127; private-addressshims hiện làmeasurem
 Internet/K6c/NAT/relay/fullauth/authority/generalreset/gates mở; field99IP1/subtype39 vẫnunknown.
 
 
+<a id="nat-two-cycles"></a>
+### Hai vòng Battle bình thường/reset qua mapping NAT tĩnh — CP194
+
+[Tuple/consumer contract CP193](#nat-endpoint-control), [recipe/hash](evidence/peer-endpoints/README.md#cp194),
+[phép thử tiếp](RESEARCH.md#gap-lobby-identity-followup). `kr_runtime`, confirmed trong current basic profile.
+Tái dùng nguyên recipe CP192 hai B sole Roller/normal wins và CP193 mapped153/SNAT/DNAT; không đổi
+client copy4b, fixture, opcode, service bundle hoặc policy. Cài DNAT theo port99 thực trước153 đầu tiên.
+
+Cùng run có hai normal A selfbomb → trap/death → B21 →175/180/room, B Roller4→5→4 sau thắng,
+Ready2 và normal B Start3. Ba clock/key12345→12346→12347 có baseline A5/B4 và195seed reset;
+clock3 active≥8s, không bom hoặc kết quả thứ ba. Bốn peer windows qua hai key có exact capture wire SHA
+→ API với tuple sau NAT → key/apply/target/current progress; typed153/IP/port/key được đối chiếu từng epoch.
+Getter emulation trên bản copy tách khỏi native runtime; stat/gameplay không suy từ log service.
+
+Đây là integration **mapping tĩnh do operator chọn**, không phải NAT discovery hoặc relay gốc. PCAP
+ở kv-a: chiều A trước NAT, chiều B sau NAT, nối cùng payload tới native API; không capture kv-b riêng.
+Startup tuần tự/ordinal admission, profile basic291/Manner/ExVillage01 và policy fuse/drop/rank/guards
+giữ giới hạn cũ. Rejoin/host EOF dùng control cũ độc lập, không gán thành EOF qua NAT trong run này.
+K6c Internet/K7 còn mở. Khoảng trống mạng kế là latency/loss có đối chứng trên topology này, rồi
+lifecycle/disconnect thực tế; không lặp tuple/codec/queue đã giải hoặc mở kiểm kê item/mode.
+
 <a id="nat-endpoint-control"></a>
 ### NAT: tuple nhận thực tế phải qua kiểm endpoint của slot — CP193
 
