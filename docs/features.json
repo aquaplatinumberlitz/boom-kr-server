@@ -1,7 +1,7 @@
 {
   "schema": "kre-feature-index-v1",
   "build": "KR00967",
-  "as_of": "CP191",
+  "as_of": "CP192",
   "sources": {
     "plan": "docs/PLAN.md",
     "contract": "docs/PROTOCOL.md",
@@ -1482,7 +1482,8 @@
           "docs/evidence/peer-endpoints/README.md#cp176",
           "docs/PROTOCOL.md#current-basic-cycles-291",
           "docs/PROTOCOL.md#current-basic-contest-reset",
-          "docs/PROTOCOL.md#emulated-lan-acceptance"
+          "docs/PROTOCOL.md#emulated-lan-acceptance",
+          "docs/PROTOCOL.md#routed-Wine-network"
         ]
       },
       "coverage": {
@@ -1543,7 +1544,8 @@
               "docs/evidence/peer-endpoints/README.md#cp176",
               "docs/PROTOCOL.md#current-basic-cycles-291",
               "docs/PROTOCOL.md#current-basic-contest-reset",
-              "docs/PROTOCOL.md#emulated-lan-acceptance"
+              "docs/PROTOCOL.md#emulated-lan-acceptance",
+              "docs/PROTOCOL.md#routed-Wine-network"
             ]
           },
           "windows_original": {
@@ -1587,7 +1589,8 @@
             "docs/evidence/peer-endpoints/README.md#cp176",
             "docs/PROTOCOL.md#current-basic-cycles-291",
             "docs/PROTOCOL.md#current-basic-contest-reset",
-            "docs/PROTOCOL.md#emulated-lan-acceptance"
+            "docs/PROTOCOL.md#emulated-lan-acceptance",
+            "docs/PROTOCOL.md#routed-Wine-network"
           ]
         },
         "gate": {
@@ -1626,7 +1629,8 @@
           "docs/evidence/udp-generation/README.md#cp130",
           "docs/evidence/peer-endpoints/README.md#cp155",
           "docs/PROTOCOL.md#current-basic-contest-reset",
-          "docs/PROTOCOL.md#emulated-lan-acceptance"
+          "docs/PROTOCOL.md#emulated-lan-acceptance",
+          "docs/PROTOCOL.md#routed-Wine-network"
         ]
       },
       "coverage": {
@@ -1663,7 +1667,8 @@
               "docs/PROTOCOL.md#udp-membership-lifetime",
               "docs/evidence/peer-endpoints/README.md#cp155",
               "docs/PROTOCOL.md#current-basic-contest-reset",
-              "docs/PROTOCOL.md#emulated-lan-acceptance"
+              "docs/PROTOCOL.md#emulated-lan-acceptance",
+              "docs/PROTOCOL.md#routed-Wine-network"
             ]
           },
           "windows_original": {
@@ -1695,7 +1700,8 @@
             "docs/evidence/current-udp-causality/README.md",
             "docs/PROTOCOL.md#udp-membership-lifetime",
             "docs/PROTOCOL.md#current-basic-contest-reset",
-            "docs/PROTOCOL.md#emulated-lan-acceptance"
+            "docs/PROTOCOL.md#emulated-lan-acceptance",
+            "docs/PROTOCOL.md#routed-Wine-network"
           ]
         },
         "gate": {
@@ -3622,7 +3628,8 @@
           "docs/evidence/peer-endpoints/README.md#cp176",
           "docs/PROTOCOL.md#current-basic-cycles-291",
           "docs/PROTOCOL.md#current-basic-contest-reset",
-          "docs/PROTOCOL.md#emulated-lan-acceptance"
+          "docs/PROTOCOL.md#emulated-lan-acceptance",
+          "docs/PROTOCOL.md#routed-Wine-network"
         ]
       },
       "coverage": {
@@ -3724,7 +3731,8 @@
               "docs/evidence/peer-endpoints/README.md#cp176",
               "docs/PROTOCOL.md#current-basic-cycles-291",
               "docs/PROTOCOL.md#current-basic-contest-reset",
-              "docs/PROTOCOL.md#emulated-lan-acceptance"
+              "docs/PROTOCOL.md#emulated-lan-acceptance",
+              "docs/PROTOCOL.md#routed-Wine-network"
             ]
           },
           "windows_original": {
@@ -3809,7 +3817,8 @@
             "docs/evidence/peer-endpoints/README.md#cp176",
             "docs/PROTOCOL.md#current-basic-cycles-291",
             "docs/PROTOCOL.md#current-basic-contest-reset",
-            "docs/PROTOCOL.md#emulated-lan-acceptance"
+            "docs/PROTOCOL.md#emulated-lan-acceptance",
+            "docs/PROTOCOL.md#routed-Wine-network"
           ]
         },
         "gate": {
@@ -4196,7 +4205,8 @@
           "docs/PROTOCOL.md#replacement-profile",
           "docs/evidence/peer-endpoints/README.md#cp177",
           "docs/PROTOCOL.md#portable-probe-bundle",
-          "docs/PROTOCOL.md#emulated-lan-acceptance"
+          "docs/PROTOCOL.md#emulated-lan-acceptance",
+          "docs/PROTOCOL.md#routed-Wine-network"
         ]
       },
       "coverage": {
@@ -4355,7 +4365,8 @@
               "docs/PROTOCOL.md#replacement-profile",
               "docs/evidence/peer-endpoints/README.md#cp177",
               "docs/PROTOCOL.md#portable-probe-bundle",
-              "docs/PROTOCOL.md#emulated-lan-acceptance"
+              "docs/PROTOCOL.md#emulated-lan-acceptance",
+              "docs/PROTOCOL.md#routed-Wine-network"
             ]
           },
           "windows_original": {
@@ -4550,7 +4561,8 @@
             "docs/PROTOCOL.md#replacement-profile",
             "docs/evidence/peer-endpoints/README.md#cp177",
             "docs/PROTOCOL.md#portable-probe-bundle",
-            "docs/PROTOCOL.md#emulated-lan-acceptance"
+            "docs/PROTOCOL.md#emulated-lan-acceptance",
+            "docs/PROTOCOL.md#routed-Wine-network"
           ]
         },
         "gate": {
@@ -4592,7 +4604,8 @@
           "docs/evidence/udp-freshness/README.md",
           "docs/evidence/firstseen-admission/README.md",
           "docs/PROTOCOL.md#portable-probe-bundle",
-          "docs/PROTOCOL.md#emulated-lan-acceptance"
+          "docs/PROTOCOL.md#emulated-lan-acceptance",
+          "docs/PROTOCOL.md#routed-Wine-network"
         ]
       },
       "coverage": {
@@ -4620,7 +4633,8 @@
             "refs": [
               "docs/evidence/firstseen-admission/README.md",
               "docs/PROTOCOL.md#portable-probe-bundle",
-              "docs/PROTOCOL.md#emulated-lan-acceptance"
+              "docs/PROTOCOL.md#emulated-lan-acceptance",
+              "docs/PROTOCOL.md#routed-Wine-network"
             ]
           },
           "windows_original": {
@@ -4650,7 +4664,8 @@
           "refs": [
             "docs/evidence/firstseen-admission/README.md",
             "docs/PROTOCOL.md#portable-probe-bundle",
-            "docs/PROTOCOL.md#emulated-lan-acceptance"
+            "docs/PROTOCOL.md#emulated-lan-acceptance",
+            "docs/PROTOCOL.md#routed-Wine-network"
           ]
         },
         "gate": {

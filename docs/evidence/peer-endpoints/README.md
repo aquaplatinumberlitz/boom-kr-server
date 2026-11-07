@@ -1681,3 +1681,40 @@ CP189/190gate/raw scope lịch sử giữ, quyết địnhK6b mới phát sinh s
 PeriodicAUD056qua188, audit **CP192** kế tiếp; K6cInternet/K7/four-eightactualclient/generalaccount/
 fullcodec/auth/142freshness/maps/items/resetvariants cònmở. Bước tiếprouted/NATpreflight theoPLAN,
 không bắtchủdựcấp2physicalmachines hoặc gọi môphỏng là Internetthật.
+
+
+<a id="cp192"></a>
+## CP192 — hai subnet routed/Wine và periodicAUD057
+
+Baseline CP191/[PR263](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/263), head a62af1e0/
+merge`56a08dd67a5dce858611e3b80e5f588be8fa7477`. Codexsolo/tự kiểm/[reviewwaived](../checkpoints/review-waiver.json),
+KRE-005b/#14. [OwnerWine accepted](../owner-directives/wine-accepted.json), [contract](../../PROTOCOL.md#routed-Wine-network),
+[gap/next](../../RESEARCH.md#gap-lobby-identity-followup), [PLAN](../../PLAN.md#current-order).
+Không yêu cầu WindowsVM/máyvậtlý làm gateblocker; vẫn giữ đúng provenanceWine/copy/patch/source,
+không sửa nhãn lịch sửWindowsunknown/notphysicalLAN thành kết quả chưađo.
+
+`routed-transport-r1` dùng privateuser/net/mount/pidnamespace vàactualsockets, khôngclient:2L2subnet/
+veth/rootrouter, noexternaldefaultroute. Forward0UDPtimeout/Bkhôngnhận→Forward1echo với tuple thực;
+TCP từ10.78.1.2/10.78.2.3 đếnservice10.77.0.1;27IPv4PCAPrecords/ownedcleanup/hostnetnsunchanged.
+`routed-KR-two-cycles-r1` tái dùng nguyênCP191/BsoleRoller/normal2cycles/Start3, CP190bundle/copy4b/
+47fixture/13runtimemodule; chỉtopology/explicitpeerIP/captureallowlist đổi. Không nativebody/opcode/
+statlawRE hoặcclient/sourceDB/asset/policy/inputbounds change; source/configfreeze đếncleanup/seal.
+
+Actualrun404.113676936s/1394raw/frozen227/exit0/cleanup0; SHA`9443c28d9479fdfd2d4f02e013efae09b98c6886cb69625a3edf1db054978f3f`.
+1732cyclechecks/90nativepacketcases/528securefieldcases;69Start3/bundlechecks.
+4683endpointchecks/1155PCAPrecords; typed153actualIP/UDPport/currentkey→PCAPtuple/hash/checksum→nativeAPI→4peerwindows/2keys/target/currentprogress.
+
+HaiBnormalRollerclaim/one165/view/epoch/B4→5/A5unchanged, normalAselfSpace/IDs1,2/native159158/17→19/
+B21/full175180/Ready2/normalBStart3. NativeprotectedbaselineB4/A5 ở3clock/keys12345/12346/12347,
+195seedreset/life/peerđã kiểm từ cácoracle đãcó. Vòng3active≥8s/noBomb/noThirdoutcome, không intentionalEOF/
+oldUDP/contenders trongrunmới; knownhostEOFCP190controlgiữriêng, không ghép thành routedEOF.
+Verifier kếthừaCP189 banđầu chỉ nhận2keys FAIL ở153Start3; source/loggiữnguyên. Sửa checker đểđối
+chiếu153key với actualepoch theo timestamp/loadingbounds, không chỉ thêmmagicconstant đểpass;
+không sửa wire/client/service/raw. `routed-endpoint-review-r1` giữoldassumption/log+finalproof/seal.
+
+Nativecontroller/script/probes/capture/rawseals/ảnhcontact đềuởlocal/gitignored; SHA từngfile ởmanifest
+bằngchứngCP192. Audit[AUD057](../checkpoints/audits/AUD057.json) thủcông README→PLAN→PROTOCOL→RESEARCH→
+evidence/raw/report/owners/PCAP/chosenpolicy/ownerinstructions, không chỉchecker. Cập nhậtAGENTS/runtime
+environment theoWineacceptance, giữoldcomplete/raw/evidence bấtbiến; audit kếCP196.
+K6a/K6bgiảlập giữscopeđãđạt; không K6cInternet/NAT/relay/fullauth/allreset/allmaps/4–8actualclients.
+Bước tiếpNATsourceIP/portmapping so với99/153/nativeIPregistration trongtopologycôlập, khôngliveNexon.

@@ -5381,6 +5381,36 @@ Serviceproductionbind/153IPvẫnhard127; private-addressshims hiện làmeasurem
 Internet/K6c/NAT/relay/fullauth/authority/generalreset/gates mở; field99IP1/subtype39 vẫnunknown.
 
 
+<a id="routed-Wine-network"></a>
+### KR Wine qua hai subnet/router; môi trường Wine được owner chấp nhận — CP192
+
+[OwnerWine directive](evidence/owner-directives/wine-accepted.json), [LANgiảlập directive](evidence/owner-directives/emulated-lan.json),
+[recipe/hash](evidence/peer-endpoints/README.md#cp192), [câu hỏi kế](RESEARCH.md#gap-lobby-identity-followup).
+Wine là môi trường nghiệmthu thay Windows thật theo chủ dự án; **không còn yêu cầu WindowsVM/bareWindows**
+để đónggate project. Giữ đúng Wineversion/copiedPEhash/patch/source và không claim đã đo API/Windows
+chưa chạy. Record/rawcũ nói Windowsunknown là lịch sử quan sát, không blocker bắtchủdựcấpWindows.
+
+Tái dùng CP191 nguyênBsoleRoller2wins/Start3 và CP190bundle/current47fixture/13sourcebytes; không nativebody
+mới, không thay opcode/stat/guard/policy. Delta là flatbridge→hai L2subnet: A10.78.1.2/24 qua10.78.1.1,
+B10.78.2.3/24 qua10.78.2.1; rootrouter/service10.77.0.1/32, childcóexplicitroute tớipeer/service, không
+externaldefaultroute. SourceIP/dynamicUDPports vẫn quảngbá qua99/153; directTCPUDP, không NAT/relay.
+
+Transportpreflight đối chứng forward0: UDPtimeout/Bkhôngnhận; forward1: UDPecho đúngtuple/A↔B,
+TCPcảhai nguồn đếnrouterservice. Hai vethPCAP lưu27IPv4records, namespaces/sysctl/router chỉdisposable,
+không đổi hostrouting. Đây là design/transport proof, nativeKRproof riêng bên dưới.
+
+ActualKRroutedrun dùng hai CA+wineserver/Wine/currentcopy4b/portableproduction/normalManner/ExVillage01:
+BnhặtRoller17ở2epoch, một165/view/B4→5/A5unchanged; normalAselfbomb/IDs1,2/native17→19/B21/175180
+hai kết quảBwin/Ready2, actualBStart3/keys12345→12346→12347/nativeclock3/baselineB4/A5. Bốn peerwindows
+qua2key có actualAPI/nativeapply/target/currentprogress; typed153remote10.78.1.2/10.78.2.3 vàactual99
+UDPports được nối routedPCAPchecksum/wireSHA/tuple→nativeingress. Khép biến thể **routedhai-subnet**
+trong môi trườnggiảlập đã chọn, không biến thành neworiginalserverlaw/Internet/NAT/relayproof.
+
+Frame/helpers/getter/probe/inputbounds và policy giữ nguyên; frozeninputs/ownedcleanup theo recipe.
+Vòng3active≥8s/noBomb/noThirdoutcome. HostEOF/rejoincontrol được giữởCP189190, không chạy/ghép vào
+routedrun này. K6cInternet/NAT/relay/loss/jitter/generalaccount/4–8actualclient vẫn cần phép đo riêng;
+không nânggate từtransportecho hoặc từviệc chủ dự án chấp nhận Wine/LANgiảlập.
+
 <a id="emulated-lan-acceptance"></a>
 ### LAN giả lập được chủ dự án chấp nhận; reset B sau thắng — CP191
 

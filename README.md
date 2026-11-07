@@ -97,7 +97,11 @@ CP189 đã merge [PR261](https://github.com/aquaplatinumberlitz/boom-kr-server/p
 BpostwinRollerreset4→5→4 đã xác nhận qua hai normaloutcomes/Start2/3 trênportablebundle;
 [nguồn](docs/PROTOCOL.md#emulated-lan-acceptance). K6cInternet/K7 vẫn mở.
 CP190 đã merge [PR262](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/262) tại`b7e83f46`.
-AUD056 periodic qua188, audit kế **CP192**. [Review waived](docs/evidence/checkpoints/review-waiver.json).
+**CP192: actualKR Wine đã qua hai subnet/router** với hai normalcycles/reset/Start3 và endpoint/nativeUDP
+có capture; [contract/giới hạn](docs/PROTOCOL.md#routed-Wine-network). Chưa NAT/relay/Internetgate.
+[Owner chấp nhận Wine thay Windows](docs/evidence/owner-directives/wine-accepted.json), không cần máy Windows.
+CP191 đã merge [PR263](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/263) tại`56a08dd6`.
+AUD057 periodic qua192, audit kế **CP196**. [Review waived](docs/evidence/checkpoints/review-waiver.json).
 
 Đích đầu: hai client thật chơi hai trận liên tiếp; mở bốn client và hardening sau đó.
 

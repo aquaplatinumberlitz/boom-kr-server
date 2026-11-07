@@ -37,6 +37,9 @@ evidence hash,closed-task/active-next-step và cadence audit;dùng lại check_d
 Trên host chạy --require-local --require-history;clone thiếu raw báo UNVERIFIED khi không flag.
 Pending review hiện WARNING,không thành semantic approval. [Quy trình/giới hạn](../docs/evidence/checkpoints/README.md).
 Tests: python3 tools/test_checkpoints.py.
+Audit có thể ghi một `AGENTS.md` ở đầu trước chuỗi liên tục README→PLAN→PROTOCOL→RESEARCH;
+checker vẫn từ chối thiếu/đảo docs lõi hoặc prefix khác. Đây là tương thích metadata AUD057,
+giữ nguyên audit/checkpoint complete và không tự xác nhận nội dung đã đọc.
 
 `feature_catalog.py --generate`: sinh [coverage/cây/thẻ cơ chế](../docs/COVERAGE.md) từ
 [catalog ID ổn định](../docs/features.json). Không flag: kiểm bản sinh đã đồng bộ, schema/trạng thái,
