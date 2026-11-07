@@ -5381,6 +5381,38 @@ Serviceproductionbind/153IPvẫnhard127; private-addressshims hiện làmeasurem
 Internet/K6c/NAT/relay/fullauth/authority/generalreset/gates mở; field99IP1/subtype39 vẫnunknown.
 
 
+<a id="nat-endpoint-control"></a>
+### NAT: tuple nhận thực tế phải qua kiểm endpoint của slot — CP193
+
+[Recipe, raw và hash](evidence/peer-endpoints/README.md#cp193), [phép thử tiếp](RESEARCH.md#gap-lobby-identity-followup).
+Nguồn `kr_runtime`, confirmed trong hai cửa sổ input của từng run; topology/mapping là `design`.
+Tái dùng CP045–047: ingress → lookup → queue/drain → consumer13E0E00 → handlerE66680, cùng contract99/153
+và service CP190. Không RE lại codec/queue, không nhập ID/layout VN. Client copy Wine4b, service bundle,
+profile/fixture và input Right giữ nguyên; chỉ thay endpoint được khai báo và cấu hình mạng trong namespace.
+
+| Ca | Native KR quan sát được | Giới hạn |
+|---|---|---|
+| SNAT một chiều r1 | Native B vẫn thấy tuple A riêng/port99; peer và apply dương | Mapping chưa được quan sát; không dùng ca này để kết luận NAT hoạt động hoặc thất bại. Giả thuyết conntrack do luồng ngược chưa chứng minh |
+| SNAT hai chiều, 153 vẫn khai báo địa chỉ riêng | A nhận nguồn10.78.1.1:30002; B nhận10.78.2.1:30001. Peer khác0, payload qua queue/drain; consumer game trả0 | Không thể dùng peer khác0 hoặc dequeue làm bằng chứng gameplay |
+| Đối chứng endpoint riêng có thêm probe | Helper được gọi tại13E100A trả0 tại13E100F; consumer trả0 cả hai view/cửa sổ, không tới handler movement | Chỉ nhánh selector1/slot hiện dùng; không phải mọi grammar hoặc nguyên nhân mọi lỗi Internet |
+| 153 khai báo tuple đã ánh xạ + DNAT tới port99 thực | Cùng nguồn sau SNAT; helper trả khác0, consumer15→13, exact SHA nối output → handler → apply; native key khớp, target và tọa độ hiện tại tiến ở cả hai chiều | Một epoch/hai pulse Right; chưa hai kết quả/reset hoặc Internet gate |
+
+Cấu hình positive dùng tùy chọn service **đã có**: peer A10.78.2.1:30001, peer B10.78.1.1:30002.
+Controller đọc port thực từ request99 rồi cài DNAT theo recipe đã cố định **trước153 đầu tiên**;
+SNAT giữ nguyên hai chiều. Đây là mapping tĩnh do operator chọn trong mạng cô lập; không phải giao thức
+NAT discovery/relay của server gốc. Không sửa packet, ép state hoặc gọi hàm game. Helper13DF710
+chưa được RE thêm toàn thân; kết luận dựa trên callsite đã cache và giá trị trả về/runtime downstream.
+Đổi IP/port cùng lúc và thêm DNAT phục vụ reachability, nên chưa tách riêng nguyên nhân IP với port.
+Consumer còn nhận gói điều khiển3byte/selector0 và lượt đọc rỗng trả0. Verifier đầu đòi mọi output13
+bị bác bỏ; bản sửa ghép input/output theo thread/thứ tự và chỉ yêu cầu movement15byte/selector1→13,
+rồi nối exact SHA tới handler/apply. Giữ source/log lỗi; không loại return0 khỏi bằng chứng.
+
+PCAP chỉ ở kv-a: frame A→B phía trước SNAT được nối bằng wire SHA với API B sau SNAT; chiều B→A
+thấy nguồn sau SNAT. Không có capture Ethernet kv-b độc lập. Metadata `kind/limits` r2 còn chữ noNAT
+kế thừa; giữ raw nguyên, lệnh iptables/counter và native API chứng minh mapping thực. Nhãn legacy
+udp_proxy không mô tả proxy đang hoạt động; positive dùng tùy chọn port để quảng bá endpoint, không
+forward bằng các socket legacy. K6c/K7 giữ mở; bước kế là hai vòng bình thường/reset trên mapping này.
+
 <a id="routed-Wine-network"></a>
 ### KR Wine qua hai subnet/router; môi trường Wine được owner chấp nhận — CP192
 
