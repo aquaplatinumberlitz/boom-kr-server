@@ -1742,6 +1742,7 @@ counter1/rule và native API mapped ở cả A/B; peer khác0/queue/drain nhưng
 `NAT-KR-downstream-r1` nối exact payload tới consumer trả0, dùng cache để đặt phép đo tối thiểu kế.
 
 | Run (local/research/codex/) | Thời gian / raw / frozen | SHA run.json |
+|---|---|---|
 | `NAT-KR-peer-r1` | 166.549730307s / 695 / 227 | `2e764155d8559961a6b4a5443159402fd89e0a6c24117266f01d04640f6f41ba` |
 | `NAT-KR-peer-r2` | 168.621473145s / 680 / 226 | `7760f30b535f4898ba5011435f8a76816f4c3bc380adc25d1bd16152c59a4245` |
 | `NAT-KR-downstream-r1` | 163.941602773s / 692 / 227 | `fb9292f60911a4d6426dbbff27652c67013e83e8144d2c9a6471cf1ff375ff59` |
@@ -1819,3 +1820,42 @@ Scripts/source-first/preflight/raw/capture/seals/ảnh/report/hash từngfile �
 sourcebinary/DB/asset/history thay đổi. Không originalNATdiscovery/relay/Internet/fullUDP/alllossdistribution/
 EOFinthisrun hoặc gate mới. Tiếp pendingBhostEOF/remainingAcleanup/fence trên topology này theo PLAN;
 CP196 audit thủ công bắt buộc, AUD057 qua192/counter không reset.
+
+<a id="cp196"></a>
+## CP196 — pending B-host EOF qua NAT/qdisc và periodic AUD058
+
+Baseline CP195/[PR267](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/267), exacthead`1d914b3cedc2c4a9a0cc30a3c5dd94530bd949b4`,
+merge`fe329b0b4da66aa4138c0e1a242da6ab3033d4a2`. KRE-005b/#14/Codex solo/review waived.
+[Contract và giới hạn](../../PROTOCOL.md#nat-netem-host-eof), [câu hỏi kế](../../RESEARCH.md#gap-lobby-identity-followup),
+[PLAN](../../PLAN.md#current-order). Tái dùng exact CP190 pendingB/owned PID/image guards/107110/fence,
+CP195 mappedNAT/UDP40±5ms/loss5%seed194/TCPbaseline và cached native probes; không native body/codec RE.
+
+R1 `NAT-netem-host-EOF-r1`:185.327672031s/699raw/frozen227/exit0/cleanup0,
+SHA`9e459ca7f8625335d0b85e141d3221e1e1bc07015d4c2cf4218140df80127738`. Native A175/180/107ID2clear/
+chief110 và service round_closed/no158 đã thấy, nhưng full verifier FAIL: controller dừng ở native_stop
+sau Python AssertionError/1256B3B/live_positions khi actor storage qua scene12, không native SIGSEGV.
+Giữ raw/failedscript/log/diagnosis, **không** gọi pass hoặc sửa verifier để nhận partial.
+R2 chỉ đóng UDP/membership/feedback observer sau2s từ kill trước forfeit; CRC assert/client/service/policy/
+input/NAT/qdisc giữ nguyên. Đối chứng hỗ trợ lifetime hypothesis, không tự suy toàn rootcause r1.
+
+R2 `NAT-netem-host-EOF-r2`:185.051682329s/696raw/frozen227/exit0/cleanup0,
+SHA`edc9729c6aefc4fdf9d2d0e5c7f83c97b9ad13161a4c25e3c8f6c0292b9725ec`.1050oldEOFchecks+137tail/qdiscchecks/127PCAPrecords.
+
+B actualSpace/118ID1/owner1/9,3/power1/159both; kill còn4,914883s trước6sfuse. Native A175/180/107 clear
+slot1/ID2/chief110/room, oneepoch/forfeit chỉ A; pendingjob round_closed/no158/không giả17/19, qua due+4s.
+Qdisc fresh0 có actual drops/delayed cảhai, source/config freeze tới cleanup/seal. R2 không debugger stop.
+
+Chronology r1: exact frame B→A PCAP trước kill41,869850ms, GDB ingress observation sau kill287,404317ms;
+currentkey/handler apply quan sát trước server107. Report v1 dùng chữ late chưa rõ, v2 pin thêm PCAPindex/
+monotonic để phân biệt dữ liệu trướckill với native/GDB observation muộn. Giữ cả hai report/script, raw
+không sửa. R2 không thấy API saukill trong cửa sổarm, không proof queueclear/khôngcòngóicũ/post107 bypass.
+Không ghép EOF riêng thành normaloutcome hoặc hai vòng CP195; không account resume/Internet gate.
+
+[AUD058](../checkpoints/audits/AUD058.json) periodic qua196 đọc core docs theo thứ tự, targetedcurrent
+contracts/authority/gaps/evidence/runtime/source/raw/images CP193–196, không chỉ checker. Sửa nextstep
+routed/NATtuple/K6b/counter cũ, authorityNATunknown quá rộng, ghi chú K1/K2 cũ chưa gắn lịch sử, tableCP193
+thiếu separator và temporalclaim PCAP/GDB. Source-first/cache/failedoracles/boundedgetterlimits/reviewwaiver
+vẫn giữ. Không recertify toàn lịch sử6500line hoặc thay record complete; audit kế **CP200**.
+K6c Internet/K7 còn mở; tiếp incoming admission xen kẽ (CP1906/8wrong) độc lập trước bốn nativeclients,
+không tự nghiệm thu Internet bằng netem hoặc thêm networkvariant không có blocker. Raw/hash/scripts và
+ảnh audit ở local; metadata/externalmanifest CP196 ghi từng pin. PR/exacthead theo AGENTS.

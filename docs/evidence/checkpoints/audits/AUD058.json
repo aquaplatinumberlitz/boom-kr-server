@@ -1,0 +1,138 @@
+{
+  "id": "AUD058",
+  "trigger": "periodic",
+  "completed_through": "CP196",
+  "recorded_utc": "2026-11-07T08:33:05.199947+00:00",
+  "auditor": "Codex manual self-audit; independent review waived",
+  "read_files": [
+    "README.md",
+    "docs/PLAN.md",
+    "docs/PROTOCOL.md",
+    "docs/RESEARCH.md",
+    "AGENTS.md",
+    "docs/features.json",
+    "docs/COVERAGE.md",
+    "docs/evidence/peer-endpoints/README.md",
+    "docs/evidence/owner-directives/wine-accepted.json",
+    "docs/evidence/owner-directives/emulated-lan.json",
+    "docs/evidence/checkpoints/README.md",
+    "docs/evidence/checkpoints/audits/AUD057.json",
+    "docs/evidence/issue-reconciliation/review.json",
+    "docs/evidence/issue-reconciliation/github-snapshot.json",
+    "server/probe_service.py",
+    "docs/evidence/checkpoints/records/CP193.json",
+    "docs/evidence/checkpoints/records/CP194.json",
+    "docs/evidence/checkpoints/records/CP195.json",
+    "local/research/codex/NAT-endpoint-controls-verification.json",
+    "local/research/codex/compare_NAT_endpoint_controls.py",
+    "local/research/codex/NAT-endpoint-comparison-r1.log",
+    "local/research/codex/compare_NAT_endpoint_controls_r2.py",
+    "local/research/codex/NAT-KR-two-cycles-r1/raw-seal.json",
+    "local/research/codex/NAT-KR-two-cycles-r1/NAT-cycles-endpoint-verification.json",
+    "local/research/codex/NAT-KR-two-cycles-r1/B-winner-reset-verification.json",
+    "local/research/codex/netem-transport-r1/report.json",
+    "local/research/codex/netem-transport-r1/verification.json",
+    "local/research/codex/netem-KR-two-cycles-r1/raw-seal.json",
+    "local/research/codex/netem-KR-two-cycles-r1/netem-native-verification.json",
+    "local/research/codex/netem-KR-two-cycles-r1/cycles/virtual-network.json",
+    "local/research/codex/NAT-netem-host-EOF-r1/source-first.json",
+    "local/research/codex/NAT-netem-host-EOF-r1/raw-seal.json",
+    "local/research/codex/NAT-netem-host-EOF-r1/cycles/client.log",
+    "local/research/codex/NAT-netem-host-EOF-r1/cycles/run.json",
+    "local/research/codex/NAT-netem-host-EOF-r1/cycles/service-state.json",
+    "local/research/codex/NAT-netem-host-EOF-r1/cycles/udp-capture-index.json",
+    "local/research/codex/NAT-netem-host-EOF-r1/probe-stop-diagnosis.json",
+    "local/research/codex/NAT-netem-host-EOF-r1/partial-tail-verification.json",
+    "local/research/codex/NAT-netem-host-EOF-r1/partial-tail-verification-r2.json",
+    "local/research/codex/NAT-netem-EOF-analysis.log",
+    "local/research/codex/NAT-netem-host-EOF-r2/source-first.json",
+    "local/research/codex/NAT-netem-host-EOF-r2/raw-seal.json",
+    "local/research/codex/NAT-netem-host-EOF-r2/host-eof-verification.json",
+    "local/research/codex/NAT-netem-host-EOF-r2/EOF-tail-verification.json",
+    "local/research/codex/NAT-netem-host-EOF-r2/cycles/run.json",
+    "local/research/codex/NAT-netem-host-EOF-r2/cycles/service-state.json",
+    "local/research/codex/NAT-netem-host-EOF-r2/cycles/virtual-network.json",
+    "local/research/codex/NAT-netem-host-EOF-r2/cycles/client.log",
+    "local/research/codex/NAT-netem-host-EOF-r2/cycles/peer-A.jsonl",
+    "local/research/codex/NAT-netem-host-EOF-r2/cycles/udp-A.jsonl",
+    "local/research/codex/NAT-netem-host-EOF-r2/cycles/A/basic-Bhost-eof-A-native-room.png",
+    "local/research/codex/cp196-audit-contact.png",
+    "local/research/codex/probe_lan_accept_order.py",
+    "local/research/codex/k6b-admission-preflight-r1/verification.json",
+    "local/research/codex/cp195-exact-head-results.json",
+    "local/research/codex/cp195-pr-merged.json"
+  ],
+  "method": "Manual README→PLANcurrentorder/gates/K6acceptance→PROTOCOLcurrentCP193196networkcontracts/authority/UDPqueue andtargetedcachedsites→RESEARCHcurrentquestions/gaps→catalog/evidence/raw/reports/nativeAlogs/source/counterchronology/images. ScopeCP193196delta/currentcontracts; historicalrecords/rawindexesreadselectivefields, notrecertificationallhistorical6500paragraphs. ActualimageviewcontactCP194195room/Start3 andCP196Aroom/oneactor/chief; native175180/107110andservicefenceareseparatelogoracles. ComparePCAPmonotonicindex/nativeGDBtimes beforecausalclaim. Readsourceaccept/globalordinalandpriorrealTCPmismatch beforechoosingnexttask. Notonlychecker; source/client/configfrozenuntilcleanup,completehistoryunchanged.",
+  "findings": [
+    {
+      "id": "F1",
+      "stale": "README currentnext routedpreflight andPLAN genericLANunknown/K6aunfinished language coexistwithnewscopedNAT/UDPproof andLANaccepted.",
+      "correction": "Currentnextnowincomingadmissionindependentbeforefourclients; labelhistoricalcheckpointunknowns, keepK6cInternet/K7open andownerWine/virtualLANscope. NoextraNATvariantswithoutblocker.",
+      "fixed_in": [
+        "README.md",
+        "docs/PLAN.md"
+      ]
+    },
+    {
+      "id": "F2",
+      "stale": "RESEARCHheaderfullauthentication/LANunaccepted, codecAUD056/next192 andF002/S002nextK6b/NATtuple stale.",
+      "correction": "PointtocanonicalCP193196networkscope/currentincomingadmission; fullauth/originalNATdiscovery/relay/Internet/generalvariantsremainunknown, AUD058through196/next200.",
+      "fixed_in": [
+        "docs/RESEARCH.md",
+        "docs/COVERAGE.md"
+      ]
+    },
+    {
+      "id": "F3",
+      "stale": "PROTOCOLauthorityMovementfullNATunknown too broad; datedCP193/194/195nextstepinstructions couldlookcurrent.",
+      "correction": "DistinguishboundedstaticNAT/UDPimpairmentruntime fromfullNATdiscovery/auth/UDPgrammar. Dateoldnextstepsandlinknewcontracts/PLANsoleorder; donotrewritenativehistoricalrunresults.",
+      "fixed_in": [
+        "docs/PROTOCOL.md"
+      ]
+    },
+    {
+      "id": "F4",
+      "stale": "PLANK2aparallelK1/unknownfooter notclearlyhistorical despiteK1/K2scopedpassed; CP028NATunknownreadascurrent.",
+      "correction": "Label26Octplanningnoteclearlyhistorical andlinkCP193196boundedNATproof; unchangedInternetcriteria. EngineeringincomingadmissionparallelK7 doesnotdeclareK6c/K7passed.",
+      "fixed_in": [
+        "docs/PLAN.md"
+      ]
+    },
+    {
+      "id": "F5",
+      "stale": "R1focusedEOF stoppedbyPythonCRCfeedbacksamplerat1256B3Bafterroomtransition; couldbemisreadnativecrash/fullEOFpass.",
+      "correction": "RetainR1raw/failedoldverifier/diagnosisaspartial, lifetimehypothesiscandidate. R2onlyboundsobserver2safterkill/keepsCRCasserts; unchangedEOFverifierpositive/nativeAcleanup/fenceverified, notretrospectiveallrootcause.",
+      "fixed_in": [
+        "docs/PROTOCOL.md",
+        "docs/RESEARCH.md",
+        "docs/evidence/peer-endpoints/README.md"
+      ]
+    },
+    {
+      "id": "F6",
+      "stale": "R1initialtaillabelAPIpostkillcouldimplynewnetworkarrival; GDBtimestampalone insufficient.",
+      "correction": "ExactPCAPindexframeprekill41.869850ms/nativeobservationpostkill287.404317ms/callbackbefore107. Newreportv2refinestemporalinterpretation, oldreport/scriptretained. R2noAPIinwindow notqueueclearproof.",
+      "fixed_in": [
+        "docs/PROTOCOL.md",
+        "docs/evidence/peer-endpoints/README.md"
+      ]
+    },
+    {
+      "id": "F7",
+      "stale": "CP193runtablemissingMarkdownseparator; CP195deliverypending; periodic196due.",
+      "correction": "Fixrenderingonly/keepdataobjects/rawunchanged; PR267mergefe329b0 recorded, appendCP196/AUD058next200. Manualroom/Start3imagesmatchscopedview, notsoleoutcomeoracle.",
+      "fixed_in": [
+        "docs/evidence/peer-endpoints/README.md",
+        "README.md",
+        "docs/PLAN.md",
+        "docs/evidence/checkpoints/manifest.json"
+      ]
+    }
+  ],
+  "remaining": [
+    "K6cactualInternetneedsprojectcontrolledexternalendpoints; privateNAT/netemnotInternetgate. Wine/virtualLANacceptedbyownerretained; noWindows/physicalsecondhostrequirement.",
+    "Currentincomingadmissionglobalordinal4 requiresserializedstartup; nextopt-inbindingdesign/controlbeforefourclientsscope, notoriginalauth/samesourceIPaccountbinding.",
+    "OriginalNATdiscovery/relay/fullUDP/auth/generalaccountresume/142freshness/distance/allmapsitems/resetvariants/four-eightnativeclients/K7remainbytrigger, notallbeforeeachlocaldemo.",
+    "CP196deliverypendingcommitPR/exacthead; reviewwaived/notindependentapproved. MandatorycadencecontinuesCP200, noreset."
+  ]
+}

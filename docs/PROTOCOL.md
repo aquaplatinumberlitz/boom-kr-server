@@ -2063,7 +2063,7 @@ locator/trace và trạng thái từng ô; những vai trò không nêu dưới 
 
 | Hành vi | Bằng chứng theo scope đang dùng | Giới hạn/kiểm còn thiếu theo scope sử dụng |
 |---|---|---|
-| Movement | [CP188 currentAB291](#current-basic-cycles-291); [CP176 A↔C hai key](#a-c-basic-cycles); [CP159/160 production](#exported-preset-runtime):4nativepeerwindows/actualapply/target/currentprogress, nohold165/activeUDPprobe; [CP070](#current-udp-causality) giữcontrol riêng | Fullschema/auth/reliability/NAT unknown; currentprofile hai chiều có nguồn, không fullgrammar trước mọi demo hẹp |
+| Movement | [CP188 currentAB291](#current-basic-cycles-291); [CP176 A↔C hai key](#a-c-basic-cycles); [CP159/160 production](#exported-preset-runtime):4nativepeerwindows/actualapply/target/currentprogress, nohold165/activeUDPprobe; [CP070](#current-udp-causality) giữcontrol riêng | Fullschema/auth/reliability và NAT discovery còn unknown; [NAT tĩnh/UDP delay-loss](#udp-netem-cycles) có scope riêng, không fullgrammar trước mọi demo hẹp |
 | Bomb place/ID | [CP188 currentB/A/A](#current-basic-cycles-291); [CP176 C/A owners](#a-c-basic-cycles); [CP160](#exported-preset-runtime) actual118/nativeID1/A/power2,ID2/B/power1/full159158/195flagreset; [CP156](#direct-host-eof-acceptance) pendinghostEOF/fence scope riêng | Boundedrole/key/serial/quota/geometry làpolicy; actorlocation/fullauth/allpool/races unknown |
 | Explode/chain | CP033 một owner; CP064 [power1/cách hai ô](#mixed-owner-chain), CP071 [power2 ngoài tầm/feedback chưa118](#mixed-owner-power) giữ partial lịch sử; CP081 [power2/distance2 mixed-owner](#mixed-input), CP084 [ba bom fork hai vòng](#three-bomb-chain); CP094 [optional pinned terrain](#terrain-policy), CP095 [actualbox/laterfreshpair](#opposite-box-control) có native callback/195flag proof | [CP096adjacent1cell](#adjacent-owner-control) và [CP122 chain sâu](#recursive-chain) đã đo trong ca hẹp; [CP133 shared cellstate/query](#shared-cell-state) và [CP134 hai shared cycles](#shared-cascade-cycles) đã giải ca cố định; FIFO/firstbombstop/immutable tổng quát/race và authority server gốc chưa đủ |
 | Block destroy/item reveal | [CP176 A/C reveal/reset](#a-c-basic-cycles); [CP172](#hidden-cell-admission-current) optional basic export/terrain-cell142 guard; hai native cycles/reveal27/28/3effects/reset/Start3 | Chỉ bounded terrain policy; không recovered142key/auth/distance/originaldrop/generalmap. Không terrain giữ weak anycurrent158 scope cũ |
@@ -2082,7 +2082,7 @@ Giới hạn và phép đo nằm ở link contract; không dùng mỗi vai trò 
 | [Place159](#terrain-policy) | Native Space tạo118 | Native159 tạo/bind entity ở cả view | Role/key/serial/quota + knownvariant/power/floor/nonoverlap theo profile | Service cấp ID/phát159 | Client gửi cell/power; chưa xác thực actorlocation/distance/fullauth, không tự coi field là tin cậy |
 | [Explode158/terrain](#terrain-policy) | Timer6s của profile là emu_choice | Native158/process/chain/mapflags; service dùng bounded terrain model | Model/profile pin/kinds/power≤2/currentgeneration; semantic modelchoices có giới hạn | Service phát158 rồi commit world/release | Peer movement có thể ảnh hưởng contact/report; report142 không làm worldoracle. Original server validator/order vẫnunknown |
 | [Trap/death/result](#result-freshness-guard) | Native local simulation tạo127/subtype | Native170/175/180 nhận effect/UI | Guard key/slot/reportstate/selectedsame-oldbody; optional result freshness/drain/21 sau17 và opposite-peer170 theo [CP102](#drained-result-local-clear)/[CP103](#peer21-ending-order); firstseen/forgedforward/location vẫn thiếu | Service170/result/return theo policy | Report/body do client gửi; acceptedreport không là authoritative world proof. [Limits](#tcp-guard-cycles) và RESEARCH giữ mở |
-| [Peer endpoint/directUDP](#virtual-peer) | Native99 báoIP0/UDPport; configđo chọnIP153 | NativeWinsock/lookup/handler/actor; actualCA+wineserverNS kiểmđộc lập | Currenttuple/key/slot trongcađãđo; no fullIPauth/NAT law | Stub153traobảng; nativeUDPđi direct | IP0khớpNIC/source trongvirtualcase; IP1opaque; [CP141 cấu hình tường minh](#service-address-config) thay measurement shim; operator policy, không NAT/auth. Hai basic cycles không là movement gate |
+| [Peer endpoint/directUDP](#virtual-peer) | Native99 báoIP0/UDPport; configđo chọnIP153 | NativeWinsock/lookup/handler/actor; actualCA+wineserverNS kiểmđộc lập | Currenttuple/key/slot trongcađãđo; no fullIPauth/NAT law | Stub153traobảng; nativeUDPđi direct | IP0khớpNIC/source trongvirtualcase; IP1opaque; [CP141 cấu hình tường minh](#service-address-config) thay measurement shim; operator policy, không là NAT discovery/auth; [mapping tĩnh](#nat-two-cycles) đã kiểm riêng. Hai basic cycles không là movement gate |
 | [Channel endpoint](#service-channel-endpoint) | NativeC2S5 yêu cầu redirect | KR1101EA0 nhận7 rồi nativeconnect | Service kiểm operatorIPv4/port và variant7 hẹp; không quyết định account/channel authority gốc | Service giữ raw mặc định hoặc thay typedIP/port | IP/port do operator đặt; không tin init99/identity client; rootTCPguardproxy còn riêng trong CP148 |
 
 Gate K5/K6 cần kiểm matrix và đối chứng của hành vi thực sự dùng; từ28/10 Codex tự kiểm theo miễn review của chủ dự án. Có thể giữ unknown về
@@ -5381,6 +5381,36 @@ Serviceproductionbind/153IPvẫnhard127; private-addressshims hiện làmeasurem
 Internet/K6c/NAT/relay/fullauth/authority/generalreset/gates mở; field99IP1/subtype39 vẫnunknown.
 
 
+<a id="nat-netem-host-eof"></a>
+### Pending host EOF qua NAT/UDP qdisc; giới hạn timestamp và probe — CP196
+
+[Mapping/UDP impairment CP194–195](#udp-netem-cycles), [recipe/hash](evidence/peer-endpoints/README.md#cp196),
+[phép thử tiếp](RESEARCH.md#gap-lobby-identity-followup). `kr_runtime`, confirmed cho một epoch/forfeit có kiểm.
+Tái dùng CP190 exact pending B-host EOF recipe, bundle/copy4b/profile47/CRC/native107/110/fence;
+chỉ thay sang NAT/qdisc CP195 và thêm probe A thụ động trước kill. Không native body mới hoặc packet replay.
+
+B normal Space sinh actual118/ID1/owner1/spawn9,3/power1;159 tới hai view. Kill đúng B PID/netns/prefix/
+startticks/image còn4,914883s trước fuse6s. TCP EOF thật dẫn policy forfeit cho A; native A đọc175/180,
+107 xóa slot1/ID2, chief110 và về phòng. Pending deadline bị reject `round_closed`, không158/17/19
+thay thế; A giữ connection qua observation và kiểm quá deadline+4s. Đây là **forfeit control riêng**,
+không normal ending hoặc trận thứ ba, không resume account/general reconnect/Internet gate.
+
+Run r1 đã có service fence/nativeA175180107110 nhưng dừng ở breakpoint1256B3B với Python AssertionError
+của live_positions sau chuyển cảnh12. CRC assert giữ nguyên; không có native SIGSEGV quan sát được.
+Probe feedback-on còn mở, có thể đọc actor storage cũ. R2 chỉ đóng cửa sổ UDP/membership/feedback sau
+2s từ kill, trước forfeit/chuyển cảnh; exact EOF verifier pass, không debugger stop. Đối chứng hỗ trợ giả
+thuyết lifetime của probe, không tự chứng minh toàn nguyên nhân của run r1. R1 giữ partial/failure nguyên.
+
+Ở r1, exact frame B→A đã có tại PCAP trước kill41,870ms; native hook ghi quan sát sau kill287,404ms,
+handler currentkey/apply cũng được quan sát trước server gửi107. Đây là dữ liệu có sẵn trước kill với
+quan sát/xử lý native muộn; timestamp GDB không phải thời điểm packet đến từ mạng. Nhãn report phân
+tích đầu dùng chữ late được sửa nghĩa ở report v2, cả hai giữ nguyên. Không phải proof packet mới tới
+sau kill, post-membership-clear hoặc bypass epoch/auth. R2 không thấy API sau kill trong cửa sổ đã arm;
+không suy queue đã clear hoặc không còn gói cũ. UDP40±5ms/loss5%/TCPbaseline/sharedkernel giữ scope.
+
+K6c Internet/K7 còn mở. Startup vẫn serial vì admission theo globalordinal đã đo CP190; sau nhánh mạng
+hẹp này, PLAN chuyển công việc độc lập sang incoming admission trước bốn client, giữ acceptance Internet.
+
 <a id="udp-netem-cycles"></a>
 ### Hai vòng qua NAT với UDP có delay/jitter/loss — CP195
 
@@ -5403,8 +5433,8 @@ Không gán từng packet không thấy cho loss, không gọi RTT của transpo
 Bản copy Wine/client/profile/fixture/service và inputbounds không đổi, getter emulation tách runtime.
 PCAP ở kv-a, đối chiếu pre/postNAT theo CP194; không capture kv-b riêng. Chưa NAT discovery/relay gốc/
 Internet/general loss distributions hoặc disconnect qua NAT trong cùng run; EOF control cũ là độc lập.
-K6c/K7 vẫn mở. Tiếp một ca pending B-host EOF/remaining A cleanup/fence trên topology này, dùng recipe
-EOF đã có; chỉ đo cạnh khác biệt, không RE lại UDP grammar/reset đã giải.
+K6c/K7 vẫn mở. Ca pending B-host EOF còn thiếu tại CP195 được kiểm riêng ở [CP196](#nat-netem-host-eof);
+không ghép vào run hai vòng hoặc giữ next-step độc lập khỏi PLAN.
 
 <a id="nat-two-cycles"></a>
 ### Hai vòng Battle bình thường/reset qua mapping NAT tĩnh — CP194
@@ -5424,8 +5454,8 @@ Getter emulation trên bản copy tách khỏi native runtime; stat/gameplay kh�
 ở kv-a: chiều A trước NAT, chiều B sau NAT, nối cùng payload tới native API; không capture kv-b riêng.
 Startup tuần tự/ordinal admission, profile basic291/Manner/ExVillage01 và policy fuse/drop/rank/guards
 giữ giới hạn cũ. Rejoin/host EOF dùng control cũ độc lập, không gán thành EOF qua NAT trong run này.
-K6c Internet/K7 còn mở. Khoảng trống mạng kế là latency/loss có đối chứng trên topology này, rồi
-lifecycle/disconnect thực tế; không lặp tuple/codec/queue đã giải hoặc mở kiểm kê item/mode.
+K6c Internet/K7 còn mở. Khoảng trống latency/loss tại CP194 đã có [CP195](#udp-netem-cycles);
+lifecycle EOF hẹp có [CP196](#nat-netem-host-eof). Công việc hiện hành ở PLAN, không lặp tuple/codec/queue.
 
 <a id="nat-endpoint-control"></a>
 ### NAT: tuple nhận thực tế phải qua kiểm endpoint của slot — CP193
@@ -5457,7 +5487,7 @@ PCAP chỉ ở kv-a: frame A→B phía trước SNAT được nối bằng wire 
 thấy nguồn sau SNAT. Không có capture Ethernet kv-b độc lập. Metadata `kind/limits` r2 còn chữ noNAT
 kế thừa; giữ raw nguyên, lệnh iptables/counter và native API chứng minh mapping thực. Nhãn legacy
 udp_proxy không mô tả proxy đang hoạt động; positive dùng tùy chọn port để quảng bá endpoint, không
-forward bằng các socket legacy. K6c/K7 giữ mở; bước kế là hai vòng bình thường/reset trên mapping này.
+forward bằng các socket legacy. K6c/K7 giữ mở. Bước kế tại CP193 đã được kiểm ở [CP194](#nat-two-cycles); công việc hiện hành ở [PLAN](PLAN.md#current-order).
 
 <a id="routed-Wine-network"></a>
 ### KR Wine qua hai subnet/router; môi trường Wine được owner chấp nhận — CP192
