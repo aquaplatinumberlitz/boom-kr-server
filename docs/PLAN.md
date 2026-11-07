@@ -1,7 +1,7 @@
 # Kế hoạch server giả lập KR 00967
 
 Nguồn chuẩn của project `boom-kr-server`; bản nhập từ plan đã được dsh1/dsh2 review tại `1eee46d`.
-CP197: incoming source-IP A/B opt-in/realTCPinterleaving controls và native serial-start two-cycles trên bundle mới đã kiểm. Native interleaved-startup chưa đo; tiếp đúng biến này trước bốn client. K6c Internet/K7 mở, AUD058qua196/auditCP200.
+CP198: native A/B startup xen kẽ thực tế và hai normalcycles/reset/Start3 đã kiểm. Tiếp source-first service roster/session/admission cho4người tối thiểu; chưa4actualclients/K7 hoặc Internet. AUD058qua196/auditCP200.
 
 
 ### Mục tiêu, baseline và phạm vi
@@ -93,10 +93,13 @@ không tạo nhánh kiểm kê wiki hoặc mở mode phụ trước K3/K4/K5/K6a
    r1 probe partial và r2 positive giữ riêng; không account resume/general reconnect/Internet gate.
    `NEXT-K7-ADMISSION-CONTROL` khép scope CP197: [opt-in incoming IP](PROTOCOL.md#operator-incoming-binding),
    realTCP interleaving/unknown/exhaustion/default controls và native serial-start two-cycles trên bundle mới.
-   `NEXT-K7-NATIVE-INTERLEAVE`: giữ cùng source/bundle/fixture/network, chỉ đổi lịch launch B trước A hoàn
-   tất bốn transports và chặn UI JoinB đến khi room A có actualconfirm. Đo order accept thực/correctrole/
-   stage1..4/count4/nativeidentity/room rồi normal start; nếu chưa có actualinterleaving không gọi pass.
-   Không gọi bindingIP là auth hoặc hỗ trợ client chung sourceIP/NAT, không RE codec/wire lại.
+   `NEXT-K7-NATIVE-INTERLEAVE` khép lịch CP198: [actual A1,A2,B1,B2,A3,A4,B3,B4](PROTOCOL.md#native-interleaved-startup)
+   đúng role/stage/identity/room và hai normalcycles/reset/Start3 trên samebundle/source/profile.
+   `NEXT-K7-FOUR-PLAYER-SCOPE`: đối chiếu code service các điểm hardcode2members/roles/IDs/fixture/153,
+   tái dùng native roster8/teamguard CP147/163 và source-firstrefs theo đúng câu hỏi. Chọn scope4người
+   tối thiểu trong một room/một map/Battle normal, phân tách identity/session/slot với fixture chính sách;
+   chỉ đo nativeconsumer/field thiếu khi dependency thực yêu cầu. Không gọi syntheticroster hoặc4sockets
+   là bốn actualclients; thực hiện code+realTCPcontrols trước mở runtime4 và yêu cầu cùng kết quả/reset.
    Quyết định thứ tự: nhánh NAT/two-cycles/UDP impairment/EOF đã có proof; tiếp công việc admission K7
    độc lập để phục vụ bốn client. K6c vẫn cần endpoint Internet do project kiểm soát và acceptance giữ nguyên,
    không dùng mô phỏng để tự đóng gate hoặc thêm các biến thể NAT không có blocker.
@@ -133,7 +136,7 @@ Bảng này chỉ phân công/thứtự; acceptance/PR/bằngchứng ởissue. [
 
 | Thứ tự/scope | Issue | Trạng thái/phần còn thiếu |
 |---|---|---|
-| Hiện hành RE | [#14/KRE-005b](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/14) | K5 basic/K6a/K6b giả lập đã đạt trong scope. CP193–196 NAT/UDP delay-loss/EOF có nguồn; CP197incoming opt-in có controls; tiếp NEXT-K7-NATIVE-INTERLEAVE, audit kếCP200. K6c/K7/fullauth/authority/general variants giữ mở. |
+| Hiện hành RE | [#14/KRE-005b](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/14) | K5 basic/K6a/K6b giả lập đã đạt trong scope. CP193–196 NAT/UDP delay-loss/EOF có nguồn; CP197incoming opt-in có controls; CP198nativeinterleave đã kiểm; tiếp NEXT-K7-FOUR-PLAYER-SCOPE, audit kếCP200. K6c/K7/fullauth/authority/general variants giữ mở. |
 | Control theo trigger/gate | [#1/KRE-001](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/1), [#2/KRE-002](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/2) | CP178 K0 originalWindowscontrol/ownership đã đủ, #1 đã đóng qua PR250; #2 giữ widerWCP/launcherconfig; K1 R2 đã đạt CP179, không lặp cold3. |
 | Codec backlog/identity hiện hành | [#3/KRE-003](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/3), [#9/KRE-005a](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/9) | Fullcodec/livebounds vàintermittentmainstartupcause cònthiếu; khônglặpprimitive/auxiliarylocale. |
 

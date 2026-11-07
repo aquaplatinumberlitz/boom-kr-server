@@ -126,7 +126,11 @@ CP196 đã merge [PR268](https://github.com/aquaplatinumberlitz/boom-kr-server/p
 
 **CP197: incoming admission A/B theo IP nguồn riêng đã có opt-in**, realTCP xen kẽ0wrong/8 và native
 startup tuần tự vẫn qua hai trận/reset/Start3 trên bundle mới. [Contract/giới hạn](docs/PROTOCOL.md#operator-incoming-binding),
-[recipe/hash](docs/evidence/peer-endpoints/README.md#cp197). Native startup xen kẽ còn cần đo; chưa bốn client/K7.
+[recipe/hash](docs/evidence/peer-endpoints/README.md#cp197). CP197 đã merge [PR269](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/269) tại`4c3f6ec246b3e0fcec017592aa6bd34f832ba6b9`. Tại CP197 native startup xen kẽ còn thiếu; [CP198](docs/PROTOCOL.md#native-interleaved-startup) đã bổ sung. Chưa bốn client/K7.
+
+**CP198: hai KR native startup xen kẽ A1,A2,B1,B2,A3,A4,B3,B4**, đúng role/stage/identity, đã hoàn tất
+hai normal cycles/reset/Start3 trên gói admission hiện hành. [Scope/giới hạn](docs/PROTOCOL.md#native-interleaved-startup),
+[raw/hash](docs/evidence/peer-endpoints/README.md#cp198). K6c Internet/K7/bốn client vẫn mở; audit kế CP200.
 
 Đích đầu: hai client thật chơi hai trận liên tiếp; mở bốn client và hardening sau đó.
 
