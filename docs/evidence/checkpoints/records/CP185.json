@@ -1,0 +1,221 @@
+{
+  "id": "CP185",
+  "previous": "CP184",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-07T02:58:42.817516+00:00",
+  "context_commit": "1f8018abbb3e1d8e679812c7410c7ef8b9ee3f87",
+  "owner": "Codex",
+  "reviewer": "Codex",
+  "question": "Which cache files actually occur before lobby, and does the production opt-in service supply the native empty528 request and permit subsequent warm reuse?",
+  "scope": "Source-first bounded loader inventory plus matched missing pair/control and production recovery/warm, four sealed65s A runs. Reuse CP059 CRC/parser/payload and CP184 own291/counter; no new native function bodies, no gate closure.",
+  "artifacts": [
+    {
+      "name": "OriginalKR00967unchanged",
+      "sha256": "a52545c14b1fea423de655c3163d6360b628d61c1cd472b46fdbc8a9ffe15f4e"
+    },
+    {
+      "name": "CurrentWinecopyunchanged",
+      "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+    },
+    {
+      "name": "NativeIDAfullcopycf72privateanalysis",
+      "sha256": "cf72da112308d9f1ca256df8089594c5f787875310933073bf6bd5ba6f70e63b"
+    },
+    {
+      "name": "modOmodelreference",
+      "sha256": "a08950c833d3acab8281049def7b3dc96b221f107eeda01da3a548e34b91dce5"
+    },
+    {
+      "name": "OriginalKR00967NewPatcher",
+      "sha256": "b59e4dce9ad23c439a7632ce04ecb2eed3481585bd2454100b05c9d7527f5c02"
+    },
+    {
+      "name": "VN116original_reference_only",
+      "sha256": "bce8644d4e783d1354ab4fc880e1ab9a4ab3325327028f37d99e5439e25f4bbd"
+    },
+    {
+      "name": "VN116patched_runtime_reference_only",
+      "sha256": "bc875ba5765cc112e924f46e75d0ace112904c7801126e46bc0abb1c9cb576b1"
+    },
+    {
+      "name": "PassingK1offlineR2recipe",
+      "sha256": "7b3b435b5d8e110185359107376b736615ceabe9452cea8154d02c8628f44c29"
+    },
+    {
+      "name": "NativeProcessPatchR1control",
+      "sha256": "a0c3b9867dae5fe2ff7c315cfe851117661c2cafead45196ce999329f67432f5"
+    }
+  ],
+  "locators": [
+    "Runtime e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef/base400000; loader14EA7C0..14EA8E8 sha7246634541b6035c8bd790104d96ed4c95c65d0a1520f0815be113b40e3312b6 equals307cachedCP059bytes.",
+    "Native phase10FD540 auth/DA5F90 lobby/D2FEB0 own291; DFE8D0→DFE98D load result, DFE9A0→DFEA58 update/write result. Raw manager+14 is pointer, not count.",
+    "Inventory/missing pair pre-fix code sealed before edit; baseline source recovered Git-identical at1f8018abbb3e1d8e679812c7410c7ef8b9ee3f87. Recovery cold/warm run final request528→238 code, no source/config edits within runs.",
+    "Native request528 emptybody/seq67; recovery S2C291/55→238/58→next61, warm no528/no238,next58. Native-produced76byte fxdynmapinfo matches CP059SHA6a4745c6010378a50ab4bf34827bbe122d7eb270c78051391cd21bd7378b1053."
+  ],
+  "findings": [
+    {
+      "summary": "15 paired SSI-loader calls per run identify named dynamic-map/stage-map on this lobby route; dropping just these two files still reaches native lobby/own291 and panelKRLocal. Pre-fix actual528empty/seq67 validCRC receives no238 and files remain absent in65s.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#lobby-cache-route",
+      "evidence": [
+        "CACHE185-00390",
+        "CACHE185-00038",
+        "CACHE185-00126"
+      ],
+      "limits": "Four isolated single A modified Wine runs, inherited static/channel caches, no whole-client cold or gate closure. fxstagemap absent only under ready241 stage CRC0. No version error mapping, no actual B/room/Battle in this batch. Probe count is raw manager+14 pointer as CP059, never a row count. Writer/result/file hash + warm loader and no528 establish cache reuse; model encoding alone is not native evidence."
+    },
+    {
+      "summary": "Opt-in production service now answers empty528 afterready using pinned CP059compressed238 and existing per-event send counter, no separate sequence. Wrongstage/socket/unknownbody reject/log; default-off unchanged;292modeltests pass.",
+      "source": "design",
+      "status": "design",
+      "method": "design",
+      "canonical": "docs/PROTOCOL.md#lobby-cache-route",
+      "evidence": [
+        "CACHE185-00384",
+        "CACHE185-00267"
+      ],
+      "limits": "Four isolated single A modified Wine runs, inherited static/channel caches, no whole-client cold or gate closure. fxstagemap absent only under ready241 stage CRC0. No version error mapping, no actual B/room/Battle in this batch. Probe count is raw manager+14 pointer as CP059, never a row count. Writer/result/file hash + warm loader and no528 establish cache reuse; model encoding alone is not native evidence."
+    },
+    {
+      "summary": "Recovery actual528 produces native238 update/write return1 and identical76byte cache; next warm run native loader returns1, no528 and no238 sent, panelKRLocal in both. fxstagemap remains absent only under ready241stageCRC0, other static/channel caches retained.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#lobby-cache-route",
+      "evidence": [
+        "CACHE185-00390",
+        "CACHE185-00216",
+        "CACHE185-00307"
+      ],
+      "limits": "Four isolated single A modified Wine runs, inherited static/channel caches, no whole-client cold or gate closure. fxstagemap absent only under ready241 stage CRC0. No version error mapping, no actual B/room/Battle in this batch. Probe count is raw manager+14 pointer as CP059, never a row count. Writer/result/file hash + warm loader and no528 establish cache reuse; model encoding alone is not native evidence."
+    },
+    {
+      "summary": "Owner-trusted PC wiki reuse remains canonical in REFERENCES/PROTOCOL/metadata from CP184; add RedDevil compound maxspeed+push in existing matrix, without inferring KR00967ID/layout/runtime. Current cache/version gap has no wiki answer, so no gameplay/mode inventory reopened.",
+      "source": "design",
+      "status": "design",
+      "method": "design",
+      "canonical": "docs/PROTOCOL.md#lobby-cache-route",
+      "evidence": [
+        "CACHE185-00368"
+      ],
+      "limits": "Four isolated single A modified Wine runs, inherited static/channel caches, no whole-client cold or gate closure. fxstagemap absent only under ready241 stage CRC0. No version error mapping, no actual B/room/Battle in this batch. Probe count is raw manager+14 pointer as CP059, never a row count. Writer/result/file hash + warm loader and no528 establish cache reuse; model encoding alone is not native evidence."
+    }
+  ],
+  "verification": [
+    {
+      "check": "Frozen input hashes, all339 sealed raw files, 15 pairedcalls each, native stage/load/write, actual request528/body/CRC, S2C sequence/file hash and next warm reuse",
+      "result": "pass",
+      "evidence": [
+        "CACHE185-00390"
+      ],
+      "limits": "632 mechanical assertions plus manual final images; no automatic semantic/gate acceptance."
+    },
+    {
+      "check": "Service regressions",
+      "result": "pass",
+      "evidence": [
+        "CACHE185-00384"
+      ],
+      "limits": "292 model tests, separate from native evidence."
+    },
+    {
+      "check": "Remaining unchanged K3 acceptance channel/version/negative and cache scope",
+      "result": "pending",
+      "evidence": [
+        "CACHE185-00367"
+      ],
+      "limits": "Not whole-clientcold, other cache/version field/error meanings remain unmeasured; do not invent version from WCPu16."
+    }
+  ],
+  "evidence": [],
+  "evidence_manifests": [
+    {
+      "path": "docs/evidence/checkpoints/evidence/CP185-lobby-cache-route.json",
+      "bytes": 105168,
+      "sha256": "42f015f58692107b6e10668f47e6648536d5a1b9966f62a6b4d224ac83d775d2",
+      "count": 395
+    }
+  ],
+  "delta": {
+    "added": [
+      "Bounded loader route/matched two-file missing baseline and actual service528→238/nativewrite→warm integration.",
+      "292tests and four65s frozen/sealed runs, sources read first, no new static bodies."
+    ],
+    "corrected": [
+      "Service CP184 did not answer528 at lobby; previous room-time unconditional238 is not the request-time cache path.",
+      "CP184 delivery linked mergedPR256; probe raw count remains pointer as CP059, never rows."
+    ],
+    "superseded": [
+      "Named dynamic-map request-time production integration/warm unknown is resolved within this profile; no repeat of CP059 CRC/parser. Wholecold/version/channel/negative criteria still scoped in PLAN."
+    ]
+  },
+  "blockers": [
+    "K3 channel UI/kind/index/version-error and remaining selected negative acceptance still need source-first comparison; wholeclientcold not observed.",
+    "Stage-map missing works under profileCRC0 only; nonzero stageCRC/version mapping unknown. ActualB/C/start/rejoin after291/cache integration follow later gate triggers."
+  ],
+  "next_steps": [
+    {
+      "id": "NEXT-K3-IDENTITY-CACHE",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "PLANk3-evidence-review: reuse CP015/016/058/059/181/184/185; resolve channelUI/kind/index then native version/error field and selectednegative criteria. Named dynamic-map request/write/warm solved; only reopen caches for an actual new edge. Next review K4 proof before new gameplay variants.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    }
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-11-07T02:58:42.817516+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "Owner waiver, Codex solo RE/code/runtime/selfcheck. Exact-head PR checks before merge; no independent review.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Owner explicitly requested solo, no workers/review."
+    }
+  },
+  "docs_sync": [
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "CP185 route/limits/gap/reuse/delivery synchronized before complete; K3 open, AUD055 through184 and nextCP188 unchanged."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "CP185 route/limits/gap/reuse/delivery synchronized before complete; K3 open, AUD055 through184 and nextCP188 unchanged."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "updated",
+      "reason": "CP185 route/limits/gap/reuse/delivery synchronized before complete; K3 open, AUD055 through184 and nextCP188 unchanged."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "updated",
+      "reason": "CP185 route/limits/gap/reuse/delivery synchronized before complete; K3 open, AUD055 through184 and nextCP188 unchanged."
+    },
+    {
+      "path": "docs/features.json",
+      "state": "updated",
+      "reason": "CP185 route/limits/gap/reuse/delivery synchronized before complete; K3 open, AUD055 through184 and nextCP188 unchanged."
+    },
+    {
+      "path": "docs/COVERAGE.md",
+      "state": "updated",
+      "reason": "CP185 route/limits/gap/reuse/delivery synchronized before complete; K3 open, AUD055 through184 and nextCP188 unchanged."
+    },
+    {
+      "path": "docs/evidence/cache-boundary/README.md",
+      "state": "updated",
+      "reason": "CP185 route/limits/gap/reuse/delivery synchronized before complete; K3 open, AUD055 through184 and nextCP188 unchanged."
+    },
+    {
+      "path": "server/README.md",
+      "state": "updated",
+      "reason": "CP185 route/limits/gap/reuse/delivery synchronized before complete; K3 open, AUD055 through184 and nextCP188 unchanged."
+    }
+  ]
+}

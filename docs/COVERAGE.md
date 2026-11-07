@@ -338,7 +338,7 @@ Dependency: [KR-L001](#kr-l001).
 
 [Contract và giới hạn](PROTOCOL.md#channel-lobby) · [Câu hỏi gốc](RESEARCH.md#gap-redirect-lobby) · [Thứ tự ở PLAN](PLAN.md#current-order).
 
-Khoảng trống (trích bảng RESEARCH): [CP184](PROTOCOL.md#own-profile-integration): service opt-in/A name→create/map/sequence đã kiểm; K3 còn checklist cache/version/channel/negative.
+Khoảng trống (trích bảng RESEARCH): [CP184](PROTOCOL.md#own-profile-integration) A name→create/map; [CP185](PROTOCOL.md#lobby-cache-route) cache528→238/nativewrite/warm đã kiểm. K3 còn channel/version/negative và giới hạncache.
 
 Phép kiểm tối thiểu (trích cùng nguồn): [Checklist K3](PLAN.md#k3-evidence-review): đối chiếu nguồn và đo ô chưa đủ; không lặp producer/integration A/authgetter hoặc mở nhánh gameplay phụ.
 
@@ -352,12 +352,12 @@ Bằng chứng/build/hash/recipe: [postwait](evidence/postwait/README.md), [prob
 | vn_reference | both | [nguồn1](REFERENCES.md) |
 | kr_static | partial | [nguồn1](PROTOCOL.md#channel-lobby), [nguồn2](PROTOCOL.md#local-name-model), [nguồn3](PROTOCOL.md#own-profile-291), [nguồn4](PROTOCOL.md#own-profile-integration) |
 | emulation | checked | [nguồn1](evidence/postwait/README.md) |
-| wine_diagnostic_copy | observed | [nguồn1](evidence/postwait/README.md), [nguồn2](PROTOCOL.md#local-name-model), [nguồn3](PROTOCOL.md#own-profile-291), [nguồn4](PROTOCOL.md#own-profile-integration) |
+| wine_diagnostic_copy | observed | [nguồn1](evidence/postwait/README.md), [nguồn2](PROTOCOL.md#local-name-model), [nguồn3](PROTOCOL.md#own-profile-291), [nguồn4](PROTOCOL.md#own-profile-integration), [nguồn5](PROTOCOL.md#lobby-cache-route) |
 | windows_original | unknown | Chưa có bằng chứng trong phạm vi rà |
 | lan | unknown | Chưa có bằng chứng trong phạm vi rà |
 | internet | unknown | Chưa có bằng chứng trong phạm vi rà |
-| implementation | partial / via_pr | [nguồn1](../server/probe_service.py), [nguồn2](PROTOCOL.md#probe-service), [nguồn3](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/57), [nguồn4](../server/own_profile.py) |
-| integration | partial | [nguồn1](evidence/probe-service/README.md) |
+| implementation | partial / via_pr | [nguồn1](../server/probe_service.py), [nguồn2](PROTOCOL.md#probe-service), [nguồn3](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/57), [nguồn4](../server/own_profile.py), [nguồn5](PROTOCOL.md#lobby-cache-route) |
+| integration | partial | [nguồn1](evidence/probe-service/README.md), [nguồn2](PROTOCOL.md#lobby-cache-route) |
 | gate | K3: open | [nguồn1](PLAN.md#gates) |
 
 <a id="kr-l003"></a>
@@ -367,7 +367,7 @@ Dependency: [KR-L001](#kr-l001).
 
 [Contract và giới hạn](PROTOCOL.md#channel-lobby) · [Câu hỏi gốc](RESEARCH.md#gap-profile-cache) · [Thứ tự ở PLAN](PLAN.md#current-order).
 
-Khoảng trống (trích bảng RESEARCH): CP059 namedfxdynmapinfo missing→write→warm đã nhận; CRC selector+representation trướcinflate giải lệchraw/nén. Toàncache/profile/version/corrupt/reconnect vẫn mở.
+Khoảng trống (trích bảng RESEARCH): [CP185](PROTOCOL.md#lobby-cache-route) đã nối service528→238/nativewrite/warm từ CP059, matched dynamic/stage-map missing vẫn A panel; stage-mapCRC0/channelstatic giữ. Wholecold/version/corrupt/reconnect vẫn mở.
 
 Phép kiểm tối thiểu (trích cùng nguồn): Reuse [scope/CRC](PROTOCOL.md#dynamic-cache-representation); không lặp namedcache này. Chỉ mở cachefile/variant khác khi native consumer hoặc acceptance có trigger; freshprefix không là coldallcache.
 
@@ -381,12 +381,12 @@ Bằng chứng/build/hash/recipe: [start-reply](evidence/start-reply/README.md),
 | vn_reference | static | [nguồn1](REFERENCES.md) |
 | kr_static | partial | [nguồn1](PROTOCOL.md#channel-lobby), [nguồn2](PROTOCOL.md#dynamic-cache-representation), [nguồn3](PROTOCOL.md#local-name-model), [nguồn4](PROTOCOL.md#own-profile-291), [nguồn5](PROTOCOL.md#own-profile-integration) |
 | emulation | checked | [nguồn1](evidence/cache-boundary/README.md) |
-| wine_diagnostic_copy | observed | [nguồn1](evidence/cache-boundary/README.md), [nguồn2](PROTOCOL.md#local-name-model), [nguồn3](PROTOCOL.md#own-profile-291), [nguồn4](PROTOCOL.md#own-profile-integration) |
+| wine_diagnostic_copy | observed | [nguồn1](evidence/cache-boundary/README.md), [nguồn2](PROTOCOL.md#local-name-model), [nguồn3](PROTOCOL.md#own-profile-291), [nguồn4](PROTOCOL.md#own-profile-integration), [nguồn5](PROTOCOL.md#lobby-cache-route) |
 | windows_original | unknown | Chưa có bằng chứng trong phạm vi rà |
 | lan | unknown | Chưa có bằng chứng trong phạm vi rà |
 | internet | unknown | Chưa có bằng chứng trong phạm vi rà |
-| implementation | partial / via_pr | [nguồn1](../tools/export_probe_profile.py), [nguồn2](PROTOCOL.md#dynamic-cache-representation), [nguồn3](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/79), [nguồn4](../server/own_profile.py) |
-| integration | partial | [nguồn1](evidence/cache-boundary/README.md) |
+| implementation | partial / via_pr | [nguồn1](../tools/export_probe_profile.py), [nguồn2](PROTOCOL.md#dynamic-cache-representation), [nguồn3](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/79), [nguồn4](../server/own_profile.py), [nguồn5](PROTOCOL.md#lobby-cache-route) |
+| integration | partial | [nguồn1](evidence/cache-boundary/README.md), [nguồn2](PROTOCOL.md#lobby-cache-route) |
 | gate | K3: open | [nguồn1](PLAN.md#gates) |
 
 <a id="kr-r001"></a>

@@ -133,17 +133,50 @@ class OwnProfileTests(unittest.TestCase):
         event = {'role': 'A', 'global_ordinal': 3, 'reply_ordinal': 3,
                  'chunks': []}
         wire = b''.join(codec.encode(bytes(37), op, b'', seq)
-                        for op, seq in [(67, 40), (9, 43), (5, 46)])
+                        for op, seq in [(67, 40), (9, 43), (5, 46), (528, 49)])
         service.connections[3] = {
             'socket': SimpleNamespace(recv=lambda _: wire), 'event': event,
             'buffer': bytearray(), 'sequence': 40}
         service.receive(3)
         self.assertEqual(sent, [])
-        self.assertEqual(service.connections[3]['sequence'], 49)
+        self.assertEqual(service.connections[3]['sequence'], 52)
         self.assertNotIn('auth_response_sent', event)
         self.assertEqual([q['reason'] for q in service.state['stage_rejections']],
                          ['channel_opcode_on_login', 'missing_auth_response_sent',
-                          'missing_netinfo_response_sent'])
+                          'missing_netinfo_response_sent', 'channel_opcode_on_login'])
+
+    def test_cache_request_is_stage_guarded_and_shares_create_sequence(self):
+        service, event, sent = self.service()
+        self.dispatch(service, event, 528)
+        self.assertEqual(sent, [])
+        self.assertEqual(service.state['stage_rejections'][-1]['reason'],
+                         'missing_ready_response_sent')
+        self.dispatch(service, event, 6)
+        self.dispatch(service, event, 67)
+        self.dispatch(service, event, 528)
+        self.assertEqual(struct.unpack_from('<I', sent[-1], 5)[0], 238)
+        self.assertEqual(codec.frame_body(sent[-1], 58), service.profile.body('table'))
+        self.assertEqual(event['s2c_next_seq'], 61)
+        self.assertEqual(len(event['cache_responses']), 1)
+        self.dispatch(service, event, 81)
+        self.assertEqual(struct.unpack_from('<I', sent[-1], 5)[0], 86)
+        codec.frame_body(sent[-1], 61)
+        self.assertEqual(event['s2c_next_seq'], 64)
+
+    def test_cache_request_unknown_body_and_legacy_default_are_unchanged(self):
+        service, event, sent = self.service()
+        self.dispatch(service, event, 6)
+        self.dispatch(service, event, 67)
+        before = len(sent)
+        service.receive_channel(event, codec.encode(bytes(37), 528, b'x', 40), 40, b'x')
+        self.assertEqual(len(sent), before)
+        self.assertNotIn('cache_responses', event)
+        self.assertEqual(event['s2c_next_seq'], 58)
+        self.assertEqual(service.state['stage_rejections'][-1]['reason'],
+                         'unsupported_cache_request_body')
+        legacy, old_event, old_sent = self.service(False)
+        self.dispatch(legacy, old_event, 528)
+        self.assertEqual(old_sent, [])
 
     def test_bad_policy_identity_or_unmeasured_profile_fails_before_listening(self):
         profile = fixtures()

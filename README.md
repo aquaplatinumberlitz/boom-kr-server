@@ -61,7 +61,12 @@ CP181 đã merge [PR253](https://github.com/aquaplatinumberlitz/boom-kr-server/p
 nhận roster/map; native framer nhận sequence43…73 liên tục, next76. [Contract/giới hạn](docs/PROTOCOL.md#own-profile-integration),
 [run/hash](docs/evidence/lobby-identity/README.md#cp184). Đây là một client thật với guest tổng hợp,
 không thay bằng chứng hai client hoặc nghiệm thu trận. CP183 đã merge [PR255](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/255)
-tại`5c1f3fb`; CP184 chờ PR. **K3 vẫn mở**, phần thiếu cụ thể ở [checklist nghiệm thu](docs/PLAN.md#k3-evidence-review).
+tại`5c1f3fb`; CP184 đã merge [PR256](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/256) tại`1f8018a`. **K3 vẫn mở**, phần thiếu cụ thể ở [checklist nghiệm thu](docs/PLAN.md#k3-evidence-review).
+
+**CP185: cache dynamic-map đã có đường request528→reply238 trong service opt-in.**
+Đối chứng thiếu file, native ghi lại và warm không yêu cầu528 có [evidence/giới hạn](docs/PROTOCOL.md#lobby-cache-route).
+Chưa cold toàn client; K3 còn checklist channel/version/negative. [Wiki KR do chủ dự án tin cậy](docs/REFERENCES.md#owner-trusted-namu-wiki)
+được dùng cho luật/stat/char/map/mode trước khi mở RE gameplay; [bảng dùng lại](docs/PROTOCOL.md#trusted-wiki-reuse) giữ phần phải đối chiếu00967.
 
 Ưu tiên khép K3 → rà K4 → K5/K6a; chỉ mở RE mới khi phục vụ tiêu chí chưa đạt của gate hiện hành.
 AUD055 periodic qua184, audit kế **CP188**. [Review waived](docs/evidence/checkpoints/review-waiver.json).

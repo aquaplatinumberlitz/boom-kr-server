@@ -1,7 +1,7 @@
 # Kế hoạch server giả lập KR 00967
 
 Nguồn chuẩn của project `boom-kr-server`; bản nhập từ plan đã được dsh1/dsh2 review tại `1eee46d`.
-CP184: service opt-in identity291/native A tới phòng/map đã kiểm, K3 còn checklist cache/version/identity. K0/K1/K2 profile giữ đạt; K3–K7 mở. AUD055 qua184, kế188.
+CP185: service opt-in trả cache238 theo native528; đối chứng missing/nativewrite/warm đã kiểm. K3 còn channel/version/negative và phạm vi cache chưa đo; K0/K1/K2 profile giữ đạt, K3–K7 mở. AUD055 qua184, kế188.
 
 
 ### Mục tiêu, baseline và phạm vi
@@ -37,7 +37,7 @@ với client Rust không chứng minh có thể điều khiển client KR bằng
 
 ### Tiến độ hiện hành theo bằng chứng
 
-| Task/mốc | Trạng thái tại CP184 | Nguồn chuẩn |
+| Task/mốc | Trạng thái tại CP185 | Nguồn chuẩn |
 |---|---|---|
 | KRE-004/issue6 | Đã review/merge PR7 và đóng issue:recipe r1 đến local accept;không phải full K1 | [Wine r1](evidence/wine/README.md) |
 | Bootstrap reply | PR8 đã merge;debugger ProcessPatchreturn1,không ép success | [bootstrap evidence](evidence/bootstrap-wire/README.md) |
@@ -47,7 +47,7 @@ với client Rust không chứng minh có thể điều khiển client KR bằng
 | K0 | Đã nghiệm thu identity/harness tại CP178: originalWindowsVM fullfixedcopy/PID/token/cwd/window/ETW/isolation/cleanup; không bootstrap/gameplay success | [Acceptance](#k0-k2a-acceptance) |
 | K1 | Đạt CP179 cho recipe offline R2: 3 coldstart/API đúng PID/contract/patch controls; không e9cold3 hoặc originalWindows bootstrap | [Acceptance](#k1-acceptance) |
 | K2a/K2 | K2a đạt CP178; K2 đạt profileoffline CP181 với native sameprocessretry/reset/cursor/stream và boundednativeoracles. Không toàncodec/accountauthority | [Acceptance](#k2-acceptance),[contract](PROTOCOL.md#login-retry-codec) |
-| K3 | CP184 service opt-in291: A hiện tên rồi tạo phòng/map, sequence liên tục. Cache/negative/version còn thiếu theo checklist; không giữ toàncodec/fullaccountauth làm yêu cầu vô hạn | [Checklist](#k3-evidence-review), [contract](PROTOCOL.md#own-profile-integration) |
+| K3 | CP184 opt-in291 A panel→phòng/map; CP185 native cache528→238→write/warm đã nối. Channel/version/negative còn theo checklist; không giữ toàncodec/fullaccountauth làm yêu cầu vô hạn | [Checklist](#k3-evidence-review), [contract](PROTOCOL.md#own-profile-integration) |
 | K4–K7 | [CP166](PROTOCOL.md#current-mode-host-rejoin) currentmodehostBack/rejoin, [CP168](PROTOCOL.md#current-mode-promoted-start3) Bhost2normalcycles/Ready/Start3 có nguồn. [Rà K4](#k4-evidence-review), [authority](PROTOCOL.md#authority) và [rà basic K5/K6a](#basic-acceptance-review) giữ scope; chưa gate/fullmatch/LAN/Internet/8client. | [Coverage/gap](COVERAGE.md), [membership](RESEARCH.md#gap-room-membership) |
 
 <a id="current-order"></a>
@@ -86,6 +86,9 @@ không tạo nhánh kiểm kê wiki hoặc mở mode phụ trước K3/K4/K5/K6a
    kiểm kê thêm item/mode/race. **Khép K3 theo [checklist](#k3-evidence-review)**: đối chiếu nguồn cũ
    cho cache/identity/channel/keepalive/negative/version; chỉ đo ô chưa đủ. Không coi freshprefix là
    cold cache, cũng không tự thêm fullaccountauth/toàncodec/toàncachefamily thành tiêu chí mới.
+   [CP185](PROTOCOL.md#lobby-cache-route) đã giải service528→238/nativewrite/warm cho named dynamic-map;
+   không lặp CRC/parser/missing-pair đã đo. Tiếp đối chiếu channel UI/kind/index và consumer/version/error
+   bằng nguồn cũ; cache khác chỉ mở theo trigger cụ thể, không gọi matched pair là cold toàn client.
    A là baseline nghiệm thu K3 offline; B phục vụ K4 hai client, C chỉ theo trigger replacement.
    Sau khi K3 đủ, rà ngay acceptance K4 bằng bằng chứng phòng/load/host/start đã có; thiếu đâu đo đó.
    Trước runtime freeze source/config, copy/offline/isolation; cleanup/hash trước đổi phép đo.
@@ -248,14 +251,14 @@ trace thiếu trongharness giữ rõ giới hạn. KRE-003/#3 còn backlog broad
 Internet chưa nghiệm thu. CP181 snapshot trước PRdelivery, periodic audit vẫn kếCP184.
 
 <a id="k3-evidence-review"></a>
-### Đối chiếu nghiệm thu K3 tại CP184 — chưa đóng gate
+### Đối chiếu nghiệm thu K3 tại CP185 — chưa đóng gate
 
 Đây là ánh xạ vào tiêu chí K3 giữ nguyên, không tạo gate con hoặc plan khác. Ưu tiên theo thứ tự
 các ô thiếu dưới đây; unknown rộng ngoài demo giữ backlog theo trigger.
 
 | Tiêu chí | Bằng chứng / giới hạn hiện tại | Phần kiểm tiếp |
 |---|---|---|
-| Cold / thiếu / warm cache có kết quả rõ | CP059 kiểm missing→nativewrite→warm cho fxdynmapinfo; các cache khác giữ, chưa cold toàn client. CP184 kế thừa cache | Xác định tập cache server-cấp thực sự cần cho route K3 từ consumer đã có; đối chiếu cold baseline/phép thử còn thiếu. Không xóa asset/pack hoặc RE lại CRC đã giải |
+| Cold / thiếu / warm cache có kết quả rõ | [CP185](PROTOCOL.md#lobby-cache-route): 15 paired loadercalls/run; bỏ dynamic/stage map vẫn A panel, native528rỗng. Service đã trả238, file76byte/SHA khớpCP059; warm loader1/no528. Stage-map vắng chỉ với ready241 CRC0; channel/static còn giữ, chưa cold toàn client | Phạm vi named cache đã có kết quả rõ; chỉ kiểm cache/channel còn thực sự cần nếu consumer/acceptance đòi. Không RE lại parser/CRC hoặc gọi freshprefix là coldallcache |
 | Identity/kênh trên UI và ID giữa socket | CP058/181 auth/request6; CP183/184 A panel KRLocal và room ID1. C fixture room cũ mang KRLocal được helper ràng buộc lại với auth KRNew, mới kiểm model | Rà UI/kind/index kênh theo CP015/016 và contract hiện tại; chỉ đo consumer thiếu. B hai client sau baseline K3, C không tự thêm dependency |
 | Keepalive / lifecycle codec | CP181 sameprocessretry/reset; CP184 hai run80s có actual C2S, chuyển sảnh→phòng/map và không timeout quan sát | Bằng chứng có giới hạn duration/profile, không SLA hoặc fullaccountresume; dùng lại, không chạy vô hạn |
 | Đúng bytes nhưng sai socket/stage bị từ chối có log | Opt-in guard service + regression dùng frame hợp lệ qua receive/dispatch; không reply/ready marker khi sai stage, log reason. Đây là design/model, không luật server gốc | Đối chiếu đủ các ca cần cho route K3 và evidence wire; chỉ mở negative còn thiếu, không quét grammar |
