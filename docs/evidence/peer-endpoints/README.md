@@ -1762,3 +1762,29 @@ chỉ kv-a. Metadata legacy noNAT/udp_proxy trong run cũ giữ nguyên và gi�
 cho phù hợp kết luận. Không bomb/outcome/reset trong hai controls; EOF cuối là cleanup. Bước kế hai
 normal cycles/reset trên mapped topology. CP193 complete chỉ tài liệu/evidence đã đồng bộ, review waived,
 merge theo PR; K6c/K7 mở. AUD057 qua192, audit periodic kế CP196.
+
+<a id="cp194"></a>
+## CP194 — hai vòng bình thường và reset qua NAT tĩnh
+
+Baseline CP193/[PR265](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/265), exacthead`b528ed9e9347bb6b3bbc2aae12ca2d4f3f2848a0`,
+merge`8acf57c81a727892c04e735c28a20a5319d70fd9`. KRE-005b/#14/Codex solo/review waived.
+[Contract/giới hạn](../../PROTOCOL.md#nat-two-cycles), [câu hỏi kế](../../RESEARCH.md#gap-lobby-identity-followup),
+[PLAN](../../PLAN.md#current-order). Tái dùng CP192 recipe B sole Roller/two wins/native reset/Start3,
+CP193 tuple/control/private router/typed153 và CP190 portable bundle; tránh RE lại stat/codec/queue/
+endpoint hoặc native body. Delta chỉ topology SNAT/DNAT và các tùy chọn endpoint service có sẵn.
+
+`NAT-KR-two-cycles-r1`: 408.482927410s / 1394 raw / 227 frozen / exit0 / cleanup0;
+run SHA `40626c6022d57bb56f8f38f363d0165947f72a42995111e01e8f98fd3f28f85c`. 1173 PCAP records / 3580 endpoint checks.
+
+Nguồn: native124/165/stat getter, actual118/159/158/same entity ID, trap/death/B21/175/180/room,
+Ready2/normalBStart3/3clocks/keys và195seed reset; hai B4→5→4 wins, không bom/kết quả thứ ba.
+Bốn native peer windows/hai key đều có target/current progress. Typed153 mapped IP/port/key từng epoch,
+actual99 private IP/port, PCAP checksum/index/wire SHA được nối API sau NAT và apply; chỉ capture kv-a,
+không kv-b riêng. Counter SNAT/DNAT có thể chỉ tăng ở luồng mở conntrack, không ép mỗi rule đều tăng.
+DNAT điền actual99port theo recipe trước153 đầu tiên, nguyên source/config/input đến seal/cleanup.
+
+Raw/scripts/source-first/preflight/capture/ảnh/native reports và hash từng file ở external manifest CP194,
+không commit binary/asset/decompile. Getter emulation tách runtime; protocol/policy limits giữ nguồn chuẩn.
+Host EOF/rejoin control cũ độc lập không đổi thành EOF qua NAT cùng run. Không originalNATdiscovery/
+relay/Internet/loss/generalreset/4–8clients hoặc gate mới. Bước tiếp transport delay/loss có đối chứng rồi
+native KR trên qdisc cấu hình cố định, theo PLAN. AUD057 qua192, audit periodic kế CP196.

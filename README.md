@@ -107,7 +107,11 @@ AUD057 periodic qua192, audit kế **CP196**. [Review waived](docs/evidence/chec
 đã ánh xạ + DNAT khôi phục handler, key và movement hai chiều. [Contract/giới hạn](docs/PROTOCOL.md#nat-endpoint-control),
 [run/hash](docs/evidence/peer-endpoints/README.md#cp193). Chưa hai chu kỳ trên NAT hoặc K6c Internet.
 CP192 đã merge [PR264](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/264) tại`1a6daad0c17d718bc86574162bf2946bca1ed800`.
-Audit kế CP196; CP193 review waived, chờ PR/exact-head checks.
+CP193 đã merge [PR265](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/265) tại`8acf57c81a727892c04e735c28a20a5319d70fd9`; review waived, audit kế CP196.
+
+**CP194: hai KR Wine đã hoàn thành hai vòng Battle bình thường/reset/Ready2/Start3 qua mapping NAT tĩnh.**
+[Phạm vi và giới hạn](docs/PROTOCOL.md#nat-two-cycles), [raw/hash](docs/evidence/peer-endpoints/README.md#cp194).
+Chưa nghiệm thu Internet/K6c; tiếp đối chứng latency/loss theo PLAN. Review waived, chờ PR/exact-head kiểm.
 
 Đích đầu: hai client thật chơi hai trận liên tiếp; mở bốn client và hardening sau đó.
 
