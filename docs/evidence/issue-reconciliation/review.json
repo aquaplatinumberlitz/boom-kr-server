@@ -155,11 +155,11 @@
         "KR-F001",
         "KR-F015"
       ],
-      "known": "CP197sourceIPoptinABincomingadmission realTCPinterleaved0wrong/8(default6wrong), unknown/fifthreject andnativecurrentnewbundle serial-start2normalcycles/reset/Start3. CP196PR268merged/AUD058through196.",
-      "remaining": "Nativeinterleavedstartupnotmeasured; ABonlydistinctsource/fourtransportsnotgeneralaccountbinding/samesourceNAT/C/D/four-eightclients/Internet/K7.",
-      "next_test": "PLAN NEXT-K7-NATIVE-INTERLEAVE: samebundle/source/profile/network, earlyBlaunchbeforeA4transports/UIJoinBgatedactualAroom; requireactualinterleavedacceptorder/correctnativeidentity/stages beforeclaim. No codecRE.",
+      "known": "CP198actualnativeA1A2B1B2A3A4B3B4correctbinding/stage/identity/room and2normalcycles/reset/Start3/fourpeerwindows currentbundle/NATqdisc.",
+      "remaining": "Servicehardcodedtwo live peers/roleIDs/roster/153 andABsourcebinding; fouractualnativeclients/results/reset notyetimplemented orobserved; K6cInternet/K7/auth/generalvariants open.",
+      "next_test": "PLAN NEXT-K7-FOUR-PLAYER-SCOPE: sourcefirstservicehardcodeconsumer/preset/knownCP1471638slot/teamguard, selectminimal4playerscope andrealTCP/session/Ready/barrier/peercontrols beforeactual4runtime.",
       "acceptance": "Epic checklist: linkedscopedtask/evidence+authoritymatrix vàacceptancegate ởPLAN; từngtaskđóng khôngđóngepic/K5/K6a.",
-      "reason": "Newopt-inpolicyisdesign/nonauth/defaultlegacyretained; native serialcompatibilitynotnativeinterleaving. AUD058through196/next200.",
+      "reason": "NativeinterleavedABboundedproofnotallinterleavings/auth/fourplayergate; AUD058through196/next200.",
       "sources": [
         "docs/PROTOCOL.md#authority",
         "docs/RESEARCH.md#feature-gaps",
@@ -228,7 +228,8 @@
         "docs/PROTOCOL.md#nat-two-cycles",
         "docs/PROTOCOL.md#udp-netem-cycles",
         "docs/PROTOCOL.md#nat-netem-host-eof",
-        "docs/PROTOCOL.md#operator-incoming-binding"
+        "docs/PROTOCOL.md#operator-incoming-binding",
+        "docs/PROTOCOL.md#native-interleaved-startup"
       ],
       "evidence": [
         "docs/evidence/current-movement-cycles/README.md",
@@ -294,7 +295,8 @@
         "docs/evidence/peer-endpoints/README.md#cp194",
         "docs/evidence/peer-endpoints/README.md#cp195",
         "docs/evidence/peer-endpoints/README.md#cp196",
-        "docs/evidence/peer-endpoints/README.md#cp197"
+        "docs/evidence/peer-endpoints/README.md#cp197",
+        "docs/evidence/peer-endpoints/README.md#cp198"
       ],
       "prs": [
         173,

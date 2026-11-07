@@ -5381,6 +5381,27 @@ Serviceproductionbind/153IPvẫnhard127; private-addressshims hiện làmeasurem
 Internet/K6c/NAT/relay/fullauth/authority/generalreset/gates mở; field99IP1/subtype39 vẫnunknown.
 
 
+<a id="native-interleaved-startup"></a>
+### Native startup xen kẽ A/B với binding opt-in — CP198
+
+[Incoming policy CP197](#operator-incoming-binding), [recipe/hash](evidence/peer-endpoints/README.md#cp198),
+[phép thử kế](RESEARCH.md#gap-lobby-identity-followup). `kr_runtime`, confirmed cho lịch launch/connection này.
+Giữ nguyên source/bundle/copy4b/profile47/NAT/qdisc/input recipe CP197, chỉ launch B sau transport2 của A;
+UI Join B chờ actual createconfirm A để không trộn admission với lỗi thứ tự room.
+Actual accept order **A1,A2,B1,B2,A3,A4,B3,B4**, mỗi source/privateIP có role đúng/stage1..4/count4.
+Native identity291/room/join/hostBack/rejoin và normal start đều trên các connection này; không từ log
+process launch hoặc TCP accept đơn lẻ nâng thành login/gameplay.
+
+Cùng run có hai normal B wins/Roller4→5→4/A5, Aselfbomb/trapdeath/B21/full175180/room/Ready2/
+normal B Start3/ba clock/keys/195seed reset. Bốn peer windows/hai key có mapped API/PCAP exactSHA/
+key/apply/target/currentprogress; copiedgetter emulation tách native runtime. Không đổi service/wire/fixture
+để ép pass. Default legacy vẫn cần serializedstartup; opt-in không auth/sameNATIP nhiều account/C-D/
+bốn–tám actualclient/generalaccountresume hoặc mọi interleaving. K6c Internet/K7 vẫn mở.
+Phần còn thiếu cho nhiều người: service hiện hardcode hai live peers/role IDs/26slot153/rosterreply/preset;
+không mở client thứ4 trước khi có roster/session/admission policy và kiểm fixture/nativeconsumer tương ứng.
+PLAN chuyển sang source-first đánh giá những chỗ hardcode và chọn scope4người tối thiểu, không RE lại
+codec/8slot/teamrules đã có CP147/163 hoặc mở mode/item phụ.
+
 <a id="operator-incoming-binding"></a>
 ### Incoming A/B theo source IPv4 riêng, opt-in — CP197
 
@@ -5405,8 +5426,8 @@ khác source service mới; launcher -I vẫn kiểm integrity. Manifest mới g
 `kr_runtime` confirmed riêng: cùng recipe native **startup tuần tự** đã có hai normal B wins/reset/Ready2/
 normalBStart3/currentpeer/nativeflags/stat/key/life qua NAT/UDP qdisc trên bundle mới, đúng binding A/B
 privateTCPsource và stages1..4/count4. Đây là compatibility runtime, **không native interleavedstartup**;
-realTCP xen kẽ là control riêng. Không auth/token, nhiều client cùng sourceIP, C/D/bốn–tám actualclients,
-NAT discovery/relay gốc/Internet gate. K6c/K7 giữ mở; bước kế native startup xen kẽ có kiểm thứ tự accept,
+realTCP xen kẽ là control riêng; [CP198](#native-interleaved-startup) bổ sung native lịch AABBAABB. Không auth/token, nhiều client cùng sourceIP, C/D/bốn–tám actualclients,
+NAT discovery/relay gốc/Internet gate. K6c/K7 giữ mở; native startup xen kẽ tại CP197 còn thiếu đã có [CP198](#native-interleaved-startup),
 rồi mới mở admission/roster/peer nhiều client theo PLAN. Không lặp hai vòng trên sameconfig không có biến mới.
 
 <a id="nat-netem-host-eof"></a>

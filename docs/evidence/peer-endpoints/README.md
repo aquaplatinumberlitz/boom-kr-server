@@ -1891,3 +1891,25 @@ Raw/hash/seals/source/preflight/bundlepins/verifier/nativecapture/sourcefirst �
 Không originalauth/sameNATIPaccounts/resume/native4–8/Internet/K7gate. Bước tiếp earlyBnative startup
 vàUIJoingate actualAroom, đoactualacceptinterleaving trước mởthêmclient; khônglặpsame2cycles không biến.
 AUD058qua196/auditkếCP200; records/evidence complete cũ giữ nguyên, commitPRexacthead theoAGENTS.
+
+<a id="cp198"></a>
+## CP198 — actual native TCP startup xen kẽ và hai chu kỳ
+
+KRE-005b/#14/Codexsolo/reviewwaived; baseline CP197/PR269. [Contract/giới hạn](../../PROTOCOL.md#native-interleaved-startup),
+[phép thử kế](../../RESEARCH.md#gap-lobby-identity-followup), [PLAN](../../PLAN.md#current-order).
+Tái dùng nguyên bundle/source/profile/fixture47/copy4b/NATqdisc/nativeinput/oracles CP197; chỉ launch B sau
+transport2 A và UIJoinBchờactualAroom. Không nativebody/codec/schema RE hoặc thay wire để ép đúng.
+
+`native-interleave-r1`:377.703822943s/1316raw/frozen293/exit0/cleanup0;
+SHA`d76e7a3e04ff7fab362a1abcf44241b456927143fbbb57b013c45b0feb463da1`; 1684nativebindingchecks/3442endpointchecks/1127PCAPrecords.
+
+ActualorderA1A2B1B2A3A4B3B4 từ accepttimestamps/nativeTCPsource/stage/count, incoming privateIP tách
+outgoing153mappedtuple; nativeidentity/room/chief/rejoin/start đúng. CùngrunhaiBnormalwins/Roller4→5→4/
+A5/Aselfbomb/trapdeath/B21/full175180/room/Ready2/normalBStart3/3clocks/keys/195seed/fourpeerwindows/
+key/apply/target/currentprogress/PCAPSHA. Getteremulation riêngnative, UDP40±5/loss5%/TCPbaseline.
+Không từlaunch/tcpacceptalonekhẳngđịnhlogin/gameplay. Run source/config frozen/ownedcleanup trướcseal.
+
+Scope chỉ lịchABnày/uniqueincomingIP/fourtransportslifetime, khônggeneralaccountbinding/sameNATIP/C-D/
+4–8actualclients/mọiinterleavings/Internetgate/K7. Raw/sourcefirst/preflight/seals/scripts/PCAP/hash ở
+externalmanifestCP198. Tiếp source-first hardcode/service roster/session/153 tối thiểu4người theoPLAN,
+không RE lại known8slot/Free-Manner/codec/ABadmission. AUD058qua196/auditkếCP200.
