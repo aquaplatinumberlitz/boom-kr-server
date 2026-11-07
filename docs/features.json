@@ -1,7 +1,7 @@
 {
   "schema": "kre-feature-index-v1",
   "build": "KR00967",
-  "as_of": "CP188",
+  "as_of": "CP189",
   "sources": {
     "plan": "docs/PLAN.md",
     "contract": "docs/PROTOCOL.md",
@@ -1340,7 +1340,8 @@
           "docs/evidence/peer-endpoints/README.md#cp168",
           "docs/PROTOCOL.md#a-c-basic-cycles",
           "docs/evidence/peer-endpoints/README.md#cp176",
-          "docs/PROTOCOL.md#current-basic-cycles-291"
+          "docs/PROTOCOL.md#current-basic-cycles-291",
+          "docs/PROTOCOL.md#current-basic-contest-reset"
         ]
       },
       "coverage": {
@@ -1382,7 +1383,8 @@
               "docs/evidence/peer-endpoints/README.md#cp168",
               "docs/PROTOCOL.md#a-c-basic-cycles",
               "docs/evidence/peer-endpoints/README.md#cp176",
-              "docs/PROTOCOL.md#current-basic-cycles-291"
+              "docs/PROTOCOL.md#current-basic-cycles-291",
+              "docs/PROTOCOL.md#current-basic-contest-reset"
             ]
           },
           "windows_original": {
@@ -1419,7 +1421,8 @@
             "docs/PROTOCOL.md#virtual-basic-cycles",
             "docs/PROTOCOL.md#a-c-basic-cycles",
             "docs/evidence/peer-endpoints/README.md#cp176",
-            "docs/PROTOCOL.md#current-basic-cycles-291"
+            "docs/PROTOCOL.md#current-basic-cycles-291",
+            "docs/PROTOCOL.md#current-basic-contest-reset"
           ]
         },
         "gate": {
@@ -1477,7 +1480,8 @@
           "docs/evidence/peer-endpoints/README.md#cp173",
           "docs/PROTOCOL.md#a-c-basic-cycles",
           "docs/evidence/peer-endpoints/README.md#cp176",
-          "docs/PROTOCOL.md#current-basic-cycles-291"
+          "docs/PROTOCOL.md#current-basic-cycles-291",
+          "docs/PROTOCOL.md#current-basic-contest-reset"
         ]
       },
       "coverage": {
@@ -1536,7 +1540,8 @@
               "docs/evidence/peer-endpoints/README.md#cp173",
               "docs/PROTOCOL.md#a-c-basic-cycles",
               "docs/evidence/peer-endpoints/README.md#cp176",
-              "docs/PROTOCOL.md#current-basic-cycles-291"
+              "docs/PROTOCOL.md#current-basic-cycles-291",
+              "docs/PROTOCOL.md#current-basic-contest-reset"
             ]
           },
           "windows_original": {
@@ -1578,14 +1583,16 @@
             "docs/PROTOCOL.md#virtual-peer",
             "docs/PROTOCOL.md#a-c-basic-cycles",
             "docs/evidence/peer-endpoints/README.md#cp176",
-            "docs/PROTOCOL.md#current-basic-cycles-291"
+            "docs/PROTOCOL.md#current-basic-cycles-291",
+            "docs/PROTOCOL.md#current-basic-contest-reset"
           ]
         },
         "gate": {
           "id": "K6",
           "state": "open",
           "refs": [
-            "docs/PLAN.md#gates"
+            "docs/PLAN.md#gates",
+            "docs/PLAN.md#k6a-acceptance"
           ]
         }
       },
@@ -1613,7 +1620,8 @@
           "docs/evidence/probe-service/README.md",
           "docs/evidence/current-udp-causality/README.md",
           "docs/evidence/udp-generation/README.md#cp130",
-          "docs/evidence/peer-endpoints/README.md#cp155"
+          "docs/evidence/peer-endpoints/README.md#cp155",
+          "docs/PROTOCOL.md#current-basic-contest-reset"
         ]
       },
       "coverage": {
@@ -1648,7 +1656,8 @@
               "docs/evidence/udp-freshness/README.md",
               "docs/evidence/current-udp-causality/README.md",
               "docs/PROTOCOL.md#udp-membership-lifetime",
-              "docs/evidence/peer-endpoints/README.md#cp155"
+              "docs/evidence/peer-endpoints/README.md#cp155",
+              "docs/PROTOCOL.md#current-basic-contest-reset"
             ]
           },
           "windows_original": {
@@ -1678,14 +1687,16 @@
           "refs": [
             "docs/evidence/probe-service/README.md",
             "docs/evidence/current-udp-causality/README.md",
-            "docs/PROTOCOL.md#udp-membership-lifetime"
+            "docs/PROTOCOL.md#udp-membership-lifetime",
+            "docs/PROTOCOL.md#current-basic-contest-reset"
           ]
         },
         "gate": {
           "id": "K6",
           "state": "open",
           "refs": [
-            "docs/PLAN.md#gates"
+            "docs/PLAN.md#gates",
+            "docs/PLAN.md#k6a-acceptance"
           ]
         }
       },
@@ -2167,7 +2178,8 @@
           "docs/evidence/peer-endpoints/README.md#cp173",
           "docs/PROTOCOL.md#a-c-basic-cycles",
           "docs/evidence/peer-endpoints/README.md#cp176",
-          "docs/PROTOCOL.md#current-basic-cycles-291"
+          "docs/PROTOCOL.md#current-basic-cycles-291",
+          "docs/PROTOCOL.md#current-basic-contest-reset"
         ]
       },
       "coverage": {
@@ -2242,7 +2254,8 @@
               "docs/evidence/peer-endpoints/README.md#cp173",
               "docs/PROTOCOL.md#a-c-basic-cycles",
               "docs/evidence/peer-endpoints/README.md#cp176",
-              "docs/PROTOCOL.md#current-basic-cycles-291"
+              "docs/PROTOCOL.md#current-basic-cycles-291",
+              "docs/PROTOCOL.md#current-basic-contest-reset"
             ]
           },
           "windows_original": {
@@ -2296,7 +2309,8 @@
             "docs/PROTOCOL.md#integrated-survivor",
             "docs/PROTOCOL.md#a-c-basic-cycles",
             "docs/evidence/peer-endpoints/README.md#cp176",
-            "docs/PROTOCOL.md#current-basic-cycles-291"
+            "docs/PROTOCOL.md#current-basic-cycles-291",
+            "docs/PROTOCOL.md#current-basic-contest-reset"
           ]
         },
         "gate": {
@@ -2350,7 +2364,8 @@
           "docs/evidence/peer-endpoints/README.md#cp172",
           "docs/PROTOCOL.md#a-c-basic-cycles",
           "docs/evidence/peer-endpoints/README.md#cp176",
-          "docs/PROTOCOL.md#current-basic-cycles-291"
+          "docs/PROTOCOL.md#current-basic-cycles-291",
+          "docs/PROTOCOL.md#current-basic-contest-reset"
         ]
       },
       "coverage": {
@@ -2401,7 +2416,8 @@
               "docs/evidence/peer-endpoints/README.md#cp172",
               "docs/PROTOCOL.md#a-c-basic-cycles",
               "docs/evidence/peer-endpoints/README.md#cp176",
-              "docs/PROTOCOL.md#current-basic-cycles-291"
+              "docs/PROTOCOL.md#current-basic-cycles-291",
+              "docs/PROTOCOL.md#current-basic-contest-reset"
             ]
           },
           "windows_original": {
@@ -2446,7 +2462,8 @@
             "docs/PROTOCOL.md#recursive-chain",
             "docs/PROTOCOL.md#a-c-basic-cycles",
             "docs/evidence/peer-endpoints/README.md#cp176",
-            "docs/PROTOCOL.md#current-basic-cycles-291"
+            "docs/PROTOCOL.md#current-basic-cycles-291",
+            "docs/PROTOCOL.md#current-basic-contest-reset"
           ]
         },
         "gate": {
@@ -2618,7 +2635,8 @@
           "docs/evidence/peer-endpoints/README.md#cp170",
           "docs/evidence/peer-endpoints/README.md#cp171",
           "docs/evidence/peer-endpoints/README.md#cp172",
-          "docs/PROTOCOL.md#current-basic-cycles-291"
+          "docs/PROTOCOL.md#current-basic-cycles-291",
+          "docs/PROTOCOL.md#current-basic-contest-reset"
         ]
       },
       "coverage": {
@@ -2689,7 +2707,8 @@
               "docs/evidence/peer-endpoints/README.md#cp170",
               "docs/evidence/peer-endpoints/README.md#cp171",
               "docs/evidence/peer-endpoints/README.md#cp172",
-              "docs/PROTOCOL.md#current-basic-cycles-291"
+              "docs/PROTOCOL.md#current-basic-cycles-291",
+              "docs/PROTOCOL.md#current-basic-contest-reset"
             ]
           },
           "windows_original": {
@@ -2756,7 +2775,8 @@
             "docs/PROTOCOL.md#death-lifecycle-policy",
             "docs/PROTOCOL.md#integrated-survivor",
             "docs/PROTOCOL.md#virtual-basic-cycles",
-            "docs/PROTOCOL.md#current-basic-cycles-291"
+            "docs/PROTOCOL.md#current-basic-cycles-291",
+            "docs/PROTOCOL.md#current-basic-contest-reset"
           ]
         },
         "gate": {
@@ -3273,7 +3293,8 @@
           "id": "K6",
           "state": "open",
           "refs": [
-            "docs/PLAN.md#gates"
+            "docs/PLAN.md#gates",
+            "docs/PLAN.md#k6a-acceptance"
           ]
         }
       },
@@ -3343,7 +3364,8 @@
           "docs/evidence/peer-endpoints/README.md#cp174",
           "docs/PROTOCOL.md#a-c-basic-cycles",
           "docs/evidence/peer-endpoints/README.md#cp176",
-          "docs/PROTOCOL.md#current-basic-cycles-291"
+          "docs/PROTOCOL.md#current-basic-cycles-291",
+          "docs/PROTOCOL.md#current-basic-contest-reset"
         ]
       },
       "coverage": {
@@ -3421,7 +3443,8 @@
               "docs/evidence/peer-endpoints/README.md#cp174",
               "docs/PROTOCOL.md#a-c-basic-cycles",
               "docs/evidence/peer-endpoints/README.md#cp176",
-              "docs/PROTOCOL.md#current-basic-cycles-291"
+              "docs/PROTOCOL.md#current-basic-cycles-291",
+              "docs/PROTOCOL.md#current-basic-contest-reset"
             ]
           },
           "windows_original": {
@@ -3479,7 +3502,8 @@
             "docs/PROTOCOL.md#virtual-basic-cycles",
             "docs/PROTOCOL.md#a-c-basic-cycles",
             "docs/evidence/peer-endpoints/README.md#cp176",
-            "docs/PROTOCOL.md#current-basic-cycles-291"
+            "docs/PROTOCOL.md#current-basic-cycles-291",
+            "docs/PROTOCOL.md#current-basic-contest-reset"
           ]
         },
         "gate": {
@@ -3581,7 +3605,8 @@
           "docs/evidence/peer-endpoints/README.md#cp174",
           "docs/PROTOCOL.md#a-c-basic-cycles",
           "docs/evidence/peer-endpoints/README.md#cp176",
-          "docs/PROTOCOL.md#current-basic-cycles-291"
+          "docs/PROTOCOL.md#current-basic-cycles-291",
+          "docs/PROTOCOL.md#current-basic-contest-reset"
         ]
       },
       "coverage": {
@@ -3681,7 +3706,8 @@
               "docs/evidence/peer-endpoints/README.md#cp174",
               "docs/PROTOCOL.md#a-c-basic-cycles",
               "docs/evidence/peer-endpoints/README.md#cp176",
-              "docs/PROTOCOL.md#current-basic-cycles-291"
+              "docs/PROTOCOL.md#current-basic-cycles-291",
+              "docs/PROTOCOL.md#current-basic-contest-reset"
             ]
           },
           "windows_original": {
@@ -3764,14 +3790,16 @@
             "docs/PROTOCOL.md#virtual-basic-cycles",
             "docs/PROTOCOL.md#a-c-basic-cycles",
             "docs/evidence/peer-endpoints/README.md#cp176",
-            "docs/PROTOCOL.md#current-basic-cycles-291"
+            "docs/PROTOCOL.md#current-basic-cycles-291",
+            "docs/PROTOCOL.md#current-basic-contest-reset"
           ]
         },
         "gate": {
           "id": "K6",
           "state": "open",
           "refs": [
-            "docs/PLAN.md#gates"
+            "docs/PLAN.md#gates",
+            "docs/PLAN.md#k6a-acceptance"
           ]
         }
       },
@@ -3833,7 +3861,8 @@
           "docs/evidence/peer-endpoints/README.md#cp176",
           "docs/PROTOCOL.md#replacement-profile",
           "docs/evidence/peer-endpoints/README.md#cp177",
-          "docs/PROTOCOL.md#current-basic-cycles-291"
+          "docs/PROTOCOL.md#current-basic-cycles-291",
+          "docs/PROTOCOL.md#current-basic-contest-reset"
         ]
       },
       "coverage": {
@@ -3900,7 +3929,8 @@
               "docs/evidence/peer-endpoints/README.md#cp176",
               "docs/PROTOCOL.md#replacement-profile",
               "docs/evidence/peer-endpoints/README.md#cp177",
-              "docs/PROTOCOL.md#current-basic-cycles-291"
+              "docs/PROTOCOL.md#current-basic-cycles-291",
+              "docs/PROTOCOL.md#current-basic-contest-reset"
             ]
           },
           "windows_original": {
@@ -3979,14 +4009,16 @@
             "docs/evidence/peer-endpoints/README.md#cp176",
             "docs/PROTOCOL.md#replacement-profile",
             "docs/evidence/peer-endpoints/README.md#cp177",
-            "docs/PROTOCOL.md#current-basic-cycles-291"
+            "docs/PROTOCOL.md#current-basic-cycles-291",
+            "docs/PROTOCOL.md#current-basic-contest-reset"
           ]
         },
         "gate": {
           "id": "K6",
           "state": "open",
           "refs": [
-            "docs/PLAN.md#gates"
+            "docs/PLAN.md#gates",
+            "docs/PLAN.md#k6a-acceptance"
           ]
         }
       },
@@ -4494,7 +4526,8 @@
           "id": "K6",
           "state": "open",
           "refs": [
-            "docs/PLAN.md#gates"
+            "docs/PLAN.md#gates",
+            "docs/PLAN.md#k6a-acceptance"
           ]
         }
       },

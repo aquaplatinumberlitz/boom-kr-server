@@ -1,0 +1,271 @@
+{
+  "id": "CP189",
+  "previous": "CP188",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-07T05:58:00.989600+00:00",
+  "context_commit": "009505cd788d4181dbd6ca448f97d81d1c011c79",
+  "owner": "Codex",
+  "reviewer": "Codex",
+  "question": "Can currentbasic17kind2 two-nativecontenders/singlewinner effect compose withnormaloutcomes/stat/key/peer reset, and does scopedK6a satisfyunchangedcriteria?",
+  "scope": "SourcefirstCP155159160/CP188currentpeer/life/basic andKRnativeclaim165/getters; onefocusedproductioncontest +integrationr1partial +coarse-inputr2twoepoch run. Preservewrongcommon-speedanalyzer/control, currentcode/profile/imagecontinuity; manualK6acriteriaauthorityreview, no newnativebody ornewmode/iteminventory scan.",
+  "artifacts": [
+    {
+      "name": "OriginalKR00967unchanged",
+      "sha256": "a52545c14b1fea423de655c3163d6360b628d61c1cd472b46fdbc8a9ffe15f4e"
+    },
+    {
+      "name": "CurrentWinecopyunchanged",
+      "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+    },
+    {
+      "name": "NativeIDAfullcopycf72privateanalysis",
+      "sha256": "cf72da112308d9f1ca256df8089594c5f787875310933073bf6bd5ba6f70e63b"
+    },
+    {
+      "name": "modOmodelreference",
+      "sha256": "a08950c833d3acab8281049def7b3dc96b221f107eeda01da3a548e34b91dce5"
+    },
+    {
+      "name": "OriginalKR00967NewPatcher",
+      "sha256": "b59e4dce9ad23c439a7632ce04ecb2eed3481585bd2454100b05c9d7527f5c02"
+    },
+    {
+      "name": "VN116original_reference_only",
+      "sha256": "bce8644d4e783d1354ab4fc880e1ab9a4ab3325327028f37d99e5439e25f4bbd"
+    },
+    {
+      "name": "VN116patched_runtime_reference_only",
+      "sha256": "bc875ba5765cc112e924f46e75d0ace112904c7801126e46bc0abb1c9cb576b1"
+    },
+    {
+      "name": "PassingK1offlineR2recipe",
+      "sha256": "7b3b435b5d8e110185359107376b736615ceabe9452cea8154d02c8628f44c29"
+    },
+    {
+      "name": "NativeProcessPatchR1control",
+      "sha256": "a0c3b9867dae5fe2ff7c315cfe851117661c2cafead45196ce999329f67432f5"
+    },
+    {
+      "name": "OfflineWinecopy_import_compare_ABI_only",
+      "sha256": "4b781fbcea21e0f6294c729b63be86ab2953d60ad83b0d0c9219359f826107ed"
+    }
+  ],
+  "locators": [
+    "PEcopy4b781fbcea21e0f6294c729b63be86ab2953d60ad83b0d0c9219359f826107ed; samebase400000/RVA=VA-base/native124165/121153175180/52A350/E66680/E667BE/E668AD/E668B2/B4EA14. No newnativebody.",
+    "Focusedrun 4750276eef848b921432f7183163c51d55c13ea2428e33c020aa23f5c9a1dffc twoactual124/Bwinner/Aconsumed/one165/nativeBspeed4→5/A5unchanged; firstanalyzerassumedboth5 failedandretained; CP188alreadyA5/B4 baseline.",
+    "Integrationpartial 1eb2b49f3ff2bcc81d8832771a294ee821a1f25719457a75ff740eb74610ba5820pulseBreturnlast375,target399/tol12,nooutcome; newcoarseDown.5 beforeexistingfeedback notboundsincrease. Existingcontest-returnsetup6sneutralvariant declared, global3sunchanged.",
+    "Integrationr2 e06000161fa3f5ac1c1bb82ac88273bbc7542ed01009e1036c58995effc7a9fd two keys12345/12346/nativecontestedRoller+1/rolebaseline/reset/AselfbombIDs1,2/normal175180/Ready2/fourpeerwindows/life. CP188controlEOF separate.",
+    "CP188PR260exact009505cd788d4181dbd6ca448f97d81d1c011c79 merged2ea548bb1c8d0929ed87ae464aeb9511cbaf48f2. AUD056through188/next192 unchanged. CP189completebeforePRdelivery/reviewwaived notindependentapproved."
+  ],
+  "findings": [
+    {
+      "summary": "Currentbasicproduction immediate165 has twoactualnative124/same17kind2/key12345, Bwins/Aconsumed; exactlyonefull165/view, nativeprotectedBspeed4→5/A5unchanged/capacityfireunchanged. No wrapperhold/forgedclaims/replay. Focusedrun no normalending/reset; visual reviewed separately.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#current-basic-contest-reset",
+      "evidence": [
+        "CONTEST189-00035",
+        "CONTEST189-00765",
+        "CONTEST189-00822"
+      ],
+      "limits": "ModifiedKR00967Winecopy4b781f/privatevirtualhosts/offline/currentbasic+291/nameguard, same47fixture/profile/productionimmediate165. Currentfocusedcontest separate from2normalcontestedcycles; CP188peer/Bowners/hidden/Start3/EOF andoldCP155stalecontrols separatelyscoped, notonecombinedrun. K6a samehostbasic manualscope only, physicalLAN/Internet4–8actualclient/fullauth/fullcodec/originalauthority/allitems/maps/generalreset remainopen. Nativegetteremulation separatefromruntime/perviewnotglobalsametick. Originalbinary/DB/assets/completehistory immutable."
+    },
+    {
+      "summary": "Firstanalyzerfixedcommon-speed5 assertion failedforB; raw/native52A350 bothsayB4→5, CP188currentbaselinealreadyA5/B4. Preservewrongsource/log, reuseCP159oneeffectcriterion withper-rolebaseline/nativechecksumgetter; do notchangeclient/profile/raw orclaimnewnativebody.",
+      "source": "kr_static",
+      "status": "confirmed",
+      "method": "emulation",
+      "canonical": "docs/PROTOCOL.md#current-basic-contest-reset",
+      "evidence": [
+        "CONTEST189-00031",
+        "CONTEST189-00033",
+        "CONTEST189-00032",
+        "CONTEST189-00030"
+      ],
+      "limits": "ModifiedKR00967Winecopy4b781f/privatevirtualhosts/offline/currentbasic+291/nameguard, same47fixture/profile/productionimmediate165. Currentfocusedcontest separate from2normalcontestedcycles; CP188peer/Bowners/hidden/Start3/EOF andoldCP155stalecontrols separatelyscoped, notonecombinedrun. K6a samehostbasic manualscope only, physicalLAN/Internet4–8actualclient/fullauth/fullcodec/originalauthority/allitems/maps/generalreset remainopen. Nativegetteremulation separatefromruntime/perviewnotglobalsametick. Originalbinary/DB/assets/completehistory immutable."
+    },
+    {
+      "summary": "Integrationr1 retainedexit1: twoactualclaims/Awins/Bconsumed butBreturn20pulsesmovesonlytoy375beforetarget399, no normalbomb/outcome. R2onlycoarseDown.5 throughknowncorridor beforeunchanged20pulse/.045/tol12feedback; no physics/keyrootcause claim. ExistingCP1596scontest-returnsetup variant explicit, originalsourcefirst3sdescription boundederratum.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#current-basic-contest-reset",
+      "evidence": [
+        "CONTEST189-01549",
+        "CONTEST189-01551",
+        "CONTEST189-02987"
+      ],
+      "limits": "ModifiedKR00967Winecopy4b781f/privatevirtualhosts/offline/currentbasic+291/nameguard, same47fixture/profile/productionimmediate165. Currentfocusedcontest separate from2normalcontestedcycles; CP188peer/Bowners/hidden/Start3/EOF andoldCP155stalecontrols separatelyscoped, notonecombinedrun. K6a samehostbasic manualscope only, physicalLAN/Internet4–8actualclient/fullauth/fullcodec/originalauthority/allitems/maps/generalreset remainopen. Nativegetteremulation separatefromruntime/perviewnotglobalsametick. Originalbinary/DB/assets/completehistory immutable."
+    },
+    {
+      "summary": "Currentr2sameprofile/source/copy: two actualcontested-inputepochs, oneRollerconfirm/view/epoch/nativeonlywinner+1speed andA5/B4baselinebeforesecondpickup. NormalAselfSpace actualIDs1,2/power1/native159158 thenA17→19/B21; bothfull175180/room/Ready95/BStart2 andReady2. Fournativepeerwindows/currentkeys/target/currentprogress andperview56→1/other0before175 verifiedseparately same-run.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#current-basic-contest-reset",
+      "evidence": [
+        "CONTEST189-01611",
+        "CONTEST189-02896",
+        "CONTEST189-02910",
+        "CONTEST189-02921",
+        "CONTEST189-02996"
+      ],
+      "limits": "ModifiedKR00967Winecopy4b781f/privatevirtualhosts/offline/currentbasic+291/nameguard, same47fixture/profile/productionimmediate165. Currentfocusedcontest separate from2normalcontestedcycles; CP188peer/Bowners/hidden/Start3/EOF andoldCP155stalecontrols separatelyscoped, notonecombinedrun. K6a samehostbasic manualscope only, physicalLAN/Internet4–8actualclient/fullauth/fullcodec/originalauthority/allitems/maps/generalreset remainopen. Nativegetteremulation separatefromruntime/perviewnotglobalsametick. Originalbinary/DB/assets/completehistory immutable."
+    },
+    {
+      "summary": "ManualunchangedK6criteria/authority/currentcode-profileconsumercontinuity review acceptsK6a samehostbasic scope using currentcontestedcycles andindependentCP188Bowners/hiddenbasic/EOF plusoldCP155stalecontrol. Noall-controls-one-run orphysicalLAN/Internet/4–8client claim; K6catalogopenoutsidelocalK6a. AUD056cadencenotreset, next192.",
+      "source": "design",
+      "status": "design",
+      "method": "design",
+      "canonical": "docs/PLAN.md#k6a-acceptance",
+      "evidence": [
+        "CONTEST189-01620",
+        "CONTEST189-01612"
+      ],
+      "limits": "ModifiedKR00967Winecopy4b781f/privatevirtualhosts/offline/currentbasic+291/nameguard, same47fixture/profile/productionimmediate165. Currentfocusedcontest separate from2normalcontestedcycles; CP188peer/Bowners/hidden/Start3/EOF andoldCP155stalecontrols separatelyscoped, notonecombinedrun. K6a samehostbasic manualscope only, physicalLAN/Internet4–8actualclient/fullauth/fullcodec/originalauthority/allitems/maps/generalreset remainopen. Nativegetteremulation separatefromruntime/perviewnotglobalsametick. Originalbinary/DB/assets/completehistory immutable."
+    }
+  ],
+  "verification": [
+    {
+      "check": "Currentproduction2nativeclaims/oneRollereffect/per-rolebaseline",
+      "result": "pass",
+      "evidence": [
+        "CONTEST189-00035",
+        "CONTEST189-00031"
+      ],
+      "limits": "ModifiedKR00967Winecopy4b781f/privatevirtualhosts/offline/currentbasic+291/nameguard, same47fixture/profile/productionimmediate165. Currentfocusedcontest separate from2normalcontestedcycles; CP188peer/Bowners/hidden/Start3/EOF andoldCP155stalecontrols separatelyscoped, notonecombinedrun. K6a samehostbasic manualscope only, physicalLAN/Internet4–8actualclient/fullauth/fullcodec/originalauthority/allitems/maps/generalreset remainopen. Nativegetteremulation separatefromruntime/perviewnotglobalsametick. Originalbinary/DB/assets/completehistory immutable."
+    },
+    {
+      "check": "Two currentnormalcontestedcycles/reset/peer/life/Ready2",
+      "result": "pass",
+      "evidence": [
+        "CONTEST189-01611",
+        "CONTEST189-02896",
+        "CONTEST189-02910"
+      ],
+      "limits": "ModifiedKR00967Winecopy4b781f/privatevirtualhosts/offline/currentbasic+291/nameguard, same47fixture/profile/productionimmediate165. Currentfocusedcontest separate from2normalcontestedcycles; CP188peer/Bowners/hidden/Start3/EOF andoldCP155stalecontrols separatelyscoped, notonecombinedrun. K6a samehostbasic manualscope only, physicalLAN/Internet4–8actualclient/fullauth/fullcodec/originalauthority/allitems/maps/generalreset remainopen. Nativegetteremulation separatefromruntime/perviewnotglobalsametick. Originalbinary/DB/assets/completehistory immutable."
+    },
+    {
+      "check": "Code/profile/copy/sourcefirst/ownedfreeze/rawcleanup/oldcontrolcontinuity andmanualK6a",
+      "result": "pass",
+      "evidence": [
+        "CONTEST189-01612",
+        "CONTEST189-02921",
+        "CONTEST189-01620"
+      ],
+      "limits": "Notindependentreview, scriptsnotsemanticgateproof."
+    },
+    {
+      "check": "K6bphysicalLAN/K6cInternet/K7/four-eightactualclients/generalvariants",
+      "result": "pending",
+      "evidence": [
+        "CONTEST189-01615"
+      ],
+      "limits": "Needcontrolledsecondhost/endpointrecipe; virtualsamehostnotphysicalLAN."
+    }
+  ],
+  "evidence": [],
+  "evidence_manifests": [
+    {
+      "path": "docs/evidence/checkpoints/evidence/CP189-current-basic-contest.json",
+      "bytes": 811358,
+      "sha256": "f801bc5febb8a794535eee9fccf4455a8c38f066195344a769766812b5624943",
+      "count": 3081
+    }
+  ],
+  "delta": {
+    "added": [
+      "CurrentbasicRoller17actualtwo-contenderproduction/singleeffect plus twonormalcontestedepochs/rolebaseline/reset/peer/life/Ready2.",
+      "CodexmanualK6a samehostscopeacceptance andnextLANpreflight; K6overall/networkvariantsopen."
+    ],
+    "corrected": [
+      "Commonbaseline5 assumption contradictedbyCP188andcurrentB4→5native; fixanalyzernotraw.",
+      "Controllerlongreturn notfixedby20tiny pulses; reusecoarsecorridor input beforefinebounds, keepoldpartial.",
+      "CP188PR260merge andcurrentbasiccontestgap nowhasnewproof; historicalsnapshotsnotrewritten."
+    ],
+    "superseded": [
+      "NEXT-K6A-CURRENT-CONTEST closednarrowly, NEXT-K6B-LAN-PREFLIGHT active."
+    ]
+  },
+  "blockers": [
+    "Actualsecondcontrolledphysicalhost/endpoint forK6b notestablished; currentprivatenamespaces onlysamehost. Needrecipe/port/isolation/rollback beforeLANruntime.",
+    "Fullaccountauth/codec/142freshness/distance/fairness/generalreset/allitems/maps/NATrelay/Internet/four-eightactualclients/originalauthority remainunknown/backlogbytrigger."
+  ],
+  "next_steps": [
+    {
+      "id": "NEXT-K6A-CURRENT-CONTEST",
+      "task": "KRE-005b",
+      "state": "closed",
+      "action": "CP189 currentnativecontest/twonormalcycles/reset/peer/life +continuity/manualK6ascope accepted, independentEOFCP188 retained.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-K6B-LAN-PREFLIGHT",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "PLAN:sourcefirstCP141146/preset/servicebindpeerIP/isolation, prepareactualtwo-controlled-host recipe; absentsecondendpoint explicitblocker, continueindependentdeployment/servicepreparation, no externalnetworkscan/liveNexon.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    }
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-11-07T05:58:00.989600+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "Codexsolo/nativeRE/runtime/code/selfcheck/manualK6aauthority; reviewwaived notindependentapproved. ExactheadPRchecks beforemerge.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Owner explicitly requested solo, no workers/review."
+    }
+  },
+  "docs_sync": [
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "CP189currentcontest/normalreset/limits/K6ascope/LANgap/CP188merged synchronizedbeforecomplete; AUD056next192 unchanged."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "CP189currentcontest/normalreset/limits/K6ascope/LANgap/CP188merged synchronizedbeforecomplete; AUD056next192 unchanged."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "updated",
+      "reason": "CP189currentcontest/normalreset/limits/K6ascope/LANgap/CP188merged synchronizedbeforecomplete; AUD056next192 unchanged."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "updated",
+      "reason": "CP189currentcontest/normalreset/limits/K6ascope/LANgap/CP188merged synchronizedbeforecomplete; AUD056next192 unchanged."
+    },
+    {
+      "path": "docs/features.json",
+      "state": "updated",
+      "reason": "CP189currentcontest/normalreset/limits/K6ascope/LANgap/CP188merged synchronizedbeforecomplete; AUD056next192 unchanged."
+    },
+    {
+      "path": "docs/COVERAGE.md",
+      "state": "updated",
+      "reason": "CP189currentcontest/normalreset/limits/K6ascope/LANgap/CP188merged synchronizedbeforecomplete; AUD056next192 unchanged."
+    },
+    {
+      "path": "docs/evidence/peer-endpoints/README.md",
+      "state": "updated",
+      "reason": "CP189currentcontest/normalreset/limits/K6ascope/LANgap/CP188merged synchronizedbeforecomplete; AUD056next192 unchanged."
+    },
+    {
+      "path": "docs/evidence/peer-endpoints/k6a-acceptance.json",
+      "state": "updated",
+      "reason": "CP189currentcontest/normalreset/limits/K6ascope/LANgap/CP188merged synchronizedbeforecomplete; AUD056next192 unchanged."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/review.json",
+      "state": "updated",
+      "reason": "CP189currentcontest/normalreset/limits/K6ascope/LANgap/CP188merged synchronizedbeforecomplete; AUD056next192 unchanged."
+    }
+  ]
+}

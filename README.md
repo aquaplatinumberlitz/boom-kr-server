@@ -37,7 +37,7 @@ Tra checkpoint: `python3 tools/checkpoints.py latest`, `show CPxxx`, `evidence C
 giữ record cũ nguyên object. Không cần đọc manifest lớn.
 
 Hai copy KR Wine đã chạy login/sảnh/phòng/Battle và các chu kỳ kết quả/reset có bằng chứng;
-**K5 basic local đã nghiệm thu CP188; K6a, LAN hoặc Internet còn mở**. [Movement/terrain hai vòng](docs/PROTOCOL.md#current-movement-cycles),
+**K5 basic local đạt CP188; K6a local đạt CP189. LAN/Internet còn mở**. [Movement/terrain hai vòng](docs/PROTOCOL.md#current-movement-cycles),
 [kim/reset](docs/PROTOCOL.md#needle-round-reset), [cứu hai chiều và hai kết quả](docs/PROTOCOL.md#rescue-two-results),
 [deep chain/reset](docs/PROTOCOL.md#recursive-chain-cycles) giữ phạm vi và giới hạn tại nguồn chuẩn.
 
@@ -53,10 +53,10 @@ auth137/137/errors0 → channel socket mới; hello/mode/seq reset được đo 
 [run/hash](docs/evidence/live-codec-stream/README.md#cp181). CP180 split/coalesced/CRCcontrol đã merge
 [PR252](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/252) tại`fe242cc`.
 
-**K6/K7, K6a/trận đầy đủ/LAN/Internet vẫn mở. K3 local đạt CP186; K4 local đạt CP187; K5 basic đạt CP188**,
+**K6b LAN/K6c Internet/K7 vẫn mở. K3 local CP186, K4 local CP187, K5 basic CP188 và K6a local CP189 đã đạt riêng scope**,
 [nghiệm thu/giới hạn](docs/PLAN.md#k3-acceptance). Fullgrammar/unknownheader/prefix/mode và
 accountauthority chưa được khôi phục đầy đủ; K2 không nghiệm thu các phần đó. Thứ tự tiếp ở
-[PLAN](docs/PLAN.md#current-order): khép integration tranh item cho K6a trên profile hiện hành, không lặp knowncodec/room/law/wiki.
+[PLAN](docs/PLAN.md#current-order): chuẩn bị recipe K6b trên hai máy do dự án kiểm soát; giữ scope mạng cô lập.
 CP181 đã merge [PR253](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/253) tại `5a154e5`.
 **CP184: identity291 đã tích hợp opt-in vào service.** Hai run A đã hiện tên ở sảnh rồi tạo phòng,
 nhận roster/map; native framer nhận sequence43…73 liên tục, next76. [Contract/giới hạn](docs/PROTOCOL.md#own-profile-integration),
@@ -80,8 +80,13 @@ Run CP187 vẫn là lịch sử partial ở input vòng2; [CP188](docs/PROTOCOL.
 CurrentAB291 có hai normal outcome/reset, hai chiều peer và hai owner bom; run riêng đã đo pending
 B-host EOF/A cleanup/fence. [Contract/giới hạn](docs/PROTOCOL.md#current-basic-cycles-291),
 [recipe/hash và partial giữ nguyên](docs/evidence/peer-endpoints/README.md#cp188).
-K6a còn phép kiểm tranh item trên profile basic hiện hành; không ghép ca cũ thành cùng-run.
+Tại CP188 còn currentbasiccontest; CP189 bổ sung bên dưới, không thay kết quả lịch sử.
 CP187 đã merge [PR259](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/259) tại `e57e6283`.
+**CP189: K6a basic local đạt** sau currentcontesteditem/two-normalcycles/reset/nativepeer/life
+và đối chiếu CP188Bowner/EOF riêng; [scope/giới hạn](docs/PLAN.md#k6a-acceptance),
+[recipe/raw/hash](docs/evidence/peer-endpoints/README.md#cp189). Hai claim thật trên production,
+mộtwinner/effect/view; baseline stat riêng A5/B4. Không physicalLAN/Internet/bốn–tám actualclient.
+CP188 đã merge [PR260](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/260) tại`2ea548bb`.
 AUD056 periodic qua188, audit kế **CP192**. [Review waived](docs/evidence/checkpoints/review-waiver.json).
 
 Đích đầu: hai client thật chơi hai trận liên tiếp; mở bốn client và hardening sau đó.
