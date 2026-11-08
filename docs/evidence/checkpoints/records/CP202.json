@@ -1,0 +1,235 @@
+{
+  "id": "CP202",
+  "previous": "CP201",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-08T01:13:47.127638+00:00",
+  "context_commit": "74d8e301d13ff5dabd7e076bfa27895c114674b1",
+  "owner": "Codex",
+  "reviewer": "Codex",
+  "question": "CancurrentfouractualKRcompleteoppositenormal2v2outcomes/fourrow175/180/reset/Ready2Start2/Start3byreusingexistingreport/rankcontractsandCP201raw?",
+  "scope": "Source-firstKRCP023028102103200201/VNoc_e-game397425. Decodeexisting4native127, copiednative1754rowparser552, opt-inthreepeer17/19/21/currentteams/survivor/drain/rank/resetservice. Same4actualWine2normaloutcomes/reset/Start3, no item/terrain/mode/fullauthority/K7Internetclaim.",
+  "artifacts": [
+    {
+      "name": "OriginalKR00967unchanged",
+      "sha256": "a52545c14b1fea423de655c3163d6360b628d61c1cd472b46fdbc8a9ffe15f4e"
+    },
+    {
+      "name": "CurrentWinecopy_import_ABI_corrected_offline_only",
+      "sha256": "4b781fbcea21e0f6294c729b63be86ab2953d60ad83b0d0c9219359f826107ed"
+    }
+  ],
+  "locators": [
+    "KRoriginala52545c14b1fea423de655c3163d6360b628d61c1cd472b46fdbc8a9ffe15f4e/currentcopy4b781fbcea21e0f6294c729b63be86ab2953d60ad83b0d0c9219359f826107ed; E85B60peer/secureactor+28/52A350getter;175E5F610/E5F67B/E3EB20/E3EDBE/E610A4,180E64950/E652C5.",
+    "Run91e850556eac4e4cceb40f440dd4a9ca24fb850f7b36c4d0c094ff8716db7adb/234.290748679s/1198raw/269frozen/exit0/cleanup0/1910checks/32getteremulation;16sameTCP/keys12345,12346,12347/4actual3clocks.",
+    "Native175featureoffheader9FF/16header/4populated131+12empty=552inner/562outer; pre175lifebothroundall4views[1,0,1,0]then[0,1,0,1]; nativeranks[2,1,2,1]then[1,2,1,2]. PeerFinish170cursor0afterreturnnotfullparseproof."
+  ],
+  "findings": [
+    {
+      "summary": "ReuseCP201sealedactual127:4trap17/3death19 plusopaque39/40; exactknown17/19envelopesfit,no rediscoveryrun. VNoc_e-game397425 runtime2/team-survivor/result/resetprovidesarchitecturereferenceonly; KRwire/IDs/layoutremainseparate. Copiednative175reads16rows/cursors16,147,278,409,540..552, notnativefullcallbackbyitself.",
+      "source": "kr_static",
+      "status": "confirmed",
+      "method": "emulation",
+      "canonical": "docs/PROTOCOL.md#four-two-team-cycles",
+      "evidence": [
+        "TEAM202-01377",
+        "TEAM202-01265",
+        "TEAM202-01266",
+        "TEAM202-01276"
+      ],
+      "limits": "Same4actualKR00967Wine4b/16TCP/independentnetns/privateLAN/ExVillage01/Free0/declared2v2. ActualnormalSpace/selfbombtrap/death→threepeer170/native56/1→postdeathsurvivors21→552inner175/562outer/1803/reset110/actualReady2Start2/oppositeoutcome/Start3clocks. Report-deriveddesign/teamrank/zeroeconomy/fuse6/settle8 areemulatorpolicy, notoriginalserverauthority/authlife; noitems/rescue/needle/terrain/fullBattle/Internet/K7claim. PeerFinishcursor0afterreturnnotusedasfull170parseproof; pre175protectedstatematchindependent. Remainingdead-owner118admission/generalstale/malformed/backpressure/rate-limit/restart/persistence/fourportableopen. Reviewwaived; CP201mergedPR273/74d8e301; AUD059through200/next204; CP202exactheadPRrequired."
+    },
+    {
+      "summary": "SamefouractualWine16TCP2normal2v2outcomes: R1A/CactualSpace118159158→native12717/19→3peer170→B/Dfresh21→175fourrows/180/reset;R2B/Ddead→A/Cwin; actualReady2Start2/Ready3Start3/threeclocks/currentkeys/seq. All4viewpre175lifeandnativeparsedranksmatch; screenshot4namedrowsoppositewinners.1910checks/32nativegetteremulationseparate.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#four-two-team-cycles",
+      "evidence": [
+        "TEAM202-01569",
+        "TEAM202-01262",
+        "TEAM202-01277",
+        "TEAM202-01238",
+        "TEAM202-00469",
+        "TEAM202-00130"
+      ],
+      "limits": "Same4actualKR00967Wine4b/16TCP/independentnetns/privateLAN/ExVillage01/Free0/declared2v2. ActualnormalSpace/selfbombtrap/death→threepeer170/native56/1→postdeathsurvivors21→552inner175/562outer/1803/reset110/actualReady2Start2/oppositeoutcome/Start3clocks. Report-deriveddesign/teamrank/zeroeconomy/fuse6/settle8 areemulatorpolicy, notoriginalserverauthority/authlife; noitems/rescue/needle/terrain/fullBattle/Internet/K7claim. PeerFinishcursor0afterreturnnotusedasfull170parseproof; pre175protectedstatematchindependent. Remainingdead-owner118admission/generalstale/malformed/backpressure/rate-limit/restart/persistence/fourportableopen. Reviewwaived; CP201mergedPR273/74d8e301; AUD059through200/next204; CP202exactheadPRrequired."
+    },
+    {
+      "summary": "Opt-infour_battle_policy/teamcurrentroster/reportfreshnessboundslot/knownblob/duplicate/19after17/noresurrection/threepeers/no-self/drainedpending/postlatestdeathblast21/settle8s. Teamrank1/2/economy0/fuse6/reportderivedauthoritydesign. Fourrow175552/180/110reset/newroundclearslife99peerbutcursorpersists.323server/230realTCPcontrols; normal4runtimeindependent.",
+      "source": "design",
+      "status": "design",
+      "method": "design",
+      "canonical": "docs/PROTOCOL.md#four-two-team-cycles",
+      "evidence": [
+        "TEAM202-01608",
+        "TEAM202-01611",
+        "TEAM202-01634",
+        "TEAM202-01375",
+        "TEAM202-01279"
+      ],
+      "limits": "Same4actualKR00967Wine4b/16TCP/independentnetns/privateLAN/ExVillage01/Free0/declared2v2. ActualnormalSpace/selfbombtrap/death→threepeer170/native56/1→postdeathsurvivors21→552inner175/562outer/1803/reset110/actualReady2Start2/oppositeoutcome/Start3clocks. Report-deriveddesign/teamrank/zeroeconomy/fuse6/settle8 areemulatorpolicy, notoriginalserverauthority/authlife; noitems/rescue/needle/terrain/fullBattle/Internet/K7claim. PeerFinishcursor0afterreturnnotusedasfull170parseproof; pre175protectedstatematchindependent. Remainingdead-owner118admission/generalstale/malformed/backpressure/rate-limit/restart/persistence/fourportableopen. Reviewwaived; CP201mergedPR273/74d8e301; AUD059through200/next204; CP202exactheadPRrequired."
+    },
+    {
+      "summary": "GDB170FinishBreakpointobservescursor0afterreturnbutprotected56→1andpre175statematchindependent; notfull170parseproof/resetcause.175562outer/552innerand1803infunctioncursors/errors0realruntime. NewE14360observerESPentryargfixedinnewrecipeonly; CP201immutable. InitialTCPmetadatafailurekept/sendadapterrecipientroleexplicit.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#four-two-team-cycles",
+      "evidence": [
+        "TEAM202-01569",
+        "TEAM202-01255",
+        "TEAM202-01253",
+        "TEAM202-01278",
+        "TEAM202-01376"
+      ],
+      "limits": "Same4actualKR00967Wine4b/16TCP/independentnetns/privateLAN/ExVillage01/Free0/declared2v2. ActualnormalSpace/selfbombtrap/death→threepeer170/native56/1→postdeathsurvivors21→552inner175/562outer/1803/reset110/actualReady2Start2/oppositeoutcome/Start3clocks. Report-deriveddesign/teamrank/zeroeconomy/fuse6/settle8 areemulatorpolicy, notoriginalserverauthority/authlife; noitems/rescue/needle/terrain/fullBattle/Internet/K7claim. PeerFinishcursor0afterreturnnotusedasfull170parseproof; pre175protectedstatematchindependent. Remainingdead-owner118admission/generalstale/malformed/backpressure/rate-limit/restart/persistence/fourportableopen. Reviewwaived; CP201mergedPR273/74d8e301; AUD059through200/next204; CP202exactheadPRrequired."
+    },
+    {
+      "summary": "NEXT-K7-FOUR-BATTLE-OUTCOMEboundednormal2v2subscope resolved; next4inputguards(deadowner118/malformed/stale/currentepoch) thenfourportable/restart/boundedparser/backpressure/rate-limit/persistence/health. No4item/terrain/rescue/needleintegration/fullauth/InternetK7gate. Issue14updatedopen, canonicaldocslinked; CP201mergedPR273, audit204unchanged.",
+      "source": "design",
+      "status": "design",
+      "method": "design",
+      "canonical": "docs/PROTOCOL.md#four-two-team-cycles",
+      "evidence": [
+        "TEAM202-00044",
+        "TEAM202-00032",
+        "TEAM202-00021"
+      ],
+      "limits": "Same4actualKR00967Wine4b/16TCP/independentnetns/privateLAN/ExVillage01/Free0/declared2v2. ActualnormalSpace/selfbombtrap/death→threepeer170/native56/1→postdeathsurvivors21→552inner175/562outer/1803/reset110/actualReady2Start2/oppositeoutcome/Start3clocks. Report-deriveddesign/teamrank/zeroeconomy/fuse6/settle8 areemulatorpolicy, notoriginalserverauthority/authlife; noitems/rescue/needle/terrain/fullBattle/Internet/K7claim. PeerFinishcursor0afterreturnnotusedasfull170parseproof; pre175protectedstatematchindependent. Remainingdead-owner118admission/generalstale/malformed/backpressure/rate-limit/restart/persistence/fourportableopen. Reviewwaived; CP201mergedPR273/74d8e301; AUD059through200/next204; CP202exactheadPRrequired."
+    }
+  ],
+  "verification": [
+    {
+      "check": "Native4normal2v2oppositeoutcomes/rank4/reset/actualReady2Start2/Start3/seq/keys/cleanup",
+      "result": "pass",
+      "evidence": [
+        "TEAM202-01569",
+        "TEAM202-01277",
+        "TEAM202-01262"
+      ],
+      "limits": "Same4actualKR00967Wine4b/16TCP/independentnetns/privateLAN/ExVillage01/Free0/declared2v2. ActualnormalSpace/selfbombtrap/death→threepeer170/native56/1→postdeathsurvivors21→552inner175/562outer/1803/reset110/actualReady2Start2/oppositeoutcome/Start3clocks. Report-deriveddesign/teamrank/zeroeconomy/fuse6/settle8 areemulatorpolicy, notoriginalserverauthority/authlife; noitems/rescue/needle/terrain/fullBattle/Internet/K7claim. PeerFinishcursor0afterreturnnotusedasfull170parseproof; pre175protectedstatematchindependent. Remainingdead-owner118admission/generalstale/malformed/backpressure/rate-limit/restart/persistence/fourportableopen. Reviewwaived; CP201mergedPR273/74d8e301; AUD059through200/next204; CP202exactheadPRrequired."
+    },
+    {
+      "check": "323server/230realTCP/12bundleexport/43checkpoint/docs/catalog/artifacts5/diff",
+      "result": "pass",
+      "evidence": [
+        "TEAM202-01375",
+        "TEAM202-01279",
+        "TEAM202-00039",
+        "TEAM202-00041",
+        "TEAM202-00029",
+        "TEAM202-00028"
+      ],
+      "limits": "Generatedwire/TCPnotnativeoracle; fullhistory/exactheadbeforemerge."
+    },
+    {
+      "check": "Fourinputhardening/portable/restart/backpressure/rate-limit/persistence/K7Internet",
+      "result": "pending",
+      "evidence": [
+        "TEAM202-00044"
+      ],
+      "limits": "Normal2v2milestonenotgateclosure; nextdeadowner118guardthenremainingPLAN."
+    }
+  ],
+  "evidence": [],
+  "evidence_manifests": [
+    {
+      "path": "docs/evidence/checkpoints/evidence/CP202-four-two-team-cycles.json",
+      "bytes": 424587,
+      "sha256": "b24d6dfcdad400af4db7936d6f5526a08914ff4eea3528ecc3da4562a613af08",
+      "count": 1697
+    }
+  ],
+  "delta": {
+    "added": [
+      "Samefouractualnormal2v2oppositeoutcomes/native175fourrows/180/reset/Ready2Start2/Start3.",
+      "SourcefirstCP201actual127reuse+VNteamarchitectureavoidsreport/rankwireandsemanticsrediscovery; copiednative552parserseparate.",
+      "Opt-in4teamreport/result/resetpolicy/current3peerbroadcast/freshness/newroundcursorcontrols;323server/230TCP."
+    ],
+    "corrected": [
+      "AtCP201life/rank4/normal2v2resetmissing; CP202boundedimplementationandruntimeproofnowsolved.",
+      "170Finishcursor0notfullparseproof; no inferredresetcause; protectedstatesand175180infunctionproofseparate."
+    ],
+    "superseded": [
+      "NEXT-K7-FOUR-BATTLE-OUTCOMEcurrentactionresolvedfornormal2v2scope; NEXT-K7-FOUR-INPUT-GUARDSnowactive."
+    ]
+  },
+  "blockers": [
+    "Deadowner118notyetfencedbyaccepted19; current4malformed/stale/negativeinputcontrolsnotcomplete.",
+    "Fourportable/restart/boundedparser/backpressure/rate-limit/persistence/health andK6cInternet/K7/auth/generalresume remainopen.",
+    "No4items/terrain/rescue/needleintegration;175/settle/fuse/economy/teamreportauthorityareemulatorchoice; intermittentstartupJSONcauseunknown."
+  ],
+  "next_steps": [
+    {
+      "id": "NEXT-K7-FOUR-INPUT-GUARDS",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "PLANguardpost19owner118/malformed127/duplicates/tickrollback/currentmembership/newround; prove0newID/job/result/cursormutation andcurrentpositive, thenfourportable/hardening. No rerunreport/rank/roomRE. AuditCP204.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    }
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-11-08T01:13:47.127638+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "CodexsoloRE/code/runtime/selfcheck, reviewwaived notapproved; exactheadPRrequired.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Owner explicitly requested solo, no workers/review."
+    }
+  },
+  "docs_sync": [
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "CP202sourcefirst/current4normal2v2resultreset/observerlimits/remaininghardening synchronizedbeforecomplete; audit204unchanged."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "CP202sourcefirst/current4normal2v2resultreset/observerlimits/remaininghardening synchronizedbeforecomplete; audit204unchanged."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "updated",
+      "reason": "CP202sourcefirst/current4normal2v2resultreset/observerlimits/remaininghardening synchronizedbeforecomplete; audit204unchanged."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "updated",
+      "reason": "CP202sourcefirst/current4normal2v2resultreset/observerlimits/remaininghardening synchronizedbeforecomplete; audit204unchanged."
+    },
+    {
+      "path": "docs/features.json",
+      "state": "updated",
+      "reason": "CP202sourcefirst/current4normal2v2resultreset/observerlimits/remaininghardening synchronizedbeforecomplete; audit204unchanged."
+    },
+    {
+      "path": "docs/COVERAGE.md",
+      "state": "updated",
+      "reason": "CP202sourcefirst/current4normal2v2resultreset/observerlimits/remaininghardening synchronizedbeforecomplete; audit204unchanged."
+    },
+    {
+      "path": "docs/evidence/peer-endpoints/README.md",
+      "state": "updated",
+      "reason": "CP202sourcefirst/current4normal2v2resultreset/observerlimits/remaininghardening synchronizedbeforecomplete; audit204unchanged."
+    },
+    {
+      "path": "tools/README.md",
+      "state": "updated",
+      "reason": "CP202sourcefirst/current4normal2v2resultreset/observerlimits/remaininghardening synchronizedbeforecomplete; audit204unchanged."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/review.json",
+      "state": "updated",
+      "reason": "CP202sourcefirst/current4normal2v2resultreset/observerlimits/remaininghardening synchronizedbeforecomplete; audit204unchanged."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
+      "state": "updated",
+      "reason": "CP202sourcefirst/current4normal2v2resultreset/observerlimits/remaininghardening synchronizedbeforecomplete; audit204unchanged."
+    }
+  ]
+}

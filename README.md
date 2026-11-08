@@ -28,6 +28,10 @@ boom-kr-server/
 
 ## Tra nhanh và trạng thái hiện tại
 
+**CP202: cùng bốn KR Wine đã hoàn thành hai vòng 2v2, hai đội lần lượt thắng, kết quả/reset và Start3.**
+[Contract/giới hạn](docs/PROTOCOL.md#four-two-team-cycles), [raw/hash](docs/evidence/peer-endpoints/README.md#cp202).
+K7/Internet vẫn mở; bước tiếp tập trung guard input/lifecycle và đóng gói/hardening theo PLAN. Review waived; audit kế CP204.
+
 [Coverage và cây chức năng](docs/COVERAGE.md) trả lời: cơ chế nào hiện diện, mức RE/implementation/
 runtime nào có nguồn, còn thiếu gì và phép kiểm nào giải quyết. Mỗi ID dẫn thẳng contract/giới hạn,
 evidence/hash và câu hỏi; [PLAN](docs/PLAN.md#current-order) giữ duy nhất thứ tự công việc.
@@ -58,7 +62,7 @@ auth137/137/errors0 → channel socket mới; hello/mode/seq reset được đo 
 **K6c Internet/K7 vẫn mở; K6b LANgiảlập đạtCP191 theoowner. K3 local CP186, K4 local CP187, K5 basic CP188 và K6a local CP189 đã đạt riêng scope**,
 [nghiệm thu/giới hạn](docs/PLAN.md#k3-acceptance). Fullgrammar/unknownheader/prefix/mode và
 accountauthority chưa được khôi phục đầy đủ; K2 không nghiệm thu các phần đó. Thứ tự tiếp ở
-[PLAN](docs/PLAN.md#current-order): nhánh mạng/admission đã có CP192–198; bốn session vào Battle tại CP200, tiếp gameplay2v2 theo PLAN, giữ Internet gate mở.
+[PLAN](docs/PLAN.md#current-order): nhánh mạng/admission đã có CP192–198; bốn session vào Battle tại CP200, CP202đã có2v2haioutcomes/reset/Start3; tiếp hardening theo PLAN, giữ Internet gate mở.
 CP181 đã merge [PR253](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/253) tại `5a154e5`.
 **CP184: identity291 đã tích hợp opt-in vào service.** Hai run A đã hiện tên ở sảnh rồi tạo phòng,
 nhận roster/map; native framer nhận sequence43…73 liên tục, next76. [Contract/giới hạn](docs/PROTOCOL.md#own-profile-integration),

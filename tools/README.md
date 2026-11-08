@@ -151,3 +151,8 @@ CP201 thêm opt-in `--bomb-profile /absolute/local/four-bomb.json` cho entrypoin
 [Baseline/giới hạn](../docs/PROTOCOL.md#four-owner-bombs) chỉ profile/char đã đo; capacity/fuse là policy emulator.
 Không khai giữ CP200reject118; bật có159/158/reservation/fence, vẫn chưa life/result/reset2v2/fullmatch.
 Tests `python3 -m unittest server.test_four_bomb_policy`; không lấy generatedwire làm nativeoracle.
+
+CP202 entrypoint4 hỗ trợ `--battle-outcome` cùng `--bomb-profile`: bounded17/19/21→3peer, report-derived2v2/
+rank4/180/reset/Ready2Start2. [Contract/native2cycles/giới hạn](../docs/PROTOCOL.md#four-two-team-cycles).
+Không là item/terrain/rescue/needle4playerintegration hoặc hardened/publicservice; rank/economy/settle làdesign.
+`python3 -m unittest server.test_four_battle_policy` kiểm policy; native evidence riêng trong CP202.

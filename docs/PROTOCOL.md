@@ -5381,6 +5381,46 @@ Serviceproductionbind/153IPvẫnhard127; private-addressshims hiện làmeasurem
 Internet/K6c/NAT/relay/fullauth/authority/generalreset/gates mở; field99IP1/subtype39 vẫnunknown.
 
 
+<a id="four-two-team-cycles"></a>
+### Hai vòng 2v2 trên bốn client, kết quả/reset/Start3 — CP202
+
+[Recipe/raw/hash](evidence/peer-endpoints/README.md#cp202), [câu hỏi/giới hạn còn lại](RESEARCH.md#gap-lobby-identity-followup),
+[thứ tự duy nhất](PLAN.md#current-order). **kr_runtime/confirmed** cho cùng bốn KR00967 Wine copy4b,
+16TCP/4prefix/netns/IP riêng, ExVillage01/Free0, A+C team0/B+D team1; không Internet/K7 hoặc fullinventory.
+
+| Nguồn đối chiếu trước nhánh | Đã dùng trực tiếp | Delta phải kiểm KR |
+|---|---|---|
+| [KR report/rank CP023](#round-result), [peer CP028](#peer-events), [drain CP102](#drained-result-local-clear), CP201raw | 127/17,19blob;170prefix6/aux;175header16/row131/16slots/featureoff;1803; seq/key/fence | CP201chunks đã có4trap17/3death19; không chạy lại để khám phá envelope. Chuyển tới3peer thay vì một; 4 populated rows |
+| VN `boom-re/docs/oc_e-game.md` §397–425, hash ởsource-first | RuntimeVN2 tham chiếu phân đội/survivor→result→room; tránh RE lại ý nghĩa thắng đội/chu kỳ | VN168/173/offset/layout không chuyển KR; winner/rank/economy server giả lập phải khai design |
+| CP200/201 service4/native4 | Session/roster/121/153/currentstats/4owner118159158 đã có | Same4client hai normal2v2outcomes/reset/Ready2/Start2/Start3, không dùng forfeit hoặc syntheticguest |
+
+`--battle-outcome` opt-in cùng `--bomb-profile` dùng `four_battle_policy.py`: chỉ17/19/21 đã biết,
+currentmember/loaded/boundslot/knownblob, freshness riêng mỗi connection (giữ cursor qua Start), duplicate,
+19 phải sau current17; accepted19 không bị17/21 sau đó hồi sinh. Sub39/40 vẫn unsupported/opaque.
+17/19 dịch170 cho đúng ba peer, không phản xạ origin; commit marker/cursor sau send thành công.
+21 chỉprefix14; nếu đã trap thì phát170/prefix6 tới ba peer, không tự mở lại inventory/life.
+
+**Lựa chọn emulator/design:** đội chưa có accepted19 được coi còn người; chỉ kết thúc khi còn đúng một đội,
+ít nhất một survivor21 sau latestdeath/latestblast/currenttrap, không còn pendingbombticket và chờ8s.
+All-dead/tie, rescue18/needle/mode phụ không thuộc opt-in này. Rank cho cả đội thắng=1/đội thua=2, economy0;
+552raw=16header+4×131+12empty, header9=FF tắt feature bổ sung. Native copiedparser đọc16→147→278→409→540→552;
+đây chỉ emulation; runtime riêng bên dưới xác nhận toànconsumer. Không accountauth/authoritativealive/servergốc.
+
+**Run cùng bốn client:** R1 actualSpace A/C→bombIDs1/2, accepted12717→19 mỗi người, B/D21 sau death/blast;
+R2 actualSpace B/D→IDs3/4, A/C21. Mỗi17/19 có3recipient170; native remote actor đạt56 rồi1.
+Ngay trước175, cả4view đồng thuận R1states[1,0,1,0]/R2[0,1,0,1];32protectedwrapper đã kiểm lại native52A350
+trong emulation riêng. Native175 đọc562/562outer/errors0 và552/552inner/16rows, ranks[2,1,2,1] rồi[1,2,1,2].
+Ảnh đã đọc có4dòng/tên đúng/LOSE-PERFECT đổi đội. Mỗi180 đọc3/3/errors0; refresh110 cả4slot tới4view,
+actual95 củaBCD và104 củaA đưa Ready2/Start2 rồi Ready3/Start3/3nativeclocks mỗi view. Keys12345/12346/12347,
+cùng channels, seq tiếp tục. Không patch actor/forced19/resulttimer giả hoặc AB rankclone.
+
+**Giới hạn observer:** GDBFinishBreakpoint ở170 thấy cursor0 sau return dù protectedstates thay đổi đúng;
+không lấy cursor này làm full170parseproof hoặc suy cause reset. Nativepre175state và175/180 in-functioncursors
+là bằng chứng độc lập. ProbeE14360entryarg đã sửa ESP trên bản recipe mới; không sửa CP201raw.
+**Phần chưa harden:** deadowner118 còn phải guard theo accepted19; fourportable/restart/boundedparser/
+backpressure/rate-limit/persistence/health và genericstale/fullgrammar/authority còn thiếu. Items/terrain/kim/cứu
+của hai-client service không tự suy đã tích hợp bốn người. Không tự đóng K7 hoặc Internet từ hai normalcycles.
+
 <a id="four-owner-bombs"></a>
 ### Bốn owner bom: baseline →118→159→158 — CP201
 
@@ -5416,8 +5456,8 @@ fullconsumer158 có nguồn riêng với service/capture; không encoder tự si
 nhầm EBPargument tại functionentry, **không dùng matched_confirm_entity làm proof**; raw/script giữ nguyên,
 không làm lại run chỉ để sửa probe ngoài acceptance này. Chưa chứng minh mọi damage/chain/ownerdeath.
 316servertests/207realTCPcontrols kiểm4serials/duplicates/capacityD1-B2/16×159/16×158/EOFfence; đây là kiểm code,
-không thay native. Fuse/guard/lựa chọnrank chưa là servergốc. **Life127/survivor/rank1754rows/180/reset/Ready2/
-Start2 chưa được triển khai/nghiệm thu**; không port AB rank hoặc biến selftrap/forfeit thành2v2normalending.
+không thay native. Fuse/guard/lựa chọnrank chưa là servergốc. **Tại CP201, life127/survivor/rank1754rows/180/reset/Ready2/
+Start2 chưa được triển khai/nghiệm thu**; [CP202](#four-two-team-cycles) đã bổ sung trong scope2v2; không port AB rank hoặc biến selftrap/forfeit thành2v2normalending.
 
 Startup controls trước baseline: R1/R2 C SIGABRT và R3 A đi HTTPcontent→inputJSONempty→throw`expected value`.
 CP073 cache đã định danh content khác locale; chưa chứng minh mọi startupabort cùng cause. Candidatecopy8d7194fd

@@ -22,6 +22,7 @@ from server.room_team_mode import create_selector, replace_reply_selector
 # Production import is resolved when this staged module is promoted.
 from server import four_player_profile as fp
 from server.four_bomb_policy import FourBombAdmission
+from server.four_battle_policy import FourBattleReports, rank_body
 import json
 
 
@@ -42,7 +43,7 @@ def addresses(options):
 
 class FourPlayerService(ProbeService):
     def __init__(self, profile, out, source_ips, *, bind_ip='127.0.0.1',
-                 channel_ip=None, channel_port=None, bomb_profile=None):
+                 channel_ip=None, channel_port=None, bomb_profile=None, battle_outcome=False):
         # Validate/generate every supported input before creating an owner/socket.
         if struct.unpack_from('<I', profile.raw('auth_A'), 5)[0] != 4:
             raise ValueError('four sessions require measured auth4 success fixture')
@@ -71,6 +72,11 @@ class FourPlayerService(ProbeService):
         self.state['limits'] = ('Four local session room/loading/input transport controls only; '
                                 'no native four-client acceptance, Battle report/result authority, '
                                 'resume/replacement/auth/NAT discovery/Internet or gate.')
+        if type(battle_outcome) is not bool or (battle_outcome and bomb_profile is None):
+            self.selector.close()
+            raise ValueError("four Battle outcome requires explicit bomb profile")
+        self.battle_reports = (FourBattleReports(self.room, self.role_slots,
+            {r:m["team"] for r,m in fp.MEMBERS.items()}) if battle_outcome else None)
         self.bomb_admission = None
         self.bomb_jobs = []
         self.bomb_fuse_seconds = None
@@ -168,6 +174,9 @@ class FourPlayerService(ProbeService):
 
     def receive_channel(self, event, frame, sequence, body):
         opcode = struct.unpack_from('<I', frame, 5)[0];role = event['role']
+        if opcode == 127 and self.battle_reports is not None:
+            self.receive_four_report(event, frame, sequence, body)
+            return
         if opcode == 118 and self.bomb_admission is not None:
             self.receive_bomb(event, frame, sequence, body)
             return
@@ -235,7 +244,7 @@ class FourPlayerService(ProbeService):
                     self.profile.body('player_B'), fp.MEMBERS[role], ready=True))
         elif opcode == 104 and role == 'A':
             peers = self.peers()
-            if (self.room.active or self.round['index'] or self.state.get('membership_broken')
+            if (self.room.active or (self.round['index'] and not self.round.get('refresh')) or self.state.get('membership_broken')
                     or {e['role'] for e in peers} != set(fp.ROLES)
                     or not all(e.get('guest_ready_received') for e in peers if e['role'] != 'A')):
                 self.reject(event, opcode, sequence, 'four_members_ready_required')
@@ -254,6 +263,8 @@ class FourPlayerService(ProbeService):
 
     def start_round(self):
         key = self.room.begin();now = time.monotonic_ns()
+        if self.round['index']:
+            self.state['round_history'].append(self.round)
         self.round = dict(index=self.room.generation, key=key, host_role='A',
             roster=[dict(role=r, **fp.MEMBERS[r]) for r in fp.ROLES],
             loading=dict(generation=self.room.generation, started_ns=now,
@@ -262,7 +273,11 @@ class FourPlayerService(ProbeService):
         self.state['current_round'] = self.round
         if self.bomb_admission is not None:
             self.bomb_admission.begin()
+        if self.battle_reports is not None:
+            self.battle_reports.begin()
         for event in self.peers():
+            for marker in ['init99','go_response_sent','play_response_sent','peer153_sent']:
+                event.pop(marker, None)
             self.send(event, 'floor', 'floor582')
             event['start_response_sent'] = self.send(event, 'start', 'start121', body=self.start_body)
 
@@ -305,14 +320,66 @@ class FourPlayerService(ProbeService):
             else:
                 payload = codec.pack_fields([1,ident,0,2,0xFFFFFFFF,255],[1,2,1,4,4,1])
                 record['broadcast158'] = self.broadcast('blast','four-blast158-'+str(ident),body=payload)
+                if self.battle_reports is not None:
+                    self.battle_reports.last_blast_ns = max(z['monotonic_ns'] for z in record['broadcast158'])
             self.state['bomb_deadlines'].append(dict(id=ident,generation=record['round'],
                 rejected=expiry.get('rejected'),monotonic_ns=time.monotonic_ns()))
+
+    def receive_four_report(self, event, frame, sequence, body):
+        report = dict(role=event['role'], round=self.room.generation, seq=sequence,
+            monotonic_ns=time.monotonic_ns(), frame_sha256=hashlib.sha256(frame).hexdigest(),
+            body_sha256=hashlib.sha256(body).hexdigest(), payload_hex=body.hex())
+        self.state['event_reports'].append(report)
+        if (event not in self.peers() or not event.get('peer153_sent')
+                or self.state.get('membership_broken')):
+            report['rejected'] = 'not_current_loaded_member'
+            return
+        prepared = self.battle_reports.prepare(event['role'], body, report['monotonic_ns'])
+        if 'rejected' in prepared:
+            report.update(prepared)
+            return
+        payload = prepared.pop('forward_payload')
+        report.update(prepared)
+        # No self reflection: each of three current peers receives a fresh frame.
+        if report['forward']:
+            report['forward170'] = [dict(role=peer['role'], **self.send(peer, 'start',
+                f"four-event170-{report['subtype']}-r{self.room.generation}",
+                opcode=170, body=payload)) for peer in self.peers() if peer is not event]
+        self.battle_reports.commit(report)
+
+    def tick_outcome(self, now):
+        if self.battle_reports is None:
+            return
+        if self.room.active and not self.round.get('rank'):
+            pending = any(self.room.fence.rejection(q['ticket']) is None
+                          for q in self.bomb_admission.pending.values())
+            result = self.battle_reports.outcome(now, pending)
+            if result is not None:
+                body = rank_body(result['winner_team'], self.battle_reports.teams)
+                # Finish fences all deferred current work before rank emission.
+                self.room.finish()
+                self.round['rank'] = dict(monotonic_ns=now, **result,
+                    broadcast=self.broadcast('rank', 'four-rank175', body=body))
+        rank = self.round.get('rank')
+        if rank and not self.round.get('return') and now-rank['monotonic_ns']>=5*10**9:
+            self.round['return'] = dict(monotonic_ns=now,
+                broadcast=self.broadcast('return', 'four-return180'))
+        returned = self.round.get('return')
+        if returned and not self.round.get('refresh') and now-returned['monotonic_ns']>=3*10**9:
+            sent = []
+            for role in fp.ROLES:
+                sent += self.broadcast('slot_B', 'four-room110-'+role, opcode=110,
+                    body=fp.slot_body(self.profile.body('player_B'), fp.MEMBERS[role], chief=role=='A'))
+            self.round['refresh'] = dict(monotonic_ns=now, broadcast=sent)
+            for peer in self.peers():
+                peer.pop('guest_ready_received', None)
 
     def tick(self):
         now = time.monotonic_ns()
         self.tick_bombs()
         if self.state.get('membership_broken'):
             return
+        self.tick_outcome(now)
         for event in self.events:
             if event['reply_ordinal'] != 4 or event.get('closed'):
                 continue
@@ -386,6 +453,7 @@ def main():
     parser.add_argument('--profile', type=Path, required=True)
     parser.add_argument('--out', type=Path, required=True)
     parser.add_argument('--bomb-profile', type=Path, help='Explicit measured/operator four-role capacity/power/fuse JSON; opt-in')
+    parser.add_argument('--battle-outcome', action='store_true', help='Opt-in report-derived four-member 2v2 life/result/reset policy; requires --bomb-profile')
     parser.add_argument('--source-ip', action='append', required=True, metavar='ROLE=IPv4')
     parser.add_argument('--bind-ip', default='127.0.0.1')
     parser.add_argument('--port', type=int, action='append', required=True)
@@ -398,7 +466,8 @@ def main():
             raise ValueError('invalid listener port')
         service = FourPlayerService(FixtureProfile(args.profile), args.out, ips,
             bind_ip=args.bind_ip, channel_ip=args.channel_ip, channel_port=args.channel_port,
-            bomb_profile=json.loads(args.bomb_profile.read_text()) if args.bomb_profile else None)
+            bomb_profile=json.loads(args.bomb_profile.read_text()) if args.bomb_profile else None,
+            battle_outcome=args.battle_outcome)
     except ValueError as error:
         parser.error(str(error))
     args.out.mkdir(parents=True, exist_ok=True)

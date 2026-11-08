@@ -155,11 +155,11 @@
         "KR-F001",
         "KR-F015"
       ],
-      "known": "CP201fouractualclockcapacity1/2/1/1/power1/charmaxima/native4owner118→4recipient159entity/full39→158full13;316server/207TCP/1036nativechecks. CP2004session/movementmergedPR272. Failedstartup/conditionalJSONguardcandidate kept separate.",
-      "remaining": "Life127/2v2survivor/authority/rank175fourrows/180/reset/Ready2/Start2/samefourclientnormalending; fourportable/hardening/K7/Internet/auth stillopen.",
-      "next_test": "PLAN NEXT-K7-FOUR-BATTLE-OUTCOME: reuseknownlife/report/rankconsumer/builders thenminimalscoped2v2policy/negativecontrols/native4row175180/reset; noABrankclone/forfeitnormalwin.",
+      "known": "CP202same4actualWine/2normal2v2oppositeoutcomes/nativepre175life/fourrow175/180/reset/Ready2Start2/Start3;323server/230TCP/1910nativechecks/32getteremulation. CP201mergedPR273.",
+      "remaining": "Deadowner118guard/currentmalformed/stalecontrols; fourportable/restart/boundedparser/backpressure/rate-limit/persistence/health/K7/Internet/auth remainopen. No4items/terrain/rescue/needleintegration.",
+      "next_test": "PLAN NEXT-K7-FOUR-INPUT-GUARDS: post19bomb/duplicate127/tickrollback/currentgeneration/IDjobresultnegatives then fourportable/hardening; reuseknownreport/rank.",
       "acceptance": "Epic checklist: linkedscopedtask/evidence+authoritymatrix vàacceptancegate ởPLAN; từngtaskđóng khôngđóngepic/K5/K6a.",
-      "reason": "Confirmed4bombs/4viewsnotenough4fullmatch/resultreset/gate; AUD059through200/next204.",
+      "reason": "Normal4teamending/resetmilestone achieved, but nothardened/fullfourgameplay/Internet/K7. AUD059through200/next204.",
       "sources": [
         "docs/PROTOCOL.md#authority",
         "docs/RESEARCH.md#feature-gaps",
@@ -232,7 +232,8 @@
         "docs/PROTOCOL.md#native-interleaved-startup",
         "docs/PROTOCOL.md#four-slot-native-consumers",
         "docs/PROTOCOL.md#four-session-native",
-        "docs/PROTOCOL.md#four-owner-bombs"
+        "docs/PROTOCOL.md#four-owner-bombs",
+        "docs/PROTOCOL.md#four-two-team-cycles"
       ],
       "evidence": [
         "docs/evidence/current-movement-cycles/README.md",
@@ -302,7 +303,8 @@
         "docs/evidence/peer-endpoints/README.md#cp198",
         "docs/evidence/peer-endpoints/README.md#cp199",
         "docs/evidence/peer-endpoints/README.md#cp200",
-        "docs/evidence/peer-endpoints/README.md#cp201"
+        "docs/evidence/peer-endpoints/README.md#cp201",
+        "docs/evidence/peer-endpoints/README.md#cp202"
       ],
       "prs": [
         173,
