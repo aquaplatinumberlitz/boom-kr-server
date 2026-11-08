@@ -1,0 +1,11 @@
+{
+  "schema": "kre-owner-directive-v1",
+  "recorded_utc": "2026-11-08T07:59:18.354671+00:00",
+  "source": "owner_explicit_user_message",
+  "status": "design",
+  "quote": "Vừa RE vừa xây Rust. Chuyển từng phần đã có contract ổn định và bằng chứng phù hợp sang Rust. Đợt này: nghiên cứu hiện trạng và bàn giao kế hoạch khả thi, chi tiết. Chưa triển khai server Rust hoặc thay đổi hành vi runtime.",
+  "decision": "Nghiên cứu và lập kế hoạch Rust tương thích KR00967 tới dịch vụ game hoàn chỉnh, giữ Python làm công cụ RE/reference/differential. Chỉ RE gap đang chặn implementation hoặc nghiệm thu; không chờ full RE. Đợt này chỉ docs/commit/PR, không tạo Rust repo/worktree/implementation hoặc chạy thêm experiment.",
+  "applies_to": "KRE-074/#285 và thứ tự PLAN sau CP212; source team WIP/raw/seals giữ nguyên",
+  "limits": "Không nhập boom-rs scope/protocol/authority hoặc port VN opcode/layout; không tự triển khai giả thuyết. Wine/LANgiảlập/K6cWANgiảlập/K7scoped giữ acceptance. Internet thật chưa kiểm, backlog không dependency ngầm.",
+  "canonical": "docs/PLAN.md#rust-service-milestones"
+}

@@ -28,6 +28,23 @@ boom-kr-server/
 
 ## Tra nhanh và trạng thái hiện tại
 
+**Kế hoạch Rust đã lập tại CP213; chưa triển khai Rust.**
+[Lát cắt đầu và thứ tự milestone](docs/PLAN.md#rust-service-milestones):
+codec/connection → localidentity/sảnh/phòng → Battlehai người/reset → bốn/tám theo contract;
+account/DB làm độc lập sớm, sau đó inventory/result-reward và vận hành.
+[Thiết kế, ma trận readiness và nguồn tái sử dụng](docs/RUST_SERVICE_ARCHITECTURE.md),
+[survey/hash](docs/evidence/rust-service/README.md). Đề xuất cùng repo, rust/ với hai crate kr-wire/kr-service,
+một process Linux; Python giữ RE/reference/differential. Không tạo Cargo/repo/worktree Rust trong đợt này.
+Authbridge/token/ownership và inventory-reward projection cần đo KR riêng; gate demo không fullservice.
+
+**CP213: tám KR Wine đã hoàn thành hai kết quả đối nghịch/reset/Start3 ở Free 1–7 và Manner 4–4.**
+[Contract/giới hạn](docs/PROTOCOL.md#eight-team-variants), [raw/hash](docs/evidence/eight-player/README.md#cp213).
+Free1–7:4344gameplay+125modejoins; Manner4–4:4357+124,128copiedgetters mỗi run; selector0/1 giữ qua86/87/180.
+Fixedoperatorroster, chưa interactiveC2Steamchange. Các ca Manner1–7 copy4b dừng trước Start do startup; ca támactual trên alternatecopy8d đã trả7/no104,
+1543checks/140.441s/cleanup0; guardJSONkhônghit nên khôngstartupfixclaim. CP163 mộtactual/tám tổnghợp giữriêng.
+K6c WAN giả lập/K7 giữ đạt scope CP212; **Internet thật chưa kiểm**. CP213 docs/evidence được giao qua PR; code teamvariants vẫn WIP chưa merge, audit kếCP216.
+Bước kế duy nhất ở [PLAN](docs/PLAN.md#current-order); không lặp codec/rank/teamguard đã đo.
+
 **CP212: K6c WAN giả lập đạt; K7 hardening/demo bốn client đạt trong scope đã đối chiếu. Internet thật chưa kiểm.**
 [Chỉ đạo chủ dự án](docs/evidence/owner-directives/emulated-wan.json) thay duy nhất môi trường K6c;
 [acceptance K6c](docs/PLAN.md#k6c-acceptance) và [đánh giá lại từng tiêu chí K7](docs/PLAN.md#k7-evidence-review)
@@ -36,7 +53,7 @@ CP196 host EOF/cleanup/fence và CP203–207 đóng gói/bounds/identity/health/
 [Topology/tham số/giới hạn](docs/PROTOCOL.md#emulated-wan-acceptance), [raw/hash/decision](docs/evidence/peer-endpoints/README.md#cp212).
 Không chạy lại phần đã đủ bằng chứng; không nghiệm thu Internet/ISP/CGNAT thực tế, full game/account auth hoặc mọi mode/map/item.
 Các giới hạn đó là backlog riêng; tám client không phải điều kiện K6c/K7. Codex tự kiểm, review độc lập waived;
-CP212 đang giao qua PR, AUD062 qua212/audit kếCP216. Công việc kế tiếp duy nhất ở [PLAN](docs/PLAN.md#current-order).
+CP212 đã merge [PR284](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/284)/`c0c7b94`, AUD062 qua212/audit kếCP216. Công việc kế tiếp duy nhất ở [PLAN](docs/PLAN.md#current-order).
 
 Các đoạn CP bên dưới ghi **trạng thái tại checkpoint nêu tên**, kể cả K6c/K7 từng còn mở; quyết định hiện hành ở trên.
 

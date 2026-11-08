@@ -13,6 +13,12 @@ Khi đổi cơ chế/trạng thái/câu hỏi, đồng bộ catalog rồi sinh l
 Nguồn cũ/migration ở REFERENCES, metadata bằng chứng ở `docs/evidence/`.
 Docs viết tiếng Việt; ID/API/type kỹ thuật giữ nguyên.
 
+Theo [chỉ đạo công ty08/11](docs/evidence/owner-directives/rust-service.json), chuyển từng contract ổn định
+sang Rust, giữ Python RE/reference; [PLAN](docs/PLAN.md#rust-service-milestones) giữ thứ tự. Đợt KRE-074
+chỉ khảo sát/thiết kế, không tạo Rust source/repo/worktree hoặc đổi runtime. Khi mở implementation sau này,
+vị trí thiết kế là rust/ trong repo này theo [kiến trúc](docs/RUST_SERVICE_ARCHITECTURE.md); không nhập
+scope/wire/authority của boom-rs. Quyền triển khai của đợt khác không bỏ giới hạn planning-only lần này.
+
 Mọi code/docs/tool mới thuộc repo này: `server/`, `tools/`, `docs/`. Không tiếp tục ghi bản tương ứng
 vào boom-rs, boom-re hoặc boomkr-re. Không nhập nguyên code legacy; dùng làm reference có provenance.
 

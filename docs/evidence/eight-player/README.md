@@ -224,3 +224,40 @@ bundleCWD choTCPconstructor, khôngsửagóihaycodegiữa run. Freeze/seal đầ
 
 Khôngfull8items-terrain-kim-cứu/1–7actual/Manner8/interactiveC2Steamchange/9native/Internet/K7/fullauth-resume.
 Reviewwaived; AUD061qua208/audit kếCP212; nextteamvariants ởPLAN. Khônggateclosuretừpackagedemo.
+
+<a id="cp213"></a>
+## CP213 — actual8 Free1–7/Manner4–4 twooutcomes; startupemptyJSON/negative controls
+
+[Contract/reuse/giới hạn](../../PROTOCOL.md#eight-team-variants), [PLAN](../../PLAN.md#current-order).
+Nguồn CP147/162/163/210/211 và VNroom89(referenceonly) giữhash/locator trong `eight-team-variants-r1/source-first.json`;
+startupcacheCP073201 được đối chiếu tại `startup-source-reuse.json`. Không nativefunction/codec/175/mapRE lại.
+
+- `local/research/codex/eight-team-variants-r1/manner-four-four/`: SHA`af7acda326fa556f2390c135ebada709f3a97015ef9849ffd04e30e1f0371b56`,
+  369.935556539s/2102raw/929pins;4357gameplay+124mode/128copiedgetters.8actual/twoopposite4v4/reset/Start3.
+- `local/research/codex/eight-team-variants-r2/free-one-seven/`: SHA`a89bfafad04e60eb7f8c88a096b7cee4b3dff5a6f4b14ceeb5871e4db3a77c6b`,
+  358.900422507s/2126raw/892pins;4344gameplay+125mode/128copiedgetters.8actual/1then7losers/twooppositeoutcomes/reset/Start3.
+- Original4bfailedstartup: FreeR1D85.874s/203raw; Manner1v7R1E89.846s vàR2F91.242s, allsourcefrozen/ownedcleanup0.
+  R2F`startup-input-verification.json` actualsize0/cap15→96A480/96A4EB/96E2D0/expectedvalue. Khôngcopy4b8negativepass;
+  runtimeexit0 chỉharnessseal, khônggameplaypass. CP163guardnegative mộtactual/tám tổnghợp tách nguồn.
+- TCPcontrols713/775/180 actualkernelTCP vớisyntheticC2S;366servertests;13bundle+5preset hiện hành. Initial
+  `unittest tools.test_four_bundle` saiimportpath giữlog; correcteddiscover7bundlepass, combined13+5pass. Gameplayverifier
+  firstcall thiếuPYTHONPATH(serverimport) giữlog, correctedexplicitPYTHONPATH không sửaraw/runtime. R1counts/rulebudget80
+  hết lúcjoin; R2lọcplayers8 trướcbudget. Không xóa earlybalancereject hoặc suyfull8 từ2–5earlyplayers.
+
+Recipe `prepare_eight_team_native.py`→explicitpreflight→`run_eight_team_*`→`seal_contest_loading.py`;
+R2 boundedstartupobserver/full8budget bổ sung bằng `prepare_eight_team_retry.py`. Hashes và5caseconfig/raw trong
+externalCP213evidence manifest; source frozen, no provider/client/gamefunctioncall/statewrite giữa run.
+`verify_eight_team_gameplay.py`, `verify_eight_team_modes.py`, copiedgetter52A350 vàrankcontactmanual tách provenance.
+Copy4b781f…/originala52545…/Wine10.0-20260425,8privatehosts/sharedkernel/directbridge; Internet thật chưa kiểm.
+Gate K6c WAN giả lập/K7 giữ scopedCP212/PR284/c0c7b94, không nâng full8items/worldauthority/interactiveC2Steamchange.
+Additionalempty-onlyguardcopy8d7194 experiment phải ghi kếtquả riêng sauseal; không biến thànhcopy4b/runtimegốc.
+Audit kếCP216; CP213 đang giao quaPR/exacthead, review độc lậpwaived.
+
+Bổ sung cùng batch CP213 sau cleanup: alternatecopy8d7194… Manner1–7
+local/research/codex/eight-team-variants-r3/manner-one-seven/, runSHA
+cb7c5a72c8e818624c18b23dcfe8c8d1427b8f8fe08488cba66151659817b455,
+140.440712457s/755raw/508pins/1543checks/sourcefreeze/cleanup0. Nativefull8/count8/capacity8/two teams/selector1/
+balancebranch/Startreturn7/noactual104/no99/noBattlewire/clocks. Emptyguard không hit ở cả8view: không chứng minh
+sửa nguyên nhân startup hoặc nonemptybranch; knowncopy hash khác4b, không gán negative này thành4bproof.
+Vẫn dùng script verify_eight_manner_negative.py/hash riêng, không sửa ba failedstartupraw cũ.
+Chủ dự án chuyển sang planning-onlyRust sau khi mọi run seal; code team còn WIP, không stage vào planningPR.

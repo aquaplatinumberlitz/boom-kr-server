@@ -1,0 +1,767 @@
+{
+  "schema": "kre-rust-service-survey-v1",
+  "recorded_utc": "2026-11-08T07:45:26.508225+00:00",
+  "baseline": "c0c7b9478dcf5b639a76f67ee51a5f6b927cb0f9",
+  "raw_report": {
+    "path": "local/research/codex/rust-service-survey-r1/survey.json",
+    "sha256": "fc15c9402578d605eb2cce6c2861726c53be40c6090d7df6b604cb21993621f6"
+  },
+  "repositories": [
+    {
+      "name": "kr-server",
+      "path": "/home/admin/boom/repos/boom-kr-server",
+      "commit": "c0c7b9478dcf5b639a76f67ee51a5f6b927cb0f9",
+      "files": [
+        {
+          "path": "/home/admin/boom/repos/boom-kr-server/AGENTS.md",
+          "locator": "AGENTS.md",
+          "bytes": 8789,
+          "sha256": "ddf78714b073ac391dbcc3186d4f928e542cae1209c29d8c3f3b843ce108eeb3",
+          "snapshot": "local/research/codex/rust-service-survey-r1/source-snapshots/kr-server/AGENTS.md"
+        },
+        {
+          "path": "/home/admin/boom/repos/boom-kr-server/README.md",
+          "locator": "README.md",
+          "bytes": 23679,
+          "sha256": "9f57a890b0e976dc5327ebe854f3b8b32b815ea9de695b0cbe6ce05146f363aa",
+          "snapshot": "local/research/codex/rust-service-survey-r1/source-snapshots/kr-server/README.md"
+        },
+        {
+          "path": "/home/admin/boom/repos/boom-kr-server/docs/PLAN.md",
+          "locator": "docs/PLAN.md",
+          "bytes": 65282,
+          "sha256": "3975b4a1b949934d6cd8e029b7f17e28cee852cbb1dbfaba35492f811a4c0015",
+          "snapshot": "local/research/codex/rust-service-survey-r1/source-snapshots/kr-server/docs/PLAN.md"
+        },
+        {
+          "path": "/home/admin/boom/repos/boom-kr-server/docs/PROTOCOL.md",
+          "locator": "docs/PROTOCOL.md",
+          "bytes": 662699,
+          "sha256": "281e1c8370378a4afcb54e98fea22336b09735dd0dde3f21d9d559fdaadc9ddd",
+          "snapshot": "local/research/codex/rust-service-survey-r1/source-snapshots/kr-server/docs/PROTOCOL.md"
+        },
+        {
+          "path": "/home/admin/boom/repos/boom-kr-server/docs/RESEARCH.md",
+          "locator": "docs/RESEARCH.md",
+          "bytes": 39326,
+          "sha256": "931ba8d2a61ba463aa54ef04697f37914933c8ff294807f6b4b2af0abe6589ba",
+          "snapshot": "local/research/codex/rust-service-survey-r1/source-snapshots/kr-server/docs/RESEARCH.md"
+        },
+        {
+          "path": "/home/admin/boom/repos/boom-kr-server/docs/features.json",
+          "locator": "docs/features.json",
+          "bytes": 192888,
+          "sha256": "ebbebf0999da62501412abb70832b17f7946d7d570c1a755a559c563fdf1b221",
+          "snapshot": "local/research/codex/rust-service-survey-r1/source-snapshots/kr-server/docs/features.json"
+        },
+        {
+          "path": "/home/admin/boom/repos/boom-kr-server/docs/REFERENCES.md",
+          "locator": "docs/REFERENCES.md",
+          "bytes": 5971,
+          "sha256": "012a97c6eb50ca819557165783f300e21ea7d918a4d35017383056f1232772d5",
+          "snapshot": "local/research/codex/rust-service-survey-r1/source-snapshots/kr-server/docs/REFERENCES.md"
+        },
+        {
+          "path": "/home/admin/boom/repos/boom-kr-server/server/probe_codec.py",
+          "locator": "server/probe_codec.py",
+          "bytes": 3227,
+          "sha256": "23ba54e6940953a52ff737e7e06b2761a8eb22eab444310b49b1d96efa12411d",
+          "snapshot": "local/research/codex/rust-service-survey-r1/source-snapshots/kr-server/server/probe_codec.py"
+        },
+        {
+          "path": "/home/admin/boom/repos/boom-kr-server/server/probe_service.py",
+          "locator": "server/probe_service.py",
+          "bytes": 112770,
+          "sha256": "d6fa4c1ed3513d6a2fcb974a5b202f5cb2ecab9b99ba8a4464f82d7ada0b4a5c",
+          "snapshot": "local/research/codex/rust-service-survey-r1/source-snapshots/kr-server/server/probe_service.py"
+        },
+        {
+          "path": "/home/admin/boom/repos/boom-kr-server/server/probe_room.py",
+          "locator": "server/probe_room.py",
+          "bytes": 1468,
+          "sha256": "91292494d492c7851bd5432649adf528e1b07290316dc56ba1478f8a209a08bc",
+          "snapshot": "local/research/codex/rust-service-survey-r1/source-snapshots/kr-server/server/probe_room.py"
+        },
+        {
+          "path": "/home/admin/boom/repos/boom-kr-server/server/four_player_service.py",
+          "locator": "server/four_player_service.py",
+          "bytes": 40323,
+          "sha256": "33679549b0e19902632abb94a4569921dcd2e749e08bce36fd002b12630795bc",
+          "snapshot": "local/research/codex/rust-service-survey-r1/source-snapshots/kr-server/server/four_player_service.py"
+        },
+        {
+          "path": "/home/admin/boom/repos/boom-kr-server/server/eight_player_service.py",
+          "locator": "server/eight_player_service.py",
+          "bytes": 6939,
+          "sha256": "6bb708674ad1aaac97df5315d9aeefa02d76b50d11bac1acb37ffca13e5dc4c5",
+          "snapshot": "local/research/codex/rust-service-survey-r1/source-snapshots/kr-server/server/eight_player_service.py"
+        },
+        {
+          "path": "/home/admin/boom/repos/boom-kr-server/server/four_identity_store.py",
+          "locator": "server/four_identity_store.py",
+          "bytes": 2023,
+          "sha256": "8dea38a194ceb396f8a8944df78ac72adcb44652da26819b41a318ffc2ab6292",
+          "snapshot": "local/research/codex/rust-service-survey-r1/source-snapshots/kr-server/server/four_identity_store.py"
+        },
+        {
+          "path": "/home/admin/boom/repos/boom-kr-server/server/four_observability.py",
+          "locator": "server/four_observability.py",
+          "bytes": 6080,
+          "sha256": "b42c44b01d22eddfa6e93a32efbf618c681823717972c8e56df4ccb26623f18c",
+          "snapshot": "local/research/codex/rust-service-survey-r1/source-snapshots/kr-server/server/four_observability.py"
+        },
+        {
+          "path": "/home/admin/boom/repos/boom-kr-server/server/four_input_limits.py",
+          "locator": "server/four_input_limits.py",
+          "bytes": 2900,
+          "sha256": "c1e90e924680d0106665d765c9d382124731929e7a4c084f691b96e40baa71e4",
+          "snapshot": "local/research/codex/rust-service-survey-r1/source-snapshots/kr-server/server/four_input_limits.py"
+        },
+        {
+          "path": "/home/admin/boom/repos/boom-kr-server/server/round_fence.py",
+          "locator": "server/round_fence.py",
+          "bytes": 2339,
+          "sha256": "aabcc7f1d623573fc217de8df05403f83d82425bbe5d6e78872b3096a2d46708",
+          "snapshot": "local/research/codex/rust-service-survey-r1/source-snapshots/kr-server/server/round_fence.py"
+        },
+        {
+          "path": "/home/admin/boom/repos/boom-kr-server/server/item_claims.py",
+          "locator": "server/item_claims.py",
+          "bytes": 3340,
+          "sha256": "7990ae9195e9f8bba56b04101f352506194dbd0252793183993ce101a8674a2e",
+          "snapshot": "local/research/codex/rust-service-survey-r1/source-snapshots/kr-server/server/item_claims.py"
+        },
+        {
+          "path": "/home/admin/boom/repos/boom-kr-server/server/udp_round_keys.py",
+          "locator": "server/udp_round_keys.py",
+          "bytes": 1187,
+          "sha256": "db58ae1f25bcbeb52c2d25c7db6afbf1021ddd3af29702e756f5f41886530a0d",
+          "snapshot": "local/research/codex/rust-service-survey-r1/source-snapshots/kr-server/server/udp_round_keys.py"
+        },
+        {
+          "path": "/home/admin/boom/repos/boom-kr-server/server/test_needle_escape.py",
+          "locator": "server/test_needle_escape.py",
+          "bytes": 12165,
+          "sha256": "2ce054abdaae7f6c8eb11d5eddec0bc42b0390d9b761a037c253709341b29c38",
+          "snapshot": "local/research/codex/rust-service-survey-r1/source-snapshots/kr-server/server/test_needle_escape.py"
+        },
+        {
+          "path": "/home/admin/boom/repos/boom-kr-server/server/test_rescue_contact.py",
+          "locator": "server/test_rescue_contact.py",
+          "bytes": 10792,
+          "sha256": "a5bdd661fe5b945efdb08c7f387ac6dda482c95e2cf88b68da3401235fd40afb",
+          "snapshot": "local/research/codex/rust-service-survey-r1/source-snapshots/kr-server/server/test_rescue_contact.py"
+        },
+        {
+          "path": "/home/admin/boom/repos/boom-kr-server/tools/probe_bundle.py",
+          "locator": "tools/probe_bundle.py",
+          "bytes": 9232,
+          "sha256": "74fbd44de0f20f611a11c4b57345f1b065cb6c96f94b4ac9e64bdee2bff91315",
+          "snapshot": "local/research/codex/rust-service-survey-r1/source-snapshots/kr-server/tools/probe_bundle.py"
+        },
+        {
+          "path": "/home/admin/boom/repos/boom-kr-server/tools/export_probe_profile.py",
+          "locator": "tools/export_probe_profile.py",
+          "bytes": 10595,
+          "sha256": "64f6815f7e1b80ab86bd1b6ffb92ad6d33f45fa758534c1930db5d0ed28248ef",
+          "snapshot": "local/research/codex/rust-service-survey-r1/source-snapshots/kr-server/tools/export_probe_profile.py"
+        },
+        {
+          "path": "/home/admin/boom/repos/boom-kr-server/tools/wine_probe.py",
+          "locator": "tools/wine_probe.py",
+          "bytes": 16512,
+          "sha256": "a1e7abeaaf4a4def11fe56845dc5d5d7c05d86813786f4024188d7902032e0fb",
+          "snapshot": "local/research/codex/rust-service-survey-r1/source-snapshots/kr-server/tools/wine_probe.py"
+        },
+        {
+          "path": "/home/admin/boom/repos/boom-kr-server/tools/test_checkpoint_store.py",
+          "locator": "tools/test_checkpoint_store.py",
+          "bytes": 12900,
+          "sha256": "927bd9bac21d1bd7c4adccfbebf4f7b5748165a0e67479dc6a48d4c5e1bc743b",
+          "snapshot": "local/research/codex/rust-service-survey-r1/source-snapshots/kr-server/tools/test_checkpoint_store.py"
+        },
+        {
+          "path": "/home/admin/boom/repos/boom-kr-server/docs/evidence/peer-endpoints/k6c-acceptance.json",
+          "locator": "docs/evidence/peer-endpoints/k6c-acceptance.json",
+          "bytes": 4590,
+          "sha256": "dacaa2b2ef8ea6fd1c01b9a2d1d9a8dbeba1bb3b75da85f5a327c7b406b3804c",
+          "snapshot": "local/research/codex/rust-service-survey-r1/source-snapshots/kr-server/docs/evidence/peer-endpoints/k6c-acceptance.json"
+        },
+        {
+          "path": "/home/admin/boom/repos/boom-kr-server/docs/evidence/peer-endpoints/k7-acceptance.json",
+          "locator": "docs/evidence/peer-endpoints/k7-acceptance.json",
+          "bytes": 4101,
+          "sha256": "842d197b29f08b31ac7932afda980fafb16370af96509c9e3591e76e4a9a55f1",
+          "snapshot": "local/research/codex/rust-service-survey-r1/source-snapshots/kr-server/docs/evidence/peer-endpoints/k7-acceptance.json"
+        },
+        {
+          "path": "/home/admin/boom/repos/boom-kr-server/docs/evidence/namu-wiki/metadata.json",
+          "locator": "docs/evidence/namu-wiki/metadata.json",
+          "bytes": 4908,
+          "sha256": "4efbef982c995232f803f120c6af3adf9adb1ed0cb8fd80025f0ee3ce3b2107c",
+          "snapshot": "local/research/codex/rust-service-survey-r1/source-snapshots/kr-server/docs/evidence/namu-wiki/metadata.json"
+        }
+      ],
+      "limits": "Read-only source survey, untracked/WIP preserved. Source hash identifies reviewed bytes; code/tests/docs not new KR runtime evidence. boom-rs scope/protocol/authority excluded from target."
+    },
+    {
+      "name": "boom-rs",
+      "path": "/home/admin/boom/repos/boom-rs",
+      "commit": "86cee6f0588c9a2e56d1547f8867a887970b1ebe",
+      "files": [
+        {
+          "path": "/home/admin/boom/repos/boom-rs/AGENTS.md",
+          "locator": "AGENTS.md",
+          "bytes": 8726,
+          "sha256": "0e4255b383443932b3eb3df0da63057ce641c622af5f4ca69edcfcbfcd1cca97",
+          "snapshot": "local/research/codex/rust-service-survey-r1/source-snapshots/boom-rs/AGENTS.md"
+        },
+        {
+          "path": "/home/admin/boom/repos/boom-rs/docs/README.md",
+          "locator": "docs/README.md",
+          "bytes": 2811,
+          "sha256": "6ee00a9951e3704ac18f2c62ae923e0959e1df1e4ea4be83d6ab6abc5957b9ac",
+          "snapshot": "local/research/codex/rust-service-survey-r1/source-snapshots/boom-rs/docs/README.md"
+        },
+        {
+          "path": "/home/admin/boom/repos/boom-rs/docs/planning/REWRITE_PLAN.md",
+          "locator": "docs/planning/REWRITE_PLAN.md",
+          "bytes": 58282,
+          "sha256": "88ffb7cf3c1eb06322d23db5b9aca944a6b2706b3f267b9e7178b03e44c9e17f",
+          "snapshot": "local/research/codex/rust-service-survey-r1/source-snapshots/boom-rs/docs/planning/REWRITE_PLAN.md"
+        },
+        {
+          "path": "/home/admin/boom/repos/boom-rs/docs/planning/SCOPE_V1.md",
+          "locator": "docs/planning/SCOPE_V1.md",
+          "bytes": 35665,
+          "sha256": "8c344a0d522fd09aa791902beb044eba51ee5efb66d63808c3d67d652ab773f6",
+          "snapshot": "local/research/codex/rust-service-survey-r1/source-snapshots/boom-rs/docs/planning/SCOPE_V1.md"
+        },
+        {
+          "path": "/home/admin/boom/repos/boom-rs/docs/planning/PROGRESS.md",
+          "locator": "docs/planning/PROGRESS.md",
+          "bytes": 33219,
+          "sha256": "59460336fb1b6d24985e2f3a3ab14031833af7750f34bf64d2c5bed46cb2ba44",
+          "snapshot": "local/research/codex/rust-service-survey-r1/source-snapshots/boom-rs/docs/planning/PROGRESS.md"
+        },
+        {
+          "path": "/home/admin/boom/repos/boom-rs/docs/planning/ARCHITECTURE.md",
+          "locator": "docs/planning/ARCHITECTURE.md",
+          "bytes": 28236,
+          "sha256": "3f6d6441981f5aaab53aef2f81334895802956224f7bec28c497e3f66fca3f4b",
+          "snapshot": "local/research/codex/rust-service-survey-r1/source-snapshots/boom-rs/docs/planning/ARCHITECTURE.md"
+        },
+        {
+          "path": "/home/admin/boom/repos/boom-rs/docs/decisions/0009-wire-protocol-input-snapshot-codec.md",
+          "locator": "docs/decisions/0009-wire-protocol-input-snapshot-codec.md",
+          "bytes": 66054,
+          "sha256": "774a4c727e38489453110d9ab0009ab8f09d6c41d13cb39cba6e70d29ba40ce7",
+          "snapshot": "local/research/codex/rust-service-survey-r1/source-snapshots/boom-rs/docs/decisions/0009-wire-protocol-input-snapshot-codec.md"
+        },
+        {
+          "path": "/home/admin/boom/repos/boom-rs/docs/decisions/0011-identity-persistence-log-v1.md",
+          "locator": "docs/decisions/0011-identity-persistence-log-v1.md",
+          "bytes": 59408,
+          "sha256": "a270e56c69b5524fad5c3ffa7e9b4b804fafc1f1066cbe7f36e42bb10dc1ab11",
+          "snapshot": "local/research/codex/rust-service-survey-r1/source-snapshots/boom-rs/docs/decisions/0011-identity-persistence-log-v1.md"
+        },
+        {
+          "path": "/home/admin/boom/repos/boom-rs/crates/boom-server/src/lib.rs",
+          "locator": "crates/boom-server/src/lib.rs",
+          "bytes": 1787,
+          "sha256": "884abbebf192bd9d2de2a88e40cc48d2407e8026f7029d562c558e5a1e20f365",
+          "snapshot": "local/research/codex/rust-service-survey-r1/source-snapshots/boom-rs/crates/boom-server/src/lib.rs"
+        },
+        {
+          "path": "/home/admin/boom/repos/boom-rs/crates/boom-server/src/auth.rs",
+          "locator": "crates/boom-server/src/auth.rs",
+          "bytes": 78462,
+          "sha256": "9d291bd1e61451e0f33fbc0d28dfd0e7098a246a89d2a82468a143a1af185a31",
+          "snapshot": "local/research/codex/rust-service-survey-r1/source-snapshots/boom-rs/crates/boom-server/src/auth.rs"
+        },
+        {
+          "path": "/home/admin/boom/repos/boom-rs/crates/boom-server/src/identity/sqlite.rs",
+          "locator": "crates/boom-server/src/identity/sqlite.rs",
+          "bytes": 62522,
+          "sha256": "7ae6185e3efa41180487f602eb23b90f8400bf6f7ae9ee06888b89f45e356a49",
+          "snapshot": "local/research/codex/rust-service-survey-r1/source-snapshots/boom-rs/crates/boom-server/src/identity/sqlite.rs"
+        },
+        {
+          "path": "/home/admin/boom/repos/boom-rs/crates/boom-server/src/identity/session.rs",
+          "locator": "crates/boom-server/src/identity/session.rs",
+          "bytes": 38408,
+          "sha256": "7483bb7f8b39e5a431dbd36b40579d36c6b996a20adc5513f6f793ceb4d73d28",
+          "snapshot": "local/research/codex/rust-service-survey-r1/source-snapshots/boom-rs/crates/boom-server/src/identity/session.rs"
+        },
+        {
+          "path": "/home/admin/boom/repos/boom-rs/crates/boom-server/src/identity/secret.rs",
+          "locator": "crates/boom-server/src/identity/secret.rs",
+          "bytes": 2846,
+          "sha256": "e9f6445262a11ec106fd442fbc989fe36bbd032037fcca6366d538c59fa5cad6",
+          "snapshot": "local/research/codex/rust-service-survey-r1/source-snapshots/boom-rs/crates/boom-server/src/identity/secret.rs"
+        }
+      ],
+      "limits": "Read-only source survey, untracked/WIP preserved. Source hash identifies reviewed bytes; code/tests/docs not new KR runtime evidence. boom-rs scope/protocol/authority excluded from target."
+    },
+    {
+      "name": "boom-re",
+      "path": "/home/admin/boom/repos/boom-re",
+      "commit": "9ac2075bbec0c16217741aaedea968cf685e39a9",
+      "files": [
+        {
+          "path": "/home/admin/boom/repos/boom-re/docs/items.md",
+          "locator": "docs/items.md",
+          "bytes": 22764,
+          "sha256": "fd70c14503b9f37ae4508da8304b28d7113981a024183546a8c6e4ed92eb2df0",
+          "snapshot": "local/research/codex/rust-service-survey-r1/source-snapshots/boom-re/docs/items.md"
+        },
+        {
+          "path": "/home/admin/boom/repos/boom-re/docs/oc_e-game.md",
+          "locator": "docs/oc_e-game.md",
+          "bytes": 70895,
+          "sha256": "9e80ecea3fb7d152f58a4a0d60ac6e1f6759b18be23bf53d908bb896dbad0b6a",
+          "snapshot": "local/research/codex/rust-service-survey-r1/source-snapshots/boom-re/docs/oc_e-game.md"
+        },
+        {
+          "path": "/home/admin/boom/repos/boom-re/docs/protocol.md",
+          "locator": "docs/protocol.md",
+          "bytes": 14120,
+          "sha256": "b4152ebbb2303979b2926f53f1cfd9a2251dfac7931030bc3fd2633622a9d62c",
+          "snapshot": "local/research/codex/rust-service-survey-r1/source-snapshots/boom-re/docs/protocol.md"
+        },
+        {
+          "path": "/home/admin/boom/repos/boom-re/docs/lobby.md",
+          "locator": "docs/lobby.md",
+          "bytes": 69790,
+          "sha256": "13bac46134fc2255c32ac539b7e0072b31cd78dcb71122996ba003d1a2256ca4",
+          "snapshot": "local/research/codex/rust-service-survey-r1/source-snapshots/boom-re/docs/lobby.md"
+        },
+        {
+          "path": "/home/admin/boom/repos/boom-re/docs/oc_d-login.md",
+          "locator": "docs/oc_d-login.md",
+          "bytes": 17609,
+          "sha256": "55bfd55a684cbc3edc92bef07a72a07911b8bd3ba09b40294f682af124e3456a",
+          "snapshot": "local/research/codex/rust-service-survey-r1/source-snapshots/boom-re/docs/oc_d-login.md"
+        },
+        {
+          "path": "/home/admin/boom/repos/boom-re/docs/oc_a-room.md",
+          "locator": "docs/oc_a-room.md",
+          "bytes": 23378,
+          "sha256": "5fbc0db42e99c6f34a09a60468783ac70e98984735d1ff49d9ebc14ee4aaf6f4",
+          "snapshot": "local/research/codex/rust-service-survey-r1/source-snapshots/boom-re/docs/oc_a-room.md"
+        },
+        {
+          "path": "/home/admin/boom/repos/boom-re/server/Cargo.toml",
+          "locator": "server/Cargo.toml",
+          "bytes": 312,
+          "sha256": "14581d500924f5b77fcdde1d882bf4458d861b781700fcf4f2dace08f779e98f",
+          "snapshot": "local/research/codex/rust-service-survey-r1/source-snapshots/boom-re/server/Cargo.toml"
+        },
+        {
+          "path": "/home/admin/boom/repos/boom-re/server/src/session.rs",
+          "locator": "server/src/session.rs",
+          "bytes": 35262,
+          "sha256": "0d32f8eff705a2f731b799ae3e68ba6d7dff52b1f97678bafc1341b83078e8ec",
+          "snapshot": "local/research/codex/rust-service-survey-r1/source-snapshots/boom-re/server/src/session.rs"
+        },
+        {
+          "path": "/home/admin/boom/repos/boom-re/server/src/hub.rs",
+          "locator": "server/src/hub.rs",
+          "bytes": 8345,
+          "sha256": "5d689394d95a2b48c7e0a958cbd0f547fed2765d83cfb0351afac2ddbc6a6fea",
+          "snapshot": "local/research/codex/rust-service-survey-r1/source-snapshots/boom-re/server/src/hub.rs"
+        },
+        {
+          "path": "/home/admin/boom/repos/boom-re/server/src/proto.rs",
+          "locator": "server/src/proto.rs",
+          "bytes": 15606,
+          "sha256": "5a0cb803fe85f8fa3a87e3e072b7859e780c91925b699cf1169317963b324094",
+          "snapshot": "local/research/codex/rust-service-survey-r1/source-snapshots/boom-re/server/src/proto.rs"
+        }
+      ],
+      "limits": "Read-only source survey, untracked/WIP preserved. Source hash identifies reviewed bytes; code/tests/docs not new KR runtime evidence. boom-rs scope/protocol/authority excluded from target."
+    },
+    {
+      "name": "boomkr-re",
+      "path": "/home/admin/boom/repos/boomkr-re",
+      "commit": "88e11ed30764c753a00f4f23a2f33dafadc4c890",
+      "files": [
+        {
+          "path": "/home/admin/boom/repos/boomkr-re/docs/kr.md",
+          "locator": "docs/kr.md",
+          "bytes": 57994,
+          "sha256": "25bfbb35b43ae929aac97092ef6e3701d3265fb5686c88730f35d6dfbf0be0d1",
+          "snapshot": "local/research/codex/rust-service-survey-r1/source-snapshots/boomkr-re/docs/kr.md"
+        },
+        {
+          "path": "/home/admin/boom/repos/boomkr-re/docs/kr-data.md",
+          "locator": "docs/kr-data.md",
+          "bytes": 34971,
+          "sha256": "79b84d57c7db51b100888ca685601be17d847d378f3080805cdd03b2ca059eaa",
+          "snapshot": "local/research/codex/rust-service-survey-r1/source-snapshots/boomkr-re/docs/kr-data.md"
+        },
+        {
+          "path": "/home/admin/boom/repos/boomkr-re/docs/kr-content.md",
+          "locator": "docs/kr-content.md",
+          "bytes": 7029,
+          "sha256": "6a31a51c9d53aa308000d7433f4c4711bac2c840f046403c8a65ae2c02a53c6e",
+          "snapshot": "local/research/codex/rust-service-survey-r1/source-snapshots/boomkr-re/docs/kr-content.md"
+        },
+        {
+          "path": "/home/admin/boom/repos/boomkr-re/docs/vn-vs-kr.md",
+          "locator": "docs/vn-vs-kr.md",
+          "bytes": 3921,
+          "sha256": "799749b8ed569146c7d312b400878c121d6537d7dfd30cc9dff4bc0ae697fa82",
+          "snapshot": "local/research/codex/rust-service-survey-r1/source-snapshots/boomkr-re/docs/vn-vs-kr.md"
+        },
+        {
+          "path": "/home/admin/boom/repos/boomkr-re/data/kr/exp_table.json",
+          "locator": "data/kr/exp_table.json",
+          "bytes": 101224,
+          "sha256": "eb1e13fa3210973d1a9fae0e6b0c191359d3277206457ea31d8a0971c3175499",
+          "snapshot": "local/research/codex/rust-service-survey-r1/source-snapshots/boomkr-re/data/kr/exp_table.json"
+        },
+        {
+          "path": "/home/admin/boom/repos/boomkr-re/data/kr/bomber_attr.json",
+          "locator": "data/kr/bomber_attr.json",
+          "bytes": 16435,
+          "sha256": "4af4b8d253153fe07003c92c3af11882dc3478c402917569a5e966e69d83bca8",
+          "snapshot": "local/research/codex/rust-service-survey-r1/source-snapshots/boomkr-re/data/kr/bomber_attr.json"
+        }
+      ],
+      "limits": "Read-only source survey, untracked/WIP preserved. Source hash identifies reviewed bytes; code/tests/docs not new KR runtime evidence. boom-rs scope/protocol/authority excluded from target."
+    },
+    {
+      "name": "boom-re-l10n",
+      "path": "/home/admin/boom/repos/boom-re-l10n",
+      "commit": "308dc28309c1c5ec982c2da56fb060be07d20cde",
+      "files": [
+        {
+          "path": "/home/admin/boom/repos/boom-re-l10n/docs/README.md",
+          "locator": "docs/README.md",
+          "bytes": 607,
+          "sha256": "e1cbceee4ac5fa46ee90f56fc4a9224def3e3e2350dd0fe3656cba18f1265ec9",
+          "snapshot": "local/research/codex/rust-service-survey-r1/source-snapshots/boom-re-l10n/docs/README.md"
+        },
+        {
+          "path": "/home/admin/boom/repos/boom-re-l10n/decomp/item_kinds.json",
+          "locator": "decomp/item_kinds.json",
+          "bytes": 37516,
+          "sha256": "c370a04889df5802a601c636041bd2adf57dfb060775aedc394d08d3508fcd9e",
+          "snapshot": "local/research/codex/rust-service-survey-r1/source-snapshots/boom-re-l10n/decomp/item_kinds.json"
+        }
+      ],
+      "limits": "Read-only source survey, untracked/WIP preserved. Source hash identifies reviewed bytes; code/tests/docs not new KR runtime evidence. boom-rs scope/protocol/authority excluded from target."
+    },
+    {
+      "name": "archive",
+      "path": "/home/admin/boom/archive/2026-10-26",
+      "commit": null,
+      "files": [
+        {
+          "path": "/home/admin/boom/archive/2026-10-26/README.md",
+          "locator": "README.md",
+          "bytes": 4369,
+          "sha256": "2fc38aba21975b6baa60a863864b2c6d6f7ef356131cfd1c8c3e40aafa6d0d2d",
+          "snapshot": "local/research/codex/rust-service-survey-r1/source-snapshots/archive/README.md"
+        },
+        {
+          "path": "/home/admin/boom/archive/2026-10-26/KNOWLEDGE.md",
+          "locator": "KNOWLEDGE.md",
+          "bytes": 9136,
+          "sha256": "41494edfa4897cf01925220b6d62dfc132c137eaa00bdae5cfed33f0e9512305",
+          "snapshot": "local/research/codex/rust-service-survey-r1/source-snapshots/archive/KNOWLEDGE.md"
+        }
+      ],
+      "limits": "Archived provenance/owner-trusted rules reference; not a new runtime, wire authentication contract or 00967 reward consumer proof."
+    },
+    {
+      "name": "namu-wiki",
+      "path": "/home/admin/boom/kr-namu-wiki",
+      "commit": null,
+      "files": [
+        {
+          "path": "/home/admin/boom/kr-namu-wiki/README.md",
+          "locator": "README.md",
+          "bytes": 6027,
+          "sha256": "57ac7c3a1027f8e34a55ddb85084f79bb0ae4a85b55037eed349bd6b758f2447",
+          "snapshot": "local/research/codex/rust-service-survey-r1/source-snapshots/namu-wiki/README.md"
+        },
+        {
+          "path": "/home/admin/boom/kr-namu-wiki/manifest-all.json",
+          "locator": "manifest-all.json",
+          "bytes": 17323,
+          "sha256": "1baf9f307108a0959c3728b1b7454cab4df9078e286bec7f8d10f962b40521c9",
+          "snapshot": "local/research/codex/rust-service-survey-r1/source-snapshots/namu-wiki/manifest-all.json"
+        },
+        {
+          "path": "/home/admin/boom/kr-namu-wiki/vi/크레이지_아케이드경험치표 (Experience Table).md",
+          "locator": "vi/크레이지_아케이드경험치표 (Experience Table).md",
+          "bytes": 55994,
+          "sha256": "a24bab9ddaa548814b5cf47dae57dd460d269d2a07d92083af73abf668108b06",
+          "snapshot": "local/research/codex/rust-service-survey-r1/source-snapshots/namu-wiki/vi/크레이지_아케이드경험치표 (Experience Table).md"
+        }
+      ],
+      "limits": "Archived provenance/owner-trusted rules reference; not a new runtime, wire authentication contract or 00967 reward consumer proof."
+    }
+  ],
+  "checkpoints": [
+    {
+      "id": "CP045",
+      "path": "docs/evidence/checkpoints/records/CP045.json",
+      "sha256": "2e1b86fcab95e68e92210c32f038653b80f1fea466684907de0f078d58a8a5e1"
+    },
+    {
+      "id": "CP057",
+      "path": "docs/evidence/checkpoints/records/CP057.json",
+      "sha256": "d863ae7f3d22793172fb677efc6396b6b3a30c549d35a46aa9aefc548f634ded"
+    },
+    {
+      "id": "CP113",
+      "path": "docs/evidence/checkpoints/records/CP113.json",
+      "sha256": "8b21fdefc4fc8b52adc67b62c9b7fc42d784ef8d0538d3e418070d8b9efdc846"
+    },
+    {
+      "id": "CP114",
+      "path": "docs/evidence/checkpoints/records/CP114.json",
+      "sha256": "e5d5a13965921ca197bc37a25583d334cfe632fdf86676a0732483d84bf1582b"
+    },
+    {
+      "id": "CP115",
+      "path": "docs/evidence/checkpoints/records/CP115.json",
+      "sha256": "dc95f03ff625fc45d46e52aec464e64653fce6053a20a6f0fab70e77c0657461"
+    },
+    {
+      "id": "CP118",
+      "path": "docs/evidence/checkpoints/records/CP118.json",
+      "sha256": "f1fd3230ed7481821e94979e29bf8c3336bd94d389fb665fc6b3ff4687a5f379"
+    },
+    {
+      "id": "CP155",
+      "path": "docs/evidence/checkpoints/records/CP155.json",
+      "sha256": "51f74cf0dcc88ba7e7d0d3270fb25084fef668372a8974f68dbd07848e3ca12a"
+    },
+    {
+      "id": "CP162",
+      "path": "docs/evidence/checkpoints/records/CP162.json",
+      "sha256": "95fb00c1de480ecbc65984e05383e66e292f1b46cb609b4ddfff4aa67eedea94"
+    },
+    {
+      "id": "CP163",
+      "path": "docs/evidence/checkpoints/records/CP163.json",
+      "sha256": "2986dae8cf1f525900d47aae427cd91435afb978f58eea5a9c890d7a46d60dd6"
+    },
+    {
+      "id": "CP178",
+      "path": "docs/evidence/checkpoints/records/CP178.json",
+      "sha256": "a8d6a5e9ff0eb2214fa73af1162323d3ef97100a1c764d75aafdaff25b115ba7"
+    },
+    {
+      "id": "CP179",
+      "path": "docs/evidence/checkpoints/records/CP179.json",
+      "sha256": "bb6224da5191e75d9c0b981e8361396c6cf6f7d6c59f000f6161fd11097ec38e"
+    },
+    {
+      "id": "CP180",
+      "path": "docs/evidence/checkpoints/records/CP180.json",
+      "sha256": "82e80c8723455987df585e663fe0f3cd4b50ed88338bd039bd24a6c65dfc66ed"
+    },
+    {
+      "id": "CP181",
+      "path": "docs/evidence/checkpoints/records/CP181.json",
+      "sha256": "722b3b61e4d09b212c0e818a6f6eaeec78886abd30385c418a05f8dab80db819"
+    },
+    {
+      "id": "CP186",
+      "path": "docs/evidence/checkpoints/records/CP186.json",
+      "sha256": "f5eeb785fa92b755c0e12d667525dbfb265ec32cbf8da5270ac526b7dbe6fe35"
+    },
+    {
+      "id": "CP187",
+      "path": "docs/evidence/checkpoints/records/CP187.json",
+      "sha256": "c2360022f23ef79dd6ccb189ee375b4f11c2227f1483fa7a7380f2b191207c20"
+    },
+    {
+      "id": "CP188",
+      "path": "docs/evidence/checkpoints/records/CP188.json",
+      "sha256": "486d43ddc337bab8f5c615f5aeb106cef3773ab369a9744bcb0d575a5e36ef0a"
+    },
+    {
+      "id": "CP189",
+      "path": "docs/evidence/checkpoints/records/CP189.json",
+      "sha256": "8aedb9b8423549a79445fe7b49df9c0ecc141db86e70ebf35e8754fcf7c40427"
+    },
+    {
+      "id": "CP191",
+      "path": "docs/evidence/checkpoints/records/CP191.json",
+      "sha256": "97b0a5e6cce083463554fea84ac390e446561e1bc13f3465a24c92edccad8455"
+    },
+    {
+      "id": "CP192",
+      "path": "docs/evidence/checkpoints/records/CP192.json",
+      "sha256": "de6d6c5695b28a607d26819b06ea7514d842471ac839ecf4623e9a398473ff7d"
+    },
+    {
+      "id": "CP193",
+      "path": "docs/evidence/checkpoints/records/CP193.json",
+      "sha256": "a509ee62da31593656a77a0f83d82f6039957c1e4c6f843ed8c27f63db72054b"
+    },
+    {
+      "id": "CP194",
+      "path": "docs/evidence/checkpoints/records/CP194.json",
+      "sha256": "05a93d9c6592d4d85324d30ac58ca1635df0cdceec5c6589d72dc69718670f52"
+    },
+    {
+      "id": "CP195",
+      "path": "docs/evidence/checkpoints/records/CP195.json",
+      "sha256": "bd2c865e59689736bb1058653e49ca52134faaf2bfa66a8d0561c2da3d081f26"
+    },
+    {
+      "id": "CP196",
+      "path": "docs/evidence/checkpoints/records/CP196.json",
+      "sha256": "32763e82e9e3b8376550207950d240a3500e4eea86d24e29e3082f7d1ea0bd6a"
+    },
+    {
+      "id": "CP198",
+      "path": "docs/evidence/checkpoints/records/CP198.json",
+      "sha256": "4483869095dd6e64f8ff62b16e98c718cdcabed620140b3542f387bd6ec00c4b"
+    },
+    {
+      "id": "CP203",
+      "path": "docs/evidence/checkpoints/records/CP203.json",
+      "sha256": "3fdf14a2fa2c5d05bd5f01faf68f6c7f6fb9ab7f20d6338be8053514864a7d04"
+    },
+    {
+      "id": "CP204",
+      "path": "docs/evidence/checkpoints/records/CP204.json",
+      "sha256": "ddcc9d9eba06784c16f320bd19c4b6851cfdaa470b3ac52b436a4ebaffc3aabd"
+    },
+    {
+      "id": "CP205",
+      "path": "docs/evidence/checkpoints/records/CP205.json",
+      "sha256": "0db6a9ddaad2b2ebced1efc5d6646979da763388bed6a788366b3393911a163a"
+    },
+    {
+      "id": "CP206",
+      "path": "docs/evidence/checkpoints/records/CP206.json",
+      "sha256": "ff48ae0fdb0cf34c90e587ec2b29f1ed170e9e3869e060f06e2608869ca6b69f"
+    },
+    {
+      "id": "CP207",
+      "path": "docs/evidence/checkpoints/records/CP207.json",
+      "sha256": "4ce9fa06768566e57bdf06ab8619e23a7c612778d5f7129f9f6847606d10d4c7"
+    },
+    {
+      "id": "CP208",
+      "path": "docs/evidence/checkpoints/records/CP208.json",
+      "sha256": "1c6db3f485e531832779e4ce459db4e13fc06fbb921f5775288466171f11a341"
+    },
+    {
+      "id": "CP209",
+      "path": "docs/evidence/checkpoints/records/CP209.json",
+      "sha256": "47480a22733ccc0768a584e528a626b38a7704d2c2b27659451ddb9c7729ff93"
+    },
+    {
+      "id": "CP210",
+      "path": "docs/evidence/checkpoints/records/CP210.json",
+      "sha256": "822e6ce0c486eac916eea83764643e73f028257818d55109348fa52626edaa66"
+    },
+    {
+      "id": "CP211",
+      "path": "docs/evidence/checkpoints/records/CP211.json",
+      "sha256": "291b45e53f3deb2d7ea187f21bdfcd63565e184719ac3028e9cfa48c6c44884c"
+    },
+    {
+      "id": "CP212",
+      "path": "docs/evidence/checkpoints/records/CP212.json",
+      "sha256": "eaa3908792821274e3da7544aa3d4aca46f549b551d3511a212767811dc156bc"
+    }
+  ],
+  "unmerged_runtime": [
+    {
+      "path": "local/research/codex/eight-team-variants-r1/free-one-seven",
+      "run_sha256": "412ddebcdd230ab8ff89fa0f9d0b7d9759168de0cdb406587045a483bbe94349",
+      "seal_sha256": "a1bb5f1b31e55028b8c1a1e9dcd6c42616a0271f34dacff4f943432170a20faa",
+      "duration_s": 85.873896648,
+      "raw_files": 203,
+      "returncode": 0,
+      "cleanup": {
+        "net_namespace": "net:[4026532806]",
+        "remaining_pids": [],
+        "method": "Pythonfinally/endrun/captureclose/ownedWineandservice/virtualtopologystop/netnamespaceextinct"
+      },
+      "delivery": "local sealed experiments on unmerged team WIP; not main service behavior"
+    },
+    {
+      "path": "local/research/codex/eight-team-variants-r1/manner-one-seven",
+      "run_sha256": "95a34b202336c9f09c929045a4056df8c8d5e0461b658a52f573ca0cd23c13f4",
+      "seal_sha256": "acf2f9a88551a3caf839984a72f5bbc80232021b9ec814a50be8ae2965fe9647",
+      "duration_s": 89.845845252,
+      "raw_files": 259,
+      "returncode": 0,
+      "cleanup": {
+        "net_namespace": "net:[4026532806]",
+        "remaining_pids": [],
+        "method": "Pythonfinally/endrun/captureclose/ownedWineandservice/virtualtopologystop/netnamespaceextinct"
+      },
+      "delivery": "local sealed experiments on unmerged team WIP; not main service behavior"
+    },
+    {
+      "path": "local/research/codex/eight-team-variants-r1/manner-four-four",
+      "run_sha256": "af7acda326fa556f2390c135ebada709f3a97015ef9849ffd04e30e1f0371b56",
+      "seal_sha256": "c048056df1722d4aa9f60fc4eef3406ebade8b4297323b3a6d7f582c0b5202f6",
+      "duration_s": 369.935556539,
+      "raw_files": 2102,
+      "returncode": 0,
+      "cleanup": {
+        "net_namespace": "net:[4026532806]",
+        "remaining_pids": [],
+        "method": "Pythonfinally/endrun/captureclose/ownedWineandservice/virtualtopologystop/netnamespaceextinct"
+      },
+      "delivery": "local sealed experiments on unmerged team WIP; not main service behavior"
+    },
+    {
+      "path": "local/research/codex/eight-team-variants-r2/manner-one-seven",
+      "run_sha256": "f6583301fe81737056003a7aca9552393b6fa6bdd40c20922247353abbe52860",
+      "seal_sha256": "23108c8ccbb4314d17a241ca3055a4e4255f4799a01378099883a35c1b5827f7",
+      "duration_s": 91.242354528,
+      "raw_files": 334,
+      "returncode": 0,
+      "cleanup": {
+        "net_namespace": "net:[4026532806]",
+        "remaining_pids": [],
+        "method": "Pythonfinally/endrun/captureclose/ownedWineandservice/virtualtopologystop/netnamespaceextinct"
+      },
+      "delivery": "local sealed experiments on unmerged team WIP; not main service behavior"
+    },
+    {
+      "path": "local/research/codex/eight-team-variants-r2/free-one-seven",
+      "run_sha256": "a89bfafad04e60eb7f8c88a096b7cee4b3dff5a6f4b14ceeb5871e4db3a77c6b",
+      "seal_sha256": "0a3831f7f76aa897fc326fa22a69cc8cc0f18087ec8e1ae546274a49b8e0c38d",
+      "duration_s": 358.900422507,
+      "raw_files": 2126,
+      "returncode": 0,
+      "cleanup": {
+        "net_namespace": "net:[4026532806]",
+        "remaining_pids": [],
+        "method": "Pythonfinally/endrun/captureclose/ownedWineandservice/virtualtopologystop/netnamespaceextinct"
+      },
+      "delivery": "local sealed experiments on unmerged team WIP; not main service behavior"
+    },
+    {
+      "path": "local/research/codex/eight-team-variants-r3/manner-one-seven",
+      "run_sha256": "cb7c5a72c8e818624c18b23dcfe8c8d1427b8f8fe08488cba66151659817b455",
+      "seal_sha256": "9b627d15d61314c0e849577158276620bd0c819e2dafc218da15196e615663cc",
+      "duration_s": 140.440712457,
+      "raw_files": 755,
+      "returncode": 0,
+      "cleanup": {
+        "net_namespace": "net:[4026532806]",
+        "remaining_pids": [],
+        "method": "Pythonfinally/endrun/captureclose/ownedWineandservice/virtualtopologystop/netnamespaceextinct"
+      },
+      "delivery": "local sealed experiments on unmerged team WIP; not main service behavior"
+    }
+  ],
+  "limits": "Code present in other repos is architectural reference, not transferable KR00967 wire/auth/authority proof. CP212 K0–K7 scoped demo passes do not mean production-ready or every feature implemented. Internet thật chưa kiểm. No percentage/checkpoint/time estimate inferred."
+}
