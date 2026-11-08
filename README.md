@@ -28,10 +28,17 @@ boom-kr-server/
 
 ## Tra nhanh và trạng thái hiện tại
 
+**CP211: gói server tám người đã chạy sau relocation và hoàn tất hai vòng 4v4/reset/Start3 trên tám KR Wine thật.**
+71filepins/47fixturealiases, profile/bom/outcomeflags cốđịnh;
+[contract/giới hạn](docs/PROTOCOL.md#eight-portable-battle), [cách xuất/chạy](tools/README.md#eight-battle-bundle),
+[raw/hash](docs/evidence/eight-player/README.md#cp211). Gói không chứaclient/assets; LANgiảlập/Wine, chưaInternet/K7.
+CP210 đã merge [PR282](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/282)/`9202d77`; CP211 đang giao qua PR.
+Audit kếCP212; tiếp actualteamvariants theo PLAN, không lặp codec/rank đãgiải.
+
 **CP210: cùng tám KR Wine đã hoàn thành hai vòng 4v4, hai đội lần lượt thắng, kết quả → phòng → Ready → Start3.**
 [Contract/scope](docs/PROTOCOL.md#eight-two-team-cycles), [raw/hash](docs/evidence/eight-player/README.md#cp210).
 Native rank8/1751082-inner1072/180/reset vàlife17→19→7peer có nguồn; không item/cứu/kim8 hoặc Internet/K7.
-CP209 đã merge [PR281](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/281)/`bebb1d0`; CP210 đang giao qua PR.
+CP209 đã merge [PR281](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/281)/`bebb1d0`; CP210 đã merge PR282.
 AUD061 qua208/audit kếCP212; bước kế ở PLAN. Đây là scope8client4v4 tối thiểu, khôngtoànbộgame.
 
 **CP209: tám KR Wine đã có movement đủ56chiều remote và cả tám owner đặt/confirm/nổ bom ở mọi view.**

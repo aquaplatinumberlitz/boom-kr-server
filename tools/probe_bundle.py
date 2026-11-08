@@ -63,7 +63,7 @@ def encoded(value):
     return (json.dumps(value, ensure_ascii=False, indent=2) + '\n').encode()
 
 
-def export_bundle(profile, source_root, out, *, four_bomb_profile=None, eight_sessions=False):
+def export_bundle(profile, source_root, out, *, four_bomb_profile=None, eight_sessions=False, eight_bomb_profile=None):
     """Validate every input before reserving a new directory; never overwrite.
 
     CLI callers supply load_preset's validated result. Repeat the pin checks
@@ -78,6 +78,10 @@ def export_bundle(profile, source_root, out, *, four_bomb_profile=None, eight_se
         raise ValueError('unsupported profile')
     if type(eight_sessions) is not bool or (eight_sessions and four_bomb_profile is not None):
         raise ValueError('eight session preview excludes four Battle policy')
+    if eight_bomb_profile is not None:
+        canonical = json.loads((ROOT / 'server/profiles/eight-client-battle.json').read_text())['eight_bomb_profile']
+        if not eight_sessions or json.dumps(eight_bomb_profile, sort_keys=True) != json.dumps(canonical, sort_keys=True):
+            raise ValueError('only fixed eight battle preset baseline is supported')
     four = four_bomb_profile is not None
     if four and (json.dumps(four_bomb_profile, sort_keys=True) != json.dumps(dict(mode='four_current_baseline',
             capacities={'A':1,'B':2,'C':1,'D':1}, powers=dict.fromkeys('ABCD',1), fuse_seconds=6), sort_keys=True)):
@@ -120,6 +124,14 @@ def export_bundle(profile, source_root, out, *, four_bomb_profile=None, eight_se
             "'server/probe_service.py', 'server/eight_player_service.py', 'server/eight_player_profile.py', 'server/four_player_service.py'} <= seen")
         launcher = launcher.replace('from server.probe_service import FixtureProfile, main',
             'from server.probe_service import FixtureProfile\nfrom server.eight_player_service import main')
+    if eight_bomb_profile is not None:
+        payloads['eight-bomb-profile.json'] = encoded(eight_bomb_profile)
+        launcher = launcher.replace("'server/four_player_service.py'} <= seen",
+            "'server/four_player_service.py', 'server/eight_battle_policy.py', 'server/eight_bomb_policy.py', 'eight-bomb-profile.json'} <= seen")
+        launcher = launcher.replace("if any(arg == '--profile' or arg.startswith('--profile=') for arg in sys.argv[1:]):",
+            "if any(arg == flag or arg.startswith(flag + '=') for flag in ['--profile', '--bomb-profile', '--battle-outcome'] for arg in sys.argv[1:]):")
+        launcher = launcher.replace("sys.argv[1:1] = ['--profile', str(root / 'profile.json')]",
+            "sys.argv[1:1] = ['--profile', str(root / 'profile.json'), '--bomb-profile', str(root / 'eight-bomb-profile.json'), '--battle-outcome']")
     payloads['run.py'] = launcher.encode()
     context = subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=ROOT, text=True).strip()
     manifest = dict(

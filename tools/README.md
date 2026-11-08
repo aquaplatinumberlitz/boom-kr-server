@@ -214,3 +214,21 @@ Từ [CP210](../docs/PROTOCOL.md#eight-two-team-cycles), chạy EightPlayerServi
 `--bomb-profile <measured-eight-baseline.json> --battle-outcome` để bật fixed4v4 report-derived result/reset.
 `--battle-outcome` cần measuredprofile; default preview/bomb-only không tự bật. CP210 native chạy source
 đã freeze; gói8battle/relocation là bước kế, không coi bundleverify-only cũ đã qua native2cycles.
+
+
+<a id="eight-battle-bundle"></a>
+### Xuất và chạy gói tám người cố định 4v4
+
+```bash
+python3 tools/export_probe_profile.py --source-root local/research/codex --preset eight-client-battle --bundle --out local/eight-battle
+python3 -I local/eight-battle/run.py --verify-only
+python3 -I local/eight-battle/run.py --help
+```
+
+Gói mang profile47fixturealiases và`eight-bomb-profile.json`; launcher tự bật measured8baseline vàfixed4v4outcome.
+Khi chạy, truyền`--out`, `--bind-ip`, `--channel-ip/--channel-port`, các`--port` và tám`--source-ip A=IPv4`…`H=IPv4`
+riêng theo topology cục bộ đã chuẩn bị. `--profile`, `--bomb-profile`, `--battle-outcome` đãpin, khôngoverride.
+Thưmục cóthể di chuyển trước chạy; launcher chdir đúngrootgói và kiểm71filepins trướcimport/listen.
+Không chứaclient/assets; clientcopy vẫn chạyWine/offlineisolation theo recipe riêng.
+[CP211 đã kiểm native8two4v4/reset/Start3 trên góiđãrelocation](../docs/PROTOCOL.md#eight-portable-battle).
+Không Internet/1–7actual/fullinventory/auth; source-IPadmission là operatorpolicy. Integrity không signature.

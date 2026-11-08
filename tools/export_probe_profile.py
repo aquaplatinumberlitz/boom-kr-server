@@ -16,6 +16,7 @@ PRESETS = {
     'two-client-basic-replacement': PRESET.with_name('two-client-basic-replacement.json'),
     'four-client-battle': PRESET.with_name('four-client-battle.json'),
     'eight-client-start': PRESET.with_name('eight-client-start.json'),
+    'eight-client-battle': PRESET.with_name('eight-client-battle.json'),
 }
 
 
@@ -124,7 +125,9 @@ def main():
             policy = (json.loads(PRESETS[args.preset].read_text())['four_bomb_profile']
                       if args.preset == 'four-client-battle' else None)
             manifest = export_bundle(result, root, out, four_bomb_profile=policy,
-                                     eight_sessions=args.preset == 'eight-client-start')
+                                     eight_sessions=args.preset in ('eight-client-start', 'eight-client-battle'),
+                                     eight_bomb_profile=(json.loads(PRESETS[args.preset].read_text())['eight_bomb_profile']
+                                         if args.preset == 'eight-client-battle' else None))
             print(f'Exported portable {args.preset}: {manifest["fixture_aliases"]} aliases; '
                   'file pins only, not native/LAN certification')
             return

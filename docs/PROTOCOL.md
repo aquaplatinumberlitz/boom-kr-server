@@ -1,6 +1,6 @@
 # KR 00967 — contract tương thích client gốc
 
-Revision kr-legacy-contract-r1; cập nhật08/11/2026 JST (CP210; AUD061 periodic qua208; audit kế212).
+Revision kr-legacy-contract-r1; cập nhật08/11/2026 JST (CP211; AUD061 periodic qua208; audit kế212).
 **Contract có bằng chứng từng phần; phạm vi nghiệm thu codec/hello ở [PLAN](PLAN.md#k2-acceptance)**.
 Lộ trình và thứ tự task chỉ giữ ở [REWRITE_PLAN — KRE](PLAN.md).
 Đây là contract của repo server KR. ADR0009 của bản viết lại là nguồn lịch sử để so sánh;
@@ -5695,6 +5695,49 @@ Mọi run source/config frozen tới cleanup, bản copy/sourceDB/assets giữ n
 **Tại CP200**, bốn client đã vào Battle và quan sát movement liên thông; lúc đó chưa bốn-player bom/trap/death/normal2v2outcome/
 175/180/reset/Start2 hoặc hardening. [CP201–207](#four-netem-restart) đã bổ sung những scope được dẫn; K7/Internet vẫn mở. Phần hiện hành theo PLAN;
 không port rankAB hoặc coi ownerWineacceptance là tự đóng gate.
+
+<a id="eight-portable-battle"></a>
+### Gói tám người đã relocation, hai kết quả/reset và admission có giới hạn — CP211
+
+[Recipe/raw/hash](evidence/eight-player/README.md#cp211), [cách xuất/chạy](../tools/README.md#eight-battle-bundle),
+[phần còn thiếu](RESEARCH.md#gap-service-hardening), [thứ tự](PLAN.md#current-order).
+Reuse CP203portable4/CP2088startbundle/CP209exact8baseline/[CP210two4v4](#eight-two-team-cycles);
+chỉ đo delta packaging/pinflags/relocation, không codec/report/rank/teambalanceRE lại.
+
+**Implementation/design:** preset`eight-client-battle` giữ nguyên47fixturealiases/profile của`eight-client-start`,
+thêm exactmeasured8bombprofile. Exporter vẫn pin/validate input, refuse overwrite và symlinkescape;
+launcher EightPlayerService inject fixed`--profile`, `--bomb-profile eight-bomb-profile.json`, `--battle-outcome`.
+Operator không override ba flag, sidecar/filedrift/missingrequired/unlistedPython bị chặntrước listen.
+Profile khác hoặc Bcap2 ápnhầmE/GHpower1 bị từchối; test so presetbaseline với compiledBASELINE.
+18bundle/preset tests qua; code server không đổi, dùng lại363server của CP210 với sourcehashmatching.
+
+Gói mới **71pins/47aliases**, di chuyển từ`export/service` sang`relocated/service`, thưmục xuất cũ không còn.
+`python -I .../run.py --verify-only` và767realTCPsyntheticcontrols chạy từmodule **tronggói** đã chuyển chỗ.
+ProfileJSON so CP210 chỉ khác pathfixture, mọi byte47alias/cácfield còn lại bằng nhau. Policy-sourcehash,
+config/identity/fuse/outcomeflag/io budgets đo trongnativeprocess **trùngCP210**; loaderprint modulepath
+ởgói, actualspawnargv là Python-I/relocatedrun.py, không externalprofile/bomb/outcomeflags.
+71filepins được đốichiếu trước và saurun. Integrity là localfilepin, không signature/remoteattestation.
+
+**KR runtime/confirmed hẹp:** cùng8actualWine4b/32nativeTCP/private8hosts/Free0/ExVillage01, **service từgóiđãrelocation**
+qua hai normal4v4outcomes ngượcđội/7peerlife/native56→1/rank8/1751082-inner1072/1803/phòngreset/
+7Ready2Start2/7Ready3Start3 và3clock mỗi view.364,775602329s/2102raw/1000frozen/exit0/cleanup0;
+4417gameplayjoins +112delivery/path/hashjoins,128pre175copiednative52A350 tách riêng.
+Không ghép source-run CP210 thành packagedrun; nativepacket/state/175180 của chínhrun mới đủ như CP210.
+
+**Admission:** packaged32TCPcontrol source`127.0.0.99` ngoài8operatorIP bị close mà khôngconsume role/stage;
+fifthtransport củarole đã đủ4 cũng bị từchối. Đây là`design`/realTCPsynthetic, **không9thCA runtime hoặc
+map-awaregeneralroom-full/auth**. Clientcapacity9negative CP147 giữgiớihạn một actual+synthroster;
+CP208–211 có8actualplayers, không khái quát mọi mode/max12/24record trongdump thành24humanplayer.
+
+Preparehelper đầu gọi FixtureProfile với relativefixturepaths từrepoCWD nên FileNotFoundError,
+trong khi launcher đãverifypass vì chdirbundle. GiữV1script/observed-error note; sửa **readerhelper** để
+so raw bằngexplicitpaths vàTCPconstructor chdirbundle/restoreCWD, **trướcfreeze/native**, không sửa gói/code
+đểpass hoặc suy đây là nativefailure. Genericgameplayverifier khôngtựchứngnhậnportable; deliveryreport
+độc lập nối argv/module/sourcehash/config/pins với nativecallbacks. Raw/seal/record cũ giữ nguyên.
+
+Giới hạn: fixed8Free4v4/operatoridentity/oneknownmap/Wine/privatebridge, chưa actual1–7/Manner8/
+interactivechange-team/generalroomauth/native9/full8items-terrain-kim-cứu/accountresume/Internet/K7.
+Không thay gate từ packaging/demo; chỉ PLAN giao nhánh teamvariants kế. Audit kếCP212.
 
 <a id="eight-two-team-cycles"></a>
 ### Tám actual client: hai kết quả 4v4, về phòng và Start3 — CP210
