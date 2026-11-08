@@ -2117,3 +2117,23 @@ verifiers`verify_four_health_gameplay.py`, `verify_four_health.py`, `verify_four
 Manualimages/hash ởrunroot`manual-images.json`. Verifiercount-assumptionV1 fail giữscript/log; V2 kiểm contractkey/winner,
 không threshold số checks. Raw/native không sửa. 352server/16bundle-export/43checkpoint/artifacts5/5;19currentPythonprocess
 restart +240syntheticTCP kiểm health/store/cleanup/contexts, chưa nativeaccountresume/Internetgate.
+
+<a id="cp207"></a>
+## CP207 — samebundle/store/freshserver, fourUDPdelayloss/twooutcomes
+
+[Contract](../../PROTOCOL.md#four-netem-restart), [K7đốichiếu](../../PLAN.md#k7-evidence-review),
+[record](../checkpoints/records/CP207.json). Codexsolo/reviewwaived; auditCP208. CP206merged PR278/4d136ba.
+Source-first`local/research/codex/four-netem-restart-r1/source-first.json`: reuseCP195TC/CP206four67bundle-store;
+VNoc_e-game475–486 chỉarchitecture, khôngopcode/layoutport/newnativefunctionRE.
+Native`four-netem-restart-r1`:234.128720401s/1206raw/339frozen/exit0/cleanup0;
+SHA`bf8c95fd9350c6844abf2290166e921866e8f2ff0cf3fccd14a50c3c7941deef`;
+samebundleSHA`8f92382476363ff9bf9d32b46fed2880539a7b176db63f8e560cc4ee5aaf92ae`.
+2200gameplay/208health/2528network-restart checks/32getters;24remoteprogress/2412PCAP.
+Recipe`prepare_four_netem_restart.py/run_four_netem_restart.py/wine_probe_four_netem_restart.py`;
+verifiers`prepare_verify_four_netem.py/verify_four_netem_{gameplay,health,getters,restart}.py` ởlocal/research/codex.
+Raw/native/capture/ownedPID/health/sourcefreeze dưới`cycles/`;`restart-baseline.json` trỏexactoldbundle/store.
+Manualimages/hash/K7comparison ởrunroot. Transport`four-netem-controls-r1/{baseline,drop100,delayloss}`:
+118checks/ba namespacefixedcase/UDP768→768/0/668/TCP48each; UDPbatchRTT khôngnativeping.
+CurrentkernelTCP214 ở`four-current-delivery-r1`,2.0123294s/Bfollowup1/nocommit/fence.
+VerifierV1aliasb/dependenterrors giữlog/script, chỉ sửa readerpath. OldunusedNATtext đínhchính ởcontract, oldrawgiữnguyên.
+CP206PIDlocator đínhchính R2PID1145289/1145292 (R1:1143576/1143577); không sửaCP206recordcomplete.

@@ -1,6 +1,6 @@
 # KR 00967 — contract tương thích client gốc
 
-Revision kr-legacy-contract-r1; cập nhật08/11/2026 JST (CP204; AUD060 periodic qua204; audit kế208).
+Revision kr-legacy-contract-r1; cập nhật08/11/2026 JST (CP207; AUD060 periodic qua204; audit kế208).
 **Contract có bằng chứng từng phần; phạm vi nghiệm thu codec/hello ở [PLAN](PLAN.md#k2-acceptance)**.
 Lộ trình và thứ tự task chỉ giữ ở [REWRITE_PLAN — KRE](PLAN.md).
 Đây là contract của repo server KR. ADR0009 của bản viết lại là nguồn lịch sử để so sánh;
@@ -5381,6 +5381,39 @@ movementhandler4phasestừCP139làrunkhác; khôngghépchúngthànhfullmatch/K6a
 Serviceproductionbind/153IPvẫnhard127; private-addressshims hiện làmeasurementdesign. RealLAN/K6b/
 Internet/K6c/NAT/relay/fullauth/authority/generalreset/gates mở; field99IP1/subtype39 vẫnunknown.
 
+
+<a id="four-netem-restart"></a>
+### Samebundle/store, freshserver và bốn peer dưới UDP delay/loss — CP207
+
+[Recipe/hash](evidence/peer-endpoints/README.md#cp207), [K7đốichiếu](PLAN.md#k7-evidence-review),
+[câu hỏi kế](RESEARCH.md#gap-lobby-identity-followup). `kr_runtime` confirmed trong profileđãđo; tham sốnetem/identity là`design`.
+Reuse CP195UDP-onlyTC/CP206fourtopology/nativeoracles, **chính bundle67file vàidentitystore cũ**, không exportpackagekhác.
+VNoc_e-game475–486 chỉ tham chiếu kiến trúc TCPtraoendpoint/P2P; không92/146/VNlayoutport hoặc hàm native mới.
+
+Control4host riêng, mỗi case trong namespace mới/configcốđịnh trướctraffic: UDPbaseline768/768,
+loss100%0/768, delay40±5ms/loss5%668/768; mỗi case48TCPecho đủ/median0,10–0,18ms. UDPbatchmedianbaseline~35,6ms,
+delayloss~80,3–80,9ms **có đợi hếtbatch/đọcqueue**, không purewire/nativeping.118checks; counterfresh0 mỗi case,
+case100%192drop/queue, case5%25drop/queue; không lẫn counter qua phase. Transportcontrol không KR/Internet.
+
+Nativefreshserver sauCP206cleanup, giữ exactbundle/profile/config/policy digest/identitybytes-path-hash; newrunUUID/newroom,
+16freshTCP/ordinal1..16/4stage mỗi role. Freshclientprocesses, không nối lại account/trận cũ.
+Bốn recipientvethkv-a/b/c/d: rootprio/priomapall0/protocol17→netemparent1:3/delay40±5ms/loss5%seed194;
+TCPbaseline,12add trước firstnativeTCPaccept, không đổi qdisc trongrun. Hai normal2v2outcomes đối nhau/1754rows/
+180/reset/Ready2Start2/Start3:2200gameplay+208health+2528network-restartchecks/32getters riêng.
+8OSmovementwindows/hai round có24directedremotecurrentcoordinateprogress; không thêmE668AD/key/ACKprobe.
+Queue drop69/70/69/69/delayed1194/1210/1179/1181/backlog0; không perpacketdropattribution.
+PCAP2412records ởkv-a đủ6A-edges/cảhai epoch, **không12Ethernetedges**; position24chiều là nguồn khác.
+
+Currentsource cũng qua214realTCPkernel-nonreader/default2s/Bfollowup1/pendingfence/partialreportnocommit vớiFourrunloop mới.
+VerifierV1 thiếu aliasb khi trỏ bundlecũ; giữscript/log/dependenterrors, chỉ sửa readerpath, không rerun/patch native.
+OldCP200–206controller có textNATscaffold unused/stale: actualfourtopology làdirectbridge theo virtual-network.json;
+CP207 sửa textscope, rawcũ giữ nguyên, không coi fourruns làNATproof.
+CP206PIDlocator có câu nhápR1/R2: sourcechuẩnR2process-verification.json làPID1145289/1145292;1143576/1143577 thuộcR1.
+Đính chính tạiCP207, không sửa completerecordCP206.
+
+Giới hạn: privateLAN/sharedkernel/owneracceptedWine; không Internet/NATdiscovery/genericlossdistributions/accountresume/
+3memberStart/full4items-terrain-kim-cứu/8actualclients. K7 giữ mở theo dependencyK6c; Codex đối chiếu thủ công,
+script/counts không tựđónggate. Audit kếCP208, reviewwaived.
 
 <a id="four-health-identity"></a>
 ### Health local, correlation và identity pin tối thiểu — CP206

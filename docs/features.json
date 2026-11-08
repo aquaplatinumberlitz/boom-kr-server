@@ -1,7 +1,7 @@
 {
   "schema": "kre-feature-index-v1",
   "build": "KR00967",
-  "as_of": "CP206",
+  "as_of": "CP207",
   "sources": {
     "plan": "docs/PLAN.md",
     "contract": "docs/PROTOCOL.md",
@@ -3682,7 +3682,8 @@
           "docs/PROTOCOL.md#four-portable-guards",
           "docs/PROTOCOL.md#four-transport-bounds",
           "docs/PROTOCOL.md#four-member-abort-room",
-          "docs/PROTOCOL.md#four-health-identity"
+          "docs/PROTOCOL.md#four-health-identity",
+          "docs/PROTOCOL.md#four-netem-restart"
         ]
       },
       "coverage": {
@@ -3790,7 +3791,8 @@
               "docs/PROTOCOL.md#four-portable-guards",
               "docs/PROTOCOL.md#four-transport-bounds",
               "docs/PROTOCOL.md#four-member-abort-room",
-              "docs/PROTOCOL.md#four-health-identity"
+              "docs/PROTOCOL.md#four-health-identity",
+              "docs/PROTOCOL.md#four-netem-restart"
             ]
           },
           "windows_original": {
@@ -3883,7 +3885,8 @@
             "docs/PROTOCOL.md#routed-Wine-network",
             "docs/PROTOCOL.md#four-transport-bounds",
             "docs/PROTOCOL.md#four-member-abort-room",
-            "docs/PROTOCOL.md#four-health-identity"
+            "docs/PROTOCOL.md#four-health-identity",
+            "docs/PROTOCOL.md#four-netem-restart"
           ]
         },
         "gate": {
@@ -4708,7 +4711,8 @@
           "docs/PROTOCOL.md#four-portable-guards",
           "docs/PROTOCOL.md#four-transport-bounds",
           "docs/PROTOCOL.md#four-member-abort-room",
-          "docs/PROTOCOL.md#four-health-identity"
+          "docs/PROTOCOL.md#four-health-identity",
+          "docs/PROTOCOL.md#four-netem-restart"
         ]
       },
       "coverage": {
@@ -4742,7 +4746,8 @@
               "docs/PROTOCOL.md#four-portable-guards",
               "docs/PROTOCOL.md#four-transport-bounds",
               "docs/PROTOCOL.md#four-member-abort-room",
-              "docs/PROTOCOL.md#four-health-identity"
+              "docs/PROTOCOL.md#four-health-identity",
+              "docs/PROTOCOL.md#four-netem-restart"
             ]
           },
           "windows_original": {
@@ -4778,9 +4783,10 @@
             "server/four_observability.py",
             "server/four_identity_store.py",
             "server/test_four_observability.py",
-            "server/test_four_identity_store.py"
+            "server/test_four_identity_store.py",
+            "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/278"
           ],
-          "delivery": "branch_pending"
+          "delivery": "via_pr"
         },
         "integration": {
           "state": "partial",
@@ -4791,7 +4797,8 @@
             "docs/PROTOCOL.md#routed-Wine-network",
             "docs/PROTOCOL.md#four-transport-bounds",
             "docs/PROTOCOL.md#four-member-abort-room",
-            "docs/PROTOCOL.md#four-health-identity"
+            "docs/PROTOCOL.md#four-health-identity",
+            "docs/PROTOCOL.md#four-netem-restart"
           ]
         },
         "gate": {

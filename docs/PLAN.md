@@ -1,7 +1,7 @@
 # Kế hoạch server giả lập KR 00967
 
 Nguồn chuẩn của project `boom-kr-server`; bản nhập từ plan đã được dsh1/dsh2 review tại `1eee46d`.
-CP206: health/correlations/identitypin/19processrestart/240TCP vàcurrentnative4haioutcomes/resetStart3 đã kiểm. Tiếp NEXT-K7-FOUR-NETEM-RESTART; K7/Internet mở, AUD060qua204/kế208.
+CP207: same67bundle/store/freshserver/current4nativehaioutcomes/resetStart3 dướiUDP40±5ms/loss5% đã kiểm. K7đốichiếu bên dưới, K6cInternetdependency mở; source-first8slot/session là việc độc lập kế, auditCP208.
 
 
 ### Mục tiêu, baseline và phạm vi
@@ -37,13 +37,13 @@ với client Rust không chứng minh có thể điều khiển client KR bằng
 
 ### Tiến độ hiện hành theo bằng chứng
 
-| Task/mốc | Trạng thái theo nguồn dẫn, cập nhậtCP204 | Nguồn chuẩn |
+| Task/mốc | Trạng thái theo nguồn dẫn, cập nhậtCP207 | Nguồn chuẩn |
 |---|---|---|
 | KRE-004/issue6 | Đã review/merge PR7 và đóng issue:recipe r1 đến local accept;không phải full K1 | [Wine r1](evidence/wine/README.md) |
 | Bootstrap reply | PR8 đã merge;debugger ProcessPatchreturn1,không ép success | [bootstrap evidence](evidence/bootstrap-wire/README.md) |
 | KRE-005a/issue9,R2 | PR10 đã merge:3 cold start cửa sổ/second accept;issue9 còn mở | [R2 evidence](evidence/wine-r2/README.md) |
 | WCP hai-reply | Run CP001 là lịch sử chưa C→S; CP006 đã đo request đầu trên copy tham số hóa | [PROTOCOL](PROTOCOL.md#wcp),[WCP evidence](evidence/wcp/README.md) |
-| KRE-005b/issue14 | CP202same4normal2v2/reset, CP203portable4/deadowner guard đã merge; CP204recipient-safe/boundedIO currentnativepositive. Fullauth/authority/K6c/K7 và phần ngoài scope giữ mở; task ở current-order | [Q-023](RESEARCH.md#q-023), [service](evidence/probe-service/README.md) |
+| KRE-005b/issue14 | CP202–206four2v2/bundle/bounds/guest-hostEOF/health/identity đã merge; CP207fourUDPimpairment/freshserver có runtime. K6cInternet/K7/fullauth/authority/phần ngoài scope giữ mở; task ở current-order | [Q-023](RESEARCH.md#q-023), [service](evidence/probe-service/README.md) |
 | K0 | Đã nghiệm thu identity/harness tại CP178: originalWindowsVM fullfixedcopy/PID/token/cwd/window/ETW/isolation/cleanup; không bootstrap/gameplay success | [Acceptance](#k0-k2a-acceptance) |
 | K1 | Đạt CP179 cho recipe offline R2: 3 coldstart/API đúng PID/contract/patch controls; không e9cold3 hoặc originalWindows bootstrap | [Acceptance](#k1-acceptance) |
 | K2a/K2 | K2a đạt CP178; K2 đạt profileoffline CP181 với native sameprocessretry/reset/cursor/stream và boundednativeoracles. Không toàncodec/accountauthority | [Acceptance](#k2-acceptance),[contract](PROTOCOL.md#login-retry-codec) |
@@ -52,7 +52,7 @@ với client Rust không chứng minh có thể điều khiển client KR bằng
 | K5 | Basic local đạt CP188; current2cycles/peer/Bowner/EOFcontrol riêng, designauthority được rà. Không fullinventory/mode/map | [Nghiệm thu](#k5-acceptance) |
 | K6a | Local hai actualAB/basic/cùnghost đạt CP189; nativecontestedindex/reset/life và CP188peer/Bowner/EOF cóscope riêng. Không physicalLAN/Internet | [Nghiệm thu](#k6a-acceptance) |
 | K6b | Đạt CP191 cho LANgiảlập hai netns/IP/NIC/actualKR theo owner; physicaltwohosts không required | [Nghiệm thu](#k6b-acceptance) |
-| K6c/K7 | CP195 actualKR hai vòng/reset/Start3 qua NAT+UDP delay/loss đã đo; chưa NAT discovery/relay gốc/Internetgate; CP202–204 bốnactual2v2/bundle/bounds có nguồn; K7 còn nativeEOFcleanup/health/restart/identity và dependencyInternet. K6a vàK6bgiảlập giữscopeđạt theoowner | [Current-order](#current-order), [authority](PROTOCOL.md#authority), [gap](RESEARCH.md#gap-lobby-identity-followup) |
+| K6c/K7 | CP195 actualKR hai vòng/reset/Start3 qua NAT+UDP delay/loss đã đo; chưa NAT discovery/relay gốc/Internetgate; CP205–207 guest-hostEOF/health/identity/freshserver/fourUDPimpairment có nguồn; K7 giữ dependencyK6cInternet mở, xem k7-evidence-review. K6a vàK6bgiảlập giữscopeđạt theoowner | [Current-order](#current-order), [authority](PROTOCOL.md#authority), [gap](RESEARCH.md#gap-lobby-identity-followup) |
 
 <a id="current-order"></a>
 ### Thứ tự công việc hiện hành
@@ -115,11 +115,15 @@ không tạo nhánh kiểm kê wiki hoặc mở mode phụ trước K3/K4/K5/K6a
    `NEXT-K7-FOUR-HEALTH-IDENTITY` khép scope CP206: [localhealth/run-session-room-round/digests/identitypin/processrestart](PROTOCOL.md#four-health-identity),
    352server/240TCP/19twoactualprocesscontrols;67pinbundle/current4native2normaloutcomes/reset/Start3 vẫn qua2202+208checks/32getters.
    Processrestart không là nativeaccountresume; nativefreshserver/sameidentitystore vàfourUDPimpairment cònthiếu.
-   `NEXT-K7-FOUR-NETEM-RESTART` hiện hành: source-first CP195two-UDPnetem/current4topology/CP206source-bundle-store;
-   dùng **same67pinbundle/sameidentitystore** sau stopserverCP206, freshprocess/newrunUUID/newroom/budgets/rolecounts,
-   actual4Wine2cycles/reset/Start3 dướiUDP-onlydelay40±5ms/loss5% ở4recipientinterfaces; TCPbaseline có controls/counters/capture.
-   Không gọi đây Internet/accountresume hoặc rerun wholeclientRE. Đối chiếu thủ công acceptanceK7 từknownsources/gap saucontrol;
-   K6cInternet vẫn cần endpoint do project kiểm soát, không tự giảm gatecriteria. Không mở mode/item/map/authority dàn trải.
+   `NEXT-K7-FOUR-NETEM-RESTART` khép scope CP207: [samebundle/store/freshserver/4UDPqdiscs/native4twooutcomes/resetStart3](PROTOCOL.md#four-netem-restart),
+   118transportcontrols/24remoteprogress/2412PCAP/2200+208+2528checks/32getters; currentFourrunloop vẫn214kernelcontrols.
+   [K7acceptancereview](#k7-evidence-review) giữcriteria, không tựđónggate. K6ccontrolledInternetendpoint chưa có
+   trong môi trường/bằngchứng; Wine/LANgiảlập đượcownerchấpnhận nhưngkhônglàInternetwaiver.
+   `NEXT-EIGHT-SESSION-SCOPE` hiện hành độc lập khi chờInternetresource: theo bước5đãcó, source-firstCP147/163/known8roster/teamrules,
+   currentfourprofile/service/bomb/report/barrier/bundle vàconsumer cache; chỉ so hardcode/sessioncounts/8slots/32transports/Ready99barrier/153.
+   Chọn scope8session tối thiểu/TCPcontrols trước8actualWine; không mởlạicodec/8capacity/teamruleenum đãgiải hoặc coi8syntheticroomrosterlà8clients.
+   CP147/163 xác nhận8Room106/Startcount/teamrule, chưa8Battle121/153/actors. Ưu tiên delta8consumertrêncopy hiệncó trước32TCP/8Wine.
+   Triển khai/đo delta theo trigger, không kiểm kê toànclient/item/mode.
    Bốn-player item/terrain/kim/cứu chưa tíchhợp; giữgiớihạn, không coi hai-clientproof là4playerproof.
    Quyết định thứ tự: NAT/two-cycles/UDP impairment/EOF và incoming admission đã có proof; CP202đã có gameplay2v2haioutcomes/reset/Start3; tiếp hardening
    bốn client, chưa nghiệm thu K7. K6c vẫn cần endpoint Internet do project kiểm soát và acceptance giữ nguyên,
@@ -157,7 +161,7 @@ Bảng này chỉ phân công/thứtự; acceptance/PR/bằngchứng ởissue. [
 
 | Thứ tự/scope | Issue | Trạng thái/phần còn thiếu |
 |---|---|---|
-| Hiện hành RE | [#14/KRE-005b](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/14) | K5 basic/K6a/K6b giả lập đã đạt trong scope. CP193–196 NAT/UDP delay-loss/EOF có nguồn; CP197incoming opt-in có controls; CP206health/identity/processrestart/current4nativepositive đã kiểm; tiếp NEXT-K7-FOUR-NETEM-RESTART, audit kếCP208. K6c/K7/fullauth/authority/general variants giữ mở. |
+| Hiện hành RE | [#14/KRE-005b](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/14) | K5 basic/K6a/K6b giả lập đã đạt trong scope. CP193–196 NAT/UDP delay-loss/EOF có nguồn; CP197incoming opt-in có controls; CP207native4freshrestart/UDPimpairment đã kiểm; K7/K6cInternet mở theo dependency; tiếp NEXT-EIGHT-SESSION-SCOPE độc lập, audit kếCP208. K6c/K7/fullauth/authority/general variants giữ mở. |
 | Control theo trigger/gate | [#1/KRE-001](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/1), [#2/KRE-002](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/2) | CP178 K0 originalWindowscontrol/ownership đã đủ, #1 đã đóng qua PR250; #2 giữ widerWCP/launcherconfig; K1 R2 đã đạt CP179, không lặp cold3. |
 | Codec backlog/identity hiện hành | [#3/KRE-003](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/3), [#9/KRE-005a](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/9) | Fullcodec/livebounds vàintermittentmainstartupcause cònthiếu; khônglặpprimitive/auxiliarylocale. |
 
@@ -166,6 +170,22 @@ Bảng này chỉ phân công/thứtự; acceptance/PR/bằngchứng ởissue. [
 [Cây/coverage/dependency sinh từ catalog](COVERAGE.md) thay bản đồ lặp theo checkpoint tại đây.
 Catalog chỉ dẫn về contract/câu hỏi/evidence; không giữ một thứ tự công việc khác.
 Lịch sử từng checkpoint bất biến ở [manifest](evidence/checkpoints/manifest.json).
+
+<a id="k7-evidence-review"></a>
+### Đối chiếu K7 hardening/demo — CP207
+
+Codex đọc **criteriaK7 giữ nguyên** trong bảnggate/dependencygraph, đối chiếu thủ công sources dưới;
+[reviewwaived](evidence/checkpoints/review-waiver.json), [metadatareview/raw](evidence/peer-endpoints/README.md#cp207).
+**K7 vẫn mở** vì dependencyK6cInternet chưa đạt/thiếu project-controlledexternalendpoint. Các hàng là proof theo scope,
+không autoacceptance toàn sản phẩm hoặc suy full4mechanics/8client/auth; không dùng %.
+
+| Criteria hiện hữu | Bằng chứng / giới hạn |
+|---|---|
+| Bốnclient/Linuxpackage/freshlaunch/hai-và-bốn táilập | CP190/191/198two, CP202–207four; CP206→207same67bundle/store/newserver/16freshTCP/twooutcomes/resetStart3. CurrentProbeServicebyteSHA bằngCP198 nên không lặp RE/two-core khôngđổi. Wine4b/virtualhosts/fixedprofile, không coldreliability/fullauth |
+| Boundedparser/backpressure/rate/malformed-duplicate-stale | CP203247guard/CP204finiteIO-rate/default2s214TCP/CP206352tests240TCP; CP207current214kernelTCP. Finiteblocking/failclosed/partialreportfence, không fullgrammar/nonblockingqueue/publicloadbenchmark |
+| Minimumidentitypersistence/log-health/build-run-session-room-round | CP206exactoperatoridentitypin/19processrestart/UUID/digests/context/hashpair; CP207samephysicalbundle/store/freshnative/208health. Không accountdatabase/resume/remoteattestation/powerlossdurability; pairfiles cần sequence/hash |
+| Loss/jitter/serverrestart | CP195twoNATUDP, CP2074recipientUDPqdiscs/118transportcontrols và4actualtwooutcomes/24remoteprogress/freshserver/newUUID. UDP40±5ms/loss5%/TCPbaseline, không Internet/hardwarediversity/oldclientresume |
+| Authority/clientcopylimits/dependency | [Authority](PROTOCOL.md#authority), [copy/scope](PROTOCOL.md#four-two-team-cycles), [health](PROTOCOL.md#four-health-identity), [netem](PROTOCOL.md#four-netem-restart). Design/report-derivedlife/rank/fuse/budgets côngkhai; full4item-terrain-kim-cứu ngoài proof. K6cInternet chưađạt, không đóngK7 |
 
 ### Bằng chứng lịch sử khi lập plan (26/10)
 

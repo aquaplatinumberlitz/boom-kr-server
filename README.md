@@ -28,9 +28,14 @@ boom-kr-server/
 
 ## Tra nhanh và trạng thái hiện tại
 
+**CP207: bốn KR Wine đã qua hai vòng 2v2/reset/Start3 dưới UDPdelay/loss, server mới dùng lại samebundle vàidentitystore.**
+[Contract/giới hạn](docs/PROTOCOL.md#four-netem-restart), [raw/hash](docs/evidence/peer-endpoints/README.md#cp207),
+[K7đốichiếu](docs/PLAN.md#k7-evidence-review). Internet/K6c/K7 vẫn mở; không accountresume/8clientproof.
+CP206 đã merge [PR278](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/278)/`4d136ba`; audit kếCP208.
+
 **CP206: có health/run-session-room-round ID và identity pin qua restart process; bốn KR Wine vẫn qua hai vòng 2v2/reset/Start3.**
 [Contract/giới hạn](docs/PROTOCOL.md#four-health-identity), [raw/hash](docs/evidence/peer-endpoints/README.md#cp206).
-Tiếp samebundle/sameidentitystore với server mới và UDPdelay/loss bốn peer theo PLAN. K7/Internet chưa đóng; auditCP208.
+TạiCP206 còn nativefreshrestart/fourUDPimpairment; [CP207](docs/PROTOCOL.md#four-netem-restart) đã bổ sung; bước kế ởPLAN. K7/Internet chưa đóng; auditCP208.
 CP205 đã merge [PR277](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/277)/`bf165f9`.
 
 **CP205: guest hoặc host rớt giữa Battle, ba client KR Wine còn lại đã về phòng; host rớt thì B nhận chủ phòng.**

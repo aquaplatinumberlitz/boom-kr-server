@@ -155,9 +155,9 @@
         "KR-F001",
         "KR-F015"
       ],
-      "known": "CP206localhealth/UUID/correlations/profile-config-policy digests/optionalidentitypin;19twoPythonprocessrestart/240TCP/352server/currentnative4twooutcomes/resetStart3:2202+208checks/32getters. CP205mergedPR277/bf165f9.",
-      "remaining": "Nativefreshserverrestartusing same67pinbundle/sameidentitystore plusfourUDPimpairment; K7Internet/fullauth/generalresume/4itemsoutsideproof.",
-      "next_test": "PLAN NEXT-K7-FOUR-NETEM-RESTART source-first CP195UDP-onlycontrols/current4topology andsameCP206bundle/store; freshserver/runroomUUID+actual4twooutcomes/resetStart3/UDP40±5msloss5%/TCPbaseline/counters/nativepeer. ThenmanualK7acceptancereview; noInternetfromsimulation.",
+      "known": "CP207samephysical67bundle/store/freshserver/newUUID/4actual2normal2v2/resetStart3under4UDP40±5msloss5%;2200+208+2528checks/32getters/24remoteprogress/2412PCAP/118transport/current214kernelTCP. CP206mergedPR278/4d136ba.",
+      "remaining": "K6cInternetdependency/controlledexternalendpointmissing/K7open;8actualsessions/generalresume/broadermechanicsoutsideproof.",
+      "next_test": "PLAN NEXT-EIGHT-SESSION-SCOPE independent: reuseCP147163eightfixtures/consumers/teamrules/currentfourhardcodes; scope8sessions/32TCP/Ready99barrier/153 withTCPcontrols before8actualWine; nofullinventory/InternetfromLAN.",
       "acceptance": "Epic checklist: linkedscopedtask/evidence+authoritymatrix vàacceptancegate ởPLAN; từngtaskđóng khôngđóngepic/K5/K6a.",
       "reason": "Currentboundedtransportpartialhardening/native4positive proven, notclientrecovery/fullK7/Internet. AUD060through204/next208.",
       "sources": [
@@ -237,7 +237,9 @@
         "docs/PROTOCOL.md#four-portable-guards",
         "docs/PROTOCOL.md#four-transport-bounds",
         "docs/PROTOCOL.md#four-member-abort-room",
-        "docs/PROTOCOL.md#four-health-identity"
+        "docs/PROTOCOL.md#four-health-identity",
+        "docs/PROTOCOL.md#four-netem-restart",
+        "docs/PLAN.md#k7-evidence-review"
       ],
       "evidence": [
         "docs/evidence/current-movement-cycles/README.md",
@@ -312,7 +314,8 @@
         "docs/evidence/peer-endpoints/README.md#cp203",
         "docs/evidence/peer-endpoints/README.md#cp204",
         "docs/evidence/peer-endpoints/README.md#cp205",
-        "docs/evidence/peer-endpoints/README.md#cp206"
+        "docs/evidence/peer-endpoints/README.md#cp206",
+        "docs/evidence/peer-endpoints/README.md#cp207"
       ],
       "prs": [
         173,
@@ -393,7 +396,8 @@
         267,
         268,
         276,
-        277
+        277,
+        278
       ],
       "successors": []
     },
