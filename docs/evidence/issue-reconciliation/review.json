@@ -155,11 +155,11 @@
         "KR-F001",
         "KR-F015"
       ],
-      "known": "CP200newoptin4sessionservice/309tests/200realTCPchecks; actualABCDWineauth291/ownslots/room/Ready/12199clock153, R6twelve directed currentmovement inlowobserverrun; failedR1header/R4stop/R5metadata andR2R3meshpartialpreserved.",
-      "remaining": "FourclientBattlebombs/2v2life/survivor/result175180/reset/Start2; fourportable/hardening/restart/rate-limit/persistence/Internet/K7/auth/generalvariants open.",
-      "next_test": "PLAN NEXT-K7-FOUR-BATTLE-OUTCOME: reuseknown118159158/authority/lifereport/rank/reset; minimal4ownerbaseline/bombbroadcast/fence then2v2normaloutcome/reset/currentnativeconsumer. NoABrankclone orforfeitnormalwin.",
+      "known": "CP201fouractualclockcapacity1/2/1/1/power1/charmaxima/native4owner118→4recipient159entity/full39→158full13;316server/207TCP/1036nativechecks. CP2004session/movementmergedPR272. Failedstartup/conditionalJSONguardcandidate kept separate.",
+      "remaining": "Life127/2v2survivor/authority/rank175fourrows/180/reset/Ready2/Start2/samefourclientnormalending; fourportable/hardening/K7/Internet/auth stillopen.",
+      "next_test": "PLAN NEXT-K7-FOUR-BATTLE-OUTCOME: reuseknownlife/report/rankconsumer/builders thenminimalscoped2v2policy/negativecontrols/native4row175180/reset; noABrankclone/forfeitnormalwin.",
       "acceptance": "Epic checklist: linkedscopedtask/evidence+authoritymatrix vàacceptancegate ởPLAN; từngtaskđóng khôngđóngepic/K5/K6a.",
-      "reason": "Fouractualsession/movementisnotfourfullmatch/gate; AUD059through200/next204.",
+      "reason": "Confirmed4bombs/4viewsnotenough4fullmatch/resultreset/gate; AUD059through200/next204.",
       "sources": [
         "docs/PROTOCOL.md#authority",
         "docs/RESEARCH.md#feature-gaps",
@@ -231,7 +231,8 @@
         "docs/PROTOCOL.md#operator-incoming-binding",
         "docs/PROTOCOL.md#native-interleaved-startup",
         "docs/PROTOCOL.md#four-slot-native-consumers",
-        "docs/PROTOCOL.md#four-session-native"
+        "docs/PROTOCOL.md#four-session-native",
+        "docs/PROTOCOL.md#four-owner-bombs"
       ],
       "evidence": [
         "docs/evidence/current-movement-cycles/README.md",
@@ -300,7 +301,8 @@
         "docs/evidence/peer-endpoints/README.md#cp197",
         "docs/evidence/peer-endpoints/README.md#cp198",
         "docs/evidence/peer-endpoints/README.md#cp199",
-        "docs/evidence/peer-endpoints/README.md#cp200"
+        "docs/evidence/peer-endpoints/README.md#cp200",
+        "docs/evidence/peer-endpoints/README.md#cp201"
       ],
       "prs": [
         173,

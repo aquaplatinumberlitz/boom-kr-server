@@ -141,3 +141,13 @@ Bootstrap cần listen đúng các port trong recipe Wine; ví dụ trên chỉ 
 là operatorpolicy, bốn transport/role/lifetime; không accountauth/sameNATIP/retry/resume. Mốc này chỉ
 room/load/input/peer, reject gameplay/bom/event/result/reset; chưa server4trận hoàn chỉnh hoặc bundle4portable.
 Tests: `python3 -m unittest server.test_four_player_service`; nguồn chuẩn thứ tự tiếp ở PLAN.
+
+CP201 thêm opt-in `--bomb-profile /absolute/local/four-bomb.json` cho entrypoint4, cấu hình rõ:
+
+```json
+{"mode":"four_current_baseline","capacities":{"A":1,"B":2,"C":1,"D":1},"powers":{"A":1,"B":1,"C":1,"D":1},"fuse_seconds":6}
+```
+
+[Baseline/giới hạn](../docs/PROTOCOL.md#four-owner-bombs) chỉ profile/char đã đo; capacity/fuse là policy emulator.
+Không khai giữ CP200reject118; bật có159/158/reservation/fence, vẫn chưa life/result/reset2v2/fullmatch.
+Tests `python3 -m unittest server.test_four_bomb_policy`; không lấy generatedwire làm nativeoracle.

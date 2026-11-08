@@ -1970,3 +1970,33 @@ chỉ có rare291/121/spawn/153 và rate-limitednativepositions; không key/E668
 normalRightA/B/C vàDownD (RightD vướngterrain) làmcurrentpositions đổi ở ba recipient. SoR2R3 hỗ trợ
 observerthroughputcandidate, chưacausalitytoànnhánh. Không4bom/trap/death/rank/normal2v2result/reset/Start2;
 service4rejectGameplayrõ. Tiếp PLANfourBattle/authority/consumer, giữ toànrunfailed/verifier/history/hash.
+
+<a id="cp201"></a>
+## CP201 — bốn-owner baseline và bom confirmed/native nổ
+
+KRE-005b/#14/Codexsolo/reviewwaived; CP200/PR272 merge`cd958c95` là baseline; AUD059qua200/kế204.
+[Contract/reuse/giới hạn](../../PROTOCOL.md#four-owner-bombs), [câu hỏi](../../RESEARCH.md#gap-lobby-identity-followup),
+[PLAN](../../PLAN.md#current-order). Reuse CP030stat/087capacity/024159/022158/173188ownerwire/fence, không codecscan.
+
+`four-owner-framer-r1`: 154.942564192s/609raw/exit0/cleanup0, SHA`ba69ecb3fd63865bf0de731e8e1f70abc58d5378eda58faa12f952087fd95ea4`;1039checks/144nativegettersmodel.
+Originalcopy4b: nativeclock4viewcapacity/maxA1/10B2/7C1/8D1/10, power/max1/7,1/9,1/5,1/8, speed/max5/7,4/8,5/8,4/8.
+ActualSpace4owner→118key/slot/serial/power, thenservice4reject118. Baselineprovesprofileonly, notallchar/default.
+
+`four-owner-bombs-r1`: 150.550447268s/648raw/250frozen/exit0/cleanup0; SHA`0deaf49746ffb1b4514f3232057f12a9120301106f878320e5f690e510a2c26f`, 1036nativechecks.
+Opt-in`--bomb-profile`/capacity1,2,1,1/power1/fuse6; actual118fromeachowner→IDs1–4/16recipient159/16recipient158.
+Native15939/39/errors0/entitynonzero/securecoordsfromactualcell;15813/13/errors0/currentIDs/kind0.316server/207TCP
+controls: owner/serial/key/power/capacityD≠B/duplicate/fuse/EOFpendingC byDclose/round_closed/noABrank. TCPdriverfirst
+closeunreadsocketRSTlog kept; drain+SHUT_WR control maps EOF correctly, productionselector already handlesRST.
+E14360probe usedEBPatentrywrong; matched_confirm_entitynotacceptance/proof, rawkept. No4normaloutcome/reset/Start2.
+
+Grouped failedstartupcontrols (all frozen/cleanup0): baselineR1/R2 C SIGABRT beforeclock; R3freshCprefixbutA
+96A480inputJSONsize0→96DCE0→throwexpectedvalue. CacheCP073HTTPcontentroute, notlocale. Newconditionalguardcopy
+8d7194fd…/nativeemptyconstructor/model5branches/byteexactrollback4b has runtimeemptyout0/cap15, thenBcleanupSIGILL
+2260DF8/16EA064UninstallDWKcandidate (cacheCP181). Notstartupfix/notprimarycause/guardnotinacceptedbomrecipe.
+Positiveframerbaselineoriginal4b parsesauth4/sequence/CRC, primaryfatal/contentthrowunseen. No blanketabort/cleanup
+bypass. Preservepartialrecipes/copies/patchreport/seals/hash, no sourceclient/DB/assets/base4bwrite.
+
+RuntimeRecipe`prepare_four_owner_bombs.py`→explicitprofile/preflight→`run_four_owner_bombs.py`→cleanup/seal;
+4privateprefix/netns/IP10.77.0.2–5/isobridge/Winecopy4b, normalSpace/7swait eachowner. Metadata/raw/sourcepins
+inexternalmanifestCP201; no uploadclient/patchbinary. Nativegame maytrap/death;127stillrejected/notnormalmatch.
+Next life/report/team2v2/rank4rows/native175180/reset asPLAN; no4fullmatch/K7/Internet/gateclosure.

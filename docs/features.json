@@ -1,7 +1,7 @@
 {
   "schema": "kre-feature-index-v1",
   "build": "KR00967",
-  "as_of": "CP200",
+  "as_of": "CP201",
   "sources": {
     "plan": "docs/PLAN.md",
     "contract": "docs/PROTOCOL.md",
@@ -1803,7 +1803,8 @@
           "docs/evidence/peer-endpoints/README.md#cp176-in-progress",
           "docs/PROTOCOL.md#a-c-basic-cycles",
           "docs/evidence/peer-endpoints/README.md#cp176",
-          "docs/PROTOCOL.md#current-basic-cycles-291"
+          "docs/PROTOCOL.md#current-basic-cycles-291",
+          "docs/PROTOCOL.md#four-owner-bombs"
         ]
       },
       "coverage": {
@@ -1876,7 +1877,8 @@
               "docs/evidence/peer-endpoints/README.md#cp176-in-progress",
               "docs/PROTOCOL.md#a-c-basic-cycles",
               "docs/evidence/peer-endpoints/README.md#cp176",
-              "docs/PROTOCOL.md#current-basic-cycles-291"
+              "docs/PROTOCOL.md#current-basic-cycles-291",
+              "docs/PROTOCOL.md#four-owner-bombs"
             ]
           },
           "windows_original": {
@@ -1908,7 +1910,9 @@
             "docs/PROTOCOL.md#terrain-policy",
             "server/terrain_model.py",
             "server/terrain_profile.py",
-            "server/test_terrain_policy.py"
+            "server/test_terrain_policy.py",
+            "server/four_bomb_policy.py",
+            "server/test_four_bomb_policy.py"
           ],
           "delivery": "via_pr"
         },
@@ -2011,7 +2015,8 @@
           "docs/evidence/peer-endpoints/README.md#cp173",
           "docs/PROTOCOL.md#a-c-basic-cycles",
           "docs/evidence/peer-endpoints/README.md#cp176",
-          "docs/PROTOCOL.md#current-basic-cycles-291"
+          "docs/PROTOCOL.md#current-basic-cycles-291",
+          "docs/PROTOCOL.md#four-owner-bombs"
         ]
       },
       "coverage": {
@@ -2083,7 +2088,8 @@
               "docs/evidence/peer-endpoints/README.md#cp173",
               "docs/PROTOCOL.md#a-c-basic-cycles",
               "docs/evidence/peer-endpoints/README.md#cp176",
-              "docs/PROTOCOL.md#current-basic-cycles-291"
+              "docs/PROTOCOL.md#current-basic-cycles-291",
+              "docs/PROTOCOL.md#four-owner-bombs"
             ]
           },
           "windows_original": {
@@ -2408,7 +2414,8 @@
           "docs/evidence/peer-endpoints/README.md#cp176",
           "docs/PROTOCOL.md#current-basic-cycles-291",
           "docs/PROTOCOL.md#current-basic-contest-reset",
-          "docs/PROTOCOL.md#emulated-lan-acceptance"
+          "docs/PROTOCOL.md#emulated-lan-acceptance",
+          "docs/PROTOCOL.md#four-owner-bombs"
         ]
       },
       "coverage": {
@@ -2461,7 +2468,8 @@
               "docs/evidence/peer-endpoints/README.md#cp176",
               "docs/PROTOCOL.md#current-basic-cycles-291",
               "docs/PROTOCOL.md#current-basic-contest-reset",
-              "docs/PROTOCOL.md#emulated-lan-acceptance"
+              "docs/PROTOCOL.md#emulated-lan-acceptance",
+              "docs/PROTOCOL.md#four-owner-bombs"
             ]
           },
           "windows_original": {
@@ -4234,7 +4242,8 @@
           "docs/PROTOCOL.md#nat-netem-host-eof",
           "docs/PROTOCOL.md#operator-incoming-binding",
           "docs/PROTOCOL.md#native-interleaved-startup",
-          "docs/PROTOCOL.md#four-session-native"
+          "docs/PROTOCOL.md#four-session-native",
+          "docs/PROTOCOL.md#four-owner-bombs"
         ]
       },
       "coverage": {
@@ -4395,7 +4404,8 @@
               "docs/PROTOCOL.md#portable-probe-bundle",
               "docs/PROTOCOL.md#emulated-lan-acceptance",
               "docs/PROTOCOL.md#routed-Wine-network",
-              "docs/PROTOCOL.md#four-session-native"
+              "docs/PROTOCOL.md#four-session-native",
+              "docs/PROTOCOL.md#four-owner-bombs"
             ]
           },
           "windows_original": {
@@ -4645,7 +4655,8 @@
           "docs/PROTOCOL.md#operator-incoming-binding",
           "docs/PROTOCOL.md#native-interleaved-startup",
           "docs/PROTOCOL.md#four-slot-native-consumers",
-          "docs/PROTOCOL.md#four-session-native"
+          "docs/PROTOCOL.md#four-session-native",
+          "docs/PROTOCOL.md#four-owner-bombs"
         ]
       },
       "coverage": {
@@ -4673,7 +4684,8 @@
             "refs": [
               "docs/PROTOCOL.md#udp-netem-cycles",
               "docs/PROTOCOL.md#four-slot-native-consumers",
-              "docs/PROTOCOL.md#four-session-native"
+              "docs/PROTOCOL.md#four-session-native",
+              "docs/PROTOCOL.md#four-owner-bombs"
             ]
           },
           "windows_original": {
