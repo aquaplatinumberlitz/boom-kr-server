@@ -1,7 +1,7 @@
 # Kế hoạch server giả lập KR 00967
 
 Nguồn chuẩn của project `boom-kr-server`; bản nhập từ plan đã được dsh1/dsh2 review tại `1eee46d`.
-CP213: bàn giao thiết kế/lộ trình Rust KRE-074/#285; chưa triển khai Rust. Native8teamresults đã seal là input chưa giao code; K6c WAN giả lập/K7 scoped đạt CP212, Internet thật chưa kiểm. AUD062qua212/kếCP216.
+CP214: RE token13byte/count1–2 đã nối actual C2S1; chưa xác thực tài khoản hoặc Rust. CP213 thiết kế/lộ trình Rust KRE-074/#285 đã mergePR286. Native8teamresults đã seal là input chưa giao code; K6c WAN giả lập/K7 scoped đạt CP212, Internet thật chưa kiểm. AUD062qua212/kếCP216.
 
 
 ### Mục tiêu, baseline và phạm vi
@@ -58,20 +58,26 @@ với client Rust không chứng minh có thể điều khiển client KR bằng
 <a id="current-order"></a>
 ### Thứ tự công việc hiện hành
 
-**Chỉ đạo công ty08/11: nghiên cứu/kế hoạch Rust trước; đợt này không triển khai Rust hoặc đổi runtime.**
-[KRE-074/#285](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/285) là task hiện hành. <!-- active-issue: 285 -->
-Baseline kiểm từ CLI/Git: CP212/main mergePR284 c0c7b94, K0–K7 đạt **đúng scope từng acceptance**,
-K6c WAN giả lập; **Internet thật chưa kiểm**. CP213 ghi cả kết quả team đã seal trước khi chuyển việc và
-kế hoạch này; team source code vẫn WIP chưa main, không dùng nó làm baselineRust đầu hoặc claimRustđãchạy.
-[Decision owner](evidence/owner-directives/rust-service.json), [thiết kế/ma trận readiness](RUST_SERVICE_ARCHITECTURE.md),
-[survey/hash](evidence/rust-service/survey.json), [RE gaps](RESEARCH.md#rust-service-gaps).
+**Kế hoạch Rust đã giao CP213/PR286 `4f9a963`; hiện tiếp RE đúng khoảng trống authbridge, chưa triển khai Rust.**
+[KRE-005b/#14](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/14) / KR-L001 là nhánh đang đo;
+<!-- active-issue: 14 --> [KRE-074/#285](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/285) giữ epic chuyển Rust. <!-- active-issue: 285 -->
+K0–K7 đạt đúng scope, K6c WAN giả lập; **Internet thật chưa kiểm** là backlog riêng.
+Team source WIP giữ nguyên/chưa merge, không chọn làm baseline Rust.
 
-Đầu ra đợt này là docs/commit/PR/exacthead; không tạo Cargo/repo/worktree Rust, không start thêm run.
-Sau bàn giao, **lát cắt nên viết đầu tiên là RUST-M1**, chuẩn bị RUST-M0 cùng task: pure KR codec + per-connection
-state và một local native hello/login-error/retry path trên profile đã đo. Nó tạo chỗ kiểm độc lập và reusable
-runtime trước khi chạm gameplay/DB/auth; không clone toàn ProbeService hoặc viết engine authoritative mới.
-RUST-M5 backend có thể làm ngay sau nền M1, không chờ toàn Battle/mọi item RE. Clientaccountbridge vẫn gate riêng.
-Chỉ quay lại RE nhánh chặn slice đang thực hiện; nguồn cũ→khoảng trống→phép đo tối thiểu, không dàn trải.
+1. **NEXT-AUTH-TOKEN-BOUNDS**: dùng [CP214](PROTOCOL.md#auth-token-request)/
+   [raw/hash](evidence/login-runtime/README.md#cp214), không lặp count1/count2 hoặc hello/retrycodec đã đo.
+   Đổi độ dài token qua SSO15/16, rồi token2-only nếu contract đọc config cần; kiểm writer native + actualframe/CRC/cursor.
+   Chỉ mở consumer/đuôi cụ thể nếu chặn parse; không reverse toàn provider/login.
+2. **NEXT-AUTH-SESSION-BINDING**: reuse CP181error/retry, CP184/186request6 và operatorbinding; trace minimum
+   token→local identity→newchannel socket; positive/negative wrongtoken/expired/revoked/swappedchannel/claimID riêng.
+   Backend policy là design, không gọi loginresult/namematch là authentication. Hai implementation đồng ý không là nativeproof.
+3. Lát cắt Rust đầu tiên vẫn **RUST-M0→M1**, không phụ thuộc authbridge/fullauthRE. Chỉ triển khai khi mở đợt implementation đúng phạm vi:
+   pinned Python baseline rồi pure codec/per-connection/nativehello-error-retry;
+   [M0–M8](#rust-service-milestones) là thứ tự implementation duy nhất. M5backend có thể làm độc lập sớm,
+   không chờ Battle/mọiitem và không chờ fullauthRE để thiết kế DB. Không tạo Rust tree trong đợt RE này.
+
+[Owner design](evidence/owner-directives/rust-service.json), [kiến trúc/readiness](RUST_SERVICE_ARCHITECTURE.md),
+[unknown/phép đo](RESEARCH.md#rust-service-gaps). Codex solo/tự kiểm, review waived; CP214 không nâng gate, audit kếCP216.
 
 <a id="rust-service-milestones"></a>
 ### Milestone Rust: dependency, đầu ra và nghiệm thu

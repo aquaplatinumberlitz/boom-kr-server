@@ -1,7 +1,7 @@
 {
   "schema": "kre-issue-review-v1",
   "as_of": "2026-11-08",
-  "baseline": "c0c7b9478dcf5b639a76f67ee51a5f6b927cb0f9",
+  "baseline": "4f9a9630b1e92ecf3220f6983f8583073971b5c3",
   "method": "Codex manual acceptance review; native/static/model/design/merge/gate distinct; originalissuebodies archivedlocalbeforeedit, no completecheckpoint rewrite",
   "issues": [
     {
@@ -155,11 +155,11 @@
         "KR-F001",
         "KR-F015"
       ],
-      "known": "CP212mergedPR284/K6cWANgiảlập-K7scoped. CP213sealedWIPteam: copy4bactual8Free1v7+Manner4v4twooppositeoutcomes/resetStart3; copy8dactual8Manner1v7return7/no104; sourceunmerged.",
-      "remaining": "TeamcodeWIPnotdelivered, interactiveKRteamopcode/generalroom/accountauth/fullitems/worldauthority unknown. Internet thật chưa kiểm separatebacklog, notK6c/K7dependency.",
-      "next_test": "Ownernewplanning-onlyKRE-074/#285; PLANrustmilestonesM0baseline→M1codec/connection firstslice, accountbackendparallel. No new runtime/implementationthisround. Oldemptyretryclosedbounded; REonlyRustslice blocker.",
+      "known": "CP213planningdeliveredPR286/main4f9a963,noRustimplementation. CP2143sealednativeWinecopy4btokenrequest/count1–2,4exactnativewriterrecords/9framercontrols. Demo scopedK6cWAN/K7 unchanged;Internet thật chưa kiểm.",
+      "remaining": "Tokenlength13only; token2-only/provider/suffix/verification/expiry-revoke/crosssocketaccountownershipunknown. TeamcodeWIPunchanged/unmerged; Rustimplementationfuture.",
+      "next_test": "NEXT-AUTH-TOKEN-BOUNDS thenNEXT-AUTH-SESSION-BINDING perPLAN; minimalnativecontrols, no new Rustcode orrepeatfullcodec/Battle.",
       "acceptance": "Epic checklist: linkedscopedtask/evidence+authoritymatrix vàacceptancegate ởPLAN; từngtaskđóng khôngđóngepic/K5/K6a.",
-      "reason": "Read-onlysurvey63files/34CP andsixsealedownedcleanup0; old4bpartials preserved, alternatecopy8dguardnotobserved≠startupfix; no wireVNport/nativeRustproof.",
+      "reason": "Source-first reuseCP014/058/181avoidsoldRE; exactrecordcapture/newcountsmeasured, not fullauth orsemanticgate inference. Both epics stayopen; planningdeliverablealreadymerged.",
       "sources": [
         "docs/PROTOCOL.md#authority",
         "docs/RESEARCH.md#feature-gaps",
@@ -250,7 +250,8 @@
         "docs/PLAN.md#rust-service-milestones",
         "docs/PROTOCOL.md#eight-team-variants",
         "docs/RUST_SERVICE_ARCHITECTURE.md",
-        "docs/RESEARCH.md#rust-service-gaps"
+        "docs/RESEARCH.md#rust-service-gaps",
+        "docs/PROTOCOL.md#auth-token-request"
       ],
       "evidence": [
         "docs/evidence/current-movement-cycles/README.md",
@@ -335,7 +336,8 @@
         "docs/evidence/peer-endpoints/k6c-acceptance.json",
         "docs/evidence/peer-endpoints/k7-acceptance.json",
         "docs/evidence/peer-endpoints/README.md#cp212",
-        "docs/evidence/eight-player/README.md#cp213"
+        "docs/evidence/eight-player/README.md#cp213",
+        "docs/evidence/login-runtime/README.md#cp214"
       ],
       "prs": [
         173,
@@ -423,7 +425,8 @@
         281,
         282,
         283,
-        284
+        284,
+        286
       ],
       "successors": []
     },
@@ -762,25 +765,29 @@
         "KR-S001",
         "KR-S002"
       ],
-      "known": "Research/design/milestoneplanwritten, noRustimplementation. MainCP212scoped/WIPteamsealed distinct; sourcehashsurvey and canonicalmatrix.",
-      "remaining": "Planning docs delivery requires PR/exactheadmerge; Rustepic staysopen for futuremilestones, noneimplemented. No newRust/runtime inthisround.",
-      "next_test": "Requiredexistingdocs/catalog/history/diff+exactheadPR thenplanninghandoff. #285 remains Rusttransitionepic; M1 plannednextnotstarted, implementationissueonlywhenmilestoneopens. No duplicate plan.",
+      "known": "CP213planningdeliveredPR286/main4f9a963,noRustimplementation. CP2143sealednativeWinecopy4btokenrequest/count1–2,4exactnativewriterrecords/9framercontrols. Demo scopedK6cWAN/K7 unchanged;Internet thật chưa kiểm.",
+      "remaining": "Tokenlength13only; token2-only/provider/suffix/verification/expiry-revoke/crosssocketaccountownershipunknown. TeamcodeWIPunchanged/unmerged; Rustimplementationfuture.",
+      "next_test": "NEXT-AUTH-TOKEN-BOUNDS thenNEXT-AUTH-SESSION-BINDING perPLAN; minimalnativecontrols, no new Rustcode orrepeatfullcodec/Battle.",
       "acceptance": "Eightdeliverablequestionsexplained inarchitecture+PLAN: firstslice/readiness/Python/fullservicemissing/dependencies/productchoices/design-vs-KRunknown/releasecriteria; preservedWIP/noRuntimeRustchange.",
-      "reason": "Ownerexplicitplanning-onlyrequest; codeworkflowunchanged, no new tracker or copies of protocol.",
+      "reason": "Source-first reuseCP014/058/181avoidsoldRE; exactrecordcapture/newcountsmeasured, not fullauth orsemanticgate inference. Both epics stayopen; planningdeliverablealreadymerged.",
       "sources": [
         "docs/PLAN.md#rust-service-milestones",
         "docs/RUST_SERVICE_ARCHITECTURE.md",
-        "docs/RESEARCH.md#rust-service-gaps"
+        "docs/RESEARCH.md#rust-service-gaps",
+        "docs/PROTOCOL.md#auth-token-request"
       ],
       "evidence": [
         "docs/evidence/rust-service/README.md",
         "docs/evidence/rust-service/survey.json",
-        "docs/evidence/owner-directives/rust-service.json"
+        "docs/evidence/owner-directives/rust-service.json",
+        "docs/evidence/login-runtime/README.md#cp214"
       ],
-      "prs": [],
+      "prs": [
+        286
+      ],
       "successors": []
     }
   ],
-  "as_of_utc": "2026-11-07T02:28:41.269120+00:00",
+  "as_of_utc": "2026-11-08T09:01:09.098137+00:00",
   "limits": "Dated manual dispositions through CP146; snapshotcaptureUTC only/no semantic or gate certification; immutable completehistory."
 }

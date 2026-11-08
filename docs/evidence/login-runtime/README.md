@@ -79,3 +79,29 @@ Kiểm CP014: `verify.py` có302 assertions trên16 run, native replay và raw h
 `check_docs.py`, `check_checkpoints.py --require-local --require-history`, `artifacts.py verify`,
 `git diff --check` là kiểm bàn giao. Kết quả cụ thể và hash trong manifest; các checker chỉ kiểm
 nhất quán đo được, không tự xác nhận ngữ nghĩa hoặc đóng gate. Audit định kỳ kế tiếp CP016.
+
+<a id="cp214"></a>
+## CP214 — token local → request native, count1/count2
+
+Baseline PR286/main `4f9a963`; Codex solo/self-check, review waived.
+[Contract và giới hạn](../../PROTOCOL.md#auth-token-request), [câu hỏi tiếp](../../RESEARCH.md#rust-service-gaps),
+[metadata ba run/hash](token-request.json). Raw riêng `local/research/codex/auth-token-request-r1/`;
+recipe/preflight/runtime-source/GDB/run/clientlog/cleanup có seal trước phân tích hoặc đổi việc.
+Wine10.0-20260425, offlinecopy4b SHA `4b781fbcea21e0f6294c729b63be86ab2953d60ad83b0d0c9219359f826107ed`,
+namespace cô lập/chỉ localstub; không auth-success reply, không Nexon thật hoặc credentials thật.
+
+Tái sử dụng CP014 count/guards, CP058 reply và CP181 retry/codec; source-first pin16file/docs/cache/VN/KR cũ.
+Tránh đo lại hello, dựng authreply137/291, profile, Battle hoặc port VNlogin. Chỉ bổ sung ba input token giả
+có kiểm native writer và capture. Count1 A/B: frame80/body42, count2: frame95/body57;
+mỗi record15byte, suffix25byte giữ nguyên. `token-request.json` dẫn runSHA/frames/inputSHA/offsets;
+không commit dummy token bytes hoặc assembly. Bốn native record khớp đầy đủ; ba actualframe replay thành công,
+ba CRC-flip và ba partial từ chối riêng trong copied-native oracle, không phải serverauth runtime.
+
+IDA thiếu plugin ida_nexus: giữ cấu hình/nguyên DB, dùng cache/GDB thụ động và Capstone đọc đúng bốn vùng native.
+Bốn vùng code so khớp modO/copy4b; wrapper/writer/capture cùng nguồn cần phân biệt với backendpolicy.
+Oracle ban đầu dùng nhầm layout/vtable nhận và thiếu sender mode2; lỗi local đã giữ report/script riêng,
+sửa theo ctor14EAD00/vtable17B0B7C/+48=2, không sửa runtime. Return nativeframer0 là thành công,7 CRC lỗi,2 partial;
+kiểm ban đầu giả định1 đã sửa, không dùng return đơn lẻ làm proof.
+
+Chưa kiểm độ dài khác13, token2-only, provider/password branch, toàn suffix, tokenverify hoặc multiconnection
+accountownership; không nâng gate, không triển khai Rust. Audit kếCP216 giữ nguyên.

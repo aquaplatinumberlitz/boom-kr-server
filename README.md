@@ -28,6 +28,12 @@ boom-kr-server/
 
 ## Tra nhanh và trạng thái hiện tại
 
+**CP214: đã nối token local tới request đăng nhập native KR; chưa xác thực tài khoản.**
+[Contract/giới hạn](docs/PROTOCOL.md#auth-token-request), [ba run/hash](docs/evidence/login-runtime/README.md#cp214):
+Winecopy4b/count1–2, bốn record token khớp native writer, ba frame actual +CRC/partial controls; cleanup0.
+Chưa tokenverify/expiry/revocation/crosssocketownership hoặc Rustcode. PR286/CP213 đã giao kế hoạch Rust;
+CP214 REmetadata chờ PR, audit kếCP216. Thứ tự tiếp chỉ ở [PLAN](docs/PLAN.md#current-order).
+
 **Kế hoạch Rust đã lập tại CP213; chưa triển khai Rust.**
 [Lát cắt đầu và thứ tự milestone](docs/PLAN.md#rust-service-milestones):
 codec/connection → localidentity/sảnh/phòng → Battlehai người/reset → bốn/tám theo contract;

@@ -1,7 +1,7 @@
 {
   "schema": "kre-feature-index-v1",
   "build": "KR00967",
-  "as_of": "CP213",
+  "as_of": "CP214",
   "sources": {
     "plan": "docs/PLAN.md",
     "contract": "docs/PROTOCOL.md",
@@ -416,7 +416,8 @@
           "docs/PROTOCOL.md#operator-incoming-binding",
           "docs/PROTOCOL.md#native-interleaved-startup",
           "docs/PROTOCOL.md#four-session-native",
-          "docs/PROTOCOL.md#eight-session-preview"
+          "docs/PROTOCOL.md#eight-session-preview",
+          "docs/evidence/login-runtime/README.md#cp214"
         ]
       },
       "coverage": {
@@ -439,7 +440,8 @@
             "docs/PROTOCOL.md#auth-profile",
             "docs/PROTOCOL.md#local-name-model",
             "docs/PROTOCOL.md#own-profile-291",
-            "docs/PROTOCOL.md#own-profile-integration"
+            "docs/PROTOCOL.md#own-profile-integration",
+            "docs/PROTOCOL.md#auth-token-request"
           ]
         },
         "emulation": {
@@ -467,7 +469,8 @@
               "docs/PROTOCOL.md#own-profile-291",
               "docs/PROTOCOL.md#own-profile-integration",
               "docs/evidence/lobby-identity/k3-acceptance.json",
-              "docs/PROTOCOL.md#four-session-native"
+              "docs/PROTOCOL.md#four-session-native",
+              "docs/evidence/login-runtime/README.md#cp214"
             ]
           },
           "windows_original": {

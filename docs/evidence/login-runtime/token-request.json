@@ -1,0 +1,310 @@
+{
+  "schema": "kre-auth-token-request-v1",
+  "baseline": "4f9a9630b1e92ecf3220f6983f8583073971b5c3",
+  "build": "KR00967",
+  "original_sha256": "a52545c14b1fea423de655c3163d6360b628d61c1cd472b46fdbc8a9ffe15f4e",
+  "copy_sha256": "4b781fbcea21e0f6294c729b63be86ab2953d60ad83b0d0c9219359f826107ed",
+  "native_image_sha256": "a08950c833d3acab8281049def7b3dc96b221f107eeda01da3a548e34b91dce5",
+  "environment": "Wine10.0-20260425 CachyOS; separate user/net/mount/PID namespace, loopback-only/files-only DNS/localstub; fixed copy/prefix used sequentially. No authsuccess response.",
+  "sources": {
+    "source_first": "local/research/codex/auth-token-request-r1/source-first.json",
+    "sha256": "6d60eeafd1d2aaabf17e423851bd079c8f17d9c99d648d8fecd91b717e290911",
+    "reused": "CP014 count/guard/request; CP058 reply/body; CP181 retry/codec; oldKRmodO/native helpers; VNlogin only reference. No new codec/hello/profile/BattleRE."
+  },
+  "cases": [
+    {
+      "case": "token-a",
+      "run_sha256": "7902873eecd25dfd05e5e09fef4620e0197e93034c9ce5766ab6c67313db9ad9",
+      "duration_s": 48.824611462,
+      "raw_count": 55,
+      "cleanup": {
+        "net_namespace": "net:[4026533497]",
+        "remaining_pids": [],
+        "method": "Pythonfinally/endrun/captureclose/ownedWineandservice/virtualtopologystop/netnamespaceextinct"
+      },
+      "prefix": [
+        4,
+        1
+      ],
+      "frames": [
+        {
+          "opcode": 1,
+          "sequence": 40,
+          "frame_bytes": 80,
+          "body_bytes": 42,
+          "body_sha256": "9fd578c0bf84f1c7fcd76832c4de298c02c3a08ab04d54dbaacce790f248c445",
+          "frame_sha256": "eb27624b85fd0774333c470e847e9b09382996db9ece71091bc86d39d59d7b9b"
+        },
+        {
+          "opcode": 60,
+          "sequence": 43,
+          "frame_bytes": 58,
+          "body_bytes": 20,
+          "body_sha256": "29b896e9027e2622d37806a29cdb69d3e1f731136c15a7232ac2ae640f901bdc",
+          "frame_sha256": "45eeae34ce88e7695c969df6c9419ca9ceecc21b87aef6e3e101bbc44398f6b6"
+        },
+        {
+          "opcode": 15,
+          "sequence": 46,
+          "frame_bytes": 69,
+          "body_bytes": 31,
+          "body_sha256": "814894c3e033e2b119a01ec752d2c5b36436d79cc2728ecb6e97c317e8798a63",
+          "frame_sha256": "1c8dd8f85112b15c12bb264ebfcafc7c17443b7914c4ce345bef5f72a774a28b"
+        },
+        {
+          "opcode": 15,
+          "sequence": 49,
+          "frame_bytes": 69,
+          "body_bytes": 31,
+          "body_sha256": "a4b816c09c412cec8f79cea86d7d64d6d4acd8488c6a4406f99b1f80b867b7eb",
+          "frame_sha256": "35ed1efede3b5157ae0554496b002e9630ee737cf4a2ca8adb7202736675620e"
+        },
+        {
+          "opcode": 15,
+          "sequence": 52,
+          "frame_bytes": 69,
+          "body_bytes": 31,
+          "body_sha256": "fb86deb7988de454b4e83c06fe24a11db832b35d0b37e92f49e21e8e2a403fb2",
+          "frame_sha256": "66188594e3bfa49bfd20ed300d8e11cf2dd2bc8ce0bc75875f44e1bb99b89ae7"
+        },
+        {
+          "opcode": 15,
+          "sequence": 55,
+          "frame_bytes": 69,
+          "body_bytes": 31,
+          "body_sha256": "d6d4368e809b0063ff94dac272b666f89ae809aefb813a1d24da401f31831de5",
+          "frame_sha256": "f27ac4099c8fbef45ff9743a4f7692acd2f2091eeca021478057d028c07007ea"
+        }
+      ],
+      "records": [
+        {
+          "offset": 2,
+          "length": 13,
+          "encoded_bytes": 15,
+          "input_sha256": "93fa32dcc645d4c787e038d6d6a090b757dd348f009bcee99fdbcf3855598f5c",
+          "transformed_sha256": "61539845a875ec6cfb3af631761ad96c75749f6add42fc635202567f712046b2",
+          "native_wrapper": "14EC040",
+          "native_writer": "14EC060",
+          "native_transform": "14ED340",
+          "key": "11223344",
+          "oracle_prefix_matches_typed_wire": true,
+          "transformed_bytes_match": true
+        }
+      ],
+      "suffix_offset": 17,
+      "suffix_bytes": 25,
+      "suffix_sha256": "f6de6ef8b79a502289d563f8bddb24c787054de5d1c06a6e9ac5f49965944456"
+    },
+    {
+      "case": "token-b",
+      "run_sha256": "1a56a53ae1826e343099159bb0ea649737f03e51312ec63abb5be600d23a1d42",
+      "duration_s": 47.009235776,
+      "raw_count": 55,
+      "cleanup": {
+        "net_namespace": "net:[4026533497]",
+        "remaining_pids": [],
+        "method": "Pythonfinally/endrun/captureclose/ownedWineandservice/virtualtopologystop/netnamespaceextinct"
+      },
+      "prefix": [
+        4,
+        1
+      ],
+      "frames": [
+        {
+          "opcode": 1,
+          "sequence": 40,
+          "frame_bytes": 80,
+          "body_bytes": 42,
+          "body_sha256": "b236ae35a0d288067cc14ddbbe708d0b7e0eee746543b2c8469197cd8870d58d",
+          "frame_sha256": "03a91864a697653613cfb8984ad2601c7c596f0d294128de8c91b38762111537"
+        },
+        {
+          "opcode": 60,
+          "sequence": 43,
+          "frame_bytes": 58,
+          "body_bytes": 20,
+          "body_sha256": "29b896e9027e2622d37806a29cdb69d3e1f731136c15a7232ac2ae640f901bdc",
+          "frame_sha256": "45eeae34ce88e7695c969df6c9419ca9ceecc21b87aef6e3e101bbc44398f6b6"
+        },
+        {
+          "opcode": 15,
+          "sequence": 46,
+          "frame_bytes": 69,
+          "body_bytes": 31,
+          "body_sha256": "5c0b56d8cd301cc03e8e3c3cca47650f341cd9fb050a1d81a557be112ee16782",
+          "frame_sha256": "188c91d238a40db747c9dbecce02160934410547a759c899220350110ed63815"
+        },
+        {
+          "opcode": 15,
+          "sequence": 49,
+          "frame_bytes": 69,
+          "body_bytes": 31,
+          "body_sha256": "92e218f0191108bed4135d7d4c9cd92a74a39c822cc4137e53f7347817052592",
+          "frame_sha256": "f037954d8c64573e42b8aee1c849428950d9cc400f726e80dfb00b4220d46737"
+        },
+        {
+          "opcode": 15,
+          "sequence": 52,
+          "frame_bytes": 69,
+          "body_bytes": 31,
+          "body_sha256": "82edbd59f130d565f047a0b23cea381156fd4f814a17acb08b45795c7b6c1b82",
+          "frame_sha256": "33c73a139ed2bade8f3b15e79563346b1ad878376f19a07072090419905bb05b"
+        },
+        {
+          "opcode": 15,
+          "sequence": 55,
+          "frame_bytes": 69,
+          "body_bytes": 31,
+          "body_sha256": "d1ef1c692fcd0094b5039d43aecfdd2366274a64d7e9c73750038bf4df017191",
+          "frame_sha256": "331a3c2702f395d27ba67c15b078d3ed47ab4bcd217b34b96b0c1cd8497e6324"
+        }
+      ],
+      "records": [
+        {
+          "offset": 2,
+          "length": 13,
+          "encoded_bytes": 15,
+          "input_sha256": "76d4d8182c0cbe3907f4fc4c19ce86ddc80313c84c6c5e2db911a5c02a84ee2c",
+          "transformed_sha256": "cfbf0d6a86d02821c525a6d8bce43875ef45d9c6ddc3be8867829f8229e5ec35",
+          "native_wrapper": "14EC040",
+          "native_writer": "14EC060",
+          "native_transform": "14ED340",
+          "key": "11223344",
+          "oracle_prefix_matches_typed_wire": true,
+          "transformed_bytes_match": true
+        }
+      ],
+      "suffix_offset": 17,
+      "suffix_bytes": 25,
+      "suffix_sha256": "f6de6ef8b79a502289d563f8bddb24c787054de5d1c06a6e9ac5f49965944456"
+    },
+    {
+      "case": "two-token",
+      "run_sha256": "27e49da3cbafe5b106ba8db4ae6a338a7126d5d31e74e9e3c4f1b14ff17f9ea2",
+      "duration_s": 50.842969614,
+      "raw_count": 55,
+      "cleanup": {
+        "net_namespace": "net:[4026533497]",
+        "remaining_pids": [],
+        "method": "Pythonfinally/endrun/captureclose/ownedWineandservice/virtualtopologystop/netnamespaceextinct"
+      },
+      "prefix": [
+        4,
+        2
+      ],
+      "frames": [
+        {
+          "opcode": 1,
+          "sequence": 40,
+          "frame_bytes": 95,
+          "body_bytes": 57,
+          "body_sha256": "8ce720895910e4def37e17fd8df6d002a229c5a50d43889703aa19d9002c87b8",
+          "frame_sha256": "f62dfa74329f95bbdb48940bc778dbf8d9d279f1c34f4d80389a35d1da4aadfa"
+        },
+        {
+          "opcode": 60,
+          "sequence": 43,
+          "frame_bytes": 58,
+          "body_bytes": 20,
+          "body_sha256": "29b896e9027e2622d37806a29cdb69d3e1f731136c15a7232ac2ae640f901bdc",
+          "frame_sha256": "45eeae34ce88e7695c969df6c9419ca9ceecc21b87aef6e3e101bbc44398f6b6"
+        },
+        {
+          "opcode": 15,
+          "sequence": 46,
+          "frame_bytes": 69,
+          "body_bytes": 31,
+          "body_sha256": "60a16334c67f68788ba2130b195da9ea6de03f63b86e05ab5efce359f411cd05",
+          "frame_sha256": "388832b2a7e1d858763374689946fe1eb776e40473f6a1beb5fdaa953056f22e"
+        },
+        {
+          "opcode": 15,
+          "sequence": 49,
+          "frame_bytes": 69,
+          "body_bytes": 31,
+          "body_sha256": "5b51b58e31922f616a2d522a9664ef1c54c5645439f41e6079298c1ad8fca447",
+          "frame_sha256": "782c5e6d14de8b2a9ec6fe4f8b8c4bd81490859c9d2dc6aaaf39de8172dab319"
+        },
+        {
+          "opcode": 15,
+          "sequence": 52,
+          "frame_bytes": 69,
+          "body_bytes": 31,
+          "body_sha256": "5529017cac99621a7758204d93d06109ac6c2f0f86064c6d21754bb4c3adbf20",
+          "frame_sha256": "7b9fd14754031350b1436cc1db31bb40a8c2dd59c873f5dc7d65bf357b06daf7"
+        },
+        {
+          "opcode": 15,
+          "sequence": 55,
+          "frame_bytes": 69,
+          "body_bytes": 31,
+          "body_sha256": "d14f0db3e3a427bbf8a29b12148a6a8a16fcb95f9225c3a6ca03fb1627e8dd63",
+          "frame_sha256": "1f2bad0a9ce9af1782f2d1b0a533eca2fa7edef7299d27b9637482008640b68b"
+        }
+      ],
+      "records": [
+        {
+          "offset": 2,
+          "length": 13,
+          "encoded_bytes": 15,
+          "input_sha256": "93fa32dcc645d4c787e038d6d6a090b757dd348f009bcee99fdbcf3855598f5c",
+          "transformed_sha256": "61539845a875ec6cfb3af631761ad96c75749f6add42fc635202567f712046b2",
+          "native_wrapper": "14EC040",
+          "native_writer": "14EC060",
+          "native_transform": "14ED340",
+          "key": "11223344",
+          "oracle_prefix_matches_typed_wire": true,
+          "transformed_bytes_match": true
+        },
+        {
+          "offset": 17,
+          "length": 13,
+          "encoded_bytes": 15,
+          "input_sha256": "f12318732432d7113902c607df96348ebd2fd49dcb279e92f5380da1025625eb",
+          "transformed_sha256": "653a9fa438d5f8b996f76cabf03f0eb365c4a846ab91e77125b6ccc825a1efac",
+          "native_wrapper": "14EC040",
+          "native_writer": "14EC060",
+          "native_transform": "14ED340",
+          "key": "11223344",
+          "oracle_prefix_matches_typed_wire": true,
+          "transformed_bytes_match": true
+        }
+      ],
+      "suffix_offset": 32,
+      "suffix_bytes": 25,
+      "suffix_sha256": "f6de6ef8b79a502289d563f8bddb24c787054de5d1c06a6e9ac5f49965944456"
+    }
+  ],
+  "comparisons": {
+    "equal_length_changed_body_offsets": [
+      10,
+      12,
+      13,
+      14,
+      15,
+      16
+    ],
+    "unchanged_one_record_suffix": true,
+    "second_record_adds_bytes": 15,
+    "two_record_tail_identical": true
+  },
+  "native_checks": {
+    "writer_records": 4,
+    "exact_record_bytes": 15,
+    "frame_controls": 9,
+    "actual": 3,
+    "crc_negative": 3,
+    "partial_negative": 3,
+    "source": "kr_static",
+    "method": "emulation",
+    "report": "local/research/codex/auth-token-request-r1/native-frame-verification.json",
+    "sha256": "c7dba6a92901129fd7a305252064786d0daefc1535af4c91c99c2fe5267fe6bc"
+  },
+  "limits": [
+    "Native runtime Wine10.0/isolatedloopback/offlinecopy4b only; three hello stub then no authsuccess reply.",
+    "Copied-native sender oracle uses17B0B7C/synthetic sender mode2; all15recordbytes match actualwire. It is not fullpacket encoder/native runtime proof.",
+    "Opaque25byte suffix is identical across three runs, not semantic authentication/account/identity ownership proof.",
+    "No credential verification, tokensuccess-failure/expiry/revoke/crosssocketbinding or Rustimplementation. No liveNexon."
+  ],
+  "next_test": "Length-changing token at SSO/heap boundary and tailbranch input, then existing CP181 error/retry path with token binding. Serververification/expiry/revocation/account-session-crosssocket ownership remains separate acceptance; no Rustimplementation."
+}
