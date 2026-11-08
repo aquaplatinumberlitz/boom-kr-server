@@ -1,7 +1,7 @@
 # Kế hoạch server giả lập KR 00967
 
 Nguồn chuẩn của project `boom-kr-server`; bản nhập từ plan đã được dsh1/dsh2 review tại `1eee46d`.
-CP207: same67bundle/store/freshserver/current4nativehaioutcomes/resetStart3 dướiUDP40±5ms/loss5% đã kiểm. K7đốichiếu bên dưới, K6cInternetdependency mở; source-first8slot/session là việc độc lập kế, auditCP208.
+CP208: tám actual KR Wine đã qua auth/291/phòng/Ready/8ACK99/121285/153205/támactorclock, adapter32TCP có controls. Tiếp mesh movement và baseline stat E–H; audit AUD061 qua208/kế212. K6cInternet/K7/8fullmatch còn mở.
 
 
 ### Mục tiêu, baseline và phạm vi
@@ -37,13 +37,13 @@ với client Rust không chứng minh có thể điều khiển client KR bằng
 
 ### Tiến độ hiện hành theo bằng chứng
 
-| Task/mốc | Trạng thái theo nguồn dẫn, cập nhậtCP207 | Nguồn chuẩn |
+| Task/mốc | Trạng thái theo nguồn dẫn, cập nhậtCP208 | Nguồn chuẩn |
 |---|---|---|
 | KRE-004/issue6 | Đã review/merge PR7 và đóng issue:recipe r1 đến local accept;không phải full K1 | [Wine r1](evidence/wine/README.md) |
 | Bootstrap reply | PR8 đã merge;debugger ProcessPatchreturn1,không ép success | [bootstrap evidence](evidence/bootstrap-wire/README.md) |
 | KRE-005a/issue9,R2 | PR10 đã merge:3 cold start cửa sổ/second accept;issue9 còn mở | [R2 evidence](evidence/wine-r2/README.md) |
 | WCP hai-reply | Run CP001 là lịch sử chưa C→S; CP006 đã đo request đầu trên copy tham số hóa | [PROTOCOL](PROTOCOL.md#wcp),[WCP evidence](evidence/wcp/README.md) |
-| KRE-005b/issue14 | CP202–206four2v2/bundle/bounds/guest-hostEOF/health/identity đã merge; CP207fourUDPimpairment/freshserver có runtime. K6cInternet/K7/fullauth/authority/phần ngoài scope giữ mở; task ở current-order | [Q-023](RESEARCH.md#q-023), [service](evidence/probe-service/README.md) |
+| KRE-005b/issue14 | CP202–207four2v2/bundle/bounds/EOF/health/freshserver/UDPimpairment đã merge; CP208adapter8/32TCP/támactualnativeclock có runtime. K6cInternet/K7/fullauth/authority/phần ngoài scope giữ mở; task ở current-order | [Q-023](RESEARCH.md#q-023), [service](evidence/probe-service/README.md) |
 | K0 | Đã nghiệm thu identity/harness tại CP178: originalWindowsVM fullfixedcopy/PID/token/cwd/window/ETW/isolation/cleanup; không bootstrap/gameplay success | [Acceptance](#k0-k2a-acceptance) |
 | K1 | Đạt CP179 cho recipe offline R2: 3 coldstart/API đúng PID/contract/patch controls; không e9cold3 hoặc originalWindows bootstrap | [Acceptance](#k1-acceptance) |
 | K2a/K2 | K2a đạt CP178; K2 đạt profileoffline CP181 với native sameprocessretry/reset/cursor/stream và boundednativeoracles. Không toàncodec/accountauthority | [Acceptance](#k2-acceptance),[contract](PROTOCOL.md#login-retry-codec) |
@@ -119,19 +119,23 @@ không tạo nhánh kiểm kê wiki hoặc mở mode phụ trước K3/K4/K5/K6a
    118transportcontrols/24remoteprogress/2412PCAP/2200+208+2528checks/32getters; currentFourrunloop vẫn214kernelcontrols.
    [K7acceptancereview](#k7-evidence-review) giữcriteria, không tựđónggate. K6ccontrolledInternetendpoint chưa có
    trong môi trường/bằngchứng; Wine/LANgiảlập đượcownerchấpnhận nhưngkhônglàInternetwaiver.
-   `NEXT-EIGHT-SESSION-SCOPE` hiện hành độc lập khi chờInternetresource: theo bước5đãcó, source-firstCP147/163/known8roster/teamrules,
-   currentfourprofile/service/bomb/report/barrier/bundle vàconsumer cache; chỉ so hardcode/sessioncounts/8slots/32transports/Ready99barrier/153.
-   Chọn scope8session tối thiểu/TCPcontrols trước8actualWine; không mởlạicodec/8capacity/teamruleenum đãgiải hoặc coi8syntheticroomrosterlà8clients.
-   CP147/163 xác nhận8Room106/Startcount/teamrule, chưa8Battle121/153/actors. Ưu tiên delta8consumertrêncopy hiệncó trước32TCP/8Wine.
-   Triển khai/đo delta theo trigger, không kiểm kê toànclient/item/mode.
+   `NEXT-EIGHT-SESSION-SCOPE` khép scope hẹp CP208: [native8consumer trên2actual+6synthetic/adapter32TCP](PROTOCOL.md#eight-session-preview).
+   Không lặp capacity/teamguard/codec hoặc coi 32TCP tổng hợp là8client. Policy bom/rank4 không bật cho8.
+   `NEXT-EIGHT-NATIVE-CLOCK` khép scope CP208: [8actualKR/32TCP/own291-slot/8ACK99/285-205/8actorsclock](PROTOCOL.md#eight-session-preview),
+   1468raw/nativejoins/192copiedgetters/9netns/870raw/cleanup0. R1preclientfail giữriêng, R2sourcefrozen/pass.
+   `NEXT-EIGHT-MESH-STATS` hiện hành: reuse R2/knownlowobserver/current4statlocators; normalOSinput từng
+   owner trong8cửasổ, đo56directedremoteprogress/currentkey/PCAP và baseline capacity/max/power/max/speed/max
+   ởcả8view, rồi actual118 mỗiowner khi policy8 vẫn từchối confirm. Không clone cap B2 sang E–H.
+   Sau controls này mới8owner159/158/report/rank8/haioutcomes/reset; reject9/4–4/1–7 theo bước5.
+   Không mở quét mode/item khác; gói8 mới chỉ verify/help, chưa native relocationproof.
    Bốn-player item/terrain/kim/cứu chưa tíchhợp; giữgiớihạn, không coi hai-clientproof là4playerproof.
-   Quyết định thứ tự: NAT/two-cycles/UDP impairment/EOF và incoming admission đã có proof; CP202đã có gameplay2v2haioutcomes/reset/Start3; tiếp hardening
-   bốn client, chưa nghiệm thu K7. K6c vẫn cần endpoint Internet do project kiểm soát và acceptance giữ nguyên,
+   Quyết định thứ tự: NAT/two-cycles/UDP impairment/EOF và incoming admission đã có proof; CP202đã có gameplay2v2haioutcomes/reset/Start3; CP203–207 hardening
+   bốn client đã có bằngchứng theo scope; nhánh8 độc lập đang làm, chưa nghiệm thu K7. K6c vẫn cần endpoint Internet do project kiểm soát và acceptance giữ nguyên,
    không dùng mô phỏng để tự đóng gate hoặc thêm các biến thể NAT không có blocker.
-   AUD060 periodic qua204; audit thủ công kế CP208, không reset counter.
+   AUD061 periodic qua208; audit thủ công kế CP212, không reset counter.
    Wine thay Windows và LAN giả lập theo [directive](evidence/owner-directives/wine-accepted.json);
    [#14](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/14) tiếp tục mở.
-   <!-- active-issue: 14 --> AUD060 qua204, audit kế **CP208**.
+   <!-- active-issue: 14 --> AUD061 qua208, audit kế **CP212**.
 
 2. **KR-B003/KR-F006 — nợ có giới hạn:** [CP057](PROTOCOL.md#codec-stream-boundaries) đã đo stream/
    seq/bounds trong model, không mở lại76split hoặc cấp buffer lớn chỉ để vượt allocationguardFFFFFFFF.
@@ -161,7 +165,7 @@ Bảng này chỉ phân công/thứtự; acceptance/PR/bằngchứng ởissue. [
 
 | Thứ tự/scope | Issue | Trạng thái/phần còn thiếu |
 |---|---|---|
-| Hiện hành RE | [#14/KRE-005b](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/14) | K5 basic/K6a/K6b giả lập đã đạt trong scope. CP193–196 NAT/UDP delay-loss/EOF có nguồn; CP197incoming opt-in có controls; CP207native4freshrestart/UDPimpairment đã kiểm; K7/K6cInternet mở theo dependency; tiếp NEXT-EIGHT-SESSION-SCOPE độc lập, audit kếCP208. K6c/K7/fullauth/authority/general variants giữ mở. |
+| Hiện hành RE | [#14/KRE-005b](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/14) | K5 basic/K6a/K6b giả lập đã đạt trong scope. CP193–196 NAT/UDP delay-loss/EOF có nguồn; CP197incoming opt-in có controls; CP207native4freshrestart/UDPimpairment đã kiểm; K7/K6cInternet mở theo dependency; CP2088consumer/32TCP đã đo; támactualclock đã qua; tiếp NEXT-EIGHT-MESH-STATS độc lập, audit kếCP212. K6c/K7/fullauth/authority/general variants giữ mở. |
 | Control theo trigger/gate | [#1/KRE-001](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/1), [#2/KRE-002](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/2) | CP178 K0 originalWindowscontrol/ownership đã đủ, #1 đã đóng qua PR250; #2 giữ widerWCP/launcherconfig; K1 R2 đã đạt CP179, không lặp cold3. |
 | Codec backlog/identity hiện hành | [#3/KRE-003](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/3), [#9/KRE-005a](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/9) | Fullcodec/livebounds vàintermittentmainstartupcause cònthiếu; khônglặpprimitive/auxiliarylocale. |
 

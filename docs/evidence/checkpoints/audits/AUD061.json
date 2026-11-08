@@ -1,0 +1,104 @@
+{
+  "id": "AUD061",
+  "trigger": "periodic",
+  "completed_through": "CP208",
+  "recorded_utc": "2026-11-08T04:52:44.157981+00:00",
+  "auditor": "Codex manual self-audit; independent review waived",
+  "read_files": [
+    "README.md",
+    "docs/PLAN.md",
+    "docs/PROTOCOL.md",
+    "docs/RESEARCH.md",
+    "docs/evidence/eight-player/README.md",
+    "docs/features.json",
+    "docs/COVERAGE.md",
+    "tools/README.md",
+    "docs/evidence/issue-reconciliation/review.json",
+    "docs/evidence/issue-reconciliation/github-snapshot.json",
+    "AGENTS.md",
+    "docs/evidence/checkpoints/README.md",
+    "docs/evidence/checkpoints/audits/AUD060.json",
+    "server/four_player_service.py",
+    "server/eight_player_profile.py",
+    "server/eight_player_service.py",
+    "server/four_observability.py",
+    "tools/probe_bundle.py",
+    "local/research/codex/eight-slot-preview-r1/source-first.json",
+    "local/research/codex/eight-slot-preview-r1/verification-v2.json",
+    "local/research/codex/eight-slot-preview-r1/getter-verification.json",
+    "local/research/codex/eight-slot-preview-r1/raw-seal.json",
+    "local/research/codex/eight-service-model-r1/verification.json",
+    "local/research/codex/eight-service-production-r1/verification.json",
+    "local/research/codex/eight-native-r1/partial-raw-seal.json",
+    "local/research/codex/eight-native-r2/verification.json",
+    "local/research/codex/eight-native-r2/getter-verification.json",
+    "local/research/codex/eight-native-r2/raw-seal.json",
+    "local/research/codex/eight-native-r2/cycles/run.json",
+    "local/research/codex/eight-native-r2/cycles/service-state.json",
+    "local/research/codex/eight-native-r2/cycles/virtual-network.json",
+    "local/research/codex/eight-native-r2/manual-images.json",
+    "local/research/codex/eight-native-r2/eight-native-contact.png"
+  ],
+  "method": "READMEcurrentandhistoricalmarkers→PLANcurrent-order/gates/K7review→PROTOCOLreuse/authority/eightcapacity/CP199200207andnew8contract→RESEARCHcurrentandfeaturegaps→relatedevidence/raw/frozenprofiles/source/tests/actual8viewcontactsheet. Targetedcurrent-stateaudit, notline-by-linere-auditallhistoricalPROTOCOL. Nativefullcursors/8ownslots/291names/actual99beforeGO/8distinctCA-netns/prefix/actors/read-onlyclock comparedwithfrozen sourceandseal; getteremulationand487syntheticTCPseparate. Counts/scripts/imagesarenotgateacceptance.",
+  "findings": [
+    {
+      "id": "F1",
+      "stale": "CurrentPLAN/RESEARCHstillassigned8consumer/session-scope asunresolved, protocolcapacityparagraph saidserviceonlyABC.",
+      "correction": "Closehollowscope/8initialclockonlyfromnewnativeproof; linkonecanonical8contract. HistoricalCP147/199/200limits explicitlydated; currentnextmesh-statsinPLANonly.",
+      "fixed_in": [
+        "README.md",
+        "docs/PLAN.md",
+        "docs/PROTOCOL.md",
+        "docs/RESEARCH.md",
+        "docs/features.json",
+        "docs/COVERAGE.md"
+      ]
+    },
+    {
+      "id": "F2",
+      "stale": "InitialverifierreadsrepoPythonaftercodechanges, thoughrunpreflightalreadyfrozensources; misleadingcurrentdriftfailure.",
+      "correction": "KeepV1/raw/preflight/sealunchanged; V2readscorrectruntime-sourcecopieswithsamehash. Notclaimmodifiedsourcewasruntimeinput.",
+      "fixed_in": [
+        "docs/PROTOCOL.md",
+        "docs/evidence/eight-player/README.md"
+      ]
+    },
+    {
+      "id": "F3",
+      "stale": "Prototype487TCPand2actual+6synthetic couldbeconfusedwith8actualorproduction; gói8 notnativerelocated.",
+      "correction": "Separateprototype/productionTCP/native2/native8/getteremulation; native8R2actualsourcebackend distinctfromverify-only68pinbundle.",
+      "fixed_in": [
+        "docs/PROTOCOL.md",
+        "docs/RESEARCH.md",
+        "docs/evidence/eight-player/README.md",
+        "tools/README.md"
+      ]
+    },
+    {
+      "id": "F4",
+      "stale": "R1preclienttopologylist5vs9assert maskedbyunboundsync_service; noendrun.json; sourceimportliteralnewline initialtestfail.",
+      "correction": "Preservefailedsource/raw/partialseal/namespaceextinct; fixnewR2helpervalidation+cleanupdefaultonly;357servertestsand16bundletestsconfirmimportfixed. No reconstructrun orhistoryedit.",
+      "fixed_in": [
+        "docs/PROTOCOL.md",
+        "docs/evidence/eight-player/README.md"
+      ]
+    },
+    {
+      "id": "F5",
+      "stale": "Currentauditheader/counter/issue14headerCP207; CP200paragraphlookedcurrentandstillmissing4results afterCP202.",
+      "correction": "AUD061through208/next212 atcurrentheaders; issue14current8clock/pendingnext; CP200paragraphscopedasof200andlinkedlaterproof. K7criteria/dependencyunchanged/open.",
+      "fixed_in": [
+        "README.md",
+        "docs/PLAN.md",
+        "docs/PROTOCOL.md",
+        "docs/RESEARCH.md",
+        "docs/evidence/issue-reconciliation/review.json"
+      ]
+    }
+  ],
+  "remaining": [
+    "Eightfullmesh56directedremoteprogress/statE-H/actual118before8combat/rank8/twooutcomes-reset; no8fullmatchclaim.",
+    "Eightbundleonlyverified/help; no nativerelocated8run. Generalauth/resume/items-terrain-needle-rescue4/8outsideproof.",
+    "K6ccontrolledexternalInternetendpointmissing; K7dependencyremainsopen, no Wine/LANtoInternetwaiver."
+  ]
+}

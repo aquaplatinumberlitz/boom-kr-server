@@ -39,7 +39,7 @@ sameprocessTCPloginretry→auth137cursor/errors0→channelreset. [Controls/hash]
 giữ fatalCRCcleanup/WineDbgHWwatchpointfailure/stubordinalcontrol. Không lặp fatalclose hoặc stubDWK.
 K2profile được nghiệm thu theo [PLAN](PLAN.md#k2-acceptance); không fullgrammar/allmodes/headerauthority/
 accountresume. Widercodec chỉ mở khi có trigger cụ thể từ K3; không quét mọi variant trước sảnh.
-Owner/tự kiểm Codex, review waived; AUD060 quaCP204, periodic audit kếCP208.
+Owner/tự kiểm Codex, review waived; AUD061 quaCP208, periodic audit kếCP212.
 
 <a id="gap-lobby-identity-followup"></a>
 ### Fourfreshrestart/UDPimpairment đã kiểm; K7Internetdependency mở, tiếp scope8độc lập
@@ -51,11 +51,14 @@ Owner/tự kiểm Codex, review waived; AUD060 quaCP204, periodic audit kếCP20
 recipient/Bfollowup1/fence/nocommit; khôngqueuednonblockingbenchmark.
 ReuseCP195TC/CP206four/profile/health/copy, VN chỉ TCPendpoint/P2Parchitecture; khôngnativefunctionRE mới.
 K7 chưa đóng do controlledInternetendpoint thiếu; không đòi Windows/physicalhostmới, không dùng LAN thayInternet.
-Gapđộc lập cósẵn trong PLAN:8actualsessions. CP147/163 có8syntheticRoom106/Startcount/teamrules, chưa8Battle121/153/actors hoặc8clients.
-Phép đo tối thiểu kế: cached8fixtures/consumers +currentfourhardcodes, so slot/session/identity/roster/Ready/99barrier/
-153/policycaps/32TCP trước8Wine. Không inventory toànitem/mode/char. Generalaccountresume/3memberStart/full4items/
-terrain/kim/cứu/8fullmatch vẫn ngoài proof. AuditCP208/reviewwaived; CP207đínhchínholdunusedNATtext/PIDlocator,
-không sửa completerecord/raw.
+[CP208](PROTOCOL.md#eight-session-preview) đã dùng lại capacity/teamguard/codec/row26/peer26flags,
+đo native8consumer trên hai actual + sáu synthetic và adapter32TCP/487checks; không tìm lại nhánh đã giải.
+Tám actual auth/name291/ownslot/99/285-205/8actorsclock đã qua R2/1468joins/192getters/cleanup0.
+Khoảng trống: fullmesh movement có inputwindow/native remote progress; baseline stat E–H/request118
+trước bật combat/rank/reset8. Reuse R2topology và known lowobserver/statwrapper từ CP200/201,
+chỉ đo 8slot/56directededges; không lặp codec/Room8/guard/consumer. R1preclient setupfail giữriêng;
+R2 chỉ sửa validation/cleanup, không giải thích startupfailure cũ hoặc native content bằng suy đoán.
+Generalaccountresume/full4items/terrain/kim/cứu/8fullmatch ngoài proof. Audit CP208, kếCP212; reviewwaived.
 
 <a id="feature-gaps"></a>
 ## Khoảng trống theo cơ chế
@@ -73,7 +76,7 @@ Bảng được [coverage](COVERAGE.md) trích tự động để tra theo chứ
 | <a id="gap-redirect-lobby"></a>KR-L002 | [CP186 K3local](PLAN.md#k3-acceptance) đạt; A291/nameguard/coldroute/versionnegative có nguồn. CP187actualAB291/currentroomintegration đủ K4scope; [CP200](PROTOCOL.md#four-session-native) bổ sung C/D291/name/ownslot. Caption/multichannel giữunknown. | [PLAN](PLAN.md#current-order): CP202–204 đã2v2outcomes/reset/bundle/bounds; tiếp lifecycle theoPLAN, không lặp ABCD291/room/start/NATtuple. Multichannel chỉ theo trigger. |
 | <a id="gap-profile-cache"></a>KR-L003 | [CP186](PROTOCOL.md#channel-cold-route) cold3cache/warm có nguồn, K3local đạt. Năm retainedSSI giống clientnguồn; stageCRC0, mọicache/corrupt/reconnect/profile rộng cònunknown. | Reuse [scope/CRC](PROTOCOL.md#dynamic-cache-representation) và [coldroute](PROTOCOL.md#channel-cold-route); chỉ mở cachevariant khác khi K4/integration có trigger. Không lặp3file/CRC hoặc gọi coldroute là toànasset. |
 | <a id="gap-create-join"></a>KR-R001 | [CP161](PROTOCOL.md#current-room-title) current A81→B91 title/Back/rejoin/UI hai view và hai vòng production/Ready đã đo;32 byte/empty-password/known single row là policy. | Password/full/error/general room authority, C/recreate/generalpromotion ngoài [CP166/168](PROTOCOL.md#current-mode-promoted-start3)/multi-row còn mở theo trigger. Không RE lại known81/91 hoặc lấy title làm identity. |
-| <a id="gap-roster-ready-host"></a>KR-R002 | [CP163](PROTOCOL.md#battle-eight-roster) actual selector1/8synthetic slots:4–4 check0/104,1–7 check7/no104, Ready/parser/map/capacity/getter có nguồn. CP162 actual Free/Manner/ACK/reset đã nối. | Không lặp guard/roster/map/input RE. CP165 actualpreset2cycles/Start3 đãđo; CP166 currentmodepromotion/rejoin đãtới clock; CP167đãhai cycleBhost; CP168BStart3/AUD050đãđo; CP171/172basiccycles/Start3 đã đo; tiếp PLAN theo gap thật; general roster8/service admission/8peer/Battle8/Random/C/generalpromotion/row91 metadata còn thiếu sau local baseline. |
+| <a id="gap-roster-ready-host"></a>KR-R002 | [CP163](PROTOCOL.md#battle-eight-roster) actual selector1/8synthetic slots:4–4 check0/104,1–7 check7/no104, Ready/parser/map/capacity/getter có nguồn. CP162 actual Free/Manner/ACK/reset đã nối. | Không lặp guard/roster/map/input RE. CP165 actualpreset2cycles/Start3 đãđo; CP166 currentmodepromotion/rejoin đãtới clock; CP167đãhai cycleBhost; CP168BStart3/AUD050đãđo; CP171/172basiccycles/Start3 đã đo; tiếp PLAN theo gap thật; [CP208](PROTOCOL.md#eight-session-preview) có native8consumer trên2actual và adapter32TCP; tám actual clock đã kiểm; còn mesh/fullmatch8, room-full server admission, Random/generalpromotion/row91 metadata. Theo PLAN; không coi sáu actor tổng hợp là sáu client. |
 | <a id="gap-map-spawn-loading"></a>KR-R003 | [CP153](PROTOCOL.md#loading-hot-gate-contest): B32390 gate riêng khi load/restoreclock/0loadinghits; hai actual99/barrier5,94s/4,60s. CP151R2 historicalcause không bị tự sửa. | Scope loading recipe đã giải; không lặp writer/loader RE hoặc tăng30s. Generalcoldload/membership/timeout variants chỉ mở theo trigger; theo thứ tự hiện hành trong PLAN. |
 | <a id="gap-room-membership"></a>KR-R004 | [CP175](PROTOCOL.md#a-survivor-admission) C3/slot1/Join/Ready/Start; [CP176](PROTOCOL.md#a-c-basic-cycles) A/C2normal/reset/Ready2. | CinitialpreReadyblack/return2beforefocusblack giữ giới hạn; finalroom vẽ cả hai. Generalmembership/accountresume/laterStart3 còn mở. CP177 profilecapacity theo vacancy/initial đã giao; maxima/exhaustion chưa đo. |
 | <a id="gap-round-clock"></a>KR-F001 | CP155 baepoch actual99/nativeclock/barrier trước30s, B32390restore mỗi clock; same-run freshness/contest/EOF cónguồn. | Không RE lại99/load/clock; tiếp thứ tự hiện hành trong PLAN. Originalclock/timeoutauthority ngoài profile giữunknown. |

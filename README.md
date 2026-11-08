@@ -28,6 +28,13 @@ boom-kr-server/
 
 ## Tra nhanh và trạng thái hiện tại
 
+**CP208: tám client KR Wine thật đã login → sảnh → phòng → load → Battle/clock.**
+Tám prefix/display/netns/IP/CA PID riêng,32TCP/own-slot0–7/8actual99 và full native121285/153205;
+[contract/giới hạn](docs/PROTOCOL.md#eight-session-preview), [raw/hash](docs/evidence/eight-player/README.md#cp208).
+Chưa movement mesh/bom/kết quả/reset tám người. Bước kế duy nhất ở [PLAN](docs/PLAN.md#current-order).
+CP207 đã merge [PR279](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/279)/`7ffed54`; CP208 đang giao qua PR,
+review waived, AUD061 qua208/audit kếCP212. K6c Internet/K7 vẫn mở.
+
 **CP207: bốn KR Wine đã qua hai vòng 2v2/reset/Start3 dưới UDPdelay/loss, server mới dùng lại samebundle vàidentitystore.**
 [Contract/giới hạn](docs/PROTOCOL.md#four-netem-restart), [raw/hash](docs/evidence/peer-endpoints/README.md#cp207),
 [K7đốichiếu](docs/PLAN.md#k7-evidence-review). Internet/K6c/K7 vẫn mở; không accountresume/8clientproof.
@@ -130,7 +137,7 @@ CP190 đã merge [PR262](https://github.com/aquaplatinumberlitz/boom-kr-server/p
 có capture; [contract/giới hạn](docs/PROTOCOL.md#routed-Wine-network). Chưa NAT/relay/Internetgate.
 [Owner chấp nhận Wine thay Windows](docs/evidence/owner-directives/wine-accepted.json), không cần máy Windows.
 CP191 đã merge [PR263](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/263) tại`56a08dd6`.
-AUD057/058/059 periodic qua192/196/200 là lịch sử; AUD060 qua204, audit kế **CP208**. [Review waived](docs/evidence/checkpoints/review-waiver.json).
+AUD057–060 periodic qua192/196/200/204 là lịch sử; AUD061 qua208, audit kế **CP212**. [Review waived](docs/evidence/checkpoints/review-waiver.json).
 
 **CP193: đã đo đối chứng NAT trên hai KR Wine thật.** Endpoint riêng làm consumer trả0; khai báo tuple
 đã ánh xạ + DNAT khôi phục handler, key và movement hai chiều. [Contract/giới hạn](docs/PROTOCOL.md#nat-endpoint-control),

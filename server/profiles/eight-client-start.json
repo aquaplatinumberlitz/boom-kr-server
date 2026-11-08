@@ -1,0 +1,565 @@
+{
+  "schema": "kre-probe-preset-v1",
+  "id": "eight-client-start",
+  "source": "design",
+  "status": "candidate",
+  "limits": "Initialeightoperator-IPsessions/room/load/peer preview only; 8consumerprooftwoactual+6synthetic separate from8actualclients; no8combat/result/item/terrain/kim/rescue/accountauth/resume/Internetgate.",
+  "profile": {
+    "schema": "kr-probe-profile-v1",
+    "source": "emu_choice",
+    "limits": "Synthetic local diagnostic fixtures, not recovered full auth or original server.",
+    "items": [
+      {
+        "index": 17,
+        "row": 4,
+        "column": 3,
+        "kind": 2
+      }
+    ],
+    "initial_key": 12345,
+    "spawn_layout": "distinct",
+    "fixtures": {
+      "bootstrap": {
+        "path": "bootstrap-reply-r1.bin",
+        "bytes": 15,
+        "sha256": "75be47b3067e2b1e9d2cf99b5a7eb7f949a074482409fb3eafc1a553cec53cd1",
+        "sequence": null
+      },
+      "second": {
+        "path": "wcp-fields-r1/eight-v2-responses.bin",
+        "bytes": 317,
+        "sha256": "5930ad297fc2c1540d8cbd894e88d3c1d2831bd4565dfb8ad96644568b87ad38",
+        "sequence": null
+      },
+      "auth_A": {
+        "path": "auth-profile-r1/auth-A-final.bin",
+        "bytes": 175,
+        "sha256": "fe0f99796dbaff2ca37ed90552139d125a5a8bff5ac7feba516d3f235fa5e3e7",
+        "sequence": 43
+      },
+      "auth_B": {
+        "path": "auth-profile-r1/auth-B-final.bin",
+        "bytes": 175,
+        "sha256": "8ae2e5f61c9bb29508e819e1f83a68fddead3906c4e212ef6ed162bc7a621774",
+        "sequence": 43
+      },
+      "auth_C": {
+        "path": "auth-profile-r1/auth-C-final.bin",
+        "bytes": 173,
+        "sha256": "24f4146726929e8655a1246d28b79cf1785532c715841da874ed723f8ba1322a",
+        "sequence": 43
+      },
+      "roomlist_C": {
+        "path": "duo-round-r1/room91-session1.bin",
+        "bytes": 88,
+        "sha256": "71815044dd7d0f70de6969d640c6bf5b47d1e9cfb16c7d23a2a420d6f93bd0ed",
+        "sequence": null
+      },
+      "join_C": {
+        "path": "rejoin-r1/reply87-A-session1.bin",
+        "bytes": 45,
+        "sha256": "79b35b72494211e3b4b7af04904a75cd8b67d99c1cb39f33d93b3cf056816586",
+        "sequence": 55
+      },
+      "player_C": {
+        "path": "abort-rejoin-r1/C106-slot0-id3.bin",
+        "bytes": 242,
+        "sha256": "5232f9b513e18fa78c6bd15a1c093f2997382e695d8f98398f33f95bede3470f",
+        "sequence": 58
+      },
+      "slot_C": {
+        "path": "rejoin-r1/A110-unready.bin",
+        "bytes": 44,
+        "sha256": "979cfad03305717aaaa203643e875d48aa1430a7d8b34ba534c7fb26668c55db",
+        "sequence": 61
+      },
+      "guest_C": {
+        "path": "abort-rejoin-r1/C-guestB106-chief64.bin",
+        "bytes": 242,
+        "sha256": "baba396be0cc267d0bc54828a1ecc4fff464c51035722ba92650a071bcfb99a4",
+        "sequence": 64
+      },
+      "ready_C": {
+        "path": "rejoin-r1/A110-ready.bin",
+        "bytes": 44,
+        "sha256": "2b8c7ae9412c1bee0340587269b1e32af2e3c2117081bc28a331202f8f82d422",
+        "sequence": 100
+      },
+      "netinfo": {
+        "path": "login-runtime-r1/login-netinfo-candidate.bin",
+        "bytes": 69,
+        "sha256": "b40615efdf3d4b8a6d530a43c3a1e425cb88eeb76304d88601a70b48ca72abe6",
+        "sequence": null
+      },
+      "flags": {
+        "path": "postwait-r1/flags62-status2.bin",
+        "bytes": 41,
+        "sha256": "f0199e6a5f835884fec25568a342f42d247c2bfa720f677866957c2299437ab9",
+        "sequence": null
+      },
+      "redirect": {
+        "path": "postwait-r1/redirect7-loopback.bin",
+        "bytes": 52,
+        "sha256": "b514742b5e0feb58f64f6f8b1427ca1c34c7494202607b7fb8ee78e02d0caa15",
+        "sequence": null
+      },
+      "channel": {
+        "path": "postwait-r1/channel17-zero-arrays.bin",
+        "bytes": 75,
+        "sha256": "5bb5a42cb1ea4fe8967d50ed39649cc886a493c0a13a25ceb2df589a2b9bcd37",
+        "sequence": null
+      },
+      "ready": {
+        "path": "cache-boundary-r1/compressed241.bin",
+        "bytes": 69,
+        "sha256": "5e72176a25896892c49f5ee971bac080b21adbd039a259d7844d095bfe32de28",
+        "sequence": 46
+      },
+      "roomlist_A": {
+        "path": "room-input-r1/room-list91-empty.bin",
+        "bytes": 40,
+        "sha256": "66192f9ab8be8c609a0989a16e5403968aa8c6087caa43775920efd3ea78ec2e",
+        "sequence": 49
+      },
+      "roomlist_B": {
+        "path": "duo-round-r1/room91-session1.bin",
+        "bytes": 88,
+        "sha256": "71815044dd7d0f70de6969d640c6bf5b47d1e9cfb16c7d23a2a420d6f93bd0ed",
+        "sequence": 49
+      },
+      "channel_list": {
+        "path": "leave-r1/channel14-kind1.bin",
+        "bytes": 82,
+        "sha256": "0ed72929c552e5bc5a8e492d2d3ca877e2bbc1ec8d5343c81f4b7844d54fe88b",
+        "sequence": null
+      },
+      "create": {
+        "path": "room-reply-r1/reply86.bin",
+        "bytes": 49,
+        "sha256": "f7d21cf19f44a9d4c2a17d55c1090af1e2145689fc17e39c2e0e299574c2a4e2",
+        "sequence": 55
+      },
+      "join": {
+        "path": "duo-round-r1/reply87-slot1-session1.bin",
+        "bytes": 45,
+        "sha256": "67905f20ea19c1102b923ce7e77bbce637820f1673cbe33313ec4f3ce381904f",
+        "sequence": 55
+      },
+      "player_A": {
+        "path": "start-reply-r1/player106-id1-team0.bin",
+        "bytes": 242,
+        "sha256": "f2c9caf15bf008d8df6dcf33ce10da603dc7c8f7335cf413f0454692ce7f9934",
+        "sequence": 58
+      },
+      "player_B": {
+        "path": "duo-round-r1/B106-unready.bin",
+        "bytes": 242,
+        "sha256": "aa4195a574665e458749443e495d9a50635802db288749bc3e77ae4d72584c08",
+        "sequence": 58
+      },
+      "slot_A": {
+        "path": "room-player-r1/slot110-team0.bin",
+        "bytes": 44,
+        "sha256": "d571c6b47965e1d5ed04df838818ce9e5f7de1fcac720a71d5a811137405f9d9",
+        "sequence": 61
+      },
+      "slot_B": {
+        "path": "duo-round-r1/B110-unready.bin",
+        "bytes": 44,
+        "sha256": "eed1d08df651766528969f1c20f0ddfdd944a47368ce9ca66635852e96d5bb27",
+        "sequence": 61
+      },
+      "guest_A": {
+        "path": "duo-round-r1/A-guest106-unready.bin",
+        "bytes": 242,
+        "sha256": "16408678ed4d2ddd219483f9bb6fae35795c8c5ee1a43f4d1b0d5873b3c0a290",
+        "sequence": 64
+      },
+      "guest_B": {
+        "path": "peer-duo-r1/B-guest106.bin",
+        "bytes": 242,
+        "sha256": "0bee9221a7efc770b9f5b57bbc504e023163e6f78552ca460edc9636dd76a252",
+        "sequence": 64
+      },
+      "table": {
+        "path": "cache-boundary-r1/compressed238.bin",
+        "bytes": 110,
+        "sha256": "57411adce8a650524b558e25b904bb916f01ba2d9e1fb2e7c8206e6e1a5b2727",
+        "sequence": 67
+      },
+      "map": {
+        "path": "bomb-position-r1/exvillage117.bin",
+        "bytes": 46,
+        "sha256": "7fd36d5d2b8ff284fe763e138280ff7ce1b50db83dca2355f33fced8283bc0bc",
+        "sequence": 70
+      },
+      "floor": {
+        "path": "basic-battle-r1/basic582.bin",
+        "bytes": 84,
+        "sha256": "d943860a44868af75ee63d10e206e67aa016a284dffdaf9f1827221fad28fb63",
+        "sequence": 73
+      },
+      "start": {
+        "path": "bomb-position-r1/exvillage121.bin",
+        "bytes": 167,
+        "sha256": "2e6319e9e5eb55a9ad6594710ec4aeaa749b6f8eee72a1e0016beb44885a90c0",
+        "sequence": 73
+      },
+      "go": {
+        "path": "round-go-r1/go197-time30.bin",
+        "bytes": 52,
+        "sha256": "1e3437fc0f52910e218c69570a4e7e6c83f73a66ba11f5313ac6ad0d50b34881",
+        "sequence": 76
+      },
+      "play": {
+        "path": "bomb-position-r1/exvillage196.bin",
+        "bytes": 45,
+        "sha256": "387d6f2b6c3e0eeda401498af890635110016b3756d181d89930c2a4a7a2dcde",
+        "sequence": 79
+      },
+      "peer": {
+        "path": "peer-duo-r1/peer153-replace.bin",
+        "bytes": 135,
+        "sha256": "e6eb2fe741c021ab2c1ac82c84a42a5e4d936e0a2e8a80cb0c4cfaac326589fa",
+        "sequence": 82
+      },
+      "ready_slot": {
+        "path": "round-repeat-r1/ready110-guest.bin",
+        "bytes": 44,
+        "sha256": "ad74bf8e95420203ee6b8f397b43df72fee8a977c9921ccebfa50d794b22861b",
+        "sequence": 100
+      },
+      "bomb": {
+        "path": "round-go-r1/reply159.bin",
+        "bytes": 77,
+        "sha256": "aafc349b2b6f518fffbac1a02df7e7c7c94a2c328fdb35d68c8fd67bb1ebef01",
+        "sequence": 85
+      },
+      "blast": {
+        "path": "bomb-calc-r1/kind0.bin",
+        "bytes": 51,
+        "sha256": "5095a65ab689b03ac91e11a9d306341cf9995b5bf8dc8ac146706908c60496b7",
+        "sequence": null
+      },
+      "rank": {
+        "path": "round-repeat-r1/rank175-v2.bin",
+        "bytes": 340,
+        "sha256": "facec5f1b3dc5decafce8369562c77466cea676299b07748240f44ae090892cd",
+        "sequence": 91
+      },
+      "rank_Awin": {
+        "path": "peer-events-r1/rank175-Awin-Blose.bin",
+        "bytes": 340,
+        "sha256": "2252ad693d8a7fd8280f223189849edd5c131b6a6c2809b783dd253d4c0e4dce",
+        "sequence": 91
+      },
+      "promote_B": {
+        "path": "leave-r1/promote110-B.bin",
+        "bytes": 44,
+        "sha256": "858c5eb8c855a0ccf978574cd9c67eca7dede7e72d2d33c012b5ecb8928ca796",
+        "sequence": 73
+      },
+      "return": {
+        "path": "bomb-calc-r1/result180-full.bin",
+        "bytes": 41,
+        "sha256": "b2e1c6e22b2210d0ac198fea278d2b7d70d982935e88acb641b36cb45afaa8b0",
+        "sequence": 91
+      },
+      "rank_all_dead": {
+        "path": "bothdead-result-r1/rank175-all-dead.bin",
+        "bytes": 340,
+        "sha256": "434d70c09ed609d55ca2e59401c78eb32cbd27a303de2986985f3c527d6d7510",
+        "sequence": 91
+      },
+      "join_A": {
+        "path": "rejoin-r1/reply87-A-session1.bin",
+        "bytes": 45,
+        "sha256": "79b35b72494211e3b4b7af04904a75cd8b67d99c1cb39f33d93b3cf056816586",
+        "sequence": 55
+      },
+      "player_A_guest": {
+        "path": "rejoin-r1/A106-unready.bin",
+        "bytes": 242,
+        "sha256": "2dbc2c247eb94c40af6338e733c98eb18dfa833a2d48662209ce952ca9d9fec7",
+        "sequence": 58
+      },
+      "slot_A_guest": {
+        "path": "rejoin-r1/A110-unready.bin",
+        "bytes": 44,
+        "sha256": "979cfad03305717aaaa203643e875d48aa1430a7d8b34ba534c7fb26668c55db",
+        "sequence": 61
+      },
+      "guest_B_chief": {
+        "path": "rejoin-r1/B106-chief.bin",
+        "bytes": 242,
+        "sha256": "8dee2a2f58af50ebcf7487d66040c97c374683ed8726ccfe9dd13e064ebf9d86",
+        "sequence": 58
+      },
+      "ready_A": {
+        "path": "rejoin-r1/A110-ready.bin",
+        "bytes": 44,
+        "sha256": "2b8c7ae9412c1bee0340587269b1e32af2e3c2117081bc28a331202f8f82d422",
+        "sequence": 100
+      }
+    },
+    "bomb_capacity": {
+      "A": {
+        "initial": 1,
+        "maximum": 10
+      },
+      "B": {
+        "initial": 2,
+        "maximum": 7
+      }
+    },
+    "bomb_terrain": {
+      "width": 15,
+      "height": 13,
+      "kinds": [
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        1,
+        2,
+        0,
+        0,
+        0,
+        2,
+        0,
+        2,
+        0,
+        0,
+        0,
+        2,
+        1,
+        2,
+        2,
+        2,
+        2,
+        0,
+        0,
+        0,
+        2,
+        0,
+        2,
+        0,
+        0,
+        0,
+        2,
+        2,
+        2,
+        2,
+        1,
+        2,
+        0,
+        0,
+        0,
+        2,
+        2,
+        2,
+        0,
+        0,
+        0,
+        2,
+        1,
+        2,
+        2,
+        2,
+        2,
+        0,
+        0,
+        0,
+        2,
+        1,
+        2,
+        0,
+        0,
+        0,
+        2,
+        2,
+        2,
+        2,
+        1,
+        2,
+        0,
+        0,
+        0,
+        2,
+        2,
+        2,
+        0,
+        0,
+        0,
+        2,
+        1,
+        2,
+        2,
+        2,
+        2,
+        0,
+        0,
+        0,
+        2,
+        0,
+        2,
+        0,
+        0,
+        0,
+        2,
+        2,
+        2,
+        2,
+        1,
+        2,
+        0,
+        0,
+        0,
+        2,
+        0,
+        2,
+        0,
+        0,
+        0,
+        2,
+        1,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "map_sha256": "aeb57ffdb27a1405bd2ae3d29f229174ae5d584fc84eaf4e87884fe8518f86a4",
+      "seed_sha256": "c96dff8c4d148a229bef97ba8c3a279f1a1cac3516281de1689385353b972144",
+      "fixtures": {
+        "map": "7fd36d5d2b8ff284fe763e138280ff7ce1b50db83dca2355f33fced8283bc0bc",
+        "start": "2e6319e9e5eb55a9ad6594710ec4aeaa749b6f8eee72a1e0016beb44885a90c0"
+      },
+      "maximum_power": 2
+    },
+    "result_freshness": {
+      "mode": "post_blast_untrapped_drained"
+    },
+    "loading_timeout": {
+      "mode": "close_missing_init99",
+      "seconds": 30
+    },
+    "death_lifecycle": {
+      "mode": "current_trap"
+    },
+    "battle_exit": {
+      "mode": "host_A_202_86"
+    },
+    "host_back_rejoin": {
+      "mode": "idle_A_to_B"
+    },
+    "room_title": {
+      "mode": "create81_to_row91",
+      "max_bytes": 32
+    },
+    "room_team_mode": {
+      "mode": "create81_to_86_87"
+    },
+    "hidden_items": [
+      {
+        "index": 27,
+        "row": 2,
+        "column": 3,
+        "kind": 0
+      },
+      {
+        "index": 28,
+        "row": 3,
+        "column": 2,
+        "kind": 1
+      }
+    ],
+    "item_layout": "battle",
+    "own_profile": {
+      "mode": "native_291"
+    }
+  }
+}

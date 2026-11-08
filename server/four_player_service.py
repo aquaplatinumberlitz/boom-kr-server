@@ -53,18 +53,19 @@ def recipient_safe(method):
     return wrapped
 
 
-def addresses(options):
+def addresses(options, members=None):
+    members = fp.MEMBERS if members is None else members
     result = {}
     for value in options:
         role, sep, address = value.partition('=')
-        if not sep or role not in fp.MEMBERS or role in result:
-            raise ValueError('expected unique ABCD ROLE=IPv4')
+        if not sep or role not in members or role in result:
+            raise ValueError('expected unique '+''.join(members)+' ROLE=IPv4')
         ip = ipaddress.IPv4Address(address)
         if ip.is_unspecified or ip.is_multicast or int(ip) == 0xFFFFFFFF:
             raise ValueError('unsupported peer address')
         result[role] = str(ip)
-    if set(result) != set(fp.ROLES) or len(set(result.values())) != 4:
-        raise ValueError('four distinct operator source IPs required')
+    if set(result) != set(members) or len(set(result.values())) != len(members):
+        raise ValueError(str(len(members))+' distinct operator source IPs required')
     return result
 
 
@@ -72,21 +73,27 @@ from server.four_observability import FourObservability
 from server.four_identity_store import pin_identities
 
 class FourPlayerService(ProbeService):
+    PLAYER_PROFILE = fp
     def __init__(self, profile, out, source_ips, *, bind_ip='127.0.0.1',
                  channel_ip=None, channel_port=None, bomb_profile=None, battle_outcome=False, abort_room=False, identity_store=None):
+        self.player_profile = self.PLAYER_PROFILE
+        if self.player_profile.ROLES not in ('ABCD','ABCDEFGH'):
+            raise ValueError('only fixed four/eight session profiles supported')
+        if len(self.player_profile.ROLES)==8 and (bomb_profile is not None or battle_outcome or abort_room or identity_store is not None):
+            raise ValueError('eight session preview excludes unmeasured bomb/outcome/abort/identity persistence')
         # Validate/generate every supported input before creating an owner/socket.
         if struct.unpack_from('<I', profile.raw('auth_A'), 5)[0] != 4:
             raise ValueError('four sessions require measured auth4 success fixture')
-        source_ips = addresses([role + '=' + ip for role, ip in source_ips.items()])
-        players = {role: fp.player_body(profile.body('player_B'), member,
+        source_ips = addresses([role + '=' + ip for role, ip in source_ips.items()],self.player_profile.MEMBERS)
+        players = {role: self.player_profile.player_body(profile.body('player_B'), member,
                                         chief=role == 'A')
-                   for role, member in fp.MEMBERS.items()}
-        auth = {role: fp.auth_body(profile.body('auth_A'), member)
-                for role, member in fp.MEMBERS.items()}
-        own = {role: fp.own_body(body) for role, body in players.items()}
-        start = fp.start_body(profile.body('start'))
-        joins = {role: fp.join_body(profile.body('join'), fp.MEMBERS[role]['slot'])
-                 for role in 'BCD'}
+                   for role, member in self.player_profile.MEMBERS.items()}
+        auth = {role: self.player_profile.auth_body(profile.body('auth_A'), member)
+                for role, member in self.player_profile.MEMBERS.items()}
+        own = {role: self.player_profile.own_body(body) for role, body in players.items()}
+        start = self.player_profile.start_body(profile.body('start'))
+        joins = {role: self.player_profile.join_body(profile.body('join'), self.player_profile.MEMBERS[role]['slot'])
+                 for role in self.player_profile.ROLES[1:]}
         if 'replacement_slot' in profile.data or 'rescue_contact' in profile.data:
             raise ValueError('four sessions exclude replacement/synthetic actors')
         if type(abort_room) is not bool or (abort_room and not battle_outcome):
@@ -99,10 +106,10 @@ class FourPlayerService(ProbeService):
                 raise ValueError('abort-room requires measured return180(0,0,0)') from error
         super().__init__(profile, out, {}, bind_ip=bind_ip,
                          channel_ip=channel_ip, channel_port=channel_port)
-        self.source_ips, self.source_counts = source_ips, dict.fromkeys(fp.ROLES, 0)
+        self.source_ips, self.source_counts = source_ips, dict.fromkeys(self.player_profile.ROLES, 0)
         self.player_bodies, self.auth_bodies = players, auth
         self.own_bodies, self.start_body, self.join_bodies = own, start, joins
-        self.role_slots = {r: m['slot'] for r, m in fp.MEMBERS.items()}
+        self.role_slots = {r: m['slot'] for r, m in self.player_profile.MEMBERS.items()}
         self.state['schema'] = 'kr-four-session-service-v1'
         self.abort_room_enabled = abort_room
         self.abort_room_job = None
@@ -114,7 +121,7 @@ class FourPlayerService(ProbeService):
                                        connections=self.io_budget.records)
         self.state['four_session_binding'] = dict(source='design',
             role_ips=self.source_ips, counts=self.source_counts,
-            members=fp.MEMBERS, mode='four_operator_IPs_four_transports_each')
+            members=self.player_profile.MEMBERS, mode='four_operator_IPs_four_transports_each')
         self.state['limits'] = ('Four operator-IP sessions; optional explicit bomb and report-derived '
                                 '2v2 result/reset policies, not authenticated life/original authority. '
                                 'No four-item/terrain/rescue/needle integration, general resume/replacement, '
@@ -123,7 +130,7 @@ class FourPlayerService(ProbeService):
             self.selector.close()
             raise ValueError("four Battle outcome requires explicit bomb profile")
         self.battle_reports = (FourBattleReports(self.room, self.role_slots,
-            {r:m["team"] for r,m in fp.MEMBERS.items()}) if battle_outcome else None)
+            {r:m["team"] for r,m in self.player_profile.MEMBERS.items()}) if battle_outcome else None)
         self.bomb_admission = None
         self.bomb_jobs = []
         self.bomb_fuse_seconds = None
@@ -148,16 +155,22 @@ class FourPlayerService(ProbeService):
         self.state['bomb_deadlines'] = []
         self.state['policy_sources'] += [dict(path=str(Path(module.__file__).resolve()),
             sha256=hashlib.sha256(Path(module.__file__).read_bytes()).hexdigest())
-            for module in [fp, sys.modules[FourBombAdmission.__module__],
+            for module in [self.player_profile, sys.modules[FourBombAdmission.__module__],
                            sys.modules[FourBattleReports.__module__],
                            sys.modules[FourInputBudget.__module__],
                            sys.modules[FourObservability.__module__],
                            sys.modules[pin_identities.__module__],
                            __import__(__name__, fromlist=['FourPlayerService'])]]
+        for module in [sys.modules[type(self).__module__],
+                       sys.modules[self.player_profile.player_body.__module__]]:
+            path = str(Path(module.__file__).resolve())
+            if not any(row['path']==path for row in self.state['policy_sources']):
+                self.state['policy_sources'].append(dict(path=path,
+                    sha256=hashlib.sha256(Path(path).read_bytes()).hexdigest()))
 
-        self.operator_identities = {role:dict(member) for role,member in fp.MEMBERS.items()}
+        self.operator_identities = {role:dict(member) for role,member in self.player_profile.MEMBERS.items()}
         try:
-            self.identity_store = pin_identities(identity_store,fp.MEMBERS) if identity_store else None
+            self.identity_store = pin_identities(identity_store,self.player_profile.MEMBERS) if identity_store else None
         except BaseException:
             self.selector.close()
             raise
@@ -321,7 +334,7 @@ class FourPlayerService(ProbeService):
                 monotonic_ns=time.monotonic_ns(), frame_sha256=hashlib.sha256(frame).hexdigest()))
             return
         if opcode == 6 and not event.get('channel_response_sent'):
-            name = fp.MEMBERS[role]['name'].encode('ascii')
+            name = self.player_profile.MEMBERS[role]['name'].encode('ascii')
             size = codec.read_fields(body[2:4], [2])[0] if len(body) >= 4 else -1
             login = next((e for e in self.events if e['role'] == role and
                           e['reply_ordinal'] == 3), {})
@@ -380,12 +393,12 @@ class FourPlayerService(ProbeService):
             if not event.get('guest_ready_received') and not self.state.get('membership_broken'):
                 event['guest_ready_received'] = dict(monotonic_ns=time.monotonic_ns(),
                                                      payload_hex=body.hex(), source='emu_choice')
-                self.broadcast('slot_B', 'ready110', opcode=110, body=fp.slot_body(
-                    self.profile.body('player_B'), fp.MEMBERS[role], ready=True))
+                self.broadcast('slot_B', 'ready110', opcode=110, body=self.player_profile.slot_body(
+                    self.profile.body('player_B'), self.player_profile.MEMBERS[role], ready=True))
         elif opcode == 104 and role == 'A':
             peers = self.peers()
             if (self.room.active or (self.round['index'] and not self.round.get('refresh')) or self.state.get('membership_broken')
-                    or {e['role'] for e in peers} != set(fp.ROLES)
+                    or {e['role'] for e in peers} != set(self.player_profile.ROLES)
                     or not all(e.get('guest_ready_received') for e in peers if e['role'] != 'A')):
                 self.reject(event, opcode, sequence, 'four_members_ready_required')
                 return
@@ -406,7 +419,7 @@ class FourPlayerService(ProbeService):
         if self.round['index']:
             self.state['round_history'].append(self.round)
         self.round = dict(index=self.room.generation, key=key, host_role='A',
-            roster=[dict(role=r, **fp.MEMBERS[r]) for r in fp.ROLES],
+            roster=[dict(role=r, **self.player_profile.MEMBERS[r]) for r in self.player_profile.ROLES],
             loading=dict(generation=self.room.generation, started_ns=now,
                 deadline_ns=now + 30*10**9,
                 members=[dict(role=e['role'], connection=e['global_ordinal']) for e in self.peers()]))
@@ -522,9 +535,9 @@ class FourPlayerService(ProbeService):
         returned = self.round.get('return')
         if returned and not self.round.get('refresh') and now-returned['monotonic_ns']>=3*10**9:
             sent = []
-            for role in fp.ROLES:
+            for role in self.player_profile.ROLES:
                 sent += self.broadcast('slot_B', 'four-room110-'+role, opcode=110,
-                    body=fp.slot_body(self.profile.body('player_B'), fp.MEMBERS[role], chief=role=='A'))
+                    body=self.player_profile.slot_body(self.profile.body('player_B'), self.player_profile.MEMBERS[role], chief=role=='A'))
             self.round['refresh'] = dict(monotonic_ns=now, broadcast=sent)
             for peer in self.peers():
                 peer.pop('guest_ready_received', None)
@@ -552,7 +565,7 @@ class FourPlayerService(ProbeService):
             for departed in job['departed']:
                 if departed in removed:
                     continue
-                member = fp.MEMBERS[departed]
+                member = self.player_profile.MEMBERS[departed]
                 body = codec.pack_fields([member['slot'],member['identity'],0],[1,4,1])
                 removed[departed] = self.send(peer,'start','four-remove107-'+departed,opcode=107,body=body)
             refreshed = job['refreshed'].setdefault(role, {})
@@ -560,7 +573,7 @@ class FourPlayerService(ProbeService):
                 name = other['role']
                 if name not in refreshed:
                     refreshed[name] = self.send(peer,'slot_B','four-abort-slot110-'+name,opcode=110,
-                        body=fp.slot_body(self.profile.body('player_B'),fp.MEMBERS[name],chief=name==chief))
+                        body=self.player_profile.slot_body(self.profile.body('player_B'),self.player_profile.MEMBERS[name],chief=name==chief))
             peer.pop('guest_ready_received',None)
         job['completed_ns'] = time.monotonic_ns()
         job['chief_role'] = chief
@@ -578,8 +591,8 @@ class FourPlayerService(ProbeService):
                 continue
             prev = event.get('player_response_sent')
             if prev and not event.get('slot_response_sent') and now - prev['monotonic_ns'] >= 2*10**9:
-                self.send(event, 'slot_B', 'own110', opcode=110, body=fp.slot_body(
-                    self.profile.body('player_B'), fp.MEMBERS[event['role']], chief=event['role']=='A'))
+                self.send(event, 'slot_B', 'own110', opcode=110, body=self.player_profile.slot_body(
+                    self.profile.body('player_B'), self.player_profile.MEMBERS[event['role']], chief=event['role']=='A'))
                 event['slot_response_sent'] = dict(monotonic_ns=now)
             prev = event.get('slot_response_sent')
             if prev and not event.get('map_response_sent') and now - prev['monotonic_ns'] >= 10**9:
@@ -588,7 +601,7 @@ class FourPlayerService(ProbeService):
                             or not other.get('player_response_sent')):
                         continue
                     self.send(event, 'player_B', 'peer106-'+other['role'], opcode=106,
-                        body=fp.player_body(self.profile.body('player_B'), fp.MEMBERS[other['role']],
+                        body=self.player_profile.player_body(self.profile.body('player_B'), self.player_profile.MEMBERS[other['role']],
                             chief=other['role']=='A', ready=bool(other.get('guest_ready_received'))))
                     event.setdefault('roster_sent', []).append(other['role'])
                 self.send(event, 'table', 'table238');self.send(event, 'map', 'map117')
@@ -600,7 +613,7 @@ class FourPlayerService(ProbeService):
                 if other is event or other['role'] in event.get('roster_sent', []):
                     continue
                 self.send(event, 'player_B', 'late-peer106-'+other['role'], opcode=106,
-                    body=fp.player_body(self.profile.body('player_B'), fp.MEMBERS[other['role']],
+                    body=self.player_profile.player_body(self.profile.body('player_B'), self.player_profile.MEMBERS[other['role']],
                         chief=other['role']=='A', ready=bool(other.get('guest_ready_received'))))
                 event.setdefault('roster_sent', []).append(other['role'])
         if not self.room.active:
@@ -609,7 +622,7 @@ class FourPlayerService(ProbeService):
         if not self.room.active or self.round['loading'].get('resolution') != 'barrier_complete':
             return
         members = self.peers('init99')
-        if {e['role'] for e in members} != set(fp.ROLES):
+        if {e['role'] for e in members} != set(self.player_profile.ROLES):
             return
         endpoints = {e['role']: (int(ipaddress.IPv4Address(self.source_ips[e['role']])),
                                 e['init99']['fields'][2]) for e in members}
@@ -620,7 +633,7 @@ class FourPlayerService(ProbeService):
                 event['play_response_sent'] = self.send(event, 'play', 'play196')
             elif event.get('play_response_sent') and not event.get('peer153_sent') and now-event['play_response_sent']['monotonic_ns'] >= 10**9:
                 event['peer153_sent'] = self.send(event, 'peer', 'peer153',
-                    body=fp.peer_body(self.profile.body('peer'), self.room.key, event['role'], endpoints))
+                    body=self.player_profile.peer_body(self.profile.body('peer'), self.room.key, event['role'], endpoints))
 
     def close_connection(self, ordinal, reason):
         state = self.connections[ordinal];event = state['event']

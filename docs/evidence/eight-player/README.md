@@ -90,3 +90,41 @@ Chỉ native room Start validation, không121/loading/Battle8/service roster8/8a
 Windows/LAN/Internet/originalauthority. `server-source-reuse.json` chứng minh code/preset không đổi,
 reuse257server/4export từCP162; docs/catalog/issues/artifact/history/diff kiểm lại trước commit.
 CP163 tự kiểm/review waived/chờPR, AUD048 qua160/kếCP164; next committed mode-preset/Start3/AUD049 ởPLAN.
+
+
+<a id="cp208"></a>
+## CP208 — native8consumer và adapter32TCP, tách tám client thật
+
+Baseline CP207 merge[PR279](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/279)/`7ffed54`.
+[Contract duy nhất/giới hạn](../../PROTOCOL.md#eight-session-preview), [PLAN](../../PLAN.md#current-order).
+Source-first/hash/build/locator: `local/research/codex/eight-session-scope-r1/source-first.json`;
+reuse CP147/163/199/200–207 và VN `oc_e-game.md`475–486 cho kiến trúc, không port wire.
+
+`eight-slot-preview-r1`: hai actual A/B/currentcopy4b781fb…/Wine10.0-20260425, sáu synthetic C–H,
+private kernel NAT recipe kế thừa CP199; local stub và không external route. Run
+`d425e15c2d9d097edf5df77123b277819baad4e871c78c1366f2549f518d616c`,287,091599736s/exit0/1376raw/285frozen.
+Raw trước chuyển việc đã seal/namespace extinct; không chỉnh source/config giữa run.
+`verification-v2.json`:1709checks/native285-inner256/205/fullcursors/8ID-position/8actors hai view;
+`getter-verification.json`:48copiednative52A350, không inferior call. V1 verifier giữ nguyên;
+V2 chỉ trỏ source đã freeze trong `runtime-source/` khi repo tiếp tục sửa adapter. Controller không
+thoát sớm vì JSON adjacency check sai; bound vẫn hoàn tất/cleanup, không normalmatch proof.
+
+`eight-service-model-r1`: prototype riêng 487checks/32realTCP/syntheticC2S. `eight-service-production-r1`
+lặp controls trên **adapterserver mới**,487checks/32transports/eight IDs/names/seven remotes/barrier/negative,
+không giả tám client. `eight_production_tcp.py`/logs giữ cả lỗi invocation thiếuPYTHONPATH trước run đã qua.
+Initial server testfail do literal\n trong import `eight_player_profile`; đã sửa,357server tests pass;
+16bundle/preset tests pass. Test invocation nhầm tên module được giữ trong log ban đầu.
+`eight-delivery-r1/bundle`:68pins/47fixturealiases/Python-I/verify/help; không phát hành client/assets.
+
+Tám actual run riêng `eight-native-r1`: setup assert9 kiểm nhầm danh sách5namespace, trước client;
+finally sync_service chưa khai báo che lỗi. `partial-raw-seal.json` giữ raw/sourcefreeze/namespace0;
+không dựng run.json giả hoặc tuyên bố native đã thử. R2 sửa hai điểm harness, chạy152,435188146s/exit0/870raw/276frozen/cleanup0, runSHA
+`cfb7962f754319aa31a2100d75e6d642a4700e7a69daf84e78300a31c5608791`.
+`eight-native-r2/verification.json`:1468joins/32nativeTCP/8own291-name-slot/8actual99beforeGO/
+8viewfull121285-inner256/153205/ID1–8-position0–7/8distinctactorsclock;192copiedgetters riêng.
+`virtual-network.json`:root+8childnetns/distinctIP/prefix/display/CA-wineserverowners/no default route.
+Ảnh`eight-native-contact.png` và eight-actual-native-clock.png mỗi view được Codex đọc: Battle vẽ tám
+nhân vật, sidebar đủ tám profile; đây là bổ sung, không movement/normalendingproof.
+Service chạy trực tiếp source đã freeze; gói8 mới verify/help, chưa native relocationrun.
+Pin chi tiết/run manifests và snapshot docs ở evidence CP208 sau khi hoàn tất batch; không chỉnh record cũ.
+Review waived; periodic auditCP208/AUD061, audit kếCP212. Internet/K7 và eightfullmatch vẫn mở.

@@ -1,6 +1,6 @@
 # KR 00967 — contract tương thích client gốc
 
-Revision kr-legacy-contract-r1; cập nhật08/11/2026 JST (CP207; AUD060 periodic qua204; audit kế208).
+Revision kr-legacy-contract-r1; cập nhật08/11/2026 JST (CP208; AUD061 periodic qua208; audit kế212).
 **Contract có bằng chứng từng phần; phạm vi nghiệm thu codec/hello ở [PLAN](PLAN.md#k2-acceptance)**.
 Lộ trình và thứ tự task chỉ giữ ở [REWRITE_PLAN — KRE](PLAN.md).
 Đây là contract của repo server KR. ADR0009 của bản viết lại là nguồn lịch sử để so sánh;
@@ -507,7 +507,7 @@ Control đầu đặt guest flags2 thay vì flags4 đã thấy native check3/not
 giữ nguyên raw. Ba run sửa input là run riêng, không ép return/count/đội từ debugger.
 Các cảnh báo capacity lúc table/117 chưa tới được giữ riêng với kết quả click sau init.
 Copy `94ee93dc…` dùng lại CP018/019, **khác copy `e9bb4766…` của CP146**; không cộng các run
-thành integration/gate. Service hiện chỉ có role A/B/C và slot cố định; chưa triển khai8 peer.
+thành integration/gate. Tại CP147 service chỉ có A/B/C/slot cố định; [CP208](#eight-session-preview) bổ sung adapter8 và tám actual clock. Đây không nâng kết quả lịch sử CP147 thành integration.
 Nguồn câu hỏi và phép đo tiếp ở [RESEARCH](RESEARCH.md#gap-roster-ready-host), thứ tự ở [PLAN](PLAN.md#current-order).
 
 **Bổ sung CP163 — `kr_runtime/confirmed`, cùng giới hạn một client/roster tổng hợp:**
@@ -5692,9 +5692,51 @@ Opcode gameplay/bom/event/result/reset chưa hỗ trợ ở entrypoint mới, c�
 R4 dừng vì observeroutput cố địnhA, cleanup/seal exit130; R5 observerpaths đã sửa nhưng finalrunJSON vướng
 circularmetadata, giữ **partialseal riêng/không tạo run.json giả**. R6 chỉ sửa phase_id string và có seal đầy đủ.
 Mọi run source/config frozen tới cleanup, bản copy/sourceDB/assets giữ nguyên; không ghi actor hoặc gọi hàm game.
-Bốn client **đã vào Battle và quan sát movement liên thông**, chưa bốn-player bom/trap/death/normal2v2outcome/
-175/180/reset/Start2, hardening/restart/rate-limit/persistence/bundle4/K7 hoặc Internet. Phần còn thiếu theo PLAN;
+**Tại CP200**, bốn client đã vào Battle và quan sát movement liên thông; lúc đó chưa bốn-player bom/trap/death/normal2v2outcome/
+175/180/reset/Start2 hoặc hardening. [CP201–207](#four-netem-restart) đã bổ sung những scope được dẫn; K7/Internet vẫn mở. Phần hiện hành theo PLAN;
 không port rankAB hoặc coi ownerWineacceptance là tự đóng gate.
+
+<a id="eight-session-preview"></a>
+### Tám slot native và adapter tám session — CP208
+
+[Recipe/raw/hash](evidence/eight-player/README.md#cp208), [phần còn thiếu](RESEARCH.md#gap-roster-ready-host),
+[thứ tự duy nhất](PLAN.md#current-order). Không đổi gate hoặc coi roster tổng hợp là tám client.
+
+| Nguồn tái sử dụng | Mức chứng minh đã có | Delta phải kiểm |
+|---|---|---|
+| [CP147/163](#battle-eight-roster), CP020/026/036 và [CP199](#four-slot-native-consumers) | KR runtime: capacity8/Ready/teamguard; KR121 prefix48/row26, KR153 26 flags/ba tuple mỗi slot; bốn actor trên hai copy | Giữ nguyên layout KR; chỉ tăng count/row và active slot0–7. Không tìm lại codec/capacity/guard |
+| [CP200–207](#four-session-native), current four profile/service/health/bundle | Bốn actual KR và controls; mỗi client cần **bốn transport**, auth reply4/u32 width4 không là số người | Parametrize roster/role/identity/Ready/99barrier; 32 transport tổng cộng. Không bật policy bom/rank4 cho tám |
+| VN `oc_e-game.md`475–486, room/lobby dẫn trong [REFERENCES](REFERENCES.md) | VN runtime cho kiến trúc TCP trao endpoint và P2P | Chỉ dùng kiến trúc; không chuyển opcode/offset/ID/layout VN |
+
+**KR runtime đã xác nhận hẹp:** hai actual Wine A/B/currentcopy`4b781fb…`, sáu slot tổng hợp C–H.
+Hai client đều đọc KR121 **285/285**, inner **256/256**, KR153 **205/205**, errors54/58=0;
+ID1–8/slot và position0–7 qua validation, tám actor pointer khác0/khác nhau ở mỗi clock.
+Sáu endpoint tổng hợp bằng0; không phải tám login/P2P/gameplay. 1709 kiểm raw/pin/native;
+48 wrapper life/position từ clock khớp **copied native52A350/Unicorn**, tách khỏi quan sát runtime.
+Run287,0916s/exit0/1376 raw/285 frozen/cleanup namespace0; điều kiện earlycompletion của controller
+nhầm adjacency JSON nên hết bound, không thay input giữa run hoặc suy clock là normal match.
+VerifierV1 đọc source hiện tại sau khi adapter được sửa nên báo drift; V2 đối chiếu đúng bản
+`runtime-source/` đã pin trước run. Không sửa preflight/seal/raw hoặc tạo lại bytes cũ.
+
+**Implementation/design:** opt-in `server/eight_player_service.py`, profile`eight-client-start` và bundle;
+A–H/ID1–8/slot0–7/team0/1 xen kẽ/name5hoặc7byte là lựa chọn operator. Reuse four service qua profile
+riêng, default ABCD còn kiểm hồi quy. Sources bound IP riêng, bốn transport/role, sequence độc lập,
+seven remote106/153/selftuple0, đủ bảy Ready và tám actual99 mới mở barrier. RealTCP **487 checks/32 sockets**
+trên adapter mới; negative unknown source/exhausted fifth transport/wrong name/early stage/malformed Ready/
+missing lastReady/missing eighth99/zeroUDPport. Đây là C2S tổng hợp, không oracle native.
+Eight preview từ chối bomb/outcome/abort-room/identity persistence policy; không giả rank hoặc cap E–H.
+Gói68pins/47alias qua Python-I/verify/help; integrity không chứng nhận runtime hoặc chữ ký.
+
+**KR runtime mới — tám client thật:** `eight-native-r2` chạy152,435188146s/exit0/870raw/276frozen/cleanup0;
+Wine10.0-20260425/currentcopy4b, tám Wineprefix/display và CA PID riêng, chín netns root+A…H/IP10.77.0.2…9/
+privatebridge/no default route. 32nativeTCP/fourstage mỗi role, actual291/name với cursor126(C)/128(còn lại),
+ownslot0–7. Bảy Ready/8actual99 trước firstGO; cả8view đọc121285/inner256/153205 không lỗi, validation8ID/
+position và8distinctactor/currentclock. 1468raw/nativejoins;192copiednative52A350 kiểm life/position riêng.
+Ảnh tám view bổ sung callback/owner/raw; không dùng screenshot hoặc service log thay native proof.
+RunR1 fail preclient topology assert9 trên list5, rồi finally unbound sync_service; raw/seal/namespace0 giữ riêng.
+R2 chỉ sửa helper validation đủ9namespace và safe cleanup default trước service; production source không thay giữa run.
+Service trực tiếp từ source snapshot; gói68pins mới chỉ được verify/help, **chưa native run trên gói8 relocated**.
+Không fullmesh movement/bom/kết quả/reset8/1–7 actual/fullauth/Internet/K7 từ hai-client probe hoặc 32 TCP.
 
 <a id="four-slot-native-consumers"></a>
 ### Bốn slot Start121/peer153 trên copy hiện hành — CP199
