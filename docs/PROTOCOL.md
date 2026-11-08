@@ -283,7 +283,7 @@ không phải đăng nhập Nexon thật hoặc K2/K3 đã pass.
 
 - Luồng tự động `11010F0` đọc config `token_1/token_2`; tĩnh chọn count0/1/2 theo chuỗi rỗng.
   Runtime `token_1:offline-probe` đi tới `13B07F0` với1; cùng copy không token có0.
-  `1255C90` chỉ gọi builder khi count1..2. Chỉ nhánh token_1/count1 đã đo; token_2/count2 chưa kiểm.
+  `1255C90` chỉ gọi builder khi count1..2. Tại CP014 chỉ token_1/count1; [CP214](#auth-token-request) đã đo cả count2 trên copy4b.
 - `1255DC1→13ADE40` yêu cầu getter `13AD5B0==-1`, socket ready và count1/2; gọi base ctor
   `14EAD00` với opcode1. Capture connection3 có **C→S1/80 byte**, kế **C→S60/58 byte**, rồi C→S15.
   Native parser `14EF300` replay7 frame với seq40+3n, khớp CRC/payload; CRC-sai/partial từ chối.
@@ -312,6 +312,33 @@ Recipe mới bind Toolhelp process/thread và các API window trên copy, giữ 
 bộ nhớ như CP012. Các API phục hồi là `emu_choice/candidate`; `GetWindowTextA` còn alternative ABI
 `GetClassNameA` chưa loại trừ. Token là giá trị giả local. Không ép modal/state thành success;
 không suy các patch/import/API này là tương đương vanilla hoặc là nguyên nhân duy nhất.
+
+<a id="auth-token-request"></a>
+### Token local trong C→S1 — CP214
+
+Nguồn [ba run/recipe/hash và sửa oracle](evidence/login-runtime/README.md#cp214),
+[metadata](evidence/login-runtime/token-request.json); KR00967/originalSHA trong metadata, offlinecopy4b/Wine10.0.
+Nguồn cũ dùng lại: CP014 builder/count/guard, CP058 reply và CP181 codec/retry; VNlogin chỉ tham chiếu,
+không chuyển username/password/opcode/layout. IDA unavailable không làm mất cache/provenance.
+
+**`kr_runtime/confirmed`, chỉ nhánh config token giả đã đo:** `13B07F0` nhận1/2,
+`13ADE40` lặp đúng count; `105D050=0`, `122AE50=1`, writer `14EC040` nhận chuỗi13byte/key11223344.
+Hai token_1 cùng độ dài A/B cho frame80/body42, hai token cho frame95/body57, seq40 ở socket thứ ba.
+Body bắt đầu hai typed u8=4,count; mỗi record tại offset2 rồi17 gồm typed u16=13 +13byte biến đổi.
+Thêm token2 thêm15byte; suffix25byte bắt đầu17/count1 hoặc32/count2 giống nhau giữa ba run.
+Không có username/password plaintext được xác nhận; các nhánh provider khác không đi qua trong ba run.
+
+**`kr_static/confirmed`, emulation tách runtime:** copied sender ctor14EAD00/vtable17B0B7C,
+`14EC040→14EC060→14ED340`, synthetic buffer/mode2 đã cho đủ15byte khớp bốn record capture.
+Đây là biến đổi định dạng, không chứng minh cơ chế xác thực an toàn. Copied receiver14EF300/mode2-selector3/seq40
+replay ba frame actual: return0/CRC khớp/body khớp; CRC-flip return7/error10/consumed0, partial return2/consumed0.
+Prefixcheckoff và allocator synthetic theo recipe cũ; không phải backend thật kiểm credentials.
+
+**Giới hạn:** input13byte/ASCII, một nhánh local config/copy đã sửa; chưa length16+ hoặc token2-only,
+chưa giải nghĩa suffix hay các flag mở rộng. Không gửi authsuccess, không kiểm expiry/revocation/swappedchannel
+và không chứng minh account→player/sessionownership. Request6/name+opaque tail chưa được nối với token này.
+Contract dùng trực tiếp để parse một nhánh có bounds; thiết kế backend auth/Argon2id/session vẫn là `design`.
+Phép thử tiếp ở [RUST-Q1](RESEARCH.md#rust-service-gaps); không sửa/đóng gate demo hoặc fullauth từ kết quả này.
 
 <a id="channel-lobby"></a>
 ### Từ auth tới UI sảnh trên copy — CP015
