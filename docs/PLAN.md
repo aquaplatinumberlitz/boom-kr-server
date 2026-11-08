@@ -1,7 +1,7 @@
 # Kế hoạch server giả lập KR 00967
 
 Nguồn chuẩn của project `boom-kr-server`; bản nhập từ plan đã được dsh1/dsh2 review tại `1eee46d`.
-CP199: native121/153/bốn actor đã kiểm trên hai actualKR + hai actor tổng hợp; source-firstscope4session đã chọn. Tiếp code/realTCP bốn session/identity/roster/Ready/barrier/mesh trước actual4runtime; K7/Internet mở. AUD058qua196/auditCP200.
+CP200: bốn actualKR Wine/session/room/load/clock/153 và12chiều currentmovement đã đo trong scope; gameplay2v2/bom/result/reset/Start2/K7/Internet còn mở. Tiếp fourBattle theo current-order. AUD059qua200/auditCP204.
 
 
 ### Mục tiêu, baseline và phạm vi
@@ -37,7 +37,7 @@ với client Rust không chứng minh có thể điều khiển client KR bằng
 
 ### Tiến độ hiện hành theo bằng chứng
 
-| Task/mốc | Trạng thái tại CP196 | Nguồn chuẩn |
+| Task/mốc | Trạng thái tại CP200 | Nguồn chuẩn |
 |---|---|---|
 | KRE-004/issue6 | Đã review/merge PR7 và đóng issue:recipe r1 đến local accept;không phải full K1 | [Wine r1](evidence/wine/README.md) |
 | Bootstrap reply | PR8 đã merge;debugger ProcessPatchreturn1,không ép success | [bootstrap evidence](evidence/bootstrap-wire/README.md) |
@@ -99,18 +99,21 @@ không tạo nhánh kiểm kê wiki hoặc mở mode phụ trước K3/K4/K5/K6a
    trên hai actualKR + hai actor tổng hợp đã có full121/153/fouractor/ABpeer. Reuse CP020/026/036/147/163,
    không lặp codec/guard. Chọn tối thiểu4session A/B/C/D/slots0–3/IDs1–4/team0/1 xen kẽ/mộtroom/
    ExVillage01/normalBattle; không auth gốc/mode/item expansion hoặc bốnclientgate từ synthetic.
-   `NEXT-K7-FOUR-SESSION-CONTROL`: triển khai opt-in4role riêng với replacementCslot0, giữ default2người;
-   phân tách role/identity/slot/roster và fixture, đủ4×transportstages/native-nameprofile/106/110/121,
-   Ready95/start104/current99barrier và3remote153 mỗiview. Kiểm realTCP interleave/identity/seq/Ready/
-   barrier/membership/unusedslots trước mở actual4KR. Sau controls, đo bốn nativeclient cùng một Battle,
-   peer từng slot/normalresult/reset/Start2 với policy2v2 có provenance và guard; chưa đóng K7 tới acceptance.
-   Quyết định thứ tự: nhánh NAT/two-cycles/UDP impairment/EOF đã có proof; tiếp công việc admission K7
-   độc lập để phục vụ bốn client. K6c vẫn cần endpoint Internet do project kiểm soát và acceptance giữ nguyên,
+   `NEXT-K7-FOUR-SESSION-CONTROL` khép scope phòng/load/input CP200: [entrypoint4riêng/native4](PROTOCOL.md#four-session-native),
+   16realTCP/session/ID/name/seq/Ready/4ACK99barrier/3remote153 và bốn actualWine vàoBattle/currentmovement12chiều
+   đã có evidence. Cslot2/ID3 đồng thời khác replacementCslot0; default hai người/bundle cũ giữ nguyên.
+   `NEXT-K7-FOUR-BATTLE-OUTCOME`: tái dùng bomb159/158/life-report/authority/result175/180/reset đã có cho hai người,
+   chỉ đo phần thiếu2v2. Bắt đầu nativebaseline/capacity/power của4slot và mỗi owner118/159/158/broadcast/fence;
+   sau đó policy2team survivor/report/admission/rank4rows và actualnativeconsumers trước cùng4clientnormaloutcome/
+   roomreset/Ready2/Start2. Không sao chép rankAB/forfeit làm2v2normalwin, không mở thêm mode/item/map trước mốc này.
+   Mở rộng fourportable/restart/backpressure/rate-limit/persistence và negatives K7 sau gameplay4 ổn; giữ acceptance.
+   Quyết định thứ tự: NAT/two-cycles/UDP impairment/EOF và incoming admission đã có proof; tiếp gameplay
+   bốn client sau CP200room/load/input, chưa nghiệm thu K7. K6c vẫn cần endpoint Internet do project kiểm soát và acceptance giữ nguyên,
    không dùng mô phỏng để tự đóng gate hoặc thêm các biến thể NAT không có blocker.
-   AUD058 periodic qua196; audit thủ công kế CP200, không reset counter.
+   AUD059 periodic qua200; audit thủ công kế CP204, không reset counter.
    Wine thay Windows và LAN giả lập theo [directive](evidence/owner-directives/wine-accepted.json);
    [#14](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/14) tiếp tục mở.
-   <!-- active-issue: 14 --> AUD058 qua196, audit kế **CP200**.
+   <!-- active-issue: 14 --> AUD059 qua200, audit kế **CP204**.
 
 2. **KR-B003/KR-F006 — nợ có giới hạn:** [CP057](PROTOCOL.md#codec-stream-boundaries) đã đo stream/
    seq/bounds trong model, không mở lại76split hoặc cấp buffer lớn chỉ để vượt allocationguardFFFFFFFF.
@@ -140,7 +143,7 @@ Bảng này chỉ phân công/thứtự; acceptance/PR/bằngchứng ởissue. [
 
 | Thứ tự/scope | Issue | Trạng thái/phần còn thiếu |
 |---|---|---|
-| Hiện hành RE | [#14/KRE-005b](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/14) | K5 basic/K6a/K6b giả lập đã đạt trong scope. CP193–196 NAT/UDP delay-loss/EOF có nguồn; CP197incoming opt-in có controls; CP198nativeinterleave đã kiểm; tiếp NEXT-K7-FOUR-SESSION-CONTROL, audit kếCP200. K6c/K7/fullauth/authority/general variants giữ mở. |
+| Hiện hành RE | [#14/KRE-005b](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/14) | K5 basic/K6a/K6b giả lập đã đạt trong scope. CP193–196 NAT/UDP delay-loss/EOF có nguồn; CP197incoming opt-in có controls; CP200fouractualsession/clock/currentmovement đã kiểm; tiếp NEXT-K7-FOUR-BATTLE-OUTCOME, audit kếCP204. K6c/K7/fullauth/authority/general variants giữ mở. |
 | Control theo trigger/gate | [#1/KRE-001](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/1), [#2/KRE-002](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/2) | CP178 K0 originalWindowscontrol/ownership đã đủ, #1 đã đóng qua PR250; #2 giữ widerWCP/launcherconfig; K1 R2 đã đạt CP179, không lặp cold3. |
 | Codec backlog/identity hiện hành | [#3/KRE-003](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/3), [#9/KRE-005a](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/9) | Fullcodec/livebounds vàintermittentmainstartupcause cònthiếu; khônglặpprimitive/auxiliarylocale. |
 

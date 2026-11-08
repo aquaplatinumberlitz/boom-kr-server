@@ -1937,3 +1937,36 @@ Peerregister chỉ3remote/view (localself bỏ), verifier đầu đòi4calls b�
 Hai synthetic giữ KRGuest/profilezero/Ready4/slot2–3/ID3–4/team0–1/endpoint0: không cóC/Dsession/auth/291/
 client hoặc syntheticUDPdelivery. Không outcome/reset2v2/bốnactualclient/gate. Scope bốn session đã chọn,
 service/realTCP trước actual4Wine ở PLAN; AUD058qua196/auditkếCP200.
+
+<a id="cp200"></a>
+## CP200 — service bốn session và bốn actual KR vào Battle/movement
+
+KRE-005b/#14/Codexsolo/reviewwaived; baseline CP199/PR271 merge`ae329187`.
+[Contract/reuse/giới hạn](../../PROTOCOL.md#four-session-native), [câu hỏi kế](../../RESEARCH.md#gap-lobby-identity-followup),
+[PLAN](../../PLAN.md#current-order); AUD059 periodic qua200/kế204. Không nâng K7/Internet/fullmatch.
+
+309server tests/200realTCPcontrols/16DCBAtransports: authreply4/name/ID/socketstage/seq/allReady/all99/3remote153/
+unknownsource/fifth/EOF và unsupportedgameplayfailclosed. Header1 sai ở prototype được nativeR1 phát hiện; test
+chỉ body trước đó thiếuheaderoracle, đã thêm reply4regression. Test invocation sai importpath giữlog/rerun đúng.
+
+| Run | Kết quả được giữ nguyên |
+|---|---|
+| `four-native-r1` | 147.576016079s/367raw/exit1/sourcefrozen/cleanup0; authreply1 sai so fixture4, A chưa channel, 140sbound. |
+| `four-native-r2` | 163.338745086s/885raw/exit0; 1268sessionchecks/bốnactualname291/slot/room/Ready12199clock153. Meshverifierfailed; 12API/source nhưng chỉA3progress trongwindow. |
+| `four-native-r3` | 162.487978760s/897raw/exit0;1279sessionchecks; sameproduction thêm7cachedbranch+12membershipprobes. C/D tới peer/queue nhưng queue sau ít drain/no C/Dgamekeybranch trongwindow; candidateobservereffect. |
+| `four-native-r4` | 42.100697215s/103raw/exit130; ownedcontrollerSIGINT/finallycleanup/seal doobserveroutputhardcodedA; không nativefailure/pass. |
+| `four-native-r5` | 592raw/partialseal riêng, missingrun.json vì circularmetadata.4clientrunfiles/PCAP/topologycleanup/namespace0/sourcefrozenđãkiểm; finalpositionskhớp nhưng không hoàn chỉnhwindowacceptance. |
+| `four-native-r6` | 117.517311787s/593raw/238frozen/exit0/cleanup0; 3758checks/476PCAP, twelve directed currentprogress. |
+
+R6 runSHA`8733741005a6e656d041486755f69077d03f99b06e8966349faf5cdc61a79b45`; verifierSHA trong externalmanifestCP200.
+Recipe: profile47pin cũ + opt-in `python3 -m server.four_player_service`; `prepare_four_native*.py` khai
+input/topology/changes, `run_four_native*.py` preflight→runtime→cleanup→seal. R5 riêng`seal_partial.py` không
+sinh run.json/exit0 giả. Mỗi run tree/prefixABCD riêng, sourcecopy4b/nguồna525/assets/DB/bundle/base2giữnguyên,
+namespace user/net/mount/PID/noexternalsroute; bridge10.77.0.1 và A.2/B.3/C.4/D.5. Capturekv-achỉ6edgecóA.
+Không phảiNAT/loss4client, không12Ethernetedges hoặcWindowsAPI chưađo. Không gamecall/actorwrite/replay.
+
+Reuse CP020/026/036/047/147/163/198/199 schemas/knownsites/oracles, không body/codec/guardscan. R6 ít probe
+chỉ có rare291/121/spawn/153 và rate-limitednativepositions; không key/E668AD trong run này. Bốn origin input
+normalRightA/B/C vàDownD (RightD vướngterrain) làmcurrentpositions đổi ở ba recipient. SoR2R3 hỗ trợ
+observerthroughputcandidate, chưacausalitytoànnhánh. Không4bom/trap/death/rank/normal2v2result/reset/Start2;
+service4rejectGameplayrõ. Tiếp PLANfourBattle/authority/consumer, giữ toànrunfailed/verifier/history/hash.

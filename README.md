@@ -58,7 +58,7 @@ auth137/137/errors0 → channel socket mới; hello/mode/seq reset được đo 
 **K6c Internet/K7 vẫn mở; K6b LANgiảlập đạtCP191 theoowner. K3 local CP186, K4 local CP187, K5 basic CP188 và K6a local CP189 đã đạt riêng scope**,
 [nghiệm thu/giới hạn](docs/PLAN.md#k3-acceptance). Fullgrammar/unknownheader/prefix/mode và
 accountauthority chưa được khôi phục đầy đủ; K2 không nghiệm thu các phần đó. Thứ tự tiếp ở
-[PLAN](docs/PLAN.md#current-order): nhánh routed/NAT/UDP impairment đã có CP192–196; tiếp incoming admission trước bốn client, giữ Internet gate mở.
+[PLAN](docs/PLAN.md#current-order): nhánh mạng/admission đã có CP192–198; bốn session vào Battle tại CP200, tiếp gameplay2v2 theo PLAN, giữ Internet gate mở.
 CP181 đã merge [PR253](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/253) tại `5a154e5`.
 **CP184: identity291 đã tích hợp opt-in vào service.** Hai run A đã hiện tên ở sảnh rồi tạo phòng,
 nhận roster/map; native framer nhận sequence43…73 liên tục, next76. [Contract/giới hạn](docs/PROTOCOL.md#own-profile-integration),
@@ -103,13 +103,13 @@ CP190 đã merge [PR262](https://github.com/aquaplatinumberlitz/boom-kr-server/p
 có capture; [contract/giới hạn](docs/PROTOCOL.md#routed-Wine-network). Chưa NAT/relay/Internetgate.
 [Owner chấp nhận Wine thay Windows](docs/evidence/owner-directives/wine-accepted.json), không cần máy Windows.
 CP191 đã merge [PR263](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/263) tại`56a08dd6`.
-AUD057 periodic qua192 là lịch sử; AUD058 qua196, audit kế **CP200**. [Review waived](docs/evidence/checkpoints/review-waiver.json).
+AUD057/058 periodic qua192/196 là lịch sử; AUD059 qua200, audit kế **CP204**. [Review waived](docs/evidence/checkpoints/review-waiver.json).
 
 **CP193: đã đo đối chứng NAT trên hai KR Wine thật.** Endpoint riêng làm consumer trả0; khai báo tuple
 đã ánh xạ + DNAT khôi phục handler, key và movement hai chiều. [Contract/giới hạn](docs/PROTOCOL.md#nat-endpoint-control),
 [run/hash](docs/evidence/peer-endpoints/README.md#cp193). Tại CP193 chưa hai chu kỳ NAT; [CP194](docs/PROTOCOL.md#nat-two-cycles) bổ sung, K6c Internet vẫn mở.
 CP192 đã merge [PR264](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/264) tại`1a6daad0c17d718bc86574162bf2946bca1ed800`.
-CP193 đã merge [PR265](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/265) tại`8acf57c81a727892c04e735c28a20a5319d70fd9`; review waived, audit kế CP196.
+CP193 đã merge [PR265](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/265) tại`8acf57c81a727892c04e735c28a20a5319d70fd9`; review waived; tại CP193 audit kếCP196, hiện theo counter manifest.
 
 **CP194: hai KR Wine đã hoàn thành hai vòng Battle bình thường/reset/Ready2/Start3 qua mapping NAT tĩnh.**
 [Phạm vi và giới hạn](docs/PROTOCOL.md#nat-two-cycles), [raw/hash](docs/evidence/peer-endpoints/README.md#cp194).
@@ -136,6 +136,12 @@ hai normal cycles/reset/Start3 trên gói admission hiện hành. [Scope/giới 
 [Phạm vi](docs/PROTOCOL.md#four-slot-native-consumers), [raw/hash](docs/evidence/peer-endpoints/README.md#cp199):
 hai actual client + hai actor tổng hợp, A/B peer còn hoạt động. Chưa bốn actual client, kết quả/reset2v2 hoặc K7.
 Blocker chuyển sang service bốn session/identity/roster/Ready/barrier/mesh; thứ tự chỉ giữ ở PLAN.
+
+**CP200: bốn KR Wine thật đã login/sảnh/phòng/load vào Battle**, đúng bốn identity/ownslot; run ít probe
+quan sát movement từ từng client ở ba client còn lại. [Phạm vi/controls](docs/PROTOCOL.md#four-session-native),
+[recipe/hash](docs/evidence/peer-endpoints/README.md#cp200). Service bốn session riêng; chưa bom/kết quả/reset2v2,
+Start2 hoặc đóng K7. CP199 đã merge [PR271](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/271)/`ae329187`.
+AUD059 quaCP200; audit định kỳ kế **CP204**. Run lỗi/header/probe/metadata giữ raw riêng, không sửa thành pass.
 
 Đích đầu: hai client thật chơi hai trận liên tiếp; mở bốn client và hardening sau đó.
 

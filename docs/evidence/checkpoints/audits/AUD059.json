@@ -1,0 +1,122 @@
+{
+  "id": "AUD059",
+  "trigger": "periodic",
+  "completed_through": "CP200",
+  "recorded_utc": "2026-11-07T23:58:43.423895+00:00",
+  "auditor": "Codex manual self-audit; independent review waived",
+  "read_files": [
+    "README.md",
+    "docs/PLAN.md",
+    "docs/PROTOCOL.md",
+    "docs/RESEARCH.md",
+    "AGENTS.md",
+    "docs/features.json",
+    "docs/COVERAGE.md",
+    "docs/evidence/peer-endpoints/README.md",
+    "docs/evidence/checkpoints/README.md",
+    "docs/evidence/checkpoints/audits/AUD058.json",
+    "tools/README.md",
+    "server/four_player_profile.py",
+    "server/four_player_service.py",
+    "server/test_four_player_service.py",
+    "local/research/codex/four-session-r1/source-reuse.json",
+    "local/research/codex/four-session-r1/profile-controls.json",
+    "local/research/codex/four-session-r1/auth-header-diagnosis.json",
+    "local/research/codex/four-session-r1/production-real-tcp-authfixed-verification.json",
+    "local/research/codex/four-session-r1/server-tests-authfixed.txt",
+    "local/research/codex/four-native-r1/launch-exit.json",
+    "local/research/codex/four-native-r1/cycles/run.json",
+    "local/research/codex/four-native-r2/session-verification.json",
+    "local/research/codex/four-native-r2/fullmesh-first-failure.log",
+    "local/research/codex/four-native-r2/mesh-gap-analysis.json",
+    "local/research/codex/four-native-r3/session-verification.json",
+    "local/research/codex/four-native-r3/queue-gap-verification.json",
+    "local/research/codex/udp-generation-r1/14E5710.asm",
+    "local/research/codex/udp-generation-r1/game-udp-consumer-prefix.asm",
+    "local/research/codex/udp-freshness-r1/E66680-prefix.asm",
+    "local/research/codex/four-native-r4/operator-stop.json",
+    "local/research/codex/four-native-r4/launch-exit.json",
+    "local/research/codex/four-native-r5/launch.txt",
+    "local/research/codex/four-native-r5/partial-raw-seal.json",
+    "local/research/codex/four-native-r6/verification.json",
+    "local/research/codex/four-native-r6/cycles/run.json",
+    "local/research/codex/four-native-r6/cycles/service-state.json",
+    "local/research/codex/four-native-r6/cycles/virtual-network.json",
+    "local/research/codex/four-native-r6/cycles/A/four-slot-after-two-peer-windows.png",
+    "local/research/codex/four-native-r6/cycles/D/four-slot-after-two-peer-windows.png",
+    "local/research/codex/cp199-exact-head-results.json",
+    "local/research/codex/cp199-pr-merged.json"
+  ],
+  "method": "Manual README→PLANcurrent-order/K7acceptance→PROTOCOLCP199200/known121153/authority→RESEARCHcurrentgaps→catalog/evidence/source/raw/nativeproof/PCAPscope/actualimages. ComparedruntimeR1header/R2R3API-queue-drain/nonzeropeer/currentpositions andknown14E5710firstnonemptyiteration beforeobserverhypothesis. Keptnativefour-sessionproofseparatefromTCP/encoder/synthetic/12movement/handlercalls. ViewedA/DfinalR6screensmatchingfourroster/names/map; log/memory/inputs/runtimeepochs areindependentoracles. Seals/fullindexesverifiedbycheckerswithoutLLMreadingallrows. No semanticgateclosurefromtests/counts.",
+  "findings": [
+    {
+      "id": "F1",
+      "stale": "README/PLAN/RESEARCH current servicehardcoded2/sourcefirst4scope obsolete after new4entrypoint/runtime.",
+      "correction": "Currentdocs now distinguish old2service/syntheticCP199 vs4actualsessions/lowobservercurrentpositions; nextworkfourBattle/bombs/result/reset; Internet/K7open.",
+      "fixed_in": [
+        "README.md",
+        "docs/PLAN.md",
+        "docs/PROTOCOL.md",
+        "docs/RESEARCH.md",
+        "docs/features.json",
+        "docs/COVERAGE.md"
+      ]
+    },
+    {
+      "id": "F2",
+      "stale": "RESEARCHC291unknown/generalABthirdStartunknown while newerCP198Start3 andCP200C/D291 exist.",
+      "correction": "LinkC/D291scopeCP200, ABStart3CP198; retainACCP176oldnoscope andunmeasuredfourreset/Start2 separately.",
+      "fixed_in": [
+        "docs/RESEARCH.md",
+        "docs/COVERAGE.md"
+      ]
+    },
+    {
+      "id": "F3",
+      "stale": "InitialrealTCPcontrolbody-only auth validation missed header1 instead4; greenTCPtestcouldhide nativefailure.",
+      "correction": "NativeR1keptfailed; fixtureheader4 pinned, newunitreply4regression/200TCPcontrols andR2native4sessionpositive; no allstartuprootcauseclaim.",
+      "fixed_in": [
+        "server/four_player_service.py",
+        "server/test_four_player_service.py",
+        "docs/PROTOCOL.md",
+        "docs/evidence/peer-endpoints/README.md"
+      ]
+    },
+    {
+      "id": "F4",
+      "stale": "Initial4loop reusedtwo-clientpeeroracle, assumedphasehasoneorigin/guaranteedfullmesh; API/queuealone couldbe misreadasconsumer success.",
+      "correction": "Retainfullmeshfailure/R2R3partial, separate12API/endpoints/latequeuesfrom3samewindowprogress. R6lowobserverhas12readonlycurrentprogress, no12E668ADkeycalls. EthernetPCAPkv-aonly6Aedges.",
+      "fixed_in": [
+        "docs/PROTOCOL.md",
+        "docs/RESEARCH.md",
+        "docs/evidence/peer-endpoints/README.md"
+      ]
+    },
+    {
+      "id": "F5",
+      "stale": "R4hardcodedobserverApath andR5circularmetadata prevented validfullrunseal.",
+      "correction": "OwnedSIGINTcleanup/exit130R4; R5partialsealverifiesfrozenrawand0namespacePIDswithoutinventingmissingrunjson. R6explicitdistinctpaths/phase_idacycliccontrolcomplete. Failuresnotretrospectivepass.",
+      "fixed_in": [
+        "docs/PROTOCOL.md",
+        "docs/evidence/peer-endpoints/README.md"
+      ]
+    },
+    {
+      "id": "F6",
+      "stale": "CurrentPLANstillnextincomingadmissionafteractual4session, old auditnext200 wouldbe overdue.",
+      "correction": "NEXT-K7-FOUR-SESSION-CONTROLclosedscopedroom/input; NEXT-K7-FOUR-BATTLE-OUTCOMEactive. AUD059through200/next204; oldcompletehistory/auditcounterunchanged.",
+      "fixed_in": [
+        "docs/PLAN.md",
+        "README.md",
+        "docs/RESEARCH.md",
+        "docs/evidence/checkpoints/manifest.json"
+      ]
+    }
+  ],
+  "remaining": [
+    "Newfourservicecurrentlyrejects118/124/127/gameplay/results/reset. Needfour-slotcapacity/power/bombowner/fence/broadcast then2v2survivor/rank175180/normaloutcome/reset/Start2; cannotcopyABrankorforfeitnormalending.",
+    "R2R3queuebacklogcandidateobservereffect, R6changeslowprobesandDDowngeometry; notcompletecausalproofallnativequeue/timing. R6positionsproofnothandlerkeycallproof. No four-clientNAT/netem/fullUDP/auth/Internetgate.",
+    "K7hardening/parser/backpressure/rate-limit/persistence/restart/fourportable stillopen; existingK5/K6a/K6bacceptedscopesunchanged.",
+    "CP200pendingcommitPR/exacthead; reviewwaived/notindependentapproval. Periodicnext204."
+  ]
+}

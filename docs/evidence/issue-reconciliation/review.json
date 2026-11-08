@@ -155,11 +155,11 @@
         "KR-F001",
         "KR-F015"
       ],
-      "known": "CP199currentcopy4b/twoactualAB+2syntheticnative121181/153133/fouractors/clock/ABpeer, sourcefirstCP020026036147163reuse; CP198nativeinterleavedAB/2cyclesmergedPR270.",
-      "remaining": "No4simultaneousidentity/session/nativeclients/UDPmesh/normal2v2outcome/reset; servicehardcode2livepeers/ABbinding/Cslot0replacement, K6cInternet/K7 open.",
-      "next_test": "PLAN NEXT-K7-FOUR-SESSION-CONTROL: code opt-inABCD/slots0–3/IDs1–4/oneExVillage01/normal2v2; realTCPstages/identity/seq/Ready/barrier/153 controls beforeactual4Wine.",
+      "known": "CP200newoptin4sessionservice/309tests/200realTCPchecks; actualABCDWineauth291/ownslots/room/Ready/12199clock153, R6twelve directed currentmovement inlowobserverrun; failedR1header/R4stop/R5metadata andR2R3meshpartialpreserved.",
+      "remaining": "FourclientBattlebombs/2v2life/survivor/result175180/reset/Start2; fourportable/hardening/restart/rate-limit/persistence/Internet/K7/auth/generalvariants open.",
+      "next_test": "PLAN NEXT-K7-FOUR-BATTLE-OUTCOME: reuseknown118159158/authority/lifereport/rank/reset; minimal4ownerbaseline/bombbroadcast/fence then2v2normaloutcome/reset/currentnativeconsumer. NoABrankclone orforfeitnormalwin.",
       "acceptance": "Epic checklist: linkedscopedtask/evidence+authoritymatrix vàacceptancegate ởPLAN; từngtaskđóng khôngđóngepic/K5/K6a.",
-      "reason": "Bounded4actorconsumerproof notfouractualclient/fullmesh/results/gate; AUD058through196/next200.",
+      "reason": "Fouractualsession/movementisnotfourfullmatch/gate; AUD059through200/next204.",
       "sources": [
         "docs/PROTOCOL.md#authority",
         "docs/RESEARCH.md#feature-gaps",
@@ -230,7 +230,8 @@
         "docs/PROTOCOL.md#nat-netem-host-eof",
         "docs/PROTOCOL.md#operator-incoming-binding",
         "docs/PROTOCOL.md#native-interleaved-startup",
-        "docs/PROTOCOL.md#four-slot-native-consumers"
+        "docs/PROTOCOL.md#four-slot-native-consumers",
+        "docs/PROTOCOL.md#four-session-native"
       ],
       "evidence": [
         "docs/evidence/current-movement-cycles/README.md",
@@ -298,7 +299,8 @@
         "docs/evidence/peer-endpoints/README.md#cp196",
         "docs/evidence/peer-endpoints/README.md#cp197",
         "docs/evidence/peer-endpoints/README.md#cp198",
-        "docs/evidence/peer-endpoints/README.md#cp199"
+        "docs/evidence/peer-endpoints/README.md#cp199",
+        "docs/evidence/peer-endpoints/README.md#cp200"
       ],
       "prs": [
         173,
