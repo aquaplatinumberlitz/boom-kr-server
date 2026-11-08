@@ -1,0 +1,191 @@
+{
+  "schema": "kre-auth-token-bounds-v1",
+  "baseline": "83de46cba4baf9baf67888fafa39c40f2aa27345",
+  "build": "KR00967",
+  "original_sha256": "a52545c14b1fea423de655c3163d6360b628d61c1cd472b46fdbc8a9ffe15f4e",
+  "copy_sha256": "4b781fbcea21e0f6294c729b63be86ab2953d60ad83b0d0c9219359f826107ed",
+  "environment": "Wine10.0-20260425 CachyOS/isolatedloopback/copy4b/localstub3hello/noauthsuccess",
+  "sources": {
+    "source_first": "local/research/codex/auth-token-bounds-r1/source-first.json",
+    "sha256": "99285696f7e3a20232383c0518e1e08badbebb9d72950409775263ec5ffa50cc",
+    "reused": "CP214exact13byte/count1–2/writer-frameroracles andCP014cached11010F0countsource; oldVN/KRdocssnapshots retainedonlyreference. No newfunctions/scans/fullcodec/authreply/BattleRE."
+  },
+  "cases": [
+    {
+      "case": "sso-pair",
+      "run_sha256": "98510fe70082496ecc342b9fa603fd878b8058440047ca5e1e8bab4e1dce9cbb",
+      "duration_s": 48.655581411,
+      "raw_count": 58,
+      "cleanup": {
+        "net_namespace": "net:[4026533182]",
+        "remaining_pids": [],
+        "method": "Pythonfinally/endrun/captureclose/ownedWineandservice/virtualtopologystop/netnamespaceextinct"
+      },
+      "counts": [
+        2
+      ],
+      "frames": [
+        {
+          "opcode": 1,
+          "sequence": 40,
+          "frame_bytes": 100,
+          "body_bytes": 62,
+          "frame_sha256": "378df6c69cbe3f4e90b704211ea94883840226d51cf543d36bfe7ddd1abfeb4f",
+          "body_sha256": "80439fc0228adb318e9716010e3af199748c999678ba2b79e838fa2e64642b54"
+        },
+        {
+          "opcode": 60,
+          "sequence": 43,
+          "frame_bytes": 58,
+          "body_bytes": 20,
+          "frame_sha256": "45eeae34ce88e7695c969df6c9419ca9ceecc21b87aef6e3e101bbc44398f6b6",
+          "body_sha256": "29b896e9027e2622d37806a29cdb69d3e1f731136c15a7232ac2ae640f901bdc"
+        },
+        {
+          "opcode": 15,
+          "sequence": 46,
+          "frame_bytes": 69,
+          "body_bytes": 31,
+          "frame_sha256": "f423a9faabff404adfce9c18700c5c40cfbb2464b2fafc57c05095baad86bee0",
+          "body_sha256": "5fa14c4a569acc44b71b7b55352fe80799d154f735678972c892180ead374d15"
+        },
+        {
+          "opcode": 15,
+          "sequence": 49,
+          "frame_bytes": 69,
+          "body_bytes": 31,
+          "frame_sha256": "e27763390334d27994f0d8e35ebb9a3eeb55437d22e68b468d9bd06aa9e105cb",
+          "body_sha256": "3548e07b293bfacf5cb8fa7d2855d6381f31448700d92b129bc678011d0a1b29"
+        },
+        {
+          "opcode": 15,
+          "sequence": 52,
+          "frame_bytes": 69,
+          "body_bytes": 31,
+          "frame_sha256": "f28e0a01841841d434b1a386ccd6b3997b175ef5641b445dbc8d4da6320db34e",
+          "body_sha256": "7ff0448cc324aa14a8c54c833e102d385dcc5c582e2d939a8b583dc83362d20e"
+        },
+        {
+          "opcode": 15,
+          "sequence": 55,
+          "frame_bytes": 69,
+          "body_bytes": 31,
+          "frame_sha256": "10affd657ef56d8583e043d6f5cca5eeeb69a2c2742a594e489f98bf665cc55b",
+          "body_sha256": "3e9c3782402924a6cf77e1d53596224544d0fe1c5390ebc745359ac4bffcd46d"
+        }
+      ],
+      "native_builder_calls": 1,
+      "records": [
+        {
+          "offset": 2,
+          "length": 15,
+          "input_sha256": "780943d9071ca8a6857e0a7f2fe5d67cf4dbe3f99f2c80e326e6cafc33a47bd9",
+          "capacity": 15,
+          "native_cursor": 17,
+          "record_sha256": "ef5000117ea6cabcfe1c5ffc7866ea4e7c57ba55870ff2a5d51e8620b02579a9",
+          "record_bytes": 17,
+          "native_matches_capture": true
+        },
+        {
+          "offset": 19,
+          "length": 16,
+          "input_sha256": "a7a48dbb59103279324f37ff992603a6ae6ddd46733bad4b3dcd522b53be363b",
+          "capacity": 31,
+          "native_cursor": 18,
+          "record_sha256": "e1c490e9ef73fe1745f588207cc465bc5a1d400c29c2fb458c0350377fffd4a3",
+          "record_bytes": 18,
+          "native_matches_capture": true
+        }
+      ],
+      "prefix": [
+        4,
+        2
+      ],
+      "suffix_offset": 37,
+      "suffix_bytes": 25,
+      "suffix_sha256": "f6de6ef8b79a502289d563f8bddb24c787054de5d1c06a6e9ac5f49965944456",
+      "suffix_equals_cp214": true
+    },
+    {
+      "case": "token2-only",
+      "run_sha256": "04e6813a3a0832fdfe448631ca6032c737c0d5bb4a0b8cb585ea28ef299cadb4",
+      "duration_s": 47.218443766,
+      "raw_count": 55,
+      "cleanup": {
+        "net_namespace": "net:[4026533182]",
+        "remaining_pids": [],
+        "method": "Pythonfinally/endrun/captureclose/ownedWineandservice/virtualtopologystop/netnamespaceextinct"
+      },
+      "counts": [
+        0
+      ],
+      "frames": [
+        {
+          "opcode": 15,
+          "sequence": 40,
+          "frame_bytes": 69,
+          "body_bytes": 31,
+          "frame_sha256": "1fa65a5ac35a952086cd94c054b62b6da018111b66b9c453b58f8fbf66820544",
+          "body_sha256": "11eb03bdf7a90d67eeb291d52d6e1204c51e0b06fd00b3baedeeef0d50d9ad28"
+        },
+        {
+          "opcode": 15,
+          "sequence": 43,
+          "frame_bytes": 69,
+          "body_bytes": 31,
+          "frame_sha256": "9e8ab32e7cf7ab20c5521a1c7404f8a7984f550957f0ccd08c5f2326b540bc97",
+          "body_sha256": "29afaf4356f2cc8a93a4b1e65c5dc2b6f3849253c5f4a064e3ebce3df9e08553"
+        },
+        {
+          "opcode": 15,
+          "sequence": 46,
+          "frame_bytes": 69,
+          "body_bytes": 31,
+          "frame_sha256": "8435f57f4b55f2950cf81055cd4f95b5ebf3ec8e298c2f4bbdd949999ab5269d",
+          "body_sha256": "4407f70906e07ebd452ea8ce1fe5cb5277276d1bd81ab6109ad1636092619444"
+        },
+        {
+          "opcode": 15,
+          "sequence": 49,
+          "frame_bytes": 69,
+          "body_bytes": 31,
+          "frame_sha256": "7f16abcca1e450b1a3d474d27310b57f7e8f7809cf68aca2514b5d29ac2a7357",
+          "body_sha256": "09d160de2b91884cfa760d96965158e81ef9453d1ff0c9f7fd9e13844b5f2f2c"
+        }
+      ],
+      "native_builder_calls": 0,
+      "records": [],
+      "auth_absent_within_run": true,
+      "limits": "Bounded42secondrun, token2-only/nativecount0/noautomaticbuilder/noC2S1or60. Not allmanual/providerloginpaths orpermanentabsenceproof."
+    }
+  ],
+  "emulation": {
+    "vector_sizes": [
+      0,
+      1,
+      3,
+      4,
+      7,
+      8,
+      13,
+      15,
+      16,
+      17,
+      31,
+      32,
+      64
+    ],
+    "actual_record_matches": 2,
+    "native_frame_controls": 3,
+    "helper": "14EC040→14EC060→14ED340, mode2 syntheticpreallocatedsender/SSOorheapstring; nativeframer14EF300actual/CRC/partial",
+    "report": "local/research/codex/auth-token-bounds-r1/native-record-comparison.json",
+    "sha256": "2cca2b8a5493784c49c1c95b9935413d208fbf11e6132da079796c1036add5c6"
+  },
+  "limits": [
+    "Actualconfig/wire15/16 nowmeasured; nativehelper0..64 isemulationonly. No runtime upperlimit/allbyteencodingclaim.",
+    "token2-only isnotcount1withsecondtoken: currentautomaticroutefirstemptycount0, confirmedbycached11010F0andpassivecount/wireabsenceboundedrun.",
+    "No credentialverification/password/provider/expiry/revoke/crosssocketidentityownership orRustimplementation. Opaque25suffix unchanged, nofullsemanticsclaim.",
+    "No server/source/fixturepolicy changes, rawsealsandcleanup0 beforeanalysis; existingeightteamWIPpreserved."
+  ],
+  "next_test": "Tokenlayoutboundedbranchknown; nextsource-firsttrace C2S6 producer/name+32opaque tail andS2C7replyhandoff. No blindtokenfieldmapping; sessionownership/expiry/revoke aredesign+separatepositive-negativeacceptance."
+}

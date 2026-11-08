@@ -340,6 +340,30 @@ và không chứng minh account→player/sessionownership. Request6/name+opaque 
 Contract dùng trực tiếp để parse một nhánh có bounds; thiết kế backend auth/Argon2id/session vẫn là `design`.
 Phép thử tiếp ở [RUST-Q1](RESEARCH.md#rust-service-gaps); không sửa/đóng gate demo hoặc fullauth từ kết quả này.
 
+<a id="auth-token-bounds"></a>
+### Ranh giới chuỗi token và token2-only — CP215
+
+[Hai run/recipe/hash](evidence/login-runtime/README.md#cp215), [metadata](evidence/login-runtime/token-bounds.json);
+reuse CP214 writer/framer và cache11010F0 của CP014, không mở hàm mới hoặc port VNlogin.
+`kr_runtime/confirmed` trên cùng offlinecopy4b/Wine10.0/localstub: một run hai input15/16byte cho count2,
+writer14EC040 nhận MSVC size15/cap15 rồi size16/cap31. Actual C→S1 seq40 **frame100/body62**;
+typedprefix4,2; record17byte ở offset2 và18byte ở offset19, suffix25byte bắt đầu37 và giống CP214.
+Cả hai record khớp đầy đủ copied-native sender độc lập. Không có auth-success reply.
+
+Run chỉ khai token_2 dài16byte: native settercount0, không gọi builder13ADE40, không writer token;
+connection3 có bốn C→S15/CRC hợp lệ, không C→S1 hoặc60 trong cửa sổ42s.
+Điều này khớp cache tĩnh11010F0: token_1 rỗng → count0; chỉ token_1 →1; cảhai →2.
+Không tự gom token_2-only thành một record thứ nhất; đây chỉ đường tự động config đã đo, không mọi luồng UI/provider.
+
+`kr_static/confirmed`/emulation riêng:13 vector helper tại độ dài0,1,3,4,7,8,13,15,16,17,31,32,64
+trả recordlength=n+2/cursor và typedlength đúng; không thay crypto helper bằng encoderPython.
+Actualframe100 replaynative return0/bodyCRCkhớp; CRCflip return7/error10/consumed0, partial return2/consumed0.
+Vector0/64 không là proof runtime nhận token rỗng/64 hoặc maxinput.
+
+**Phạm vi mới:** actualtoken ASCII13/15/16, configcount0/1/2 theo những tổ hợp đã đo.
+Fulltokenbounds/encoding/provider/password/suffixsemantics/credentialverify/expiry/revoke/accountownership vẫn unknown.
+Không thay công thức backendauth bằng obfuscation này; bước tiếp ở [RUST-Q1](RESEARCH.md#rust-service-gaps).
+
 <a id="channel-lobby"></a>
 ### Từ auth tới UI sảnh trên copy — CP015
 

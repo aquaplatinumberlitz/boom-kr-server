@@ -105,3 +105,22 @@ kiểm ban đầu giả định1 đã sửa, không dùng return đơn lẻ làm
 
 Chưa kiểm độ dài khác13, token2-only, provider/password branch, toàn suffix, tokenverify hoặc multiconnection
 accountownership; không nâng gate, không triển khai Rust. Audit kếCP216 giữ nguyên.
+
+<a id="cp215"></a>
+## CP215 — SSO15/heap16 và token2-only
+
+Baseline CP214/PR287 `83de46c`, cùng copy4b/Wine10.0; [contract](../../PROTOCOL.md#auth-token-bounds),
+[metadata/hash](token-bounds.json), [phép thử kế](../../RESEARCH.md#rust-service-gaps).
+Raw `local/research/codex/auth-token-bounds-r1/`: source-first13 nguồn/cached legacyrefs,
+recipe/preflight/runtime-source, passiveGDB, capture/nativeoracle/report/rawseal/cleanup.
+Không đổi server/source/config giữa hai run; mỗi run đã seal và ownedcleanup0 trước run kế.
+
+SSOpair:48.655581411s/58raw/runSHA98510fe70082496ecc342b9fa603fd878b8058440047ca5e1e8bab4e1dce9cbb;
+token2-only:47.218443766s/55raw/runSHA04e6813a3a0832fdfe448631ca6032c737c0d5bb4a0b8cb585ea28ef299cadb4.
+Input giả local, namespace loopback-only/stub3hello, không authsuccess/Nexon thật.
+Tái sử dụng nguyên CP214 probe/harness/copy/writer/framer, bỏ disassembly dump đã có, không quét hàm mới.
+Hai actualrecord17/18byte khớp copied-native sender;13 helpervectors chỉ emulation; ba nativeframecontrols riêng.
+
+CP214 giới hạn13byte và token2-only unknown giữ nguyên trong record complete; CP215 bổ sung actual15/16/count0control.
+Chưa fullauthentication/token2-onlymanualpath/runtimeupperlimit. Không Rust hoặc servingbehaviorchange,
+team sourceWIP nguyên byte/chưa merge. Reviewwaived/selfcheck; audit kếCP216. Trạng thái tích hợp lấy từ PR.
