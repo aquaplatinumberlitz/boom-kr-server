@@ -1,0 +1,64 @@
+{
+  "schema": "kre-gate-acceptance-evidence-v1",
+  "checkpoint": "CP212",
+  "decided_by": "Codex",
+  "review": "waived",
+  "review_reference": "docs/evidence/checkpoints/review-waiver.json",
+  "recorded_utc": "2026-11-08T06:54:01.971491+00:00",
+  "baseline": "936693d5f08006bfe0b55af2b01b29a81250b350",
+  "decision": "passed",
+  "next_source": "docs/PLAN.md#current-order",
+  "gate": "K7",
+  "scope": "Hardening/demo bốn KR00967 Wine thật, fixed Free4/ExVillage01/67-pin Linux bundle, hai normal2v2 outcomes/reset/Start3; prerequisites K6a/b và K6c WAN giả lập. Internet thật chưa kiểm.",
+  "criteria": [
+    {
+      "criterion": "Dependency K6 và báo giới hạn",
+      "sources": [
+        "docs/PLAN.md#k6c-acceptance",
+        "docs/PROTOCOL.md#authority",
+        "docs/PROTOCOL.md#four-two-team-cycles"
+      ],
+      "reason": "K6a CP189/K6b CP191/K6c CP212 scoped đạt. Authority/copy patch/offline Wine limits công khai. Không yêu cầu Internet/tám client/full4items-terrain-needle-rescue mới để đóng K7."
+    },
+    {
+      "criterion": "Fresh launch theo README; hai và bốn client tái lập/Linux package",
+      "sources": [
+        "tools/README.md#portable-bundle",
+        "tools/README.md#four-player-bundle",
+        "docs/PROTOCOL.md#native-interleaved-startup",
+        "docs/PROTOCOL.md#four-netem-restart"
+      ],
+      "reason": "CP190/191/198 hai native; CP203–207 bốn native từ relocated/Python-I Linux bundles; CP206→207 same physical67pinbundle/store, serverstop→freshserver/newUUID/16freshTCP→2opposite2v2 outcomes/reset/Start3. CP207 source-reuse SHA của two-client core bằng CP198. Không coldstart reliability/account resume/matchrestore."
+    },
+    {
+      "criterion": "Bounded parser/backpressure/rate; malformed/duplicate/stale không nhân kết quả/crash",
+      "sources": [
+        "docs/PROTOCOL.md#four-portable-guards",
+        "docs/PROTOCOL.md#four-transport-bounds"
+      ],
+      "reason": "CP203247 realTCP guard controls, CP204214 recipient-safe/boundedIO/rate including actual nonreader2s failure/otherB followup1/roundfence. CP206352 server tests/240TCP; CP207current214 kernelTCP/default2s kiểm lại trên native-delivery source. Finiteblocking/failclosed; không fullgrammar/nonblockingqueue/public-load benchmark."
+    },
+    {
+      "criterion": "Minimum identity persistence/log-health/build-run-session-room-round",
+      "sources": [
+        "docs/PROTOCOL.md#four-health-identity",
+        "docs/PROTOCOL.md#four-netem-restart"
+      ],
+      "reason": "CP206 exact operatoridentitypin/19 processrestart controls/UUID/digests/context; CP207 same storehash/freshnative/newUUID/208health joins; session-room-round IDs ghi rõ. Two atomic files phải sequence/hash match, không accountDB/resume/remoteattestation/powerloss durability."
+    },
+    {
+      "criterion": "Loss/jitter/server restart; disconnect/lifecycle",
+      "sources": [
+        "docs/PROTOCOL.md#four-netem-restart",
+        "docs/PROTOCOL.md#four-member-abort-room"
+      ],
+      "reason": "CP207 fourrecipient UDP40±5ms/loss5% fixedbeforetraffic,118 socketcontrols/TCPbaseline, actual4twooppositeoutcomes/24remoteprogress/freshserver. CP205 guest/host EOF→3 actualsurvivors nativeRoom/chief/clear/fence là focusedrun riêng. Không liveclientreconnect/general failure/resume; affected room fenced."
+    }
+  ],
+  "evidence_method": "Codex manually re-evaluated each existing K7 clause, preserving CP207 original assessment as history. Environment directive only resolves changed K6c dependency; other criteria rely on CP190/198/203–207 native and negative controls, never log-only or owner acceptance alone.",
+  "limits": [
+    "Internet thật chưa kiểm; physicalhost/OS/ISP diversity not measured.",
+    "Fixed diagnostic emulator profiles, operator identities; fullauthentication/general membership/reconnect/all item-map-mode behavior outside gate.",
+    "Tám client CP208–211 supplementary; neither prerequisite nor replacement for required four-client K7 proof. Unmerged team WIP excluded."
+  ]
+}

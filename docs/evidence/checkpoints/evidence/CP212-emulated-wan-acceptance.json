@@ -1,0 +1,467 @@
+{
+  "schema": "kre-evidence-manifest-v1",
+  "evidence": [
+    {
+      "id": "WAN212-0001",
+      "kind": "repository",
+      "path": "docs/evidence/checkpoints/evidence/CP192-routed-Wine.json",
+      "bytes": 442822,
+      "sha256": "4c455f5294852e5928c4f07aa42079394e8d2abe999bfea764fc41e30dd51f22"
+    },
+    {
+      "id": "WAN212-0002",
+      "kind": "repository",
+      "path": "docs/evidence/checkpoints/evidence/CP193-NAT-endpoints.json",
+      "bytes": 1011593,
+      "sha256": "5588a099b0ffdf70d09fc8383dd6f2434f719325815b9b3d5faa31f486b25e9b"
+    },
+    {
+      "id": "WAN212-0003",
+      "kind": "repository",
+      "path": "docs/evidence/checkpoints/evidence/CP194-NAT-cycles.json",
+      "bytes": 429894,
+      "sha256": "9049f3f1ae6e43767d6121abcefa2fa577fa6b6be9faec8c780880c410e35e65"
+    },
+    {
+      "id": "WAN212-0004",
+      "kind": "repository",
+      "path": "docs/evidence/checkpoints/evidence/CP195-UDP-netem.json",
+      "bytes": 440328,
+      "sha256": "54d1f4354d53c16867dee84d0a803fb00c958b34345a6746a8621fbda198f029"
+    },
+    {
+      "id": "WAN212-0005",
+      "kind": "repository",
+      "path": "docs/evidence/checkpoints/evidence/CP196-NAT-host-EOF.json",
+      "bytes": 443952,
+      "sha256": "56ca6d0d1d02aea71a18703a8c281e4e4130cf8d2b80ac840ef8b8a560ff1503"
+    },
+    {
+      "id": "WAN212-0006",
+      "kind": "repository",
+      "path": "docs/evidence/checkpoints/evidence/CP203-four-portable-guards.json",
+      "bytes": 680992,
+      "sha256": "ff19032fce4f89f32e448ea88f7b51816faf828d5e51da3951c8a33811fbdea1"
+    },
+    {
+      "id": "WAN212-0007",
+      "kind": "repository",
+      "path": "docs/evidence/checkpoints/evidence/CP204-four-transport-bounds.json",
+      "bytes": 686889,
+      "sha256": "d39de924c97406331e13b99f32d1de7b08c7429a7af48ddfefe7591fb94182d9"
+    },
+    {
+      "id": "WAN212-0008",
+      "kind": "repository",
+      "path": "docs/evidence/checkpoints/evidence/CP205-four-member-abort-room.json",
+      "bytes": 635323,
+      "sha256": "3e19144ed640f611b9d31e9c1f6cc8bfc2685e24af3a5eba5aa1210475b1f277"
+    },
+    {
+      "id": "WAN212-0009",
+      "kind": "repository",
+      "path": "docs/evidence/checkpoints/evidence/CP206-four-health-identity.json",
+      "bytes": 508320,
+      "sha256": "c04980982f76da25aa6d4f6183a0d7618369b503faafc26f7b735cbc0b9d2ab8"
+    },
+    {
+      "id": "WAN212-0010",
+      "kind": "repository",
+      "path": "docs/evidence/checkpoints/evidence/CP207-four-netem-restart.json",
+      "bytes": 455455,
+      "sha256": "fbaa90e3dea7164a268594799b80a251337a300479bd28b2aa27955439758e30"
+    },
+    {
+      "id": "WAN212-0011",
+      "kind": "repository",
+      "path": "docs/evidence/checkpoints/evidence/CP211-eight-portable-battle.json",
+      "bytes": 778656,
+      "sha256": "4e0d52dbcb8ac8169a14c0665e4d356eb93ef70d6b219dadcfa69ef8df0a0547"
+    },
+    {
+      "id": "WAN212-0012",
+      "kind": "repository",
+      "path": "docs/evidence/checkpoints/records/CP192.json",
+      "bytes": 16794,
+      "sha256": "de6d6c5695b28a607d26819b06ea7514d842471ac839ecf4623e9a398473ff7d"
+    },
+    {
+      "id": "WAN212-0013",
+      "kind": "repository",
+      "path": "docs/evidence/checkpoints/records/CP193.json",
+      "bytes": 15943,
+      "sha256": "a509ee62da31593656a77a0f83d82f6039957c1e4c6f843ed8c27f63db72054b"
+    },
+    {
+      "id": "WAN212-0014",
+      "kind": "repository",
+      "path": "docs/evidence/checkpoints/records/CP194.json",
+      "bytes": 15227,
+      "sha256": "05a93d9c6592d4d85324d30ac58ca1635df0cdceec5c6589d72dc69718670f52"
+    },
+    {
+      "id": "WAN212-0015",
+      "kind": "repository",
+      "path": "docs/evidence/checkpoints/records/CP195.json",
+      "bytes": 14794,
+      "sha256": "bd2c865e59689736bb1058653e49ca52134faaf2bfa66a8d0561c2da3d081f26"
+    },
+    {
+      "id": "WAN212-0016",
+      "kind": "repository",
+      "path": "docs/evidence/checkpoints/records/CP196.json",
+      "bytes": 19546,
+      "sha256": "32763e82e9e3b8376550207950d240a3500e4eea86d24e29e3082f7d1ea0bd6a"
+    },
+    {
+      "id": "WAN212-0017",
+      "kind": "repository",
+      "path": "docs/evidence/checkpoints/records/CP203.json",
+      "bytes": 17263,
+      "sha256": "3fdf14a2fa2c5d05bd5f01faf68f6c7f6fb9ab7f20d6338be8053514864a7d04"
+    },
+    {
+      "id": "WAN212-0018",
+      "kind": "repository",
+      "path": "docs/evidence/checkpoints/records/CP204.json",
+      "bytes": 17234,
+      "sha256": "ddcc9d9eba06784c16f320bd19c4b6851cfdaa470b3ac52b436a4ebaffc3aabd"
+    },
+    {
+      "id": "WAN212-0019",
+      "kind": "repository",
+      "path": "docs/evidence/checkpoints/records/CP205.json",
+      "bytes": 13517,
+      "sha256": "0db6a9ddaad2b2ebced1efc5d6646979da763388bed6a788366b3393911a163a"
+    },
+    {
+      "id": "WAN212-0020",
+      "kind": "repository",
+      "path": "docs/evidence/checkpoints/records/CP206.json",
+      "bytes": 16770,
+      "sha256": "ff48ae0fdb0cf34c90e587ec2b29f1ed170e9e3869e060f06e2608869ca6b69f"
+    },
+    {
+      "id": "WAN212-0021",
+      "kind": "repository",
+      "path": "docs/evidence/checkpoints/records/CP207.json",
+      "bytes": 18712,
+      "sha256": "4ce9fa06768566e57bdf06ab8619e23a7c612778d5f7129f9f6847606d10d4c7"
+    },
+    {
+      "id": "WAN212-0022",
+      "kind": "repository",
+      "path": "docs/evidence/checkpoints/records/CP211.json",
+      "bytes": 16915,
+      "sha256": "291b45e53f3deb2d7ea187f21bdfcd63565e184719ac3028e9cfa48c6c44884c"
+    },
+    {
+      "id": "WAN212-0023",
+      "kind": "local",
+      "path": "local/research/codex/NAT-netem-host-EOF-r2/EOF-tail-verification.json",
+      "bytes": 1481,
+      "sha256": "e0e32d1c23ec90320191c9532eed90f2e1d4f08352bc9b21e5e4cc1339f2bdbb"
+    },
+    {
+      "id": "WAN212-0024",
+      "kind": "local",
+      "path": "local/research/codex/NAT-netem-host-EOF-r2/host-eof-verification.json",
+      "bytes": 1949,
+      "sha256": "0767cb6d5bf76d5f2f4d8bd6d4897b06bd5e2cf3cf5a17b91963ab44e95d19a8"
+    },
+    {
+      "id": "WAN212-0025",
+      "kind": "local",
+      "path": "local/research/codex/append_cp212_wan.py",
+      "bytes": 14918,
+      "sha256": "8b2043160d25ccac88490b5ee9d2621a8a7877f33da8e5fa908398c173aef89e"
+    },
+    {
+      "id": "WAN212-0026",
+      "kind": "local",
+      "path": "local/research/codex/capture_github_cp212.py",
+      "bytes": 1940,
+      "sha256": "225964a59871a80eee4bfc1c0be0bf8c509c4c2c523fca5a64e15a563bc2eef6"
+    },
+    {
+      "id": "WAN212-0027",
+      "kind": "local",
+      "path": "local/research/codex/cp211-exact-head-results.json",
+      "bytes": 781,
+      "sha256": "a89fcf9b8fa6689bff7221d60224e532b5b4337d8dd641aa82dc02ee973eb5f3"
+    },
+    {
+      "id": "WAN212-0028",
+      "kind": "local",
+      "path": "local/research/codex/cp211-merge-result.json",
+      "bytes": 123,
+      "sha256": "19cf523959ec7221a198a595ebd01dab275bb96521b355ea42b7fc4237087769"
+    },
+    {
+      "id": "WAN212-0029",
+      "kind": "local",
+      "path": "local/research/codex/cp212-GitHub-issues-1.json",
+      "bytes": 602258,
+      "sha256": "adc966d01162e43d27e0484530245d9966a8fa882e6b00bec28072999060cd46"
+    },
+    {
+      "id": "WAN212-0030",
+      "kind": "local",
+      "path": "local/research/codex/cp212-GitHub-issues-2.json",
+      "bytes": 582803,
+      "sha256": "7f1162d2d086fbd3c8c4d8f6dd1380a43ef54d5a2414fd05ec1fd0c82ad7634e"
+    },
+    {
+      "id": "WAN212-0031",
+      "kind": "local",
+      "path": "local/research/codex/cp212-GitHub-issues-3.json",
+      "bytes": 517921,
+      "sha256": "d0ff1395f88078234571b7bc82d9e7aa83a83641022f3236eddfb7dc2dc7882a"
+    },
+    {
+      "id": "WAN212-0032",
+      "kind": "local",
+      "path": "local/research/codex/cp212-GitHub-pulls-1.json",
+      "bytes": 2233493,
+      "sha256": "6372260a60dd94c870adeda0a83a310bd7ed10a26e910562f0e235b1dc2d820e"
+    },
+    {
+      "id": "WAN212-0033",
+      "kind": "local",
+      "path": "local/research/codex/cp212-GitHub-pulls-2.json",
+      "bytes": 2223595,
+      "sha256": "18ef31bf1b820591ec97aba0004070253f805a35b906f346fd5de32223391b2a"
+    },
+    {
+      "id": "WAN212-0034",
+      "kind": "local",
+      "path": "local/research/codex/cp212-GitHub-pulls-3.json",
+      "bytes": 285790,
+      "sha256": "3aad319bcaca1af6494e551da719627f56bc0116ffc576ac026224ffe514381b"
+    },
+    {
+      "id": "WAN212-0035",
+      "kind": "local",
+      "path": "local/research/codex/cp212-docs-initial.txt",
+      "bytes": 175,
+      "sha256": "d7264f1f3230657b50e06d52c075a4fabad6fff3352c84b13f503de673e769c6"
+    },
+    {
+      "id": "WAN212-0036",
+      "kind": "local",
+      "path": "local/research/codex/cp212-issue14-before.json",
+      "bytes": 29619,
+      "sha256": "3f985f41c931296e43e8c3d78aa10c4240cc78bc0ef6b8d3d432efd91d016c13"
+    },
+    {
+      "id": "WAN212-0037",
+      "kind": "local",
+      "path": "local/research/codex/cp212-issue14-request.json",
+      "bytes": 29529,
+      "sha256": "9bfa75d0575499036c258b0c202269630fd88f7f0ff59937e8725d732aee3dc0"
+    },
+    {
+      "id": "WAN212-0038",
+      "kind": "local",
+      "path": "local/research/codex/cp212-issue14-updated.json",
+      "bytes": 32443,
+      "sha256": "64e007ec57d627aad32e56eeb17ef4949ad3d11cefaebfcd6ec55ff03290c9b0"
+    },
+    {
+      "id": "WAN212-0039",
+      "kind": "local",
+      "path": "local/research/codex/four-netem-restart-r1/cycles/A/four-rank-r2.png",
+      "bytes": 168494,
+      "sha256": "7ee3b458f2f19fba37818a56e7e193653d9685eff35912fd307d21d3e475bba3"
+    },
+    {
+      "id": "WAN212-0040",
+      "kind": "local",
+      "path": "local/research/codex/four-netem-restart-r1/cycles/B/four-rank-r1.png",
+      "bytes": 168082,
+      "sha256": "d092bdefd49c1cae6dc7c34a189b12cb032c848339cb25a572ae6cb8725df2a4"
+    },
+    {
+      "id": "WAN212-0041",
+      "kind": "local",
+      "path": "local/research/codex/four-netem-restart-r1/health-verification.json",
+      "bytes": 1295,
+      "sha256": "fc725bb774f883a242b645f92e7e1af50382f9f0adc71e17054c7018172cdfef"
+    },
+    {
+      "id": "WAN212-0042",
+      "kind": "local",
+      "path": "local/research/codex/four-netem-restart-r1/verification.json",
+      "bytes": 11433,
+      "sha256": "e7509c71e388e9367bb8d3eb897dcd9877e0468e3a56cc583edaa2ea2a7d0bbf"
+    },
+    {
+      "id": "WAN212-0043",
+      "kind": "local",
+      "path": "local/research/codex/netem-KR-two-cycles-r1/cycles/chronology-A.jsonl",
+      "bytes": 79844,
+      "sha256": "21a0e00f8683d55b31007b816947cb3f558fe19e9533cfc9daa2acee83e3b727"
+    },
+    {
+      "id": "WAN212-0044",
+      "kind": "local",
+      "path": "local/research/codex/netem-KR-two-cycles-r1/cycles/virtual-network.json",
+      "bytes": 50447,
+      "sha256": "c271e40ccd70f2ad3c252db9342da0f4756f7541b67f5c51877755d7a87a606f"
+    },
+    {
+      "id": "WAN212-0045",
+      "kind": "local",
+      "path": "local/research/codex/netem-KR-two-cycles-r1/life-agreement-verification.json",
+      "bytes": 6792,
+      "sha256": "07599ec694db2d045e8b72e2e1d6c52c9febf27b2bcc9135e984cc0b9367a690"
+    },
+    {
+      "id": "WAN212-0046",
+      "kind": "local",
+      "path": "local/research/codex/netem-KR-two-cycles-r1/netem-native-verification.json",
+      "bytes": 3057,
+      "sha256": "f4f5ce3fcac640d59d4a4202daec5a3abf14951d249acf126d9dd780a8ffc831"
+    },
+    {
+      "id": "WAN212-0047",
+      "kind": "local",
+      "path": "local/research/codex/prepare_cp212_wan.py",
+      "bytes": 12025,
+      "sha256": "b9235bc54a952bd1e818424536e95ca1604a9c1f561261ad3323ed39ea480dd9"
+    },
+    {
+      "id": "WAN212-0048",
+      "kind": "local",
+      "path": "local/research/codex/sync_cp212_wan.py",
+      "bytes": 22972,
+      "sha256": "7ff634b4150fa7bbc8818fa897b3d96f8766754177dd57173f6372914bdc0109"
+    },
+    {
+      "id": "WAN212-0049",
+      "kind": "local",
+      "path": "local/research/codex/update_cp212_issue.py",
+      "bytes": 4765,
+      "sha256": "69c04452dcc260c7931bf8d8e6b6cb56108591e8c071afe8cfea0ce96aa57af7"
+    },
+    {
+      "id": "WAN212-0050",
+      "kind": "local",
+      "path": "local/research/codex/wan-acceptance-cp212/preserved-wip.json",
+      "bytes": 1498,
+      "sha256": "f538a04f44d07dfb07892d6f881d3d7adaaa34c1c423043ccbd063f5ed328646"
+    },
+    {
+      "id": "WAN212-0051",
+      "kind": "local",
+      "path": "local/research/codex/wan-acceptance-cp212/reused-evidence-verification.json",
+      "bytes": 32594,
+      "sha256": "cf843dee977715398522f8ec510da2c1096f9cbc372f8556748d85442fe71935"
+    },
+    {
+      "id": "WAN212-0052",
+      "kind": "local",
+      "path": "local/research/codex/wan-acceptance-cp212/snapshot/AGENTS.md",
+      "bytes": 8789,
+      "sha256": "ddf78714b073ac391dbcc3186d4f928e542cae1209c29d8c3f3b843ce108eeb3"
+    },
+    {
+      "id": "WAN212-0053",
+      "kind": "local",
+      "path": "local/research/codex/wan-acceptance-cp212/snapshot/README.md",
+      "bytes": 22771,
+      "sha256": "517f07816e9039cc1f93fb20179fab7bf6fd275cfefc2eda70308b66a5067efc"
+    },
+    {
+      "id": "WAN212-0054",
+      "kind": "local",
+      "path": "local/research/codex/wan-acceptance-cp212/snapshot/docs/COVERAGE.md",
+      "bytes": 182156,
+      "sha256": "82890004f72a37a888d80dba3b5b2c4cab3291951928def8120b80adcdfba827"
+    },
+    {
+      "id": "WAN212-0055",
+      "kind": "local",
+      "path": "local/research/codex/wan-acceptance-cp212/snapshot/docs/PLAN.md",
+      "bytes": 64563,
+      "sha256": "8d86c1ca9231264075dbbc0a0c2b61259ca098911fe10b1ffe33568ee6683abf"
+    },
+    {
+      "id": "WAN212-0056",
+      "kind": "local",
+      "path": "local/research/codex/wan-acceptance-cp212/snapshot/docs/PROTOCOL.md",
+      "bytes": 659039,
+      "sha256": "50526c13206a75f597d47f2df4918838e890c02dd8f254fb1076b333fadd63fc"
+    },
+    {
+      "id": "WAN212-0057",
+      "kind": "local",
+      "path": "local/research/codex/wan-acceptance-cp212/snapshot/docs/RESEARCH.md",
+      "bytes": 38601,
+      "sha256": "e5fe3ce650407cd355c742669b642acdf7607a00230ccc69188000b4749fc3a7"
+    },
+    {
+      "id": "WAN212-0058",
+      "kind": "local",
+      "path": "local/research/codex/wan-acceptance-cp212/snapshot/docs/evidence/checkpoints/audits/AUD062.json",
+      "bytes": 5421,
+      "sha256": "6d5bbb2c118837147b59128a4a3f472dd442df249945c7f1b4e13c0a2b4ae911"
+    },
+    {
+      "id": "WAN212-0059",
+      "kind": "local",
+      "path": "local/research/codex/wan-acceptance-cp212/snapshot/docs/evidence/issue-reconciliation/github-snapshot.json",
+      "bytes": 246949,
+      "sha256": "ddda80a7fa05e2aab52c8ca4d743d99d270d3ab972102977b7360e97c640c9f2"
+    },
+    {
+      "id": "WAN212-0060",
+      "kind": "local",
+      "path": "local/research/codex/wan-acceptance-cp212/snapshot/docs/evidence/issue-reconciliation/review.json",
+      "bytes": 30859,
+      "sha256": "093fe553ba2a9873515443af6673d96606de0af0537b48984f7f56240c15db62"
+    },
+    {
+      "id": "WAN212-0061",
+      "kind": "local",
+      "path": "local/research/codex/wan-acceptance-cp212/snapshot/docs/evidence/owner-directives/emulated-wan.json",
+      "bytes": 1211,
+      "sha256": "3a782f4628c4a85dd87177ee89e28b4b2bccd56ff0826a32d8845297d0732e1a"
+    },
+    {
+      "id": "WAN212-0062",
+      "kind": "local",
+      "path": "local/research/codex/wan-acceptance-cp212/snapshot/docs/evidence/peer-endpoints/README.md",
+      "bytes": 179951,
+      "sha256": "4be1bf9368b656f4777c0a535063a17eea4db5f5508304359425e9309fe934c2"
+    },
+    {
+      "id": "WAN212-0063",
+      "kind": "local",
+      "path": "local/research/codex/wan-acceptance-cp212/snapshot/docs/evidence/peer-endpoints/k6c-acceptance.json",
+      "bytes": 4590,
+      "sha256": "dacaa2b2ef8ea6fd1c01b9a2d1d9a8dbeba1bb3b75da85f5a327c7b406b3804c"
+    },
+    {
+      "id": "WAN212-0064",
+      "kind": "local",
+      "path": "local/research/codex/wan-acceptance-cp212/snapshot/docs/evidence/peer-endpoints/k7-acceptance.json",
+      "bytes": 4101,
+      "sha256": "842d197b29f08b31ac7932afda980fafb16370af96509c9e3591e76e4a9a55f1"
+    },
+    {
+      "id": "WAN212-0065",
+      "kind": "local",
+      "path": "local/research/codex/wan-acceptance-cp212/snapshot/docs/features.json",
+      "bytes": 191828,
+      "sha256": "76ff8f7408328f7672b6f8ba326bd30e16e477b5a0461b47026e32f087aefab7"
+    },
+    {
+      "id": "WAN212-0066",
+      "kind": "local",
+      "path": "local/research/codex/wan-acceptance-cp212/source-first.json",
+      "bytes": 20314,
+      "sha256": "0ac40c3e155b3672b7260952b8c69772ff872b667dfaed0ac83bd7560e692d6b"
+    }
+  ]
+}

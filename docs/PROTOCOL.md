@@ -1,12 +1,50 @@
 # KR 00967 — contract tương thích client gốc
 
-Revision kr-legacy-contract-r1; cập nhật08/11/2026 JST (CP211; AUD061 periodic qua208; audit kế212).
+Revision kr-legacy-contract-r1; cập nhật08/11/2026 JST (CP212; AUD062 periodic qua212; audit kế216).
 **Contract có bằng chứng từng phần; phạm vi nghiệm thu codec/hello ở [PLAN](PLAN.md#k2-acceptance)**.
 Lộ trình và thứ tự task chỉ giữ ở [REWRITE_PLAN — KRE](PLAN.md).
 Đây là contract của repo server KR. ADR0009 của bản viết lại là nguồn lịch sử để so sánh;
 vị trí tài liệu nguồn ghi trong [REFERENCES](REFERENCES.md), không phải giao thức dùng cho client KR gốc.
 Giới hạn trong mục mang CP ID là phạm vi tại thời điểm đo đó; bổ sung mới ghi ở mục kế tiếp,
 không sửa raw/checkpoint cũ. Câu hỏi còn mở và phép kiểm tiếp giữ ở [RESEARCH](RESEARCH.md#q-023).
+
+<a id="emulated-wan-acceptance"></a>
+### K6c WAN giả lập — phạm vi mạng được nghiệm thu tại CP212
+
+[Owner directive](evidence/owner-directives/emulated-wan.json), [acceptance K6c](PLAN.md#k6c-acceptance),
+[đánh giá lại K7](PLAN.md#k7-evidence-review), [evidence/hash](evidence/peer-endpoints/README.md#cp212).
+**Internet thật chưa kiểm**. `design` cho môi trường/policy; `kr_runtime/confirmed` cho hành vi trong
+các run đã seal CP192–196/203–207. Không đổi contract wire, binary, DB, record complete hoặc raw cũ.
+
+```mermaid
+flowchart LR
+  A["KR Wine A · kre-a · 10.78.1.2"] --- RA["kp-a/kv-a · 10.78.1.1/24"]
+  RA --- R["Router netns · IPv4 forward · static SNAT/DNAT"]
+  R --- RB["kv-b/kp-b · 10.78.2.1/24"]
+  RB --- B["KR Wine B · kre-b · 10.78.2.3"]
+  R --- S["Local TCP stub · 10.77.0.1/32"]
+```
+
+Topology trên là CP195 (CP196 dùng cùng recipe, port99 thực riêng mỗi run): ba netns root-router/A/B,
+hai veth/subnet, mỗi KR có prefix/display/wineserver/CA PID riêng. Routes chỉ tới subnet peer và stub;
+root không external/default route/NIC. Một host/kernel, không giả hai ISP/máy vật lý. Không TCP/UDP proxy.
+
+| Thuộc tính thực cấu hình / quan sát | Phạm vi và giới hạn |
+|---|---|
+| Mapping UDP | CP195 A→B SNAT `10.78.2.1:30001`, B→A `10.78.1.1:30002`; DNAT tới port99 thực `10.78.1.2:9813` / `10.78.2.3:9963`. Payload153 khai báo mapped tuple; actual API/PCAP/currentkey/apply khớp. Port đích thay theo run, không hardcode9813/9963 làm luật client |
+| Filtering | SNAT chỉ source/destination IP pair+UDP; DNAT giới hạn ingress interface/source IP/destination IP/UDP dport. Rule chain policy ACCEPT trong netns cô lập; không dynamic pinhole/Internet firewall model. Một peer destination, không đủ phân loại endpoint-independent/dependent/cone/symmetric theo RFC; chữ “symmetric SNAT” trong scaffold cũ chỉ hai chiều, không chứng minh NAT type |
+| Delay/jitter/loss | Egress kv-a và kv-b: prio bands3/priomap all0; protocol17→1:3/netem delay40ms±5ms, randomloss5%, correlation0, seed194, limit1000, ecnfalse/gap0. Mỗi chiều UDP đi qua queue phía nhận; TCP baseline. Cài trước launch, không đổi giữa run; native counters0→631/493packets và43/37drops |
+| Reordering/bandwidth | Không cấu hình `reorder`, rate/TBF/HTB hoặc bandwidth cap. Jitter có thể ảnh hưởng thứ tự; không có phép đo xác nhận/bao phủ reordering riêng hoặc băng thông Internet |
+| MTU | Không có lệnh override/sweep MTU; router veth kv-a/kv-b ghi nhận1500, lo65536 trong raw ip-j-addr. Không chứng minh PMTU/fragmentation/MTU thấp |
+| Latency control | Socket baseline64/64, drop1000/3, loss-delay58/64; RTTmedian0.036→80.544ms là control riêng. Không native ping/wirelatency promise dưới GDB hoặc attribution từng packet loss |
+| Lifecycle/native | CP195 cùng2actual→2normalBwin/trap-dead trước175/result-room/Ready2/Start3/reset/4peerwindows; CP196R2 pendinghostEOF→nativeAclear-chief-room/fencepastdue4s riêng. Không ghép EOF thành run hai trận; R1 observerfailure/history giữ nguyên |
+
+Nguồn đã đối chiếu: CP192 routed controls; CP193 private153 negative/mapped153+DNAT positive;
+CP194 two cycles; CP195 qdisc/native/PCAP; CP196 bounded EOF; CP203–207 package/hardening/health/freshserver.
+Không mở lại codec/consumer/stat/queue đã phục hồi hoặc port VN opcode/layout. Hai native proof và getter
+Unicorn tách biệt. Raw và kết luận “chưa Internet/K6c/K7” tại CP cũ vẫn là lịch sử đúng thời điểm;
+CP212 mới nghiệm thu môi trường WAN giả lập và đánh giá K7. Full Internet/ISP/CGNAT/mọi topology,
+NAT discovery/relay gốc/fullUDP/accountresume ngoài proof, không dependency gate đã đạt.
 
 ## 1. Định danh và nguồn chuẩn
 

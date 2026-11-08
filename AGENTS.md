@@ -96,4 +96,7 @@ nghiệm thu thay Windows thật cho project; không yêu cầu WindowsVM/máyWi
 chỉ để có môi trường đó. Ghi đúng Wineversion/hash/copy/patch và nativeevidence để tái lập; không sửa
 lịch sử hoặc mô tả sai môi trường run chưa chạy. [LAN giả lập](docs/evidence/owner-directives/emulated-lan.json)
 cũng được chủ dự án chấp nhận thay hai máy vật lý; giữ rõ topology/interface/IP/capture/giới hạn.
+Theo [chỉ đạo WAN giả lập](docs/evidence/owner-directives/emulated-wan.json), K6c giữ ID và nghiệm thu bằng
+WAN giả lập thay Internet thật; các tiêu chí hành vi giữ nguyên. **Internet thật chưa kiểm**; kiểm Internet/ISP/CGNAT
+thực tế là backlog riêng, không dependency K6c/K7. Không suy chỉ đạo môi trường tự đóng gate.
 Bàn giao nêu commit/file, nguồn đã đọc, lệnh kiểm+kết quả, evidence và blocker/bước tiếp.

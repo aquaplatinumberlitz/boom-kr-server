@@ -1,0 +1,12 @@
+{
+  "schema": "kre-owner-directive-v1",
+  "recorded_utc": "2026-11-08T06:54:01.971491+00:00",
+  "source": "owner_explicit_user_message",
+  "status": "design",
+  "quote": "Tôi chính thức chấp nhận nghiệm thu K6c bằng WAN giả lập thay cho Internet thật. Đổi tên/phạm vi hiện hành thành “K6c WAN giả lập”, giữ nguyên ID K6c. Phải ghi rõ “Internet thật chưa kiểm”.",
+  "decision": "Chấp nhận WAN giả lập với client KR thật trên Wine, mạng/endpoint riêng và router/NAT ảo cô lập. Thay duy nhất yêu cầu môi trường K6c; giữ acceptance hành vi và kiểm bằng chứng. Không yêu cầu tám client.",
+  "applies_to": "K6c WAN giả lập và dependency K6c của K7",
+  "supersedes": "Điều kiện hai mạng Internet thật/project-controlled external endpoint để nghiệm thu K6c trong các kết luận trước CP212. Không sửa lịch sử.",
+  "limits": "Internet thật chưa kiểm. Không tự đóng K6c/K7 từ chỉ đạo; Codex đối chiếu từng tiêu chí. Internet thật/ISP/CGNAT thực tế/mọi topology là backlog riêng, không dependency ngầm.",
+  "canonical": "docs/PLAN.md#k6c-acceptance"
+}
