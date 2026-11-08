@@ -124,3 +124,30 @@ Hai actualrecord17/18byte khớp copied-native sender;13 helpervectors chỉ emu
 CP214 giới hạn13byte và token2-only unknown giữ nguyên trong record complete; CP215 bổ sung actual15/16/count0control.
 Chưa fullauthentication/token2-onlymanualpath/runtimeupperlimit. Không Rust hoặc servingbehaviorchange,
 team sourceWIP nguyên byte/chưa merge. Reviewwaived/selfcheck; audit kếCP216. Trạng thái tích hợp lấy từ PR.
+
+<a id="cp216"></a>
+## CP216 — C2S6 producer và authfield36 echo
+
+Baseline CP215/PR288 `d3b85df`; [contract/limits](../../PROTOCOL.md#auth-channel-echo),
+[metadata](channel-echo.json), [nexttest](../../RESEARCH.md#rust-service-gaps).
+Raw riêng `local/research/codex/auth-channel-binding-r1/`;17source-firstfiles và supplementcacheCP014,
+recipe/preflight/runtime-source/probe/rawseal/cleanup cho từng run.
+Producerbaseline:51.633969701s/59raw/SHA d11c253b3dfe220784929296d061575425527aad4af1f08e668017f587c242ca;
+auxmarker:49.684913572s/59raw/SHA a6fc5faab8a4f72d4ef0fae88d539f1b00a96fcc1a1f6dea1123a59e0f6dee12.
+Cùng Wine10.0/copy4b/namespace loopback-only/knownProfile47; stub gửi auth137 đã có parserproof.
+Không force nativeauthstate/functioncall, không Nexon hoặc credential thật. Mỗi run sourcefrozen/ownedcleanup0
+đã seal trước đổi input, production source/teamWIP nguyênbyte/chưaRust.
+
+Nativeconstructor/send/writer nối producer và cache cũ. Control chỉ đổi authfield36u32+CRC;
+reader→setter→getter→serializer→actualwire có marker/caller/timeorder; haiC2S6frames81/body43 chỉ khác4bodybytes.
+Hai actualframe/26logicalfields vàCRC/partialcontrol được copied-native kiểm riêng. OldCP058A/Bframes
+được đọc lại đúng layout thay giả định8u32 chỉ để so sánh; không coi nguồn cũ đã có đầy đủ schema.
+
+IDAplugin vẫn thiếu; giữ DB/config, dùng cachednative và boundedCapstone/currentcopybytecompare.
+Một producer/serializer/callerslice/localgetter pass1; getter/setteraux pass2 vì field36edge cụ thể.
+Initialprologuelookup750..92E bỏ sót entry740; mở hẹp5F0..92E tìm thấy. Callerprologuelookupkhôngcó,
+chỉ ghi verifiedcallsite11018DB, không bịa functionstart. Wrappernewread trùng một phần CP014cache,
+đã bổ sung source-first để tránh RE lại. Không quét providergraph hoặc suy nonce từ fieldname.
+
+Chưa credentialverify/expiry/replay/revoke/swap/sessionownership. Field36echo không nguyênsemantics auth hoặc
+credential đủmạnh; backendpolicy sẽ làdesign riêng. AUD063 periodicquaCP216/audit kếCP220; reviewwaived/selfcheck.

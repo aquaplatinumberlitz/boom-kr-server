@@ -28,6 +28,13 @@ boom-kr-server/
 
 ## Tra nhanh và trạng thái hiện tại
 
+**CP216: đã xác nhận authfield36 đi qua cache tới C2S6; chưa xác thực tài khoản.**
+[Contract/layout/giới hạn](docs/PROTOCOL.md#auth-channel-echo), [hai run/hash](docs/evidence/login-runtime/README.md#cp216):
+control một u32+CRC, native reader→setter→getter→serializer→wire khớp; C2S6 chỉ đổi4bodybytes.
+Count1/ASCII/currentcopy, không gọi field echo32bit là ticket antoàn hoặc fullauth. Chưa Rust/sourcepolicychange.
+CP215 đã merge [PR288](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/288)/`d3b85df`;
+CP216 trạng thái tích hợp theo PR, AUD063 qua216/audit kếCP220. Thứ tự duy nhất ở [PLAN](docs/PLAN.md#current-order).
+
 **CP215: token15/16 đã qua native SSO/heap và wire; token2-only cho count0.**
 [Contract/giới hạn](docs/PROTOCOL.md#auth-token-bounds), [hai run/hash](docs/evidence/login-runtime/README.md#cp215):
 frame100/body62, record17/18byte khớp copied-native,13 helpervectors emulation và CRC/partial controls riêng.
@@ -39,7 +46,7 @@ trạng thái tích hợp CP215 theo PR, audit kếCP216. Bước tiếp duy nh�
 [Contract/giới hạn](docs/PROTOCOL.md#auth-token-request), [ba run/hash](docs/evidence/login-runtime/README.md#cp214):
 Winecopy4b/count1–2, bốn record token khớp native writer, ba frame actual +CRC/partial controls; cleanup0.
 Chưa tokenverify/expiry/revocation/crosssocketownership hoặc Rustcode. PR286/CP213 đã giao kế hoạch Rust;
-CP214 REmetadata chờ PR, audit kếCP216. Thứ tự tiếp chỉ ở [PLAN](docs/PLAN.md#current-order).
+CP214 đã merge [PR287](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/287); audit tại mốc đó kếCP216. Thứ tự tiếp chỉ ở [PLAN](docs/PLAN.md#current-order).
 
 **Kế hoạch Rust đã lập tại CP213; chưa triển khai Rust.**
 [Lát cắt đầu và thứ tự milestone](docs/PLAN.md#rust-service-milestones):

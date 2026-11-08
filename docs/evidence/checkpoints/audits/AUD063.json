@@ -1,0 +1,93 @@
+{
+  "id": "AUD063",
+  "trigger": "periodic",
+  "completed_through": "CP216",
+  "recorded_utc": "2026-11-08T23:32:45.600973+00:00",
+  "auditor": "Codex manual self-audit; independent review waived",
+  "read_files": [
+    "README.md",
+    "docs/PLAN.md",
+    "docs/PROTOCOL.md",
+    "docs/RESEARCH.md",
+    "AGENTS.md",
+    "docs/features.json",
+    "docs/COVERAGE.md",
+    "docs/RUST_SERVICE_ARCHITECTURE.md",
+    "docs/evidence/owner-directives/rust-service.json",
+    "docs/evidence/login-runtime/README.md",
+    "docs/evidence/login-runtime/token-request.json",
+    "docs/evidence/login-runtime/token-bounds.json",
+    "docs/evidence/login-runtime/channel-echo.json",
+    "docs/evidence/issue-reconciliation/review.json",
+    "docs/evidence/issue-reconciliation/github-snapshot.json",
+    "docs/evidence/checkpoints/records/CP213.json",
+    "docs/evidence/checkpoints/records/CP214.json",
+    "docs/evidence/checkpoints/records/CP215.json",
+    "docs/evidence/checkpoints/audits/AUD062.json",
+    "local/research/codex/rust-service-survey-r1/manual-plan-review.json",
+    "local/research/codex/auth-token-request-r1/capture-verification.json",
+    "local/research/codex/auth-token-bounds-r1/capture-verification.json",
+    "local/research/codex/auth-channel-binding-r1/echo-verification.json",
+    "local/research/codex/auth-channel-binding-r1/native-request6-verification.json",
+    "local/research/codex/auth-channel-binding-r1/producer-baseline/raw-seal.json",
+    "local/research/codex/auth-channel-binding-r1/aux-marker/raw-seal.json",
+    "local/research/codex/auth-channel-binding-r1/manual-review.json"
+  ],
+  "method": "Manual selectiveREADME→PLAN→PROTOCOL→RESEARCH→evidence review through213–216; checkedplanningdeliveryPR286/noRustsource,actualtoken13/15/16vsnativeemulation/helper0..64,token2-onlyboundedabsence andnewnativefield36read-set-get-serialize-time-wirejoin. RecheckedoldCP058actual6tailsundernewnative-layout ratherthan8u32guess. Sourcecodeparity/frozenraw/cleanup andexistingWIPpreservation, canonicalbacklinks/gates andnextsteps reviewed. No rereadclaimforallhistoricalraw; fullchecker validates allpins/history separately.",
+  "findings": [
+    {
+      "id": "F1",
+      "stale": "README CP214 metadata still said PRpending although PR287 merged; CP215 bounds completed/deliveredPR288 but currentorder still needednewbindingsource.",
+      "correction": "CurrentCP216header linksPR288/d3b85df andcorrectCP214integrationreference; PLANreusesboundsandmovesexactecho→explicitpolicycontrols. No completedrecord/PRsnapshot/history rewrite.",
+      "fixed_in": [
+        "README.md",
+        "docs/PLAN.md",
+        "docs/RESEARCH.md",
+        "docs/evidence/issue-reconciliation/review.json"
+      ]
+    },
+    {
+      "id": "F2",
+      "stale": "C2S6name+32tail remainedopaque; initiallocal8u32comparisonwasonlyatypeguess; initialnewwrapperread duplicatedpartofCP014cache.",
+      "correction": "Nativeproducer/serializerlayout count1 withrecord17+common15,secureboxsameindexfield36echo provedbyone-fieldcontrol. Preserveinitialcomparison/raw andsource-firstsupplementoldcache; labelopaqueu8/u64 ratherthaninventselector/sessionkeysemantics.",
+      "fixed_in": [
+        "docs/PROTOCOL.md",
+        "docs/RESEARCH.md",
+        "docs/evidence/login-runtime/README.md",
+        "docs/evidence/login-runtime/channel-echo.json",
+        "docs/features.json",
+        "docs/COVERAGE.md"
+      ]
+    },
+    {
+      "id": "F3",
+      "stale": "Possibleconflationoffield36echo/SDKu64 withfullauth, orRustplanning withimplementedRustservice; gatepasscouldpromotefullfeaturestatus.",
+      "correction": "Field36originalsemantics/TTL/securityunknown; u64localwrapperoriginnotprovedservernonce. Admission/lease/entropy/expiry/revoke/swapdesignseparateandnativetestfuture. M0–M1firstslice independentofauthRE; noRusttree/servingpolicychange. K6cWAN/K7scopeddemo unchanged, Internet thật chưa kiểm independentbacklog.",
+      "fixed_in": [
+        "README.md",
+        "docs/PLAN.md",
+        "docs/PROTOCOL.md",
+        "docs/RESEARCH.md",
+        "docs/RUST_SERVICE_ARCHITECTURE.md",
+        "docs/features.json",
+        "docs/evidence/issue-reconciliation/review.json"
+      ]
+    },
+    {
+      "id": "F4",
+      "stale": "Auditcounterdue216; oldAUD062remainingteamvariants predatesCP213sealedmeasurements.",
+      "correction": "PeriodicAUD063through216 advancesnext220withoutreset; CP213teamruntimeevidence isdeliveredwhile8sourceWIPstillunmerged/byte-exact. Scopehistory/raw/audits keptimmutable; unknowninteractivevariants andfullservice remainseparate.",
+      "fixed_in": [
+        "docs/evidence/checkpoints/audits/AUD063.json",
+        "docs/evidence/checkpoints/manifest.json",
+        "docs/PLAN.md"
+      ]
+    }
+  ],
+  "remaining": [
+    "Nativeaccounttokenverification/oneusechannellease/expiry/revoke/replay/swap andstrongownership stillunimplemented;field36echo32bitsnotaloneauthproof.",
+    "Count2/optionalC2S6string/provider/password/u64SDKorigin/fullbounds/encoding notruntimevalidated; onlyopenactualblocker.",
+    "RustM0–M8notimplemented;Pythonremainsreference. TeamWIP8filesunmerged/preserved,interactivegeneralrooms/inventory-rewards/operations beyondscoped demo.",
+    "Internet thật chưa kiểm/ISP-CGNAT-realnetworkbacklog separate, no K6cWAN/K7dependency."
+  ]
+}

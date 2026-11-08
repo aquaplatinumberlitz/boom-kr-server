@@ -1,7 +1,7 @@
 {
   "schema": "kre-issue-review-v1",
   "as_of": "2026-11-08",
-  "baseline": "83de46cba4baf9baf67888fafa39c40f2aa27345",
+  "baseline": "d3b85dff6d1d6f64495ccca06705059ae2a0cb91",
   "method": "Codex manual acceptance review; native/static/model/design/merge/gate distinct; originalissuebodies archivedlocalbeforeedit, no completecheckpoint rewrite",
   "issues": [
     {
@@ -155,11 +155,11 @@
         "KR-F001",
         "KR-F015"
       ],
-      "known": "CP215actualWinecopy4b15/16SSO-heap/count2/100byteC2S1/exact17-18byterecords; token2-onlycount0/noauthwithinrun. CP214mergedPR287; noRustimplementation/fullauth. Scopedgatesunchanged.",
-      "remaining": "Runtimeupperbounds/encoding/provider/password/suffix/authverification/expiry-revoke/account-channelownershipunknown; teamWIPunmerged/unchanged.",
-      "next_test": "NEXT-AUTH-SESSION-BINDING source-firstreuseC2S6producer/name+32opaque tail/S2C7 beforeminimumnewnativecontrol; no repeat13/15/16/fullcodec.",
+      "known": "CP216nativeC2S6count1layout/producer/authfield36→securecache→C2S6u32echo viaone-fieldcontrol,2sealedWinecopy4bruns/26nativefields+CRCpartialcontrols. CP215mergedPR288; noRustimplementation/fullauth.",
+      "remaining": "Field36originalsemantics/security/TTL unknown; 32bit echo notaloneauthentication; tokenverify/expiry-revoke/replay/swap/accountownershipneeddesign+nativecontrols. Count2/provider/optionaltail notruntime; u64localwrapperunknown.",
+      "next_test": "NEXT-AUTH-SESSION-BINDING perPLAN: explicitlocaladmissionadapterpolicy/token→ID-name-echo lease withbounds/rate/expiry/revoke/oneuse andnativepositive-negative. No repeattokenbounds/producer/fullcodec/providergraph.",
       "acceptance": "Epic checklist: linkedscopedtask/evidence+authoritymatrix vàacceptancegate ởPLAN; từngtaskđóng khôngđóngepic/K5/K6a.",
-      "reason": "Twofrozenisolatedrunssealed/cleanup0,13helpervectors areemulationonly; nosemanticgateclosure. Both epicsopen, planningdonePR286.",
+      "reason": "Nativeassignment+one-fieldcontrolproven, notoriginalserverlaw orsemanticgateclosure. Both epicsremainopen; AUD063through216/next220.",
       "sources": [
         "docs/PROTOCOL.md#authority",
         "docs/RESEARCH.md#feature-gaps",
@@ -252,7 +252,8 @@
         "docs/RUST_SERVICE_ARCHITECTURE.md",
         "docs/RESEARCH.md#rust-service-gaps",
         "docs/PROTOCOL.md#auth-token-request",
-        "docs/PROTOCOL.md#auth-token-bounds"
+        "docs/PROTOCOL.md#auth-token-bounds",
+        "docs/PROTOCOL.md#auth-channel-echo"
       ],
       "evidence": [
         "docs/evidence/current-movement-cycles/README.md",
@@ -339,7 +340,8 @@
         "docs/evidence/peer-endpoints/README.md#cp212",
         "docs/evidence/eight-player/README.md#cp213",
         "docs/evidence/login-runtime/README.md#cp214",
-        "docs/evidence/login-runtime/README.md#cp215"
+        "docs/evidence/login-runtime/README.md#cp215",
+        "docs/evidence/login-runtime/README.md#cp216"
       ],
       "prs": [
         173,
@@ -429,7 +431,8 @@
         283,
         284,
         286,
-        287
+        287,
+        288
       ],
       "successors": []
     },
@@ -768,32 +771,35 @@
         "KR-S001",
         "KR-S002"
       ],
-      "known": "CP215actualWinecopy4b15/16SSO-heap/count2/100byteC2S1/exact17-18byterecords; token2-onlycount0/noauthwithinrun. CP214mergedPR287; noRustimplementation/fullauth. Scopedgatesunchanged.",
-      "remaining": "Runtimeupperbounds/encoding/provider/password/suffix/authverification/expiry-revoke/account-channelownershipunknown; teamWIPunmerged/unchanged.",
-      "next_test": "NEXT-AUTH-SESSION-BINDING source-firstreuseC2S6producer/name+32opaque tail/S2C7 beforeminimumnewnativecontrol; no repeat13/15/16/fullcodec.",
+      "known": "CP216nativeC2S6count1layout/producer/authfield36→securecache→C2S6u32echo viaone-fieldcontrol,2sealedWinecopy4bruns/26nativefields+CRCpartialcontrols. CP215mergedPR288; noRustimplementation/fullauth.",
+      "remaining": "Field36originalsemantics/security/TTL unknown; 32bit echo notaloneauthentication; tokenverify/expiry-revoke/replay/swap/accountownershipneeddesign+nativecontrols. Count2/provider/optionaltail notruntime; u64localwrapperunknown.",
+      "next_test": "NEXT-AUTH-SESSION-BINDING perPLAN: explicitlocaladmissionadapterpolicy/token→ID-name-echo lease withbounds/rate/expiry/revoke/oneuse andnativepositive-negative. No repeattokenbounds/producer/fullcodec/providergraph.",
       "acceptance": "Eightdeliverablequestionsexplained inarchitecture+PLAN: firstslice/readiness/Python/fullservicemissing/dependencies/productchoices/design-vs-KRunknown/releasecriteria; preservedWIP/noRuntimeRustchange.",
-      "reason": "Twofrozenisolatedrunssealed/cleanup0,13helpervectors areemulationonly; nosemanticgateclosure. Both epicsopen, planningdonePR286.",
+      "reason": "Nativeassignment+one-fieldcontrolproven, notoriginalserverlaw orsemanticgateclosure. Both epicsremainopen; AUD063through216/next220.",
       "sources": [
         "docs/PLAN.md#rust-service-milestones",
         "docs/RUST_SERVICE_ARCHITECTURE.md",
         "docs/RESEARCH.md#rust-service-gaps",
         "docs/PROTOCOL.md#auth-token-request",
-        "docs/PROTOCOL.md#auth-token-bounds"
+        "docs/PROTOCOL.md#auth-token-bounds",
+        "docs/PROTOCOL.md#auth-channel-echo"
       ],
       "evidence": [
         "docs/evidence/rust-service/README.md",
         "docs/evidence/rust-service/survey.json",
         "docs/evidence/owner-directives/rust-service.json",
         "docs/evidence/login-runtime/README.md#cp214",
-        "docs/evidence/login-runtime/README.md#cp215"
+        "docs/evidence/login-runtime/README.md#cp215",
+        "docs/evidence/login-runtime/README.md#cp216"
       ],
       "prs": [
         286,
-        287
+        287,
+        288
       ],
       "successors": []
     }
   ],
-  "as_of_utc": "2026-11-08T09:22:24.375753+00:00",
+  "as_of_utc": "2026-11-08T23:29:38.428192+00:00",
   "limits": "Dated manual dispositions through CP146; snapshotcaptureUTC only/no semantic or gate certification; immutable completehistory."
 }
