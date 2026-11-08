@@ -82,6 +82,44 @@ class FourBundleTests(unittest.TestCase):
         p.write_text(json.dumps(j))
         self.assertIn('incomplete bundle manifest',self.call(moved,'--verify-only').stderr)
 
+    def test_eight_battle_launcher_pins_policy_flags_and_refuses_override(self):
+        root=Path(__file__).resolve().parents[1]
+        spec=json.loads((root/'server/profiles/eight-client-battle.json').read_text())
+        baseline=spec['eight_bomb_profile']
+        start=json.loads((root/'server/profiles/eight-client-start.json').read_text())
+        self.assertEqual(spec['profile'],start['profile'])
+        # The preset is an operator snapshot; code remains the admission validator.
+        sys.path.insert(0,str(root))
+        try:
+            import server.eight_bomb_policy as native_policy
+            self.assertEqual(baseline,native_policy.BASELINE)
+        finally:sys.path.pop(0)
+        out=self.root/'eight-battle'
+        manifest=export_bundle(self.profile,self.source,out,eight_sessions=True,eight_bomb_profile=baseline)
+        self.assertEqual(manifest['entrypoint'],'server.eight_player_service')
+        moved=self.root/'moved';shutil.move(out,moved);shutil.rmtree(self.source)
+        self.assertEqual(self.call(moved,'--verify-only').returncode,0)
+        self.assertIn('--battle-outcome',self.call(moved,'--help').stdout)
+        runtime=self.root/'not-created'
+        for option in [['--bomb-profile','outside.json'],['--bomb-profile=outside.json'],['--battle-outcome']]:
+            result=self.call(moved,*option,'--out',str(runtime),'--port','0')
+            self.assertNotEqual(result.returncode,0);self.assertFalse(runtime.exists())
+        p=moved/'bundle.json';j=json.loads(p.read_text())
+        j['files']=[q for q in j['files'] if q['path']!='eight-bomb-profile.json'];p.write_text(json.dumps(j))
+        self.assertIn('incomplete bundle manifest',self.call(moved,'--verify-only').stderr)
+
+    def test_eight_battle_invalid_baseline_or_missing_eight_scope_refused(self):
+        root=Path(__file__).resolve().parents[1]
+        baseline=json.loads((root/'server/profiles/eight-client-battle.json').read_text())['eight_bomb_profile']
+        for role,field,value in [('E','capacities',1),('G','powers',1),('A','capacities',True)]:
+            policy=copy.deepcopy(baseline);policy[field][role]=value
+            out=self.root/('invalid-'+role)
+            with self.assertRaisesRegex(ValueError,'fixed eight battle'):
+                export_bundle(self.profile,self.source,out,eight_sessions=True,eight_bomb_profile=policy)
+            self.assertFalse(out.exists())
+        with self.assertRaisesRegex(ValueError,'fixed eight battle'):
+            export_bundle(self.profile,self.source,self.root/'invalid-scope',eight_bomb_profile=baseline)
+
 
 if __name__=='__main__':
     unittest.main()

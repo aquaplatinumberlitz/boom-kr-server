@@ -192,3 +192,35 @@ khôngabort/forfeit, khôngghépcácrun riêng. `manual-images.json` và4contact
 R1/R2rankngược/8names, roomreset2/8profiles, Start3cótutorialoverlays (khôngthirdoutcome/inputfailureclaim).
 Reviewwaived/AUD061qua208/kếCP212. Khôngnativeportable8/1–7actual/Manner8/room-full9auth/8items-terrain-kim-cứu/
 originalworldauthority/Internet/K7; riêng fixed4v4two-cyclemilestone đãcóevidence.
+
+
+<a id="cp211"></a>
+## CP211 — relocated eightbattlebundle/current8native2cycles/limitedadmission
+
+Baseline CP210 merge[PR282](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/282)/`9202d77`;
+[contract duy nhất](../../PROTOCOL.md#eight-portable-battle), [operatorrecipe](../../../tools/README.md#eight-battle-bundle).
+Raw `local/research/codex/eight-portable-r1/`; `source-first.json` so CP203/208bundle/CP209baseline/CP2108native,
+không codec/report/rowRE lại. `eight-client-battle` giữ cùngprofile47aliases, pinbaselineJSON/injectoutcome;
+18testbundle/preset qua. Source serverbytehash/config/identity trongrun mới trùngCP210, táidùng363servertests.
+
+`export/service` được chuyển sang`relocated/service`; originalpath khôngcòn. BundleSHA
+`7be29a89fd25ba2b3a8d8dee9b7eaf0403627c299c74be4021ff5915debea314`,71pins/47aliases/Python-I.
+`fixture-reuse.json` kiểm47rawbyteequal; `profile-semantic-reuse.json` soJSON trừpath (khôngtựxácnhậnsemantics).
+`eight_portable_tcp.py` chạy-I/importmodulefromrelocatedtree/767syntheticchecks: lifecycle8/report7/rank8/reset/
+unknownsourceoutside8allowlist/rolefifthtransport/refusalnomutation; không native9/map-awarefullroomauth.
+
+Native`wine_probe_eight_portable.py` actualserviceargvPython-I/relocatedrun.py/nooperatorprofile-bomb-outcomeflags;
+stdoutloader`service_module` tronggói; rawstatepolicyhash/config/identity soCP210, bên cạnhcallback8native2cycles.
+Run364,775602329s/exit0/2102raw/1000frozen/namespace0, SHA
+`83376508d4f06a74b0aaf50b0b118c69714784d62027100a1111492f44447138`.
+`verification.json`4417gameplayjoins/2opposite4v4/1758rows/180/reset/Ready2–3/Start3;
+`getter-verification.json`128protectedstatewrappers/copiednative52A350 riêng;
+`delivery-verification.json`112package/path/sourcehash/config/pinjoins. Genericgameplayverifieralonekhôngportableoracle.
+`manual-images.json` ghiCodex đãđọc8rank2/8roomreset2, khôngảnhthay nativeproof hoặcthirdoutcome.
+
+PrepareV1readerCWD sai làm relativefixturepath FileNotFoundError trướcpreflight/native, launcherverify-onlyđãpass.
+GiữV1script/observed-errornote (`prepare-failure.json`, khôngfake rawstdout); sửahelperexplicitpaths vàtemporary
+bundleCWD choTCPconstructor, khôngsửagóihaycodegiữa run. Freeze/seal đầyđủ, không binary/asset/DBnguồnchange.
+
+Khôngfull8items-terrain-kim-cứu/1–7actual/Manner8/interactiveC2Steamchange/9native/Internet/K7/fullauth-resume.
+Reviewwaived; AUD061qua208/audit kếCP212; nextteamvariants ởPLAN. Khônggateclosuretừpackagedemo.

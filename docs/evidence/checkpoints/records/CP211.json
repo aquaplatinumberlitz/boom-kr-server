@@ -1,0 +1,256 @@
+{
+  "id": "CP211",
+  "previous": "CP210",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-08T06:23:19.268434+00:00",
+  "context_commit": "9202d776d853b35cbb2c8e63eefdf14085fb38d0",
+  "owner": "Codex",
+  "reviewer": "Codex",
+  "question": "PackageexactCP2108battleprofile/baseline/outcomeflags, verifyrelocation/PythonI/tamper/admissioncontrolsthenactual8two4v4cyclesfromrelocatedbundlewithoutsource-profiledrift?",
+  "scope": "ReuseCP203fourpackaging/CP2088startbundle/CP209baseline/CP2108nativecore. New8battlepreset71pins47aliases/fixedsidecar-flags/18tests/767packagedTCP; same8actualnative2opposite4v4/resetStart3fromrelocatedrun.py/PythonI with112source-module/config/path/hashjoins. No newnativefunctions/teamvariants/gate.",
+  "artifacts": [
+    {
+      "name": "OriginalKR00967unchanged",
+      "sha256": "a52545c14b1fea423de655c3163d6360b628d61c1cd472b46fdbc8a9ffe15f4e"
+    },
+    {
+      "name": "CurrentWinecopy_import_ABI_corrected_offline_only",
+      "sha256": "4b781fbcea21e0f6294c729b63be86ab2953d60ad83b0d0c9219359f826107ed"
+    }
+  ],
+  "locators": [
+    "KR00967originala52545c14b1fea423de655c3163d6360b628d61c1cd472b46fdbc8a9ffe15f4e/currentWinecopy4b781fbcea21e0f6294c729b63be86ab2953d60ad83b0d0c9219359f826107ed/Wine10.0-20260425;same8privatehosts/prefix-display/CA-wineserver/IP/rootbridge/no externalroute.",
+    "ReusedCP210known170E85B60/Finishstates28;175E5F610/E5F67B/E3EB20/E3EDBE/E610A4;180E64950/E652C5;clockE134B0;52A350copiedUnicornonly. No newnativebody/decompile/VNwireport.",
+    "Bundle71pins47aliases/7be29a89fd25ba2b3a8d8dee9b7eaf0403627c299c74be4021ff5915debea314;export/serviceabsent→relocated/service/run.py/PythonI;all47fixturebytesexact andJSONexcludingpathsequal;runtimepolicy-sourcehash-config-identitiesexactCP210.",
+    "NativeRun83376508d4f06a74b0aaf50b0b118c69714784d62027100a1111492f44447138/364.775602329s/2102raw/1000frozen/4417gameplay+112delivery/128copiedgetters/exit0/cleanup0;8sameprocessprofiles/32TCP/2normalopposite4v4/1758rows180/resetStart3."
+  ],
+  "findings": [
+    {
+      "summary": "Source-firstCP203portable4/CP2088startbundle/CP2098measuredstats/CP2108source-run reusedexactprofile47aliases/CLI/knownprobes. Onlypackaging/sidecar/pinflags/relocation delta; no codec/count/rank/report/teamguardRE. AllnonpathprofileJSONfieldsandfixturebytesmatchCP210; serverpolicy-sourcehash/config/identitysame so363servertestsreusedwithoutpointlessrerun.",
+      "source": "design",
+      "status": "design",
+      "method": "documentation",
+      "canonical": "docs/PROTOCOL.md#eight-portable-battle",
+      "evidence": [
+        "EIGHT211-02360",
+        "EIGHT211-02160",
+        "EIGHT211-02175",
+        "EIGHT211-02154",
+        "EIGHT211-00020"
+      ],
+      "limits": "Native8actualWinefixedFree4v4twooppositeoutcomes/resetStart3 onverifiedrelocated71pinbundle/PythonI/exact47fixtures/samepolicysourcehash-config-identitiesasCP210; sourceprofileJSONdiffersonlyfixturepaths.767syntheticTCPnotnative9: unknownninthsourceoperatorIPrejectandrole5thstage, notmap-awaregeneralroomfull/auth/capacity. Rawverifiergenericlimitnoportableclaimmeansgameplayalone;thisreportjoinsactualargv/module/policyhash/packagepins. No1v7actual/Manner8/full8items-terrain-kim-rescue/Internet/K7/accountresume; reportderivedauthoritydesign/fuse6/settle8/zeroeconomy. CP210mergedPR282/9202d77;18bundle/reuse363server(sourcebytehashsame);reviewwaived/AUD061through208/next212."
+    },
+    {
+      "summary": "Newfixed8battlepreset/exportbundle71pins47aliases/eight-bomb-profile sidecar automaticallyinjectsprofile/bomb/outcomeflags. Launcherrefusesoperatoroverride/missingrequired/unlistedPython/tamperbeforelisten; presetbaselinecomparestocompiledBASELINE.18bundle/presettests and767realTCPsyntheticfromrelocatedmodule/-I verify7peerlife/rank8/reset/Start2/EOF/admission; no native9/map-awareauthinference.",
+      "source": "design",
+      "status": "design",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#eight-portable-battle",
+      "evidence": [
+        "EIGHT211-03047",
+        "EIGHT211-03046",
+        "EIGHT211-03048",
+        "EIGHT211-03045",
+        "EIGHT211-00028",
+        "EIGHT211-02997"
+      ],
+      "limits": "Native8actualWinefixedFree4v4twooppositeoutcomes/resetStart3 onverifiedrelocated71pinbundle/PythonI/exact47fixtures/samepolicysourcehash-config-identitiesasCP210; sourceprofileJSONdiffersonlyfixturepaths.767syntheticTCPnotnative9: unknownninthsourceoperatorIPrejectandrole5thstage, notmap-awaregeneralroomfull/auth/capacity. Rawverifiergenericlimitnoportableclaimmeansgameplayalone;thisreportjoinsactualargv/module/policyhash/packagepins. No1v7actual/Manner8/full8items-terrain-kim-rescue/Internet/K7/accountresume; reportderivedauthoritydesign/fuse6/settle8/zeroeconomy. CP210mergedPR282/9202d77;18bundle/reuse363server(sourcebytehashsame);reviewwaived/AUD061through208/next212."
+    },
+    {
+      "summary": "Relocated71pinbundle/exportpathgone, actualspawnPython-I/relocatedrun.py withoutoperatorprofile-bomb-outcomeflags; loaderprintsservice_moduleinsidebundle, allruntimepolicy_sourcespathsinsidepackage/hashsame. Config/source_build_sha256/identitiesmatchCP210/profileJSONdiffersonlyfixturepaths;all71pinsbeforeafterrun.112deliveryjoinscoupledwithindependentnativecallbackproof, notsignature/remoteattestation.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#eight-portable-battle",
+      "evidence": [
+        "EIGHT211-02154",
+        "EIGHT211-02130",
+        "EIGHT211-02132",
+        "EIGHT211-02129",
+        "EIGHT211-02178"
+      ],
+      "limits": "Native8actualWinefixedFree4v4twooppositeoutcomes/resetStart3 onverifiedrelocated71pinbundle/PythonI/exact47fixtures/samepolicysourcehash-config-identitiesasCP210; sourceprofileJSONdiffersonlyfixturepaths.767syntheticTCPnotnative9: unknownninthsourceoperatorIPrejectandrole5thstage, notmap-awaregeneralroomfull/auth/capacity. Rawverifiergenericlimitnoportableclaimmeansgameplayalone;thisreportjoinsactualargv/module/policyhash/packagepins. No1v7actual/Manner8/full8items-terrain-kim-rescue/Internet/K7/accountresume; reportderivedauthoritydesign/fuse6/settle8/zeroeconomy. CP210mergedPR282/9202d77;18bundle/reuse363server(sourcebytehashsame);reviewwaived/AUD061through208/next212."
+    },
+    {
+      "summary": "Same8actualWine/32TCP/fixedFree4v4/ExVillage01onrelocatedservice completes2opposite4v4normaloutcomes/7peer17-19/native56to1/pre1758state-rankvectors/1751082-inner1072/1803/reset8/7Ready2-3/Start3all8clocks.4417gameplayjoins/128copiedstategetters/364.7756s/2102raw/1000frozenuntilseal/cleanup0; notCP210source-runconcatenation/thirdoutcome/fullitems orInternetgate.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#eight-portable-battle",
+      "evidence": [
+        "EIGHT211-03000",
+        "EIGHT211-02169",
+        "EIGHT211-02177",
+        "EIGHT211-02172"
+      ],
+      "limits": "Native8actualWinefixedFree4v4twooppositeoutcomes/resetStart3 onverifiedrelocated71pinbundle/PythonI/exact47fixtures/samepolicysourcehash-config-identitiesasCP210; sourceprofileJSONdiffersonlyfixturepaths.767syntheticTCPnotnative9: unknownninthsourceoperatorIPrejectandrole5thstage, notmap-awaregeneralroomfull/auth/capacity. Rawverifiergenericlimitnoportableclaimmeansgameplayalone;thisreportjoinsactualargv/module/policyhash/packagepins. No1v7actual/Manner8/full8items-terrain-kim-rescue/Internet/K7/accountresume; reportderivedauthoritydesign/fuse6/settle8/zeroeconomy. CP210mergedPR282/9202d77;18bundle/reuse363server(sourcebytehashsame);reviewwaived/AUD061through208/next212."
+    },
+    {
+      "summary": "PackagedTCPunknownninthsource127.0.0.99closedwithoutrole/stageconsumption, exhaustedfifthroletransportclosed; onlyoperatorallowlistdesign, no9thnativeCA/map-awareroomcapacity/originalauth. PreparationV1FixtureProfilerelativepathswrongCWDfailedbeforefreeze/nativewhilelauncherverifyalreadypassed; keptV1/observed-errornote(no reconstructedstdout), fixedreaderexplicitpaths andTCPtemporarychdironly. CurrentRESEARCHold8sessionsgaplinkedCP210211, historyuntouched.",
+      "source": "design",
+      "status": "design",
+      "method": "documentation",
+      "canonical": "docs/PROTOCOL.md#eight-portable-battle",
+      "evidence": [
+        "EIGHT211-02997",
+        "EIGHT211-02995",
+        "EIGHT211-02174",
+        "EIGHT211-02173",
+        "EIGHT211-00043"
+      ],
+      "limits": "Native8actualWinefixedFree4v4twooppositeoutcomes/resetStart3 onverifiedrelocated71pinbundle/PythonI/exact47fixtures/samepolicysourcehash-config-identitiesasCP210; sourceprofileJSONdiffersonlyfixturepaths.767syntheticTCPnotnative9: unknownninthsourceoperatorIPrejectandrole5thstage, notmap-awaregeneralroomfull/auth/capacity. Rawverifiergenericlimitnoportableclaimmeansgameplayalone;thisreportjoinsactualargv/module/policyhash/packagepins. No1v7actual/Manner8/full8items-terrain-kim-rescue/Internet/K7/accountresume; reportderivedauthoritydesign/fuse6/settle8/zeroeconomy. CP210mergedPR282/9202d77;18bundle/reuse363server(sourcebytehashsame);reviewwaived/AUD061through208/next212."
+    }
+  ],
+  "verification": [
+    {
+      "check": "Relocated8bundle/71pins47aliases/PythonI/sourcehash-config-identity/path112",
+      "result": "pass",
+      "evidence": [
+        "EIGHT211-02154",
+        "EIGHT211-02160",
+        "EIGHT211-02175",
+        "EIGHT211-02178"
+      ],
+      "limits": "Native8actualWinefixedFree4v4twooppositeoutcomes/resetStart3 onverifiedrelocated71pinbundle/PythonI/exact47fixtures/samepolicysourcehash-config-identitiesasCP210; sourceprofileJSONdiffersonlyfixturepaths.767syntheticTCPnotnative9: unknownninthsourceoperatorIPrejectandrole5thstage, notmap-awaregeneralroomfull/auth/capacity. Rawverifiergenericlimitnoportableclaimmeansgameplayalone;thisreportjoinsactualargv/module/policyhash/packagepins. No1v7actual/Manner8/full8items-terrain-kim-rescue/Internet/K7/accountresume; reportderivedauthoritydesign/fuse6/settle8/zeroeconomy. CP210mergedPR282/9202d77;18bundle/reuse363server(sourcebytehashsame);reviewwaived/AUD061through208/next212."
+    },
+    {
+      "check": "Actual8twoopposite4v4/1758rows180/reset/Start3/4417joins128getters/cleanup",
+      "result": "pass",
+      "evidence": [
+        "EIGHT211-03000",
+        "EIGHT211-02169",
+        "EIGHT211-02177",
+        "EIGHT211-02172"
+      ],
+      "limits": "Native8actualWinefixedFree4v4twooppositeoutcomes/resetStart3 onverifiedrelocated71pinbundle/PythonI/exact47fixtures/samepolicysourcehash-config-identitiesasCP210; sourceprofileJSONdiffersonlyfixturepaths.767syntheticTCPnotnative9: unknownninthsourceoperatorIPrejectandrole5thstage, notmap-awaregeneralroomfull/auth/capacity. Rawverifiergenericlimitnoportableclaimmeansgameplayalone;thisreportjoinsactualargv/module/policyhash/packagepins. No1v7actual/Manner8/full8items-terrain-kim-rescue/Internet/K7/accountresume; reportderivedauthoritydesign/fuse6/settle8/zeroeconomy. CP210mergedPR282/9202d77;18bundle/reuse363server(sourcebytehashsame);reviewwaived/AUD061through208/next212."
+    },
+    {
+      "check": "18bundle-preset/767packagedTCP/reuse363unchangedserver/artifacts5",
+      "result": "pass",
+      "evidence": [
+        "EIGHT211-00028",
+        "EIGHT211-02997",
+        "EIGHT211-00020",
+        "EIGHT211-00027"
+      ],
+      "limits": "Syntheticmodel/fileintegrity/regression controls distinctfromnativeproof;sourcehashcompareexplicit."
+    },
+    {
+      "check": "Actual8Free1v7-Manner8/interactiveC2Steam/native9/generalroomauth/Internet-K7",
+      "result": "pending",
+      "evidence": [
+        "EIGHT211-02154",
+        "EIGHT211-00041"
+      ],
+      "limits": "NEXT-EIGHT-TEAM-VARIANTS; currentfixedFree4v4only; K6ccontrolledexternalendpointmissing."
+    }
+  ],
+  "evidence": [],
+  "evidence_manifests": [
+    {
+      "path": "docs/evidence/checkpoints/evidence/CP211-eight-portable-battle.json",
+      "bytes": 778656,
+      "sha256": "4e0d52dbcb8ac8169a14c0665e4d356eb93ef70d6b219dadcfa69ef8df0a0547",
+      "count": 3048
+    }
+  ],
+  "delta": {
+    "added": [
+      "Pinned8battlepreset/bundle71files47aliases/sidecarflags/override-tamperchecks/18tests/767packagedTCP.",
+      "ActualrelocatedPythonIservice8twoopposite4v4/resetStart3 with4417gameplay112delivery128copiedgetters/sourcehash-configsameCP210/cleanup0."
+    ],
+    "corrected": [
+      "CP210pendingnative8portable resolvedinscopefixed4v4; operatorunknownninthsourceTCPnegative notnative9/map-awareauth.",
+      "PreparehelperCWDfailure separatedfromcorrectlauncherbehavior; fixedbeforefreeze, no runtimeconfig/source/packagehotfix.",
+      "RESEARCHservice-hardening/result old8sessionfollowup clarifiedtolinkCP210211actual8cycles/package; nextactualteamvariants."
+    ],
+    "superseded": [
+      "NEXT-EIGHT-PORTABLE-ADMISSION boundedbundle/controlrequirementsresolved; NEXT-EIGHT-TEAM-VARIANTS active."
+    ]
+  },
+  "blockers": [
+    "Actual8Free1v7/Manner4v4-negative1v7/interactiveC2Steamchange KRopcode-layout notverified; VN89notported.",
+    "Native9/generalmap-awarefullroomauth/full8items-terrain-kim-cuu/accountresume/originalauthority/Internet-K6c-K7outsideproof; controlledexternalendpointmissing."
+  ],
+  "next_steps": [
+    {
+      "id": "NEXT-EIGHT-PORTABLE-ADMISSION",
+      "task": "KRE-005b",
+      "state": "closed",
+      "action": "71pin47alias8battlebundle/relocation-PythonI/18tests/767packagedTCP/actual8same2cyclesdone; no native9/auth/gateclaim.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-EIGHT-TEAM-VARIANTS",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "PLAN: source-firstCP147Free8-1v7-9negative/CP162selector81→86-87-180/CP163Mannerbalanced-negative/CP210211current8roster-life-rank-reset. Fixedoperator1v7-4v4/selector1echo/balanceguard/reset controls before8actualFree1v7twooutcomes/Manner4v4positive/Manner1v7negative. Do notreREcodec/count/175 orclaimoperatorrosterpresetprovesinteractiveC2Steamchange; VN89seedonly. AuditCP212dueafter nextcomplete.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    }
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-11-08T06:23:19.268434+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "CodexsoloRE/code/runtime/selfcheck; reviewwaived notapproved, exactheadPRrequired.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Owner explicitly requested solo, no workers/review."
+    }
+  },
+  "docs_sync": [
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "CP211portable8native/sourcepath-config-hash/admissionlimits/nextteamvariants/issue14syncedbeforecomplete; auditnext212unchanged."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "CP211portable8native/sourcepath-config-hash/admissionlimits/nextteamvariants/issue14syncedbeforecomplete; auditnext212unchanged."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "updated",
+      "reason": "CP211portable8native/sourcepath-config-hash/admissionlimits/nextteamvariants/issue14syncedbeforecomplete; auditnext212unchanged."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "updated",
+      "reason": "CP211portable8native/sourcepath-config-hash/admissionlimits/nextteamvariants/issue14syncedbeforecomplete; auditnext212unchanged."
+    },
+    {
+      "path": "docs/evidence/eight-player/README.md",
+      "state": "updated",
+      "reason": "CP211portable8native/sourcepath-config-hash/admissionlimits/nextteamvariants/issue14syncedbeforecomplete; auditnext212unchanged."
+    },
+    {
+      "path": "docs/features.json",
+      "state": "updated",
+      "reason": "CP211portable8native/sourcepath-config-hash/admissionlimits/nextteamvariants/issue14syncedbeforecomplete; auditnext212unchanged."
+    },
+    {
+      "path": "docs/COVERAGE.md",
+      "state": "updated",
+      "reason": "CP211portable8native/sourcepath-config-hash/admissionlimits/nextteamvariants/issue14syncedbeforecomplete; auditnext212unchanged."
+    },
+    {
+      "path": "tools/README.md",
+      "state": "updated",
+      "reason": "CP211portable8native/sourcepath-config-hash/admissionlimits/nextteamvariants/issue14syncedbeforecomplete; auditnext212unchanged."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/review.json",
+      "state": "updated",
+      "reason": "CP211portable8native/sourcepath-config-hash/admissionlimits/nextteamvariants/issue14syncedbeforecomplete; auditnext212unchanged."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
+      "state": "updated",
+      "reason": "CP211portable8native/sourcepath-config-hash/admissionlimits/nextteamvariants/issue14syncedbeforecomplete; auditnext212unchanged."
+    }
+  ]
+}

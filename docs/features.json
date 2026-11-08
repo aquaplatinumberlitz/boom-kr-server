@@ -1,7 +1,7 @@
 {
   "schema": "kre-feature-index-v1",
   "build": "KR00967",
-  "as_of": "CP210",
+  "as_of": "CP211",
   "sources": {
     "plan": "docs/PLAN.md",
     "contract": "docs/PROTOCOL.md",
@@ -895,7 +895,8 @@
           "docs/PROTOCOL.md#four-session-native",
           "docs/PROTOCOL.md#eight-session-preview",
           "docs/PROTOCOL.md#eight-mesh-owner-bombs",
-          "docs/PROTOCOL.md#eight-two-team-cycles"
+          "docs/PROTOCOL.md#eight-two-team-cycles",
+          "docs/PROTOCOL.md#eight-portable-battle"
         ]
       },
       "coverage": {
@@ -944,7 +945,8 @@
               "docs/PROTOCOL.md#four-session-native",
               "docs/PROTOCOL.md#eight-session-preview",
               "docs/PROTOCOL.md#eight-mesh-owner-bombs",
-              "docs/PROTOCOL.md#eight-two-team-cycles"
+              "docs/PROTOCOL.md#eight-two-team-cycles",
+              "docs/PROTOCOL.md#eight-portable-battle"
             ]
           },
           "windows_original": {
@@ -973,7 +975,8 @@
             "server/test_room_team_mode.py",
             "docs/PROTOCOL.md#eight-session-preview",
             "docs/PROTOCOL.md#eight-mesh-owner-bombs",
-            "docs/PROTOCOL.md#eight-two-team-cycles"
+            "docs/PROTOCOL.md#eight-two-team-cycles",
+            "docs/PROTOCOL.md#eight-portable-battle"
           ],
           "delivery": "via_pr"
         },
@@ -983,7 +986,8 @@
             "docs/evidence/probe-service/README.md",
             "docs/evidence/host-normal-back/README.md",
             "docs/PROTOCOL.md#current-291-room-integration",
-            "docs/PROTOCOL.md#eight-two-team-cycles"
+            "docs/PROTOCOL.md#eight-two-team-cycles",
+            "docs/PROTOCOL.md#eight-portable-battle"
           ]
         },
         "gate": {
@@ -3466,7 +3470,8 @@
           "docs/PROTOCOL.md#emulated-lan-acceptance",
           "docs/PROTOCOL.md#four-two-team-cycles",
           "docs/PROTOCOL.md#four-transport-bounds",
-          "docs/PROTOCOL.md#eight-two-team-cycles"
+          "docs/PROTOCOL.md#eight-two-team-cycles",
+          "docs/PROTOCOL.md#eight-portable-battle"
         ]
       },
       "coverage": {
@@ -3549,7 +3554,8 @@
               "docs/PROTOCOL.md#emulated-lan-acceptance",
               "docs/PROTOCOL.md#four-two-team-cycles",
               "docs/PROTOCOL.md#four-transport-bounds",
-              "docs/PROTOCOL.md#eight-two-team-cycles"
+              "docs/PROTOCOL.md#eight-two-team-cycles",
+              "docs/PROTOCOL.md#eight-portable-battle"
             ]
           },
           "windows_original": {
@@ -3580,7 +3586,8 @@
             "docs/PROTOCOL.md#peer21-ending-order",
             "server/four_battle_policy.py",
             "server/test_four_battle_policy.py",
-            "docs/PROTOCOL.md#eight-two-team-cycles"
+            "docs/PROTOCOL.md#eight-two-team-cycles",
+            "docs/PROTOCOL.md#eight-portable-battle"
           ],
           "delivery": "via_pr"
         },
@@ -3614,7 +3621,8 @@
             "docs/PROTOCOL.md#current-basic-contest-reset",
             "docs/PROTOCOL.md#emulated-lan-acceptance",
             "docs/PROTOCOL.md#four-transport-bounds",
-            "docs/PROTOCOL.md#eight-two-team-cycles"
+            "docs/PROTOCOL.md#eight-two-team-cycles",
+            "docs/PROTOCOL.md#eight-portable-battle"
           ]
         },
         "gate": {
@@ -3726,7 +3734,8 @@
           "docs/PROTOCOL.md#four-member-abort-room",
           "docs/PROTOCOL.md#four-health-identity",
           "docs/PROTOCOL.md#four-netem-restart",
-          "docs/PROTOCOL.md#eight-two-team-cycles"
+          "docs/PROTOCOL.md#eight-two-team-cycles",
+          "docs/PROTOCOL.md#eight-portable-battle"
         ]
       },
       "coverage": {
@@ -3836,7 +3845,8 @@
               "docs/PROTOCOL.md#four-member-abort-room",
               "docs/PROTOCOL.md#four-health-identity",
               "docs/PROTOCOL.md#four-netem-restart",
-              "docs/PROTOCOL.md#eight-two-team-cycles"
+              "docs/PROTOCOL.md#eight-two-team-cycles",
+              "docs/PROTOCOL.md#eight-portable-battle"
             ]
           },
           "windows_original": {
@@ -3876,7 +3886,8 @@
             "server/test_four_battle_policy.py",
             "docs/PROTOCOL.md#four-member-abort-room",
             "docs/PROTOCOL.md#four-health-identity",
-            "docs/PROTOCOL.md#eight-two-team-cycles"
+            "docs/PROTOCOL.md#eight-two-team-cycles",
+            "docs/PROTOCOL.md#eight-portable-battle"
           ],
           "delivery": "via_pr"
         },
@@ -3932,7 +3943,8 @@
             "docs/PROTOCOL.md#four-member-abort-room",
             "docs/PROTOCOL.md#four-health-identity",
             "docs/PROTOCOL.md#four-netem-restart",
-            "docs/PROTOCOL.md#eight-two-team-cycles"
+            "docs/PROTOCOL.md#eight-two-team-cycles",
+            "docs/PROTOCOL.md#eight-portable-battle"
           ]
         },
         "gate": {
@@ -4761,7 +4773,8 @@
           "docs/PROTOCOL.md#four-netem-restart",
           "docs/PROTOCOL.md#eight-session-preview",
           "docs/PROTOCOL.md#eight-mesh-owner-bombs",
-          "docs/PROTOCOL.md#eight-two-team-cycles"
+          "docs/PROTOCOL.md#eight-two-team-cycles",
+          "docs/PROTOCOL.md#eight-portable-battle"
         ]
       },
       "coverage": {
@@ -4798,7 +4811,8 @@
               "docs/PROTOCOL.md#four-health-identity",
               "docs/PROTOCOL.md#four-netem-restart",
               "docs/PROTOCOL.md#eight-mesh-owner-bombs",
-              "docs/PROTOCOL.md#eight-two-team-cycles"
+              "docs/PROTOCOL.md#eight-two-team-cycles",
+              "docs/PROTOCOL.md#eight-portable-battle"
             ]
           },
           "windows_original": {
@@ -4838,7 +4852,8 @@
             "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/278",
             "docs/PROTOCOL.md#eight-session-preview",
             "docs/PROTOCOL.md#eight-mesh-owner-bombs",
-            "docs/PROTOCOL.md#eight-two-team-cycles"
+            "docs/PROTOCOL.md#eight-two-team-cycles",
+            "docs/PROTOCOL.md#eight-portable-battle"
           ],
           "delivery": "via_pr"
         },
@@ -4853,7 +4868,8 @@
             "docs/PROTOCOL.md#four-member-abort-room",
             "docs/PROTOCOL.md#four-health-identity",
             "docs/PROTOCOL.md#four-netem-restart",
-            "docs/PROTOCOL.md#eight-two-team-cycles"
+            "docs/PROTOCOL.md#eight-two-team-cycles",
+            "docs/PROTOCOL.md#eight-portable-battle"
           ]
         },
         "gate": {
