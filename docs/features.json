@@ -1,12 +1,14 @@
 {
   "schema": "kre-feature-index-v1",
   "build": "KR00967",
-  "as_of": "CP211",
+  "as_of": "CP213",
   "sources": {
     "plan": "docs/PLAN.md",
     "contract": "docs/PROTOCOL.md",
     "questions": "docs/RESEARCH.md",
-    "history": "docs/evidence/checkpoints/manifest.json"
+    "history": "docs/evidence/checkpoints/manifest.json",
+    "rust_design": "docs/RUST_SERVICE_ARCHITECTURE.md",
+    "rust_milestones": "docs/PLAN.md#rust-service-milestones"
   },
   "scope": "Mechanism index for offline Battle path; not whole-client inventory or gate acceptance. Statuses only within linked source limits. CP212 K6c WAN giả lập/K7 passed only within linked acceptance; Internet thật chưa kiểm. Gate does not promote per-feature evidence.",
   "nodes": [
@@ -379,7 +381,8 @@
       },
       "issues": [
         "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/14",
-        "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/3"
+        "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/3",
+        "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/285"
       ]
     },
     {
@@ -519,7 +522,8 @@
       "issues": [
         "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/14",
         "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/9",
-        "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/106"
+        "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/106",
+        "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/285"
       ]
     },
     {
@@ -896,7 +900,9 @@
           "docs/PROTOCOL.md#eight-session-preview",
           "docs/PROTOCOL.md#eight-mesh-owner-bombs",
           "docs/PROTOCOL.md#eight-two-team-cycles",
-          "docs/PROTOCOL.md#eight-portable-battle"
+          "docs/PROTOCOL.md#eight-portable-battle",
+          "docs/PROTOCOL.md#eight-team-variants",
+          "docs/evidence/eight-player/README.md#cp213"
         ]
       },
       "coverage": {
@@ -946,7 +952,8 @@
               "docs/PROTOCOL.md#eight-session-preview",
               "docs/PROTOCOL.md#eight-mesh-owner-bombs",
               "docs/PROTOCOL.md#eight-two-team-cycles",
-              "docs/PROTOCOL.md#eight-portable-battle"
+              "docs/PROTOCOL.md#eight-portable-battle",
+              "docs/PROTOCOL.md#eight-team-variants"
             ]
           },
           "windows_original": {
@@ -987,7 +994,8 @@
             "docs/evidence/host-normal-back/README.md",
             "docs/PROTOCOL.md#current-291-room-integration",
             "docs/PROTOCOL.md#eight-two-team-cycles",
-            "docs/PROTOCOL.md#eight-portable-battle"
+            "docs/PROTOCOL.md#eight-portable-battle",
+            "docs/PROTOCOL.md#eight-team-variants"
           ]
         },
         "gate": {
@@ -1000,7 +1008,8 @@
         }
       },
       "issues": [
-        "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/14"
+        "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/14",
+        "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/285"
       ]
     },
     {
@@ -1538,7 +1547,9 @@
           "docs/PROTOCOL.md#four-slot-native-consumers",
           "docs/PROTOCOL.md#four-session-native",
           "docs/PROTOCOL.md#eight-session-preview",
-          "docs/PROTOCOL.md#eight-mesh-owner-bombs"
+          "docs/PROTOCOL.md#eight-mesh-owner-bombs",
+          "docs/PROTOCOL.md#eight-team-variants",
+          "docs/evidence/eight-player/README.md#cp213"
         ]
       },
       "coverage": {
@@ -1603,7 +1614,8 @@
               "docs/PROTOCOL.md#routed-Wine-network",
               "docs/PROTOCOL.md#four-slot-native-consumers",
               "docs/PROTOCOL.md#four-session-native",
-              "docs/PROTOCOL.md#eight-mesh-owner-bombs"
+              "docs/PROTOCOL.md#eight-mesh-owner-bombs",
+              "docs/PROTOCOL.md#eight-team-variants"
             ]
           },
           "windows_original": {
@@ -1650,7 +1662,8 @@
             "docs/PROTOCOL.md#current-basic-cycles-291",
             "docs/PROTOCOL.md#current-basic-contest-reset",
             "docs/PROTOCOL.md#emulated-lan-acceptance",
-            "docs/PROTOCOL.md#routed-Wine-network"
+            "docs/PROTOCOL.md#routed-Wine-network",
+            "docs/PROTOCOL.md#eight-team-variants"
           ]
         },
         "gate": {
@@ -1667,7 +1680,8 @@
       },
       "issues": [
         "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/14",
-        "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/176"
+        "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/176",
+        "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/285"
       ]
     },
     {
@@ -3479,7 +3493,9 @@
           "docs/PROTOCOL.md#four-two-team-cycles",
           "docs/PROTOCOL.md#four-transport-bounds",
           "docs/PROTOCOL.md#eight-two-team-cycles",
-          "docs/PROTOCOL.md#eight-portable-battle"
+          "docs/PROTOCOL.md#eight-portable-battle",
+          "docs/PROTOCOL.md#eight-team-variants",
+          "docs/evidence/eight-player/README.md#cp213"
         ]
       },
       "coverage": {
@@ -3563,7 +3579,8 @@
               "docs/PROTOCOL.md#four-two-team-cycles",
               "docs/PROTOCOL.md#four-transport-bounds",
               "docs/PROTOCOL.md#eight-two-team-cycles",
-              "docs/PROTOCOL.md#eight-portable-battle"
+              "docs/PROTOCOL.md#eight-portable-battle",
+              "docs/PROTOCOL.md#eight-team-variants"
             ]
           },
           "windows_original": {
@@ -3630,7 +3647,8 @@
             "docs/PROTOCOL.md#emulated-lan-acceptance",
             "docs/PROTOCOL.md#four-transport-bounds",
             "docs/PROTOCOL.md#eight-two-team-cycles",
-            "docs/PROTOCOL.md#eight-portable-battle"
+            "docs/PROTOCOL.md#eight-portable-battle",
+            "docs/PROTOCOL.md#eight-team-variants"
           ]
         },
         "gate": {
@@ -3743,7 +3761,9 @@
           "docs/PROTOCOL.md#four-health-identity",
           "docs/PROTOCOL.md#four-netem-restart",
           "docs/PROTOCOL.md#eight-two-team-cycles",
-          "docs/PROTOCOL.md#eight-portable-battle"
+          "docs/PROTOCOL.md#eight-portable-battle",
+          "docs/PROTOCOL.md#eight-team-variants",
+          "docs/evidence/eight-player/README.md#cp213"
         ]
       },
       "coverage": {
@@ -3854,7 +3874,8 @@
               "docs/PROTOCOL.md#four-health-identity",
               "docs/PROTOCOL.md#four-netem-restart",
               "docs/PROTOCOL.md#eight-two-team-cycles",
-              "docs/PROTOCOL.md#eight-portable-battle"
+              "docs/PROTOCOL.md#eight-portable-battle",
+              "docs/PROTOCOL.md#eight-team-variants"
             ]
           },
           "windows_original": {
@@ -3952,7 +3973,8 @@
             "docs/PROTOCOL.md#four-health-identity",
             "docs/PROTOCOL.md#four-netem-restart",
             "docs/PROTOCOL.md#eight-two-team-cycles",
-            "docs/PROTOCOL.md#eight-portable-battle"
+            "docs/PROTOCOL.md#eight-portable-battle",
+            "docs/PROTOCOL.md#eight-team-variants"
           ]
         },
         "gate": {
@@ -3971,7 +3993,8 @@
         "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/14",
         "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/60",
         "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/110",
-        "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/176"
+        "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/176",
+        "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/285"
       ]
     },
     {
@@ -4745,7 +4768,8 @@
         "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/162",
         "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/176",
         "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/178",
-        "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/188"
+        "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/188",
+        "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/285"
       ]
     },
     {
@@ -4790,7 +4814,9 @@
           "docs/PROTOCOL.md#eight-two-team-cycles",
           "docs/PROTOCOL.md#eight-portable-battle",
           "docs/PROTOCOL.md#emulated-wan-acceptance",
-          "docs/evidence/peer-endpoints/README.md#cp212"
+          "docs/evidence/peer-endpoints/README.md#cp212",
+          "docs/PROTOCOL.md#eight-team-variants",
+          "docs/evidence/eight-player/README.md#cp213"
         ]
       },
       "coverage": {
@@ -4828,7 +4854,8 @@
               "docs/PROTOCOL.md#four-netem-restart",
               "docs/PROTOCOL.md#eight-mesh-owner-bombs",
               "docs/PROTOCOL.md#eight-two-team-cycles",
-              "docs/PROTOCOL.md#eight-portable-battle"
+              "docs/PROTOCOL.md#eight-portable-battle",
+              "docs/PROTOCOL.md#eight-team-variants"
             ]
           },
           "windows_original": {
@@ -4885,7 +4912,8 @@
             "docs/PROTOCOL.md#four-health-identity",
             "docs/PROTOCOL.md#four-netem-restart",
             "docs/PROTOCOL.md#eight-two-team-cycles",
-            "docs/PROTOCOL.md#eight-portable-battle"
+            "docs/PROTOCOL.md#eight-portable-battle",
+            "docs/PROTOCOL.md#eight-team-variants"
           ]
         },
         "gate": {
@@ -4899,7 +4927,8 @@
         }
       },
       "issues": [
-        "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/14"
+        "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/14",
+        "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/285"
       ]
     }
   ]

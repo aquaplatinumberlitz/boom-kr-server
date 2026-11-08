@@ -1,0 +1,363 @@
+{
+  "id": "CP213",
+  "previous": "CP212",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-08T08:06:42.425164+00:00",
+  "context_commit": "c0c7b9478dcf5b639a76f67ee51a5f6b927cb0f9",
+  "owner": "Codex",
+  "reviewer": "Codex",
+  "question": "Seal ongoing8team native evidence, then fulfill owner planning-only request: which existingKR contracts can move incrementally toRust now, whichfullservicebackend designs canproceed independently, and whatnative/DB/opsacceptance gates eachslice?",
+  "scope": "ReuseCP147162163210211teamoracles andCP073201startupcache; beforeprioritychange measuredactual8Free1v7/Manner4v4twooutcomes/resetStart3 andalternate8dManner1v7negative. Afterownerrequest readonly63-sourcefile/5repo+archivewiki/34CPsurvey, architecture/readinessmatrix/M0–M8PLAN/fullserviceauth-data-ops/parity-native/releasecriteria. Docs-onlyPR/sourceWIPpreserved, nonewRust/runtime.",
+  "artifacts": [
+    {
+      "name": "OriginalKR00967unchanged",
+      "sha256": "a52545c14b1fea423de655c3163d6360b628d61c1cd472b46fdbc8a9ffe15f4e"
+    },
+    {
+      "name": "Positiveactual8WineofflinecopyimportABIcorrected",
+      "sha256": "4b781fbcea21e0f6294c729b63be86ab2953d60ad83b0d0c9219359f826107ed"
+    },
+    {
+      "name": "Negativeactual8alternateofflineempty-onlyJSONguardcopy",
+      "sha256": "8d7194fd4f9a5a798282fc995f2d880ff0a702ffc1e61ca06aba221632f7e16a"
+    }
+  ],
+  "locators": [
+    "NativeFree1v7run a89bfafad04e60eb7f8c88a096b7cee4b3dff5a6f4b14ceeb5871e4db3a77c6b/358.900422507s/2126raw/892pins/4344gameplay125mode128getters;Manner4v4run af7acda326fa556f2390c135ebada709f3a97015ef9849ffd04e30e1f0371b56/369.935556539s/2102raw/929pins/4357gameplay124mode128getters.",
+    "Alternate8dManner1v7run cb7c5a72c8e818624c18b23dcfe8c8d1427b8f8fe08488cba66151659817b455/140.440712457s/755raw/508pins/1543checks/count8-cap8-teams2/rule1/DCB185branch/DE03F3return7/no104. Emptyguardnotobserved.",
+    "KnownnativeVAonly: DCB0DDcounts/DCB138rule/DCB185reject/DE03F3Startreturn/123F9C0mode setter, initialDB2A50-or8179BA/twoE64A7Breturns; 52A350copiedgetter separate. CurrentR2F96A480inputsize0-cap15/96A4EB→96E2D0expectedvalue, upstreamcauseunknown.",
+    "Surveybaseline mainc0c7b9478dcf5b639a76f67ee51a5f6b927cb0f9; oldrepo commits and63filehashes/localcopies inrust-service-survey-r1/survey.json. boom-rs86cee6f...rewriteprotocol-authorityexcluded;VN9ac207...wireonlyreference;KRold88e11...Attr-datareference. 14manualownerrequirement/designchecks."
+  ],
+  "findings": [
+    {
+      "summary": "Source-firstCP147162163210211reusescount/teamguard/selectorACK/reset/rank8/knownlifereports withoutnewnativefunction/decompile/codecscan. Newperinstancefixed4v4-1v7/operatorprofile andMannerallow-balanceguard were tested366unit/713775180realTCPsynthetic;sourceWIPstillunmerged/excludedfromplanningPR. NointeractiveKRteamchange/VN89port.",
+      "source": "design",
+      "status": "design",
+      "method": "documentation",
+      "canonical": "docs/PROTOCOL.md#eight-team-variants",
+      "evidence": [
+        "RUST213-04472",
+        "RUST213-00073",
+        "RUST213-01002",
+        "RUST213-03880",
+        "RUST213-04469",
+        "RUST213-09153"
+      ],
+      "limits": "CP213planning-onlyRustafterall6teamrunssealed/ownedcleanup0; noRustimplementation/tree/worktree/nativeRustproof ornewruntimeafterownerrequest. MainbaselineCP212/c0c7b94/K6cWANgiảlập-K7scopeddemo, Internet thật chưa kiểm. TeamproductioncodeWIPunmerged/excludedfromplanningPR, immutablecompletedrecords/audits/rawretained. Nativecopy4bpositivevsalternate8dnegative vsmodel/TCP/backenddesign distinct. Reviewwaived/AUD062through212/next216."
+    },
+    {
+      "summary": "Same8actualKRWinecopy4b Free1v7 completesAlose→B-Hwin thenB-Hlose→Awin; same8Manner4v4twooppositeoutcomes. Bothnative7peer170/56to1/pre1758states/rank8full1082outer1072inner/1803/room/reset/7Ready2–3/Start3, exactactualwire-nativejoins. Selectors0/1 persist86/87/two180all8view.4344+125/4357+124checks;128copiedgetters each separate;twoactualrunsnotconcatenated.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#eight-team-variants",
+      "evidence": [
+        "RUST213-07338",
+        "RUST213-06624",
+        "RUST213-06620",
+        "RUST213-06623",
+        "RUST213-03883",
+        "RUST213-03128",
+        "RUST213-03124",
+        "RUST213-03127"
+      ],
+      "limits": "CP213planning-onlyRustafterall6teamrunssealed/ownedcleanup0; noRustimplementation/tree/worktree/nativeRustproof ornewruntimeafterownerrequest. MainbaselineCP212/c0c7b94/K6cWANgiảlập-K7scopeddemo, Internet thật chưa kiểm. TeamproductioncodeWIPunmerged/excludedfromplanningPR, immutablecompletedrecords/audits/rawretained. Nativecopy4bpositivevsalternate8dnegative vsmodel/TCP/backenddesign distinct. Reviewwaived/AUD062through212/next216."
+    },
+    {
+      "summary": "Threecopy4bpreStartpartials retained: FreeR1D/Manner1v7R1E/R2F SIGABRT96E300family. R2passivecachedhooks confirmFinput96A480MSVCsize0/cap15→96A4EBparser→96E2D0expectedvalue. UpstreamHTTPemptycauseunknown, notlocale/teamfailure;oldCP201conditionalguardnotblanketstartupfix.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#eight-team-variants",
+      "evidence": [
+        "RUST213-00282",
+        "RUST213-04147",
+        "RUST213-07804",
+        "RUST213-04473"
+      ],
+      "limits": "CP213planning-onlyRustafterall6teamrunssealed/ownedcleanup0; noRustimplementation/tree/worktree/nativeRustproof ornewruntimeafterownerrequest. MainbaselineCP212/c0c7b94/K6cWANgiảlập-K7scopeddemo, Internet thật chưa kiểm. TeamproductioncodeWIPunmerged/excludedfromplanningPR, immutablecompletedrecords/audits/rawretained. Nativecopy4bpositivevsalternate8dnegative vsmodel/TCP/backenddesign distinct. Reviewwaived/AUD062through212/next216."
+    },
+    {
+      "summary": "Alternateofflinecopy8d(existingCP201empty-onlyguard)actual8Manner1v7Room/ownslots/7Ready/8players2teamscapacity8/rule1/balancereject/actualStartreturn7/no104-no99-noBattlewire-clock-round,1543checks/cleanup0. Emptyguardnotobserved, sono claimfixcausedsuccess/nonemptyruntimebranchcoverage ornegativeon4bcopy. CP163oneactual8syntheticroster remainsseparate.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#eight-team-variants",
+      "evidence": [
+        "RUST213-09092",
+        "RUST213-08891",
+        "RUST213-09112"
+      ],
+      "limits": "CP213planning-onlyRustafterall6teamrunssealed/ownedcleanup0; noRustimplementation/tree/worktree/nativeRustproof ornewruntimeafterownerrequest. MainbaselineCP212/c0c7b94/K6cWANgiảlập-K7scopeddemo, Internet thật chưa kiểm. TeamproductioncodeWIPunmerged/excludedfromplanningPR, immutablecompletedrecords/audits/rawretained. Nativecopy4bpositivevsalternate8dnegative vsmodel/TCP/backenddesign distinct. Reviewwaived/AUD062through212/next216."
+    },
+    {
+      "summary": "Ownerredirectstasktoplanning-onlyincrementalRust/fullservice. Readonlysurvey63files/5repos+archivewiki/34completedCP+6sealedWIP runs;mainCP212gatescoped/WIPdelivery/distinctV-S-E-N-T-D checked. ReuseKRcontractdirectly;VN/boom-rsarchitecture-authSQLitepatterns only,no wire/authority/scopeimport. Avoidredoingpack/itemfamily/P2P/codec/rankandknownauthrevocationdesignmistakes.",
+      "source": "design",
+      "status": "design",
+      "method": "documentation",
+      "canonical": "docs/RUST_SERVICE_ARCHITECTURE.md",
+      "evidence": [
+        "RUST213-09217",
+        "RUST213-09144",
+        "RUST213-09139"
+      ],
+      "limits": "CP213planning-onlyRustafterall6teamrunssealed/ownedcleanup0; noRustimplementation/tree/worktree/nativeRustproof ornewruntimeafterownerrequest. MainbaselineCP212/c0c7b94/K6cWANgiảlập-K7scopeddemo, Internet thật chưa kiểm. TeamproductioncodeWIPunmerged/excludedfromplanningPR, immutablecompletedrecords/audits/rawretained. Nativecopy4bpositivevsalternate8dnegative vsmodel/TCP/backenddesign distinct. Reviewwaived/AUD062through212/next216."
+    },
+    {
+      "summary": "Selecteddesignsame repo rust/twocrateskr-wire-kr-service/singleLinuxprocess/Tokio/boundedroomowner/directnativeUDP/SQLiteworker/Argon2id. Mechanismreadinessmatrixlinkscanonicalcontract/evidence/unknown/Rustacceptance;backendaccountDBcanprogressearlybutKRcredential-token-multisocketownershipbridgeandprofile/inventory/rewardprojectionneednativeRE. NoRustsource/tree/worktree/runtimebehaviorchange.",
+      "source": "design",
+      "status": "design",
+      "method": "documentation",
+      "canonical": "docs/RUST_SERVICE_ARCHITECTURE.md",
+      "evidence": [
+        "RUST213-09135",
+        "RUST213-09134",
+        "RUST213-09144"
+      ],
+      "limits": "CP213planning-onlyRustafterall6teamrunssealed/ownedcleanup0; noRustimplementation/tree/worktree/nativeRustproof ornewruntimeafterownerrequest. MainbaselineCP212/c0c7b94/K6cWANgiảlập-K7scopeddemo, Internet thật chưa kiểm. TeamproductioncodeWIPunmerged/excludedfromplanningPR, immutablecompletedrecords/audits/rawretained. Nativecopy4bpositivevsalternate8dnegative vsmodel/TCP/backenddesign distinct. Reviewwaived/AUD062through212/next216."
+    },
+    {
+      "summary": "PLANaloneordersM0–M8runnableslices: firstpurecodec/perconnection/nativehello-errorretry, thenfixedlobbyroom/twoBattle/four-eight;accountDBindependentearly;inventory-resultrewardtransaction-uniqueledger-outbox/admin/backuprestore/ops. Per-sliceimplementation-vsRE/dependencies/negative-stale-lifecycle/rollback/nativeacceptance;demo-internal-widerreleasecriteria distinct. Pythonreference/paritynotnativeoracle,epochqueues/low8exhaustion retained;freshserver-login-reconnect-accountresume-matchrestoreseparate. Productrewardpolicyopen/disabled0,no dates-%-CPestimates.",
+      "source": "design",
+      "status": "design",
+      "method": "documentation",
+      "canonical": "docs/RUST_SERVICE_ARCHITECTURE.md",
+      "evidence": [
+        "RUST213-09131",
+        "RUST213-09135",
+        "RUST213-09144"
+      ],
+      "limits": "CP213planning-onlyRustafterall6teamrunssealed/ownedcleanup0; noRustimplementation/tree/worktree/nativeRustproof ornewruntimeafterownerrequest. MainbaselineCP212/c0c7b94/K6cWANgiảlập-K7scopeddemo, Internet thật chưa kiểm. TeamproductioncodeWIPunmerged/excludedfromplanningPR, immutablecompletedrecords/audits/rawretained. Nativecopy4bpositivevsalternate8dnegative vsmodel/TCP/backenddesign distinct. Reviewwaived/AUD062through212/next216."
+    }
+  ],
+  "verification": [
+    {
+      "check": "Actual8copy4bFree1v7twooppositeoutcomes/resetStart3/4344gameplay125mode128getters",
+      "result": "pass",
+      "evidence": [
+        "RUST213-07338",
+        "RUST213-06624",
+        "RUST213-06620",
+        "RUST213-06626"
+      ],
+      "limits": "CP213planning-onlyRustafterall6teamrunssealed/ownedcleanup0; noRustimplementation/tree/worktree/nativeRustproof ornewruntimeafterownerrequest. MainbaselineCP212/c0c7b94/K6cWANgiảlập-K7scopeddemo, Internet thật chưa kiểm. TeamproductioncodeWIPunmerged/excludedfromplanningPR, immutablecompletedrecords/audits/rawretained. Nativecopy4bpositivevsalternate8dnegative vsmodel/TCP/backenddesign distinct. Reviewwaived/AUD062through212/next216."
+    },
+    {
+      "check": "Actual8copy4bManner4v4twooppositeoutcomes/resetStart3/4357gameplay124mode128getters",
+      "result": "pass",
+      "evidence": [
+        "RUST213-03883",
+        "RUST213-03128",
+        "RUST213-03124",
+        "RUST213-03130"
+      ],
+      "limits": "CP213planning-onlyRustafterall6teamrunssealed/ownedcleanup0; noRustimplementation/tree/worktree/nativeRustproof ornewruntimeafterownerrequest. MainbaselineCP212/c0c7b94/K6cWANgiảlập-K7scopeddemo, Internet thật chưa kiểm. TeamproductioncodeWIPunmerged/excludedfromplanningPR, immutablecompletedrecords/audits/rawretained. Nativecopy4bpositivevsalternate8dnegative vsmodel/TCP/backenddesign distinct. Reviewwaived/AUD062through212/next216."
+    },
+    {
+      "check": "Actual8alternatecopy8dManner1v7native7/no104/1543checks",
+      "result": "pass",
+      "evidence": [
+        "RUST213-09092",
+        "RUST213-08777"
+      ],
+      "limits": "Alternatecopyguardnotobserved, nostartupfixornative4bnegativeclaim."
+    },
+    {
+      "check": "Originalcopy4bnegative/startupfullcase",
+      "result": "fail",
+      "evidence": [
+        "RUST213-00282",
+        "RUST213-04147",
+        "RUST213-07804"
+      ],
+      "limits": "Retained3partials/sourcefrozen/cleanup0. CurrentemptyJSONtriggerconfirmed,upstreamcauseunknown."
+    },
+    {
+      "check": "366server/13bundle+5preset onunchangedWIP + initialwrongunittestimportretained",
+      "result": "pass",
+      "evidence": [
+        "RUST213-00073",
+        "RUST213-00057",
+        "RUST213-00064",
+        "RUST213-00059"
+      ],
+      "limits": "Tests/model-filecontrolsnotnativeproof. PlanningPRdoesnotincludeWIPcode; initialmoduleinvocationfailedimport, discovercommandsrightandpass."
+    },
+    {
+      "check": "Readonlysource-reuse/14manualplanningrequirements/noRusttree/sourceWIPpreservation/docscontent",
+      "result": "pass",
+      "evidence": [
+        "RUST213-09217",
+        "RUST213-09144",
+        "RUST213-00061"
+      ],
+      "limits": "Manualarchitecturereviewnotautomatedsemanticcertification. Fullhistory/localandexactcommittedheadchecksrequired beforemerge."
+    },
+    {
+      "check": "Rustimplementation/nativeE2E/accountownership/inventoryrewardprojection/productionops",
+      "result": "not_run",
+      "evidence": [
+        "RUST213-09131",
+        "RUST213-09134"
+      ],
+      "limits": "Explicitplanning-onlyscope; noRustbuild/claims. M0–8futureacceptances/REgaps, Internet thật chưa kiểm."
+    }
+  ],
+  "evidence": [],
+  "evidence_manifests": [
+    {
+      "path": "docs/evidence/checkpoints/evidence/CP213-rust-service-plan-and-team-evidence.json",
+      "bytes": 2536956,
+      "sha256": "0e2ed92bfcf1a5ca3c71c9b97c30258095397aeb603d8656e2920918eb6b9211",
+      "count": 9233
+    }
+  ],
+  "delta": {
+    "added": [
+      "Sealedteampositives4bFree1v7/Manner4v4twooppositeoutcomes/resetStart3;alternate8d8nativeManner1v7negative withstrictcopylimits.",
+      "KnownemptyJSONtriggercaughtusingoldcache,threefailedpartialskept;sourceWIPunmerged.",
+      "Ownerplanning-onlyRustdirective,read-onlysourcehashsurvey,architecture/readinessmatrix/backenddata-ops/paritystrategy andPLANM0–8nativeDBrestoreacceptance."
+    ],
+    "corrected": [
+      "Legacycontrollerlabel4v4notFree1v7semanticoracle;actualteams/death/rankarraysverified.",
+      "R1hotteamprobesexhaust80budgetonjoin2–5;R2filter8beforebudget/independentStartreturn, nofinal8countinferencefromearlysample.",
+      "Currentactiveemptyretry/teamplan supersededbyownerRustplanningworkorder;Internetbacklognotgateblocker;catalogas_of211stale→213butper-featureevidencelevelsnotraisedfromgates."
+    ],
+    "superseded": [
+      "NEXT-EIGHT-TEAM-VARIANTS/NEXT-EIGHT-STARTUP-EMPTY-CONTROL boundedlocalmeasurementsdoneinscope,deliverycodependingseparate.",
+      "ImplicitcontinueREaftereachCP doesnotauthorizeRustcode/newruntimeinlatestplanning-onlyrequest;PLANnowsoleRustmilestoneorder."
+    ]
+  },
+  "blockers": [
+    "KRcredential/tokenhandoff/multisocketownershipandprofileinventoryrewardwireprojectionunknown;designbackendcanprogressbutfullauthnotproved.",
+    "Dynamicmultiroom/member/teamchange/generalvalidator/full4-8items/resume/rewardtrustedauthorityunknown;openselectivelywhenRustsliceblocked.",
+    "TeamcodeWIPunmerged/excludedfromplanningPR;allRustmilestonesnotimplemented/nativeRustnotrun. Internet thật chưa kiểm separatebacklog,nogatedependency."
+  ],
+  "next_steps": [
+    {
+      "id": "NEXT-EIGHT-TEAM-VARIANTS",
+      "task": "KRE-005b",
+      "state": "closed",
+      "action": "LocalnativeFree1v7/Manner4v4positive andalternatecopyManner1v7negative scopedrecorded;notinteractiveC2Steamchange;codeWIPdeliverydeferredtoseparatetask.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-EIGHT-STARTUP-EMPTY-CONTROL",
+      "task": "KRE-005b",
+      "state": "closed",
+      "action": "CurrentemptyJSONinputcaught/alternatecopynegativepassesbutguardunobserved,rootcauseunknownretained;noglobalfixornewretryrequiredforplanning.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-RUST-SERVICE-PLAN",
+      "task": "KRE-074",
+      "state": "closed",
+      "action": "Ownerplanningdeliverabledocs/survey/architecture/matrix/M0–8acceptancewritten,requiredPRchecksbeforemerge;noRustimplementationauthorizedinthisround.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-RUST-FIRST-SLICE",
+      "task": "KRE-074",
+      "state": "active",
+      "action": "PlannednextimplementationperPLAN: M0pinnedPythonbaseline thenM1pureKRcodec/perconnection/nativehello-errorretry;M5backendearlyindependent. Notstarted;latestplanning-onlyroundendswithdocsPR,nonewRusttree/runtime. Trackepic#285withoutduplicatedplan.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    }
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-11-08T08:06:42.425164+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "Codexsolo/source-reuse/runtime-beforeownerprioritychange/manualplanningreview/selfcheck. Independentreviewwaived,notapproved. ExactcommittedPRheadchecksrequired;planningPRdocs-onlyandWIPexcluded.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Owner explicitly requested solo, no workers/review."
+    }
+  },
+  "docs_sync": [
+    {
+      "path": "AGENTS.md",
+      "state": "updated",
+      "reason": "CP213sealedteamcopy-specificproof/unmergedstatus/ownerplanning-onlyRustsurvey-design-matrix/PLANmilestones/unknowns/issue285-14linkedbeforecomplete;AUD062through212/next216unchanged."
+    },
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "CP213sealedteamcopy-specificproof/unmergedstatus/ownerplanning-onlyRustsurvey-design-matrix/PLANmilestones/unknowns/issue285-14linkedbeforecomplete;AUD062through212/next216unchanged."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "CP213sealedteamcopy-specificproof/unmergedstatus/ownerplanning-onlyRustsurvey-design-matrix/PLANmilestones/unknowns/issue285-14linkedbeforecomplete;AUD062through212/next216unchanged."
+    },
+    {
+      "path": "docs/RUST_SERVICE_ARCHITECTURE.md",
+      "state": "updated",
+      "reason": "CP213sealedteamcopy-specificproof/unmergedstatus/ownerplanning-onlyRustsurvey-design-matrix/PLANmilestones/unknowns/issue285-14linkedbeforecomplete;AUD062through212/next216unchanged."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "updated",
+      "reason": "CP213sealedteamcopy-specificproof/unmergedstatus/ownerplanning-onlyRustsurvey-design-matrix/PLANmilestones/unknowns/issue285-14linkedbeforecomplete;AUD062through212/next216unchanged."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "updated",
+      "reason": "CP213sealedteamcopy-specificproof/unmergedstatus/ownerplanning-onlyRustsurvey-design-matrix/PLANmilestones/unknowns/issue285-14linkedbeforecomplete;AUD062through212/next216unchanged."
+    },
+    {
+      "path": "docs/REFERENCES.md",
+      "state": "updated",
+      "reason": "CP213sealedteamcopy-specificproof/unmergedstatus/ownerplanning-onlyRustsurvey-design-matrix/PLANmilestones/unknowns/issue285-14linkedbeforecomplete;AUD062through212/next216unchanged."
+    },
+    {
+      "path": "docs/features.json",
+      "state": "updated",
+      "reason": "CP213sealedteamcopy-specificproof/unmergedstatus/ownerplanning-onlyRustsurvey-design-matrix/PLANmilestones/unknowns/issue285-14linkedbeforecomplete;AUD062through212/next216unchanged."
+    },
+    {
+      "path": "docs/COVERAGE.md",
+      "state": "updated",
+      "reason": "CP213sealedteamcopy-specificproof/unmergedstatus/ownerplanning-onlyRustsurvey-design-matrix/PLANmilestones/unknowns/issue285-14linkedbeforecomplete;AUD062through212/next216unchanged."
+    },
+    {
+      "path": "docs/evidence/owner-directives/rust-service.json",
+      "state": "updated",
+      "reason": "CP213sealedteamcopy-specificproof/unmergedstatus/ownerplanning-onlyRustsurvey-design-matrix/PLANmilestones/unknowns/issue285-14linkedbeforecomplete;AUD062through212/next216unchanged."
+    },
+    {
+      "path": "docs/evidence/rust-service/README.md",
+      "state": "updated",
+      "reason": "CP213sealedteamcopy-specificproof/unmergedstatus/ownerplanning-onlyRustsurvey-design-matrix/PLANmilestones/unknowns/issue285-14linkedbeforecomplete;AUD062through212/next216unchanged."
+    },
+    {
+      "path": "docs/evidence/rust-service/survey.json",
+      "state": "updated",
+      "reason": "CP213sealedteamcopy-specificproof/unmergedstatus/ownerplanning-onlyRustsurvey-design-matrix/PLANmilestones/unknowns/issue285-14linkedbeforecomplete;AUD062through212/next216unchanged."
+    },
+    {
+      "path": "docs/evidence/eight-player/README.md",
+      "state": "updated",
+      "reason": "CP213sealedteamcopy-specificproof/unmergedstatus/ownerplanning-onlyRustsurvey-design-matrix/PLANmilestones/unknowns/issue285-14linkedbeforecomplete;AUD062through212/next216unchanged."
+    },
+    {
+      "path": "tools/README.md",
+      "state": "updated",
+      "reason": "CP213sealedteamcopy-specificproof/unmergedstatus/ownerplanning-onlyRustsurvey-design-matrix/PLANmilestones/unknowns/issue285-14linkedbeforecomplete;AUD062through212/next216unchanged."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/review.json",
+      "state": "updated",
+      "reason": "CP213sealedteamcopy-specificproof/unmergedstatus/ownerplanning-onlyRustsurvey-design-matrix/PLANmilestones/unknowns/issue285-14linkedbeforecomplete;AUD062through212/next216unchanged."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
+      "state": "updated",
+      "reason": "CP213sealedteamcopy-specificproof/unmergedstatus/ownerplanning-onlyRustsurvey-design-matrix/PLANmilestones/unknowns/issue285-14linkedbeforecomplete;AUD062through212/next216unchanged."
+    }
+  ]
+}

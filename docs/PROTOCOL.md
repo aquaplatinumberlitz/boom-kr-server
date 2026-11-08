@@ -1,12 +1,53 @@
 # KR 00967 — contract tương thích client gốc
 
-Revision kr-legacy-contract-r1; cập nhật08/11/2026 JST (CP212; AUD062 periodic qua212; audit kế216).
+Revision kr-legacy-contract-r1; cập nhật08/11/2026 JST (CP213; AUD062 periodic qua212; audit kế216).
 **Contract có bằng chứng từng phần; phạm vi nghiệm thu codec/hello ở [PLAN](PLAN.md#k2-acceptance)**.
 Lộ trình và thứ tự task chỉ giữ ở [REWRITE_PLAN — KRE](PLAN.md).
 Đây là contract của repo server KR. ADR0009 của bản viết lại là nguồn lịch sử để so sánh;
 vị trí tài liệu nguồn ghi trong [REFERENCES](REFERENCES.md), không phải giao thức dùng cho client KR gốc.
 Giới hạn trong mục mang CP ID là phạm vi tại thời điểm đo đó; bổ sung mới ghi ở mục kế tiếp,
 không sửa raw/checkpoint cũ. Câu hỏi còn mở và phép kiểm tiếp giữ ở [RESEARCH](RESEARCH.md#q-023).
+
+<a id="rust-port-boundary"></a>
+### Ranh giới contract khi chuyển Rust — design CP213
+
+[Thiết kế/ma trận readiness](RUST_SERVICE_ARCHITECTURE.md), [thứ tự/acceptance duy nhất](PLAN.md#rust-service-milestones),
+[unknown/RE tối thiểu](RESEARCH.md#rust-service-gaps), [provenance](evidence/rust-service/README.md).
+Đây là kế hoạch, **chưa có implementation/nativeRust**. Contract KR giữ ở các mục bên dưới, không sao chép
+opcode/layout thành spec Rust riêng. Chọn policy đã nghiệm thu có revision, không đổi authority trong port.
+Gate Python scoped K0–K7 không chứng minh mọi feature/catalog/fullgame hoặc accountauth/inventory/reward.
+AccountDB/backendadmin/transaction là design công ty; adapter credential/session/projection cần bằng chứng KR.
+Không nhập wireInputCommand/Snapshot/authoritativeengine của boom-rs hoặc opcodeVN. Python RE/reference
+vẫn giữ; parityPython↔Rust/encoder tựsinh không oracle độc lập, nativeend-to-endRust là acceptance riêng.
+Wine/LANgiảlập/K6cWANgiảlập giữ quyết địnhowner; Internet thật chưa kiểm, khôngdependencyngầm.
+
+<a id="eight-team-variants"></a>
+### Tám actualclient: Free 1–7 và Manner 4–4 qua hai kết quả/reset — CP213
+
+[Raw/recipe/hash](evidence/eight-player/README.md#cp213), [câu hỏi/phép thử](RESEARCH.md#gap-lobby-identity-followup),
+[thứ tự duy nhất](PLAN.md#current-order). `kr_runtime/confirmed` trong profile/copy dưới; team/rank/fuse policy `design`.
+
+| Câu hỏi / nguồn tái sử dụng | Delta / kết quả KR mới |
+|---|---|
+| CP147 capacity8/Free4v4-1v7; CP162 actualselector81→86/87/180; CP163 Mannerbalancedguard8negative; CP2102118life/rank/reset | Không giải mã lại codec/175/rows/map/teamguard. Fixed operatorlayout4v4/1v7 theo instance, allowManner cần measured echo policy; không port VN89 hoặc mutate module-global roster |
+| Cùng8actualFree1–7 | Copy4b/32TCP/8prefix-display-IP-netns/directbridge/ExVillage01/Free0. Vòng1 AactualSpace/selftrapdeath→B–H thắng; vòng2 B–HactualSpace/trapdeath→A thắng. Full8life-before175/7peer170/rank1751082-inner1072/1803/room/7Ready2–3/Start3.4344gameplayjoins/125modejoins/128copiedgetters/358.900s/2126raw/892pins/cleanup0 |
+| Cùng8actualManner4–4 | Copy4b/current8/fixedalternatingteams/selector1; hai opposite4v4 outcomes/reset/Start3.4357gameplayjoins/124modejoins/128copiedgetters/369.936s/2102raw/929pins/cleanup0. Không suy Free→Manner chỉ từ caption hoặc serviceconfig |
+| Modepersistence qua cả8view | Mỗi view có3native123F9C0setter: initial DB2A50(create86) hoặc8179BA(join87), haiE64A7B(return180), đúng0/1. Actualwirehash/typedfield/callchronology và3actualStartreturns0 độc lập. R1counts/rule80budget hết lúcjoin2..5; không gọi earlybalance_reject là final8rejection. R2filterfull8 trước budget, nativeFree8/2teams/selector0 đã thấy |
+| Servicecontrols | TeamProfile instance riêng; rank/outcome chỉtwofixedfamilies, Mannerunbalanced104 reject trước roundID/key/allocation.713Free1v7/775Manner4v4/180Manner1v7 actualTCP controls (application C2S tổng hợp),366unit.13bundle+5preset tests; packaged8battle giữfixed4v4/khôngoverrideManner. Không coi synthetic104 lànativeclick |
+| Startupcontrols/negative | Original4b FreeR1D và Manner1v7R1E/R2F đều preBattleSIGABRT96E300 family, raw giữpartial. R2Factual96A480inputsize0/cap15, parser96A4EB→throw96E2D0 expectedvalue; khớp cacheCP073201, không locale/teamfailure. Nguồn emptyHTTP/upstream còn unknown; guardempty-onlycandidate8d7194 có control riêng, không tự áp kết quả lên4b |
+
+Protectedlife đọc native runtime;128getter/run dùng copied52A350/Unicorn tách riêng. OS Space/gameevents/currentkey,
+drainedbombs/freshsurvivor21/settle8/rank/reset kiểm cùng-run; không ghép hai run thành một trận. Tutorial/ảnh rank chỉ
+bổ sung, không screenshot-onlyproof. Legacy controller early_completion label nói4v4 ở cả Free1v7; raw giữ nguyên,
+verifier mới đối chiếu đúng per-slotteam/death/rankvector, không dùng label làm oracle.
+
+**Giới hạn:** operator fixedroster, chưa native interactiveC2Steamchange/generalteamfamilies/native9/fullroomauth;
+full8items/terrain/kim/cứu/ability/raylength chưa tíchhợp. Fuse6/report-derivedlife/rank/zeroeconomy/settle8 là emulator
+design, không servergốc/worldauthority. Manner1–7 nativeguard đã có CP163(mộtactual/tám tổnghợp); các8actualcopy4b
+negative chưa tớiStart nên vẫn partial. Alternatecopy8d có8nativecount8/selector1/balancebranch/return7/no104,
+1543checks/140.441s/755raw/508pins/cleanup0; emptyguardkhônghit nên không causalstartupfix hoặc runtimeemptybranchcoverage.
+Code source/copy4bpositive giữ riêng, không giảm tiêu chí hoặc biến alternatecopy thành unmodifiedclientproof.
+K6c WAN giả lập/K7 đã nghiệm thu CP212; Internet thật chưa kiểm, không dependency các gate đã đạt.
 
 <a id="emulated-wan-acceptance"></a>
 ### K6c WAN giả lập — phạm vi mạng được nghiệm thu tại CP212

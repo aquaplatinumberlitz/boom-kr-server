@@ -65,3 +65,10 @@ diệt/kim/oxy, Free/Manner và bảng basic/maximum nhân vật. Chỉ RE Attr/
 hoặc phần khác biệt còn thiếu của KR00967; không lặp suy ý nghĩa từ đầu, không mở toàn mode/item
 ngoài gate hiện hành. Wiki không là trace native và không quyết định thứ tự va chạm cùng tick.
 Bảng đối chiếu áp dụng/giới hạn giữ ở [PROTOCOL](PROTOCOL.md#trusted-wiki-reuse); PLAN vẫn giữ thứ tự.
+
+## Khảo sát kiến trúc Rust service KR00967 — CP213
+
+[Survey commit/hash từng file](evidence/rust-service/survey.json) và [reuse decisions/ma trận](RUST_SERVICE_ARCHITECTURE.md)
+bao phủ nguồn hiện hành, boomkr-re/VN/boom-rs/l10n/archive/wiki đúng câu hỏi. RepoRustmới không tạo;
+PLAN giữ duy nhất thứ tự triển khai. boom-rs là reference kiến trúc auth/SQLite/queue/ops,
+không KR wire/authority/scope mới; VNserver không port nguyên. Nội dung survey là read-only, không mới nativeproof.

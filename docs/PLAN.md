@@ -1,7 +1,7 @@
 # Kế hoạch server giả lập KR 00967
 
 Nguồn chuẩn của project `boom-kr-server`; bản nhập từ plan đã được dsh1/dsh2 review tại `1eee46d`.
-CP212: K6c WAN giả lập và K7 hardening/demo scoped đạt sau đối chiếu bằng chứng. **Internet thật chưa kiểm**. AUD062 qua212/audit kếCP216; tiếp actual team variants đã chuẩn bị, không mở lại codec/NAT đã đủ proof.
+CP213: bàn giao thiết kế/lộ trình Rust KRE-074/#285; chưa triển khai Rust. Native8teamresults đã seal là input chưa giao code; K6c WAN giả lập/K7 scoped đạt CP212, Internet thật chưa kiểm. AUD062qua212/kếCP216.
 
 
 ### Mục tiêu, baseline và phạm vi
@@ -58,9 +58,205 @@ với client Rust không chứng minh có thể điều khiển client KR bằng
 <a id="current-order"></a>
 ### Thứ tự công việc hiện hành
 
+**Chỉ đạo công ty08/11: nghiên cứu/kế hoạch Rust trước; đợt này không triển khai Rust hoặc đổi runtime.**
+[KRE-074/#285](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/285) là task hiện hành. <!-- active-issue: 285 -->
+Baseline kiểm từ CLI/Git: CP212/main mergePR284 c0c7b94, K0–K7 đạt **đúng scope từng acceptance**,
+K6c WAN giả lập; **Internet thật chưa kiểm**. CP213 ghi cả kết quả team đã seal trước khi chuyển việc và
+kế hoạch này; team source code vẫn WIP chưa main, không dùng nó làm baselineRust đầu hoặc claimRustđãchạy.
+[Decision owner](evidence/owner-directives/rust-service.json), [thiết kế/ma trận readiness](RUST_SERVICE_ARCHITECTURE.md),
+[survey/hash](evidence/rust-service/survey.json), [RE gaps](RESEARCH.md#rust-service-gaps).
+
+Đầu ra đợt này là docs/commit/PR/exacthead; không tạo Cargo/repo/worktree Rust, không start thêm run.
+Sau bàn giao, **lát cắt nên viết đầu tiên là RUST-M1**, chuẩn bị RUST-M0 cùng task: pure KR codec + per-connection
+state và một local native hello/login-error/retry path trên profile đã đo. Nó tạo chỗ kiểm độc lập và reusable
+runtime trước khi chạm gameplay/DB/auth; không clone toàn ProbeService hoặc viết engine authoritative mới.
+RUST-M5 backend có thể làm ngay sau nền M1, không chờ toàn Battle/mọi item RE. Clientaccountbridge vẫn gate riêng.
+Chỉ quay lại RE nhánh chặn slice đang thực hiện; nguồn cũ→khoảng trống→phép đo tối thiểu, không dàn trải.
+
+<a id="rust-service-milestones"></a>
+### Milestone Rust: dependency, đầu ra và nghiệm thu
+
+Các ID dưới là milestone design, **chưa implementation, chưa qua gate Rust**. Không mở hàng loạt issue trùng;
+implementation issue chỉ tách khi bắt đầu milestone, gắn existingfeature/KRE/contract/evidence và baseline.
+Owner/selfcheck Codex, independentreviewwaived; PR/exacthead vẫn bắt buộc.
+
+| Milestone / giá trị bàn giao | Dependency thật và việc độc lập |
+|---|---|
+| RUST-M0 Baseline/reproducibility | Đã có mainCP212, chọn fixedPythonprofile; gom manifest trước M1. Không đợi teamWIP/fullRE |
+| RUST-M1 Foundation + wire/connection chạy native | M0. Đây là lát cắt code đầu; M5 thiết kế backend/schema có thể chuẩn bị cùng lúc, solo thực hiện tuần tự theo mức unblock |
+| RUST-M2 Bootstrap→local login/identity→sảnh→fixedroom | M1; chỉdiagnosticidentity, chưa xác thực đầy đủ. Unknownwire mở đúng consumer của request |
+| RUST-M3 Hai client native→Battlebasic→result/reset/trận2 | M2; account/DB backend không cần đợi M3. GiữUDP trực tiếp, không authoritativeengine rewrite |
+| RUST-M4 Bốn rồi tám/đội hình cố định theo contract | M3; baselinefourmain trước eight; dùng CP213teamdelta sau deliveryriêng, không chờ mọi item/mission |
+| RUST-M5 Account/profile/DB và sessionownership | Backend phụ thuộc M1/M0design, có thể đi trước M3/M4; binding client phụ thuộc M2 + measuredKRauthbridge. Không khôi phục phiên tài khoản/khôi phục trậnmặcđịnh |
+| RUST-M6 Inventory/progression/result-reward durability | Backend M5, actualmatchinput M3; KRwireprojection/effect cần từngconsumer. Không cần full8/mọiitem để làm ledger |
+| RUST-M7 General lobby/rooms/selection và userflows cần cho nội bộ | M2 + M5ownership, M3lifecycle; M4 chỉ cần nếu mở8capacity. RE roomlist/member/character/team/equip theo phép đo, không mọi mode |
+| RUST-M8 Hardening/admin/backup/restore/package và nghiệm thu service | M1–3/M5–7 cho internalservice; M4 nếu quảng bá4/8 theo scope. Ops/tests phát triển từM1, không chờ cuối mới thêm |
+
+```mermaid
+flowchart LR
+  M0["M0 Baseline"] --> M1["M1 Wire / connection"]
+  M1 --> M2["M2 Local identity / phòng"]
+  M2 --> M3["M3 Battle hai client"]
+  M3 --> M4["M4 Bốn / tám client"]
+  M1 --> B5["M5 Backend account / DB"]
+  M2 --> C5["M5 Client ownership bridge"]
+  B5 --> C5
+  M3 --> M6["M6 Inventory / result-reward"]
+  C5 --> M6
+  M2 --> M7["M7 Phòng tổng quát"]
+  M3 --> M7
+  C5 --> M7
+  M6 --> M8["M8 Nghiệm thu vận hành"]
+  M7 --> M8
+  M4 -. "nếu công bố hỗ trợ 4/8" .-> M8
+  M1 -. "ops / test bắt đầu sớm" .-> M8
+```
+
+**RUST-M0 — đóng băng một baseline phục vụ rollback.**
+Phạm vi: Pythonmerged/copy4b/47fixture2basic hoặc67filefourbundle đãnative, config/hash policy/recipe/hash raw,
+không dùng bảnWIP8teams như code đãmerge. Input CP180/181 codec, CP186–189 basic, CP190/198 package,
+CP203–207fourhardening và CP212gate decisions; [limits](PROTOCOL.md#authority).
+Implementation khi mở: fixturemanifestloader trong kr-service, runtime/backendselector trong harness qua config
+đóng băng **trước** run; không viết packetgrammar mới. RE: không có nếu artifacts đủ; thiếu một input thì lấy từ
+existingseal, không regenerateoracle. Acceptance: original/copy/profile/hash source kiểm đầy đủ, backend hiện tại
+reproducible command và cleanup tài nguyên thuộc run, source/WIP/failedruns tách rõ. Không phải chạy lặp lại mọi gate cho bước docs.
+Rollback: chọn exactPythonbundle/fixture/copy ở thư mục riêng; không mutate prefix/source của run đang chạy.
+Chuyển M1 khi provenance/permissions/pins đầy đủ; unknown coldreliability/fullassetprofile không là scopeclaim.
+
+**RUST-M1 — lát cắt đầu tiên nên viết.**
+Module: kr-wire primitive/typedfields/crypt-CRC/frame/seq; kr-service config/listener/connection/stage tối thiểu,
+boundedread/write/timeout và logbuild/connection. Input KR-B002/B003/CP057/180/181, fixtureunknownheader giữ opaque,
+mode0hello và mode2/3 đúng scope; Python vẫn phục vụ mọi tính năng còn lại, harness vẫn nguồn input native.
+Implementation: toolchainlock/CI Linuxfmt-clippy-test; bytesexact encode/decode với **retained independent native**
+vectors, arbitrarysplit/coalescing/partialEOF/invalidlength/CRC/seqwrap boundary theo boundsđãbiết; không build
+toàn codec mode chưa khôi phục. RE chỉ khi actual Rust trace lệch oracle hiện có; giới hạn vào field/caller đó.
+Acceptance: synthetic/kernelTCPnegative khôngpanics/unboundedallocation, theo connection/directionseq/reset độc lập;
+clientKRcopyWine thật nhận hello/validresult1, cùng processretry/newloginconnection/reset theo CP181 vớiRust
+listeners và sealedcursor native/CRC/sockettrace, không TCPacceptonly. Trong lát cắt đầu được dừng ở native
+login-error/retry, chưa cần DB/sảnh hoàn chỉnh. No badCRCsuccess/sai stage mutation.
+Rollback: route toànrun sangPython saucleanup, khônghot-swap connection. Chuyển M2 khi oracle/parity/đường native
+và failurelog đủ; mode/headerunknown không suy toàn bộ codec, vẫn failclosed ngoài profile.
+
+**RUST-M2 — đường xuyên bootstrap→localidentity→sảnh→fixedroom.**
+Module KRpacketadapters/bootstrap/login/channel/lobby/room; legacy stage/ports/caches/encoding theo CP186/187/198.
+Implementation: chuyển bootstrapreplies/typedredirect/137-291/profile-cache/room81-86-87-106-110/Ready và
+loading từ pinnedprofile thành builders nhỏ, fieldopaque giữprovenance. Không nhét dịch vụ hoàn chỉnh trongfixtureblob;
+không đổi packetheader đồng thời với token/account design. Python giữ servingBattle và RE/reference; native fullrun
+chọn một backend từ đầu, không chia giữa active connection khi chưa có handoffcontract.
+RE: cold/missing/warm/profileversion/error đã biết dùng lại; chỉ nếu dynamicidentity/listroom fields chặn mới trace.
+Acceptance: actualABWine tên/ID/ownslot khác, sảnh/room/spawn đúngprofile; sai socket/stage/version/identity
+negative rõ; hostBack→survivorclear/chief→rejoin/Ready, oneunloadedclient không cho GO sớm. Verifybytes/seq/
+cursor native/actor và screenshotsbổsung. No xác thực đầy đủ/passwordsignup/multichannel/multiroomclaim.
+Rollback: fullPythonprofile, không trộn transportsRust/Python trong mộtlease. Chuyển M3 sau native2actualbarrier.
+
+**RUST-M3 — Battle hai client và hai trận liên tiếp.**
+Module round/policies bomb, claims, basictterrain, life-result, scheduler/fences/peerendpoints; input main
+CP188/189/155/171–174 và authoritymatrix. Scope một ExVillage01/basicBomb-Fluid-Roller/current291/profile/copy,
+UDP trực tiếp, haiownerbom/contest/56→1/result/room/reset/Start3; kim/cứu optional port riêng sau basic, không tự kèm
+mọiitem. Fuse6/drop/rank/reportguards giữD revision, không quyền quyết định thế giới gamerewrite.
+Implementation: allocator/reservation/159158/124165/142gatedterrain/keys/tickets/witness-result/175180; no
+duplicatecommit/latejob, queueentrytag epoch+recipient. RE: chỉ discrepancy currentcell/life/report đang chặn;
+nguồn kim/cứu có sẵn thì chuyển riêng rồi nativepair/depleted/reset, không rediscoverconsumer.
+Acceptance: actualKRABRust A↔B peerprogress/PCAPwireSHA→nativeAPI/key/apply; actual118 cảhai→sameIDentity/
+explode; mộtwinner/effect mỗiclaimindex, 3basichiệu ứng natives/reset, two normal outcomes/Ready2/Start3.
+Selectedmalformed/duplicate/stale/wrongslot/key/deadowner/không cấp ID/state và **exact UDP cũ ởvòngmới + currentpositive**;
+lateTCP/sendqueue/EOF/bomchờ đi đúnggeneration. HostEOF peer vềphòng/IDclear/chief/fencepastdue; no deadlock.
+NegativekernelTCP và native lifecycle tách nguồn; không spoof packet chứng minh originalauthority.
+Rollback: before-runPython pin, restart affectedround không cấp thưởng. Chuyển M4 khi native proof + negatives scoped đủ;
+auth/collisionallmaps/low8wrap chưa đo giữ debt, không tuyên bố toàn bộ game.
+
+**RUST-M4 — bốn rồi tám và nhóm đội hình cố định.**
+Module sessionbindings/roomcapacity/Readybarrier/roster/peer/ranklist, per-role measuredstats; input
+CP202–211 mainfour/eight, CP213localteamcontracts chỉ sau code delivery riêng. Không mặc định eightclient
+acceptance cho K6c/K7 lịch sử. Implementation: loại hardcodeAB thành boundedroster trong model, four2v2 trước
+eight; identity vẫn diagnosticnếu M5bridgechưa xong. FixedFree4v4/1v7 và balancedManner4v4, rejectunbalanced.
+RE: interactiveC2Steamchange chỉ nếu sản phẩm cần userclickchọnđội; fixedpreset của operator không thay proof đó.
+Acceptance: Rust4actualcùng process/opposite2v2/reset/Start3/hostguestEOF-survivors; rồi8actual32TCP/ownslots/
+56directedremoteprogress/eightdistinctcap-power/8ownerbom/oppositerank8/reset. Free1v7/Manner4v4 haioutcomes/
+selector86-87-180persist; Manner1v7 nativecheck7/no104 theo exactcopyhash/profile, synthetic104guard riêng.
+Ninthjoinrejectkhông cấp ID/state cần actualadmissionbridge/consumer; unknownsourceIPnegative khôngnative9fullroom.
+Guestthiếu ACK load/lateACK/deadowner/disconnect/backpressure không làmpartialbroadcast→grant. Four/eight native
+results không chứng minh items/kim/cứu4/8. Rollback package/profile percapacity, fenceemptyroom trước thay;
+chuyển milestone khi từng capacity advertised đủ; không chờ modesphụ.
+
+**RUST-M5 — account/profileDB và ownership; có thể tiến hành độc lập gameplay.**
+Module application/accounts/profiles/session/store/sqlite/migrations/adminCLI; architecture định schema/invariants.
+Backendimplementation: Argon2id/PHC/CSPRNG/hash-atrest/sessionTTL-revoke/oneactive; account→player→wireidentity,
+lease nhiềustage/sockets thay rolearrival/sourceIP, nameencoding/bounds, schema/version/conflict/startupvalidation.
+Backendtests realSQLite concurrentlogin/duplicateuser/hashquota/dummyverify/entropyfailure/expiry-clockrollback/
+ban-reset-revoke/freshserver/DBbusy-diskfull. Python vẫn diagnosticRE, không là oracleauth backend.
+RE riêng **bắt buộc** trước KRbinding: exact credential/token localroute, request→verification→identity/projection,
+crosssocketlink/retry/sai account/replay/expired/revoked/unknownprincipal. Không coi auth137success/name291
+là ownership. Tối thiểu hai testaccounts hai client native, accountA không được claimplayerB qua channelswap.
+Acceptancebackend có thể đạt trước M3/M4; acceptanceclient chỉ khi ca native dương tính/negative/expiry và freshlogin
+trênRust cósource. Nếu không có bridge xác thực an toàn khảthi thì clientaccountgateblocked, vẫn deliverCLI backend/tests.
+Không tự thêm màn login/register vàoKR hoặc bypassprovider thànhauthproof. Rollback diagnosticisolatedteststore,
+không downgrade schema/deleteusers; không fallback successful unauthenticated khiDB/authlỗi.
+
+**RUST-M6 — inventory/progression/result-reward đúng một lần.**
+Module itemdefinitions/inventory/equipment/profile/matchresults/ledger/outbox; scope basicnhóm đã biết/explicit
+nonredeemablepolicy trước, shop/premium/randommonetizedreward đểsau. DependencybackendM5 và roundresultM3;
+full8khôngđiềukiện. Implementation: resultID từserverroundnonce, grantunique/matchplayerpolicy/transaction,
+balances-quantityrevision/checks, reservation/refundconsumables/expiry, durablepending/outbox/reconcile.
+Idempotency key không đổi theo policy version: pin policy vào match/kết quả, unique(match,player,rewardslot);
+replay sau đổi công thức phải không cấp lại thưởng. Durable-success chỉ sau DB commit/outbox.
+RE: KRprofileXP/character/equip/inventory-count/use-result/rewarddisplay actualconsumer+negative; wikiEXPtable
+chỉ rule/productreference, không tựportoffset/ID hoặc chọn servergốcformula. AccountDB đã có không suy clientUI dùng.
+Acceptance: DB thật concurrentduplicatefinalize/replayedreport/spendnegative/twoplayerswrongowner/race,
+crashbeforecommit/aftercommit-beforepacket/restart-retry/outboxdup khôngdoublegrant/doubledebit; matchedledger
+vàinventory saurestore. NativeRust thực dùngitem/quantityconsume→effect→peer/reset, kếtquả cập nhật đúngprofile
+sau freshlogin; dữliệuwireunknown disabled thay vìfakeACK. Persistedresult và economyaward tách low-trustreport.
+Rollback disable awarding/spend và giữledger/pendingaudit, không rollbacknativeoutcome thànhreaward.
+Chuyển khi durabletruth/nativeprojection reconcile; không chờ toànitem/mode.
+
+**RUST-M7 — luồng service cho nhiều người dùng thực.**
+Module lobby/roomregistry/membership/sessionauthorization/character-equipprojection; phụ thuộc M2/M5, lifecycleM3.
+Implementation: tạo/vào/rời đúngroom, listupdate/removal, capacity/mapguard/hosttransfer/Ready/reset; fixedteam
+support trước interactive nếuchưaRE. Không mộtroomfixture cho mọiuser nhưVNhubdemo. Chọn ít nhất hai phòng
+độc lập/mộtchannel trước khi gọi dịchvụnhiềuphòng; IDs/domainstate khôngarrayA..H hardcode.
+RE: dynamicmultirowroomlist/create/join/error-full/ownership/kick/selectedcharacter/teamclick đúngKR00967;
+khôngdùngVN89layout. Hidden/password/private/spectator giữoutscope cho tới producttask.
+Acceptance: native trên Rusthairoom độc lập/roomAlist-Bupdates, cùng accountkhôngsameplayer2slots, wrongroomcommand/
+outsiderhost/reset-oldmembership rejected và observednativecleanup. Sessionrevoke/DBfailure không phóng
+slotma/crosstalk/UDP cũkey hiện tạireuse; accountlogout/relogin làfreshsession trừresumeđãđo.
+Rollback cấulạisingle-roominternalprofile/disableunprovedactions, khôngxoapersistentprofile.
+
+**RUST-M8 — vận hành nội bộ, admin và readiness phát hành.**
+Module telemetry/config/health/admin/storebackup/deployrunbook; làm xuyên từM1. Scope một Linuxinstance,
+projectaccounts/onechannel/measuredmaps/modes, explicit UDP trực tiếp/NATsettings. Implementation configschema/
+secretspermission/redactedlogs/build-boot-session-room-round-matchIDs/metrics/healthreadiness, authrate/
+boundedIO/deadlines/gracefulshutdown, adminban-unban/reset/revoke/reconcile/audit, migrator/snapshotbackup.
+RE chỉ targetedwire/lifecycle/securityexposure chặn acceptance; không quét toànclient vì còn backlog.
+Acceptance: fmt/clippy/tests/oracle/native E2E/packagefailbeforelisten/relocation; corruption/futureDBschema/
+wrongconfig failclearly. **Backup đã restore** vào freshpath, ledger/integrity/accountprofiles/nativefreshlogin
+và newmatch đúng; rehearsal binaryupgrade→badconfig/DBerror→compatible rollback; RPO/RTO ghiđothực.
+Actualpeer không đọc/load/rate/ghi một phần/slowDB/diskfull/SIGTERM-SIGKILL kiểm isolation/fence/không cấp thưởng/cleanup tài nguyên thuộc run.
+4actualRusttwoopposite2v2/reset/Start3 dướiUDP40±5ms/loss5%/TCPbaseline và freshserver cùng DBidentity; topology/
+MTU/reorder/bandwidthcấu hìnhthực côngkhai, K6cWANgiảlập scope táidùng, Internet thật chưa kiểm.
+Loadacceptance dùng workloadtarget chốt trướcbenchmark (connections/rooms/Hz/p95latency/queue/RAM), không
+gán targetproduction từ8Wine/GDB. Không hứa HA hoặc chốngmọicheat khi movementP2P/reportauthoritycònhạn.
+Rollback drain/stopadmission/fenceuncommittedround, compatiblebinary+testedDBrestore; không silentgrantloss.
+
+<a id="rust-service-exit-criteria"></a>
+### Khi nào đủ demo, dịch vụ nội bộ và phát hành rộng hơn?
+
+| Mức bàn giao | Điều kiện đủ, chưa đạt chỉ từ Pythongate/build |
+|---|---|
+| Rust demo nội bộ tương thích | M0–3 nativeactual2/twocycles/reset/Start3/basic+negative/lifecycle trênRust, package/limits. Identitydiagnostic phải ghi rõ; M4 nếu quảng bá4/8; không tựgọixác thực đầy đủ/toàn bộ game |
+| Dịch vụ nội bộ bền vững | Thêm M5clientbridge có kiểm quyền sở hữu, M6durableprofiles/inventory/resultreward trongphạm vi đã chọn, M7roomflow, M8restore/admin/rate/lỗi DB/monitoring/rollback; native4 nếu quảng bá bốnngười. Explicitproductpolicy/unsupportedactionsdisabled; audit/reconcile |
+| Phát hành rộng hơn | Tất cả internalcriteria và kiểm bảo mật/credential bridge/threat model có bằng chứng, giữ owner review waiver, độ tin cậy của report/abuse-validation theo phạm vi công bố, measuredcapacity/soak/SLO/alert/oncall/retention/upgrade-drain/recoverydrill, delivery/provisioning hỗ trợ người dùng. Không khẳng định mạngInternet thực/ISP/CGNAT hoặc mọiNAT nếuchưakiểm; khi quảng bá endpointInternetthực thì đo riêng trênendpointkiểmsoát, không sửa lại K6cWAN/K7đãđạt thànhdependencyngầm |
+
+Chat/social/friends/whisper ưu tiên sau basic/accountstability; roomchat cầnrate/moderation/wireconsumer.
+Shop/economymởrộng sauledger/inventory vàproductpolicy; guild/mission/boss/revival/event/modesphụ sau đó
+theo nhu cầu, không làblocker bảnchơicơbản. Không hứa ngày/phầntrăm/sốcheckpointcòn lại: authbridge/roomdynamic/
+inventoryprojection/authorityvalidation làunknown effort; ước lượng chỉ sau số liệu lát cắt đầu, nêuassumptions.
+
+### Nhánh RE trước chỉ đạo Rust — giữ làm đầu vào, không thứ tự song song
+
+
 CP048 tổ chức catalog/service fixture, CP049 bổ sung guard124 trong scope hẹp;
 [KRE-011/issue56](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/56) giữ acceptance của refactor.
-KRE-005b/issue14 vẫn mở. Các bước dưới là **thứ tự ưu tiên**, không tự thay dependency/nghiệm thu K0–K7.
+KRE-005b/issue14 vẫn mở. Các bước dưới ghi **thứ tự RE trước chỉ đạo Rust**, giữ để truy nguồn; thứ tự hiện hành duy nhất là milestone Rust phía trên. Chúng không sửa dependency/nghiệm thu K0–K7.
 
 **Yêu cầu chủ dự án01/11:** [làm liên tục qua các checkpoint](evidence/owner-directives/continuous-work.json);
 xong checkpoint/commit/PR thì chuyển ngay việc kế tiếp trong thứ tự này, không tự dừng/chờ nhắc.
@@ -130,11 +326,15 @@ không tạo nhánh kiểm kê wiki hoặc mở mode phụ trước K3/K4/K5/K6a
    4351joins/128copiedgetters/767TCP/363server/cleanup0; không1–7/allmechanics hoặc Internet/K7.
    `NEXT-EIGHT-PORTABLE-ADMISSION` khép scope CP211: [gói71pins/47aliases/relocation/Python-I/8native2cycles](PROTOCOL.md#eight-portable-battle),
    18bundletests/767packagedTCP/4417gameplay+112deliveryjoins/128getters/cleanup0; khôngninthnative/generalroomauth.
-   `NEXT-EIGHT-TEAM-VARIANTS` hiện hành: source-first CP147Free8/1–7/9negative, CP16281→86/87/180selector0/1,
-   CP163Mannerbalanced8/negative1–7 và CP208–211actual8roster/stat/life/rank/reset. Chỉ delta fixedoperatorlayout
-   4v4/1v7 vàselector1echo/balanceguard/reset; controls trướcnative8Free1–7twooutcomes/Manner4–4positive/
-   Manner1–7negative. Khôngredo175/codec/capacity hoặc coi operatorpreset là interactiveC2Steamchange đãRE.
-   NativeC2Steam-changeopcode/layout giữunknown; VNoc_a-room89 chỉseed đểquan sát, khôngport sangKR.
+   `NEXT-EIGHT-TEAM-VARIANTS` có hai positivecases tại CP213: [8actualFree1–7/Manner4–4twooppositeoutcomes/resetStart3](PROTOCOL.md#eight-team-variants).
+   Tái dùng CP147/162/163/210/211; 366server/13bundle+5preset/typedTCP713-775-180; selector86/87/180 giữ0/1 cả8view.
+   Operatorlayout1v7/4v4, không interactiveC2Steamchange. Manner1–7 copy4b hai run partial trướcStart, raw giữ nguyên;
+   native guardreturn7/no104 đã có CP163 với mộtactual+tám slot tổng hợp, không suy thành támactualnegative.
+   `NEXT-EIGHT-STARTUP-EMPTY-CONTROL` khép hẹp CP213: R2Factual96A480inputsize0/cap15→JSONexpectedvalue→SIGABRT,
+   nguồn CP073201 dùng lại. Guardempty-only8d7194 nativeconstructor/model/rollback đã có; ca8negative trên copyguard
+   có8native/rule1/count8/return7/no104/cleanup0 trêncopy8d, guardkhônghit nên khôngstartupfixclaim. Không randomretry/globalabortbypass.
+   NativeinteractiveC2Steamchange (VNroom89 chỉseed/KRopcodeunknown) là RE theo trigger RustM4/M7;
+   ưu tiên hiện hành chỉ ở mục Rust phía trên, không tiếp mở nhánh riêng sau planning-only này.
    Actual9outsideallowlist chỉoperatorIPadmission nếu đo; generalmap-awarefullauth chưacó. G/Hpower2
    raylength/exactblastlookup/full8items-terrain-kim-cứu chỉ mở theo trigger; Internet thật chưa kiểm, backlog không chặn K6c/K7.
    Bốn-player item/terrain/kim/cứu chưa tíchhợp; giữgiớihạn, không coi hai-clientproof là4playerproof.
@@ -175,7 +375,7 @@ Bảng này chỉ phân công/thứtự; acceptance/PR/bằngchứng ởissue. [
 
 | Thứ tự/scope | Issue | Trạng thái/phần còn thiếu |
 |---|---|---|
-| Hiện hành RE | [#14/KRE-005b](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/14) | K5 basic/K6a/K6b giả lập đã đạt trong scope. CP193–196 NAT/UDP delay-loss/EOF có nguồn; CP197incoming opt-in có controls; CP207native4freshrestart/UDPimpairment đã kiểm; K6c WAN giả lập/K7 đạt CP212; CP211 native8relocatedbundle/two4v4 đã merge PR283. Tiếp NEXT-EIGHT-TEAM-VARIANTS; audit kếCP216. Internet thật chưa kiểm; fullauth/authority/general variants backlog ngoài gate. |
+| RE được giữ làm đầu vào | [#14/KRE-005b](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/14) | K5 basic/K6a/K6b giả lập đã đạt trong scope. CP193–196 NAT/UDP delay-loss/EOF có nguồn; CP197incoming opt-in có controls; CP207native4freshrestart/UDPimpairment đã kiểm; K6c WAN giả lập/K7 đạt CP212; CP211 native8relocatedbundle/two4v4 đã merge PR283. CP213 positivevariants copy4b và negativeManner1v7 copy8d đã đo; sourceWIP chưa merge. Không còn taskactiveemptyretry; tiếp Rustmilestones theo chỉ đạo mới; audit kếCP216. Internet thật chưa kiểm; fullauth/authority/general variants backlog ngoài gate. |
 | Control theo trigger/gate | [#1/KRE-001](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/1), [#2/KRE-002](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/2) | CP178 K0 originalWindowscontrol/ownership đã đủ, #1 đã đóng qua PR250; #2 giữ widerWCP/launcherconfig; K1 R2 đã đạt CP179, không lặp cold3. |
 | Codec backlog/identity hiện hành | [#3/KRE-003](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/3), [#9/KRE-005a](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/9) | Fullcodec/livebounds vàintermittentmainstartupcause cònthiếu; khônglặpprimitive/auxiliarylocale. |
 
