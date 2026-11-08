@@ -29,6 +29,7 @@ class FourObservability:
         config=dict(source_ips=dict(service.source_ips), bind_ip=service.bind_ip,
             channel_endpoint=copy.deepcopy(service.channel_endpoint),
             bomb_policy=copy.deepcopy(service.state.get('four_bomb_policy',service.state.get('eight_bomb_policy'))),
+            battle_outcome=service.battle_reports is not None,
             abort_room_policy=copy.deepcopy(service.state.get('abort_room_policy')),
             io_limits=dict(service.io_budget.limits))
         self.metadata = dict(schema='kre-'+self.family+'-run-v1', source='design', run_id=self.run_id,

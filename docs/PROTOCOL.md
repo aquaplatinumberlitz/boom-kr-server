@@ -1,6 +1,6 @@
 # KR 00967 — contract tương thích client gốc
 
-Revision kr-legacy-contract-r1; cập nhật08/11/2026 JST (CP209; AUD061 periodic qua208; audit kế212).
+Revision kr-legacy-contract-r1; cập nhật08/11/2026 JST (CP210; AUD061 periodic qua208; audit kế212).
 **Contract có bằng chứng từng phần; phạm vi nghiệm thu codec/hello ở [PLAN](PLAN.md#k2-acceptance)**.
 Lộ trình và thứ tự task chỉ giữ ở [REWRITE_PLAN — KRE](PLAN.md).
 Đây là contract của repo server KR. ADR0009 của bản viết lại là nguồn lịch sử để so sánh;
@@ -5695,6 +5695,53 @@ Mọi run source/config frozen tới cleanup, bản copy/sourceDB/assets giữ n
 **Tại CP200**, bốn client đã vào Battle và quan sát movement liên thông; lúc đó chưa bốn-player bom/trap/death/normal2v2outcome/
 175/180/reset/Start2 hoặc hardening. [CP201–207](#four-netem-restart) đã bổ sung những scope được dẫn; K7/Internet vẫn mở. Phần hiện hành theo PLAN;
 không port rankAB hoặc coi ownerWineacceptance là tự đóng gate.
+
+<a id="eight-two-team-cycles"></a>
+### Tám actual client: hai kết quả 4v4, về phòng và Start3 — CP210
+
+[Recipe/raw/hash](evidence/eight-player/README.md#cp210), [khoảng trống](RESEARCH.md#gap-roster-ready-host),
+[thứ tự](PLAN.md#current-order). **KR runtime/confirmed trong scope cốđịnh dưới đây**, không tựđóng K7/Internet.
+
+Source-first reuse [CP202](#four-two-team-cycles) report17/19/21→170/guard/deadowner118/freshwitness/
+drained-settle8/rank16slot/return180/reset; [CP209](#eight-mesh-owner-bombs) actual8profiles/mesh/ownerbom.
+VN `oc_e-game.md`397–425 cho kiến trúc kết quả/đội/reset, không168/173/VNlayoutport; KR175 đã có header16/
+flag1row131/flag0byte1/header9FF/16records. Raw8bom CP209 đã đủ17+19 của8owner: đọc lại và kiểm envelope,
+không runtime lại để tìm schema. Copiednative175header+16recordparser nhận hai vector8rank đầy1072byte,
+state/allocator mô hình và skip managerpostparse: **emulation riêng**, chưa là nativecallback.
+
+**Implementation/design:** fixedEightBattleReports kế thừa guards/prepare/commit/outcome, fixed4v4team0/1 xen kẽ;
+Four defaultABCD/2v2 giữ nguyên. `--battle-outcome` ở EightPlayerService cần measured8bombprofile, bool rõ;
+defaultpreview/bomb-only vẫn có. Report17/19 forward đến7peer, khôngself; chỉcommit sau đủsend. Duplicate/
+rollback/death-no-trap/afterdeath/earlyphase/deadowner118 và pendingfence tái dùng. Một đội còn sống,
+không bom chờ, settle≥8s sau lastdeath/lastblast và fresh21 của survivor mới chọnrank; đây là **report-derived
+emulatorpolicy**, khôngauthenticatedlife/originalworldauthority. Metadata config ghi outcome bật/tắt.
+
+Rank8 giữ16slot: header16 +8×131active +8empty=**1072inner**, outer**1082**. Rank1 cho đội thắng/rank2
+đội thua; economy0/featureoff là design. Sau5s gửi180/payload3 tới8client, rồi64slot110/resetReady;
+Start2/3 cần7Ready mới và8actual99/barrier/key mới. 767realTCPsyntheticcontrols/32sockets có7peer170/
+rank8/1808/refresh64/cursorretention/Start2beforeloadnegative/EOFpendingHfence;363server/16bundle pass.
+Không dùng serializer tựsinh làm oracle runtime.
+
+**Một run với cùng8actual KR Wine**:32TCP/tám prefix/display/CA-wineserver/IP/netns/privatebridge/no externalroute,
+currentcopy4b/Wine10.0-20260425/ExVillage01/Free0. Hai round liên tiếp:
+
+| Epoch/key | Native input/life | Native kết quả/reset |
+|---|---|---|
+|1/12345|NormalSpace A/C/E/G; actual12717→19 mỗiowner→7peer170/nativeprotected56→1; survivors B/D/F/H cófresh21|Winnerteam1; mọi view pre175state`1,0,1,0,1,0,1,0`,rank`2,1,2,1,2,1,2,1`;1751082/inner1072 và1803 đủ/errors0;phòng8slot/7Ready2/Start2|
+|2/12346|NormalSpace B/D/F/H; actual17→19→7peer/native56→1; survivors A/C/E/G cófresh21|Winnerteam0; pre175state`0,1,0,1,0,1,0,1`,rank`1,2,1,2,1,2,1,2`;175/180 đủ;reset8slot/7Ready3/Start3|
+
+Key12347/epoch3: cùng8view clock lần3; **không thirdoutcome**. Hai normalresult khôngabort/forfeit;
+không ghép run khác. Các death xuấtphát từ selfbomb bằng OSinput cóchủđích, không actor/life writes hoặc
+functioncall từ observer. Client/server source/config freeze tới seal/cleanup.4351raw/nativejoins và128
+pre175state wrappers khớp copiednative52A350/Unicorn riêng;364,941389647s/2099raw/937frozen/exit0/namespace0.
+PeerFinish ởreturn nhìn cursor0; **không** dùng nó làm full170parseproof. Nativeafterstate56→1 vàpre175
+statevectors độclập;175/180 cóprobe tronghàm để kiểmcursor. Ảnh rank8tên/2vector/phòngreset/Start3 bổ sunglogs;
+Start3 cótutorialoverlay, không suy popup là inputfailure hoặc round3 đã kết thúc.
+
+Giới hạn: fixed4v4/Free0/oneExVillage01/8profiles/Wine/privatebridge/sharedkernel, no8items/terrain/kim/cứu/
+1–7actual/Manneractual8/reject9native/generalroomauth/accountresume/nativeportable8/Internet/K7.
+K5/K6a/K6b scope đã đạt giữ nguyên; không nânggate vì thêm8cycles. Bước kế theo PLAN là portable8/admission
+và biến thểđội cótrigger, không quét lại toànclient.
 
 <a id="eight-mesh-owner-bombs"></a>
 ### Tám client: movement mesh, baseline stat và owner confirm/nổ — CP209

@@ -74,6 +74,7 @@ from server.four_identity_store import pin_identities
 
 class FourPlayerService(ProbeService):
     PLAYER_PROFILE = fp
+    RANK_BODY = staticmethod(rank_body)
     def __init__(self, profile, out, source_ips, *, bind_ip='127.0.0.1',
                  channel_ip=None, channel_port=None, bomb_profile=None, battle_outcome=False, abort_room=False, identity_store=None):
         self.player_profile = self.PLAYER_PROFILE
@@ -523,7 +524,7 @@ class FourPlayerService(ProbeService):
                           for q in self.bomb_admission.pending.values())
             result = self.battle_reports.outcome(now, pending)
             if result is not None:
-                body = rank_body(result['winner_team'], self.battle_reports.teams)
+                body = self.RANK_BODY(result['winner_team'], self.battle_reports.teams)
                 # Finish fences all deferred current work before rank emission.
                 self.room.finish()
                 self.round['rank'] = dict(monotonic_ns=now, **result,

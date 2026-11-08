@@ -14,23 +14,28 @@ def rank_body(winner_team, teams):
     if (type(winner_team) is not int or winner_team not in (0, 1)
             or teams != {'A': 0, 'B': 1, 'C': 0, 'D': 1}):
         raise ValueError('only declared four-member 2v2 supported')
+    return _rank_rows(winner_team, teams, 'ABCD')
+
+def _rank_rows(winner_team, teams, roles):
     header = bytearray(16)
     header[9] = 255  # Measured feature-off signed branch; not all rank schemas.
     rows = []
-    for role in 'ABCD':
+    for role in roles:
         row = bytearray(131)
         row[0] = 1
         row[5] = 1 if teams[role] == winner_team else 2
         rows.append(row)
-    inner = header + b''.join(rows) + bytes(12)
+    inner = header + b''.join(rows) + bytes(16-len(roles))
     stream = b'\x18' + struct.pack('<I', len(inner)+1) + b'\0' + inner
     return codec.pack_fields([len(stream)], [4]) + _encode_bytes(stream)
 
 
 class FourBattleReports:
+    ROLES = 'ABCD'
+    TEAMS = {'A':0,'B':1,'C':0,'D':1}
     def __init__(self, room, slots, teams):
-        if slots != dict(zip('ABCD', range(4))) or teams != {'A':0,'B':1,'C':0,'D':1}:
-            raise ValueError('explicit current four-member 2v2 required')
+        if slots != dict(zip(self.ROLES, range(len(self.ROLES)))) or teams != self.TEAMS:
+            raise ValueError('explicit fixed roster and teams required')
         self.room, self.slots, self.teams = room, dict(slots), dict(teams)
         # Per-connection clock is retained across generations, not compared peers.
         self.cursors = {}

@@ -161,3 +161,34 @@ Native mỗiownerSpace/đợi7s, ID1…8/6sfuse; G/H power2 từ actual118→159
 exactblastentitylookup; bỏ oldwrongE14360entryprobe, không sửa oldraw. 127 vẫn từ chối, không rank/return/reset;
 traps/deaths có thể xảy ra ở native nhưng chưa có integration reportlife8. K7/K6cInternet còn mở.
 Reviewwaived; AUD061 qua208/audit kếCP212. Mộtbatchmeaningfulmesh+baseline+acceptedbombs, không CP từnginput.
+
+
+<a id="cp210"></a>
+## CP210 — cùng tám actual client/hai normal4v4/kết quả/reset/Start3
+
+Baseline CP209 merge[PR281](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/281)/`bebb1d0`;
+[contract duy nhất/scope](../../PROTOCOL.md#eight-two-team-cycles), [PLAN](../../PLAN.md#current-order).
+Raw `local/research/codex/eight-life-rank-r1/`; source-first pin build/SHA/locators/reuse/known-gap-minimum,
+`pre-runtime-reuse-verification.json` liênkết proof đãcó; không quét175/codec/nativefunction lại.
+VN `oc_e-game.md`397–425 chỉ architecture/team/result/reset, không port168/173/wire.
+
+Đọc lại raw CP209 actual8report127:17+19 đủ8owner/knownblob, unknown39/40 giữ opaque. `native_rank8.py`/
+team0 dùng copiedKRheader+16recordreader, 2vector8populated131+8empty/header16/featureoff/raw1072,
+state/allocator modeled/skip managerpostparse. `rank-inputs.json` giữ syntheticinputs/hash/candidate,
+46draftguardcontrols không nativeacceptance. Production767actualTCPsyntheticcontrols/32sockets kiểm7peer170/
+rank8/return8/refresh64/Start2barrier/resetlife-cursor/deadowner118/EOFfence;363server/16bundle tests pass.
+
+Native `wine_probe_eight_life_rank.py`, `cycles-recipe.json`; same8prefix/display/CA/IP/netns/privatebridge,
+source/config/copy4b/Wine10.0-20260425 frozen đến seal. Run364,941389647s/exit0/2099raw/937frozen/namespace0,
+SHA`7debf2ed4cd0eaff96c0fc847c6d19ab997e737aa04dda72186b77b5181ffc47`.
+`verification.json`:4351raw/nativejoins/continuous32TCP/3epochkeys/3native99-clock mỗirole;
+R1ACEGselfbom→17/19→7peer/native56→1→freshsurvivorsBDFH/rank8→1803/phòng/reset/Ready2Start2;
+R2BDFHselfbom/ACEGsurvivor/winnerngược/reset/Ready3Start3. Cả8view175outer1082/inner1072/errors0,
+statevector/rankvectorđúngtừngteam;rank8names/8roomprofile/Start3 nativeclocks cóảnh bổsung.
+128pre175statewrappers kiểmcopiednative52A350/Unicorn riêng; không gọi hàm/ghi actor trongprocess.
+
+PeerFinishreturncursor0 không full170parseproof; statesafter56/1 và pre175vectors độclập. Hai normalrank
+khôngabort/forfeit, khôngghépcácrun riêng. `manual-images.json` và4contactsheetspostrun pinảnh:
+R1/R2rankngược/8names, roomreset2/8profiles, Start3cótutorialoverlays (khôngthirdoutcome/inputfailureclaim).
+Reviewwaived/AUD061qua208/kếCP212. Khôngnativeportable8/1–7actual/Manner8/room-full9auth/8items-terrain-kim-cứu/
+originalworldauthority/Internet/K7; riêng fixed4v4two-cyclemilestone đãcóevidence.
