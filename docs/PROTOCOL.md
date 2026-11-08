@@ -5381,6 +5381,42 @@ Serviceproductionbind/153IPvẫnhard127; private-addressshims hiện làmeasurem
 Internet/K6c/NAT/relay/fullauth/authority/generalreset/gates mở; field99IP1/subtype39 vẫnunknown.
 
 
+<a id="four-portable-guards"></a>
+### Guard input bốn người và bundle riêng đã chạy native — CP203
+
+[Recipe/raw/hash](evidence/peer-endpoints/README.md#cp203), [cách xuất/chạy](../tools/README.md#four-player-bundle),
+[gap kế](RESEARCH.md#gap-lobby-identity-followup), [PLAN](PLAN.md#current-order).
+Reuse [CP202 report/result/reset](#four-two-team-cycles), [bundle hai người](#portable-probe-bundle) và CP201reservation;
+không RE lại codec/127/rank hoặc coi profile hai người mặc nhiên là profile bốn người.
+
+**design/confirmed trong kiểm source/TCP:** trước sửa, currentacceptedA19 rồiA118serialmới vẫn tăng wireID4→5/job0→1.
+Guard mới chỉ khi opt-inbattle/currentgeneration có accepted19 của boundowner: reject`bomb_owner_reported_dead`
+trước reservation/serial/ID/job/send. 247realTCPcontrols giữ0mutation ở rejection, B còn sống đặt được và A ở
+newloadedgeneration đặt lại được; malformed127/sai slot/blob thiếu/extended21/duplicate/rollback không đổi
+cursor/life hoặc phát peer/result. Newround vẫn giữ reportcursor, clear life/99/peer barrier; mặc định chưa bật
+battlepolicy không thêm suy luận life. Đây không authenticatedlife hoặc originalserverauthority.
+
+**Bundle four-client-battle riêng**, dùng pin47aliases/43fixturefiles của CP202, gồm knownfloor variant của profile4;
+không đổi pin theo file đang có. APIexport_bundle dùng opt-infour_bomb_profile với đúng measuredpreset,
+64runtimefiles gồm4service/policy/profile/launcher, hashmanifest. Launcher4 chọnfour_player_service,
+gắn sẵnprofile+bombprofile+--battle-outcome; overrideprofile/policy, missingpolicyreference hoặc sai hash
+bị từ chối trướclisten/output. Default2 vàpreset2 cũ giữ entrypointProbeService. Đây là integritypins,
+không signedrelease hoặc networkisolation; client/assets/DB không đónggói.
+
+**kr_runtime/confirmed riêng runR2:** actualservicePython-I chạy từ gói đã chuyển thư mục; khởi spawn vớicwd/tmp,
+launcherchdir vào bundle. Tất cảpolicy_sources trongbundle/hashkhớp64pins, khôngimportsourcecheckout.
+Cùng4KRWine4b/16TCP/4netns/ExVillage01/Free0 hoàn thành2normal2v2outcomes đổiđộithắng,175552inner/562outer,
+1803/reset/Ready2Start2/Ready3Start3; cả4viewpre175life/ranks khớp, keys12345–12347,32nativegetteremulation riêng.
+Không ghép các run; nativepositive không tự chứng minh maliciouspostdeathrequest, đã có TCPnegative riêng.
+
+R1partial trướcBattle: C đi contentJSONthrow96A480/96A4EB/96E300,76.241s/309raw/cleanup0.
+Một boundedrepeatR2 dùng byte-identicalbundle/source/copy/profile/policy, chỉ outputlabel/relocation khác đã đạt;
+không gọi đây startupfix hoặc coldreliability, không sửa copy để ép qua, không sửa R1thànhpass.
+Giới hạn4items/terrain/kim/cứu/fullauth/Internet/K7 và170Finishcursor0 giữ như CP202.
+**Blocker kế đã có modelrepro:** recipientA sendtimeout trong broadcast của B17 hiện outerrun lại closeB;
+chưa kernelbackpressureproof/fix. Tiếp đúng transportowner/bounds/rate-limit/restart/persistence/health theoPLAN,
+không tự đóngK7 từ bundle hoặc hai vòng native.
+
 <a id="four-two-team-cycles"></a>
 ### Hai vòng 2v2 trên bốn client, kết quả/reset/Start3 — CP202
 
@@ -5417,7 +5453,7 @@ cùng channels, seq tiếp tục. Không patch actor/forced19/resulttimer giả 
 **Giới hạn observer:** GDBFinishBreakpoint ở170 thấy cursor0 sau return dù protectedstates thay đổi đúng;
 không lấy cursor này làm full170parseproof hoặc suy cause reset. Nativepre175state và175/180 in-functioncursors
 là bằng chứng độc lập. ProbeE14360entryarg đã sửa ESP trên bản recipe mới; không sửa CP201raw.
-**Phần chưa harden:** deadowner118 còn phải guard theo accepted19; fourportable/restart/boundedparser/
+**Tại CP202 còn thiếu:** deadowner118guard/fourportable; [CP203](#four-portable-guards) đã bổ sung. Restart/boundedparser/
 backpressure/rate-limit/persistence/health và genericstale/fullgrammar/authority còn thiếu. Items/terrain/kim/cứu
 của hai-client service không tự suy đã tích hợp bốn người. Không tự đóng K7 hoặc Internet từ hai normalcycles.
 

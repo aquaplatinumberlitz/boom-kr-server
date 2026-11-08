@@ -2026,3 +2026,27 @@ Recipe `prepare_four_life_rank.py`→preflight→`run_four_life_rank.py`→owned
 inruntime-source. Opt-in `--battle-outcome` requiresbombprofile; defaulttwo/4baseline unaffected. Rank/settle/teamrule/
 zeroeconomy/fuse aredesign, not recovered serverauth. No4item/terrain/rescue/needle/Internet/K7acceptance.
 Nextguarddeadowner118/malformed/stale, then fourportable/hardening asPLAN; no repeatedreport/rank/codecRE.
+
+<a id="cp203"></a>
+## CP203 — four-input guard và portable4 nativecycles
+
+[Contract/giới hạn](../../PROTOCOL.md#four-portable-guards), [phép kiểm kế](../../RESEARCH.md#gap-lobby-identity-followup).
+CP202mergedPR274/e829fd57; Codexsolo/reviewwaived; AUD059qua200/auditCP204. SourcefirstCP190/201/202/known4profile,
+no newwire/handlerRE. BeforeTCP Aaccepted19→118 vẫnID4→5/job0→1; candidate/productionguard247TCP đạt,
+malformed/wrongslot/blob/duplicate/rollback0mutation/aliveB/newroundApositive;325server/15bundle/43checkpointtests.
+
+`four-portable-r2`: 234.687067808s/1192raw/318frozen/exit0/cleanup0; SHA`3aca3c5829407eb65adb52745c390cb44eb8af35a730b809dd3bfeb4479f7bdc`;2054checks/32copiednative52A350getters.
+BundlemanifestSHA4b6992a3e381f45ea195fb5d32aa6aa423a9eb7430eb7a6f7c4e147dac2fff3d/64files/47aliases/43fixturefiles,
+Python-I/actualpolicy_sourcesallbundlepaths/hash. SamefourWine4b/16TCP/4netns/ExVillage01/Free0/A+CvsB+D,
+2normaloppositeoutcomes/175562outer552inner/1803/reset/actualReady2Start2/Ready3Start3/3clocks/view/currentkeys.
+Source and relocatedbundle pinned before run; no code/config edits during runtime; ownedcleanup0.32protectedlife
+wrappers pre175 recheckednative52A350emulation separate. Nativepositive and maliciousTCPnegative separateproofs.
+
+`four-portable-r1` partial76.241410355s/309raw/exit0/cleanup0/SHA6c9d37cd765203a2e22c132bece3dda63e56484d22056a080e7926cbeec0efb1:
+CpreBattlecontentthrow96A480/96A4EB/96E300. OneboundedR2repeat byteidenticalbundle/source/copy/policy/inputs,
+newlabel/relocationonly; no patch/startupfix/coldreliabilityclaim. Allraw/seals/preflight kept separately.
+Prototype9relocationchecks/15productionbundle-tests coverPython-Ioutsidecheckout/entry4/policyoverride/tamper/
+missingref/default2unchanged. No client/asset/DBdistribution. Recipeprepare_four_portable[_r2]→runner→seal→verify;
+metadata/raw/beforeafterproof andsourcepins inexternalCP203manifest.
+Nextbackpressureowner modelrepro failsrecipientA but closesoriginB (controlledsockettimeout, notkernelproof),
+transport/bounds/rate/restart/persistence/health asPLAN. No4item/terrain/kim/cứu/fullauth/Internet/K7closure.

@@ -60,7 +60,7 @@ def encoded(value):
     return (json.dumps(value, ensure_ascii=False, indent=2) + '\n').encode()
 
 
-def export_bundle(profile, source_root, out):
+def export_bundle(profile, source_root, out, *, four_bomb_profile=None):
     """Validate every input before reserving a new directory; never overwrite.
 
     CLI callers supply load_preset's validated result. Repeat the pin checks
@@ -73,6 +73,10 @@ def export_bundle(profile, source_root, out):
     result = copy.deepcopy(profile)
     if result.get('schema') != 'kr-probe-profile-v1':
         raise ValueError('unsupported profile')
+    four = four_bomb_profile is not None
+    if four and (json.dumps(four_bomb_profile, sort_keys=True) != json.dumps(dict(mode='four_current_baseline',
+            capacities={'A':1,'B':2,'C':1,'D':1}, powers=dict.fromkeys('ABCD',1), fuse_seconds=6), sort_keys=True)):
+        raise ValueError('only measured current four-player bomb preset is supported')
     payloads = {}
     for alias, entry in result['fixtures'].items():
         path = Path(entry['path']).resolve(strict=True)
@@ -93,10 +97,22 @@ def export_bundle(profile, source_root, out):
             payloads['server/' + path.name] = path.read_bytes()
     payloads['server/__init__.py'] = b''
     payloads['profile.json'] = encoded(result)
-    payloads['run.py'] = LAUNCHER.encode()
+    launcher = LAUNCHER
+    entrypoint = 'server.probe_service'
+    if four:
+        entrypoint = 'server.four_player_service'
+        payloads['four-bomb-profile.json'] = encoded(four_bomb_profile)
+        launcher = launcher.replace("'server/probe_service.py'} <= seen", "'server/probe_service.py', 'server/four_player_service.py', 'server/four_battle_policy.py', 'four-bomb-profile.json'} <= seen")
+        launcher = launcher.replace('from server.probe_service import FixtureProfile, main',
+            'from server.probe_service import FixtureProfile\nfrom server.four_player_service import main')
+        launcher = launcher.replace("if any(arg == '--profile' or arg.startswith('--profile=') for arg in sys.argv[1:]):",
+            "if any(arg == flag or arg.startswith(flag + '=') for flag in ['--profile', '--bomb-profile'] for arg in sys.argv[1:]):")
+        launcher = launcher.replace("sys.argv[1:1] = ['--profile', str(root / 'profile.json')]",
+            "sys.argv[1:1] = ['--profile', str(root / 'profile.json'), '--bomb-profile', str(root / 'four-bomb-profile.json'), '--battle-outcome']")
+    payloads['run.py'] = launcher.encode()
     context = subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=ROOT, text=True).strip()
     manifest = dict(
-        schema='kre-probe-bundle-v1', context_commit=context,
+        schema='kre-probe-bundle-v1', context_commit=context, entrypoint=entrypoint,
         source='design', status='design',
         limits='Pinned synthetic wire fixtures/exact Python sources only. Not client/assets/auth, '
                'a signed release, runtime/LAN proof or network isolation. Default startup remains '
