@@ -1,7 +1,7 @@
 {
   "schema": "kre-issue-review-v1",
   "as_of": "2026-11-08",
-  "baseline": "8a99a72c0787026df4a8d287bd11f030bbc3f3c1",
+  "baseline": "bebb1d073b7712f9886c93a3dea11da4f68d855d",
   "method": "Codex manual acceptance review; native/static/model/design/merge/gate distinct; originalissuebodies archivedlocalbeforeedit, no completecheckpoint rewrite",
   "issues": [
     {
@@ -155,11 +155,11 @@
         "KR-F001",
         "KR-F015"
       ],
-      "known": "CP208mergedPR280/8actualclock; CP20956directedremoteprogress/8nativebaseline/actual118 then8owner159entity/158all8views (separateruns)/4610+2256joins/704+128copiedgetters/cleanup0.672syntheticTCP/360server/16bundlecontrolsseparate.",
-      "remaining": "8reportlife/7peerforward/rank8rows/175180/twooppositeoutcomes-resetStart3/room-full9native/1v7actual/8nativeportable/Internet-K6c-K7/fullauthremain.",
-      "next_test": "NEXT-EIGHT-OUTCOME-RESET onlyPLAN: reuseCP202guards/17-19-21/175parser; delta8life/7remote/4v4/rank8row/controlsbeforenativetwooutcomesreset.",
+      "known": "CP209mergedPR281/8mesh-stat-ownerbombs; CP210same8actual2normalopposite4v4outcomes/7peer170/native56to1/pre175state-rank8vectors/1751082-inner1072/1803/reset8/7Ready2-3/Start3/4351joins128copiedgetters/cleanup0.767syntheticTCP/363server/16bundle separate.",
+      "remaining": "Native8portablebundle/admission/actual1v7-Manner8/generalroom-full9auth/8items-terrain-needle-rescue/fullauth-resume/Internet-K6c-K7remain; fixed8two4v4cycles nowconfirmed.",
+      "next_test": "NEXT-EIGHT-PORTABLE-ADMISSION onlyPLAN: exact8profile-bomb-outcomebundle,relocation-PythonI/tamper/sourceIP32TCP controls beforenative8same2cycles; unknownninthsource notoriginalroomfullauthority.",
       "acceptance": "Epic checklist: linkedscopedtask/evidence+authoritymatrix vàacceptancegate ởPLAN; từngtaskđóng khôngđóngepic/K5/K6a.",
-      "reason": "Manualsource-nativeproofcomparison; no8normalmatchorInternetgatefrombombs/fullcursors/syntheticcontrols. AUD061through208/next212; reviewwaived.",
+      "reason": "Manualsame-runstate-nativecallback-sourceproofcomparison; noallgame/Internet/K7closure fromfixed8two4v4. AUD061through208/next212; reviewwaived; no thirdoutcomeorfull170cursorclaim.",
       "sources": [
         "docs/PROTOCOL.md#authority",
         "docs/RESEARCH.md#feature-gaps",
@@ -241,7 +241,8 @@
         "docs/PROTOCOL.md#four-netem-restart",
         "docs/PLAN.md#k7-evidence-review",
         "docs/PROTOCOL.md#eight-session-preview",
-        "docs/PROTOCOL.md#eight-mesh-owner-bombs"
+        "docs/PROTOCOL.md#eight-mesh-owner-bombs",
+        "docs/PROTOCOL.md#eight-two-team-cycles"
       ],
       "evidence": [
         "docs/evidence/current-movement-cycles/README.md",
@@ -319,7 +320,8 @@
         "docs/evidence/peer-endpoints/README.md#cp206",
         "docs/evidence/peer-endpoints/README.md#cp207",
         "docs/evidence/eight-player/README.md#cp208",
-        "docs/evidence/eight-player/README.md#cp209"
+        "docs/evidence/eight-player/README.md#cp209",
+        "docs/evidence/eight-player/README.md#cp210"
       ],
       "prs": [
         173,
@@ -403,7 +405,8 @@
         277,
         278,
         279,
-        280
+        280,
+        281
       ],
       "successors": []
     },

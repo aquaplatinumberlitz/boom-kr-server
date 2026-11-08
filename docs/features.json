@@ -1,7 +1,7 @@
 {
   "schema": "kre-feature-index-v1",
   "build": "KR00967",
-  "as_of": "CP209",
+  "as_of": "CP210",
   "sources": {
     "plan": "docs/PLAN.md",
     "contract": "docs/PROTOCOL.md",
@@ -894,7 +894,8 @@
           "docs/PROTOCOL.md#four-slot-native-consumers",
           "docs/PROTOCOL.md#four-session-native",
           "docs/PROTOCOL.md#eight-session-preview",
-          "docs/PROTOCOL.md#eight-mesh-owner-bombs"
+          "docs/PROTOCOL.md#eight-mesh-owner-bombs",
+          "docs/PROTOCOL.md#eight-two-team-cycles"
         ]
       },
       "coverage": {
@@ -942,7 +943,8 @@
               "docs/PROTOCOL.md#four-slot-native-consumers",
               "docs/PROTOCOL.md#four-session-native",
               "docs/PROTOCOL.md#eight-session-preview",
-              "docs/PROTOCOL.md#eight-mesh-owner-bombs"
+              "docs/PROTOCOL.md#eight-mesh-owner-bombs",
+              "docs/PROTOCOL.md#eight-two-team-cycles"
             ]
           },
           "windows_original": {
@@ -970,7 +972,8 @@
             "server/room_team_mode.py",
             "server/test_room_team_mode.py",
             "docs/PROTOCOL.md#eight-session-preview",
-            "docs/PROTOCOL.md#eight-mesh-owner-bombs"
+            "docs/PROTOCOL.md#eight-mesh-owner-bombs",
+            "docs/PROTOCOL.md#eight-two-team-cycles"
           ],
           "delivery": "via_pr"
         },
@@ -979,7 +982,8 @@
           "refs": [
             "docs/evidence/probe-service/README.md",
             "docs/evidence/host-normal-back/README.md",
-            "docs/PROTOCOL.md#current-291-room-integration"
+            "docs/PROTOCOL.md#current-291-room-integration",
+            "docs/PROTOCOL.md#eight-two-team-cycles"
           ]
         },
         "gate": {
@@ -1030,7 +1034,8 @@
           "docs/evidence/peer-endpoints/README.md#cp168",
           "docs/PROTOCOL.md#four-slot-native-consumers",
           "docs/PROTOCOL.md#four-session-native",
-          "docs/PROTOCOL.md#eight-session-preview"
+          "docs/PROTOCOL.md#eight-session-preview",
+          "docs/PROTOCOL.md#eight-two-team-cycles"
         ]
       },
       "coverage": {
@@ -1086,7 +1091,8 @@
               "docs/PROTOCOL.md#current-291-room-integration",
               "docs/PROTOCOL.md#four-slot-native-consumers",
               "docs/PROTOCOL.md#four-session-native",
-              "docs/PROTOCOL.md#eight-session-preview"
+              "docs/PROTOCOL.md#eight-session-preview",
+              "docs/PROTOCOL.md#eight-two-team-cycles"
             ]
           },
           "windows_original": {
@@ -1113,7 +1119,8 @@
             "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/91",
             "docs/PROTOCOL.md#loading-timeout",
             "docs/PROTOCOL.md#loading-timeout-positive",
-            "docs/PROTOCOL.md#eight-session-preview"
+            "docs/PROTOCOL.md#eight-session-preview",
+            "docs/PROTOCOL.md#eight-two-team-cycles"
           ]
         },
         "integration": {
@@ -1126,7 +1133,8 @@
             "docs/evidence/opposite-box-control/README.md",
             "docs/PROTOCOL.md#loading-timeout",
             "docs/PROTOCOL.md#loading-timeout-positive",
-            "docs/PROTOCOL.md#current-291-room-integration"
+            "docs/PROTOCOL.md#current-291-room-integration",
+            "docs/PROTOCOL.md#eight-two-team-cycles"
           ]
         },
         "gate": {
@@ -1371,7 +1379,8 @@
           "docs/PROTOCOL.md#current-basic-cycles-291",
           "docs/PROTOCOL.md#current-basic-contest-reset",
           "docs/PROTOCOL.md#four-slot-native-consumers",
-          "docs/PROTOCOL.md#four-session-native"
+          "docs/PROTOCOL.md#four-session-native",
+          "docs/PROTOCOL.md#eight-two-team-cycles"
         ]
       },
       "coverage": {
@@ -1416,7 +1425,8 @@
               "docs/PROTOCOL.md#current-basic-cycles-291",
               "docs/PROTOCOL.md#current-basic-contest-reset",
               "docs/PROTOCOL.md#four-slot-native-consumers",
-              "docs/PROTOCOL.md#four-session-native"
+              "docs/PROTOCOL.md#four-session-native",
+              "docs/PROTOCOL.md#eight-two-team-cycles"
             ]
           },
           "windows_original": {
@@ -1439,7 +1449,8 @@
             "docs/PROTOCOL.md#probe-service",
             "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/57",
             "docs/PROTOCOL.md#loading-timeout",
-            "docs/PROTOCOL.md#loading-timeout-positive"
+            "docs/PROTOCOL.md#loading-timeout-positive",
+            "docs/PROTOCOL.md#eight-two-team-cycles"
           ],
           "delivery": "via_pr"
         },
@@ -1454,7 +1465,8 @@
             "docs/PROTOCOL.md#a-c-basic-cycles",
             "docs/evidence/peer-endpoints/README.md#cp176",
             "docs/PROTOCOL.md#current-basic-cycles-291",
-            "docs/PROTOCOL.md#current-basic-contest-reset"
+            "docs/PROTOCOL.md#current-basic-contest-reset",
+            "docs/PROTOCOL.md#eight-two-team-cycles"
           ]
         },
         "gate": {
@@ -2720,7 +2732,8 @@
           "docs/evidence/peer-endpoints/README.md#cp172",
           "docs/PROTOCOL.md#current-basic-cycles-291",
           "docs/PROTOCOL.md#current-basic-contest-reset",
-          "docs/PROTOCOL.md#four-two-team-cycles"
+          "docs/PROTOCOL.md#four-two-team-cycles",
+          "docs/PROTOCOL.md#eight-two-team-cycles"
         ]
       },
       "coverage": {
@@ -2793,7 +2806,8 @@
               "docs/evidence/peer-endpoints/README.md#cp172",
               "docs/PROTOCOL.md#current-basic-cycles-291",
               "docs/PROTOCOL.md#current-basic-contest-reset",
-              "docs/PROTOCOL.md#four-two-team-cycles"
+              "docs/PROTOCOL.md#four-two-team-cycles",
+              "docs/PROTOCOL.md#eight-two-team-cycles"
             ]
           },
           "windows_original": {
@@ -2830,7 +2844,8 @@
             "server/test_rescue_contact.py",
             "docs/PROTOCOL.md#rescue-reverse",
             "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/185",
-            "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/186"
+            "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/186",
+            "docs/PROTOCOL.md#eight-two-team-cycles"
           ],
           "delivery": "via_pr"
         },
@@ -2861,7 +2876,8 @@
             "docs/PROTOCOL.md#integrated-survivor",
             "docs/PROTOCOL.md#virtual-basic-cycles",
             "docs/PROTOCOL.md#current-basic-cycles-291",
-            "docs/PROTOCOL.md#current-basic-contest-reset"
+            "docs/PROTOCOL.md#current-basic-contest-reset",
+            "docs/PROTOCOL.md#eight-two-team-cycles"
           ]
         },
         "gate": {
@@ -3449,7 +3465,8 @@
           "docs/PROTOCOL.md#current-basic-contest-reset",
           "docs/PROTOCOL.md#emulated-lan-acceptance",
           "docs/PROTOCOL.md#four-two-team-cycles",
-          "docs/PROTOCOL.md#four-transport-bounds"
+          "docs/PROTOCOL.md#four-transport-bounds",
+          "docs/PROTOCOL.md#eight-two-team-cycles"
         ]
       },
       "coverage": {
@@ -3531,7 +3548,8 @@
               "docs/PROTOCOL.md#current-basic-contest-reset",
               "docs/PROTOCOL.md#emulated-lan-acceptance",
               "docs/PROTOCOL.md#four-two-team-cycles",
-              "docs/PROTOCOL.md#four-transport-bounds"
+              "docs/PROTOCOL.md#four-transport-bounds",
+              "docs/PROTOCOL.md#eight-two-team-cycles"
             ]
           },
           "windows_original": {
@@ -3561,7 +3579,8 @@
             "docs/PROTOCOL.md#drained-result-local-clear",
             "docs/PROTOCOL.md#peer21-ending-order",
             "server/four_battle_policy.py",
-            "server/test_four_battle_policy.py"
+            "server/test_four_battle_policy.py",
+            "docs/PROTOCOL.md#eight-two-team-cycles"
           ],
           "delivery": "via_pr"
         },
@@ -3594,7 +3613,8 @@
             "docs/PROTOCOL.md#current-basic-cycles-291",
             "docs/PROTOCOL.md#current-basic-contest-reset",
             "docs/PROTOCOL.md#emulated-lan-acceptance",
-            "docs/PROTOCOL.md#four-transport-bounds"
+            "docs/PROTOCOL.md#four-transport-bounds",
+            "docs/PROTOCOL.md#eight-two-team-cycles"
           ]
         },
         "gate": {
@@ -3705,7 +3725,8 @@
           "docs/PROTOCOL.md#four-transport-bounds",
           "docs/PROTOCOL.md#four-member-abort-room",
           "docs/PROTOCOL.md#four-health-identity",
-          "docs/PROTOCOL.md#four-netem-restart"
+          "docs/PROTOCOL.md#four-netem-restart",
+          "docs/PROTOCOL.md#eight-two-team-cycles"
         ]
       },
       "coverage": {
@@ -3814,7 +3835,8 @@
               "docs/PROTOCOL.md#four-transport-bounds",
               "docs/PROTOCOL.md#four-member-abort-room",
               "docs/PROTOCOL.md#four-health-identity",
-              "docs/PROTOCOL.md#four-netem-restart"
+              "docs/PROTOCOL.md#four-netem-restart",
+              "docs/PROTOCOL.md#eight-two-team-cycles"
             ]
           },
           "windows_original": {
@@ -3853,7 +3875,8 @@
             "server/four_battle_policy.py",
             "server/test_four_battle_policy.py",
             "docs/PROTOCOL.md#four-member-abort-room",
-            "docs/PROTOCOL.md#four-health-identity"
+            "docs/PROTOCOL.md#four-health-identity",
+            "docs/PROTOCOL.md#eight-two-team-cycles"
           ],
           "delivery": "via_pr"
         },
@@ -3908,7 +3931,8 @@
             "docs/PROTOCOL.md#four-transport-bounds",
             "docs/PROTOCOL.md#four-member-abort-room",
             "docs/PROTOCOL.md#four-health-identity",
-            "docs/PROTOCOL.md#four-netem-restart"
+            "docs/PROTOCOL.md#four-netem-restart",
+            "docs/PROTOCOL.md#eight-two-team-cycles"
           ]
         },
         "gate": {
@@ -4736,7 +4760,8 @@
           "docs/PROTOCOL.md#four-health-identity",
           "docs/PROTOCOL.md#four-netem-restart",
           "docs/PROTOCOL.md#eight-session-preview",
-          "docs/PROTOCOL.md#eight-mesh-owner-bombs"
+          "docs/PROTOCOL.md#eight-mesh-owner-bombs",
+          "docs/PROTOCOL.md#eight-two-team-cycles"
         ]
       },
       "coverage": {
@@ -4772,7 +4797,8 @@
               "docs/PROTOCOL.md#four-member-abort-room",
               "docs/PROTOCOL.md#four-health-identity",
               "docs/PROTOCOL.md#four-netem-restart",
-              "docs/PROTOCOL.md#eight-mesh-owner-bombs"
+              "docs/PROTOCOL.md#eight-mesh-owner-bombs",
+              "docs/PROTOCOL.md#eight-two-team-cycles"
             ]
           },
           "windows_original": {
@@ -4811,7 +4837,8 @@
             "server/test_four_identity_store.py",
             "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/278",
             "docs/PROTOCOL.md#eight-session-preview",
-            "docs/PROTOCOL.md#eight-mesh-owner-bombs"
+            "docs/PROTOCOL.md#eight-mesh-owner-bombs",
+            "docs/PROTOCOL.md#eight-two-team-cycles"
           ],
           "delivery": "via_pr"
         },
@@ -4825,7 +4852,8 @@
             "docs/PROTOCOL.md#four-transport-bounds",
             "docs/PROTOCOL.md#four-member-abort-room",
             "docs/PROTOCOL.md#four-health-identity",
-            "docs/PROTOCOL.md#four-netem-restart"
+            "docs/PROTOCOL.md#four-netem-restart",
+            "docs/PROTOCOL.md#eight-two-team-cycles"
           ]
         },
         "gate": {

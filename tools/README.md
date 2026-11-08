@@ -208,3 +208,9 @@ Chỉ phòng/load/peer; không có flag bom/result8. [Contract/bằng chứng/gi
 EightPlayerService có opt-in `--bomb-profile` cho **đúng** measured`eight_current_baseline` của
 [CP209](../docs/PROTOCOL.md#eight-mesh-owner-bombs); default preset/bundle CP208 không tự bật policy đó.
 Profile khác bị từ chối; không có flag outcome/reset8. Gói đã xuất không tự cập nhật theo source hiện tại.
+
+
+Từ [CP210](../docs/PROTOCOL.md#eight-two-team-cycles), chạy EightPlayerService với
+`--bomb-profile <measured-eight-baseline.json> --battle-outcome` để bật fixed4v4 report-derived result/reset.
+`--battle-outcome` cần measuredprofile; default preview/bomb-only không tự bật. CP210 native chạy source
+đã freeze; gói8battle/relocation là bước kế, không coi bundleverify-only cũ đã qua native2cycles.
