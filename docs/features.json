@@ -1,7 +1,7 @@
 {
   "schema": "kre-feature-index-v1",
   "build": "KR00967",
-  "as_of": "CP215",
+  "as_of": "CP216",
   "sources": {
     "plan": "docs/PLAN.md",
     "contract": "docs/PROTOCOL.md",
@@ -418,7 +418,8 @@
           "docs/PROTOCOL.md#four-session-native",
           "docs/PROTOCOL.md#eight-session-preview",
           "docs/evidence/login-runtime/README.md#cp214",
-          "docs/evidence/login-runtime/README.md#cp215"
+          "docs/evidence/login-runtime/README.md#cp215",
+          "docs/evidence/login-runtime/README.md#cp216"
         ]
       },
       "coverage": {
@@ -443,7 +444,8 @@
             "docs/PROTOCOL.md#own-profile-291",
             "docs/PROTOCOL.md#own-profile-integration",
             "docs/PROTOCOL.md#auth-token-request",
-            "docs/PROTOCOL.md#auth-token-bounds"
+            "docs/PROTOCOL.md#auth-token-bounds",
+            "docs/PROTOCOL.md#auth-channel-echo"
           ]
         },
         "emulation": {
@@ -451,7 +453,8 @@
           "refs": [
             "docs/evidence/login-runtime/README.md",
             "docs/evidence/auth-profile/README.md",
-            "docs/evidence/lobby-identity/k3-acceptance.json"
+            "docs/evidence/lobby-identity/k3-acceptance.json",
+            "docs/evidence/login-runtime/channel-echo.json"
           ]
         },
         "runtime": {
@@ -473,7 +476,8 @@
               "docs/evidence/lobby-identity/k3-acceptance.json",
               "docs/PROTOCOL.md#four-session-native",
               "docs/evidence/login-runtime/README.md#cp214",
-              "docs/evidence/login-runtime/README.md#cp215"
+              "docs/evidence/login-runtime/README.md#cp215",
+              "docs/evidence/login-runtime/README.md#cp216"
             ]
           },
           "windows_original": {

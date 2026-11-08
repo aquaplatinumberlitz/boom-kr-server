@@ -1,7 +1,7 @@
 # Kế hoạch server giả lập KR 00967
 
 Nguồn chuẩn của project `boom-kr-server`; bản nhập từ plan đã được dsh1/dsh2 review tại `1eee46d`.
-CP215: token13/15/16 nối actual C2S1; token2-only nativecount0/noauth trong run. Chưa xác thực tài khoản hoặc Rust. CP213 thiết kế/lộ trình Rust KRE-074/#285 đã mergePR286. Native8teamresults đã seal là input chưa giao code; K6c WAN giả lập/K7 scoped đạt CP212, Internet thật chưa kiểm. AUD062qua212/kếCP216.
+CP216: đã phục hồi C2S6/count1 và authfield36→cache→C2S6aux echo; chưa xác thực tài khoản hoặc Rust. CP213 thiết kế/lộ trình Rust KRE-074/#285 đã mergePR286. Native8teamresults đã seal là input chưa giao code; K6c WAN giả lập/K7 scoped đạt CP212, Internet thật chưa kiểm. AUD062qua212/kếCP216.
 
 
 ### Mục tiêu, baseline và phạm vi
@@ -64,20 +64,22 @@ với client Rust không chứng minh có thể điều khiển client KR bằng
 K0–K7 đạt đúng scope, K6c WAN giả lập; **Internet thật chưa kiểm** là backlog riêng.
 Team source WIP giữ nguyên/chưa merge, không chọn làm baseline Rust.
 
-1. **NEXT-AUTH-SESSION-BINDING**: [CP215](PROTOCOL.md#auth-token-bounds)/[raw](evidence/login-runtime/README.md#cp215)
-   đã đo15/16 và token2-only; không lặp tokenbounds/fullcodec. Đối chiếu CP015/058/060/181/184/186 cùng cache
-   producer C2S6/name+32opaque tail và S2C7, chọn đúng field/assignment còn thiếu rồi mới chạy control tối thiểu.
-   Mục tiêu token→localidentity→socketkênh; tokenverify/expiry/revoke/swap là backendpolicy và acceptance riêng.
-   Chưa gọi loginresult/namematch là authentication hoặc đồng nhất hai implementation là nativeproof.
-2. **NEXT-AUTH-TOKEN-BOUNDS** đã hoàn tất đúng nhánh ASCII13/15/16/count0–2 ở CP214–215;
-   không exhaustive length/encoding/providerproof. Mở biến thể khác chỉ khi chặn bridge thực tế.
+1. **NEXT-AUTH-SESSION-BINDING / admission policy**: [CP216](PROTOCOL.md#auth-channel-echo)/
+   [raw](evidence/login-runtime/README.md#cp216) đã xác nhận field36echo và layout C2S6 count1.
+   Không RE lại token13/15/16, producer6, auth137/name/codec. Thiết kế adapter RE opt-in cục bộ:
+   validate tokenC2S1 đã biết → cấp lease mộtlần quafield36 → đối chiếu C2S6ID/name/echo, rồi nativepositive/
+   wrongtoken/wrongecho/replay/expiry/revoke/swappedidentity controls tối thiểu. TTL, entropy, giới hạn thử và
+   quyền sở hữu là **policy design**, field32bit không tự là strongauth hoặc luậtservergốc.
+   Giữ backendaccount/sessionownership rộng unknown; không mở provider/SDKgraph khi chưa có blocker cụ thể.
+2. Tokenbounds13/15/16/token2-only đã hoàn tất CP214–215; channelwire/sourcefield36 hoàn tất hẹp CP216.
+   Count2/optionalstring/encoding/runtimeupperbounds chỉ mở nếu input bridge thực tế cần, không exhaustiveRE trướcRust.
 3. Lát cắt Rust đầu tiên vẫn **RUST-M0→M1**, không phụ thuộc authbridge/fullauthRE. Chỉ triển khai khi mở đợt implementation đúng phạm vi:
    pinned Python baseline rồi pure codec/per-connection/nativehello-error-retry;
    [M0–M8](#rust-service-milestones) là thứ tự implementation duy nhất. M5backend có thể làm độc lập sớm,
    không chờ Battle/mọiitem và không chờ fullauthRE để thiết kế DB. Không tạo Rust tree trong đợt RE này.
 
 [Owner design](evidence/owner-directives/rust-service.json), [kiến trúc/readiness](RUST_SERVICE_ARCHITECTURE.md),
-[unknown/phép đo](RESEARCH.md#rust-service-gaps). Codex solo/tự kiểm, review waived; CP215 không nâng gate, audit kếCP216.
+[unknown/phép đo](RESEARCH.md#rust-service-gaps). Codex solo/tự kiểm, review waived; CP216 không nâng gate; AUD063 qua216/audit kếCP220.
 
 <a id="rust-service-milestones"></a>
 ### Milestone Rust: dependency, đầu ra và nghiệm thu

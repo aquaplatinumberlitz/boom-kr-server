@@ -336,7 +336,7 @@ Prefixcheckoff và allocator synthetic theo recipe cũ; không phải backend th
 
 **Giới hạn:** input13byte/ASCII, một nhánh local config/copy đã sửa; chưa length16+ hoặc token2-only,
 chưa giải nghĩa suffix hay các flag mở rộng. Không gửi authsuccess, không kiểm expiry/revocation/swappedchannel
-và không chứng minh account→player/sessionownership. Request6/name+opaque tail chưa được nối với token này.
+và không chứng minh account→player/sessionownership. Tại CP214 request6/name+tail chưa được nối với token; [CP216](#auth-channel-echo) phục hồi layout/field36echo, chưa tokenownership.
 Contract dùng trực tiếp để parse một nhánh có bounds; thiết kế backend auth/Argon2id/session vẫn là `design`.
 Phép thử tiếp ở [RUST-Q1](RESEARCH.md#rust-service-gaps); không sửa/đóng gate demo hoặc fullauth từ kết quả này.
 
@@ -363,6 +363,38 @@ Vector0/64 không là proof runtime nhận token rỗng/64 hoặc maxinput.
 **Phạm vi mới:** actualtoken ASCII13/15/16, configcount0/1/2 theo những tổ hợp đã đo.
 Fulltokenbounds/encoding/provider/password/suffixsemantics/credentialverify/expiry/revoke/accountownership vẫn unknown.
 Không thay công thức backendauth bằng obfuscation này; bước tiếp ở [RUST-Q1](RESEARCH.md#rust-service-gaps).
+
+<a id="auth-channel-echo"></a>
+### Producer C→S6 và echo từ reply đăng nhập — CP216
+
+[Run/control/raw/hash](evidence/login-runtime/README.md#cp216), [metadata](evidence/login-runtime/channel-echo.json).
+Reuse CP015redirect, CP058name/56fieldrecipe, CP181Profile47, CP184–186nameguard và CP214–215token;
+cache CP014 đã có edge13AE944/95A/969, nay nối với nativecapture. Không dùng S→C6handler11004A0 làm producer.
+
+**`kr_static/confirmed`, runtime chỉ count1/optional-string-off:** producer13AE740 gọi ctor6 tại13AE944,
+serializer4CD040 qua14EC6E0, send13ADD10 tại13AE969. Serializer cho count1..2; body có
+`u8 count,u8 opaque`, mỗi record `str_u16,u32 id,u32 aux,u64 opaque,u8 flag`;
+đuôi chung `u8,u8,u32,u32,bool,u32`, và optionalstring dưới4CD450.
+Tên/ID từ13B0A00/13B09C0, aux từ13B0D10; getter/setter13B0D10/13B0D30 dùng cùng box
+`context+148h+0Ch*index`. U64 được caller11018DB lấy từ13C0EC0/localwrapper; chưa nối nguồn đó
+với reply server hoặc gọi là sessionkey. Staticallowcount2 không phải runtimecount2 acceptance.
+
+**`kr_runtime/confirmed` trên Winecopy4b/localfixture:** baseline và one-fieldcontrol đều tạo C2S6
+seq40/frame81/body43, prefix1/255, tênKRLocal/ID1. Với tên7byte, aux chiếm body15..18;
+suffix32byte cũ được phân thành17byte của record và15byte chung, không là blob hay8u32.
+Chỉ đổi **S2C4 field36/u32/body93..96** từ0 sang marker trong fixture auth137 và cập nhậtCRC.
+Native reader10FE043 → setter13B0D30/index0 → getter tại13AE834 → serializer4CD040 →
+writer4CD111/C2S6 cùng marker, đúng thứ tự thời gian; bodyC2S6 chỉ đổi4byte15..18.
+Đây là **echo field36 qua cache**; ý nghĩa gốc, TTL hoặc việc dùng như credential/ticket chưa biết.
+
+**`kr_static/confirmed`/emulation riêng:** hai actualframe/native14EF300 +26 logicalreader/string checks
+đến cursor43/errors0, haiCRC-flip return7/error10/consumed0 và hai partial return2/consumed0.
+Prefixcheckoff/allocator synthetic theo recipe cũ; không xác thực tài khoản.
+
+**Giới hạn:** S2C4successfixture là dữ liệu servergiả lập đã đo parser, không phải kiểm token/password.
+Client count1/ASCII7name/currentcopy; count2/optionalstring/provider/encoding rộng chưa runtime.
+Một field32bit echo không tự chứng minh quyền sở hữu session hoặc an toàn xác thực. Admission/lease/expiry/revoke/
+rate limits là `design`, cần nativepositive/negative riêng trước tích hợp; chưa có Rust implementation.
 
 <a id="channel-lobby"></a>
 ### Từ auth tới UI sảnh trên copy — CP015

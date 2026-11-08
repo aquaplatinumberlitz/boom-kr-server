@@ -1,0 +1,270 @@
+{
+  "id": "CP216",
+  "previous": "CP215",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-08T23:32:45.600973+00:00",
+  "context_commit": "d3b85dff6d1d6f64495ccca06705059ae2a0cb91",
+  "owner": "Codex",
+  "reviewer": "Codex",
+  "question": "NEXT-AUTH-SESSION-BINDING: whichC2S6producer/layout replacesopaque32tail, anddoesoneknownS2C4fieldsurvivecache→nativeC2S6withoutassumingoriginalauthenticationsemantics?",
+  "scope": "Sourcefirst17files+oldCP014edgesupplement;2frozenisolatedWinecopy4brunsbaseline/oneS2C4field36marker. Nativeconstructor/writer/callers→boundedproducer/serializer/caller/getter andconcreteauxsetter-getteredge→nativeone-fieldechochronology/wirecomparison. 26nativefieldreads/CRCpartialcontrols; periodicmanualAUD063. No Rust/serving-sourcebehaviorchange.",
+  "artifacts": [
+    {
+      "name": "OriginalKR00967unchanged",
+      "sha256": "a52545c14b1fea423de655c3163d6360b628d61c1cd472b46fdbc8a9ffe15f4e"
+    },
+    {
+      "name": "OfflineWinecopy4b",
+      "sha256": "4b781fbcea21e0f6294c729b63be86ab2953d60ad83b0d0c9219359f826107ed"
+    },
+    {
+      "name": "Existingcopied-nativeimage",
+      "sha256": "a08950c833d3acab8281049def7b3dc96b221f107eeda01da3a548e34b91dce5"
+    }
+  ],
+  "locators": [
+    "Nativeproducer13AE740,ctor6ret13AE949/sendret13AE96E/serializer4CD040. Struct+4count1..2/+15strings/+45IDs/+4Daux/+55u64/+7Dflags;sharedtrailer+6,+7,+8,+C,+10,+11;optionalstring+65guard4CD450. Count1/runtimeonly.",
+    "Sourcefield36: S2C4/u32/body93..96/readerreturn10FE043→setter13B0D30caller10FE05F/cachecontext+148+0C*index→getter13B0D10return13AE834→serializerreturn4CD111/C2S6auxbody15..18. Marker0x01020304 nativeorderedjoins.",
+    "Actualcall11018DB→13AE740, u64from13C0EC0/13BE710→13C2480→13C5010localwrapper;originSDK/serverunknown,noprovidergraph. Initialprologuelookupnarrowmiss/cachedwrapperduplicationretainedandqualified.",
+    "Baseline d11c253b3dfe220784929296d061575425527aad4af1f08e668017f587c242ca/51.633969701s/59raw;marker a6fc5faab8a4f72d4ef0fae88d539f1b00a96fcc1a1f6dea1123a59e0f6dee12/49.684913572s/59raw. Bothframe81/body43/seq40/noerrors/sourcefrozen/cleanup0."
+  ],
+  "findings": [
+    {
+      "summary": "SourcefirstreusesCP015redirect,CP05856fieldrecipe/actual6A-B,CP18147fixtureProfile,CP184–186nameguard/CP214–215tokens. Passiveconstructor6→13AE944/send13AE969matchesoldCP014cacheedgefound/pinnedinsupplement; avoidfullauth137/name/codec/provider/Battle redo. Initialwrapperslice partlyduplicatescache, notnewclaim.",
+      "source": "design",
+      "status": "design",
+      "method": "documentation",
+      "canonical": "docs/PROTOCOL.md#auth-channel-echo",
+      "evidence": [
+        "AUTH216-00395",
+        "AUTH216-00394",
+        "AUTH216-00187",
+        "AUTH216-00204"
+      ],
+      "limits": "Onlycurrentcopy4b/Wine10.0/isolatedloopback/localProfile47/syntheticauthsuccess137/count1/ASCII7/optionaloff. Field36echo32bitsoriginalsemantics/securityunknown; u64localwrapperoriginnotprovedservernonce. No tokenverify/expiry-revoke/replay/swap/accountownership/Rust/servingpolicychange. Completehistory/rawpreserved;8WIPsourcesunchangedunmerged. K6cWAN/K7scopeunchanged, Internet thật chưa kiểm. AUD063through216/next220/reviewwaived."
+    },
+    {
+      "summary": "Nativeconstructor6andwritertelemetrylocated13AE740/4CD040. KRstaticlayout count1..2/u8opaque/rowsstring,u32ID,u32aux,u64opaque,u8flag/shared15bytefields+optionalstringguard. Boxget13B0D10/set13B0D30samecontext+148+0Cindex. Caller11018DBu64from13C0EC0localwrapper,notprovenservernonce. Copiedbyteparityboundedranges, nooriginalDB/configmutation.",
+      "source": "kr_static",
+      "status": "confirmed",
+      "method": "static",
+      "canonical": "docs/PROTOCOL.md#auth-channel-echo",
+      "evidence": [
+        "AUTH216-00390",
+        "AUTH216-00389",
+        "AUTH216-00188",
+        "AUTH216-00186"
+      ],
+      "limits": "Onlycurrentcopy4b/Wine10.0/isolatedloopback/localProfile47/syntheticauthsuccess137/count1/ASCII7/optionaloff. Field36echo32bitsoriginalsemantics/securityunknown; u64localwrapperoriginnotprovedservernonce. No tokenverify/expiry-revoke/replay/swap/accountownership/Rust/servingpolicychange. Completehistory/rawpreserved;8WIPsourcesunchangedunmerged. K6cWAN/K7scopeunchanged, Internet thật chưa kiểm. AUD063through216/next220/reviewwaived."
+    },
+    {
+      "summary": "TwoactualWinecopy4bcount1/optionaloffruns C2S6frame81/body43/seq40/nameKRLocal/ID1,producer/writer/sourcecausality:onlyS2C4field36u32/body93..96 changed0→marker plusCRC; native10FE043read→13B0D30index0set→13AE834get→4CD040serialize→C2S6auxsamespace15..18 carriesmarkerordered. C2S6bodyonly4byteschange. No tokencredentialverification orforceauthstate.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#auth-channel-echo",
+      "evidence": [
+        "AUTH216-00201",
+        "AUTH216-00276",
+        "AUTH216-00071",
+        "AUTH216-00068"
+      ],
+      "limits": "Onlycurrentcopy4b/Wine10.0/isolatedloopback/localProfile47/syntheticauthsuccess137/count1/ASCII7/optionaloff. Field36echo32bitsoriginalsemantics/securityunknown; u64localwrapperoriginnotprovedservernonce. No tokenverify/expiry-revoke/replay/swap/accountownership/Rust/servingpolicychange. Completehistory/rawpreserved;8WIPsourcesunchangedunmerged. K6cWAN/K7scopeunchanged, Internet thật chưa kiểm. AUD063through216/next220/reviewwaived."
+    },
+    {
+      "summary": "Independentcopiednative14EF300 actualC2S6framesandprimitive/stringreaders consume43/13logicalfields each/errors0,26fieldchecks.2CRCflipreturn7/error10/consumed0,2partialreturn2/consumed0. Actualruntime/nativeemulationseparate. OldCP058A/Btailsreadunderrecoveredlayout,initial8u32comparisoncandidate notgrammar; count2/optionalnotruntimeproved.",
+      "source": "kr_static",
+      "status": "confirmed",
+      "method": "emulation",
+      "canonical": "docs/PROTOCOL.md#auth-channel-echo",
+      "evidence": [
+        "AUTH216-00212",
+        "AUTH216-00201",
+        "AUTH216-00393"
+      ],
+      "limits": "Onlycurrentcopy4b/Wine10.0/isolatedloopback/localProfile47/syntheticauthsuccess137/count1/ASCII7/optionaloff. Field36echo32bitsoriginalsemantics/securityunknown; u64localwrapperoriginnotprovedservernonce. No tokenverify/expiry-revoke/replay/swap/accountownership/Rust/servingpolicychange. Completehistory/rawpreserved;8WIPsourcesunchangedunmerged. K6cWAN/K7scopeunchanged, Internet thật chưa kiểm. AUD063through216/next220/reviewwaived."
+    },
+    {
+      "summary": "ManualperiodicAUD063through216 reconcilesREADME→PLAN→PROTOCOL→RESEARCH→evidence acrossCP213Rustplanning/main-vs-WIP,CP214-215actualtokenvshelper,CP216field36echo/nosemanticsauthinference. FixCP214PRpendinglabel/old32opaquetail andsourcecache reuse. No gate/statuspromotionfromecho;8WIPsourcespreserved/noRusttree. PLANnextlocaladmissionpolicycontrols,field32bitnotstrongauth. Auditnext220withoutreset,issues14/285openupdated.",
+      "source": "design",
+      "status": "design",
+      "method": "documentation",
+      "canonical": "docs/PROTOCOL.md#auth-channel-echo",
+      "evidence": [
+        "AUTH216-00204",
+        "AUTH216-00195",
+        "AUTH216-00191",
+        "AUTH216-00193",
+        "AUTH216-00431",
+        "AUTH216-00434"
+      ],
+      "limits": "Onlycurrentcopy4b/Wine10.0/isolatedloopback/localProfile47/syntheticauthsuccess137/count1/ASCII7/optionaloff. Field36echo32bitsoriginalsemantics/securityunknown; u64localwrapperoriginnotprovedservernonce. No tokenverify/expiry-revoke/replay/swap/accountownership/Rust/servingpolicychange. Completehistory/rawpreserved;8WIPsourcesunchangedunmerged. K6cWAN/K7scopeunchanged, Internet thật chưa kiểm. AUD063through216/next220/reviewwaived."
+    }
+  ],
+  "verification": [
+    {
+      "check": "2actualnativeWinefrozenrawhash/ownedcleanup0/orderedfield36read-set-get-serialize-to-wire/4bodybyteonlydelta",
+      "result": "pass",
+      "evidence": [
+        "AUTH216-00201",
+        "AUTH216-00276",
+        "AUTH216-00071"
+      ],
+      "limits": "Onlycurrentcopy4b/Wine10.0/isolatedloopback/localProfile47/syntheticauthsuccess137/count1/ASCII7/optionaloff. Field36echo32bitsoriginalsemantics/securityunknown; u64localwrapperoriginnotprovedservernonce. No tokenverify/expiry-revoke/replay/swap/accountownership/Rust/servingpolicychange. Completehistory/rawpreserved;8WIPsourcesunchangedunmerged. K6cWAN/K7scopeunchanged, Internet thật chưa kiểm. AUD063through216/next220/reviewwaived."
+    },
+    {
+      "check": "2capturednativeframer+26logicalfields/cursor43/errors0/2CRCflip/2partial",
+      "result": "pass",
+      "evidence": [
+        "AUTH216-00212"
+      ],
+      "limits": "Copiednativeemulation/syntheticsocket/allocator/prefixcheckoff, notnativeaccountauthruntime."
+    },
+    {
+      "check": "ManualperiodicAUD063/canonicaldocs-links/8WIPpreservation/noRusttree",
+      "result": "pass",
+      "evidence": [
+        "AUTH216-00204",
+        "AUTH216-00195",
+        "AUTH216-00426",
+        "AUTH216-00424"
+      ],
+      "limits": "Requiredfullhistory/local/exactheadchecksafterappend,beforemerge. Audit/manualreviewnotsemanticcertification."
+    },
+    {
+      "check": "Nativecredentialverify/oneuseadmission/expiry-revoke/replay/swap/accountownership/count2/optional/Rustimplementation",
+      "result": "not_run",
+      "evidence": [
+        "AUTH216-00193"
+      ],
+      "limits": "Field36echoonly; backendpolicyfuture, nofullauth/gateclosure."
+    }
+  ],
+  "evidence": [],
+  "evidence_manifests": [
+    {
+      "path": "docs/evidence/checkpoints/evidence/CP216-auth-channel-echo.json",
+      "bytes": 121970,
+      "sha256": "1981991c73398d40b1a0fb26bb2bc551b4f5de2d4ef151729a7feff1624cbb9f",
+      "count": 443
+    }
+  ],
+  "delta": {
+    "added": [
+      "C2S6producer/count1layout/nativeauthfield36echo throughsameplayercache and26nativefieldreads/controlframes.",
+      "PeriodicAUD063through216/next220,canonicalbacklinks/readiness/explicitpolicyvswirelimits;issues14/285remainopen."
+    ],
+    "corrected": [
+      "Old32opaquetail splitinto17row+15commonbytes,not8u32; initialcomparisonremainscandidateartifact.",
+      "OldCP014cachedproduceredgewasinitiallymissed; supplementpinned/reused, wrapperreadnotnewdiscoveryclaim.",
+      "READMECP214pendingPRlabelupdatedmergedPR287;CP215deliveryPR288notboundsstillpending."
+    ],
+    "superseded": [
+      "NEXT-AUTH-CHANNEL-WIRE identifiedproducer/field36echo scopedcomplete; actualaccount-channelownership remainsopen, nofullauthsemanticsinference."
+    ]
+  },
+  "blockers": [
+    "Field36originalsemantics/secretpurpose/TTLunknown; 32bitechoalone notstrongauth. Tokenverify/leaseexpiry/replay/revoke/swap/accountownership unimplemented, requiresdesign+nativecontrols.",
+    "C2S6count2/optionalstring/encoding/provider/password/widerbounds andSDKu64originunknown;do not scanbeforeactualneed.",
+    "Rustnotimplemented/8teamWIPunmergedunchanged; Internet thật chưa kiểm separatebacklog."
+  ],
+  "next_steps": [
+    {
+      "id": "NEXT-AUTH-SESSION-BINDING",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "NEXTperPLAN:explicitlocalREadmissionpolicy validatesknownC2S1token→oneuseboundedfield36lease→matchC2S6ID/name/echo, thennativewrongtoken/wrongecho/replay/expiry-revoke/swapcontrols. Define32bitentropy/ratelimit/trustlimits; nooriginalauth/strongauthclaim.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-AUTH-CHANNEL-WIRE",
+      "task": "KRE-005b",
+      "state": "closed",
+      "action": "CP216nativeproducer/layoutcount1/sourcefield36cacheecho confirmed; no repeatC2S6producer/auth137/SSObounds. Count2/providerflags deferred untilneeded.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-RUST-FIRST-SLICE",
+      "task": "KRE-074",
+      "state": "active",
+      "action": "FutureM0→M1stillfirstRustslice independentofauthRE. NoRusttreeinCP216; planningdeliveredCP213/PR286.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    }
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-11-08T23:32:45.600973+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "Codexsolo/nativeguided2runs/cachedsourcecomparison/scopedstaticandemulation/periodicmanualaudit;independentreviewwaivednotapproved, exactheadPRchecksrequired.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Owner explicitly requested solo, no workers/review."
+    }
+  },
+  "docs_sync": [
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "CP216sourcefield36echo/layout/limits andnextpolicy/backlinks/readiness/periodicAUD063through216,next220 syncedbeforecomplete; immutablehistory/rawkept."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "CP216sourcefield36echo/layout/limits andnextpolicy/backlinks/readiness/periodicAUD063through216,next220 syncedbeforecomplete; immutablehistory/rawkept."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "updated",
+      "reason": "CP216sourcefield36echo/layout/limits andnextpolicy/backlinks/readiness/periodicAUD063through216,next220 syncedbeforecomplete; immutablehistory/rawkept."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "updated",
+      "reason": "CP216sourcefield36echo/layout/limits andnextpolicy/backlinks/readiness/periodicAUD063through216,next220 syncedbeforecomplete; immutablehistory/rawkept."
+    },
+    {
+      "path": "docs/features.json",
+      "state": "updated",
+      "reason": "CP216sourcefield36echo/layout/limits andnextpolicy/backlinks/readiness/periodicAUD063through216,next220 syncedbeforecomplete; immutablehistory/rawkept."
+    },
+    {
+      "path": "docs/COVERAGE.md",
+      "state": "updated",
+      "reason": "CP216sourcefield36echo/layout/limits andnextpolicy/backlinks/readiness/periodicAUD063through216,next220 syncedbeforecomplete; immutablehistory/rawkept."
+    },
+    {
+      "path": "docs/RUST_SERVICE_ARCHITECTURE.md",
+      "state": "updated",
+      "reason": "CP216sourcefield36echo/layout/limits andnextpolicy/backlinks/readiness/periodicAUD063through216,next220 syncedbeforecomplete; immutablehistory/rawkept."
+    },
+    {
+      "path": "docs/evidence/login-runtime/README.md",
+      "state": "updated",
+      "reason": "CP216sourcefield36echo/layout/limits andnextpolicy/backlinks/readiness/periodicAUD063through216,next220 syncedbeforecomplete; immutablehistory/rawkept."
+    },
+    {
+      "path": "docs/evidence/login-runtime/channel-echo.json",
+      "state": "updated",
+      "reason": "CP216sourcefield36echo/layout/limits andnextpolicy/backlinks/readiness/periodicAUD063through216,next220 syncedbeforecomplete; immutablehistory/rawkept."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/review.json",
+      "state": "updated",
+      "reason": "CP216sourcefield36echo/layout/limits andnextpolicy/backlinks/readiness/periodicAUD063through216,next220 syncedbeforecomplete; immutablehistory/rawkept."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
+      "state": "updated",
+      "reason": "CP216sourcefield36echo/layout/limits andnextpolicy/backlinks/readiness/periodicAUD063through216,next220 syncedbeforecomplete; immutablehistory/rawkept."
+    },
+    {
+      "path": "docs/evidence/checkpoints/audits/AUD063.json",
+      "state": "updated",
+      "reason": "CP216sourcefield36echo/layout/limits andnextpolicy/backlinks/readiness/periodicAUD063through216,next220 syncedbeforecomplete; immutablehistory/rawkept."
+    }
+  ]
+}
