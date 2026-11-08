@@ -28,11 +28,17 @@ boom-kr-server/
 
 ## Tra nhanh và trạng thái hiện tại
 
+**CP209: tám KR Wine đã có movement đủ56chiều remote và cả tám owner đặt/confirm/nổ bom ở mọi view.**
+[Contract/stat/giới hạn](docs/PROTOCOL.md#eight-mesh-owner-bombs), [raw/hash](docs/evidence/eight-player/README.md#cp209).
+Ecapacity2,G/Hpower2 đo riêng; 127/rank/reset8 chưa tíchhợp, **chưa trận tám người hoàn chỉnh**.
+CP208 đã merge [PR280](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/280)/`8a99a72`; CP209 đang giao qua PR.
+AUD061 qua208/audit kếCP212; K6cInternet/K7 còn mở. Bước kế ở PLAN.
+
 **CP208: tám client KR Wine thật đã login → sảnh → phòng → load → Battle/clock.**
 Tám prefix/display/netns/IP/CA PID riêng,32TCP/own-slot0–7/8actual99 và full native121285/153205;
 [contract/giới hạn](docs/PROTOCOL.md#eight-session-preview), [raw/hash](docs/evidence/eight-player/README.md#cp208).
-Chưa movement mesh/bom/kết quả/reset tám người. Bước kế duy nhất ở [PLAN](docs/PLAN.md#current-order).
-CP207 đã merge [PR279](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/279)/`7ffed54`; CP208 đang giao qua PR,
+TạiCP208 chưa movement mesh/bom/kếtquả/reset8; [CP209](docs/PROTOCOL.md#eight-mesh-owner-bombs) bổ sung mesh và bom, kếtquả/reset8 còn thiếu. Bước kế duy nhất ở [PLAN](docs/PLAN.md#current-order).
+CP207 đã merge [PR279](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/279)/`7ffed54`; CP208 đã merge PR280;
 review waived, AUD061 qua208/audit kếCP212. K6c Internet/K7 vẫn mở.
 
 **CP207: bốn KR Wine đã qua hai vòng 2v2/reset/Start3 dưới UDPdelay/loss, server mới dùng lại samebundle vàidentitystore.**

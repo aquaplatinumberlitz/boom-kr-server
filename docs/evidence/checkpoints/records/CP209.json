@@ -1,0 +1,253 @@
+{
+  "id": "CP209",
+  "previous": "CP208",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-08T05:20:35.817028+00:00",
+  "context_commit": "8a99a72c0787026df4a8d287bd11f030bbc3f3c1",
+  "owner": "Codex",
+  "reviewer": "Codex",
+  "question": "AfterCP2088nativeclock, verify56orderedremotemovement/native8statbaselines/actual118 thenenablefixed8ownerbombadmissionandmeasure8view159entities/158withoutprematurelife/result/resetclaims?",
+  "scope": "Reuse8nativebridge/current4b/knownlowobserver/stat52A350/CP201118159158/CP031power mapping.8OSmovementwindows/56remoteprogress/8stat/request then672syntheticTCP/admissionguards and8ownerSpace/64nativeconfirms/entities/64blasts. Reports/outcome8disabled; no newnativefunctions/VNwireport/gate.",
+  "artifacts": [
+    {
+      "name": "OriginalKR00967unchanged",
+      "sha256": "a52545c14b1fea423de655c3163d6360b628d61c1cd472b46fdbc8a9ffe15f4e"
+    },
+    {
+      "name": "CurrentWinecopy_import_ABI_corrected_offline_only",
+      "sha256": "4b781fbcea21e0f6294c729b63be86ab2953d60ad83b0d0c9219359f826107ed"
+    }
+  ],
+  "locators": [
+    "KR00967originala52545c14b1fea423de655c3163d6360b628d61c1cd472b46fdbc8a9ffe15f4e/currentWinecopy4b781fbcea21e0f6294c729b63be86ab2953d60ad83b0d0c9219359f826107ed/Wine10.0-20260425;8distinctCA-prefix-display/privatehostnetns(IP10.77.0.2..9)/rootbridge/no default route.",
+    "KnownclockE134B0;8raresecurestats4A4/50C/4BC/524/5E8/5DC/position4C58/state28; lowobserver1256B3B. C2S118powerfield10→S2C159field8 CP031; E5E8F0/E5ECA8/E5EEABconfirm; E5F450/E5F5FDblast. 52A350copiedUnicorn only; badoldE14360entryobservernotinstalled.",
+    "Meshrunf209f0aaf0efcb549ac5519804155390eecb0ae96a7982398049afd9fad3cfc0/184.016344755s/891raw/277frozen/4610joins/704copiedgetters/2733PCAP14Aedges/cleanup0.",
+    "8bombRun9476f9f2efd6806edba3741b654d3ecc3543377bde82a5045642ed106e929c6d/241.599624124s/1107raw/687frozen/2256joins/128copiedgetters/8actual118/64nativeentities-confirm-blast/cleanup0."
+  ],
+  "findings": [
+    {
+      "summary": "Source-firstreuseCP2088clock/copies/9namespacebridge, CP200lowobserver3wrapper andCP201rareclock6stats/118159158/entitycoordinates/fence; CP031powerfield10→159field8avoidsoldincorrectfield6. VNarchitecture/teameffectsonly; no opcode/key/layout/offsetport/no repeatedcodec/capacity/teamguard/functionRE.",
+      "source": "design",
+      "status": "design",
+      "method": "documentation",
+      "canonical": "docs/PROTOCOL.md#eight-mesh-owner-bombs",
+      "evidence": [
+        "EIGHT209-01049",
+        "EIGHT209-02294"
+      ],
+      "limits": "EightactualmodifiedKR00967Wine4b/8prefix-display-privatehosts/directbridge/ExVillage01/Free0/oneepoch/8normalSpaceowners. Explicitmeasuredcapacity1-2-1-1-2-1-1-1/power1-1-1-1-1-1-2-2/fuse6design; eachactual118->8recipient159full39/nativeentitycoords->158full13. No wrongE14360entryprobeinstalled; exactnativeblastentitylookup/raylength8unmeasured, do not infer fromfullcursor. No reportlife/rank175/180/reset/Start2/gate/Internet/accountauth/originalworldauthority; reportsrejected. Baseline/mesh56previousrunseparate, notonecompletedmatch. Originalsource/4b/DB/assetsunchanged; sourcefrozenuntilcleanup. Mesh/stat118runseparate4610joins704getters;672TCP/360server/16bundle; CP208mergedPR280/8a99a72; reviewwaived/AUD061through208/next212."
+    },
+    {
+      "summary": "EightactualWine8OSwindows ABCright/DHdown/EFGleft yield64own+remoteprogress/56ordereddirectedremote before-afterfreshsnapshots/rightsign.2733PCAPkv-a14directedAedges independently, not56captures; lowobserverhasnoE668AD/keyhandlerprobes/nogameticklatency. Same8profileallviewstatbaselines measured; Ecap2/GHpower2.8actual118correctslot/currentkey/power afterSpace, previewrejectsconfirms.4610joins704copiedgetters/cleanup0.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#eight-mesh-owner-bombs",
+      "evidence": [
+        "EIGHT209-01051",
+        "EIGHT209-00936",
+        "EIGHT209-00941"
+      ],
+      "limits": "EightactualmodifiedKR00967Wine4b/8prefix-display-privatehosts/directbridge/ExVillage01/Free0/oneepoch/8normalSpaceowners. Explicitmeasuredcapacity1-2-1-1-2-1-1-1/power1-1-1-1-1-1-2-2/fuse6design; eachactual118->8recipient159full39/nativeentitycoords->158full13. No wrongE14360entryprobeinstalled; exactnativeblastentitylookup/raylength8unmeasured, do not infer fromfullcursor. No reportlife/rank175/180/reset/Start2/gate/Internet/accountauth/originalworldauthority; reportsrejected. Baseline/mesh56previousrunseparate, notonecompletedmatch. Originalsource/4b/DB/assetsunchanged; sourcefrozenuntilcleanup. Mesh/stat118runseparate4610joins704getters;672TCP/360server/16bundle; CP208mergedPR280/8a99a72; reviewwaived/AUD061through208/next212."
+    },
+    {
+      "summary": "Optinexacteight_current_baselinecap1-2-1-1-2-1-1-1/power1-1-1-1-1-1-2-2/fuse6design. EightBombAdmissionconstructorfixedroles8 inheritsknownadmit/expire; fourdefaultrolesstill4.672realTCPsyntheticcontrols/32sockets checks8recipient159158/BEcap2/F1/GHpower2/dedupe-wrongpower-noID/fencependingHafterCEOF;360server16bundle. Eighthealthpolicyhashpin includesbombpolicy. No report/result/reset8oridentity/abort policy.",
+      "source": "design",
+      "status": "design",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#eight-mesh-owner-bombs",
+      "evidence": [
+        "EIGHT209-02699",
+        "EIGHT209-00030",
+        "EIGHT209-00026",
+        "EIGHT209-02749",
+        "EIGHT209-02750"
+      ],
+      "limits": "EightactualmodifiedKR00967Wine4b/8prefix-display-privatehosts/directbridge/ExVillage01/Free0/oneepoch/8normalSpaceowners. Explicitmeasuredcapacity1-2-1-1-2-1-1-1/power1-1-1-1-1-1-2-2/fuse6design; eachactual118->8recipient159full39/nativeentitycoords->158full13. No wrongE14360entryprobeinstalled; exactnativeblastentitylookup/raylength8unmeasured, do not infer fromfullcursor. No reportlife/rank175/180/reset/Start2/gate/Internet/accountauth/originalworldauthority; reportsrejected. Baseline/mesh56previousrunseparate, notonecompletedmatch. Originalsource/4b/DB/assetsunchanged; sourcefrozenuntilcleanup. Mesh/stat118runseparate4610joins704getters;672TCP/360server/16bundle; CP208mergedPR280/8a99a72; reviewwaived/AUD061through208/next212."
+    },
+    {
+      "summary": "Separate8actualWinecurrentrun: eachnormalSpace→actual118→IDs1..8/owner-serial-cell-power→8recipient159full39/errors0 andnativeentitynonzero/correctcell→8recipient158full13/errors0 afterfuse6.64nativeentities/128coordcopiedgetters/2256rawjoins/241.599s/1107raw/frozenuntilseal/cleanup0; GHactual118/159echo2. No8raylength/exactnativeblastentitylookup/life170/rank/reset/normalmatchinference.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#eight-mesh-owner-bombs",
+      "evidence": [
+        "EIGHT209-02702",
+        "EIGHT209-02181",
+        "EIGHT209-02185"
+      ],
+      "limits": "EightactualmodifiedKR00967Wine4b/8prefix-display-privatehosts/directbridge/ExVillage01/Free0/oneepoch/8normalSpaceowners. Explicitmeasuredcapacity1-2-1-1-2-1-1-1/power1-1-1-1-1-1-2-2/fuse6design; eachactual118->8recipient159full39/nativeentitycoords->158full13. No wrongE14360entryprobeinstalled; exactnativeblastentitylookup/raylength8unmeasured, do not infer fromfullcursor. No reportlife/rank175/180/reset/Start2/gate/Internet/accountauth/originalworldauthority; reportsrejected. Baseline/mesh56previousrunseparate, notonecompletedmatch. Originalsource/4b/DB/assetsunchanged; sourcefrozenuntilcleanup. Mesh/stat118runseparate4610joins704getters;672TCP/360server/16bundle; CP208mergedPR280/8a99a72; reviewwaived/AUD061through208/next212."
+    },
+    {
+      "summary": "Preparemeshreportlocatorinitiallyreferencednonexistentfailedfour-owner-baseline-r3/verification; correctedtoCP201four-owner-bombsactualpassbeforeinputfreeze, no runtimehotfix. NewbombobserveromitswrongoldE14360entryEBPsitewhileoldrawunchanged. ImmutableCP208/waiver/auditcounterpreserved; docs/currentissue14nextreport-life/rank8/reset coherentbeforeCP209complete.",
+      "source": "design",
+      "status": "design",
+      "method": "documentation",
+      "canonical": "docs/PROTOCOL.md#eight-mesh-owner-bombs",
+      "evidence": [
+        "EIGHT209-00939",
+        "EIGHT209-01049",
+        "EIGHT209-02174",
+        "EIGHT209-01057"
+      ],
+      "limits": "EightactualmodifiedKR00967Wine4b/8prefix-display-privatehosts/directbridge/ExVillage01/Free0/oneepoch/8normalSpaceowners. Explicitmeasuredcapacity1-2-1-1-2-1-1-1/power1-1-1-1-1-1-2-2/fuse6design; eachactual118->8recipient159full39/nativeentitycoords->158full13. No wrongE14360entryprobeinstalled; exactnativeblastentitylookup/raylength8unmeasured, do not infer fromfullcursor. No reportlife/rank175/180/reset/Start2/gate/Internet/accountauth/originalworldauthority; reportsrejected. Baseline/mesh56previousrunseparate, notonecompletedmatch. Originalsource/4b/DB/assetsunchanged; sourcefrozenuntilcleanup. Mesh/stat118runseparate4610joins704getters;672TCP/360server/16bundle; CP208mergedPR280/8a99a72; reviewwaived/AUD061through208/next212."
+    }
+  ],
+  "verification": [
+    {
+      "check": "8actual56directedremoteprogress/8stat/8actual118only/4610joins704getters",
+      "result": "pass",
+      "evidence": [
+        "EIGHT209-01051",
+        "EIGHT209-00936",
+        "EIGHT209-00941"
+      ],
+      "limits": "Separatefixedprofilerun;14AedgesPCAPnot56wireproof; no handlerlatency/originalauthority."
+    },
+    {
+      "check": "8ownerconfirm159-entity-blast158all8views/2256joins128getters",
+      "result": "pass",
+      "evidence": [
+        "EIGHT209-02702",
+        "EIGHT209-02181",
+        "EIGHT209-02185"
+      ],
+      "limits": "EightactualmodifiedKR00967Wine4b/8prefix-display-privatehosts/directbridge/ExVillage01/Free0/oneepoch/8normalSpaceowners. Explicitmeasuredcapacity1-2-1-1-2-1-1-1/power1-1-1-1-1-1-2-2/fuse6design; eachactual118->8recipient159full39/nativeentitycoords->158full13. No wrongE14360entryprobeinstalled; exactnativeblastentitylookup/raylength8unmeasured, do not infer fromfullcursor. No reportlife/rank175/180/reset/Start2/gate/Internet/accountauth/originalworldauthority; reportsrejected. Baseline/mesh56previousrunseparate, notonecompletedmatch. Originalsource/4b/DB/assetsunchanged; sourcefrozenuntilcleanup. Mesh/stat118runseparate4610joins704getters;672TCP/360server/16bundle; CP208mergedPR280/8a99a72; reviewwaived/AUD061through208/next212."
+    },
+    {
+      "check": "672realTCPsynthetic/360server/16bundle-preset",
+      "result": "pass",
+      "evidence": [
+        "EIGHT209-02699",
+        "EIGHT209-00030",
+        "EIGHT209-00026"
+      ],
+      "limits": "Syntheticmodelrequests/regression/filepinchecks; notnativefullmatchororacle."
+    },
+    {
+      "check": "8reportlife/rank8/175180/twooutcomesreset/Internet-K7",
+      "result": "pending",
+      "evidence": [
+        "EIGHT209-02702",
+        "EIGHT209-01057"
+      ],
+      "limits": "Reports127stillreject; NEXT-EIGHT-OUTCOME-RESET sourcefirst/controlbeforenativerank8; K6cdependencyopen."
+    }
+  ],
+  "evidence": [],
+  "evidence_manifests": [
+    {
+      "path": "docs/evidence/checkpoints/evidence/CP209-eight-mesh-owner-bombs.json",
+      "bytes": 706113,
+      "sha256": "2e55f3d252e72eda8aa58bf78e8ff855375c08d8ba3f42b903b7c3367a8bd1fc",
+      "count": 2754
+    }
+  ],
+  "delta": {
+    "added": [
+      "Eightactual56orderedremoteprogress/native8stats/8actual118/4610joins704getters/PCAP14Aedges.",
+      "Eightoptinmeasuredpolicy/672TCP/360server and8actualowner159entity158all8views/2256joins128getters/cleanup0."
+    ],
+    "corrected": [
+      "CP208pending8mesh-stats118 nowresolvednarrowly; nativebaselineEcap2/GHpower2replaceanyunmeasureduniformdefault.",
+      "OldCP201badE14360entryobservernotcarriedtonewrun; no oldrecord/raw edits.",
+      "Prepareoldreportpathfailurefixedbeforefreeze, notclaimfailedR3verificationexists."
+    ],
+    "superseded": [
+      "NEXT-EIGHT-MESH-STATS andNEXT-EIGHT-OWNER-BOMBS narrowrequirementsresolved; NEXT-EIGHT-OUTCOME-RESET active."
+    ]
+  },
+  "blockers": [
+    "Eight127life-forward-to7/guard/team4v4/rank175eightrows/180/reset/twooppositeoutcomes/Start3 unimplemented/unobserved; no8fullmatch.",
+    "Native8raylength/exactblastentitylookup/8portablebundle-native/reject9native/1v7actual/generalworldauthorityoutsideproof; K6ccontrolledInternetendpointmissing/K7dependencyopen."
+  ],
+  "next_steps": [
+    {
+      "id": "NEXT-EIGHT-MESH-STATS",
+      "task": "KRE-005b",
+      "state": "closed",
+      "action": "56directedremoteprogress/8stat/8actual118doneinmeshstatsscope; do notrepeatcodec/capacity/8clock.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-EIGHT-OWNER-BOMBS",
+      "task": "KRE-005b",
+      "state": "closed",
+      "action": "8owner159entity158inall8viewsdone; reportlife/result/resetstillmissing.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-EIGHT-OUTCOME-RESET",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "PLAN: source-firstCP202reportguards/17-19-21/threepeerforward/rank4/reset +known175consumer/CP2082098profiles; delta7remote/8life/team4v4/rank8rows. Negativefreshness/EOFcontrols before8native2oppositeoutcomes/175180/reset/Start3; no AB rank-as8 proof.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    }
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-11-08T05:20:35.817028+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "CodexsoloRE/code/runtime/selfcheck; reviewwaived notapproved, exactheadPRrequired.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Owner explicitly requested solo, no workers/review."
+    }
+  },
+  "docs_sync": [
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "CP209mesh/stat/request/bombmechanismreuse/limits/next8report-rank-reset/issue14 syncedbeforecomplete; auditnext212unchanged."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "CP209mesh/stat/request/bombmechanismreuse/limits/next8report-rank-reset/issue14 syncedbeforecomplete; auditnext212unchanged."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "updated",
+      "reason": "CP209mesh/stat/request/bombmechanismreuse/limits/next8report-rank-reset/issue14 syncedbeforecomplete; auditnext212unchanged."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "updated",
+      "reason": "CP209mesh/stat/request/bombmechanismreuse/limits/next8report-rank-reset/issue14 syncedbeforecomplete; auditnext212unchanged."
+    },
+    {
+      "path": "docs/evidence/eight-player/README.md",
+      "state": "updated",
+      "reason": "CP209mesh/stat/request/bombmechanismreuse/limits/next8report-rank-reset/issue14 syncedbeforecomplete; auditnext212unchanged."
+    },
+    {
+      "path": "docs/features.json",
+      "state": "updated",
+      "reason": "CP209mesh/stat/request/bombmechanismreuse/limits/next8report-rank-reset/issue14 syncedbeforecomplete; auditnext212unchanged."
+    },
+    {
+      "path": "docs/COVERAGE.md",
+      "state": "updated",
+      "reason": "CP209mesh/stat/request/bombmechanismreuse/limits/next8report-rank-reset/issue14 syncedbeforecomplete; auditnext212unchanged."
+    },
+    {
+      "path": "tools/README.md",
+      "state": "updated",
+      "reason": "CP209mesh/stat/request/bombmechanismreuse/limits/next8report-rank-reset/issue14 syncedbeforecomplete; auditnext212unchanged."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/review.json",
+      "state": "updated",
+      "reason": "CP209mesh/stat/request/bombmechanismreuse/limits/next8report-rank-reset/issue14 syncedbeforecomplete; auditnext212unchanged."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
+      "state": "updated",
+      "reason": "CP209mesh/stat/request/bombmechanismreuse/limits/next8report-rank-reset/issue14 syncedbeforecomplete; auditnext212unchanged."
+    }
+  ]
+}
