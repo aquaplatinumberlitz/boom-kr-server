@@ -193,3 +193,13 @@ Tại CP204 gói65pins; launcher từ chối serverPython còn hiện diện mà
 khôngqueuednonblocking/backpressurebenchmark.335server/16bundle/214nonreader+247guard vànative4positive cónguồn;
 Tại CP204 EOF/sendfailure chưa đưa ba nativepeer vềphòng; CP205 opt-in đã kiểm guest/hostEOF,
 native sendfailure/quota còn theo gap/PLAN. AUD060qua204/kế208.
+
+
+<a id="eight-session-preview"></a>
+### Gói tám session preview
+
+`python3 tools/export_probe_profile.py --preset eight-client-start --source-root local/research/codex --out local/eight-bundle --bundle`
+
+Chạy `python3 -I local/eight-bundle/run.py --verify-only` trước. Entrypoint tám người nhận
+`--source-ip A=IPv4` đến `H=IPv4` riêng, cùng `--out`, `--bind-ip`, `--port` như gói bốn người.
+Chỉ phòng/load/peer; không có flag bom/result8. [Contract/bằng chứng/giới hạn](../docs/PROTOCOL.md#eight-session-preview).

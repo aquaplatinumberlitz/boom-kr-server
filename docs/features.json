@@ -1,7 +1,7 @@
 {
   "schema": "kre-feature-index-v1",
   "build": "KR00967",
-  "as_of": "CP207",
+  "as_of": "CP208",
   "sources": {
     "plan": "docs/PLAN.md",
     "contract": "docs/PROTOCOL.md",
@@ -412,7 +412,8 @@
           "docs/evidence/lobby-identity/k3-acceptance.json",
           "docs/PROTOCOL.md#operator-incoming-binding",
           "docs/PROTOCOL.md#native-interleaved-startup",
-          "docs/PROTOCOL.md#four-session-native"
+          "docs/PROTOCOL.md#four-session-native",
+          "docs/PROTOCOL.md#eight-session-preview"
         ]
       },
       "coverage": {
@@ -490,7 +491,8 @@
             "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/77",
             "docs/PROTOCOL.md#service-channel-endpoint",
             "server/own_profile.py",
-            "docs/PROTOCOL.md#k3-version-identity-controls"
+            "docs/PROTOCOL.md#k3-version-identity-controls",
+            "docs/PROTOCOL.md#eight-session-preview"
           ],
           "delivery": "via_pr"
         },
@@ -890,7 +892,8 @@
           "docs/evidence/peer-endpoints/README.md#cp168",
           "docs/PROTOCOL.md#native-interleaved-startup",
           "docs/PROTOCOL.md#four-slot-native-consumers",
-          "docs/PROTOCOL.md#four-session-native"
+          "docs/PROTOCOL.md#four-session-native",
+          "docs/PROTOCOL.md#eight-session-preview"
         ]
       },
       "coverage": {
@@ -936,7 +939,8 @@
               "docs/evidence/peer-endpoints/README.md#cp168",
               "docs/PROTOCOL.md#current-291-room-integration",
               "docs/PROTOCOL.md#four-slot-native-consumers",
-              "docs/PROTOCOL.md#four-session-native"
+              "docs/PROTOCOL.md#four-session-native",
+              "docs/PROTOCOL.md#eight-session-preview"
             ]
           },
           "windows_original": {
@@ -962,7 +966,8 @@
             "docs/PROTOCOL.md#host-normal-back",
             "docs/PROTOCOL.md#current-team-mode",
             "server/room_team_mode.py",
-            "server/test_room_team_mode.py"
+            "server/test_room_team_mode.py",
+            "docs/PROTOCOL.md#eight-session-preview"
           ],
           "delivery": "via_pr"
         },
@@ -1021,7 +1026,8 @@
           "docs/evidence/peer-endpoints/README.md#cp167",
           "docs/evidence/peer-endpoints/README.md#cp168",
           "docs/PROTOCOL.md#four-slot-native-consumers",
-          "docs/PROTOCOL.md#four-session-native"
+          "docs/PROTOCOL.md#four-session-native",
+          "docs/PROTOCOL.md#eight-session-preview"
         ]
       },
       "coverage": {
@@ -1076,7 +1082,8 @@
               "docs/evidence/peer-endpoints/README.md#cp168",
               "docs/PROTOCOL.md#current-291-room-integration",
               "docs/PROTOCOL.md#four-slot-native-consumers",
-              "docs/PROTOCOL.md#four-session-native"
+              "docs/PROTOCOL.md#four-session-native",
+              "docs/PROTOCOL.md#eight-session-preview"
             ]
           },
           "windows_original": {
@@ -1102,7 +1109,8 @@
             "docs/PROTOCOL.md#distinct-spawn",
             "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/91",
             "docs/PROTOCOL.md#loading-timeout",
-            "docs/PROTOCOL.md#loading-timeout-positive"
+            "docs/PROTOCOL.md#loading-timeout-positive",
+            "docs/PROTOCOL.md#eight-session-preview"
           ]
         },
         "integration": {
@@ -1509,7 +1517,8 @@
           "docs/PROTOCOL.md#nat-two-cycles",
           "docs/PROTOCOL.md#udp-netem-cycles",
           "docs/PROTOCOL.md#four-slot-native-consumers",
-          "docs/PROTOCOL.md#four-session-native"
+          "docs/PROTOCOL.md#four-session-native",
+          "docs/PROTOCOL.md#eight-session-preview"
         ]
       },
       "coverage": {
@@ -1594,7 +1603,8 @@
           "refs": [
             "server/probe_service.py",
             "docs/PROTOCOL.md#probe-service",
-            "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/57"
+            "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/57",
+            "docs/PROTOCOL.md#eight-session-preview"
           ],
           "delivery": "via_pr"
         },
@@ -4712,7 +4722,8 @@
           "docs/PROTOCOL.md#four-transport-bounds",
           "docs/PROTOCOL.md#four-member-abort-room",
           "docs/PROTOCOL.md#four-health-identity",
-          "docs/PROTOCOL.md#four-netem-restart"
+          "docs/PROTOCOL.md#four-netem-restart",
+          "docs/PROTOCOL.md#eight-session-preview"
         ]
       },
       "coverage": {
@@ -4784,7 +4795,8 @@
             "server/four_identity_store.py",
             "server/test_four_observability.py",
             "server/test_four_identity_store.py",
-            "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/278"
+            "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/278",
+            "docs/PROTOCOL.md#eight-session-preview"
           ],
           "delivery": "via_pr"
         },

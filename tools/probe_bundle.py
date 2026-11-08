@@ -63,7 +63,7 @@ def encoded(value):
     return (json.dumps(value, ensure_ascii=False, indent=2) + '\n').encode()
 
 
-def export_bundle(profile, source_root, out, *, four_bomb_profile=None):
+def export_bundle(profile, source_root, out, *, four_bomb_profile=None, eight_sessions=False):
     """Validate every input before reserving a new directory; never overwrite.
 
     CLI callers supply load_preset's validated result. Repeat the pin checks
@@ -76,6 +76,8 @@ def export_bundle(profile, source_root, out, *, four_bomb_profile=None):
     result = copy.deepcopy(profile)
     if result.get('schema') != 'kr-probe-profile-v1':
         raise ValueError('unsupported profile')
+    if type(eight_sessions) is not bool or (eight_sessions and four_bomb_profile is not None):
+        raise ValueError('eight session preview excludes four Battle policy')
     four = four_bomb_profile is not None
     if four and (json.dumps(four_bomb_profile, sort_keys=True) != json.dumps(dict(mode='four_current_baseline',
             capacities={'A':1,'B':2,'C':1,'D':1}, powers=dict.fromkeys('ABCD',1), fuse_seconds=6), sort_keys=True)):
@@ -112,6 +114,12 @@ def export_bundle(profile, source_root, out, *, four_bomb_profile=None):
             "if any(arg == flag or arg.startswith(flag + '=') for flag in ['--profile', '--bomb-profile'] for arg in sys.argv[1:]):")
         launcher = launcher.replace("sys.argv[1:1] = ['--profile', str(root / 'profile.json')]",
             "sys.argv[1:1] = ['--profile', str(root / 'profile.json'), '--bomb-profile', str(root / 'four-bomb-profile.json'), '--battle-outcome']")
+    if eight_sessions:
+        entrypoint = 'server.eight_player_service'
+        launcher = launcher.replace("'server/probe_service.py'} <= seen",
+            "'server/probe_service.py', 'server/eight_player_service.py', 'server/eight_player_profile.py', 'server/four_player_service.py'} <= seen")
+        launcher = launcher.replace('from server.probe_service import FixtureProfile, main',
+            'from server.probe_service import FixtureProfile\nfrom server.eight_player_service import main')
     payloads['run.py'] = launcher.encode()
     context = subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=ROOT, text=True).strip()
     manifest = dict(

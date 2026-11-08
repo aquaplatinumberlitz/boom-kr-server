@@ -18,6 +18,7 @@ def digest(value):
 
 class FourObservability:
     def __init__(self, service):
+        self.family='four' if len(service.operator_identities)==4 else 'eight'
         self.run_id = uuid.uuid4().hex
         self.started_ns = time.monotonic_ns()
         self.sequence = 0
@@ -30,7 +31,7 @@ class FourObservability:
             bomb_policy=copy.deepcopy(service.state.get('four_bomb_policy')),
             abort_room_policy=copy.deepcopy(service.state.get('abort_room_policy')),
             io_limits=dict(service.io_budget.limits))
-        self.metadata = dict(schema='kre-four-run-v1', source='design', run_id=self.run_id,
+        self.metadata = dict(schema='kre-'+self.family+'-run-v1', source='design', run_id=self.run_id,
             started_utc=datetime.now(timezone.utc).isoformat(), started_monotonic_ns=self.started_ns,
             target='KR00967_declared_not_remote_binary_attestation',
             source_build_sha256=digest(sources), policy_sources=sources,
@@ -74,7 +75,7 @@ class FourObservability:
             self.transitions_total+=1
             self.transitions.append(dict(phase=phase,monotonic_ns=time.monotonic_ns()))
             del self.transitions[:-32]
-        service.state['observability'] = dict(schema='kre-four-context-v1',source='design',
+        service.state['observability'] = dict(schema='kre-'+self.family+'-context-v1',source='design',
             run_id=run_id,room_id=room_id,round_id=round_id,snapshot_sequence=self.sequence,
             phase=phase,phase_transitions=self.transitions,phase_transitions_total=self.transitions_total,run_metadata_sha256=digest(self.metadata))
         return service.state['observability']
@@ -89,7 +90,7 @@ class FourObservability:
         service.state['snapshot_monotonic_ns']=time.monotonic_ns()
         raw=encoded(service.state)
         self.atomic(service.out/'service-state.json',raw)
-        health=dict(schema='kre-four-health-v1',source='design',**{k:context[k] for k in
+        health=dict(schema='kre-'+self.family+'-health-v1',source='design',**{k:context[k] for k in
             ['run_id','room_id','round_id','snapshot_sequence','phase','run_metadata_sha256']},
             snapshot_monotonic_ns=service.state['snapshot_monotonic_ns'],
             state_sha256=hashlib.sha256(raw).hexdigest(),

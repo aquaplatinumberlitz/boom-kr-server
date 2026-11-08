@@ -66,6 +66,22 @@ class FourBundleTests(unittest.TestCase):
                 export_bundle(self.profile,self.source,out,four_bomb_profile=policy)
             self.assertFalse(out.exists())
 
+    def test_eight_launcher_relocates_and_refuses_four_combat_policy(self):
+        out=self.root/'eight'
+        manifest=export_bundle(self.profile,self.source,out,eight_sessions=True)
+        self.assertEqual(manifest['entrypoint'],'server.eight_player_service')
+        moved=self.root/'moved';shutil.move(out,moved);shutil.rmtree(self.source)
+        self.assertEqual(self.call(moved,'--verify-only').returncode,0)
+        result=self.call(moved,'--help')
+        self.assertEqual(result.returncode,0);self.assertIn('--source-ip',result.stdout)
+        self.assertNotIn('--bomb-profile',result.stdout)
+        with self.assertRaisesRegex(ValueError,'excludes four Battle'):
+            export_bundle(self.profile,moved,self.root/'invalid',eight_sessions=True,four_bomb_profile=SPEC)
+        p=moved/'bundle.json';j=json.loads(p.read_text())
+        j['files']=[q for q in j['files'] if q['path']!='server/eight_player_profile.py']
+        p.write_text(json.dumps(j))
+        self.assertIn('incomplete bundle manifest',self.call(moved,'--verify-only').stderr)
+
 
 if __name__=='__main__':
     unittest.main()

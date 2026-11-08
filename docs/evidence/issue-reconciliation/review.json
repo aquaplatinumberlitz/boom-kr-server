@@ -1,7 +1,7 @@
 {
   "schema": "kre-issue-review-v1",
-  "as_of": "2026-11-06",
-  "baseline": "408c535bb7028b626c5ac7bde583e979f7e3a658",
+  "as_of": "2026-11-08",
+  "baseline": "7ffed54fb94f858f9d3d989070f98dd11f146b5c",
   "method": "Codex manual acceptance review; native/static/model/design/merge/gate distinct; originalissuebodies archivedlocalbeforeedit, no completecheckpoint rewrite",
   "issues": [
     {
@@ -155,11 +155,11 @@
         "KR-F001",
         "KR-F015"
       ],
-      "known": "CP207samephysical67bundle/store/freshserver/newUUID/4actual2normal2v2/resetStart3under4UDP40±5msloss5%;2200+208+2528checks/32getters/24remoteprogress/2412PCAP/118transport/current214kernelTCP. CP206mergedPR278/4d136ba.",
-      "remaining": "K6cInternetdependency/controlledexternalendpointmissing/K7open;8actualsessions/generalresume/broadermechanicsoutsideproof.",
-      "next_test": "PLAN NEXT-EIGHT-SESSION-SCOPE independent: reuseCP147163eightfixtures/consumers/teamrules/currentfourhardcodes; scope8sessions/32TCP/Ready99barrier/153 withTCPcontrols before8actualWine; nofullinventory/InternetfromLAN.",
+      "known": "CP207mergedPR279; CP208eightactualKR/32nativeTCP/291names/ownslots/8ACK99/121285-153205/8actorsclock/1468joins/192copiedgetters/cleanup0; synthetic32TCP487/357server/16bundle separate.",
+      "remaining": "Eightmovementmesh/statsE-H/actual118/eightcombat-rank-results-reset/reject9actual/1v7actual/fullauth/Internet-K6c/K7remainopen; eightbundle verify-help only.",
+      "next_test": "NEXT-EIGHT-MESH-STATS onlyPLAN: knownlowobserver/8OSinputwindows/56remoteedges/currentkey/PCAP and8nativeprofilebaselines/actual118while8combatdisabled.",
       "acceptance": "Epic checklist: linkedscopedtask/evidence+authoritymatrix vàacceptancegate ởPLAN; từngtaskđóng khôngđóngepic/K5/K6a.",
-      "reason": "Currentboundedtransportpartialhardening/native4positive proven, notclientrecovery/fullK7/Internet. AUD060through204/next208.",
+      "reason": "Manualnative/source/provenancereview; narrow8clock success not fullmatch/Internet/gate; initialpreclientfailedsetup/seal retained. Reviewwaived/AUD061through208/next212.",
       "sources": [
         "docs/PROTOCOL.md#authority",
         "docs/RESEARCH.md#feature-gaps",
@@ -239,7 +239,8 @@
         "docs/PROTOCOL.md#four-member-abort-room",
         "docs/PROTOCOL.md#four-health-identity",
         "docs/PROTOCOL.md#four-netem-restart",
-        "docs/PLAN.md#k7-evidence-review"
+        "docs/PLAN.md#k7-evidence-review",
+        "docs/PROTOCOL.md#eight-session-preview"
       ],
       "evidence": [
         "docs/evidence/current-movement-cycles/README.md",
@@ -315,7 +316,8 @@
         "docs/evidence/peer-endpoints/README.md#cp204",
         "docs/evidence/peer-endpoints/README.md#cp205",
         "docs/evidence/peer-endpoints/README.md#cp206",
-        "docs/evidence/peer-endpoints/README.md#cp207"
+        "docs/evidence/peer-endpoints/README.md#cp207",
+        "docs/evidence/eight-player/README.md#cp208"
       ],
       "prs": [
         173,
@@ -397,7 +399,8 @@
         268,
         276,
         277,
-        278
+        278,
+        279
       ],
       "successors": []
     },

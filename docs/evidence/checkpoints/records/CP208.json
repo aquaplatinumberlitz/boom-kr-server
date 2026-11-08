@@ -1,0 +1,271 @@
+{
+  "id": "CP208",
+  "previous": "CP207",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-08T04:52:44.157981+00:00",
+  "context_commit": "7ffed54fb94f858f9d3d989070f98dd11f146b5c",
+  "owner": "Codex",
+  "reviewer": "Codex",
+  "question": "Reuseknown8Room/teamguard/121row26/153flags26/current4service to measure8nativeconsumers, implementopt-in8session32TCP, andverifyeightactualKRinitialRoom-load-clockwithoutunmeasuredcombat?",
+  "scope": "Twoactual+6synthetic285-205/8actors;487prototypeand487productionrealTCPcontrols;8source-boundnativeWineclients/32TCP/291names-ownslot0..7/8actual99barrier/8actors-clock/privatebridge9netns. No newnativefunctionRE/VNwireport/combat8/gate.",
+  "artifacts": [
+    {
+      "name": "OriginalKR00967unchanged",
+      "sha256": "a52545c14b1fea423de655c3163d6360b628d61c1cd472b46fdbc8a9ffe15f4e"
+    },
+    {
+      "name": "CurrentWinecopy_import_ABI_corrected_offline_only",
+      "sha256": "4b781fbcea21e0f6294c729b63be86ab2953d60ad83b0d0c9219359f826107ed"
+    }
+  ],
+  "locators": [
+    "KR00967originala52545c14b1fea423de655c3163d6360b628d61c1cd472b46fdbc8a9ffe15f4e/currentWinecopy4b781fbcea21e0f6294c729b63be86ab2953d60ad83b0d0c9219359f826107ed/Wine10.0-20260425(CachyOS). Sourcebinary/DBunchanged;E-Hcopy/prefixfromexistingruntimeA.",
+    "Knownnative121DC7F30/DC9363/rowsDC8E1A,153E825D0/E83E53,ID-positionDD6190/DD61AD/DD61C5,ownslot123FF10,spawnE0F970/clockE134B0/own291D2FEB0-D30122; getter52A350copiedUnicornonly; no newnativefunctions.",
+    "Native8runcfb7962f754319aa31a2100d75e6d642a4700e7a69daf84e78300a31c5608791/152.435188146s/870raw/276frozen/exit0/cleanup0/1468joins/192copiedgetters; 9netns/8CA-wineserverowners/prefix-display/sourceIPs10.77.0.2..9.",
+    "Preview2actual+6syntheticd425e15c2d9d097edf5df77123b277819baad4e871c78c1366f2549f518d616c/287.091599736s/1376raw/285frozen/1709checks/48getters. Synthetic32TCP487separatefromactual8."
+  ],
+  "findings": [
+    {
+      "summary": "ReusedCP147163Room8/capacity/teamguard/Ready; CP020026036199row26/peer26flags; CP200207fourprofile-service-lowobserver/health/bundle/currentcopy. VNoc_e-game475486architectureonly; fourtransportsPERclient/authreply4/u32width4retained, onlyroster/sessioncardinalitychanges. Avoidedcodec/capacity/teamenum/allclient/itemRE.",
+      "source": "design",
+      "status": "design",
+      "method": "documentation",
+      "canonical": "docs/PROTOCOL.md#eight-session-preview",
+      "evidence": [
+        "EIGHT208-03240",
+        "EIGHT208-01738",
+        "EIGHT208-01235"
+      ],
+      "limits": "EightactualmodifiedKR00967Wine4b/separateprefix/display/privatehostnetns/IP/directbridge/sourcebound32TCP/currentzeroProfiles/Free0/team0-1alternating/ExVillage01. Native291names/ownslot0..7/121285inner256/153205all8/8actorsclock. No directedmovementmesh/nativepeerapply/bombstats/request/confirm8/rank8/normaloutcomes/reset/1v7actual/9thnative/originalauth/accountresume/Internet/gate. Earlier8consumerprobeand32TCPsynthetic keptseparate; notmergedintoonematch. Onlyinheritedofflinebootstrapcopy suppression, no state/functioncalls fromobserver.Reviewwaived/AUD061through208/next212; CP207mergedPR279/7ffed54;8combatdisabled;68pinbundleverifyonly."
+    },
+    {
+      "summary": "TwoactualKRWineAB+6syntheticC-H:121285/inner256/153205fullcursorerrors0/both8IDs-position/8distinctactorsclock. Sixzeropeerendpoints, not8sessions/normalmatch.1709checks/48copiednativegetters/cleanup0. ControllerbadJSONadjacencyconditionrunsfullbound; V2readsfrozensourceafteradapteredits, oldraw/preflight/V1kept.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#eight-session-preview",
+      "evidence": [
+        "EIGHT208-03249",
+        "EIGHT208-03137",
+        "EIGHT208-03132"
+      ],
+      "limits": "EightactualmodifiedKR00967Wine4b/separateprefix/display/privatehostnetns/IP/directbridge/sourcebound32TCP/currentzeroProfiles/Free0/team0-1alternating/ExVillage01. Native291names/ownslot0..7/121285inner256/153205all8/8actorsclock. No directedmovementmesh/nativepeerapply/bombstats/request/confirm8/rank8/normaloutcomes/reset/1v7actual/9thnative/originalauth/accountresume/Internet/gate. Earlier8consumerprobeand32TCPsynthetic keptseparate; notmergedintoonematch. Onlyinheritedofflinebootstrapcopy suppression, no state/functioncalls fromobserver.Reviewwaived/AUD061through208/next212; CP207mergedPR279/7ffed54;8combatdisabled;68pinbundleverifyonly."
+    },
+    {
+      "summary": "Productionopt-inEightPlayerServiceprofile/members/classesboundaries plus8preset/bundle.32realTCP487syntheticchecks verifiesrole-source/authreply4/nameguard/own291/7rosters/7Ready/8ACK99barrier/153205sevenremotes-self0/independentseq; unknownsource/exhaustedrole/malformedReady/earlyphase/wrongname/missinglast99/zeroportnegative.8bomb/outcome/abort/identitypoliciesrefused; default4regression357server.",
+      "source": "design",
+      "status": "design",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#eight-session-preview",
+      "evidence": [
+        "EIGHT208-01718",
+        "EIGHT208-00034",
+        "EIGHT208-03304",
+        "EIGHT208-03303"
+      ],
+      "limits": "EightactualmodifiedKR00967Wine4b/separateprefix/display/privatehostnetns/IP/directbridge/sourcebound32TCP/currentzeroProfiles/Free0/team0-1alternating/ExVillage01. Native291names/ownslot0..7/121285inner256/153205all8/8actorsclock. No directedmovementmesh/nativepeerapply/bombstats/request/confirm8/rank8/normaloutcomes/reset/1v7actual/9thnative/originalauth/accountresume/Internet/gate. Earlier8consumerprobeand32TCPsynthetic keptseparate; notmergedintoonematch. Onlyinheritedofflinebootstrapcopy suppression, no state/functioncalls fromobserver.Reviewwaived/AUD061through208/next212; CP207mergedPR279/7ffed54;8combatdisabled;68pinbundleverifyonly."
+    },
+    {
+      "summary": "EightactualKRWineinitiallogin/channel/own291names-cursors126C128others/ownslots0..7/Room/7Ready/8native99beforefirstGO/full121285-inner256/153205/8distinctactorsclockeachview.32actualTCP/sourcebound4stage/9distinctprivate-netns/no default route/8CA-wineserverowners-prefix-display.1468joins/192copiedgetters/152.435s/cleanup0; not8movementmesh/bombs/rank/results-reset/fullmatch.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#eight-session-preview",
+      "evidence": [
+        "EIGHT208-01237",
+        "EIGHT208-01128",
+        "EIGHT208-01123",
+        "EIGHT208-01126",
+        "EIGHT208-01099"
+      ],
+      "limits": "EightactualmodifiedKR00967Wine4b/separateprefix/display/privatehostnetns/IP/directbridge/sourcebound32TCP/currentzeroProfiles/Free0/team0-1alternating/ExVillage01. Native291names/ownslot0..7/121285inner256/153205all8/8actorsclock. No directedmovementmesh/nativepeerapply/bombstats/request/confirm8/rank8/normaloutcomes/reset/1v7actual/9thnative/originalauth/accountresume/Internet/gate. Earlier8consumerprobeand32TCPsynthetic keptseparate; notmergedintoonematch. Onlyinheritedofflinebootstrapcopy suppression, no state/functioncalls fromobserver.Reviewwaived/AUD061through208/next212; CP207mergedPR279/7ffed54;8combatdisabled;68pinbundleverifyonly."
+    },
+    {
+      "summary": "InitialpreclientR1topologyassert9stillcheckedold5namelist, maskedbyunboundsync_servicecleanup; noCArun/noendrun.json. Sourcefrozen/partialseal/namespaceextinct retained. R2only9listcheck/safecleanupdefault; initialimportliteralnewlineandwrongtestmoduleinvocationspreservedthen357server/16bundlepass.68pin8bundle47aliasesPythonIverify-help only, native8ranrepofrozensource.",
+      "source": "design",
+      "status": "design",
+      "method": "documentation",
+      "canonical": "docs/PROTOCOL.md#eight-session-preview",
+      "evidence": [
+        "EIGHT208-00123",
+        "EIGHT208-00122",
+        "EIGHT208-00035",
+        "EIGHT208-00034",
+        "EIGHT208-00026",
+        "EIGHT208-01235"
+      ],
+      "limits": "EightactualmodifiedKR00967Wine4b/separateprefix/display/privatehostnetns/IP/directbridge/sourcebound32TCP/currentzeroProfiles/Free0/team0-1alternating/ExVillage01. Native291names/ownslot0..7/121285inner256/153205all8/8actorsclock. No directedmovementmesh/nativepeerapply/bombstats/request/confirm8/rank8/normaloutcomes/reset/1v7actual/9thnative/originalauth/accountresume/Internet/gate. Earlier8consumerprobeand32TCPsynthetic keptseparate; notmergedintoonematch. Onlyinheritedofflinebootstrapcopy suppression, no state/functioncalls fromobserver.Reviewwaived/AUD061through208/next212; CP207mergedPR279/7ffed54;8combatdisabled;68pinbundleverifyonly."
+    }
+  ],
+  "verification": [
+    {
+      "check": "8actualnativeRoom-load-clock/32TCP/8own291-slot/285-205/1468joins/192copiedgetters/cleanup",
+      "result": "pass",
+      "evidence": [
+        "EIGHT208-01237",
+        "EIGHT208-01123",
+        "EIGHT208-01128",
+        "EIGHT208-01126"
+      ],
+      "limits": "EightactualmodifiedKR00967Wine4b/separateprefix/display/privatehostnetns/IP/directbridge/sourcebound32TCP/currentzeroProfiles/Free0/team0-1alternating/ExVillage01. Native291names/ownslot0..7/121285inner256/153205all8/8actorsclock. No directedmovementmesh/nativepeerapply/bombstats/request/confirm8/rank8/normaloutcomes/reset/1v7actual/9thnative/originalauth/accountresume/Internet/gate. Earlier8consumerprobeand32TCPsynthetic keptseparate; notmergedintoonematch. Onlyinheritedofflinebootstrapcopy suppression, no state/functioncalls fromobserver.Reviewwaived/AUD061through208/next212; CP207mergedPR279/7ffed54;8combatdisabled;68pinbundleverifyonly."
+    },
+    {
+      "check": "2actual+6syntheticnativeconsumer/1709joins/48copiedgetters",
+      "result": "pass",
+      "evidence": [
+        "EIGHT208-03249",
+        "EIGHT208-03132",
+        "EIGHT208-03137"
+      ],
+      "limits": "Separatepriorprobe, not8actualmatch."
+    },
+    {
+      "check": "487productionrealTCP/357server/16bundle-preset/artifacts5",
+      "result": "pass",
+      "evidence": [
+        "EIGHT208-01718",
+        "EIGHT208-00034",
+        "EIGHT208-00026",
+        "EIGHT208-00025"
+      ],
+      "limits": "Syntheticrequests/structuralregression/packageintegrity; no nativeororiginalserveroracle."
+    },
+    {
+      "check": "R1preclienttopology_and_initialimporttest",
+      "result": "fail",
+      "evidence": [
+        "EIGHT208-00123",
+        "EIGHT208-00122",
+        "EIGHT208-00035"
+      ],
+      "limits": "Failedsource/rawpreserved; R2harnesscorrectedaftercleanup, no reconstructedrun.json."
+    },
+    {
+      "check": "8mesh_stats118_bombs_rank_reset_Internet_K7",
+      "result": "pending",
+      "evidence": [
+        "EIGHT208-01237",
+        "EIGHT208-00236"
+      ],
+      "limits": "NEXT-EIGHT-MESH-STATS; no fakegateorcombat8."
+    }
+  ],
+  "evidence": [],
+  "evidence_manifests": [
+    {
+      "path": "docs/evidence/checkpoints/evidence/CP208-eight-session-native-clock.json",
+      "bytes": 848228,
+      "sha256": "e41f399fdfbea2dd81a1ea1956be831ddaa160b48f3200d3e62d358b1866d7d3",
+      "count": 3312
+    }
+  ],
+  "delta": {
+    "added": [
+      "8nativeconsumerproofon2actual/6synthetic andproduction32TCPadapter/preset/bundlepreview.",
+      "EightactualKRinitialRoom-load-clock/32TCP/8ownprofiles/9privatehosts/1468joins192copiedgetters/cleanup0.",
+      "AUD061manualcurrent-state/provenanceaudit/next212;issue14updatesretainsopen."
+    ],
+    "corrected": [
+      "Sourcescope8consumer/initialclockresolved, mesh-stat-combat-resetremain.",
+      "MisleadingcurrentCP147ABConly/CP200missing4resultsparagraph datedandlinkedlaterproof;currentheaders/auditcounterupdated.",
+      "PreviewV1current-sourcepinchecksreplacedonlyinnewV2withfrozeninputmapping; preflight/raw/recordhistoryuntouched.",
+      "R1preclientvalidation/cleanup andliteralnewlineimportfailpreservedseparatelyfrompassedR2."
+    ],
+    "superseded": [
+      "NEXT-EIGHT-SESSION-SCOPE andNEXT-EIGHT-NATIVE-CLOCK narrowrequirementsresolved; NEXT-EIGHT-MESH-STATS active."
+    ]
+  },
+  "blockers": [
+    "Eightmesh56directedremoteprogress/statE-H/request118/unmeasuredcombat8/rank8/twooutcomes-reset/9native/1v7actualnotmeasured.",
+    "K6ccontrolledInternetendpointmissing/K7dependencyopen; 8bundlehasverify-helpwithoutnativerelocation. Fullauth/resume/broadmechanicsoutsideproof."
+  ],
+  "next_steps": [
+    {
+      "id": "NEXT-EIGHT-SESSION-SCOPE",
+      "task": "KRE-005b",
+      "state": "closed",
+      "action": "Bounded8consumer/32TCPadapterdonewithlimits; do notrepeatknowncodec/capacity/teamguard.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-EIGHT-NATIVE-CLOCK",
+      "task": "KRE-005b",
+      "state": "closed",
+      "action": "EightactualRoom-load-clockdoneinscopeR2/cleanup, notnormalmatch.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-EIGHT-MESH-STATS",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "PLAN: reuseR2knownlowobserver/statwrappers;8OSinputwindows/56directedremoteprogress/currentkey/PCAP;statcapacity-max-power-max-speed-maxall8viewsandactual118while8combatdisabled. Then8bomb/rank/resetafterbaseline.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    }
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-11-08T04:52:44.157981+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "CodexsoloRE/code/runtime/selfcheck; reviewwaived notapproved, exactheadPRrequired.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Owner explicitly requested solo, no workers/review."
+    }
+  },
+  "docs_sync": [
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "CP208reuse/productionadapter/native8initialclock/limits/nextmesh-stats/issue14/AUD061syncedbeforecomplete."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "CP208reuse/productionadapter/native8initialclock/limits/nextmesh-stats/issue14/AUD061syncedbeforecomplete."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "updated",
+      "reason": "CP208reuse/productionadapter/native8initialclock/limits/nextmesh-stats/issue14/AUD061syncedbeforecomplete."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "updated",
+      "reason": "CP208reuse/productionadapter/native8initialclock/limits/nextmesh-stats/issue14/AUD061syncedbeforecomplete."
+    },
+    {
+      "path": "docs/evidence/eight-player/README.md",
+      "state": "updated",
+      "reason": "CP208reuse/productionadapter/native8initialclock/limits/nextmesh-stats/issue14/AUD061syncedbeforecomplete."
+    },
+    {
+      "path": "docs/features.json",
+      "state": "updated",
+      "reason": "CP208reuse/productionadapter/native8initialclock/limits/nextmesh-stats/issue14/AUD061syncedbeforecomplete."
+    },
+    {
+      "path": "docs/COVERAGE.md",
+      "state": "updated",
+      "reason": "CP208reuse/productionadapter/native8initialclock/limits/nextmesh-stats/issue14/AUD061syncedbeforecomplete."
+    },
+    {
+      "path": "tools/README.md",
+      "state": "updated",
+      "reason": "CP208reuse/productionadapter/native8initialclock/limits/nextmesh-stats/issue14/AUD061syncedbeforecomplete."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/review.json",
+      "state": "updated",
+      "reason": "CP208reuse/productionadapter/native8initialclock/limits/nextmesh-stats/issue14/AUD061syncedbeforecomplete."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
+      "state": "updated",
+      "reason": "CP208reuse/productionadapter/native8initialclock/limits/nextmesh-stats/issue14/AUD061syncedbeforecomplete."
+    }
+  ]
+}
