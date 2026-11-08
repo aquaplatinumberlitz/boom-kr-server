@@ -1,0 +1,251 @@
+{
+  "id": "CP215",
+  "previous": "CP214",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-08T09:23:55.688994+00:00",
+  "context_commit": "83de46cba4baf9baf67888fafa39c40f2aa27345",
+  "owner": "Codex",
+  "reviewer": "Codex",
+  "question": "NEXT-AUTH-TOKEN-BOUNDS: doesknownnativeconfig-tokenrecordmapping cross15/16SSOheapboundary, anddoes token2-only createanautomaticauthrecord?",
+  "scope": "ReuseCP214nativeprobe/framer/writer/cache andCP01411010F0;2frozenWinecopy4bruns/localstub/dummy15+16andtoken2only16,passivecount/input→actualwire/nativewriterchecks,13helpervectors/3framercontrols. No newnativefunctions/REscan/Rustcode orserver-sourcebehaviorchange.",
+  "artifacts": [
+    {
+      "name": "OriginalKR00967unchanged",
+      "sha256": "a52545c14b1fea423de655c3163d6360b628d61c1cd472b46fdbc8a9ffe15f4e"
+    },
+    {
+      "name": "OfflineWinecopy4b",
+      "sha256": "4b781fbcea21e0f6294c729b63be86ab2953d60ad83b0d0c9219359f826107ed"
+    },
+    {
+      "name": "Existingcopied-nativeimage",
+      "sha256": "a08950c833d3acab8281049def7b3dc96b221f107eeda01da3a548e34b91dce5"
+    }
+  ],
+  "locators": [
+    "CP214known13B07F0/13ADE40/105D050=0/122AE50=1/14EC040→14EC060→14ED340; existingmodO/copy4bcodeparity reused. Cached11010F0firstempty⇒count0/both⇒2/firstonly⇒1. No newfunctionbody ordisassemblyrequest.",
+    "SSOpair run98510fe70082496ecc342b9fa603fd878b8058440047ca5e1e8bab4e1dce9cbb/48.655581411s/58raw/cleanup0/count2/C2S1seq40frame100body62/record17at2+18at19/suffix25at37;token2onlyrun04e6813a3a0832fdfe448631ca6032c737c0d5bb4a0b8cb585ea28ef299cadb4/47.218443766s/55raw/cleanup0/count0/four15/no1-or60within42s."
+  ],
+  "findings": [
+    {
+      "summary": "Sourcefirst13pinnedsources includesCP214exactrecord/nativeoracles/codeparity andCP014cached11010F0pluslegacyrefsnapshots. Onlydifference15/16andtoken2only; reusedharness/probes/copy/no newnativefunctionscan/VNlayout. Avoidredo13byteA-B/count2/fullcodec/hello/profile/Battle.",
+      "source": "design",
+      "status": "design",
+      "method": "documentation",
+      "canonical": "docs/PROTOCOL.md#auth-token-bounds",
+      "evidence": [
+        "AUTH215-00023",
+        "AUTH215-00016"
+      ],
+      "limits": "ActualASCII15/16/configautomaticbranchonly/offlinecopy4b/Wine10.0/isolatedloopback/localstub3hello/noauthsuccess. Token2-onlyabsencebounded42seconds. Helper0..64isemulationnotruntimebounds. No tokenverify/provider/password/expiry/revoke/account-channelownership/Rustclaim. ExistingteamWIPunchanged/unmerged, scopedgatesunchanged; Internet thật chưa kiểm. Reviewwaived/auditnextCP216."
+    },
+    {
+      "summary": "ActualWinecopy4b token1length15+token2length16→count2, branch0/1, nativeMSVCcapacity15/31, writerkey11223344. C2S1seq40frame100/body62/prefix4,2;17byterecordat2/18at19/suffix25at37matchesCP214. Exacteachrecordincludingtypedlengthmatchescopied-nativewriter. Frozenpreflight/rawhash/cleanup0.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#auth-token-bounds",
+      "evidence": [
+        "AUTH215-00005",
+        "AUTH215-00099",
+        "AUTH215-00021"
+      ],
+      "limits": "ActualASCII15/16/configautomaticbranchonly/offlinecopy4b/Wine10.0/isolatedloopback/localstub3hello/noauthsuccess. Token2-onlyabsencebounded42seconds. Helper0..64isemulationnotruntimebounds. No tokenverify/provider/password/expiry/revoke/account-channelownership/Rustclaim. ExistingteamWIPunchanged/unmerged, scopedgatesunchanged; Internet thật chưa kiểm. Reviewwaived/auditnextCP216."
+    },
+    {
+      "summary": "ActualWinecopy4b token2-only16char→settercount0/no13ADE40/no14EC040, loginconnection3onlyfourC2S15validCRC/no1-or60in42secondwindow. MatchesKRstaticcached11010F0conditiononfirsttokenempty; notautomaticcount1withsecondtoken. Noallmanual/providerabsenceclaim.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#auth-token-bounds",
+      "evidence": [
+        "AUTH215-00005",
+        "AUTH215-00269"
+      ],
+      "limits": "ActualASCII15/16/configautomaticbranchonly/offlinecopy4b/Wine10.0/isolatedloopback/localstub3hello/noauthsuccess. Token2-onlyabsencebounded42seconds. Helper0..64isemulationnotruntimebounds. No tokenverify/provider/password/expiry/revoke/account-channelownership/Rustclaim. ExistingteamWIPunchanged/unmerged, scopedgatesunchanged; Internet thật chưa kiểm. Reviewwaived/auditnextCP216."
+    },
+    {
+      "summary": "Copiednative14EC040mode2syntheticSSOorheapstring/preallocatedbuffer yieldsn+2/typedlen/cursorfor13vectorsn0,1,3,4,7,8,13,15,16,17,31,32,64; no cryptoencoderreplacement. Twoactual17/18byterecordsmatch. Native14EF300capturedframe100return0/bodyCRCmatch;CRCflipreturn7/error10/consumed0;partialreturn2/consumed0. Helpervector0/64notruntimeconfigproof.",
+      "source": "kr_static",
+      "status": "confirmed",
+      "method": "emulation",
+      "canonical": "docs/PROTOCOL.md#auth-token-bounds",
+      "evidence": [
+        "AUTH215-00018",
+        "AUTH215-00021",
+        "AUTH215-00020"
+      ],
+      "limits": "ActualASCII15/16/configautomaticbranchonly/offlinecopy4b/Wine10.0/isolatedloopback/localstub3hello/noauthsuccess. Token2-onlyabsencebounded42seconds. Helper0..64isemulationnotruntimebounds. No tokenverify/provider/password/expiry/revoke/account-channelownership/Rustclaim. ExistingteamWIPunchanged/unmerged, scopedgatesunchanged; Internet thật chưa kiểm. Reviewwaived/auditnextCP216."
+    },
+    {
+      "summary": "Scopedtokenboundsquestionclosed15/16andtoken2only, notexhaustivelimits/auth. PLANmovesnextsourcefirstC2S6producer/name+32opaquetail/S2C7 beforeminimumfieldcontrol;#14/#285updatedopen/datedsnapshot. CP214deliveredPR287;M0–M1firstRustslice independentofauthRE, noRustimplementation. Existing8WIPsourcesunchanged.",
+      "source": "design",
+      "status": "design",
+      "method": "documentation",
+      "canonical": "docs/PROTOCOL.md#auth-token-bounds",
+      "evidence": [
+        "AUTH215-00016",
+        "AUTH215-00008",
+        "AUTH215-00010",
+        "AUTH215-00399",
+        "AUTH215-00402"
+      ],
+      "limits": "ActualASCII15/16/configautomaticbranchonly/offlinecopy4b/Wine10.0/isolatedloopback/localstub3hello/noauthsuccess. Token2-onlyabsencebounded42seconds. Helper0..64isemulationnotruntimebounds. No tokenverify/provider/password/expiry/revoke/account-channelownership/Rustclaim. ExistingteamWIPunchanged/unmerged, scopedgatesunchanged; Internet thật chưa kiểm. Reviewwaived/auditnextCP216."
+    }
+  ],
+  "verification": [
+    {
+      "check": "Two actualWinefrozen/sealed/rawhash/cleanup0/15-16SSOheapandtoken2-onlycount0/native-to-wirejoin",
+      "result": "pass",
+      "evidence": [
+        "AUTH215-00005",
+        "AUTH215-00099",
+        "AUTH215-00269"
+      ],
+      "limits": "ActualASCII15/16/configautomaticbranchonly/offlinecopy4b/Wine10.0/isolatedloopback/localstub3hello/noauthsuccess. Token2-onlyabsencebounded42seconds. Helper0..64isemulationnotruntimebounds. No tokenverify/provider/password/expiry/revoke/account-channelownership/Rustclaim. ExistingteamWIPunchanged/unmerged, scopedgatesunchanged; Internet thật chưa kiểm. Reviewwaived/auditnextCP216."
+    },
+    {
+      "check": "13copied-nativehelpervectors/2exactrecordmatches/3capturedframeCRC-partialcontrols",
+      "result": "pass",
+      "evidence": [
+        "AUTH215-00018",
+        "AUTH215-00021",
+        "AUTH215-00020"
+      ],
+      "limits": "Emulation/syntheticSSO-heapobjects/buffer/socket/prefixcheckoff separatefromactualruntime; noauthenticationproof."
+    },
+    {
+      "check": "Manualcanonicalreview/linkanchors/WIPsourcehash/noRusttree/docs-catalog-diff",
+      "result": "pass",
+      "evidence": [
+        "AUTH215-00016",
+        "AUTH215-00393",
+        "AUTH215-00392"
+      ],
+      "limits": "Fullhistory/localandexactcommittedhead checksrequired beforemerge; manualreviewnotsemanticcertification."
+    },
+    {
+      "check": "Runtimeupperbounds/provider/password/credentialverify/expiry-revoke/accountidentitychannelbinding/Rustimplementation",
+      "result": "not_run",
+      "evidence": [
+        "AUTH215-00010"
+      ],
+      "limits": "Openacceptances, nofullauth/gatepromotion."
+    }
+  ],
+  "evidence": [],
+  "evidence_manifests": [
+    {
+      "path": "docs/evidence/checkpoints/evidence/CP215-auth-token-bounds.json",
+      "bytes": 110058,
+      "sha256": "f4497596e01874b820f45c5255e6da9a2b26c18a2f2ab6842cd4f2e0ac24b8ad",
+      "count": 406
+    }
+  ],
+  "delta": {
+    "added": [
+      "ActualSSO15/heap16/count2→17/18byterecords/C2S1frame100/body62;token2-onlycount0boundednoauth.",
+      "13helperemulationvectors andnativecapturedframecontrols,docs/catalog/issueslinked."
+    ],
+    "corrected": [
+      "CP21413byte-only/token2-onlyunknown now supplemented only fordeclaredcurrentcopy/configpath; CP214complete/evidencerecordsnotedited."
+    ],
+    "superseded": [
+      "NEXT-AUTH-TOKEN-BOUNDS completedscoped15/16andtoken2-only;notexhaustiveruntimebound/providerproof."
+    ]
+  },
+  "blockers": [
+    "C2S6name+32opaquetail/S2C7handoffsource notmappedtoauthenticatedlease;tokenownership/expiry/revokeunknown.",
+    "Runtimeupperbounds/encoding/provider/passwordbranches andopaque25suffix remainunknown; openonlyifblocksactualbridge.",
+    "Rustnotimplemented/eightteamWIPunmergedunchanged; Internet thật chưa kiểm separatebacklog."
+  ],
+  "next_steps": [
+    {
+      "id": "NEXT-AUTH-TOKEN-BOUNDS",
+      "task": "KRE-005b",
+      "state": "closed",
+      "action": "CP215measurednative15/16SSOheap/token2-onlycount0 andexactrecords; boundsotherthan13/15/16 remainunknown, reopenonlyconcretebridgeinputneed.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-AUTH-SESSION-BINDING",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "NEXTperPLAN:readexistingCP015/058/060/181/184/186 C2S6producer/name+32opaquetail/S2C7replyassignments;thenminimumfieldcontrolforidentity-channelsocketbinding. No blindtokenlayoutorbackendverificationclaim.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-RUST-FIRST-SLICE",
+      "task": "KRE-074",
+      "state": "active",
+      "action": "FutureimplementationM0→M1 remainsfirstRustslice independentoffullauthRE; noRusttreeinCP215. PlanningalreadydeliveredCP213/PR286.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    }
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-11-08T09:23:55.688994+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "Codexsolo/source-first/2nativeboundedruns/copiednativeemulation/manualcanonicalselfcheck; independentreviewwaivednotapproved; exactPRheadchecksrequired.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Owner explicitly requested solo, no workers/review."
+    }
+  },
+  "docs_sync": [
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "CP215native15/16-token2control/scopedlimits/PLANbindingnext/catalog/issues and evidence syncedbeforecomplete;AUD062/nextCP216unchanged."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "CP215native15/16-token2control/scopedlimits/PLANbindingnext/catalog/issues and evidence syncedbeforecomplete;AUD062/nextCP216unchanged."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "updated",
+      "reason": "CP215native15/16-token2control/scopedlimits/PLANbindingnext/catalog/issues and evidence syncedbeforecomplete;AUD062/nextCP216unchanged."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "updated",
+      "reason": "CP215native15/16-token2control/scopedlimits/PLANbindingnext/catalog/issues and evidence syncedbeforecomplete;AUD062/nextCP216unchanged."
+    },
+    {
+      "path": "docs/features.json",
+      "state": "updated",
+      "reason": "CP215native15/16-token2control/scopedlimits/PLANbindingnext/catalog/issues and evidence syncedbeforecomplete;AUD062/nextCP216unchanged."
+    },
+    {
+      "path": "docs/COVERAGE.md",
+      "state": "updated",
+      "reason": "CP215native15/16-token2control/scopedlimits/PLANbindingnext/catalog/issues and evidence syncedbeforecomplete;AUD062/nextCP216unchanged."
+    },
+    {
+      "path": "docs/evidence/login-runtime/README.md",
+      "state": "updated",
+      "reason": "CP215native15/16-token2control/scopedlimits/PLANbindingnext/catalog/issues and evidence syncedbeforecomplete;AUD062/nextCP216unchanged."
+    },
+    {
+      "path": "docs/evidence/login-runtime/token-bounds.json",
+      "state": "updated",
+      "reason": "CP215native15/16-token2control/scopedlimits/PLANbindingnext/catalog/issues and evidence syncedbeforecomplete;AUD062/nextCP216unchanged."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/review.json",
+      "state": "updated",
+      "reason": "CP215native15/16-token2control/scopedlimits/PLANbindingnext/catalog/issues and evidence syncedbeforecomplete;AUD062/nextCP216unchanged."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
+      "state": "updated",
+      "reason": "CP215native15/16-token2control/scopedlimits/PLANbindingnext/catalog/issues and evidence syncedbeforecomplete;AUD062/nextCP216unchanged."
+    }
+  ]
+}

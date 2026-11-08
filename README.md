@@ -28,6 +28,13 @@ boom-kr-server/
 
 ## Tra nhanh và trạng thái hiện tại
 
+**CP215: token15/16 đã qua native SSO/heap và wire; token2-only cho count0.**
+[Contract/giới hạn](docs/PROTOCOL.md#auth-token-bounds), [hai run/hash](docs/evidence/login-runtime/README.md#cp215):
+frame100/body62, record17/18byte khớp copied-native,13 helpervectors emulation và CRC/partial controls riêng.
+Run token2-only không gọi authbuilder trong cửa sổ đo; cảhai seal/cleanup0. Chưa xác thực tài khoản/Rust.
+CP214 đã merge [PR287](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/287)/`83de46c`;
+trạng thái tích hợp CP215 theo PR, audit kếCP216. Bước tiếp duy nhất ở [PLAN](docs/PLAN.md#current-order).
+
 **CP214: đã nối token local tới request đăng nhập native KR; chưa xác thực tài khoản.**
 [Contract/giới hạn](docs/PROTOCOL.md#auth-token-request), [ba run/hash](docs/evidence/login-runtime/README.md#cp214):
 Winecopy4b/count1–2, bốn record token khớp native writer, ba frame actual +CRC/partial controls; cleanup0.
