@@ -1,7 +1,7 @@
 {
   "schema": "kre-feature-index-v1",
   "build": "KR00967",
-  "as_of": "CP208",
+  "as_of": "CP209",
   "sources": {
     "plan": "docs/PLAN.md",
     "contract": "docs/PROTOCOL.md",
@@ -893,7 +893,8 @@
           "docs/PROTOCOL.md#native-interleaved-startup",
           "docs/PROTOCOL.md#four-slot-native-consumers",
           "docs/PROTOCOL.md#four-session-native",
-          "docs/PROTOCOL.md#eight-session-preview"
+          "docs/PROTOCOL.md#eight-session-preview",
+          "docs/PROTOCOL.md#eight-mesh-owner-bombs"
         ]
       },
       "coverage": {
@@ -940,7 +941,8 @@
               "docs/PROTOCOL.md#current-291-room-integration",
               "docs/PROTOCOL.md#four-slot-native-consumers",
               "docs/PROTOCOL.md#four-session-native",
-              "docs/PROTOCOL.md#eight-session-preview"
+              "docs/PROTOCOL.md#eight-session-preview",
+              "docs/PROTOCOL.md#eight-mesh-owner-bombs"
             ]
           },
           "windows_original": {
@@ -967,7 +969,8 @@
             "docs/PROTOCOL.md#current-team-mode",
             "server/room_team_mode.py",
             "server/test_room_team_mode.py",
-            "docs/PROTOCOL.md#eight-session-preview"
+            "docs/PROTOCOL.md#eight-session-preview",
+            "docs/PROTOCOL.md#eight-mesh-owner-bombs"
           ],
           "delivery": "via_pr"
         },
@@ -1518,7 +1521,8 @@
           "docs/PROTOCOL.md#udp-netem-cycles",
           "docs/PROTOCOL.md#four-slot-native-consumers",
           "docs/PROTOCOL.md#four-session-native",
-          "docs/PROTOCOL.md#eight-session-preview"
+          "docs/PROTOCOL.md#eight-session-preview",
+          "docs/PROTOCOL.md#eight-mesh-owner-bombs"
         ]
       },
       "coverage": {
@@ -1582,7 +1586,8 @@
               "docs/PROTOCOL.md#emulated-lan-acceptance",
               "docs/PROTOCOL.md#routed-Wine-network",
               "docs/PROTOCOL.md#four-slot-native-consumers",
-              "docs/PROTOCOL.md#four-session-native"
+              "docs/PROTOCOL.md#four-session-native",
+              "docs/PROTOCOL.md#eight-mesh-owner-bombs"
             ]
           },
           "windows_original": {
@@ -1604,7 +1609,8 @@
             "server/probe_service.py",
             "docs/PROTOCOL.md#probe-service",
             "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/57",
-            "docs/PROTOCOL.md#eight-session-preview"
+            "docs/PROTOCOL.md#eight-session-preview",
+            "docs/PROTOCOL.md#eight-mesh-owner-bombs"
           ],
           "delivery": "via_pr"
         },
@@ -1817,7 +1823,8 @@
           "docs/PROTOCOL.md#four-owner-bombs",
           "docs/PROTOCOL.md#four-two-team-cycles",
           "docs/PROTOCOL.md#four-portable-guards",
-          "docs/PROTOCOL.md#four-transport-bounds"
+          "docs/PROTOCOL.md#four-transport-bounds",
+          "docs/PROTOCOL.md#eight-mesh-owner-bombs"
         ]
       },
       "coverage": {
@@ -1894,7 +1901,8 @@
               "docs/PROTOCOL.md#four-owner-bombs",
               "docs/PROTOCOL.md#four-two-team-cycles",
               "docs/PROTOCOL.md#four-portable-guards",
-              "docs/PROTOCOL.md#four-transport-bounds"
+              "docs/PROTOCOL.md#four-transport-bounds",
+              "docs/PROTOCOL.md#eight-mesh-owner-bombs"
             ]
           },
           "windows_original": {
@@ -1929,7 +1937,8 @@
             "server/test_terrain_policy.py",
             "server/four_bomb_policy.py",
             "server/test_four_bomb_policy.py",
-            "server/test_four_input_guards.py"
+            "server/test_four_input_guards.py",
+            "docs/PROTOCOL.md#eight-mesh-owner-bombs"
           ],
           "delivery": "via_pr"
         },
@@ -2433,7 +2442,8 @@
           "docs/PROTOCOL.md#current-basic-cycles-291",
           "docs/PROTOCOL.md#current-basic-contest-reset",
           "docs/PROTOCOL.md#emulated-lan-acceptance",
-          "docs/PROTOCOL.md#four-owner-bombs"
+          "docs/PROTOCOL.md#four-owner-bombs",
+          "docs/PROTOCOL.md#eight-mesh-owner-bombs"
         ]
       },
       "coverage": {
@@ -2487,7 +2497,8 @@
               "docs/PROTOCOL.md#current-basic-cycles-291",
               "docs/PROTOCOL.md#current-basic-contest-reset",
               "docs/PROTOCOL.md#emulated-lan-acceptance",
-              "docs/PROTOCOL.md#four-owner-bombs"
+              "docs/PROTOCOL.md#four-owner-bombs",
+              "docs/PROTOCOL.md#eight-mesh-owner-bombs"
             ]
           },
           "windows_original": {
@@ -2514,7 +2525,8 @@
             "docs/PROTOCOL.md#basic-battle",
             "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/99",
             "docs/PROTOCOL.md#capacity-reservations",
-            "server/test_capacity_reservations.py"
+            "server/test_capacity_reservations.py",
+            "docs/PROTOCOL.md#eight-mesh-owner-bombs"
           ],
           "delivery": "via_pr"
         },
@@ -4723,7 +4735,8 @@
           "docs/PROTOCOL.md#four-member-abort-room",
           "docs/PROTOCOL.md#four-health-identity",
           "docs/PROTOCOL.md#four-netem-restart",
-          "docs/PROTOCOL.md#eight-session-preview"
+          "docs/PROTOCOL.md#eight-session-preview",
+          "docs/PROTOCOL.md#eight-mesh-owner-bombs"
         ]
       },
       "coverage": {
@@ -4758,7 +4771,8 @@
               "docs/PROTOCOL.md#four-transport-bounds",
               "docs/PROTOCOL.md#four-member-abort-room",
               "docs/PROTOCOL.md#four-health-identity",
-              "docs/PROTOCOL.md#four-netem-restart"
+              "docs/PROTOCOL.md#four-netem-restart",
+              "docs/PROTOCOL.md#eight-mesh-owner-bombs"
             ]
           },
           "windows_original": {
@@ -4796,7 +4810,8 @@
             "server/test_four_observability.py",
             "server/test_four_identity_store.py",
             "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/278",
-            "docs/PROTOCOL.md#eight-session-preview"
+            "docs/PROTOCOL.md#eight-session-preview",
+            "docs/PROTOCOL.md#eight-mesh-owner-bombs"
           ],
           "delivery": "via_pr"
         },

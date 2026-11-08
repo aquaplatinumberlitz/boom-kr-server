@@ -74,7 +74,7 @@ class FourBundleTests(unittest.TestCase):
         self.assertEqual(self.call(moved,'--verify-only').returncode,0)
         result=self.call(moved,'--help')
         self.assertEqual(result.returncode,0);self.assertIn('--source-ip',result.stdout)
-        self.assertNotIn('--bomb-profile',result.stdout)
+        self.assertIn('--bomb-profile',result.stdout)
         with self.assertRaisesRegex(ValueError,'excludes four Battle'):
             export_bundle(self.profile,moved,self.root/'invalid',eight_sessions=True,four_bomb_profile=SPEC)
         p=moved/'bundle.json';j=json.loads(p.read_text())

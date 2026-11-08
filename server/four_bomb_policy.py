@@ -10,13 +10,15 @@ WIDTHS = [4,1,1,4,1,1,1,1,1,1,1,4,1]
 
 
 class FourBombAdmission:
+    ROLES = 'ABCD'
+
     def __init__(self, room, slots, capacities, powers):
         if (not all(isinstance(z, dict) for z in [slots, capacities, powers])
-                or set(slots) != set('ABCD') or sorted(slots.values()) != [0,1,2,3]
+                or set(slots) != set(self.ROLES) or sorted(slots.values()) != list(range(len(self.ROLES)))
                 or set(capacities) != set(slots) or set(powers) != set(slots)
                 or any(type(z) is not int or not 1 <= z <= 255
                        for z in [*capacities.values(), *powers.values()])):
-            raise ValueError('explicit four distinct slots/capacity/power required')
+            raise ValueError('explicit '+str(len(self.ROLES))+' distinct slots/capacity/power required')
         self.room, self.slots = room, dict(slots)
         self.capacities, self.powers = dict(capacities), dict(powers)
         self.generation = None

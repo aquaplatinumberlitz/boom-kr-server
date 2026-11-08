@@ -1,16 +1,23 @@
 """Opt-in eight-session room/load/peer preview, without unmeasured combat."""
 import argparse
+import copy
+import hashlib
+import json
 from pathlib import Path
 import signal
 import sys
 from server import eight_player_profile as eight
 from server.four_player_service import FourPlayerService, addresses
 from server.probe_service import FixtureProfile
+from server.eight_bomb_policy import BASELINE, EightBombAdmission
+from server.four_observability import FourObservability
 
 class EightPlayerService(FourPlayerService):
     PLAYER_PROFILE = eight
 
-    def __init__(self,*args,**kwargs):
+    def __init__(self,*args,bomb_profile=None,**kwargs):
+        if bomb_profile is not None and json.dumps(bomb_profile,sort_keys=True) != json.dumps(BASELINE,sort_keys=True):
+            raise ValueError('eight session preview requires the measured eight bomb baseline')
         super().__init__(*args,**kwargs)
         self.state['schema']='kr-eight-session-preview-v1'
         self.state['eight_session_binding']=self.state.pop('four_session_binding')
@@ -18,6 +25,19 @@ class EightPlayerService(FourPlayerService):
         self.state['limits']=('Eight initial sessions/room/load/peer only; '
             'no eight combat/results/items/terrain/kim/rescue/accountauth/resume/Internet or gate.')
         self.state['network']['peer_ips']=dict(self.source_ips)
+        if bomb_profile is not None:
+            self.bomb_admission=EightBombAdmission(self.room,self.role_slots,
+                bomb_profile['capacities'],bomb_profile['powers'])
+            self.bomb_fuse_seconds=bomb_profile['fuse_seconds']
+            self.state['eight_bomb_policy']=dict(copy.deepcopy(bomb_profile),source='design',
+                limits='Fixed native-profile baselines; reservation/fuse are emulator policy, '
+                       'not original authority or eight-player outcome/reset.')
+            self.state['limits']=('Eight initial sessions with explicit baseline bomb admission/fuse; '
+                'no eight reports/results/reset/items/terrain/kim/rescue/accountauth/resume/Internet or gate.')
+            module=sys.modules[EightBombAdmission.__module__];path=Path(module.__file__).resolve()
+            if not any(row['path']==str(path) for row in self.state['policy_sources']):
+                self.state['policy_sources'].append(dict(path=str(path),sha256=hashlib.sha256(path.read_bytes()).hexdigest()))
+            self.observability=FourObservability(self)
 
 
 def main():
@@ -29,13 +49,15 @@ def main():
     parser.add_argument('--port',type=int,action='append',required=True)
     parser.add_argument('--channel-ip')
     parser.add_argument('--channel-port',type=int)
+    parser.add_argument('--bomb-profile',type=Path,help='explicit measured eight-owner baseline; no outcome policy')
     args=parser.parse_args()
     try:
         ips=addresses(args.source_ip,eight.MEMBERS)
         if any(not 0<=port<=65535 for port in args.port):
             raise ValueError('invalid listener port')
         service=EightPlayerService(FixtureProfile(args.profile),args.out,ips,
-            bind_ip=args.bind_ip,channel_ip=args.channel_ip,channel_port=args.channel_port)
+            bind_ip=args.bind_ip,channel_ip=args.channel_ip,channel_port=args.channel_port,
+            bomb_profile=json.loads(args.bomb_profile.read_text()) if args.bomb_profile else None)
     except ValueError as error:
         parser.error(str(error))
     args.out.mkdir(parents=True,exist_ok=True)

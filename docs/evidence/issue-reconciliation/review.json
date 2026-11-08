@@ -1,7 +1,7 @@
 {
   "schema": "kre-issue-review-v1",
   "as_of": "2026-11-08",
-  "baseline": "7ffed54fb94f858f9d3d989070f98dd11f146b5c",
+  "baseline": "8a99a72c0787026df4a8d287bd11f030bbc3f3c1",
   "method": "Codex manual acceptance review; native/static/model/design/merge/gate distinct; originalissuebodies archivedlocalbeforeedit, no completecheckpoint rewrite",
   "issues": [
     {
@@ -155,11 +155,11 @@
         "KR-F001",
         "KR-F015"
       ],
-      "known": "CP207mergedPR279; CP208eightactualKR/32nativeTCP/291names/ownslots/8ACK99/121285-153205/8actorsclock/1468joins/192copiedgetters/cleanup0; synthetic32TCP487/357server/16bundle separate.",
-      "remaining": "Eightmovementmesh/statsE-H/actual118/eightcombat-rank-results-reset/reject9actual/1v7actual/fullauth/Internet-K6c/K7remainopen; eightbundle verify-help only.",
-      "next_test": "NEXT-EIGHT-MESH-STATS onlyPLAN: knownlowobserver/8OSinputwindows/56remoteedges/currentkey/PCAP and8nativeprofilebaselines/actual118while8combatdisabled.",
+      "known": "CP208mergedPR280/8actualclock; CP20956directedremoteprogress/8nativebaseline/actual118 then8owner159entity/158all8views (separateruns)/4610+2256joins/704+128copiedgetters/cleanup0.672syntheticTCP/360server/16bundlecontrolsseparate.",
+      "remaining": "8reportlife/7peerforward/rank8rows/175180/twooppositeoutcomes-resetStart3/room-full9native/1v7actual/8nativeportable/Internet-K6c-K7/fullauthremain.",
+      "next_test": "NEXT-EIGHT-OUTCOME-RESET onlyPLAN: reuseCP202guards/17-19-21/175parser; delta8life/7remote/4v4/rank8row/controlsbeforenativetwooutcomesreset.",
       "acceptance": "Epic checklist: linkedscopedtask/evidence+authoritymatrix vàacceptancegate ởPLAN; từngtaskđóng khôngđóngepic/K5/K6a.",
-      "reason": "Manualnative/source/provenancereview; narrow8clock success not fullmatch/Internet/gate; initialpreclientfailedsetup/seal retained. Reviewwaived/AUD061through208/next212.",
+      "reason": "Manualsource-nativeproofcomparison; no8normalmatchorInternetgatefrombombs/fullcursors/syntheticcontrols. AUD061through208/next212; reviewwaived.",
       "sources": [
         "docs/PROTOCOL.md#authority",
         "docs/RESEARCH.md#feature-gaps",
@@ -240,7 +240,8 @@
         "docs/PROTOCOL.md#four-health-identity",
         "docs/PROTOCOL.md#four-netem-restart",
         "docs/PLAN.md#k7-evidence-review",
-        "docs/PROTOCOL.md#eight-session-preview"
+        "docs/PROTOCOL.md#eight-session-preview",
+        "docs/PROTOCOL.md#eight-mesh-owner-bombs"
       ],
       "evidence": [
         "docs/evidence/current-movement-cycles/README.md",
@@ -317,7 +318,8 @@
         "docs/evidence/peer-endpoints/README.md#cp205",
         "docs/evidence/peer-endpoints/README.md#cp206",
         "docs/evidence/peer-endpoints/README.md#cp207",
-        "docs/evidence/eight-player/README.md#cp208"
+        "docs/evidence/eight-player/README.md#cp208",
+        "docs/evidence/eight-player/README.md#cp209"
       ],
       "prs": [
         173,
@@ -400,7 +402,8 @@
         276,
         277,
         278,
-        279
+        279,
+        280
       ],
       "successors": []
     },

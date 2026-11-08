@@ -128,3 +128,36 @@ nhân vật, sidebar đủ tám profile; đây là bổ sung, không movement/no
 Service chạy trực tiếp source đã freeze; gói8 mới verify/help, chưa native relocationrun.
 Pin chi tiết/run manifests và snapshot docs ở evidence CP208 sau khi hoàn tất batch; không chỉnh record cũ.
 Review waived; periodic auditCP208/AUD061, audit kếCP212. Internet/K7 và eightfullmatch vẫn mở.
+
+
+<a id="cp209"></a>
+## CP209 — tám mesh/stat/118 và tám owner159/158
+
+Baseline CP208 merge[PR280](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/280)/`8a99a72`;
+[contract duy nhất](../../PROTOCOL.md#eight-mesh-owner-bombs), [PLAN](../../PLAN.md#current-order).
+Nguồn/hash/build/locators/known-gap-minimum: `eight-mesh-stats-r1/source-first.json` và
+`eight-owner-bombs-r1/source-first.json` dưới `local/research/codex/`. Reuse CP208current8copy4b/
+Wine10.0-20260425/privatebridge9netns, CP200lowobserver, CP201stat/confirm/blast/fence, CP031powermapping.
+Không mới nativefunctionRE/VNwireport; nguyên binary/DB/assets nguồn, copy offline giữhash4b.
+
+| Run riêng, không ghép thành một trận | Kết quả/raw/frozen/cleanup | run.json SHA256 |
+|---|---|---|
+|eight-mesh-stats-r1|184,016344755s/exit0/891raw/277frozen/namespace0;4610joins/704copiedgetters;8OSwindows/56remoteprogress;2733PCAP14Aedges/8native118rejected|`f209f0aaf0efcb549ac5519804155390eecb0ae96a7982398049afd9fad3cfc0`|
+|eight-owner-bombs-r1|241,599624124s/exit0/1107raw/687frozen/namespace0;2256joins/128copiedgetters;8owner/64nativeentity/full15939/full15813|`9476f9f2efd6806edba3741b654d3ecc3543377bde82a5045642ed106e929c6d`|
+
+Controllers `wine_probe_eight_mesh_stats.py`/`wine_probe_eight_owner_bombs.py`, recipes từngrun,
+preflight source+copy/fixture hashes và raw-seal trước sửa source. `verify_eight_mesh_stats.py` kế thừa
+known8session verifier; `verify_eight_owner_bombs.py` kế thừa CP201 nhưng đọc measured8powers/capacities,
+không dán rank4/AB. `getter-verification.json` là copiednative52A350/Unicorn riêng, khônginferior call.
+Prepare mesh ban đầu trỏ nhầm report không tồn tại ở runR3 cũ; sửa locator sang CP201 actualpass **trước**
+freeze/runtime, giữ `prepare-failure.txt`; không làm lại hoặc chuyển partialR3 thành pass.
+
+672actualTCPsynthetic controls trong `eight-owner-bombs-r1/tcp-control/`: bốn stage mỗiA–H,
+source/seq/barrier,8recipient159/158,GHpower2/BEcap2/F1/duplicate/EOFpendingH fence, không nativeproof.
+360server/16bundle-preset tests pass. Production8bomb opt-in/profile exact; healthmetadata pinpolicy.
+CP20868pinbundle cũ giữ nguyên; chưa export/nativeverify relocationbundle8bomb, không đóng packaginggate.
+
+Native mỗiownerSpace/đợi7s, ID1…8/6sfuse; G/H power2 từ actual118→159. Không probe8raylength/
+exactblastentitylookup; bỏ oldwrongE14360entryprobe, không sửa oldraw. 127 vẫn từ chối, không rank/return/reset;
+traps/deaths có thể xảy ra ở native nhưng chưa có integration reportlife8. K7/K6cInternet còn mở.
+Reviewwaived; AUD061 qua208/audit kếCP212. Mộtbatchmeaningfulmesh+baseline+acceptedbombs, không CP từnginput.

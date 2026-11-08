@@ -1,6 +1,6 @@
 # KR 00967 — contract tương thích client gốc
 
-Revision kr-legacy-contract-r1; cập nhật08/11/2026 JST (CP208; AUD061 periodic qua208; audit kế212).
+Revision kr-legacy-contract-r1; cập nhật08/11/2026 JST (CP209; AUD061 periodic qua208; audit kế212).
 **Contract có bằng chứng từng phần; phạm vi nghiệm thu codec/hello ở [PLAN](PLAN.md#k2-acceptance)**.
 Lộ trình và thứ tự task chỉ giữ ở [REWRITE_PLAN — KRE](PLAN.md).
 Đây là contract của repo server KR. ADR0009 của bản viết lại là nguồn lịch sử để so sánh;
@@ -5695,6 +5695,57 @@ Mọi run source/config frozen tới cleanup, bản copy/sourceDB/assets giữ n
 **Tại CP200**, bốn client đã vào Battle và quan sát movement liên thông; lúc đó chưa bốn-player bom/trap/death/normal2v2outcome/
 175/180/reset/Start2 hoặc hardening. [CP201–207](#four-netem-restart) đã bổ sung những scope được dẫn; K7/Internet vẫn mở. Phần hiện hành theo PLAN;
 không port rankAB hoặc coi ownerWineacceptance là tự đóng gate.
+
+<a id="eight-mesh-owner-bombs"></a>
+### Tám client: movement mesh, baseline stat và owner confirm/nổ — CP209
+
+[Recipe/raw/hash](evidence/eight-player/README.md#cp209), [khoảng trống](RESEARCH.md#gap-roster-ready-host),
+[thứ tự](PLAN.md#current-order). Reuse [CP208](#eight-session-preview) tám actualclock/privatebridge,
+CP200 lowobserver3wrapper/OSinput, CP201 rareclockstat/118/15939/15813/nativeentitycoords/fence;
+[CP031](#item-effects) đã sửa power118.field10→159.field8. Không codec/Room8/teamguard/functionRE lại.
+VNoc_e-game chỉ định hướng TCP/P2P và luật đội; không port opcode/ID/layout/capacity.
+
+**KR runtime: mesh/stat/request, run riêng trước bật bom.** Cùng tám actual Wine4b/prefix/display/CA/netns/IP;
+8OSinputwindows ABC→Right,D/H→Down,E/F/G→Left theo spawn/corridor. 64own+remote currentcoordinateprogress,
+trong đó **56chiều remote** có baseline sau mởwindow/trước input và sample tăng/giảm đúng hướng trongwindow.
+Observer chỉ đọc wrapper hiện tại, không probe E668AD/key-handler từng frame; không đo latency/gametick.
+PCAP `kv-a` có2733record/**14chiều liên quan A**, không wirecapture toàn56; nativeprogress56 là nguồn khác.
+Eightactual118 sau8Space có đúng currentkey/ownslot/power, preview từ chối confirm ở run này.
+4610checks/704copiednative52A350/184,016344755s/891raw/277frozen/exit0/cleanup0.
+
+Tám view đồng ý baseline hiệntại dưới đây; `kr_runtime/confirmed` **chỉ tám profile/character đang chọn**,
+không mọi character/mode/runtimeatmax hoặc luật server gốc:
+
+| Slot/role | Capacity/max | Power/max | Speed/max |
+|---|---|---|---|
+|0/A|1/10|1/7|5/7|
+|1/B|2/7|1/9|4/8|
+|2/C|1/8|1/5|5/8|
+|3/D|1/10|1/8|4/8|
+|4/E|2/9|1/6|4/8|
+|5/F|1/6|1/7|5/9|
+|6/G|1/6|2/7|5/8|
+|7/H|1/9|2/8|4/8|
+
+**Implementation/design:** `EightBombAdmission` kế thừa admit/expire đã kiểm; chỉ constructor fixedroles8
+thay4, default`FourBombAdmission` vẫn4. Opt-in `--bomb-profile` ở EightPlayerService chỉ nhận đúng
+`eight_current_baseline`: capacity1/2/1/1/2/1/1/1,power1/1/1/1/1/1/2/2,fuse6s. Không đoán E–H giốngB.
+Reservation/placementbounds/dedupe/owner-slot/key/generation/EOFfence/fuse/broadcast là emulatorpolicy,
+không authenticatedworldauthority. Default preview không bật bom; report/outcome/abort-room/identityresume vẫn tắt.
+672realTCPsyntheticchecks/32sockets: đủ8recipient159 và158/ownerpower2/BEcapacity2/F1/duplicate-noID/
+wrongpower/fencependingH khi C EOF; 360server và16bundle-preset tests qua. Healthmetadata pin eightbombpolicy.
+
+**KR runtime: tám owner đặt/confirm/nổ, run khác sau controls.** Mỗiowner normalSpace rồi đợi7s;
+actual118→ID1…8/serialowner→broadcast159 tới8view→entity khác0/correctcell→broadcast158 saufuse6s.
+Cả8view đủ8confirm **39/39/errors0** và8blast **13/13/errors0**;64entity cùng tọa độ request,
+128wrapper tọa độ khớp copiednative52A350. 2256joins/241,599624124s/1107raw/687frozen/exit0/cleanup0,
+source/config freeze tới seal. G/H actual118/wire159 echo power2; không suy native raylength8 từ cursor,
+exactblastentitylookup/powerconsumer8 chưa đo lại. Không dùng probeE14360entryEBP sai của CP201;
+run mới bỏ site đó, giữ nguyên raw/report cũ.
+
+Giới hạn: một epoch/fixedFree0/ExVillage01/current8profiles/privatebridge/Wineaccepted, không ghép hai run thành
+một trận nghiệm thu. 127 vẫn bị từ chối; chưa life-forward8/reportguard/rank175eightrows/180/reset/Start2/
+haioutcomes/1–7actual/reject9native/8portablebundle-native/Internet/K7. Tám bom đã nhận/nổ không là trận hoàn chỉnh.
 
 <a id="eight-session-preview"></a>
 ### Tám slot native và adapter tám session — CP208

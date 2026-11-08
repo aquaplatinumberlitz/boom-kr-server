@@ -203,3 +203,8 @@ native sendfailure/quota còn theo gap/PLAN. AUD060qua204/kế208.
 Chạy `python3 -I local/eight-bundle/run.py --verify-only` trước. Entrypoint tám người nhận
 `--source-ip A=IPv4` đến `H=IPv4` riêng, cùng `--out`, `--bind-ip`, `--port` như gói bốn người.
 Chỉ phòng/load/peer; không có flag bom/result8. [Contract/bằng chứng/giới hạn](../docs/PROTOCOL.md#eight-session-preview).
+
+
+EightPlayerService có opt-in `--bomb-profile` cho **đúng** measured`eight_current_baseline` của
+[CP209](../docs/PROTOCOL.md#eight-mesh-owner-bombs); default preset/bundle CP208 không tự bật policy đó.
+Profile khác bị từ chối; không có flag outcome/reset8. Gói đã xuất không tự cập nhật theo source hiện tại.
