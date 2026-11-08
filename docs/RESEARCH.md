@@ -42,19 +42,20 @@ accountresume. Widercodec chỉ mở khi có trigger cụ thể từ K3; không 
 Owner/tự kiểm Codex, review waived; AUD060 quaCP204, periodic audit kếCP208.
 
 <a id="gap-lobby-identity-followup"></a>
-### Bốn client/bounds đã kiểm; còn nativecleanup ba survivor sau EOF
+### Guest/host EOF đã về phòng; còn health, identity và restart
 
-[CP204 contract/giới hạn](PROTOCOL.md#four-transport-bounds), [raw/hash/audit](evidence/peer-endpoints/README.md#cp204),
-[PLAN](PLAN.md#current-order). Reuse current4wire/profile/CP190bundle/CP202203cycles; không RE lại report/rank/codec.
-RecipientA default2s kernel-sendtimeout nay đóng đúngA, xử lý tiếp1Brequest, partial170 tớiD/C nhưng không commit
-life/cursor/result và Cpendingjobfenced.335server/214TCPnonreader/247guard/16bundle controls; explicitlifetimeIO/
-log/chunk+framebucket/ratebudgets không luật KR. Currentnative4trênbundle65pins vẫn2normal2v2outcomes/reset/Start3,
-2552checks/32getters, không budget/deliveryrejection. Không gọi đây queuednonblockingbackpressure/loadbenchmark.
-Khoảng trống thực tế kế: close/fence hiện chỉserver-side, chưa three-nativepeer→room sauEOF/sendfailure/quota.
-Phép thử tối thiểu: known180/107/slot110, ownerD pendingbom rồiownedEOF; A/B/C native1803/full/ID4clear/UIroom,
-no late158/currentlife/rankphụ. Không giả normalwin hoặc accountresume; hostEOF/generalreplace theo delta sauguest.
-Tiếphealth/runidentity/identitypersistence/serverrestart theoPLAN/K7.4items/terrain/kim/cứu/fullauth/Internet vẫn mở.
-AUD060qua204/kế208, Codex/reviewwaived. Oldstartupcontentrootcauseunknown, R1failed/positiveboundedrepeat khôngstartupfix.
+[CP205 contract/giới hạn](PROTOCOL.md#four-member-abort-room), [raw/hash](evidence/peer-endpoints/README.md#cp205),
+[PLAN](PLAN.md#current-order). Reuse known180/107/110/585/CP022034174196/VNphasearchitecture;
+không thêm nativefunctionRE. Hai runactual4: guestDpendingEOF→ABCroom/Achief, hostApendingEOF→BCDroom/Bchief;
+1803/errors0,107base6→rewind0→end1, nativeIDclear vàảnh; quan sátpastfuse+15s/no158175.1258/1286checks,
+222TCP/341server/16bundle/43checkpoint. Abortdesign/unranked,585khôngauthenticatedACK.
+Hỗ trợ này opt-in; whole room vẫn fenced, chưa3memberStart/freshmember/accountresume hoặc nativequota/sendfailurecleanup.
+Khoảng trống kế theoPLAN: log/health chưa có run/session/room/round identity thống nhất, chưa kiểm healthstate/restart/
+persistenceidentity. Phép đo tối thiểu: tái dùng state save và policy_sources; atomiclocalhealth/runmetadata với
+startup/active/degraded/stopping/stopped, realTCP hai processrestart đối chiếu ID/profile/budgets mới/oldroomfenced;
+không thêm HTTP/outbound hoặc gọi freshsession là accountresume. Native restart chỉ đo delta thật sự cần sau controls.
+R1harnessabsentdict và verifierfinalcleanupassumption giữ fail/hashes; hai guard history-cleanup đã kiểm source cuối
+ở host/TCP.4items/terrain/kim/cứu/fullauth/Internet/K7 vẫn mở. AUD060qua204/kế208, Codex/reviewwaived.
 
 <a id="feature-gaps"></a>
 ## Khoảng trống theo cơ chế
@@ -94,7 +95,7 @@ Bảng được [coverage](COVERAGE.md) trích tự động để tra theo chứ
 | <a id="gap-round-reset"></a>KR-X002 | [CP176](PROTOCOL.md#a-c-basic-cycles) AC2keys/6entities/3Aeffects/195/stat/hiddeneligibility reset và Ready2 có nguồn. | ABStart3 đã có [CP198](PROTOCOL.md#native-interleaved-startup), ACscopeCP176giữ riêng; [CP202–204](PROTOCOL.md#four-transport-bounds) đãfourreset/Start2/3; wholeinventory/modes/low8wrap/generalreset còn thiếu, không lặp knownAB/ACcycles. |
 | <a id="gap-disconnect-replacement"></a>KR-X003 | [CP177](PROTOCOL.md#replacement-profile) optional exported preset/capacity theo vacancy và actual C0/C1 initial/118/159158 đã kiểm; CP176 giữ AC2normalcycles riêng. | Maximum/exhaustion/general membership/account resume chưa biết; C0 startup SIGSEGV giữ nguyên, đối chứng pass không là rootcause. Theo PLAN acceptance/control, không lặp known C0/C1 entry hoặc ACcycles. |
 | <a id="gap-diagnostic-service"></a>KR-S001 | [CP190](PROTOCOL.md#portable-probe-bundle) gói service/47fixture relocation đã actualKRWine/nativeidentity/room/load/EOFcontrol;  [CP177](PROTOCOL.md#replacement-profile) optional replacement preset/47pins/derived capacity/284server và7export tests; native C0/C1 actual118159158 đã đo. | Theo PLAN đối chiếu acceptance/dependency/control trước phép đo còn thiếu; nofullauth/physicalLANInternet8client/gate. Startup unknown không được suy thành capacity regression/fix. |
-| <a id="gap-service-hardening"></a>KR-S002 | LAN giả lập đạtCP191; [CP193–196](PROTOCOL.md#nat-netem-host-eof) có NAT tĩnh/UDP delay-loss/two cycles/EOF. Interleaved admission sai6/8 đã có CP190. | [CP202203](PROTOCOL.md#four-two-team-cycles) đã4normal2v2/reset/bundle, [CP204](PROTOCOL.md#four-transport-bounds) córecipient-safe/bounds/rate; còn native3survivorEOFcleanup/health/restart/persistence/K7/Internet. Theo PLAN, không tái mở NEXT-K7-FOUR-BATTLE-OUTCOME đã giải. Binding incoming là design riêng, không auth gốc. |
+| <a id="gap-service-hardening"></a>KR-S002 | LAN giả lập đạtCP191; [CP193–196](PROTOCOL.md#nat-netem-host-eof) có NAT tĩnh/UDP delay-loss/two cycles/EOF. Interleaved admission sai6/8 đã có CP190. | [CP202203](PROTOCOL.md#four-two-team-cycles) đã4normal2v2/reset/bundle, [CP204](PROTOCOL.md#four-transport-bounds) córecipient-safe/bounds/rate; [CP205](PROTOCOL.md#four-member-abort-room) bổ sung native3survivorEOFcleanup; còn health/restart/persistence/K7/Internet. Theo PLAN, không tái mở NEXT-K7-FOUR-BATTLE-OUTCOME đã giải. Binding incoming là design riêng, không auth gốc. |
 
 
 ## Diễn biến lịch sử theo checkpoint

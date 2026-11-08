@@ -155,9 +155,9 @@
         "KR-F001",
         "KR-F015"
       ],
-      "known": "CP204recipient-safeactualTCPdefault2s214controls/247guard/335server/16bundle/finiteIO-log-rate; current4nativefrom65pinbundle2normal2v2outcomes/reset/Start3/2552checks/32getters. CP203mergedPR275.",
-      "remaining": "Serverfencealonehasnotreturned3nativepeerstoRoomafterEOF/sendfail/quota; health/runidentity/persistence/restart/K7/Internet/fullauth remainopen; no4items/terrain/rescue/needle.",
-      "next_test": "PLAN NEXT-K7-FOUR-EOF-ROOM-CLEANUP: pendingownerDactualEOF→three-native180full/107ID4clear/UIroom/no late158/no syntheticrank; thenhealth/restart/identity. Reuseknown180/107/110.",
+      "known": "CP205guestD/hostA pendingEOF: threeactualKRWine180107IDclear/585/110/Room/Bchief/pastfuse+15s/no158175; 1258+1286nativechecks/222TCP/341server. CP204mergedPR276/d78bc63.",
+      "remaining": "Health/run-session-room-roundcorrelations/persistenceidentity/serverrestart/K7Internet/generalresume/full4items remainopen; abortnotnormalwin/gate.",
+      "next_test": "PLAN NEXT-K7-FOUR-HEALTH-IDENTITY: reuse atomicstate/policy_sources; localrunmetadata/healthstartup-active-degraded-stopping-stopped controls, thenminimalpersistentidentity/restart withfreshtransport notaccountresume.",
       "acceptance": "Epic checklist: linkedscopedtask/evidence+authoritymatrix vàacceptancegate ởPLAN; từngtaskđóng khôngđóngepic/K5/K6a.",
       "reason": "Currentboundedtransportpartialhardening/native4positive proven, notclientrecovery/fullK7/Internet. AUD060through204/next208.",
       "sources": [
@@ -235,7 +235,8 @@
         "docs/PROTOCOL.md#four-owner-bombs",
         "docs/PROTOCOL.md#four-two-team-cycles",
         "docs/PROTOCOL.md#four-portable-guards",
-        "docs/PROTOCOL.md#four-transport-bounds"
+        "docs/PROTOCOL.md#four-transport-bounds",
+        "docs/PROTOCOL.md#four-member-abort-room"
       ],
       "evidence": [
         "docs/evidence/current-movement-cycles/README.md",
@@ -308,7 +309,8 @@
         "docs/evidence/peer-endpoints/README.md#cp201",
         "docs/evidence/peer-endpoints/README.md#cp202",
         "docs/evidence/peer-endpoints/README.md#cp203",
-        "docs/evidence/peer-endpoints/README.md#cp204"
+        "docs/evidence/peer-endpoints/README.md#cp204",
+        "docs/evidence/peer-endpoints/README.md#cp205"
       ],
       "prs": [
         173,
@@ -387,7 +389,8 @@
         265,
         266,
         267,
-        268
+        268,
+        276
       ],
       "successors": []
     },

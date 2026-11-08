@@ -2083,7 +2083,7 @@ Giới hạn và phép đo nằm ở link contract; không dùng mỗi vai trò 
 | [Explode158/terrain](#terrain-policy) | Timer6s của profile là emu_choice | Native158/process/chain/mapflags; service dùng bounded terrain model | Model/profile pin/kinds/power≤2/currentgeneration; semantic modelchoices có giới hạn | Service phát158 rồi commit world/release | Peer movement có thể ảnh hưởng contact/report; report142 không làm worldoracle. Original server validator/order vẫnunknown |
 | [Trap/death/result](#result-freshness-guard) | Native local simulation tạo127/subtype | Native170/175/180 nhận effect/UI | Guard key/slot/reportstate/selectedsame-oldbody; optional result freshness/drain/21 sau17 và opposite-peer170 theo [CP102](#drained-result-local-clear)/[CP103](#peer21-ending-order); firstseen/forgedforward/location vẫn thiếu | Service170/result/return theo policy | Report/body do client gửi; acceptedreport không là authoritative world proof. [Limits](#tcp-guard-cycles) và RESEARCH giữ mở |
 | [Peer endpoint/directUDP](#virtual-peer) | Native99 báoIP0/UDPport; configđo chọnIP153 | NativeWinsock/lookup/handler/actor; actualCA+wineserverNS kiểmđộc lập | Currenttuple/key/slot trongcađãđo; no fullIPauth/NAT law | Stub153traobảng; nativeUDPđi direct | IP0khớpNIC/source trongvirtualcase; IP1opaque; [CP141 cấu hình tường minh](#service-address-config) thay measurement shim; operator policy, không là NAT discovery/auth; [mapping tĩnh](#nat-two-cycles) đã kiểm riêng. Hai basic cycles không là movement gate |
-| [Four2v2 CP202–204](#four-transport-bounds) | NativeSpace/127, operatorprofile/ID/team, timer/rank theo design | Native159158/170/175180; khônginferiorfunctioncall | Currentrole/key/slot/serial/capacity/reporthistory/deadguard và transportbudgets làdesign; no originalauth/distance | Bom/rank/180 tới4; report170 tới3peer, partialfailure fence/khôngsemanticcommit | Cell/status/power/report do client gửi; không authenticatedworld. Native4twooutcomes/reset/Start3 không suy4item/terrain/kim/cứu hoặc3survivorEOFcleanup |
+| [Four2v2 CP202–204](#four-transport-bounds) | NativeSpace/127, operatorprofile/ID/team, timer/rank theo design | Native159158/170/175180; khônginferiorfunctioncall | Currentrole/key/slot/serial/capacity/reporthistory/deadguard và transportbudgets làdesign; no originalauth/distance | Bom/rank/180 tới4; report170 tới3peer, partialfailure fence/khôngsemanticcommit | Cell/status/power/report do client gửi; không authenticatedworld. Native4twooutcomes/reset/Start3 không suy4item/terrain/kim/cứu hoặc3survivorEOFcleanup (bổ sung riêng[CP205](#four-member-abort-room)) |
 | [Channel endpoint](#service-channel-endpoint) | NativeC2S5 yêu cầu redirect | KR1101EA0 nhận7 rồi nativeconnect | Service kiểm operatorIPv4/port và variant7 hẹp; không quyết định account/channel authority gốc | Service giữ raw mặc định hoặc thay typedIP/port | IP/port do operator đặt; không tin init99/identity client; rootTCPguardproxy còn riêng trong CP148 |
 
 Gate K5/K6 cần kiểm matrix và đối chứng của hành vi thực sự dùng; từ28/10 Codex tự kiểm theo miễn review của chủ dự án. Có thể giữ unknown về
@@ -5381,6 +5381,42 @@ movementhandler4phasestừCP139làrunkhác; khôngghépchúngthànhfullmatch/K6a
 Serviceproductionbind/153IPvẫnhard127; private-addressshims hiện làmeasurementdesign. RealLAN/K6b/
 Internet/K6c/NAT/relay/fullauth/authority/generalreset/gates mở; field99IP1/subtype39 vẫnunknown.
 
+
+<a id="four-member-abort-room"></a>
+### Bốn session: mất guest/host khi bom còn chờ, ba survivor về phòng — CP205
+
+[Recipe/raw/hash](evidence/peer-endpoints/README.md#cp205), [phần thiếu/phép thử](RESEARCH.md#gap-lobby-identity-followup),
+[thứ tự duy nhất](PLAN.md#current-order). Source `kr_runtime` confirmed cho hai run riêng; luồng abort là `design`.
+
+| Nguồn tái dùng / mức chứng minh | Dùng trực tiếp và phần khác biệt phải đo |
+|---|---|
+| CP022:180 ba byte `(0,0,0)` không cần175; CP034/174/196:107/slotclear/110 đã native. CP202–204: bốn slot/identity/585 và bundle | Dùng knownKRcodec/fixtures/VA; đo thêm ba consumer thực cùng run. Cslot2/ID3, Dslot3/ID4 theo fourprofile; không dùng legacyCslot0 hoặc rankAB |
+| [VN oc_e-game/lobby](REFERENCES.md): return→Room→setup→slot, `vn_runtime` trong nguồn cũ | Dùng kiến trúc pha; không mang VNopcode/offset/layout sang KR. Boundedread KRcũ không thêm proof fourEOF; không mở decompile mới |
+
+Opt-in `--abort-room` cần `--battle-outcome`/bombprofile và returnfixture đúng3byte0/0/0.
+Current loaded member EOF đóng/fence phòng, gửi180 không xếp hạng tới người còn lại; sau **585 mới của từng
+recipient đã gửi180**, gửi107 sáu byte `[slot,u32ID,flag0]` cho departed và110 cho các survivor, Ready0,
+chief theo slot nhỏ nhất. 585 là request setup quan sát được, **không authenticatedACK**. Chờ thiếu585 chỉ ghi
+waitingroles sau15s, không block vòng lặp; không replay106 cũ khiến người đã rời xuất hiện lại.
+Partialsend vẫn đóng đúng recipient/fence theo CP204. Giữ firstmembershipfailure và completedabortjob khi cleanup
+đóng thêm connection; test bảo toàn lịch sử. Không bật mặc định hoặc mở Start với ba người.
+
+- **GuestD:** bốn actualKR Wine copy4b/16TCP/private4virtualhosts/Free0/ExVillage01; DSpace→actual118→159 đủ4.
+  Kill đúngD PID sau kiểm prefix/netns/startticks/exe còn5,723883969s trước fuse6. A/B/C native1803/3/errors0,
+  actual585, 107base6/6→rewind0→end1/errors0, slot3ID4→0;9slot110 và ảnh Room đúng3tên/Achief.
+  Quan sát15,567803164s sau fuse, pendingtimer=`round_closed`, không158 hoặc175.1258checks.
+- **HostA:** run độc lập cùng topology/copy/profile, source cuối giữ ổn định completedjob/firstloss;
+  ASpace/118/159→ownedAEOF còn5,730900202s trước fuse. B/C/D native180/107slot0ID1→0/585/9slot110/Room;
+  Bchief getter`1240D5E=1`, C/D=0 và ảnh chiefB.15,216112527s sau fuse không158/175.1286checks.
+
+Guestrun dùng source trước hai guard telemetry-cleanup; host và222TCP kiểm source cuối. Guestfinalsnapshot từng
+appendA/Cdeparted khi cleanup **sau** observation; raw giữ nguyên, verifier phân biệt timestamp, không gọi đó là
+lỗi gameplay trong cửa sổ đo. R1 lỗi harness absentdict `.get` trước connection đã giữ seal; R2 chỉ sửa default
+kiểu dict, không clientpatch. Verifier đầu giả finalsnapshot chỉD đã thất bại; correction đọc closuretimestamp.
+
+Giới hạn: abort phòng không là normal2v2win/forfeitlaw gốc. Toàn room vẫn fenced, chưa3memberStart,
+freshmember/reconnect/accountresume/restart, native sendfailure/quota-roomrecovery hoặc full4item/terrain/kim/cứu.
+Hai run abort không thay hai normaloutcomes CP202–204; K7/Internet giữ mở. Review waived; audit kếCP208.
 
 <a id="four-transport-bounds"></a>
 ### Bốn người: recipient-safe transport, giới hạn I/O/rate và nativepositive — CP204
