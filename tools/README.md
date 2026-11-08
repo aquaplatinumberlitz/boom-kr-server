@@ -178,3 +178,10 @@ python3 -I /absolute/four-player-bundle/run.py --out /absolute/run-four --bind-i
 Chạy cùng [recipe cô lập/source/raw](../docs/evidence/peer-endpoints/README.md#cp203), copyWine4b và riêngprefix/IP/netns;
 sourceclient giữ nguyên. [Scope/authority/knownstartupfailure](../docs/PROTOCOL.md#four-portable-guards) phân biệt native2v2
 đã kiểm với unknownhardening/Internet/K7 và4item/terrain/rescue/needle chưa tíchhợp. Gói hai người hiện hữu giữ entrypoint cũ.
+
+CP204 thêm [recipient-safe transport và giới hạn](../docs/PROTOCOL.md#four-transport-bounds): bound65536wire,
+pertransport lifetime1MiBinput/4096chunks,2MiBattemptedoutput/4096sendcalls, chunk/framebucketburst128+32/s;
+Battle reset không xóa budgets. Chạmquota đóngconnection/fence room; cần processlifetime mới để cấp lại quota.
+Gói mới65pins; launcher từ chối serverPython còn hiện diện mà không cópin trướcimportserver. Khôngsignature,
+khôngqueuednonblocking/backpressurebenchmark.335server/16bundle/214nonreader+247guard vànative4positive cónguồn;
+EOF/sendfailure chưa tự đưa ba nativepeer vềphòng, theo gap/PLAN. AUD060qua204/kế208.

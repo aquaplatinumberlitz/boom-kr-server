@@ -37,6 +37,9 @@ for row in manifest['files']:
         raise SystemExit('bundle file mismatch: ' + str(relative))
 if not {'run.py', 'profile.json', 'server/__init__.py', 'server/probe_service.py'} <= seen:
     raise SystemExit('incomplete bundle manifest')
+actual_sources = {str(path.relative_to(root)) for path in (root / 'server').glob('*.py')}
+if not actual_sources <= seen:
+    raise SystemExit('unlisted bundle server source')
 # -I does not add the script directory: insert only this verified bundle root.
 sys.path.insert(0, str(root))
 os.chdir(root)

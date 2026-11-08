@@ -41,6 +41,13 @@ class FourBundleTests(unittest.TestCase):
         j['files']=[q for q in j['files'] if q['path']!='four-bomb-profile.json'];p.write_text(json.dumps(j))
         self.assertIn('incomplete bundle manifest',self.call(moved,'--verify-only').stderr)
 
+    def test_unlisted_server_source_is_not_imported_or_reported_verified(self):
+        out=self.root/'bundle';export_bundle(self.profile,self.source,out,four_bomb_profile=SPEC)
+        p=out/'bundle.json';j=json.loads(p.read_text())
+        j['files']=[q for q in j['files'] if q['path']!='server/four_input_limits.py'];p.write_text(json.dumps(j))
+        result=self.call(out,'--verify-only')
+        self.assertNotEqual(result.returncode,0);self.assertIn('unlisted bundle server source',result.stderr)
+
     def test_policy_tamper_and_override_fail_before_runtime_output(self):
         out=self.root/'bundle';export_bundle(self.profile,self.source,out,four_bomb_profile=SPEC)
         runtime=self.root/'not-created'

@@ -2050,3 +2050,27 @@ missingref/default2unchanged. No client/asset/DBdistribution. Recipeprepare_four
 metadata/raw/beforeafterproof andsourcepins inexternalCP203manifest.
 Nextbackpressureowner modelrepro failsrecipientA but closesoriginB (controlledsockettimeout, notkernelproof),
 transport/bounds/rate/restart/persistence/health asPLAN. No4item/terrain/kim/cứu/fullauth/Internet/K7closure.
+
+<a id="cp204"></a>
+## CP204 — recipient-safe / finite I/O / rate / currentnative4 / AUD060
+
+[Contract/authority/giới hạn](../../PROTOCOL.md#four-transport-bounds), [gap thực tế](../../RESEARCH.md#gap-lobby-identity-followup).
+CP203mergedPR275/36fe4bb4; Codexsolo/reviewwaived. Sourcefirst currentcodec65536/fourprofile/CP202203/B17threepeer/
+existingbundle; no newnativefunctionRE/clientpatch. ActualTCPbeforeAqueuefull32768/closeswrongB; candidate and
+productionafterdefault2s≈2.01scloseA/Bfollowup1/partialD+C170/no lifecursorcommit/pendingCfence.0.2scontrols separate.
+Initialaftertestexpectedemptyforwardlist failed becauseDC had already received; raw/source/log retained, expectation
+corrected to actualtwo-partialrecipients, no runtimebytesrewrite.335server/214TCPdelivery/247TCPguard/16bundletests;
+coalesced129frame/tiny4097chunk/refill/outputboundary/admissiontail/unlistedPythonpin tests explicitsource-owneddesign.
+
+`four-transport-bounds-r1`: 234.072983094s/1189raw/729frozen/exit0/cleanup0; SHA`eeeb1310bdf7e8e8c2ee85b4faca63cccd6b8f0d627f3080e0a2b4aa3ea7b2ef`;2552checks/32copiednativegetters.
+ActualservicePython-I/relocated65pins/47aliases/43fixtures/allpolicy_sourcesinbundle; same4KRWine4b/16TCP/4netns/
+ExVillage01/Free0,2normalopposite2v2outcomes/175552inner562outer/1803/reset/Ready2Start2/Ready3Start3. No inputquota/
+rate/deliveryrejection, pertransportmax8284inputbytes/99chunks/6286outputbytes/64calls; max isobservedrunonly, notloadcap.
+Both4namedranksscreens readmanually; sourceconfig frozen→ownedcleanup→seal beforedocs. No copiednativegetters inWine;
+actual32pre175wrappers replayed52A350Unicorn separately. Recipeprepare_four_transport_bounds→runner→seal→verify.
+
+AUD060periodicqua204: manualREADME→PLAN→PROTOCOLcurrent/authority→RESEARCH→catalog/evidence/raw/source/images;
+found staleheaderCP184/audit188, PLANtable200/old#1active, RESEARCH2v2/reset/activeoutcome gaps, catalogS002unknown,
+blanketNATLANunknown and READMEhistoryauditlabels. Fixedcurrentdocs, notcompleteCP/raw/history. NextauditCP208.
+Remaining3native-survivorEOFroomcleanup/health/restart/identitypersistence/K7/Internet/full4items/terrain/kim/cứu open.
+Quota/rate/abortpolicydesign; partialbytescannotrollback/nativeEOFcleanupnotproven; no gatechange.
