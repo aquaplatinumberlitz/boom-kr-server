@@ -920,7 +920,7 @@ Dependency: [KR-F002](#kr-f002).
 
 Khoảng trống (trích bảng RESEARCH): [CP193](PROTOCOL.md#nat-endpoint-control) đã kiểm SNAT nhận thực tế/queue/drain và đối chứng153 riêng với mapped+DNAT/native helper/output/handler/current movement.
 
-Phép kiểm tối thiểu (trích cùng nguồn): [CP194](PROTOCOL.md#nat-two-cycles) đã hai vòng NAT tĩnh/reset/Start3; [CP195](PROTOCOL.md#udp-netem-cycles) đã hai vòng dưới UDP delay/loss; [CP196](PROTOCOL.md#nat-netem-host-eof) bổ sung EOF/fence riêng; incomingadmission CP197198 đã đo; currentlifecycle/hardening theoPLAN. K6c WAN giả lập đạt CP212; [topology/giới hạn](PROTOCOL.md#emulated-wan-acceptance). NAT discovery/relay gốc/fullUDP ngoài scope; [Internet thật chưa kiểm](#gap-real-internet), backlog không chặn gate.
+Phép kiểm tối thiểu (trích cùng nguồn): [CP194](PROTOCOL.md#nat-two-cycles) đã hai vòng NAT tĩnh/reset/Start3; [CP195](PROTOCOL.md#udp-netem-cycles) đã hai vòng dưới UDP delay/loss; [CP196](PROTOCOL.md#nat-netem-host-eof) bổ sung EOF/fence riêng; incomingadmission CP197198 đã đo; currentlifecycle/hardening theoPLAN. K6c WAN giả lập đạt CP212; [topology/giới hạn](PROTOCOL.md#emulated-wan-acceptance). NAT discovery/relay gốc/fullUDP ngoài scope; [Internet thật chưa kiểm](RESEARCH.md#gap-real-internet), backlog không chặn gate.
 
 Issue/phạm vi công việc: [#14](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/14).
 
