@@ -156,3 +156,25 @@ CP202 entrypoint4 hỗ trợ `--battle-outcome` cùng `--bomb-profile`: bounded1
 rank4/180/reset/Ready2Start2. [Contract/native2cycles/giới hạn](../docs/PROTOCOL.md#four-two-team-cycles).
 Không là item/terrain/rescue/needle4playerintegration hoặc hardened/publicservice; rank/economy/settle làdesign.
 `python3 -m unittest server.test_four_battle_policy` kiểm policy; native evidence riêng trong CP202.
+
+<a id="four-player-bundle"></a>
+### Gói bốn client KR — CP203
+
+```bash
+python3 tools/export_probe_profile.py --source-root local/research/codex --out local/four-player-bundle --preset four-client-battle --bundle
+python3 -I local/four-player-bundle/run.py --verify-only
+```
+
+Preset này dùng đúng47alias đãpin/43fixturefile của profile4 và policy capacity1/2/1/1,power1,fuse6.
+Gói64file chứaentry4/profile/policy/source, có thể chuyển thư mục; không chứa client/assets/DB và không tự dựng networkisolation.
+Launcher gắn sẵn `--battle-outcome`/profile/bombprofile; không truyền overrideprofile/policy. Với topology đã kiểm:
+
+```bash
+kr_four_ports=()
+for kr_four_port in {3808..3998..10}; do kr_four_ports+=(--port "$kr_four_port"); done
+python3 -I /absolute/four-player-bundle/run.py --out /absolute/run-four --bind-ip 10.77.0.1 --channel-ip 10.77.0.1 --channel-port 3858 --source-ip A=10.77.0.2 --source-ip B=10.77.0.3 --source-ip C=10.77.0.4 --source-ip D=10.77.0.5 "${kr_four_ports[@]}"
+```
+
+Chạy cùng [recipe cô lập/source/raw](../docs/evidence/peer-endpoints/README.md#cp203), copyWine4b và riêngprefix/IP/netns;
+sourceclient giữ nguyên. [Scope/authority/knownstartupfailure](../docs/PROTOCOL.md#four-portable-guards) phân biệt native2v2
+đã kiểm với unknownhardening/Internet/K7 và4item/terrain/rescue/needle chưa tíchhợp. Gói hai người hiện hữu giữ entrypoint cũ.

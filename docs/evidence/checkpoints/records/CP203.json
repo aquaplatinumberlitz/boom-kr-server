@@ -1,0 +1,251 @@
+{
+  "id": "CP203",
+  "previous": "CP202",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-08T01:37:31.015294+00:00",
+  "context_commit": "e829fd579b6033b77081261c6348b10ccfac106e",
+  "owner": "Codex",
+  "reviewer": "Codex",
+  "question": "Canpostaccepted19owner118berejectedwithoutID/jobswhilealive/newroundpositivesremain,andcanexistingbundlemachinerydelivercurrentfourprofilethroughnormal2v2cyclesfromrelocatedPythonIservice?",
+  "scope": "SourcefirstCP190/201/202,current4profile47pins. Guardpost19owner118/247TCPnegatives, narrowfourpreset/bundleexport/launcher/64pins/relocation; same4native2v2twooutcomes/reset/Start3R2. R1contentstartuppartialretained/oneboundedrepeat; nextrecipienttimeoutwrongowner modelrepro, nofix/kernelbackpressureproofyet.",
+  "artifacts": [
+    {
+      "name": "OriginalKR00967unchanged",
+      "sha256": "a52545c14b1fea423de655c3163d6360b628d61c1cd472b46fdbc8a9ffe15f4e"
+    },
+    {
+      "name": "CurrentWinecopy_import_ABI_corrected_offline_only",
+      "sha256": "4b781fbcea21e0f6294c729b63be86ab2953d60ad83b0d0c9219359f826107ed"
+    }
+  ],
+  "locators": [
+    "CurrentKR00967copy4b781fbcea21e0f6294c729b63be86ab2953d60ad83b0d0c9219359f826107ed/originala52545…; CP202report/rank/180/52A350locatorsreused,no newnativefunctionRE.",
+    "RunR23aca3c5829407eb65adb52745c390cb44eb8af35a730b809dd3bfeb4479f7bdc/234.687067808s/1192raw/318frozen/exit0/cleanup0/2054checks/32getteremulation;16TCP/4actual/2oppositenormal2v2outcomes/Start3.",
+    "Bundlemanifest4b6992a3e381f45ea195fb5d32aa6aa423a9eb7430eb7a6f7c4e147dac2fff3d/64files/47aliases/43fixturefiles/Python-I/actualallpolicy_sourcesinbundle. R1SHA6c9d37cd765203a2e22c132bece3dda63e56484d22056a080e7926cbeec0efb1/76.241s/309raw/CpreBattlecontentthrow, samebundlecopy; notstartupfix."
+  ],
+  "findings": [
+    {
+      "summary": "CurrentCP202Aaccepted19→fresh118stillallocatesID4→5/job0→1reproducedviarealTCP. Guardwhenbattlepolicy/currentgeneration/currentownerhasdeathrejectsbeforereservation/ID/job/send.247productionrealTCPcontrolsincludedeadowner0mutation/aliveB/newroundApositive/malformed127/wrongslot/blob/duplicate/tickrollback/newroundcursor/EOFfence;325servertests. NotnativeCAattackinput/originalauthority.",
+      "source": "design",
+      "status": "design",
+      "method": "design",
+      "canonical": "docs/PROTOCOL.md#four-portable-guards",
+      "evidence": [
+        "PACK203-00373",
+        "PACK203-00778",
+        "PACK203-00941",
+        "PACK203-02600"
+      ],
+      "limits": "Same4actualKR00967Wine4b/16TCP/independentnetns/privateLAN/ExVillage01/Free0/declared2v2. ActualnormalSpace/selfbombtrap/death→threepeer170/native56/1→postdeathsurvivors21→552inner175/562outer/1803/reset110/actualReady2Start2/oppositeoutcome/Start3clocks. Report-deriveddesign/teamrank/zeroeconomy/fuse6/settle8 areemulatorpolicy, notoriginalserverauthority/authlife; noitems/rescue/needle/terrain/fullBattle/Internet/K7claim. PeerFinishcursor0afterreturnnotusedasfull170parseproof; pre175protectedstatematchindependent. Currentdead-owner118guard247TCPandfourportablenativepositiveverifiedseparate; widerstale/malformed/backpressure/rate-limit/restart/persistence/healthremainopen. NativeactualserviceisPython-Irelocatedbundle withallpolicy_sourcesinbundleand64filepins. R1knownpreBattleCcontentabortkeptseparate/oneboundedrepeatR2only; notstartuprootcausefix/coldreliabilityproof. Guardpost19owner118247realTCPseparatefromnativepositive. Reviewwaived; CP202mergedPR274/e829fd57; AUD059through200/next204. CP203exactheadPRrequired."
+    },
+    {
+      "summary": "ExistingCP190bundlemachineryreused; newfour-client-battlepresetpinsCP20247aliases/43fixturefileswithknownfloorvariant.64files/fourentrypoint/fixedprofilepolicy/overridehashmissingrefreject/Python-Irelocation/default2regressions15tests. No client/assets/DB/distribution/signature/isolationclaim.",
+      "source": "design",
+      "status": "design",
+      "method": "design",
+      "canonical": "docs/PROTOCOL.md#four-portable-guards",
+      "evidence": [
+        "PACK203-02642",
+        "PACK203-02638",
+        "PACK203-02655",
+        "PACK203-02580",
+        "PACK203-00383",
+        "PACK203-02370"
+      ],
+      "limits": "Same4actualKR00967Wine4b/16TCP/independentnetns/privateLAN/ExVillage01/Free0/declared2v2. ActualnormalSpace/selfbombtrap/death→threepeer170/native56/1→postdeathsurvivors21→552inner175/562outer/1803/reset110/actualReady2Start2/oppositeoutcome/Start3clocks. Report-deriveddesign/teamrank/zeroeconomy/fuse6/settle8 areemulatorpolicy, notoriginalserverauthority/authlife; noitems/rescue/needle/terrain/fullBattle/Internet/K7claim. PeerFinishcursor0afterreturnnotusedasfull170parseproof; pre175protectedstatematchindependent. Currentdead-owner118guard247TCPandfourportablenativepositiveverifiedseparate; widerstale/malformed/backpressure/rate-limit/restart/persistence/healthremainopen. NativeactualserviceisPython-Irelocatedbundle withallpolicy_sourcesinbundleand64filepins. R1knownpreBattleCcontentabortkeptseparate/oneboundedrepeatR2only; notstartuprootcausefix/coldreliabilityproof. Guardpost19owner118247realTCPseparatefromnativepositive. Reviewwaived; CP202mergedPR274/e829fd57; AUD059through200/next204. CP203exactheadPRrequired."
+    },
+    {
+      "summary": "Same4actualKRnative2normalopposite2v2outcomes/1754rows/180/reset/actualReady2Start2/Ready3Start3fromrelocatedbundlePython-I, spawnedcwd/tmp/launcherchdirbundle/allpolicy_sourcesinbundlewith64pins.2054checks/32pre175copiednativegetters; currentguardedproductionbundle, notcheckoutserviceorencoderproof.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#four-portable-guards",
+      "evidence": [
+        "PACK203-02531",
+        "PACK203-02365",
+        "PACK203-02369",
+        "PACK203-02342",
+        "PACK203-02341"
+      ],
+      "limits": "Same4actualKR00967Wine4b/16TCP/independentnetns/privateLAN/ExVillage01/Free0/declared2v2. ActualnormalSpace/selfbombtrap/death→threepeer170/native56/1→postdeathsurvivors21→552inner175/562outer/1803/reset110/actualReady2Start2/oppositeoutcome/Start3clocks. Report-deriveddesign/teamrank/zeroeconomy/fuse6/settle8 areemulatorpolicy, notoriginalserverauthority/authlife; noitems/rescue/needle/terrain/fullBattle/Internet/K7claim. PeerFinishcursor0afterreturnnotusedasfull170parseproof; pre175protectedstatematchindependent. Currentdead-owner118guard247TCPandfourportablenativepositiveverifiedseparate; widerstale/malformed/backpressure/rate-limit/restart/persistence/healthremainopen. NativeactualserviceisPython-Irelocatedbundle withallpolicy_sourcesinbundleand64filepins. R1knownpreBattleCcontentabortkeptseparate/oneboundedrepeatR2only; notstartuprootcausefix/coldreliabilityproof. Guardpost19owner118247realTCPseparatefromnativepositive. Reviewwaived; CP202mergedPR274/e829fd57; AUD059through200/next204. CP203exactheadPRrequired."
+    },
+    {
+      "summary": "FourportableR1CpreBattlecontentJSONthrow96A480/96A4EB/96E300knownfamilysealed76.241s/309raw/cleanup0. OneboundedR2repeatbyteidenticalbundle/source/copy/policy, runlabel/outputrelocationonly, passed. KeepR1partialseparate, notstartupfix/primarycause/coldreliabilityproof; no newbinarypatch.",
+      "source": "kr_runtime",
+      "status": "candidate",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#four-portable-guards",
+      "evidence": [
+        "PACK203-00777",
+        "PACK203-00671",
+        "PACK203-02529",
+        "PACK203-02531"
+      ],
+      "limits": "Same4actualKR00967Wine4b/16TCP/independentnetns/privateLAN/ExVillage01/Free0/declared2v2. ActualnormalSpace/selfbombtrap/death→threepeer170/native56/1→postdeathsurvivors21→552inner175/562outer/1803/reset110/actualReady2Start2/oppositeoutcome/Start3clocks. Report-deriveddesign/teamrank/zeroeconomy/fuse6/settle8 areemulatorpolicy, notoriginalserverauthority/authlife; noitems/rescue/needle/terrain/fullBattle/Internet/K7claim. PeerFinishcursor0afterreturnnotusedasfull170parseproof; pre175protectedstatematchindependent. Currentdead-owner118guard247TCPandfourportablenativepositiveverifiedseparate; widerstale/malformed/backpressure/rate-limit/restart/persistence/healthremainopen. NativeactualserviceisPython-Irelocatedbundle withallpolicy_sourcesinbundleand64filepins. R1knownpreBattleCcontentabortkeptseparate/oneboundedrepeatR2only; notstartuprootcausefix/coldreliabilityproof. Guardpost19owner118247realTCPseparatefromnativepositive. Reviewwaived; CP202mergedPR274/e829fd57; AUD059through200/next204. CP203exactheadPRrequired."
+    },
+    {
+      "summary": "Nexttransportowner source/modelrepro: failedrecipientAsendtimeoutduringB17broadcastouterrunclosesB, notA; reportcursoruncommitted but attributionwrong. Controlledsocket/oneiterationonly, nokernelbackpressureproof/fix. PLANnextrecipient-safe/partialbroadcastfence/bounds/rate/loghealth/restart/persistence/K7Internetremainopen.",
+      "source": "design",
+      "status": "design",
+      "method": "design",
+      "canonical": "docs/PROTOCOL.md#four-portable-guards",
+      "evidence": [
+        "PACK203-00038",
+        "PACK203-00035",
+        "PACK203-01154"
+      ],
+      "limits": "Same4actualKR00967Wine4b/16TCP/independentnetns/privateLAN/ExVillage01/Free0/declared2v2. ActualnormalSpace/selfbombtrap/death→threepeer170/native56/1→postdeathsurvivors21→552inner175/562outer/1803/reset110/actualReady2Start2/oppositeoutcome/Start3clocks. Report-deriveddesign/teamrank/zeroeconomy/fuse6/settle8 areemulatorpolicy, notoriginalserverauthority/authlife; noitems/rescue/needle/terrain/fullBattle/Internet/K7claim. PeerFinishcursor0afterreturnnotusedasfull170parseproof; pre175protectedstatematchindependent. Currentdead-owner118guard247TCPandfourportablenativepositiveverifiedseparate; widerstale/malformed/backpressure/rate-limit/restart/persistence/healthremainopen. NativeactualserviceisPython-Irelocatedbundle withallpolicy_sourcesinbundleand64filepins. R1knownpreBattleCcontentabortkeptseparate/oneboundedrepeatR2only; notstartuprootcausefix/coldreliabilityproof. Guardpost19owner118247realTCPseparatefromnativepositive. Reviewwaived; CP202mergedPR274/e829fd57; AUD059through200/next204. CP203exactheadPRrequired."
+    }
+  ],
+  "verification": [
+    {
+      "check": "Guardpost19owner118247realTCP/alive/newround/malformed/duplicate/stale0mutation/325server",
+      "result": "pass",
+      "evidence": [
+        "PACK203-00778",
+        "PACK203-00941",
+        "PACK203-00373"
+      ],
+      "limits": "Syntheticcontrolledreports/TCPnotnativeattackororiginalauthproof."
+    },
+    {
+      "check": "Actualrelocatedfourbundle/samefour2normal2v2results/reset/Start3/64pins/2054checks/32nativegetters",
+      "result": "pass",
+      "evidence": [
+        "PACK203-02531",
+        "PACK203-02369",
+        "PACK203-02365"
+      ],
+      "limits": "Same4actualKR00967Wine4b/16TCP/independentnetns/privateLAN/ExVillage01/Free0/declared2v2. ActualnormalSpace/selfbombtrap/death→threepeer170/native56/1→postdeathsurvivors21→552inner175/562outer/1803/reset110/actualReady2Start2/oppositeoutcome/Start3clocks. Report-deriveddesign/teamrank/zeroeconomy/fuse6/settle8 areemulatorpolicy, notoriginalserverauthority/authlife; noitems/rescue/needle/terrain/fullBattle/Internet/K7claim. PeerFinishcursor0afterreturnnotusedasfull170parseproof; pre175protectedstatematchindependent. Currentdead-owner118guard247TCPandfourportablenativepositiveverifiedseparate; widerstale/malformed/backpressure/rate-limit/restart/persistence/healthremainopen. NativeactualserviceisPython-Irelocatedbundle withallpolicy_sourcesinbundleand64filepins. R1knownpreBattleCcontentabortkeptseparate/oneboundedrepeatR2only; notstartuprootcausefix/coldreliabilityproof. Guardpost19owner118247realTCPseparatefromnativepositive. Reviewwaived; CP202mergedPR274/e829fd57; AUD059through200/next204. CP203exactheadPRrequired."
+    },
+    {
+      "check": "FourportableR1normalgameplayacceptance",
+      "result": "fail",
+      "evidence": [
+        "PACK203-00777"
+      ],
+      "limits": "KnownCpreBattlecontentthrow; no startupfixclaim/R2boundedrepeatretainedseparate."
+    },
+    {
+      "check": "15bundleexport/43checkpoint/docs/catalog/artifacts5/diff",
+      "result": "pass",
+      "evidence": [
+        "PACK203-00383",
+        "PACK203-01151",
+        "PACK203-00027",
+        "PACK203-00026"
+      ],
+      "limits": "Fullcurrenthistory/exactheadbeforemerge; integrity/codeonly notgatecertification."
+    },
+    {
+      "check": "Recipient-safe-backpressure/bounds/rate/loghealth/restart/persistence/K7Internet",
+      "result": "pending",
+      "evidence": [
+        "PACK203-00035",
+        "PACK203-01154"
+      ],
+      "limits": "Nextactionconfirmedmodelgap, nogateclosure. AuditnextCP204."
+    }
+  ],
+  "evidence": [],
+  "evidence_manifests": [
+    {
+      "path": "docs/evidence/checkpoints/evidence/CP203-four-portable-guards.json",
+      "bytes": 680992,
+      "sha256": "ff19032fce4f89f32e448ea88f7b51816faf828d5e51da3951c8a33811fbdea1",
+      "count": 2663
+    }
+  ],
+  "delta": {
+    "added": [
+      "Postdead118before/afterrealTCPguard/newroundpositive/noIDjobmutation.",
+      "Separatefourpreset/exportlauncher/pinnedpolicy/64files/relocation/actual4normal2v2twooutcomes/reset/Start3.",
+      "Recipienttimeoutwrongoriginclosurecontrolledmodelreproidentifiesnexthardeningblocker."
+    ],
+    "corrected": [
+      "CP202deadowner118gapandfourportableabsenceboundedsubscopesresolved; widerhardeningstillopen.",
+      "R1portableCstartupfailurenotconvertedtopass; R2oneboundedrepeatpositive/notrootcausefix."
+    ],
+    "superseded": [
+      "NEXT-K7-FOUR-INPUT-GUARDSandNEXT-K7-FOUR-PORTABLEresolvedforboundedscope; nextNEXT-K7-FOUR-TRANSPORT-HARDENING."
+    ]
+  },
+  "blockers": [
+    "RecipientA sendfailureduringoriginBbroadcastcurrentlycloseswrongB inmodel; partialdelivery/backpressure/kernelnonreader/bounds/rate/loghealth/restart/persistenceidentityunresolved.",
+    "Fouritems/terrain/rescue/needle/accountauth/generalresume/relay/Internet/K7remainopen; no4fullgameplay/gateclaim.",
+    "IntermittentpreBattlecontentstartuprootcauseunknown; onepositiveboundedrepeatdoesnotfixcoldreliability."
+  ],
+  "next_steps": [
+    {
+      "id": "NEXT-K7-FOUR-TRANSPORT-HARDENING",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "PLANrecipient-safe/partial3peerbroadcast/no semanticcommit/fence/kernelrealTCPnonreader/finitebound; thenboundedbuffer/log/frame/rate/health/restart/persistenceidentity. Preserve4normalpositive/newbundlepathifchanged. ManualauditCP204.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    }
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-11-08T01:37:31.015294+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "CodexsoloRE/code/runtime/selfcheck; reviewwaived notapproved, exactheadPRrequired.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Owner explicitly requested solo, no workers/review."
+    }
+  },
+  "docs_sync": [
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "CP203guard/preset/portable4nativeR2/R1failure/nexttransportgap synchronizedbeforecomplete; auditnext204unchanged."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "CP203guard/preset/portable4nativeR2/R1failure/nexttransportgap synchronizedbeforecomplete; auditnext204unchanged."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "updated",
+      "reason": "CP203guard/preset/portable4nativeR2/R1failure/nexttransportgap synchronizedbeforecomplete; auditnext204unchanged."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "updated",
+      "reason": "CP203guard/preset/portable4nativeR2/R1failure/nexttransportgap synchronizedbeforecomplete; auditnext204unchanged."
+    },
+    {
+      "path": "docs/features.json",
+      "state": "updated",
+      "reason": "CP203guard/preset/portable4nativeR2/R1failure/nexttransportgap synchronizedbeforecomplete; auditnext204unchanged."
+    },
+    {
+      "path": "docs/COVERAGE.md",
+      "state": "updated",
+      "reason": "CP203guard/preset/portable4nativeR2/R1failure/nexttransportgap synchronizedbeforecomplete; auditnext204unchanged."
+    },
+    {
+      "path": "docs/evidence/peer-endpoints/README.md",
+      "state": "updated",
+      "reason": "CP203guard/preset/portable4nativeR2/R1failure/nexttransportgap synchronizedbeforecomplete; auditnext204unchanged."
+    },
+    {
+      "path": "tools/README.md",
+      "state": "updated",
+      "reason": "CP203guard/preset/portable4nativeR2/R1failure/nexttransportgap synchronizedbeforecomplete; auditnext204unchanged."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/review.json",
+      "state": "updated",
+      "reason": "CP203guard/preset/portable4nativeR2/R1failure/nexttransportgap synchronizedbeforecomplete; auditnext204unchanged."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
+      "state": "updated",
+      "reason": "CP203guard/preset/portable4nativeR2/R1failure/nexttransportgap synchronizedbeforecomplete; auditnext204unchanged."
+    }
+  ]
+}

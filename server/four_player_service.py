@@ -1,9 +1,8 @@
-"""Opt-in four-session room/loading diagnostic; no Battle result authority.
+"""Opt-in four-session room/Battle diagnostic with explicit emulator policies.
 
-Optional measured four-owner bomb confirmation/fuse is enabled explicitly; no
-Battle result/reset authority. Separate from two-client/replacement recipes. Reuse the measured KR codec and
-serialized transport owner. Operator source IPs identify four local sessions;
-this is not account authentication, reconnect or Internet service.
+Four local operator-IP sessions reuse measured KR codec/fixtures. Optional bomb
+and report-derived 2v2 result/reset policies have bounded Wine evidence. This is
+not account authentication, full four-player gameplay or a hardened Internet service.
 """
 import argparse
 import hashlib
@@ -13,6 +12,7 @@ import selectors
 import signal
 import socket
 import struct
+import sys
 import time
 
 from server import probe_codec as codec
@@ -69,9 +69,10 @@ class FourPlayerService(ProbeService):
         self.state['four_session_binding'] = dict(source='design',
             role_ips=self.source_ips, counts=self.source_counts,
             members=fp.MEMBERS, mode='four_operator_IPs_four_transports_each')
-        self.state['limits'] = ('Four local session room/loading/input transport controls only; '
-                                'no native four-client acceptance, Battle report/result authority, '
-                                'resume/replacement/auth/NAT discovery/Internet or gate.')
+        self.state['limits'] = ('Four operator-IP sessions; optional explicit bomb and report-derived '
+                                '2v2 result/reset policies, not authenticated life/original authority. '
+                                'No four-item/terrain/rescue/needle integration, general resume/replacement, '
+                                'NAT discovery, Internet or gate certification.')
         if type(battle_outcome) is not bool or (battle_outcome and bomb_profile is None):
             self.selector.close()
             raise ValueError("four Battle outcome requires explicit bomb profile")
@@ -97,11 +98,13 @@ class FourPlayerService(ProbeService):
             self.bomb_fuse_seconds = bomb_profile['fuse_seconds']
             self.state['four_bomb_policy'] = dict(bomb_profile, source='design',
                 limits='Explicit baseline/reservation/fuse policy only; not native authority, '
-                       'terrain/drop/life/result/reset or full four-player match.')
+                       'terrain/drop/authenticated life or full four-player gameplay.')
         self.state['bomb_deadlines'] = []
         self.state['policy_sources'] += [dict(path=str(Path(module.__file__).resolve()),
             sha256=hashlib.sha256(Path(module.__file__).read_bytes()).hexdigest())
-            for module in [fp, __import__(__name__, fromlist=['FourPlayerService'])]]
+            for module in [fp, sys.modules[FourBombAdmission.__module__],
+                           sys.modules[FourBattleReports.__module__],
+                           __import__(__name__, fromlist=['FourPlayerService'])]]
 
     def reject(self, event, opcode, sequence, reason):
         self.reject_stage(event, opcode, sequence, reason)
@@ -290,6 +293,11 @@ class FourPlayerService(ProbeService):
         if (not self.room.active or event not in self.peers()
                 or not event.get('peer153_sent') or self.state.get('membership_broken')):
             report['rejected'] = 'not_current_loaded_member'
+            return
+        if (self.battle_reports is not None
+                and self.battle_reports.generation == self.room.generation
+                and self.battle_reports.life.get(role, {}).get('death') is not None):
+            report['rejected'] = 'bomb_owner_reported_dead'
             return
         admitted = self.bomb_admission.admit(role, body)
         if 'rejected' in admitted:

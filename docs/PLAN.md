@@ -1,7 +1,7 @@
 # Kế hoạch server giả lập KR 00967
 
 Nguồn chuẩn của project `boom-kr-server`; bản nhập từ plan đã được dsh1/dsh2 review tại `1eee46d`.
-CP202: cùng4actualKR/2v2hai normaloutcomes/rank1754rows/180/reset/Ready2/Start2/Start3 đã kiểm. Tiếp deadowner118guard/negatives rồi fourportable/hardening. K7/Internet mở; AUD059qua200/auditCP204.
+CP203: deadowner118guard/247TCP vàfourportable/64pins/47aliases/actual4hai2v2outcomes/reset/Start3 đã kiểm. Tiếp recipienttimeoutattribution/bounds/backpressure/rate/restart/persistence/health. K7/Internet mở; AUD059qua200/auditCP204.
 
 
 ### Mục tiêu, baseline và phạm vi
@@ -104,11 +104,15 @@ không tạo nhánh kiểm kê wiki hoặc mở mode phụ trước K3/K4/K5/K6a
    đã có evidence. Cslot2/ID3 đồng thời khác replacementCslot0; default hai người/bundle cũ giữ nguyên.
    `NEXT-K7-FOUR-BATTLE-OUTCOME` khép scope CP202: [cùng4actual2v2/1754rows/180/reset/Start3](PROTOCOL.md#four-two-team-cycles),
    17/19→3peer/native56→1, survivor21postdeath/blast/drain, hai đội thắng ở2normalcycles cónguồn. Khônglặp knownreport/rank/room/codec.
-   `NEXT-K7-FOUR-INPUT-GUARDS` hiện hành: guard118sauaccepted19/malformed127/duplicate/stale/currentmembership/newround,
-   kiểm rejection không lấyID/job/cursor hoặc tạo result; realTCPcontrols và nativecurrentpositive nếu đổi đường đang dùng.
-   Không cố RE fullauthority/mode/item/map trướchardening. Fourservice vẫn không item/terrain/kim/cứu tíchhợp.
-   Sau guard, `NEXT-K7-FOUR-PORTABLE` đóng gói entry4/profile+policy opt-in/hash/relocation/config/README/freshlaunch,
-   rồi boundedparser/backpressure/rate-limit/persistenceidentity/log-health/serverrestart theo acceptanceK7. Không tự coi gói2player là gói4.
+   `NEXT-K7-FOUR-INPUT-GUARDS` khép CP203: [post19owner118/negative0mutation/alive+newroundpositive](PROTOCOL.md#four-portable-guards),
+   247realTCPcontrols/325servertests; không còn gapđặtbomaccepteddead củaCP202. Genericfullauth/stale vẫnngoàiphạmvi.
+   `NEXT-K7-FOUR-PORTABLE` khép scope CP203: same4profile/preset47aliases/64hashpins/relocation/Python-I,
+   actual4normal2v2haioutcomes/reset/Start3 trênbundleR2; R1knownCstartupcontentpartial giữriêng, khôngstartupfix.
+   `NEXT-K7-FOUR-TRANSPORT-HARDENING` hiện hành: recipientA sendtimeout trong B17 hiện closeB trong modelrepro;
+   kiểm đúng recipient/partiallysentbroadcast/no semanticcommit/fence và realTCPnonreader, không quy lỗi sai origin hoặc crash toànservice.
+   Tiếp boundedbuffer/log/frame/rate controls, log-health và serverrestart/persistenceidentity theo acceptanceK7;
+   nativecurrentpositive trên bảnservice/gói mới nếu đổi đường đang dùng. Không mở mode/item/map/REauthoritydàntrải.
+   Bốn-player item/terrain/kim/cứu chưa tíchhợp; giữgiớihạn, không coi hai-clientproof là4playerproof.
    Quyết định thứ tự: NAT/two-cycles/UDP impairment/EOF và incoming admission đã có proof; CP202đã có gameplay2v2haioutcomes/reset/Start3; tiếp hardening
    bốn client, chưa nghiệm thu K7. K6c vẫn cần endpoint Internet do project kiểm soát và acceptance giữ nguyên,
    không dùng mô phỏng để tự đóng gate hoặc thêm các biến thể NAT không có blocker.
@@ -145,7 +149,7 @@ Bảng này chỉ phân công/thứtự; acceptance/PR/bằngchứng ởissue. [
 
 | Thứ tự/scope | Issue | Trạng thái/phần còn thiếu |
 |---|---|---|
-| Hiện hành RE | [#14/KRE-005b](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/14) | K5 basic/K6a/K6b giả lập đã đạt trong scope. CP193–196 NAT/UDP delay-loss/EOF có nguồn; CP197incoming opt-in có controls; CP202samefour2v2haioutcomes/reset/Start3 đã kiểm; tiếp NEXT-K7-FOUR-INPUT-GUARDS rồi fourportable/hardening, audit kếCP204. K6c/K7/fullauth/authority/general variants giữ mở. |
+| Hiện hành RE | [#14/KRE-005b](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/14) | K5 basic/K6a/K6b giả lập đã đạt trong scope. CP193–196 NAT/UDP delay-loss/EOF có nguồn; CP197incoming opt-in có controls; CP203guard/relocatedfourbundle/native2v2haioutcomes/reset/Start3 đã kiểm; tiếp NEXT-K7-FOUR-TRANSPORT-HARDENING, audit kếCP204. K6c/K7/fullauth/authority/general variants giữ mở. |
 | Control theo trigger/gate | [#1/KRE-001](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/1), [#2/KRE-002](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/2) | CP178 K0 originalWindowscontrol/ownership đã đủ, #1 đã đóng qua PR250; #2 giữ widerWCP/launcherconfig; K1 R2 đã đạt CP179, không lặp cold3. |
 | Codec backlog/identity hiện hành | [#3/KRE-003](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/3), [#9/KRE-005a](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/9) | Fullcodec/livebounds vàintermittentmainstartupcause cònthiếu; khônglặpprimitive/auxiliarylocale. |
 

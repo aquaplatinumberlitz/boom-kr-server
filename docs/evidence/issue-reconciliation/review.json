@@ -155,11 +155,11 @@
         "KR-F001",
         "KR-F015"
       ],
-      "known": "CP202same4actualWine/2normal2v2oppositeoutcomes/nativepre175life/fourrow175/180/reset/Ready2Start2/Start3;323server/230TCP/1910nativechecks/32getteremulation. CP201mergedPR273.",
-      "remaining": "Deadowner118guard/currentmalformed/stalecontrols; fourportable/restart/boundedparser/backpressure/rate-limit/persistence/health/K7/Internet/auth remainopen. No4items/terrain/rescue/needleintegration.",
-      "next_test": "PLAN NEXT-K7-FOUR-INPUT-GUARDS: post19bomb/duplicate127/tickrollback/currentgeneration/IDjobresultnegatives then fourportable/hardening; reuseknownreport/rank.",
+      "known": "CP203deadowner118guard247TCP/325server; portable4preset47aliases/64pins/15bundletests; actual4relocatedPythonI2normal2v2outcomes/reset/Start3/2054checks/32nativegetters. CP202mergedPR274.",
+      "remaining": "Recipienttimeoutwrongownerinmodelrepro; realTCPbackpressure/bounds/rate/loghealth/restart/persistenceidentity/K7/Internet/auth remainopen. No4items/terrain/rescue/needle; intermittentstartupcontentcauseunknown.",
+      "next_test": "PLAN NEXT-K7-FOUR-TRANSPORT-HARDENING: closeactualfailedrecipient, no partialreportsemanticcommit/wrongoriginclose; realTCPnonreader/finitebounds, thenremainingK7controls/nativepositive.",
       "acceptance": "Epic checklist: linkedscopedtask/evidence+authoritymatrix vàacceptancegate ởPLAN; từngtaskđóng khôngđóngepic/K5/K6a.",
-      "reason": "Normal4teamending/resetmilestone achieved, but nothardened/fullfourgameplay/Internet/K7. AUD059through200/next204.",
+      "reason": "Nativeportable4positive anddeadownerguard complete boundedsubtasks, notstartupfix/hardening/InternetK7gate. AUD059through200/next204.",
       "sources": [
         "docs/PROTOCOL.md#authority",
         "docs/RESEARCH.md#feature-gaps",
@@ -233,7 +233,8 @@
         "docs/PROTOCOL.md#four-slot-native-consumers",
         "docs/PROTOCOL.md#four-session-native",
         "docs/PROTOCOL.md#four-owner-bombs",
-        "docs/PROTOCOL.md#four-two-team-cycles"
+        "docs/PROTOCOL.md#four-two-team-cycles",
+        "docs/PROTOCOL.md#four-portable-guards"
       ],
       "evidence": [
         "docs/evidence/current-movement-cycles/README.md",
@@ -304,7 +305,8 @@
         "docs/evidence/peer-endpoints/README.md#cp199",
         "docs/evidence/peer-endpoints/README.md#cp200",
         "docs/evidence/peer-endpoints/README.md#cp201",
-        "docs/evidence/peer-endpoints/README.md#cp202"
+        "docs/evidence/peer-endpoints/README.md#cp202",
+        "docs/evidence/peer-endpoints/README.md#cp203"
       ],
       "prs": [
         173,

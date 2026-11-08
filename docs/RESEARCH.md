@@ -42,20 +42,20 @@ accountresume. Widercodec chỉ mở khi có trigger cụ thể từ K3; không 
 Owner/tự kiểm Codex, review waived; AUD059 quaCP200, periodic audit kếCP204.
 
 <a id="gap-lobby-identity-followup"></a>
-### Bốn client đã qua hai normal2v2outcomes/reset/Start3; tập trung hardening
+### Bốn client qua bundle/reset; blocker transport owner kế tiếp
 
-[Contract CP202](PROTOCOL.md#four-two-team-cycles), [raw/hash](evidence/peer-endpoints/README.md#cp202),
-[PLAN](PLAN.md#current-order) giữ thứ tự. Reuse KRCP023/028/102/103/200/201+VNoc_e-game §397–425 đã tránh
-RE lại report/rank/đội/chu kỳ. CP201raw đã có4trap17/3death19; chỉ đo delta ba peer/175bốnrow/reset4.
-SamefourWine/run: A+Cdead→B+Dwin, rồi B+Ddead→A+Cwin; native4viewpre175states/rank552inner/1803/actualReady2Start2/
-Ready3Start3/seq/keys có proof. Report-derivedsurvivor/teamrank/economy0/settle8/fuse6 là design, khôngservergốc.
-Khoảng trống cụ thể:118từowneraccepted19 chưa bị từ chối; malformed/duplicate/stale/roundmembershipguards cần
-controls4current. Phép thử tối thiểu kế: gửi118sau19/duplicate127/cursorrollback/currentnegative→đảm bảo0ID/job/result
-phụ, Start2freshpositive khôngbịchặn. Sau đó fourportable/relocation/freshlaunch/restart/backpressure/rate-limit/
-persistence/health theoPLAN/K7, không mở thêm mode/item/map. Item124/terrain/kim/cứu vẫn chỉ hai-clientintegration.
-Observer170Finishcursor0 saureturn khôngdùng làm fullparseproof; native56→1/pre175life và175/180fullcursors làoracles
-riêng. StartupJSONrootcauseunknown/guardcandidatekhôngrecipe giữ lịch sử [CP201](PROTOCOL.md#four-owner-bombs).
-K6cInternet/K7/accountauth/generalresume/relay/fullgrammar vẫn mở; audit CP204, Codex/reviewwaived.
+[CP203 contract/giới hạn](PROTOCOL.md#four-portable-guards), [raw/hash](evidence/peer-endpoints/README.md#cp203),
+[PLAN](PLAN.md#current-order). Reuse CP190bundle + CP202fourprofile/report/rank tránh RE lại wire và kiếntrúc.
+Deadowner118gap đã táihiện TCP vàguard;247controls giữ0ID/job/send/cursormutation, alive/newroundpositive đạt.
+Preset4pin47aliases/43fixturefiles khácfloorpinpreset2;64runtimepins/launcher4/override/tamper/ref checks đã có.
+Actualnative4runR2 từrelocatedbundle/Python-I/allpolicy_sourcesinbundle có2normal2v2outcomes/reset/Start3/2054checks,
+32copiedgetters riêng. R1knownpreBattleCcontentthrow giữpartial; boundedrepeat khôngstartupfix/coldreliabilityproof.
+Khoảng trống cụ thể kế: modelrecipientA sendtimeout khi B17broadcast lại làm outerrun closeB, sai attribution;
+chưa kernelbackpressureproof/fix. Phép thử tối thiểu: current3peerpartialsendfailure phảiclose đúngrecipientA,
+khôngcommitsreportcursor/life/result hoặc falselycloseB; realTCPnonreader/finitebound/servicecontinues/no stalejobs.
+Sau đó boundedparser/log/frame/rate, log-health/restart/persistenceidentity theoK7; nativepositive nếu đổi servicepath.
+Không mở thêm mode/item/map hoặc RE lại report/rank/codec.4items/terrain/kim/cứu chưa tíchhợp, authority/auth/
+generalresume/relay/Internet/K7 vẫn mở. Codex/reviewwaived, audit thủ công kếCP204 (AUD059qua200).
 
 <a id="feature-gaps"></a>
 ## Khoảng trống theo cơ chế
@@ -79,7 +79,7 @@ Bảng được [coverage](COVERAGE.md) trích tự động để tra theo chứ
 | <a id="gap-round-clock"></a>KR-F001 | CP155 baepoch actual99/nativeclock/barrier trước30s, B32390restore mỗi clock; same-run freshness/contest/EOF cónguồn. | Không RE lại99/load/clock; tiếp thứ tự hiện hành trong PLAN. Originalclock/timeoutauthority ngoài profile giữunknown. |
 | <a id="gap-peer-movement"></a>KR-F002 | [CP176](PROTOCOL.md#a-c-basic-cycles) current A/C4nativewindows/2keys/target/currentprogress cùng2normalcycles; CP173 giữ AB scope. | FullUDP/auth/reliability/generalphysics/NAT discovery còn unknown; [CP194–195](PROTOCOL.md#udp-netem-cycles) đã đo current AB trên NAT tĩnh/UDP impairment. [CP200](PROTOCOL.md#four-session-native) thêm4actualcurrentmovement12chiều ởlowobserverrun; gameplay4 theo PLAN, không lặp consumer/AC peer/solvedcodec/K6b đã đạt. |
 | <a id="gap-udp-freshness"></a>KR-F003 | [CP155](PROTOCOL.md#direct-oldudp-contest-eof) exactR1Bframe→R2actualendpoint/queue/key59≠56/drop/noapply+11currentpositive vàfreshBRight trong cùng2contest/Ready/EOFrecipe. | Scope1key/currentIDs đã giải, không RE lại CP145consumer. low8wrap/forgedcurrentkey/fullgrammar/auth cònunknown theo trigger; tiếp thứ tự hiện hành trong PLAN. |
-| <a id="gap-bomb-lifetime"></a>KR-F004 | [CP174](PROTOCOL.md#basic-host-b-eof) basicB/A/A IDs1..6/native195/reset rồithirdBID7pending/ownedBEOF/round_closed/no158; CP155scope cũ giữ. | [CP201](PROTOCOL.md#four-owner-bombs) có4owner/currentcapacity/159158broadcast/fencecontrols; [CP202](PROTOCOL.md#four-two-team-cycles) đã có2v2outcome/reset; deadowner118guard/hardening tiếp theoPLAN. Genericpool/auth/races/low8wrap cònunknown, khônglặpknownfence. |
+| <a id="gap-bomb-lifetime"></a>KR-F004 | [CP174](PROTOCOL.md#basic-host-b-eof) basicB/A/A IDs1..6/native195/reset rồithirdBID7pending/ownedBEOF/round_closed/no158; CP155scope cũ giữ. | [CP201](PROTOCOL.md#four-owner-bombs) có4owner/currentcapacity/159158broadcast/fencecontrols; [CP202](PROTOCOL.md#four-two-team-cycles) đã có2v2outcome/reset; [CP203](PROTOCOL.md#four-portable-guards) đã guarddeadowner118; transport/hardening tiếp theoPLAN. Genericpool/auth/races/low8wrap cònunknown, khônglặpknownfence. |
 | <a id="gap-blast-block-chain"></a>KR-F005 | [CP172](PROTOCOL.md#hidden-cell-admission-current) basic Box/reveal27/28/142guard/3effects/reset/Start3 đã kiểm. | Generalmoving/order/allmaps/fullworldauthority unknown; không RE lại consumer. CP173 Bowner/native195 đã ghép; CP174BhostEOF đã kiểm; admission theoPLAN. |
 | <a id="gap-floor-pickup"></a>KR-F006 | [CP172](PROTOCOL.md#hidden-cell-admission-current) terrain currentclearedcell/generation/commit/roster guard và native basic2cycles/reset/Start3 có nguồn; no-terrain giữ weak report scope. | Full142key/auth/distance/freshness/fairness/two-nativecontenders unknown. Same old142 sau legitimatecurrentclear chưa phân biệt; không gọi policy guard là original authority. CP173B118/bidirectional đã kiểm; CP174BhostEOF đã kiểm; admission theoPLAN. |
 | <a id="gap-item-stats"></a>KR-F007 | [CP087](PROTOCOL.md#capacity-reservations) profileAinitial1max10/B2max7, acceptedBomb tăngtracked/native1→2 và resetthật hai vòng. Runtimeatmax/character/mode/pxs/TTL/fullreset khôngđủ. | [CP201](PROTOCOL.md#four-owner-bombs) đã đo C/Dstat/maxima trêncurrent4clock, không ápABdefaultquaD. Servertrackingdesign/nativepoollaw/runtimeatmax/othercharacters vẫnunknown; mởtheotrigger. |

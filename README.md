@@ -28,9 +28,13 @@ boom-kr-server/
 
 ## Tra nhanh và trạng thái hiện tại
 
+**CP203: gói bốn người đã chạy từ thư mục chuyển chỗ và qua hai vòng 2v2/reset/Start3 bằng KR Wine.**
+[Contract/guard/giới hạn](docs/PROTOCOL.md#four-portable-guards), [cách xuất/chạy](tools/README.md#four-player-bundle).
+Guard chặn đặt bom sau accepteddeath có TCPcontrols; còn transport/backpressure/rate/restart/persistence/health/K7/Internet.
+
 **CP202: cùng bốn KR Wine đã hoàn thành hai vòng 2v2, hai đội lần lượt thắng, kết quả/reset và Start3.**
 [Contract/giới hạn](docs/PROTOCOL.md#four-two-team-cycles), [raw/hash](docs/evidence/peer-endpoints/README.md#cp202).
-K7/Internet vẫn mở; bước tiếp tập trung guard input/lifecycle và đóng gói/hardening theo PLAN. Review waived; audit kế CP204.
+Tại CP202 còn guard/đóng gói4; CP203 đã bổ sung. K7/Internet vẫn mở; bước tiếp transport/hardening theo PLAN. Review waived; audit kế CP204.
 
 [Coverage và cây chức năng](docs/COVERAGE.md) trả lời: cơ chế nào hiện diện, mức RE/implementation/
 runtime nào có nguồn, còn thiếu gì và phép kiểm nào giải quyết. Mỗi ID dẫn thẳng contract/giới hạn,
