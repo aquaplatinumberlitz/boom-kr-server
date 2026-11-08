@@ -1,6 +1,7 @@
 """Opt-in four-session room/loading diagnostic; no Battle result authority.
 
-Separate from two-client/replacement recipes. Reuse the measured KR codec and
+Optional measured four-owner bomb confirmation/fuse is enabled explicitly; no
+Battle result/reset authority. Separate from two-client/replacement recipes. Reuse the measured KR codec and
 serialized transport owner. Operator source IPs identify four local sessions;
 this is not account authentication, reconnect or Internet service.
 """
@@ -20,6 +21,8 @@ from server.room_title import create_title, _decode_bytes
 from server.room_team_mode import create_selector, replace_reply_selector
 # Production import is resolved when this staged module is promoted.
 from server import four_player_profile as fp
+from server.four_bomb_policy import FourBombAdmission
+import json
 
 
 def addresses(options):
@@ -39,7 +42,7 @@ def addresses(options):
 
 class FourPlayerService(ProbeService):
     def __init__(self, profile, out, source_ips, *, bind_ip='127.0.0.1',
-                 channel_ip=None, channel_port=None):
+                 channel_ip=None, channel_port=None, bomb_profile=None):
         # Validate/generate every supported input before creating an owner/socket.
         if struct.unpack_from('<I', profile.raw('auth_A'), 5)[0] != 4:
             raise ValueError('four sessions require measured auth4 success fixture')
@@ -68,6 +71,28 @@ class FourPlayerService(ProbeService):
         self.state['limits'] = ('Four local session room/loading/input transport controls only; '
                                 'no native four-client acceptance, Battle report/result authority, '
                                 'resume/replacement/auth/NAT discovery/Internet or gate.')
+        self.bomb_admission = None
+        self.bomb_jobs = []
+        self.bomb_fuse_seconds = None
+        if bomb_profile is not None:
+            if (not isinstance(bomb_profile, dict)
+                    or set(bomb_profile) != {'mode','capacities','powers','fuse_seconds'}
+                    or bomb_profile['mode'] != 'four_current_baseline'
+                    or type(bomb_profile['fuse_seconds']) is not int
+                    or not 1 <= bomb_profile['fuse_seconds'] <= 30):
+                self.selector.close()
+                raise ValueError('unsupported four-bomb profile')
+            try:
+                self.bomb_admission = FourBombAdmission(self.room, self.role_slots,
+                    bomb_profile['capacities'], bomb_profile['powers'])
+            except ValueError:
+                self.selector.close()
+                raise
+            self.bomb_fuse_seconds = bomb_profile['fuse_seconds']
+            self.state['four_bomb_policy'] = dict(bomb_profile, source='design',
+                limits='Explicit baseline/reservation/fuse policy only; not native authority, '
+                       'terrain/drop/life/result/reset or full four-player match.')
+        self.state['bomb_deadlines'] = []
         self.state['policy_sources'] += [dict(path=str(Path(module.__file__).resolve()),
             sha256=hashlib.sha256(Path(module.__file__).read_bytes()).hexdigest())
             for module in [fp, __import__(__name__, fromlist=['FourPlayerService'])]]
@@ -143,6 +168,9 @@ class FourPlayerService(ProbeService):
 
     def receive_channel(self, event, frame, sequence, body):
         opcode = struct.unpack_from('<I', frame, 5)[0];role = event['role']
+        if opcode == 118 and self.bomb_admission is not None:
+            self.receive_bomb(event, frame, sequence, body)
+            return
         if opcode == 6 and not event.get('channel_response_sent'):
             name = fp.MEMBERS[role]['name'].encode('ascii')
             size = codec.read_fields(body[2:4], [2])[0] if len(body) >= 4 else -1
@@ -232,12 +260,57 @@ class FourPlayerService(ProbeService):
                 deadline_ns=now + 30*10**9,
                 members=[dict(role=e['role'], connection=e['global_ordinal']) for e in self.peers()]))
         self.state['current_round'] = self.round
+        if self.bomb_admission is not None:
+            self.bomb_admission.begin()
         for event in self.peers():
             self.send(event, 'floor', 'floor582')
             event['start_response_sent'] = self.send(event, 'start', 'start121', body=self.start_body)
 
+    def receive_bomb(self, event, frame, sequence, body):
+        role = event['role']
+        report = dict(role=role, generation=self.room.generation, seq=sequence,
+                      monotonic_ns=time.monotonic_ns(), body_sha256=hashlib.sha256(body).hexdigest(),
+                      frame_sha256=hashlib.sha256(frame).hexdigest())
+        self.state['bomb_requests'].append(report)
+        if (not self.room.active or event not in self.peers()
+                or not event.get('peer153_sent') or self.state.get('membership_broken')):
+            report['rejected'] = 'not_current_loaded_member'
+            return
+        admitted = self.bomb_admission.admit(role, body)
+        if 'rejected' in admitted:
+            report.update(admitted)
+            return
+        values = admitted['fields'];ident = admitted['id'];report.update(id=ident,fields=values)
+        fields = [0, values[2], 0, values[3], 0, 0, values[4], values[5], values[10],
+                  1, 0, ident, 0, 1, 0, 0, 0]
+        payload = codec.pack_fields(fields,[1,1,2,4,4,4,1,1,1,4,1,2,2,1,8,1,1])
+        sent = self.broadcast('bomb', 'four-confirm159-'+str(ident), body=payload)
+        record = dict(round=self.room.generation,id=ident,owner=values[2],source_role=role,
+            serial=values[3],row=values[4],column=values[5],power=values[10],
+            created_ns=time.monotonic_ns(),broadcast159=sent)
+        self.state['round_bombs'].append(record)
+        self.bomb_jobs.append((time.monotonic()+self.bomb_fuse_seconds,ident,record))
+        event.setdefault('bombs',[]).append(dict(id=ident,serial=values[3],broadcast159=sent))
+
+    def tick_bombs(self):
+        if self.bomb_admission is None:
+            return
+        for due, ident, record in list(self.bomb_jobs):
+            if time.monotonic() < due:
+                continue
+            self.bomb_jobs.remove((due, ident, record))
+            expiry = self.bomb_admission.expire(ident)
+            if 'rejected' in expiry:
+                record['timer_rejected'] = expiry['rejected']
+            else:
+                payload = codec.pack_fields([1,ident,0,2,0xFFFFFFFF,255],[1,2,1,4,4,1])
+                record['broadcast158'] = self.broadcast('blast','four-blast158-'+str(ident),body=payload)
+            self.state['bomb_deadlines'].append(dict(id=ident,generation=record['round'],
+                rejected=expiry.get('rejected'),monotonic_ns=time.monotonic_ns()))
+
     def tick(self):
         now = time.monotonic_ns()
+        self.tick_bombs()
         if self.state.get('membership_broken'):
             return
         for event in self.events:
@@ -312,6 +385,7 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--profile', type=Path, required=True)
     parser.add_argument('--out', type=Path, required=True)
+    parser.add_argument('--bomb-profile', type=Path, help='Explicit measured/operator four-role capacity/power/fuse JSON; opt-in')
     parser.add_argument('--source-ip', action='append', required=True, metavar='ROLE=IPv4')
     parser.add_argument('--bind-ip', default='127.0.0.1')
     parser.add_argument('--port', type=int, action='append', required=True)
@@ -323,7 +397,8 @@ def main():
         if any(not 0 <= port <= 65535 for port in args.port):
             raise ValueError('invalid listener port')
         service = FourPlayerService(FixtureProfile(args.profile), args.out, ips,
-            bind_ip=args.bind_ip, channel_ip=args.channel_ip, channel_port=args.channel_port)
+            bind_ip=args.bind_ip, channel_ip=args.channel_ip, channel_port=args.channel_port,
+            bomb_profile=json.loads(args.bomb_profile.read_text()) if args.bomb_profile else None)
     except ValueError as error:
         parser.error(str(error))
     args.out.mkdir(parents=True, exist_ok=True)

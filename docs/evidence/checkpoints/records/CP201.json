@@ -1,0 +1,250 @@
+{
+  "id": "CP201",
+  "previous": "CP200",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-08T00:49:48.466422+00:00",
+  "context_commit": "cd958c95faf0d88ecdf29bf7de6a50e4669d7f25",
+  "owner": "Codex",
+  "reviewer": "Codex",
+  "question": "What are current four-slot native capacity/power baselines and can all four actual owners118 produce four-recipient159/nativeentities and158 without guessing C/D defaults or AB result policy?",
+  "scope": "Source-firstnativeCP024031087173188200wire/stat/fence reuse. Original4b baseline/request proof plusopt-inFourBombAdmission/config/reservation/key/slot/power/dedupe/EOF controls. Actualfourownersoneepoch/four159entities/158callbacksall4views. Startupcontent/guardfailures retained separate; no fullmatch2v2result/reset/K7.",
+  "artifacts": [
+    {
+      "name": "OriginalKR00967unchanged",
+      "sha256": "a52545c14b1fea423de655c3163d6360b628d61c1cd472b46fdbc8a9ffe15f4e"
+    },
+    {
+      "name": "CurrentWinecopy_import_ABI_corrected_offline_only",
+      "sha256": "4b781fbcea21e0f6294c729b63be86ab2953d60ad83b0d0c9219359f826107ed"
+    }
+  ],
+  "locators": [
+    "Current4b/sourcea525/base400000;rareE134B0clock secureactor4A4/50C/4BC/524/5E8/5DC, copied52A350getters144emulationseparate. Actual118widths fromCP024;159E5E8F0/E5ECA8/E5EEAB,158E5F450/E5F5FD; E14360argumentprobeincorrectEBPatentrynotusedasentitymatch.",
+    "Baselineba69ecb3fd63865bf0de731e8e1f70abc58d5378eda58faa12f952087fd95ea4/154.942564192s/609raw/1039checks/144nativegetters; current4slotcapacity1/2/1/1/power1, maximaC/DseparateAB.",
+    "BombRun0deaf49746ffb1b4514f3232057f12a9120301106f878320e5f690e510a2c26f/150.550447268s/648raw/250frozen/exit0/cleanup0/1036checks; four118IDs1–4/16recipient159/16recipient158/fullcursors/nativeentitycoords.",
+    "Startup96A480emptyJSONinput→96DCE0→96E2D0expectedvalue actualbaselineR3; candidatecopy8d7194fd4f9a5a798282fc995f2d880ff0a702ffc1e61ca06aba221632f7e16a/guardstub2266000 returnsnativeemptyout thencleanuptrap2260DF8/16EA064knownCP181. Notstartupfix/primarycause/fullbaseline; old4bpositiveused."
+  ],
+  "findings": [
+    {
+      "summary": "Nativeclockall4viewsagreecapacity/maxA1/10B2/7C1/8D1/10,power/max1/7,1/9,1/5,1/8,speed/max5/7,4/8,5/8,4/8. ActualSpacefrom4owner→118currentkey/slot/power/seq/CRC, request-onlyserviceatthatpointreject118. 1039checks+144copiednativegetters, notallchar/default. AvoidcopyBcapacity2ontoD.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#four-owner-bombs",
+      "evidence": [
+        "BOMB201-02780",
+        "BOMB201-02684",
+        "BOMB201-02689"
+      ],
+      "limits": "FouractualmodifiedKR00967Wine4b/directvirtualLAN/oneExVillage01/Free0/oneepoch/fournormalSpaceowners. Explicitmeasuredcapacity1/2/1/1/power1/fuse6design; eachactual118→4recipient159full39/nativeentitycoords→158full13. NativeE14360pointerprobeusescallerEBPargumentwrongatentry: do notusematched_confirm_entityfieldasproof; keptraw, needsnewcorrectprobeifentitymatchquestionopens. No arbitraryUDP/worldauthority/terrainshadow/drop/life-report/result175180/reset/Start2/K7/Internet/auth claim. Gamecantrap/deathbutservice127rejects, noclaimnormal2v2ending. Originalsource/4b/DB/assets/bundleunchanged/sourcefrozenuntilcleanup. Reviewwaived; CP200mergedPR272/cd958c95, AUD059through200/next204; CP201exactheadPRrequired."
+    },
+    {
+      "summary": "FouractualownersA/B/C/D118→wireIDs1/2/3/4, each159broadcastall4nativeviews/full39/errors0/entitynonzero/protectedcoordsactualcell;timer6s158currentID/kind0all4views/full13/errors0. Same4actualWine/session/map/epoch/original4b; nooutcome/reset/gateclaim.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#four-owner-bombs",
+      "evidence": [
+        "BOMB201-02063",
+        "BOMB201-01723",
+        "BOMB201-01698",
+        "BOMB201-01681",
+        "BOMB201-01679",
+        "BOMB201-01680"
+      ],
+      "limits": "FouractualmodifiedKR00967Wine4b/directvirtualLAN/oneExVillage01/Free0/oneepoch/fournormalSpaceowners. Explicitmeasuredcapacity1/2/1/1/power1/fuse6design; eachactual118→4recipient159full39/nativeentitycoords→158full13. NativeE14360pointerprobeusescallerEBPargumentwrongatentry: do notusematched_confirm_entityfieldasproof; keptraw, needsnewcorrectprobeifentitymatchquestionopens. No arbitraryUDP/worldauthority/terrainshadow/drop/life-report/result175180/reset/Start2/K7/Internet/auth claim. Gamecantrap/deathbutservice127rejects, noclaimnormal2v2ending. Originalsource/4b/DB/assets/bundleunchanged/sourcefrozenuntilcleanup. Reviewwaived; CP200mergedPR272/cd958c95, AUD059through200/next204; CP201exactheadPRrequired."
+    },
+    {
+      "summary": "Newopt-infour_bomb_policy/currentprofilecapacities1/2/1/1,power1/fuse6designcheckskey/slot/layout/power/bounds/currentepoch/serialowner/dedupes/reservation/EOFfence. Defaultno--bomb-profilekeepsCP200reject118.316server/207realTCP16transportcontrols inclduplicate/noID,BDcapacitydifferent,4recipient159158,DEOFfencespendingC. Notoriginalauthority/nativepoollaw/terrain/drop/result/reset.",
+      "source": "design",
+      "status": "design",
+      "method": "design",
+      "canonical": "docs/PROTOCOL.md#four-owner-bombs",
+      "evidence": [
+        "BOMB201-03227",
+        "BOMB201-03229",
+        "BOMB201-03252",
+        "BOMB201-01819",
+        "BOMB201-01725",
+        "BOMB201-01048"
+      ],
+      "limits": "FouractualmodifiedKR00967Wine4b/directvirtualLAN/oneExVillage01/Free0/oneepoch/fournormalSpaceowners. Explicitmeasuredcapacity1/2/1/1/power1/fuse6design; eachactual118→4recipient159full39/nativeentitycoords→158full13. NativeE14360pointerprobeusescallerEBPargumentwrongatentry: do notusematched_confirm_entityfieldasproof; keptraw, needsnewcorrectprobeifentitymatchquestionopens. No arbitraryUDP/worldauthority/terrainshadow/drop/life-report/result175180/reset/Start2/K7/Internet/auth claim. Gamecantrap/deathbutservice127rejects, noclaimnormal2v2ending. Originalsource/4b/DB/assets/bundleunchanged/sourcefrozenuntilcleanup. Reviewwaived; CP200mergedPR272/cd958c95, AUD059through200/next204; CP201exactheadPRrequired."
+    },
+    {
+      "summary": "RepeatedbaselineCstartupSIGABRTandfreshCprefixR3AcontentJSONempty→expectedvaluethrow nowattributedtocachedCP073contentpath, notlocale. Candidateempty-onlyguardnewcopy5ABIemulation/nativeemptyoutconfirmedthenfatalcleanuptrap, notstartupfix. Positivebaselineoriginal4bwithcoldframerpasses; primaryfatal/contentthrowunseen, generalrootcauseunknown. Keepfailures/patchrollback/sourceimmutable.",
+      "source": "kr_runtime",
+      "status": "candidate",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#four-owner-bombs",
+      "evidence": [
+        "BOMB201-00361",
+        "BOMB201-00772",
+        "BOMB201-00935",
+        "BOMB201-03034",
+        "BOMB201-03180",
+        "BOMB201-03181",
+        "BOMB201-02780"
+      ],
+      "limits": "FouractualmodifiedKR00967Wine4b/directvirtualLAN/oneExVillage01/Free0/oneepoch/fournormalSpaceowners. Explicitmeasuredcapacity1/2/1/1/power1/fuse6design; eachactual118→4recipient159full39/nativeentitycoords→158full13. NativeE14360pointerprobeusescallerEBPargumentwrongatentry: do notusematched_confirm_entityfieldasproof; keptraw, needsnewcorrectprobeifentitymatchquestionopens. No arbitraryUDP/worldauthority/terrainshadow/drop/life-report/result175180/reset/Start2/K7/Internet/auth claim. Gamecantrap/deathbutservice127rejects, noclaimnormal2v2ending. Originalsource/4b/DB/assets/bundleunchanged/sourcefrozenuntilcleanup. Reviewwaived; CP200mergedPR272/cd958c95, AUD059through200/next204; CP201exactheadPRrequired."
+    },
+    {
+      "summary": "E14360read-onlyprobeusedEBPargumentatfunctionentryinsteadESP; matched_confirm_entitynotusedfornativebombentitymatch. Native159creation/coordsand158fullparseareindependentrecordedproof. TCPdriverunreadcloseRSTfirstcontrolpreserved; drainedSHUT_WREOFcontrolcurrentpasswithoutproductionchange. CP200PR272merged, next2v2life/rank4rows/resultreset; no newauditdueuntil204.",
+      "source": "design",
+      "status": "design",
+      "method": "design",
+      "canonical": "docs/PROTOCOL.md#four-owner-bombs",
+      "evidence": [
+        "BOMB201-01712",
+        "BOMB201-02063",
+        "BOMB201-01724",
+        "BOMB201-01725",
+        "BOMB201-00019",
+        "BOMB201-01054"
+      ],
+      "limits": "FouractualmodifiedKR00967Wine4b/directvirtualLAN/oneExVillage01/Free0/oneepoch/fournormalSpaceowners. Explicitmeasuredcapacity1/2/1/1/power1/fuse6design; eachactual118→4recipient159full39/nativeentitycoords→158full13. NativeE14360pointerprobeusescallerEBPargumentwrongatentry: do notusematched_confirm_entityfieldasproof; keptraw, needsnewcorrectprobeifentitymatchquestionopens. No arbitraryUDP/worldauthority/terrainshadow/drop/life-report/result175180/reset/Start2/K7/Internet/auth claim. Gamecantrap/deathbutservice127rejects, noclaimnormal2v2ending. Originalsource/4b/DB/assets/bundleunchanged/sourcefrozenuntilcleanup. Reviewwaived; CP200mergedPR272/cd958c95, AUD059through200/next204; CP201exactheadPRrequired."
+    }
+  ],
+  "verification": [
+    {
+      "check": "Native4slotbaseline/4actualowner118requestonly",
+      "result": "pass",
+      "evidence": [
+        "BOMB201-02780",
+        "BOMB201-02684"
+      ],
+      "limits": "Currentchar/profile/oneclock/key; notallstats/wholepoollaw."
+    },
+    {
+      "check": "Fouractualowner118/16native159entities/16native158fullparse",
+      "result": "pass",
+      "evidence": [
+        "BOMB201-02063",
+        "BOMB201-01723"
+      ],
+      "limits": "FouractualmodifiedKR00967Wine4b/directvirtualLAN/oneExVillage01/Free0/oneepoch/fournormalSpaceowners. Explicitmeasuredcapacity1/2/1/1/power1/fuse6design; eachactual118→4recipient159full39/nativeentitycoords→158full13. NativeE14360pointerprobeusescallerEBPargumentwrongatentry: do notusematched_confirm_entityfieldasproof; keptraw, needsnewcorrectprobeifentitymatchquestionopens. No arbitraryUDP/worldauthority/terrainshadow/drop/life-report/result175180/reset/Start2/K7/Internet/auth claim. Gamecantrap/deathbutservice127rejects, noclaimnormal2v2ending. Originalsource/4b/DB/assets/bundleunchanged/sourcefrozenuntilcleanup. Reviewwaived; CP200mergedPR272/cd958c95, AUD059through200/next204; CP201exactheadPRrequired."
+    },
+    {
+      "check": "316server/207realTCP/12bundleexport/43checkpointtests/docs/catalog/artifacts5/diff",
+      "result": "pass",
+      "evidence": [
+        "BOMB201-01819",
+        "BOMB201-01725",
+        "BOMB201-01049",
+        "BOMB201-01051",
+        "BOMB201-00027",
+        "BOMB201-00026"
+      ],
+      "limits": "Fullcurrenthistory/exactheadbeforemerge; generatedwire/TCPnotnativeoracle."
+    },
+    {
+      "check": "Fourlife/team2v2survivor/rank1754rows/180/normaloutcome/reset/Start2/K7",
+      "result": "pending",
+      "evidence": [
+        "BOMB201-01054"
+      ],
+      "limits": "NEXT-K7-FOUR-BATTLE-OUTCOMEcontinues; noABrankclone/forfeitnormalwin."
+    }
+  ],
+  "evidence": [],
+  "evidence_manifests": [
+    {
+      "path": "docs/evidence/checkpoints/evidence/CP201-four-owner-bombs.json",
+      "bytes": 846455,
+      "sha256": "e80988b35cb3b9ac09b60ba1fd64ac40e432955f0dbfce4fc5626b45a181ad8b",
+      "count": 3314
+    }
+  ],
+  "delta": {
+    "added": [
+      "Native4slotstatbaselines/maxima/C-Ddistinct, actual4owner118key/slot/power checked; 144copiednativegettersseparate.",
+      "Optin4bompolicy+native118159158all4viewsononeepoch; fourlogicalownerIDs/entities/coords/fullcursors; no2v2rankpolicy.",
+      "ColdcontentemptyJSONexceptionattribution/guardcandidatecontrol/byteexactrollbackandfullfailedraw preserved."
+    ],
+    "corrected": [
+      "CurrentC/Dcapacitiesunknownnow1/1max8/10forchosenprofile, notcopyB2/max7. Originalauthority/allcharstillunknown.",
+      "ConditionalemptyJSONguardonlysolvesexceptionatthatpointandthencleanupfatalremains; notstartupfix/APIbinding orproductionrecipe. Positivecurrent4boriginalnotguardedcopy.",
+      "E14360probeEBPentryargwrongnotusedforentitymatch; no runtimebytesrewritten. Full159entity/158parseproofretained."
+    ],
+    "superseded": [
+      "Fourownerbaseline/118159158subscopeofNEXT-K7-FOUR-BATTLE-OUTCOME resolved; sameactiveIDcontinueslife/rank4/reset."
+    ]
+  },
+  "blockers": [
+    "No4lifereport/survivor/2v2rank175fourrows/180/reset/Ready2/Start2normalending; service4stillrejects127/currentstatsfullupdates/items/reportauthority.",
+    "Intermittentstartupfatal/contentrootcauseunknown, conditionalemptyJSONguardlocalcandidateonly; no blanketcleanup/locale/abortbypass.",
+    "K7hardening/fourportable/restart/backpressure/rate-limit/persistence/Internet/fullaccountauth/relay/generalresume remainopen; no gatechange."
+  ],
+  "next_steps": [
+    {
+      "id": "NEXT-K7-FOUR-BATTLE-OUTCOME",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "PLANsourcefirstknownlife127subtypes/authority/rank175consumer+builders, chooseminimalteam2v2currentrostersurvivorpolicy/negativecontrols, native4row175180/reset/Ready2/Start2 thensame4clientnormalending. Fourbaseline/118159158done; no re-codec/ABrankcopy/forfeitnormalwin. Audit204.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    }
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-11-08T00:49:48.466422+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "CodexsoloRE/code/runtime/selfcheck, reviewwaived notapproved; exactheadPRrequired.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Owner explicitly requested solo, no workers/review."
+    }
+  },
+  "docs_sync": [
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "CP2014ownerbaseline/bomcontract/failedstartupcandidate/probelimits synchronizedbeforecomplete; nextlife2v2rank/reset; auditcounter204unchanged."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "CP2014ownerbaseline/bomcontract/failedstartupcandidate/probelimits synchronizedbeforecomplete; nextlife2v2rank/reset; auditcounter204unchanged."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "updated",
+      "reason": "CP2014ownerbaseline/bomcontract/failedstartupcandidate/probelimits synchronizedbeforecomplete; nextlife2v2rank/reset; auditcounter204unchanged."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "updated",
+      "reason": "CP2014ownerbaseline/bomcontract/failedstartupcandidate/probelimits synchronizedbeforecomplete; nextlife2v2rank/reset; auditcounter204unchanged."
+    },
+    {
+      "path": "docs/features.json",
+      "state": "updated",
+      "reason": "CP2014ownerbaseline/bomcontract/failedstartupcandidate/probelimits synchronizedbeforecomplete; nextlife2v2rank/reset; auditcounter204unchanged."
+    },
+    {
+      "path": "docs/COVERAGE.md",
+      "state": "updated",
+      "reason": "CP2014ownerbaseline/bomcontract/failedstartupcandidate/probelimits synchronizedbeforecomplete; nextlife2v2rank/reset; auditcounter204unchanged."
+    },
+    {
+      "path": "docs/evidence/peer-endpoints/README.md",
+      "state": "updated",
+      "reason": "CP2014ownerbaseline/bomcontract/failedstartupcandidate/probelimits synchronizedbeforecomplete; nextlife2v2rank/reset; auditcounter204unchanged."
+    },
+    {
+      "path": "tools/README.md",
+      "state": "updated",
+      "reason": "CP2014ownerbaseline/bomcontract/failedstartupcandidate/probelimits synchronizedbeforecomplete; nextlife2v2rank/reset; auditcounter204unchanged."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/review.json",
+      "state": "updated",
+      "reason": "CP2014ownerbaseline/bomcontract/failedstartupcandidate/probelimits synchronizedbeforecomplete; nextlife2v2rank/reset; auditcounter204unchanged."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
+      "state": "updated",
+      "reason": "CP2014ownerbaseline/bomcontract/failedstartupcandidate/probelimits synchronizedbeforecomplete; nextlife2v2rank/reset; auditcounter204unchanged."
+    }
+  ]
+}

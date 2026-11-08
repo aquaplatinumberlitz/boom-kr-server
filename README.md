@@ -143,6 +143,11 @@ quan sát movement từ từng client ở ba client còn lại. [Phạm vi/contr
 Start2 hoặc đóng K7. CP199 đã merge [PR271](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/271)/`ae329187`.
 AUD059 quaCP200; audit định kỳ kế **CP204**. Run lỗi/header/probe/metadata giữ raw riêng, không sửa thành pass.
 
+**CP201: bốn owner A/B/C/D đã đặt bom và nhận confirm/nổ ở cả bốn KR Wine view.**
+[Contract/baseline/giới hạn](docs/PROTOCOL.md#four-owner-bombs), [raw/hash](docs/evidence/peer-endpoints/README.md#cp201).
+Capacity đã đo1/2/1/1, power1; native15939/39/entity và15813/13/errors0 đủ bốn bom/bốn view. Chưa kết quả/reset2v2.
+CP200 đã merge [PR272](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/272)/`cd958c95`; audit kế CP204.
+
 Đích đầu: hai client thật chơi hai trận liên tiếp; mở bốn client và hardening sau đó.
 
 ## Bắt đầu

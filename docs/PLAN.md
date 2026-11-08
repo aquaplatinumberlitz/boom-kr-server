@@ -1,7 +1,7 @@
 # Kế hoạch server giả lập KR 00967
 
 Nguồn chuẩn của project `boom-kr-server`; bản nhập từ plan đã được dsh1/dsh2 review tại `1eee46d`.
-CP200: bốn actualKR Wine/session/room/load/clock/153 và12chiều currentmovement đã đo trong scope; gameplay2v2/bom/result/reset/Start2/K7/Internet còn mở. Tiếp fourBattle theo current-order. AUD059qua200/auditCP204.
+CP201: bốn nativeowner118/159entity/158 đã kiểm, capacity/power4slot đã đo. Còn life/report/survivor/rank1754rows/180/reset2v2/Ready2/Start2/K7/Internet. AUD059qua200/auditCP204.
 
 
 ### Mục tiêu, baseline và phạm vi
@@ -102,10 +102,11 @@ không tạo nhánh kiểm kê wiki hoặc mở mode phụ trước K3/K4/K5/K6a
    `NEXT-K7-FOUR-SESSION-CONTROL` khép scope phòng/load/input CP200: [entrypoint4riêng/native4](PROTOCOL.md#four-session-native),
    16realTCP/session/ID/name/seq/Ready/4ACK99barrier/3remote153 và bốn actualWine vàoBattle/currentmovement12chiều
    đã có evidence. Cslot2/ID3 đồng thời khác replacementCslot0; default hai người/bundle cũ giữ nguyên.
-   `NEXT-K7-FOUR-BATTLE-OUTCOME`: tái dùng bomb159/158/life-report/authority/result175/180/reset đã có cho hai người,
-   chỉ đo phần thiếu2v2. Bắt đầu nativebaseline/capacity/power của4slot và mỗi owner118/159/158/broadcast/fence;
-   sau đó policy2team survivor/report/admission/rank4rows và actualnativeconsumers trước cùng4clientnormaloutcome/
-   roomreset/Ready2/Start2. Không sao chép rankAB/forfeit làm2v2normalwin, không mở thêm mode/item/map trước mốc này.
+   `NEXT-K7-FOUR-BATTLE-OUTCOME` tiếp tục, đã có [CP201 bốn owner118/159/158/baselines](PROTOCOL.md#four-owner-bombs),
+   opt-inreservation/key/slot/dedupe/fence và native4view. Không đo lại codec/room/current4stats/requestownership.
+   Tiếp source-first life127/subtype17/18/19/21/authority và rank175 consumer4rows: tối thiểuteam2v2/survivorpolicy,
+   actualnative1754memberrank/180/roomreset/Ready2/Start2, rồi cùng4clientnormaloutcome/reset. Không sao chép rankAB/
+   forfeit thànhnormal2v2win; phân biệt syntheticrankconsumer diagnostic với real ending. Không thêm mode/item/map.
    Mở rộng fourportable/restart/backpressure/rate-limit/persistence và negatives K7 sau gameplay4 ổn; giữ acceptance.
    Quyết định thứ tự: NAT/two-cycles/UDP impairment/EOF và incoming admission đã có proof; tiếp gameplay
    bốn client sau CP200room/load/input, chưa nghiệm thu K7. K6c vẫn cần endpoint Internet do project kiểm soát và acceptance giữ nguyên,
@@ -143,7 +144,7 @@ Bảng này chỉ phân công/thứtự; acceptance/PR/bằngchứng ởissue. [
 
 | Thứ tự/scope | Issue | Trạng thái/phần còn thiếu |
 |---|---|---|
-| Hiện hành RE | [#14/KRE-005b](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/14) | K5 basic/K6a/K6b giả lập đã đạt trong scope. CP193–196 NAT/UDP delay-loss/EOF có nguồn; CP197incoming opt-in có controls; CP200fouractualsession/clock/currentmovement đã kiểm; tiếp NEXT-K7-FOUR-BATTLE-OUTCOME, audit kếCP204. K6c/K7/fullauth/authority/general variants giữ mở. |
+| Hiện hành RE | [#14/KRE-005b](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/14) | K5 basic/K6a/K6b giả lập đã đạt trong scope. CP193–196 NAT/UDP delay-loss/EOF có nguồn; CP197incoming opt-in có controls; CP201fourownerbombs đã kiểm; tiếp life/report/rank4/reset trong NEXT-K7-FOUR-BATTLE-OUTCOME, audit kếCP204. K6c/K7/fullauth/authority/general variants giữ mở. |
 | Control theo trigger/gate | [#1/KRE-001](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/1), [#2/KRE-002](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/2) | CP178 K0 originalWindowscontrol/ownership đã đủ, #1 đã đóng qua PR250; #2 giữ widerWCP/launcherconfig; K1 R2 đã đạt CP179, không lặp cold3. |
 | Codec backlog/identity hiện hành | [#3/KRE-003](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/3), [#9/KRE-005a](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/9) | Fullcodec/livebounds vàintermittentmainstartupcause cònthiếu; khônglặpprimitive/auxiliarylocale. |
 

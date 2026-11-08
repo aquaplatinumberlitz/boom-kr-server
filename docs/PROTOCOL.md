@@ -5381,6 +5381,52 @@ Serviceproductionbind/153IPvẫnhard127; private-addressshims hiện làmeasurem
 Internet/K6c/NAT/relay/fullauth/authority/generalreset/gates mở; field99IP1/subtype39 vẫnunknown.
 
 
+<a id="four-owner-bombs"></a>
+### Bốn owner bom: baseline →118→159→158 — CP201
+
+[Recipe/raw/hash/failedcontrols](evidence/peer-endpoints/README.md#cp201), [câu hỏi kế](RESEARCH.md#gap-lobby-identity-followup),
+[thứ tự](PLAN.md#current-order). **`kr_runtime/confirmed` cho bốn actualWine/copy4b/ExVillage01/Free0/epoch1**,
+không phải normaloutcome/reset2v2. Tái dùng [CP200 bốn session](#four-session-native), [stat CP031](#item-effects),
+[owner/serial159](#bomb-position), [158kind0](#bomb-cycle) và fence/capacity đã có; không nhập ID/opcode/layout VN.
+
+**Baseline native bốn slot**, cả bốn view đọc cùng giá trị tại clock; 144 securegetters được kiểm lại bằng
+hàm52A350 trong emulation riêng (không gọi hàm trong process):
+
+| Slot/role | Capacity/max | Power/max | Speed/max |
+|---|---|---|---|
+| 0/A |1/10|1/7|5/7|
+| 1/B |2/7|1/9|4/8|
+| 2/C |1/8|1/5|5/8|
+| 3/D |1/10|1/8|4/8|
+
+Đây là char/profile đã chọn; không default mọi nhân vật/mode. Request-only run bắt normalSpace từ mỗi role,
+actual118 có đúng currentkey/slot0–3/power1/serial/CRC, service khi đó reject118. Nhờ đo, D không bị gán capacity2
+của B; maxima C/D cũng không sao chép AB. Old startup failures không sửa thành positive.
+
+Opt-in `--bomb-profile` của service4 khai rõ capacities1/2/1/1, powers1 và fuse6s. `four_bomb_policy.py` là
+**design/emu_choice**, kiểm member/currentepoch/currentkey/boundslot/knownlayout/mapbounds/configuredpower,
+serial riêng từng owner, duplicate/conflict và reservation/capacity riêng. Chỉ acceptedrequest mới lấy wireID;
+EOF/roomfinish vô hiệu mọi pendingticket. Không dùng report127 làm authority, không tính wholeterrain/drops/
+chainquota/fullinventory hoặc nativepoollaw. Không khai bombprofile thì CP200reject118 giữ nguyên.
+
+Run accepted4 có một normalSpace/role, actual118 A→ID1/B→2/C→3/D→4; 159broadcast4recipients mỗi bom.
+Cả bốn nativecallback159 đọc39/39/errors0, trả entity khác0; protectedcoords khớp actual118cell×40/y+39.
+Deadline6s phát158/count1/currentID/kind0; cả bốn callback158 đọc13/13/errors0 mỗi ID. Nativeentitycreation và
+fullconsumer158 có nguồn riêng với service/capture; không encoder tự sinh làm oracle. ProbeE14360 thêm có
+nhầm EBPargument tại functionentry, **không dùng matched_confirm_entity làm proof**; raw/script giữ nguyên,
+không làm lại run chỉ để sửa probe ngoài acceptance này. Chưa chứng minh mọi damage/chain/ownerdeath.
+316servertests/207realTCPcontrols kiểm4serials/duplicates/capacityD1-B2/16×159/16×158/EOFfence; đây là kiểm code,
+không thay native. Fuse/guard/lựa chọnrank chưa là servergốc. **Life127/survivor/rank1754rows/180/reset/Ready2/
+Start2 chưa được triển khai/nghiệm thu**; không port AB rank hoặc biến selftrap/forfeit thành2v2normalending.
+
+Startup controls trước baseline: R1/R2 C SIGABRT và R3 A đi HTTPcontent→inputJSONempty→throw`expected value`.
+CP073 cache đã định danh content khác locale; chưa chứng minh mọi startupabort cùng cause. Candidatecopy8d7194fd
+thêm guard chỉ inputsize0→nativeemptyoutput/ret8, nonempty giữ originalcontinuation;5Unicornbranch/ABImodels,
+byte-exactrollback về4b. Runtimeguard thấy emptyinput/nativeoutsize0/cap15, sau đó cleanupSIGILL2260DF8;
+cacheCP181 chỉ ra trap16EA064/UninstallDWKcandidate. **Guard không giải startup tổng quát, không đưa vào service/
+recipe chính hoặc coi cleanuptrap làAPI cần bind.** Runbaselinepositive dùng original4b với coldframerprobes;
+không thấy primaryfatal/contentthrow trongrun này, rootcauseintermittent vẫnunknown. Source/4b/DB/assetsgiữ nguyên.
+
 <a id="four-session-native"></a>
 ### Bốn session KR thật: phòng/load/clock và movement — CP200
 
