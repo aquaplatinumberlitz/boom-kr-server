@@ -2000,3 +2000,29 @@ RuntimeRecipe`prepare_four_owner_bombs.py`→explicitprofile/preflight→`run_fo
 4privateprefix/netns/IP10.77.0.2–5/isobridge/Winecopy4b, normalSpace/7swait eachowner. Metadata/raw/sourcepins
 inexternalmanifestCP201; no uploadclient/patchbinary. Nativegame maytrap/death;127stillrejected/notnormalmatch.
 Next life/report/team2v2/rank4rows/native175180/reset asPLAN; no4fullmatch/K7/Internet/gateclosure.
+
+<a id="cp202"></a>
+## CP202 — cùng bốn KR Wine, hai normal2v2outcomes/reset/Start3
+
+[Contract/authority/observerlimits](../../PROTOCOL.md#four-two-team-cycles), [phần thiếu](../../RESEARCH.md#gap-lobby-identity-followup).
+Codexsolo/reviewwaived, CP201mergedPR273/74d8e301; AUD059through200/next204. Sourcefirst đọc KR report/rank/drain,
+CP201sealedraw và VNoc_e-game397–425 (locator/hash ởsource-first). Không port VNopcode/offset; không4syntheticguest.
+
+`four-life-rank-r1`: 234.290748679s/1198raw/269frozen/exit0/cleanup0; SHA`91e850556eac4e4cceb40f440dd4a9ca24fb850f7b36c4d0c094ff8716db7adb`; 1910checks/32copiednative52A350getters.
+A+Cteam0/B+Dteam1,16TCPsamechannels/4prefix/4netns/4independentIP/Winecopy4b/ExVillage01/Free0.
+R1A/CnormalSpace→118159158→17/19actual→threepeer170→B/Dfresh21→1754rows/180/reset;
+R2B/DnormalSpace→samepath→A/Cwin; actualReady2Start2/Ready3Start3/3clocks/view/keys12345–12347.
+Nativepre175statesall4view[1,0,1,0]then[0,1,0,1], ranks[2,1,2,1]then[1,2,1,2];175562outer/552inner,
+1803/errors0; screenshots four-rank-r1/r2 allroles androomreset/Start3 pinned. Copiednative175parsers consume16slots,
+nosemanticendpoints modeled; runtimeconsumer independent.32protectedlifewrappers rechecked52A350inUnicornseparate.
+
+323server/230realTCP/12bundleexport/43checkpointtests; realTCPcurrentteam/death-before17/3recipients/duplicate21/
+Start2newkey/clear99/life/cursorpersistent/EOFpendingC controls. InitialrealTCP metadataassert failed because send()
+returns no recipientrole; production adapter now recordsrole explicitly, retainedfailedlog/source. Notruntimefailure.
+GDBPeerFinish170cursor0 afterreturnnotfull170parseproof; protectedstates did change56→1/175prestatesmatch;175180
+have independent in-function fullcursors. Newrecipefixes oldE14360ESPentryarg without rewritingCP201raw.
+
+Recipe `prepare_four_life_rank.py`→preflight→`run_four_life_rank.py`→ownedcleanup→seal; frozen server/tools/inputcopies
+inruntime-source. Opt-in `--battle-outcome` requiresbombprofile; defaulttwo/4baseline unaffected. Rank/settle/teamrule/
+zeroeconomy/fuse aredesign, not recovered serverauth. No4item/terrain/rescue/needle/Internet/K7acceptance.
+Nextguarddeadowner118/malformed/stale, then fourportable/hardening asPLAN; no repeatedreport/rank/codecRE.

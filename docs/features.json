@@ -1,7 +1,7 @@
 {
   "schema": "kre-feature-index-v1",
   "build": "KR00967",
-  "as_of": "CP201",
+  "as_of": "CP202",
   "sources": {
     "plan": "docs/PLAN.md",
     "contract": "docs/PROTOCOL.md",
@@ -1804,7 +1804,8 @@
           "docs/PROTOCOL.md#a-c-basic-cycles",
           "docs/evidence/peer-endpoints/README.md#cp176",
           "docs/PROTOCOL.md#current-basic-cycles-291",
-          "docs/PROTOCOL.md#four-owner-bombs"
+          "docs/PROTOCOL.md#four-owner-bombs",
+          "docs/PROTOCOL.md#four-two-team-cycles"
         ]
       },
       "coverage": {
@@ -1878,7 +1879,8 @@
               "docs/PROTOCOL.md#a-c-basic-cycles",
               "docs/evidence/peer-endpoints/README.md#cp176",
               "docs/PROTOCOL.md#current-basic-cycles-291",
-              "docs/PROTOCOL.md#four-owner-bombs"
+              "docs/PROTOCOL.md#four-owner-bombs",
+              "docs/PROTOCOL.md#four-two-team-cycles"
             ]
           },
           "windows_original": {
@@ -2689,7 +2691,8 @@
           "docs/evidence/peer-endpoints/README.md#cp171",
           "docs/evidence/peer-endpoints/README.md#cp172",
           "docs/PROTOCOL.md#current-basic-cycles-291",
-          "docs/PROTOCOL.md#current-basic-contest-reset"
+          "docs/PROTOCOL.md#current-basic-contest-reset",
+          "docs/PROTOCOL.md#four-two-team-cycles"
         ]
       },
       "coverage": {
@@ -2761,7 +2764,8 @@
               "docs/evidence/peer-endpoints/README.md#cp171",
               "docs/evidence/peer-endpoints/README.md#cp172",
               "docs/PROTOCOL.md#current-basic-cycles-291",
-              "docs/PROTOCOL.md#current-basic-contest-reset"
+              "docs/PROTOCOL.md#current-basic-contest-reset",
+              "docs/PROTOCOL.md#four-two-team-cycles"
             ]
           },
           "windows_original": {
@@ -3415,7 +3419,8 @@
           "docs/evidence/peer-endpoints/README.md#cp176",
           "docs/PROTOCOL.md#current-basic-cycles-291",
           "docs/PROTOCOL.md#current-basic-contest-reset",
-          "docs/PROTOCOL.md#emulated-lan-acceptance"
+          "docs/PROTOCOL.md#emulated-lan-acceptance",
+          "docs/PROTOCOL.md#four-two-team-cycles"
         ]
       },
       "coverage": {
@@ -3495,7 +3500,8 @@
               "docs/evidence/peer-endpoints/README.md#cp176",
               "docs/PROTOCOL.md#current-basic-cycles-291",
               "docs/PROTOCOL.md#current-basic-contest-reset",
-              "docs/PROTOCOL.md#emulated-lan-acceptance"
+              "docs/PROTOCOL.md#emulated-lan-acceptance",
+              "docs/PROTOCOL.md#four-two-team-cycles"
             ]
           },
           "windows_original": {
@@ -3523,7 +3529,9 @@
             "docs/PROTOCOL.md#result-freshness-guard",
             "server/test_result_freshness.py",
             "docs/PROTOCOL.md#drained-result-local-clear",
-            "docs/PROTOCOL.md#peer21-ending-order"
+            "docs/PROTOCOL.md#peer21-ending-order",
+            "server/four_battle_policy.py",
+            "server/test_four_battle_policy.py"
           ],
           "delivery": "via_pr"
         },
@@ -3660,7 +3668,8 @@
           "docs/PROTOCOL.md#current-basic-cycles-291",
           "docs/PROTOCOL.md#current-basic-contest-reset",
           "docs/PROTOCOL.md#emulated-lan-acceptance",
-          "docs/PROTOCOL.md#routed-Wine-network"
+          "docs/PROTOCOL.md#routed-Wine-network",
+          "docs/PROTOCOL.md#four-two-team-cycles"
         ]
       },
       "coverage": {
@@ -3763,7 +3772,8 @@
               "docs/PROTOCOL.md#current-basic-cycles-291",
               "docs/PROTOCOL.md#current-basic-contest-reset",
               "docs/PROTOCOL.md#emulated-lan-acceptance",
-              "docs/PROTOCOL.md#routed-Wine-network"
+              "docs/PROTOCOL.md#routed-Wine-network",
+              "docs/PROTOCOL.md#four-two-team-cycles"
             ]
           },
           "windows_original": {
@@ -3798,7 +3808,9 @@
             "docs/PROTOCOL.md#loading-timeout-positive",
             "docs/PROTOCOL.md#current-team-mode",
             "server/room_team_mode.py",
-            "server/test_room_team_mode.py"
+            "server/test_room_team_mode.py",
+            "server/four_battle_policy.py",
+            "server/test_four_battle_policy.py"
           ],
           "delivery": "via_pr"
         },
@@ -4243,7 +4255,8 @@
           "docs/PROTOCOL.md#operator-incoming-binding",
           "docs/PROTOCOL.md#native-interleaved-startup",
           "docs/PROTOCOL.md#four-session-native",
-          "docs/PROTOCOL.md#four-owner-bombs"
+          "docs/PROTOCOL.md#four-owner-bombs",
+          "docs/PROTOCOL.md#four-two-team-cycles"
         ]
       },
       "coverage": {
@@ -4405,7 +4418,8 @@
               "docs/PROTOCOL.md#emulated-lan-acceptance",
               "docs/PROTOCOL.md#routed-Wine-network",
               "docs/PROTOCOL.md#four-session-native",
-              "docs/PROTOCOL.md#four-owner-bombs"
+              "docs/PROTOCOL.md#four-owner-bombs",
+              "docs/PROTOCOL.md#four-two-team-cycles"
             ]
           },
           "windows_original": {
@@ -4511,7 +4525,9 @@
             "tools/test_probe_bundle.py",
             "server/four_player_profile.py",
             "server/four_player_service.py",
-            "server/test_four_player_service.py"
+            "server/test_four_player_service.py",
+            "server/four_battle_policy.py",
+            "server/test_four_battle_policy.py"
           ]
         },
         "integration": {
@@ -4656,7 +4672,8 @@
           "docs/PROTOCOL.md#native-interleaved-startup",
           "docs/PROTOCOL.md#four-slot-native-consumers",
           "docs/PROTOCOL.md#four-session-native",
-          "docs/PROTOCOL.md#four-owner-bombs"
+          "docs/PROTOCOL.md#four-owner-bombs",
+          "docs/PROTOCOL.md#four-two-team-cycles"
         ]
       },
       "coverage": {
@@ -4685,7 +4702,8 @@
               "docs/PROTOCOL.md#udp-netem-cycles",
               "docs/PROTOCOL.md#four-slot-native-consumers",
               "docs/PROTOCOL.md#four-session-native",
-              "docs/PROTOCOL.md#four-owner-bombs"
+              "docs/PROTOCOL.md#four-owner-bombs",
+              "docs/PROTOCOL.md#four-two-team-cycles"
             ]
           },
           "windows_original": {
