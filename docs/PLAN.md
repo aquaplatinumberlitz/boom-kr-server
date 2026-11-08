@@ -1,7 +1,7 @@
 # Kế hoạch server giả lập KR 00967
 
 Nguồn chuẩn của project `boom-kr-server`; bản nhập từ plan đã được dsh1/dsh2 review tại `1eee46d`.
-CP205: ba native survivor về Room sau guestD/hostA pendingEOF, IDclear/chief/fence đã kiểm. Tiếp NEXT-K7-FOUR-HEALTH-IDENTITY rồi persistence/restart. K7/Internet mở; AUD060qua204/kế208.
+CP206: health/correlations/identitypin/19processrestart/240TCP vàcurrentnative4haioutcomes/resetStart3 đã kiểm. Tiếp NEXT-K7-FOUR-NETEM-RESTART; K7/Internet mở, AUD060qua204/kế208.
 
 
 ### Mục tiêu, baseline và phạm vi
@@ -112,10 +112,14 @@ không tạo nhánh kiểm kê wiki hoặc mở mode phụ trước K3/K4/K5/K6a
    214actualTCPnonreader/247guard/335server/16bundle vàcurrentnative4hai2v2outcomes/reset/Start3. Khôngqueuednonblocking/lawservergốc.
    `NEXT-K7-FOUR-EOF-ROOM-CLEANUP` khép scope CP205: [guestD/hostA pendingEOF→three-native180/107IDclear/Room/Bchief](PROTOCOL.md#four-member-abort-room),
    1258+1286checks/twoownedruns/pastfuse+15s/no158175.222TCP/341server; không rankAB/normalwin/3memberStart/accountresume.
-   `NEXT-K7-FOUR-HEALTH-IDENTITY` hiện hành: source-first existingstate/save/policy_sources/profile/identity→
-   run/session/room/round correlations và atomiclocalhealthsnapshot; đo startup/active/degraded/stopping/stopped,
-   giữ diagnostic source rõ. Sau đó identity persistence tối thiểu/serverrestart theoacceptanceK7;
-   freshprocess/resetbudgets không được gọi accountresume hoặc khôi phục trận. Không mở mode/item/map/REauthority dàn trải.
+   `NEXT-K7-FOUR-HEALTH-IDENTITY` khép scope CP206: [localhealth/run-session-room-round/digests/identitypin/processrestart](PROTOCOL.md#four-health-identity),
+   352server/240TCP/19twoactualprocesscontrols;67pinbundle/current4native2normaloutcomes/reset/Start3 vẫn qua2202+208checks/32getters.
+   Processrestart không là nativeaccountresume; nativefreshserver/sameidentitystore vàfourUDPimpairment cònthiếu.
+   `NEXT-K7-FOUR-NETEM-RESTART` hiện hành: source-first CP195two-UDPnetem/current4topology/CP206source-bundle-store;
+   dùng **same67pinbundle/sameidentitystore** sau stopserverCP206, freshprocess/newrunUUID/newroom/budgets/rolecounts,
+   actual4Wine2cycles/reset/Start3 dướiUDP-onlydelay40±5ms/loss5% ở4recipientinterfaces; TCPbaseline có controls/counters/capture.
+   Không gọi đây Internet/accountresume hoặc rerun wholeclientRE. Đối chiếu thủ công acceptanceK7 từknownsources/gap saucontrol;
+   K6cInternet vẫn cần endpoint do project kiểm soát, không tự giảm gatecriteria. Không mở mode/item/map/authority dàn trải.
    Bốn-player item/terrain/kim/cứu chưa tíchhợp; giữgiớihạn, không coi hai-clientproof là4playerproof.
    Quyết định thứ tự: NAT/two-cycles/UDP impairment/EOF và incoming admission đã có proof; CP202đã có gameplay2v2haioutcomes/reset/Start3; tiếp hardening
    bốn client, chưa nghiệm thu K7. K6c vẫn cần endpoint Internet do project kiểm soát và acceptance giữ nguyên,
@@ -153,7 +157,7 @@ Bảng này chỉ phân công/thứtự; acceptance/PR/bằngchứng ởissue. [
 
 | Thứ tự/scope | Issue | Trạng thái/phần còn thiếu |
 |---|---|---|
-| Hiện hành RE | [#14/KRE-005b](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/14) | K5 basic/K6a/K6b giả lập đã đạt trong scope. CP193–196 NAT/UDP delay-loss/EOF có nguồn; CP197incoming opt-in có controls; CP205guest/hostEOF ba-nativeRoom/IDclear/chief/fence đã kiểm; tiếp NEXT-K7-FOUR-HEALTH-IDENTITY, audit kếCP208. K6c/K7/fullauth/authority/general variants giữ mở. |
+| Hiện hành RE | [#14/KRE-005b](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/14) | K5 basic/K6a/K6b giả lập đã đạt trong scope. CP193–196 NAT/UDP delay-loss/EOF có nguồn; CP197incoming opt-in có controls; CP206health/identity/processrestart/current4nativepositive đã kiểm; tiếp NEXT-K7-FOUR-NETEM-RESTART, audit kếCP208. K6c/K7/fullauth/authority/general variants giữ mở. |
 | Control theo trigger/gate | [#1/KRE-001](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/1), [#2/KRE-002](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/2) | CP178 K0 originalWindowscontrol/ownership đã đủ, #1 đã đóng qua PR250; #2 giữ widerWCP/launcherconfig; K1 R2 đã đạt CP179, không lặp cold3. |
 | Codec backlog/identity hiện hành | [#3/KRE-003](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/3), [#9/KRE-005a](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/9) | Fullcodec/livebounds vàintermittentmainstartupcause cònthiếu; khônglặpprimitive/auxiliarylocale. |
 

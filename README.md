@@ -28,9 +28,14 @@ boom-kr-server/
 
 ## Tra nhanh và trạng thái hiện tại
 
+**CP206: có health/run-session-room-round ID và identity pin qua restart process; bốn KR Wine vẫn qua hai vòng 2v2/reset/Start3.**
+[Contract/giới hạn](docs/PROTOCOL.md#four-health-identity), [raw/hash](docs/evidence/peer-endpoints/README.md#cp206).
+Tiếp samebundle/sameidentitystore với server mới và UDPdelay/loss bốn peer theo PLAN. K7/Internet chưa đóng; auditCP208.
+CP205 đã merge [PR277](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/277)/`bf165f9`.
+
 **CP205: guest hoặc host rớt giữa Battle, ba client KR Wine còn lại đã về phòng; host rớt thì B nhận chủ phòng.**
 [Contract/giới hạn](docs/PROTOCOL.md#four-member-abort-room), [raw/hash](docs/evidence/peer-endpoints/README.md#cp205).
-Không rank giả hoặc nổ bom muộn; phòng vẫn fenced, chưa chơi tiếp ba người/reconnect. Tiếp health/run identity/restart
+Không rank giả hoặc nổ bom muộn; phòng vẫn fenced, chưa chơi tiếp ba người/reconnect. Tại CP205 còn health/runidentity/restart; [CP206](docs/PROTOCOL.md#four-health-identity) đã thêm controls, bước hiện hành
 trong PLAN; K7/Internet còn mở, audit kếCP208. CP204 đã merge [PR276](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/276)/`d78bc63`.
 
 **CP204: sửa recipient khi gửi lỗi và thêm giới hạn I/O/log/rate; bốn KR Wine vẫn qua hai vòng 2v2/reset/Start3 trên gói mới.**

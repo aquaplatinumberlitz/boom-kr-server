@@ -1,7 +1,7 @@
 {
   "schema": "kre-feature-index-v1",
   "build": "KR00967",
-  "as_of": "CP205",
+  "as_of": "CP206",
   "sources": {
     "plan": "docs/PLAN.md",
     "contract": "docs/PROTOCOL.md",
@@ -3681,7 +3681,8 @@
           "docs/PROTOCOL.md#four-two-team-cycles",
           "docs/PROTOCOL.md#four-portable-guards",
           "docs/PROTOCOL.md#four-transport-bounds",
-          "docs/PROTOCOL.md#four-member-abort-room"
+          "docs/PROTOCOL.md#four-member-abort-room",
+          "docs/PROTOCOL.md#four-health-identity"
         ]
       },
       "coverage": {
@@ -3788,7 +3789,8 @@
               "docs/PROTOCOL.md#four-two-team-cycles",
               "docs/PROTOCOL.md#four-portable-guards",
               "docs/PROTOCOL.md#four-transport-bounds",
-              "docs/PROTOCOL.md#four-member-abort-room"
+              "docs/PROTOCOL.md#four-member-abort-room",
+              "docs/PROTOCOL.md#four-health-identity"
             ]
           },
           "windows_original": {
@@ -3826,7 +3828,8 @@
             "server/test_room_team_mode.py",
             "server/four_battle_policy.py",
             "server/test_four_battle_policy.py",
-            "docs/PROTOCOL.md#four-member-abort-room"
+            "docs/PROTOCOL.md#four-member-abort-room",
+            "docs/PROTOCOL.md#four-health-identity"
           ],
           "delivery": "via_pr"
         },
@@ -3879,7 +3882,8 @@
             "docs/PROTOCOL.md#emulated-lan-acceptance",
             "docs/PROTOCOL.md#routed-Wine-network",
             "docs/PROTOCOL.md#four-transport-bounds",
-            "docs/PROTOCOL.md#four-member-abort-room"
+            "docs/PROTOCOL.md#four-member-abort-room",
+            "docs/PROTOCOL.md#four-health-identity"
           ]
         },
         "gate": {
@@ -4703,7 +4707,8 @@
           "docs/PROTOCOL.md#four-two-team-cycles",
           "docs/PROTOCOL.md#four-portable-guards",
           "docs/PROTOCOL.md#four-transport-bounds",
-          "docs/PROTOCOL.md#four-member-abort-room"
+          "docs/PROTOCOL.md#four-member-abort-room",
+          "docs/PROTOCOL.md#four-health-identity"
         ]
       },
       "coverage": {
@@ -4736,7 +4741,8 @@
               "docs/PROTOCOL.md#four-two-team-cycles",
               "docs/PROTOCOL.md#four-portable-guards",
               "docs/PROTOCOL.md#four-transport-bounds",
-              "docs/PROTOCOL.md#four-member-abort-room"
+              "docs/PROTOCOL.md#four-member-abort-room",
+              "docs/PROTOCOL.md#four-health-identity"
             ]
           },
           "windows_original": {
@@ -4767,9 +4773,14 @@
             "server/test_four_input_limits.py",
             "server/test_four_delivery.py",
             "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/275",
-            "docs/PROTOCOL.md#four-member-abort-room"
+            "docs/PROTOCOL.md#four-member-abort-room",
+            "docs/PROTOCOL.md#four-health-identity",
+            "server/four_observability.py",
+            "server/four_identity_store.py",
+            "server/test_four_observability.py",
+            "server/test_four_identity_store.py"
           ],
-          "delivery": "via_pr"
+          "delivery": "branch_pending"
         },
         "integration": {
           "state": "partial",
@@ -4779,7 +4790,8 @@
             "docs/PROTOCOL.md#emulated-lan-acceptance",
             "docs/PROTOCOL.md#routed-Wine-network",
             "docs/PROTOCOL.md#four-transport-bounds",
-            "docs/PROTOCOL.md#four-member-abort-room"
+            "docs/PROTOCOL.md#four-member-abort-room",
+            "docs/PROTOCOL.md#four-health-identity"
           ]
         },
         "gate": {
