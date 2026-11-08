@@ -1,6 +1,6 @@
 # KR 00967 — contract tương thích client gốc
 
-Revision kr-legacy-contract-r1; cập nhật07/11/2026 JST (CP184; AUD055 periodic qua184; audit kế188).
+Revision kr-legacy-contract-r1; cập nhật08/11/2026 JST (CP204; AUD060 periodic qua204; audit kế208).
 **Contract có bằng chứng từng phần; phạm vi nghiệm thu codec/hello ở [PLAN](PLAN.md#k2-acceptance)**.
 Lộ trình và thứ tự task chỉ giữ ở [REWRITE_PLAN — KRE](PLAN.md).
 Đây là contract của repo server KR. ADR0009 của bản viết lại là nguồn lịch sử để so sánh;
@@ -111,7 +111,7 @@ XORBE16 `14A5C90` (`0xA569`) và byteXOR `14A5C80` (`0x5A`) trong image unpack c
 Các helper đạt hết miền input nhỏ và kiểm byte guard/return. Đây là snapshot helper banđầu;
 [WCP/profile0/0→2/3](#wcp), [actualframe/stream/CRC/seq/resetmodel CP057](#codec-stream-boundaries)
 và capturednativeframes phía sau có mức chứng minh riêng. Không hiểu giới hạn helper là thiếu toànbộ
-framinghiệnnay; fullmodes/prefix/live reconnect/bounds và gateK2 vẫn chưa nghiệm thu.
+framinghiệnnay; fullmodes/prefix/live reconnect/bounds vẫn mở. GateK2profile đã đạtCP181 theo PLAN, không toàngrammar.
 Review receiver ownership cũng sửa được cách gọi send guard: `13ADD10` dùng receiver từ `545E30`,
 packet nằm trên stack, nên không truy nhầm setter `packet+3C` để tìm socket/framer.
 
@@ -2063,7 +2063,7 @@ locator/trace và trạng thái từng ô; những vai trò không nêu dưới 
 
 | Hành vi | Bằng chứng theo scope đang dùng | Giới hạn/kiểm còn thiếu theo scope sử dụng |
 |---|---|---|
-| Movement | [CP188 currentAB291](#current-basic-cycles-291); [CP176 A↔C hai key](#a-c-basic-cycles); [CP159/160 production](#exported-preset-runtime):4nativepeerwindows/actualapply/target/currentprogress, nohold165/activeUDPprobe; [CP070](#current-udp-causality) giữcontrol riêng | Fullschema/auth/reliability và NAT discovery còn unknown; [NAT tĩnh/UDP delay-loss](#udp-netem-cycles) có scope riêng, không fullgrammar trước mọi demo hẹp |
+| Movement | [CP188 currentAB291](#current-basic-cycles-291); [CP176 A↔C hai key](#a-c-basic-cycles); [CP159/160 production](#exported-preset-runtime):4nativepeerwindows/actualapply/target/currentprogress, nohold165/activeUDPprobe; [CP070](#current-udp-causality) giữcontrol riêng | [Bốn-view CP200](#four-session-native) đã có currentprogress12chiều; fullschema/auth/reliability và NAT discovery còn unknown; [NAT tĩnh/UDP delay-loss](#udp-netem-cycles) có scope riêng, không fullgrammar trước mọi demo hẹp |
 | Bomb place/ID | [CP188 currentB/A/A](#current-basic-cycles-291); [CP176 C/A owners](#a-c-basic-cycles); [CP160](#exported-preset-runtime) actual118/nativeID1/A/power2,ID2/B/power1/full159158/195flagreset; [CP156](#direct-host-eof-acceptance) pendinghostEOF/fence scope riêng | Boundedrole/key/serial/quota/geometry làpolicy; actorlocation/fullauth/allpool/races unknown |
 | Explode/chain | CP033 một owner; CP064 [power1/cách hai ô](#mixed-owner-chain), CP071 [power2 ngoài tầm/feedback chưa118](#mixed-owner-power) giữ partial lịch sử; CP081 [power2/distance2 mixed-owner](#mixed-input), CP084 [ba bom fork hai vòng](#three-bomb-chain); CP094 [optional pinned terrain](#terrain-policy), CP095 [actualbox/laterfreshpair](#opposite-box-control) có native callback/195flag proof | [CP096adjacent1cell](#adjacent-owner-control) và [CP122 chain sâu](#recursive-chain) đã đo trong ca hẹp; [CP133 shared cellstate/query](#shared-cell-state) và [CP134 hai shared cycles](#shared-cascade-cycles) đã giải ca cố định; FIFO/firstbombstop/immutable tổng quát/race và authority server gốc chưa đủ |
 | Block destroy/item reveal | [CP176 A/C reveal/reset](#a-c-basic-cycles); [CP172](#hidden-cell-admission-current) optional basic export/terrain-cell142 guard; hai native cycles/reveal27/28/3effects/reset/Start3 | Chỉ bounded terrain policy; không recovered142key/auth/distance/originaldrop/generalmap. Không terrain giữ weak anycurrent158 scope cũ |
@@ -2071,7 +2071,7 @@ locator/trace và trạng thái từng ô; những vai trò không nêu dưới 
 | Trap/death | [CP188 currentAB](#current-basic-cycles-291); [CP176 A/C56→1/other0](#a-c-basic-cycles); [CP159/160](#exported-preset-runtime) strict56→1/other0beforerank2views/2epochs; [CP157natural](#current-host-ui-exit)/[CP158controlledoverwrite](#current-trap-udp-counter) giữ causal limits | Snapshot khôngglobalsametick; samekeycounterheuristic cho controlledremoteoverwrite; naturalCP157cause unknown, nofullvalidator |
 | Result/reset | [CP188 current2outcomes/Start3](#current-basic-cycles-291); [CP176 A/C2normal/Ready2](#a-c-basic-cycles); [CP171](#basic-preset-start3) optional basic export hai outcomes/reset/Ready rồi normal BStart3/native12199/clock/render; CP168 floor riêng | Không trận ba outcome; allinventory/timer/seq/peer/resetvariants/originalarbitration và gate còn mở |
 | Room lifecycle | [CP175 Cslot1](#a-survivor-admission)/[CP176 ACreset](#a-c-basic-cycles); [CP161 title](#current-room-title), [CP162 mode/return](#current-team-mode) có2normalcycles/Ready; [CP165 currentpreset](#input-batch-gating) guestBack/rejoin/2outcomes/Ready/Start3 đã đo; CP164partial giữ lịch sử. CP155–157 EOF/UI controls giữ profile riêng | [CP168](#current-mode-promoted-start3) currentmodeBhost2cycles/Ready/BStart3 đãđo; R1/R2partial vàoldwhiteframe giữriêng. Accountresume/halfclose/loss/generalreplace chưa đủ; không lấy oldprofileexit làm currentmode proof |
-| Peer lifecycle | [CP159/160](#exported-preset-runtime)actual99/153/currentdirectIPs/ports; [CP155oldUDP](#direct-oldudp-contest-eof)/[CP158samekeycounter](#current-trap-udp-counter) controls riêng | Key/counterbytekhôngauth/universalfreshness; low8wrap/reliability/fullgrammar/relay/NAT/LAN/Internet unknown |
+| Peer lifecycle | [CP159/160](#exported-preset-runtime)actual99/153/currentdirectIPs/ports; [CP155oldUDP](#direct-oldudp-contest-eof)/[CP158samekeycounter](#current-trap-udp-counter) controls riêng | Key/counterbyte khôngauth/universalfreshness; [LANgiảlập](#emulated-lan-acceptance)/[NATtĩnh](#nat-two-cycles) đã đo; low8wrap/reliability/fullgrammar/relay/NATdiscovery/Internet unknown |
 
 Trong **optional profile hiện hành**, bảng dưới ghi vai trò emulator, không gán cho server gốc.
 Giới hạn và phép đo nằm ở link contract; không dùng mỗi vai trò này làm gate acceptance.
@@ -2083,6 +2083,7 @@ Giới hạn và phép đo nằm ở link contract; không dùng mỗi vai trò 
 | [Explode158/terrain](#terrain-policy) | Timer6s của profile là emu_choice | Native158/process/chain/mapflags; service dùng bounded terrain model | Model/profile pin/kinds/power≤2/currentgeneration; semantic modelchoices có giới hạn | Service phát158 rồi commit world/release | Peer movement có thể ảnh hưởng contact/report; report142 không làm worldoracle. Original server validator/order vẫnunknown |
 | [Trap/death/result](#result-freshness-guard) | Native local simulation tạo127/subtype | Native170/175/180 nhận effect/UI | Guard key/slot/reportstate/selectedsame-oldbody; optional result freshness/drain/21 sau17 và opposite-peer170 theo [CP102](#drained-result-local-clear)/[CP103](#peer21-ending-order); firstseen/forgedforward/location vẫn thiếu | Service170/result/return theo policy | Report/body do client gửi; acceptedreport không là authoritative world proof. [Limits](#tcp-guard-cycles) và RESEARCH giữ mở |
 | [Peer endpoint/directUDP](#virtual-peer) | Native99 báoIP0/UDPport; configđo chọnIP153 | NativeWinsock/lookup/handler/actor; actualCA+wineserverNS kiểmđộc lập | Currenttuple/key/slot trongcađãđo; no fullIPauth/NAT law | Stub153traobảng; nativeUDPđi direct | IP0khớpNIC/source trongvirtualcase; IP1opaque; [CP141 cấu hình tường minh](#service-address-config) thay measurement shim; operator policy, không là NAT discovery/auth; [mapping tĩnh](#nat-two-cycles) đã kiểm riêng. Hai basic cycles không là movement gate |
+| [Four2v2 CP202–204](#four-transport-bounds) | NativeSpace/127, operatorprofile/ID/team, timer/rank theo design | Native159158/170/175180; khônginferiorfunctioncall | Currentrole/key/slot/serial/capacity/reporthistory/deadguard và transportbudgets làdesign; no originalauth/distance | Bom/rank/180 tới4; report170 tới3peer, partialfailure fence/khôngsemanticcommit | Cell/status/power/report do client gửi; không authenticatedworld. Native4twooutcomes/reset/Start3 không suy4item/terrain/kim/cứu hoặc3survivorEOFcleanup |
 | [Channel endpoint](#service-channel-endpoint) | NativeC2S5 yêu cầu redirect | KR1101EA0 nhận7 rồi nativeconnect | Service kiểm operatorIPv4/port và variant7 hẹp; không quyết định account/channel authority gốc | Service giữ raw mặc định hoặc thay typedIP/port | IP/port do operator đặt; không tin init99/identity client; rootTCPguardproxy còn riêng trong CP148 |
 
 Gate K5/K6 cần kiểm matrix và đối chứng của hành vi thực sự dùng; từ28/10 Codex tự kiểm theo miễn review của chủ dự án. Có thể giữ unknown về
@@ -5381,6 +5382,52 @@ Serviceproductionbind/153IPvẫnhard127; private-addressshims hiện làmeasurem
 Internet/K6c/NAT/relay/fullauth/authority/generalreset/gates mở; field99IP1/subtype39 vẫnunknown.
 
 
+<a id="four-transport-bounds"></a>
+### Bốn người: recipient-safe transport, giới hạn I/O/rate và nativepositive — CP204
+
+[Recipe/raw/hash/audit](evidence/peer-endpoints/README.md#cp204), [gap kế](RESEARCH.md#gap-lobby-identity-followup),
+[PLAN](PLAN.md#current-order). Reuse CP190/202/203 cùng codec/framebound65536, report17/19/21,
+4profile/47aliases/43fixtures/2v2result/reset; không RE thêm nativefunction hoặc đổi wire/clientcopy.
+
+**design/confirmed bằng source/model/realTCP:** baseline kernelqueueA32768byte sau inertfiller làm B17broadcast
+sendtimeout0,2s rồi outerrun close nhầm B. Fouradapter nay bọc accept/receive/tick bằng recipient-aware exception;
+đóng đúng recipient, fence room, không commit cursor/life của report gửi dở. Metadata giữ các recipient đã gửi,
+`peer_delivery_incomplete` và failedconnection; không rollback byte đã tới peer. ActualTCP defaulttimeout2s
+(đã đo gettimeout/restored) kết thúc khoảng2,01s: A đóng, B còn gửi một request kế được xử lý, Cpendingbom
+`round_closed`, không result phụ. Ca bổ sung218checks đọc lại48byte170 ở hai TCPdriverD/C, CRC/seq/hashkhớp; không suy nativeconsumer hoặc broadcastatomic.
+Unitcontrol bổ sung Cfail sauAdelivered vàtick158failure/pendingsecondtimer. Đây không queuednonblockingbackpressure,
+không benchmark tải/Internet hoặc proof nativeclientabortcleanup.
+
+**Budgets explicit emulator/design, không luật KR:** áp mỗi transport trong process lifetime, không reset theo Battle:
+
+| Giới hạn | Giá trị/ý nghĩa |
+|---|---|
+| C→S raw / logchunks |1MiB /4096chunks; quá giới hạn đóng đúng connection, log reason/hash thay vì append tiếp |
+| S→C attempted raw / sendcalls |2MiB /4096calls; đã attempt không hoàn quota vì kernel có thể gửi một phần |
+| Chunk và decoded-frame rate |hai bucket độc lập, burst128/refill32/s; coalesced129frames không lách chunkbucket; không minttoken khi clocklùi |
+| Admission từ source lạ/exhausted |giữ tail256 và totalcounter, không tăngevents/session/rolecounts |
+| Parser |bound65536wire có sẵn; không nâng thành fullKRgrammar hoặc mặc địnhbufferclient1MiB |
+
+Các quota hữu hạn dành demo fixed4/16transports; chạm lifetimequota cần processlifetime mới, không accountresume.
+335servertests kiểm boundary/reject0countermutation/refill/independence/partialsend/fence/coalesced129/
+tiny4097chunks/outputquota/admissiontail;214realTCPdefault2snonreader và247guard controls riêng.
+
+**Integrity bundle:** kiểm cũ chỉ các row được khai có thể verify-onlypass khi bỏ pin của một source .py còn hiện diện.
+Đối chứng copy đã giữ; launcher nay từ chối mọi server/*.py không có trong manifest trước importserver.
+16bundletests/default2controls có positive và missingpinnegative;65files của gói mới chứa thêm budgetmodule.
+Hash là integritypins, không signature/authentication.
+
+**kr_runtime/confirmed riêng normalpositive:** gói65pins/Python-I/relocated/allpolicy_sourcesinbundle,
+cùng4KRWine4b/16TCP/4netns/ExVillage01/Free0 hoàn thành hai normal2v2outcomes đổi đội thắng/175552inner562outer/
+1803/reset/actualReady2Start2/Ready3Start3. Không budget/deliveryrejection trongrun; maxobservedpertransport
+input8284bytes/99chunks/output6286bytes/64calls.32pre175securegetters kiểm lại native52A350 trongemulation riêng;
+2552checks/cleanup0/sourcefrozen. Không dùng normalpositive thay maliciousTCPnegative hoặc ngược lại.
+
+**Còn thiếu:** roomfence hiện chưa tự đưa ba nativepeer còn lại về phòng sauEOF/sendfailure/quota.
+Tiếp actual4pendingownerEOF→three-survivor180/107/slotreset/nativeUI, không cloneABrank/giả normalwin;
+sau đó health/runidentity/persistence/restart theoPLAN. Full4items/terrain/kim/cứu, accountauth/Internet/K7 vẫn mở.
+[AUD060](evidence/checkpoints/audits/AUD060.json) sửa stale currentheader/gap2v2/counter/catalog, không đónggate.
+
 <a id="four-portable-guards"></a>
 ### Guard input bốn người và bundle riêng đã chạy native — CP203
 
@@ -5413,8 +5460,7 @@ R1partial trướcBattle: C đi contentJSONthrow96A480/96A4EB/96E300,76.241s/309
 Một boundedrepeatR2 dùng byte-identicalbundle/source/copy/profile/policy, chỉ outputlabel/relocation khác đã đạt;
 không gọi đây startupfix hoặc coldreliability, không sửa copy để ép qua, không sửa R1thànhpass.
 Giới hạn4items/terrain/kim/cứu/fullauth/Internet/K7 và170Finishcursor0 giữ như CP202.
-**Blocker kế đã có modelrepro:** recipientA sendtimeout trong broadcast của B17 hiện outerrun lại closeB;
-chưa kernelbackpressureproof/fix. Tiếp đúng transportowner/bounds/rate-limit/restart/persistence/health theoPLAN,
+**Tại CP203 blocker kế còn modelrepro:** recipientA sendtimeout trong B17 lại closeB; [CP204](#four-transport-bounds) đã kiểm kernel/default2s và sửa. Khi đó chưa có kernelproof/fix. Tiếp đúng transportowner/bounds/rate-limit/restart/persistence/health theoPLAN,
 không tự đóngK7 từ bundle hoặc hai vòng native.
 
 <a id="four-two-team-cycles"></a>

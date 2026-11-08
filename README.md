@@ -28,13 +28,17 @@ boom-kr-server/
 
 ## Tra nhanh và trạng thái hiện tại
 
+**CP204: sửa recipient khi gửi lỗi và thêm giới hạn I/O/log/rate; bốn KR Wine vẫn qua hai vòng 2v2/reset/Start3 trên gói mới.**
+[Contract/giới hạn](docs/PROTOCOL.md#four-transport-bounds), [raw/hash](docs/evidence/peer-endpoints/README.md#cp204).
+Tiếp nativecleanup ba survivor khi một người rớt, rồi health/restart/identity. K7/Internet vẫn mở; AUD060qua204/kếCP208.
+
 **CP203: gói bốn người đã chạy từ thư mục chuyển chỗ và qua hai vòng 2v2/reset/Start3 bằng KR Wine.**
 [Contract/guard/giới hạn](docs/PROTOCOL.md#four-portable-guards), [cách xuất/chạy](tools/README.md#four-player-bundle).
-Guard chặn đặt bom sau accepteddeath có TCPcontrols; còn transport/backpressure/rate/restart/persistence/health/K7/Internet.
+Tại CP203: guard sau accepteddeath đã có, còn transport/rate; CP204 bổ sung phần đó. Lifecycle/restart/persistence/health/K7/Internet theo PLAN.
 
 **CP202: cùng bốn KR Wine đã hoàn thành hai vòng 2v2, hai đội lần lượt thắng, kết quả/reset và Start3.**
 [Contract/giới hạn](docs/PROTOCOL.md#four-two-team-cycles), [raw/hash](docs/evidence/peer-endpoints/README.md#cp202).
-Tại CP202 còn guard/đóng gói4; CP203 đã bổ sung. K7/Internet vẫn mở; bước tiếp transport/hardening theo PLAN. Review waived; audit kế CP204.
+Tại CP202 còn guard/đóng gói4; CP203 đã bổ sung. K7/Internet vẫn mở; bước tiếp transport/hardening theo PLAN. Review waived; tại CP202 audit kếCP204, mốc hiện hành theo CLIlatest.
 
 [Coverage và cây chức năng](docs/COVERAGE.md) trả lời: cơ chế nào hiện diện, mức RE/implementation/
 runtime nào có nguồn, còn thiếu gì và phép kiểm nào giải quyết. Mỗi ID dẫn thẳng contract/giới hạn,
@@ -111,7 +115,7 @@ CP190 đã merge [PR262](https://github.com/aquaplatinumberlitz/boom-kr-server/p
 có capture; [contract/giới hạn](docs/PROTOCOL.md#routed-Wine-network). Chưa NAT/relay/Internetgate.
 [Owner chấp nhận Wine thay Windows](docs/evidence/owner-directives/wine-accepted.json), không cần máy Windows.
 CP191 đã merge [PR263](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/263) tại`56a08dd6`.
-AUD057/058 periodic qua192/196 là lịch sử; AUD059 qua200, audit kế **CP204**. [Review waived](docs/evidence/checkpoints/review-waiver.json).
+AUD057/058/059 periodic qua192/196/200 là lịch sử; AUD060 qua204, audit kế **CP208**. [Review waived](docs/evidence/checkpoints/review-waiver.json).
 
 **CP193: đã đo đối chứng NAT trên hai KR Wine thật.** Endpoint riêng làm consumer trả0; khai báo tuple
 đã ánh xạ + DNAT khôi phục handler, key và movement hai chiều. [Contract/giới hạn](docs/PROTOCOL.md#nat-endpoint-control),
@@ -129,7 +133,7 @@ CP195 đã merge [PR267](https://github.com/aquaplatinumberlitz/boom-kr-server/p
 
 **CP196: pending B-host EOF qua NAT/UDP impairment đã kiểm A về phòng/ID clear/chief và fence bom chờ.**
 [Contract/giới hạn](docs/PROTOCOL.md#nat-netem-host-eof), [run/hash](docs/evidence/peer-endpoints/README.md#cp196).
-Run r1 partial do Python probe assertion giữ nguyên; r2 bounded probe pass. AUD058 qua196; audit kế **CP200**.
+Run r1 partial do Python probe assertion giữ nguyên; r2 bounded probe pass. Tại CP196: AUD058 qua196/audit kếCP200; mốc hiện hành theo CLIlatest.
 CP196 đã merge [PR268](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/268) tại`e842347b7cac073c6822b2251096747710abc170`; K6c Internet/K7 còn mở.
 
 **CP197: incoming admission A/B theo IP nguồn riêng đã có opt-in**, realTCP xen kẽ0wrong/8 và native
@@ -138,7 +142,7 @@ startup tuần tự vẫn qua hai trận/reset/Start3 trên bundle mới. [Contr
 
 **CP198: hai KR native startup xen kẽ A1,A2,B1,B2,A3,A4,B3,B4**, đúng role/stage/identity, đã hoàn tất
 hai normal cycles/reset/Start3 trên gói admission hiện hành. [Scope/giới hạn](docs/PROTOCOL.md#native-interleaved-startup),
-[raw/hash](docs/evidence/peer-endpoints/README.md#cp198). K6c Internet/K7/bốn client vẫn mở; audit kế CP200.
+[raw/hash](docs/evidence/peer-endpoints/README.md#cp198). Tại CP198: K6c Internet/K7/bốnclient chưa đạt, audit lúcđóCP200; currentfourproof ở CP202–204.
 
 **CP199: copy KR hiện hành đã đọc Start121/peer153 bốn slot và khởi tạo bốn actor** ở cả hai view.
 [Phạm vi](docs/PROTOCOL.md#four-slot-native-consumers), [raw/hash](docs/evidence/peer-endpoints/README.md#cp199):
@@ -149,14 +153,14 @@ Blocker chuyển sang service bốn session/identity/roster/Ready/barrier/mesh; 
 quan sát movement từ từng client ở ba client còn lại. [Phạm vi/controls](docs/PROTOCOL.md#four-session-native),
 [recipe/hash](docs/evidence/peer-endpoints/README.md#cp200). Service bốn session riêng; chưa bom/kết quả/reset2v2,
 Start2 hoặc đóng K7. CP199 đã merge [PR271](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/271)/`ae329187`.
-AUD059 quaCP200; audit định kỳ kế **CP204**. Run lỗi/header/probe/metadata giữ raw riêng, không sửa thành pass.
+Tại CP200: AUD059 qua200/kếCP204; hiện AUD060qua204/kếCP208. Run lỗi/header/probe/metadata giữ raw riêng, không sửa thành pass.
 
 **CP201: bốn owner A/B/C/D đã đặt bom và nhận confirm/nổ ở cả bốn KR Wine view.**
 [Contract/baseline/giới hạn](docs/PROTOCOL.md#four-owner-bombs), [raw/hash](docs/evidence/peer-endpoints/README.md#cp201).
 Capacity đã đo1/2/1/1, power1; native15939/39/entity và15813/13/errors0 đủ bốn bom/bốn view. Chưa kết quả/reset2v2.
 CP200 đã merge [PR272](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/272)/`cd958c95`; audit kế CP204.
 
-Đích đầu: hai client thật chơi hai trận liên tiếp; mở bốn client và hardening sau đó.
+Đích ban đầu hai client/hai trận đã đạt trong scope K5/K6a; bốn client và hardening tiếp theo PLAN.
 
 ## Bắt đầu
 

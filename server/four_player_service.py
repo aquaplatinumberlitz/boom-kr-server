@@ -5,6 +5,7 @@ and report-derived 2v2 result/reset policies have bounded Wine evidence. This is
 not account authentication, full four-player gameplay or a hardened Internet service.
 """
 import argparse
+from functools import wraps
 import hashlib
 import ipaddress
 from pathlib import Path
@@ -23,7 +24,33 @@ from server.room_team_mode import create_selector, replace_reply_selector
 from server import four_player_profile as fp
 from server.four_bomb_policy import FourBombAdmission
 from server.four_battle_policy import FourBattleReports, rank_body
+from server.four_input_limits import FourInputBudget
 import json
+
+
+class RecipientSendFailure(OSError):
+    def __init__(self, ordinal, error):
+        super().__init__(str(error))
+        self.recipient_ordinal = ordinal
+        self.cause_type = type(error).__name__
+
+
+def recipient_safe(method):
+    """Stop a failed delivery at its owner entrypoint, never blame input origin."""
+    @wraps(method)
+    def wrapped(self, *args, **kwargs):
+        try:
+            return method(self, *args, **kwargs)
+        except RecipientSendFailure as error:
+            ordinal = error.recipient_ordinal
+            event = self.connections[ordinal]['event']
+            self.state.setdefault('delivery_failures', []).append(dict(
+                source='design', recipient=event['role'], connection=ordinal,
+                input_connection=args[0] if method.__name__=='receive' else None,
+                owner_entrypoint=method.__name__, error=str(error),
+                error_type=error.cause_type, monotonic_ns=time.monotonic_ns()))
+            self.close_connection(ordinal, 'recipient_send_failed: '+str(error))
+    return wrapped
 
 
 def addresses(options):
@@ -66,6 +93,9 @@ class FourPlayerService(ProbeService):
         self.own_bodies, self.start_body, self.join_bodies = own, start, joins
         self.role_slots = {r: m['slot'] for r, m in fp.MEMBERS.items()}
         self.state['schema'] = 'kr-four-session-service-v1'
+        self.io_budget = FourInputBudget()
+        self.state['io_budget'] = dict(source='design', limits=self.io_budget.limits,
+                                       connections=self.io_budget.records)
         self.state['four_session_binding'] = dict(source='design',
             role_ips=self.source_ips, counts=self.source_counts,
             members=fp.MEMBERS, mode='four_operator_IPs_four_transports_each')
@@ -104,11 +134,22 @@ class FourPlayerService(ProbeService):
             sha256=hashlib.sha256(Path(module.__file__).read_bytes()).hexdigest())
             for module in [fp, sys.modules[FourBombAdmission.__module__],
                            sys.modules[FourBattleReports.__module__],
+                           sys.modules[FourInputBudget.__module__],
                            __import__(__name__, fromlist=['FourPlayerService'])]]
+
+    def send_raw(self, event, data):
+        reason = self.io_budget.sending(event['global_ordinal'], len(data))
+        if reason is not None:
+            raise RecipientSendFailure(event['global_ordinal'], OSError(reason))
+        try:
+            super().send_raw(event, data)
+        except OSError as error:
+            raise RecipientSendFailure(event['global_ordinal'], error) from error
 
     def reject(self, event, opcode, sequence, reason):
         self.reject_stage(event, opcode, sequence, reason)
 
+    @recipient_safe
     def accept(self, listener):
         connection, peer = listener.accept()
         role = next((r for r, ip in self.source_ips.items() if ip == peer[0]), None)
@@ -118,6 +159,8 @@ class FourPlayerService(ProbeService):
             self.state.setdefault('admission_rejections', []).append(dict(
                 source='design', peer=list(peer), role=role, reason=reason,
                 monotonic_ns=time.monotonic_ns()))
+            self.state['admission_rejections_total'] = self.state.get('admission_rejections_total', 0)+1
+            del self.state['admission_rejections'][:-256]
             connection.close()
             return
         stage = self.source_counts[role] + 1
@@ -136,11 +179,16 @@ class FourPlayerService(ProbeService):
         event['reply_sent'] = dict(monotonic_ns=time.monotonic_ns())
         self.selector.register(connection, selectors.EVENT_READ, ordinal)
 
+    @recipient_safe
     def receive(self, ordinal):
         state = self.connections[ordinal];event = state['event']
         data = state['socket'].recv(65536)
         if not data:
             self.close_connection(ordinal, 'eof')
+            return
+        reason = self.io_budget.chunk(ordinal, len(data), time.monotonic())
+        if reason is not None:
+            self.reject_input_budget(event, reason, data)
             return
         event['chunks'].append(dict(monotonic_ns=time.monotonic_ns(), hex=data.hex()))
         stage = event['reply_ordinal']
@@ -153,6 +201,10 @@ class FourPlayerService(ProbeService):
             return
         state['buffer'].extend(data)
         while (frame := codec.pop_frame(state['buffer'])) is not None:
+            reason = self.io_budget.frame(ordinal, time.monotonic())
+            if reason is not None:
+                self.reject_input_budget(event, reason, frame)
+                return
             seq = state['sequence'];body = codec.frame_body(frame, seq)
             state['sequence'] += 3
             opcode = struct.unpack_from('<I', frame, 5)[0]
@@ -174,6 +226,13 @@ class FourPlayerService(ProbeService):
                 event['redirect_response_sent'] = dict(monotonic_ns=time.monotonic_ns())
             else:
                 self.reject(event, opcode, seq, 'login_stage_or_opcode')
+
+    def reject_input_budget(self, event, reason, data):
+        self.state.setdefault('input_rejections', []).append(dict(
+            source='design', connection=event['global_ordinal'], role=event['role'],
+            reason=reason, bytes=len(data), sha256=hashlib.sha256(data).hexdigest(),
+            monotonic_ns=time.monotonic_ns()))
+        self.close_connection(event['global_ordinal'], reason)
 
     def receive_channel(self, event, frame, sequence, body):
         opcode = struct.unpack_from('<I', frame, 5)[0];role = event['role']
@@ -350,9 +409,19 @@ class FourPlayerService(ProbeService):
         report.update(prepared)
         # No self reflection: each of three current peers receives a fresh frame.
         if report['forward']:
-            report['forward170'] = [dict(role=peer['role'], **self.send(peer, 'start',
-                f"four-event170-{report['subtype']}-r{self.room.generation}",
-                opcode=170, body=payload)) for peer in self.peers() if peer is not event]
+            report['forward170'] = []
+            try:
+                for peer in self.peers():
+                    if peer is event:
+                        continue
+                    sent = self.send(peer, 'start',
+                        f"four-event170-{report['subtype']}-r{self.room.generation}",
+                        opcode=170, body=payload)
+                    report['forward170'].append(dict(role=peer['role'], **sent))
+            except RecipientSendFailure as error:
+                report['rejected'] = 'peer_delivery_incomplete'
+                report['failed_recipient_connection'] = error.recipient_ordinal
+                raise
         self.battle_reports.commit(report)
 
     def tick_outcome(self, now):
@@ -382,6 +451,7 @@ class FourPlayerService(ProbeService):
             for peer in self.peers():
                 peer.pop('guest_ready_received', None)
 
+    @recipient_safe
     def tick(self):
         now = time.monotonic_ns()
         self.tick_bombs()

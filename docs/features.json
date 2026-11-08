@@ -1,7 +1,7 @@
 {
   "schema": "kre-feature-index-v1",
   "build": "KR00967",
-  "as_of": "CP203",
+  "as_of": "CP204",
   "sources": {
     "plan": "docs/PLAN.md",
     "contract": "docs/PROTOCOL.md",
@@ -1806,7 +1806,8 @@
           "docs/PROTOCOL.md#current-basic-cycles-291",
           "docs/PROTOCOL.md#four-owner-bombs",
           "docs/PROTOCOL.md#four-two-team-cycles",
-          "docs/PROTOCOL.md#four-portable-guards"
+          "docs/PROTOCOL.md#four-portable-guards",
+          "docs/PROTOCOL.md#four-transport-bounds"
         ]
       },
       "coverage": {
@@ -1882,7 +1883,8 @@
               "docs/PROTOCOL.md#current-basic-cycles-291",
               "docs/PROTOCOL.md#four-owner-bombs",
               "docs/PROTOCOL.md#four-two-team-cycles",
-              "docs/PROTOCOL.md#four-portable-guards"
+              "docs/PROTOCOL.md#four-portable-guards",
+              "docs/PROTOCOL.md#four-transport-bounds"
             ]
           },
           "windows_original": {
@@ -1949,7 +1951,8 @@
             "docs/PROTOCOL.md#virtual-basic-cycles",
             "docs/PROTOCOL.md#a-c-basic-cycles",
             "docs/evidence/peer-endpoints/README.md#cp176",
-            "docs/PROTOCOL.md#current-basic-cycles-291"
+            "docs/PROTOCOL.md#current-basic-cycles-291",
+            "docs/PROTOCOL.md#four-transport-bounds"
           ]
         },
         "gate": {
@@ -3423,7 +3426,8 @@
           "docs/PROTOCOL.md#current-basic-cycles-291",
           "docs/PROTOCOL.md#current-basic-contest-reset",
           "docs/PROTOCOL.md#emulated-lan-acceptance",
-          "docs/PROTOCOL.md#four-two-team-cycles"
+          "docs/PROTOCOL.md#four-two-team-cycles",
+          "docs/PROTOCOL.md#four-transport-bounds"
         ]
       },
       "coverage": {
@@ -3504,7 +3508,8 @@
               "docs/PROTOCOL.md#current-basic-cycles-291",
               "docs/PROTOCOL.md#current-basic-contest-reset",
               "docs/PROTOCOL.md#emulated-lan-acceptance",
-              "docs/PROTOCOL.md#four-two-team-cycles"
+              "docs/PROTOCOL.md#four-two-team-cycles",
+              "docs/PROTOCOL.md#four-transport-bounds"
             ]
           },
           "windows_original": {
@@ -3566,7 +3571,8 @@
             "docs/evidence/peer-endpoints/README.md#cp176",
             "docs/PROTOCOL.md#current-basic-cycles-291",
             "docs/PROTOCOL.md#current-basic-contest-reset",
-            "docs/PROTOCOL.md#emulated-lan-acceptance"
+            "docs/PROTOCOL.md#emulated-lan-acceptance",
+            "docs/PROTOCOL.md#four-transport-bounds"
           ]
         },
         "gate": {
@@ -3673,7 +3679,8 @@
           "docs/PROTOCOL.md#emulated-lan-acceptance",
           "docs/PROTOCOL.md#routed-Wine-network",
           "docs/PROTOCOL.md#four-two-team-cycles",
-          "docs/PROTOCOL.md#four-portable-guards"
+          "docs/PROTOCOL.md#four-portable-guards",
+          "docs/PROTOCOL.md#four-transport-bounds"
         ]
       },
       "coverage": {
@@ -3778,7 +3785,8 @@
               "docs/PROTOCOL.md#emulated-lan-acceptance",
               "docs/PROTOCOL.md#routed-Wine-network",
               "docs/PROTOCOL.md#four-two-team-cycles",
-              "docs/PROTOCOL.md#four-portable-guards"
+              "docs/PROTOCOL.md#four-portable-guards",
+              "docs/PROTOCOL.md#four-transport-bounds"
             ]
           },
           "windows_original": {
@@ -3866,7 +3874,8 @@
             "docs/PROTOCOL.md#current-basic-cycles-291",
             "docs/PROTOCOL.md#current-basic-contest-reset",
             "docs/PROTOCOL.md#emulated-lan-acceptance",
-            "docs/PROTOCOL.md#routed-Wine-network"
+            "docs/PROTOCOL.md#routed-Wine-network",
+            "docs/PROTOCOL.md#four-transport-bounds"
           ]
         },
         "gate": {
@@ -3940,7 +3949,8 @@
           "docs/PROTOCOL.md#current-basic-cycles-291",
           "docs/PROTOCOL.md#current-basic-contest-reset",
           "docs/PROTOCOL.md#emulated-lan-acceptance",
-          "docs/PROTOCOL.md#nat-netem-host-eof"
+          "docs/PROTOCOL.md#nat-netem-host-eof",
+          "docs/PROTOCOL.md#four-transport-bounds"
         ]
       },
       "coverage": {
@@ -4009,7 +4019,8 @@
               "docs/evidence/peer-endpoints/README.md#cp177",
               "docs/PROTOCOL.md#current-basic-cycles-291",
               "docs/PROTOCOL.md#current-basic-contest-reset",
-              "docs/PROTOCOL.md#emulated-lan-acceptance"
+              "docs/PROTOCOL.md#emulated-lan-acceptance",
+              "docs/PROTOCOL.md#four-transport-bounds"
             ]
           },
           "windows_original": {
@@ -4090,7 +4101,8 @@
             "docs/evidence/peer-endpoints/README.md#cp177",
             "docs/PROTOCOL.md#current-basic-cycles-291",
             "docs/PROTOCOL.md#current-basic-contest-reset",
-            "docs/PROTOCOL.md#emulated-lan-acceptance"
+            "docs/PROTOCOL.md#emulated-lan-acceptance",
+            "docs/PROTOCOL.md#four-transport-bounds"
           ]
         },
         "gate": {
@@ -4262,7 +4274,8 @@
           "docs/PROTOCOL.md#four-session-native",
           "docs/PROTOCOL.md#four-owner-bombs",
           "docs/PROTOCOL.md#four-two-team-cycles",
-          "docs/PROTOCOL.md#four-portable-guards"
+          "docs/PROTOCOL.md#four-portable-guards",
+          "docs/PROTOCOL.md#four-transport-bounds"
         ]
       },
       "coverage": {
@@ -4426,7 +4439,8 @@
               "docs/PROTOCOL.md#four-session-native",
               "docs/PROTOCOL.md#four-owner-bombs",
               "docs/PROTOCOL.md#four-two-team-cycles",
-              "docs/PROTOCOL.md#four-portable-guards"
+              "docs/PROTOCOL.md#four-portable-guards",
+              "docs/PROTOCOL.md#four-transport-bounds"
             ]
           },
           "windows_original": {
@@ -4628,7 +4642,8 @@
             "docs/evidence/peer-endpoints/README.md#cp177",
             "docs/PROTOCOL.md#portable-probe-bundle",
             "docs/PROTOCOL.md#emulated-lan-acceptance",
-            "docs/PROTOCOL.md#routed-Wine-network"
+            "docs/PROTOCOL.md#routed-Wine-network",
+            "docs/PROTOCOL.md#four-transport-bounds"
           ]
         },
         "gate": {
@@ -4682,7 +4697,8 @@
           "docs/PROTOCOL.md#four-session-native",
           "docs/PROTOCOL.md#four-owner-bombs",
           "docs/PROTOCOL.md#four-two-team-cycles",
-          "docs/PROTOCOL.md#four-portable-guards"
+          "docs/PROTOCOL.md#four-portable-guards",
+          "docs/PROTOCOL.md#four-transport-bounds"
         ]
       },
       "coverage": {
@@ -4713,7 +4729,8 @@
               "docs/PROTOCOL.md#four-session-native",
               "docs/PROTOCOL.md#four-owner-bombs",
               "docs/PROTOCOL.md#four-two-team-cycles",
-              "docs/PROTOCOL.md#four-portable-guards"
+              "docs/PROTOCOL.md#four-portable-guards",
+              "docs/PROTOCOL.md#four-transport-bounds"
             ]
           },
           "windows_original": {
@@ -4721,8 +4738,11 @@
             "refs": []
           },
           "lan": {
-            "state": "unknown",
-            "refs": []
+            "state": "observed",
+            "refs": [
+              "docs/PROTOCOL.md#four-transport-bounds",
+              "docs/evidence/owner-directives/emulated-lan.json"
+            ]
           },
           "internet": {
             "state": "unknown",
@@ -4730,23 +4750,28 @@
           }
         },
         "implementation": {
-          "state": "unknown",
+          "state": "partial",
           "refs": [
             "tools/export_probe_profile.py",
             "tools/probe_bundle.py",
             "tools/test_probe_bundle.py",
             "server/profiles/four-client-battle.json",
-            "tools/test_four_bundle.py"
+            "tools/test_four_bundle.py",
+            "server/four_input_limits.py",
+            "server/test_four_input_limits.py",
+            "server/test_four_delivery.py",
+            "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/275"
           ],
-          "delivery": "unknown"
+          "delivery": "via_pr"
         },
         "integration": {
-          "state": "unknown",
+          "state": "partial",
           "refs": [
             "docs/evidence/firstseen-admission/README.md",
             "docs/PROTOCOL.md#portable-probe-bundle",
             "docs/PROTOCOL.md#emulated-lan-acceptance",
-            "docs/PROTOCOL.md#routed-Wine-network"
+            "docs/PROTOCOL.md#routed-Wine-network",
+            "docs/PROTOCOL.md#four-transport-bounds"
           ]
         },
         "gate": {

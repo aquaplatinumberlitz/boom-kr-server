@@ -1,0 +1,129 @@
+{
+  "id": "AUD060",
+  "trigger": "periodic",
+  "completed_through": "CP204",
+  "recorded_utc": "2026-11-08T02:09:58.614534+00:00",
+  "auditor": "Codex manual self-audit; independent review waived",
+  "read_files": [
+    "README.md",
+    "docs/PLAN.md",
+    "docs/PROTOCOL.md",
+    "docs/RESEARCH.md",
+    "docs/evidence/peer-endpoints/README.md",
+    "docs/features.json",
+    "docs/COVERAGE.md",
+    "tools/README.md",
+    "AGENTS.md",
+    "docs/evidence/checkpoints/README.md",
+    "docs/evidence/checkpoints/audits/AUD059.json",
+    "server/four_player_service.py",
+    "server/four_input_limits.py",
+    "server/four_battle_policy.py",
+    "server/test_four_delivery.py",
+    "server/test_four_input_limits.py",
+    "tools/probe_bundle.py",
+    "tools/test_four_bundle.py",
+    "local/research/codex/four-owner-bombs-r1/verification.json",
+    "local/research/codex/four-life-rank-r1/verification.json",
+    "local/research/codex/four-portable-r1/raw-seal.json",
+    "local/research/codex/four-portable-r2/verification.json",
+    "local/research/codex/four-backpressure-r1/before-verification.json",
+    "local/research/codex/four-backpressure-r3-before/verification.json",
+    "local/research/codex/four-backpressure-r4-default/verification.json",
+    "local/research/codex/four-backpressure-r2/report-field-clarification.json",
+    "local/research/codex/four-transport-bounds-r1/delivery-tcp-verification.json",
+    "local/research/codex/four-transport-bounds-r1/guard-tcp-verification.json",
+    "local/research/codex/four-transport-bounds-r1/unlisted-source-before.json",
+    "local/research/codex/four-transport-bounds-r1/verification.json",
+    "local/research/codex/four-transport-bounds-r1/getter-verification.json",
+    "local/research/codex/four-transport-bounds-r1/raw-seal.json",
+    "local/research/codex/four-transport-bounds-r1/cycles/run.json",
+    "local/research/codex/four-transport-bounds-r1/cycles/service-state.json",
+    "local/research/codex/four-transport-bounds-r1/cycles/B/four-rank-r1.png",
+    "local/research/codex/four-transport-bounds-r1/cycles/A/four-rank-r2.png",
+    "local/research/codex/cp203-exact-head-results.json",
+    "local/research/codex/cp203-pr-merged.json",
+    "local/research/codex/four-transport-partial-read-r1/verification.json"
+  ],
+  "method": "ManualREADMEentire→PLANcurrent-order/gateacceptance/history(tableandsoloowner)→PROTOCOLidentity/reuse/authority/fourCP200204/bundle190andrelatedlegacycontracts→RESEARCHentire(currentgapversushistory)→catalog/evidenceCP199204/currentraw/source/tests/nativecallbacks/actualrankimages. Targetedcurrentstateaudit, notline-by-linere-auditall7268historicalPROTOCOLlines. Comparedsource/runtime/current4hash/profile/inputfreeze/seal/IDs/keys/nativefull175180/protectedlifeandactualB1/A2four-namedranks. Comparedkernelqueue/actualbeforeafter/default2snonreaderandpartialsend withsourcepolicy; no scriptasmanualaudit/no counter-basedgateclosure. Immutablehistory/raw remain untouched; nextperiodic208.",
+  "findings": [
+    {
+      "id": "F1",
+      "stale": "GlobalPROTOCOLheaderstillCP184/AUD055/next188 althoughcurrent4nativeCP201203exists.",
+      "correction": "UpdatedCP204/AUD060/next208; historicalCPsectionsremainunchangedinscope.",
+      "fixed_in": [
+        "docs/PROTOCOL.md"
+      ]
+    },
+    {
+      "id": "F2",
+      "stale": "CurrentPLANtablelabelCP200/#14scope177 andoldtasklistclaimedclosed#1active; READMEoldCP196/198audit200unqualified.",
+      "correction": "Currenttable/epic/oldtasklist+historicalauditlabelsclarified; onlycurrent-orderownsnext3survivorEOFcleanup.",
+      "fixed_in": [
+        "docs/PLAN.md",
+        "README.md"
+      ]
+    },
+    {
+      "id": "F3",
+      "stale": "RESEARCHcurrentKR-X001/X002/S002stillmissing4rank/reset/Start2andNEXTFOURBATTLEOUTCOMEactiveafterCP202203.",
+      "correction": "Replacedwithlinks4normal2v2/resetproof/transportbounds; currentgap3survivorEOFroomrecovery/health/restart/identity. No schema-checkertosemanticallyclosetask.",
+      "fixed_in": [
+        "docs/RESEARCH.md",
+        "docs/COVERAGE.md"
+      ]
+    },
+    {
+      "id": "F4",
+      "stale": "KR-S002implementation/integrationunknown despiteexistingportable4/nativecurrentproof.",
+      "correction": "Markpartial/viaPR275andpartialintegration, LANobservedonlyowner-acceptedvirtualhosts; K7/Internetstillopen. Addedlinksnotduplicatecontract.",
+      "fixed_in": [
+        "docs/features.json",
+        "docs/COVERAGE.md"
+      ]
+    },
+    {
+      "id": "F5",
+      "stale": "AuthoritytableblanketNAT/LANunknown/current4profilemissing, earlyhelpertextstillcalledK2unaccepted.",
+      "correction": "LinkmeasuredLAN/staticNATandfour2v2creator/simulator/validator/broadcaster/peereditable/limits; K2profileCP181scopeclarified. Fullauth/discovery/grammarstillunknown.",
+      "fixed_in": [
+        "docs/PROTOCOL.md"
+      ]
+    },
+    {
+      "id": "F6",
+      "stale": "Runtime/model/TCPclaimsneedseparation: 170Finishcursor0, default2snonreader, partial170DCdelivery, candidatefirsttestexpectedemptyforwardlist.",
+      "correction": "Keptrawfailures/correctexpectation; markedpartialwireunrollbackable/no semanticcommit; oneBfollowupafterfailure(2includestrigger+followup), native4normalpositive and32copiedgettersseparate. Nooriginalauthority/nonblocking/load/K7claim. Additional218realTCPchecksread48bytes170onD/CwithCRC/seq/hash, notnativeconsumerproof.",
+      "fixed_in": [
+        "docs/PROTOCOL.md",
+        "docs/evidence/peer-endpoints/README.md"
+      ]
+    },
+    {
+      "id": "F7",
+      "stale": "Bundleverify-onlycouldacceptunlistedserverPythonaftermanifestrowdeletion.",
+      "correction": "Controlledbeforecopykept; launcherrequiresallpresentserverPythonpinsbeforeimport; 16tests/new65pins/nativepositive. Integritynotauth/signature.",
+      "fixed_in": [
+        "tools/probe_bundle.py",
+        "tools/test_four_bundle.py",
+        "docs/PROTOCOL.md"
+      ]
+    },
+    {
+      "id": "F8",
+      "stale": "Serverroomfenceisnotnativepeerroomcleanup; fouritems/terrain/kim/cuuandstartupcontentcauseunresolved.",
+      "correction": "Noupgradegate/EOFnativeclaim: moveactualpendingD EOF/three-survivor180/107/UIroomnext; health/restart/identitylater. PreserveR1startupfailedversusboundedpositive.",
+      "fixed_in": [
+        "docs/PLAN.md",
+        "docs/RESEARCH.md",
+        "docs/PROTOCOL.md"
+      ]
+    }
+  ],
+  "remaining": [
+    "ThreeactualnativepeershavenotreturnedtoRoomafterfourmemberEOF/sendfail/quota; nextpendingD EOF/1803/107ID4clear/UIroom/no late158, notnormalwin.",
+    "Health/runidentity/identitypersistence/serverrestart/currentfourroomrecovery andK7/Internetacceptanceremainopen.",
+    "Noqueuednonblockingbackpressure/loadbenchmark/originalKRrate-law/accountauth/generalresume; fixedlifetimebudgetsareemulatorpolicy.",
+    "Current4nativeproofdoesnotinclude4items/terrain/rescue/needle/8actualclients; bootstrapcontentstartuprootcauseunknown, oldR1partialsnotcorrectedtopass."
+  ]
+}

@@ -1,7 +1,7 @@
 # Kế hoạch server giả lập KR 00967
 
 Nguồn chuẩn của project `boom-kr-server`; bản nhập từ plan đã được dsh1/dsh2 review tại `1eee46d`.
-CP203: deadowner118guard/247TCP vàfourportable/64pins/47aliases/actual4hai2v2outcomes/reset/Start3 đã kiểm. Tiếp recipienttimeoutattribution/bounds/backpressure/rate/restart/persistence/health. K7/Internet mở; AUD059qua200/auditCP204.
+CP204: recipient-safe kernel/default2s/IO-log-ratebudgets vàcurrent4native2v2haioutcomes/reset/Start3 đã kiểm. Tiếp native3survivorEOFroomcleanup rồihealth/restart/identity. K7/Internet mở; AUD060qua204/kế208.
 
 
 ### Mục tiêu, baseline và phạm vi
@@ -37,13 +37,13 @@ với client Rust không chứng minh có thể điều khiển client KR bằng
 
 ### Tiến độ hiện hành theo bằng chứng
 
-| Task/mốc | Trạng thái tại CP200 | Nguồn chuẩn |
+| Task/mốc | Trạng thái theo nguồn dẫn, cập nhậtCP204 | Nguồn chuẩn |
 |---|---|---|
 | KRE-004/issue6 | Đã review/merge PR7 và đóng issue:recipe r1 đến local accept;không phải full K1 | [Wine r1](evidence/wine/README.md) |
 | Bootstrap reply | PR8 đã merge;debugger ProcessPatchreturn1,không ép success | [bootstrap evidence](evidence/bootstrap-wire/README.md) |
 | KRE-005a/issue9,R2 | PR10 đã merge:3 cold start cửa sổ/second accept;issue9 còn mở | [R2 evidence](evidence/wine-r2/README.md) |
 | WCP hai-reply | Run CP001 là lịch sử chưa C→S; CP006 đã đo request đầu trên copy tham số hóa | [PROTOCOL](PROTOCOL.md#wcp),[WCP evidence](evidence/wcp/README.md) |
-| KRE-005b/issue14 | CP006–176 và PR248 đã merge; CP177 optional replacement preset/C0-C1 capacity/actual118/native159158 có nguồn; task hiện hành ở current-order; fullauth/authority/fullmatch/gates và gaps giữ mở | [Q-023](RESEARCH.md#q-023), [service](evidence/probe-service/README.md) |
+| KRE-005b/issue14 | CP202same4normal2v2/reset, CP203portable4/deadowner guard đã merge; CP204recipient-safe/boundedIO currentnativepositive. Fullauth/authority/K6c/K7 và phần ngoài scope giữ mở; task ở current-order | [Q-023](RESEARCH.md#q-023), [service](evidence/probe-service/README.md) |
 | K0 | Đã nghiệm thu identity/harness tại CP178: originalWindowsVM fullfixedcopy/PID/token/cwd/window/ETW/isolation/cleanup; không bootstrap/gameplay success | [Acceptance](#k0-k2a-acceptance) |
 | K1 | Đạt CP179 cho recipe offline R2: 3 coldstart/API đúng PID/contract/patch controls; không e9cold3 hoặc originalWindows bootstrap | [Acceptance](#k1-acceptance) |
 | K2a/K2 | K2a đạt CP178; K2 đạt profileoffline CP181 với native sameprocessretry/reset/cursor/stream và boundednativeoracles. Không toàncodec/accountauthority | [Acceptance](#k2-acceptance),[contract](PROTOCOL.md#login-retry-codec) |
@@ -52,7 +52,7 @@ với client Rust không chứng minh có thể điều khiển client KR bằng
 | K5 | Basic local đạt CP188; current2cycles/peer/Bowner/EOFcontrol riêng, designauthority được rà. Không fullinventory/mode/map | [Nghiệm thu](#k5-acceptance) |
 | K6a | Local hai actualAB/basic/cùnghost đạt CP189; nativecontestedindex/reset/life và CP188peer/Bowner/EOF cóscope riêng. Không physicalLAN/Internet | [Nghiệm thu](#k6a-acceptance) |
 | K6b | Đạt CP191 cho LANgiảlập hai netns/IP/NIC/actualKR theo owner; physicaltwohosts không required | [Nghiệm thu](#k6b-acceptance) |
-| K6c/K7 | CP195 actualKR hai vòng/reset/Start3 qua NAT+UDP delay/loss đã đo; chưa NAT discovery/relay gốc/Internetgate; K7 bốn actualclient/hardening cònmở. K6a vàK6bgiảlập giữscopeđạt theoowner | [Current-order](#current-order), [authority](PROTOCOL.md#authority), [gap](RESEARCH.md#gap-lobby-identity-followup) |
+| K6c/K7 | CP195 actualKR hai vòng/reset/Start3 qua NAT+UDP delay/loss đã đo; chưa NAT discovery/relay gốc/Internetgate; CP202–204 bốnactual2v2/bundle/bounds có nguồn; K7 còn nativeEOFcleanup/health/restart/identity và dependencyInternet. K6a vàK6bgiảlập giữscopeđạt theoowner | [Current-order](#current-order), [authority](PROTOCOL.md#authority), [gap](RESEARCH.md#gap-lobby-identity-followup) |
 
 <a id="current-order"></a>
 ### Thứ tự công việc hiện hành
@@ -108,18 +108,20 @@ không tạo nhánh kiểm kê wiki hoặc mở mode phụ trước K3/K4/K5/K6a
    247realTCPcontrols/325servertests; không còn gapđặtbomaccepteddead củaCP202. Genericfullauth/stale vẫnngoàiphạmvi.
    `NEXT-K7-FOUR-PORTABLE` khép scope CP203: same4profile/preset47aliases/64hashpins/relocation/Python-I,
    actual4normal2v2haioutcomes/reset/Start3 trênbundleR2; R1knownCstartupcontentpartial giữriêng, khôngstartupfix.
-   `NEXT-K7-FOUR-TRANSPORT-HARDENING` hiện hành: recipientA sendtimeout trong B17 hiện closeB trong modelrepro;
-   kiểm đúng recipient/partiallysentbroadcast/no semanticcommit/fence và realTCPnonreader, không quy lỗi sai origin hoặc crash toànservice.
-   Tiếp boundedbuffer/log/frame/rate controls, log-health và serverrestart/persistenceidentity theo acceptanceK7;
-   nativecurrentpositive trên bảnservice/gói mới nếu đổi đường đang dùng. Không mở mode/item/map/REauthoritydàntrải.
+   `NEXT-K7-FOUR-TRANSPORT-HARDENING` khép scope CP204: [recipient-safe/default2s/partialreportfence/IO-log-ratebudgets](PROTOCOL.md#four-transport-bounds),
+   214actualTCPnonreader/247guard/335server/16bundle vàcurrentnative4hai2v2outcomes/reset/Start3. Khôngqueuednonblocking/lawservergốc.
+   `NEXT-K7-FOUR-EOF-ROOM-CLEANUP` hiện hành: roomfence đủ ởserver nhưng ba client còn Battle khi memberEOF;
+   reuse known180/107/110/CP022/034/174/196, kiểm pendingownerD actualEOF→no late158/three-native180full/ID4clear/UIroom.
+   Không tự chọn rankAB hoặc gọiabortlànormal2v2win. HostEOF/generalresume chỉ mở theo delta sau guestcontrol.
+   Sau đóhealth/runidentity/identitypersistence/serverrestart theoacceptanceK7; không mở mode/item/map/REauthoritydàntrải.
    Bốn-player item/terrain/kim/cứu chưa tíchhợp; giữgiớihạn, không coi hai-clientproof là4playerproof.
    Quyết định thứ tự: NAT/two-cycles/UDP impairment/EOF và incoming admission đã có proof; CP202đã có gameplay2v2haioutcomes/reset/Start3; tiếp hardening
    bốn client, chưa nghiệm thu K7. K6c vẫn cần endpoint Internet do project kiểm soát và acceptance giữ nguyên,
    không dùng mô phỏng để tự đóng gate hoặc thêm các biến thể NAT không có blocker.
-   AUD059 periodic qua200; audit thủ công kế CP204, không reset counter.
+   AUD060 periodic qua204; audit thủ công kế CP208, không reset counter.
    Wine thay Windows và LAN giả lập theo [directive](evidence/owner-directives/wine-accepted.json);
    [#14](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/14) tiếp tục mở.
-   <!-- active-issue: 14 --> AUD059 qua200, audit kế **CP204**.
+   <!-- active-issue: 14 --> AUD060 qua204, audit kế **CP208**.
 
 2. **KR-B003/KR-F006 — nợ có giới hạn:** [CP057](PROTOCOL.md#codec-stream-boundaries) đã đo stream/
    seq/bounds trong model, không mở lại76split hoặc cấp buffer lớn chỉ để vượt allocationguardFFFFFFFF.
@@ -149,7 +151,7 @@ Bảng này chỉ phân công/thứtự; acceptance/PR/bằngchứng ởissue. [
 
 | Thứ tự/scope | Issue | Trạng thái/phần còn thiếu |
 |---|---|---|
-| Hiện hành RE | [#14/KRE-005b](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/14) | K5 basic/K6a/K6b giả lập đã đạt trong scope. CP193–196 NAT/UDP delay-loss/EOF có nguồn; CP197incoming opt-in có controls; CP203guard/relocatedfourbundle/native2v2haioutcomes/reset/Start3 đã kiểm; tiếp NEXT-K7-FOUR-TRANSPORT-HARDENING, audit kếCP204. K6c/K7/fullauth/authority/general variants giữ mở. |
+| Hiện hành RE | [#14/KRE-005b](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/14) | K5 basic/K6a/K6b giả lập đã đạt trong scope. CP193–196 NAT/UDP delay-loss/EOF có nguồn; CP197incoming opt-in có controls; CP204recipient-safe/bounds/current4native2v2 đã kiểm; tiếp NEXT-K7-FOUR-EOF-ROOM-CLEANUP, audit kếCP208. K6c/K7/fullauth/authority/general variants giữ mở. |
 | Control theo trigger/gate | [#1/KRE-001](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/1), [#2/KRE-002](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/2) | CP178 K0 originalWindowscontrol/ownership đã đủ, #1 đã đóng qua PR250; #2 giữ widerWCP/launcherconfig; K1 R2 đã đạt CP179, không lặp cold3. |
 | Codec backlog/identity hiện hành | [#3/KRE-003](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/3), [#9/KRE-005a](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/9) | Fullcodec/livebounds vàintermittentmainstartupcause cònthiếu; khônglặpprimitive/auxiliarylocale. |
 
@@ -454,13 +456,13 @@ CA.exe KR (bản copy) ── TCP ── KrWire/PacketReader ── KrSession/St
 | `kr-wire` (đề xuất) | Buffer TCP có giới hạn, codec state riêng từng socket/chiều, packet registry `(build,direction,stage,opcode)`, reader có cursor và báo trailing bytes. Dùng VN làm reference/fixture control; constants KR vào profile có nguồn. |
 | `kr-session` / server (đề xuất) | Auth local, redirect token một lần, ID account/session/slot tách nhau; state machine idempotent, timer gắn round generation. SQLite chỉ cần khi identity contract ổn; không thiết kế economy sớm. |
 | Room/round | Một owner cập nhật mỗi phòng, broadcast theo roster, phân biệt request/ack/result. Tái dùng ý tưởng generation guard từ VN; policy ready/host/timeout phải khớp consumer KR hoặc ghi design. |
-| UDP | P2P local đã đo ở CP027–028 qua actual99→153 và UDP receive. Relay/NAT còn unknown; kiểm consumer trước lựa chọn cho LAN/Internet. Không dùng 3 port login VN làm endpoint movement. |
+| UDP | P2P local đã đo ở CP027–028 qua actual99→153 và UDP receive. NAT tĩnh/LANgiảlập đã có CP191–196; relay/NATdiscovery/Internet còn unknown, không đọc thiết kế banđầu thành chưa đo LAN. Không dùng 3 port login VN làm endpoint movement. |
 | `boom-core` | Ứng viên dùng sau audit authority: shadow validation trước; chỉ phát kết quả authoritative khi chứng minh client có đường nhận/correction phù hợp. Nếu không có, giữ mô hình lai để đạt demo tương thích và ghi rõ giới hạn. |
 | Content | Dùng reader pack/map/ODT đã có và inventory KR; map/item/character numeric ID có crosswalk theo build. Client gốc tự render/audio; không port renderer mới để giải wire. |
 
-### Task nhỏ và phân công worker
+### Danh mục task lịch sử và phân công
 
-Các task đang chạy nằm tại chính repo này: **KRE-001 [#1](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/1)**,
+Thứ tự/trạng thái hiện hành ở issue-order; danh mục dưới giữ phạm vi lịch sử. KRE-001/#1 đã đóng, #2/#3 backlog. Các task thuộc repo này: **KRE-001 [#1](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/1)**,
 **KRE-002 [#2](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/2)**,
 **KRE-003 [#3](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/3)**. Issue cũ boom-rs đã được
 transfer, không giữ hai bảng việc. Mỗi task có baseline, owner/reviewer, file và acceptance theo AGENTS.

@@ -1,0 +1,253 @@
+{
+  "id": "CP204",
+  "previous": "CP203",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-08T02:18:20.842416+00:00",
+  "context_commit": "36fe4bb4291c4d2275cf6eb8b83133d04ef2293e",
+  "owner": "Codex",
+  "reviewer": "Codex",
+  "question": "Canfour-sessionwritefailuresclosetheactualrecipientinsteadinputorigin,explicitIO-log-frame-chunk-ratebudgetsboundresources,andcurrentnativefour2v2cyclesstillworkfromrelocatedbundle?",
+  "scope": "Source-ownedfourtransport/partial127semanticcommit/fence/default2srealTCPnonreader/lifetimeIObudgets/admissiontail/bundleallPythonpincoverage. Reusecurrent4KRprofile/wire/report/rank/nativeoracles; no newclientbinarypatch/handlerRE. Native4positive2normalopposite2v2outcomes/resetStart3, periodicAUD060manualcurrentstatecorrections; no3survivornativeEOFcleanup/fullK7Internetclaim.",
+  "artifacts": [
+    {
+      "name": "OriginalKR00967unchanged",
+      "sha256": "a52545c14b1fea423de655c3163d6360b628d61c1cd472b46fdbc8a9ffe15f4e"
+    },
+    {
+      "name": "CurrentWinecopy_import_ABI_corrected_offline_only",
+      "sha256": "4b781fbcea21e0f6294c729b63be86ab2953d60ad83b0d0c9219359f826107ed"
+    }
+  ],
+  "locators": [
+    "KRoriginala52545c14b1fea423de655c3163d6360b628d61c1cd472b46fdbc8a9ffe15f4e/currentWinecopy4b781fbcea21e0f6294c729b63be86ab2953d60ad83b0d0c9219359f826107ed unchanged. Known170E85B60/175E5F610,E3EDBE/180E64950,E652C5/52A350used; newbudgetsPython/design noVA.",
+    "NativeRuneeeb1310bdf7e8e8c2ee85b4faca63cccd6b8f0d627f3080e0a2b4aa3ea7b2ef/234.072983094s/1189raw/729frozen/exit0/cleanup0/2552checks/32nativegetters; bundle571ac1c45f682b281335671662f7f21c775cc3800c48f3582a36f04230c5ac59/65pins/47aliases/43fixtures/PythonI/allloadedpolicy_sourcesinbundle.",
+    "ActualTCPbeforeCP203source4c52e9…/kerneloutq32768/failureA→closedB. Currenta64c90…default2s≈2.009/214checks/oneBfollowup/nolifecommit/fence; variant218checks readsD/C17048bytes/hash/CRC/seq actualdriver, notnativeconsumer."
+  ],
+  "findings": [
+    {
+      "summary": "RecipientSendFailureatfouradapteraccept/receive/ticknowattributesactualfailedrecipient; close/fenceroomandmarkpartial127peer_delivery_incompletebeforelifecursorcommit. ActualTCPkernelqueuefullA/currentB17defaultaccepted2s→closedA/Bfollowup1/Cpendinground_closed/noresult. D/C170alreadydeliveredpartially; additional218realTCPchecksread48bytesandCRC/seq/hash; do notrollbacksentbytes orclaimnativepeerabortcleanup.",
+      "source": "design",
+      "status": "design",
+      "method": "design",
+      "canonical": "docs/PROTOCOL.md#four-transport-bounds",
+      "evidence": [
+        "BOUND204-00422",
+        "BOUND204-01762",
+        "BOUND204-02471",
+        "BOUND204-02511",
+        "BOUND204-02537"
+      ],
+      "limits": "Same4actualKR00967Wine4b/16TCP/4privatevirtualhosts/ExVillage01/Free0/2oppositenormal2v2outcomes/reset/Start3fromrelocatedPythonIbundle65pins/47aliases/43fixtures. Currentproductionrecipient-safeadapter+lifetimeIO/chunk/frame/rate/admissiontailbudgets; no normalpositivebudget/deliveryrejection. TCP214actualdefault2snonreader/247guardnegatives and335server/16bundleunitcontrolsseparatefromnativeproof. Noqueuednonblockingbackpressure/memoryloadbenchmark ororiginalKRrate-law/authenticatedlife. Partial170deliverycannotrollback; roomfencedonfailure,native3survivorEOFcleanup/restart/persistence/health/full4items/terrain/rescue/needle/K7/Internetunresolved. PeerFinish170cursor0notfullparseproof;175/180fullincallbackcursorsandpre17532securegettersindependent. Reviewwaived; CP203mergedPR275/36fe4bb4; AUD060through204/next208. CP204exactheadPRrequired."
+    },
+    {
+      "summary": "Explicitdiagnosticpertransportlifetime1MiBinput/4096chunks,2MiBattemptedoutput/4096calls, independentframe/chunkburst128refill32s, admissiontail256+total. Battle resetdoesnotrefundbudgets; coalesced129frames/tiny4097chunks/refill/regressingclock/outputboundary/admissionflood testsboundappend. Existingwirecap65536retained.335servertests/247guard/214delivery/16bundletests, notoriginalKRlaw/nonblockingqueue/loadbenchmark.",
+      "source": "design",
+      "status": "design",
+      "method": "design",
+      "canonical": "docs/PROTOCOL.md#four-transport-bounds",
+      "evidence": [
+        "BOUND204-02509",
+        "BOUND204-02539",
+        "BOUND204-02150",
+        "BOUND204-01980",
+        "BOUND204-01762",
+        "BOUND204-00557"
+      ],
+      "limits": "Same4actualKR00967Wine4b/16TCP/4privatevirtualhosts/ExVillage01/Free0/2oppositenormal2v2outcomes/reset/Start3fromrelocatedPythonIbundle65pins/47aliases/43fixtures. Currentproductionrecipient-safeadapter+lifetimeIO/chunk/frame/rate/admissiontailbudgets; no normalpositivebudget/deliveryrejection. TCP214actualdefault2snonreader/247guardnegatives and335server/16bundleunitcontrolsseparatefromnativeproof. Noqueuednonblockingbackpressure/memoryloadbenchmark ororiginalKRrate-law/authenticatedlife. Partial170deliverycannotrollback; roomfencedonfailure,native3survivorEOFcleanup/restart/persistence/health/full4items/terrain/rescue/needle/K7/Internetunresolved. PeerFinish170cursor0notfullparseproof;175/180fullincallbackcursorsandpre17532securegettersindependent. Reviewwaived; CP203mergedPR275/36fe4bb4; AUD060through204/next208. CP204exactheadPRrequired."
+    },
+    {
+      "summary": "Same4actualWineKR4b/16TCP/4virtualhosts/Free0/ExVillage01 currentrecipient-safe/budget65pinbundlePython-I/relocated has2normalopposite2v2outcomes/1754rows/180/reset/actualReady2Start2/Start3.2552checks/32copiednativegettersseparate; normalpositive0inputquota/rate/deliveryrejection, pertransportmaxinput8284/chunks99/output6286/calls64. No full4items/terrain/rescue/needle/Internet/K7claim.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#four-transport-bounds",
+      "evidence": [
+        "BOUND204-02344",
+        "BOUND204-01774",
+        "BOUND204-01986",
+        "BOUND204-01748",
+        "BOUND204-00988",
+        "BOUND204-00649"
+      ],
+      "limits": "Same4actualKR00967Wine4b/16TCP/4privatevirtualhosts/ExVillage01/Free0/2oppositenormal2v2outcomes/reset/Start3fromrelocatedPythonIbundle65pins/47aliases/43fixtures. Currentproductionrecipient-safeadapter+lifetimeIO/chunk/frame/rate/admissiontailbudgets; no normalpositivebudget/deliveryrejection. TCP214actualdefault2snonreader/247guardnegatives and335server/16bundleunitcontrolsseparatefromnativeproof. Noqueuednonblockingbackpressure/memoryloadbenchmark ororiginalKRrate-law/authenticatedlife. Partial170deliverycannotrollback; roomfencedonfailure,native3survivorEOFcleanup/restart/persistence/health/full4items/terrain/rescue/needle/K7/Internetunresolved. PeerFinish170cursor0notfullparseproof;175/180fullincallbackcursorsandpre17532securegettersindependent. Reviewwaived; CP203mergedPR275/36fe4bb4; AUD060through204/next208. CP204exactheadPRrequired."
+    },
+    {
+      "summary": "Bundleverify-onlybeforecouldpasswithunlistedpresentserverPythonaftermanifestrowdeletion. Controlledcopyretained; launchernowrequiresallpresentserverPyinmanifestbeforeimport.16bundle/exporttests/new65pins/nativepositive proveboundedgap, notsignature/authenticity.",
+      "source": "design",
+      "status": "design",
+      "method": "design",
+      "canonical": "docs/PROTOCOL.md#four-transport-bounds",
+      "evidence": [
+        "BOUND204-02276",
+        "BOUND204-02581",
+        "BOUND204-02594",
+        "BOUND204-00557",
+        "BOUND204-01987"
+      ],
+      "limits": "Same4actualKR00967Wine4b/16TCP/4privatevirtualhosts/ExVillage01/Free0/2oppositenormal2v2outcomes/reset/Start3fromrelocatedPythonIbundle65pins/47aliases/43fixtures. Currentproductionrecipient-safeadapter+lifetimeIO/chunk/frame/rate/admissiontailbudgets; no normalpositivebudget/deliveryrejection. TCP214actualdefault2snonreader/247guardnegatives and335server/16bundleunitcontrolsseparatefromnativeproof. Noqueuednonblockingbackpressure/memoryloadbenchmark ororiginalKRrate-law/authenticatedlife. Partial170deliverycannotrollback; roomfencedonfailure,native3survivorEOFcleanup/restart/persistence/health/full4items/terrain/rescue/needle/K7/Internetunresolved. PeerFinish170cursor0notfullparseproof;175/180fullincallbackcursorsandpre17532securegettersindependent. Reviewwaived; CP203mergedPR275/36fe4bb4; AUD060through204/next208. CP204exactheadPRrequired."
+    },
+    {
+      "summary": "AUD060manualREADME→PLAN→PROTOCOLauthority/current4→RESEARCH→catalog/evidence/raw/source/imagesfoundstaleheader184/audit188,currentPLAN200/#1active, gap4rank/reset/outcomenextstepalreadyresolved, catalogS002unknown, blanketNATLANunknown. Fixedcanonicalsources/linkspartial/currentcounter208, retainedcompleteCP/raw/waiverhistory. No gateclosure; nextactual3survivorEOFroomcleanupthenhealth/restart/identity.",
+      "source": "design",
+      "status": "design",
+      "method": "design",
+      "canonical": "docs/PROTOCOL.md#four-transport-bounds",
+      "evidence": [
+        "BOUND204-00001",
+        "BOUND204-00562",
+        "BOUND204-00031"
+      ],
+      "limits": "Same4actualKR00967Wine4b/16TCP/4privatevirtualhosts/ExVillage01/Free0/2oppositenormal2v2outcomes/reset/Start3fromrelocatedPythonIbundle65pins/47aliases/43fixtures. Currentproductionrecipient-safeadapter+lifetimeIO/chunk/frame/rate/admissiontailbudgets; no normalpositivebudget/deliveryrejection. TCP214actualdefault2snonreader/247guardnegatives and335server/16bundleunitcontrolsseparatefromnativeproof. Noqueuednonblockingbackpressure/memoryloadbenchmark ororiginalKRrate-law/authenticatedlife. Partial170deliverycannotrollback; roomfencedonfailure,native3survivorEOFcleanup/restart/persistence/health/full4items/terrain/rescue/needle/K7/Internetunresolved. PeerFinish170cursor0notfullparseproof;175/180fullincallbackcursorsandpre17532securegettersindependent. Reviewwaived; CP203mergedPR275/36fe4bb4; AUD060through204/next208. CP204exactheadPRrequired."
+    }
+  ],
+  "verification": [
+    {
+      "check": "335server/214actualTCPdefault2snonreader/218partial170receiver/247guard/16bundleexport",
+      "result": "pass",
+      "evidence": [
+        "BOUND204-02150",
+        "BOUND204-01762",
+        "BOUND204-02471",
+        "BOUND204-01980",
+        "BOUND204-00557"
+      ],
+      "limits": "Source/model/TCPcontrolsnotnativeCAororiginalserverauthority; defaulttimeout2observed/resizedkernelbuffers declared."
+    },
+    {
+      "check": "Nativecurrentfour2normal2v2results/resetStart3/65pins/budgets/2552checks/32getters/cleanup",
+      "result": "pass",
+      "evidence": [
+        "BOUND204-02344",
+        "BOUND204-01986",
+        "BOUND204-01774"
+      ],
+      "limits": "Same4actualKR00967Wine4b/16TCP/4privatevirtualhosts/ExVillage01/Free0/2oppositenormal2v2outcomes/reset/Start3fromrelocatedPythonIbundle65pins/47aliases/43fixtures. Currentproductionrecipient-safeadapter+lifetimeIO/chunk/frame/rate/admissiontailbudgets; no normalpositivebudget/deliveryrejection. TCP214actualdefault2snonreader/247guardnegatives and335server/16bundleunitcontrolsseparatefromnativeproof. Noqueuednonblockingbackpressure/memoryloadbenchmark ororiginalKRrate-law/authenticatedlife. Partial170deliverycannotrollback; roomfencedonfailure,native3survivorEOFcleanup/restart/persistence/health/full4items/terrain/rescue/needle/K7/Internetunresolved. PeerFinish170cursor0notfullparseproof;175/180fullincallbackcursorsandpre17532securegettersindependent. Reviewwaived; CP203mergedPR275/36fe4bb4; AUD060through204/next208. CP204exactheadPRrequired."
+    },
+    {
+      "check": "AUD060manualcurrentstate/43checkpointtests/docs/catalog/artifacts5/diff",
+      "result": "pass",
+      "evidence": [
+        "BOUND204-00001",
+        "BOUND204-00559",
+        "BOUND204-00028",
+        "BOUND204-00027"
+      ],
+      "limits": "Historicalrecords/gatesunchanged; fullcurrenthistory/exactheadbeforemerge."
+    },
+    {
+      "check": "Three-native-survivor-EOF-roomcleanup/health/restart/persistenceidentity/K7Internet",
+      "result": "pending",
+      "evidence": [
+        "BOUND204-00562"
+      ],
+      "limits": "Serverfencealoneisnotclientrecovery; nextguestDpendingEOF/180107/UIroom, noABrankclone/normalwin."
+    }
+  ],
+  "evidence": [],
+  "evidence_manifests": [
+    {
+      "path": "docs/evidence/checkpoints/evidence/CP204-four-transport-bounds.json",
+      "bytes": 686889,
+      "sha256": "d39de924c97406331e13b99f32d1de7b08c7429a7af48ddfefe7591fb94182d9",
+      "count": 2602
+    }
+  ],
+  "delta": {
+    "added": [
+      "Recipient-safe3ownerentrypoints/partialreportreject/currentfence/default2sactualkernelqueue/oneBfollowup/actualD-C170CRCreads.",
+      "Finiteinput/output/chunk/frame/log/rate/admissiontail andallserverPythonpinscheckedbeforeimport; normalfourpositiveon65pinbundle.",
+      "PeriodicAUD060through204/manualstalesync/next208."
+    ],
+    "corrected": [
+      "CP203wrongoriginclosure/modelonlygap nowactualkernelbefore-after/default2s/currentproductionfixed; notnative3survivorcleanup.",
+      "CurrentRESEARCH4rank/resetunknown/activeFOURBATTLEOUTCOME andcatalogS002unknown/headerauditsstale correctedwithscopedpartiallinks, notgatepromotion.",
+      "Candidatefirstaftertestexpectednoforward170butD/CpartialsendsprecededAfail; rawretained, expectationmatchesrealdelivery, oneBfollowup(2includestrigger+followup)clarified."
+    ],
+    "superseded": [
+      "NEXT-K7-FOUR-TRANSPORT-HARDENINGboundedscope resolved; NEXT-K7-FOUR-EOF-ROOM-CLEANUP active."
+    ]
+  },
+  "blockers": [
+    "Three-nativepeerroomrecoveryafterfourmemberEOF/sendfail/quotaunmeasured; serverroomfinishfencesonly, no3survivor180107/UIroomproof.",
+    "Health/runidentity/persistenceidentity/serverrestart/accountauth/generalresume/K6cInternet/K7 remainopen; lifetimebudgetsrequirefreshprocess, notaccountresume.",
+    "Full4items/terrain/rescue/needle/8actualclients/queuednonblocking/loadbenchmark outsidecurrentproof; intermittentstartupcontentcauseunknown."
+  ],
+  "next_steps": [
+    {
+      "id": "NEXT-K7-FOUR-EOF-ROOM-CLEANUP",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "PLANknown180/107/110/CP022034174196reuse; DpendingactualownedEOF→three-survivor180full/ID4clear/nativeRoom/no late158/no artificialnormalrank; hostEOF/generalresumeonlytriggeredafterguest. Thenhealth/restart/identity; auditnext208.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    }
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-11-08T02:18:20.842416+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "CodexsoloRE/code/runtime/selfcheck; reviewwaived notapproved, exactheadPRrequired.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Owner explicitly requested solo, no workers/review."
+    }
+  },
+  "docs_sync": [
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "CP204recipient/budget/nativepositive/actualpartialTCP/manualAUD060stalesyncbeforecomplete; next3survivorEOF, audit208."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "CP204recipient/budget/nativepositive/actualpartialTCP/manualAUD060stalesyncbeforecomplete; next3survivorEOF, audit208."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "updated",
+      "reason": "CP204recipient/budget/nativepositive/actualpartialTCP/manualAUD060stalesyncbeforecomplete; next3survivorEOF, audit208."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "updated",
+      "reason": "CP204recipient/budget/nativepositive/actualpartialTCP/manualAUD060stalesyncbeforecomplete; next3survivorEOF, audit208."
+    },
+    {
+      "path": "docs/features.json",
+      "state": "updated",
+      "reason": "CP204recipient/budget/nativepositive/actualpartialTCP/manualAUD060stalesyncbeforecomplete; next3survivorEOF, audit208."
+    },
+    {
+      "path": "docs/COVERAGE.md",
+      "state": "updated",
+      "reason": "CP204recipient/budget/nativepositive/actualpartialTCP/manualAUD060stalesyncbeforecomplete; next3survivorEOF, audit208."
+    },
+    {
+      "path": "docs/evidence/peer-endpoints/README.md",
+      "state": "updated",
+      "reason": "CP204recipient/budget/nativepositive/actualpartialTCP/manualAUD060stalesyncbeforecomplete; next3survivorEOF, audit208."
+    },
+    {
+      "path": "tools/README.md",
+      "state": "updated",
+      "reason": "CP204recipient/budget/nativepositive/actualpartialTCP/manualAUD060stalesyncbeforecomplete; next3survivorEOF, audit208."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/review.json",
+      "state": "updated",
+      "reason": "CP204recipient/budget/nativepositive/actualpartialTCP/manualAUD060stalesyncbeforecomplete; next3survivorEOF, audit208."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
+      "state": "updated",
+      "reason": "CP204recipient/budget/nativepositive/actualpartialTCP/manualAUD060stalesyncbeforecomplete; next3survivorEOF, audit208."
+    },
+    {
+      "path": "docs/evidence/checkpoints/audits/AUD060.json",
+      "state": "updated",
+      "reason": "CP204recipient/budget/nativepositive/actualpartialTCP/manualAUD060stalesyncbeforecomplete; next3survivorEOF, audit208."
+    }
+  ]
+}
