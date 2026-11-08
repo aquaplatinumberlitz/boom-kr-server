@@ -2097,3 +2097,23 @@ firstloss trong cleanup; tests pin source cuối. Guestverifier V1 finalsnapshot
 V2 xét actualclosuretime đối chiếu observation, vì cleanupEOF xảy ra sau cửa sổ đo. Không sửa runtime thành pass.
 `four-abort-transport-r1`:222realTCPsyntheticcontrols trên productioncuối,341server/16bundle/43checkpoint tests.
 Metadata này không thay nativeparse/IDclear/screens hoặc gateacceptance; completeCP205 chưa tự có approval/merge.
+
+<a id="cp206"></a>
+## CP206 — localhealth/identitypin/processrestart, current4nativepositive
+
+[Contract/giới hạn](../../PROTOCOL.md#four-health-identity), [gap/phép thử](../../RESEARCH.md#gap-lobby-identity-followup),
+[record](../checkpoints/records/CP206.json). Codexsolo/reviewwaived, auditCP208. CP205merged PR277/bf165f9.
+Reuse existingstate/save/run/policy_sources/fixed4profile; source-first`local/research/codex/four-health-r1/source-first.json`;
+không decompile hàm mới/VNopcodeport. Candidate-only healthR1(4model/240TCP), healthR2(4identity/19actualprocess)
+giữ riêng; currentproductionR2 có preflight/sourcefrozen/240TCP/19processrestart/seal, không gọi prototype lànative.
+
+Native `four-health-native-r1`:235.137372903s/1209raw/338frozen/exit0/cleanup0;
+runSHA`59028783c52aaf159ca84459d0cd5d8bd8f89bfb54315328e64d2e53e0880828`;
+67pinbundleSHA`8f92382476363ff9bf9d32b46fed2880539a7b176db63f8e560cc4ee5aaf92ae`.
+2202gameplay +208health +32copiednativegetters riêng; actual4twoopposite2v2/175180/reset/Start3.
+Metadata/state/health/identitystore/loadedpolicies/ownedPID/netns/capture/raw dưới`cycles/` vàsharedidentitypin dướirunroot.
+Recipe`prepare_four_health_native.py`, `run_four_health_native.py`, `wine_probe_four_health.py`;
+verifiers`verify_four_health_gameplay.py`, `verify_four_health.py`, `verify_four_health_getters.py` ởlocal/research/codex.
+Manualimages/hash ởrunroot`manual-images.json`. Verifiercount-assumptionV1 fail giữscript/log; V2 kiểm contractkey/winner,
+không threshold số checks. Raw/native không sửa. 352server/16bundle-export/43checkpoint/artifacts5/5;19currentPythonprocess
+restart +240syntheticTCP kiểm health/store/cleanup/contexts, chưa nativeaccountresume/Internetgate.

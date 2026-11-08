@@ -5382,6 +5382,48 @@ Serviceproductionbind/153IPvẫnhard127; private-addressshims hiện làmeasurem
 Internet/K6c/NAT/relay/fullauth/authority/generalreset/gates mở; field99IP1/subtype39 vẫnunknown.
 
 
+<a id="four-health-identity"></a>
+### Health local, correlation và identity pin tối thiểu — CP206
+
+[Recipe/raw/hash](evidence/peer-endpoints/README.md#cp206), [phần thiếu](RESEARCH.md#gap-lobby-identity-followup),
+[PLAN](PLAN.md#current-order). Phần này là `design` của emulator; nativepositive riêng bên dưới là `kr_runtime`.
+Tái dùng `ProbeService.save/run`, existingpolicy_sources, fixedfourprofile/rolecounts, currentround, CP204budgets,
+CP205firstloss/completedabort; không RE thêm hàm native, không nhập opcode/offset VN.
+
+Fourservice tự ghi `run-metadata.json` một lần và `health.json` bên cạnh `service-state.json`:
+UUID mỗi process; session`run/role`, transport`run/tcpOrdinal`, fixedroom`run/room1`, round`room/roundIndex`.
+Correlations gắn vào transport/currentround và bomb/request/report có index khai báo; row thiếu index giữroundIDnull,
+không gán ngầm round hiện tại. Runmetadata pin digest profile/config và danh sách sourcepolicy đã tải;
+**source_build_sha256 là digest declaredpolicy_sources**, bundlelauncher được pin riêng trong bundlemanifest.
+TargetKR00967 chỉ là khai báo, không attestation binary từ peer/accountauth.
+
+Healthphase`starting/ready/active/degraded/stopping/stopped`; active nghĩa roomstateactive, không tự chứng minh gameplay.
+Ringphase32+totalcounter, heartbeatmonotonic/sequence, số accepted/open transports/errors/roomstate.
+State vàhealth mỗi file replaceatomic; **cặp hai file không là một transaction**, reader phải match sequence/hash
+`state_sha256`. Healththam chiếurunmetadatahash bất biến. Không thêm HTTPlistener. Thư mục đã có runmetadata bị từ chối,
+không đè lịch sử. Fourrunloop dùng existingselector/accept/receive/tick, ghi stopping rồi đóng owned sockets/listeners/
+selector/fence trước finalstopped; lỗi healthwrite vẫn cleanup qua finally. Test faultIO kiểm resourceclose, không gate.
+
+Opt-in `--identity-store PATH` lưu **đúng khai báo cố định A/B/C/D:ID1/2/3/4,slot0/1/2/3,name/team của fourprofile**.
+Publishfile đầy đủ bằng exclusivelink từ temp cùngparent; racecreator cùngdata chỉ1winner. Existingbytes phải khớp
+canonicalschema/pin, đọc tối đa16KiB; sai/truncated/oversized/conflict từ chối, không tựrepair/overwrite. Parent do operator
+chuẩn bị. Đây là consistency/persistence qua **processrestart**, chưa accountdatabase/credential/resume/trận đang chơi
+hoặc durability khi powerloss. Bỏflag thì identitystoredisabled, wireidentityfixedprofile vẫn theo contract cũ.
+
+352servertests gồm11health/identity mới,16bundle/export,43checkpoint; 240realTCPsyntheticrequest/phase/hashcontrols.
+Hai processPython thật/listenerloopback/19checks: SIGTERM→stopping/stopped/exit0/ownedcleanup; processmới có run/roomIDmới,
+transportcounts0/budgets0, giữ nguyên identitybytes/hash vàsourcepolicy digest. Không native reconnect/matchrestore.
+
+Native runcurrent67pinbundle/Python-I/relocated: cùng4actualKRWine4b/16TCP/4virtualhosts, hai normal2v2outcomes
+đối nhau/1754rows/180/reset/Ready2Start2/Start3;2202gameplaychecks+208healthcorrelationchecks+32copiednativegetters riêng.
+Identitypinprecreated được đọc nguyênbytes; metadata nguồn đều dướibundle. Nativephase`ready/active`ba lần, rồi cleanup
+`degraded/stopping/stopped`; không delivery/budgetreject/errors trongrun. Starting/degradedpolicy có unit/TCP controls riêng,
+không suy nativeca mà run chưa đo. VerifierV1 nhầm đòi2500checks vì số frozenfile khác; đã giữ fail/source và thay bằng
+contract hai winner/key cụ thể, không dùng số checks làm mức tiến độ hoặc tự xác nhận ngữ nghĩa.
+
+K7/Internet giữ mở. Còn nativefreshserverrestart dùng lại sameidentitypin + bốn-peer UDPimpairment theo PLAN;
+fullaccountresume/3memberStart/4items/terrain/kim/cứu và8actualclients chưa được nghiệm thu.
+
 <a id="four-member-abort-room"></a>
 ### Bốn session: mất guest/host khi bom còn chờ, ba survivor về phòng — CP205
 

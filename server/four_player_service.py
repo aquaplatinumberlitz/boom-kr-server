@@ -68,9 +68,12 @@ def addresses(options):
     return result
 
 
+from server.four_observability import FourObservability
+from server.four_identity_store import pin_identities
+
 class FourPlayerService(ProbeService):
     def __init__(self, profile, out, source_ips, *, bind_ip='127.0.0.1',
-                 channel_ip=None, channel_port=None, bomb_profile=None, battle_outcome=False, abort_room=False):
+                 channel_ip=None, channel_port=None, bomb_profile=None, battle_outcome=False, abort_room=False, identity_store=None):
         # Validate/generate every supported input before creating an owner/socket.
         if struct.unpack_from('<I', profile.raw('auth_A'), 5)[0] != 4:
             raise ValueError('four sessions require measured auth4 success fixture')
@@ -148,7 +151,63 @@ class FourPlayerService(ProbeService):
             for module in [fp, sys.modules[FourBombAdmission.__module__],
                            sys.modules[FourBattleReports.__module__],
                            sys.modules[FourInputBudget.__module__],
+                           sys.modules[FourObservability.__module__],
+                           sys.modules[pin_identities.__module__],
                            __import__(__name__, fromlist=['FourPlayerService'])]]
+
+        self.operator_identities = {role:dict(member) for role,member in fp.MEMBERS.items()}
+        try:
+            self.identity_store = pin_identities(identity_store,fp.MEMBERS) if identity_store else None
+        except BaseException:
+            self.selector.close()
+            raise
+        self.state['identity_store'] = self.identity_store
+        self.observability = FourObservability(self)
+
+    def save(self):
+        return self.observability.publish(self)
+
+    def run(self, ports):
+        # Same selector/receive/tick ownership as ProbeService; four-service
+        # health records shutdown before and after closing owned resources.
+        listeners = []
+        try:
+            for port in ports:
+                listener = socket.socket()
+                listeners.append(listener)
+                listener.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+                listener.bind((self.bind_ip, port))
+                listener.listen(8)
+                self.selector.register(listener, selectors.EVENT_READ, None)
+            self.state['listen_ports'] = [listener.getsockname()[1] for listener in listeners]
+            self.state['listen_addresses'] = [listener.getsockname() for listener in listeners]
+            self.state['ready'] = True
+            self.save()
+            while not self.closed:
+                for key, _ in self.selector.select(0.05):
+                    try:
+                        self.accept(key.fileobj) if key.data is None else self.receive(key.data)
+                    except (OSError, ValueError, RuntimeError) as error:
+                        self.state['errors'].append(dict(connection=key.data,error=str(error)))
+                        if key.data is None:
+                            raise
+                        self.close_connection(key.data, str(error))
+                if not self.closed:
+                    self.tick()
+                self.save()
+        finally:
+            self.closed = True
+            try:
+                self.save()
+            finally:
+                self.room.finish()
+                for entry in self.connections.values():
+                    entry['socket'].close()
+                for listener in listeners:
+                    listener.close()
+                self.selector.close()
+                self.state['stopped'] = True
+                self.save()
 
     def send_raw(self, event, data):
         reason = self.io_budget.sending(event['global_ordinal'], len(data))
@@ -598,6 +657,7 @@ def main():
     parser.add_argument('--profile', type=Path, required=True)
     parser.add_argument('--out', type=Path, required=True)
     parser.add_argument('--bomb-profile', type=Path, help='Explicit measured/operator four-role capacity/power/fuse JSON; opt-in')
+    parser.add_argument('--identity-store', type=Path, help='Opt-in exact fixed four-role identity pin across process restarts; not account auth/resume')
     parser.add_argument('--abort-room', action='store_true', help='Opt-in active four-member loss: unranked180/setup107110; requires --battle-outcome')
     parser.add_argument('--battle-outcome', action='store_true', help='Opt-in report-derived four-member 2v2 life/result/reset policy; requires --bomb-profile')
     parser.add_argument('--source-ip', action='append', required=True, metavar='ROLE=IPv4')
@@ -613,7 +673,7 @@ def main():
         service = FourPlayerService(FixtureProfile(args.profile), args.out, ips,
             bind_ip=args.bind_ip, channel_ip=args.channel_ip, channel_port=args.channel_port,
             bomb_profile=json.loads(args.bomb_profile.read_text()) if args.bomb_profile else None,
-            battle_outcome=args.battle_outcome, abort_room=args.abort_room)
+            battle_outcome=args.battle_outcome, abort_room=args.abort_room, identity_store=args.identity_store)
     except ValueError as error:
         parser.error(str(error))
     args.out.mkdir(parents=True, exist_ok=True)

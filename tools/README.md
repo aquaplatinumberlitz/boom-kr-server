@@ -185,7 +185,11 @@ Battle reset không xóa budgets. Chạmquota đóngconnection/fence room; cần
 CP205 thêm opt-in `--abort-room` vào lệnh bundle bốn người: cần preset đã pin và `--battle-outcome`
 (bundle đã cố định). [Contract/giới hạn](../docs/PROTOCOL.md#four-member-abort-room): guest/hostEOF khi loaded
 →unranked180/setup585/107/110/ba survivorRoom; khôngrankgiả/late158/Start3người/reconnect.
-Gói mới65pins; launcher từ chối serverPython còn hiện diện mà không cópin trướcimportserver. Khôngsignature,
+CP206 gói mới67pins và tự ghi `run-metadata.json`, `service-state.json`, `health.json` vào mỗi `--out` mới.
+Healthreader phải match snapshotsequence/hash của state; runmetadata đã tồn tại sẽ từ chối để giữ lịch sử.
+Thêm `--identity-store /absolute/identities.json` nếu muốn pin khai báo4identity giữa processrestart; parent phải có sẵn,
+existingbytes phải đúng canonicalpin, không accountauth/resume. [Contract/cách đọc/giới hạn](../docs/PROTOCOL.md#four-health-identity).
+Tại CP204 gói65pins; launcher từ chối serverPython còn hiện diện mà không cópin trướcimportserver. Khôngsignature,
 khôngqueuednonblocking/backpressurebenchmark.335server/16bundle/214nonreader+247guard vànative4positive cónguồn;
 Tại CP204 EOF/sendfailure chưa đưa ba nativepeer vềphòng; CP205 opt-in đã kiểm guest/hostEOF,
 native sendfailure/quota còn theo gap/PLAN. AUD060qua204/kế208.

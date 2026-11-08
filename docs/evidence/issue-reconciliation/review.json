@@ -155,9 +155,9 @@
         "KR-F001",
         "KR-F015"
       ],
-      "known": "CP205guestD/hostA pendingEOF: threeactualKRWine180107IDclear/585/110/Room/Bchief/pastfuse+15s/no158175; 1258+1286nativechecks/222TCP/341server. CP204mergedPR276/d78bc63.",
-      "remaining": "Health/run-session-room-roundcorrelations/persistenceidentity/serverrestart/K7Internet/generalresume/full4items remainopen; abortnotnormalwin/gate.",
-      "next_test": "PLAN NEXT-K7-FOUR-HEALTH-IDENTITY: reuse atomicstate/policy_sources; localrunmetadata/healthstartup-active-degraded-stopping-stopped controls, thenminimalpersistentidentity/restart withfreshtransport notaccountresume.",
+      "known": "CP206localhealth/UUID/correlations/profile-config-policy digests/optionalidentitypin;19twoPythonprocessrestart/240TCP/352server/currentnative4twooutcomes/resetStart3:2202+208checks/32getters. CP205mergedPR277/bf165f9.",
+      "remaining": "Nativefreshserverrestartusing same67pinbundle/sameidentitystore plusfourUDPimpairment; K7Internet/fullauth/generalresume/4itemsoutsideproof.",
+      "next_test": "PLAN NEXT-K7-FOUR-NETEM-RESTART source-first CP195UDP-onlycontrols/current4topology andsameCP206bundle/store; freshserver/runroomUUID+actual4twooutcomes/resetStart3/UDP40±5msloss5%/TCPbaseline/counters/nativepeer. ThenmanualK7acceptancereview; noInternetfromsimulation.",
       "acceptance": "Epic checklist: linkedscopedtask/evidence+authoritymatrix vàacceptancegate ởPLAN; từngtaskđóng khôngđóngepic/K5/K6a.",
       "reason": "Currentboundedtransportpartialhardening/native4positive proven, notclientrecovery/fullK7/Internet. AUD060through204/next208.",
       "sources": [
@@ -236,7 +236,8 @@
         "docs/PROTOCOL.md#four-two-team-cycles",
         "docs/PROTOCOL.md#four-portable-guards",
         "docs/PROTOCOL.md#four-transport-bounds",
-        "docs/PROTOCOL.md#four-member-abort-room"
+        "docs/PROTOCOL.md#four-member-abort-room",
+        "docs/PROTOCOL.md#four-health-identity"
       ],
       "evidence": [
         "docs/evidence/current-movement-cycles/README.md",
@@ -310,7 +311,8 @@
         "docs/evidence/peer-endpoints/README.md#cp202",
         "docs/evidence/peer-endpoints/README.md#cp203",
         "docs/evidence/peer-endpoints/README.md#cp204",
-        "docs/evidence/peer-endpoints/README.md#cp205"
+        "docs/evidence/peer-endpoints/README.md#cp205",
+        "docs/evidence/peer-endpoints/README.md#cp206"
       ],
       "prs": [
         173,
@@ -390,7 +392,8 @@
         266,
         267,
         268,
-        276
+        276,
+        277
       ],
       "successors": []
     },
