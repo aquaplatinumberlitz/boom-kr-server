@@ -70,7 +70,7 @@ def addresses(options):
 
 class FourPlayerService(ProbeService):
     def __init__(self, profile, out, source_ips, *, bind_ip='127.0.0.1',
-                 channel_ip=None, channel_port=None, bomb_profile=None, battle_outcome=False):
+                 channel_ip=None, channel_port=None, bomb_profile=None, battle_outcome=False, abort_room=False):
         # Validate/generate every supported input before creating an owner/socket.
         if struct.unpack_from('<I', profile.raw('auth_A'), 5)[0] != 4:
             raise ValueError('four sessions require measured auth4 success fixture')
@@ -86,6 +86,14 @@ class FourPlayerService(ProbeService):
                  for role in 'BCD'}
         if 'replacement_slot' in profile.data or 'rescue_contact' in profile.data:
             raise ValueError('four sessions exclude replacement/synthetic actors')
+        if type(abort_room) is not bool or (abort_room and not battle_outcome):
+            raise ValueError('abort-room requires explicit four Battle outcome')
+        if abort_room:
+            try:
+                if codec.read_fields(profile.body('return'), [1,1,1]) != [0,0,0]:
+                    raise ValueError('unsupported abort180 variant')
+            except (KeyError, ValueError) as error:
+                raise ValueError('abort-room requires measured return180(0,0,0)') from error
         super().__init__(profile, out, {}, bind_ip=bind_ip,
                          channel_ip=channel_ip, channel_port=channel_port)
         self.source_ips, self.source_counts = source_ips, dict.fromkeys(fp.ROLES, 0)
@@ -93,6 +101,11 @@ class FourPlayerService(ProbeService):
         self.own_bodies, self.start_body, self.join_bodies = own, start, joins
         self.role_slots = {r: m['slot'] for r, m in fp.MEMBERS.items()}
         self.state['schema'] = 'kr-four-session-service-v1'
+        self.abort_room_enabled = abort_room
+        self.abort_room_job = None
+        self.state['abort_room_policy'] = dict(source='design', enabled=abort_room,
+            mode='active_member_loss_unranked180_then_setup107110',
+            limits='Fixedfourprofile/currentroomabort, no originalwinnerlaw/accountresume/three-memberStart.')
         self.io_budget = FourInputBudget()
         self.state['io_budget'] = dict(source='design', limits=self.io_budget.limits,
                                        connections=self.io_budget.records)
@@ -241,6 +254,12 @@ class FourPlayerService(ProbeService):
             return
         if opcode == 118 and self.bomb_admission is not None:
             self.receive_bomb(event, frame, sequence, body)
+            return
+        job = self.abort_room_job
+        if (opcode == 585 and job and role in job['returns']
+                and not job.get('completed_ns') and event in self.peers()):
+            job['setup_requests'].setdefault(role, dict(sequence=sequence,
+                monotonic_ns=time.monotonic_ns(), frame_sha256=hashlib.sha256(frame).hexdigest()))
             return
         if opcode == 6 and not event.get('channel_response_sent'):
             name = fp.MEMBERS[role]['name'].encode('ascii')
@@ -451,10 +470,47 @@ class FourPlayerService(ProbeService):
             for peer in self.peers():
                 peer.pop('guest_ready_received', None)
 
+    def tick_abort_room(self, now):
+        job = self.abort_room_job
+        if not job or job.get('completed_ns'):
+            return
+        peers = self.peers()
+        for peer in peers:
+            role = peer['role']
+            if role not in job['returns']:
+                job['returns'][role] = self.send(peer, 'return', 'four-abort180')
+        # A post-return585 is a diagnostic setup request, not an authenticated ACK.
+        # Avoid replaying old106, which would restore the departed member.
+        if not all(peer['role'] in job['setup_requests'] for peer in peers):
+            if now-job['created_ns'] >= 15*10**9:
+                job['waiting_setup_roles'] = [p['role'] for p in peers
+                                               if p['role'] not in job['setup_requests']]
+            return
+        chief = min((peer['role'] for peer in peers), key=lambda role:self.role_slots[role], default=None)
+        for peer in peers:
+            role = peer['role']
+            removed = job['removed'].setdefault(role, {})
+            for departed in job['departed']:
+                if departed in removed:
+                    continue
+                member = fp.MEMBERS[departed]
+                body = codec.pack_fields([member['slot'],member['identity'],0],[1,4,1])
+                removed[departed] = self.send(peer,'start','four-remove107-'+departed,opcode=107,body=body)
+            refreshed = job['refreshed'].setdefault(role, {})
+            for other in peers:
+                name = other['role']
+                if name not in refreshed:
+                    refreshed[name] = self.send(peer,'slot_B','four-abort-slot110-'+name,opcode=110,
+                        body=fp.slot_body(self.profile.body('player_B'),fp.MEMBERS[name],chief=name==chief))
+            peer.pop('guest_ready_received',None)
+        job['completed_ns'] = time.monotonic_ns()
+        job['chief_role'] = chief
+
     @recipient_safe
     def tick(self):
         now = time.monotonic_ns()
         self.tick_bombs()
+        self.tick_abort_room(now)
         if self.state.get('membership_broken'):
             return
         self.tick_outcome(now)
@@ -509,6 +565,7 @@ class FourPlayerService(ProbeService):
 
     def close_connection(self, ordinal, reason):
         state = self.connections[ordinal];event = state['event']
+        was_active = self.room.active and bool(event.get('peer153_sent'))
         if event.get('closed'):
             return
         event['closed'] = dict(reason=reason, monotonic_ns=time.monotonic_ns())
@@ -519,11 +576,21 @@ class FourPlayerService(ProbeService):
         state['socket'].close()
         if event['reply_ordinal'] == 4:
             self.room.finish()
-            self.state['membership_broken'] = dict(role=event['role'], reason=reason,
-                monotonic_ns=time.monotonic_ns(), policy='stop_room_no_synthetic_result')
+            self.state.setdefault('membership_broken', dict(role=event['role'], reason=reason,
+                monotonic_ns=time.monotonic_ns(), policy='stop_room_no_synthetic_result'))
             if self.round.get('loading'):
                 self.round['loading'].setdefault('resolution', 'membership_changed')
-            # This milestone deliberately fails closed; no guessed four-player rank/reset.
+            if self.abort_room_enabled and (was_active or (self.abort_room_job
+                    and not self.abort_room_job.get('completed_ns'))):
+                if self.abort_room_job is None:
+                    self.abort_room_job = dict(generation=self.room.generation,
+                        created_ns=time.monotonic_ns(), primary_departed=event['role'],
+                        departed=[], returns={}, setup_requests={}, removed={}, refreshed={},
+                        source='design', policy='active_member_loss_unranked_room_abort')
+                    self.state['current_abort_room'] = self.abort_room_job
+                if event['role'] not in self.abort_room_job['departed']:
+                    self.abort_room_job['departed'].append(event['role'])
+            # No normal rank/winner is inferred from a transport loss.
 
 
 def main():
@@ -531,6 +598,7 @@ def main():
     parser.add_argument('--profile', type=Path, required=True)
     parser.add_argument('--out', type=Path, required=True)
     parser.add_argument('--bomb-profile', type=Path, help='Explicit measured/operator four-role capacity/power/fuse JSON; opt-in')
+    parser.add_argument('--abort-room', action='store_true', help='Opt-in active four-member loss: unranked180/setup107110; requires --battle-outcome')
     parser.add_argument('--battle-outcome', action='store_true', help='Opt-in report-derived four-member 2v2 life/result/reset policy; requires --bomb-profile')
     parser.add_argument('--source-ip', action='append', required=True, metavar='ROLE=IPv4')
     parser.add_argument('--bind-ip', default='127.0.0.1')
@@ -545,7 +613,7 @@ def main():
         service = FourPlayerService(FixtureProfile(args.profile), args.out, ips,
             bind_ip=args.bind_ip, channel_ip=args.channel_ip, channel_port=args.channel_port,
             bomb_profile=json.loads(args.bomb_profile.read_text()) if args.bomb_profile else None,
-            battle_outcome=args.battle_outcome)
+            battle_outcome=args.battle_outcome, abort_room=args.abort_room)
     except ValueError as error:
         parser.error(str(error))
     args.out.mkdir(parents=True, exist_ok=True)

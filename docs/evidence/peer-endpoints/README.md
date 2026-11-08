@@ -2074,3 +2074,26 @@ found staleheaderCP184/audit188, PLANtable200/old#1active, RESEARCH2v2/reset/act
 blanketNATLANunknown and READMEhistoryauditlabels. Fixedcurrentdocs, notcompleteCP/raw/history. NextauditCP208.
 Remaining3native-survivorEOFroomcleanup/health/restart/identitypersistence/K7/Internet/full4items/terrain/kim/cứu open.
 Quota/rate/abortpolicydesign; partialbytescannotrollback/nativeEOFcleanupnotproven; no gatechange.
+
+<a id="cp205"></a>
+## CP205 — guest/host pendingEOF: ba native survivor về Room
+
+[Contract/giới hạn](../../PROTOCOL.md#four-member-abort-room), [câu hỏi kế](../../RESEARCH.md#gap-lobby-identity-followup),
+[record](../checkpoints/records/CP205.json). Codexsolo/reviewwaived; audit kếCP208. CP204 đãmerge PR276/d78bc63.
+Tái dùng CP022180/CP034174196107110/CP202204fourprofile/copy/codec/bundle vàVNphasearchitecture;
+source-first/hash/locator ở `local/research/codex/cp205-source-reuse.json`. Không đọc lại toàn client/REmọi handler.
+
+| Run / kết quả | SHA256 run / recipe |
+|---|---|
+| `four-abort-room-r1`: harnessabsentdict `.get`,5.797480845s/15raw/exit1/cleanup0, trước connection | `838d4e5fc4412052c3b079cff44fc0aacb69862cd9d79626fe5335fec1a93faa`; prepare/run_four_abort_room.py |
+| `four-abort-room-r2`: guestD,130.920091898s/734raw/327frozen/exit0/cleanup0/1258checks | `0eda15e245c2ad12195cdc6cbb2edc749d1da5eaec9b0885e9a40059cf4eccc3`; prepare/run_four_abort_room_r2.py |
+| `four-abort-host-r1`: hostA/Bchief,130.381930721s/759raw/327frozen/exit0/cleanup0/1286checks | `ddc97cf95d93523cbb87c3b620d899c300c41e791c7da9dc8d1e8f9a75dc15bf`; prepare/run_four_abort_host.py |
+
+Recipes/controller/verifier ở `local/research/codex/{prepare,run,wine_probe,verify}_four_abort_*.py`;
+raw/service-state/ownedPID/netns/startticks/585/CRC/native107180/getter/images/capture dưới từng`cycles/`.
+Verifier `verify_four_abort_room.py` và `verify_four_abort_host.py`; manualimages/hash ở`cp205-manual-images.json`.
+Guestpreflight source trước hai guardtelemetry; guestseal/source mirrors/raw không đổi. Hostsource cuối giữ completedjob/
+firstloss trong cleanup; tests pin source cuối. Guestverifier V1 finalsnapshot-only assumption fail được giữ;
+V2 xét actualclosuretime đối chiếu observation, vì cleanupEOF xảy ra sau cửa sổ đo. Không sửa runtime thành pass.
+`four-abort-transport-r1`:222realTCPsyntheticcontrols trên productioncuối,341server/16bundle/43checkpoint tests.
+Metadata này không thay nativeparse/IDclear/screens hoặc gateacceptance; completeCP205 chưa tự có approval/merge.

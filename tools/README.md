@@ -182,6 +182,10 @@ sourceclient giữ nguyên. [Scope/authority/knownstartupfailure](../docs/PROTOC
 CP204 thêm [recipient-safe transport và giới hạn](../docs/PROTOCOL.md#four-transport-bounds): bound65536wire,
 pertransport lifetime1MiBinput/4096chunks,2MiBattemptedoutput/4096sendcalls, chunk/framebucketburst128+32/s;
 Battle reset không xóa budgets. Chạmquota đóngconnection/fence room; cần processlifetime mới để cấp lại quota.
+CP205 thêm opt-in `--abort-room` vào lệnh bundle bốn người: cần preset đã pin và `--battle-outcome`
+(bundle đã cố định). [Contract/giới hạn](../docs/PROTOCOL.md#four-member-abort-room): guest/hostEOF khi loaded
+→unranked180/setup585/107/110/ba survivorRoom; khôngrankgiả/late158/Start3người/reconnect.
 Gói mới65pins; launcher từ chối serverPython còn hiện diện mà không cópin trướcimportserver. Khôngsignature,
 khôngqueuednonblocking/backpressurebenchmark.335server/16bundle/214nonreader+247guard vànative4positive cónguồn;
-EOF/sendfailure chưa tự đưa ba nativepeer vềphòng, theo gap/PLAN. AUD060qua204/kế208.
+Tại CP204 EOF/sendfailure chưa đưa ba nativepeer vềphòng; CP205 opt-in đã kiểm guest/hostEOF,
+native sendfailure/quota còn theo gap/PLAN. AUD060qua204/kế208.

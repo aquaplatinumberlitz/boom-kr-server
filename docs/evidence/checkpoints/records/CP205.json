@@ -1,0 +1,242 @@
+{
+  "id": "CP205",
+  "previous": "CP204",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-08T02:46:58.809113+00:00",
+  "context_commit": "d78bc63c5e8e8fe9bedc38b118fca57506417a09",
+  "owner": "Codex",
+  "reviewer": "Codex",
+  "question": "CanpendingactualbombownerDguestorAhostEOFreturnthreeremainingnativeKRclientstoRoomwithoutfake2v2rank/latebomb, clearcorrectfourprofileIDandpromoteBafterhostloss?",
+  "scope": "Source-firstreuseknownKR180/107/110/585/fourprofile/bundle/GDB; VNphasearchitectureonly. Opt-inunrankedabortandpost-returnsetup, actualguest/hostseparateruns/nativeparse/IDclear/Room/chief/pastdeadline. MinimalcurrentTCP/modelcontrols; fixescompletedjob/firstfailuretelemetry. No newnativefunctions/gate/widerlifecycleclaim.",
+  "artifacts": [
+    {
+      "name": "OriginalKR00967unchanged",
+      "sha256": "a52545c14b1fea423de655c3163d6360b628d61c1cd472b46fdbc8a9ffe15f4e"
+    },
+    {
+      "name": "CurrentWinecopy_import_ABI_corrected_offline_only",
+      "sha256": "4b781fbcea21e0f6294c729b63be86ab2953d60ad83b0d0c9219359f826107ed"
+    }
+  ],
+  "locators": [
+    "KRoriginala52545…/Winecopy4b781f… unchanged; known180E64950/E652C5;107DC62D0/D603F5/D60617/D6062C/DC6329/DC6637; manager+A8+318slot/ID+Cclear12400D0/12401A9; localchiefgetter1240D5E.",
+    "GuestRun0eda15e245c2ad12195cdc6cbb2edc749d1da5eaec9b0885e9a40059cf4eccc3/130.920091898s/734raw/327frozen/exit0/cleanup0/1258checks; Dkillprefuse5.723883969s/postfuse15.567803164s.",
+    "HostRunddc97cf95d93523cbb87c3b620d899c300c41e791c7da9dc8d1e8f9a75dc15bf/130.381930721s/759raw/327frozen/exit0/cleanup0/1286checks; Akillprefuse5.730900202s/postfuse15.216112527s/Bnativechief1.",
+    "R1absentdictcontrollerfailure5.797s/15raw/cleanup0/SHA838d4e5fc4412052c3b079cff44fc0aacb69862cd9d79626fe5335fec1a93faa retained; finalsnapshotcleanupverifierassumptioncorrectedbytimestamps, rawunchanged."
+  ],
+  "findings": [
+    {
+      "summary": "ReusedCP022unranked1803/CP0341741961076andclear/CP202204four585slot/bundle plusVNroomphasearchitecture; mappedfourCslot2/Dslot3/IDs3/4insteadlegacyC0. OnlymissingthreeactualsurvivorRoomandhostchiefmeasured; nonewfunctiondecompile/wireVNport.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "documentation",
+      "canonical": "docs/PROTOCOL.md#four-member-abort-room",
+      "evidence": [
+        "ABORT205-00035",
+        "ABORT205-02220"
+      ],
+      "limits": "FouractualKRWinecopy4b/private4virtualhosts/Free0/ExVillage01/16TCP; separateDguest/AhostpendingEOFcontrols. Unrankedabort/membershipfence/chiefselection/setup585barrier areemulatordesign, notoriginalserverwinner/forfeit/authlaw. No3memberStart/replacement/accountresume/nativequota-sendfailurecleanup/full4items/terrain/kim/rescue/K7Internetgate. Guestsourcebefore2telemetrycleanupguards; host/currentTCPfinalsource. Reviewwaived, audit208."
+    },
+    {
+      "summary": "Opt-inabort-roomrequiresbattle-outcome/exactreturn1800/0/0; activecurrentmemberlossfenceswholeRoom, sends180thenwaitseachpostreturn585requestbeforesixbyte107departures/110survivors/Ready0/chieflowestslot. No175/normalwinner/replayedold106; waiting15sdiagnosticdoesnotblockloop. RecipientfailurestayinCP204adapter.341server/222currentTCP/16bundle/43checkpoint controls.",
+      "source": "design",
+      "status": "design",
+      "method": "design",
+      "canonical": "docs/PROTOCOL.md#four-member-abort-room",
+      "evidence": [
+        "ABORT205-02377",
+        "ABORT205-02401",
+        "ABORT205-02329",
+        "ABORT205-00034",
+        "ABORT205-00028",
+        "ABORT205-00029"
+      ],
+      "limits": "FouractualKRWinecopy4b/private4virtualhosts/Free0/ExVillage01/16TCP; separateDguest/AhostpendingEOFcontrols. Unrankedabort/membershipfence/chiefselection/setup585barrier areemulatordesign, notoriginalserverwinner/forfeit/authlaw. No3memberStart/replacement/accountresume/nativequota-sendfailurecleanup/full4items/terrain/kim/rescue/K7Internetgate. Guestsourcebefore2telemetrycleanupguards; host/currentTCPfinalsource. Reviewwaived, audit208."
+    },
+    {
+      "summary": "ActualDnormalSpace118/4confirm159→ownedDkillpending/realEOF; ABC1803/errors0/actual585/107base6rewind0end1/nativeID4slot3→0/9slot110/RoomAhost.1258checks/734raw/cleanup0/pastfuse+15.5678s/no158175. ThreeactualsurvivorsnativeRoom, notforfeitnormalwin/3memberrestart.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#four-member-abort-room",
+      "evidence": [
+        "ABORT205-02223",
+        "ABORT205-02055",
+        "ABORT205-02029",
+        "ABORT205-00033"
+      ],
+      "limits": "FouractualKRWinecopy4b/private4virtualhosts/Free0/ExVillage01/16TCP; separateDguest/AhostpendingEOFcontrols. Unrankedabort/membershipfence/chiefselection/setup585barrier areemulatordesign, notoriginalserverwinner/forfeit/authlaw. No3memberStart/replacement/accountresume/nativequota-sendfailurecleanup/full4items/terrain/kim/rescue/K7Internetgate. Guestsourcebefore2telemetrycleanupguards; host/currentTCPfinalsource. Reviewwaived, audit208."
+    },
+    {
+      "summary": "ActualAhostSpace118/4confirm159→ownedAkillpending/realEOF; BCD1803/errors0/actual585/107slot0ID1→0/9slot110/Room. NativeBchiefgetter1/CD0andmanualscreensmatchBhost.1286checks/759raw/cleanup0/pastfuse+15.2161s/no158175. Finalsourcehistoryguardsincluded.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#four-member-abort-room",
+      "evidence": [
+        "ABORT205-00994",
+        "ABORT205-00826",
+        "ABORT205-00800",
+        "ABORT205-00380",
+        "ABORT205-00033"
+      ],
+      "limits": "FouractualKRWinecopy4b/private4virtualhosts/Free0/ExVillage01/16TCP; separateDguest/AhostpendingEOFcontrols. Unrankedabort/membershipfence/chiefselection/setup585barrier areemulatordesign, notoriginalserverwinner/forfeit/authlaw. No3memberStart/replacement/accountresume/nativequota-sendfailurecleanup/full4items/terrain/kim/rescue/K7Internetgate. Guestsourcebefore2telemetrycleanupguards; host/currentTCPfinalsource. Reviewwaived, audit208."
+    },
+    {
+      "summary": "R1harnessoptionalstateusedlistdefaultandfailed.getbeforeTCP; sealed/cleanupretained. R2dictdefaultonly. GuestfinalcleanupadditionalEOFafterobservationchangeddepartedlist/membershipmetadata; V1verifierfinalsnapshotassumptionfailed, V2checkedclosuretimestamps. Productionnowfreezescompletedabortjobandfirstloss; regressionandhost/currentTCPfinalsource. Nooldrawrewrites/sourceequivalenceoverclaim.",
+      "source": "design",
+      "status": "design",
+      "method": "design",
+      "canonical": "docs/PROTOCOL.md#four-member-abort-room",
+      "evidence": [
+        "ABORT205-01030",
+        "ABORT205-00036",
+        "ABORT205-00814",
+        "ABORT205-02401"
+      ],
+      "limits": "FouractualKRWinecopy4b/private4virtualhosts/Free0/ExVillage01/16TCP; separateDguest/AhostpendingEOFcontrols. Unrankedabort/membershipfence/chiefselection/setup585barrier areemulatordesign, notoriginalserverwinner/forfeit/authlaw. No3memberStart/replacement/accountresume/nativequota-sendfailurecleanup/full4items/terrain/kim/rescue/K7Internetgate. Guestsourcebefore2telemetrycleanupguards; host/currentTCPfinalsource. Reviewwaived, audit208."
+    }
+  ],
+  "verification": [
+    {
+      "check": "NativeguestD1258/hostA1286/180107IDclear/threeRoom/Bchief/no158175/cleanup",
+      "result": "pass",
+      "evidence": [
+        "ABORT205-02223",
+        "ABORT205-02055",
+        "ABORT205-00994",
+        "ABORT205-00826",
+        "ABORT205-00033"
+      ],
+      "limits": "FouractualKRWinecopy4b/private4virtualhosts/Free0/ExVillage01/16TCP; separateDguest/AhostpendingEOFcontrols. Unrankedabort/membershipfence/chiefselection/setup585barrier areemulatordesign, notoriginalserverwinner/forfeit/authlaw. No3memberStart/replacement/accountresume/nativequota-sendfailurecleanup/full4items/terrain/kim/rescue/K7Internetgate. Guestsourcebefore2telemetrycleanupguards; host/currentTCPfinalsource. Reviewwaived, audit208."
+    },
+    {
+      "check": "341server/222currentTCP/16bundle/43checkpoint/artifacts5",
+      "result": "pass",
+      "evidence": [
+        "ABORT205-00034",
+        "ABORT205-02329",
+        "ABORT205-00028",
+        "ABORT205-00029",
+        "ABORT205-00027"
+      ],
+      "limits": "Model/TCPsyntheticandfilechecksseparatefromactualnativeproof. Fullhistory/exactheadrequiredpriorPRmerge."
+    },
+    {
+      "check": "R1absentdictcontroller_beforeTCP",
+      "result": "fail",
+      "evidence": [
+        "ABORT205-01030",
+        "ABORT205-01005"
+      ],
+      "limits": "Harnesserrornotclient/crashdiagnosis; preservedhashcleanup0, R2fixscoped."
+    },
+    {
+      "check": "Health/run-session-room-roundidentity/persistence/restart/K7Internet",
+      "result": "pending",
+      "evidence": [
+        "ABORT205-00045"
+      ],
+      "limits": "Nextsource-firststate/save/policy_sourcesreuse; noaccountresumeclaim."
+    }
+  ],
+  "evidence": [],
+  "evidence_manifests": [
+    {
+      "path": "docs/evidence/checkpoints/evidence/CP205-four-member-abort-room.json",
+      "bytes": 635323,
+      "sha256": "3e19144ed640f611b9d31e9c1f6cc8bfc2685e24af3a5eba5aa1210475b1f277",
+      "count": 2469
+    }
+  ],
+  "delta": {
+    "added": [
+      "Opt-inunrankedfourmemberabort/setup585/107110/threeRoomwithguestDandhostAactualnativecontrols; Bchief andtimerfencepastdeadline.",
+      "341server/222TCPfinalsourcecontrols/currentbundle/nativehost; completedabort/firstfailurehistoryheldthroughcleanup."
+    ],
+    "corrected": [
+      "CP204serverfence-only/threeRoomgap nowtwoactualEOFcontrols; no nativequota/sendfailure/generalresumeextension.",
+      "R1controllerdefaultdict/V1finalsnapshot-onlyverifierassumptionfailed; correctedinput/testhypothesiswithrawretained, finalsource2historyguards explicit."
+    ],
+    "superseded": [
+      "NEXT-K7-FOUR-EOF-ROOM-CLEANUP narrowguest/hostEOF resolved; NEXT-K7-FOUR-HEALTH-IDENTITY active."
+    ]
+  },
+  "blockers": [
+    "Health/logrun-session-room-roundcorrelations/minimalpersistentidentity/serverrestartunverified; K7dependencyInternetremainsopen.",
+    "WholeRoomfencedafterabort/no3memberStart/replacement/accountresume/nativequota-sendfailurecleanup; fouritems/terrain/needle/rescue/8actualclientsoutsideproof."
+  ],
+  "next_steps": [
+    {
+      "id": "NEXT-K7-FOUR-HEALTH-IDENTITY",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "PLANsource-firstexistingstate/save/policy_sources/profileidentities; atomiclocalhealth/run/session/room/roundcorrelation andstartup-active-degraded-stopping-stoppedcontrols; thenminimalidentitypersistence/serverrestart, freshtransportnotaccountresume. AuditCP208.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    }
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-11-08T02:46:58.809113+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "CodexsoloRE/code/runtime/selfcheck; reviewwaived notapproved, exactheadPRrequired.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Owner explicitly requested solo, no workers/review."
+    }
+  },
+  "docs_sync": [
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "CP205guest/hostEOFnativeRoom/chief/fence/limits/reusedsources andnexthealthidentitysyncedbeforecomplete; audit208unchanged."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "CP205guest/hostEOFnativeRoom/chief/fence/limits/reusedsources andnexthealthidentitysyncedbeforecomplete; audit208unchanged."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "updated",
+      "reason": "CP205guest/hostEOFnativeRoom/chief/fence/limits/reusedsources andnexthealthidentitysyncedbeforecomplete; audit208unchanged."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "updated",
+      "reason": "CP205guest/hostEOFnativeRoom/chief/fence/limits/reusedsources andnexthealthidentitysyncedbeforecomplete; audit208unchanged."
+    },
+    {
+      "path": "docs/features.json",
+      "state": "updated",
+      "reason": "CP205guest/hostEOFnativeRoom/chief/fence/limits/reusedsources andnexthealthidentitysyncedbeforecomplete; audit208unchanged."
+    },
+    {
+      "path": "docs/COVERAGE.md",
+      "state": "updated",
+      "reason": "CP205guest/hostEOFnativeRoom/chief/fence/limits/reusedsources andnexthealthidentitysyncedbeforecomplete; audit208unchanged."
+    },
+    {
+      "path": "docs/evidence/peer-endpoints/README.md",
+      "state": "updated",
+      "reason": "CP205guest/hostEOFnativeRoom/chief/fence/limits/reusedsources andnexthealthidentitysyncedbeforecomplete; audit208unchanged."
+    },
+    {
+      "path": "tools/README.md",
+      "state": "updated",
+      "reason": "CP205guest/hostEOFnativeRoom/chief/fence/limits/reusedsources andnexthealthidentitysyncedbeforecomplete; audit208unchanged."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/review.json",
+      "state": "updated",
+      "reason": "CP205guest/hostEOFnativeRoom/chief/fence/limits/reusedsources andnexthealthidentitysyncedbeforecomplete; audit208unchanged."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
+      "state": "updated",
+      "reason": "CP205guest/hostEOFnativeRoom/chief/fence/limits/reusedsources andnexthealthidentitysyncedbeforecomplete; audit208unchanged."
+    }
+  ]
+}

@@ -28,9 +28,14 @@ boom-kr-server/
 
 ## Tra nhanh và trạng thái hiện tại
 
+**CP205: guest hoặc host rớt giữa Battle, ba client KR Wine còn lại đã về phòng; host rớt thì B nhận chủ phòng.**
+[Contract/giới hạn](docs/PROTOCOL.md#four-member-abort-room), [raw/hash](docs/evidence/peer-endpoints/README.md#cp205).
+Không rank giả hoặc nổ bom muộn; phòng vẫn fenced, chưa chơi tiếp ba người/reconnect. Tiếp health/run identity/restart
+trong PLAN; K7/Internet còn mở, audit kếCP208. CP204 đã merge [PR276](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/276)/`d78bc63`.
+
 **CP204: sửa recipient khi gửi lỗi và thêm giới hạn I/O/log/rate; bốn KR Wine vẫn qua hai vòng 2v2/reset/Start3 trên gói mới.**
 [Contract/giới hạn](docs/PROTOCOL.md#four-transport-bounds), [raw/hash](docs/evidence/peer-endpoints/README.md#cp204).
-Tiếp nativecleanup ba survivor khi một người rớt, rồi health/restart/identity. K7/Internet vẫn mở; AUD060qua204/kếCP208.
+Tại CP204 còn nativecleanup ba survivor; [CP205](docs/PROTOCOL.md#four-member-abort-room) đã bổ sung guest/host; tiếp health/restart/identity. K7/Internet vẫn mở; AUD060qua204/kếCP208.
 
 **CP203: gói bốn người đã chạy từ thư mục chuyển chỗ và qua hai vòng 2v2/reset/Start3 bằng KR Wine.**
 [Contract/guard/giới hạn](docs/PROTOCOL.md#four-portable-guards), [cách xuất/chạy](tools/README.md#four-player-bundle).
