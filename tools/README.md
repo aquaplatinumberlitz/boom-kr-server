@@ -123,3 +123,21 @@ Thiếu tùy chọn giữ legacy serial/globalordinal. Nếu bật phải đúng
 kết nối thứ5 của role bị reject. Count không reset sau EOF, không kết hợp replacement_slot; không
 accountauth/resume/nhiều client chung sourceIP. Gói cũ immutable không có tùy chọn mới: export bundle
 mới từ source đã kiểm; không sửa file hoặc bundle.json đang chạy. Caller vẫn phải cô lập mạng theo recipe.
+
+<a id="four-session-diagnostic"></a>
+## Service bốn session chẩn đoán
+
+[Scope/native/giới hạn CP200](../docs/PROTOCOL.md#four-session-native). Dùng profile47fixture đã export/pin
+của hai-client basic; service4 kiểm branch zero-profile/Start121 trước listen và tạo body4riêng trong runtime.
+Đây là entrypoint riêng, không đổi launcher/bundle hai người. Phải chạy trong mạng offline cô lập theo recipe.
+
+```bash
+python3 -m server.four_player_service --profile /absolute/local/profile.json --out local/run4 \
+  --bind-ip 10.77.0.1 --channel-ip 10.77.0.1 --channel-port 3858 --port 3858 \
+  --source-ip A=10.77.0.2 --source-ip B=10.77.0.3 --source-ip C=10.77.0.4 --source-ip D=10.77.0.5
+```
+
+Bootstrap cần listen đúng các port trong recipe Wine; ví dụ trên chỉ minh họa channel. Identity/sourceIP
+là operatorpolicy, bốn transport/role/lifetime; không accountauth/sameNATIP/retry/resume. Mốc này chỉ
+room/load/input/peer, reject gameplay/bom/event/result/reset; chưa server4trận hoàn chỉnh hoặc bundle4portable.
+Tests: `python3 -m unittest server.test_four_player_service`; nguồn chuẩn thứ tự tiếp ở PLAN.

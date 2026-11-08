@@ -1,0 +1,282 @@
+{
+  "id": "CP200",
+  "previous": "CP199",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-08T00:00:50.551371+00:00",
+  "context_commit": "ae3291875239b6998986a04978036fbb3fc8bf5d",
+  "owner": "Codex",
+  "reviewer": "Codex",
+  "question": "Can four concurrent actual KR00967 Wine sessions use distinct auth/name/slot/room/Ready/loading/153 and bidirectional movement without porting VN wire or AB result policy?",
+  "scope": "Source-firstCP020026036047147163198199 reused; addedoptinfour-player service/profilehelpers separatebase2/replacement. 309server/200realTCP16transport controls, actual4Wine4trees/prefix/netns/identities/room/load/clock/153. HotobserverpartialsR2R3 andboundedlowobserverR6twelve currentcoordinateprogress; header/probe/metadatafailures retained. No fourBattlebombs/results/reset/Start2 orK7closure.",
+  "artifacts": [
+    {
+      "name": "OriginalKR00967unchanged",
+      "sha256": "a52545c14b1fea423de655c3163d6360b628d61c1cd472b46fdbc8a9ffe15f4e"
+    },
+    {
+      "name": "CurrentWinecopy_import_ABI_corrected_offline_only",
+      "sha256": "4b781fbcea21e0f6294c729b63be86ab2953d60ad83b0d0c9219359f826107ed"
+    }
+  ],
+  "locators": [
+    "Sourcea52545c14b1fea423de655c3163d6360b628d61c1cd472b46fdbc8a9ffe15f4e/currentWinecopy4b781fbcea21e0f6294c729b63be86ab2953d60ad83b0d0c9219359f826107ed/base400000; no sourcebinary/DB/assetmods.",
+    "Knownnative291D2FEB0/D30122/902329/123FF10;121DC7F30/DC8E1A/DC9363/DD6190;E0F970spawn/E134B0clock;153E825D0/E83B6F/E83E53/13E1190. HotR3queue14E8280/14E8480/E66680/667BE/667D6/66803/66816/66836/66868; R6nohotpeerkey/applyprobes.",
+    "R68733741005a6e656d041486755f69077d03f99b06e8966349faf5cdc61a79b45/117.517311787s/593raw/238frozen/exit0/cleanup0/3758checks/476PCAPrecords; twelve directedcurrentmovement, PCAPkv-a6Aedges only.",
+    "CP199PR271 exact6ac31a6/mergeae3291875239b6998986a04978036fbb3fc8bf5d;339126evidence/0missing/0errors/historyverified. AUD059periodicthrough200/next204."
+  ],
+  "findings": [
+    {
+      "summary": "OptinFourPlayerService/profilehelper separatefrombase2, operatorABCDsourceIP/fourstages/IDs1–4/slots0–3/team0–1/pinnedASCIIzero-profile; 309server/200realTCP16interleaved controls identity/header4/seq/Ready/all99barrier/153/unknown/fifth/EOF. DoesnotimplementBattle/result/reset; unsupportedreportsreject/failclosedwithoutABrank.",
+      "source": "design",
+      "status": "design",
+      "method": "design",
+      "canonical": "docs/PROTOCOL.md#four-session-native",
+      "evidence": [
+        "FOUR200-04493",
+        "FOUR200-04492",
+        "FOUR200-04516",
+        "FOUR200-04325",
+        "FOUR200-04142",
+        "FOUR200-04123"
+      ],
+      "limits": "FouractualmodifiedKR00967Wine4b/4prefix/4privatehostnetns/sharedkernel/directisolatedbridge/ExVillage01/Free0. Nativeauth/name291/ownslot/12199clock153 and twelve directed currentcoordinateprogress after4normalinputwindows observed. R2R3hotobservers retainedpartial; R5lowobserverandDDown differ, so notcompletecausalproofeveryqueueissue/previousDRightabsence. No key/E668ADhandlerprobes inR5; nativeAPI/apply evidence inearlierruns separate. EthernetPCAPonlykv-a/sixAedges, notall12captures. No4playerbombs/results/reset/Start2/hardening/K7/Internet/accountauth/wholegrammar. Originalbinary/DB/assets/base2service/bundleunchanged; sourcefrozenuntilcleanup. Reviewwaived/PRexactheadbeforemerge; AUD059through200/next204."
+    },
+    {
+      "summary": "FouractualKR00967Winecopies/prefixes/netns/16transports, request6/291namesKRLocal/KRGuest/KRNew/KRPeer4/ownslots0–3, allnative121181/inner152/4actors/ReadyBCD/4actual99barrier/clock/153133/3remoteIDs measured. Cslot2concurrent isnotoldreplacementCslot0, no syntheticactors inthese runs.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#four-session-native",
+      "evidence": [
+        "FOUR200-01505",
+        "FOUR200-02515",
+        "FOUR200-04118",
+        "FOUR200-04003"
+      ],
+      "limits": "FouractualmodifiedKR00967Wine4b/4prefix/4privatehostnetns/sharedkernel/directisolatedbridge/ExVillage01/Free0. Nativeauth/name291/ownslot/12199clock153 and twelve directed currentcoordinateprogress after4normalinputwindows observed. R2R3hotobservers retainedpartial; R5lowobserverandDDown differ, so notcompletecausalproofeveryqueueissue/previousDRightabsence. No key/E668ADhandlerprobes inR5; nativeAPI/apply evidence inearlierruns separate. EthernetPCAPonlykv-a/sixAedges, notall12captures. No4playerbombs/results/reset/Start2/hardening/K7/Internet/accountauth/wholegrammar. Originalbinary/DB/assets/base2service/bundleunchanged; sourcefrozenuntilcleanup. Reviewwaived/PRexactheadbeforemerge; AUD059through200/next204."
+    },
+    {
+      "summary": "LowobserverR6normalRightA/B/CandDownD producecurrentcoordinatechangesforeachorigininallthreeothernativeviews/twelve directedrelations; samefourroom/clock/epoch. PCAPkv-aindependent6edgeswithA/476records. No key/E668ADprobesinR6, so no12handlercallclaim; screenshotsconsistentnotsoleoracle.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#four-session-native",
+      "evidence": [
+        "FOUR200-04118",
+        "FOUR200-04002",
+        "FOUR200-04006",
+        "FOUR200-03449",
+        "FOUR200-03886"
+      ],
+      "limits": "FouractualmodifiedKR00967Wine4b/4prefix/4privatehostnetns/sharedkernel/directisolatedbridge/ExVillage01/Free0. Nativeauth/name291/ownslot/12199clock153 and twelve directed currentcoordinateprogress after4normalinputwindows observed. R2R3hotobservers retainedpartial; R5lowobserverandDDown differ, so notcompletecausalproofeveryqueueissue/previousDRightabsence. No key/E668ADhandlerprobes inR5; nativeAPI/apply evidence inearlierruns separate. EthernetPCAPonlykv-a/sixAedges, notall12captures. No4playerbombs/results/reset/Start2/hardening/K7/Internet/accountauth/wholegrammar. Originalbinary/DB/assets/base2service/bundleunchanged; sourcefrozenuntilcleanup. Reviewwaived/PRexactheadbeforemerge; AUD059through200/next204."
+    },
+    {
+      "summary": "R2R3hotobserverpartials: all12APIendpoint→queues, laterqueuesrarelydrain/C-Dkey/applyunseen, Bremoteprogresslater. Cached14E5710startsfirstqueue/returnsfirstnonempty; R6reduceshotprobesandobserves12positions, DDownseparategeometrycontrol. Observerthroughputhypothesiscandidate, notallcausalrootcause/clientbug.",
+      "source": "kr_runtime",
+      "status": "candidate",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#four-session-native",
+      "evidence": [
+        "FOUR200-01414",
+        "FOUR200-02425",
+        "FOUR200-04479",
+        "FOUR200-04118"
+      ],
+      "limits": "FouractualmodifiedKR00967Wine4b/4prefix/4privatehostnetns/sharedkernel/directisolatedbridge/ExVillage01/Free0. Nativeauth/name291/ownslot/12199clock153 and twelve directed currentcoordinateprogress after4normalinputwindows observed. R2R3hotobservers retainedpartial; R5lowobserverandDDown differ, so notcompletecausalproofeveryqueueissue/previousDRightabsence. No key/E668ADhandlerprobes inR5; nativeAPI/apply evidence inearlierruns separate. EthernetPCAPonlykv-a/sixAedges, notall12captures. No4playerbombs/results/reset/Start2/hardening/K7/Internet/accountauth/wholegrammar. Originalbinary/DB/assets/base2service/bundleunchanged; sourcefrozenuntilcleanup. Reviewwaived/PRexactheadbeforemerge; AUD059through200/next204."
+    },
+    {
+      "summary": "NativeR1caughtauthreply1vsKRpinned4; correctedheaderandaddedregression, R1frozenrawkept. R4ownedSIGINT/finallycleanupseal130foroutputpathdefect; R5missingrootrunjson/circularphase→ack partialsealverifiesraw/frozen/cleanup0withoutinventingrun.json. R6onlyphase_idmetadatacorrectioncomplete.",
+      "source": "design",
+      "status": "design",
+      "method": "design",
+      "canonical": "docs/PROTOCOL.md#four-session-native",
+      "evidence": [
+        "FOUR200-04122",
+        "FOUR200-00420",
+        "FOUR200-02632",
+        "FOUR200-02634",
+        "FOUR200-03328",
+        "FOUR200-03326",
+        "FOUR200-04024",
+        "FOUR200-04027"
+      ],
+      "limits": "FouractualmodifiedKR00967Wine4b/4prefix/4privatehostnetns/sharedkernel/directisolatedbridge/ExVillage01/Free0. Nativeauth/name291/ownslot/12199clock153 and twelve directed currentcoordinateprogress after4normalinputwindows observed. R2R3hotobservers retainedpartial; R5lowobserverandDDown differ, so notcompletecausalproofeveryqueueissue/previousDRightabsence. No key/E668ADhandlerprobes inR5; nativeAPI/apply evidence inearlierruns separate. EthernetPCAPonlykv-a/sixAedges, notall12captures. No4playerbombs/results/reset/Start2/hardening/K7/Internet/accountauth/wholegrammar. Originalbinary/DB/assets/base2service/bundleunchanged; sourcefrozenuntilcleanup. Reviewwaived/PRexactheadbeforemerge; AUD059through200/next204."
+    },
+    {
+      "summary": "AUD059manualcore-doc/source/raw/imageauditresolvedstaleC291/ABStart3/currentadmission/four-scope language; CP199merged, historyraw/completeunchanged. NextfourBattleowner118159158/baselines/fence then2v2rank175180/normalresult/reset/Start2; no gatechange.",
+      "source": "design",
+      "status": "design",
+      "method": "design",
+      "canonical": "docs/PROTOCOL.md#four-session-native",
+      "evidence": [
+        "FOUR200-00001",
+        "FOUR200-04121",
+        "FOUR200-04131"
+      ],
+      "limits": "FouractualmodifiedKR00967Wine4b/4prefix/4privatehostnetns/sharedkernel/directisolatedbridge/ExVillage01/Free0. Nativeauth/name291/ownslot/12199clock153 and twelve directed currentcoordinateprogress after4normalinputwindows observed. R2R3hotobservers retainedpartial; R5lowobserverandDDown differ, so notcompletecausalproofeveryqueueissue/previousDRightabsence. No key/E668ADhandlerprobes inR5; nativeAPI/apply evidence inearlierruns separate. EthernetPCAPonlykv-a/sixAedges, notall12captures. No4playerbombs/results/reset/Start2/hardening/K7/Internet/accountauth/wholegrammar. Originalbinary/DB/assets/base2service/bundleunchanged; sourcefrozenuntilcleanup. Reviewwaived/PRexactheadbeforemerge; AUD059through200/next204."
+    }
+  ],
+  "verification": [
+    {
+      "check": "FouractualKRlowobservernames/slots/room/load/clock/153/twelve directedcurrentprogress",
+      "result": "pass",
+      "evidence": [
+        "FOUR200-04118",
+        "FOUR200-04027"
+      ],
+      "limits": "FouractualmodifiedKR00967Wine4b/4prefix/4privatehostnetns/sharedkernel/directisolatedbridge/ExVillage01/Free0. Nativeauth/name291/ownslot/12199clock153 and twelve directed currentcoordinateprogress after4normalinputwindows observed. R2R3hotobservers retainedpartial; R5lowobserverandDDown differ, so notcompletecausalproofeveryqueueissue/previousDRightabsence. No key/E668ADhandlerprobes inR5; nativeAPI/apply evidence inearlierruns separate. EthernetPCAPonlykv-a/sixAedges, notall12captures. No4playerbombs/results/reset/Start2/hardening/K7/Internet/accountauth/wholegrammar. Originalbinary/DB/assets/base2service/bundleunchanged; sourcefrozenuntilcleanup. Reviewwaived/PRexactheadbeforemerge; AUD059through200/next204."
+    },
+    {
+      "check": "NativeR2R3four-sessiononly proof/fullmeshfailure kept",
+      "result": "pass",
+      "evidence": [
+        "FOUR200-01505",
+        "FOUR200-02515",
+        "FOUR200-01400"
+      ],
+      "limits": "Sessionproofonly; failed12meshclaimnotpassandnotdiscarded."
+    },
+    {
+      "check": "309server12bundleexport43checkpointtests/200realTCPcontrols/docs/catalog/diff/artifact5hashes",
+      "result": "pass",
+      "evidence": [
+        "FOUR200-04325",
+        "FOUR200-04124",
+        "FOUR200-04127",
+        "FOUR200-04142",
+        "FOUR200-00028",
+        "FOUR200-00027"
+      ],
+      "limits": "Currentfullhistory/exactheadbeforemerge, notsemanticacceptance/gate."
+    },
+    {
+      "check": "AUD059manualperiodicauditthroughCP200",
+      "result": "pass",
+      "evidence": [
+        "FOUR200-00001",
+        "FOUR200-04121"
+      ],
+      "limits": "ManualCodexself-audit/reviewwaived; next204, notindependentapproval."
+    },
+    {
+      "check": "Fourclientbombs/life/2v2normalending/175180/reset/Ready2/Start2/hardening/K7",
+      "result": "pending",
+      "evidence": [
+        "FOUR200-04131"
+      ],
+      "limits": "NEXT-K7-FOUR-BATTLE-OUTCOMEactive; nofull4match/gate."
+    }
+  ],
+  "evidence": [],
+  "evidence_manifests": [
+    {
+      "path": "docs/evidence/checkpoints/evidence/CP200-four-session.json",
+      "bytes": 1139959,
+      "sha256": "9354869ad1ec2586cda7d78b015b36b9ae187a769e9790306b13c4eccce2a419",
+      "count": 4577
+    }
+  ],
+  "delta": {
+    "added": [
+      "Newseparate4sessionservice/identity/roster/Ready/loading/153withmechanicalnegativecontrols andfouractualnativeWine room/clock/consumerproof.",
+      "Twelve directednativecurrentpositionsinlowobserverR6/PCAPsixAedges; source/profile/copiesfrozenandcleanup0.",
+      "AUD059periodicthrough200/next204 andsource-firstfourBattleauthority/minimalnativebaseline/bomb/result/resetgap."
+    ],
+    "corrected": [
+      "CP1992actual+2syntheticcurrentconsumerlimitnowextendedbyseparate4actualruns; CP199recordimmutable/notretrospectivepass.",
+      "Body-onlyTCPauthcontrolmissedheaderrequest1vsreply4; newregression/nativepositivesboundcorrection.",
+      "Initial12meshverifier/2clientoracleinvalidsamephaseassumption; allAPIarrivaldoesnotimplyallgameapply. R2R3partial/R6differentlowobserverproofkeptseparate.",
+      "R4badoutput/R5circularmetadatawereharnessfailures; keepsealedstopped/partialratherthanfakesuccess.",
+      "CurrentRESEARCHC291/ABStart3/nextadmissionstale; auditcorrectedwithscopelinkswithoutrewritingAC/history."
+    ],
+    "superseded": [
+      "NEXT-K7-FOUR-SESSION-CONTROLclosedroom/load/inputscope; NEXT-K7-FOUR-BATTLE-OUTCOMEactive."
+    ]
+  },
+  "blockers": [
+    "Fourentrypointrejectsgameplay118/124/127/results/reset; needsfourbaseline/capacity/power/bombowner/fuse/fence then2v2lifereport/survivor/rank175180/normalending/reset/Ready2/Start2.",
+    "K7hardening/fourportable/restart/backpressure/rate-limit/persistence, Internet/fullaccountauth/generalresume/relay/fullUDP unknown; K5/K6a/K6bacceptedscopesunchanged.",
+    "ObserverthroughputcandidateboundedbyR2R3/R6delta/geometryinput; noallqueuecause/12handlercallsproofinR6."
+  ],
+  "next_steps": [
+    {
+      "id": "NEXT-K7-FOUR-SESSION-CONTROL",
+      "task": "KRE-005b",
+      "state": "closed",
+      "action": "CP200separate4session/identity/room/Ready/99/121/153/actual4clock/currentmovement12measured. NotBattleoutcomes/reset/Start2/K7.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-K7-FOUR-BATTLE-OUTCOME",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "PLANsource-first4baseline/capacity/power/118159158/broadcast/fence then2v2report/survivor/rank175180/normaloutcome/reset/Ready2/Start2; do notcopyABrankorforfeitwin. AUD059through200/next204.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    }
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-11-08T00:00:50.551371+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "CodexsoloRE/code/runtime/selfcheck/manualaudit; independentreviewwaived notapproved; exactheadPRrequired.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Owner explicitly requested solo, no workers/review."
+    }
+  },
+  "docs_sync": [
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "CP200actual4session/sourcelevels/partialfailures/12currentpositionlimits/nextfourBattle andAUD059counter synchronizedbeforecomplete."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "CP200actual4session/sourcelevels/partialfailures/12currentpositionlimits/nextfourBattle andAUD059counter synchronizedbeforecomplete."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "updated",
+      "reason": "CP200actual4session/sourcelevels/partialfailures/12currentpositionlimits/nextfourBattle andAUD059counter synchronizedbeforecomplete."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "updated",
+      "reason": "CP200actual4session/sourcelevels/partialfailures/12currentpositionlimits/nextfourBattle andAUD059counter synchronizedbeforecomplete."
+    },
+    {
+      "path": "docs/features.json",
+      "state": "updated",
+      "reason": "CP200actual4session/sourcelevels/partialfailures/12currentpositionlimits/nextfourBattle andAUD059counter synchronizedbeforecomplete."
+    },
+    {
+      "path": "docs/COVERAGE.md",
+      "state": "updated",
+      "reason": "CP200actual4session/sourcelevels/partialfailures/12currentpositionlimits/nextfourBattle andAUD059counter synchronizedbeforecomplete."
+    },
+    {
+      "path": "docs/evidence/peer-endpoints/README.md",
+      "state": "updated",
+      "reason": "CP200actual4session/sourcelevels/partialfailures/12currentpositionlimits/nextfourBattle andAUD059counter synchronizedbeforecomplete."
+    },
+    {
+      "path": "tools/README.md",
+      "state": "updated",
+      "reason": "CP200actual4session/sourcelevels/partialfailures/12currentpositionlimits/nextfourBattle andAUD059counter synchronizedbeforecomplete."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/review.json",
+      "state": "updated",
+      "reason": "CP200actual4session/sourcelevels/partialfailures/12currentpositionlimits/nextfourBattle andAUD059counter synchronizedbeforecomplete."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
+      "state": "updated",
+      "reason": "CP200actual4session/sourcelevels/partialfailures/12currentpositionlimits/nextfourBattle andAUD059counter synchronizedbeforecomplete."
+    }
+  ]
+}

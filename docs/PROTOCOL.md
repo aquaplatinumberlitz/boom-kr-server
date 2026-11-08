@@ -5381,6 +5381,42 @@ Serviceproductionbind/153IPvẫnhard127; private-addressshims hiện làmeasurem
 Internet/K6c/NAT/relay/fullauth/authority/generalreset/gates mở; field99IP1/subtype39 vẫnunknown.
 
 
+<a id="four-session-native"></a>
+### Bốn session KR thật: phòng/load/clock và movement — CP200
+
+[Recipe/raw/hash/controls](evidence/peer-endpoints/README.md#cp200), [câu hỏi còn thiếu](RESEARCH.md#gap-lobby-identity-followup),
+[thứ tự](PLAN.md#current-order). Đây là bước mở rộng sau [CP199 hai actual + hai synthetic](#four-slot-native-consumers),
+không sửa kết quả lịch sử của CP199. **Bốn actual KR00967 Wine4b**, bốn tree/prefix/netns/IP riêng trên bridge
+cô lập; Wine/LAN giả lập được owner nghiệm thu. Không dùng Nexon hoặc route Internet.
+
+`server/four_player_service.py` là entrypoint opt-in riêng, tái dùng codec/FixtureProfile/send/serializedowner/
+loading-fence của service hai người. `four_player_profile.py` chỉ biến đổi nhánh zero-profile/rawblob/namesASCII5/7
+đã phục hồi: A1/slot0/KRLocal/team0; B2/slot1/KRGuest/team1; C3/slot2/KRNew/team0; D4/slot3/KRPeer4/team1.
+ID/tên/đội/sourceIP là **design/emu_choice**, không auth/account gốc. C đồng thời slot2 tách replacementCslot0.
+Default hai người/replacement/bundle cũ giữ nguyên. `--source-ip` bắt đủ bốn IPv4 riêng; mỗi role bốn transport
+trong lifetime process, không reset count khi EOF, reject source lạ/fifthtransport trước cấp channel/counter.
+
+Room scope một ExVillage01/normal/Free0: A create, B/C/D join; mỗi view có own106/110 và ba remote106,
+291 theo tên auth. Ba guest Ready95 phải có đúng boundedblob+desired1/tail0; context opaque vẫn chưa auth.
+Host104 chỉ Start khi đủ bốn member và Ready, chỉ epoch1 ở milestone này. 121 bốn row181byte giữ tail/map;
+barrier pin đủ bốn actual99 trước197/196/153. 153 mỗi view133byte/26flags, self0/ba remote theo **operatorIP +
+actual99port**, không tin IP trong request99 để chọn route. EOF đóng room/fence, không tự chọn rank hai người.
+Opcode gameplay/bom/event/result/reset chưa hỗ trợ ở entrypoint mới, có rejection rõ; không giả trận hoàn chỉnh.
+
+| Mức chứng minh | Kết quả/giới hạn |
+|---|---|
+| `design`/implementation | 309 server tests, 200 realTCPchecks/16transport xen kẽ DCBADCBA…; ID/name/stage/seq/Ready/barrier/153/EOF controls. Encoder hoặc TCP driver không là oracle native. |
+| `kr_runtime/confirmed` R2/R3 | Cả bốn request6/291 tên đúng, ownslot0–3, actual join/Ready/start,121181/181/inner152/152, bốn99/clock và153133/133/errors0/ba remoteIDs. R1 authreply1 sai header: fixture KR reply4, đã sửa/regression; raw giữ nguyên. |
+| `kr_runtime/confirmed` R6 ít probe | Bốn normalOSinputwindows; currentcoordinates của mỗi origin thay đổi ở cả ba recipient (12 chiều). PCAP độc lập kv-a thấy sáu chiều có A; không toàn bộ12Ethernetedge. Không có key/E668ADprobe trong R6 nên không gọi đây là12nativeapplycall proof. |
+| `candidate`/observer effect | R2/R3 nhiều hotprobe: đủ12 API source→peer/queue nhưng queue sau hiếm drain/C-Dapply chưa quan sát; cache14E5710 duyệt từ queue đầu. R6 cùng service/profile/topology giảm hotprobe đã có12currentprogress; D dùng Down thay Right bị terrain chặn. Chưa chứng minh một nguyên nhân duy nhất cho mọi queue/timing. |
+
+R4 dừng vì observeroutput cố địnhA, cleanup/seal exit130; R5 observerpaths đã sửa nhưng finalrunJSON vướng
+circularmetadata, giữ **partialseal riêng/không tạo run.json giả**. R6 chỉ sửa phase_id string và có seal đầy đủ.
+Mọi run source/config frozen tới cleanup, bản copy/sourceDB/assets giữ nguyên; không ghi actor hoặc gọi hàm game.
+Bốn client **đã vào Battle và quan sát movement liên thông**, chưa bốn-player bom/trap/death/normal2v2outcome/
+175/180/reset/Start2, hardening/restart/rate-limit/persistence/bundle4/K7 hoặc Internet. Phần còn thiếu theo PLAN;
+không port rankAB hoặc coi ownerWineacceptance là tự đóng gate.
+
 <a id="four-slot-native-consumers"></a>
 ### Bốn slot Start121/peer153 trên copy hiện hành — CP199
 
