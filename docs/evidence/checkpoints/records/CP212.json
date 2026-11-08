@@ -1,0 +1,265 @@
+{
+  "id": "CP212",
+  "previous": "CP211",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-08T06:59:49.722807+00:00",
+  "context_commit": "936693d5f08006bfe0b55af2b01b29a81250b350",
+  "owner": "Codex",
+  "reviewer": "Codex",
+  "question": "Which unchanged K6c behavior clauses are evidenced when owner replaces real Internet with emulated WAN, and does independent per-clause K7 reassessment now meet existing demo acceptance?",
+  "scope": "Owner environment directive/new manual K6c/K7 acceptance with source-first reuse and read-only127-report hash comparison; disclose actual topology/mapping-filtering/MTU/shaping. Periodic AUD062/core docs/catalog/issue14 sync. No new runtime, new binary RE, source/config change or complete-history edit.",
+  "artifacts": [
+    {
+      "name": "OriginalKR00967unchanged",
+      "sha256": "a52545c14b1fea423de655c3163d6360b628d61c1cd472b46fdbc8a9ffe15f4e"
+    },
+    {
+      "name": "CurrentWinecopy_import_ABI_corrected_offline_only",
+      "sha256": "4b781fbcea21e0f6294c729b63be86ab2953d60ad83b0d0c9219359f826107ed"
+    }
+  ],
+  "locators": [
+    "Originala52545c14b1fea423de655c3163d6360b628d61c1cd472b46fdbc8a9ffe15f4e/currentofflinecopy4b781fbcea21e0f6294c729b63be86ab2953d60ad83b0d0c9219359f826107ed/Wine10.0-20260425; knownVA/nativeoracles locators retained in CP192–196/203–207.",
+    "CP195runa0fdf455b957870dfcba347789b7673efadce9b379ee2e98687ec5f21483bb43/two normalBwins/resetStart3/4peerwindows/UDPqdisc/PCAP1159;CP196R2runedc9729c6aefc4fdf9d2d0e5c7f83c97b9ad13161a4c25e3c8f6c0292b9725ec/ownedhostEOF/survivorcleanup/fence independent.",
+    "CP207runbf8c95fd9350c6844abf2290166e921866e8f2ff0cf3fccd14a50c3c7941deef/same67pinbundle-store/freshserver/newUUID/4actual2opposite2v2/resetStart3/2200gameplay208health2528network/cleanup0; no new runtime CP212.",
+    "Static source/destination-specific SNAT30001/30002 and source-IP/interface/dportDNAT; UDP-onlynetem40±5ms/loss5%seed194/noexplicitreorder-ratecap-MTUsweep/routerveth1500. Not RFCNATtype classification."
+  ],
+  "findings": [
+    {
+      "summary": "Owner formally accepts K6c WAN giả lập in place of real Internet, retaining ID and all behavior clauses. Real external Internet endpoint removed as K6c/K7 blocker; Internet thật chưa kiểm remains separate backlog. Environment decision does not itself close gates; completed history untouched.",
+      "source": "design",
+      "status": "design",
+      "method": "documentation",
+      "canonical": "docs/PROTOCOL.md#emulated-wan-acceptance",
+      "evidence": [
+        "WAN212-0061"
+      ],
+      "limits": "CP212 is manual acceptance under owner-changed environment, not new runtime. Reuses unchanged sealed KR00967/Wine10.0/copy4b/basic291/staticNAT/UDP-only40±5ms-loss5%seed194/sharedkernel CP192–196 and fixedfour67pinbundle CP203–207. Internet thật chưa kiểm; not actualISP/CGNAT/cone classification/originalNATdiscovery/relay/generalresume/fullgame. Native/runtime/model/design/manualdecision distinct; unmerged team WIP excluded. Reviewwaived/AUD062through212/next216."
+    },
+    {
+      "summary": "Source-first read-only review reuses CP192routing/CP193endpointnegative-positive/CP194195two-normalcycles-NAT-UDP/nativepeer-life-rank-reset and CP196independenthostEOF-fence.127pinnedreports size/SHA matched; avoids repeat codec/consumer/queue/native/fullrun. Actual static mapping/filter rules/shaping/MTU and observational limits are explicit, no claim realInternet/RFCsymmetricNAT.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#emulated-wan-acceptance",
+      "evidence": [
+        "WAN212-0066",
+        "WAN212-0051",
+        "WAN212-0046",
+        "WAN212-0023"
+      ],
+      "limits": "CP212 is manual acceptance under owner-changed environment, not new runtime. Reuses unchanged sealed KR00967/Wine10.0/copy4b/basic291/staticNAT/UDP-only40±5ms-loss5%seed194/sharedkernel CP192–196 and fixedfour67pinbundle CP203–207. Internet thật chưa kiểm; not actualISP/CGNAT/cone classification/originalNATdiscovery/relay/generalresume/fullgame. Native/runtime/model/design/manualdecision distinct; unmerged team WIP excluded. Reviewwaived/AUD062through212/next216."
+    },
+    {
+      "summary": "Codex manually compares every revised-environment K6c clause: two actualnative KR endpoints/routedstaticNAT/directUDP/two same-run normal outcomes-consistency-reset/latencyloss-logged/independentnativehostEOFcleanup. K6c WAN giả lập passed scopedCP212; inherited K6a contest/Bowner/stale controls remain independent, not falsely assigned to WAN run.",
+      "source": "design",
+      "status": "design",
+      "method": "documentation",
+      "canonical": "docs/PROTOCOL.md#emulated-wan-acceptance",
+      "evidence": [
+        "WAN212-0063",
+        "WAN212-0055"
+      ],
+      "limits": "CP212 is manual acceptance under owner-changed environment, not new runtime. Reuses unchanged sealed KR00967/Wine10.0/copy4b/basic291/staticNAT/UDP-only40±5ms-loss5%seed194/sharedkernel CP192–196 and fixedfour67pinbundle CP203–207. Internet thật chưa kiểm; not actualISP/CGNAT/cone classification/originalNATdiscovery/relay/generalresume/fullgame. Native/runtime/model/design/manualdecision distinct; unmerged team WIP excluded. Reviewwaived/AUD062through212/next216."
+    },
+    {
+      "summary": "Independently re-evaluated unchanged K7 criteria against CP190198two and CP203207four Linuxrelocation/boundedparser-IO-rate/negativeinput/identitypin-health/correlations/samebundlefreshserver/fouractual2oppositeoutcomes-resetStart3-UDPimpairment. K7 demo passed scoped after K6c; full4mechanics/auth/resume/Internet/eightclient are not additional criteria. Gate declaration does not raise individualfeature evidence.",
+      "source": "design",
+      "status": "design",
+      "method": "documentation",
+      "canonical": "docs/PROTOCOL.md#emulated-wan-acceptance",
+      "evidence": [
+        "WAN212-0064",
+        "WAN212-0042",
+        "WAN212-0065"
+      ],
+      "limits": "CP212 is manual acceptance under owner-changed environment, not new runtime. Reuses unchanged sealed KR00967/Wine10.0/copy4b/basic291/staticNAT/UDP-only40±5ms-loss5%seed194/sharedkernel CP192–196 and fixedfour67pinbundle CP203–207. Internet thật chưa kiểm; not actualISP/CGNAT/cone classification/originalNATdiscovery/relay/generalresume/fullgame. Native/runtime/model/design/manualdecision distinct; unmerged team WIP excluded. Reviewwaived/AUD062through212/next216."
+    },
+    {
+      "summary": "AUD062 periodic README→PLAN→PROTOCOL→RESEARCH→evidence/raw; fixes stale Internet blockers/CP211merge/CP206followup/8session scope and nextaudit216. Epic14 remains open for teamvariants/fullscope, WIPfiles hashed and retained unmerged. No checkpointcomplete/audit/raw rewrite, no worker/review fiction.",
+      "source": "design",
+      "status": "design",
+      "method": "documentation",
+      "canonical": "docs/PROTOCOL.md#emulated-wan-acceptance",
+      "evidence": [
+        "WAN212-0058",
+        "WAN212-0050",
+        "WAN212-0038"
+      ],
+      "limits": "CP212 is manual acceptance under owner-changed environment, not new runtime. Reuses unchanged sealed KR00967/Wine10.0/copy4b/basic291/staticNAT/UDP-only40±5ms-loss5%seed194/sharedkernel CP192–196 and fixedfour67pinbundle CP203–207. Internet thật chưa kiểm; not actualISP/CGNAT/cone classification/originalNATdiscovery/relay/generalresume/fullgame. Native/runtime/model/design/manualdecision distinct; unmerged team WIP excluded. Reviewwaived/AUD062through212/next216."
+    }
+  ],
+  "verification": [
+    {
+      "check": "Read-only127pinnedreport size/hash and sealed topology/native/cleanup review",
+      "result": "pass",
+      "evidence": [
+        "WAN212-0066",
+        "WAN212-0051"
+      ],
+      "limits": "CP212 is manual acceptance under owner-changed environment, not new runtime. Reuses unchanged sealed KR00967/Wine10.0/copy4b/basic291/staticNAT/UDP-only40±5ms-loss5%seed194/sharedkernel CP192–196 and fixedfour67pinbundle CP203–207. Internet thật chưa kiểm; not actualISP/CGNAT/cone classification/originalNATdiscovery/relay/generalresume/fullgame. Native/runtime/model/design/manualdecision distinct; unmerged team WIP excluded. Reviewwaived/AUD062through212/next216."
+    },
+    {
+      "check": "Manual K6c revised-environment per-clause acceptance",
+      "result": "pass",
+      "evidence": [
+        "WAN212-0063"
+      ],
+      "limits": "CP212 is manual acceptance under owner-changed environment, not new runtime. Reuses unchanged sealed KR00967/Wine10.0/copy4b/basic291/staticNAT/UDP-only40±5ms-loss5%seed194/sharedkernel CP192–196 and fixedfour67pinbundle CP203–207. Internet thật chưa kiểm; not actualISP/CGNAT/cone classification/originalNATdiscovery/relay/generalresume/fullgame. Native/runtime/model/design/manualdecision distinct; unmerged team WIP excluded. Reviewwaived/AUD062through212/next216."
+    },
+    {
+      "check": "Independent manual K7 unchanged-criteria reassessment",
+      "result": "pass",
+      "evidence": [
+        "WAN212-0064"
+      ],
+      "limits": "CP212 is manual acceptance under owner-changed environment, not new runtime. Reuses unchanged sealed KR00967/Wine10.0/copy4b/basic291/staticNAT/UDP-only40±5ms-loss5%seed194/sharedkernel CP192–196 and fixedfour67pinbundle CP203–207. Internet thật chưa kiểm; not actualISP/CGNAT/cone classification/originalNATdiscovery/relay/generalresume/fullgame. Native/runtime/model/design/manualdecision distinct; unmerged team WIP excluded. Reviewwaived/AUD062through212/next216."
+    },
+    {
+      "check": "PeriodicAUD062/core-doc-catalog-issue14 sync; docs initial",
+      "result": "pass",
+      "evidence": [
+        "WAN212-0058",
+        "WAN212-0035"
+      ],
+      "limits": "Full local/history and exact committed PR head checks still required before merge; no source/binary change."
+    },
+    {
+      "check": "Actual Internet/ISP/CGNAT/generalNATdiscovery/fullgame/teamvariants",
+      "result": "pending",
+      "evidence": [
+        "WAN212-0057"
+      ],
+      "limits": "Separate backlog or NEXT-EIGHT-TEAM-VARIANTS; never K6c/K7 environment dependency."
+    }
+  ],
+  "evidence": [],
+  "evidence_manifests": [
+    {
+      "path": "docs/evidence/checkpoints/evidence/CP212-emulated-wan-acceptance.json",
+      "bytes": 16406,
+      "sha256": "cc5bdd565277841a5f960b25ea7555d99a10afcd7ba5064017aa2f208b01f44e",
+      "count": 66
+    }
+  ],
+  "delta": {
+    "added": [
+      "Owner directive accepting K6c WAN giả lập; actual mapping/filtering/impairment/MTU disclosure and per-clause manual acceptance.",
+      "K7 independently reassessed scoped passed using unchanged other-criteria evidence.",
+      "AUD062through212/next216; docs/catalog/issue14 bidirectional sync and WIP preservation."
+    ],
+    "corrected": [
+      "RealInternetcontrolledendpoint no longer acceptance blocker, remains untested backlog.",
+      "SymmetricSNAT label not RFCNATclassification; earlier private153 metadata not currentmappedpositive conclusion.",
+      "StaleCP211pendingPR/CP206followups/8service notmeasured in current docs now linked later proof."
+    ],
+    "superseded": [
+      "CurrentK6c/K7open gate declarations superseded by explicit CP212 scoped manual decisions; historical complete decisions unchanged."
+    ]
+  },
+  "blockers": [
+    "NEXT-EIGHT-TEAM-VARIANTS still needs actualnativeFree1v7/Manner4v4/negative1v7; sourcecontrols/preparedruns remain unmerged WIP, not gatecode.",
+    "Internet thật chưa kiểm; originalNATdiscovery/relay/fullauth/generalresume/allitems-maps-modes outside scope, not K6c/K7 dependencies."
+  ],
+  "next_steps": [
+    {
+      "id": "NEXT-K6C-WAN-ACCEPTANCE",
+      "task": "KRE-005b",
+      "state": "closed",
+      "action": "CP212 new owner environment directive/manualperclause acceptance and independentK7reassessment complete; exactheadPRchecksrequired beforemerge; notactualInternet.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-EIGHT-TEAM-VARIANTS",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "PLAN existing frozen prepared team cases and preserved WIP. Recheck inputs then actual8Free1v7twooutcomes/Manner4v4positive/Manner1v7negative; no redo knowncodec/rank/roster. InteractiveKRteamchange remainsunknown; VN89notported. NextperiodicCP216.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    }
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-11-08T06:59:49.722807+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "CodexsoloRE/code/runtime/selfcheck; reviewwaived notapproved, exactheadPRrequired.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Owner explicitly requested solo, no workers/review."
+    }
+  },
+  "docs_sync": [
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "CP212 owner WAN environment/manual K6c-K7 scoped decisions/currentstate-backlog/historylimits/issue14/AUD062next216 syncedbeforecomplete."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "CP212 owner WAN environment/manual K6c-K7 scoped decisions/currentstate-backlog/historylimits/issue14/AUD062next216 syncedbeforecomplete."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "updated",
+      "reason": "CP212 owner WAN environment/manual K6c-K7 scoped decisions/currentstate-backlog/historylimits/issue14/AUD062next216 syncedbeforecomplete."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "updated",
+      "reason": "CP212 owner WAN environment/manual K6c-K7 scoped decisions/currentstate-backlog/historylimits/issue14/AUD062next216 syncedbeforecomplete."
+    },
+    {
+      "path": "AGENTS.md",
+      "state": "updated",
+      "reason": "CP212 owner WAN environment/manual K6c-K7 scoped decisions/currentstate-backlog/historylimits/issue14/AUD062next216 syncedbeforecomplete."
+    },
+    {
+      "path": "docs/features.json",
+      "state": "updated",
+      "reason": "CP212 owner WAN environment/manual K6c-K7 scoped decisions/currentstate-backlog/historylimits/issue14/AUD062next216 syncedbeforecomplete."
+    },
+    {
+      "path": "docs/COVERAGE.md",
+      "state": "updated",
+      "reason": "CP212 owner WAN environment/manual K6c-K7 scoped decisions/currentstate-backlog/historylimits/issue14/AUD062next216 syncedbeforecomplete."
+    },
+    {
+      "path": "docs/evidence/owner-directives/emulated-wan.json",
+      "state": "updated",
+      "reason": "CP212 owner WAN environment/manual K6c-K7 scoped decisions/currentstate-backlog/historylimits/issue14/AUD062next216 syncedbeforecomplete."
+    },
+    {
+      "path": "docs/evidence/peer-endpoints/k6c-acceptance.json",
+      "state": "updated",
+      "reason": "CP212 owner WAN environment/manual K6c-K7 scoped decisions/currentstate-backlog/historylimits/issue14/AUD062next216 syncedbeforecomplete."
+    },
+    {
+      "path": "docs/evidence/peer-endpoints/k7-acceptance.json",
+      "state": "updated",
+      "reason": "CP212 owner WAN environment/manual K6c-K7 scoped decisions/currentstate-backlog/historylimits/issue14/AUD062next216 syncedbeforecomplete."
+    },
+    {
+      "path": "docs/evidence/peer-endpoints/README.md",
+      "state": "updated",
+      "reason": "CP212 owner WAN environment/manual K6c-K7 scoped decisions/currentstate-backlog/historylimits/issue14/AUD062next216 syncedbeforecomplete."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/review.json",
+      "state": "updated",
+      "reason": "CP212 owner WAN environment/manual K6c-K7 scoped decisions/currentstate-backlog/historylimits/issue14/AUD062next216 syncedbeforecomplete."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
+      "state": "updated",
+      "reason": "CP212 owner WAN environment/manual K6c-K7 scoped decisions/currentstate-backlog/historylimits/issue14/AUD062next216 syncedbeforecomplete."
+    },
+    {
+      "path": "docs/evidence/checkpoints/audits/AUD062.json",
+      "state": "updated",
+      "reason": "CP212 owner WAN environment/manual K6c-K7 scoped decisions/currentstate-backlog/historylimits/issue14/AUD062next216 syncedbeforecomplete."
+    }
+  ]
+}

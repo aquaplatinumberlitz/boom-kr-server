@@ -1,0 +1,94 @@
+{
+  "id": "AUD062",
+  "trigger": "periodic",
+  "completed_through": "CP212",
+  "recorded_utc": "2026-11-08T06:59:49.722807+00:00",
+  "auditor": "Codex manual self-audit; independent review waived",
+  "read_files": [
+    "README.md",
+    "docs/PLAN.md",
+    "docs/PROTOCOL.md",
+    "docs/RESEARCH.md",
+    "AGENTS.md",
+    "docs/features.json",
+    "docs/COVERAGE.md",
+    "docs/evidence/owner-directives/emulated-wan.json",
+    "docs/evidence/peer-endpoints/k6c-acceptance.json",
+    "docs/evidence/peer-endpoints/k7-acceptance.json",
+    "docs/evidence/peer-endpoints/README.md",
+    "docs/evidence/issue-reconciliation/review.json",
+    "docs/evidence/issue-reconciliation/github-snapshot.json",
+    "tools/README.md",
+    "docs/evidence/checkpoints/audits/AUD061.json",
+    "local/research/codex/wan-acceptance-cp212/source-first.json",
+    "local/research/codex/wan-acceptance-cp212/reused-evidence-verification.json",
+    "local/research/codex/netem-KR-two-cycles-r1/cycles/virtual-network.json",
+    "local/research/codex/netem-KR-two-cycles-r1/cycles/chronology-A.jsonl",
+    "local/research/codex/netem-KR-two-cycles-r1/life-agreement-verification.json",
+    "local/research/codex/netem-KR-two-cycles-r1/netem-native-verification.json",
+    "local/research/codex/NAT-netem-host-EOF-r2/host-eof-verification.json",
+    "local/research/codex/NAT-netem-host-EOF-r2/EOF-tail-verification.json",
+    "local/research/codex/four-netem-restart-r1/verification.json",
+    "local/research/codex/four-netem-restart-r1/health-verification.json",
+    "local/research/codex/four-netem-restart-r1/cycles/B/four-rank-r1.png",
+    "local/research/codex/four-netem-restart-r1/cycles/A/four-rank-r2.png"
+  ],
+  "method": "Manual README→PLAN current-order and literal K6c/K7 criteria→PROTOCOL authority/copy/NAT/UDP/lifecycle/four-health/bundle→RESEARCH active gaps→evidence CP192–196/203–207 and sealed config/native chronology/life-before175/peer and health reports. Rechecked two opposite four-player rank screenshots against native175 vectors. Selective relevant-section audit, not reread every historical line. Compared127 pinned reports and immutable record/evidence-manifest hashes; full checker covers all raw. New owner environment decision distinguished from native observations and manual gate decision.",
+  "findings": [
+    {
+      "id": "F1",
+      "stale": "Current sources still made actual external Internet endpoint a K6c/K7 blocker; owner now replaces only this environment requirement.",
+      "correction": "New owner directive and new CP212 manual criteria decisions; K6c WAN giả lập/K7 scoped passed. Internet thật chưa kiểm is separate backlog, not hidden dependency. Complete checkpoint/audit/raw history unchanged.",
+      "fixed_in": [
+        "README.md",
+        "docs/PLAN.md",
+        "docs/PROTOCOL.md",
+        "docs/RESEARCH.md",
+        "AGENTS.md",
+        "docs/features.json",
+        "docs/COVERAGE.md",
+        "docs/evidence/owner-directives/emulated-wan.json",
+        "docs/evidence/peer-endpoints/k6c-acceptance.json",
+        "docs/evidence/peer-endpoints/k7-acceptance.json",
+        "docs/evidence/peer-endpoints/README.md",
+        "docs/evidence/issue-reconciliation/review.json"
+      ]
+    },
+    {
+      "id": "F2",
+      "stale": "Raw scaffold kind said symmetric SNAT and old NAT note described private153 negative even in later positive topology.",
+      "correction": "Describe actual rules, source/destination-specific static mapping/DNAT and private153 negative versus mapped153 positive separately; never infer RFC symmetric/cone NAT type. Publish explicit UDP-only delay/loss, no explicit reorder/ratecap/MTUsweep, veth1500 and sharedkernel/capture limits. Raw untouched.",
+      "fixed_in": [
+        "docs/PROTOCOL.md",
+        "docs/evidence/peer-endpoints/k6c-acceptance.json"
+      ]
+    },
+    {
+      "id": "F3",
+      "stale": "README CP211 still pendingPR; PLAN CP206 freshserver/fourUDP gap and eight-session extension phrased as current missing work.",
+      "correction": "Link mergedPR283/936693d, label CP206 gap historical resolvedCP207, eight fixed4v4 integratedCP208–211; team variants remain the only active followup in PLAN. Existing team WIP preserved/unmerged/not used as gate code.",
+      "fixed_in": [
+        "README.md",
+        "docs/PLAN.md",
+        "docs/RESEARCH.md",
+        "docs/evidence/issue-reconciliation/review.json"
+      ]
+    },
+    {
+      "id": "F4",
+      "stale": "Gate and per-feature knowledge could be conflated after K6/K7 passed.",
+      "correction": "Catalog updates only declared gate with explicit acceptance refs; static/emulation/runtime/implementation/integration dimensions retain their own limits. Epic14 stays open, fullgame/Internet/fullauth not claimed. Audit counter advances212→216 without reset.",
+      "fixed_in": [
+        "docs/features.json",
+        "docs/COVERAGE.md",
+        "docs/PLAN.md",
+        "docs/evidence/issue-reconciliation/review.json"
+      ]
+    }
+  ],
+  "remaining": [
+    "Internet thật chưa kiểm: actualISP/CGNAT/topologies/PMTU/discovery/relay original unknown; backlog not K6c/K7 dependency.",
+    "Actual8Free1v7/Manner4v4/negative1v7; interactiveKRteam-change opcode/layout unknown; fixed presets are operator design.",
+    "Full4/8items-terrain-needle-rescue/accountauth/resume/allmodes/maps outside scoped demo; no new gate dependencies."
+  ]
+}

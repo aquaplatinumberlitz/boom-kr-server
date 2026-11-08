@@ -1,0 +1,66 @@
+{
+  "schema": "kre-gate-acceptance-evidence-v1",
+  "checkpoint": "CP212",
+  "decided_by": "Codex",
+  "review": "waived",
+  "review_reference": "docs/evidence/checkpoints/review-waiver.json",
+  "recorded_utc": "2026-11-08T06:54:01.971491+00:00",
+  "baseline": "936693d5f08006bfe0b55af2b01b29a81250b350",
+  "decision": "passed",
+  "next_source": "docs/PLAN.md#current-order",
+  "gate": "K6c",
+  "scope": "K6c WAN giả lập: hai actual KR00967 Wine/copy4b/basic291/Manner/ExVillage01; hai subnet/endpoint riêng qua virtual router/static SNAT-DNAT/UDP-only impairment trên cùng host/kernel. Internet thật chưa kiểm.",
+  "owner_environment_directive": "docs/evidence/owner-directives/emulated-wan.json",
+  "criteria": [
+    {
+      "criterion": "Môi trường hai mạng/endpoint qua router/NAT ảo cô lập thay Internet thật",
+      "sources": [
+        "docs/evidence/owner-directives/emulated-wan.json",
+        "docs/PROTOCOL.md#emulated-wan-acceptance",
+        "docs/evidence/peer-endpoints/README.md#cp192",
+        "docs/evidence/peer-endpoints/README.md#cp195"
+      ],
+      "reason": "CP192 routed control và CP195 actual A/B netns/IP/veth riêng, router netns không external/default route; local stub10.77.0.1; Wine/native PID/prefix/copy/hash/cleanup được pin. Không hai ISP hoặc hai máy vật lý."
+    },
+    {
+      "criterion": "Endpoint/NAT và P2P hoặc relay được chọn",
+      "sources": [
+        "docs/PROTOCOL.md#nat-endpoint-control",
+        "docs/PROTOCOL.md#udp-netem-cycles"
+      ],
+      "reason": "Chọn direct UDP qua mapping tĩnh operator, không relay: CP193 private153/helper0 negative và mapped153+DNAT/helper1/consumer/handler/currentmovement positive. CP195 four native peer windows/2keys nối typed153/mapped tuple/PCAP wireSHA/API/key/apply/target/currentprogress. Không NAT discovery/relay gốc; không gán phân loại cone/symmetric từ một destination."
+    },
+    {
+      "criterion": "Hai bên cùng state/result, hai trận liên tiếp/reset",
+      "sources": [
+        "docs/PROTOCOL.md#udp-netem-cycles",
+        "docs/PLAN.md#k6a-acceptance"
+      ],
+      "reason": "CP195 cùng hai actualprocess qua hai normal B wins: AactualSpace→159/158→trap/death56→1 ở cả hai view trước175; B21, full175/180/room/Ready2/Start3; keys12345→12346→12347, baselineA5/B4, seed/entity/timer reset. BsoleRoller4→5→4 hai lần. K6a contest/B-owner/stale controls là prerequisites độc lập giữ nguyên, không gán chúng thành contest qua WAN trong run CP195."
+    },
+    {
+      "criterion": "Latency/jitter/loss/disconnect được ghi, survivor không treo",
+      "sources": [
+        "docs/PROTOCOL.md#udp-netem-cycles",
+        "docs/PROTOCOL.md#nat-netem-host-eof"
+      ],
+      "reason": "UDP-only netem40±5ms/loss5%seed194; native queues631/493 packets, drops43/37; baseline/drop100/delayloss socket controls64/64,0/3,58/64 riêng. CP196R2 độc lập cùng NAT/qdisc: pending B-host owned kill, nativeA175180/107 IDclear/chief/room, pendingjob fenced pastdue4s. Không ghép EOF thành cùng run hai normal outcomes; R1failed observer giữ nguyên."
+    },
+    {
+      "criterion": "Dependencies/authority/isolation/provenance",
+      "sources": [
+        "docs/PLAN.md#k6a-acceptance",
+        "docs/PLAN.md#k6b-acceptance",
+        "docs/PROTOCOL.md#authority"
+      ],
+      "reason": "K0–K6b scoped đã đạt; current copy4b/originala525/service-bundle/oracle continuity đã đối chiếu qua CP192–196. Emulated fuse/drop/rank/validation design giữ nguyên. Native runtime khác copied-getter emulation; file/hash checker không tự quyết acceptance."
+    }
+  ],
+  "evidence_method": "Codex manual acceptance mapping using unchanged sealed CP192–196 runtime and inherited K6a/K6b controls; source-first/read-only hash report under local/research/codex/wan-acceptance-cp212. No new runtime inferred.",
+  "limits": [
+    "Internet thật chưa kiểm; ISP/CGNAT thực tế/mọi Internet topology chưa kiểm, backlog không là dependency K6c/K7.",
+    "Static source/destination-specific SNAT plus source-IP/interface/dport DNAT; not discovery/STUN/TURN/UPnP/cone classification.",
+    "UDP-only impairment; TCP baseline; no explicit reordering/bandwidth shaping/MTU sweep. Shared kernel, GDB timing overhead, kv-a-only PCAP; no per-packet-drop attribution/native latency promise.",
+    "Gate is bounded basic demo, not full inventory/accountauth/general reconnect/all modes/maps or eight-client acceptance. No checkpoint/audit/raw history edits."
+  ]
+}

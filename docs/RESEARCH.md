@@ -18,7 +18,7 @@ Nguồn cũ và run/checkpoint giữ trong phần lịch sử bên dưới và m
 được đọc thành trạng thái hiện tại. Tra mức RE/implementation/runtime/gate theo từng chức năng ở
 [coverage](COVERAGE.md), contract/giới hạn tại link của từng cơ chế trong bảng gap. Không duy trì
 một danh sách tiến độ theo CP khác tại đây; [README](../README.md) giữ mốc hiện tại,
-[PLAN](PLAN.md#current-order) giữ thứ tự. Fullauthentication/Internet chưa nghiệm thu; K3/K4/K5basic/K6a và K6b LAN giả lập đạt riêng scope ở PLAN.
+[PLAN](PLAN.md#current-order) giữ thứ tự. Fullauthentication chưa nghiệm thu. K6c WAN giả lập/K7 đạt CP212 theo scope PLAN; **Internet thật chưa kiểm** và không dependency ngầm của các gate đã đạt.
 
 | Câu hỏi / owner | Trạng thái | Khoảng trống và phép đo hiện hành |
 |---|---|---|
@@ -39,10 +39,10 @@ sameprocessTCPloginretry→auth137cursor/errors0→channelreset. [Controls/hash]
 giữ fatalCRCcleanup/WineDbgHWwatchpointfailure/stubordinalcontrol. Không lặp fatalclose hoặc stubDWK.
 K2profile được nghiệm thu theo [PLAN](PLAN.md#k2-acceptance); không fullgrammar/allmodes/headerauthority/
 accountresume. Widercodec chỉ mở khi có trigger cụ thể từ K3; không quét mọi variant trước sảnh.
-Owner/tự kiểm Codex, review waived; AUD061 quaCP208, periodic audit kếCP212.
+Owner/tự kiểm Codex, review waived; AUD062 quaCP212, periodic audit kếCP216.
 
 <a id="gap-lobby-identity-followup"></a>
-### Fourfreshrestart/UDPimpairment đã kiểm; K7Internetdependency mở, tiếp scope8độc lập
+### K6c WAN giả lập/K7 đã nghiệm thu scoped; tiếp biến thể team theo PLAN
 
 [CP207contract](PROTOCOL.md#four-netem-restart), [raw/hash](evidence/peer-endpoints/README.md#cp207),
 [K7đốichiếu](PLAN.md#k7-evidence-review), [thứtựduynhất](PLAN.md#current-order). Same67bundle/store sauCP206stop:
@@ -50,7 +50,9 @@ Owner/tự kiểm Codex, review waived; AUD061 quaCP208, periodic audit kếCP21
 24remotecurrentprogress/hai epoch, PCAP6Aedges/cảhai epoch, qdiscdelay/drop/cleanup0. Current214kernelTCP vẫn đúng
 recipient/Bfollowup1/fence/nocommit; khôngqueuednonblockingbenchmark.
 ReuseCP195TC/CP206four/profile/health/copy, VN chỉ TCPendpoint/P2Parchitecture; khôngnativefunctionRE mới.
-K7 chưa đóng do controlledInternetendpoint thiếu; không đòi Windows/physicalhostmới, không dùng LAN thayInternet.
+CP212 [owner directive](evidence/owner-directives/emulated-wan.json) thay môi trường K6c bằng WAN giả lập;
+[đối chiếu từng tiêu chí](PLAN.md#k6c-acceptance) đủ và [K7 đánh giá lại độc lập](PLAN.md#k7-evidence-review) đạt scoped.
+**Internet thật chưa kiểm**, backlog riêng bên dưới; không phải dependency K6c/K7. Không cần lặp các run đã đủ proof.
 [CP208](PROTOCOL.md#eight-session-preview) đã dùng lại capacity/teamguard/codec/row26/peer26flags,
 đo native8consumer trên hai actual + sáu synthetic và adapter32TCP/487checks; không tìm lại nhánh đã giải.
 Tám actual auth/name291/ownslot/99/285-205/8actorsclock đã qua R2/1468joins/192getters/cleanup0.
@@ -67,7 +69,17 @@ minh interactiveC2Steamchange; VNroom89 chỉ đầu mối nếu mởnhánh đó
 Unknownninthsource đã có packagedrealTCPnegative, không actual9CA/map-awaregeneralroom-full/auth.
 Native8raylength/exactblastentitylookup/powerconsumer8 chưa đo lại; wirepower2 không đại diện toànblastbehavior.
 8portablebattlebundle CP211 đãnative2cycles; reject9native/1–7actual/Manner8 còn thiếu. Phép thử tối thiểu ở PLAN.
-Generalaccountresume/full4items/terrain/kim/cứu/8fullmatch ngoài proof. Audit CP208, kếCP212; reviewwaived.
+Generalaccountresume/full4items/terrain/kim/cứu/8fullmatch ngoài proof. AUD062 qua212, kếCP216; reviewwaived.
+
+<a id="gap-real-internet"></a>
+### Backlog riêng: Internet thật chưa kiểm
+
+Owner cho [WAN giả lập](evidence/owner-directives/emulated-wan.json) nghiệm thu K6c; không cần externalendpoint
+để đóng K6c/K7. Phần chưa biết: actual ISP/CGNAT/mapping-filtering/PMTU/firewall/topology Internet, NAT discovery
+hoặc relay gốc. Khi chủ dự án ưu tiên backlog này, phép thử nhỏ nhất là hai endpoint do dự án kiểm soát,
+khai topology/routing/NAT/impairments thực rồi đo directUDP hoặc relay đã chọn/nativeconsistency/two cycles/EOF.
+Không gọi run cô lập cũ là Internet thật và không thêm phần này trở lại dependency demo đã nghiệm thu.
+Owner/tự kiểm Codex; chỉ mở theo thứ tự PLAN, không dựng plan riêng.
 
 <a id="feature-gaps"></a>
 ## Khoảng trống theo cơ chế
@@ -102,12 +114,12 @@ Bảng được [coverage](COVERAGE.md) trích tự động để tra theo chứ
 | <a id="gap-active-other"></a>KR-F012 | Dart/Oxygen/Potion/Spring/Drill/RemoteBomb mới là phân loại, chưa chứng minh cùng đường kim. | Chọn một group đang cần, tìm consumer Ctrl/report/confirm; đo điều kiện, tiêu hao, hiệu ứng và peer, không quét từng row. |
 | <a id="gap-timed-variants"></a>KR-F013 | Shield/Sensor/SJNeedle raw tail chưa chứng minh đơn vị/thời hạn/hành vi KR. | Trace consumer timer/group cần dùng, đo start/expiry/cancel/reset và peer với control; không suy ms từ tên hoặc raw số. |
 | <a id="gap-mode-items"></a>KR-F014 | ItemAttr cho thấy row/group; presence cơ chế/mode guard/reward runtime vẫn candidate, ngoài Battle tối thiểu. | Chỉ mở group mode khi PLAN mở mode đó; bắt guard/consumer trước thử runtime, HPNeedle17 không là Needle145. |
-| <a id="gap-peer-relay"></a>KR-F015 | [CP193](PROTOCOL.md#nat-endpoint-control) đã kiểm SNAT nhận thực tế/queue/drain và đối chứng153 riêng với mapped+DNAT/native helper/output/handler/current movement. | [CP194](PROTOCOL.md#nat-two-cycles) đã hai vòng NAT tĩnh/reset/Start3; [CP195](PROTOCOL.md#udp-netem-cycles) đã hai vòng dưới UDP delay/loss; [CP196](PROTOCOL.md#nat-netem-host-eof) bổ sung EOF/fence riêng; incomingadmission CP197198 đã đo; currentlifecycle/hardening theoPLAN. NAT discovery/relay gốc/fullUDP/Internet còn mở. K6b LAN giả lập đã đạt theo owner. |
+| <a id="gap-peer-relay"></a>KR-F015 | [CP193](PROTOCOL.md#nat-endpoint-control) đã kiểm SNAT nhận thực tế/queue/drain và đối chứng153 riêng với mapped+DNAT/native helper/output/handler/current movement. | [CP194](PROTOCOL.md#nat-two-cycles) đã hai vòng NAT tĩnh/reset/Start3; [CP195](PROTOCOL.md#udp-netem-cycles) đã hai vòng dưới UDP delay/loss; [CP196](PROTOCOL.md#nat-netem-host-eof) bổ sung EOF/fence riêng; incomingadmission CP197198 đã đo; currentlifecycle/hardening theoPLAN. K6c WAN giả lập đạt CP212; [topology/giới hạn](PROTOCOL.md#emulated-wan-acceptance). NAT discovery/relay gốc/fullUDP ngoài scope; [Internet thật chưa kiểm](#gap-real-internet), backlog không chặn gate. |
 | <a id="gap-result-return"></a>KR-X001 | [CP176](PROTOCOL.md#a-c-basic-cycles) Ahost/Cguest2normalresults/180/room/actualCReady2/native110; CP174thirdforfeit giữ riêng. | [CP198](PROTOCOL.md#native-interleaved-startup) đã ABnormal2cycles/reset/Start3; CP176khôngStart3 chỉ là phạm vi ACcũ. [CP210](PROTOCOL.md#eight-two-team-cycles) thêm8actual/2normal4v4/resetStart3 và [CP211](PROTOCOL.md#eight-portable-battle) packagednativeproof; authority/fullvariants vẫn mở, không ghép khác run thànhfull4inventory. |
 | <a id="gap-round-reset"></a>KR-X002 | [CP176](PROTOCOL.md#a-c-basic-cycles) AC2keys/6entities/3Aeffects/195/stat/hiddeneligibility reset và Ready2 có nguồn. | ABStart3 đã có [CP198](PROTOCOL.md#native-interleaved-startup), ACscopeCP176giữ riêng; [CP202–204](PROTOCOL.md#four-transport-bounds) đãfourreset/Start2/3; wholeinventory/modes/low8wrap/generalreset còn thiếu, không lặp knownAB/ACcycles. |
 | <a id="gap-disconnect-replacement"></a>KR-X003 | [CP177](PROTOCOL.md#replacement-profile) optional exported preset/capacity theo vacancy và actual C0/C1 initial/118/159158 đã kiểm; CP176 giữ AC2normalcycles riêng. | Maximum/exhaustion/general membership/account resume chưa biết; C0 startup SIGSEGV giữ nguyên, đối chứng pass không là rootcause. Theo PLAN acceptance/control, không lặp known C0/C1 entry hoặc ACcycles. |
 | <a id="gap-diagnostic-service"></a>KR-S001 | [CP190](PROTOCOL.md#portable-probe-bundle) gói service/47fixture relocation đã actualKRWine/nativeidentity/room/load/EOFcontrol;  [CP177](PROTOCOL.md#replacement-profile) optional replacement preset/47pins/derived capacity/284server và7export tests; native C0/C1 actual118159158 đã đo. | Theo PLAN đối chiếu acceptance/dependency/control trước phép đo còn thiếu; nofullauth/physicalLANInternet8client/gate. Startup unknown không được suy thành capacity regression/fix. |
-| <a id="gap-service-hardening"></a>KR-S002 | LAN giả lập đạtCP191; [CP193–196](PROTOCOL.md#nat-netem-host-eof) có NAT tĩnh/UDP delay-loss/two cycles/EOF. Interleaved admission sai6/8 đã có CP190. | [CP202203](PROTOCOL.md#four-two-team-cycles) đã4normal2v2/reset/bundle, [CP204](PROTOCOL.md#four-transport-bounds) córecipient-safe/bounds/rate; [CP205](PROTOCOL.md#four-member-abort-room) bổ sung native3survivorEOFcleanup; [CP206](PROTOCOL.md#four-health-identity) thêm health/identity/processrestart; [CP207](PROTOCOL.md#four-netem-restart) đã nativefreshrestart/fourUDPimpairment; [CP210211](PROTOCOL.md#eight-portable-battle) có8actualtwo4v4cycles/relocatedbundle; K7/Internetdependency và teamvariants giữmở theoPLAN. Theo PLAN, không tái mở NEXT-K7-FOUR-BATTLE-OUTCOME đã giải. Binding incoming là design riêng, không auth gốc. |
+| <a id="gap-service-hardening"></a>KR-S002 | LAN giả lập đạtCP191; [CP193–196](PROTOCOL.md#nat-netem-host-eof) có NAT tĩnh/UDP delay-loss/two cycles/EOF. Interleaved admission sai6/8 đã có CP190. | [CP202203](PROTOCOL.md#four-two-team-cycles) đã4normal2v2/reset/bundle, [CP204](PROTOCOL.md#four-transport-bounds) córecipient-safe/bounds/rate; [CP205](PROTOCOL.md#four-member-abort-room) bổ sung native3survivorEOFcleanup; [CP206](PROTOCOL.md#four-health-identity) thêm health/identity/processrestart; [CP207](PROTOCOL.md#four-netem-restart) đã nativefreshrestart/fourUDPimpairment; [CP210211](PROTOCOL.md#eight-portable-battle) có8actualtwo4v4cycles/relocatedbundle; [K7 đạt scoped CP212](PLAN.md#k7-evidence-review); Internet thật chưa kiểm, không dependency. Teamvariants giữ mở theoPLAN. Theo PLAN, không tái mở NEXT-K7-FOUR-BATTLE-OUTCOME đã giải. Binding incoming là design riêng, không auth gốc. |
 
 
 ## Diễn biến lịch sử theo checkpoint

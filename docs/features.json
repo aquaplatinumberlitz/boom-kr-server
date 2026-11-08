@@ -8,7 +8,7 @@
     "questions": "docs/RESEARCH.md",
     "history": "docs/evidence/checkpoints/manifest.json"
   },
-  "scope": "Mechanism index for offline Battle path; not whole-client inventory or gate acceptance. Statuses only within linked source limits.",
+  "scope": "Mechanism index for offline Battle path; not whole-client inventory or gate acceptance. Statuses only within linked source limits. CP212 K6c WAN giả lập/K7 passed only within linked acceptance; Internet thật chưa kiểm. Gate does not promote per-feature evidence.",
   "nodes": [
     {
       "id": "KR-G000",
@@ -1655,12 +1655,14 @@
         },
         "gate": {
           "id": "K6",
-          "state": "open",
+          "state": "passed",
           "refs": [
             "docs/PLAN.md#gates",
             "docs/PLAN.md#k6a-acceptance",
-            "docs/PLAN.md#k6b-acceptance"
-          ]
+            "docs/PLAN.md#k6b-acceptance",
+            "docs/PLAN.md#k6c-acceptance"
+          ],
+          "acceptance": "docs/PLAN.md#k6c-acceptance"
         }
       },
       "issues": [
@@ -1766,12 +1768,14 @@
         },
         "gate": {
           "id": "K6",
-          "state": "open",
+          "state": "passed",
           "refs": [
             "docs/PLAN.md#gates",
             "docs/PLAN.md#k6a-acceptance",
-            "docs/PLAN.md#k6b-acceptance"
-          ]
+            "docs/PLAN.md#k6b-acceptance",
+            "docs/PLAN.md#k6c-acceptance"
+          ],
+          "acceptance": "docs/PLAN.md#k6c-acceptance"
         }
       },
       "issues": [
@@ -3312,7 +3316,7 @@
       ],
       "lifecycle": "active",
       "refs": {
-        "contract": "docs/PROTOCOL.md#nat-endpoint-control",
+        "contract": "docs/PROTOCOL.md#emulated-wan-acceptance",
         "question": "docs/RESEARCH.md#gap-peer-relay",
         "plan": "docs/PLAN.md#current-order",
         "evidence": [
@@ -3332,7 +3336,9 @@
           "docs/evidence/peer-endpoints/README.md#cp193",
           "docs/PROTOCOL.md#nat-two-cycles",
           "docs/PROTOCOL.md#udp-netem-cycles",
-          "docs/PROTOCOL.md#nat-netem-host-eof"
+          "docs/PROTOCOL.md#nat-netem-host-eof",
+          "docs/PROTOCOL.md#emulated-wan-acceptance",
+          "docs/evidence/peer-endpoints/README.md#cp212"
         ]
       },
       "coverage": {
@@ -3391,12 +3397,14 @@
         },
         "gate": {
           "id": "K6",
-          "state": "open",
+          "state": "passed",
           "refs": [
             "docs/PLAN.md#gates",
             "docs/PLAN.md#k6a-acceptance",
-            "docs/PLAN.md#k6b-acceptance"
-          ]
+            "docs/PLAN.md#k6b-acceptance",
+            "docs/PLAN.md#k6c-acceptance"
+          ],
+          "acceptance": "docs/PLAN.md#k6c-acceptance"
         }
       },
       "issues": [
@@ -3949,12 +3957,14 @@
         },
         "gate": {
           "id": "K6",
-          "state": "open",
+          "state": "passed",
           "refs": [
             "docs/PLAN.md#gates",
             "docs/PLAN.md#k6a-acceptance",
-            "docs/PLAN.md#k6b-acceptance"
-          ]
+            "docs/PLAN.md#k6b-acceptance",
+            "docs/PLAN.md#k6c-acceptance"
+          ],
+          "acceptance": "docs/PLAN.md#k6c-acceptance"
         }
       },
       "issues": [
@@ -4176,12 +4186,14 @@
         },
         "gate": {
           "id": "K6",
-          "state": "open",
+          "state": "passed",
           "refs": [
             "docs/PLAN.md#gates",
             "docs/PLAN.md#k6a-acceptance",
-            "docs/PLAN.md#k6b-acceptance"
-          ]
+            "docs/PLAN.md#k6b-acceptance",
+            "docs/PLAN.md#k6c-acceptance"
+          ],
+          "acceptance": "docs/PLAN.md#k6c-acceptance"
         }
       },
       "issues": [
@@ -4717,12 +4729,14 @@
         },
         "gate": {
           "id": "K6",
-          "state": "open",
+          "state": "passed",
           "refs": [
             "docs/PLAN.md#gates",
             "docs/PLAN.md#k6a-acceptance",
-            "docs/PLAN.md#k6b-acceptance"
-          ]
+            "docs/PLAN.md#k6b-acceptance",
+            "docs/PLAN.md#k6c-acceptance"
+          ],
+          "acceptance": "docs/PLAN.md#k6c-acceptance"
         }
       },
       "issues": [
@@ -4774,7 +4788,9 @@
           "docs/PROTOCOL.md#eight-session-preview",
           "docs/PROTOCOL.md#eight-mesh-owner-bombs",
           "docs/PROTOCOL.md#eight-two-team-cycles",
-          "docs/PROTOCOL.md#eight-portable-battle"
+          "docs/PROTOCOL.md#eight-portable-battle",
+          "docs/PROTOCOL.md#emulated-wan-acceptance",
+          "docs/evidence/peer-endpoints/README.md#cp212"
         ]
       },
       "coverage": {
@@ -4874,10 +4890,12 @@
         },
         "gate": {
           "id": "K7",
-          "state": "open",
+          "state": "passed",
           "refs": [
-            "docs/PLAN.md#gates"
-          ]
+            "docs/PLAN.md#gates",
+            "docs/PLAN.md#k7-evidence-review"
+          ],
+          "acceptance": "docs/PLAN.md#k7-evidence-review"
         }
       },
       "issues": [

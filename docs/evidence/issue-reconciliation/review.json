@@ -1,7 +1,7 @@
 {
   "schema": "kre-issue-review-v1",
   "as_of": "2026-11-08",
-  "baseline": "9202d776d853b35cbb2c8e63eefdf14085fb38d0",
+  "baseline": "936693d5f08006bfe0b55af2b01b29a81250b350",
   "method": "Codex manual acceptance review; native/static/model/design/merge/gate distinct; originalissuebodies archivedlocalbeforeedit, no completecheckpoint rewrite",
   "issues": [
     {
@@ -155,11 +155,11 @@
         "KR-F001",
         "KR-F015"
       ],
-      "known": "CP210mergedPR282/same8two4v4; CP211relocated71pin47alias8battlebundle/Python-I/767packagedTCP/native8same2outcomes-resetStart3/4417gameplay112delivery128getters/cleanup0/sourcehash-configsameCP210;18bundle/reuse363server.",
-      "remaining": "Actual8Free1v7/Manner4v4-negative1v7/interactiveC2Steamchange/native9-generalmapfullauth/full8items-terrain-needle-rescue/accountresume/Internet-K6c-K7remain; native8portable scope nowconfirmed.",
+      "known": "CP212 manual scoped acceptance K6c WAN giả lập and independent K7 criteria re-evaluation passed using sealed CP192196/203207 native evidence. CP211 mergedPR283/936693d/native8portable fixed4v4.",
+      "remaining": "Internet thật chưa kiểm, separate backlog never K6c/K7 dependency. Actual8Free1v7/Manner4v4-negative1v7/interactiveC2Steamchange/native9-fullauth/full4-8items/accountresume outside gate proof.",
       "next_test": "NEXT-EIGHT-TEAM-VARIANTS onlyPLAN: cachedCP147162163/current8profile/report/reset, fixedoperator1v7/4v4/selector1guard controls beforeactual8Free1v7twooutcomes/Manner4v4/negative1v7. Do notportVN89 orreRE175/codec/capacity.",
       "acceptance": "Epic checklist: linkedscopedtask/evidence+authoritymatrix vàacceptancegate ởPLAN; từngtaskđóng khôngđóngepic/K5/K6a.",
-      "reason": "Manualpackagedprocessargv/module/sourcehash/config/pins joinedtosame-run8nativecallbacks; no gateclosure/fullgame/native9inference. AUD061through208/next212; selfcheckwaivedreview.",
+      "reason": "Owner changes only K6c environment; manual per-clause acceptance maps native and negative controls, not gate-by-directive/script. AUD062through212/next216. Team WIP preserved/unmerged and excluded; complete history/raw unchanged.",
       "sources": [
         "docs/PROTOCOL.md#authority",
         "docs/RESEARCH.md#feature-gaps",
@@ -243,7 +243,10 @@
         "docs/PROTOCOL.md#eight-session-preview",
         "docs/PROTOCOL.md#eight-mesh-owner-bombs",
         "docs/PROTOCOL.md#eight-two-team-cycles",
-        "docs/PROTOCOL.md#eight-portable-battle"
+        "docs/PROTOCOL.md#eight-portable-battle",
+        "docs/PLAN.md#k6c-acceptance",
+        "docs/PROTOCOL.md#emulated-wan-acceptance",
+        "docs/RESEARCH.md#gap-real-internet"
       ],
       "evidence": [
         "docs/evidence/current-movement-cycles/README.md",
@@ -323,7 +326,11 @@
         "docs/evidence/eight-player/README.md#cp208",
         "docs/evidence/eight-player/README.md#cp209",
         "docs/evidence/eight-player/README.md#cp210",
-        "docs/evidence/eight-player/README.md#cp211"
+        "docs/evidence/eight-player/README.md#cp211",
+        "docs/evidence/owner-directives/emulated-wan.json",
+        "docs/evidence/peer-endpoints/k6c-acceptance.json",
+        "docs/evidence/peer-endpoints/k7-acceptance.json",
+        "docs/evidence/peer-endpoints/README.md#cp212"
       ],
       "prs": [
         173,
@@ -409,7 +416,8 @@
         279,
         280,
         281,
-        282
+        282,
+        283
       ],
       "successors": []
     },

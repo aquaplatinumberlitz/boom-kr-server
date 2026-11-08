@@ -2137,3 +2137,30 @@ Manualimages/hash/K7comparison ởrunroot. Transport`four-netem-controls-r1/{bas
 CurrentkernelTCP214 ở`four-current-delivery-r1`,2.0123294s/Bfollowup1/nocommit/fence.
 VerifierV1aliasb/dependenterrors giữlog/script, chỉ sửa readerpath. OldunusedNATtext đínhchính ởcontract, oldrawgiữnguyên.
 CP206PIDlocator đínhchính R2PID1145289/1145292 (R1:1143576/1143577); không sửaCP206recordcomplete.
+
+<a id="cp212"></a>
+## CP212 — owner đổi phạm vi K6c WAN giả lập; nghiệm thu và đánh giá lại K7
+
+[Chỉ đạo](../owner-directives/emulated-wan.json), [K6c decision](k6c-acceptance.json),
+[K7 decision](k7-acceptance.json), [contract/topology/tham số/giới hạn](../../PROTOCOL.md#emulated-wan-acceptance),
+[thứ tự duy nhất](../../PLAN.md#current-order). **Internet thật chưa kiểm**.
+
+Không chạy mới hoặc sửa run cũ: Codex đọc raw/report/native/PCAP/config đã seal CP192–196 và CP203–207,
+đối chiếu từng acceptance; reuse127 pinned reports/size/hash, full raw/history kiểm bằng checker riêng.
+`local/research/codex/wan-acceptance-cp212/source-first.json` và `reused-evidence-verification.json`
+ghi nguồn/commit/hash/locator, mức runtime/model/design, phần dùng trực tiếp và khoảng trống.
+CP195 same-run SHA `a0fdf455b957870dfcba347789b7673efadce9b379ee2e98687ec5f21483bb43`:
+2actualKR/2normalBwin/reset/Start3/4peerwindows, NAT-mapping/153/API/PCAP/nativeapply/life/rank và qdisc;
+CP196R2 SHA `edc9729c6aefc4fdf9d2d0e5c7f83c97b9ad13161a4c25e3c8f6c0292b9725ec`:
+pendinghostEOF/Acleanup/fence riêng. CP207 SHA `bf8c95fd9350c6844abf2290166e921866e8f2ff0cf3fccd14a50c3c7941deef`:
+same67pinbundle/store/newserver/newUUID/4actual/2opposite2v2/reset/Start3/UDPimpairment/health.
+Raw/hash đầy đủ tham chiếu các evidence manifests CP195/196/207, không sao chép raw index vào CP212.
+
+Wine10.0-20260425/CachyOS; originala52545… chưa sửa, offlinecopy4b781f…/ABI correction giữ phạm vi.
+NAT tĩnh destination-specific SNAT/source-specific DNAT; UDP-only40±5ms/loss5%seed194; TCP baseline,
+không explicit reorder/rate cap/MTU sweep. Router veth1500/lo65536; không phân loại cone/symmetric thực tế.
+Hai run normal/EOF không ghép; partials/failed observers/checkpoints/audits/reviewwaiver cũ giữ nguyên.
+K6c WAN giả lập và K7 scoped đạt bởi Codex manual comparison, không bởi script hoặc chỉ đạo riêng lẻ.
+Full game/fullauth/allitems/allmode/Internet ngoài proof; không thêm8client làm dependency.
+AUD062 periodic quaCP212/audit kếCP216; team WIP preserved, không tính là code đã merge/đã đo native.
+CP212 đang giao PR sau kiểm exact head; trạng thái merge tra GitHub/lịch sử.

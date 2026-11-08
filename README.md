@@ -28,12 +28,24 @@ boom-kr-server/
 
 ## Tra nhanh và trạng thái hiện tại
 
+**CP212: K6c WAN giả lập đạt; K7 hardening/demo bốn client đạt trong scope đã đối chiếu. Internet thật chưa kiểm.**
+[Chỉ đạo chủ dự án](docs/evidence/owner-directives/emulated-wan.json) thay duy nhất môi trường K6c;
+[acceptance K6c](docs/PLAN.md#k6c-acceptance) và [đánh giá lại từng tiêu chí K7](docs/PLAN.md#k7-evidence-review)
+dùng bằng chứng native đã seal: CP193 endpoint negative/positive, CP195 hai trận qua NAT/UDP40±5ms/loss5%,
+CP196 host EOF/cleanup/fence và CP203–207 đóng gói/bounds/identity/health/freshserver/bốn client.
+[Topology/tham số/giới hạn](docs/PROTOCOL.md#emulated-wan-acceptance), [raw/hash/decision](docs/evidence/peer-endpoints/README.md#cp212).
+Không chạy lại phần đã đủ bằng chứng; không nghiệm thu Internet/ISP/CGNAT thực tế, full game/account auth hoặc mọi mode/map/item.
+Các giới hạn đó là backlog riêng; tám client không phải điều kiện K6c/K7. Codex tự kiểm, review độc lập waived;
+CP212 đang giao qua PR, AUD062 qua212/audit kếCP216. Công việc kế tiếp duy nhất ở [PLAN](docs/PLAN.md#current-order).
+
+Các đoạn CP bên dưới ghi **trạng thái tại checkpoint nêu tên**, kể cả K6c/K7 từng còn mở; quyết định hiện hành ở trên.
+
 **CP211: gói server tám người đã chạy sau relocation và hoàn tất hai vòng 4v4/reset/Start3 trên tám KR Wine thật.**
 71filepins/47fixturealiases, profile/bom/outcomeflags cốđịnh;
 [contract/giới hạn](docs/PROTOCOL.md#eight-portable-battle), [cách xuất/chạy](tools/README.md#eight-battle-bundle),
 [raw/hash](docs/evidence/eight-player/README.md#cp211). Gói không chứaclient/assets; LANgiảlập/Wine, chưaInternet/K7.
-CP210 đã merge [PR282](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/282)/`9202d77`; CP211 đang giao qua PR.
-Audit kếCP212; tiếp actualteamvariants theo PLAN, không lặp codec/rank đãgiải.
+CP210 đã merge [PR282](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/282)/`9202d77`; CP211 đã merge [PR283](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/283)/`936693d`.
+Tại CP211 audit kếCP212; tiếp actualteamvariants theo PLAN, không lặp codec/rank đãgiải.
 
 **CP210: cùng tám KR Wine đã hoàn thành hai vòng 4v4, hai đội lần lượt thắng, kết quả → phòng → Ready → Start3.**
 [Contract/scope](docs/PROTOCOL.md#eight-two-team-cycles), [raw/hash](docs/evidence/eight-player/README.md#cp210).
@@ -90,7 +102,7 @@ Tra checkpoint: `python3 tools/checkpoints.py latest`, `show CPxxx`, `evidence C
 giữ record cũ nguyên object. Không cần đọc manifest lớn.
 
 Hai copy KR Wine đã chạy login/sảnh/phòng/Battle và các chu kỳ kết quả/reset có bằng chứng;
-**K5 basic local đạt CP188; K6a local đạt CP189. K6b LANgiảlập đạt CP191; Internet còn mở**. [Movement/terrain hai vòng](docs/PROTOCOL.md#current-movement-cycles),
+**K5 basic local đạt CP188; K6a local đạt CP189; K6b LAN giả lập đạt CP191; K6c WAN giả lập/K7 đạt CP212. Internet thật chưa kiểm**. [Movement/terrain hai vòng](docs/PROTOCOL.md#current-movement-cycles),
 [kim/reset](docs/PROTOCOL.md#needle-round-reset), [cứu hai chiều và hai kết quả](docs/PROTOCOL.md#rescue-two-results),
 [deep chain/reset](docs/PROTOCOL.md#recursive-chain-cycles) giữ phạm vi và giới hạn tại nguồn chuẩn.
 
@@ -108,10 +120,10 @@ auth137/137/errors0 → channel socket mới; hello/mode/seq reset được đo 
 [run/hash](docs/evidence/live-codec-stream/README.md#cp181). CP180 split/coalesced/CRCcontrol đã merge
 [PR252](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/252) tại`fe242cc`.
 
-**K6c Internet/K7 vẫn mở; K6b LANgiảlập đạtCP191 theoowner. K3 local CP186, K4 local CP187, K5 basic CP188 và K6a local CP189 đã đạt riêng scope**,
+**Tại CP191–211 K6c/K7 còn mở (đã nghiệm thu ở CP212); K6b LANgiảlập đạtCP191 theoowner. K3 local CP186, K4 local CP187, K5 basic CP188 và K6a local CP189 đã đạt riêng scope**,
 [nghiệm thu/giới hạn](docs/PLAN.md#k3-acceptance). Fullgrammar/unknownheader/prefix/mode và
 accountauthority chưa được khôi phục đầy đủ; K2 không nghiệm thu các phần đó. Thứ tự tiếp ở
-[PLAN](docs/PLAN.md#current-order): nhánh mạng/admission đã có CP192–198; bốn session vào Battle tại CP200, CP202đã có2v2haioutcomes/reset/Start3; tiếp hardening theo PLAN, giữ Internet gate mở.
+[PLAN](docs/PLAN.md#current-order): nhánh mạng/admission đã có CP192–198; bốn session vào Battle tại CP200, CP202đã có2v2haioutcomes/reset/Start3; tiếp hardening theo PLAN, Internet thật giữ backlog riêng theo CP212.
 CP181 đã merge [PR253](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/253) tại `5a154e5`.
 **CP184: identity291 đã tích hợp opt-in vào service.** Hai run A đã hiện tên ở sảnh rồi tạo phòng,
 nhận roster/map; native framer nhận sequence43…73 liên tục, next76. [Contract/giới hạn](docs/PROTOCOL.md#own-profile-integration),
@@ -156,7 +168,7 @@ CP190 đã merge [PR262](https://github.com/aquaplatinumberlitz/boom-kr-server/p
 có capture; [contract/giới hạn](docs/PROTOCOL.md#routed-Wine-network). Chưa NAT/relay/Internetgate.
 [Owner chấp nhận Wine thay Windows](docs/evidence/owner-directives/wine-accepted.json), không cần máy Windows.
 CP191 đã merge [PR263](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/263) tại`56a08dd6`.
-AUD057–060 periodic qua192/196/200/204 là lịch sử; AUD061 qua208, audit kế **CP212**. [Review waived](docs/evidence/checkpoints/review-waiver.json).
+AUD057–060 periodic qua192/196/200/204 là lịch sử; AUD062 qua212, audit kế **CP216**. [Review waived](docs/evidence/checkpoints/review-waiver.json).
 
 **CP193: đã đo đối chứng NAT trên hai KR Wine thật.** Endpoint riêng làm consumer trả0; khai báo tuple
 đã ánh xạ + DNAT khôi phục handler, key và movement hai chiều. [Contract/giới hạn](docs/PROTOCOL.md#nat-endpoint-control),
