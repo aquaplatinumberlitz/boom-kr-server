@@ -45,4 +45,3 @@ class EightSessionTests(unittest.TestCase):
                             dict(abort_room=True), dict(identity_store=Path(folder)/'ids.json')]:
                 with self.subTest(options=options), self.assertRaisesRegex(ValueError, 'eight session preview'):
                     EightPlayerService(fixtures(), Path(folder), self.IPS, **options)
-
